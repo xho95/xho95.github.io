@@ -10,7 +10,7 @@ categories: jekyll update
 this is my first post.
 
 # 큰제목
-내용내용
+내용내용 새로운 내용 테스트입니다.
 
 ## 두번째
 * 리스트1
