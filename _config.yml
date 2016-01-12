@@ -21,10 +21,3 @@ github_username:  jekyll
 markdown: redcarpet
 redcarpet:
   extensions: ["tables", "autolink", "strikethrough", "space_after_header", "with_toc_data", "fenced_code_blocks"]
-
-Swift:
-  type: programming
-  color: "#ffac45"
-  extensions:
-    - .swift
-  ace_mode: text
