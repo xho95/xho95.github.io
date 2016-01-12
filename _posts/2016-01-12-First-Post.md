@@ -23,3 +23,9 @@ this is my first post.
 ![그림1](https://i.ytimg.com/vi/xzkCFcRgnGc/maxresdefault.jpg)
 
 [1]: http://cuspace.github.io
+
+```swift
+func test() -> () {
+  print("test")
+}
+```
