@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Reply"
+title:  "Add the form to comment"
 date:   2016-01-13 12:30:00 +0900
 categories: jekyll update
 ---
