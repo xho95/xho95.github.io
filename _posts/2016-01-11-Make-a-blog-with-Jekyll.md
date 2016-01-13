@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll Test"
+title:  "Make a Blog with Jekyll"
 date:   2016-01-11 12:50:00 +0900
 categories: jekyll update
 ---

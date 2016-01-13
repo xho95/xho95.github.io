@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Syntax highlighting"
+title:  "Post a new post with Jekyll"
 date:   2016-01-12 11:58:00 +0900
 categories: jekyll update
 ---
