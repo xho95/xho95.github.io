@@ -9,7 +9,7 @@ categories: jekyll update
 
 여기서는 맥 환경에서 [Jekyll][Jekyll]을 이용하여 [GitHub][GitHub]에 개인 블로그를 만드는 방법에 대해서 알아본다.
 
-이 블로그의 내용은 [박민수][박민수]님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 [Nolboo님의 블로그][Nolboo님의 블로그]에서 아주 약간의 변경 사항을 반영한 것이다.
+이 블로그의 내용은 [박민수님의 블로그][박민수]님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 [Nolboo님의 블로그][Nolboo님의 블로그]에서 아주 약간의 변경 사항을 반영한 것이다.
 
 ### Jekyll 설치하기
 
@@ -40,13 +40,13 @@ $ jekyll new username.github.io
 
 위에서 로컬 저장소의 이름(`username.github.io`)이 꼭 github의 원격 저장소의 이름과 같을 필요는 없지만 편의를 위해서 같게 두었다.
 
-local 저장소가 만들어졌으면, 터미널에서 `jekyll serve`를 입력하여 local에 있는 site를 실행할 수 있다.
+local 저장소가 만들어졌으면, 터미널에서 `jekyll serve`를 입력하여 로컬에 있는 사이트를 실행할 수 있다.
 
 ```sh
 $ jekyll serve
 ```
 
-local에 있는 site는 웹브라우저 주소창에서 아래의 localhost 주소를 입력하여 확인할 수 있다.
+로컬에 있는 사이트는 웹브라우저 주소창에서 아래의 localhost 주소를 입력하여 확인할 수 있다.
 
 ```sh
 localhost:4000
@@ -78,7 +78,7 @@ $ git init
 $ git remote add origin repository-url
 ```
 
-여기서 repository-url은 보통 아래와 같은 주소가 된다.
+여기서 `repository-url`은 보통 아래와 같은 주소가 된다.
 
 ```sh
 https://github.com/username/username.github.io.git
@@ -87,7 +87,7 @@ https://github.com/username/username.github.io.git
 
 ### 로컬 저장소의 내용을 원격 저장소로 push하기
 
-이제 로컬 저장소와 원격 저장소가 연결되었으니, 로컬 저장소의 변경 내용을 원격 저장소로 push하면 블로그가 업데이트된다.
+이제 로컬 저장소와 원격 저장소가 연결되었으니, 로컬 저장소의 변경 내용을 원격 저장소로 `push`하면 블로그가 업데이트된다.
 
 이것은 변경 파일들을 `add`하고, `commit`한 다음, 원격 저장소로 `push`하는 과정을 거친다.
 
@@ -105,7 +105,7 @@ $ git commit -m "message"
 
 ``"message"`` 에는 해당 커밋에 대한 설명을 간략하게 정하면 된다.
 
-로컬 저장소에 등록된 내용을 원격 저장소에 등록하면 끝이다. 이것은 다음과 같이 git push 명령어를 사용한다.
+로컬 저장소에 등록된 내용을 원격 저장소에 등록하면 끝이다. 이것은 다음과 같이 `git push` 명령어를 사용한다.
 
 ```sh
 $ git push origin master
