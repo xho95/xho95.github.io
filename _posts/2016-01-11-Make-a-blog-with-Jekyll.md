@@ -67,7 +67,7 @@ git init
 git remote add origin repository-url
 ```
 
-여기서 repository-url은 보통 https://github.com/username/username.github.io.git 이 된다.
+여기서 repository-url은 보통 `https://github.com/username/username.github.io.git` 이 된다.
 
 ### local 저장소의 내용을 online 저장소로 push하기
 
