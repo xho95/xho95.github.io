@@ -9,7 +9,7 @@ categories: jekyll update
 
 여기서는 Jekyll을 이용하여 GitHub에 개인 블로그를 만드는 방법에 대해서 알아본다.
 
-이 블로그의 내용은 박민수님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다.
+이 블로그의 내용은 [박민수][박민수]님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 [Nolboo님의 블로그][Nolboo님의 블로그]에서 아주 약간의 변경 사항을 반영한 것이다.
 
 ### Jekyll 설치하기
 
@@ -117,6 +117,7 @@ git push origin master
 
 ### 참고 자료
 
+[박민수]: https://cuspace.github.io
 [Nolboo님의 블로그]: https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/
 
 GitHub  
