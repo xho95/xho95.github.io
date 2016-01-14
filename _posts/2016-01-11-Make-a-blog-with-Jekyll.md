@@ -7,9 +7,9 @@ categories: jekyll update
 
 ## Jekyll과 GitHub로 개인 블로그 만들기
 
-여기서는 맥 환경에서 Jekyll을 이용하여 GitHub에 개인 블로그를 만드는 방법에 대해서 알아본다.
+여기서는 맥 환경에서 [Jekyll][Jekyll]을 이용하여 [GitHub][GitHub]에 개인 블로그를 만드는 방법에 대해서 알아본다.
 
-이 블로그의 내용은 [박민수][박민수]님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 [Nolboo님의 블로그][Nolboo님의 블로그]에서 아주 약간의 변경 사항을 반영한 것이다.[^1]
+이 블로그의 내용은 [박민수][박민수]님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 [Nolboo님의 블로그][Nolboo님의 블로그]에서 아주 약간의 변경 사항을 반영한 것이다.
 
 ### Jekyll 설치하기
 
@@ -24,15 +24,15 @@ $ sudo gem install jekyll
 > 여기서 gem은 ruby 언어에서 서드파티 라이브러리를 설치하도록 도와주는 시스템이다.
 
 
-### Jekyll로 블로그의 local 저장소 만들기
+### Jekyll로 블로그의 로컬 저장소 만들기
 
-우선, 터미널에서 local 저장소를 위치하고 싶은 곳으로 이동한다.
+우선, 터미널에서 로컬 저장소를 위치하고 싶은 곳으로 이동한다.
 
 ```sh
 $ cd some-dir/
 ```
 
-그다음, jekyll을 사용하여 블로그를 내용을 저장할 local 저장소를 만든다. 터미널에서 아래와 같이 jekyll new를 실행하면 된다.
+그다음, `jekyll`을 사용하여 블로그를 내용을 저장할 로컬 저장소를 만든다. 터미널에서 아래와 같이 `jekyll new`를 실행하면 된다.
 
 ```sh
 $ jekyll new username.github.io
@@ -40,7 +40,7 @@ $ jekyll new username.github.io
 
 위에서 로컬 저장소의 이름(`username.github.io`)이 꼭 github의 원격 저장소의 이름과 같을 필요는 없지만 편의를 위해서 같게 두었다.
 
-local 저장소가 만들어졌으면, 터미널에서 jekyll serve를 입력하여 local에 있는 site를 실행할 수 있다.
+local 저장소가 만들어졌으면, 터미널에서 `jekyll serve`를 입력하여 local에 있는 site를 실행할 수 있다.
 
 ```sh
 $ jekyll serve
@@ -53,14 +53,14 @@ localhost:4000
 ```
 
 
-### GitHub에서 온라인 저장소 만들기
+### GitHub에 온라인 저장소 만들기
 
-지금까지는 로컬에서 jekyll을 이용해서 블로그를 만들었다. 하지만, 서버에 등록된 것은 아니라 로컬에서만 확인가능하다. 이를 실제 웹에서 확인하려면 호스팅 서비스에 올려야한다. GitHub는 회원에서 무료 블로그 호스팅 서비스를 해주므로 GitHub에 온라인 저장소를 만든 다음 앞서 만든 로컬 저장소를 연동하면 된다.
+지금까지는 로컬에서 jekyll을 이용해서 블로그를 만들었다. 하지만, 서버에 등록된 것은 아니라 로컬에서만 확인가능하다. 이를 실제 웹에서 확인하려면 호스팅 서비스에 올려야한다. GitHub는 회원에게 무료 블로그 호스팅 서비스를 해주므로 GitHub에 온라인 저장소를 만든 다음 앞서 만든 로컬 저장소를 연동하면 된다.
 
-우선 [pages.github.com][pages.github.com] 사이트에서 create a repository를 이용하여 자신만의 repository를 만든다. 보통 username.github.io를 사용한다. (확인 필요)
+우선 [GitHub Pages][GitHub Pages] 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만든다. 보통 `username.github.io`를 사용한다.
 
 
-### local 저장소와 online 저장소를 연동하기
+### 로컬 저장소와 원격 저장소를 연동하기
 
 이제 온전한 블로그를 위해 jekyll로 만든 로컬 저장소와 GitHub로 만든 원격 저장소를 연결시켜줘야 한다.
 
@@ -91,19 +91,19 @@ https://github.com/username/username.github.io.git
 
 이것은 변경 파일들을 `add`하고, `commit`한 다음, 원격 저장소로 `push`하는 과정을 거친다.
 
-우선 변경 파일들을 git add 명령어를 사용하여 추가한다.
+우선 변경 파일들을 `git add` 명령어를 사용하여 추가한다.
 
 ```sh
 $ git add .
 ```
 
-여기서 '.'은 모든 변경 파일들을 추가하겠다는 의미이다. 추가한 파일들을 local repository에 등록하려면 git commit 명령어를 사용한다.
+여기서 `'.'`은 모든 변경 파일들을 추가하겠다는 의미이다. 추가한 파일들을 로컬 저장소에 등록하려면 `git commit` 명령어를 사용한다.
 
 ```sh
 $ git commit -m "message"
 ```
 
--m "message" 에는 해당 커밋에 대한 설명을 간략하게 정하면 된다.
+``"message"`` 에는 해당 커밋에 대한 설명을 간략하게 정하면 된다.
 
 로컬 저장소에 등록된 내용을 원격 저장소에 등록하면 끝이다. 이것은 다음과 같이 git push 명령어를 사용한다.
 
@@ -111,7 +111,7 @@ $ git commit -m "message"
 $ git push origin master
 ```
 
-위와 같이 하면, 현재 local에 있는 변경 내역들을 원격 저장소에 push하게 된다.
+위와 같이 하면, 현재 로컬에 있는 변경 내역들을 원격 저장소에 `push`하게 된다.
 
 
 ### 확인하기
@@ -121,13 +121,15 @@ $ git push origin master
 
 ### 참고 자료
 
-
-[박민수]: https://cuspace.github.io  
+[Jekyll]: http://jekyllrb.com
+[GitHub]: https://github.com
+[박민수님의 블로그]: https://cuspace.github.io  
 [Nolboo님의 블로그]: https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/
-[pages.github.com]: https://pages.github.com
+[GitHub Pages]: https://pages.github.com
 
-[^1]: [Nolboo님의 블로그 포스팅](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
+
+[Jekyll](http://jekyllrb.com)  
+[GitHub](https://github.com)  
+[GitHub Pages](https://pages.github.com)  
+[Nolboo님의 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
 [박민수님의 블로그](https://cuspace.github.io)  
-
-GitHub  
-Jekyll  
