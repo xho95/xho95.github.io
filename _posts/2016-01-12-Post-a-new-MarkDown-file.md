@@ -28,7 +28,7 @@ Atom으로 로컬 저장소(보통의 경우 GitHub에 있는 원격 저장소�
 
 전체 코드는 아래와 같다.
 
-```yml
+```text
 markdown: redcarpet
 redcarpet:
   extensions: ["tables", "autolink", "strikethrough", "space_after_header", "with_toc_data", "fenced_code_blocks"]
