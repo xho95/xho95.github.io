@@ -5,7 +5,7 @@ date:   2016-01-11 12:50:00 +0900
 categories: Jekyll GitHub Git
 ---
 
-여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)을 이용하여 [GitHub][GitHub]에 개인 블로그를 만드는 방법에 대해서 알아본다.[^1][^2]
+여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)을 이용하여 [GitHub][GitHub]에 개인 블로그를 만드는 방법에 대해서 알아본다.[^1] [^2]
 
 이 블로그의 내용은 [박민수님의 블로그][박민수님의 블로그]님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 [Nolboo님의 블로그][Nolboo님의 블로그]에서 아주 약간의 변경 사항을 반영한 것이다. Jekyll을 이해하는데는 김민장님의 블로그의 도움을 받기도 했다.
 
