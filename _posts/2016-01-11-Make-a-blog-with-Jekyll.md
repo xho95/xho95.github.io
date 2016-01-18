@@ -126,8 +126,7 @@ $ git push origin master
 [GitHub Pages]: https://pages.github.com
 
 
-[^1]: [Jekyll](http://jekyllrb.com)  
-[^2]: [GitHub](https://github.com)  
+[^1]: [Jekyll](http://jekyllrb.com)[^2]: [GitHub](https://github.com)  
 [GitHub Pages](https://pages.github.com)  
 [Nolboo님의 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
 [박민수님의 블로그](https://cuspace.github.io)  
