@@ -5,9 +5,9 @@ date:   2016-01-11 12:50:00 +0900
 categories: Jekyll GitHub Git
 ---
 
-여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)을 이용하여 [GitHub][GitHub]에 개인 블로그를 만드는 방법에 대해서 알아본다.[^1] [^2]
+여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)[^jekyll]을 이용하여 [GitHub](https://github.com)[^github]에 개인 블로그를 만드는 방법에 대해서 알아본다.
 
-이 블로그의 내용은 [박민수님의 블로그][박민수님의 블로그]님과 함께 [Nolboo님의 블로그][Nolboo님의 블로그]를 공부하면서 정리한 것으로 [Nolboo님의 블로그][Nolboo님의 블로그]에서 아주 약간의 변경 사항을 반영한 것이다. Jekyll을 이해하는데는 김민장님의 블로그의 도움을 받기도 했다.
+이 블로그의 내용은 [박민수님](https://cuspace.github.io)과 함께 [Nolboo님의 블로그 포스트](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다. Jekyll 자체를 이해하는데는 김민장님의 블로그 포스트의 도움도 많이 받았다.
 
 ### Jekyll 설치하기
 
@@ -55,7 +55,7 @@ localhost:4000
 
 지금까지는 로컬에서 jekyll을 이용해서 블로그를 만들었다. 하지만, 서버에 등록된 것은 아니라 로컬에서만 확인가능하다. 이를 실제 웹에서 확인하려면 호스팅 서비스에 올려야한다. GitHub는 회원에게 무료 블로그 호스팅 서비스를 해주므로 GitHub에 온라인 저장소를 만든 다음 앞서 만든 로컬 저장소를 연동하면 된다.
 
-우선 [GitHub Pages][GitHub Pages] 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만든다. 보통 `username.github.io`를 사용한다.
+우선 [GitHub Pages](https://pages.github.com) 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만든다. 보통 `username.github.io`를 사용한다.
 
 
 ### 로컬 저장소와 원격 저장소를 연동하기
@@ -117,16 +117,8 @@ $ git push origin master
 위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있다.
 
 
-### 참고 자료
-
-[Jekyll]: http://jekyllrb.com
-[GitHub]: https://github.com
-[박민수님의 블로그]: https://cuspace.github.io  
-[Nolboo님의 블로그]: https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/
-[GitHub Pages]: https://pages.github.com
-
-
-[^1]: [Jekyll](http://jekyllrb.com)[^2]: [GitHub](https://github.com)  
-[GitHub Pages](https://pages.github.com)  
-[Nolboo님의 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
-[박민수님의 블로그](https://cuspace.github.io)  
+[^jekyll]: [Jekyll 사이트](http://jekyllrb.com)  
+[^github]: [GitHub 사이트](https://github.com)  
+[^GitHub Pages]: [GitHub Pages](https://pages.github.com)  
+[^Nolboo]: [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
+[^박민수]: [박민수님 블로그](https://cuspace.github.io)  
