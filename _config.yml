@@ -20,4 +20,4 @@ github_username:  jekyll
 # Build settings
 markdown: redcarpet
 redcarpet:
-  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "with_toc_data", "fenced_code_blocks"]
+  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "with_toc_data", "fenced_code_blocks", "footnotes"]
