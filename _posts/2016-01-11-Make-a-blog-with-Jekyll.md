@@ -117,5 +117,5 @@ $ git push origin master
 
 [^blog]: Jekyll에 대한 정보는 [Jekyll 사이트](http://jekyllrb.com)에서 알아볼 수 있고, GitHub에 대한 정보는 [GitHub 사이트](https://github.com)에서 알아 볼 수 있다.
 [^GitHub Pages]: [GitHub Pages](https://pages.github.com)  
-[^Nolboo]: Jekyll 관련 자료중에서 한글로 된 포스틍 중에서는 [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/) 만한 곳은 없는 것 같다. 놀부님이 글을 작성하실 때가 3년 전이라 약간의 수정 사항은 있지만 전체적으로 보다 더 좋은 글은 아직 본적이 없는 것 같다. 
-[^박민수]: [박민수님 블로그](https://cuspace.github.io)  
+[^Nolboo]: Jekyll 관련 자료중에서 한글로 된 포스트 중에서는 [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/) 만한 곳은 없는 것 같다. 놀부님이 글을 작성하실 때가 3년 전이라 약간의 수정 사항은 있지만 전체적으로 보다 더 좋은 글은 아직 본 적이 없는 것 같다.
+[^박민수님]: [박민수님 블로그](https://cuspace.github.io)  
