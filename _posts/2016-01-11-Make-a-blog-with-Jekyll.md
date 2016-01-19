@@ -5,7 +5,7 @@ date:   2016-01-11 12:50:00 +0900
 categories: Jekyll GitHub Git
 ---
 
-여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)[^jekyll]을 이용하여 [GitHub](https://github.com)[^github]에 개인 블로그를 만드는 방법에 대해서 알아본다.
+여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)을 이용하여 [GitHub](https://github.com)에 개인 블로그를 만드는 방법에 대해서 알아본다.[^blog]
 
 이 블로그의 내용은 [박민수님](https://cuspace.github.io)과 함께 [Nolboo님의 블로그 포스트](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다. Jekyll 자체를 이해하는데는 김민장님의 블로그 포스트의 도움도 많이 받았다.
 
@@ -30,7 +30,7 @@ $ sudo gem install jekyll
 $ cd some-dir/
 ```
 
-그다음, `jekyll`을 사용하여 블로그를 내용을 저장할 로컬 저장소를 만든다. 터미널에서 아래와 같이 `jekyll new`를 실행하면 된다.
+그다음, `jekyll`을 사용하여 블로그 내용을 저장할 로컬 저장소를 만든다. 터미널에서 아래와 같이 `jekyll new`를 실행하면 된다.
 
 ```sh
 $ jekyll new username.github.io
@@ -116,9 +116,9 @@ $ git push origin master
 
 위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있다.
 
+### 참고 자료
 
-[^jekyll]: [Jekyll 사이트](http://jekyllrb.com)  
-[^github]: [GitHub 사이트](https://github.com)  
+[^blog]: Jekyll에 대한 정보는 [Jekyll 사이트](http://jekyllrb.com)에서 알아볼 수 있고, GitHub에 대한 정보는 [GitHub 사이트](https://github.com)에서 알아 볼 수 있다. 
 [^GitHub Pages]: [GitHub Pages](https://pages.github.com)  
 [^Nolboo]: [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
 [^박민수]: [박민수님 블로그](https://cuspace.github.io)  
