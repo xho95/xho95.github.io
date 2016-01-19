@@ -7,7 +7,7 @@ categories: Jekyll GitHub Git
 
 여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)을 이용하여 [GitHub](https://github.com)에 개인 블로그를 만드는 방법에 대해서 알아본다.[^blog]
 
-이 블로그의 내용은 [박민수님](https://cuspace.github.io)과 함께 [Nolboo님의 블로그 포스트](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다.
+이 블로그의 내용은 [박민수님](https://cuspace.github.io)과 함께 [Nolboo님의 블로그 포스트](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다.[^Nolboo]
 
 
 ### Jekyll 설치하기
@@ -31,7 +31,7 @@ $ sudo gem install jekyll
 $ cd some-dir/
 ```
 
-그다음, `jekyll`을 사용하여 블로그 내용을 저장할 로컬 저장소를 만든다. 터미널에서 아래와 같이 `jekyll new`를 실행하면 된다.
+그다음, jekyll을 사용하여 블로그 내용을 저장할 로컬 저장소를 만든다. 터미널에서 아래와 같이 `jekyll new`를 실행하면 된다.
 
 ```sh
 $ jekyll new username.github.io
@@ -52,7 +52,7 @@ $ jekyll serve
 
 지금까지는 로컬에서 jekyll을 이용해서 블로그를 만들었다. 하지만, 서버에 등록된 것은 아니라 로컬에서만 확인가능하다. 이를 실제 웹에서 확인하려면 호스팅 서비스에 올려야한다. GitHub는 회원에게 무료 블로그 호스팅 서비스를 해주므로 GitHub에 온라인 저장소를 만든 다음 앞서 만든 로컬 저장소를 연동하면 된다.
 
-우선 [GitHub Pages](https://pages.github.com) 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만든다. 보통 `username.github.io`를 사용한다.
+우선 [GitHub Pages](https://pages.github.com) 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만든다. 이 때 원격 저장소 이름은 `username.github.io`과 같은 형식을 맞춰줘야 한다.
 
 
 ### 로컬 저장소와 원격 저장소를 연동하기
@@ -98,15 +98,15 @@ $ git add .
 $ git commit -m "message"
 ```
 
-``"message"`` 에는 해당 커밋에 대한 설명을 간략하게 정하면 된다.
+"message" 에는 해당 커밋에 대한 설명을 간략하게 정하면 된다.
 
-로컬 저장소에 등록된 내용을 원격 저장소에 등록하면 끝이다. 이것은 다음과 같이 `git push` 명령어를 사용한다.
+이제 로컬 저장소에 등록된 내용을 원격 저장소에 등록하면 끝이다. 이것은 다음과 같이 `git push` 명령어를 사용하면 된다.
 
 ```sh
 $ git push origin master
 ```
 
-위와 같이 하면, 현재 로컬에 있는 변경 내역들을 원격 저장소에 `push`하게 된다.
+위와 같이 하면, 현재 로컬에 있는 변경 내역들을 원격 저장소로 `push`하게 된다.
 
 
 ### 확인하기
@@ -117,5 +117,5 @@ $ git push origin master
 
 [^blog]: Jekyll에 대한 정보는 [Jekyll 사이트](http://jekyllrb.com)에서 알아볼 수 있고, GitHub에 대한 정보는 [GitHub 사이트](https://github.com)에서 알아 볼 수 있다.
 [^GitHub Pages]: [GitHub Pages](https://pages.github.com)  
-[^Nolboo]: [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
+[^Nolboo]: Jekyll 관련 자료중에서 한글로 된 포스틍 중에서는 [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/) 만한 곳은 없는 것 같다. 놀부님이 글을 작성하실 때가 3년 전이라 약간의 수정 사항은 있지만 전체적으로 보다 더 좋은 글은 아직 본적이 없는 것 같다. 
 [^박민수]: [박민수님 블로그](https://cuspace.github.io)  
