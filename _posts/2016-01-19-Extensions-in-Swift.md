@@ -7,7 +7,7 @@ categories: Xcode Swift Grammar Extensions
 
 여기서는 Swift의 Extensions에 대해서 알아본다.
 
-기본적으로 전체 내용은 Apple의 공식 Swift 문서인 `The Swift Programming Language (Swift 2.1)`의 내용을 정리한 것이며, Swift의 버전이 바뀌면서 바뀌게 되는 내용이 있다면 반영하도록 할 예정이다.
+기본적으로 전체 내용은 Apple의 공식 Swift 문서인 `The Swift Programming Language (Swift 2.1)`의 내용을 정리한 것이며, Swift의 버전이 바뀌면서 바뀌게 되는 내용이 있다면 반영하도록 할 예정이다.[^Swift]
 
 
 ### Extensions
@@ -24,3 +24,5 @@ Swift의 Extensions이 기존 타입에 확장할 수 있는 것들은 다음과
 * subscripts 정의하기
 * nested types 정의하기
 * 기존 타입이 특정한 protocol을 따르도록 하기
+
+[^Swift]: Apple의 Swift 공식 문서는 [여기](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)서 확인할 수 있다. iBooks에서도 다운받을 수 있는데, 경험에 의하면 웹 페이지의 문서가 좀 더 최신 버전을 빨리 반영하는 것 같다.
