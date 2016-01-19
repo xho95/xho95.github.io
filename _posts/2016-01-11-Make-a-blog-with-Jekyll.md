@@ -7,8 +7,9 @@ categories: Jekyll GitHub Git
 
 여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)을 이용하여 [GitHub](https://github.com)에 개인 블로그를 만드는 방법에 대해서 알아본다.[^blog]
 
-이 블로그의 내용은 [박민수님](https://cuspace.github.io)과 함께 [Nolboo님의 블로그 포스트](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다. Jekyll 자체를 이해하는데는 김민장님의 블로그 포스트의 도움도 많이 받았다.
+이 블로그의 내용은 [박민수님](https://cuspace.github.io)과 함께 [Nolboo님의 블로그 포스트](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다.
 
+ 
 ### Jekyll 설치하기
 
 원래는 Jekyll을 사용하기 위해서는 먼저 Ruby를 설치해야 한다. 하지만 Ruby는 맥에 이미 설치되어 있다. 따라서 맥 사용자는 Ruby를 따로 설치할 필요가 없으므로 바로 Jekyll을 설치하면 된다.
@@ -118,7 +119,7 @@ $ git push origin master
 
 ### 참고 자료
 
-[^blog]: Jekyll에 대한 정보는 [Jekyll 사이트](http://jekyllrb.com)에서 알아볼 수 있고, GitHub에 대한 정보는 [GitHub 사이트](https://github.com)에서 알아 볼 수 있다. 
+[^blog]: Jekyll에 대한 정보는 [Jekyll 사이트](http://jekyllrb.com)에서 알아볼 수 있고, GitHub에 대한 정보는 [GitHub 사이트](https://github.com)에서 알아 볼 수 있다.
 [^GitHub Pages]: [GitHub Pages](https://pages.github.com)  
 [^Nolboo]: [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)  
 [^박민수]: [박민수님 블로그](https://cuspace.github.io)  
