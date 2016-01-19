@@ -9,7 +9,7 @@ categories: Jekyll GitHub Git
 
 이 블로그의 내용은 [박민수님](https://cuspace.github.io)과 함께 [Nolboo님의 블로그 포스트](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)를 공부하면서 정리한 것으로 Nolboo님의 블로그 글에서 아주 약간의 변경 사항을 반영한 것이다.
 
- 
+
 ### Jekyll 설치하기
 
 원래는 Jekyll을 사용하기 위해서는 먼저 Ruby를 설치해야 한다. 하지만 Ruby는 맥에 이미 설치되어 있다. 따라서 맥 사용자는 Ruby를 따로 설치할 필요가 없으므로 바로 Jekyll을 설치하면 된다.
@@ -45,11 +45,7 @@ local 저장소가 만들어졌으면, 터미널에서 `jekyll serve`를 입력�
 $ jekyll serve
 ```
 
-로컬에 있는 사이트는 웹브라우저 주소창에서 아래의 localhost 주소를 입력하여 확인할 수 있다.
-
-```sh
-localhost:4000
-```
+로컬에 있는 사이트는 웹브라우저 주소창에서 로컬 호스트 주소(`localhost:4000`)를 입력하면 확인할 수 있다.
 
 
 ### GitHub에 온라인 저장소 만들기
