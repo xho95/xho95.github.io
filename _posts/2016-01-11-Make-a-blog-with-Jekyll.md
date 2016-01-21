@@ -115,12 +115,12 @@ $ git push origin master
 
 ### 참고 자료
 
-[vjinn님의 블로그](https://vjinn.github.io)
-[kalkin7님의 블로그 글](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)
-[hmhv님의 블로그 글](http://hmhv.info/2015/02/github-pages-and-hexo/)
-[saltfactory님의 블로그 글](http://blog.saltfactory.net/note/create-personal-web-site-using-with-github-pages.html)
+[vjinn님의 블로그](https://vjinn.github.io)  
+[kalkin7님의 블로그 글](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)  
+[hmhv님의 블로그 글](http://hmhv.info/2015/02/github-pages-and-hexo/)  
+[saltfactory님의 블로그 글](http://blog.saltfactory.net/note/create-personal-web-site-using-with-github-pages.html)  
 
-[serapims님의 블로그 글 - 나중에 정리](http://serapims.tistory.com/entry/OSX-터미널-명령어)
+[serapims님의 블로그 글 - 나중에 정리](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
 
 [^blog]: Jekyll에 대한 정보는 [Jekyll 사이트](http://jekyllrb.com)에서 알아볼 수 있고, GitHub에 대한 정보는 [GitHub 사이트](https://github.com)에서 알아 볼 수 있다.
 [^GitHub Pages]: [GitHub Pages](https://pages.github.com)  
