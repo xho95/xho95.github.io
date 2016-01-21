@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Swift의 Extensions에 대해서 정리하기"
+title:  "Swift 문법 정리: Extensions"
 date:   2016-01-19 17:10:00 +0900
 categories: Xcode Swift Grammar Extensions
 ---
@@ -25,6 +25,6 @@ Swift의 Extensions이 기존 타입에 확장할 수 있는 것들은 다음과
 * nested types 정의하기
 * 기존 타입이 특정한 protocol을 따르도록 하기
 
-> Extensions은 타입 뿐만 아니라 프로토콜도 확장이 가능하며, 프로토콜의 확장을 통해서 프로토콜의 요구사항(requirements)과 추가적인 기능(additional functionality) 확장이 가능하며, 이렇게 확장된 프로토콜은 해당 프로토콜을 따르는 모든 타입들에 적용된다. 
+> Extensions은 타입 뿐만 아니라 프로토콜도 확장이 가능하며, 프로토콜의 확장을 통해서 프로토콜의 요구사항(requirements)과 추가적인 기능(additional functionality) 확장이 가능하며, 이렇게 확장된 프로토콜은 해당 프로토콜을 따르는 모든 타입들에 적용된다.
 
 [^Swift]: Apple의 Swift 공식 문서는 [여기](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)서 확인할 수 있다. iBooks에서도 다운받을 수 있는데, 경험에 의하면 웹 페이지의 문서가 좀 더 최신 버전을 빨리 반영하는 것 같다.
