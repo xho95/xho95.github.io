@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Add the form to comment"
+title:  "블로그에 댓글창 달기"
 date:   2016-01-13 12:30:00 +0900
 categories: jekyll update
 ---
