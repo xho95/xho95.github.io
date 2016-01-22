@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll과 GitHub로 블로그 만들기"
 date:   2016-01-11 12:50:00 +0900
-categories: Jekyll GitHub Git
+categories: Blog GitHub Jekyll Git
 ---
 
 여기서는 맥 환경에서 [Jekyll](http://jekyllrb.com)을 이용하여 [GitHub](https://github.com)에 개인 블로그를 만드는 방법에 대해서 알아본다.[^blog]

@@ -2,7 +2,7 @@
 layout: post
 title:  "MarkDown 문서를 이용하여 블로그에 포스트하기"
 date:   2016-01-12 11:58:00 +0900
-categories: Jekyll Atom redcarpet
+categories: Jekyll Atom MarkDown RedCarpet
 ---
 
 Jekyll로 생성한 local 저장소에 새 markdown 문서를 만들기 위해서는 마크타운 편집기가 필요하다.

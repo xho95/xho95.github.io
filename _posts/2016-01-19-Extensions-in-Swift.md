@@ -12,7 +12,7 @@ categories: Xcode Swift Grammar Extensions
 
 ### Extensions
 
-Extensions은 이미 존재하는 클래스, 구조체, 열거체 또는 프로토콜 타입에 새로운 기능을 부여하는 것을 말한다. Extensions의 장점은 라이브러리에 포함되어 있어서서 우리가 직접 해당 소스를 바꿀 수 없는 미리 정의된 타입도 기능 확장이 가능하다는 점이다. (이것을 공식 문서에서는 `retroactive modeling`이라는 용어로 소개하고 있다.)
+Extensions은 이미 존재하는 클래스, 구조체, 열거체 또는 프로토콜 타입에 새로운 기능을 부여하는 것을 말한다. Extensions의 장점은 라이브러리에 포함되어 있어서서 우리가 직접 해당 소스를 바꿀 수 없는 미리 정의된 타입에도 적용 가능하다는 점이다. (이것을 공식 문서에서는 `retroactive modeling`이라는 용어로 소개하고 있다. 우리 말로 표헌하면 `소급 적용하는 모델링 기법` 정도일 것이다.)
 
 > 공식 문서에서는 Swift의 Extensions이 Objective-C의 categories와 유사하다고 하는데,  Objective-C에 대해서는 잘 몰라서, 개인적으로는 Delphi에서 사용하는 Object Pascal이라는 언어의 Helper class와 유사한 개념인 것처럼 느껴진다.
 

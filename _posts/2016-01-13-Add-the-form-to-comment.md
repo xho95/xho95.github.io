@@ -2,12 +2,12 @@
 layout: post
 title:  "블로그에 댓글창 달기"
 date:   2016-01-13 12:30:00 +0900
-categories: jekyll update
+categories: Jekyll GFM Liquid
 ---
 
 ## Disqus 설치 준비하기
 
-### Jekyll Liguid
+### Jekyll Liquid
 
 Jekyll 자체가 Liquid 문법을 사용한다. - Liquid는 루비 라이브러리이다.
 
