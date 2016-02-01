@@ -90,6 +90,7 @@ int main(int argc, const char* argv[])
 1,2,3,4,5,6,Program ended with exit code: 0
 ```
 
+이제 Xcode에서 boost 라이브러리를 사용할 수 있는 환경을 갖추게 되었다.
 
 ### 고찰 하기
 
