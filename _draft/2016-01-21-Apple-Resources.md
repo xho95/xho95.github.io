@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "봐야할 Apple 문서들"
+title:  "봐야할 Apple 자료들"
 date:   2016-01-21 20:59:00 +0900
 categories: Xcode Swift Apple Resources
 ---
