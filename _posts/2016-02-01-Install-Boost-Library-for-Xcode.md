@@ -42,7 +42,7 @@ $ ./b2 toolset=darwin
 
 ### Boost 라이브러리 Xcode에서 사용하기
 
-`b2`를 실행하고 나면 boost 내부에 stage라는 폴더가 생기고, 그 밑의 lib폴더에 라이브러리 파일들이 위치하게 된다. Xcode에서 boost 라이브러리를 사용하기 위해서는 헤더 파일의 경로와 함께 이 라이브러리 파일들의 경로를 프로젝트에서 지정해주면 된다.
+`b2`를 실행하고 나면 boost 내부에 stage라는 폴더가 생기고, 그 밑의 lib폴더에 라이브러리 파일들이 위치하게 된다. Xcode에서 boost 라이브러리를 사용하기 위해서는 이 경로들을 프로젝트에서 지정해주면 된다.
 
 빌드후에 터미널 창에서 친철하게도 어떤 경로를 지정해주면 되는지 알려준다. 그 두 경로를 프로젝트 내에서 지정해두면 된다.
 
@@ -54,7 +54,6 @@ $ ./b2 toolset=darwin
 ```
 
 위 두 경로를 각각 **Targets** 의 **Build Setttings > Search Paths > Header Search Paths** 와 **Library Search Paths** 에 할당해 주면 된다.
-
 
 ### Boost 라이브러리 테스트 해보기
 
@@ -90,6 +89,14 @@ int main(int argc, const char* argv[])
 ```sh
 1,2,3,4,5,6,Program ended with exit code: 0
 ```
+
+
+### 고찰 하기
+
+경로를 지정하는 작업을 꼭 Targets 쪽에다 해줘야 하는 것인지, 또 매 프로젝트 마다 일일이 경로를 다시 지정해줘야 하는 것인지 등의 문제는 아직 모르겠다. 앞으로 Xcode에 좀 더 익숙해지도록 공부를 더 해야 할 듯 하다.
+
+[taromati님의 블로그 글](http://taromati.kr/blog/?p=65)[^taromati]을 보면, 시스템 관련 라이브러리들은 framework를 지정하기도 해야하는 듯한데, 이 부분도 나중에 좀 더 살펴봐야겠다.
+
 
 ### 참고 자료
 
