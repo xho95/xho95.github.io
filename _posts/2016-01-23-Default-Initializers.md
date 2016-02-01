@@ -5,6 +5,8 @@ date:   2016-01-23 19:35:00 +0900
 categories: Xcode Swift Grammar Initializers
 ---
 
+이 포스트는 Apple의 공식 문서인 Swift Programming Language의 내용 중에서 [Default Initializers](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)에 대한 부분을 정리한 것이다.[^Default Initializers]
+
 C++에서는 클래스를 이용하여 사용자 정의 타입을 새로 만들 경우, 조건에 따라서 자동적으로 생성되는 특수한 함수들이 있다. 보통 이것들은 기본 생성자나 복사 생성자와 같은 것들이다.
 
 Swift에서도 C++에서와 같이 사용자 정의 타입에 대해 자동으로 생성되는 함수들이 있는데, 이들을 기본 초기자(Default Initializers)라고 한다.
@@ -20,7 +22,7 @@ Swift에서는 클래스와 구조체에 대해, 그들이 모든 속성(propert
 
 > 여기서 아무런 초기자를 제공하지 않는다는 조건이 중요한데, 클래스의 경우 자신이 초기자를 제공해주지 않아도 상속에 의해서 초기자를 제공할 수도 있다. 따라서 클래스에서 기본 초기자가 자동으로 생기는 경우는 초기자가 없는 기반 클래스(base class)와 같이 특수한 경우일 때로 한정된다.
 
-기본 초기자는 초기자 구문(initializer syntax)을 사용하여 호출하는데, 이것은 단순히 클래스 이름뒤에 빈괄호가 있는 구문이다.
+기본 초기자는 초기자 구문(initializer syntax)을 사용하여 호출하는데, 이것은 단순히 클래스 이름 뒤에 빈괄호가 있는 구문이다.
 
 ```Swift
   class BaseClass {
@@ -31,14 +33,14 @@ Swift에서는 클래스와 구조체에 대해, 그들이 모든 속성(propert
   var aClass = BaseClass()      // initializer syntax
 ```
 
-위에서는 BaseClass를 정의했는데, 모든 속성에 기본값을 제공했지만 초기자를 제공하지는 않았다. (참고로, name은 optional이기 때문에 자동으로 nill이 기본값으로 제공된다.)
+위 코드에서는 BaseClass를 정의하면서 모든 속성에 기본값을 제공했지만 초기자를 제공하지는 않았다. (참고로, name은 optional 타입이기 때문에 자동으로 nill이 기본값으로 제공된다.)
 
 이 경우 컴파일러가 자동으로 기본 초기자를 제공하며, `BaseClass()`와 같이 초기자 구문을 사용하여 초기자를 호출할 수 있다.
 
 
 ### 구조체에서만 특별히 제공하는 초기자
 
-위에서 클래스와 구조체는 초기자를 제공하지 않을 때, 기본 초기자를 자동으로 제공한다고 했는데, 구조체에서는 이 경우 또 하나의 초기자를 제공한다.
+위에서 클래스와 구조체는 초기자를 제공하지 않을 때, 기본 초기자를 자동으로 제공한다고 했는데, 구조체에서는 이 경우 또 다른 초기자를 하나 더 제공한다.
 
 이것을 `memberwise initializer`라고 한다. 우리말로 하면 `멤버 초기자` 정도로 할 수 있을 것이다. 이 초기자는 호출하면서 각 멤버에 대해 초기값을 같이 전달할 수 있는 초기자이다.
 
@@ -77,4 +79,4 @@ Swift에서는 클래스와 구조체에 대해, 그들이 모든 속성(propert
 
 ### 참고 자료
 
-[Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)
+[^Default Initializers]: Default Initializers에 대한 내용은 [Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)에서 [Initializers](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203) 부분에 정리되어 있다.
