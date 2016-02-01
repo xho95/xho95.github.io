@@ -15,7 +15,7 @@ categories: Git GitHub GitLab
 
 ### Git 관련 인터넷 자료들
 
-[완전 초보를 위한 깃허브](https://nolboo.github.io/blog/2013/10/06/github-for-beginner/) 초보자를 위해 Git을 설명한 놀부님 블로그 글이다.
+[완전 초보를 위한 깃허브](https://nolboo.github.io/blog/2013/10/06/github-for-beginner/) 초보자를 위해 Git을 설명한 [놀부님 블로그](https://nolboo.github.io/) 글이다.
 
 [Pro Git 정리 자료](https://git-scm.com/book/ko/) Git 사용법에 대해서 잘 설명된 책인 Pro Git을 인터넷에 정리해 둔 곳으로, 한글로도 자료를 이용할 수 있다. 정말 좋은 곳인 것 같다.
 
