@@ -7,6 +7,9 @@ categories: Xcode Swift Grammar Initializers
 
 이 포스트는 Apple의 공식 문서인 Swift Programming Language의 내용 중에서 [Default Initializers](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)에 대한 부분을 정리한 것이다.[^Default Initializers]
 
+
+### 기본 초기자
+
 C++에서는 클래스를 이용하여 사용자 정의 타입을 새로 만들 경우, 조건에 따라서 자동적으로 생성되는 특수한 함수들이 있다. 보통 이것들은 기본 생성자나 복사 생성자와 같은 것들이다.
 
 Swift에서도 C++에서와 같이 사용자 정의 타입에 대해 자동으로 생성되는 함수들이 있는데, 이들을 기본 초기자(Default Initializers)라고 한다.
