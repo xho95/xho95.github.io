@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Xcode에서 Boost 라이브러리 사용하기"
-date:   2016-01-25 21:25:00 +0900
+date:   2016-02-01 17:30:00 +0900
 categories: Xcode C++ Boost Install
 ---
 
