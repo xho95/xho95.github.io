@@ -31,9 +31,9 @@ $ ./bootstrap.sh
 $ ./b2 toolset=darwin link=static threading=multi address-model=64 runtime-link=static
 ```
 
-위에서 `darwin`은 맥에서 사용하기 위함으로 윈도우즈에서라면 다른 값이 들어가게 된다. 또한 address-model의 경우 시스템이 32비트인지 64비트인지를 check하는 것 같아서 [taromati님의 블로그 글](http://taromati.kr/blog/?p=65)을 참고하여 64로 지정했다.[^taromati]
+위에서 `darwin` 은 맥에서 사용하기 위함으로 윈도우즈에서라면 다른 값이 들어가게 된다. 또한 address-model의 경우 시스템이 32비트인지 64비트인지를 check하는 것 같아서 [taromati님의 블로그 글](http://taromati.kr/blog/?p=65)을 참고하여 64로 지정했다.[^taromati]
 
-윤훈남님[^multism]의 말씀으로는 실제 b2 실행과정에서 아래와 같이 `toolset`값만 지정해줘도 나머지 옵션은 알아서 지정이 된다고 한다. 따라서 아래 처럼 해도 실행 결과는 위와 같을 것이다. 다만 실제로 해보지는 않아서, 혹시라도 이 글을 읽게 되면 참고해서 설치하기 바란다.
+윤훈남님[^multism]의 말씀으로는 실제 b2 실행과정에서 아래와 같이 `toolset` 값만 지정해줘도 나머지 옵션은 알아서 지정이 된다고 한다. 따라서 아래 처럼 해도 실행 결과는 위와 같을 것이다. 다만 실제로 해보지는 않아서, 혹시라도 이 글을 읽게 되면 참고해서 설치하기 바란다.
 
 ```sh
 $ ./b2 toolset=darwin
@@ -53,12 +53,12 @@ $ ./b2 toolset=darwin
 /Users/.../Desktop/Boost/boost_1_60_0/stage/lib
 ```
 
-위 두 경로를 각각 **Targets**의 **Build Setttings > Search Paths > Header Search Paths 와 Library Search Paths** 에 할당해 주면 된다.
+위 두 경로를 각각 **Targets** 의 **Build Setttings > Search Paths > Header Search Paths** 와 **Library Search Paths** 에 할당해 주면 된다.
 
 
 ### Boost 라이브러리 테스트 해보기
 
-아래의 C++ 코드는 Boost 사이트에서 찾은 `adjacent_filtered` 함수에 대한 [예제 코드](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)이다.
+아래의 C++ 코드는 `adjacent_filtered` 함수에 대한 예제 코드로 윤훈남님[^multism]의 소개로 [Boost 사이트](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)에서 찾은 것이다.
 
 ```C++
 #include <boost/range/adaptor/adjacent_filtered.hpp>
