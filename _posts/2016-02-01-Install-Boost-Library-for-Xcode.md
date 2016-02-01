@@ -101,8 +101,8 @@ int main(int argc, const char* argv[])
 
 ### 참고 자료
 
-[^warmz]: [이지형님의 블로그](http://warmz.tistory.com/904) 몇 군데 둘러봤는데 Boost 라이브러리 설치와 관련해서 가장 깔끔하게 설명한 사이트인 것 같다.
+[^warmz]: [이지형님의 블로그](http://warmz.tistory.com/904) : 몇 군데 둘러봤는데 Boost 라이브러리 설치와 관련해서 가장 깔끔하게 설명한 사이트인 것 같다.
 
-[^multism]: 국내에서 C++관련 스터디를 운영하시는 윤훈남님은 [카페](http://cafe.naver.com/multism)와 [페이스북](https://www.facebook.com/groups/OpenCPP/)을 통해 연락할 수 있다.
+[^multism]: 윤훈남님은 국내에서 C++관련 스터디를 운영하시고 있는데, [카페](http://cafe.naver.com/multism)와 [페이스북](https://www.facebook.com/groups/OpenCPP/)을 통해 연락할 수 있다.
 
-[^taromati]: [taromati님의 블로그 글](http://taromati.kr/blog/?p=65) Boost 빌드 및 설치 과정에서 도움을 받았는데, 블로그 글에서 다른 정보를 알 수가 없어서 우선은 이렇게 링크라도 기록해둔다.
+[^taromati]: [taromati님의 블로그 글](http://taromati.kr/blog/?p=65) : Boost 빌드 및 설치 과정에서 도움을 받았는데, 블로그 글에서 다른 정보를 알 수가 없어서 우선은 이렇게 링크라도 기록해둔다.
