@@ -48,10 +48,12 @@ $ ./b2 toolset=darwin
 
 예를 들어 `~/Desktop/Boost` 폴더에 설치가 되었다면 아래와 같은 경로가 된다.
 
-/Users/.../Desktop/Boost/boost_1_60_0
+```sh
+/Users/.../Desktop/Boost/boost_1_60_0  
 /Users/.../Desktop/Boost/boost_1_60_0/stage/lib
+```
 
-위 두 경로를 각각 `Targets`의 `Build Setttings > Search Paths > Header Search Paths 와 Library Search Paths` 에 할당해 주면 된다.
+위 두 경로를 각각 **Targets**의 **Build Setttings > Search Paths > Header Search Paths 와 Library Search Paths** 에 할당해 주면 된다.
 
 
 ### Boost 라이브러리 테스트 해보기
