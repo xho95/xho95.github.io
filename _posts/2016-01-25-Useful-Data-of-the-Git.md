@@ -23,4 +23,4 @@ categories: Git GitHub GitLab
 
 [GitHub](https://github.com) : Git을 위한 원격 저장소를 제공해주는 사이트이다. 이 블로그도 GitHub에서 관리하고 있다.
 
-[GitLab](https://about.gitlab.com) : GitHub와 유사하게 원격 저장소를 제공하는 사이트이다. 한가지 다른 점이라면 무료로 Private Repository를 만들 수 있다. 
+[GitLab](https://about.gitlab.com) : GitHub와 유사하게 원격 저장소를 제공하는 사이트이다. 한가지 다른 점이라면 무료로 Private Repository를 만들 수 있다는 점이다. 잘 활용하면 좋을 것 같다. 
