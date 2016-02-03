@@ -10,7 +10,7 @@ Swift라고 해야할 지, Cocoa라고 해야할지 모르겠는데, 여튼 Xcod
 
 ### 변수 선언의 최소화
 
-```Swift
+```swift
 class ViewController: UIViewController {
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     let touchCount = touches.count
