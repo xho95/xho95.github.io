@@ -27,7 +27,7 @@ Swift에서는 클래스와 구조체에 대해, 그들이 모든 속성(propert
 
 기본 초기자는 초기자 구문(initializer syntax)을 사용하여 호출하는데, 이것은 단순히 클래스 이름 뒤에 빈괄호가 있는 구문이다.
 
-```Swift
+```swift
   class BaseClass {
     var name: String?
     var isABaseClass = true
@@ -49,7 +49,7 @@ Swift에서는 클래스와 구조체에 대해, 그들이 모든 속성(propert
 
 아래에 간단한 예를 나타냈다.
 
-```Swift
+```swift
   class Size {
     var width = 10, height = 20
   }
@@ -61,7 +61,7 @@ Swift에서는 클래스와 구조체에 대해, 그들이 모든 속성(propert
 
 > 초기자에서 바로 초기값을 전달할 수 있으므로 구조체에서는 멤버에 대해 기본값을 제공하지 않아도 인스턴스를 만들 수 있다. 물론 이렇게 하면 기본 초기자가 생기지 않으므로 기본 초기자로 구조체를 생성할 수는 없게 된다.
 
-```Swift
+```swift
   class Size {
     var width: Double                             
     var height: Double
