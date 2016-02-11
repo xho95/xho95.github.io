@@ -60,7 +60,7 @@ $ ./b2 toolset=darwin
 
 아래의 C++ 코드는 `adjacent_filtered` 함수에 대한 예제 코드로 [Boost 사이트](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)에서 구한 것이다.
 
-```C++
+```cpp
 #include <boost/range/adaptor/adjacent_filtered.hpp>
 #include <boost/range/algorithm/copy.hpp>
 #include <boost/assign.hpp>

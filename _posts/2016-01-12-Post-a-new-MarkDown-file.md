@@ -40,7 +40,7 @@ redcarpet:
 
 ### redcarpet 설치하기
 
-redcarpet을 설치하려면 ruby의 `gem install` 명령어를 이용한다.
+redcarpet을 설치하려면 ruby의 `gem install` 명령어를 이용한다.[^kramdown]
 
 ```sh
 $ gem install redcarpet
@@ -61,7 +61,8 @@ GitHub에서는 자체적으로 redcarpet을 지원하므로 마크다운을 쓰
 
 블로그 포스트를 완성한 후 git의 `push`를 수행하면 `username.github.io`를 통하여 새 블로그 글이 등록된 것을 확인할 수 있다.
 
-### 참고 문헌
+### 참고 자료
 
 
-[ATOM]: https://atom.io
+[ATOM]: https://atom.io  
+[^kramdown]: 2016년 5월 1일 이후로 GitHub에서는 kramdown을 기본으로 제공한다고 한다. [_config.yml 파일을 kramdown으로 수정하는 방법](https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/)
