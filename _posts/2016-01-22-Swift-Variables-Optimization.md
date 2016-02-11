@@ -8,7 +8,7 @@ categories: Xcode Swift Variables Optimization
 Swift라고 해야할 지, Cocoa라고 해야할지 모르겠는데, 여튼 Xcode에서 프로그래밍을 하다 보면, 변수를 사용하는 방식이 C++과는 조금 다르다는 느낌을 받을 때가 있다. 일단은 정리는 차차하기로 하고 우선 여기서는 관련된 의문에 대해서 적어보기로 한다.
 
 
-### 변수 선언의 최소화
+### 클래스 범위를 갖는 변수 선언의 최소화
 
 ```swift
 class ViewController: UIViewController {
