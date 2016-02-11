@@ -16,3 +16,9 @@ categories: Xcode Swift Compiler C++
 현재 Swift 개발에 참여하고 있는 C++ 개발자들은 윤훈남님의 소개에 따르면 예전에 C++ 분야에서 아주 유명한 boost 라이브러리를 개발하던 분들이라고 한다.
 
 그렇다면 실력에 있어서는 의심의 여지가 없을 것이다.
+
+보다 자세한 내용은 아래의 참고 자료 페이지를 보면 알 수 있다.
+
+### 참고 자료
+
+[Frequently Asked Questions about Swift](https://github.com/apple/swift/blob/2c7b0b22831159396fe0e98e5944e64a483c356e/www/FAQ.rst) : GitHub에 있는 Swift FAQ 정리 페이지이다.

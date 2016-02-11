@@ -66,3 +66,5 @@ GitHub에서는 자체적으로 redcarpet을 지원하므로 마크다운을 쓰
 
 [ATOM]: https://atom.io  
 [^kramdown]: 2016년 5월 1일 이후로 GitHub에서는 kramdown을 기본으로 제공한다고 한다. [_config.yml 파일을 kramdown으로 수정하는 방법](https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/)
+
+[kramdown](http://kramdown.gettalong.org)
