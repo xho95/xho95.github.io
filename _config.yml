@@ -17,10 +17,16 @@ github_username:  xho95
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
-# redcarpet:
-#  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "fenced_code_blocks", "footnotes"]
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
 disqus: xho95githubio
+
+# old values
+
+# redcarpet:
+#  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "fenced_code_blocks", "footnotes"]
