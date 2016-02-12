@@ -8,7 +8,7 @@ categories: Xcode Swift Variables Optimization
 Swift라고 해야할 지, Cocoa라고 해야할지 모르겠는데, 여튼 Xcode에서 프로그래밍을 하다 보면, 변수를 사용하는 방식이 C++과는 조금 다르다는 느낌을 받을 때가 있다. 일단은 정리는 차차하기로 하고 우선 여기서는 관련된 의문에 대해서 적어보기로 한다.
 
 
-### 변수 선언의 최소화
+### 클래스 범위를 갖는 변수 선언의 최소화
 
 ```swift
 class ViewController: UIViewController {
@@ -37,3 +37,5 @@ class ViewController: UIViewController {
 아마도 이런 성능상의 최적화를 위해서 따로 변수를 사용하는 것을 최소화하는 방식으로 프로그래밍을 하도록 유도하는 것이 아닐까 추측한다.
 
 물론 여기까지의 내용은 아직은 막연한 나의 추측일 뿐이고, 잘못된 것일 수도 있다.
+
+Ray 사이트에서 node 찾는 응용 사례를 추가하고 관련된 설명을 붙이자!
