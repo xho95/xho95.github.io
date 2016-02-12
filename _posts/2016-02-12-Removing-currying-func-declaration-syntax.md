@@ -5,7 +5,7 @@ date:   2016-02-12 20:30:00 +0900
 categories: Xcode Swift Currying Evolution
 ---
 
-최근에 Apple에서 제공하는 The Swift Programming Language 문서의 2.2 버전을 보면 커리 함수(Curried Function)에 대한 설명이 빠져있는 것을 볼 수 있다. 이에 관련 자료를 살펴보니 Swift 3.0에서는 커리 함수를 선언하는 문법에 변화가 있음을 알 수 있었다.[^prerelease]
+최근에 Apple에서 제공하는 The Swift Programming Language 문서의 2.2 버전을 보면 커리 함수(Curried Function)에 대한 설명이 빠져있는 것을 볼 수 있다. 이에 관련 자료를 살펴보니 Swift 3.0에서는 커리 함수를 선언하는 문법에 변화가 있음을 알 수 있었다.[^Prerelease]
 
 여기서는 Swift 3.0에서 바뀌게 될 커리 함수의 선언 방식에 대해 간단하게 번역하여 정리한다. 참고로 Swift의 문법에 대한 변화는 GitHub의  [apple/swift-evolution](https://github.com/apple/swift-evolution/blob/master/proposals/0002-remove-currying.md)에서 확인할 수 있다.[^Evolution]
 
@@ -73,7 +73,7 @@ func curried(x: Int) -> (String) -> Float {
 
 ### 부연 설명
 
-[^prerelease] : Swift 관련 문서의 경우 Apple에서 실제 버전이 적용되기 전에 prerelease 버전을 먼저 공개하고 있다. 현재는 [Swift 2.2 Prerelease](https://itunes.apple.com/kr/book/swift-programming-language/id1002622538?mt=11) 버전이 공개된 상태이다.
+[^Prerelease] : Swift 관련 문서의 경우 Apple에서 실제 버전이 적용되기 전에 prerelease 버전을 먼저 공개하고 있다. 현재는 [Swift 2.2 Prerelease](https://itunes.apple.com/kr/book/swift-programming-language/id1002622538?mt=11) 버전이 공개된 상태이다.
 
 [^Evolution]: Apple에서 GitHub에 Swift를 오픈 소스로 올려두면서 [apple/swift-evolution](https://github.com/apple/swift-evolution) 저장소에는 앞으로 Swift에서 변화될 부분에 대한 내용을 정리해 두었다. 현재는 Swift 3.0 버전에 대한 내용들을 제안해서 토의하고 있는 것 같다. 이 블로그 글은 [Joe Groff](https://github.com/jckarter)라는 분이 제안한 원문을 번역한 것이다.
 
