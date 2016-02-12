@@ -73,10 +73,10 @@ func curried(x: Int) -> (String) -> Float {
 
 ### 부연 설명
 
-[^Pre-release] : Swift 관련 문서의 경우 Apple에서 실제 버전이 적용되기 전에 prerelease 버전을 먼저 공개하고 있다. 현재는 [Swift 2.2 Prerelease](https://itunes.apple.com/kr/book/swift-programming-language/id1002622538?mt=11) 버전이 공개된 상태이다.
+[^Pre-release]: Swift 관련 문서의 경우 Apple에서 실제 버전이 적용되기 전에 prerelease 버전을 먼저 공개하고 있다. 현재는 [Swift 2.2 Prerelease](https://itunes.apple.com/kr/book/swift-programming-language/id1002622538?mt=11) 버전이 공개된 상태이다.
 
 [^Evolution]: Apple에서 GitHub에 Swift를 오픈 소스로 올려두면서 [apple/swift-evolution](https://github.com/apple/swift-evolution) 저장소에는 앞으로 Swift에서 변화될 부분에 대한 내용을 정리해 두었다. 현재는 Swift 3.0 버전에 대한 내용들을 제안해서 토의하고 있는 것 같다. 이 블로그 글은 [Joe Groff](https://github.com/jckarter)라는 분이 제안한 원문을 번역한 것이다.
 
-[^Free-Function] : 원문에서는 free function으로 되어 있는데, [stackoverflow 답 글](http://stackoverflow.com/questions/4861914/what-is-the-meaning-of-the-term-free-function-in-c)을 참고하여 이를 비멤버 함수라고 번역했다. 나중에 좀 더 적합한 용어가 생기면 수정할 생각이다.
+[^Free-Function]: 원문에서는 free function으로 되어 있는데, [stackoverflow 답 글](http://stackoverflow.com/questions/4861914/what-is-the-meaning-of-the-term-free-function-in-c)을 참고하여 이를 비멤버 함수라고 번역했다. 나중에 좀 더 적합한 용어가 생기면 수정할 생각이다.
 
 [^Translation]: 이 문장은 번역은 매끄럽지 못한데, 원문을 보고 더 좋은 번역을 제안하고자 하는 분은 답글을 달아주기 바란다.
