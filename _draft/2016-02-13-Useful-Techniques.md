@@ -18,6 +18,7 @@ Xcode로 Swift 개발을 하는 과정에서 알아둘만한 기술들을 나열
 
 * Ruby
 * Python
+* Node.js
 
 * Vim
 * Shell / Bash
@@ -37,7 +38,9 @@ Xcode로 Swift 개발을 하는 과정에서 알아둘만한 기술들을 나열
 
 * CocoaPods
 * Homebrew
+* wget
 
+* Arduino
 * Thing+
 
 ###
