@@ -18,12 +18,19 @@ Xcode로 Swift 개발을 하는 과정에서 알아둘만한 기술들을 나열
 
 * Ruby
 * Python
+* Apple Script
+
+* Javascript
 * Node.js
+* Express.js
+
+* StackShare.io
+* MEAN stack
 
 * Vim
 * Shell / Bash
-* Apple Script
 * Atom
+* Visual Studio Code
 
 * Jekyll
 * Markdown
@@ -41,6 +48,7 @@ Xcode로 Swift 개발을 하는 과정에서 알아둘만한 기술들을 나열
 * wget
 
 * Arduino
+* RasberryPi
 * Thing+
 
 ###
