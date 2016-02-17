@@ -5,8 +5,18 @@ date:   2016-01-21 20:59:00 +0900
 categories: Xcode Swift Apple Resources
 ---
 
-봐야할 Apple 문서들을 모아둔 곳이다.
+봐야할 Apple 문서들을 모아둔 곳이다. 나중에 파트별로 분류해서 블로그 글로 정리하자.
 
+
+### shell
+
+[터미널 초보의 필수품인 Oh My ZSH!를 사용하자](https://nolboo.github.io/blog/2015/08/21/oh-my-zsh/)
+
+[zsh 갖고 놀기](http://coding-korea.blogspot.kr/2012/09/zsh.html)
+
+[오늘부로 나도 ZShell User!](http://justbricks.tumblr.com/post/89465435117/오늘부로-나도-zshell-user)
+
+[맥에서 zsh 사용하기](https://blog.ayukawa.kr/archives/1758)
 
 ### Swift
 
@@ -20,7 +30,12 @@ categories: Xcode Swift Apple Resources
 
 [10 Swift IOS open-source projects you cannot ignore](https://medium.com/swift-programming/15-swift-ios-open-source-projects-you-cannot-ignore-6bd4ac37d7dd#.u4c67ja0u)
 
+
+### Core Data
+
 [How to add Core Data to an existing SWIFT project in Xcode / Updated for Swift 1.2](http://craig24.com/2014/12/how-to-add-core-data-to-an-existing-swift-project-in-xcode/)
+
+[Adding Core Data to an existing Swift 2.0 project](http://purelywebdesign.co.uk/tutorial/add-coredata-to-an-exiting-swift-2-0-project/)
 
 
 ### Json
