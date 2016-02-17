@@ -20,6 +20,8 @@ categories: Xcode Swift Apple Resources
 
 [10 Swift IOS open-source projects you cannot ignore](https://medium.com/swift-programming/15-swift-ios-open-source-projects-you-cannot-ignore-6bd4ac37d7dd#.u4c67ja0u)
 
+[How to add Core Data to an existing SWIFT project in Xcode / Updated for Swift 1.2](http://craig24.com/2014/12/how-to-add-core-data-to-an-existing-swift-project-in-xcode/)
+
 
 ### Json
 
