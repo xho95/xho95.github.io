@@ -7,9 +7,9 @@ categories: Blog GitHub Jekyll Git
 
 자신이 공부한 내용을 정리하는 데는 블로그만한 것이 없습니다. 블로그는 글을 쓰면서 생각을 정리하는 역할도 하지만 자신의 글들을 온라인상에 백업하는 역할도 겸하기 때문입니다.
 
-하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 운영할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들[^kalkin7]이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^saltfactory_1] 그리하여 여러 방법들을 살펴보고 난 후 Jekyll과 GitHub를 사용하여 블로그를 운영하기로 결심하게 되었습니다.
+하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 운영할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들[^kalkin7]이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^saltfactory_1] 그리하여 여러 방법들을 살펴보고 난 후 [Jekyll](http://jekyllrb.com)[^Jekyll]과 [GitHub](https://github.com)[^GitHub]를 사용하여 블로그를 운영하기로 결심하게 되었습니다.
 
-이 글에서는 제가 블로그를 운영하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^cuspace], 그리고 인터넷에서 찾은 많은 분들의 자료[^Nolboo]를 바탕으로 맥 환경에서 [Jekyll](http://jekyllrb.com)[^Jekyll]과 [GitHub](https://github.com)[^GitHub]를 이용하여 개인 블로그를 만드는 방법을 정리하려고 합니다.[^saltfactory_2]
+이 글에서는 제가 블로그를 운영하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^cuspace], 그리고 인터넷에서 찾은 많은 분들의 자료[^Nolboo]를 바탕으로 맥 환경에서 Jekyll과 GitHub를 이용하여 개인 블로그를 만드는 방법을 정리하려고 합니다.[^saltfactory_2]
 
 우선 블로그를 만들기 전에 먼저 Jekyll이 무엇인지, 그리고 왜 블로그 호스팅에 GitHub를 이용하는지 간단히 짚고 넘어가겠습니다.
 
@@ -149,11 +149,11 @@ $ git push origin master
 
 [^saltfactory_1]: [saltfactory님](http://blog.saltfactory.net)이 쓰신 [Tistory에서 Jekyll을 이용하여 GitHub Pages로 블로그 이전](http://blog.saltfactory.net/note/renewal-blog-from-tistory-to-github-pages-via-jekyll.html)이란 글에도 Jekyll과 GitHub의 장점이 잘 나와 있습니다. 무엇보다 [saltfactory님](http://blog.saltfactory.net)의 경우 블로그 자체가 정말 충실합니다.
 
-[^cuspace]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 [VR 관련 블로그](https://cuspace.github.io)를 Jekyll과 GitHub를 사용해서 운영하고 있습니다.
-
 [^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com)입니다.
 
 [^GitHub]: GitHub의 공식 사이트는 [https://github.com](https://github.com)이며, GitHub에서 호스팅 서비스를 지원하는 곳은 [GitHub Pages](https://pages.github.com)입니다.
+
+[^cuspace]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 [VR 관련 블로그](https://cuspace.github.io)를 Jekyll과 GitHub를 사용해서 운영하고 있습니다.
 
 [^Nolboo]: Jekyll 관련 자료 중에서 한글로 된 포스트 중에서는 [Nolboo님](https://nolboo.github.io)이 정리하신 [지킬로 깃허브에 무료 블로그 만들기](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)라는 글이 가장 정리가 잘 된 것 같습니다. 이 블로그도 처음에는 [Nolboo님](https://nolboo.github.io)의 블로그 글을 따라가면서 제작했습니다.
 
