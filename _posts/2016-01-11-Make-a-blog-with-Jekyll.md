@@ -32,77 +32,73 @@ categories: Blog GitHub Jekyll Git
 
 지금까지의 글만 읽어 보더라도 블로그를 만드는데 Jekyll과 GitHub를 사용하면 얻을 수 있는 장점들이 어느 정도 보입니다.
 
-하지만 사실상 가장 큰 장점은 GitHub 자체가 버전 관리 도구인 Git을 기반으로 온라인 저장소를 제공하는 사이트라는 것에서 출발합니다. 즉, Jekyll과 GitHub로 블로그를 만들면 단순히 나의 글들을 온라인상에 백업할 수 있을 뿐만 아니라 블로그를 제작하면서 변경되는 이력들을 모두 추적하고 복원가능하다는 뜻이 됩니다.[^saltfactory_3] IT 개발자처럼 기술의 변화 속도가 빠른 분야에 있는 사람들은 블로그를 운영하더라도 수시로 글들을 업데이트 해줘야 할 것인데 이런 점에서 GitHub Pages는 엄청난 장점을 가집니다.
+하지만 가장 큰 장점은 사실상 GitHub 자체가 버전 관리 도구인 Git을 위해 온라인 저장소를 제공하는 사이트라는 것에서 출발합니다. 즉, Jekyll과 GitHub로 블로그를 만들면 단순히 나의 글들을 온라인상에 백업할 수 있을 뿐만 아니라 블로그를 제작하면서 변경되는 이력들을 모두 추적하고 복원 가능하게 된다는 것을 뜻합니다.[^saltfactory_3] IT 개발자처럼 기술의 변화 속도가 빠른 분야에 있는 사람들은 블로그를 운영하더라도 수시로 글을 업데이트 해주게 되는데 이런 점에서 GitHub Pages는 엄청난 장점을 가집니다.
 
-게다가 GitHub Pages의 호스팅 서비스는 무료입니다. 이쯤되면 적어도 개발자라면 Jekyll과 GitHub로 블로그를 안 만드는 것이 이상할 정도입니다.
+게다가 GitHub Pages의 호스팅 서비스는 무료입니다. 이쯤되면 적어도 개발자라면 Jekyll과 GitHub로 블로그를 안 만드는 것이 이상할 정도입니다. 그 외에도 많은 장점들이 있지만 지금까지 소개한 참고 자료에서도 충분히 소개하는 내용이라 다 정리하지는 않겠습니다. 하지만 이 글을 보시는 분들은 분명히 파악하셨으리라 봅니다.
 
 이제 Jekyll과 GitHub Pages에 대해서 살펴봤으니 본격적으로 Jekyll을 이용하여 GitHub Pages에 블로그를 만드는 방법에 대해서 알아보도록 하겠습니다.
 
 
 ### Jekyll 설치하기
 
-원래는 Jekyll을 사용하기 위해서는 먼저 Ruby를 설치해야 한다. 하지만 Ruby는 맥에 이미 설치되어 있다. 따라서 맥 사용자는 Ruby를 따로 설치할 필요가 없으므로 바로 Jekyll을 설치하면 된다.
+원래는 Jekyll을 사용하기 위해서는 먼저 Ruby를 설치해야 합니다. 하지만 Ruby는 맥에 이미 설치되어 있습니다. 따라서 맥 사용자는 Ruby를 따로 설치할 필요가 없으므로 바로 Jekyll을 설치하면 됩니다.
 
-맥의 터미널을 실행하고 아래와 같이 입력하여 Jekyll을 설치한다.
+맥의 터미널을 실행하고 아래와 같이 입력하여 Jekyll을 설치합니다.
 
 ```sh
 $ sudo gem install jekyll
 ```
 
-> 여기서 gem은 ruby 언어에서 서드파티 라이브러리를 설치하도록 도와주는 시스템이다.
+> 여기서 gem은 ruby 언어에서 서드파티 라이브러리를 설치하도록 도와주는 시스템입니다.
 
 
 ### Jekyll로 블로그의 로컬 저장소 만들기
 
-우선, 터미널에서 로컬 저장소를 위치하고 싶은 곳으로 이동한다.
+우선, 터미널에서 `cd` 명령어를 사용하여 로컬 저장소를 위치하고 싶은 곳으로 이동합니다.
 
 ```sh
 $ cd some-dir/
 ```
 
-그다음, jekyll을 사용하여 블로그 내용을 저장할 로컬 저장소를 만든다. 터미널에서 아래와 같이 `jekyll new`를 실행하면 된다.
+그다음, 터미널에서 jekyll의 `jekyll new` 명령을 입력하여 블로그 내용을 저장할 로컬 저장소를 만듭니다.
 
 ```sh
 $ jekyll new username.github.io
 ```
 
-위에서 로컬 저장소의 이름(`username.github.io`)이 꼭 github의 원격 저장소의 이름과 같을 필요는 없지만 편의를 위해서 같게 두었다.
+위에서 local 저장소의 이름(`username.github.io`)은 꼭 GitHub의 원격 저장소의 이름과 같을 필요는 없지만, 나중에 이름을 보고 바로 블로그 저장소임을 알아차릴 수 있도록 원격 저장소의 이름과 같게 두었습니다.
 
-local 저장소가 만들어졌으면, 터미널에서 `jekyll serve`를 입력하여 로컬에 있는 사이트를 실행할 수 있다.
+local 저장소가 만들어졌으면, 터미널에서 `jekyll serve`를 입력하여 로컬에 있는 사이트를 실행할 수 있습니다.
 
 ```sh
 $ jekyll serve
 ```
 
-로컬에 있는 사이트는 웹브라우저 주소창에서 로컬 호스트 주소(`localhost:4000`)를 입력하면 확인할 수 있다.
+로컬에 있는 사이트는 웹브라우저 주소창에서 로컬 호스트 주소(`localhost:4000`)를 입력하면 확인할 수 있습니다.
 
 
 ### GitHub에 온라인 저장소 만들기
 
-지금까지는 로컬에서 jekyll을 이용해서 블로그를 만들었다. 하지만, 서버에 등록된 것은 아니라 로컬에서만 확인가능하다. 이를 실제 웹에서 확인하려면 호스팅 서비스에 올려야한다. GitHub는 회원에게 무료 블로그 호스팅 서비스를 해주므로 GitHub에 온라인 저장소를 만든 다음 앞서 만든 로컬 저장소를 연동하면 된다.
+지금까지는 로컬에서 jekyll을 이용해서 블로그를 만든 것입니다. 하지만, 서버에 등록된 것은 아니므로 로컬에서만 확인가능합니다. 이를 실제 웹에서 확인하려면 호스팅 서비스에 올려야 합니다. GitHub는 회원에게 무료 블로그 호스팅 서비스를 해주므로 GitHub에 온라인 저장소를 만든 다음 앞서 만든 로컬 저장소를 연동하면 됩니다. 그러면 한 저장소의 변경 내용을 다른 저장소의 변경내용과 일치시킬 수 있습니다.
 
-우선 [GitHub Pages](https://pages.github.com) 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만든다. 이 때 원격 저장소 이름은 `username.github.io`과 같은 형식을 맞춰줘야 한다.
+우선 [GitHub Pages](https://pages.github.com) 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만듭니다. 이 때 원격 저장소 이름은 `username.github.io`과 같은 형식을 맞춰줘야 합니다.
 
 
 ### 로컬 저장소와 원격 저장소를 연동하기
 
-이제 온전한 블로그를 위해 jekyll로 만든 로컬 저장소와 GitHub로 만든 원격 저장소를 연결시켜줘야 한다.
-
-우선 jekyll로 만든 로컬 저장소에서 `git init` 명령어를 사용하여 git 저장소를 생성한다.
+이제 온전한 블로그를 위해 jekyll로 만든 로컬 저장소와 GitHub로 만든 원격 저장소를 연결시켜줍니다. 우선 jekyll로 만든 로컬 저장소에서 `git init` 명령어를 사용하여 git 저장소를 생성합니다. 이렇게 하면 해당 저장소의 변경 사항을 git이 추적할 수 있게됩니다.
 
 ```sh
 $ git init
 ```
 
-이렇게 하면 해당 저장소의 변경 사항을 git이 추적할 수 있게된다.
-
-이제 `git remote` 명령어로 온라인 저장소를 로컬 저장소와 연결한다.
+이제 `git remote` 명령어로 온라인 저장소를 로컬 저장소와 연결한다. ``(수정 필요)``
 
 ```sh
 $ git remote add origin repository-url
 ```
 
-여기서 `repository-url`은 보통 아래와 같은 주소가 된다.
+위와 같이 하면 origin을 사용하면 repository-url에 접근할 수 있게 됩니다. 위에서 `repository-url`은 보통 아래와 같은 주소가 된다.
 
 ```sh
 https://github.com/username/username.github.io.git
@@ -111,36 +107,32 @@ https://github.com/username/username.github.io.git
 
 ### 로컬 저장소의 내용을 원격 저장소로 push하기
 
-이제 로컬 저장소와 원격 저장소가 연결되었으니, 로컬 저장소의 변경 내용을 원격 저장소로 `push`하면 블로그가 업데이트된다.
+이제 로컬 저장소와 원격 저장소가 연결되었으니, 로컬 저장소의 변경 내용을 원격 저장소로 `push`하기만 하면 블로그가 업데이트됩니다. 이 과정에는 변경 파일들을 git으로 로컬 저장소에 `add`하고, `commit`한 다음, 원격 저장소로 `push`하는 과정을 거칩니다.
 
-이것은 변경 파일들을 `add`하고, `commit`한 다음, 원격 저장소로 `push`하는 과정을 거친다.
-
-우선 변경 파일들을 `git add` 명령어를 사용하여 추가한다.
+우선 변경 파일들을 `git add` 명령어를 사용하여 추가해 봅시다.
 
 ```sh
 $ git add .
 ```
 
-여기서 `'.'`은 모든 변경 파일들을 추가하겠다는 의미이다. 추가한 파일들을 로컬 저장소에 등록하려면 `git commit` 명령어를 사용한다.
+여기서 `'.'`은 모든 변경 파일들을 추가하겠다는 의미입니다. 추가한 파일들을 로컬 저장소에 등록하려면 `git commit` 명령어를 사용합니다. 아래에 `git commit`을 사용하는 방법이 나오는데 뒤의 `-m`은 메시지를 붙여주겠다는 의미이고, 뒤에 이어지는 ``"message"`` 에는 해당 커밋에 대한 설명을 간략하게 정해서 써주면 됩니다.
 
 ```sh
 $ git commit -m "message"
 ```
 
-"message" 에는 해당 커밋에 대한 설명을 간략하게 정하면 된다.
-
-이제 로컬 저장소에 등록된 내용을 원격 저장소에 등록하면 끝이다. 이것은 다음과 같이 `git push` 명령어를 사용하면 된다.
+이제 로컬 저장소에 등록된 내용을 원격 저장소에 등록하면 끝이다. 이것은 다음과 같이 `git push` 명령어를 사용하면 이루어 집니다. 위에서 `origin`를 원격 저장소에 연결했으므로 아래의 문장은 지역 저장소의 master에 있는 내용 원격 저장소인 origin으로 push하겠다는 의미가 됩니다.
 
 ```sh
 $ git push origin master
 ```
 
-위와 같이 하면, 현재 로컬에 있는 변경 내역들을 원격 저장소로 `push`하게 된다.
+위와 같이 하면, 현재 로컬에 있는 변경 내역들을 원격 저장소로 `push`하게 됩니다.
 
 
 ### 확인하기
 
-위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있다.
+위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있습니다. GitHub  Pages는 실시간으로 Markdown 파일을 HTML로 렌더링하기 때문에 아주 빠르게 블로그가 업데이트 되는 것을 볼 수 있습니다. 
 
 
 ### 참고 자료
@@ -159,7 +151,7 @@ $ git push origin master
 
 [^saltfactory_2]: [saltfactory님](http://blog.saltfactory.net)의 블로그에도 [Jekyll을 사용하여 GitHub Pages 만들기](http://blog.saltfactory.net/jekyll/upgrade-github-pages-dependency-versions.html)라는 좋은 글이 있지만, [saltfactory님](http://blog.saltfactory.net)의 경우 Ruby 설치 방법과 Ruby 라이브러리들의 의존성에 대한 내용까지 추가되어 처음 Jekyll을 이용하는 사람이 보기에는 어려울 수도 있다고 봅니다. 참고로 GitHub Pages에서는 라이브러리들의 의존성 정보를 [Dependency versions](https://pages.github.com/versions/)라는 곳에서 제공합니다.
 
-[^Jekyll_Documentation]: Jekyll의 동작 방식에 대한 설명은 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에서 확인할 수 있습니다. 원문의 설명에 따르면 Jekyll은 정적 HTML 파일만 만들어 주기 때문에 일반 홈페이지 보다는 동적 요소가 거의없는 블로그 제작에 더 알맞다고 볼 수 있습니다.
+[^Jekyll_Documentation]: Jekyll의 동작 방식에 대한 설명은 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에서 확인할 수 있습니다. 원문의 설명에 따르면 Jekyll은 정적 HTML 파일만 만들어 준다고 합니다. 따라서 Jekyll은 동적 요소가 많은 일반 홈페이지 보다는 동적 요소가 거의 필요없는 블로그 제작에 더 알맞다고 볼 수 있습니다.
 
 [^Markdown]: 실제로 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에서는 Markdown 이외에 [Textile](http://redcloth.org/textile)이라는 형식도 지원한다고 합니다. 사이트 설명을 보면 [Textile](http://redcloth.org/textile)도 간단한 Markup 언어이니까 사실상 Markdown과 비슷한 것임을 알 수 있습니다.
 
