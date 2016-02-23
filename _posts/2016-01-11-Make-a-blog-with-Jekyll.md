@@ -132,7 +132,7 @@ $ git push origin master
 
 ### 확인하기
 
-위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있습니다. GitHub  Pages는 실시간으로 Markdown 파일을 HTML로 렌더링하기 때문에 아주 빠르게 블로그가 업데이트 되는 것을 볼 수 있습니다. 
+위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있습니다. GitHub  Pages는 실시간으로 Markdown 파일을 HTML로 렌더링하기 때문에 아주 빠르게 블로그가 업데이트 되는 것을 볼 수 있습니다.
 
 
 ### 참고 자료
@@ -159,4 +159,4 @@ $ git push origin master
 
 [^GitHub_Pages_Jekyll]: [GitHub Pages](https://pages.github.com)가 Jekyll을 지원하는 것은 [GitHub Pages](https://pages.github.com)의 글 [About GitHub Pages and Jekyll](https://help.github.com/articles/about-github-pages-and-jekyll/)에 설명되어 있습니다.
 
-[^saltfactory_3]: 블로그 코드 버전 관리에 대한 내용은 [saltfactory님]이 쓰신 [Tistory에서 Jekyll을 이용하여 GitHub Pages로 블로그 이전](http://blog.saltfactory.net/note/renewal-blog-from-tistory-to-github-pages-via-jekyll.html)이란 글에서 `GitHub Pages` 부분에 잘 설명되어 있습니다.
+[^saltfactory_3]: 블로그 코드 버전 관리에 대한 내용은 [saltfactory님](http://blog.saltfactory.net)이 쓰신 [Tistory에서 Jekyll을 이용하여 GitHub Pages로 블로그 이전](http://blog.saltfactory.net/note/renewal-blog-from-tistory-to-github-pages-via-jekyll.html)이란 글에서 **GitHub Pages** 부분에 잘 설명되어 있습니다.
