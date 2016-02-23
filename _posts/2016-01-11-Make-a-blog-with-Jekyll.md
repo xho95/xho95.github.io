@@ -5,26 +5,32 @@ date:   2016-01-11 12:50:00 +0900
 categories: Blog GitHub Jekyll Git
 ---
 
-이 포스트에서는 맥 환경에서 [Jekyll](http://jekyllrb.com)[^Jekyll]을 이용하여 [GitHub](https://github.com)[^GitHub]에 개인 블로그를 만드는 방법을 정리합니다.[^blog]
+개인이 공부한 내용을 정리하는 데는 블로그만한 것이 없습니다. 블로그는 글을 쓰면서 생각을 정리하는 역할도 하지만 자신의 글들을 온라인상에 백업하는 역할도 겸하기 때문입니다.
 
-우선 Jekyll이 무엇인지 알아본 후 Jekyll을 사용하여 GitHub 저장소에 블로그를 만드는 과정을 정리합니다.
+하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 운영할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^kalkin7] 그리하여 여러 방법들을 살펴보고 난 후 Jekyll과 GitHub를 사용하여 블로그를 운영하기로 결심하게 되었습니다.
 
+이 글에서는 제가 블로그를 운영하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^박민수님], 그리고 인터넷에서 찾은 많은 분들의 자료[^Nolboo]를 바탕으로 맥 환경에서 [Jekyll](http://jekyllrb.com)[^Jekyll]과 [GitHub](https://github.com)[^GitHub]를 이용하여 개인 블로그를 만드는 방법을 정리하려고 합니다.
 
-### Jekyll은 무엇인가?
-
-Jekyll로 블로그를 만들기에 앞서 먼저 Jekyll이 무엇인지 알아야 합니다. 도대체 Jekyll이 무엇이길래 블로그를 만드는데 사용하는 것일까요? 사실 Jekyll은 단순히 텍스트 파일을 HTML 파일로 변환해 주는 하나의 변환기입니다. 이렇게 변환된 HTML 파일들을 웹 서버에 올리면 바로 하나의 홈페이지가 됩니다.[^Jekyll_Documentation]
-
-이렇게 Jekyll 자체가 HTML 파일을 만들어 주니까 사용자는 블로그에 글을 쓸 때마다 HTML 파일을 만들 필요없이 해당 글을 Markdown 형식의 텍스트로 작성하여 Jekyll로 빌드하기만 하면 됩니다.
+우선 블로그를 만들기 전에 먼저 Jekyll이 무엇인지, 그리고 왜 블로그 호스팅에 GitHub를 이용하는지 간단히 짚고 넘어가겠습니다.
 
 
-### 웹 호스팅 서비스로 GitHub Pages를 사용하는 이유
+### Jekyll이란 무엇인가?
 
-그런데 그냥 매번 HTML 파일을 직접 만드는 것이나 Jekyll을 사용하여 HTML을 만들어 내는 것이나 별 차이가 없어 보입니다. 이렇게만 하면 Jekyll을 사용하는 의미가 없어 보입니다.
+도대체 Jekyll이 무엇이길래 블로그를 만드는데 Jekyll을 사용하는 것일까요? 사실 Jekyll은 Markdown 형식의 텍스트 파일을 HTML 파일로 변환해 주는 하나의 변환툴입니다. 이렇게 변환된 HTML 파일을 웹 서버에 올리면 바로 홈페이지가 됩니다.[^Jekyll_Documentation]
 
-하지만 GitHub를 사용하면 의미가 달라집니다. 왜냐하면 GitHub에서 제공하는 웹 호스팅 서비스인 GitHub Pages는 Jekyll을 지원하기 때문입니다. 따라서 GitHub Pages에 새로운 Markdown 문서를 Push 하기만 하면 블로그를 업데이트할 수 있습니다.
+이처럼 Jekyll이 HTML 파일을 만들어 주니까 사용자는 블로그에 글을 쓸 때 Markdown으로 작성해서 Jekyll로 빌드해서 서버에 올리기만 하면 됩니다.[^Markdown] 이렇게 하면 사용자는 HTML을 신경쓰지 않고 자신의 컨텐츠에만 집중해서 글을 쓸 수 있게 됩니다.[^vjinn]
 
 
-### 웹 호스팅 서비스로 GitHub Pages를 사용하는 이유
+### 블로그 호스팅 서비스로 GitHub Pages를 사용하는 이유
+
+그런데 그냥 매번 HTML 파일을 직접 만드는 것이나 Jekyll을 써서 Markdown으로 매번 HTML을 만들어 내는 것이나 별 차이가 없어 보입니다. 이렇게만 하면 Jekyll을 사용하는 의미가 없어집니다.
+
+하지만 블로그 호스팅 서비스로 GitHub를 사용하면 의미가 달라집니다. 왜냐하면 GitHub에서 제공하는 호스팅 서비스인 [GitHub Pages](https://pages.github.com)는 Jekyll을 자체 지원하기 때문입니다. 따라서 GitHub Pages에 새로운 Markdown 문서를 올리기만 하면 사용자가 직접 빌드하지 않아도 블로그를 업데이트할 수 있습니다.[^GitHub_Pages_Jekyll]
+
+
+### Jekyll과 GitHub를 연동할 경우의 장점들
+
+
 
 
 ### Jekyll 설치하기
@@ -132,19 +138,24 @@ $ git push origin master
 
 ### 참고 자료
 
-[vjinn님의 블로그](https://vjinn.github.io)  
-[kalkin7님의 블로그 글](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)  
-[hmhv님의 블로그 글](http://hmhv.info/2015/02/github-pages-and-hexo/)  
 [saltfactory님의 블로그 글](http://blog.saltfactory.net/note/create-personal-web-site-using-with-github-pages.html)  
 
 [serapims님의 블로그 글 - 나중에 정리](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
 
-[^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com) 입니다.
+[^kalkin7]: 블로그를 운영하는 방식의 종류와 각 방식들의 장단점에 대한 내용은 [kalkin7님](http://blog.kalkin7.com)이 쓰신 [내 글을 오래 남기기 위한 블로그 선택](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)이란 글에 잘 정리되어 있습니다. [kalkin7님](http://blog.kalkin7.com)의 글에는 Jekyll과 GitHub를 사용하여 블로깅을 할 경우의 장점에 대해서도 잘 정리되어 있습니다.
 
-[^GitHub]: GitHub의 공식 사이트는 [https://github.com](https://github.com) 입니다. 이 중에서 호스팅 서비스를 지원하는 곳은 [GitHub Pages](https://pages.github.com)입니다.
+[^박민수님]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 VR 관련 블로그를 운영하고 계신데 있는데 주소는 [https://cuspace.github.io](https://cuspace.github.io)입니다.
 
-[^blog]: Jekyll 관련 자료중에서 한글로 된 포스트 중에서는 [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/) 만한 곳은 없는 것 같습니다. 이 블로그 내용도 Nolboo님의 블로그 글에서 많은 도움을 받았습니다.
+[^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com)입니다.
 
-[^Jekyll_Documentation]: Jekyll의 동작 방식에 대한 설명은 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에서 확인할 수 있습니다. 다만, Jekyll은 정적 HTML 파일만 만들어 주기 때문에 동적 요소가 필요한 홈페이지 보다는 블로그 제작에 더 알맞습니다.
+[^GitHub]: GitHub의 공식 사이트는 [https://github.com](https://github.com)이며, GitHub에서 호스팅 서비스를 지원하는 곳은 [GitHub Pages](https://pages.github.com)입니다.
 
-[^박민수님]: [박민수님 블로그](https://cuspace.github.io)  
+[^Nolboo]: Jekyll 관련 자료 중에서 한글로 된 포스트 중에서는 [Nolboo님](https://nolboo.github.io)이 정리하신 [지킬로 깃허브에 무료 블로그 만들기](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)라는 글이 가장 정리가 잘 된 것 같습니다. 이 블로그도 처음에는 [Nolboo님](https://nolboo.github.io)의 블로그 글을 따라가면서 제작했습니다.
+
+[^Jekyll_Documentation]: Jekyll의 동작 방식에 대한 설명은 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에서 확인할 수 있습니다. 원문의 설명을 보시면 아시겠지만 Jekyll은 정적 HTML 파일만 만들어 주기 때문에 일반 홈페이지 보다는 동적 요소가 거의없는 블로그 제작에 더 알맞습니다.
+
+[^Markdown]: 실제로 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에서는 Markdown 이외에 [Textile](http://redcloth.org/textile)이라는 형식도 지원한다고 합니다. 사이트 설명을 보면 [Textile](http://redcloth.org/textile)도 간단한 Markup 언어이니까 사실상 Markdown과 비슷할 것 같습니다.
+
+[^vjinn]: HTML을 신경쓰지 않고 Markdown으로 글을 쓸 경우의 장점에 대해서는 [vjinn님](https://vjinn.github.io)이 쓰신 글 [Jekyll, 이해와 시작](https://vjinn.github.io/environment/start-jekyll/)에 잘 나와 있습니다.
+
+[^GitHub_Pages_Jekyll]: [GitHub Pages](https://pages.github.com)가 Jekyll을 지원하는 것은 [GitHub Pages](https://pages.github.com)의 글 [About GitHub Pages and Jekyll](https://help.github.com/articles/about-github-pages-and-jekyll/)에 설명되어 있습니다.
