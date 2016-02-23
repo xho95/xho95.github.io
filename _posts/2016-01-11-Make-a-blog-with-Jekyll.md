@@ -81,12 +81,12 @@ $ jekyll serve
 
 지금까지는 로컬에서 jekyll을 이용해서 블로그를 만든 것입니다. 하지만, 서버에 등록된 것은 아니므로 로컬에서만 확인가능합니다. 이를 실제 웹에서 확인하려면 호스팅 서비스에 올려야 합니다. GitHub는 회원에게 무료 블로그 호스팅 서비스를 해주므로 GitHub에 온라인 저장소를 만든 다음 앞서 만든 로컬 저장소를 연동하면 됩니다. 그러면 한 저장소의 변경 내용을 다른 저장소의 변경내용과 일치시킬 수 있습니다.
 
-우선 [GitHub Pages](https://pages.github.com) 사이트에서 `create a repository` 메뉴를 이용하여 자신만의 원격 저장소를 만듭니다. 이 때 원격 저장소 이름은 `username.github.io`과 같은 형식을 맞춰줘야 합니다.
+우선 [GitHub Pages](https://pages.github.com) 사이트에서 **create a repository** 메뉴를 이용하여 자신만의 원격 저장소를 만듭니다. 이 때 원격 저장소 이름은 `username.github.io`과 같이 형식을 맞춰줘야 합니다.
 
 
 ### 로컬 저장소와 원격 저장소를 연동하기
 
-이제 온전한 블로그를 위해 jekyll로 만든 로컬 저장소와 GitHub로 만든 원격 저장소를 연결시켜줍니다. 우선 jekyll로 만든 로컬 저장소에서 `git init` 명령어를 사용하여 git 저장소를 생성합니다. 이렇게 하면 해당 저장소의 변경 사항을 git이 추적할 수 있게됩니다.
+이제 온전한 블로그를 위해 Jekyll로 만든 로컬 저장소와 GitHub로 만든 원격 저장소를 연결시켜줍니다. 우선 Jekyll로 만든 로컬 저장소에서 `git init` 명령어를 사용하여 git 저장소를 생성합니다. 이렇게 하면 해당 저장소의 변경 사항을 git이 추적할 수 있게됩니다.
 
 ```sh
 $ git init
@@ -132,7 +132,7 @@ $ git push origin master
 
 ### 확인하기
 
-위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있습니다. GitHub  Pages는 실시간으로 Markdown 파일을 HTML로 렌더링하기 때문에 아주 빠르게 블로그가 업데이트 되는 것을 볼 수 있습니다.
+위의 과정을 모두 마치면 `http://username.github.io`의 주소로 현재까지의 작업 결과물을 확인할 수 있습니다.
 
 
 ### 참고 자료
