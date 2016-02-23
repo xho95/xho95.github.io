@@ -6,6 +6,9 @@ categories: Resources Sites Data Hardware
 ---
 
 
+[따끈따끈한 책! / ROS 로봇 프로그래밍](http://blog.naver.com/passionvirus)
+
+
 ### IoT 관련 사이트들
 
 [Thing+](https://thingplus.net) : 국내에서 만든 IoT 관련 플랫폼 사이트이다.  
@@ -13,6 +16,8 @@ categories: Resources Sites Data Hardware
 [Johnny-Five](https://github.com/rwaldron/johnny-five#example-programs) : The JavaScript Robotics Programming Framework
 
 [Windows 10 IoT Core](http://ms-iot.github.io/content/en-US/Downloads.htm) : 임베디드 시스템에 올릴 수 있는 Windows 10 IoT 관련 사이트이다. 김만수님의 소개로 알게 된 곳이다.
+
+[네이버카페 : 오로카](http://cafe.naver.com/openrt.cafe?iframe_url=/ArticleRead.nhn%3Fclubid=25572101%26articleid=13541%26referrerAllArticles=false)
 
 
 ### Arduino

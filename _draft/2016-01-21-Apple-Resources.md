@@ -18,6 +18,7 @@ categories: Xcode Swift Apple Resources
 
 [맥에서 zsh 사용하기](https://blog.ayukawa.kr/archives/1758)
 
+
 ### Swift
 
 [Swift 서버사이드 프레임워크 Perfect 소개](https://realm.io/kr/news/perfect-swift-server-framework/) : Swift로 서버사이드 개발하기 자료
@@ -31,12 +32,20 @@ categories: Xcode Swift Apple Resources
 [10 Swift IOS open-source projects you cannot ignore](https://medium.com/swift-programming/15-swift-ios-open-source-projects-you-cannot-ignore-6bd4ac37d7dd#.u4c67ja0u)
 
 
+### Table View : Swift
+
+[Create Static Table View Using Storyboard](http://www.appcoda.com/ios-static-table-view-storyboard/)
+
+[iOS9 / Xcode 7 Custom Cell Label Alignment Issues](http://stackoverflow.com/questions/32822647/ios9-xcode-7-custom-cell-label-alignment-issues)
+
+[UITableViewCell with autolayout left margin different on iPhone and iPad](http://stackoverflow.com/questions/27420888/uitableviewcell-with-autolayout-left-margin-different-on-iphone-and-ipad)
+
+
 ### Core Data
 
 [How to add Core Data to an existing SWIFT project in Xcode / Updated for Swift 1.2](http://craig24.com/2014/12/how-to-add-core-data-to-an-existing-swift-project-in-xcode/)
 
 [Adding Core Data to an existing Swift 2.0 project](http://purelywebdesign.co.uk/tutorial/add-coredata-to-an-exiting-swift-2-0-project/)
-
 
 ### Json
 
