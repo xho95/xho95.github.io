@@ -12,7 +12,7 @@ categories: Blog GitHub Jekyll Git
 
 ### Jekyll은 무엇인가?
 
-Jekyll로 블로그를 만들기에 앞서 먼저 Jekyll이 무엇인지 알아야 합니다. 도대체 Jekyll이 무엇이길래 블로그를 만드는데 사용하는 것일까요? 사실 Jekyll은 단순히 텍스트 파일을 HTML 파일로 변환해 주는 하나의 변환기입니다.[^Jekyll_Documentation] 이렇게 변환된 HTML 파일들을 웹 서버에 올리면 바로 하나의 홈페이지가 됩니다.[^Jekyll_Demerits]
+Jekyll로 블로그를 만들기에 앞서 먼저 Jekyll이 무엇인지 알아야 합니다. 도대체 Jekyll이 무엇이길래 블로그를 만드는데 사용하는 것일까요? 사실 Jekyll은 단순히 텍스트 파일을 HTML 파일로 변환해 주는 하나의 변환기입니다. 이렇게 변환된 HTML 파일들을 웹 서버에 올리면 바로 하나의 홈페이지가 됩니다.[^Jekyll_Documentation]
 
 이렇게 Jekyll 자체가 HTML 파일을 만들어 주니까 사용자는 블로그에 글을 쓸 때마다 HTML 파일을 만들 필요없이 해당 글을 Markdown 형식의 텍스트로 작성하여 Jekyll로 빌드하기만 하면 됩니다.
 
@@ -145,8 +145,6 @@ $ git push origin master
 
 [^blog]: Jekyll 관련 자료중에서 한글로 된 포스트 중에서는 [놀부님 블로그](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/) 만한 곳은 없는 것 같습니다. 이 블로그 내용도 Nolboo님의 블로그 글에서 많은 도움을 받았습니다.
 
-[^Jekyll_Documentation]: Jekyll에 대한 자세한 설명은 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에 가면 확인할 수 있습니다.
-
-[^Jekyll_Demerits]: 다만, Jekyll은 정적 HTML 파일만 만들어 주기 때문에 동적 요소가 필요한 홈페이지 보다는 동적 요소가 거의 필요없는 블로그 제작에 더 알맞습니다.
+[^Jekyll_Documentation]: Jekyll의 동작 방식에 대한 설명은 [Jekyll Documentation](https://jekyllrb.com/docs/home/)에서 확인할 수 있습니다. 다만, Jekyll은 정적 HTML 파일만 만들어 주기 때문에 동적 요소가 필요한 홈페이지 보다는 블로그 제작에 더 알맞습니다.
 
 [^박민수님]: [박민수님 블로그](https://cuspace.github.io)  
