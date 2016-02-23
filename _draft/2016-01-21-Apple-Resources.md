@@ -18,6 +18,8 @@ categories: Xcode Swift Apple Resources
 
 [맥에서 zsh 사용하기](https://blog.ayukawa.kr/archives/1758)
 
+[serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
+
 
 ### Swift
 
