@@ -9,7 +9,7 @@ categories: Blog GitHub Jekyll Git
 
 하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 운영할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^kalkin7] 그리하여 여러 방법들을 살펴보고 난 후 Jekyll과 GitHub를 사용하여 블로그를 운영하기로 결심하게 되었습니다.
 
-이 글에서는 제가 블로그를 운영하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^박민수님], 그리고 인터넷에서 찾은 많은 분들의 자료[^Nolboo]를 바탕으로 맥 환경에서 [Jekyll](http://jekyllrb.com)[^Jekyll]과 [GitHub](https://github.com)[^GitHub]를 이용하여 개인 블로그를 만드는 방법을 정리하려고 합니다.
+이 글에서는 제가 블로그를 운영하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^cuspace], 그리고 인터넷에서 찾은 많은 분들의 자료[^Nolboo]를 바탕으로 맥 환경에서 [Jekyll](http://jekyllrb.com)[^Jekyll]과 [GitHub](https://github.com)[^GitHub]를 이용하여 개인 블로그를 만드는 방법을 정리하려고 합니다.
 
 우선 블로그를 만들기 전에 먼저 Jekyll이 무엇인지, 그리고 왜 블로그 호스팅에 GitHub를 이용하는지 간단히 짚고 넘어가겠습니다.
 
@@ -144,7 +144,7 @@ $ git push origin master
 
 [^kalkin7]: 블로그를 운영하는 방식의 종류와 각 방식들의 장단점에 대한 내용은 [kalkin7님](http://blog.kalkin7.com)이 쓰신 [내 글을 오래 남기기 위한 블로그 선택](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)이란 글에 잘 정리되어 있습니다. [kalkin7님](http://blog.kalkin7.com)의 글에는 Jekyll과 GitHub를 사용하여 블로깅을 할 경우의 장점에 대해서도 잘 정리되어 있습니다.
 
-[^박민수님]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 VR 관련 블로그를 운영하고 계신데 있는데 주소는 [https://cuspace.github.io](https://cuspace.github.io)입니다.
+[^cuspace]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 VR 관련 블로그를 운영하고 계신데 있는데 주소는 [https://cuspace.github.io](https://cuspace.github.io)입니다.
 
 [^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com)입니다.
 
