@@ -144,7 +144,7 @@ $ git push origin master
 
 [^kalkin7]: 블로그를 운영하는 방식의 종류와 각 방식들의 장단점에 대한 내용은 [kalkin7님](http://blog.kalkin7.com)이 쓰신 [내 글을 오래 남기기 위한 블로그 선택](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)이란 글에 잘 정리되어 있습니다. [kalkin7님](http://blog.kalkin7.com)의 글에는 Jekyll과 GitHub를 사용하여 블로깅을 할 경우의 장점에 대해서도 잘 정리되어 있습니다.
 
-[^cuspace]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 VR 관련 블로그를 운영하고 계신데 있는데 주소는 [https://cuspace.github.io](https://cuspace.github.io)입니다.
+[^cuspace]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 [VR 관련 블로그](https://cuspace.github.io)를 Jekyll과 GitHub를 사용해서 운영하고 있습니다.
 
 [^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com)입니다.
 
