@@ -5,7 +5,7 @@ date:   2016-01-23 19:35:00 +0900
 categories: Xcode Swift Grammar Initializers
 ---
 
-이 포스트는 Apple의 공식 문서인 Swift Programming Language의 내용 중에서 [Default Initializers](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)에 대한 부분을 정리한 것이다.[^Default Initializers]
+이 포스트는 Apple의 공식 문서인 Swift Programming Language의 내용 중에서 [Default Initializers](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)에 대한 부분을 정리한 것이다.[^Default_Initializers]
 
 
 ### 기본 초기자
@@ -81,9 +81,9 @@ Swift에서는 클래스와 구조체에 대해, 그들이 모든 속성(propert
 
 그리고 클래스가 멤버 초기자를 기본으로 제공하지 않는 것은 클래스가 레퍼런스 타입이기 때문일 것이다. 이 부분에 대해서도 조금 더 알아보자.
 
-클래스의 기본 초기자를 살펴보면 결국 Swift에서는 어떤 경우든 객체가 생성되는 시점에서 모든 속성의 초기화가 이루어지도록 강제함을 알 수 있다. 
+클래스의 기본 초기자를 살펴보면 결국 Swift에서는 어떤 경우든 객체가 생성되는 시점에서 모든 속성의 초기화가 이루어지도록 강제함을 알 수 있다.
 
 
 ### 참고 자료
 
-[^Default Initializers]: Default Initializers에 대한 내용은 [Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)에서 [Initializers](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203) 부분에 정리되어 있다.
+[^Default_Initializers]: Default Initializers에 대한 내용은 [Swift Programming Language](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)에서 [Initializers](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203) 부분에 정리되어 있다.

@@ -12,3 +12,15 @@ categories: Xcode Swift Paradigm Functional
 [Uncle Bob](http://blog.8thlight.com/uncle-bob/archive.html)
 
 [An introduction to functional programming](https://codewords.recurse.com/issues/one/an-introduction-to-functional-programming)
+
+-
+
+[Functional Programming Principles in Scala](https://class.coursera.org/progfun-005/lecture)
+
+[Apache Spark™](http://spark.apache.org)
+
+[What is Scala?](https://github.com/taokim/h3scala)
+
+[Scala](http://www.scala-lang.org/download/)
+
+[함수형 프로그래밍 언어 스칼라(Scala) 소개](http://www.slideshare.net/danieltedkim/scala-43612706)

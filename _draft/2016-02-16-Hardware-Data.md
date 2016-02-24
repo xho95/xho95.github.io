@@ -19,6 +19,10 @@ categories: Resources Sites Data Hardware
 
 [네이버카페 : 오로카](http://cafe.naver.com/openrt.cafe?iframe_url=/ArticleRead.nhn%3Fclubid=25572101%26articleid=13541%26referrerAllArticles=false)
 
+[MD1.3 2A Dual Motor Controller (SKU: DRI0002)](http://www.dfrobot.com/wiki/index.php/MD1.3_2A_Dual_Motor_Controller_%28SKU:_DRI0002%29)
+
+[base64 인코딩](https://www.google.co.kr/search?q=base64+%EC%9D%B8%EC%BD%94%EB%94%A9&ie=UTF-8&oe=UTF-8&hl=ko-kr&client=safari)
+
 
 ### Arduino
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Xcode에서 Boost 라이브러리 사용하기"
 date:   2016-02-01 17:30:00 +0900
-categories: Xcode C++ Boost Install
+categories: Xcode C++ Library Boost
 ---
 
 이 자료는 [이지형님의 블로그 글](http://warmz.tistory.com/904)을 참고하여 작성된 것이다. 여러 블로그 글들을 둘러봤는데, 맥에서 Boost 라이브러리를 설치하는 것과 관련하여 이지형님께서 가장 잘 정리를 잘 하신 것 같다.[^warmz]
