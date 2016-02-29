@@ -64,3 +64,7 @@ std::ostream_iterator<int> mk(std::cout, ",")); // 반복자 어댑터
 템플릿의 특정 타입이 갖춰야 할 요구조건 집합, requirement's set
 
 BOOST_RANGE_CONCEPT_ASSERT
+
+### 고찰 하기
+
+### 참고 자료

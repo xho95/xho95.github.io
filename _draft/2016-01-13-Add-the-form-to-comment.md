@@ -15,6 +15,8 @@ Git에서의 check out 과 SVN에서의 check out의 의미가 조금 다르다.
 
 ### GFM
 
+GFM = GitHub Flavored Markdown
+
 블로그에 code를 삽입하기 위해서는 github에서 해당 코드를 인식할 수 있어야 한다.
 
 이부분은 GFM을 보고 확인할 수 있다.
