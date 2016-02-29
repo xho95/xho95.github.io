@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Swift 문법 정리: Extensions"
+title:  "Swift 문법 정리: 확장(Extensions)"
 date:   2016-01-19 17:10:00 +0900
 categories: Xcode Swift Grammar Extensions
 ---
