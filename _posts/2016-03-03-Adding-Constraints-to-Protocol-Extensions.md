@@ -15,7 +15,39 @@ categories: Xcode Swift Grammar Protocols
 
 예를 들면, 아래 예제와 같이 CollectionType 프로토콜에 확장을 정의할 때, 컬랙션(collection)의 요소가 Summable일 때만 적용되도록 할 수 있습니다.
 
-{% gist 3ce1e821852d0debf646 %}
+```swift
+protocol Summable {
+  var sum: Int { get }
+}
+
+extension Summable {
+  var sum: Int {
+    get {
+      return 0
+    }
+  }
+}
+
+extension Int: Summable {
+  var sum: Int {
+    get {
+      return self.hashValue
+    }
+  }
+}
+
+extension CollectionType where Generator.Element: Summable {
+  var sum: Int {
+    let itemsSum = self.map({ $0.sum }).reduce(0, combine: +)
+
+    return itemsSum
+  }
+}
+
+let testInt = [1, 2, 3, 4, 5]
+
+print("\(testInt.sum)")
+```
 
 위의 코드는 **The Swift Programming Language** 문서의 예제를 기반으로 직접 만들어 본 것입니다.[code-samples]
 
