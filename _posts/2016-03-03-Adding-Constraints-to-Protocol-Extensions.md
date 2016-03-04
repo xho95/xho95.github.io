@@ -49,7 +49,7 @@ let testInt = [1, 2, 3, 4, 5]
 print("\(testInt.sum)")
 ```
 
-위의 코드는 **The Swift Programming Language** 문서의 예제를 기반으로 직접 만들어 본 것입니다.[code-samples]
+위의 코드는 **The Swift Programming Language** 문서의 예제를 기반으로 직접 만들어 본 것입니다.[^code-samples]
 
 우선 Summable이라는 프로토콜을 만들고, Int가 이 프로토콜을 따르도록 Int를 확장했습니다. 그리고 임의의 CollectionType 중에서 Element가 Summable 타입일 때만 사용할 수 있는 sum이라는 속성을 만들었습니다.
 
@@ -69,4 +69,4 @@ print("\(testInt.sum)")
 
 [^RayWenderlich]: [Introducing Protocol-Oriented Programming in Swift 2](https://www.raywenderlich.com/109156/introducing-protocol-oriented-programming-in-swift-2)
 
-[code-samples]: [Protocol extensions constraints in Swift](http://www.code-samples.ru/node/209) 예제를 작성할 때 참고한 자료 중 하나입니다. 실제 흐름만 참고한 것이지만 해당 사이트에는 다른 자료들도 많은 것 같아서 링크 기록을 남깁니다.
+[^code-samples]: [Protocol extensions constraints in Swift](http://www.code-samples.ru/node/209) 예제를 작성할 때 참고한 자료 중 하나입니다. 실제 흐름만 참고한 것이지만 해당 사이트에는 다른 자료들도 많은 것 같아서 링크 기록을 남깁니다.
