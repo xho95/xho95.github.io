@@ -17,7 +17,7 @@ categories: Xcode Swift Grammar Protocols
 
 {% gist 3ce1e821852d0debf646 %}
 
-위의 코드는 **The Swift Programming Language** 문서를 기반으로 직접 만들어 본 것입니다.
+위의 코드는 **The Swift Programming Language** 문서의 예제를 기반으로 직접 만들어 본 것입니다.
 
 우선 Summable이라는 프로토콜을 만들고, Int가 이 프로토콜을 따르도록 Int를 확장했습니다. 그리고 임의의 CollectionType 중에서 Element가 Summable 타입일 때만 사용할 수 있는 sum이라는 속성을 만들었습니다.
 

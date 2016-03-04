@@ -8,12 +8,17 @@ categories: Resources Sites Books Git
 여기서는 Git의 사용법에 대해서 정리하도록 한다.
 
 
+### Git 관련 인터넷 자료들
+
+[GitHub Guides](https://guides.github.com) : GitHub 사용과 관련한 전체 도움말 사이트이다.
+
+
 ### Git 참고 서적들
 
 [만들면서 배우는 Git+GitHub 입문](http://www.hanbit.co.kr/book/look.html?isbn=978-89-6848-202-1) : Xcode에서 Git의 사용법이 설명되어 있는 책이다.
 
 
-### Git 관련 인터넷 자료들
+### Git 관련 블로그 자료들
 
 [완전 초보를 위한 깃허브](https://nolboo.github.io/blog/2013/10/06/github-for-beginner/) : 초보자를 위해 Git을 설명한 [놀부님 블로그](https://nolboo.github.io/) 글이다.
 
