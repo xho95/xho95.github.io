@@ -17,6 +17,12 @@ categories: Xcode Swift Grammar Protocols
 
 {% gist 3ce1e821852d0debf646 %}
 
+위의 코드는 **The Swift Programming Language** 문서를 기반으로 직접 만들어 본 것입니다.
+
+우선 Summable이라는 프로토콜을 만들고, Int가 이 프로토콜을 따르도록 Int를 확장했습니다. 그리고 임의의 CollectionType 중에서 Element가 Summable 타입일 때만 사용할 수 있는 sum이라는 속성을 만들었습니다.
+
+이제 위의 testInt 처럼 Summable 타입들을 가진 Collection의 경우 sum 이라는 속성을 이용해서 해당 collection들의 합을 구할 수 있습니다.
+
 **The Swift Programming Language** 문서의 설명에 따르면, 프로토콜을 따르는 타입이 여러 확장의 요구 조건을 만족해서 같은 멤버 함수와 속성을 중복해서 제공할 경우, Swift는 가장 상세한 구속조건에 대응하는 구현을 사용한다고 합니다.
 
 ### 고찰 하기
