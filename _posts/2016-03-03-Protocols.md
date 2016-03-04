@@ -12,5 +12,3 @@ categories: Xcode Swift Grammar Protocols
 예를 들면,
 
 {% gist 3ce1e821852d0debf646 %}
-
-<script src="https://gist.github.com/xho95/3ce1e821852d0debf646.js"></script>
