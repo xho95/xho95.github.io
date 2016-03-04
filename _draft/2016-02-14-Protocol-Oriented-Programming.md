@@ -14,3 +14,7 @@ Protocol Oriented Programming의 꽃은 Protocol Extensions 이다.
 여기서는 Protocol Extensions의 내용을 정리한다.
 
 [Protocol Oriented Programming](https://medium.com/swift-programming/protocol-oriented-programming-a3e192f6e8f2#.t89hto4fm)
+
+[Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)
+
+[Protocol-Oriented Programming in Swift](http://www.infoq.com/news/2015/06/protocol-oriented-swift)
