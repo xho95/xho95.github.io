@@ -9,6 +9,7 @@ categories: Xcode Swift Grammar Protocols
 
 프로토콜 확장에서 구속조건을 사용하는 것은 프로토콜 기반 프로그래밍(Protocol Oriented Programming)의 핵심 기능이라고 할 수 있습니다.[^POP], [^RayWenderlich] 앞으로 관련 내용을 습득해 가면서 계속해서 이 포스트를 업데이트할 예정입니다.
 
+
 ### 프로토콜 확장(Protocol Extensions)에 구속조건(Constraints) 추가하기
 
 프로토콜 확장(Protocol Extensions)을 정의할 때는, 구속조건(Constraints)을 지정해서 프로토콜을 따르는 타입들이 조건을 만족할 때만 확장에 있는 멤버 함수들과 속성들을 사용하도록 할 수 있습니다. 이 구속조건은 프로토콜의 이름 뒤에 `where` 구절을 사용해서 붙일 수 있습니다.
@@ -57,9 +58,11 @@ print("\(testInt.sum)")
 
 **The Swift Programming Language** 문서의 설명에 따르면, 프로토콜을 따르는 타입이 여러 확장의 요구 조건을 만족해서 같은 멤버 함수와 속성을 중복해서 제공할 경우, Swift는 가장 상세한 구속조건에 대응하는 구현을 사용한다고 합니다.
 
+
 ### 고찰 하기
 
 앞으로 **The Swift Programming Language** 문서의 프로토콜 전체 내용을 옮기면서 프로토콜 기반 프로그래밍과 관련된 내용도 추가하도록 할 예정입니다.
+
 
 ### 참고 자료
 
