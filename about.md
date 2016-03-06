@@ -18,5 +18,7 @@ Swift를 이용해서 이것저것 만들어 보려는 개발자 중의 한 명�
 
 고맙습니다.
 
-{:.profile}
-![김민호](/assets/profile.jpg)
+![profile]
+
+[profile]: /assets/profile.jpg
+{: height="100px"}
