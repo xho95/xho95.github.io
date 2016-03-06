@@ -21,4 +21,4 @@ Swift를 이용해서 이것저것 만들어 보려는 개발자 중의 한 명�
 
 
 [profile]: /assets/profile.jpg
-{: align="left" height="100px"}
+{: align="left" height="100px" margin-right="1em"}
