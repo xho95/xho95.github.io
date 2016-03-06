@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-![profile] 반갑습니다.
+![profile]반갑습니다.
 
 Swift를 이용해서 이것저것 만들어 보려는 개발자 중의 한 명으로, 현재는 [모두의연구소](http://www.modulabs.co.kr)에서 매니저로 일하면서 Swift를 공부하고 있습니다.
 
@@ -21,4 +21,4 @@ Swift를 이용해서 이것저것 만들어 보려는 개발자 중의 한 명�
 
 
 [profile]: /assets/profile.jpg
-{: align="left" height="100px" margin-right="1em"}
+{: align="left" height="100px" margin-right="10em"}
