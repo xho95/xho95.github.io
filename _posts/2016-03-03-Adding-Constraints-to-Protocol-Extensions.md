@@ -63,6 +63,8 @@ print("\(testInt.sum)")
 
 앞으로 **The Swift Programming Language** 문서의 프로토콜 전체 내용을 옮기면서 프로토콜 기반 프로그래밍과 관련된 내용도 추가하도록 할 예정입니다.
 
+Protocol Extensions를 프로토콜 확장이라고 옮기는 것이 맞는지 잘 모르겠습니다. Keyword는 그냥 영어를 그대로 두는 것이 더 나을거 같기도 합니다.  
+
 
 ### 참고 자료
 
