@@ -101,11 +101,6 @@ categories: Resources Sites Data Programming
 [Daum 책 검색](https://developers.daum.net/services/apis/search/book)
 
 
-### Atom
-
-[Atom Setting](http://lks21c.blogspot.kr/2015/06/atom-shortcut.html)
-
-
 ### C++
 
 [boost::adaptors::adjacent_filter](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)

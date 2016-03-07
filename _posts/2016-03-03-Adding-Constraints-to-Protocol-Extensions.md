@@ -2,7 +2,7 @@
 layout: post
 title:  "Swift 문법 정리: 프로토콜 확장(Protocol Extensions)에 구속조건(Constraints) 추가하기"
 date:   2016-03-03 23:30:00 +0900
-categories: Xcode Swift Grammar Protocols
+categories: Swift Grammar Protocol Constraints
 ---
 
 여기서는 프로토콜 확장에서 구속조건을 추가하는 방법을 알아봅니다. 관련 내용은 **The Swift Programming Language** 의 2.2 버전의 내용을 기준으로 예제를 새로 구성한 것입니다.[^Constraints]

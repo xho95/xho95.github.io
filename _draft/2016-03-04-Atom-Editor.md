@@ -7,6 +7,12 @@ categories: OSX Editor Atom Terminal
 
 Atom 에디터는 GitHub를 만든 에디터로 Electron 이라는 웹 기반 기술로 만들어서 Windows, OS X, Linux 등에서 모두 동작한다. 그 밖에도 Markdown 관련 패키지가 기본으로 내장되어 있다고 한다.[^kichul]
 
+
+### Atom 설정하기
+
+[Atom Setting](http://lks21c.blogspot.kr/2015/06/atom-shortcut.html)
+
+
 ### 터미널에서 아톰 실행하기
 
 터미널에서 Atom 에디터를 실행하려면 다음과 같이 입력하면 된다.

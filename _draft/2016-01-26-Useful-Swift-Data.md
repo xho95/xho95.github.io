@@ -6,6 +6,11 @@ categories: Resources Sites Data Swift
 ---
 
 
+### Swift Terminal
+
+[How can I use swift in Terminal?](http://stackoverflow.com/questions/24011120/how-can-i-use-swift-in-terminal)
+
+
 ### Swift
 
 [Swift 서버사이드 프레임워크 Perfect 소개](https://realm.io/kr/news/perfect-swift-server-framework/) : Swift로 서버사이드 개발하기 자료
@@ -17,6 +22,8 @@ categories: Resources Sites Data Swift
 [Objc Books](https://www.objc.io/books/) : Functional Swift
 
 [10 Swift IOS open-source projects you cannot ignore](https://medium.com/swift-programming/15-swift-ios-open-source-projects-you-cannot-ignore-6bd4ac37d7dd#.u4c67ja0u)
+
+[iPhone Dev's Blog](http://blog.naver.com/seotaji)
 
 
 ### Table View : Swift
