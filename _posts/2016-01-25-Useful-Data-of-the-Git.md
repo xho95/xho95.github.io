@@ -42,6 +42,18 @@ categories: Resources Sites Books Git
 [GitLab](https://about.gitlab.com) : GitHub와 유사하게 원격 저장소를 제공하는 사이트이다. 한가지 다른 점이라면 무료로 Private Repository를 만들 수 있다는 점이다. 잘 활용하면 좋을 것 같다.
 
 
+### GitHub
+
+[GitHub Developer | GitHub Developer Guide](https://developer.github.com/)
+
+[Github LFS 테스트 :: Outsider's Dev Story](https://blog.outsider.ne.kr/1147)
+
+
 ### Sourcetree 자료들
 
 [Sourcetree를 이용한 Github 시작하기](http://hackersstudy.tistory.com/41)
+
+
+### 고찰하기
+
+**Git** 자료와 **GitHub** 자료를 분리해서 저장하도록 할 예정입니다.

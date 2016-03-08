@@ -6,6 +6,11 @@ categories: Resources Sites Softwares Tools
 ---
 
 
+### 맞춤법
+
+[한국어 맞춤법/문법 검사기](http://speller.cs.pusan.ac.kr/PnuSpellerISAPI_201602/)
+
+
 ### Presentation
 
 [중요한 순간에 빛나는 프레젠테이션 툴](https://prezi.com)
@@ -47,3 +52,13 @@ categories: Resources Sites Softwares Tools
 ### Survey
 
 [SurveyMonkey](https://ko.surveymonkey.com)
+
+
+### StackShare
+
+[StackShare](http://stackshare.io) : Discover and discuss the best software tools and services
+
+
+### Root
+
+[ROOT a Data analysis Framework | ROOT a Data analysis Framework](https://root.cern.ch/)

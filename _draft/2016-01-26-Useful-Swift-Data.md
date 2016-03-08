@@ -6,10 +6,11 @@ categories: Resources Softwares Programming Swift
 ---
 
 
-
 ### Swift Grammar
 
 [Swift Standard Library: Generators, Sequences and Collections](http://iosdeveloperzone.com/2014/10/13/swift-standard-library-generators-sequences-and-collections/)
+
+[애플 스위프트(Apple Swift) - 구조.. : 네이버블로그](http://blog.naver.com/seotaji/220130395515)
 
 
 ### Swift Terminal
@@ -31,6 +32,16 @@ categories: Resources Softwares Programming Swift
 
 [iPhone Dev's Blog](http://blog.naver.com/seotaji)
 
+[Swift](https://github.com/showcases/swift)
+
+[Game Engines](https://github.com/showcases/game-engines)
+
+
+### IBM
+
+[IBM Swift Engineering Blog - Swift](https://developer.ibm.com/swift/blogs/)
+
+[Introducing the Swift Package Catalog- tutorial](https://developer.ibm.com/swift/2016/02/22/introducing-swift-package-catalog/)
 
 ### Table View : Swift
 

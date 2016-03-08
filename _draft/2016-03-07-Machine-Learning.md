@@ -6,11 +6,23 @@ categories: Resources Sites Technology Machine-Learning
 ---
 
 
+[‎vision.stanford.edu/teaching/cs231n/slides/jon_talk.pdf](http://vision.stanford.edu/teaching/cs231n/slides/jon_talk.pdf)
+
+
+### 정보 엔트로피
+
+[정보이론과 부호화 - 2장 정보의 정의와 척도 - YouTube](https://www.youtube.com/watch?v=M5Ak4Kpu23Q)
+
+[정보량 / 정보통신기술용어해설](http://www.ktword.co.kr/tree_menu_manager.php?id=781&m_temp1=3660)
+
+
 ### Batch Normalization
 
 [Batch Normalization (ICML 2015)](http://sanghyukchun.github.io/88/)
 
 [Batch Normalization 설명 및 구현](https://shuuki4.wordpress.com/2016/01/13/batch-normalization-설명-및-구현/)
+
+[Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](http://arxiv.org/abs/1502.03167)
 
 
 ### AlphaGo
