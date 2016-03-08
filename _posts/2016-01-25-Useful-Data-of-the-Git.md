@@ -14,6 +14,8 @@ categories: Resources Sites Books Git
 
 [Git Large File Storage](https://git-lfs.github.com) : GitHub에 최근에 도입된 대용량 파일 시스템에 대해 설명한 곳입니다.
 
+[Resolving a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/) : 터미널에서 Merge 시에 충돌 문제를 해결하는 방법에 대해 설명한 곳입니다.
+
 
 ### Git 참고 서적들
 

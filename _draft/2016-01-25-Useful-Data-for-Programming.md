@@ -2,7 +2,7 @@
 layout: post
 title:  "프로그래밍 자료들"
 date:   2016-01-25 21:30:00 +0900
-categories: Resources Sites Data Programming
+categories: Resources Softwares Programming Sites
 ---
 
 프로그래밍 관련 자료를 모아둔 곳이다.
@@ -32,20 +32,7 @@ categories: Resources Sites Data Programming
 [Annotated Algorithms in Python](http://www.amazon.com/Annotated-Algorithms-Python-Applications-Physics/dp/0991160401)
 
 
-### 온라인 C++ 에디터(?), 컴파일(?) 사이트들
-
-[Coliru](http://coliru.stacked-crooked.com) : 웹브라우저에서 C++을 작성하고 테스트해볼 수 있는 사이트이다.
-
-[GodBolt](http://gcc.godbolt.org) : Coliru 처럼 웹브라우저에 C++을 작성하고 테스트해볼 수 있는 사이트이다. 특이한 점은 컴파일 결과를 어셈블러어로도 나타내준다는 점이다.
-
-[SwiftStub](http://swiftstub.com) : 웹브라우저에서 Swift를 작성하고 테스트해볼 수 있는 사이트이다.
-
-
 ### 프로그래밍 관련 읽어볼만한 글들
-
-[환상법사님의 블로그 글](http://rafi.inha.ac.kr/~wbstory/tc/wbstory/221) : Volatile에 대한 설명이 잘 되어 있는 글이다.
-
-[Bartosz Milewski's Programming Cafe 글](http://bartoszmilewski.com/?s=Higher-Order+Functions+and+Closures) : Haskell과 C++에 대해 고찰하며 first class citizens에 대한 내용이 나오는 글이다.
 
 [위키 백과 - 일급 객체](https://ko.wikipedia.org/wiki/일급_객체) : 일급 객체에 대한 조건이 설명된 글이다.
 
@@ -68,13 +55,6 @@ categories: Resources Sites Data Programming
 [Unity 매뉴얼](http://docs.unity3d.com/kr/current/Manual/) : Unity 매뉴얼이다. 한글도 지원한다.
 
 [Unity Event Functions](http://docs.unity3d.com/Manual/ExecutionOrder.html) : Unity이 이벤트 루프가 돌 때, 호출되는 함수들에 대해 설명한 페이지이다.
-
-
-### WebSocket
-
-[WebSocket](http://www.websocket.org) : WebSocket 사이트이다. WebSocket echo 테스트를 해 볼 수 있다.
-
-[Using WebSocket Secure (wss://) in the browser](https://github.com/theturtle32/WebSocket-Node/issues/78) : WebSocket ws, wss 설명이 있는 곳이다.
 
 
 ### 교육 및 기타
@@ -101,18 +81,24 @@ categories: Resources Sites Data Programming
 [Daum 책 검색](https://developers.daum.net/services/apis/search/book)
 
 
-### C++
-
-[boost::adaptors::adjacent_filter](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)
-
-[boost::adaptors::copied](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/copied.html)
-
-
 ### AWS
 
 [AWS 클라우드 교육을 무료로 들어보세요.](https://aws.amazon.com/ko/events/awsome-day/seoul-04/?sc_channel=psm&sc_campaign=sel_awsomeday_04&sc_publisher=+fb_ln+&sc_medium=em_&sc_content=event&sc_country=kr&sc_geo=apac&trkCampaign=sel_awsomeday_04&trk=psm_facebook&adbsc=social_20160202_57848106&adbid=1670853369838024&adbpl=fb&adbpr=1563378127252216)
 
 
-### Autodesk123D
+### OAuth2.0
 
-[Autodesk123D](http://www.123dapp.com)
+[OAuth 2.0](http://oauth.net/2/)
+
+
+### DB
+
+[MySQL](http://www.mysql.com)
+
+[DB-Engines Ranking](http://db-engines.com/en/ranking)
+
+[MariaDB](https://mariadb.org)
+
+[PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
+
+[PostgreSQL](http://www.postgresql.org)

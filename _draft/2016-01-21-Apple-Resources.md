@@ -2,10 +2,11 @@
 layout: post
 title:  "봐야할 Apple 자료들"
 date:   2016-01-21 20:59:00 +0900
-categories: Xcode Swift Apple Resources
+categories: Resources Apple Programming Framework
 ---
 
 봐야할 Apple 문서들을 모아둔 곳이다. 나중에 파트별로 분류해서 블로그 글로 정리하자.
+
 
 ### Azure
 
@@ -25,8 +26,9 @@ categories: Xcode Swift Apple Resources
 
 [Apple Push Notification Service](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)
 
-[Swift 오픈소스 공개,
-Swift 3.0 로드맵](https://realm.io/kr/news/swift-opensource/) : 국내에서 Swift 관련 정보를 제공하는 곳이다.
+[Using Local And Push Notifications on iOS and Mac OS X](https://developer.apple.com/videos/play/wwdc2011/517/)
+
+[Swift 오픈소스 공개, Swift 3.0 로드맵](https://realm.io/kr/news/swift-opensource/) : 국내에서 Swift 관련 정보를 제공하는 곳이다.
 
 
 ### Tips
@@ -50,12 +52,6 @@ Swift 3.0 로드맵](https://realm.io/kr/news/swift-opensource/) : 국내에서 
 [SDK for iOS Sample App](https://developer.amazon.com/public/apis/experience/cloud-drive/content/sdk-ios-building-file-explorer) : Building an Amazon Cloud Drive file explorer
 
 [Homebrew](http://brew.sh) : The missing package manager for OS X
-
-[Free Icons](https://icons8.com/c/flat-color-icons)
-
-[InkScape](https://inkscape.org/) : vector 기반 드로잉툴
-
-[Scribus](http://wiki.scribus.net/canvas/Download) : vector 기반 드로잉툴 - InkScape와는 종류가 다르다.
 
 
 ### JavaScript
