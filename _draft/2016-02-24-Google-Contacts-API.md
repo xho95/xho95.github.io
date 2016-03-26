@@ -2,7 +2,7 @@
 layout: post
 title:  "Google Contacts API"
 date:   2016-02-24 14:30:00 +0900
-categories: Google API Contacs People
+categories: Google API Contacts People
 ---
 
 [People API](https://developers.google.com/people/)

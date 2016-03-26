@@ -12,6 +12,8 @@ categories: Resources Softwares Programming Swift
 
 [애플 스위프트(Apple Swift) - 구조.. : 네이버블로그](http://blog.naver.com/seotaji/220130395515)
 
+[Swift Replace Multiple Characters in String](http://stackoverflow.com/questions/28059543/swift-replace-multiple-characters-in-string)
+
 
 ### Swift Terminal
 
@@ -43,6 +45,15 @@ categories: Resources Softwares Programming Swift
 
 [Introducing the Swift Package Catalog- tutorial](https://developer.ibm.com/swift/2016/02/22/introducing-swift-package-catalog/)
 
+
+### Animation : Swift
+
+[Creating Simple View Animations in Swift](http://www.appcoda.com/view-animation-in-swift/)
+
+[Expanding circle viewController transition](http://zappdesigntemplates.com/expanding-circle-viewcontroller-transition/)
+
+[How to Create a Complex Loading Animation in Swift](https://www.raywenderlich.com/102590/how-to-create-a-complex-loading-animation-in-swift)
+
 ### Table View : Swift
 
 [Create Static Table View Using Storyboard](http://www.appcoda.com/ios-static-table-view-storyboard/)
@@ -52,12 +63,25 @@ categories: Resources Softwares Programming Swift
 [UITableViewCell with autolayout left margin different on iPhone and iPad](http://stackoverflow.com/questions/27420888/uitableviewcell-with-autolayout-left-margin-different-on-iphone-and-ipad)
 
 
+### Image
+
+[이미지로부터 픽셀 데이터 얻어 새로운 이미지 만들기](http://blog.weirdx.io/post/24742)
+
+
 ### Core Data
 
 [How to add Core Data to an existing SWIFT project in Xcode / Updated for Swift 1.2](http://craig24.com/2014/12/how-to-add-core-data-to-an-existing-swift-project-in-xcode/)
 
 [Adding Core Data to an existing Swift 2.0 project](http://purelywebdesign.co.uk/tutorial/add-coredata-to-an-exiting-swift-2-0-project/)
 
--
 
-[Swift Replace Multiple Characters in String](http://stackoverflow.com/questions/28059543/swift-replace-multiple-characters-in-string)
+### SceneKit
+
+[Scene Kit Tutorial with Swift Part 1: Getting Started](https://www.raywenderlich.com/128668/scene-kit-tutorial-with-swift-part-1)
+
+
+### Algorithms
+
+[Binary Search Tree](https://gist.github.com/pocketkk/f7d2ba819b46725229a4)
+
+[Binary search trees](http://waynewbishop.com/swift/binary-search-trees/)

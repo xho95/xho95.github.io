@@ -37,16 +37,26 @@ categories: Resources Sites Softwares Tools
 [Autodesk123D](http://www.123dapp.com)
 
 
-### Video Player
+### Video
 
 [무비스트](http://cocoable.tistory.com)
 
 [VideoLAN](http://www.videolan.org/vlc/)
 
+[무료 TV 영화 다시보기](http://ontvkorea.com)
+
 
 ### Editor
 
 [Brackets](http://brackets.io)
+
+[Scintilla](http://www.scintilla.org)
+
+[Jet Brains](https://www.jetbrains.com)
+
+[StackEdit](https://stackedit.io)
+
+[StackEdit](https://stackedit.io/editor)
 
 
 ### Survey
@@ -59,6 +69,28 @@ categories: Resources Sites Softwares Tools
 [StackShare](http://stackshare.io) : Discover and discuss the best software tools and services
 
 
-### Root
+### Slack
 
-[ROOT a Data analysis Framework | ROOT a Data analysis Framework](https://root.cern.ch/)
+[Slack](https://slack.com)
+
+[슬랙(Slack)의 장점과 한계점](http://blog.collabee.co.kr/45)
+
+[Screenhero](https://screenhero.com)
+
+
+### facebook
+
+[How do I create an ad in the carousel format from my Page?](https://www.facebook.com/business/help/547425075396856)
+
+[How do I create a Facebook ad?](https://www.facebook.com/business/help/132037906870538)
+
+
+### Web Hosting
+
+[Whois](http://www.whois.com) : get a domain name
+
+[스쿨 호스팅](https://www.phps.kr)
+
+[DNSzi](https://www.dnszi.com) : 도메인 DNS 관리
+
+[dnsever](https://kr.dnsever.com) : DNS 서비스

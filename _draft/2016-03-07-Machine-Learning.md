@@ -8,6 +8,12 @@ categories: Resources Sites Technology Machine-Learning
 
 [‎vision.stanford.edu/teaching/cs231n/slides/jon_talk.pdf](http://vision.stanford.edu/teaching/cs231n/slides/jon_talk.pdf)
 
+### Lecture
+
+[CNN](http://cs231n.stanford.edu/syllabus.html)
+
+[CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu)
+
 
 ### 정보 엔트로피
 
@@ -32,3 +38,16 @@ categories: Resources Sites Technology Machine-Learning
 [지능정보기술(AI)과 바둑](http://aibaduk.kr)
 
 [How AlphaGo Works](https://www.dcine.com/2016/01/28/alphago/)
+
+
+### Dynamic Programming
+
+[Dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming)
+
+[동적 계획법](https://ko.wikipedia.org/wiki/동적_계획법)
+
+### gradient descent 알고리즘
+
+[Week 01: Parameter Learning](http://goodtogreate.tistory.com/394)
+
+[Lec6. Machine Learning(머신러닝) ? Gradient Descent](http://blog.naver.com/mypa3424/220542149463)

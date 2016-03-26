@@ -27,12 +27,18 @@ categories: Resources Sites Books Git
 [완전 초보를 위한 깃허브](https://nolboo.github.io/blog/2013/10/06/github-for-beginner/) : 초보자를 위해 Git을 설명한 [놀부님 블로그](https://nolboo.github.io/) 글이다.
 
 [Pro Git 정리 자료](https://git-scm.com/book/ko/) : Git 사용법에 대해서 잘 설명된 책인 Pro Git을 인터넷에 정리해 둔 곳으로, 한글로도 자료를 이용할 수 있다. 정말 좋은 곳인 것 같다.
-
 [GitHub로 남의 프로젝트에 감놓고 배놓기](https://dogfeet.github.io/articles/2012/how-to-github.html)
 
 [Github를 이용하는 전체 흐름 이해하기 #1](https://blog.outsider.ne.kr/865)
 
 [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) : 프로젝트를 진행할 때 Branch를 어떻게 만들면 좋은지에 대해 설명한 블로그 글입니다.
+
+
+### Organization
+
+[6.4 GitHub - Organization 관리하기](https://git-scm.com/book/ko/v2/GitHub-Organization-관리하기)
+
+[GitHub 협업 - 조직, 팀 만들기](http://i5on9i.blogspot.kr/2015/09/github.html)
 
 
 ### 원격 Git 저장소 사이트들
@@ -47,6 +53,8 @@ categories: Resources Sites Books Git
 [GitHub Developer | GitHub Developer Guide](https://developer.github.com/)
 
 [Github LFS 테스트 :: Outsider's Dev Story](https://blog.outsider.ne.kr/1147)
+
+[Creating Project Pages manually](https://help.github.com/articles/creating-project-pages-manually/)
 
 
 ### Sourcetree 자료들

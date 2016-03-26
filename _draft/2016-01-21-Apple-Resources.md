@@ -41,6 +41,13 @@ categories: Resources Apple Programming Framework
 
 [스마트폰에서 바로가기/즐겨찾기 추가시 아이콘 넣기](http://www.kmshack.kr/2013/02/스마트폰에서-바로가기즐겨찾기-추가시-아이콘-넣/)
 
+[OS X 기본 기능만을 이용해 맥의 화면을 녹화, 편집하고 공유하기](http://macnews.tistory.com/560)
+
+
+### SSH
+
+[Mac 터미널에서 ssh 접속하는 방법](http://db.necoaki.net/54)
+
 
 ### OpenGL
 
@@ -53,7 +60,4 @@ categories: Resources Apple Programming Framework
 
 [Homebrew](http://brew.sh) : The missing package manager for OS X
 
-
-### JavaScript
-
-[Express](http://expressjs.com)
+[Rocket.Chat](https://rocket.chat) : Web Chat Platform
