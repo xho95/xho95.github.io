@@ -379,6 +379,7 @@ let sortedNumbers = numbers.sort { $0 > $1 }
 
 print(sortedNumbers)
 ```
+
 ### Objects and Classes
 
 * `class` : create a class
