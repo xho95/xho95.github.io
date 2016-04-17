@@ -11,7 +11,7 @@ categories: Xcode Swift Grammar Tour
 print("Hello, world!")
 ```
 
-* this sinlge line of code : a complete program
+* this single line of code : a complete program
 - don't need to import a separate library functionality
 - don't need a `main()` : global scope- the entry point
 - don't need to write semicolones
