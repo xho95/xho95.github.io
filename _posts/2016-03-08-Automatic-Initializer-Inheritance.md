@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Swift 문법 정리: 자동으로 초기자를 상속(Automatic Initializer Inheritance)하는 상황 알아보기"
+title:  "Swift 2.2: 자동으로 초기자를 상속(Automatic Initializer Inheritance)하는 상황 알아보기"
 date:   2016-03-08 01:00:00 +0900
 categories: Swift Grammar Automatic Initializer
 ---

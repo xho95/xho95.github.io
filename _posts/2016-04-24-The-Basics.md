@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Swift 문법 정리: 기초(The Basics)"
+title:  "Swift 2.2: 기초(The Basics)"
 date:   2016-04-24 19:45:00 +0900
 categories: Xcode Swift Grammar Basic
 ---
@@ -20,7 +20,6 @@ categories: Xcode Swift Grammar Basic
 - **a type-safe language** : the langage halps you to be clear about the types of values
 - type safety helps you fix errors as early as possible in the develoment process
 
-- - -
 ### Constants and Variables
 
 * associate a name with a value of a particular type
