@@ -27,7 +27,7 @@ categories: Xcode Swift Grammar Basic
 - constant : cannot be changed once it is set
 - variable : can be set to a different value in the future
 
-- - -
+
 #### Declaring Constants and Variables
 
 * must be declared before they are used
@@ -49,7 +49,7 @@ var x = 0.0, y = 0.0, z = 0.0
 > note:
 If a stored value is not going to change, always declare it as a constant
 
-- - -
+
 #### Type Annotations
 
 * a type annotation : to be clear about the kind of values
@@ -75,7 +75,7 @@ var red, green, blue: Double
 It is rare that you need to write type annotation
 If you provide an initial value, Swift can almost always infer the type
 
-- - -
+
 #### Naming Constants and Variables
 
 * names can contain almost any character - including **Unicode** characters
@@ -127,7 +127,7 @@ let languageName = "Swift"
 // this is a compile-time error - languageName connot be changed
 ```
 
-- - -
+
 #### Printing Constants and Variables
 
 * `print(_:seperator:terminator:)` : print the current value
@@ -150,7 +150,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // Prints "The current values of friendlyWelcome is Bonjour!"
 ```
 
-- - -
+
 ### Comments
 
 * nonexecutable text : ingored by the Swift compiler
@@ -181,7 +181,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 
 * nested multiline comments : comment out large blocks of code quickly and easily
 
-- - -
+
 ### Semicolons
 
 * not require : a semicolon(`;`) after each statment
@@ -193,7 +193,7 @@ let cat = "🐱"; print(cat)
 // Prints "🐱"
 ```
 
-- - -
+
 ### Integers
 
 * numbers with no fractional component
@@ -203,7 +203,7 @@ let cat = "🐱"; print(cat)
 - `UInt8` : an 8-bit unsigned integer
 - `Int32` : a 32-bit signed integer
 
-- - -
+
 #### Integer Bounds
 
 * `min`, `max` : access the minimum and maximum values of integer type
@@ -216,7 +216,7 @@ let maxValue = UInt8.max // maxValue is equal to 255, and is of type UInt8
 
 * the appropriate-sized number type : used in expressions of the same type
 
-- - -
+
 #### Int
 
 * don't need to pick a specific size of integer
@@ -227,7 +227,7 @@ let maxValue = UInt8.max // maxValue is equal to 255, and is of type UInt8
 
 * use `Int` : code consistency and interoperability
 
-- - -
+
 ### UInt
 
 * `UInt` : the same size as the current platform's native word size
@@ -238,7 +238,7 @@ let maxValue = UInt8.max // maxValue is equal to 255, and is of type UInt8
 `UInt` : only when you specially need
 `Int` : preferred - code interoperability, avoids the need to convert, matches integer type inference
 
-- - -
+
 ### Floating-Point Numbers
 
 * numbers with a fractional component
@@ -252,7 +252,7 @@ let maxValue = UInt8.max // maxValue is equal to 255, and is of type UInt8
 `Float` : 6 decimal digits
 If either type would be appropriate, `Double` is preferred
 
-- - -
+
 ### Type Safety and Type Inference
 
 * **type-safe** language : be clear about the types of values
@@ -294,7 +294,7 @@ let anotherPi = 3 + 0.14159
 
 * `3` has no explicit type : a floating-point literal as part of the addtion
 
-- - -
+
 ### Numeric Literals
 
 * Integer literals
@@ -350,7 +350,7 @@ let oneMillion = 1_000_000
 let justOverOneMillion = 1_000_000.000_000_1
 ```
 
-- - -
+
 ### Numeric Type Conversion
 
 * `Int` type : all general-purpose integer
@@ -360,7 +360,7 @@ let justOverOneMillion = 1_000_000.000_000_1
 - use other integer types only when they are specifically needed
 - using explicitly-sized types : catch any accidental value overflows
 
-- - -
+
 #### Integer Convension
 
 * the range of numbers is different for each numeric type
@@ -392,7 +392,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 - `Extensions` : extending existing types to provide initializers that accept new types
 
-- - -
+
 #### Integer and Floating-Point Conversion
 
 * conversions between integer and floating-point numeric types : explicit
@@ -423,7 +423,7 @@ let integerPi = Int(pi)
 number literals : do not have an explicit type
 their type is inferred only at the point that they are evaluated by the compiler
 
-- - -
+
 ### Type Aliases
 
 * `typealias` : define an alternative name for an existing type
@@ -443,7 +443,7 @@ var maxAmplitudeFound = AudioSample.min
 
 * `AudioSample.min == UInt16.min`
 
-- - -
+
 ### Booleans
 
 * `Bool` : a basic Boolean type
@@ -497,7 +497,7 @@ if i == 1 {
 
 - type safety : avoids accidental errors, code is always clear
 
-- - -
+
 ### Tuples
 
 * **Tuples** : group multiple values into a single compound value
@@ -576,7 +576,7 @@ print("The status message is \(http200Status.description)")
  useful for temporary groups of related values
  not suited to the creation of complex data structures : persist beyond a temprary scope
 
-- - -
+
 ### Optionals
 
 * optionals : a value may be absent
@@ -599,7 +599,7 @@ let convertedNumber = Int(possibleNumber)
 
 * an optional `Int` : `Int?` - some `Int` or no value at all
 
-- - -
+
 #### nil
 
 * set an optional variable to a valueless state : `nil`
@@ -629,7 +629,7 @@ var surveyAnswer: String?
  In Objective-C : `nil` - a point to a nonexistent object
  In Swift : `nil` - not a pointer, the absence of a value of a certain type
 
-- - -
+
 #### If Statements and Forced Unwrapping
 
 * `if` statement : find out whether an optional contains a value
@@ -660,7 +660,7 @@ if convertedNumber != nil {
  use `!` to access a nonexistent optional value : a runtime error
  make sure that an optional contains a non-`nil` value before using `!`
 
-- - -
+
 #### Optional Binding
 
 * **optional binding** : find out whether an optional contains a value
@@ -708,7 +708,7 @@ if let firstNumber = Int("4"), secondNumber = Int("42") where firstNumber < seco
  constants and variables created with a `guard` statement :
  available in the lines of code that follow the `guard` statement
 
-- - -
+
 #### Implicitly Unwrapped Optionals
 
 * sometimes an optional will always have a value
@@ -765,7 +765,7 @@ if let definiteString = assumedString {
 > note:
  do not use an implicitly unwrapped optional when there is a possibility of a variable becoming `nil`
 
-- - -
+
 ### Error Handling
 
 * **error handling** : to respond to error conditions
@@ -855,13 +855,13 @@ do {
 * `makeASandwich()` : throw an error - the function call is wrapped in a `try` expression
 * `do` statement : any errors will be propagated to the provided `catch` clauses
 
-- - -
+
 ### Assertions
 
 * in some cases : not possible to continue if a particular condition is not satisfied
 * trigger an *assertion* : to end code execution and to provide an opportunity to debug
 
-- - -
+
 #### Debugging with Assertions
 
 * an assertion
@@ -896,7 +896,7 @@ let age = -3
  assertions are disabled : code is compiled with optimizations
  when building with an app target's default Release configuration in Xcode
 
-- - -
+
 #### When to Use Assertions
 
 * whenever a condition has the potential to be false : definitely be true
