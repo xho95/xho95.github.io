@@ -7,15 +7,43 @@
 
 # Site settings
 title: xho95's Swift Life
-email: xho1995@gmail.com
+# email: xho1995@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Apple에서 공개한 새로운 언어인 Swift를 공부하고 정리하는 사이트입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xho95.github.io" # the base hostname & protocol for your site
-twitter_username: xho95
-github_username:  xho95
+# twitter_username: xho95
+# github_username:  xho95
+
+# The production_url is only used when full-domain names are needed
+# such as sitemap.txt
+# Most places will/should use BASE_PATH to make the urls
+#
+# If you have set a CNAME (pages.github.com) set your custom domain here.
+# Else if you are pushing to username.github.io, replace with your username.
+# Finally if you are pushing to a GitHub project page, include the project name at the end.
+production_url : http://elinjkim.github.io
+
+# Includes an icon in the footer for each username you enter
+footer-links:
+  dribbble:
+  email: xho1995@gmail.com
+  facebook: xho1995
+  flickr:
+  github: xho95
+  instagram:
+  linkedin:
+  pinterest:
+  rss: # just type anything here for a working RSS icon
+  twitter: xho95
+  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  youtube: # channel/<your_long_string> or user/<user-name>
+  googleplus: xho95 # anything in your profile username that comes after plus.google.com/
 
 # Build settings
+# redcarpet:
+#  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "fenced_code_blocks", "footnotes"]
+
 markdown: kramdown
 
 kramdown:
@@ -25,8 +53,3 @@ kramdown:
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
 disqus: xho95githubio
-
-# old values
-
-# redcarpet:
-#  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "fenced_code_blocks", "footnotes"]
