@@ -14,6 +14,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xho95.github.io" # the base hostname & protocol for your site
 twitter_username: xho95
 github_username:  xho95
+facebook_username: xho1995
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
