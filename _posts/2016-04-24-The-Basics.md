@@ -840,7 +840,7 @@ func makeASandwich() throws {
 //    print("a sandwich!")
 }
 
-additional code - end
+// additional code - end
 
 do {
     try makeASandwich()
