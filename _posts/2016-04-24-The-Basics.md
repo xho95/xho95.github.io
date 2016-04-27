@@ -2,7 +2,7 @@
 layout: post
 title:  "Swift 2.2: 기초(The Basics)"
 date:   2016-04-24 19:45:00 +0900
-categories: Xcode Swift Grammar Basic
+categories: Swift Grammar Basic
 ---
 
 * a new programming language : iOS, OS X, watchOS, tvOS
