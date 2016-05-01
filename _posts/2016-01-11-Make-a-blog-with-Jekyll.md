@@ -1,40 +1,40 @@
 ---
 layout: post
-title:  "Jekyll과 GitHub로 블로그 만들기"
+title:  "Jekyll 기반의 GitHub Pages에 블로그 만들기"
 date:   2016-01-11 12:50:00 +0900
 categories: Blog GitHub Jekyll Git
 ---
 
-자신이 공부한 내용을 정리하는 데는 블로그만한 것이 없습니다. 블로그는 글을 쓰면서 생각을 정리하는 역할도 하지만 자신의 글들을 온라인상에 백업하는 역할도 겸하기 때문입니다.
+자신이 공부한 내용을 정리하는 데는 블로그만한 것이 없습니다. 블로그는 글을 쓰면서 생각을 정리하는 역할도 하지만 자신의 글들을 온라인 공간에 백업하는 역할도 겸하기 때문입니다.
 
-하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 운영할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들[^kalkin7]이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^saltfactory_1] 그리하여 여러 방법들을 살펴보고 난 후 [Jekyll](http://jekyllrb.com)[^Jekyll]과 [GitHub](https://github.com)[^GitHub]를 사용하여 블로그를 운영하기로 결심하게 되었습니다.
+하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 제작할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들[^kalkin7]이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^saltfactory_1] 그리하여 여러 방법들을 살펴보고 난 후 [Jekyll](http://jekyllrb.com)[^Jekyll] 기반의  [GitHub Pages](https://pages.github.com) [^GitHub]를 사용해서 블로그를 제작하기로 결심했습니다.
 
-이 글에서는 제가 블로그를 제작하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^cuspace], 그리고 인터넷에서 찾은 많은 분들의 자료들[^Nolboo]을 바탕으로 맥 환경에서 Jekyll과 GitHub를 이용하여 개인 블로그를 만드는 방법을 정리하려고 합니다.[^saltfactory_2]
+이 글에서는 제가 블로그를 제작하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^cuspace], 그리고 인터넷에서 찾은 많은 분들의 자료들[^Nolboo]을 바탕으로 맥에서 Jekyll과 GitHub Pages를 이용하여 개인 블로그를 만드는 방법을 정리하고자 합니다.[^saltfactory_2]
 
-우선 블로그를 만들기 전에 먼저 Jekyll이 무엇인지, 그리고 왜 블로그 호스팅에 GitHub를 이용하는지 간단히 짚고 넘어가겠습니다.
+우선 블로그를 만들기 전에 먼저 Jekyll이 무엇인지, 그리고 왜 블로그 호스팅에 GitHub Pages를 이용하는지 간단히 짚고 넘어가겠습니다.
 
 
 ### Jekyll이란 무엇인가?
 
-도대체 Jekyll이 무엇이길래 블로그를 만드는데 Jekyll을 사용하는 것일까요? 사실 Jekyll은 Markdown 형식의 텍스트 파일을 HTML 파일로 변환해 주는 하나의 변환 도구-프레임웍입니다. 이렇게 변환된 HTML 파일을 웹 서버에 올리면 바로 홈페이지가 됩니다.[^Jekyll_Documentation]
+도대체 Jekyll이 무엇이길래 블로그를 만드는데 Jekyll을 사용하는 것일까요? 사실 Jekyll은 Markdown 형식의 텍스트 파일을 HTML 파일로 변환해 주는 하나의 변환 도구입니다. 이렇게 변환된 HTML 파일을 웹 서버에 올리면 바로 홈페이지가 됩니다.[^Jekyll_Documentation]
 
-이처럼 Jekyll이 HTML 파일을 만들어 주니까 사용자는 블로그에 글을 쓸 때 Markdown으로 작성해서 Jekyll로 빌드해서 서버에 올리기만 하면 됩니다.[^Markdown] 이렇게 하면 사용자는 HTML을 신경쓰지 않고 자신의 컨텐츠에만 집중해서 글을 쓸 수 있게 됩니다.[^vjinn]
+이처럼 Jekyll이 HTML 파일을 만들어 주니까 사용자는 블로그에 글을 쓸 때 Markdown으로 작성해서 Jekyll로 빌드해서 서버에 올리기만 하면 됩니다.[^Markdown] 이렇게 하면 사용자는 웹페이지를 만들 때, HTML을 신경쓰지 않고 Markdown 양식으로 자신의 컨텐츠에만 집중해서 글을 쓸 수 있게 됩니다.[^vjinn]
 
 
 ### 블로그 호스팅 서비스로 GitHub Pages를 사용하는 이유
 
-그런데 그냥 매번 HTML 파일을 직접 만드는 것이나 Jekyll을 써서 Markdown으로 매번 HTML을 만들어 내는 것이나 별 차이가 없어 보입니다. 이렇게만 하면 Jekyll을 사용하는 의미가 없어집니다.
+그런데 그냥 매번 HTML 파일을 직접 만드는 것이나 Jekyll을 써서 Markdown으로 매번 HTML을 만들어 내는 것이나 별 차이가 없어 보입니다. 물론 HTML 템플릿 등을 써서 편하기는 하지만, 이것 만으로 Jekyll을 사용하기에는 큰 의미가 없어보입니다.
 
-하지만 블로그 호스팅 서비스로 GitHub를 사용하면 의미가 달라집니다. 왜냐하면 GitHub에서 제공하는 호스팅 서비스인 [GitHub Pages](https://pages.github.com)는 Jekyll을 자체 지원하기 때문입니다. 따라서 GitHub Pages에 새로운 Markdown 문서를 올리기만 하면 사용자가 직접 빌드하지 않아도 블로그를 업데이트할 수 있습니다.[^GitHub_Pages_Jekyll]
+하지만 블로그 호스팅 서비스로 GitHub Pages를 사용하면 의미가 달라집니다. 왜냐하면 [GitHub Pages](https://pages.github.com)는 Jekyll을 자체 지원하기 때문입니다. 따라서 GitHub Pages에 새로운 Markdown 문서를 올리기만 하면 사용자가 직접 빌드하지 않아도 블로그를 업데이트할 수 있습니다.[^GitHub_Pages_Jekyll]
 
 
 ### Jekyll과 GitHub를 사용할 경우의 장점들
 
-지금까지의 글만 읽어 보더라도 블로그를 만드는데 Jekyll과 GitHub를 사용하면 얻을 수 있는 장점들이 어느 정도 보입니다.
+지금까지만 보더라도 GitHub Pages에 블로그를 만들었을 때 얻을 수 있는 장점들이 어느 정도 보입니다.
 
-하지만 가장 큰 장점은 사실상 GitHub 자체가 버전 관리 도구인 Git을 위해 온라인 저장소를 제공하는 사이트라는 것에서 출발합니다. 즉, Jekyll과 GitHub로 블로그를 만들면 단순히 나의 글들을 온라인상에 백업할 수 있을 뿐만 아니라 블로그를 제작하면서 변경되는 이력들을 모두 추적하고 복원 가능하게 된다는 것을 뜻합니다.[^saltfactory_3] IT 개발자처럼 기술의 변화 속도가 빠른 분야에 있는 사람들은 블로그를 운영하더라도 수시로 글을 업데이트 해주게 되는데 이런 점에서 GitHub Pages는 엄청난 장점을 가집니다.
+하지만 가장 큰 장점은 GitHub 자체가 Git을 위한 온라인 저장소를 제공하는 사이트라는 것입니다. 즉, GitHub Pages에 블로그를 만들면 단순히 나의 글들을 온라인상에 백업할 수 있을 뿐만 아니라 블로그에 대한 버전 관리를 할 수 있게 된다는 것을 뜻합니다.[^saltfactory_3] IT 개발자처럼 기술의 변화 속도가 빠른 분야에 있는 사람들은 블로그를 운영하더라도 수시로 글을 업데이트 해줘야 하는데 이런 점에서 GitHub Pages는 엄청난 장점을 가집니다.
 
-게다가 GitHub Pages의 호스팅 서비스는 무료입니다. 이쯤되면 적어도 개발자라면 Jekyll과 GitHub로 블로그를 안 만드는 것이 이상할 정도입니다. 그 외에도 많은 장점들이 있지만 지금까지 소개한 참고 자료에서도 충분히 소개하는 내용이라 다 정리하지는 않겠습니다. 하지만 직접 사용해보면 장점들을 바로 경험할 수 있습니다.
+게다가 GitHub Pages의 호스팅 서비스는 무료입니다. 이쯤되면 적어도 개발자라면 Jekyll과 GitHub로 블로그를 안 만드는 것이 이상할 정도입니다.
 
 이제 Jekyll과 GitHub Pages에 대해서 살펴봤으니 본격적으로 Jekyll을 이용하여 GitHub Pages에 블로그를 만드는 방법에 대해서 알아보도록 하겠습니다.
 
@@ -162,7 +162,7 @@ $ git push origin master
 
 [^kalkin7]: 블로그를 운영하는 방식의 종류와 각 방식들의 장단점에 대한 내용은 [kalkin7님](http://blog.kalkin7.com)이 쓰신 [내 글을 오래 남기기 위한 블로그 선택](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)이란 글에 잘 정리되어 있습니다. [kalkin7님](http://blog.kalkin7.com)의 글에는 Jekyll과 GitHub를 사용하여 블로깅을 할 경우의 장점에 대해서도 잘 정리되어 있습니다.
 
-[^saltfactory_1]: [saltfactory님](http://blog.saltfactory.net)이 쓰신 [Tistory에서 Jekyll을 이용하여 GitHub Pages로 블로그 이전](http://blog.saltfactory.net/note/renewal-blog-from-tistory-to-github-pages-via-jekyll.html)이란 글에도 Jekyll과 GitHub의 장점이 잘 나와 있습니다. 무엇보다 [saltfactory님](http://blog.saltfactory.net)의 경우 블로그 자체가 정말 충실합니다.
+[^saltfactory_1]: [saltfactory님](http://blog.saltfactory.net)이 쓰신 [Tistory에서 Jekyll을 이용하여 GitHub Pages로 블로그 이전](http://blog.saltfactory.net/note/renewal-blog-from-tistory-to-github-pages-via-jekyll.html)이란 글에도 Jekyll과 GitHub의 장점이 잘 나와 있습니다. 무엇보다 [saltfactory님](http://blog.saltfactory.net)의 경우 블로그 자체에 좋은 글들이 정말 많습니다.
 
 [^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com)입니다.
 
@@ -170,7 +170,7 @@ $ git push origin master
 
 [^cuspace]: 제가 Jekyll로 블로그를 운영하게 된 데에는 [모두의연구소](http://www.modulabs.co.kr)에서 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)을 이끌고 계시는 [박민수님](https://cuspace.github.io)의 도움이 컸습니다. 박민수님은 개인적으로 [VR 관련 블로그](https://cuspace.github.io)를 Jekyll과 GitHub를 사용해서 운영하고 있습니다.
 
-[^Nolboo]: Jekyll 관련 자료 중에서 한글로 된 포스트 중에서는 [Nolboo님](https://nolboo.github.io)이 정리하신 [지킬로 깃허브에 무료 블로그 만들기](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)라는 글이 가장 정리가 잘 된 것 같습니다. 이 블로그도 처음에는 [Nolboo님](https://nolboo.github.io)의 블로그 글을 따라가면서 제작했습니다.
+[^Nolboo]: Jekyll 관련 자료 중에서 한글로 된 포스트 중에서는 [Nolboo님](https://nolboo.github.io)이 정리하신 [지킬로 깃허브에 무료 블로그 만들기](https://nolboo.github.io/blog/2013/10/15/free-blog-with-github-jekyll/)라는 글이 가장 정리가 잘 된 것 같습니다. 이 블로그도 처음에는 [Nolboo님](https://nolboo.github.io)의 블로그 글을 따라 실습하면서 제작했습니다.
 
 [^saltfactory_2]: [saltfactory님](http://blog.saltfactory.net)의 블로그에도 [Jekyll을 사용하여 GitHub Pages 만들기](http://blog.saltfactory.net/jekyll/upgrade-github-pages-dependency-versions.html)라는 좋은 글이 있지만, [saltfactory님](http://blog.saltfactory.net)의 경우 Ruby 설치 방법과 Ruby 라이브러리들의 의존성에 대한 내용까지 추가되어 처음 Jekyll을 이용하는 사람이 보기에는 어려울 수 있습니다. 참고로 GitHub Pages에서는 라이브러리들의 의존성 정보를 [Dependency versions](https://pages.github.com/versions/)라는 곳에서 제공합니다.
 
