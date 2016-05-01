@@ -5,7 +5,7 @@ date:   2016-04-17 19:45:00 +0900
 categories: Xcode Swift Grammar Tour
 ---
 
-> 이 글은 모두의연구소에서 진행하는 Swift 스터디 모임[^Modulabs]의 발표 자료를 위해 The Swift Programming Language[^Swift] 내용을 요약한 것입니다.
+> 이 글은 모두의연구소에서 진행하는 Swift 스터디 모임 [^Modulabs]의 발표 자료를 위해 The Swift Programming Language [^Swift] 내용을 요약한 것입니다.
 지금은 최대한 원문을 축약해서 영어로 되어 있지만, 나중에 다시 한글로 번역하여 정리할 생각입니다.
 
 * the first program : print "Hello, world!"
