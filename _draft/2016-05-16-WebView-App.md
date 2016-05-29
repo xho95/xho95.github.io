@@ -51,3 +51,16 @@ categories: Project Swift iOS WebView
 
 * 최초 사용자로부터 입력받은 전화번호 로컬에 저장
 * 매번 앱을 켤 때마다 웹으로 전송해서 로그인 할 수 있는지 테스트해야 한다.
+
+### App installation failed : Error Message
+ 
+* solution : [App installation failed due to application-identifier entitlement](http://stackoverflow.com/questions/32677133/app-installation-failed-due-to-application-identifier-entitlement)
+
+
+I had this problem with an iPhone app, and fixed it using the following steps.
+
+* With your device connected, and Xcode open, select **Window/Devices**
+* In the left tab of the window that pops up, select your problem device
+* In the detail panel on the right, remove the offending app from the "Installed Apps" list.
+
+After I did that, my app rebuilt and launched just fine. Since your app is a watchOS app, I'm not sure that you'll have the same result, but it's worth a try.
