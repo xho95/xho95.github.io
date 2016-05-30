@@ -12,25 +12,22 @@ categories: Swift Grammar Strings Characters
     - the syntax : lightweight and readable
     - a string literal syntax : similar to C
     - string concatenation : simple, `+` operator
-    - string mutablity : like other value in Swift
+    - string mutability : like other value in Swift
     - string interpolation : use strings into longer strings
 * `String`
     * encoding-independent Unicode characters
     * Unicode representations
 
-> note:
- `String` : briged with Foundation's `NSString` class
- \
+> `String`
+- bridged with Foundation's `NSString` class
  Foundation framework in Cocoa
- \
-    : entire `NSString` API is available to call on any `String` value
- \
-    : use a `String` value with any API that requires an `NSString` instance
+- entire `NSString` API is available to call on any `String` value
+- use a `String` value with any API that requires an `NSString` instance
 
 ### String Literals
 
 * include predefined `String` values : string literals
-* string literal : a fiexed sequence of textual characters surrounded by a pair of double quotes ("")
+* string literal : a fixed sequence of textual characters surrounded by a pair of double quotes ("")
 - use a string literal as an initial value
 
 ```swift
@@ -51,7 +48,7 @@ var emptyString = ""                // empty string literal
 
 var anotherEmptyString = String()   // initializer syntax
 
-// these two strings are both empty, and are qeuivalent to each other
+// these two strings are both empty, and are equivalent to each other
 ```
 
 * whether a `String` value is empty : `isEmpty` property
@@ -81,26 +78,25 @@ let constantString = "Highlander"
 
 // this reports a compile-time error - a constant string cannot be modified
 ```
-> note:
- different from string mutation in Objective-C and Cocoa : NSString, NSMutableString
+> different from string mutation in Objective-C and Cocoa : `NSString`, `NSMutableString`
 
 
 ### Strings Are Value Types
 
 * Swift's `String` : a value type
-    * copied when it is passed, or when it is assigend
-    * the new copy is pssed or assigned, not the original version
+    * copied when it is passed, or when it is assigned
+    * the new copy is passed or assigned, not the original version
 - Swift's copy-by-default `String` behavior
     - it is clear that you own that exact `String` value
     - the string you are passed will not be modified unless you modify it yourself
 * Swift's compiler optimizes string usage
     * actual copying takes place only when absolutely necessary
-    * greate performance when working with strings
+    * great performance when working with strings
 
 
 ### Working with Characters
 
-* access the indevidual `Character` values for a `String`
+* access the individual `Character` values for a `String`
     * `characters` property with a `for-in` loop
 
 ```swift
@@ -167,10 +163,8 @@ welcome_1.append(exclamationMark_2)
 
 // welcome now equals "hello there!"
 ```
-> note:
- can't append a `String` or `Character` to an existing `Character` variable
- \
- a `Character` value must contain a single character only
+> can't append a `String` or `Character` to an existing `Character` variable
+- a `Character` value must contain a single character only
 
 
 ### String Interpolation
@@ -189,12 +183,9 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 
 * this placeholder is replaced with the actual value
 
-> note:
- the expressions
- \
- cannot contain an unescaped backslash(`\`), a carriage return, or a line feed
- \
- can contain other string literals
+> the expressions
+ - cannot contain an unescaped backslash(`\`), a carriage return, or a line feed
+ - can contain other string literals
 
 
 ### Unicode
@@ -320,21 +311,19 @@ print("the number of characters in \(word) is \(word.characters.count)")
 // Prints "the number of characters in café is 4"
 ```
 
-> note:
- Extended grapheme clusters : composed of one or more Unicode scalars
- \
- means that different characters and different representations of the same character can require different amounts of memory to store
- \
- characters in Swift do not each take up the same amount of memory within a string's representation
- \
- the number of characters in a string cannot be calculated without iterating through the string to determine its extended grapheme cluster boundaries
- \
- `characters` property must iterate over the Unicode scalars in the entire string in order to determine the characters for that sting : long string values - be aware that !
- \
- \
- the count of the characters : not always the same as the `length` property of an `NSString`
- \
- the length of an `NSString` : the number of 16-bit code units within the string's UTF-16 representation
+> Extended grapheme clusters : composed of one or more Unicode scalars
+
+> different characters and different representations of the same character can require different amounts of memory to store
+
+> characters in Swift do not each take up the same amount of memory within a string's representation
+
+> the number of characters in a string cannot be calculated without iterating through the string to determine its extended grapheme cluster boundaries
+
+> `characters` property must iterate over the Unicode scalars in the entire string in order to determine the characters for that sting : long string values - be aware that !
+
+> the count of the characters : not always the same as the `length` property of an `NSString`
+
+> the length of an `NSString` : the number of 16-bit code units within the string's UTF-16 representation
 
 
 ### Accessing and Modifying a String
