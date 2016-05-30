@@ -19,10 +19,13 @@ categories: Swift Grammar Strings Characters
     * Unicode representations
 
 > `String`
-- bridged with Foundation's `NSString` class
+
+> bridged with Foundation's `NSString` class
  Foundation framework in Cocoa
-- entire `NSString` API is available to call on any `String` value
-- use a `String` value with any API that requires an `NSString` instance
+
+> entire `NSString` API is available to call on any `String` value
+
+> use a `String` value with any API that requires an `NSString` instance
 
 ### String Literals
 
@@ -164,7 +167,8 @@ welcome_1.append(exclamationMark_2)
 // welcome now equals "hello there!"
 ```
 > can't append a `String` or `Character` to an existing `Character` variable
-- a `Character` value must contain a single character only
+
+> a `Character` value : a single character only
 
 
 ### String Interpolation
@@ -241,7 +245,7 @@ let sparklingHeart = "\u{1F496}"    // 💖, Unicode scalar U+1F496
     * produce a single human-readable character
 - the letter `é`
     - represented as the single Unicode scalar `é` : `U+00E9`
-    - represented as a pair of scalars : `e` (`U+0065`) + ` ́` (`U+0301`)
+    - represented as a pair of scalars : `e` (`U+0065`) + `\ ́` (`U+0301`)
 * In both cases, the letter `é` - a single Swift `Character` value
 
 ```swift
