@@ -245,7 +245,7 @@ let sparklingHeart = "\u{1F496}"    // 💖, Unicode scalar U+1F496
     * produce a single human-readable character
 - the letter `é`
     - represented as the single Unicode scalar `é` : `U+00E9`
-    - represented as a pair of scalars : `e` (`U+0065`) + ` ́ ́` (`U+0301`)
+    - represented as a pair of scalars : `e` (`U+0065`) + `` ́` (`U+0301`)
 * In both cases, the letter `é` - a single Swift `Character` value
 
 ```swift
