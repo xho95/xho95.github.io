@@ -299,7 +299,7 @@ print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
 
 * string concatenation and modification may not always affect a string's character count
     * extended grapheme clusters for `Character` values
-- ex) cafe + ` ́` (`U+0301`) = a character count of `4`
+- ex) cafe + `\ ́` (`U+0301`) = a character count of `4`
 
 ```swift
 var word = "cafe"
@@ -461,7 +461,7 @@ if quotation == sameQuotation {
     * extended grapheme clusters are **canonically equivalent**
     * **canonically equivalent** : the same linguistic meaning and appearance
     * even if they are composed from different Unicode scalars
-- ex) `é` (`U+00E9`) `== e` (`U+0065`) + ` ́` (`U+0301`)
+- ex) `é` (`U+00E9`) `== e` (`U+0065`) + `\ ́` (`U+0301`)
 
 ```swift
 // "Voulez-vous un café?" using LATIN SMALL LETTER E WITH ACUTE
