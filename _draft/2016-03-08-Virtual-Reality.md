@@ -27,6 +27,12 @@ categories: Resources Softwares Hardwares VR
 
 [Unity Event Functions](http://docs.unity3d.com/Manual/ExecutionOrder.html) : Unity이 이벤트 루프가 돌 때, 호출되는 함수들에 대해 설명한 페이지이다.
 
+### Unreal Engine
+
+[Virtual Reality Development](https://docs.unrealengine.com/latest/INT/Platforms/VR/)
+
+[Amazon Unreal Engine Books](http://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=unreal+engine)
+
 
 ### Three.js
 
