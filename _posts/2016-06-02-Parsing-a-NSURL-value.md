@@ -25,7 +25,7 @@ NSURLComponents의 queryItems 속성은 URL 요소들을 이름, 값 쌍의 배�
 
 "http://www.myurl.com?param1=value1&param2=value2" 이라는 주소가 있을 경우 `param2`에 해당하는 `value2`를 리턴하는 함수는 다음과 같습니다.
 
-```Swift
+```swift
 import Foundation
 
 func ParsingURL(url: String) -> String {
