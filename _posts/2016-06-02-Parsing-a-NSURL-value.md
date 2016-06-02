@@ -30,7 +30,7 @@ NSURLComponents 클래스는 `RFC 3986`에 기초하여 URL을 파싱하고, 구
 NSURLComponents 클래스의 queryItems 속성은 URL 요소들을 name/value 쌍의 배열로 저장합니다. 여기서 name/value 쌍은 NSURLQueryItem 타입입니다.  
 이 queryItems 속성을 사용하면 url에서 원하는 부분을 name을 키(key)로 해서 찾을 수 있습니다.
 
-> queryItems가 아니라 query를 사용해서 파싱하는 방법[^NSURL query]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.
+> queryItems가 아니라 query를 사용해서 파싱하는 방법[^NSURL_query]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.
 
 ### Sample Code
 
@@ -68,7 +68,7 @@ for item in queryItems! {
 }
 ```
 
-다음과 괕은 결과를 얻을 수 있습니다.
+다음과 같은 결과를 얻을 수 있습니다.
 
 ```
 [param1 : value1]
@@ -83,7 +83,7 @@ URL을 파싱하기 위한 **RFC** 및 **RFC 3986** 이 무엇인지는 아직 �
 
 [^NSURLComponents]: NSURLComponents 클래스에 대한 설명은 애플의 reference 사이트인 [NSURLComponents Class Reference](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLComponents_class/#//apple_ref/occ/instp/NSURLComponents/queryItems) 부분을 참고하시면 됩니다.
 
-[^NSURL query]: NSURL의 query를 사용해서 url을 파싱하는 방법은 [stackoverflow: Parse NSURL query property](http://stackoverflow.com/questions/3997976/parse-nsurl-query-property) 에 잘 설명되어 있습니다.
+[^NSURL_query]: NSURL의 query를 사용해서 url을 파싱하는 방법은 [stackoverflow: Parse NSURL query property](http://stackoverflow.com/questions/3997976/parse-nsurl-query-property) 에 잘 설명되어 있습니다.
 
 [Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/)
 
