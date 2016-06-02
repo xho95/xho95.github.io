@@ -16,7 +16,7 @@ NSURL을 사용하여 URL을 다루다보면 URL중에서 특정 부분만을 �
 
 NSURLComponents 클래스는 `RFC 3986`에 기초하여 URL을 파싱하고, 그것의 구성 요소들로 URL을 만들기 위해 설계된 클래스입니다.[^NSURLComponents] 애플의 문서에 따르면 NSURL은 예전 RFC를 따르기 때문에 NSURLComponents와는 동작방식이 조금 다르다고 합니다. 하지만, NSURL과 NSURLComponents는 서로 쉽게 변환할 수 있다고 합니다. 보다 자세한 내용은 애플의 [NSURLComponents Class Reference](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLComponents_class/) 를 참고하면 될 것 같습니다.
 
-#### `queryItems` property
+#### **queryItems** property
 
 NSURLComponents의 queryItems 속성은 URL 요소들을 이름, 값 쌍의 배열로 저장합니다.  
 이중에서 원하는 부분을 이름을 통해서
