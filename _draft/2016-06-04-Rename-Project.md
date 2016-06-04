@@ -5,17 +5,21 @@ date:   2016-06-04 03:30:00 +0900
 categories: Xcode Project Rename Scheme
 ---
 
+Xcode로 작업을 하다보면 이미 상당히 진행된 프로젝트나 완료된 프로젝트의 이름을 바꿔야 할 경우가 생깁니다.
+이때, 기존 코드와는 상관없이 프로젝트 이름만을 변경하거나 더 나아가서 bundle identifier 까지 변경하고자 할 수 있는데, 이 상황에서 도움이 되는 동영상[^Rename]을 알게 되어 글로 정리합니다.  
+
 ### 프로젝트 이름 바꾸기
 
-* 아래 동영상의 내용을 풀어서 정리하자!
-* 프로젝트 이름만 바꾸는 것은 쉽다.
+프로젝트의 이름만 바꾸는 것은 쉽다.
 
-* 프로젝트를 선택한 상태에서 오른쪽 File Inspector 창의 **Identity and Type** 의 **Name** 에 위치한 값을 원하는 프로젝트 이름으로 바꾼다.
-* 그러면 하나의 창이 뜨는데 바꾸는 것을 선택한다.
-* 그다음, scheme 메뉴에서 **Manage scheme...** 을 선택하여 뜨는 창에서 scheme을 바꾼다.
-* 여기까시 하면 프로젝트 이름을 바꾸는 것은 된 것이다.
+우선 프로젝트를 선택한 상태에서 오른쪽 **File Inspector** 창의 **Identity and Type** 의 **Name** 에 위치한 값을 원하는 이름으로 바꿔줍니다.
+그러면 하나의 창이 뜨는데 바꾸는 것을 선택한다.
+그다음, scheme 메뉴에서 **Manage scheme...** 을 선택하여 나타나는 대화창에서 scheme에 해당하는 값을 원하는 이름으로 바꿔줍니다.
 
-### 빌드 세팅 바꾸기
+이렇게 하면 프로젝트 이름을 바꾸는 것까지 완료됩니다.
+다만, 실제로는 프로젝트 이름을 바꾸면서 관련 폴더명이나 더 나아가서 bundle identifier 값도 바꿔주고 싶을 경우가 있습니다. 이럴 때는 이어지는 절에서 설명한 방법대로 진행하면 됩니다. 
+
+### 폴더 이름 바꾸기
 
 * 아래 동영상의 내용을 풀어서 정리하자!
 * 빌드 세팅까지 바꾸는 것은 조금 복잡하다.
@@ -28,6 +32,9 @@ categories: Xcode Project Rename Scheme
 * 이제 각 그룹 폴더를 선택한 다음 **Identity and Type** 의 **Location** 에 있는 폴더 모양을 선택한다.
 * 그러면 폴더를 선택할 수 있는 대화창이 나타나는데, 여기서 위에 이름을 바꿔준 폴더를 선택하면 된다.
 * Tests 관련 폴더들도 위와 같은 방식으로 동일하게 작업해준다.
+
+### 빌드 세팅 바꾸기
+
 * 프로젝트의 **Build Settings** 에서 `plist`를 검색한다. **Info.plist File** 에서 앞부분을 바꾼 프로젝트 이름으로 설정한다.
 * 이 때, 대표값을 바꾸면 **Debug** 와 **Release** 값들이 같이 바뀐다.
 * **Product Bundle Identifier** 부분도 변경된 프로젝트 이름과 같이 바꿔준다.
@@ -41,10 +48,7 @@ categories: Xcode Project Rename Scheme
 
 ### 참고 자료
 
-#### Xcode 7 - 가장 좋은 자료
-
-* [Video: How to Rename Xcode 7 Project Thoroughly](https://www.youtube.com/watch?v=jRnVjtNLLLk)
-* [Website: How to Rename Xcode 7 Project Thoroughly](http://www.marsoftek.com/how-to-rename-xcode-7-project-thoroughly/)
+[^Rename]: 파일 이름을 변경하는 많은 자료들이 있는데, [Video: How to Rename Xcode 7 Project Thoroughly](https://www.youtube.com/watch?v=jRnVjtNLLLk) 여기 만큼 확실하게 정리한 곳은 없는 것 같습니다.
 
 #### older Xcode - 몇 몇 자료는 너무 예전 방식인 듯 하다.
 
