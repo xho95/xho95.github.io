@@ -4,6 +4,7 @@ title:  "Xcode: 프로젝트 이름 바꾸기"
 date:   2016-06-04 03:30:00 +0900
 categories: Xcode Project Rename Scheme
 ---
+
 ### 프로젝트 이름 바꾸기
 
 * 아래 동영상의 내용을 풀어서 정리하자!
