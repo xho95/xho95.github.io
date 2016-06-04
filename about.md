@@ -16,11 +16,11 @@ Swift를 이용해서 이것저것 만들어 보려는 개발자입니다.
 
 아울러, 토요일에는 성남시 정자동에서 하는 [Swift 스터디 모임](http://cafe.naver.com/studyios)에, 일요일에는 수원에서 하는 [C++ 스터디 모임](http://cafe.naver.com/multism)에 참여하고 있습니다.
 
-한 때, 개인 홈페이지를 운영하다가 흐지부지 되었는데, 그동안 공부한 내용들을 기록하기 위해 블로그를 다시 시작하게 되었습니다.
+한 때, 개인 홈페이지를 운영하다가 흐지부지 되었는데, 스스로 공부한 내용들을 기록하기 위해 블로그를 다시 시작하게 되었습니다.
 
-블로그로는 Tistory와 WordPress 등을 알아보다가 [VRtooN 연구실](http://www.modulabs.co.kr/#!vrtoon/cl0n)에서 랩장을 맡고 계신 [박민수](https://cuspace.github.io)님의 도움으로 Jekyll과 GitHub를 이용해서 블로그를 제작해보게 되었습니다.
+블로그는 [VRtooN](http://www.modulabs.co.kr/#!vrtoon/cl0n) 연구실에서 랩장을 맡고 계신 [박민수](https://cuspace.github.io)님의 도움으로 Jekyll과 GitHub를 이용해서 제작해 보았습니다.
 
-앞으로 기회가 있을 때마다 Swift를 중심으로 블로그를 업데이트해 나가도록 하겠습니다.
+앞으로 기회가 있을 때마다 틈틈이 블로그를 업데이트해 나가도록 하겠습니다.
 
 고맙습니다.
 
