@@ -18,7 +18,7 @@ categories: Swift Grammar Collection Types Array Set Dictionary
 ## Mutability of Collections
 
 * mutable : assign it to a variable - change (or mutate) the collection
-* immutable : assign the collections to a constant - its size and contents cannnot be changed
+* immutable : assign the collections to a constant - its size and contents cannot be changed
 
 > note:
  to create immutable collections : enable the Swift compiler to optimize the performance
@@ -26,16 +26,16 @@ categories: Swift Grammar Collection Types Array Set Dictionary
 ## Arrays
 
 * an **array** : stores values of the same type in an ordered list
-    * the same value can appear in an array mutiple times
+    * the same value can appear in an array multiple times
 
 > note:
- Swift's `Array` type : briged to Foundation's `NSArray` class
+ Swift's `Array` type : bridged to Foundation's `NSArray` class
 
 ### Array Type Shorthand Syntax
 
 * the type of a Swift array :
     * `Array<Element>` - `Element` is type of values the array is allowed to store
-    * `[Element]` : shorthand form - preferfed
+    * `[Element]` : shorthand form - preferred
 
 ### Creating an Empty Array
 
@@ -51,7 +51,7 @@ print("someInts is of type [Int] with \(someInts.count) items.")
 
 * `someInts` : inferred to be `[Int]`
 - create an empty array : an empty array literal - `[]` (an empty pair of square brackets)
-    - if the context already privides type information
+    - if the context already provides type information
 
 ```swift
 someInts.append(3)
@@ -65,7 +65,7 @@ someInts = []
 
 ### Creating an Array with a Default Value
 
-* an initializer : creating an arry of a certain size with the same default value
+* an initializer : creating an array of a certain size with the same default value
     * `count` : the number of items
     * `repeatedValue` : a default value of the appropriate type
 
@@ -77,7 +77,7 @@ var threeDoubles = [Double](count: 3, repeatedValue: 0.0)
 
 ### Creating an Array by Adding Two Arrays Together
 
-* create a new array by adding together : the addition operater(`+`)
+* create a new array by adding together : the addition operator(`+`)
 
 ```swift
 var anotherThreeDoubles = [Double](count: 3, repeatedValue: 2.5)
@@ -95,7 +95,7 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 ```
  [value 1, value 2, value 3]
-``
+```
 
 ```swift
 var shoppingList_1: [String] = ["Eggs", "Milk"]
@@ -103,7 +103,7 @@ var shoppingList_1: [String] = ["Eggs", "Milk"]
 // shoppingList_1 has been initialized with two initial items
 ```
 
-* `shoppintList_1` : an array of string values - `[String]` (store `String` values only)
+* `shoppingList_1` : an array of string values - `[String]` (store `String` values only)
 
 > note:
  declared as a variable : more items are added
@@ -182,7 +182,7 @@ shoppingList_2[0] = "Six eggs"
 ```
 
 * **subscript syntax** : to change a range of values at once
-    * even if the replacement set of values has a differenct length
+    * even if the replacement set of values has a different length
 
 ```swift
 shoppingList_2[4...6] = ["Bananas", "Apples"]
@@ -278,7 +278,7 @@ for (index, value) in shoppingList_2.enumerate() {
         * the order of items is not important
         * ensure that an item only appears once
 > note:
- Swift's `Set` type : briged to Foundation's `NSSet` class
+ Swift's `Set` type : bridged to Foundation's `NSSet` class
 
 ### Hash Values for Set Types
 
@@ -309,7 +309,7 @@ for (index, value) in shoppingList_2.enumerate() {
 
 * the type of a Swift set :
     * `Set<Element>` : `Element` - the type that the set is allowed to store
-    * sets do not have an equvalenet shorthand form
+    * sets do not have an equivalent shorthand form
 
 ### Creating and Initializing an Empty Set
 
@@ -324,7 +324,7 @@ print("letters is of type Set<Character> with \(letters.count) items.")
 ```
 
 > note:
- `letters` : infered to be `Set<Character>` from the type of the initializer
+ `letters` : inferred to be `Set<Character>` from the type of the initializer
 
 * if the context already provides type information
 * create an empty set : an empty array literal
@@ -354,7 +354,7 @@ var favoriteGenres_1: Set<String> = ["Rock", "Classical", "Hip Hop"]
 > note:
  declared as a variable : items are added and removed
 
-* a set type : connot be inferred - the type `Set` must be explicitly declared
+* a set type : cannot be inferred - the type `Set` must be explicitly declared
 * Swift's type inference : don't have to write the type of the set with an array literal
 - written in a shorter form
 
@@ -460,7 +460,7 @@ for genre in favoriteGenres_2.sort() {
 ### Fundamental Set Operations
 
 * `intersect(_:)` : to create a new set with only the values common to both sets
-* `exclusiveOr(_:)` : to create a new set with values in either est, but not both
+* `exclusiveOr(_:)` : to create a new set with values in either set, but not both
 * `union(_:)` : to create a new set with all of the values in both sets
 * `subtract(_:)` : to create a new set with values not in the specified set
 
@@ -529,7 +529,7 @@ farmAnimals.isDisjointWith(cityAnimals)
     * use a dictionary : to look up values based on their identifier
 
 > note:
- Swift's `Dictionary` type : briged to Foundation's `NSDictionary` class
+ Swift's `Dictionary` type : bridged to Foundation's `NSDictionary` class
 
 ### Dictionary Type Shorthand Syntax
 
@@ -541,7 +541,7 @@ farmAnimals.isDisjointWith(cityAnimals)
 > note:
  a dictionary `Key` type : conform to the `Hashable` protocol
 
-     * `[Key: Value]` : shorthand form - preferfed
+* `[Key: Value]` : shorthand form - preferred
 
 ### Creating an Empty Dictionary
 
@@ -589,7 +589,7 @@ var airports_1: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 * initialized with a dictionary literal containing two key-value pairs
 - two `String: String` pairs
     - a dictionary with only `String` keys, and only `String` values
-* dont' have to write the type of the dictionary : consistent types - a shorter form
+* don't have to write the type of the dictionary : consistent types - a shorter form
 
 ```swift
 var airports_2 = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
@@ -620,7 +620,7 @@ if airports_2.isEmpty {
 // Prints "The airports_2 dictionary is not empty."
 ```
 
-* subsript syntax : add a new item to a dictionary
+* subscript syntax : add a new item to a dictionary
     * a new key : appropriate type as the subscript index, a new value : appropriate type
 
 ```swift
@@ -629,7 +629,7 @@ airports_2["LHR"] = "London"
 // the airports_2 dictionary now contains 3 items
 ```
 
-* subsript syntax : to change the value associated with a particular key
+* subscript syntax : to change the value associated with a particular key
 
 ```swift
 airports_2["LHR"] = "London Heathrow"
