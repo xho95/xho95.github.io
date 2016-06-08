@@ -1,54 +1,85 @@
 ## Git 사용법
 
-* 본 내용은 ProGit 번역본을 기준으로, 여러 곳의 정보들을 모아서 정리한 것입니다.[^ProGit] ProGit 내용은 전체중에서 가장 기본이 되는 2장의 내용을 참고하였습니다.[^ProGit_Ch2]
+본 내용은 ProGit 번역본을 기준으로, 여러 곳의 정보들을 모아서 정리한 것입니다.[^ProGit] ProGit 내용은 전체중에서 가장 기본이 되는 2장의 내용을 참고하였습니다.[^ProGit_Ch2]
 
 
 ### Git 저장소 만들기
 
 #### 기존 프로젝트를 Git 저장소로 만드는 방법
 
-* 기존 프로젝트를 Git으로 관리하고 싶으면, 해당 프로젝트의 디렉토리에서 `git init`을 실행한다.
+기존 프로젝트를 Git으로 관리하고 싶으면, 해당 프로젝트의 디렉토리에서 `git init`을 실행한다.
 
 ```
-git init
+$ git init
 ```
 
-* 위와 같이 하면 `.git`이라는 숨김 디렉토리를 만든다.
+위와 같이 하면 `.git`이라는 숨김 디렉토리를 만든다.
 
 #### 다른 서버에 있는 저장소를 Clone하는 방법
 
-* 다른 프로젝트에 참여하거나 그 프로젝트의 Git 저장소를 복사하고 싶으면, `git clone`을 실행한다. `git clone`을 실행하면 프로젝트 히스토리를 전부 받는다.
+다른 프로젝트에 참여하거나 그 프로젝트의 Git 저장소를 복사하고 싶으면, `git clone`을 실행한다. `git clone`을 실행하면 프로젝트 히스토리를 전부 받는다.
 
 ```
-git clone https://github.com
+$ git clone https://github.com/libgit2/libgit2
+
+$ git clone https://github.com/libgit2/libgit2 mylibgit
 ```
 
+위에서 첫번째 줄은 저장소의 데이터를 현재 디렉토리에 같은 이름의 디렉토리를 만들면서 clone하는 방법이며, 동일한 디렉토리로 두번째 줄은 저장소의 데이터를 다른 디렉토리에 저장할 경우이다.
 
 #### GitHub에서 알려주는 저장소 만드는 방법
 
-* **GitHub** 에 저장소를 만들고 나서 저장소를 들어가면, 아래와 같이 기본 설명을 해주는데, 여기에 Git `init`부터 `push`까지의 설명이 사실상 되어 있다.[^GitHub] 
+**GitHub** 에 저장소를 만들고 나서 저장소를 들어가면, 아래와 같이 기본 설명을 해주는데, 여기에 Git `init`부터 `push`까지의 설명이 사실상 되어 있다.[^GitHub] 
 
 
 ```
-echo "# GitTest" >> README.md
+$ echo "# GitTest" >> README.md
 
-git init
+$ git init
 
-git add README.md
-git commit -m "first commit"
+$ git add README.md
+$ git commit -m "first commit"
 
-git remote add origin https://github.com/modulabs/GitTest.git
-git push -u origin master
+$ git remote add origin https://github.com/modulabs/GitTest.git
+$ git push -u origin master
+```
+
+위에서 origin에 할당할 저장소는 이미 만들어져 있어야 한다. 나중에 터미널에서 직접 저장소를 만드는 방법을 알아보자. 
+
+### 수정하고 저장소에 저장하기
+
+파일의 라이프 사이클은 참고 자료를 확인한다.[^ProGit_Ch2_2]
+
+* Untracked
+* Unmodified
+* Modified
+* Staged
+
+#### 파일 상태 확인하기
+
+`git status` 명령으로 파일의 상태를 확인할 수 있다.
+```
+$ git status
+```
+
+새로 추가된 파일들은 Untracked 상태인데, 이런 파일들은 Tracked 상태가 되어야만 커밋할 수 있다.
+
+#### 파일 추가하기
+
+`git add` 명령으로 파일을 새로 추가할 수 있다.
+
+```
+$ git add .
 ```
 
 ### Git 명령어
 
 #### Git 기본 명령어들
  
-* 터미널에서 `git --help`를 입력하면 기본 사용법이 나오는데, 이 때 기본 명령어들에 대한 간단한 설명들이 나온다. 
+터미널에서 `git --help`를 입력하면 기본 사용법이 나오는데, 이 때 기본 명령어들에 대한 간단한 설명들이 나온다. 
 
 ```
-git --help
+$ git --help
 ```
 
 #### 작업 공간 시작하기
@@ -97,7 +128,11 @@ git --help
 
 ### 참고 자료
 
-* [^ProGit]: [Pro Git Book (한글판 v2.0)](https://git-scm.com/book/ko/v2/)
-* [^ProGit_Ch2]: [2.1 Git의 기초 - Git 저장소 만들기](https://git-scm.com/book/ko/v2/Git의-기초-Git-저장소-만들기)
-* [^GitHub]: [GitHub](https://github.com)
-* [누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/)
+[^ProGit]: [Pro Git Book (한글판 v2.0)](https://git-scm.com/book/ko/v2/)
+
+[^ProGit_Ch2]: [2.1 Git의 기초 - Git 저장소 만들기](https://git-scm.com/book/ko/v2/Git의-기초-Git-저장소-만들기)
+
+[^ProGit_Ch2_2]: [2.2 Git의 기초 - 수정하고 저장소에 저장하기](https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기)
+[^GitHub]: [GitHub](https://github.com)
+
+[누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/)
