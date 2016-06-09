@@ -64,13 +64,83 @@ $ git status
 
 새로 추가된 파일들은 Untracked 상태인데, 이런 파일들은 Tracked 상태가 되어야만 커밋할 수 있다.
 
-#### 파일 추가하기
+아래와 같이 `git status -s` 명령을 사용하면 파일들의 상태를 간단한 형태로 보여준다.
+```bash
+$ git status -s
 
-`git add` 명령으로 파일을 새로 추가할 수 있다.
+$ git status --short
+```
+
+#### 파일을 추가하기
+
+`git add` 명령으로 파일을 Tracked 상태 또는 Staged 상태로 추가할 수 있다.
 
 ```
 $ git add .
 ```
+
+`git add` 명령은 해당 파일이 Tracked 상태가 되는데, 이중에서도 커밋이 가능한 Staged 상태로 만든다. add는 프로젝트에 파일을 추가한다는 의미보다는 다음 커밋에 파일을 추가한다고 이해하는 것이 좋다.[^ProGit_Ch2_2]
+
+#### 파일 무시하기
+
+무시하고 싶은 파일들은 `.gitignore` 파일에 파일 패턴을 적으면 된다.
+
+```
+$ cat .gitignore
+*.[oa]
+*~
+```
+`.gitignore` 파일은 표준 Glob 패턴을 사용한다. Glob 패턴은 정규표현식을 단순하게 만든 것으로 이해하면 된다.
+
+**GitHub**는 다양한 프로젝트에서 사용하는 `.gitignore` 예제를 관리하고 있으므로, 참고하면 좋다.[^GitHubIgnore]
+
+#### 파일 변경 내용을 보기
+
+`git diff` 명령을 사용하여 파일에서 어떤 내용이 변경됐는지를 살펴볼 수 있다. 
+
+```
+$ git diff
+```
+
+`git diff` 명령은 수정했지만 아직 staged 상태가 아닌 파일을 비교해 볼 수 있다. 이 명령은 워킹 디렉토리에 있는 것과 staging area에 있는 것을 비교한다.
+
+커밋하려고 staging Area에 넣은 파일에서 변경된 부분을 보고 싶으면 `git diff --cached` 옵션을 사용하면 된다. 
+
+```
+$ git diff --cached
+
+$ git diff --staged
+```
+
+위에서와 같이 `git diff --staged`도 같은 역할을 하는데, `git diff --cached`와 `git diff --staged`의 차이는 무엇인지 아직 잘 모르겠다.
+
+```
+$ git difftool --tool-help
+```
+
+위의 명령을 사용해서 사용가능한 외부 Diff 도구를 선택해서 쓸 수 있다.
+
+#### 변경 사항 커밋하기
+
+`git commit` 명령을 사용하여 커밋을 수행한다.
+
+```
+$ git commit
+```
+
+`git commit`은 에디터를 실행하면서 사용자가 커밋 메시지를 입력하게 한다. 명령과 동시에 메시지를 넣어서 커밋하고 싶다면, `git commit -m` 명령을 사용한다.
+
+```
+$ git commit -m "my message"
+```
+
+#### Staging Area 생략하기
+
+`git commit` 실행할 때, `-a` 옵션을 추가하면 된다.
+
+#### 파일 삭제하기
+
+`git rm` 명령으로 tracked 상태의 파일을 삭제한 후에, 커밋하면 된다.
 
 ### Git 명령어
 
@@ -136,3 +206,5 @@ $ git --help
 [^GitHub]: [GitHub](https://github.com)
 
 [누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/)
+
+[^GitHubIgnore]: [GitHub .ignore](https://github.com/github/gitignore)
