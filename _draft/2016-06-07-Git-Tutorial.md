@@ -183,6 +183,46 @@ $ git log -p
 $ git log --pretty=oneline
 ```
 
+### 원격 저장소
+
+#### 원격 저장소 확인하기
+
+`git remote` 명령을 사용한다.
+
+`-v` 옵션을 주면 단축 이름과 URL을 함께 볼 수 있다.
+
+```
+$ git remote -v
+```
+
+#### 원격 저장소 추가히기
+
+`git remote add [name] [url]` 명령을 사용하여 url 원격 저장소를 name 이라는 이름으로 추가한다.
+
+#### 원격 저장소의 내용 가져오기
+
+`git fetch [name]` 명령을 사용하면 현재 작업 디렉토리에는 없지만 원격 저장소에는 있는 데이터를 모두 가져온다. 그러면 원격 저장소의 모든 브랜치를 가져오므로 언제든지 merge 하거나 내용을 살펴볼 수 있다.
+
+저장소를 clone 하면 자동으로 원격 저장소를 `origin`이라는 이름으로 추가한다.
+
+`git fetch`는 원격 저장소의 데이터를 모두 가져오지만, 자동으로 merge 하지는 않는다. 그래서 fetch 이후에는 수동으로 merge를 해야 한다.
+
+`git pull` 명령을 사용하면 원격 저장소 브랜치에서 데이터를 가져오면서 자동으로 지역 브랜치와 merge를 수행한다. 
+
+`git clone`의 경우 자동으로 지역의 master 브랜치가 원격 저장소의 master 브랜치를 추적하도록 한다.
+
+#### 원격 저장소에 내용 전달하기
+
+`git push [name] [branch]` 명령을 사용하면 해당 브랜치를 name으로 설정한  upstream 저장소에 push 한다.
+
+```
+$ git push origin master
+```
+
+위와 같이 하면 master 브랜치를 origin 서버에 push한다. 
+
+push는 다른 사람이 push한 후에는 할 수 없다. 먼저 다른 사람이 작업한 것을 가져와서 merge 한 후에 push를 할 수 있다.
+
 ### 참고 자료
 
 [누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/)
