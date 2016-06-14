@@ -55,6 +55,9 @@ $ git push -u origin master
 * Modified
 * Staged
 
+staging area에 대한 정확한 이해가 필요할 것 같다. - 일단은 staged 파일들이 모여있는 곳이 staging area인 듯 하다.
+
+
 #### 파일 상태 확인하기
 
 `git status` 명령으로 파일의 상태를 확인할 수 있다.
@@ -140,71 +143,58 @@ $ git commit -m "my message"
 
 #### 파일 삭제하기
 
-`git rm` 명령으로 tracked 상태의 파일을 삭제한 후에, 커밋하면 된다.
+`git rm` 명령으로 tracked 상태의 파일을 삭제한 후에, 커밋하면 된다. 파일이 staging area에 있는 것이 아니면 그냥 `rm` 명령으로는 삭제가 되지 않는다.
 
-### Git 명령어
+일단 `git rm` 명령을 실행하면 파일이 삭제되면서 staged 상태가 되며, 이후에 커밋을 하게 되면 파일은 실제로 삭제되면 Git에서 이 파일을 더 이상 추적하지 않는다. 
 
-#### Git 기본 명령어들
- 
-터미널에서 `git --help`를 입력하면 기본 사용법이 나오는데, 이 때 기본 명령어들에 대한 간단한 설명들이 나온다. 
+수정한 파일이나 staging area에 있는 파일은 그냥 `git rm`으로는 삭제할 수 없고 `-f` 옵션으로 강제로 삭제해야 한다. (이부분은 나중에 실습해보자.)
+
+staging area에서만 제거하고 워킹 디렉토리에 있는 파일을 남겨두려면 `--cached` 옵션을 사용한다. 
 
 ```
-$ git --help
+$ git rm --cached README
 ```
 
-#### 작업 공간 시작하기
+위와 같이 하면 README 파일을 디스크에는 남겨두면서 Git에서 추적하지 않도록 할 수 있다. 이것은 `.gitignore` 파일에 추가하지 못한 파일이나 대용량 파일 등을 Git에 실수로 추가했을 때 유용하게 사용할 수 있다.[^gitignore_sample]
 
-* `clone` : 원격 저장소를 지역 디렉토리에 복제한다.
-* `init` : 비어있는 Git 저장소를 만들거나 기존에 있던 것을 초기화한다.
+#### 파일 이름 변경하기
 
-> `git help tutorial`의 결과도 살펴볼 필요가 있습니다.
+`git mv` 명령을 이용하여 파일 이름을 변경할 수 있다. 사실 이 명령은 파일을 이동하는 명령인데, 파일을 이동하면서 새로운 이름으로 변경해서 이동시킬 수 있기 때문에 사용하는 것 같다.
 
-#### 현재의 변경에서 작업하기
+### 변경 내력 조회하기
 
-* `add` : 파일 (변경) 내용을 인덱스에 추가합니다.
-* `mv` : 파일, 디렉토리, 또는 (연결)링크를 옮기거나 이름을 변경합니다.
-* `reset` : 현재 **HEAD** 를 특정한 상태로 재설정합니다.
-* `rm` : 파일들을 작업 트리와 인덱스에서 제거합니다.
+#### 커밋 변경 내력 조회하기
 
-> `git help everyday`의 결과도 살펴볼 필요가 있습니다.
+`git log` 명령을 사용하여 작업 디렉토리 파일들의 변경 내력을 조회할 수 있다.
 
-#### 변경 내력과 상태를 검사하기
+`-p` 옵션을 사용하면 각 커밋들 사이의 diff 결과를 볼 수 있다.
 
-* `bisect` : 버그를 알리는 커밋을 찾기 위해 이진 트리를 사용합니다.
-* `grep` : 패턴과 들어맞는 라인들을 출력합니다.
-* `log` : 커밋 로그들을 보여줍니다.
-* `show` : 다양한 타입의 객체들을 보여줍니다.
-* `status` : 작업 트리의 상태를 보여줍니다.
+```
+$ git log -p 
+```
 
-> `git help revisions`의 결과도 살펴볼 필요가 있습니다.
+`-2` 옵션을 사용하면 최근 두 개의 결과만 보여준다.
 
-#### 변경 내력을 키우고, 표시하고, 비틀기
+`--stat` 옵션을 사용하면 각 커밋의 통계 정보를 보여준다.
 
-* `branch` : 브랜치들을 나열하고, 만들고, 또는 지웁니다.
-* `checkout` : 브랜치들을 바꾸거나 작업 트리 파일들을 재저장합니다.
-* `commit` : 변경 사항들을 저장소에 기록합니다.
-* `diff` : 커밋들 또는 커밋과 작업 트리 사이의 변경 사항을 보여줍니다.
-* `merge` : 두 개 또는 다수의 개발 변경 내력을 서로 합칩니다.
-* `rebase` : Forward-port local commits to the updated upstream head (아직 뭐라고 번역해야할지 모르겠습니다. ㅜㅜ)
-* `tag` : GPG로 표기된 태그 객체를 만들고, 나열하고, 지우고, 또는 확인합니다.
+`--pretty` 옵션을 사용하면 변경 내력을 보여줄때 보여지는 형식을 선택할 수 있다 . `oneline, short, full, fuller` 및 `format` 등의 값을 줄 수 있다. (보다 자세한 사항은 다음에 붙여넣도록 하자.)
 
-#### collaborate
-
-* `fetch` : 다른 저장소에서 객체들과 참조들을 다운로드 합니다.
-* `pull` : 다른 저장소나 브랜치에서 fetch를 하고 취합합니다.
-* `push` : 원격 참조들을 관련된 객체들을 가지고서 업데이트 합니다.
-
-> `git help workflows`의 결과도 살펴볼 필요가 있습니다.
+```
+$ git log --pretty=oneline
+```
 
 ### 참고 자료
 
-[^ProGit]: [Pro Git Book (한글판 v2.0)](https://git-scm.com/book/ko/v2/)
-
-[^ProGit_Ch2]: [2.1 Git의 기초 - Git 저장소 만들기](https://git-scm.com/book/ko/v2/Git의-기초-Git-저장소-만들기)
-
-[^ProGit_Ch2_2]: [2.2 Git의 기초 - 수정하고 저장소에 저장하기](https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기)
-[^GitHub]: [GitHub](https://github.com)
-
 [누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/)
 
+[^ProGit]: [Pro Git Book (한글판 v2.0)](https://git-scm.com/book/ko/v2/)
+
+[^ProGit_Ch2]: [Pro Git Book / 2.1 Git의 기초 - Git 저장소 만들기](https://git-scm.com/book/ko/v2/Git의-기초-Git-저장소-만들기)
+
+[^GitHub]: [GitHub](https://github.com)
+
+[^ProGit_Ch2_2]: [Pro Git Book / 2.2 Git의 기초 - 수정하고 저장소에 저장하기](https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기)
+
 [^GitHubIgnore]: [GitHub .ignore](https://github.com/github/gitignore)
+
+[^gitignore_sample]: [gitignore로 tracking 제외할 수 없는 파일 제외하기](http://kyejusung.com/2016/06/git-gitignore로-tracking-제외할-수-없는-파일-제외하기/)
