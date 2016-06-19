@@ -1,12 +1,13 @@
 ---
 layout: post
-title:  "Swift 2.2: 훑어보기(A Swift Tour)"
+title:  "Swift 3.0: 훑어보기(A Swift Tour)"
 date:   2016-04-17 19:45:00 +0900
 categories: Xcode Swift Grammar Tour
 ---
 
-> 이 글은 모두의연구소에서 진행하는 Swift 스터디 모임 [^Modulabs]의 발표 자료를 위해 The Swift Programming Language [^Swift] 내용을 요약한 것입니다.
-지금은 최대한 원문을 축약해서 영어로 되어 있지만, 나중에 다시 한글로 번역하여 정리할 생각입니다.
+> 이 글은 모두의연구소에서 진행하는 Swift 스터디 모임 [^Modulabs]의 발표 자료를 위해 The Swift Programming Language [^Swift] 내용을 요약한 것입니다.  
+지금은 최대한 원문을 축약해서 영어로 되어 있지만, 나중에 다시 한글로 번역하여 정리할 생각입니다.  
+내용을 Swift 3.0에 맞게 수정하였습니다.
 
 * the first program : print "Hello, world!"
 
@@ -238,18 +239,30 @@ print(total)
 * `->` : separate the parameter names and types from the function's return type
 
 ```swift
-func greet(name: String, day: String)-> String {
-    return "Hello \(name), today is \(day)."
+func greet(person: String, day: String) -> String {
+    return "Hello \(person), today is \(day)."
 }
 
-greet("Bob", day: "Tuesday")
+greet(person: "Bob", day: "Tuesday")
 ```
+
+* parameter names : labels for their arguments
+  * write a custom argument label before the parameter name
+  * `_` : use no argument label
+
+```swift
+func greet(_ person: String, on day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+```
+
+greet("John", on: "Wednesday")
 
 * **tuple** : make a compound value- to return multiple values
 * the elements : refered to either by**name** or**by number**
 
 ```swift
-func calculateStatistics(scores: [Int])-> (min: Int, max: Int, sum: Int) {
+func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = scores[0]
     var max = scores[0]
     var sum = 0
@@ -276,7 +289,7 @@ print(statistics.2)
 * take a variable number of arguments, collecting them into an array
 
 ```swift
-func sumOf(numbers: Int...)-> Int {
+func sumOf(numbers: Int...) -> Int {
     var sum = 0
 
     for number in numbers {
@@ -287,7 +300,7 @@ func sumOf(numbers: Int...)-> Int {
 }
 
 sumOf()
-sumOf(42, 597, 12)
+sumOf(numbers: 42, 597, 12)
 ```
 
 * **nested functions** : access to variables that were declared in the outer function
@@ -328,7 +341,7 @@ increment(7)
 * a function can take another function as one of its argument
 
 ```swift
-func hasAnyMatches(list: [Int], condition: Int-> Bool)-> Bool {
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
     for item in list {
         if condition(item) {
             return true
@@ -338,13 +351,13 @@ func hasAnyMatches(list: [Int], condition: Int-> Bool)-> Bool {
     return false
 }
 
-func lessThanTen(number: Int)-> Bool {
+func lessThanTen(number: Int) -> Bool {
     return number < 10
 }
 
 var numbers = [20, 19, 7, 12]
 
-hasAnyMatches(numbers, condition: lessThanTen)
+hasAnyMatches(list: numbers, condition: lessThanTen)
 ```
 
 * **Closures** : functions- a special case of closures
@@ -421,7 +434,7 @@ class NamedShape {
         self.name = name
     }
 
-    func simpleDescription()-> String {
+    func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
     }
 }
@@ -447,11 +460,11 @@ class Square: NamedShape {
         numberOfSides = 4
     }
 
-    func area()-> Double {
-        return sideLength* sideLength
+    func area() -> Double {
+        return sideLength * sideLength
     }
 
-    override func simpleDescription()-> String {
+    override func simpleDescription() -> String {
         return "A square with sides of length \(sideLength)."
     }
 }
@@ -478,7 +491,7 @@ class EquilateralTriangle: NamedShape {
 
     var perimeter: Double {
         get {
-            return 3.0* sideLength
+            return 3.0 * sideLength
         }
 
         set {
@@ -486,7 +499,7 @@ class EquilateralTriangle: NamedShape {
         }
     }
 
-    override func simpleDescription()-> String {
+    override func simpleDescription() -> String {
         return "An equilateral triangle with sides of length \(sideLength)."
     }
 }
@@ -554,19 +567,19 @@ let sideLength = optionalSquare?.sideLength
 
 ```swift
 enum Rank: Int {
-    case Ace = 1
-    case Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
-    case Jack, Queen, King
+    case ace = 1
+    case two, three, four, five, six, seven, eight, nine, ten
+    case jack, queen, king
 
-    func simpleDescription()-> String {
+    func simpleDescription() -> String {
         switch self {
-        case .Ace:
+        case .ace:
             return "ace"
-        case .Jack:
+        case .jack:
             return "jack"
-        case .Queen:
+        case .queen:
             return "queen"
-        case .King:
+        case .king:
             return "king"
         default:
             return String(self.rawValue)
@@ -574,7 +587,7 @@ enum Rank: Int {
     }
 }
 
-let ace = Rank.Ace
+let ace = Rank.ace
 
 let aceRawValue = ace.rawValue
 ```
@@ -595,23 +608,23 @@ if let convertedRank = Rank(rawValue: 3) {
 
 ```swift
 enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+    case spades, hearts, diamonds, clubs
 
-    func simpleDescription()-> String {
+    func simpleDescription() -> String {
         switch self {
-        case .Spades:
+        case .spades:
             return "spades"
-        case .Hearts:
+        case .hearts:
             return "hearts"
-        case .Diamonds:
+        case .diamonds:
             return "diamonds"
-        case .Clubs:
+        case .clubs:
             return "clubs"
         }
     }
 }
 
-let hearts = Suit.Hearts
+let hearts = Suit.hearts
 
 let heartsDescription = hearts.simpleDescription()
 ```
@@ -628,12 +641,12 @@ struct Card {
     var rank: Rank
     var suit: Suit
 
-    func simpleDescription()-> String {
+    func simpleDescription() -> String {
         return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
     }
 }
 
-let threeOfSpades = Card(rank: .Three, suit: .Spades)
+let threeOfSpades = Card(rank: .three, suit: .spades)
 
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```
@@ -643,18 +656,18 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 ```swift
 enum ServerResponse {
-    case Result(String, String)
-    case Failure(String)
+    case result(String, String)
+    case failure(String)
 }
 
-let success = ServerResponse.Result("6:00 am", "8:09 pm")
+let success = ServerResponse.result("6:00 am", "8:09 pm")
 
-let failure = ServerResponse.Failure("Out of cheese.")
+let failure = ServerResponse.failure("Out of cheese.")
 
 switch success {
-case let .Result(sunrise, sunset):
+case let .result(sunrise, sunset):
     print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
-case let .Failure(message):
+case let .failure(message):
     print("Failure...  \(message)")
 }
 ```
@@ -741,13 +754,13 @@ print(protocolValue.simpleDescription)
 
 ### Error Handling
 
-* represent errors : any type that adopts the `ErrorType`
+* represent errors : any type that adopts the `ErrorProtocol`
 
 ```swift
-enum PrinterError: ErrorType {
-    case OutOfPaper
-    case NoToner
-    case OnFire
+enum PrinterError: ErrorProtocol {
+    case outOfPaper
+    case noToner
+    case onFire
 }
 ```
 
@@ -757,9 +770,9 @@ enum PrinterError: ErrorType {
 * the code that called the function handles the error
 
 ```swift
-func sendToPrinter(printerName: String) throws-> String {
+func send(job: Int, toPrinter printerName: String) throws -> String {
     if printerName == "Never Has Toner" {
-        throw PrinterError.NoToner
+        throw PrinterError.noToner
     }
 
     return "Job sent"
@@ -773,8 +786,8 @@ func sendToPrinter(printerName: String) throws-> String {
 
 ```swift
 do {
-    let printerResponse = try sendToPrinter("Bi Sheng")
-//    let printerResponse = try sendToPrinter("Never Has Toner")
+    let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
+    //    let printerResponse = try sendToPrinter("Never Has Toner")
 
     print(printerResponse)
 } catch {
@@ -787,10 +800,10 @@ do {
 
 ```swift
 do {
-    let printerResponse = try sendToPrinter("Gutenberg")
+    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")
 
     print(printerResponse)
-} catch PrinterError.OnFire {
+} catch PrinterError.onFire {
     print("I'll just put this over here, with the rest of the fire.")
 } catch let printerError as PrinterError {
     print("Printer error: \(printerError).")
@@ -804,8 +817,8 @@ do {
     * otherwise : the result is an optional containing the value that the function returned
 
 ```swift
-let printerSuccess = try? sendToPrinter("Mergenthaler")
-let printerFailure = try? sendToPrinter("Never Has Toner")
+let printerSuccess = try? send(job: 1884, "Mergenthaler")
+let printerFailure = try? send(job: 1885, "Never Has Toner")
 ```
 
 * `defer` : executed after all other code, just before the function returns
@@ -816,14 +829,14 @@ let printerFailure = try? sendToPrinter("Never Has Toner")
 var fridgeIsOpen = false
 let fridgeContent = ["milk", "eggs", "leftovers"]
 
-func fridgeContains(itemName: String)-> Bool {
+func fridgeContains(_ food: String) -> Bool {
     fridgeIsOpen = true
 
     defer {
         fridgeIsOpen = false
     }
 
-    let result = fridgeContent.contains(itemName)
+    let result = fridgeContent.contains(food)
     return result
 }
 
@@ -836,14 +849,15 @@ print(fridgeIsOpen)
 * make a generic function or type : write a name inside angle brackets
 
 ```swift
-func repeatItem<Item>(item: Item, numberOfTimes: Int)-> [Item] {
+func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
     var result = [Item]()
     for _ in 0..<numberOfTimes {
         result.append(item)
     }
     return result
 }
-repeatItem("knock", numberOfTimes:4)
+
+makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
 * generic forms of functions, methods, as well as classes, enumerations, and structures
@@ -851,13 +865,13 @@ repeatItem("knock", numberOfTimes:4)
 ```swift
 // Reimplement the Swift standard library's optional type
 enum OptionalValue<Wrapped> {
-    case None
-    case Some(Wrapped)
+    case none
+    case some(Wrapped)
 }
 
-var possibleInteger: OptionalValue<Int> = .None
+var possibleInteger: OptionalValue<Int> = .none
 
-possibleInteger = .Some(100)
+possibleInteger = .some(100)
 ```
 
 * `where` : specify a list of requirements
@@ -866,7 +880,7 @@ possibleInteger = .Some(100)
   - a class to have a particular superclass
 
 ```swift
-func anyCommonElements <T: SequenceType, U: SequenceType where T.Generator.Element: Equatable, T.Generator.Element == U.Generator.Element> (lhs: T, _ rhs: U)-> Bool {
+func anyCommonElements <T: SequenceType, U: SequenceType where T.Generator.Element: Equatable, T.Generator.Element == U.Generator.Element> (_ lhs: T, _ rhs: U) -> Bool {
     for lhsItem in lhs {
         for rhsItem in rhs {
             if lhsItem == rhsItem {
