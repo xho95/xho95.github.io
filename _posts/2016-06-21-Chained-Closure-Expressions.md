@@ -2,7 +2,7 @@
 layout: post
 title:  "Swift 3.0: 연결된 클로져 표기법"
 date:   2016-06-21 17:30:00 +0900
-categories: Swift Grammar Collection Types Array Set Dictionary
+categories: Swift Grammar Expressions Closures
 ---
 
 WWDC 2016 동영상을 보기 시작하고 있습니다.[^WWDC_Videos] 동영상이 너무 많아서 다 보기는 힘들 것 같아서 우선 비교적 쉬어보이는 동영상부터 보고 있습니다.
