@@ -61,7 +61,7 @@ bundle identifier의 경우 일단 앱스토어에 앱을 한 번 제출하고 �
 
 [^Scheme]: 스킴(scheme)에 대한 설명은 [Xcode Scheme](https://developer.apple.com/library/ios/featuredarticles/XcodeConcepts/Concept-Schemes.html#//apple_ref/doc/uid/TP40009328-CH8-SW1)에서 볼 수 있습니다. WWDC 2016 동영상 중에서 [Introduction to Xcode](https://developer.apple.com/videos/play/wwdc2016/413/)에도 Xcode의 Scheme에 대한 설명이 잘 나옵니다.
 
-[^Apple]: 프로젝트 이름을 변경하는 방법을 애플에서 공식적으로 [Renaming a Project or App](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/RenamingaProject/RenamingaProject.html)라는 문서에서 설명하고 있습니다. 다만 여기서는 순수하게 프로젝트 이름만 변경하는 방법을 알려줍니다. 폴더 이름이나 빌드 세팅을 변경하는 방법은 설명하지 않고 있습니다.
+[^Apple]: 프로젝트 이름을 변경하는 방법은 애플에서 공식적으로 [Renaming a Project or App](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/RenamingaProject/RenamingaProject.html)라는 문서에서 설명하고 있습니다. 다만 여기서는 순수하게 프로젝트 이름만 변경합니다. 폴더 이름이나 빌드 세팅을 변경하는 방법은 설명하지 않습니다.
 
 [^iOS_Tip]: [iOS Dev Tip: The Best Way to Rename a Project in Xcode](http://matthewfecher.com/app-developement/xcode-tips-the-best-way-to-change-a-project-name-in-xcode/)
 
