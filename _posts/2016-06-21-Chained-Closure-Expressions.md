@@ -50,9 +50,9 @@ RayWenderich 사이트에서 Swift 코딩 스타일 가이드를 잘 정리해�
 
 언젠가 RayWenderich 의 Swift 스타일 가이드도 정리를 해 볼 생각입니다.
 
-### 참고 자료
+보통 이러한 비교 함수들을 Predicate라고 하는 것 같습니다. 이 부분은 좀 더 정리할 예정입니다.
 
-[]: 보통 이러한 비교 함수들을 Predicate라고 하는 것 같습니다. (좀더 찾아보자)
+### 참고 자료
 
 [^Dot_Notation]: `map(_:)` 류의 함수들을 위한 닷 표기법은 WWDC 2016의 [Getting Started with Swift](https://developer.apple.com/videos/play/wwdc2016/404/) 영상 후반부에 나옵니다.
 
