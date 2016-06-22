@@ -6,7 +6,8 @@ categories: Xcode Project Rename Scheme
 ---
 
 Xcode로 작업을 하다보면 이미 상당히 진행된 프로젝트나 완료된 프로젝트의 이름을 바꿔야 할 경우가 생깁니다.
-이때, 기존 코드와는 상관없이 프로젝트 이름만을 변경하거나 더 나아가서 bundle identifier 까지 변경하고자 할 수 있는데, 이 상황에서 도움이 되는 동영상을 알게 되어 글로 정리합니다.[^MAR]
+
+이때, 기존 코드와는 상관없이 프로젝트 이름만을 변경하거나 더 나아가서 `bundle identifier` 까지 변경하고자 할 수 있는데, [MAR Software Technologies LLC](http://www.marsoftek.com) 라는 곳에서 이런 상황에 대해 좋은 동영상을 만들어서 이를 글로 정리합니다.[^MAR]
 
 > Xcode 프로젝트의 이름을 변경하는 방법은 많이 찾을 수 있는데, 대부분의 자료들이 예전 자료들인 것 같습니다. 이부분은 나중에 전체를 정리할 생각입니다.[^iOS_Tip] [^Xcode_6_3] [^Xcode_6_1] [^iOS_Rename] [^Xcode_4]
 
@@ -60,7 +61,7 @@ bundle identifier의 경우 일단 앱스토어에 앱을 한 번 제출하고 �
 
 [^Scheme]: 스킴(scheme)에 대한 설명은 [Xcode Scheme](https://developer.apple.com/library/ios/featuredarticles/XcodeConcepts/Concept-Schemes.html#//apple_ref/doc/uid/TP40009328-CH8-SW1)에서 볼 수 있습니다. WWDC 2016 동영상 중에서 [Introduction to Xcode](https://developer.apple.com/videos/play/wwdc2016/413/)에도 Xcode의 Scheme에 대한 설명이 잘 나옵니다.
 
-[^Apple]: [Renaming a Project or App](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/RenamingaProject/RenamingaProject.html)
+[^Apple]: 프로젝트 이름을 변경하는 방법을 애플에서 공식적으로 [Renaming a Project or App](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/RenamingaProject/RenamingaProject.html)라는 문서에서 설명하고 있습니다. 다만 여기서는 순수하게 프로젝트 이름만 변경하는 방법을 알려줍니다. 폴더 이름이나 빌드 세팅을 변경하는 방법은 설명하지 않고 있습니다.
 
 [^iOS_Tip]: [iOS Dev Tip: The Best Way to Rename a Project in Xcode](http://matthewfecher.com/app-developement/xcode-tips-the-best-way-to-change-a-project-name-in-xcode/)
 
