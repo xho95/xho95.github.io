@@ -5,6 +5,9 @@ date:   2016-03-07 20:30:00 +0900
 categories: Resources Sites Technology Machine-Learning
 ---
 
+[TensorFlow](https://www.tensorflow.org) : an Open Source Software Library for Machine Intelligence
+
+[TensorFlow Playground](http://playground.tensorflow.org/) : Tinker With a Neural Network
 
 [‎vision.stanford.edu/teaching/cs231n/slides/jon_talk.pdf](http://vision.stanford.edu/teaching/cs231n/slides/jon_talk.pdf)
 
@@ -51,3 +54,9 @@ categories: Resources Sites Technology Machine-Learning
 [Week 01: Parameter Learning](http://goodtogreate.tistory.com/394)
 
 [Lec6. Machine Learning(머신러닝) ? Gradient Descent](http://blog.naver.com/mypa3424/220542149463)
+
+### Reinforcement controlled
+
+[UC Berkeley CS188 Intro to AI -- Course Materials](http://ai.berkeley.edu/home.html)
+
+[UC Berkeley CS188 Intro to AI -- Course Materials](http://ai.berkeley.edu/reinforcement.html)

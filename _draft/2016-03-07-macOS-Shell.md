@@ -5,6 +5,13 @@ date:   2016-03-07 21:00:00 +0900
 categories: Resources OSX Shell Terminal
 ---
 
+[OS X 에서 환경변수 지정하는 방법!!](http://sjpison.tistory.com/258)
+
+[mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
+
+[Mac에서 Path 설정하기](http://elfinlas.tistory.com/266)
+
+[MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
 
 ### shell
 
@@ -19,6 +26,8 @@ categories: Resources OSX Shell Terminal
 [serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
 
 [MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
+
+[Mac 터미널에서 ssh 접속하는 방법](http://db.necoaki.net/54)
 
 #### 터미널 명령어
 
@@ -59,12 +68,6 @@ mv newFileName.txt oldFileName.txt
 
 [바로 실행되는 ShellScript 파일 만들기](http://jungryulchoi.tistory.com/4)
 
-
-### XVim
-
-[Xcode에서 Vim 사용하기](http://blog.cahg.org/wp/?p=305)
-
-[XCode 에서 vim key binding 사용하기](http://tech.scari.net/2012/07/xcode-vim-key-binding.html)
 
 [VIM을 사용하자](http://www.joinc.co.kr/modules/moniwiki/wiki.php/Site/Vim/Documents/UsedVim)
 

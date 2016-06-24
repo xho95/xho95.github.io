@@ -5,6 +5,9 @@ date:   2016-01-25 21:30:00 +0900
 categories: Resources Softwares Programming Swift
 ---
 
+[NSDateFormatter](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDateFormatter_Class/)
+
+[GCM Topic을 이용해서 한번의 발송으로 단체 푸시를 발송하기](http://theeye.pe.kr/archives/category/dumb-programmer/dev-ios)
 
 ### Swift Grammar
 
@@ -22,11 +25,12 @@ categories: Resources Softwares Programming Swift
 
 ### Swift
 
-[Swift 서버사이드 프레임워크 Perfect 소개](https://realm.io/kr/news/perfect-swift-server-framework/) : Swift로 서버사이드 개발하기 자료
-
 [Swift 3 로드맵: 범용언어로의 도약](https://realm.io/kr/news/swift-3-roadmap/) : Swift 3.0에 대한 소개 글
 
 [Spark of Genius](http://sparkapple.com) : Swift 개발자 블로그
+
+
+[objc.io](https://www.objc.io) : a platform for in-depth technical topics relevant to all iOS and OS X developers
 
 [Objc Books](https://www.objc.io/books/) : Functional Swift
 
@@ -66,19 +70,6 @@ categories: Resources Softwares Programming Swift
 ### Image
 
 [이미지로부터 픽셀 데이터 얻어 새로운 이미지 만들기](http://blog.weirdx.io/post/24742)
-
-
-### Core Data
-
-[How to add Core Data to an existing SWIFT project in Xcode / Updated for Swift 1.2](http://craig24.com/2014/12/how-to-add-core-data-to-an-existing-swift-project-in-xcode/)
-
-[Adding Core Data to an existing Swift 2.0 project](http://purelywebdesign.co.uk/tutorial/add-coredata-to-an-exiting-swift-2-0-project/)
-
-
-### SceneKit
-
-[Scene Kit Tutorial with Swift Part 1: Getting Started](https://www.raywenderlich.com/128668/scene-kit-tutorial-with-swift-part-1)
-
 
 ### Algorithms
 

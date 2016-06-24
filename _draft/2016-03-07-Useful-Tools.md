@@ -32,9 +32,6 @@ categories: Resources Sites Softwares Tools
 [Web Sequence Diagrams](https://www.websequencediagrams.com)
 
 
-### 3D CAD
-
-[Autodesk123D](http://www.123dapp.com)
 
 
 ### Video
@@ -85,12 +82,5 @@ categories: Resources Sites Softwares Tools
 [How do I create a Facebook ad?](https://www.facebook.com/business/help/132037906870538)
 
 
-### Web Hosting
 
-[Whois](http://www.whois.com) : get a domain name
-
-[스쿨 호스팅](https://www.phps.kr)
-
-[DNSzi](https://www.dnszi.com) : 도메인 DNS 관리
-
-[dnsever](https://kr.dnsever.com) : DNS 서비스
+[퀵타임 플레이어를 이용해 동영상 파일에서 음성을 추출하거나 오디오 파일로 변환하는 방법](http://macnews.tistory.com/4454)

@@ -5,6 +5,7 @@ date:   2016-02-01 17:30:00 +0900
 categories: Xcode C++ Library AssImp
 ---
 
+[Open Asset Import Library](https://sourceforge.net/p/assimp/discussion/817654/thread/d013f24a/)
 
 [Open Asset Import Library](https://sourceforge.net/p/assimp/discussion/817654/thread/d5169f44/)
 

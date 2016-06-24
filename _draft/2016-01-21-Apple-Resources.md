@@ -5,8 +5,13 @@ date:   2016-01-21 20:59:00 +0900
 categories: Resources Apple Programming Framework
 ---
 
+[^LLDB]: [The LLDB Debugger](http://lldb.llvm.org/symbols.html)
+
 봐야할 Apple 문서들을 모아둔 곳이다. 나중에 파트별로 분류해서 블로그 글로 정리하자.
 
+[Sizes of iPhone UI Elements](http://www.idev101.com/code/User_Interface/sizes.html) : 아이폰별 해상도 및 UI 구성 요소들의 크기를 정리한 글입니다.
+
+[iPhone 6 Plus downsampling artifacts explained](http://www.idownloadblog.com/2014/11/20/iphone-6-downsampling-explained/) : 아이폰 사이즈별 해상도에 따른 다운샘플링 문제를 설명하는 글입니다.
 
 ### Azure
 
@@ -15,8 +20,9 @@ categories: Resources Apple Programming Framework
 
 ### WWDC
 
-[Apple WWDC 2015](https://developer.apple.com/videos/wwdc2015/)  
+[WWDC 2015](https://developer.apple.com/videos/wwdc2015/)  
 
+[WWDC 2016 Videos](https://developer.apple.com/videos/wwdc2016/)
 
 ### Apple References
 
@@ -27,9 +33,6 @@ categories: Resources Apple Programming Framework
 [Apple Push Notification Service](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)
 
 [Using Local And Push Notifications on iOS and Mac OS X](https://developer.apple.com/videos/play/wwdc2011/517/)
-
-[Swift 오픈소스 공개, Swift 3.0 로드맵](https://realm.io/kr/news/swift-opensource/) : 국내에서 Swift 관련 정보를 제공하는 곳이다.
-
 
 ### Tips
 
@@ -42,17 +45,6 @@ categories: Resources Apple Programming Framework
 [스마트폰에서 바로가기/즐겨찾기 추가시 아이콘 넣기](http://www.kmshack.kr/2013/02/스마트폰에서-바로가기즐겨찾기-추가시-아이콘-넣/)
 
 [OS X 기본 기능만을 이용해 맥의 화면을 녹화, 편집하고 공유하기](http://macnews.tistory.com/560)
-
-
-### SSH
-
-[Mac 터미널에서 ssh 접속하는 방법](http://db.necoaki.net/54)
-
-
-### OpenGL
-
-[Open Asset Import Library](https://sourceforge.net/p/assimp/discussion/817654/thread/d013f24a/)
-
 
 ### Resources
 

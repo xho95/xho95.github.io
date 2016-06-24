@@ -29,7 +29,7 @@ $ git clone https://github.com/libgit2/libgit2 mylibgit
 
 #### GitHub에서 알려주는 저장소 만드는 방법
 
-**GitHub** 에 저장소를 만들고 나서 저장소를 들어가면, 아래와 같이 기본 설명을 해주는데, 여기에 Git `init`부터 `push`까지의 설명이 사실상 되어 있다.[^GitHub] 
+**GitHub** 에 저장소를 만들고 나서 저장소를 들어가면, 아래와 같이 기본 설명을 해주는데, 여기에 Git `init`부터 `push`까지의 설명이 사실상 되어 있다.[^GitHub]
 
 
 ```
@@ -44,7 +44,7 @@ $ git remote add origin https://github.com/modulabs/GitTest.git
 $ git push -u origin master
 ```
 
-위에서 origin에 할당할 저장소는 이미 만들어져 있어야 한다. 나중에 터미널에서 직접 저장소를 만드는 방법을 알아보자. 
+위에서 origin에 할당할 저장소는 이미 만들어져 있어야 한다. 나중에 터미널에서 직접 저장소를 만드는 방법을 알아보자.
 
 ### 수정하고 저장소에 저장하기
 
@@ -95,11 +95,11 @@ $ cat .gitignore
 ```
 `.gitignore` 파일은 표준 Glob 패턴을 사용한다. Glob 패턴은 정규표현식을 단순하게 만든 것으로 이해하면 된다.
 
-**GitHub**는 다양한 프로젝트에서 사용하는 `.gitignore` 예제를 관리하고 있으므로, 참고하면 좋다.[^GitHubIgnore]
+**GitHub** 는 다양한 프로젝트에서 사용하는 `.gitignore` 예제를 관리하고 있으므로, 참고하면 좋다.[^GitHubIgnore]
 
 #### 파일 변경 내용을 보기
 
-`git diff` 명령을 사용하여 파일에서 어떤 내용이 변경됐는지를 살펴볼 수 있다. 
+`git diff` 명령을 사용하여 파일에서 어떤 내용이 변경됐는지를 살펴볼 수 있다.
 
 ```
 $ git diff
@@ -107,7 +107,7 @@ $ git diff
 
 `git diff` 명령은 수정했지만 아직 staged 상태가 아닌 파일을 비교해 볼 수 있다. 이 명령은 워킹 디렉토리에 있는 것과 staging area에 있는 것을 비교한다.
 
-커밋하려고 staging Area에 넣은 파일에서 변경된 부분을 보고 싶으면 `git diff --cached` 옵션을 사용하면 된다. 
+커밋하려고 staging Area에 넣은 파일에서 변경된 부분을 보고 싶으면 `git diff --cached` 옵션을 사용하면 된다.
 
 ```
 $ git diff --cached
@@ -145,11 +145,11 @@ $ git commit -m "my message"
 
 `git rm` 명령으로 tracked 상태의 파일을 삭제한 후에, 커밋하면 된다. 파일이 staging area에 있는 것이 아니면 그냥 `rm` 명령으로는 삭제가 되지 않는다.
 
-일단 `git rm` 명령을 실행하면 파일이 삭제되면서 staged 상태가 되며, 이후에 커밋을 하게 되면 파일은 실제로 삭제되면 Git에서 이 파일을 더 이상 추적하지 않는다. 
+일단 `git rm` 명령을 실행하면 파일이 삭제되면서 staged 상태가 되며, 이후에 커밋을 하게 되면 파일은 실제로 삭제되면 Git에서 이 파일을 더 이상 추적하지 않는다.
 
 수정한 파일이나 staging area에 있는 파일은 그냥 `git rm`으로는 삭제할 수 없고 `-f` 옵션으로 강제로 삭제해야 한다. (이부분은 나중에 실습해보자.)
 
-staging area에서만 제거하고 워킹 디렉토리에 있는 파일을 남겨두려면 `--cached` 옵션을 사용한다. 
+staging area에서만 제거하고 워킹 디렉토리에 있는 파일을 남겨두려면 `--cached` 옵션을 사용한다.
 
 ```
 $ git rm --cached README
@@ -170,7 +170,7 @@ $ git rm --cached README
 `-p` 옵션을 사용하면 각 커밋들 사이의 diff 결과를 볼 수 있다.
 
 ```
-$ git log -p 
+$ git log -p
 ```
 
 `-2` 옵션을 사용하면 최근 두 개의 결과만 보여준다.
@@ -207,7 +207,7 @@ $ git remote -v
 
 `git fetch`는 원격 저장소의 데이터를 모두 가져오지만, 자동으로 merge 하지는 않는다. 그래서 fetch 이후에는 수동으로 merge를 해야 한다.
 
-`git pull` 명령을 사용하면 원격 저장소 브랜치에서 데이터를 가져오면서 자동으로 지역 브랜치와 merge를 수행한다. 
+`git pull` 명령을 사용하면 원격 저장소 브랜치에서 데이터를 가져오면서 자동으로 지역 브랜치와 merge를 수행한다.
 
 `git clone`의 경우 자동으로 지역의 master 브랜치가 원격 저장소의 master 브랜치를 추적하도록 한다.
 
@@ -219,7 +219,7 @@ $ git remote -v
 $ git push origin master
 ```
 
-위와 같이 하면 master 브랜치를 origin 서버에 push한다. 
+위와 같이 하면 master 브랜치를 origin 서버에 push한다.
 
 push는 다른 사람이 push한 후에는 할 수 없다. 먼저 다른 사람이 작업한 것을 가져와서 merge 한 후에 push를 할 수 있다.
 
@@ -238,3 +238,5 @@ push는 다른 사람이 push한 후에는 할 수 없다. 먼저 다른 사람�
 [^GitHubIgnore]: [GitHub .ignore](https://github.com/github/gitignore)
 
 [^gitignore_sample]: [gitignore로 tracking 제외할 수 없는 파일 제외하기](http://kyejusung.com/2016/06/git-gitignore로-tracking-제외할-수-없는-파일-제외하기/)
+
+[Xcode4 소스 버전 관리 기능](https://soulpark.wordpress.com/2012/08/23/xcode4_source_control_management/)
