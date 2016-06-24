@@ -1,10 +1,20 @@
-SceneKit은 애플에서 앱 개발에 사용할 수 있는 상위 레벨의 3D 엔진입니다.[^WWDC_2013]  [^WWDC_2014]  [^WWDC_2015]
+SceneKit은 애플에서 앱 개발에 사용할 수 있는 상위 레벨의 3D 프레임웍입니다.[^WWDC_2013]  [^WWDC_2014]  [^WWDC_2015]
 
 여기서는 WWDC 2016의 Advances in SceneKit Rendering 세션에서 소개된 내용을 정리합니다.[^WWDC_2016]
 
 WWDC 2016에서는 SceneKit에 큰 변화는 없는 것 같고, 주로 Rendering 부분에서 성능이 개선된 것 같습니다. 
 
 다만, watchOS에도 SceneKit이 적용되면서 SceneKit은 애플의 모든 OS에서 사용할 수 있게 되었습니다.
+
+### 앞부분
+
+Linear Rendering and Color Management
+
+색을 사용할 때는 주의가 필요하다. 
+
+설정에서 사용을 선택할 수 있다.
+
+### Physical Rendering
 
 ### 고찰하기
 
