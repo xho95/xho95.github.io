@@ -7,6 +7,7 @@ categories: Resources Softwares Programming Sites
 
 프로그래밍 관련 자료를 모아둔 곳이다.
 
+[누구나가 다 이해할 수 있는 프로그래밍 첫걸음](http://blog.eairship.kr)
 
 ### 프로그래밍 관련 사이트들
 

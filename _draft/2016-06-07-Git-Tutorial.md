@@ -223,6 +223,10 @@ $ git push origin master
 
 push는 다른 사람이 push한 후에는 할 수 없다. 먼저 다른 사람이 작업한 것을 가져와서 merge 한 후에 push를 할 수 있다.
 
+#### submodule
+
+submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리해 넣는 것 - 나중에 좀 더 정리하자.
+
 ### 참고 자료
 
 [누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/)
