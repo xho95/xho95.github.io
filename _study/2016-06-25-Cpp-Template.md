@@ -4,8 +4,8 @@
 
 ### 개요
 
-* 값의 파라미터화 : `function` - 어떤 값에 대해서도 계산, 예) `sort()`
-* 타입의 파라미터화 : `template` - 값의 타입에도 독립적인 코드를 만듦
+* `function` : 값의 파라미터화 - 어떤 값에 대해서도 계산, 예) `sort()`
+* `template` : 타입의 파라미터화 - 값의 타입에도 독립적인 코드를 만듦
 
 ### Template Class
 
@@ -183,7 +183,25 @@ template <>
 class Grid<char *>
 ``` 
 
-* 좀 더 정리해야 한다. ()
+* 특수화는 일반화된 버전보다 앞에 정의되어야 하는데 그러려면 템플릿 클래스 선언부가 필요하다. 전체 흐름은 아래와 같다.
+
+```
+// 템플릿 클래스 선언
+template <typename T>
+class Grid;
+
+// 템플릿 클래스 특수화
+template <>
+class Grid<char *> {
+    //...
+};
+
+template <typename T>
+class Grid {
+	// ...
+};
+```
+
 
 ### 참고 자료
 
