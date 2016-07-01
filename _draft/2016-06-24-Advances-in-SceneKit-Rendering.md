@@ -14,7 +14,7 @@ Linear Rendering and Color Management
 
 설정에서 사용을 선택할 수 있다.
 
-보다 넓은 범위의 색을 사용할 수 있는 것 같습니다. 
+보다 넓은 범위의 색을 사용할 수 있는 것 같습니다. Wide Gamut에 대해서 좀 더 살펴볼 필요가 있습니다. 
 
 ### Physical Rendering
 
