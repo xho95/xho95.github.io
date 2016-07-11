@@ -3,7 +3,7 @@ NSURLSession.dataTaskWithRequest를 사용하라고 한다.
 
 ### 고찰하기
 
-결국 AlarmOfFire 같은 것을 사용하는 것이 좋다(?)
+결국 Alamofire 같은 것을 사용하는 것이 좋다(?)
 
 ### 참고 자료
 
