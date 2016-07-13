@@ -1,6 +1,9 @@
 NSURLConnection.sendAsynchronousRequest는 deprecated 되었다고 한다. 
 NSURLSession.dataTaskWithRequest를 사용하라고 한다.
 
+
+UIAlertView도 deprecated 되었다, UIAlertController를 사용해야 한다.
+
 ### 고찰하기
 
 결국 Alamofire 같은 것을 사용하는 것이 좋다(?)
