@@ -6,6 +6,10 @@ NSURLConnection은 deprecated 되었다고 합니다. 따라서 sendAsynchronous
 
 NSURLSession 및 그 사용법에 대해서는 RayWenderlich 사이트의 예제를 참고하면 좋습니다.[^RayWenderlich] 고무망치님이 블로그에 해당 내용을 한글로 번역해 놓았습니다.[^NSURLSession_rhammer]
 
+### NSURLSession 응용
+
+[realm](https://realm.io/kr/)에 [백그라운드 파일 다운로드 Swift로 구현하기라](https://realm.io/kr/news/gwendolyn-weston-ios-background-networking/)는 글에 NSURLSession을 응용하여 만드는 것이 설명되어 있습니다.[^realm]
+
 ### 고찰하기
 
 결국 간단한 프로그래밍이 아니라면 HTTP 통신 프로그래밍을 하려면 Alamofire 같은 외부 라이브러리를 사용하는 것이 좋을지도 모르겠습니다.[^Alamofire]
@@ -29,3 +33,5 @@ NSURLSession 및 그 사용법에 대해서는 RayWenderlich 사이트의 예제
 [^RayWenderlich]: [NSURLSession Tutorial: Getting Started](https://www.raywenderlich.com/110458/nsurlsession-tutorial-getting-started)
 
 [^NSURLSession_rhammer]: [NSURLSession 사용 가이드](http://rhammer.tistory.com/113)
+
+[^realm]: [백그라운드 파일 다운로드 Swift로 구현하기](https://realm.io/kr/news/gwendolyn-weston-ios-background-networking/)라는 글은 Gwendolyn Weston라는 분이 작성하였습니다.

@@ -58,6 +58,7 @@ staging area에 대한 정확한 이해가 필요할 것 같다. - 일단은 sta
 #### 파일 상태 확인하기
 
 `git status` 명령으로 파일의 상태를 확인할 수 있다.
+
 ```
 $ git status
 ```
@@ -65,6 +66,7 @@ $ git status
 새로 추가된 파일들은 Untracked 상태인데, 이런 파일들은 Tracked 상태가 되어야만 커밋할 수 있다.
 
 아래와 같이 `git status -s` 명령을 사용하면 파일들의 상태를 간단한 형태로 보여준다.
+
 ```bash
 $ git status -s
 
