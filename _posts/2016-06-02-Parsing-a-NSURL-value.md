@@ -89,7 +89,7 @@ Swift 프로그래밍에서는 URL을 다룰 경우에 본문과 같이 Foundati
 
 [^NSURL_query_Parsing]: [NSURL 파라미터 파싱하기](https://byunsooblog.wordpress.com/2014/03/16/nsurl-파라미터-파싱하기/comment-page-1/)
 
-[^NSURL_Parsing]: [Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/) 라는 글을 보면 query를 이용한 경우와 queryItems를 이용한 경우의 다른점이 나오는데, 이 글을 보고 queryItems를 사용하기로 결정하게 되었습니다.
+[^NSURL_Parsing]: [Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/) 라는 게시글의 답글을 보다 보면 query를 이용한 경우와 queryItems를 이용한 경우의 다른점이 나오는데, 이를 보고 queryItems를 사용하기로 결정하게 되었습니다.
 
 [^Alamofire_RayWenderlich]: [Alamofire Tutorial: Getting Started](https://www.raywenderlich.com/121540/alamofire-tutorial-getting-started)
 
