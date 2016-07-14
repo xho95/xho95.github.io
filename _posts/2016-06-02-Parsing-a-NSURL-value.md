@@ -28,7 +28,7 @@ NSURLComponents 클래스는 `RFC 3986`에 기초하여 URL을 파싱하고, 구
 NSURLComponents 클래스의 queryItems 속성은 URL 요소들을 name/value 쌍의 배열로 저장합니다. 여기서 name/value 쌍은 NSURLQueryItem 타입입니다.  
 이 queryItems 속성을 사용하면 url에서 원하는 부분을 name을 키(key)로 해서 찾을 수 있습니다.
 
-> queryItems가 아니라 query를 사용해서 파싱하는 방법 [^NSURL_query],[^NSURL_query_Parsing]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.[NSURL_Parsing]
+> queryItems가 아니라 query를 사용해서 파싱하는 방법 [^NSURL_query], [^NSURL_query_Parsing]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.[NSURL_Parsing]
 
 ### Sample Code
 
@@ -89,7 +89,7 @@ Swift 프로그래밍에서는 URL을 다룰 경우에 본문과 같이 Foundati
 
 [^NSURL_query_Parsing]: [NSURL 파라미터 파싱하기](https://byunsooblog.wordpress.com/2014/03/16/nsurl-파라미터-파싱하기/comment-page-1/)
 
-[NSURL_Parsing]: [Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/) 라는 글을 보면 query를 이용한 경우와 queryItems를 이용한 경우의 다른점이 나오는데, 이 글을 보고 queryItems를 사용하기로 결정하게 되었습니다.
+[^NSURL_Parsing]: [Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/) 라는 글을 보면 query를 이용한 경우와 queryItems를 이용한 경우의 다른점이 나오는데, 이 글을 보고 queryItems를 사용하기로 결정하게 되었습니다.
 
 [^Alamofire_RayWenderlich]: [Alamofire Tutorial: Getting Started](https://www.raywenderlich.com/121540/alamofire-tutorial-getting-started)
 
