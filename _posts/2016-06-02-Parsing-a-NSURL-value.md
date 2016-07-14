@@ -28,7 +28,7 @@ NSURLComponents 클래스는 `RFC 3986`에 기초하여 URL을 파싱하고, 구
 NSURLComponents 클래스의 queryItems 속성은 URL 요소들을 name/value 쌍의 배열로 저장합니다. 여기서 name/value 쌍은 NSURLQueryItem 타입입니다.  
 이 queryItems 속성을 사용하면 url에서 원하는 부분을 name을 키(key)로 해서 찾을 수 있습니다.
 
-> queryItems가 아니라 query를 사용해서 파싱하는 방법 [^NSURL_query],  [^NSURL_query_Parsing]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.[NSURL_Parsing]
+> queryItems가 아니라 query를 사용해서 파싱하는 방법 [^NSURL_query],[^NSURL_query_Parsing]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.[NSURL_Parsing]
 
 ### Sample Code
 
