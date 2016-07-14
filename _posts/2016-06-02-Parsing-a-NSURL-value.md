@@ -15,7 +15,7 @@ let url = "http://www.myurl.com?param1=value1&param2=value2"
 
 위의 주소에서 param1에 해당하는 값인 value1 만을 뽑아내야 하는 경우가 있을 수 있습니다.
 
-이 경우에 Foundation에 있는 NSURLComponents 클래스와 이 클래스의 속성들을 사용하면 편리합니다. NSURLComponents 클래스를 사용하면 따로 NSURL을 파싱하는 다른 외부 라이브러리를 사용하지 않아도 Swift에서 url을 쉽게 다룰 수 있습니다.[^Alamofire_Tstory]
+이 경우에 Foundation에 있는 NSURLComponents 클래스와 이 클래스의 속성들을 사용하면 편리합니다. NSURLComponents 클래스를 사용하면 따로 NSURL을 파싱하는 다른 외부 라이브러리를 사용하지 않아도 Swift에서 url을 쉽게 다룰 수 있습니다.[^Alamofire]
 
 ### **NSURLComponents** 클래스
 
@@ -28,7 +28,7 @@ NSURLComponents 클래스는 `RFC 3986`에 기초하여 URL을 파싱하고, 구
 NSURLComponents 클래스의 queryItems 속성은 URL 요소들을 name/value 쌍의 배열로 저장합니다. 여기서 name/value 쌍은 NSURLQueryItem 타입입니다.  
 이 queryItems 속성을 사용하면 url에서 원하는 부분을 name을 키(key)로 해서 찾을 수 있습니다.
 
-> queryItems가 아니라 query를 사용해서 파싱하는 방법[^NSURL_query]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.
+> queryItems가 아니라 query를 사용해서 파싱하는 방법 [^NSURL_query]  [^NSURL_query_Parsing]도 있는 것 같습니다만, queryItems를 사용하는 것이 더 편한 것 같습니다.[NSURL_Parsing]
 
 ### Sample Code
 
@@ -77,18 +77,20 @@ for item in queryItems! {
 
 URL을 파싱하기 위한 **RFC** 및 **RFC 3986** 이 무엇인지는 아직 잘 모릅니다. 이 부분은 나중에 따로 내용을 업데이트 할 예정입니다.
 
-Swift 프로그래밍에서는 URL을 다룰 경우에 본문과 같이 Foundation 프레임웍을 직접 사용하기 보다는 Alamofire 같은 외부 라이브러리를 많이 사용하는 것 같습니다. [^Alamofire] 아직 제가 Alamofire를 직접 사용해 본적은 없지만 상당히 많은 개발자들이 사용하고 있는 것으로 알고 있습니다. 기회가 되면 AAlamofire 사용법에 대해서도 정리하도록 하겠습니다.
+Swift 프로그래밍에서는 URL을 다룰 경우에 본문과 같이 Foundation 프레임웍을 직접 사용하기 보다는 Alamofire 같은 외부 라이브러리를 많이 사용하는 것 같습니다. [^Alamofire_RayWenderlich]  [^Alamofire_Tstory] 아직 제가 Alamofire를 직접 사용해 본적은 없지만 상당히 많은 개발자들이 사용하고 있는 것으로 알고 있습니다. 기회가 되면 AAlamofire 사용법에 대해서도 정리하도록 하겠습니다.
 
 ### 참고 자료
+
+[^Alamofire]: HTTP 통신 관련하여서 가장 유명한 라이브러리는 [Alamofire](https://github.com/Alamofire/Alamofire)인 것 같습니다. Swift로 만든 오픈 소스 라이브러리이며 GitHub나 CocoaPods을 통해서 설치할 수 있습니다.
 
 [^NSURLComponents]: NSURLComponents 클래스에 대한 설명은 애플의 reference 사이트인 [NSURLComponents Class Reference](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLComponents_class/#//apple_ref/occ/instp/NSURLComponents/queryItems) 부분을 참고하시면 됩니다.
 
 [^NSURL_query]: NSURL의 query를 사용해서 url을 파싱하는 방법은 [stackoverflow: Parse NSURL query property](http://stackoverflow.com/questions/3997976/parse-nsurl-query-property) 에 잘 설명되어 있습니다.
 
-[Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/)
+[^NSURL_query_Parsing]: [NSURL 파라미터 파싱하기](https://byunsooblog.wordpress.com/2014/03/16/nsurl-파라미터-파싱하기/comment-page-1/)
 
-[NSURL 파라미터 파싱하기](https://byunsooblog.wordpress.com/2014/03/16/nsurl-파라미터-파싱하기/comment-page-1/)
+[NSURL_Parsing]: [Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/) 라는 글을 보면 query를 이용한 경우와 queryItems를 이용한 경우의 다른점이 나오는데, 이 글을 보고 queryItems를 사용하기로 결정하게 되었습니다.
 
-[^Alamofire]: [Alamofire](https://github.com/Alamofire/Alamofire)
+[^Alamofire_RayWenderlich]: [Alamofire Tutorial: Getting Started](https://www.raywenderlich.com/121540/alamofire-tutorial-getting-started)
 
 [^Alamofire_Tstory]: [Alamofire 사용하기](http://rhammer.tistory.com/115)
