@@ -70,3 +70,9 @@ GitHub에서는 자체적으로 redcarpet을 지원하므로 마크다운을 쓰
 [^kramdown]: 2016년 5월 1일 이후로 GitHub에서는 kramdown을 기본으로 제공한다고 한다. [_config.yml 파일을 kramdown으로 수정하는 방법](https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/)
 
 [kramdown](http://kramdown.gettalong.org)
+
+[Unable to set favicon using Jekyll and github pages - Stack Overflow](http://stackoverflow.com/questions/30551501/unable-to-set-favicon-using-jekyll-and-github-pages)
+
+[Favicon / 즐겨찾기 아이콘 등록 :: 비둘기쉼터](http://chaz.tistory.com/m/post/87)
+
+[파비콘(Favicon) 만드는 방법과 홈페이지에 적용하는 방법 - 웹디자인 강좌](http://www.homejjang.com/11/favicon.php)
