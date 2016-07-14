@@ -2,7 +2,6 @@
 
 본 내용은 ProGit 번역본을 기준으로, 여러 곳의 정보들을 모아서 정리한 것입니다.[^ProGit] ProGit 내용은 전체중에서 가장 기본이 되는 2장의 내용을 참고하였습니다.[^ProGit_Ch2]
 
-
 ### Git 저장소 만들기
 
 #### 기존 프로젝트를 Git 저장소로 만드는 방법
@@ -29,8 +28,7 @@ $ git clone https://github.com/libgit2/libgit2 mylibgit
 
 #### GitHub에서 알려주는 저장소 만드는 방법
 
-**GitHub** 에 저장소를 만들고 나서 저장소를 들어가면, 아래와 같이 기본 설명을 해주는데, 여기에 Git `init`부터 `push`까지의 설명이 사실상 되어 있다.[^GitHub]
-
+**GitHub** 에 저장소를 만들고 나서 저장소를 들어가면, 아래와 같이 Git에 대한 기본 설명을 해주는데, 여기에 Git `init`부터 `push`까지의 설명이 사실상 되어 있다.[^GitHub]
 
 ```
 $ echo "# GitTest" >> README.md
@@ -56,7 +54,6 @@ $ git push -u origin master
 * Staged
 
 staging area에 대한 정확한 이해가 필요할 것 같다. - 일단은 staged 파일들이 모여있는 곳이 staging area인 듯 하다.
-
 
 #### 파일 상태 확인하기
 
@@ -93,6 +90,7 @@ $ cat .gitignore
 *.[oa]
 *~
 ```
+
 `.gitignore` 파일은 표준 Glob 패턴을 사용한다. Glob 패턴은 정규표현식을 단순하게 만든 것으로 이해하면 된다.
 
 **GitHub** 는 다양한 프로젝트에서 사용하는 `.gitignore` 예제를 관리하고 있으므로, 참고하면 좋다.[^GitHubIgnore]
@@ -226,6 +224,8 @@ push는 다른 사람이 push한 후에는 할 수 없다. 먼저 다른 사람�
 #### submodule
 
 submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리해 넣는 것 - 나중에 좀 더 정리하자.
+
+
 
 ### 참고 자료
 

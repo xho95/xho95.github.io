@@ -15,9 +15,7 @@ let url = "http://www.myurl.com?param1=value1&param2=value2"
 
 위의 주소에서 param1에 해당하는 값인 value1 만을 뽑아내야 하는 경우가 있을 수 있습니다.
 
-이 경우에 Foundation에 있는 NSURLComponents 클래스와 이 클래스의 속성들을 사용하면 편리합니다.
-
-NSURLComponents 클래스를 사용하면 따로 NSURL을 파싱하는 다른 외부 라이브러리를 사용하지 않아도 Swift에서 url을 쉽게 다룰 수 있습니다.
+이 경우에 Foundation에 있는 NSURLComponents 클래스와 이 클래스의 속성들을 사용하면 편리합니다. NSURLComponents 클래스를 사용하면 따로 NSURL을 파싱하는 다른 외부 라이브러리를 사용하지 않아도 Swift에서 url을 쉽게 다룰 수 있습니다.[^Alamofire_Tstory]
 
 ### **NSURLComponents** 클래스
 
@@ -79,6 +77,8 @@ for item in queryItems! {
 
 URL을 파싱하기 위한 **RFC** 및 **RFC 3986** 이 무엇인지는 아직 잘 모릅니다. 이 부분은 나중에 따로 내용을 업데이트 할 예정입니다.
 
+Swift 프로그래밍에서는 URL을 다룰 경우에 본문과 같이 Foundation 프레임웍을 직접 사용하기 보다는 Alamofire 같은 외부 라이브러리를 많이 사용하는 것 같습니다. [^Alamofire] 아직 제가 Alamofire를 직접 사용해 본적은 없지만 상당히 많은 개발자들이 사용하고 있는 것으로 알고 있습니다. 기회가 되면 AAlamofire 사용법에 대해서도 정리하도록 하겠습니다.
+
 ### 참고 자료
 
 [^NSURLComponents]: NSURLComponents 클래스에 대한 설명은 애플의 reference 사이트인 [NSURLComponents Class Reference](https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLComponents_class/#//apple_ref/occ/instp/NSURLComponents/queryItems) 부분을 참고하시면 됩니다.
@@ -88,3 +88,7 @@ URL을 파싱하기 위한 **RFC** 및 **RFC 3986** 이 무엇인지는 아직 �
 [Parse NSURL query property](http://www.sellmyapplication.com/question/parse-nsurl-query-property/)
 
 [NSURL 파라미터 파싱하기](https://byunsooblog.wordpress.com/2014/03/16/nsurl-파라미터-파싱하기/comment-page-1/)
+
+[^Alamofire]: [Alamofire](https://github.com/Alamofire/Alamofire)
+
+[^Alamofire_Tstory]: [Alamofire 사용하기](http://rhammer.tistory.com/115)
