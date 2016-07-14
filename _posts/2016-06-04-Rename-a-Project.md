@@ -52,7 +52,7 @@ Xcode로 작업을 하다보면 이미 상당히 진행된 프로젝트나 완�
 
 bundle identifier의 경우 일단 앱스토어에 앱을 한 번 제출하고 나면 바꿀 수 없습니다. 따라서 이후에 프로젝트나 앱 이름을 변경하기 보다는 처음에 이름을 정할 때 신중히 정하는 것이 더 좋을 것입니다.
 
-프로젝트의 이름이 아니라 프로덕트의 이름만 바꿀 수는 없는지, 알아볼 필요가 있습니다. Utility Inspector에서 이름을 바꿀 수 있는지 알아봐야 합니다.
+프로젝트의 이름이 아니라 앱의 이름만 바꿀 수는 없는지, 알아볼 필요가 있습니다. 방법이 있는 것 같습니다.[^asamaru]
 
 
 ### 참고 자료
@@ -72,3 +72,5 @@ bundle identifier의 경우 일단 앱스토어에 앱을 한 번 제출하고 �
 [^iOS_Rename]: [iOS 프로젝트 이름 변경](http://xcode5.tistory.com/entry/iOS-프로젝트-이름-변경)
 
 [^Xcode_4]: [XCode4 프로젝트이름 변경하기](http://smok95.tistory.com/227)
+
+[^asamaru]: 프로젝트에서 앱의 이름만 변경하는 것은 [유영재님의 블로그](https://blog.asamaru.net)에 [Xcode 프로젝트 앱 이름 변경](https://blog.asamaru.net/2015/10/08/change-xcode-project-app-name/)이라는 글에 설명이 있습니다. 아직 제가 직접 테스트해보지 않아서 주석을 달았는데, 나중에 정리해서 포스트 글에 넣도록 하겠습니다.
