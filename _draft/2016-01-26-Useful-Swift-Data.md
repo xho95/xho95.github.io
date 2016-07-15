@@ -5,6 +5,8 @@ date:   2016-01-25 21:30:00 +0900
 categories: Resources Softwares Programming Swift
 ---
 
+[^LetSwift]: Swift 개발자들이 만나고, 배우고, 즐기는 컨퍼런스 [LET'SWIFT](http://www.letswift.kr/2016/)
+
 [NSDateFormatter](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDateFormatter_Class/)
 
 [GCM Topic을 이용해서 한번의 발송으로 단체 푸시를 발송하기](http://theeye.pe.kr/archives/category/dumb-programmer/dev-ios)

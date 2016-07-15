@@ -1,10 +1,8 @@
 SceneKit은 애플에서 앱 개발에 사용할 수 있는 상위 레벨의 3D 프레임웍입니다.[^WWDC_2013]  [^WWDC_2014]  [^WWDC_2015]
 
-여기서는 WWDC 2016의 Advances in SceneKit Rendering 세션에서 소개된 내용을 정리합니다.[^WWDC_2016]
+여기서는 WWDC 2016의 Advances in SceneKit Rendering 세션에서 소개된 내용을 간단히 정리합니다.[^WWDC_2016] 물론 향후에는 이 글을 업데이트 하면서 SceneKit의 사용법을 정리할 예정입니다.
 
-WWDC 2016에서는 SceneKit에 큰 변화는 없는 것 같고, 주로 Rendering 부분에서 성능이 개선된 것 같습니다.
-
-다만, watchOS에도 SceneKit이 적용되면서 SceneKit은 애플의 모든 OS에서 사용할 수 있게 되었습니다.
+WWDC 2016에서는 SceneKit에 큰 변화는 없는 것 같고, 주로 Rendering 부분에서 성능이 개선된 것 같습니다. 다만, watchOS에도 SceneKit이 적용되면서 SceneKit은 애플의 모든 OS에서 사용할 수 있게 되었습니다.
 
 ### 앞부분
 
@@ -14,21 +12,21 @@ Linear Rendering and Color Management
 
 설정에서 사용을 선택할 수 있다.
 
-보다 넓은 범위의 색을 사용할 수 있는 것 같습니다. Wide Gamut에 대해서 좀 더 살펴볼 필요가 있습니다. 
+보다 넓은 범위의 색을 사용할 수 있는 것 같습니다. Wide Gamut에 대해서 좀 더 살펴볼 필요가 있습니다.
 
 ### Physical Rendering
 
-새로 추가된 속성은 다음과 같습니다. 
+새로 추가된 속성은 다음과 같습니다.
 
 #### Pysically Based Materials
 
-Pysically Based Materials 에는 두 가지가 추가되었습니다. 
+Pysically Based Materials 에는 두 가지가 추가되었습니다.
 
-* metalness 
+* metalness
 * roughness
 
-사용 예는 아래와 같습니다. 
-다만 사용하려면, metalness map과 roughness map을 만들어야 적용할 수 있습니다. 
+사용 예는 아래와 같습니다.
+다만 사용하려면, metalness map과 roughness map을 만들어야 적용할 수 있습니다.
 
 ```
 let material = SCNMaterial()
@@ -43,9 +41,9 @@ roughness의 경우 scalar 값으로도 설정할 수 있습니다.
 
 #### Pysically Based Lights
 
-##### Image based Lighting 
+##### Image based Lighting
 
-아래처럼 하면 주변 이미지가 물체에 작용하는 조명효과를 줄 수 있습니다. `exr` 확장자는 무슨 의미인지 잘 모르겠습니다. 
+아래처럼 하면 주변 이미지가 물체에 작용하는 조명효과를 줄 수 있습니다. `exr` 확장자는 무슨 의미인지 잘 모르겠습니다.
 
 ```
 let scene = SCNScene()
@@ -54,11 +52,11 @@ scene.lightingEnvironment.contents = "outside.exr"
 scene.background.contents = scene.lightingEnvironment.contents
 ```
 
-일단은 주변 이미지를 주변광으로 설정하고, 다시 이 주변광으로 설정한 이미지를 주변 이미지로 세팅하고 있는 것 같습니다. 
+일단은 주변 이미지를 주변광으로 설정하고, 다시 이 주변광으로 설정한 이미지를 주변 이미지로 세팅하고 있는 것 같습니다.
 
 ##### Light probes
 
-국부적인 조명 효과를 주는 것 같습니다. 
+국부적인 조명 효과를 주는 것 같습니다.
 
 ```
 let light = SCNLight()
@@ -81,7 +79,7 @@ light.temperature = 5000		// Kelvin
 
 * Photometric lights
 
-`IES`라는 용어도 쓰는데 그건 뭔지 모르겠습니다. 
+`IES`라는 용어도 쓰는데 그건 뭔지 모르겠습니다.
 
 ```
 let light = SCNLight()
@@ -94,7 +92,7 @@ light.iesProfileURL = Bundle.main().urlForResource("spot", withExtensions: "ies"
 
 HDR (High Dynamic Range) 부분이 추가되었습니다.
 
-마치 실제 카메라의 조리개를 조작하거나 필터 등을 적용한 듯한 효과를 줄 수 있는 것 같습니다. 
+마치 실제 카메라의 조리개를 조작하거나 필터 등을 적용한 듯한 효과를 줄 수 있는 것 같습니다.
 
 ```
 let camera = SCNCamera()
@@ -104,7 +102,7 @@ camera.wantsHDR = true
 
 #### Bloom
 
-특정 위치에 반짝거림을 주는 효과인 것 같습니다. 
+특정 위치에 반짝거림을 주는 효과인 것 같습니다.
 
 ```
 camera.bloomThreshold = 0.5
@@ -158,7 +156,7 @@ camera.contrast = 2.0
 
 #### Color Grading
 
-색 조정 효과를 주는 것 같습니다. 
+색 조정 효과를 주는 것 같습니다.
 특정 색 집합으로 된 화면을 다른 색 집합으로 된 화면으로 바꾸는 방식인 것 같습니다.  (정확하지는 않습니다.)
 
 ```
@@ -169,7 +167,7 @@ camera.colorGrading = "colorProfile.png"
 
 #### Polygons
 
-모델 로딩 시에 방향을 원본으로 유지할 수 있는 것 같습니다. 
+모델 로딩 시에 방향을 원본으로 유지할 수 있는 것 같습니다.
 ```
 let loadingOptions = [.preserveOriginalTopology: true]
 ```
@@ -182,7 +180,7 @@ USD (Universal Scene Description) 포맷을 지원하게 된 것 같습니다. U
 
 ##### Classes
 
-하나의 모델로 다양한 물체를 변주해서 만들 수 있는 것 같습니다. 
+하나의 모델로 다양한 물체를 변주해서 만들 수 있는 것 같습니다.
 
 ##### Capabilities
 

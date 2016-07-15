@@ -6,3 +6,7 @@ categories: Xcode Swift Dependency CocoaPods
 ---
 
 CocoaPods은 Swift 및 Objective-C로 Cocoa 프로젝트를 수행할 때 사용하는 의존성 관리 도구이다. Ruby로 개발되었다.
+
+### 참고 자료
+
+[pod install vs. pod update](https://guides.cocoapods.org/using/pod-install-vs-update.html)

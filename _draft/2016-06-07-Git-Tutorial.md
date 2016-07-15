@@ -246,3 +246,5 @@ submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리�
 [^gitignore_sample]: [gitignore로 tracking 제외할 수 없는 파일 제외하기](http://kyejusung.com/2016/06/git-gitignore로-tracking-제외할-수-없는-파일-제외하기/)
 
 [Xcode4 소스 버전 관리 기능](https://soulpark.wordpress.com/2012/08/23/xcode4_source_control_management/)
+
+[^StackOverflow]: [Xcode and Git Source Control : “The working copy XXXXX failed to commit files”](http://stackoverflow.com/questions/14694662/xcode-and-git-source-control-the-working-copy-xxxxx-failed-to-commit-files)
