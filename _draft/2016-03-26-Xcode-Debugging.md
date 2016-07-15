@@ -18,3 +18,7 @@ categories: Resources Xcode Debugging Swift
 [Tip: 유용한 단축키 모음](http://kyejusung.com/2015/12/xcode-tip-유용한-단축키-모음/)
 
 [Xcode: 릴리즈 모드로 테스트하기](http://seorenn.blogspot.kr/2014/12/xcode.html)
+
+### Xcode Plugin
+
+[Alcatraz](http://alcatraz.io) : The package manager for Xcode - [GitHub/Alcatraz](https://github.com/alcatraz/Alcatraz)

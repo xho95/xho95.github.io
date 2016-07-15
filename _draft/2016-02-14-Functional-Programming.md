@@ -5,8 +5,9 @@ date:   2016-02-14 23:50:00 +0900
 categories: Xcode Swift Paradigm Functional
 ---
 
-
 ### Functional Programming
+
+[Objc Books](https://www.objc.io/books/) : Functional Swift
 
 [번역: 함수형 프로그래밍(Functional Programming) 기초](http://kwangshin.pe.kr/blog/2013/01/21/번역-함수형-프로그래밍functional-programming-기초/)  : Kwangshin's Positive Blog
 

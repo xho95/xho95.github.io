@@ -5,9 +5,9 @@ date:   2016-01-25 21:30:00 +0900
 categories: Resources Softwares Programming Swift
 ---
 
-[^LetSwift]: Swift 개발자들이 만나고, 배우고, 즐기는 컨퍼런스 [LET'SWIFT](http://www.letswift.kr/2016/)
-
 [NSDateFormatter](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDateFormatter_Class/)
+
+### Push
 
 [GCM Topic을 이용해서 한번의 발송으로 단체 푸시를 발송하기](http://theeye.pe.kr/archives/category/dumb-programmer/dev-ios)
 
@@ -19,22 +19,13 @@ categories: Resources Softwares Programming Swift
 
 [Swift Replace Multiple Characters in String](http://stackoverflow.com/questions/28059543/swift-replace-multiple-characters-in-string)
 
-
-### Swift Terminal
-
-[How can I use swift in Terminal?](http://stackoverflow.com/questions/24011120/how-can-i-use-swift-in-terminal)
-
-
 ### Swift
 
 [Swift 3 로드맵: 범용언어로의 도약](https://realm.io/kr/news/swift-3-roadmap/) : Swift 3.0에 대한 소개 글
 
 [Spark of Genius](http://sparkapple.com) : Swift 개발자 블로그
 
-
 [objc.io](https://www.objc.io) : a platform for in-depth technical topics relevant to all iOS and OS X developers
-
-[Objc Books](https://www.objc.io/books/) : Functional Swift
 
 [10 Swift IOS open-source projects you cannot ignore](https://medium.com/swift-programming/15-swift-ios-open-source-projects-you-cannot-ignore-6bd4ac37d7dd#.u4c67ja0u)
 
@@ -68,13 +59,6 @@ categories: Resources Softwares Programming Swift
 
 [UITableViewCell with autolayout left margin different on iPhone and iPad](http://stackoverflow.com/questions/27420888/uitableviewcell-with-autolayout-left-margin-different-on-iphone-and-ipad)
 
-
 ### Image
 
 [이미지로부터 픽셀 데이터 얻어 새로운 이미지 만들기](http://blog.weirdx.io/post/24742)
-
-### Algorithms
-
-[Binary Search Tree](https://gist.github.com/pocketkk/f7d2ba819b46725229a4)
-
-[Binary search trees](http://waynewbishop.com/swift/binary-search-trees/)

@@ -74,3 +74,7 @@ mv newFileName.txt oldFileName.txt
 [VIM을 사용하자](http://www.joinc.co.kr/modules/moniwiki/wiki.php/Site/Vim/Documents/UsedVim)
 
 [명령행 작업 좀더 편리하게 하기!](http://redgolems.tistory.com/30)
+
+### Swift Terminal
+
+[How can I use swift in Terminal?](http://stackoverflow.com/questions/24011120/how-can-i-use-swift-in-terminal)
