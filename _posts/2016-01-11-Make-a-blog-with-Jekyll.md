@@ -7,7 +7,7 @@ categories: Blog GitHub Jekyll Git
 
 자신이 공부한 내용을 정리하는 데는 블로그만한 것이 없습니다. 블로그는 글을 쓰면서 생각을 정리하는 역할도 하지만 자신의 글들을 온라인 공간에 백업하는 역할도 겸하기 때문입니다.
 
-하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 제작할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들[^kalkin7]이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^saltfactory_1] 그리하여 여러 방법들을 살펴보고 난 후 [Jekyll](http://jekyllrb.com)[^Jekyll] 기반의  [GitHub Pages](https://pages.github.com) [^GitHub]를 사용해서 블로그를 제작하기로 결심했습니다.
+하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 제작할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들[^kalkin7]이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다.[^saltfactory_1] 그리하여 여러 방법들을 살펴보고 난 후 [Jekyll](http://jekyllrb.com)[^Jekyll] 기반의  [GitHub Pages](https://pages.github.com)[^GitHub]를 사용해서 블로그를 제작하기로 결심했습니다.
 
 이 글에서는 제가 블로그를 제작하면서 경험한 것들, 주변분들로부터 도움을 받은 내용들[^cuspace], 그리고 인터넷에서 찾은 많은 분들의 자료들[^Nolboo]을 바탕으로 맥에서 Jekyll과 GitHub Pages를 이용하여 개인 블로그를 만드는 방법을 정리하고자 합니다.[^saltfactory_2]
 

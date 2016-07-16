@@ -7,8 +7,7 @@ categories: Jekyll Atom MarkDown RedCarpet
 
 Jekyll로 생성한 local 저장소에 새 markdown 문서를 만들기 위해서는 마크타운 편집기가 필요하다.
 
-맥용 마크다운 편집기에는 여러가지 종류가 있으나, Atom의 경우 폴더 기준으로 프로젝트를 관리할 수 있어서, 블로그 제작용으로 사용하기 편리하다.
-
+맥용 마크다운 편집기에는 여러가지 종류가 있으나, Atom의 경우 폴더 기준으로 프로젝트를 관리할 수 있어서, 블로그 제작용으로 사용하기 편리하다.[^Atom]
 
 ### Atom 설치하기
 
@@ -17,7 +16,6 @@ Atom은 `https://atom.io`에서 다운 받을 수 있다.
 홈페이지에서 `Download For Mac` 버튼을 누르면 다운되며 압축을 풀면 바로 하나의 실행 파일 형태로 설치가 끝난다.
 
 > 필요하다면 실행 파일을 맥의 `Application` 폴더로 이동하여 `Launchpad`에 등록하거나 앱 아이콘을 끌어다가 `Dock`에 두고 사용할 수 있다.
-
 
 ### \_config.yml 편집하기
 
@@ -39,7 +37,6 @@ redcarpet:
   extensions: ["tables", "autolink", "strikethrough", "space_after_header", "with_toc_data", "fenced_code_blocks"]
 ```
 
-
 ### redcarpet 설치하기
 
 redcarpet을 설치하려면 ruby의 `gem install` 명령어를 이용한다.[^kramdown]
@@ -52,7 +49,6 @@ $ gem install redcarpet
 
 GitHub에서는 자체적으로 redcarpet을 지원하므로 마크다운을 쓰기위해 원격 저장소에서 설정할 것은 없다.
 
-
 ### Atom으로 post 만들기
 
 이제 `jekyll`도 설치했고 블로그 문서를 작성할 에디터도 설치했으며, 이 에디터에서 사용할(좀 더 확인이 필요함) 마크타운 엔진도 설치했으니, 새 블로그 문서를 작성해 볼 순서이다.
@@ -63,16 +59,18 @@ GitHub에서는 자체적으로 redcarpet을 지원하므로 마크다운을 쓰
 
 블로그 포스트를 완성한 후 git의 `push`를 수행하면 `username.github.io`를 통하여 새 블로그 글이 등록된 것을 확인할 수 있다.
 
-### 참고 자료
-
-
-[ATOM]: https://atom.io  
-[^kramdown]: 2016년 5월 1일 이후로 GitHub에서는 kramdown을 기본으로 제공한다고 한다. [_config.yml 파일을 kramdown으로 수정하는 방법](https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/)
-
-[kramdown](http://kramdown.gettalong.org)
+### Favicon
 
 [Unable to set favicon using Jekyll and github pages - Stack Overflow](http://stackoverflow.com/questions/30551501/unable-to-set-favicon-using-jekyll-and-github-pages)
 
 [Favicon / 즐겨찾기 아이콘 등록 :: 비둘기쉼터](http://chaz.tistory.com/m/post/87)
 
 [파비콘(Favicon) 만드는 방법과 홈페이지에 적용하는 방법 - 웹디자인 강좌](http://www.homejjang.com/11/favicon.php)
+
+### 참고 자료
+
+[^Atom]: [Atom.io](https://atom.io)
+  
+[^kramdown]: 2016년 5월 1일 이후로 GitHub에서는 kramdown을 기본으로 제공한다고 한다. [_config.yml 파일을 kramdown으로 수정하는 방법](https://help.github.com/articles/updating-your-markdown-processor-to-kramdown/)
+
+[kramdown](http://kramdown.gettalong.org)

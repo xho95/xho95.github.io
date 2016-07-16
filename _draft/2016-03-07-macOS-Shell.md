@@ -5,33 +5,21 @@ date:   2016-03-07 21:00:00 +0900
 categories: Resources OSX Shell Terminal
 ---
 
-[OS X 에서 환경변수 지정하는 방법!!](http://sjpison.tistory.com/258)
+### 환경 설정
 
-[mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
+[OS X 에서 환경변수 지정하는 방법!!](http://sjpison.tistory.com/258)
 
 [Mac에서 Path 설정하기](http://elfinlas.tistory.com/266)
 
-[MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
-
-[리눅스 mv, rename - 파일명 변경](http://webdir.tistory.com/145) : 폴더명을 바꾸는 내용도 설명되어 있다.
-
 ### shell
 
-[터미널 초보의 필수품인 Oh My ZSH!를 사용하자](https://nolboo.github.io/blog/2015/08/21/oh-my-zsh/)
-
-[zsh 갖고 놀기](http://coding-korea.blogspot.kr/2012/09/zsh.html)
-
-[오늘부로 나도 ZShell User!](http://justbricks.tumblr.com/post/89465435117/오늘부로-나도-zshell-user)
-
-[맥에서 zsh 사용하기](https://blog.ayukawa.kr/archives/1758)
-
 [serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
-
-[MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
 
 [Mac 터미널에서 ssh 접속하는 방법](http://db.necoaki.net/54)
 
 #### 터미널 명령어
+
+[MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
 
 * `ls` : list - 파일 및 폴더의 리스트를 보여줍니다.
 * `cd` : change directory - 폴더를 변경합니다.
@@ -41,11 +29,27 @@ categories: Resources OSX Shell Terminal
 * `ipconfig getifaddr en0` : 현재 ip를 보여줍니다.
 * `logout` : console을 종료합니다.
 
-* `mv` : move - 명령은 파일 이동할 때도 사용하지만 파일 이름을 바꿀 때도 사용할 수 있습니다.
+* `mv` : move - 명령은 파일 이동할 때도 사용하지만 파일 이름을 바꿀 때도 사용할 수 있습니다.[^rm]
+
 ```
-mv newFileName.txt oldFileName.txt
+$ mv newFileName.txt oldFileName.txt
 ```
 
+[mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
+
+#### 새로운 명령어 추가
+
+[Mac OS X tree 명령어 설치, 실행](http://eunguru.tistory.com/150)
+
+#### zsh
+
+[터미널 초보의 필수품인 Oh My ZSH!를 사용하자](https://nolboo.github.io/blog/2015/08/21/oh-my-zsh/)
+
+[zsh 갖고 놀기](http://coding-korea.blogspot.kr/2012/09/zsh.html)
+
+[오늘부로 나도 ZShell User!](http://justbricks.tumblr.com/post/89465435117/오늘부로-나도-zshell-user)
+
+[맥에서 zsh 사용하기](https://blog.ayukawa.kr/archives/1758)
 
 ### iTerm2
 
@@ -56,7 +60,6 @@ mv newFileName.txt oldFileName.txt
 [go2shell 설정하기 - 기본 터미널을 iterm으로 바꿉니다.](http://osxtip.tistory.com/168)
 
 [iTerm 사용법 정리](http://osxtip.tistory.com/181)
-
 
 ### Apple Script
 
@@ -70,11 +73,14 @@ mv newFileName.txt oldFileName.txt
 
 [바로 실행되는 ShellScript 파일 만들기](http://jungryulchoi.tistory.com/4)
 
-
 [VIM을 사용하자](http://www.joinc.co.kr/modules/moniwiki/wiki.php/Site/Vim/Documents/UsedVim)
 
 [명령행 작업 좀더 편리하게 하기!](http://redgolems.tistory.com/30)
 
-### Swift Terminal
+### Swift in Terminal
 
 [How can I use swift in Terminal?](http://stackoverflow.com/questions/24011120/how-can-i-use-swift-in-terminal)
+
+### 참고 자료
+
+[^rm]: [리눅스 mv, rename - 파일명 변경](http://webdir.tistory.com/145) : 폴더명을 바꾸는 내용도 설명되어 있다.
