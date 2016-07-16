@@ -5,6 +5,14 @@ date:   2016-03-07 21:00:00 +0900
 categories: Resources OSX Shell Terminal
 ---
 
+여기서는 **macOS** 의 shell 및 운영체제의 기본적인 내용들에 대해서 정리합니다.
+
+### macOS의 숨김 파일들
+
+#### .DS_Store
+
+`.DS_Store` 파일은 macOS의 finder로 특정 폴더를 접근하면 생성되는 파일로, 폴더의 특성을 저장하는 파일입니다. 이 파일을 텍스트 편집기로 열면 해당 폴더의 구조, 아이콘의 배치 등이 저장되어 있습니다.[^DS_Store]
+
 ### 환경 설정
 
 [OS X 에서 환경변수 지정하는 방법!!](http://sjpison.tistory.com/258)
@@ -84,3 +92,5 @@ $ mv newFileName.txt oldFileName.txt
 ### 참고 자료
 
 [^rm]: [리눅스 mv, rename - 파일명 변경](http://webdir.tistory.com/145) : 폴더명을 바꾸는 내용도 설명되어 있다.
+
+[^DS_Store]: .DS_Store 파일에 대한 설명은 [.DS_Store 정체](http://blog.naver.com/PostView.nhn?blogId=sky777a&logNo=140129264309)라는 글에 간단하게 정리되어 있습니다.
