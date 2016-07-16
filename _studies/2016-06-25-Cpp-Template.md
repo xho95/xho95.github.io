@@ -16,9 +16,9 @@
 
 * 비-제네릭 게임 보드 클래스 : 예) `GameBoard`
 	* GameBoard를 재사용하려면 특정 타입이 GamePiece로 부터 상속받아야 한다.
-	
+
 * 제네릭 게임 보드 클래스: 예) `Grid`
-	* 어떤 타입의 게임 말도 올려놓을 수 있다. 
+	* 어떤 타입의 게임 말도 올려놓을 수 있다.
 	* 사용 데이터 타입을 특정하게 확정하지 않고서도 클래스를 정의할 수 있다.
 
 #### Grid 클래스 정의
@@ -30,23 +30,23 @@ template <typename T>
 * 템플릿 클래스가 한 개의 타입에 대해 템플릿화되어 있다는 것을 의미
 	* template, typename : C++ 표준 키워드
 	* template 지정자는 전체 구문에 적용 - 클래스 정의구문 전체에 적용
-	
+
 * 템플릿 클래스
-	* 클래스 이름 `Grid` : 템플릿 이름 
-	* 실제 사용하는 Grid 클래스 : 템플릿 클래스 `Grid`를 특정 타입(`int`)으로 인스턴스화한 결과물 
-	
+	* 클래스 이름 `Grid` : 템플릿 이름
+	* 실제 사용하는 Grid 클래스 : 템플릿 클래스 `Grid`를 특정 타입(`int`)으로 인스턴스화한 결과물
+
 	* 템플릿 파라미터 `T` : 템플릿을 정의하는 시점에는 어떤 타입일지 정의 되지 않았기 때문에 사용 - 어떤 타입이든 가능
 	* 템플릿 Grid 타입 : `Grid<T>`
-	
-* 표기법	
+
+* 표기법
 	* 클래스 정의문 안에서는 컴파일러가 자동으로 `Grid`를 `Grid<T>`로 인식
 	* 혼란을 줄이기 위해 `Grid<T>` 처럼 명시적으로 표기하는 것이 바람직
 	* 생성자, 소멸자 이름은 `Grid` 처럼 해야 함
-	
+
 * method 정의
 	* 각 method 구현부다마 `template <typename T>` 지정자가 맨 앞에 붙는다.
 	* method 구현부 위치
-		* 소스 파일이 아닌 헤더 파일에 있어야 한다. 
+		* 소스 파일이 아닌 헤더 파일에 있어야 한다.
 		* 템플릿 클래스를 인스턴스화하는 시점에 컴파일러가 구현부를 볼 수 있어야 한다.
 	* method 또는 static 멤버 정의 : 클래스 이름은 `Grid<T>` 사용
 
@@ -58,10 +58,10 @@ template <typename T>
 ```
 Grid<int> myIntGrid;
 Grid<double> myDoubleGrid(11, 11);
-    
+
 myIntGrid.setElementAt(0, 0, 10);
 int x = myIntGrid.getElementAt(0, 0);
-    
+
 Grid<int> grid2(myIntGrid);
 Grid<int> anotherIntGrid = grid2;
 ```
@@ -110,10 +110,10 @@ gridOfVectors.setElementAt(5, 6, myVector);
 
 ```
 Grid<int> * myGridp = new Grid<int>();
-    
+
 myGridp->setElementAt(0, 0, 10);
 int y = myGridp->getElementAt(0, 0);
-    
+
 delete myGridp;
 ```
 
@@ -144,7 +144,7 @@ mCells = new T * [mWidth];
 
 * 템플릿을 인스턴스화할 때 지정된 타입이 템플릿 코드에서 요구하는 동작을 지원하지 않으면 컴파일 에러가 난다. 이 때 발생하는 에러는 굉장히 난해하다.
 
-* 실제 사용하는 코드만 인스턴스화하는 템플릿 특성을 활용해서 컴파일 에러없이 템플릿을 이용할 수도 있다. 
+* 실제 사용하는 코드만 인스턴스화하는 템플릿 특성을 활용해서 컴파일 에러없이 템플릿을 이용할 수도 있다.
 
 #### 템플릿 코드를 작성하는 요령
 
@@ -175,13 +175,13 @@ class Grid {
 
 #### 템플릿 클래스의 특수화
 
-* 템플릿 특수화 : template speciailization - 특정 타입에 대해서만 특별한 템플릿 클래스 정의를 사용하도록 할 수 있다.
+* 템플릿 특수화 : template specialization - 특정 타입에 대해서만 특별한 템플릿 클래스 정의를 사용하도록 할 수 있다.
 	* 해당 클래스가 템플릿이라는 점과 어떤 타입에 대한 특수화인지를 지정해야 한다.
-	
+
 ```
 template <>
 class Grid<char *>
-``` 
+```
 
 * 특수화는 일반화된 버전보다 앞에 정의되어야 하는데 그러려면 템플릿 클래스 선언부가 필요하다. 전체 흐름은 아래와 같다.
 
