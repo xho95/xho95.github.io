@@ -1,6 +1,6 @@
 ## What's New in Swift
 
-* WWDC 2016의 What's New in Swift 부분을 정리한 글입니다.[^402]
+* WWDC 2016의 What's New in Swift 영상을 정리한 글입니다.[^402]
 
 ### Adoption
 
