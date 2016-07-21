@@ -39,3 +39,5 @@ A4용지 1~2매 분량의 자기소개를 요구
 [경쟁력있는 자기소개서 작성법](http://www.culturist.co.kr/front/magazine/success_salary_view.asp?id=2483&div=kr&salary=all&page=1)
 
 [자기소개서 작성 Key point](http://www.culturist.co.kr/front/magazine/success_salary_view.asp?id=2480&div=kr&salary=all&page=1)
+
+[영어이력서작성시 기본적으로 유의해야 할 사항입니다!!](http://egloos.zum.com/assa11/v/1886291)
