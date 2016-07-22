@@ -7,23 +7,25 @@
 * 기간 : 2016년 ~ 현재
 * 직책 : 매니저, Swift 스터디 모임 랩장, VRtooN 연구실 모임 연구원
 
-* 활동 : [Swift 프로그래밍 스터디 모임](http://www.modulabs.co.kr/Swift_library/848) 랩장
+* 활동 : [Swift 프로그래밍 스터디 모임](http://www.modulabs.co.kr/Swift_library/848)에서 랩장을 맡고 있습니다.
 	* 회원관리 앱인 **모두App** 제작중
 		* [모두App 인트로 YouTube 영상](https://www.youtube.com/watch?v=VVDAZ4qvbFc) : **CAAnimation**, **CALayer**로 모두의연구소 엠블럼에 애니메이션을 적용했습니다.
 		* [모두App DB 및 UI 설계](http://www.modulabs.co.kr/Swift_library/3842) : **Core Data**를 활용하여 회원관리앱 DB를 설계하고 있습니다.
-	* GitHub 저장소 **[modulabs/Swift](https://github.com/modulabs/Swift)**에 Swift 관련 공부 내용을 공개하고 있습니다.
+	* GitHub 저장소 **[modulabs/Swift](https://github.com/modulabs/Swift)**에 Swift 관련 공부 내용을 정리하고 있습니다.
 	
-* 활동 : 가상현실 연구실 [VRtooN 모임](http://www.modulabs.co.kr/VRtooN_library/787) 연구원
+* 활동 : 가상현실 연구실 [VRtooN 모임](http://www.modulabs.co.kr/VRtooN_library/787)에서 연구원으로 참여하고 있습니다.
 	* aFrame.io를 활용한 간단한 **VR** 실습 - **JavaScript**와 **aFrame.io** 프레임웍으로 가상환경에서 간단한 스위치를 구현하였습니다.
 	* **Unreal Engine 4** 스터디 : 향후 UE4를 이용하여 VR 컨텐츠를 제작하려는 목표를 가지고 있습니다.
 
 * 기여 : 
-	* **[GitHub 조직 계정](https://github.com/modulabs)** 생성 및 관리 : 모두의연구소 조직 계정을 생성하여 연구원들의 연구자료를 관리하고 있습니다.
-	* **Git** 사용법 특강 준비중 : 8월 중에 일반 연구원들을 대상으로 기초적인 Git 사용법을 공유할 계획입니다.
-	* **[Slack 계정](https://modulabs.slack.com/)** 생성 및 관리 : 모두의연구소에서 Linux 환경에서도 대화하고 싶은 분들을 위해 Slack 계정을 만들어 지원하였습니다.
+	* **[GitHub 조직 계정](https://github.com/modulabs)** 생성 및 관리 : 모두의연구소 연구원분들의 연구 자료를 관리하기 위하여 GitHub 조직 계정을 생성하고 관리함
+	* **Git** 사용법 특강 준비중 : 8월 중 토요일 오후에 일반 연구원들을 대상으로 기초적인 Git 사용법을 공유할 계획입니다.
+	* **[Slack 계정](https://modulabs.slack.com/)** 생성 및 관리 : 모두의연구소에서 Linux 환경에서도 대화하고 싶은 연구원분들을 위해 연구소 자체 Slack 계정을 만들어 지원함
 
 * 기타 활동 :
-	* LunaIoT용 iOS 통신 앱 개발 - [YouTube 데모 영상](https://www.facebook.com/xho1995/videos/984864604886273/)
+	* LunaIoT용 iOS 통신 앱 개발 - Restfull API를 제공하는 LunaIoT 프레임웍을 사용하여 iOS용 IoT 컨트롤러 개발 
+		* GitHub 계정
+		* [YouTube 데모 영상](https://www.facebook.com/xho1995/videos/984864604886273/)
 	* Swift 블로그 [xho95's Swift Life](http://xho95.github.io) 운영
 
 ## **Void Systems**
