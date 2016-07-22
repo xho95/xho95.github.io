@@ -1,27 +1,30 @@
-#### 경력 기술서
+## 경력 기술서
 
-**모두의연구소**
+## **모두의연구소**
 
-* 소개 : 모두의연구소는 대안 대학원 같은 곳으로 여기서 VR 및 Swift 스터디 모임에 참여하고 있습니다.
+* 사명 : 모두의연구소
+* 소개 : 모두의연구소는 대안 대학원 같은 곳으로 연구원들이 모여 서로 관심있는 주제를 연구하는 열린 연구소입니다.
 * 기간 : 2016년 ~ 현재
-* 역할 : 매니저, Swift 스터디 모임 랩장, VRtooN 연구실 모임 연구원
+* 직책 : 매니저, Swift 스터디 모임 랩장, VRtooN 연구실 모임 연구원
 
-* Swift 프로그래밍 스터디 랩장
-	* 회원관리앱인 모두앱 제작중 - [모두앱 인트로 YouTube 영상](https://www.youtube.com/watch?v=VVDAZ4qvbFc)
+* 활동 : Swift 프로그래밍 스터디 모임 랩장
+	* 회원관리 앱인 **모두App** 제작중 - [모두App 인트로 YouTube 영상](https://www.youtube.com/watch?v=VVDAZ4qvbFc)
 	* 개발 회의 장면 - 게시판 링크
-	* [GitHub 저장소](https://github.com/modulabs/Swift)에 공부한 내용을 공개
+	* [**GitHub** 저장소](https://github.com/modulabs/Swift)에 공부한 내용을 공개
 	
-* VRtooN 연구원
+* 활동 : 가상현실 연구실 VRtooN 모임 연구원
 	* aFrame.io를 활용한 간단한 VR 실습 - 스위치 스샷
 	* Unreal Engine 4 스터디 - 게시판 링크
 
-* 기타 활동 : 
+* 기여 : 
 	* [모두의연구소 GitHub 계정](https://github.com/modulabs) 생성 및 관리 : Git 사용법 특강 준비중
 	* [모두의연구소 Slack 계정](https://modulabs.slack.com/) 생성 및 관리
+
+* 기타 활동 :
 	* LunaIoT용 iOS 통신 앱 개발 - [YouTube 데모 영상](https://www.facebook.com/xho1995/videos/984864604886273/)
 	* Swift 블로그 [xho95's Swift Life](http://xho95.github.io) 운영
 
-**Void Systems**
+## **Void Systems**
 
 * 소개 : 1인 창업한 iOS 앱 개발 회사입니다.
 * 기간 : 2014년 11월 ~ 현재
@@ -48,7 +51,7 @@
 * 기타 활동 : 
 	* **[선형 대수](https://www.facebook.com/groups/1045080912185263/)** 스터디 모임 참여 : [Singular Value Decomposition (SVD)](../_data/SVD notes.pdf) 발표
 
-**부산대학교 계측 제어 연구실**
+## **부산대학교 계측 제어 연구실**
 
 * 소개 : 기계공학부 소속으로 로봇 제어 등을 연구하는 연구실입니다.
 * 시기 : 2010년 ~ 2014년 1학기
@@ -59,7 +62,7 @@
 	* 3D 격자 지도 제작 알고리즘 연구 - 논문 링크
 	* 사진 이미지 및 알고리즘 설명
 
-**부산대학교 CAE 연구실**
+## **부산대학교 CAE 연구실**
 
 * 소개 : 컴퓨터로 차량 동역학 관련 시뮬레이션 프로그램을 개발하는 연구실입니다.
 * 시기 : 2005년 ~ 2007년
@@ -69,27 +72,16 @@
 	* B-Spline 곡선을 이용한 경로 생성 알고리즘 개발 - 논문 링크
 	* Field Robot 제작 - [YouTube 데모 영상](https://www.youtube.com/watch?v=nrXtmwM93FE)
 
-**Mechatronics 동아리**
+## **Mechatronics 동아리**
 
 * 소개 : 부산대학교에서 로봇을 연구하는 학술 동아리입니다.
 * 시기 : 1995년 ~ 2005년
 * 역할 : 1998년 2학기 ~ 1999년 1학기 [동아리 회장](http://mecha.namoweb.net/xe/History)
 
-* 작품 활동 : 
+* 활동 : 
 	* DOS용 게임 **Sonar** 제작
 	* [네발이 제어 프로그램](http://mecha.namoweb.net/xe/Robot/428) 개선 
 	* [Hexis 제작](http://mecha.namoweb.net/xe/Robot/426) 참여
 
 * 기타 활동 : 
 	* [Mechatronics CI 제작](http://mecha.namoweb.net/xe/CI)
-
-**금성 고등학교**
-
-* 글짓기 부산시 장원
-
-
-
-
-
-
-
