@@ -7,18 +7,20 @@
 * 기간 : 2016년 ~ 현재
 * 직책 : 매니저, Swift 스터디 모임 랩장, VRtooN 연구실 모임 연구원
 
-* 활동 : Swift 프로그래밍 스터디 모임 랩장
-	* 회원관리 앱인 **모두App** 제작중 - [모두App 인트로 YouTube 영상](https://www.youtube.com/watch?v=VVDAZ4qvbFc)
-	* 개발 회의 장면 - 게시판 링크
-	* [**GitHub** 저장소](https://github.com/modulabs/Swift)에 공부한 내용을 공개
+* 활동 : [Swift 프로그래밍 스터디 모임](http://www.modulabs.co.kr/Swift_library/848) 랩장
+	* 회원관리 앱인 **모두App** 제작중
+		* [모두App 인트로 YouTube 영상](https://www.youtube.com/watch?v=VVDAZ4qvbFc) : **CAAnimation**, **CALayer**로 모두의연구소 엠블럼에 애니메이션을 적용했습니다.
+		* [모두App DB 및 UI 설계](http://www.modulabs.co.kr/Swift_library/3842) : **Core Data**를 활용하여 회원관리앱 DB를 설계하고 있습니다.
+	* GitHub 저장소 **[modulabs/Swift](https://github.com/modulabs/Swift)**에 Swift 관련 공부 내용을 공개하고 있습니다.
 	
-* 활동 : 가상현실 연구실 VRtooN 모임 연구원
-	* aFrame.io를 활용한 간단한 VR 실습 - 스위치 스샷
-	* Unreal Engine 4 스터디 - 게시판 링크
+* 활동 : 가상현실 연구실 [VRtooN 모임](http://www.modulabs.co.kr/VRtooN_library/787) 연구원
+	* aFrame.io를 활용한 간단한 **VR** 실습 - **JavaScript**와 **aFrame.io** 프레임웍으로 가상환경에서 간단한 스위치를 구현하였습니다.
+	* **Unreal Engine 4** 스터디 : 향후 UE4를 이용하여 VR 컨텐츠를 제작하려는 목표를 가지고 있습니다.
 
 * 기여 : 
-	* [모두의연구소 GitHub 계정](https://github.com/modulabs) 생성 및 관리 : Git 사용법 특강 준비중
-	* [모두의연구소 Slack 계정](https://modulabs.slack.com/) 생성 및 관리
+	* **[GitHub 조직 계정](https://github.com/modulabs)** 생성 및 관리 : 모두의연구소 조직 계정을 생성하여 연구원들의 연구자료를 관리하고 있습니다.
+	* **Git** 사용법 특강 준비중 : 8월 중에 일반 연구원들을 대상으로 기초적인 Git 사용법을 공유할 계획입니다.
+	* **[Slack 계정](https://modulabs.slack.com/)** 생성 및 관리 : 모두의연구소에서 Linux 환경에서도 대화하고 싶은 분들을 위해 Slack 계정을 만들어 지원하였습니다.
 
 * 기타 활동 :
 	* LunaIoT용 iOS 통신 앱 개발 - [YouTube 데모 영상](https://www.facebook.com/xho1995/videos/984864604886273/)
@@ -26,10 +28,13 @@
 
 ## **Void Systems**
 
+* 사명 : Void Systems
 * 소개 : 1인 창업한 iOS 앱 개발 회사입니다.
 * 기간 : 2014년 11월 ~ 현재
 * 역할 : CEO 겸 메인 개발자 
 
+* 활동 : 
+* 
 * iOS용 게임 **Space Caravan** 출시 : [앱스토어](https://itunes.apple.com/kr/app/space-caravan/id1011757460?mt=8)
 	* 게임 소개 : 간단한 2D 퍼즐 게임 : [YouTube 게임 플레이 영상](https://www.youtube.com/watch?v=NaOqtVGYlPg) 
 	* 역할 : 혼자서 전부분을 개발, 음악은 오픈 소스 활용, 비행기는 직접 디자인
