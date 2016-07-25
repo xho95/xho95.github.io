@@ -59,8 +59,13 @@ $ git --help
 
 > `git help workflows`의 결과도 살펴볼 필요가 있습니다.
 
+### 고찰하기
 
-### Git 관련 인터넷 자료들
+현재는 **Git** 관련 자료와 **GitHub** 자료들이 섞여 있는데, 나중에 이들을 분리해서 포스팅할 예정입니다.
+
+### 참고 자료
+
+#### Git 관련 인터넷 자료들
 
 [GitHub Guides](https://guides.github.com) : GitHub 사용과 관련한 전체 도움말 사이트입니다.
 
@@ -68,52 +73,44 @@ $ git --help
 
 [Resolving a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/) : 터미널에서 Merge 시에 충돌 문제를 해결하는 방법에 대해 설명한 곳입니다.
 
-
-### Git 참고 서적들
+#### Git 참고 서적들
 
 [만들면서 배우는 Git+GitHub 입문](http://www.hanbit.co.kr/book/look.html?isbn=978-89-6848-202-1) : Xcode에서 Git의 사용법이 설명되어 있는 책이다.
 
+[Pro Git 정리 자료](https://git-scm.com/book/ko/) : Git 사용법에 대해서 잘 설명된 책인 Pro Git을 인터넷에 정리한 곳으로, 한글로도 책을 이용할 수 있습니다. Git 관련 자료로는 최고의 사이트라고 할 수 있을 것 같습니다.
 
-### Git 관련 블로그 자료들
+#### Git 관련 블로그 자료들
 
-[완전 초보를 위한 깃허브](https://nolboo.github.io/blog/2013/10/06/github-for-beginner/) : 초보자를 위해 Git을 설명한 [놀부님 블로그](https://nolboo.github.io/) 글이다.
+[완전 초보를 위한 깃허브](https://nolboo.github.io/blog/2013/10/06/github-for-beginner/) : 초보자를 위해 Git을 설명한 [놀부님 블로그](https://nolboo.github.io/) 글입니다.
 
-[Pro Git 정리 자료](https://git-scm.com/book/ko/) : Git 사용법에 대해서 잘 설명된 책인 Pro Git을 인터넷에 정리해 둔 곳으로, 한글로도 자료를 이용할 수 있다. 정말 좋은 곳인 것 같다.
 [GitHub로 남의 프로젝트에 감놓고 배놓기](https://dogfeet.github.io/articles/2012/how-to-github.html)
 
 [Github를 이용하는 전체 흐름 이해하기 #1](https://blog.outsider.ne.kr/865)
 
 [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) : 프로젝트를 진행할 때 Branch를 어떻게 만들면 좋은지에 대해 설명한 블로그 글입니다.
 
-
-### Organization
+#### Organization
 
 [6.4 GitHub - Organization 관리하기](https://git-scm.com/book/ko/v2/GitHub-Organization-관리하기)
 
 [GitHub 협업 - 조직, 팀 만들기](http://i5on9i.blogspot.kr/2015/09/github.html)
 
 
-### 원격 Git 저장소 사이트들
+#### 원격 Git 저장소 사이트들
 
 [GitHub](https://github.com) : Git을 위한 원격 저장소를 제공해주는 사이트이다. 이 블로그도 GitHub에서 관리하고 있다.
 
 [GitLab](https://about.gitlab.com) : GitHub와 유사하게 원격 저장소를 제공하는 사이트이다. 한가지 다른 점이라면 무료로 Private Repository를 만들 수 있다는 점이다. 잘 활용하면 좋을 것 같다.
 
+#### GitHub
 
-### GitHub
-
-[GitHub Developer | GitHub Developer Guide](https://developer.github.com/)
+[GitHub Developer Guide](https://developer.github.com/)
 
 [Github LFS 테스트 :: Outsider's Dev Story](https://blog.outsider.ne.kr/1147)
 
 [Creating Project Pages manually](https://help.github.com/articles/creating-project-pages-manually/)
 
 
-### Sourcetree 자료들
+#### Sourcetree 자료들
 
 [Sourcetree를 이용한 Github 시작하기](http://hackersstudy.tistory.com/41)
-
-
-### 고찰하기
-
-**Git** 자료와 **GitHub** 자료를 분리해서 저장하도록 할 예정입니다.
