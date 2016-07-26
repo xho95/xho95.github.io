@@ -8,7 +8,7 @@
 
 * 2016년
 * Objective-C 게임을 Swift로 포팅함
-* ![스샷](_assets/thumb_IMG_3441_1024.jpg)
+* ![스샷](_assets/thumb_IMG_3449_1024.jpg)
 
 
 ## Space Caravan : 게임 출시
