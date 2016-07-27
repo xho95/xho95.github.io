@@ -7,10 +7,6 @@ categories: Resources Sites Softwares Tools
 
 [JS Bin](http://jsbin.com/?html,output) 웹에서 JS를 실행해주는 도구입니다.
 
-[맥에서 대량의 이미지를 일괄적으로 리사이즈하는 최고의 방법 'Th-MakerX'](http://macnews.tistory.com/951)
-
-[맥북에서 파일이나 폴더 일괄처리(Automator)](http://clack.tistory.com/140)
-
 [powerpoint viewer for mac?](http://answers.microsoft.com/en-us/mac/forum/macoffice2008-macpowerpoint/powerpoint-viewer-for-mac/7e969e04-5984-4781-9166-ec72375541ab?auth=1)
 
 ### 맞춤법

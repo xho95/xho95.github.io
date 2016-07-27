@@ -5,7 +5,7 @@ date:   2016-01-21 20:59:00 +0900
 categories: Resources Apple Programming Framework
 ---
 
-[](https://www.iconfinder.com)
+[IconFinder](https://www.iconfinder.com)
 
 [^LLDB]: [The LLDB Debugger](http://lldb.llvm.org/symbols.html)
 
