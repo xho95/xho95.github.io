@@ -5,7 +5,15 @@ date:   2016-01-25 21:30:00 +0900
 categories: Resources Softwares Programming Swift
 ---
 
+[Swift - 문자열(String)](http://seorenn.blogspot.kr/2014/06/swift-string.html)
+
+[How to use openURL for making a phone call in Swift?](http://stackoverflow.com/questions/24251259/how-to-use-openurl-for-making-a-phone-call-in-swift)
+
 [NSDateFormatter](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDateFormatter_Class/)
+
+[Swift - Collection 타입의 도구들: map, filter, reduce, zip](http://seorenn.blogspot.kr/2014/07/swift-array-map-filter-reduce.html)
+
+[Mastering blur and vibrancy with iOS 8](https://applidium.com/en/news/mastering_blur_and_vibrancy_with_iOS_8/)
 
 ### Push
 

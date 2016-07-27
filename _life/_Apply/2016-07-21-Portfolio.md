@@ -6,10 +6,10 @@
 
 ## Vehicle : 게임 포팅
 
-* 2016년
-* Objective-C 게임을 Swift로 포팅함
-* ![스샷](_assets/thumb_IMG_3449_1024.jpg)
-
+* 시기 : 2016년
+* 소개 : 
+* 특징 : Objective-C 게임을 Swift로 포팅함
+* 스샷 : ![스샷](_assets/thumb_IMG_3449_1024.jpg)
 
 ## Space Caravan : 게임 출시
 
