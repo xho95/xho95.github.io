@@ -89,6 +89,8 @@ $ git --help
 
 [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) : 프로젝트를 진행할 때 Branch를 어떻게 만들면 좋은지에 대해 설명한 블로그 글입니다.
 
+[Git Tutorial (Git 사용하기, 튜토리얼)](http://sapeyes.blog.me/70118257910)
+
 #### Organization
 
 [6.4 GitHub - Organization 관리하기](https://git-scm.com/book/ko/v2/GitHub-Organization-관리하기)
