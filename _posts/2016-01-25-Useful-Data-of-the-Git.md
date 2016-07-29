@@ -93,6 +93,8 @@ $ git --help
 
 [git 파일 대소문자 변경하기](http://ohgyun.com/518) 다음에 git 파일 이름 변경 및 이동에 대한 내용을 정리할 필요가 있습니다. git mv 와 그냥 mv는 역할이 다른 것 같습니다. 
 
+[git 대소문자 변경하기](http://wkdgusdn3.tistory.com/entry/Git-git-대소문자-변경하기)
+
 #### Organization
 
 [6.4 GitHub - Organization 관리하기](https://git-scm.com/book/ko/v2/GitHub-Organization-관리하기)
