@@ -39,6 +39,6 @@ A4용지 1~2매 분량의 자기소개를 요구
 
 [자기소개서 작성 Key point](http://www.culturist.co.kr/front/magazine/success_salary_view.asp?id=2480&div=kr&salary=all&page=1)
 
-[영어이력서작성시 기본적으로 유의해야 할 사항입니다!!](http://egloos.zum.com/assa11/v/1886291)
+[영어이력서작성시 기본적으로 유의해야 할 사항입니다!!](http://egloos.zum.com/assa11/v/1886291) 경력 기술서나 이력서를 영어로 무엇이라 하는지 잘 설명되어 있습니다. 
 
 [신입개발자들에게 필요한 능력향상 조언](https://swifter.kr/2016/05/26/신입개발자들에게-필요한-능력향상-조언/)
