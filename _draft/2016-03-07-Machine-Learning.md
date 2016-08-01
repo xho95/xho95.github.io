@@ -17,6 +17,7 @@ categories: Resources Sites Technology Machine-Learning
 
 [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu)
 
+[CS231n 강의 한글 번역 프로젝트](http://aikorea.org/cs231n/) CS231n 강의를 한글로 번역하는 프로젝트입니다. 
 
 ### 정보 엔트로피
 
