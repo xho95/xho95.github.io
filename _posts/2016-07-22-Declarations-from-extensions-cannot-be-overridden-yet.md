@@ -7,7 +7,7 @@ categories: Xcode Swift Grammar Errors
 
 여기서는 **Declarations from extensions cannot be overridden yet** 에러가 발생했을 경우의 해결 방법에 대해서 정리합니다.
 
-#### 에러의 원인
+#### **에러의 원인**
 
 *  에러 문구 : Declarations from extensions cannot be overridden yet[^Situation]
 
@@ -28,10 +28,8 @@ categories: Xcode Swift Grammar Errors
 
 ### 참고 자료
 
-[^stackoverflow1]: [Override function error in swift](http://stackoverflow.com/questions/34061246/override-function-error-in-swift)
-
-[^stackoverflow2]: [Unable to use custom class in a protocol with @objc attribute?](http://stackoverflow.com/questions/28838433/unable-to-use-custom-class-in-a-protocol-with-objc-attribute)
-
 [^Situation]: 해당 에러의 발생 상황과 원인에 대해서는 GitHub에 onmyway133분이 [Declarations from extensions cannot be overridden yet](https://github.com/onmyway133/notes/issues/86)라는 노트로 잘 정리한 글이 있습니다.
 
-[애플의 IPv6 관련 리젝트 정책에 대한 해결 방법](http://lab.gamecodi.com/board/zboard.php?id=GAMECODILAB_Lecture&no=458)
+[^stackoverflow1]: [Override function error in swift](http://stackoverflow.com/questions/34061246/override-function-error-in-swift)라는 글에 설명이 되어 있는데, 다만 이 글의 경우 Override 하는 함수에 `@objc` 키워드를 적용하였습니다. 일단 이것 만으로는 에러가 해결이 안됩니다.
+
+[^stackoverflow2]: [Unable to use custom class in a protocol with @objc attribute?](http://stackoverflow.com/questions/28838433/unable-to-use-custom-class-in-a-protocol-with-objc-attribute)
