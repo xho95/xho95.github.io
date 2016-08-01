@@ -5,6 +5,9 @@ date:   2016-01-21 20:59:00 +0900
 categories: Resources Apple Programming Framework
 ---
 
+
+[애플의 IPv6 관련 리젝트 정책에 대한 해결 방법](http://lab.gamecodi.com/board/zboard.php?id=GAMECODILAB_Lecture&no=458)
+
 [IconFinder](https://www.iconfinder.com)
 
 [^LLDB]: [The LLDB Debugger](http://lldb.llvm.org/symbols.html)
