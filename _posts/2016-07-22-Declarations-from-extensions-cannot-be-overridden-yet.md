@@ -9,7 +9,7 @@ categories: Xcode Swift Grammar Errors
 
 ### 에러의 원인
 
-*  에러 문구 : Declarations from extensions cannot be overridden yet[^Situation]
+에러 문구 : Declarations from extensions cannot be overridden yet[^Situation]
 
 직역하면 `extension`에서 선언한 함수를 재정의(override)하는게 아직 가능하지 않다는 의미입니다. 이것은 실제로 `extension`에서 선언한 함수를 재정의 할 수 없는 것이 아니라 재정의에 필요한 조건을 만족하지 않기 때문에 현재로써는 방법이 없다는 뜻입니다.
 
@@ -19,8 +19,9 @@ categories: Xcode Swift Grammar Errors
 
 ### 해결 방법
 
-* **stackoverflow** 의 답글 중에 `Objective-C`와의 호환성을 유지하기 위해 `@objc` 키워드가 필요하다는 답변이 있습니다.[^stackoverflow1]
-* 만약 Swift로 만든 클래스를 함수에 전달할 경우 그 클래스에 `@objc` 키워드가 적용되든지, 아니면 `NSObject`를 상속받은 클래스던지 해야합니다. 그런데 `@objc` 클래스를 선언하려면 해당 클래스가 `NSObject`를 상속받은 클래스여야 합니다. 따라서 사용자가 만든 클래스에 `@objc`를 적용하고 싶으면 단순히 `NSObject`를 상속받기만 하면 됩니다.[^stackoverflow2]
+**stackoverflow** 의 답글 중에 `Objective-C`와의 호환성을 유지하기 위해 `@objc` 키워드가 필요하다는 답변이 있습니다.[^stackoverflow1]
+
+만약 Swift로 만든 클래스를 함수에 전달할 경우 그 클래스에 `@objc` 키워드가 적용되든지, 아니면 `NSObject`를 상속받은 클래스던지 해야합니다. 그런데 `@objc` 클래스를 선언하려면 해당 클래스가 `NSObject`를 상속받은 클래스여야 합니다. 따라서 사용자가 만든 클래스에 `@objc`를 적용하고 싶으면 단순히 `NSObject`를 상속받기만 하면 됩니다.[^stackoverflow2]
 
 ### 고찰하기
 
