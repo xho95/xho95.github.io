@@ -92,5 +92,5 @@
 ## 관련 문서
 
 * [이력서](2016-07-12-Resume.md)
-* [경력 기술서](2016-07-21-Experience-Statement.md)
+* [경력 기술서](2016-07-21-Employment-Highlight.md)
 * [포트폴리오](2016-07-21-Portfolio.md)
