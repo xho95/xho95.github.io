@@ -5,6 +5,10 @@ date:   2016-03-07 20:30:00 +0900
 categories: Resources Sites Technology Machine-Learning
 ---
 
+[simple pages for study & tests](http://norman3.github.io)
+
+* [PRML](http://norman3.github.io/prml/) Pattern Recognition & Machien Learning, Bishop을 정리한 문서입니다
+
 [TensorFlow](https://www.tensorflow.org) : an Open Source Software Library for Machine Intelligence
 
 [TensorFlow Playground](http://playground.tensorflow.org/) : Tinker With a Neural Network
