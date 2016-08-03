@@ -70,7 +70,7 @@
 
 4. 잘 하는 게임
 	* FreeCell : 몇몇판의 세계 기록을 가지고 있음
-	* ![FreeCell](_assets/_FreeCell.jpg)
+	* ![FreeCell](_assets/_FreeCell.jpg) ![FreeCell](_assets/_FreeCell_Score.jpg)
 	* 위의 기록은 시간, 이동 횟수, 최종 점수 모두 세계 기록을 갱신한 화면을 찍어둔 것입니다. 	
 5. 게임외에 덕질 하는 것
 	* 몇 몇 분야에서는 감히 잘한다고 말할 수 있는 것이 있습니다. 
