@@ -34,9 +34,10 @@
 * 일자 : 2015년 출시
 * 장르 : 퍼즐
 * 소개 : 서로 보이지 않는 상대방을 적은 턴으로 먼저 찾아서 없애는 2D 퍼즐 게임입니다.
-* 특징 : Game Center를 사용하여 게임 순위 등을 볼 수 있습니다.
+* 특징 : Game Center를 사용하여 게임 순위 등을 볼 수 있으며, 영어로 제작하여 전세계 시장에 출시 했습니다.
 * 진행 : 현재 2D로 만든 게임을 3D로 옮기기 위해 준비중입니다.
-* 동작 : [YouTube 게임 Play 영상](https://www.youtube.com/watch?v=NaOqtVGYlPg)
+* 링크 : [AppStore - Space Caravan](https://itunes.apple.com/kr/app/space-caravan/id1011757460?mt=8)
+* 데모 : [YouTube 게임 Play 영상](https://www.youtube.com/watch?v=NaOqtVGYlPg)
 * 기술 : **SpriteKit, GameCenter, AVPlayer, Algorithm**
 * ![스샷](_assets/_thumb_IMG_3170_1024.jpg)
 
@@ -105,6 +106,7 @@
 * 소개 : 점군 데이터에서 3차원 지도를 생성하는 알고리즘입니다.
 * 특징 : C++ Builder로 개발하였습니다.
 * 기술 : **OpenGL, A* Algorithm, C++, STL**
+* 링크 : [관련 논문1](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6677377)
 * ![스샷](_assets/_3d-Map.jpg)
 
 ## Extended A* 경로 생성 알고리즘 
@@ -113,6 +115,8 @@
 * 소개 : 생존율을 고려하여 적들의 공격을 받는 환경에서 최선의 경로를 탐색하도록 A*를 확장한 경로 계획 알고리즘입니다.
 * 특징 : C++ Builder로 개발하였으며 게임내 인공지능에 적용할 수 있습니다.
 * 기술 : **A* Algorithm, C++, STL, AI**
+* 링크 : [관련 논문1](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6463003), [관련 논문2](http://link.springer.com/chapter/10.1007%2F978-3-642-33503-7_59)
+
 * ![스샷](_assets/_PathPlanning.jpg)
 
 ## B-Spline 곡선 경로 생성 알고리즘
@@ -121,15 +125,18 @@
 * 소개 : 조정점을 사용하여 연속 곡선 경로를 생성하는 알고리즘입니다.
 * 특징 : 게임에 응용 가능
 * 기술 : **B-Spline Algorithm, C++, STL, Mathematics**
+* 링크 : [관련 논문1](http://ocean.kisti.re.kr/downfile/volume/icase/JOJDCV/2014/v20n2/JOJDCV_2014_v20n2_138.pdf)
 * ![스샷](_assets/_B-Spline.jpg)
 
 ## Sonar : 게임
 
 * 시기 : 1995년 
 * 소개 : Space Caravan의 원형이 되는 게임으로 동작 방식이 유사합니다.
-* 특징 : C++로 구현하였으며 DOS 상에서 브레젠헴 알고리즘 사용하여 였습니다.
+* 특징 : C++로 구현하였으며 DOS 상에서 **Bresenham 알고리즘** 사용하여 였습니다.
 * 기술 : **Algorithm, C++, Mathematics**
 * 스크린샷은 DOS 용 게임이라 아쉽지만 없으며, 현재는 소스코드만 가지고 있습니다.
+
+- - - 
 
 ## 그외 작품들
 
@@ -178,7 +185,6 @@
 
 * 시기 : 2000년(?)
 * 소개 : 정해진 조건으로 기어 치형을 설계하는 프로그램입니다.
-* 자료 찾아보자.
 
 ## Trailer 프로그램
 
