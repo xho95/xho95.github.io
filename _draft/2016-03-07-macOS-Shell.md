@@ -9,6 +9,11 @@ categories: Resources OSX Shell Terminal
 
 [MAC OS X 자동 시작프로그램 추가/해제 하는 방법](http://namsieon.com/595)
 
+### 맥 유니코드 문자 입력기에서 특정 유니코드 문자 입력
+
+* 검색 창에서 입력할 때 유니코드 앞에 hexa 코드를 입력한다.
+	* ex) é = 0xE9
+
 ### macOS의 숨김 파일들
 
 #### .DS_Store
