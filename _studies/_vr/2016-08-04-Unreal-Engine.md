@@ -46,8 +46,15 @@
 #### UE4 Uninstall
 
 * Epic Games Launcher 의 라이브러리에서 쉽게 할 수 있음
+* 위 방법으로만 하면 안됨
 
+* 완전 삭제 필요
+	* [4.8.2로 갱신했는데 실행 안되는 문제 해결하기](http://mypi.ruliweb.com/mypi.htm?nid=1000020&num=10214)
+	* [UE 4.8.2 crashing when launching editor](https://answers.unrealengine.com/questions/257981/ue-482-crashing-when-launching-editor.html)
 
+#### 에러 코드
+
+[Mac OSX 10.9.5: Xcode Compiler troubles: RocketBuild.sh exit code 5](https://answers.unrealengine.com/questions/302522/mac-osx-1095-xcode-compiler-troubles-rocketbuildsh.html)
 
 
 
