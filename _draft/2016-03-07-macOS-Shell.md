@@ -7,6 +7,8 @@ categories: Resources OSX Shell Terminal
 
 여기서는 **macOS** 의 shell 및 운영체제의 기본적인 내용들에 대해서 정리합니다.
 
+[MAC OS X 자동 시작프로그램 추가/해제 하는 방법](http://namsieon.com/595)
+
 ### macOS의 숨김 파일들
 
 #### .DS_Store
