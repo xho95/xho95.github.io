@@ -1,18 +1,10 @@
-
-## 추가할 것들 - 이것만 하고 보내보자!!
-
-```
-* 아이폰 바탕화면 전체 스샷
-* VR 스위치
-* 겔러그
-* Unity(?)
-* 홈런 게임 스샷 교체
-* 96 대리운전 앱 링크
-```
-
 ## 포트폴리오
 
+* 아래 스크린샷에 나온 앱들은 Cardboard앱을 제외하면 모두 제가 직접 제작한 앱입니다.
+* ![스샷](_assets/_iPhoneScreenShot.jpg)
+
 * 제가 만들어 봤던 작품들을 게임 관련 작품과 그외 작품들로 구분하여 시간 역순으로 배치하였습니다.
+* 마지막에는 제가 게임을 만들기 위해서 다뤄본 툴을 정리했습니다.
 
 ## 게임 관련 작품들
 
@@ -46,7 +38,7 @@
 * 링크 : [AppStore - Space Caravan](https://itunes.apple.com/kr/app/space-caravan/id1011757460?mt=8)
 * 데모 : [YouTube 게임 Play 영상](https://www.youtube.com/watch?v=NaOqtVGYlPg)
 * 기술 : **SpriteKit, GameCenter, AVPlayer, Algorithm**
-* ![스샷](_assets/_thumb_IMG_3170_1024.jpg)
+* ![스샷](_assets/_Space_Caravan.jpg)
 
 ## 홈런 : 게임 제작
 
@@ -55,7 +47,25 @@
 * 소개 : 임의의 3자리 숫자를 숫자의 위치에 따른 정보를 바탕으로 맞추는 퍼즐 게임입니다.
 * 특징 : C++ 소스를 기반으로 하여 Swift 버전을 제작하였습니다.
 * 진행 : 원래 **watchOS**용 게임으로 기획된 것으로 TableView 기반의 UI를 준비중에 있습니다. 
-* ![스샷](_assets/_thumb_IMG_3453_1024.jpg) 
+* ![스샷](_assets/_HomeRun.jpg) 
+
+## CatMaze : 실습
+
+* 시기 : 2015년 제작 
+* 장르 : 횡스크롤 어드벤처 퍼즐
+* 소개 : 화면을 터치하면서 고양이를 이동시키며 뼈다귀를 찾아 개를 제거하고 목적지에 도달하는 2D 게임입니다.
+* 특징 : 게임내에 경로 탐색 알고리즘인 A* 알고리즘이 직접 구현되어 있습니다.
+* 기술 : **SpriteKit, AVPlayer, Algorithm**
+* ![스샷](_assets/_thumb_IMG_3455_1024.jpg)
+
+## Invaders : 실습
+
+* 시기 : 2015년 제작 
+* 장르 : 갤러그류의 슈팅 게임
+* 소개 : 스마트폰을 기울여 조종하며 위에서 내려오는 적을 물리쳐하 하는 2D 슈팅 게임입니다.
+* 특징 : 터치로 조종하는 것이 아니라 가속도 센서를 이용합니다.
+* 기술 : **SpriteKit, CoreMotion**
+* ![스샷](_assets/_Invaders.jpg)
 
 ## CatMaze : 실습
 
@@ -102,10 +112,6 @@
 * 기술 : **SpriteKit, CoreAnimation**
 * ![스샷](_assets/_thumb_IMG_3457_1024.jpg)
 
-## Unity 
-
-* 시기 : 2014년
-* 소개 : BMAC 강의 수강
 
 ## 3차원 격자 지도 생성 알고리즘 
 
@@ -154,15 +160,24 @@
 ## 96대리운전 
 
 * 시기 : 2016년
-* 소개 : 대리운전앱
+* 소개 : 의뢰받아 제작했던 대리운전앱입니다.
 * 특징 : WebView 기반으로 동작하는 대리운전앱입니다.
 * 기술 : **WebView, NSURL, TabBar, FCM**
+* 링크 : [AppStore - 96대리운전](https://itunes.apple.com/us/app/96daeliunjeon/id1119085448?mt=8)
+
+## VR 스위치
+
+* 시기 : 2016년
+* 소개 : AFrame.io를 이용하여 제작해본 VR용 스위치입니다.
+* 기술 : **AFrame.io, JavaScript**
+* ![스샷](_assets/_AFrame.jpg)
 
 ## LunaIoT 개발
 
 * 시기 : 2016년
 * 소개 : Luna 프레임웍 기반의 IoT용 컨트롤러입니다.
-* 기술 : **JSON**
+* 특징 : LunaIoT 프로젝트에서 iOS 앱을 담당하면서 [Contributor](https://github.com/kmansoo/Luna/graphs/contributors)로 등록되어 있습니다. 
+* 기술 : **JSON, Parsing**
 * 동작 : [LunaIoT 동작 영상](https://www.facebook.com/xho1995/videos/984864604886273/)
 * ![스샷](_assets/_thumb_IMG_3266_1024.jpg)
 
@@ -216,6 +231,25 @@
 * 기여 : 전체 구조 설계를 맡았으며, 특히 그립 부분은 제가 직접 설계한대로 그대로 제작이 되었습니다.
 * 자료 : [Hexis 제작](http://mecha.namoweb.net/xe/Robot/426)
 * ![스샷](_assets/_Hexis.jpg)
+
+
+## Unity 
+
+* 소개 : **Unity**로 만들어본 3D 일인칭 슈팅 게임입니다.
+* 특징 : 부산 모바일앱센터 강의를 수강하면서 실습한 내용입니다.
+* ![스샷](_assets/_Unity.jpg)
+
+## Unreal Engine 4
+
+* 소개 : Unreal Engine 튜토리얼을 실습해본 것입니다.
+* 특징 : 모두의연구소 [VRtooN](http://www.modulabs.co.kr/Swift_library/848)에서 스터디 중입니다.
+* ![스샷](_assets/_UE4Editor.jpg) ![스샷](_assets/_UE4Cpp.jpg) 
+
+## Xcode : SceneKit, SpriteKit
+
+* 소개 : 애플에서 WWDC에서 발표한 모바일용 3D 게임 Fox 입니다.
+* 특징 : 소스를 분석하면서 **SceneKit** 사용법을 익히고 있습니다.
+* ![스샷](_assets/_Xcode.jpg)
 
 ## 관련 문서
 
