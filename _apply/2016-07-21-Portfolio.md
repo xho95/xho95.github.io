@@ -26,7 +26,7 @@
 
 * 시기 : 2016년 제작
 * 소개 : Apple에서 공개한 SceneKit 프레임웍으로 만든 간단한 태양계입니다.
-* 특징 : 3D 게임에서 각 요소(Node)들의 상하관계를 실습하기 위해 제작했습니다.
+* 특징 : Space Caravan의 배경을 위해 3D 게임에서 각 요소(Node)들의 상하관계를 실습할 목적으로 제작했습니다.
 * 기술 : **SceneKit, SKNode, Physics, Image**
 * ![스샷](_assets/_thumb_IMG_3450_1024.jpg)
 
