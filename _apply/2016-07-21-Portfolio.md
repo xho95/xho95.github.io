@@ -69,7 +69,8 @@
 * 소개 : 펭귄이 날라다니면서 적을 피하고 동전을 많이 모으는 게임입니다.
 * 특징 : 게임관련 책을 보면서 직접 실습한 것으로 게임 효과 부분을 학습하기 위해 실습 하였습니다.
 * 기술 : **SpriteKit, Effect, Mapping**
-* 교재 : [Game Development with Swift](https://www.packtpub.com/game-development/game-development-swift)* ![스샷](_assets/_thumb_IMG_3458_1024.jpg)
+* 교재 : [Game Development with Swift](https://www.packtpub.com/game-development/game-development-swift)
+* ![스샷](_assets/_thumb_IMG_3458_1024.jpg)
 
 ### Cut the Verlet : 실습
 
