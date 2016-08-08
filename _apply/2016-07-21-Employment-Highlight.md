@@ -87,9 +87,11 @@
 	1. 생존율을 고려한 **최단 경로 생성 알고리즘** (Extended A*) 연구
 		* 소개 : 생존율을 고려하여 적들의 공격을 받는 환경에서 최선의 경로를 탐색하도록 A*를 확장한 경로 계획 알고리즘입니다.
 		* 역할 : C++ Builder로 직접 개발했습니다.
+		* 논문 : [관련 논문1](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6463003), [관련 논문2](http://link.springer.com/chapter/10.1007%2F978-3-642-33503-7_59)
 	2. **3D 격자 지도 제작 알고리즘** 연구
 		* 소개 : 점군 데이터에서 3차원 지도를 생성하는 알고리즘입니다.
 		* 역할 : C++ Builder로 직접 개발했습니다.
+		* 논문 : [관련 논문1](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6677377)
 
 ## 부산대학교 석사 과정
 
@@ -101,8 +103,10 @@
 	1. B-Spline 곡선을 이용한 경로 생성 알고리즘 개발
 		* 소개 : 조정점을 사용하여 연속 곡선 경로를 생성하는 알고리즘입니다.
 		* 역할 : C++ Builder로 직접 개발했습니다.
+		* 논문 : [관련 논문1](http://ocean.kisti.re.kr/downfile/volume/icase/JOJDCV/2014/v20n2/JOJDCV_2014_v20n2_138.pdf) (논문 자체는 박사 때의 논문입니다.)
 	2. Field Robot 제작
 		* 소개 : 군사용 로봇으로 개발된 로봇입니다.
+		* 역할 : 로봇의 구조를 분석하고 하중을 견디기 위한 모터의 토크를 계산했습니다.
 		* 동작 : [YouTube 데모 영상](https://www.youtube.com/watch?v=nrXtmwM93FE)
 
 ## Mechatronics 동아리 활동
