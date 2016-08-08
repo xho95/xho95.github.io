@@ -8,7 +8,6 @@
 먼저 제 아이폰의 스크린샷을 보여드리고 각각의 앱에 대해 정리하도록 합니다.
 * ![스샷](_assets/_iPhoneScreenShot.jpg)
 
-
 ## 게임 관련 작품들
 
 * 직접 출시 또는 제작해봤던 게임들과 게임에 사용될 수 있는 알고리즘을 소개합니다.
@@ -61,24 +60,6 @@
 * 기술 : **SpriteKit, AVPlayer, Algorithm**
 * ![스샷](_assets/_thumb_IMG_3455_1024.jpg)
 
-### Invaders : 실습
-
-* 시기 : 2015년 제작 
-* 장르 : 갤러그류의 슈팅 게임
-* 소개 : 스마트폰을 기울여 조종하며 위에서 내려오는 적을 물리쳐하 하는 2D 슈팅 게임입니다.
-* 특징 : 터치로 조종하는 것이 아니라 가속도 센서를 이용합니다.
-* 기술 : **SpriteKit, CoreMotion**
-* ![스샷](_assets/_Invaders.jpg)
-
-### CatMaze : 실습
-
-* 시기 : 2015년 제작 
-* 장르 : 횡스크롤 어드벤처 퍼즐
-* 소개 : 화면을 터치하면서 고양이를 이동시키며 뼈다귀를 찾아 개를 제거하고 목적지에 도달하는 2D 게임입니다.
-* 특징 : 게임내에 경로 탐색 알고리즘인 A* 알고리즘이 직접 구현되어 있습니다.
-* 기술 : **SpriteKit, AVPlayer, Algorithm**
-* ![스샷](_assets/_thumb_IMG_3455_1024.jpg)
-
 ### 피에르 : 실습
 
 * 시기 : 2015년 제작
@@ -105,6 +86,15 @@
 * 특징 : 전체 게임도 게임이지만 특히 레벨 디자인을 학습하기 위해 실습한 게임입니다.
 * 기술 : **SpriteKit, Effect, Leveling**
 * ![스샷](_assets/_thumb_IMG_3447_1024.jpg)
+
+### Invaders : 실습
+
+* 시기 : 2015년 제작 
+* 장르 : 갤러그류의 슈팅 게임
+* 소개 : 스마트폰을 기울여 조종하며 위에서 내려오는 적을 물리쳐하 하는 2D 슈팅 게임입니다.
+* 특징 : 터치로 조종하는 것이 아니라 가속도 센서를 이용합니다.
+* 기술 : **SpriteKit, CoreMotion**
+* ![스샷](_assets/_Invaders.jpg)
 
 ### 슈팅 : 실습
 
@@ -151,8 +141,6 @@
 * 특징 : C++로 구현하였으며 DOS 상에서 **Bresenham 알고리즘** 사용하여 였습니다.
 * 기술 : **Algorithm, C++, Mathematics**
 * 스크린샷은 DOS 용 게임이라 아쉽지만 없으며, 현재는 소스코드만 가지고 있습니다.
-
-- - - 
 
 ## 그외 작품들
 
@@ -244,6 +232,12 @@
 
 ## 게임 개발에 다뤄본 도구들
 
+### Xcode : SceneKit, SpriteKit
+
+* 소개 : 애플이 WWDC에서 공개한 SceneKit으로 만든 Fox 게임을 Xcode에서 열어본 화면입니다.
+* 특징 : 소스를 분석하면서 **SceneKit** 사용법을 익히고 있습니다.
+* ![스샷](_assets/_Xcode.jpg)
+
 ### Unity 
 
 * 소개 : **Unity**로 만들어본 3D 일인칭 슈팅 게임입니다.
@@ -255,12 +249,6 @@
 * 소개 : Unreal Engine 튜토리얼을 실습해본 것입니다.
 * 특징 : 모두의연구소 [VRtooN](http://www.modulabs.co.kr/Swift_library/848)에서 스터디 중입니다.
 * ![스샷](_assets/_UE4Editor.jpg) ![스샷](_assets/_UE4Cpp.jpg) 
-
-### Xcode : SceneKit, SpriteKit
-
-* 소개 : 애플에서 WWDC에서 발표한 모바일용 3D 게임 Fox 입니다.
-* 특징 : 소스를 분석하면서 **SceneKit** 사용법을 익히고 있습니다.
-* ![스샷](_assets/_Xcode.jpg)
 
 ## 관련 문서
 
