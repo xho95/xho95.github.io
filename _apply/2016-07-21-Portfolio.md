@@ -20,6 +20,7 @@
 * 소개 : 폰의 기울기로 차량을 제어하는 물리엔진이 적용된 간단한 3D 게임입니다.
 * 특징 : Apple에서 Objective-C로 공개한 게임을 **Swift**로 옮겼습니다.
 * 기술 : **Swift, SceneKit, GCD, Physics**
+* 교재 : [SceneKit Vehicle Demo](https://developer.apple.com/library/ios/samplecode/SceneKitVehicle/Introduction/Intro.html)
 * ![스샷](_assets/_thumb_IMG_3449_1024.jpg)
 
 ### 태양계 만들기
@@ -58,24 +59,26 @@
 * 소개 : 화면을 터치하면서 고양이를 이동시키며 뼈다귀를 찾아 개를 제거하고 목적지에 도달하는 2D 게임입니다.
 * 특징 : 게임내에 경로 탐색 알고리즘인 A* 알고리즘이 직접 구현되어 있습니다.
 * 기술 : **SpriteKit, AVPlayer, Algorithm**
+* 교재 : [How To Implement A* Pathfinding with Swift](https://www.raywenderlich.com/105437/implement-pathfinding-swift)
 * ![스샷](_assets/_thumb_IMG_3455_1024.jpg)
 
-### 피에르 : 실습
+### Pierre Penguin : 실습
 
 * 시기 : 2015년 제작
 * 장르 : 횡스크롤
 * 소개 : 펭귄이 날라다니면서 적을 피하고 동전을 많이 모으는 게임입니다.
 * 특징 : 게임관련 책을 보면서 직접 실습한 것으로 게임 효과 부분을 학습하기 위해 실습 하였습니다.
 * 기술 : **SpriteKit, Effect, Mapping**
-* ![스샷](_assets/_thumb_IMG_3458_1024.jpg)
+* 교재 : [Game Development with Swift](https://www.packtpub.com/game-development/game-development-swift)* ![스샷](_assets/_thumb_IMG_3458_1024.jpg)
 
-### 악어 : 실습
+### Cut the Verlet : 실습
 
 * 시기 : 2015년 제작
 * 장르 : 터치 퍼즐
 * 소개 : 터치로 줄을 끊어서 악어 입에 파인애플을 넣는 게임입니다.
 * 특징 : 2D 물리엔진을 학습하기 위해 실습 하였습니다.
 * 기술 : **SpriteKit, Physics, Mapping**
+* 교재 : [How To Make a Game Like Cut the Rope Using Sprite Kit and Swift](https://www.raywenderlich.com/82022/create-game-like-cut-the-rope-using-sprite-kit-swift)
 * ![스샷](_assets/_thumb_IMG_3448_1024.jpg)
 
 ### Candy Crush : 실습
@@ -85,6 +88,7 @@
 * 소개 : 애니팡류의 2D 게임입니다.
 * 특징 : 전체 게임도 게임이지만 특히 레벨 디자인을 학습하기 위해 실습한 게임입니다.
 * 기술 : **SpriteKit, Effect, Leveling**
+* 교재 : [How to Make a Game Like Candy Crush with SpriteKit and Swift](https://www.raywenderlich.com/125311/make-game-like-candy-crush-spritekit-swift-part-1)
 * ![스샷](_assets/_thumb_IMG_3447_1024.jpg)
 
 ### Invaders : 실습
@@ -94,15 +98,17 @@
 * 소개 : 스마트폰을 기울여 조종하며 위에서 내려오는 적을 물리쳐하 하는 2D 슈팅 게임입니다.
 * 특징 : 터치로 조종하는 것이 아니라 가속도 센서를 이용합니다.
 * 기술 : **SpriteKit, CoreMotion**
+* 교재 : [How To Make a Game Like Space Invaders with Sprite Kit and Swift Tutorial](https://www.raywenderlich.com/124005/make-game-like-space-invaders-sprite-kit-swift-tutorial-part-1)
 * ![스샷](_assets/_Invaders.jpg)
 
-### 슈팅 : 실습
+### SpriteKit Simple Game : 실습
 
 * 시기 : 2014년 제작
 * 장르 : 슈팅
 * 소개 : 화면을 가로지르는 적들을 표창으로 죽이며 적이 화면 반대편에 도달하면 끝나는 게임입니다.
 * 특징 : Swift로 처음 만들어본 게임으로 Swift 자체를 익히기 위해 실습하였습니다.
 * 기술 : **SpriteKit, CoreAnimation**
+* 교재 : [Sprite Kit Swift 2 Tutorial for Beginners](https://www.raywenderlich.com/119815/sprite-kit-swift-2-tutorial-for-beginners)
 * ![스샷](_assets/_thumb_IMG_3457_1024.jpg)
 
 
@@ -241,13 +247,13 @@
 ### Unity 
 
 * 소개 : **Unity**로 만들어본 3D 일인칭 슈팅 게임입니다.
-* 특징 : 부산 모바일앱센터 강의를 수강하면서 실습한 내용입니다.
+* 특징 : [부산 모바일앱센터](https://www.bmac.kr)에서 강의를 수강하면서 실습한 내용입니다.
 * ![스샷](_assets/_Unity.jpg)
 
 ### Unreal Engine 4
 
 * 소개 : Unreal Engine 튜토리얼을 실습해본 것입니다.
-* 특징 : 모두의연구소 [VRtooN](http://www.modulabs.co.kr/Swift_library/848)에서 스터디 중입니다.
+* 특징 : 현재 모두의연구소 가상현실 연구실인 [VRtooN](http://www.modulabs.co.kr/Swift_library/848)에서 스터디 중입니다.
 * ![스샷](_assets/_UE4Editor.jpg) ![스샷](_assets/_UE4Cpp.jpg) 
 
 ## 관련 문서
