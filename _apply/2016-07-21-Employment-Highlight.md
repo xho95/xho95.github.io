@@ -122,7 +122,7 @@
 		* 역할 : 구조 설계 담당했으며, 특히 그립(Grip) 부분은 전체를 설계했습니다.
 * 기여 : 
 	1. 전시회 개최 : IMF 시기라 어려운 환경에서 추진했습니다.
-	2. [Mechatronics CI 제작](http://mecha.namoweb.net/xe/CI)
+	2. [Mechatronics CI 제작](http://mecha.namoweb.net/xe/CI) : IMF 이후에 동아리들이 없어지던 시기에 정체성 확립을 위해 추진했습니다. 
 	
 ## 관련 문서
 
