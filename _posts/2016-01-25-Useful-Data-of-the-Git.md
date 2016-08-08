@@ -91,7 +91,7 @@ $ git --help
 
 [Git Tutorial (Git 사용하기, 튜토리얼)](http://sapeyes.blog.me/70118257910)
 
-[git 파일 대소문자 변경하기](http://ohgyun.com/518) 다음에 git 파일 이름 변경 및 이동에 대한 내용을 정리할 필요가 있습니다. git mv 와 그냥 mv는 역할이 다른 것 같습니다. 
+[git 파일 대소문자 변경하기](http://ohgyun.com/518) 다음에 git 파일 이름 변경 및 이동에 대한 내용을 정리할 필요가 있습니다. git mv 와 그냥 mv는 역할이 다른 것 같습니다.
 
 [git 대소문자 변경하기](http://wkdgusdn3.tistory.com/entry/Git-git-대소문자-변경하기)
 
@@ -120,3 +120,12 @@ $ git --help
 #### Sourcetree 자료들
 
 [Sourcetree를 이용한 Github 시작하기](http://hackersstudy.tistory.com/41)
+
+
+#### GitHub gist
+
+[Example of how to embed a Gist on GitHub Pages using Jekyll.](https://gist.github.com/benbalter/5555251)
+
+[What You Can Do With Gists on Github?](http://www.labnol.org/internet/github-gist-tutorial/28499/)
+
+[블로그 등에 소스 코드 Snippet 붙여넣기 - GitHub Gist](http://hanmomhanda.tistory.com/entry/블로그-등에-소스-코드-Snippet-붙여넣기-GitHub-Gist)
