@@ -71,6 +71,19 @@ NSNotificationCenter가 무엇인지 알아볼 필요가 있습니다.
 
 RayWenderlich 사이트 예제 4번이 제대로 동작을 안하는 것 같습니다. `"Feed the cat"`이 중복으로 추가되고 있습니다.
 
+#### 특정 파일 열기 
+
+Numbers 파일을 여는 예제는 다음과 같습니다. 
+
+```
+tell application "Numbers" to open ".../.../filename.numbers"
+```
+
+보다 자세한 예제는 [iWorks & Automation](https://iworkautomation.com/index.html) 사이트에서 얻을 수 있습니다.[^iWorks_Open]
+
+```applescript
+tell application "Numbers"	activate	try		set the chosenDocumentFile to ¬			(choose file of type ¬				{"com.apple.iwork.numbers.numbers", ¬					"com.apple.iwork.numbers.sffnumbers", ¬					"com.microsoft.excel.xls", ¬					"org.openxmlformats.spreadsheetml.sheet"} ¬					default location (path to documents folder) ¬				with prompt "Choose the Numbers document or Excel workbook to open:")		open the chosenDocumentFile	on error errorMessage number errorNumber		if errorNumber is not -128 then			display alert errorNumber message errorMessage		end if	end tryend tell
+```
 
 ### 참고 자료
 
@@ -83,3 +96,5 @@ RayWenderlich 사이트 예제 4번이 제대로 동작을 안하는 것 같습�
 [^JXA-Cookbook]: [JavaScript for Automation Cookbook](https://github.com/dtinth/JXA-Cookbook/wiki) GitHub에 공개된 Automation을 JavaScript로 하는 매뉴얼입니다. 
 
 [Introduction to AppleScript Language Guide](https://developer.apple.com/library/prerelease/content/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html)
+
+[^iWorks_Open]: [Opening Documents](https://iworkautomation.com/numbers/document-open.html)
