@@ -137,6 +137,22 @@ AppleScript 언어는 다양한 카테고리로 정렬되어 있습니다.
 2. 라이브러리 윈도우에서 응용 프로그램 이름을 이중 클릭하십시오.
 3. 모음을 선택하십시오. : 해당 모음의 용어 및 설명이 나타납니다.
 
+#### 응용 프로그램의 위치 지정하기
+
+OS X에서 응용 프로그램은 “패키지”로 묶여 있습니다. 패키지는 응용 프로그램을 구성하는 폴더와 파일을 포함하는 특별한 디렉토리입니다. 이 때문에 “path to”와 “info for” 명령은 응용 프로그램에 대한 다른 결과를 반환할 수 있습니다.[^Path]
+
+응용 프로그램에 대해 “path to” 명령을 사용하는 경우 경로는 주로 “.app”으로 끝납니다. 파일 확장자는 파일 이름의 일부로 Finder에서 표시되지 않지만 스크립트에서 파일을 표시하기 위해 확장자를 사용할 수 있습니다.
+
+응용 프로그램에 대한 정보를 얻기 위해 “info for” 명령을 사용하는 경우 결과의 Finder 속성은 주로 “true”입니다. 확장자 가리기, 이름 확장자 또는 표시된 이름과 같은 결과의 추가 속성을 사용하여 파일과 이름에 대한 더 많은 정보를 얻을 수 있습니다.
+
+#### iCloud에 있는 특정 Numbers 파일 열기
+
+인터넷의 답변을 참고하여 작성했습니다.[^MacScripter]
+
+```
+set p2Cloud to (path to library folder from user domain as text) & "Mobile Documents:com~apple~"set fileName to "회원 주소록.numbers"tell application "Numbers"	set appName to its name	open file (p2Cloud & appName & ":Documents:" & fileName)	activateend tell
+```
+
 ### 참고 자료
 
 [^AppleScript-Help]: [AppleScript 도움말](http://help.apple.com/applescript/mac/10.9/#apscrpt1001) Script Editor에 연결되어 있는 도움말인데 설명은 가장 좋은 것 같습니다. 그리고 한글로 번역되어 있습니다. 
@@ -158,3 +174,9 @@ AppleScript 언어는 다양한 카테고리로 정렬되어 있습니다.
 [^Droplet]: [드롭릿에 관하여](http://help.apple.com/applescript/mac/10.9/#apscrpt1131)
 
 [^Dictionary]: [AppleScript 사전 사용하기](http://help.apple.com/applescript/mac/10.9/#apscrpt5)
+
+[^Path]: [응용 프로그램의 위치 지정하기](http://help.apple.com/applescript/mac/10.9/#apscrpt1031)
+
+[Word Processing - Mailmerge for Pages for Mac](https://www.youtube.com/watch?v=HFM-AWkKFYs)
+
+[^MacScripter]: [tell application "xxxxx" to open "nnnnn" : from iCloud?](http://macscripter.net/viewtopic.php?id=42187)
