@@ -1,12 +1,14 @@
-AppleScript is an English-like language used to create script files that control the actions of the computer and the applications that run on it. AppleScript is the language of automation for Mac OS X.[^AppleScript]
+AppleScript는 macOS에 내장되어 있는 스크립팅 언어입니다. AppleScript를 사용하여 자동화가 가능합니다. 또한 응용 프로그램을 사용자화하는 것도 가능합니다. AppleScript를 사용하여 스크립트 가능한 응용 프로그램을 제어할 수 있습니다.[^AppleScript-Help]  [^AppleScript]
 
-AppleScript는 Script Editor에서 편집할 수 있는데, Applications/Utilities 폴더에 있습니다.[^Ray]
+AppleScript는 Script Editor에서 편집할 수 있는데, Script Editor는 **Applications/Utilities** 폴더에 있습니다.[^Ray]
 
-Yosemite 부터는 AppleScript를 대신해서 JavaScript를 사용해도 되는 것 같습니다. JavaScript for Automation is a new feature in OS X Yosemite. It lets you control applications and the operating system using JavaScript language.[^JXA-Cookbook]
+Yosemite 부터는 AppleScript를 대신해서 JavaScript를 사용하는 것도 가능합니다. 따라서 JavaScript로 운영체제와 앱을 제어하는 것이 가능합니다.[^JXA-Cookbook]
 
-> SDEF file : a **S**cripting **DEF**inition file을 뜻합니다. 포맷은 XML로 된 것 같습니다. 
+#### AppleScript 시작하기
 
-AppleScript는 맥에서 실행되는 앱에는 모두 적용가능합니다. 아래는 RayWenderlich 사이트의 예제입니다. 사용자가 만든 앱도 제어할 수 있습니다. 
+AppleScript는 맥에서 실행되는 앱에는 모두 적용가능합니다. 
+
+아래는 RayWenderlich 사이트의 예제입니다.
 
 ```
 tell application "Scriptable Tasks" to quit
@@ -20,11 +22,15 @@ tell application "Scriptable Tasks" to launch
 tell application "Scriptable Tasks" to active
 ```
 
+사용자가 만든 앱도 제어할 수 있습니다. 물론 그러기 위해서는 사용자의 앱에 미리 설정할 필요가 있습니다.
+
 #### Making Your App Scriptable
 
 The scripting definition file of your app defines what the app can do; it’s a little like an API.
 
 RayWenderlich 사이트의 설명에 따르면 자신의 앱에 AppleScript를 적용하려면 SDEF 파일이 필요한 것 같습니다. 
+
+> SDEF file : a **S**cripting **DEF**inition file을 뜻합니다. 포맷은 XML로 된 것 같습니다. 
 
 * Standard scripting objects and commands, such as window, make, delete, count, open and quit.
 * Your own scriptable objects, properties and custom commands.
@@ -85,7 +91,55 @@ tell application "Numbers" to open ".../.../filename.numbers"
 tell application "Numbers"	activate	try		set the chosenDocumentFile to ¬			(choose file of type ¬				{"com.apple.iwork.numbers.numbers", ¬					"com.apple.iwork.numbers.sffnumbers", ¬					"com.microsoft.excel.xls", ¬					"org.openxmlformats.spreadsheetml.sheet"} ¬					default location (path to documents folder) ¬				with prompt "Choose the Numbers document or Excel workbook to open:")		open the chosenDocumentFile	on error errorMessage number errorNumber		if errorNumber is not -128 then			display alert errorNumber message errorMessage		end if	end tryend tell
 ```
 
+#### 애플릿
+
+응용 프로그램으로 저장된 스크립트를 AppleScript 응용 프로그램 또는 애플릿이라고 합니다. 애플릿은 해당 애플릿을 열 때 스크립트 실행을 시작하는 “on run” 핸들러가 필요합니다.[^Applelet]
+
+다음 예제는 “on run” 핸들러를 보여줍니다.
+
+```
+on run
+    --first command 
+    --second command 
+end run
+```
+
+#### 드롭릿
+
+드롭릿은 파일이나 폴더를 아이콘에 드래그시 실행되는 AppleScript 스크립트입니다. 드롭릿을 열 때 스크립트 실행을 시작하는 “on open” 핸들러가 필요합니다.[^Droplet]
+
+다음은 “on open” 및 매개변수 목록을 포함한 드롭릿 핸들러의 예제입니다.
+
+```
+on open (theItemsDropped)
+    --first command 
+    --second command 
+end open
+```
+
+#### AppleScript 카테고리
+
+AppleScript 언어는 다양한 카테고리로 정렬되어 있습니다.
+
+* 모음(Suite): 관련된 용어 그룹. AppleScript 편집기 사전에서 모음은 첫 번째 열에 나타나고 주황색 문자 "S"로 표시됩니다.
+* 명령(Command): 동작이나 결과 요청. “이벤트"라고도 하는 명령이 두 번째 열에 나타나고 파란 색 문자 "C"로 표시됩니다(이벤트라고도 함).
+* 클래스(Class): 스크립트 가능한 대상체. 클래스 설명은 해당 클래스에 있는 속성 및 요소를 나열합니다. 클래스는 두 번째 열에 나타나며 엷은 자주색 “C”로 표시됩니다.
+* 속성(Property): 값을 포함하는 대상체. 속성는 세 번째 열에 나타나며 엷은 자주색 “P”로 표시됩니다.
+* 요소(Element): 다른 대상체에 포함된 대상체. 예를 들어 단락에는 여러 단어가 포함될 수 있습니다. 요소는 세 번째 열에 나타나며 주황색 문자 “E”로 표시됩니다.
+
+#### AppleScript 사전 사용하기
+
+응용 프로그램을 조정할 수 있는 명령어와 대상체를 찾으려면 응용 프로그램의 사전을 보십시오. 사전에는 응용 프로그램에서 이해하는 용어 세트가 포함되어 있습니다.[^Dictionary]
+
+사전에 있는 용어는 “모음(Suite)”라고 불리는 관련 용어의 그룹으로 구성되어 있습니다. 명령과 대상체는 볼드체 텍스트입니다.
+
+1. AppleScript 편집기에서 윈도우 > 라이브러리를 선택하십시오.
+2. 라이브러리 윈도우에서 응용 프로그램 이름을 이중 클릭하십시오.
+3. 모음을 선택하십시오. : 해당 모음의 용어 및 설명이 나타납니다.
+
 ### 참고 자료
+
+[^AppleScript-Help]: [AppleScript 도움말](http://help.apple.com/applescript/mac/10.9/#apscrpt1001) Script Editor에 연결되어 있는 도움말인데 설명은 가장 좋은 것 같습니다. 그리고 한글로 번역되어 있습니다. 
 
 [^AppleScript]: [AppleScript: The Language of Automation](http://macosxautomation.com/applescript/index.html) 맥과 iWorks 관련 자동화에 대한 설명이 잘 되어 있는 곳입니다.
 
@@ -95,6 +149,12 @@ tell application "Numbers"	activate	try		set the chosenDocumentFile to ¬			
 
 [^JXA-Cookbook]: [JavaScript for Automation Cookbook](https://github.com/dtinth/JXA-Cookbook/wiki) GitHub에 공개된 Automation을 JavaScript로 하는 매뉴얼입니다. 
 
-[Introduction to AppleScript Language Guide](https://developer.apple.com/library/prerelease/content/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html)
+[Introduction to AppleScript Language Guide](https://developer.apple.com/library/prerelease/content/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html) AppleScript 언어 설명서입니다. AppleScript 언어의 전체적인 내용을 볼 수 있습니다. 다만, 영어입니다. 
 
 [^iWorks_Open]: [Opening Documents](https://iworkautomation.com/numbers/document-open.html)
+
+[^Applelet]: [애플릿에 관하여](http://help.apple.com/applescript/mac/10.9/#apscrpt1130)
+
+[^Droplet]: [드롭릿에 관하여](http://help.apple.com/applescript/mac/10.9/#apscrpt1131)
+
+[^Dictionary]: [AppleScript 사전 사용하기](http://help.apple.com/applescript/mac/10.9/#apscrpt5)
