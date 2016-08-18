@@ -153,6 +153,14 @@ OS X에서 응용 프로그램은 “패키지”로 묶여 있습니다. 패키
 set p2Cloud to (path to library folder from user domain as text) & "Mobile Documents:com~apple~"set fileName to "회원 주소록.numbers"tell application "Numbers"	set appName to its name	open file (p2Cloud & appName & ":Documents:" & fileName)	activateend tell
 ```
 
+#### List 만들기
+
+새로운 리스트를 만드는 것은 아래와 같습니다.[^WikiBooks] 
+
+```
+set myList to {}
+```
+
 ### 참고 자료
 
 [^AppleScript-Help]: [AppleScript 도움말](http://help.apple.com/applescript/mac/10.9/#apscrpt1001) Script Editor에 연결되어 있는 도움말인데 설명은 가장 좋은 것 같습니다. 그리고 한글로 번역되어 있습니다. 
@@ -180,3 +188,7 @@ set p2Cloud to (path to library folder from user domain as text) & "Mobile Docum
 [Word Processing - Mailmerge for Pages for Mac](https://www.youtube.com/watch?v=HFM-AWkKFYs)
 
 [^MacScripter]: [tell application "xxxxx" to open "nnnnn" : from iCloud?](http://macscripter.net/viewtopic.php?id=42187)
+
+[^WikiBooks]: [AppleScript Programming](https://en.wikibooks.org/wiki/AppleScript_Programming)
+
+[Multiple Criteria for If statement in AppleScript](http://stackoverflow.com/questions/10522286/multiple-criteria-for-if-statement-in-applescript)
