@@ -35,6 +35,8 @@ Xcode에서 Bundle Identifier를 만드는 방법도 예전과는 다르게 자�
 
 ### 참고 자료
 
+[iOS - Provisioning profile 만들기](http://korea-developer.tistory.com/entry/iOS-Provisioning-profile-만들기)
+
 
 
 
