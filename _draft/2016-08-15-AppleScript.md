@@ -1,3 +1,5 @@
+이 파일은 여러 개의 문서로 분리해야 할 것 같습니다. 
+
 AppleScript는 macOS에 내장되어 있는 스크립팅 언어입니다. AppleScript를 사용하여 자동화가 가능합니다. 또한 응용 프로그램을 사용자화하는 것도 가능합니다. AppleScript를 사용하여 스크립트 가능한 응용 프로그램을 제어할 수 있습니다.[^AppleScript-Help]  [^AppleScript]
 
 AppleScript는 Script Editor에서 편집할 수 있는데, Script Editor는 **Applications/Utilities** 폴더에 있습니다.[^Ray]
@@ -160,6 +162,22 @@ set p2Cloud to (path to library folder from user domain as text) & "Mobile Docum
 ```
 set myList to {}
 ```
+
+### Apple Script 사용 예제 
+
+[터미널 명령어를 애플 스크립트로 만들기](http://blackturtle.tistory.com/711692) : 까만 거북이님의 블로그 글
+
+[Mac에서 shell 스크립트를 이용한 이미지 자동 변환](http://ivis.cwnu.ac.kr/tc/dongupak/i/entry/Mac에서-shell-스크립트를-이용한-이미지-자동-변환Mac-OS용-3#_post_222) : 박동규님의 블로그 글
+
+[간단한 shell script 파일 만들기](http://mckstory.tistory.com/entry/간단한-shell-script-파일-만들기)
+
+[맥에서 간단한 배치파일 생성](http://yousungjang.blogspot.kr/2012/11/blog-post_3753.html?m=1)
+
+[바로 실행되는 ShellScript 파일 만들기](http://jungryulchoi.tistory.com/4)
+
+[VIM을 사용하자](http://www.joinc.co.kr/modules/moniwiki/wiki.php/Site/Vim/Documents/UsedVim)
+
+[명령행 작업 좀더 편리하게 하기!](http://redgolems.tistory.com/30)
 
 ### 참고 자료
 

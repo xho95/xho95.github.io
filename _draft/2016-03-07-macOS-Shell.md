@@ -14,18 +14,6 @@ categories: Resources OSX Shell Terminal
 * 검색 창에서 입력할 때 유니코드 앞에 hexa 코드를 입력한다.
 	* ex) é = 0xE9
 
-### macOS의 숨김 파일들
-
-#### .DS_Store
-
-`.DS_Store` 파일은 macOS의 finder로 특정 폴더를 접근하면 생성되는 파일로, 폴더의 특성을 저장하는 파일입니다. 이 파일을 텍스트 편집기로 열면 해당 폴더의 구조, 아이콘의 배치 등이 저장되어 있습니다.[^DS_Store]
-
-### 환경 설정
-
-[OS X 에서 환경변수 지정하는 방법!!](http://sjpison.tistory.com/258)
-
-[Mac에서 Path 설정하기](http://elfinlas.tistory.com/266)
-
 ### shell
 
 [serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
@@ -34,7 +22,7 @@ categories: Resources OSX Shell Terminal
 
 #### 터미널 명령어
 
-[MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
+간단한 터미널 명령어를 요약합니다.[^parklize_1]  [^parklize_2]
 
 * `ls` : list - 파일 및 폴더의 리스트를 보여줍니다.
 * `cd` : change directory - 폴더를 변경합니다.
@@ -76,22 +64,6 @@ $ mv newFileName.txt oldFileName.txt
 
 [iTerm 사용법 정리](http://osxtip.tistory.com/181)
 
-### Apple Script
-
-[터미널 명령어를 애플 스크립트로 만들기](http://blackturtle.tistory.com/711692) : 까만 거북이님의 블로그 글
-
-[Mac에서 shell 스크립트를 이용한 이미지 자동 변환](http://ivis.cwnu.ac.kr/tc/dongupak/i/entry/Mac에서-shell-스크립트를-이용한-이미지-자동-변환Mac-OS용-3#_post_222) : 박동규님의 블로그 글
-
-[간단한 shell script 파일 만들기](http://mckstory.tistory.com/entry/간단한-shell-script-파일-만들기)
-
-[맥에서 간단한 배치파일 생성](http://yousungjang.blogspot.kr/2012/11/blog-post_3753.html?m=1)
-
-[바로 실행되는 ShellScript 파일 만들기](http://jungryulchoi.tistory.com/4)
-
-[VIM을 사용하자](http://www.joinc.co.kr/modules/moniwiki/wiki.php/Site/Vim/Documents/UsedVim)
-
-[명령행 작업 좀더 편리하게 하기!](http://redgolems.tistory.com/30)
-
 ### Swift in Terminal
 
 [How can I use swift in Terminal?](http://stackoverflow.com/questions/24011120/how-can-i-use-swift-in-terminal)
@@ -100,4 +72,6 @@ $ mv newFileName.txt oldFileName.txt
 
 [^rm]: [리눅스 mv, rename - 파일명 변경](http://webdir.tistory.com/145) : 폴더명을 바꾸는 내용도 설명되어 있다.
 
-[^DS_Store]: .DS_Store 파일에 대한 설명은 [.DS_Store 정체](http://blog.naver.com/PostView.nhn?blogId=sky777a&logNo=140129264309)라는 글에 간단하게 정리되어 있습니다.
+[^parklize_1]: [MAC Terminal Command 맥북 터미널 명령어 모음](http://parklize.blogspot.kr/2014/08/mac-terminal-command.html)
+
+[^parklize_2]: [MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
