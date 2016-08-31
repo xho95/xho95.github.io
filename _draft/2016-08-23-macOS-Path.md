@@ -1,12 +1,12 @@
 맥을 사용하다보면 가끔씩 PATH를 추가해야 할 경우가 있습니다.[^SeonHo]
 
-그 방법들에 대해 정리합니다. 
+그 방법들에 대해 정리합니다.
 
 ### 환경 변수 설정
 
 맥에서 환경 변수를 설정하는 방법에 대한 글입니다.[^sjpison]  [^elfinlas]
 
-### PATH의 종류(?)
+### 환경 변수 파일들의 종류
 
 Path의 경로로는 아래와 같은 것들이 있다고 합니다. (문장을 고치자.)
 
@@ -21,7 +21,7 @@ Path의 경로로는 아래와 같은 것들이 있다고 합니다. (문장을 
 
 각각의 파일들이 차이점이 무엇인지는 계속 알아봐야할 것 같습니다.[^StefaanLippens]
 
-macOS Shell 전반에 대한 내용은 [bash on Mac OS X](http://appletree.or.kr/forum/viewtopic.php?id=13)의 글을 참고해도 좋을 것 같습니다.[^AppleTree] 
+macOS Shell 전반에 대한 내용은 [bash on Mac OS X](http://appletree.or.kr/forum/viewtopic.php?id=13)의 글을 참고해도 좋을 것 같습니다.[^AppleTree]
 
 ### 참고 자료
 

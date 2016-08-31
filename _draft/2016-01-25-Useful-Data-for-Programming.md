@@ -4,6 +4,7 @@ title:  "프로그래밍 자료들"
 date:   2016-01-25 21:30:00 +0900
 categories: Resources Softwares Programming Sites
 ---
+[React Redux React-Router: From Beginner to Paid Professional - Coupon 100% Off](https://coursehall.com/react-redux-react-router-from-beginner-to-paid-professional-coupon/) React Udemy 강의를 무료로 들을 수 있게 쿠폰을 제공해 주는 곳입니다.
 
 [kakao Developers](https://developers.kakao.com/docs/ios)
 
@@ -14,6 +15,8 @@ categories: Resources Softwares Programming Sites
 프로그래밍 관련 자료를 모아둔 곳이다.
 
 [누구나가 다 이해할 수 있는 프로그래밍 첫걸음](http://blog.eairship.kr)
+
+[프로그래밍 실력을 늘리려면](http://jeminency.tistory.com/m/148)
 
 ### 프로그래밍 관련 사이트들
 
