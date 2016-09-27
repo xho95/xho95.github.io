@@ -42,15 +42,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 #### Atom을 Python 개발 툴로 사용하기
 
-Atom 에디터를 Python 개발툴로 사용하는 방법에 대해서는 ReachLab.KR에서 잘 정리해 두었습니다.[^reachlab-kr]
-
-다만 Atom 에디터를 시작할 때 터미널에서 `atom .`로 실행해야해서 조금 불편한 것 같습니다. 무언가 개선 방법이 있지 않을까 생각합니다. 막상 사용해보면 굳이 터미널에서 실행하지 않아도 특별한 문제가 없는 것 같습니다. 
+이 부분은 Atom 에디터 관련 글에서 따로 정리하도록 합니다. 
 
 ### Package 관리하기 
 
 파이썬에서 Package를 관리하는 방법은 pip를 활용하는 것입니다. 그리고 이렇게 pip를 사용하다보면 프로젝트별로 적용되는 패키지 버전이 달라 문제가 있을 수 있으므로, virtualenv를 pip과 같이 사용하게 됩니다. 
 
-하지만 위에서와 같이 anaconda를 통해서 파이썬을 설치하게 되면, conda라는 패키지 관리 프로그램이 같이 설치가 됩니다. 이 conda를 사용하면 pip와 virtualenv를 동시에 사용하는 것과 같은 효과를 거둘 수 있으므로 anaconda를 설치했을 경우, conda를 사용하면 됩니다.[^conda]
+하지만 위에서와 같이 anaconda를 통해서 파이썬을 설치하게 되면, conda라는 패키지 관리 프로그램이 같이 설치가 됩니다. 이 conda를 사용하면 pip와 virtualenv를 동시에 사용하는 것과 같은 효과를 거둘 수 있으므로 anaconda를 설치했을 경우, conda를 사용하면 됩니다.[^conda]  [^egloos]
 
 ### 참고 자료
 
@@ -69,8 +67,6 @@ Atom 에디터를 Python 개발툴로 사용하는 방법에 대해서는 ReachL
 [^continuum]: [continuum](https://www.continuum.io)
 
 [^ContinuumDownload]: [Anaconda Download](https://www.continuum.io/downloads)
-
-[^reachlab-kr]: [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html) 이를 통해 Atom 에디터에 플러그인 같은 도구를 설치하는 방법도 알 수 있습니다. autocomplete-glsl 같은 것도 있는 것 같습니다. 
 
 [Annotated Algorithms in Python](http://www.amazon.com/Annotated-Algorithms-Python-Applications-Physics/dp/0991160401)
 
@@ -91,3 +87,5 @@ Atom 에디터를 Python 개발툴로 사용하는 방법에 대해서는 ReachL
 [Is it possible to make abstract classes in python?](http://stackoverflow.com/questions/13646245/is-it-possible-to-make-abstract-classes-in-python) Python에서 추상 클래스 또는 프로토콜 클래스를 구현하는 방법에 대한 질문 답변입니다.
 
 [^conda]: [conda vs. pip vs. virtualenv](http://conda.pydata.org/docs/_downloads/conda-pip-virtualenv-translator.html) conda를 pip 및 virtualenv와 비교한 표입니다.
+
+[^egloos]: [Anaconda 설치하기 - Python을 제대로 활용해보자](http://egloos.zum.com/mataeoh/v/7052271) conda의 사용법에 대해 잘 정리한 글입니다.
