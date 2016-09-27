@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python 자료들"
+title:  "Anaconda를 사용하여 Python 설치하기"
 date:   2016-03-08 21:50:00 +0900
 categories: Resources Softwares Programming Python
 ---
@@ -9,27 +9,27 @@ categories: Resources Softwares Programming Python
 
 ### 맥에서 파이썬 설치
 
-다음과 같은 자료들이 있습니다.[^guide]  [^kybin]
+다음과 같은 자료들이 있습니다.[^guide]  [^kybin] 여기서는 anaconda를 이용해서 파이썬을 설치하도록 하겠습니다. 
 
 ### 맥에서 아나콘다 설치
 
 아나콘다 홈페이지입니다.[^continuum]
 
-아나콘다에는 파이썬과 함께 필요한 라이브러리들까지 함께 설치할 수 있도록 해주는 도구(?)입니다. 아나콘다를 설치하는 방법은 다음과 같은 자료가 있습니다.[^mcchae]  [^wsyang]
+아나콘다는 파이썬과 함께 필요한 라이브러리들까지 함께 설치할 수 있도록 해주는 도구(?)입니다. 아나콘다를 설치하는 방법은 다음과 같은 자료가 있습니다.[^mcchae]  [^wsyang]
 
 아나콘다는 그래픽 환경과 터미널 환경에서 설치가 가능합니다. 터미널 환경에서 설치하는 방법은 이곳에서 잘 설명하고 있습니다. [^ContinuumDownload] `.bash_profile` 설정도 자동으로 해줍니다. 
 
 ### Python 3 사용하도록 설정하기
 
-`Python3`으로 명시적으로 지정하지 않아도 Python 3을 사용하기 위한 방법은 다음과 같습니다.[^eunguru]
+`Python3`으로 명시적으로 지정하지 않아도 Python 3을 사용하기 위한 방법은 참고 자료에 설명이 되어 있습니다.[^eunguru]
 
 위의 아나콘다를 설치하면 이 부분은 하지 않아도 되는 것 같습니다. 
 
 ### Python 실행하기 
 
-`.bash_profile` 설정을 끝내고 나면 터미널을 끄고 다시 실행해야 새로운 설정을 불러옵니다. 
+아나콘다를 설치하면 `.bash_profile`이 바뀌게 되는데, 터미널을 그대로 사용하고 있으면 기존 `.bash_profile`이 적용되어서 작동이 안됩니다. 따라서, `.bash_profile` 설정을 끝내고 나면 터미널을 끄고 다시 실행해야 합니다. 
 
-터미널에서 `python`이라고만 쳐도 python 3버전이 알아서 실행됨을 알 수 있습니다. 
+터미널에서 `python`이라고만 쳐도 알아서 python 3버전이 아래와 같이 실행됨을 알 수 있습니다. 
 
 ```
 Last login: Mon Sep  5 21:06:22 on ttys001
@@ -44,7 +44,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 Atom 에디터를 Python 개발툴로 사용하는 방법에 대해서는 ReachLab.KR에서 잘 정리해 두었습니다.[^reachlab-kr]
 
-다만 Atom 에디터를 시작할 때 터미널에서 `atom .`로 실행해야해서 조금 불편한 것 같습니다. 무언가 개선 방법이 있지 않을까 생각합니다. 
+다만 Atom 에디터를 시작할 때 터미널에서 `atom .`로 실행해야해서 조금 불편한 것 같습니다. 무언가 개선 방법이 있지 않을까 생각합니다. 막상 사용해보면 굳이 터미널에서 실행하지 않아도 특별한 문제가 없는 것 같습니다. 
+
+### Package 관리하기 
+
+파이썬에서 Package를 관리하는 방법은 pip를 활용하는 것입니다. 그리고 이렇게 pip를 사용하다보면 프로젝트별로 적용되는 패키지 버전이 달라 문제가 있을 수 있으므로, virtualenv를 pip과 같이 사용하게 됩니다. 
+
+하지만 위에서와 같이 anaconda를 통해서 파이썬을 설치하게 되면, conda라는 패키지 관리 프로그램이 같이 설치가 됩니다. 이 conda를 사용하면 pip와 virtualenv를 동시에 사용하는 것과 같은 효과를 거둘 수 있으므로 anaconda를 설치했을 경우, conda를 사용하면 됩니다.[^conda]
 
 ### 참고 자료
 
@@ -83,3 +89,5 @@ Atom 에디터를 Python 개발툴로 사용하는 방법에 대해서는 ReachL
 [BUILDING AND RUNNING PYTHON SCRIPTS WITH XCODE 6.1](https://vandadnp.wordpress.com/2014/10/20/building-and-running-python-scripts-with-xcode-6-1/) Xcode 6.1에서 Python 개발 환경을 구축하는 방법에 대한 질문 답변입니다.
 
 [Is it possible to make abstract classes in python?](http://stackoverflow.com/questions/13646245/is-it-possible-to-make-abstract-classes-in-python) Python에서 추상 클래스 또는 프로토콜 클래스를 구현하는 방법에 대한 질문 답변입니다.
+
+[^conda]: [conda vs. pip vs. virtualenv](http://conda.pydata.org/docs/_downloads/conda-pip-virtualenv-translator.html) conda를 pip 및 virtualenv와 비교한 표입니다.
