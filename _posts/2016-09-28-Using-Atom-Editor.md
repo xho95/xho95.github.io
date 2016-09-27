@@ -45,9 +45,11 @@ Atom 에디터를 Python 개발도구로 사용하는 것은 문제가 있다고
 
 Atom 에디터를 Python 개발툴로 사용하는 방법 및 관련 Package 설치에 대해서는 [ReachLab.KR](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html)에서 잘 정리해 두었습니다.[^reachlab-kr] 기타 Atom 에디터에 설치할만한 Package에 대해서는 이곳을 참고할 만 합니다.[^naver]
 
-요약하면 Atom 에디터에서 autocomplete-python과 script라는 두 개의 패키지를 설치하면 Atom 에디터를 Python 개발 도구로 사용할 수 있습니다.
-
 > 위의 블로그에서는 Atom 에디터를 시작할 때 터미널에서 `atom .`로 실행해야해서 귀찮다고 되어 있는데, 막상 사용해보면 굳이 터미널에서 실행하지 않아도 특별한 문제가 없는 것 같습니다.
+
+요약하면 Atom 에디터에서 `autocomplete-python`과 `script`라는 두 개의 패키지를 설치하면 Atom 에디터를 Python 개발 도구로 사용할 수 있습니다.
+
+Atom 에디터에서 Package를 설치하는 방법은 **Atom > Preferences... > Settings > + Install** 메뉴에서 Package를 이름으로 검색한 후 설치하면 됩니다. 
 
 ### 고찰 하기
 
