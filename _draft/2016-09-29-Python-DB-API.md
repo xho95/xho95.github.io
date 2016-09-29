@@ -1,4 +1,23 @@
-### Placeholder
+### DB-API
+
+DB-API는 관계형 데이터베이스를 위한 파이썬 표준 API입니다. 이 API를 사용하면 DB의 종류에는 독립적으로 하나의 프로그램만 작성하면 됩니다. 일종의 ODBC 같은 거라고 봐도 될 것 같습니다.
+
+메인 함수는 다음과 같습니다. 
+
+```
+connect()
+cursor()
+execute(), executemany()
+fetchone(), fetchmany(), fetchall()
+
+```
+
+* connect() : 데이터베이스 연결을 만듭니다. 사용자 이름, 비밀번호, 서버 주소 등의 인자를 포함합니다.
+* cursor() : 질의(query)를 관리하기 위한 커서 객체를 만듭니다.
+* execute() : 데이터베이스에 하나 이상의 SQL 명령을 실행합니다.
+* fetch() : 실행 결과를 얻습니다. 
+
+#### Placeholder
 
 플레이스홀더(placeholder)에 대한 내용을 정리해 둘 필요가 있습니다. 
 
