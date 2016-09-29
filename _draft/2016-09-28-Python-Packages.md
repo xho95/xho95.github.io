@@ -1,10 +1,32 @@
-conda와 virtualenv를 동시에 사용할 수 있는지에 대해서는 좀 더 알아봐야 할 것 같습니다.[^egloos]
+`conda`와 `virtualenv`를 동시에 사용할 수 있는지에 대해서는 좀 더 알아봐야 할 것 같습니다.[^egloos]
 
 Python을 위한 패키지들은 다음 곳들을 보면 구할 수 있습니다.[^activestate]  [^github]  [^pypi]
 
-anaconda와 virtualenv의 충돌을 해결하는 방법에 대한 답변은 다음과 같습니다.[^stackoverflow_38221144]  [^stackoverflow_30308190]
+`anaconda`와 `virtualenv`의 충돌을 해결하는 방법에 대한 답변은 다음과 같습니다.[^stackoverflow_38221144]  [^stackoverflow_30308190]
 
 위와 같은 자료가 있는 것을 볼 때, 같이 사용할 수는 있는 것 같습니다. 
+
+[conda에서 파이썬 가상 환경 (virtual environments) 생성하기](http://jkstory-textcube.blogspot.kr/2016/02/conda-virtual-environments.html)라는 글을 보면 `conda`에서 `virtualenv`를 설치하려고 하면 "불안정하다"는 경고 메시지가 뜬다고 합니다. 
+
+일단 물리적으로는 동시에 사용이 가능하지만, 가능하면 `Docker`나 `Virtual Machine`으로 구분해서 개발환경을 설정하는 것이 좋을 것 같습니다. 
+
+### 패키지 검색하기
+
+anaconda에 설치할 수 있는 패키지들은 아래와 같은 방법으로 검색이 가능합니다. 
+
+```
+$ anaconda search -t conda python-memcached
+```
+
+### 패키지 삭제하기
+
+콘다를 이용하여  `root` 환경에 있는 `python-memcached` 패키지를 삭제하는 방법은 아래와 같습니다. 
+
+```
+$ conda remove --name root python-memcached
+```
+
+일단은 conda에서는 현재의 설치 환경 이름도 지정해줘야 삭제 가능한 것 같습니다. 
 
 ### 참고 자료
 
@@ -33,3 +55,5 @@ anaconda와 virtualenv의 충돌을 해결하는 방법에 대한 답변은 다�
 [PYTHON PACKAGES AND ENVIRONMENTS WITH CONDA](https://www.continuum.io/blog/developer-blog/python-packages-and-environments-conda)
 
 [파이썬 설치](https://www.datascienceschool.net/view-notebook/5e52b7c4b5754f2585844c8d9b26cdb5/) : anaconda를 중심으로 파이썬을 설치하고 사용하는 방법을 설명해 둔 곳입니다.
+
+[conda에서 파이썬 가상 환경 (virtual environments) 생성하기](http://jkstory-textcube.blogspot.kr/2016/02/conda-virtual-environments.html)
