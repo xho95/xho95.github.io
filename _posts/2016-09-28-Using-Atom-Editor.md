@@ -19,6 +19,8 @@ Atom은 `https://atom.io`에서 다운 받을 수 있습니다.[^Atom]
 
 Atom 에디터를 설정하는 방법은 [Atom Setting](http://lks21c.blogspot.kr/2015/06/atom-shortcut.html)에 잘 나와 있습니다.
 
+Atom 에디터의 단축키는 참고 자료에 잘 정리되어 있습니다.[^tistory]
+
 ### 터미널에서 Atom 실행하기
 
 터미널에서 Atom 에디터를 실행하려면 다음과 같이 입력하면 됩니다.
@@ -70,3 +72,5 @@ Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용
 [^naver]: [Atom Editor 추천 패키지](http://blog.naver.com/PostView.nhn?blogId=jkikss&logNo=220590070604&categoryNo=44&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView) 내용은 괜찮은 것 같은데 처음에 화면 가득 이미지가 떠서 당황했습니다. 
 
 [^reachlab-kr]: [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html) 이를 통해 Atom 에디터에 플러그인 같은 도구를 설치하는 방법도 알 수 있습니다. autocomplete-glsl 같은 것도 있는 것 같습니다.
+
+[^tistory]: [아톰 (Atom) 에디터 - 단축키 모음](http://ondesk.tistory.com/178)
