@@ -7,20 +7,22 @@ categories: Resources OSX Shell Terminal
 
 여기서는 **macOS** 의 shell 및 운영체제의 기본적인 내용들에 대해서 정리합니다.
 
-[MAC OS X 자동 시작프로그램 추가/해제 하는 방법](http://namsieon.com/595)
-
 ### 맥 유니코드 문자 입력기에서 특정 유니코드 문자 입력
 
-* 검색 창에서 입력할 때 유니코드 앞에 hexa 코드를 입력한다.
+* `cmd`+`ctl`+`space` 키를 누르면 나오는 특수 문자 입력 창에서 입력할 때 유니코드 앞에 hexa 코드를 입력한다.
 	* ex) é = 0xE9
 
-### shell
+### shell 사용법
 
 [serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
 
 [Mac 터미널에서 ssh 접속하는 방법](http://db.necoaki.net/54)
 
-#### 터미널 명령어
+[MAC OS X 자동 시작프로그램 추가/해제 하는 방법](http://namsieon.com/595)
+
+[mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
+
+### 터미널 명령어
 
 간단한 터미널 명령어를 요약합니다.[^parklize_1]  [^parklize_2]
 
@@ -38,13 +40,27 @@ categories: Resources OSX Shell Terminal
 $ mv newFileName.txt oldFileName.txt
 ```
 
-[mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
+#### 통신 관련 명령어 
+
+* `curl` : HTTP/HTTPS/FTP 등 여러 가지 프로토콜을 사용하여 데이터를 송수신할 수 있는 명령어입니다. 터미널에서 다음과 같이 사용할 수 있습니다.
+
+	`curl` 은 command line 용 data transfer tool 이다. download/ upload 모두 가능하며 HTTP/ HTTPS/ FTP/ LDAP/ SCP/ TELNET/ SMTP/ POP3 등 주요한 프로토콜을 지원하며 Linux/Unix 계열 및 Windows 등 주요한 OS 에서 구동되므로 여러 플랫폼과 OS에서 유용하게 사용할 수 있다.[^lesstif]  
+
+	```
+	$ curl www.example.com
+	```
+
+	위에서 `curl` 명령은 인자로 넘어온 URL로 HTTP 요청을 보내는 웹 클라이언트의 역할을 수행합니다. 
+	
+	그외에도 `curl`은 옵션을 지정해서 `wget`을 대신하여 파일을 다운로드 하는 등의 용도로 사용된다고 합니다.[^dezang] 
+
+* `telnet` : 터미널에서 입력하는 내용을 그대로 웹 서버에 전송합니다. 사실 `telnet`은 쉘 명령어는 아니고, 프로그램입니다.
 
 #### 새로운 명령어 추가
 
 [Mac OS X tree 명령어 설치, 실행](http://eunguru.tistory.com/150)
 
-#### zsh
+### zsh shell
 
 [터미널 초보의 필수품인 Oh My ZSH!를 사용하자](https://nolboo.github.io/blog/2015/08/21/oh-my-zsh/)
 
@@ -75,3 +91,7 @@ $ mv newFileName.txt oldFileName.txt
 [^parklize_1]: [MAC Terminal Command 맥북 터미널 명령어 모음](http://parklize.blogspot.kr/2014/08/mac-terminal-command.html)
 
 [^parklize_2]: [MAC 터미널 명령어](http://blog.daum.net/_blog/BlogTypeView.do?blogid=0hG6Q&articleno=133)
+
+[^lesstif]: [curl 설치 및 사용법 - HTTP GET/POST, REST API 연계등](https://www.lesstif.com/pages/viewpage.action?pageId=14745703)
+
+[^dezang]: [wget 대신 curl 사용하기](http://dezang.net/884)
