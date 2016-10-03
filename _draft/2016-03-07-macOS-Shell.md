@@ -58,7 +58,7 @@ $ mv newFileName.txt oldFileName.txt
 
 #### 새로운 명령어 추가
 
-[Mac OS X tree 명령어 설치, 실행](http://eunguru.tistory.com/150)
+맥에는 따로 `tree` 명령어가 없지만, **Homebrew**를 이용해서 설치한 후에 사용할 수 있습니다. 이에 대한 내용은 참고 자료에 잘 나와 있습니다.[^eunguru]
 
 ### zsh shell
 
@@ -95,3 +95,5 @@ $ mv newFileName.txt oldFileName.txt
 [^lesstif]: [curl 설치 및 사용법 - HTTP GET/POST, REST API 연계등](https://www.lesstif.com/pages/viewpage.action?pageId=14745703)
 
 [^dezang]: [wget 대신 curl 사용하기](http://dezang.net/884)
+
+[^eunguru]: [Mac OS X tree 명령어 설치, 실행](http://eunguru.tistory.com/150)
