@@ -18,6 +18,14 @@ anaconda에 설치할 수 있는 패키지들은 아래와 같은 방법으로 �
 $ anaconda search -t conda python-memcached
 ```
 
+conda로도 검색이 가능하다고 하는데 아직 두가지 방식의 차이점을 모르겠습니다.
+
+```
+$ conda search python-memcached 
+```
+
+일단 경험상으로는 anaconda를 사용하는 경우가 더 좋은 결과가 나왔던 것 같습니다.
+
 ### 패키지 삭제하기
 
 콘다를 이용하여  `root` 환경에 있는 `python-memcached` 패키지를 삭제하는 방법은 아래와 같습니다. 
