@@ -2,7 +2,7 @@ DB를 다루다보면 트리 구조로 된 자료를 저장하고 불러올 필�
 
 이 글은 GitHub에 있는 [django-mptt](https://github.com/django-mptt/django-mptt) 프로젝트의 글과 [django-mptt의 공식 문서](http://django-mptt.github.io/django-mptt/index.html#)을 중심으로 기타 유용한 자료들을 번역하고 정리한 것입니다.[^django-mptt]  [^document]  [^groups]
 
-참고로 MPTT에 대한 개념은 [Storing Hierarchical Data in a Database](https://www.sitepoint.com/hierarchical-data-database-2/)라는 글에 잘 정리되어 있는 것 같습니다.[^sitepoint] 
+참고로 **MPTT**에 대한 개념은 [Storing Hierarchical Data in a Database](https://www.sitepoint.com/hierarchical-data-database-2/)라는 글에 잘 정리되어 있는 것 같습니다.[^sitepoint] 이 글은 [Mysql + php 트리구조 재귀호출](http://www.freeimage.kr/tip_php/p40/804)라는 글로 번역되어 있는 글도 있는 것 같습니다.[^freeimage]  다른 자료도 있습니다.[^mikehillyer] 
 
 ### `django-mptt`란 무엇인가?
 
@@ -36,7 +36,7 @@ DB를 다루다보면 트리 구조로 된 자료를 저장하고 불러올 필�
 * 트리를 렌더링하기 위해 템플릿 태그(template tages)와 필터(filters)를 제공합니다.
 * Django 관리자 인터페이스에서 트리를 보여주고 수정하기 위한 관리자(Admin) 클래스를 제공합니다.
 
-#### `django-mptt` 설치하기
+### `django-mptt` 설치하기
 
 `django-mptt`를 설치하는 방법에는 공식 버전을 다운받는 방법과 개발자 버전을 GitHub에서 클론 받는 방법, 이렇게 두가지가 있습니다.
 
@@ -54,6 +54,23 @@ $ python setup.py install
 
 그러면 패키지가 알아서 자동으로 설치됩니다. 패키지가 설치되는 위치는 Django를 설치하면 생기는 **.../site-packages/** 폴더에 **django_mptt-0.8.6-py3.5.egg**와 같은 이름으로 설치되는 것 같습니다.
 
+#### 설치 확인하기
+
+터미널에서 python을 실행하고 아래의 명령을 입력하면 설치가 제대로 된 것인지 확인할 수 있습니다.
+
+```
+>>> import mptt
+>>> mptt.VERSION
+
+(0, 8, 6)
+```
+
+이 글을 작성하는 시점에서는 버전이 **0.8.6** 입니다.
+
+### `django-mptt` 프로젝트
+
+**Caktus Group**에서 `django-mptt`를 이용하여 `django-treenav`를 만든 것 같습니다. 참고 자료를 보시면 **MPTT**에 대한 개념을 설명한 부분도 있습니다. [^caktusgroup]  [^django-treenav]
+
 ### 참고 자료
 
 [^stackoverflow_1]: [Making a tree structure in django models?](http://stackoverflow.com/questions/15486520/making-a-tree-structure-in-django-models) : 다른 질문 답변 글입니다.
@@ -64,10 +81,18 @@ $ python setup.py install
 
 [^document]: [django-mptt의 공식 문서](http://django-mptt.github.io/django-mptt/index.html#)
 
-[^sitepoint]: [Storing Hierarchical Data in a Database](https://www.sitepoint.com/hierarchical-data-database-2/) : The Adjacency List Model과 Modified Preorder Tree Traversal를 비교하고 분석한 글입니다.
+[^sitepoint]: [Storing Hierarchical Data in a Database](https://www.sitepoint.com/hierarchical-data-database/) : The Adjacency List Model과 Modified Preorder Tree Traversal를 비교하고 분석한 글입니다.
 
 [^install]: [Django MPTT documentation](http://django-mptt.github.io/django-mptt/install.html) : django-mptt를 설치하는 방법에 대해 설명한 공식 문서입니다.
 
 [^groups]: [Django MPTT Discussion group](https://groups.google.com/forum/#!forum/django-mptt-dev) : django-mptt 프로젝트 관련 토론이 이루어지고 있는 구글 그룹입니다. 
 
 [^pypi]: [django-mptt 0.8.6](https://pypi.python.org/pypi/django-mptt/) : 이 글을 작성하는 시점에서의 최신 버전은 0.8.6입니다.
+
+[^caktusgroup]: [Modified Preorder Tree Traversal in Django](https://www.caktusgroup.com/blog/2016/01/04/modified-preorder-tree-traversal-django/) : django-mptt를 이용하여 django-treenav를 만든 내용을 소개하고 있습니다.
+
+[^django-treenav]: [django-treenav](https://django-treenav.readthedocs.io/en/latest/) : django-mptt를 이용하여 만든 django-treenav 사이트입니다.
+
+[^freeimage]: [Mysql + php 트리구조 재귀호출](http://www.freeimage.kr/tip_php/p40/804) : [Storing Hierarchical Data in a Database](https://www.sitepoint.com/hierarchical-data-database/) 글을 한글로 번역한 문서인 것 같습니다. 
+
+[^mikehillyer]: [Managing Hierarchical Data in MySQL](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/) : MPTT를 설명한 글입니다.
