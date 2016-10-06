@@ -45,7 +45,9 @@ Atom 에디터를 Python 개발도구로 사용하는 것은 문제가 있다고
 
 #### 관련 Package 설치하기
 
-Atom 에디터를 Python 개발툴로 사용하는 방법 및 관련 Package 설치에 대해서는 [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html)라는 블로그 글에서 잘 정리되어 있는 것 같습니다.[^reachlab-kr] 기타 Atom 에디터에 설치할만한 Package에 대해서는 [Atom Editor 추천 패키지](http://blog.naver.com/PostView.nhn?blogId=jkikss&logNo=220590070604&categoryNo=44&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView)을 참고할 만 합니다.[^naver]
+Atom 에디터를 Python 개발툴로 사용하는 방법 및 관련 Package 설치에 대해서는 [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html)라는 블로그 글에서 잘 정리되어 있는 것 같습니다.[^reachlab-kr] 
+
+기타 Atom 에디터에 설치할만한 Package에 대해서는 [Atom Editor 추천 패키지](http://blog.naver.com/PostView.nhn?blogId=jkikss&logNo=220590070604&categoryNo=44&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView)을 참고할 만 합니다.[^naver]  [^marinamele]
 
 > [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html)라는 블로그에서는 Atom 에디터를 시작할 때 터미널에서 `atom .`로 실행해야해서 귀찮다고 되어 있는데, 막상 사용해보면 굳이 터미널에서 실행하지 않아도 특별한 문제가 없는 것 같습니다.
 
@@ -74,3 +76,5 @@ Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용
 [^reachlab-kr]: [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html) 이를 통해 Atom 에디터에 플러그인 같은 도구를 설치하는 방법도 알 수 있습니다. autocomplete-glsl 같은 것도 있는 것 같습니다.
 
 [^tistory]: [아톰 (Atom) 에디터 - 단축키 모음](http://ondesk.tistory.com/178)
+
+[^marinamele]: [Install and Configure the Atom Editor for Python](http://www.marinamele.com/install-and-configure-atom-editor-for-python)
