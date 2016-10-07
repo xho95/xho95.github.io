@@ -164,7 +164,7 @@ $ git push origin master
 
 [^saltfactory_1]: [saltfactory님](http://blog.saltfactory.net)이 쓰신 [Tistory에서 Jekyll을 이용하여 GitHub Pages로 블로그 이전](http://blog.saltfactory.net/note/renewal-blog-from-tistory-to-github-pages-via-jekyll.html)이란 글에도 Jekyll과 GitHub의 장점이 잘 나와 있습니다. 무엇보다 [saltfactory님](http://blog.saltfactory.net)의 경우 블로그 자체에 좋은 글들이 정말 많습니다.
 
-[^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com)입니다.
+[^Jekyll]: Jekyll의 공식 사이트는 [http://jekyllrb.com](http://jekyllrb.com)입니다. 언제부터인지 모르겠는데 [한글 사이트](http://jekyllrb-ko.github.io)도 제공하고 있습니다.
 
 [^GitHub]: GitHub의 공식 사이트는 [https://github.com](https://github.com)이며, GitHub에서 호스팅 서비스를 지원하는 곳은 [GitHub Pages](https://pages.github.com)입니다.
 
