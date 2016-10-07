@@ -5,12 +5,7 @@ date:   2016-03-07 21:00:00 +0900
 categories: Resources OSX Shell Terminal
 ---
 
-여기서는 **macOS** 의 shell 및 운영체제의 기본적인 내용들에 대해서 정리합니다.
-
-### 맥 유니코드 문자 입력기에서 특정 유니코드 문자 입력
-
-* `cmd`+`ctl`+`space` 키를 누르면 나오는 특수 문자 입력 창에서 입력할 때 유니코드 앞에 hexa 코드를 입력한다.
-	* ex) é = 0xE9
+여기서는 **macOS** 의 쉘(shell) 명령어 및 운영체제의 기본적인 내용들에 대해서 정리합니다.[^macOS]
 
 ### shell 사용법
 
@@ -85,6 +80,8 @@ $ mv newFileName.txt oldFileName.txt
 [How can I use swift in Terminal?](http://stackoverflow.com/questions/24011120/how-can-i-use-swift-in-terminal)
 
 ### 참고 자료
+
+[^macOS] : 시에라부터 OS X가 macOS로 명칭이 바뀌었습니다.
 
 [^rm]: [리눅스 mv, rename - 파일명 변경](http://webdir.tistory.com/145) : 폴더명을 바꾸는 내용도 설명되어 있다.
 

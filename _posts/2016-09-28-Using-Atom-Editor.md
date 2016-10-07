@@ -5,7 +5,7 @@ date:   2016-09-28 02:15:00 +0900
 categories: Editor Atom Markdown Python
 ---
 
-Atom 에디터는 GitHub를 만든 에디터로 Electron 이라는 웹 기반 기술로 만들어서 Windows, OS X, Linux 등에서 모두 동작합니다. 그 밖에도 Markdown 관련 패키지가 기본으로 내장되어 있다고 합니다.[^kichul]
+Atom 에디터는 GitHub를 만든 곳에서 만든 에디터로 Electron 이라는 웹 기반 기술로 만들어서 Windows, OS X, Linux 등에서 모두 동작합니다. 그 밖에도 Markdown 관련 패키지가 기본으로 내장되어 있다고 합니다.[^kichul]
 
 ### 맥에 Atom 에디터 설치하기
 
