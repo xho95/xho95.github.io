@@ -52,7 +52,7 @@ It works!
 
 #### 아파치 재시작하기
 
-만약 아파치의 설정을 변경한 경우에는 설정을 완료한 후 아파치를 재시작해야 합니다. 아래와 같은 명령으로 아파치 웹 서버를 재시작할 수 있습니다.
+만약 아파치의 설정을 변경했다면 설정을 완료한 후 아파치를 재시작해야 합니다. 아래와 같은 명령으로 아파치 웹 서버를 재시작할 수 있습니다.
 
 ```
 $ sudo apachectl restart
@@ -87,7 +87,7 @@ DocumentRoot "/Library/WebServer/Documents"
 
 다만, `DocumentRoot`를 옮기는 것은 그다지 추천할 만한 방법이 아닙니다. 따라서 `DocumentRoot`를 바꾸기 보다는 `userdir`을 활성화하는 것이 바람직합니다.
 
-#### userdir 활성화를 위해 `httpd-userdir.conf` 파일 수정하기
+#### userdir 활성화를 위해 **httpd-userdir.conf** 파일 수정하기
 
 `userdir`를 활성화한다는 것은 이름에서 알 수 있듯이 브라우저에서 `localhost/~username/` 처럼 자신의 계정으로 된 URL을 사용할 수 있게 한다는 의미입니다.
 
@@ -126,16 +126,16 @@ Include /private/etc/apache2/users/*.conf
 
 위의 파일 내용을 살펴보면 userdir 활성화를 위해 다음과 같은 일들을 해야 함을 알 수 있습니다.
 
-1. **mod\_authz\_core**, **mod\_authz\_host**, **mod\_userdir** 이렇게 3개의 모듈이 필요합니다. : 이 작업은 **httpd.conf** 파일에서 설정합니다.
+1. **mod\_authz\_core**, **mod\_authz\_host**, **mod\_userdir** 이렇게 3개의 모듈이 필요합니다 : 이 작업은 **httpd.conf** 파일에서 설정합니다.
 2. 사용자의 홈 디렉토리에 `UserDir`로 설정된 **Sites** 라는 디렉토리를 추가해야 합니다. 이는 `~user` 요청에 응답하기 위해서입니다.
 3. **Sites** 디렉토리에 대해 기본 접근 방식을 지정해야 합니다. : 디렉토리를 `read-only`로 지정하기 위해서는 **/private/etc/apache2/users/** 폴더에 자신의 계정명으로 된 **username.conf** 파일을 만들어야 합니다.
-4. 그 외에 **httpd.conf** 파일에서 **/private/etc/apache2/extra/httpd-userdir.conf** 파일을 include 하는 코드도 주석을 제거해야 합니다. : 그래야 이 파일의 변경 사항을 적용할 수 있습니다.
+4. 그 외에 **httpd.conf** 파일에서 **/private/etc/apache2/extra/httpd-userdir.conf** 파일을 include 하는 코드도 주석을 제거해야 합니다 : 이 파일의 변경 사항을 적용하기 위해서입니다.
 
 일단 이 파일에서 `Include /private/etc/apache2/users/*.conf` 문장의 주석을 제거하고 저장합니다.
 
 > `$ sudo vi http-userdir.conf` 명령으로 파일을 수정했다면, vi 에디터에서 `esc` 키를 눌러 제어 모드로 들어간 다음 `:wq`를 입력해서 파일을 저장하고 닫을 수 있습니다.
 
-#### userdir 활성화를 위해 `httpd.conf` 파일 수정하기
+#### userdir 활성화를 위해 **httpd.conf** 파일 수정하기
 
 앞에서 설명한대로 일단 **httpd.conf** 파일에서 **mod\_authz\_core**, **mod\_authz\_host**, **mod\_userdir** 이렇게 3개의 모듈을 활성화해야 합니다.
 
@@ -158,9 +158,9 @@ Include /private/etc/apache2/extra/httpd-userdir.conf
 > [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) 글을 보면 **httpd-userdir.conf** 파일 부분은 요세미티 기준으로 493번째 줄에 있다고 합니다.
 
 
-#### userdir 활성화를 위해 `username.conf` 파일 생성하기
+#### userdir 활성화를 위해 **username.conf** 파일 생성하기
 
-그리고 마지막으로 **/private/etc/apache2/users** 폴더에 **username.conf** 파일을 만들어 줍니다. 내용은 다음과 같이 만듭니다.
+**Sites** 디렉토리에 대한 접근 방식을 지정하기 위해 **/private/etc/apache2/users** 폴더에 **username.conf** 파일을 만들어 줍니다. 내용은 다음과 같이 만듭니다.
 
 ```
 <Directory "/Users/username/Sites/">
@@ -172,12 +172,11 @@ Include /private/etc/apache2/extra/httpd-userdir.conf
 
 권한 설정 부분은 아파치 서버 버전에 맞도록 작성해 줍니다. 현 시점에서는 2.4 버전에 맞게 설정하면 됩니다.
 
-> [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) 글과 [맥에 웹서버(Apache, PHP) 구동하기 - 요세미티 기준](http://devmac.tistory.com/11) 글의 설정 방법이 다른데, 일단은 [맥에 웹서버(Apache, PHP) 구동하기 - 요세미티 기준](http://devmac.tistory.com/11) 글의 설정을 따랐습니다.  
-> 이 부분은 좀 더 내용을 알게 되면 정리하도록 하겠습니다.
+> [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) 글과 [맥에 웹서버(Apache, PHP) 구동하기 - 요세미티 기준](http://devmac.tistory.com/11) 글의 설정 방법이 다른데, 일단은 후자의 설정을 따랐습니다. 이 부분은 좀 더 내용을 알게 되면 정리하도록 하겠습니다.
 
 #### 홈 디렉토리에 Sites 폴더 만들기
 
-홈 디렉토리로 가서 Sites 폴더를 만듭니다.
+마지막으로 홈 디렉토리로 가서 **Sites** 폴더를 만듭니다.
 
 ```
 $ cd ~
@@ -186,7 +185,7 @@ $ mkdir Sites
 
 맥의 파인더로 확인하면 자동으로 웹 사이트 폴더로 인식됨을 알 수 있습니다.
 
-이 폴더에 자신만의 index.html 파일을 만들면 첫 화면으로 나타나게 됩니다. index.html이 없으면 아파치에서 기본 제공되는 파일 index가 열립니다.
+이 폴더에 자신만의 **index.html** 파일을 만들면 첫 화면으로 나타나게 됩니다. i**ndex.html**이 없으면 아파치에서 기본 제공되는 파일 index가 열립니다.
 
 #### 아파치 재시작하기
 
