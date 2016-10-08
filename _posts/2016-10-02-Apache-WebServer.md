@@ -200,7 +200,7 @@ $ sudo apachectl restart
 <!--
 ### 아파치 설정 파일의 의미
 
-아파치 설정 파일에 대해서 정리합니다.[^webdir]
+아파치 설정 파일에 대해서 정리합니다.[^webdir-httpd]
 
 Options에서 Indexes는 DirectoryIndex로 설정한 index.html이나 index.php 파일이 없을 때, 디렉토리 인덱스를 보여주는 역할을 합니다.
 
@@ -259,4 +259,4 @@ Allow from all은 모든 것으로부터의 접속을 허용한다는 의미입�
 
 [^novafactory]: [Python, Flask, WSGI, Apache 설정 삽질 ㅠ on CentOS 6](http://novafactory.net/archives/3074)
 
-[^webdir]: [CentOS: Apache(아파치) 설정파일 분석 - httpd.conf](http://webdir.tistory.com/178)
+[^webdir-httpd]: [CentOS: Apache(아파치) 설정파일 분석 - httpd.conf](http://webdir.tistory.com/178)
