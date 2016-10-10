@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Apache : 아파치 웹 서버에서 가상 호스트 설정하기"
+title:  "Apache : 아파치 가상 호스트 설정하기"
 date:   2016-10-10 11:58:00 +0900
 categories: macOS Apache WebServer VirtualHosts
 ---
@@ -8,7 +8,7 @@ categories: macOS Apache WebServer VirtualHosts
 이 글은 아파치 웹 서버를 설정하는 방법에 대한 시리즈 글의 일부입니다. 관련 목차는 아래와 같습니다.
 
 * [맥에서 아파치 웹 서버 실행하기](http://xho95.github.io/macos/apache/webserver/mod_wsgi/2016/10/02/Apache-WebServer.html)
-* [아파치 웹 서버에서 가상 호스트 설정하기]()
+* [아파치 가상 호스트 설정하기]()
 
 이번 글에서는 아파치 웹서버에서 가상 호스트를 사용하는 방법을 정리합니다. 기본적으로 [**Jason McCreary's  Blog**](https://jason.pureconcepts.net) 글 [Configuring Apache Virtual Hosts on Mac OS X](http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/) 를 중심으로 다른 자료들을 참고해서 정리했습니다. [^pureconcepts]  [^joont]
 

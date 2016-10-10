@@ -5,10 +5,10 @@ date:   2016-10-02 11:58:00 +0900
 categories: macOS Apache WebServer mod_wsgi
 ---
 
-이 글은 아파치 웹 서버를 설정하는 방법에 대한 시리즈 글의 일부입니다. 관련 목차는 아래와 같습니다. 
+이 글은 아파치 웹 서버를 설정하는 방법에 대한 시리즈 글의 일부입니다. 관련 목차는 아래와 같습니다.
 
 * [맥에서 아파치 웹 서버 실행하기]()
-* [아파치 웹 서버에서 가상 호스트 설정하기]()
+* [아파치 가상 호스트 설정하기](http://xho95.github.io/macos/apache/webserver/virtualhosts/2016/10/10/Apache-Virtual-Host.html)
 
 
 맥에서 [아파치(apache) 웹서버](http://httpd.apache.org) [^apache]를 실행하는 방법은 인터넷에 자료가 꽤 있습니다. [^projectjo]  [^acronym]  [^superakira] 하지만, 많은 경우 설명이 맥 OS 요세미티(Yosemite) 이전 기준이라 내용이 지금 환경에는 안맞는 경우가 많습니다.
@@ -233,7 +233,7 @@ Allow from all은 모든 것으로부터의 접속을 허용한다는 의미입�
 
 [^apple]: [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) : Yosemite 이후로 바뀐 설정 방법에 대한 설명이 잘 정리된 글입니다.
 
-[^docs-apache]: [Getting Started](http://httpd.apache.org/docs/current/en/getting-started.html) : Apache 공식 문서입니다. 
+[^docs-apache]: [Getting Started](http://httpd.apache.org/docs/current/en/getting-started.html) : Apache 공식 문서입니다.
 
 [^webdir]: [리눅스 디렉토리 구조](http://webdir.tistory.com/101) : 리눅스 디렉토리의 구조에 대해서 잘 정리한 글입니다.
 
