@@ -7,6 +7,8 @@ categories: Resources OSX Shell Terminal
 
 여기서는 **macOS** 의 쉘(shell) 명령어 및 운영체제의 기본적인 내용들에 대해서 정리합니다.[^macOS]
 
+우선 한 줄로 간단하게 명령어들을 소개하고 이어서 각각에 대해서 조금 더 자세하게 풀어서 설명합니다.
+
 ### 기본 터미널 명령어
 
 맥에는 많은 터미널 명령어들이 있는데 이 중에서 많이 쓰이는 명령어를 요약하면 다음과 같습니다.[^parklize_1]  [^parklize_2]
@@ -16,8 +18,27 @@ categories: Resources OSX Shell Terminal
 * `clear` : clear - 화면을 비워줍니다.
 * `cp` : copy - 파일을 복사합니다.      
 * `rm` : remove - 파일을 삭제합니다.
+* `ln` : link - 파일에 대한 링크를 만듭니다.
+* `mv` : move - 파일을 이동합니다.
+* `which` : which - 인자로 입력한 명령의 위치, 즉 경로를 찾아줍니다.
+* 
 * `ipconfig getifaddr en0` : 현재 ip를 보여줍니다.
 * `logout` : console을 종료합니다.
+
+### 터미널 명령어
+
+* `ls` : list - 파일 및 폴더의 리스트를 보여줍니다.
+* `cd` : change directory - 폴더를 변경합니다.
+* `clear` : clear - 화면을 비워줍니다.
+* `cp` : copy - 파일을 복사합니다.      
+* `rm` : remove - 파일을 삭제합니다.
+* `ipconfig getifaddr en0` : 현재 ip를 보여줍니다.
+* `logout` : console을 종료합니다.
+
+#### `ln`
+
+link의 약자로 파일을 링크할 때 사용하는 명령입니다.  
+심볼릭 링크 또는 하드 링크를 만들 수 있습니다.[^ln] 
 
 #### `mv`
 
@@ -106,3 +127,5 @@ $ curl www.example.com
 [^dezang]: [wget 대신 curl 사용하기](http://dezang.net/884)
 
 [^eunguru]: [Mac OS X tree 명령어 설치, 실행](http://eunguru.tistory.com/150)
+
+[^ln]: [ln 명령어](http://blog.naver.com/PostView.nhn?blogId=ehdgns621&logNo=130056448055) : ln 명령어에 대한 설명을 잘 해 놓은 곳입니다.

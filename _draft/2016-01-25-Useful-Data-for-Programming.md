@@ -5,6 +5,8 @@ date:   2016-01-25 21:30:00 +0900
 categories: Resources Softwares Programming Sites
 ---
 
+[좋은 API를 만들기 위한 전략](http://blog.naver.com/saltynut/220731839895) : 안재우님의 블로그 글입니다. 제목에는 API라고 되어 있지만, 모든 프로그램에 적용될 수 있는 좋은 내용인 것 같습니다. 
+
 [React Redux React-Router: From Beginner to Paid Professional - Coupon 100% Off](https://coursehall.com/react-redux-react-router-from-beginner-to-paid-professional-coupon/) React Udemy 강의를 무료로 들을 수 있게 쿠폰을 제공해 주는 곳입니다.
 
 [kakao Developers](https://developers.kakao.com/docs/ios)

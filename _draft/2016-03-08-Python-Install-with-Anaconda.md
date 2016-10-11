@@ -89,3 +89,5 @@ Type "help", "copyright", "credits" or "license" for more information.
 [^conda]: [conda vs. pip vs. virtualenv](http://conda.pydata.org/docs/_downloads/conda-pip-virtualenv-translator.html) conda를 pip 및 virtualenv와 비교한 표입니다.
 
 [^egloos]: [Anaconda 설치하기 - Python을 제대로 활용해보자](http://egloos.zum.com/mataeoh/v/7052271) conda의 사용법에 대해 잘 정리한 글입니다.
+
+[Python 3.5 미리보기: 무엇이 바뀌었고 무엇이 추가되었나?](https://b.ssut.me/59) : 

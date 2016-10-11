@@ -2,7 +2,7 @@
 layout: post
 title:  "macOS: 맥의 기본 디렉토리 구조 살펴보기"
 date:   2016-10-09 02:50:00 +0900
-categories: macOS File System Directory 
+categories: macOS File System Directory
 ---
 
 맥 OS(macOS)의 기본적인 디렉토리 구조에 대해서 정리합니다. 특정 매뉴얼을 보고 전체 내용을 정리한 것이 아니라 그 때 그 때 알게된 지식을 정리한 것이라서 아직 정보가 많이 부족하지만 앞으로계속 내용을 업데이트 할 예정입니다.
@@ -31,7 +31,7 @@ $ cd /
 
 #### `~` : 홈 디렉토리
 
-홈 디렉터리(home directory)는 다중 사용자 운영 체제의 파일 시스템 디렉토리라고 합니다.[^wikipedia-Home] 
+홈 디렉터리(home directory)는 다중 사용자 운영 체제의 파일 시스템 디렉토리라고 합니다.[^wikipedia-Home]
 
 여기에는 시스템의 사용자에게 주어진 파일들을 포함합니다. 그러니까 사용자가 컴퓨터를 사용하면서 만드는 파일들은 홈 디렉토리 밑에 저장된다고 보면 됩니다.
 

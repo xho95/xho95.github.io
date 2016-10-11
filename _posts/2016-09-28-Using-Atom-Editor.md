@@ -51,7 +51,7 @@ Atom 에디터를 Python 개발툴로 사용하는 방법 및 관련 Package 설
 
 > [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html)라는 블로그에서는 Atom 에디터를 시작할 때 터미널에서 `atom .`로 실행해야해서 귀찮다고 되어 있는데, 막상 사용해보면 굳이 터미널에서 실행하지 않아도 특별한 문제가 없는 것 같습니다.
 
-요약하면 Atom 에디터에서 `autocomplete-python`과 `script`라는 두 개의 패키지를 설치하면 Atom 에디터를 Python 개발 도구로 사용할 수 있습니다.
+요약하면 Atom 에디터에서 `autocomplete-python`과 `script`라는 두 개의 패키지를 설치하면 Atom 에디터를 Python 개발 도구로 사용할 수 있습니다. 기타 유용한 패키지들은 참고 자료에 소개되어 있습니다. [^useful-atom-packages]
 
 Atom 에디터에서 Package를 설치하는 방법은 **Atom > Preferences... > Settings > + Install** 메뉴에서 Package를 이름으로 검색한 후 설치하면 됩니다.
 
@@ -78,3 +78,5 @@ Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용
 [^tistory]: [아톰 (Atom) 에디터 - 단축키 모음](http://ondesk.tistory.com/178)
 
 [^marinamele]: [Install and Configure the Atom Editor for Python](http://www.marinamele.com/install-and-configure-atom-editor-for-python)
+
+[^useful-atom-packages]: [10 Most Useful Atom Packages for Web Developers](http://www.hongkiat.com/blog/useful-atom-packages/) : Atom 에디터에 설치하면 좋은 패키지 10가지 소개입니다.
