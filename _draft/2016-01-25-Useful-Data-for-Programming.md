@@ -5,9 +5,17 @@ date:   2016-01-25 21:30:00 +0900
 categories: Resources Softwares Programming Sites
 ---
 
+[Protocol Buffers](https://developers.google.com/protocol-buffers/) : 프로토콜 버퍼에 대한 내용을 정리한 구글 자료입니다. 구글에서 만든 것이니 이 내용이 원서일 것입니다. 
+
+[Schema evolution in Avro, Protocol Buffers and Thrift](https://martin.kleppmann.com/2012/12/05/schema-evolution-in-avro-protocol-buffers-thrift.html) : 프로토콜 버퍼에 대한 원리가 설명되어 있는 글입니다.
+
 [좋은 API를 만들기 위한 전략](http://blog.naver.com/saltynut/220731839895) : 안재우님의 블로그 글입니다. 제목에는 API라고 되어 있지만, 모든 프로그램에 적용될 수 있는 좋은 내용인 것 같습니다. 
 
 [React Redux React-Router: From Beginner to Paid Professional - Coupon 100% Off](https://coursehall.com/react-redux-react-router-from-beginner-to-paid-professional-coupon/) React Udemy 강의를 무료로 들을 수 있게 쿠폰을 제공해 주는 곳입니다.
+
+[나는 프로그래머다](https://iamprogrammer.io/) : 나는 프로그래머다 공식 홈페이지인 듯 합니다. 
+
+[프로그래머가 모르면 손해인 범용적인 툴(tool) 100선](http://tkdwnsdkk.tistory.com/101) : 그렇다고 합니다.
 
 [kakao Developers](https://developers.kakao.com/docs/ios)
 

@@ -70,7 +70,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 $ conda create --name $ENVIRONMENT_NAME python
 ```
 
-가상환경은 `/Users/kimminho/anaconda3/envs/ENVIRONMENT_NAME`위치에 생깁니다.
+가상 환경은 `/Users/kimminho/anaconda3/envs/ENVIRONMENT_NAME`위치에 생깁니다. 콘다의 경우 가상 환경을 중앙 집중식으로 관리하는 것 같습니다.[^atom-with-anacondas]
 
 위에서 `python` 위치에는 가상 환경을 만들 때, 필요한 패키지들을 나열하는 곳입니다. [Anaconda 설치하기 - Python을 제대로 활용해보자](http://mataeoh.egloos.com/7052271) 라는 자료에 따르면 이 환경설정에서 사용하길 원하는 모든 프로그램은 동시에 설치하는 것이 좋다고 합니다. 나중에 한번에 하나씩 설치하는 것은 의존성 충돌을 일으킬 수 있다고 합니다.
 
@@ -190,3 +190,7 @@ $ conda remove --name second --all
 [^conda]: [conda vs. pip vs. virtualenv](http://conda.pydata.org/docs/_downloads/conda-pip-virtualenv-translator.html) conda를 pip 및 virtualenv와 비교한 표입니다.
 
 [^egloos]: [Anaconda 설치하기 - Python을 제대로 활용해보자](http://mataeoh.egloos.com/7052271) conda의 사용법에 대해 잘 정리한 글입니다.
+
+[conda에서 파이썬 가상 환경 (virtual environments) 생성하기](http://jkstory-textcube.blogspot.kr/2016/02/conda-virtual-environments.html)
+
+[^atom-with-anacondas]: [Atom with Anaconda’s Python and Anaconda’s Python packages?](https://discuss.atom.io/t/atom-with-anacondas-python-and-anacondas-python-packages/31235) : Atom 에디터가 conda의 가상 환경을 인식 시키도록 하는 방법에 대한 답변이 있는 글입니다. 
