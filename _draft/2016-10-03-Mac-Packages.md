@@ -32,3 +32,5 @@ $ brew install something
 [^brew-issues]: [In macOS 10.12 Sierra, /usr/local is readonly.](https://github.com/Homebrew/brew/issues/385)
 
 [^kevinelliott]: [macOS 10.12 Sierra Setup](https://gist.github.com/kevinelliott/7a152c556a83b322e0a8cd2df128235c) : macOS 1012 Sierra 에서 여러가지 도구들을 셋업하는 방법을 소개한 글 같습니다. 
+
+[Homebrew 설치하기](https://veryfaraway.github.io/digging/homebrew.html) : `brew pin` 명령에 대한 설명이 있습니다.
