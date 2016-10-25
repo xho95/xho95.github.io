@@ -65,3 +65,7 @@ categories: Resources Sites Technology Machine-Learning
 [UC Berkeley CS188 Intro to AI -- Course Materials](http://ai.berkeley.edu/home.html)
 
 [UC Berkeley CS188 Intro to AI -- Course Materials](http://ai.berkeley.edu/reinforcement.html)
+
+[Recurrent Models of Visual Attention (NIPS 2014)](http://sanghyukchun.github.io/91/) : 전상혁님의 논문 리뷰 글입니다.
+
+[Recurrent Models of Visual Attention](https://arxiv.org/abs/1406.6247)

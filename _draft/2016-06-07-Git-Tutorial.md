@@ -250,3 +250,9 @@ submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리�
 [Xcode4 소스 버전 관리 기능](https://soulpark.wordpress.com/2012/08/23/xcode4_source_control_management/)
 
 [누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/)
+
+[브랜치 통합하기](https://backlogtool.com/git-guide/kr/stepup/stepup1_4.html) : merge와 rebase에 대한 설명이 잘 나와있습니다.
+
+[Git merge master into feature branch](http://stackoverflow.com/questions/16955980/git-merge-master-into-feature-branch) : rebase의 사용 방법에 대해서 잘 설명이 된 답변 글입니다.
+
+[Get changes from master into branch in Git](http://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git) : master에서 branch로의 merge 방법에 대해서 설명이 된 답글입니다. 
