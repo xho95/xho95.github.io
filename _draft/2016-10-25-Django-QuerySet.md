@@ -9,3 +9,7 @@ context_object_name 속성을 사용하면 object_list를 대체하는 이름을
 ### 참고 자료
 
 [Built-in class-based generic views](https://docs.djangoproject.com/es/1.10/topics/class-based-views/generic-display/) 의 Viewing subsets of objects 부분을 보면 queryset의 활용법에 대해서 잘 나와있다.
+
+[예제로 배우는 Python 프로그래밍](http://pythonstudy.xyz/python/article/308-Django-모델-Model)
+
+[Django set default form values](how to show a default value at field in django)
