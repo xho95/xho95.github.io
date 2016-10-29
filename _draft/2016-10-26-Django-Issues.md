@@ -1,4 +1,4 @@
-### get_success_url() 오버로딩
+### get\_success\_url() 오버로딩
 
 ```
 class CommunicationUpdateDV(UpdateView):
@@ -71,3 +71,33 @@ urlpatterns = [
 ```
 
 위의 코드는 장고의 공식 문서를 참고해서 조금 수정한 것입니다. content_type의 경우 어떤 파일 유형이 올지 몰라서 비워뒀는데, 특정 파일로만 한정하려면 지정해주면 될 것 같습니다.
+
+### object\_list empty check
+
+따로 empty 체크나 수를 불러올 필요없이 아래와 같이 바로 if 구문으로 처리할 수 있습니다.
+
+```
+{% if object_list %}
+    Number of object_list: {{ object_list |length }}
+{% else %}
+    No object_list.
+{% endif %}
+```
+
+[How Can I Check the Size of a Collection with Django Templates?](http://stackoverflow.com/questions/902034/how-can-i-check-the-size-of-a-collection-with-django-templates) : 참고 자료입니다.
+
+### Django shell에서 user 만들기
+
+```
+$ python manage.py shell
+>>> from django.contrib.auth.models import User
+>>> user=User.objects.create_user('foo', password='bar')
+>>> user.is_superuser=True
+>>> user.is_staff=True
+>>> user.save()
+```
+
+[How to create user from django shell](http://stackoverflow.com/questions/18503770/how-to-create-user-from-django-shell)
+
+### Initial Value
+

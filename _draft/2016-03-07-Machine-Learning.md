@@ -69,3 +69,7 @@ categories: Resources Sites Technology Machine-Learning
 [Recurrent Models of Visual Attention (NIPS 2014)](http://sanghyukchun.github.io/91/) : 전상혁님의 논문 리뷰 글입니다.
 
 [Recurrent Models of Visual Attention](https://arxiv.org/abs/1406.6247)
+
+### CNN 
+
+[컨벌루션 신경망(Convolutional Neural Networks, CNN) ~ 탄생](http://blog.naver.com/msnayana/220781235541) : CNN의 태동기에 대한 얘기를 하고 있습니다. 
