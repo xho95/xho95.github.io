@@ -73,3 +73,4 @@ categories: Resources Sites Technology Machine-Learning
 ### CNN 
 
 [컨벌루션 신경망(Convolutional Neural Networks, CNN) ~ 탄생](http://blog.naver.com/msnayana/220781235541) : CNN의 태동기에 대한 얘기를 하고 있습니다. 
+
