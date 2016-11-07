@@ -99,5 +99,36 @@ $ python manage.py shell
 
 [How to create user from django shell](http://stackoverflow.com/questions/18503770/how-to-create-user-from-django-shell)
 
+### If you get a UnicodeEncodeError 
+
+[How to use Django with Apache and mod_python](https://django.readthedocs.io/en/1.4.X/howto/deployment/modpython.html) : 파일 업로드시 ascii 코덱 문제가 발생할 경우 참고 자료의 **If you get a UnicodeEncodeError** 부분을 보면 된다고 합니다. 
+
+### migration problem
+
+[(postgresql) Error: relation does not exist](http://devhoma.tistory.com/82)
+
+디비 테이블에서 django_migrations 에서 app에서 관련된 필요없는것들 다 지우고하니깐 되더라구요
+
+[What is the correct way to deal with DB migration while using South, Django and Git?](http://stackoverflow.com/questions/10083130/what-is-the-correct-way-to-deal-with-db-migration-while-using-south-django-and)
+
+You should add the migrations folder to your version control system and use the same files for production and development. You may run into some problems on your production system if you introduced your migrations not from the beginning and you have already existing tables.
+
+Therefore you have to fake the first migration, which normally does the same thing as syncdb did when you created your database for the first time. So when trying to apply migrations for your app for the first time on the production machine, execute manage.py migrate app_name 0001 --fake. This lets South know, that the first migration has already been applied (which already happend with syncdb) and when you run migrate again, it would continue with the following migrations.
+
+answered by **Bernhard Vallant**
+
 ### Initial Value
 
+[Django set default form values](http://stackoverflow.com/questions/604266/django-set-default-form-values)
+
+[Creating forms from models](https://docs.djangoproject.com/en/1.10/topics/forms/modelforms/#providing-initial-values) : Providing initial values 부분이 여러번 나오는데 이 부분 설명을 읽어볼 필요가 있습니다.
+
+[set initial value in CreateView from ForeignKey (non-self.request.user)](http://stackoverflow.com/questions/18277444/set-initial-value-in-createview-from-foreignkey-non-self-request-user)
+
+### 세션 사용법 
+
+[Django 에서 session 사용법 (공식 Document 번역)](http://egloos.zum.com/blackyyy/v/5314617)
+
+### Data Crawler 
+
+[Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#find)
