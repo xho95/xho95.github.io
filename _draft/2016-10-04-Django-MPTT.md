@@ -71,6 +71,10 @@ $ python setup.py install
 
 **Caktus Group**에서 `django-mptt`를 이용하여 `django-treenav`를 만든 것 같습니다. 참고 자료를 보시면 **MPTT**에 대한 개념을 설명한 부분도 있습니다. [^caktusgroup]  [^django-treenav]
 
+### {% recursetree %}
+
+[{% recursetree %} doesn't insert children context into template](https://github.com/django-mptt/django-mptt/issues/139)
+
 ### 참고 자료
 
 [^stackoverflow_1]: [Making a tree structure in django models?](http://stackoverflow.com/questions/15486520/making-a-tree-structure-in-django-models) : 다른 질문 답변 글입니다.

@@ -1,0 +1,1 @@
+[Python's strftime directives](http://strftime.org)

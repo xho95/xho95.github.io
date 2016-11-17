@@ -74,3 +74,7 @@ categories: Resources Sites Technology Machine-Learning
 
 [컨벌루션 신경망(Convolutional Neural Networks, CNN) ~ 탄생](http://blog.naver.com/msnayana/220781235541) : CNN의 태동기에 대한 얘기를 하고 있습니다. 
 
+### Hueristic
+
+[과학 오디세이: 빅데이터, 만능 아니다](http://v.media.daum.net/v/20161113211254798) : hueristic을 어림(짐작) 방법으로 번역하고 있습니다. 꽤 마음에 듭니다.
+

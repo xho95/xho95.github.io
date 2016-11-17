@@ -132,3 +132,88 @@ answered by **Bernhard Vallant**
 ### Data Crawler 
 
 [Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#find)
+
+### bulk_create : multiple records
+
+[^webforefront]: [CRUD operations with multiple records and Django models](https://www.webforefront.com/django/multiplemodelrecords.html) : make CRUD operations for multiple database records 
+
+[Django recipes](https://www.webforefront.com/django/index.html) : 위의 내용을 담고 있는 온라인 오픈(?) 서적인 듯 합니다.
+
+#### Session
+
+[Django 에서 session 사용법 (공식 Document 번역)](http://egloos.zum.com/blackyyy/v/5314617)
+
+[Django의 session 처리](http://somnusnote.tistory.com/entry/Django의-session-처리)
+
+1. session에 값 넣기
+   - view 함수에서
+
+	```
+	request.session['myname'] = 'michael'
+	```
+
+2. session에서 값 얻기
+   - view의 함수에서
+
+	```
+	myname = request.session['myname']
+	```
+   
+   - Template에서
+
+	```
+	{{ request.session.myname }}
+	```
+	
+[Django Login Session](http://ngee.tistory.com/749)
+
+#### bulk_create()
+
+bulk_create(objs, batch_size=None)
+
+[QuerySet API reference](https://docs.djangoproject.com/el/1.10/ref/models/querysets/) : 중간 이후에 bulk_create()에 대한 설명이 나옵니다.
+
+**bulk_create()** 
+
+The advantage of the bulk_create() method is that it creates all entries in a single query, so it's very efficient if you have a list of a dozen or a hundred entries you wish to create.[^webforefront]
+
+it has certain limitations:
+
+the only alternative you have is to loop over each record and use the save() method to create each entry individually
+
+the speed issues related to listing 2 can be dramatically improved if you manually deal with database transactions.
+
+### Popup Window
+
+[Howto: javascript popup form returning value for select like Django admin for foreign keys](http://blog.yourlabs.org/post/20001556462/howto-javascript-popup-form-returning-value-for)
+
+[jQuery/JavaScript Pop Up window with Django (select from child, display on parent)](http://stackoverflow.com/questions/12348681/jquery-javascript-pop-up-window-with-django-select-from-child-display-on-paren)
+
+['Add another' now easy outside the admin too, version 1.0.21](https://github.com/yourlabs/django-autocomplete-light/commit/599687fc71fe5ecf054afc47935626b81e6a8bf2) : popup window를 띄우는 방법에 대해서 참고할만한 소스가 있는 곳입니다.
+
+[Django render template in a pop-up](http://stackoverflow.com/questions/9063831/django-render-template-in-a-pop-up) : popup window에 장고 템플릿을 띄우는 방법에 대한 답변입니다.
+
+[Open New Window for Social Login and then Close and Return to Parent On Success with Django](http://stackoverflow.com/questions/23224434/open-new-window-for-social-login-and-then-close-and-return-to-parent-on-success) : 창을 띄우는 방법으로는 상당히 간단한 방법을 보여줍니다. 
+
+[javascript - pass selected value from popup window to parent window input box](http://stackoverflow.com/questions/9994120/javascript-pass-selected-value-from-popup-window-to-parent-window-input-box) : 질문이 너무 깁니다. 
+
+[DYNAMIC WEB PAGES WITH DJANGO, AJAX AND JQUERY](http://racingtadpole.com/blog/django-ajax-and-jquery/) : 나중에 한 번 읽어 볼만한 글 같습니다만 그럴 수 있을지 모르겠습니다.
+
+### Excel
+
+[django-excel - Let you focus on data, instead of file formats](http://django-excel.readthedocs.io/en/latest/)
+
+### Deploy
+
+[AWS 부분](https://github.com/xho95/xho95.github.io/blob/master/_draft/2016-09-28-AWS.md)을 보면 될 것 같습니다. 나중에 총 정리가 필요합니다.
+
+### Custom Filter
+
+[Writing custom template filters](https://docs.djangoproject.com/en/dev/howto/custom-template-tags/#writing-custom-template-filters) : Custom Filter를 만드는 방법을 설명하는 Django 공식 문서입니다.
+
+### Mixin Class & Class-base View
+
+[Classy Class-Based Views](http://ccbv.co.uk) : 장고 파란책에서 추천하는 사이트입니다.
+
+
+
