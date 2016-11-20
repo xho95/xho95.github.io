@@ -100,3 +100,7 @@ $ python setup.py install
 [^freeimage]: [Mysql + php 트리구조 재귀호출](http://www.freeimage.kr/tip_php/p40/804) : [Storing Hierarchical Data in a Database](https://www.sitepoint.com/hierarchical-data-database/) 글을 한글로 번역한 문서인 것 같습니다. 
 
 [^mikehillyer]: [Managing Hierarchical Data in MySQL](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/) : MPTT를 설명한 글입니다.
+
+#### CRUD with Django-MPTT 
+
+[Django, how to do CRUD with django-mptt?](http://stackoverflow.com/questions/11508088/django-how-to-do-crud-with-django-mptt)
