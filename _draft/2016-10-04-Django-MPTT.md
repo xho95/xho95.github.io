@@ -71,9 +71,27 @@ $ python setup.py install
 
 **Caktus Group**에서 `django-mptt`를 이용하여 `django-treenav`를 만든 것 같습니다. 참고 자료를 보시면 **MPTT**에 대한 개념을 설명한 부분도 있습니다. [^caktusgroup]  [^django-treenav]
 
-### {% recursetree %}
+### 사용법 
+
+#### {% recursetree %}
 
 [{% recursetree %} doesn't insert children context into template](https://github.com/django-mptt/django-mptt/issues/139)
+
+#### get_descendants
+
+[django-mptt get_descendants for a list of nodes](http://stackoverflow.com/questions/5722767/django-mptt-get-descendants-for-a-list-of-nodes) : django-mptt의 `get_descendants` 함수의 사용 방법에 대한 질문 답변 글입니다.
+
+#### CRUD with Django-MPTT 
+
+[Django, how to do CRUD with django-mptt?](http://stackoverflow.com/questions/11508088/django-how-to-do-crud-with-django-mptt)
+
+#### Many To Many 관계에서 첫번째 아이템 구하기
+
+[Django Templating: how to access properties of the first item in a list](http://stackoverflow.com/questions/1479206/django-templating-how-to-access-properties-of-the-first-item-in-a-list) : 아래와 같은 코드를 활용할 수 있습니다. 
+
+```
+object.m2m_field.all.0.item_property
+```
 
 ### 참고 자료
 
@@ -101,6 +119,4 @@ $ python setup.py install
 
 [^mikehillyer]: [Managing Hierarchical Data in MySQL](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/) : MPTT를 설명한 글입니다.
 
-#### CRUD with Django-MPTT 
-
-[Django, how to do CRUD with django-mptt?](http://stackoverflow.com/questions/11508088/django-how-to-do-crud-with-django-mptt)
+[Using Django-MPTT: lessons learned…](http://www.michelepasin.org/blog/2009/09/15/using-django-mptt-lessons-learned/) : Django-MPTT에 대한 설명을 정리한 곳입니다. 전체를 한번 훑어보면 좋을 것 같습니다. 약간 예전 자료이긴 하지만 내용은 좋을 것 같습니다. 막상 보니 별게 없군요. 너무 예전 자료인 것 같습니다. ㅜㅜ

@@ -215,5 +215,90 @@ the speed issues related to listing 2 can be dramatically improved if you manual
 
 [Classy Class-Based Views](http://ccbv.co.uk) : 장고 파란책에서 추천하는 사이트입니다.
 
+### Multiple Images
 
+[Multiple images per Model](http://stackoverflow.com/questions/537593/multiple-images-per-model)
 
+### Dynamic Form (?)
+
+[Dynamic Form Generation](https://jacobian.org/writing/dynamic-form-generation/)
+
+### Adding a List to ManyToManyField
+
+[How to add multiple objects to ManyToMany relationship at once in Django ?](http://stackoverflow.com/questions/4959499/how-to-add-multiple-objects-to-manytomany-relationship-at-once-in-django)
+
+### Default Image
+
+[Default image for ImageField in Django's ORM](http://stackoverflow.com/questions/1276887/default-image-for-imagefield-in-djangos-orm)
+
+```
+pic = models.ImageField(upload_to='blah', default='path/to/my/default/image.jpg')
+```
+
+[Django ImageField default](http://stackoverflow.com/questions/22581877/django-imagefield-default)
+
+### Migrations Roll back
+
+[How to migrate back from initial migration in Django 1.7?](http://stackoverflow.com/questions/25606879/how-to-migrate-back-from-initial-migration-in-django-1-7)
+
+```
+python manage.py migrate <app> 0002
+```
+
+### JQuery 화면 하단 인식
+
+[jQuery를 활용하여 DIV 및 브라우저 창의 스크롤의 끝 이벤트 알아내기](http://inspiredjw.com/entry/jQuery를-활용하여-DIV-및-브라우저-창의-스크롤의-끝-이벤트-알아내기) : 구글에서 "JQuery 화면 하단 인식"으로 검색하면 나오는 결과 중 하나입니다. 
+
+### Format numbers in django templates
+
+[Format numbers in django templates](http://stackoverflow.com/questions/346467/format-numbers-in-django-templates)
+
+Django's contributed humanize application does this:
+
+```
+{% load humanize %}
+{{ my_num|intcomma }}
+```
+
+Be sure to add **django.contrib.humanize** to your **INSTALLED_APPS** list in the **settings.py** file
+
+### Error
+
+#### bad operand type for unary -
+
+[Django: TypeError - bad operand type for unary -: 'str'](http://stackoverflow.com/questions/22928999/django-typeerror-bad-operand-type-for-unary-str) : 의외로 해결책은 간답합니다. order_by() 함수에서 인자를 넘길 때 `-` 기호는 `str` 안으로 넣어야 합니다. 
+
+즉 아래와 같습니다. 
+
+```
+Article.objects.all().order_by(-'id')  		# 잘못
+
+Article.objects.all().order_by('-id')  		# 정상
+```
+
+#### 'QuerySet' object has no attribute ...
+
+[django - "QuerySet' object has no attribute 'user'](http://stackoverflow.com/questions/7882108/django-queryset-object-has-no-attribute-user)
+
+필터를 사용할 경우에는 결과값이 QuerySet이 되어서  특정 하나의 레코드에 적용할 수 있는 함수를 적용할 수 없게 됩니다. 대표적으로 ManyToManyFiled 관계에서 이 문제가 많이 발생합니다. 이 때는 filter 대신에 get을 사용해서 하나의 레코드만 선택하면 문제가 해결됩니다. 
+
+나중에 좀 더 자세히 정리해야 할 것 같습니다.
+
+### timedelta
+
+[How to retreive records from past weeks in django](http://stackoverflow.com/questions/11205096/how-to-retreive-records-from-past-weeks-in-django)
+
+```
+from datetime import date, timedelta
+
+d=date.today()-timedelta(days=7)
+Entry.objects.filter(pub_date__gte=d)
+```
+
+### Queue
+
+[How to implement a queue with django models /database?](http://stackoverflow.com/questions/35053825/how-to-implement-a-queue-with-django-models-database)
+
+### JavaScript
+
+[How do I programmatically set the value of a select box element using javascript?](http://stackoverflow.com/questions/78932/how-do-i-programmatically-set-the-value-of-a-select-box-element-using-javascript)

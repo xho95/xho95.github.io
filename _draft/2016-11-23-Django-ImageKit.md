@@ -1,0 +1,1 @@
+[matthewwithanm/django-imagekit](https://github.com/matthewwithanm/django-imagekit)
