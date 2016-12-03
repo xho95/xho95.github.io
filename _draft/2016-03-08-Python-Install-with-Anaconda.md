@@ -194,3 +194,5 @@ $ conda remove --name second --all
 [conda에서 파이썬 가상 환경 (virtual environments) 생성하기](http://jkstory-textcube.blogspot.kr/2016/02/conda-virtual-environments.html)
 
 [^atom-with-anacondas]: [Atom with Anaconda’s Python and Anaconda’s Python packages?](https://discuss.atom.io/t/atom-with-anacondas-python-and-anacondas-python-packages/31235) : Atom 에디터가 conda의 가상 환경을 인식 시키도록 하는 방법에 대한 답변이 있는 글입니다. 
+
+[파이썬 생존 안내서 (자막)](http://www.slideshare.net/sublee/ss-67589513) : 이흥섭님의 자료로 넥슨코리아 사내 발표자료로 왓 스튜디오에서 파이썬으로 《야생의 땅: 듀랑고》 서버를 비롯한 여러가지 도구를 만든 경험을 공유한다고 소개된 자료입니다.
