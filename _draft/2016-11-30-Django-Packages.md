@@ -1,4 +1,10 @@
+### Django Packages
+
 [Django Packages](https://djangopackages.org)
+
+### Model Auditing and History
+
+[Model Auditing and History](https://djangopackages.org/grids/g/model-audit/)
 
 #### django-simple-history
 
@@ -6,11 +12,15 @@
 
 [django-simple-history](https://django-simple-history.readthedocs.io/en/latest/)
 
+### Trees and Graphs
+
 #### django-mptt
 
 [django-mptt/django-mptt](https://github.com/django-mptt/django-mptt)
 
 [Django MPTT documentation](http://django-mptt.github.io/django-mptt/)
+
+### WYSIWYG Editors
 
 #### django-summernote
 
