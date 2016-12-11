@@ -25,3 +25,7 @@
 #### django-summernote
 
 [summernote/django-summernote](https://github.com/summernote/django-summernote)
+
+### ImageKit
+
+[matthewwithanm/django-imagekit](https://github.com/matthewwithanm/django-imagekit)

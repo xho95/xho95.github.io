@@ -120,3 +120,5 @@ object.m2m_field.all.0.item_property
 [^mikehillyer]: [Managing Hierarchical Data in MySQL](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/) : MPTT를 설명한 글입니다.
 
 [Using Django-MPTT: lessons learned…](http://www.michelepasin.org/blog/2009/09/15/using-django-mptt-lessons-learned/) : Django-MPTT에 대한 설명을 정리한 곳입니다. 전체를 한번 훑어보면 좋을 것 같습니다. 약간 예전 자료이긴 하지만 내용은 좋을 것 같습니다. 막상 보니 별게 없군요. 너무 예전 자료인 것 같습니다. ㅜㅜ
+
+[mbraak/django-mptt-admin](https://github.com/mbraak/django-mptt-admin) : django-mptt에 추가해서 사용할 수 있는 패키지 같습니다. 
