@@ -1,3 +1,5 @@
+[슈퍼 (올드) 맥프로 만들기 프로잭트](http://est0que.tistory.com/2496)
+
 ### 맥 프로용 그래픽 카드
 
 [MACVIDCARDS.COM](http://www.macvidcards.com/i-want-the-best-graphics-card-for-my-mac-pro-where-do-i-start.html) : 사양을 입력하면 가장 알맞는 그래픽 카드를 추천해주는 것 같습니다.
