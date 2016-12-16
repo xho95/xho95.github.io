@@ -93,6 +93,24 @@ $ python setup.py install
 object.m2m_field.all.0.item_property
 ```
 
+#### Pagination 
+
+[mptt tree pagination](http://stackoverflow.com/questions/8501053/mptt-tree-pagination)
+
+**views.py**
+
+```
+nodes = [node.get_descendants(include_self=True) for node in Thing.objects.all()[5:10]]
+```
+
+**template code**
+
+```
+{% for node in nodes %}
+    {% recursetree node %}...{% endrecursetree %}
+{% endfor %}
+```
+
 ### 참고 자료
 
 [^stackoverflow_1]: [Making a tree structure in django models?](http://stackoverflow.com/questions/15486520/making-a-tree-structure-in-django-models) : 다른 질문 답변 글입니다.

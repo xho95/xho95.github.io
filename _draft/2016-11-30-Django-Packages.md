@@ -29,3 +29,7 @@
 ### ImageKit
 
 [matthewwithanm/django-imagekit](https://github.com/matthewwithanm/django-imagekit)
+
+### Wiki
+
+[django-wiki/django-wiki](https://github.com/django-wiki/django-wiki)

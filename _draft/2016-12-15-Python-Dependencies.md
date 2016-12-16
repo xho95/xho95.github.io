@@ -1,0 +1,1 @@
+[setup.py와 requirements.txt의 차이점과 사용 방법](http://www.haruair.com/blog/3719)

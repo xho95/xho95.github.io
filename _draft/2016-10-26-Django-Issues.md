@@ -302,3 +302,9 @@ Entry.objects.filter(pub_date__gte=d)
 ### JavaScript
 
 [How do I programmatically set the value of a select box element using javascript?](http://stackoverflow.com/questions/78932/how-do-i-programmatically-set-the-value-of-a-select-box-element-using-javascript)
+
+### Model Relationship
+
+[ManyToMany field, check if relation exists](http://stackoverflow.com/questions/23059088/manytomany-field-check-if-relation-exists)
+
+[Django foreign key relation in template](http://stackoverflow.com/questions/12281965/django-foreign-key-relation-in-template)
