@@ -33,3 +33,9 @@
 ### Wiki
 
 [django-wiki/django-wiki](https://github.com/django-wiki/django-wiki)
+
+### STMP
+
+#### AWS SES
+
+[django-ses/django-ses](https://github.com/django-ses/django-ses)
