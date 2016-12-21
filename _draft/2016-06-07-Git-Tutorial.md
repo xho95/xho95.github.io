@@ -1,3 +1,5 @@
+생각해 봤는데, 책의 내용이나 블로그 글을 요약하는 방식보다는 간단한 예제를 만들어 보면서 활용법을 설명하는 방식으로 정리하는 것이 좋을 것 같습니다. 
+
 본 내용은 ProGit 번역본을 중심으로 하면서 그 외 여러 곳의 Git 관련 정보들을 모아서 정리한 것입니다. ProGit의 경우 온라인과 GitHub에 책을 공유해 놓았으며, 물론 한글로 번역된 자료도 공유되어 있습니다.[^ProGit]  [^progit2-ko] 
 
 이 곳의 내용은 ProGit 내용 중에서 가장 기본이 되는 2장의 내용을 기초로 정리하였습니다.[^ProGit_Ch2]
@@ -229,6 +231,14 @@ push는 다른 사람이 push한 후에는 할 수 없다. 먼저 다른 사람�
 
 submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리해 넣는 것입니다. - 이부분은 나중에 좀 더 정리해서 추가할 예정입니다.
 
+> submodule을 활용하면 한 branch에서 다른 branch로 바로 merge가 가능한 것 같습니다. [^stackoverflow-3672073]
+> 
+> ```
+> git push self dev:master
+> ```
+> 
+> 위와 같이 `:` 과 관련이 있는 것 같습니다. 
+
 ### 참고 자료
 
 [^ProGit]: [Pro Git Book (한글판 v2.0)](https://git-scm.com/book/ko/v2/)
@@ -256,3 +266,5 @@ submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리�
 [Git merge master into feature branch](http://stackoverflow.com/questions/16955980/git-merge-master-into-feature-branch) : rebase의 사용 방법에 대해서 잘 설명이 된 답변 글입니다.
 
 [Get changes from master into branch in Git](http://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git) : master에서 branch로의 merge 방법에 대해서 설명이 된 답글입니다. 
+
+[^stackoverflow-3672073]: [How to merge the current branch into another branch](http://stackoverflow.com/questions/3672073/how-to-merge-the-current-branch-into-another-branch) : 답변 내용이 Submodules 과 관련이 있는 모양입니다. 
