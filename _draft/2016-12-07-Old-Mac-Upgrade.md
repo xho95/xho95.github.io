@@ -86,6 +86,18 @@
 
 [맥프로 사용하시는분들을 위한 여러가지 SSD 장착법 !!](http://kmug.co.kr/board/zboard.php?id=guide&no=2358)
 
+#### 퓨전 드라이브
+
+[애플 퓨전 드라이브는 무엇인가? 또 어떻게 작동하는가?](http://macnews.tistory.com/438)
+
+[애플 퓨전 드라이브(Fusion Drive) 사용기](http://macnews.tistory.com/556)
+
+#### HDD
+
+[Mac 질문: 혹시 외장하드 갑자기 인식 안될때 어떻게 하시나요..?](http://www.cuonet.com/new/bbs/board.php?bo_table=mac&wr_id=15103&page=61)
+
+[외장 하드 포맷하기](https://discussionskorea.apple.com/docs/DOC-1037) : 그냥 메뉴에서 지우기를 하니까 다시 포맷 비슷한 작업을 하는 것 같습니다. 그냥 되네요.
+
 #### 맥 프로용 그래픽 카드
 
 [NVIDIA, 맥북프로와 아이맥을 지원하는 OS X용 그래픽 드라이버 공개](http://macnews.tistory.com/3532)
@@ -100,9 +112,16 @@
 
 [GTX 980 Ti Install in Mac Pro 2009 Tower](https://www.youtube.com/watch?v=D7FoB-bSNV0)
 
+[타워맥 GPU 업그레이드 문의](http://www.clien.net/cs2/bbs/board.php?bo_table=cm_mac&wr_id=1076913&sca=%5B질문있어요%5D&sfl=wr_subject&stx=타워맥) : GPU 업그레이드 시에 전원 연결을 하는 방법에 대해서 질문 답변을 한 글입니다. 
+
 #### 그래픽 카드 정보 
 
 [MACVIDCARDS.COM](http://www.macvidcards.com/i-want-the-best-graphics-card-for-my-mac-pro-where-do-i-start.html) : 사양을 입력하면 가장 알맞는 그래픽 카드를 추천해주는 것 같습니다.
 
 [2016년 10월 그래픽카드 순위 VGA](http://endlessness.tistory.com/490)
 
+[Videocard Benchmarks](http://www.videocardbenchmark.net/high_end_gpus.html)
+
+#### Airport
+
+[Apple Airport Wireless Card For Mac Pro - Network Adapter - 802.11b, 802.11a, 802.11g, 802.11n (draft) (66436H)](https://www.amazon.com/Apple-Airport-Wireless-Card-Mac/dp/B0012YYITW)

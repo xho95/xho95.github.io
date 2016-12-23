@@ -78,11 +78,15 @@ sudo defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 
 [How to force Continuity to work on an unsupported Mac: enable Handoff and AirDrop on older Macs](http://www.macworld.co.uk/how-to/mac-software/get-continuity-handoff-airdrop-on-old-mac-3582632/)
 
-동글 하나 구입하고 패치를 적용해야 할 것 같습니다. 바로는 안되는 분위기 입니다. 
+동글 하나 구입하고 패치를 적용해야 할 것 같습니다. 바로는 안되는 분위기 입니다.
+
+이런 것도 있습니다. [^macrumors-1940684] [^ebay]
 
 ### 고찰하기 
 
 [MacOS Configuration dotFile](https://wilsonmar.github.io/mac-osx-config-dotfiles/) : 이런 것도 있는 것 같습니다. 아직은 잘 모르는 부분이 많은데 앞으로 기회가 있을 때, 좀 더 파봐야겠습니다. [^wilsonmar]
+
+뭔가 좀 더 알아봐야할 자료들입니다. [^jamfsoftware] 
 
 
 ### 참고 자료
@@ -100,3 +104,9 @@ sudo defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 [^macrumors-687540]: [Could not write domain](http://forums.macrumors.com/threads/could-not-write-domain.687540/)
 
 [^google]: [Could not write domain com.apple.SoftwareUpdate](https://groups.google.com/forum/#!topic/macenterprise/aGwjr6dz5x4)
+
+[^lifewire]: [AirDrop With or Without a WiFi Connection](https://www.lifewire.com/airdrop-with-without-wifi-connection-2259801)
+
+[^macrumors-1940684]: [Airdrop in 2009 Mac Pro?](http://forums.macrumors.com/threads/airdrop-in-2009-mac-pro.1940684/)
+
+[^ebay]: [Genuine Apple WiFi 802.11ac & Bluetooth 4.0 Upgrade Kit Adapter *Mac Pro 4,1/5,1](http://www.ebay.com/itm/251754210499?_trksid=p2060353.m2749.l2649&ssPageName=STRK:MEBIDX:IT&afsrc=1&rmvSB=true)
