@@ -58,12 +58,6 @@ Sign up for free: https://anaconda.org
 
 <https://anaconda.org>에 가입하면 파이썬 노트북과 패키지를 아나콘다 클라우드를 통해 공유할 수 있는 것 같습니다. 
 
-#### 파이썬 3을 사용하도록 설정하기
-
-아나콘다로 파이썬을 설치하면 따로 설정하지 않아도 `python` 명령을 사용하면 알아서 python 3 버전이 실행됩니다.
-
-> pip 등으로 설치 했을 경우 `Python3`으로 명시적으로 지정하지 않아도 Python 3을 사용하기 위한 방법은 참고 자료에 있습니다. [^eunguru]
-
 #### `.bash_profille` 설정하기
  
 경험에 의하면 아나콘다를 통해 설치하면 `.bash_profile` 설정도 자동으로 해주는 것 같습니다. 따라서 `.bash_profile` 설정 과정도 필요없습니다. 
@@ -87,6 +81,12 @@ For this change to become active, you have to open a new terminal.
 
 > `.bash_profile`은 터미널을 새로 시작할 때 다시 불리게 되므로, 변경된 `.bash_profile` 내용을 적용하려면 터미널을 끄고 다시 실행해야 합니다. 
 
+#### 파이썬 3을 사용하도록 설정하기
+
+아나콘다로 파이썬을 설치하면 따로 설정하지 않아도 `python` 명령을 사용하면 알아서 python 3 버전이 실행됩니다.
+
+> pip 등으로 설치 했을 경우 `Python3`으로 명시적으로 지정하지 않아도 Python 3을 사용하기 위한 방법은 참고 자료에 있습니다. [^eunguru]
+
 ### 파이썬 실행하기 
 
 터미널에서 `python`이라고 입력하면, 아래와 같은 내용이 출력되는 것을 볼 수 있습니다.  
@@ -102,7 +102,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 `python` 명령은 파이썬 쉘(shell)을 실행시키는 명령으로, 위의 화면을 보면 자동으로 파이썬이 3 버전으로 실행됨을 알 수 있습니다.
 
-#### 아톰(Atom) 에디터를 파이썬 개발 툴로 사용하기
+### 아톰(Atom) 에디터를 파이썬 개발 툴로 사용하기
 
 파이썬으로 개발하기 위해서는 개발 도구가 필요합니다. 개발은 앞에 본 것과 같은 파이썬 쉘로 할 수도 있고, 아니면 파이참([PyCharm](https://www.jetbrains.com/pycharm/)) 같은 전문 개발 툴을 사용할 수도 있습니다. 하지만 쉘에서는 프로그래밍에 한계가 있을 수 밖에 없고, 파이참 같은 전문 툴은 유료입니다. 다양한 방법으로 할인 혜택 등을 받을 수 있지만 아무래도 부담이 될 수 있습니다.  
 
