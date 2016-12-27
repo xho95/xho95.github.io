@@ -179,6 +179,10 @@ set myList to {}
 
 [명령행 작업 좀더 편리하게 하기!](http://redgolems.tistory.com/30)
 
+### AppleScript의 미래
+
+얼마전 AppleScript 개발자가 소속을 옮겼다는 얘기도 들리고, 미래가 밝지만은 않은 것 같습니다. 
+
 ### 참고 자료
 
 [^AppleScript-Help]: [AppleScript 도움말](http://help.apple.com/applescript/mac/10.9/#apscrpt1001) Script Editor에 연결되어 있는 도움말인데 설명은 가장 좋은 것 같습니다. 그리고 한글로 번역되어 있습니다. 
@@ -210,3 +214,9 @@ set myList to {}
 [^WikiBooks]: [AppleScript Programming](https://en.wikibooks.org/wiki/AppleScript_Programming)
 
 [Multiple Criteria for If statement in AppleScript](http://stackoverflow.com/questions/10522286/multiple-criteria-for-if-statement-in-applescript)
+
+[애플 스크립트를 이용한 이메일 보내기 with 첨부파일](http://creativeworks.tistory.com/entry/애플-스크립트를-이용한-이메일-보내기-with-첨부파일)
+
+[애플스크립트를 이용해 맥 주소록 일괄편집하기](https://mkyojung.wordpress.com/2015/02/14/애플스크립트를-이용해-맥-주소록-일괄편집하기/)
+
+[tell application "xxxxx" to open "nnnnn" : from iCloud?](http://macscripter.net/viewtopic.php?id=42187)

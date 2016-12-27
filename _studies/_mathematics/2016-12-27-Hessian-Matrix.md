@@ -1,0 +1,1 @@
+[Gradient, Jacobian 행렬, Hessian 행렬, Laplacian](http://darkpgmr.tistory.com/132)

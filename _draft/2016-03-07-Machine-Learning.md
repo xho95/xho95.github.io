@@ -23,6 +23,18 @@ categories: Resources Sites Technology Machine-Learning
 
 [CS231n 강의 한글 번역 프로젝트](http://aikorea.org/cs231n/) CS231n 강의를 한글로 번역하는 프로젝트입니다. 
 
+[Machine Learning](https://www.coursera.org/learn/machine-learning#syllabus)
+
+[수학을 포기한 직업 프로그래머가 머신러닝 학습을 시작하기위한 학습법 소개](http://www.moreagile.net/2015/05/how-to-start-machine-learning-study.html)
+
+[추천! 로봇공학 / 기계학습 무료 교재(pdf) 15가지](http://t-robotics.blogspot.kr/2015/01/pdf-15.html#.WGIJTbE6-uO)
+
+[ML lab 03 - Linear Regression 의 cost 최소화의 TensorFlow 구현](https://www.youtube.com/watch?v=pHPmzTQ_e2o)
+
+#### PPT
+
+[Lecture 2: Markov Decision Processes](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/MDP.pdf)
+
 ### 정보 엔트로피
 
 [정보이론과 부호화 - 2장 정보의 정의와 척도 - YouTube](https://www.youtube.com/watch?v=M5Ak4Kpu23Q)
@@ -47,6 +59,7 @@ categories: Resources Sites Technology Machine-Learning
 
 [How AlphaGo Works](https://www.dcine.com/2016/01/28/alphago/)
 
+[바둑적/인공지능적 관점에서 분석한 알파고 1,2국](http://t-robotics.blogspot.kr/2016/03/12.html?m=1)
 
 ### Dynamic Programming
 
@@ -70,6 +83,14 @@ categories: Resources Sites Technology Machine-Learning
 
 [Recurrent Models of Visual Attention](https://arxiv.org/abs/1406.6247)
 
+### Reinforcement Learning
+
+강화 학습 자료는 [Reinforcement Learning](../_draft/2016-12-27-Reinforcement-Learning.md) 글을 참고하시기 바랍니다. (나중에 포스트로 옮기면 링크를 수정해야 합니다.)
+
+### Deep Learning
+
+딥 러닝 자료는 [Deep Learning](../_draft/2016-10-30-Deep-Learning.md) 글을 참고하시기 바랍니다. (나중에 포스트로 옮기면 링크를 수정해야 합니다.)
+
 ### CNN 
 
 [컨벌루션 신경망(Convolutional Neural Networks, CNN) ~ 탄생](http://blog.naver.com/msnayana/220781235541) : CNN의 태동기에 대한 얘기를 하고 있습니다. 
@@ -78,3 +99,14 @@ categories: Resources Sites Technology Machine-Learning
 
 [과학 오디세이: 빅데이터, 만능 아니다](http://v.media.daum.net/v/20161113211254798) : hueristic을 어림(짐작) 방법으로 번역하고 있습니다. 꽤 마음에 듭니다.
 
+### 참고 자료
+
+[기계학습 - 나무위키](https://namu.wiki/w/기계학습)
+
+[현장: 구글 ‘텐서플로우’ 개발자가 생각하는 머신러닝이란?](http://www.bloter.net/archives/254962)
+
+[Machine Learning for iOS](http://alexsosn.github.io/ml/2015/11/05/iOS-ML.html)
+
+### Paper
+
+[Visual Object Tracking using Adaptive Correlation Filters](http://www.cs.colostate.edu/~vision/publications/bolme_cvpr10.pdf)
