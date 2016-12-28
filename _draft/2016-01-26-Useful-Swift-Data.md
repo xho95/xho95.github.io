@@ -27,6 +27,8 @@ categories: Resources Softwares Programming Swift
 
 [Swift Replace Multiple Characters in String](http://stackoverflow.com/questions/28059543/swift-replace-multiple-characters-in-string)
 
+[Swift - 언제 class 대신 struct 를 사용하는가](http://seorenn.blogspot.kr/2016/04/swift-class-struct.html?m=1) : 좋은 글입니다.
+
 ### Swift
 
 [Swift 3 로드맵: 범용언어로의 도약](https://realm.io/kr/news/swift-3-roadmap/) : Swift 3.0에 대한 소개 글
@@ -72,3 +74,7 @@ categories: Resources Softwares Programming Swift
 [이미지로부터 픽셀 데이터 얻어 새로운 이미지 만들기](http://blog.weirdx.io/post/24742)
 
 [Icons8](https://icons8.com/app/) : Download All Our Icons in a Mac App
+
+### Lecture
+
+[Stanford iOS 한글자막 강의](https://www.inflearn.com/course/stanford-ios-한글자막-강의/) : Stanford 강의를 한글 자막으로 볼 수 있습니다. 

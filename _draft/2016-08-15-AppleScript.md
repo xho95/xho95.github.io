@@ -220,3 +220,7 @@ set myList to {}
 [애플스크립트를 이용해 맥 주소록 일괄편집하기](https://mkyojung.wordpress.com/2015/02/14/애플스크립트를-이용해-맥-주소록-일괄편집하기/)
 
 [tell application "xxxxx" to open "nnnnn" : from iCloud?](http://macscripter.net/viewtopic.php?id=42187)
+
+[How do I add Applescript support to my Cocoa application?](http://stackoverflow.com/questions/2479585/how-do-i-add-applescript-support-to-my-cocoa-application)
+
+[Read and write specific cells of an iWork Numbers file stored in iCloud](http://stackoverflow.com/questions/21278833/read-and-write-specific-cells-of-an-iwork-numbers-file-stored-in-icloud)

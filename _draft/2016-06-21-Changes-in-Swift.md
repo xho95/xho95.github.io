@@ -1,5 +1,9 @@
 Swift 3.0에서 변경된 내용들을 설명한 자료들입니다.[^Swifter]  [^RayWenderich]  [^Apple]  [^Realm]
 
+### Swift 3.0 요약
+
+[한눈에 보는 Swift 3.0 문법](https://swifter.kr/2016/10/22/한눈에-보는-swift-3-0-문법/)
+
 ### 참고 자료
 
 [^Swifter]: 국내 스위프트 개발자 커뮤니티에서 [Swift 3.0의 변경사항](https://swifter.kr/2016/06/17/swift-3-0의-변경사항/)이라는 글을 작성하였습니다.
