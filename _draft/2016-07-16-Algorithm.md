@@ -1,6 +1,8 @@
 
 [프로젝트 오일러](http://euler.synap.co.kr) : 알고리즘 공부
 
+Swift로 구현한 알고리즘은 [Welcome to the Swift Algorithm Club!](https://github.com/raywenderlich/swift-algorithm-club) 에서 구할 수 있습니다. [^swift-algorithm-club] [^shma]
+
 ### Tree
 
 [Binary Search Tree](https://gist.github.com/pocketkk/f7d2ba819b46725229a4)
@@ -20,3 +22,9 @@
 ### Solved Game
 
 [Solved game](https://en.wikipedia.org/wiki/Solved_game)
+
+### 참고 자료
+
+[^swift-algorithm-club]: [Welcome to the Swift Algorithm Club!](https://github.com/raywenderlich/swift-algorithm-club) : Ray Wenderlich 사이트에서 Swift로 만든 알고리즘 코드를 GitHub에 모아둔 곳입니다.
+
+[^shma]: [swift-algorithm-club](https://techstory.shma.so/swift-algorithm-club-59e742b2c29b#.l2ymyoejs) : 위의 Swift Algorithm Club에 대해서 자세히 소개한 글입ㄴ디ㅏ. 
