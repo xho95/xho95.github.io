@@ -31,9 +31,11 @@ categories: Resources Sites Technology Machine-Learning
 
 [ML lab 03 - Linear Regression 의 cost 최소화의 TensorFlow 구현](https://www.youtube.com/watch?v=pHPmzTQ_e2o)
 
-#### PPT
+### 자료
 
 [Lecture 2: Markov Decision Processes](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/MDP.pdf)
+
+[Machine Learning Proceedings 1994: Proceedings of the Eighth International Conference](https://books.google.co.kr/books?hl=ko&lr=&id=cEqjBQAAQBAJ&oi=fnd&pg=PA157&dq=reinforcement+learning&ots=E1srt8v2DL&sig=egdPIkLXHZ7vkqrchIPh16yOvrk#v=onepage&q=reinforcement%20learning&f=false)
 
 ### 정보 엔트로피
 

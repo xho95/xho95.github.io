@@ -104,7 +104,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ### 아톰(Atom) 에디터를 파이썬 개발 툴로 사용하기
 
-파이썬으로 개발하기 위해서는 개발 도구가 필요합니다. 개발은 앞에 본 것과 같은 파이썬 쉘로 할 수도 있고, 아니면 파이참([PyCharm](https://www.jetbrains.com/pycharm/)) 같은 전문 개발 툴을 사용할 수도 있습니다. 하지만 쉘에서는 프로그래밍에 한계가 있을 수 밖에 없고, 파이참 같은 전문 툴은 유료입니다. 다양한 방법으로 할인 혜택 등을 받을 수 있지만 아무래도 부담이 될 수 있습니다.  
+파이썬으로 개발하기 위해서는 개발 도구가 필요합니다. 개발은 앞에 본 것과 같은 파이썬 쉘로 할 수도 있고, 아니면 파이참([PyCharm](https://www.jetbrains.com/pycharm/)) 같은 전문 개발 툴을 사용할 수도 있습니다. [^pycharm] [^pycharm-download] 하지만 쉘에서는 프로그래밍에 한계가 있을 수 밖에 없고, 파이참 같은 전문 툴은 유료입니다. 다양한 방법으로 할인 혜택 등을 받을 수 있지만 아무래도 부담이 될 수 있습니다.  
 
 무료로 사용할 수 있는 파이썬 개발 도구 중에서는 아톰(Atom) 에디터도 괜찮은 편입니다. 아톰 에디터를 파이썬 개발에 사용하기 위해서는 [아톰(Atom) 에디터 활용하기](http://xho95.github.io/editor/atom/markdown/python/2016/09/27/Using-Atom-Editor.html) 라는 글에 따로 정리해 둔 내용이 있으니 살펴 보시기 바랍니다.
 
@@ -265,3 +265,9 @@ $ conda remove --name second --all
 [^atom-with-anacondas]: [Atom with Anaconda’s Python and Anaconda’s Python packages?](https://discuss.atom.io/t/atom-with-anacondas-python-and-anacondas-python-packages/31235) : Atom 에디터가 conda의 가상 환경을 인식 시키도록 하는 방법에 대한 답변이 있는 글입니다. 
 
 [파이썬 생존 안내서 (자막)](http://www.slideshare.net/sublee/ss-67589513) : 이흥섭님의 자료로 넥슨코리아 사내 발표자료로 왓 스튜디오에서 파이썬으로 《야생의 땅: 듀랑고》 서버를 비롯한 여러가지 도구를 만든 경험을 공유한다고 소개된 자료입니다.
+
+[^jetbrains]: [JetBrains](https://www.jetbrains.com) : 나중에 적절한 위치로 옮겨야할 것 같습니다.
+
+[^pycharm]: [PyCharm](https://www.jetbrains.com/pycharm/)
+
+[^pycharm-download]: [Download PyCharm](https://www.jetbrains.com/pycharm/download/)
