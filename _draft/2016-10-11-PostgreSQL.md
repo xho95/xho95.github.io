@@ -112,3 +112,5 @@ postgresql 공식 문서의 도움말을 보면 하나는 sql을 사용하는 �
 [^sql-createdatabase]: [CREATE DATABASE](https://www.postgresql.org/docs/current/static/sql-createdatabase.html)
 
 [^app-createdb]: [createdb](https://www.postgresql.org/docs/9.6/static/app-createdb.html)
+
+[Postgres Guide](http://postgresguide.com)
