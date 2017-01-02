@@ -31,6 +31,8 @@ categories: Resources Sites Technology Machine-Learning
 
 [ML lab 03 - Linear Regression 의 cost 최소화의 TensorFlow 구현](https://www.youtube.com/watch?v=pHPmzTQ_e2o)
 
+[Machine Learning Recipes with Josh Gordon](https://www.youtube.com/playlist?list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2ryal&app=desktop) : 김만수 부장님이 추천해주신 자료입니다. 한글 자막이 지원된다고 합니다. 
+
 ### 자료
 
 [Lecture 2: Markov Decision Processes](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/MDP.pdf)
