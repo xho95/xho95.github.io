@@ -2,6 +2,8 @@
 
 [애플기기를 위한 딥러닝 프레임워크](https://tensorflow.blog/2016/01/02/애플기기를-위한-딥러닝-프레임워크/)
 
+[텐서플로우 소스 구조 분석 (TensorFlow Internal)](http://team.airpage.org/meta/go/927)
+
 #### tensorflow
 
 [GPU computing with tensorflow on Mac OS 10.12](http://vinhqdang.github.io/2016/09/28/gpu-computing-with-tensorflow-on-mac-os-1012)
