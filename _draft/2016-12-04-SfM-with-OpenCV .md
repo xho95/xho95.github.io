@@ -46,6 +46,10 @@ SfM을 OpenCV에서 사용하기 위해서는 아래의 다른 라이브러리�
 
 [Dynamic SfM: Detecting Scene Changes from Image Pairs](http://geometry.cs.ucl.ac.uk/projects/2015/dynamicSfM/paper_docs/dynamicSfm.pdf)
 
+### Datasets
+
+[vision.middlebury.edu](http://vision.middlebury.edu/mview/data/) : Temple 과 Dino 대상에 대한 데이터셋을 제공하고 있습니다. 
+
 ### OpenCV 
 
 아래 자료들은 OpenCV 쪽으로 옮겨야할 것 같습니다.
