@@ -20,6 +20,12 @@
 
 [INTAKE](https://www.shopintake.com) : 위의 Jeffrey님이 만드신 사이트입니다.
 
+[스타트업을 위한 웹 개발 기초/교재](http://pragtutor.wikinamu.com/스타트업을%20위한%20웹%20개발%20기초/교재)
+
+[perhapsspy/파이콘 코리아 발표용 정리 임시본.md](https://gist.github.com/perhapsspy/23dce1f537447dffed4abb2573264767)
+
+[Django로 웹사이트 만들고 런칭하기](https://github.com/youngrok/startup-dev-tutor)
+
 #### django-SHOP
 
 [django-SHOP](https://github.com/xho95/django-shop) : 쇼핑몰 프레임웍의 끝판왕인 듯 싶습니다.
