@@ -89,7 +89,7 @@ DocumentRoot "/Library/WebServer/Documents"
 우선 해당 폴더로 가서 아래와 같은 명령으로 파일을 편집합니다.
 
 ```
-$ sudo vi http-userdir.conf
+$ sudo vi httpd-userdir.conf
 ```
 
 명령을 보면 알겠지만 서버 설정을 변경할 때는 관리자 권한으로만 파일을 편집할 수 있습니다.
