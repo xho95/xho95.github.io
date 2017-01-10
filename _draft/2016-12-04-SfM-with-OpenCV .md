@@ -63,6 +63,8 @@ Error: 'gflags.cc' is being linked both statically and dynamically into this exe
 
 [Dynamic SfM: Detecting Scene Changes from Image Pairs](http://geometry.cs.ucl.ac.uk/projects/2015/dynamicSfM/paper_docs/dynamicSfm.pdf)
 
+[Structure from Motion Using Structure-less Resection](http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Zheng_Structure_From_Motion_ICCV_2015_paper.pdf) : VisualSFM을 개발하고 구글 Cardboard 팀에 있는 Changchang Wu님의 논문입니다. 
+
 ### Datasets
 
 [vision.middlebury.edu](http://vision.middlebury.edu/mview/data/) : Temple 과 Dino 대상에 대한 데이터셋을 제공하고 있습니다. 
@@ -84,3 +86,5 @@ Error: 'gflags.cc' is being linked both statically and dynamically into this exe
 ### 참고 자료
 
 [^stackoverflow-30475415]: [Caffe Compilation Error: gflags.cc' is being linked both statically and dynamically into this executable](http://stackoverflow.com/questions/30475415/caffe-compilation-error-gflags-cc-is-being-linked-both-statically-and-dynamica) : 실제 문제 해결에는 도움이 되지 않았지만 관련 문제가 발생한다는 것은 알 수 있었습니다.
+
+[VisualSFM](http://ccwu.me/vsfm/doc.html) : A Visual Structure from Motion System

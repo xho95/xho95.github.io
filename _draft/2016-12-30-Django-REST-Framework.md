@@ -1,1 +1,0 @@
-[Django REST Framework 사용기](https://perhapsspy.wordpress.com/2013/07/11/django-rest-framework-사용기/)
