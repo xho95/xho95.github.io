@@ -1,10 +1,52 @@
-여기서는 Django에서 사용할 수 있는 대표적인 Rest Framework인 [Django REST framework](http://www.django-rest-framework.org)에 대해서 정리합니다. [^django-rest-framework]
+여기서는 Django에서 사용할 수 있는 대표적인 Rest 프레임웍(Framework)인 [Django REST framework](http://www.django-rest-framework.org)에 대해서 정리합니다. [^django-rest-framework]
+
+### 개요 
 
 파이님의 [Django REST Framework 사용기](https://perhapsspy.wordpress.com/2013/07/11/django-rest-framework-사용기/) 라는 글에 보면 다음과 같이 요약한 부분 있습니다. 
 
 간략히 요약하자면 API로 만들고자 하는 Django 모델을 만들고, 그 모델을 모델시리얼라이저를 이용해 시리얼라이저를 만듭니다. 그리고 그 시리얼라이저와 Django 모델을 쿼리셋으로 하는 뷰셋을 만든 뒤 URL에 매핑하면 끝입니다. [^perhapsspy-django-rest-framework]
 
-#### 사용법 
+### 설치하기
+
+공식 문서에 설명되어 있는대로 아래와 같이 설치해 줍니다. 
+
+```
+$ pip install djangorestframework
+$ pip install markdown
+$ pip install django-filter
+```
+
+`markdown`과 `django-filter`는 같이 설치해 줍니다. 
+
+> 위의 패키지 중에서 `markdown`의 경우 conda로도 설치가 가능합니다. 
+> 
+> conda에 대해서는 다른 글을 참고하시기 바랍니다. 
+
+**settings.py** 파일의 `INSTALLED_APPS` 부분에 `rest_framework`을 등록해 줍니다. 
+
+```
+INSTALLED_APPS = [
+	...
+    'rest_framework',
+]
+```
+
+browsable API를 사용하기 위해서는 REST 프레임웍의 로그인(login) 과 로그아웃(logout) 뷰(views)도 등록해야한다고 합니다. 
+
+루트에 있는 **urls.py** 파일에 아래와 같이 추가해줍니다.
+
+```
+urlpatterns = [
+    ...
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]
+```
+
+> URL 경로는 아무거나 해도 되지만, 'rest_framework.urls' 과 'rest_framework' 네임스페이스(namespace)는 반드시 동일하게 지정해줘야 한다고 합니다. 
+> 
+> 장고(Django) 1.9 버전 이상에서는 네임스페이스를 지정하지 않으면 REST 프레임웍이 알아서 위와 같이 지정해 준다고 합니다.
+
+### 사용법 
 
 간단한 사용법은 공식 문서의 [Quickstart](http://www.django-rest-framework.org/tutorial/quickstart/) 부분을 실습하면서 익히면 될 것 같습니다. [^django-rest-framework-quickstart]
 
