@@ -70,7 +70,39 @@ REST_FRAMEWORK = {
 
 > 위의 설정은 일반 유저의 경우 장고(Django)의 표준 `django.contrib.auth` 권한 설정을 사용하지만, 인증되지 않는 사용자에 대해서는 읽기 접근만을 허용하도록 합니다.
 
- 
+#### urls.py 파일 수정하기
+
+```
+from django.conf.urls import url, include
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+urlpatterns = [
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+]
+```
+
+위 코드를 입력하고 테스트 서버를 실행하면 아래와 같이 admin 화면이 바뀌는 것을 확인할 수 있습니다. 
+
+![Rest Framework](../assets/Django/RestFramework.jpg)
 
 ### 사용법 
 
