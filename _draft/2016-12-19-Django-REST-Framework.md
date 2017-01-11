@@ -2,6 +2,8 @@
 
 ### 개요 
 
+> 일단 홈페이지 첫 문단에 있는 내용은 좀 더 공부해서 정리하도록 합니다.
+
 파이님의 [Django REST Framework 사용기](https://perhapsspy.wordpress.com/2013/07/11/django-rest-framework-사용기/) 라는 글에 보면 다음과 같이 요약한 부분 있습니다. 
 
 간략히 요약하자면 API로 만들고자 하는 Django 모델을 만들고, 그 모델을 모델시리얼라이저를 이용해 시리얼라이저를 만듭니다. 그리고 그 시리얼라이저와 Django 모델을 쿼리셋으로 하는 뷰셋을 만든 뒤 URL에 매핑하면 끝입니다. [^perhapsspy-django-rest-framework]
@@ -45,6 +47,30 @@ urlpatterns = [
 > URL 경로는 아무거나 해도 되지만, 'rest_framework.urls' 과 'rest_framework' 네임스페이스(namespace)는 반드시 동일하게 지정해줘야 한다고 합니다. 
 > 
 > 장고(Django) 1.9 버전 이상에서는 네임스페이스를 지정하지 않으면 REST 프레임웍이 알아서 위와 같이 지정해 준다고 합니다.
+
+### 사용하기
+
+#### 홈페이지 예제
+
+홈페이지에는 간단한 모델-기반(model-backed) API를 실습하면서 REST 프레임웍에 대한 감을 잡고 있습니다. 
+
+예제에서는 프로젝트의 사용자 정보에 접근하는 읽고-쓰기 가능한(?) API를 만듭니다.
+
+REST 프레임웍 API의 글로벌 설정은 **REST_FRAMEWORK**이라는 단일 설정 딕셔너리(dictionary)에 지정합니다.
+
+**settings.py** 파일에 다음과 같이 추가합니다.
+
+```
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+```
+
+> 위의 설정은 일반 유저의 경우 장고(Django)의 표준 `django.contrib.auth` 권한 설정을 사용하지만, 인증되지 않는 사용자에 대해서는 읽기 접근만을 허용하도록 합니다.
+
+ 
 
 ### 사용법 
 
