@@ -1,5 +1,10 @@
 여기서는 Django에서 사용할 수 있는 대표적인 Rest 프레임웍(Framework)인 [Django REST framework](http://www.django-rest-framework.org)에 대해서 정리합니다. [^django-rest-framework]
 
+전체 내용은 Django REST framework 홈페이지의 내용을 실습하고 정리한 것입니다. 
+
+* [Rest Framework 맛보기]()
+* [Quick Start](../_draft/2017-01-12-Django-REST-Quick-Start.md)
+
 ### 개요 
 
 > 일단 홈페이지 첫 문단에 있는 내용은 좀 더 공부해서 정리하도록 합니다.
@@ -18,7 +23,7 @@ $ pip install markdown
 $ pip install django-filter
 ```
 
-`markdown`과 `django-filter`는 같이 설치해 줍니다. 
+`markdown`과 `django-filter`는 같이 설치해 줍니다. 이 두개는 당장 필요한 것 같지는 않습니다.
 
 > 위의 패키지 중에서 `markdown`의 경우 conda로도 설치가 가능합니다. 
 > 
