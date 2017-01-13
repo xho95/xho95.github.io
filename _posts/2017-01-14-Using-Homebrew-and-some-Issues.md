@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "macOS : Homebrew 설치 및 Sierra 관련 이슈 정리"
+title:  "macOS : Homebrew 설치 및 이슈 정리"
 date:   2017-01-14 01:11:30 +0900
 categories: macOS Sierra Package Homebrew Issues
 ---
