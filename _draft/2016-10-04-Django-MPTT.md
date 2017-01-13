@@ -4,6 +4,10 @@ DB를 다루다보면 트리 구조로 된 자료를 저장하고 불러올 필�
 
 참고로 **MPTT**에 대한 개념은 [Storing Hierarchical Data in a Database](https://www.sitepoint.com/hierarchical-data-database-2/)라는 글에 잘 정리되어 있는 것 같습니다.[^sitepoint] 이 글은 [Mysql + php 트리구조 재귀호출](http://www.freeimage.kr/tip_php/p40/804)라는 글로 번역되어 있는 글도 있는 것 같습니다.[^freeimage]  다른 자료도 있습니다.[^mikehillyer] 
 
+> 장고 패키지 사이트에 가면 mptt 말고도 트리 구조를 구현한 패키지들이 여러개 있습니다. 이중에서 django-mptt가 가장 쓸만한 것 같습니다.
+> 
+> 확인이 필요합니다. 나중에 더 좋은게 있을 수도 있습니다. 
+
 ### `django-mptt`란 무엇인가?
 
 `django-mptt`는 재사용 가능한 Django 어플리케이션으로 Django 모델에서 MPTT를 쉽게 사용하게 할 목적으로 만들어진 것입니다.
@@ -39,6 +43,10 @@ DB를 다루다보면 트리 구조로 된 자료를 저장하고 불러올 필�
 ### `django-mptt` 설치하기
 
 `django-mptt`를 설치하는 방법에는 공식 버전을 다운받는 방법과 개발자 버전을 GitHub에서 클론 받는 방법, 이렇게 두가지가 있습니다.
+
+> 나중에 보니까 `pip install mptt`로도 설치가 가능한 것 같습니다. 
+> 
+> 확인이 필요합니다.
 
 일단 여기서는 공식 버전을 PyPI에서 다운받은 후 설치하는 방법을 설명합니다. 개발자 버전을 설치하는 방법은 `django-mptt`의 [공식 문서](http://django-mptt.github.io/django-mptt/install.html)를 참고하시면 될 것 같습니다.[^install]
 

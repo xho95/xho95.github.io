@@ -36,3 +36,7 @@ categories: Xcode Swift Paradigm Functional
 [Scala](http://www.scala-lang.org/download/)
 
 [함수형 프로그래밍 언어 스칼라(Scala) 소개](http://www.slideshare.net/danieltedkim/scala-43612706)
+
+### Book
+
+[Book: 함수형 사고](https://blog.outsider.ne.kr/1261) : Outsider님의 책 리뷰입니다. 
