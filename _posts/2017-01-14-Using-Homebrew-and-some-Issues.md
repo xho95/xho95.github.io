@@ -136,6 +136,8 @@ As Homebrew does not drop privileges on installation you would be giving all
 build scripts full access to your system.
 ```
 
+내용을 보면 Homebrew를 루트 권한에서 실행하는 것은 매우 위험하므로 이를 더 이상 지원 하지 않는다고 합니다. Homebrew는 설치시 권한을 낮추지 않기 때문에 빌드 과정에서 특정 구문이 시스템의 모든 부분에 접근할 수 있기 때문이라고 합니다.  
+
 #### brew link 이슈
 
 `/usr/local` 폴더에 권한이 없어서 패키지 설치가 완료가 안되더라도 심볼릭 링크만 생성되지 않을 뿐이지 패키지 자체는 설치될 경우가 있습니다. 그럴 경우 아래와 같은 메시지가 출력됩니다.
