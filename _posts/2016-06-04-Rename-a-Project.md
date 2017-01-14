@@ -9,13 +9,13 @@ Xcode로 작업을 하다보면 이미 상당히 진행된 프로젝트나 완�
 
 이때, 기존 코드와는 상관없이 프로젝트 이름만을 변경하거나 더 나아가서 `bundle identifier` 까지 변경하고자 할 수 있는데, [MAR Software Technologies LLC](http://www.marsoftek.com) 라는 곳에서 이런 상황에 대해 좋은 동영상을 만들어서 이를 글로 정리합니다.[^MAR]
 
-> Xcode 프로젝트의 이름을 변경하는 방법은 많이 찾을 수 있는데, 대부분의 자료들이 예전 자료들인 것 같습니다. 이부분은 나중에 전체를 정리할 생각입니다.[^iOS_Tip] [^Xcode_6_3] [^Xcode_6_1] [^iOS_Rename] [^Xcode_4]
+> Xcode 프로젝트의 이름을 변경하는 방법은 많이 찾을 수 있는데, 대부분의 자료들이 예전 자료들인 것 같습니다. [^iOS_Tip] [^Xcode_6_3] [^Xcode_6_1] [^iOS_Rename] [^Xcode_4] 이 자료들은 나중에 전체를 정리할 생각입니다.
 
 ### 프로젝트 이름 바꾸기
 
 프로젝트의 이름만 바꾸는 것은 쉽습니다.
 
-우선 프로젝트를 선택한 상태에서 오른쪽 **File Inspector** 창의 **Identity and Type** 의 **Name** 에 위치한 값을 원하는 이름으로 바꿔줍니다. 그러면 하나의 창이 뜨는데 바꾸는 것을 선택한다.
+우선 프로젝트를 선택한 상태에서 오른쪽 **File Inspector** 창의 **Identity and Type** 의 **Name** 에 위치한 값을 원하는 이름으로 바꿔줍니다. 그러면 하나의 창이 뜨는데 바꾸는 것을 선택합니다.
 
 그다음, scheme[^Scheme] 메뉴에서 **Manage scheme...** 을 선택하여 나타나는 대화창에서 scheme에 해당하는 값을 원하는 이름으로 바꿔줍니다.
 
@@ -25,7 +25,7 @@ Xcode로 작업을 하다보면 이미 상당히 진행된 프로젝트나 완�
 
 다만, 실제로는 프로젝트 이름을 바꾸면서 관련 폴더명이나 더 나아가서 bundle identifier 값도 바꿔주고 싶을 경우가 있습니다. 물론 폴더 이름이나 빌드 세팅 등을 꼭 바꿔야 하는 것은 아니지만, 일관성을 위해서 바꿔주는 것이 좋을 것입니다.
 
-이와 같은 경우에는 이어지는 절에서 설명한 방법대로 진행하면 됩니다. 물론, 가장 좋은 것은 [Video: How to Rename Xcode 7 Project Thoroughly](https://www.youtube.com/watch?v=jRnVjtNLLLk) 동영상을 보면서 따라 실습해보는 것을 추천합니다.
+이와 같은 경우에는 이어지는 절에서 설명한 방법대로 진행하면 됩니다. 물론, 가장 좋은 것은 [Video: How to Rename Xcode 7 Project Thoroughly](https://www.youtube.com/watch?v=jRnVjtNLLLk) 동영상을 보면서 따라서 실습해보는 것입니다.
 
 ### 폴더 이름 바꾸기
 
