@@ -63,7 +63,7 @@ $ ./b2 toolset=darwin
 
 ### 부스트 라이브러리 테스트하기
 
-아래의 C++ 코드는 [Boost.org](http://www.boost.org) 사이트에 있는 `[adjacent_filtered](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)` 에 대한 예제 코드입니다. [^adjacent-filtered]
+아래의 C++ 코드는 [Boost.org](http://www.boost.org) 사이트에 있는 [`adjacent_filtered`](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html) 에 대한 예제 코드입니다. [^adjacent-filtered]
 
 이 코드를 빌드하기 위해서는 당연히 부스트 라이브러리가 필요합니다.
 
@@ -127,4 +127,4 @@ taromati 님의 원 블로그 글에는 시스템 관련 라이브러리들은 �
 
 [^sim9108]: 이 정보도 수원에서 C++ 스터디를 운영하시는 [윤훈남](https://www.facebook.com/sim9108?fref=nf) 님에게서 설명을 듣고 알게된 것입니다. 윤훈남 님에 대해서는 참고 자료 4번을 보시기 바랍니다.
 
-[^adjacent-filtered]: [`adjacent_filtered`](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html) : 부스트 라이브러리에 추가된 `adjacent_filtered`에 대한 예제 코드 링크입니다.
+[^adjacent-filtered]: [`adjacent_filtered`](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html) : 부스트 라이브러리에 추가된 `adjacent_filtered`에 대한 예제 코드 링크입니다. `adjacent_filtered`는 일정 범위의 요소들에 대해 옆 요소의 값이 같으면 걸러내는 필터 역할을 하는 것 같습니다.
