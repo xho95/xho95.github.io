@@ -78,7 +78,68 @@ $ python manage.py createsuperuser
 
 ### 사용자(User) 모델을 위한 말단(주소?) 추가하기 
 
-Now that we've got some users to work with, we'd better add representations of those users to our API. Creating a new serializer is easy. In serializers.py add:
+이제 작업할 사용자들이 준비됐으므로 그 유저들을 나타낼 API를 추가합니다. 새로운 serializer를 만드는 것은 쉽습니다. **serializers.py**에 다음을 추가합니다:
+
+```
+from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all())
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'snippets')
+```
+
+`'snippets'`은 User 모델에 대해 역 관계이기 때문에, `ModelSerializer` 클래스를 사용할 때 저절로 포함되지 않습니다. 그래서 명시적으로 필드에 추가해줘야 합니다.
+
+이제 **views.py** 파일에 몇 개의 뷰를 추가합니다. 사용자에 대해서는 읽기 전용 뷰만 있으면 되므로 `ListAPIView`와 `RetrieveAPIView` 제네릭 클래스 기반 뷰를 사용할 것입니다.
+
+```
+from django.contrib.auth.models import User
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+```
+
+`UserSerializer` 클래스를 import 하는 것도 잊지 맙시다.
+
+```
+from snippets.serializers import UserSerializer
+```
+
+마지막으로 이 뷰들을 API에 추가하기 위해서 URL 설정을 고칩니다. 아래 내용을 **urls.py**의 패턴 부분에 추가합니다.
+
+```
+url(r'^users/$', views.UserList.as_view()),
+url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+```
+
+### Snippets을 Users와 연결하기
+
+지금은, 코드 조각을 만들면, 조각 인스턴스로 그 조각을 만든 사용자와 연결할 방법이 없습니다. 사용자는 직렬화 표현으로 보내지는 부분이 아니라 들어오는 요청의 한 속성입니다.
+
+이것을 해결하려면 `.perform_create()` 메소드를 오버라이드해서, 저장되는 인스턴스를 수정해서 다룰 수 있게 하고, 들어오는 요청이나 요청 URL에 묻어오는 정보를 다룰 수 있게 해야합니다.
+
+`SnippetList` 뷰 클래스에 다음의 메소드를 추가합니다:
+
+```
+def perform_create(self, serializer):
+    serializer.save(owner=self.request.user)
+```
+
+serializer의 `create()` 메소드는 추가적인 `'owner'` 필드와 요청의 유효한 데이터를 함께 전달 받습니다.
+
+> 번역을 새로 해야 할 것 같습니다.
+
+### Serializer 업데이트 하기
+
+나중에 다시 정리합니다. 
 
 ### 참고 자료
 
