@@ -34,7 +34,7 @@ $ ./bootstrap.sh
 $ ./b2 toolset=darwin link=static threading=multi address-model=64 runtime-link=static
 ```
 
-위에서 `darwin` 은 맥에서 사용하기 위해 설정하는 값으로, 윈도우즈에서라면 다른 값이 들어가게 됩니다. 또한 `address-model`의 경우 시스템이 32비트인지 64비트인지를 체크하는 것 같아서 64로 지정했습니다. 이 과정에서 taromati라는 아이디를 사용하는 이재현님의 블로그 글에서 도움을 받았습니다. [^taromati]
+위에서 `darwin` 은 맥에서 사용하기 위해 설정하는 값으로, 윈도우즈에서라면 다른 값이 들어가게 됩니다. 또한 `address-model`의 경우 시스템이 32비트인지 64비트인지를 체크하는 것 같아서 64로 지정했습니다. 이 과정에서 [taromati](https://twitter.com/_taromati) 라는 아이디를 사용하는 [이재현](https://twitter.com/_taromati)님의 블로그 글에서 도움을 받았습니다. [^taromati]
 
 실제 `b2` 실행과정에서 아래와 같이 `toolset` 값만 지정해줘도 나머지 옵션은 알아서 지정이 된다고 합니다. [^sim9108] 
 
