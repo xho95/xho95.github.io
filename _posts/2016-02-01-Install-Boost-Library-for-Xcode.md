@@ -63,7 +63,7 @@ $ ./b2 toolset=darwin
 
 ### 부스트 라이브러리 테스트하기
 
-아래의 C++ 코드는 [Boost.org](http://www.boost.org) 사이트에 있는 [`adjacent_filtered`](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)에 대한 예제 코드입니다. [^adjacent-filtered]
+아래의 C++ 코드는 [Boost.org](http://www.boost.org) 사이트에 있는 `[adjacent_filtered](http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html)` 에 대한 예제 코드입니다. [^adjacent-filtered]
 
 이 코드를 빌드하기 위해서는 당연히 부스트 라이브러리가 필요합니다.
 
