@@ -85,7 +85,23 @@ categories: disqus jekyll comments
 <a href="https://sgeos.github.io{{ post.url }}#disqus_thread">0 Comments</a>
 ```
 
+위의 코드를 날짜 부분 뒤에 넣어줍니다. 일단 저는 아래와 같이 했습니다.했습니다.
+
+```
+...
+<span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} • <a href="https://xho95.github.io{{ post.url }}#disqus_thread">0 Comments</a></span>
+...
+```
+
+이제 블로그 첫페이지에서 리스트에 각 포스트 마다 몇개의 댓글이 달려있는지 확인할 수 있습니다.
+
+### 고찰하기 
+
+참고 자료의 블로그에 다음과 같은 내용이 있습니다.
+
 포스트를  **_drafts/** 폴더에서 **_posts/** 폴더로 옮기면 포스트의 URL이 바뀝니다. 이것은 draft 파일에 추가된 모든 댓글을 사라지게 만듭니다. [Disqus Migration Tools](https://help.disqus.com/customer/portal/articles/286778-migration-tools) 은 댓글들을 새 URL로 옮기는데 사용됩니다. [^disqus-migration-tools]
+
+일단 생각해보면 draft 상태에서 댓글이 달릴 일이 없을 것 같아서 별 문제는 안될 것으로 보입니다만 이런 글이 있는데는 이유가 있을 것입니다. 좀 더 알아봐야할 것 같습니다.
 
 ### 참고 자료
 
