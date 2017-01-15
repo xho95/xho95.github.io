@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 2.2: 기본 초기자(Default Initializers)"
 date:   2016-01-23 19:35:00 +0900
 categories: Xcode Swift Grammar Initializers

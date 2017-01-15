@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 2.2: 확장(Extensions)"
 date:   2016-01-19 17:10:00 +0900
 categories: Xcode Swift Grammar Extensions

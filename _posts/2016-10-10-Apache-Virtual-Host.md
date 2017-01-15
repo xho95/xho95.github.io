@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Apache : 아파치 가상 호스트 설정하기"
 date:   2016-10-10 11:58:00 +0900
 categories: macOS Apache WebServer VirtualHosts
@@ -127,7 +128,7 @@ You don't have permission to access / on this server.
 
 ### 고찰하기
 
-일단 참고 자료마다 설정하는 값들이 달라서 최선의 설정 방법이 무엇인지는 아직 모릅니다. 아파치 버전 문제에 따른 설정 값 변경도 있는 것 같고, 서버를 설정하는 사람마다 선호하는 방법이 조금씩 다른 것 같습니다. 
+일단 참고 자료마다 설정하는 값들이 달라서 최선의 설정 방법이 무엇인지는 아직 모릅니다. 아파치 버전 문제에 따른 설정 값 변경도 있는 것 같고, 서버를 설정하는 사람마다 선호하는 방법이 조금씩 다른 것 같습니다.
 
 참고 자료처럼 macOS Sierra에 대한 새로운 자료들도 계속 나오고 있는 것 같습니다. [^sierra-apache]
 
@@ -163,4 +164,4 @@ You don't have permission to access / on this server.
 
 [^novafactory]: [Python, Flask, WSGI, Apache 설정 삽질 ㅠ on CentOS 6](http://novafactory.net/archives/3074)
 
-[^sierra-apache]: [macOS 10.12 Sierra Apache Setup: MySQL, APC & More...](https://getgrav.org/blog/macos-sierra-apache-mysql-vhost-apc) : macOS Sierra에서 여러 프로그램들을 설정하는 방법에 대해서 정리한 글입니다. 
+[^sierra-apache]: [macOS 10.12 Sierra Apache Setup: MySQL, APC & More...](https://getgrav.org/blog/macos-sierra-apache-mysql-vhost-apc) : macOS Sierra에서 여러 프로그램들을 설정하는 방법에 대해서 정리한 글입니다.

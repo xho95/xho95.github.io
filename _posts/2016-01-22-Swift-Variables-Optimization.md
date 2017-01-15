@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift에서 변수 최적화에 대한 의문"
 date:   2016-01-22 15:17:00 +0900
 categories: Xcode Swift Variables Optimization

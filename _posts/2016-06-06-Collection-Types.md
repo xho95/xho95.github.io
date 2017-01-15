@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 2.2: 집합형(Collection Types)"
 date:   2016-06-06 19:45:00 +0900
 categories: Swift Grammar Collection Types Array Set Dictionary

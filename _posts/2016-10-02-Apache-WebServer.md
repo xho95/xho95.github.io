@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Apache : 맥에서 아파치 웹서버 실행하기"
 date:   2016-10-02 11:58:00 +0900
 categories: macOS Apache WebServer mod_wsgi

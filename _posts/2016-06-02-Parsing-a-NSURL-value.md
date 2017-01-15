@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Foundation: NSURLComponents 클래스로 URL 파싱하기"
 date:   2016-06-02 17:00:00 +0900
 categories: iOS Framework Foundation NSURL

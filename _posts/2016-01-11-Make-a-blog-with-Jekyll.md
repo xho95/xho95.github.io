@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Jekyll 기반의 GitHub Pages에 블로그 만들기"
 date:   2016-01-11 12:50:00 +0900
 categories: Blog GitHub Jekyll Git

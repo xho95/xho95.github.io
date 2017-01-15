@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "C++: Xcode에서 Boost 라이브러리 사용하기"
 date:   2016-02-01 17:30:00 +0900
 categories: Xcode C++ Library Boost
@@ -36,13 +37,13 @@ $ ./b2 toolset=darwin link=static threading=multi address-model=64 runtime-link=
 
 위에서 `darwin` 은 맥에서 사용하기 위해 설정하는 값으로, 윈도우즈에서라면 다른 값이 들어가게 됩니다. 또한 `address-model`의 경우 시스템이 32비트인지 64비트인지를 체크하는 것 같아서 64로 지정했습니다. 이 과정에서 [taromati](https://twitter.com/_taromati) 라는 아이디를 사용하는 [이재현](https://twitter.com/_taromati)님의 블로그 글에서 도움을 받았습니다. [^taromati]
 
-실제 `b2` 실행과정에서 아래와 같이 `toolset` 값만 지정해줘도 나머지 옵션은 알아서 지정이 된다고 합니다. [^sim9108] 
+실제 `b2` 실행과정에서 아래와 같이 `toolset` 값만 지정해줘도 나머지 옵션은 알아서 지정이 된다고 합니다. [^sim9108]
 
 ```sh
 $ ./b2 toolset=darwin
 ```
 
-따라서 위와 같이 해도 실행 결과는 처음과 같을 것입니다. 
+따라서 위와 같이 해도 실행 결과는 처음과 같을 것입니다.
 
 > 다만 실제로 제가 실습한 것은 아니라서 확실하지는 않습니다. 그냥 설치하실 때 참고하시면 될 것 같습니다.
 

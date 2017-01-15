@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Git 관련 자료 모음"
 date:   2016-01-25 21:25:00 +0900
 categories: Resources Sites Books Git

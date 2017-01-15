@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Homebrew: 설치 및 Sierra 관련 이슈 정리"
 date:   2017-01-14 01:11:30 +0900
 categories: macOS Sierra Package Homebrew Issues
@@ -205,8 +206,8 @@ $ brew update
 
 위와 같이 `brew update` 명령을 실행한 후에도 문제가 그대로인 경우가 있는데 이 경우 `brew upate` 명령을 다시 실행하면 `brew`가 스스로 문제를 찾는다고 합니다.
 
-> `brew upate` 명령을 두 번 사용하는 것은 직접 설명을 보고 실행한 적이 있는데, 글을 작성하는 시점이 실행한 시점과는 다르다 보니 해당 내용이 설명된 문서를 찾지 못하고 있습니다. 찾게 되면 링크를 추가하도록 하겠습니다. 
-> 
+> `brew upate` 명령을 두 번 사용하는 것은 직접 설명을 보고 실행한 적이 있는데, 글을 작성하는 시점이 실행한 시점과는 다르다 보니 해당 내용이 설명된 문서를 찾지 못하고 있습니다. 찾게 되면 링크를 추가하도록 하겠습니다.
+>
 > 다만, 아래 내용을 보면 알겠지만 최신 Homebrew 부터는 `brew upate` 명령을 사용할 일이 없어질 것 같습니다.
 
 이 글을 작성하고 있는 시점에서 `brew install` 명령을 사용해 보면 `brew update`가 가장 먼저 실행되는 것을 볼 수 있습니다. 참고로, 사용하고 있는 Homebrew 버전은 `Homebrew 1.1.6` 입니다.

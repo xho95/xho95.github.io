@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 2.2: 프로토콜 확장(Protocol Extensions)에 구속조건(Constraints) 추가하기"
 date:   2016-03-03 23:30:00 +0900
 categories: Swift Grammar Protocol Constraints
