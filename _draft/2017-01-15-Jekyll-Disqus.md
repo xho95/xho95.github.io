@@ -52,15 +52,6 @@ disqus 코드는 사용하는 사람마다 다른데 [^aweekj] 좀 더 알아봐
 ```
 <div id="disqus_thread"></div>
 <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-    var disqus_config = function () {
-        this.page.url = "http://xho95.github.io{{ page.url }}";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-
 		var disqus_shortname = '{{ site.disqus }}';
 
 		(function() {  // DON'T EDIT BELOW THIS LINE
@@ -74,6 +65,10 @@ disqus 코드는 사용하는 사람마다 다른데 [^aweekj] 좀 더 알아봐
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 ```
+
+원래 코드는 좀 더 긴데 처음부터 주석이 된 부분이 있습니다. 이 주석 처리한 부분을 사용해 보니 정작 작동하지 않았고, 주석 부분을 빼고 하니 잘 작동하는 것 같아서 주석 처리된 부분을 제거 했습니다.
+
+> 기타 참고 자료도 한 번 살펴봅니다. [^perfectlyrandom] 참고를 안 한 이유가 있을 것입니다.
 
 ### post.html 파일 수정하기
 
@@ -107,6 +102,6 @@ categories: disqus jekyll comments
 
 [^perfectlyrandom]: [Adding Disqus to your Jekyll](http://www.perfectlyrandom.org/2014/06/29/adding-disqus-to-your-jekyll-powered-github-pages/) : 뭔가 보기 불편해서 여기서 뺀 것 같습니다. 나중에 다시 확인해 봐야 합니다.
 
-[^sgeos]: [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) : 설명이 잘 되어 있는 것 같습니다.
+[^sgeos]: [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) : 설명이 잘 되어 있는 것 같습니다. 특히 각 포스트마다 댓글 개수를 표시하도록 하는 부분을 설명해 둔 점이 좋은 것 같습니다.
 
 [^aweekj]: [Jekyll에 Disqus 추가하기](https://aweekj.github.io/2016-08-09/add-disqus-to-jekyll/) : 설명이 중간에 중단된 듯한 느낌입니다. 그래도 YAML frontmatter의 예시를 보여줘서 도움이 되었습니다.

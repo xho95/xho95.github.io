@@ -107,12 +107,9 @@ int main(int argc, const char* argv[])
 
 > 이 부분에 대해서는 [taromati](https://twitter.com/_taromati) 님께서 직접 댓글을 달아 주셨습니다. **Targets** 에 path 설정은 매번 해야한다고 합니다.
 
-taromati 님의 원 블로그 글에는 시스템 관련 라이브러리들은 프레임웍(framework)을 지정하기도 했는데 이 부분은 iOS 때문에 하는 것으로 macOS 와는 다른 부분이라고 합니다. taromati 님의 블로그가 사라져서 지금은 원 글을 확인할 수가 없는 상태입니다.
+taromati 님의 원 블로그 글에는 시스템 관련 라이브러리들은 프레임웍(framework)을 지정하기도 했는데 이 부분은 iOS 때문에 하는 것으로 macOS 와는 다른 부분이라고 합니다. 
 
-보다 자세한 내용은 아래의 댓글을 보시면 좋을 것 같습니다.
-
-> 제가 아직 Disqus 설정을 잘 몰라서 댓글이 좀 이상하게 나타나는 것 같은데 맨 밑에 [Xcode에서 Boost 라이브러리 사용하기](https://xho95.github.io/xcode/c++/library/boost/2016/02/01/Install-Boost-Library-for-Xcode.html) 라는 글 링크를 누르면 댓글이 나타납니다. 가능한한 직접 댓글이 나타나도록 수정하도록 하겠습니다.
-
+> taromati 님의 블로그가 사라져서 지금은 원 글을 확인할 수가 없는 상태입니다. 간단하게나마 아래에 있는 taromati 님의 댓글을 보시면 좋을 것 같습니다.
 
 ### 참고 자료
 
