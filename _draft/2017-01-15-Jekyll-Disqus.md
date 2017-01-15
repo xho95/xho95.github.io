@@ -4,13 +4,13 @@ Jekyll 블로그는 정적 페이지로만 구성되어 있습니다. [^jekyllrb
 
 > 댓글 시스템이라는 말을 대체할 용어를 찾아봅시다.
 
-막상 자료를 정리하려고 보니까 의외로 Disqus 공식 홈페이지의 문서가 너무 간단한 것 같아서 [Brendan A R Sechter](http://sgeos.github.io) 님의  블로그 글에서 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 라는 글을 많이 참고 했습니다. [^sgeos]
+막상 자료를 정리하려고 보니까 의외로 Disqus 공식 홈페이지의 문서가 너무 간단한 것 같아서 [^admin] [Brendan A R Sechter](http://sgeos.github.io) 님의  블로그 글에서 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 라는 글을 많이 참고 했습니다. [^sgeos]
 
 ### Disqus 댓글 추가하기
 
 먼저 [Disqus](https://disqus.com)에 가입하고 자신의 블로그를 등록해야 합니다.
 
-Admin 
+> Admin 을 이용하면 Disqus를 이용하는 방법이 잘 나와 있습니다. 설명이 함축적이긴 하지만 도움은 되는 것 같습니다. Disqus Admin의 내용을 중심으로 정리해도 될 것 같습니다. 
 
 #### disqus.html 파일 만들기
  
@@ -120,6 +120,8 @@ categories: disqus jekyll comments
 [^jekyllrb]: [Jekyll](https://jekyllrb.com) : Jekyll 공식 홈페이지입니다. 첫페이지에 정적 웹사이트를 만든다고 명시해두고 있습니다.
 
 [^disqus]: [Disqus](https://disqus.com) : Disqus 공식 홈페이지입니다. 일단 가입을 해서 계정을 만들고 사이트를 등록해야 합니다.
+
+[^admin]: [Jekyll install instructions](https://xho95githubio.disqus.com/admin/settings/jekyll/) : Admin 으로 들어가면 나오는 설명입니다. Disqus를 Jekyll에 추가하는 방법을 설명한 공식 문서입니다. 함축적으로 설명을 해서 의외로 설명만 보면 직접 하기가 쉽지 않습니다. 그래도 이 자료를 잘 정리하면 좋을 것 같습니다.
 
 [^sgeos]: [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) : 설명이 잘 되어 있는 것 같습니다. 특히 각 포스트마다 댓글 개수를 표시하도록 하는 부분을 설명해 둔 점이 좋은 것 같습니다.
 
