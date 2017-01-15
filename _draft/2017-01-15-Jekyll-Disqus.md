@@ -115,6 +115,8 @@ categories: disqus jekyll comments
 
 일단 생각해보면 draft 상태에서 댓글이 달릴 일이 없을 것 같아서 별 문제는 안될 것으로 보입니다만 이런 글이 있는데는 이유가 있을 것입니다. 좀 더 알아봐야할 것 같습니다.
 
+미이그레이션 한 것도 정리하자!
+
 ### 참고 자료
 
 [^jekyllrb]: [Jekyll](https://jekyllrb.com) : Jekyll 공식 홈페이지입니다. 첫페이지에 정적 웹사이트를 만든다고 명시해두고 있습니다.
