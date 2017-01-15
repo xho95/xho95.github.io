@@ -1,4 +1,16 @@
+Jekyll 블로그는 정적 페이지로만 구성되어 있습니다. [^jekyllrb] 따라서 자체적으로는 댓글 시스템 같은 동적 요소를 만들 수 없습니다. 그래서 보통 Jekyll 블로그에는 [Disqus](https://disqus.com) 댓글 시스템을 연결해서 사용합니다. [^disqus]
+
+여기서는 Jekyll 블로그에 Disqus 댓글 시스템을 추가하는 방법에 대해서 알아봅니다. 
+
+> 댓글 시스템이라는 말을 대체할 용어를 찾아봅시다.
+
+막상 자료를 정리하려고 보니까 의외로 Disqus 공식 홈페이지의 문서가 너무 간단한 것 같아서 [Brendan A R Sechter](http://sgeos.github.io) 님의  블로그 글에서 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 라는 글을 많이 참고 했습니다. [^sgeos]
+
 ### Disqus 댓글 추가하기
+
+먼저 [Disqus](https://disqus.com)에 가입하고 자신의 블로그를 등록해야 합니다.
+
+Admin 
 
 #### disqus.html 파일 만들기
  
@@ -105,9 +117,13 @@ categories: disqus jekyll comments
 
 ### 참고 자료
 
-[^disqus-universalcode]: [Setup Instructions for Universal Code](https://django-test-blog.disqus.com/admin/universalcode/#configuration-variables) : Disqus 공식 설명 문서입니다. 결국 이 자료를 잘 이해해야할 것 같습니다. 댓글 개수를 다는 부분도 설명되어 있습니다.
+[^jekyllrb]: [Jekyll](https://jekyllrb.com) : Jekyll 공식 홈페이지입니다. 첫페이지에 정적 웹사이트를 만든다고 명시해두고 있습니다.
+
+[^disqus]: [Disqus](https://disqus.com) : Disqus 공식 홈페이지입니다. 일단 가입을 해서 계정을 만들고 사이트를 등록해야 합니다.
 
 [^sgeos]: [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) : 설명이 잘 되어 있는 것 같습니다. 특히 각 포스트마다 댓글 개수를 표시하도록 하는 부분을 설명해 둔 점이 좋은 것 같습니다.
+
+[^disqus-universalcode]: [Setup Instructions for Universal Code](https://django-test-blog.disqus.com/admin/universalcode/#configuration-variables) : Disqus 공식 설명 문서입니다. 결국 이 자료를 잘 이해해야할 것 같습니다. 댓글 개수를 다는 부분도 설명되어 있습니다.
 
 [^aweekj]: [Jekyll에 Disqus 추가하기](https://aweekj.github.io/2016-08-09/add-disqus-to-jekyll/) : 설명이 중간에 중단된 듯한 느낌입니다. 그래도 YAML frontmatter의 예시를 보여줘서 도움이 되었습니다.
 
