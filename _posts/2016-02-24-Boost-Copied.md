@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "C++: Boost 라이브러리의 Copied 어댑터 정리"
 date:   2016-02-24 14:30:00 +0900
 categories: Xcode C++ Boost Copied

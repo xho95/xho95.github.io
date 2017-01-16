@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "MarkDown 문서를 이용하여 블로그에 포스트하기"
 date:   2016-01-12 11:58:00 +0900
 categories: Jekyll MarkDown Atom kramdown

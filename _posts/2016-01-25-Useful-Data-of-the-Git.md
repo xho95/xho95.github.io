@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Git 관련 자료 모음"
 date:   2016-01-25 21:25:00 +0900
 categories: Resources Sites Books Git
@@ -9,7 +10,7 @@ categories: Resources Sites Books Git
 
 ### Git 기본 명령어들
 
-터미널에서 `git --help`를 입력하면 기본 사용법이 나오는데, 이 때 기본 명령어들에 대한 간단한 설명들이 나온다.
+터미널에서 `git --help`를 입력하면 기본 사용법이 나오는데, 이 때 기본 명령어들에 대한 간단한 설명들이 나옵니다.
 
 ```
 $ git --help
@@ -17,14 +18,14 @@ $ git --help
 
 #### 작업 공간 시작하기
 
-* `clone` : 원격 저장소를 지역 디렉토리에 복제한다.
-* `init` : 비어있는 Git 저장소를 만들거나 기존에 있던 것을 초기화한다.
+* `clone` : 원격 저장소를 지역 디렉토리에 복제합니다.
+* `init` : 비어있는 Git 저장소를 만들거나 기존에 있던 것을 초기화합니다.
 
 > `git help tutorial`의 결과도 살펴볼 필요가 있습니다.
 
 #### 현재의 변경에서 작업하기
 
-* `add` : 파일 (변경) 내용을 인덱스에 추가합니다.
+* `add` : 파일 변경 내용을 인덱스에 추가합니다.
 * `mv` : 파일, 디렉토리, 또는 (연결)링크를 옮기거나 이름을 변경합니다.
 * `reset` : 현재 **HEAD** 를 특정한 상태로 재설정합니다.
 * `rm` : 파일들을 작업 트리와 인덱스에서 제거합니다.
@@ -51,7 +52,7 @@ $ git --help
 * `rebase` : Forward-port local commits to the updated upstream head (아직 뭐라고 번역해야할지 모르겠습니다. ㅜㅜ)
 * `tag` : GPG로 표기된 태그 객체를 만들고, 나열하고, 지우고, 또는 확인합니다.
 
-#### collaborate
+#### 협업하기
 
 * `fetch` : 다른 저장소에서 객체들과 참조들을 다운로드 합니다.
 * `pull` : 다른 저장소나 브랜치에서 fetch를 하고 취합합니다.

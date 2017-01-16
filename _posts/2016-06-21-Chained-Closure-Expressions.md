@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 3.0: 연결된 클로져 표기법"
 date:   2016-06-21 17:30:00 +0900
 categories: Swift Grammar Expressions Closures

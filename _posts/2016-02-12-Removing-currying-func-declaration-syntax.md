@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 3.0: 커리 함수 선언 구문의 생략"
 date:   2016-02-12 20:30:00 +0900
 categories: Xcode Swift Currying Evolution

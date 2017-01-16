@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 3.0: 훑어보기(A Swift Tour)"
 date:   2016-04-17 19:45:00 +0900
 categories: Xcode Swift Grammar Tour

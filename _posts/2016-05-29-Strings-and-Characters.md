@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 2.2: 문자열(Strings and Characters)"
 date:   2016-05-29 19:45:00 +0900
 categories: Swift Grammar Strings Characters

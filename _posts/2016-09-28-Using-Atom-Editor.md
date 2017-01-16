@@ -1,11 +1,12 @@
 ---
 layout: post
+comments: true
 title:  "Atom 에디터 활용하기"
 date:   2016-09-28 02:15:00 +0900
 categories: Editor Atom Markdown Python
 ---
 
-[아톰 에디터(Atom Editor)](https://atom.io) [^Atom] 는 [GitHub](https://github.com) [^github] 에서 만든 에디터로 [일렉트론(Electron)](https://github.com/electron/electron) [^electron] 프레임웍이라는 웹 기반 기술로 만들어서 Windows, OS X, Linux 등에서 모두 동작합니다. [^dovetail] 
+[아톰 에디터(Atom Editor)](https://atom.io) [^Atom] 는 [GitHub](https://github.com) [^github] 에서 만든 에디터로 [일렉트론(Electron)](https://github.com/electron/electron) [^electron] 프레임웍이라는 웹 기반 기술로 만들어서 Windows, OS X, Linux 등에서 모두 동작합니다. [^dovetail]
 
 그 밖에도 마크다운(Markdown) 관련 패키지가 기본으로 내장되어 있어서 마크다운 에디터로써도 좋다고 합니다. [^kichul]
 
@@ -46,7 +47,7 @@ Atom 에디터를 Python 개발도구로 사용하는 것은 문제가 있다고
 
 #### 관련 Package 설치하기
 
-Atom 에디터를 Python 개발툴로 사용하는 방법 및 관련 Package 설치에 대해서는 [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html)라는 블로그 글에 잘 정리되어 있습니다. [^reachlab-kr] 
+Atom 에디터를 Python 개발툴로 사용하는 방법 및 관련 Package 설치에 대해서는 [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html)라는 블로그 글에 잘 정리되어 있습니다. [^reachlab-kr]
 
 기타 Atom 에디터에 설치할만한 Package에 대해서는 [Atom Editor 추천 패키지](http://blog.naver.com/PostView.nhn?blogId=jkikss&logNo=220590070604&categoryNo=44&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView)을 참고할 만 합니다. [^naver]  [^marinamele]
 
@@ -58,13 +59,13 @@ Atom 에디터에서 Package를 설치하는 방법은 **Atom > Preferences... >
 
 #### Atom 에디터에서 conda 가상 환경 인식시키기
 
-Anaconda에는 conda라는 패키지 관리 툴이 있습니다. 이 conda는 패키지 관리 툴이면서 가상 환경을 관리해주기도 하는 툴인데요, Atom 에디터를 사용하다 보면 conda에서 만든 가상 환경을 인식해야 하는 경우가 있습니다. 
+Anaconda에는 conda라는 패키지 관리 툴이 있습니다. 이 conda는 패키지 관리 툴이면서 가상 환경을 관리해주기도 하는 툴인데요, Atom 에디터를 사용하다 보면 conda에서 만든 가상 환경을 인식해야 하는 경우가 있습니다.
 
 이 경우에 [Atom with Anaconda’s Python and Anaconda’s Python packages?](https://discuss.atom.io/t/atom-with-anacondas-python-and-anacondas-python-packages/31235) 라는 글을 참고하면 많은 도움이 될 것입니다.
 
 ### 고찰 하기
 
-Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용해 볼 필요가 있을 것 같습니다. 제가 Sublime Text를 직접 사용해 본적이 없어서 어떤 에디터가 더 나은 지는 잘 모르겠습니다. 
+Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용해 볼 필요가 있을 것 같습니다. 제가 Sublime Text를 직접 사용해 본적이 없어서 어떤 에디터가 더 나은 지는 잘 모르겠습니다.
 
 업데이트가 자주 되는 것은 장점이기도 하지만, 대신에 업데이트 때마다 어떤 변경이 있었는지를 알기 힘든 것 같습니다. 해결책이 있을 것 같은데 아직은 잘 모르겠습니다. 이 글을 작성하는 시점에서도 Python Unicode 출력관련 버그가 소리소문없이 해결된 것 같습니다.
 
@@ -72,7 +73,7 @@ Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용
 
 [^Atom]: [Atom.io](https://atom.io) : 아톰 에디터의 공식 홈페이지 입니다.
 
-[^github]: [GitHub](https://github.com) : 아톰 에디터를 만든 GitHub 공식 홈페이지입니다. GitHub에 있는 아톰 에디터 저장소는 [atom/atom](https://github.com/atom/atom) 입니다. 
+[^github]: [GitHub](https://github.com) : 아톰 에디터를 만든 GitHub 공식 홈페이지입니다. GitHub에 있는 아톰 에디터 저장소는 [atom/atom](https://github.com/atom/atom) 입니다.
 
 [^electron]: [Electron](https://github.com/electron/electron) : GitHub에 있는Electron 프레임웍의 공식 저장소입니다.
 
@@ -84,7 +85,7 @@ Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용
 
 [^chann]: [Atom 에서 Python 3 개발하기](https://blog.chann.kr/how-to-use-python3-in-atom/)
 
-[^naver]: [Atom Editor 추천 패키지](http://blog.naver.com/PostView.nhn?blogId=jkikss&logNo=220590070604&categoryNo=44&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView) 내용은 괜찮은 것 같은데 처음에 화면 가득 이미지가 떠서 당황했습니다. 
+[^naver]: [Atom Editor 추천 패키지](http://blog.naver.com/PostView.nhn?blogId=jkikss&logNo=220590070604&categoryNo=44&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView) 내용은 괜찮은 것 같은데 처음에 화면 가득 이미지가 떠서 당황했습니다.
 
 [^reachlab-kr]: [Atom을 Python 개발 툴로 사용하기](http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html) 이를 통해 Atom 에디터에 플러그인 같은 도구를 설치하는 방법도 알 수 있습니다. autocomplete-glsl 같은 것도 있는 것 같습니다.
 
@@ -94,4 +95,4 @@ Atom 에디터와 Sublime Text 같은 다른 에디터들을 비교해서 사용
 
 [^useful-atom-packages]: [10 Most Useful Atom Packages for Web Developers](http://www.hongkiat.com/blog/useful-atom-packages/) : Atom 에디터에 설치하면 좋은 패키지 10가지 소개입니다.
 
-[^atom-with-anacondas]: [Atom with Anaconda’s Python and Anaconda’s Python packages?](https://discuss.atom.io/t/atom-with-anacondas-python-and-anacondas-python-packages/31235) : Atom 에디터가 conda의 가상 환경을 인식 시키도록 하는 방법에 대한 답변이 있는 글입니다. 
+[^atom-with-anacondas]: [Atom with Anaconda’s Python and Anaconda’s Python packages?](https://discuss.atom.io/t/atom-with-anacondas-python-and-anacondas-python-packages/31235) : Atom 에디터가 conda의 가상 환경을 인식 시키도록 하는 방법에 대한 답변이 있는 글입니다.

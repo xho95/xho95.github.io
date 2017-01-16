@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Swift 2.2: 기초 연산자(Basic Operators)"
 date:   2016-04-24 19:45:00 +0900
 categories: Swift Grammar Basic Operators
