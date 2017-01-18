@@ -2,6 +2,8 @@
 
 [Using the Django authentication system](https://docs.djangoproject.com/en/1.10/topics/auth/default/) : 역시 원문이 좋습니다. 
 
+[Customizing authentication in Django](https://docs.djangoproject.com/en/1.10/topics/auth/customizing/#auth-custom-user)
+
 [Django 자습](https://wikidocs.net/book/837) : 상당히 좋은 곳 같습니다.
 
 [Django 사용자 인증 시스템](http://jeminency.tistory.com/183) : 데코레이터를 활용하는 방법에 대해서 설명하고 있습니다.
