@@ -1,10 +1,10 @@
 ### 참고 자료
 
-[Using the Django authentication system](https://docs.djangoproject.com/en/1.10/topics/auth/default/) : 역시 원문이 좋습니다. 
+[Using the Django authentication system](https://docs.djangoproject.com/en/1.10/topics/auth/default/) : 역시 원문이 좋습니다.
 
 [Using the Django authentication system - 1](http://blog.naver.com/PostView.nhn?blogId=nightrai&logNo=220693332397) : 이 글의 원문을 찾아볼 필요가 있을 것 같습니다.
 
-[Customizing authentication in Django](https://docs.djangoproject.com/en/1.10/topics/auth/customizing/) : 장고의 인증 과정을 커스텀하는 방법에 대해서 소개하는 공식 문서입니다.
+[Customizing authentication in Django](https://docs.djangoproject.com/en/1.10/topics/auth/customizing/#auth-custom-user) : 장고의 인증 과정을 커스텀하는 방법에 대해서 소개하는 공식 문서입니다.
 
 [번역: django-custom-user-model](http://mingkim.github.io/programming/2015/11/10/django-custom-user-model.html) : 앞 선 링크의 번역본입니다.
 
@@ -14,6 +14,6 @@
 
 [장고(Django) 개발: 사용자 관리](http://heiswed.tistory.com/entry/장고Django-개발-사용자-관리)
 
-[python django study](https://github.com/chohankyun/python-django-study) : 장고 공부한 것을 GitHub Wiki로 정리하고 있는 곳입니다. 
+[python django study](https://github.com/chohankyun/python-django-study) : 장고 공부한 것을 GitHub Wiki로 정리하고 있는 곳입니다.
 
 [장고(Django) request.user를 입맛대로 바꾸기](http://yong27.biohackers.net/365#recentTrackback) : 이 분의 블로그 글들도 찾아볼만한 것 같습니다. 다만, 글은 좀 어렵게 쓰여진 것 같습니다.

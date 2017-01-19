@@ -4,6 +4,7 @@
 
 [Apache James Server 3](https://james.apache.org/server/3/install.html)
 
+
 #### attachment 
 
 [How to send pdf as an email attachment in Django](http://stackoverflow.com/questions/20717496/how-to-send-pdf-as-an-email-attachment-in-django)
@@ -30,6 +31,10 @@
 
 [Send email using Django and Gmail SMTP](http://jstricks.com/send-email-using-django-gmail-smtp/)
 
+[SMTP for free users](https://help.pythonanywhere.com/pages/SMTPForFreeUsers/) : 일단은 가장 좋은 자료인 듯 합니다. 
+
+[Sign in using App Passwords](https://support.google.com/accounts/answer/185833?hl=en)
+
 **settings.py**
 
 ```
@@ -54,6 +59,10 @@ send_mail('Subject here', 'Here is the message.', settings.EMAIL_HOST_USER, ['to
 #### Sendgrid
 
 [elbuo8/sendgrid-django](https://github.com/elbuo8/sendgrid-django)
+
+#### MailGun
+
+[Integrating Email service with Django using Mailgun](http://blog.narenarya.in/email-service-django.html)
 
 ### Python
 
