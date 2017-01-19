@@ -172,18 +172,18 @@ def send_email(request):
 class EmailMessage
 ```
 
-The **EmailMessage** class is initialized with the following parameters (in the given order, if positional arguments are used). All parameters are optional and can be set at any time prior to calling the **send()** method.
+**EmailMessage** 클래스는 아래의 매개 변수들을 사용해서 초기화됩니다. (위치 인자(positional arguments)를 사용하면 이 순서대로 초기화됩니다.). 모든 매개 변수는 선택 사항이며 **send()** 메소드를 호출하기 전에 언제든지 값을 부여할 수 있습니다.
 
-* **subject**: The subject line of the email.
-* **body**: The body text. This should be a plain text message.
-* **from_email**: The sender’s address. Both **fred@example.com** and **Fred \<fred@example.com>** forms are legal. If omitted, the **DEFAULT_FROM_EMAIL** setting is used.
-* **to**: A list or tuple of recipient addresses.
-* **bcc**: A list or tuple of addresses used in the “Bcc” header when sending the email.
-* **connection**: An email backend instance. Use this parameter if you want to use the same connection for multiple messages. If omitted, a new connection is created when **send()** is called.
-* **attachments**: A list of attachments to put on the message. These can be either **email.MIMEBase.MIMEBase** instances, or **(filename, content, mimetype)** triples.
-* **headers**: A dictionary of extra headers to put on the message. The keys are the header name, values are the header values. It’s up to the caller to ensure header names and values are in the correct format for an email message. The corresponding attribute is **extra_headers**.
-* **cc**: A list or tuple of recipient addresses used in the “Cc” header when sending the email.
-* **reply_to**: A list or tuple of recipient addresses used in the “Reply-To” header when sending the email.
+* **subject**: 이메일의 제목줄.
+* **body**: 문서 몸체. 이것은 단순 텍스트(plain text) 메시지여야 합니다.
+* **from_email**: 발송자 주소. **fred@example.com** 과 **Fred \<fred@example.com>** 의 두 양식 모두 가능합니다. 만약 생략되면 **DEFAULT\_FROM_EMAIL** 설정이 사용됩니다.s
+* **to**: 수신자 주소 튜플의 리스트.
+* **bcc**: 메일을 보낼 때 숨은 참조로 사용되는 주소 튜플의 리스트.
+* **connection**: 이메일 백엔드(email backend) 인스턴스. 같은 연결을 사용해서 여러 개의 메시지를 보내려면 이 매개 변수를 사용합니다. 생략하면 **send()** 가 호출 될 때 마다 새 연결이 사용됩니다. 
+* **attachments**: 메시지에 첨부된 파일의 리스트. 이것은 **email.MIMEBase.MIMEBase** 인스턴스이거나 **(filename, content, mimetype)** 트리플입니다.
+* **headers**: 메시지에 넣은 추가 머리말에 대한 딕셔너리. 키는 머리말 이름이고, 값은 머리말 값입니다. 이메일 메시지에서 머리말 이름과 값이 맞는 포맷인지는 호출하는 쪽에 달려 있습니다(?) 연관된 속성은 **extra_headers** 입니다.
+* **cc**: 메일에서 `Cc` 머리말에 사용되는 수신자 주소 튜플의 리스트.
+* **reply_to**: 메일에서 `Reply-To` 머리말에 사용되는 수신자 주소 튜플의 리스트.
 
 예를 들면:
 
@@ -203,13 +203,13 @@ email = EmailMessage(
 
 이 클래스는 다음의 메소드를 가집니다:
 
-* **send(fail_silently=False)** sends the message. If a connection was specified when the email was constructed, that connection will be used. Otherwise, an instance of the default backend will be instantiated and used. If the keyword argument **fail_silently** is **True**, exceptions raised while sending the message will be quashed. An empty list of recipients will not raise an exception.
+* **send(fail_silently=False)** 는 메시지를 보냅니다. 만약 이메일이 만들어 질 때 하나의 연결이 결정되어 있으면, 그 연결을 사용합니다. 아니라면, 기본 백엔드의 인스턴스가 하나 초기화 되고 사용됩니다. 만약 **fail_silently** 키워드 인자를 **True** 로 하면, 메일을 보내는 중에 메시지가 무효가 될 때 예외를 발생합니다. 수신자 리스트가 비어 있는 것은 예외를 발생하지 않습니다.
 
-* **message()** constructs a **django.core.mail.SafeMIMEText** object (a subclass of Python’s **email.MIMEText.MIMEText** class) or a **django.core.mail.SafeMIMEMultipart** object holding the message to be sent. If you ever need to extend the **EmailMessage** class, you’ll probably want to override this method to put the content you want into the MIME object.
+* **message()** 는 보내질 메시지를 가지고 있는**django.core.mail.SafeMIMEText** 객체 (파이썬 **email.MIMEText.MIMEText** 클래스를 상속받은 클래스) 나  **django.core.mail.SafeMIMEMultipart** 객체를 만듭니다. 만약  **EmailMessage** 클래스를 확장할 필요가 있으면, 이 메소드를 오버라이드해서 MIME 객체에 내용을 넣어야 할 수 있습니다.
 
-* **recipients()** returns a list of all the recipients of the message, whether they’re recorded in the **to**, **cc** or **bcc** attributes. This is another method you might need to override when subclassing, because the SMTP server needs to be told the full list of recipients when the message is sent. If you add another way to specify recipients in your class, they need to be returned from this method as well.
+* **recipients()** 는 메시지의 모든 수신자 리스트를 반환합니다. 수신자가 **to**, **cc** 또는 **bcc** 속성에 저장됐는지의 여부는 따지지 않습니다. 이 메소드는 상속받을 때 오버라이드할 필요가 있습니다. 왜냐면 SMTP 서버는 메시지를 보낼 때 전체 수신자 리스트가 필요하기 때문입니다. 자기가 만든 클래스에서 다른 방법으로 수신자를 결정한다면 이 메소드에서 결과를 반환해 줄 필요가 있습니다.
 
-* **attach()** creates a new file attachment and adds it to the message. There are two ways to call **attach()**:
+* **attach()** 는 새 첨부 파일을 만들고 그것을 메시지에 추가합니다. **attach()** 는 두 가지 방법으로 호출할 수 있습니다:
 
 	* You can pass it a single argument that is an **email.MIMEBase.MIMEBase** instance. This will be inserted directly into the resulting message.
 
@@ -233,9 +233,9 @@ email = EmailMessage(
 	
 **Sending alternative content types**
 
-It can be useful to include multiple versions of the content in an email; the classic example is to send both text and HTML versions of a message. With Django’s email library, you can do this using the **EmailMultiAlternatives** class. This subclass of **EmailMessage** has an **attach_alternative()** method for including extra versions of the message body in the email. All the other methods (including the class initialization) are inherited directly from **EmailMessage**.
+하나의 메일에 다양한 버전의 내용을 포함하고 있으면 유용합니다; 전통적인 예로는 메시지를 텍스트와 HTML 두 버전으로 보내는 것입니다. 장고의 이메일 라이브러리를 사용하면 **EmailMultiAlternatives** 클래스로 이것을 할 수 있습니다. **EmailMessage** 를 상속받은 클래스로 **attach_alternative()** 메소드를 가지고 있어서 이메일에 별도 버전의 메시지를 포함할 수 있습니다. (초기화까지 포함한) 모든 다른 메소드들은 **EmailMessage**로부터 상속받습니다.
 
-To send a text and HTML combination, you could write:
+텍스트와 HTML 조합으로 메일을 보내려면 다음과 같이 하면 됩니다:
 
 ```
 from django.core.mail import EmailMultiAlternatives
