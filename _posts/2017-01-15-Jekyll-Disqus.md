@@ -28,7 +28,7 @@ categories: Blog Jekyll Disqus Migration
 
 첫번째는 "YAML Front Matter" 에 `coments` 라는 변수를 추가하고 그 값을 `true` 로 지정하는 것입니다. Disqus 에 나오는 예시는 다음과 같습니다.
 
-```
+```yaml
 ---
 layout: default
 comments: true
@@ -42,7 +42,7 @@ comments: true
 
 현재 이 글의  "YAML Front Matter" 는 다음과 같습니다.
 
-```
+```yaml
 ---
 layout: post
 comments: true
