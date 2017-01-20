@@ -79,16 +79,16 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 ```
 
-[Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 라는 글에서는 **_includes** 폴더에 **disqus.html** 파일을 새로 만들어서 이 파일에다가 "Universal Embed Code" 를 복사해 넣고 있습니다.
+[Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 에서는 **_includes** 폴더에 **disqus.html** 파일을 새로 만들어서 이 파일에 "Universal Embed Code" 를 복사해 넣고 있습니다.
 
-이렇게 하는데는 이유가 있는데, **_includes** 폴더는 Jekyll 에서 특정 페이지나 포스트에 반복해서 넣을 수 있는 부분들을 넣는 곳입니다. 따라서 **disqus.html** 파일이 **_includes** 폴더에 있으면 템플릿 코드를 사용해서 모든 포스트 글에 댓글 코드를 넣을 수 있게 됩니다.
+이렇게 하는데는 이유가 있는데, **_includes** 폴더는 Jekyll 에서 특정 페이지나 포스트에 반복해서 넣을 수 있는 부분들을 넣는 곳이기 때문입니다. 따라서 **disqus.html** 파일이 **_includes** 폴더에 있으면 템플릿 코드를 사용해서 모든 포스트 글에 댓글 코드를 넣을 수 있게 됩니다.
 
-> 한편, 위 코드에서 **RECOMMENDED CONFIGURATION VARIABLES** 섹션은 블로그의 CMS (Contents Menage System) 이나 플랫폼의 동적 값을 사용하여 편집하는 것을 추천한다고 합니다. Disqus의 [Use Configuration Variables to Avoid Split Threads and Missing Comments](https://help.disqus.com/customer/en/portal/articles/2158629) 라는 문서를 보면, `identifier` 와 `url` 변수를 지정함으로써 쓰레드의 중복을 피할 수 있다고 설명하고 있습니다. [^help-2158629]
+> 한편, 위 코드에서 RECOMMENDED CONFIGURATION VARIABLES 부분은 블로그의 CMS (Contents Menage System) 이나 플랫폼의 동적 값을 사용하여 편집하는 것을 추천한다고 합니다. Disqus의 [Use Configuration Variables to Avoid Split Threads and Missing Comments](https://help.disqus.com/customer/en/portal/articles/2158629) 라는 문서를 보면, `identifier` 와 `url` 변수를 지정함으로써 쓰레드의 중복을 피할 수 있다고 설명하고 있습니다. [^help-2158629]
 
 제가 작성한 **disqus.html** 파일의 최종 결과는 아래와 같습니다.
 
 ```
-{% if page.comments %}
+{ % if page.comments % }
 <div id="disqus_thread"></div>
 <script>
     /**
@@ -113,20 +113,20 @@ s.setAttribute('data-timestamp', +new Date());
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-{% endif %}
+{ % endif % }
 ```
 
 위의 코드를 보면 `disqus_shortname` 이라는 변수를 사용했는데, 이 변수의 값은 **Admin > Settings > General** 메뉴의 **Configure Disqus for Your Site** 페이지에 있는 "Shortname" 에서 알려주는 문자열을 복사해서 사용하면 됩니다.
 
-> 단, "Shortname" 값에는 에는 함정이 있는데 이 값은 **Configure Disqus** 메뉴에서 "Website URL" 값을 넣은 다음에 **Complete Setup** 버튼을 눌러야  Disqus 가 알아서 만들어 주는 값이라는 것입니다. 따라서 Disqus의 설명과 "Shortname" 값을 동시에 볼 수는 없습니다. 일단  "Shortname" 값을 만들고 다시 Admin 설명을 따라서 작업해야 합니다.
+> 단, "Shortname" 값에는 에는 함정이 있는데 이 값은 **Configure Disqus** 메뉴에서 "Website URL" 값을 넣은 다음에 **Complete Setup** 버튼을 눌러야  Disqus 가 알아서 만들어 주는 값이라는 것입니다. 따라서 Disqus의 설명과 "Shortname" 값을 동시에 볼 수는 없습니다. 일단  "Shortname" 값을 만들고 다시 Admin 설명을 따라서 진행해야 합니다.
 
 저는 "Shortname" 에서 알려주는 문자열을 **_config.yml** 파일에 새로 `disqus` 변수를 만들고 여기에 할당해서 사용한 것인데 꼭 이렇게 안해도 될 것 같습니다.
 
 #### 3. **disqus.html** 파일 포함하기
 
-앞에서 **disqus.html** 파일을 만들고 "Universal Embed Code" 를 작성했습니다. 이제 이 코드를 각 포스트 글에 넣어줘야 합니다.
+앞에서 **disqus.html** 파일을 만들고 "Universal Embed Code" 를 작성했습니다. 이제 이 코드를 각 포스트 글에 넣어줍니다.
 
-이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣어 주면 됩니다.
+이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣으면 됩니다.
 
 ```
 {% include disqus.html %}
