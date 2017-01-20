@@ -128,7 +128,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣으면 됩니다.
 
-```
+```jekyll
 {% raw %}{% include disqus.html %}{% endraw %}
 ```
 
