@@ -56,7 +56,7 @@ categories: Blog Jekyll Disqus Migration
 
 블로그의 적당한 템플릿 (template) 에다가  아래의 "Universal Embed Code" 를 복사해서 붙여 넣습니다. 이 때 아래의 코드를 `{% raw %}{% if page.comments %}{% endraw %}` 와 `{% raw %}{% endif %}{% endraw %}` 코드로 감싸줍니다.
 
-```text
+```html
 <div id="disqus_thread"></div>
 <script>
 
@@ -87,7 +87,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 제가 작성한 **disqus.html** 파일의 최종 결과는 아래와 같습니다.
 
-```text
+```html
 {% raw %}{% if page.comments %}{% endraw %}
 <div id="disqus_thread"></div>
 <script>
@@ -128,7 +128,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣으면 됩니다.
 
-```text
+```html
 {% raw %}{% include disqus.html %}{% endraw %}
 ```
 
@@ -142,7 +142,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 **_layouts** 폴더에 있는 **default.html** 파일에서 `</body>` 태그 바로 앞에 아래와 같은 코드를 추가해 줍니다.
 
-```
+```html
 <script id="dsq-count-scr" src="//django-test-blog.disqus.com/count.js" async></script>
 ```
 
@@ -150,7 +150,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 저는 아래와 같이 사용하고 있습니다.
 
-```text
+```html
 <script id="dsq-count-scr" src="//{% raw %}{{ site.disqus }}{% endraw %}.disqus.com/count.js" async></script>
 ```
 
@@ -160,7 +160,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 **_layouts** 폴더에 있는 **post.html** 파일에 아래와 같은 코드를 추가합니다.
 
-```text
+```html
 {% raw %}{% if page.comments %}{% endraw %} • <a href="https://xho95.github.io{% raw %}{{ page.url }}{% endraw %}#disqus_thread">0 Comments</a>{% raw %}{% endif %}{% endraw %}
 ```
 
@@ -172,7 +172,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 포스트의 리스트에 댓글 개수를 표시하기 위해서는 **index.html** 파일에 아래와 같은 코드를 추가합니다. 위치는 `<span class="post-meta">` 줄의 마지막 `</span>` 앞에 추가하도록 합니다.
 
-```text
+```html
 <a href="https://xho95.github.io{% raw %}{{ post.url }}{% endraw %}#disqus_thread">0 Comments</a>
 ```
 
