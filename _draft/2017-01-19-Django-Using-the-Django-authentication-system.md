@@ -70,7 +70,7 @@ $ python manage.py createsuperuser --username=joe --email=joe@example.com
 
 #### 사용자 인증하기
 
-```
+```python
 authenticate(**credentials)
 ```
 
