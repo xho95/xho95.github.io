@@ -224,6 +224,8 @@ http://example.com/old-path/old/posta.html, http://example.com/new-path/new/post
 
 이 부분은 [Use Configuration Variables to Avoid Split Threads and Missing Comments](https://help.disqus.com/customer/en/portal/articles/2158629) 글을 보고 이해한 다음에  내용을 추가할 수 있도록 하겠습니다.
 
+한편으로는 이 글을 작성하면서 소스 코드로 넣은 템플릿 코드가 자꾸 실행되어서 문제가 됐는데, 이것은 `{% raw %}{% raw %}{% endraw %}` 태그로 해결할 수 있었습니다. [^stackoverflow-24102498]
+
 ### 참고 자료
 
 [^jekyllrb]: [Jekyll](https://jekyllrb.com) : Jekyll 공식 홈페이지입니다. 첫페이지에 정적 웹사이트를 만든다고 명시해두고 있습니다.
@@ -243,3 +245,5 @@ http://example.com/old-path/old/posta.html, http://example.com/new-path/new/post
 [^aweekj]: [Jekyll에 Disqus 추가하기](https://aweekj.github.io/2016-08-09/add-disqus-to-jekyll/) : 설명이 중간에 중단된 듯한 느낌입니다. 그래도 YAML frontmatter의 예시를 보여줘서 도움이 되었습니다.
 
 [^help-565624]: [Adding comment count links to your home page](https://help.disqus.com/customer/portal/articles/565624)
+
+[^stackoverflow-24102498]: [Escaping double curly braces inside a markdown code block in Jekyll](http://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll)
