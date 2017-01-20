@@ -87,7 +87,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 제가 작성한 **disqus.html** 파일의 최종 결과는 아래와 같습니다.
 
-```
+```text
 {% raw %}{% if page.comments %}{% endraw %}
 <div id="disqus_thread"></div>
 <script>
@@ -160,7 +160,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 **_layouts** 폴더에 있는 **post.html** 파일에 아래와 같은 코드를 추가합니다.
 
-```
+```text
 {% raw %}{% if page.comments %} • <a href="https://xho95.github.io{{ page.url }}#disqus_thread">0 Comments</a>{% endif %}{% endraw %}
 ```
 
