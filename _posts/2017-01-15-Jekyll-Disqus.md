@@ -57,6 +57,7 @@ categories: Blog Jekyll Disqus Migration
 블로그의 적당한 템플릿 (template) 에다가  아래의 "Universal Embed Code" 를 복사해서 붙여 넣습니다. 이 때 아래의 코드를 `{% raw %}{% if page.comments %}{% endraw %}` 와 `{% raw %}{% endif %}{% endraw %}` 코드로 감싸줍니다.
 
 ```
+{% raw %}
 <div id="disqus_thread"></div>
 <script>
 
@@ -77,6 +78,7 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endraw %}
 ```
 
 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 에서는 **_includes** 폴더에 **disqus.html** 파일을 새로 만들어서 이 파일에 "Universal Embed Code" 를 복사해 넣고 있습니다.
@@ -87,8 +89,9 @@ s.setAttribute('data-timestamp', +new Date());
 
 제가 작성한 **disqus.html** 파일의 최종 결과는 아래와 같습니다.
 
-```text
-{% raw %}{% if page.comments %}{% endraw %}
+```
+{% raw %}
+{% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
     /**
@@ -96,11 +99,11 @@ s.setAttribute('data-timestamp', +new Date());
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
      */
 
-		var disqus_shortname = '{% raw %}{{ site.disqus }}{% endraw %}';
+		var disqus_shortname = '{{ site.disqus }}';
 
     var disqus_config = function () {
-        this.page.url = 'disqus_shortname' + "{% raw %}{{ page.url }}{% endraw %}";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "{% raw %}{{ page.id }}{% endraw %}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'disqus_shortname' + "{{ page.url }}";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
 		(function() {  // DON'T EDIT BELOW THIS LINE
@@ -113,7 +116,8 @@ s.setAttribute('data-timestamp', +new Date());
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-{% raw %}{% endif %}{% endraw %}
+{% endif %}
+{% endraw %}
 ```
 
 위의 코드를 보면 `disqus_shortname` 이라는 변수를 사용했는데, 이 변수의 값은 **Admin > Settings > General** 메뉴의 **Configure Disqus for Your Site** 페이지에 있는 "Shortname" 에서 알려주는 문자열을 복사해서 사용하면 됩니다.
@@ -128,7 +132,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣으면 됩니다.
 
-```jekyll
+```
 {% raw %}{% include disqus.html %}{% endraw %}
 ```
 
@@ -160,8 +164,10 @@ s.setAttribute('data-timestamp', +new Date());
 
 **_layouts** 폴더에 있는 **post.html** 파일에 아래와 같은 코드를 추가합니다.
 
-```text
-{% raw %}{% if page.comments %} • <a href="https://xho95.github.io{{ page.url }}#disqus_thread">0 Comments</a>{% endif %}{% endraw %}
+```
+{% raw %}
+{% if page.comments %} • <a href="https://xho95.github.io{{ page.url }}#disqus_thread">0 Comments</a>{% endif %}
+{% endraw %}
 ```
 
 > 추가하는 위치는 본인 마음이지만 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 글을 참고해서 `<p class="post-meta">` 줄의 마지막 `</p>` 앞에 추가하도록 합니다.
