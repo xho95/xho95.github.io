@@ -54,7 +54,7 @@ categories: Blog Jekyll Disqus Migration
 
 #### 2. **Universal Embed Code** 붙여 주기
 
-블로그의 적당한 템플릿 (template) 에다가  아래의 "Universal Embed Code" 를 복사해서 붙여 넣습니다. 이 때 아래의 코드를 `{% if page.comments %}` 와 `{% endif %}` 코드로 감싸줍니다.
+블로그의 적당한 템플릿 (template) 에다가  아래의 "Universal Embed Code" 를 복사해서 붙여 넣습니다. 이 때 아래의 코드를 `\{% if page.comments %\}` 와 `\{% endif %\}` 코드로 감싸줍니다.
 
 ```
 <div id="disqus_thread"></div>
