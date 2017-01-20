@@ -99,7 +99,7 @@ s.setAttribute('data-timestamp', +new Date());
 		var disqus_shortname = '{{ site.disqus }}';
 
     var disqus_config = function () {
-        this.page.url = 'disqus_shortname' + "{{ page.url }}";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = 'disqus_shortname' + "{ { page.url } }";  // Replace PAGE_URL with your page's canonical URL variable
         this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
@@ -161,7 +161,7 @@ s.setAttribute('data-timestamp', +new Date());
 **_layouts** 폴더에 있는 **post.html** 파일에 아래와 같은 코드를 추가합니다.
 
 ```
-{ % if page.comments % } • <a href="https://sgeos.github.io{{ page.url }}#disqus_thread">0 Comments</a>{ % endif % }
+{ % if page.comments % } • <a href="https://sgeos.github.io{ { page.url } }#disqus_thread">0 Comments</a>{ % endif % }
 ```
 
 > 추가하는 위치는 본인 마음이지만 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 글을 참고해서 `<p class="post-meta">` 줄의 마지막 `</p>` 앞에 추가하도록 합니다.
@@ -173,7 +173,7 @@ s.setAttribute('data-timestamp', +new Date());
 포스트의 리스트에 댓글 개수를 표시하기 위해서는 **index.html** 파일에 아래와 같은 코드를 추가합니다. 위치는 `<span class="post-meta">` 줄의 마지막 `</span>` 앞에 추가하도록 합니다.
 
 ```
-<a href="https://xho95.github.io\{\{ post.url \}\}#disqus_thread">0 Comments</a>
+<a href="https://xho95.github.io{ { post.url } }#disqus_thread">0 Comments</a>
 ```
 
 이제 블로그의 포스트 리스트에 각 포스트 마다 몇개의 댓글이 달려있는지 확인할 수 있습니다.
