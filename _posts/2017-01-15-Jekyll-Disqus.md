@@ -128,7 +128,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣으면 됩니다.
 
-```
+```text
 {% raw %}{% include disqus.html %}{% endraw %}
 ```
 
@@ -150,7 +150,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 저는 아래와 같이 사용하고 있습니다.
 
-```
+```text
 <script id="dsq-count-scr" src="//{% raw %}{{ site.disqus }}{% endraw %}.disqus.com/count.js" async></script>
 ```
 
@@ -160,10 +160,8 @@ s.setAttribute('data-timestamp', +new Date());
 
 **_layouts** 폴더에 있는 **post.html** 파일에 아래와 같은 코드를 추가합니다.
 
-```
-{% raw %}
-{% if page.comments %} • <a href="https://xho95.github.io{{ page.url }}#disqus_thread">0 Comments</a>{% endif %}
-{% endraw %}
+```text
+{% raw %}{% if page.comments %}{% endraw %} • <a href="https://xho95.github.io{% raw %}{{ page.url }}{% endraw %}#disqus_thread">0 Comments</a>{% raw %}{% endif %}{% endraw %}
 ```
 
 > 추가하는 위치는 본인 마음이지만 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 글을 참고해서 `<p class="post-meta">` 줄의 마지막 `</p>` 앞에 추가하도록 합니다.
@@ -174,7 +172,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 포스트의 리스트에 댓글 개수를 표시하기 위해서는 **index.html** 파일에 아래와 같은 코드를 추가합니다. 위치는 `<span class="post-meta">` 줄의 마지막 `</span>` 앞에 추가하도록 합니다.
 
-```
+```text
 <a href="https://xho95.github.io{% raw %}{{ post.url }}{% endraw %}#disqus_thread">0 Comments</a>
 ```
 
