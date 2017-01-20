@@ -129,7 +129,7 @@ s.setAttribute('data-timestamp', +new Date());
 이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣으면 됩니다.
 
 ```
-{% include disqus.html %}
+{ % include disqus.html % }
 ```
 
 위와 같이 하면 모든 포스트 글의 마지막에 **disqus.html** 파일에 있는 내용이 들어가게 됩니다. 이제 Jekyll 블로그의 모든 포스트 글마다 댓글 시스템이 연결되는 것을 볼 수 있습니다.
@@ -148,7 +148,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 위에서 `django-test-blog` 부분은 자기 블로그의 **Shortname** 을 입력하면 됩니다.
 
-저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 아래와 같이 사용하고 있습니다.
+저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 저는 아래와 같이 사용하고 있습니다.
 
 ```
 <script id="dsq-count-scr" src="//{{ site.disqus }}.disqus.com/count.js" async></script>
@@ -156,12 +156,12 @@ s.setAttribute('data-timestamp', +new Date());
 
 #### 링크에 `#disqus_thread` 추가하기
 
-`#disqus_thread` 를 링크의 `href` 속성에 추가합니다. 이것은 Disqus 가 댓글의 개수를 헤아릴 때 어떤 링크를 찾아봐야 할 지를 알려줍니다. 예를 들어 `<a href="http://foo.com/bar.html#disqus_thread">Link</a>` 와 같이 하면 됩니다.
+`#disqus_thread` 를 링크의 `href` 속성에 추가합니다. 이것은 Disqus 가 댓글의 개수를 헤아릴 때 어떤 링크를 찾아봐야 할 지를 알려줍니다. 예를 들어 `<a href="http://foo.com/bar.html#disqus_thread"> Link </a>` 와 같이 하면 됩니다.
 
 **_layouts** 폴더에 있는 **post.html** 파일에 아래와 같은 코드를 추가합니다.
 
 ```
-{% if page.comments %} • <a href="https://sgeos.github.io{{ page.url }}#disqus_thread">0 Comments</a>{% endif %}
+{ % if page.comments % } • <a href="https://sgeos.github.io{{ page.url }}#disqus_thread">0 Comments</a>{ % endif % }
 ```
 
 > 추가하는 위치는 본인 마음이지만 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 글을 참고해서 `<p class="post-meta">` 줄의 마지막 `</p>` 앞에 추가하도록 합니다.
