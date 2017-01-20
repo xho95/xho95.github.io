@@ -96,11 +96,11 @@ s.setAttribute('data-timestamp', +new Date());
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
      */
 
-		var disqus_shortname = '{{ site.disqus }}';
+		var disqus_shortname = '{ { site.disqus } }';
 
     var disqus_config = function () {
         this.page.url = 'disqus_shortname' + "{ { page.url } }";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.identifier = "{ { page.id } }"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
 		(function() {  // DON'T EDIT BELOW THIS LINE
@@ -151,7 +151,7 @@ s.setAttribute('data-timestamp', +new Date());
 저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 저는 아래와 같이 사용하고 있습니다.
 
 ```
-<script id="dsq-count-scr" src="//{{ site.disqus }}.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//{ { site.disqus } }.disqus.com/count.js" async></script>
 ```
 
 #### 링크에 `#disqus_thread` 추가하기
