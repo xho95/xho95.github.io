@@ -140,7 +140,7 @@ myuser.user_permissions.clear()
 
 [custom permissions](https://docs.djangoproject.com/en/1.10/topics/auth/customizing/#custom-permissions) (사용자화한 인증)은 모델의 **Meta** 클래스안에서 정의하는 것이지만, 직접 인증을 생성할 수도 있습니다. 예를 들어, **can_publish** 인증을 **myapp** 에 있는 **BlogPost** 모델에 만들 수 있습니다:
 
-```
+```python
 from myapp.models import BlogPost
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
