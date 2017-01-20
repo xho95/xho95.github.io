@@ -88,7 +88,7 @@ s.setAttribute('data-timestamp', +new Date());
 제가 작성한 **disqus.html** 파일의 최종 결과는 아래와 같습니다.
 
 ```
-{ % if page.comments % }
+{% raw %}{% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
     /**
@@ -96,11 +96,11 @@ s.setAttribute('data-timestamp', +new Date());
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
      */
 
-		var disqus_shortname = '{ { site.disqus } }';
+		var disqus_shortname = '{{ site.disqus }}';
 
     var disqus_config = function () {
-        this.page.url = 'disqus_shortname' + "{ { page.url } }";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "{ { page.id } }"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'disqus_shortname' + "{{ page.url }}";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
 		(function() {  // DON'T EDIT BELOW THIS LINE
@@ -113,7 +113,7 @@ s.setAttribute('data-timestamp', +new Date());
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-{ % endif % }
+{% endif %}{% endraw %}
 ```
 
 위의 코드를 보면 `disqus_shortname` 이라는 변수를 사용했는데, 이 변수의 값은 **Admin > Settings > General** 메뉴의 **Configure Disqus for Your Site** 페이지에 있는 "Shortname" 에서 알려주는 문자열을 복사해서 사용하면 됩니다.
@@ -129,7 +129,7 @@ s.setAttribute('data-timestamp', +new Date());
 이를 위해서는 **_layouts** 폴더에 있는 **post.html** 파일의 끝에 아래와 같은 코드를 넣으면 됩니다.
 
 ```
-{ % include disqus.html % }
+{% raw %}{% include disqus.html %}{% endraw %}
 ```
 
 위와 같이 하면 모든 포스트 글의 마지막에 **disqus.html** 파일에 있는 내용이 들어가게 됩니다. 이제 Jekyll 블로그의 모든 포스트 글마다 댓글 시스템이 연결되는 것을 볼 수 있습니다.
@@ -151,7 +151,7 @@ s.setAttribute('data-timestamp', +new Date());
 저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 저는 아래와 같이 사용하고 있습니다.
 
 ```
-<script id="dsq-count-scr" src="//{ { site.disqus } }.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//{% raw %}{{ site.disqus }}{% endraw %}.disqus.com/count.js" async></script>
 ```
 
 #### 링크에 `#disqus_thread` 추가하기
@@ -161,7 +161,7 @@ s.setAttribute('data-timestamp', +new Date());
 **_layouts** 폴더에 있는 **post.html** 파일에 아래와 같은 코드를 추가합니다.
 
 ```
-{ % if page.comments % } • <a href="https://sgeos.github.io{ { page.url } }#disqus_thread">0 Comments</a>{ % endif % }
+{% raw %}{% if page.comments %} • <a href="https://xho95.github.io{{ page.url }}#disqus_thread">0 Comments</a>{% endif %}{% endraw %}
 ```
 
 > 추가하는 위치는 본인 마음이지만 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 글을 참고해서 `<p class="post-meta">` 줄의 마지막 `</p>` 앞에 추가하도록 합니다.
@@ -173,7 +173,7 @@ s.setAttribute('data-timestamp', +new Date());
 포스트의 리스트에 댓글 개수를 표시하기 위해서는 **index.html** 파일에 아래와 같은 코드를 추가합니다. 위치는 `<span class="post-meta">` 줄의 마지막 `</span>` 앞에 추가하도록 합니다.
 
 ```
-<a href="https://xho95.github.io{ { post.url } }#disqus_thread">0 Comments</a>
+<a href="https://xho95.github.io{% raw %}{{ post.url }}{% endraw %}#disqus_thread">0 Comments</a>
 ```
 
 이제 블로그의 포스트 리스트에 각 포스트 마다 몇개의 댓글이 달려있는지 확인할 수 있습니다.
@@ -246,4 +246,4 @@ http://example.com/old-path/old/posta.html, http://example.com/new-path/new/post
 
 [^help-565624]: [Adding comment count links to your home page](https://help.disqus.com/customer/portal/articles/565624)
 
-[^stackoverflow-24102498]: [Escaping double curly braces inside a markdown code block in Jekyll](http://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll)
+[^stackoverflow-24102498]: [Escaping double curly braces inside a markdown code block in Jekyll](http://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll) : Jekyll 엔진이 특정 템플릿 코드를 실행해 버리는 것을 막는 방법에 대해서 소개하고 있습니다.
