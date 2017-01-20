@@ -22,7 +22,7 @@
 
 사용자를 만드는 가장 직접적인 방법은 포함된 **create_user()** 헬퍼 함수를 사용하는 것입니다:
 
-```
+```python
 >>> from django.contrib.auth.models import User
 >>> user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
 
@@ -39,7 +39,7 @@
 
 운영자는 **createsuperuser** 명령을 사용해서 만듭니다:
 
-```
+```bash
 $ python manage.py createsuperuser --username=joe --email=joe@example.com
 ```
 
@@ -55,7 +55,7 @@ $ python manage.py createsuperuser --username=joe --email=joe@example.com
 
 비밀번호는 **set_password()** 를 사용하면 프로그램 내에서도 수정할 수 있습니다:
 
-```
+```python
 >>> from django.contrib.auth.models import User
 >>> u = User.objects.get(username='john')
 >>> u.set_password('new password')
@@ -76,7 +76,7 @@ authenticate(**credentials)
 
 자격(credentials)이 유효한지(verify) 검사하려면 **authenticate()** 를 사용합니다. 이 함수는 자격을 키워드 인자로 받아 들이는데, 기본은 **username** 과 **password** 를 사용합니다. 그리고  각각의 인증 백엔드(authentication backend)와 맞춰 봐서, 자격이 백엔드에서 유효하면 **User** 객체를 반환합니다. 자격이 어떤 백엔드에서도 유효하지 않거나 백엔드가 **PermissionDenied** 예외를 발생하면, **None** 을 반환합니다. 예를 들면 다음과 같습니다:
 
-```
+```python
 from django.contrib.auth import authenticate
 user = authenticate(username='john', password='secret')
 if user is not None:
@@ -103,7 +103,7 @@ else:
 
 **User** 객체는 두 개의 다-대-다(many-to-many) 관계 필드를 가지고 있습니다: **groups** 과 **user_permissions** 이 그들입니다. **User** 객체가 관계를 맺은 객체에 접근하는 방법은 다른 [Django model](https://docs.djangoproject.com/en/1.10/topics/db/models/) 과 동일합니다:
 
-```
+```python
 myuser.groups.set([group_list])
 myuser.groups.add(group, group, ...)
 myuser.groups.remove(group, group, ...)
@@ -159,7 +159,7 @@ The permission can then be assigned to a **User** via its **user_permissions** a
 
 The **ModelBackend** caches permissions on the user object after the first time they need to be fetched for a permissions check. This is typically fine for the request-response cycle since permissions aren’t typically checked immediately after they are added (in the admin, for example). If you are adding permissions and checking them immediately afterward, in a test or view for example, the easiest solution is to re-fetch the user from the database. For example:
 
-```
+```python
 from django.contrib.auth.models import Permission, User
 from django.shortcuts import get_object_or_404
 
@@ -192,7 +192,7 @@ These provide a **request.user** attribute on every request which represents the
 
 You can tell them apart with **is_authenticated**, like so:
 
-```
+```python
 if request.user.is_authenticated:
     # Do something for authenticated users.
     ...
