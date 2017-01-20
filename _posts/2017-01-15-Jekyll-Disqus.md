@@ -56,8 +56,7 @@ categories: Blog Jekyll Disqus Migration
 
 블로그의 적당한 템플릿 (template) 에다가  아래의 "Universal Embed Code" 를 복사해서 붙여 넣습니다. 이 때 아래의 코드를 `{% raw %}{% if page.comments %}{% endraw %}` 와 `{% raw %}{% endif %}{% endraw %}` 코드로 감싸줍니다.
 
-```
-{% raw %}
+```text
 <div id="disqus_thread"></div>
 <script>
 
@@ -78,7 +77,6 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endraw %}
 ```
 
 [Adding Disqus to a Jekyll Blog](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html) 에서는 **_includes** 폴더에 **disqus.html** 파일을 새로 만들어서 이 파일에 "Universal Embed Code" 를 복사해 넣고 있습니다.
@@ -89,8 +87,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 제가 작성한 **disqus.html** 파일의 최종 결과는 아래와 같습니다.
 
-```
-{% raw %}
+```text
 {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
@@ -117,7 +114,6 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 {% endif %}
-{% endraw %}
 ```
 
 위의 코드를 보면 `disqus_shortname` 이라는 변수를 사용했는데, 이 변수의 값은 **Admin > Settings > General** 메뉴의 **Configure Disqus for Your Site** 페이지에 있는 "Shortname" 에서 알려주는 문자열을 복사해서 사용하면 됩니다.
