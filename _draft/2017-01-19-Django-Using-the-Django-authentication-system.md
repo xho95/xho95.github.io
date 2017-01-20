@@ -1,6 +1,6 @@
 ## 장고(Django)의 인증(authentication) 시스템 사용하기
 
-이 문서는 장고의 인증 시스템을 사용하는 방법에 대해서 기본 설정을 가지고 설명합니다. 이 설정은 가장 일반적인 프로젝트의 요구 사항을 지원하기 위해 진화했습니다, 합당한 광범위한 일들을 처리하면서, 그리고 암호와 권한(permissions)에 대해 주의깊게 구현되었습니다. 프로젝트가 기본 설정과는 다른 인증을 요구할 때를 위해 장고는 인증에 대해 광범위한 확장과 사용자화를 지원합니다.
+이 문서는 장고의 인증 시스템을 사용하는 방법에 대해서 기본 설정을 가지고 설명합니다. 이 설정은 가장 일반적인 프로젝트의 요구 사항을 지원하기 위해 진화했습니다, 합당한 광범위한 일들을 처리하면서, 그리고 암호와 승인(permissions)에 대해 주의깊게 구현되었습니다. 프로젝트가 기본 설정과는 다른 인증을 요구할 때를 위해 장고는 인증에 대해 광범위한 확장과 사용자화를 지원합니다.
 
 장고 인증은 인증과 권한 부여(authorization) 기능을 함께 제공하며 보통의 경우 인증 시스템인 것으로 언급됩니다. 이들은 어쨌거나 서로 연결이 되어 있는 특성입니다.
 
@@ -33,27 +33,27 @@
 >>> user.save()
 ```
 
-장고 관리자(Django admin)를 설치했으면, 사용자를 대화형으로 생성할 수 있습니다.
+장고 관리자 화면(admin)을 설치했으면, 사용자를 대화형 방식으로 생성할 수 있습니다.
 
-#### 수퍼사용자(superusers) 만들기
+#### 운영자(superusers) 만들기
 
-수퍼사용자는 **createsuperuser** 명령을 사용해서 만듭니다:
+운영자는 **createsuperuser** 명령을 사용해서 만듭니다:
 
 ```
 $ python manage.py createsuperuser --username=joe --email=joe@example.com
 ```
 
-비밀번호를 입력하라는 프롬프터가 뜹니다. 입력하고 나면, 즉시 수퍼상요자가 생깁니다. **--username** 이나 **--email** 옵션 없이 실행하면, 이 값들을 입력하라는 프롬프터가 뜹니다.
+바로 비밀번호를 입력하라고 나타납니다. 입력하고 나면 곧바로 운영자가 생깁니다. **--username** 이나 **--email** 옵션 없이 실행하면, 이 값들을 입력하라고 바로 나타납니다.
 
 #### 비밀번호 변경하기
 
-장고는 사용자 모델의 원(순수 텍스트) 비밀번호를 저장하지 않으며, 단지 해쉬 (자세한 사항은 documentation of how passwords are managed 문서를 보십시오) 만 저장합니다. 따라서 사용자가 직접 비밀번호 속성을 변경할 수 없습니다. 이것이 사용자를 만들 때 헬퍼 함수를 사용하는 이유입니다.
+장고는 사용자 모델의 원래(순수 텍스트) 비밀번호를 저장하지 않으며, 단지 해쉬 (자세한 사항은 [documentation of how passwords are managed](https://docs.djangoproject.com/en/1.10/topics/auth/passwords/) 문서를 보십시오) 만 저장합니다. 따라서 사용자가 직접 비밀번호 속성을 변경할 수 없습니다. 사용자를 만들 때 헬퍼 함수를 사용하는 이유가 이 때문입니다.
 
 비밀번호를 변경하는 데는 여러 옵션이 있습니다:
 
-**manage.py changepassword *username*** 는 명령줄에서 사용자 비밀번호를 변경하는 방법을 제공합니다. 이것은 주어진 사용자의 비밀번호를 바꾸기 위해 프롬프터로 두 번 입력해야 합니다. 그 두 개가 맞으면, 새 비밀번호로 즉시 바뀝니다. 만약 사용자를 제공하지 않으면(?), 명령은 username 과 맞는 현재 시스템의 사용자의 비밀번호를 바꾸려고 시도합니다.
+**manage.py changepassword *username*** 는 명령줄에서 사용자 비밀번호를 변경하는 방법을 제공합니다. 이것은 주어진 사용자의 비밀번호를 바꾸기 위해 즉시 두 번의 입력을 요구합니다. 그 두 개가 맞으면, 곧바로 새 비밀번호로 바뀝니다. 만약 사용자를 제공하지 않으면, 현재 시스템의 사용자와 이름이 같은 사용자의 비밀번호를 바꾸게 됩니다.
 
-비밀번호는 프로그램에서도 수정할 수 있습니다.**set_password()** 를 사용하십시오:
+비밀번호는 **set_password()** 를 사용하면 프로그램 내에서도 수정할 수 있습니다:
 
 ```
 >>> from django.contrib.auth.models import User
@@ -62,11 +62,11 @@ $ python manage.py createsuperuser --username=joe --email=joe@example.com
 >>> u.save()
 ```
 
-장고 관리자(Django admin)를 설치했으면, 사용자 비밀번호를 인증 시스템의 관리자 페이지에서 변경할 수도 있습니다.
+장고 관리자 화면(admin)을 설치했으면, 사용자 비밀번호를 인증 시스템의 관리자 페이지에서 변경할 수도 있습니다.
 
-장고는 뷰(views) 와 폼(forms)을 통해서도 사용자가 자신의 비밀번호를 수정할 수 있도록 허용합니다.
+또한 장고는 뷰([views](https://docs.djangoproject.com/en/1.10/topics/auth/default/#built-in-auth-views)) 와 폼([forms](https://docs.djangoproject.com/en/1.10/topics/auth/default/#built-in-auth-forms))을 통해서도 사용자가 자신의 비밀번호를 수정할 수 있도록 허용합니다.
 
-사용자의 비밀번호를 변경하면 모든 세션에서 빠져 나옵니다(log out). 자세한 사항은 Session invalidation on password change 를 보십시오.
+사용자의 비밀번호를 변경하면 모든 세션에서 빠져 나옵니다(log out). 자세한 사항은 [Session invalidation on password change](https://docs.djangoproject.com/en/1.10/topics/auth/default/#session-invalidation-on-password-change) 를 보십시오.
 
 #### 사용자 인증하기
 
@@ -74,33 +74,34 @@ $ python manage.py createsuperuser --username=joe --email=joe@example.com
 authenticate(**credentials)
 ```
 
-자격 요건을 입증하려면 **authenticate()** 를 사용합니다. 자격 입증에는 키워드 인자가 필요한데, 기본은 **username** 과 **password** 를 사용합니다, 각 인증 백엔드(authentication backend)에 대해 체크해서, 자격 요건이 백엔드에서 입증되면 **User** 객체를 반환합니다. 자격이 어떤 백엔드에서도 유효하지 않거나 백엔가 **PermissionDenied** 예외를 발생하면, **None** 을 반환합니다. 예를 들면 다음과 같습니다:
+자격(credentials)이 유효한지(verify) 검사하려면 **authenticate()** 를 사용합니다. 이 함수는 자격을 키워드 인자로 받아 들이는데, 기본은 **username** 과 **password** 를 사용합니다. 그리고  각각의 인증 백엔드(authentication backend)와 맞춰 봐서, 자격이 백엔드에서 유효하면 **User** 객체를 반환합니다. 자격이 어떤 백엔드에서도 유효하지 않거나 백엔드가 **PermissionDenied** 예외를 발생하면, **None** 을 반환합니다. 예를 들면 다음과 같습니다:
 
 ```
 from django.contrib.auth import authenticate
 user = authenticate(username='john', password='secret')
 if user is not None:
-    # A backend authenticated the credentials
+    # 하나의 백엔드에서 자격을 인증했습니다.
 else:
-    # No backend authenticated the credentials
+    # 어떤 백엔드도 자격을 인증하지 않았습니다.
 ```
 
-> 이 방밥은 자격 조건으로 인증하는 낮은 단계의 방법입니다; 예를 들어, **RemoteUserMiddleware** 에서 사용됩니다. 스스로의 인증 시스템을 작성하지 않으면, 아마도 이것을 사용하지 않을 것입니다. 만약 로그인한 사용자에 대해 제한된 접근을 하는 방법을 찾고 있다면 이 보다는  **login_required()** 데코레이터를 보도록 하십시오.
+> 이 방법은 자격을 인증하는 낮은 단계의 방법입니다; 예를 들어, **RemoteUserMiddleware** 에서 이 방법을 사용합니다. 스스로 인증 시스템을 작성하지 않는다면, 아마 이것을 사용하지 않을 것입니다. 로그인한 사용자에 대해 제한된 접근을 하는 방법을 찾고 있다면 이 방법 보다는  **login_required()** 데코레이터를 살펴보도록 하십시오.
  
 ### 승인(Permissions) 및 권한 부여(Authorization)
 
-장고는 Django comes with a simple permissions system. It provides a way to assign permissions to specific users and groups of users.
+장고는 간단한 승인 시스템을 가지고(comes with) 있습니다. 이는 특별한 사용자와 사용자 그룹을 승인하는 기능을 제공합니다.
 
-It’s used by the Django admin site, but you’re welcome to use it in your own code.
+장고 관리 화면(admin) 사이트에서도 사용되지만, 직접 코드에서 사용하는 것도 문제 없습니다.
 
-The Django admin site uses permissions as follows:
+장고의 관리 화면 사이트에서는 승인을 다음과 같이 사용합니다:
 
-Access to view the “add” form and add an object is limited to users with the “add” permission for that type of object.
-Access to view the change list, view the “change” form and change an object is limited to users with the “change” permission for that type of object.
-Access to delete an object is limited to users with the “delete” permission for that type of object.
-Permissions can be set not only per type of object, but also per specific object instance. By using the has_add_permission(), has_change_permission() and has_delete_permission() methods provided by the ModelAdmin class, it is possible to customize permissions for different object instances of the same type.
+* `add` 폼(form)에 가서 객체를 추가하려는 접근이 있을 때, 이를 해당 타입에 대해 `add` 승인을 가진 사용자만 가능하도록 제한합니다.
+* 변경 목록을 보고 `change` 폼에 가서 객체를 변경하려는 접근이 있을 때, 이를 해당 타입에 대해 `change` 승인을 가진 사용자만 가능하도록 제한합니다.
+* 객체를 지우는 접근이 있을 때, 이를 해당 타입에 대해 `delete` 승인을 가진 사용자만 가능하도록 제한합니다.
 
-User objects have two many-to-many fields: groups and user_permissions. User objects can access their related objects in the same way as any other Django model:
+승인은 객체 타입별로 적용할 수 있을 뿐만 아니라 개별 객체 인스턴스에 대해서도 적용가능합니다. **ModelAdmin** 클래스에서 제공하는 **has\_add_permission()**, **has\_change_permission()** 그리고 **has\_delete_permission()** 메소드를 사용하면, 같은 타입의 서로 다른 객체 인스턴스를 위해 인증을 사용자화할 수 있습니다.
+
+**User** 객체는 두 개의 다-대-다(many-to-many) 관계 필드를 가지고 있습니다: **groups** 과 **user_permissions** 이 그들입니다. **User** 객체가 관계를 맺은 객체에 접근하는 방법은 다른 [Django model](https://docs.djangoproject.com/en/1.10/topics/db/models/) 과 동일합니다:
 
 ```
 myuser.groups.set([group_list])
@@ -115,29 +116,29 @@ myuser.user_permissions.clear()
 
 #### 기본 인증(permissions)
 
-When django.contrib.auth is listed in your INSTALLED_APPS setting, it will ensure that three default permissions – add, change and delete – are created for each Django model defined in one of your installed applications.
+**INSTALLED_APPS** 설정에 **django.contrib.auth** 이 있으면, 그것은 세 개의 기본 인증 - 추가, 변경, 삭제 - 을 각각의 장고 모델에 생성하는 것을 보장합니다. 이 장고 모델들은 설치한 앱들 중의 하나에 정의되어 있습니다(?)
 
-These permissions will be created when you run manage.py migrate; the first time you run migrate after adding django.contrib.auth to INSTALLED_APPS, the default permissions will be created for all previously-installed models, as well as for any new models being installed at that time. Afterward, it will create default permissions for new models each time you run manage.py migrate (the function that creates permissions is connected to the post_migrate signal).
+세 개의 인증은 **manage.py migrate** 을 실행할 때 생성합니다; **django.contrib.auth** 를 **INSTALLED_APPS** 에 추가하고 처음으로  **migrate** 명령을 실행하면, 기본 인증은 미리-설치된 모든 모델들뿐만 아니라, 그 시점에 설치되는 새로운 모든 모델들을 위해서도 생성됩니다. 이후로는, **manage.py migrate** 명령을 실행할 때마다 새 모델들을 위한 기본 인증을 생성합니다. (인증을 생성하는 함수는 **post_migrate** 신호와 연결되어 있습니다).
 
-Assuming you have an application with an app_label foo and a model named Bar, to test for basic permissions you should use:
+**app_label** 의 **foo** 라는 어플리케이션과 이름이 **Bar** 인 모델이 있다고 가정합시다, 기본 인증을 실험하려면 아래와 같이 하면 됩니다:
 
-* add: user.has_perm('foo.add_bar')
-* change: user.has_perm('foo.change_bar')
-* delete: user.has_perm('foo.delete_bar')
+* 추가: **user.has\_perm('foo.add_bar')**
+* 변경: **user.has\_perm('foo.change_bar')**
+* 삭제: **user.has\_perm('foo.delete_bar')**
 
-The Permission model is rarely accessed directly.
+인증 모델은 직접 접근할 일이 거의 없습니다.
 
-#### Groups
+#### 그룹(Groups)
 
-django.contrib.auth.models.Group models are a generic way of categorizing users so you can apply permissions, or some other label, to those users. A user can belong to any number of groups.
+**django.contrib.auth.models.Group** 모델은 사용자를 분류하는(categorizing) 제네릭한(generic) 방법이라서 해당 사용자들에게 인증을 적용하거나 다른 이름표를 붙이거나 할 수 있습니다. 한 명의 사용자는 다수의 그룹에 속할 수 있습니다.
 
-A user in a group automatically has the permissions granted to that group. For example, if the group Site editors has the permission can_edit_home_page, any user in that group will have that permission.
+그룹에 있는 사용자는 그룹에 부여된 인증을 자동으로 갖습니다. 예를 들어, 만약 **Site editors** 그룹이 **can\_edit\_home_page** 에 대해 인증을 가지고 있으면, 이 그룹에 속한 어떤 사용자라도 해당 인증을 가지게 됩니다.
 
-Beyond permissions, groups are a convenient way to categorize users to give them some label, or extended functionality. For example, you could create a group 'Special users', and you could write code that could, say, give them access to a members-only portion of your site, or send them members-only email messages.
+인증을 넘어서 그룹은 사용자들을 분류하는 편리한 방법을 제공하는데, 특정한 이름표를 부여하거나 확장된 기능들을 제공하는 것들이 있습니다. 예를 들면, **'Special users'** 라는 그룹을 만들고, 코드를 작성해서, 이 그룹이 멤버들만 접근 가능한 영역에 접근하게 하거나, 멤버에게만 보내는 메일을 보내주거나 할 수 있습니다.
 
-#### Programmatically creating permissions
+#### 프로그램으로 인증 만들기
 
-While custom permissions can be defined within a model’s Meta class, you can also create permissions directly. For example, you can create the can_publish permission for a BlogPost model in myapp:
+[custom permissions](https://docs.djangoproject.com/en/1.10/topics/auth/customizing/#custom-permissions) (사용자화한 인증)은 모델의 **Meta** 클래스안에서 정의하는 것이지만, 직접 인증을 생성할 수도 있습니다. 예를 들어, **can_publish** 인증을 **myapp** 에 있는 **BlogPost** 모델에 만들 수 있습니다:
 
 ```
 from myapp.models import BlogPost
@@ -152,11 +153,11 @@ permission = Permission.objects.create(
 )
 ```
 
-The permission can then be assigned to a User via its user_permissions attribute or to a Group via its permissions attribute.
+The permission can then be assigned to a **User** via its **user_permissions** attribute or to a **Group** via its **permissions** attribute.
 
 #### Permission caching
 
-The ModelBackend caches permissions on the user object after the first time they need to be fetched for a permissions check. This is typically fine for the request-response cycle since permissions aren’t typically checked immediately after they are added (in the admin, for example). If you are adding permissions and checking them immediately afterward, in a test or view for example, the easiest solution is to re-fetch the user from the database. For example:
+The **ModelBackend** caches permissions on the user object after the first time they need to be fetched for a permissions check. This is typically fine for the request-response cycle since permissions aren’t typically checked immediately after they are added (in the admin, for example). If you are adding permissions and checking them immediately afterward, in a test or view for example, the easiest solution is to re-fetch the user from the database. For example:
 
 ```
 from django.contrib.auth.models import Permission, User
@@ -185,11 +186,11 @@ def user_gains_perms(request, user_id):
 
 ### Authentication in Web requests
 
-Django uses sessions and middleware to hook the authentication system into request objects.
+Django uses [sessions](https://docs.djangoproject.com/en/1.10/topics/http/sessions/) and middleware to hook the authentication system into **request objects**.
 
-These provide a request.user attribute on every request which represents the current user. If the current user has not logged in, this attribute will be set to an instance of AnonymousUser, otherwise it will be an instance of User.
+These provide a **request.user** attribute on every request which represents the current user. If the current user has not logged in, this attribute will be set to an instance of **AnonymousUser**, otherwise it will be an instance of **User**.
 
-You can tell them apart with is_authenticated, like so:
+You can tell them apart with **is_authenticated**, like so:
 
 ```
 if request.user.is_authenticated:
@@ -216,5 +217,6 @@ Be thoughtful about how you allow users to manage permissions. If you give a non
 
 User passwords are not displayed in the admin (nor stored in the database), but the password storage details are displayed. Included in the display of this information is a link to a password change form that allows admins to change user passwords.  
 
-### 참고 자료
+### 원문
 
+[Using the Django authentication system](https://docs.djangoproject.com/en/1.10/topics/auth/default/#auth-admin)
