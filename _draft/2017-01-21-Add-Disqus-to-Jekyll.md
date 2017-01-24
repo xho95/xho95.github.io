@@ -99,7 +99,7 @@ s.setAttribute('data-timestamp', +new Date());
 		var disqus_shortname = '{% raw %}{{ site.disqus }}{% endraw %}';
 
     var disqus_config = function () {
-        this.page.url = 'disqus_shortname' + "{% raw %}{{ page.url }}{% endraw %}";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.url = 'disqus_shortname' + "{% raw %}{{ site.url }}{% endraw %}";  // Replace PAGE_URL with your page's canonical URL variable
         this.page.identifier = "{% raw %}{{ page.id }}{% endraw %}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
@@ -247,3 +247,5 @@ http://example.com/old-path/old/posta.html, http://example.com/new-path/new/post
 [^help-565624]: [Adding comment count links to your home page](https://help.disqus.com/customer/portal/articles/565624)
 
 [^stackoverflow-24102498]: [Escaping double curly braces inside a markdown code block in Jekyll](http://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll) : Jekyll 엔진이 특정 템플릿 코드를 실행해 버리는 것을 막는 방법에 대해서 소개하고 있습니다.
+
+[Bug Reports & Feedback: how can I reconnect my blog with the original disqus account?](https://disqus.com/home/channel/discussdisqus/discussion/channel-discussdisqus/bug_reports_feedback_how_can_i_reconnect_my_blog_with_the_original_disqus_account/#comment-3114894823) : 결국 제 실수였는데, `this.page.url` 를 프로토콜까지 포함한 절대 경로로 사용해야한다는 답변 글입니다.
