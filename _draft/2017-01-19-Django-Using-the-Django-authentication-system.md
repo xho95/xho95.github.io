@@ -268,9 +268,9 @@ def logout_view(request):
 
 #### 로그인한 사용자의 접근을 제한하기
 
-**The raw way**
+**가장 낮는 방법(The raw way)**
 
-The simple, raw way to limit access to pages is to check **request.user.is_authenticated** and either redirect to a login page:
+페이지 접근을 막는 간단하고, 낮는 단계의 방법은 **request.user.is_authenticated** 를 체크해서 아닐 경우 로그인 페이지로 재연결하거나:
 
 ```python
 from django.conf import settings
@@ -282,7 +282,7 @@ def my_view(request):
     # ...
 ```
    
-...or display an error message:
+...아니면 에러 메시지를 나타내는 것입니다:
 
 ```python
 from django.shortcuts import render
@@ -293,15 +293,15 @@ def my_view(request):
     # ...
 ```
 
-**The login_required decorator**
+**login_required 테코레이터(decorator)**
 
-```
+```python
 login_required(redirect_field_name='next', login_url=None)
 ```
 
-As a shortcut, you can use the convenient login_required() decorator:
+보다 간단하게는, 편리한 **login_required()** 데코레이터를 사용할 수 있습니다:
 
-```
+```python
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -309,14 +309,14 @@ def my_view(request):
     ...
 ```
     
-login_required() does the following:
+**login_required()** 는 아래와 같이 동작합니다:
 
-* If the user isn’t logged in, redirect to settings.LOGIN_URL, passing the current absolute path in the query string. Example: /accounts/login/?next=/polls/3/.
-* If the user is logged in, execute the view normally. The view code is free to assume the user is logged in.
+* 사용자가 로그인되어 있지 않으면, **settings.LOGIN_URL** 로 재이동하면서, 현재의 절대 경로를 쿼리 문자열로 전달합니다. 예를 들면 이렇게 됩니다: **/accounts/login/?next=/polls/3/**.
+* 사용자가 로그인되어 있으면, 뷰(view)를 정상적으로 실행합니다. 뷰 코드는 사용자가 로그인되어 있다고 가정해도 됩니다.
 
-By default, the path that the user should be redirected to upon successful authentication is stored in a query string parameter called "next". If you would prefer to use a different name for this parameter, login_required() takes an optional redirect_field_name parameter:
+기본으로는, 인증이 성공했을 때 사용자가 재이동해야하는 경로는 **"next"** 라는 쿼리 문자열 매개 변수에 저장되어 있습니다. 이 매개 변수의 이름을 바꾸고 싶으면, **login_required()** 에 **redirect_field_name** 이라는 매개 변수를 사용해서 지정할 수 있습니다.:
 
-```
+```python
 from django.contrib.auth.decorators import login_required
 
 @login_required(redirect_field_name='my_redirect_field')
@@ -324,11 +324,11 @@ def my_view(request):
     ...
 ```
     
-Note that if you provide a value to redirect_field_name, you will most likely need to customize your login template as well, since the template context variable which stores the redirect path will use the value of redirect_field_name as its key rather than "next" (the default).
+만약 **redirect_field_name** 값을 지정한다면, 아울러 로그인 템플릿도 다시 작성해야할 가능성이 높다는 것을 알아둬야 합니다. 왜냐면 재이동(redirect) 경로를 저장하는 템플릿 내용 변수(context variable)가 키로**redirect_field_name** 를 사용하지 (기본값인) **"next"** 를 사용하지 않을 것이기 때문입니다.
 
-login_required() also takes an optional login_url parameter. Example:
+**login_required()** 는 또 선택 사항으로 **login_url** 매개 변수를 가집니다. 예를 들어 보면 아래와 같습니다:
 
-```
+```python
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/accounts/login/')
@@ -336,35 +336,35 @@ def my_view(request):
     ...
 ```
     
-Note that if you don’t specify the login_url parameter, you’ll need to ensure that the settings.LOGIN_URL and your login view are properly associated. For example, using the defaults, add the following lines to your URLconf:
+**login_url** 매개 변수를 특별히 지정하지 않으면, **settings.LOGIN_URL** 값을 확실히 해서 로그인 뷰(login view)와 잘 연결될 필요가 있음을 명심해야 합니다. 예를 들어, 아래의 코드를 URLconf 에 추가하는 것은 기본입니다:
 
-```
+```python
 from django.contrib.auth import views as auth_views
 
 url(r'^accounts/login/$', auth_views.login),
 ```
 
-The settings.LOGIN_URL also accepts view function names and named URL patterns. This allows you to freely remap your login view within your URLconf without having to update the setting.
+**settings.LOGIN_URL** 은 뷰 함수(view function) 이름과 이름있는 URL 패턴([named URL patterns](https://docs.djangoproject.com/en/1.10/topics/http/urls/#naming-url-patterns))도 받을 수 있습니다. 이렇게 하면 설정을 고치지 않고도 URLconf 에서 자유롭게 로그인 뷰를 재-맵핑(remap)할 수 있습니다.
 
-> The login_required decorator does NOT check the is_active flag on a user, but the default AUTHENTICATION_BACKENDS reject inactive users.  
+> **login_required** 데코레이터는 사용자의 **is_active** 를 체크하지 않습니다, 기본 **AUTHENTICATION_BACKENDS** 가 비활성 사용자를 거부합니다.    
 
-> See also
+> **See also**
 > 
-> If you are writing custom views for Django’s admin (or need the same authorization check that the built-in views use), you may find the django.contrib.admin.views.decorators.staff_member_required() decorator a useful alternative to login_required().
+> 장고의 관리 화면(admin)을 직접 만들고 있거나 (제공되는 뷰에서 쓰는 것과 같은 인증 체크를 할 필요가 있다면), **django.contrib.admin.views.decorators.staff\_member_required()** 데코레이터를 살펴 보는 것이 **login_required()** 보다 좋을 수 있습니다.
 
-**The LoginRequired mixin**
+**LoginRequired 믹스인(mixin)**
 
-When using class-based views, you can achieve the same behavior as with login_required by using the LoginRequiredMixin. This mixin should be at the leftmost position in the inheritance list.
+클래스 기반 뷰([class-based views](https://docs.djangoproject.com/en/1.10/topics/class-based-views/))를 사용할 때는, **LoginRequiredMixin** 을 사용하여 **login_required** 에서와 같은 기능을 구현할 수 있습니다. 이 믹스인(mixin)은 상속 리스트에서 가장 왼쪽에 위치해야 합니다.
 
 class **LoginRequiredMixin**
 	
-`New in Django 1.9.`
+* **New in Django 1.9.**
 
-If a view is using this mixin, all requests by non-authenticated users will be redirected to the login page or shown an HTTP 403 Forbidden error, depending on the raise_exception parameter.
+If a view is using this mixin, all requests by non-authenticated users will be redirected to the login page or shown an HTTP 403 Forbidden error, depending on the **raise_exception** parameter.
 
-You can set any of the parameters of AccessMixin to customize the handling of unauthorized users:
+You can set any of the parameters of **AccessMixin** to customize the handling of unauthorized users:
 
-```
+```python
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 class MyView(LoginRequiredMixin, View):
@@ -372,7 +372,97 @@ class MyView(LoginRequiredMixin, View):
     redirect_field_name = 'redirect_to'
 ```
     
-> Just as the login_required decorator, this mixin does NOT check the is_active flag on a user, but the default AUTHENTICATION_BACKENDS reject inactive users.
+> Just as the **login_required** decorator, this mixin does NOT check the **is_active** flag on a user, but the default **AUTHENTICATION_BACKENDS** reject inactive users.
+
+**Limiting access to logged-in users that pass a test**
+
+To limit access based on certain permissions or some other test, you’d do essentially the same thing as described in the previous section.
+
+The simple way is to run your test on **request.user** in the view directly. For example, this view checks to make sure the user has an email in the desired domain and if not, redirects to the login page:
+
+```python 
+from django.shortcuts import redirect
+
+def my_view(request):
+    if not request.user.email.endswith('@example.com'):
+        return redirect('/login/?next=%s' % request.path)
+    # ...
+```
+**user\_passes_test(test_func, login_url=None, redirect\_field_name='next')**
+
+As a shortcut, you can use the convenient **user\_passes_test** decorator which performs a redirect when the callable returns **False**:
+
+```python
+from django.contrib.auth.decorators import user_passes_test
+
+def email_check(user):
+    return user.email.endswith('@example.com')
+
+@user_passes_test(email_check)
+def my_view(request):
+    ...
+```
+    
+**user\_passes_test()** takes a required argument: a callable that takes a **User** object and returns **True** if the user is allowed to view the page. Note that **user_passes_test()** does not automatically check that the User is not anonymous.
+
+**user\_passes_test()** takes two optional arguments:
+
+**login_url**
+
+Lets you specify the URL that users who don’t pass the test will be redirected to. It may be a login page and defaults to **settings.LOGIN_URL** if you don’t specify one.
+
+**redirect\_field_name**
+
+Same as for **login_required()**. Setting it to **None** removes it from the URL, which you may want to do if you are redirecting users that don’t pass the test to a non-login page where there’s no “next page”.
+For example:
+
+```
+@user_passes_test(email_check, login_url='/login/')
+def my_view(request):
+    ...
+```
+  
+class **UserPassesTestMixin**
+
+* **New in Django 1.9.**
+
+When using class-based views, you can use the **UserPassesTestMixin** to do this.
+
+**test_func()**
+
+You have to override the **test_func()** method of the class to provide the test that is performed. Furthermore, you can set any of the parameters of **AccessMixin** to customize the handling of unauthorized users:
+
+```
+from django.contrib.auth.mixins import UserPassesTestMixin
+
+class MyView(UserPassesTestMixin, View):
+
+    def test_func(self):
+        return self.request.user.email.endswith('@example.com')
+```
+
+**get_test_func()**
+
+You can also override the **get_test_func()** method to have the mixin use a differently named function for its checks (instead of **test_func()**).
+
+> **Stacking UserPassesTestMixin**
+> 
+> Due to the way UserPassesTestMixin is implemented, you cannot stack them in your inheritance list. The following does NOT work:
+> 
+> ```python
+> class TestMixin1(UserPassesTestMixin):
+>     def test_func(self):
+>         return self.request.user.email.endswith('@example.com')
+> 
+> class TestMixin2(UserPassesTestMixin):
+>     def test_func(self):
+>         return self.request.user.username.startswith('django')
+> 
+> class MyView(TestMixin1, TestMixin2, View):
+>     ...
+> ```
+> 
+> If TestMixin1 would call super() and take that result into account, TestMixin1 wouldn’t work standalone anymore.
 
 ### 사용자(users)를 관리 화면(admin)에서 다루기
 
