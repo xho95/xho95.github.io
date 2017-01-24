@@ -60,21 +60,23 @@ categories: Blog Jekyll Disqus Migration
 <div id="disqus_thread"></div>
 <script>
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//test-site-znstiaaoqo.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
+	/**
+	 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+	 */
+
+	/*
+	var disqus_config = function () {
+		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//test-site-znstiaaoqo.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 ```
@@ -91,26 +93,24 @@ s.setAttribute('data-timestamp', +new Date());
 {% raw %}{% if page.comments %}{% endraw %}
 <div id="disqus_thread"></div>
 <script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
+	/**
+	 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+	 */
 
-		var disqus_shortname = '{% raw %}{{ site.disqus }}{% endraw %}';
+	var disqus_config = function () {
+		this.page.url = "{% raw %}{{ site.url }}{{ page.url }}{% endraw %}";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = "{% raw %}{{ page.id }}{% endraw %}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
 
-    var disqus_config = function () {
-        this.page.url = 'disqus_shortname' + "{% raw %}{{ site.url }}{% endraw %}";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "{% raw %}{{ page.id }}{% endraw %}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
+	var disqus_shortname = '{% raw %}{{ site.disqus }}{% endraw %}';
 
-		(function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-
-        s.src = '//' + 'disqus_shortname' + '.disqus.com/embed.js';
-
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+	(function() {  // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//' + 'disqus_shortname' + '.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 {% raw %}{% endif %}{% endraw %}
@@ -121,6 +121,8 @@ s.setAttribute('data-timestamp', +new Date());
 > 단, "Shortname" 값에는 에는 함정이 있는데 이 값은 **Configure Disqus** 메뉴에서 "Website URL" 값을 넣은 다음에 **Complete Setup** 버튼을 눌러야  Disqus 가 알아서 만들어 주는 값이라는 것입니다. 따라서 Disqus의 설명과 "Shortname" 값을 동시에 볼 수는 없습니다. 일단  "Shortname" 값을 만들고 다시 Admin 설명을 따라서 진행해야 합니다.
 
 저는 "Shortname" 에서 알려주는 문자열을 **_config.yml** 파일에 새로 `disqus` 변수를 만들고 여기에 할당해서 사용한 것인데 꼭 이렇게 안해도 될 것 같습니다.
+
+그리고 `this.page.url`에는 반드시 해당 페이지의 절대 경로를 넣어야 한다고 합니다. 저도 이 글을 작성하면서 처음에는 실수를 했었는데 위와 같이 `{% raw %}{{ site.url }}{{ page.url }}{% endraw %}` 로 해서 해결했습니다. `{% raw %}{{ site.url }}{% endraw %}` 대신에 `http://xho95.github.io` 처럼 해도 상관없습니다. [^disqus-3114894823]
 
 #### 3. **disqus.html** 파일 포함하기
 
@@ -240,6 +242,8 @@ http://example.com/old-path/old/posta.html, http://example.com/new-path/new/post
 
 [^help-2158629]: [Use Configuration Variables to Avoid Split Threads and Missing Comments](https://help.disqus.com/customer/en/portal/articles/2158629) : 쓰레드의 중복 문제를 피하는 방법에 대해서 설명한 글입니다. 솔직히 저도 아직 읽어보진 않았습니다. 나중에 내용을 좀 더 알게 되면 블로그 글에 추가할 수 있도록 하겠습니다.
 
+[^disqus-3114894823]: [Bug Reports & Feedback: how can I reconnect my blog with the original disqus account?](https://disqus.com/home/channel/discussdisqus/discussion/channel-discussdisqus/bug_reports_feedback_how_can_i_reconnect_my_blog_with_the_original_disqus_account/#comment-3114894823) : 결국 제 실수였는데, `this.page.url` 를 프로토콜까지 포함한 절대 경로로 사용해야한다는 답변 글입니다.
+
 [^disqus-migration-tools]: [Disqus Migration Tools](https://help.disqus.com/customer/portal/articles/286778-migration-tools)
 
 [^aweekj]: [Jekyll에 Disqus 추가하기](https://aweekj.github.io/2016-08-09/add-disqus-to-jekyll/) : 설명이 중간에 중단된 듯한 느낌입니다. 그래도 YAML frontmatter의 예시를 보여줘서 도움이 되었습니다.
@@ -247,5 +251,3 @@ http://example.com/old-path/old/posta.html, http://example.com/new-path/new/post
 [^help-565624]: [Adding comment count links to your home page](https://help.disqus.com/customer/portal/articles/565624)
 
 [^stackoverflow-24102498]: [Escaping double curly braces inside a markdown code block in Jekyll](http://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll) : Jekyll 엔진이 특정 템플릿 코드를 실행해 버리는 것을 막는 방법에 대해서 소개하고 있습니다.
-
-[Bug Reports & Feedback: how can I reconnect my blog with the original disqus account?](https://disqus.com/home/channel/discussdisqus/discussion/channel-discussdisqus/bug_reports_feedback_how_can_i_reconnect_my_blog_with_the_original_disqus_account/#comment-3114894823) : 결국 제 실수였는데, `this.page.url` 를 프로토콜까지 포함한 절대 경로로 사용해야한다는 답변 글입니다.
