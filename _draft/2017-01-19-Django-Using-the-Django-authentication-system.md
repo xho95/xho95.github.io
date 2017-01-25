@@ -568,7 +568,7 @@ def my_view(request):
 
 	**redirect\_field_name**
 	
-	**get_redirect_field_name()** 의 기본 반환 값입니다. 기본은 **"next"** 입니다.
+	**get\_redirect\_field\_name()** 의 기본 반환 값입니다. 기본은 **"next"** 입니다.
 
 	**raise_exception**
 	
@@ -576,33 +576,33 @@ def my_view(request):
 
 	**get\_login_url()**
 	
-	Returns the URL that users who don’t pass the test will be redirected to. Returns **login_url** if set, or **settings.LOGIN_URL** otherwise.
+	테스트를 통과하지 못한 사용자가 재이동해야할 URL 을 반환합니다. 설정되어 있으면 **login_url** 을 반환하고, 아니면 **settings.LOGIN_URL** 을 반환합니다.
 
 	**get_permission\_denied\_message()**
 	
-	When **raise_exception** is **True**, this method can be used to control the error message passed to the error handler for display to the user. Returns the **permission_denied_message** attribute by default.
+	**raise_exception** 이 **True** 가 되면, 이 메소드가 에러 핸들러에게 전달되는 에러 메시지를 처리하고 그 결과를 사용자에게 보여줍니다. 기본으로는 **permission\_denied\_message** 속성을 반환합니다.
 
-	**get_redirect_field_name()**
+	**get\_redirect\_field_name()**
 	
-	Returns the name of the query parameter that will contain the URL the user should be redirected to after a successful login. If you set this to **None**, a query parameter won’t be added. Returns the **redirect_field_name** attribute by default.
+	로그인이 성공한 후에 사용자가 재이동할 URL 까지 포함한 쿼리 매개 변수의 이름을 반환합니다. 이것을 **None** 으로 설정하면, 쿼리 매개 변수가 추가되지 않습니다. 기본으로 **redirect\_field\_name** 속성을 반환합니다.
 
-	**handle_no_permission()**
+	**handle\_no_permission()**
 	
-	Depending on the value of **raise_exception**, the method either raises a **PermissionDenied** exception or redirects the user to the **login_url**, optionally including the **redirect_field_name** if it is set.
+	**raise_exception** 의 값에 따라, 이 메소드는 **PermissionDenied** 예외를 발생하거나 사용자를 **login_url** 로 재이동합니다. 설정되어 있으면 **redirect\_field_name** 을 포함합니다.
 
-**Session invalidation on password change**
+**비밀 번호 변경에 따른 세션 무효화**
 
 > **장고 1.10에서 변화된 부분**:
 > 
-Session verification is enabled and mandatory in Django 1.10 (there’s no way to disable it) regardless of whether or not **SessionAuthenticationMiddleware** is enabled. In older versions, this protection only applies if **django.contrib.auth.middleware.SessionAuthenticationMiddleware** is enabled in **MIDDLEWARE**.
+> 세션 유효 검사는 **SessionAuthenticationMiddleware** 이 설정되어 있든 아니든 장고1.10에서 의무 사항입니다. (비활성화하는 방법은 없습니다). 예전 버전에서는, 이 보호 기능은 **django.contrib.auth.middleware.SessionAuthenticationMiddleware** 이 **MIDDLEWARE** 에서 활성화되어 있을 때만 적용됩니다.
 
-If your **AUTH_USER_MODEL** inherits from **AbstractBaseUser** or implements its own **get_session_auth_hash()** method, authenticated sessions will include the hash returned by this function. In the **AbstractBaseUser** case, this is an HMAC of the password field. Django verifies that the hash in the session for each request matches the one that’s computed during the request. This allows a user to log out all of their sessions by changing their password.
+**AUTH\_USER\_MODEL** 이 **AbstractBaseUser** 를 상속받거나 자체에서 직접 **get\_session\_auth\_hash()** 메소드를 구현한 경우, 인증된 세션은 이 함수에서 반환된 해쉬(hash)를 포함합니다. **AbstractBaseUser** 인 경우에는, 이 값은 비밀 번호 필드의 HMAC(Hash-based Message Authentication Code) 입니다. 장고는 각각의 요청에 대한 세션에 있는 해쉬와 요청 중에 계산된 해쉬가 들어맞는지를 검사합니다. 이것은 사용자가 비밀 번호를 변경하면 모든 세션에서 로그 아웃하도록 만듭니다.
 
-The default password change views included with Django, **password_change()** and the **user_change_password** view in the **django.contrib.auth** admin, update the session with the new password hash so that a user changing their own password won’t log themselves out. If you have a custom password change view and wish to have similar behavior, use the **update_session_auth_hash()** function. In this case, however, if a user also wants to invalidate the session from which they’re changing their password (for example, if they believe the session cookie on their machine was stolen), then they also need to log out that session.
+장고에 포함되어 있는 기본 비밀 번호 변경 뷰들인, **django.contrib.auth** 관리 화면에 있는 **password\_change()** 와 **user\_change\_password** 는, 세션을 새 비밀 번호 해쉬로 업데이트해서 사용자가 비밀 번호를 변경하면서 로그 아웃하지 않아도 되게 합니다. 비밀 번호 변경 뷰를 새로 만들면서 이와 비슷한 기능을 구현하고 싶으면, **update\_session\_auth\_hash()** 함수를 사용하면 됩니다. 하지만, 이 경우에도 사용자가 비밀 번호를 변경할 때 세션이 무효화되길 원한다면 (예를 들어, 컴퓨터에 있는 세션 쿠키가 도난당했다고 믿는 경우 등), 그 때는 세션을 로그 아웃하는 것이 필요할 수 있습니다.
 
-* **update_session_auth_hash(request, user)**
+* **update\_session\_auth\_hash(request, user)**
 
-	This function takes the current request and the updated user object from which the new session hash will be derived and updates the session hash appropriately. Example usage:
+	이 함수는 현재 요청과 함께 상속받은 새 세션 해쉬로부터 업데이트된 사용자를 인자로 받아서 세션 해쉬를 적절하게 업데이트합니다. 사용 예시는 다음과 같습니다:
 
 	```
 	from django.contrib.auth import update_session_auth_hash
@@ -617,18 +617,17 @@ The default password change views included with Django, **password_change()** an
 			...
 	```
 	
-> Since **get_session_auth_hash()** is based on **SECRET_KEY**, updating your site to use a new secret will invalidate all existing sessions.
+> **get\_session\_auth_hash()** 는 **SECRET_KEY** 에 기초하고 있어서, 새로운 비밀 번호로 사이트를 업데이트 하는 것은 이전에 존재하던 세션에서는 작동하지 않습니다.
 
+#### 인증 뷰(Authentication Views)
 
-#### Authentication Views
+장고는 로그인, 로그아웃, 비밀 번호 관리 등을 처리하기 위한 여러 가지 뷰를 제공합니다. 이것은 stock(?) auth 폼(forms)을 사용하도록 하지만, 직접 만든 폼으로 대체도 가능합니다.
 
-Django provides several views that you can use for handling login, logout, and password management. These make use of the stock auth forms but you can pass in your own forms as well.
+장고는 인증 뷰를 위한 기본 템플릿(template)을 제공하지 않습니다. 사용할 뷰에 대한 템플릿은 직접 만들어야 합니다. 템플릿 내용 변수(context)는 각각의 뷰에 대해 문서화되어 있습니다. 아래의 모든 인증 뷰(all authentication views) 부분을 보기 바랍니다.
 
-Django provides no default template for the authentication views. You should create your own templates for the views you want to use. The template context is documented in each view, see All authentication views.
+**뷰(views) 사용하기**
 
-**Using the views**
-
-There are different methods to implement these views in your project. The easiest way is to include the provided URLconf in **django.contrib.auth.urls** in your own URLconf, for example:
+프로젝트에 이 뷰들을 구현하는 방법은 여러 가지가 있습니다. 가장 쉬운 방법은 **django.contrib.auth.urls** 에서 제공하는 URLconf 를 자신의 URLconf 에 포함하는 것입니다, 예를 들면 다음과 같습니다:
 
 ```python
 urlpatterns = [
@@ -636,7 +635,7 @@ urlpatterns = [
 ]
 ```
 
-This will include the following URL patterns:
+이것은 아래의 URL 패턴들을 포함하는 것과 같습니다:
 
 ```python
 ^login/$ [name='login']
@@ -649,9 +648,9 @@ This will include the following URL patterns:
 ^reset/done/$ [name='password_reset_complete']
 ```
 
-The views provide a URL name for easier reference. See the URL documentation for details on using named URL patterns.
+이 뷰들은 접근하기 쉽도록 URL 이름을 제공합니다. 이름지어진 URL 패턴에 대해서 좀 더 알고 싶으면 [the URL documentation](https://docs.djangoproject.com/en/1.10/topics/http/urls/) 를 봅니다.
 
-If you want more control over your URLs, you can reference a specific view in your URLconf:
+자신의 URLs 에 대해 자신만의 제어를 하고 싶으면, URLconf 에서 특별한 뷰를 지정할 수 있습니다:
 
 ```
 from django.contrib.auth import views as auth_views
@@ -661,7 +660,7 @@ urlpatterns = [
 ]
 ```
 
-The views have optional arguments you can use to alter the behavior of the view. For example, if you want to change the template name a view uses, you can provide the **template_name** argument. A way to do this is to provide keyword arguments in the URLconf, these will be passed on to the view. For example:
+뷰는 선택 사항인 인자들을 가질 수 있는데 이 들을 이용해서 뷰의 행동을 변경할 수 있습니다. 예를 들어, 뷰가 사용하는 템플릿 이름을 변경하려면, **template_name** 인자를 사용하면 됩니다. 이렇게 하는 한 가지 방법은 URLconf 에서 키워드 인자를 제공하는 것입니다, 이 값들은 뷰에게 전달됩니다. 예를 들면 다음과 같습니다:
 
 ```
 urlpatterns = [
@@ -673,76 +672,76 @@ urlpatterns = [
 ]
 ```
 
-All views return a **TemplateResponse** instance, which allows you to easily customize the response data before rendering. A way to do this is to wrap a view in your own view:
+모든 뷰는 **TemplateResponse** 인스턴스를 반환받는데, 이것은 응답 데이터를 화면에 보여주기 전에 보다 쉽게 사용자화할 수 있도록 합니다. 사용자화하는 한 가지 방법은 자신의 뷰에서 이 뷰를 감싸는(wrap) 것입니다:
 
 ```
 from django.contrib.auth import views
 
 def change_password(request):
     template_response = views.password_change(request)
-    # Do something with `template_response`
+    # `template_response`를 가지고 뭔가를 합니다.
     return template_response
 ```
 
-For more details, see the TemplateResponse documentation.
+더 자세한 사항은 [TemplateResponse documentation](https://docs.djangoproject.com/en/1.10/ref/template-response/) 를 보기 바랍니다.
 
-**All authentication views**
+**모든 인증 뷰(All authentication views)**
 
-This is a list with all the views **django.contrib.auth** provides. For implementation details see Using the views.
+아래는 **django.contrib.auth** 에서 제공하는 모든 뷰의 목록입니다. 구현을 위한 세부 사항은 앞서 나왔던 뷰(views) 사용하기 부분을 보도록 합니다.
 
-* **login(request, template_name=`registration/login.html`, redirect_field_name='next', authentication_form=AuthenticationForm, current_app=None, extra_context=None, redirect_authenticated_user=False)**
+* **login(request, template_name=`registration/login.html`, redirect\_field\_name='next', authentication\_form=AuthenticationForm, current\_app=None, extra\_context=None, redirect\_authenticated\_user=False)**
 
-	**URL name: login**
+	**URL 이름: login**
 	
-	See the URL documentation for details on using named URL patterns.
+	이름지어진(named) URL 패턴에에 대해서는 [the URL documentation](https://docs.djangoproject.com/en/1.10/topics/http/urls/) 를 보도록 합니다.
 
-	**Optional arguments:**
+	**선택 인자(Optional arguments):**
 	
-	* **template_name**: The name of a template to display for the view used to log the user in. Defaults to **registration/login.html**.
+	* **template_name**: 사용자가 로그인할 때 사용되는 뷰를 보여주기 위한 템플릿의 이름입니다. 기본 값은 **registration/login.html** 입니다.
 
-	* **redirect_field_name**: The name of a **GET** field containing the URL to redirect to after login. Defaults to **next**.
+	* **redirect\_field_name**: 로그인한 후에 재이동할 URL을 담고있는 **GET** 필드의 이름입니다. 기본 값은 **next** 입니다.
 
-	* **authentication_form**: A callable (typically just a form class) to use for authentication. Defaults to **AuthenticationForm**.
+	* **authentication_form**: 인증에 사용할 호출 가능한 것으로 (보통은 그냥 폼(form) 클래스) 입니다. 기본 값은 **AuthenticationForm** 입니다.
 
-	* **current_app**: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
+	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
 
-	* **extra_context**: A dictionary of context data that will be added to the default context data passed to the template.
+	* **extra_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
 
-	* **redirect_authenticated_user**: A boolean that controls whether or not authenticated users accessing the login page will be redirected as if they had just successfully logged in. Defaults to **False**.
+	* **redirect\_authenticated\_user**: 인증된 사용자가 로그인 페이지에 접근할 때 자동으로 로그인에 성공한 것처럼 재이동을 할지를 결정하는 불린 값입니다. 기본 값은 **False** 입니다.
 
-	> **Warning**
+	> **경고**
 	> 
-	> If you enable **redirect_authenticated_user**, other websites will be able to determine if their visitors are authenticated on your site by requesting redirect URLs to image files on your website. To avoid this “social media fingerprinting” information leakage, host all images and your favicon on a separate domain.
+	> **redirect\_authenticated\_user** 를 사용하면, 다른 웹 사이트가 우리 웹 사이트의 이미지 파일로 재이동(redirect) URL을 요청하여 그 사이트의 방문자가 우리 사이트에서 인증되었는지를 확인할 수 있습니다. 이러한 “[social media fingerprinting](https://robinlinus.github.io/socialmedia-leak/)” 정보 유출을 막기 위해서는, 모든 이미지와 파비콘(favicon)을 별도의 도메인에서 제공(host)해야 합니다. 
 
-	> **Deprecated since version 1.9**:
+	> **1.9 버전부터 없어지는 것**:
 	> 
-	> The **current_app** parameter is deprecated and will be removed in Django 2.0. Callers should set **request.current_app** instead.
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
-	> **New in Django 1.10**:
+	> **장고 1.10 에서 추가된 것**:
 	> 
-	> The **redirect_authenticated_user** parameter was added.
+	> **redirect\_authenticated\_user** 매개 변수가 추가되었습니다.
 	
-	Here’s what **django.contrib.auth.views.login** does:
+	**django.contrib.auth.views.login** 가 하는 것은 다음과 같습니다:
 
-	* If called via GET, it displays a login form that POSTs to the same URL. More on this in a bit.
-	* If called via POST with user submitted credentials, it tries to log the user in. If login is successful, the view redirects to the URL specified in next. If next isn’t provided, it redirects to settings.LOGIN_REDIRECT_URL (which defaults to /accounts/profile/). If login isn’t successful, it redisplays the login form.
+	* **GET** 을 통해 호출하면, 동일한 URL에 POST 하는 로그인 양식(form)을 보여줍니다. 이 부분에 대해서는 바로 뒤에서 좀 더 다룹니다 (More on this in a bit). (?)
+	* 사용자가 제출한 증명서로 **POST** 를 통해 호출하면, 사용자를 로그인하려고 시도합니다. 로그인이 성공하면, 뷰는 **next** 에 지정된 URL 로 재이동합니다. **next** 가 제공되지 않으면, **settings.LOGIN_REDIRECT_URL** 로 재이동합니다. (기본 값은 **/accounts/profile/** 입니다). 로그인에 실패하면 로그인 양식을 다시 보여줍니다.
 
-	It’s your responsibility to provide the html for the login template , called registration/login.html by default. This template gets passed four template context variables:
+	로그인 템플릿, 기본은 **registration/login.html** 인, 을 위해 html 을 제공하는 것은 개발자의 책임입니다. 이 템플릿은 4개의 템플릿 내용 변수(context variables)를 인자로 전달받습니다:
 	
-	* **form**: A Form object representing the AuthenticationForm.
-	* **next**: The URL to redirect to after successful login. This may contain a query string, too.
-	* **site**: The current Site, according to the SITE_ID setting. If you don’t have the site framework installed, this will be set to an instance of RequestSite, which derives the site name and domain from the current HttpRequest.
-	* **site_name**: An alias for site.name. If you don’t have the site framework installed, this will be set to the value of request.META['SERVER_NAME']. For more on sites, see The “sites” framework.
+	* **form**: **AuthenticationForm** 을 나타내는 양식(**Form**) 객체.
+	* **next**: 로그인이 성공한 후 재이동할 URL. 이것은 쿼리 문자열도 같이 포함할 수 있습니다.
+	* **site**: **SITE_ID** 설정에 따른 현재 사이트(**Site**). 사이트 프레임웍을 설치한 것이 없으면, 이것은 현재의 **HttpRequest** 에서 사이트 이름과 도메인을 상속받는 **RequestSite** 의 인스턴스로 설정됩니다.
+	* **site_name**: **site.name** 의 별명. 사이트 프레임웍을 설치한 것이 없으면, 이것은 **request.META['SERVER_NAME']** 값으로 지정됩니다. 사이트에 대한 더 자세한 내용은 [The “sites” framework](https://docs.djangoproject.com/en/1.10/ref/contrib/sites/) 를 보면 됩니다.
 
-	If you’d prefer not to call the template **registration/login.html**, you can pass the **template_name** parameter via the extra arguments to the view in your URLconf. For example, this URLconf line would use **myapp/login.html** instead:
+	**registration/login.html** 템플릿을 호출하고 싶지 않으면, **template_name** 매개 변수를 URLconf 에 있는 뷰의 추가 인자를 통해 전달하면 됩니다. 예를 들어, 아래의 URLconf 는 **myapp/login.html** 을 사용하도록 합니다s:
 
 	```python
 	url(r'^accounts/login/$', auth_views.login, {'template_name': 'myapp/login.html'}),
 	```
 	
-	You can also specify the name of the GET field which contains the URL to redirect to after login by passing redirect_field_name to the view. By default, the field is called next.
+	**redirect\_field\_name** 을 뷰로 전달하는 것으로 로그인 한 후에 재이동하는 URL을 담고 있는 **GET** 필드의 이름을 지정할 수도 있습니다. 기본으로 이 필드는 **next** 에 의해 호출됩니다.
 
-	Here’s a sample registration/login.html template you can use as a starting point. It assumes you have a base.html template that defines a content block:
+	아래에 **registration/login.html** 템플릿의 보기를 나타냈습니다. 이 걸 수정해서 사용해도 됩니다. 아래 파일은 **base.html** 템플릿을 가지고 있고 **content** 블럭을 정의했다고 가정합니다:
 
 	```html
 	{% extends "base.html" %}
@@ -794,21 +793,21 @@ This is a list with all the views **django.contrib.auth** provides. For implemen
 
 	**Optional arguments**:
 
-	* next_page: The URL to redirect to after logout. Defaults to settings.LOGOUT_REDIRECT_URL if not supplied.
-	* template_name: The full name of a template to display after logging the user out. Defaults to registration/logged_out.html if no argument is supplied.
-	* redirect_field_name: The name of a GET field containing the URL to redirect to after log out. Defaults to next. Overrides the next_page URL if the given GET parameter is passed.
-	* current_app: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
-	* extra_context: A dictionary of context data that will be added to the default context data passed to the template.
+	* **next_page**: The URL to redirect to after logout. Defaults to **settings.LOGOUT_REDIRECT_URL** if not supplied.
+	* **template_name**: The full name of a template to display after logging the user out. Defaults to **registration/logged_out.html** if no argument is supplied.
+	* **redirect_field_name**: The name of a **GET** field containing the URL to redirect to after log out. Defaults to **next**. Overrides the **next_page** URL if the given **GET** parameter is passed.
+	* **current_app**: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
+	* **extra_context**: A dictionary of context data that will be added to the default context data passed to the template.
 
-	> Deprecated since version 1.9:
-	>
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
 	**Template context**:
 
-	* title: The string “Logged out”, localized.
-	* site: The current Site, according to the SITE_ID setting. If you don’t have the site framework installed, this will be set to an instance of RequestSite, which derives the site name and domain from the current HttpRequest.
-	* site_name: An alias for site.name. If you don’t have the site framework installed, this will be set to the value of request.META['SERVER_NAME']. For more on sites, see The “sites” framework.
+	* **title**: The string “Logged out”, localized.
+	* **site**: The current **Site**, according to the **SITE_ID** setting. If you don’t have the site framework installed, this will be set to an instance of **RequestSite**, which derives the site name and domain from the current **HttpRequest**.
+	* **site_name**: An alias for **site.name**. If you don’t have the site framework installed, this will be set to the value of **request.META['SERVER_NAME']**. For more on sites, see The “sites” framework.
 
 * **logout_then_login(request, login_url=None, current_app=None, extra_context=None)**
 
@@ -818,15 +817,15 @@ This is a list with all the views **django.contrib.auth** provides. For implemen
 
 	**Optional arguments**:
 
-	* **login_url**: The URL of the login page to redirect to. Defaults to settings.LOGIN_URL if not supplied.
+	* **login_url**: The URL of the login page to redirect to. Defaults to **settings.LOGIN_URL** if not supplied.
 	* **current_app**: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
 	* **extra_context**: A dictionary of context data that will be added to the default context data passed to the template.
 
-	> Deprecated since version 1.9:
-	>
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
-* **password_change(request, template_name='registration/password_change_form.html', post_change_redirect=None, password_change_form=PasswordChangeForm, current_app=None, extra_context=None)**
+* **password_change(request, template\_name='registration/password\_change\_form.html', post\_change\_redirect=None, password\_change\_form=PasswordChangeForm, current\_app=None, extra\_context=None)**
 
 	Allows a user to change their password.
 
@@ -834,25 +833,25 @@ This is a list with all the views **django.contrib.auth** provides. For implemen
 
 	**Optional arguments**:
 
-	* template_name: The full name of a template to use for displaying the password change form. Defaults to registration/password_change_form.html if not supplied.
-	* post_change_redirect: The URL to redirect to after a successful password change.
-	* password_change_form: A custom “change password” form which must accept a user keyword argument. The form is responsible for actually changing the user’s password. Defaults to PasswordChangeForm.
+	* template\_name: The full name of a template to use for displaying the password change form. Defaults to registration/password_change_form.html if not supplied.
+	* post\_change_redirect: The URL to redirect to after a successful password change.
+	* password\_change_form: A custom “change password” form which must accept a user keyword argument. The form is responsible for actually changing the user’s password. Defaults to PasswordChangeForm.
 	* current_app: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
 	* extra_context: A dictionary of context data that will be added to the default context data passed to the template.
 
-	> Deprecated since version 1.9:
+	> **1.9 버전부터 없어지는 것**:
 	> 
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
 	**Template context**:
 
-	* form: The password change form (see password_change_form above).
+	* form: The password change form (see password\_change_form above).
 
-* **password_change_done(request, template_name='registration/password_change_done.html', current_app=None, extra_context=None)**
+* **password\_change_done(request, template\_name='registration/password\_change\_done.html', current\_app=None, extra\_context=None)**
 
 	The page shown after a user has changed their password.
 
-	**URL name: password_change_done**
+	**URL name: password\_change_done**
 
 	**Optional arguments**:
 
@@ -860,45 +859,45 @@ This is a list with all the views **django.contrib.auth** provides. For implemen
 	* **current_app**: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
 	* **extra_context**: A dictionary of context data that will be added to the default context data passed to the template.
 
-	> Deprecated since version 1.9:
-	>
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 	
-* **password_reset(request, template_name='registration/password_reset_form.html', email_template_name='registration/password_reset_email.html', subject_template_name='registration/password_reset_subject.txt', password_reset_form=PasswordResetForm, token_generator=default_token_generator, post_reset_redirect=None, from_email=None, current_app=None, extra_context=None, html_email_template_name=None, extra_email_context=None)**
+* **password_reset(request, template\_name='registration/password\_reset\_form.html', email\_template\_name='registration/password_reset\_email.html', subject\_template\_name='registration/password\_reset\_subject.txt', password\_reset\_form=PasswordResetForm, token\_generator=default\_token\_generator, post\_reset\_redirect=None, from\_email=None, current\_app=None, extra\_context=None, html\_email_template\_name=None, extra\_email\_context=None)**
 
 	Allows a user to reset their password by generating a one-time use link that can be used to reset the password, and sending that link to the user’s registered email address.
 
-	If the email address provided does not exist in the system, this view won’t send an email, but the user won’t receive any error message either. This prevents information leaking to potential attackers. If you want to provide an error message in this case, you can subclass PasswordResetForm and use the password_reset_form argument.
+	If the email address provided does not exist in the system, this view won’t send an email, but the user won’t receive any error message either. This prevents information leaking to potential attackers. If you want to provide an error message in this case, you can subclass PasswordResetForm and use the password\_reset\_form argument.
 
-	Users flagged with an unusable password (see set_unusable_password() aren’t allowed to request a password reset to prevent misuse when using an external authentication source like LDAP. Note that they won’t receive any error message since this would expose their account’s existence but no mail will be sent either.
+	Users flagged with an unusable password (see set\_unusable\_password() aren’t allowed to request a password reset to prevent misuse when using an external authentication source like LDAP. Note that they won’t receive any error message since this would expose their account’s existence but no mail will be sent either.
 
 	**URL name: password_reset**
 
 	**Optional arguments**:
 
 	* **template_name**: The full name of a template to use for displaying the password reset form. Defaults to registration/password_reset_form.html if not supplied.
-	* **email\_template_name**: The full name of a template to use for generating the email with the reset password link. Defaults to registration/password_reset_email.html if not supplied.
-	* **subject\_template_name**: The full name of a template to use for the subject of the email with the reset password link. Defaults to registration/password_reset_subject.txt if not supplied.
-	* **password_reset_form**: Form that will be used to get the email of the user to reset the password for. Defaults to PasswordResetForm.
+	* **email\_template\_name**: The full name of a template to use for generating the email with the reset password link. Defaults to registration/password_reset_email.html if not supplied.
+	* **subject\_template\_name**: The full name of a template to use for the subject of the email with the reset password link. Defaults to registration/password_reset_subject.txt if not supplied.
+	* **password\_reset\_form**: Form that will be used to get the email of the user to reset the password for. Defaults to PasswordResetForm.
 	* **token_generator**: Instance of the class to check the one time link. This will default to default_token_generator, it’s an instance of django.contrib.auth.tokens.PasswordResetTokenGenerator.
-	* **post_reset_redirect**: The URL to redirect to after a successful password reset request.
-	* **from_email**: A valid email address. By default Django uses the DEFAULT_FROM_EMAIL.
+	* **post\_reset\_redirect**: The URL to redirect to after a successful password reset request.
+	* **from_email**: A valid email address. By default Django uses the DEFAULT\_FROM\_EMAIL.
 	* **current_app**: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
 	* **extra_context**: A dictionary of context data that will be added to the default context data passed to the template.
-	* **html_email_template_name**: The full name of a template to use for generating a text/html multipart email with the password reset link. By default, HTML email is not sent.
-	* **extra_email_context**: A dictionary of context data that will be available in the email template.
+	* **html\_email\_template\_name**: The full name of a template to use for generating a text/html multipart email with the password reset link. By default, HTML email is not sent.
+	* **extra\_email\_context**: A dictionary of context data that will be available in the email template.
 
-	> Deprecated since version 1.9:
+	> **1.9 버전부터 없어지는 것**:
 	> 
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
 	> New in Django 1.9:
 	>
-	> The extra_email_context parameter was added.
+	> The extra\_email\_context parameter was added.
 
 	**Template context**:
 
-	* **form**: The form (see password_reset_form above) for resetting the user’s password.
+	* **form**: The form (see password\_reset\_form above) for resetting the user’s password.
 
 	**Email template context**:
 
@@ -910,7 +909,7 @@ This is a list with all the views **django.contrib.auth** provides. For implemen
 	* **uid**: The user’s primary key encoded in base 64.
 	* **token**: Token to check that the reset link is valid.
 
-	Sample registration/password_reset_email.html (email body template):
+	Sample registration/password\_reset\_email.html (email body template):
 
 	```django
 	Someone asked for password reset for email {{ email }}. Follow the link below:
@@ -919,65 +918,65 @@ This is a list with all the views **django.contrib.auth** provides. For implemen
 	
 The same template context is used for subject template. Subject must be single line plain text string.
 
-* **password_reset_done(request, template_name='registration/password_reset_done.html', current_app=None, extra_context=None)**
+* **password_reset_done(request, template\_name='registration/password\_reset\_done.html', current\_app=None, extra\_context=None)**
 
-	The page shown after a user has been emailed a link to reset their password. This view is called by default if the password_reset() view doesn’t have an explicit post_reset_redirect URL set.
+	The page shown after a user has been emailed a link to reset their password. This view is called by default if the password\_reset() view doesn’t have an explicit post\_reset\_redirect URL set.
 
-	**URL name: password_reset_done**
+	**URL name: password\_reset\_done**
 
 	> If the email address provided does not exist in the system, the user is inactive, or has an unusable password, the user will still be redirected to this view but no email will be sent.
 
 	**Optional arguments**:
 
-	* **template_name**: The full name of a template to use. Defaults to registration/password_reset_done.html if not supplied.
-	* **current_app**: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
-	* **extra_context**: A dictionary of context data that will be added to the default context data passed to the template.
+	* **template\_name**: The full name of a template to use. Defaults to registration/password\_reset\_done.html if not supplied.
+	* **current\_app**: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
+	* **extra\_context**: A dictionary of context data that will be added to the default context data passed to the template.
 
-	> Deprecated since version 1.9:
+	> **1.9 버전부터 없어지는 것**:
 	> 
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
-* **password_reset_confirm(request, uidb64=None, token=None, template_name='registration/password_reset_confirm.html', token_generator=default_token_generator, set_password_form=SetPasswordForm, post_reset_redirect=None, current_app=None, extra_context=None)**
+* **password\_reset\_confirm(request, uidb64=None, token=None, template\_name='registration/password\_reset\_confirm.html', token\_generator=default\_token\_generator, set\_password\_form=SetPasswordForm, post\_reset_redirect=None, current\_app=None, extra\_context=None)**
 
 	Presents a form for entering a new password.
 
-	URL name: password_reset_confirm
+	URL name: password\_reset\_confirm
 
 	Optional arguments:
 
 	* uidb64: The user’s id encoded in base 64. Defaults to None.
 	* token: Token to check that the password is valid. Defaults to None.
-	* template_name: The full name of a template to display the confirm password view. Default value is registration/password_reset_confirm.html.
-	* token_generator: Instance of the class to check the password. This will default to default_token_generator, it’s an instance of django.contrib.auth.tokens.PasswordResetTokenGenerator.
-	* set_password_form: Form that will be used to set the password. Defaults to SetPasswordForm
-	* post_reset_redirect: URL to redirect after the password reset done. Defaults to None.
-	* current_app: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
-	* extra_context: A dictionary of context data that will be added to the default context data passed to the template.
+	* template\_name: The full name of a template to display the confirm password view. Default value is registration/password\_reset\_confirm.html.
+	* token\_generator: Instance of the class to check the password. This will default to default\_token\_generator, it’s an instance of django.contrib.auth.tokens.PasswordResetTokenGenerator.
+	* set\_password\_form: Form that will be used to set the password. Defaults to SetPasswordForm
+	* post\_reset\_redirect: URL to redirect after the password reset done. Defaults to None.
+	* current\_app: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
+	* extra\_context: A dictionary of context data that will be added to the default context data passed to the template.
 
 	**Template context**:
 
 	* form: The form (see set_password_form above) for setting the new user’s password.
 	* validlink: Boolean, True if the link (combination of uidb64 and token) is valid or unused yet.
 
-	> Deprecated since version 1.9:
+	> **1.9 버전부터 없어지는 것**:
 	> 
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
-* **password_reset_complete(request, template_name='registration/password_reset_complete.html', current_app=None, extra_context=None)**
+* **password\_reset\_complete(request, template\_name='registration/password\_reset\_complete.html', current\_app=None, extra\_context=None)**
 
 	Presents a view which informs the user that the password has been successfully changed.
 
-	URL name: password_reset_complete
+	URL name: password\_reset\_complete
 
 	Optional arguments:
 
-	* template_name: The full name of a template to display the view. Defaults to registration/password_reset_complete.html.
-	* current_app: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
-	* extra_context: A dictionary of context data that will be added to the default context data passed to the template.
+	* template\_name: The full name of a template to display the view. Defaults to registration/password\_reset\_complete.html.
+	* current\_app: A hint indicating which application contains the current view. See the namespaced URL resolution strategy for more information.
+	* extra\_context: A dictionary of context data that will be added to the default context data passed to the template.
 
-	> Deprecated since version 1.9:
+	> **1.9 버전부터 없어지는 것**:
 	> 
-	> The current_app parameter is deprecated and will be removed in Django 2.0. Callers should set request.current_app instead.
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
 
 ### 사용자(users)를 관리 화면(admin)에서 다루기
