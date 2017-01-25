@@ -637,7 +637,7 @@ urlpatterns = [
 
 이것은 아래의 URL 패턴들을 포함하는 것과 같습니다:
 
-```python
+```django
 ^login/$ [name='login']
 ^logout/$ [name='logout']
 ^password_change/$ [name='password_change']
