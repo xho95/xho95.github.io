@@ -240,7 +240,7 @@ def my_view(request):
 사용자가 로그인 할 때, 사용자의 ID와 인증에 사용될 백엔드가 사용자 세션에 저장됩니다. 이것은 같은 인증 백엔드([authentication backend](https://docs.djangoproject.com/en/1.10/topics/auth/customizing/#authentication-backends)) 가 미래의 요청시에 사용자의 세부 정보를 가져올 수 있도록 합니다. 세션에 저장되는 인증 백엔드는 다음과 같이 선택됩니다:
 
 1. 만약 제공된다면, 선택적 백엔드(optional **backend**) 인자의 값을 사용합니다.
-2. 존재한다면 사용자 백엔드(**user.backend**) 속성의 값을 사용합니다. 이것은 **authenticate()** 와 **login()**을 짝을 짓도록 허용합니다: **authenticate()** 는 반환되는 사용자 객체에 **user.backend** 속성을 지정합니다.
+2. 존재한다면 **user.backend** 속성의 값을 사용합니다. 이것은 **authenticate()** 와 **login()**을 짝을 짓도록 허용합니다: **authenticate()** 는 반환되는 사용자 객체에 **user.backend** 속성을 지정합니다.
 3. 하나만 있을 경우 **AUTHENTICATION_BACKENDS** 에 있는 **backend** 를 사용합니다.
 4. 다른 경우, 예외를 발생시킵니다.
 
@@ -268,9 +268,9 @@ def logout_view(request):
 
 #### 로그인한 사용자의 접근을 제한하기
 
-**The raw way**
+**저수준의 방법(The raw way)**
 
-The simple, raw way to limit access to pages is to check **request.user.is_authenticated** and either redirect to a login page:
+페이지 접근을 막는 간단하고, 낮는 단계의 방법은 **request.user.is_authenticated** 를 체크해서 아닐 경우 로그인 페이지로 재연결하거나:
 
 ```python
 from django.conf import settings
@@ -282,7 +282,7 @@ def my_view(request):
     # ...
 ```
    
-...or display an error message:
+...아니면 에러 메시지를 나타내는 것입니다:
 
 ```python
 from django.shortcuts import render
@@ -293,86 +293,691 @@ def my_view(request):
     # ...
 ```
 
-**The login_required decorator**
+**login_required 테코레이터(decorator)**
 
-```
-login_required(redirect_field_name='next', login_url=None)
-```
+* **login\_required(redirect\_field\_name='next', login\_url=None)**
 
-As a shortcut, you can use the convenient login_required() decorator:
+	보다 간단하게는, 편리한 **login_required()** 데코레이터를 사용할 수 있습니다:
 
-```
-from django.contrib.auth.decorators import login_required
+	```python
+	from django.contrib.auth.decorators import login_required
 
-@login_required
-def my_view(request):
-    ...
-```
+	@login_required
+	def my_view(request):
+    	...
+	```
     
-login_required() does the following:
+	**login_required()** 는 아래와 같이 동작합니다:
 
-* If the user isn’t logged in, redirect to settings.LOGIN_URL, passing the current absolute path in the query string. Example: /accounts/login/?next=/polls/3/.
-* If the user is logged in, execute the view normally. The view code is free to assume the user is logged in.
+	* 사용자가 로그인되어 있지 않으면, **settings.LOGIN_URL** 로 재이동하면서, 현재의 절대 경로를 쿼리 문자열로 전달합니다. 예를 들면 이렇게 됩니다: **/accounts/login/?next=/polls/3/**.
+	* 사용자가 로그인되어 있으면, 뷰(view)를 정상적으로 실행합니다. 뷰 코드는 사용자가 로그인되어 있다고 가정해도 됩니다.
 
-By default, the path that the user should be redirected to upon successful authentication is stored in a query string parameter called "next". If you would prefer to use a different name for this parameter, login_required() takes an optional redirect_field_name parameter:
+	기본으로는, 인증이 성공했을 때 사용자가 재이동해야하는 경로는 **"next"** 라는 쿼리 문자열 매개 변수에 저장되어 있습니다. 이 매개 변수의 이름을 바꾸고 싶으면, **login_required()** 에 **redirect_field_name** 이라는 매개 변수를 사용해서 지정할 수 있습니다.:
 
-```
-from django.contrib.auth.decorators import login_required
+	```python
+	from django.contrib.auth.decorators import login_required
 
-@login_required(redirect_field_name='my_redirect_field')
-def my_view(request):
-    ...
-```
+	@login_required(redirect_field_name='my_redirect_field')
+	def my_view(request):
+    	...
+	```
     
-Note that if you provide a value to redirect_field_name, you will most likely need to customize your login template as well, since the template context variable which stores the redirect path will use the value of redirect_field_name as its key rather than "next" (the default).
+	만약 **redirect_field_name** 값을 지정한다면, 아울러 로그인 템플릿도 다시 작성해야할 가능성이 높다는 것을 알아둬야 합니다. 왜냐면 재이동(redirect) 경로를 저장하는 템플릿 내용 변수(context variable)가 키로**redirect_field_name** 를 사용하지 (기본값인) **"next"** 를 사용하지 않을 것이기 때문입니다.
 
-login_required() also takes an optional login_url parameter. Example:
+	**login_required()** 는 또 선택 사항으로 **login_url** 매개 변수를 가집니다. 예를 들어 보면 아래와 같습니다:
 
-```
-from django.contrib.auth.decorators import login_required
+	```python
+	from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='/accounts/login/')
+	@login_required(login_url='/accounts/login/')
 def my_view(request):
-    ...
-```
+	    ...
+	```
     
-Note that if you don’t specify the login_url parameter, you’ll need to ensure that the settings.LOGIN_URL and your login view are properly associated. For example, using the defaults, add the following lines to your URLconf:
+	**login_url** 매개 변수를 특별히 지정하지 않으면, **settings.LOGIN_URL** 값을 확실히 해서 로그인 뷰(login view)와 잘 연결될 필요가 있음을 명심해야 합니다. 예를 들어, 아래의 코드를 URLconf 에 추가하는 것은 기본입니다:
+
+	```python
+	from django.contrib.auth import views as auth_views
+
+	url(r'^accounts/login/$', auth_views.login),
+	```
+
+	**settings.LOGIN_URL** 은 뷰 함수(view function) 이름과 이름있는 URL 패턴([named URL patterns](https://docs.djangoproject.com/en/1.10/topics/http/urls/#naming-url-patterns))도 받을 수 있습니다. 이렇게 하면 설정을 고치지 않고도 URLconf 에서 자유롭게 로그인 뷰를 재-맵핑(remap)할 수 있습니다.
+
+> **login_required** 데코레이터는 사용자의 **is_active** 를 체크하지 않습니다, 기본 **AUTHENTICATION_BACKENDS** 가 비활성 사용자를 거부합니다.    
+
+> **See also**
+> 
+> 장고의 관리 화면(admin)을 직접 만들고 있거나 (제공되는 뷰에서 쓰는 것과 같은 인증 체크를 할 필요가 있다면), **django.contrib.admin.views.decorators.staff\_member_required()** 데코레이터를 살펴 보는 것이 **login_required()** 보다 좋을 수 있습니다.
+
+**LoginRequired 믹스인(mixin)**
+
+클래스 기반 뷰([class-based views](https://docs.djangoproject.com/en/1.10/topics/class-based-views/))를 사용할 때는, **LoginRequiredMixin** 을 사용하여 **login_required** 에서와 같은 기능을 구현할 수 있습니다. 이 믹스인(mixin)은 상속 리스트에서 가장 왼쪽에 위치해야 합니다.
+
+* class **LoginRequiredMixin**
+	
+	```
+	장고 1.9에서 추가된 것입니다.
+	```
+	
+	뷰에서 이 믹스인을 사용하면, 비-인증 사용자의 모든 요청은 로그인 페이지로 재-연결되거나, **raise_exception** 매개 변수에 따라 HTTP 403 Forbidden 에러를 표시하도록 합니다.
+
+	비인증 사용자를 처리하는 방식은 **AccessMixin** 의 매개 변수를 지정함으로써 마음대로 변경할 수 있습니다:
+
+	```python
+	from django.contrib.auth.mixins import LoginRequiredMixin
+
+	class MyView(LoginRequiredMixin, View):
+    	login_url = '/login/'
+    	redirect_field_name = 'redirect_to'
+	```
+    
+> **login_required** 데코레이터와 마찬가지로, 이 믹스인도 사용자가  **is_active** 인지를 체크하는지는 않고, 다만 기본  **AUTHENTICATION_BACKENDS** 가 비활성 사용자를 막는 것입니다.
+
+**테스트를 통과한(?) 로그인 사용자의 접근 제한하기**
+
+어떤 승인이나 다른 테스트에 기반을 둔 접근 제한을 위해서는, 본질적으로 이전 절에서 설명한 것과 동일하게 하면 됩니다.
+
+간단한 방법은 뷰에서 직접 **request.user** 에 테스트를 실행하는 것입니다. 예를 들어, 아래는 사용자의 이메일이 요구된 도메인을 가지고 있는지를 검사해서 아니라면 로그인 페이지로 재-이동 하는 예입니다:
+
+```python 
+from django.shortcuts import redirect
+
+def my_view(request):
+    if not request.user.email.endswith('@example.com'):
+        return redirect('/login/?next=%s' % request.path)
+    # ...
+```
+
+* **user\_passes_test(test_func, login_url=None, redirect\_field_name='next')**
+
+	보다 간단하게는, **user\_passes_test** 데코레이터를 사용하면 편리한데 이것은 호출 가능 한 것(callable)이 **False** 를 반환하면 재-이동을 수행합니다:
+
+	```python
+	from django.contrib.auth.decorators import user_passes_test
+
+	def email_check(user):
+    	return user.email.endswith('@example.com')
+
+	@user_passes_test(email_check)
+	def my_view(request):
+    	...
+	```
+    
+	**user\_passes_test()** 에는 하나의 필수 인자가 있습니다: **User** 객체를 인자로 받아서 사용자가 페이지를 볼 수 있게 허용되면 **True** 를 반환하는 호출 가능한 것(callable)입니다. **user_passes_test()** 는 **User** 가 익명인지 자동으로 검사하지 않음을 명심해야 합니다.
+
+	**user\_passes_test()** 에는 선택 가능한 두 개의 인자도 있습니다:
+
+	* **login_url**  
+
+		테스트를 통과하지 못한 사용자가 재이동할 URL 을 특별히 지정하도록 합니다. 아마도 로그인 페이지가 될 것이므로 따로 지정하지 않으면 기본으로 **settings.LOGIN_URL** 로 지정됩니다.
+
+	* **redirect\_field_name**  
+	
+		기능은 **login_required()** 에서와 같습니다. **None** 으로 두면 URL 에서 제거하게 되는데, 테스트를 통과하지 못해서 재이동해야하는 사용자를 비-로그인 페이지 등 “next page” 가 없는 페이지로 이동시키고 싶을 때 사용할 수 있습니다.
+
+	예를 들면 아래와 같습니다:
+
+	```
+	@user_passes_test(email_check, login_url='/login/')
+	def my_view(request):
+		...
+	```
+  
+* class **UserPassesTestMixin**
+	
+	```
+	장고 1.9에서 추가된 것입니다.
+	```
+
+	클래스 기반 뷰를 사용할 때, **UserPassesTestMixin** 로는 다음과 같은 것들을 할 수 있습니다.
+
+	* **test_func()**
+
+		클래스에 테스트 기능을 제공하려면 **test_func()** 메소드를 재정의해야 합니다. 더 나아가서, 비인증 사용자의 처리를 직접 구현하려면  **AccessMixin** 의 (구현체를 ?) 매개 변수에 할당하면 됩니다 (말을 조금 더 다듬어야 합니다):
+
+		```
+		from django.contrib.auth.mixins import UserPassesTestMixin
+
+		class MyView(UserPassesTestMixin, View):
+
+    	def test_func(self):
+    		return self.request.user.email.endswith('@example.com')
+		```
+
+	* **get\_test_func()**
+
+		또한 **get_test_func()** 메소드를 재정의해서 믹스인이 검사 함수로 (**test_func()** 대신에) 다른 이름을 가지게 할 수 있습니다.
+
+> **UserPassesTestMixin** 쌓는 문제
+> 
+> **UserPassesTestMixin** 방법이 구현되었기 때문에, 상속 리스트에 이것을 쌓을 수 없습니다. 아래의 코드는 동작하지 않습니다:
+> 
+> ```python
+> class TestMixin1(UserPassesTestMixin):
+>     def test_func(self):
+>         return self.request.user.email.endswith('@example.com')
+> 
+> class TestMixin2(UserPassesTestMixin):
+>     def test_func(self):
+>         return self.request.user.username.startswith('django')
+> 
+> class MyView(TestMixin1, TestMixin2, View):
+>     ...
+> ```
+> 
+> **TestMixin1** 가  **super()** 를 호출하고 결과를 가지고 있게 되면, **TestMixin1** 는 더이상 혼자서는 동작할 수 없습니다. (이부분은 아직 완전히 이해하지 못했습니다. 나중에 다시 정리해야 합니다.)
+
+**The permission_required decorator**
+
+* **permission\_required(perm, login_url=None, raise\_exception=False)**
+
+	사용자가 특별한 (것들에 대해) 승인을 가지는 지  검사하는 것은 일반적인 임무입니다. 그런 이유로, 장고는 이런 경우에 대해 보다 간단한 방법을 제공합니다: **permission_required()** 데코레이터가 그것입니다:
+
+	```python
+	from django.contrib.auth.decorators import permission_required
+
+	@permission_required('polls.can_vote')
+	def my_view(request):
+		...
+	```
+	
+	**has_perm()** 메소드와 마찬가지로, 승인 이름은 다음과 같이 **"<app label>.<permission codename>"** 형태가 됩니다. (가령 **polls** 의 모델에 대한 승인은 **polls.can_vote** 가 됩니다).
+
+	데코레이터는 승인들의 반복자(iterable)를 가질 수 있는데, 이런 경우에 사용자가는 뷰에 접근하기 위해 모든 승인들을 가지고 있어야한 합니다.
+
+	**permission_required()** 는 선택 사항으로 **login_url** 매개 변수를 가질 수 있음을 명심하시기 바랍니다:
+
+	```python
+	from django.contrib.auth.decorators import permission_required
+
+	@permission_required('polls.can_vote', login_url='/loginpage/')
+	def my_view(request):
+	...
+	```
+  
+	**login_required()** 데코레이터에서와 같이, **login_url** 대신에 **settings.LOGIN_URL** 를 기본으로 사용할 수 있습니다.
+
+	**raise_exception** 매개 변수가 주어지면, 데코레이터는 로그인 페이지로 재연결하지 않고 **PermissionDenied** 를 발생시켜서, [the 403 (HTTP Forbidden) view](https://docs.djangoproject.com/en/1.10/ref/views/#http-forbidden-view) 를 바로 표시합니다.
+
+	**raise_exception** 을 사용하면서 로그인 기능을 같이 제공하고 싶으면, **login_required()** 데코레이터를 추가하면 됩니다:
+
+	```
+	from django.contrib.auth.decorators import login_required, permission_required
+
+	@login_required
+	@permission_required('polls.can_vote', 	raise_exception=True)
+	def my_view(request):
+		...
+	```
+	
+	> **Django 1.9** 에서 변한 부분:
+	>
+	> 예전 버전에서는 **permission** 매개 변수가 문자열, 리스트, 그리고 튜플하고만 작동했습니다. 지금은 스트링과 모든 반복 가능한(iterable) 형태와 작동합니다.
+	
+**PermissionRequiredMixin 믹스인**
+
+클래스 기반 뷰에서 승인 검사를 하려면, **PermissionRequiredMixin** 를 사용하면 됩니다:
+
+* class **PermissionRequiredMixin**
+
+	```
+	장고 1.9에서 추가된 것입니다.
+	```
+	
+	이 믹스인은 **permission_required** 데코레이터와 같이, 뷰에 접근하려는 사용자가 모든 승인을 가지고 있는지를 검사합니다. **permission_required** 매개 변수를 사용하여 승인 (이나 승인 반복 형태) 를 지정해야 합니다:
+
+	```
+	from django.contrib.auth.mixins import PermissionRequiredMixin
+
+	class MyView(PermissionRequiredMixin, View):
+		permission_required = 'polls.can_vote'
+		# 다수의 승인일 경우는 아래처럼 합니다:
+		permission_required = ('polls.can_open', 'polls.can_edit')
+	```
+	
+	비인증 사용자를 처리하는 부분을 사용자화 하기 위해 **AccessMixin** 의 어떤 매개 변수라도 지정할 수 있습니다.
+
+	또 아래와 같은 메소드들을 재정의할 수 있습니다:
+
+	* **get_permission_required()**
+
+		믹스인에 사용될 승인들의 이름들을 반복(iterable) 형태로 반환합니다. 기본은 **permission_required** 속성인데, 필요하다면 튜플로 변환합니다. (반환 타입을 말하는 것 같습니다. 나중에 다시 확인합니다.)
+
+	* **has_permission()**
+		
+		불린(boolean) 값을 반환하는데 이는 현재 사용자가 제공받은(decorated ?) 뷰를 실행할 수 있는지 여부를 나타냅니다. 이 함수는 기본으로는 **has_perms()** 함수의 결과를 반환하는데, 이 때 **get\_permission_required()** 가 반환하는 승인 리스트를 사용합니다.
+
+#### 클래스 기반 뷰에서 비승인 요청에 대해 재연결(Redirecting) 하기
+
+클래스 기반 뷰에서 접근 제한을 처리할 때는, **AccessMixin** 을 사용함으로써 사용자를 로그인 페이지로 재이동시키거나 HTTP 403 Forbidden 응답을 하는 것을 쉽게 할 수 있습니다.
+
+* class **AccessMixin**
+
+	```
+	장고 1.9에서 추가된 것입니다.
+	```
+
+	**login_url**
+	
+	**get\_login_url()** 의 기본 반환 값입니다. **get_login_url()** 이 **settings.LOGIN_URL** 의 값을 사용하게 되는 경우에는 기본 값이 **None** 입니다. (이 문장은 다시 봅니다)
+
+	**permission\_denied_message**
+
+	**get\_permission\_denied\_message()** 의 기본 반환 값입니다. 기본은 빈 문자열입니다.
+
+	**redirect\_field_name**
+	
+	**get\_redirect\_field\_name()** 의 기본 반환 값입니다. 기본은 **"next"** 입니다.
+
+	**raise_exception**
+	
+	이 속성이 **True** 가 되면, 재이동없이 **PermissionDenied** 예외가 발생합니다. 기본은 **False** 입니다.
+
+	**get\_login_url()**
+	
+	테스트를 통과하지 못한 사용자가 재이동해야할 URL 을 반환합니다. 설정되어 있으면 **login_url** 을 반환하고, 아니면 **settings.LOGIN_URL** 을 반환합니다.
+
+	**get_permission\_denied\_message()**
+	
+	**raise_exception** 이 **True** 가 되면, 이 메소드가 에러 핸들러에게 전달되는 에러 메시지를 처리하고 그 결과를 사용자에게 보여줍니다. 기본으로는 **permission\_denied\_message** 속성을 반환합니다.
+
+	**get\_redirect\_field_name()**
+	
+	로그인이 성공한 후에 사용자가 재이동할 URL 까지 포함한 쿼리 매개 변수의 이름을 반환합니다. 이것을 **None** 으로 설정하면, 쿼리 매개 변수가 추가되지 않습니다. 기본으로 **redirect\_field\_name** 속성을 반환합니다.
+
+	**handle\_no_permission()**
+	
+	**raise_exception** 의 값에 따라, 이 메소드는 **PermissionDenied** 예외를 발생하거나 사용자를 **login_url** 로 재이동합니다. 설정되어 있으면 **redirect\_field_name** 을 포함합니다.
+
+**비밀 번호 변경에 따른 세션 무효화**
+
+> **장고 1.10에서 변화된 부분**:
+> 
+> 세션 유효 검사는 **SessionAuthenticationMiddleware** 이 설정되어 있든 아니든 장고1.10에서 의무 사항입니다. (비활성화하는 방법은 없습니다). 예전 버전에서는, 이 보호 기능은 **django.contrib.auth.middleware.SessionAuthenticationMiddleware** 이 **MIDDLEWARE** 에서 활성화되어 있을 때만 적용됩니다.
+
+**AUTH\_USER\_MODEL** 이 **AbstractBaseUser** 를 상속받거나 자체에서 직접 **get\_session\_auth\_hash()** 메소드를 구현한 경우, 인증된 세션은 이 함수에서 반환된 해쉬(hash)를 포함합니다. **AbstractBaseUser** 인 경우에는, 이 값은 비밀 번호 필드의 HMAC(Hash-based Message Authentication Code) 입니다. 장고는 각각의 요청에 대한 세션에 있는 해쉬와 요청 중에 계산된 해쉬가 들어맞는지를 검사합니다. 이것은 사용자가 비밀 번호를 변경하면 모든 세션에서 로그 아웃하도록 만듭니다.
+
+장고에 포함되어 있는 기본 비밀 번호 변경 뷰들인, **django.contrib.auth** 관리 화면에 있는 **password\_change()** 와 **user\_change\_password** 는, 세션을 새 비밀 번호 해쉬로 업데이트해서 사용자가 비밀 번호를 변경하면서 로그 아웃하지 않아도 되게 합니다. 비밀 번호 변경 뷰를 새로 만들면서 이와 비슷한 기능을 구현하고 싶으면, **update\_session\_auth\_hash()** 함수를 사용하면 됩니다. 하지만, 이 경우에도 사용자가 비밀 번호를 변경할 때 세션이 무효화되길 원한다면 (예를 들어, 컴퓨터에 있는 세션 쿠키가 도난당했다고 믿는 경우 등), 그 때는 세션을 로그 아웃하는 것이 필요할 수 있습니다.
+
+* **update\_session\_auth\_hash(request, user)**
+
+	이 함수는 현재 요청과 함께 상속받은 새 세션 해쉬로부터 업데이트된 사용자를 인자로 받아서 세션 해쉬를 적절하게 업데이트합니다. 사용 예시는 다음과 같습니다:
+
+	```
+	from django.contrib.auth import update_session_auth_hash
+
+	def password_change(request):
+		if request.method == 'POST':
+			form = PasswordChangeForm(user=request.user, data=request.POST)
+			if form.is_valid():
+				form.save()
+				update_session_auth_hash(request, form.user)
+		else:
+			...
+	```
+	
+> **get\_session\_auth_hash()** 는 **SECRET_KEY** 에 기초하고 있어서, 새로운 비밀 번호로 사이트를 업데이트 하는 것은 이전에 존재하던 세션에서는 작동하지 않습니다.
+
+#### 인증 뷰(Authentication Views)
+
+장고는 로그인, 로그아웃, 비밀 번호 관리 등을 처리하기 위한 여러 가지 뷰를 제공합니다. 이것은 stock(?) auth 폼(forms)을 사용하도록 하지만, 직접 만든 폼으로 대체도 가능합니다.
+
+장고는 인증 뷰를 위한 기본 템플릿(template)을 제공하지 않습니다. 사용할 뷰에 대한 템플릿은 직접 만들어야 합니다. 템플릿 내용 변수(context)는 각각의 뷰에 대해 문서화되어 있습니다. 아래의 모든 인증 뷰(all authentication views) 부분을 보기 바랍니다.
+
+**뷰(views) 사용하기**
+
+프로젝트에 이 뷰들을 구현하는 방법은 여러 가지가 있습니다. 가장 쉬운 방법은 **django.contrib.auth.urls** 에서 제공하는 URLconf 를 자신의 URLconf 에 포함하는 것입니다, 예를 들면 다음과 같습니다:
+
+```python
+urlpatterns = [
+    url('^', include('django.contrib.auth.urls')),
+]
+```
+
+이것은 아래의 URL 패턴들을 포함하는 것과 같습니다:
+
+```django
+^login/$ [name='login']
+^logout/$ [name='logout']
+^password_change/$ [name='password_change']
+^password_change/done/$ [name='password_change_done']
+^password_reset/$ [name='password_reset']
+^password_reset/done/$ [name='password_reset_done']
+^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$ [name='password_reset_confirm']
+^reset/done/$ [name='password_reset_complete']
+```
+
+이 뷰들은 접근하기 쉽도록 URL 이름을 제공합니다. 이름지어진 URL 패턴에 대해서 좀 더 알고 싶으면 [the URL documentation](https://docs.djangoproject.com/en/1.10/topics/http/urls/) 를 봅니다.
+
+자신의 URLs 에 대해 자신만의 제어를 하고 싶으면, URLconf 에서 특별한 뷰를 지정할 수 있습니다:
 
 ```
 from django.contrib.auth import views as auth_views
 
-url(r'^accounts/login/$', auth_views.login),
+urlpatterns = [
+    url('^change-password/$', auth_views.password_change),
+]
 ```
 
-The settings.LOGIN_URL also accepts view function names and named URL patterns. This allows you to freely remap your login view within your URLconf without having to update the setting.
+뷰는 선택 사항인 인자들을 가질 수 있는데 이 들을 이용해서 뷰의 행동을 변경할 수 있습니다. 예를 들어, 뷰가 사용하는 템플릿 이름을 변경하려면, **template_name** 인자를 사용하면 됩니다. 이렇게 하는 한 가지 방법은 URLconf 에서 키워드 인자를 제공하는 것입니다, 이 값들은 뷰에게 전달됩니다. 예를 들면 다음과 같습니다:
 
-> The login_required decorator does NOT check the is_active flag on a user, but the default AUTHENTICATION_BACKENDS reject inactive users.  
+```
+urlpatterns = [
+    url(
+        '^change-password/$',
+        auth_views.password_change,
+        {'template_name': 'change-password.html'}
+    ),
+]
+```
 
-> See also
-> 
-> If you are writing custom views for Django’s admin (or need the same authorization check that the built-in views use), you may find the django.contrib.admin.views.decorators.staff_member_required() decorator a useful alternative to login_required().
+모든 뷰는 **TemplateResponse** 인스턴스를 반환받는데, 이것은 응답 데이터를 화면에 보여주기 전에 보다 쉽게 사용자화할 수 있도록 합니다. 사용자화하는 한 가지 방법은 자신의 뷰에서 이 뷰를 감싸는(wrap) 것입니다:
 
-**The LoginRequired mixin**
+```
+from django.contrib.auth import views
 
-When using class-based views, you can achieve the same behavior as with login_required by using the LoginRequiredMixin. This mixin should be at the leftmost position in the inheritance list.
+def change_password(request):
+    template_response = views.password_change(request)
+    # `template_response`를 가지고 뭔가를 합니다.
+    return template_response
+```
 
-class **LoginRequiredMixin**
+더 자세한 사항은 [TemplateResponse documentation](https://docs.djangoproject.com/en/1.10/ref/template-response/) 를 보기 바랍니다.
+
+**모든 인증 뷰(All authentication views)**
+
+아래는 **django.contrib.auth** 에서 제공하는 모든 뷰의 목록입니다. 구현을 위한 세부 사항은 앞서 나왔던 뷰(views) 사용하기 부분을 보도록 합니다.
+
+* **`login`(request, template_name='registration/login.html', redirect\_field\_name='next', authentication\_form=AuthenticationForm, current\_app=None, extra\_context=None, redirect\_authenticated\_user=False)**
+
+	**URL 이름: login**
 	
-`New in Django 1.9.`
+	이름지어진(named) URL 패턴에에 대해서는 [the URL documentation](https://docs.djangoproject.com/en/1.10/topics/http/urls/) 를 보도록 합니다.
 
-If a view is using this mixin, all requests by non-authenticated users will be redirected to the login page or shown an HTTP 403 Forbidden error, depending on the raise_exception parameter.
+	**선택 인자(Optional arguments):**
+	
+	* **template_name**: 사용자가 로그인할 때 사용되는 뷰를 보여주기 위한 템플릿의 이름입니다. 기본 값은 **registration/login.html** 입니다.
 
-You can set any of the parameters of AccessMixin to customize the handling of unauthorized users:
+	* **redirect\_field_name**: 로그인한 후에 재이동할 URL을 담고있는 **GET** 필드의 이름입니다. 기본 값은 **next** 입니다.
 
-```
-from django.contrib.auth.mixins import LoginRequiredMixin
+	* **authentication_form**: 인증에 사용할 호출 가능한 것으로 (보통은 그냥 폼(form) 클래스) 입니다. 기본 값은 **AuthenticationForm** 입니다.
 
-class MyView(LoginRequiredMixin, View):
-    login_url = '/login/'
-    redirect_field_name = 'redirect_to'
-```
-    
-> Just as the login_required decorator, this mixin does NOT check the is_active flag on a user, but the default AUTHENTICATION_BACKENDS reject inactive users.
+	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+
+	* **extra_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	* **redirect\_authenticated\_user**: 인증된 사용자가 로그인 페이지에 접근할 때 자동으로 로그인에 성공한 것처럼 재이동을 할지를 결정하는 불린 값입니다. 기본 값은 **False** 입니다.
+
+	> **경고**
+	> 
+	> **redirect\_authenticated\_user** 를 사용하면, 다른 웹 사이트가 우리 웹 사이트의 이미지 파일로 재이동(redirect) URL을 요청하여 그 사이트의 방문자가 우리 사이트에서 인증되었는지를 확인할 수 있습니다. 이러한 “[social media fingerprinting](https://robinlinus.github.io/socialmedia-leak/)” 정보 유출을 막기 위해서는, 모든 이미지와 파비콘(favicon)을 별도의 도메인에서 제공(host)해야 합니다. 
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+
+	> **장고 1.10 에서 추가된 것**:
+	> 
+	> **redirect\_authenticated\_user** 매개 변수가 추가되었습니다.
+	
+	**django.contrib.auth.views.login** 가 하는 것은 다음과 같습니다:
+
+	* **GET** 을 통해 호출하면, 동일한 URL에 POST 하는 로그인 양식(form)을 보여줍니다. 이 부분에 대해서는 바로 뒤에서 좀 더 다룹니다 (More on this in a bit). (?)
+	* 사용자가 제출한 증명서로 **POST** 를 통해 호출하면, 사용자를 로그인하려고 시도합니다. 로그인이 성공하면, 뷰는 **next** 에 지정된 URL 로 재이동합니다. **next** 가 제공되지 않으면, **settings.LOGIN_REDIRECT_URL** 로 재이동합니다. (기본 값은 **/accounts/profile/** 입니다). 로그인에 실패하면 로그인 양식을 다시 보여줍니다.
+
+	로그인 템플릿, 기본은 **registration/login.html** 인, 을 위해 html 을 제공하는 것은 개발자의 책임입니다. 이 템플릿은 4개의 템플릿 내용 변수(context variables)를 인자로 전달받습니다:
+	
+	* **form**: **AuthenticationForm** 을 나타내는 양식(**Form**) 객체.
+	* **next**: 로그인이 성공한 후 재이동할 URL. 이것은 쿼리 문자열도 같이 포함할 수 있습니다.
+	* **site**: **SITE_ID** 설정에 따른 현재 사이트(**Site**). 사이트 프레임웍을 설치한 것이 없으면, 이것은 현재의 **HttpRequest** 에서 사이트 이름과 도메인을 상속받는 **RequestSite** 의 인스턴스로 설정됩니다.
+	* **site_name**: **site.name** 의 별명. 사이트 프레임웍을 설치한 것이 없으면, 이것은 **request.META['SERVER_NAME']** 값으로 지정됩니다. 사이트에 대한 더 자세한 내용은 [The “sites” framework](https://docs.djangoproject.com/en/1.10/ref/contrib/sites/) 를 보면 됩니다.
+
+	**registration/login.html** 템플릿을 호출하고 싶지 않으면, **template_name** 매개 변수를 URLconf 에 있는 뷰의 추가 인자를 통해 전달하면 됩니다. 예를 들어, 아래의 URLconf 는 **myapp/login.html** 을 사용하도록 합니다s:
+
+	```python
+	url(r'^accounts/login/$', auth_views.login, {'template_name': 'myapp/login.html'}),
+	```
+	
+	**redirect\_field\_name** 을 뷰로 전달하는 것으로 로그인 한 후에 재이동하는 URL을 담고 있는 **GET** 필드의 이름을 지정할 수도 있습니다. 기본으로 이 필드는 **next** 에 의해 호출됩니다.
+
+	아래에 **registration/login.html** 템플릿의 보기를 나타냈습니다. 이 걸 수정해서 사용해도 됩니다. 아래 파일은 **base.html** 템플릿을 가지고 있고 **content** 블럭을 정의했다고 가정합니다:
+
+	```html
+	{% extends "base.html" %}
+
+	{% block content %}
+
+	{% if form.errors %}
+	<p>Your username and password didn't match. Please try again.</p>
+	{% endif %}
+
+	{% if next %}
+		{% if user.is_authenticated %}
+		<p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+		{% else %}
+    	<p>Please login to see this page.</p>
+		{% endif %}
+	{% endif %}
+
+	<form method="post" action="{% url 'login' %}">
+	{% csrf_token %}
+	<table>
+	<tr>
+		<td>{{ form.username.label_tag }}</td>
+		<td>{{ form.username }}</td>
+	</tr>
+	<tr>
+		<td>{{ form.password.label_tag }}</td>
+		<td>{{ form.password }}</td>
+	</tr>
+	</table>
+
+	<input type="submit" value="login" />
+	<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+
+	{# Assumes you setup the password_reset view in your URLconf #}
+	<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+	{% endblock %}
+	```
+	
+	인증을 사용자화 하려면 ([Customizing Authentication](https://docs.djangoproject.com/en/1.10/topics/auth/customizing/) 를 보기 바랍니다) 직접 만든 커스텀 인증을 로그인 뷰에서 **authentication_form** 매개 변수를 통해 전달할 수 있습니다. 이 양식은 __init__ 메소드에서 **request** 키워드 인자를 전달 받아야 하고, 인증된 사용자 객체를 반환하는 **get_user()** 메소드를 제공해야 합니다. (이 메소드는 폼 유효 검사가 성공한 이후에만 호출됩니다).
+
+* **`logout`(request, next\_page=None, template\_name='registration/logged\_out.html', redirect\_field\_name='next', current\_app=None, extra\_context=None)**
+
+	사용자를 로그 아웃합니다.
+
+	**URL 이름: logout**
+
+	**선택 사항인 인자들**:
+
+	* **next\_page**: 로그 아웃한 후에 재이동할 URL. 지정된 것이 없으면 기본으로 **settings.LOGOUT\_REDIRECT\_URL** 를 사용합니다.
+	* **template_name**: 사용자가 로그 아웃한 후에 보여지는 템플릿의 완전한 이름. 이 인자가 지정되지 않으면 기본으로 **registration/logged\_out.html** 가 됩니다.
+	* **redirect\_field\_name**: 로그 아웃 후에 재이동할 URL을 담고 있는 **GET** 필드의 이름. 기본 값은 **next** 입니다. 주어진 GET 매개 변수가 전달되면 **next\_page** URL을 대체합니다.
+	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current\_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current\_app** 를 지정하면 됩니다.
+
+	**템플릿 내용 변수(Template context)**:
+
+	* **title**: “Logged out” 이라는 문자열의 지역화 버전입니다.
+	* **site**: **SITE_ID** 설정에 따른 현재 사이트(**Site**). 사이트 프레임웍을 설치한 것이 없으면, 이것은 현재의 **HttpRequest** 에서 사이트 이름과 도메인을 상속받는 **RequestSite** 의 인스턴스로 설정됩니다.
+	* **site_name**: **site.name** 의 별명. 사이트 프레임웍을 설치한 것이 없으면, 이것은 **request.META['SERVER_NAME']** 값으로 지정됩니다. 사이트에 대한 더 자세한 내용은 [The “sites” framework](https://docs.djangoproject.com/en/1.10/ref/contrib/sites/) 를 보면 됩니다.
+
+* **`logout_then_login`(request, login\_url=None, current\_app=None, extra\_context=None)**
+
+	사용자를 로그 아웃하고, 로그인 페이지로 재이동합니다.
+
+	**URL 이름**: 기본 URL 이 제공되지 않음
+
+	**선택 사항인 인자들**:
+
+	* **login_url**: 재이동할 로그인 페이지의 URL. 지정된 것이 없으면 기본으로 **settings.LOGIN_URL** 을 사용합니다.
+	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+
+* **`password_change`(request, template\_name='registration/password\_change\_form.html', post\_change\_redirect=None, password\_change\_form=PasswordChangeForm, current\_app=None, extra\_context=None)**
+
+	사용자가 비밀 번호를 변경하도록 합니다.
+
+	**URL 이름: password_change**
+
+	**선택 사항인 인자들**:
+
+	* **template\_name**: 비밀 번호 변경 양식을 보여주는데 사용되는 템플릿의 전체 이름. 지정된 것이 없으면 기본 값은 **registration/password_change_form.html** 입니다.
+	* **post\_change\_redirect**: 비밀 번호 변경이 성공한 다음 재이동하는 URL.
+	* **password\_change\_form**: 사용자가 만든 “비밀 번호 변경” 양식으로 반드시 **user** 키워드 인자를 받도록 해야 합니다. 이 양식은 사용자의 비밀 번호를 실제로 변경하는데 책임이 있습니다. 기본 값은 **PasswordChangeForm** 입니다.
+	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+
+	**Template context**:
+
+	* **form**: 비밀 번호 변경 양식 (위에 있는 **password\_change\_form** 을 봅니다).
+
+* **`password_change_done`(request, template\_name='registration/password\_change\_done.html', current\_app=None, extra\_context=None)**
+
+	사용자가 비밀 번호를 변경한 후에 보여지는 페이지입니다.
+
+	**URL 이름: password\_change_done**
+
+	**선택 사항인 인자들**:
+
+	* **template_name**: 사용할 템플릿의 전체 이름. 지정된 것이 없으면 기본 값은 **registration/password_change_done.html** 입니다.
+	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+	
+* **`password_reset`(request, template\_name='registration/password\_reset\_form.html', email\_template\_name='registration/password\_reset\_email.html', subject\_template\_name='registration/password\_reset\_subject.txt', password\_reset\_form=PasswordResetForm, token\_generator=default\_token\_generator, post\_reset\_redirect=None, from\_email=None, current\_app=None, extra\_context=None, html\_email_template\_name=None, extra\_email\_context=None)**
+
+	Allows a user to reset their password by generating a one-time use link that can be used to reset the password, and sending that link to the user’s registered email address.
+
+	If the email address provided does not exist in the system, this view won’t send an email, but the user won’t receive any error message either. This prevents information leaking to potential attackers. If you want to provide an error message in this case, you can subclass **PasswordResetForm** and use the **password\_reset\_form** argument.
+
+	Users flagged with an unusable password (see **set\_unusable\_password()** aren’t allowed to request a password reset to prevent misuse when using an external authentication source like LDAP. Note that they won’t receive any error message since this would expose their account’s existence but no mail will be sent either.
+
+	**URL name: password\_reset**
+
+	**Optional arguments**:
+
+	* **template\_name**: The full name of a template to use for displaying the password reset form. Defaults to registration/password_reset_form.html if not supplied.
+	* **email\_template\_name**: The full name of a template to use for generating the email with the reset password link. Defaults to registration/password_reset_email.html if not supplied.
+	* **subject\_template\_name**: The full name of a template to use for the subject of the email with the reset password link. Defaults to registration/password_reset_subject.txt if not supplied.
+	* **password\_reset\_form**: Form that will be used to get the email of the user to reset the password for. Defaults to PasswordResetForm.
+	* **token\_generator**: Instance of the class to check the one time link. This will default to default_token_generator, it’s an instance of django.contrib.auth.tokens.PasswordResetTokenGenerator.
+	* **post\_reset\_redirect**: The URL to redirect to after a successful password reset request.
+	* **from_email**: A valid email address. By default Django uses the DEFAULT\_FROM\_EMAIL.
+	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra\_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+	* **html\_email\_template\_name**: The full name of a template to use for generating a text/html multipart email with the password reset link. By default, HTML email is not sent.
+	* **extra\_email\_context**: A dictionary of context data that will be available in the email template.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+
+	> New in Django 1.9:
+	>
+	> The extra\_email\_context parameter was added.
+
+	**Template context**:
+
+	* **form**: The form (see password\_reset\_form above) for resetting the user’s password.
+
+	**Email template context**:
+
+	* **email**: An alias for user.email
+	* **user**: The current User, according to the email form field. Only active users are able to reset their passwords (User.is_active is True).
+	* **site_name**: **site.name** 의 별명. 사이트 프레임웍을 설치한 것이 없으면, 이것은 **request.META['SERVER_NAME']** 값으로 지정됩니다. 사이트에 대한 더 자세한 내용은 [The “sites” framework](https://docs.djangoproject.com/en/1.10/ref/contrib/sites/) 를 보면 됩니다.
+	* **domain**: An alias for site.domain. If you don’t have the site framework installed, this will be set to the value of request.get_host().
+	* **protocol**: http or https
+	* **uid**: The user’s primary key encoded in base 64.
+	* **token**: Token to check that the reset link is valid.
+
+	Sample registration/password\_reset\_email.html (email body template):
+
+	```django
+	Someone asked for password reset for email {{ email }}. Follow the link below:
+	{{ protocol}}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+	```
+	
+The same template context is used for subject template. Subject must be single line plain text string.
+
+* **`password_reset_done`(request, template\_name='registration/password\_reset\_done.html', current\_app=None, extra\_context=None)**
+
+	The page shown after a user has been emailed a link to reset their password. This view is called by default if the password\_reset() view doesn’t have an explicit post\_reset\_redirect URL set.
+
+	**URL name: password\_reset\_done**
+
+	> If the email address provided does not exist in the system, the user is inactive, or has an unusable password, the user will still be redirected to this view but no email will be sent.
+
+	**Optional arguments**:
+
+	* **template\_name**: 사용할 템플릿의 전체 이름. 지정된 것이 없으면 기본 값으로 **registration/password\_reset\_done.html** 을 가집니다.
+	* **current\_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra\_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+
+* **`password_reset_confirm`(request, uidb64=None, token=None, template\_name='registration/password\_reset\_confirm.html', token\_generator=default\_token\_generator, set\_password\_form=SetPasswordForm, post\_reset_redirect=None, current\_app=None, extra\_context=None)**
+
+	Presents a form for entering a new password.
+
+	**URL name: password\_reset\_confirm**
+
+	**Optional arguments**:
+
+	* **uidb64**: The user’s id encoded in base 64. Defaults to None.
+	* **token**: Token to check that the password is valid. Defaults to None.
+	* **template\_name**: The full name of a template to display the confirm password view. Default value is registration/password\_reset\_confirm.html.
+	* **token\_generator**: Instance of the class to check the password. This will default to default\_token\_generator, it’s an instance of django.contrib.auth.tokens.PasswordResetTokenGenerator.
+	* **set\_password\_form**: Form that will be used to set the password. Defaults to SetPasswordForm
+	* **post\_reset\_redirect**: URL to redirect after the password reset done. Defaults to None.
+	* **current\_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra\_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	**Template context**:
+
+	* **form**: The form (see set_password_form above) for setting the new user’s password.
+	* **validlink**: Boolean, True if the link (combination of uidb64 and token) is valid or unused yet.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+
+* **`password_reset_complete`(request, template\_name='registration/password\_reset\_complete.html', current\_app=None, extra\_context=None)**
+
+	Presents a view which informs the user that the password has been successfully changed.
+
+	**URL name: password\_reset\_complete**
+
+	**Optional arguments**:
+
+	* **template\_name**: The full name of a template to display the view. Defaults to registration/password\_reset\_complete.html.
+	* **current\_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
+	* **extra\_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
+
+	> **1.9 버전부터 없어지는 것**:
+	> 
+	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
+
 
 ### 사용자(users)를 관리 화면(admin)에서 다루기
 
