@@ -1165,3 +1165,11 @@ User passwords are not displayed in the admin (nor stored in the database), but 
 ### 원문
 
 [Using the Django authentication system](https://docs.djangoproject.com/en/1.10/topics/auth/default/#auth-admin)
+
+#### 제목
+
+```cpp
+void main() {
+	printf():
+}
+```
