@@ -159,6 +159,11 @@ $ git push origin master
 
 최근에 GitHub에서 LFS(Large File Storage)라는 것을 지원하기 시작했는데, 앞으로 해당 부분의 내용들을 비롯해서 Git에 대한 추가 정보, Ruby 라이브러리 관련 추가 정보 등을 업데이트 할 예정입니다.
 
+### 관련 자료
+
+* [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html)
+* [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html)
+
 ### 참고 자료
 
 [^kalkin7]: 블로그를 운영하는 방식의 종류와 각 방식들의 장단점에 대한 내용은 [kalkin7님](http://blog.kalkin7.com)이 쓰신 [내 글을 오래 남기기 위한 블로그 선택](http://blog.kalkin7.com/2015/07/07/maintain-a-blog-for-a-long-time/)이란 글에 잘 정리되어 있습니다. [kalkin7님](http://blog.kalkin7.com)의 글에는 Jekyll과 GitHub를 사용하여 블로깅을 할 경우의 장점에 대해서도 잘 정리되어 있습니다.
