@@ -78,3 +78,7 @@ categories: Resources Softwares Programming Swift
 ### Lecture
 
 [Stanford iOS 한글자막 강의](https://www.inflearn.com/course/stanford-ios-한글자막-강의/) : Stanford 강의를 한글 자막으로 볼 수 있습니다. 
+
+### Library
+
+[iOS 개발자가 꼭 알아야할 라이브러리 5종 엄선](https://www.facebook.com/realmkr/photos/pcb.1056942201100575/1056948591099936/?type=3&theater)

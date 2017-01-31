@@ -114,3 +114,7 @@ categories: Resources Sites Technology Machine-Learning
 ### Paper
 
 [Visual Object Tracking using Adaptive Correlation Filters](http://www.cs.colostate.edu/~vision/publications/bolme_cvpr10.pdf)
+
+### Translation
+
+[차원이 다른 구글 번역기의 도래 (1)](http://newspeppermint.com/2016/12/31/ai-awakening/)
