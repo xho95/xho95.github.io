@@ -4,10 +4,11 @@
 
 [Apache James Server 3](https://james.apache.org/server/3/install.html)
 
-
 #### attachment 
 
 [How to send pdf as an email attachment in Django](http://stackoverflow.com/questions/20717496/how-to-send-pdf-as-an-email-attachment-in-django)
+
+[Sending emails with embedded images in Django](https://www.vlent.nl/weblog/2014/01/15/sending-emails-with-embedded-images-in-django/) : 삽입된 이미지를 가지고 메일 보내는 방법에 대해서 설명한 글인듯 합니다. 나중에 살펴봐야합니다.
 
 ### STMP mail server
 
@@ -68,3 +69,6 @@ send_mail('Subject here', 'Here is the message.', settings.EMAIL_HOST_USER, ['to
 
 [Python으로 SMTP을 이용하여 메일발송 하기](http://blog.saltfactory.net/python/send-mail-via-smtp-and-python.html)
 
+### Authentication with email
+
+[Django - authentication, registration with email confirmation](http://stackoverflow.com/questions/6488384/django-authentication-registration-with-email-confirmation) : 이메일 인증 방법에 대한 답변 글입니다. 여기서도 [django-allauth](https://github.com/pennersr/django-allauth)를 추천하고 있는 것 같습니다.
