@@ -865,23 +865,23 @@ def change_password(request):
 	
 * **`password_reset`(request, template\_name='registration/password\_reset\_form.html', email\_template\_name='registration/password\_reset\_email.html', subject\_template\_name='registration/password\_reset\_subject.txt', password\_reset\_form=PasswordResetForm, token\_generator=default\_token\_generator, post\_reset\_redirect=None, from\_email=None, current\_app=None, extra\_context=None, html\_email_template\_name=None, extra\_email\_context=None)**
 
-	Allows a user to reset their password by generating a one-time use link that can be used to reset the password, and sending that link to the user’s registered email address.
+	사용자가 비밀 번호를 재설정할 수 있도록 비밀 번호를 수정할 수 있는 일회용 링크를 만들고 이를 사용자가 등록한 이메일 주소로 전송합니다.
 
-	If the email address provided does not exist in the system, this view won’t send an email, but the user won’t receive any error message either. This prevents information leaking to potential attackers. If you want to provide an error message in this case, you can subclass **PasswordResetForm** and use the **password\_reset\_form** argument.
+	지정된 이메일 주소가 존재하는 것이 아니라면, 이 뷰는 이메일을 보내지 않기도 하지만, 사용자에게 어떠한 에러 메시지도 보여주지 않기도 합니다. 이것은 잠재 공격자에게 정보가 유출되는 것을 막기 위함입니다.이 상황에서 에러 메시지를 보여주고 싶으면, **PasswordResetForm** 클래스를 상속받아서 **password\_reset\_form** 인자를 사용하면 됩니다.
 
-	Users flagged with an unusable password (see **set\_unusable\_password()** aren’t allowed to request a password reset to prevent misuse when using an external authentication source like LDAP. Note that they won’t receive any error message since this would expose their account’s existence but no mail will be sent either.
+	사용할 수 없는 비밀 번호라고 체크된 사용자는 (**set\_unusable\_password()** 를 참고하면 됩니다) 잘못 사용되는 것을 막기 위해 LDAP 와 같은 외부 인증 소스를 사용할 때 비밀 번호를 재설정하지 못하도록 되어 있습니다. 계정의 존재를 노출시킬 수 있으므로 (그들이) 어떠한 에러 메시지도 받지 않을 뿐만 아니라 (우리가) 어떤 메일도 보내지 않음을 명심하십시오.
 
-	**URL name: password\_reset**
+	**URL 이름: password\_reset**
 
-	**Optional arguments**:
+	**선택 사항인 인자들**:
 
-	* **template\_name**: The full name of a template to use for displaying the password reset form. Defaults to registration/password_reset_form.html if not supplied.
-	* **email\_template\_name**: The full name of a template to use for generating the email with the reset password link. Defaults to registration/password_reset_email.html if not supplied.
-	* **subject\_template\_name**: The full name of a template to use for the subject of the email with the reset password link. Defaults to registration/password_reset_subject.txt if not supplied.
-	* **password\_reset\_form**: Form that will be used to get the email of the user to reset the password for. Defaults to PasswordResetForm.
-	* **token\_generator**: Instance of the class to check the one time link. This will default to default_token_generator, it’s an instance of django.contrib.auth.tokens.PasswordResetTokenGenerator.
+	* **template\_name**: 비밀 번호 변경 양식을 보여주기 위한 템플릿의 전체 이름. 지정된 것이 없으면 기본 값은 **registration/password\_reset\_form.html** 입니다.
+	* **email\_template\_name**: 비밀 번호 재설정 링크를 담은 이메일을 생성하는데 필요한 템플릿의 전체 이름. 지정된 것이 없으면 기본 값은 **registration/password\_reset\_email.html** 입니다.
+	* **subject\_template\_name**: 비밀 번호 재설정 링크를 담은 이메일 제목에 사용할 템플릿의 전체 제목. 지정된 것이 없으면 기본 값은 **registration/password\_reset\_subject.txt** 입니다.
+	* **password\_reset\_form**: Form that will be used to get the email of the user to reset the password for. Defaults to **PasswordResetForm**.
+	* **token\_generator**: Instance of the class to check the one time link. This will default to **default_token_generator**, it’s an instance of **django.contrib.auth.tokens.PasswordResetTokenGenerator**.
 	* **post\_reset\_redirect**: The URL to redirect to after a successful password reset request.
-	* **from_email**: A valid email address. By default Django uses the DEFAULT\_FROM\_EMAIL.
+	* **from_email**: A valid email address. By default Django uses the **DEFAULT\_FROM\_EMAIL**.
 	* **current_app**: 어떤 앱이 현재 뷰를 담고 있는지를 알려주는 힌트입니다. 더 자세한 사항은 [the namespaced URL resolution strategy](https://docs.djangoproject.com/en/1.10/topics/http/urls/#topics-http-reversing-url-namespaces) 를 보기 바랍니다.
 	* **extra\_context**: 기본 내용 변수에 더해서 탬플릿에 전달되는 딕셔너리(dictionary) 형태의 내용 변수(context) 데이터입니다.
 	* **html\_email\_template\_name**: The full name of a template to use for generating a text/html multipart email with the password reset link. By default, HTML email is not sent.
@@ -891,9 +891,9 @@ def change_password(request):
 	> 
 	> **current_app** 매개 변수는 없어지게 되며 장고 2.0에서 제거 될 예정입니다. 호출할 때는 이 대신에 **request.current_app** 를 지정하면 됩니다.
 
-	> New in Django 1.9:
+	> **장고 1.9에서 추가된 것**:
 	>
-	> The extra\_email\_context parameter was added.
+	> **extra\_email\_context** 매개 변수가 추가되었습니다.
 
 	**Template context**:
 
