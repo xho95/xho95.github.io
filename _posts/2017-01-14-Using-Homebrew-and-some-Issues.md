@@ -106,16 +106,18 @@ $ brew install some_package
 
 #### `/usr/local` 폴더 권한 문제
 
-시에라에서 부터인지 아니면 그 전 OS X에서 부터인지 잘 모르겠지만 최근의 macOS 에서는 **/usr/local/** 폴더의 권한이 변경되었습니다. 따라서 `brew install` 명령을 사용하는 과정에서 해당 폴더에 쓰기 권한이 없어 패키지 설치가 막히는 경우가 있습니다.
+시에라에서 부터인지 아니면 그 전 OS X에서 부터인지 잘 모르겠지만 최근의 macOS 에서는 **/usr/local/** 폴더의 권한이 변경되었습니다.
 
-아래의 경우는 `brew install` 명령으로 설치하는 과정에서 발생하는 에러의 한 종류입니다.
+> 참고 자료에 따르면 엘 케피탄부터 변경된 것 같습니다. [^macnews-3728]
+
+따라서 `brew install` 명령을 사용하는 과정에서 아래와 비슷한 에러가 발생하면서 설치가 안되는 경우가 있습니다. 
 
 ```
 ==> The following existing directories will be made group writable:
 /usr/local/bin
 ```
 
-이것은 Homebrew의 작동 방식이 전용 디렉토리에 패키지를 설치하고 **/usr/local** 위치로 심볼릭 링크를 연결하는 방식이기 때문입니다. [^symbolic-link] 즉, 패키지 자체는 설치되지만 권한 때문에 해당 패키지의 심볼릭 링크를 만들 수 없는 현상이 발생하는 것입니다.
+이것은 Homebrew의 작동 방식이 전용 디렉토리에 패키지를 설치하고 **/usr/local** 위치로 심볼릭 링크를 연결하는 방식인데 해당 폴더에 대한 권한이 없기 때문입니다. [^symbolic-link] 즉, 패키지 자체는 설치되지만 권한 때문에 해당 패키지의 심볼릭 링크를 만들 수 없는 현상이 발생하는 것입니다.
 
 해결 방법은 [In macOS 10.12 Sierra, /usr/local is readonly.](https://github.com/Homebrew/brew/issues/385) 라는 글에 나와 있는대로 `/usr/local` 폴더의 권한을 다음과 같이 수정하는 것입니다.
 
@@ -243,6 +245,8 @@ Homebrew 이슈를 겪은 시점과 글을 작성하는 시점이 달라서 과�
 [^rkjun]: [HOMEBREW 로 OS X 패키지 관리하기](https://rkjun.wordpress.com/2013/07/14/os-x-missing-package-manager-home-brew/) : Homebrew의 여러가지 사용법에 대해서 설명을 잘 해놓은 [RKJun](https://rkjun.wordpress.com) 님의 글입니다. 다만 텍스트와 코드가 분리가 되지 않아서 글을 보기가 살짝 불편한 것 같습니다. 하지만 내용이 워낙 좋아서 한 번 찬찬히 볼 만하다고 생각합니다.
 
 [^veryfaraway-homebrew]: [Homebrew 설치하기](https://veryfaraway.github.io/digging/homebrew.html) : Homebrew의 설치 방법과 사용법에 대해서 정리한 [주경야근](http://apple.viewtreefull.com/index.html) 님의 글입니다. 조금 특이하게 `brew pin` 명령에 대한 설명이 나와서 기록 차원에서 참조를 연결합니다.
+
+[^macnews-3728]: [OS X 10.11 엘 캐피탄에 '홈브류(Homebrew)'를 설치하는 방법](http://macnews.tistory.com/3728) : 엘 케피탄에서의 Homebrew 이슈와 시스템 무결성 보호에 대한 내용이 잘 정리되어 있습니다. 이 글에 따르면 엘 케피탄부터 적용된 시스템 무결성 보호 정책 때문에 Homebrew 이슈가 발생하게 된 것 같습니다. 
 
 [^symbolic-link]: [심볼릭 링크](https://ko.wikipedia.org/wiki/심볼릭_링크) : 심볼릭 링크에 대한 한글 위키피디아 설명입니다.
 

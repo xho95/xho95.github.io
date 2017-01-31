@@ -205,6 +205,9 @@ Save를 눌러서 새로운 데이터 베이스를 등록합니다.
 (MY_ENVIRONMENT) ...$ python manage.py runserver
 ```
 
+### 기본 앱 만들기
+
+참고 서적도 좋지만 블로그 글도 참고하면 좋을 것 같습니다. [^blog-board]
 
 ### 패키지 설치
 
@@ -221,3 +224,5 @@ Save를 눌러서 새로운 데이터 베이스를 등록합니다.
 [^djangoproject-databases]: [Settings - DATABASES](https://docs.djangoproject.com/en/1.10/ref/settings/#databases) : 장고 공식 문서에서 Database 세팅 부분입니다. PostgreSQL 설정 방법은 공식 문서에 예제로 소개되어 있습니다.
 
 [^book]: [파이썬 웹 프로그래밍 실전편]() : 책의 내용입니다.  
+
+[^blog-board]: [Django로 게시판(Board) 만들기 / 정리(1)](http://blog.naver.com/PostView.nhn?blogId=93immm&logNo=220906677791&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView) : 내용은 책에 있는 것과 거의 같지만 정리가 잘 된 것 같아서 한 번 봐도 좋을 것 같습니다.
