@@ -31,7 +31,7 @@ To use the **search** lookup, **'django.contrib.postgres'** must be in your **IN
 
 Searching against a single field is great but rather limiting. The Entry instances we’re searching belong to a Blog, which has a tagline field. To query against both fields, use a SearchVector:
 
-```django
+```pythn
 >>> from django.contrib.postgres.search import SearchVector
 >>> Entry.objects.annotate(
 ...     search=SearchVector('body_text', 'blog__tagline'),
