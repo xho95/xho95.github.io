@@ -189,4 +189,4 @@ Usage example:
 ...     distance=TrigramDistance('name', test),
 ... ).filter(distance__lte=0.7).order_by('distance')
 [<Author: Katy Stevens>, <Author: Stephen Keats>]
-```
+``` 
