@@ -11,7 +11,7 @@ categories: macOS Apache WebServer mod_wsgi
 * [맥에서 아파치 웹 서버 실행하기]()
 * [아파치 가상 호스트 설정하기](http://xho95.github.io/macos/apache/webserver/virtualhosts/2016/10/10/Apache-Virtual-Host.html)
 
-- - -
+### 들어가며
 
 맥에서 [아파치(apache) 웹서버](http://httpd.apache.org) [^apache]를 실행하는 방법은 인터넷에 자료가 꽤 있습니다. [^projectjo]  [^acronym]  [^superakira] 하지만, 많은 경우 설명이 맥 OS 요세미티(Yosemite) 이전 기준이라 내용이 지금 환경에는 안맞는 경우가 많습니다.
 
