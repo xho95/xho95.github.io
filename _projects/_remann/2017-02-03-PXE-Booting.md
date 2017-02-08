@@ -33,9 +33,19 @@ PXE는 일종의 Boot Loader로, NIC 안에 살고 있다. 모든 Boot Loader의
 
 #### 운영체제 설치 파일 저장소 준비
 
+#### DHCP 설정
+
+conf 파일 이외에도 NIC Port 설정도 해줘야 합니다. 소용환 님의 글을 참고하면 될 것 같습니다.
+
+[Life Seed - ubuntu를 IP 공유기로 사용하자 (isc_dhcp_server 설치 및 설정)](http://lifeseed.tistory.com/83) 글을 기준으로 이해하는 것이 좋을 것 같습니다. [^lifeseed-83]
+
 #### TFTP 서버 설정
 
-#### DHCP 설정
+지금 현재는 tftpd-hpa 가 문제가 있는 것 같습니다. 그래서 다른 tftp 프로그램을 사용하고 있습니다. 
+
+[How to install and configure a TFTP server on 14.04](http://askubuntu.com/questions/581772/how-to-install-and-configure-a-tftp-server-on-14-04) 글을 기준으로 합니다. [^askubuntu-tftp-server]
+
+`tftpd.socket` 설정이 필요하다고 합니다. 보다 자세한 내용은 [solved: Tftp server don't want to start](https://bbs.archlinux.org/viewtopic.php?id=184095) 글을 참고하면 됩니다. [^archlinux-184095]
 
 #### PXE 클라이언트 테스트
 
@@ -118,4 +128,14 @@ CentOS에서 운영체제 설치를 자동화해주는 도구인 것 같습니�
 
 [Ubuntu 12.04에서 tftp서버를 설정](http://blog.naver.com/PostView.nhn?blogId=khsmonad&logNo=186895361)
 
-[How to install and configure a TFTP server on 14.04](http://askubuntu.com/questions/581772/how-to-install-and-configure-a-tftp-server-on-14-04) : 2707974 님의 답변을 따라 하면 일단 실행은 됩니다.
+[^askubuntu-tftp-server]: [How to install and configure a TFTP server on 14.04](http://askubuntu.com/questions/581772/how-to-install-and-configure-a-tftp-server-on-14-04) : 2707974 님의 답변을 따라 하면 일단 실행은 됩니다.
+
+[Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) : 소용환님의 설명에 따르면, 근래에는 Embedded 개발환경이나 VM에게 IP를 할당하는 가상환경 관리 등을 위하여 TFTP 및 PXE 기능을 포함한 DHCP 서버와 DNS Forwarder 등이 결합된 Dnsmasq가 많이 사용되고 있다고 합니다.
+
+[DHCP 설치](https://www.joinc.co.kr/w/Site/System_management/dhcp)
+
+[^lifeseed-83]: [Life Seed - ubuntu를 IP 공유기로 사용하자 (isc_dhcp_server 설치 및 설정)](http://lifeseed.tistory.com/83) : DHCP 를 실행하기 위한 네트워크 설정 등에 대해서 설명이 잘 되어 있습니다. DHCP 실행과 관련해서는 이곳을 기준으로 하면 될 것 같습니다.
+
+[^archlinux-184095]: [solved: Tftp server don't want to start](https://bbs.archlinux.org/viewtopic.php?id=184095) : You might try socket activation (enable just the `tftpd.socket`), as it might just want the network to be up before it starts.
+
+[10.3. Installing the tftp server](https://docs.fedoraproject.org/en-US/Fedora/22/html/Installation_Guide/pxe-tftpd.html) : Fedora 의 경우인 것 같습니다. Ubuntu 에서도 동일할지는 모르겠습니다.
