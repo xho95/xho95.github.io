@@ -13,6 +13,8 @@ categories: Resources macOS Shell Terminal
 
 맥에는 많은 터미널 명령어들이 있는데 이 중에서 많이 쓰이는 명령어를 요약하면 다음과 같습니다.[^parklize_1]  [^parklize_2]
 
+커맨드 라인 명령어들에 대해 더 알고 싶다면, [SS64](https://ss64.com) 에서 각 운영체제별로 정리된 명령어 모음을 볼 수 있습니다.[^ss64]
+
 * `ls` : list - 파일 및 폴더의 리스트를 보여줍니다.
 * `cd` : change directory - 폴더를 변경합니다.
 * `clear` : clear - 화면을 비워줍니다.
@@ -20,12 +22,39 @@ categories: Resources macOS Shell Terminal
 * `rm` : remove - 파일을 삭제합니다.
 * `ln` : link - 파일에 대한 링크를 만듭니다.
 * `mv` : move - 파일을 이동합니다.
+* `exit` : 창을 닫는다고 합니다만 실제로 닫히지는 않습니다.
 * `which` : which - 인자로 입력한 명령의 위치, 즉 경로를 찾아줍니다.
 * `logout` : console을 종료합니다.
+* `whoami` : 사용자 이름을 화면에 보여줍니다.
+* `pwd` : print working directory - 현재 경로를 절대 경로로 표시해줍니다.
 
 * `ipconfig getifaddr en0` : 현재 ip를 보여줍니다.
 
 ### 터미널 명령어
+
+#### `cd`
+
+change directory 의 약어입니다. 이름 그대로 폴더를 변경합니다.
+
+데스크탑 폴더로 이동하려면 아래와 같이 합니다. 
+
+```
+$ cd Desktop
+```
+
+자신의 위치에서 부모 폴더로 이동하려면 아래와 같이 합니다. 
+
+```
+$ cd ..
+```
+
+#### `rm`
+
+아래와 같이 `-r` 옵션이 붙는 것에 대해서 알아보도록 합니다!
+
+```
+$ rm -r ...
+```
 
 #### `ln`
 
@@ -40,6 +69,14 @@ move의 약자로 파일을 이동하는 명령어입니다.
 
 ```
 $ mv oldFileName.txt newFileName.txt
+```
+
+#### `exit`
+
+창을 닫는다고 하는데 맥에서는 실제로 창은 닫히지 않고 프로세스가 종료되었다는 메시지가 뜹니다. 뭔가 실제로 닫는 옵션이 따로 있을 것 같습니다.
+
+```
+$ exit
 ```
 
 #### `curl`
@@ -67,6 +104,24 @@ $ curl www.example.com
 터미널에서 입력하는 내용을 그대로 웹 서버에 전송합니다. 
 
 사실 `telnet`은 쉘 명령어는 아니고, 하나의 프로그램입니다.
+
+#### `whoami`
+
+```
+$ whoami
+```
+
+사용자 이름을 화면에 보여줍니다. 
+
+#### `pwd`
+
+pwd는 Print Working Directory 의 약자로서, 현재 어떤 디렉토리 경로에 있는지를 절대경로로 표시하는 명령어입니다. [^webdir-144]
+
+```
+$ pwd
+```
+
+> pwd를 매번 사용하지 않고 명령프롬프트에서 PS1 값을 수정함으로써 현재 디렉토리의 경로를 알수도 있다고 하는데 아직 이부분은 잘 모르겠습니다.
 
 ### 터미널에 새로운 명령어 추가하기
 
@@ -129,3 +184,7 @@ $ curl www.example.com
 [^tip-117393]: [리눅스사용자명령어 - uname 이란 어떤 명령어인가요?](http://tip.daum.net/question/117393) : 시스템 정보를 출력하는 명령어인 uname 에 대한 답변 글입니다.
 
 [^eunguru]: [Mac OS X tree 명령어 설치, 실행](http://eunguru.tistory.com/150)
+
+[^webdir-144]: [리눅스 pwd, cd - 현재 작업위치와 작업위치 이동하기](http://webdir.tistory.com/144)
+
+[^ss64]: [SS64](https://ss64.com) : Command line reference – Web, Database and OS scripting.

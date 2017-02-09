@@ -15,7 +15,9 @@ PXE는 다음과 같은 기술들을 이용해서 구현한다고 합니다.
 
 PXE Boot는 시스템 관리 이슈로 프로그래머는 굳이 깊이 신경 쓸 필요는 없는 기술이라고 하며, 다만 클라우드를 한다면 반드시 알아야 하는 기술이라고 합니다. 이것은 자동화의 가장 첫 단계가 PXE를 이용한 운영체제의 설치이기 때문입니다. 
 
-PXE Boot를 하면 `kickstart`도 자연스럽게 따라옵다고 합니다.
+PXE Boot를 하면 `kickstart`도 자연스럽게 따라온다고 하는데 일단 `kickstart`는 fedora 리눅스와 관련된 내용인 것 같습니다.
+
+[PXE 네트워크 부팅을 통한 OS 설치 자동화](http://blog.pages.kr/156) 글도 많은 도움이 될 것 같습니다.
 
 #### 구축 환경
 
@@ -139,3 +141,11 @@ CentOS에서 운영체제 설치를 자동화해주는 도구인 것 같습니�
 [^archlinux-184095]: [solved: Tftp server don't want to start](https://bbs.archlinux.org/viewtopic.php?id=184095) : You might try socket activation (enable just the `tftpd.socket`), as it might just want the network to be up before it starts.
 
 [10.3. Installing the tftp server](https://docs.fedoraproject.org/en-US/Fedora/22/html/Installation_Guide/pxe-tftpd.html) : Fedora 의 경우인 것 같습니다. Ubuntu 에서도 동일할지는 모르겠습니다.
+
+[^pages-156]: [PXE 네트워크 부팅을 통한 OS 설치 자동화](http://blog.pages.kr/156) : PXE 부팅에 대한 개념 설명은 가장 잘 되어 있는 글인 것 같습니다.
+
+[UBUNTU CPU 정보 알아보기](http://naleejang.tistory.com/4) : Ubuntu Linux에서 Server의 CPU 정보를 확인하는 방법에 대해서 설명하고 있습니다. 기본은 `$cat /proc/cpuinfo` 명령을 사용합니다.
+
+[서버 접속 클라이언트 정보 확인 프로그램](http://180.70.134.169/_blog/BlogTypeView.do?blogid=0TQVW&articleno=138&categoryId=44&regdt=20101216143828) : 자바로 서버에 접속한 클라이언트의 정보를 확인하는 프로그램입니다.
+
+[Download - Blancco 5 Image Configuration Tool](https://support.blancco.com/index.php?/Knowledgebase/Article/View/220/0/download---blancco-5-image-configuration-tool) : 블랑코 이미지 편집 툴입니다.
