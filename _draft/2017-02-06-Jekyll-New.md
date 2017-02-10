@@ -17,6 +17,7 @@
     	* 가능은 하지만 cgwin 등 불편한 요소 존재 - 꼼수 테스트 필요
     	* Jekyll 자체는 GitHub Pages 에서 동작하고 있으므로 로컬에 Jekyll 을 설치하는 것은 엄청 중요한 문제는 아닐 수 있음
     	* Jekyll 을 설치하지 않게 되면 Jekyll 을 설치하는데 필요한 Ruby 등을 따로 설치할 필요가 없어짐
+    	* 원칙을 따르는 방법은 [Windows에서 Github Page와 Jekyll로 블로그 생성하기](http://hurderella.tistory.com/131) 와 [Jekyll 윈도우에 설치해서 사용하기](http://tech.whatap.io/2015/09/11/install-jekyll-on-windows/) 라는 두개의 글을 참고합니다. [^hurderella-131] [^whatap--jekyll-on-windows]
     	
     3. Jekyll 버전에 따른 변화
 		* minima 등 gem-based theme 를 사용하는 변화 일어남
@@ -112,3 +113,7 @@ Jekyll은 활발히 활동하는 오픈 소스 프로젝트이므로 자주 업�
 [^using-a-static-site-generator-other-than-jekyll]: [Using a static site generator other than Jekyll](https://help.github.com/articles/using-a-static-site-generator-other-than-jekyll/) : GitHub Pages 에서 Jekyll 이외의 정적 사이트 생성기를 사용하는 방법입니다. 결국 로컬에서 사이트 빌드를 한 다음 원격 저장소에 내보내면 되는 것 같습니다.
 
 [^setting-up-your-github-pages-site-locally-with-jekyll]: [Setting up your GitHub Pages site locally with Jekyll](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/)
+
+[^hurderella-131]: [Windows에서 Github Page와 Jekyll로 블로그 생성하기](http://hurderella.tistory.com/131)
+
+[^whatap--jekyll-on-windows]: [Jekyll 윈도우에 설치해서 사용하기](http://tech.whatap.io/2015/09/11/install-jekyll-on-windows/)
