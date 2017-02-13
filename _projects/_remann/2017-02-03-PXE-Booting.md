@@ -88,6 +88,22 @@ CentOS에서 운영체제 설치를 자동화해주는 도구인 것 같습니�
 
 [메인보드 비프음에 따른 고장 판별법](https://firejune.com/365/메인보드+비프음에+따른+고장+판별법)
 
+### 블랑코 시스템
+
+* pxelinux.cfg : default 라는 설정 파일을 가지고 있는 폴더
+* blancco.png : 부팅 후 기본 화면 이미지
+* copyrights : GPL 라이센스 관련 텍스트 파일
+* gpxelinux.0 : 핵심 리눅스 바이너리 - 부트 로더 역할을 한다(?)
+* memdisk : 램 디스크 관련 파일인 것 같은데, 램을 디스크로 쓸 수 있게 하는 것인지 램에 올라가는 파일인지는 모름 
+* README.txt : 환경 설정 등을 어떻게 하면 되는지를 설명해둔 텍스트 파일
+* VERSION : 버전 정보가 들어있는 간단한 텍스트 파일
+* veshmenu.c32 : 부트 로더의 메뉴를 구성하는 파일
+
+ISO 파일은 별도로 준비하는 것이다. - 부트로더는 블랑코의 것을 그대로 사용할 수 있지 않을까(?) - 라이센스 문제만 피하면 될 것이다. - 차후에는 직접 개발(!)
+gpxelinux.0 은 어떤 의미에서는 운영체제 역할 - 사용자 ISO 파일은 별도의 응용 프로그램 역할을 하는 것 같다. 하지만 결국 ISO 파일에도 linux 가 있는 거 같으며 gpxelinux.0 은 부트로더 역할을 하는 것 같다. 즉 부팅시에 바이오스에 대응하는 개념이 된다.
+
+1단계에서는 gpxelinux.0 을 직접 개발하지 않아도 상관없을 것 같다. 그냥 별도의 ISO 응용 프로그램을 개발해도 좋을 것이다(?) - 하지만 이것도 gpxelinux 에서 동작 가능해야하지 않을까? ISO 안에도 또 linux 가 있는 것 같다. 이 부분은 다시 살펴봐야겠다.
+
 ### 참고 자료
 
 [Howto: PXE Master 구성하기](http://www.sauru.so/blog/setup-pxe-master/)
@@ -149,3 +165,7 @@ CentOS에서 운영체제 설치를 자동화해주는 도구인 것 같습니�
 [서버 접속 클라이언트 정보 확인 프로그램](http://180.70.134.169/_blog/BlogTypeView.do?blogid=0TQVW&articleno=138&categoryId=44&regdt=20101216143828) : 자바로 서버에 접속한 클라이언트의 정보를 확인하는 프로그램입니다.
 
 [Download - Blancco 5 Image Configuration Tool](https://support.blancco.com/index.php?/Knowledgebase/Article/View/220/0/download---blancco-5-image-configuration-tool) : 블랑코 이미지 편집 툴입니다.
+
+[PXE boot](http://se.uzoogom.com/195)
+
+[우분투 - 네트워크 부팅을 통한 우분투 서버 설치 - Part 1](http://goproprada.tistory.com/172) : 한 번은 볼만한 자료입니다.
