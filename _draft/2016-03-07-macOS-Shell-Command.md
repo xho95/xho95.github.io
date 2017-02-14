@@ -15,20 +15,27 @@ categories: Resources macOS Shell Terminal
 
 커맨드 라인 명령어들에 대해 더 알고 싶다면, [SS64](https://ss64.com) 에서 각 운영체제별로 정리된 명령어 모음을 볼 수 있습니다.[^ss64]
 
-* `ls` : list - 파일 및 폴더의 리스트를 보여줍니다.
 * `cd` : change directory - 폴더를 변경합니다.
 * `clear` : clear - 화면을 비워줍니다.
-* `cp` : copy - 파일을 복사합니다.      
-* `rm` : remove - 파일을 삭제합니다.
-* `ln` : link - 파일에 대한 링크를 만듭니다.
-* `mv` : move - 파일을 이동합니다.
-* `exit` : 창을 닫는다고 합니다만 실제로 닫히지는 않습니다.
-* `which` : which - 인자로 입력한 명령의 위치, 즉 경로를 찾아줍니다.
-* `logout` : console을 종료합니다.
-* `whoami` : 사용자 이름을 화면에 보여줍니다.
-* `pwd` : print working directory - 현재 경로를 절대 경로로 표시해줍니다.
+* `cp` : copy - 파일을 복사합니다.       
 
-* `ipconfig getifaddr en0` : 현재 ip를 보여줍니다.
+- `exit` : 창을 닫는다고 합니다만 실제로 닫히지는 않습니다.  
+
+* `ipconfig getifaddr en0` : 현재 ip를 보여줍니다.  
+
+- `ln` : link - 파일에 대한 링크를 만듭니다.
+- `logout` : console을 종료합니다.
+- `ls` : list - 파일 및 폴더의 리스트를 보여줍니다.  
+
+* `man` : 뒤에 인자로 나오는 명령어에 대한 메뉴얼을 보여줍니다. [^rootblog-4] [^shaeod-669]
+* `mv` : move - 파일을 이동합니다.
+
+- `pwd` : print working directory - 현재 경로를 절대 경로로 표시해줍니다.
+
+* `rm` : remove - 파일을 삭제합니다.
+
+- `which` : which - 인자로 입력한 명령의 위치, 즉 경로를 찾아줍니다.
+- `whoami` : 사용자 이름을 화면에 보여줍니다.
 
 ### 터미널 명령어
 
@@ -188,3 +195,7 @@ $ pwd
 [^webdir-144]: [리눅스 pwd, cd - 현재 작업위치와 작업위치 이동하기](http://webdir.tistory.com/144)
 
 [^ss64]: [SS64](https://ss64.com) : Command line reference – Web, Database and OS scripting.
+
+[^rootblog-4]: [리눅스 도움말 명령어(man, --help)](http://rootblog.tistory.com/4)
+
+[^shaeod-669]: [리눅스 명령어: man - 명령어 매뉴얼 출력](http://shaeod.tistory.com/669)

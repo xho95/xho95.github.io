@@ -1,0 +1,1 @@
+[LINUX PROC 관련된 내역 정리된 것](http://egloos.zum.com/powerenter/v/10949008)
