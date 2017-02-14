@@ -12,6 +12,10 @@ Jekyll 블로그에 Goole Analytics를 달아봅니다.
 
 관련 자료를 정리합니다. 
 
+#### 시각화 자료
+
+[Data Studio](https://www.google.com/analytics/data-studio/) 같은 도구를 사용하면 됩니다. [^data-studio]
+
 ### 참고 자료
 
 [Accounts](https://analytics.google.com/analytics/web/?authuser=0#provision/SignUp/)
@@ -32,3 +36,5 @@ Jekyll 블로그에 Goole Analytics를 달아봅니다.
 [구글 아널리틱스를 이용하여 블로그를 완벽하게 분석하는 방법 / Google Analytics](http://www.erzsamatory.net/42) Google Analytics의 사용 방법에 대한 설명이 잘 되어 있는 것 같습니다. 
 
 [GA로 블로그 분석하기](http://www.boxnwhis.kr/2015/03/18/analyzing_blog_using_ga.html) : GA를 활용하는 방법에 대해서 잘 나와있습니다.
+
+[^data-studio]: [Data Studio](https://www.google.com/analytics/data-studio/) : 구글에서 만든 데이터 시각화 도구인데 Analytics 와도 연동이 되는 것 같습니다.

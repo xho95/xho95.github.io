@@ -45,7 +45,6 @@ categories: Resources Softwares Programming Swift
 
 [Game Engines](https://github.com/showcases/game-engines)
 
-
 ### IBM
 
 [IBM Swift Engineering Blog - Swift](https://developer.ibm.com/swift/blogs/)
@@ -82,3 +81,11 @@ categories: Resources Softwares Programming Swift
 ### Library
 
 [iOS 개발자가 꼭 알아야할 라이브러리 5종 엄선](https://www.facebook.com/realmkr/photos/pcb.1056942201100575/1056948591099936/?type=3&theater)
+
+### Book
+
+[꼼꼼한 재은씨](https://github.com/sqlpro) : GitHub 저장소입니다.
+
+### Blog
+
+[sean choi](https://krazie99.github.io) : 상당히 잘 구성된 블로그인 것 같습니다.

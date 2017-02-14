@@ -169,3 +169,5 @@ gpxelinux.0 은 어떤 의미에서는 운영체제 역할 - 사용자 ISO 파�
 [PXE boot](http://se.uzoogom.com/195)
 
 [우분투 - 네트워크 부팅을 통한 우분투 서버 설치 - Part 1](http://goproprada.tistory.com/172) : 한 번은 볼만한 자료입니다.
+
+[Setting up a ‘PXE Network Boot Server’ for Multiple Linux Distribution Installations in RHEL/CentOS 7](http://www.tecmint.com/install-pxe-network-boot-server-in-centos-7/)

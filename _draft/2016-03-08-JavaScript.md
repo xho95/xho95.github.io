@@ -53,3 +53,11 @@ categories: Resources Softwares Programming JavaScript
 var age = 3;
 var str = ["I'm only", age, "years old"].join(" ");
 ```
+
+### Library
+
+#### Canvas
+
+[Fabric.js](http://fabricjs.com) : a powerful and simple
+Javascript HTML5 canvas library
+
