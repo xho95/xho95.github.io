@@ -48,7 +48,7 @@ $ ethtool -p eth0
 $ sudo lshw -C Network
 ```
 
-무선랜카드 이름은 아래와 같이 해서 확인할 수 있습니다.
+사용 가능한 무선랜 카드 장치의 이름은 다음과 같이 확인할 수 있습니다.
 
 ```
 $ iwconfig
@@ -60,13 +60,33 @@ DISABLED 인 무선랜카드를 활성화시키는 방법은 아래와 같습니
 $ sudo ifconfig wlan0 up 
 ```
 
-마지막으로는 결국 **/etc/network/interfaces** 파일을 수정하는 것이 핵심인 것 같습니다.
+마지막으로는 결국 **/etc/network/interfaces** 파일을 수정하는 것이 핵심인 것 같습니다. 
+
+안해도 됩니다! 왜냐면 무선랜은 이미 **wpa_supplicant**를 사용해서 설정하는 것 같습니다.
+
+아직은 이해가 안되는 부분이 있는 것 같습니다. 
+
+wpa-ssid 값은 [wpa_supplicant를 사용한 무선랜 사용 ( WPAPSK 무선 보안 방식 / AES 암호화)](http://webnautes.tistory.com/141) 글을 참고하여 아래와 같은 방법으로 구할 수 있습니다. [^webnautes-141]
+
+```
+$ iwlist wlan0 scanning
+```
+
+실제로는 `wlan0` 이 아닌 다른 이름일 수 있습니다.
+
+위의 결과로 나온 값들 중에서 ESSID 값을 사용하면 됩니다.
 
 그리고 아래와 같이 네트워크를 다시 실행합니다.
 
 ```
 $ sudo /etc/init.d/networking restart
 ```
+
+### hosts 파일
+
+[Ubuntu/Linux: /etc/hosts의 모든 것](http://storycompiler.tistory.com/118) 글을 보면 결국 **/etc/hosts** 파일은 일종의 도메인 네임 서버 역할을 하는 파일이라고 볼 수 있을 것 같습니다. [^storycompiler-118] 물론 현대에는 그 의미가 좀 줄어들었다고 볼 수 있을 것입니다.
+
+[리눅스 로컬네임서버(/etc/hosts) 설정](http://webdir.tistory.com/162) 글에 따르면 이 파일을 로컬네임서버라고 하는 것을 알 수 있습니다. [^webdir-162]
 
 ### 참고 자료
 
@@ -81,3 +101,9 @@ $ sudo /etc/init.d/networking restart
 [^egloos-476]: [우분투서버(Ubuntu server) 무선랜(wifi) 고정ip(static)설정](http://egloos.zum.com/lpolpo/v/476) : **/etc/network/interfaces** 파일의 편집 방법에 대해서 잘 설명한 글입니다.
 
 [^naleejang-95]: [노트북에 Ubuntu 서버를 설치하고 Wifi를 연결해 보자!!](http://naleejang.tistory.com/95) 
+
+[^webnautes-141]: [wpa_supplicant를 사용한 무선랜 사용 ( WPAPSK 무선 보안 방식 / AES 암호화)](http://webnautes.tistory.com/141)
+
+[^storycompiler-118]: [Ubuntu/Linux: /etc/hosts의 모든 것](http://storycompiler.tistory.com/118)
+
+[^webdir-162]: [리눅스 로컬네임서버(/etc/hosts) 설정](http://webdir.tistory.com/162)
