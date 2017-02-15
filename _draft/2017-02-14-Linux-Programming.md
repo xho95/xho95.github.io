@@ -68,6 +68,20 @@ To compile C or C++ and attach the GNU Debugger, press **F6** or right click the
 
 [Linux Cross Reference](http://lxr.free-electrons.com/source/arch/x86/kernel/cpu/proc.c#L64) 정보에 대해서는 나중에 알아봅니다. [^free-electrons] 그냥 단순히 임베디드 리눅스에서만 되는 것일 수도 있습니다.
 
+### 하드 드라이브 삭제
+
+[How to erase a Hard Disk Drive](http://stackoverflow.com/questions/13390843/how-to-erase-a-hard-disk-drive) 글을 참고할만 합니다. [^stackoverflow-13390843]
+
+[Linux Remove All Partitions / Data And Create Empty Disk](https://www.cyberciti.biz/faq/linux-remove-all-partitions-data-empty-disk/) [^cyberciti-empty-disk]
+
+[HDD 데이터 영구 삭제하려면?](https://kldp.org/node/86456) [^kldp-86456]
+
+[파일 완전 삭제 알고리즘을 찾고 있습니다..](https://kldp.org/node/149076) 글에는 Peter Gutmann 알고리즘 및 single pass 용어가 나오는 글입니다. [^kldp-149076] [^wikipedia-gutmann]
+
+[데이터 완전 삭제](https://zqktlwi4fecvo6ri.onion.to/wiki/데이터_완전_삭제) 글은 내용이 아주 좋습니다. 반드시 봐야합니다. [^zqktlwi4fecvo6ri]
+
+[파일의 완전 삭제란 - 제로필과 DoD 5220.22-M 와이핑](http://cappleblog.co.kr/78) 글은 위의 글의 원본인 것 같습니다. [^cappleblog-78]
+
 ### 참고 자료 
 
 [^stackoverflow-9629850]: [How to get CPU info in C on Linux, such as number of cores?](http://stackoverflow.com/questions/9629850/how-to-get-cpu-info-in-c-on-linux-such-as-number-of-cores) : **/proc/cpuinfo** 파일에서 데이터를 가져오는 방법을 설명한 글입니다.
@@ -98,3 +112,17 @@ To compile C or C++ and attach the GNU Debugger, press **F6** or right click the
 [임베디드 리눅스 개발환경 1](http://blog.naver.com/PostView.nhn?blogId=r2adne&logNo=120165474017)
 
 [2. 임베디드 시스템 개발 환경의 특징](http://jeongchul.tistory.com/138) : 정리가 잘 된 글입니다.
+
+[^stackoverflow-13390843]: [How to erase a Hard Disk Drive](http://stackoverflow.com/questions/13390843/how-to-erase-a-hard-disk-drive)
+
+[^cyberciti-empty-disk]: [Linux Remove All Partitions / Data And Create Empty Disk](https://www.cyberciti.biz/faq/linux-remove-all-partitions-data-empty-disk/)
+
+[^kldp-86456]: [HDD 데이터 영구 삭제하려면?](https://kldp.org/node/86456)
+
+[^kldp-149076]: [파일 완전 삭제 알고리즘을 찾고 있습니다..](https://kldp.org/node/149076) : Peter Gutmann 알고리즘 및 single pass 용어가 나오는 글입니다.
+
+[^wikipedia-gutmann]: [Gutmann method](https://en.wikipedia.org/wiki/Gutmann_method)
+
+[^zqktlwi4fecvo6ri]: [데이터 완전 삭제](https://zqktlwi4fecvo6ri.onion.to/wiki/데이터_완전_삭제)
+
+[^cappleblog-78]: [파일의 완전 삭제란 - 제로필과 DoD 5220.22-M 와이핑](http://cappleblog.co.kr/78)
