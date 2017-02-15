@@ -89,3 +89,12 @@ To compile C or C++ and attach the GNU Debugger, press **F6** or right click the
 [^free-electrons]: [Linux Cross Reference](http://lxr.free-electrons.com/source/arch/x86/kernel/cpu/proc.c#L64) : 이건 아직 잘 모르겠습니다.
 
 [^stackoverflow-63166]: [How to determine CPU and memory consumption from inside a process?](http://stackoverflow.com/questions/63166/how-to-determine-cpu-and-memory-consumption-from-inside-a-process) : 전체적으로 한 번 쭉 볼만한 좋은 자료인 것 같습니다. 운영체제별, 장비별로 데이터를 취득하는 코드가 설명되어 있습니다.
+
+
+[리눅스 명령어: 시스템 사양 확인  - 리눅스 버전, 메모리, 하드, CPU](http://thisstory.tistory.com/entry/리눅스-명령어-시스템-사양-확인-리눅스버전-메모리-하드-cpu) : 리눅스에서 시스템 사양을 볼 수 있는 명령어들입니다. 
+
+[Ubuntu Mini Remix](http://www.ubuntu-mini-remix.org) : 우분투의 경량화 버전인 것 같습니다.
+
+[임베디드 리눅스 개발환경 1](http://blog.naver.com/PostView.nhn?blogId=r2adne&logNo=120165474017)
+
+[2. 임베디드 시스템 개발 환경의 특징](http://jeongchul.tistory.com/138) : 정리가 잘 된 글입니다.
