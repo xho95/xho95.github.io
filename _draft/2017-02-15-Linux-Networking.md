@@ -14,10 +14,16 @@
 
 리눅스에서 서버 프로세스를 개발하고 테스트하다 보면 서버 프로세스는 정상적으로 기동되어 있는데 다른 컴퓨터에서 접속이 안되는 경우가 있습니다. 여러 가지 이유가 있겠지만 포트가 열려 있지 않아서 그런 경우도 있습니다. 
 
-리눅스에서 현재 열려 있는 포트를 확인하는 방법은 아래와 같습니다. [^khie74-1169521441]
+리눅스에서 현재 열려있는 포트를 확인하는 방법은 [Linux에서 열린 포트 확인/상대방 포트 확인/포트 열기](http://khie74.tistory.com/1169521441) 글과 같이 아래처럼 하면 됩니다. [^khie74-1169521441] 
 
 ```
 $ netstat -nap
+```
+
+결과가 엄청 많이 나올 수 있는데, 열려있는 포트 중에서 LISTEN 상태인 것만 표시하려면 아래와 같이 하면 됩니다. 
+
+```
+$ netstat -nap | grep LISTEN
 ```
 
 #### 특정 포트 열기
@@ -84,9 +90,37 @@ $ sudo /etc/init.d/networking restart
 
 #### 외부 통신
 
-[#02. 리눅스를 설치했는데 외부 통신이 안되요.](http://myungin.tistory.com/entry/02-리눅스를-설치했는데-외부-통신이-안되요) 글을 참고합니다. 네트워크가 되더라도 DNS 가 필요한 것 같습니다.
+[#02. 리눅스를 설치했는데 외부 통신이 안되요.](http://myungin.tistory.com/entry/02-리눅스를-설치했는데-외부-통신이-안되요) 글을 참고합니다. 네트워크가 되더라도 DNS 가 필요한 것 같습니다. [^nzeen-610]
 
 [우분투 서버 DNS 설정](http://ngee.tistory.com/246) 글을 보면 위의 자료와 DNS 설정하는 파일이 다릅니다. 우분투 버전에 따라서 파일 위치가 달라지는 것 같습니다. 좀 더 알아봐야할 것 같습니다.
+
+#### 문제 해결 (?)
+
+**/etc/network/interfaces** 파일에 아래와 같이 설정한 네트워크를 끄면 외부 인터넷이 됩니다. 
+
+```
+auto lo
+iface lo inet loopback
+
+auto enp4s0
+iface enp4s0 inet static
+address 192.168.0.1
+netmask 255.255.255.0
+broadcast 192.168.0.255
+network 192.168.0.0
+```
+
+아마도 **enp4s0** 과 **wlxe4beed1af18a** 두 개의 랜카드를 동시에 사용하는 것이 안되기 때문인 것 같습니다. 
+
+네트워크를 끄는 것은 아래와 같이 하면 됩니다.
+
+```
+$ sudo /etc/init.d/networking stop
+```
+
+[linux: 랜카드가 2개 일 때 네트워크 설정](http://www.nzeen.com/xe/study/610) 글을 참고합니다. 다만 설명이 쉽지는 않습니다.
+
+[리눅스에 랜카드 2개일때, default gateway 설정 질문](https://kldp.org/node/118511) 같은 글도 있습니다. [^kldp-118511]
 
 ### hosts 파일
 
@@ -113,3 +147,7 @@ $ sudo /etc/init.d/networking restart
 [^storycompiler-118]: [Ubuntu/Linux: /etc/hosts의 모든 것](http://storycompiler.tistory.com/118)
 
 [^webdir-162]: [리눅스 로컬네임서버(/etc/hosts) 설정](http://webdir.tistory.com/162)
+
+[^nzeen-610]: [linux: 랜카드가 2개 일 때 네트워크 설정](http://www.nzeen.com/xe/study/610)
+
+[^kldp-118511]: [리눅스에 랜카드 2개일때, default gateway 설정 질문](https://kldp.org/node/118511)
