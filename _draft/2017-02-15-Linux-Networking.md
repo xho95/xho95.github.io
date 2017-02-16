@@ -82,6 +82,12 @@ $ iwlist wlan0 scanning
 $ sudo /etc/init.d/networking restart
 ```
 
+#### 외부 통신
+
+[#02. 리눅스를 설치했는데 외부 통신이 안되요.](http://myungin.tistory.com/entry/02-리눅스를-설치했는데-외부-통신이-안되요) 글을 참고합니다. 네트워크가 되더라도 DNS 가 필요한 것 같습니다.
+
+[우분투 서버 DNS 설정](http://ngee.tistory.com/246) 글을 보면 위의 자료와 DNS 설정하는 파일이 다릅니다. 우분투 버전에 따라서 파일 위치가 달라지는 것 같습니다. 좀 더 알아봐야할 것 같습니다.
+
 ### hosts 파일
 
 [Ubuntu/Linux: /etc/hosts의 모든 것](http://storycompiler.tistory.com/118) 글을 보면 결국 **/etc/hosts** 파일은 일종의 도메인 네임 서버 역할을 하는 파일이라고 볼 수 있을 것 같습니다. [^storycompiler-118] 물론 현대에는 그 의미가 좀 줄어들었다고 볼 수 있을 것입니다.
