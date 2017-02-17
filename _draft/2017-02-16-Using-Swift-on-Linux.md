@@ -41,7 +41,7 @@ Swift를 사용하기 위해서는 먼저 컴파일러와 필수 요소들을 �
 	
 	한 번에 다 받는 명령 같습니다. 
 	
-4. PGP 서명의 유효 검사를 합니다.
+4. [PGP](https://ko.wikipedia.org/wiki/PGP_(소프트웨어)) 서명의 유효 검사를 합니다. [^wikipedia-pgp] [^jinbo-pgp]
 
 	먼저 아래 명령을 수행합니다. 뭔가 새로 고침 비슷한 거 같습니다. 
 	
@@ -341,16 +341,26 @@ Process 40246 exited with status = 0 (0x00000000)
 
 이제 Swift REPL, 빌드 시스템, 그리고 디버거까지 살펴봤습니다. 여기에 다음으로 할 것들을 몇가지 제안합니다:
 
-* [Package Manager project page](https://swift.org/package-manager/) 를 살펴보면 Swift의 빌드 시스템과 패키지 관리자에 대해서 더 깊이 이해할 수 있습니다.
-* [Contributing to Swift](https://swift.org/contributing/) 를 읽고 Swift 커뮤니티에 참여할 수 있는 다양한 방법들을 알아보십시오.
-* [developer.apple.com/swift](https://developer.apple.com/swift/resources/) 에 가면 비디오, 예제 코드, 그리고 플레이그라운드 파일을 포함하는 추가적인 Swift 학습물들을 만날 수 있습니다.
+* [Package Manager project page](https://swift.org/package-manager/) 를 살펴보면 Swift의 빌드 시스템과 패키지 관리자에 대해서 더 깊이 이해할 수 있습니다. [^swift-package-manager]
+* [Contributing to Swift](https://swift.org/contributing/) 를 읽고 Swift 커뮤니티에 참여할 수 있는 다양한 방법들을 알아보십시오. [^swift-contributing]
+* [developer.apple.com/swift](https://developer.apple.com/swift/resources/) 에 가면 비디오, 예제 코드, 그리고 플레이그라운드 파일을 포함하는 추가적인 Swift 학습물들을 만날 수 있습니다. [^developer-resources]
 
 ### 참고 자료
 
 [^swift-download]: [Download Swift](https://swift.org/download/#releases) : 리눅스에 Swift 를 사용하기 위해 컴파일러와 필수 요소들을 설치하는 방법을 설명하고 있는 애플 공식 문서입니다.
+
+[^wikipedia-pgp]: [PGP](https://ko.wikipedia.org/wiki/PGP_(소프트웨어)) : PGP 는 컴퓨터 파일을 암호화하고 복호화하는 프로그램의 하나로, GNU 프로젝트의 하나인 GnuPG로도 개발되어 전 세계적으로 광범위하게 사용되고 있다고 합니다.
+
+[^jinbo-pgp]: [공개키 암호화와 PGP에 대한 소개](https://guide.jinbo.net/digital-security/communication-security/introduction-public-key-encryption) : 좋은 내용이지만 원문을 번역하면서 문장이 조금 매끄럽지 않게 된 것 같습니다.
 
 [^crasy-145]: [Swift: Linux에서 Swift 시작해보기](http://crasy.tistory.com/145)
 
 [^blueskywithyou-32]: [리눅스에서 PATH(환경변수) 관련 설정 및 참고 내용](http://blueskywithyou.tistory.com/32)
 
 [^swift-started]: [Getting Started](https://swift.org/getting-started/)
+
+[^swift-package-manager]: [Package Manager project page](https://swift.org/package-manager/)
+
+[^swift-contributing]: [Contributing to Swift](https://swift.org/contributing/)
+
+[^developer-resources]: [developer.apple.com/swift](https://developer.apple.com/swift/resources/)
