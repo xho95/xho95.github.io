@@ -79,7 +79,7 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 	>  
 	> export 사용법에 대해서 정리할 필요가 있습니다. [^crasy-145] [^blueskywithyou-32]
 	>
-	> 이렇게만 하면 매번 `export` 를 해줘야할 수도 있습니다. 좀 더 알아봅니다.
+	> 이렇게만 하면 매번 `export` 를 해줘야할 수도 있습니다. 좀 더 알아봅니다. **.bash_profile** 파일에 경로를 추가하는 방법이 더 좋을 것 같습니다. [^egloos-4448383] [^superad-path]
 	
 이제 `swift	` 명령으로 REPL 를 실행하거나 Swift 프로젝트를 빌드할 수 있습니다. 
 
@@ -364,3 +364,7 @@ Process 40246 exited with status = 0 (0x00000000)
 [^swift-contributing]: [Contributing to Swift](https://swift.org/contributing/)
 
 [^developer-resources]: [developer.apple.com/swift](https://developer.apple.com/swift/resources/)
+
+[^egloos-4448383]: [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383)
+
+[^superad-path]: [리눅스 명령어 PATH 설정하기](http://superad.tistory.com/entry/리눅스-명령어-PATH설정하기) : 조금 더 설명이 자세합니다. 나중에 따로 리눅스 PATH 설정하는 방법과 **~/.bash_profile** 및 **~/.bashrc** 파일들의 차이에 대해서 정리해야겠습니다. 또 **/etc/profile** 및 **/etc/bashrc** 파일도 있습니다. 이들은 전체 사용자를 위한 경로 또는 환경 설정 파일입니다.
