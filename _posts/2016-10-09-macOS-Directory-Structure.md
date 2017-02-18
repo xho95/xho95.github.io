@@ -12,7 +12,7 @@ categories: macOS File System Directory
 
 ### 들어가며 
 
-이 글은 [흉내쟁이](http://webdir.tistory.com) 님의 [리눅스 디렉토리 구조](http://webdir.tistory.com/101) 라는 글을 기준으로 하고 여기에 기타 다른 자료들을 참고하여 정리하였습니다. [^webdir-101] [^osxdaily-directory] [^wikipedia-unix-filesystem]
+이 글은 [흉내쟁이](http://webdir.tistory.com) 님의 [리눅스 디렉토리 구조](http://webdir.tistory.com/101) 라는 글을 기준으로 여기에 기타 다른 자료들을 참고하여 정리하였습니다. [^webdir-101] [^osxdaily-directory] [^wikipedia-unix-filesystem]
 
 > 아직은 그 때 그 때 알게된 지식을 정리한 것이라서 내용이 완전하지는 않습니다. 다만 앞으로 계속해서 관련 내용을 추가할 예정입니다.
 
@@ -77,8 +77,8 @@ macOS 에서 실제 홈 디렉토리는 루트 디렉토리 밑의 **/Users/\<**
 
 ### 변경 사항
 
-* 2017. 02. 17. : 전체 내용을 다시 정리하면서 새로운 참고 자료를 추가하였습니다.
-* 2016. 10. 08. : 첫 포스트를 작성했습니다.
+* **2017. 02. 17.** 전체 내용을 다시 정리하면서 새로운 참고 자료를 추가하였습니다.
+* **2016. 10. 08.** 첫 포스트를 작성했습니다.
 
 ### 참고 자료
 
