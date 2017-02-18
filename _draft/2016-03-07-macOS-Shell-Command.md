@@ -7,9 +7,13 @@ categories: Resources macOS Shell Terminal
 
 여기서는 **macOS** 의 쉘(shell) 명령어 및 운영체제의 기본적인 내용들에 대해서 정리합니다. [^macOS]
 
-우선 한 줄로 간단하게 명령어들을 소개하고 이어서 각각에 대해서 조금 더 자세하게 풀어서 설명합니다.
+일단 쉘이 무엇인지부터 정리합니다. 
+
+이어서 간단하게 명령어들을 소개하고 그 다음에는 각각의 명령어에 대해 조금 더 자세하게 풀어서 설명합니다.
 
 ### 터미널 명령어 요약
+
+맥의 명령어는 특정 폴더에 모여 있습니다. 아마도 **/usr/bin** 일 것으로 추측합니다. 보다 자세한 내용은 [macOS: 맥의 기본 디렉토리 구조 살펴보기](http://xho95.github.io/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html) 글을 참고하시기 바랍니다.
 
 맥에는 많은 터미널 명령어들이 있는데 이 중에서 많이 쓰이는 명령어를 요약하면 다음과 같습니다.[^parklize_1]  [^parklize_2]
 
@@ -86,22 +90,6 @@ $ mv oldFileName.txt newFileName.txt
 $ exit
 ```
 
-#### `curl`
-
-**HTTP/HTTPS/FTP** 등 여러 가지 프로토콜을 사용하여 데이터를 송수신할 수 있는 명령어입니다. 
-
-터미널에서 다음과 같이 사용할 수 있습니다.
-
-```
-$ curl www.example.com
-```
-
-위에서 `curl` 명령은 인자로 넘어온 URL로 HTTP 요청을 보내는 웹 클라이언트의 역할을 수행합니다. 
-
-`curl` 은 터미널 용 데이터 전송 도구로서 다운로드 / 업로드 모두 가능하며 HTTP/ HTTPS/ FTP/ LDAP/ SCP/ TELNET/ SMTP/ POP3 등 주요한 프로토콜을 지원하며 Linux/Unix 계열 및 Windows 등 대부분의 OS 에서 구동되므로 유용하다고 합니다. [^lesstif]  
-	
-그외에도 `curl`은 옵션을 지정해서 `wget`을 대신하여 파일을 다운로드 하는 등의 용도로 사용된다고 합니다. [^dezang] 맥에서 사용하는 핵심 패키지 설치 도구인 Homebrew 를 설치할 때도 `curl` 명령어가 사용됩니다. [^curl-homebrew]
-
 #### `uname`
 
 `uname`은 시스템의 정보를 출력하는 명령어라고 합니다. [^tip-117393]
@@ -130,12 +118,6 @@ $ pwd
 
 > pwd를 매번 사용하지 않고 명령프롬프트에서 PS1 값을 수정함으로써 현재 디렉토리의 경로를 알수도 있다고 하는데 아직 이부분은 잘 모르겠습니다.
 
-### 터미널에 새로운 명령어 추가하기
-
-#### `tree`
-
-맥에는 따로 `tree` 명령어가 없지만, **Homebrew**를 이용해서 설치한 후에 사용할 수 있습니다. 이에 대한 내용은 참고 자료에 잘 나와 있습니다.[^eunguru]
-
 ### shell 사용법
 
 [serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
@@ -145,30 +127,6 @@ $ pwd
 [MAC OS X 자동 시작프로그램 추가/해제 하는 방법](http://namsieon.com/595)
 
 [mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
-
-### zsh shell
-
-[터미널 초보의 필수품인 Oh My ZSH!를 사용하자](https://nolboo.github.io/blog/2015/08/21/oh-my-zsh/)
-
-[zsh 갖고 놀기](http://coding-korea.blogspot.kr/2012/09/zsh.html)
-
-[오늘부로 나도 ZShell User!](http://justbricks.tumblr.com/post/89465435117/오늘부로-나도-zshell-user)
-
-[맥에서 zsh 사용하기](https://blog.ayukawa.kr/archives/1758)
-
-### iTerm2
-
-[iTerm2](https://www.iterm2.com/version3.html)
-
-[iTerm2를 사용해 본다.](http://redgolems.tistory.com/31)
-
-[go2shell 설정하기 - 기본 터미널을 iterm으로 바꿉니다.](http://osxtip.tistory.com/168)
-
-[iTerm 사용법 정리](http://osxtip.tistory.com/181)
-
-### Swift in Terminal
-
-[How can I use swift in Terminal?](http://stackoverflow.com/questions/24011120/how-can-i-use-swift-in-terminal)
 
 ### 참고 자료
 
@@ -182,15 +140,7 @@ $ pwd
 
 [^rm]: [리눅스 mv, rename - 파일명 변경](http://webdir.tistory.com/145) : 폴더명을 바꾸는 내용도 설명되어 있다.
 
-[^lesstif]: [curl 설치 및 사용법 - HTTP GET/POST, REST API 연계 등](https://www.lesstif.com/pages/viewpage.action?pageId=14745703) : curl을 설명하는 글 중에서 끝판왕 같은 글입니다.
-
-[^dezang]: [wget 대신 curl 사용하기](http://dezang.net/884)
-
-[^curl-homebrew]: Homebrew 에서 사용되는 curl 에 대한 내용은 제 블로그의 다른 글인 [Homebrew: 설치 및 Sierra 관련 이슈 정리](http://xho95.github.io/macos/sierra/package/homebrew/issues/2017/01/13/Using-Homebrew-and-some-Issues.html) 라는 글에서도 살펴볼 수 있습니다.
-
 [^tip-117393]: [리눅스사용자명령어 - uname 이란 어떤 명령어인가요?](http://tip.daum.net/question/117393) : 시스템 정보를 출력하는 명령어인 uname 에 대한 답변 글입니다.
-
-[^eunguru]: [Mac OS X tree 명령어 설치, 실행](http://eunguru.tistory.com/150)
 
 [^webdir-144]: [리눅스 pwd, cd - 현재 작업위치와 작업위치 이동하기](http://webdir.tistory.com/144)
 
