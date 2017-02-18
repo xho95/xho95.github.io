@@ -55,7 +55,7 @@ The underlying Git plumbing tools, such as git ls-files and git read-tree, read 
 
 ### 예제
 
-```
+```bash
 $ git status
 ...
 # Untracked files:
@@ -87,7 +87,7 @@ $ git status
 
 다른 예제:
 
-```
+```bash
 $ cat .gitignore
 vmlinux*
 
@@ -101,7 +101,7 @@ The second .gitignore prevents Git from ignoring `arch/foo/kernel/vmlinux.lds.S`
 
 Example to exclude everything except a specific directory `foo/bar` (note the `/*` - without the slash, the wildcard would also exclude everything within `foo/bar`):
 
-```
+```bash
 $ cat .gitignore
 # exclude everything except directory foo/bar
 /*
