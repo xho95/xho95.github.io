@@ -28,7 +28,7 @@ categories: Editor Atom Markdown Python
 
 터미널에서 Atom 에디터를 실행하려면 다음과 같이 입력하면 됩니다.
 
-```bash
+```sh
 $ atom .
 ```
 

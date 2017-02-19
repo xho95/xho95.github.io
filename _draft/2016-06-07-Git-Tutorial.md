@@ -75,7 +75,7 @@ $ git status
 
 아래와 같이 `git status -s` 명령을 사용하면 파일들의 상태를 간단한 형태로 보여준다.
 
-```bash
+```sh
 $ git status -s
 
 $ git status --short

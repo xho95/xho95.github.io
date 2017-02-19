@@ -39,7 +39,7 @@
 
 운영자는 **createsuperuser** 명령을 사용해서 만듭니다:
 
-```bash
+```sh
 $ python manage.py createsuperuser --username=joe --email=joe@example.com
 ```
 

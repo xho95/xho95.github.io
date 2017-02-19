@@ -52,7 +52,7 @@
 
 클론 받을 때는 자신이 사용하는 OS 등에 따라서 페이지에 있는 설명을 따라하면 됩니다. 아래와 같이 명령줄을 이용해서 클론을 받을 수도 있습니다.
 
-```bash
+```sh
 $ git clone https://github.com/username/username.github.io
 ```
 
