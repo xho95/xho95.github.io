@@ -83,7 +83,7 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 
 	> 위와 같이 하면 부팅시마다 매번 `export` 를 해줘야 하는 것 같습니다. 서버라면 재부팅할 일이 없으므로 이대로도 괜찮겠지만 개발 용도로 사용하는 리눅스의 경우 번거로울 수 있습니다.
 	>
-	> 저는 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 자료 글을 참고하여 **~/.bash_profile** 파일에 다음과 같이 설정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path]
+	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.bash_profile** 파일에 다음과 같이 설정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path]
 	>
 	> ```
 	> PATH=$PATH:$HOME/bin:/.../swift/usr/bin
