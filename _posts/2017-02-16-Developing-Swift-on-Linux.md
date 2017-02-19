@@ -6,7 +6,7 @@ date:   2017-02-19 23:00:00 +0900
 categories: Linux Development Swift Package Install
 ---
 
-보통 [Swift](https://swift.org) 는 맥이나 iOS 앱을 만들기 위해서 사용한다고 생각하기 쉽습니다. [^swift] 하지만 애플에서 2015년 12월 2일에 Swift 를 오픈 소스로 공개하면서 리눅스 (Linux) 배포판도 같이 공개했습니다. [^swift-welcome] [^swift-linux] 즉, Swift 는 리눅스에서 마치 C/C++ 처럼 사용할 수 있는 언어입니다.
+보통 [Swift](https://swift.org) 는 맥이나 iOS 앱을 만들기 위해서 사용한다고 생각하기 쉽습니다. [^swift] 하지만 애플에서 2015년 12월 3일에 Swift 를 오픈 소스로 공개하면서 리눅스 (Linux) 배포판도 같이 공개했습니다. [^swift-welcome] [^swift-linux] 즉, Swift 는 리눅스에서 마치 C/C++ 처럼 사용할 수 있는 언어입니다.
 
 여기서는 리눅스에서 Swift 를 사용하기 위한 환경을 구축하는 방법을 정리합니다.
 
@@ -28,15 +28,15 @@ categories: Linux Development Swift Package Install
 	$ sudo apt-get install clang libicu-dev
 	```
 
-	clang 과 libicu-dev 라이브러리를 설치하는 것을 알 수 있습니다. [^clang] [^libicu-dev]
+	[clang](https://clang.llvm.org) 과 [libicu-dev](https://packages.debian.org/sid/libicu-dev) 를 설치하는 것을 알 수 있습니다. [^clang] [^libicu-dev]
 
-2. 설치 파일 중에서 가장 최신 버전을 내려 받습니다. [^version] 바로 위에서 이미 내려 받았으면 넘어갑니다.
+2. 설치 파일 중에서 가장 최신 버전을 내려 받습니다. [^version] 앞에서 미리 내려 받았으면 넘어갑니다.
 
 	**swift-\<VERSION\>-\<PLATFORM\>.tar.gz** 파일은 그 자체로 툴체인이며, **.sig** 파일은 디지털 서명 파일입니다.
 
 3. Swift 패키지를 처음으로 다운로드하는 경우 [PGP](https://ko.wikipedia.org/wiki/PGP_(소프트웨어)) 키를 키링으로 가져와야 합니다. [^wikipedia-pgp] [^jinbo-pgp]
 
-	Swift 홈페이지에서는 두 가지 방식으로 설명이 되어 있는데 두 방식은 같은 것이라 하나만 하면 됩니다. 두번째 방식이 좀 더 간단한 것 같아서 두번째 방식만 정리합니다. 터미널에서 아래와 같이 입력합니다.
+	Swift 홈페이지에서는 두 가지 방식으로 설명이 되어 있는데 두 방식은 같은 것이라 하나만 하면 됩니다. 두번째 방식이 좀 더 간단한 것 같아서 두번째 방식만 설명합니다. 터미널에서 아래와 같이 실행합니다.
 
 	```sh
 	$ wget -q -O - https://swift.org/keys/all-keys.asc | \
@@ -45,15 +45,15 @@ categories: Linux Development Swift Package Install
 
 	그러면 해당 서버에서 PGP 관련 파일들을 받습니다.
 
-4. PGP 서명의 유효 검사를 합니다.
+4. PGP 서명의 유효 검사를 수행합니다.
 
-	먼저 아래 명령을 수행합니다. 뭔가 새로 고침 비슷한 것으로 추측합니다.
+	먼저 아래 명령을 수행합니다. 뭔가 새로 고침 비슷한 것으로 추측됩니다.
 
 	```
 	$ gpg --keyserver hkp://pool.sks-keyservers.net --refresh-keys Swift
 	```
 
-	그리고 유효 검사를 수행합니다.
+	그리고 이어서 실제 유효 검사를 수행합니다.
 
 	```
 	$ gpg --verify swift-<VERSION>-<PLATFORM>.tar.gz.sig
@@ -61,9 +61,9 @@ categories: Linux Development Swift Package Install
 gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@swift.org>"
 	```
 
-	경고가 뜰 수 있는데 무시해도 상관 없다고 설명하고 있습니다.
+	유효 검사 이후에 경고가 뜰 수도 있는데 공식 블로그에서는 무시해도 상관 없다고 설명하고 있습니다.
 
-	> 유효 검사가 잘 안될 때는 [Download Swift](https://swift.org/download/#releases) 글의 **Active Signing Keys** 부분을 보고 따라하면 된다고 합니다.  
+	> 유효 검사 도중에 에러가 발생할 경우에는 [Download Swift](https://swift.org/download/#releases) 글의 **Active Signing Keys** 부분을 보고 따라하면 해결 된다고 합니다. 이 부분은 문제가 있을 경우에만 실행합니다.
 
 5. 내려 받은 파일을 설치하고자 하는 곳이로 이동한 후에 아래와 같이 압축을 풉니다.
 
@@ -71,17 +71,17 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 	$ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
 	```
 
-	이렇게 압축을 풀면 사실상 설치가 된 것입니다. 압축을 풀고 나면 해당 디렉토리의 하위 디렉토리에 **usr/** 디렉토리를 만듭니다.
+	이렇게 압축을 풀면 사실상 설치가 된 것입니다. 압축을 풀고 나면 하위에 **usr/** 디렉토리가 생긴 것을 볼 수 있습니다.
 
-6. Swift 툴체인 경로를 추가합니다. 아래와 같이 합니다.
+6. 이제 리눅스에서 Swift 툴체인 경로를 추가합니다. 아래와 같이 실행합니다.
 
 	```
 	$ export PATH=/path/to/usr/bin:"${PATH}"
 	```
 
-	위에서 **/path/to/** 부분에는 실제 usr 폴더가 위치하는 경로를 지정합니다. 설치하는 사람마다 경로가 다르므로 본인에게 맞는 경로를 넣으면 됩니다.
+	위의 명령을 실행할 때 **/path/to/** 부분에는 실제 자신의 Swift 가 설치된 디렉토리의 **/usr** 디렉토리가 있는 경로를 지정해야 합니다. 설치하는 사람마다 경로가 다르므로 본인에게 맞는 경로를 넣으면 됩니다.
 
-	> 이렇게만 하면 부팅시마다 매번 `export` 를 해줘야 하는 것 같습니다. 서버로 사용하는 리눅스는 재부팅할 일이 없으므로 이대로도 괜찮겠지만 개발 용도로 사용하는 리눅스의 경우 번거로울 수 있습니다.
+	> 위와 같이 하면 부팅시마다 매번 `export` 를 해줘야 하는 것 같습니다. 서버라면 재부팅할 일이 없으므로 이대로도 괜찮겠지만 개발 용도로 사용하는 리눅스의 경우 번거로울 수 있습니다.
 	>
 	> 저는 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 자료 글을 참고하여 **~/.bash_profile** 파일에 다음과 같이 설정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path]
 	>
@@ -99,11 +99,11 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 $ swift
 ```
 
-그러면 프롬프터가 나타나면서 Swift 를 사용할 수 있습니다. Swift 언어를 익히는 것은 공식 블로그의 [Getting Started](https://swift.org/getting-started/) 글을 보고 실습하면 됩니다.
+그러면 프롬프터가 나타나면서 Swift 를 사용할 수 있습니다. REPL 로 Swift 언어를 익히는 것은 공식 블로그의 [Getting Started](https://swift.org/getting-started/) 글을 보고 따라하면서 실습하면 됩니다.
 
 #### 시스템 모듈
 
-리눅스에서는 [**Glibc**](https://en.wikipedia.org/wiki/GNU_C_Library) 라는 모듈을 불러올 수 있습니다. [^wikipedia-gnu-c] [^wikipedia-gnu-c-ko]
+맥과는 다르게 리눅스에서는 [**Glibc**](https://en.wikipedia.org/wiki/GNU_C_Library) 라는 모듈을 불러올 수 있습니다. [^wikipedia-gnu-c] [^wikipedia-gnu-c-ko] 이 모듈은 Swift 에서 표준 C 코드를 사용할 수 있게 하는 것으로 추측됩니다.
 
 ```
 1> import Glibc
@@ -125,7 +125,7 @@ $ swift package --help
 
 #### 패키지 만들기
 
-> [Getting Started](https://swift.org/getting-started/) 의 **Creating a Package** 에 있는 예제를 그대로 따라해 봅니다.
+> 이 부분부터는 [Getting Started](https://swift.org/getting-started/) 의 **Creating a Package** 에 있는 예제를 그대로 따라서 진행하도록 합니다.
 
 프로젝트를 담을 디렉토리를 하나 만들고 해당 디렉토리로 이동합니다.
 
@@ -162,7 +162,9 @@ $ swift package init
 
 일단 "Hello" 를 출력하는 `Hello` 실행 파일을 만드는 방법을 알아봅니다.
 
-여기서는 일단 바로 전에 만들었던 `Hello` 디렉토리를 지우고 새로 만듭니다. 아니면 프로젝트나 디렉토리 이름을 다른 이름으로 해도 됩니다. 새로 만든 `Hello` 디렉토리로 이동합니다.
+여기서는 일단 바로 전에 만들었던 `Hello` 디렉토리를 지우고 새로 만듭니다. 아니면 프로젝트나 디렉토리 이름을 다른 이름으로 해도 됩니다. 
+
+새로 만든 `Hello` 디렉토리로 이동합니다.
 
 ```
 $ mkdir Hello
@@ -190,18 +192,20 @@ $ swift package init --type executable
 $ swift build
 ```
 
-빌드 결과는 **.build** 디렉토리에 생깁니다. 이름에서 숨겨진 디렉토리임을 알 수 있습니다. 따라서 아래와 같이 해서 **Hello** 프로그램을 실행합니다.
+빌드 결과는 **.build** 디렉토리에 생깁니다. 이름에서 숨겨진 디렉토리임을 알 수 있습니다. 아래와 같이 **Hello** 프로그램을 실행합니다.
 
 ```
 $ .build/debug/Hello
 Hello, world!
 ```
 
+결과로 `Hello, world!` 가 출력되는 것을 볼 수 있습니다.
+
 > 참고로 에러가 발생할 경우에 디버그 정보는 **debug.yaml** 파일, 즉, **YAML** 양식으로 저장되는 것 같습니다.
 
 ### 여러 소스 파일 다루기
 
-**Sources/** 디렉토리에 **Greeter.swift** 라는 새 파일을 만들고 다음과 같이 입력합니다.
+**Sources/** 디렉토리에 **Greeter.swift** 라는 새 파일을 만들고 다음과 같이 입력합니다. 코드 편집은 원하는 아무 편집기를 사용해도 상관없습니다. 리눅스의 경우 `vi` 나 `gedit` 를 사용할 수도 있습니다.
 
 ```
 func sayHello(name: String) {
@@ -229,11 +233,13 @@ $ swift build
 $ .build/debug/Hello `whoami`
 ```
 
-위의 결과에서 `whoami` 부분은 현재 로그인 사용자의 이름이 나타나게 됩니다.
+출력 결과를 보면 위에서 인자로 넘긴 `whoami` 부분이 현재 로그인 사용자의 이름으로 대체되는 것을 확인할 수 있습니다.
 
 ### 고찰하기
 
-Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 [Swift Package Manager](https://swift.org/package-manager/) 글을 참고 하면 좋을 것 같습니다. [^swift-package]
+이제 리눅스에서 Swift 프로젝트를 만들고 소스 코드를 편집해서 빌드할 수 있게 되었습니다. 이어서 리눅스에서 LLDB 디버거를 사용하는 부분과 간단한 Swift 예제 프로그램을 작성한 것도 정리할 예정입니다. 
+
+Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 [Swift Package Manager](https://swift.org/package-manager/) 글을 참고 하면 됩니다. [^swift-package]
 
 ### 참고 자료
 
