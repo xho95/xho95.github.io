@@ -224,7 +224,9 @@ if CommandLine.arguments.count != 2 {
 }
 ```
 
-호출하는 함수가 Hello 모듈의 일부이기 때문에 import 구문이 필요없습니다. 그리고 터미널 명령줄에서 인자를 받아들이는 방식이 상당히 인상깊은 것 같습니다.
+호출하는 함수가 Hello 모듈의 일부이기 때문에 `import` 구문이 필요없습니다. [^access-control] 
+
+> 그 외에도 터미널 명령줄에서 인자를 받아들이는 방식이 상당히 인상깊습니다.
 
 `swift build` 를 실행해서 새 버전의 Hello 를 실험해 봅니다:
 
@@ -280,3 +282,5 @@ Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 
 [^wikipedia-gnu-c-ko]: Glibc 에 대한 한글 설명은 [GNU C 라이브러리](https://ko.wikipedia.org/wiki/GNU_C_라이브러리) 에 있는데 위키피디아 글 중에서 상당히 번역이 잘 된 글인 것 같습니다.
 
 [^swift-package]: [Package Manager](https://swift.org/package-manager/#conceptual-overview) 는 Swift 의 패키지 관리자에 대한 설명을 한 글입니다. 특히 모듈 빌드 방법, 의존 파일 불러오기, 시스템 라이브러리 연결짓기 등에 대해서 잘 정리되어 있습니다.
+
+[^access-control]: 이것은 Swift 언어의 접근 제어(Access Control) 방식과 관련이 있습니다. Swift 는 접근 제어를 파일 단위로 하는 독특한 성질을 가지고 있는데, Swift 에서는 클래스나 함수에 아무런 지시자를 달지 않으면 이들이 기본으로 `Internal` 특성을 가집니다. 따라서 같은 프로젝트 내에 있는 파일들에 대한 접근을 할 때는 따로 import 가 필요없어집니다.
