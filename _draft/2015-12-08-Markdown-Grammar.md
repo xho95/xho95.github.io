@@ -267,7 +267,7 @@ _`<br/>` 처럼 해도 한 줄 줄바꿈을 할 수 있는 것 같습니다. 이
 
 ### 마크다운 확장 문법 : GFM
 
-마크다운을 확장한 문법은 종류가 여러가지 있으먀 기능은 대동 소이 하지만 몇가지 다른 부분이 있습니다. 
+마크다운을 확장한 문법은 종류가 여러가지 있으며 기능은 대동 소이 하지만 몇가지 다른 부분이 있습니다. [^stackoverflow-14675913]
 
 나중에 GFM 만이 아니라 확장 문법 중에서도 공통인 부분을 따로 빼고 이어서 각각의 엔진마다 다른 점을 비교하는 것도 좋을 것 같습니다. 
 
@@ -349,15 +349,15 @@ $$
 
 물론 이것도 확장 문법이므로 에디터나 엔진에 따라서 보이지 않을 수 있습니다. 그리고 역 슬래시가 너무 많아서 가독성이 좀 떨어지는 것 같습니다. 
 
-_참고 자료 및 다른 블로그 글을 활용해서 다른 방법을 사용하도록 해 봅니다._ [^sanghyukchun-25] [^sanghyukchun-98]
+_참고 자료 및 다른 블로그 글을 활용해서 다른 방법을 사용하도록 해 봅니다._ [^sanghyukchun-25] [^sanghyukchun-98] [^dataleaf-markdown]
 
-### 마크다운 확장 문법 : 기타 - 내용을 정리해야 합니다.
+### 마크다운 확장 문법 : 기타
 
-그 외에 확장 마크다운 문법에 대해서 정리합니다.
+그 외에 확장 마크다운 문법에 대해서 정리합니다. [^nolboo-markdown] [^kalkin7-align-images]
 
 ### 애플 Playground 에서의 마크 다운
 
-애플 macOS 에서 Swift 를 연습할 수 있는 도구인 playground 에서도 마크다운과 유사한 방식의 글쓰기를 지원합니다. 
+애플 macOS 에서 Swift 를 연습할 수 있는 도구인 playground 에서도 마크다운과 유사한 방식의 글쓰기를 지원합니다. [^xcode-markup]
 
 공식적으로 마크다운을 지원하는 것은 아니고, 마크다운의 모든 문법을 지원하는 것도 아닙니다. 하지만 기본 문법은 마크다운과 사실상 같으며 Playground 로 간단한 매뉴얼을 작성하고자 할 경우에는 꽤 유용하게 사용할 수 있습니다. 
 
@@ -385,16 +385,20 @@ Playground 에서 작성한 글을 렌더링된 형식으로 보려면 **Editor 
 
 [^solutionoptimist-tricks]: 약간은 다른 내용이기는 하지만 GitHub 에 이미지를 올리는 방법과 관련해서 [GitHub Tricks: Upload Images & Live Demos | The Solution Optimist](http://solutionoptimist.com/2013/12/28/awesome-github-tricks/) 과 같은 글도 있습니다.
 
-[마크다운(Markdown)으로 글을 쓸 때 이미지 정렬하는 방법](http://blog.kalkin7.com/2014/03/04/how-to-align-images-on-writing-with-markdown/)
+[^stackoverflow-14675913]: [How to change image size markdown?](http://stackoverflow.com/questions/14675913/how-to-change-image-size-markdown) 라는 글을 보면 마크다운 편집기나 엔진에 따라서 제각기 다른 방법으로 그림의 크기를 조절하고 있음을 알 수 있습니다.
 
-[How to change image size markdown?](http://stackoverflow.com/questions/14675913/how-to-change-image-size-markdown)
-
-[^productivity]: [마크다운 언어를 이용해서 표 만들기(영문)](https://productivityarchive.wordpress.com/2013/08/10/마크다운-언어를-이용해서-표-만들기영문-2/) 글을 참고했습니다. 원문은 [Byword MultiMarkdown Guide](https://bywordapp.com/markdown/guide.html) 인데 확장 마크다운 문법에 대한 내용이 잘 정리되어 있는 것 같습니다. _나중에 정리가 필요합니다._
+[^productivity]: 마크다운으로 표를 그리는 방법은 [마크다운 언어를 이용해서 표 만들기(영문)](https://productivityarchive.wordpress.com/2013/08/10/마크다운-언어를-이용해서-표-만들기영문-2/) 글을 참고했습니다. 원문은 [Byword MultiMarkdown Guide](https://bywordapp.com/markdown/guide.html) 인데 확장 마크다운 문법에 대한 내용이 잘 정리되어 있는 것 같습니다. _나중에 정리가 필요합니다._
 
 [^kramdown]: GitHub 에서 공식 채택하고 있는 [kramdown](https://kramdown.gettalong.org) 마크다운 공식 홈페이지입니다. kramdown 에서 마크다운을 다루는 방식은 [kramdown Syntax](http://kramdown.gettalong.org/syntax.html#block-ials) 를 보면 되는데 일일이 다보기는 힘들고 필요할 때 찾아보면 될 것 같습니다.
 
-[Markdown에서 수식 입력하기](http://dataleaf.tistory.com/entry/Markdown에서-수식-입력하기) : 마크다운 문서에 수식을 넣을 수 있는 방법을 설명한 글입니다. 
+[^sanghyukchun-25]: [블로그에서 Latex 수식 사용하기(MathJax)](http://sanghyukchun.github.io/25/)
 
 [^sanghyukchun-98]: [Octopress Markdown Kramdown으로 이전하기](http://sanghyukchun.github.io/98/) : Markdown과 MathJax를 같이 사용하는 방법에 대해서 잘 정리된 글입니다.
 
-[^sanghyukchun-25]: [블로그에서 Latex 수식 사용하기(MathJax)](http://sanghyukchun.github.io/25/)
+[^dataleaf-markdown]: [Markdown에서 수식 입력하기](http://dataleaf.tistory.com/entry/Markdown에서-수식-입력하기) 라는 글은 마크다운 문서에 수식을 넣을 수 있는 방법을 설명한 글입니다. 
+
+[^nolboo-markdown]: 확장 마크다운에 대한 내용은 놀부님의 [놀부의 마크다운 사용법 - 무료 툴을 중심으로 한 워크플로우](https://nolboo.kim/blog/2014/04/15/how-to-use-markdown/) 글 중에 일부 소개 글과 링크가 있습니다. 참고하면 좋을 것 같습니다.
+
+[^kalkin7-align-images]: [마크다운(Markdown)으로 글을 쓸 때 이미지 정렬하는 방법](http://blog.kalkin7.com/2014/03/04/how-to-align-images-on-writing-with-markdown/) 이라는 글은 확장 마크다운인 Markdown Extra 에서 이미지를 정렬하는 방법을 다루고 있습니다.
+
+[^xcode-markup]: 애플 Playground 에서 사용하는 마크업 및 관련 문법은 [Markup Formatting Reference](https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497) 자료를 참고하시기 바랍니다.
