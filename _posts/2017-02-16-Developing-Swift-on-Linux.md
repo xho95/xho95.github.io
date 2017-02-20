@@ -83,7 +83,7 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 
 	> 위와 같이 하면 부팅시마다 매번 `export` 를 해줘야 하는 것 같습니다. 서버라면 재부팅할 일이 없으므로 이대로도 괜찮겠지만 개발 용도로 사용하는 리눅스의 경우 번거로울 수 있습니다.
 	>
-	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.bash_profile** 파일에 다음과 같이 설정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path]
+	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.bash_profile** 파일에 다음과 같이 설정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path] [^linux-bash]
 	>
 	> ```
 	> PATH=$PATH:$HOME/bin:/.../swift/usr/bin
@@ -274,6 +274,8 @@ Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 
 [^blueskywithyou-32]: Daniel.H.Kim 님의 [리눅스에서 PATH(환경변수) 관련 설정 및 참고 내용](http://blueskywithyou.tistory.com/32) 글에는 리눅스의 export 명령에 대한 설명이 정리되어 있습니다.
 
 [^superad-path]: 카약스님의 [리눅스 명령어 PATH 설정하기](http://superad.tistory.com/entry/리눅스-명령어-PATH설정하기) 라는 글에는 리눅스의 환경 설정 파일에서 **~/.bash_profile** 및 **~/.bashrc** 파일과 **/etc/profile** 및 **/etc/bashrc** 파일에 대한 내용이 있습니다. 나중에 관련 내용들을 정리할 생각입니다.
+
+[^linux-bash]: 이렇게 해도 매번 리눅스를 부팅해서 `$ source .bash_profile` 을 실행해야 하는 것 같습니다. 리눅스 경로 설정 부분은 방법이 워낙 다양해서 최적의 방법을 조금 더 알아보고 정리하도록 할 예정입니다.
 
 [^repl]: [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 은 Read–Eval–Print Loop 의 약자로 직역하면 읽고-실행하고-출력하는 것을 반복하는 것을 의미합니다. 프로그래밍에서 코드를 작성하면 한 줄씩 실행하면서 결과를 바로 볼 수 있도록 대화형으로 개발이 진행되는 방식을 의미하는 것 같습니다. 리눅스 터미널에서 `swift` 명령을 실행하면 이 REPL 방식으로 개발이 진행됩니다.
 
