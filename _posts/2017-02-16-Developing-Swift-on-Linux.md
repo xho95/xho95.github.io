@@ -83,10 +83,10 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 
 	> 위와 같이 하면 부팅시마다 매번 `export` 를 해줘야 하는 것 같습니다. 서버라면 재부팅할 일이 없으므로 이대로도 괜찮겠지만 개발 용도로 사용하는 리눅스의 경우 번거로울 수 있습니다.
 	>
-	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.bash_profile** 파일에 다음과 같이 설정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path] [^linux-bash]
+	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.profile** 파일의 PATH 부분을 다음과 같이 수정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path] [^linux-bash] 
 	>
 	> ```
-	> PATH=$PATH:$HOME/bin:/.../swift/usr/bin
+	> PATH=$HOME/bin: ... :/path/to/usr/bin:$PATH
 	> ```
 
 설치는 끝났습니다. 이제 `swift` 명령으로 [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 를 실행하거나 Swift 프로젝트를 빌드할 수 있습니다. [^repl]
@@ -242,6 +242,10 @@ $ .build/debug/Hello `whoami`
 이제 리눅스에서 Swift 프로젝트를 만들고 소스 코드를 편집해서 빌드할 수 있게 되었습니다. 이어서 리눅스에서 LLDB 디버거를 사용하는 부분과 간단한 Swift 예제 프로그램을 작성한 것도 정리할 예정입니다. 
 
 Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 [Swift Package Manager](https://swift.org/package-manager/) 글을 참고 하면 됩니다. [^swift-package]
+
+### 변경 사항
+
+* *2017. 02. 22.* 환경 설정 부분을 ~/.bash_profile 에서 ~/.profile 로 수정했습니다. 
 
 ### 참고 자료
 
