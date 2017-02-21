@@ -1,0 +1,1 @@
+[How to get hardware details in Swift?](http://stackoverflow.com/questions/33855998/how-to-get-hardware-details-in-swift)

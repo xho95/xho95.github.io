@@ -37,6 +37,10 @@ PXE는 일종의 Boot Loader로, NIC 안에 살고 있다. 모든 Boot Loader의
 
 #### 운영체제 설치 파일 저장소 준비
 
+#### 네크워크 및 호스트 설정
+
+[우분투서버(Ubuntu server) 무선랜(wifi) 고정ip(static)설정](http://egloos.zum.com/lpolpo/v/476) 글을 참고합니다.
+
 #### DHCP 설정
 
 conf 파일 이외에도 NIC Port 설정도 해줘야 합니다. 소용환 님의 글을 참고하면 될 것 같습니다.

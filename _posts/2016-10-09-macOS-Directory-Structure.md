@@ -51,7 +51,7 @@ $ cd $HOME
 $ cd ~
 ```
 
-보통의 경우 편리하므로 두번째 방법을 많이 사용합니다.
+보통의 경우 편리하므로 두번째 방법을 많이 사용합니다. [^another-method]
 
 macOS 에서 실제 홈 디렉토리는 루트 디렉토리 밑의 **/Users/\<**username**\>** 위치에 존재합니다.
 
@@ -102,6 +102,8 @@ macOS 에서 실제 홈 디렉토리는 루트 디렉토리 밑의 **/Users/\<**
 
 [^wikipedia-home]: 위키피디아의 [Home directory](https://en.wikipedia.org/wiki/Home_directory) 글에는 각각의 운영체제 별로 홈 디렉토리 위치를 표로 보여주고 있습니다.
 
-[^appletree]: miname 님이 [사과나무 이야기 마당](http://appletree.or.kr/forum/index.php)이라는 곳에 배쉬 쉘에 관련된 좋은 원문을 [bash on Mac OS X](http://appletree.or.kr/forum/viewtopic.php?id=13) 라는 글로 번역해서 정리해 두었습니다. 원문은 [bash on Mac OS X](http://www.macdevcenter.com/pub/a/mac/2004/02/24/bash.html) 입니다. 맥에서 사용되는 환경 설정 파일들을 비교 분석한 글인 [Bash: about .bashrc, .bash_profile, .profile, /etc/profile, etc/bash.bashrc and others](http://stefaanlippens.net/bashrc_and_others/) 라는 글도 읽어볼만합니다.
+[^another-method]: 실제로는 그냥 터미널에서 `$ cd` 만 해줘도 홈 디렉토리로 이동합니다.
+
+[^appletree]: miname 님이 [사과나무 이야기 마당](http://appletree.or.kr/forum/index.php)이라는 곳에 배쉬 쉘에 관련된 좋은 글을 [bash on Mac OS X](http://appletree.or.kr/forum/viewtopic.php?id=13) 라는 글로 번역해서 정리해 두었습니다. 참고로 원문은 [bash on Mac OS X](http://www.macdevcenter.com/pub/a/mac/2004/02/24/bash.html) 입니다. 맥에서 사용되는 환경 설정 파일들을 비교 분석한 글인 [Bash: about .bashrc, .bash_profile, .profile, /etc/profile, etc/bash.bashrc and others](http://stefaanlippens.net/bashrc_and_others/) 라는 글도 읽어볼만합니다.
 
 [^elfinlas]: wisseraph 님의 [MHLab Blog](http://elfinlas.tistory.com) 블로그에 쓰신 [Mac에서 Path 설정하기](http://elfinlas.tistory.com/266) 라는 글에는 **/etc/paths** 파일과 **/etc/profile** 파일의 기능에 대해서 설명이 잘 되어 있습니다.

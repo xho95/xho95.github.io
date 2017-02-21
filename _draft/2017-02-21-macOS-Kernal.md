@@ -8,7 +8,7 @@ macOS 의 핵심을 이루는 부분에 대해서 정리합니다.
 
 다윈은 애플이 macOS 에 사용하기 위해 만든 운영 체제이다. [^namu-darwin] [^wikipedia-darwin-ko] 사실 macOS 가 운영 체제인데 다윈을 운영 체제라고 하기 보다는 운영 체제의 커널이다라고 하는게 맞는 거 같습니다.
 
-또한 다윈은 오픈소스라고 합니다. [^macnews-5227]
+또한 다윈은 오픈소스라고 합니다. [^macnews-5227] [Open Source](https://developer.apple.com/opensource/) 에 가면 확인할 수 있습니다. [^apple-opensource] [^opensource-apple]
 
 ### POSIX
 
@@ -26,6 +26,10 @@ POSIX는 IEEE가 제정한 유닉스의 애플리케이션 프로그래밍 인�
 
 [^wikipedia-darwin-ko]: [다윈 (운영 체제)](https://ko.wikipedia.org/wiki/다윈_(운영_체제)) : 위키피디아 설명입니다.
 
-[^macnews-5227]: [애플, macOS 10.12 시에라에 사용된 '다윈(Darwin)' 오픈소스 공개](http://macnews.tistory.com/5227) 글을 보면 애플 오픈 소스 링크가 있는데 지금은 연결이 안됩니다. ㅜㅜ
+[^macnews-5227]: [애플, macOS 10.12 시에라에 사용된 '다윈(Darwin)' 오픈소스 공개](http://macnews.tistory.com/5227) 글을 보면 애플 오픈 소스 링크가 있는데 지금은 연결이 안됩니다. 주소가 바뀌었습니다.
 
 [^namu-posix]: [POSIX](https://namu.wiki/w/POSIX) : 나무위키 설명입니다.
+
+[^apple-opensource]: [Open Source](https://developer.apple.com/opensource/) : 애플 오픈 소스 관련 공식 홈페이지 입니다.
+
+[^opensource-apple]: [Apple Open Source](https://opensource.apple.com)
