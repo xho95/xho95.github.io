@@ -21,6 +21,7 @@ categories: Resources macOS Shell Terminal
 
 커맨드 라인 명령어들에 대해 더 알고 싶다면, [SS64](https://ss64.com) 에서 각 운영체제별로 정리된 명령어 모음을 볼 수 있습니다.[^ss64]
 
+* `cat` : _특정 파일의 내용을 보여줍니다._
 * `cd` : change directory - 폴더를 변경합니다.
 * `clear` : clear - 화면을 비워줍니다.
 * `cp` : copy - 파일을 복사합니다.       
