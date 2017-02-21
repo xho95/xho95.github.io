@@ -1,6 +1,6 @@
 여기서는 마크다운 ( [markdown](https://en.wikipedia.org/wiki/Markdown) ) 의 기본 문법에 대해서 정리합니다.
 
-_그 전에 마크다운의 유래 및 역사에 대해서도 간단히 정리할 필요가 있습니다. 아니면 글을 두 개로 분리하는 것도 좋은 것 같습니다. 여기서는 기본 문법과 확장 문법만 다루는 것이 좋을 것 같습니다._
+_그 전에 마크다운의 유래 및 역사에 대해서도 간단히 정리할 필요가 있습니다. 아니면 글을 두 개로 분리하는 것도 좋은 것 같습니다. 여기서는 기본 문법과 확장 문법만 다루는 것이 좋을 것 같습니다. 확장 문법만을 따로 빼는 것도 좋을 것 같습니다._
 
 사실 마크다운은 문법이 간단하기도 하고 또 정리된 곳이 많아서, [^wikipedia-markdown-ko] [^sergeswin-1013] 제가 새로 정리할 필요는 없지만 마크다운 엔진마다 조금씩 지원하는 기능이 다른 부분이 있어서 공부 차원에서 정리하도록 합니다.
 
@@ -271,7 +271,7 @@ _`<br/>` 처럼 해도 한 줄 줄바꿈을 할 수 있는 것 같습니다. 이
 
 나중에 GFM 만이 아니라 확장 문법 중에서도 공통인 부분을 따로 빼고 이어서 각각의 엔진마다 다른 점을 비교하는 것도 좋을 것 같습니다. 
 
-여기서는 GFM 에 대해서 정리합니다. GFM 은 GitHub 에서 제정한 마크다운 확장 문법입니다. 만약 Jekyll 을 사용해서 블로그를 운영한다면 GitHub Pages 를 사용할 것이므로 GFM 에 대해서 알아둘 필요가 있습니다. _GitHub Pages 에서 블로그를 운영하는 방법은 다음 글을 참고하시기 바랍니다._
+여기서는 GFM 에 대해서 정리합니다. GFM 은 GitHub 에서 제정한 마크다운 확장 문법입니다. [^nolboo-github-markdown] 만약 Jekyll 을 사용해서 블로그를 운영한다면 GitHub Pages 를 사용할 것이므로 GFM 에 대해서 알아둘 필요가 있습니다. _GitHub Pages 에서 블로그를 운영하는 방법은 다음 글을 참고하시기 바랍니다._
 
 _그리고 아래 내용이 GFM 에 해당하는 것인지는 확인이 필요합니다._
 
@@ -402,3 +402,5 @@ Playground 에서 작성한 글을 렌더링된 형식으로 보려면 **Editor 
 [^kalkin7-align-images]: [마크다운(Markdown)으로 글을 쓸 때 이미지 정렬하는 방법](http://blog.kalkin7.com/2014/03/04/how-to-align-images-on-writing-with-markdown/) 이라는 글은 확장 마크다운인 Markdown Extra 에서 이미지를 정렬하는 방법을 다루고 있습니다.
 
 [^xcode-markup]: 애플 Playground 에서 사용하는 마크업 및 관련 문법은 [Markup Formatting Reference](https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497) 자료를 참고하시기 바랍니다.
+
+[^nolboo-github-markdown]: [깃허브 취향의 마크다운 번역](https://nolboo.kim/blog/2014/03/25/github-flavored-markdown/)

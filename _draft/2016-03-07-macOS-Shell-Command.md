@@ -5,9 +5,11 @@ date:   2016-03-07 21:00:00 +0900
 categories: Resources macOS Shell Terminal
 ---
 
-여기서는 **macOS** 의 쉘(shell) 명령어 및 운영체제의 기본적인 내용들에 대해서 정리합니다. [^macOS]
+여기서는 **macOS** 를 조금 더 잘 다루기 위해 **macOS** 의 쉘(shell)과 기본 명령어 및 그 활용법에 대해서 정리합니다. [^macOS]
 
-일단 쉘이 무엇인지부터 정리합니다. 
+### 들어가며 
+
+일단 쉘이 무엇인지 어떤 종류가 있는지 부터 정리합니다. [^serapims-osx]
 
 이어서 간단하게 명령어들을 소개하고 그 다음에는 각각의 명령어에 대해 조금 더 자세하게 풀어서 설명합니다.
 
@@ -24,6 +26,8 @@ categories: Resources macOS Shell Terminal
 * `cp` : copy - 파일을 복사합니다.       
 
 - `exit` : 창을 닫는다고 합니다만 실제로 닫히지는 않습니다.  
+
+* `find` : 나중에 정리합니다. [^ironheel-32]
 
 * `ipconfig getifaddr en0` : 현재 ip를 보여줍니다.  
 
@@ -118,19 +122,15 @@ $ pwd
 
 > pwd를 매번 사용하지 않고 명령프롬프트에서 PS1 값을 수정함으로써 현재 디렉토리의 경로를 알수도 있다고 하는데 아직 이부분은 잘 모르겠습니다.
 
-### shell 사용법
+### 쉘(shell) 최대한 활용하기
 
-[serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
-
-[Mac 터미널에서 ssh 접속하는 방법](http://db.necoaki.net/54)
-
-[MAC OS X 자동 시작프로그램 추가/해제 하는 방법](http://namsieon.com/595)
-
-[mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
+[맥을 터미널로 제어할 수 있는 세 가지 명령어 유틸리티 m, mac, mas](https://nolboo.kim/blog/2016/09/03/control-mac-with-terminal/) 글을 보면 터미널로 앱스토어 앱을 업데이트하는 방법까지 설명하고 있습니다. [^nolboo-terminal] 터미널의 활용 범위는 무궁무진한 것 같습니다.
 
 ### 참고 자료
 
 [^macOS]: 시에라(Sierra) 에서부터 맥 OS의 정식 명칭이 **OS X**에서 **macOS**로 바뀌었습니다.
+
+[^serapims-osx]: [serapims님의 블로그 글](http://serapims.tistory.com/entry/OSX-터미널-명령어)  
 
 [^parklize_1]: [MAC Terminal Command 맥북 터미널 명령어 모음](http://parklize.blogspot.kr/2014/08/mac-terminal-command.html)
 
@@ -149,3 +149,7 @@ $ pwd
 [^rootblog-4]: [리눅스 도움말 명령어(man, --help)](http://rootblog.tistory.com/4)
 
 [^shaeod-669]: [리눅스 명령어: man - 명령어 매뉴얼 출력](http://shaeod.tistory.com/669)
+
+[^ironheel-32]: [mac에서 파일찾기(find) 및 조작](http://ironheel.tistory.com/32)
+
+[^nolboo-terminal]: [맥을 터미널로 제어할 수 있는 세 가지 명령어 유틸리티 m, mac, mas](https://nolboo.kim/blog/2016/09/03/control-mac-with-terminal/)
