@@ -44,6 +44,10 @@ $ iptables -I INPUT 1 -p tcp --dport 12345 -j ACCEPT
 $ ethtool -p eth0
 ```
 
+#### 이더넷 포트 확인하기
+
+[CentOS: Ethernet Port 확인하기](http://selene0301.tistory.com/115) 글을 확인합니다. [^selene0301-115]
+
 #### 무선랜 설정
 
 [Ubuntu: 우분투 무선랜 설정](http://perdupper.blogspot.kr/2016/02/ubuntu-sudo-apt-get-install-wireless.html) 글과 [우분투서버(Ubuntu server) 무선랜(wifi) 고정ip(static)설정](http://egloos.zum.com/lpolpo/v/476) 글을 참고합니다. [^perdupper-wireless] [^egloos-476] 기타 다른 참고 글도 볼만합니다. [^naleejang-95]
@@ -151,3 +155,6 @@ $ sudo /etc/init.d/networking stop
 [^nzeen-610]: [linux: 랜카드가 2개 일 때 네트워크 설정](http://www.nzeen.com/xe/study/610)
 
 [^kldp-118511]: [리눅스에 랜카드 2개일때, default gateway 설정 질문](https://kldp.org/node/118511)
+
+[^selene0301-115]: [CentOS: Ethernet Port 확인하기](http://selene0301.tistory.com/115)
+

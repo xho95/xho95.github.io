@@ -1,18 +1,20 @@
-여기서는 [Git](https://git-scm.com) [^git] 에 있는 [gitignore Documentation](https://git-scm.com/docs/gitignore) 글을 번역하여 정리합니다. [^docs-gitignore] 일부분을 번역한 글은 있는데 전체글을 번역한 것은 보지못해서 정리하였습니다. [^okjungsoo-gitignore] [^igotit-gitignore]
+제 블로그의 다른 글에서 직접 gitignore 파일을 만들려면 [gitignore Documentation](https://git-scm.com/docs/gitignore) 글을 참고하면 좋다고 했었습니다. 하지만 이 글을 일부분을 번역한 글은 있는데 전체글을 번역한 것은 보지못했습니다. [^okjungsoo-gitignore] [^igotit-gitignore]
+
+그래서 여기서는 어설프지만 [Git](https://git-scm.com) [^git] 에 있는 [gitignore Documentation](https://git-scm.com/docs/gitignore) 글을 번역하여 정리하고자 합니다. [^docs-gitignore]
 
 ### 이름
 
-**gitignore** - 추적하지 않고 있는 (untracked) 파일을 의도적으로 무시하도록 지정합니다.
+**gitignore** - Git 이 변경 내력을 추적하지 않는 파일을 의도적으로 무시하도록 지정합니다.
 
 ### 개요
 
 `$HOME/.config/git/ignore`, `$GIT_DIR/info/exclude`, `.gitignore`
 
-> 이 부분은 뭘 의미하는지 잘 모르겠습니다. 일종의 사용법을 나타낸 것으로 추측합니다. 홈 디렉토리 밑의 **/.config/git** 폴더에 **ignore** 파일로 만들거나, 현재 폴더에 **.gitignore** 파일로 만들면 된다는 의미로 추측합니다.
+> _이 부분은 뭘 의미하는지 잘 모르겠습니다. 일종의 사용법을 나타낸 것으로 추측합니다. 나중에 설명을 보완합니다._ 홈 디렉토리 밑의 **/.config/git** 폴더에 **ignore** 파일로 만들거나, 현재 폴더에 **.gitignore** 파일로 만들면 된다는 의미 같습니다.
 
 ### 설명
 
-**gitignore** 파일은 추적하지 않는 파일을 Git 이 무시해야한다고 의도적으로 지정합니다. Git 이 이미 추적하고 있는 파일은 적용되지 않습니다; 자세한 내용은 아래의 요약 부분을 보기 바랍니다.
+**gitignore** 파일은 Git 이 변경 내력을 무시해야 하는 비-추적 파일을 의도적으로 지정합니다. Git 이 이미 추적하고 있는 파일은 적용되지 않습니다; 자세한 내용은 아래의 **요약** 부분을 보기 바랍니다.
 
 **gitignore** 파일의 각 행은 하나의 패턴으로 되어있습니다. Git이 파일을 무시할지를 결정할 때, 보통 여러 위치에 있는 **gitignore** 패턴들을 우선 순위가 높은 것에서 낮은 순서로 검사합니다. (우선 순위가 같으면 마지막 패턴이 결과를 결정합니다):
 

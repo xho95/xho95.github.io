@@ -1,3 +1,5 @@
+PXE 부팅에 관해서는 이 파일 외에도 따로 내용을 정리합니다.
+
 ### PXE 
 
 ### 기술의 개요
@@ -41,13 +43,27 @@ conf 파일 이외에도 NIC Port 설정도 해줘야 합니다. 소용환 님�
 
 [Life Seed - ubuntu를 IP 공유기로 사용하자 (isc_dhcp_server 설치 및 설정)](http://lifeseed.tistory.com/83) 글을 기준으로 이해하는 것이 좋을 것 같습니다. [^lifeseed-83]
 
+[Install DHCP Server in Ubuntu 16.04](https://www.ostechnix.com/install-dhcp-server-in-ubuntu-16-04/)
+
+[DHCP 설치](https://www.joinc.co.kr/w/Site/System_management/dhcp)
+
 #### TFTP 서버 설정
+
+아래 내용들은 사실 중요한 것이 아니었습니다. 설치 과정에 문제가 있어보여도 tftpd-hpa 를 사용하는데는 문제가 없습니다. 그냥 정리 차원에서 기록을 남겨둡니다.
 
 지금 현재는 tftpd-hpa 가 문제가 있는 것 같습니다. 그래서 다른 tftp 프로그램을 사용하고 있습니다. 
 
 [How to install and configure a TFTP server on 14.04](http://askubuntu.com/questions/581772/how-to-install-and-configure-a-tftp-server-on-14-04) 글을 기준으로 합니다. [^askubuntu-tftp-server]
 
 `tftpd.socket` 설정이 필요하다고 합니다. 보다 자세한 내용은 [solved: Tftp server don't want to start](https://bbs.archlinux.org/viewtopic.php?id=184095) 글을 참고하면 됩니다. [^archlinux-184095]
+
+TFTP 설치 중에 [E: Sub-process /usr/bin/dpkg returned an error code (1)](https://ubuntuforums.org/showthread.php?t=1642173) 와 같은 에러가 발생하면, 링크의 지시를 따르면 된다고 합니다. 이것만으로는 안되고 아래의 링크도 참고가 필요합니다.
+
+[Omeka v2.4 설치 에러 - E: Sub-process /usr/bin/dpkg returned an error code (1)](http://osasf.net/discussion/405/omeka-v2-4-설치-에러-e-sub-process-usr-bin-dpkg-returned-an-error-code-1)
+
+[TFTP](https://help.ubuntu.com/community/TFTP) : ubuntu 문서입니다.
+
+[Ubuntu 15.04 Vivid Vervet: Failed to start LSB: Start NTP daemon](http://zeroset.mnim.org/2015/04/27/ubuntu-15-04-vivid-vervet-failed-to-start-lsb-start-ntp-daemon/)
 
 #### PXE 클라이언트 테스트
 
@@ -149,8 +165,6 @@ gpxelinux.0 은 어떤 의미에서는 운영체제 역할 - 사용자 ISO 파�
 [^askubuntu-tftp-server]: [How to install and configure a TFTP server on 14.04](http://askubuntu.com/questions/581772/how-to-install-and-configure-a-tftp-server-on-14-04) : 2707974 님의 답변을 따라 하면 일단 실행은 됩니다.
 
 [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) : 소용환님의 설명에 따르면, 근래에는 Embedded 개발환경이나 VM에게 IP를 할당하는 가상환경 관리 등을 위하여 TFTP 및 PXE 기능을 포함한 DHCP 서버와 DNS Forwarder 등이 결합된 Dnsmasq가 많이 사용되고 있다고 합니다.
-
-[DHCP 설치](https://www.joinc.co.kr/w/Site/System_management/dhcp)
 
 [^lifeseed-83]: [Life Seed - ubuntu를 IP 공유기로 사용하자 (isc_dhcp_server 설치 및 설정)](http://lifeseed.tistory.com/83) : DHCP 를 실행하기 위한 네트워크 설정 등에 대해서 설명이 잘 되어 있습니다. DHCP 실행과 관련해서는 이곳을 기준으로 하면 될 것 같습니다.
 
