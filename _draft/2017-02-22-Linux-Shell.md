@@ -1,5 +1,7 @@
 여기서는 리눅스 (linux) 의 쉘 (Shell) 에 대해서 정리합니다.
 
+일단 리눅스 쉘을 이해하는데는 [unix / linux: shell (쉘)을 이해하자.](http://blogger.pe.kr/300) 라는 글이 상당히 좋은 것 같습니다. [^blogger-300]
+
 ### 사용 가능한 쉘 확인하기
 
 #### 1. /etc/shells 파일 열어보기
@@ -88,11 +90,13 @@ $ chsh -s /bin/bash
 
 ### 고찰하기
 
-**/etc/passwd** 와 **/etc/shells** 파일들의 역할에 대해서 알아볼 필요가 있을 것 같습니다.
+**/etc/passwd** 와 **/etc/shells** 파일들의 역할에 대해서 알아볼 필요가 있을 것 같습니다. **/etc/passwd** 에 대해서는 [UNIX / Linux: 사용자 정보, 그룹 정보](http://eunguru.tistory.com/88) 글이 아주 좋은 것 같습니다.[^eunguru-88]
 
 더 나아가서 리눅스 부팅 과정에서 어떤 파일들이 영향을 미치는지 파일들간의 적용 순서는 어떻게 되는지 확인이 필요할 것 같습니다.
 
 ### 참고 자료
+
+[^blogger-300]: [unix / linux: shell (쉘)을 이해하자.](http://blogger.pe.kr/300) 글이 아주 좋은데 나중에 쉘 자체에 대해서 정리해야 할 것 같습니다.
 
 [^milvus-32]: [리눅스 쉘 확인 및 변경 방법](http://milvus.tistory.com/32)
 
@@ -101,3 +105,5 @@ $ chsh -s /bin/bash
 [^egloos-4077463]: [리눅스: SHELL확인/바꾸기](http://egloos.zum.com/Esunny/v/4077463) 글을 보면 쉘 변경은 `chsh` 명령 말고도, **/etc/passwd** 파일에서 `root` 에 해당 하는 부분을 직접 변경해도 되는 것 같습니다. 하지만 직접 파일 내용을 보면 굳이 무리해서 그럴 필요는 없을 것 같습니다.
 
 [^hostway-8170]: [사용 가능한 쉘 확인 및 변경법](http://faq.hostway.co.kr/Linux_ETC/8170) 에는 몇 가지 추가적인 방법에 대해서 설명하고 있습니다.
+
+[^eunguru-88]: [UNIX / Linux: 사용자 정보, 그룹 정보](http://eunguru.tistory.com/88) 글을 보면 /etc/passwd 파일은 시스템 관리자가 사용자 계정을 만들 때마다 해당 사용자와 관련된 정보를 별도로 저장하는 파일이라고 합니다. 즉 이 파일은 개별 사용자에 대한 정보들로 이루어져 있습니다. 콜론 (`:`) 구분자를 사용하여 7개의 필드로 구분됩니다. 내용이 알차서 이 참고 자료를 활용해서 정리하면 좋을 것 같습니다.
