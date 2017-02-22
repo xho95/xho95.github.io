@@ -2,23 +2,29 @@
 
 여기서는 리눅스에서 사용자 파일을 이미지에 추가, 삭제한 다음 부팅 가능한 ISO 이미지를 만드는  방법을 정리합니다.
 
-이 글은 [정광섭](https://www.lesstif.com/dashboard.action#all-updates) 님이 쓰신 [RHEL/CentOS 에서 mkisofs 로 Booting ISO 만들기 (KickStart 파일 포함)](https://www.lesstif.com/pages/viewpage.action?pageId=14090340) 라는 글을 중심으로 기타 여러 자료들을 참고하여 정리했습니다. [^lesstif-14090340] 지훈현서 님의 글도 좋습니다. 그리고 우분투에 대한 설명입니다. [^mcchae-11145086] _지훈현서님의 목적이 저랑 완전히 동일한 것 같습니다. 이 글을 잘 정리해도 좋을 것 같습니다._ 
+이 글은 [지훈현서](http://mcchae.egloos.com) 님의 [우분투: 12.04 커스텀 ISO 서버 이미지 만들어 보기](http://mcchae.egloos.com/11145086) 라는 글을 중심으로 그 외 여러 자료들을 참고하여 정리하였습니다. [^mcchae-11145086] [^lesstif-14090340]
 
 ### ISO 이미지
 
-[ISO 이미지](https://ko.wikipedia.org/wiki/ISO_이미지) ([ISO image](https://en.wikipedia.org/wiki/ISO_image)) 는 국제 표준화 기구(ISO)가 제정한 디스크 이미지 타입의 하나로써  광학 디스크에 대한 (압축) 보관 파일을 말합니다. [^wikipedia-iso-ko] [^wikipedia-iso] ISO 이미지 파일은 일반적으로 **.iso** 라는 파일 확장자를 갖습니다.
+[ISO 이미지](https://ko.wikipedia.org/wiki/ISO_이미지) ([ISO image](https://en.wikipedia.org/wiki/ISO_image)) 는 국제 표준화 기구(ISO)가 제정한 디스크 이미지 타입의 하나로써  광학 디스크에 대한 (압축) 보관 파일을 말합니다. ISO 이미지 파일은 일반적으로 **.iso** 라는 파일 확장자를 갖습니다. [^wikipedia-iso-ko] [^wikipedia-iso]
 
-ISO 이미지는 원래 광학 디스크의 내용을 하나의 파일로 만든 것이므로 광학 디스크 안의 내용과 실행 여건 모두 파일 하나에 담기게 됩니다. [^lifewire-2625923] [^sportszzang-61] 이 내용을 풀어서 CD 에 넣으면 똑같은 CD 가 만들어 집니다. 어떠한 CD나 DVD라도 **.iso** 형식의 파일로 만들 수 있으며, 따라서 ISO 이미지는 진정한 원본 디지털 복사본이라고 할 수 있습니다.
+ISO 이미지는 원래 광학 디스크의 내용을 하나의 파일로 만든 것이므로 광학 디스크 안의 내용과 실행 여건 모두 파일 하나에 담기게 됩니다. [^lifewire-2625923] [^sportszzang-61] 어떠한 CD나 DVD라도 **.iso** 형식의 파일로 만들 수 있으며, 따라서 ISO 이미지는 진정한 의미에서 원본의 디지털 복사본이라고 할 수 있습니다.
 
-### 커스텀(Custom) 부팅 이미지 만들기
+### 커스텀 (Custom) 부팅 이미지 만들기
 
-부팅 가능한 리눅스 ISO 가 있을 경우 여기에 파일을 추가, 삭제하고 나서 다시 ISO 이미지를 만드는 방법입니다.
+리눅스에서 사용자가 원하는 파일을 추가 또는 삭제하거나 부팅 환경을 수정한 다음, 다시 부팅 가능한 리눅스 ISO 이미지로 만드는 방법입니다. 이는 다음 순서대로 진행합니다.
+
+1. 부팅 가능한 리눅스 ISO 를 내려받습니다.
+2. 내려받은 리눅스 ISO 를 [마운트](https://en.wikipedia.org/wiki/Mount_(Unix)) 합니다. [^daum-122867]
+2. 새 ISO 폴더를 만들고 기존 ISO 파일을 복사한 다음, 기존 ISO 를 언마운트합니다.
+3. 새 ISO 폴더에 있는 파일들에서 여러 가지 환경들을 원하는 대로 수정합니다.
+4. `mkisofs` 명령으로 새 ISO 폴더를 부팅가능한 ISO 파일으로 만듭니다.
 
 #### 부팅 가능한 리눅스 ISO 준비하기
 
 자신이 원하는 부팅 가능한 리눅스 ISO 파일을 내려 받습니다. 부팅 가능한 리눅스는 [The LiveCD List](https://livecdlist.com) 라는 곳에서 받을 수 있습니다. [^livecdlist]
 
-ISO 이미지를 내려 받았으면 이를 마운트할 새 디렉토리를 만들고 해당 디렉토리로 마운트합니다. [^daum-122867] 터미널에서 아래와 같이 실행합니다. [^opentutorials-528] `linux-name` 부분은 자신이 내려받은 리눅스 이름으로 대체합니다.
+ISO 이미지를 내려 받았으면 이를 마운트할 새 디렉토리를 만들고 해당 디렉토리로 마운트합니다. 터미널에서 아래와 같이 실행합니다. [^opentutorials-528] `linux-name` 부분은 자신이 내려받은 리눅스 이름으로 대체합니다.
 
 ```
 $ mkdir old_iso
@@ -27,7 +33,7 @@ $ mount -o loop linux-name.iso old_iso
 
 위에서 실제로 실습하면서 `sudo` 명령이 필요한지 알아봅니다. 일단 지훈현서님의 글에는 `mount` 명령 등에는 `sudo` 를 붙여주고 있습니다.
 
-#### 새로운 ISO 만들기
+#### 새로운 ISO 폴더 만들기
 
 새 ISO 를 만들 폴더를 생성하고 기존 ISO 파일에 있는 내용을 새 폴더로 복사합니다. 
 
@@ -50,11 +56,13 @@ $ unmount old_iso
 $ sudo vi .../isolinux/somefile.cfg
 ```
 
+> `$ sudo vi` 로 만든 파일을 수정한 후 저장하려면, **vi** 명령 모드에서 `:w!q` 를 사용합니다.
+
 이 파일 내용을 수정해서 부트 로더 상에서 새로운 메뉴를 추가할 수 있습니다. 수정 내용은 [지훈현서](http://mcchae.egloos.com) 님의 [우분투: 12.04 커스텀 ISO 서버 이미지 만들어 보기](http://mcchae.egloos.com/11145086) 라는 글을 참고합니다. 
 
-수정 내용의 경우 현재 사용할 리눅스가 어떤지에 따라서 해당 리눅스의 명령을 참고해야할 것 같습니다.
+수정 내용은 ISO 에 속한 부분이 아니라 사용할 리눅스가 어떤지에 따라서 해당 리눅스의 명령이나 옵션을 참고해서 작성해야 합니다.
 
-`$ sudo vi` 로 만든 파일을 수정한 후 저장하려면, **vi** 명령 모드에서 `:w!q` 를 사용합니다.
+_그외에 파일 등을 추가하는 방법도 정리해야 합니다._
 
 #### 부팅 가능한 ISO 이미지 만들기
 
@@ -135,3 +143,5 @@ KLDP 커뮤니티의 [Linux에서 iso image 파일 편집 프로그램?](https:/
 [^w3big.com-mkisofs]: [Linux mkisofs command](http://www.w3big.com/linux/linux-comm-mkisofs.html) 에는 `mkisofs` 명령의 옵션이 자세하게 설명되어 있습니다. [리눅스는 mkisofs 명령](http://www.w3big.com/ko/linux/linux-comm-mkisofs.html) 라는 한글 번역 문서도 있는데 번역글이라 보기가 힘듭니다. 차라리 원문을 보는게 나을 것 같습니다.
 
 [^colt357-20087626663]: [매그넘](http://blog.naver.com/PostList.nhn?blogId=colt357) 님의 블로그 글 [mkisofs: iso 이미지 생성하기 (mkisofs)](http://blog.naver.com/PostView.nhn?blogId=colt357&logNo=20087626663&parentCategoryNo=11&viewDate=&currentPage=1&listtype=0) 에는 `mkisofs` 명령의 옵션 순서와 옵션의 의미가 간단하게 정리되어 있습니다. 
+
+[Linux에서 iso image 파일 편집 프로그램?](https://kldp.org/node/71880)
