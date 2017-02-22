@@ -2,24 +2,6 @@
 
 리눅스의 경우 맥과는 조금 다릅니다. 일단 **/etc/paths** 파일이 없는 것 같습니다.
 
-#### export 사용하기
-
-리눅스에서 다음과 같이 export 를 사용해서 경로를 추가할 수 있습니다.
-
-```
-$ export PATH=$PATH:/usr/local/zettair/bin
-```
-
-하지만 `export` 를 사용하는 방법은 현재 세션에서만 영향이 있습니다. 따라서 터미널을 새로 시작하면 매번 위와같은 명령을 새로 실행해줘야 합니다.
-
-리눅스를 애플 Swift 에서 사용할 수 있게 안내하는 [Download Swift](https://swift.org/download/) 글에서도 아래와 같이 `export` 만을 쓰고 있습니다. [^swift-download]
-
-```
-$ export PATH=/path/to/usr/bin:"${PATH}"
-```
-
-이렇게 하면 매번 터미널을 실행할 때마다 다시 경로를 재설정하지 않으면 절대 경로를 넣어줘야하는 불편함이 있습니다. 
-
 #### ~/.profile 파일 사용하기
 
 위와같은 문제를 해결하는 한가지 방법은 추가할 경로를 **~/.profile** 파일에 추가하는 것입니다. [^askubuntu-627346]
@@ -77,7 +59,6 @@ $ echo 'export PATH=$PATH:/path/to/usr/bin' >> ~/.bashrc
 `export` 및 `echo` 명령은 위에서 설명한 것과 같습니다.
 
 **~/.profile** 과 **~/.bashrc** 파일의 차이에 대해서는 따로 내용을 추가할 예정입니다.
- 
 
 ### 참고 자료
 
