@@ -86,7 +86,7 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.profile** 파일의 PATH 부분을 다음과 같이 수정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path] [^linux-bash] 
 	>
 	> ```
-	> PATH=$HOME/bin: ... :/path/to/usr/bin:$PATH
+	> PATH="$HOME/bin: ... :/path/to/usr/bin:$PATH"
 	> ```
 
 설치는 끝났습니다. 이제 `swift` 명령으로 [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 를 실행하거나 Swift 프로젝트를 빌드할 수 있습니다. [^repl]
@@ -245,7 +245,8 @@ Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 
 
 ### 변경 사항
 
-* *2017. 02. 22.* 환경 설정 부분을 ~/.bash_profile 에서 ~/.profile 로 수정했습니다. 
+* **2017. 02. 22.** 환경 설정 부분을 **~/.bash_profile** 에서 **~/.profile** 로 수정했습니다. 
+* **2017. 02. 19.** 첫 포스트를 작성했습니다.
 
 ### 참고 자료
 
