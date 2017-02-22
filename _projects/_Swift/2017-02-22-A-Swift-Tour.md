@@ -1,12 +1,12 @@
 ## Swift 둘러보기
 
-새로운 언어로 만드는 첫 프로그램은 화면에 "Hello, world!" 를 출력하는 것이 전통입니다. Swift 의 경우에는 다음과 같은 코드 한 줄로 할 수 있습니다:
+새로운 언어로 만드는 첫 프로그램은 화면에 `"Hello, world!"` 를 출력하는 것이 전통입니다. Swift 의 경우에는 다음과 같은 코드 한 줄로 할 수 있습니다:
 
 ```swift
 print("Hello, world!)
 ``` 
 
-C 나 Objective-C 로 코드를 만들어 본 적이 있다면, 이 문법이 꽤 친숙할 것입니다 - 하지만 Swift 에서는 이 한 줄의 코드가 완전한 프로그램입니다. 입 / 출력이나 문자열 처리를 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역에 쓰여진 코드는 프로그램의 시작점으로 사용되어서 `main()` 함수도 필요없습니다. 심지어 문장 끝에 세미콜론을 붙일 필요도 없습니다.
+C 나 Objective-C 로 코드를 만들어 본 적이 있다면, 이 문법이 꽤 친숙할 것입니다 - 하지만 Swift 에서는 이 한 줄의 코드가 완전한 프로그램입니다. 입 / 출력이나 문자열 처리를 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역에 있는 코드는 프로그램의 시작점으로 사용되어서 `main()` 함수도 필요없습니다. 심지어 문장 끝에 세미콜론을 붙일 필요도 없습니다.
 
 이 둘러보기는 다양한 프로그래밍 Swift 코드 작성을 시작하도록 충분한 정보를 줘서 
 
@@ -456,7 +456,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures
 
-Use `enum` to create an enumeration. Like classes and all other named types, enumerations can have methods associated with them.
+열거체를 만들려면 `enum` 을 사용합니다. 클래스나 다른 모든 일반적인 타입처럼 열거체도 메소드를 가질 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -482,9 +482,9 @@ let ace = Rank.ace
 let aceRawValue = ace.rawValue
 ```
 
-By default, Swift assigns the raw values starting at zero and incrementing by one each time, but you can change this behavior by explicitly specifying values. In the example above, `Ace` is explicitly given a raw value of `1`, and the rest of the raw values are assigned in order. You can also use strings or floating-point numbers as the raw type of an enumeration. Use the `rawValue` property to access the raw value of an enumeration case.
+기본으로 Swift 는 (case 의) raw 값을 0부터 시작해서 하나씩 증가하면서 부여하지만 값을 명시적으로 지정해서 이 방식을 바꿀 수 있습니다. 위에 있는 예제에서 `Ace` 는 명시적으로 raw 값을 `1` 로 지정했고 나머지의 raw 값은 순서대로 정하도록 했습니다. 열거체의 raw 타입을 문자열이나 부동-소수점으로 지정해서 사용할 수도 있습니다. 열거체 case 의 raw 값에 접근하려면 `rawValue` 속성을 사용합니다.
 
-Use the `init?(rawValue:)` initializer to make an instance of an enumeration from a raw value.
+raw 값을 가지고 열거체의 인스턴스를 만들려면 `init?(rawValue:)` 초기자를 사용합니다.
 
 ```swift
 if let convertedRank = Rank(rawValue: 3) {
@@ -492,7 +492,7 @@ if let convertedRank = Rank(rawValue: 3) {
 }
 ```
 
-The case values of an enumeration are actual values, not just another way of writing their raw values. In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
+열거체의 case 값은 raw 값을 사용하는 또 다른 방법이 아닌 실제 값입니다. 사실 raw 값이 별 의미가 없는 경우에는 굳이 raw 값을 부여할 필요가 없습니다.
 
 ```swift
 enum Suit {
@@ -551,9 +551,9 @@ let threeOfSpades = Card(rank: .three, suit: .spades)
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```
 
-### Protocols and Extensions
+### 프로토콜 (Protocols) 과 확장 (Extensions)
 
-Use `protocol` to declare a protocol.
+프로토콜을 선언하려면 `protocol` 을 사용합니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -562,7 +562,7 @@ protocol ExampleProtocol {
 }
 ```
 
-Classes, enumerations, and structs can all adopt protocols.
+클래스, 열거체, 그리고 구조체 모두 프로토콜을 따를 수 있습니다.
 
 ```swift
 class SimpleClass: ExampleProtocol {
@@ -587,9 +587,9 @@ b.adjust()
 let bDescription = b.simpleDescription
 ```
 
-Notice the use of the `mutating` keyword in the declaration of `SimpleStructure` to mark a method that modifies the structure. The declaration of `SimpleClass` doesn’t need any of its methods marked as mutating because methods on a class can always modify the class.
+`SimpleStructure` 선언의 `mutating` 키워드는 메소드가 구조체를 변경함을 나타내는 표시입니다. `SimpleClass` 의 선언에서는 어떤 메소드도 변경 (mutating) 표시를 할 필요가 없는데 이는 클래스의 메소드는 클래스를 언제든지 변경할 수 있기 때문입니다.
 
-Use `extension` to add functionality to an existing type, such as new methods and computed properties. You can use an extension to add protocol conformance to a type that is declared elsewhere, or even to a type that you imported from a library or framework.
+이미 있는 타입에 새로운 메소드나 계산 속성 (computed properties) 과 같은 기능을 추가하려면 `extension` 을 사용합니다. 확장 (extension) 을 사용하면 다른 곳에서 선언된 타입 또는 심지어 라이브러리나 프레임웍에서 불러온 타입이라도 프로토콜을 따르게 할 수 있습니다.
 
 ```swift
 extension Int: ExampleProtocol {
@@ -603,19 +603,19 @@ extension Int: ExampleProtocol {
 print(7.simpleDescription)
 ```
 
-You can use a protocol name just like any other named type—for example, to create a collection of objects that have different types but that all conform to a single protocol. When you work with values whose type is a protocol type, methods outside the protocol definition are not available.
+프로토콜을 이름을 마치 다른 보통의 타입 이름인 것 처럼 사용할 수 있는데 - 가령 서로 다른 타입들이지만 같은 프로코톨을 따르고 있는 객체들로 된 집합 (collection) 을 만들 수 있습니다. 다만 타입이 프로토콜인 값을 사용할 때는 프로토콜 정의 외부에 있는 메소드에는 접근할 수 없습니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// print(protocolValue.anotherProperty)  // Uncomment to see the error
+// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 납니다.
 ```
 
-Even though the variable `protocolValue` has a runtime type of `SimpleClass`, the compiler treats it as the given type of `ExampleProtocol`. This means that you can’t accidentally access methods or properties that the class implements in addition to its protocol conformance.
+`protocolValue` 변수는 런타임 타입이 `SimpleClass` 이지만, 컴파일러는 `ExampleProtocol` 타입이라고 여깁니다. 이것은 프로토콜을 따르는 면서 클래스에서 구현한 메소드나 속성에 실수로 접근하는 것을 막도록 합니다.
 
-### Error Handling
+### 에러 처리 (Error Handling)
 
-You represent errors using any type that adopts the `Error` protocol.
+`Error` 프로토콜을 따르는 모든 타입을 사용해서 에러를 나타냅니다. [^error] [^adopt]
 
 ```swift
 enum PrinterError: Error {
@@ -625,7 +625,7 @@ enum PrinterError: Error {
 }
 ```
 
-Use `throw` to throw an error and `throws` to mark a function that can throw an error. If you throw an error in a function, the function returns immediately and the code that called the function handles the error.
+에러를 던지려면 `throw` 를 사용하면 되며 `throws` 는 그 함수가 에러를 던질 수 있음을 표시합니다. 함수 안에서 에러를 던지면, 그 함수는 즉시 반환되며 함수를 호출한 코드는 에러를 처리합니다.
 
 ```swift
 func send(job: Int, toPrinter printerName: String) throws -> String {
@@ -636,7 +636,7 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 }
 ```
 
-There are several ways to handle errors. One way is to use `do`-`catch`. Inside the `do` block, you mark code that can throw an error by writing `try` in front of it. Inside the `catch` block, the error is automatically given the name `error` unless you give it a different name.
+에러를 처리하는 방법에는 여러 가지가 있습니다. 한가지 방법은 `do`-`catch` 를 사용하는 것입니다. `do` 블럭 안에서는 에러를 던질 수 있는 코드 앞에 `try` 를 표시합니다. `catch` 블럭 안에서 에러는 다른 이름을 붙이지 않는한 알아서 `error` 라는 이름을 가집니다.
 
 ```swift
 do {
@@ -647,7 +647,7 @@ do {
 }
 ```
 
-You can provide multiple `catch` blocks that handle specific errors. You write a pattern after `catch` just as you do after `case` in a switch.
+다수의 `catch` 를 사용해서 지정된 에러들을 처리할 수 있습니다. switch 구문의 `case` 에서 했던 것처럼 `catch` 뒤에도 패턴을 사용할 수 있습니다.
 
 ```swift
 do {
@@ -662,14 +662,14 @@ do {
 }
 ```
 
-Another way to handle errors is to use `try?` to convert the result to an optional. If the function throws an error, the specific error is discarded and the result is `nil`. Otherwise, the result is an optional containing the value that the function returned.
+에러 처리를 하는 다른 방법은 `try?` 를 사용해서 결과를 옵셔널 (optional) 로 바꾸는 것입니다. 함수가 에러를 던지면 에러를 버려버리고 결과를 `nil` 로 만듭니다. 아니라면 결과는 함수의 반환 값을 가지는 옵셔널이 됩니다.
 
 ```swift
 let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-Use `defer` to write a block of code that is executed after all other code in the function, just before the function returns. The code is executed regardless of whether the function throws an error. You can use `defer` to write setup and cleanup code next to each other, even though they need to be executed at different times.
+함수가 반환되기 전에 함수의 다른 모든 코드 이후에 실행될 코드 블럭을 작성하려면 `defer` 를 사용합니다. 이 코드는 함수가 에러를 던지는지의 유무화는 상관없이 실행됩니다. `defer` 를 사용하면 설정 코드와 해제 코드가 서로 다른 시간에 실행될지라도, 두 코드를 바로 붙여서 작성할 수 있습니다.
 
 ```swift
 var fridgeIsOpen = false
@@ -688,9 +688,9 @@ fridgeContains("banana")
 print(fridgeIsOpen)
 ```
 
-### Generics
+### 제네릭 (Generics)
 
-Write a name inside angle brackets to make a generic function or type.
+제네릭 함수나 타입을 만들려면 꺽쇠 괄호 안에 이름을 쓰면 됩니다.
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -703,7 +703,7 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
-You can make generic forms of functions and methods, as well as classes, enumerations, and structures.
+함수와 메소드 뿐만 아니라 클래스, 열거체, 구조체도 제네릭 양식으로 만들 수 있습니다.
 
 ```swift
 // Reimplement the Swift standard library's optional type
@@ -715,7 +715,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-Use `where` right before the body to specify a list of requirements—for example, to require the type to implement a protocol, to require two types to be the same, or to require a class to have a particular superclass.
+요구 조건 목록을 지정하려면 본체 바로 앞에 `where` 를 사용합니다 — 예를 들어, 타입이 프로토콜을 구현하도록 하거나, 두 타입을 같도록 하거나, 아니면 클래스가 특별한 상위 클래스에서 상속받아야 하는 경우에 사용하면 됩니다.
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
@@ -732,6 +732,17 @@ func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
 anyCommonElements([1, 2, 3], [3])
 ```
 
-Writing `<T: Equatable>` is the same as writing `<T> ... where T: Equatable`.
+`<T: Equatable>` 라고 쓰는 것은 `<T> ... where T: Equatable` 라고 쓰는 것과 같습니다.
+
+### 원문 자료 
+
+[A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1) : The Swift Programming Language (Swift 3.1) 자료입니다.
+
+### 참고 자료
+
+[^error]: Swift 에서는 예외 (Exception) 라는 표현 대신에 오류 (Error) 라는 표현을 씁니다. 일단 혼동을 막기 위해 에러라고 번역합니다.
+
+[^adopt]: 일단 adopt 라는 표현을 따른다고 번역합니다. Swift 에서는 클래스는 상위 클래스로부터 상속 받는다는 표현을 사용하고 프로토콜의 경우 따른다는 표현으로 구분합니다. 프로토콜을 따르는 것은 C++ 에서  순수 추상 클래스 - 이를 프로토콜 클래스라고 합니다 - 를 상속받는 것과 유사한 개념입니다.
+
 
 
