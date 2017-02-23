@@ -29,7 +29,7 @@ $ mv /tmp/boot/tinycore.gz /tmp
 $ sudo umount /mnt/tmp
 ```
 
-그다음 `core.gz` 의 압축을 풀어서 원하는 것을 추가하거나 제거합니다:
+그다음 `core.gz` 의 압축을 풀어서 원하는 것을 추가하거나 제거합니다: [^zetawiki-zcat]
 
 ```
 $ mkdir /tmp/extract
@@ -114,11 +114,10 @@ rm -rf newiso
 
 You may find ISO Master useful. Its a GUI disk image editing tool, available in the repository as a .tcz extension.
 
-
 ### 원본 자료
 
 [Remastering TC](http://wiki.tinycorelinux.net/wiki:remastering)
 
 ### 참고 자료
 
-[리눅스 zcat](http://zetawiki.com/wiki/리눅스_zcat)
+[^zetawiki-zcat]: [리눅스 zcat](http://zetawiki.com/wiki/리눅스_zcat)

@@ -65,7 +65,7 @@ var occupations = [
 occupations["Jayne"] = "Public Relations"
 ```
 
-To create an empty array or dictionary, use the initializer syntax.
+To create an empty array or dictionary, use the initializer syntax. [^initializer]
 
 ```swift
 let emptyArray = [String]()
@@ -315,7 +315,7 @@ print(sortedNumbers)
 
 #### Objects and Classes
 
-Use `class` followed by the class’s name to create a class. A property declaration in a class is written the same way as a constant or variable declaration, except that it is in the context of a class. Likewise, method and function declarations are written the same way.
+클래스를 만드려면 `class` 키워드를 쓰고 그뒤에 클래스 이름을 씁니다. 클래스에서 속성을 선언하는 것은 클래스의 내부에 있다는 점만 빼면 상수나 변수의 선언과 같습니다. 마찬가지로 메소드와 함수 선언도 방식이 같습니다.
 
 ```swift
 class Shape {
@@ -326,7 +326,7 @@ class Shape {
 }
 ```
 
-Create an instance of a class by putting parentheses after the class name. Use dot syntax to access the properties and methods of the instance.
+클래스의 인스턴스를 만들려면 클래스 이름뒤에 괄호를 쓰면 됩니다. 인스턴스의 속성이나 메소드에 접근하려면 점을 사용합니다.
 
 ```swift
 var shape = Shape()
@@ -334,7 +334,7 @@ shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
 ```
 
-This version of the `Shape` class is missing something important: an initializer to set up the class when an instance is created. Use `init` to create one.
+지금의 `Shape` 클래스는 뭔가 중요한 것이 빠졌습니다: 인스턴스가 만들어질 때 클래스를 셋업하는 초기자입니다. 초기자를 만들려면 `init` 을 사용합니다.
 
 ```swift
 class NamedShape {
@@ -351,11 +351,11 @@ class NamedShape {
 }
 ```
 
-Notice how `self` is used to distinguish the `name` property from the name argument to the initializer. The arguments to the initializer are passed like a function call when you create an instance of the class. Every property needs a value assigned—either in its declaration (as with `numberOfSides`) or in the initializer (as with `name`).
+초기자에서 `name` 속성을 name 인자와 구분하기 위해 `self` 를 사용하고 있음을 주목합니다. 초기자의 인자는 클래스 인스턴스 생성시에 전달되는 데 마치 함수를 호출하는 것 처럼 전달됩니다. 모든 속성은 값이 할당되어야 합니다 — (`numberOfSides` 처럼) 선언에서든 아니면 (`name` 처럼) 초기자에서든 말입니다.
 
-Use `deinit` to create a deinitializer if you need to perform some cleanup before the object is deallocated.
+객체의 할당이 해제되기 전에 정리를 수행해야하는 경우 `deinit` 를 사용하여 정리자를 만듭니다. [^deinitializer]
 
-Subclasses include their superclass name after their class name, separated by a colon. There is no requirement for classes to subclass any standard root class, so you can include or omit a superclass as needed.
+하위 클래스는 자신의 이름에 상위 클래스의 이름을 포함하는 데 그 사이를 콜론으로 구분해 줍니다. 클래스는 표준 루트 클래스를 상속할 필요가 없으므로 상위 클래스는 있을 수도 있고 없을 수도 있습니다.
 
 Methods on a subclass that override the superclass’s implementation are marked with `override`—overriding a method by accident, without `override`, is detected by the compiler as an error. The compiler also detects methods with `override` that don’t actually override any method in the superclass.
 
@@ -456,7 +456,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures
 
-열거체를 만들려면 `enum` 을 사용합니다. 클래스나 다른 모든 일반적인 타입처럼 열거체도 메소드를 가질 수 있습니다.
+열거체를 만들려면 `enum` 을 사용합니다. 클래스나 다른 모든 일반적인 타입처럼 열거체도 메소드를 가질 수 있습니다. [^method]
 
 ```swift
 enum Rank: Int {
@@ -482,7 +482,7 @@ let ace = Rank.ace
 let aceRawValue = ace.rawValue
 ```
 
-기본으로 Swift 는 (case 의) raw 값을 0부터 시작해서 하나씩 증가하면서 부여하지만 값을 명시적으로 지정해서 이 방식을 바꿀 수 있습니다. 위에 있는 예제에서 `Ace` 는 명시적으로 raw 값을 `1` 로 지정했고 나머지의 raw 값은 순서대로 정하도록 했습니다. 열거체의 raw 타입을 문자열이나 부동-소수점으로 지정해서 사용할 수도 있습니다. 열거체 case 의 raw 값에 접근하려면 `rawValue` 속성을 사용합니다.
+기본으로 Swift 는 case 의 원시 값 (raw value) 을 0부터 시작해서 하나씩 증가하면서 지정하는데 다른 값을 명시적으로 지정해서 바꿀 수 있습니다. [^raw] 위에 있는 예제에서 `Ace` 는 명시적으로 원시 값을 `1` 로 지정했고 나머지의 원시 값은 순서대로 정하도록 했습니다. 열거체의 raw 타입을 문자열이나 부동-소수점으로 지정해서 사용할 수도 있습니다. 열거체 case 의 raw 값에 접근하려면 `rawValue` 속성을 사용합니다.
 
 raw 값을 가지고 열거체의 인스턴스를 만들려면 `init?(rawValue:)` 초기자를 사용합니다.
 
@@ -514,9 +514,9 @@ let hearts = Suit.hearts
 let heartsDescription = hearts.simpleDescription()
 ```
 
-Notice the two ways that the `hearts` case of the enumeration is referred to above: When assigning a value to the `hearts` constant, the enumeration case `Suit.hearts` is referred to by its full name because the constant doesn’t have an explicit type specified. Inside the switch, the enumeration case is referred to by the abbreviated form `.hearts` because the value of `self` is already known to be a suit. You can use the abbreviated form anytime the value’s type is already known.
+위에서 열거체의 `hearts` case 를 두 가지 방법으로 언급하는 것을 확인합니다: 값을 `hearts` 상수에 할당할 때는 `Suit.hearts` 라고 열거체 case 의 전체 이름을 사용하는데 이는 상수에 명시적인 타입을 지정하지 않았기 때문입니다. switch 구문안에서는 열거체의  case 가 `.hearts` 라는 축약 형태로 사용되는데 `self` 값은 Suit 타입임을 이미 알고 있기 때문입니다. 값의 타입을 이미 알고 있다면 언제든지 축약 형태를 사용할 수 있습니다.
 
-If an enumeration has raw values, those values are determined as part of the declaration, which means every instance of a particular enumeration case always has the same raw value. Another choice for enumeration cases is to have values associated with the case—these values are determined when you make the instance, and they can be different for each instance of an enumeration case. You can think of the associated values as behaving like stored properties of the enumeration case instance. For example, consider the case of requesting the sunrise and sunset times from a server. The server either responds with the requested information, or it responds with a description of what went wrong.
+열거체의 raw 값은 선언될 때 결정되는데 따라서 특정한 열거체의 모든 인스터스들은 항상 같은 raw 값을 가집니다. 열거체 cases 를 위한 또다른 선택은 case 와 연관된 값을 가지게 하는 것입니다 — 이 값은 인스턴스를 만들 때 결정되며 따라서 열거체 case 의 각 인스턴스마다 다른 값을 가집니다. 연관 값은 열거체 case 인스턴스의 저장 속성 (stored properties) 과 같은 것이라고 생각하면 됩니다. 예를 들어 서버에 일출과 일몰 시간을 요청하는 경우가 있다고 가정해 봅시다. 서버는 요청 정보에 맞는 응답을 하거나 뭔가 잘못되었다고 응답합니다.
 
 ```swift
 enum ServerResponse {
@@ -535,9 +535,9 @@ case let .failure(message):
 }
 ```
 
-Notice how the sunrise and sunset times are extracted from the `ServerResponse` value as part of matching the value against the switch cases.
+switch 의 case 구문과 값을 맞추는 과정에서 `ServerResponse` 의 일출과 일몰 시간이 어떻게 추출되는지 주목하기 바랍니다.
 
-Use `struct` to create a structure. Structures support many of the same behaviors as classes, including methods and initializers. One of the most important differences between structures and classes is that structures are always copied when they are passed around in your code, but classes are passed by reference.
+구조체를 생성하려면 `struct` 를 사용합니다. 구조체는 메소드와 초기자를 포함하여 클래스와 같은 동작을 많이 지원합니다. 하지만 구조체와 클래스의 가장 중요한 차이는 구조체는 전달될 때 항상 복사되지만 클래스는 참조로 전달될다는 점입니다.
 
 ```swift
 struct Card {
@@ -603,7 +603,7 @@ extension Int: ExampleProtocol {
 print(7.simpleDescription)
 ```
 
-프로토콜을 이름을 마치 다른 보통의 타입 이름인 것 처럼 사용할 수 있는데 - 가령 서로 다른 타입들이지만 같은 프로코톨을 따르고 있는 객체들로 된 집합 (collection) 을 만들 수 있습니다. 다만 타입이 프로토콜인 값을 사용할 때는 프로토콜 정의 외부에 있는 메소드에는 접근할 수 없습니다.
+프로토콜을 이름을 마치 다른 보통의 타입 이름인 것처럼 사용할 수 있는데 - 가령 서로 다른 타입들이지만 같은 프로코톨을 따르고 있는 객체들로 된 집합 (collection) 을 만들 수 있습니다. 다만 타입이 프로토콜인 값을 사용할 때는 프로토콜 정의 외부에 있는 메소드에는 접근할 수 없습니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
@@ -669,7 +669,7 @@ let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-함수가 반환되기 전에 함수의 다른 모든 코드 이후에 실행될 코드 블럭을 작성하려면 `defer` 를 사용합니다. 이 코드는 함수가 에러를 던지는지의 유무화는 상관없이 실행됩니다. `defer` 를 사용하면 설정 코드와 해제 코드가 서로 다른 시간에 실행될지라도, 두 코드를 바로 붙여서 작성할 수 있습니다.
+함수가 반환되기 전에 함수의 다른 모든 코드 이후에 실행될 코드 블럭을 작성하려면 `defer` 를 사용합니다. 이 코드는 함수가 에러를 던지는지의 유무화는 상관없이 실행됩니다. `defer` 를 사용하면 설정 코드와 정리 코드가 서로 다른 시간에 실행될 지라도, 두 코드를 바로 붙여서 작성할 수 있습니다.
 
 ```swift
 var fridgeIsOpen = false
@@ -740,9 +740,17 @@ anyCommonElements([1, 2, 3], [3])
 
 ### 참고 자료
 
+[^initializer]: 'initializer' 는 '초기자'라고 번역합니다. 이것은 C++ 의 constructor 를 생성자라고 부르는 것에서 착안하였습니다. Swift 의 초기자는 C++ 의 생성자와 초기화 함수의 역할을 동시에 수행합니다. 이것은 현대의 프로그래밍 언어들이 변수 선언 시점을 최대한 실제 변수가 사용되는 시점에 맞춰서 하려고 하기 때문에, 변수 선언 시점에 값을 초기화까지 하려고 강제하기 위해서라고 추측하고 있습니다.
+
+[^deinitializer]: 'deinitializer' 단어는 도저히 뭐라고 번역해야할 지 몰라서 일단은 '정리자'라고 번역합니다. 구글 번역도 번역을 포기한 단어같습니다. 실제로 Swift 는 메모리 관리를 ARC 가 해주기 때문에 따로 정리할 일이 없어서 사용할 일이 거의 없는 것 같습니다. 
+
+[^method]: 'method' 는 멤버 함수의 의미도 있지만 일단 메소드라고 그대로 씁니다. 메소드는 특정 클래스나 구조체 처럼 어떤 객체에 속해있다는 점에서 일반 함수와 구분됩니다.
+
 [^error]: Swift 에서는 예외 (Exception) 라는 표현 대신에 오류 (Error) 라는 표현을 씁니다. 일단 혼동을 막기 위해 에러라고 번역합니다.
 
-[^adopt]: 일단 adopt 라는 표현을 따른다고 번역합니다. Swift 에서는 클래스는 상위 클래스로부터 상속 받는다는 표현을 사용하고 프로토콜의 경우 따른다는 표현으로 구분합니다. 프로토콜을 따르는 것은 C++ 에서  순수 추상 클래스 - 이를 프로토콜 클래스라고 합니다 - 를 상속받는 것과 유사한 개념입니다.
+[^adopt]: 일단 'adopt' 라는 표현을 '따른다'라고 번역합니다. Swift 에서는 클래스는 상위 클래스로부터 상속 받는다는 표현을 사용하고 프로토콜의 경우 따른다는 표현으로 구분합니다. 프로토콜을 따르는 것은 C++ 에서  순수 추상 클래스 중의 하나인 프로토콜 클래스를 상속받는 것과 유사한 개념입니다.
+
+[^raw]: 'raw value' 는 마음에는 안들지만 일단 '원시 값' 으로 번역합니다. 나중에 더 좋은 단어가 생각나면 바꿀 예정입니다.
 
 
 
