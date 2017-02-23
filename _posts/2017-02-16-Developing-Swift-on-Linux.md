@@ -83,11 +83,13 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 
 	> 위와 같이 하면 부팅시마다 매번 `export` 를 해줘야 하는 것 같습니다. 서버라면 재부팅할 일이 없으므로 이대로도 괜찮겠지만 개발 용도로 사용하는 리눅스의 경우 번거로울 수 있습니다.
 	>
-	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.profile** 파일의 PATH 부분을 다음과 같이 수정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path] [^linux-bash] 
+	> 경로 설정은 [리눅스 PATH 설정](http://egloos.zum.com/silve2/v/4448383) 등의 글을 참고하여 **~/.profile** 파일의 PATH 부분을 다음과 같이 수정했습니다. [^egloos-4448383] [^blueskywithyou-32] [^superad-path] [^linux-bash]
 	>
 	> ```
 	> PATH="$HOME/bin: ... :/path/to/usr/bin:$PATH"
 	> ```
+	> 
+	> 다른 설정 방법도 있습니다. [^html5around-swift]
 
 설치는 끝났습니다. 이제 `swift` 명령으로 [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 를 실행하거나 Swift 프로젝트를 빌드할 수 있습니다. [^repl]
 
@@ -291,3 +293,5 @@ Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 
 [^swift-package]: [Package Manager](https://swift.org/package-manager/#conceptual-overview) 는 Swift 의 패키지 관리자에 대한 설명을 한 글입니다. 특히 모듈 빌드 방법, 의존 파일 불러오기, 시스템 라이브러리 연결짓기 등에 대해서 잘 정리되어 있습니다.
 
 [^access-control]: 이것은 Swift 언어의 접근 제어(Access Control) 방식과 관련이 있습니다. Swift 는 접근 제어를 파일 단위로 하는 독특한 성질을 가지고 있는데, Swift 에서는 클래스나 함수에 아무런 지시자를 달지 않으면 이들이 기본으로 `Internal` 특성을 가집니다. 따라서 같은 프로젝트 내에 있는 파일들에 대한 접근을 할 때는 따로 import 가 필요없어집니다.
+
+[^html5around-swift]: 소화자 님의 [우분투에서 애플 스위프트(Swift) 공부환경 구축하기](http://html5around.com/wordpress/tutorials/ubuntu-swift/) 글에 보면 경로를 **~/.bashrc** 파일에 등록하고 있습니다. 나중에 비교 검토해서 반영할 생각입니다.

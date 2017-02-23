@@ -28,10 +28,10 @@ ISO 이미지를 내려 받았으면 이를 마운트할 새 디렉토리를 만
 
 ```
 $ mkdir old_iso
-$ mount -o loop linux-name.iso old_iso
+$ sudo mount -o loop linux-name.iso old_iso
 ```
 
-위에서 실제로 실습하면서 `sudo` 명령이 필요한지 알아봅니다. 일단 지훈현서님의 글에는 `mount` 명령 등에는 `sudo` 를 붙여주고 있습니다.
+위에서 실제로 실습하면서 `sudo` 명령이 필요한지 알아봅니다. 일단 지훈현서님의 글에는 `mount` 명령 등에는 `sudo` 를 붙여주고 있습니다. `sudo` 를 붙여주는 것이 맞는 것 같습니다.
 
 #### 새로운 ISO 폴더 만들기
 
@@ -42,10 +42,10 @@ $ mkdir new_iso
 $ cp -a old_iso/* new_iso/
 ```
 
-기존 이미지 파일을 언마운트합니다.
+기존 이미지 파일을 언마운트합니다. [^umount]
 
 ```
-$ unmount old_iso
+$ sudo umount old_iso
 ```
 
 #### 부트 메뉴 옵션 추가
@@ -88,7 +88,7 @@ $ sudo mkisofs -joliet-long -J -l -b isolinux/isolinux.bin -no-emul-boot -boot-l
 
 두 사람이 사용한 옵션의 종류와 옵션 순서는 서로 다름을 알 수 있습니다. 일단 옵션의 순서는 중요하지 않은 모양입니다. 
 
-`mkisofs` 명령의 옵션에 대해서는 [Linux mkisofs command](http://www.w3big.com/linux/linux-comm-mkisofs.html) 글을 참고 하면 될 것 같습니다. [^w3big.com-mkisofs] 그리고 옵션의 순서는 [매그넘](http://blog.naver.com/PostList.nhn?blogId=colt357) 님의 블로그 글 [mkisofs: iso 이미지 생성하기 (mkisofs)](http://blog.naver.com/PostView.nhn?blogId=colt357&logNo=20087626663&parentCategoryNo=11&viewDate=&currentPage=1&listtype=0) 를 참고할만 합니다. [^colt357-20087626663]
+`mkisofs` 명령의 옵션에 대해서는 [Linux mkisofs command](http://www.w3big.com/linux/linux-comm-mkisofs.html) 글을 참고 하면 될 것 같습니다. [^w3big.com-mkisofs] [^linuxcommand-mkisofs] 그리고 옵션의 순서는 [매그넘](http://blog.naver.com/PostList.nhn?blogId=colt357) 님의 블로그 글 [mkisofs: iso 이미지 생성하기 (mkisofs)](http://blog.naver.com/PostView.nhn?blogId=colt357&logNo=20087626663&parentCategoryNo=11&viewDate=&currentPage=1&listtype=0) 를 참고할만 합니다. [^colt357-20087626663]
 
 위 둘 중에서 동일한 옵션만 가져온 것입니다. _나중에 따로 정리할 예정입니다._
 
@@ -112,13 +112,13 @@ $ sudo -joliet-long -iso-level 4
 
 ### 고찰하기
 
-KLDP 커뮤니티의 [Linux에서 iso image 파일 편집 프로그램?](https://kldp.org/node/71880) 글을 보면 ISO 이미지를 직접 편집하는 것도 가능해 보입니다. mkisofs 를 사용하지 않고 기존 ISO 이미지를 편집하면 어떻게 되는지 알아볼 필요가 있을 것 같습니다.
+KLDP 커뮤니티의 [Linux에서 iso image 파일 편집 프로그램?](https://kldp.org/node/71880) 글을 보면 ISO 이미지를 직접 편집하는 것도 가능해 보입니다. [^kldp-71880] [^ubuntu-isomaster] `mkisofs` 를 사용하지 않고 기존 ISO 이미지를 편집하면 어떻게 되는지 알아볼 필요가 있을 것 같습니다. [^luckyman717-763]
 
 ### 참고 자료
 
-[^lesstif-14090340]: 정광섭님이 개인 위키인 [lesstif.com](https://www.lesstif.com/dashboard.action#all-updates) 에  ISO 이미지 만드는 방법을 [RHEL/CentOS 에서 mkisofs 로 Booting ISO 만들기 (KickStart 파일 포함)](https://www.lesstif.com/pages/viewpage.action?pageId=14090340) 라는 좋은 글로 정리해 두었습니다. 내용은 CentOS 에 대한 글이지만 Ubuntu 에서도 적용하는데 큰 무리가 없을 것 같습니다.
-
 [^mcchae-11145086]: [지훈현서](http://mcchae.egloos.com) 님이 블로그에 커스텀 ISO 이미지를 만드는 방법을 [우분투: 12.04 커스텀 ISO 서버 이미지 만들어 보기](http://mcchae.egloos.com/11145086) 라는 좋은 글로 정리해 두었습니다.
+
+[^lesstif-14090340]: 정광섭님이 개인 위키인 [lesstif.com](https://www.lesstif.com/dashboard.action#all-updates) 에  ISO 이미지 만드는 방법을 [RHEL/CentOS 에서 mkisofs 로 Booting ISO 만들기 (KickStart 파일 포함)](https://www.lesstif.com/pages/viewpage.action?pageId=14090340) 라는 좋은 글로 정리해 두었습니다. 내용은 CentOS 에 대한 글이지만 Ubuntu 에서도 적용하는데 큰 무리가 없을 것 같습니다.
 
 [^wikipedia-iso-ko]: 위키피디아의 [ISO 이미지](https://ko.wikipedia.org/wiki/ISO_이미지) 글에서 기본 내용을 확인할 수 있습니다.
 
@@ -142,6 +142,14 @@ KLDP 커뮤니티의 [Linux에서 iso image 파일 편집 프로그램?](https:/
 
 [^w3big.com-mkisofs]: [Linux mkisofs command](http://www.w3big.com/linux/linux-comm-mkisofs.html) 에는 `mkisofs` 명령의 옵션이 자세하게 설명되어 있습니다. [리눅스는 mkisofs 명령](http://www.w3big.com/ko/linux/linux-comm-mkisofs.html) 라는 한글 번역 문서도 있는데 번역글이라 보기가 힘듭니다. 차라리 원문을 보는게 나을 것 같습니다.
 
+[^linuxcommand-mkisofs]: [linuxCommand.org](http://linuxcommand.org) 에서 [mkisofs](http://linuxcommand.org/man_pages/mkisofs8.html) 명령에 대해서 정리해 두었습니다.
+
 [^colt357-20087626663]: [매그넘](http://blog.naver.com/PostList.nhn?blogId=colt357) 님의 블로그 글 [mkisofs: iso 이미지 생성하기 (mkisofs)](http://blog.naver.com/PostView.nhn?blogId=colt357&logNo=20087626663&parentCategoryNo=11&viewDate=&currentPage=1&listtype=0) 에는 `mkisofs` 명령의 옵션 순서와 옵션의 의미가 간단하게 정리되어 있습니다. 
 
-[Linux에서 iso image 파일 편집 프로그램?](https://kldp.org/node/71880)
+[^kldp-71880]: [Linux에서 iso image 파일 편집 프로그램?](https://kldp.org/node/71880) 글을 보면 **isomaster** 라는 프로그램으로 ISO 파일을 편집할 수 있는 것 같습니다.
+
+[^ubuntu-isomaster]: 우분투 사이트의 [isomaster package in Ubuntu](https://launchpad.net/ubuntu/+source/isomaster) 에서 isomaster 를 받을 수 있는 것 같습니다. 패키지라서 명령으로 설치할 수도 있습니다.
+
+[^luckyman717-763]: [우분투 8.10에서 ISO Master 사용하기](http://blog.daum.net/luckyman717/763) 글은 오래되긴 했지만 설명이 잘 되어 있는 것 같습니다. 
+
+[^umount]: 명령어의 철자에 주의합니다. `unmount` 가 아니라 `umount` 입니다.
