@@ -129,7 +129,7 @@ public extension MutableCollectionType where Index == Int {
 
 > `FisherYates` 패키지의 완전한 코드는 <https://github.com/apple/example-package-fisheryates> 에서 찾을 수 있습니다.
 
-#### 의존 모듈 불러오기 (Importing Dependencies)
+#### 의존 모듈 불러넣기 (Importing Dependencies)
 
 The `DeckOfPlayingCards` package brings the previous two packages together: It defines a Deck type that uses the `shuffle()` method from `FisherYates` on an array of `PlayingCard` values.
 
