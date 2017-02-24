@@ -55,6 +55,9 @@ bundle identifier의 경우 일단 앱스토어에 앱을 한 번 제출하고 �
 
 프로젝트의 이름이 아니라 앱의 이름만 바꿀 수는 없는지, 알아볼 필요가 있습니다. 방법이 있는 것 같습니다.[^asamaru]  [^blogspot]
 
+### 관련 자료
+
+* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
 
 ### 참고 자료
 

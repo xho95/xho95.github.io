@@ -13,3 +13,5 @@ Blancco 시스템의 경우 자체 Tomcat 을 실행시키므로 사용자가 �
 [아파치와 톰캣의 차이](http://limmmee.tistory.com/4)
 
 [WAS와 웹서버의 차이 – 톰캣과 아파치를 구별하지 못하는 사람을 위해](http://sungbine.github.io/tech/post/2015/02/15/tomcat과%20apache의%20연동.html)
+
+[맥(Mac)에서 톰캣(Tomcat) 설치하기!](http://www.silverwolf.co.kr/tomcat/8637)

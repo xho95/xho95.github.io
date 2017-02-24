@@ -1,10 +1,12 @@
-이 글은 [Swift](https://swift.org) 공식 페이지의 [Package Manager](https://swift.org/package-manager/#conceptual-overview) 글을 정리한 것입니다. [^swift-org] [^swift-package-manager]
+여기서는 [스위프트 (Swift)](https://swift.org) 의 패키지 관리자에 대해서 정리합니다. [^swift-org]
 
-## 패키지 관리자 (Package Manager)
+이 글은 Swift 공식 홈페이지에 있는 [Package Manager](https://swift.org/package-manager/#conceptual-overview) 라는 글을 번역하고 기타 다른 내용들을 덧붙여 정리한 것입니다. [^swift-package-manager]
 
-Swift 패키지 관리자는 Swift 코드의 배포를 관리하는 도구입니다. 의존성을 가진 파일들을 다운로드, 컴파일, 링크하는 과정을 자동화하기 위해 Swift 빌드 시스템과 통합되었습니다.
+### 들어가며
 
-패키지 관리자는 Swift 3.0 이상부터 적용됩니다.
+Swift 패키지 관리자는 Swift 코드의 배포를 관리하는 도구입니다. 빌드 시스템과 통합되어서 의존 모듈를 다운로드하고 컴파일하며 링크하는 과정을 자동으로 수행합니다.  [^dependency]
+
+패키지 관리자는 Swift 3.0 버전 이상부터 적용됩니다.
 
 ### 기본 개념
 
@@ -12,42 +14,42 @@ Swift 패키지 관리자는 Swift 코드의 배포를 관리하는 도구입니
 
 #### 모듈 (Modules)
 
-Swift organizes code into modules. Each module specifies a namespace and enforces access controls on which parts of that code can be used outside of the module.
+Swift 는 코드를 모듈로 정리합니다. 각 모듈은 네임 스페이스를 지정하고 해당 코드의 어떤 부분이 모듈 외부에서 사용할 수 있는지에 대한 접근 제어를 실행합니다.
 
-A program may have all of its code in a single module, or it may import other modules as dependencies. Aside from the handful of system-provided modules, such as Darwin on macOS or Glibc on Linux, most dependencies require code to be downloaded and built in order to be used.
+프로그램은 하나의 모듈만 써서 모든 코드를 담을 수도 있고, 다른 모듈을 의존 모듈로써 덧붙일 수도 있습니다. [^dependency] macOS 의 다윈 (Darwin) 이나 리눅스 (linux) 의 Glibc 같은 몇가지 시스템-제공 모듈을 제외하면, 대부분의 의존 모듈은 코드를 다운받아서 빌드해야 사용할 수 있습니다.
 
-When you use a separate module for code that solves a particular problem, that code can be reused in other situations. For example, a module that provides functionality for making network requests can be shared between a photo sharing app and a weather app. Using modules lets you build on top of other developers’ code rather than reimplementing the same functionality yourself.
+특정 문제를 해결하는 코드를 별도의 모듈로 담으면, 그 코드를 다른 상황에서도 재사용할 수 있습니다. 예를 들어 네크워크 요청을 만드는 모듈이 있다면 이 모듈은 사진 공유 앱과 날씨 앱에서 모두 사용할 수 있습니다. 모듈을 사용하면 똑같은 기능을 직접 다시 구현할 필요없이 다른 개발자가 만든 코드 위에서 개발을 진행할 수 있습니다.
 
-#### Packages
+#### 패키지 (Packages)
 
-A package consists of Swift source files and a manifest file. The manifest file, called Package.swift, defines the package’s name and its contents using the PackageDescription module.
+패키지는 Swift 소스 파일과 목록 (manifest) 파일로 구성됩니다. **Package.swift** 라는 목록 파일은 `PackageDescription` 모듈을 사용하여 패키지의 이름과 그 내용을 정의합니다.
 
-A package has one or more targets. Each target specifies a product and may declare one or more dependencies.
+패키지에는 하나 이상의 타겟 (target) 이 있습니다. 각각의 타겟은 하나의 제품을 지정하며 하나 이상의 의존 모듈을 선언할 수 있습니다.
 
-#### Products
+#### 제품 (Products)
 
-A target may build either a library or an executable as its product. A library contains a module that can be imported by other Swift code. An executable is a program that can be run by the operating system.
+타겟은 빌드를 해서 라이브러리 또는 실행 파일의 형태로 제품을 만들 수 있습니다. 라이브러리는 모듈을 담고 있는데, 다른 Swift 코드에서 `import` 로 불러올 수 있습니다. 실행 파일은 운영 체제에 의해서 실행할 수 있는 프로그램입니다.
 
-#### Dependencies
+#### 의존 모듈 (Dependencies)
 
-A target’s dependencies are modules that are required by code in the package. A dependency consists of a relative or absolute URL to the source of the package and a set of requirements for the version of the package that can be used. The role of the package manager is to reduce coordination costs by automating the process of downloading and building all of the dependencies for a project. This is a recursive process: A dependency can have its own dependencies, each of which can also have dependencies, forming a dependency graph. The package manager downloads and builds everything that is needed to satisfy the entire dependency graph.
+타겟의 의존 모듈은 패키지에 있는 코드가 필요로 하는 모듈을 말합니다. 의존 관계는 패키지의 소스를 가리키는 상대 및 절대 URL 과 사용될 패키지 버전에 대한 요구 조건 집합으로 구성됩니다. 패키지 매니저의 역할은 프로젝트와 의존 관계에 있는 모든 모듈을 내려 받고 빌드하는 과정을 자동화해서 조정 비용을 줄이는 것입니다. [^coordination] 이것은 재귀적인 프로세스입니다 [^process] : 의존 모듈은 스스로가 의존 모듈을 가질 수 있고, 그들은 또 제각각 의존 모듈을 가질 수 있어서, 의존 관계가 그래프 형태를 띄게 됩니다. 패키지 관리자는 전체 의존 관계 그래프를 만족하는 모든 것들을 내려 받고 필드합니다.
 
-> The following section assumes a working knowledge of Swift. If you’re new to the language, you may want consult one of the introductory resources first. We recommend A Swift Tour in The Swift Programming Language.
+> 이어지는 절에서는 Swift 를 사용할 줄 안다고 가정합니다. Swift 가 처음이라면 먼저 소개 자료를 좀 보고 싶을 수 있습니다. [The Swift Programming Language](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) [^swift-programming-language] 의 [A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1) 부분을 추천합니다.
 > 
-> If you want to follow along with the code examples, you’ll need to have a working installation of Swift. You can find instructions for how to install Swift in Getting Started.
+> 코드 예제를 따라하고 싶으면 Swift 를 설치해야 합니다. Swift 를 설치하는 방법은 [Getting Started](https://swift.org/getting-started/#installing-swift) 에 나와 있습니다. [^getting-started]
 
-### Example Usage
+### 사용 예제 (Example Usage)
 
-In Getting Started, a simple “Hello, world!” program is built with the Swift Package Manager.
+[Getting Started](https://swift.org/getting-started/#installing-swift) 에서는 Swift 패키지 관리자를 사용해서 간단한 **Hello, world!** 프로그램을 만들어 봤습니다.
 
-To provide a more complete look at what the Swift Package Manager can do, the following example consists of four interdependent packages:
+Swift 패키지 관리자로 무엇을 더 할 수 있는지 완전히 알아보기 위해 , 이어지는 예제는 서로 의존하고 있는 네 개의 패키지를 사용합니다:
 
-* PlayingCard - Defines PlayingCard, Suit, and Rank types.
-* FisherYates - Defines an extension that implements the shuffle() and shuffleInPlace() methods.
-* DeckOfPlayingCards - Defines a Deck type that shuffles and deals an array of PlayingCard values.
-* Dealer - Defines an executable that creates a DeckOfPlayingCards, shuffles it, and deals the first 10 cards.
+* [PlayingCard](https://github.com/apple/example-package-playingcard) - `PlayingCard`, `Suit`, 그리고 `Rank` 타입을 정의합니다.
+* [FisherYates](https://github.com/apple/example-package-fisheryates) - `shuffle()` 과 `shuffleInPlace()` 메소드를 구현하는 extension 을 정의합니다. [^extension]
+* [DeckOfPlayingCards](https://github.com/apple/example-package-deckofplayingcards) - `PlayingCard` 값의 배열을 뒤섞거나 거래하는 `Deck` 타입을 정의합니다.
+* [Dealer](https://github.com/apple/example-package-dealer) - `DeckOfPlayingCards` 을 생성하고, 뒤섞으며, 처음 10장의 카드를 거래하는 실행 파일을 정의합니다.
 
-> You can build and run the complete example by downloading the source code of the [Dealer project from GitHub](https://github.com/apple/example-package-dealer) and running the following commands:
+> 전체 예제를 빌드하고 실행하려면 GitHub 에 있는 [Dealer 프로젝트](https://github.com/apple/example-package-dealer) 에서 소스 코드를 내려 받아서 아래의 명령을 실행하면 됩니다:
 > 
 > ```sh
 > $ cd example-package-dealer
@@ -55,9 +57,9 @@ To provide a more complete look at what the Swift Package Manager can do, the fo
 > $ .build/debug/Dealer
 > ```
 
-#### Creating a Library Package
+#### 라이브러리 패키지 만들기 (Creating a Library Package)
 
-We’ll start by creating a module representing a playing card in a standard 52-card deck. The PlayingCard module defines the PlayingCard type, which consists of a Suit enumeration value (Clubs, Diamonds, Hearts, Spades) and a Rank enumeration value (Ace, Two, Three, ..., Jack, Queen, King).
+처음은 표준 52장 카드 한 벌 (deck) 에서 한 장의 참여중인 (playing) 카드를 나타내는 모듈을 만드는 것으로 시작합니다. `PlayingCard` 모듈은 `PlayingCard` 타입을 정의하는데, 이 타입은 `Suit` 열거 타입 값 (클럽, 다이아, 하트, 스페이드) 과 `Rank` 열거 타입 값 (에이스, 2, 3, ..., 잭, 퀸, 킹) 으로 구성됩니다. [^card] [^enumeration]
 
 ```swift
 public enum Rank : Int {
@@ -76,7 +78,7 @@ public struct PlayingCard {
 }
 ```
 
-By convention, a package includes any source files located in the Sources/ directory.
+규칙에 따라 패키지는 **Sources/** 디렉토리에 있는 모든 소스 파일을 포함합니다.
 
 ```sh
 example-package-playingcard
@@ -87,19 +89,19 @@ example-package-playingcard
 └── Package.swift
 ```
 
-Because the PlayingCard module does not produce an executable, it can be described as a library. A library is a package that builds a module which can be imported by other packages. By default, a library module exposes all of the public types and methods declared in source code located in the Sources/ directory.
+`PlayingCard` 모듈은 실행 파일을 생성하지 않으므로 라이브러리라고 할 수 있습니다. 라이브러리는 다른 패키지에서 `import` 로 붙일 수 있는 모듈을 빌드하는 패키지입니다. 기본으로 라이브러리 모듈은 **Sources/** 디렉토리에 있는 소스 코드에서 선언된 모든 `public` 타입과 메소드를 외부에 드러냅니다.
 
-Run swift build to start the Swift build process. If everything worked correctly, it will compile the Swift module for PlayingCard.
+Swift 빌드 프로세스를 시작하려면 `swift build` 를 실행합니다. 모든 것이 올바르면 `PlayingCard` 를 위한 Swift 모듈을 컴파일합니다.
 
-> The complete code for the PlayingCard package can be found at <https://github.com/apple/example-package-playingcard>.
+> `PlayingCard` 패키지의 완전한 코드는 <https://github.com/apple/example-package-playingcard> 에서 찾을 수 있습니다.
 
-#### Using Build Configuration Statements
+#### 빌드 설정 구문(Build Configuration Statements) 사용하기
 
-The next module you’re going to build is FisherYates. Unlike PlayingCard, this module does not define any new types. Instead, it extends an existing type – specifically the CollectionType and MutableCollectionType protocols – to add the shuffle() method and its mutating counterpart shuffleInPlace().
+다음에 빌드할 모듈은 `FisherYates` 입니다. `PlayingCard` 와 달리 이 모듈은 새로운 타입을 정의하지 않습니다. 대신에 이미 있는 타입 - 특히 `CollectionType` 과 `MutableCollectionType` 프로토콜 – 을 확장해서 `shuffle()` 메소드와 변형(mutating)을 위한 보완 대책인 `shuffleInPlace()` 을 추가합니다.
 
-The implementation of shuffleInPlace() uses the Fisher-Yates algorithm to randomly permute the elements in a collection. Because the Swift Standard Library does not provide a random number generator, this method must call a function imported from a system module. For this function to be compatible with both macOS and Linux, the code uses build configuration statements.
+`shuffleInPlace()` 의 구현은 피셔 (Fisher) - 예이츠 (Yates) 알고리즘을 사용하여 집합에 있는 요소의 순서를 무작위로 바꿉니다. Swift 표준 라이브러리는 난수 생성기를 제공하지 않기 때문에, 이 메소드는 시스템 모듈에 있는 함수를 사용해서 구현해야 합니다. 이 함수를 macOS 와 리눅스에서 호환되도록 하려면 코드에서 빌드 설정 구문을 사용합니다.
 
-In macOS, the system module is Darwin, which provides the arc4random_uniform(_:) function. In Linux, the system module is Glibc, which provides the random() function:
+**macOS** 의 시스템 모듈은 다윈 (Darwin) 이며 `arc4random_uniform(_:)` 함수를 제공합니다. 리눅스의 시스템 모듈은 Glibc 이고 `random()` 함수를 제공합니다:
 
 ```swift
 #if os(Linux)
@@ -125,13 +127,13 @@ public extension MutableCollectionType where Index == Int {
 }
 ```
 
-> The complete code for the FisherYates package can be found at <https://github.com/apple/example-package-fisheryates>.
+> `FisherYates` 패키지의 완전한 코드는 <https://github.com/apple/example-package-fisheryates> 에서 찾을 수 있습니다.
 
-#### Importing Dependencies
+#### 의존 모듈 불러오기 (Importing Dependencies)
 
-The DeckOfPlayingCards package brings the previous two packages together: It defines a Deck type that uses the shuffle() method from FisherYates on an array of PlayingCard values.
+The `DeckOfPlayingCards` package brings the previous two packages together: It defines a Deck type that uses the `shuffle()` method from `FisherYates` on an array of `PlayingCard` values.
 
-To use the FisherYates and PlayingCards modules, the DeckOfPlayingCards package must declare their packages as dependencies in its Package.swift manifest file.
+To use the `FisherYates` and `PlayingCards` modules, the `DeckOfPlayingCards` package must declare their packages as dependencies in its **Package.swift** manifest file.
 
 ```swift
 import PackageDescription
@@ -227,6 +229,26 @@ To help you get started with the project, we have prepared the following Communi
 
 ### 원문 자료
 
+이 글을 작성하는데 사용된 원문은 Swift 공식 홈페이지에 있는 [Package Manager](https://swift.org/package-manager/#conceptual-overview) 입니다.
+
+### 참고 자료
+
 [^swift-org]: 애플에서는 Swift 를 오픈 소스로 공개하면서 [Welcome to Swift.org](https://swift.org) 라는 공식 페이지도 만들고 블로그도 운영하면서 Swift 관련 소식들을 알리고 있습니다.
 
 [^swift-package-manager]: [Package Manager](https://swift.org/package-manager/#conceptual-overview)
+
+[^dependency]: 'dependency' 라는 단어는 구글 번역에서는 '종속성'으로 번역을 하고 프로그래밍 분야에서는 '의존성'이라는 말로 번역을 많이 합니다. 처음에는 둘 중 하나를 선택하려고 했는데 '의존성'이라고 하면 뭔가 '성질'을 나타내는 것이라 의미가 달라지는 것 같고 '의존물'이라는 용어도 와 닿지가 않아서, 여기서는 의존하고 있다는 의미로 '의존 모듈' 또는 때에 따라서 '의존 코드'라는 말로 옮깁니다. 앞으로 더 적당한 말이 생각나면 바꿀 생각입니다.
+
+[^coordination]: 'coordination cost'를 조정 비용이라고 옮기는데 조정 비용이 무엇인지는 아직 모호합니다.  
+
+[^process]: '과정'이라는 말로 많이 바꿔썼는데 그냥 프로세서라고 하는 것이 무난한 것 같습니다.
+
+[^swift-programming-language]: 애플에서 무료로 제공하는 Swift 언어의 공식 매뉴얼입니다. 문장이 상당히 간결하고 예제도 많이 있어서 Swift 입문자라면 가장 먼저 그리고 꼭 봐야할 책입니다.
+
+[^getting-started]: Swift 공식 블로그에 있는 설치 방법 등을 소개하고 있는 글입니다.
+
+[^extension]: 원래는 'extension' 을 '확장'이라고 직역했었는데, 의미가 헷갈릴 수 있을 것 같아서 '익스텐션'이라고 발음대로 사용할까 고민을 했습니다. 하지만 'extension'은 그 자체로 키워드이기도 해서 그냥 원 글을 살리는 방향으로 가기로 했습니다. 
+
+[^card]: 카드 관련 예제는 The Swift Programming Language 책에도 자주 나오는 예제인데, 예제 자체도 치밀하게 설계되어 설명하고 있음을 알 수 있습니다.
+
+[^enumeration]: 'enumeration' 은 원래 '열거체'로 번역했었는데, 여기서는 '열거 타입'으로 옮깁니다.
