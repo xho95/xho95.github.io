@@ -59,6 +59,8 @@ bundle identifier의 경우 일단 앱스토어에 앱을 한 번 제출하고 �
 
 * [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
 
+* [Swift 3.1: 스위프트 (Swift) 둘러보기](http://xho95.github.io/xcode/swift/grammar/tour/2016/04/17/A-Swift-Tour.html)
+
 ### 참고 자료
 
 [^MAR]: 파일 이름을 변경하는 많은 자료들이 있는데, [Video: How to Rename Xcode 7 Project Thoroughly](https://www.youtube.com/watch?v=jRnVjtNLLLk) 여기 만큼 확실하게 정리한 곳은 없는 것 같습니다.
