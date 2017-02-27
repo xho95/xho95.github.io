@@ -5,3 +5,5 @@
 [모든 자연수의 합은 -1/12인가?](http://m.blog.daum.net/elliotinnewyork/302)
 
 [공돌이의 수학정리노트](https://wikidocs.net/book/563) : 기초 수학에 대해서 정리가 잘 된 곳입니다.
+
+[확률론의 선과 악: 1. 수학, 우아함의 파격적인 유용성](http://tv.naver.com/v/1402533) : 네이버에 있는 강연 자료입니다.
