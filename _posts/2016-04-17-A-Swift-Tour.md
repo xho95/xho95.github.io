@@ -128,7 +128,7 @@ let informalGreeting = "Hi \(nickName ?? fullName)"
 
 Switch 문은 정수 값의 비교에만 국한되지 않고, 모든 종류의 데이터 타입과 광범위한 비교 연산을 지원합니다. [^switch]
 
-```
+```swift
 let vegetable = "red pepper"
 switch vegetable {
 case "celery":
