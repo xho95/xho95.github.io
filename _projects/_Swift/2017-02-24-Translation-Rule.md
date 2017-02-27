@@ -69,39 +69,72 @@
 
 ### 번역 단어 표
 
-* adopt : 따른다
+* abbreviated : 축약 형태의
+* adopt : 따른다 > 받아들인다 - 좀더 생각합니다.
 * angle brackets : 꺽쇠 괄호
+* approach : 접근 방법
+* argument : 인자
+* array : 배열, 배열 타입
+* associated value : 연관 값
+* behavior : 작동 방식
 * block : 블럭
+* brace : 중괄호
+* callback : 콜백
 * case : `case`, 경우
 * class : 클래스
 * cleanup : 정리
+* closure : 클로져
 * code : 코드
+* collection : 모듬 타입
+* compile time : 컴파일 시간
+* compiler : 컴파일러
 * computed property : 계산 속성
+* conditional : 조건 구문
+* context : 내부 - 좀더 생각합니다.
 * declaration : 선언
 * deinitializer : 정리자
+* delegate : 델리케이트
+* determine : 결정하다
+* dictionary : 사전 타입
+* dot syntax : 점 문법
 * enumeration : 열거체
 * error : 에러
+* explicitly : 직접 - (드러내놓고) 직접
 * extension : `extension`, 확장
-* form : 양식
+* first-class : 일급
+* form : 양식 - 형식이 더 맞는지 생각합니다.
 * function : 함수
 * generic : 제네릭
 * handle : 처리하다
 * initializer : 초기자
+* integer : 정수, 정수 타입
+* implicitly : 저절로 - (은연 중에) 저절로
+* label : 꼬리표 
+* loop : 반복 구문
+* match : 일치하는지 찾아보다 - 좀더 생각합니다.
 * method : 메소드
 * mutating : `mutating`, 변경
-* named type : 보통의 타입 - 이름이 알려진 타입의 의미에서 보편 타입을 의미
+* named : 보통의 - (이름이 알려질 정도로) 보편화 된
+* nest : 중첩하다
 * optional : 옵셔널
-* property : 속성
+* organize : 정리하다 - 좀더 생각해야 합니다.
+* override : 덮어 쓰다, `override`
+* pair : 쌍
+* property : 속성, 일반 언어로는 성질 - 둘을 구분하기 위해
 * protocol : 프로토콜
 * raw value : 원시 값
-* requirements : 요구 조건
+* requirements : 요구 사항
 * return : 반환하다
-* setup : 설정
+* root : 루트
+* run time : 실행 시간
+* setup : 초기 설정
 * specify : 지정하다
 * stored property : 저장 속성
 * structure : 구조체
 * subclass : 하위 클래스
+* subsripting : 첨자 인덱싱
 * superclass : 상위 클래스
 * switch : `switch`
 * throw : 던지다
 * type : 타입
+* variable : 가변

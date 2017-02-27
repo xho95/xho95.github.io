@@ -116,7 +116,7 @@ Swift 의 문자열 삽입 구문 (string interpolation) 을 사용하면, 긴 �
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
-// Prints "The current value of friendlyWelcome is Bonjour!"
+// "The current value of friendlyWelcome is Bonjour!" 를 출력합니다.
 ```
 
 > 문자열 삽입 구문에서 사용할 수 있는 모든 옵션은 [문자열 삽입 구문 (String Interpolation)]() 에서 설명합니다.
@@ -154,123 +154,123 @@ C 의 여러 줄 주석과는 다르게 Swift 의 여러 줄 주석은 다른 �
 
 ```swift
 let cat = "🐱"; print(cat)
-// Prints "🐱"
+// "🐱" 를 출력합니다.
 ```
 
-### 정수 (Integers)
+### 정수 (Integers) 타입
 
-Integers are whole numbers with no fractional component, such as `42` and `-23`. Integers are either signed (positive, zero, or negative) or unsigned (positive or zero).
+정수는 `42` 와 `-23` 처럼 분수 성분이 없는 모든 수를 말합니다. [^integer] 정수 타입에는 부호가 있는 경우 (양수, 0, 또는 음수) 가 있고 없는 경우 (양수나 0) 가 있습니다.
 
-Swift provides signed and unsigned integers in 8, 16, 32, and 64 bit forms. These integers follow a naming convention similar to C, in that an 8-bit unsigned integer is of type `UInt8`, and a 32-bit signed integer is of type `Int32`. Like all types in Swift, these integer types have capitalized names.
+Swift 는 부호가 있는 정수 타입과 없는 정수 타입을 8, 16, 32, 그리고 64 비트 형식으로 제공합니다. 이 정수 타입의 이름은 C 와 비슷한 규칙으로 지어졌는데, 8-비트 부호 없는 정수는 `UInt8` 타입이고, 32-비트 부호 있는 정수는 `Int32` 타입입니다 . [^naming] [^convention] Swift 의 모든 다른 타입들처럼 정수 타입은 대문자로 시작합니다.
 
-#### Integer Bounds
+#### 정수 범위 (Bounds)
 
-You can access the minimum and maximum values of each integer type with its `min` and `max` properties:
+각 정수 타입의 최소 값과 최대 값에 접근하려면 `min` 과 `max` 속성을 사용하면 됩니다:
 
 ```swift
-let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
-let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+let minValue = UInt8.min  // minValue 값은 0 이고 타입은 UInt8 입니다.
+let maxValue = UInt8.max  // maxValue 값은 255 이고 타입은 UInt8 입니다.
 ```
 
-The values of these properties are of the appropriate-sized number type (such as `UInt8` in the example above) and can therefore be used in expressions alongside other values of the same type.
+이 속성의 값은 (위의 예에 있는 `UInt8` 처럼) 적당한 크기의 수 타입이므로 같은 타입의 다른 값들과 함께 수식에 사용될 수도 있습니다.
 
 #### Int
 
-In most cases, you don’t need to pick a specific size of integer to use in your code. Swift provides an additional integer type, `Int`, which has the same size as the current platform’s native word size:
+대부분의 경우 코드에 사용할 정수의 크기를 직접 특정지을 필요가 없습니다. Swift 는 별도로 `Int` 라는 정수 타입을 제공하며 이는 현재 플랫폼의 내장 워드 크기와 같은 크기를 가지고 있습니다: [^native-word-size]
 
-* On a 32-bit platform, `Int` is the same size as `Int32`.
-* On a 64-bit platform, `Int` is the same size as `Int64`.
+* 32-비트 플랫폼에서 `Int` 는 `Int32` 와 크기가 같습니다.
+* 64-비트 플랫폼에서 `Int` 는 `Int64` 와 크기가 같습니다.
 
-Unless you need to work with a specific size of integer, always use `Int` for integer values in your code. This aids code consistency and interoperability. Even on 32-bit platforms, `Int` can store any value between `-2,147,483,648` and `2,147,483,647`, and is large enough for many integer ranges.
+특정 크기의 정수 타입이 필요한 것이 아니라면, 정수 값으로 항상 `Int` 를 사용하도록 합니다. 이렇게 하면 코드의 일관성과 상호 이용성에 도움이 됩니다. [^consistency] [^interoperability] 32-비트 플랫폼일지라도 `Int` 는 `-2,147,483,648` 에서 `2,147,483,647` 사이의 값을 저장할 수 있으며 이는 대다수의 정수 범위에서 충분히 큰 편입니다.
 
 #### UInt
 
-Swift also provides an unsigned integer type, `UInt`, which has the same size as the current platform’s native word size:
+Swift 는 부호 없는 정수 타입으로 `UInt` 도 제공하는데, 이것도 현재 플랫폼의 내장 워드와 같은 크기를 가지고 있습니다:
 
-* On a 32-bit platform, `UInt` is the same size as `UInt32`.
-* On a 64-bit platform, `UInt` is the same size as `UInt64`.
+* 32-비트 플랫폼에서 `UInt` 는 `UInt32` 와 크기가 같습니다.
+* 64-비트 플랫폼에서 `UInt` 는 `UInt64` 와 크기가 같습니다.
 
-> Use `UInt` only when you specifically need an unsigned integer type with the same size as the platform’s native word size. If this is not the case, `Int` is preferred, even when the values to be stored are known to be non-negative. A consistent use of `Int` for integer values aids code interoperability, avoids the need to convert between different number types, and matches integer type inference, as described in [Type Safety and Type Inference]().
+> `UInt`는 플랫폼의 기본 워드와 같은 크기의 부호 없는 정수 타입이 특별히 필요한 경우만 사용하도록 합니다. 이런 특별한 경우가 아니라면 저장되는 값이 음수가 아니더라도 `Int` 를 사용하는 것이 더 좋습니다. 정수 값으로 일관되게 `Int` 를 사용하면 상호 이용성에 도움이 되고, 다른 수 타입으로 타입을 바꿀 필요가 없으며, [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)]() 에 설명된 것 처럼 정수 타입 추론에 들어맞게 됩니다.
 
-### Floating-Point Numbers
+### 부동소수점 수 (Floating-Point Numbers) 타입 
 
-Floating-point numbers are numbers with a fractional component, such as `3.14159`, `0.1`, and `-273.15`.
+부동 소수점 수는 `3.14159`, `0.1` 와 `-273.15` 처럼 분수 요소가 있는 수입니다.
 
-Floating-point types can represent a much wider range of values than integer types, and can store numbers that are much larger or smaller than can be stored in an `Int`. Swift provides two signed floating-point number types:
+부동 소수점 타입은 정수 타입보다 훨씬 광범위한 값을 표현할 수 있으며 `Int` 에 저장할 수 있는 것보다 더 크거나 작은 수를 저장할 수 있습니다. Swift 는 두 가지의 부호 있는 부동 소수점 수 타입을 제공합니다:
 
-* `Double` represents a 64-bit floating-point number.
-* `Float` represents a 32-bit floating-point number.
+* `Double` 은 64-비트 부동 소수점 수를 나타냅니다.
+* `Float` 은 32-비트 부동 소수점 수를 나타냅니다.
 
-> `Double` has a precision of at least 15 decimal digits, whereas the precision of `Float` can be as little as 6 decimal digits. The appropriate floating-point type to use depends on the nature and range of values you need to work with in your code. In situations where either type would be appropriate, `Double` is preferred.
+> `Double` 은 적어도 소수점 이하 15 자리수의 정밀도를 가지고 있는 반면 `Float` 의 정밀도는 소수점 이하 6자리일 정도로 작습니다. 사용하고 있는 부동 소수점 타입이 적절한지는 코드에서 사용할 값의 특성과 범위에 달린 문제입니다. 두 타입이 모두 적당한 상황이라면 `Double` 을 쓰는 것이 더 낫습니다.
 
-### Type Safety and Type Inference
+### 타입 안전 검사기 (Type Safety) 와 타입 추론(Type Inference)
 
-Swift is a type-safe language. A type safe language encourages you to be clear about the types of values your code can work with. If part of your code expects a `String`, you can’t pass it an `Int` by mistake.
+Swift 는 타입-안전 언어입니다. 타입 안전 언어는 코드에서 사용하는 값의 타입을 분명히 할 것을 권장합니다. 코드의 일부분이 `String` 을 예상하고 있다면 실수로 `Int` 를 전달할 수 없습니다.
 
-Because Swift is type safe, it performs type checks when compiling your code and flags any mismatched types as errors. This enables you to catch and fix errors as early as possible in the development process.
+Swift 는 타입에 안전하므로 코드를 컴파일할 때 타입 검사를 수행해서 일치하지 않는 타입이 있으면 에러로 알려줍니다. 이렇게 함으로써 개발 과정에서 최대한 빠른 시간에 에러를 포착하고 고칠 수 있도록 해줍니다. [^mismatch]
 
-Type-checking helps you avoid errors when you’re working with different types of values. However, this doesn’t mean that you have to specify the type of every constant and variable that you declare. If you don’t specify the type of value you need, Swift uses type inference to work out the appropriate type. Type inference enables a compiler to deduce the type of a particular expression automatically when it compiles your code, simply by examining the values you provide.
+타입-검사는 다른 타입의 값들을 사용할 때 에러를 피하도록 해 줍니다. 하지만 이것이 상수와 변수를 선언할 때 항상 타입을 지정해줘야 함을 뜻하는 것은 아닙니다. 필요한 값의 타입을 지정하지 않으면 Swift 는 타입 추론을 사용해서 적절한 타입을 찾아냅니다. [^appropriate] 타입 추론은 코드를 컴파일할 때 자동으로 컴파일러가 특정 표현식의 타입을 찾을 수 있도록 해주는데,  이것은 단순히 제공된 값을 검사하는 것으로 이루어 집니다.
 
-Because of type inference, Swift requires far fewer type declarations than languages such as C or Objective-C. Constants and variables are still explicitly typed, but much of the work of specifying their type is done for you.
+타입 추론으로 인하여 Swift 는 C 나 Objective-C 같은 언어보다 타입 선언을 훨씬 더 적게 해도 됩니다. 상수와 변수는 여전히 직접 쳐줘야 하지만, 타입을 지정하는 대부분의 작업은 자동으로 이루어집니다.
 
-Type inference is particularly useful when you declare a constant or variable with an initial value. This is often done by assigning a literal value (or literal) to the constant or variable at the point that you declare it. (A literal value is a value that appears directly in your source code, such as `42` and `3.14159` in the examples below.)
+타입 추론은 초기 값을 가지고 상수와 변수를 선언할 때 특히 더 유용합니다. 이것은 선언할 때 문자 그대로의 값 (리터럴) 을 상수나 변수에 할당하는 것을 말합니다. [^literal] (리터럴 값은 소스 코드에 그대로 나타나는 값을 말하며 아래 예에서 `42` 와 `3.14159` 같은 것입니다.)
 
-For example, if you assign a literal value of `42` to a new constant without saying what type it is, Swift infers that you want the constant to be an `Int`, because you have initialized it with a number that looks like an integer:
+예를 들어 `42` 라는 리터럴 값을 무슨 타입인지 말하지 않고 새로운 상수에 할당하면 Swift 는 상수가 `Int` 가 되길 원한다고 추론하는데, 이는 정수 처럼 보이는 수로 초기화를 했기 때문입니다:
 
 ```swift
 let meaningOfLife = 42
-// meaningOfLife is inferred to be of type Int
+// meaningOfLife 는 Int 타입으로 추론됩니다.
 ```
 
-Likewise, if you don’t specify a type for a floating-point literal, Swift infers that you want to create a `Double`:
+마찬가지로 부동 소수점 리터럴에 타입을 지정하지 않으면 Swift 는 `Double` 을 만들고 싶어 한다고 추론합니다:
 
 ```swift
 let pi = 3.14159
-// pi is inferred to be of type Double
+// pi 는 Double 타입으로 추론됩니다.
 ```
 
-Swift always chooses `Double` (rather than `Float`) when inferring the type of floating-point numbers.
+Swift 는 부동 소수점 수의 타입을 추론할 때 (`Float` 이 아니라) 항상 `Double` 을 선택합니다.
 
-If you combine integer and floating-point literals in an expression, a type of `Double` will be inferred from the context:
+수식에서 정수와 부동 소수점 리터럴을 같이 사용하면 문맥을 통해서 `Double` 타입으로 추론합니다: [^expression] [^context]
 
 ```swift
 let anotherPi = 3 + 0.14159
-// anotherPi is also inferred to be of type Double
+// anotherPi 역시 Double 타입으로 추론됩니다.
 ```
 
-The literal value of `3` has no explicit type in and of itself, and so an appropriate output type of `Double` is inferred from the presence of a floating-point literal as part of the addition.
+리터럴 값인 `3` 은 직접 타입을 지정한 것도 아니고 그자체가 타입인 것도 아니므로 적절한 출력 타입은 `Double` 로 추론되는데 이는 덧셈의 일부에 부동 소수점 리터럴이 있기 때문입니다.
 
-### Numeric Literals
+### 수치 값 리터럴 (Numeric Literals)
 
-Integer literals can be written as:
+정수 리터럴은 다음과 같은 방법으로 작성할 수 있습니다:
 
-* A decimal number, with no prefix
-* A binary number, with a `0b` prefix
-* An octal number, with a `0o` prefix
-* A hexadecimal number, with a `0x` prefix
+* 아무런 접두사가 없는 10진수
+* `0b` 접두사를 붙인 2진수
+* `0o` 접두사를 붙인 8진수
+* `0x` 접두사를 붙인 16진수
 
-All of these integer literals have a decimal value of `17`:
+아래에 있는 모든 리터럴은 십진수로 `17`입니다:
 
 ```swift
 let decimalInteger = 17
-let binaryInteger = 0b10001       // 17 in binary notation
-let octalInteger = 0o21           // 17 in octal notation
-let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+let binaryInteger = 0b10001       // 17 의 2진 표기법
+let octalInteger = 0o21           // 17 의 8진 표기법
+let hexadecimalInteger = 0x11     // 17 의 16진 표기법
 ```
 
-Floating-point literals can be decimal (with no prefix), or hexadecimal (with a `0x` prefix). They must always have a number (or hexadecimal number) on both sides of the decimal point. Decimal floats can also have an optional exponent, indicated by an uppercase or lowercase `e`; hexadecimal floats must have an exponent, indicated by an uppercase or lowercase `p`.
+부동 소수점 리터럴은 (아무런 접두사가 없는) 10진수이거나 (`0x` 접두사가 있는) 16진수 일 수 있습니다. 소수점 양쪽 모두에 수 (또는 16진수)가 있어야 합니다. 10진 부동 소수점 수에는 지수가 있을 수 있는데 대/소문자 `e` 로 나타냅니다; 16진 부동 소수점 수는 반드시 지수를 가져야 하며 대/소문자 `p` 로 나타냅니다.
 
-For decimal numbers with an exponent of `exp`, the base number is multiplied by 10<sup>exp</sup>:
+`exp` 라는 지수부를 가지고 있는 10진수는 가수부에 10<sup>exp</sup> 를 곱해줍니다: [^base-number]
 
-* 1.25e2 means 1.25 x 10<sup>2</sup>, or 125.0.
-* 1.25e-2 means 1.25 x 10<sup>-2</sup>, or 0.0125.
+* 1.25e2 는 1.25 x 10<sup>2</sup> 를 뜻하며 125.0 이기도 합니다.
+* 1.25e-2 는 1.25 x 10<sup>-2</sup>를 뜻하며 0.0125 이기도 합니다.
 
-For hexadecimal numbers with an exponent of exp, the base number is multiplied by 2<sup>exp</sup>:
+`exp` 라는 지수부를 가지고 있는 16진수는 가수부에 2<sup>exp</sup> 를 곱해줍니다:
 
-* 0xFp2 means 15 x 2<sup>2</sup>, or 60.0.
-* 0xFp-2 means 15 x 2<sup>-2</sup>, or 3.75.
+* 0xFp2 는 15 x 2<sup>2</sup> 를 뜻하며 60.0 이기도 합니다.
+* 0xFp-2 는 15 x 2<sup>-2</sup> 를 뜻하며 3.75 이기도 합니다.
 
-All of these floating-point literals have a decimal value of `12.1875`:
+다음의 모든 부동 소수점 리터럴의 10진 값은 `12.1875` 입니다:
 
 ```swift
 let decimalDouble = 12.1875
@@ -278,7 +278,7 @@ let exponentDouble = 1.21875e1
 let hexadecimalDouble = 0xC.3p0
 ```
 
-Numeric literals can contain extra formatting to make them easier to read. Both integers and floats can be padded with extra zeros and can contain underscores to help with readability. Neither type of formatting affects the underlying value of the literal:
+수치 값 리터럴은 보다 읽기 쉽도록 별도 서식을 가질 수 있습니다. [^extra-formatting] 정수와 부동 소수점 수 모두 별도의 0으로 채워질 수 있으며 가독성을 높이기 위해 밑줄 기호를 가질 수 있습니다. [^extra] [^readability] 이 서식 타입 어느 것도 리터럴의 원래 값에는 영향을 주지 않습니다: [^underlying]
 
 ```swift
 let paddedDouble = 000123.456
@@ -286,27 +286,26 @@ let oneMillion = 1_000_000
 let justOverOneMillion = 1_000_000.000_000_1
 ```
 
-### Numeric Type Conversion
+### 수치 타입의 형변환 (Numeric Type Conversion)
 
-Use the `Int` type for all general-purpose integer constants and variables in your code, even if they are known to be non-negative. Using the default integer type in everyday situations means that integer constants and variables are immediately interoperable in your code and will match the inferred type for integer literal values.
+모든 일반 용도에서 그리고 심지어는 양수로만 쓰는 경우에도 정수 상수나 변수에는 항상 `Int` 타입만 쓰도록 합니다. 모든 상황에서 기본 정수 타입만 쓴다는 것은 코드에 있는 정수 상수와 변수가 언제든지 상호 호환가능함을 의미하며 정수 리터럴 값의 타입 추론과도 일치함을 의미합니다.
 
-Use other integer types only when they are specifically needed for the task at hand, because of explicitly-sized data from an external source, or for performance, memory usage, or other necessary optimization. Using explicitly-sized types in these situations helps to catch any accidental value overflows and implicitly documents the nature of the data being used.
+다른 정수 타입은 특별하게 필요한 경우에만 사용하도록 하는데 이는 외부 소스에서 직접 크기가 결정된 데이터라던가 성능이나 메모리 사용량 문제 아니면 다른 최적화가 필요한 경우 등에 해당합니다. 이런 상황에서는 직접 크기가 결정된 타입을 사용하는 것이 우연하게 값이 넘치는 문제를 잡아내는데 도움을 주고 사용하는 데이터의 특성을 저절로 문서화할 수 있도록 해 줍니다.
 
-#### Integer Conversion
+#### 정수 사이의 형변환 (Integer Conversion)
 
-The range of numbers that can be stored in an integer constant or variable is different for each numeric type. An `Int8` constant or variable can store numbers between `-128` and `127`, whereas a `UInt8` constant or variable can store numbers between `0` and `255`. A number that will not fit into a constant or variable of a sized integer type is reported as an error when your code is compiled:
+정수 상수나 변수에 저장될 수 있는 수의 범위는 각 수치 타입마다 다릅니다. `Int8` 상수나 변수는 `-128` 에서 `127` 사이의 수를 저장할 수 있는 반면에, `UInt8` 상수나 변수는 `0` 에서 `255` 사이의 수를 저장할 수 있습니다. 크기가 지정된 정수 타입의 상수나 변수 범위에 있지 않는 수는 컴파일할 때 에러로 보고됩니다:
 
 ```swift
 let cannotBeNegative: UInt8 = -1
-// UInt8 cannot store negative numbers, and so this will report an error
+// UInt8 는 음수를 저장할 수 없으므로 에러를 보고합니다.
 let tooBig: Int8 = Int8.max + 1
-// Int8 cannot store a number larger than its maximum value,
-// and so this will also report an error
+// Int8 는 그것의 최대 값을 넘어서는 수를 저장할 수 없으므로 에러를 보고합니다.
 ```
 
-Because each numeric type can store a different range of values, you must opt in to numeric type conversion on a case-by-case basis. This opt-in approach prevents hidden conversion errors and helps make type conversion intentions explicit in your code.
+각 정수 타입은 다른 범위의 값을 저장할 수 있으므로 상황에 따라 수치 타입의 형변환을 직접 선택해 줘야 합니다. 이러한 직접 선택 (opt-in) 접근 방법은 잠재 형변환 에러를 방지하고 타입 변환 의도를 분명하게 드러내 줍니다. [^opt-in approach]
 
-To convert one specific number type to another, you initialize a new number of the desired type with the existing value. In the example below, the constant `twoThousand` is of type `UInt16`, whereas the constant `one` is of type `UInt8`. They cannot be added together directly, because they are not of the same type. Instead, this example calls `UInt16(one)` to create a new `UInt16` initialized with the value of `one`, and uses this value in place of the original:
+하나의 특정 수치 타입을 다른 타입으로 변환하려면 기존 값을 써서 원하는 수치 타입을 초기화합니다. 아래에 있는 예제에서 `twoThousand` 상수는 `UInt16` 타입이고, `one` 상수는 `UInt8` 타입입니다. 이 둘은 직접 더할 수 없는데, 왜냐면 같은 타입이 아니기 때문입니다. 대신에 이 예제에서는 `UInt16(one)` 을 호출하여 새로운 `UInt16` 값을 만들고, `one` 값으로 초기화한 다음, 원래 값 대신 이 값을 사용합니다:
 
 ```swift
 let twoThousand: UInt16 = 2_000
@@ -314,65 +313,65 @@ let one: UInt8 = 1
 let twoThousandAndOne = twoThousand + UInt16(one)
 ```
 
-Because both sides of the addition are now of type `UInt16`, the addition is allowed. The output constant (`twoThousandAndOne`) is inferred to be of type `UInt16`, because it is the sum of two `UInt16` values.
+이제 양쪽 항이 모두 `UInt16` 타입이므로 덧셈이 가능합니다. 결과를 담은 상수 (`twoThousandAndOne`) 는 `UInt16` 타입으로 추론되는데  두 개의 `UInt16` 값의 합이기 때문입니다.
 
-`SomeType(ofInitialValue)` is the default way to call the initializer of a Swift type and pass in an initial value. Behind the scenes, `UInt16` has an initializer that accepts a `UInt8` value, and so this initializer is used to make a new `UInt16` from an existing `UInt8`. You can’t pass in any type here, however—it has to be a type for which `UInt16` provides an initializer. Extending existing types to provide initializers that accept new types (including your own type definitions) is covered in [Extensions]().
+`SomeType(ofInitialValue)` 는 Swift 에서 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방법입니다. 속을 들여다 보면, `UInt16` 타입은 `UInt8` 값을 받아들일 수 있는 초기자를 가지고 있어서, 이 초기자로 기존의 `UInt8` 값에서 새로운 `UInt16` 값을 만듭니다. 즉 여기서 아무 타입이나 전달할 수는 없고 — `UInt16` 의 초기자에 넘길 수 있는 타입만 가능합니다. 기존 타입의 초기자를 확장해서 (직접 정의한 타입도 포함하여) 새로운 타입을 받아들이게 하는 방법은 [확장 (Extensions) 기능]() 에서 다룹니다.
 
-#### Integer and Floating-Point Conversion
+#### 정수와 부동 소수점 수 사이의 형변환 (Integer and Floating-Point Conversion)
 
-Conversions between integer and floating-point numeric types must be made explicit:
+정수와 부동 소수점 수치 타입 사이의 형변환은 반드시 직접 드러내놓고 해야 합니다:
 
 ```swift
 let three = 3
 let pointOneFourOneFiveNine = 0.14159
 let pi = Double(three) + pointOneFourOneFiveNine
-// pi equals 3.14159, and is inferred to be of type Double
+// pi 는 3.14159 과 같고 Double 타입으로 추론됩니다.
 ```
 
-Here, the value of the constant `three` is used to create a new value of type `Double`, so that both sides of the addition are of the same type. Without this conversion in place, the addition would not be allowed.
+위에서는 상수 `three` 의 값으로 `Double` 타입의 새 값을 만들어서 덧셈의 양쪽 항이 같은 타입이 되게 만들었습니다. 이렇게 형변환을 하지 않았다면 덧셈을 할 수 없었을 것입니다.
 
-Floating-point to integer conversion must also be made explicit. An integer type can be initialized with a `Double` or `Float` value:
+부동 소수점 수에서 정수로 형변환 하는 것도 반드시 직접 해야 합니다. 정수 타입은 `Double` 이나 `Float` 값으로 초기화할 수 있습니다:
 
 ```swift
 let integerPi = Int(pi)
-// integerPi equals 3, and is inferred to be of type Int
+// integerPi 는 3과 같고 Int 타입으로 추론됩니다.
 ```
 
-Floating-point values are always truncated when used to initialize a new integer value in this way. This means that `4.75` becomes `4`, and `-3.9` becomes `-3`.
+이렇게 부동 소수점 수로 새로운 정수 값을 초기화하는 방식은 항상 수를 잘라냅니다. 이것은 `4.75` 는 `4` 가 되고 `-3.9` 는 `-3` 이 됨을 의미합니다.
 
-> The rules for combining numeric constants and variables are different from the rules for numeric literals. The literal value `3` can be added directly to the literal value `0.14159`, because number literals do not have an explicit type in and of themselves. Their type is inferred only at the point that they are evaluated by the compiler.
+> 수치 상수와 변수를 결합하는 규칙은 수치 리터럴 끼리의 규칙과는 다릅니다. 리터럴 값 `3` 은 리터럴 값 `0.14159` 와 직접 더해지는데, 왜냐면 수치 리터럴은 타입이 직접 지정된 것도 아니고 그 자체가 타입인 것도 아니기 때문입니다. 이들의 타입은 컴파일러가 값을 평가하는 순간에만 추론됩니다.
 
-### Type Aliases
+### 타입의 별칭 (Type Aliases)
 
-Type aliases define an alternative name for an existing type. You define type aliases with the `typealias` keyword.
+타입의 별칭은 기존 타입에 대한 대체 이름을 정의합니다. [^aliase] 타입 별칭을 정의하려면 `typealias` 키워드를 사용합니다.
 
-Type aliases are useful when you want to refer to an existing type by a name that is contextually more appropriate, such as when working with data of a specific size from an external source:
+타입 별칭은 문맥상 더 적절한 이름으로 기존 타입을 참조하고자 할 때 유용합니다, 가령 외부 소스에 있는 특정 크기의 데이터를 사용할 경우에 유용합니다: [^contextually]
 
 ```swift
 typealias AudioSample = UInt16
 ```
 
-Once you define a type alias, you can use the alias anywhere you might use the original name:
+타입 별칭을 한 번 정의하고 나면, 원래 이름을 사용할 수 있는 곳이면 어디든 별칭을 사용할 수 있습니다:
 
 ```swift
 var maxAmplitudeFound = AudioSample.min
-// maxAmplitudeFound is now 0
+// maxAmplitudeFound 는 이제 0 입니다.
 ```
 
-Here, `AudioSample` is defined as an alias for `UInt16`. Because it is an alias, the call to `AudioSample.min` actually calls `UInt16.min`, which provides an initial value of `0` for the `maxAmplitudeFound` variable.
+여기 보면 `AudioSample` 는 `UInt16` 에 대한 별칭으로 정의되었습니다. 별칭이므로 `AudioSample.min` 를 호출하는 것은 실제로 `UInt16.min` 를 호출하는 것을 의미하며, `maxAmplitudeFound` 변수에  초기 값으로 `0` 을 넘기게 됩니다.
 
-### Booleans
+### 불 타입 (Booleans)
 
-Swift has a basic Boolean type, called `Bool`. Boolean values are referred to as logical, because they can only ever be true or false. Swift provides two Boolean constant values, `true` and `false`:
+Swift 에 있는 기본 불 (Boolean) 타입은 `Bool` 입니다. 불 (Boolean) 값은 참과 거짓만이 가능하기 때문에 논리 값이라고 합니다. Swift 는 `true` 와 `false` 라는 두 개의 불 상수 값을 제공합니다:
 
 ```swift
 let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-The types of `orangesAreOrange` and `turnipsAreDelicious` have been inferred as `Bool` from the fact that they were initialized with Boolean literal values. As with `Int` and `Double` above, you don’t need to declare constants or variables as `Bool` if you set them to `true` or `false` as soon as you create them. Type inference helps make Swift code more concise and readable when it initializes constants or variables with other values whose type is already known.
+`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 `Bool` 로 추론되는데 이는 이들이 불 리터럴 값으로 초기화되었기 때문입니다. 앞서 살펴본 `Int` 와 `Double` 와 같이, 상수나 변수를 만들면서 바로 `true` 나 `false` 값을 설정하면, 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다.  타입 추론은 타입이 알려진 다른 값으로 상수나 변수를 초기화할 때 Swift 코드를 더 간결하고 읽기 편하게 만들어 줍니다. [^readable]  
 
-Boolean values are particularly useful when you work with conditional statements such as the `if` statement:
+불 (Boolean) 값은 `if` 문 같은 조건 구문을 사용할 때 특히 더 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
@@ -380,49 +379,49 @@ if turnipsAreDelicious {
 } else {
     print("Eww, turnips are horrible.")
 }
-// Prints "Eww, turnips are horrible."
+// "Eww, turnips are horrible." 를 출력합니다.
 ```
 
-Conditional statements such as the `if` statement are covered in more detail in [Control Flow]().
+`if` 문 같은 조건 구문에 대해서는 [흐름 제어(Control Flow)]() 에서 더 자세히 다룹니다. [^cover]
 
-Swift’s type safety prevents non-Boolean values from being substituted for `Bool`. The following example reports a compile-time error:
+Swift 의 타입 안전 검사기는 불이 아닌 값이 `Bool` 을 대신하는 것을 방지합니다. 아래에 보인 예는 컴파일-시간 에러를 보고합니다:
 
 ```swift
 let i = 1
 if i {
-    // this example will not compile, and will report an error
+    // 이 예제는 컴파일되지 않고 에러를 보고합니다.
 }
 ```
 
-However, the alternative example below is valid:
+하지만 아래 예제에 보인 대안은 유효합니다:
 
 ```swift
 let i = 1
 if i == 1 {
-    // this example will compile successfully
+    // 이 예제는 컴파일에 성공합니다.
 }
 ```
 
-The result of the `i == 1` comparison is of type Bool, and so this second example passes the type-check. Comparisons like `i == 1` are discussed in [Basic Operators]().
+`i == 1` 비교 연산의 결과는 `Bool` 타입이므로 두번째 예는 타입-검사를 통과합니다. `i == 1` 과 같은 비교 연산은 [기본 연산자 (Basic Operators)]() 에서 논의합니다.
 
-As with other examples of type safety in Swift, this approach avoids accidental errors and ensures that the intention of a particular section of code is always clear.
+Swift 에 있는 다른 타입 검사기의 예들과 마찬가지로 이러한 접근 방식은 실수로 인한 에러를 방지하고 특정 코드 영역의 의도가 항상 명확히 드러나도록 만들어 줍니다.
 
-### Tuples
+### 튜플 (Tuples)
 
-Tuples group multiple values into a single compound value. The values within a tuple can be of any type and do not have to be of the same type as each other.
+튜플은 여러 개의 값을 그룹지어서 단일 합성 값으로 만듭니다. 튜플안에는 어떤 타입의 값이라도 넣을 수 있으며서로 같은 타입일 필요도 없습니다.
 
-In this example, `(404, "Not Found")` is a tuple that describes an HTTP status code. An HTTP status code is a special value returned by a web server whenever you request a web page. A status code of `404 Not Found` is returned if you request a webpage that doesn’t exist.
+다음의 예제에서 `(404, "Not Found")` 는 HTTP 상태 코드를 나타내는 튜플입니다. HTTP 상태 코드는 웹 페이지를 요청할 때마다 웹 서버가 반환하는 특수한 값입니다. `404 Not Found` 라는 상태 코드는 요청한 웹페이지가 없는 경우에 반환됩니다.
 
 ```swift
 let http404Error = (404, "Not Found")
 // http404Error is of type (Int, String), and equals (404, "Not Found")
 ```
 
-The `(404, "Not Found")` tuple groups together an `Int` and a `String` to give the HTTP status code two separate values: a number and a human-readable description. It can be described as “a tuple of type `(Int, String)`”.
+`(404, "Not Found")` 라는 튜플은 `Int` 와 `String` 을 그룹지어서 두 개의 별개의 값을 HTTP 상태코드로 제공할 수 있게 합니다: 수 하나와 사람이 읽을 수 있는 설명 한 가지가 그것입니다. 이는 “`(Int, String)` 타입으로된 튜플” 이라고 묘사할 수 있습니다.
 
-You can create tuples from any permutation of types, and they can contain as many different types as you like. There’s nothing stopping you from having a tuple of type `(Int, Int, Int)`, or `(String, Bool)`, or indeed any other permutation you require.
+튜플을 만들 때 타입의 순서는 아무래도 상관이 없으며 원하는 만큼 많은 다른 종류의 타입을 넣어도 됩니다. `(Int, Int, Int)` 타입의 튜플을 만들던 아니면 `(String, Bool)` 을 만들던 이것도 아니면 정말로 원하는 대로 아무 순서로 된 것을 만들던 어떠한 제한도 없습니다.
 
-You can decompose a tuple’s contents into separate constants or variables, which you then access as usual:
+튜플의 내용은 별개의 상수와 변수로 분해할 수 있으며 이렇게 해서 평소 사용하던 방식대로 접근할 수도 있습니다: [^decompose]
 
 ```swift
 let (statusCode, statusMessage) = http404Error
@@ -432,7 +431,7 @@ print("The status message is \(statusMessage)")
 // Prints "The status message is Not Found"
 ```
 
-If you only need some of the tuple’s values, ignore parts of the tuple with an underscore (`_`) when you decompose the tuple:
+튜플의 값 중에서 일부만 필요할 경우 튜플을 분해할 때 무시할 부분에 밑줄 (`_`) 기호를 사용하면 됩니다:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
@@ -440,7 +439,7 @@ print("The status code is \(justTheStatusCode)")
 // Prints "The status code is 404"
 ```
 
-Alternatively, access the individual element values in a tuple using index numbers starting at zero:
+그 대신에 튜플에 있는 각 개별 요소의 값에 접근하고 싶으면 0 부터 시작하는 인덱스 값을 사용하면 됩니다:
 
 ```swift
 print("The status code is \(http404Error.0)")
@@ -449,13 +448,13 @@ print("The status message is \(http404Error.1)")
 // Prints "The status message is Not Found"
 ```
 
-You can name the individual elements in a tuple when the tuple is defined:
+튜플을 정의할 때 튜플에 있는 개별 요소에 이름을 줄 수도 있습니다:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
 ```
 
-If you name the elements in a tuple, you can use the element names to access the values of those elements:
+튜플의 요소에 이름을 지정하면 요소의 이름을 사용하여 그 요소의 값에 접근할 수 있습니다:
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
@@ -464,11 +463,11 @@ print("The status message is \(http200Status.description)")
 // Prints "The status message is OK"
 ```
 
-Tuples are particularly useful as the return values of functions. A function that tries to retrieve a web page might return the `(Int, String)` tuple type to describe the success or failure of the page retrieval. By returning a tuple with two distinct values, each of a different type, the function provides more useful information about its outcome than if it could only return a single value of a single type. For more information, see [Functions with Multiple Return Values]().
+튜플은 특히 함수의 반환 값으로 유용합니다. 웹 페이지를 검색하려고 하는 함수는 페이지 검색이 성공했는지 실패했는지 나타내기 위해 `(Int, String)` 튜플 타입으로 반환할 수도 있습니다. 두 개의 다른 타입으로 된 두 개의 값을 가지는 튜플로 반환하면, 이 함수는 한 가지 타입으로 된 한 개의 값만 반환할 때보다 더 유용한 정보를 제공할 수 있습니다. 더 많은 정보는 [여러 반환 값을 가지는 함수 (Functions with Multiple Return Values)]() 에서 볼 수 있습니다.
 
-> Tuples are useful for temporary groups of related values. They are not suited to the creation of complex data structures. If your data structure is likely to persist beyond a temporary scope, model it as a class or structure, rather than as a tuple. For more information, see [Classes and Structures]().
+> 튜플은 관련 있는 값들을 임시로 그룹지을 때 유용합니다. 복잡한 데이터 구조를 만드는데는 알맞지 않습니다. [^suite] 만약 데이터 구조가 임시 영역을 넘어서 유지되어야 할 경우 튜플 보다는 클래스 (객체 타입) 이나 구조 타입으로 모델을 만들도록 합니다. 더 많은 정보는 [클래스와 구조 타입 (Classes and Structures)]() 에서 볼 수 있습니다.
 
-### Optionals
+### 옵셔널 (Optionals)
 
 You use optionals in situations where a value may be absent. An optional represents two possibilities: Either there is a value, and you can unwrap the optional to access that value, or there isn’t a value at all.
 
@@ -508,7 +507,7 @@ var surveyAnswer: String?
 
 > Swift’s `nil` is not the same as `nil` in Objective-C. In Objective-C, `nil` is a pointer to a nonexistent object. In Swift, nil is not a pointer—it is the absence of a value of a certain type. Optionals of any type can be set to `nil`, not just object types.
 
-#### If Statements and Forced Unwrapping
+#### If 조건문 (Statements) 과 강제 풀기 (Forced Unwrapping)
 
 You can use an `if` statement to find out whether an optional contains a value by comparing the optional against `nil`. You perform this comparison with the “equal to” operator (`==`) or the “not equal to” operator (`!=`).
 
@@ -534,7 +533,7 @@ For more on the `if` statement, see [Control Flow]().
 
 > Trying to use `!` to access a nonexistent optional value triggers a runtime error. Always make sure that an optional contains a non-`nil` value before using `!` to force-unwrap its value.
 
-#### Optional Binding
+#### 옵셔널 연결 (Optional Binding)
 
 You use optional binding to find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable. Optional binding can be used with `if` and `while` statements to check for a value inside an optional, and to extract that value into a constant or variable, as part of a single action. `if` and `while` statements are described in more detail in [Control Flow]().
 
@@ -585,7 +584,7 @@ if let firstNumber = Int("4") {
 
 > Constants and variables created with optional binding in an `if` statement are available only within the body of the `if` statement. In contrast, the constants and variables created with a `guard` statement are available in the lines of code that follow the `guard` statement, as described in [Early Exit]().
 
-#### Implicitly Unwrapped Optionals
+#### 저절로 풀리는 옵셔널 (Implicitly Unwrapped Optionals)
 
 As described above, optionals indicate that a constant or variable is allowed to have “no value”. Optionals can be checked with an `if` statement to see if a value exists, and can be conditionally unwrapped with optional binding to access the optional’s value if it does exist.
 
@@ -629,7 +628,7 @@ if let definiteString = assumedString {
 
 > Do not use an implicitly unwrapped optional when there is a possibility of a variable becoming `nil` at a later point. Always use a normal optional type if you need to check for a `nil` value during the lifetime of a variable.
 
-### Error Handling
+### 에러 처리 (Error Handling)
 
 You use error handling to respond to error conditions your program may encounter during execution.
 
@@ -680,11 +679,11 @@ If no error is thrown, the `eatASandwich()` function is called. If an error is t
 
 Throwing, catching, and propagating errors is covered in greater detail in [Error Handling]().
 
-### Assertions
+### 단언 (Assertions) 구문
 
 In some cases, it is simply not possible for your code to continue execution if a particular condition is not satisfied. In these situations, you can trigger an assertion in your code to end code execution and to provide an opportunity to debug the cause of the absent or invalid value.
 
-#### Debugging with Assertions
+#### 단언 구문으로 디버깅하기 (Debugging with Assertions)
 
 An assertion is a runtime check that a Boolean condition definitely evaluates to `true`. Literally put, an assertion “asserts” that a condition is true. You use an assertion to make sure that an essential condition is satisfied before executing any further code. If the condition evaluates to `true`, code execution continues as usual; if the condition evaluates to `false`, code execution ends, and your app is terminated.
 
@@ -708,7 +707,7 @@ assert(age >= 0)
 
 > Assertions are disabled when your code is compiled with optimizations, such as when building with an app target’s default Release configuration in Xcode.
 
-#### When to Use Assertions
+#### 언제 단언 구문을 사용하는가 (When to Use Assertions)
 
 Use an assertion whenever a condition has the potential to be false, but must definitely be true in order for your code to continue execution. Suitable scenarios for an assertion check include:
 
@@ -753,3 +752,53 @@ See also [Subscripts]() and [Functions]().
 [^string-interpolation]: 'string interpolation'은 '문자열 삽입 구문'으로 옮깁니다.
 
 [^escape]: 이스케이프 문자는 그 다음에 오는 문자가 가지는 특별한 의미를 무시하는 단일 문자입니다. [이스케이프 문자](https://msdn.microsoft.com/ko-kr/library/aa559665.aspx)
+
+[^integer]: 상황에 따라서 'integer' 를 그냥 '정수'로도 '정수 타입'으로도 옮깁니다.
+
+[^naming]: 'naming'은 '이름짓기'로 옮깁니다.
+
+[^convention]: 'convention'은 '규칙'으로 옮깁니다. 이것도 상황에 따라 달라질 것 같습니다.
+
+[^native-word-size]: 'native word size'는 '내장 워드 크기'로 옮깁니다.
+
+[^consistency]: 'consistency'는 '일관성'으로 옮깁니다.
+
+[^interoperability]: 'interoperability'는 '상호 호환성'으로 옮깁니다. 말을 좀 더 부드럽게 다음을 필요가 있습니다.
+
+[^mismatch]: 'mismatch'를 불일치하다라고 옮기면, 자연히 'match'는 일치하다라고 옮기는 것이 좋을 수 있을 것 같습니다.
+
+[^appropriate]: 'appropriate'은 때에 따라서 '적당한' 또는 '적절한'으로 옮깁니다.
+
+[^literal]: 'literal'는 '문자 그대로'라는 의미를 가지고 있습니다. 일단은 그냥 '리터럴'로 옮깁니다.
+
+[^expression]: 'expression'는 '수식' 또는 '표현식'으로 옮깁니다. 일단 '수식'으로만 해 봅니다.
+
+[^context]: 여기서는 'context' 를 '문맥'으로 옮겼습니다. 좀 더 생각해 봅니다.
+
+[^numeric]: 여기서는 일단 'numeric' 을 '수치 값'으로 옮겼습니다.
+
+[^base-number]: 'base number'는 '가수'로 옮겨지는데 마음에 안 듭니다. 좀 더 생각해 봅니다.
+
+[^readability]: 'readability'는 '가독성'으로 옮깁니다.
+
+[^extra-formatting]: 'extra formatting'는 '추가 서식'으로 옮깁니다.
+
+[^extra]: 'extra'도 다양하게 옮길 수 있는데 좀 더 생각합니다. 일단 '여분'으로 옮깁니다. '별도'라는 말도 좋을 것 같습니다.
+
+[^underlying]: 'underlying'은 '(밑에 깔려있는) 원래의'라는 말로 옮깁니다.
+
+[^opt-in approach]: 'opt-in'은 '직접 선택'하는 것을 의미하며 이런 직접 선택 접근 방법은 수치 타입 변환이 필요할 경우에 각 경우마다 타입 변환을 명시해주는 방식을 뜻하는 듯합니다. 즉, 컴파일러가 임의로 변환하지 않고, 변환이 필요한 경우 직접 어떻게 변환할지를  컴파일러에게 알려주는 방식을 말하는 것 같습니다.
+
+[^explicit]: 형용사로써 'explicit' 은 '명백한'으로도 옮길 수 있습니다.
+
+[^aliase]: 'aliase'는 '별칭'으로 옮깁니다.
+
+[^contextually]: 'contextually'는 '문맥상'으로 옮깁니다.
+
+[^readable]: 'readable'은 '읽기 편하게'로 옮깁니다.
+
+[^cover]: 'cover'는 '다룬다'고 옮깁니다.
+
+[^decompose]: 'decompose'는 '분해하다'로 옮깁니다.
+
+[^suite]: 'suite'는 '알맞다'로 옮깁니다.

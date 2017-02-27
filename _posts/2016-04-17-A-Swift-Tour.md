@@ -768,19 +768,19 @@ anyCommonElements([1, 2, 3], [3])
 
 [^adopt]: 일단 'adopt' 라는 표현을 '받아들이다'라고 번역합니다. Swift 에서는 클래스는 상위 클래스로부터 상속 받는다는 표현을 사용하고 프로토콜의 경우 받아들인다는 표현으로 구분합니다. 프로토콜을 받아들이는 것은 C++ 에서  순수 추상 클래스 중의 하나인 프로토콜 클래스를 상속받는 것과 유사한 개념입니다.
 
-[^raw]: 'raw value' 는 마음에는 안들지만 일단 '원시 값' 으로 번역합니다. 나중에 더 좋은 단어가 생각나면 바꿀 예정입니다.
+[^raw-value]: 'raw value' 는 마음에는 안들지만 일단 '원시 값' 으로 번역합니다. 나중에 더 좋은 단어가 생각나면 바꿀 예정입니다.
 
 [^compile-time]: 'compile time' 은 '컴파일 시간'으로 옮깁니다. 하나의 새로운 단어로 인식합니다.
 
 [^type]: 'type' 은 '타입' 이라고 옮깁니다. 하나의 새로운 단어로 인식합니다.
 
-[^explicitly]: 'explicitly' 는 '명시적 ' 또는 '직접'으로 옮깁니다. 이 부분은 다시 정리해야 합니다. 드러내놓고 라는 의미를 살리도록 합니다.
+[^explicitly]: 'explicitly' 는 '(드러내놓고) 직접'의 의미로 '직접'으로 옮깁니다.
 
 [^integer]: 'integer'는 '정수' 또는 '정수 타입'으로 옮깁니다.
 
-[^implicitly]: 'implicitly'는 보통 '암시적으로'라고 옮깁니다. 생각을 좀 해야 합니다. 드러내지 않고 라는 의미를 살리도록 합니다. Swift 는 강한 타입 언어 입니다.
+[^implicitly]: 'implicitly'는 '(은연 중에) 저절로'의 의미로 '저절로'라고 옮깁니다.
 
-[^array-dictionary]: 'array' 는 배열 타입, 'dictionary' 는 '사전 타입'으로 옮깁니다.
+[^array-dictionary]: 'array' 는 '배열 타입', 'dictionary' 는 '사전 타입'으로 옮깁니다.
 
 [^conditional-loop]: 'conditional' 은 '조건 구문' 또는 '조건문'으로 'loop' 는 '반복 구문' 또는 '반복문'으로 옮깁니다.
 
@@ -796,7 +796,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^collection]: 'collection' 은 '모듬 타입'으로 옮깁니다.
 
-[^label]: 'label' 은 '꼬리표'로 옮깁니다.
+[^label]: 'label' 은 '꼬리표'로 옮깁니다. '이름표'
 
 [^argument]: 'argument'는 '인자'로 옮깁니다. 
 
@@ -820,7 +820,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^setup]: 'setup'은 일단 '초기 설정'으로 옮깁니다.
 
-[^standard-root-class]: 'standard root class'는 '표준 루트 클래스'로 옮깁니다.
+[^standard-root-class]: 'standard root class'는 '표준 루트 클래스'로 옮깁니다. 'root' 는 그냥 '루트'로 합니다.
 
 [^override]: 'override'는 의미로 사용될 때는 '덮어 쓰다'로, 키워드로 사용될 때는 'override' 그대로 옮깁니다.
 
