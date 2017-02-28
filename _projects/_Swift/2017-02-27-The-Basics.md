@@ -606,9 +606,9 @@ let implicitString: String = assumedString // no need for an exclamation mark
 
 저절로 풀리는 옵셔널은 사용할 때마다 자동으로 풀리도록 그 옵셔널에 권한을 준 것으로 생각해도 됩니다. 옵셔널 타입을 선언할 때 타입 뒤에 느낌표를 붙이면 접근할 때만다 옵셔널 이름 뒤에 느낌표를 붙이지 않아도 됩니다.
 
-> If an implicitly unwrapped optional is `nil` and you try to access its wrapped value, you’ll trigger a runtime error. The result is exactly the same as if you place an exclamation mark after a normal optional that does not contain a value.
+> 저절로 풀리리 옵셔널이 `nil` 인데 이 값에 접근하려고 하면 실행 시간 에러가 발생합니다. 이 결과는 보통의 옵셔널이 값을 가지고 있지 않은데 느낌표를 붙였을 때와 정확히 같은 결과입니다.
 
-You can still treat an implicitly unwrapped optional like a normal optional, to check if it contains a value:
+저절로 풀리는 옵셔널을 마치 보통의 옵셔널처럼 사용할 수도 있는데 값이 있는지 검사하려면 다음처럼 하면 됩니다:
 
 ```swift
 if assumedString != nil {
@@ -617,7 +617,7 @@ if assumedString != nil {
 // Prints "An implicitly unwrapped optional string."
 ```
 
-You can also use an implicitly unwrapped optional with optional binding, to check and unwrap its value in a single statement:
+저절로 풀리는 옵셔널을 옵셔널 연결 구문과 함께 사용할 수도 있으며 하나의 구문으로 값을 검사하고 풀 수 있습니다.:
 
 ```swift
 if let definiteString = assumedString {
@@ -626,15 +626,15 @@ if let definiteString = assumedString {
 // Prints "An implicitly unwrapped optional string."
 ```
 
-> Do not use an implicitly unwrapped optional when there is a possibility of a variable becoming `nil` at a later point. Always use a normal optional type if you need to check for a `nil` value during the lifetime of a variable.
+> 나중에라도 변수가 `nil`이 될 가능성이 있는 경우 저절로 풀리는 옵셔널을 사용하지 않도록 합니다. 변수의 생명 주기 동안에 `nil` 값인지 검사할 필요가 있으면 항상 보통의 옵셔널 타입을 사용하도록 합니다.
 
-### 에러 처리 (Error Handling)
+### 에러 처리 (Error Handling) 구문
 
-You use error handling to respond to error conditions your program may encounter during execution.
+에러 처리 구문을 사용하면 프로그램 실행 중에 마주칠 수 있는 에러 조건들에 대응을 할 수 있습니다.
 
-In contrast to optionals, which can use the presence or absence of a value to communicate success or failure of a function, error handling allows you to determine the underlying cause of failure, and, if necessary, propagate the error to another part of your program.
+옵셔널은 값의 존재 유무를 사용해서 함수가 성공했는지 실패했는지를 알릴수 있다면, 이와는 반대로 에러 처리 구문은 실패의 근원이 되는 실마리를 판별하게 하고 필요하다면 에러를 프로그램의 다른 부분으로 전파합니다. [^underlying]
 
-When a function encounters an error condition, it throws an error. That function’s caller can then catch the error and respond appropriately.
+함수가 에러 조건을 만나게 되면 에러를 던집니다. 그 함수를 호출한 쪽에서는 에러를 포착해서 적절하게 응답 할 수 있습니다.
 
 ```swift
 func canThrowAnError() throws {
@@ -642,9 +642,9 @@ func canThrowAnError() throws {
 }
 ```
 
-A function indicates that it can throw an error by including the `throws` keyword in its declaration. When you call a function that can throw an error, you prepend the `try` keyword to the expression.
+함수가 에러를 던질 수 있음을 나타내려면 선언 부분에 `throws` 키워드를 넣어주면 됩니다. 에러를 던질 수 있는 함수를 호출할 때는 표현 구문 앞에 `try` 키워드를 붙입니다.
 
-Swift automatically propagates errors out of their current scope until they are handled by a `catch` clause.
+Swift 는 자동으로 현재 범위 밖으로 에러를 전파하는데 이 과정은 `catch` 절에서 처리가 될 때까지 계속됩니다.
 
 ```swift
 do {
@@ -655,9 +655,9 @@ do {
 }
 ```
 
-A `do` statement creates a new containing scope, which allows errors to be propagated to one or more `catch` clauses.
+`do` 구문은 에러를 하나 이상의 `catch` 절에 전파할 수 있는 새로운 포함 범위를 만듭니다.
 
-Here’s an example of how error handling can be used to respond to different error conditions:
+다음은 다양한 에러 조건에 응답하기 위해 에러 처리를 사용하는 예제입니다:
 
 ```swift
 func makeASandwich() throws {
@@ -673,23 +673,24 @@ do {
     buyGroceries(ingredients)
 }
 ```
-In this example, the `makeASandwich()` function will throw an error if no clean dishes are available or if any ingredients are missing. Because `makeASandwich()` can throw an error, the function call is wrapped in a `try` expression. By wrapping the function call in a do statement, any errors that are thrown will be propagated to the provided `catch` clauses.
 
-If no error is thrown, the `eatASandwich()` function is called. If an error is thrown and it matches the `SandwichError.outOfCleanDishes` case, then the `washDishes()` function will be called. If an error is thrown and it matches the `SandwichError.missingIngredients` case, then the `buyGroceries(_:)` function is called with the associated `[String]` value captured by the `catch` pattern.
+위의 예제에서 `makeASandwich()` 함수는 깨끗한 접시가 없거나 재료가 빠진 경우 에러를 던집니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에 함수 호출을 `try` 표현식에 넣습니다. 함수 호출을 `do` 구문으로 감싸면, 던져지는 모든 에러가 주어진 `catch` 절로 전파됩니다.
 
-Throwing, catching, and propagating errors is covered in greater detail in [Error Handling]().
+아무런 에러도 던져지지 않으면 `eatASandwich()` 함수가 호출됩니다. 던져진 에러가 `SandwichError.outOfCleanDishes` 와 일치하는 경우에는 `washDishes()` 함수가 호출됩니다. 던져진 함수가 `SandwichError.missingIngredients` 와 일치하면 `buyGroceries(_:)` 함수가 호출되는데, 이 때 `catch` 패턴으로 붙잡힌 관련 `[String]` 값을 가지고 호출합니다. [^captured]
+
+에러를 던지고, 포착하고, 전파하는 것에 대해서는 [에러 처리 (Error Handling) 구문]() 에서 아주 상세하게 다룹니다.
 
 ### 단언 (Assertions) 구문
 
-In some cases, it is simply not possible for your code to continue execution if a particular condition is not satisfied. In these situations, you can trigger an assertion in your code to end code execution and to provide an opportunity to debug the cause of the absent or invalid value.
+어떤 경우에는 특정 조건이 만족이 안될 경우 코드의 실행을 계속할 수 없는 경우가 있습니다. 이러한 상황일 때 단언 (Assertions) 구문을 써서 코드 실행을 종료하고 값이 없거나 잘못된 원인을 고칠 수 있는 기회를 제공할 수 있습니다. [^assertion] [^debug]
 
 #### 단언 구문으로 디버깅하기 (Debugging with Assertions)
 
-An assertion is a runtime check that a Boolean condition definitely evaluates to `true`. Literally put, an assertion “asserts” that a condition is true. You use an assertion to make sure that an essential condition is satisfied before executing any further code. If the condition evaluates to `true`, code execution continues as usual; if the condition evaluates to `false`, code execution ends, and your app is terminated.
+단언 (assertion) 구문은 불 (Boolean) 조건이 확실히 `true` 로 평가되는지 실행 시간에 검사합니다. 문자 그대로 단언 구문은 조건이 참이라고 “단언” 합니다. 단언 구문은 어떤 코드를 실행하기 전에 필수 조건들을 만족하는지 확인하는 용도로 사용합니다. 조건이 `true` 로 평가되면 코드가 평소대로 계속 실행되지만, 조건이 `false` 로 평가되면 코드 실행이 멈추고 앱이 종료됩니다.
 
-If your code triggers an assertion while running in a debug environment, such as when you build and run an app in Xcode, you can see exactly where the invalid state occurred and query the state of your app at the time that the assertion was triggered. An assertion also lets you provide a suitable debug message as to the nature of the assert.
+Xcode 에서 앱을 빌드하고 실행하는 경우 처럼 디버그 환경에서 실행하는 도중에 코드의 단언 구문이 작동하면, 정확하게 어디에서 상태가 잘못되었는지 볼 수 있고 단언 구문이 작동할 때의 앱 상태에 대해서 질의 (query) 를 할 수도 있습니다. [^query] 단언 구문은 또한 기본으로 내장된 특성을 이용하여 유용한 디버그 메시지를 제공하게 할 수도 있습니다.
 
-You write an assertion by calling the Swift standard library global `assert(_:_:file:line:)` function. You pass this function an expression that evaluates to `true` or `false` and a message that should be displayed if the result of the condition is `false`:
+단언 구문을 작성하려면 Swift 표준 라이브러러의 전역 함수인 `assert(_:_:file:line:)` 를 호출합니다. 이 함수에 `true` 나 `false` 로 평가할 수 있는 표현식과 조건의 결과가 `false` 이면 화면에 보여줄 메시지를 전달합니다:
 
 ```swift
 let age = -3
@@ -697,15 +698,15 @@ assert(age >= 0, "A person's age cannot be less than zero")
 // this causes the assertion to trigger, because age is not >= 0
 ```
 
-In this example, code execution will continue only if `age >= 0` evaluates to `true`, that is, if the value of `age` is non-negative. If the value of `age` is negative, as in the code above, then `age >= 0` evaluates to `false`, and the assertion is triggered, terminating the application.
+위의 예제는 `age >= 0` 가 `true` 인 경우, 즉 `age` 의 값이 음수가 아닌 경우에만 코드 실행이 계속 됩니다. 만약 `age` 의 값이 음수이면 위의 코드에서 보듯 `age >= 0` 가 `false` 로 평가되고 단언 구문이 작동해서 응용 프로그램을 종료합니다.
 
-The assertion message can be omitted if desired, as in the following example:
+단언 구문에서 메시지는 원할 경우 다음과 같이 생략할 수 있습니다:
 
 ```swift
 assert(age >= 0)
 ```
 
-> Assertions are disabled when your code is compiled with optimizations, such as when building with an app target’s default Release configuration in Xcode.
+> 단언 구문은 Xcode 에서 앱을 빌드할 때 Release 설정으로 빌드하는 경우 처럼 최적화 옵션으로 컴파일 할 때는 비활성화 됩니다. [^disabled]
 
 #### 언제 단언 구문을 사용하는가 (When to Use Assertions)
 
@@ -824,3 +825,15 @@ See also [Subscripts]() and [Functions]().
 [^early-exit]: 'early exit'를 '조기 종료'로 옮겼는데 다시 생각해 봅니다.
 
 [^implicitly-unwrapped-optional]: 'implicitly unwrapped optional'은 '저절로 풀리는 옵셔널'이라고 옮깁니다.
+
+[^underlying]: 'underlying'은 '근원이 되는'으로 옮깁니다.
+
+[^captured]: 'captured'는 '붙잡힌'으로 옮깁니다.
+
+[^assertion]: 'assertion'은 '단언' 또는 '단언 구문'으로 옮깁니다.
+
+[^debug]: 'debug'는 때에 따라서 '고치다'로 옮기기도 합니다.
+
+[^query]: 'query'는 '질의'로 옮깁니다.
+
+[^disabled]: 'disabled'는 일단 '비활성화'로 옮깁니다. 이 문장은 Xcode 옵션을 보고 좀 더 정확한 표현을 쓸 필요가 있습니다.
