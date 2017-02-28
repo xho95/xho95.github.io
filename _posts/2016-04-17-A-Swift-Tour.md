@@ -749,6 +749,8 @@ anyCommonElements([1, 2, 3], [3])
 
 * [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
 
+* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/grammar/basic/2016/04/24/The-Basics.html)
+
 ### 변경 사항
 
 * **2017.02.27.** Swift 3.1 버전에 대한 내용으로 수정하고 번역해서 정리했습니다.

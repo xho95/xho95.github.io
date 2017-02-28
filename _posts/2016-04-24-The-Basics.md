@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 기초(The Basics)"
+title:  "Swift 3.1: 기초 (The Basics)"
 date:   2016-04-24 19:45:00 +0900
 categories: Swift Grammar Basic
 ---
