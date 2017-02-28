@@ -469,25 +469,25 @@ print("The status message is \(http200Status.description)")
 
 ### 옵셔널 (Optionals)
 
-You use optionals in situations where a value may be absent. An optional represents two possibilities: Either there is a value, and you can unwrap the optional to access that value, or there isn’t a value at all.
+옵셔널은 값이 아예 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 나타냅니다: 값이 있어서 옵셔널을 풀고 그 값에 접근할 수 있거나 아니면 값 자체가 아예 없는 경우입니다.
 
-> The concept of optionals doesn’t exist in C or Objective-C. The nearest thing in Objective-C is the ability to return `nil` from a method that would otherwise return an object, with `nil` meaning “the absence of a valid object.” However, this only works for objects—it doesn’t work for structures, basic C types, or enumeration values. For these types, Objective-C methods typically return a special value (such as `NSNotFound`) to indicate the absence of a value. This approach assumes that the method’s caller knows there is a special value to test against and remembers to check for it. Swift’s optionals let you indicate the absence of a value for any type at all, without the need for special constants.
+> 옵셔널이라는 개념은 C 나 Objective-C 에는 없는 것입니다. [^concept] Objective-C 에서 그나마 가장 가까운 것은 객체를 반환하도록 하는 메소드가 `nil` 을 반환할 수 있다는 정도인데, 여기서 `nil` 은 “유효한 객체가 없음” 을 의미합니다. 하지만 이것은 객체에서만 동작하며 — 구조 타입이나 기본 C 타입들 또는 열거 타입의 값에서는 동작하지 않습니다. 이들 타입의 경우  Objective-C 메소드에서 보통 (`NSNotFound` 같은) 특별한 값을 반환하는 것으로 값이 없는 상태를 나타냅니다. [^typically] 이런 접근 방식은 메소드를 호출하는 쪽에서 테스트를 위한 특별한 값이 있는 지도 알아야 하고 그 값을 검사해야하는 것도 알고 있다고 가정합니다. Swift 의 옵셔널은 모든 타입에 대해서 값이 없는 상태를 나타낼 수 있고 특별한 상수도 따로 필요하지 않습니다.
 
-Here’s an example of how optionals can be used to cope with the absence of a value. Swift’s `Int` type has an initializer which tries to convert a `String` value into an `Int` value. However, not every string can be converted into an integer. The string `"123"` can be converted into the numeric value `123`, but the string `"hello, world"` does not have an obvious numeric value to convert to.
+여기에 옵셔널을 써서 어떻게 값이 없는 상태를 다룰 수 있는지를 보이도록 합니다. [^cope] Swift 의 `Int` 타입에는 `String` 값을 받아서 `Int` 값으로 형변환하는 초기자가 있습니다. 하지만 모든 문자열을 정수로 형변환할 수는 없습니다. 문자열 `"123"` 은 수치 값 `123` 으로 형변환 할 수 있지만 문자열 `"hello, world"` 는 형변환을 할 수치 값이 딱히 없습니다.
 
-The example below uses the initializer to try to convert a `String` into an `Int`:
+아래의 예제는 초기자를 사용하여 `String` 을 `Int` 로 변환하고 있습니다:
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
-// convertedNumber is inferred to be of type "Int?", or "optional Int"
+// convertedNumber 는 "Int?" 타입 또는 "optional Int" 로 추론됩니다.
 ```
 
-Because the initializer might fail, it returns an optional Int, rather than an Int. An optional `Int` is written as `Int?`, not `Int`. The question mark indicates that the value it contains is optional, meaning that it might contain some `Int` value, or it might contain no value at all. (It can’t contain anything else, such as a `Bool` value or a `String` value. It’s either an `Int`, or it’s nothing at all.)
+초기자는 실패할 수도 있기 때문에 `Int` 가 아닌 옵셔널 `Int` 를 반환합니다. 옵셔널 `Int` 는 `Int` 가 아니라 `Int?` 라고 씁니다. 물음표는 그 값이 옵셔널을 담고 있음을 표시하며, `Int` 값을 가지고 있거나 아니면 값 자체가 아예 없음을 의미합니다. (그 외의 다른 것은 아예 안되므로 `Bool` 값이나  `String` 값 같은 것을 담을 수는 없습니다. 오직 `Int` 이거나 아니면 값이 아예 없는 것입니다.)
 
 #### nil
 
-You set an optional variable to a valueless state by assigning it the special value `nil`:
+옵셔널 변수에 값이 없는 상태를 설정하려면 특별한 값인 `nil` 을 할당합니다: [^nil]
 
 ```swift
 var serverResponseCode: Int? = 404
@@ -496,22 +496,22 @@ serverResponseCode = nil
 // serverResponseCode now contains no value
 ```
 
-> `nil` cannot be used with nonoptional constants and variables. If a constant or variable in your code needs to work with the absence of a value under certain conditions, always declare it as an optional value of the appropriate type.
+> `nil` 은 옵셔널이 아닌 상수 및 변수와는 사용할 수 없습니다. 코드에 있는 상수나 변수가 특정 상황에서 값이 없는 상태를 나타내야 할 경우에는 항상 적당한 타입에 옵셔널 값으로 선언하도록 합니다.
 
-If you define an optional variable without providing a default value, the variable is automatically set to `nil` for you:
+옵셔널 변수를 정의할 때 기본 값을 제공하지 않으면 그 변수는 자동으로 `nil` 로 설정됩니다:
 
 ```swift
 var surveyAnswer: String?
 // surveyAnswer is automatically set to nil
 ```
 
-> Swift’s `nil` is not the same as `nil` in Objective-C. In Objective-C, `nil` is a pointer to a nonexistent object. In Swift, nil is not a pointer—it is the absence of a value of a certain type. Optionals of any type can be set to `nil`, not just object types.
+> Swift 의 `nil` 은 Objective-C 의 `nil` 과 같은 것이 아닙니다. Objective-C 에서의 `nil` 은 존재하지 않는 객체에 대한 포인터입니다. Swift 에서는 `nil` 은 포인터가 아닙니다 — 이것은 특정 타입의 값이 없음을 나타내는 상태입니다. [^swift-nil] 객체 타입 뿐만 아니라 모든 타입의 옵셔널에 `nil` 을 설정할 수 있습니다.
 
-#### If 조건문 (Statements) 과 강제 풀기 (Forced Unwrapping)
+#### If 문 (Statements) 과 강제로 풀기 (Forced Unwrapping)
 
-You can use an `if` statement to find out whether an optional contains a value by comparing the optional against `nil`. You perform this comparison with the “equal to” operator (`==`) or the “not equal to” operator (`!=`).
+`if` 문을 사용하면 옵셔널을 `nil` 과 비교함으로써 옵셔널이 값을 가지고 있는 지를 알아낼 수 있습니다. 이 비교 연산은 “같음” 연산자 (`==`) 나 “같지 않음” 연산자 (`!=`) 를 써서 수행합니다. [^equal-to-not-equal-to]
 
-If an optional has a value, it is considered to be “not equal to” `nil`:
+옵셔널이 값을 가지고 있으면 `nil` 과는 “같지 않음” 이 됩니다:
 
 ```swift
 if convertedNumber != nil {
@@ -520,7 +520,7 @@ if convertedNumber != nil {
 // Prints "convertedNumber contains some integer value."
 ```
 
-Once you’re sure that the optional does contain a value, you can access its underlying value by adding an exclamation mark (`!`) to the end of the optional’s name. The exclamation mark effectively says, “I know that this optional definitely has a value; please use it.” This is known as forced unwrapping of the optional’s value:
+옵셔널이 값을 가지고 있다고 확신하는 경우에는 옵셔널 이름의 끝에 느낌표 (`!`) 를 붙여서 원래의 값에 접근할 수 있습니다. 느낌표는 사실상 다음과 같이 말하는 것입니다. “이 옵셔널은 확실히 값을 가지고 있어, 그러니 그것을 사용해.” 이것을 가지고 옵셔널 값을 강제로 푼다고 합니다:
 
 ```swift
 if convertedNumber != nil {
@@ -529,15 +529,15 @@ if convertedNumber != nil {
 // Prints "convertedNumber has an integer value of 123."
 ```
 
-For more on the `if` statement, see [Control Flow]().
+`if` 문에 대해 더 알고 싶으면 [흐름 제어 (Control Flow)]() 를 보면 됩니다.
 
-> Trying to use `!` to access a nonexistent optional value triggers a runtime error. Always make sure that an optional contains a non-`nil` value before using `!` to force-unwrap its value.
+> `!` 를 사용해서 존재하지 않는 옵셔널 값에 접근하려고 하면 실행 시간에 에러가 발생합니다. [^runtime] 항상 먼저 옵셔널이 `nil`이 아닌 값을 가지고 있는지 확인한 다음에 `!` 를 사용해서 값을 강제로 풀어야 합니다.
 
-#### 옵셔널 연결 (Optional Binding)
+#### 옵셔널 연결 (Optional Binding) 구문
 
-You use optional binding to find out whether an optional contains a value, and if so, to make that value available as a temporary constant or variable. Optional binding can be used with `if` and `while` statements to check for a value inside an optional, and to extract that value into a constant or variable, as part of a single action. `if` and `while` statements are described in more detail in [Control Flow]().
+옵셔널 연결 (optional binding) 구문을 사용하면 옵셔널이 값을 가지고 있는지 확인하고 있으면 그 값을 임시 상수나 변수에서 쓸 수 있도록 만들 수 있습니다. [^binding] 옵셔널 연결 구문은 `if` 및 `while` 문과 함께 사용해서 단 한번의 명령으로 옵셔널 안에 있는 값을 검사하고 그 값을 상수나 변수로 추출할 수 있습니다. `if` 문과 `while` 문에 대해서는 [흐름 제어 (Control Flow)]() 에서 더 자세하게 설명하고 있습니다.
 
-Write an optional binding for an `if` statement as follows:
+`if` 문에서 옵셔널 연결 구문을 사용하는 방법은 다음과 같습니다:
 
 ```
 if let constantName = someOptional {
@@ -545,7 +545,7 @@ if let constantName = someOptional {
 }
 ```
 
-You can rewrite the `possibleNumber` example from the [Optionals]() section to use optional binding rather than forced unwrapping:
+[Optionals]() 에 있는 `possibleNumber` 예제를 강제 풀기 (forced unwrapping) 방식이 아니라 옵셔널 연결 (optional binding) 구문을 사용해서 다시 작성하면 다음과 같습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -556,15 +556,15 @@ if let actualNumber = Int(possibleNumber) {
 // Prints ""123" has an integer value of 123"
 ```
 
-This code can be read as:
+이 코드는 다음과 같은 뜻을 가지고 있습니다:
 
-“If the optional `Int` returned by `Int(possibleNumber)` contains a value, set a new constant called `actualNumber` to the value contained in the optional.”
+“`Int(possibleNumber)` 가 반환하는 옵셔널 `Int` 가 값을 가지고 있으면 옵셔널이 갖고 있는 값을 `actualNumber` 라는 새로운 상수에 설정합니다.”
 
-If the conversion is successful, the `actualNumber` constant becomes available for use within the first branch of the `if` statement. It has already been initialized with the value contained within the optional, and so there is no need to use the `!` suffix to access its value. In this example, `actualNumber` is simply used to print the result of the conversion.
+형변환이 성공하면 `actualNumber` 상수는 `if` 구문의 첫번째 괄호 영역에서 사용할 수 있게 됩니다. 이 값은 이미 옵셔널이 가진 값으로 초기화가 되었으므로 `!` 접미사를 써서 접근할 필요가 없습니다. 이 예제에서는 `actualNumber` 는 단순히 형변환 결과를 출력하는데 사용하고 있습니다.
 
-You can use both constants and variables with optional binding. If you wanted to manipulate the value of actualNumber within the first branch of the if statement, you could write if var actualNumber instead, and the value contained within the optional would be made available as a variable rather than a constant.
+옵셔널 연결 구문에는 상수와 변수 둘다 사용가능합니다. `if` 구문의 첫번째 괄호 영역에서 `actualNumber` 값을 조절하고 싶으면, `if var actualNumber` 라고 고쳐서 옵셔널이 갖고 있는 값을 상수가 아니라 변수에 담도록 만들어야 합니다. [^manipulate]
 
-You can include as many optional bindings and Boolean conditions in a single `if` statement as you need to, separated by commas. If any of the values in the optional bindings are `nil` or any Boolean condition evaluates to `false`, the whole `if` statement’s condition is considered to be `false`. The following `if` statements are equivalent:
+하나의 `if` 문에는 원하는 만큼 많은 옵셔널 연결 구문과 불 조건문을 넣을 수 있으며, 이 때 쉼표로 서로를 구분합니다. 옵셔널 연결 구문에 있는 값이 하나라도 `nil` 이거나 불 조건문의 평가 값이 하나라도 `false` 라면, `if` 문 전체의 조건이 `false` 가 됩니다. 다음에 나타낸 두 개의 `if` 문은 서로 동일한 의미입니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
@@ -582,19 +582,19 @@ if let firstNumber = Int("4") {
 // Prints "4 < 42 < 100"
 ```
 
-> Constants and variables created with optional binding in an `if` statement are available only within the body of the `if` statement. In contrast, the constants and variables created with a `guard` statement are available in the lines of code that follow the `guard` statement, as described in [Early Exit]().
+> `if` 문 안에 있는 옵셔널 연결 구문에서 만들어진 상수와 변수는 `if` 구문의 본체 영역 안에서만 사용할 수 있습니다. 이와는 반대로 `guard` 문에서 만들어진 변수는 `guard` 이후의 영역에서도 사용이 가능한데, 이 내용은 [조기 종료 (Early Exit)]() 에서 설명합니다. [^early-exit]
 
 #### 저절로 풀리는 옵셔널 (Implicitly Unwrapped Optionals)
 
-As described above, optionals indicate that a constant or variable is allowed to have “no value”. Optionals can be checked with an `if` statement to see if a value exists, and can be conditionally unwrapped with optional binding to access the optional’s value if it does exist.
+위에서 설명했듯이 옵셔널은 상수나 변수가 “값이 없음” 일 수도 있음을 나타냅니다. 옵셔널은 `if` 문으로 값이 있는지 검사할 수도 있고, 옵셔널 연결 구문으로 값이 있으면 풀어서 옵셔널 값에 접근할 수도 있습니다.
 
-Sometimes it is clear from a program’s structure that an optional will always have a value, after that value is first set. In these cases, it is useful to remove the need to check and unwrap the optional’s value every time it is accessed, because it can be safely assumed to have a value all of the time.
+때에 따라서 프로그램의 구조상 옵셔널 변수가 처음 설정되고 나면, 항상 값이 있음을 알 수 있는 경우가 있습니다. 이러한 경우에는 접근할 때마다 값을 풀고 검사할 필요가 없는 옵셔널을 사용하는 것이 편리한데, 언제나 값이 있다고 가정해도 안전하기 때문입니다.
 
-These kinds of optionals are defined as implicitly unwrapped optionals. You write an implicitly unwrapped optional by placing an exclamation mark (`String!`) rather than a question mark (`String?`) after the type that you want to make optional.
+이러한 종류의 옵셔널을 저절로 풀리는 옵셔널이라고 정의합니다. [^implicitly-unwrapped-optional] 저절로 풀리는 옵셔널을 만들려면 옵셔널로 만들 타입 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 를 붙여주면 됩니다.
 
-Implicitly unwrapped optionals are useful when an optional’s value is confirmed to exist immediately after the optional is first defined and can definitely be assumed to exist at every point thereafter. The primary use of implicitly unwrapped optionals in Swift is during class initialization, as described in [Unowned References and Implicitly Unwrapped Optional Properties]().
+저절로 풀리는 옵셔널은 옵셔널 값이 처음 정의된 직후에 존재하는 것이 확인되고, 이후의 모든 시점에서 존재한다고 확실히 가정할 수 있는 경우, 유용하게 사용할 수 있습니다. Swift 에서 저절로 풀리는 옵셔널이 주로 사용되는 곳은 클래스의 초기화에서인데, 이에 대해서는 [소유자가 없는 참조 및 저절로 풀리는 옵셔널 속성 (Unowned References and Implicitly Unwrapped Optional Properties)]() 에서 설명합니다.
 
-An implicitly unwrapped optional is a normal optional behind the scenes, but can also be used like a nonoptional value, without the need to unwrap the optional value each time it is accessed. The following example shows the difference in behavior between an optional string and an implicitly unwrapped optional string when accessing their wrapped value as an explicit `String`:
+저절로 풀리는 옵셔널은 원래는 보통의 옵셔널이지만, 마치 옵셔널이 아닌 값처럼 쓸 수 있어서 옵셔널 값을 풀 필요없이 값에 접근할 수 있습니다. 다음의 예제는 옵셔널 문자열과 저절로 풀리는 옵셔널 문자열이 `String` 타입으로 지정한 값에 접근할 때의 동작 방식이 어떻게 다른지 보여줍니다:
 
 ```swift
 let possibleString: String? = "An optional string."
@@ -604,7 +604,7 @@ let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString // no need for an exclamation mark
 ```
 
-You can think of an implicitly unwrapped optional as giving permission for the optional to be unwrapped automatically whenever it is used. Rather than placing an exclamation mark after the optional’s name each time you use it, you place an exclamation mark after the optional’s type when you declare it.
+저절로 풀리는 옵셔널은 사용할 때마다 자동으로 풀리도록 그 옵셔널에 권한을 준 것으로 생각해도 됩니다. 옵셔널 타입을 선언할 때 타입 뒤에 느낌표를 붙이면 접근할 때만다 옵셔널 이름 뒤에 느낌표를 붙이지 않아도 됩니다.
 
 > If an implicitly unwrapped optional is `nil` and you try to access its wrapped value, you’ll trigger a runtime error. The result is exactly the same as if you place an exclamation mark after a normal optional that does not contain a value.
 
@@ -802,3 +802,25 @@ See also [Subscripts]() and [Functions]().
 [^decompose]: 'decompose'는 '분해하다'로 옮깁니다.
 
 [^suite]: 'suite'는 '알맞다'로 옮깁니다.
+
+[^concept]: 'concept'은 '개념'이라고 옮깁니다.
+
+[^typically]: 'typically'는 여기서는 '보통'이라고 옮깁니다.
+
+[^cope]: 'cope'는 '대처하다' 또는 '다루다'라고 옮깁니다.
+
+[^nil]: 'nil'은 '무'라는 뜻인 것 같습니다.
+
+[^swift-nil]: 이 부분은 조금 의역이 된 것인데, 좀 더 정리가 필요합니다.
+
+[^equal-to-not-equal-to]: 'equal to'는 '같음'으로 'not equal to'는 '같지 않음'으로 옮깁니다. 일단 위키피디아의 [C와 C++에서의 연산자](https://ko.wikipedia.org/wiki/C와_C%2B%2B에서의_연산자) 에 있는 방식을 따랐습니다.
+
+[^runtime]: 'runtime'은 '런타임'으로도 사용하는데 여기서는 '실행 시간'으로 옮겼습니다.
+
+[^binding]: 'binding'은 '연결'로 옮겼는데 그냥 '바인딩'으로 할 지 좀 더 생각합니다. 'optional binding'을 '옵셔널 연결 구문' 으로 하는 것이 더 좋을 것도 같습니다.
+
+[^manipulate]: 'manipulate'는 '조절하다'로 옮깁니다.
+
+[^early-exit]: 'early exit'를 '조기 종료'로 옮겼는데 다시 생각해 봅니다.
+
+[^implicitly-unwrapped-optional]: 'implicitly unwrapped optional'은 '저절로 풀리는 옵셔널'이라고 옮깁니다.
