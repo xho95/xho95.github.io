@@ -245,6 +245,10 @@ $ .build/debug/Hello `whoami`
 
 Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 [Swift Package Manager](https://swift.org/package-manager/) 글을 참고 하면 됩니다. [^swift-package]
 
+### 관련 자료 
+
+* [Swift 3.1: 빠르게 (Swift) 둘러보기](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
+
 ### 변경 사항
 
 * **2017. 02. 22.** 환경 설정 부분을 **~/.bash_profile** 에서 **~/.profile** 로 수정했습니다. 
