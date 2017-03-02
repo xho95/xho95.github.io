@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Swift 3.1: 기초 (The Basics)"
 date:   2016-04-24 19:45:00 +0900
-categories: Swift Grammar Basic
+categories: Swift Language Grammar Basic
 ---
 
 > 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [The Basics](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
@@ -200,7 +200,7 @@ Swift 는 부호 없는 정수 타입으로 `UInt` 도 제공하는데, 이것�
 
 > `UInt`는 플랫폼의 기본 워드와 같은 크기의 부호 없는 정수 타입이 특별히 필요한 경우만 사용하도록 합니다. 이런 특별한 경우가 아니라면 저장되는 값이 음수가 아니더라도 `Int` 를 사용하는 것이 더 좋습니다. 정수 값으로 일관되게 `Int` 를 사용하면 상호 이용성에 도움이 되고, 다른 수 타입으로 타입을 바꿀 필요가 없으며, [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID322) 에 설명된 것 처럼 정수 타입 추론에 들어맞게 됩니다.
 
-### 부동소수점 수 (Floating-Point Numbers) 타입 
+### 부동소수점 수 (Floating-Point Numbers) 타입
 
 부동 소수점 수는 `3.14159`, `0.1` 와 `-273.15` 처럼 분수 요소가 있는 수입니다.
 
@@ -579,7 +579,7 @@ if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secon
     print("\(firstNumber) < \(secondNumber) < 100")
 }
 // Prints "4 < 42 < 100"
- 
+
 if let firstNumber = Int("4") {
     if let secondNumber = Int("42") {
         if firstNumber < secondNumber && secondNumber < 100 {
@@ -607,7 +607,7 @@ if let firstNumber = Int("4") {
 ```swift
 let possibleString: String? = "An optional string."
 let forcedString: String = possibleString! // requires an exclamation mark
- 
+
 let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString // no need for an exclamation mark
 ```
@@ -671,7 +671,7 @@ do {
 func makeASandwich() throws {
     // ...
 }
- 
+
 do {
     try makeASandwich()
     eatASandwich()
@@ -728,7 +728,7 @@ assert(age >= 0)
 
 > 단언 구문은 앱을 종료시켜 버리는데다가 잘못된 조건이 발생하지 않도록 코드를 설계하는 용도로는 사용할 수 없습니다. 그럼에도 불구하고, 유효하지 않은 조건이 발생하는 상황에서는 단언 구문이 효과가 큰 방법인데, 앱 출시 전 개발 과정에서 문제가 있는 조건을 강조해서 파악하기 쉽게 해주기 때문입니다.
 
-### 원문 자료 
+### 원문 자료
 
 * [The Basics](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
 
@@ -743,7 +743,7 @@ assert(age >= 0)
 * **2017.02.28.** Swift 3.1 버전에 대한 내용으로 수정하고 번역해서 정리했습니다.
 * **2016.04.24.** 첫 포스트를 작성했습니다.
 
-### 참고 자료 
+### 참고 자료
 
 [^identify]: 'identify'는 '신원을 파악하다'를 살려서 옮깁니다. 일단 '식별하다' 로 옮깁니다. 정리가 필요합니다.
 

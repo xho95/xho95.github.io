@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Swift 3.1: 스위프트 (Swift) 둘러보기"
 date:   2016-04-17 19:45:00 +0900
-categories: Xcode Swift Grammar Tour
+categories: Swift Language Grammar Tour
 ---
 
 > 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다. 마음같아서는 예제도 새로 만들고 싶지만 거기까지는 아직 무리인 것 같습니다.
@@ -12,7 +12,7 @@ categories: Xcode Swift Grammar Tour
 
 ```swift
 print("Hello, world!)
-``` 
+```
 
 C 나 Objective-C 로 코딩을 해봤다면 이 문법이 친숙할 것입니다 - 하지만 Swift 에서는 이 한 줄의 코드가 완전한 프로그램입니다. 입/출력이나 문자열 처리를 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역 범위에 있는 코드는 프로그램의 시작점으로 사용되므로 `main()` 함수도 필요없습니다. 심지어 문장 끝에 세미콜론을 붙일 필요도 없습니다.
 
@@ -62,7 +62,7 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 ```swift
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
 shoppingList[1] = "bottle of water"
- 
+
 var occupations = [
     "Malcolm": "Captain",
     "Kaylee": "Mechanic",
@@ -108,7 +108,7 @@ print(teamScore)
 ```swift
 var optionalString: String? = "Hello"
 print(optionalString == nil)
- 
+
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
 if let name = optionalName {
@@ -173,7 +173,7 @@ while n < 100 {
     n = n * 2
 }
 print(n)
- 
+
 var m = 2
 repeat {
     m = m * 2
@@ -220,7 +220,7 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = scores[0]
     var max = scores[0]
     var sum = 0
-    
+
     for score in scores {
         if score > max {
             max = score
@@ -229,7 +229,7 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
         }
         sum += score
     }
-    
+
     return (min, max, sum)
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
@@ -347,11 +347,11 @@ var shapeDescription = shape.simpleDescription()
 class NamedShape {
     var numberOfSides: Int = 0
     var name: String
-    
+
     init(name: String) {
         self.name = name
     }
-    
+
     func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
     }
@@ -369,17 +369,17 @@ class NamedShape {
 ```swift
 class Square: NamedShape {
     var sideLength: Double
-    
+
     init(sideLength: Double, name: String) {
         self.sideLength = sideLength
         super.init(name: name)
         numberOfSides = 4
     }
-    
+
     func area() ->  Double {
         return sideLength * sideLength
     }
-    
+
     override func simpleDescription() -> String {
         return "A square with sides of length \(sideLength)."
     }
@@ -394,13 +394,13 @@ test.simpleDescription()
 ```swift
 class EquilateralTriangle: NamedShape {
     var sideLength: Double = 0.0
-    
+
     init(sideLength: Double, name: String) {
         self.sideLength = sideLength
         super.init(name: name)
         numberOfSides = 3
     }
-    
+
     var perimeter: Double {
         get {
             return 3.0 * sideLength
@@ -409,7 +409,7 @@ class EquilateralTriangle: NamedShape {
             sideLength = newValue / 3.0
         }
     }
-    
+
     override func simpleDescription() -> String {
         return "An equilateral triangle with sides of length \(sideLength)."
     }
@@ -530,10 +530,10 @@ enum ServerResponse {
     case result(String, String)
     case failure(String)
 }
- 
+
 let success = ServerResponse.result("6:00 am", "8:09 pm")
 let failure = ServerResponse.failure("Out of cheese.")
- 
+
 switch success {
 case let .result(sunrise, sunset):
     print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
@@ -582,7 +582,7 @@ class SimpleClass: ExampleProtocol {
 var a = SimpleClass()
 a.adjust()
 let aDescription = a.simpleDescription
- 
+
 struct SimpleStructure: ExampleProtocol {
     var simpleDescription: String = "A simple structure"
     mutating func adjust() {
@@ -622,7 +622,7 @@ print(protocolValue.simpleDescription)
 
 ### 에러 처리 (Error Handling)
 
-에러를 나타내려면 어떤 타입이든지 `Error` 프로토콜을 받아들이면 됩니다. [^error] 
+에러를 나타내려면 어떤 타입이든지 `Error` 프로토콜을 받아들이면 됩니다. [^error]
 
 ```swift
 enum PrinterError: Error {
@@ -681,13 +681,13 @@ let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```swift
 var fridgeIsOpen = false
 let fridgeContent = ["milk", "eggs", "leftovers"]
- 
+
 func fridgeContains(_ food: String) -> Bool {
     fridgeIsOpen = true
     defer {
         fridgeIsOpen = false
     }
-    
+
     let result = fridgeContent.contains(food)
     return result
 }
@@ -741,7 +741,7 @@ anyCommonElements([1, 2, 3], [3])
 
 `<T: Equatable>` 라고 쓰는 것은 `<T> ... where T: Equatable` 라고 쓰는 것과 같습니다.
 
-### 원문 자료 
+### 원문 자료
 
 * [A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
 
@@ -762,7 +762,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^initializer]: 'initializer' 는 '초기자'라고 번역합니다. 이것은 C++ 의 constructor 를 생성자라고 부르는 것에서 착안하였습니다. Swift 의 초기자는 C++ 의 생성자와 초기화 함수의 역할을 동시에 수행합니다. 이것은 현대의 프로그래밍 언어들이 변수 선언 시점을 최대한 실제 변수가 사용되는 시점에 맞춰서 하려고 하기 때문에, 변수 선언 시점에 값을 초기화까지 하려고 강제하기 위해서라고 추측하고 있습니다. 번역과 관련한 내용은 다른 곳으로 옮기고 여기서는 초기자 문법에 대해서 설명합니다.
 
-[^deinitializer]: 'deinitializer' 단어는 도저히 뭐라고 번역해야할 지 몰라서 일단은 '정리자'라고 번역합니다. 구글 번역도 번역을 포기한 단어같습니다. 실제로 Swift 는 메모리 관리를 ARC 가 해주기 때문에 따로 정리할 일이 없어서 사용할 일이 거의 없는 것 같습니다. 
+[^deinitializer]: 'deinitializer' 단어는 도저히 뭐라고 번역해야할 지 몰라서 일단은 '정리자'라고 번역합니다. 구글 번역도 번역을 포기한 단어같습니다. 실제로 Swift 는 메모리 관리를 ARC 가 해주기 때문에 따로 정리할 일이 없어서 사용할 일이 거의 없는 것 같습니다.
 
 [^method]: 'method' 는 멤버 함수의 의미도 있지만 일단 메소드라고 그대로 씁니다. 메소드는 특정 클래스나 구조체 처럼 어떤 객체에 속해있다는 점에서 일반 함수와 구분됩니다.
 
@@ -800,7 +800,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^label]: 'label' 은 '꼬리표'로 옮깁니다. '이름표'
 
-[^argument]: 'argument'는 '인자'로 옮깁니다. 
+[^argument]: 'argument'는 '인자'로 옮깁니다.
 
 [^variable-number]: 인자에서 'variable number'는 '가변 길이'로 옮깁니다.
 
