@@ -10,7 +10,7 @@ categories: Swift Grammar Basic
 
 Swift 는 iOS, macOS, watchOS, 그리고 tvOS 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그렇더라도 C 와 Objective-C 에서의 개발 경험이 있다면 Swift 의 많은 부분이 꽤 친숙하게 느껴질 겁니다.
 
-Swift 는 C 와 Objective-C 에 있는 모든 기본 타입들에 대한 자체 버전을 제공하는데, 정수는 `Int`, 부동 소수점은 `Double` 과 `Float`, 논리 (불린) 값으로는 `Bool`, 그리고 글자 데이터로는 `String` 을 제공합니다. Swift 는 또 [모듬 타입 (Collection Types)]() 에서 설명하는 것과 같이 `Array`, `Set`, 및 `Dictionary` 라는 세 가지의 강력한 기초 모듬 타입을 제공합니다.
+Swift 는 C 와 Objective-C 에 있는 모든 기본 타입들에 대한 자체 버전을 제공하는데, 정수는 `Int`, 부동 소수점은 `Double` 과 `Float`, 논리 (불린) 값으로는 `Bool`, 그리고 글자 데이터로는 `String` 을 제공합니다. Swift 는 또 [모듬 타입 (Collection Types)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105) 에서 설명하는 것과 같이 `Array`, `Set`, 및 `Dictionary` 라는 세 가지의 강력한 기초 모듬 타입을 제공합니다.
 
 C 처럼 Swift 도 값을 저장하고 참조하는데 변수를 사용하며, 이 때 이름을 가지고 각각을 식별합니다. [^identify] Swift 는 또한 값을 바꿀 수 없는 변수를 광범위하게 사용합니다. 이는 상수라고 하며 C 에서의 상수보다 훨씬 더 강력합니다. 상수는 Swift 의 전 영역에서 사용되는데, 바꿀 필요가 없는 값을 사용할 때 코드를 더 안전하고 명확하게 만들 목적으로 사용합니다.
 
@@ -75,7 +75,7 @@ welcomeMessage = "Hello"
 var red, green, blue: Double
 ```
 
-> 실제로 타입 지정을 하는 경우는 드뭅니다. 상수나 변수를 정의하는 시점에 초기 값을 주면,  Swift 는 상수나 변수에 사용되는 타입을 거의 항상 추론할 수 있는데, 이 내용은 [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)]() 에 설명하고 있습니다. 위에 있는 `welcomeMessage` 예제에서는 초기 값을 주지 않았으므로 `welcomeMessage` 변수의 타입은 초기 값으로 추론된 것이 아니라 타입 지정으로 지정된 것입니다.
+> 실제로 타입 지정을 하는 경우는 드뭅니다. 상수나 변수를 정의하는 시점에 초기 값을 주면,  Swift 는 상수나 변수에 사용되는 타입을 거의 항상 추론할 수 있는데, 이 내용은 [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID322) 에 설명하고 있습니다. 위에 있는 `welcomeMessage` 예제에서는 초기 값을 주지 않았으므로 `welcomeMessage` 변수의 타입은 초기 값으로 추론된 것이 아니라 타입 지정으로 지정된 것입니다.
 
 #### 상수와 변수의 이름짓기 (Naming)
 
@@ -118,7 +118,7 @@ print(friendlyWelcome)
 // "Bonjour!" 를 출력합니다.
 ```
 
-`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과로 출력하는 전역 함수입니다. [^output] 예를 들어 Xcode 에서는 `print(_:separator:terminator:)` 함수가 Xcode 의 “콘솔” 창에 결과를 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 값을 갖고 있어서, 이 함수를 호출할 때 생략할 수 있습니다. 기본으로 이 함수는 한 줄을 출력할 때 끝에 줄 바꿈을 추가합니다. [^terminate] 줄 바꿈 없이 값을 출력하려면, `terminator` 매개 변수에 빈 문자열을 전달합니다 — 예를 들어 `print(someValue, terminator: "")` 라고 하면 됩니다. 기본 값이 있는 매개 변수에 대한 정보는 [Default Parameter Values]() 부분을 보기 바랍니다.
+`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과로 출력하는 전역 함수입니다. [^output] 예를 들어 Xcode 에서는 `print(_:separator:terminator:)` 함수가 Xcode 의 “콘솔” 창에 결과를 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 값을 갖고 있어서, 이 함수를 호출할 때 생략할 수 있습니다. 기본으로 이 함수는 한 줄을 출력할 때 끝에 줄 바꿈을 추가합니다. [^terminate] 줄 바꿈 없이 값을 출력하려면, `terminator` 매개 변수에 빈 문자열을 전달합니다 — 예를 들어 `print(someValue, terminator: "")` 라고 하면 됩니다. 기본 값이 있는 매개 변수에 대한 정보는 [Default Parameter Values](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID169) 부분을 보기 바랍니다.
 
 Swift 의 문자열 삽입 구문 (string interpolation) 을 사용하면, 긴 문자열 속에 자리 표시자의 형태로 상수나 변수의 이름을 쓰고, Swift 가 상수나 변수의 현재 값으로 대체하도록 할 수 있습니다. 자리 표시자는 이름을 괄호로 감싼 다음 괄호 맨 앞에 역 슬래시를 붙여줘서 이스케이프 해주면 됩니다: [^escape]
 
@@ -127,7 +127,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // "The current value of friendlyWelcome is Bonjour!" 를 출력합니다.
 ```
 
-> 문자열 삽입 구문에서 사용할 수 있는 모든 옵션은 [문자열 삽입 구문 (String Interpolation)]() 에서 설명합니다.
+> 문자열 삽입 구문에서 사용할 수 있는 모든 옵션은 [문자열 삽입 구문 (String Interpolation)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html#//apple_ref/doc/uid/TP40014097-CH7-ID292) 에서 설명합니다.
 
 ### 주석 (Comments)
 
@@ -198,7 +198,7 @@ Swift 는 부호 없는 정수 타입으로 `UInt` 도 제공하는데, 이것�
 * 32-비트 플랫폼에서 `UInt` 는 `UInt32` 와 크기가 같습니다.
 * 64-비트 플랫폼에서 `UInt` 는 `UInt64` 와 크기가 같습니다.
 
-> `UInt`는 플랫폼의 기본 워드와 같은 크기의 부호 없는 정수 타입이 특별히 필요한 경우만 사용하도록 합니다. 이런 특별한 경우가 아니라면 저장되는 값이 음수가 아니더라도 `Int` 를 사용하는 것이 더 좋습니다. 정수 값으로 일관되게 `Int` 를 사용하면 상호 이용성에 도움이 되고, 다른 수 타입으로 타입을 바꿀 필요가 없으며, [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)]() 에 설명된 것 처럼 정수 타입 추론에 들어맞게 됩니다.
+> `UInt`는 플랫폼의 기본 워드와 같은 크기의 부호 없는 정수 타입이 특별히 필요한 경우만 사용하도록 합니다. 이런 특별한 경우가 아니라면 저장되는 값이 음수가 아니더라도 `Int` 를 사용하는 것이 더 좋습니다. 정수 값으로 일관되게 `Int` 를 사용하면 상호 이용성에 도움이 되고, 다른 수 타입으로 타입을 바꿀 필요가 없으며, [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID322) 에 설명된 것 처럼 정수 타입 추론에 들어맞게 됩니다.
 
 ### 부동소수점 수 (Floating-Point Numbers) 타입 
 
@@ -323,7 +323,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 양쪽 항이 모두 `UInt16` 타입이므로 덧셈이 가능합니다. 결과를 담은 상수 (`twoThousandAndOne`) 는 `UInt16` 타입으로 추론되는데  두 개의 `UInt16` 값의 합이기 때문입니다.
 
-`SomeType(ofInitialValue)` 는 Swift 에서 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방법입니다. 속을 들여다 보면, `UInt16` 타입은 `UInt8` 값을 받아들일 수 있는 초기자를 가지고 있어서, 이 초기자로 기존의 `UInt8` 값에서 새로운 `UInt16` 값을 만듭니다. 즉 여기서 아무 타입이나 전달할 수는 없고 — `UInt16` 의 초기자에 넘길 수 있는 타입만 가능합니다. 기존 타입의 초기자를 확장해서 (직접 정의한 타입도 포함하여) 새로운 타입을 받아들이게 하는 방법은 [확장 (Extensions) 기능]() 에서 다룹니다.
+`SomeType(ofInitialValue)` 는 Swift 에서 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방법입니다. 속을 들여다 보면, `UInt16` 타입은 `UInt8` 값을 받아들일 수 있는 초기자를 가지고 있어서, 이 초기자로 기존의 `UInt8` 값에서 새로운 `UInt16` 값을 만듭니다. 즉 여기서 아무 타입이나 전달할 수는 없고 — `UInt16` 의 초기자에 넘길 수 있는 타입만 가능합니다. 기존 타입의 초기자를 확장해서 (직접 정의한 타입도 포함하여) 새로운 타입을 받아들이게 하는 방법은 [확장 (Extensions) 기능](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151) 에서 다룹니다.
 
 #### 정수와 부동 소수점 수 사이의 형변환 (Integer and Floating-Point Conversion)
 
@@ -390,7 +390,7 @@ if turnipsAreDelicious {
 // "Eww, turnips are horrible." 를 출력합니다.
 ```
 
-`if` 문 같은 조건 구문에 대해서는 [흐름 제어(Control Flow)]() 에서 더 자세히 다룹니다. [^cover]
+`if` 문 같은 조건 구문에 대해서는 [흐름 제어(Control Flow)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID120) 에서 더 자세히 다룹니다. [^cover]
 
 Swift 의 타입 안전 검사기는 불이 아닌 값이 `Bool` 을 대신하는 것을 방지합니다. 아래에 보인 예는 컴파일-시간 에러를 보고합니다:
 
@@ -410,7 +410,7 @@ if i == 1 {
 }
 ```
 
-`i == 1` 비교 연산의 결과는 `Bool` 타입이므로 두번째 예는 타입-검사를 통과합니다. `i == 1` 과 같은 비교 연산은 [기본 연산자 (Basic Operators)]() 에서 논의합니다.
+`i == 1` 비교 연산의 결과는 `Bool` 타입이므로 두번째 예는 타입-검사를 통과합니다. `i == 1` 과 같은 비교 연산은 [기본 연산자 (Basic Operators)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/BasicOperators.html#//apple_ref/doc/uid/TP40014097-CH6-ID60) 에서 논의합니다.
 
 Swift 에 있는 다른 타입 검사기의 예들과 마찬가지로 이러한 접근 방식은 실수로 인한 에러를 방지하고 특정 코드 영역의 의도가 항상 명확히 드러나도록 만들어 줍니다.
 
@@ -471,9 +471,9 @@ print("The status message is \(http200Status.description)")
 // Prints "The status message is OK"
 ```
 
-튜플은 특히 함수의 반환 값으로 유용합니다. 웹 페이지를 검색하려고 하는 함수는 페이지 검색이 성공했는지 실패했는지 나타내기 위해 `(Int, String)` 튜플 타입으로 반환할 수도 있습니다. 두 개의 다른 타입으로 된 두 개의 값을 가지는 튜플로 반환하면, 이 함수는 한 가지 타입으로 된 한 개의 값만 반환할 때보다 더 유용한 정보를 제공할 수 있습니다. 더 많은 정보는 [여러 반환 값을 가지는 함수 (Functions with Multiple Return Values)]() 에서 볼 수 있습니다.
+튜플은 특히 함수의 반환 값으로 유용합니다. 웹 페이지를 검색하려고 하는 함수는 페이지 검색이 성공했는지 실패했는지 나타내기 위해 `(Int, String)` 튜플 타입으로 반환할 수도 있습니다. 두 개의 다른 타입으로 된 두 개의 값을 가지는 튜플로 반환하면, 이 함수는 한 가지 타입으로 된 한 개의 값만 반환할 때보다 더 유용한 정보를 제공할 수 있습니다. 더 많은 정보는 [여러 반환 값을 가지는 함수 (Functions with Multiple Return Values)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID164) 에서 볼 수 있습니다.
 
-> 튜플은 관련 있는 값들을 임시로 그룹지을 때 유용합니다. 복잡한 데이터 구조를 만드는데는 알맞지 않습니다. [^suite] 만약 데이터 구조가 임시 영역을 넘어서 유지되어야 할 경우 튜플 보다는 클래스 (객체 타입) 이나 구조 타입으로 모델을 만들도록 합니다. 더 많은 정보는 [클래스와 구조 타입 (Classes and Structures)]() 에서 볼 수 있습니다.
+> 튜플은 관련 있는 값들을 임시로 그룹지을 때 유용합니다. 복잡한 데이터 구조를 만드는데는 알맞지 않습니다. [^suite] 만약 데이터 구조가 임시 영역을 넘어서 유지되어야 할 경우 튜플 보다는 클래스 (객체 타입) 이나 구조 타입으로 모델을 만들도록 합니다. 더 많은 정보는 [클래스와 구조 타입 (Classes and Structures)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-ID82) 에서 볼 수 있습니다.
 
 ### 옵셔널 (Optionals)
 
@@ -537,13 +537,13 @@ if convertedNumber != nil {
 // Prints "convertedNumber has an integer value of 123."
 ```
 
-`if` 문에 대해 더 알고 싶으면 [흐름 제어 (Control Flow)]() 를 보면 됩니다.
+`if` 문에 대해 더 알고 싶으면 [흐름 제어(Control Flow)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID120) 를 보면 됩니다.
 
 > `!` 를 사용해서 존재하지 않는 옵셔널 값에 접근하려고 하면 실행 시간에 에러가 발생합니다. [^runtime] 항상 먼저 옵셔널이 `nil`이 아닌 값을 가지고 있는지 확인한 다음에 `!` 를 사용해서 값을 강제로 풀어야 합니다.
 
 #### 옵셔널 연결 (Optional Binding) 구문
 
-옵셔널 연결 (optional binding) 구문을 사용하면 옵셔널이 값을 가지고 있는지 확인하고 있으면 그 값을 임시 상수나 변수에서 쓸 수 있도록 만들 수 있습니다. [^binding] 옵셔널 연결 구문은 `if` 및 `while` 문과 함께 사용해서 단 한번의 명령으로 옵셔널 안에 있는 값을 검사하고 그 값을 상수나 변수로 추출할 수 있습니다. `if` 문과 `while` 문에 대해서는 [흐름 제어 (Control Flow)]() 에서 더 자세하게 설명하고 있습니다.
+옵셔널 연결 (optional binding) 구문을 사용하면 옵셔널이 값을 가지고 있는지 확인하고 있으면 그 값을 임시 상수나 변수에서 쓸 수 있도록 만들 수 있습니다. [^binding] 옵셔널 연결 구문은 `if` 및 `while` 문과 함께 사용해서 단 한번의 명령으로 옵셔널 안에 있는 값을 검사하고 그 값을 상수나 변수로 추출할 수 있습니다. `if` 문과 `while` 문에 대해서는 [흐름 제어(Control Flow)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID120) 에서 더 자세하게 설명하고 있습니다.
 
 `if` 문에서 옵셔널 연결 구문을 사용하는 방법은 다음과 같습니다:
 
@@ -553,7 +553,7 @@ if let constantName = someOptional {
 }
 ```
 
-[Optionals]() 에 있는 `possibleNumber` 예제를 강제 풀기 (forced unwrapping) 방식이 아니라 옵셔널 연결 (optional binding) 구문을 사용해서 다시 작성하면 다음과 같습니다:
+[옵셔널 (Optionals)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID330) 에 있는 `possibleNumber` 예제를 강제 풀기 (forced unwrapping) 방식이 아니라 옵셔널 연결 (optional binding) 구문을 사용해서 다시 작성하면 다음과 같습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -590,7 +590,7 @@ if let firstNumber = Int("4") {
 // Prints "4 < 42 < 100"
 ```
 
-> `if` 문 안에 있는 옵셔널 연결 구문에서 만들어진 상수와 변수는 `if` 구문의 본체 영역 안에서만 사용할 수 있습니다. 이와는 반대로 `guard` 문에서 만들어진 변수는 `guard` 이후의 영역에서도 사용이 가능한데, 이 내용은 [조기 종료 (Early Exit)]() 에서 설명합니다. [^early-exit]
+> `if` 문 안에 있는 옵셔널 연결 구문에서 만들어진 상수와 변수는 `if` 구문의 본체 영역 안에서만 사용할 수 있습니다. 이와는 반대로 `guard` 문에서 만들어진 변수는 `guard` 이후의 영역에서도 사용이 가능한데, 이 내용은 [조기 종료 (Early Exit)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID525) 에서 설명합니다. [^early-exit]
 
 #### 저절로 풀리는 옵셔널 (Implicitly Unwrapped Optionals)
 
@@ -600,7 +600,7 @@ if let firstNumber = Int("4") {
 
 이러한 종류의 옵셔널을 저절로 풀리는 옵셔널이라고 정의합니다. [^implicitly-unwrapped-optional] 저절로 풀리는 옵셔널을 만들려면 옵셔널로 만들 타입 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 를 붙여주면 됩니다.
 
-저절로 풀리는 옵셔널은 옵셔널 값이 처음 정의된 직후에 존재하는 것이 확인되고, 이후의 모든 시점에서 존재한다고 확실히 가정할 수 있는 경우, 유용하게 사용할 수 있습니다. Swift 에서 저절로 풀리는 옵셔널이 주로 사용되는 곳은 클래스의 초기화에서인데, 이에 대해서는 [소유자가 없는 참조 및 저절로 풀리는 옵셔널 속성 (Unowned References and Implicitly Unwrapped Optional Properties)]() 에서 설명합니다.
+저절로 풀리는 옵셔널은 옵셔널 값이 처음 정의된 직후에 존재하는 것이 확인되고, 이후의 모든 시점에서 존재한다고 확실히 가정할 수 있는 경우, 유용하게 사용할 수 있습니다. Swift 에서 저절로 풀리는 옵셔널이 주로 사용되는 곳은 클래스의 초기화에서인데, 이에 대해서는 [소유자가 없는 참조 및 저절로 풀리는 옵셔널 속성 (Unowned References and Implicitly Unwrapped Optional Properties)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html#//apple_ref/doc/uid/TP40014097-CH20-ID55) 에서 설명합니다.
 
 저절로 풀리는 옵셔널은 원래는 보통의 옵셔널이지만, 마치 옵셔널이 아닌 값처럼 쓸 수 있어서 옵셔널 값을 풀 필요없이 값에 접근할 수 있습니다. 다음의 예제는 옵셔널 문자열과 저절로 풀리는 옵셔널 문자열이 `String` 타입으로 지정한 값에 접근할 때의 동작 방식이 어떻게 다른지 보여줍니다:
 
@@ -686,7 +686,7 @@ do {
 
 아무런 에러도 던져지지 않으면 `eatASandwich()` 함수가 호출됩니다. 던져진 에러가 `SandwichError.outOfCleanDishes` 와 일치하는 경우에는 `washDishes()` 함수가 호출됩니다. 던져진 함수가 `SandwichError.missingIngredients` 와 일치하면 `buyGroceries(_:)` 함수가 호출되는데, 이 때 `catch` 패턴으로 붙잡힌 관련 `[String]` 값을 가지고 호출합니다. [^captured]
 
-에러를 던지고, 포착하고, 전파하는 것에 대해서는 [에러 처리 (Error Handling) 구문]() 에서 아주 상세하게 다룹니다.
+에러를 던지고, 포착하고, 전파하는 것에 대해서는 [에러 처리 (Error Handling) 구문](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html#//apple_ref/doc/uid/TP40014097-CH42-ID508) 에서 아주 상세하게 다룹니다.
 
 ### 단언 (Assertions) 구문
 
@@ -716,17 +716,17 @@ assert(age >= 0)
 
 > 단언 구문은 Xcode 에서 앱을 빌드할 때 Release 설정으로 빌드하는 경우 처럼 최적화 옵션으로 컴파일 할 때는 비활성화 됩니다. [^disabled]
 
-#### 언제 단언 구문을 사용하는가 (When to Use Assertions)
+#### 단언 구문을 사용하는 시점 (When to Use Assertions)
 
-Use an assertion whenever a condition has the potential to be false, but must definitely be true in order for your code to continue execution. Suitable scenarios for an assertion check include:
+조건이 거짓이 될 가능성이 있지만 코드 실행을 계속하려면 반드시 참이어야만 하는 경우 단언 구문을 사용합니다. 단언 구문 검사를 하기에 적당한 상황은 다음과 같습니다:
 
-* An integer subscript index is passed to a custom subscript implementation, but the subscript index value could be too low or too high.
-* A value is passed to a function, but an invalid value means that the function cannot fulfill its task.
-* An optional value is currently `nil`, but a non-`nil` value is essential for subsequent code to execute successfully.
+* 정수 첨자 인덱스를 사용자 정의 첨자 구현에 전달하는데, 이 첨자 인덱스가 너무 낮거나 높을 수 있습니다.
+* 값을 함수에 전달하는데, 유효하지 않은 값은 함수가 작업을 할 수 없음을 의미합니다.
+* 옵셔널 값이 지금은 `nil` 인데, 후속 코드의 실행이 성공하려면 `nil` 이 아닌 값이 필요합니다.
 
-See also [Subscripts]() and [Functions]().
+[첨자 구문 (Subscripts)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html#//apple_ref/doc/uid/TP40014097-CH16-ID305) 과 [함수 (Functions)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158) 도 보기 바랍니다.
 
-> Assertions cause your app to terminate and are not a substitute for designing your code in such a way that invalid conditions are unlikely to arise. Nonetheless, in situations where invalid conditions are possible, an assertion is an effective way to ensure that such conditions are highlighted and noticed during development, before your app is published.
+> 단언 구문은 앱을 종료시켜 버리는데다가 잘못된 조건이 발생하지 않도록 코드를 설계하는 용도로는 사용할 수 없습니다. 그럼에도 불구하고, 유효하지 않은 조건이 발생하는 상황에서는 단언 구문이 효과가 큰 방법인데, 앱 출시 전 개발 과정에서 문제가 있는 조건을 강조해서 파악하기 쉽게 해주기 때문입니다.
 
 ### 원문 자료 
 

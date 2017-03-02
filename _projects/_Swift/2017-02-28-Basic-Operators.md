@@ -1,22 +1,22 @@
-## Basic Operators
+## 기초 연산자 (Basic Operators)
 
-An operator is a special symbol or phrase that you use to check, change, or combine values. For example, the addition operator (`+`) adds two numbers, as in `let i = 1 + 2`, and the logical AND operator (`&&`) combines two Boolean values, as in `if enteredDoorCode && passedRetinaScan`.
+연산자는 값을 검사하고, 바꾸거나 결합하는데 사용하는 특별한 기호 또는 구절입니다. 예를 들어 덧셈 연산자 (`+`) 는 `let i = 1 + 2` 에서 보듯이 두 수를 더하고, 논리 AND 연산자 (`&&`) 는 `if enteredDoorCode && passedRetinaScan` 에서 보듯이 두 불 (Boolean) 값을 결합합니다.
 
-Swift supports most standard C operators and improves several capabilities to eliminate common coding errors. The assignment operator (`=`) does not return a value, to prevent it from being mistakenly used when the equal to operator (`==`) is intended. Arithmetic operators (`+`, `-`, `*`, `/`, `%` and so forth) detect and disallow value overflow, to avoid unexpected results when working with numbers that become larger or smaller than the allowed value range of the type that stores them. You can opt in to value overflow behavior by using Swift’s overflow operators, as described in [Overflow Operators]().
+Swift 는 대부분의 표준 C 연산자를 지원하면서 자주 발생하는 코딩 에러를 없애기 위해 몇가지 기능들을 향상시켰습니다. 대입 연산자는 (`=`) 는 값을 반환하지 않도록 해서 동등 비교 연산자 (`==`) 가 있어야 할 곳에서 실수로 사용되지 않도록 해줍니다. 산술 연산자들 (`+`, `-`, `*`, `/`, `%` 등) 은 값이 넘치는 것을 감지하고 막아주는데, 이는 수를 다룰 때 결과가 예상치 못하게 타입이 허용하는 범위보다 더 작거나 크지 않도록 해 줍니다. Swift 의 넘침 (overflow) 연산자를 사용하면 값이 넘칠 수 있도록 직접 지정할 수 있습니다. 이는 [Overflow Operators]() 에서 설명하고 있습니다.
 
-Swift also provides two range operators (`a..<b` and `a...b`) not found in C, as a shortcut for expressing a range of values.
+Swift 는 또 C 에서는 없는 두 개의 범위 연산자 (`a..<b` 와 `a...b`) 를 제공하는데, 이는 값의 범위를 손쉽게 표현하게 해 줍니다.
 
-This chapter describes the common operators in Swift. [Advanced Operators]() covers Swift’s advanced operators, and describes how to define your own custom operators and implement the standard operators for your own custom types.
+이번 장에서는 Swift 에 있는 보통의 연산자에 대해 설명합니다. [Advanced Operators]() 에서는 Swift 의 고급 연산자를 다루면서, 사용자 정의 연산자를 정의하는 방법과 사용자 정의 타입을 위한 표준 연산자를 구현하는 방법에 대해서 설명합니다.
 
-### Terminology
+### 용어 (Terminology)
 
-Operators are unary, binary, or ternary:
+연산자에는 단항, 이항, 삼항 연산자가 있습니다:
 
-* Unary operators operate on a single target (such as `-a`). Unary prefix operators appear immediately before their target (such as `!b`), and unary postfix operators appear immediately after their target (such as `c!`).
-* Binary operators operate on two targets (such as `2 + 3`) and are infix because they appear in between their two targets.
-* Ternary operators operate on three targets. Like C, Swift has only one ternary operator, the ternary conditional operator (`a ? b : c`).
+* 단항 연산자는 (`-a` 와 같이) 단일 대상에 대해 동작합니다. 단항 접두 연산자는 (`!b` 와 같이) 대상 바로 앞에 위치하고, 단항 접미 연산자는 (`c!` 처럼) 대상 바로 뒤에 위치합니다. [^appear]
+* 이항 연산자는 (`2 + 3` 과 같이) 두 개의 대상에 대해 동작하며 두 대상 사이에 위치하므로 중위 (infix) 라고 합니다. [^infix]
+* 삼항 연산자는 세 개의 대상에 대해 동작합니다. C 와 같이 Swift 에는 단 한 개의 삼항 연산자가 있는데, 삼항 조건 연산자 (`a ? b : c`) 가 바로 그것입니다.
 
-The values that operators affect are operands. In the expression `1 + 2`, the `+` symbol is a binary operator and its two operands are the values `1` and `2`.
+연산자가 영향을 미치는 값을 피연산자 (operands) 라고 합니다. 가령 `1 + 2` 라는 식에서 `+` 기호는 이항 연산자이고 두 피연산자는 값 `1` 과 `2` 입니다.
 
 ### Assignment Operator
 
@@ -421,3 +421,9 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 ```
 
 The parentheses make it clear that the first two values are considered as part of a separate possible state in the overall logic. The output of the compound expression doesn’t change, but the overall intention is clearer to the reader. Readability is always preferred over brevity; use parentheses where they help to make your intentions clear.
+
+### 참고 자료
+
+[^appear]: 'appear'는 '위치하다'로 옮깁니다. 
+
+[^infix]: 'infix'는 '중위'라고 옮길 수 있는데, 많은 경우 그냥 infix 그대로 두는 것이 좋을 것 같습니다.
