@@ -736,7 +736,7 @@ assert(age >= 0)
 
 * [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
 
-* [Swift 3.1: 스위프트 (Swift) 둘러보기](http://xho95.github.io/xcode/swift/grammar/tour/2016/04/17/A-Swift-Tour.html)
+* [Swift 3.1: 스위프트 (Swift) 둘러보기](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 * [Swift 3.1: 객체 정리하기 (Deinitialization)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
 
 ### 변경 사항

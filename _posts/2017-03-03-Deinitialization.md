@@ -111,8 +111,8 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 * [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
 
-* [Swift 3.1: 빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/xcode/swift/grammar/tour/2016/04/17/A-Swift-Tour.html)
-* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/grammar/basic/2016/04/24/The-Basics.html)
+* [Swift 3.1: 빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
+* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
 
 ### 참고 자료
 
