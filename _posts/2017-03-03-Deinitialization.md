@@ -103,6 +103,17 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 이제 플레이어가 게임을 떠났습니다. 이것은 옵셔널인 `playerOne` 변수를 “`Player` 인스턴스가 없음” 을 의미하는 `nil` 로 설정해서 표시합니다. 이 시점에서 `Player` 인스턴스에 대한 `playerOne` 변수의 참조가 끊어집니다. `Player` 인스턴스를 참조하고 있는 다른 속성이나 변수가 없으므로 메모리를 비우기 위해 해제가 일어납니다. 이 작업이 일어나기 직전에 정리자가 자동으로 호출되고 코인을 은행으로 반환합니다.
 
+### 원문 자료
+
+* [Deinitialization](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Deinitialization.html#//apple_ref/doc/uid/TP40014097-CH19-ID142) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
+
+### 관련 자료
+
+* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
+
+* [Swift 3.1: 빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/xcode/swift/grammar/tour/2016/04/17/A-Swift-Tour.html)
+* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/grammar/basic/2016/04/24/The-Basics.html)
+
 ### 참고 자료
 
 [^deinitializer]: 'deinitializer' 는 '정리자'라고 옮깁니다.

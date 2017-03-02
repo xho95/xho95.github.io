@@ -21,7 +21,7 @@
 * Subsripts
 * Inheritance
 * Intialization
-* Deintiialization
+* [객체 정리하기 (Deinitialization)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
 * Autumatic Reference Counting
 * Optional Chaining
 * Error Handling
