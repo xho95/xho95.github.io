@@ -1,4 +1,8 @@
+Tiny Core Linux 에 대한 자료를 정리합니다. 
+
 [Tiny Core Linux](http://tinycorelinux.net) 는 LiveCD 를 지원하는 경량 리눅스입니다. [^tiny] [^tiny-started] LiveCD 라는 것은 설치 없이도 부팅이 가능한 것을 말하는 것 같습니다.
+
+일단 시작 프로그램 등록 방법부터 알아봐야하는데, 뭔가 쉬우면서도 아직은 뭘해야할 지 고민이 됩니다.
 
 ### Tiny Core 리눅스 (Linux) 설정하기
 
@@ -45,6 +49,14 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 
 실제로 설치할 것은 아니지만 참고 자료를 활용합니다. [^kiros33-tiny] [^kiros33-tiny-64]
 
+### 시작 프로그램
+
+[startup applications](http://forum.tinycorelinux.net/index.php?topic=12440.0) 글을 참고합니다. [^forum-12440]
+
+[the_boot_process](http://wiki.tinycorelinux.net/wiki:the_boot_process) [^wiki-boot-process]
+
+[Tiny Core run program at startup](https://www.reddit.com/r/linuxquestions/comments/226suf/tiny_core_run_program_at_startup/) : `/etc/init.d` [^reddit-startup]
+
 ### 참고 자료
 
 [^tiny]: [Tiny Core Linux](http://tinycorelinux.net) 공식 홈페이지 입니다.
@@ -82,3 +94,14 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 [^tiny-remastering]: [Remastering TC](http://wiki.tinycorelinux.net/wiki:remastering)
 
 [^tiny-started]: Tiny Core 리눅스가 설치없이 부팅가능함은 TC 위키의 [Getting Started](http://wiki.tinycorelinux.net/wiki:getting_started) 문서에 설명되어 있습니다.
+
+[core2usb](https://sourceforge.net/projects/core2usb/) : Tiny Core Linux USB installer 입니다.
+
+[Tinycore linux in Unetlab](http://www.achyarnurandi.net/2016/05/tinycore-linux-in-unetlab.html)
+
+[^forum-12440]: [startup applications](http://forum.tinycorelinux.net/index.php?topic=12440.0)
+
+[^wiki-boot-process]: [the_boot_process](http://wiki.tinycorelinux.net/wiki:the_boot_process)
+
+[^reddit-startup]
+: [Tiny Core run program at startup](https://www.reddit.com/r/linuxquestions/comments/226suf/tiny_core_run_program_at_startup/) : `/etc/init.d` 

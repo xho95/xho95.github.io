@@ -1,3 +1,13 @@
+---
+layout: post
+comments: true
+title:  "Swift 3.1: 타입 중첩시키기 (Nested Types)"
+date:   2017-03-03 02:00:00 +0900
+categories: Swift Language Grammar Nested
+---
+
+> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [Nested Types](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/NestedTypes.html#//apple_ref/doc/uid/TP40014097-CH23-ID242) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
+
 ## 타입 중첩시키기 (Nested Types)
 
 열거 타입의 경우 때때로 특정한 클래스나 구조 타입의 기능을 보조하려고 만듭니다. 비슷하게 생각해보면, 클래스나 구조 타입을 더 복잡한 타입을 보조하기 위한 용도로 사용하는 것도 나름 편리할 것입니다. 이를 위해 Swift 는 중첩 타입을 정의할 수 있는데, 보조하려는 타입을 정의할 때 보조 용도로 열거 타입, 클래스 및 구조 타입을 중첩할 수 있습니다.
@@ -12,12 +22,12 @@
 
 ```
 struct BlackjackCard {
-    
+
     // nested Suit enumeration
     enum Suit: Character {
         case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
     }
-    
+
     // nested Rank enumeration
     enum Rank: Int {
         case two = 2, three, four, five, six, seven, eight, nine, ten
@@ -36,7 +46,7 @@ struct BlackjackCard {
             }
         }
     }
-    
+
     // BlackjackCard properties and methods
     let rank: Rank, suit: Suit
     var description: String {
@@ -88,13 +98,20 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 * [Nested Types](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/NestedTypes.html#//apple_ref/doc/uid/TP40014097-CH23-ID242) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
 
+### 관련 자료
+
+* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
+
+* [Swift 3.1: 빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
+* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
+
 ### 참고 자료
 
 [^encapsulate]: 'encapsulate'는 일단 '감추다'라고 옮깁니다.
 
 [^optional-binding]: 'optional binding'은 '옵셔널 연결'이라고 옮깁니다. 나중에 좀 더 적당한 용어로 바꿀 생각입니다.
 
-[^memberwise]: 'memberwise initializer'는 '멤버 초기자'로 옮깁니다. 
+[^memberwise]: 'memberwise initializer'는 '멤버 초기자'로 옮깁니다.
 
 [^implicitly]: 'implicitly'는 (은연 중에) 저절로 라는 느낌으로 '저절로'라고 옮깁니다.
 
@@ -102,4 +119,4 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^context-2]: 여기서는 'context'를 '영역'이라고 옮깁니다. 좀 더 생각해봐야 할 것 같습니다.
 
-[^qualified]: 이 문장도 좀 더 다듬어야 합니다. 
+[^qualified]: 이 문장도 좀 더 다듬어야 합니다.

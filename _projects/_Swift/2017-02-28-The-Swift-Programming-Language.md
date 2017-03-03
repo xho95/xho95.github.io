@@ -26,7 +26,7 @@
 * Optional Chaining
 * Error Handling
 * Type Casting
-* Nested Types
+* []타입 중첩시키기 (Nested Types)]()
 * Extensions
 * Protocols
 * Generics
