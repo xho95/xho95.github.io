@@ -88,6 +88,10 @@ $ chsh -s /bin/bash
 
 가능한 `chsh` 명령을 사용하는 것이 좋을 것 같습니다.
 
+### 로그인 쉘과 비로그인 쉘
+
+[리눅스 profile, bashrc 와 login shell vs non-login shell 의 이해](http://webdir.tistory.com/126) 글을 참고 합니다. [^webdir-126]
+
 ### 고찰하기
 
 **/etc/passwd** 와 **/etc/shells** 파일들의 역할에 대해서 알아볼 필요가 있을 것 같습니다. **/etc/passwd** 에 대해서는 [UNIX / Linux: 사용자 정보, 그룹 정보](http://eunguru.tistory.com/88) 글이 아주 좋은 것 같습니다.[^eunguru-88]
@@ -108,4 +112,4 @@ $ chsh -s /bin/bash
 
 [^eunguru-88]: [UNIX / Linux: 사용자 정보, 그룹 정보](http://eunguru.tistory.com/88) 글을 보면 /etc/passwd 파일은 시스템 관리자가 사용자 계정을 만들 때마다 해당 사용자와 관련된 정보를 별도로 저장하는 파일이라고 합니다. 즉 이 파일은 개별 사용자에 대한 정보들로 이루어져 있습니다. 콜론 (`:`) 구분자를 사용하여 7개의 필드로 구분됩니다. 내용이 알차서 이 참고 자료를 활용해서 정리하면 좋을 것 같습니다.
 
-[[UNIX] 나도개발자다.잉 ~~ 참 쉬운 Shell 스크립트 한번 해볼까요.](http://webtn.tistory.com/entry/UNIX-나도개발자다-잉-참-쉬운-Shell-스크립트-한번-해볼까요)
+[^webdir-126]: [리눅스 profile, bashrc 와 login shell vs non-login shell 의 이해](http://webdir.tistory.com/126)

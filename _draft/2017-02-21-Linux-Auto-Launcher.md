@@ -1,4 +1,4 @@
-리눅스에서 부팅시 스크립트를 자동으로 실행하고 싶으면 [Linux 에서 부팅시 자동실행 스크립트 및 등록방법](http://blog.naver.com/PostView.nhn?blogId=nawoo&logNo=80148421970) 글을 참고합니다.
+리눅스에서 부팅시 스크립트를 자동으로 실행하고 싶으면 [Linux 에서 부팅시 자동실행 스크립트 및 등록방법](http://blog.naver.com/PostView.nhn?blogId=nawoo&logNo=80148421970) 글을 참고합니다. [^nawoo-80148421970]
 
 ### 자동 실행 스크립트
 
