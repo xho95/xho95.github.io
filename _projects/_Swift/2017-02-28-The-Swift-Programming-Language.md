@@ -26,7 +26,7 @@
 * Optional Chaining
 * Error Handling
 * Type Casting
-* []타입 중첩시키기 (Nested Types)]()
+* [타입 중첩시키기 (Nested Types)](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
 * Extensions
 * Protocols
 * Generics
