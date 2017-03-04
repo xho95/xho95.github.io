@@ -1,3 +1,11 @@
+---
+layout: post
+comments: true
+title:  "Jekyll: GitHub Pages 에 블로그 만들기"
+date:   2017-03-05 02:00:00 +0900
+categories: Blog GitHub Pages Jekyll Minima Theme
+---
+
 제가 블로그를 만들면서 처음으로 작성한 글은 [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.
 
 그런데 최근 Jekyll 의 구조가 제가 처음에 익히던 때와는 많이 달라졌다는 것을 알게 되었습니다. 따라서 예전에 정리한 설명도 지금과는 맞지 않는 부분이 생겼습니다.
@@ -6,11 +14,11 @@
 
 ### 들어가며
 
-일단 예전에 제가 작성한 글에서는 Jekyll 을 설치하고 GitHub Pages 에 저장소를 만들었습니다. 하지만 솔직히 말해서 Jekyll 과 Git 을 알아야만 GitHub Pages 에 블로그를 만들 수 있는 것은 아닙니다. 
+일단 예전에 제가 작성한 글에서는 Jekyll 을 설치하고 GitHub Pages 에 저장소를 만들었습니다. 하지만 솔직히 말해서 Jekyll 과 Git 을 알아야만 GitHub Pages 에 블로그를 만들 수 있는 것은 아닙니다.
 
 오히려 반대로 GitHub Pages 에 블로그를 만들고 운영해보면서 그 과정에서 자연스럽게 Jekyll 과 Git 의 사용법을 익혀가는 것이 보다 쉬운 접근 방법입니다. [^blog]
 
-따라서 이번 글에서는 GitHub Pages 라는 GitHub 의 호스팅 서비스를 중심으로 내용을 전개합니다. 
+따라서 이번 글에서는 GitHub Pages 라는 GitHub 의 호스팅 서비스를 중심으로 내용을 전개합니다.
 
 ### GitHub Pages 에 블로그용 저장소 만들기
 
@@ -69,7 +77,7 @@ GitHub Pages 는 [Jekyll Theme Chooser](https://help.github.com/articles/about-g
 	```sh
 	$ sudo apt-get install ruby-full
 	```
-  
+
 #### Jekyll 설치하기
 
 Ruby 를 설치했으면 다음과 같이 Gem 이라는 Ruby 의 패키지 관리자를 사용해서 Jekyll 을 설치합니다. 여기서 [예전](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 과 다르게 `jekyll` 뿐만 아니라 `bundler` 도 같이 설치합니다. [^bundler]
@@ -101,7 +109,7 @@ $ jekyll new my-awesome-site
 
 최근의 Jekyll 은 `minima` 라는 테마를 사용하기 때문에, 예전과는 다르게 Gemfile 등을 써서 패키지들의 의존성을 관리하고 있음을 알 수 있습니다.
 
-#### 로컬에서 Jekyll 블로그 테스트하기 
+#### 로컬에서 Jekyll 블로그 테스트하기
 
 다음의 명령을 사용해서 Jekyll 블로그를 로컬에서 빌드하고 실행합니다.
 
@@ -115,7 +123,7 @@ $ bundle exec jekyll serve
 
 이제 자신의 컴퓨터에서 Jekyll 블로그를 만들 수 있는 환경을 갖추었습니다.
 
-### GitHub Pages 에 블로그 배포하기 
+### GitHub Pages 에 블로그 배포하기
 
 이제 새로 만든 Jekyll 블로그를 GitHub Pages 에 올려서 모든 사람이 볼 수 있도록 해 봅시다.
 
@@ -146,19 +154,21 @@ $ git commit -m "my first blog"
 $ git push origin master
 ```
 
-GitHub Pages 에서 클론 받았기 때문에 따로 git remote 명령으로 원격 저장소를 등록하지 않아도 서버에 push 할 수 있음을 알 수 있습니다. 
+GitHub Pages 에서 클론 받았기 때문에 따로 git remote 명령으로 원격 저장소를 등록하지 않아도 서버에 push 할 수 있음을 알 수 있습니다.
 
-이제 브라우저로 `http://username.github.io` 에 접속해보면 좀전에 로컬에서 테스트한 것과 같은 페이지가 보이는 것을 볼 수 있습니다. 
+이제 브라우저로 `http://username.github.io` 에 접속해보면 좀전에 로컬에서 테스트한 것과 같은 페이지가 보이는 것을 볼 수 있습니다.
 
-축하합니다! 모든 과정은 끝났으니 이제 열심히 블로깅을 하면 됩니다. 
+축하합니다! 모든 과정은 끝났으니 이제 열심히 블로그를 운영하기 바랍니다.
 
-### 고찰하기 
+### 고찰하기
 
 변경되거나 추가된 파일들 특히 **Gemfile** 들에 대한 정리가 필요합니다. 이부분은 차차 정리할 예정입니다.
 
 ### 관련 자료
 
-* 
+* [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html)
+* [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html)
+* [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html)
 
 ### 참고 자료
 
