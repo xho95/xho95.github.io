@@ -6,6 +6,10 @@ date:   2016-01-11 12:50:00 +0900
 categories: Blog GitHub Jekyll Git
 ---
 
+> 얼마전에 Jekyll 이 Theme 를 사용하는 방식으로 변경되었는데 이런 점을 반영해서 새로 [Jekyll: GitHub Pages 에 블로그 만들기](http://xho95.github.io/blog/github/pages/jekyll/minima/theme/2017/03/04/Jekyll-Blog-with-Minima.html) 라는 글을 작성하였습니다.
+>
+> Jekyll 전반에 대한 내용을 알고자 하시면 이 글을 참고하시고 Jekyll 을 설치하고 테스트 하시려면 위 링크의 새 글을 보시는 것이 좋을 것 같습니다.
+
 자신이 공부한 내용을 정리하는 데는 블로그만한 것이 없습니다. 블로그는 글을 쓰면서 생각을 정리하는 역할도 하지만 자신의 글들을 온라인 공간에 백업하는 역할도 겸하기 때문입니다.
 
 하지만 블로그를 운영하기로 결심하고 나면 어떤 방법으로 제작할지 고심하게 됩니다. 세상에는 블로그를 만드는 여러가지 방법들 [^kalkin7] 이 있는데, 이왕이면 좀 더 편리하고 안전한 방법을 택하는 것이 좋을 것입니다. [^saltfactory_1] 그리하여 여러 방법들을 살펴보고 난 후 [Jekyll](http://jekyllrb.com) [^Jekyll] 기반의  [GitHub Pages](https://pages.github.com) [^GitHub] 를 사용해서 블로그를 제작하기로 결심했습니다.
@@ -38,7 +42,6 @@ categories: Blog GitHub Jekyll Git
 
 이제 Jekyll 과 GitHub Pages 에 대해서 살펴봤으니 본격적으로 Jekyll 을 이용하여 GitHub Pages 에 블로그를 만드는 방법에 대해서 알아보도록 하겠습니다.
 
-
 ### Jekyll 설치하기
 
 이제 Jekyll 을 설치하도록 합니다.
@@ -70,7 +73,7 @@ $ cd local-repository-path/
 $ jekyll new username.github.io
 ```
 
-위에서 지역 저장소의 이름인 `username.github.io`는 나중에 GitHub Pages 에서 만들게 될 원격 저장소의 이름을 그대로 사용한 것입니다. 
+위에서 지역 저장소의 이름인 `username.github.io`는 나중에 GitHub Pages 에서 만들게 될 원격 저장소의 이름을 그대로 사용한 것입니다.
 
 물론 지역 저장소의 이름을 원격 저장소와 같게 만들 필요는 없지만, 나중에 이름을 보고 바로 블로그 저장소임을 알아차릴 수 있도록 원격 저장소의 이름과 같게 두도록 합니다.
 
@@ -162,8 +165,9 @@ $ git push origin master
 
 ### 관련 자료
 
-* [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html)
-* [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html)
+* 새 버전의 Jekyll 을 설치하고 사용하는 방법에 대해서는 [Jekyll: GitHub Pages 에 블로그 만들기](http://xho95.github.io/blog/github/pages/jekyll/minima/theme/2017/03/04/Jekyll-Blog-with-Minima.html) 글을 참고하시기 바랍니다.
+* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html) 글을 참고하기 바랍니다.
+* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html) 글을 보도록 합니다.
 
 ### 참고 자료
 
