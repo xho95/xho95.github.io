@@ -1,68 +1,52 @@
-### 들어가며 
+제가 블로그를 만들면서 처음으로 작성한 글은 [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.
 
-최근에 Jekyll 이 버전업 하면서 달라진 부분도 있고 해서 Jekyll 관련 글을 새로 정리합니다. 기존 글을 덮어서 수정하려고 했지만 제가 블로그를 만들면서 쓴 첫 글이라 상징성이 있어서 그대로 둡니다. 
+그런데 최근 Jekyll 의 구조가 제가 처음에 익히던 때와는 많이 달라졌다는 것을 알게 되었습니다. 따라서 예전에 정리한 설명도 지금과는 맞지 않는 부분이 생겼습니다.
 
-처음에 Jekyll 관련 글을 쓸 때에는 저도 사실 잘 모르고 쓴 부분도 있고 다른 분들의 자료를 참고하고 정리하면서 쓴 글이라 지금 보면 어색하고 좀 어렵게 접근한 부분이 많습니다. 이번에는 최대한 실제 내용 위주로 간결하게 정리하려고 합니다.
+그래서 달라진 부분을 익히기도 할 겸 Jekyll 관련 글을 다시 정리하게 되었습니다. 원글 자체를 고치려고 했는데 나름 제가 올린 첫번째 글이기도 하고 초창기의 어설픈 모습들을 볼 수 있는 자료이기도 해서 원글은 그대로 두고 아예 새 글을 쓰게 되었습니다.
 
-그와 동시에 기존 버전의 Jekyll 사용자가 어떻게 새 버전의 Jekyll 로 업데이트하면 되는지에 대해서도 정리하려고 합니다.
+### 들어가며
 
-### 목차
+일단 예전에 제가 작성한 글에서는 Jekyll 을 설치하고 GitHub Pages 에 저장소를 만들었습니다. 하지만 솔직히 말해서 Jekyll 과 Git 을 알아야만 GitHub Pages 에 블로그를 만들 수 있는 것은 아닙니다. 
 
-1. 왜 Jekyll 관련 글을 다시 작성하는가? - 세가지 이유
-    1. GitHub 에 중심을 두는 것이 중요
-    	* 주위 분들에게 설명하면서 Jekyll 을 설명하려는 것 보다 GitHub Pages 에 블로그를 만드는 순서로 자연스럽게 설명하는 것이 좋다는 생각을 하게 됨
-    	* Jekyll 과 Git 의 이해는 그 다음 문제  
-    	
-    2. 윈도우즈 사용자 고려
-    	* 가능은 하지만 cgwin 등 불편한 요소 존재 - 꼼수 테스트 필요
-    	* Jekyll 자체는 GitHub Pages 에서 동작하고 있으므로 로컬에 Jekyll 을 설치하는 것은 엄청 중요한 문제는 아닐 수 있음
-    	* Jekyll 을 설치하지 않게 되면 Jekyll 을 설치하는데 필요한 Ruby 등을 따로 설치할 필요가 없어짐
-    	* 원칙을 따르는 방법은 [Windows에서 Github Page와 Jekyll로 블로그 생성하기](http://hurderella.tistory.com/131) 와 [Jekyll 윈도우에 설치해서 사용하기](http://tech.whatap.io/2015/09/11/install-jekyll-on-windows/) 라는 두개의 글을 참고합니다. [^hurderella-131] [^whatap--jekyll-on-windows]
-    	
-    3. Jekyll 버전에 따른 변화
-		* minima 등 gem-based theme 를 사용하는 변화 일어남
-    	
-2. GitHub Pages 에 계정 및 저장소 만들기
-3. Jekyll 다운 받고 블로그 양식 만들기 : 윈도우즈 사용자들은 4번으로 이동하는 링크 넣기
-4. 윈도우즈에서 Jekyll 블로그 만들기 : Jekyll 다운 필요없이 기초 양식을 저장소에서 받으면 됨
-5. 마크다운 문서로 블로그 내용 채우기
-6. git push 로 GitHub Pages 에 블로그 배포하기
+오히려 반대로 GitHub Pages 에 블로그를 만들고 운영해보면서 그 과정에서 자연스럽게 Jekyll 과 Git 의 사용법을 익혀가는 것이 보다 쉬운 접근 방법입니다. [^blog]
 
-### 추가 목차
+따라서 이번 글에서는 GitHub Pages 라는 GitHub 의 호스팅 서비스를 중심으로 내용을 전개합니다. 
 
-7. Git 명령 이해하기 : 블로그를 Git으로 버전 관리할 수 있음
-8. Jekyll 내부 구조 이해하기 : yaml 및 liquid 문법 이해하기
-9. Disqus 게시판 달기 : 댓글 시스템 등의 동적 요소 추가하기
-10. 테마 적용으로 블로그 꾸미기
-11. 카테고리 기능 구현하기
+### GitHub Pages 에 블로그용 저장소 만들기
 
-### GitHub Pages 에 블로그 만들기
-
-앞서 말한대로 이번에 정리한 글에서는 GitHub Pages 라는 GitHub 호스팅 서비스를 중심으로 내용을 전개합니다. 
-
-사실 이전 글에서는 Jekyll 과 Git 자체에 대한 설명 비중이 높아서 이 둘을 모르면 블로그를 만들기 어렵다고 느낄 수 있습니다. 하지만 블로그를 만드는데 Jekyll 과 Git 을 알아야하는 이유는 사실 GitHub Pages 가 이 두 가지 기술을 가지고 동작한다는 이유 밖에 없습니다.
-
-따라서 Jekyll 과 Git 을 알고 블로그를 만들기 보다는 GitHub Pages 에 블로그를 만들어 가면서 자연스럽게 두 기술에 익숙해 지는 방식이 더 자연스러는 방식이라고 생각합니다.
+GitHub Pages 에 블로그를 만드는 것은 그냥 GitHub 에 원격 저장소 하나를 만드는 것과 완전히 동일합니다. 방법은 [GitHub Pages](https://pages.github.com) 페이지에 있는 ① ~ ④ 번 설명을 그대로 따라하면 됩니다. [^login]
 
 #### GitHub Pages 에 계정 만들기
 
-계정은 [GitHub Pages](https://pages.github.com) 홈페이지에서 스크롤을 내리면 나오는 [Create a repository](https://github.com/new) 메뉴에서 만들면 됩니다. GitHub 계정당 1개의 사이트를 만들 수 있으므로 반드시 자신의 username을 사용해서 `username.github.io` 과 같은 방식으로 만듭니다.
+가장 먼저 GitHub Pages 에 자기의 계정을 만들어 줍니다. 계정은 [GitHub Pages](https://pages.github.com) 홈페이지에서 스크롤을 내리면 ① 번으로 나오는 설명에서 [Create a repository](https://github.com/new) 메뉴에서 만들면 됩니다.
+
+GitHub 계정당 1개의 사이트를 만들 수 있으므로 자신의 아이디 (username) 를 사용해서 `username.github.io` 과 같은 방식으로 만듭니다. 만약 자신의 아이디가 xyz 라면 **Repository name** 부분에 `xyz.github.io` 라고 입력하고 맨 밑의 Create Reposity 버튼을 누릅니다. [^create]
+
+#### Quick setup
+
+그러면 GitHub Pages 는 username 계정에 username.github.io 라는 저장소를 만들고 나서 **Quick setup - ...** 이라는 페이지를 보여줍니다.
+
+이 페이지는 여러 가지 방법으로 Git 을 사용해서 GitHub Pages 의 원격 저장소에 블로그를 올리는 방법을 소개하고 있습니다. 각각의 Git 명령들은 여러번 실습하다 보면 자연스럽게 익힐 수 있으니 지금 당장은 몰라도 상관없습니다.
+
+이중에서 가장 간단한 방법은 그냥 이 저장소의 내용을 클론 (clone) 받는 것입니다.
 
 #### GitHub Pages 블로그 클론 받기
 
-클론 받을 때는 자신이 사용하는 OS 등에 따라서 페이지에 있는 설명을 따라하면 됩니다. 아래와 같이 명령줄을 이용해서 클론을 받을 수도 있습니다.
+클론을 받을려면 자신의 OS 에 맞는 설명을 따라하면 됩니다. [GitHub Pages](https://pages.github.com) 페이지의 **What git client are you using?** 메뉴에서 원하는 것을 선택하면 ② 번으로 나오는 **Clone the repository** 에서 방법을 알려줍니다.
+
+터미널을 선택할 경우 아래와 같은 명령으로 클론받을 수 있습니다. 물론 `username` 부분은 자신의 아이디로 바꿔줘야 합니다. [^clone]
 
 ```sh
 $ git clone https://github.com/username/username.github.io
 ```
 
-#### 블로그 수정하고 배포 해보기
+이제 이렇게 클론 받은 내용을 Jekyll 로 만든 블로그로 바꿔서 GitHub Pages 에 올리게 될 것입니다.
 
-그리고 이어서 같은 페이지에 있는 3~5번 설명을 따라 순서대로 진행하면 `http://username.github.io` 주소로 블로그에 접근할 수 있음을 알 수 있습니다.
+#### 블로그 수정하고 배포해보기
 
-이 과정은 `username.github.io` 폴더에 `index.html` 파일을 하나 만든 다음 이를 GitHub Pages 저장소로 보내는 과정입니다.
+[GitHub Pages](https://pages.github.com) 페이지에 있는 ③, ④ 번 설명은 따라해봐도 되고 건너뛰어도 됩니다. 이 과정은 **username.github.io** 폴더에 **index.html** 파일을 만든 다음 GitHub Pages 저장소로 내보내는 과정을 실습하기 위한 것입니다.
 
-이 과정 자체가 GitHub Pages 에서 블로그를 만드는 전부입니다. 이후로는 3, 4 번 과정을 반복해서 블로그 내용을 추가하는 것입니다. 꽤 간단하다는 것을 알 수 있습니다. 
+순서대로 따라 진행한 후 브라우저에서 http://username.github.io 주소를 입력하면 `Hello World` 가 나타납니다. 꽤 간단하다는 것을 알 수 있습니다.
 
 ### Jekyll 사용하기
 
@@ -106,7 +90,18 @@ GitHub Pages 에서 설명하는 Bundler를 이용하여 Jekyll을 설치하는 
 
 Jekyll은 활발히 활동하는 오픈 소스 프로젝트이므로 자주 업데이트가 발생하며, GitHub Pages 서버도 업데이트가 일어나므로, 설치된 소프트웨어의 버전이 낮아서 여러 문제가 발생할 수 있습니다. 따라서 
 
+### 고찰하기
+
+
 ### 참고 자료
+
+[^blog]: 좀 극단적으로 말하면 Git 을 몰라도 GitHub Pages 에 블로그를 올릴 수 있고, Jekyll 을 설치하지 않아도 블로그를 만들 수 있습니다.
+
+[^login]: GitHub Pages 에 저장소를 만들려면 일단 GitHub 에 회원 가입이 되어 있어야 합니다. GitHub Pages 자체가 GitHub 의 하나의 서비스이기 때문입니다.
+
+[^create]: 필요에 따라 블로그 저장소의 맨 앞에 **README** 파일을 넣어줄 수도 있고, 처음부터 **.gitignore** 파일을 만들어 줄 수도 있습니다만, 이건 나중에라도 만들어 줄 수 있는 것이이므로 지금 단계에서는 몰라도 됩니다.
+
+[^clone]: 사실 지금은 비어있는 저장소라 딱히 클론받을 필요는 없지만 클론을 받게 되면 로컬에 자연스럽게 원격 저장소와 같은 이름의 폴더가 생기고 Git 이 이미 설정된 채로 받아지므로 `git init` 과 `git remote` 등을 할 필요가 없는 장점이 있습니다.
 
 [^about-github-pages-and-jekyll]: [About GitHub Pages and Jekyll](https://help.github.com/articles/about-github-pages-and-jekyll/)
 
