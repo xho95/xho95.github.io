@@ -14,9 +14,9 @@ categories: Blog GitHub Pages Jekyll Minima Theme
 
 ### 들어가며
 
-일단 예전에 제가 작성한 글에서는 Jekyll 을 설치하고 GitHub Pages 에 저장소를 만들었습니다. 하지만 솔직히 말해서 Jekyll 과 Git 을 알아야만 GitHub Pages 에 블로그를 만들 수 있는 것은 아닙니다.
+일단 예전에 제가 작성한 글에서는 Jekyll 을 설치하고 GitHub Pages 에 저장소를 만들었습니다. 하지만 솔직히 말해서 Jekyll 과 Git 을 알아야만 GitHub Pages 에 블로그를 만들 수 있는 것은 아닙니다. [^blog]
 
-오히려 반대로 GitHub Pages 에 블로그를 만들고 운영해보면서 그 과정에서 자연스럽게 Jekyll 과 Git 의 사용법을 익혀가는 것이 보다 쉬운 접근 방법입니다. [^blog]
+오히려 반대로 GitHub Pages 에 블로그를 만들고 운영해보면서 그 과정에서 자연스럽게 Jekyll 과 Git 의 사용법을 익혀가는 것이 보다 쉬운 접근 방법입니다.
 
 따라서 이번 글에서는 GitHub Pages 라는 GitHub 의 호스팅 서비스를 중심으로 내용을 전개합니다.
 
@@ -26,7 +26,7 @@ GitHub Pages 에 블로그를 만드는 것은 그냥 GitHub 에 원격 저장�
 
 #### GitHub Pages 에 계정 만들기
 
-가장 먼저 GitHub Pages 에 저장소를 만듭니다. [^login] [GitHub Pages](https://pages.github.com) 홈페이지에서 스크롤을 내리면 ① 번으로 나오는 설명에서 [Create a repository](https://github.com/new) 링크를 누릅니다.
+가장 먼저 GitHub Pages 에 저장소를 만듭니다. [^login] 이를 위해서는 [GitHub Pages](https://pages.github.com) 홈페이지에서 스크롤을 내리면 ① 번으로 나오는 설명에서 [Create a repository](https://github.com/new) 링크를 누르면 됩니다.
 
 그러면 **Create a repository** 페이지로 이동하는데 **Repository name** 부분에 자신의 아이디 (username) 를 사용해서 `username.github.io` 와 같이 입력합니다. 만약 자신의 아이디가 xyz 라면 `xyz.github.io` 라고 입력하고 맨 밑의 Create Reposity 버튼을 누릅니다. [^create]
 
@@ -88,7 +88,7 @@ $ sudo gem install jekyll bundler
 
 #### Jekyll 로 로컬에 블로그 만들기
 
-Jekyll 로 새 블로그를 만들려면 블로그를 저장할 폴더로 이동해서 다음과 같은 명령을 실행합니다. 아래에서 **my-awesome-site** 부분은 어차피 나중에 지울 거라서 아무렇게 지어도 됩니다.
+Jekyll 로 새 블로그를 만들려면 블로그를 저장할 폴더로 이동해서 다음과 같은 명령을 실행합니다. 아래에서 **my-awesome-site** 부분은 어차피 나중에 지울 거라서 이름을 아무렇게나 지어도 됩니다.
 
 ```sh
 $ jekyll new my-awesome-site
@@ -96,7 +96,7 @@ $ jekyll new my-awesome-site
 
 그러면 **my-awesome-site** 라는 폴더가 생기고 그 아래에 다음과 같은 파일 및 폴더들이 생깁니다.
 
-```
+```sh
 .
 ├── Gemfile
 ├── Gemfile.lock
@@ -107,7 +107,7 @@ $ jekyll new my-awesome-site
 └── index.md
 ```
 
-최근의 Jekyll 은 `minima` 라는 테마를 사용하기 때문에, 예전과는 다르게 Gemfile 등을 써서 패키지들의 의존성을 관리하고 있음을 알 수 있습니다.
+최근의 Jekyll 은 `minima` 라는 테마를 사용하기 때문에, 예전과는 다르게 **Gemfile** 등을 써서 패키지들의 의존성을 관리하고 있음을 알 수 있습니다.
 
 #### 로컬에서 Jekyll 블로그 테스트하기
 
@@ -117,11 +117,11 @@ $ jekyll new my-awesome-site
 $ bundle exec jekyll serve
 ```
 
-이제 브라우저 주소창에 `http://localhost:4000` 를 입력하면 다음과 같은 페이지를 볼 수 있습니다.
+브라우저를 실행하고 주소창에 `http://localhost:4000` 를 입력하면 다음과 같은 페이지를 볼 수 있습니다.
 
-![Jekyll 실행 결과](../assets/jekyll/jekyll-result.jpeg)
+![Jekyll 실행 결과](https://xho95.github.io/assets/jekyll/jekyll-result.jpeg)
 
-이제 자신의 컴퓨터에서 Jekyll 블로그를 만들 수 있는 환경을 갖추었습니다.
+이로써 자신의 컴퓨터에서 Jekyll 블로그를 만들 수 있는 환경을 갖추었습니다.
 
 ### GitHub Pages 에 블로그 배포하기
 
@@ -129,9 +129,9 @@ $ bundle exec jekyll serve
 
 #### 로컬 블로그 내용을 클론받은 저장소로 옮기기
 
-우선 **my-awesome-site** 폴더에 있는 내용을 클론받은 저장소로 옮깁니다. 맥에서는 GitHub Pages 에서 클론받은 폴더로 이동한 다음, 다음과 같은 명령을 사용하면 됩니다.
+우선 **my-awesome-site** 폴더에 있는 내용을 클론받은 저장소로 옮깁니다. 맥에서는 GitHub Pages 에서 클론받은 폴더로 이동한 다음, 다음과 같은 명령을 사용합니다. **...** 부분은 **my-awesome-site/** 폴더가 있는 절대 경로를 넣어주면 됩니다.
 
-```
+```sh
 $ cp -r .../my-awesome-site/ ./
 ```
 
@@ -141,34 +141,36 @@ Jekyll 로 만들어진 사이트에는 숨김 파일도 있는데 이들도 빠
 
 이제 로컬 저장소에서 다음과 같은 명령을 사용하여 블로그의 변경 내력을 Git 에 커밋합니다. [^git]
 
-```
+```sh
 $ git add .
 $ git commit -m "my first blog"
 ```
 
 #### GitHub Pages 에 변경된 블로그 배포하기
 
-지금까지 GitHub Pages 에 호스트용 원격 저장소를 만들었고, Jekyll 로 블로그를 만들었으면, 이를 로컬 저장소로 옮겼습니다. 이제 이 내용을 그대로 원격 저장소로 업로드 하면 됩니다. GitHub 에서는 이를 Git 의 `push` 명령으로 실행할 수 있습니다.
+지금까지 GitHub Pages 에 호스트용 원격 저장소를 만들었고, Jekyll 로 블로그를 만들었으며, 이를 로컬 저장소로 옮겼습니다.
 
-```
+이 로컬 저장소의 내용을 그대로 원격 저장소로 업로드하면 블로그를 배포하게 되는 것입니다. GitHub 에서는 이를 Git 의 `push` 명령으로 실행할 수 있습니다.
+
+```sh
 $ git push origin master
 ```
 
-GitHub Pages 에서 클론 받았기 때문에 따로 git remote 명령으로 원격 저장소를 등록하지 않아도 서버에 push 할 수 있음을 알 수 있습니다.
+GitHub Pages 에서 클론 받았기 때문에 따로 `git remote` 명령으로 원격 저장소를 등록하지 않아도 서버에 `push` 할 수 있음을 알 수 있습니다.
 
-이제 브라우저로 `http://username.github.io` 에 접속해보면 좀전에 로컬에서 테스트한 것과 같은 페이지가 보이는 것을 볼 수 있습니다.
+이제 브라우저로 `http://username.github.io` 에 접속해보면 앞에서 테스트한 것과 같은 페이지가 보이는 것을 볼 수 있습니다.
 
-축하합니다! 모든 과정은 끝났으니 이제 열심히 블로그를 운영하기 바랍니다.
+축하합니다! 모든 과정은 끝났으니 이제 열심히 블로그를 작성할 일만 남았습니다.
 
 ### 고찰하기
 
-변경되거나 추가된 파일들 특히 **Gemfile** 들에 대한 정리가 필요합니다. 이부분은 차차 정리할 예정입니다.
+변경되거나 추가된 파일들 특히 **Gemfile** 들에 대한 정리가 필요합니다. 이 부분은 차차 정리할 예정입니다.
 
 ### 관련 자료
 
-* [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html)
-* [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html)
-* [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html)
+* 예전 버전의 Jekyll 로 블로그를 만드는 방법에 대해서는 [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 글을 참고하기 바랍니다.
+* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html) 글을 참고하기 바랍니다.
+* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html) 글을 보도록 합니다.
 
 ### 참고 자료
 
