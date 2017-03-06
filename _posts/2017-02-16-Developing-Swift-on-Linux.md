@@ -88,24 +88,26 @@ gpg: Good signature from "Swift Automatic Signing Key #1 <swift-infrastructure@s
 	> ```
 	> PATH="$HOME/bin: ... :/path/to/usr/bin:$PATH"
 	> ```
-	> 
+	>
 	> 다른 설정 방법도 있습니다. [^html5around-swift]
 
 설치는 끝났습니다. 이제 `swift` 명령으로 [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 를 실행하거나 Swift 프로젝트를 빌드할 수 있습니다. [^repl]
 
 ### 고찰하기
 
-이제 리눅스에서 Swift 프로젝트를 만들고 소스 코드를 편집해서 빌드할 수 있게 되었습니다. 이어서 리눅스에서 LLDB 디버거를 사용하는 부분과 간단한 Swift 예제 프로그램을 작성한 것도 정리할 예정입니다. 
+이제 리눅스에서 Swift 프로젝트를 만들고 소스 코드를 편집해서 빌드할 수 있게 되었습니다. 이어서 리눅스에서 LLDB 디버거를 사용하는 부분과 간단한 Swift 예제 프로그램을 작성한 것도 정리할 예정입니다.
 
 Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 [Swift Package Manager](https://swift.org/package-manager/) 글을 참고 하면 됩니다.
 
-### 관련 자료 
+### 관련 자료
+
+* [Swift: 리눅스에서 Swift 개발 시작하기](http://xho95.github.io/linux/development/swift/repl/package/ubuntu/2017/03/06/Getting-Started-Swift-on-Linux.html)
 
 * [Swift 3.1: 빠르게 (Swift) 둘러보기](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
 ### 변경 사항
 
-* **2017. 02. 22.** 환경 설정 부분을 **~/.bash_profile** 에서 **~/.profile** 로 수정했습니다. 
+* **2017. 02. 22.** 환경 설정 부분을 **~/.bash_profile** 에서 **~/.profile** 로 수정했습니다.
 * **2017. 02. 19.** 첫 포스트를 작성했습니다.
 
 ### 참고 자료
