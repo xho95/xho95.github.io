@@ -1,8 +1,16 @@
 Tiny Core Linux 에 대한 자료를 정리합니다. 
 
-[Tiny Core Linux](http://tinycorelinux.net) 는 LiveCD 를 지원하는 경량 리눅스입니다. [^tiny] [^tiny-started] LiveCD 라는 것은 설치 없이도 부팅이 가능한 것을 말하는 것 같습니다.
+[Tiny Core Linux](http://tinycorelinux.net) 는 LiveCD 를 지원하는 경량 리눅스입니다. [^tiny] [^tiny-started] _LiveCD 라는 것은 설치 없이도 부팅이 가능한 것을 말하는 것 같습니다._
 
 일단 시작 프로그램 등록 방법부터 알아봐야하는데, 뭔가 쉬우면서도 아직은 뭘해야할 지 고민이 됩니다.
+
+### Tiny Core 리눅스 아키텍쳐
+
+4 개의 구조 중 하나인데 각각에 대해서는 나중에 다시 정리합니다. 
+
+![Tiny Core file architecture diagrams](http://distro.ibiblio.org/tinycorelinux/images/architecture.png)
+
+[Tiny Core file architecture diagrams](http://distro.ibiblio.org/tinycorelinux/architecture.html) [^tiny-architecture]
 
 ### Tiny Core 리눅스 (Linux) 설정하기
 
@@ -39,7 +47,7 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 # put other system startup commands here
 ```
 
-쉘 스크립트는 첫 라인이 `#!/bin/sh` 이면 본 쉘로 작성도고 본 쉘로 실행된다는 것을 의미합니다. [^dreamy-3765734]
+쉘 스크립트는 첫 라인이 `#!/bin/sh` 이면 본 쉘로 작성되고 본 쉘로 실행된다는 것을 의미합니다. [^dreamy-3765734]
 
 #### Remastering
 
@@ -101,7 +109,8 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 
 [^forum-12440]: [startup applications](http://forum.tinycorelinux.net/index.php?topic=12440.0)
 
-[^wiki-boot-process]: [the_boot_process](http://wiki.tinycorelinux.net/wiki:the_boot_process)
+[^wiki-boot-process]: [the\_boot\_process](http://wiki.tinycorelinux.net/wiki:the_boot_process)
 
-[^reddit-startup]
-: [Tiny Core run program at startup](https://www.reddit.com/r/linuxquestions/comments/226suf/tiny_core_run_program_at_startup/) : `/etc/init.d` 
+[^reddit-startup]: [Tiny Core run program at startup](https://www.reddit.com/r/linuxquestions/comments/226suf/tiny_core_run_program_at_startup/) : `/etc/init.d` 
+
+[^tiny-architecture]: [Tiny Core file architecture diagrams](http://distro.ibiblio.org/tinycorelinux/architecture.html)
