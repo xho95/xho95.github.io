@@ -6,19 +6,19 @@ Perfect 는 HTTP, JSON, REST 등을 지원한다고 합니다.
 
 [Getting Started](http://perfect.org/docs/gettingStarted.html) 글을 참고해서 미리 필요한 것들을 설치합니다. [^perfect-started]
 
-#### Swift 3.0
+#### Swift 설치하기 
 
-Swift 3
+당연히 가장 첫 순서는 리눅스에 Swift 를 설치하는 것입니다. 
 
-Swift Toolchain
+리눅스에 Swift 를 설치하는 방법은 [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html) 글을 참고하도록 합니다.
 
-위의 두 개는 애플 블로그를 통해서 설치할 수 있습니다.
-
-#### Ubuntu Linux 준비물들
+#### 리눅스에 필요한 요소들 설치하기
 
 ```sh
 $ sudo apt-get install openssl libssl-dev uuid-dev
 ```
+
+#### 설치과정 한 번에 해결하기
 
 GitHub 의 [Install Swift 3.0.2 into an Ubuntu 16.04 System](https://github.com/PerfectlySoft/Perfect-Ubuntu) 라는 곳에서는 우분투에 필요한 것들을 한번에 설치할 수 있는 쉘 스크립트를 제공합니다. [^perfect-ubuntu] 여기에는 Perfect 뿐만 아니라 Postgre 도 포함되어 있습니다.
 
@@ -139,7 +139,7 @@ do {
 
 터미널에서 프로젝트를 빌드하고 실행합니다. 리눅스에서는 폴더 위치를 바꾸주는 작업은 안해도 되는 것 같습니다. 
 
-```
+```sh
 $ swift build
 $ .build/debug/hello-perfect
 
@@ -154,7 +154,7 @@ _그림 넣기_
 
 main.swift 에 다음과 같이 추가합니다. 
 
-```
+```swift
 var routes = Routes()
 
 routes.add(method: .get, uri: "/", handler: {
@@ -168,13 +168,13 @@ server.addRoutes(routes)
 
 빌드하고 실행해 봅니다. 브라우저에서 `localhost:8080/` 으로 접속하면 다음과 같이 나타나는 것을 볼 수 있습니다. 
 
-```
+```txt
 Hello, Perfect!
 ```
 
 #### JSON API 추가하기
 
-```
+```swift
 func returnJSONMessage(message: String, response: HTTPResponse) {
 	do {
 		try response.setBody(json: ["message": message])
@@ -194,7 +194,7 @@ routes.add(method: .get, uri: "/hello", handler: {
 
 빌드하고 실행해 봅니다. 브라우저에서 `localhost:8080/hello` 로 접속하면 다음과 같이 JSON 결과를 볼 수 있습니다. 
 
-```
+```txt
 {"message":"Hello, JSON!"}
 ```
 
@@ -212,14 +212,11 @@ routes.add(method: .get, uri: "/hello", handler: {
 
 테스트는 Firefox 에 RESTED 라는 Add on을 설치해서 할 수 있습니다. 
 
-```
+```txt
 {
 	"message": "Hello, xho95!"
 }
 ```
-
-
-
 
 ### 참고 자료
 
