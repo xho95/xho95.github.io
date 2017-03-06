@@ -6,9 +6,9 @@ date:   2017-03-07 01:30:00 +0900
 categories: Linux Swift Perfect Package Server
 ---
 
-리눅스에서 Swift 로 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 [Ray Wenderlich](https://www.raywenderlich.com) [^raywenderlich] 라는 곳에서 [Perfect](http://perfect.org/) [^perfect] 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.
+리눅스에서 Swift 로 프로그램을 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 [Ray Wenderlich](https://www.raywenderlich.com) [^raywenderlich] 라는 곳에서 [Perfect](http://perfect.org/) [^perfect] 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.
 
-이에 Way Renderlich 에서 공개한 [Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started) 라는 동영상을 보고 실습한 내용을 정리하도록 합니다. [^ray-perfect]
+이에 Ray Wenderlich 에서 공개한 [Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started) 라는 동영상을 보고 실습한 내용을 정리하도록 합니다. [^ray-perfect]
 
 이를 기초로 리눅스에서 Swift 로 서버를 구현하는 방법을 간단하게나마 살펴볼 수 있을 것입니다.
 
@@ -20,7 +20,7 @@ Perfect 는 Swift 를 위한 서버 프레임웍으로 HTTP, JSON, REST 등을 �
 
 일단 리눅스에서 필요한 것들을 설치해둬야 합니다. 당연히 가장 첫 순서는 리눅스에 Swift 를 설치하는 것입니다.
 
-Swift 와 기타 필수 파일들을 따로 설치해도 되며, 귀찮은 분은 아래 목록에서 **설치 과정 한 방방에 해결하기**를 통해서 쉘 스크립트로 한 번에 모든 것을 설치할 수도 있습니다. [^install]
+Swift 와 기타 필수 파일들을 따로 설치해도 되며, 귀찮은 분은 아래 목록에서 **설치 과정 한 방에 해결하기**를 통해서 쉘 스크립트로 한 번에 모든 것을 설치할 수도 있습니다. [^install]
 
 #### Swift 설치하기
 
@@ -36,7 +36,7 @@ $ sudo apt-get install openssl libssl-dev uuid-dev
 
 #### 설치 과정 한 방에 해결하기
 
-Perfect 에서는 위에서 따로따로 설치한 것들을 한 방에 설치하도록 해주는 스크립트를 만들었다고 합니다.
+Perfect 에서는 위에서 따로따로 설치한 것들을 한 방에 설치하도록 해주는 스크립트를 만들어서 공개했습니다.
 
 GitHub 의 [Install Swift 3.0.2 into an Ubuntu 16.04 System](https://github.com/PerfectlySoft/Perfect-Ubuntu) 라는 곳에 가면 우분투에 필요한 것들을 한번에 설치할 수 있는 쉘 스크립트를 제공합니다. [^perfect-ubuntu]
 
@@ -56,7 +56,7 @@ Linking ./.build/release/Perfect-Session-PostgreSQL-Demo
 
 #### Hello-Perfect 프로젝트 시작하기
 
-다시 Ray 아저씨 설명을 따라서 실습해 봅니다. 프로젝트를 둘 폴더로 이동해서 아래의 명령으로 프로젝트를 만듭니다. [^swift-package]
+다시 Ray 아저씨 설명을 따라서 실습해 봅니다. 프로젝트 파일들을 위치할 폴더로 이동해서 아래의 명령으로 프로젝트를 만듭니다. [^swift-package]
 
 ```sh
 $ mkdir hello-perfect
@@ -66,7 +66,7 @@ $ swift package init --type executable
 
 위에서 `--type executable` 옵션은 프로젝트의 빌드 결과를 실행 파일 형태로 만들도록하는 옵션입니다.
 
-[Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started) 동영상을 보면 빌드는 Xcode 로 하고 있는데, 당황하지 말고 리눅스에서는 다음과 같은 명령으로 빌드하면 됩니다.
+[Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started) 동영상을 보다 보면 이 시점에서 빌드를 Xcode 로 하고 있는데, 리눅스에는 Xcode 가 없다고 당황하지 말고 터미널에서 다음과 같은 명령으로 빌드하면 됩니다.
 
 ```sh
 $ swift build
@@ -74,7 +74,7 @@ $ swift build
 
 리눅스에서 Swift 로 개발하는 방법은 따로 [Swift: 리눅스에서 Swift 개발 시작하기](http://xho95.github.io/linux/development/swift/repl/package/ubuntu/2017/03/06/Getting-Started-Swift-on-Linux.html) 라는 글로 정리하였으니 참고하시면 됩니다.
 
-그리고 빌드가 끝나면 다음과 같이 실행하여 결과를 출력합니다.
+그리고 빌드가 끝나면 다음과 같이 실행하여 결과가 출력되는지를 확인합니다.
 
 ```sh
 $ .build/debug/hello-perfect
@@ -82,9 +82,9 @@ $ .build/debug/hello-perfect
 Hello, world!
 ```
 
-터미널에서 위와 같은 결과가 출력됩니다. 지금까지는 기본 프로젝트를 만들어서 빌드해 본 것으로 Swift 가 제대로 동작하는지 테스트해 본 것입니다.
+터미널에서 위와 같은 결과가 출력되면 빌드가 제대로 된 것입니다. 지금까지는 기본 프로젝트를 만들어서 빌드해 본 것으로 Swift 가 제대로 동작하는지 테스트해 본 것입니다.
 
-이제 진짜로 Perfect 프레임웍을 이용해서 실습을 해보록 합시다.
+이제 진짜로 Perfect 프레임웍을 이용해서 서버를 개발해 보도록 합시다.
 
 #### Perfect 패키지 추가하기
 
@@ -107,7 +107,7 @@ let package = Package(
 $ swift package update
 ```
 
-macOS 와 리눅스에서는 설치되는 패키지가 조금 다른 것 같습니다. 물론 큰 상관은 없는 것 같습니다.
+그러면 프로젝트에서 의존하고 있는 파일들을 자동으로 내려받게 됩니다. 맥과 리눅스에서는 설치되는 패키지가 조금 다른 것 같습니다만, 물론 큰 상관은 없습니다.
 
 그리고 패키지 설치가 끝나면 다음과 같이 **main.swift** 파일에 3개의 모듈을 `import` 합니다. 서버 관련 모듈을 불러오는 것을 알 수 있습니다.
 
@@ -125,7 +125,7 @@ print("Hello, world!)
 
 #### 서버 파일 만들기
 
-다음과 같이 폴더와 파일을 추가합니다. 맥과 리눅스에서 동일하게 수행할 수 있습니다.
+다음과 같이 폴더와 파일을 추가합니다. 이 명령은 맥과 리눅스에서 동일합니다.
 
 ```sh
 $ mkdir webroot
@@ -172,9 +172,9 @@ $ .build/debug/hello-perfect
 
 ![Perfect-Hello](https://xho95.github.io/assets/Perfect/perfect-hello.png)
 
-이로써 간단하게 Perfect 프레임웍을 사용해서 Swift 로 서버 개발을 하는 방법을 간단하게 살펴보았습니다.
+이로써 Perfect 프레임웍을 사용해서 Swift 로 서버 개발을 하는 방법을 간단하게나마 살펴보았습니다.
 
-이어서 Perfect 프레임웍에서 Route 를 추가하고 JSON API 를 만드는 방법을 실습하도록 합니다.
+이어서 Perfect 프레임웍에서 Route 를 추가하고 JSON API 를 만드는 방법을 실습하도록 합니다. 이 부분은 현재 정리중에 있으므로 조만간 업로드 하도록 하겠습니다.
 
 ### 참고 자료
 
@@ -186,7 +186,7 @@ $ .build/debug/hello-perfect
 
 [^perfect-started]: [Getting Started](http://perfect.org/docs/gettingStarted.html)
 
-[^perfect-ubuntu]: [Install Swift 3.0.2 into an Ubuntu 16.04 System](https://github.com/PerfectlySoft/Perfect-Ubuntu)
+[^perfect-ubuntu]: [Install Swift 3.0.2 into an Ubuntu 16.04 System](https://github.com/PerfectlySoft/Perfect-Ubuntu) 에 가면 설명은 영어로 되어 있지만 회색으로 표시된 명령어들만 터미널에서 한 줄씩 실행하면 쉽게 설치할 수 있습니다. 물론 명령어들은 복사붙여넣기가 가능하므로 타자를 칠 필요도 없습니다. 그냥 스크립트 파일을 GitHub 에서 내려 받은 다음에 실행하는 것이 하는 일의 전부입니다.
 
 [^install]: 저는 **설치 과정 한 방에 해결하기** 로 설치하기 전에 몇몇 요소들이 이미 설치된 상황이었는데 혹시 맨 처음부터 **설치 과정 한 방에 해결하기** 를 선택했는데 설치가 매끄럽지 않게 된 분이 계시면 댓글 달아 주시면 감사하겠습니다.
 
