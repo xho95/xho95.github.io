@@ -14,11 +14,11 @@
 
 1대 1 PXE 부팅 테스용 환경은 구축완료 했습니다. 
 
-![PXE system 1](https://xho95.github.io/assets/Remann/pxe-1vs1.jpg)
+![PXE system 1](../../assets/Remann/pxe-1vs1.jpg)
 
 최종적으로는 약 100대 정도의 PC 를 테스트할 수 있는 시스템을 구축할 예정입니다. 
 
-![PXE system 100](https://xho95.github.io/assets/Remann/pxe-system.jpg)
+![PXE system 100](../../assets/Remann/pxe-system.jpg)
 
 참고 자료: [PXE 네트워크 부팅을 통한 OS 설치 자동화](http://blog.pages.kr/156)
 
@@ -26,7 +26,7 @@
 
 리눅스의 경우 **/proc** 디렉토리의 파일을 열어서 정보를 취할 수 있는 것 같습니다. 
 
-![/proc/cpuinfo](https://xho95.github.io/assets/Remann/proc-cpu.jpg)
+![/proc/cpuinfo](../../assets/Remann/proc-cpu.jpg)
 
 ### 현재의 시스템
 
@@ -35,7 +35,7 @@
 * Apache Tomcat 웹 서비스 사용
 * MySQL DB 사용 : 3066 포트 (?)
 
-![BMC System](https://xho95.github.io/assets/Remann/bmc-system.jpg)
+![BMC System](../../assets/Remann/bmc-system.jpg)
 
 
 
