@@ -71,6 +71,8 @@ For versions 2.x where x >= 2 and later (replace the kernel uname with the right
 $ sudo depmod -a -b /tmp/extract 2.6.29.1-tinycore
 ```
 
+> 실제로는 **.../extract/lib/modules** 디렉토리에 있는 모듈을 사용하는데, 지금 현재 다운받은 버전은 **4.2.9-tinycore** 입니다. 이 이름으로 대체합니다.
+
 If you added shared libraries then execute
 
 ```
@@ -85,6 +87,8 @@ sudo find | sudo cpio -o -H newc | gzip -2 > ../tinycore.gz
 cd /tmp
 advdef -z4 tinycore.gz
 ```
+
+> **../core.gz** 파일에 접근할 때 Permission denied 에러가 발생합니다. 
 
 It is packed at level 2 to save time. advdef -z4 is equivalent to about -11 on gzip.
 
