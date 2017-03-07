@@ -194,6 +194,6 @@ $ .build/debug/hello-perfect
 
 [^swift-package]: Swift 패키지 관리자를 사용해서 프로젝트를 만드는 방법에 대해서는 [Swift: 리눅스에서 Swift 개발 시작하기](http://xho95.github.io/linux/development/swift/repl/package/ubuntu/2017/03/06/Getting-Started-Swift-on-Linux.html) 글을 참고하도록 합니다.
 
-[^editor]: 리눅스에서 파일을 편집할 때는 자신이 원하는 아무 편집기를 쓰면되는데 저는 Atom 문서 편집기를 사용해서 Swift 를 개발합니다.
+[^editor]: 리눅스에서 Swift 파일을 편집할 때는 자신이 원하는 아무 편집기를 쓰면되는데 저는 Atom 문서 편집기를 사용합니다. Atom 편집기로 Swift 프로그래밍을 하는 과정은 조만간 정리할 예정입니다.
 
 [^directory]: 동영상에서는 이 과정에서 Xcode 의 경로 설정 작업을 하고 있는데, 리눅스에서는 따로 디렉토리 위치를 바꾸주는 작업은 안해도 되는 것 같습니다. 정확한 이유는 잘 모르겠습니다.
