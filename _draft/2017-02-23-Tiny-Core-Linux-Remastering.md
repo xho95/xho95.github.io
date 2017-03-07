@@ -60,7 +60,7 @@ Extension **.tcz** files can be unpacked using the unsquashfs tool and repacked 
 버전 2.x 에서 x 가 1 이하일 때 재기록하려면 아무 커널 모듈을 추가한 후 다음을 실행합니다.
 
 ```
-sudo chroot /tmp/extract depmod -a 2.6.29.1-tinycore
+$ sudo chroot /tmp/extract depmod -a 2.6.29.1-tinycore
 ```
 
 You must use chroot because “depmod -b /tmp/extract” will not follow the **kernel.tclocal** symbolic link to find modules under **/usr/local**.
@@ -76,37 +76,37 @@ $ sudo depmod -a -b /tmp/extract 2.6.29.1-tinycore
 If you added shared libraries then execute
 
 ```
-sudo ldconfig -r /tmp/extract
+$ sudo ldconfig -r /tmp/extract
 ```
 
 Afterwards, pack it up:
 
 ```
-cd /tmp/extract
-sudo find | sudo cpio -o -H newc | gzip -2 > ../tinycore.gz
-cd /tmp
-advdef -z4 tinycore.gz
+$ cd /tmp/extract
+$ sudo find | sudo cpio -o -H newc | gzip -2 > ../tinycore.gz
+$ cd /tmp
+$ advdef -z4 tinycore.gz
 ```
 
 > **../core.gz** 파일에 접근할 때 Permission denied 에러가 발생합니다. 어쨌든 압축 결과도 이상합니다. [^egloos-847559]
 
 It is packed at level 2 to save time. advdef -z4 is equivalent to about -11 on gzip.
 
-You now have a modified **tinycore.gz**. If booting from other than a CD, copy tinycore.gz and the kernel to your boot device.
+You now have a modified **tinycore.gz**. If booting from other than a CD, copy **tinycore.gz** and the kernel to your boot device.
 
 **Creating an iso**
 
 If you would like to create an ISO image:
 
 ```
-cd /tmp
-mv tinycore.gz boot
-mkdir newiso
-mv boot newiso
-mkisofs -l -J -R -V TC-custom -no-emul-boot -boot-load-size 4 \
+$ cd /tmp
+$ mv tinycore.gz boot
+$ mkdir newiso
+$ mv boot newiso
+$ mkisofs -l -J -R -V TC-custom -no-emul-boot -boot-load-size 4 \
  -boot-info-table -b boot/isolinux/isolinux.bin \
  -c boot/isolinux/boot.cat -o TC-remastered.iso newiso
-rm -rf newiso
+$ rm -rf newiso
 ```
 
 * Note 1: the mkisofs command line example above spans three lines, but is actually entered as ONE line
@@ -116,7 +116,7 @@ rm -rf newiso
 
 **GUI Tools**
 
-You may find ISO Master useful. Its a GUI disk image editing tool, available in the repository as a .tcz extension.
+You may find ISO Master useful. Its a GUI disk image editing tool, available in the repository as a **.tcz** extension.
 
 ### 원본 자료
 
