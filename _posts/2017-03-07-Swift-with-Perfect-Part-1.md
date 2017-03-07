@@ -155,7 +155,7 @@ server.documentRoot = "webroot"
 do {
 	try server.start()
 } catch PerfectError.networkError(let err, let msg) {
-	print("Network error thrown: \(err) \(msg))
+	print("Network error thrown: \(err) \(msg)")
 }
 ```
 
@@ -178,7 +178,7 @@ $ .build/debug/hello-perfect
 
 ### 참고 자료
 
-[^raywenderlich]: [Ray Wenderlich](https://www.raywenderlich.com) 는 iOS 를 비롯하여 Swift 강좌 사이트 중에서는 가히 최고봉이라 할 수 있는 사이트입니다. 한국 맥 사용자에게 [백투더맥](http://macnews.tistory.com) 사이트가 필수이듯,[Ray Wenderlich](https://www.raywenderlich.com) 는 Swift 개발자에게 필수 사이트가 아닌가 생각합니다.
+[^raywenderlich]: [Ray Wenderlich](https://www.raywenderlich.com) 는 iOS 를 비롯하여 Swift 강좌 사이트 중에서는 가히 최고봉이라 할 수 있는 사이트입니다. 한국 맥 사용자에게 [백투더맥](http://macnews.tistory.com) 사이트가 필수이듯, [Ray Wenderlich](https://www.raywenderlich.com) 는 Swift 개발자라면 필수인 사이트라고 생각합니다.
 
 [^perfect]: [Perfect](http://perfect.org/) 는 캐나다에서 개발되고 있는 Swift 용 서버 프레임웍이라고 합니다. [Benchmarks for the Top Server-Side Swift Frameworks vs. Node.js](https://medium.com/@rymcol/benchmarks-for-the-top-server-side-swift-frameworks-vs-node-js-24460cfe0beb#.sk9acg3sw) 라는 자료를 보면 거의 종합 점수로는 1등을 달리고 있는 서버 프레임웍입니다. Node.js 를 성능으로 발라버린다고 하는데 거기까진 아직 잘 모르겠습니다.
 
@@ -186,7 +186,7 @@ $ .build/debug/hello-perfect
 
 [^perfect-started]: [Getting Started](http://perfect.org/docs/gettingStarted.html)
 
-[^perfect-ubuntu]: [Install Swift 3.0.2 into an Ubuntu 16.04 System](https://github.com/PerfectlySoft/Perfect-Ubuntu) 에 가면 설명은 영어로 되어 있지만 회색으로 표시된 명령어들만 터미널에서 한 줄씩 실행하면 쉽게 설치할 수 있습니다. 물론 명령어들은 복사붙여넣기가 가능하므로 타자를 칠 필요도 없습니다. 그냥 스크립트 파일을 GitHub 에서 내려 받은 다음에 실행하는 것이 하는 일의 전부입니다.
+[^perfect-ubuntu]: [Install Swift 3.0.2 into an Ubuntu 16.04 System](https://github.com/PerfectlySoft/Perfect-Ubuntu) 에 가면 설명은 영어로 되어 있지만 회색으로 표시된 명령어들만 터미널에서 한 줄씩 실행하면 쉽게 설치할 수 있습니다. 물론 명령어들은 복사 붙여넣기가 가능하므로 타자를 칠 필요도 없습니다. 명령어들이 하는 일은 스크립트 파일을 GitHub 에서 내려 받은 다음 실행하는 것이 전부입니다.
 
 [^install]: 저는 **설치 과정 한 방에 해결하기** 로 설치하기 전에 몇몇 요소들이 이미 설치된 상황이었는데 혹시 맨 처음부터 **설치 과정 한 방에 해결하기** 를 선택했는데 설치가 매끄럽지 않게 된 분이 계시면 댓글 달아 주시면 감사하겠습니다.
 
