@@ -1,5 +1,7 @@
 cpio 명령어에 대해서 잘 정리된 [Linux cpio Examples: How to Create and Extract cpio Archives (and tar archives)](http://www.thegeekstuff.com/2010/08/cpio-utility) 글을 번역 정리합니다. [^geek-cpio]
 
+옵션에 대해서는 [cpio(1) - Linux man page](https://linux.die.net/man/1/cpio) 글을 참고합니다. [^man-cpio] [^hope-ucpio]
+
 ## Linux cpio Examples: How to Create and Extract cpio Archives (and tar archives)
 
 cpio command is used to process archive files (for example, ***.cpio** or ***.tar** files).
@@ -123,3 +125,7 @@ In the above example:
 [^geek-tar]: [The Ultimate Tar Command Tutorial with 10 Practical Examples](http://www.thegeekstuff.com/2010/04/unix-tar-command-examples/)
 
 [^geek-initrd]: [How to View, Modify and Recreate initrd.img](http://www.thegeekstuff.com/2009/07/how-to-view-modify-and-recreate-initrd-img/)
+
+[^man-cpio]: [cpio(1) - Linux man page](https://linux.die.net/man/1/cpio)
+
+[^hope-ucpio]: [Linux and Unix cpio command](http://www.computerhope.com/unix/ucpio.htm)
