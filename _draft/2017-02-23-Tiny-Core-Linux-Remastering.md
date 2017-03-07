@@ -88,7 +88,7 @@ cd /tmp
 advdef -z4 tinycore.gz
 ```
 
-> **../core.gz** 파일에 접근할 때 Permission denied 에러가 발생합니다. 
+> **../core.gz** 파일에 접근할 때 Permission denied 에러가 발생합니다. 어쨌든 압축 결과도 이상합니다. [^egloos-847559]
 
 It is packed at level 2 to save time. advdef -z4 is equivalent to about -11 on gzip.
 
@@ -125,3 +125,5 @@ You may find ISO Master useful. Its a GUI disk image editing tool, available in 
 ### 참고 자료
 
 [^zetawiki-zcat]: [리눅스 zcat](http://zetawiki.com/wiki/리눅스_zcat)
+
+[^egloos-847559]: [cpio명령어](http://egloos.zum.com/malgum/v/847559)
