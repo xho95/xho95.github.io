@@ -94,9 +94,9 @@ Hello, world!
 import PackageDescription
 
 let package = Package(
-	name: "hello-perfect",
-	dependencies: [
-		.Package(url: "https://github.com/PerfectlySoft/Perfect-HTTPServer.git", majorVersion: 2)
+    name: "hello-perfect",
+    dependencies: [
+        .Package(url: "https://github.com/PerfectlySoft/Perfect-HTTPServer.git", majorVersion: 2)
 	]
 )
 ```
@@ -153,9 +153,9 @@ server.serverPort = 8080
 server.documentRoot = "webroot"
 
 do {
-	try server.start()
+    try server.start()
 } catch PerfectError.networkError(let err, let msg) {
-	print("Network error thrown: \(err) \(msg)")
+    print("Network error thrown: \(err) \(msg)")
 }
 ```
 

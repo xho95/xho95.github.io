@@ -22,12 +22,6 @@
 
 참고 자료: [PXE 네트워크 부팅을 통한 OS 설치 자동화](http://blog.pages.kr/156)
 
-### PC 정보 취득
-
-리눅스의 경우 **/proc** 디렉토리의 파일을 열어서 정보를 취할 수 있는 것 같습니다. 
-
-![/proc/cpuinfo](../../assets/Remann/proc-cpu.jpg)
-
 ### 현재의 시스템
 
 핀란드의 Blancco 시스템 사용
@@ -36,6 +30,12 @@
 * MySQL DB 사용 : 3066 포트 (?)
 
 ![BMC System](../../assets/Remann/bmc-system.jpg)
+
+### PC 정보 취득
+
+리눅스의 경우 **/proc** 디렉토리의 파일을 열어서 정보를 취할 수 있는 것 같습니다. 
+
+![/proc/cpuinfo](../../assets/Remann/proc-cpu.jpg)
 
 
 
