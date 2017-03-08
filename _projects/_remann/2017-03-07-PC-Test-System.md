@@ -37,5 +37,9 @@
 
 ![/proc/cpuinfo](../../assets/Remann/proc-cpu.jpg)
 
+### 질문
+
+DB 연동은 ORM 없이 SQL 로 구현해야 하는가?
+
 
 

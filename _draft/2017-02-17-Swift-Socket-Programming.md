@@ -2,7 +2,7 @@ Swift 로 소켓(Socket) 프로그래밍을 하는 방법을 정리하고자 합
 
 ### 프레임웍
 
-[BlueSocket](https://github.com/IBM-Swift/BlueSocket) : IBM 에서 만든 Swift 를 위한 Socket framework 입니다. [^ibm-bluesocket] 설명도 잘 갖춰진 것 같습니다.
+[BlueSocket](https://github.com/IBM-Swift/BlueSocket) : IBM 에서 만든 Swift 를 위한 Socket framework 입니다. [^ibm-bluesocket] 설명도 잘 갖춰진 것 같습니다. BlueSocket 에서 SSL/TLS 를 지원하려면 [BlueSSLService](https://github.com/IBM-Swift/BlueSSLService) 가 필요한 것 같습니다. 
 
 [swiftysockets](https://github.com/iachievedit/swiftysockets) : IBM 의 BlueSocket 보다는 조금 오래돼서 지금은 업데이트가 잘 안되고 있는 패키지인 것 같습니다. [^swiftysockets] 개발자가 신경을 안쓰고 있는 분위기 입니다. 
 
@@ -11,6 +11,8 @@ Swift 로 소켓(Socket) 프로그래밍을 하는 방법을 정리하고자 합
 [WebSockets](https://www.perfect.org/docs/webSockets.html) : Perfect.org 에서 만든 패키지인 것 같습니다. [^perfect-websockets] 웹소켓이란 개념은 웹페이지와 서버 사이에 실시간 상호작용을 하기 위한 스펙 (?) 이라고 합니다. [^adrenal-20] 네이버에 있는 글도 보면 좋을 것 같습니다. [^d2-1336]
 
 ### 블로그 글
+
+[Multi-Client echo server with the BlueSocket framework and libdispatch](http://masteringswift.blogspot.kr/2017/01/multi-client-echo-server-with.html) [^masteringswift] : IBM 의 BlueSocket 을 사용하는 것과 관련한 블로그 글입니다.
 
 [TCP Sockets with Swift on Linux](http://dev.iachieved.it/iachievedit/tcp-sockets-with-swift-on-linux/)
 
@@ -53,4 +55,6 @@ Swift 로 소켓(Socket) 프로그래밍을 하는 방법을 정리하고자 합
 [^swiftysockets]: [swiftysockets](https://github.com/iachievedit/swiftysockets)
 
 [^socket-io-client]: [Socket.IO-Client-Swift](https://github.com/socketio/socket.io-client-swift)
+
+[^masteringswift]: [Multi-Client echo server with the BlueSocket framework and libdispatch](http://masteringswift.blogspot.kr/2017/01/multi-client-echo-server-with.html)
 

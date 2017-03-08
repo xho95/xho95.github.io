@@ -5,7 +5,7 @@
 
 [Ubuntu - 16.04 한글 설정](http://hochulshin.com/ubuntu-1604-hangul/) 글을 중심으로 기타 다른 자료들을 참고하여 정리하였습니다. [^hochulshin-hangul] [^kjvvv-6328]
 
-### fcitx-hangul 설치
+### fcitx-hangul 설치하기
 
 먼저 입력기를 설치해 줍니다. 터미널에서 다음 명령으로  `fcitx-hangel` 을 설치합니다.
 
@@ -23,7 +23,7 @@ _아니면 Ubuntu Software에서 fcitx로 검색해서 설치할 수도 있습�
 
 시스템을 재부팅합니다. _꼭 재부팅해야하는지는 아직 잘 모르겠습니다._
 
-### 한영 전환키 설정하기
+### 시스템에서 한영 전환키 설정하기
 
 번호 보다는 그림으로 구분해서 나의 방식으로 다시 정리합니다. 
 
@@ -31,10 +31,13 @@ _아니면 Ubuntu Software에서 fcitx로 검색해서 설치할 수도 있습�
 2. Switch to Next source, Switch to Previous sourc, Compose Key, Alternative Characters Key 의 값을 모두 Disabled 로 만들어 줍니다. Disabled 로 만들려면 마우스로 각각을 선택한 다음에 `backspace` 키를 누르면 됩니다.
 3. Compose Key 의 Disabled 를 길게 눌러 `Right Alt`를 선택합니다.
 4. Switch to next source 는 한영키를 눌러 `Multikey`를 선택합니다. 반드시 Compose Key 설정이 먼저되어야 `Multikey`를 선택할 수 있습니다. _저의 경우 맥과의 호환을 위해 `caps lock`을 선택합니다. 보조키를 테스트한 후 정리합니다._
-5. **System Settings** 대화 상자를 닫고 메뉴바 오른쪽에 있는 fcitx 입력기를  선택합니다. 키보드 그림으로 된 것이 fcitx 입니다. fcitx 아이콘을 눌러서 **Configure Current Input Method** 를 선택합니다. 그러면 Input Method Configuration 대화 상자가 나타납니다.
-6. `Keyboard-English(US)` 만 있다면 `+` 를 눌러서 `Hangul` 을 추가합니다. 이 과정에서 Add Input Method 대화 상자가 나타나는데, `Hangul` 을 추가하려면 대화 상자 밑에 있는 **Only Show Current Language** 를 체크 해제해야 합니다. 그리고 `Keyboard - Korean` 이 아닌 그냥 `Hangul` 을 선택해야 합니다.
-7. 그러면 그림처럼 되는데 이제 **Global Config** 탭을 선택합니다. Trigger Input Method 는 한/영키를 눌러 두 개 모두 `Multikey` 로 설정합니다. Extrakey for trigger input method는 Disabled 로 설정합니다. 
-8. Share State Among Window** 값은 All 로 해줍니다. (이미 All 인 것 같습니다.)
+
+### 입력기에서 한영 전환키 설정하기
+
+1. **System Settings** 대화 상자를 닫고 메뉴바 오른쪽에 있는 fcitx 입력기를  선택합니다. 키보드 그림으로 된 것이 fcitx 입니다. fcitx 아이콘을 눌러서 **Configure Current Input Method** 를 선택합니다. 그러면 Input Method Configuration 대화 상자가 나타납니다.
+2. `Keyboard-English(US)` 만 있다면 `+` 를 눌러서 `Hangul` 을 추가합니다. 이 과정에서 Add Input Method 대화 상자가 나타나는데, `Hangul` 을 추가하려면 대화 상자 밑에 있는 **Only Show Current Language** 를 체크 해제해야 합니다. 그리고 `Keyboard - Korean` 이 아닌 그냥 `Hangul` 을 선택해야 합니다.
+3. 그러면 그림처럼 되는데 이제 **Global Config** 탭을 선택합니다. Trigger Input Method 는 한/영키를 눌러 두 개 모두 `Multikey` 로 설정합니다. Extrakey for trigger input method는 Disabled 로 설정합니다. 
+4. Share State Among Window 값은 All 로 해줍니다. (이미 All 인 것 같습니다.)
 
 로그 아웃한 후 다시 로그 인 하면 한영 전환이 됩니다.
 
