@@ -1,5 +1,7 @@
 Swift 로 소켓(Socket) 프로그래밍을 하는 방법을 정리하고자 합니다. 
 
+일단 소켓 프로그래밍에 대한 내용을 분리하도록 합니다. 
+
 ### 프레임웍
 
 [BlueSocket](https://github.com/IBM-Swift/BlueSocket) : IBM 에서 만든 Swift 를 위한 Socket framework 입니다. [^ibm-bluesocket] 설명도 잘 갖춰진 것 같습니다. BlueSocket 에서 SSL/TLS 를 지원하려면 [BlueSSLService](https://github.com/IBM-Swift/BlueSSLService) 가 필요한 것 같습니다. 
