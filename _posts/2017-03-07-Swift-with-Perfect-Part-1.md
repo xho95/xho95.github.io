@@ -184,8 +184,6 @@ $ .build/debug/hello-perfect
 
 [^ray-perfect]: 보통 Ray Wenderlich 사이트의 동영상 강좌는 유료인 경우가 많은데 가끔씩 무료인 동영상도 있습니다. [Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started) 가 그런 경우인 것 같습니다.
 
-[^perfect-started]: [Getting Started](http://perfect.org/docs/gettingStarted.html)
-
 [^perfect-ubuntu]: [Install Swift 3.0.2 into an Ubuntu 16.04 System](https://github.com/PerfectlySoft/Perfect-Ubuntu) 에 가면 설명은 영어로 되어 있지만 회색으로 표시된 명령어들만 터미널에서 한 줄씩 실행하면 쉽게 설치할 수 있습니다. 물론 명령어들은 복사 붙여넣기가 가능하므로 타자를 칠 필요도 없습니다. 명령어들이 하는 일은 스크립트 파일을 GitHub 에서 내려 받은 다음 실행하는 것이 전부입니다.
 
 [^install]: 저는 **설치 과정 한 방에 해결하기** 로 설치하기 전에 몇몇 요소들이 이미 설치된 상황이었는데 혹시 맨 처음부터 **설치 과정 한 방에 해결하기** 를 선택했는데 설치가 매끄럽지 않게 된 분이 계시면 댓글 달아 주시면 감사하겠습니다.
