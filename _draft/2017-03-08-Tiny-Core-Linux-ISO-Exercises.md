@@ -9,3 +9,7 @@ core.gz 를 새로 만들면 일단 압축 문제인지 뭔가 작동이 안됩�
 압축을 풀면 cfg 파일은 isolinux 디렉토리에 있으므로 cfg 파일만 손댈 경우 core.gz 파일을 손대지 않고 ISO 파일을 만들 수 있습니다.  
 
 이렇게 하면 ISO 파일이 정상 작동합니다.
+
+### core.cpio.gz 로 만든 다음에 모든 메뉴를 core.cpio.gz 로 설정해보기
+
+### Tiny Core Forums 에 질문 글 올리기
