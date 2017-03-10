@@ -12,6 +12,8 @@ $ git push -u origin master
 $ git pull		// 이러한 명령이 사용 가능해집니다.
 ```
 
+IT World 의 기사 글에는 업스트림에 대해 "코드의 최초 창시자 혹은 최종 패치가 이루어지는 버전" 이라는 의미가 있다고 소개하고 있습니다. [^itworld-86157]
+
 ### 참고 자료
 
 [^git-push]: [git push](https://git-scm.com/docs/git-push)
@@ -19,3 +21,5 @@ $ git pull		// 이러한 명령이 사용 가능해집니다.
 [^git-pull]: [git pull](https://git-scm.com/docs/git-pull)
 
 [^git-config]: [git config](https://git-scm.com/docs/git-config)
+
+[^itworld-86157]: [글로벌 칼럼 | 오픈소스 벤처기업이여, 제2의 레드햇이 되려 하지 말라](http://www.itworld.co.kr/news/86157)
