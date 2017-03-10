@@ -174,7 +174,11 @@ $ .build/debug/hello-perfect
 
 이로써 Perfect 프레임웍을 사용해서 Swift 로 서버 개발을 하는 방법을 간단하게나마 살펴보았습니다.
 
-이어서 Perfect 프레임웍에서 Route 를 추가하고 JSON API 를 만드는 방법을 실습하도록 합니다. 이 부분은 현재 정리중에 있으므로 조만간 업로드 하도록 하겠습니다.
+이어서 Part 2 에서는 Perfect 프레임웍에서 Route 를 추가하고 JSON API 를 만드는 방법을 실습하도록 합니다.
+
+### 관련 자료
+
+* [Swift: 리눅스에서 Perfect 프레임웍으로 서버 개발하기 (Part 2)](http://xho95.github.io/linux/swift/perfect/server/json/rest/2017/03/09/Swift-with-Perfect-Part-2.html)
 
 ### 참고 자료
 
