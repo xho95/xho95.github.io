@@ -1,21 +1,21 @@
-## Attributes
+## 특성 (Attributes)
 
-Attributes provide more information about a declaration or type. [^attribute] There are two kinds of attributes in Swift, those that apply to declarations and those that apply to types.
+특성 (Attributes) 은 선언 구문이나 타입에 대해 더 많은 정보를 제공합니다. [^attribute] Swift 에는 두 가지 종류의 특성이 있는데 하나는 선언 구문에 적용되는 것이고 다른 하나는 타입에 적용되는 것입니다. [^declaration]
 
-You specify an attribute by writing the `@` symbol followed by the attribute’s name and any arguments that the attribute accepts:
+특성을 지정하려면 `@` 기호를 쓰고 뒤이어 특성의 이름과 특성이 받아들이는 인자를 쓰면 됩니다.
 
 @`attribute name`  
 @`attribute name`(`attribute arguments`)
 
-Some declaration attributes accept arguments that specify more information about the attribute and how it applies to a particular declaration. These attribute arguments are enclosed in parentheses, and their format is defined by the attribute they belong to.
+몇몇 선언 특성들은 특성 인자를 받아서 특성에 대해 더 많은 정보를 지정하거나 특정한 선언 구문에 적용하는 방법을 알려줍니다. 이들 속성 인자는 괄호로 감싸며 포맷은 그들이 속한 특성에서 정의됩니다. [^format]
 
-### Declaration Attributes
+### 선언 특성 (Declaration Attributes)
 
-You can apply a declaration attribute to declarations only.
+선언 특성은 선언 구문에만 적용할 수 있습니다.
 
 * `available`
 
-	Apply this attribute to indicate a declaration’s lifecycle relative to certain Swift language versions or certain platforms and operating system versions.
+	Apply this attribute to indicate a declaration’s lifecycle relative to certain Swift language versions or certain platforms and operating system versions. [^lifecycle]
 
 	The `available` attribute always appears with a list of two or more comma-separated attribute arguments. These arguments begin with one of the following platform or language names:
 	
@@ -234,4 +234,10 @@ You can apply type attributes to types only.
 
 ### 참고 자료
 
-[^attribute]: 'attribute' 는 'property' 를 이미 '속성'이라고 하고 있기 때문에 '특성' 등의 다른 단어로 옮깁니다. '성질' 이라고 해도 가능할 것 같습니다.
+[^attribute]: 'attribute' 는 'property' 를 이미 '속성'이라고 하고 있기 때문에 '특성' 등의 다른 단어로 옮깁니다. '성질' 이라고 해도 가능할 것 같습니다. 그냥 '어트리뷰트'라고 이름을 그대로 써도 될 것 같습니다.
+
+[^declaration]: 'declaration' 은 때에 따라 '선언' 또는 '선언 구문' 으로 옮깁니다.
+
+[^format]: 'format' 은 '포맷' 으로 옮깁니다.
+
+[^lifecycle]: 'lifecycle' 은 '수명' 으로 옮깁니다.
