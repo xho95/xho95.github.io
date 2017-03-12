@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 3.1: 기초 연산자 (Basic Operators)"
-date:   2017-03-12 10:00:00 +0900
+date:   2016-04-27 10:00:00 +0900
 categories: Swift Language Grammar Basic Operators
 ---
 
@@ -271,7 +271,7 @@ a != nil ? a! : b
 ```swift
 let defaultColorName = "red"
 var userDefinedColorName: String?   // 기본으로 nil 이 됩니다.
- 
+
 var colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName 은 nil 이므로 colorNameToUse 는 기본인 "red" 가 됩니다.
 ```
@@ -442,7 +442,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 ### 참고 자료
 
-[^appear]: 'appear'는 '위치하다'로 옮깁니다. 
+[^appear]: 'appear'는 '위치하다'로 옮깁니다.
 
 [^infix]: 'infix는 '중위' 라고 옮길 수 있는데, 많은 경우 그냥 infix 그대로 두는 것이 좋을 것 같습니다.
 
@@ -454,7 +454,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^zero-based-list]: 'zero based list'에 대한 좋은 대체 말은 좀 더 생각해야할 것 같습니다. 'list' 자체도 옮길 말을 좀 더 생각해야할 것 같습니다.
 
-[^logical-not]: 'logical NOT'을 '부정'이라고 하는데 더 좋은 말이 없을지 생각해 봅니다. 
+[^logical-not]: 'logical NOT'을 '부정'이라고 하는데 더 좋은 말이 없을지 생각해 봅니다.
 
 [^consider]: 여기서는 'consider'를 '검토하다'라고 옮겼습니다.
 
