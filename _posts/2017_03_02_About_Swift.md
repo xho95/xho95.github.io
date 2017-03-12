@@ -1,4 +1,12 @@
-### 스위프트에 대하여 (About Swift)
+---
+layout: post
+comments: true
+title:  "Swift 3.1: 스위프트에 대하여 (About Swift)"
+date:   2017-03-02 10:00:00 +0900
+categories: Swift Language Grammar About
+---
+
+> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [About Swift](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
 
 스위프트 (Swift) 는 iOS, macOS, watchOS, 및 tvOS 앱 개발을 위한 새로운 프로그래밍 언어로써 C 와 Objective-C 의 가장 좋은 점은 살리고도 C 와의 호환성은 유지했습니다. 스위프트는 안전성을 높이는 프로그래밍 패턴을 채택하고 최신 기능들을 추가하여 프로그래밍을 더 쉽고 더 유연하며 더 즐겁게 만들어 줍니다. 깔끔하고 새로운 스위프트와 성숙하고 많은 사랑을 받아온 코코아 (Cocoa) 및 코코아 터치 (Cocoa Touch) 프레임웍의 만남은 소프트웨어 개발에 대해 새로운 시각을 가지는 계기가 될 것입니다. [^clean-slate]
 

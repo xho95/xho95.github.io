@@ -2,13 +2,13 @@
 
 ### Welcome to Swift
 
-* Swift 에 대하여
+* [스위프트에 대하여 (About Swift)]()
 * [빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
 ### Language Guide
 
 * [기초 (The Basic)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
-* Basic Operators
+* [기초 연산자 (Basic Operators)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
 * Strings and Characters
 * Collection Types
 * Control Flow
