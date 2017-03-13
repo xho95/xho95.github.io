@@ -21,7 +21,7 @@ categories: Swift Language Grammar About Reference
 * 화살표 (→) 는 문법 생성 방법을 표시하며 “로 이루어질 수 있음” 으로 이해할 수 있습니다.
 * 문장 구조 (Syntactic) 범주는 이탤릭 체로 표시하며 문법 생성 규칙의 양쪽 모두에 나타날 수 있습니다.
 * 리터럴 단어와 마침표는 구두점은 굵은 글씨에 `상수 폭`글자로 표시하며 문법 생성 규칙의 오른쪽에만 나타납니다.
-* 문법 생성 방법의 대안 방식은 세로 막대 (|) 로 구분합니다. 대안 생성 방법이 너무 길어서 쉽게 읽기 어려울 때는 새로운 줄에 여러 문법 생성 규칙으로 쪼개서 나타냅니다.
+* 문법 생성 방법의 대안 방식은 세로 막대 (\|) 로 구분합니다. 대안 생성 방법이 너무 길어서 쉽게 읽기 어려울 때는 새로운 줄에 여러 문법 생성 규칙으로 쪼개서 나타냅니다.
 * 몇몇 경우에, 일반 글꼴 글자를 사용해서 문법 생성 규칙의 오른쪽임을 나타냅니다. [^regular]
 * 문장 구조 범주와 리터럴 이 선택 요소일 경우에는 마지막에 첨자로 <sub>­opt­</sub> 를 붙여줍니다. [^optional]
 
@@ -29,7 +29,7 @@ categories: Swift Language Grammar About Reference
 
 > GETTER-SETTER 블럭의 문법
 > 
-> _getter-setter-블럭_ → {­ getter-구절 ­setter-구절 <sub>­opt­</sub>­­ }­ | { ­setter-구절 ­getter-구절 }­
+> _getter-setter-블럭_ → {­ getter-구절 ­setter-구절 <sub>­opt­</sub>­­ }­ \| { ­setter-구절 ­getter-구절 }­
 
 이 정의는 getter-setter 블럭이 getter 구절 다음에 선택 사항으로 setter 구절을 넣고 중괄호로 감싸거나 아니면 setter 구절 다음에 getter 구절을 넣고 중괄호를 감싸는 것으로 이루어질 수 있음을 나타냅니다. 위에 있는 문법 생성 방법은 다음의 두 문법 생성 방법과 동등한 것으로 여기서는 대안 방법을 따로 떼어내어 직접 나타냈습니다.
 
