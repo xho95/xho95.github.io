@@ -1,4 +1,14 @@
-## Swift 프로그래밍 언어
+---
+layout: post
+comments: true
+title:  "Swift 3.1: 스위프트 프로그래밍 언어 (Swift Programming Language)"
+date:   2017-02-28 00:00:00 +0900
+categories: Swift Programming Language Grammar
+---
+
+> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 내용을 번역하고 주석을 달아서 정리하고 있는 글입니다. 
+> 
+> 현재는 Swift 3.1 버전에 대해서 정리하고 있습니다. 꾸준히 내용을 업데이트할 예정입니다.
 
 ### Welcome to Swift
 
@@ -35,7 +45,7 @@
 
 ### Language Reference
 
-* About the Language Reference
+* [언어의 기호가 가리키는 것에 대하여 (About the Language Reference)](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
 * Lexical Structure
 * Types
 * Expressions
