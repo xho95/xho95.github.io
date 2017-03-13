@@ -1,0 +1,1 @@
+[기본: 리눅스의 퍼미션(권한)을 조정하기 (chmod, chown)](https://www.conory.com/note_linux/19194)

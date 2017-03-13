@@ -145,4 +145,9 @@ use the activate / invalidate pattern
 
 [^2016_720]: [WWDC 2016 720: Concurrent Programming With GCD in Swift 3](https://developer.apple.com/videos/play/wwdc2016/720/)
 
+[Grand Central Dispatch](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) : GCD 자체에 대해서도 따로 정리해야할 것 같습니다. 
+
+[Thread pool](https://en.wikipedia.org/wiki/Thread_pool) : GCD 는 thread pool pattern 을 사용하여 동시성을 지원한다고 합니다. 
+
+[Concurrency pattern](https://en.wikipedia.org/wiki/Concurrency_pattern) : 이중의 하나가 thread pool pattern 이고 이 방식으로 GCD 가 구현되어 있습니다.
 

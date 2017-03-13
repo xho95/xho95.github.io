@@ -12,6 +12,12 @@ Luna 도 분석하자.
 
 리눅스에서는 콘솔, 소켓, 파일 등을 파일로 간주한다고 합니다. [^smeffect-01] 그래서 파일 디스크립터(descriptor)가 할당되고 파일 입출력 함수를 소켓에도 사용이 가능하다고 합니다. 파일 디스크립터는 윈도우즈에서의 Handle 과 유사한 개념입니다. 
 
+### 소켓 프로그래밍
+
+[뇌를 자극하는 TCP/IP 소켓 프로그래밍](https://books.google.co.kr/books?id=ODCrAwAAQBAJ&pg=PA610&lpg=PA610&dq=was+와+통신하는+프로그램&source=bl&ots=YEtV97lRv7&sig=GQjjmBi33RE50g9vndpEgrWwLWc&hl=en&sa=X&redir_esc=y#v=onepage&q=was%20와%20통신하는%20프로그램&f=false)
+
+[서블릿 소켓통신 문제](http://okky.kr/article/218757)
+
 ### 참고 자료
 
 [^ss-40765344]: [소켓프로그래밍 기초요약](https://pt.slideshare.net/ssusereb4897/ss-40765344) 은 윈도우즈를 위한 자료이지만 볼만한 자료입니다.

@@ -1,0 +1,1 @@
+[Create a NetBoot, NetInstall or NetRestore image that supports multiple Mac models](https://support.apple.com/en-us/HT202061)

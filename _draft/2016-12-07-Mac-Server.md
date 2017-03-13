@@ -1,1 +1,0 @@
-[1. 맥으로 개인서버를 만들자 – 서버의 구성과 필요한 어플들](http://blog.rainheart.net/wordpress/?p=41)

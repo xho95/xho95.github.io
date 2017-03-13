@@ -1,15 +1,7 @@
+개인 PC 를 서버로 만드는 방법에 대한 자료를 정리합니다. 
+
 ### 참고 자료
 
 [개인 서버 구축 체크리스트 - 모든 기능편](http://studyforus.tistory.com/170) : IIS로 서버를 구축하는 방법을 설명한 글인 것 같습니다.
 
-[Swift 서버사이드 프레임워크 Perfect 소개](https://realm.io/kr/news/perfect-swift-server-framework/) : Swift로 서버사이드 개발하기 자료
-
-### Web Hosting
-
-[Whois](http://www.whois.com) : get a domain name
-
-[스쿨 호스팅](https://www.phps.kr)
-
-[DNSzi](https://www.dnszi.com) : 도메인 DNS 관리
-
-[dnsever](https://kr.dnsever.com) : DNS 서비스
+[1. 맥으로 개인서버를 만들자 – 서버의 구성과 필요한 어플들](http://blog.rainheart.net/wordpress/?p=41)

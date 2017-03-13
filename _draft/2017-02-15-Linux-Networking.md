@@ -44,6 +44,10 @@ $ iptables -I INPUT 1 -p tcp --dport 12345 -j ACCEPT
 $ ethtool -p eth0
 ```
 
+#### IP 확인
+
+IP 를 확인하는 방법에는 여러가지가 있습니다. [리눅스 IP 확인](http://zetawiki.com/wiki/리눅스_IP_확인) 글을 참고합니다.
+
 ### 무선랜 설정
 
 [Ubuntu: 우분투 무선랜 설정](http://perdupper.blogspot.kr/2016/02/ubuntu-sudo-apt-get-install-wireless.html) 글과 [우분투서버(Ubuntu server) 무선랜(wifi) 고정ip(static)설정](http://egloos.zum.com/lpolpo/v/476) 글을 참고합니다. [^perdupper-wireless] [^egloos-476] 기타 다른 참고 글도 볼만합니다. [^naleejang-95]

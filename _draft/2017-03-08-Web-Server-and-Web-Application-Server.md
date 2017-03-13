@@ -8,14 +8,10 @@
 
 [톰캣과 아파치의 역할](http://webclub.tistory.com/333)
 
-### 소켓 프로그래밍
-
-[뇌를 자극하는 TCP/IP 소켓 프로그래밍](https://books.google.co.kr/books?id=ODCrAwAAQBAJ&pg=PA610&lpg=PA610&dq=was+와+통신하는+프로그램&source=bl&ots=YEtV97lRv7&sig=GQjjmBi33RE50g9vndpEgrWwLWc&hl=en&sa=X&redir_esc=y#v=onepage&q=was%20와%20통신하는%20프로그램&f=false)
-
-[서블릿 소켓통신 문제](http://okky.kr/article/218757)
+### 다른 자료 
 
 [아두이노와 다른 웹서버와의 통신](https://www.kocoafab.cc/fboard/view/125)
 
-### 다른 자료 
-
 [Apache Tomcat Tuning (아파치 톰캣 튜닝 가이드)](http://bcho.tistory.com/788)
+
+[Hello World - 웹 서버 생성하기](https://opentutorials.org/module/938/6770) : 웹 서버는 기본적으로 80포트를 사용한다고 합니다.
