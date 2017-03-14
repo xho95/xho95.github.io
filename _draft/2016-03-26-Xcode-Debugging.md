@@ -26,3 +26,7 @@ categories: Resources Xcode Debugging Swift
 ### Xcode Plugin
 
 [Alcatraz](http://alcatraz.io) : The package manager for Xcode - [GitHub/Alcatraz](https://github.com/alcatraz/Alcatraz)
+
+### Blog
+
+[Intermediate Debugging with Xcode 8](https://www.raywenderlich.com/152276/intermediate-debugging-xcode-8)
