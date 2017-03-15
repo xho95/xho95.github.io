@@ -20,8 +20,8 @@ Swift 는 또 C 에서는 없는 두 개의 범위 연산자 (`a..<b` 와 `a...b
 
 연산자에는 단항, 이항, 삼항 연산자가 있습니다:
 
-* 단항 연산자는 (`-a` 와 같이) 단일 대상에 대해 동작합니다. 단항 접두 연산자는 (`!b` 와 같이) 대상 바로 앞에 위치하고, 단항 접미 연산자는 (`c!` 처럼) 대상 바로 뒤에 위치합니다. [^appear]
-* 이항 연산자는 (`2 + 3` 과 같이) 두 개의 대상에 대해 동작하며 두 대상 사이에 위치하므로 중위 (infix) 라고 합니다. [^infix]
+* 단항 연산자는 (`-a` 와 같이) 단일 대상에 대해 동작합니다. 단항 접두 연산자는 (`!b` 와 같이) 대상 바로 앞에 위치하고, 단항 접미 연산자는 (`c!` 처럼) 대상 바로 뒤에 위치합니다.
+* 이항 연산자는 (`2 + 3` 과 같이) 두 개의 대상에 대해 동작하며 두 대상 사이에 위치하므로 중위 (infix) 라고 합니다.
 * 삼항 연산자는 세 개의 대상에 대해 동작합니다. C 와 같이 Swift 에는 단 한 개의 삼항 연산자가 있는데, 삼항 조건 연산자 (`a ? b : c`) 가 바로 그것입니다.
 
 연산자가 영향을 미치는 값을 피연산자 (operands) 라고 합니다. 가령 `1 + 2` 라는 식에서 `+` 기호는 이항 연산자이고 두 피연산자는 값 `1` 과 `2` 입니다.
@@ -122,7 +122,7 @@ Swift 에서는 다음과 같이 쓸 수 있습니다:
 
 #### 단항 마이너스 연산자 (Unary Minus Operator)
 
-수치 값의 부호는 단항 마이너스 연산자로 알려진 접두사 `-` 를 사용하여 전환할 수 있습니다: [^toggle]
+수치 값의 부호는 단항 마이너스 연산자로 알려진 접두사 `-` 를 사용하여 전환할 수 있습니다:
 
 ```swift
 let three = 3
@@ -254,7 +254,7 @@ if hasHeader {
 
 ### nil 과 합쳐진 연산자 (Nil-Coalescing Operator)
 
-nil-과 합쳐진 (nil-coalescing) 연산자 (`a ?? b`) 는 옵셔널 `a` 가 값을 가지고 있으면 감싼 것을 풀고 `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. [^coalescing] 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 안에 저장되는 타입과 같아야 합니다.
+nil-과 합쳐진 (nil-coalescing) 연산자 (`a ?? b`) 는 옵셔널 `a` 가 값을 가지고 있으면 감싼 것을 풀고 `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 안에 저장되는 타입과 같아야 합니다.
 
 nil-과 합쳐진 연산자는 아래의 코드를 줄인 것입니다:
 
@@ -264,7 +264,7 @@ a != nil ? a! : b
 
 위의 코드는 삼항 조건 연산자와 강제 풀기 (`a!`) 를 사용하여 `a` 가 `nil` 이 아닐 때는 `a` 안의 값에 접근하고, 그렇지 않으면 `b` 를 반환합니다. nil-과 합쳐진 연산자는 이 조건 검사와 풀기 작업을 아주 우아하게 감춰서 더 간결하고 읽기 쉽도록 해 줍니다.
 
-> `a` 의 값이 `nil` 이 아닌 경우 `b` 의 값은 평가되지 않습니다. 이를 짧은-회로 평가 라고 합니다. [^short-circuit]
+> `a` 의 값이 `nil` 이 아닌 경우 `b` 의 값은 평가되지 않습니다. 이를 짧은-회로 평가 라고 합니다. [^short-circuit-evaluation]
 
 아래의 예제는 nil-과 합쳐진 연산자를 사용하여 기본 색상 이름과 옵셔널인 사용자-정의 색상 이름 중에서 하나의 값을 선택합니다:
 
@@ -333,7 +333,7 @@ for i in 0..<count {
 
 논리 연산자는 불 논리 (Boolean logic) 값인 `true` 와 `false` 를 바꾸거나 결합합니다. Swift 는 C-기반 언어에서 발견되는 세 가지 표준 논리 연산자를 지원합니다:
 
-* 부정 (Logical NOT) (`!a`) [^logical-not]
+* 부정 (Logical NOT) (`!a`)
 * 논리 곱 (Logical AND) (`a && b`)
 * 논리 합 (Logical OR) (`a || b`)
 
@@ -361,7 +361,7 @@ if !allowedEntry {
 
 하나라도 값이 `false` 이면 전체 표현식은 `false` 가 됩니다. 사실 첫 번째 값이 `false` 이면 두 번째 값은 평가조차 하지 않는데, 왜냐면 전체 표현식이 `true` 가 될 가능성이 없기 때문입니다. 이를 짧은-회로 평가 (short-circuit evaluation) 라고 합니다.
 
-아래 예제에서는 두 개의 `Bool` 값을 검토하여 두 값이 모두 `true` 인 경우에만 접근을 허용합니다: [^consider]
+아래 예제에서는 두 개의 `Bool` 값을 검토하여 두 값이 모두 `true` 인 경우에만 접근을 허용합니다:
 
 ```swift
 let enteredDoorCode = true
@@ -376,7 +376,7 @@ if enteredDoorCode && passedRetinaScan {
 
 #### 논리 합 연산자 (Logical OR Operator)
 
-논리합 (logical OR) 연산자 (`a || b`) 는 두 개의 인접한 파이프 문자들로 이루어진 중위 (infix) 연산자입니다. [^adjacent] [^infix] 이것으로 논리 표현식을 만들면 두 값 중에서 하나만 `true` 가 되면 전체 표현식이 `true` 가 되게 할 수 있습니다.
+논리합 (logical OR) 연산자 (`a || b`) 는 두 개의 인접한 파이프 문자들로 이루어진 중위 (infix) 연산자입니다. 이것으로 논리 표현식을 만들면 두 값 중에서 하나만 `true` 가 되면 전체 표현식이 `true` 가 되게 할 수 있습니다.
 
 위에 있는 논리 곱 연산자와 같이 논리 합 연산자도 짧은-회로 평가를 사용해서 표현식을 검토합니다. 논리 합 표현식의 왼쪽 항이 `true` 이면 오른쪽 항은 평가를 하지 않는데, 왜냐면 나머지 부분은 전체 표현식의 결과를 변경할 수 없기 때문입니다.
 
@@ -435,31 +435,10 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 ### 관련 자료
 
-* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
-
-* [Swift 3.1: 빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
-* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
+* [Swift 3.1: 스위프트 프로그래밍 언어 (Swift Programming Language)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html)
 
 ### 참고 자료
 
-[^appear]: 'appear'는 '위치하다'로 옮깁니다. 
+[^short-circuit-evaluation]: 보다 자세한 내용은 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 부분을 참고하면 됩니다만, 특별히 따로 자료를 보지 않더라도 의미를 파악하기가 어려운 것은 아닙니다.
 
-[^infix]: 'infix는 '중위' 라고 옮길 수 있는데, 많은 경우 그냥 infix 그대로 두는 것이 좋을 것 같습니다.
-
-[^toggle]: 'toggle'은 '전환하다'라고 옮깁니다.
-
-[^coalescing]: 'coalescing'은 여기서는 '과 합쳐진'으로 옮깁니다.
-
-[^short-circuit]: 'short-circuit'은 '짧은-회로'라고 옮겼는데, 좀 더 생각해야 할 것 같습니다.
-
-[^zero-based-list]: 'zero based list'에 대한 좋은 대체 말은 좀 더 생각해야할 것 같습니다. 'list' 자체도 옮길 말을 좀 더 생각해야할 것 같습니다.
-
-[^logical-not]: 'logical NOT'을 '부정'이라고 하는데 더 좋은 말이 없을지 생각해 봅니다. 
-
-[^consider]: 여기서는 'consider'를 '검토하다'라고 옮겼습니다.
-
-[^adjacent]: 'adjacent'는 '인접한'으로 옮깁니다.
-
-[^infix]: 'infix'는 '중위'라고 옮기는데 좀 더 적당한 단어가 없는지 생각합니다.
-
-[^left-associative]: 'left-associative'는 '왼쪽-결합'으로 옮깁니다.
+[^zero-based-list]: C++의 배열 처럼 맨 처음 요소의 인덱스가 '0' 인 경우를 말합니다. 언어에 따라 맨 처음 요소의 인덱스가 '0' 이 아닌 경우가 있지만, C-계열 언어로 분류되기도 하는 Swift 는 배열의 첫 요소에 대한 인덱스가 '0' 입니다. C-계열 언어에 대해서는 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 라는 글을 참고하기 바랍니다.
