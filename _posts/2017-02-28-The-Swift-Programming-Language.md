@@ -53,7 +53,7 @@ categories: Swift Programming Language Grammar
 * Declarations
 * Attributes
 * Patterns
-* Generic Parameters and Arguments
+* [일반화된 매개 변수와 인자 (Generic Parameters and Arguments)](http://xho95.github.io/swift/language/grammar/generic/parameters/arguments/2017/03/15/Generic-Parameters-and-Arguments.html)
 * Summary of the Grammar
 
 ### Revision History
