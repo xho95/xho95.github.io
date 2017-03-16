@@ -15,6 +15,10 @@ categories: Resources Softwares Programming Swift
 
 [Mastering blur and vibrancy with iOS 8](https://applidium.com/en/news/mastering_blur_and_vibrancy_with_iOS_8/)
 
+### Contacts
+
+[iOS 주소록 API를 이용하여 아이폰 주소록 다루기](http://blog.saltfactory.net/ios/using-ios-addressbook-api.html)
+
 ### Push
 
 [GCM Topic을 이용해서 한번의 발송으로 단체 푸시를 발송하기](http://theeye.pe.kr/archives/category/dumb-programmer/dev-ios)

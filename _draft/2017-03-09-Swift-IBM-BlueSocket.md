@@ -68,7 +68,7 @@ or 'SHUTDOWN' to stop server.
 
 그러면 서버와 연결되고 아래와 같이 입력한 내용을 서버에서 다시 되돌려줍니다. 
 
-_그림 넣기_
+![](../assets/BlueSocket/mastering-client-mac.jpg)
 
 `SHUTDOWN` 을 입력해서 서버를 종료할 수도 있습니다.
 

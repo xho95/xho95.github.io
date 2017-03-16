@@ -1,5 +1,19 @@
 여기서는 기초 수학과 관련한 자료를 정리합니다.
 
+[Euler](https://github.com/mattt/Euler) : custom operators in the "Math Symbols" character set to implement functions using traditional mathematical notation
+
+### Integrator
+
+[A C++ Integrator Class](http://collaboration.cmc.ec.gc.ca/science/rpn/biblio/ddj/Website/articles/DDJ/1995/9512/9512d/9512d.htm)
+
+#### ODE
+
+[ODE solvers in Julia](http://www.control.lth.se/media/Staff/GabrielIngesson/JuliaOde.pdf)
+
+[Solving ordinary differential equations in C++](https://www.codeproject.com/Articles/43607/Solving-ordinary-differential-equations-in-C)
+
+[odeint](http://headmyshoulder.github.io/odeint-v2/)
+
 ### 참고 자료
 
 [모든 자연수의 합은 -1/12인가?](http://m.blog.daum.net/elliotinnewyork/302)

@@ -83,3 +83,4 @@ DML, DDL 만 넣으면 되는데 (_블랑코라서?_), 테스트용으로는 Sel
 
 [ubuntu mysql 설치 및 설정하기](http://jaesu.tistory.com/entry/ubuntu-mysql-설치-및-설정하기)
 
+[Mac에서 MySQL 설치와 실행 그리고 몇가지 유의사항](http://miconblog.com/archives/2014/11/mac에서-mysql-설치와-실행-그리고-몇가지-유의사항/) : 맥 관련 자료지만 MySQL 서버 명령을 통해서 DB 를 다루는 방법이 잘 설명되어 있습니다.
