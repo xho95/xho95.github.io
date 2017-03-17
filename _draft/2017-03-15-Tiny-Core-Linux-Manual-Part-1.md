@@ -220,6 +220,10 @@ menuentry "Core" {
 
 ### 19 장. 부팅 과정 (The boot process)
 
+### 23 장. 자동화된 네트워크 설치관리자 (Automated newwork installer)
+
+### 27 장. 네트워크 부팅 (Network booting)
+
 
 
 

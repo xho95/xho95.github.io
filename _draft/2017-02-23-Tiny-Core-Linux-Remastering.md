@@ -1,3 +1,10 @@
+일단 이 글은 [Remastering TC](http://wiki.tinycorelinux.net/wiki:remastering) 자료를 정리한 것입니다. 
+
+정리한 내용말고도 [Dynamic (boot-time) remastering](http://wiki.tinycorelinux.net/wiki:dynamic_root_filesystem_remastering) 자료도 볼 필요가 있습니다. [^dynamic-remastering]
+
+[Tiny Core Linux Customizations for Remastering](http://www.canbike.org/off-topic/aggregate/tiny-core-linux-customizations-for-remastering.html#isoextract) 글도 볼만 한 것 같습니다. [^canbike] 
+
+
 ### TC 재기록하기 (Remastering)
 
 이 가이드는 사용자가 명령 줄을 사용하는데 익숙하다고 가정합니다.
@@ -127,3 +134,7 @@ You may find ISO Master useful. Its a GUI disk image editing tool, available in 
 [^zetawiki-zcat]: [리눅스 zcat](http://zetawiki.com/wiki/리눅스_zcat)
 
 [^egloos-847559]: [cpio명령어](http://egloos.zum.com/malgum/v/847559)
+
+[^dynamic-remastering]: [Dynamic (boot-time) remastering](http://wiki.tinycorelinux.net/wiki:dynamic_root_filesystem_remastering)
+
+[^canbike]: [Tiny Core Linux Customizations for Remastering](http://www.canbike.org/off-topic/aggregate/tiny-core-linux-customizations-for-remastering.html#isoextract)
