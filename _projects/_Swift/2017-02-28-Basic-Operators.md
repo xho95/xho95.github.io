@@ -30,12 +30,12 @@ Swift 는 또 C 에서는 없는 두 개의 범위 연산자 (`a..<b` 와 `a...b
 
 대입 연산자 (`a = b`) 는 `a` 의 값을 `b` 의 값으로 초기화하거나 갱신합니다:
 
-{% highlight swift %}
+```swift
 let b = 10
 var a = 5
 a = b
 // a 는 이제 10 이 됩니다.
-{% endhighlight %}
+```
 
 대입의 오른쪽이 여러 값을 갖고 있는 튜플이라면, 그 요소들은 분해되어 여러 상수나 변수로 한번에 분해되어 옮겨집니다:
 
@@ -86,7 +86,7 @@ C 및 Objective-C 의 산술 연산자들과는 다르게 Swift 의 산술 연�
 
 나머지 연산자가 어떻게 동작하는지 알아봅시다. `9 % 4` 를 계산하려면 먼저 얼마나 많은 `4` 가 `9` 안에 들어갈 수 있는지 봅니다:
 
-![image]({{ site.url }}/assets/Swift/remainderInteger_2x.png)
+![image](https://xho95.github.io/assets/Swift/remainderInteger_2x.png)
 
 `9` 안에는 `4` 가  2 개 들어갈 수 있으며 나머지는 `1` 입니다. (주황색으로 나타냈습니다).
 
