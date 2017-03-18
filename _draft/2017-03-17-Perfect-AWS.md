@@ -94,6 +94,8 @@ Success.
 
 RUN 에서 Local Exe 를 눌러서 로컬에서 테스트를 해봅니다. 그러면 서버가 실행됩니다. 브라우저에서 localhost:8080 으로 접속해서 결과를 확인할 수 있습니다.
 
+![](../assets/Perfect/perfect-assistant-local-test.jpeg)
+
 ### AWS 에 배포하기 
 
 #### 배포하기 
@@ -131,6 +133,10 @@ Reload 를 여러번 눌러서 선택해서 Save 합니다.
 이 과정이 생각보다 시간이 많이 걸리는 것 같습니다. 기다리다보면 결국 Success 가 뜹니다.
 
 이제 EC2 콘솔에서 인스턴스를 선택해서 Public DNS 로 접속해보면 서버가 잘 동작한다는 것을 알 수 있습니다. 
+
+![](../assets/Perfect/perfect-aws-success.jpeg)
+
+나중에 실제 서비스를 만든다면 DNS 등을 설정하면 될 것입니다. _이부분은 좀 더확인하고 정리합니다._
 
 #### 서버에 SSH 로 접속하기
 

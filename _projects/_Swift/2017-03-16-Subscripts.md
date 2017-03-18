@@ -1,6 +1,6 @@
-## Subscripts
+## 첨자 (Subscripts)
 
-Classes, structures, and enumerations can define subscripts, which are shortcuts for accessing the member elements of a collection, list, or sequence. You use subscripts to set and retrieve values by index without needing separate methods for setting and retrieval. For example, you access elements in an `Array` instance as `someArray[index]` and elements in a `Dictionary` instance as `someDictionary[key]`.
+클래스 Classes, structures, and enumerations can define subscripts, which are shortcuts for accessing the member elements of a collection, list, or sequence. You use subscripts to set and retrieve values by index without needing separate methods for setting and retrieval. For example, you access elements in an `Array` instance as `someArray[index]` and elements in a `Dictionary` instance as `someDictionary[key]`.
 
 You can define multiple subscripts for a single type, and the appropriate subscript overload to use is selected based on the type of index value you pass to the subscript. Subscripts are not limited to a single dimension, and you can define subscripts with multiple input parameters to suit your custom type’s needs.
 
@@ -113,7 +113,7 @@ var matrix = Matrix(rows: 2, columns: 2)
 
 The preceding example creates a new `Matrix` instance with two rows and two columns. The `grid` array for this `Matrix` instance is effectively a flattened version of the matrix, as read from top left to bottom right:
 
-![image:](../Art/subscriptMatrix01_2x.png)
+![image:](https://xho95.github.io/assets/Swift/subscriptMatrix01_2x.png)
 
 Values in the matrix can be set by passing row and column values into the subscript, separated by a comma:
 
@@ -124,7 +124,7 @@ matrix[1, 0] = 3.2
 
 These two statements call the subscript’s setter to set a value of `1.5` in the top right position of the matrix (where `row` is `0` and `column` is `1`), and `3.2` in the bottom left position (where `row` is `1` and `column` is `0`):
 
-![image:](../Art/subscriptMatrix02_2x.png)
+![image:](https://xho95.github.io/assets/Swift/subscriptMatrix02_2x.png)
 
 The `Matrix` subscript’s getter and setter both contain an assertion to check that the subscript’s `row` and `column` values are valid. To assist with these assertions, `Matrix` includes a convenience method called `indexIsValid(row:column:)`, which checks whether the requested `row` and `column` are inside the bounds of the matrix:
 
