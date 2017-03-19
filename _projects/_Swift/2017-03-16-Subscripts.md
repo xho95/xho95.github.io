@@ -1,12 +1,12 @@
 ## 첨자 (Subscripts)
 
-클래스 Classes, structures, and enumerations can define subscripts, which are shortcuts for accessing the member elements of a collection, list, or sequence. You use subscripts to set and retrieve values by index without needing separate methods for setting and retrieval. For example, you access elements in an `Array` instance as `someArray[index]` and elements in a `Dictionary` instance as `someDictionary[key]`.
+클래스, 구조 타입 및 열거 타입은 첨자를 정의할 수 있는데 이를 사용해서 집합 (collection), 목록 (list) 또는 순열 (sequence) 의 멤버 요소에 바로 접근할 수 있습니다. 첨자를 사용하면 별도의 메소드 없이도 인덱스를 사용해서 값을 넣거나 불러올 수 있습니다. 예를 들어 `Array` 인스턴스의 요소에는 `someArray[index]` 와 같이 `Dictionary` 인스턴스 요소에는 `someDictionary[key]` 와 같이 접근할 수 있습니다.
 
-You can define multiple subscripts for a single type, and the appropriate subscript overload to use is selected based on the type of index value you pass to the subscript. Subscripts are not limited to a single dimension, and you can define subscripts with multiple input parameters to suit your custom type’s needs.
+하나의 타입에 대해 여러 개의 첨자를 정의할 수 있으며 이 때 첨자에 전달되는 인덱스 값의 타입에 따라 추가 정의된 첨자 중에서 가장 적당한 것이 선택됩니다. 첨자는 단일 차원으로만 쓸 수 있는 것은 아니어서 사용자 정의 타입에 필요하다면 여러 개의 입력 매개 변수를 가지는 첨자를 정의할 수도 있습니다.
 
-### Subscript Syntax
+### 첨자 문법 (Subscript Syntax)
 
-Subscripts enable you to query instances of a type by writing one or more values in square brackets after the instance name. Their syntax is similar to both instance method syntax and computed property syntax. You write subscript definitions with the `subscript` keyword, and specify one or more input parameters and a return type, in the same way as instance methods. Unlike instance methods, subscripts can be read-write or read-only. This behavior is communicated by a getter and setter in the same way as for computed properties:
+첨자는 타입의 인스턴스를 조회할 수 있도록 하는 것으로 인스턴스의 이름 뒤에 하나 이상의 값을 대괄호 속에 쓰면 됩니다. 문법은 인스턴스 메소드 문법 및 계산 속성의 문법 이 두가지 모두와 비슷합니다. 첨자를 정의하려면 `subscript` 키워드와 하나 이상의 입력 매개 변수를 쓴 다음 반환 값을 쓰면 되는데 이러한 방법은 인스턴스 메소드와 같습니다. 인스턴스 메소드와 다른 점이라면 첨자의 경우 읽기-쓰기 또는 읽기-전용이 될 수 있다는 것입니다. 이 동작은 게터 (getter) 와 세터 (setter) 로 전달되는데 이러한 방법은 계산 속성과 같습니다:
 
 ```swift
 subscript(index: Int) -> Int {

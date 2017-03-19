@@ -34,8 +34,7 @@ Enter same passphrase again:
 ```
 
 ```
-Your identification has been saved in /.../.ssh/perfect-key.
-Your public key has been saved in /.../.ssh/perfect-key.pub.
+...
 
 The key fingerprint is:
 SHA256:... perfect-key
@@ -58,9 +57,8 @@ $ aws ec2 import-key-pair --key-name "perfect-key" --public-key-material file://
 
 {
     "KeyName": "perfect-key", 
-    "KeyFingerprint": "69:85:f4:e3:43:02:c0:84:f2:13:ee:b3:f6:b0:17:2c"
+    "KeyFingerprint": "...:..."
 }
-
 ```
 
 #### Security Group 설정하기 
