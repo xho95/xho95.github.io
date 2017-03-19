@@ -12,6 +12,16 @@
 
 [파일의 완전 삭제란 - 제로필과 DoD 5220.22-M 와이핑](http://cappleblog.co.kr/78) 글은 위의 글의 원본인 것 같습니다. [^cappleblog-78]
 
+[How to securely erase hard drives (HDDs) and solid state drives (SSDs)](http://www.zdnet.com/article/how-to-securely-erase-hard-drives-hdds-and-solid-state-drives-ssds/) [^zdnet-erase]
+
+[List of data-erasing software](https://en.wikipedia.org/wiki/List_of_data-erasing_software) [^wiki-erasing]
+
+[DBAN](https://dban.org) : Hard Drive Erase & Data Clearing Utility [^dban]
+
+[Open source program to wipe hard drive](http://www.tomsguide.com/answers/id-2416361/open-source-program-wipe-hard-drive.html) [^tomsguide-wipe]
+
+[Darik's Boot and Nuke](https://sourceforge.net/projects/dban/?source=typ_redirect) [^sourceforge-dban]
+
 ### 참고 자료
 
 [^stackoverflow-13390843]: [How to erase a Hard Disk Drive](http://stackoverflow.com/questions/13390843/how-to-erase-a-hard-disk-drive)
@@ -27,3 +37,13 @@
 [^zqktlwi4fecvo6ri]: [데이터 완전 삭제](https://zqktlwi4fecvo6ri.onion.to/wiki/데이터_완전_삭제)
 
 [^cappleblog-78]: [파일의 완전 삭제란 - 제로필과 DoD 5220.22-M 와이핑](http://cappleblog.co.kr/78)
+
+[^zdnet-erase]: [How to securely erase hard drives (HDDs) and solid state drives (SSDs)](http://www.zdnet.com/article/how-to-securely-erase-hard-drives-hdds-and-solid-state-drives-ssds/)
+
+[^wiki-erasing]: [List of data-erasing software](https://en.wikipedia.org/wiki/List_of_data-erasing_software)
+
+[^dban]: [DBAN](https://dban.org) : Hard Drive Erase & Data Clearing Utility
+
+[^sourceforge-dban]: [Darik's Boot and Nuke](https://sourceforge.net/projects/dban/?source=typ_redirect)
+
+[^tomsguide-wipe]: [Open source program to wipe hard drive](http://www.tomsguide.com/answers/id-2416361/open-source-program-wipe-hard-drive.html)

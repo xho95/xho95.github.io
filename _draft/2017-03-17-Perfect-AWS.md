@@ -1,3 +1,9 @@
+### Perfect Assistant
+
+명령줄로 할 수 있는 것을 명령줄을 사용하지 않고 할 수 있도록 도와주는 도구입니다. 프로젝트를 생성하고 의존성 파일을 작성하는 등의 동작을 버튼 클릭으로 간단하게 수행해 줍니다. 말 그대로 도우미 역할을 수행합니다. 
+
+일단 사용법은 동영상을 보면 될 것 같아서 따로 설명을 드리지 않아도 될 것 같습니다. 나중에 좀 더 사용해보고 따로 정리할 수 있도록 하겠습니다. 
+
 ### AWS 설정하기
 
 #### AWS CLI 설치하기
@@ -136,7 +142,7 @@ Reload 를 여러번 눌러서 선택해서 Save 합니다.
 
 나중에 실제 서비스를 만든다면 DNS 등을 설정하면 될 것입니다. _이부분은 좀 더확인하고 정리합니다._
 
-#### 서버에 SSH 로 접속하기
+### 서버에 SSH 로 접속하기
 
 필요하다면 AWS 서버에 SSH 키로 접속할 수 있습니다.
 
@@ -144,28 +150,7 @@ Reload 를 여러번 눌러서 선택해서 Save 합니다.
 $ ssh -i ~/.ssh/perfect-key ubuntu@ec2-13-124-50-118.ap-northeast-2.compute.amazonaws.com
 ```
 
-위와 같이 하면 콘솔이 AWS 에 있는 ubuntu 로 바뀝니다.
-
-```
-$ ls -al
-
-total 44
-drwxr-xr-x 5 ubuntu ubuntu 4096 Jan 12 19:36 .
-drwxr-xr-x 3 root   root   4096 Sep 28 17:34 ..
--rw------- 1 ubuntu ubuntu 3235 Jan 12 19:37 .bash_history
--rw-r--r-- 1 ubuntu ubuntu  220 Aug 31  2015 .bash_logout
--rw-r--r-- 1 ubuntu ubuntu 3771 Aug 31  2015 .bashrc
-drwx------ 2 ubuntu ubuntu 4096 Sep 28 17:44 .cache
--rw-rw-r-- 1 ubuntu ubuntu    0 Sep 28 17:47 .cloud-locale-test.skip
-drwx------ 2 ubuntu ubuntu 4096 Sep 28 18:03 .lldb
--rw-r--r-- 1 ubuntu ubuntu  655 Jun 24  2016 .profile
-drwx------ 2 ubuntu ubuntu 4096 Sep 28 17:34 .ssh
--rw-r--r-- 1 ubuntu ubuntu    0 Sep 28 17:47 .sudo_as_admin_successful
--rw------- 1 ubuntu ubuntu  625 Sep 28 18:02 .viminfo
--rw-rw-r-- 1 ubuntu ubuntu  166 Jan 12 19:34 .wget-hsts
-```
-
-서버에 잘 접속하는 것을 알 수 있습니다.
+위와 같이 하면 콘솔이 AWS 에 있는 ubuntu 로 바뀝니다. 서버에 잘 접속하는 것을 알 수 있습니다.
 
 ```
 $ cd /
