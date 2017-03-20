@@ -1,5 +1,7 @@
 Swift 로 PostgreSQL 을 사용할 수 있는 패키지들을 정리합니다. 
 
+일단은 Perfect 프레임웍을 사용하면서 자연스럽게 사용해보면 될 것 같습니다. 
+
 ### 참고 자료
 
 [PostgreSQL](https://github.com/Zewo/PostgreSQL) : 또다른 패키지입니다. Swift 3.0 지원한다고 하니 살펴보면 좋을 것 같습니다. [Zewo/SQL](https://github.com/Zewo/SQL) 라는 저장소에 SQL 관련 매뉴얼이 따로 있습니다. 일단 이 패키지를 기본으로 하는 것이 좋아 보입니다.

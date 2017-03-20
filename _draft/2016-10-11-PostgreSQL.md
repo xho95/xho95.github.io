@@ -71,6 +71,12 @@ postgresql 공식 문서의 도움말을 보면 하나는 sql을 사용하는 �
 
 나중에 정리해야 합니다. 
 
+### pgAdmin 4 사용하기
+
+위에서 한 DB 및 User 생성 등은 [pgAdmin 4](https://www.pgadmin.org) 라는 앱을 설치해서 사용하면 됩니다.
+
+단일한 앱으로 되어 있기 때문에 업데이트도 무척 편한데, 일단 해당 버전을 내려받은 다음 응용 프로그램 폴더에서 기존 앱을 새 앱으로 바로 대체하면 업데이트가 됩니다. 
+
 ### 고찰하기
 
 위의 글에서 보듯이 PostgreSQL은 PostgreSQL 자체 명령이나 SQL 구문 모두 사용할 수 있는 것 같습니다. 
@@ -114,3 +120,5 @@ postgresql 공식 문서의 도움말을 보면 하나는 sql을 사용하는 �
 [^app-createdb]: [createdb](https://www.postgresql.org/docs/9.6/static/app-createdb.html)
 
 [Postgres Guide](http://postgresguide.com)
+
+[^pgadmin]: [pgAdmin 4](https://www.pgadmin.org)
