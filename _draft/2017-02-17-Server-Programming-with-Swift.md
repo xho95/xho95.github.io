@@ -10,6 +10,8 @@ GitHub 에 따로 [swift-server](https://github.com/swift-server) 라는 저장�
 
 일단 그 중에서 가장 유명한 것은 [Perfect](http://perfect.org) 일 것 같습니다. [^perfect] [^github-perfect]
 
+[Building a Production Server Swift App: Lessons Learned](https://realm.io/news/slug-jeff-bergier-building-production-server-swift-app/) 같은 글도 있습니다. [^realm-jeff]
+
 ### 개발 하기
 
 Swift 로 서버 개발하기 위한 자료로는 [Swift로 서버 제작하기: Docker + Swift Server-Side](https://realm.io/kr/news/letswift-swift-server-side/) 와 [Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started) 를 참고할 만 합니다. [^realm-swift-server] [^ray-server]
@@ -31,3 +33,5 @@ Swift 로 서버 개발하기 위한 자료로는 [Swift로 서버 제작하기:
 [^realm-swift-server]: [Swift로 서버 제작하기: Docker + Swift Server-Side](https://realm.io/kr/news/letswift-swift-server-side/) : Swift 로 Server 를 개발하는 것에 대해서 LetSwift 에서 발표된 자료입니다.
 
 [^ray-server]: [Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started)
+
+[^realm-jeff]: [Building a Production Server Swift App: Lessons Learned](https://realm.io/news/slug-jeff-bergier-building-production-server-swift-app/)

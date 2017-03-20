@@ -14,9 +14,13 @@
 
 [odeint](http://headmyshoulder.github.io/odeint-v2/)
 
-### 참고 자료
+### 교양 수학
 
 [모든 자연수의 합은 -1/12인가?](http://m.blog.daum.net/elliotinnewyork/302)
+
+[“수학에 미치면 게임보다 더 재밌다”](http://m.blog.naver.com/choi_joonsuk/220648924304) : "프린스턴 수학 안내서" 라는 책을 소개하는 글입니다.
+
+### 참고 자료
 
 [공돌이의 수학정리노트](https://wikidocs.net/book/563) : 기초 수학에 대해서 정리가 잘 된 곳입니다.
 
