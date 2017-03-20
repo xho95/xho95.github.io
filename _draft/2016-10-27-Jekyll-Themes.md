@@ -1,1 +1,0 @@
-[Jekyll Themes](http://jekyllthemes.org)
