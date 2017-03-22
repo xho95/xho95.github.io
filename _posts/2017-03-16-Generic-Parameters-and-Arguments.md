@@ -12,6 +12,7 @@ categories: Swift Language Grammar Generic Parameters Arguments
 
 Swift 의 일반화 (generic) 에 대한 개요는 [Generics]() 에서 볼 수 있습니다.
 
+<a name="generic-parameter-clause"></a>
 ### 일반화된 매개 변수 구절 (Generic Parameter Clause)
 
 일반화된 매개 변수 구절은 일반화된 타입 또는 함수의 타입 매개 변수를 지정할 때 이 매개 변수와 관련된 제약 조건과 요구 사항을 함께 지정합니다. 일반화된 매개 변수 구절은 꺾쇠 괄호 (<>) 로 감싸며 다음과 같은 양식을 가집니다:
@@ -96,7 +97,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-일반화된 매개 변수 구절([Generic Parameter Clause]()) 에서 언급했듯이 일반화된 인자 구절을 사용하여 일반화도니 함수나 초기자의 타입 매개 변수를 지정하지 않도록 합니다.
+일반화된 매개 변수 구절([Generic Parameter Clause](#generic-parameter-clause)) 에서 언급했듯이 일반화된 인자 구절을 사용하여 일반화도니 함수나 초기자의 타입 매개 변수를 지정하지 않도록 합니다.
 
 > 일반화된 인자 구절의 문법
 > 
