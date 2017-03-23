@@ -45,6 +45,10 @@ bundle exec jekyll serve
 
 기껏 했는데 로컬에서만 적용되고 GitHub Pages 에서는 지원안하는 테마인 것 같습니다. GitHub Pages 에서 쓸려면 젬 기반 테마가 아니라 기존 방식으로 적용해야할 것 같습니다. 
 
+### 예전 방식으로 테마 추가하기
+
+GitHub Pages 에 있는 [Adding a Jekyll theme to your GitHub Pages site](https://help.github.com/articles/adding-a-jekyll-theme-to-your-github-pages-site/) 설명을 참고해서 실습하도록 합니다. [^help-theme]
+
 ### 참고 자료
 
 [^docs-themes]: 젬 기반 테마에 대해서는 Jekyll 의 공식 문서의 [Themes](https://jekyllrb.com/docs/themes/) 에 자세히 설명하고 있습니다. 해당 글과 [Jekyll default installation doesn't have _layouts directory](http://stackoverflow.com/questions/38891463/jekyll-default-installation-doesnt-have-layouts-directory) 글을 보면 젬 기반 테마를 사용하면 예전에 있었던 **_includes** 같은 디렉토리들이 감춰진다는 것을 알 수 있습니다.
@@ -56,3 +60,5 @@ bundle exec jekyll serve
 [^lanyon]: [Lanyon](http://lanyon.getpoole.com) 은 Mark Otto 란 분이 만든 테마로 젬 기반 테마로도 제공됩니다. GitHub 저장소는 [poole/lanyon](https://github.com/poole/lanyon) 입니다.
 
 [^gems-lanyon]: [search for jekyll-theme](https://rubygems.org/search?utf8=✓&query=jekyll-theme) 에서 Lanyon 테마로 검색한 결과는 [jekyll-theme-lanyon](https://rubygems.org/gems/jekyll-theme-lanyon) 입니다.
+
+[^help-theme]: [Adding a Jekyll theme to your GitHub Pages site](https://help.github.com/articles/adding-a-jekyll-theme-to-your-github-pages-site/) : Jekyll 블로그에 테마를 적용하려면 결국 예전 방식이 더 좋은 것 같습니다.

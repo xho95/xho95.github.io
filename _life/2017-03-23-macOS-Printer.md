@@ -1,0 +1,1 @@
+[맥OS에서 프린터 설정하기 - CLX-3180 Series의 경우](http://reinia.net/1019)

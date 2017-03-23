@@ -55,6 +55,8 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 
 [Dynamic (boot-time) remastering](http://wiki.tinycorelinux.net/wiki:dynamic_root_filesystem_remastering) [^dynamic-remastering]
 
+[Remastering Tinycore.gz HowTo - A simple way](http://forum.tinycorelinux.net/index.php?topic=17415.0) : remastering 에 대한 질문 답변 글입니다.
+
 #### 설치관련 정보
 
 실제로 설치할 것은 아니지만 참고 자료를 활용합니다. [^kiros33-tiny] [^kiros33-tiny-64]
