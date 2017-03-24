@@ -1,8 +1,8 @@
 ## 첨자 (Subscripts)
 
-클래스, 구조 타입 및 열거 타입은 첨자를 정의할 수 있는데 이를 사용해서 집합 (collection), 목록 (list) 또는 순열 (sequence) 의 멤버 요소에 바로 접근할 수 있습니다. 첨자를 사용하면 별도의 메소드 없이도 인덱스를 사용해서 값을 넣거나 불러올 수 있습니다. 예를 들어 `Array` 인스턴스의 요소에는 `someArray[index]` 와 같이 `Dictionary` 인스턴스 요소에는 `someDictionary[key]` 와 같이 접근할 수 있습니다.
+클래스, 구조 타입, 그리고 열거 타입은 첨자를 정의할 수 있는데 이를 사용해서 집합 (collection), 목록 (list) 또는 순열 (sequence) 의 멤버 요소에 바로 접근할 수 있습니다. 첨자를 사용하면 별도의 메소드 없이도 인덱스를 사용해서 값을 넣거나 불러올 수 있습니다. 예를 들어 `Array` 인스턴스 요소에는 `someArray[index]` 와 같이, `Dictionary` 인스턴스 요소에는 `someDictionary[key]` 와 같이 접근할 수 있습니다.
 
-하나의 타입에 대해 여러 개의 첨자를 정의할 수 있으며 이 때 첨자에 전달되는 인덱스 값의 타입에 따라 추가 정의된 첨자 중에서 가장 적당한 것이 선택됩니다. 첨자는 단일 차원으로만 쓸 수 있는 것은 아니어서 사용자 정의 타입에 필요하다면 여러 개의 입력 매개 변수를 가지는 첨자를 정의할 수도 있습니다.
+하나의 타입에 대해 여러 개의 첨자를 추가 정의할 수 있으며 이 때 첨자에 전달되는 인덱스 값의 타입에 따라 가장 적당한 버전이 선택됩니다. 첨자는 단일 차원으로만 쓸 수 있는 것은 아니어서 사용자 정의 타입에 필요하다면 여러 입력 매개 변수를 가지는 첨자를 정의할 수도 있습니다.
 
 ### 첨자 문법 (Subscript Syntax)
 
@@ -19,9 +19,9 @@ subscript(index: Int) -> Int {
 }
 ```
 
-The type of `newValue` is the same as the return value of the subscript. As with computed properties, you can choose not to specify the setter’s `(newValue)` parameter. A default parameter called `newValue` is provided to your setter if you do not provide one yourself.
+`newValue` 의 타입은 첨자가 반환하는 값의 타입과 같습니다. 계산 속성과 마찬가지로 세터 (setter) 의 `(newValue)` 매개 변수를 지정하지 않아도 됩니다. 따로 지정하지 않으면 세터 (setter) 에 `newValue` 라는 기본 매개 변수가 제공됩니다.
 
-As with read-only computed properties, you can simplify the declaration of a read-only subscript by removing the `get` keyword and its braces:
+일기-전용 계산 속성과 같이 읽기-전용 첨자의 경우 `get` 키워드와 중괄호를 없애서 정의를 더 단순하게 할 수도 있습니다:
 
 ```swift
 subscript(index: Int) -> Int {
@@ -29,7 +29,7 @@ subscript(index: Int) -> Int {
 }
 ```
 
-Here’s an example of a read-only subscript implementation, which defines a `TimesTable` structure to represent an n-times-table of integers:
+다음은 읽기-전용 첨자의 구현 예로 구구단 (`TimesTable`) 구조 타입을 정의한 것으로 정수 n에 대해 구구단 n-단을 표현하도록 한 것입니다:
 
 ```swift
 struct TimesTable {
@@ -43,19 +43,17 @@ print("six times three is \(threeTimesTable[6])")
 // Prints "six times three is 18"
 ```
 
-In this example, a new instance of `TimesTable` is created to represent the three-times-table. This is indicated by passing a value of `3` to the structure’s `initializer` as the value to use for the instance’s `multiplier` parameter.
+이 예에서는 `TimesTable` 의 새 인스턴스를 만들어서 구구단 3단을 표현하고 있습니다. 여기서는 구조 타입의 `initializer` 에 값 `3`을 전달해서 인스턴스의 `multiplier` 매개 변수에 사용하도록 지정하고 있습니다.
 
-You can query the `threeTimesTable` instance by calling its subscript, as shown in the call to `threeTimesTable[6]`. This requests the sixth entry in the three-times-table, which returns a value of `18`, or `3` times `6`.
+`threeTimesTable[6]` 호출에서 보듯이 첨자를 호출해서 `threeTimesTable` 인스턴스에 질의할 수 있습니다. 여기서는 구구단 3단의 6번째의 값을 요청한 것으로 값 `18` 또는 `3` 곱하기 `6` 을 반환합니다.
 
-> NOTE
-> 
-> An n-times-table is based on a fixed mathematical rule. It is not appropriate to set `threeTimesTable[someIndex]` to a new value, and so the subscript for `TimesTable` is defined as a read-only subscript.
+> 구구단에서 n-단 이라는 것은 고정된 수학 규칙에 기반한 것입니다. 즉  `threeTimesTable[someIndex]` 를 새 값으로 설정할 일은 없는 셈이므로 구구단 (`TimesTable`) 의 첨자는 일기-전용 첨자로 정의된 것입니다.
 
-### Subscript Usage
+### 첨자 사용법 (Subscript Usage)
 
-The exact meaning of “subscript” depends on the context in which it is used. Subscripts are typically used as a shortcut for accessing the member elements in a collection, list, or sequence. You are free to implement subscripts in the most appropriate way for your particular class or structure’s functionality.
+“첨자” 의 정확한 의미는 그것이 사용된 문맥에 달려 있습니다. 첨자는 보통 집합, 목록 또는 순열의 멤버 요소에 바로 접근하기 위한 용도로 사용됩니다. 특정 클래스나 구조 타입의 기능에 가장 적합한 방식으로 자유롭게 첨자를 구현할 수 있습니다.
 
-For example, Swift’s `Dictionary` type implements a subscript to set and retrieve the values stored in a `Dictionary` instance. You can set a value in a dictionary by providing a key of the dictionary’s key type within subscript brackets, and assigning a value of the dictionary’s value type to the subscript:
+예를 들면 Swift 의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장된 값을 설정하고 불러오기 위해 첨자를 구현합니다. 사전 타입에 값을 설정하려면 첨자 대괄호 안에 사전 키 타입의 키를 넣은 다음 첨자에 사전 값 타입의 값을 할당하면 됩니다:
 
 ```swift
 var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
