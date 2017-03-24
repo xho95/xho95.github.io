@@ -8,6 +8,8 @@
 
 이 곳의 내용은 ProGit 내용 중에서 가장 기본이 되는 2장의 내용을 기초로 정리하였습니다.[^ProGit_Ch2]
 
+[Learn Git in 30 Minutes](http://tutorialzine.com/2016/06/learn-git-in-30-minutes/) 글도 참고해볼 필요가 있습니다. 운영 체제를 통합해서 기본에 대한 설명을 하고 있습니다. 흐름은 좋은 것 같습니다. 
+
 ### Git 설치
 
 Linux에 Git을 설치할 때는 보통 패키지 관리 도구를 사용하여 설치합니다. 예를 들어 Ubuntu 같이 데비안 계열 리눅스라면 다음과 같이 `apt-get` 을 사용하면 됩니다.

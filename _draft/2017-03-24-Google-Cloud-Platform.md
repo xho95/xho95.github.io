@@ -1,0 +1,1 @@
+[Cloud Speech API Beta](https://cloud.google.com/speech/?utm_source=google&utm_medium=cpc&utm_campaign=2016-q1-cloud-japac-kr-gae-skws-freetrial&utm_content=en&gclid=CjwKEAjw5M3GBRCTvpK4osqj4X4SJAABRJNCSWHjocIWT2uDmMtUHS2z6Q31rMbGz-JO7I-9bRR4vhoCiWPw_wcB)
