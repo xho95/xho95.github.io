@@ -1,5 +1,7 @@
 [라즈베리파이 개론 - 전원 케이블 선택](http://nogada-lab.tistory.com/14)
 
+[라즈베리파이 개발환경 꾸미기 #1. 라즈비안 OS 설치하기](http://blog.xcoda.net/82)
+
 ### SD 카드 선택
 
 [라즈베리파이 개론 - SD 카드 선택](http://ngd.kr/13)
@@ -17,3 +19,5 @@
 [라즈베리 파이 시작하기_라즈베리 파이 원격제어 하기](https://kocoafab.cc/tutorial/view/314)
 
 [라즈베리파이 맥과 키보드와 모니터 없이 연결하기](https://hojunpark.wordpress.com/2016/03/31/라즈베리파이-맥과-키보드와-모니터-없이-연결하기/)
+
+[키보드/모니터 없이 랜선만으로 raspberry pi 사용하기- 인터넷 공유](http://blog.xcoda.net/93)
