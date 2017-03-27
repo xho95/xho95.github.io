@@ -11,7 +11,7 @@
 	* General Conventions
 	* Parameters
 	* Argument Labels
-* [Special Instructions](#Special)
+* [Special Instructions](#special-instructions)
 
 <a name="#fundamentals"></a>
 ### Fundamentals
@@ -129,7 +129,7 @@ x.move(from: x, to: y)
 
 * Label all other arguments.
 
-<a name="#Special"></a>
+<a name="#special-instructions"></a>
 ### Special Instructions
 
 * Label closure parameters and tuple members where they appear in your API.
