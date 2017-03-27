@@ -128,7 +128,7 @@ x.move(from: x, to: y)
 
 * Label all other arguments.
 
-<a link="#special"></a>
+<a href="#special"></a>
 ### Special Instructions
 
 * Label closure parameters and tuple members where they appear in your API.
