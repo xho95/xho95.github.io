@@ -2,7 +2,7 @@
 
 ### Table of Contents
 
-* [Fundamentals](#Fundamentals)
+* [Fundamentals](#fundamentals)
 * Naming
 	* Promote Clear Usage
 	* Strive for Fluent Usage
@@ -13,7 +13,7 @@
 	* Argument Labels
 * [Special Instructions](#special)
 
-<a id="#fundamentals"></a>
+<a name="#fundamentals"></a>
 ### Fundamentals
 
 * **Clarity at the point of use** is your most important goal. Entities such as methods and properties are declared only once but used repeatedly. Design APIs to make those uses clear and concise. When evaluating a design, reading a declaration is seldom sufficient; always examine a use case to make sure it looks clear in context.
@@ -129,7 +129,7 @@ x.move(from: x, to: y)
 
 * Label all other arguments.
 
-<a id="#special"></a>
+<a name="#special"></a>
 ### Special Instructions
 
 * Label closure parameters and tuple members where they appear in your API.

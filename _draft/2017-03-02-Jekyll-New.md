@@ -1,3 +1,5 @@
+이 글도 필요한 부분을 옮기고 지우도록 합니다. 
+
 새로운 [Jekyll](https://jekyllrb.com) 의 구조에 대해서 정리합니다. 일단 Jekyll 홈페이지의 내용부터 정리합니다. [^jekyllrb]
 
 최근의 Jekyll 은 설치하면 [Minima](https://github.com/jekyll/minima) 테마를 사용합니다. [^jekyll-minima] [^jekyllrb-themes] 이전 질문답변을 참고하기 바랍니다.

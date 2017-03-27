@@ -16,4 +16,14 @@
 
 ### Anchor
 
-[마크다운 사용법 정리](http://taewan.kim/blog/2016/04/04/markdown/#chapter-1) 의 **네임드 앵커** 부분을 보면 됩니다.
+[마크다운 사용법 정리](http://taewan.kim/blog/2016/04/04/markdown/#chapter-1) 의 **네임드 앵커** 부분 설명이 잘못되었습니다. 실제로는 아래와 같이 name 을 사용해야 합니다.
+
+```
+<a name="test"></a>
+
+...
+
+[Test](#test)
+```
+
+원 출처가 어디인지 알아봐야 합니다.
