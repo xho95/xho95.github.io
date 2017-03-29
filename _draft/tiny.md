@@ -18,7 +18,7 @@ $ sudo find | sudo cpio -o -H newc | gzip -2 > ~/Documents/core.gz
 
 As shown below, the core.cpio file is crashed, so It can't boot with the PXE system.
 
-![Tiny Core Remastering Error](../assets/TinyCore/tiny-cpio-error.png)
+![Tiny Core Remastering Error](http://xho95.github.io/assets/TinyCore/tiny-cpio-error.png)
 
 Below are the commands which I used to make ISO file.
 
