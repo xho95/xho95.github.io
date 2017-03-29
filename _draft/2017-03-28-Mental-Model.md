@@ -1,0 +1,1 @@
+[멘탈모델(Mental Model)이란?](http://insightbook.tistory.com/156)

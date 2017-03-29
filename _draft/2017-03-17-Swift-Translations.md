@@ -14,6 +14,8 @@ Swift 공식 블로그의 [Documentation](https://swift.org/documentation/#the-s
 
 [Seorenn SIGSEGV: Swift - 프로토콜(Protocols)](http://seorenn.blogspot.kr/2014/06/swift-protocols.html) : Seorenn 님도 번역해서 정리한 글들이 있습니다. 
 
+[잉여 개발자](http://minsone.github.io) : 2014년에 전체 내용을 번역했었습니다. 최근에도 블로그글이나 WWDC 내용을 번역하고 있습니다. 
+
 [Apple Swift Programming Language PDF translation for KOREAN](https://www.penflip.com/jjuakim/swift-korean/blob/5d6ce2c73e90a7099d14521049f71a85324e2f66/About.txt) : The Apple Swift Language - Korean 번역 프로젝트를 주도하셨던 jjuakim 님이 따로 번역한 것을 정리한 곳인 것 같습니다. 다만 현재는 관리가 안되고 있는 것 같습니다.
 
 ### 번역 도구 

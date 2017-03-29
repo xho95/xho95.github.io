@@ -1,25 +1,26 @@
+Remastering for PXE boot system
 
-I need your help.
+I have been building a system which checks computer information with in a PXE server-client system for several weeks.
 
-I have built a system to check sum computer hardware information with in server-client environments.
+My goal is running my program automatically on tiny core linux immediately after boot time.
 
-Finally I have built a pxe booting system with tiny core linux, and I succeed.
+I read the [Netbooting](http://wiki.tinycorelinux.net/wiki:netbooting) article. However, that method uses the tiny core linux as the server side, so I can't use it.
 
-But my final goal is running my program on tiny core linux immediately after boot time.
+I have built the pxe booting system with Ubuntu 16.04 for server and Tiny Core linux for client, and succeed booting with ISO file of Tiny Core linux.
 
-So first of all I have remastered tiny core linux and changed the bootlocal.sh 
+After then I have tried to change the `bootlocal.sh` file to test the remastering of Tiny Core linux according to the [Remastering TC](http://wiki.tinycorelinux.net/wiki:remastering) article. 
+
+However, executing the below command on Ubuntu 16.04 make wrong cpio file in the gz file. 
+
+```
+$ sudo find | sudo cpio -o -H newc | gzip -2 > ~/Documents/core.gz
+```
+
+As shown below, the core.cpio file is crashed, so It can't boot with the PXE system.
 
 ![Tiny Core Remastering Error](../assets/TinyCore/tiny-cpio-error.png)
 
-I have used Tiny Core Linux for pxe booting system
-
-first of all, echo “hello, world” on bootlocal.sh file
-
-and remastering with your wiki document
-
-but cpio file is wrong
-
-I followed like below steps
+Below are the commands which I used to make ISO file.
 
 ```
 $ sudo mkdir /mnt/temp
@@ -58,3 +59,7 @@ $ sudo mv cde newiso
 $ sudo mkisofs -l -J -R -V TC-custom -no-emul-boot -boot-load-size 4 -boot-info-table -b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat -o TC-remastered.iso newiso
 $ rm -rf newiso
 ```
+
+Are there any mistakes or are there any other solutions?
+
+I needs your help, Thank you.
