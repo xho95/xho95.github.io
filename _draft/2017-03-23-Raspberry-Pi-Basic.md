@@ -19,6 +19,10 @@
 
 [2: 라즈베리파이 OS 설치 (맥OS용)](http://giyatto.tistory.com/28)
 
+```
+$ diskutil list
+```
+
 ### 원격 제어
 
 [라즈베리파이: 라즈베리파이 원격제어하기(putty)](http://feelsoverygood.tistory.com/19)
