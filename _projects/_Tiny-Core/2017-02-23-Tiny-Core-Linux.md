@@ -61,6 +61,12 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 
 실제로 설치할 것은 아니지만 참고 자료를 활용합니다. [^kiros33-tiny] [^kiros33-tiny-64]
 
+### Tiny Core 리눅스 (Linux) 에서 개발하기
+
+#### Toolchain 
+
+[Cross Compile Toolchain (for building outside TC)](http://forum.tinycorelinux.net/index.php?topic=18862.0)
+
 ### 시작 프로그램
 
 [startup applications](http://forum.tinycorelinux.net/index.php?topic=12440.0) 글을 참고합니다. [^forum-12440]

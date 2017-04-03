@@ -20,7 +20,12 @@
 
 [Open source program to wipe hard drive](http://www.tomsguide.com/answers/id-2416361/open-source-program-wipe-hard-drive.html) [^tomsguide-wipe]
 
-[Darik's Boot and Nuke](https://sourceforge.net/projects/dban/?source=typ_redirect) [^sourceforge-dban]
+#### Darik
+
+[Darik's Boot and Nuke](https://sourceforge.net/projects/dban/) [^sourceforge-dban]
+
+[Darik's Boot and Nuke: Downloads](https://sourceforge.net/projects/dban/files/dban/dban-2.3.0/)
+
 
 ### 참고 자료
 

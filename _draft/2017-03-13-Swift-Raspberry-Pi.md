@@ -10,6 +10,8 @@ Raspberry Pi 에서 Swift 를 사용할 수 있는 방법을 정리한 글입니
 
 ### Raspbian 에서 Swift 사용하기
 
+[Swift 3.0 on Raspberry Pi 2 and 3](http://dev.iachieved.it/iachievedit/swift-3-0-on-raspberry-pi-2-and-3/)
+
 #### Claudio Carnino
 
 Claudio Carnino 님이 [Setup Swift 3.0 on a Raspberry Pi 2/3 with a headless Raspbian. Step-by-step](https://medium.com/a-swift-misadventure/setup-swift-3-0-on-a-raspberry-pi-2-3-with-a-headless-raspbian-step-by-step-384d8bb5aed4#.g0eua4dp6) 라는 좋은 글을 시리즈로 정리한 것이 있습니다. 

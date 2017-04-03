@@ -1,9 +1,13 @@
+
+결국 포럼의 질의 응답 ([Remastering ISO file for PXE boot system](http://forum.tinycorelinux.net/index.php/topic,20888.0.html)) 을 통해서 Remastering 은 TC 를 설치한 PC 에서 수행해야함을 알게 되었습니다. 
+
+---
+
 일단 이 글은 [Remastering TC](http://wiki.tinycorelinux.net/wiki:remastering) 자료를 정리한 것입니다. 
 
 정리한 내용말고도 [Dynamic (boot-time) remastering](http://wiki.tinycorelinux.net/wiki:dynamic_root_filesystem_remastering) 자료도 볼 필요가 있습니다. [^dynamic-remastering]
 
 [Tiny Core Linux Customizations for Remastering](http://www.canbike.org/off-topic/aggregate/tiny-core-linux-customizations-for-remastering.html#isoextract) 글도 볼만 한 것 같습니다. [^canbike] 
-
 
 ### TC 재기록하기 (Remastering)
 

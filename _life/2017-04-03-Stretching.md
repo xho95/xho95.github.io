@@ -1,0 +1,1 @@
+[스트레칭을 하면 트림이 나오는 이유는?](http://tip.daum.net/question/3769897)
