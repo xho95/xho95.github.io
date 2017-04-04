@@ -10,8 +10,6 @@ Raspberry Pi 에서 Swift 를 사용할 수 있는 방법을 정리한 글입니
 
 ### Raspbian 에서 Swift 사용하기
 
-[Swift 3.0 on Raspberry Pi 2 and 3](http://dev.iachieved.it/iachievedit/swift-3-0-on-raspberry-pi-2-and-3/)
-
 #### Claudio Carnino
 
 Claudio Carnino 님이 [Setup Swift 3.0 on a Raspberry Pi 2/3 with a headless Raspbian. Step-by-step](https://medium.com/a-swift-misadventure/setup-swift-3-0-on-a-raspberry-pi-2-3-with-a-headless-raspbian-step-by-step-384d8bb5aed4#.g0eua4dp6) 라는 좋은 글을 시리즈로 정리한 것이 있습니다. 
@@ -30,7 +28,23 @@ Joe 님이 [Swift 3.0 on Raspberry Pi 2 and 3](http://dev.iachieved.it/iachieved
 
 #### 기타 
 
-[Swift 3.0 on Raspberry Pi! Hello Swifty World - Part 1](https://www.hackster.io/the-swiftpi-team/swift-3-0-on-raspberry-pi-hello-swifty-world-part-1-624e1c)
+[Swift 3.0 on Raspberry Pi! Hello Swifty World - Part 1](https://www.hackster.io/the-swiftpi-team/swift-3-0-on-raspberry-pi-hello-swifty-world-part-1-624e1c) : 일단 이 글을 기준으로 정리합니다. 
+
+[The state of Swift on Raspberry Pi](https://medium.com/@piotr.gorzelany/the-state-of-swift-on-raspberry-pi-f23445418ee2) : 이 글을 뒤에 발견해서 이 글을 더 기준으로 삼도록 합니다. 
+
+### Swift 3 개발환경 구축하기
+
+```
+$ sudo apt-get update
+```
+
+```
+$ sudo apt-get install clang
+```
+
+[Downloads and Sample Code](http://swift-lite.org/sample-code/)
+
+
 
 ### GPIO 패키지
 
