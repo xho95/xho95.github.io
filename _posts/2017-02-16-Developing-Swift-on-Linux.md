@@ -147,3 +147,5 @@ Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 
 [^html5around-swift]: 소화자 님의 [우분투에서 애플 스위프트(Swift) 공부환경 구축하기](http://html5around.com/wordpress/tutorials/ubuntu-swift/) 글에 보면 경로를 **~/.bashrc** 파일에 등록하고 있습니다. 나중에 비교 검토해서 반영할 생각입니다.
 
 [^repl]: [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 은 Read–Eval–Print Loop 의 약자로 직역하면 읽고-실행하고-출력하는 것을 반복하는 것을 의미합니다. 프로그래밍에서 코드를 작성하면 한 줄씩 실행하면서 결과를 바로 볼 수 있도록 대화형으로 개발이 진행되는 방식을 의미합니다.
+
+[우분투(Ubuntu)에 스위프트 설치하기](http://blog.yagom.net/535)

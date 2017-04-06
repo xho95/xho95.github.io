@@ -32,6 +32,14 @@ Joe 님이 [Swift 3.0 on Raspberry Pi 2 and 3](http://dev.iachieved.it/iachieved
 
 [The state of Swift on Raspberry Pi](https://medium.com/@piotr.gorzelany/the-state-of-swift-on-raspberry-pi-f23445418ee2) : 이 글을 뒤에 발견해서 이 글을 더 기준으로 삼도록 합니다. 
 
+[Setting up a Swift development environment on Raspberry Pi](https://hackernoon.com/setting-up-a-swift-development-environment-on-raspberry-pi-c7af7fceac1e)
+
+### Swift-Lite
+
+[Swift-Lite](http://swift-lite.org)
+
+[Docs](http://swift-lite.org/docs/)
+
 ### Swift 3 개발환경 구축하기
 
 ```

@@ -3,6 +3,10 @@
 
 Swift로 구현한 알고리즘은 [Welcome to the Swift Algorithm Club!](https://github.com/raywenderlich/swift-algorithm-club) 에서 구할 수 있습니다. [^swift-algorithm-club] [^shma]
 
+### Time Complexity
+
+[Algorithms lecture 2 -- Time complexity Analysis of iterative programs](https://www.youtube.com/watch?v=FEnwM-iDb2g&feature=youtu.be)
+
 ### Tree
 
 [Binary Search Tree](https://gist.github.com/pocketkk/f7d2ba819b46725229a4)

@@ -25,3 +25,13 @@
 [공돌이의 수학정리노트](https://wikidocs.net/book/563) : 기초 수학에 대해서 정리가 잘 된 곳입니다.
 
 [확률론의 선과 악: 1. 수학, 우아함의 파격적인 유용성](http://tv.naver.com/v/1402533) : 네이버에 있는 강연 자료입니다.
+
+#### Numerical Recipes
+
+[Numerical Recipes](http://numerical.recipes) : 지금은 관리를 안하는 것 같습니다. 
+
+[Numerical Recipes Software](https://www.facebook.com/NumericalRecipes) : 관리가 안되고 있는 것 같습니다. 
+
+[saulwiggin/Numerical-Recipies-in-C](https://github.com/saulwiggin/Numerical-Recipies-in-C)
+
+[yuanhui-yang/Numerical-Recipes](https://github.com/yuanhui-yang/Numerical-Recipes)

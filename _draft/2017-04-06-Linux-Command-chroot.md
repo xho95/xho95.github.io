@@ -1,0 +1,1 @@
+[chroot](https://ko.wikipedia.org/wiki/Chroot)

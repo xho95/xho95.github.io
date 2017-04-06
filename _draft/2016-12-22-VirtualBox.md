@@ -2,7 +2,6 @@ VMWare 정품 사용자였는데, 요즘 VMWare가 점점 이상해지고 있어
 
 여기서는 VirtualBox 사용 경험을 정리합니다.
 
-
 ### 리눅스 설치
 
 맥에서 VirtualBox를 이용하여 리눅스 우분투를 설치하는 방법은 [Donk님](http://hajadc.tistory.com)의 [맥에서 버추얼박스에 우분투 설치 방법](http://hajadc.tistory.com/80)이라는 글에 정리가 잘되어 있습니다. [^hajadc-80]
@@ -16,6 +15,20 @@ VMWare 정품 사용자였는데, 요즘 VMWare가 점점 이상해지고 있어
 [Virtual Box hangs when restarting after completing the installation of 12.04?](http://askubuntu.com/questions/410357/virtual-box-hangs-when-restarting-after-completing-the-installation-of-12-04) 글을 참고해서, 가상 머신을 power off 한 다음, 다시 시작하니 제대로 재시작이 되는 것 같습니다. 
 
 아직 잘 모르겠지만 왠지 VirtualBox 자체의 문제도 있지 않을까 생각합니다. 
+
+### Ubuntu
+
+[Ubuntu에서 VirtualBox를 이용 윈도우 8 설치 (1/3)](http://thdev.net/88)
+
+### 기타 
+
+[리눅스에서 가상 머신을 만드는 쉬운 방법 - 그놈 박스](http://sergeswin.com/920)
+
+#### 확장 프로그램
+
+[VBoxGuestAdditions_2.2.0.iso](https://www.dropbox.com/s/r04qdee6w1q0l2s/VBoxGuestAdditions_2.2.0.iso?dl=0) : Virtual Box 는 확장 프로그램을 설치해야 마우스 등의 동작이 원할하게 된다고 합니다. 물론 없어도 사용은 가능합니다. 좀 알아둘 필요가 있습니다. 
+
+위의 프로그램은 윈도우용인데 맥용도 알아봅니다.
 
 ### 참고 자료
 

@@ -1,4 +1,6 @@
-### 하드 드라이브 삭제
+### HDD 삭제
+
+#### 삭제 방법 or 알고리즘
 
 [How to erase a Hard Disk Drive](http://stackoverflow.com/questions/13390843/how-to-erase-a-hard-disk-drive) 글을 참고할만 합니다. [^stackoverflow-13390843]
 
@@ -14,18 +16,15 @@
 
 [How to securely erase hard drives (HDDs) and solid state drives (SSDs)](http://www.zdnet.com/article/how-to-securely-erase-hard-drives-hdds-and-solid-state-drives-ssds/) [^zdnet-erase]
 
-[List of data-erasing software](https://en.wikipedia.org/wiki/List_of_data-erasing_software) [^wiki-erasing]
+#### 삭제 프로그램
 
-[DBAN](https://dban.org) : Hard Drive Erase & Data Clearing Utility [^dban]
+[List of data-erasing software](https://en.wikipedia.org/wiki/List_of_data-erasing_software) [^wiki-erasing]
 
 [Open source program to wipe hard drive](http://www.tomsguide.com/answers/id-2416361/open-source-program-wipe-hard-drive.html) [^tomsguide-wipe]
 
-#### Darik
+이 중에서 [DBAN](https://dban.org) 을 선택하도록 합니다.
 
-[Darik's Boot and Nuke](https://sourceforge.net/projects/dban/) [^sourceforge-dban]
-
-[Darik's Boot and Nuke: Downloads](https://sourceforge.net/projects/dban/files/dban/dban-2.3.0/)
-
+[dd](https://en.wikipedia.org/wiki/Dd_(Unix)#Disk_wipe) 로도 삭제가 가능한 것 같습니다. 
 
 ### 참고 자료
 
@@ -46,9 +45,5 @@
 [^zdnet-erase]: [How to securely erase hard drives (HDDs) and solid state drives (SSDs)](http://www.zdnet.com/article/how-to-securely-erase-hard-drives-hdds-and-solid-state-drives-ssds/)
 
 [^wiki-erasing]: [List of data-erasing software](https://en.wikipedia.org/wiki/List_of_data-erasing_software)
-
-[^dban]: [DBAN](https://dban.org) : Hard Drive Erase & Data Clearing Utility
-
-[^sourceforge-dban]: [Darik's Boot and Nuke](https://sourceforge.net/projects/dban/?source=typ_redirect)
 
 [^tomsguide-wipe]: [Open source program to wipe hard drive](http://www.tomsguide.com/answers/id-2416361/open-source-program-wipe-hard-drive.html)

@@ -1,0 +1,1 @@
+[매개 변수를 사용하여 LibreOffice 소프트웨어 시작](https://help.libreoffice.org/Common/Starting_the_Software_With_Parameters/ko) : `--headless` 옵션에 대해서 설명이 잘 되어 있습니다.

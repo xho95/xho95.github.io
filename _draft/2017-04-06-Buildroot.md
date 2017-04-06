@@ -1,0 +1,1 @@
+[Buildroot](https://buildroot.org) : a  tool to generate embedded Linux systems

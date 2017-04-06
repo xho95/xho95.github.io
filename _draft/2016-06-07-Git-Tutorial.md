@@ -255,6 +255,8 @@ submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리�
 > 
 > 위와 같이 `:` 과 관련이 있는 것 같습니다. 
 
+[Dependency Management Using Git Submodules](https://www.raywenderlich.com/155150/dependency-management-using-git-submodules) 라는 글도 있습니다. Xcode 에서 Submodules 을 사용하는 방법을 설명하는 것 같습니다. [^ray-submodules]
+
 ### 참고 자료
 
 [^ProGit]: [Pro Git Book (한글판 v2.0)](https://git-scm.com/book/ko/v2/)
@@ -284,3 +286,5 @@ submodule : Git 저장소 안에 다른 Git 저장소를 디렉토리로 분리�
 [Get changes from master into branch in Git](http://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git) : master에서 branch로의 merge 방법에 대해서 설명이 된 답글입니다. 
 
 [^stackoverflow-3672073]: [How to merge the current branch into another branch](http://stackoverflow.com/questions/3672073/how-to-merge-the-current-branch-into-another-branch) : 답변 내용이 Submodules 과 관련이 있는 모양입니다. 
+
+[^ray-submodules]: [Dependency Management Using Git Submodules](https://www.raywenderlich.com/155150/dependency-management-using-git-submodules)

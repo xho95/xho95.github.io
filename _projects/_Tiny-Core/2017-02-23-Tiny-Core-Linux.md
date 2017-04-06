@@ -57,9 +57,15 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 
 [Remastering Tinycore.gz HowTo - A simple way](http://forum.tinycorelinux.net/index.php?topic=17415.0) : remastering 에 대한 질문 답변 글입니다.
 
+[Install TinyCore Linux on VirtualBox – Step by Step](https://machinelearning1.wordpress.com/2012/12/14/install-tinycore-linux-on-virtualbox-step-by-step/)
+
 #### 설치관련 정보
 
 실제로 설치할 것은 아니지만 참고 자료를 활용합니다. [^kiros33-tiny] [^kiros33-tiny-64]
+
+[Tiny Core Linux](https://www.youtube.com/watch?v=FDyitsWl7_4)
+
+[How to Install Tiny Core Linux 7.2 on Hard Disk + Apps + Review + VMware Tools on VMware Workstation](https://www.youtube.com/watch?v=vjeVhCQiEsY)
 
 ### Tiny Core 리눅스 (Linux) 에서 개발하기
 
@@ -71,7 +77,7 @@ Tiny Core Linux 에는 **/boot/core.gz** 압축 파일이 있는데, 이 내부�
 
 [startup applications](http://forum.tinycorelinux.net/index.php?topic=12440.0) 글을 참고합니다. [^forum-12440]
 
-[the_boot_process](http://wiki.tinycorelinux.net/wiki:the_boot_process) [^wiki-boot-process]
+[the\_boot_process](http://wiki.tinycorelinux.net/wiki:the_boot_process) [^wiki-boot-process]
 
 [Tiny Core run program at startup](https://www.reddit.com/r/linuxquestions/comments/226suf/tiny_core_run_program_at_startup/) : `/etc/init.d` [^reddit-startup]
 

@@ -5,3 +5,7 @@
 [마이크로소프트, 맥용 '비쥬얼 스튜디오(Visual Studio)' 발표 예정](http://macnews.tistory.com/5164)
 
 [Visual Studio for Mac 맥에서 비쥬얼 스튜디오 설치하기](http://www.lalasola.com/entry/Visual-Studio-for-Mac-맥에서-비쥬얼-스튜디오-설치하기)
+
+[번역: Visual Studio 맥버전 프리뷰 릴리즈 노트](http://devkingsejong.tistory.com/10)
+
+[Xamarin](https://developer.xamarin.com/?cs=1)
