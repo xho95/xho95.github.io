@@ -2,6 +2,8 @@ Tiny Core Linux 에 대한 자료를 정리합니다.
 
 [Tiny Core Linux](http://tinycorelinux.net) 는 LiveCD 를 지원하는 경량 리눅스입니다. [^tiny] [^tiny-started] _LiveCD 라는 것은 설치 없이도 부팅이 가능한 것을 말하는 것 같습니다._
 
+위키에도 [Tiny Core Linux](https://en.wikipedia.org/wiki/Tiny_Core_Linux) 또는 [타이니 코어 리눅스](https://ko.wikipedia.org/wiki/타이니_코어_리눅스) 라고 나름 설명이 나옵니다. 꽤 많이 사용되는 것 같습니다.
+
 일단 시작 프로그램 등록 방법부터 알아봐야하는데, 뭔가 쉬우면서도 아직은 뭘해야할 지 고민이 됩니다.
 
 ### Tiny Core 리눅스 아키텍쳐
