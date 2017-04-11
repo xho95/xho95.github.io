@@ -37,3 +37,5 @@ NSURLSession 및 그 사용법에 대해서는 RayWenderlich 사이트의 예제
 [^realm]: [백그라운드 파일 다운로드 Swift로 구현하기](https://realm.io/kr/news/gwendolyn-weston-ios-background-networking/)라는 글은 Gwendolyn Weston라는 분이 작성하였습니다.
 
 [url에서 파일명, 확장자 추출](http://config.tistory.com/434)
+
+[세션 (Session)](https://openwiki.kr/tech/session)
