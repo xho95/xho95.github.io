@@ -16,6 +16,8 @@ VMWare 정품 사용자였는데, 요즘 VMWare가 점점 이상해지고 있어
 
 아직 잘 모르겠지만 왠지 VirtualBox 자체의 문제도 있지 않을까 생각합니다. 
 
+![](../assets/TinyCore/virtualbox.png)
+
 ### Ubuntu
 
 [Ubuntu에서 VirtualBox를 이용 윈도우 8 설치 (1/3)](http://thdev.net/88)
@@ -41,3 +43,29 @@ VMWare 정품 사용자였는데, 요즘 VMWare가 점점 이상해지고 있어
 [^ubuntu]: [Ubuntu](https://www.ubuntu.com) : ubuntu 홈페이지입니다.
 
 [^hajadc-80]: [맥에서 버추얼박스에 우분투 설치 방법](http://hajadc.tistory.com/80) : 버추얼 박스에 우분투를 설치하는 방법을 그림을 곁들여서 상세하게 잘 정리한 글입니다. 다만, 블로그 글을 굳이 더보기를 눌러야 보이도록 만든 것은 왜그런지 잘 모르겠습니다.
+
+[Virtual Box에서 백업하기1 - 가상 머신 스냅샷/복사](http://swkim-linux.blogspot.kr/2013/05/virtual-box-1.html)
+
+[Tiny Core Linux VM 32 bit!](https://paulgrevink.wordpress.com/2013/02/22/tiny-core-linux-vm-32-bit/)
+
+[Error: VT-x is disabled in the BIOS for all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)](http://stackoverflow.com/questions/34746462/error-vt-x-is-disabled-in-the-bios-for-all-cpu-modes-verr-vmx-msr-all-vmx-disa)
+
+[Oracle Virtual Box error: failure to open a session with Hortonworks](http://stackoverflow.com/questions/27692839/oracle-virtual-box-error-failure-to-open-a-session-with-hortonworks/27718480#27718480)
+
+[VirtualBox error when trying to run Ubuntu “Failed to open a session”](http://stackoverflow.com/questions/25008567/virtualbox-error-when-trying-to-run-ubuntu-failed-to-open-a-session)
+
+[우분투 관리자 권한으로 탐색기 열기](https://kjvvv.kr/3617)
+
+[Virtualbox - Failed to open a session for the virtual machine](https://askubuntu.com/questions/263777/virtualbox-failed-to-open-a-session-for-the-virtual-machine)
+
+[Failed to open a session for the virtual machine](https://forums.virtualbox.org/viewtopic.php?f=6&t=60564)
+
+[Virtualbox does not run: NS_ERROR_FAILURE](https://askubuntu.com/questions/217972/virtualbox-does-not-run-ns-error-failure)
+
+[VT-x is disabled in the BIOS for both all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED) [duplicate]](http://stackoverflow.com/questions/33304393/vt-x-is-disabled-in-the-bios-for-both-all-cpu-modes-verr-vmx-msr-all-vmx-disabl)
+
+[How to Fix the “Failed to Open a Session” Error in VirtualBox](http://www.simplehelp.net/2015/10/25/how-to-fix-the-failed-to-open-a-session-error-in-virtualbox/)
+
+[버추얼박스(virtualbox) 확장팩(extension pack) 설치시 에러 처리](http://solatech.tistory.com/333)
+
+[VirtualBox error “Failed to open a session for the virtual machine”](http://stackoverflow.com/questions/20608310/virtualbox-error-failed-to-open-a-session-for-the-virtual-machine)
