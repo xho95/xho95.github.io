@@ -122,3 +122,5 @@ postgresql 공식 문서의 도움말을 보면 하나는 sql을 사용하는 �
 [Postgres Guide](http://postgresguide.com)
 
 [^pgadmin]: [pgAdmin 4](https://www.pgadmin.org)
+
+[PostgreSQL](https://ko.wikipedia.org/wiki/PostgreSQL)
