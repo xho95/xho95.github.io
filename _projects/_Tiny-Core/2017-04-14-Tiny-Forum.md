@@ -1,21 +1,21 @@
-First I have install Tiny Core Linux on the VirtualBox of the Ubuntu 16.04.
+First I installed Tiny Core Linux on the VirtualBox for the Ubuntu 16.04.
 
-Then, I have set the develop environment for Tiny Core Linux with command as shown below. 
+Then, I set a develop environment for Tiny Core Linux with command as shown below. 
 
 ```
 $ tce-load -wi compiletc 
 ```
 
-And I made some simple programs with C and C++.
+I made some simple file open programs with C and C++, and it seemed to work well.
 
 ![](../../assets/TinyCore/gcc-on-tiny-core-linux.png)
 
-However, Tiny Core linux on the VirtualBox was broken after some sleep mode. Error code is like as below. 
+However, someday, after the ubuntu sleep mode, Tiny Core linux on the VirtualBox was broken with an Error code below. 
 
 ![](../../assets/TinyCore/virtualbox.png)
 
-After that I can't excute the Tiny Core linux. I have found some data with Google search, but those are not helpful. 
+Since then, Tiny Core Linux has not been executed. I have been searching some solution with Google search, but those are not helpful. 
 
-Can I fix it?
+Reinstalling of VirtualBox and Tiny Core Linux isn't the solution, too.
 
-
+If there is any solution about this issue, please tell me. 
