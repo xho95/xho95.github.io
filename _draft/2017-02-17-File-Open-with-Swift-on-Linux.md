@@ -2,7 +2,10 @@
 
 [Swift 2.2 Linux - open file for reading](http://stackoverflow.com/questions/34296614/swift-2-2-linux-open-file-for-reading) 글에 다음과 같은 코드가 있습니다. [^stackoverflow-34296614]
 
-```https://github.com/Zewo/SQL
+https://github.com/Zewo/SQL (???)
+
+```
+
 import Glibc
 
 let path = "./sample.txt"
