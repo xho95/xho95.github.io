@@ -14,6 +14,22 @@
 
 [New laboratory automation AGV maps buildings and finds its own way around obstacles to any destination](http://www.emeraldinsight.com/doi/abs/10.1108/ir.2003.04930bab.006?journalCode=ir)
 
+[Special Issue on Integrated Optimization of Industrial Automation](http://www.ieee-ras.org/publications/t-ase/special-issues/integrated-optimization-of-industrial-automation)
+
+[Factory Design and Optimization](https://www.plm.automation.siemens.com/en/products/tecnomatix/manufacturing-planning/factory-design/)
+
+[Deep learning-based soft-sensing method for operation optimization of coke dry quenching process](http://ieeexplore.ieee.org/document/7554805/)
+
+[The Rise of Machines, Analytics and Humans: Artificial Intelligence in the Age of the IIoT](http://support.sas.com/resources/papers/proceedings17/1341-2017.pdf)
+
+[Overview of the CPS for Smart Factories Project: Deep Learning, Knowledge Acquisition, Anomaly Detection & Intelligent User Interfaces](http://www.dfki.de/~sonntag/cps7.pdf)
+
+[how to optimize of cluster robots with ai](https://www.google.com/search?client=safari&rls=en&q=how+to+optimize+agv+cluster+with+ai&ie=UTF-8&oe=UTF-8#q=how+to+optimize+of+cluster+robots+with+ai)
+
+["Deep-learning tech" allows industrial robots to teach each other and learn new skills](https://www.sott.net/article/331162-Deep-learning-tech-allows-industrial-robots-to-teach-each-other-and-learn-new-skills)
+
+[The Intelligent Industrial Revolution](https://blogs.nvidia.com/blog/2016/10/24/intelligent-industrial-revolution/)
+
 ### News
 
 [Industrial Transformation Coming From Deep Learning, Says Japanese Startup](https://www.roboticsbusinessreview.com/manufacturing/industrial-transformation-coming-deep-learning-says-japanese-startup/)
@@ -25,3 +41,11 @@
 [This Factory Robot Learns a New Job Overnight](https://www.technologyreview.com/s/601045/this-factory-robot-learns-a-new-job-overnight/)
 
 [Preferred Networks teaches robots to collaborate through deep learning](https://www.ft.com/content/a1f3c3a0-d368-11e6-b06b-680c49b4b4c0)
+
+[Manufacturing Automation Leaders Collaborate: Optimizing Industrial Production through Analytics](https://www.preferred-networks.jp/en/news/10371)
+
+[10 Ways Machine Learning Is Revolutionizing Manufacturing](https://www.forbes.com/sites/louiscolumbus/2016/06/26/10-ways-machine-learning-is-revolutionizing-manufacturing/#28c2c8328c2c)
+
+[Google Uses Deep Learning for Data Center Optimization](https://industrial-iot.com/2016/08/google-uses-deep-learning-data-center-optimization/)
+
+[Artificial Intelligence: Optimizing Industrial Operations](https://www.siemens.com/innovation/en/home/pictures-of-the-future/industry-and-automation/the-future-of-manufacturing-ai-in-industry.html)
