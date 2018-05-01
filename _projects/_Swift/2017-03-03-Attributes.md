@@ -1,13 +1,13 @@
 ## 특성 (Attributes)
 
-특성 (Attributes) 은 선언 구문이나 타입에 대해 더 많은 정보를 제공합니다. [^attribute] Swift 에는 두 가지 종류의 특성이 있는데 하나는 선언 구문에 적용되는 것이고 다른 하나는 타입에 적용되는 것입니다. [^declaration]
+특성 (Attributes) 은 선언 구문이나 타입에 대해 더 많은 정보를 제공합니다. [^attribute] Swift 에는 두 가지 종류의 특성이 있는데, 하나는 선언 구문에 적용되고 다른 하나는 타입에 적용됩니다. [^declaration]
 
-특성을 지정하려면 `@` 기호를 쓰고 뒤이어 특성의 이름과 특성이 받아들이는 인자를 쓰면 됩니다.
+특성을 지정하려면 `@` 기호를 쓴다음 특성의 이름과 특성이 가질 수 있는 인자를 쓰면 됩니다.
 
 @`attribute name`  
 @`attribute name`(`attribute arguments`)
 
-몇몇 선언 특성들은 특성 인자를 받아서 특성에 대해 더 많은 정보를 지정하거나 특정한 선언 구문에 적용하는 방법을 알려줍니다. 이들 속성 인자는 괄호로 감싸며 포맷은 그들이 속한 특성에서 정의됩니다. [^format]
+몇몇 선언 특성은 특성에 추가 정보를 지정하거나 특정한 선언 구문에 적용하는 방법을 알려 주기 위해 특성 인자를 사용합니다. 이 특성 인자는 괄호로 감싸는데 포맷은 속해있는 특성에서 정의합니다. [^format]
 
 ### 선언 특성 (Declaration Attributes)
 
@@ -15,9 +15,9 @@
 
 * `available`
 
-	Apply this attribute to indicate a declaration’s lifecycle relative to certain Swift language versions or certain platforms and operating system versions. [^lifecycle]
+	이 특성은 선언 구문의 수명이 특정 Swift 언어의 버전이나 특정 플랫폼 또는 운영 체제의 버전에 달려 있음을 알릴 때 사용합니다. [^lifecycle]
 
-	The `available` attribute always appears with a list of two or more comma-separated attribute arguments. These arguments begin with one of the following platform or language names:
+	`available` 특성은 항상 쉼표로 분리된 두 개 이상의 특성 인자와 함께 사용합니다. 이 인자들은 다음의 플랫폼이나 언어 중 하나로 시작합니다:
 	
 	* `iOS`
 	* `iOSApplicationExtension`
@@ -29,26 +29,23 @@
 	* `tvOSApplicationExtension`
 	* `swift`
 
-	You can also use an asterisk (`*`) to indicate the availability of the declaration on all of the platform names listed above. An `available` attribute specifying a Swift version availability can’t use the asterisk.
+	또 별표 (`*`) 를 사용해서 선언 구문이 위에 있는 모든 플랫폼에서 사용할 수 있음을 나타낼 수도 있습니다. 단, 스위프트 버전 유효성을 지정하는 `available` 특성에는 별표를 사용할 수 없습니다.
 
-	The remaining arguments can appear in any order and specify additional information about the declaration’s lifecycle, including important milestones.
+	남은 인자들은 순서에 상관없이 위치할 수 있으며 중요한 이정표를 포함하여 선언 구문 수명에 대한 추가 정보를 지정하게 됩니다. _(문장을 더 다음어야 합니다.)_
 
-	* The `unavailable` argument indicates that the declaration isn’t available on the specified platform. This argument can’t be used when specifying Swift version availability.
+	* `unavailable` 인자는 선언 구문이 특정한 플랫폼에서는 사용할 수 없음을 나타냅니다. 이 인자는 스위프트 버전 유효성을 지정할 때는 사용할 수 없습니다. [^swift-version-availability]
 	
-	* The `introduced` argument indicates the first version of the specified platform or language in which the declaration was introduced. It has the following form:
+	* `introduced` 인자는 선언 구문이 어떤 버전의 플랫폼이나 언어에서 최초로 소개되었는지를 알려줍니다. 이것은 양식은 다음과 같습니다:
 		
-		```
-		introduced: version number
-		```
+		introduced: `version number`
 		
-		The version number consists of one to three positive integers, separated by periods.
+		버전 숫자(version number) 는 마침표로 구분되는 한 개에서 세 개의 양수로 이루어집니다.
 		
-	* The `deprecated` argument indicates the first version of the specified platform or language in which the declaration was deprecated. It has the following form:
+	* `deprecated` 인자는 선언 구문이 어떤 버전의 플랫폼이나 언어에서 최초로 사용되지 않게 되는지를 알려줍니다. 이것은 양식은 다음과 같습니다:
 		
-		```
-		deprecated: version number
-		```
-		The optional version number consists of one to three positive integers, separated by periods. Omitting the version number indicates that the declaration is currently deprecated, without giving any information about when the deprecation occurred. If you omit the version number, omit the colon (`:`) as well.
+		deprecated: `version number`
+
+		버전 숫자는 선택 요소인데, 마침표로 구분되는 한 개에서 세 개의 양수로 이루어집니다. 버전 숫자를 생략하면 선언 구문이 언제 사용할 수 없게 되는지 알려주지 않고 지금 바로 사용할 수 없게됨을 나타냅니다. 버전 숫자를 생략하려면, 콜론 (`:`) 도 같이 생략하도록 합니다.
 		
 	* The `obsoleted` argument indicates the first version of the specified platform or language in which the declaration was obsoleted. When a declaration is obsoleted, it’s removed from the specified platform or language and can no longer be used. It has the following form:
 		
@@ -194,7 +191,7 @@ You apply the `IBOutlet` and `IBInspectable` attributes to property declarations
 
 Both the `IBAction` and `IBOutlet` attributes imply the `objc` attribute.
 
-### Type Attributes
+### 타입 속성 (Type Attributes)
 
 You can apply type attributes to types only.
 
@@ -234,10 +231,12 @@ You can apply type attributes to types only.
 
 ### 참고 자료
 
-[^attribute]: 'attribute' 는 'property' 를 이미 '속성'이라고 하고 있기 때문에 '특성' 등의 다른 단어로 옮깁니다. '성질' 이라고 해도 가능할 것 같습니다. 그냥 '어트리뷰트'라고 이름을 그대로 써도 될 것 같습니다.
+[^attribute]: 용어 대조표를 참고합니다.
 
-[^declaration]: 'declaration' 은 때에 따라 '선언' 또는 '선언 구문' 으로 옮깁니다.
+[^declaration]: 용어 대조표를 참고합니다. 
 
-[^format]: 'format' 은 '포맷' 으로 옮깁니다.
+[^format]: 용어 대조표를 참고합니다. 
 
-[^lifecycle]: 'lifecycle' 은 '수명' 으로 옮깁니다.
+[^lifecycle]: 용어 대조표를 참고합니다. 
+
+[^swift-version-availability]: 용어 대조표를 참고합니다.
