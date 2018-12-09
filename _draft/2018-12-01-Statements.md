@@ -22,7 +22,7 @@ categories: Xcode Swift Grammar Statements
 #warning("warning message")’
 ```
 
-첫번째 형식은 에러 메시지를 치명적 에러로 발생하며 컴파일 과정을 종료합니다. 두번째 형식은 경고 메시지를 비치명적 경고로 발생하며 컴파일을 진행하도록 합니다.
+첫번째 형식은 에러 메시지를 치명적 에러로 발생하며 컴파일 과정을 종료합니다. 두번째 형식은 경고 메시지를 비치명적 경고로 발생하며 컴파일은 계속 진행하도록 그대로 둡니다. 진단 메시지는 정적 문자열 (static string literal) 로 작성합니다. 정적 문자열은 문자 삽입이나 연결을 할 수 없지만, 다중 행 문자열 문법은 가능합니다.  
 
 > GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT
 >
