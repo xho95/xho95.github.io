@@ -220,11 +220,53 @@ let sameThing = protoFlip(smallTriangle)
 protoFlippedTriangle == sameThing     //  Error
 ```
 
-예제의 마지막 줄에서 오류가 발생하는 데는 몇 가지 이유가 있습니다. 직접적인 문제는 `Shape` 프로토콜이 요구 사항으로 `==` 연산자를 포함하지 않는다는 것입니다. 그래서 어찌 추가하려고 하면, 그 다음 마주치는 문제는 `==` 연산자가 왼쪽 및 오른쪽 인자의 타입을 알아야 한다는 것입니다. 이런 종류의 연산자는 보통 인자 타입으로 `Self` 를 가지는데, 자체 유형의 인수를 사용하여 구체적인 유형이 프로토콜을 채택하는 것과 일치하지만 프로토콜에 자체 요구 사항을 추가해도 프로토콜을 유형으로 사용할 때 발생하는 유형 삭제는 허용되지 않습니다.
+예제의 마지막 줄에서 오류가 발생하는 건 몇 가지 이유가 있기 때문입니다. 직접적인 문제는 `Shape` 프로토콜이 요구 사항으로 `==` 연산자를 포함하지 않기 때문입니다. 그런데 막상 추가하려고 하면, 그 다음 마주치는 문제는 `==` 연산자가 왼쪽 및 오른쪽 인자의 타입을 알아야 한다는 것입니다. 이런 종류의 연산자는 보통 인자 타입으로 `Self` 를 가지고, 이를 써서 프로토콜을 준수하는 명확한 타입을 찾는데, 문제는 프로토콜에 `Self` 요구 사항을 추가하는 것은 불가능하다는 점이며 이는 프로토콜을 타입으로 쓸 때 타입 삭제가 일어나기 때문입니다.
 
-함수의 리턴 유형으로 프로토콜 유형을 사용하면 프로토콜에 맞는 유형을 유연하게 리턴 할 수 있습니다. 그러나 유연성의 비용은 반환 된 값에서 일부 작업을 수행 할 수 없다는 것입니다. 이 예는 == 연산자를 사용할 수없는 방법을 보여줍니다. 프로토콜 유형을 사용하여 보존되지 않은 특정 유형 정보에 따라 다릅니다.
+프로토콜 타입을 반환 타입으로 쓰면 함수에 유연함을 부여해서 그 프로토콜을 준수하는 어떤 타입이라도 반환할 수 있습니다. 하지만 그 유연함의 대가로 반환 값에 사용할 수 있는 몇몇 연산 기능을 잃습니다. 위 예제는 `==` 연산자가 왜 불가능한지를 보여주는데 - 프로토콜 타입을 사용하면 보존되지 않는 특정 타입 정보에 의존하기 때문입니다.
 
+이 방법의 또 다른 문제는 도형 변환이 숨겨지지 (nest) 않는다는 점입니다. 삼각형을 뒤집은 결과 값은 `Shape` 타입이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 어떤 (some) 타입의 인자를 가집니다. 하지만 프로토콜 타입의 값은 그 프로토콜을 준수하지 않습니다: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 `protoFlip(protoFlip(smallTriange))` 과 같이 여러번 변환하는 코드가 유효하지 않다는 의미인데 이는 뒤집힌 도형은 `protoFlip(_:)` 의 인자로 유효하지 않기 때문입니다.
 
+반대로, opaque 타입은 실제 타입의 정체성을 보존합니다. 스위프트는 associated types (관련된 타입) 을 추론할 수 있으므로, opaque 타입 값은 프로토콜 타입을 반환 값으로 쓸 수 없는 위치에서도 쓸 수 있습니다. 다음은 **Generics** 에 있는 `Container` 프로토콜의 한가지 예입니다:
+
+```swift
+protocol Container {
+  associatedtype Item
+  var count: Int { get }
+  subscript(i: Int) -> Item { get }
+}
+
+extension Array: Container { }
+```
+
+`Container` 프로토콜은 associtatedtype (관련된 타입) 이 있으므로 함수의 반환 타입으로 사용할 수 없습니다. generic (일반화된) 반환 타입의 constraint (제약 조건) 으로도 사용할 수 없는데, 이는 함수 본체 외부로 나타나는 정보가 부족해서 generic 타입 추론하는데 충분하지 않기 때문입니다.
+
+```swift
+// Error: Ptorocol with associated types can't be used as a return type.
+func makeProtocolContainer<T>(item: T) -> Container {
+  return [item]
+}
+
+// Error: Not enough information to infer C.
+func makeProtocolContainer<T, C: Container>(item: T) -> C {
+  return [item]
+}
+```
+
+반환 타입으로 opaque 타입인 `some Container` 를 사용하면 원하는 API 계약 조건인 - container 를 반환하지만, 그 container 의 타입을 한가지로 못박지는 않는 것 - 을 표현할 수 있습니다:  
+
+```swift
+func makeOpaqueContainer<T>(item: T) -> some Container {
+  return [item]
+}
+
+let opaqueContainer = makeOpaqueContainer(item: 12)
+let twelve = opaqueContainer[0]
+print(type(of: twelve))
+
+// Prints "Int"
+```
+
+`twelve` 의 타입은 `Int` 로 추론되는데, 이는 타입 추론이 opaque 타입과 작동하는 방식을 잘 보여줍니다. `makeOpaqueContainer(item:)` 의 구현에서, opaque컨테이너 (container) 의 실제 타입은 `[T]` 입니다. 여기서 `T` 는 `Int` 이므로, 반환 값은 정수 배열이며 associated type (관련된 타입) 인 `Item` 은 `Int` 로 추론됩니다. `Container` 의 subscript (첨자 연산자) 는 `Item` 을 반환하는데, 이는 곧 `twelve` 의 타입으로 `Int` 를 추론함을 의미합니다.
 
 ### 생각거리
 
