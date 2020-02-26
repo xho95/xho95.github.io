@@ -1,3 +1,3 @@
 # xho95.github.io
 
-A blog to summarize the study about Swift language and other skills
+A blog to summarize my studies about the Swift programming language and other skills
