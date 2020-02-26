@@ -10,7 +10,7 @@ categories: Swift Language Grammar Protocol
 
 ## Protocols[^Protocol]
 
-### Protocols as Types (규칙을 타입으로 사용하기)
+### Protocols as Types (프로토콜을 타입으로 사용하기)
 
 프로토콜은 실제로는 어떤 기능 (functionality) 도 스스로 구현하지 않습니다. 그럼에도 불구하고 코드 내에서 온전한 타입인 것처럼 사용할 수 있습니다. 프로토콜을 타입인 것처럼 사용하는 것을 _실존 타입_ 이라 부르기도 하는데, 이것은 " 타입 T 는 **실** 제로 **존** 재하며, T 는 이 프로토콜을 준수한다" 는 문구에서 비롯된 것입니다.
 
@@ -38,9 +38,9 @@ class Dice {
 }
 ```
 
-이 예제는 `Dice` 라는 새로운 클래스로 보드 게임에 사용될 n면체 주사위를 정의합니다. `Dice` 인스턴스에 있는 `sides` 라는 정수 속성은 주사위의 면의 개수를 나타내며, `generator` (생성기) 라는 속성은 난수 발생기를 제공하여 '주사위 굴림 값'을 생성합니다.
+이 예제는 `Dice` 라는 새로운 클래스로 보드 게임에 사용될 n면체 주사위를 정의합니다. `Dice` 인스턴스에 있는 `sides` 라는 정수 속성은 주사위-면의 개수를 나타내며, `generator` (생성기) 라는 속성은 난수 발생기를 제공하여 '주사위 굴림 값'을 생성합니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 따라서 `RandomNumberGenerator` 프로토콜을 따른다면 어떤 타입의 인스턴스라도 설정할 수 있습니다. 이 속성에 할당하는 인스턴스에 필요한 요구 사항은 오직 한가지, 반드시 `RandomNumberGenerator` 프로토콜을 따라야 한다는 것입니다. 타입이  `RandomNumberGenerator` 이므로, 이 프로토콜을 준수하는 모든 생성기들 (generators) 에 (공통으로) 적용되는 방식으로만, `Dice` 클래스와 `generator` 가 상호 작용할 수 있습니다. 이 말은 생성기의 실제 타입 (underlying type) 에 정의된 메소드나 속성은 사용할 수 없다는 의미입니다. 하지만 상위 클래스에서 하위 클래스로 내림 형변환 (downcast) 이 가능한 것처럼 프로토콜 타입에서 실제 타입으로 내림 형변환이 가능하긴 합니다. 이는 **Downcasting** 에서 설명합니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 따라서 `RandomNumberGenerator` 프로토콜을 따른다면 어떤 타입의 인스턴스라도 설정할 수 있습니다. 이 속성에 할당하는 인스턴스로 필요한 사항은 반드시 `RandomNumberGenerator` 프로토콜을 따라야 한다는 것 한가지 뿐입니다. 타입이  `RandomNumberGenerator` 이므로, 이 프로토콜을 준수하는 모든 생성기들 (generators) 에 (공통으로) 적용되는 방식으로만, `Dice` 클래스와 `generator` 가 상호 작용할 수 있습니다. 이 말은 생성기의 실제 타입 (underlying type) 에 정의된 메소드나 속성은 사용할 수 없다는 의미입니다. 하지만 상위 클래스에서 하위 클래스로 내림 형변환 (downcast) 이 가능한 것처럼 프로토콜 타입에서 실제 타입으로 내림 형변환이 가능하긴 합니다. 이는 **Downcasting** 에서 설명합니다.
 
 `Dice` 는 초기 상태를 설정하는 초기자 (initializer) 도 가지고 있습니다. 이 초기자는 `generator` 라는 매개 변수를 가지는데, 타입은 역시  `RandomNumberGenerator` 입니다. 이를 준수하는 타입이라면 아무 값이라도 사용하여 새 `Dice` 인스턴스를 초기화 할 수 있습니다.
 
