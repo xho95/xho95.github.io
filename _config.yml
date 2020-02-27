@@ -5,13 +5,13 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
-# xho95's Swift Liftlet xho95=Programmer(with: Swift)
+# A sentence like as "xho95 = Programmer(with: Swift)" can't use with Jekyll.
 
 # Site settings
 title: xho95's Swift Lift
 email: xho1995@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Apple에서 공개한 새로운 언어인 Swift를 공부하고 정리하는 사이트였는데, 배가 점점 산으로 가고 있습니다.
+  let me = Programmer(with: Swift)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xho95.github.io" # the base hostname & protocol for your site
 twitter_username: xho951
