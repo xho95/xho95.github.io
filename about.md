@@ -28,5 +28,5 @@ permalink: /about/
 
 
 
-[profile]: /assets/Me/memoji.jpeg
+[profile]: /assets/Me/Memoji.jpeg
 {: margin="50px" align="right" height="100px"}
