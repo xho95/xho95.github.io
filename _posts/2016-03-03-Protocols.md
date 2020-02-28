@@ -6,7 +6,7 @@ date:   2016-03-03 23:30:00 +0900
 categories: Swift Language Grammar Protocol
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#)[^Protocols] 중에서 일부분을 정리한 글입니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols] 정리한 글입니다.
 
 ## Protocols[^Protocol]
 
@@ -129,7 +129,7 @@ Protocol Extensions를 프로토콜 확장이라고 옮기는 것이 맞는지 �
 
 ### 참고 자료
 
-[^Protocol]: Protocol 은 단어 자체로는 '규칙'이라는 의미를 갖고 있지만, 스위프트 언어에서 키워드에 해당하기 때문에, '클래스'와 같이 발음 그대로를 사용합니다. 다만 필요한 경우에 '규칙'이라는 뜻을 살려서 옮기도록 합니다.
+[^Protocol]: `protocol`은 '규칙'이라는 뜻을 갖고 있지만, 스위프트 언어에서는 하나의 keyword 이므로, `class`를 '클래스'라로 하듯이, 발음 그대로 '프로토콜'이라고 옮기겠습니다. 다만 필요한 경우에는 '규칙'이라는 의미를 살려서 번역하도록 하겠습니다.
 
 [^Protocols]: [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#)
 

@@ -11,7 +11,7 @@
 title: xho95's Swift Lift
 email: xho1995@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  let me = Programmer(with: Swift)
+  let me = Programmer(with: swift)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xho95.github.io" # the base hostname & protocol for your site
 twitter_username: xho951
