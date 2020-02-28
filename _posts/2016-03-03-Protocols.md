@@ -67,9 +67,9 @@ for _ in 1...5 {
 
 ### Protocol Extensions (규칙 확장)
 
-프로토콜을 확장하여 메소드, 이니셜 라이저, 아래 첨자 및 계산 된 속성 구현을 적합한 유형에 제공 할 수 있습니다. 이를 통해 각 유형의 개별 적합성 또는 전역 기능이 아닌 프로토콜 자체의 동작을 정의 할 수 있습니다.
+프로토콜(규칙)은 확장할 수 있는데 이렇게 해서 메소드, 초기자, 첨자 연산자, 그리고 계산 속성 (computed property) 에 구현을 제공할 수 있습니다. 이러면 프로토콜 자체에서 행위를 정의하게되어, 각각의 준수 타입이나 전역 (global) 함수 내에서 하는 것보다 편해집니다.
 
-예를 들어 RandomNumberGenerator 프로토콜을 확장하여 randomBool () 메서드를 제공 할 수 있습니다. randomBool () 메서드는 필요한 random () 메서드의 결과를 사용하여 임의의 Bool 값을 반환합니다.
+예를 들어. `RandomNumberGenerator` 프로토콜을 확장하여 `randomBool()` 메서드를 추가한 다음, 요구 사항에 의해 구현된 `random()` 메서드의 결과를 사용하여 임의의 Bool 값을 반환하게 할 수 있습니다:
 
 #### Adding Constraints to Protocol Extensions (규칙 확장 시에 제약 조건 추가하기)
 
