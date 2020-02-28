@@ -8,11 +8,11 @@ categories: Swift Language Grammar Protocol
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols] 정리한 글입니다.
 
-## Protocols[^Protocol]
+## Protocols
 
-프로토콜은 특정 작업이나 기능에 적합한 방법, 속성 및 기타 요구 사항의 청사진을 정의합니다. 그런 다음 이러한 요구 사항을 실제로 구현하기 위해 클래스, 구조 또는 열거로 프로토콜을 채택 할 수 있습니다. 프로토콜 요구 사항을 충족하는 모든 유형은 해당 프로토콜을 준수한다고 합니다.
+_프로토콜_[^protocol]은 메소드, 속성, 그 외 요구 사항들의 밑그림[^blueprint]을 정의하여 이들이 특정 작업이나 기능에 적합하도록 만듭니다. 그런 다음 클래스나 구조체 또는 열거 타입들이 그 프로토콜을 _채택_ (adopt) 하게 되면 요구 사항들에 대한 실제 구현을 하게 됩니다. 이렇게 프로토콜의 요구 사항을 만족하는 타입은 어떤 것이든 그 프로토콜을 _준수한다_ (conform) 라고 말합니다.
 
-준수 유형이 구현해야하는 요구 사항을 지정하는 것 외에도 프로토콜을 확장하여 이러한 요구 사항 중 일부를 구현하거나 준수 유형이 활용할 수있는 추가 기능을 구현할 수 있습니다.
+(프로토콜을) 준수하는 타입은 반드시 요구 사항을 특정하게 구현해야 하지만, 프로토콜은 확장하는 것 또한 가능해서, 일부 요구 사항을 구현할 수도 있고 추가 기능의 구현을 통해서 준수하는 타입에게 편의를 제공할 수도 있습니다.
 
 ### Protocols as Types (프로토콜을 타입으로 사용하기)
 
@@ -129,7 +129,9 @@ Protocol Extensions를 프로토콜 확장이라고 옮기는 것이 맞는지 �
 
 ### 참고 자료
 
-[^Protocol]: `protocol`은 '규칙'이라는 뜻을 갖고 있지만, 스위프트 언어에서는 하나의 keyword 이므로, `class`를 '클래스'라로 하듯이, 발음 그대로 '프로토콜'이라고 옮기겠습니다. 다만 필요한 경우에는 '규칙'이라는 의미를 살려서 번역하도록 하겠습니다.
+[^protocol]: `protocol`은 '규칙'이라는 뜻을 갖고 있지만, 스위프트 언어에서는 하나의 keyword 이므로, `class`를 '클래스'라로 하듯이, 발음 그대로 '프로토콜'이라고 옮기겠습니다. 다만 필요한 경우에는 '규칙'이라는 의미를 살려서 번역하도록 하겠습니다.
+
+[^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 좀 더 의미에 와닫게 '밑그림'이라는 단어로 옮겼습니다. 실제 구현이 아니라 따라야할 규칙들만 정한다는 의미에서 밑그림이라는 단어를 선택했습니다.
 
 [^Protocols]: [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#)
 
