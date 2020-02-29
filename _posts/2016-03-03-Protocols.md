@@ -6,7 +6,7 @@ date:   2016-03-03 23:30:00 +0900
 categories: Swift Language Grammar Protocol
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols] 정리한 글입니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols]을 정리한 글입니다.
 
 ## Protocols
 
@@ -142,7 +142,7 @@ extension PrettyTextRepresentable {
 
 **Adding Constraints to Protocol Extensions (규칙 확장 시에 제약 조건 추가하기)**
 
-프로토콜 확장을 정의할 때 제한 조건 (Constraints) 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 제한 조건은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 **Generic Where Clauses** 를 참고하기 바랍니다.
+프로토콜 확장을 정의할 때 제한 조건 (Constraints) 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 제한 조건은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 **Generic Where Clauses** 를 참고하기 바랍니다.[^POP]
 
 예를 들어, `Collection` (집합체) 프로토콜을 확장하면서 각 요소가 `Equatable` 프로토콜을 준수하는 경우에만 적용되도록 할 수 있습니다. 컬렉션의 요소를 (표준 라이브러리의 일부이기도 한) `Equatable` 프로토콜로만 제한하면, `==` 와 `!=` 연산자를 사용하여 두 요소가 같은지 다른지 검사할 수 있습니다.
 
@@ -183,14 +183,12 @@ print(differentNumbers.allEqual())
 
 ### 참고 자료
 
+[^Protocols]: 원문은 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 에서 확인할 수 있습니다.
+
 [^protocol]: `protocol`은 '규칙'이라는 뜻을 갖고 있지만, 스위프트 언어에서는 하나의 keyword 이므로, `class`를 '클래스'라로 하듯이, 발음 그대로 '프로토콜'이라고 옮기겠습니다. 다만 필요한 경우에는 '규칙'이라는 의미를 살려서 번역하도록 하겠습니다.
 
 [^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 좀 더 의미에 와닫게 '밑그림'이라는 단어로 옮겼습니다. 실제 구현이 아니라 따라야할 규칙들만 정한다는 의미에서 밑그림이라는 단어를 선택했습니다.
 
-[^Protocols]: [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#)
-
-[^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)
-
-[^RayWenderlich]: [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started)
+[^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
 [^specialized]: 추가 설명이나 예제가 있으면 좋겠지만, 원문에 따로 설명된 것이 없는게 아쉽습니다. Apple Forum 의 질문 답변 중 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 이라는 글에 따르면, 여러 개의 제한 조건을 동시에 만족하는 경우는 타입이 계층 관계일 때 발생하는데, '가장 세분화된 제한 조건' 을 따른다는 것은 타입의 계층 관계에서 가장 하위의 클래스를를 따른다는 의미일 것 같습니다.
