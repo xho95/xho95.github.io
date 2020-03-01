@@ -1,18 +1,17 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: 일반화된 매개 변수와 인자 (Generic Parameters and Arguments)"
+title:  "Swift 5.2: Generic Parameters and Arguments (일반화된 매개 변수와 인자)"
 date:   2017-03-16 00:00:00 +0900
 categories: Swift Language Grammar Generic Parameters Arguments
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [Generic Parameters and Arguments](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GenericParametersAndArguments.html#//apple_ref/doc/uid/TP40014097-CH37-ID406) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 부분[^GPandA]을 정리한 글입니다.
 
 이번 장에서는 일반화된 (generic) 타입, 함수 및 초기자를 위한 매개 변수와 인자에 대해 설명합니다. 일반화된 타입, 함수 또는 초기자를 선언할 때는 그 일반화된 타입, 함수 또는 초기자가 사용할 수 있는 타입 매개 변수를 지정하게 됩니다. 이러한 타입 매개 변수는 자리 지킴이의 역할을 하는데 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수 또는 초기자가 호출될 때 실제 타입으로 대체되어 굳어집니다.
 
 Swift 의 일반화 (generic) 에 대한 개요는 [Generics]() 에서 볼 수 있습니다.
 
-<a name="generic-parameter-clause"></a>
 ### 일반화된 매개 변수 구절 (Generic Parameter Clause)
 
 일반화된 매개 변수 구절은 일반화된 타입 또는 함수의 타입 매개 변수를 지정할 때 이 매개 변수와 관련된 제약 조건과 요구 사항을 함께 지정합니다. 일반화된 매개 변수 구절은 꺾쇠 괄호 (<>) 로 감싸며 다음과 같은 양식을 가집니다:
@@ -114,6 +113,8 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 * [Swift 3.1: 스위프트 프로그래밍 언어 (Swift Programming Language)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html)
 
 ### 참고 자료
+
+[^GPandA]: 원문은 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 에서 확인할 수 있습니다.
 
 [^signature]: 여기서 함수나 초기자의 '서명' 이라는 것은 함수 본체를 제외한 함수의 이름, 매개 변수, 반환 타입 등을 포함한 모든 것입니다. 쉽게 생각해서 C 나 C++ 의 함수 선언 문장에 해당하는 것이 Swift 의 함수 서명이라고 볼 수 있습니다. '서명'이라는 용어를 사용하는 것은 이것이 각각의 함수를 구별하는 역할, 즉 마치 사람의 서명과도 같은 역할을 하기 때문인 것 같습니다.
 
