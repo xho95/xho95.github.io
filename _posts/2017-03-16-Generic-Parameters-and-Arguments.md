@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 일반화된 매개 변수와 인자 (Generic Parameters and Arguments)"
+title:  "Swift 5.2: 일반화된 매개 변수와 인자 (Generic Parameters and Arguments)"
 date:   2017-03-16 00:00:00 +0900
 categories: Swift Language Grammar Generic Parameters Arguments
 ---
@@ -60,7 +60,7 @@ where `requirements`
 일반화된 `where` 구절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses]() 부분을 보면 됩니다.
 
 > 일반화된 매개 변수 구절의 문법
-> 
+>
 > generic-parameter-clause → **<­** generic-parameter-list ­**>**  
 > generic-parameter-list → generic-parameter­ \| generic-parameter **,** ­generic-parameter-list­  
 > generic-parameter → type-name­
@@ -100,7 +100,7 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 일반화된 매개 변수 구절([Generic Parameter Clause](#generic-parameter-clause)) 에서 언급했듯이 일반화된 인자 구절을 사용하여 일반화도니 함수나 초기자의 타입 매개 변수를 지정하지 않도록 합니다.
 
 > 일반화된 인자 구절의 문법
-> 
+>
 > generic-argument-clause → **<­** generic-argument-list ­**>­**  
 > generic-argument-list → generic-argument­ \| generic-argument **,** generic-argument-list­  
 > generic-argument → type­
