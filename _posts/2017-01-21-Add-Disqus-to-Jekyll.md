@@ -26,7 +26,7 @@ categories: Blog Jekyll Disqus Migration
 
 #### 1. **YAML Front Matter** 에 comments 변수 추가하기
 
-첫번째는 "YAML Front Matter" 에 `coments` 라는 변수를 추가하고 그 값을 `true` 로 지정하는 것입니다. Disqus 에 나오는 예시는 다음과 같습니다.
+첫번째는 "YAML Front Matter" 에 `comments` 라는 변수를 추가하고 그 값을 `true` 로 지정하는 것입니다. Disqus 에 나오는 예시는 다음과 같습니다.
 
 ```yaml
 ---
@@ -70,7 +70,7 @@ var disqus_config = function () {
 	this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
  */
- 
+
 (function() { // DON'T EDIT BELOW THIS LINE
 	var d = document, s = d.createElement('script');
 	s.src = '//test-site-znstiaaoqo.disqus.com/embed.js';
@@ -118,11 +118,11 @@ var disqus_shortname = '{% raw %}{{ site.disqus }}{% endraw %}';
 
 위의 코드를 보면 `disqus_shortname` 이라는 변수를 사용했는데, 이 변수의 값은 **Admin > Settings > General** 메뉴의 **Configure Disqus for Your Site** 페이지에 있는 "Shortname" 에서 알려주는 문자열을 복사해서 사용하면 됩니다.
 
-> 단, "Shortname" 값에는 에는 함정이 있는데 이 값은 **Configure Disqus** 메뉴에서 "Website URL" 값을 넣은 다음에 **Complete Setup** 버튼을 눌러야  Disqus 가 알아서 만들어 주는 값이라는 것입니다. 따라서 Disqus의 설명과 "Shortname" 값을 동시에 볼 수는 없습니다. 일단  "Shortname" 값을 만들고 다시 Admin 설명을 따라서 진행해야 합니다.
+> 단, "Shortname" 값에는 함정이 있는데 이 값은 **Configure Disqus** 메뉴에서 "Website URL" 값을 넣은 다음에 **Complete Setup** 버튼을 눌러야  Disqus 가 알아서 만들어 주는 값이라는 것입니다. 따라서 Disqus의 설명과 "Shortname" 값을 동시에 볼 수는 없습니다. 일단  "Shortname" 값을 만들고 다시 Admin 설명을 따라서 진행해야 합니다.
 
 저는 "Shortname" 에서 알려주는 문자열을 **_config.yml** 파일에 새로 `disqus` 변수를 만들고 여기에 할당해서 사용한 것인데 꼭 이렇게 안해도 될 것 같습니다.
 
-그리고 `this.page.url`에는 반드시 해당 페이지의 절대 경로를 넣어야 한다고 합니다. 저도 이 글을 작성하면서 처음에는 실수를 했었는데 위와 같이 `{% raw %}{{ site.url }}{{ page.url }}{% endraw %}` 로 해서 해결했습니다. `{% raw %}{{ site.url }}{% endraw %}` 대신에 `http://xho95.github.io` 처럼 해도 상관없습니다. [^disqus-3114894823]
+그리고 `this.page.url`에는 반드시 해당 페이지의 절대 경로를 넣어야 한다고 합니다. 저도 이 글을 작성하면서 처음에는 실수를 했었는데 위와 같이 `{% raw %}{{ site.url }}{{ page.url }}{% endraw %}` 로 해서 해결했습니다. `{% raw %}{{ site.url }}{% endraw %}` 대신에 `http://xho95.github.io` 처럼 실제 site 주소를 입력해도 상관은 없습니다. [^disqus-3114894823]
 
 #### 3. **disqus.html** 파일 포함하기
 
@@ -134,7 +134,7 @@ var disqus_shortname = '{% raw %}{{ site.disqus }}{% endraw %}';
 {% raw %}{% include disqus.html %}{% endraw %}
 ```
 
-위와 같이 하면 모든 포스트 글의 마지막에 **disqus.html** 파일에 있는 내용이 들어가게 됩니다. 이제 Jekyll 블로그의 모든 포스트 글마다 댓글 시스템이 연결되는 것을 볼 수 있습니다.
+이렇게 하면 모든 포스트 글의 마지막에 **disqus.html** 파일이 덧붙여집니다. 이제 모든 포스트마다 댓글 시스템이 연결되는 것을 확인할 수 있습니다.
 
 ### 댓글 counter 추가하기
 
@@ -150,7 +150,7 @@ var disqus_shortname = '{% raw %}{{ site.disqus }}{% endraw %}';
 
 위에서 `django-test-blog` 부분은 자기 블로그의 **Shortname** 을 입력하면 됩니다.
 
-저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 저는 아래와 같이 사용하고 있습니다.
+저는 앞서 설명드린 것과 같이 **_config.yml** 파일에 `disqus` 변수를 만들고 **Shortname** 값을 저장했기 때문에 아래와 같이 입력했습니다.
 
 ```html
 <script id="dsq-count-scr" src="//{% raw %}{{ site.disqus }}{% endraw %}.disqus.com/count.js" async></script>
