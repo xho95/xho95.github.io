@@ -8,15 +8,19 @@ categories: Swift Language Grammar Generic Parameters Arguments
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 부분[^GPandA]을 정리한 글입니다.
 
-이번 장에서는 일반화된 (generic) 타입, 함수 및 초기자를 위한 매개 변수와 인자에 대해 설명합니다. 일반화된 타입, 함수 또는 초기자를 선언할 때는 그 일반화된 타입, 함수 또는 초기자가 사용할 수 있는 타입 매개 변수를 지정하게 됩니다. 이러한 타입 매개 변수는 자리 지킴이의 역할을 하는데 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수 또는 초기자가 호출될 때 실제 타입으로 대체되어 굳어집니다.
+이번 장에서는 일반화된 (generic) 버전의 타입, 함수, 그리고 초기자 (initalizer) 에서 사용하는 매개 변수와 인자에 대해 설명합니다. 일반화된 버전의 타입, 함수, 첨자 연산자 (subscript), 또는 초기자를 선언할 때는, 이들이 사용할 '타입 매개 변수'를 지정하게 됩니다. 이러한 '타입 매개 변수'는 자리를 지키고 있다가 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수나 초기자가 호출될 때 전달되는 인자로 대체되어, 실제의 명확한 타입 (concrete type) 으로 바뀝니다.
 
-Swift 의 일반화 (generic) 에 대한 개요는 [Generics]() 에서 볼 수 있습니다.
+스위프트에서의 일반화 (generic) 에 대해서는 **[Generics](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)** 부분을 참고 바랍니다.
 
 ### 일반화된 매개 변수 구절 (Generic Parameter Clause)
 
-일반화된 매개 변수 구절은 일반화된 타입 또는 함수의 타입 매개 변수를 지정할 때 이 매개 변수와 관련된 제약 조건과 요구 사항을 함께 지정합니다. 일반화된 매개 변수 구절은 꺾쇠 괄호 (<>) 로 감싸며 다음과 같은 양식을 가집니다:
+제네릭 매개 변수 절은 제네릭 형식 또는 함수의 형식 매개 변수와 해당 매개 변수에 대한 관련 제약 조건 및 요구 사항을 지정합니다. 일반 매개 변수 절은 꺾쇠 괄호 (<>)로 묶으며 다음 형식을 갖습니다.
 
+_일반화된 매개 변수 구절 (generic parameter clause)_ 은 일반화된 타입이나 함수의 '타입 매개 변수'를 지정하면서, 이 매개 변수와 관련된 제한 조건과 요구 사항도 있으면 함께 지정합니다. '일반화된 매개 변수 구절'은 꺾쇠 괄호 (`<>`) 로 감싸며 양식은 다음과 같습니다:
+
+```
 <`generic parameter list`>
+```
 
 일반화된 매개 변수 목록 (list) 은 쉼표 (comma) 로 구분된 일반화된 매개 변수들의 목록으로 각각의 일반화된 매개 변수의 양식은 다음과 같습니다:
 
