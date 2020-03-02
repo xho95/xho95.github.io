@@ -57,3 +57,7 @@ categories: Swift Programming Language Grammar
 ### Revision History
 
 * Document Revision History
+
+### 참고 자료
+
+> 번역하는데 필요한 자료를 정리중입니다.
