@@ -10,13 +10,13 @@ categories: Swift Programming Language Grammar
 
 ### Welcome to Swift
 
-* [스위프트에 대하여 (About Swift)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
-* [빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
+* [About Swift (스위프트란)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
+* [A Swift Tour (스위프트 훑어보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
 ### Language Guide
 
-* [기초 (The Basic)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
-* [기초 연산자 (Basic Operators)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
+* [The Basic (기초)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
+* [Basic Operators (기초 연산자](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
 * Strings and Characters
 * Collection Types
 * Control Flow
@@ -34,7 +34,7 @@ categories: Swift Programming Language Grammar
 * Optional Chaining
 * Error Handling
 * Type Casting
-* [감춰진 타입 (Nested Types)](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
+* [Nested Types (감춰진 타입](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
 * [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
