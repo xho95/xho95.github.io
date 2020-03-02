@@ -1,14 +1,14 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 언어의 기호가 가리키는 것에 대하여 (About the Language Reference)"
+title:  "Swift 3.1: About the Language Reference (언어의 기호에 대하여"
 date:   2017-03-13 11:30:00 +0900
 categories: Swift Language Grammar About Reference
 ---
 
 > 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [About the Language Reference](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/AboutTheLanguageReference.html#//apple_ref/doc/uid/TP40014097-CH29-ID345) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
 
-## 언어의 기호가 가리키는 것에 대하여 (About the Language Reference)
+## About the Language Reference
 
 [^reference] 이 책의 여기서부터는 스위프트 (Swift) 프로그래밍 언어의 공식 문법을 설명하도록 합니다. 문법을 설명하는 것은 언어를 좀 더 자세히 이해하도록 돕기 위한 것이지 구문 해석기 (parser) 나 컴파일러를 직접 만들 수 있도록 하기 위한 것은 아닙니다.
 
@@ -28,13 +28,13 @@ categories: Swift Language Grammar About Reference
 예를 들어서 getter-setter 블럭은 다음과 같은 문법으로 정의합니다:
 
 > GETTER-SETTER 블럭의 문법
-> 
+>
 > _getter-setter-블럭_ → {­ getter-구절 ­setter-구절 <sub>­opt­</sub>­­ }­ \| { ­setter-구절 ­getter-구절 }­
 
 이 정의는 getter-setter 블럭을 구성하려면 getter 구절 다음에 선택 사항으로 setter 구절을 넣고 중괄호로 감싸거나 아니면 setter 구절 다음에 getter 구절을 넣고 중괄호를 감싸면 되는 것을 나타냅니다. 위에 있는 문법 생성 방법은 아래에 있는 두 개의 문법 생성 방법과 동등한 것으로 여기서는 대안 방법을 따로 떼어내어 직접 나타냈습니다.
 
 > GETTER-SETTER 블럭의 문법
-> 
+>
 > _getter-setter-블럭_ → { ­getter-구절 setter-구절 <sub>­opt­</sub>­ }  
 > _getter-setter-블럭_ → {­ setter-구절 ­getter-구절 }­
 
