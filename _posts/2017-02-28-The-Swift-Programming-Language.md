@@ -1,14 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 스위프트 프로그래밍 언어 (Swift Programming Language)"
+title:  "Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)"
 date:   2017-02-28 00:00:00 +0900
 categories: Swift Programming Language Grammar
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 내용을 번역하고 주석을 달아서 정리하고 있는 글입니다. 
-> 
-> 현재는 Swift 3.1 버전에 대해서 정리하고 있습니다. 꾸준히 내용을 업데이트할 예정입니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책을 정리한 글입니다.
 
 ### Welcome to Swift
 
@@ -31,21 +29,21 @@ categories: Swift Programming Language Grammar
 * Subsripts
 * Inheritance
 * Intialization
-* [객체 정리하기 (Deinitialization)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
+* [Deinitialization (객체 정리하기](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
 * Autumatic Reference Counting
 * Optional Chaining
 * Error Handling
 * Type Casting
-* [타입 중첩시키기 (Nested Types)](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
-* Extensions
-* Protocols
-* Generics
+* [감춰진 타입 (Nested Types)](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
+* [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
+* [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
+* [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
 * Access Control
 * Advanced Operators
 
 ### Language Reference
 
-* [언어의 기호가 가리키는 것에 대하여 (About the Language Reference)](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
+* [About the Language Reference (언어의 기호에 대하여](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
 * Lexical Structure
 * Types
 * Expressions
@@ -53,7 +51,7 @@ categories: Swift Programming Language Grammar
 * Declarations
 * Attributes
 * Patterns
-* [일반화된 매개 변수와 인자 (Generic Parameters and Arguments)](http://xho95.github.io/swift/language/grammar/generic/parameters/arguments/2017/03/15/Generic-Parameters-and-Arguments.html)
+* [Generic Parameters and Arguments (일반화된 매개 변수와 인자)](http://xho95.github.io/swift/language/grammar/generic/parameters/arguments/2017/03/15/Generic-Parameters-and-Arguments.html)
 * Summary of the Grammar
 
 ### Revision History

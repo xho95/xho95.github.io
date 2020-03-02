@@ -10,19 +10,16 @@ categories: Xcode Swift Grammar Extensions
 
 ## Extensions (확장)
 
-_확장 (Extensions)_ 은 이미 존재하는 클래스, 구조체, 열거체[^enumeration] 또는 프로토콜 타입에 새로운 기능 (functionality)[^functionality] 을 추가하는 것입니다. 원본 소스 코드에 접근할 수 없는 타입도 확장이 가능합니다. (이를 _`retroactive modeling (소급 적용 모델링)`_ 이라고 합니다.[^retroactive-modeling]) 확장은 오브젝티브-C의 카테고리 (categries) 와 유사합니다. (하지만 오브젝티브-C의 카테고리와는 다르게, 스위프트의 확장은 이름을 가지지 않습니다.)
+_확장 (Extensions)_ 은 이미 존재하는 클래스, 구조체, 열거체[^enumeration] 또는 프로토콜 타입에 새로운 기능 (functionality)[^functionality] 을 추가하는 것입니다. 원본 소스 코드에 접근할 수 없는 타입도 확장이 가능합니다. (이를 _`retroactive modeling (소급 적용 모델링)`_ 이라고 합니다.)[^retroactive-modeling] 확장은 오브젝티브-C 의 카테고리 (categries) 와 유사합니다. (하지만 오브젝티브-C 의 카테고리와는 다르게, 스위프트의 확장은 이름을 가지지 않습니다.)
 
+스위프트의 확장은 다음과 같은 것들을 할 수 있습니다:
 
-> 공식 문서에서는 Swift의 Extensions이 Objective-C의 categories와 유사하다고 하는데,  Objective-C에 대해서는 잘 몰라서, 개인적으로는 Delphi에서 사용하는 Object Pascal이라는 언어의 Helper class와 유사한 개념인 것처럼 느껴진다.
-
-Swift의 Extensions이 기존 타입에 확장할 수 있는 것들은 다음과 같다.
-
-* computed properties, computed type properties 추가하기
-* convenience initializers 추가하기
-* instance methods, type methods 정의하기
-* subscripts 정의하기
-* nested types 정의하기
-* 기존 타입이 특정한 protocol을 따르도록 하기
+* 계산 인스턴스 속성 (computed instance properties) 및 계산 타입 속성 (computed type properties) 추가하기
+* 인스턴스 메소드 (instance methods 및 타입 메소드 (type methods) 정의하기
+* 새로운 초기자 (initializer) 제공하기
+* 첨자 연산자 (subscripts) 정의하기
+* 새로운 감춰진 타입 (nested types) 정의하고 사용하기
+* 기존 타입이 특정한 프로토콜을 준수하도록 만들기
 
 > Extensions은 타입 뿐만 아니라 프로토콜도 확장이 가능하며, 프로토콜의 확장을 통해서 프로토콜의 요구사항(requirements)과 추가적인 기능(additional functionality) 확장이 가능하며, 이렇게 확장된 프로토콜은 해당 프로토콜을 따르는 모든 타입들에 적용된다.
 

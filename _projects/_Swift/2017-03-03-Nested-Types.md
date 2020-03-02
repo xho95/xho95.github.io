@@ -1,6 +1,6 @@
-## 타입 중첩시키기 (Nested Types)
+## 감춰진 타입 (Nested Types)
 
-열거 타입의 경우 때때로 특정한 클래스나 구조 타입의 기능을 보조하려고 만듭니다. 비슷하게 생각해보면, 클래스나 구조 타입을 더 복잡한 타입을 보조하기 위한 용도로 사용하는 것도 나름 편리할 것입니다. 이를 위해 Swift 는 중첩 타입을 정의할 수 있는데, 보조하려는 타입을 정의할 때 보조 용도로 열거 타입, 클래스 및 구조 타입을 중첩할 수 있습니다.
+열거체의 경우 때때로 특정한 클래스나 구조 타입의 기능을 보조하려고 만듭니다. 비슷하게 생각해보면, 클래스나 구조 타입을 더 복잡한 타입을 보조하기 위한 용도로 사용하는 것도 나름 편리할 것입니다. 이를 위해 Swift 는 중첩 타입을 정의할 수 있는데, 보조하려는 타입을 정의할 때 보조 용도로 열거 타입, 클래스 및 구조 타입을 중첩할 수 있습니다.
 
 다른 타입 내에서 타입을 중첩시키려면 지원하려는 타입의 중괄호 범위 내에서 정의를 작성하면 됩니다. 타입은 필요한 만큼 많이 중첩될 수 있습니다.
 
@@ -12,12 +12,12 @@
 
 ```
 struct BlackjackCard {
-    
+
     // nested Suit enumeration
     enum Suit: Character {
         case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
     }
-    
+
     // nested Rank enumeration
     enum Rank: Int {
         case two = 2, three, four, five, six, seven, eight, nine, ten
@@ -36,7 +36,7 @@ struct BlackjackCard {
             }
         }
     }
-    
+
     // BlackjackCard properties and methods
     let rank: Rank, suit: Suit
     var description: String {
@@ -94,7 +94,7 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^optional-binding]: 'optional binding'은 '옵셔널 연결'이라고 옮깁니다. 나중에 좀 더 적당한 용어로 바꿀 생각입니다.
 
-[^memberwise]: 'memberwise initializer'는 '멤버 초기자'로 옮깁니다. 
+[^memberwise]: 'memberwise initializer'는 '멤버 초기자'로 옮깁니다.
 
 [^implicitly]: 'implicitly'는 (은연 중에) 저절로 라는 느낌으로 '저절로'라고 옮깁니다.
 
@@ -102,4 +102,4 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^context-2]: 여기서는 'context'를 '영역'이라고 옮깁니다. 좀 더 생각해봐야 할 것 같습니다.
 
-[^qualified]: 이 문장도 좀 더 다듬어야 합니다. 
+[^qualified]: 이 문장도 좀 더 다듬어야 합니다.
