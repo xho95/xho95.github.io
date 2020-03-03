@@ -11,6 +11,7 @@ categories: Swift Programming Language Grammar
 ### Welcome to Swift
 
 * [About Swift (스위프트란)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
+* Version Compatibility
 * [A Swift Tour (스위프트 훑어보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
 ### Language Guide
@@ -23,14 +24,13 @@ categories: Swift Programming Language Grammar
 * Functions
 * Closures
 * Enumerations
-* Classes and Structures
+* Structures and Classes
 * Properties
 * Methods
-* Subsripts
+* Subscripts
 * Inheritance
-* Intialization
+* Initialization
 * [Deinitialization (객체 정리하기](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
-* Autumatic Reference Counting
 * Optional Chaining
 * Error Handling
 * Type Casting
@@ -38,6 +38,9 @@ categories: Swift Programming Language Grammar
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
 * [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
+* Opaque Types
+* Automatic Reference Counting
+* Memory Safety
 * Access Control
 * Advanced Operators
 
@@ -60,4 +63,4 @@ categories: Swift Programming Language Grammar
 
 ### 참고 자료
 
-> 번역하는데 필요한 자료를 정리중입니다.
+[^Swift]: 스위프트 언어는 현재 5.2 베타 버전까지 나온 상태이며, [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 에서 원문을 볼 수 있습니다.
