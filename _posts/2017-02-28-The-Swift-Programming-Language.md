@@ -38,7 +38,7 @@ categories: Swift Programming Language Grammar
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
 * [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
-* Opaque Types
+* [Opaque Types (불투명한 타입)](http://xho95.github.io/swift/language/grammar/opaque/type/2020/02/22/Opaque-Types.html)
 * Automatic Reference Counting
 * Memory Safety
 * Access Control
