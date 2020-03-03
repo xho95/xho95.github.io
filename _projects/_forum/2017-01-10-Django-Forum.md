@@ -2,9 +2,9 @@
 
 #### 가상 환경 만들기
 
-장고를 사용할 경우에는 가상 환경을 따로 만들어주는 것이 여러모로 좋습니다. 
+장고를 사용할 경우에는 가상 환경을 따로 만들어주는 것이 여러모로 좋습니다.
 
-파이썬 버전은 일단 3.5로 정해줍니다. 많은 패키지들이 아직 3.6을 지원하지 않습니다. 
+파이썬 버전은 일단 3.5로 정해줍니다. 많은 패키지들이 아직 3.6을 지원하지 않습니다.
 
 > 특히 현재는 PostgreSQL 과 연동하는 패키지가 3.6을 지원하지 않는 것 같습니다.
 
@@ -12,32 +12,32 @@
 $ conda create --name MY_ENVIRONMENT python=3.5
 ```
 
-위와 같이 하면 가상 환경이 만들어지고, 아울러 파이썬까지 설치가 됩니다. 
+위와 같이 하면 가상 환경이 만들어지고, 아울러 파이썬까지 설치가 됩니다.
 
 #### 가상 환경에 장고 설치
 
-우선 가상 환경을 활성화 합니다. 
+우선 가상 환경을 활성화 합니다.
 
 ```
 $ source activate MY_ENVIRONMENT
 ```
 
-conda를 이용하여 장고를 설치합니다. 
+conda를 이용하여 장고를 설치합니다.
 
 ```
 (MY_ENVIRONMENT) ...$ conda install django
 ```
 
-### 장고 프로젝트 시작하기 
+### 장고 프로젝트 시작하기
 
-프로젝트를 시작할 폴더로 이동한 다음 다음과 같이 프로젝트를 시작합니다. 
+프로젝트를 시작할 폴더로 이동한 다음 다음과 같이 프로젝트를 시작합니다.
 
 ```
 (MY_ENVIRONMENT) ...$ cd ...
 (MY_ENVIRONMENT) ...$ django-admin.py startproject PROJECT
 ```
 
-아래와 같이 관련 폴더와 파일들이 생기는 것을 볼 수 있습니다. 
+아래와 같이 관련 폴더와 파일들이 생기는 것을 볼 수 있습니다.
 
 ```
 (MY_ENVIRONMENT) ...$ tree PROJECT
@@ -56,7 +56,7 @@ PROJECT
 
 #### 데이터베이스 지정하기
 
-장고는 기본적으로 SQLite3 데이터베이스 엔진을 사용하도록 되어 있습니다. 
+장고는 기본적으로 SQLite3 데이터베이스 엔진을 사용하도록 되어 있습니다.
 
 ```
 DATABASES = {
@@ -84,21 +84,21 @@ DATABASES = {
 
 위에서 `mydatabase`, `mydatabaseuser`, `mypassword`에는 각각 자신만의 적당한 값으로 치환해서 넣어줍니다.
 
-> 다른 책에서는 `postgresql_psycopg2`를 사용하는데, 공식 문서에는 그냥 `postgresql`을 사용하고 있습니다. 
-> 
-> 나중에 좀 더 알아봐야겠습니다. 
-> 
+> 다른 책에서는 `postgresql_psycopg2`를 사용하는데, 공식 문서에는 그냥 `postgresql`을 사용하고 있습니다.
+>
+> 나중에 좀 더 알아봐야겠습니다.
+>
 > 그냥 `postgresql`로 하더라도 psycopg2 패키지는 설치해야하는 것 같습니다. 아래와 같이 **pip** 외에도 **conda**로도 설치할 수 있습니다.
-> 
+>
 > ```
 > $ conda install psycopg2
 > ```
 
-PostgreSQL 설정 방법은 프로젝트 설정과는 다른 얘기라서 다음 절에서 따로 설명하도록 합니다. 
+PostgreSQL 설정 방법은 프로젝트 설정과는 다른 얘기라서 다음 절에서 따로 설명하도록 합니다.
 
 #### 템플릿 항목 설정하기
 
-템플릿 항목에서 `'DIRS'` 항목을 아래와 같이 수정합니다. 
+템플릿 항목에서 `'DIRS'` 항목을 아래와 같이 수정합니다.
 
 ```
 'DIRS': [os.path.join(BASE_DIR, 'templates')],
@@ -106,11 +106,11 @@ PostgreSQL 설정 방법은 프로젝트 설정과는 다른 얘기라서 다음
 
 DIRS 항목은 프로젝트 템플릿 파일이 위치한 디렉토리를 지정합니다. 장고는 프로젝트 템플릿 디렉토리를 애플리케이션 템플릿 디렉토리보다 먼저 검색한다고 합니다. [^book]
 
-> 다만 디폴트로 되어 있지 않다는 것은 꼭 위와 같이 하지 않아도 되는 것이 아닌가라는 생각이 듭니다. 나중에 확인해봐야겠습니다. 
+> 다만 디폴트로 되어 있지 않다는 것은 꼭 위와 같이 하지 않아도 되는 것이 아닌가라는 생각이 듭니다. 나중에 확인해봐야겠습니다.
 
 #### 정적 파일 설정하기
 
-`STATIC_URL` 밑에 다음과 같이 추가합니다. 
+`STATIC_URL` 밑에 다음과 같이 추가합니다.
 
 ```
 STATIC_URL = '/static/'
@@ -118,25 +118,25 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 ```
 
-> 위의 내용도 `load staticfiles`와 관련한 내용일 수 있는데, 확인이 필요합니다. 
-> 
-> 현재는 `load static`만으로도 충분하다는 얘기도 있는 것 같ㄴ습니다. 
+> 위의 내용도 `load staticfiles`와 관련한 내용일 수 있는데, 확인이 필요합니다.
+>
+> 현재는 `load static`만으로도 충분하다는 얘기도 있는 것 같ㄴ습니다.
 
 #### 시간대 설정하기
 
-책에는 시간대를 `'UTC'`에서 `'Asia/Seoul'`로 바꾸라고 되어 있는데, 특별한 문제가 없으면 그대로 두겠습니다. 
+책에는 시간대를 `'UTC'`에서 `'Asia/Seoul'`로 바꾸라고 되어 있는데, 특별한 문제가 없으면 그대로 두겠습니다.
 
 ```
-TIME_ZONE = 'UTC' 
-``` 
+TIME_ZONE = 'UTC'
+```
 
-> 어차피 서버 자체가 국내에 없을 경우 상관이 없지 않을까 생각합니다. 
-> 
-> 이부분도 다시 한 번 정리할 필요가 있습니다. 
+> 어차피 서버 자체가 국내에 없을 경우 상관이 없지 않을까 생각합니다.
+>
+> 이부분도 다시 한 번 정리할 필요가 있습니다.
 
 #### 미디어 관련 사항 설정하기
 
-파일 업로드 기능을 개발할 때 사용하기 위해 설정 파일 끝에 다음과 같이 지정합니다. 
+파일 업로드 기능을 개발할 때 사용하기 위해 설정 파일 끝에 다음과 같이 지정합니다.
 
 ```
 # Media files
@@ -152,11 +152,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 일단 Postgres.app 과 pgAdmin을 설치합니다. 설치 방법 등은 다른 글을 참고합니다.
 
 > Postgres.app의 경우 버전이 2로 올라가면서 사용법이 조금 바뀐 것 같습니다. 예전에는 Postgres.app의 쉘에서 db도 생성하고 그랬는데, 이제는 pgAdmin에서 db를 생성해도 상관이 없는 것 같습니다.
-> 
+>
 > ![Posgres.app](../assets/PostgreSQL/PostgresApp.jpg)
-> 
+>
 > 여튼, Postgres.app 자체에서 뭔가 할 일은 없는 듯 보입니다. 그냥 켜두면 알아서 db 서버 역할을 하는 것 같습니다.  
-> 
+>
 > 이 부분은 좀 더 익숙해지면 정리하도록 하겠습니다.  
 
 #### pgAdmin 데이터 베이스 설정하기
@@ -171,9 +171,9 @@ pgAdmin 프로그램의 왼편에 있는 Browser 창의 Servers에서 마우스 
 
 Save를 눌러서 새로운 사용자를 등록합니다.
 
-이제 `Databases`에서 **Create > Database...** 메뉴를 선택해서 새로운 Database를 만듭니다. Database의 **Owner**를 위에 새로 등록한 사용자로 지정합니다. 
+이제 `Databases`에서 **Create > Database...** 메뉴를 선택해서 새로운 Database를 만듭니다. Database의 **Owner** 를 위에 새로 등록한 사용자로 지정합니다. 
 
-Save를 눌러서 새로운 데이터 베이스를 등록합니다. 
+Save를 눌러서 새로운 데이터 베이스를 등록합니다.
 
 ### 기본 테이블 생성하기
 
@@ -193,9 +193,9 @@ Save를 눌러서 새로운 데이터 베이스를 등록합니다.
 (MY_ENVIRONMENT) ...$ python manage.py createsuperuser
 ```  
 
-이어서, Username, Email, Password를 각각 입력하면 관리자가 만들어집니다. 
+이어서, Username, Email, Password를 각각 입력하면 관리자가 만들어집니다.
 
-> 참고로 장고 Admin 사이트의 관리자는 PostgeSQL의 관리자와는 전혀 상관이 없습니다. 다만, 같은 정보로 만드는 것은 상관없을 것 같습니다. 
+> 참고로 장고 Admin 사이트의 관리자는 PostgeSQL의 관리자와는 전혀 상관이 없습니다. 다만, 같은 정보로 만드는 것은 상관없을 것 같습니다.
 
 ### 웹 서버로 테스트 하기
 
@@ -219,7 +219,7 @@ Save를 눌러서 새로운 데이터 베이스를 등록합니다.
 
 ### 참고 자료
 
-[^djangogirls-deploy]: [배포하기!](https://tutorial.djangogirls.org/ko/deploy/) : 장고걸스 튜토리얼에 있는 내용입니다. 전체 과정이 상당히 좋은 내용이라 한 번 정도 실습하면 좋을 것 같습니다. 
+[^djangogirls-deploy]: [배포하기!](https://tutorial.djangogirls.org/ko/deploy/) : 장고걸스 튜토리얼에 있는 내용입니다. 전체 과정이 상당히 좋은 내용이라 한 번 정도 실습하면 좋을 것 같습니다.
 
 [^djangoproject-databases]: [Settings - DATABASES](https://docs.djangoproject.com/en/1.10/ref/settings/#databases) : 장고 공식 문서에서 Database 세팅 부분입니다. PostgreSQL 설정 방법은 공식 문서에 예제로 소개되어 있습니다.
 

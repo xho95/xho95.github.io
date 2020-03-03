@@ -1,1 +1,0 @@
-[부부개발자의 도전작! <용사학교>](https://tumblbug.com/fsf)
