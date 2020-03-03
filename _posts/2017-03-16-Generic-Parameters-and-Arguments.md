@@ -104,14 +104,6 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 > generic-argument-list → generic-argument­ \| generic-argument **,** generic-argument-list­  
 > generic-argument → type­
 
-### 원문 자료
-
-* [Generic Parameters and Arguments](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GenericParametersAndArguments.html#//apple_ref/doc/uid/TP40014097-CH37-ID406) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
-
-### 관련 자료
-
-* [Swift 3.1: 스위프트 프로그래밍 언어 (Swift Programming Language)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html)
-
 ### 참고 자료
 
 [^GPandA]: 원문은 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 에서 확인할 수 있습니다.
