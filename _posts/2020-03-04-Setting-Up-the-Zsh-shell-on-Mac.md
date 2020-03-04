@@ -91,6 +91,11 @@ $
 
 ![zsh-shell-and-git](/assets/macOS/zsh-git.png)
 
+```zsh
+# kimminho @ xho95s-MacBook-Pro in ~/Documents/xho95.github.io on git:master o [18:38:27]
+$
+```
+
 하지만 zsh 의 화면이 위와 다른 분들이 많을 것입니다. 확인해보니 zsh 의 테마 설정이 random 으로 되어 있어서 터미널을 새로 시작할 때마다 다른 테마가 나타나는 것이었습니다. 현재 zsh 에 설정된 테마를 확인하려면 아래와 같은 명령을 실행해서 `ZSH_THEME` 부분을 확인하면 됩니다.
 
 ```zsh
