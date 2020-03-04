@@ -10,11 +10,7 @@ categories: macOS CLI Shell zsh
 
 사실 zsh 자체는 맥 사용자에게 오래전부터 알려진 것으로 oh my zsh 같은 프로그램도 사용되기도 했습니다. 다만 저는 개인적으로 어지간하면 기본 세팅을 변경하지 않는 사람이라서 그냥 알고만 있었는데, 언젠가부터 터미널을 사용할 때 아래와 같은 메시지가 뜨는 것을 알게된 후 쉘이 변경되었다는 것을 알게됐습니다.
 
-```bash
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
-```
+![bash-shell](/assets/macOS/bash-shell.png)
 
 그런데 카탈리나부터 기본 쉘이 zsh 이 되었다고 하면서 제 쉘이 계속 bash 였던 것은 원래 bash 쉘을 쓰고 있던 사람이 OS 를 업데이트를 하면 설정이 유지돼서 그런 것 같습니다.
 
