@@ -1,9 +1,9 @@
 ---
 layout: post
 comments: true
-title:  "macOS: Catalina (카탈리나) 부터 기본 쉘이 된 zsh 설정하기"
+title:  "macOS: 기본 쉘 (shell) 이 된 zsh 설정하기"
 date:   2020-03-04 11:30:00 +0900
-categories: macOS CLI Shell zsh
+categories: macOS CLI shell zsh
 ---
 
 macOS 버전 10.15 인 '카탈리나' 부터 기본 쉘 (Shell) 이 bash[^bash] 에서 zsh (Z shell)[^zsh] 로 변경 되었습니다.[^Use-zsh] 일단 쉘을 변경한 이유를 애플에서 직접 밝히진 않았지만, The Verge 라는 언론에서는 bash 쉘의 라이센스와 관련된 이유인 것으로 추측하고 있습니다.[^the-Verge] 이 기사와 애플의 설명을 보면 여러 후보군 중에서 zsh 을 선택한 것은 라이센스 문제를 해결하면서도 기존 bash 쉘과의 호환성을 최대한 지원하기 위함인 것 같습니다.[^Bourne-shell]
