@@ -76,14 +76,13 @@ Get your Oh My Zsh swag at:  http://shop.planetargon.com/
 /Users/kimminho/.oh-my-zsh/lib/directories.zsh:32: command not found: compdef
 [oh-my-zsh] Random theme '/Users/kimminho/.oh-my-zsh/themes/ys.zsh-theme' loaded...
 ...
-```
 
-그러면 위와 같이 나타날 것입니다.
-
-```zsh
-# ... @ xho95s-MacBook-Pro in ~ [16:00:12] 
+# kimminho @ xho95s-MacBook-Pro in ~ [16:00:12]
 $
 ```
+
+업데이트가 완료되면 위와 비슷한 결과가 나타날 것입니다.
+
 
 
 ### zsh 장점 알아보기
