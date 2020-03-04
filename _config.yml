@@ -12,8 +12,10 @@ title: xho95's Swift Life
 email: xho1995@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   let me = Programmer(with: swift)
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xho95.github.io" # the base hostname & protocol for your site
+
 twitter_username: xho951
 github_username:  xho95
 facebook_username: xho1995
@@ -56,3 +58,6 @@ kramdown:
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
 disqus: xho95githubio
+
+# google search console
+google_verification: LCmVD7ZDVOP1SGGIl_b4h1DRYi_A4M3wp2nd2hjvLqg
