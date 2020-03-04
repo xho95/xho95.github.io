@@ -83,7 +83,7 @@ $
 
 업데이트가 완료되면 위와 비슷한 결과가 나타날 것입니다. 터미널을 보면 제목에도 zsh 이 기본 쉘임을 보여주고 있습니다.
 
-![bash-shell](/assets/macOS/bash-shell.png)
+![bash-shell](/assets/macOS/zsh.png)
 
 
 
