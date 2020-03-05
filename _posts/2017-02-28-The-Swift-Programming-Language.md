@@ -6,7 +6,7 @@ date:   2017-02-28 00:00:00 +0900
 categories: Swift Programming Language Grammar
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책을 정리한 글입니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책을 한글로 옮겨서 정리한 글입니다.[^Swift]
 
 ### Welcome to Swift
 
@@ -22,7 +22,7 @@ categories: Swift Programming Language Grammar
 * [Collection Types (집합체 타입)](http://xho95.github.io/swift/grammar/collection/types/array/set/dictionary/2016/06/06/Collection-Types.html)
 * Control Flow
 * Functions
-* Closures
+* [Closures (잠금 블럭)](http://xho95.github.io/swift/language/grammar/closure/2020/03/03/Closures.html)
 * Enumerations
 * Structures and Classes
 * Properties
@@ -61,6 +61,8 @@ categories: Swift Programming Language Grammar
 
 * Document Revision History
 
+### 생각할 거리
+
 ### 참고 자료
 
-[^Swift]: 스위프트 언어는 현재 5.2 베타 버전까지 나온 상태이며, [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 에서 원문을 볼 수 있습니다.
+[^Swift]: **스위프트 프로그래밍 언어**는 현재 5.2 베타 버전까지 나온 상태이며, [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 에서 원문을 볼 수 있습니다.
