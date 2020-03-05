@@ -1,20 +1,20 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 타입 중첩시키기 (Nested Types)"
+title:  "Swift 3.1: 품어진 타입 (Nested Types)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Nested
 ---
 
 > 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [Nested Types](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/NestedTypes.html#//apple_ref/doc/uid/TP40014097-CH23-ID242) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
 
-## 타입 중첩시키기 (Nested Types)
+## 품어진 타입 (Nested Types)
 
 열거 타입의 경우 때때로 특정한 클래스나 구조 타입의 기능을 보조하려고 만듭니다. 비슷하게 생각해보면, 클래스나 구조 타입을 더 복잡한 타입을 보조하기 위한 용도로 사용하는 것도 나름 편리할 것입니다. 이를 위해 Swift 는 중첩 타입을 정의할 수 있는데, 보조하려는 타입을 정의할 때 보조 용도로 열거 타입, 클래스 및 구조 타입을 중첩할 수 있습니다.
 
 다른 타입 내에서 타입을 중첩시키려면 지원하려는 타입의 중괄호 범위 내에서 정의를 작성하면 됩니다. 타입은 필요한 만큼 많이 중첩될 수 있습니다.
 
-### 타입 중첩의 실제 사례 (Nested Types in Action)
+### 품어진 타입의 사용 예시 (Nested Types in Action)
 
 아래의 예제는 `BlackjackCard` 라는 구조 타입을 정의하는데 블랙잭 게임에서 사용되는 플레이 카드를 모델링합니다. `BlackJack` 구조 타입은 `Suit` 와 `Rank` 라는 두 개의 중첩된 열거 타입을 가지고 있습니다.
 
@@ -83,7 +83,7 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 `Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있지만 그들의 타입은 문맥을 통해서 추론할 수 있으므로 인스턴스 초기화 구문에서 그 자신의 case 이름 (`.ace` 와 `.spades`) 만으로 열거 타입의 case 를 추론할 수 있습니다. [^context] 위의 예제에서 `description` 속성은 스페이드 에이스의 값이 `1` 또는 `11` 임을 정확하게 보고하고 있습니다.
 
-### 중첩된 타입 참조하기 (Referring to Nested Types)
+### 품어진 타입 가리키기 (Referring to Nested Types)
 
 중첩된 타입을 정의된 영역 밖에서 사용하려면 이름 앞에 중첩하고 있는 타입의 이름을 붙여주면 됩니다: [^context-2]
 
