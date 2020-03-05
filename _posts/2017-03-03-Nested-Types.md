@@ -83,7 +83,7 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 `Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있지만 그들의 타입은 문맥을 통해서 추론할 수 있으므로 인스턴스 초기화 구문에서 그 자신의 case 이름 (`.ace` 와 `.spades`) 만으로 열거 타입의 case 를 추론할 수 있습니다. [^context] 위의 예제에서 `description` 속성은 스페이드 에이스의 값이 `1` 또는 `11` 임을 정확하게 보고하고 있습니다.
 
-### 품어진 타입 가리키기 (Referring to Nested Types)
+### 품어진 타입 참조하기 (Referring to Nested Types)
 
 중첩된 타입을 정의된 영역 밖에서 사용하려면 이름 앞에 중첩하고 있는 타입의 이름을 붙여주면 됩니다: [^context-2]
 

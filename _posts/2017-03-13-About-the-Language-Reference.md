@@ -10,7 +10,7 @@ categories: Swift Language Grammar About Reference
 
 ## About the Language Reference
 
-[^reference] 이 책의 여기서부터는 스위프트 (Swift) 프로그래밍 언어의 공식 문법을 설명하도록 합니다. 문법을 설명하는 것은 언어를 좀 더 자세히 이해하도록 돕기 위한 것이지 구문 해석기 (parser) 나 컴파일러를 직접 만들 수 있도록 하기 위한 것은 아닙니다.
+이 책의 여기서부터는 스위프트 (Swift) 프로그래밍 언어의 공식 문법을 설명하도록 합니다. 문법을 설명하는 것은 언어를 좀 더 자세히 이해하도록 돕기 위한 것이지 구문 해석기 (parser) 나 컴파일러를 직접 만들 수 있도록 하기 위한 것은 아닙니다.
 
 스위프트 언어는 다른 언어들보다 꽤 단순한데, 이는 모든 스위프트 코드에서 볼 수 있는 여러 공통 타입, 함수, 그리고 연산자들이 실제로는 스위프트 표준 라이브러리에서 정의되기 때문입니다. 비록 이들 타입, 함수, 그리고 연산자들이 스위프트 언어의 일부는 아니지만 여기서는 이들을 다루는 광범위한 논의와 코드 예제를 볼 수 있습니다.
 
@@ -47,8 +47,6 @@ categories: Swift Language Grammar About Reference
 * [Swift 3.1: 스위프트 프로그래밍 언어 (Swift Programming Language)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html)
 
 ### 참고 자료
-
-[^reference]: 'reference'는 보통 '참조'라고 옮기지만, 여기서는 [언어의 지시 대상과 내재적 의미](https://books.google.co.kr/books?id=c_PYBAAAQBAJ&pg=PT34&lpg=PT34&dq=Language+Reference+뜻&source=bl&ots=mZtvCKTqYL&sig=06F6Krrmt6yA7jDFYQ-mNgb3loQ&hl=en&sa=X&redir_esc=y#v=onepage&q=Language%20Reference%20뜻&f=false) 라는 글을 참고해서 '기호가 가리키는 것'으로 옮깁니다. 원래의 '가리키다'라는 의미는 유지되는 것 같습니다.
 
 [^regular]: 이 부분은 좀 더 깊은 의미가 있는 것 같습니다. 나중에 더 이해하게 되면 새로 옮겨야할 것 같습니다.
 
