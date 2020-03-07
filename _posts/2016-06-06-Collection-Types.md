@@ -1,44 +1,46 @@
 ---
 layout: post
 comments: true
-title:  "Swift 2.2: 집합형(Collection Types)"
+title:  "Swift 5.2: Collection Types (집합체 타입)"
 date:   2016-06-06 19:45:00 +0900
-categories: Swift Grammar Collection Types Array Set Dictionary
+categories: Swift Grammar Collection Array Set Dictionary
 ---
 
-* three primary **collection type** : arrays, sets, and dictionaries
-    * Arrays : ordered collections of values
-    * Sets : unordered collections of unique values
-    * Dictionaries : unordered collections of key-value associations
-- always clear about the types of values and keys that they can store
-    - be confident about the type of values
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html) 부분[^Collection-Types]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-> note:
- Swift's array, set, and dictionary : implemented as **generic collections**
+## Collection Types (집합체 타입)
 
-## Mutability of Collections
+스위프트는 값의 집합을 저장하는 용도로 세 가지의 주요 _집합체 타입 (collection types)_[^collections] 을 제공하며, 이는 '배열 (arrays)', '셋 (sets)'[^sets], 그리고 '딕셔너리 (dictionaries)-사전-'[^dictionaries] 입니다. 배열은 값들이 순서에 따라 모여 있는 집합체입니다. 셋은 값들이 순서는 없지만 각각 하나씩만 존재하는 집합체입니다. 딕셔너리는 '키-값 묶음 (key-value associations)' 들이 순서없이 모여 있는 집합체입니다.
 
-* mutable : assign it to a variable - change (or mutate) the collection
-* immutable : assign the collections to a constant - its size and contents cannot be changed
+![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.png)
 
-> note:
- to create immutable collections : enable the Swift compiler to optimize the performance
+스위프트에 있는 배열, 셋, 그리고 딕셔너리는 저장할 수 있는 값과 키의 타입이 무엇인지 명확하게 알고 있습니다. 이는 실수로라도 집합체에 잘못된 타입의 값을 넣게 되는 일은 발생하지 않는다는 의미입니다. 이는 또 컬렉션에서 가져오는 값의 타입에 대해 확신을 가질 수 있다는 의미이기도 합니다.
 
-## Arrays
+> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화된 집합체 (generic collections)_ 로 구현되어 있습니다. 일반화된 타입과 일반화된 집합체 (generic types and collections) 에 대한 더 자세한 내용은 [Generics](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html) 을 참고하기 바랍니다.
 
-* an **array** : stores values of the same type in an ordered list
-    * the same value can appear in an array multiple times
+### Mutability of Collections (집합체의 변경-용이성)
 
-> note:
- Swift's `Array` type : bridged to Foundation's `NSArray` class
+배열, 셋 또는 딕셔너리를 하나 만들고, 이를 변수에 할당하면, 이렇게 생성된 집합체는 _변경 가능 (mutable)_ 합니다. 이는 집합체가 생성된 후에 집합체의 요소를 추가, 제거, 또는 변경하는 등의 방법으로 집합체를 바꿀 수 (즉 변경할 수) 있다는 의미입니다. 배열, 셋 또는 딕셔너리를 상수에 할당하면, 이 집합체는 _변경 불가능 (immutable)_ 이며, 크기와 내용을 변경할 수 없게 됩니다.
 
-### Array Type Shorthand Syntax
+> 컬렉션을 변경할 필요가 없을 때는 집합체를 항상 변경 불가능하게 만드는 습관을 가지도록 합시다. 이렇게 하면 코드를 파악하기 쉬워지며 스위프트 컴파일러가 이 집합체의 성능을 최적화하도록 만듭니다.
+
+### Arrays (배열)
+
+_배열 (array)_ 은 같은 타입의 값들을 순서에 따라 줄지어서 저장합니다. 같은 값이라도 위치가 다르다면 한 배열 안에 여러 번 나타날 수 있습니다.
+
+> 스위프트의 배열 타입은 '파운데이션 (Foundation) 프레임웍' 에 있는 `NSArray` 클래스에 연결됩니다.
+
+Foundation 및 Cocoa와 함께 Array를 사용하는 방법에 대한 자세한 내용은 Array와 NSArray 간 브리징을 참조하십시오.
+
+#### Array Type Shorthand Syntax
 
 * the type of a Swift array :
     * `Array<Element>` - `Element` is type of values the array is allowed to store
     * `[Element]` : shorthand form - preferred
 
-### Creating an Empty Array
+#### Creating an Empty Array
 
 * create an empty array : initializer syntax
 
@@ -64,7 +66,7 @@ someInts = []
 // someInts is now an empty array, but is still of type [Int]
 ```
 
-### Creating an Array with a Default Value
+#### Creating an Array with a Default Value
 
 * an initializer : creating an array of a certain size with the same default value
     * `count` : the number of items
@@ -76,7 +78,7 @@ var threeDoubles = [Double](count: 3, repeatedValue: 0.0)
 // threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]
 ```
 
-### Creating an Array by Adding Two Arrays Together
+#### Creating an Array by Adding Two Arrays Together
 
 * create a new array by adding together : the addition operator(`+`)
 
@@ -90,7 +92,7 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 // sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]
 ```
 
-### Creating an Array with an Array Literal
+#### Creating an Array with an Array Literal
 
 * initialize an array : an **array literal** - a shorthand way
 
@@ -119,7 +121,7 @@ var shoppingList_2 = ["Eggs", "Milk"]
 
 * Swift can infer that `[String]` is the correct type
 
-### Accessing and Modifying an Array
+#### Accessing and Modifying an Array
 
 * access and modify an array : methods, properties, or subscript syntax
 - `count` : read only property - to find out the number of items
@@ -241,7 +243,7 @@ let apples = shoppingList_2.removeLast()
 // the apples constant is now equal to the removed "Apples" string
 ```
 
-### Iterating Over an Array
+#### Iterating Over an Array
 
 * the `for-in` loop : iterate over the entire set of values in an array
 
@@ -739,3 +741,13 @@ let airportNames = [String](airports_2.values)
 
 * Swift's `Dictionary` type : not have a defined ordering
 - `sort()` on its `keys` or `values` : to iterate over the keys or values of a dictionary in a specific order
+
+### 참고 자료
+
+[^Collection-Types]: 원문은 [Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html) 에서 확인할 수 있습니다.
+
+[^collections]: 'collection' 은 '모임', '집합', '묶음' 등의 여러 단어로 옮길 수 있는데, 여기서는 '집합체' 라는 말로 옮겼습니다. 이는 'class' 를 '객체' 라고 하고,  'structure' 를 '구조체' 라고 하는 것의 통일성을 유지하기 위한 것입니다.
+
+[^sets]: 'Sets' 은 수학 용어로는 그 자체로 '집합' 이라는 뜻을 가지고 있는데, '집합' 이라고 하면 프로그래밍에서 다른 의미로 헷갈릴 수 있으므로, 여기서는 프로그래밍의 자료 타입 중 하나를 의미하도록 '셋' 이라는 발음 그대로 옮기도록 합니다.
+
+[^dictionaries]: 'dictionaries' 는 '사전' 으로 옮길 수 있는데, 타입의 요소가 실제 사전처럼 '키' 와 '값' 의 두 가지 성분으로 되어있습니다. 다만 이 단어도 '사전' 이라고 하면 다른 의미로 해석될 수 있으므로, 여기서는 자료 타입을 의미하도록 '딕셔너리' 라고 발금 그대로 옮기도록 합니다.

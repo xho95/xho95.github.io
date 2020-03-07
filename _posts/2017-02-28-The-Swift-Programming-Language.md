@@ -17,7 +17,7 @@ categories: Swift Programming Language Grammar
 ### Language Guide
 
 * [The Basic (기초)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
-* [Basic Operators (기초 연산자](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
+* [Basic Operators (기초 연산자)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
 * Strings and Characters
 * [Collection Types (집합체 타입)](http://xho95.github.io/swift/grammar/collection/types/array/set/dictionary/2016/06/06/Collection-Types.html)
 * Control Flow
@@ -34,7 +34,7 @@ categories: Swift Programming Language Grammar
 * Optional Chaining
 * Error Handling
 * Type Casting
-* [Nested Types (품어진 타입](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
+* [Nested Types (품어진 타입)](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
 * [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
@@ -46,7 +46,7 @@ categories: Swift Programming Language Grammar
 
 ### Language Reference
 
-* [About the Language Reference (언어의 기호에 대하여](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
+* [About the Language Reference (언어의 기호에 대하여)](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
 * Lexical Structure
 * Types
 * Expressions
