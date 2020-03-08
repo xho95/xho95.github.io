@@ -47,52 +47,37 @@ var someInts = [Int]()
 print(("someInts is of type [Int] with \(someInts.count) items.")
 // "someInts is of type [Int] with 0 items." 를 출력합니다.
 ```
-Note that the type of the someInts variable is inferred to be [Int] from the type of the initializer.
 
-Alternatively, if the context already provides type information, such as a function argument or an already typed variable or constant, you can create an empty array with an empty array literal, which is written as [] (an empty pair of square brackets):
+`someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론할 수 있음을 기억하기 바랍니다.
 
-`someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론할 수 있음을 주목하기 바랍니다.
-
-또는 컨텍스트가 이미 함수 인수 또는 이미 입력 된 변수 또는 상수와 같은 유형 정보를 제공하는 경우 [] (빈 대괄호 쌍)으로 작성된 빈 배열 리터럴을 사용하여 빈 배열을 만들 수 있습니다.
-
-* `someInts` : inferred to be `[Int]`
-- create an empty array : an empty array literal - `[]` (an empty pair of square brackets)
-    - if the context already provides type information
+다른 방법으로는, 영역 내에서 이미 타입 정보를 제공하는 경우, 예를 들면 함수 인자에서나 이미 타입이 알려진 변수 또는 상수일 경우에, '빈 배열 문자표현 (empty array literal)' 을 써서 빈 배을을 생성할 수도 있으며, 이 때는 `[]` (빈 대괄호 쌍) 만 써주면 됩니다:
 
 ```swift
 someInts.append(3)
-
-// someInts now contains 1 value of type Int
-
+// someInts 는 이제 Int 타입 값 1 개를 갖습니다.
 someInts = []
-
-// someInts is now an empty array, but is still of type [Int]
+// someInts 는 이제 빈 배열이 됐지만, 타입은 여전히 [Int] 입니다.
 ```
 
-#### Creating an Array with a Default Value
+#### Creating an Array with a Default Value (기본 값을 가진 배열 생성하기)
 
-* an initializer : creating an array of a certain size with the same default value
-    * `count` : the number of items
-    * `repeatedValue` : a default value of the appropriate type
+스위프트의 `Array` 타입에는 특정 크기의 배열을 생성하면서 모든 값을 동일한 기본 값으로 설정할 수 있는 초기자도 있습니다. 이 초기자에 적절한 타입의 기본 값 (명칭은 `repeating`): 과 이 값이 배열에서 반복되야할 횟수 (명칭은 `count`): 를 전달하면 됩니다:
 
 ```swift
-var threeDoubles = [Double](count: 3, repeatedValue: 0.0)
-
-// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]
+var threeDoubles = Array(repeating: 0.0, count: 3)
+// threeDoubles 의 타입은 [Double] 이고, 값은 [0.0, 0.0, 0.0] 과 같습니다.
 ```
 
-#### Creating an Array by Adding Two Arrays Together
+#### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 하나의 배열 생성하기)
 
-* create a new array by adding together : the addition operator(`+`)
+두 개의 기존 배열이 더하기 연산자 (`+`) 에 대해 '호환성을 가지는 (compatible)'[^compatible] 타입들인 경우 서로 더해서 새로운 배열을 생성할 수 있습니다. 새 배열의 타입은 서로 더한 두 배열의 타입으로부터 추론합니다:
 
 ```swift
-var anotherThreeDoubles = [Double](count: 3, repeatedValue: 2.5)
-
-// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]
+var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
+// anotherThreeDoubles 의 타입은 [Double] 이고, 값은 [2.5, 2.5, 2.5] 와 같습니다.
 
 var sixDoubles = threeDoubles + anotherThreeDoubles
-
-// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]
+// sixDoubles 의 타입은 [Double] 로 추론되며, 값은 [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같습니다.
 ```
 
 #### Creating an Array with an Array Literal
@@ -754,3 +739,5 @@ let airportNames = [String](airports_2.values)
 [^sets]: 'Sets' 은 수학 용어로는 그 자체로 '집합' 이라는 뜻을 가지고 있는데, '집합' 이라고 하면 프로그래밍에서 다른 의미로 헷갈릴 수 있으므로, 여기서는 프로그래밍의 자료 타입 중 하나를 의미하도록 '셋' 이라는 발음 그대로 옮기도록 합니다.
 
 [^dictionaries]: 'dictionaries' 는 '사전' 으로 옮길 수 있는데, 타입의 요소가 실제 사전처럼 '키' 와 '값' 의 두 가지 성분으로 되어있습니다. 다만 이 단어도 '사전' 이라고 하면 다른 의미로 해석될 수 있으므로, 여기서는 자료 타입을 의미하도록 '딕셔너리' 라고 발금 그대로 옮기도록 합니다.
+
+[^compatible]: 'compatible' 은 컴퓨터 용어에서 '호환성이 있는' 것을 말하며, 이는 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환성이 있는' 데, 이로써 두 값은 서로 같이 연산할 수 있습니다. 그리고 이 때의 연산 결과는 `Double` 타입이 됩니다. 사실 스위프트에서는 특별한 경우가 아니면 `Float` 타입을 따로 쓸 필요가 없긴 합니다.
