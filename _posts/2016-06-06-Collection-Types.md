@@ -250,35 +250,21 @@ _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 
 
 ### Hash Values for Set Types (셋 타입의 해쉬 값)
 
-셋에 저장하려는 타입은 반드시 hashable 이어야 합니다. 
-집합에 저장하려면 형식을 해시 할 수 있어야합니다. 즉 형식은 자체 해시 값을 계산하는 방법을 제공해야합니다. 해시 값은 a == b 인 경우 a.hashValue == b.hashValue와 같이 동일하게 비교되는 모든 객체에 대해 동일한 Int 값입니다.
+셋에 저장하는 타입은 반드시 _해쉬 가능 (hashable)_[^hashable] 해야 합니다 - 이것은, 이 타입은 반드시 자체적으로 _해쉬 값 (hash value)_[^hash-value] 을 계산할 수 있어야 한다는 말입니다. 여기서 해시 값이란, 하나의 `Int` 값으로서, 비교했을 때 같다고 판단되는 객체들은 모두 같아야 하는 값을 말하는 것으로, 가령 `a == b` 인 경우, 이는 필연적으로 `a.hashValue == b.hashValue` 이라는 말이 됩니다.
 
-Swift의 모든 기본 유형 (예 : String, Int, Double 및 Bool)은 기본적으로 해시 가능하며 설정 값 유형 또는 사전 키 유형으로 사용할 수 있습니다. 연관된 값이없는 열거 케이스 값 (Enumerations에 설명 된대로)도 기본적으로 해시 가능합니다.
+스위프트의 모든 기본 타입 (가령 `String`, `Int`, `Double` 그리고 `Bool`) 은 기본적으로 해시 가능하므로, '셋 (set)' 의 값 타입과 '딕셔너리 (dictionary)' 의 키 (key) 타입으로 사용할 수 있습니다. 관련된 값 (associated values) 이 없는 열거체[^enumeration]의 경우 값 (enumeration case value; [Enumerations]() 에 설명되어 있습니다) 역시 기본적으로 해시 가능합니다.
 
-* a type : **hashable** - in order to be stored in a set
-    * provide a way to compute a **hash value** for itself
-* a hash value : an `Int` value - the same for all objects that compare equally
-    * `a == b` : `a.hashValue == b.hashValue`
+> 자신이 만든 타입을 셋의 값 타입이나 딕셔너리의 키 타입으로 사용하고 싶으면, 스위프트 표준 라이브러리에 있는 `Hashable` 프로토콜을 준수하도록 하면 됩니다. `Hashable` 프로토콜을 준수하는 타입은 반드시 `hashValue` 라는 읽을 수 있는 (gettable) `Int` 속성을 제공해야 합니다. 같은 프로그램을 다른 시점에 실행할 때나 다른 프로그램을 실행할 때, 이 타입의 `hashValue` 속성이 반환하는 값을 같도록 만들 필요는 없습니다.
+>
+> `HashValue` 프로토콜은 `Equatable`[^equtable] 을 준수하므로, ('Hashable' 을) '준수하는 타입 (conforming types)' 은 반드시 '같음 연산자 (`==`)' 도 구현해야 합니다. `Equatable` 프로토콜은 '같은 값을 가진 관계 (equivalent relation)' 임을 알기 위해서 어떤 형태로든 `==` 의 구현이 필요하기 때문입니다. 좀 더 정확하게 말하면, 모든 `a`, `b`, `c` 값에서, `==` 의 구현은  다음의 세 가지를 반드시 만족해야 합니다:
+>
+> * `a == a` (Reflexivity; 반사성[^reflexivity])
+> * `a == b` 는 곧 `b == a` (Symmetry; 대칭성[^symmetry])
+> * `a == b && b == c` 는 곧 `a == c` (Transitivity; 추이성[^transitivity])
+>
+> 프로토콜 준수에 대한 더 자세한 내용은 [Protocols](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 을 보도록 합니다.
 
-- all of Swift's basic type : hashable by default - set value types or dictionary key types
-- enumeration case values without associated values : hashable by default
-
-> note:
- custom types : conform to the `Hashable` protocol - Swift's standard library
- \
- provide a gettable `Int` property : `hashValue`
- \
- provide an implementation of the "is equal" operator(`==`) : `Equatable`
- \
- `==` : three conditions
- \
- Reflexivity : `a == a`
- \
- Symmetry : `a == b` implies `b == a`
- \
- Transitivity : `a == b && b == c` implies `a == c`
-
-### Set Type Syntax
+### Set Type Syntax (셋 타입 문법)
 
 * the type of a Swift set :
     * `Set<Element>` : `Element` - the type that the set is allowed to store
@@ -718,9 +704,9 @@ let airportNames = [String](airports_2.values)
 
 [^collections]: 'collection' 은 '집합', '묶음' 등의 말로 옮길 수 있는데, 여기서는 보통의 경우 '컬렉션' 이라고 발음대로 사용하다가, 필요한 경우는 의미를 살려서 '집합체' 라는 말을 사용합니다. 이는 'class' 를 '객체', 'structure' 를 '구조체', 'enumeration' 을 '열거체' 라고 하는 것과의 통일성을 유지하기 위한 것입니다. 모두다 하나의 '타입' 이 될 수 있는 것들입니다.
 
-[^sets]: 'Sets' 은 수학 용어로는 그 자체로 '집합' 이라는 뜻을 가지고 있는데, '집합' 이라고 하면 프로그래밍에서 다른 의미로 헷갈릴 수 있으므로, 여기서는 프로그래밍의 자료 타입 중 하나를 의미하도록 '셋' 이라는 발음 그대로 옮기도록 합니다.
+[^sets]: 'Sets' 은 수학 용어로는 그 자체로 '집합' 이라는 뜻을 가지고 있는데, '집합' 이라고 하면 프로그래밍에서 다른 의미로 해석될 수도 있으므로, 여기서는 스위프트의 자료 타입을 의미하도록 '셋' 이라고 발음 그대로 옮기도록 합니다.
 
-[^dictionaries]: 'dictionaries' 는 '사전' 으로 옮길 수 있는데, 타입의 요소가 실제 사전처럼 '키' 와 '값' 의 두 가지 성분으로 되어있습니다. 다만 이 단어도 '사전' 이라고 하면 다른 의미로 해석될 수 있으므로, 여기서는 자료 타입을 의미하도록 '딕셔너리' 라고 발금 그대로 옮기도록 합니다.
+[^dictionaries]: 'dictionaries' 는 '사전' 으로 옮길 수 있는데, 타입의 요소가 실제 사전처럼 '키' 와 '값' 의 두 가지 성분으로 되어있습니다. 다만 '사전' 이라고 옮기면 다른 의미로 해석될 수도 있으므로, 여기서는 스위프트의 자료 타입을 의미하도록 '딕셔너리' 라고 발음 그대로 옮기도록 합니다.
 
 [^compatible]: 'compatible' 은 컴퓨터 용어에서 '호환성이 있는' 것을 말하며, 이는 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환성이 있는' 데, 이로써 두 값은 서로 같이 연산할 수 있습니다. 그리고 이 때의 연산 결과는 `Double` 타입이 됩니다. 사실 스위프트에서는 특별한 경우가 아니면 `Float` 타입을 따로 쓸 필요가 없긴 합니다.
 
@@ -735,3 +721,17 @@ let airportNames = [String](airports_2.values)
 [^enumerate]: 'enumerate' 에는 '열거하다, 헤아리다' 라는 의미가 있으며, 스위프트에서 'enumeration (열거체)' 는 하나의 타입이기도 합니다.
 
 [^tuple]: 'tuple' 은 '두 개로 짝을 이룬 것' 을 나타내는 데, 스위프트의 타입 중 하나를 나타내기 위해 '튜플' 이라는 발음 그대로 사용하기로 합니다.
+
+[^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 가지고 있다는 의미가 됩니다. 용어 자체는 맞는 말이 없으므로 '해쉬' 라고 발음 그대로 사용하도록 합니다.
+
+[^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개지고 뒤섞일 수 있게 재가공된 값' 정도로 이해할 수 있을 것 같습니다.
+
+[^enumeration]: 'enumeration' 은 '열거체' 라는 말로 옮깁니다. 이는 'class' 를 '객체', 'structure' 를 '구조체' 라고 하는 것과 맞추기 위함입니다.
+
+[^equtable]: 'equtable' 은 '서로 같은 지를 비교할 수 있는' 지를 의미합니다.
+
+[^reflexivity]: 여기서 말하는 '반사성' 은 수학에서 말하는 '반사 관계' 를 말하는 것 같습니다. '반사 관계' 에 대해서는 위키피디아의 [Reflexive relation](https://en.wikipedia.org/wiki/Reflexive_relation) 문서를 참고하기 바랍니다.
+
+[^symmetry]: 여기서 말하는 '대칭성' 은 수학에서 말하는 '대칭 관계' 를 말하는 것 같습니다. '대칭 관계' 에 대해서는 위키피디아의 [Symmetric relation](https://en.wikipedia.org/wiki/Symmetric_relation) 문서를 참고하기 바랍니다.
+
+[^transitivity]: 여기서 말하는 '추이성' 은 수학에서 말하는 '추이 관계' 를 말하는 것 같습니다. '추이 관계' 에 대해서는 위키피디아의 [Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation) 문서를 참고하기 바랍니다.

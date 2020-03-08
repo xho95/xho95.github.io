@@ -8,60 +8,58 @@ categories: Swift Programming Language Grammar
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책을 한글로 옮겨서 정리한 글입니다.[^Swift]
 
-### Welcome to Swift
+### Welcome to Swift (스위프트 소개 인사)
 
-* [About Swift (스위프트란)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
-* Version Compatibility
-* [A Swift Tour (스위프트 훑어보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
+* [About Swift (스위프트에 대하여)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
+* [Version Compatibility (버전 호환성)]
+* [A Swift Tour (스위프트하게 돌아보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
-### Language Guide
+### Language Guide (언어 설명서)
 
 * [The Basic (기초)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
-* [Basic Operators (기초 연산자)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
-* Strings and Characters
+* [Basic Operators (기본 연산자)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
+* [Strings and Characters (문자열과 문자)]
 * [Collection Types (집합체 타입)](http://xho95.github.io/swift/grammar/collection/types/array/set/dictionary/2016/06/06/Collection-Types.html)
-* Control Flow
-* Functions
+* [Control Flow (제어 흐름)]
+* [Functions (함수)]
 * [Closures (잠금 블럭)](http://xho95.github.io/swift/language/grammar/closure/2020/03/03/Closures.html)
-* Enumerations
-* Structures and Classes
-* Properties
-* Methods
-* Subscripts
-* Inheritance
-* Initialization
-* [Deinitialization (객체 정리하기](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
-* Optional Chaining
-* Error Handling
-* Type Casting
+* [Enumerations (열거체)]
+* [Structures and Classes (구조체와 클래스)]
+* [Properties (속성)]
+* [Methods (메소드)]
+* [Subscripts (첨자 연산)]
+* [Inheritance (상속)]
+* [Initialization (객체 초기화하기)]
+* [Deinitialization (객체 정리하기)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
+* [Optional Chaining (옵셔널 체이닝)]
+* [Error Handling (에러 처리)]
+* [Type Casting (타입 변환)]
 * [Nested Types (품어진 타입)](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
 * [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
 * [Opaque Types (불투명한 타입)](http://xho95.github.io/swift/language/grammar/opaque/type/2020/02/22/Opaque-Types.html)
-* Automatic Reference Counting
-* Memory Safety
-* Access Control
-* Advanced Operators
+* [Automatic Reference Counting (자동 참조 카운팅)]
+* [Memory Safety (메모리 안전성)]
+* [Access Control (접근 제어)]
+* [Advanced Operators (고급 연산자)]
 
-### Language Reference
+### Language Reference (언어의 기준)
 
-* [About the Language Reference (언어의 기호에 대하여)](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
-* Lexical Structure
-* Types
-* Expressions
-* Statements
-* Declarations
-* Attributes
-* Patterns
-* [Generic Parameters and Arguments (일반화된 매개 변수와 인자)](http://xho95.github.io/swift/language/grammar/generic/parameters/arguments/2017/03/15/Generic-Parameters-and-Arguments.html)
-* Summary of the Grammar
+* [About the Language Reference (언어의 기준에 대하여)](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
+* [Lexical Structure (어휘 구조)]
+* [Types (타입)]
+* [Expressions (표현식)]
+* [Statements (구문)]
+* [Declarations (선언)]
+* [Attributes (특성)]
+* [Patterns (유형)]
+* [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)](http://xho95.github.io/swift/language/grammar/generic/parameters/arguments/2017/03/15/Generic-Parameters-and-Arguments.html)
+* [Summary of the Grammar (문법 총정리)]
 
-### Revision History
+### Revision History (수정 이력)
 
-* Document Revision History
-
-### 생각할 거리
+* Document Revision History (문서 수정 이력)
 
 ### 참고 자료
 
