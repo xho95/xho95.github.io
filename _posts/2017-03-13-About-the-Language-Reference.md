@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: About the Language Reference (언어의 기호에 대하여"
+title:  "Swift 3.1: About the Language Reference (언어의 기호에 대하여)"
 date:   2017-03-13 11:30:00 +0900
 categories: Swift Language Grammar About Reference
 ---

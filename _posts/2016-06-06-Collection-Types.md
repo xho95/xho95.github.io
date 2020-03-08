@@ -32,7 +32,7 @@ _배열 (array)_ 은 같은 타입의 값들을 순서에 따라 줄지어 저�
 
 > 스위프트의 `Array` 타입은 'Foundation' 프레임웍에 있는 `NSArray` 클래스와 연동되어 (bridged) 있습니다.
 >
-> 'Foundation' 및 'Cocoa' 프레임웍과 `Array` 를 같이 사용하는 방법에 대한 더 정보는 [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 에서 확인할 수 수 있습니다.
+> 'Foundation' 및 'Cocoa' 프레임웍과 `Array` 를 같이 사용하는 방법에 대해서는 [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 에서 더 자세히 알 수 있습니다.
 
 #### Array Type Shorthand Syntax (배열 타입 약칭 문법)
 
@@ -50,7 +50,7 @@ print(("someInts is of type [Int] with \(someInts.count) items.")
 
 `someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론할 수 있음을 기억하기 바랍니다.
 
-다른 방법으로는, 영역 내에서 이미 타입 정보를 제공하는 경우, 예를 들면 함수 인자에서나 이미 타입이 알려진 변수 또는 상수일 경우에, '빈 배열 문자표현 (empty array literal)' 을 써서 빈 배을을 생성할 수도 있으며, 이 때는 `[]` (빈 대괄호 쌍) 만 써주면 됩니다:
+다른 방법으로, 영역 내에서 이미 타입 정보를 제공하는 경우, 예를 들면 함수 인자에서나 이미 타입이 알려진 변수 또는 상수일 경우에, '빈 배열 문자표현 (empty array literal)' 을 써서 빈 배을을 생성할 수도 있으며, 이 때는 `[]` (빈 대괄호 쌍) 만 써주면 됩니다:
 
 ```swift
 someInts.append(3)
@@ -80,163 +80,139 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 // sixDoubles 의 타입은 [Double] 로 추론되며, 값은 [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같습니다.
 ```
 
-#### Creating an Array with an Array Literal
+#### Creating an Array with an Array Literal ('배열 문자표현' 을 사용해서 배열 생성하기)
 
-* initialize an array : an **array literal** - a shorthand way
+_배열 문자표현 (array literal)_[^literal] 을 써서 배열을 초기화 할 수도 있는데, 이는 하나 이상의 값을 가진 배열 집합체 (array collection) 를 약칭 (shorthand) 으로 만들 수 있는 방법입니다. '배열 문자표현' 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다.
 
-```
- [value 1, value 2, value 3]
-```
+[`value 1`, `value 2`, `value 3`]
 
-```swift
-var shoppingList_1: [String] = ["Eggs", "Milk"]
-
-// shoppingList_1 has been initialized with two initial items
-```
-
-* `shoppingList_1` : an array of string values - `[String]` (store `String` values only)
-
-> note:
- declared as a variable : more items are added
-
-* the array literal : two `String` values - matches the type of the `shoppingList_1`
-- Swift's type inference : don't have to write the type
-- written in a shorter form
+아래 예제는 `shoppingList` 라는 배열을 만들어 `String` 값을 저장하고 있습니다:
 
 ```swift
-var shoppingList_2 = ["Eggs", "Milk"]
+var shoppingList: [String] = ["Eggs", "Milk"]
+// shoppingList 가 두 초기 요소로 초기화 되었습니다.
 ```
 
-* Swift can infer that `[String]` is the correct type
+`shoppingList` 변수는 `[String]` 을 써서 "문자열 값의 배열" 로 선언했습니다. 이 배열은 `String` 타입의 값만 갖도록 지정됐으므로, 이제 `String` 값만 저장할 수 있습니다. 여기서, `shoppingList` 배열은 '배열 문자표현 (array literal)' 에 있는 두 개의 `String` 값인 (`"Eggs"` 와 `"Milk"`) 로 초기화 되었습니다.
 
-#### Accessing and Modifying an Array
+> `shoppingList` 배열은 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 `shoppingList` 에 더 많은 요소를 추가할 것이기 때문입니다.
 
-* access and modify an array : methods, properties, or subscript syntax
-- `count` : read only property - to find out the number of items
+이 경우, '배열 문자표현 (array literal)' 에는 두 개의 `String` 값만 있지 다른 건 전혀 없습니다. 이는 `shoppingList` 변수를 선언할 때의 타입 (`String` 값만 담을 수 있는 배열) 과 들어 맞으므로, '배열 문자표현' 을 할당하는 것이 허용되어 두 개의 초기 요소로 `shoppingList` 를 초기화할 수 있습니다.
+
+스위프트의 타입 추론 덕분에, 배열의 타입을 안써도 되는 경우가 있는데, 초기화할 때 '배열 문자표현' 이 같은 타입의 값만 가지고 있으면 그렇습니다. 따라서 `shoppingList` 의 초기화는 앞에서보다 더 짧은 형태로도 작성할 수 있습니다:
 
 ```swift
-print("The shopping list contains \(shoppingList_2.count) items.")
-
-// Prints "The shopping list contains 2 items."
+var shoppingList = ["Eggs", "Milk"]
 ```
 
-* `isEmpty` : the Boolean property - checking whether the `count` is equal to `0`
+'배열 문자표현' 의 모든 값이 같은 타입이므로, 스위프트는 `shoppingList` 변수가 정확하게 `[String]` 타입임을 추론할 수 있습니다.
+
+#### Accessing and Modifying an Array (배열에 접근하고 수정하기)
+
+배열은 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 문법 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
+
+배열에 있는 요소의 개수를 알고 싶으면, 일기-전용 속성인 `count` 를 검사하면 됩니다:
 
 ```swift
-if shoppingList_2.isEmpty {
+print("The shopping list contains \(shoppingList.count) items.")
+// "The shopping list contains 2 items." 를 출력합니다.
+```
+
+'불린 (Boolean)' 속성인 `inEmpty` 를 사용하면 `count` 속성이 `0` 과 같은 지를 검사하는 것보다 간단합니다[^isEmpty-count]:
+
+```swift
+if shoppingList.isEmpty {
     print("The shopping list is empty.")
 } else {
     print("The shopping list is not empty.")
 }
-
-// Prints "The shopping list is not empty."
+// "The shopping list is not empty." 를 출력합니다.
 ```
 
-* `append(_:)` : method - add a new item to the end of an array
+배열에 있는 `append(_:)` 메소드를 호출하여 배열의 끝에 새로운 요소를 추가할 수 있습니다:
 
 ```swift
-shoppingList_2.append("Flour")
-
-// shoppingList_2 now contains 3 items, and someone is making pancakes
+shoppingList.append("Flour")
+// shoppingList 는 이제 3 개의 요소를 가지며, 누군가 팬케이크를 만들 수 있게 됐습니다.
 ```
 
-* `+=` : the addition assignment operator - append an array of compatible items
+다른 방법으로, 배열에 '더하기 할당 연산자 (addition assignment operator)' (`+=`) 를 사용하여 하나 이상의 호환성 있는 요소를 덧붙일 수 있습니다:
 
 ```swift
-shoppingList_2 += ["Baking Powder"]
-
-// shoppingList_2 now contains 4 items
-
-shoppingList_2 += ["Chocolate Spread", "Cheese", "Butter"]
-
-// shoppingList_2 now contains 7 items
+shoppingList += ["Baking Powder"]
+// shoppingList 는 이제 4 개의 요소를 가집니다.
+shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
+// shoppingList 는 이제 7 개의 요소를 가집니다.
 ```
 
-* **subscript syntax** : retrieve a value
+배열에서 값을 가져오려면 _첨자 연산 문법 (subscript syntax)_ 을 사용하며, 이는 배열 이름 바로 뒤의 대괄호 안에 가져올 값의 _색인 (index)_ 을 넣으면 됩니다:
 
 ```swift
-var firstItem = shoppingList_2[0]
-
-// firstItem is equal to "Eggs"
+var firstItem = shoppingList[0]
+// firstItem 은 "Eggs" 가 됩니다.
 ```
 
-> note:
- the first item in the array : an index of `0`, not `1`
-> arrays in Swift : always zero-indexed
+> 배열의 첫 번째 요소는 색인으로 `0` 을 갖습니다. `1` 이 아닙니다. 스위프트에 있는 배열은 항상 '영-기준 색인 (zero-indexed)' 입니다.
 
-* **subscript syntax** : to change an existing value
+'첨자 연산 문법 (subscript syntax)' 을 사용하면 주어진 색인 위치의 값을 바꿀 수 있습니다:
 
 ```swift
-shoppingList_2[0] = "Six eggs"
-
-// the first item in the list is now equal to "Six eggs" rather than "Eggs"
+shoppingList[0] = "Six eggs"
+// 이제 목록에 있는 첫 번째 요소는 단순히 "Eggs" 가 아니라 "Six eggs" 입니다.
 ```
 
-* **subscript syntax** : to change a range of values at once
-    * even if the replacement set of values has a different length
+첨자 연산 문법을 사용할 때는, 지정한 인덱스가 유효해야만 합니다. 예를 들어, 배열 끝에 요소를 추가한답시고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 '실행 시간에 에러 (runtime error)' 가 발생합니다.[^count-concurrent]
+
+첨자 연산 문법을 사용해서 일정 범위의 값들을 한 번에 바꿀 수도 있는데, 이 때 대체될 값들의 범위와 대체할 범위의 길이가 달라도 문제 없습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 그리고 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 바꾸는 것을 보여줍니다:
 
 ```swift
-shoppingList_2[4...6] = ["Bananas", "Apples"]
-
-// shoppingList_2 now contains 6 items
-```
-> note:
- can't use subscript syntax : to append a new item to the end of an array
-
-* `insert(_:atIndex:)` : method - to insert an item into the array at a specified index
-
-```swift
-shoppingList_2.insert("Maple Syrup", atIndex: 0)
-
-// shoppingList_2 now contains 7 items
-
-// "Maple Syrup" is now the first item in the list
+shoppingList[4...6] = ["Bananas", "Apples"]
+// shoppingList 는 이제 6 개의 요소를 가집니다.
 ```
 
-* `removeAtIndex(_:)` : method - removes the item at the specified index and returns the removed item
+배열에 요소를 넣을 때 특정 색인 위치에 넣고 싶으면, 배열의 `insert(_:at:)` 메소드를 호출하면 됩니다:
 
 ```swift
-let mapleSyrup = shoppingList_2.removeAtIndex(0)
-
-// the item that was at index 0 has just been removed
-
-// shoppingList now contains 6 items, and no Maple Syrup
-
-// the mapleSyrup constant is now equal to the removed "Maple Syrup" string
+shoppingList.insert("Maple Syrup", at: 0)
+// shoppingList 는 이제 7 개의 요소를 가집니다.
+// "Maple Syrup" 이 이제 목록의 첫 번째 요소입니다.
 ```
 
-> note:
- an index that is outside of an array's existing bounds : trigger a runtime error
- check that an index is valid : by comparing it to the array's `count` - except when `count` is `0`
- the largest valid index : always be `count - 1` - arrays are indexed from zero
+여기서는 `insert(_:at:)` 메소드를 호출하여 `"Maple Syrup"` 이라는 새 요소를 '쇼핑 목록 (shopping list)' 의 맨 처음 위치-색인 `0` 으로 지시한 곳-에 집어 넣었습니다.
 
-* any gaps in an array are closed when an item is removed
+비슷하게, 배열에 요소를 제거하려면 `remove(at:)` 메소드를 사용합니다. 이 메소드는 특정 색인 위치의 요소를 제거한 후 이 제거한 요소를 반환합니다. (반환 값이 필요 없다면 무시해도 됩니다):
 
 ```swift
-firstItem = shoppingList_2[0]
-
-// firstItem is now equal to "Six eggs"
+let mapleSyrup = shoppingList.remove(at: 0)
+// 색인 0 위치의 값이 방금 제거되었습니다.
+// shoppingList 는 이제 6 개의 요소를 가지며, Maple Syrup 은 더이상 없습니다.
+// 이제 상수 mapleSyrup 은 제거된 문자열인 "Maple Syrup" 이 됩니다.
 ```
 
-* `removeLast()` : method - to remove the final item, returns the removed item
-    * rather than the `removeAtIndex(_:)` : to avoid to query the array's `count`
+> 배열 범위를 벗어난 색인으로 값에 접근하려고 하거나 수정하려고 하면 '실행 시간에 에러 (runtime error)' 가 발생합니다. 색인을 사용하기 전에 유효한 지를 검사하고 싶으면 배열의 `count` 속성과 비교하면 됩니다. 배열에서 유효한 색인으로 가장 큰 것은 `count - 1` 인데, 배열의 '색인은 영-기준 (indexed from zero)' 이기 때문입니다 - 하지만, `count` 가 `0` (즉 배열이 비어있으면) 이면, 유효한 색인이 아예 없습니다.
+
+배열에 요소를 제거할 때 발생하는 틈은 모조리 메꿔지므로, 색인 `0` 에 있는 값은 이제 다시 `"Six eggs"` 와 같아집니다:
 
 ```swift
-let apples = shoppingList_2.removeLast()
-
-// the last item in the array has just been removed
-
-// shoppingList_2 now contains 5 items, and no apples
-
-// the apples constant is now equal to the removed "Apples" string
+firstItem = shoppingList[0]
+// firstItem 은 다시 "Six eggs" 입니다.
 ```
 
-#### Iterating Over an Array
-
-* the `for-in` loop : iterate over the entire set of values in an array
+배열에서 마지막 요소를 제거하려면, `remove(at:)` 메소드 대신 `removeLast()` 메소드를 사용하는 것이 좋은데, 이는 배열의 `count` 속성을 조회할 필요가 없기 때문입니다. `remove(at:)` 메소드 처럼, `removeLast()` 메소드도 제거된 요소를 반환합니다:
 
 ```swift
-for item in shoppingList_2 {
+let apples = shoppingList.removeLast()
+// 배열의 마지막 요소가 바금 제거되었습니다.
+// shoppingList 는 이제 5 개의 요소를 가지며, Apples 은 더이상 없습니다.
+// 이제 상수 apples 는 제거된 문자열인 "Apples" 가 됩니다.
+```
+
+#### Iterating Over an Array (배열에 동작을 반복 적용하기)
+
+`for-in` 반복문 (loop) 을 사용하면 배열에 있는 전체 값들에 '동작을 반복 적용 (iterate over)'[^iterate-over] 할 수 있습니다:
+
+```swift
+for item in shoppingList {
     print(item)
 }
 
@@ -247,11 +223,10 @@ for item in shoppingList_2 {
 // Bananas
 ```
 
-* `enumerate()` : need the integer index of each item as well as its value
-    * returns a tuple composed of the index and the value
+각 요소에 대해 값 뿐만 아니라 정수 색인도 필요하다면, 배열에 동작을 반복 적용시킬 때 `enumerated()`[^enumerate] 메소드도 같이 사용하면 됩니다. `enumerated()` 메소드는 배열의 각 요소에 대해서 정수와 요소의 조합으로 된 '튜플 (tuple)'[^tuple] 을 반환합니다. 이 정수는 0 에서 시작해서 각 요소마다 하나씩 증가합니다; 배열 전체를 열거하게 되면, 이 정수들은 결국 요소들의 색인이 됩니다. 반복 적용하는 구문 내에서 '튜플' 을 임시 상수나 변수로 분해 (decompose) 할 수 있습니다:
 
 ```swift
-for (index, value) in shoppingList_2.enumerate() {
+for (index, value) in shoppingList.enumerated() {
     print("Item \(index + 1): \(value)")
 }
 
@@ -262,16 +237,23 @@ for (index, value) in shoppingList_2.enumerate() {
 // Item 5: Bananas
 ```
 
-## Sets
+`for-in` 반복문에 대한 더 자세한 정보는 [For-In Loop]() 를 보기 바랍니다.
 
-* a **set** : stores distinct values of the same type with no defined ordering
-    * use a set instead of an array when
-        * the order of items is not important
-        * ensure that an item only appears once
-> note:
- Swift's `Set` type : bridged to Foundation's `NSSet` class
+## Sets (셋)
 
-### Hash Values for Set Types
+_셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 정의하지 않은채 컬렉션에 저장합니다. 배열 대신 셋을 사용할 때는, 요소의 순서가 중요하지 않거나, 요소가 단 한 번만 나타나도록 해야할 경우 등이 있습니다.
+
+
+> 스위프트의 `Set` 타입은 'Foundation' 프레임웍에 있는 `NSSet` 클래스와 연동되어 (bridged) 있습니다.
+>
+> 'Foundation' 및 'Cocoa' 프레임웍과 `Set` 을 같이 사용하는 방법에 대해서는 [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 에서 더 자세히 알 수 있습니다.
+
+### Hash Values for Set Types (셋 타입의 해쉬 값)
+
+셋에 저장하려는 타입은 반드시 hashable 이어야 합니다. 
+집합에 저장하려면 형식을 해시 할 수 있어야합니다. 즉 형식은 자체 해시 값을 계산하는 방법을 제공해야합니다. 해시 값은 a == b 인 경우 a.hashValue == b.hashValue와 같이 동일하게 비교되는 모든 객체에 대해 동일한 Int 값입니다.
+
+Swift의 모든 기본 유형 (예 : String, Int, Double 및 Bool)은 기본적으로 해시 가능하며 설정 값 유형 또는 사전 키 유형으로 사용할 수 있습니다. 연관된 값이없는 열거 케이스 값 (Enumerations에 설명 된대로)도 기본적으로 해시 가능합니다.
 
 * a type : **hashable** - in order to be stored in a set
     * provide a way to compute a **hash value** for itself
@@ -741,3 +723,15 @@ let airportNames = [String](airports_2.values)
 [^dictionaries]: 'dictionaries' 는 '사전' 으로 옮길 수 있는데, 타입의 요소가 실제 사전처럼 '키' 와 '값' 의 두 가지 성분으로 되어있습니다. 다만 이 단어도 '사전' 이라고 하면 다른 의미로 해석될 수 있으므로, 여기서는 자료 타입을 의미하도록 '딕셔너리' 라고 발금 그대로 옮기도록 합니다.
 
 [^compatible]: 'compatible' 은 컴퓨터 용어에서 '호환성이 있는' 것을 말하며, 이는 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환성이 있는' 데, 이로써 두 값은 서로 같이 연산할 수 있습니다. 그리고 이 때의 연산 결과는 `Double` 타입이 됩니다. 사실 스위프트에서는 특별한 경우가 아니면 `Float` 타입을 따로 쓸 필요가 없긴 합니다.
+
+[^literal]: 'literal' (리터럴) 은 '문자로 표현된 실제 의미' 를 뜻합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '문자로 표현된 실제 의미' 는 정수 `10` 을 의미하고 있고 따라서 `a` 는 `Int` 타입으로 추론됩니다.
+
+[^isEmpty-count]: 실제로 스위프트에서는 배열에 값이 있는지 없는지를 검사할 때는 `isEmpty` 를 사용할 것을 권장합니다. `count` 는 값의 개수가 몇 개인지를 알고 싶을 때 사용하는 것입니다. 즉, 단순히 편리하기 때문에만 `isEmpty` 를 사용하는 것은 아닙니다. 이에 대한 이유는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 이라는 글을 읽어보길 바랍니다.
+
+[^count-concurrent]: `shippingList.count` 는 현재 배열의 요소 전체 개수를 나타내는데, 이 값을 사용해서 요소를 새로 추가하게 되면 그 자ㅔ로 `count` 가 변경돼야 합니다. 즉 `count` 변수에 값을 읽는 작업과 쓰는 작업을 동시에 진행하는 문제가 발생할 수 있습니다.
+
+[^iterate-over]: 'iterate over' 는 그냥 '반복하다' 만으로는 의미가 정확한 것 같지 않아서 '동작을 반복 적용하기' 라는 말로 옮깁니다.
+
+[^enumerate]: 'enumerate' 에는 '열거하다, 헤아리다' 라는 의미가 있으며, 스위프트에서 'enumeration (열거체)' 는 하나의 타입이기도 합니다.
+
+[^tuple]: 'tuple' 은 '두 개로 짝을 이룬 것' 을 나타내는 데, 스위프트의 타입 중 하나를 나타내기 위해 '튜플' 이라는 발음 그대로 사용하기로 합니다.
