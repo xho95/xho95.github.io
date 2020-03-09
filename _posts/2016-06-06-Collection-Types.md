@@ -266,39 +266,31 @@ _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 
 
 ### Set Type Syntax (셋 타입 문법)
 
-* the type of a Swift set :
-    * `Set<Element>` : `Element` - the type that the set is allowed to store
-    * sets do not have an equivalent shorthand form
+스위프트의 '셋' 타입은 `Set<Element>` 라고 작성하며, 여기서 `Element` 는 셋에 저장할 수 있는 타입을 말합니다. '배열' 과 달리, '셋' 은 약칭으로 쓸 수 있는 형태가 없습니다.
 
-### Creating and Initializing an Empty Set
+### Creating and Initializing an Empty Set (빈 셋 생성하고 초기화하기)
 
-* create an empty set : initializer syntax
+특정 타입의 빈 '셋' 을 만들려면 초기자 문법을 사용하면 됩니다:
 
 ```swift
 var letters = Set<Character>()
-
 print("letters is of type Set<Character> with \(letters.count) items.")
-
-// Prints "letters is of type Set<Character> with 0 items."
+// "letters is of type Set<Character> with 0 items." 을 출력합니다.
 ```
 
-> note:
- `letters` : inferred to be `Set<Character>` from the type of the initializer
+> `letters` 변수의 타입은 초기자의 타입에 의해 `Set<Character>` 로 추론됩니다.
 
-* if the context already provides type information
-* create an empty set : an empty array literal
+다른 방법으로는, 영역 내에서 타입 정보를 제공하는 경우, 가령 함수 인자이거나 이미 타입이 알려진 변수 또는 상수인 경우, 빈 배열은 '빈 배열 문자표현' 을 써서 생성할 수 있습니다:
+
 
 ```swift
 letters.insert("a")
-
-// letters now contains 1 value of type Character
-
+// letters 는 이제 Character 타입 값 1 개를 갖고 있습니다.
 letters = []
-
-// letters is now an empty set, but is still of type Set<Character>
+// letters 는 이제 빈 셋이 됐지만, 타입은 여전히 Set<Character> 입니다.
 ```
 
-### Creating a Set with an Array Literal
+### Creating a Set with an Array Literal (배열 문자표현을 써서 셋 생성하기)
 
 * initialize a set : with an array literal - a shorthand way
 
