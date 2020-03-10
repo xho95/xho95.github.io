@@ -292,30 +292,32 @@ letters = []
 
 ### Creating a Set with an Array Literal (배열 문자표현을 써서 셋 생성하기)
 
-* initialize a set : with an array literal - a shorthand way
+'배열 문자표현' 으로 '셋' 을 초기화할 수도 있는데, 이는 '셋 컬렉션 (set collection)' 에 하나 이상의 값을 할당하는 '약칭법 (shorthand way)' 입니다.
+
+아래 예제는 `favoriteGenres` 라는 셋을 만든 후 `String` 값을 저장하는 방법을 보여줍니다:
 
 ```swift
-var favoriteGenres_1: Set<String> = ["Rock", "Classical", "Hip Hop"]
-
-// favoriteGenres_1 has been initialized with three initial items
+var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
+// favoriteGenres 는 3 개의 초기 요소를 가지고 초기화 되었습니다.
 ```
 
-* `favoriteGenres_1` : an set of `String` values - `Set<String>` (only allowed to store `String` values)
+`favoriteGenres` 변수는 `Set<String>` 을 써서 "`String` 값의 셋” 으로 선언되었습니다. 이 셋은 `String` 타입의 값을 지정했기 때문에, `String` 값만 저장할 수 있습니다. 여기서 `favoriteGenres` 셋은 '배열 문자표현' 에 있는 세 개의 `String` 값인 (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 으로 초기화 됩니다.
 
-> note:
- declared as a variable : items are added and removed
+> `favoriteGenres` 셋은 (`var` 소개자를 써서) 변수로 선언되었으며, (`let` 소개자를 쓴) 상수가 아닙니다. 이는 아래 예제에서 요소를 추가하거나 제거할 것이기 때문입니다.
 
-* a set type : cannot be inferred - the type `Set` must be explicitly declared
-* Swift's type inference : don't have to write the type of the set with an array literal
-- written in a shorter form
+A set type cannot be inferred from an array literal alone, so the type Set must be explicitly declared. However, because of Swift’s type inference, you don’t have to write the type of the set’s elements if you’re initializing it with an array literal that contains values of just one type. The initialization of favoriteGenres could have been written in a shorter form instead:
+
+셋 타입은 '배열 문자표현 (array literal)' 만으로는 추론할 수 없으므로[^set-array-literal], `Set` 이라는 타입은 반드시 명시적으로 선언해야 합니다. 그러나 스위프트의 타입 추론 기능에 의해서, '배열 문자표현' 이 하나의 타입만 갖고 있는 경우, 셋 요소 (set's elements) 의 타입은 쓸 필요가 없습니다. 따라서 `favoriteGenres` 의 초기화는 다음 처럼 더 짧은 양식으로 작성 할 수 있습니다:
 
 ```swift
-var favoriteGenres_2: Set = ["Rock", "Classical", "Hip Hop"]
+var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 ```
 
-* all values in the array literal : the same type - infer that `Set<String>`
+Because all values in the array literal are of the same type, Swift can infer that Set<String> is the correct type to use for the favoriteGenres variable.
 
-### Accessing and Modifying a Set
+'배열 문자표현' 에 있는 모든 값들이 같은 타입이므로, 스위프트는 `favoriteGenres` 변수가 `Set<String>` 임을 올바르게 추론할 수 있습니다.
+
+### Accessing and Modifying a Set (셋에 접근하고 수정하기)
 
 * access and modify a set : methods, properties
 - `count` : read-only property - to find out the number of items in a set
@@ -727,3 +729,5 @@ let airportNames = [String](airports_2.values)
 [^symmetry]: 여기서 말하는 '대칭성' 은 수학에서 말하는 '대칭 관계' 를 말하는 것 같습니다. '대칭 관계' 에 대해서는 위키피디아의 [Symmetric relation](https://en.wikipedia.org/wiki/Symmetric_relation) 문서를 참고하기 바랍니다.
 
 [^transitivity]: 여기서 말하는 '추이성' 은 수학에서 말하는 '추이 관계' 를 말하는 것 같습니다. '추이 관계' 에 대해서는 위키피디아의 [Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation) 문서를 참고하기 바랍니다.
+
+[^set-array-literal]: 이것은 '배열 문자표현 (array literal)' 만 사용할 경우, `Array` 로 추론되기 때문일 것입니다.
