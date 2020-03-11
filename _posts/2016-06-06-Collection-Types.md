@@ -118,7 +118,7 @@ print("The shopping list contains \(shoppingList.count) items.")
 // "The shopping list contains 2 items." 를 출력합니다.
 ```
 
-'불린 (Boolean)' 속성인 `inEmpty` 를 사용하면 `count` 속성이 `0` 과 같은 지를 검사하는 것보다 간단합니다[^isEmpty-count]:
+`count` 속성이 `0` 과 같은 지를 검사할 때는 더 간단한 방법으로 '불린 (Boolean)' 속성인 `inEmpty` 를 사용하도록 합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -315,63 +315,63 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 
 ### Accessing and Modifying a Set (셋에 접근하고 수정하기)
 
-* access and modify a set : methods, properties
-- `count` : read-only property - to find out the number of items in a set
+You access and modify a set through its methods and properties.
+
+To find out the number of items in a set, check its read-only count property:
+
+
+셋은 메소드 (methods) 와 속성 (properties) 을 사용하여 접근하고 수정할 수 있습니다.
+
+셋에 있는 요소의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
 ```swift
-print("I have \(favoriteGenres_2.count) favorite music genres.")
-
-// Prints "I have 3 favorite music genres."
+print("I have \(favoriteGenres.count) favorite music genres.")
+// "I have 3 favorite music genres." 를 출력합니다.
 ```
-
-* `isEmpty` : the Boolean property - a shortcut for checking whether the `count` property is equal to `0`
+`count` 속성이 `0` 인지를 검사해야할 때는 더 간단한 방법으로 불린 (Boolean) 속성인 `isEmpty` 를 사용합니다:
 
 ```swift
-if favoriteGenres_2.isEmpty {
+if favoriteGenres.isEmpty {
     print("As far as music goes, I'm not picky.")
 } else {
     print("I have particular music preferences.")
 }
 
-// Prints "I have particular music preferences."
+// "I have particular music preferences." 를 출력합니다.
 ```
 
-* `insert(_:)` : method - add a new item into a set
+셋에 새로운 요소를 추가할 때는 `insert(_:)` 메소드를 호출하면 됩니다:
 
 ```swift
-favoriteGenres_2.insert("Jazz")
-
-// favoriteGenres now contains 4 items
+favoriteGenres.insert("Jazz")
+// favoriteGenres 는 이제 4 개의 요소를 갖고 있습니다.
 ```
 
-* `remove(_:)` : method -
-    * remove the item if it's a member of the set, and returns the removed value
-    * return `nil` if the set did not contain it
-- `removeAll()` : method - all items in a set can be removed
+You can remove an item from a set by calling the set’s remove(_ :) method, which removes the item if it’s a member of the set, and returns the removed value, or returns nil if the set did not contain it. Alternatively, all items in a set can be removed with its removeAll() method
+
+셋에서 특정 요소를 제거할 때는 셋의 `remove(_:)` 메소드를 호출하는데, 그 요소가 셋의 멤버면 제거한 후 제거된 값을 반환하며, 만약 셋의 요소가 아니면 `nil` 을 반환합니다. 다른 방법으로, 셋의 모든 요소를 제거하려면 `removeAll()` 메소드를 사용합니다.
 
 ```swift
-if let removeGenres = favoriteGenres_2.remove("Rock") {
+if let removeGenres = favoriteGenres.remove("Rock") {
     print("\(removeGenres)? I'm over it.")
 } else {
     print("I never much cared for that.")
 }
-
-// Prints "Rock? I'm over it."
+// "Rock? I'm over it." 를 출력합니다.
 ```
 
-* `contains(_:)` : method - to check whether a set contains a particular item
+셋이 특정한 요소를 가지고 있는지를 검사하려면 `contain(_:)` 메소드를 사용합니다.
 
 ```swift
-if favoriteGenres_2.contains("Funk") {
+if favoriteGenres.contains("Funk") {
     print("I get up on the good foot.")
 } else {
     print("It's too funky in here.")
 }
-
-// Prints "It's too funky in here."
+// "It's too funky in here." 를 출력합니다.
 ```
 
-### Iterating Over a Set
+### Iterating Over a Set (셋에 동작을 반복 적용하기)
 
 * a `for-in` loop : iterate over the values in set
 
