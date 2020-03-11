@@ -347,8 +347,6 @@ favoriteGenres.insert("Jazz")
 // favoriteGenres 는 이제 4 개의 요소를 갖고 있습니다.
 ```
 
-You can remove an item from a set by calling the set’s remove(_ :) method, which removes the item if it’s a member of the set, and returns the removed value, or returns nil if the set did not contain it. Alternatively, all items in a set can be removed with its removeAll() method
-
 셋에서 특정 요소를 제거할 때는 셋의 `remove(_:)` 메소드를 호출하는데, 그 요소가 셋의 멤버면 제거한 후 제거된 값을 반환하며, 만약 셋의 요소가 아니면 `nil` 을 반환합니다. 다른 방법으로, 셋의 모든 요소를 제거하려면 `removeAll()` 메소드를 사용합니다.
 
 ```swift
@@ -373,10 +371,10 @@ if favoriteGenres.contains("Funk") {
 
 ### Iterating Over a Set (셋에 동작을 반복 적용하기)
 
-* a `for-in` loop : iterate over the values in set
+`for-in` 반복문 (loop) 을 사용하면 셋에 있는 값들에 '동작을 반복 적용 (iterate over)' 할 수 있습니다:
 
 ```swift
-for genre in favoriteGenres_2 {
+for genre in favoriteGenres {
     print("\(genre)")
 }
 
@@ -385,12 +383,12 @@ for genre in favoriteGenres_2 {
 // Hip Hop
 ```
 
-* Swift's `Set` type : not have a defined ordering
-- `sort()` : to iterate over the values of a set in a specific order
-    - returns the set's elements as an array sorted : the `<` operator
+`for-in` 반복문에 대한 자세한 내용은 [For-In Loops]() 를 참조하기 바랍니다.
+
+스위프트의 셋 타입에는 정의된 순서란 것이 없습니다. 지정된 순서대로 셋의 값에 '동작을 반복 적용' 하려면, 먼저 `sorted()` 메소드를 사용해야 합니다. 이 함수는 셋의 요소들을 정렬된 배열 형태로 바꿔서 반환하는데, 정렬할 때 `<` 연산자를 사용합니다.
 
 ```swift
-for genre in favoriteGenres_2.sort() {
+for genre in favoriteGenres.sort() {
     print("\(genre)")
 }
 
@@ -399,7 +397,11 @@ for genre in favoriteGenres_2.sort() {
 // Jazz
 ```
 
-## Performing Set Operations
+## Performing Set Operations (셋 연산 수행하기)
+
+You can efficiently perform fundamental set operations, such as combining two sets together, determining which values two sets have in common, or determining whether two sets contain all, some, or none of the same values.
+
+두 세트를 함께 결합하거나, 두 세트가 공통으로 갖는 값을 결정하거나, 두 세트에 동일한 값이 모두 포함되는지, 일부 또는 전혀 포함되어 있지 않은지 여부를 결정하는 등의 기본 세트 작업을 효율적으로 수행 할 수 있습니다.
 
 * efficiently perform fundamental set operations
     * combining two sets together
@@ -727,3 +729,5 @@ let airportNames = [String](airports_2.values)
 [^transitivity]: 여기서 말하는 '추이성' 은 수학에서 말하는 '추이 관계' 를 말하는 것 같습니다. '추이 관계' 에 대해서는 위키피디아의 [Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation) 문서를 참고하기 바랍니다.
 
 [^set-array-literal]: 이것은 '배열 문자표현 (array literal)' 만 사용할 경우, `Array` 로 추론되기 때문일 것입니다.
+
+[^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산이 필요한 경우게 사용될 수 있는 타입이라고 볼 수 있습니다. 실제로 '셋' 타입은 스위프트 초기 버전에는 없었습니다. 아마도 배열이나 딕셔너리로는 수행하기 어려운 수학 연산이 필요할 경우 사용하기 위해 도입되었을 수도 있을 것입니다.
