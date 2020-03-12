@@ -405,7 +405,7 @@ for genre in favoriteGenres.sort() {
 
 아래 그림은 음영 영역으로 표시된 다양한 세트 작업의 결과와 함께 두 세트 (a 및 b)를 보여줍니다.
 
-![Fundamental-Set-Operations](/assets/Swift/Swift-Programming-Language/Collection-Types-fundamental-set-operations.jp2)
+![Fundamental-Set-Operations](/assets/Swift/Swift-Programming-Language/Collection-Types-fundamental-set-operations.jpg)
 
 * `intersect(_:)` : to create a new set with only the values common to both sets
 * `exclusiveOr(_:)` : to create a new set with values in either set, but not both
