@@ -239,7 +239,7 @@ for (index, value) in shoppingList.enumerated() {
 
 `for-in` 반복문에 대한 더 자세한 정보는 [For-In Loop]() 를 보기 바랍니다.
 
-## Sets (셋)
+### Sets (셋)
 
 _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 정의하지 않은채 컬렉션에 저장합니다. 배열 대신 셋을 사용할 때는, 요소의 순서가 중요하지 않거나, 요소가 단 한 번만 나타나도록 해야할 경우 등이 있습니다.
 
@@ -248,7 +248,7 @@ _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 
 >
 > 'Foundation' 및 'Cocoa' 프레임웍과 `Set` 을 같이 사용하는 방법에 대해서는 [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 에서 더 자세히 알 수 있습니다.
 
-### Hash Values for Set Types (셋 타입의 해쉬 값)
+#### Hash Values for Set Types (셋 타입의 해쉬 값)
 
 셋에 저장하는 타입은 반드시 _해쉬 가능 (hashable)_[^hashable] 해야 합니다 - 이것은, 이 타입은 반드시 자체적으로 _해쉬 값 (hash value)_[^hash-value] 을 계산할 수 있어야 한다는 말입니다. 여기서 해시 값이란, 하나의 `Int` 값으로서, 비교했을 때 같다고 판단되는 객체들은 모두 같아야 하는 값을 말하는 것으로, 가령 `a == b` 인 경우, 이는 필연적으로 `a.hashValue == b.hashValue` 이라는 말이 됩니다.
 
@@ -264,11 +264,11 @@ _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 
 >
 > 프로토콜 준수에 대한 더 자세한 내용은 [Protocols](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 을 보도록 합니다.
 
-### Set Type Syntax (셋 타입 문법)
+#### Set Type Syntax (셋 타입 문법)
 
 스위프트의 '셋' 타입은 `Set<Element>` 라고 작성하며, 여기서 `Element` 는 셋에 저장할 수 있는 타입을 말합니다. '배열' 과 달리, '셋' 은 약칭으로 쓸 수 있는 형태가 없습니다.
 
-### Creating and Initializing an Empty Set (빈 셋 생성하고 초기화하기)
+#### Creating and Initializing an Empty Set (빈 셋 생성하고 초기화하기)
 
 특정 타입의 빈 '셋' 을 만들려면 초기자 문법을 사용하면 됩니다:
 
@@ -290,7 +290,7 @@ letters = []
 // letters 는 이제 빈 셋이 됐지만, 타입은 여전히 Set<Character> 입니다.
 ```
 
-### Creating a Set with an Array Literal (배열 문자표현을 써서 셋 생성하기)
+#### Creating a Set with an Array Literal (배열 문자표현을 써서 셋 생성하기)
 
 '배열 문자표현' 으로 '셋' 을 초기화할 수도 있는데, 이는 '셋 컬렉션 (set collection)' 에 하나 이상의 값을 할당하는 '약칭법 (shorthand way)' 입니다.
 
@@ -313,7 +313,7 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 
 '배열 문자표현' 에 있는 모든 값들이 같은 타입이므로, 스위프트는 `favoriteGenres` 변수가 `Set<String>` 임을 올바르게 추론할 수 있습니다.
 
-### Accessing and Modifying a Set (셋에 접근하고 수정하기)
+#### Accessing and Modifying a Set (셋에 접근하고 수정하기)
 
 You access and modify a set through its methods and properties.
 
@@ -369,7 +369,7 @@ if favoriteGenres.contains("Funk") {
 // "It's too funky in here." 를 출력합니다.
 ```
 
-### Iterating Over a Set (셋에 동작을 반복 적용하기)
+#### Iterating Over a Set (셋에 동작을 반복 적용하기)
 
 `for-in` 반복문 (loop) 을 사용하면 셋에 있는 값들에 '동작을 반복 적용 (iterate over)' 할 수 있습니다:
 
@@ -397,18 +397,15 @@ for genre in favoriteGenres.sort() {
 // Jazz
 ```
 
-## Performing Set Operations (셋 연산 수행하기)
+### Performing Set Operations (집합-셋 연산 수행하기)
 
-You can efficiently perform fundamental set operations, such as combining two sets together, determining which values two sets have in common, or determining whether two sets contain all, some, or none of the same values.
+(셋으로) 기본 '(집합) 연산'[^set-operations] 을 효율적으로 수행할 수 있습니다. 이에는 두 집합-셋-을 서로 합하는 것, 두 집합-셋-에 공통인 값을 결정하는 것, 또는 두 집합-셋-에 있는 값이 모두 같은 지, 일부만 같은 지, 아니면 같은 게 전혀 없는 지를 결정하는 것 등이 있습니다.
 
-두 세트를 함께 결합하거나, 두 세트가 공통으로 갖는 값을 결정하거나, 두 세트에 동일한 값이 모두 포함되는지, 일부 또는 전혀 포함되어 있지 않은지 여부를 결정하는 등의 기본 세트 작업을 효율적으로 수행 할 수 있습니다.
+### Fundamental Set Operations (기본 집합-셋 연산)
 
-* efficiently perform fundamental set operations
-    * combining two sets together
-    * determining which values two sets have in common
-    * determining whether two sets contain all, some, non of the same values
+아래 그림은 음영 영역으로 표시된 다양한 세트 작업의 결과와 함께 두 세트 (a 및 b)를 보여줍니다.
 
-### Fundamental Set Operations
+![Fundamental-Set-Operations](/assets/Swift/Swift-Programming-Language/Collection-Types-fundamental-set-operations.jp2)
 
 * `intersect(_:)` : to create a new set with only the values common to both sets
 * `exclusiveOr(_:)` : to create a new set with values in either set, but not both
@@ -730,4 +727,4 @@ let airportNames = [String](airports_2.values)
 
 [^set-array-literal]: 이것은 '배열 문자표현 (array literal)' 만 사용할 경우, `Array` 로 추론되기 때문일 것입니다.
 
-[^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산이 필요한 경우게 사용될 수 있는 타입이라고 볼 수 있습니다. 실제로 '셋' 타입은 스위프트 초기 버전에는 없었습니다. 아마도 배열이나 딕셔너리로는 수행하기 어려운 수학 연산이 필요할 경우 사용하기 위해 도입되었을 수도 있을 것입니다.
+[^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산에 사용하는 타입이라 이해할 수 있습니다. 따라서 여기서의 'set operations' 은 '집합 연산'의 의미로 이해하는 것이 맞을 것 같습니다.
