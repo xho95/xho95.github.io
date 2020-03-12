@@ -403,73 +403,56 @@ for genre in favoriteGenres.sort() {
 
 ### Fundamental Set Operations (기본 집합-셋 연산)
 
-아래 그림은 음영 영역으로 표시된 다양한 세트 작업의 결과와 함께 두 세트 (a 및 b)를 보여줍니다.
+아래 그림은 두 개의 셋-`a` 와 `b`-에 대해 다양한 집합-셋 연산을 수행한 결과를 음영으로 보여줍니다.
 
 ![Fundamental-Set-Operations](/assets/Swift/Swift-Programming-Language/Collection-Types-fundamental-set-operations.jpg)
 
-* `intersect(_:)` : to create a new set with only the values common to both sets
-* `exclusiveOr(_:)` : to create a new set with values in either set, but not both
-* `union(_:)` : to create a new set with all of the values in both sets
-* `subtract(_:)` : to create a new set with values not in the specified set
+* `intersect(_:)` 메소드를 사용하여 생성한 새 집합-셋은 두 집합-셋에 공통된 값만 담고 있습니다.
+* `exclusiveOr(_:)` 메소드를 사용하여 생성한 새 집합-셋은 각각의 집합-셋에는 있지만 공통되지는 않는 값만 담고 있습니다.
+* `union(_:)` : 메소드를 사용하여 생성한 새 집합-셋은 두 집합-셋에 있는 모든 값을 담고 있습니다.
+* `subtract(_:)` 메소드를 사용하여 생성한 새 집합-셋은 특정한 집합-셋에는 없는 값만을 답고 있습니다.
 
 ```swift
 let oddDigits: Set = [1, 3, 5, 7, 9]
-
 let evenDigits: Set = [0, 2, 4, 6, 8]
-
 let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
 
 oddDigits.union(evenDigits).sort()
-
 // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
 oddDigits.intersect(evenDigits).sort()
-
 // []
-
 oddDigits.subtract(singleDigitPrimeNumbers).sort()
-
 // [1, 9]
-
 oddDigits.exclusiveOr(singleDigitPrimeNumbers).sort()
-
 // [1, 2, 9]
 ```
 
-### Set Membership and Equality
+### Set Membership and Equality (집합-셋의 포함 및 동등 비교)
 
-* the illustration : `a`, `b` and `c`
-    * `a` : a **superset** of set `b` - `a` contains all elements in `b`
-    * `b` : a **subset** of set `a` - all elements in `b` are also contained by `a`
-    * set `b` and set `c` : *disjoint* with one another - share no elements in common
+아래 그림은 세 개의 셋-`a`, `b`, 와 `c`-에서 공유되는 요소를 겹침 영역 (overlapping regions) 으로 보여줍니다. 여기서 집합-셋 `a` 는 집합-셋 `b` 의 _상위집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 요소를 포함하기 때문입니다. 반대로, 집합-셋 `b` 는 집합-셋 `a` 의 _하위집합 (subset; 부분 집합)_ 으로, `b` 의 모든 요소가 `a` 에 포함되기 때문입니다. 집합-셋 `b`와 집합-셋 `c`는 서로 _분리 (disjoint)_[^disjoint] 되었다고 하며, 이는 서로 어떤 요소도 공유하고 있지 않기 때문입니다.
 
-- the "is equal" operator(`==`) : to determine whether two sets contain all of the same values
-- `isSubsetOf(_:)` : to determine whether all of the values of a set are contained in the specified set
-- `isSupersetOf(_:)` : to determine whether a set contains all of the values in a specified set
-- `isStrictSubsetOf(_:)`, `isStrictSupersetOf(_:)` : to determine whether a set is a subset or superset, but not equal to a specified set
-- `isDisjointWith(_:)` : to determine whether two sets have any values in common
+![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-memebership-and-equality.jpg)
+
+* “같음 (is equal)” 연산자 (`==`) 를 사용하여 두 집합-셋이 모두 같은 값을 가지고 있는지를 확인합니다.
+* `isSubset(of:)` 메소드를 사용하여 한 집합-셋에 있는 모든 값들이 지정된 집합-셋에 포함되어 있는지를 확인합니다.
+* `isSuperset(of:)` 메소드를 사용하여 한 집합-셋이 지정된 집합-셋에 있는 모든 값을 포함하는지를 확인합니다.
+* `isStrictSubset(of:)` 또는 `isStrictSuperset(of:)` 메소드를 사용하여 한 집합-셋이 지정된 집합-셋의 하위집합 (부분집합) 또는 상위집합이면서, 같지는 않은 관계인지를 확인합니다.
+* `isDisjoint(with:)` 메소드를 사용하여 두 집합-셋이 공통된 값을 가지고 있지 않은 것을 확인합니다.
 
 ```swift
 let houseAnimals: Set = ["🐶", "🐱"]
-
 let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
-
 let cityAnimals: Set = ["🐦", "🐭"]
 
-houseAnimals.isSubsetOf(farmAnimals)
-
+houseAnimals.isSubset(of: farmAnimals)
 // true
-
-farmAnimals.isSubsetOf(houseAnimals)
-
+farmAnimals.isSuperset(of: houseAnimals)
 // true
-
-farmAnimals.isDisjointWith(cityAnimals)
-
+farmAnimals.isDisjoint(with: cityAnimals)
 // true
 ```
 
-## Dictionaries
+## Dictionaries (딕셔너리; 사전)
 
 * a **dictionary** : stores associations between keys of the same type and values of the same type in a collection with no defined ordering
     * each value : associated with a unique **key** - an identifier for that value within the dictionary
@@ -728,3 +711,5 @@ let airportNames = [String](airports_2.values)
 [^set-array-literal]: 이것은 '배열 문자표현 (array literal)' 만 사용할 경우, `Array` 로 추론되기 때문일 것입니다.
 
 [^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산에 사용하는 타입이라 이해할 수 있습니다. 따라서 여기서의 'set operations' 은 '집합 연산'의 의미로 이해하는 것이 맞을 것 같습니다.
+
+[^disjoint]: 이를 수학 용어로는 '분리 집합 (disjoint sets)' 이라고 하는 것 같습니다. 분리 집합에 대해서는 위키피디아의 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets)문서를 참고하기 바랍니다. 한글로는 '[서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합)' 이라는 용어가 있는데, 프로그래밍 분야에서는 '분리 집합' 이라는 표현도 같이 사용하고 있는 듯 합니다.
