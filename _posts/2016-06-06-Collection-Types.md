@@ -12,7 +12,7 @@ categories: Swift Grammar Collection Array Set Dictionary
 
 ## Collection Types (집합체 타입)
 
-스위프트는 값의 집합을 저장하는 용도로 세 가지의 주요 _컬렉션 타입 (collection types; 집합체 타입)_[^collections] 을 제공하는데, 이는 '배열 (arrays)', '셋 (sets)[^sets]', 그리고 '딕셔너리 (dictionaries; 사전)[^dictionaries]' 입니다. 배열은 값들이 순서에 따라 모여 있는 컬렉션이고, 셋은 값들이 순서는 없지만 각각 하나씩만 존재하는 컬렉션입니다. 딕셔너리는 '키-값 묶음 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
+스위프트는 값의 집합을 저장하는 용도로 세 가지의 주요 _컬렉션 타입 (collection types; 집합체 타입)_[^collections] 을 제공하는데, 이는 '배열 (arrays)', '셋 (sets)[^sets]', 그리고 '딕셔너리 (dictionaries; 사전)[^dictionaries]' 입니다. 배열은 값들이 순서에 따라 모여 있는 컬렉션이고, 셋은 값들이 순서는 없지만 각각 하나씩만 존재하는 컬렉션입니다. 딕셔너리는 '키-값 관련-묶음 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.png)
 
@@ -431,7 +431,7 @@ oddDigits.exclusiveOr(singleDigitPrimeNumbers).sort()
 
 아래 그림은 세 개의 셋-`a`, `b`, 와 `c`-에서 공유되는 요소를 겹침 영역 (overlapping regions) 으로 보여줍니다. 여기서 집합-셋 `a` 는 집합-셋 `b` 의 _상위집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 요소를 포함하기 때문입니다. 반대로, 집합-셋 `b` 는 집합-셋 `a` 의 _하위집합 (subset; 부분 집합)_ 으로, `b` 의 모든 요소가 `a` 에 포함되기 때문입니다. 집합-셋 `b`와 집합-셋 `c`는 서로 _분리 (disjoint)_[^disjoint] 되었다고 하며, 이는 서로 어떤 요소도 공유하고 있지 않기 때문입니다.
 
-![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-memebership-and-equality.jpg)
+![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-membership-and-equality.jpg)
 
 * “같음 (is equal)” 연산자 (`==`) 를 사용하여 두 집합-셋이 모두 같은 값을 가지고 있는지를 확인합니다.
 * `isSubset(of:)` 메소드를 사용하여 한 집합-셋에 있는 모든 값들이 지정된 집합-셋에 포함되어 있는지를 확인합니다.
@@ -454,81 +454,73 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 ## Dictionaries (딕셔너리; 사전)
 
-* a **dictionary** : stores associations between keys of the same type and values of the same type in a collection with no defined ordering
-    * each value : associated with a unique **key** - an identifier for that value within the dictionary
-    * items in a dictionary : do not have a specified order
-    * use a dictionary : to look up values based on their identifier
+딕셔너리는 '키-값 관련-묶음 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
 
-> note:
- Swift's `Dictionary` type : bridged to Foundation's `NSDictionary` class
+_딕셔너리 (dictionary; 사전)_ 는 동일한 타입의 키들과 동일한 타입의 값들 사이의 '관련-묶음 (associations)' 을 컬렉션에 순서없이 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 관련지어지며, 이 키는 딕셔너리에서 그 값에 대한 식별자 (identifier) 역할을 합니다. 배열에 있는 요소와는 달리, 딕셔너리에 있는 요소들은 지정된 순서가 없습니다. 딕셔너리는 식별자를 기반으로 하여 값을 찾을 때 쓸 수 있는데, 이는 실제-세계의 사전 (딕셔너리) 이 특정 단어로 정의된 뜻을 찾는 것과 사실상 같은 것입니다.
 
-### Dictionary Type Shorthand Syntax
+> 스위프트의 `Dictionary` 타입은 'Foundation' 프레임웍에 있는 `NSDictionary` 클래스와 연동되어 (bridged) 있습니다.
+>
+> 'Foundation' 및 'Cocoa' 프레임웍과 `Dictionary` 를 같이 사용하는 방법에 대해서는 [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 에서 더 자세히 알 수 있습니다.
 
-* the type of a Swift dictionary :
-    * `Dictionary<Key, Value>`
-        * `Key` : the type of values used as a dictionary key
-        * `Value` : the type of value the dictionary stores for those keys
+### Dictionary Type Shorthand Syntax (딕셔너리 타입 약칭 문법)
 
-> note:
- a dictionary `Key` type : conform to the `Hashable` protocol
+스위프트의 딕셔너리 타입을 온전하게 작성하는 방법은 `Dictionary<Key, Value>` 이며, 여기서 `Key` 는 딕셔너리에서 키로 사용되는 값의 타입이고, `Value` 이 키로 딕셔너리에 저장되는 값의 타입입니다.
 
-* `[Key: Value]` : shorthand form - preferred
+> '딕셔너리' 의 `Key` 타입은 '셋' 의 값 타입처럼 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-### Creating an Empty Dictionary
+또한 딕셔너리 타입은 약칭으로 `[Key : Value]` 와 같은 형태로 작성할 수도 있습니다. 두 양식의 기능은 동일하지만 약칭 형태를 권장하며, 이 책에서도 딕셔너리 타입은 약칭 형태로 참조하도록 합니다.
 
-* create an empty `Dictionary` : initializer syntax
+### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
+
+빈 `Dictionary` 를 만들려면 배열 처럼 '초기자 문법 (initializer syntax)' 을 사용합니다:
 
 ```swift
 var namesOfIntegers = [Int: String]()
-
-// namesOfIntegers is an empty [Int: String] dictionary
+// namesOfIntegers 는 [Int: String] 타입의 빈 딕셔너리입니다.
 ```
 
-* `[Int: String]` : keys - `Int`, values - `String`
-- create an empty dictionary : an empty dictionary literal - `[:]` (a colon inside a pair of square brackets)
+아래 예제는 `[Int: String]` 타입의 빈 딕셔너리를 생성해서 사람이 읽을 수 있는 정수의 이름을 저장합니다. 키는 `Int` 타입이고, 값은 `String` 타입입니다.
+
+영역 내에서 이미 타입 정보를 제공하는 경우, 빈 딕셔너리는 '빈 딕셔너리 문자표현 (empty dictionary literal)' 으로 생성할 수도 있는데, 이는 `[:]` 처럼 (대괄호 쌍 안에 콜론) 을 써 주면 됩니다:
 
 ```swift
 namesOfIntegers[16] = "sixteen"
-
-// namesOfIntegers now contains 1 key-value pair
-
+// namesOfIntegers 는 이제 1 개의 키-값 쌍을 갖고 있습니다.
 namesOfIntegers = [:]
-
-// namesOfIntegers is once again an empty dictionary of type [Int: String]
+// namesOfIntegers 는 다시 빈 딕셔너리가 됐으며 타입은 [Int: String] 입니다.
 ```
 
-### Creating a Dictionary with a Dictionary Literal
+### Creating a Dictionary with a Dictionary Literal (딕셔너리 문자표현을 써서 딕셔너리 생성하기)
 
-* initialize a dictionary : a **dictionary literal** - a shorthand way to write key-value pairs
-- a **key-value pair** : a combination of a key and a value
-    - the key and value : seperated by a colon
-    - the key-value pairs : written as a list, seperated by commas, surrounded by a pair of square brackets
+_딕셔너리 문자표현 (dictionary literal)_ 을 써서 딕셔너리를 초기화할 수도 있는데, 이는 앞서 본 '배열 문자표현' 과 문법이 비슷합니다. 딕셔너리 문자표현은 하나 이상의 키-값 쌍을 가진 `Dictionary` 컬렉션을 약칭 (shorthand) 으로 만들 수 있는 방법입니다.
 
-```
- [key 1: value 1, Key 2: value 2, key 3: value 3]
-```
+_키-값 쌍 (key-value pair)_ 은 키와 값의 조합입니다. 딕셔너리 문자표현의 각 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분됩니다. '키-값 쌍들'[^key-value-pairs] 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다:
+
+[`key 1`: `value 1`, `key 2`: `value 2`, `key 3`: `value 3`]
+
+아래 예제는 국제 공항의 이름을 저장하는 딕셔너리를 생성합니다. 이 딕셔너리에서, 키는 3-글자로 된 국제 항공운송협회 코드이며, 값은 공항의 이름입니다:
 
 ```swift
-var airports_1: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-* `airports_1` : `[String: String]`
+`airport` 딕셔너리는 `[String: String]` 타입으로 선언되었는데, 이는 "키가 `String` 타입이고 값이 `String` 타입인 `Dictionary`" 임을 의미합니다.
 
-> note:
- declared as a variable : more items are added
+> `airport` 딕셔너리는 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 딕셔너리에 더 많은 공항을 추가할 것이기 때문입니다.
 
-* initialized with a dictionary literal containing two key-value pairs
-- two `String: String` pairs
-    - a dictionary with only `String` keys, and only `String` values
-* don't have to write the type of the dictionary : consistent types - a shorter form
+`airport` 딕셔너리는 두 개의 키-값 쌍을 가지는 '딕셔너리 문자표현' 으로 초기화되었습니다. 첫 번째 쌍의 키는 `"YYZ"` 이고, 값은 `"Toronto Pearson"` 입니다. 두 번째 쌍은 키가 `"DUB"` 이고, 값은 `"Dublin"` 입니다.
+
+이 '딕셔너리 문자표현' 은 두 개의 `String: String` 쌍을 갖고 있습니다. 이 키-값 타입은 `airport` 변수를 선언할 때의 타입 (`String` 키와 `String` 값만 가지는 딕셔너리) 과 들어 맞으므로, '딕셔너리 문자표현' 에 있는 두 요소로 `airport` 딕셔너리를 초기화 하는 것이 허용됩니다.
+
+배열에서 처럼, 딕셔너리도 초기화할 때 타입을 안써도 되는 경우가 있으며, 이는 딕셔너리 문자표현에 있는 키와 값들의 타입이 일관성이 있는 경우입니다. `airport` 의 초기화는 아래 처럼 더 짧게 작성할 수 있습니다:
 
 ```swift
-var airports_2 = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-* `airports_2` : infer that `[String: String]` is the correct type
+'문자표현' 에 있는 모든 키들이 서로 같은 타입이면서, 또 모든 값들도 서로 같은 타입이므로, 스위프트는 `airport` 딕셔너리의 타입이 정확하게 `[String: String]` 타입임을 추론할 수 있습니다.
 
-### Accessing and Modifying a Dictionary
+### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
 
 * access and modify a dictionary : methods, properties, or subscript syntax
 - `count` : read only property - to find out the number of items in a `Dictionary`
@@ -713,3 +705,5 @@ let airportNames = [String](airports_2.values)
 [^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산에 사용하는 타입이라 이해할 수 있습니다. 따라서 여기서의 'set operations' 은 '집합 연산'의 의미로 이해하는 것이 맞을 것 같습니다.
 
 [^disjoint]: 이를 수학 용어로는 '분리 집합 (disjoint sets)' 이라고 하는 것 같습니다. 분리 집합에 대해서는 위키피디아의 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets)문서를 참고하기 바랍니다. 한글로는 '[서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합)' 이라는 용어가 있는데, 프로그래밍 분야에서는 '분리 집합' 이라는 표현도 같이 사용하고 있는 듯 합니다.
+
+[^key-value-pair]: 여러 개의 '키-값 쌍 (key-value pair)' 을 묶은 '키-값 쌍들 (key-value pairs)' 자체가 하나의 '딕셔너리 문자표현 (dictionary literal)' 이라고 할 수 있습니다.
