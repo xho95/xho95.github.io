@@ -1,42 +1,42 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: About the Language Reference (언어의 기호에 대하여)"
+title:  "Swift 5.2: About the Language Reference (언어의 기준에 대하여)"
 date:   2017-03-13 11:30:00 +0900
 categories: Swift Language Grammar About Reference
 ---
 
 > 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [About the Language Reference](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/AboutTheLanguageReference.html#//apple_ref/doc/uid/TP40014097-CH29-ID345) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
 
-## About the Language Reference
+## About the Language Reference (언어의 기준에 대하여)
 
-이 책의 여기서부터는 스위프트 (Swift) 프로그래밍 언어의 공식 문법을 설명하도록 합니다. 문법을 설명하는 것은 언어를 좀 더 자세히 이해하도록 돕기 위한 것이지 구문 해석기 (parser) 나 컴파일러를 직접 만들 수 있도록 하기 위한 것은 아닙니다.
+이제부터 책의 나머지 부분은 스위프트 프로그래밍 언어의 공식 문법을 설명합니다. 여기서 문법을 설명하는 것은 언어를 좀 더 자세히 이해하도록 돕기 위한 것이지, 직접 '구문 해석기 (parser)' 나 '컴파일러 (compiler)' 를 만들도록 하기 위함이 아닙니다.
 
-스위프트 언어는 다른 언어들보다 꽤 단순한데, 이는 모든 스위프트 코드에서 볼 수 있는 여러 공통 타입, 함수, 그리고 연산자들이 실제로는 스위프트 표준 라이브러리에서 정의되기 때문입니다. 비록 이들 타입, 함수, 그리고 연산자들이 스위프트 언어의 일부는 아니지만 여기서는 이들을 다루는 광범위한 논의와 코드 예제를 볼 수 있습니다.
+스위프트 언어는 상대적으로 규모가 작은 편인데, 이는 스위프트 코드 어디서나 볼 수 있는 수많은 공통 타입들, 함수들, 그리고 연산자들이 실제로는 스위프트 표준 라이브러리에서 정의되어 있기 때문입니다. 비록 이 타입들, 함수들, 그리고 연산자들이 그 자체로 스위프트 언어의 일부는 아니지만, 이 책의 해설과 코드 예제에서 광범위하게 사용될 것입니다.
 
-### 문법을 읽는 방법 (How to Read the Grammar)
+### How to Read the Grammar (문법을 읽는 방법)
 
-스위프트 프로그래밍 언어의 공식 문법을 나타내는 표기법은 몇 가지 규칙을 따릅니다:
+스위프트 프로그래밍 언어의 공식 문법을 설명할 때 사용하는 표기법 (notation) 은 다음과 같은 몇 가지 규칙 (convention) 을 따릅니다:
 
-* 화살표 (→) 는 문법 생성 방법을 표시하며 “로 이루어질 수 있음” 으로 이해할 수 있습니다.
-* 문장 구조 (Syntactic) 범주는 이탤릭 체로 표시하며 문법 생성 규칙의 양쪽 모두에 나타날 수 있습니다.
-* 리터럴 단어와 마침표는 굵은 글씨에 `상수 폭`글자로 표시하며 문법 생성 규칙의 오른쪽에만 나타납니다.
-* 문법 생성 방법에 대안이 있는 경우 세로 막대 (\|) 로 구분합니다. 대안 방법이 너무 길어서 쉽게 읽기 어려울 때는 여러 문법 생성 규칙들을 새로운 줄로 나눠서 나타내도록 합니다.
-* 몇몇 경우에는 일반 글꼴 글자를 사용해서 문법 생성 규칙의 오른쪽임을 나타냅니다. [^regular]
-* 문장 구조 범주와 리터럴이 선택 요소일 경우에는 마지막에 첨자로 <sub>­opt­</sub> 를 붙여줍니다. [^optional]
+* '화살표 (→)' 는 '문법 생성 방법 (grammar productions)' 을 표시하는 데 사용하며 “~로 구성될 수 있다” 로 읽을 수 있습니다.
+* '구문 표현의 종류 (syntactic categories)'[^syntactic-categories] 는 _이탤릭체_ 로 표시하며 '문법 생성 규칙 (grammar production rule)' 의 양쪽에 나타납니다.
+* '문자표현 (literal)'[^literal] 을 나타내는 단어와 '구두점 (punctuation)' 은 굵은 글씨의 `constant width (상수 폭)` 글자로 표시하며 '문법 생성 규칙' 의 오른-쪽에서만 나타납니다.
+* '문법 생성 방법' 에 대안이 있는 경우 세로 막대 (\|) 로 구분합니다. 이 대안 방법이 너무 길어서 읽기에 쉽지 않으면, '문법 생성 규칙들' 을 여러 줄로 나눠서 표기합니다.
+* 경우에 따라서는, 문법 생성 규칙의 오른-쪽임을 나타내기 위해 '일반 글꼴 글자 (regular font text)'를 사용합니다.[^regular-font]
+* '구문 표현의 종류' 와 '문자표현' 이 선택 요소인 경우에는 끝에 첨자로 <sub>­opt­</sub> 를 붙여줍니다. [^optional]
 
-예를 들어서 getter-setter 블럭은 다음과 같은 문법으로 정의합니다:
-
-> GETTER-SETTER 블럭의 문법
->
-> _getter-setter-블럭_ → {­ getter-구절 ­setter-구절 <sub>­opt­</sub>­­ }­ \| { ­setter-구절 ­getter-구절 }­
-
-이 정의는 getter-setter 블럭을 구성하려면 getter 구절 다음에 선택 사항으로 setter 구절을 넣고 중괄호로 감싸거나 아니면 setter 구절 다음에 getter 구절을 넣고 중괄호를 감싸면 되는 것을 나타냅니다. 위에 있는 문법 생성 방법은 아래에 있는 두 개의 문법 생성 방법과 동등한 것으로 여기서는 대안 방법을 따로 떼어내어 직접 나타냈습니다.
+예를 들어서 'getter-setter 블럭' 문법은 다음과 같습니다:
 
 > GETTER-SETTER 블럭의 문법
 >
-> _getter-setter-블럭_ → { ­getter-구절 setter-구절 <sub>­opt­</sub>­ }  
-> _getter-setter-블럭_ → {­ setter-구절 ­getter-구절 }­
+> _getter-setter-블럭_ → **{**­ _getter-구절 ­setter-구절 <sub>­opt­</sub>­­_ **}**­ \| **{** _­setter-구절 ­getter-구절_ **}**­
+
+이 정의는 getter-setter 블럭은 getter 구절 다음에 선택 사항으로 setter 구절을 붙인 후 중괄호로 감싸서 구성하거나, _아니면_ setter 구절 다음에 getter 구절을 붙인 후 중괄호로 감싸면 구성할 수 있음을 나타냅니다. 위에 있는 '문법 생성 방법' 은 아래에 있는 두 개의 '생성 방법' 과 같은 것으로, 아래에는 대안 방법을 명시적으로 분리하여 나타냈습니다:
+
+> GETTER-SETTER 블럭의 문법
+>
+> _getter-setter-블럭_ → **{**­ ­_getter-구절 setter-구절 <sub>­opt­</sub>_­ **}**­  
+> _getter-setter-블럭_ → **{**­ _setter-구절 ­getter-구절_ **}**­
 
 ### 원문 자료
 
@@ -48,6 +48,10 @@ categories: Swift Language Grammar About Reference
 
 ### 참고 자료
 
-[^regular]: 이 부분은 좀 더 깊은 의미가 있는 것 같습니다. 나중에 더 이해하게 되면 새로 옮겨야할 것 같습니다.
+[^syntactic-categories]: 'category' 는 '부류, 종류, 범주' 등의 의미를 가지고 있는데, 여기서는 'syntactic categories' 를 '구문 표현이 속해있는 범주' 의 의미로서 '구문 표현의 종류' 라고 옮겼습니다. 예를 들어, '`get { return value }` 라는 구문은 종류가 _getter-setter-block_ 이다' 라고 표현할 수 있습니다.
 
-[^optional]: 여기서의 'optional'은 '옵셔널' 타입과는 상관없는 단어입니다.
+[^literal]: 여기서 '문자 표현' 이란 `let a = 10` 일 때의 `10` 과 같이 특정 단어가 문자로 표현된 실제 의미를 갖는 것을 말하는 것으로, 이 문장에서의 `10` 은 글자 `1` 과 `0` 이 붙어 있는 것이 아니라, 숫자 `10` 으로 인식됩니다.
+
+[^regular-font]: '문법 생성 규칙' 의 오른-쪽에 올 수 있는 것과 왼-쪽에 올 수 있는 것, 양-쪽 다에 올 수 있는 것이 있을 것입니다. 이 중에서 '일반 글꼴 글자 (regular font text)' 는 '문법 생성 규칙' 의 오른-쪽에 올 수 있는 내용을 나타낸다고 볼 수 있습니다.
+
+[^optional]: 여기서의 'optional'은 스위프트의 '옵셔널' 타입과는 상관없는 단어입니다.
