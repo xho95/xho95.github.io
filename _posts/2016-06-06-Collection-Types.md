@@ -111,14 +111,14 @@ var shoppingList = ["Eggs", "Milk"]
 
 배열은 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 문법 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
 
-배열에 있는 요소의 개수를 알고 싶으면, 일기-전용 속성인 `count` 를 검사하면 됩니다:
+배열에 있는 요소의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
 // "The shopping list contains 2 items." 를 출력합니다.
 ```
 
-`count` 속성이 `0` 과 같은 지를 검사할 때는 더 간단한 방법으로 '불린 (Boolean)' 속성인 `inEmpty` 를 사용하도록 합니다[^isEmpty-count]:
+불린 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -239,7 +239,7 @@ for (index, value) in shoppingList.enumerated() {
 
 `for-in` 반복문에 대한 더 자세한 정보는 [For-In Loop]() 를 보기 바랍니다.
 
-### Sets (셋)
+### Sets (셋; 집합)
 
 _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 정의하지 않은채 컬렉션에 저장합니다. 배열 대신 셋을 사용할 때는, 요소의 순서가 중요하지 않거나, 요소가 단 한 번만 나타나도록 해야할 경우 등이 있습니다.
 
@@ -518,149 +518,128 @@ var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-'문자표현' 에 있는 모든 키들이 서로 같은 타입이면서, 또 모든 값들도 서로 같은 타입이므로, 스위프트는 `airport` 딕셔너리의 타입이 정확하게 `[String: String]` 타입임을 추론할 수 있습니다.
+'문자표현' 에 있는 모든 키들이 서로 같은 타입이면서 모든 값들도 같은 타입이므로, 스위프트는 `airport` 딕셔너리의 타입이 정확하게 `[String: String]` 타입임을 추론할 수 있습니다.
 
 ### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
 
-* access and modify a dictionary : methods, properties, or subscript syntax
-- `count` : read only property - to find out the number of items in a `Dictionary`
+딕셔너리는 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 문법 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
+
+딕셔너리에 있는 요소의 개수를 알고 싶으면, 배열과 마찬가지로 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
 ```swift
-print("The airports_2 dictionary contains \(airports_2.count) items.")
-
-// Prints "The airports_2 dictionary contains 2 items."
+print("The airports dictionary contains \(airports.count) items.")
+// "The airports_2 dictionary contains 2 items." 를 출력합니다.
 ```
 
-* `isEmpty` : the Boolean property - a shortcut for checking whether the `count` is equal to `0`
+불린 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
 
 ```swift
-if airports_2.isEmpty {
-    print("The airports_2 dictionary is empty.")
+if airports.isEmpty {
+    print("The airports dictionary is empty.")
 } else {
-    print("The airports_2 dictionary is not empty.")
+    print("The airports dictionary is not empty.")
 }
-
-// Prints "The airports_2 dictionary is not empty."
+// "The airports dictionary is not empty." 를 출력합니다.
 ```
 
-* subscript syntax : add a new item to a dictionary
-    * a new key : appropriate type as the subscript index, a new value : appropriate type
+딕셔너리에 새 요소를 추가할 때 '첨자 연산 문법 (subscript syntax)' 을 사용할 수 있습니다. 타입에 맞는 새 키를 첨자 연산의 색인으로 두고, 타입에 맞는 새 값을 할당하면 됩니다:  
 
 ```swift
-airports_2["LHR"] = "London"
-
-// the airports_2 dictionary now contains 3 items
+airports["LHR"] = "London"
+// airports 딕셔너리는 이제 3 개의 요소를 가집니다.
 ```
 
-* subscript syntax : to change the value associated with a particular key
+첨자 연산 문법을 사용해서 특정한 키와 관련되어 있는 값을 바꿀 수도 있습니다:
 
 ```swift
-airports_2["LHR"] = "London Heathrow"
-
-// the value for "LHR" has been changed to "London Heathrow"
+airports["LHR"] = "London Heathrow"
+// "LHR" 에 해당하는 값이 "London Heathrow" 로 바뀌었습니다.
 ```
 
-* `updateValue(_:forKey:)` : method - to set our update the value for a particular key
-    * sets : if none exists, updates : if that key already exists
-    * returns the old value after performing an update : to check whether or not an update took place
-    * returns an optional value of the value type
+첨자 연산의 대안으로, 딕셔너리에 있는 `updateValue(_:forKey:)` 메소드를 사용하여 특정 키에 대한 값을 설정하고 업데이트하도록 합니다. 위의 첨자 연산 예제와 같이, `updateValue(_:forKey:)` 메소드는 해당 키가 존재하지 않으면 키의 값을 설정하고, 키가 이미 존재하면 값을 업데이트합니다. 하지만 첨자 연산과는 달리, `updateValue(_:forKey:)` 메소드는 업데이트를 수행한 다음 _예전 (old)_ 값을 반환합니다. 이것으로 업데이트가 실제로 일어났는지를 검사할 수 있습니다.
+
+`updateValue(_:forKey:)` 메소드는 딕셔너리 값 타입에 대한 옵셔널 값 (optional value)[^optional-value] 을 반환합니다. 예를 들어, `String` 값을 저장하는 딕셔너리의 경우, 이 메소드는 ("옵셔널 `String`" 이라고 하는) `String?` 타입의 값을 반환합니다. 이 옵셔널 값은 업데이트 이전에 값이 있었으면 해당 키에 대한 예전 값을 가지고, 없었으면 `nil` 을 가집니다:
 
 ```swift
-if let oldValue = airports_2.updateValue("Dublin Airport", forKey: "DUB") {
+if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
     print("The old value for DUB was \(oldValue).")
 }
-
-// Prints "The old value for DUB was Dublin."
+// "The old value for DUB was Dublin." 를 출력합니다.
 ```
 
-* subscript syntax : to retrieve a value
-    * a dictionary's subscript : returns an optional value
-        * an optional values containing the existing value for key
-        * returns `nil`
+첨자 연산 문법을 사용하여 딕셔너리에서 특정 키에 대한 값을 가져올 수도 있습니다. 요청한 키에 대해서 값이 없을 수도 있으므로, 딕셔너리의 첨자 연산은 딕셔너리의 값 타입에 대한 옵셔널 값을 반환합니다. 딕셔너리가 요청한 키에 대한 값을 가지고 있는 경우, 첨자 연산은 그 키에 대한 값을 담고 있는 옵셔널 값을 반환합니다. 그렇지 않는 경우, 첨자 연산은 `nil` 을 반환합니다:
 
 ```swift
-if let airportName = airports_2["DUB"] {
+if let airportName = airports["DUB"] {
     print("The name of the airport is \(airportName).")
 } else {
     print("That airport is not in the airports dictionary.")
 }
-
-// Prints "The name of the airport is Dublin Airport."
+// "The name of the airport is Dublin Airport." 를 출력합니다.
 ```
 
-* subscript syntax : to remove a key-value pair - by assigning a value of `nil` for that key
+첨자 연산 문법을 사용하여 키에 대한 값으로 `nil` 을 할당하면 딕셔너리에서 '키-값 쌍' 을 제거할 수 있습니다:
 
 ```swift
-airports_2["APL"] = "Apple International"
-
-// "Apple International" is not the real airport for APL, so delete it
-
-airports_2["APL"] = nil
-
-// APL has now been removed from the dictionary
+airports["APL"] = "Apple International"
+// APL 및 "Apple International" 은 실제 공항이 아닙니다, 이제 지워봅시다.
+airports["APL"] = nil
+// APL 이 방금 딕셔너리에서 지워졌습니다.
 ```
 
-* `removeValueForKey(_:)` : method
-    * removes the key-value pair and returns the removed value
-    * return `nil`
+다른 방법으로, 딕셔너리에서 키-값 쌍을 제거하려면 `removeValue(_:forKey)` 메소드를 사용합니다. 이 메소드는 해당 키-값 쌍이 있으면 제거하고나서 그 제거한 값을 반환하고, 없으면 `nil` 을 반환합니다:
 
 ```swift
-if let removedValue = airports_2.removeValueForKey("DUB") {
+if let removedValue = airports.removeValue(forKey: "DUB") {
     print("The removed airport's name is \(removedValue).")
 } else {
-    print("The airports_2 dictionary does not contain a value for DUB.")
+    print("The airports dictionary does not contain a value for DUB.")
 }
-
-// Prints "The removed airport's name is Dublin Airport."
+// "The removed airport's name is Dublin Airport." 를 출력합니다.
 ```
 
-### Iterating Over a Dictionary
+### Iterating Over a Dictionary (배열에 동작을 반복 적용하기)
 
-* a `for-in` loop : iterate over the key-value pairs in a dictionary
-    * each item : as a `(key, value)` tuple
+`for-in` 반복문을 사용하면 딕셔너리에 있는 전체 키-값 쌍들에 '동작을 반복 적용 (iterate over)' 할 수 있습니다. 딕셔너리의 각 요소는 `(key, value)` 튜플의 형태로 반환되며, 튜플의 멤버는 동작 반복 과정에서 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
-for (airportCode, airportName) in airports_2 {
+for (airportCode, airportName) in airports {
     print("\(airportCode): \(airportName)")
 }
 
 // YYZ: Toronto Pearson
-// LHR: London Heathrow
+// LHR: London Heathrow               
 ```
 
-* `keys` and `values` properties : retrieve an iterable collection of a dictionary's keys or values
+`for-in` 반복문에 대한 더 자세한 내용은 [For-In Loops]() 를 참고하기 바랍니다.
+
+딕셔너리의 키와 값들에 대해서 '동작을 반복 적용할 수 있는 컬렉션 (iterable collection)' 을 가질 수도 있는데, 이는 딕셔너리의 `keys` 와 `properties` 속성을 사용하면 됩니다:
 
 ```swift
-for airportCode in airports_2.keys {
+for airportCode in airports.keys {
     print("Airport code: \(airportCode)")
 }
-
 // Airport code: YYZ
 // Airport code: LHR
 
-for airportName in airports_2.values {
+for airportName in airports.values {
     print("Airport name: \(airportName)")
 }
-
 // Airport name: Toronto Pearson
 // Airport name: London Heathrow
 ```
 
-* to use a dictionary's keys or values with an API that takes an `Array` instance
-    * initialize an new array with the `keys` or `values` property
+딕셔너리의 키와 값을 `Array` 인스턴스를 요구하는 API 에 전달하려면, `keys` 와 `properties` 속성으로 새 배열을 초기화하면 됩니다:
 
 ```swift
-let airportCodes = [String](airports_2.keys)
+let airportCodes = [String](airports.keys)
+// airportCodes 는 ["YYZ", "LHR"] 가 됩니다.
 
-// airportCodes is ["YYZ", "LHR"]
-
-let airportNames = [String](airports_2.values)
-
-// airportNames is ["Toronto Pearson", "London Heathrow"]
+let airportNames = [String](airports.values)
+// airportNames 은 ["Toronto Pearson", "London Heathrow"] 가 됩니다.
 ```
 
-* Swift's `Dictionary` type : not have a defined ordering
-- `sort()` on its `keys` or `values` : to iterate over the keys or values of a dictionary in a specific order
+스위프트의 `Dictionary` 타입에는 따로 정의된 순서가 없습니다. 딕셔너리의 키와 값에 동작을 반복 적용할 때 특정 순서를 따르게 하고 싶으면, `sort()` 를 `keys` 와 `values` 속성에 사용하면 됩니다.
 
 ### 참고 자료
 
@@ -707,3 +686,5 @@ let airportNames = [String](airports_2.values)
 [^disjoint]: 이를 수학 용어로는 '분리 집합 (disjoint sets)' 이라고 하는 것 같습니다. 분리 집합에 대해서는 위키피디아의 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets)문서를 참고하기 바랍니다. 한글로는 '[서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합)' 이라는 용어가 있는데, 프로그래밍 분야에서는 '분리 집합' 이라는 표현도 같이 사용하고 있는 듯 합니다.
 
 [^key-value-pair]: 여러 개의 '키-값 쌍 (key-value pair)' 을 묶은 '키-값 쌍들 (key-value pairs)' 자체가 하나의 '딕셔너리 문자표현 (dictionary literal)' 이라고 할 수 있습니다.
+
+[^optional-value]: 'optional value' 는 '선택적 값' 이라고도 옮길 수 있겠지만, 여기서는 스위프트의 타입임을 드러내기 위해서 발음을 따라서 '옵셔널 값' 으로 옮깁니다.
