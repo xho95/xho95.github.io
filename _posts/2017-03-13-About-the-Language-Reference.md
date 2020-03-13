@@ -6,7 +6,7 @@ date:   2017-03-13 11:30:00 +0900
 categories: Swift Language Grammar About Reference
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [About the Language Reference](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/AboutTheLanguageReference.html#//apple_ref/doc/uid/TP40014097-CH29-ID345) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
+> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 부분[^Language-Reference]을 번역하고 정리한 글입니다.
 
 ## About the Language Reference (언어의 기준에 대하여)
 
@@ -38,15 +38,9 @@ categories: Swift Language Grammar About Reference
 > _getter-setter-블럭_ → **{**­ ­_getter-구절 setter-구절 <sub>­opt­</sub>_­ **}**­  
 > _getter-setter-블럭_ → **{**­ _setter-구절 ­getter-구절_ **}**­
 
-### 원문 자료
-
-* [About the Language Reference](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/AboutTheLanguageReference.html#//apple_ref/doc/uid/TP40014097-CH29-ID345) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
-
-### 관련 자료
-
-* [Swift 3.1: 스위프트 프로그래밍 언어 (Swift Programming Language)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html)
-
 ### 참고 자료
+
+* [^Language-Reference]: 원문은 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 에서 확인할 수 있습니다.
 
 [^syntactic-categories]: 'category' 는 '부류, 종류, 범주' 등의 의미를 가지고 있는데, 여기서는 'syntactic categories' 를 '구문 표현이 속해있는 범주' 의 의미로서 '구문 표현의 종류' 라고 옮겼습니다. 예를 들어, '`get { return value }` 라는 구문은 종류가 _getter-setter-block_ 이다' 라고 표현할 수 있습니다.
 
