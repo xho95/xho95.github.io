@@ -25,22 +25,22 @@ categories: Swift Language Grammar About Reference
 * 경우에 따라서는, 문법 생성 규칙의 오른-쪽임을 나타내기 위해 '일반 글꼴 글자 (regular font text)'를 사용합니다.[^regular-font]
 * '구문 표현의 종류' 와 '문자표현' 이 선택 요소인 경우에는 끝에 첨자로 <sub>­opt­</sub> 를 붙여줍니다. [^optional]
 
-예를 들어서 'getter-setter 블럭' 문법은 다음과 같습니다:
+예를 들어서 'getter-setter block' 의 문법은 다음과 같습니다:
 
 > GETTER-SETTER 블럭의 문법
 >
-> _getter-setter-블럭_ → **{**­ _getter-구절 ­setter-구절 <sub>­opt­</sub>­­_ **}**­ \| **{** _­setter-구절 ­getter-구절_ **}**­
+> _getter-setter-block_ → **{**­ _getter-clause ­setter-clause <sub>­opt­</sub>­­_ **}**­ \| **{** _­setter-clause ­getter-clause_ **}**­
 
-이 정의는 getter-setter 블럭은 getter 구절 다음에 선택 사항으로 setter 구절을 붙인 후 중괄호로 감싸서 구성하거나, _아니면_ setter 구절 다음에 getter 구절을 붙인 후 중괄호로 감싸면 구성할 수 있음을 나타냅니다. 위에 있는 '문법 생성 방법' 은 아래에 있는 두 개의 '생성 방법' 과 같은 것으로, 아래에는 대안 방법을 명시적으로 분리하여 나타냈습니다:
+이 정의는 getter-setter block (블럭) 은 getter clause (구절) 다음에 선택 사항으로 setter 구절을 붙인 후 중괄호로 감싸서 구성하거나, _아니면_ setter 구절 다음에 getter 구절을 붙인 후 중괄호로 감싸면 구성할 수 있음을 나타냅니다. 위에 있는 '문법 생성 방법' 은 아래에 있는 두 개의 '생성 방법' 과 같은 것으로, 아래에는 대안 방법을 명시적으로 분리하여 나타냈습니다:
 
 > GETTER-SETTER 블럭의 문법
 >
-> _getter-setter-블럭_ → **{**­ ­_getter-구절 setter-구절 <sub>­opt­</sub>_­ **}**­  
-> _getter-setter-블럭_ → **{**­ _setter-구절 ­getter-구절_ **}**­
+> _getter-setter-block_ → **{**­ ­_getter-clause setter-clause <sub>­opt­</sub>_­ **}**­  
+> _getter-setter-block_ → **{**­ _setter-clause ­getter-clause_ **}**­
 
 ### 참고 자료
 
-* [^Language-Reference]: 원문은 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 에서 확인할 수 있습니다.
+[^Language-Reference]: 원문은 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 에서 확인할 수 있습니다.
 
 [^syntactic-categories]: 'category' 는 '부류, 종류, 범주' 등의 의미를 가지고 있는데, 여기서는 'syntactic categories' 를 '구문 표현이 속해있는 범주' 의 의미로서 '구문 표현의 종류' 라고 옮겼습니다. 예를 들어, '`get { return value }` 라는 구문은 종류가 _getter-setter-block_ 이다' 라고 표현할 수 있습니다.
 
