@@ -1,25 +1,27 @@
 ---
 layout: post
 comments: true
-title:  "Swift 4.2: 스위프트에 대하여 (About Swift)"
+title:  "Swift 5.2: About Swift (스위프트에 대하여)"
 date:   2017-03-02 10:00:00 +0900
 categories: Swift Language Grammar About
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language](https://docs.swift.org/swift-book/) 책의 [About Swift](https://docs.swift.org/swift-book/) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 4.2 버전에 대해서 정리했습니다.[^swift-book]
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [About Swift](https://docs.swift.org/swift-book/) 부분[^About-Swift]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-스위프트 (Swift) 는 전화, 데스크탑, 서버, 또는 코드를 실행하는 기기에 상관없이 소프트웨어를 작성하는 환상적인 방법입니다. 안전하고 빠른 대화형 프로그래밍 언어로써 최신 언어 철학의 가장 좋은 부분과 폭넓은 애플 개발자 문화의 지혜, 오픈-소스 커뮤니티의 다양한 도움들을 하나로 묶었습니다. 컴파일러는 성능에 최적화 되어 있고 언어는 개발에 최적화 되어 있으면서도 어느 쪽으로도 타협하지 않았습니다.
+'스위프트 (Swift)' 는 전화, 데스크탑, 서버, 또는 코드를 실행하는 기기에 상관없이 소프트웨어를 작성하는 환상적인 방법입니다. 안전하고 빠른 대화형 프로그래밍 언어로써 최신 언어 철학의 가장 좋은 부분과 폭넓은 애플 개발자 문화의 지혜, 오픈-소스 커뮤니티의 다양한 도움들을 하나로 묶었습니다. 컴파일러는 성능에 최적화 되어 있고 언어는 개발에 최적화 되어 있으면서도 어느 쪽으로도 타협하지 않았습니다.
 
 스위프트는 새로운 프로그래머에게도 친절합니다. 산업 수준의 프로그래밍 언어지만 스크립트 언어처럼 표현이 간결하고 재밌습니다. 플레이그라운드 (playground) 는 스위프트 코드를 실험하면서 결과를 바로 보여주는데, 앱을 만들고 실행하는 번거로움도 필요 없습니다.           
 
 스위프트는 최신 프로그래밍 패턴을 받아들여 많은 종류의 일반적인 프로그래밍 오류를 사전에 제거합니다:
 
-- 변수는 사용하기 전에 항상 초기화 합니다.
-- 배열 인덱스는 범위를 벗어난 오류가 있는지 검사합니다.
-- 정수형은 값이 넘치는지 검사합니다.
-- 선택형 (Optional) 은 `nil` 값이 명시적으로 처리되는지 확인합니다.
-- 메모리는 자동으로 관리됩니다.
-- 오류 처리는 예기치 않은 실패에도 제어된 복구를 허용합니다.  
+* 변수는 사용하기 전에 항상 초기화 합니다.
+* 배열 인덱스는 범위를 벗어난 오류가 있는지 검사합니다.
+* 정수형은 값이 넘치는지 검사합니다.
+* 선택형 (Optional) 은 `nil` 값이 명시적으로 처리되는지 확인합니다.
+* 메모리는 자동으로 관리됩니다.
+* 오류 처리는 예기치 않은 실패에도 제어된 복구를 허용합니다.  
 
 스위프트 코드는 최신 하드웨어를 최대한 활용하도록 컴파일되고 최적화됩니다. 문법과 표준 라이브러리는 뻔한 방법으로 작성된 코드도 최고의 성능을 발휘해야 한다는 기본 원칙에 의해 설계되었습니다. 안전과 속도가 결합된 스위프트는 "Hello, world!" 에서부터 운영 체제 개발에 이르기까지 모든 영역에서 탁월한 선택입니다.
 
@@ -27,8 +29,6 @@ categories: Swift Language Grammar About
 
 스위프트는 수 년 동안 제작 중이며 새로운 특징과 기능들로 계속 발전하고 있습니다. 우리는 원대한 목표를 갖고 있습니다. 여러분들이 이 걸로 무엇을 만들지 정말 기대하고 있습니다.
 
-### 고찰하기
-
 ### 참고 자료
 
-[^swift-book]: [The Swift Programming Language](https://docs.swift.org/swift-book/)
+[^About-Swift]: 원문은 [About Swift](https://docs.swift.org/swift-book/) 에서 확인할 수 있습니다.

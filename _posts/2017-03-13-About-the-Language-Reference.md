@@ -20,7 +20,7 @@ categories: Swift Language Grammar About Reference
 
 * '화살표 (→)' 는 '문법 생성 방법 (grammar productions)' 을 표시하는 데 사용하며 “~로 구성될 수 있다” 로 읽을 수 있습니다.
 * '구문 표현의 종류 (syntactic categories)'[^syntactic-categories] 는 _이탤릭체_ 로 표시하며 '문법 생성 규칙 (grammar production rule)' 의 양쪽에 나타납니다.
-* '문자표현 (literal)'[^literal] 을 나타내는 단어와 '구두점 (punctuation)' 은 굵은 글씨의 `constant width (상수 폭)` 글자로 표시하며 '문법 생성 규칙' 의 오른-쪽에서만 나타납니다.
+* '문자표현 (literal)'[^literal] 을 나타내는 단어와 '구두점 (punctuation)' 은 굵은 글씨의 `constant width (고정 폭)` 글자로 표시하며 '문법 생성 규칙' 의 오른-쪽에서만 나타납니다.
 * '문법 생성 방법' 에 대안이 있는 경우 세로 막대 (\|) 로 구분합니다. 이 대안 방법이 너무 길어서 읽기에 쉽지 않으면, '문법 생성 규칙들' 을 여러 줄로 나눠서 표기합니다.
 * 경우에 따라서는, 문법 생성 규칙의 오른-쪽임을 나타내기 위해 '일반 글꼴 글자 (regular font text)'를 사용합니다.[^regular-font]
 * '구문 표현의 종류' 와 '문자표현' 이 선택 요소인 경우에는 끝에 첨자로 <sub>­opt­</sub> 를 붙여줍니다. [^optional]
