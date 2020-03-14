@@ -1,65 +1,54 @@
 ---
 layout: post
 comments: true
-title:  "Jekyll: Google Search Console and Analytics"
+title:  "Jekyll: 블로그를 Google Search (구글 검색) 과 Analytics (분석) 에 연동하기"
 date:   2020-03-15 11:30:00 +0900
-categories: Jekyll Blog Google Search Console
+categories: Jekyll Blog Google Search Console Analytics
 ---
 
-Goole Search Console 에서 DNS record 는 따로 DNS 가 있는 경우 사용하는 것입니다.[^google-domain] 즉, 따로 도메인 이름이 있을 때 쓰는 기능입니다. 다만 좀 더 확인 필요합니다.
+구글 사이트 인증 코드를 Jekyll 블로그에 추가하는 방법입니다.
+
+다음의 참고자료들을 활용하여 진행했습니다.
+
+### Google Search Console 에서 HTML file 인증하기
+
+아마도 파일을 다운 받아서 사이트에 넣으면 되는 것으로 알고 있는데, 워낙 예전에 한 것이라, 좀 더 확인이 필요합니다.
+
+### Google Search Console 에서 HTML tag 인증하기
 
 HTML tag 방식을 사용할 수 있으며, 이 때는 `_config.yml` 파일에서 전체 적용 가능합니다.
 
-Google Analytics 도 Search Console 과 마찬가지로 추적 코드는 `<body>` 영역이 아니라 `<head>` 영역에 있어야 합니다.
+적용하는 방법은 참고 자료를 활용하면 됩니다. [^jekyll-issues-3514] [^two-steps]
+
+### Google Search Console 에서 Google Analytics 인증하기
+
+Jekyll 블로그에 Goole Analytics를 달아봅니다.[^google-analytics] 먼저 구글 계정을 만들거나 로그인 합니다.
+
+Google Analytics 도 Search Console 과 마찬가지로 추적 코드는 `<body>` 영역이 아니라 `<head>` 영역에 있어야 합니다.[^setup-for-Jekyll]
 
 설정은 Google Search Console 로 이동한 다음, **Settings > Ownership verification** 메뉴에서 할 수 있습니다.
 
 제대로 설정한 다음에 **Verify** 버튼을 누르면 아래와 같이 성공했다는 메시지를 받습니다.
 
-### 참고 자료
+### Google Search Console 에서 Domain 인증하기
 
-[^google-domain]: [How to setup google domain for github pages](https://dev.to/trentyang/how-to-setup-google-domain-for-github-pages-1p58)
+Goole Search Console 에서 DNS record 는 따로 DNS 가 있는 경우 사용하는 것입니다.[^google-domain] 즉, 따로 도메인 이름이 있을 때 쓰는 기능입니다. Jekyll Pages 만 사용할 경우는 해당되지 않는 것 같습니다. 다만 이 부분은 좀 더 확인이 필요합니다.
 
+### 알아봐야할 것
 
-## 아래 내용은 확인이 필요합니다.
-
-### Jekyll 블로그에 Google Analytics 달기
-
-Jekyll 블로그에 Goole Analytics를 달아봅니다.
-
-먼저 구글 계정을 만들거나 로그인 합니다.
-
-실제 다는 방법은 외국 글을 참고한 것 같습니다.
-
-> 나중에 정리해야 합니다.
-
-### 데이터 분석하기
-
-관련 자료를 정리합니다.
-
-#### 시각화 자료
-
-[Data Studio](https://www.google.com/analytics/data-studio/) 같은 도구를 사용하면 됩니다. [^data-studio]
+* main.css 파일 인식 안되게 하기
+* Jekyll 블로그에 category 달기
+* Jekyll 블로그에 페이지 기능 넣기
+* Goole Tag Manager 인증하기 : Analytics 에서 Tag Manager 생성 가능한 것 같다.
 
 ### 참고 자료
 
-[Accounts](https://analytics.google.com/analytics/web/?authuser=0#provision/SignUp/)
+[^jekyll-issues-3514]: [Verifying with Google Webmaster](https://github.com/jekyll/jekyll/issues/3514) 글에서는 Google HTML Tag 인증을 위해서 Blog 에 추가해야하는 방식을 설명합니다.
 
-[Google Analytics setup for Jekyll](https://michaelsoolee.com/google-analytics-jekyll/) : Google Analytics를 Jekyll 블로그에 다는 방법을 설명한 글입니다.
+[^two-steps]: [Make your Jekyll Github Pages appear on Google search result (2 steps)](https://victor2code.github.io/blog/2019/07/04/jekyll-github-pages-appear-on-Google.html) 여기서도 HTML Tag 를 사용해서 인증하는 방법을 설명합니다.
 
-[GitHub에 Google Analytics 달기](http://www.kmshack.kr/tag/구글-애널리틱스/) GitHub에 Google Analytics를 넣는 부분이 잘 설명되어 있는 것 같습니다.
+[^google-analytics]: [Google Analytics](https://marketingplatform.google.com/about/analytics/) 는 사이트를 분석하게 도와주는 시각화 도구의 하나라 볼 수 있으며, [Google Marketing Platform](https://marketingplatform.google.com/about/) 의 하나입니다.
 
-[Google Analytics](http://www.google.com/analytics/ce/nrs/)
-[GitHub에 Google Analytics 달기](http://www.kmshack.kr/tag/구글-애널리틱스/)
+[^setup-for-Jekyll]: [Google Analytics setup for Jekyll](https://michaelsoolee.com/google-analytics-jekyll/) 에서 설명한 것은 `{% include analytics.html %}` 코드를 `<body>` 에 넣게 되는데, 실제로는 `<head>` 에 넣어야 합니다. 아마도 자료가 조금 예전 것인 듯 합니다.
 
-[Jekyll블로그에 Google Analytics 추가](https://dev-juyoung.github.io/jekyll/2016/08/04/google-analytics.html)
-
-[Jekyll을 이용한 Github pages 만들기 - 심화/Google Analytics 적용](http://loustler.io/2016/09/26/github_pages_blog_google_analytics/) : 실제 코드 설명까지 되어 있어서 참고하면 좋을 것 같습니다.
-
-[Google 웹로그 분석](http://www.google.com/analytics/)
-
-[구글 아널리틱스를 이용하여 블로그를 완벽하게 분석하는 방법 / Google Analytics](http://www.erzsamatory.net/42) Google Analytics의 사용 방법에 대한 설명이 잘 되어 있는 것 같습니다.
-
-[GA로 블로그 분석하기](http://www.boxnwhis.kr/2015/03/18/analyzing_blog_using_ga.html) : GA를 활용하는 방법에 대해서 잘 나와있습니다.
-
-[^data-studio]: [Data Studio](https://www.google.com/analytics/data-studio/) : 구글에서 만든 데이터 시각화 도구인데 Analytics 와도 연동이 되는 것 같습니다.
+[^google-domain]: [How to setup google domain for github pages](https://dev.to/trentyang/how-to-setup-google-domain-for-github-pages-1p58) 에서 소개하는 방법은 Domain Name Server 로 Google Domains 를 사용하는 경우에 해당하는 것 같습니다.
