@@ -3,7 +3,7 @@
 title : Sitemap
 ---
 {% assign my_pages = site.pages | where_exp: "page", "page.ext != 'css'" %}
-{% for page in site.pages %}
+{% for page in my_pages %}
 {{ site.production_url }}{{ page.url }}{% endfor %}
 {% for post in site.posts %}
 {{ site.production_url }}{{ post.url }}{% endfor %}
