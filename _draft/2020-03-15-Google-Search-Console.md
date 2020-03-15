@@ -54,7 +54,6 @@ Goole Search Console 에서 DNS record 는 따로 DNS 가 있는 경우 사용�
 
 ### 알아봐야할 것
 
-* main.css 파일 인식 안되게 하기
 * Jekyll 블로그에 category 달기
 * Jekyll 블로그에 페이지 기능 넣기
 * Goole Tag Manager 인증하기 : Analytics 에서 Tag Manager 생성 가능한 것 같다.

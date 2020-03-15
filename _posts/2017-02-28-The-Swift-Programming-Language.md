@@ -11,7 +11,7 @@ categories: Swift Programming Language Grammar
 ### Welcome to Swift (스위프트 소개 인사)
 
 * [About Swift (스위프트에 대하여)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
-* [Version Compatibility (버전 호환성)]
+* [Version Compatibility (버전 호환성)]()
 * [A Swift Tour (스위프트하게 돌아보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
 ### Language Guide (언어 설명서)
