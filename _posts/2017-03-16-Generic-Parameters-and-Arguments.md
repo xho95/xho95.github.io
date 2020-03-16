@@ -1,12 +1,16 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Generic Parameters and Arguments (일반화된 매개 변수와 인자)"
+title:  "Swift 5.2: Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)"
 date:   2017-03-16 00:00:00 +0900
 categories: Swift Language Grammar Generic Parameters Arguments
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 부분[^GPandA]을 정리한 글입니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 부분[^Version-Compatibility]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
+
+## Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)
 
 이번 장에서는 일반화된 (generic) 버전의 타입, 함수, 그리고 초기자 (initalizer) 에서 사용하는 매개 변수와 인자에 대해 설명합니다. 일반화된 버전의 타입, 함수, 첨자 연산자 (subscript), 또는 초기자를 선언할 때는, 이들이 사용할 '타입 매개 변수'를 지정하게 됩니다. 이러한 '타입 매개 변수'는 자리를 지키고 있다가 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수나 초기자가 호출될 때 전달되는 인자로 대체되어, 실제의 명확한 타입 (concrete type) 으로 바뀝니다.
 
