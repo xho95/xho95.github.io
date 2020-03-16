@@ -34,7 +34,7 @@ categories: Swift Programming Language Grammar
 * [Optional Chaining (옵셔널 연쇄)]
 * [Error Handling (에러 처리)]
 * [Type Casting (타입 변환)]
-* [Nested Types (품어진 타입)](http://xho95.github.io/swift/language/grammar/nested/2017/03/02/Nested-Types.html)
+* [Nested Types (품어진 타입)](http://xho95.github.io/swift/language/grammar/nested/types/2017/03/02/Nested-Types.html)
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
 * [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
