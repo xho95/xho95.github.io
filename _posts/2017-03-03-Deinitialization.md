@@ -1,34 +1,38 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 객체 정리하기 (Deinitialization)"
+title:  "Swift 5.2: Deinitialization (객체 정리하기)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Deinitialization
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [Deinitialization](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Deinitialization.html#//apple_ref/doc/uid/TP40014097-CH19-ID142) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 부분[^Deinitialization]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-정리자는 객체 인스턴스가 해제되기 바로 직전에 호출됩니다. [^deinitializer] 정리자는 `deinit` 키워드를 써서 작성하는데, 초기자를 `init` 키워드로 작성하는 것과 비슷합니다. 정리자는 클래스 타입에만 사용할 수 있습니다.
+## Deinitialization (객체 정리하기)
 
-### 정리자의 작동 방식 (How Deinitialization Works)
+_정리자 (deinitializer)_[^deinitializer] 는 객체 인스턴스가 해제 (deallocated)[^deallocated] 되기 바로 전에 호출됩니다. '정리자' 는 `deinit` 키워드로 작성하며, '초기자 (initializer)' 를 `init` 키워드로 작성하는 것과 비슷하다고 보면 됩니다. '정리자' 는 '클래스 타입 (class types)' 에만 사용 가능합니다.[^class-types]
 
-Swift 는 필요없는 인스턴스를 자동으로 해제하여 리소스를 비웁니다. [^free-up] 인스턴스의 메모리 관리를 다룰 때는 자동 참조 카운팅 (ARC; automatic reference counting) 을 사용하는데 이는 [자동 참조 카운팅 (Automatic Reference Counting)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html#//apple_ref/doc/uid/TP40014097-CH20-ID48) 에서 설명합니다. 인스턴스가 해제될 때 보통의 경우 수동으로 정리 작업을 할 필요는 없습니다. 하지만 자신이 만든 리소스를 가지고 작업할 경우, 추가 정리 작업을 직접 해야할 수도 있습니다. 예를 들어 사용자 정의 클래스를 만들어서 파일을 열고 몇가지 데이터를 작성하는 경우, 클래스 인스턴스가 해제되기 전에 파일을 닫아햐 할 수도 있습니다.
+### How Deinitialization Works (정리자의 작동 방식)
 
-클래스 정의는 클래스 당 최대 하나의 정리자를 가질 수 있습니다. 정리자는 매개 변수를 취하지 않으며 괄호도 사용하지 않습니다:
+스위프트는 자원을 확보하기 위해 필요 없는 인스턴스는 자동으로 해제합니다.[^free-up] 스위프트에서 인스턴스의 메모리 관리를 처리하는 곳은 '자동 참조 카운팅 (ARC; automatic reference counting)' 이며, 이는 [Automatic Reference Counting (자동 참조 카운팅)](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 에서 설명하도록 합니다. 일반적으로는 인스턴스가 해제된다고 해서 정리 작업을 수동으로 따로 할 일은 없습니다. 하지만, 작업하면서 자기 자신의 자원을 사용하는 경우, 직접 추가 정리 작업을 해야할 수도 있습니다. 예를 들어, 직접 만든 클래스로 어떤 파일을 열고 거기다 뭔가를 썼을 경우, 클래스 인스턴스가 해제되기 전에 그 파일을 직접 닫을 필요가 있습니다.
+
+'클래스 정의 (class definitions)' 는 클래스 당 최대 한 개의 '정리자' 만 가집니다. 정리자는 매개 변수를 가지지 않아서 괄호도 쓰지 않습니다:
 
 ```swift
 deinit {
-    // 정리 작업을 수행합니다.
+    // 여기서 정리 작업을 수행합니다.
 }
 ```
 
-정리자는 인스턴스의 해제가 일어나기 직전에 자동으로 호출됩니다. 직접 정리자를 호출할 수는 없습니다. 상위 클래스의 정리자는 하위 클래스로 상속되며 상위 클래스의 정리자는 하위 클래스의 정리자의 구현부 끝에서 자동으로 호출됩니다. 상위 클래스의 정리자는 항상 호출되는데 심지어 하위 클래스가 정리자를 제공하지 않아도 호출됩니다.
+정리자는 인스턴스의 해제가 일어나기 바로 전에 자동으로 호출됩니다. 정리자를 직접 호출하는 것은 안됩니다. '상위 클래스 (supperclass)' 의 정리자는 '하위 클래스 (subclasses)' 로 상속되며, '상위 클래스 정리자' 는 '하위 클래스 정리자' 의 구현부 끝에서 자동으로 호출됩니다. '상위 클래스 정리자' 는 항상 호출되는 것으로, 심지어 하위 클래스가 자신의 정리자를 제공하지 않는 경우에도 호출됩니다.
 
-인스턴스는 정리자의 호출이 마칠 때까지 해제되지 않으므로 정리자에서는 호출한 인스턴스의 모든 속성에 접근이 가능하며 해당 속성에 따라 작동 방식을 바꿀 수 있습니다. (가령 닫아야할 파일의 이름을 조회해 볼 수 있습니다).
+정리자의 호출이 끝나기 전에는 인스턴스가 해제되지 않으므로, 정리자는 자기를 호출한 인스턴스의 모든 속성에 접근할 수 있으며 해당 속성에 기초하여 행동을 수정할 수 있습니다. (가령 닫아야 할 파일을 이름으로 조회하는 것 등이 가능합니다.)
 
-### 정리자의 실제 사례 (Deinitializers in Action)
+### Deinitializers in Action (정리자의 실제 사례)
 
-다음에 정리자의 실제 사례를 보이도록 합니다. 이 예제에서는 간단한 게임을 위해 두개의 새로운 타입인 `Bank` 와 `Player` 를 정의합니다. `Bank` 클래스는 유통량이 절대 10,000 개를 넘지 않는 가상 통화를 관리합니다. 게임에는 단 하나의 `Bank` 만이 있어서 `Bank` 는 현재 상태를 저장하고 관리하기 위한 속성과 메소드를 가진 클래스로 구현합니다:
+다음의 예제는 정리자의 실제 사례입니다. 이 예제에서는 간단한 게임을 위해 두개의 새로운 타입인 `Bank` 와 `Player` 를 정의했습니다. `Bank` 클래스는 유통량이 절대 10,000 개를 넘지 않는 가상 통화를 관리합니다. 게임에는 단 하나의 `Bank` 만이 있어서 `Bank` 는 현재 상태를 저장하고 관리하기 위한 속성과 메소드를 가진 클래스로 구현합니다:
 
 ```swift
 class Bank {
@@ -116,6 +120,10 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 ### 참고 자료
 
-[^deinitializer]: 'deinitializer' 는 '정리자'라고 옮깁니다.
+[^Deinitialization]: 이 글에 대한 원문은 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 에서 확인할 수 있습니다.
 
-[^free-up]: 'free up'은 '비우다'로 옮기는데 좀 더 확인해야 합니다.
+[^deinitializer]: 스위프트의 'deinitializer' 는 '정리자' 라는 말로 옮겼는데, 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 언어에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 말입니다. 스위프트는 메모리 관리를 자동으로 알아서 해주는 언어라서 개발자가 직접 메모리 관리를 하지 않으므로 메모리 '생성' 이나 '소멸' 이라는 개념은 없습니다. 대신 스위프트에는 변수나 상수를 사용하려면 그전에 반드시 '초기화' 를 해줘야 합니다. 그리고 변수나 상수가 사라지기 전에 '초기화' 했던 자원을 정리할 필요가 있습니다. 이것이 '초기자', '정리자' 라는 단어를 선택한 이유입니다.
+
+[^deallocated]: 여기서의 'deallocated' 는 메모리상에서의 해제를 말하며, 스위프트에서는 'Auto Reference Counting' 에 의해 자동으로 이루어집니다.
+
+[^class-types]: 이것이 이 글의 제목인 'deinitialization' 을 '정리하기' 가 아니라 '객체 정리하기' 라고 옮긴 이유입니다. '정리' 의 대상은 'class' 일 때만 가능함을 알 수 있습니다.
