@@ -32,7 +32,7 @@ deinit {
 
 ### Deinitializers in Action (정리자의 실제 사례)
 
-다음의 예제는 정리자의 실제 사례입니다. 이 예제에서는 간단한 게임을 위해 두개의 새로운 타입인 `Bank` 와 `Player` 를 정의했습니다. `Bank` 클래스는 유통량이 절대 10,000 개를 넘지 않는 가상 통화를 관리합니다. 게임에는 단 하나의 `Bank` 만이 있어서 `Bank` 는 현재 상태를 저장하고 관리하기 위한 속성과 메소드를 가진 클래스로 구현합니다:
+다음 예제는 정리자의 실제 사례입니다. 이 예제에서는 간단한 게임을 위해 두개의 새로운 타입인 `Bank` 와 `Player` 를 정의했습니다. `Bank` 클래스는 가상의 통화를 관리하는데 유통되는 동전이 절대로 10,000 개를 넘지 않도록 합니다. 이 게임에는 단 하나의 `Bank` 만 있으므로, `Bank` 는 '타입 속성' 과 '타입 메소드' 를 가지는 클래스로 구현하여 현재 상태를 저장하고 관리합니다[^Bank-class]:
 
 ```swift
 class Bank {
@@ -48,13 +48,13 @@ class Bank {
 }
 ```
 
-`Bank` 는 현재 동전의 수를 추적하기 위해 그 값을 `coinsInBank` 속성에 담아 둡니다. 또 두 개의 메소드 — `distribute(coins:)` 와 `receive(coins:)` — 로 동전의 분배 및 수집을 처리합니다.
+`Bank` 에는 현재 보유하고 있는 동전 수를 추적하기 위한 `coinsInBank` 이 있습니다. 또 동전의 분배와 수집을 처리하기 위한 두 개의 메소드 (`distribute(coins:)` 와 `receive(coins:)`) 를 제공합니다.
 
-`distribute(coins:)` 메소드는 분배하기 전에 은행에 충분한 동전이 있는지를 검사합니다. 충분한 동전이 없으면 `Bank` 는 요청받은 수보다 적은 수를 반환합니다. (은행에 동전이 하나도 남아 있지 않으면 0 을 반환합니다). 이것은 실제 제공되는 동전의 수를 나타내기 위해 정수 값으로 반환합니다.
+`distribute(coins:)` 메소드는 분배하기 전에 은행에 동전이 충분히 있는 지 검사합니다. 동전이 충분하지 않으면, `Bank` 는 요청받은 개수보다 적은 개수를 반환합니다. (은행에 남은 동전이 없으면 0 을 반환합니다). 반환하는 정수 값은 실제 제공되는 동전의 수를 나타냅니다.
 
-`receive(coins:)` 메소드는 단순히 받은 동전의 수를 은행의 동전 창고에  다시 더합니다.
+`receive(coins:)` 메소드는 받은 동전의 개수를 다시 은행의 동전 창고 (store) 에 더하는 것으로 끝납니다.
 
-`Player` 클래스는 게임내에서 플레이어를 묘사합니다. 각각의 플레이어는 언제든지 일정 수의 동전을 지갑에 가지고 있을 수 있습니다. 이것은 플레이어의 `coinsInPurse` 속성으로 표현됩니다:
+`Player` 클래스는 게임에 있는 '참여자 (player)' 를 묘사합니다. 각각의 참여자는 언제든지 지갑에 일정 수의 동전을 저장할 수 있습니다. 이는 참여자의 `coinsInPurse` 속성으로 나타냅니다:
 
 ```swift
 class Player {
@@ -71,52 +71,41 @@ class Player {
 }
 ```
 
-각각의 `Player` 인스턴스는 초기화될 때 은행에서 최초 할당량으로 지정한 수의 동전으로 초기화되며 동전이 충분하지 않을 경우 어떤 `Player` 인스턴스는 그보다 적게 받을 수도 있습니다.
+각 `Player` 인스턴스는 초기화할 때 은행에서 지정한 동전 개수만큼의 '초기 할당량 (staring allowance)' 으로 초기화 되는데, 동전이 충분하지 않으면 특정 `Player` 인스턴스는 그보다 적은 개수를 가지게 될 수도 있습니다.
 
-`Player` 클래스는 `win(coins:)` 메소드를 정의하고 있는데, 이것은 은행에서 특정 수의 동전을 받아서 플레이어의 지갑에 더합니다. `Player` 클래스는 정리자도 구현해서 `Player` 인스턴스가 해제될 때 호출되도록 합니다. 여기서 정리자는 단순히 플레이어의 모든 동전을 은행에 반환합니다:
+`Player` 클래스는 `win(coins:)` 메소드를 정의하여, 은행에서 받은 특정 개수의 동전을 자기 지갑에 더합니다. `Player` 클래스는 '정리자' 도 구현하며, 이는 `Player` 인스턴스가 해제되기 바로 직전에 호출됩니다. 여기서 정리자는 단순히 자신의 모든 동전을 은행에 반환합니다:
 
 ```swift
 var playerOne: Player? = Player(coins: 100)
 print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
-// Prints "A new player has joined the game with 100 coins"
+// "A new player has joined the game with 100 coins" 를 출력합니다.
 print("There are now \(Bank.coinsInBank) coins left in the bank")
-// Prints "There are now 9900 coins left in the bank"
+// "There are now 9900 coins left in the bank" 를 출력합니다.
 ```
 
-새로운 `Player` 인스턴스가 생성되면서 가능하다면 100 개의 동전을 요구할 수 있습니다. 이 `Player` 인스턴스는 `playerOne` 이라는 옵셔널 `Player` 변수에 저장됩니다. 여기서 옵셔널이 사용되는데 왜냐면 플레이어는 언제든 게임을 떠날 수 있기 때문입니다. 옵셔널은 현재 플레이어가 게임내에 있는지 여부를 추적할 수 있게 합니다.
+새로운 `Player` 인스턴스를 생성하면서, 동전 100개가 가능한 지 요청합니다. 이어서 이 `Player` 인스턴스를 `playerOne` 이라는 '옵셔널 (optional) `Player`' 변수에 저장합니다. 여기서 옵셔널 변수를 사용했는데, 참여자는 언제든지 게임을 떠날 수 있기 때문입니다. 옵셔널을 사용하면 현재 게임에 참여자가 있는지 없는지를 추적할 수 있습니다.
 
-`playerOne` 은 옵셔널이므로 기본 코인 수를 출력하기 위해 `coinsInPurse` 속성에 접근할 때나 `winCoins(_:)` 메소드가 호출될 때마다 느낌표 (`!`) 를 써서 접근 권한을 취득해야 합니다:
+`playerOne` 은 옵셔널이므로, `coinsInPurse` 속성에 접근해서 동전의 개수를 출력할 때나, `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 를 붙여서 자격을 갖춰야 합니다:
 
 ```swift
 playerOne!.win(coins: 2_000)
 print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
-// Prints "PlayerOne won 2000 coins & now has 2100 coins"
+// "PlayerOne won 2000 coins & now has 2100 coins" 를 출력합니다.
 print("The bank now only has \(Bank.coinsInBank) coins left")
-// Prints "The bank now only has 7900 coins left"
+// "The bank now only has 7900 coins left" 를 출력합니다.
 ```
 
-위에서 플레이어는 2,000 개의 동전을 획득했습니다. 플레이어의 지갑에는 이제 2,100 개의 동전이 있으며 은행에는 7,900 개의 동전만이 남아 있습니다.
+참여자가 승리해서 동전 2,000 개를 획득했습니다. 이제 참여자의 지갑에는 동전이 2,100 개 있으며, 은행에 남은 동전은 7,900 개 입니다.
 
 ```swift
 playerOne = nil
 print("PlayerOne has left the game")
-// Prints "PlayerOne has left the game"
+// "PlayerOne has left the game" 을 출력합니다.
 print("The bank now has \(Bank.coinsInBank) coins")
-// Prints "The bank now has 10000 coins"
+// "The bank now has 10000 coins" 를 출력합니다.
 ```
 
-이제 플레이어가 게임을 떠났습니다. 이것은 옵셔널인 `playerOne` 변수를 “`Player` 인스턴스가 없음” 을 의미하는 `nil` 로 설정해서 표시합니다. 이 시점에서 `Player` 인스턴스에 대한 `playerOne` 변수의 참조가 끊어집니다. `Player` 인스턴스를 참조하고 있는 다른 속성이나 변수가 없으므로 메모리를 비우기 위해 해제가 일어납니다. 이 작업이 일어나기 직전에 정리자가 자동으로 호출되고 코인을 은행으로 반환합니다.
-
-### 원문 자료
-
-* [Deinitialization](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Deinitialization.html#//apple_ref/doc/uid/TP40014097-CH19-ID142) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
-
-### 관련 자료
-
-* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
-
-* [Swift 3.1: 빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
-* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
+참여자가 방금 막 게임을 떠났습니다. 이는 '옵셔널 `playerOne`' 변수를 (“`Player` 인스턴스가 없음” 을 의미하는) `nil` 로 설정하여 표현합니다. 이렇게 하면, `Player` 인스턴스를 가리키는 `playerOne` 변수의 참조가 끊어집니다. 어떤 다른 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 메모리 자원을 확보하기 위해 해제됩니다. 이 일이 일어나기 바로 전에, 정리자가 자동으로 호출되며, 동전은 은행으로 반환됩니다.
 
 ### 참고 자료
 
@@ -127,3 +116,7 @@ print("The bank now has \(Bank.coinsInBank) coins")
 [^deallocated]: 여기서의 'deallocated' 는 메모리상에서의 해제를 말하며, 스위프트에서는 'Auto Reference Counting' 에 의해 자동으로 이루어집니다.
 
 [^class-types]: 이것이 이 글의 제목인 'deinitialization' 을 '정리하기' 가 아니라 '객체 정리하기' 라고 옮긴 이유입니다. '정리' 의 대상은 'class' 일 때만 가능함을 알 수 있습니다.
+
+[^free-up]: 여기서 자원을 'free up' 하는 것을 운영 체제의 관점에서 자원을 '확보한다' 는 말로 옮겼습니다.
+
+[^Bank-class]: 이 예제에서의 `Bank` 클래스는 'singleton (싱글턴)' 이라고 볼 수 있습니다.
