@@ -83,18 +83,21 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 // "theAceOfSpades: suit is ♠, value is 1 or 11" 를 출력합니다.
 ```
 
-`Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있지만 그들의 타입은 문맥을 통해서 추론할 수 있으므로 인스턴스 초기화 구문에서 그 자신의 case 이름 (`.ace` 와 `.spades`) 만으로 열거 타입의 case 를 추론할 수 있습니다. 위의 예제에서 `description` 속성은 스페이드 에이스의 값이 `1` 또는 `11` 임을 정확하게 보고하고 있습니다.
+Even though Rank and Suit are nested within BlackjackCard, their type can be inferred from context, and so the initialization of this instance is able to refer to the enumeration cases by their case names (.ace and .spades) alone. In the example above, the description property correctly reports that the Ace of Spades has a value of 1 or 11.
+
+
+`Rank` 와 `Suit` 는 `BlackjackCard` 안에 품어져 있지만, 이 타입은 문맥으로부터 추론할 수 있으며, 따라서 이 인스턴스를 초기화할 때는 '경우 값 (case)' 의 이름 (`.ace` 와 `.spades`) 만으로도 구조체의 '경우 값들 (cases)' 을 참조할 수 있습니다.[^refer-to] 위의 예제에서, `description` 속성은 '스페이드 에이스' 의 값이 `1` 또는 `11` 임을 정확하게 보고합니다.
 
 ### Referring to Nested Types (품어진 타입 참조하기)
 
-중첩된 타입을 정의된 영역 밖에서 사용하려면 이름 앞에 중첩하고 있는 타입의 이름을 붙여주면 됩니다:
+'품어진 타입 (nested type)' 을 자신이 정의된 영역 밖에서도 사용하려면, 그 이름 앞에 자신을 품고있는 타입의 이름을 붙여주면 됩니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
-// heartsSymbol is "♡"
+// heartsSymbol 은 "♡" 입니다.
 ```
 
-위의 예제에서 `Suit`, `Rank` 및 `Values` 의 이름은 일부러 짧게 만들었는데 왜냐면 이들이 정의된 곳의 문맥을 통해서  의미를 자연스럽게 파악할 수 있게 되기 때문입니다.
+위 예제를 보면, 이러한 방식은 `Suit`, `Rank` 와 `Values` 의 이름을 의도적으로 짧게 만드는 것을 가능하게 함을 알 수 있는데, 이는 정의되어 있는 영역 (context) 에 의해 이름이 자연스럽게 규정되기 (qualified) 때문입니다.
 
 ### 참고 자료
 
@@ -109,3 +112,5 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 [^raw-value]: 여기서 '원시 값 (raw value)' 는 스위프트의 열거체에서 'case' 가 가질 수 있는 값을 말합니다.
 
 [^implicit]: 여기서 'implicit memberwise initializer' 는 '멤버 초기자를 저절로' 갖게 된다는 의미입니다.
+
+[^refer-to]: 여기서 '참조할 수 있다' 는 말은 '사용할 수 있다' 는 의미입니다. 즉, `Suit.spades` 같이 타입을 직접 명시 하지 않고 `.spades` 같은 형태로도 사용할 수 있다는 의미입니다.
