@@ -57,10 +57,64 @@ These are the same.
 """
 ```
 
+'줄 바꿈' 으로 시작하거나 끝나는 '여러 줄짜리 문자열 글자표현' 을 만들려면, 첫 줄 또는 마지막 줄에 빈 줄을 쓰면 됩니다. 예를 들면 다음과 같습니다:
 
-#### Special Characters in String Literals ()
+```swift
+let lineBreaks = """
 
-#### Extended String Delimiters ()
+This string starts with a line break.
+It also ends with a line break.
+
+"""
+```
+
+'여러 줄짜리 문자열 (multiline string)' 은 들여쓰기를 해서 주변 코드와 위치를 맞출 수 있습니다. 닫는 따옴표 (`"""`) 앞에 있는 공백은 스위프트가 모든 줄에서 그 만큼의 공백을 무시하도록 합니다. 하지만, 줄 맨 앞에 닫는 따옴표 앞에 있는 것보다 더 많은 공백을 입력하면, 그 공백은 문자열에 포함됩니다.
+
+![Indentation](/assets/Swift/Swift-Programming-Language/String-and-Characters-indent.jpg)
+
+위의 예에서, '여러 줄짜리 문자열 글자표현 (multiline string literal)' 전체가 들여쓰기되어 있지만, 문자열의 첫 줄과 마지막 줄은 공백으로 시작하지 않습니다. 가운데 줄은 닫는 따옴표보다 더 많이 들여쓰기 되어 있으므로, 이것만 추가로 4칸 들여쓰기로 시작합니다.
+
+#### Special Characters in String Literals (문자열 글자표현 속의 특수 문자)
+
+'문자열 글자표현' 은 다음의 특수 문자를 포함할 수 있습니다:
+
+* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (null-널 문자), `\\` (backslash-백슬래쉬), `\t` (가로 tab-탭), `\n` (line feed-줄 먹임), `\r` (carriage-캐리지 리턴), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
+* 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', `\u{`_n_`}` 의 형태로 작성하며, 여기서 _n_ 은 1~8 자리의 16진수 값입니다. (유니코드는 아래의 [Unicode]() 에서 설명합니다.)
+
+아래의 코드에서 특수 문자에 대한 네 가지 예를 보였습니다. `wiseWords` 상수는 두 개의 'escaped (벗어난)' 큰 따옴표를 담고 있습니다. `dollarSign`, `blackHeart` 그리고 `sparklingHeart` 상수는 '유니코드 크기 양식 (Unicode scalar format)' 을 보여줍니다:
+
+```swift
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+// "Imagination is more important than knowledge" - Einstein
+let dollarSign = "\u{24}"         // $, 유니코드 크기 값 U+0024
+let blackHeart = "\u{2665}"       // ♥, 유니코드 크기 값 U+2665
+let sparklingHeart = "\u{1F496}"  // 💖, 유니코드 크기 값 U+1F496
+```
+
+'여러 줄짜리 문자열 글자표현 (multiline string literals)' 은 하나가 아닌 세 개의 큰 따옴표를 사용하므로, 여러 줄짜리 문자열 글자표현 안에 큰 따옴표 (`"`) 를 포함할 때는 'escaping (본래 의미를 벗어나게)'[^escaping] 할 필요가 없습니다. 여러 줄짜리 문자열에 `"""` 텍스트를 포함시키려면, 최소한 하나 이상의 따옴표를 'escape (본래 의미를 벗어나게)' 만들어야 합니다. 예를 들면 다음과 같습니다:
+
+```swift
+let threeDoubleQuotationMarks = """
+Escaping the first quotation mark \"""
+Escaping all three quotation mark \"\"\"
+"""
+```
+
+#### Extended String Delimiters (확장된 문자열 구분자)
+
+'문자열 글자표현 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, 번호 기호 (`#`)[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자표현' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '줄 바꿈 escape sequence (이스케잎 시퀀스)'인 (`\n`) 가 그대로 출력됩니다.
+
+'문자열 글자표현 (string literal)' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 'escape (이스케잎)' 문자 (`\`) 뒤에 같은 개수의 번호 기호를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 인데, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로 `###"Line 1\###nLine 2"###` 도 줄 바꿈이 일어납니다.
+
+String literals created using extended delimiters can also be multiline string literals. You can use extended delimiters to include the text """ in a multiline string, overriding the default behavior that ends the literal. For example:
+
+'확장된 구분자' 로 생성한 '문자열 글자표현 (string literal)' 역시 '여러 줄짜리 문자열 글자표현' 이 될 수 있습니다. '확장된 구분자' 를 사용하면 '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있는데, 이 때 본래 가진 '글자표현 (literal) 을 끝낸다' 는 기본 기능을 뒤엎어서 (overriding), 단순한 클라조 넣을 수 있습니다. 예를 들면 다음과 같습니다:
+
+```
+let threeMoreDoubleQuotationMarks = #"""
+Here are three more double quotes: """
+"""#
+```
 
 ### Initializing an Empty String (빈 문자열 초기화하기)
 
@@ -106,7 +160,7 @@ let constantString = "Highlander"
 > different from string mutation in Objective-C and Cocoa : `NSString`, `NSMutableString`
 
 
-### Strings Are Value Types
+### Strings Are Value Types (문자열은 값 타입입니다)
 
 * Swift's `String` : a value type
     * copied when it is passed, or when it is assigned
@@ -119,7 +173,7 @@ let constantString = "Highlander"
     * great performance when working with strings
 
 
-### Working with Characters
+### Working with Characters (문자 다루기)
 
 * access the individual `Character` values for a `String`
     * `characters` property with a `for-in` loop
@@ -154,8 +208,7 @@ print(catString)
 // Prints "Cat!🐱"
 ```
 
-
-### Concatenating Strings an Characters
+### Concatenating Strings and Characters (물자열 및 문자 연결하기)
 
 * add (or concatenate) : the addition operator (`+`) - a new `String` value
 
@@ -193,7 +246,7 @@ welcome_1.append(exclamationMark_2)
 > a `Character` value : a single character only
 
 
-### String Interpolation
+### String Interpolation (문자열 보간법)
 
 * string interpolation
     * a new `String` value from a mix of constants, variables, literals, and expressions
@@ -214,7 +267,7 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
  - can contain other string literals
 
 
-### Unicode
+### Unicode (유니코드)
 
 * **Unicode**
     * an international standard for encoding, representing, and processing text in different writing systems
@@ -222,7 +275,7 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 - Swift's `String`, `Character` : fully Unicode-compliant
 
 
-#### Unicode Scalars
+#### Unicode Scalars (유니코드 크기 값)
 
 * Swift's native `String` type : built from `Unicode scalar` values
 * a Unicode scalar : a unique 21-bit number for a character or modifier
@@ -231,35 +284,8 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 * not all 21-bit Unicode scalars are assigned to a character : reserved for future assignment
 * scalars typically have a name
 
-#### Special Characters in String Literals
 
-* string literals can include the following special characters
-- the escaped special characters
-    - `\0` : null character
-    - `\\` : backslash
-    - `\t` : horizontal tab
-    - `\n` : line feed
-    - `\r` : carriage return
-    - `\"` : double quote
-    - `\'` : single quote
-* an arbitrary Unicode scalar
-    * `\u{n}` : n - a 1-8 digit hexadecimal number
-- four examples of special characters
-
-```swift
-let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
-
-// "Imagination is more important than knowledge" - Einstein
-
-let dollarSign = "\u{24}"           // $, Unicode scalar U+0024
-
-let blackHeart = "\u{2665}"         // ♥, Unicode scalar U+2665
-
-let sparklingHeart = "\u{1F496}"    // 💖, Unicode scalar U+1F496
-```
-
-
-#### Extended Grapheme Clusters
+#### Extended Grapheme Clusters (확장된 음소 덩어리)
 
 * every instance of Swift's `Character` type : a single **extended grapheme cluster**
 * an **extended grapheme cluster** :
@@ -307,7 +333,7 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 ```
 
 
-### Counting Characters
+### Counting Characters (문자 개수 살리기)
 
 * to retrieve a count of the `Character` values : the `count` property of the string's `characters`
 
@@ -352,12 +378,12 @@ print("the number of characters in \(word) is \(word.characters.count)")
 > the length of an `NSString` : the number of 16-bit code units within the string's UTF-16 representation
 
 
-### Accessing and Modifying a String
+### Accessing and Modifying a String (문자열에 접근하고 수정하기)
 
 * access and modify a string : its methods and properties, or by using subscript syntax
 
 
-#### String Indices
+#### String Indices (문자열 색인)
 
 * each `String` value : has an associated index type - `String.Index`
     * the position of each `Character` in the string
@@ -416,7 +442,7 @@ for index in greeting.characters.indices {
 ```
 
 
-#### Inserting and Removing
+#### Inserting and Removing (삽입 및 제거하기)
 
 * `insert(_:atIndex:)` : to insert a character into a string at a specified index
 
@@ -454,8 +480,9 @@ welcome_2.removeRange(range)
 // welcome now equals "hello"
 ```
 
+### Substrings (하위 문자열)
 
-### Comparing Strings
+### Comparing Strings (문자열 비교하기)
 
 * three ways to compare textual values
     * string and character equality
@@ -463,7 +490,7 @@ welcome_2.removeRange(range)
     * suffix equality
 
 
-#### String and Character Equality
+#### String and Character Equality (문자열 및 문자 동등성)
 
 * checked with the "equal to" operator (`==`) and the "not equal to" operator (`!=`)
 
@@ -520,7 +547,7 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
  String and character comparisons in Swift are not locale-sensitive.
 
 
-#### Prefix and Suffix Equality
+#### Prefix and Suffix Equality (접두사 및 접미사 동등성)
 
 * to check whether a string has a particular string prefix or suffix : `hasPrefix(_:)`, `hasSuffix(_:)` methods
 * both take a single argument of type `String` and return a Boolean value
@@ -581,7 +608,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
  `hasPrefix(_:)`, `hasSuffix(_:)` : a character-by-character canonical equivalence comparison between the extended grapheme clusters in each string
 
 
-### Unicode Representations of Strings
+### Unicode Representations of Strings (문자열의 유니코드 표현)
 
 * Unicode scalars : encoded in one of several Unicode-defined **encoding forms**
 * each form encodes the string in small     - **code units**
@@ -676,3 +703,11 @@ for scalar in dogString.unicodeScalars {
 [^literals]: 여기서 '글자표현 (literals)' 는 '글자로 표현된 실제 값' 을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값이 되고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값이 됩니다. 즉 '글자표현 (literals)' 에서 값의 타입은 그 값이 실제로 표현하는 것이 무엇인지에 따라 달라집니다.
 
 [^interpolation]: '보간법 (interpolation)' 은 원래 수학 용어로 그래프 상에서 두 점 사이의 값을 근사적으로 구해서 채워넣는 방법을 말합니다. 'string interpolation' 은 굳이 직역하면 '문자열 삽입법' 등으로 옮길 수 있겠지만, 'interpolation' 은 원래부터 '보간법' 이라는 말로 많이 사용하고 있으므로 그대로 '보간법' 을 사용하도록 합니다. '문자열 보간법' 은 한 문자열 중간에 다른 값을 문자열의 형태로 집어넣는 것으로 이해할 수 있습니다.
+
+[^escaped]: 'escaped' 는 우리 말로 '벗어난' 을 의미하는 단어인데, 프로그래밍에서 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나서 다른 의미를 가지게된 특수 문자' 라는 의미가 됩니다. 예를 들어 `n` 이라고 하면, 그냥 하나의 영어 문자가 되지만, `\n` 이라고 하면 본래의 영어 단어의 의미를 벗어나서, `new line (feed)` 이라는 새로운 의미를 가지게 됩니다. 이렇게 문자 앞에 슬래쉬 (`\`) 를 붙여서 '본래 의미를 벗어난 다른 의미를 가지는 문자' 를 일컬어 'escaped characters' 라고 합니다.
+
+[^scalar]: 'scalar' 는 원래 수학 용어로 '크기만을 가지는 값' 입니다. 여기서 'Unicode scalar value' 은 각각의 문자에 일대일 대응되는 '유니코드 크기 값' 을 의미합니다. 예를 들어, 문자는 `$` 는 유니코드 크기 값이 `U+0024` 에 해당합니다.
+
+[^escaping]: 여기서 'escaping' 할 필요 없다는 말은 슬래쉬 (`\`) 기호를 붙일 필요가 없다는 것을 의미합니다.
+
+[^number-sign]: '#' 은 영어로 'number sign' 이라고 하는데, 보통 우리 말로는 '샾 기호' 라고 알려져 있습니다. 하지만 실제 샾 기호와는 다르며 하나의 숫자를 의미합니다. 여기서는 '번호 기호' 라고 옮기도록 합니다.
