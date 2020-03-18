@@ -1,12 +1,16 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 기초 연산자 (Basic Operators)"
+title:  "Swift 3.1: Basic Operators (기본 연산자)"
 date:   2016-04-27 10:00:00 +0900
 categories: Swift Language Grammar Basic Operators
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [Basic Operators](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/BasicOperators.html#//apple_ref/doc/uid/TP40014097-CH6-ID60) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 부분[^Basic-Operators]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
+
+## Basic Operators
 
 연산자는 값을 검사하고, 바꾸거나 결합하는데 사용하는 특별한 기호 또는 구절입니다. 예를 들어 덧셈 연산자 (`+`) 는 `let i = 1 + 2` 에서 보듯이 두 수를 더하고, 논리 AND 연산자 (`&&`) 는 `if enteredDoorCode && passedRetinaScan` 에서 보듯이 두 불 (Boolean) 값을 결합합니다.
 
@@ -429,18 +433,9 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 괄호는 처음 두 값들이 전체 논리에서 따로 떼어내서 검토할 수 있는 부분임을 분명히 보여줍니다. 복합 표현식의 결과는 변하지 않지만 전체 구문의 의도는 더 분명하고 더 이해하기 쉽습니다. 언제나 가독성이 간단함보다 더 중요합니다; 괄호를 사용해서 의도를 분명히 하도록 하기 바랍니다.
 
-### 원문 자료
-
-* [Basic Operators](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/BasicOperators.html#//apple_ref/doc/uid/TP40014097-CH6-ID60) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
-
-### 관련 자료
-
-* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
-
-* [Swift 3.1: 빠르게 둘러보기 (A Swift Tour)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
-* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
-
 ### 참고 자료
+
+[^Basic-Operators]: 원문은 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 에서 확인할 수 있습니다.
 
 [^appear]: 'appear'는 '위치하다'로 옮깁니다.
 

@@ -1,12 +1,16 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 기초 (The Basics)"
+title:  "Swift 3.1: The Basics (기초)"
 date:   2016-04-24 19:45:00 +0900
 categories: Swift Language Grammar Basic
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [The Basics](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 부분[^The-Basics]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
+
+## The Basics
 
 Swift 는 iOS, macOS, watchOS, 그리고 tvOS 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그렇더라도 C 와 Objective-C 에서의 개발 경험이 있다면 Swift 의 많은 부분이 꽤 친숙하게 느껴질 겁니다.
 
@@ -221,7 +225,7 @@ Swift 는 타입에 안전하므로 코드를 컴파일할 때 타입 검사를 
 
 타입 추론으로 인하여 Swift 는 C 나 Objective-C 같은 언어보다 타입 선언을 훨씬 더 적게 해도 됩니다. 상수와 변수는 여전히 직접 쳐줘야 하지만, 타입을 지정하는 대부분의 작업은 자동으로 이루어집니다.
 
-타입 추론은 초기 값을 가지고 상수와 변수를 선언할 때 특히 더 유용합니다. 이것은 선언할 때 문자표현 값 (리터럴) 을 상수나 변수에 할당하는 것을 말합니다. [^literal] (리터럴 값은 소스 코드에 그대로 나타나는 값을 말하며 아래 예에서 `42` 와 `3.14159` 같은 것입니다.)
+타입 추론은 초기 값을 가지고 상수와 변수를 선언할 때 특히 더 유용합니다. 이것은 선언할 때 글자표현 (literals) 을 상수나 변수에 할당하는 것을 말합니다. [^literal] (리터럴 값은 소스 코드에 그대로 나타나는 값을 말하며 아래 예에서 `42` 와 `3.14159` 같은 것입니다.)
 
 예를 들어 `42` 라는 리터럴 값을 무슨 타입인지 말하지 않고 새로운 상수에 할당하면 Swift 는 상수가 `Int` 가 되길 원한다고 추론하는데, 이는 정수 처럼 보이는 수로 초기화를 했기 때문입니다:
 
@@ -248,7 +252,7 @@ let anotherPi = 3 + 0.14159
 
 리터럴 값인 `3` 은 직접 타입을 지정한 것도 아니고 그자체가 타입인 것도 아니므로 적절한 출력 타입은 `Double` 로 추론되는데 이는 덧셈의 일부에 부동 소수점 리터럴이 있기 때문입니다.
 
-### Numeric Literals (수치 문자표현 값)
+### Numeric Literals (수치 글자표현 값)
 
 정수 리터럴은 다음과 같은 방법으로 작성할 수 있습니다:
 
@@ -728,23 +732,9 @@ assert(age >= 0)
 
 > 단언 구문은 앱을 종료시켜 버리는데다가 잘못된 조건이 발생하지 않도록 코드를 설계하는 용도로는 사용할 수 없습니다. 그럼에도 불구하고, 유효하지 않은 조건이 발생하는 상황에서는 단언 구문이 효과가 큰 방법인데, 앱 출시 전 개발 과정에서 문제가 있는 조건을 강조해서 파악하기 쉽게 해주기 때문입니다.
 
-### 원문 자료
-
-* [The Basics](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
-
-### 관련 자료
-
-* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
-
-* [Swift 3.1: 스위프트 (Swift) 둘러보기](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
-* [Swift 3.1: 객체 정리하기 (Deinitialization)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
-
-### 변경 사항
-
-* **2017.02.28.** Swift 3.1 버전에 대한 내용으로 수정하고 번역해서 정리했습니다.
-* **2016.04.24.** 첫 포스트를 작성했습니다.
-
 ### 참고 자료
+
+[^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
 
 [^identify]: 'identify'는 '신원을 파악하다'를 살려서 옮깁니다. 일단 '식별하다' 로 옮깁니다. 정리가 필요합니다.
 
@@ -794,7 +784,7 @@ assert(age >= 0)
 
 [^appropriate]: 'appropriate'은 때에 따라서 '적당한' 또는 '적절한'으로 옮깁니다.
 
-[^literal]: 'literal'는 '문자 그대로'라는 의미를 가지고 있습니다. 일단은 '문자표현' 이라는 말로 옮기고, 필요한 경우 발음 그대로 '리터럴'로 옮깁니다.
+[^literal]: 'literal'는 '문자 그대로'라는 의미를 가지고 있습니다. 일단은 '글자표현' 이라는 말로 옮기고, 필요한 경우 발음 그대로 '리터럴'로 옮깁니다.
 
 [^expression]: 'expression'는 '수식' 또는 '표현식'으로 옮깁니다. 일단 '수식'으로만 해 봅니다.
 

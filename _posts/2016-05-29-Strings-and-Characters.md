@@ -1,47 +1,68 @@
 ---
 layout: post
 comments: true
-title:  "Swift 2.2: 문자열(Strings and Characters)"
+title:  "Swift 2.2: Strings and Characters (문자열과 문자)"
 date:   2016-05-29 19:45:00 +0900
 categories: Swift Grammar Strings Characters
 ---
 
-* a string : a series of characters
-* `String` : accessed in various ways - a collection of `Character` values
-- `String`, `Character` types
-    - fast, Unicode-compliant way
-    - the syntax : lightweight and readable
-    - a string literal syntax : similar to C
-    - string concatenation : simple, `+` operator
-    - string mutability : like other value in Swift
-    - string interpolation : use strings into longer strings
-* `String`
-    * encoding-independent Unicode characters
-    * Unicode representations
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Strings and Characters](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html) 부분[^Strings-and-Characters]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-> `String`
+## Strings and Characters (문자열과 문자)
 
-> bridged with Foundation's `NSString` class
- Foundation framework in Cocoa
+_문자열 (string)_ 문자가 연속되어 있는 것으로, `"hello, world"` 나 `"albatross"` 같은 것이 이에 해당합니다. 스위프트의 문자열은 `String` 타입으로 표현됩니다. `String` 의 내용물에 접근하는 방법은 `Character` 값의 '컬렉션 (collection)'[^collection] 도 포함하여 다양한 방법이 있습니다.
 
-> entire `NSString` API is available to call on any `String` value
+스위프트의 `String` 과 `Character` 타입은 코드에서 텍스트 작업을 할 때 빠르면서도 '유니코드에 부합하는 (Unicode-compliant)' 방법을 제공합니다. 문자열을 생성하고 조작하는 구문 표현은 가볍고 이해하기 쉬우며, '문자열 글자표현 구문 (string literal syntax)'[^string-literal-syntax] 은 C 언어와 비슷합니다. 문자열 연결은 두 문자열을 `+` 연산자로 결합하기만 하면 될 정도로 간단하며, 문자열의 '가변성 (mutability)' 은 스위프트의 다른 모든 값과 마찬가지로 상수인지 변수인지를 선택하는 것만으로 관리됩니다. 문자열을 사용하면 상수, 변수, '글자표현 (literals)'[^literals], 그리고 '표현식 (expressions)' 들을 더 큰 문자열에 삽입할 수도 있으며, 이 과정을 일컬어 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이것으로 표시, 저장, 출력할 때 필요한 문자열을 아주 쉽게 만들 수 있습니다.
 
-> use a `String` value with any API that requires an `NSString` instance
+이렇게 간단한 구문 표현을 사용하면서도, 스위프트의 `String` 타입은 빠르고, 현대적인 문자열로 구현되었습니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 구성되며, 다양한 유니코드 표현식으로 해당 문자들에 대한 접근을 지원합니다.
 
-### String Literals
+> 스위프트의 `String` 타입은 'Foundation' 프레임웍에 있는 `NSString` 클래스와 연동되어 (bridged) 있습니다. 'Foundation' 은 또한 `String` 을 확장해서 `NSString` 의 메소드들을 노출시킵니다. 이것은 'Foundation' 을 'import' 하면, 'casting (타입 변환)' 없이도 `String` 에서 `NSString` 메소드들 사용할 수 있음을 의미합니다.
+>
+> 'Foundation' 및 'Cocoa' 프레임웍과 `String` 을 같이 사용하는 방법에 대해서는 [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 에서 더 자세히 알 수 있습니다.
 
-* include predefined `String` values : string literals
-* string literal : a fixed sequence of textual characters surrounded by a pair of double quotes ("")
-- use a string literal as an initial value
+### String Literals (문자열 글자표현)
+
+미리 정의된 `String` 값을 코드 내에 _문자열 글자표현 (string literals)_ 의 형태로 포함할 수 있습니다. '문자열 글자표현' 은 큰 따옴표 (`"`) 로 묶인 일련의 문자들을 말합니다.
+
+문자열 글자표현은 상수나 변수의 초기 값으로 사용됩니다:
 
 ```swift
 let someString = "Some string literal value"
 ```
 
-* Swift infers a type of `string` : initialized with a string literal value
+`someString` 상수가 '문자열 글자표현 값' 으로 초기화되었기 때문에, 스위프트가 이를 `String` 타입으로 추론할 수 있음을 명심하기 바랍니다.
+
+#### Multiline String Literals (여러 줄짜리 문자열 글자표현)
+
+여러 줄에 걸쳐있는 문자열이 필요한 경우, '여러 줄짜리 문자열 글자표현 (multiline string literal)'-세 개의 큰 따옴표로 묶인 일련의 문자들-을 사용하십시오:
+
+```swift
+let quotation = """
+The White Rabbit put on his spectacles. "Where shall I begin,
+please your Majesty?" he asked.
+
+"Begin at the beginning," the King said gravely, "and go on
+till you come to the end; then stop."
+"""
+```
+
+'여러 줄짜리 문자열 글자표현' 은 여는 따옴표와 닫는 따옴표 사이의 모든 줄도 포함합니다. 문자열은 여는 따옴표 (`"""`) 다음의 첫 번째 줄에서 시작하고 닫는 따옴표 앞의 줄에서 끝나며, 이는 아래에 있는 문자열은 어느 것도 '줄 바꿈 (line break)' 으로 시작하거나 끝나지 않음을 의미합니다:
+
+```swift
+let singleLineString = "These are the same."
+let multilineString = """
+These are the same.
+"""
+```
 
 
-### Initializing an Empty String
+#### Special Characters in String Literals ()
+
+#### Extended String Delimiters ()
+
+### Initializing an Empty String (빈 문자열 초기화하기)
 
 * to create an empty `String` value
     * assign an empty string literal
@@ -65,7 +86,7 @@ if emptyString.isEmpty {
 // Prints "Nothing to see here"
 ```
 
-### String Mutability
+### String Mutability (문자열 가변성)
 
 * indicate whether a particular `String` can be modified (mutated)
 
@@ -643,3 +664,15 @@ for scalar in dogString.unicodeScalars {
 * `128054` : `🐶` - a decimal equivalent of the hexadecimal value `1F436`
 
 * an alternative to querying `value` properties : `UnicodeScalar`
+
+### 참고 자료
+
+[^Strings-and-Characters]: 원문은 [Strings and Characters](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html) 에서 확인할 수 있습니다.
+
+[^collection]: '컬렉션 (collection)' 은 스위프트에서 특정한 값들의 집합을 묘사하는 '집합체' 타입입니다. 보다 자세한 내용은 [Collection Types (집합체 타입)](http://xho95.github.io/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html) 을 참고하기 바랍니다.
+
+[^string-literal-syntax]: '문자열 글자표현 구문 (string literal syntax)' 은 말은 어렵지만 개념은 아주 간단합니다. `let greeting = "hello"` 와 같은 문장에서 `"hello"` 가 바로 '문자열 글자표현 구문 (string literal syntax)' 입니다. 이 책에서 말하는 것은 스위프트에서 사용하는 이 '문자열 글자표현 구문' 이 사실상 C 언어와 같아서 이해하기 쉽다는 의미입니다.
+
+[^literals]: 여기서 '글자표현 (literals)' 는 '글자로 표현된 실제 값' 을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값이 되고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값이 됩니다. 즉 '글자표현 (literals)' 에서 값의 타입은 그 값이 실제로 표현하는 것이 무엇인지에 따라 달라집니다.
+
+[^interpolation]: '보간법 (interpolation)' 은 원래 수학 용어로 그래프 상에서 두 점 사이의 값을 근사적으로 구해서 채워넣는 방법을 말합니다. 'string interpolation' 은 굳이 직역하면 '문자열 삽입법' 등으로 옮길 수 있겠지만, 'interpolation' 은 원래부터 '보간법' 이라는 말로 많이 사용하고 있으므로 그대로 '보간법' 을 사용하도록 합니다. '문자열 보간법' 은 한 문자열 중간에 다른 값을 문자열의 형태로 집어넣는 것으로 이해할 수 있습니다.

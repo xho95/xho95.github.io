@@ -1,17 +1,21 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: 스위프트 (Swift) 둘러보기"
+title:  "Swift 3.1: A Swift Tour (스위프트 둘러보기)"
 date:   2016-04-17 19:45:00 +0900
 categories: Swift Language Grammar Tour
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 책의 [A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1) 부분을 번역하고 주석을 달아서 정리한 글입니다. 현재는 Swift 3.1 버전에 대해서 정리되어 있습니다. 마음같아서는 예제도 새로 만들고 싶지만 거기까지는 아직 무리인 것 같습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 부분[^A-Swift-Tour]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
+
+## A Swift Tour
 
 새로운 언어의 첫 프로그램으로는 화면에 `"Hello, world!"` 를 출력하는 것이 하나의 전통입니다. Swift 는 한 줄의 코드로 이 일을 할 수 있습니다:
 
 ```swift
-print("Hello, world!)
+print("Hello, world!")
 ```
 
 C 나 Objective-C 로 코딩을 해봤다면 이 문법이 친숙할 것입니다 - 하지만 Swift 에서는 이 한 줄의 코드가 완전한 프로그램입니다. 입/출력이나 문자열 처리를 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역 범위에 있는 코드는 프로그램의 시작점으로 사용되므로 `main()` 함수도 필요없습니다. 심지어 문장 끝에 세미콜론을 붙일 필요도 없습니다.
@@ -741,25 +745,9 @@ anyCommonElements([1, 2, 3], [3])
 
 `<T: Equatable>` 라고 쓰는 것은 `<T> ... where T: Equatable` 라고 쓰는 것과 같습니다.
 
-### 원문 자료
-
-* [A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1) : [The Swift Programming Language (Swift 3.1)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) 자료입니다.
-
-### 관련 자료
-
-* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
-
-* [Swift 3.1: 기초 (The Basics)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
-* [Swift 3.1: 객체 정리하기 (Deinitialization)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
-
-### 변경 사항
-
-* **2017.02.27.** Swift 3.1 버전에 대한 내용으로 수정하고 번역해서 정리했습니다.
-* **2016.04.17.** 첫 포스트를 작성했습니다.
-
 ### 참고 자료
 
-아래에 있는 내용은 다른 곳으로 분리해서 옮길 예정입니다.
+[^A-Swift-Tour]: 원문은 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 에서 확인할 수 있습니다.
 
 [^initializer]: 'initializer' 는 '초기자'라고 번역합니다. 이것은 C++ 의 constructor 를 생성자라고 부르는 것에서 착안하였습니다. Swift 의 초기자는 C++ 의 생성자와 초기화 함수의 역할을 동시에 수행합니다. 이것은 현대의 프로그래밍 언어들이 변수 선언 시점을 최대한 실제 변수가 사용되는 시점에 맞춰서 하려고 하기 때문에, 변수 선언 시점에 값을 초기화까지 하려고 강제하기 위해서라고 추측하고 있습니다. 번역과 관련한 내용은 다른 곳으로 옮기고 여기서는 초기자 문법에 대해서 설명합니다.
 

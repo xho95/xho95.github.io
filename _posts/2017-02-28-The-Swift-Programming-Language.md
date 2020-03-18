@@ -6,7 +6,7 @@ date:   2017-02-28 00:00:00 +0900
 categories: Swift Programming Language Grammar
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책을 한글로 옮겨서 정리한 글입니다.[^Swift]
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책을 번역하고 정리한 글을 모아둔 곳입니다.[^Swift]
 
 ### Welcome to Swift (스위프트 소개)
 

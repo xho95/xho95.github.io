@@ -50,7 +50,7 @@ print(("someInts is of type [Int] with \(someInts.count) items.")
 
 `someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론할 수 있음을 기억하기 바랍니다.
 
-다른 방법으로, 영역 내에서 이미 타입 정보를 제공하는 경우, 예를 들면 함수 인자에서나 이미 타입이 알려진 변수 또는 상수일 경우에, '빈 배열 문자표현 (empty array literal)' 을 써서 빈 배을을 생성할 수도 있으며, 이 때는 `[]` (빈 대괄호 쌍) 만 써주면 됩니다:
+다른 방법으로, 영역 내에서 이미 타입 정보를 제공하는 경우, 예를 들면 함수 인자에서나 이미 타입이 알려진 변수 또는 상수일 경우에, '빈 배열 글자표현 (empty array literal)' 을 써서 빈 배을을 생성할 수도 있으며, 이 때는 `[]` (빈 대괄호 쌍) 만 써주면 됩니다:
 
 ```swift
 someInts.append(3)
@@ -80,9 +80,9 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 // sixDoubles 의 타입은 [Double] 로 추론되며, 값은 [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같습니다.
 ```
 
-#### Creating an Array with an Array Literal ('배열 문자표현' 을 사용해서 배열 생성하기)
+#### Creating an Array with an Array Literal ('배열 글자표현' 을 사용해서 배열 생성하기)
 
-_배열 문자표현 (array literal)_[^literal] 을 써서 배열을 초기화 할 수도 있는데, 이는 하나 이상의 값을 가진 배열 집합체 (array collection) 를 약칭 (shorthand) 으로 만들 수 있는 방법입니다. '배열 문자표현' 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다.
+_배열 글자표현 (array literal)_[^literal] 을 써서 배열을 초기화 할 수도 있는데, 이는 하나 이상의 값을 가진 배열 집합체 (array collection) 를 약칭 (shorthand) 으로 만들 수 있는 방법입니다. '배열 글자표현' 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다.
 
 [`value 1`, `value 2`, `value 3`]
 
@@ -93,19 +93,19 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 // shoppingList 가 두 초기 요소로 초기화 되었습니다.
 ```
 
-`shoppingList` 변수는 `[String]` 을 써서 "문자열 값의 배열" 로 선언했습니다. 이 배열은 `String` 타입의 값만 갖도록 지정됐으므로, 이제 `String` 값만 저장할 수 있습니다. 여기서, `shoppingList` 배열은 '배열 문자표현 (array literal)' 에 있는 두 개의 `String` 값인 (`"Eggs"` 와 `"Milk"`) 로 초기화 되었습니다.
+`shoppingList` 변수는 `[String]` 을 써서 "문자열 값의 배열" 로 선언했습니다. 이 배열은 `String` 타입의 값만 갖도록 지정됐으므로, 이제 `String` 값만 저장할 수 있습니다. 여기서, `shoppingList` 배열은 '배열 글자표현 (array literal)' 에 있는 두 개의 `String` 값인 (`"Eggs"` 와 `"Milk"`) 로 초기화 되었습니다.
 
 > `shoppingList` 배열은 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 `shoppingList` 에 더 많은 요소를 추가할 것이기 때문입니다.
 
-이 경우, '배열 문자표현 (array literal)' 에는 두 개의 `String` 값만 있지 다른 건 전혀 없습니다. 이는 `shoppingList` 변수를 선언할 때의 타입 (`String` 값만 담을 수 있는 배열) 과 들어 맞으므로, '배열 문자표현' 을 할당하는 것이 허용되어 두 개의 초기 요소로 `shoppingList` 를 초기화할 수 있습니다.
+이 경우, '배열 글자표현 (array literal)' 에는 두 개의 `String` 값만 있지 다른 건 전혀 없습니다. 이는 `shoppingList` 변수를 선언할 때의 타입 (`String` 값만 담을 수 있는 배열) 과 들어 맞으므로, '배열 글자표현' 을 할당하는 것이 허용되어 두 개의 초기 요소로 `shoppingList` 를 초기화할 수 있습니다.
 
-스위프트의 타입 추론 덕분에, 배열의 타입을 안써도 되는 경우가 있는데, 초기화할 때 '배열 문자표현' 이 같은 타입의 값만 가지고 있으면 그렇습니다. 따라서 `shoppingList` 의 초기화는 앞에서보다 더 짧은 형태로도 작성할 수 있습니다:
+스위프트의 타입 추론 덕분에, 배열의 타입을 안써도 되는 경우가 있는데, 초기화할 때 '배열 글자표현' 이 같은 타입의 값만 가지고 있으면 그렇습니다. 따라서 `shoppingList` 의 초기화는 앞에서보다 더 짧은 형태로도 작성할 수 있습니다:
 
 ```swift
 var shoppingList = ["Eggs", "Milk"]
 ```
 
-'배열 문자표현' 의 모든 값이 같은 타입이므로, 스위프트는 `shoppingList` 변수가 정확하게 `[String]` 타입임을 추론할 수 있습니다.
+'배열 글자표현' 의 모든 값이 같은 타입이므로, 스위프트는 `shoppingList` 변수가 정확하게 `[String]` 타입임을 추론할 수 있습니다.
 
 #### Accessing and Modifying an Array (배열에 접근하고 수정하기)
 
@@ -280,7 +280,7 @@ print("letters is of type Set<Character> with \(letters.count) items.")
 
 > `letters` 변수의 타입은 초기자의 타입에 의해 `Set<Character>` 로 추론됩니다.
 
-다른 방법으로는, 영역 내에서 타입 정보를 제공하는 경우, 가령 함수 인자이거나 이미 타입이 알려진 변수 또는 상수인 경우, 빈 배열은 '빈 배열 문자표현' 을 써서 생성할 수 있습니다:
+다른 방법으로는, 영역 내에서 타입 정보를 제공하는 경우, 가령 함수 인자이거나 이미 타입이 알려진 변수 또는 상수인 경우, 빈 배열은 '빈 배열 글자표현' 을 써서 생성할 수 있습니다:
 
 
 ```swift
@@ -290,9 +290,9 @@ letters = []
 // letters 는 이제 빈 셋이 됐지만, 타입은 여전히 Set<Character> 입니다.
 ```
 
-#### Creating a Set with an Array Literal (배열 문자표현을 써서 셋 생성하기)
+#### Creating a Set with an Array Literal (배열 글자표현을 써서 셋 생성하기)
 
-'배열 문자표현' 으로 '셋' 을 초기화할 수도 있는데, 이는 '셋 컬렉션 (set collection)' 에 하나 이상의 값을 할당하는 '약칭법 (shorthand way)' 입니다.
+'배열 글자표현' 으로 '셋' 을 초기화할 수도 있는데, 이는 '셋 컬렉션 (set collection)' 에 하나 이상의 값을 할당하는 '약칭법 (shorthand way)' 입니다.
 
 아래 예제는 `favoriteGenres` 라는 셋을 만든 후 `String` 값을 저장하는 방법을 보여줍니다:
 
@@ -301,17 +301,17 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
 // favoriteGenres 는 3 개의 초기 요소를 가지고 초기화 되었습니다.
 ```
 
-`favoriteGenres` 변수는 `Set<String>` 을 써서 "`String` 값의 셋” 으로 선언되었습니다. 이 셋은 `String` 타입의 값을 지정했기 때문에, `String` 값만 저장할 수 있습니다. 여기서 `favoriteGenres` 셋은 '배열 문자표현' 에 있는 세 개의 `String` 값인 (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 으로 초기화 됩니다.
+`favoriteGenres` 변수는 `Set<String>` 을 써서 "`String` 값의 셋” 으로 선언되었습니다. 이 셋은 `String` 타입의 값을 지정했기 때문에, `String` 값만 저장할 수 있습니다. 여기서 `favoriteGenres` 셋은 '배열 글자표현' 에 있는 세 개의 `String` 값인 (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 으로 초기화 됩니다.
 
 > `favoriteGenres` 셋은 (`var` 소개자를 써서) 변수로 선언되었으며, (`let` 소개자를 쓴) 상수가 아닙니다. 이는 아래 예제에서 요소를 추가하거나 제거할 것이기 때문입니다.
 
-셋 타입은 '배열 문자표현 (array literal)' 만으로는 추론할 수 없으므로[^set-array-literal], `Set` 이라는 타입은 반드시 명시적으로 선언해야 합니다. 그러나 스위프트의 타입 추론 기능에 의해서, '배열 문자표현' 이 하나의 타입만 갖고 있는 경우, 셋 요소 (set's elements) 의 타입은 쓸 필요가 없습니다. 따라서 `favoriteGenres` 의 초기화는 다음 처럼 더 짧은 양식으로 작성 할 수 있습니다:
+셋 타입은 '배열 글자표현 (array literal)' 만으로는 추론할 수 없으므로[^set-array-literal], `Set` 이라는 타입은 반드시 명시적으로 선언해야 합니다. 그러나 스위프트의 타입 추론 기능에 의해서, '배열 글자표현' 이 하나의 타입만 갖고 있는 경우, 셋 요소 (set's elements) 의 타입은 쓸 필요가 없습니다. 따라서 `favoriteGenres` 의 초기화는 다음 처럼 더 짧은 양식으로 작성 할 수 있습니다:
 
 ```swift
 var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 ```
 
-'배열 문자표현' 에 있는 모든 값들이 같은 타입이므로, 스위프트는 `favoriteGenres` 변수가 `Set<String>` 임을 올바르게 추론할 수 있습니다.
+'배열 글자표현' 에 있는 모든 값들이 같은 타입이므로, 스위프트는 `favoriteGenres` 변수가 `Set<String>` 임을 올바르게 추론할 수 있습니다.
 
 #### Accessing and Modifying a Set (셋에 접근하고 수정하기)
 
@@ -481,7 +481,7 @@ var namesOfIntegers = [Int: String]()
 
 아래 예제는 `[Int: String]` 타입의 빈 딕셔너리를 생성해서 사람이 읽을 수 있는 정수의 이름을 저장합니다. 키는 `Int` 타입이고, 값은 `String` 타입입니다.
 
-영역 내에서 이미 타입 정보를 제공하는 경우, 빈 딕셔너리는 '빈 딕셔너리 문자표현 (empty dictionary literal)' 으로 생성할 수도 있는데, 이는 `[:]` 처럼 (대괄호 쌍 안에 콜론) 을 써 주면 됩니다:
+영역 내에서 이미 타입 정보를 제공하는 경우, 빈 딕셔너리는 '빈 딕셔너리 글자표현 (empty dictionary literal)' 으로 생성할 수도 있는데, 이는 `[:]` 처럼 (대괄호 쌍 안에 콜론) 을 써 주면 됩니다:
 
 ```swift
 namesOfIntegers[16] = "sixteen"
@@ -490,11 +490,11 @@ namesOfIntegers = [:]
 // namesOfIntegers 는 다시 빈 딕셔너리가 됐으며 타입은 [Int: String] 입니다.
 ```
 
-### Creating a Dictionary with a Dictionary Literal (딕셔너리 문자표현을 써서 딕셔너리 생성하기)
+### Creating a Dictionary with a Dictionary Literal (딕셔너리 글자표현을 써서 딕셔너리 생성하기)
 
-_딕셔너리 문자표현 (dictionary literal)_ 을 써서 딕셔너리를 초기화할 수도 있는데, 이는 앞서 본 '배열 문자표현' 과 문법이 비슷합니다. 딕셔너리 문자표현은 하나 이상의 키-값 쌍을 가진 `Dictionary` 컬렉션을 약칭 (shorthand) 으로 만들 수 있는 방법입니다.
+_딕셔너리 글자표현 (dictionary literal)_ 을 써서 딕셔너리를 초기화할 수도 있는데, 이는 앞서 본 '배열 글자표현' 과 문법이 비슷합니다. 딕셔너리 글자표현은 하나 이상의 키-값 쌍을 가진 `Dictionary` 컬렉션을 약칭 (shorthand) 으로 만들 수 있는 방법입니다.
 
-_키-값 쌍 (key-value pair)_ 은 키와 값의 조합입니다. 딕셔너리 문자표현의 각 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분됩니다. '키-값 쌍들'[^key-value-pairs] 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다:
+_키-값 쌍 (key-value pair)_ 은 키와 값의 조합입니다. 딕셔너리 글자표현의 각 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분됩니다. '키-값 쌍들'[^key-value-pairs] 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다:
 
 [`key 1`: `value 1`, `key 2`: `value 2`, `key 3`: `value 3`]
 
@@ -508,17 +508,17 @@ var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 > `airport` 딕셔너리는 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 딕셔너리에 더 많은 공항을 추가할 것이기 때문입니다.
 
-`airport` 딕셔너리는 두 개의 키-값 쌍을 가지는 '딕셔너리 문자표현' 으로 초기화되었습니다. 첫 번째 쌍의 키는 `"YYZ"` 이고, 값은 `"Toronto Pearson"` 입니다. 두 번째 쌍은 키가 `"DUB"` 이고, 값은 `"Dublin"` 입니다.
+`airport` 딕셔너리는 두 개의 키-값 쌍을 가지는 '딕셔너리 글자표현' 으로 초기화되었습니다. 첫 번째 쌍의 키는 `"YYZ"` 이고, 값은 `"Toronto Pearson"` 입니다. 두 번째 쌍은 키가 `"DUB"` 이고, 값은 `"Dublin"` 입니다.
 
-이 '딕셔너리 문자표현' 은 두 개의 `String: String` 쌍을 갖고 있습니다. 이 키-값 타입은 `airport` 변수를 선언할 때의 타입 (`String` 키와 `String` 값만 가지는 딕셔너리) 과 들어 맞으므로, '딕셔너리 문자표현' 에 있는 두 요소로 `airport` 딕셔너리를 초기화 하는 것이 허용됩니다.
+이 '딕셔너리 글자표현' 은 두 개의 `String: String` 쌍을 갖고 있습니다. 이 키-값 타입은 `airport` 변수를 선언할 때의 타입 (`String` 키와 `String` 값만 가지는 딕셔너리) 과 들어 맞으므로, '딕셔너리 글자표현' 에 있는 두 요소로 `airport` 딕셔너리를 초기화 하는 것이 허용됩니다.
 
-배열에서 처럼, 딕셔너리도 초기화할 때 타입을 안써도 되는 경우가 있으며, 이는 딕셔너리 문자표현에 있는 키와 값들의 타입이 일관성이 있는 경우입니다. `airport` 의 초기화는 아래 처럼 더 짧게 작성할 수 있습니다:
+배열에서 처럼, 딕셔너리도 초기화할 때 타입을 안써도 되는 경우가 있으며, 이는 딕셔너리 글자표현에 있는 키와 값들의 타입이 일관성이 있는 경우입니다. `airport` 의 초기화는 아래 처럼 더 짧게 작성할 수 있습니다:
 
 ```swift
 var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-'문자표현' 에 있는 모든 키들이 서로 같은 타입이면서 모든 값들도 같은 타입이므로, 스위프트는 `airport` 딕셔너리의 타입이 정확하게 `[String: String]` 타입임을 추론할 수 있습니다.
+'글자표현 (literals)' 에 있는 모든 키들이 서로 같은 타입이면서 모든 값들도 같은 타입이므로, 스위프트는 `airport` 딕셔너리의 타입이 정확하게 `[String: String]` 타입임을 추론할 수 있습니다.
 
 ### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
 
@@ -679,12 +679,12 @@ let airportNames = [String](airports.values)
 
 [^transitivity]: 여기서 말하는 '추이성' 은 수학에서 말하는 '추이 관계' 를 말하는 것 같습니다. '추이 관계' 에 대해서는 위키피디아의 [Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation) 문서를 참고하기 바랍니다.
 
-[^set-array-literal]: 이것은 '배열 문자표현 (array literal)' 만 사용할 경우, `Array` 로 추론되기 때문일 것입니다.
+[^set-array-literal]: 이것은 '배열 글자표현 (array literal)' 만 사용할 경우, `Array` 로 추론되기 때문일 것입니다.
 
 [^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산에 사용하는 타입이라 이해할 수 있습니다. 따라서 여기서의 'set operations' 은 '집합 연산'의 의미로 이해하는 것이 맞을 것 같습니다.
 
 [^disjoint]: 이를 수학 용어로는 '분리 집합 (disjoint sets)' 이라고 하는 것 같습니다. 분리 집합에 대해서는 위키피디아의 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets)문서를 참고하기 바랍니다. 한글로는 '[서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합)' 이라는 용어가 있는데, 프로그래밍 분야에서는 '분리 집합' 이라는 표현도 같이 사용하고 있는 듯 합니다.
 
-[^key-value-pair]: 여러 개의 '키-값 쌍 (key-value pair)' 을 묶은 '키-값 쌍들 (key-value pairs)' 자체가 하나의 '딕셔너리 문자표현 (dictionary literal)' 이라고 할 수 있습니다.
+[^key-value-pair]: 여러 개의 '키-값 쌍 (key-value pair)' 을 묶은 '키-값 쌍들 (key-value pairs)' 자체가 하나의 '딕셔너리 글자표현 (dictionary literal)' 이라고 할 수 있습니다.
 
 [^optional-value]: 'optional value' 는 '선택적 값' 이라고도 옮길 수 있겠지만, 여기서는 스위프트의 타입임을 드러내기 위해서 발음을 따라서 '옵셔널 값' 으로 옮깁니다.
