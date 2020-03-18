@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 2.2: Strings and Characters (문자열과 문자)"
+title:  "Swift 5.2: Strings and Characters (문자열과 문자)"
 date:   2016-05-29 19:45:00 +0900
 categories: Swift Grammar Strings Characters
 ---
