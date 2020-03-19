@@ -108,7 +108,7 @@ Escaping all three quotation mark \"\"\"
 
 String literals created using extended delimiters can also be multiline string literals. You can use extended delimiters to include the text """ in a multiline string, overriding the default behavior that ends the literal. For example:
 
-'확장된 구분자' 로 생성한 '문자열 글자표현 (string literal)' 역시 '여러 줄짜리 문자열 글자표현' 이 될 수 있습니다. '확장된 구분자' 를 사용하면 '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있는데, 이 때 본래 가진 '글자표현 (literal) 을 끝낸다' 는 기본 기능을 뒤엎어서 (overriding), 단순한 클라조 넣을 수 있습니다. 예를 들면 다음과 같습니다:
+'확장된 구분자' 로 생성한 '문자열 글자표현 (string literal)' 역시 '여러 줄짜리 문자열 글자표현' 이 될 수 있습니다. '확장된 구분자' 를 사용하면 '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있는데, 이 때 본래 가진 '글자표현 (literal) 을 끝낸다' 는 기본 기능을 뒤엎고 (overriding), 단순히 텍스트로 넣을 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```
 let threeMoreDoubleQuotationMarks = #"""
@@ -118,26 +118,21 @@ Here are three more double quotes: """
 
 ### Initializing an Empty String (빈 문자열 초기화하기)
 
-* to create an empty `String` value
-    * assign an empty string literal
-    * initialize a new `String` instance with initializer syntax
+더 긴 문자열을 만들기 위한 시작점으로 빈 `String` 을 만들려면, 변수에 '빈 문자열 글자표현 (empty string literal)' 을 할당하거나, '초기화 구문 표현 (initializer syntax)' 을 써서 새로운 `String` 인스턴스를 초기화하면 됩니다:
 
 ```swift
-var emptyString = ""                // empty string literal
-
-var anotherEmptyString = String()   // initializer syntax
-
-// these two strings are both empty, and are equivalent to each other
+var emptyString = ""                // 빈 문자열 글자 표현 (empty string literal)
+var anotherEmptyString = String()   // 초기화 구문 표현 (initializer syntax)
+// 위 두 문자열은 모두 비어 있으며, 서로 동등합니다.
 ```
 
-* whether a `String` value is empty : `isEmpty` property
+`String` 값이 비어있는지 확인하려면, 불린 (Boolean) 속성인 `isEmpty` 를 검사하면 됩니다:
 
 ```swift
 if emptyString.isEmpty {
     print("Nothing to see here")
 }
-
-// Prints "Nothing to see here"
+// "Nothing to see here" 를 출력합니다. 
 ```
 
 ### String Mutability (문자열 가변성)
