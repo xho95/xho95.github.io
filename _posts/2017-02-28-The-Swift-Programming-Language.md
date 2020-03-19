@@ -18,7 +18,7 @@ categories: Swift Programming Language Grammar
 
 * [The Basic (기초)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
 * [Basic Operators (기본 연산자)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
-* [Strings and Characters (문자열과 문자)]
+* [Strings and Characters (문자열과 문자)](http://xho95.github.io/swift/grammar/strings/characters/2016/05/29/Strings-and-Characters.html)
 * [Collection Types (집합체 타입)](https://xho95.github.io/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html)
 * [Control Flow (제어 흐름)]
 * [Functions (함수)]
