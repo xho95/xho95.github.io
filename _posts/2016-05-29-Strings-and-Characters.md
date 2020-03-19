@@ -351,11 +351,9 @@ print("the number of characters in \(word) is \(word.characters.count)")
 // "the number of characters in café is 4" 를 출력합니다.
 ```
 
-확장된 자소 덩어리 (extended grapheme clusters) 는 여러 가지의 유니코드 크기 값들로 구성 될 수 있습니다. 이것은 다른 문자들-그리고 같은 문자에 대한 다른 표현 방법들-을 저장할 때 메모리의 크기가 다를 수도 있다는 것을 의미합니다. 이러한 이유로, 스위프트의 문자들은 각각이 문자열 내에서 같은 크기의 메모리를 차지하고 있지 않습니다. 그 결과, 문자열의 문자 개수를 계산하려면 문자열 전체에 동작을 반복하는 과정이 반드시 필요하며, 이는 확장된 자소 덩어리의 경계를 알아야 하기 때문입니다. 특히 긴 문자열을 사용하면서 `count` 속성을 사용하게 되면, 문자열의 문자 개수를 구하기 위해 전체 문자열에 있는 유니코드 크기 값을 구하는 동작을 반복하게 된다는 것을 알고 있어야 합니다.
-
-The count of the characters returned by the count property isn’t always the same as the length property of an NSString that contains the same characters. The length of an NSString is based on the number of 16-bit code units within the string’s UTF-16 representation and not the number of Unicode extended grapheme clusters within the string.
-
-`count` 속성이 반환하는 문자 개수는 같은 문자들을 갖고 있는 `NSString` 의 `length` (길이) 속성과 다를 수도 있습니다. `NSString` 의 길이 값은 문자열의 UTF-16 표현 방식에 있는 '16-비트 코드 단위' 의 개수를 기반으로 한 것이며 문자열에 있는 유니코드 방식의 '확장된 자소 덩어리' 개수가 아닙니다.
+> 확장된 자소 덩어리 (extended grapheme clusters) 는 여러 가지의 유니코드 크기 값들로 구성 될 수 있습니다. 이것은 다른 문자들-그리고 같은 문자에 대한 다른 표현 방법들-을 저장할 때 메모리의 크기가 다를 수도 있다는 것을 의미합니다. 이러한 이유로, 스위프트의 문자들은 각각이 문자열 내에서 같은 크기의 메모리를 차지하고 있지 않습니다. 그 결과, 문자열의 문자 개수를 계산하려면 문자열 전체에 동작을 반복하는 과정이 반드시 필요하며, 이는 확장된 자소 덩어리의 경계를 알아야 하기 때문입니다. 특히 긴 문자열을 사용하면서 `count` 속성을 사용하게 되면, 문자열의 문자 개수를 구하기 위해 전체 문자열에 있는 유니코드 크기 값을 구하는 동작을 반복하게 된다는 것을 알고 있어야 합니다.
+>
+> `count` 속성이 반환하는 문자 개수는 같은 문자들을 갖고 있는 `NSString` 의 `length` (길이) 속성과 다를 수도 있습니다. `NSString` 의 길이 값은 문자열의 UTF-16 표현 방식에 있는 '16-비트 코드 단위' 의 개수를 기반으로 한 것이며 문자열에 있는 유니코드 방식의 '확장된 자소 덩어리' 개수가 아닙니다.
 
 ### Accessing and Modifying a String (문자열에 접근하고 수정하기)
 
@@ -363,87 +361,76 @@ The count of the characters returned by the count property isn’t always the sa
 
 #### String Indices (문자열 색인)
 
-각 문자열 값에는 문자열의 각 문자 위치에 해당하는 관련 인덱스 유형 인 String.Index가 있습니다.
+각각의 `String` 값은 관련된 색인 타입인 `String.Index` 을 가지고 있는데, 이 값은 문자열에서 각 `Character` 의 위치에 해당합니다.
 
-위에서 언급했듯이 다른 문자는 저장하기 위해 다른 양의 메모리를 요구할 수 있으므로 특정 위치에있는 문자를 판별하려면 해당 문자열의 시작 또는 끝에서 각 유니 코드 스칼라를 반복해야합니다. 따라서 Swift 문자열은 정수 값으로 색인을 생성 할 수 없습니다.
+앞에서 언급했듯이, 서로 다른 문자들을 저장할 때의 메모리 양이 서로 다를 수 있으므로, 특정 위치에 있는 `Character` 가 무엇인지 판별하려면, 문자열의 처음부터 끝까지 각 '유니코드 크기 값' 을 뒤지는 동작을 반복 적용해야만 합니다. 이러한 이유로, 스위프트의 문자열은 정수 값의 색인을 가질 수 없습니다.
 
-startIndex 속성을 사용하여 문자열의 첫 번째 문자 위치에 액세스하십시오. endIndex 속성은 문자열에서 마지막 문자 뒤의 위치입니다. 결과적으로 endIndex 속성은 문자열의 첨자에 유효한 인수가 아닙니다. 문자열이 비어 있으면 startIndex와 endIndex가 같습니다.
+`String` 의 첫 번째에 위치한 `Character` 에 접근하려면 `startIndex` 속성을 사용해야 합니다. `endIndex` 속성은 `String` 에서 마지막 문자의 그 다음 위치를 가리킵니다. 따라서 `endIndex` 속성은 문자열의 '첨자 연산 (subscript)' 인자로 유효하지 않습니다. `String` 이 비어있으면, `startIndex` 와 `endIndex` 이 같습니다.
 
-String의 index (before :) 및 index (after :) 메소드를 사용하여 지정된 인덱스 전후에 인덱스에 액세스합니다. 주어진 색인에서 멀리 떨어진 색인에 액세스하려면 이러한 메소드 중 하나를 여러 번 호출하는 대신 index (_ : offsetBy :) 메소드를 사용할 수 있습니다.
+주어진 색인 전후의 색인에 접근하려면 `String` 에 있는 `index(before:)` 와 `index(after:)` 메소드를 사용하기 바랍니다. 주어진 색인에서 멀리 떨어진 색인에 접근하려면, 앞서의 메소드들을 여러 번 호출하는 대신 `index(_:offsetBy:)` 메소드를 사용하면 됩니다.
 
-첨자 구문을 사용하여 특정 문자열 인덱스에서 문자에 액세스 할 수 있습니다.
+'첨자 연산 구문 (subscript syntax)' 을 사용하여 특정 `String` 색인에 있는 `Character` 에 접근할 수 있습니다.
 
 ```swift
 let greeting = "Guten Tag!"
-
 greeting[greeting.startIndex]
 // G
-
-greeting[greeting.endIndex.predecessor()]
+greeting[greeting.index(before: greeting.endIndex)]
 // !
-
-greeting[greeting.startIndex.successor()]
+greeting[greeting.index(after: greeting.startIndex)]
 // u
-
-let index = greeting.startIndex.advancedBy(7)
-
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
 greeting[index]
 // a
 ```
 
-* access a `Character` at an index outside of a string's range : trigger a runtime error
+문자열 범위 밖의 색인이나 문자열 범위 밖의 색인에 있는 `Character` 에 접근하려고 시도하면 'runtime error (실행시간에 에러)' 가 발생합니다.
 
 ```swift
-// greeting[greeting.endIndex]     // error
-// greeting.endIndex.successor()   // error
+// greeting[greeting.endIndex]  // 에러
+// greeting.index(after: greeting.endIndex) // 에러
 ```
 
-* `indices` property of the `characters` : create a `Range` of all of the indexes
+`indices` 속성을 사용하면 문자열에 있는 개별 문자의 모든 색인에 접근할 수 있습니다.
 
 ```swift
-for index in greeting.characters.indices {
+for index in greeting.indices {
     print("\(greeting[index]) ", terminator: "")
 }
-// prints "G u t e n   T a g ! "
+// "G u t e n   T a g ! " 를 출력합니다.
 ```
 
+> `startIndex` 와 `endIndex` 속성들 및 `index(before:)`, `index(after:)` 와 `index(_:offsetBy:)` 메소드들은 `Collection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
 
-#### Inserting and Removing (삽입 및 제거하기)
+#### Inserting and Removing (삽입하고 제거하기)
 
-* `insert(_:atIndex:)` : to insert a character into a string at a specified index
+문자열의 지정된 색인에 단일한 문자를 삽입하려면 `insert(_:at:)` 메소드를 사용하고, 다른 문자열의 '내용 (contents)' 을 지정된 색인에 삽입하려면 `insert(contentsOf:at:)` 메소드를 사용하면 됩니다.
 
 ```swift
-var welcome_2 = "hello"
+var welcome = "hello"
+welcome.insert("!", at: welcome.endIndex)
+// welcome 은 이제 "hello!" 와 같습니다.
 
-welcome_2.insert("!", atIndex: welcome_2.endIndex)
-// welcome_2 now equals "hello!"
+welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
+// welcome 은 이제 "hello there!" 와 같습니다.
 ```
 
-* `insertContentsOf(_:at:)` : to insert the contents of another string at a specified index
+문자열의 지정된 색인에 있는 단일한 문자를 제거하려면 `remove(at:)` 메소드를 사용하고, 지정된 범위에 있는 '하위문자열 (substring)' 을 제거하려면 `removeSubrange(_:)` 메소드를 사용하면 됩니다:
 
 ```swift
-welcome_2.insertContentsOf(" there".characters, at: welcome_2.endIndex.predecessor())
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+// welcome 은 이제 "hello there" 와 같습니다.
 
-// welcome_2 now equals "hello there!"
+let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+welcome.removeSubrange(range)
+// welcome 은 이제 "hello" 와 같습니다.
 ```
 
-* `removeAtIndex(_:)` : to remove a character from a string at a specified index
+`insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 그리고 `removeSubrange(_:)` 메소드들은 `RangeReplaceableCollection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
 
-```swift
-welcome_2.removeAtIndex(welcome_2.endIndex.predecessor())
-// welcome now equals "hello there"
-```
+### Substrings (하위문자열)
 
-* `removeRange(_:)` : to remove a substring at a specified range
-
-```swift
-let range = welcome_2.endIndex.advancedBy(-6)..<welcome_2.endIndex
-
-welcome_2.removeRange(range)
-// welcome now equals "hello"
-```
-
-### Substrings (하위 문자열)
+문자열에서 하위 문자열을 가져 오면 (예 : 아래 첨자 또는 prefix (_ :)와 같은 메서드 사용) 결과는 다른 문자열이 아닌 Substring의 인스턴스입니다. Swift의 하위 문자열에는 문자열과 거의 동일한 방법이 있으므로 문자열을 사용하는 것과 같은 방식으로 하위 문자열을 사용할 수 있습니다. 그러나 문자열과 달리 문자열에 대해 작업을 수행하는 동안 짧은 시간 동안 만 하위 문자열을 사용합니다. 결과를 더 오랫동안 저장할 준비가되면 하위 문자열을 String 인스턴스로 변환합니다. 예를 들면 다음과 같습니다.
 
 ### Comparing Strings (문자열 비교하기)
 
