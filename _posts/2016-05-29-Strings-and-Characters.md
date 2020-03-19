@@ -106,8 +106,6 @@ Escaping all three quotation mark \"\"\"
 
 '문자열 글자표현 (string literal)' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 'escape (이스케잎)' 문자 (`\`) 뒤에 같은 개수의 번호 기호를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 인데, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로 `###"Line 1\###nLine 2"###` 도 줄 바꿈이 일어납니다.
 
-String literals created using extended delimiters can also be multiline string literals. You can use extended delimiters to include the text """ in a multiline string, overriding the default behavior that ends the literal. For example:
-
 '확장된 구분자' 로 생성한 '문자열 글자표현 (string literal)' 역시 '여러 줄짜리 문자열 글자표현' 이 될 수 있습니다. '확장된 구분자' 를 사용하면 '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있는데, 이 때 본래 가진 '글자표현 (literal) 을 끝낸다' 는 기본 기능을 뒤엎고 (overriding), 단순히 텍스트로 넣을 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```
@@ -132,52 +130,41 @@ var anotherEmptyString = String()   // 초기화 구문 표현 (initializer synt
 if emptyString.isEmpty {
     print("Nothing to see here")
 }
-// "Nothing to see here" 를 출력합니다. 
+// "Nothing to see here" 를 출력합니다.
 ```
 
 ### String Mutability (문자열 가변성)
 
-* indicate whether a particular `String` can be modified (mutated)
+특정한 `String` 이 수정 (또는 _변경-mutated_) 가능한지를 지정하려면, 그것을 변수에 (이러면 수정 가능함) 할당하거나, 상수에 (이러면 수정 불가능함) 할당하면 됩니다:
 
 ```swift
 var variableString = "Horse"
-
 variableString += " and carriage"
-
-// variableString is now "Horse and carriage"
+// variableString 은 이제 "Horse and carriage" 입니다.
 
 let constantString = "Highlander"
-
-// constantString += " and another Highlander"
-
-// this reports a compile-time error - a constant string cannot be modified
+constantString += " and another Highlander"
+// 이것은 컴파일-시간에 -상수 문자열은 수정될 수 없다는 (a constant string cannot be modified -에러를 발생시킵니다.
 ```
-> different from string mutation in Objective-C and Cocoa : `NSString`, `NSMutableString`
 
+> '오브젝티브-C' 와 'Cocoa' 에서의 문자열 가변성 지정 방식은 좀 다른데, 이들은 두 개의 클래스 (`NSString` 와 `NSMutableString`) 중에서 선택하는 것으로써 문자열이 변할 수 있는지를 지정합니다.
 
 ### Strings Are Value Types (문자열은 값 타입입니다)
 
-* Swift's `String` : a value type
-    * copied when it is passed, or when it is assigned
-    * the new copy is passed or assigned, not the original version
-- Swift's copy-by-default `String` behavior
-    - it is clear that you own that exact `String` value
-    - the string you are passed will not be modified unless you modify it yourself
-* Swift's compiler optimizes string usage
-    * actual copying takes place only when absolutely necessary
-    * great performance when working with strings
+스위프트의 `String` 타입은 '_값 타입 (value type)_'[^value-type] 입니다. 이것은 새로운 `String` 값을 만들고서, 이를 함수나 메소드에 전달하거나, 상수나 변수에 할당할 때, 이 `String` 값이 _복사 (copied)_ 된다는 것을 말합니다. 각각의 경우에, 기존 `String` 값에 대한 새 복사본이 만들어져서, 원래 버전 대신, 이 복사본이 전달되거나 할당됩니다. 값 타입에 대해서는 [Structure and Enumerations Are Value Types](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html#ID88) 에 설명되어 있습니다.
 
+스위프트의 `String` 이 '기본적으로-복사 (copy-by-default)' 행동을 한다는 것은 함수나 메소드로 `String` 값을 전달받을 때, 어디서 왔든 신경쓸 필요 없이, 그 `String` 값을 온전히 가지게 됐음을 분명히 한다는 것입니다. 전달받은 문자열은 본인이 직접 수정하지 않는 이상 수정될 일이 없다고 확신헤도 됩니다.
+
+한편, 스위프트의 컴파일러는 문자열 처리를 최적화하기 때문에 실제 복사는 꼭 필요할 때에만 일어납니다.[^optimize-string] 이것은 값 타입인 문자열을 사용하더라도 항상 뛰어난 성능을 보장받을 수 있다는 의미입니다.
 
 ### Working with Characters (문자 다루기)
 
-* access the individual `Character` values for a `String`
-    * `characters` property with a `for-in` loop
+`String` 에 있는 개별 `Character` 값에 접근하려면, `for-in` 반복문으로 문자열에 '동작을 반복 적용 (interating over)' 시키면 됩니다:
 
 ```swift
-for character in "Dog!🐶".characters {
+for character in "Dog!🐶" {
     print(character)
 }
-
 // D
 // o
 // g
@@ -185,61 +172,83 @@ for character in "Dog!🐶".characters {
 // 🐶
 ```
 
-* a stand-alone `Character` : a single-character string literal by providing a `Character` type annotation
+`for-in` 반복문은 [For-In Loope (For-In 반복문)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID121) 에 설명되어 있습니다.
+
+다른 방법으로, `Character` 타입 '주석 (annotation)'[^annotation] 을 쓰면 '단일-문자 문자열 글자표현 (single-character string literal)' 으로 독립된 `Character` 상수나 변수를 만들 수도 있습니다:
 
 ```swift
-let exclamationMark_1: Character = "!"
+let exclamationMark: Character = "!"
 ```
 
-* `String` : constructed by passing an array of `Character` values to its initializer
+`String` 값은 초기자의 인자로 `Character` 값의 배열을 전달하는 것으로도 생성할 수 있습니다:
 
 ```swift
 let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
-
 let catString = String(catCharacters)
-
 print(catString)
-
-// Prints "Cat!🐱"
+// "Cat!🐱" 을 출력합니다.
 ```
 
-### Concatenating Strings and Characters (물자열 및 문자 연결하기)
+### Concatenating Strings and Characters (문자열 및 문자 연결하기)
 
-* add (or concatenate) : the addition operator (`+`) - a new `String` value
+`String` 값을 '더하기 연산자 (`+`)' 로 서로 더하기-또는 _연결 (concatenated)_ 하여 새 `String` 값을 만들 수 있습니다:
 
 ```swift
 let string1 = "hello"
-
 let string2 = " there"
-
-var welcome_1 = string1 + string2
-
-// welcome_1 now equals "hello there"
+var welcome = string1 + string2
+// welcome 은 이제 "hello there" 와 같습니다.
 ```
 
-* append : the addition assignment operator(`+=`)
+`String` 값을 '더하고 할당하기 연산자 (`+=`)' 로 기존 `String` 변수에 덧붙일 수 있습니다:
 
 ```swift
 var instruction = "look over"
-
 instruction += string2
-
-// instruction now equals "look over there"
+// instruction 은 이제 "look over there" 와 같습니다.
 ```
 
-* append a `Character` value : the `String` type's `append()` method
+`Character` 값을 `String` 변수에 덧붙이려면 `String` 타입의 `append()` 메소드를 사용하면 됩니다:
 
 ```swift
-let exclamationMark_2: Character = "!"
-
-welcome_1.append(exclamationMark_2)
-
-// welcome now equals "hello there!"
+let exclamationMark: Character = "!"
+welcome.append(exclamationMark)
+// welcome 은 이제 "hello there!" 와 같습니다.
 ```
-> can't append a `String` or `Character` to an existing `Character` variable
 
-> a `Character` value : a single character only
+> `String` 이나 `Character` 를 기존 `Character` 변수에 덧붙일 수는 없으며, 이는 `Character` 값은 반드시 단 하나의 문자만 가질 수 있기 때문입니다.
 
+'여러 줄짜리 문자열 글자표현' 으로 더 긴 줄의 문자열을 만들 때, 문자열의 모든 줄이 마지막 줄도 포함해서, 줄 바꿈으로 끝나기를 원할 것입니다. 예를 들면 다음과 같습니다:
+
+```swift
+let basStart = """
+one
+two
+"""
+
+let end = """
+three
+"""
+
+print(basStart + end)
+// 다음의 두 줄을 출력합니다:
+// one
+// twothree
+
+let goodStart = """
+one
+two
+
+"""
+
+print(goodStart + end)
+// 다음의 세 줄을 출력합니다:
+// one
+// two
+// three
+```
+
+위의 코드에서, `badStart` 와 `end` 를 연결하니 두 줄짜리 문자열이 만들어졌는데, 이는 원하는 결과가 아닙니다. 왜냐면 `badStart` 의 마지막 줄이 줄 바꿈으로 끝난게 아니라서, 그 줄이 `end` 의 첫 줄과 붙어버렸기 때문입니다. 이와는 다르게, `goodStart` 의 두 줄은 모두 줄 바꿈으로 끝나므로, `end` 와 결합해도 결과는 예상한 대로 세 줄이 됩니다.
 
 ### String Interpolation (문자열 보간법)
 
@@ -706,3 +715,9 @@ for scalar in dogString.unicodeScalars {
 [^escaping]: 여기서 'escaping' 할 필요 없다는 말은 슬래쉬 (`\`) 기호를 붙일 필요가 없다는 것을 의미합니다.
 
 [^number-sign]: '#' 은 영어로 'number sign' 이라고 하는데, 보통 우리 말로는 '샾 기호' 라고 알려져 있습니다. 하지만 실제 샾 기호와는 다르며 하나의 숫자를 의미합니다. 여기서는 '번호 기호' 라고 옮기도록 합니다.
+
+[^value-type]: '값 타입 (value type)' 이라는 말은, 프로그래밍 용어에서 '깊은 복사' 와 '옅은 복사' 라는 말이 있는데, 이 중에서 복사 시의 기본 동작이 '깊은 복사' 인 타입이라고 이해할 수 있습니다.
+
+[^optimize-string]: 이 말은 기본적으로 `String` 은 '깊은 복사' 를 한다고는 하지만, 만약 전달받은 `String` 을 상수처럼 사용할 경우, 굳이 값을 복사할 필요가 없으므로 스위프트가 성능 최적화를 해서, 실제 복사를 안할 수도 있다는 말입니다.
+
+[^annotation]: 'annotation' 은 '주석' 이라는 말로 옮길 수 있는데, 스위프트에서 '주석 (annotaion)' 이라 하면 `let a: Int = 10` 에서 `Int` 처럼 타입을 지정해 주는 것을 말합니다.
