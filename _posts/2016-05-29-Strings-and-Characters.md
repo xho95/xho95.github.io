@@ -426,7 +426,7 @@ welcome.removeSubrange(range)
 // welcome 은 이제 "hello" 와 같습니다.
 ```
 
-`insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 그리고 `removeSubrange(_:)` 메소드들은 `RangeReplaceableCollection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
+> `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 그리고 `removeSubrange(_:)` 메소드들은 `RangeReplaceableCollection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
 
 ### Substrings (하위문자열)
 
