@@ -104,7 +104,7 @@ Escaping all three quotation mark \"\"\"
 
 '문자열 글자표현 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, 번호 기호 (`#`)[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자표현' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '줄 바꿈 escape sequence (이스케잎 시퀀스)'인 (`\n`) 가 그대로 출력됩니다.
 
-'문자열 글자표현 (string literal)' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 'escape (이스케잎)' 문자 (`\`) 뒤에 같은 개수의 번호 기호를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 인데, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로 `###"Line 1\###nLine 2"###` 도 줄 바꿈이 일어납니다.
+'문자열 글자표현 (string literal)' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 escape 문자 (`\`) 뒤에 같은 개수의 '번호 기호' 를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 일 때, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로 `###"Line 1\###nLine 2"###` 라고 해도 줄 바꿈이 일어납니다.
 
 '확장된 구분자' 로 생성한 '문자열 글자표현 (string literal)' 역시 '여러 줄짜리 문자열 글자표현' 이 될 수 있습니다. '확장된 구분자' 를 사용하면 '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있는데, 이 때 본래 가진 '글자표현 (literal) 을 끝낸다' 는 기본 기능을 뒤엎고 (overriding), 단순히 텍스트로 넣을 수 있습니다. 예를 들면 다음과 같습니다:
 
@@ -248,183 +248,146 @@ print(goodStart + end)
 // three
 ```
 
-위의 코드에서, `badStart` 와 `end` 를 연결하니 두 줄짜리 문자열이 만들어졌는데, 이는 원하는 결과가 아닙니다. 왜냐면 `badStart` 의 마지막 줄이 줄 바꿈으로 끝난게 아니라서, 그 줄이 `end` 의 첫 줄과 붙어버렸기 때문입니다. 이와는 다르게, `goodStart` 의 두 줄은 모두 줄 바꿈으로 끝나므로, `end` 와 결합해도 결과는 예상한 대로 세 줄이 됩니다.
+위의 코드에서, `badStart` 와 `end` 를 연결하니 두 줄짜리 문자열이 만들어졌는데, 이는 원하는 결과가 아닙니다. 왜냐면 `badStart` 의 마지막 줄이 줄 바꿈으로 끝나지 않아서, 그 줄이 `end` 의 첫 줄과 붙어버렸기 때문입니다. 이와는 다르게, `goodStart` 의 두 줄은 모두 줄 바꿈으로 끝나므로, `end` 와 결합해도 결과는 예상한 대로 세 줄이 됩니다.
 
 ### String Interpolation (문자열 보간법)
 
-* string interpolation
-    * a new `String` value from a mix of constants, variables, literals, and expressions
-    * each item is wrapped in a pair of parentheses, prefixed by a backslash
+_문자열 보간법 (string interpolation)_ 은 상수, 변수, 글자표현, 그리고 표현식들을 서로 섞어서 새로운 `String` 값을 생성하는 방법으로, 이 때 '문자열 글자표현 (string literal)' 안에 그 값을 포함하는 방식을 사용합니다. 문자열 보간법은 한 줄짜리 혹은 여러 줄짜리 '문자열 글자표현 (string literal)' 모두에서 사용 가능합니다. 각 요소를 문자열 글자표현에 삽입하려면 그것을 괄호 쌍으로 감싼 후에 맨 앞에 '백 슬래쉬 (`\`)' 를 붙여주면 됩니다:
 
 ```swift
 let multiplier = 3
-
 let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
-
-// message is "3 times 2.5 is 7.5"
+// message 는 "3 times 2.5 is 7.5" 입니다.
 ```
 
-* this placeholder is replaced with the actual value
+위의 예에서 처럼, `multiplier` 의 값을 '문자열 글자표현' 에 삽입하려면 `\(multiplier)` 라고 하면 됩니다. 이것이 있는 자리는 `multiplier` 의 실제 값으로 교체되는데, 이는 실제 문자열을 생성하려고 '문자열 보간' 값을 퍙가할 때 이뤄집니다.
 
-> the expressions
- - cannot contain an unescaped backslash(`\`), a carriage return, or a line feed
- - can contain other string literals
+`multiplier` 는 문자열에 나오는 '더 큰 표현식' 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 의 값을 계산한 후 결과인 (`7.5`) 를 문자열에 삽입합니다. 이 경우, 표현식을 '문자열 글자표현' 안에 넣으려면 `\(Double(multiplier) * 2.5)` 라고 하면 됩니다.
 
+'확장된 문자열 구분자 (extended string delimiters)' 를 사용하면 '문자열 보간법' 으로 취급되는 문자를 그대로 담고 있는 문자열도 만들 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+print(#"Write an interpolated string in Swift using \(multiplier)."#)
+// "Write an interpolated string in Swift using \(multiplier)." 를 출력합니다.
+```
+
+'확장된 구분자' 를 사용하는 문자열 내에서 '문자열 보간법' 을 사용하려면, 문자열의 시작과 끝에 있는 '번호 기호' 의 개수와 같은 '번호 기호' 를 백 슬래시 뒤에 붙이면 됩니다. 예를 들면 다음과 같습니다:
+
+```swift
+print(#"6 times 7 is \#(6 * 7)."#)
+"6 times 7 is 42." 를 출력합니다.
+```
+
+> 보간된 문자열 내에서 괄호 안의 표현식은 'unescaped (벗어나지 않은)' 백슬래시 (`\`), 캐리지 리턴 (`\r`), 또는 줄 바꿈 (`\n`) 을 포함할 수 없습니다. 그러나, 다른 '문자열 글자표현 (string literals)' 은 포함할 수 있습니다.
 
 ### Unicode (유니코드)
 
-* **Unicode**
-    * an international standard for encoding, representing, and processing text in different writing systems
-    * represent almost any character from any language in a standardized form
-- Swift's `String`, `Character` : fully Unicode-compliant
-
+_유니코드 (Unicode)_ 는 서로 다른 '문자 (writing system)' 끼리 텍스트를 '부호화하고 (encoding)', 표현하며, 처리하는 국제 표준입니다. 이를 통해 어떤 언어로도 거의 모든 문자를 표준화된 형태로 표현할 수 있으며, 텍스트 파일이나 웹 페이지와 같은 외부 소스에서 그 문자를 읽고 쓸 수 있게 됩니다. 스위프트의 `String` 과 `Character` 타입은 완전히 유니코드에 부합하며 (Unicode-compliant), 이번 장에서 그것을 확인할 수 있습니다.
 
 #### Unicode Scalars (유니코드 크기 값)
 
-* Swift's native `String` type : built from `Unicode scalar` values
-* a Unicode scalar : a unique 21-bit number for a character or modifier
-    * ex) LATIN SMALL LETTER A ("a") : `U+0061`
+밑바닥을 들여다 보면, 본래 스위프트의 `String` 타입은 _유니코드 크기 값 (Unicode scalar value)_ 으로 만들어져 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대해 유일하게 지정된 21-자리 수를 말하여, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`), 또 `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 입니다.
 
-* not all 21-bit Unicode scalars are assigned to a character : reserved for future assignment
-* scalars typically have a name
+모든 21-자리 '유니코드 크기 값' 에 문자가 할당되어 있는 것은 아님을 명심하기 바랍니다-일부 크기 값은 미래에 할당될 때나 UTF-16 부호화 (encoding) 에 사용될 때를 대비해서 예약되어 있습니다. 문자에 할당된 '크기 값 (scalar values)' 은 보통 이름을 가지고 있으며, 위에서 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 이 그런 예입니다.
 
+#### Extended Grapheme Clusters (확장된 자소 덩어리)
 
-#### Extended Grapheme Clusters (확장된 음소 덩어리)
+스위프트 `Character` 타입의 모든 인스턴스는 하나의 단일한 _확장된 자소 덩어리 (extended grapheme cluster)_ 를 표현합니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 하나 이상의 유니코드 크기 값이 연속되어 있는 것으로 (서로 결합하면) 사람이 읽을 수 있는 단일한 문자를 만들어 냅니다.
 
-* every instance of Swift's `Character` type : a single **extended grapheme cluster**
-* an **extended grapheme cluster** :
-    * a sequence of one or more Unicode scalars
-    * produce a single human-readable character
-- the letter `é`
-    - represented as the single Unicode scalar `é` : `U+00E9`
-    - represented as a pair of scalars : `e` (`U+0065`) + `\ ́` (`U+0301`)
-* In both cases, the letter `é` - a single Swift `Character` value
+여기 예를 들어 보겠습니다. 문자 `é` 는 단일한 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE`, 또는 `U+00E9`) 로 표현될 수 있습니다. 하지만, 같은 문자를 한 _쌍 (pair)_ 의 '크기 값 (scalars)' 으로도 표시 할 수 있습니다-표준 문자 `e` (`LATIN SMALL LETTER E`, 또는 `U+0065`), 에다가 `COMBINING ACUTE ACCENT` 크기 값 (`U+0301`) 를 뒤에 붙인 것 말입니다. `COMBINING ACUTE ACCENT` 크기 값은 그 앞에 오는 크기 값의 모양을 바꾸는 역할을 하며, 유니코드-인식 글자-표현 시스템에 의해 `e` 를 `é` 로 바꾸게 됩니다.
+
+두 경우에서 문자 `é` 는 스위프트에서 '확장된 자소 덩어리' 를 표현하는 단일한 `Character` 값을 나타냅니다. 첫 번째에서는, 덩어리가 단일한 크기 값을 갖고 있고; 두 번째에서는 덩어리가 두 개의 크기 값을 갖고 있습니다:
 
 ```swift
 let eAcute: Character = "\u{E9}"                // é
-
-let combinedEAcute: Character = "\u{65}\u{301}" // e followed by  ́
-
-// eAcute is é, combinedEAcute is é
+let combinedEAcute: Character = "\u{65}\u{301}" // e followed by ́
+// eAcute 는 é 이고, combinedEAcute 는 é 입니다.
 ```
 
-* Extended grapheme clusters : a flexible way
-    * ex) Hangul syllables : represented as either a precomposed or decomposed sequence
+'확장된 자소 덩어리 (extended grapheme clusters)' 라는 유연한 방법 덕분에 문자 표기법이 많고 복잡하더라도 이를 단일한 `Character` 값으로 표현할 수 있게 되었습니다. 예를 들어, 한글로 한국어 음절을 표현하는 방식은 '완성형 (precomposed)' 과 '조합형 (decomposed)' 두 가지가 있습니다. 스위프트에서는 이 두 표현 방식 모두 단일한 `Character` 값으로인정받습니다:
 
 ```swift
 let precomposed: Character = "\u{D55C}"                 // 한
-
 let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"  // ᄒ, ᅡ, ᆫ
-
-// precomposed is 한, decomposed is 한
+// precomposed 는 '한' 이고, decomposed 도 '한' 입니다.
 ```
 
-* scalars for enclosing marks
+'확장된 자소 덩어리' 를 사용하면 테두리 기호 (가령 `COMBINING ENCLOSING CIRCLE`, 또는 `U+20DD`) 크기 값으로 다른 유니코드 크기 값에 테두리를 만들어서 하나의 단일한 `Character` 값을 만드는 것도 가능합니다:
 
 ```swift
 let enclosedEAcute: Character = "\u{E9}\u{20DD}"
-
-// enclosedEAcute is é⃝
+// enclosedEAcute 은 é⃝ 입니다.
 ```
 
-* unicode scalars for regional indicator symbols : make a singe `Character` value
-    * `U` (`U+1F1FA`) + `S` (`U+1F1F8`)
+'지역 표시 기호' 에 대한 유니코드 크기 값 한 쌍을 결합해서 하나의 단일한 `Character` 값을 만들 수 있는데, 가령 `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 를 결합하면 아래와 같습니다:
 
 ```swift
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
-
 // regionalIndicatorForUS is 🇺🇸
 ```
 
-
 ### Counting Characters (문자 개수 살리기)
 
-* to retrieve a count of the `Character` values : the `count` property of the string's `characters`
+문자열에 있는 `Character` 의 개수를 구하려면, 문자열의 `count` 속성을 사용하면 됩니다:
 
 ```swift
 let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
-
 print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
-
-// Prints "unusualMenagerie has 40 characters"
+// "unusualMenagerie has 40 characters" 를 출력합니다.
 ```
 
-* string concatenation and modification may not always affect a string's character count
-    * extended grapheme clusters for `Character` values
-- ex) cafe + `\ ́` (`U+0301`) = a character count of `4`
+스위프트에서는 `Character` 값으로 '확장된 자소 덩어리' 를 사용하므로 문자열을 연결하거나 수정하더라도 문자열의 문자 개수가 변하지 않을 수도 있다는 점을 명심하기 바랍니다.
+
+예를 들어, 새로운 문자열을 4-개의 글자로 된 단어 `cafe` 로 초기화한 후, 문자열 끝에 `COMBINING ACUTE ACCENT` (`U+0301`) 를 덧붙이면, 그 결과 문자열의 글자 개수는 여전히 `4` 개이며, 네 번째 문자는 `e` 대신 `é` 가 됩니다:
 
 ```swift
 var word = "cafe"
-
 print("the number of characters in \(word) is \(word.characters.count)")
-
-// Prints "the number of characters in cafe is 4"
+// "the number of characters in cafe is 4" 를 출력합니다.
 
 word += "\u{301}"       // COMBINING ACUTE ACCENT, U+0301
 
 print("the number of characters in \(word) is \(word.characters.count)")
-
-// Prints "the number of characters in café is 4"
+// "the number of characters in café is 4" 를 출력합니다.
 ```
 
-> Extended grapheme clusters : composed of one or more Unicode scalars
+확장된 자소 덩어리 (extended grapheme clusters) 는 여러 가지의 유니코드 크기 값들로 구성 될 수 있습니다. 이것은 다른 문자들-그리고 같은 문자에 대한 다른 표현 방법들-을 저장할 때 메모리의 크기가 다를 수도 있다는 것을 의미합니다. 이러한 이유로, 스위프트의 문자들은 각각이 문자열 내에서 같은 크기의 메모리를 차지하고 있지 않습니다. 그 결과, 문자열의 문자 개수를 계산하려면 문자열 전체에 동작을 반복하는 과정이 반드시 필요하며, 이는 확장된 자소 덩어리의 경계를 알아야 하기 때문입니다. 특히 긴 문자열을 사용하면서 `count` 속성을 사용하게 되면, 문자열의 문자 개수를 구하기 위해 전체 문자열에 있는 유니코드 크기 값을 구하는 동작을 반복하게 된다는 것을 알고 있어야 합니다.
 
-> different characters and different representations of the same character can require different amounts of memory to store
+The count of the characters returned by the count property isn’t always the same as the length property of an NSString that contains the same characters. The length of an NSString is based on the number of 16-bit code units within the string’s UTF-16 representation and not the number of Unicode extended grapheme clusters within the string.
 
-> characters in Swift do not each take up the same amount of memory within a string's representation
-
-> the number of characters in a string cannot be calculated without iterating through the string to determine its extended grapheme cluster boundaries
-
-> `characters` property must iterate over the Unicode scalars in the entire string in order to determine the characters for that sting : long string values - be aware that !
-
-> the count of the characters : not always the same as the `length` property of an `NSString`
-
-> the length of an `NSString` : the number of 16-bit code units within the string's UTF-16 representation
-
+`count` 속성이 반환하는 문자 개수는 같은 문자들을 갖고 있는 `NSString` 의 `length` (길이) 속성과 다를 수도 있습니다. `NSString` 의 길이 값은 문자열의 UTF-16 표현 방식에 있는 '16-비트 코드 단위' 의 개수를 기반으로 한 것이며 문자열에 있는 유니코드 방식의 '확장된 자소 덩어리' 개수가 아닙니다.
 
 ### Accessing and Modifying a String (문자열에 접근하고 수정하기)
 
-* access and modify a string : its methods and properties, or by using subscript syntax
-
+문자열에 접근하고 수정하려면, 문자열의 메소드와 속성, 또는 '첨자 연산 구문 (subscript syntax)' 을 사용하면 됩니다.
 
 #### String Indices (문자열 색인)
 
-* each `String` value : has an associated index type - `String.Index`
-    * the position of each `Character` in the string
-- to determine which `Character` is at a position : iterate over each Unicode scalar from the start or end  of that `String`
-- Swift strings cannot be indexed by integer values.
-* `startIndex` : the position of the first `Character` of a `String`
-* `endIndex` : the position after the last character in a `String` - `endIndex` isn't a valid argument to a string's subscript
-* `String` is empty : `startIndex` and `endIndex` are equal
-- a `String.Index` value
-    - `predecessor()` : its immediately preceding index
-    - `successor()` : its immediately succeeding index
-- any index in a `String`
-    - by chaining these methods together
-    - by using the `advancedBy(_:)` method
-- access an index outside of a string's range : trigger a runtime error
+각 문자열 값에는 문자열의 각 문자 위치에 해당하는 관련 인덱스 유형 인 String.Index가 있습니다.
 
-* subscript syntax : access the `Character` at a particular `String` index
+위에서 언급했듯이 다른 문자는 저장하기 위해 다른 양의 메모리를 요구할 수 있으므로 특정 위치에있는 문자를 판별하려면 해당 문자열의 시작 또는 끝에서 각 유니 코드 스칼라를 반복해야합니다. 따라서 Swift 문자열은 정수 값으로 색인을 생성 할 수 없습니다.
+
+startIndex 속성을 사용하여 문자열의 첫 번째 문자 위치에 액세스하십시오. endIndex 속성은 문자열에서 마지막 문자 뒤의 위치입니다. 결과적으로 endIndex 속성은 문자열의 첨자에 유효한 인수가 아닙니다. 문자열이 비어 있으면 startIndex와 endIndex가 같습니다.
+
+String의 index (before :) 및 index (after :) 메소드를 사용하여 지정된 인덱스 전후에 인덱스에 액세스합니다. 주어진 색인에서 멀리 떨어진 색인에 액세스하려면 이러한 메소드 중 하나를 여러 번 호출하는 대신 index (_ : offsetBy :) 메소드를 사용할 수 있습니다.
+
+첨자 구문을 사용하여 특정 문자열 인덱스에서 문자에 액세스 할 수 있습니다.
 
 ```swift
 let greeting = "Guten Tag!"
 
 greeting[greeting.startIndex]
-
 // G
 
 greeting[greeting.endIndex.predecessor()]
-
 // !
 
 greeting[greeting.startIndex.successor()]
-
 // u
 
 let index = greeting.startIndex.advancedBy(7)
 
 greeting[index]
-
 // a
 ```
 
@@ -441,7 +404,6 @@ greeting[index]
 for index in greeting.characters.indices {
     print("\(greeting[index]) ", terminator: "")
 }
-
 // prints "G u t e n   T a g ! "
 ```
 
@@ -454,7 +416,6 @@ for index in greeting.characters.indices {
 var welcome_2 = "hello"
 
 welcome_2.insert("!", atIndex: welcome_2.endIndex)
-
 // welcome_2 now equals "hello!"
 ```
 
@@ -470,7 +431,6 @@ welcome_2.insertContentsOf(" there".characters, at: welcome_2.endIndex.predecess
 
 ```swift
 welcome_2.removeAtIndex(welcome_2.endIndex.predecessor())
-
 // welcome now equals "hello there"
 ```
 
@@ -480,7 +440,6 @@ welcome_2.removeAtIndex(welcome_2.endIndex.predecessor())
 let range = welcome_2.endIndex.advancedBy(-6)..<welcome_2.endIndex
 
 welcome_2.removeRange(range)
-
 // welcome now equals "hello"
 ```
 
@@ -493,20 +452,17 @@ welcome_2.removeRange(range)
     * prefix equality
     * suffix equality
 
-
 #### String and Character Equality (문자열 및 문자 동등성)
 
 * checked with the "equal to" operator (`==`) and the "not equal to" operator (`!=`)
 
 ```swift
 let quotation = "We're a lot alike, you and I."
-
 let sameQuotation = "We're a lot alike, you and I."
 
 if quotation == sameQuotation {
     print("These two strings are considered equal")
 }
-
 // Prints "These two strings are considered equal."
 ```
 
@@ -528,7 +484,6 @@ let combinedEAccuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
 if eAcuteQuestion == combinedEAccuteQuestion {
     print("These two strings are considered equal")
 }
-
 // Prints "These two strings are considered equal"
 ```
 
@@ -537,7 +492,6 @@ if eAcuteQuestion == combinedEAccuteQuestion {
 
 ```swift
 let latinCapitalLetterA: Character = "\u{41}"
-
 let cyrillicCapitalLetterA: Character = "\u{0410}"
 
 if latinCapitalLetterA != cyrillicCapitalLetterA {
@@ -720,4 +674,6 @@ for scalar in dogString.unicodeScalars {
 
 [^optimize-string]: 이 말은 기본적으로 `String` 은 '깊은 복사' 를 한다고는 하지만, 만약 전달받은 `String` 을 상수처럼 사용할 경우, 굳이 값을 복사할 필요가 없으므로 스위프트가 성능 최적화를 해서, 실제 복사를 안할 수도 있다는 말입니다.
 
-[^annotation]: 'annotation' 은 '주석' 이라는 말로 옮길 수 있는데, 스위프트에서 '주석 (annotaion)' 이라 하면 `let a: Int = 10` 에서 `Int` 처럼 타입을 지정해 주는 것을 말합니다.
+[^annotation]: 'annotation' 은 '주석' 이라는 말로 옮길 수 있는데, 스위프트에서 '주석 (annotation)' 이라 하면 `let a: Int = 10` 에서 `Int` 처럼 타입을 지정해 주는 것을 말합니다.
+
+[^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
