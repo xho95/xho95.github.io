@@ -70,7 +70,7 @@ It also ends with a line break.
 
 '여러 줄짜리 문자열 (multiline string)' 은 들여쓰기를 해서 주변 코드와 위치를 맞출 수 있습니다. 닫는 따옴표 (`"""`) 앞에 있는 공백은 스위프트가 모든 줄에서 그 만큼의 공백을 무시하도록 합니다. 하지만, 줄 맨 앞에 닫는 따옴표 앞에 있는 것보다 더 많은 공백을 입력하면, 그 공백은 문자열에 포함됩니다.
 
-![Indentation](/assets/Swift/Swift-Programming-Language/String-and-Characters-indent.jpg)
+![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-indent.jpg)
 
 위의 예에서, '여러 줄짜리 문자열 글자표현 (multiline string literal)' 전체가 들여쓰기되어 있지만, 문자열의 첫 줄과 마지막 줄은 공백으로 시작하지 않습니다. 가운데 줄은 닫는 따옴표보다 더 많이 들여쓰기 되어 있으므로, 이것만 추가로 4칸 들여쓰기로 시작합니다.
 
@@ -286,9 +286,9 @@ _유니코드 (Unicode)_ 는 서로 다른 '문자 (writing system)' 끼리 텍�
 
 #### Unicode Scalars (유니코드 크기 값)
 
-밑바닥을 들여다 보면, 본래 스위프트의 `String` 타입은 _유니코드 크기 값 (Unicode scalar value)_ 으로 만들어져 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대해 유일하게 지정된 21-자리 수를 말하여, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`), 또 `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 입니다.
+밑바닥을 들여다 보면, 본래 스위프트의 `String` 타입은 _유니코드 크기 값 (Unicode scalar value)_ 으로 만들어져 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대해 유일하게 지정된 21-bit 수를 말하여, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`), 또 `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 입니다.
 
-모든 21-자리 '유니코드 크기 값' 에 문자가 할당되어 있는 것은 아님을 명심하기 바랍니다-일부 크기 값은 미래에 할당될 때나 UTF-16 부호화 (encoding) 에 사용될 때를 대비해서 예약되어 있습니다. 문자에 할당된 '크기 값 (scalar values)' 은 보통 이름을 가지고 있으며, 위에서 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 이 그런 예입니다.
+모든 21-bit '유니코드 크기 값' 에 문자가 할당되어 있는 것은 아님을 명심하기 바랍니다-일부 크기 값은 미래에 할당될 때나 UTF-16 부호화 (encoding) 에 사용될 때를 대비해서 예약되어 있습니다. 문자에 할당된 '크기 값 (scalar values)' 은 보통 이름을 가지고 있으며, 위에서 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 이 그런 예입니다.
 
 #### Extended Grapheme Clusters (확장된 자소 덩어리)
 
@@ -415,7 +415,7 @@ welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex)
 // welcome 은 이제 "hello there!" 와 같습니다.
 ```
 
-문자열의 지정된 색인에 있는 단일한 문자를 제거하려면 `remove(at:)` 메소드를 사용하고, 지정된 범위에 있는 '하위문자열 (substring)' 을 제거하려면 `removeSubrange(_:)` 메소드를 사용하면 됩니다:
+문자열의 지정된 색인에 있는 단일한 문자를 제거하려면 `remove(at:)` 메소드를 사용하고, 지정된 범위에 있는 '하위 문자열 (substring)' 을 제거하려면 `removeSubrange(_:)` 메소드를 사용하면 됩니다:
 
 ```swift
 welcome.remove(at: welcome.index(before: welcome.endIndex))
@@ -428,75 +428,82 @@ welcome.removeSubrange(range)
 
 > `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 그리고 `removeSubrange(_:)` 메소드들은 `RangeReplaceableCollection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
 
-### Substrings (하위문자열)
+### Substrings (하위 문자열)
 
-문자열에서 하위 문자열을 가져 오면 (예 : 아래 첨자 또는 prefix (_ :)와 같은 메서드 사용) 결과는 다른 문자열이 아닌 Substring의 인스턴스입니다. Swift의 하위 문자열에는 문자열과 거의 동일한 방법이 있으므로 문자열을 사용하는 것과 같은 방식으로 하위 문자열을 사용할 수 있습니다. 그러나 문자열과 달리 문자열에 대해 작업을 수행하는 동안 짧은 시간 동안 만 하위 문자열을 사용합니다. 결과를 더 오랫동안 저장할 준비가되면 하위 문자열을 String 인스턴스로 변환합니다. 예를 들면 다음과 같습니다.
+문자열에서 '하위 문자열 (substring)' 을 가져오면-예를 들어, 첨자 연산이나 `prefix(_:)` 같은 메소드를 쓸 경우-그 결과는 하나의 [Substring](https://developer.apple.com/documentation/swift/substring) 인스턴스이며, 또다른 문자열 (타입) 인 것이 아닙니다. 스위프트의 '하위 문자열 (substring)' 은 '문자열 (string)' 과 거의 같은 메소드를 가지고 있기 때문에, 하위 문자열을 문자열을 쓰듯이 작업할 수 있긴 합니다. 하지만, 문자열과는 달리, 하위 문자열로 문자열 작업을 수행할 때는 짧은 시간 동안만 사용하도록 합니다. 결과를 더 오랜 시간동안 저장하려고 한다면, 하위 문자열을 `String` 인스턴스로 변환하도록 합니다. 예를 들면 다음과 같습니다:
+
+```swift
+let greeting = "Hello, world!"
+let index = greeting.firstIndex(of: ",") ?? greeting.endIndex
+let beginning = greeting[..<index]
+// beginning 은 "Hello" 입니다.
+
+// 오래 저장하기 위해 결과를 String 으로 변환합니다.
+let newString = String(beginning)
+```
+
+문자열과 마찬가지로, 각각의 하위 문자열은 그 하위 문자열을 구성하는 문자들을 저장하는 메모리 영역이 있습니다. 문자열과 하위 문자열의 차이점은, 성능 최적화로 인해, 하위 문자열은 원래 문자열 또는 다른 하위 문자열이 저장된 메모리의 일부를 재사용할 수도 있다는 것입니다. (문자열도 비슷한 최적화 기능을 갖고 있지만, 두 문자열이 메모리를 공유할 때는, 서로 같을 때 뿐입니다.) 이러한 성능 최적화가 의미하는 것은 문자열이나 하위 문자열의 경우 수정하기 전까지는 메모리를 복사하는데 드는 성능 비용을 신경쓰지 않아도 된다는 점입니다. 앞서 언급한 대로, 하위 문자열은 오랜-기간 저장하는 용도로는 적합하지 않습니다-이는 원래 문자열의 저장 공간을 재사용할 경우, 하위 문자열을 사용하는 한 원래 문자열 전체에 대한 메모리를 계속 유지해야만 하기 때문입니다.
+
+위의 예에서, `greeting` 은 문자열이므로, 이를 구성하는 문자들을 저장하는 메모리 영역을 가지고 있습니다. `beginning` 은 `greeting` 의 하위 문자열이라서, `greeting` 이 가지고 있는 메모리를 재사용합니다. 이와는 다르게, `newString` 은 하나의 문자열로-하위 문자열을 이용해서 생성될 때, 자신만의 저장 공간을 가집니다. 이 관계는 아래 그림과 같습니다:
+
+![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-indent.jpg)
+
+> `String` 과 `Substring` 은 모두 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 `StringProtocol` 값을 전달받는 '문자열 조작 함수 (string manipulation functions)' 를 쓰는 것이 편할 때가 많다는 것을 의미합니다. 이러한 함수는 `String` 이나 `Substring` 값에 상관없이 호출할 수 있습니다.
 
 ### Comparing Strings (문자열 비교하기)
 
-* three ways to compare textual values
-    * string and character equality
-    * prefix equality
-    * suffix equality
+스위프트는 '글자 형태의 값 (textual values)' 을 비교하는 다음의 세 가지 방법을 제공합니다: '문자열과 문자 동등성 (string and character equality)', '접두사 동등성 (prefix equality)', '접미사 동등성 (suffix equality)'.
 
-#### String and Character Equality (문자열 및 문자 동등성)
+#### String and Character Equality (문자열 동등성 및 문자 동등성)
 
-* checked with the "equal to" operator (`==`) and the "not equal to" operator (`!=`)
+문자열 동등성 및 문자의 동등성은 "같음" 연산자 (`==`) 와 "같지 않음" 연산자 (`!=`) 로 검사하며, 이는 [Comparison Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID70) 에서 설명한 바 있습니다:
 
 ```swift
 let quotation = "We're a lot alike, you and I."
 let sameQuotation = "We're a lot alike, you and I."
-
 if quotation == sameQuotation {
     print("These two strings are considered equal")
 }
-// Prints "These two strings are considered equal."
+// "These two strings are considered equal." 을 출력합니다.
 ```
 
-* two `String` values (or two `Character` values) are considered equal
-    * extended grapheme clusters are **canonically equivalent**
-    * **canonically equivalent** : the same linguistic meaning and appearance
-    * even if they are composed from different Unicode scalars
-- ex) `é` (`U+00E9`) == `e` (`U+0065`) + `\ ́` (`U+0301`)
+두 개의 `String` 값 (또는 두 개의 `Character` 값) 은 그들의 '확장된 자소 덩어리 (extended grapheme clusters)' 가 _법적으로 동등하면 (canonically equivalent)_ 서로 같다고 여겨집니다. 확장된 자소 덩어리가 법적으로 동등하다는 말은, 그들이 실제로는 서로 다른 '유니코드 크기 값' 으로 구성되었더라도, 언어적인 의미와 형태가 같다면 동등하다는 말입니다.
+
+예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 `LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 붙은 것과 법적으로 동등합니다. 이 두 개의 '확장된 자소 덩어리' 는 모두 문자 `é` 를 표현하는 유효한 방법이므로, 법적으로 동등하다고 볼 수 있습니다:
 
 ```swift
 // "Voulez-vous un café?" using LATIN SMALL LETTER E WITH ACUTE
-
 let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
 
 // "Voulez-vous un café?" using LATIN SMALL LETTER E and COMBINING ACUTE ACCENT
-
 let combinedEAccuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
 
 if eAcuteQuestion == combinedEAccuteQuestion {
     print("These two strings are considered equal")
 }
-// Prints "These two strings are considered equal"
+// "These two strings are considered equal" 를 출력합니다.
 ```
 
-* ex) `A` (`U+0041`) used in English is not equivalent to `А` (`U+0410`) used in Russian.
-* the characters do not have the same linguistic meaning
+이와는 다르게, 영어에서 사용되는 `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는 러시아어에서 사용되는 `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 같지 _않 (not)_ 습니다. 두 문자는 비슷해 보이지만, 동일한 언어적인 의미를 가지지 않기 때문입니다:
 
 ```swift
 let latinCapitalLetterA: Character = "\u{41}"
+
 let cyrillicCapitalLetterA: Character = "\u{0410}"
 
 if latinCapitalLetterA != cyrillicCapitalLetterA {
     print("These two characters are not equivalent")
 }
-
-// Prints "These two characters are not equivalent"
+// "These two characters are not equivalent" 를 출력합니다.
 ```
 
-> note:
- String and character comparisons in Swift are not locale-sensitive.
-
+> 스위프트의 문자열 비교 연산 및 문자 비교 연산은 '지역에-민감하지 (locale-sensitive)'[^locale-sensitive] 않습니다.
 
 #### Prefix and Suffix Equality (접두사 및 접미사 동등성)
 
-* to check whether a string has a particular string prefix or suffix : `hasPrefix(_:)`, `hasSuffix(_:)` methods
-* both take a single argument of type `String` and return a Boolean value
-- the first two acts of Shakespeare's **Romeo and Juliet**
+문자열에 특정 문자열로 된 접두사나 접미사가 있는지 확인하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하면 되는데, 이 둘은 모두 `String` 타입의 단일 인자를 가지고, 불린 (Boolean) 값을 반환합니다.
+
+아래 예제는 문자열의 배열에 대한 예제로, 이는 셰익스피어의 희곡 _로미오와 줄리엣 (Romeo and Juliet)_ 의 첫 두 막에 대한 각 '장 (scene)' 의 장소입니다:
 
 ```swift
 let romeoAndJuliet = [
@@ -514,7 +521,7 @@ let romeoAndJuliet = [
 ]
 ```
 
-* `hasPrefix(_:)` : to count the number of scenes in Act 1
+`hasPrefix(_:)` 메소드를 `romeoAndJuliet` 배열에 사용하여, 희곡의 제 1 막에 있는 '장 (scene)' 의 개수를 계산할 수 있습니다:
 
 ```swift
 var act1SceneCount = 0
@@ -524,18 +531,15 @@ for scene in romeoAndJuliet {
         act1SceneCount += 1
     }
 }
-
 print("There are \(act1SceneCount) scenes in Act 1")
-
-// Prints "There are 5 scenes in Act 1"
+// "There are 5 scenes in Act 1" 를 출력합니다.
 ```
 
-* `hasSuffix(_:)` : to count the number of scenes that take place in or around Capulet's mansion and Friar Lawrence's cell
+이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하여 '장 (scene)' 에서 'Capulet's mansion (저택)' 과 'Friar Lawrence's cell (작은 방)' 위치에 대한 개수를 계산할 수 있습니다:
 
 ```swift
 var mansionCount = 0
 var cellCount = 0
-
 for scene in romeoAndJuliet {
     if scene.hasSuffix("Capulet's mansion") {
         mansionCount += 1
@@ -543,58 +547,49 @@ for scene in romeoAndJuliet {
         cellCount += 1
     }
 }
-
 print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
-// Prints "6 mansion scenes; 2 cell scenes"
+// "6 mansion scenes; 2 cell scenes" 를 출력합니다.
 ```
 
-> note:
- `hasPrefix(_:)`, `hasSuffix(_:)` : a character-by-character canonical equivalence comparison between the extended grapheme clusters in each string
-
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 대해 '확장된 자소 덩어리' 사이의 개별 문자하나씩 법적으로 동등한지를 비교하는 연산을 수행하며, 이는 [String and Character Equality]() 에 설명되어 있습니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현)
 
-* Unicode scalars : encoded in one of several Unicode-defined **encoding forms**
-* each form encodes the string in small     - **code units**
-    * the UTF-8 encoding form : encodes a string as 8-bit code units
-    * the UTF-16 encoding form : encodes a string as 16-bit code units
-    * the UTF-32 encoding form : encodes a string as 32-bit code units
-- access a `String` value in one of three other Unicode-compliant representations
-    - `utf8` property : a collection of UTF-8 code units
-    - `utf16` property : a collection of UTF-16 code units
-    - `unicodeScalars` property : a collection of 21-bit Unicode scalar values - equivalent to the string's UTF-32 encoding form
-* each example below shows a different representation of the following string
+유니코드 문자열을 텍스트 파일이나 다른 저장소에 기록하면, 그 문자열의 '유니코드 크기 값' 은 유니코드에-정의된 여러 '_인코딩 양식 (encording forms; 부호화 양식)_' 중 한 가지로 인코딩 됩니다. 각 양식은 문자열을 _코드 단위 (code units)_ 라는 작은 조각으로 인코딩합니다. 여기에는 UTF-8 인코딩 양식 (문자열을 8-bit '코드 단위' 로 인코딩), UTF-16 인코딩 양식 (문자열을 16-bit '코드 단위' 로 인코딩), 그리고 UTF-32 인코딩 양식 (문자열을 32-bit '코드 단위' 로 인코딩) 이 있습니다.
+
+스위프트는 문자열의 유니코드 '표현 (representations)' 에 접근하는 여러 가지 방법들을 제공합니다. 문자열에 `for-in` 구문을 사용하면, 개별 `Character` 값을 '확장된 자소 덩어리' 의 형태로 접근하여, 동작을 반복 적용시킬 수 있습니다. 이 과정은 [Working with Characters]() 에 설명되어 있습니다.
+
+다른 방법으로, `String` 값에 대해 다음의 세 가지 '유니코드-부합 표현 (Unicode-compliant representations)' 형태로 접근할 수도 있습니다:
+
+* UTF-8 '코드 단위' 의 컬렉션 (문자열의 `utf8` 속성으로 접근 가능)
+* UTF-16 '코드 단위' 의 컬렉션 (문자열의 `utf16` 속성으로 접근 가능)
+* 21-bit '유니코드 크기 값' 의 컬렉션, 문자열의 UTF-32 인코딩 양식과 동등함 (문자열의 `unicodeScalars` 속성으로 접근 가능)
+
+이제부터 나올 각 예제는 다음 문자열에 대한 서로 다른 '표현 (representaions)' 을 보여줍니다. 이 문자열은 문자 `D`, `o`, `g`, `‼` (`DOUBLE EXCLAMATION MARK`, 또는 유니코드 크기 값 `U+203C`) 와 문자 `🐶` (`DOG FACE` 또는 유니코드 크기 값 `U+1F436`) 로 구성되어 있습니다:
 
 ```swift
 let dogString = "Dog!!🐶"
 ```
 
+#### UTF-8 Representation (UTF-8 표현)
 
-#### UTF-8 Representation
+`String` 의 'UTF-8 표현' 에 접근하려면 `utf8` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `String.UTF8View` 인데, 이는 문자열의 UTF-8 표현에 있는 각 바이트 (byte) 하나가 부호없는 8-bit (`UInt8`) 값인 컬렉션 (집합체) 이라는 의미입니다:
 
-* `utf8` : access a UTF-8 representation of a `String`
-    * type : `String.UTF8View` - a collection of unsigned 8-bit values (`UInt8`)
+![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
 ```swift
 for codeUnit in dogString.utf8 {
     print("\(codeUnit) ", terminator: "")
 }
-
 print("")
-
-// 68 111 103 226 128 188 240 159 144 182
+// "68 111 103 226 128 188 240 159 144 182 " 를 출력합니다.
 ```
-
-* `68, 111, 103` : `D`, `o`, and `g`
-* `226, 128, 188` : `!!`
-* `240, 159, 144, 182` : `🐶`
-
 
 #### UTF-16 Representation
 
-* `utf16` : access a UTF-8 representation of a `String`
-    * type : `String.UTF16View` - a collection of unsigned 8-bit values (`UInt16`)
+
+![UTF-16 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-16-representation.jpg)
 
 ```swift
 for codeUnit in dogString.utf16 {
@@ -613,9 +608,7 @@ print("")
 
 #### Unicode Scalar Representation
 
-* `unicodeScalars` : access a Unicode scalar representation of a `String`
-    * type : `String.UnicodeScalarView` - a collection of `UnicodeScalar`
-    * each `UnicodeScalar` has a `value` property : return the scalar's 21-bit value - a `UInt32` value
+![Unicode Scalar representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-Unicode-scalar-representation.jpg)
 
 ```swift
 for scalar in dogString.unicodeScalars {
@@ -664,3 +657,5 @@ for scalar in dogString.unicodeScalars {
 [^annotation]: 'annotation' 은 '주석' 이라는 말로 옮길 수 있는데, 스위프트에서 '주석 (annotation)' 이라 하면 `let a: Int = 10` 에서 `Int` 처럼 타입을 지정해 주는 것을 말합니다.
 
 [^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
+
+[^locale-sensitive]: 'locale-sensitive' 라는 '지역에 대한 민감성' 을 나타내는데, '비교 연산 (comparison)' 이 '지역에 민감한 (locale-sensitive)' 것은 서로 다른 지역의 언어에 대해 비교 연산을 할 수 없다는 의미로 추측됩니다. 스위프트의 문자열 연산은 유니코드에 부합하므로 지역에 민감하지 않다고 볼 수 있습니다.
