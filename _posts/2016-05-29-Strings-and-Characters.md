@@ -574,7 +574,7 @@ let dogString = "Dog!!🐶"
 
 #### UTF-8 Representation (UTF-8 표현)
 
-`String` 의 'UTF-8 표현' 에 접근하려면 `utf8` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `String.UTF8View` 인데, 이는 문자열의 UTF-8 표현에 있는 각 바이트 (byte) 하나가 부호없는 8-bit (`UInt8`) 값인 컬렉션 (집합체) 이라는 의미입니다:
+`String` 의 'UTF-8 표현' 에 접근하려면 `utf8` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `String.UTF8View` 이며, 이는 문자열의 UTF-8 표현에 있는 각각의 바이트 (byte) 하나가 부호없는 8-bit (`UInt8`) 값으로 된 컬렉션 (집합체) 임을 의미합니다:
 
 ![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
@@ -586,8 +586,11 @@ print("")
 // "68 111 103 226 128 188 240 159 144 182 " 를 출력합니다.
 ```
 
-#### UTF-16 Representation
+위의 예에서, `codeUnit` 의 처음 세 10-진수의 값들 (`68`, `111`, `103`) 은 문자 `D`, `o`, 그리고 `g` 를 나타내며, 이들의 'UTF-8 표현' 은 'ASCII 표현' 과 같음을 알 수 있습니다. `codeUnit` 의 그 다음의 세 10-진수 값들 (`226`, `128`, `188`) 은 `DOUBLE EXCLAMATION MARK` 문자에 대한 3-바이트짜리 'UTF-8 표현' 입니다. `codeUnit` 의 마지막 네 값들 (`240`, `159`, `144`, `182`) 은 `DOG FACE` 문자에 대한 4-바이트짜리 'UTF-8 표현' 입니다.
 
+#### UTF-16 Representation (UTF-16 표현)
+
+`String` 의 'UTF-16 표현' 에 접근하려면 `utf16` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `String.UTF16View` 이며, 이는 문자열의 UTF-16 표현에 있는 각각의 바이트 (byte) 하나가 부호없는 16-bit (`UInt16`) 값으로 된 컬렉션 (집합체) 임을 의미합니다:
 
 ![UTF-16 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-16-representation.jpg)
 
@@ -595,18 +598,23 @@ print("")
 for codeUnit in dogString.utf16 {
     print("\(codeUnit) ", terminator: "")
 }
-
 print("")
-
-// 68 111 103 8252 55357 56374
+// "68 111 103 8252 55357 56374 " 를 출력합니다.
 ```
 
-* `68, 111, 103` : `D`, `o`, and `g` - the same values as in the string's UTF-8 representation
-* `8252` : `!!` - a decimal equivalent of the hexadecimal value `203C`
-* `55357, 56374` : `🐶` - a UTF-16 surrogate pair
+위의 예에서, `codeUnit` 의 처음 세 10-진수의 값들 (`68`, `111`, `103`) 은 문자 `D`, `o`, 그리고 `g` 를 나타내며, 이들의 'UTF-8 표현' 은 'ASCII 표현' 과 같음을 알 수 있습니다. `codeUnit` 의 그 다음의 세 10-진수 값들 (`226`, `128`, `188`) 은 `DOUBLE EXCLAMATION MARK` 문자에 대한 3-바이트짜리 'UTF-8 표현' 입니다. `codeUnit` 의 마지막 네 값들 (`240`, `159`, `144`, `182`) 은 `DOG FACE` 문자에 대한 4-바이트짜리 'UTF-8 표현' 입니다.
 
+또다시, `codeUnit` 의 처음 세 값들 (`68`, `111`, `103`) 은 문자 `D`, `o`, 그리고 `g` 를 나타내며, 이들의 'UTF-16 표현' 은 'UTF-8 표현' 과 같습니다. (왜냐면 이들의 '유니코드 크기 값' 은 'ASCII 문자' 를 나타내기 때문입니다.)
 
-#### Unicode Scalar Representation
+`codeUnit` 의 네 번째 값 (`8252`) 은 16-진수 값 `203C` 에 해당하는 10-진수 값으로, `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 나타냅니다. 이 문자는 'UTF-16' 에서 단일한 '코드 단위' 로 표시할 수 있습니다.
+
+`codeUnit` 의 다섯 번째와 여섯 번째 값들 (`55357` 와 `56374`) 은 `DOG FACE` 문자에 대한 'UTF-16 대체-쌍 (surrogate pair) 표현' 입니다. 이들의 값은 '높은자리-대체 값' `U+D83D` (10-진수 값 `55357`) 과 '낮은자리-대체 값' `U+DC36` (10-진수 값 `56374`) 입니다.
+
+#### Unicode Scalar Representation ('유니코드 크기 값' 표현)
+
+`String` 값의 '유니코드 크기 값 표현' 에 접근하려면 `unicodeScalars` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `UnicodeScalarView` 이며, 이는 타입이 `UnicodeScalar` 인 값들의 컬렉션 (집합체) 임을 의미합니다.
+
+각 `UnicodeScalar` 은 '크기 값' 을 21-bit 값으로 반환하는 `value` 속성을 갖고 있는데, 이 반환 값은 `UInt32` 값으로 표현됩니다:
 
 ![Unicode Scalar representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-Unicode-scalar-representation.jpg)
 
@@ -614,21 +622,28 @@ print("")
 for scalar in dogString.unicodeScalars {
     print("\(scalar.value) ", terminator: "")
 }
-
 print("")
+// "68 111 103 8252 128054 " 를 출력합니다.
+```
 
+`UnicodeScalar` 의 처음 세 값들에 대한 `value` 속성들 (`68`, `111`, `103`) 은 또다시 문자 `D`, `o`, 그리고 `g` 를 나타냅니다.
+
+네 번째 값 (`8252`) 은 또다시 16-진수 값 `203C` 에 해당하는 10-진수 값으로, `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 나타냅니다.
+
+`UnicodeScalar` 의 다섯 번째이자 마지막 값에 대한 `value` 속성, `128054`, 는 16-진수 값 `1F436` 에 해당하는 10-진수 값으로, `DOG FACE` 문자에 대한 '유니코드 크기 값' `U+1F436` 을 나타냅니다.
+
+`value` 속성을 조회하는 대신, 각각의 `UnicodeScalar` 값을 사용하여 새로운 `String` 값을 생성할 수 있으며, 가령 '문자열 보간법 (string interpolation)' 이 이에 해당합니다:
+
+```swift
 for scalar in dogString.unicodeScalars {
     print("\(scalar) ")
 }
-
-// 68 111 103 8252 128054
+// D
+// o
+// g
+// ‼
+// 🐶
 ```
-
-* `68, 111, 103` : `D`, `o`, and `g` - the same values as in the string's UTF-8 representation
-* `8252` : `!!` - a decimal equivalent of the hexadecimal value `203C`
-* `128054` : `🐶` - a decimal equivalent of the hexadecimal value `1F436`
-
-* an alternative to querying `value` properties : `UnicodeScalar`
 
 ### 참고 자료
 
