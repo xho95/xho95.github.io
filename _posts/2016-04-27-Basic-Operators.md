@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: Basic Operators (기본 연산자)"
+title:  "Swift 5.2: Basic Operators (기본 연산자)"
 date:   2016-04-27 10:00:00 +0900
 categories: Swift Language Grammar Basic Operators
 ---
@@ -10,181 +10,182 @@ categories: Swift Language Grammar Basic Operators
 >
 > 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-## Basic Operators
+## Basic Operators (기본 연산자)
 
-연산자는 값을 검사하고, 바꾸거나 결합하는데 사용하는 특별한 기호 또는 구절입니다. 예를 들어 덧셈 연산자 (`+`) 는 `let i = 1 + 2` 에서 보듯이 두 수를 더하고, 논리 AND 연산자 (`&&`) 는 `if enteredDoorCode && passedRetinaScan` 에서 보듯이 두 불 (Boolean) 값을 결합합니다.
+_연산자 (operator)_ 는 값을 검사하고, 바꾸거나 결합하는 데 사용하는 특수한 기호 또는 구절을 말합니다. 예를 들어, '더하기 연산자 (`+`)' 는 `let i = 1 + 2` 에서 처럼 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는 `if enterDoorCode && passedRetinaScan` 에서 처럼 두 불린 (Boolean) 값을 결합합니다.
 
-Swift 는 대부분의 표준 C 연산자를 지원하면서 자주 발생하는 코딩 에러를 없애기 위해 몇가지 기능들을 향상시켰습니다. 대입 연산자는 (`=`) 는 값을 반환하지 않도록 해서 등호 연산자 (`==`) 가 있어야 할 곳에서 실수로 사용되지 않도록 해줍니다. 산술 연산자들 (`+`, `-`, `*`, `/`, `%` 등) 은 값이 넘치는 것을 감지하고 막아주는데, 이는 수를 다룰 때 결과가 예상치 못하게 타입이 허용하는 범위보다 더 작거나 크지 않도록 해 줍니다. Swift 의 넘침 (overflow) 연산자를 사용하면 값이 넘칠 수 있도록 직접 지정할 수 있습니다. 이는 [Overflow Operators]() 에서 설명하고 있습니다.
+스위프트는 C 언어에서 제공하는 거의 대부분의 표준 연산자를 지원하며서, 거기다 일반적인 코딩 에러를 없애기 위해 몇가지 기능을 개선했습니다. '할당 연산자 (`=`)' 는 값을 반환하지 않아서, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막았습니다. 산술 연산자들 (`+`,`-`, `*`, `/`, `%` 등) 은 '값 넘침 (value overflow)' 을 감지해서 막아주기 때문에, 타입의 허용 범위보다 크거나 작아진 값을 계산하는 바람에 예상하지 못한 결과가 발생하는 것을 막아줍니다. 스위프트의 'overflow (값 넘침) 연산자' 를 사용해서 값을 넘치는 동작을 하도록 선택할 수도 있으며, 이는 [Overflow Operator (값 넘침 연산자)](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#ID37) 에서 설명합니다.
 
-Swift 는 또 C 에서는 없는 두 개의 범위 연산자 (`a..<b` 와 `a...b`) 를 제공하는데, 이는 값의 범위를 손쉽게 표현하게 해 줍니다.
+스위프트에는 C 언어에는 없는 '범위 (range) 연산자' 도 제공하는데, 가령 `a..<b` 와 `a...b` 가 있으며, 이를 쓰면 아주 간단하게 값의 범위를 표현할 수 있습니다.
 
-이번 장에서는 Swift 에 있는 보통의 연산자에 대해 설명합니다. [Advanced Operators]() 에서는 Swift 의 고급 연산자를 다루면서, 사용자 정의 연산자를 정의하는 방법과 사용자 정의 타입을 위한 표준 연산자를 구현하는 방법에 대해서 설명합니다.
+이번 장은 스위프트의 일반적인 연산자에 대해 설명합니다. 스위프트의 고급 연산자는 [Advanced Operators (고급 연산자)](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 다루는데, 직접 연산자를 정의하는 방법과 자기가 만든 타입에 대한 표준 연산자 구현 방법에 대해서 설명합니다.
 
-### 용어 (Terminology)
+### Terminology (용어)
 
 연산자에는 단항, 이항, 삼항 연산자가 있습니다:
 
-* 단항 연산자는 (`-a` 와 같이) 단일 대상에 대해 동작합니다. 단항 접두 연산자는 (`!b` 와 같이) 대상 바로 앞에 위치하고, 단항 접미 연산자는 (`c!` 처럼) 대상 바로 뒤에 위치합니다. [^appear]
-* 이항 연산자는 (`2 + 3` 과 같이) 두 개의 대상에 대해 동작하며 두 대상 사이에 위치하므로 중위 (infix) 라고 합니다. [^infix]
-* 삼항 연산자는 세 개의 대상에 대해 동작합니다. C 와 같이 Swift 에는 단 한 개의 삼항 연산자가 있는데, 삼항 조건 연산자 (`a ? b : c`) 가 바로 그것입니다.
+* _단항 (Unary)_ 연산자는 (`-a` 처럼) 단일 대상에 작용합니다. '단항 _접두 (prefix)_ 연산자' 는 (`!b` 처럼) 대상의 바로 앞에 위치하고 , '단항 _접미 (suffix)_ 연산자' 는 (`c!` 처럼) 대상 바로 뒤에 위치합니다.
+* _이항 (Binary)_ 연산자는 (`2 + 3` 처럼) 두 대상에 작용하며, 두 대상 사이에 위치하므로 _infix (중위))_ 라고 합니다. [^infix]
+* _삼항 (Ternary)_ 연산자는 세 개의 대상에 작용합니다. C 언어 처럼, 스위프트도 삼항 연산자는 한 개 뿐인데, 이는 '삼항 조건 연산자 (`a ? b : c`)' 입니다.
 
-연산자가 영향을 미치는 값을 피연산자 (operands) 라고 합니다. 가령 `1 + 2` 라는 식에서 `+` 기호는 이항 연산자이고 두 피연산자는 값 `1` 과 `2` 입니다.
+연산자가 영향을 주는 값을 _피연산자 (operands)_ 라고 합니다. `1 + 2` 라는 식이 있을 때, `+` 기호는 '이항 연산자' 이고, 이것의 피연산자 두 개는 값 `1` 과 값 `2` 입니다.
 
-### 대입 연산자 (Assignment Operator)
+### Assignment Operator (할당 연산자)
 
-대입 연산자 (`a = b`) 는 `a` 의 값을 `b` 의 값으로 초기화하거나 갱신합니다:
+_할당 연산자 (assignment operator)_ (`a = b`) 는 `a` 의 값을 `b` 의 값으로 초기화하거나 갱신 (update) 합니다:
 
 ```swift
 let b = 10
 var a = 5
 a = b
-// a 는 이제 10 이 됩니다.
+// a 는 이제 10 과 같습니다.
 ```
 
-대입의 오른쪽이 여러 값을 갖고 있는 튜플이라면, 그 요소들은 분해되어 여러 상수나 변수로 한번에 분해되어 옮겨집니다:
+할당할 때 오른쪽이 '튜플 (tuple)' 이라 여러 값을 가지고 있을 경우, 그 요소들을 한번에 여러 개의 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 let (x, y) = (1, 2)
-// x 는 1 이 되고 y 는 2 가 됩니다.
+// x 는 1 과 같고, y 는 2 와 같아집니다.
 ```
 
-C 나 Objective-C 의 대입 연산자와는 다르게 Swift 의 대입 연산자는 리턴 값이 없습니다. 즉, 다음의 구문은 유효하지 않습니다:
+C 언어나 오브젝티브-C 언어의 할당 연산자와는 다르게, 스위프트의 할당 연산자는 스스로 값을 반환하지 않습니다. 즉, 아래의 구문은 유효하지 않습니다:
 
 ```swift
 if x = y {
-    // x = y 구문은 리턴 값이 없기 때문에 유효하지 않습니다.
+    // 이것은 유효하지 않는데, x = y 는 값을 반환하지 않기 때문입니다.
 }
 ```
 
-이 특성은 등호 연산자가 (`==`) 사용되어야 할 곳에 대입 연산자 (`=`) 가 실수로 사용되는 것을 막아줍니다. `if x = y` 를 유효하지 않게 만듦으로써 Swift 는 코드에서 이런 종류의 에러를 피할 수 있게 해주는 것입니다.
+이러한 특징은 실제로는 '같음 연산자 (`==`)' 를 쓰려고 했는데 우연히 '할당 연산자 (`=`)' 를 써버리는 것을 막아줍니다. `if x = y` 를 유효하지 않게 만드는 것으로써, 스위프트는 코드에서 이런 종류의 에러를 피하도록 해줍니다.
 
-### 산술 연산자 (Arithmetic Operators)
+### Arithmetic Operators (산술 연산자)
 
-Swift 모든 수치 타입에 대해 네가지 표준 산술 연산자를 지원합니다:
+스위프트는 모든 수치 타입에 대해 다음의 네 가지 표준 _산술 연산자 (arithmetic operators)_ 를 지원합니다:
 
-* 덧셈 (`+`)
-* 뺄셈 (`-`)
-* 곱셈 (`*`)
-* 나눗셈 (`/`)
+* 더하기 (`+`)
+* 빼기 (`-`)
+* 곱하기 (`*`)
+* 나누기 (`/`)
 
 ```swift
-1 + 2       // 3 입니다.
-5 - 3       // 2 입니다.
-2 * 3       // 6 입니다.
-10.0 / 2.5  // 4.0 입니다.
+1 + 2       // 3 과 같습니다.
+5 - 3       // 2 와 같습니다.
+2 * 3       // 6 과 같습니다.
+10.0 / 2.5  // 4.0 과 같습니다.
 ```
 
-C 및 Objective-C 의 산술 연산자들과는 다르게 Swift 의 산술 연산자는 기본으로 값이 넘치는 것을 허용하지 않습니다. 값이 넘칠 수 있게 하려면 Swift 의 넘침 연산자를 (`a &+ b` 처럼) 직접 써주면 됩니다. [넘침 연산자 (Overflow Operators)]() 부분을 보도록 합니다.
+C 언어나 오브젝티브-C 언어의 산술 연산자와는 다르게, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침을 허용하려면 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하면 됩니다. (`a &+ b` 같은 것이 있습니다.) 이에 대해서는 [Overflow Operator (값 넘침 연산자)](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#ID37) 를 보도록 합니다.
 
-덧셈 연산자는 `String` 의 연결도 지원합니다:
+'더하기 연산자 (addition operator)' 로는 `String` 을 연결할 수도 있습니다:
 
 ```swift
-"hello, " + "world"  // "hello, world" 입니다.
+"hello, " + "world"  // "hello, world" 와 같아집니다.
 ```
 
-#### 나머지 연산자 (Remainder Operator)
+#### Remainder Operator (나머지 연산자)
 
-나머지 연산자 (`a % b`) 는 `a` 의 안에 몇 배의 `b` 가 들어가는지를 본 다음에 (나머지라고 하는) 남은 부분의 값을 반환합니다.
+_나머지 연산자 (remainder operator)_ (`a % b`) 는 `a` 안을 `b` 의 배수로 채운 다음에 그래도 남는 값을 반환합니다. (이를 _나머지 (remainder)_ 라고 합니다.)
 
-> 나머지 연산자 (`%`) 다른 언어에서는 모듈러 연산자라고도 합니다. 하지만 Swift 에서는 음수에 대한 작동 방식이 모듈러 연산이랑은 좀 달라서 엄밀히 말해 그냥 나머지입니다.
+> 다른 언어에서는 '나머지 연산자 (remainder operator)' (`%`) 를 '_모듈러 연산자 (modulo operator)_' 라고도 합니다. 하지만, 음수에 대한 연산 방식을 보면, 스위프트에서는 엄밀히 말해서, _모듈러 연산 (modulo operation)_[^modulo-opartion] 이라기 보다는 나머지라고 하는 것이 맞습니다.
 
-나머지 연산자가 어떻게 동작하는지 알아봅시다. `9 % 4` 를 계산하려면 먼저 얼마나 많은 `4` 가 `9` 안에 들어갈 수 있는지 봅니다:
+이제 '나머지 연산자' 의 작동 방식을 알아봅시다. `9 % 4` 를 계산하면, 일단 `4` 의 배수로 `9` 를 채웁니다:
 
-[image](../Art/remainderInteger_2x.png)
+![Indentation](/assets/Swift/Swift-Programming-Language/Basic-Operators-remainder-operator-works.jpg)
 
-`9` 안에는 `4` 가  2 개 들어갈 수 있으며 나머지는 `1` 입니다. (주황색으로 나타냈습니다).
+`4` 2 개로 `9` 를 채우고 나면, 나머지는 `1` 이 됩니다. (주황색 부분입니다.)
 
-Swift 에서는 다음과 같이 쓸 수 있습니다:
+스위프트로는, 이를 다음 처럼 작성합니다:
 
-```swift
+```
 9 % 4    // 1 과 같습니다.
 ```
 
-`a % b` 에 대한 답을 결정하려면  `%` 연산자는 다음의 식을 계산하고 `remainder` 를 그 결과로 반환합니다:
+`a % b` 의 답을 결정하기 위해, '`%` 연산자' 는 다음 식을 계산한 후 그 결과로 `remainder` 를 반환합니다:
 
 `a` = (`b` x `some multiplier`) + `remainder`
 
-`some multiplier` 는 `a` 내부에 들어맞는 `b` 의 배수 중에서 가장 큰 수입니다.
+여기서 `some multiplier` 는 `a` 내부를 채울 수 있는 `b` 의 가장 큰 배수입니다.
 
-`9` 와 `4` 를 이 식에 넣으면 다음과 같이 도출됩니다:
+`9` 와 `4` 를 넣으면 다음 식이 도출됩니다:
 
 `9` = (`4` x `2`) + `1`
 
-`a` 가 음수인 경우에 나머지를 구하는 방법도 같습니다:
+같은 방법으로 `a` 가 음수일 때도 나머지를 계산할 수 있습니다:
 
-```swift
+```
 -9 % 4   // -1 과 같습니다.
 ```
 
-`-9` 와 `4` 를 식에 대입하면 다음과 같이 도출됩니다:
+`9` 와 `4` 를 넣으면 다음 식이 도출됩니다:
 
 `-9` = (`4` x `-2`) + `-1`
 
-나머지 값은 `-1` 로 주어집니다.
+주어진 식의 나머지 값은 `-1` 입니다.
 
-`b` 가 음수인 경우 `b` 의 부호는 무시됩니다. 이것은 `a % b` 와 `a % -b` 는 항상 같은 답을 내놓는다는 것을 의미합니다.
+여기서 `b` 가 음수 값일 때라도 `b` 의 부호를 무시합니다. 이는 `a % b` 와 `a % -b` 의 답이 항상 같다는 것을 의미합니다.
 
-#### 단항 마이너스 연산자 (Unary Minus Operator)
+#### Unary Minus Operator (단항 음수 연산자)
 
-수치 값의 부호는 단항 마이너스 연산자로 알려진 접두사 `-` 를 사용하여 전환할 수 있습니다: [^toggle]
+수치 값의 부호를 전환하려면 접두사 `-` 를 붙이며, 이를 '_단항 음수 연산자 (unary minus operator)_' 라고 합니다.
 
 ```swift
 let three = 3
-let minusThree = -three       // minusThree equals -3
-let plusThree = -minusThree   // plusThree equals 3, or "minus minus three"
+let minusThree = -three       // minusThree 는 -3 과 같습니다.
+let plusThree = -minusThree   // plusThree 는 3 과 같으며, "minus minus three" 라고도 합니다.
 ```
 
-단항 마이너스 연산자 (`-`) 는 빈 공간 없이 피연산자 바로 앞에 위치해야 합니다.
+'단항 음수 연산자 (`-`)' 는 빈 공백없이 연산될 값 바로 앞에 위치합니다.
 
-#### 단항 플러스 연산자 (Unary Plus Operator)
+#### Unary Plus Operator (단항 양수 연산자)
 
-단항 플러스 연산자 (`+`) 는 아무런 변화없이 단순히 대상 값을 그대로 반환합니다:
+'_단항 양수 연산자 (unary plus operator)_' (`+`) 는 단순히 연산 값을 그대로 반환하며, 어떤 변경도 하지 않습니다:
 
 ```swift
 let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같습니다.
 ```
 
-단항 플러스 연산자는 실제로 아무 일도 하지 않지만, 음수에 단항 마이너스 연산자가 사용된 경우 이것을 양수에 사용하면 코드의 대칭성을 제공할 수 있습니다.
+'단항 양수 연산자' 가 실제로 하는 일은 없지만, 이것을 양수에 사용하면 '단항 음수 연산자' 로 표현한 음수와 나란하게 코드를 배치할 수 있습니다.
 
-### 복합 대입 연산자 (Compound Assignment Operators)
+### Compound Assignment Operators (복합 할당 연산자)
 
-C 처럼 Swift 는 대입 연산 (`=`) 을 다른 연산과 결합하는 복합 대입 연산자를 제공합니다. 한가지 예는 덧셈 대입 연산자 (`+=`) 입니다:
+C 언어처럼, 스위프트는 _복합 할당 연산자 (compound assignment operators)_ 를 제공하며 이는 '할당 연산 (`=`)' 을 다른 연산과 결합합니다. 한 가지 예로는 '더하기 할당 연산자 (addition assignment operator)' (`+=`)  가 있습니다:
 
 ```swift
 var a = 1
 a += 2
-// a 는  3 이 됩니다
+// a 는  3 과 같습니다.
 ```
 
-`a += 2` 표현식은 `a = a + 2` 의 단축 표현입니다. 실제로 덧셈 연산과 대입 연산은 두 작업을 한 번에 수행하는 하나의 연산자로 결합됩니다.
+표현식 `a += 2` 는 `a = a + 2` 의 약칭입니다. 효과적으로, 더하기와 할당 연산을 하나의 연산자로 결합하여 한번에 두 작업을 동시에 수행합니다.
 
-> 복합 대입 연산자는 값을 반환하지 않습니다. 예를 들어 `let b = a += 2` 처럼 사용할 수는 없습니다.
+> '복합 할당 연산자' 는 값을 반환하지 않습니다. 예를 들어 `let b = a += 2` 라고 작성할 수 없습니다.
 
-Swift 표준 라이브러리가 제공하는 복합 대입 연산자의 전체 목록을 보려면 [Swift Standard Library Operators Reference]() 를 참고합니다.
 
-### 비교 연산자 (Comparison Operators)
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는 [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 보기 바랍니다.
 
-Swift 는 모든 표준 C 비교 연산자를 지원합니다:
+### Comparison Operators (비교 연산자)
 
-* 등호 (`a == b`) : 같음
-* 부등호 (`a != b`) : 같지 않음
-* 초과 (`a > b`) : 보다 큼
-* 미만 (`a < b`) : 보다 작음
-* 이상 (`a >= b`) : 크거나 같음
-* 이하 (`a <= b`) : 작거나 같음
+스위프트는 C 언어에 있는 모든 표준 _비교 연산자 (comparison operators)_ 를 지원합니다:
 
-> Swift 는 두 개의 동일 id 연산자 (`===` and `!==`) 도 제공하는데 이는 두 객체의 참조가 모두 같은 객체 인스턴스를 참조하고 있는지를 검사하는데 사용합니다. 더 자세한 내용은 [클래스 및 구조 타입 (Classes and Structures)]() 를 보도록 합니다.
+* 같음 (`a == b`) - 등호
+* 같지 않음 (`a != b`) - 부등호
+* 보다 큼 (`a > b`)
+* 보다 작음 (`a < b`)
+* 크거나 같음 (`a >= b`)
+* 작거나 같음 (`a <= b`)
 
-각각의 비교 연산자는 `Bool` 값을 반환하여 그 구문이 참인지 아닌지를 나타냅니다:
+> 스위프트는 두 개의 '_식별 연산자 (identity operators)_' (`===` 와 `!==`) 도 제공하여, 두 객체에 대한 참조 모두 동일한 객체 인스턴스를 참조하고 있는지를 검사할 수 있습니다. 더 자세한 내용은 [Identity Operators (식별 연산자)](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html#ID90) 를 보기 바랍니다.
+
+각각의 '비교 연산자' 는 `Bool` 값을 반환하여 그 구문이 참인지 아닌지를 나타냅니다:
 
 ```swift
-1 == 1   // true because 1 is equal to 1
-2 != 1   // true because 2 is not equal to 1
-2 > 1    // true because 2 is greater than 1
-1 < 2    // true because 1 is less than 2
-1 >= 1   // true because 1 is greater than or equal to 1
-2 <= 1   // false because 2 is not less than or equal to 1
+1 == 1   // true (참), 1 은 1 과 같기 때문입니다.
+2 != 1   // true (참), 2 는 1 과 같지 않기 때문입니다.
+2 > 1    // true (참b, 2 는 1 보다 크기 때문입니다.
+1 < 2    // true (참), 1 은 2 보다 작기 때문입니다.
+1 >= 1   // true (참), 1 은 1 보다 크거가 같기 때문입니다.
+2 <= 1   // false (거짓), 2 는 1 보다 작거나 같지 않기 때문입니다.
 ```
 
 비교 연산자는 `if` 문 같은 조건 구문에서 자주 사용됩니다:
@@ -357,7 +358,7 @@ if !allowedEntry {
 
 `if !allowedEntry` 구절은 “허가된 입장이 아니면” 으로 읽을 수 있습니다. 이어지는 행은 “허가된 입장이 아닌” 것이 참일 때만 실행됩니다; 그것은 `allowedEntry` 가 `false` 인 경우입니다.
 
-이 예제와 같이 불 상수 및 변수 이름을 주의깊에 선택하면 코드를 읽기 슆고 간결하게 만들 수 있으며 동시에 이중 부정 구문이나 논리 문장의 혼란을 막을 수 있습니다.
+이 예제와 같이 불 상수 및 변수 이름을 주의깊에 선택하면 코드를 읽기 슆고 간결하게 만들 수 있으며 동시에 이중 부정 구문이나 논리 구문의 혼란을 막을 수 있습니다.
 
 #### 논리 곱 연산자 (Logical AND Operator)
 
@@ -437,9 +438,15 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^Basic-Operators]: 원문은 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 에서 확인할 수 있습니다.
 
+[^modulo-opartion]: 'modulo operation' 은 수학적인 엄밀한 나머지 연산과 관련된 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 글을 참고하기 바랍니다. 이와 관련된 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
+
+
+
+
+
 [^appear]: 'appear'는 '위치하다'로 옮깁니다.
 
-[^infix]: 'infix는 '중위' 라고 옮길 수 있는데, 많은 경우 그냥 infix 그대로 두는 것이 좋을 것 같습니다.
+[^infix]: 'infix는 '중간에 위치' 한다는 의미에서 '중위' 라고 옮길 수 있는데, 의미가 헷갈리는 경우가 아니면 가급적 'infix' 라고 그대로 쓰도록 합니다.
 
 [^toggle]: 'toggle'은 '전환하다'라고 옮깁니다.
 
