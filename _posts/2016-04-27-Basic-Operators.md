@@ -225,9 +225,9 @@ if name == "world" {
 
 ### Ternary Conditional Operator (삼항 조건 연산자)
 
-삼항 조건 연산자는 세 부분으로 된 특수한 연산자로 `question ? answer1 : answer2` 와 같은 양식을 가집니다. `question` 이 참인지 거짓인지에 따라 두 표현식 중에서 하나를 평가하는 단축 표현식입니다. `question` 이 참이면 `answer1` 의 값을 구해서 그 값을 반환하고; 반대의 경우 `answer2` 의 값을 구해서 그 값을 반환합니다.
+_삼항 조건 연산자 (ternary conditional operator)_ 는 세 부분으로 구성된 특수한 연산자로, 양식은 `question ? answer1 : answer2` 와 같습니다. 이는 `question` 이 참인지 거짓인지에 따라서 두 표현식 중 하나의 값을 평가하는 '간략한 표기법 (shortcut)' 입니다. `question` 이 참이면, `answer1` 을 평가한 값을 반환하고; 그렇지 않으면, `answer2` 를 평가한 값을 반환합니다.
 
-삼항 조건 연산자는 아래 코드가 단축된 것입니다:
+'삼항 조건 연산자' 는 아래 코드의 약칭에 해당합니다:
 
 ```swift
 if question {
@@ -237,16 +237,16 @@ if question {
 }
 ```
 
-다음은 테이블의 행 높이를 계산하는 예제입니다. 행이 헤더 (제목행) 을 가지고 있으면 내용 행보다 50 포인트가 더 높아야 하고, 헤더가 없으면 20 포인트가 더 높아야 합니다:
+다음은 테이블에서 행의 높이를 계산하는 예제입니다. 행에 '헤더 (header)' 가 있으면 '행 높이 (row height)' 가 '내용물 높이 (content height)' 보다 50 포인트 만큼 더 높고, 헤더가 없으면 20 포인트 만큼 더 높습니다:
 
 ```swift
 let contentHeight = 40
 let hasHeader = true
 let rowHeight = contentHeight + (hasHeader ? 50 : 20)
-// rowHeight is equal to 90
+// rowHeight 는 90 과 같습니다.
 ```
 
-위 예제는 다음 코드를 단축한 것입니다:
+위 예제는 아래 코드의 약칭에 해당합니다:
 
 ```swift
 let contentHeight = 40
@@ -257,56 +257,61 @@ if hasHeader {
 } else {
     rowHeight = contentHeight + 20
 }
-// rowHeight is equal to 90
+// rowHeight 는 90 과 같습니다.
 ```
 
-첫번째 예제에서 삼항 조건 연산자를 사용함을로써 한 줄의 코드로 `rowHeight` 에 올바른 값을 설정했는데, 이는 두번째 예제의 코드보다 훨씬 간결합니다.
+첫 번째 예제에서 '삼항 조건 연산자' 를 사용함으로써 `rowHeight` 의 값을 코드 한 줄로 올바르게 설정할 수 있었으며, 이는 두 번째 예제의 코드보다 훨씬 더 간결합니다.
 
-삼항 조건 연산자는 두 표현식 중에서 어느 것을 고려할지를 정하는 코드를 아주 간결하게 만들 수 있게 합니다. 하지만 삼항 조건 연산자를 사용할 때는 주의가 필요합니다. 남용하게 되면 간결한 표현이 읽기 힘든 코드를 만들게 됩니다. 여러 개의 삼항 조건 연산자를 결합해서 하나의 복합 구문으로 만드는 것은 피하도록 합니다.
+'삼항 조건 연산자' 는 두 표현식 중 하나를 고르는 구문에 대한 효율적인 약칭을 제공합니다. 하지만, 삼항 조건 연산자는 주의해서 사용하기 바랍니다. 간결함을 추구한 나머지 너무 과용하다보면 코드를 이해하기가 어려워집니다. 여러 개의 삼항 조건 연산자 구문를 결합해서 하나의 복합 구문을 만드는 것은 피하는 것이 좋습니다.
 
-### nil 과 합쳐진 연산자 (Nil-Coalescing Operator)
+### Nil-Coalescing Operator (Nil-합체 연산자)
 
-nil-과 합쳐진 (nil-coalescing) 연산자 (`a ?? b`) 는 옵셔널 `a` 가 값을 가지고 있으면 감싼 것을 풀고 `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. [^coalescing] 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 안에 저장되는 타입과 같아야 합니다.
+_nil-합체 연산자 (nil-coalescing operator)_ (`a ?? b`) 는 옵셔널 `a` 에 값이 있으면 `a` 를 풀고, `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입이어야 합니다. 표현식 `b` 는 반드시 `a` 에 저장된 것과 타입이 일치해야 합니다.
 
-nil-과 합쳐진 연산자는 아래의 코드를 줄인 것입니다:
+'nil-합체 연산자 (nil-coalescing operator) 는 아래 코드의 약칭에 해당합니다:
 
 ```swift
 a != nil ? a! : b
 ```
 
-위의 코드는 삼항 조건 연산자와 강제 풀기 (`a!`) 를 사용하여 `a` 가 `nil` 이 아닐 때는 `a` 안의 값에 접근하고, 그렇지 않으면 `b` 를 반환합니다. nil-과 합쳐진 연산자는 이 조건 검사와 풀기 작업을 아주 우아하게 감춰서 더 간결하고 읽기 쉽도록 해 줍니다.
+위의 코드는 '삼항 조건 연산자' 와 '강제 풀기 (forced unwrapping)' (`a!`) 를 사용하여 `a` 가 `nil` 이 아니면 `a` 안에 쌓여진 값에 접근하고, 그 외의 경우면 `b` 를 반환합니다. 이와 같이 'nil-합체 연산자' 가 제공하는 우아한 방법을 사용하면 조건 검사 및 풀기 연산을 간결하고 이해하기 쉬운 양식으로 작성할 수 있습니다.
 
-> `a` 의 값이 `nil` 이 아닌 경우 `b` 의 값은 평가되지 않습니다. 이를 짧은-회로 평가 라고 합니다. [^short-circuit]
+> `a` 의 값이 `nil` 이 아닐 경우, `b` 의 값을-평가하는 일은 일어나지 않습니다. 이를 '_최소 평가 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
 
-아래의 예제는 nil-과 합쳐진 연산자를 사용하여 기본 색상 이름과 옵셔널인 사용자-정의 색상 이름 중에서 하나의 값을 선택합니다:
+아래 예제는 'nil-합체 연산자' 를 사용하여 '기본 색상 이름' 과 '사용자가 정의한 옵셔널 색상 이름' 중 하나를 선택합니다:
 
 ```swift
 let defaultColorName = "red"
 var userDefinedColorName: String?   // 기본으로 nil 이 됩니다.
 
 var colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 은 nil 이므로 colorNameToUse 는 기본인 "red" 가 됩니다.
+// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 값인 "red" 입니다.
 ```
 
-`userDefinedColorName` 변수는 옵셔널 `String` 으로 정의되며 기본 값은 `nil` 입니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에 nil-과 합쳐진 연산자를 사용해서 값을 검토할 수 있습니다. 위의 예제에서는 `colorNameToUse` 라는 `String` 변수의 초기 값을 결정하는데 연산자를 사용하고 있습니다. `userDefinedColorName` 이 `nil` 이므로 표현식 `userDefinedColorName ?? defaultColorName` 은 `defaultColorName` 또는 `"red"` 값을 반환합니다.
+userDefinedColorName 변수는 선택적 값이며 기본값은 nil입니다. userDefinedColorName은 선택적 유형이므로 nil-coalescing 연산자를 사용하여 해당 값을 고려할 수 있습니다. 위의 예에서 연산자는 colorNameToUse라는 String 변수의 초기 값을 결정하는 데 사용됩니다. userDefinedColorName이 nil이므로 식 userDefinedColorName ?? defaultColorName은 defaultColorName 또는 "red"값을 반환합니다.
 
-`userDefinedColorName` 에 `nil` 이 아닌 값을 할당하고 nil-과 합쳐진 연산자로 다시 검사하면, `userDefinedColorName` 로 감싼 값이 기본 값 대신에 사용됩니다:
+userDefinedColorName에 nil이 아닌 값을 할당하고 nil-coalescing 연산자 검사를 다시 수행하면 userDefinedColorName에 래핑 된 값이 기본값 대신 사용됩니다.
+
+
+`userDefinedColorName` 변수는 옵셔널 `String` 으로 정의되었으며, 기본 값은 `nil` 입니다. `userDefinedColorName` 이 옵셔널 타입이므로, 해당 값에 `nil-합체 연산자` 를 적용할 수 있습니다. 위 예에서는, 이 연산자를 사용하여 `colorNameToUse` 라는 `String` 변수의 초기 값을 결정합니다. `userDefinedColorName` 이 `nil` 이기 때문에, 표현식 `userDefinedColorName ?? defaultColorName` 은 `defaultColorName` 의 값을 반환하며, 이는 `"red"` 입니다.
+
+만약 '`nil` 이 아닌 값' 을 `userDefinedColorName` 에 할당한 다음에 'nil-합체 연산자' 검사를 다시 수행하면, 기본 값 대신에 `userDefinedColorName` 로 쌓여진 값을 사용합니다:
 
 ```swift
 userDefinedColorName = "green"
 colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이 아니므로 colorNameToUse 는 "green" 이 됩니다.
+// userDefinedColorName 이 nil 이 아니므로, colorNameToUse 는 "green" 으로 설정됩니다.
 ```
 
-### 범위 연산자 (Range Operators)
+### Range Operators (범위 연산자)
 
-Swift 는 두 개의 범위 연산자 (range operators) 를 갖고 있어서 값의 범위를 간단한 양식으로 나타낼 수 있습니다.
+스위프트는 값의 범위를 간단하게 표현할 수 있는 여러 가지의 _범위 연산자 (range operators)_ 를 포함하고 있습니다.
 
-#### 닫힌 범위 연산자 (Closed Range Operator)
+#### Closed Range Operator (닫힌 범위 연산자)
 
-닫힌 범위 연산자  (`a...b`) 는 `a` 에서 `b` 까지의 범위를 정의하며 이 때 `a` 와 `b` 의 값을 포함합니다. `a` 의 값은 반드시 `b` 보다 크지 않아야 합니다.
+'닫힌 범위 연산자 (closed range operator)' (`a...b`) 는 `a` 에서 `b` 에 이르는 범위를 정의하면서, `a` 와 `b` 의 값을 포함합니다. 여기서 `a` 의 값은 `b` 보다 절대로 크면 안됩니다.
 
-닫힌 범위 연산자는 `for`-`in` 루프 구문과 같이 범위에 있는 모든 값을 반복해야 하는 경우에 유용합니다:
+'닫힌 범위 연산자' 는 범위 내에 있는 모든 값에 동작을 반복 적용할 때 유용하며, 보통 `for-in` 반복문과 같이 사용하게 됩니다:
 
 ```swift
 for index in 1...5 {
@@ -319,13 +324,13 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-`for`-`in` 루프 구문에 대해 더 알고 싶으면 [Control Flow]() 를 보도록 합니다.
+`for-in` 반복문 대해서는, [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 를 보기 바랍니다.
 
-#### 반만-열린 범위 연산자 (Half-Open Range Operator)
+#### Half-Open Range Operator (반-열린 범위 연산자)
 
-반만-열린 범위 연산자 (`a..<b`) 는 `a` 에서 `b` 까지의 범위를 지정하지만 `b` 를 포함하지 않습니다. 반만-열렸다고 하는 이유가 첫 번째 값은 포함하지만 마지막 값은 포함하지 않기 때문입니다. 닫힌 범위 연산자와 마찬가지로 `a` 의 값은 `b` 보다 크면 안됩니다. 만약 `a` 의 값이 `b` 와 같으면 이 범위의 결과는 비어있게 됩니다.
+'_반-열린 범위 연산자 (half-open range operator)_' (`a..<b`) 는 `a` 에서 `b` 에 이르는 범위를 정의하면서, `b` 는 포함하지 않습니다. _반-열린 (half-open)_ 이라는 말은 이것이 첫 번째 값은 갖지만, 마지막 값은 갖지 않기 때문입니다. '닫힌 범위 연산자' 와 마찬가지로, `a` 의 값은 `b` 보다 절대로 크면 안됩니다. 만약 `a` 의 값이 `b` 와 같을 경우, 그 결과는 빈 범위가 됩니다.
 
-반만-열린 범위가 특히 유용한 경우가 배열과 같이 0-에서 시작하는 리스트와 작업할 때인데, 리스트의 길이만큼 헤아리지만 (길이 값 자체를) 포함하지는 않을 때 유용합니다: [^zero-based-list]
+'반-열린 범위 연산자' 는 배열처럼 '0-시작 목록 (zero-based lists)' 과 작업할 때 특히 더 유용한데, 이는 목록 전체를 반복하면서 마지막 수를 포함하지 않기 때문입니다.
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -339,41 +344,79 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-배열은 4 개의 항목을 가지고 있지만 `0..<count` 는 반만-열린 범위이기 때문에 (배열의 마지막 항목의 인덱스인) `3` 까지만 헤아리고 있음을 주목합니다. 배열에 대해 더 알고 싶으면 [Arrays]() 를 보도록 합니다.
+이 배열은 4 개의 항목을 갖지만, `0..<count` 는 (배열 마지막 요소의 색인인) `3` 까지만 헤아리며, 이는 '반-열린 연산자' 이기 때문입니다. 배열에 대해서는 [Arrays](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID107) 를 보기 바랍니다.
 
-### 논리 연산자 (Logical Operators)
+#### One-Sided Ranges (한-쪽 범위)
 
-논리 연산자는 불 논리 (Boolean logic) 값인 `true` 와 `false` 를 바꾸거나 결합합니다. Swift 는 C-기반 언어에서 발견되는 세 가지 표준 논리 연산자를 지원합니다:
+'닫힌 범위 연산자' 는 한 방향으로 가능한 멀리 계속되는 범위를 나타낼 수 있는 '대체 양식 (alternative form)' 을 갖고 있습니다-예를 들어, 한 배열에 대해 2 에서 부터 끝까지의 모든 배열 요소를 포함하는 범위가 있을 수 있습니다. 이 경우, 범위 연산자의 한-쪽 값을 생략할 수 있습니다. 이러한 종류의 범위를 _한-쪽 범위 (one-sided range)_ 라고 부르며, 이는 연산자가 오직 한 쪽 값만을 갖고 있기 때문입니다. 예를 들면 다음과 같습니다:
 
-* 부정 (Logical NOT) (`!a`) [^logical-not]
-* 논리 곱 (Logical AND) (`a && b`)
-* 논리 합 (Logical OR) (`a || b`)
+```swift
+for name in names[2...] {
+  print(name)
+}
+// Brian
+// Jack
 
-#### 부정 연산자 (Logical NOT Operator)
+for name in names[...2] {
+  print(name)
+}
+// Anna
+// Alex
+// Brian
+```
 
-부정 (logical NOT) 연산자 (`!a`) 는 불 값을 반전하여 `true` 는 `false` 가 되고 `false` 는 `true` 가 되게 합니다.
+'반-열린 범위 연산자' 도 '한-쪽 양식 (one-sided form)' 을 갖고 있지만 대신 한-쪽 값은 반드시 마지막 값이어야 합니다. 값을 양쪽에 적어줄 때와 마찬가지로, 마지막 값은 범위에 포함되지 않습니다. 예를 들면 다음과 같습니다:
 
-부정 연산자는 접두 연산자라서 연산을 하려는 값의 바로 앞에 공백없이 붙여줘야 합니다. 이는 다음의 예제에서 보듯이 “`a` 가 아니면” 으로 읽을 수 있습니다:
+```swift
+for name in names[..<2] {
+  print(name)
+}
+// Anna
+// Alex
+```
+
+'한-쪽 범위 (one-sided range)' 는 '첨자 연산 (subscript)' 뿐만 아니라, 다른 곳에서도 사용할 수 있습니다. '한-쪽 범위' 가 생략한 값이 첫 번째 값이면 동작을 반복 적용시킬 수 없는데, 이는 동작을 어디서부터 반복해야할 지 명확하지 않기 때문입니다. '한-쪽 범위' 가 마지막 값을 생략했을 때는 동작을 반복 적용시키는 것이 _가능 (can)_ 합니다; 다만, 범위가 무한정 계속되므로, 반복문에 명시적으로 종료 조건을 추가해야 합니다. '한-쪽 범위' 가 특정 값을 갖고 있는지를 검사할 수도 있는데, 이는 아래 코드 처럼 하면 됩니다:
+
+```swift
+let range = ...5
+range.contains(7)   // false (거짓)
+range.contains(4)   // true (참)
+range.contains(-1)  // true (참)
+```
+
+### Logical Operators (논리 연산자)
+
+_논리 연산자 (logical operators)_ 는 '불린 논리 (Boolean logic)' 값인 `true` 와 `false` 를 수정하거나 결합합니다. 스위프트는 C-기반 언어가 제공하는 세 가지 표준 논리 연산자를 지원합니다:
+
+* Logical NOT '논리 부정' (`!a`)
+* Logical AND '논리 곱' (`a && b`)
+* Logical OR '논리 합' (`a || b`)
+
+#### Logical NOT Operator (논리 부정 연산자)
+
+_논리 부정 연산자 (logical NOT operator)_ (`!a`) 는 불린 (Boolean) 값을 반전하므로 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
+
+'논리 부정 연산자' 는 '접두 연산자 (prefix operator)' 라서, 연산할 값 바로 앞에 붙여주며, 공백이 있으면 안됩니다. “Not `a`” (`a` 가 아님) 이라고 읽으며, 아래에 예를 보였습니다:
 
 ```swift
 let allowedEntry = false
 if !allowedEntry {
     print("ACCESS DENIED")
 }
-// Prints "ACCESS DENIED"
+// "ACCESS DENIED" 를 출력합니다.
 ```
 
-`if !allowedEntry` 구절은 “허가된 입장이 아니면” 으로 읽을 수 있습니다. 이어지는 행은 “허가된 입장이 아닌” 것이 참일 때만 실행됩니다; 그것은 `allowedEntry` 가 `false` 인 경우입니다.
+`if !allowedEntry` 구절은 "허가된 입장이 아니면 (if not allowed entry)" 으로 읽을 수 있습니다. 그 다음 행은 "허가된 입장이 아니면" 이 참일 때만 실행됩니다; 그것은 곧, `allowedEntry` 가 `false` 일 때입니다.
 
-이 예제와 같이 불 상수 및 변수 이름을 주의깊에 선택하면 코드를 읽기 슆고 간결하게 만들 수 있으며 동시에 이중 부정 구문이나 논리 구문의 혼란을 막을 수 있습니다.
+이 예제와 같이, 불린 (Boolean) 상수와 변수의 이름을 정할 때는 주의 깊에 선택해야 코드를 이해하기 슆고 간결하게 만들 수 있으며, 이중 부정을 하거나 논리 구문을 혼동하는 것을 막을 수 있습니다.
 
-#### 논리 곱 연산자 (Logical AND Operator)
+#### Logical AND Operator (논리 곱 연산자)
 
-논리 곱 (logical AND) 연산자 (`a && b`) 는 논리 표현식을 만들어서 두 값이 `true` 일 때만 전체 표현식을 `true` 이 되도록 합니다.
+_논리 곱 연산자 (logical AND operator)_ (`a && b`) 는 두 값이 모두 `true` (참) 일 때만 전체 표현식이 `true` (참) 이 되는 '논리 표현식 (logical expressions)' 을 생성합니다.
 
-하나라도 값이 `false` 이면 전체 표현식은 `false` 가 됩니다. 사실 첫 번째 값이 `false` 이면 두 번째 값은 평가조차 하지 않는데, 왜냐면 전체 표현식이 `true` 가 될 가능성이 없기 때문입니다. 이를 짧은-회로 평가 (short-circuit evaluation) 라고 합니다.
+한 값이라도 `false` 면, 전체 표현식도 `false` 가 됩니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 두 번째 값은 평가조차 하지 않으며, 이는 그래봐야 전체 표현식을 `true` 로 만들 수가 없기 때문입니다. 이것을 '최소 평가 (short-circuit evaluation)'[^short-circuit] 라고 합니다.
 
-아래 예제에서는 두 개의 `Bool` 값을 검토하여 두 값이 모두 `true` 인 경우에만 접근을 허용합니다: [^consider]
+아래 예제는 두 `Bool` 값을 고려해서 두 값이 모두 `true` 일 때만 접근을 허용합니다:
 
 ```swift
 let enteredDoorCode = true
@@ -383,16 +426,16 @@ if enteredDoorCode && passedRetinaScan {
 } else {
     print("ACCESS DENIED")
 }
-// Prints "ACCESS DENIED"
+// "ACCESS DENIED" 를 출력합니다.
 ```
 
-#### 논리 합 연산자 (Logical OR Operator)
+#### Logical OR Operator (논리 합 연산자)
 
-논리합 (logical OR) 연산자 (`a || b`) 는 두 개의 인접한 파이프 문자들로 이루어진 중위 (infix) 연산자입니다. [^adjacent] [^infix] 이것으로 논리 표현식을 만들면 두 값 중에서 하나만 `true` 가 되면 전체 표현식이 `true` 가 되게 할 수 있습니다.
+_논리 합 연산자 (logical OR operator)_ (`a || b`) 는 두 '파이프 문자 (`|`)' 를 붙여서 만든 'infix (중위) 연산자' 입니다. 이를 사용하면 두 값 중에서 _하나 (one)_ 만 `true` (참) 이면 전체 표현식이 `true` (참) 이 되는 '논리 표현식 (logical expressions)' 를 생성할 수 있습니다.
 
-위에 있는 논리 곱 연산자와 같이 논리 합 연산자도 짧은-회로 평가를 사용해서 표현식을 검토합니다. 논리 합 표현식의 왼쪽 항이 `true` 이면 오른쪽 항은 평가를 하지 않는데, 왜냐면 나머지 부분은 전체 표현식의 결과를 변경할 수 없기 때문입니다.
+앞서의 '논리 곱 연산자 (logical AND operator)' 와 마찬가지로, '논리 합 연산자 (logical OR operator)' 는 표현식을 평가할 때 '최소 평가 (short-circuit evaluation)'[^short-circuit] 방식을 사용합니다. '논리 합 표현식 (logical OR expressions)' 의 왼쪽이 `true` 면, 오른쪽은 평가하지 않으며, 이는 전체 표현식의 결과가 달라질 일이 없기 때문입니다.
 
-아래의 예제에서는 첫 번째 `Bool` 값 (`hasDoorKey`) 은 `false` 이지만 두 번째 값 (`knowsOverridePassword`) 은 `true` 입니다. 하나의 값이 `true` 이기 때문에 전체 표현식은 `true` 가 되고 접근이 허용됩니다:
+아래 예제에서, 첫 번째 `Bool` 값 (`hasDoorKey`) 은 `false` 지만, 두 번째 값 (`knowsOverridePassword`) 은 `true` 입니다. 한 값이 `true` 이므로, 전체 표현식도 `true` 로 평가되어, 접근을 허용합니다:
 
 ```swift
 let hasDoorKey = false
@@ -402,12 +445,12 @@ if hasDoorKey || knowsOverridePassword {
 } else {
     print("ACCESS DENIED")
 }
-// Prints "Welcome!"
+// "Welcome!" 을 출력합니다.
 ```
 
-#### 논리 연산자 결합하기 (Combining Logical Operators)
+#### Combining Logical Operators (논리 연산자 결합하기)
 
-여러 개의 논리 연산자를 결합하여 더 긴 복합 표현식을 만들 수 있습니다:
+여러 개의 논리 연산자를 결합하여 더 긴 '복합 표현식 (compound expressions)' 을 만들 수 있습니다:
 
 ```swift
 if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
@@ -415,20 +458,20 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 } else {
     print("ACCESS DENIED")
 }
-// Prints "Welcome!"
+// "Welcome!" 을 출력합니다.
 ```
 
-이 예제에서는 `&&` 와 `||` 연산자 여러 개를 사용해서 더 긴 복합 표현식을 만들었습니다. 하지만 `&&` 와 `||` 연산자는 여전히 두 값에 대해서만 동작하므로 실제로는 좀 더 작은 세 개의 표현식이 서로 연결된 것입니다. 이 예제는 다음과 같이 이해할 수 있습니다:
+이 예제에서는 여러 개의 `&&` 와 `||` 연산자를 써서 더 긴 '복합 표현식 (compound expressions)' 을 만들었습니다. 하지만, `&&` 와 `||` 연산자는 여전히 두 값에 대해서만 동작하므로, 실제로는 세 개의 작은 식이 서로 줄줄이 이어져 있는 형태입니다. 이 예제는 다음과 같이 이해할 수 있습니다:
 
-올바른 도어 코드를 입력하고 망막 스캔을 통과했거나, 맞는 도어 열쇠를 가지고 있거나, 긴급 수동 암호를 알고 있으면 접근을 허용합니다.
+올바른 출입문 코드를 입력하고 망막 스캔을 통과했거나, 알맞은 출입문 키를 갖고 있거나, '비상시 수동해제 비밀번호 (emergency override password)' 를 알고 있는 경우라면, 접근을 허용합니다.
 
-`enteredDoorCode`, `passedRetinaScan`, 및 `hasDoorKey` 값에 따라 처음 두 개의 하위 표현식은 `false` 입니다. 하지만 긴급 수동 암호를 알고 있으므로 전체 복합 표현식은 `true` 가 됩니다.
+`enterDoorCode`, `passedRetinaScan` 그리고 `hasDoorKey` 의 값에 의해서, 처음 두 개의 '하위표현식 (subexpressions)' 은 `false` 입니다. 하지만, '비상시 수동해제 비밀번호' 를 알고 있으므로, 전체 복합 표현식은 여전히 `true` 가 됩니다.
 
-> Swift 논리 연산자인 `&&` 와 `||` 는 왼쪽-결합 (left-associative) 인데, 이는 여러 논리 연산자를 가지는 복합 표현식이 가장 왼쪽에 있는 하위 표현식 부터 먼저 평가를 한다는 의미입니다.
+> 스위프트의 논리 연산자인 `&&` 와 `||` 는 '왼쪽 우선-결합 (left-associative)'[^left-associative] 으로, 이는 여러 개의 논리 연산자를 가지는 '복합 표현식' 이 있을 때 가장 왼쪽에 있는 '하위표현식' 부터 먼저 평가한다는 의미입니다.
 
-#### 직접 괄호 넣기 (Explicit Parentheses)
+#### Explicit Parentheses (괄호 명시하기)
 
-꼭 필요하지 않더라도 가끔씩 괄호를 사용하면 복잡한 표현식의 의도를 좀 더 쉽게 이해할 수 있도록 해줍니다. 위의 도어 출입 예제의 경우, 복합 표현식의 첫 번째 부분에 괄호를 사용하면 의도를 분명히 하는데 도움이 됩니다:
+반드시 넣어야 하는 것은 아니지만, 그래도 '괄호 (parentheses)' 를 넣어주면, 복합한 표현식의 의도를 이해하기가 훨씬 쉬어집니다. 위에 있는 '출입문 접근' 예제에서도, '복합 표현식' 의 첫 부분에 괄호를 추가하면 그 의도를 더 명확하게 알 수 있게 됩니다:
 
 ```swift
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
@@ -436,10 +479,10 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 } else {
     print("ACCESS DENIED")
 }
-// Prints "Welcome!"
+// "Welcome!" 를 출력합니다.
 ```
 
-괄호는 처음 두 값들이 전체 논리에서 따로 떼어내서 검토할 수 있는 부분임을 분명히 보여줍니다. 복합 표현식의 결과는 변하지 않지만 전체 구문의 의도는 더 분명하고 더 이해하기 쉽습니다. 언제나 가독성이 간단함보다 더 중요합니다; 괄호를 사용해서 의도를 분명히 하도록 하기 바랍니다.
+괄호를 사용하면 처음 두 값들이 전체 논리에서 별도로 검토할 수 있음을 분명하게 보여줍니다. 복합 표현식의 결과에는 전혀 영향이 없으면서도, 전체 의도를 이해하기는 훨씬 더 쉽습니다. 가독성을 간결함보다 더 우선하기 바랍니다; 괄호가 의도를 분명히 드러내는데 도움이 된다면 사용하는 것이 좋습니다.
 
 ### 참고 자료
 
@@ -447,28 +490,6 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^modulo-opartion]: 'modulo operation' 은 수학적인 엄밀한 나머지 연산과 관련된 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 글을 참고하기 바랍니다. 이와 관련된 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
 
+[^short-circuit]: 'short-circuit evaluation' 를 직역하면 '짧은-회로 평가' 가 되는데, 'minimal evaluation' 이라는 용어도 같이 사용하므로 '최소 평가' 라고 옮깁니다. 컴퓨터 공학에서 계산량을 줄이는 알고리즘이라고 볼 수 있을 것 같습니다. 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 참고하기 바랍니다.
 
-
-
-
-[^appear]: 'appear'는 '위치하다'로 옮깁니다.
-
-[^infix]: 'infix는 '중간에 위치' 한다는 의미에서 '중위' 라고 옮길 수 있는데, 의미가 헷갈리는 경우가 아니면 가급적 'infix' 라고 그대로 쓰도록 합니다.
-
-[^toggle]: 'toggle'은 '전환하다'라고 옮깁니다.
-
-[^coalescing]: 'coalescing'은 여기서는 '과 합쳐진'으로 옮깁니다.
-
-[^short-circuit]: 'short-circuit'은 '짧은-회로'라고 옮겼는데, 좀 더 생각해야 할 것 같습니다.
-
-[^zero-based-list]: 'zero based list'에 대한 좋은 대체 말은 좀 더 생각해야할 것 같습니다. 'list' 자체도 옮길 말을 좀 더 생각해야할 것 같습니다.
-
-[^logical-not]: 'logical NOT'을 '부정'이라고 하는데 더 좋은 말이 없을지 생각해 봅니다.
-
-[^consider]: 여기서는 'consider'를 '검토하다'라고 옮겼습니다.
-
-[^adjacent]: 'adjacent'는 '인접한'으로 옮깁니다.
-
-[^infix]: 'infix'는 '중위'라고 옮기는데 좀 더 적당한 단어가 없는지 생각합니다.
-
-[^left-associative]: 'left-associative'는 '왼쪽-결합'으로 옮깁니다.
+[^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
