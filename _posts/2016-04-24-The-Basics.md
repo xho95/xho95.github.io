@@ -1,89 +1,89 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: The Basics (기초)"
+title:  "Swift 5.2: The Basics (기초)"
 date:   2016-04-24 19:45:00 +0900
-categories: Swift Language Grammar Basic
+categories: Swift Language Grammar Basics
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 부분[^The-Basics]을 번역하고 정리한 글입니다.
 >
 > 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-## The Basics
+## The Basics (기초)
 
-Swift 는 iOS, macOS, watchOS, 그리고 tvOS 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그렇더라도 C 와 Objective-C 에서의 개발 경험이 있다면 Swift 의 많은 부분이 꽤 친숙하게 느껴질 겁니다.
+스위프트는 iOS, macOS, watchOS 그리고 tvOS 용 앱을 개발할 수 있는 새로운 프로그래밍 언어입니다. 그럼에도 불구하고 C 언어와 오브젝티브-C 언어로 개발한 경험이 있다면 스위프트의 많은 부분들이 이미 익숙할 것입니다.
 
-Swift 는 C 와 Objective-C 에 있는 모든 기본 타입들에 대한 자체 버전을 제공하는데, 정수는 `Int`, 부동 소수점은 `Double` 과 `Float`, 논리 (불린) 값으로는 `Bool`, 그리고 글자 데이터로는 `String` 을 제공합니다. Swift 는 또 [모듬 타입 (Collection Types)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105) 에서 설명하는 것과 같이 `Array`, `Set`, 및 `Dictionary` 라는 세 가지의 강력한 기초 모듬 타입을 제공합니다.
+스위프트는 자신만의 방식으로 C 언어와 오브젝티브-C 언어에 있는 모든 기본 타입들을 제공하며, 여기에는 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, 논리 (Boolean) 값을 위한 `Bool`, 그리고 텍스트 데이터를 위한 `String` 을 포함합니다. 스위프트는 강력한 방식으로 세 가지 주요 컬렉션 (집합체) 타입인, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리) 도 제공하며, 이는 [Collection Types (집합체 타입)](https://xho95.github.io/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html) 에서 설명합니다.
 
-C 처럼 Swift 도 값을 저장하고 참조하는데 변수를 사용하며, 이 때 이름을 가지고 각각을 식별합니다. [^identify] Swift 는 또한 값을 바꿀 수 없는 변수를 광범위하게 사용합니다. 이는 상수라고 하며 C 에서의 상수보다 훨씬 더 강력합니다. 상수는 Swift 의 전 영역에서 사용되는데, 바꿀 필요가 없는 값을 사용할 때 코드를 더 안전하고 명확하게 만들 목적으로 사용합니다.
+C 언어와 마찬가지로, 스위프트도 '식별 이름 (identifying name)' 을 써서 값을 저장하고 참조하기 위해 '변수' 를 사용합니다. 스위프트는 값을 바꿀 수 없는 변수 역시 역시 광범위하게 사용합니다. 이를 '상수' 라고 하는데, C 언어의 상수보다 훨씬 더 강력합니다. 상수는 바뀔 필요가 없는 값을 가지고 작업할 때 코드를 더 안전하고 명확하게 만들 목적으로 스위프트 전반에 걸쳐서 사용됩니다.
 
-이런 친숙한 타입과 더불어서 Swift 는 Objective-C 에는 없는 튜플 (tuples) 같은 더 앞선 타입도 도입합니다. [^tuple] [^advanced] [^introduce] 튜플은 값을 그룹으로 만들어서 전달 할 수 있도록 합니다. 튜플을 사용하면 함수에서 단일 합성 값의 형태로 한번에 여러 값을 반환할 수 있습니다. [^single-compound-value]
+이런 익숙한 타입들 외에, 스위프트에는 C 언어에는 없는 고급 타입들도 있는데, '튜플 (tuple)' 이 그렇습니다. 튜플을 사용하면 값들을 '그룹으로 뭉쳐서 (group)' 생성하고 전달할 수 있습니다. 함수에서 여러 개의 값을 반환하고자 할 떄 튜플로 '단일한 복합 값 (single compound value)' 을 만들어서 반환하면 됩니다.
 
-Swift 는 옵셔널 타입도 도입했는데 이는 값이 없는 상태를 처리합니다. 옵셔널은 “값이 있는데 그 값은 x 입니다” 라고 하거나 아니면 “값이 전혀 없습니다” 라고 말합니다. 옵셔널을 사용하는 것은 Objective-C 에서 `nil` 과 포인터를 사용하는 것과 비슷하지만, 클래스 뿐만 아니라 모든 타입에서 작동한다는 것이 다릅니다. 옵셔널은 Objective-C 의 `nil` 포인터보다 더 안전하고 표현이 간결할 뿐만 아니라, Swift 의 가장 강력한 특징들의 많은 곳에서 핵심을 담당합니다.
+스위프트에는 'Optional (선택) 타입' 이라는 것도 있어서, 값이 없는 상태를 처리할 수 있습니다. 'Optional (선택)' 은 "값이 _있으며 (is)_, 그 값은 x 입니다" 또는 "값이 전혀 _없습니다 (isn't)_" 라고 합니다. 'Optional' 을 사용하는 것은 오브젝티브-C 언어의 포인터에 `nil` 을 사용하는 것과 비슷하지만, '클래스 (class)' 뿐만 아니라 모든 타입에 대해서 사용할 수 있다는 것이 다릅니다. 'Optional' 은 오브젝티브-C 언어에 있는 `nil` 포인터보다 더 안전하고 의미도 잘 드러낼 뿐만 아니라, 스위프트에 있는 가장 강력한 특징들 중에서도 핵심이라고 할 수 있습니다.
 
-Swift 는 타입-안전 언어인데, 이는 코드에서 사용 중인 값의 타입이 분명해 지도록 언어가 돕는다는 것을 의미합니다. [^type-safe] 코드의 일부에서 `String` 을 예상하고 있다면, 타입 안전 검사기는 `Int` 를 실수로 전달하지 않도록 막습니다. [^type-safety] 마찬가지로, 타입 안전 검사기는 실수로 옵셔널 `String` 을 옵셔널이 아닌 `String` 을 기대하고 있는 코드에 전달하지 못하게 합니다. 타입 안전 검사기는 개발 과정에서 에러를 최대한 빨리 파악하고 수정할 수 있도록 도와줍니다.
+스위프트는 '_타입-안전 (type-sefe)_' 언어이며, 이는 코드에서 사용할 값의 타입을 명확히 알 수 있도록 언어가 도와준다는 것을 의미합니다. 코드 일부에서 `String` 을 요구하는데, 실수로 `Int` 를 전달하면 '타입 안전기 (type safety)' 가 이를 막아줍니다. 이와 마찬가지로, '타입 안전기' 는 옵셔널이 아닌 `String` 을 요구하는 코드에 실수로 'Optional  `String`' 을 전달하는 것도 막아줍니다.  '타입 안전기' 는 개발 과정에서 최대한 빨리 에러를 잡아내고 고칠 수 있도록 도와줍니다.
 
-### 상수 (Constants) 와 변수 (Variables)
+### Constants and Variables (상수와 변수)
 
-상수와 변수는 이름 (가령 `maximumNumberOfLoginAttempts` 또는 `welcomeMessage`) 을 특정한 타입의 값 (가령 수 `10` 또는 문자열 `"Hello"`) 과 연결짓습니다. [^accociate] 상수의 값은 한 번 설정하면 바꿀 수 없는 반면에 변수는 나중에 다른 값으로 설정할 수 있습니다.
+상수와 변수는 이름 (가령 `maximumNumberOfLoginAttempts` 나 `welcomeMessage` 등) 을 특정한 타입의 값 (가령 정수 `10` 이나 문자열 `Hello` 등) 과 관련지어 줍니다. _상수 (constant)_ 의 값은 한번 설정하면 바꿀 수 없으나, _변수 (variable)_ 는 나중에 다른 값으로 설정하는 것이 가능합니다.
 
-#### 상수와 변수 선언하기 (Declaring)
+#### Declaring Constants and Variables (상수와 변수 선언하기)
 
-상수와 변수는 사용하기 전에 반드시 먼저 선언돼 있어야 합니다. 상수는 `let` 키워드로 선언하고 변수는 `var` 키워드로 선언합니다. 상수와 변수를 사용해서 사용자가 로그인하려고 시도한 횟수를 추적하는데 사용하는 예제입니다:
+상수와 변수는 사용하기 전에 반드시 선언부터 해야 합니다. 상수 선언은 `let` 키워드를 사용하고 변수는 `var` 키워드를 사용합니다. 상수와 변수를 사용해서 사용자의 로그인 시도 횟수를 추적하는 방법에 대한 예제를 살펴봅시다:
 
 ```swift
 let maximumNumberOfLoginAttempts = 10
 var currentLoginAttempt = 0
 ```
 
-이 코드는 다음처럼 말할 수 있습니다:
+이 코드는 다음 처럼 이해할 수 있습니다:
 
-“`maximumNumberOfLoginAttempts` 라는 새로운 상수를 선언하고 값을 `10` 으로 둡니다. 그런 다음 `currentLoginAttempt` 라는 새로운 변수를 선언해서 초기 값으로 `0` 을 지정합니다.”
+"새로운 상수 `maximNumberOfLoginAttempts` 를 선언하고, 값은 `10` 으로 줍니다. 그런 다음, 새로운 변수 `currentLoginAttempt` 를 선언하고, 초기 값으로 `0` 을 줍니다."
 
-이 예제에서 최대로 허용되는 로그인 시도 횟수는 상수로 선언되는데, 최대 허용 값은 절대 바뀔 일이 없기 때문입니다. 한 편 현재 로그인 시도 카운터는 변수로 선언되며, 이는 이 값이 로그인 시도가 실패할 때마다 증가되어야 하기 때문입니다. [^counter]
+이 예에서, '허용 가능한 최대 로그인 시도 횟수' 는 상수로 선언했는데, 이는 최대 값이 절대로 변하지 않기 때문입니다. '현재 로그인 시도 횟수' 는 변수로 선언했는데, 이는 로그인 시도가 실패할 때마다 반드시 값이 증가돼야 하기 때문입니다.
 
-쉼표로 구분하면 하나의 행에 여러 개의 상수나 변수를 선언할 수 있습니다:
+한 줄에 여러 개의 상수와 변수를 선언하려면, '쉼표 (commas)' 로 구분하면 됩니다:
 
 ```swift
 var x = 0.0, y = 0.0, z = 0.0
 ```
 
-> 코드에서 저장된 값이 바뀔 일이 없으면, 항상 `let` 키워드로 상수로 만들도록 합니다. 변수는 저장된 값이 바뀔 가능성이 있는 경우에만 쓰도록 합니다. [^using-constant]
+> 코드에서 저장된 값이 바뀌지 않는다면, 항상 `let` 키워드를 써서 상수로 선언하기 바랍니다.[^constant-optimization] 변수는 저장된 값이 바뀔 가능성이 있는 경우에만 쓰기 바랍니다.
 
-#### 타입 지정 (Type Annotations)
+#### Type Annotations (타입 보조 설명)
 
-상수나 변수를 선언할 때 타입을 지정할 수 있는데, 이렇게 하면 상수나 변수에 저장할 수 있는 값의 종류를 분명하게 알 수 있습니다. [^annotation] 타입을 지정하는 방법은 상수나 변수 뒤에 콜론을 놓고 공백으로 띄운 다음 사용할 타입의 이름을 적으면 됩니다.
+상수나 변수를 선언할 때 _타입 보조 설명 (type annotation)_[^annotation] 을 제공해서, 상수나 변수에 저장할 수 있는 값의 종류를 명확하게 드러낼 수 있습니다. '타입 보조 설명' 을 쓰려면 상수나 변수의 이름 뒤에 콜론을 붙이고, 공백으로 띄운 다음, 사용할 타입의 이름을 적으면 됩니다.
 
-아래의 예제는 `welcomeMessage` 라는 변수의 타입을 지정하고 있는데, 이 변수가 `String` 값을 저장할 수 있음을 나타냅니다:
+아래 예제는 `welcomeMessage` 라는 변수에 '타입 보조 설명' 을 제공하여, 변수가 `String` 값을 저장할 수 있음을 지시합니다:
 
 ```swift
 var welcomeMessage: String
 ```
 
-선언에서의 콜론은 “… 타입으로 …,” 을 의미하므로 위의 코드는 다음과 같은 말이 됩니다:
+선언문에 있는 콜론은 "...타입인..." 을 의미하므로 위의 코드는 다음과 같이 이해할 수 있습니다:
 
-“`welcomeMessage` 변수를 `String` 타입으로 선언합니다.”
+"`String` 타입인 `welcomeMessage` 변수를 선언하기 바랍니다."
 
-“`String` 타입으로” 라는 구절은 “어떠한 `String` 값도 저장할 수 있도록” 을 의미합니다. 이는 저장할 수 있는 “어떠한 타입” (또는 “어떠한 종류”) 를 의미한다고 생각하면 됩니다.
+"`String` 타입인" 이라는 구절은 "어떤 `String` 값도 저장할 수 있다" 는 것을 의미합니다. 이는 저장할 수 있는 "것의 타입인" (또는 "것의 종류인") 의 의미로 생각할 수 있습니다.
 
-이제 `welcomeMessage` 변수에는 에러없이 어떤 문자열 값이라도 넣을 수 있습니다:
+이제 `welcomeMessage` 변수에는 어떤 문자열 값도 설정할 수 있으며 에러도 없습니다:
 
 ```swift
 welcomeMessage = "Hello"
 ```
 
-쉼표로 구분한 다음 마지막 변수 이름 뒤에 한 번만 타입 지정을 하면, 하나의 행에 타입이 같은 다수의 관련 변수를 정의할 수 있습니다:
+서로 관련성이 있는 같은 타입의 변수 여러 개를 한 줄에 정의할 수도 있는데, 이 때는 쉼표로 구분한 후, 마지막 변수 이름 뒤에 '타입 보조 설명' 을 한 번만 붙이면 됩니다:
 
 ```swift
 var red, green, blue: Double
 ```
 
-> 실제로 타입 지정을 하는 경우는 드뭅니다. 상수나 변수를 정의하는 시점에 초기 값을 주면,  Swift 는 상수나 변수에 사용되는 타입을 거의 항상 추론할 수 있는데, 이 내용은 [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID322) 에 설명하고 있습니다. 위에 있는 `welcomeMessage` 예제에서는 초기 값을 주지 않았으므로 `welcomeMessage` 변수의 타입은 초기 값으로 추론된 것이 아니라 타입 지정으로 지정된 것입니다.
+> 실제로 '타입 보조 설명 (type annotations)' 을 쓸 일은 거의 없습니다. 상수나 변수를 정의할 때 초기 값을 제공하면, 스위프트는 거의 항상 상수나 변수에서 사용할 타입을 추론할 수 있으며, 이는 [Type Safety and Type Inference (타입 안전기와 타입 추론기)](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322) 에서 설명합니다. 위에 있는 `welcomeMessage` 예제에서는, 초기 값이 제공되지 않았으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하지 않고 '타입 보조 설명' 으로 지정했습니다.
 
-#### 상수와 변수의 이름짓기 (Naming)
+#### Naming Constants and Variables (상수와 변수 이름짓기)
 
-상수나 변수의 이름에는 유니 코드를 포함해서 거의 모든 문자를 사용할 수 있습니다:
+상수와 변수의 이름은 '유니코드 문자 (Unicode characters)' 를 포함해서 거의 모든 문자를 가질 수 있습니다:
 
 ```swift
 let π = 3.14159
@@ -91,13 +91,13 @@ let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
 ```
 
-상수 또는 변수의 이름에는 빈공백 문자, 수학 기호, 화살표, 개인-목적의 (또는 유효하지 않은) 유니코드 코드 번호, 또는 줄- 및 상자-그림 문자가 있을 수 없습니다. 게다가 숫자로 시작할 수도 없습니다. 물론 숫자는 시작 위치만 아니면 이름의 어디든지 있을 수 있습니다.
+상수와 변수의 이름은 '공백 문자 (whitespace)', '수학 기호 (mathematical symbols)', '화살표 (arrows)', '보조 사용자 영역의 유니코드 크기 값 (private-use Unicode scalar values)'[^private-use-Unicode-scalar-values], 또는 '선-그리기 (line-drawing)' 및 '상자-그리기 문자 (box-drawing characters)' 를 가질 수 없습니다. 이름을 숫자로 시작하는 것도 안되지만, 숫자가 다른 위치에 있는 건 괜찮습니다.
 
-일단 상수나 변수를 특정 타입으로 한 번 선언 하고 나면, 같은 이름으로 재선언할 수도 저장된 값을 다른 타입으로 바꿀 수도 없습니다. 상수를 변수로 바꾸거나 변수를 상수로 바꾸는 것도 안됩니다.
+상수나 변수를 특정 타입으로 한번 선언했으면, 같은 이름을 선언에 다시 사용하거나, 다른 타입의 값을 저장하도록 바꿀 수 없습니다. 상수를 변수로 바꾸거나 변수를 상수로 바꾸는 것도 안됩니다.
 
-> Swift 의 예약 키워드와 같은 이름을 상수나 변수에 써야할 경우, 키워드를 이름으로 사용할 때에는 역 따옴표 (`) 로 키워드를 감싸면 됩니다. 하지만 정말로 선택의 여지가 없는 것이 아니라면 키워드를 이름으로 사용하지 않도록 합니다.
+> 상수나 변수에 '스위프트에서 예약한 키워드 (reserved Swift keyword)' 와 같은 이름을 쓰고싶으면, 이름으로 쓸 키워드를 '역따옴표 (backticks) (**`**) 기호'[^backticks] 로 감싸면 됩니다. 하지만 선택의 여지가 없는 것이 아니라면 키워드를 사용하지 않는 것이 좋습니다.
 
-기존 변수의 값은 호환 가능한 타입이면 다른 값으로 바꿀 수 있습니다. 다음의 예에서는 `friendlyWelcome` 의 값 `"Hello!"` 에서 `"Bonjour!"` 로 바뀌었습니다:
+기존 변수의 값을 다른 값으로 바꿀 수 있는데 이 때 타입은 서로 호환 가능해야 합니다. 아래 예에서는, `friendlyWelcome` 의 값을 `"Hello!"` 에서 `"Bonjour!"` 로 바꿉니다:
 
 ```swift
 var friendlyWelcome = "Hello!"
@@ -105,52 +105,53 @@ friendlyWelcome = "Bonjour!"
 // friendlyWelcome 은 이제 "Bonjour!" 입니다.
 ```
 
-변수와는 다르게 상수는 한 번 설정되고 나면 바꿀 수 없습니다. 그렇게 하려고 하면 코드를 컴파일할 때 에러가 발생합니다:
+변수와 달리, 상수의 값은 설정하고 나면 바꿀 수 없습니다. 그렇게 하면 코드를 컴파일 할 때 에러가 발생합니다:
 
 ```swift
 let languageName = "Swift"
 languageName = "Swift++"
-// This is a compile-time error: languageName cannot be changed.
+// 이것은 컴파일-시간에 에러가 발생합니다: languageName cannot be changed. (languageName 은 바꿀 수 없습니다.)
 ```
 
-#### 상수와 변수 출력하기 (Printing)
+#### Prints Constants and Variables (상수와 변수 출력하기)
 
-상수 또는 변수의 현재 값을 출력하려면 `print(_:separator:terminator:)` 함수를 사용합니다:
+상수나 변수의 현재 값을 출력하려면 `print(_:separator:terminator:)` 함수를 사용하면 됩니다:
 
 ```swift
 print(friendlyWelcome)
 // "Bonjour!" 를 출력합니다.
 ```
 
-`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과로 출력하는 전역 함수입니다. [^output] 예를 들어 Xcode 에서는 `print(_:separator:terminator:)` 함수가 Xcode 의 “콘솔” 창에 결과를 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 값을 갖고 있어서, 이 함수를 호출할 때 생략할 수 있습니다. 기본으로 이 함수는 한 줄을 출력할 때 끝에 줄 바꿈을 추가합니다. [^terminate] 줄 바꿈 없이 값을 출력하려면, `terminator` 매개 변수에 빈 문자열을 전달합니다 — 예를 들어 `print(someValue, terminator: "")` 라고 하면 됩니다. 기본 값이 있는 매개 변수에 대한 정보는 [Default Parameter Values](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID169) 부분을 보기 바랍니다.
+`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과 형태로 출력하는 전역 함수입니다. 예를 들어, Xcode (엑스코드) 에서는, `print(_:separator:terminator:)` 함수가 그 결과를 Xcode 의 "console (콘솔)" 창에 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 값을 갖고 있으므로, 이 함수를 호출할 때 생략할 수 있습니다. 기본적으로, 이 함수는 줄의 마지막에 '줄 바꿈 (line break)' 을 추가하여 출력합니다. 값을 출력할 때 끝에 줄 바꿈을 없애려면, 'terminator (종료자)'에 빈 문자열을 전달하면 됩니다-예를 들어, `print(someValue, terminator : "")` 처럼 하면 됩니다. '기본 값을 가지는 매개 변수' 에 대해서는 [Default Parameter Values](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID169) 를 보기 바랍니다.
 
-Swift 의 문자열 삽입 구문 (string interpolation) 을 사용하면, 긴 문자열 속에 자리 표시자의 형태로 상수나 변수의 이름을 쓰고, Swift 가 상수나 변수의 현재 값으로 대체하도록 할 수 있습니다. 자리 표시자는 이름을 괄호로 감싼 다음 괄호 맨 앞에 역 슬래시를 붙여줘서 이스케이프 해주면 됩니다: [^escape]
+
+스위프트는 '_문자열 보간법 (string interpolation)_' 을 사용하여 긴 문자열 속에 상수나 변수 이름으로 '자리 표시 (placeholder)' 를 하고, 스위프트가 그 자리를 해당 상수나 변수의 현재 값으로 교체하도록 알려줄 수 있습니다. 이는 이름을 괄호로 감싼 다음, 시작 괄호 앞에 역-슬래시 (backslash) 로 'escape (벗어나게)'[^escape] 하면 됩니다:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // "The current value of friendlyWelcome is Bonjour!" 를 출력합니다.
 ```
 
-> 문자열 삽입 구문에서 사용할 수 있는 모든 옵션은 [문자열 삽입 구문 (String Interpolation)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html#//apple_ref/doc/uid/TP40014097-CH7-ID292) 에서 설명합니다.
+> 문자열 보간법에서 사용할 수 있는 모든 '선택 사항들 (options)' 은 [String Interpolation (문자열 보간법)](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html#ID292) 에서 설명합니다.
 
-### 주석 (Comments)
+### Comments (주석)
 
-주석을 사용하여 코드에 기록이나 기억을 돕는 용도로 실행되지 않는 글을 넣을 수 있습니다. Swift 컴파일러는 컴파일할 때 주석을 무시합니다.
+'주석 (comments)' 을 사용하면 코드 내에 실행되지 않는 텍스트를 넣어서, 설명이나 기억을 되살리는 용도로 사용할 수 있습니다. 스위프트 컴파일러는 코드를 컴파일할 때 주석은 무시합니다.
 
-Swift 의 주석은 C 의 주석과 매우 비슷합니다. 한 줄 짜리 주석은 두 개의 슬래시 (`//`) 로 시작합니다:
+스위프트의 주석은 C 언어의 주석과 매우 비슷합니다. 한-줄짜리 주석은 슬래쉬 두 개 (`//`) 로 시작합니다:
 
 ```swift
 // This is a comment.
 ```
 
-여러 줄짜리 주석은 슬래시와 별표 (`/*`) 가 있는 곳에서 시작해서 별표와 슬래시 (`*/`) 가 있는 곳에서 끝납니다:
+여러 줄짜리 주석은 슬래쉬 뒤에 별표가 있는 곳에서 시작하고 (`/*`) 별표 뒤에 슬래쉬가 있는 곳에서 끝납니다 (`*/` ):
 
 ```swift
 /* This is also a comment
  but is written over multiple lines. */
 ```
 
-C 의 여러 줄 주석과는 다르게 Swift 의 여러 줄 주석은 다른 여러 줄 주석 안에 중첩될 수 있습니다. 중첩된 주석을 만들려면 여러 줄짜리 주석 블럭을 시작한 다음 첫번째 주석 블럭 내에서 두번째 여러 줄 주석을  시작하면 됩니다. 두번째 주석 블럭이 닫히고 나서야 첫번째 주석 블럭이 닫히게 됩니다.
+C 언어의 여러 줄짜리 주석과 달리, 스위프트의 '여러 줄짜리 주석' 은 다른 여러 줄짜리 주석을 '품을 (nested)' 수 있습니다. 이렇게 'nested (품어진) 주석' 을 만들려면 일단 '여러 줄짜리 주석 블럭' 을 시작한 후 이 첫 번째 블럭 안에서 두 번째 '여러 줄짜리 주석을 시작하면 됩니다. 그리고 두 번째 블럭을 먼저 닫고, 첫 번째 블럭을 닫으면 됩니다:
 
 ```swift
 /* This is the start of the first multiline comment.
@@ -158,24 +159,24 @@ C 의 여러 줄 주석과는 다르게 Swift 의 여러 줄 주석은 다른 �
  This is the end of the first multiline comment. */
 ```
 
-여러 줄 주석을 중첩하면 코드에 이미 여러 줄 주석이 섞여 있는 경우에도 대용량의 블럭을 빠르고 쉽게 주석 처리 할 수 있습니다.
+'nested (품어진) 여러 줄짜리 주석' 을 사용하면 커다란 코드 블럭도 빠르고 쉽게 주석 처리할 수 있으며, 그 코드에 이미 여러 줄짜리 주석이 있더라도 상관없습니다.
 
 ### 세미콜론 (Semicolons)
 
-많은 다른 언어와는 다르게  Swift 는 코드의 각 문장의 끝에 세미콜론 (`;`) 을 붙일 필요가 없습니다. 물론 원한다면 할 수는 있습니다. 하지만 한 줄에 여러 개의 다른 문장을 쓰고 싶으면 세미콜론을 넣어야 합니다:
+다른 많은 언어와는 달리, 스위프트는 코드 문장 뒤에 세미콜론 (`;`) 을 쓸 필요가 없지만, 굳이 원한다면 써도 됩니다. 하지만, 여러 개의 분리된 문장을 한 줄에 쓰고 싶으면 세미콜론을 쓰는 _것이 (are)_ 필요합니다:
 
 ```swift
 let cat = "🐱"; print(cat)
 // "🐱" 를 출력합니다.
 ```
 
-### 정수 (Integers) 타입
+### Integers (정수)
 
 정수는 `42` 와 `-23` 처럼 분수 성분이 없는 모든 수를 말합니다. [^integer] 정수 타입에는 부호가 있는 경우 (양수, 0, 또는 음수) 가 있고 없는 경우 (양수나 0) 가 있습니다.
 
 Swift 는 부호가 있는 정수 타입과 없는 정수 타입을 8, 16, 32, 그리고 64 비트 형식으로 제공합니다. 이 정수 타입의 이름은 C 와 비슷한 규칙으로 지어졌는데, 8-비트 부호 없는 정수는 `UInt8` 타입이고, 32-비트 부호 있는 정수는 `Int32` 타입입니다 . [^naming] [^convention] Swift 의 모든 다른 타입들처럼 정수 타입은 대문자로 시작합니다.
 
-#### 정수 범위 (Bounds)
+#### Integer Bounds (정수의 경계)
 
 각 정수 타입의 최소 값과 최대 값에 접근하려면 `min` 과 `max` 속성을 사용하면 됩니다:
 
@@ -204,7 +205,7 @@ Swift 는 부호 없는 정수 타입으로 `UInt` 도 제공하는데, 이것�
 
 > `UInt`는 플랫폼의 기본 워드와 같은 크기의 부호 없는 정수 타입이 특별히 필요한 경우만 사용하도록 합니다. 이런 특별한 경우가 아니라면 저장되는 값이 음수가 아니더라도 `Int` 를 사용하는 것이 더 좋습니다. 정수 값으로 일관되게 `Int` 를 사용하면 상호 이용성에 도움이 되고, 다른 수 타입으로 타입을 바꿀 필요가 없으며, [타입 안전 검사기와 타입 추론 (Type Safety and Type Inference)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID322) 에 설명된 것 처럼 정수 타입 추론에 들어맞게 됩니다.
 
-### 부동소수점 수 (Floating-Point Numbers) 타입
+### Floating-Point Numbers (부동-소수점 수)
 
 부동 소수점 수는 `3.14159`, `0.1` 와 `-273.15` 처럼 분수 요소가 있는 수입니다.
 
@@ -215,7 +216,7 @@ Swift 는 부호 없는 정수 타입으로 `UInt` 도 제공하는데, 이것�
 
 > `Double` 은 적어도 소수점 이하 15 자리수의 정밀도를 가지고 있는 반면 `Float` 의 정밀도는 소수점 이하 6자리일 정도로 작습니다. 사용하고 있는 부동 소수점 타입이 적절한지는 코드에서 사용할 값의 특성과 범위에 달린 문제입니다. 두 타입이 모두 적당한 상황이라면 `Double` 을 쓰는 것이 더 낫습니다.
 
-### 타입 안전 검사기 (Type Safety) 와 타입 추론(Type Inference)
+### Type Safety and Type Inference (타입 안전기와 타입 추론기)
 
 Swift 는 타입-안전 언어입니다. 타입 안전 언어는 코드에서 사용하는 값의 타입을 분명히 할 것을 권장합니다. 코드의 일부분이 `String` 을 예상하고 있다면 실수로 `Int` 를 전달할 수 없습니다.
 
@@ -252,7 +253,7 @@ let anotherPi = 3 + 0.14159
 
 리터럴 값인 `3` 은 직접 타입을 지정한 것도 아니고 그자체가 타입인 것도 아니므로 적절한 출력 타입은 `Double` 로 추론되는데 이는 덧셈의 일부에 부동 소수점 리터럴이 있기 때문입니다.
 
-### Numeric Literals (수치 글자표현 값)
+### Numeric Literals (수치 글자표현)
 
 정수 리터럴은 다음과 같은 방법으로 작성할 수 있습니다:
 
@@ -298,13 +299,13 @@ let oneMillion = 1_000_000
 let justOverOneMillion = 1_000_000.000_000_1
 ```
 
-### 수치 타입의 형변환 (Numeric Type Conversion)
+### Numeric Type Conversion (수치 타입 변환)
 
 모든 일반 용도에서 그리고 심지어는 양수로만 쓰는 경우에도 정수 상수나 변수에는 항상 `Int` 타입만 쓰도록 합니다. 모든 상황에서 기본 정수 타입만 쓴다는 것은 코드에 있는 정수 상수와 변수가 언제든지 상호 호환가능함을 의미하며 정수 리터럴 값의 타입 추론과도 일치함을 의미합니다.
 
 다른 정수 타입은 특별하게 필요한 경우에만 사용하도록 하는데 이는 외부 소스에서 직접 크기가 결정된 데이터라던가 성능이나 메모리 사용량 문제 아니면 다른 최적화가 필요한 경우 등에 해당합니다. 이런 상황에서는 직접 크기가 결정된 타입을 사용하는 것이 우연하게 값이 넘치는 문제를 잡아내는데 도움을 주고 사용하는 데이터의 특성을 저절로 문서화할 수 있도록 해 줍니다.
 
-#### 정수 사이의 형변환 (Integer Conversion)
+#### Integer Conversion (정수 변환)
 
 정수 상수나 변수에 저장될 수 있는 수의 범위는 각 수치 타입마다 다릅니다. `Int8` 상수나 변수는 `-128` 에서 `127` 사이의 수를 저장할 수 있는 반면에, `UInt8` 상수나 변수는 `0` 에서 `255` 사이의 수를 저장할 수 있습니다. 크기가 지정된 정수 타입의 상수나 변수 범위에 있지 않는 수는 컴파일할 때 에러로 보고됩니다:
 
@@ -329,7 +330,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 `SomeType(ofInitialValue)` 는 Swift 에서 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방법입니다. 속을 들여다 보면, `UInt16` 타입은 `UInt8` 값을 받아들일 수 있는 초기자를 가지고 있어서, 이 초기자로 기존의 `UInt8` 값에서 새로운 `UInt16` 값을 만듭니다. 즉 여기서 아무 타입이나 전달할 수는 없고 — `UInt16` 의 초기자에 넘길 수 있는 타입만 가능합니다. 기존 타입의 초기자를 확장해서 (직접 정의한 타입도 포함하여) 새로운 타입을 받아들이게 하는 방법은 [확장 (Extensions) 기능](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151) 에서 다룹니다.
 
-#### 정수와 부동 소수점 수 사이의 형변환 (Integer and Floating-Point Conversion)
+#### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
 정수와 부동 소수점 수치 타입 사이의 형변환은 반드시 직접 드러내놓고 해야 합니다:
 
@@ -353,7 +354,7 @@ let integerPi = Int(pi)
 
 > 수치 상수와 변수를 결합하는 규칙은 수치 리터럴 끼리의 규칙과는 다릅니다. 리터럴 값 `3` 은 리터럴 값 `0.14159` 와 직접 더해지는데, 왜냐면 수치 리터럴은 타입이 직접 지정된 것도 아니고 그 자체가 타입인 것도 아니기 때문입니다. 이들의 타입은 컴파일러가 값을 평가하는 순간에만 추론됩니다.
 
-### 타입의 별칭 (Type Aliases)
+### Type Aliases (타입 별칭)
 
 타입의 별칭은 기존 타입에 대한 대체 이름을 정의합니다. [^aliase] 타입 별칭을 정의하려면 `typealias` 키워드를 사용합니다.
 
@@ -372,7 +373,7 @@ var maxAmplitudeFound = AudioSample.min
 
 여기 보면 `AudioSample` 는 `UInt16` 에 대한 별칭으로 정의되었습니다. 별칭이므로 `AudioSample.min` 를 호출하는 것은 실제로 `UInt16.min` 를 호출하는 것을 의미하며, `maxAmplitudeFound` 변수에  초기 값으로 `0` 을 넘기게 됩니다.
 
-### 불 타입 (Booleans)
+### Booleans (불린; 논리 값)
 
 Swift 에 있는 기본 불 (Boolean) 타입은 `Bool` 입니다. 불 (Boolean) 값은 참과 거짓만이 가능하기 때문에 논리 값이라고 합니다. Swift 는 `true` 와 `false` 라는 두 개의 불 상수 값을 제공합니다:
 
@@ -418,7 +419,7 @@ if i == 1 {
 
 Swift 에 있는 다른 타입 검사기의 예들과 마찬가지로 이러한 접근 방식은 실수로 인한 에러를 방지하고 특정 코드 영역의 의도가 항상 명확히 드러나도록 만들어 줍니다.
 
-### 튜플 (Tuples)
+### Tuples (튜플; 짝)
 
 튜플은 여러 개의 값을 그룹지어서 단일 합성 값으로 만듭니다. 튜플안에는 어떤 타입의 값이라도 넣을 수 있으며서로 같은 타입일 필요도 없습니다.
 
@@ -479,7 +480,7 @@ print("The status message is \(http200Status.description)")
 
 > 튜플은 관련 있는 값들을 임시로 그룹지을 때 유용합니다. 복잡한 데이터 구조를 만드는데는 알맞지 않습니다. [^suite] 만약 데이터 구조가 임시 영역을 넘어서 유지되어야 할 경우 튜플 보다는 클래스 (객체 타입) 이나 구조 타입으로 모델을 만들도록 합니다. 더 많은 정보는 [클래스와 구조 타입 (Classes and Structures)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-ID82) 에서 볼 수 있습니다.
 
-### 옵셔널 (Optionals)
+### Optionals (옵셔널; 선택적 타입)
 
 옵셔널은 값이 아예 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 나타냅니다: 값이 있어서 옵셔널을 풀고 그 값에 접근할 수 있거나 아니면 값 자체가 아예 없는 경우입니다.
 
@@ -519,7 +520,7 @@ var surveyAnswer: String?
 
 > Swift 의 `nil` 은 Objective-C 의 `nil` 과 같은 것이 아닙니다. Objective-C 에서의 `nil` 은 존재하지 않는 객체에 대한 포인터입니다. Swift 에서는 `nil` 은 포인터가 아닙니다 — 이것은 특정 타입의 값이 없음을 나타내는 상태입니다. [^swift-nil] 객체 타입 뿐만 아니라 모든 타입의 옵셔널에 `nil` 을 설정할 수 있습니다.
 
-#### If 문 (Statements) 과 강제로 풀기 (Forced Unwrapping)
+#### If Statements and Forced Unwrapping (If 구문과 강제 풀기)
 
 `if` 문을 사용하면 옵셔널을 `nil` 과 비교함으로써 옵셔널이 값을 가지고 있는 지를 알아낼 수 있습니다. 이 비교 연산은 “같음” 연산자 (`==`) 나 “같지 않음” 연산자 (`!=`) 를 써서 수행합니다. [^equal-to-not-equal-to]
 
@@ -545,7 +546,7 @@ if convertedNumber != nil {
 
 > `!` 를 사용해서 존재하지 않는 옵셔널 값에 접근하려고 하면 실행 시간에 에러가 발생합니다. [^runtime] 항상 먼저 옵셔널이 `nil`이 아닌 값을 가지고 있는지 확인한 다음에 `!` 를 사용해서 값을 강제로 풀어야 합니다.
 
-#### 옵셔널 연결 (Optional Binding) 구문
+#### Optional Binding (옵셔널 바인딩; 선택적 연결)
 
 옵셔널 연결 (optional binding) 구문을 사용하면 옵셔널이 값을 가지고 있는지 확인하고 있으면 그 값을 임시 상수나 변수에서 쓸 수 있도록 만들 수 있습니다. [^binding] 옵셔널 연결 구문은 `if` 및 `while` 문과 함께 사용해서 단 한번의 명령으로 옵셔널 안에 있는 값을 검사하고 그 값을 상수나 변수로 추출할 수 있습니다. `if` 문과 `while` 문에 대해서는 [흐름 제어(Control Flow)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID120) 에서 더 자세하게 설명하고 있습니다.
 
@@ -596,7 +597,7 @@ if let firstNumber = Int("4") {
 
 > `if` 문 안에 있는 옵셔널 연결 구문에서 만들어진 상수와 변수는 `if` 구문의 본체 영역 안에서만 사용할 수 있습니다. 이와는 반대로 `guard` 문에서 만들어진 변수는 `guard` 이후의 영역에서도 사용이 가능한데, 이 내용은 [조기 종료 (Early Exit)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID525) 에서 설명합니다. [^early-exit]
 
-#### 저절로 풀리는 옵셔널 (Implicitly Unwrapped Optionals)
+#### Implicitly Unwrapped Optionals (암묵적으로 풀리는 옵셔널; 저절로 풀리는 선택형 타입)
 
 위에서 설명했듯이 옵셔널은 상수나 변수가 “값이 없음” 일 수도 있음을 나타냅니다. 옵셔널은 `if` 문으로 값이 있는지 검사할 수도 있고, 옵셔널 연결 구문으로 값이 있으면 풀어서 옵셔널 값에 접근할 수도 있습니다.
 
@@ -640,7 +641,7 @@ if let definiteString = assumedString {
 
 > 나중에라도 변수가 `nil`이 될 가능성이 있는 경우 저절로 풀리는 옵셔널을 사용하지 않도록 합니다. 변수의 생명 주기 동안에 `nil` 값인지 검사할 필요가 있으면 항상 보통의 옵셔널 타입을 사용하도록 합니다.
 
-### 에러 처리 (Error Handling) 구문
+### Error Handling (오류 처리)
 
 에러 처리 구문을 사용하면 프로그램 실행 중에 마주칠 수 있는 에러 조건들에 대응을 할 수 있습니다.
 
@@ -692,11 +693,11 @@ do {
 
 에러를 던지고, 포착하고, 전파하는 것에 대해서는 [에러 처리 (Error Handling) 구문](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html#//apple_ref/doc/uid/TP40014097-CH42-ID508) 에서 아주 상세하게 다룹니다.
 
-### 단언 (Assertions) 구문
+### Assertions and Preconditinos (단언과 선행 조건)
 
 어떤 경우에는 특정 조건이 만족이 안될 경우 코드의 실행을 계속할 수 없는 경우가 있습니다. 이러한 상황일 때 단언 (Assertions) 구문을 써서 코드 실행을 종료하고 값이 없거나 잘못된 원인을 고칠 수 있는 기회를 제공할 수 있습니다. [^assertion] [^debug]
 
-#### 단언 구문으로 디버깅하기 (Debugging with Assertions)
+#### Debugging with Assertions (단언문으로 디버깅하기)
 
 단언 (assertion) 구문은 불 (Boolean) 조건이 확실히 `true` 로 평가되는지 실행 시간에 검사합니다. 문자 그대로 단언 구문은 조건이 참이라고 “단언” 합니다. 단언 구문은 어떤 코드를 실행하기 전에 필수 조건들을 만족하는지 확인하는 용도로 사용합니다. 조건이 `true` 로 평가되면 코드가 평소대로 계속 실행되지만, 조건이 `false` 로 평가되면 코드 실행이 멈추고 앱이 종료됩니다.
 
@@ -732,33 +733,28 @@ assert(age >= 0)
 
 > 단언 구문은 앱을 종료시켜 버리는데다가 잘못된 조건이 발생하지 않도록 코드를 설계하는 용도로는 사용할 수 없습니다. 그럼에도 불구하고, 유효하지 않은 조건이 발생하는 상황에서는 단언 구문이 효과가 큰 방법인데, 앱 출시 전 개발 과정에서 문제가 있는 조건을 강조해서 파악하기 쉽게 해주기 때문입니다.
 
+
+#### Enforcing Preconditions (선행 조건 강제하기)
+
 ### 참고 자료
 
 [^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
 
-[^identify]: 'identify'는 '신원을 파악하다'를 살려서 옮깁니다. 일단 '식별하다' 로 옮깁니다. 정리가 필요합니다.
+[^constant-optimization]: 예전에 작성한 글 [Swift에서 변수 최적화에 대한 의문](http://xho95.github.io/xcode/swift/variables/optimization/2016/01/22/Swift-Variables-Optimization.html) 을 여기로 옮겨서 편집하도록 합니다.
 
-[^tuple]: 'tuple'은 '튜플'로 옮깁니다.
+[^private-use-Unicode-scalar-values]: '보조 사용자 영역의 유니코드 크기 값' 이란 '유니코드' 에서 'private-use areas' 를 말하는 것 같습니다. 유니코드에는 `U+E000 ~ U+F8FF` 등, 총 3개의 'private-use areas' 이 있는데, 보다 자세한 내용은 위키피디아의 [Unicode](https://en.wikipedia.org/wiki/Unicode) 항목을 참고하기 바랍니다.
 
-[^advanced]: 'advanced'는 '더 앞선' 으로 옮깁니다.
+[^annotation]: 'annotation' 자체에 '주석' 이라는 의미가 있지만, 프로그래밍 용어로 '주석' 은 'comments' 라는 말이 이미 널리 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라는 말로 옮기도록 합니다. 실제로 스위프트에서 'annotation' 을 쓸 일은 거의 없기 때문에 이 용어의 의미에 크게 비중을 두지 않아도 될 것 같습니다.
 
-[^single-compound-value]: 'single compound value'는 '단일 합성 값'으로 옮깁니다.
+[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목을 참고하기 바랍니다.
 
-[^introduce]: 'introduce'는 때에 따라서 '도입하다'라고 옮깁니다.
+[^string-interpolation]: 'interpolation' 은 원래 수학 용어로 '보간법' 이라고 하며 두 값 사이의 값을 근사식으로 구해서 집어넣는 것을 말합니다. 'string interpolation' 은 '문자열 삽입법' 정도로 할 수 있겠지만, 수학 용어로 '보간법' 이라는 말이 널리 쓰이고 있으므로 '문자열 보간법' 이라고 옮기도록 합니다.
 
-[^type-safe]: 'type safe'는 '타입 안전'으로 옮깁니다. '타입에 대하 안전한'이 더 좋을지는 좀 더 지켜볼 생각입니다.
+[^escape]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 참고로 스위프트에서 'escaping closure' 는 '(본래 영역을) 벗어날 수 있는 클로저' 를 의미합니다.
 
-[^type-safety]: 'type safety'는 '타입 안전 검사기'로 옮깁니다.
 
-[^accociate]: 'accociate'는 '연관짓다'로 옮기지만 때에 따라 '연결짓다'로 옮깁니다.
 
-[^counter]: 'counter'는 '카운터'로 옮깁니다.
 
-[^using-constant]: 이 부분은 컴파일러 최적화와 관련이 있습니다.
-
-[^annotation]: 'annotation'은 '주석, 주해'의 의미가 있는데 여기서는 일단 '지정'으로 옮깁니다. 'annotation'은 프로그래밍마다 조금씩 다른 의미로 사용되는데 Swift 에서는 타입을 지정하는 표시로 사용하는 것 같습니다.
-
-[^code-point]: 아직은 단어 자체가 생소합니다. 일단은 'code point'를 '코드 번호'로 옮겼는데 나중에 바꾸도록 합니다.
 
 [^output]: 여기서 'output'을 '결과'로 옮겼는데, 하드웨어의 출력 장치를 말하는 것인지 확인이 필요합니다.
 
