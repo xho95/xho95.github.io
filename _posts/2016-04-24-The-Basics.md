@@ -375,16 +375,16 @@ var maxAmplitudeFound = AudioSample.min
 
 ### Booleans (불린; 논리 값)
 
-Swift 에 있는 기본 불 (Boolean) 타입은 `Bool` 입니다. 불 (Boolean) 값은 참과 거짓만이 가능하기 때문에 논리 값이라고 합니다. Swift 는 `true` 와 `false` 라는 두 개의 불 상수 값을 제공합니다:
+스위프트는 `Bool` 이라는 기본적인 _불린 타입 (Boolean type)_ 을 가지고 있습니다. '불린 (Boolean)' 값을 일컬어 _논리 값 (logical)_ 이라고도 하는데, 왜냐면 이 값들은 항상 `true` 또는 `false` 일 수 밖에 없기 때문입니다. 스위프트는 두 개의 '불린 (Boolean)' 상수 값, `true` 와 `false` 를 제공합니다:
 
 ```swift
 let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 `Bool` 로 추론되는데 이는 이들이 불 리터럴 값으로 초기화되었기 때문입니다. 앞서 살펴본 `Int` 와 `Double` 와 같이, 상수나 변수를 만들면서 바로 `true` 나 `false` 값을 설정하면, 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다.  타입 추론은 타입이 알려진 다른 값으로 상수나 변수를 초기화할 때 Swift 코드를 더 간결하고 읽기 편하게 만들어 줍니다. [^readable]  
+`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 이들이 '불린 글자표현 값 (Boolean literal values)' 으로 초기화되었다는 사실에 의해 `Bool` 로 추론됩니다. 앞서 `Int` 와 `Double` 에서와 같이, 생성하자마자 `true` 나 `false` 로 설정하면, 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 장치 (type inference)' 는 스위프트에서 상수나 변수를 초기화할 때 이미 타입이 알려진 값을 사용할 경우 코드를 더 간결하고 이해하기 쉽게 만들도록 도와줍니다.
 
-불 (Boolean) 값은 `if` 문 같은 조건 구문을 사용할 때 특히 더 유용합니다:
+'불린 (Boolean)' 값은 특히 `if` 문 같은 조건 구문에서 사용할 때 아주 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
@@ -395,29 +395,29 @@ if turnipsAreDelicious {
 // "Eww, turnips are horrible." 를 출력합니다.
 ```
 
-`if` 문 같은 조건 구문에 대해서는 [흐름 제어(Control Flow)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID120) 에서 더 자세히 다룹니다. [^cover]
+`if` 문 같은 조건 구문에 대해서는 [Control Flow (제어 흐름))](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
 
-Swift 의 타입 안전 장치는 불이 아닌 값이 `Bool` 을 대신하는 것을 방지합니다. 아래에 보인 예는 컴파일-시간 에러를 보고합니다:
+스위프트의 '타입 안전 장치 (type safety)' 는 '불린-아닌 값 (non-Boolean values)' 이 `Bool` 을 대체하지 못하도록 막아줍니다. 다음 예제는 '컴파일 시간에 (compile-time)' 에러를 띄웁니다:
 
 ```swift
 let i = 1
 if i {
-    // 이 예제는 컴파일되지 않고 에러를 보고합니다.
+    // 이 예제는 컴파일되지 않고, 에러를 띄웁니다.
 }
 ```
 
-하지만 아래 예제에 보인 대안은 유효합니다:
+아래 예제는 이에 대한 유효한 대안 방식을 보여줍니다:
 
 ```swift
 let i = 1
 if i == 1 {
-    // 이 예제는 컴파일에 성공합니다.
+    // 이 예제는 성공적으로 컴파일됩니다.
 }
 ```
 
-`i == 1` 비교 연산의 결과는 `Bool` 타입이므로 두번째 예는 타입-검사를 통과합니다. `i == 1` 과 같은 비교 연산은 [기본 연산자 (Basic Operators)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/BasicOperators.html#//apple_ref/doc/uid/TP40014097-CH6-ID60) 에서 논의합니다.
+`i == 1` 비교 연산의 결과는 `Bool` 타입이고, 따라서 이 두 번째 예제는 타입 검사를 통과하게 됩니다. `i == 1` 과 같은 비교 연산들은 [Basic Operators (기본 연산자)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html) 에서 설명합니다.
 
-Swift 에 있는 다른 타입 검사기의 예들과 마찬가지로 이러한 접근 방식은 실수로 인한 에러를 방지하고 특정 코드 영역의 의도가 항상 명확히 드러나도록 만들어 줍니다.
+스위프트의 '타입 안전 장치 (type safety)' 에 대한 여타 다른 예제에서 봤듯이, 이런 접근 방법은 실수로 인한 에러를 방지해주며 특정 코드 영역의 의도가 늘 명확하도록 해 줍니다.
 
 ### Tuples (튜플; 짝)
 
