@@ -298,7 +298,7 @@ let oneMillion = 1_000_000
 let justOverOneMillion = 1_000_000.000_000_1
 ```
 
-### Numeric Type Conversion (수치 타입의 형 변환)
+### Numeric Type Conversion (수치 타입 변환)
 
 코드에 있는 모든 일반적인-용도의 정수 상수나 변수에는, 설령 그것이 음수가 되지 않는다는 것을 알더라도, `Int` 타입을 사용하도록 합니다. 언제 어디서나 이 기본 정수 타입을 사용한다는 것은 코드에 있는 정수 상수나 변수를 즉시 '상호 호환가능 (interoperable)' 하며 '정수 글자표현 값 (integer literal values)' 으로 추론된 타입과도 일치하게 만들게 된다는 것을 의미합니다.
 
@@ -316,9 +316,9 @@ let tooBig: Int8 = Int8.max + 1
 // 이것도 에러를 띄웁니다.
 ```
 
-각 정수 타입은 다른 범위의 값을 저장할 수 있으므로 상황에 따라 수치 타입의 형변환을 직접 선택해 줘야 합니다. 이러한 직접 선택 (opt-in) 접근 방법은 잠재 형변환 에러를 방지하고 타입 변환 의도를 분명하게 드러내 줍니다. [^opt-in approach]
+각각의 수치 타입은 저장할 수 있는 값의 범위가 서로 다르기 때문에, (변환을 하려면) 각각의 경우마다 일일이 수치 타입 변환을 직접 선택해야 합니다. 이러한 '직접 선택 접근 방법 (opt-in approach)' 은 의도하지 않게 저절로 변환되는 바람에 발생할 수 있는 에러도 방지하고 코드에서 타입 변환을 하는 의도를 명시하는데도 도움이 됩니다.
 
-하나의 특정 수치 타입을 다른 타입으로 변환하려면 기존 값을 써서 원하는 수치 타입을 초기화합니다. 아래에 있는 예제에서 `twoThousand` 상수는 `UInt16` 타입이고, `one` 상수는 `UInt8` 타입입니다. 이 둘은 직접 더할 수 없는데, 왜냐면 같은 타입이 아니기 때문입니다. 대신에 이 예제에서는 `UInt16(one)` 을 호출하여 새로운 `UInt16` 값을 만들고, `one` 값으로 초기화한 다음, 원래 값 대신 이 값을 사용합니다:
+지정된 타입의 수를 다른 타입으로 변환하려면, 원하는 타입의 새로운 수를 기존 값으로 초기화하면 됩니다. 아래의 예제에서, 상수 `twoThousand` 의 타입은 `UInt16` 인 반면, 상수 `one` 의 타입은 `UInt8` 입니다. 이들은 같은 타입이 아니기 때문에 직접 더할 수가 없습니다. 대신에, 이 예제는 `UInt16(one)` 을 호출하여 새로운 `UInt16` 를 생성하고 `one` 의 값으로 초기화한 다음, 원본 대신 이 값을 사용합니다.  
 
 ```swift
 let twoThousand: UInt16 = 2_000
@@ -326,52 +326,52 @@ let one: UInt8 = 1
 let twoThousandAndOne = twoThousand + UInt16(one)
 ```
 
-이제 양쪽 항이 모두 `UInt16` 타입이므로 덧셈이 가능합니다. 결과를 담은 상수 (`twoThousandAndOne`) 는 `UInt16` 타입으로 추론되는데  두 개의 `UInt16` 값의 합이기 때문입니다.
+이제 양쪽 타입이 모두 `UInt16` 이므로, 더하기가 가능합니다. '결과 상수 (`twoThousandAndOne`)' 의 타입도, 두 `UInt16` 값의 합이기 때문에, `UInt16` 으로 추론됩니다.
 
-`SomeType(ofInitialValue)` 는 Swift 에서 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방법입니다. 속을 들여다 보면, `UInt16` 타입은 `UInt8` 값을 받아들일 수 있는 초기자를 가지고 있어서, 이 초기자로 기존의 `UInt8` 값에서 새로운 `UInt16` 값을 만듭니다. 즉 여기서 아무 타입이나 전달할 수는 없고 — `UInt16` 의 초기자에 넘길 수 있는 타입만 가능합니다. 기존 타입의 초기자를 확장해서 (직접 정의한 타입도 포함하여) 새로운 타입을 받아들이게 하는 방법은 [확장 (Extensions) 기능](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151) 에서 다룹니다.
+`SomeType(ofInitialValue)` 는 스위프트에서 타입의 초기자를 호출하고 초기 값을 전달하는 기본적인 방법입니다. 속을 들여다보면, `UInt16` 는 `UInt8` 값을 받아들이는 초기자를 가지고 있어서, 이 초기자를 사용해서 기존의 `UInt8` 로 새로운 `UInt16` 를 만들 수 있는 것입니다. 여기서, _아무 (any)_ 타입이나 전달해서는 안되며-`UInt16` 가 제공하는 초기자에 맞는 타입이라야만 합니다. 기존 타입을 확장해서 (자기가 정의한 타입을 포함한) 새로운 타입을 받아들이는 초기자를 제공하려면 [Extensions (확장))](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html) 을 참고하기 바랍니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
-정수와 부동 소수점 수치 타입 사이의 형변환은 반드시 직접 드러내놓고 해야 합니다:
+정수와 부동-소수점 수치 타입 사이의 변환은 이를 반드시 명시해야 합니다.:
 
 ```swift
 let three = 3
 let pointOneFourOneFiveNine = 0.14159
 let pi = Double(three) + pointOneFourOneFiveNine
-// pi 는 3.14159 과 같고 Double 타입으로 추론됩니다.
+// pi 는 3.14159 와 같고, 타입은 Double 로 추론됩니다.
 ```
 
-위에서는 상수 `three` 의 값으로 `Double` 타입의 새 값을 만들어서 덧셈의 양쪽 항이 같은 타입이 되게 만들었습니다. 이렇게 형변환을 하지 않았다면 덧셈을 할 수 없었을 것입니다.
+여기서, 상수 `three` 의 값을 써서 `Double` 타입의 새로운 값을 생성했으므로, 더하기의 양쪽이 모두 같은 타입입니다. 이 변환이 제 위치에 맞게 있지 않았다면, 더하기를 할 수 없었을 것입니다.
 
-부동 소수점 수에서 정수로 형변환 하는 것도 반드시 직접 해야 합니다. 정수 타입은 `Double` 이나 `Float` 값으로 초기화할 수 있습니다:
+부동-소수점 수 (floating-point) 를 정수로 변환할 때도 반드시 이를 명시해야 합니다. 정수 타입은 `Double` 이나 `Float` 값으로 초기화할 수 있습니다:
 
 ```swift
 let integerPi = Int(pi)
-// integerPi 는 3과 같고 Int 타입으로 추론됩니다.
+// integerPi 는 3 과 같고, 타입은 Int 로 추론됩니다.
 ```
 
-이렇게 부동 소수점 수로 새로운 정수 값을 초기화하는 방식은 항상 수를 잘라냅니다. 이것은 `4.75` 는 `4` 가 되고 `-3.9` 는 `-3` 이 됨을 의미합니다.
+이와 같이 부동-소수점 값으로 새로운 정수 값을 초기화할 때는 항상 값이 잘리게 됩니다. 이는 `4.75` 는 `4` 가 되고, `-3.9` 는 ㄴ`3` 이 된다는 것을 의미합니다.
 
-> 수치 상수와 변수를 결합하는 규칙은 수치 리터럴 끼리의 규칙과는 다릅니다. 리터럴 값 `3` 은 리터럴 값 `0.14159` 와 직접 더해지는데, 왜냐면 수치 리터럴은 타입이 직접 지정된 것도 아니고 그 자체가 타입인 것도 아니기 때문입니다. 이들의 타입은 컴파일러가 값을 평가하는 순간에만 추론됩니다.
+> 수치 상수와 변수를 결합할 때의 규칙은 '수치 글자표현 (numeric literals)' 의 규착과는 다릅니다. '글자표현 값' `3` 은 글자표현 값 `0.14159` 에 바로 더해질 수 있는데, 이는 '수치 글자표현' 이 명시적인 타입을 가지고 있는 것도 아니고 그 자체가 타입인 것도 아니기 때문입니다. 이들의 타입은 컴파일러가 값을 평가하는 그 순간에만 추론됩니다.  
 
-### Type Aliases (타입 별칭)
+### Type Aliases (타입 별명)
 
-타입의 별칭은 기존 타입에 대한 대체 이름을 정의합니다. [^aliase] 타입 별칭을 정의하려면 `typealias` 키워드를 사용합니다.
+_타입 별명 (type aliases)_ 은 기존 타입에 대한 '대체 이름 (alternative name)' 을 정의합니다. '타입 별명' 을 정의할 때는 `typealias` 키워드를 사용합니다.
 
-타입 별칭은 문맥상 더 적절한 이름으로 기존 타입을 참조하고자 할 때 유용합니다, 가령 외부 소스에 있는 특정 크기의 데이터를 사용할 경우에 유용합니다: [^contextually]
+'타입 별명' 은 기존 타입을 문맥에 더 알맞은 이름으로 참조하고 싶을 때 유용하며, 가령 외부 소스에서 크기가 지정된 데이터와 작업할 때는 아래와 같이 할 수 있습니다:
 
 ```swift
 typealias AudioSample = UInt16
 ```
 
-타입 별칭을 한 번 정의하고 나면, 원래 이름을 사용할 수 있는 곳이면 어디든 별칭을 사용할 수 있습니다:
+타입 별명을 한 번 정의하고 나면, 원래의 이름을 사용할 수 있는 곳이라면 어디서든 이 별명을 사용할 수 있습니다:
 
 ```swift
 var maxAmplitudeFound = AudioSample.min
 // maxAmplitudeFound 는 이제 0 입니다.
 ```
 
-여기 보면 `AudioSample` 는 `UInt16` 에 대한 별칭으로 정의되었습니다. 별칭이므로 `AudioSample.min` 를 호출하는 것은 실제로 `UInt16.min` 를 호출하는 것을 의미하며, `maxAmplitudeFound` 변수에  초기 값으로 `0` 을 넘기게 됩니다.
+여기서는, `AudioSample` 을 `UInt16` 의 별명으로 정의했습니다. 이것은 별명이므로, `AudioSample.min` 을 호출하는 것은 실제로 `UInt16.min` 를 호출하는 것이며, 이는 `maxAmplitudeFound` 변수에 초기 값으로 `0` 을 제공하게 됩니다.
 
 ### Booleans (불린; 논리 값)
 
@@ -597,7 +597,7 @@ if let firstNumber = Int("4") {
 
 > `if` 문 안에 있는 옵셔널 연결 구문에서 만들어진 상수와 변수는 `if` 구문의 본체 영역 안에서만 사용할 수 있습니다. 이와는 반대로 `guard` 문에서 만들어진 변수는 `guard` 이후의 영역에서도 사용이 가능한데, 이 내용은 [조기 종료 (Early Exit)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID525) 에서 설명합니다. [^early-exit]
 
-#### Implicitly Unwrapped Optionals (암묵적으로 풀리는 옵셔널; 저절로 풀리는 선택형 타입)
+#### Implicitly Unwrapped Optionals (암시적으로 풀리는 옵셔널; 저절로 풀리는 옵셔널)
 
 위에서 설명했듯이 옵셔널은 상수나 변수가 “값이 없음” 일 수도 있음을 나타냅니다. 옵셔널은 `if` 문으로 값이 있는지 검사할 수도 있고, 옵셔널 연결 구문으로 값이 있으면 풀어서 옵셔널 값에 접근할 수도 있습니다.
 
