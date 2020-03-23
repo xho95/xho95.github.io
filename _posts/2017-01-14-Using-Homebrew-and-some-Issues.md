@@ -110,7 +110,7 @@ $ brew install some_package
 
 > 참고 자료에 따르면 엘 케피탄부터 변경된 것 같습니다. [^macnews-3728]
 
-따라서 `brew install` 명령을 사용하는 과정에서 아래와 비슷한 에러가 발생하면서 설치가 안되는 경우가 있습니다. 
+따라서 `brew install` 명령을 사용하는 과정에서 아래와 비슷한 에러가 발생하면서 설치가 안되는 경우가 있습니다.
 
 ```
 ==> The following existing directories will be made group writable:
@@ -160,7 +160,7 @@ $ sudo chown -R $(whoami) /usr/local
 
 다만 폴더 권한 문제로 설치가 진행되다가 멈춘 경우 이미 패키지 자체는 설치되어 있지만 심볼릭 링크를 만들 수 없어서 link 관련 문제가 발생하는 것입니다.
 
-이 경우 위의 방법으로 폴더 권한을 수정한 후 설치를 다시 수행하면 아래와 같이 `brew link`를 먼저 수행하라는 에러가 발생합니다.
+이 경우 위의 방법으로 폴더 권한을 수정한 후 설치를 다시 수행하면 아래와 같이 `brew link`를 먼저 수행하라는 에러를 띄웁니다.
 
 ```
 Error: You must `brew link ...` before ... can be installed
@@ -246,7 +246,7 @@ Homebrew 이슈를 겪은 시점과 글을 작성하는 시점이 달라서 과�
 
 [^veryfaraway-homebrew]: [Homebrew 설치하기](https://veryfaraway.github.io/digging/homebrew.html) : Homebrew의 설치 방법과 사용법에 대해서 정리한 [주경야근](http://apple.viewtreefull.com/index.html) 님의 글입니다. 조금 특이하게 `brew pin` 명령에 대한 설명이 나와서 기록 차원에서 참조를 연결합니다.
 
-[^macnews-3728]: [OS X 10.11 엘 캐피탄에 '홈브류(Homebrew)'를 설치하는 방법](http://macnews.tistory.com/3728) : 엘 케피탄에서의 Homebrew 이슈와 시스템 무결성 보호에 대한 내용이 잘 정리되어 있습니다. 이 글에 따르면 엘 케피탄부터 적용된 시스템 무결성 보호 정책 때문에 Homebrew 이슈가 발생하게 된 것 같습니다. 
+[^macnews-3728]: [OS X 10.11 엘 캐피탄에 '홈브류(Homebrew)'를 설치하는 방법](http://macnews.tistory.com/3728) : 엘 케피탄에서의 Homebrew 이슈와 시스템 무결성 보호에 대한 내용이 잘 정리되어 있습니다. 이 글에 따르면 엘 케피탄부터 적용된 시스템 무결성 보호 정책 때문에 Homebrew 이슈가 발생하게 된 것 같습니다.
 
 [^symbolic-link]: [심볼릭 링크](https://ko.wikipedia.org/wiki/심볼릭_링크) : 심볼릭 링크에 대한 한글 위키피디아 설명입니다.
 

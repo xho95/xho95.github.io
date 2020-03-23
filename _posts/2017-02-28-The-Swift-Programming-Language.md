@@ -16,7 +16,7 @@ categories: Swift Programming Language Grammar
 
 ### Language Guide (언어 설명서)
 
-* [The Basic (기초)](http://xho95.github.io/swift/language/grammar/basic/2016/04/24/The-Basics.html)
+* [The Basic (기초)](http://xho95.github.io/swift/language/grammar/basics/2016/04/24/The-Basics.html)
 * [Basic Operators (기본 연산자)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html)
 * [Strings and Characters (문자열과 문자)](http://xho95.github.io/swift/grammar/strings/characters/2016/05/29/Strings-and-Characters.html)
 * [Collection Types (집합체 타입)](https://xho95.github.io/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html)
@@ -40,7 +40,7 @@ categories: Swift Programming Language Grammar
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
 * [Opaque Types (불투명한 타입)](http://xho95.github.io/swift/language/grammar/opaque/type/2020/02/22/Opaque-Types.html)
 * [Automatic Reference Counting (자동 참조 카운팅)]
-* [Memory Safety (메모리 안전성)]
+* [Memory Safety (메모리 안전 장치)]
 * [Access Control (접근 제어)]
 * [Advanced Operators (고급 연산자)]
 

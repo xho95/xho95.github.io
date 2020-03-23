@@ -161,7 +161,7 @@ shoppingList[0] = "Six eggs"
 // 이제 목록에 있는 첫 번째 요소는 단순히 "Eggs" 가 아니라 "Six eggs" 입니다.
 ```
 
-첨자 연산 문법을 사용할 때는, 지정한 인덱스가 유효해야만 합니다. 예를 들어, 배열 끝에 요소를 추가한답시고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 '실행 시간에 에러 (runtime error)' 가 발생합니다.[^count-concurrent]
+첨자 연산 문법을 사용할 때는, 지정한 인덱스가 유효해야만 합니다. 예를 들어, 배열 끝에 요소를 추가한답시고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다.[^count-concurrent]
 
 첨자 연산 문법을 사용해서 일정 범위의 값들을 한 번에 바꿀 수도 있는데, 이 때 대체될 값들의 범위와 대체할 범위의 길이가 달라도 문제 없습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 그리고 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 바꾸는 것을 보여줍니다:
 
@@ -189,7 +189,7 @@ let mapleSyrup = shoppingList.remove(at: 0)
 // 이제 상수 mapleSyrup 은 제거된 문자열인 "Maple Syrup" 이 됩니다.
 ```
 
-> 배열 범위를 벗어난 색인으로 값에 접근하려고 하거나 수정하려고 하면 '실행 시간에 에러 (runtime error)' 가 발생합니다. 색인을 사용하기 전에 유효한 지를 검사하고 싶으면 배열의 `count` 속성과 비교하면 됩니다. 배열에서 유효한 색인으로 가장 큰 것은 `count - 1` 인데, 배열의 '색인은 영-기준 (indexed from zero)' 이기 때문입니다 - 하지만, `count` 가 `0` (즉 배열이 비어있으면) 이면, 유효한 색인이 아예 없습니다.
+> 배열 범위를 벗어난 색인으로 값에 접근하려고 하거나 수정하려고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다. 색인을 사용하기 전에 유효한 지를 검사하고 싶으면 배열의 `count` 속성과 비교하면 됩니다. 배열에서 유효한 색인으로 가장 큰 것은 `count - 1` 인데, 배열의 '색인은 영-기준 (indexed from zero)' 이기 때문입니다 - 하지만, `count` 가 `0` (즉 배열이 비어있으면) 이면, 유효한 색인이 아예 없습니다.
 
 배열에 요소를 제거할 때 발생하는 틈은 모조리 메꿔지므로, 색인 `0` 에 있는 값은 이제 다시 `"Six eggs"` 와 같아집니다:
 

@@ -384,7 +384,7 @@ greeting[index]
 // a
 ```
 
-문자열 범위 밖의 색인이나 문자열 범위 밖의 색인에 있는 `Character` 에 접근하려고 시도하면 'runtime error (실행시간에 에러)' 가 발생합니다.
+문자열 범위 밖의 색인이나 문자열 범위 밖의 색인에 있는 `Character` 에 접근하려고 시도하면 'runtime error (실행시간에 에러)' 를 띄웁니다.
 
 ```swift
 // greeting[greeting.endIndex]  // 에러

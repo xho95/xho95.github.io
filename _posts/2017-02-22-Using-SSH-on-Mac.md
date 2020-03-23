@@ -91,7 +91,7 @@ SSH 키를 등록하는 방법은 각각의 서버에 설명이 나와 있는 �
 
 GitLab 의 [SSH](https://docs.gitlab.com/ce/ssh/README.html) 문서에 따르면 공개키가 없으면 GitLab 의 암호와된 정보에 접근할 수 없다고 합니다. [^gitlab-ssh]
 
-따라서 공개키 없이 `push` 하려고 서버에 접근하면 에러가 발생합니다. 이 문제를 해결하려면 SSH 키를 등록하면 됩니다.
+따라서 공개키 없이 `push` 하려고 서버에 접근하면 에러를 띄웁니다. 이 문제를 해결하려면 SSH 키를 등록하면 됩니다.
 
 ```
 $ git push -u origin master
