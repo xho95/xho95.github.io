@@ -482,87 +482,77 @@ print("The status message is \(http200Status.description)")
 
 튜플은 관련이 있는 값들을 간단히 그룹지을 때 유용합니다. 복잡한 데이터 구조를 만드는 데는 적합하지 않습니다. 데이터 구조가 더 복잡해질 것 같으면, 이를 튜플이 아닌, 클래스나 구조체로 모델링하기 바랍니다. 더 자세한 정보는 [Structures and Classes (구조체와 클래스)](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 를 참고하기 바랍니다.
 
-### Optionals (옵셔널; 선택형 타입)
+### Optionals (옵셔널; 조건 선택적 타입)
 
 _옵셔널 (optionals)_ 값이 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 표현합니다: 값이 _있어서 (is)_, 그 옵셔널이 감싸고 있는 값에 접근할 수 있는 경우, 또는 값이 아예 _있지 않은 (isn't)_ 경우가 그것입니다.
 
-노트
+> 옵셔널이라는 개념은 C 나 오브젝티브-C 언어에는 존재하지 않습니다. 오브젝티브-C 언어에서 그나마 가장 근접한 개념은 객체를 반환해야할 메소드가 `nil` 을 반환할 수 있다는 것 정도인데, 여기서 `nil` 은 "유효한 객체가 없음" 을 의미합니다. 하지만, 이것은 오직 객체일 때만 작동합니다-구조체나, C 언어의 기본 타입들, 또는 열거체 값에서는 작동하지 않습니다. 이러한 타입들을 위해, 오브젝티브-C 의 메소드는 보통 특수한 값을 (가령 `NSNotFound` 같은 값을) 반환해서 값이 없다는 것을 나타냅니다. 이런 접근 방법은 메소드를 호출한 쪽에서 테스트가 필요한 특수한 값이 있다는 것도 알고 검사가 필요한 것도 기억하고 있다는 가정 위에서 동작하는 것입니다. 스위프트의 '옵셔널 (optionals)' 은 _어떤 타입이든 상관없이 (any type at all)_ 값이 없다는 것을 나타낼 수 있고, 특별한 상수가 필요하지도 않습니다.
 
-옵셔널이라는 개념은 C 나 오브젝티브-C 언어에는 존재하지 않습니다. 오브젝티브-C 언어에서 그나마 가장 근접한 개념은 객체를 반환해야할 메소드가 `nil` 을 반환할 수 있다는 것 정도인데, 여기서 `nil` 은 "유효한 객체가 없음" 을 의미합니다. 하지만, 이것은 오직 객체일 때만 작동합니다-구조체나, C 언어의 기본 타입들, 또는 열거체 값에서는 작동하지 않습니다. 이러한 타입들을 위해, 오브젝티브-C 의 메소드는 보통 특수한 값을 (가령 `NSNotFound` 같은 값을) 반환해서 값이 없다는 것을 나타냅니다. 
+이제 옵셔널을 사용하여 값이 없는 상황에 대처하는 방법을 알아봅시다. 스위프트의 `Int` 타입은 `String` 값을 `Int` 값으로 변환할 수 있는 '초기자 (initializer)' 를 가지고 있습니다. 하지만, 모든 문자열을 정수로 변환할 수 있는 것은 아닙니다. 문자열 `"123"` 은 수치 값 `123` 으로 변환할 수 있지만, 문자열 `"hello, world"` 는 변환할 만한 확실한 수치 값을 갖고 있지 않습니다:
 
- 그러나 이것은 객체, 즉 구조, 기본 C 유형 또는 열거 값에는 작동하지 않습니다. 이러한 유형의 경우, Objective-C 메소드는 일반적으로 값이 없음을 표시하기 위해 NSNotFound와 같은 특수 값을 리턴합니다. 이 접근법은 메소드의 호출자가 테스트 할 특별한 값이 있다는 것을 알고이를 확인하는 것을 기억한다고 가정합니다. Swift의 옵션을 사용하면 특별한 상수 없이도 모든 유형에 대한 값이 없음을 나타낼 수 있습니다.
-
-
-
-옵셔널은 값이 아예 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 나타냅니다: 값이 있어서 옵셔널을 풀고 그 값에 접근할 수 있거나 아니면 값 자체가 아예 없는 경우입니다.
-
-> 옵셔널이라는 개념은 C 나 Objective-C 에는 없는 것입니다. [^concept] Objective-C 에서 그나마 가장 가까운 것은 객체를 반환하도록 하는 메소드가 `nil` 을 반환할 수 있다는 정도인데, 여기서 `nil` 은 “유효한 객체가 없음” 을 의미합니다. 하지만 이것은 객체에서만 동작하며 — 구조 타입이나 기본 C 타입들 또는 열거 타입의 값에서는 동작하지 않습니다. 이들 타입의 경우  Objective-C 메소드에서 보통 (`NSNotFound` 같은) 특별한 값을 반환하는 것으로 값이 없는 상태를 나타냅니다. [^typically] 이런 접근 방식은 메소드를 호출하는 쪽에서 테스트를 위한 특별한 값이 있는 지도 알아야 하고 그 값을 검사해야하는 것도 알고 있다고 가정합니다. Swift 의 옵셔널은 모든 타입에 대해서 값이 없는 상태를 나타낼 수 있고 특별한 상수도 따로 필요하지 않습니다.
-
-여기에 옵셔널을 써서 어떻게 값이 없는 상태를 다룰 수 있는지를 보이도록 합니다. [^cope] Swift 의 `Int` 타입에는 `String` 값을 받아서 `Int` 값으로 형변환하는 초기자가 있습니다. 하지만 모든 문자열을 정수로 형변환할 수는 없습니다. 문자열 `"123"` 은 수치 값 `123` 으로 형변환 할 수 있지만 문자열 `"hello, world"` 는 형변환을 할 수치 값이 딱히 없습니다.
-
-아래의 예제는 초기자를 사용하여 `String` 을 `Int` 로 변환하고 있습니다:
+아래 예제는 초기자를 사용하여 `String` 을 `Int` 로 변환하려고 시도합니다:
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
-// convertedNumber 는 "Int?" 타입 또는 "optional Int" 로 추론됩니다.
+// convertedNumber 의 타입은 "Int?", 또는 "optional Int" 라고 추론합니다.
 ```
 
-초기자는 실패할 수도 있기 때문에 `Int` 가 아닌 옵셔널 `Int` 를 반환합니다. 옵셔널 `Int` 는 `Int` 가 아니라 `Int?` 라고 씁니다. 물음표는 그 값이 옵셔널을 담고 있음을 표시하며, `Int` 값을 가지고 있거나 아니면 값 자체가 아예 없음을 의미합니다. (그 외의 다른 것은 아예 안되므로 `Bool` 값이나  `String` 값 같은 것을 담을 수는 없습니다. 오직 `Int` 이거나 아니면 값이 아예 없는 것입니다.)
+초기자가 실패할 수도 있으므로, `Int` 가 아니라, '_옵셔널 (optional)_ `Int`' 를 반환합니다. '옵셔널 `Int`' 는 `Int` 가 아니라, `Int?` 라고 씁니다. 물음표는 이 값이 옵셔널을 갖고 있음을 나타내며, 이는 _어떤 (some)_ `Int` 값을 갖고 있거나, 아니면 갖고 있는 _값이 전혀 없다 (no value at all)_ 는 것을 의미합니다. (그 외 다른 어떤 것도 가질 수 없으며, 가령 `Bool` 이나 `String` 값일 수도 없습니다. 오직 `Int` 이거나, 아무 것도 아닌 것이어야 합니다.)
 
 #### nil
 
-옵셔널 변수에 값이 없는 상태를 설정하려면 특별한 값인 `nil` 을 할당합니다: [^nil]
+옵셔널 변수에 값이 없는 상태를 설정하려면 `nil` 이라는 특수한 값을 할당하면 됩니다:
 
 ```swift
 var serverResponseCode: Int? = 404
-// serverResponseCode contains an actual Int value of 404
+// serverResponseCode 는 404 라는 실제 Int 값을 가집니다.
 serverResponseCode = nil
-// serverResponseCode now contains no value
+// serverResponseCode 는 이제 아무 값도 갖지 않습니다.
 ```
 
-> `nil` 은 옵셔널이 아닌 상수 및 변수와는 사용할 수 없습니다. 코드에 있는 상수나 변수가 특정 상황에서 값이 없는 상태를 나타내야 할 경우에는 항상 적당한 타입에 옵셔널 값으로 선언하도록 합니다.
+> `nil` 은 '옵셔널이-아닌 (non-optional)' 상수와 변수에는 사용할 수 없습니다. 코드 내의 상수나 변수를 쓸 때 특정 조건에서는 값이 없을 수도 있다면, 항상 적당한 타입의 옵셔널 값으로 선언해야 합니다.
 
-옵셔널 변수를 정의할 때 기본 값을 제공하지 않으면 그 변수는 자동으로 `nil` 로 설정됩니다:
+옵셔널 변수를 정의할 때 기본 값을 제공하지 않으면, 그 변수는 자동으로 `nil` 로 설정됩니다:
 
 ```swift
 var surveyAnswer: String?
-// surveyAnswer is automatically set to nil
+// surveyAnswer 는 자동으로 nil 로 설정됩니다.
 ```
 
-> Swift 의 `nil` 은 Objective-C 의 `nil` 과 같은 것이 아닙니다. Objective-C 에서의 `nil` 은 존재하지 않는 객체에 대한 포인터입니다. Swift 에서는 `nil` 은 포인터가 아닙니다 — 이것은 특정 타입의 값이 없음을 나타내는 상태입니다. [^swift-nil] 객체 타입 뿐만 아니라 모든 타입의 옵셔널에 `nil` 을 설정할 수 있습니다.
+> 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 같지 않습니다. 오브젝티브-C 에서, `nil` 은 존재하지 않는 객체에 대한 포인터입니다. 스위프트에서, `nil` 은 포인터가 아닙니다-이것은 정해진 타입에 대해 '어떤 값도 없다 (absence of a value)' 는 것입니다. 객체 타입 뿐만 아니라, _어떤 (any)_ 타입의 옵셔널에도 `nil` 을 설정할 수 있습니다.
 
-#### If Statements and Forced Unwrapping (If 구문과 강제 풀기)
+#### If Statements and Forced Unwrapping (If 문과 강제 풀기)
 
-`if` 문을 사용하면 옵셔널을 `nil` 과 비교함으로써 옵셔널이 값을 가지고 있는 지를 알아낼 수 있습니다. 이 비교 연산은 “같음” 연산자 (`==`) 나 “같지 않음” 연산자 (`!=`) 를 써서 수행합니다. [^equal-to-not-equal-to]
+`if` 문을 사용하면 옵셔널을 `nil` 과 비교하여 옵셔널이 값을 가지는지 확인할 수 있습니다. 이 비교는 "같음 (equal to)" 연산자 (`==`) 나 "같지 않음 (not equal to)" 연산자 (`!=`) 를 써서 수행할 수 있습니다:
 
-옵셔널이 값을 가지고 있으면 `nil` 과는 “같지 않음” 이 됩니다:
+옵셔널이 값을 가지고 있으면, 이는 `nil` 과 "같지 않은" 것으로 여겨집니다:
 
 ```swift
 if convertedNumber != nil {
     print("convertedNumber contains some integer value.")
 }
-// Prints "convertedNumber contains some integer value."
+// "convertedNumber contains some integer value." 를 출력합니다.
 ```
 
-옵셔널이 값을 가지고 있다고 확신하는 경우에는 옵셔널 이름의 끝에 느낌표 (`!`) 를 붙여서 원래의 값에 접근할 수 있습니다. 느낌표는 사실상 다음과 같이 말하는 것입니다. “이 옵셔널은 확실히 값을 가지고 있어, 그러니 그것을 사용해.” 이것을 가지고 옵셔널 값을 강제로 푼다고 합니다:
+옵셔널이 값을 가지고 있다고 확신할 수 _있는 (does)_ 경우에는, 옵셔널 이름 끝에 느낌표 (`!`) 를 추가해서 그것의 '실제 값 (underlying value)' 에 접근할 수 있습니다. 느낌표가 말하는 것은 이렇습니다, "나는 이 옵셔널이 값을 가지고 있음을 정확히 알고 있으니; 그걸 쓰도록 하세요." 이것을 일컬어 옵셔널 값에 대한 '강제 풀기 (forced unwrapping)' 라고 합니다:
 
 ```swift
 if convertedNumber != nil {
     print("convertedNumber has an integer value of \(convertedNumber!).")
 }
-// Prints "convertedNumber has an integer value of 123."
+// "convertedNumber has an integer value of 123." 을 출력합니다.
 ```
 
-`if` 문에 대해 더 알고 싶으면 [흐름 제어(Control Flow)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID120) 를 보면 됩니다.
+`if` 문에 대한 더 자세한 내용은 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 을 보기 바랍니다.
 
-> `!` 를 사용해서 존재하지 않는 옵셔널 값에 접근하려고 하면 실행 시간에 에러를 띄웁니다. [^runtime] 항상 먼저 옵셔널이 `nil`이 아닌 값을 가지고 있는지 확인한 다음에 `!` 를 사용해서 값을 강제로 풀어야 합니다.
+> `!` 를 사용해서 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다. `!` 를 사용해서 값을 강제로 풀기 전에 항상 옵셔널이 '`nil` 이 아닌 값 (non-`nil` value)' 을 가지고 있음을 먼저 확인하기 바랍니다.
 
-#### Optional Binding (옵셔널 바인딩; 선택적 연결)
+#### Optional Binding (옵셔널 바인딩; 조건 선택적 연결)
 
-옵셔널 연결 (optional binding) 구문을 사용하면 옵셔널이 값을 가지고 있는지 확인하고 있으면 그 값을 임시 상수나 변수에서 쓸 수 있도록 만들 수 있습니다. [^binding] 옵셔널 연결 구문은 `if` 및 `while` 문과 함께 사용해서 단 한번의 명령으로 옵셔널 안에 있는 값을 검사하고 그 값을 상수나 변수로 추출할 수 있습니다. `if` 문과 `while` 문에 대해서는 [흐름 제어(Control Flow)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID120) 에서 더 자세하게 설명하고 있습니다.
+_옵셔널 바인딩 (optional binding)_ 을 사용하면 옵셔널이 값을 가지는지 확인해서, 그 경우, 그 값을 임시 상수나 변수의 형태로 사용하게 할 수 있습니다. '옵셔널 바인딩' 을 `if` 와 `while` 문과 같이 사용하면, 옵셔널 안의 값을 검사하고 그 값을 상수나 변수로 추출하는 것을, 단 한 번의 동작으로 할 수 있습니다. `if` 와 `while` 문에 대해서는 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
 
-`if` 문에서 옵셔널 연결 구문을 사용하는 방법은 다음과 같습니다:
+if 문에서 '옵셔널 바인딩' 을 작성하는 방법은 다음과 같습니다:
 
 ```
 if let constantName = someOptional {
@@ -570,32 +560,32 @@ if let constantName = someOptional {
 }
 ```
 
-[옵셔널 (Optionals)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID330) 에 있는 `possibleNumber` 예제를 강제 풀기 (forced unwrapping) 방식이 아니라 옵셔널 연결 (optional binding) 구문을 사용해서 다시 작성하면 다음과 같습니다:
+[Optionals (옵셔널))](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID330) 에 있는 `possibleNumber` 예제는 '강제 풀기 (forced unwrapping)' 대신 '옵셔널 바인딩 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
-    print("\"\(possibleNumber)\" has an integer value of \(actualNumber)")
+    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
 } else {
-    print("\"\(possibleNumber)\" could not be converted to an integer")
+    print("The string \"\(possibleNumber)\" could not be converted to an integer")
 }
-// Prints ""123" has an integer value of 123"
+// "The string "123" has an integer value of 123" 을 출력합니다.
 ```
 
-이 코드는 다음과 같은 뜻을 가지고 있습니다:
+이 코드는 다음과 같이 이해할 수 있습니다:
 
-“`Int(possibleNumber)` 가 반환하는 옵셔널 `Int` 가 값을 가지고 있으면 옵셔널이 갖고 있는 값을 `actualNumber` 라는 새로운 상수에 설정합니다.”
+"`Int(possibleNumber)` 에서 반환한 '옵셔널 `Int`' 가 값을 가지고 있으면, 그 옵셔널이 가지고 있는 값을 새로운 상수인 `actualNumber` 에 설정하기 바랍니다."
 
-형변환이 성공하면 `actualNumber` 상수는 `if` 구문의 첫번째 괄호 영역에서 사용할 수 있게 됩니다. 이 값은 이미 옵셔널이 가진 값으로 초기화가 되었으므로 `!` 접미사를 써서 접근할 필요가 없습니다. 이 예제에서는 `actualNumber` 는 단순히 형변환 결과를 출력하는데 사용하고 있습니다.
+이 변환에 성공하면, `if` 문의 첫 번째 분기에서 `actualNumber` 상수를 사용할 수 있게 됩니다. 이것은 옵셔널 _속에 (within)_ 있던 값으로 이미 초기화 됐으므로, 값에 접근할 때 `!` 접미사를 사용할 필요가 없습니다. 이 예제에서, `actualNumber` 는 단순히 변환 결과를 출력하는데 사용되고 있습니다.
 
-옵셔널 연결 구문에는 상수와 변수 둘다 사용가능합니다. `if` 구문의 첫번째 괄호 영역에서 `actualNumber` 값을 조절하고 싶으면, `if var actualNumber` 라고 고쳐서 옵셔널이 갖고 있는 값을 상수가 아니라 변수에 담도록 만들어야 합니다. [^manipulate]
+상수와 변수 모두 '옵셔널 바인딩' 에는 상수와 변수 모두 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶으면, `if var actualNumber` 를 대신 사용하여, 옵셔널이 갖고 있는 값을 상수가 아닌 변수로 사용하게끔 할 수도 있습니다.
 
-하나의 `if` 문에는 원하는 만큼 많은 옵셔널 연결 구문과 불 조건문을 넣을 수 있으며, 이 때 쉼표로 서로를 구분합니다. 옵셔널 연결 구문에 있는 값이 하나라도 `nil` 이거나 불 조건문의 평가 값이 하나라도 `false` 라면, `if` 문 전체의 조건이 `false` 가 됩니다. 다음에 나타낸 두 개의 `if` 문은 서로 동일한 의미입니다:
+단일 `if` 문에 쉼표로 분리하는 방법을 쓰면, '옵셔널 바인딩' 과 '불린 조건 (Boolean conditions)' 을 원하는 만큼 많이 포함시킬 수 있습니다. 옵셔널 바인딩 중 어떤 값이든 `nil` 이거나 혹은 어떤 '불린 (Boolean)' 조건이든 `false` 로 평가된다면, 전체 `if` 문의 조건은 `false` 인 것으로 고려됩니다. 다음의 `if` 문들은 서로 동등합니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
     print("\(firstNumber) < \(secondNumber) < 100")
 }
-// Prints "4 < 42 < 100"
+// "4 < 42 < 100" 를 출력합니다.
 
 if let firstNumber = Int("4") {
     if let secondNumber = Int("42") {
@@ -604,10 +594,10 @@ if let firstNumber = Int("4") {
         }
     }
 }
-// Prints "4 < 42 < 100"
+// "4 < 42 < 100" 를 출력합니다.
 ```
 
-> `if` 문 안에 있는 옵셔널 연결 구문에서 만들어진 상수와 변수는 `if` 구문의 본체 영역 안에서만 사용할 수 있습니다. 이와는 반대로 `guard` 문에서 만들어진 변수는 `guard` 이후의 영역에서도 사용이 가능한데, 이 내용은 [조기 종료 (Early Exit)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html#//apple_ref/doc/uid/TP40014097-CH9-ID525) 에서 설명합니다. [^early-exit]
+`if` 문 안의 '옵셔널 바인딩' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료))](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 풀리는 옵셔널; 저절로 풀리는 옵셔널)
 
