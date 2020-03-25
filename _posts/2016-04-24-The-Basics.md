@@ -674,7 +674,7 @@ do {
 
 `do` 구문은 새로운 포함 범위를 만들어서, 에러가 하나 이상의 `catch` 절로 전파되도록 합니다.
 
-다음은 에러 처리를 사용하여 서로 다른 에러 조건에 응답하는 방법에 대한 예제입니다:
+다음 예제는 '에러 처리' 를 사용하여 서로 다른 에러 조건에 응답할 수 있는 방법을 보여줍니다:
 
 ```swift
 func makeASandwich() throws {
@@ -691,13 +691,28 @@ do {
 }
 ```
 
-위의 예제에서 `makeASandwich()` 함수는 깨끗한 접시가 없거나 재료가 빠진 경우 에러를 던집니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에 함수 호출을 `try` 표현식에 넣습니다. 함수 호출을 `do` 구문으로 감싸면, 던져지는 모든 에러가 주어진 `catch` 절로 전파됩니다.
+이 예제에서, `makeASandwich()` 함수는 남아있는 깨끗한 접시가 하나도 없거나 하나라도 재료가 빠진 경우 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 이 함수 호출을 `try` 표현식으로 감쌌습니다. `do` 구문 속에 함수 호출을 감쌌기 때문에, 어떤 에러가 던져져도 이미 제공한 `catch` 절로 전파될 것입니다.
 
-아무런 에러도 던져지지 않으면 `eatASandwich()` 함수가 호출됩니다. 던져진 에러가 `SandwichError.outOfCleanDishes` 와 일치하는 경우에는 `washDishes()` 함수가 호출됩니다. 던져진 함수가 `SandwichError.missingIngredients` 와 일치하면 `buyGroceries(_:)` 함수가 호출되는데, 이 때 `catch` 패턴으로 붙잡힌 관련 `[String]` 값을 가지고 호출합니다. [^captured]
+어떤 에러도 던져지지 않으면, `eatASandwich()` 함수가 호출됩니다. 어떤 에러가 던져졌는데 그것이 `SandwichError.outOfCleanDishes` 인 경우에 해당된다면, `washDishes()` 함수가 호출될 것입니다. 어떤 에러가 던져졌는데 그것이 `SandwichError.missingIngredients` 인 경우에 해당된다면, 그 때는 `buyGroceries(_:)` 함수가 호출되면서 관련 값은 `catch` '유형 (pattern)' 이 잡아낸 `[String]` 값을 가지게 됩니다.
 
-에러를 던지고, 포착하고, 전파하는 것에 대해서는 [에러 처리 (Error Handling) 구문](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html#//apple_ref/doc/uid/TP40014097-CH42-ID508) 에서 아주 상세하게 다룹니다.
+Throwing, catching, and propagating errors is covered in greater detail in Error Handling.
 
-### Assertions and Preconditinos (단언과 선행 조건)
+에러를 던지고, 잡아내고, 전파하는 것에 대한 [에러 처리 (Error Handling)](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 아주 상세히 다루도록 합니다.
+
+### Assertions and Preconditinos (단언문과 선행조건문)
+
+_단언문 (assertions)_ 와 _선행조건문 (Preconditions)_ 은 '실행 시간 (runtime)' 에 발생하는 '검사 (checks)' 입니다. 이를 사용하면 이후의 코드를 실행하기 전에 '필수 조건 (essential condition)' 을 만족하는지 확실하게 확인할 수 있습니다. '단언문' 이나 '선행조건문' 에 있는 '불린 (Boolean) 조건 평가가 `true` 면, 코드 실행은 평소처럼 계속됩니다. 조건 평가가 `false` 면, 프로그램의 현재 상태가 유효하지 않은 것입니다; 코드 실행을 중지하고, 앱은 종료됩니다.
+
+단언문과 선행조건문을 사용하면 코딩하는 동안 만들었던 가정과 가지고 있는 기대를 표현할 수 있으므로, 이들을 코드의 일부에 포함할 수 있습니다. '단언문 (assertions)' 은 개발 중의 실수와 잘못된 가정을 찾는데 도움이 되며, '선행조건문 (preconditions)' 은 제품의 '문제점 (issues)' 을 감지하는데 도움이 됩니다.
+
+런타임시 기대치를 확인하는 것 외에도 어설 션 및 사전 조건은 코드 내에서 유용한 문서 형식이됩니다. 위의 오류 처리에서 설명한 오류 조건과 달리 어설 션 및 사전 조건은 복구 가능하거나 예상되는 오류에 사용되지 않습니다. 실패한 어설 션 또는 사전 조건은 잘못된 프로그램 상태를 나타내므로 실패한 어설 션을 잡을 방법이 없습니다.
+
+In addition to verifying your expectations at runtime, assertions and preconditions also become a useful form of documentation within the code. Unlike the error conditions discussed in Error Handling above, assertions and preconditions aren’t used for recoverable or expected errors. Because a failed assertion or precondition indicates an invalid program state, there’s no way to catch a failed assertion. 
+
+어설 션 및 사전 조건을 사용한다고해서 유효하지 않은 조건이 발생하지 않는 방식으로 코드를 설계 할 수 있습니다. 그러나 유효 데이터 및 상태를 적용하기 위해이를 사용하면 유효하지 않은 상태가 발생하면 앱이 더 정확하게 종료되고 문제를 쉽게 디버깅 할 수 있습니다. 유효하지 않은 상태가 감지되는 즉시 실행을 중지하면 해당 유효하지 않은 상태로 인한 피해를 제한하는 데 도움이됩니다.
+
+어설 션과 전제 조건의 차이점은 확인할 때입니다. 어설 션은 디버그 빌드에서만 확인되지만 사전 조건은 디버그 및 프로덕션 빌드 모두에서 확인됩니다. 프로덕션 빌드에서는 어설 션 내부의 조건이 평가되지 않습니다. 즉, 프로덕션 성능에 영향을주지 않으면 서 개발 프로세스 중에 원하는만큼의 어설 션을 사용할 수 있습니다.
+
 
 어떤 경우에는 특정 조건이 만족이 안될 경우 코드의 실행을 계속할 수 없는 경우가 있습니다. 이러한 상황일 때 단언 (Assertions) 구문을 써서 코드 실행을 종료하고 값이 없거나 잘못된 원인을 고칠 수 있는 기회를 제공할 수 있습니다. [^assertion] [^debug]
 
