@@ -599,80 +599,82 @@ if let firstNumber = Int("4") {
 
 `if` 문 안의 '옵셔널 바인딩' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료))](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
 
-#### Implicitly Unwrapped Optionals (암시적으로 풀리는 옵셔널; 저절로 풀리는 옵셔널)
+#### Implicitly Unwrapped Optionals (암시적으로-저절로 풀리는 옵셔널)
 
-위에서 설명했듯이 옵셔널은 상수나 변수가 “값이 없음” 일 수도 있음을 나타냅니다. 옵셔널은 `if` 문으로 값이 있는지 검사할 수도 있고, 옵셔널 연결 구문으로 값이 있으면 풀어서 옵셔널 값에 접근할 수도 있습니다.
+앞서 설명한 것처럼, 옵셔널은 상수나 변수가 "값이 없을" 수 있음을 나타냅니다. 옵셔널은 `if` 문을 사용하여 값이 존재하는지를 검사할 수 있으며, 옵셔널 값에 접근하기 위해 '옵셔널 바인딩' 을 사용하여 값의 유무에 따른 '조건부 풀기 (conditionally unwrapped)' 를 할 수도 있습니다.
 
-때에 따라서 프로그램의 구조상 옵셔널 변수가 처음 설정되고 나면, 항상 값이 있음을 알 수 있는 경우가 있습니다. 이러한 경우에는 접근할 때마다 값을 풀고 검사할 필요가 없는 옵셔널을 사용하는 것이 편리한데, 언제나 값이 있다고 가정해도 안전하기 때문입니다.
+프로그램의 구조상, 최초로 값을 설정한 후, 옵셔널은 _항상 (always)_ 값을 갖는다는 것은 분명합니다. 이와 같은 경우, 항상 값이 있다고 가정해도 안전하므로, 접근할 때마다 옵셔널 값을 검사하고 풀고할 필요가 없는 것이 유용할 것입니다.
 
-이러한 종류의 옵셔널을 저절로 풀리는 옵셔널이라고 정의합니다. [^implicitly-unwrapped-optional] 저절로 풀리는 옵셔널을 만들려면 옵셔널로 만들 타입 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 를 붙여주면 됩니다.
+이러한 종류의 옵셔널을 '_암시적으로 풀리는 옵셔널 (implicitly unwrapped optionals)_' 이라고 정의합니다. 암시적으로 풀리는 옵셔널을 작성하려면 옵셔널로 만들고 싶은 타입 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 을 붙이면 됩니다.
 
-저절로 풀리는 옵셔널은 옵셔널 값이 처음 정의된 직후에 존재하는 것이 확인되고, 이후의 모든 시점에서 존재한다고 확실히 가정할 수 있는 경우, 유용하게 사용할 수 있습니다. Swift 에서 저절로 풀리는 옵셔널이 주로 사용되는 곳은 클래스의 초기화에서인데, 이에 대해서는 [소유자가 없는 참조 및 저절로 풀리는 옵셔널 속성 (Unowned References and Implicitly Unwrapped Optional Properties)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html#//apple_ref/doc/uid/TP40014097-CH20-ID55) 에서 설명합니다.
+'암시적으로 풀리는 옵셔널' 이 유용한 순간은 옵셔널이 처음 정의되자마자 옵셔널 값이 존재한다는 것을 보장할 수 있고 이후 모든 곳에서 존재한다고 가정할 수 있을 때입니다. 스위프트에서 '암시적으로 풀리는 옵셔널' 이 주로 사용되는 곳은 클래스를 초기화하는 곳에서이며,  이는 [Unowned References and Implicitly Unwrapped Optional Properties (소유자가 없는 참조 및 암시적으로 풀리는 옵셔널 속성)](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html#ID55) 에서 설명합니다.
 
-저절로 풀리는 옵셔널은 원래는 보통의 옵셔널이지만, 마치 옵셔널이 아닌 값처럼 쓸 수 있어서 옵셔널 값을 풀 필요없이 값에 접근할 수 있습니다. 다음의 예제는 옵셔널 문자열과 저절로 풀리는 옵셔널 문자열이 `String` 타입으로 지정한 값에 접근할 때의 동작 방식이 어떻게 다른지 보여줍니다:
+'암시적으로 풀리는 옵셔널' 도 그 속을 들여다보면 보통의 옵셔널이지만, '옵셔널이-아닌 값 (non-optional value)' 처럼 쓸 수 있으며, 접근할 때마다 옵셔널 값을 풀 필요도 없습니다. 다음의 예제는 '옵셔널 문자열' 과 '암시적으로 풀리는 옵셔널 문자열' 에서 그들이 감싸고 있는 값을 명시적인 `String` 으로 접근할 때의 동작이 어떻게 다른지를 보여줍니다:
 
 ```swift
 let possibleString: String? = "An optional string."
-let forcedString: String = possibleString! // requires an exclamation mark
+let forcedString: String = possibleString! // 느낌표가 필요합니다.
 
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // no need for an exclamation mark
+let implicitString: String = assumedString // 느낌표가 필요없습니다.
 ```
 
-저절로 풀리는 옵셔널은 사용할 때마다 자동으로 풀리도록 그 옵셔널에 권한을 준 것으로 생각해도 됩니다. 옵셔널 타입을 선언할 때 타입 뒤에 느낌표를 붙이면 접근할 때만다 옵셔널 이름 뒤에 느낌표를 붙이지 않아도 됩니다.
+'암시적으로 풀리는 옵셔널' 은 사용될 때마다 자동으로 옵셔널이 풀리는 권환을 부여받았다고 생각할 수 있습니다. 이는 사용할 때마다 옵셔널 이름 뒤에 느낌표를 붙이는 것이 아니라, 선언할 때 옵셔널을 선언할 때 그 타입 뒤에 느낌표를 붙이는 것에 해당합니다.
 
-> 저절로 풀리리 옵셔널이 `nil` 인데 이 값에 접근하려고 하면 실행 시간 에러를 띄웁니다. 이 결과는 보통의 옵셔널이 값을 가지고 있지 않은데 느낌표를 붙였을 때와 정확히 같은 결과입니다.
+> '암시적으로 풀리는 옵셔널' 이 `nil` 인데 그것이 감싼 값에 접근하려고 하면, '실행 시간 에러 (runtime error)' 를 발생시키게 됩니다. 이 결과는 값을 갖고 있지 않은 보통의 옵셔널 뒤에 느낌표를 붙이는 것과 정확하게 같습니다.
 
-저절로 풀리는 옵셔널을 마치 보통의 옵셔널처럼 사용할 수도 있는데 값이 있는지 검사하려면 다음처럼 하면 됩니다:
+'암시적으로 풀리는 옵셔널' 은 여전히 보통의 옵셔널처럼 취급할 수도 있어서, 다음 처럼 값을 갖고 있는지 검사하는 것도 가능합니다:
 
 ```swift
 if assumedString != nil {
     print(assumedString)
 }
-// Prints "An implicitly unwrapped optional string."
+// "An implicitly unwrapped optional string." 를 출력합니다.
 ```
 
-저절로 풀리는 옵셔널을 옵셔널 연결 구문과 함께 사용할 수도 있으며 하나의 구문으로 값을 검사하고 풀 수 있습니다.:
+You can also use an implicitly unwrapped optional with optional binding, to check and unwrap its value in a single statement:
+
+'암시적으로 풀리는 옵셔널' 을 '옵셔널 바인딩' 과 같이 써서, 단일한 구문으로 값을 검사하고 풀기까지 할 수도 있습니다:
 
 ```swift
 if let definiteString = assumedString {
     print(definiteString)
 }
-// Prints "An implicitly unwrapped optional string."
+// "An implicitly unwrapped optional string." 를 출력합니다.
 ```
 
-> 나중에라도 변수가 `nil`이 될 가능성이 있는 경우 저절로 풀리는 옵셔널을 사용하지 않도록 합니다. 변수의 생명 주기 동안에 `nil` 값인지 검사할 필요가 있으면 항상 보통의 옵셔널 타입을 사용하도록 합니다.
+> 나중에 어느 시점에 변수가 `nil` 이 될 가능성이 조금이라도 있다면 '암시적으로 풀리는 옵셔널' 을 사용하면 안됩니다. 변수가 존재하는 동안 `nil` 값인지 검사할 필요가 있을 때는 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
 
 ### Error Handling (에러 처리)
 
-에러 처리 구문을 사용하면 프로그램 실행 중에 마주칠 수 있는 에러 조건들에 대응을 할 수 있습니다.
+_에러 처리 (error handling)_ 을 사용하면 프로그램 실행 중에 마주칠 수있는 에러 조건들에 대응을 할 수가 있습니다.
 
-옵셔널은 값의 존재 유무를 사용해서 함수가 성공했는지 실패했는지를 알릴수 있다면, 이와는 반대로 에러 처리 구문은 실패의 근원이 되는 실마리를 판별하게 하고 필요하다면 에러를 프로그램의 다른 부분으로 전파합니다. [^underlying]
+값의 있고 없음으로 함수의 성공과 실패라는 정보를 전달할 수 있는, 옵셔널과는 다르게, 에러 처리는 실패의 실제 원인을 확인할 수 있도록 해주며, 필요하다면, 그 에러를 프로그램의 다른 부분으로 전파할 수 있도록 해줍니다.
 
-함수가 에러 조건을 만나게 되면 에러를 던집니다. 그 함수를 호출한 쪽에서는 에러를 포착해서 적절하게 응답 할 수 있습니다.
+하나의 함수는 에러 조건과 마주쳤을 때, 에러를 하나 _던집니다 (throws)_. 그 함수를 호출한 쪽에서 그 에러를 _잡아내고 (catch)_ 적절하게 응답할 수 있습니다.
 
 ```swift
 func canThrowAnError() throws {
-    // this function may or may not throw an error
+    // 이 함수는 에러를 던질수도 있고 아닐 수도 있습니다.
 }
 ```
 
-함수가 에러를 던질 수 있음을 나타내려면 선언 부분에 `throws` 키워드를 넣어주면 됩니다. 에러를 던질 수 있는 함수를 호출할 때는 표현 구문 앞에 `try` 키워드를 붙입니다.
+함수가 에러를 던질 수 있다고 표시하러면 함수를 선언할 때 `throws` 키워드를 포함시키면 됩니다. 에러를 던질 수 있는 함수를 호출할 때는, 표현식에 `try` 키워드를 '먼저 붙여야 (prepend)' 합니다.
 
-Swift 는 자동으로 현재 범위 밖으로 에러를 전파하는데 이 과정은 `catch` 절에서 처리가 될 때까지 계속됩니다.
+스위프트는 `catch` 절에서 처리될 때까지 에러를 자동으로 현재 범위 밖으로 전파합니다.
 
 ```swift
 do {
     try canThrowAnError()
-    // no error was thrown
+    // 아무 에러도 던져지지 않았습니다.
 } catch {
-    // an error was thrown
+    // 어떤 에러가 던져 졌습니다.
 }
 ```
 
-`do` 구문은 에러를 하나 이상의 `catch` 절에 전파할 수 있는 새로운 포함 범위를 만듭니다.
+`do` 구문은 새로운 포함 범위를 만들어서, 에러가 하나 이상의 `catch` 절로 전파되도록 합니다.
 
-다음은 다양한 에러 조건에 응답하기 위해 에러 처리를 사용하는 예제입니다:
+다음은 에러 처리를 사용하여 서로 다른 에러 조건에 응답하는 방법에 대한 예제입니다:
 
 ```swift
 func makeASandwich() throws {
