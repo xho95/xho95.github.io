@@ -421,66 +421,78 @@ if i == 1 {
 
 ### Tuples (튜플; 짝)
 
-튜플은 여러 개의 값을 그룹지어서 단일 합성 값으로 만듭니다. 튜플안에는 어떤 타입의 값이라도 넣을 수 있으며서로 같은 타입일 필요도 없습니다.
+_튜플 (tuples)_ 은 여러 개의 값을 그룹지어 단일한 하나의 복합 값으로 만들어 줍니다. 튜플 안의 값은 어떤 타입이어도 상관 없으며 서로 같은 타입이어야할 필요도 없습니다.
 
-다음의 예제에서 `(404, "Not Found")` 는 HTTP 상태 코드를 나타내는 튜플입니다. HTTP 상태 코드는 웹 페이지를 요청할 때마다 웹 서버가 반환하는 특수한 값입니다. `404 Not Found` 라는 상태 코드는 요청한 웹페이지가 없는 경우에 반환됩니다.
+다음 예제에서, `(404, "Not Found")` 는 _HTTP 상태 코드 (HTTP status code)_ 를 나타내는 튜플입니다. 'HTTP 상태 코드' 는 웹 페이지를 요청할 때마다 웹 서버가 반환하는 특수한 값을 말합니다. 이 중에서 `404 Not Found` 라는 상태 코드는 요청한 웹페이지가 존재하지 않을 때 반환됩니다.
 
 ```swift
 let http404Error = (404, "Not Found")
-// http404Error is of type (Int, String), and equals (404, "Not Found")
+// http404Error 의 타입은 (Int, String) 이고, 값은 (404, "Not Found") 와 같습니다.
 ```
 
-`(404, "Not Found")` 라는 튜플은 `Int` 와 `String` 을 그룹지어서 두 개의 별개의 값을 HTTP 상태코드로 제공할 수 있게 합니다: 수 하나와 사람이 읽을 수 있는 설명 한 가지가 그것입니다. 이는 “`(Int, String)` 타입으로된 튜플” 이라고 묘사할 수 있습니다.
+`(404, "Not Found")` 라는 튜플은 `Int` 와 `String` 을 함께 그룹지어서 HTTP 상태 코드에 별개의 두 값을 부여합니다: 수 하나와 사람이-인식할 수 있는 하나의 설명이 그것입니다. 이는 "타입이 `(Int, String)` 인 튜플" 이라고 말할 수 있습니다.
 
-튜플을 만들 때 타입의 순서는 아무래도 상관이 없으며 원하는 만큼 많은 다른 종류의 타입을 넣어도 됩니다. `(Int, Int, Int)` 타입의 튜플을 만들던 아니면 `(String, Bool)` 을 만들던 이것도 아니면 정말로 원하는 대로 아무 순서로 된 것을 만들던 어떠한 제한도 없습니다.
+튜플을 만들 때는 타입의 '순서 (permutation)'[^permutation] 같은 것은 아무 상관이 없으며, 서로 다른 타입을 원하는 만큼 많이 집어 넣어도 상관 없습니다. 타입이 `(Int, Int, Int)` 든 `(String, Bool)` 이든 다 튜플을 만들 수 있으며, 진짜로 원하는 데로 아무 순서로 만들어도 상관없습니다.
 
-튜플의 내용은 별개의 상수와 변수로 분해할 수 있으며 이렇게 해서 평소 사용하던 방식대로 접근할 수도 있습니다: [^decompose]
+튜플의 내용물은 별도의 상수나 변수로 _분해할 (decompose)_ 수도 있으며, 평소처럼 접근할 수도 있습니다:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
 print("The status code is \(statusCode)")
-// Prints "The status code is 404"
+// "The status code is 404" 를 출력합니다.
 print("The status message is \(statusMessage)")
-// Prints "The status message is Not Found"
+// "The status message is Not Found" 를 출력합니다.
 ```
 
-튜플의 값 중에서 일부만 필요할 경우 튜플을 분해할 때 무시할 부분에 밑줄 (`_`) 기호를 사용하면 됩니다:
+튜플 값 중에서 일부만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore)' (`_`) 을 써서 그 일부분를 무시할 수 있습니다:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
 print("The status code is \(justTheStatusCode)")
-// Prints "The status code is 404"
+// "The status code is 404" 를 출력합니다.
 ```
 
-그 대신에 튜플에 있는 각 개별 요소의 값에 접근하고 싶으면 0 부터 시작하는 인덱스 값을 사용하면 됩니다:
+다른 방법으로는, 0 으로 시작하는 '색인 번호 (index numbers)' 을 사용하여 튜플의 개별 원소 값에 접근할 수도 있습니다:
 
 ```swift
 print("The status code is \(http404Error.0)")
-// Prints "The status code is 404"
+// "The status code is 404" 를 출력합니다.
 print("The status message is \(http404Error.1)")
-// Prints "The status message is Not Found"
+// "The status message is Not Found" 를 출력합니다.
 ```
 
-튜플을 정의할 때 튜플에 있는 개별 요소에 이름을 줄 수도 있습니다:
+튜플을 정의할 때 튜플에 있는 개별 원소에 이름을 부여할 수도 있습니다:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
 ```
 
-튜플의 요소에 이름을 지정하면 요소의 이름을 사용하여 그 요소의 값에 접근할 수 있습니다:
+이렇게 튜플의 원소에 이름을 부여했으면, 그 원소의 값에 접근할 때 원소의 이름을 사용할 수 있습니다:
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
-// Prints "The status code is 200"
+// "The status code is 200" 를 출력합니다.
 print("The status message is \(http200Status.description)")
-// Prints "The status message is OK"
+// "The status message is OK" 를 출력합니다.
 ```
 
-튜플은 특히 함수의 반환 값으로 유용합니다. 웹 페이지를 검색하려고 하는 함수는 페이지 검색이 성공했는지 실패했는지 나타내기 위해 `(Int, String)` 튜플 타입으로 반환할 수도 있습니다. 두 개의 다른 타입으로 된 두 개의 값을 가지는 튜플로 반환하면, 이 함수는 한 가지 타입으로 된 한 개의 값만 반환할 때보다 더 유용한 정보를 제공할 수 있습니다. 더 많은 정보는 [여러 반환 값을 가지는 함수 (Functions with Multiple Return Values)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID164) 에서 볼 수 있습니다.
+튜플은 함수의 반환 값으로 쓸 때 특히 더 유용합니다. 웹 페이지를 가져오는 함수는 그 페이지를 가져오는 것에 성공했는지 실패했는지를 나타내기 위해 `(Int, String)` 튜플 타입을 반환할 수 있을 것입니다. 두 개의 별개의, 서로 타입이 다르기 까지한, 값으로 구성된 튜플을 반환함으로써, 이 함수는 단일한 타입의 단 하나의 값을 반환하는 경우보다 결과물에 대한 더 유용한 정보를 제공할 수 있습니다. 더 자세한 정보는 [Functions with Multiple Return Values (여러 개의 반환 값을 가지는 함수)](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID164) 를 참고하기 바랍니다.
 
-> 튜플은 관련 있는 값들을 임시로 그룹지을 때 유용합니다. 복잡한 데이터 구조를 만드는데는 알맞지 않습니다. [^suite] 만약 데이터 구조가 임시 영역을 넘어서 유지되어야 할 경우 튜플 보다는 클래스 (객체 타입) 이나 구조 타입으로 모델을 만들도록 합니다. 더 많은 정보는 [클래스와 구조 타입 (Classes and Structures)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-ID82) 에서 볼 수 있습니다.
+노트
 
-### Optionals (옵셔널; 선택적 타입)
+튜플은 관련이 있는 값들을 간단히 그룹지을 때 유용합니다. 복잡한 데이터 구조를 만드는 데는 적합하지 않습니다. 데이터 구조가 더 복잡해질 것 같으면, 이를 튜플이 아닌, 클래스나 구조체로 모델링하기 바랍니다. 더 자세한 정보는 [Structures and Classes (구조체와 클래스)](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 를 참고하기 바랍니다.
+
+### Optionals (옵셔널; 선택형 타입)
+
+_옵셔널 (optionals)_ 값이 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 표현합니다: 값이 _있어서 (is)_, 그 옵셔널이 감싸고 있는 값에 접근할 수 있는 경우, 또는 값이 아예 _있지 않은 (isn't)_ 경우가 그것입니다.
+
+노트
+
+옵셔널이라는 개념은 C 나 오브젝티브-C 언어에는 존재하지 않습니다. 오브젝티브-C 언어에서 그나마 가장 근접한 개념은 객체를 반환해야할 메소드가 `nil` 을 반환할 수 있다는 것 정도인데, 여기서 `nil` 은 "유효한 객체가 없음" 을 의미합니다. 하지만, 이것은 오직 객체일 때만 작동합니다-구조체나, C 언어의 기본 타입들, 또는 열거체 값에서는 작동하지 않습니다. 이러한 타입들을 위해, 오브젝티브-C 의 메소드는 보통 특수한 값을 (가령 `NSNotFound` 같은 값을) 반환해서 값이 없다는 것을 나타냅니다. 
+
+ 그러나 이것은 객체, 즉 구조, 기본 C 유형 또는 열거 값에는 작동하지 않습니다. 이러한 유형의 경우, Objective-C 메소드는 일반적으로 값이 없음을 표시하기 위해 NSNotFound와 같은 특수 값을 리턴합니다. 이 접근법은 메소드의 호출자가 테스트 할 특별한 값이 있다는 것을 알고이를 확인하는 것을 기억한다고 가정합니다. Swift의 옵션을 사용하면 특별한 상수 없이도 모든 유형에 대한 값이 없음을 나타낼 수 있습니다.
+
+
 
 옵셔널은 값이 아예 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 나타냅니다: 값이 있어서 옵셔널을 풀고 그 값에 접근할 수 있거나 아니면 값 자체가 아예 없는 경우입니다.
 
@@ -641,7 +653,7 @@ if let definiteString = assumedString {
 
 > 나중에라도 변수가 `nil`이 될 가능성이 있는 경우 저절로 풀리는 옵셔널을 사용하지 않도록 합니다. 변수의 생명 주기 동안에 `nil` 값인지 검사할 필요가 있으면 항상 보통의 옵셔널 타입을 사용하도록 합니다.
 
-### Error Handling (오류 처리)
+### Error Handling (에러 처리)
 
 에러 처리 구문을 사용하면 프로그램 실행 중에 마주칠 수 있는 에러 조건들에 대응을 할 수 있습니다.
 
@@ -755,3 +767,5 @@ assert(age >= 0)
 [^word]: 컴퓨터 용어로 'word (워드; 단어)' 는 프로세서에서 한 번에 처리할 수 있는 데이터 단위를 말합니다.
 
 [^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 여러 말로 옮길 수 있는데, 컴퓨터 용어로 엄일하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 밑수라는 말로 옮겼습니다. 일부동-소수점 수에서의 'base-number' 는 '유효 숫자' 에 해당한다고 볼 수 있으며, 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
+
+[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n개의 원소에서 r개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉 r개의 원소들을 서로 다른 순서로 줄 지을 수 있는 가지 수를 말하며, 스위프트의 튜플은 이 모든 경우에 대해서 튜플을 만들 수 있다는 의미가 됩니다. 여기서는 모든 순열에 대해 튜플을 만들 수 있다는 것을 원소의 순서에 상관없이 튜플을 만들 수 있다는 의미로 옮겼습니다. 보다 자세한 내용은 위키피디아의 [순열](https://ko.wikipedia.org/wiki/순열) 또는 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목을 참고하기 바랍니다.

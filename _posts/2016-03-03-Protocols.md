@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Protocols (규칙)"
+title:  "Swift 5.2: Protocols (규약)"
 date:   2016-03-03 23:30:00 +0900
 categories: Swift Language Grammar Protocol
 ---
@@ -99,9 +99,9 @@ for _ in 1...5 {
 
 ### Optional Protocol Requirements
 
-### Protocol Extensions (규칙 확장)
+### Protocol Extensions (규약 확장)
 
-프로토콜은 확장을 통해서 (규칙을) 준수(하는) 타입에 메소드, 초기자, 첨자 연산자, 그리고 계산 속성 (computed property) 들의 구현부를 제공할 수 있습니다. 이렇게 하면 프로토콜 자체에서 행위를 정의할 수 있으므로, 각각의 준수 타입이나 전역 (global) 함수 내에서 하는 것보다 편해집니다.
+프로토콜은 확장을 통해서 (규약을) 준수(하는) 타입에 메소드, 초기자, 첨자 연산자, 그리고 계산 속성 (computed property) 들의 구현부를 제공할 수 있습니다. 이렇게 하면 프로토콜 자체에서 행위를 정의할 수 있으므로, 각각의 준수 타입이나 전역 (global) 함수 내에서 하는 것보다 편해집니다.
 
 예를 들어. `RandomNumberGenerator` 프로토콜을 확장하여 `randomBool()` 메서드를 추가하고, 요구 사항에 의해 구현된 `random()` 메서드의 결과를 사용하도록 해서 임의의 `Bool` 값을 반환하도록 할 수 있습니다:
 
@@ -140,7 +140,7 @@ extension PrettyTextRepresentable {
 }
 ```
 
-**Adding Constraints to Protocol Extensions (규칙 확장 시에 제약 조건 추가하기)**
+**Adding Constraints to Protocol Extensions (규약 확장 시에 제약 조건 추가하기)**
 
 프로토콜 확장을 정의할 때 제한 조건 (Constraints) 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 제한 조건은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 **Generic Where Clauses** 를 참고하기 바랍니다.[^POP]
 
@@ -185,9 +185,9 @@ print(differentNumbers.allEqual())
 
 [^Protocols]: 원문은 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 에서 확인할 수 있습니다.
 
-[^protocol]: `protocol`은 '규칙'이라는 뜻을 갖고 있지만, 스위프트 언어에서는 하나의 keyword 이므로, `class`를 '클래스'라로 하듯이, 발음 그대로 '프로토콜'이라고 옮기겠습니다. 다만 필요한 경우에는 '규칙'이라는 의미를 살려서 번역하도록 하겠습니다.
+[^protocol]: `protocol`은 '규약'이라는 뜻을 갖고 있지만, 스위프트 언어에서는 하나의 keyword 이므로, `class`를 '클래스'라로 하듯이, 발음 그대로 '프로토콜'이라고 옮깁니다. 다만 필요한 경우에는 '규약' 이라는 의미를 살려서 번역하도록 하겠습니다.
 
-[^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 좀 더 의미에 와닫게 '밑그림'이라는 단어로 옮겼습니다. 실제 구현이 아니라 따라야할 규칙들만 정한다는 의미에서 밑그림이라는 단어를 선택했습니다.
+[^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 좀 더 의미에 와닫게 '밑그림'이라는 단어로 옮겼습니다. 실제 구현이 아니라 따라야할 규약들만 정한다는 의미에서 밑그림이라는 단어를 선택했습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 

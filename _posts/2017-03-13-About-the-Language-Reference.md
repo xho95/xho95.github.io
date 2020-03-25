@@ -16,7 +16,7 @@ categories: Swift Language Grammar About Reference
 
 ### How to Read the Grammar (문법을 읽는 방법)
 
-스위프트 프로그래밍 언어의 공식 문법을 설명할 때 사용하는 표기법 (notation) 은 다음과 같은 몇 가지 규칙 (convention) 을 따릅니다:
+스위프트 프로그래밍 언어의 공식 문법을 설명할 때 사용하는 표기법 (notation) 은 다음과 같은 몇 가지 협약 (convention) 을 따릅니다:
 
 * '화살표 (→)' 는 '문법 생성 방법 (grammar productions)' 을 표시하는 데 사용하며 “~로 구성될 수 있다” 로 읽을 수 있습니다.
 * '구문 표현의 종류 (syntactic categories)'[^syntactic-categories] 는 _이탤릭체_ 로 표시하며 '문법 생성 규칙 (grammar production rule)' 의 양쪽에 나타납니다.

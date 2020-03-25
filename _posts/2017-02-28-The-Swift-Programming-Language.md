@@ -36,7 +36,7 @@ categories: Swift Programming Language Grammar
 * [Type Casting (타입 변환)]
 * [Nested Types (품어진 타입)](http://xho95.github.io/swift/language/grammar/nested/types/2017/03/02/Nested-Types.html)
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
-* [Protocols (규칙)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
+* [Protocols (규약)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
 * [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
 * [Opaque Types (불투명한 타입)](http://xho95.github.io/swift/language/grammar/opaque/type/2020/02/22/Opaque-Types.html)
 * [Automatic Reference Counting (자동 참조 카운팅)]
