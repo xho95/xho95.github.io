@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 3.1: A Swift Tour (스위프트 둘러보기)"
+title:  "Swift 5.2: A Swift Tour (스위프트 둘러보기)"
 date:   2016-04-17 19:45:00 +0900
 categories: Swift Language Grammar Tour
 ---
@@ -12,22 +12,24 @@ categories: Swift Language Grammar Tour
 
 ## A Swift Tour (스위프트 둘러보기)
 
-새로운 언어로 만든 첫 번째 프로그램은 화면에 `"Hello, world!"` 라는 문장을 출력하는 것이 하나의 전통입니다. 스위프트로는, 이것을 단 한 줄로 할 수 있습니다:
+전통적으로 새로운 언어로 만든 첫 번째 프로그램은 화면에 `"Hello, world!"` 라는 문장을 출력합니다. 스위프트로는, 이것을 단 한 줄로 할 수 있습니다:
 
 ```swift
 print("Hello, world!")
 // "Hello, world!"  를 출력합니다.
 ```
 
-C 나 Objective-C 로 코딩을 해봤다면 이 문법이 친숙할 것입니다 - 하지만 Swift 에서는 이 한 줄의 코드가 완전한 프로그램입니다. 입/출력이나 문자열 처리를 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역 범위에 있는 코드는 프로그램의 시작점으로 사용되므로 `main()` 함수도 필요없습니다. 심지어 문장 끝에 세미콜론을 붙일 필요도 없습니다.
+C 언어나 오브젝티브-C 언어로 코딩을 해봤다면, 이 구문 표현이 익숙한 듯 보이겠지만-스위프트에서는, 이 코드 한 줄로 프로그램이 완성된 것입니다. 입력/출력이나 문자열 처리와 같은 기능을 위해 개별 라이브러리를 불러올 필요가 없습니다. 전역 범위 공간에 작성한 코드는 프로그램의 진입점으로 사용되므로, `main()` 함수도 필요 없습니다.모든 문장의 끝에 세미콜론을 붙일 필요 또한 없습니다.
 
-이 둘러보기는 스위프트 프로그래밍을 시작하는데 필요한 정보를 다양한 프로그래밍 방법을 통해 보여줍니다. 이해 안되는  곳이 있어도 걱정할 필요 없습니다. - 이 책의 나머지 부분에서 둘러보기에서 소개된 모든 내용을 자세히 설명하고 있기 때문입니다.
+이 둘러보기는 스위프트 코드 작성을 시작하기 충분한 정보를 제공해 주기 위해 다양한 프로그래밍 작업을 수행하는 방법을 보이도록 할 것입니다. 어떤 부분에서 이해가 가지 않더라도 당황할 필요 없습니다-이 둘러보기에서 소개한 모든 내용은 이 책의 나머지 부분에서 더 자세하게 다시 설명할 것이기 때문입니다.
 
-> 최고의 학습을 위해, 이 장 (chapter) 을 Xcode 의 playground 로 엽니다. Playground 를 사용하면 코드를 편집하고 결과를 즉시 확인할 수 있습니다.
+> 최고의 경험을 위해, 이 장을 Xcode 에 있는 'playgroud (놀이터)' 로 열어보기 바랍니다. 'playground (놀이터)' 로 코드 목록을 편집하고 그 결과를 즉시 확인할 수 있습니다.
+>
+> ['playground (놀이터)' 다운로드 하기](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
-### 간단한 값 (Simple Values)
+### Simple Values (간단한 값들)
 
-`let` 으로 상수를 만들고 `var` 로 변수를 만듭니다. 상수 값은 컴파일 시간에 알 필요는 없지만, 할당은 단 한 번만 가능합니다.  [^compile-time] 즉, 값에 이름을 한 번 지정하면 여러 곳에서 사용할 수 있는 것이 상수입니다.
+`let` 을 사용하여 상수를 만들고 `var` 를 사용하여 변수를 만듭니다. 상수의 값은 컴파일 시간에 알아야 할 필요는 없지만, 그 값을 반드시 정확히 한 번은 할당해야 합니다. 이는 한 번 결정하고 나면 많은 곳에서 사용할 수 있는 값에 이름을 짓는 것이 상수라는 것을 의미합니다.
 
 ```swift
 var myVariable = 42
@@ -35,9 +37,9 @@ myVariable = 50
 let myConstant = 42
 ```
 
-상수나 변수는 반드시 할당하려는 값과 같은 타입이어야 합니다. [^type] 하지만 매번 타입을 드러내놓고 적어야 하는 것은 아닙니다. [^explicitly] 상수나 변수를 만들 때 값을 제공해서 컴파일러가 해당 타입을 추론하게 할 수 있습니다. 위의 예제에서는 초기값이 정수 이기 때문에 컴파일러가 `myVariable` 를 정수 타입으로 추론합니다. [^integer]
+상수나 변수는 반드시 할당하려는 값과 타입이 같아야 합니다. 하지만, 타입을 항상 명시적으로 적어야만 하는 것은 아닙니다. 상수나 변수를 만들 때 값을 제공하면 컴파일러가 그 타입을 추론할 수 있습니다. 위의 예제에서, 컴파일러는 `myVariable` 이 정수라고 추론하는데 이는 초기 값이 정수이기 때문입니다.
 
-초기 값에 정보가 부족하거나 (초기 값이 없는 경우), 변수 뒤에 콜론(`:`)을 쓴 다음 타입을 지정합니다.
+초기 값이 충분한 정보를 제공하지 않거나 (혹은 초기 값이 없는 경우), 변수 뒤에 콜론 (`:`) 을 써서 구분한 다음, 타입을 지정하면 됩니다.
 
 ```swift
 let implicitInteger = 70
@@ -45,7 +47,11 @@ let implicitDouble = 70.0
 let explicitDouble: Double = 70
 ```
 
-값은 은연 중에 다른 타입으로 바뀌지 않습니다. [^implicitly] 값을 다른 타입으로 바꾸고 싶으면 드러내놓고 원하는 타입의 인스턴스를 만들어야 합니다.
+> 실험
+>
+> 명시적인 타입이 `Float` 이고 값이 `4` 인 상수를 만들어 봅시다.
+
+값은 절대 다른 타입으로 암시적으로 변환되지 않습니다. 값을 다른 타입으로 변환할 필요가 있을 경우, 원하는 타입의 인스턴스를 명시적으로 만들어야 합니다.
 
 ```swift
 let label = "The width is "
@@ -53,7 +59,11 @@ let width = 94
 let widthLabel = label + String(width)
 ```
 
-문자열에 값을 넣는 더 간단한 방법도 있습니다: 괄호 안에 값을 쓰고, 괄호 앞에 역 슬래시 (`\`) 를 습니다. 다음을 참고합니다:
+> 실험
+>
+> 마지막 줄에서 `String` 으로의 변환을 제거해 봅시다. 어떤 에러가 발생합니까?
+
+문자열에 값을 포함시킬 수 있는 더 간단한 방법도 있습니다. 값을 괄호 안에 쓰고, 괄호 앞에 백 슬래시 (`\`) 를 쓰면 됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let apples = 3
@@ -62,7 +72,20 @@ let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 ```
 
-대괄호 (`[]`) 로 배열 타입과 사전 타입을 만들고, 인덱스나 키를 대괄호 안에 써서 각 요소에 접근합니다. 마지막 요소 다음에 쉼표를 써도 무방합니다. [^array-dictionary]
+> 실험
+>
+> `\()` 를 사용하여 문자열에 부동-소수점 연산을 포함시켜 보고 또 인사말에 다른 사람 이름을 포함시켜 봅시다.
+
+따옴표 세 개 (`"""`) 를 써서 여러 줄짜리 문자열을 만들 수 있습니다. 닫는 따옴표 앞에 들여쓰기가 있으면, 그 만큼의 들여쓰기가 각 줄 시작마다 제거됩니다. 예를 들면 다음과 같습니다:
+
+```swift
+let quotation = """
+I said "I have \(apples) apples."
+And then I said "I have \(apples + oranges) pieces of fruit."
+"""
+```
+
+대괄호 (`[]`) 로 '배열 (arrays)' 과 '딕셔너리 (dictionary)' 를 만들고, 괄호 안에 색인과 키를 작성해서 그 원소에 접근할 수 있습니다. 마지막 원소 뒤에는 쉼표가 있어도 됩니다.
 
 ```swift
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
@@ -75,23 +98,30 @@ var occupations = [
 occupations["Jayne"] = "Public Relations"
 ```
 
-빈 배열이나 사전 타입을 만들려면, 초기자 문법을 사용합니다. [^initializer]
+배열은 원소를 더할 때마다 자동으로 커집니다.
+
+```swift
+shoppingList.append("blue paint")
+print(shoppingList)
+```
+
+빈 '배열 (array)' 이나 빈 '딕셔너리 (dictionary)' 를 만들려면, '초기자 구문 표현 (initializer syntax)' 을 사용하면 됩니다.
 
 ```swift
 let emptyArray = [String]()
 let emptyDictionary = [String: Float]()
 ```
 
-타입 정보를 추론할 수 있는 경우 , 빈 배열 타입은 `[]` 로 빈 사전 타입은 `[:]` 로 적을 수 있습니다 — 예를 들어 변수에 새 값을 설정하거나 함수에 인자를 전달할 때가 여기에 해당합니다.
+타입 정보를 추론할 수 있는 경우에는, 빈 배열은 `[]` 라고 쓸 수 있고 빈 딕셔너리는 `[:]` 라고 쓸 수 있습니다-예를 들어, 변수에 새 값을 설정하거나 함수의 인자로 전달할 때에 해당합니다.
 
 ```swift
 shoppingList = []
 occupations = [:]
 ```
 
-### 흐름 제어 (Control Flow)
+### Control Flow (제어 흐름)
 
-`if` 와 `switch` 로 조건 구문을 만들고, `for`-`in`, `for`, `while`, 그리고 `repeat`-`while` 로 반복 구문을 만듭니다. [^conditional-loop] 조건 또는 반복 변수 주위의 괄호는 선택 사항이고, 구문 본체 주위의 중괄호는 필수 사항입니다. [^brace]
+`if` 와 `switch` 를 사용하여 조건문을 만들고, `for-in`, `while` 그리고 `repeat-while` 을 사용하여 반복문을 만듭니다. 조건문이나 반복문에서 괄호는 선택 사항입니다. 다만 본문 주위의 중괄호는 필수입니다.
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
@@ -104,6 +134,7 @@ for score in individualScores {
     }
 }
 print(teamScore)
+// "11" 을 출력합니다.  
 ```
 
 `if` 문에서, 조건문은 불린 (Boolean) 표현식이어야 합니다 - 이것은 `if score { ... }` 같은 코드는 은연 중에 0 으로 비교되지 않고 에러가 됨을 뜻합니다.
@@ -198,7 +229,7 @@ print(total)
 
 `..<` 를 사용하면 최상단 값을 생략하는 범위를 만들 수 있고, `...` 를 사용하면 양 끝단의 값을 포함하는 범위를 만들 수 있습니다.
 
-### 함수 (Functions) 와 클로져 (Closures)
+### Functions and Closures (함수와 클로져)
 
 `func` 을 사용하여 함수를 선언합니다. 함수를 호출하려면 이름 뒤에 인자 목록을 가진 괄호를 쓰면 됩니다. `->` 기호 앞은 매개 변수의 이름 및 타입이고 뒤는 함수의 반환 타입입니다.
 
@@ -325,7 +356,7 @@ let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
 ```
 
-#### 객체 (Objects) 와 클래스 (Classes: 객체 타입)
+#### Objects and Classes (객체와 클래스)
 
 `class` 를 쓰고 그뒤에 클래스 이름을 써서 클래스를 만듭니다. 클래스에서 속성을 선언하는 방법은 클래스의 내부에 있다는 점만 빼면 상수나 변수의 선언과 같습니다. [^context] 메소드와 함수 선언 방법도 마찬가지입니다.
 
@@ -466,7 +497,7 @@ let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
 let sideLength = optionalSquare?.sideLength
 ```
 
-### 열거 타입 (Enumerations) 과 구조 타입(Structures)
+### Enumerations and Structures (열거체와 구조체)
 
 `enum` 을 사용해서 열거 타입을 만듭니다. 클래스나 다른 모든 보통의 타입처럼 열거 타입도 메소드를 가질 수 있습니다. [^method] [^named]
 
@@ -563,7 +594,7 @@ let threeOfSpades = Card(rank: .three, suit: .spades)
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```
 
-### 프로토콜 (Protocols) 과 확장 (Extensions)
+### Protocols and Extensions (규약과 확장; 프로토콜과 확장)
 
 `protocol` 을 사용해서 프로토콜을 선언합니다.
 
@@ -625,7 +656,7 @@ print(protocolValue.simpleDescription)
 
 `protocolValue` 변수의 실행 시간 타입은 `SimpleClass` 이지만, 컴파일러는 해당 타입을 `ExampleProtocol` 타입이라고 여깁니다. [^run-time] [^compiler] 이것은 프로토콜을 받아들이면서도 클래스가 구현하고 있는 메소드나 속성에 실수로라도 접근할 수는 없음을 의미합니다.
 
-### 에러 처리 (Error Handling)
+### Error Handling (에러 처리)
 
 에러를 나타내려면 어떤 타입이든지 `Error` 프로토콜을 받아들이면 됩니다. [^error]
 
@@ -700,7 +731,7 @@ fridgeContains("banana")
 print(fridgeIsOpen)
 ```
 
-### 제네릭 (Generics)
+### Generics (일반화)
 
 꺽쇠 괄호 안에 이름을 써서 제네릭 함수나 타입을 만듭니다.
 
@@ -749,99 +780,3 @@ anyCommonElements([1, 2, 3], [3])
 ### 참고 자료
 
 [^A-Swift-Tour]: 원문은 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 에서 확인할 수 있습니다.
-
-[^initializer]: 'initializer' 는 '초기자'라고 번역합니다. 이것은 C++ 의 constructor 를 생성자라고 부르는 것에서 착안하였습니다. Swift 의 초기자는 C++ 의 생성자와 초기화 함수의 역할을 동시에 수행합니다. 이것은 현대의 프로그래밍 언어들이 변수 선언 시점을 최대한 실제 변수가 사용되는 시점에 맞춰서 하려고 하기 때문에, 변수 선언 시점에 값을 초기화까지 하려고 강제하기 위해서라고 추측하고 있습니다. 번역과 관련한 내용은 다른 곳으로 옮기고 여기서는 초기자 문법에 대해서 설명합니다.
-
-[^deinitializer]: 'deinitializer' 단어는 도저히 뭐라고 번역해야할 지 몰라서 일단은 '정리자'라고 번역합니다. 구글 번역도 번역을 포기한 단어같습니다. 실제로 Swift 는 메모리 관리를 ARC 가 해주기 때문에 따로 정리할 일이 없어서 사용할 일이 거의 없는 것 같습니다.
-
-[^method]: 'method' 는 멤버 함수의 의미도 있지만 일단 메소드라고 그대로 씁니다. 메소드는 특정 클래스나 구조체 처럼 어떤 객체에 속해있다는 점에서 일반 함수와 구분됩니다.
-
-[^error]: Swift 에서는 예외 (Exception) 라는 표현 대신에 오류 (Error) 라는 표현을 씁니다. 일단 혼동을 막기 위해 에러라고 번역합니다.
-
-[^adopt]: 일단 'adopt' 라는 표현을 '받아들이다'라고 번역합니다. Swift 에서는 클래스는 상위 클래스로부터 상속 받는다는 표현을 사용하고 프로토콜의 경우 받아들인다는 표현으로 구분합니다. 프로토콜을 받아들이는 것은 C++ 에서  순수 추상 클래스 중의 하나인 프로토콜 클래스를 상속받는 것과 유사한 개념입니다.
-
-[^raw-value]: 'raw value' 는 마음에는 안들지만 일단 '원시 값' 으로 번역합니다. 나중에 더 좋은 단어가 생각나면 바꿀 예정입니다.
-
-[^compile-time]: 'compile time' 은 '컴파일 시간'으로 옮깁니다. 하나의 새로운 단어로 인식합니다.
-
-[^type]: 'type' 은 '타입' 이라고 옮깁니다. 하나의 새로운 단어로 인식합니다.
-
-[^explicitly]: 'explicitly' 는 '(드러내놓고) 직접'의 의미로 '직접'으로 옮깁니다.
-
-[^integer]: 'integer'는 '정수' 또는 '정수 타입'으로 옮깁니다.
-
-[^implicitly]: 'implicitly'는 '(은연 중에) 저절로'의 의미로 '저절로'라고 옮깁니다.
-
-[^array-dictionary]: 'array' 는 '배열 타입', 'dictionary' 는 '사전 타입'으로 옮깁니다.
-
-[^conditional-loop]: 'conditional' 은 '조건 구문' 또는 '조건문'으로 'loop' 는 '반복 구문' 또는 '반복문'으로 옮깁니다.
-
-[^optional]: 'optional' 은 '옵셔널'로 옮깁니다.
-
-[^brace]: 'brace' 는 '중괄호'로 옮깁니다. 영어에서는 괄호의 종류마다 다른 단어가 있습니다. 나중에 정리합니다.
-
-[^switch]: 'switch' 는 발음으로도 옮기지 않고 'switch' 그대로 사용합니다. 필요에 따라 'switch 구문' 또는 'switch 문'으로 옮깁니다.
-
-[^match]: 'match'는 값을 맞추다는 의미를 살리도록 합니다. 여기서는 '들어맞다'로 옮깁니다. 때에 따라서는 '비교하다'로 옮겨야 할 수 있습니다. 좀 더 생각합니다.
-
-[^pair]: 'pair'는 일단 '쌍'으로 옮깁니다.
-
-[^collection]: 'collection' 은 '모듬 타입'으로 옮깁니다.
-
-[^label]: 'label' 은 '꼬리표'로 옮깁니다. '이름표'
-
-[^argument]: 'argument'는 '인자'로 옮깁니다.
-
-[^variable-number]: 인자에서 'variable number'는 '가변 길이'로 옮깁니다.
-
-[^nest]: 'nest'는 일단 '중첩하다'로 옮깁니다. 좀 더 생각해야 합니다.
-
-[^organize]: 'organize' 는 여러 가지 의미를 가지고 있는데, 여기서는 '정리하다'로 옮깁니다.
-
-[^first-class]: 'first-class'는 '일급'으로 옮깁니다. 일급 함수에 대해서는 위키피디아의 [First-class function](https://en.wikipedia.org/wiki/First-class_function) 을 참고합니다.
-
-[^delegate-callback]: 'delegate' 는 델리게이트로 'callback' 은 콜백으로 옮깁니다. 새로운 단어로 받아들입니다.
-
-[^approach]: 'approach'는 '접근 방법'으로 옮깁니다.
-
-[^closure]: 'closure'는 '클로져'로 옮깁니다.
-
-[^context]: 번역이 어려운 단어 같습니다. 여기서는 'context'를 '내부'로 옮겼는데, 그냥 '컨텍스트'로 두는 것이 좋을 것 같습니다.
-
-[^dot-syntax]: 'dot syntax'는 점 문법으로 옮깁니다.
-
-[^setup]: 'setup'은 일단 '초기 설정'으로 옮깁니다.
-
-[^standard-root-class]: 'standard root class'는 '표준 루트 클래스'로 옮깁니다. 'root' 는 그냥 '루트'로 합니다.
-
-[^override]: 'override'는 의미로 사용될 때는 '덮어 쓰다'로, 키워드로 사용될 때는 'override' 그대로 옮깁니다.
-
-[^property-2]: 키워드의 'property'가 아닌 경우, 키워드의 property와 구분하기 위하여 '성질'이라고 옮깁니다.
-
-[^subscripting]: 'subscripting' 은 Swift 에서 인덱싱 작업을 하기 때문에 '첨자 인덱싱'으로 옮깁니다. 나중에 더 좋은 단어가 있으면 바꿀 생각입니다.
-
-[^named]: 이름이 알려질 정도로 보편화 된 것을 의미하는 것 같습니다. 'named' 는 일단 '보통의' 라고 옮깁니다.
-
-[^abbreviated]: 'abbreviated'는 '축약 형태의'라고 옮깁니다.
-
-[^determine]: 'determine' 은 '결정하다'라고 옮깁니다.
-
-[^associated-value]: 'associated value'는 '연관 값'으로 옮깁니다.
-
-[^stored-property]: 저장 속성은 Swift 의 두가지 속성 중의 하나입니다. 나중에 속성 부분에서 저장 속성에 대해서 정리할 예정입니다.
-
-[^behavior]: 'behavior'는 옮기기 좀 애매한데, 여기서는 일단 '작동 방식'으로 옮깁니다.
-
-[^computed-property]: 'computed property'는 '계산 속성'으로 옮깁니다. 계산 속성에 대해서는 나중에 속성 부분에서 다시 정리합니다.
-
-[^run-time]: 'run time'은 '실행 시간'으로 옮깁니다.
-
-[^compiler]: 컴파일러는 항상 컴파일 시간에만 동작합니다.
-
-[^defer-code]: 이렇게 하면 코드의 유지 보수가 조금 더 쉬워질 수 있을 것 같습니다.
-
-[^form]: 'form' 은 '양식'으로 옮깁니다.
-
-[^generic]: 'generic'은 '일반', '보편'의 의미가 있는데, 일단 여기서는 '제네릭'이라고 발음 그대로 사용해서 새로운 단어로 받아들입니다.
-
-[^requirement]: 'requirement'는 '요구 사항'으로 옮깁니다.
