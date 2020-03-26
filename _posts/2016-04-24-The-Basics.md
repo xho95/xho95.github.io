@@ -697,63 +697,66 @@ do {
 
 Throwing, catching, and propagating errors is covered in greater detail in Error Handling.
 
-에러를 던지고, 잡아내고, 전파하는 것에 대한 [에러 처리 (Error Handling)](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 아주 상세히 다루도록 합니다.
+에러를 던지고, 잡아내고, 전파하는 것에 대한 [Error Handling (에러 처리)](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 아주 상세히 다루도록 합니다.
 
-### Assertions and Preconditinos (단언문과 선행조건문)
+### Assertions and Preconditinos (단언과 선행 조건)
 
-_단언문 (assertions)_ 와 _선행조건문 (Preconditions)_ 은 '실행 시간 (runtime)' 에 발생하는 '검사 (checks)' 입니다. 이를 사용하면 이후의 코드를 실행하기 전에 '필수 조건 (essential condition)' 을 만족하는지 확실하게 확인할 수 있습니다. '단언문' 이나 '선행조건문' 에 있는 '불린 (Boolean) 조건 평가가 `true` 면, 코드 실행은 평소처럼 계속됩니다. 조건 평가가 `false` 면, 프로그램의 현재 상태가 유효하지 않은 것입니다; 코드 실행을 중지하고, 앱은 종료됩니다.
+_단언 (assertions)_ 과 _선행 조건 (Preconditions)_ 은 '실행 시간 (runtime)' 에 하는 '검사 (checks)' 입니다. 이를 사용하면 그 다음 코드를 실행하기 전에 '필수 조건 (essential condition)' 을 만족하고 있는지 확인할 수 있습니다. '단언' 이나 '선행 조건' 에 있는 '불린 (Boolean) 조건이 `true` 로 평가되면, 코드 실행이 평소처럼 계속됩니다. 조건이 `false` 로 평가되면, 프로그램의 현재 상태가 유효하지 않은 것입니다; 코드 실행은 중지되고, 앱을 종료합니다.
 
-단언문과 선행조건문을 사용하면 코딩하는 동안 만들었던 가정과 가지고 있는 기대를 표현할 수 있으므로, 이들을 코드의 일부에 포함할 수 있습니다. '단언문 (assertions)' 은 개발 중의 실수와 잘못된 가정을 찾는데 도움이 되며, '선행조건문 (preconditions)' 은 제품의 '문제점 (issues)' 을 감지하는데 도움이 됩니다.
+'단언' 과 '선행 조건' 을 사용하면 코딩 중에 만들게 된 '가정 (assumptions)' 과 코딩 중에 가졌던 '기대값 (expectations)' 을 표현할 수 있으며, 이들을 코드의 일부로 포함할 수 있습니다. '단언' 은 개발 중에 실수한 것과 잘못된 가정을 찾도록 도와주며, '선행 조건' 은 제품의 '문제점 (issues)' 을 미리 감지할 수 있도록 도와줍니다.
 
-런타임시 기대치를 확인하는 것 외에도 어설 션 및 사전 조건은 코드 내에서 유용한 문서 형식이됩니다. 위의 오류 처리에서 설명한 오류 조건과 달리 어설 션 및 사전 조건은 복구 가능하거나 예상되는 오류에 사용되지 않습니다. 실패한 어설 션 또는 사전 조건은 잘못된 프로그램 상태를 나타내므로 실패한 어설 션을 잡을 방법이 없습니다.
+실행 시간에 기대값을 검증하는 용도 외에도, '단언' 과 '선행 조건' 은 코드 내에서 문서화를 할 수 있는 편리한 양식이기도 합니다. 앞서 [Error Handling (에러 처리)](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID515) 에서 설명한 에러 조건과는 다르게, '단언' 과 '선행 조건' 은 복구 가능하거나 예상 가능한 에러에 사용하는 것이 아닙니다. 실패한 '단언' 이나 '선행 조건' 은 프로그램의 상태가 유효하지 않음을 나타내는 것이기 때문에, 실패한 '단언' 을 잡아내는 방법이란 건 없습니다.
 
-In addition to verifying your expectations at runtime, assertions and preconditions also become a useful form of documentation within the code. Unlike the error conditions discussed in Error Handling above, assertions and preconditions aren’t used for recoverable or expected errors. Because a failed assertion or precondition indicates an invalid program state, there’s no way to catch a failed assertion. 
+'단언' 과 '선행 조건' 은 유효하지 않은 조건이 예기치 않게 발생하는 그런 상황에 대한 코드 설계인 것은 아닙니다. 하지만, 유효한 데이터와 상태에 이를 적용하는 것은 유효하지 않은 상태가 발생했을 때 앱이 종료될 것임을 예측 가능하게 해주고, 문제를 더 쉽게 고칠 수 있도록 해 줍니다. 유효하지 않은 상태가 감지되자마자 즉시 실행을 중지하는 것은 유효하지 않은 상태로 인한 피해를 줄이는 데도 도움이 됩니다.
 
-어설 션 및 사전 조건을 사용한다고해서 유효하지 않은 조건이 발생하지 않는 방식으로 코드를 설계 할 수 있습니다. 그러나 유효 데이터 및 상태를 적용하기 위해이를 사용하면 유효하지 않은 상태가 발생하면 앱이 더 정확하게 종료되고 문제를 쉽게 디버깅 할 수 있습니다. 유효하지 않은 상태가 감지되는 즉시 실행을 중지하면 해당 유효하지 않은 상태로 인한 피해를 제한하는 데 도움이됩니다.
+'단언' 과 '선행 조건' 의 차이점은 그들이 검사되는 시점에 있습니다: '단언 (assertions)' 은 오직 '디버그 빌드 (debug builds)' 시에만 검사되지만, '선행 조건 (preconditions)' 은 '디버그와 제품 빌드 (debug and production builds)' 시 모두에서 검사됩니다. 제품 빌드 시에는, '단언' 내의 조건은 평가되지 않습니다. 이것은, 개발 과정에서 원하는 만큼 '단언' 을 많이 사용할 수 있으며, 이 경우에도 제품의 성능에는 영향을 주지 않는다는 것을 의미합니다.
 
-어설 션과 전제 조건의 차이점은 확인할 때입니다. 어설 션은 디버그 빌드에서만 확인되지만 사전 조건은 디버그 및 프로덕션 빌드 모두에서 확인됩니다. 프로덕션 빌드에서는 어설 션 내부의 조건이 평가되지 않습니다. 즉, 프로덕션 성능에 영향을주지 않으면 서 개발 프로세스 중에 원하는만큼의 어설 션을 사용할 수 있습니다.
+#### Debugging with Assertions ('단언' 으로 디버깅하기)
 
-
-어떤 경우에는 특정 조건이 만족이 안될 경우 코드의 실행을 계속할 수 없는 경우가 있습니다. 이러한 상황일 때 단언 (Assertions) 구문을 써서 코드 실행을 종료하고 값이 없거나 잘못된 원인을 고칠 수 있는 기회를 제공할 수 있습니다. [^assertion] [^debug]
-
-#### Debugging with Assertions (단언문으로 디버깅하기)
-
-단언 (assertion) 구문은 불 (Boolean) 조건이 확실히 `true` 로 평가되는지 실행 시간에 검사합니다. 문자 그대로 단언 구문은 조건이 참이라고 “단언” 합니다. 단언 구문은 어떤 코드를 실행하기 전에 필수 조건들을 만족하는지 확인하는 용도로 사용합니다. 조건이 `true` 로 평가되면 코드가 평소대로 계속 실행되지만, 조건이 `false` 로 평가되면 코드 실행이 멈추고 앱이 종료됩니다.
-
-Xcode 에서 앱을 빌드하고 실행하는 경우 처럼 디버그 환경에서 실행하는 도중에 코드의 단언 구문이 작동하면, 정확하게 어디에서 상태가 잘못되었는지 볼 수 있고 단언 구문이 작동할 때의 앱 상태에 대해서 질의 (query) 를 할 수도 있습니다. [^query] 단언 구문은 또한 기본으로 내장된 특성을 이용하여 유용한 디버그 메시지를 제공하게 할 수도 있습니다.
-
-단언 구문을 작성하려면 Swift 표준 라이브러러의 전역 함수인 `assert(_:_:file:line:)` 를 호출합니다. 이 함수에 `true` 나 `false` 로 평가할 수 있는 표현식과 조건의 결과가 `false` 이면 화면에 보여줄 메시지를 전달합니다:
+'단언 (assertion)' 을 작성하려면 스위프트 표준 라이브러리에 있는 `assert(_:_:file:line:)` 함수를 호출하면 됩니다. 이 함수에 `true` 나 `false` 를 평가할 표현식과 조건 결과가 `false` 일 때 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let age = -3
-assert(age >= 0, "A person's age cannot be less than zero")
-// this causes the assertion to trigger, because age is not >= 0
+asset(age >= 0, "A person's age can't be less than zero.")
+// 이 단언은 -3 이 >= 0 이 아니기 때문에 실패합니다.
 ```
 
-위의 예제는 `age >= 0` 가 `true` 인 경우, 즉 `age` 의 값이 음수가 아닌 경우에만 코드 실행이 계속 됩니다. 만약 `age` 의 값이 음수이면 위의 코드에서 보듯 `age >= 0` 가 `false` 로 평가되고 단언 구문이 작동해서 응용 프로그램을 종료합니다.
+위의 예제에서, 코드 실행을 계속하려면 `age >= 0` 가 `true` 로 평가되거나, 다시 말해서, `age` 의 값이 음수가 아니어야 합니다. 만약 `age` 의 값이 음수이면, 위의 코드에서 보듯, `age >= 0` 가 `false` 로 평가되어서, '단언' 이 실패하고, 응용 프로그램을 종료합니다.
 
-단언 구문에서 메시지는 원할 경우 다음과 같이 생략할 수 있습니다:
+'단언' 의 메시지는 생략할 수 있습니다-예를 들어, 조건 자체를 글자 그대로 표시하려고 할 수도 있을 것입니다.
 
 ```swift
 assert(age >= 0)
 ```
 
-> 단언 구문은 Xcode 에서 앱을 빌드할 때 Release 설정으로 빌드하는 경우 처럼 최적화 옵션으로 컴파일 할 때는 비활성화 됩니다. [^disabled]
+코드가 이미 조건을 검사한 경우라면, `assertionFailure(_:file:line:)` 함수를 사용하여 '단언' 이 실패했음을 나타낼 수 있습니다. 예를 들면 다음과 같습니다:
 
-#### 단언 구문을 사용하는 시점 (When to Use Assertions)
-
-조건이 거짓이 될 가능성이 있지만 코드 실행을 계속하려면 반드시 참이어야만 하는 경우 단언 구문을 사용합니다. 단언 구문 검사를 하기에 적당한 상황은 다음과 같습니다:
-
-* 정수 첨자 인덱스를 사용자 정의 첨자 구현에 전달하는데, 이 첨자 인덱스가 너무 낮거나 높을 수 있습니다.
-* 값을 함수에 전달하는데, 유효하지 않은 값은 함수가 작업을 할 수 없음을 의미합니다.
-* 옵셔널 값이 지금은 `nil` 인데, 후속 코드의 실행이 성공하려면 `nil` 이 아닌 값이 필요합니다.
-
-[첨자 구문 (Subscripts)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Subscripts.html#//apple_ref/doc/uid/TP40014097-CH16-ID305) 과 [함수 (Functions)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158) 도 보기 바랍니다.
-
-> 단언 구문은 앱을 종료시켜 버리는데다가 잘못된 조건이 발생하지 않도록 코드를 설계하는 용도로는 사용할 수 없습니다. 그럼에도 불구하고, 유효하지 않은 조건이 발생하는 상황에서는 단언 구문이 효과가 큰 방법인데, 앱 출시 전 개발 과정에서 문제가 있는 조건을 강조해서 파악하기 쉽게 해주기 때문입니다.
-
+```swift
+if age > 10 {
+  print("You can ride the roller-coaster or the first ferris wheel.")
+} else if age >= 0 {
+  print("You can ride the ferris wheel.")
+} else {
+  assertionFailure("A person's age can't be less than zero.")
+}
+```
 
 #### Enforcing Preconditions (선행 조건 강제하기)
+
+코드를 계속 실행하려면 _분명히 (definitely)_ 참이어야 하지만, 잠재적으로 거짓이 될 수 있는 조건이 있을 때마다 '선행 조건 (precondition)' 을 사용하기 바랍니다. 예를 들어, 선행 조건으로 첨자 연산이 범위를 벗어나지 않았는지 검사하거나, 함수에 유효한 값이 전달되었는지 검사하도록 합니다.
+
+'선행 조건' 을 작성하려면 `precondition(_:_:file:line:)` 함수를 호출하면 됩니다. 이 함수에 `true` 나 `false` 를 평가할 표현식과 조건 결과가 `false` 일 때 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
+
+```swift
+// 첨자 연산 (subscript) 의 구현 내부에서 ...
+precondition(index > 0, "Index must be greater than zero.")
+```
+
+`preconditionFailure(_:file:line:)` 함수 호출로도 실패가 발생했음을 나타낼 수 있습니다-예를 들어, 모든 유효한 데이터들은 'switch (스위치)' 의 다른 '경우값들 (cases)' 에서 처리됐어야 함에도, 'switch (스위치)' 의 '기본 경우값 (default case)' 에 들어온 상황이 그런 것입니다.
+
+> '검사없는 모드 (unchecked mode)' (`-Ounchecked`) 로 컴파일하면, '선행 조건' 을 검사하지 않습니다. 컴파일러는 선행 조건이 항상 참이라고 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는 최적화 설정과는 상관없이, 항상 실행을 중단합니다.
+>
+> `fatalError(_:file:line:)` 함수를 사용하면 초기 모델 제작이나 초기 개발 중에 아직 구현안된 기능에 대한 짜투리 표시를 만들어 둘 수 있으며, 짜투리 구현으로  `fatalError("Unimplemented")` 와 같이 할 수 있습니다. 'fatal errors (치명적인 에러)' 는 최적화로도 절대 없어지지 않기 때문에, '단언' 이나 '선행 조건' 과는 달리, 이 짜투리 구현에 도달하게 되면 항상 실행이 중단될 것임을 확신할 수 있습니다.
 
 ### 참고 자료
 
