@@ -10,12 +10,13 @@ categories: Swift Language Grammar Tour
 >
 > 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-## A Swift Tour
+## A Swift Tour (스위프트 둘러보기)
 
-새로운 언어의 첫 프로그램으로는 화면에 `"Hello, world!"` 를 출력하는 것이 하나의 전통입니다. Swift 는 한 줄의 코드로 이 일을 할 수 있습니다:
+새로운 언어로 만든 첫 번째 프로그램은 화면에 `"Hello, world!"` 라는 문장을 출력하는 것이 하나의 전통입니다. 스위프트로는, 이것을 단 한 줄로 할 수 있습니다:
 
 ```swift
 print("Hello, world!")
+// "Hello, world!"  를 출력합니다.
 ```
 
 C 나 Objective-C 로 코딩을 해봤다면 이 문법이 친숙할 것입니다 - 하지만 Swift 에서는 이 한 줄의 코드가 완전한 프로그램입니다. 입/출력이나 문자열 처리를 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역 범위에 있는 코드는 프로그램의 시작점으로 사용되므로 `main()` 함수도 필요없습니다. 심지어 문장 끝에 세미콜론을 붙일 필요도 없습니다.
