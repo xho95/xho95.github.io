@@ -98,7 +98,7 @@ var occupations = [
 occupations["Jayne"] = "Public Relations"
 ```
 
-배열은 원소를 더할 때마다 자동으로 커집니다.
+배열은 원소를 더할 때마다 자동으로 크기가 커집니다.
 
 ```swift
 shoppingList.append("blue paint")
@@ -121,7 +121,7 @@ occupations = [:]
 
 ### Control Flow (제어 흐름)
 
-`if` 와 `switch` 를 사용하여 조건문을 만들고, `for-in`, `while` 그리고 `repeat-while` 을 사용하여 반복문을 만듭니다. 조건문이나 반복문에서 괄호는 선택 사항입니다. 다만 본문 주위의 중괄호는 필수입니다.
+`if` 와 `switch` 를 사용하여 조건문을 만들고, `for-in`, `while` 그리고 `repeat-while` 을 사용하여 반복문을 만듭니다. 조건이나 반복 변수 주위의 괄호는 선택 사항입니다. 다만 본문 주위의 중괄호는 필수입니다.
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
@@ -137,13 +137,14 @@ print(teamScore)
 // "11" 을 출력합니다.  
 ```
 
-`if` 문에서, 조건문은 불린 (Boolean) 표현식이어야 합니다 - 이것은 `if score { ... }` 같은 코드는 은연 중에 0 으로 비교되지 않고 에러가 됨을 뜻합니다.
+`if` 문에서, '조건절 (the conditional)' 은 반드시 '불린 표현식 (Boolean expression)' 이어야 합니다-이것은 `if score { ... }` 와 같은 코드는 에러가 되는 것이지, 0으로 암시적인 비교를 하는 게 아님을 의미합니다.
 
-`if` 와 `let` 을 같이 쓰면 값이 없는 상태를 다룰 수 있습니다. 이 값은 옵셔널 (optional) 로 표시됩니다. [^optional] 옵셔널 값은 값을 가지고 있거나 값이 없을을 나타내는 `nil` 을 가지고 있습니다. 값을 옵셔널로 표시하려면 값 타입 뒤에 물음표 (`?`) 를 쓰면 됩니다.
+`if` 와 `let` 을 같이 사용하여 누락될 수도 있는 값을 다룰 수 있습니다. 이 값은 '옵셔널 (optionals)' 을 써서 나타냅니다. 옵셔널 값은 하나의 값을 가지거나 아니면 값이 누락됐음을 나타내는 `nil` 을 가지고 있습니다. 값의 타입 뒤에 물음표 (`?`) 를 붙여서 그 값이 '옵셔널' 임을 표시합니다.
 
 ```swift
 var optionalString: String? = "Hello"
 print(optionalString == nil)
+// "false" 를 출력합니다.
 
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
@@ -152,9 +153,13 @@ if let name = optionalName {
 }
 ```
 
-옵셔널 값이 `nil`이면 조건문은 거짓 (`false`) 이고 중괄호 안의 코드는 건너뜁니다. 아닌 경우, 옵셔널 값은 풀려져서 `let` 뒤의 상수에 할당되고 이 값은 코드 블럭에서 사용할 수 있게 됩니다.
+> 실험
+>
+> `optionalName` 을 `nil` 로 바꿔 보기 바랍니다. 어떤 인사말을 받게 됩니까? `else` 절을 추가해서 `optionalName` 이 `nil` 이면 다른 인사말을 하도록 설정해 보도록 합니다.
 
-옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자를 써서 기본 값을 제공하는 것입니다. 옵셔널 값이 없는 상태라면 기본 값이 대신 사용됩니다.
+옵셔널 값이 `nil` 이면, 조건절이 `false` 가 되어 중괄호 안의 코드를 건너뛰게 됩니다. 그렇지 않다면, 옵셔널 값이 풀려서 `let` 뒤의 상수에 할당되어, 코드 블럭 내부에서 이 풀린 값을 사용할 수 있게 됩니다.
+
+옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자를 사용하여 기본 값을 제공하는 것입니다. 이 경우 옵셔널 값이 누락됐으면, 기본 값을 대신 사용하게 됩니다.
 
 ```swift
 let nickName: String? = nil
@@ -162,7 +167,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-Switch 문은 정수 값의 비교에만 국한되지 않고, 모든 종류의 데이터 타입과 광범위한 비교 연산을 지원합니다. [^switch]
+'switches (스위치)' 문은 모든 종류의 데이터를 지원하며 비교 가능한 연산 종류도 광범위합니다-정수에만 한정되지 않으며 같은 지만 검사할 수 있는 것도 아닙니다.
 
 ```swift
 let vegetable = "red pepper"
@@ -176,13 +181,18 @@ case let x where x.hasSuffix("pepper"):
 default:
     print("Everything tastes good in soup.")
 }
+// "Is it a spicy red pepper?" 를 출력합니다.
 ```
 
-`let`을 사용해서 상수 패턴에 들어맞는 값을 할당하는 방법에 주목하기 바랍니다. [^match] 이 부분은 다시 정리합니다.
+> 실험
+>
+> '기본 경우 값 (default case)' 을 제거해 봅니다. 어떤 에러를 받게 됩니까?
 
-들어맞는 switch case 의 코드를 실행하면 프로그램은 switch 구문을 마칩니다. 다음 case 문을 실행하지는 않으므로 switch 문을 빠져나가려고 각 case 코드 끝에 `break` 를 쓸 필요는 없습니다.
+패턴 안에서 `let` 을 사용하여 패턴에 해당하는 값을 상수에 할당할 수 있음에 주목하기 바랍니다.
 
-`for`-`in` 구문을 사용하면 사전 타입의 아이템을 반복할 수 있는데, 이 때 각각의 키-값 쌍에 사용할 이름 쌍을 제공하면 됩니다. [^pair] 사전 타입은 순서가 없는 모듬 타입이어서, 키와 값은 임의의 순서로 반복됩니다. [^collection]
+'스위치 경우 값 (switch case)' 에 해당하는 코드를 실행하고 나면, '스위치 (switch)' 구문을 빠져 나오게 됩니다. 프로그램 실행은 그 다음 '경우 값 (case)' 으로 계속 이어지지 않으므로, 각 '경우 값 (case)' 의 코드 끝에서 '스위치 (switch) 문' 을 '깨고 나와야 한다 (break out)' 고 명시할 필요가 없습니다.[^break-out]
+
+`for-in` 을 사용하여 '딕셔너리' 에 있는 항목에 동작을 반복 적용시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍' 을 제공하면 됩니다. '딕셔너리' 는 순서가 없는 '컬렉션 (collection' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복 적용시키게 됩니다.
 
 ```swift
 let interestingNumbers = [
@@ -199,9 +209,14 @@ for (kind, numbers) in interestingNumbers {
     }
 }
 print(largest)
+// "25" 를 출력합니다.
 ```
 
-`while` 구문은 조건문이 바뀔 때까지 코드 블럭을 반복하는데 사용합니다. 최소한 한 번의 반복 구문이 실행되도록 하기 위해 반복 구문의 끝에 조건문이 있을 수도 있습니다.
+> 실험
+>
+> 가장 큰 수가 무엇인지 추적했던 것처럼, 다른 변수를 추가하여 가장 큰 수의 종류가 무엇인지 추적해보기 바랍니다.
+
+`while` 문을 사용하면 조건이 바뀌기 전까지 한 '코드 블럭 (block of code)' 을 반복할 수 있습니다. 반복문이 최소한 한 번은 실행되도록 하려면, 대신 반복 조건을 맨 뒤에 두면 됩니다.
 
 ```swift
 var n = 2
@@ -209,15 +224,17 @@ while n < 100 {
     n = n * 2
 }
 print(n)
+// "128" 을 출력합니다.
 
 var m = 2
 repeat {
     m = m * 2
 } while m < 100
 print(m)
+// "128" 을 출력합니다.
 ```
 
-`..<` 로 범위 인덱스를 만들어서 반복 구문내에서 인덱스를 유지할 수도 있습니다.
+`..<` 로 색인 범위를 만들면 반복문 내에서 색인을 유지할 수 있습니다.
 
 ```swift
 var total = 0
@@ -225,13 +242,14 @@ for i in 0..<4 {
     total += i
 }
 print(total)
+// "6" 을 출력합니다.
 ```
 
-`..<` 를 사용하면 최상단 값을 생략하는 범위를 만들 수 있고, `...` 를 사용하면 양 끝단의 값을 포함하는 범위를 만들 수 있습니다.
+최상단 값을 생략하는 범위를 만들려면 `..<` 를 사용하고, 양 끝단의 값을 모두 포함하는 범위를 만들려면 `...` 를 사용하면 됩니다.
 
 ### Functions and Closures (함수와 클로져)
 
-`func` 을 사용하여 함수를 선언합니다. 함수를 호출하려면 이름 뒤에 인자 목록을 가진 괄호를 쓰면 됩니다. `->` 기호 앞은 매개 변수의 이름 및 타입이고 뒤는 함수의 반환 타입입니다.
+`func` 을 사용하여 함수를 선언합니다. 함수 호출은 이름 뒤에 인자 목록을 담은 괄호를 붙여주면 됩니다. `->` 를 사용하여 매개 변수의 이름과 타입을 함수의 반환 타입에서 구분짓도록 합니다.
 
 ```swift
 func greet(person: String, day: String) -> String {
@@ -240,7 +258,11 @@ func greet(person: String, day: String) -> String {
 greet(person: "Bob", day: "Tuesday")
 ```
 
-함수는 따로 지정된 값이 없으면 매개 변수 이름을 인자의 꼬리표로 사용합니다. [^label] 따로 지정하려면 매개 변수 이름 앞에 자신만의 인자 꼬리표를 써주고 꼬리표를 아예 쓰고 싶지 않으면 `_` 를 쓰면 됩니다.
+> 실험
+>
+> `day` 매개 변수를 제거해 봅니다. 매개 변수를 추가하여 인사말에 오늘의 점심 특선을 포함시켜 봅니다.
+
+기본적으로, 함수는 매개 변수의 이름을 인자의 '이름표 (labels)' 로 사용합니다. 자신만의 인자 '이름표 (label)' 를 사용하려면 매개 변수 앞에 써 주면 되고, 아무런 인자 이름표 사용하지 않으려면 `_` 를 써주면 됩니다.
 
 ```swift
 func greet(_ person: String, on day: String) -> String {
@@ -249,7 +271,7 @@ func greet(_ person: String, on day: String) -> String {
 greet("John", on: "Wednesday")
 ```
 
-값을 합성하려면 튜플 (tuple) 을 사용합니다 — 예를 들어 함수에서 다수의 값을 반환할 때 사용할 수 있습니다. 튜플의 요소는 이름이나 번호로 참조할 수 있습니다.
+'튜플 (tuple)' 을 사용하면 '복합 값 (compound value)' 을 만들 수 있습니다-예를 들어, 함수에서 여러 값을 반환할 때 쓸 수 있습니다. 튜플의 원소들은 이름이나 번호로 참조할 수 있습니다.
 
 ```swift
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
@@ -270,24 +292,12 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
+// "120" 을 출력합니다.
 print(statistics.2)
+// "120" 을 출력합니다.
 ```
 
-함수는 가변 길이의 인자를 취할 수 있으며 이를 모아서 자동으로 배열 타입으로 만들어 줍니다. [^variable-number]
-
-```swift
-func sumOf(numbers: Int...) -> Int {
-    var sum = 0
-    for number in numbers {
-        sum += number
-    }
-    return sum
-}
-sumOf()
-sumOf(numbers: 42, 597, 12)
-```
-
-함수는 중첩될 수 있습니다. [^nest] 중첩된 함수는 외부 함수에서 선언된 변수에 접근할 수 있습니다. 중첩된 함수를 사용하여 길고 복잡한 함수 코드를 정리할 수 있습니다. [^organize]
+함수는 'nested (품어질)' 수 있습니다. 'nested (품어진)' 함수는 외부 함수에서 선언한 변수에 접근할 수 있습니다. 'nested (품어진)' 함수를 사용하여 길고 복잡한 함수의 코드를 정돈할 수 있습니다.
 
 ```swift
 func returnFifteen() -> Int {
@@ -301,7 +311,7 @@ func returnFifteen() -> Int {
 returnFifteen()
 ```
 
-함수는 일급 타입입니다. [^first-class] 이 말은 함수가 다른 함수를 값으로 반환할 수 있음을 의미합니다.
+함수는 '일급 타입 (first-class type)' 입니다.[^first-class] 이것은 함수가 다른 함수를 값의 형태로 반환할 수 있다는 것을 의미합니다.
 
 ```swift
 func makeIncrementer() -> ((Int) -> Int) {
@@ -314,7 +324,7 @@ var increment = makeIncrementer()
 increment(7)
 ```
 
-함수는 인자의 하나로 다른 함수를 취할 수 있습니다.
+함수는 다른 함수를 인자의 하나로 받을 수도 있습니다.
 
 ```swift
 func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
@@ -325,31 +335,37 @@ func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
     }
     return false
 }
+
 func lessThanTen(number: Int) -> Bool {
     return number < 10
 }
+
 var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
 ```
 
-함수는 실제로는 특수한 형태의 클로저입니다: 여기서 클로저는 나중에 호출할 수 있는 코드 블럭을 말합니다. [^closure] 클로저의 코드는 클로저가 만들어지는 범위에서 사용 가능한 변수와 함수들에 접근할 수 있습니다. 이 때 클로저가 실행될 때 범위가 달라져도 접근할 수 있습니다 - 이미 중첩된 함수에서 이 예를 보았습니다. 클로저는 이름 없이 코드를 중괄호 (`{}`) 로 감싸는 것으로 만들 수 있습니다. 구분 본체에서 인자와 반환 타입을 구분하는데는 `in` 을 사용합니다.
+함수는 실제로는 '클로저 (closures; 잠금 블럭)' 의 특수한 경우에 해당합니다: 여기서 클로저는 나중에 호출할 수 있는 코드 블럭을 말합니다. 클로저의 코드는 클로저가 만들어진 범위 영역에서 사용 가능한 변수와 함수 등에 접근할 수 있는데, 이 범위 영역은 클로저가 실행될 때는 달라져도 상관없습니다-이에 대한 예제는 앞서 'nested (품어진)' 함수에서 이미 살펴봤었습니다. 클로저는 이름 없이 만들 수도 있는데 이 때는 코드를 중괄호 (`{}`) 로 감싸기만 하면 도비니다. 이 경우 `in` 을 사용하여 인자와 반환 값을 본문에서 구분하게 됩니다.
 
 ```swift
-numbers.map({
-    (number: Int) -> Int in
+numbers.map({ (number: Int) -> Int in
     let result = 3 * number
     return result
 })
 ```
 
-클로져를 더 간결하게 작성할 수 있는 옵션이 몇 개 있습니다. 가령 델리게이트 (delegate) 의 콜백 처럼 클로저의 타입을 이미 알 수 있으면, 매개 변수의 타입, 반환 타입, 또는 둘 다를 생략할 수 있습니다. [^delegate-callback] 단일 구문 클로저는 그 단일 구문의 값을 `return` 을 쓰지 않고도 반환할 수 있습니다.
+> 실험
+>
+> 클로저가 모든 홀수에 대해 0을 반환하도록 재작성해 봅시다.
+
+클로저를 더 간결하게 작성하기 위한 여러 개의 옵션이 있습니다. 클로저의 타입이 이미 알려진 경우, 가령 '대리자 (delegate)' 의 '콜백 (callback)' 등인 경우, 매개 변수의 타입, 반환 값의 타입, 또는 두 가지 모두를 생략할 수 있습니다. 단일 문장으로 된 클로저는 그 한 문장의 값을 암시적으로 반환합니다.
 
 ```swift
 let mappedNumbers = numbers.map({ number in 3 * number })
 print(mappedNumbers)
+// "[60, 57, 21, 36]" 을 출력합니다.
 ```
 
-매개 변수를 이름 대신에 번호로 참조할 수 있습니다 — 이 접근 방법은 특히 매우 짧은 클로저에 유용합니다. [^approach] 함수의 마지막 인자로 전달된 클로저는 괄호 바로 뒤로 옮길 수 있습니다. 클로저가 함수의 유일한 인자라면 괄호 전체를 생략할 수 있습니다.
+매개 변수를 이름 대신 번호로 참조 할 수도 있습니다-이 접근 방법은 클로저가 아주 짧을 때 특히 유용합니다. 함수의 마지막 인자로 전달된 클로저는 괄호 바로 뒤에 나타낼 수 있습니다. 클로저가 함수의 유일한 인자인 경우에는, 괄호를 완전히 생략 할 수도 있습니다.
 
 ```swift
 let sortedNumbers = numbers.sorted { $0 > $1 }
@@ -780,3 +796,8 @@ anyCommonElements([1, 2, 3], [3])
 ### 참고 자료
 
 [^A-Swift-Tour]: 원문은 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 에서 확인할 수 있습니다.
+
+[^break-out]: 이 말은 스위프트의 'switch' 구문에서는 각 'case' 절마다 끝에 'break' 를 쓸 필요는 없다는 말을 의미합니다.
+
+[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 할 수 있습니다. 본문 내용은 스위프트에서는 '함수' 도 '객체' 처럼 'first-class' 라서 앞의 동작들을 모두 다 수행할 수 있다는 것을 의미합니다. 보다 자세한 내용은 위키피디아의 [
+First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
