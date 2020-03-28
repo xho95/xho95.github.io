@@ -420,12 +420,7 @@ class NamedShape {
 
 '하위 클래스 (subclasses)' 는 클래스 이름 뒤에, 콜론으로 구분된, '상위 클래스 (superclass)' 이름을 포함합니다. 클래스가 어떤 '표준 루트 클래스 (standard root class)' 의 '하위 클래스' 여야 한다는 요구 사항은 전혀 없으므로, 필요에 따라 '상위 클래스' 를 포함할 수도 있고 생략할 수도 있습니다.
 
-수퍼 클래스 구현을 재정의하는 서브 클래스의 메서드는 재정의로 표시됩니다. 재정의없이 실수로 메서드를 재정의하는 것은 컴파일러에서 오류로 감지됩니다. 컴파일러는 또한 수퍼 클래스의 메소드를 실제로 대체하지 않는 대체 된 메소드를 감지합니다.
-
-
-
-
-하위 클래스의 메소드가 상위 클래스의 구현을 덮어 쓰는 경우 `override` 로 표시합니다 —  `override` 없이, 실수로 메소드를 덮어 쓸 경우 컴파일러에서 에러로 검출됩니다. 컴파일러는  `override` 메소드면서도 실제로는 상위 클래스의 어떤 메소드도 덮어 쓰지 않는 경우도 검출합니다. [^override]
+'하위 클래스' 의 메소드가 '상위 클래스' 의 구현을 '재정의 (override)' 할 경우 `override` 를 써서 표시합니다—우연히 메소드를 재정의하면서, `override` 를 붙이지 않을 경우, 컴파일러는 에러라고 감지합니다. 컴파일러는 메소드에 `override` 를 붙이고도 실제로는 '상위 클래스' 의 어떤 메소드도 재정의하지 않는 경우도 감지합니다.
 
 ```swift
 class Square: NamedShape {
@@ -450,7 +445,11 @@ test.area()
 test.simpleDescription()
 ```
 
-저장된다는 간단한 성질외에도, 속성은 게터 (getter) 와 세터 (setter) 를 가질 수 있습니다. [^property-2]
+> 실험
+>
+> 반지름과 이름을 초기자의 인자로 받는 `Circle` 을 이라는 `NamedShape` 의 '하위 클래스' 를 만들어 봅시다. `Circle` 클래스에 `area()` 와 `simpleDescription()` 메소드를 구현해 봅시다.
+
+저장되는 간단한 속성 외에도, 'getter (게터)' 와 'setter (세터)' 를 가지는 속성도 있습니다.
 
 ```swift
 class EquilateralTriangle: NamedShape {
@@ -477,19 +476,21 @@ class EquilateralTriangle: NamedShape {
 }
 var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
+// "9.3" 을 출력합니다.
 triangle.perimeter = 9.9
 print(triangle.sideLength)
+// "3.3000000000000003" 을 출력합니다.
 ```
 
-`perimeter` 의 세터에서, 새로 전달되는 값은 은연 중에 `newValue` 라는 이름을 가집니다. `set` 뒤에 괄호를 쓰고 직접 새 이름을 지정할 수 도 있습니다.
+`perimeter` 에 대한 'setter (세터)' 에서, 새로운 값의 암시적인 이름은 `newValue` 입니다. `set` 뒤에 명시적인 이름을 괄호 안에 써서 제공할 수도 있습니다.
 
-`EquilateralTriangle` 클래스의 초기자는 다음의 세 단계를 가지고 있습니다:
+`EquilateralTriangle` 클래스의 초기자는 다음의 세 단계를 가지고 있음에 주목하기 바랍니다:
 
-1. 하위 클래스에서 선언한 속성의 값을 설정합니다.
-2. 상위 클래스의 초기자 호출합니다.
-3. 상위 클래스에서 정의한 속성의 값을 바꿉니다. 메소드, 게터, 또는 세터를 사용하는 모든 추가 설정 작업은 여기에서 수행할 수 있습니다.
+1. 그 '하위 클래스' 가 선언한 속성의 값을 설정하기
+2. '상위 클래스' 의 초기자 호출하기
+3. '상위 클래스' 에서 정의한 속성의 값을 바꾸기. 이 시점에서 메소드, 'getter (게터)', 또는 'setter (세터)' 를 사용하는 모든 추가적인 설정 작업들도 수행할 수 있습니다.
 
-속성을 계산할 필요는 없지만 새 값의 설정 전후에 작동하는 코드가 필요할 경우 `willSet` 과  `didSet` 을 사용합니다. 이 코드는 초기자의 외부에서 값의 변경이 있을 때마다 실행됩니다. 예를 들어 아래에 나타낸 클래스는 삼각형의 한 변의 길이가 사각형의 한 변의 길이와 항상 같도록 합니다.
+속성을 계산할 필요는 없지만 새 값의 설정 전후에 실행될 코드를 제공할 필요가 있을 경우, `willSet` 과  `didSet` 을 사용하면 됩니다. 제공한 코드는 초기자 외부에서 값의 변경이 있을 때마다 실행됩니다. 예를 들어, 아래 클래스는 삼각형의 한 변의 길이가 항상 사각형의 한 변의 길이와 같도록 만들어 줍니다.
 
 ```swift
 class TriangleAndSquare {
@@ -510,12 +511,15 @@ class TriangleAndSquare {
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
 print(triangleAndSquare.square.sideLength)
+// "10.0" 을 출력합니다.
 print(triangleAndSquare.triangle.sideLength)
+// "10.0" 을 출력합니다.
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
+// "50.0" 을 출력합니다.
 ```
 
-옵셔널 값과 작업할 때, 메소드, 속성, 그리고 첨자 인덱싱 (subscripting) 과 같은 연산 작업 전에 `?` 를 쓸 수 있습니다. [^subscripting] `?` 앞에 오는 값이 `nil` 이면 `?` 다음의 모든 것은 무시되고 전체 표현식의 값은 `nil` 이 됩니다. 그렇지 않으면 옵셔널 값은 풀어지고 `?` 다음의 모든 것은 풀려진 값에 작용합니다. 두 경우 모두 전체 표현식의 값은 옵셔널 값입니다.
+'옵셔널 (optional)' 값으로 작업할 때, 메소드, 속성, 그리고 '첨자 연산 (subscripting)' 등의 연산 전에 `?` 를 쓸 수가 있습니다. `?` 앞의 값이 `nil` 이면, `?` 이후의 모든 것은 무시되고 전체 표현식의 값이 `nil` 이 됩니다. 그렇지 않다면, 옵셔널 값은 풀리고, `?` 이후의 모든 것은 이 '풀린 값 (unwrapped value)' 에 대해 작용합니다. 두 경우 모두, 전체 표현식은 옵셔널 값입니다.
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -524,7 +528,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures (열거체와 구조체)
 
-`enum` 을 사용해서 열거 타입을 만듭니다. 클래스나 다른 모든 보통의 타입처럼 열거 타입도 메소드를 가질 수 있습니다. [^method] [^named]
+열거체를 만들려면 `enum` 을 사용합니다. 크래스와 다른 모든 이름있는 타입들 처럼, 열거체도 자신과 관련된 메소드를 가질 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -550,9 +554,13 @@ let ace = Rank.ace
 let aceRawValue = ace.rawValue
 ```
 
-Swift 는 기본으로 case 의 원시 값 (raw value) 을 0부터 하나씩 증가하면서 지정하는데, 다른 값을 직접 지정해서 바꿀 수 있습니다. [^raw] 위에 있는 예제에서 `Ace` 는 직접 원시 값을 `1` 로 지정했고 나머지의 원시 값은 순서대로 지정하도록 했습니다. 열거 타입의 원시 타입을 문자열이나 부동-소수점으로 지정할 수도 있습니다. 열거 타입 case 의 원시 값에 접근하려면 `rawValue` 속성을 사용합니다.
+> 실험
+>
+> '원시 값 (raw value)' 을 비교하는 방식으로 두 `Rank` 값을 비교하는 함수를 작성해 봅시다.
 
-`init?(rawValue:)` 초기자를 사용하면 열거 타입의 인스턴스를 만들 때 원시 값을 넣을 수 있습니다.
+기본적으로, 스위프트는 '원시 값 (raw value)' 을 '0' 에서 시작하여 매번 '1' 씩 증가하며 할당하는데, 지정된 값을 명시하면 이 방식을 바꿀 수도 있습니다. 위의 예제에서, `Ace` 의 '원시 값 (raw value)' 은 `1` 로 명시되었으며, 나머지 '원시 값' 들은 순서대로 할당됩니다. 열거체의 원시 (값) 타입으로 '문자열' 이나 '부동-소수점 수' 를 사용하는 것도 가능합니다. '열거체 경우 값 (enumeration case)' 의 '원시 값' 에 접근하려면 `rawValue` 속성을 사용하면 됩니다.
+
+'원시 값' 을 써서 열거체의 인스턴스를 만들려면 `init?(rawValue:)` 초기자를 사용하면 됩니다. 이는 '원시 값' 에 해당하는 '열거체의 경우 값 (enumeration case)' 을 반환하거나 또는 해당하는 `Rank` 가 없을 경우 `nil` 을 반환합니다.
 
 ```swift
 if let convertedRank = Rank(rawValue: 3) {
@@ -560,7 +568,7 @@ if let convertedRank = Rank(rawValue: 3) {
 }
 ```
 
-열거 타입의 case 값은 원시 값을 표현하는 또 다른 방법이 아닌 실제 값입니다. 사실 원시 값이 별 의미가 없는 경우에는 굳이 원시 값을 사용할 필요가 없습니다.
+열거체의 '경우 값 (case values)' 은 실제 값이며, 단순히 '원시 값 (raw values)' 을 표기하는 또다른 방법인 것이 아닙니다. 실제로, '경우 값' 에 의미있는 '원시 값' 이 없을 때는, 굳이 이를 제공할 필요가 없습니다.
 
 ```swift
 enum Suit {
@@ -581,6 +589,16 @@ enum Suit {
 let hearts = Suit.hearts
 let heartsDescription = hearts.simpleDescription()
 ```
+
+> 실험
+>
+> `Suit` 에 `color()` 메소드를 추가하여, '스페이드' 와 '클럽' 일 때는 "검정색" 을 반환하고, '하트' 와 '다이아몬드' 일 때는 "빨간색" 을 반환하도록 해 봅시다.
+
+열거의 하트 케이스가 위에서 언급되는 두 가지 방법에 주목하십시오. 하트 상수에 값을 지정할 때 열거 형 Suit.hearts는 상수에 명시적인 유형이 지정되지 않으므로 전체 이름으로 참조됩니다. 스위치 내부에서 열거 형 케이스는 축약 형 .hearts로 표시되는데, self 값은 이미 적합한 것으로 알려져 있기 때문입니다. 값의 유형이 이미 알려진 경우 언제든지 약식 양식을 사용할 수 있습니다.
+
+열거에 원시 값이있는 경우 해당 값은 선언의 일부로 결정되므로 특정 열거 사례의 모든 인스턴스는 항상 동일한 원시 값을 갖습니다. 열거 사례의 또 다른 선택은 사례와 관련된 값을 갖는 것입니다. 이러한 값은 인스턴스를 만들 때 결정되며 열거 사례의 각 인스턴스마다 다를 수 있습니다. 관련된 값을 열거 사례 인스턴스의 저장된 속성처럼 동작하는 것으로 생각할 수 있습니다. 예를 들어, 서버에서 일출 및 일몰 시간을 요청하는 경우를 고려하십시오. 서버는 요청 된 정보로 응답하거나 무엇이 잘못되었는지에 대한 설명으로 응답합니다.
+
+
 
 위에서 열거 타입의 `hearts` case 를 두 가지 방법으로 참조하고 있음을 주목합니다: `hearts` 상수에 값을 할당할 때는 `Suit.hearts` 라고 열거 타입 case 의 전체 이름을 사용하는데, 이는 타입을 직접 지정하지 않는 이상 상수가 타입을 알 수 있는 방법이 없기 때문입니다. switch 구문안에서는 열거 타입의  case 가 `.hearts` 라는 축약 형태로 참조되는데, 이는 `self` 의 값이 Suit 타입임을 이미 알고 있기 때문입니다. 값의 타입을 이미 알고 있다면 언제든지 축약 형태를 사용할 수 있습니다. [^abbreviated]
 
