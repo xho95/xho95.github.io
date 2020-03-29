@@ -14,9 +14,9 @@ categories: Xcode Swift Grammar Initialization
 
 ### Setting Initial Values for Stored Properties (저장 속성을 위한 초기 값 설정하기)
 
-##### Initializers (초기자)
+#### Initializers (초기자)
 
-##### Default Property Values (기본 속성 값)
+#### Default Property Values (기본 속성 값)
 
 ### Customizing Initialization (자기만의 초기화 방법 만들기)
 
