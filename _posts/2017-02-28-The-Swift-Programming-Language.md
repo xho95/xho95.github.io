@@ -48,7 +48,7 @@ categories: Swift Programming Language Grammar
 
 * [About the Language Reference (언어의 기준에 대하여)](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
 * [Lexical Structure (어휘 구조)]
-* [Types (타입)] - [일부]()
+* [Types (타입)] - [일부](http://xho95.github.io/swift/language/grammar/types/self/2020/02/20/Self-Type.html)
 * [Expressions (표현식)]
 * [Statements (구문)]
 * [Declarations (선언)]
