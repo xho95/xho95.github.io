@@ -7,8 +7,10 @@ categories: Swift Language Grammar Protocol
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols]을 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
 
-## Protocols
+## Protocols (규약)
 
 _프로토콜_ [^protocol]은 메소드, 속성, 그리고 그 밖의 요구 사항들 (requirements) 이 특정 작업이나 일부 기능 (functionality) 에 맞도록 하는 밑그림 (blueprint)[^blueprint]을 정의합니다. 그런 다음 클래스나 구조체 또는 열거체들이 그 프로토콜을 _채택 (adopt)_ 해서 요구 사항들을 실제로 구현합니다. 어떤 타입이든지 프로토콜의 요구 사항을 만족하기만 하면 그 프로토콜을 _준수한다 (conform)_ 라고 말합니다.
 
