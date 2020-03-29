@@ -430,7 +430,7 @@ welcome.removeSubrange(range)
 
 ### Substrings (하위 문자열)
 
-문자열에서 '하위 문자열 (substring)' 을 가져오면-예를 들어, 첨자 연산이나 `prefix(_:)` 같은 메소드를 쓸 경우-그 결과는 하나의 [Substring](https://developer.apple.com/documentation/swift/substring) 인스턴스이며, 또다른 문자열 (타입) 인 것이 아닙니다. 스위프트의 '하위 문자열 (substring)' 은 '문자열 (string)' 과 거의 같은 메소드를 가지고 있기 때문에, 하위 문자열을 문자열을 쓰듯이 작업할 수 있긴 합니다. 하지만, 문자열과는 달리, 하위 문자열로 문자열 작업을 수행할 때는 짧은 시간 동안만 사용하도록 합니다. 결과를 더 오랜 시간동안 저장하려고 한다면, 하위 문자열을 `String` 인스턴스로 변환하도록 합니다. 예를 들면 다음과 같습니다:
+문자열에서 '하위 문자열 (substring)' 을 가져오면-예를 들어, 첨자 연산이나 `prefix(_:)` 같은 메소드를 쓸 경우-그 결과는 하나의 [Substring](https://developer.apple.com/documentation/swift/substring) 인스턴스이며, 또 다른 문자열 (타입) 인 것이 아닙니다. 스위프트의 '하위 문자열 (substring)' 은 '문자열 (string)' 과 거의 같은 메소드를 가지고 있기 때문에, 하위 문자열을 문자열을 쓰듯이 작업할 수 있긴 합니다. 하지만, 문자열과는 달리, 하위 문자열로 문자열 작업을 수행할 때는 짧은 시간 동안만 사용하도록 합니다. 결과를 더 오랜 시간동안 저장하려고 한다면, 하위 문자열을 `String` 인스턴스로 변환하도록 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let greeting = "Hello, world!"

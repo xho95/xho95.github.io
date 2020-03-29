@@ -387,7 +387,7 @@ class Shape {
 
 > 실험
 >
-> `let` 을 써서 상수 속성을 추가해 봅시다. 인자를 받는 또다른 메소드도 추가해 봅시다.
+> `let` 을 써서 상수 속성을 추가해 봅시다. 인자를 받는 또 다른 메소드도 추가해 봅시다.
 
 클래스의 인스턴스를 만들려면 클래스 이름 뒤에 괄호를 써주면 됩니다. '점 구문 표현 (dot syntax)' 으로 그 인스턴스의 속성과 메소드에 접근할 수 있습니다.
 
@@ -528,7 +528,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures (열거체와 구조체)
 
-열거체를 만들려면 `enum` 을 사용합니다. 크래스와 다른 모든 이름있는 타입들 처럼, 열거체도 자신과 관련된 메소드를 가질 수 있습니다.
+열거체를 만들려면 `enum` 을 사용합니다. 클래스와 다른 모든 '이름있는 타입들 (named types)' 처럼, 열거체도 자신과 관련된 메소드를 가질 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -568,7 +568,7 @@ if let convertedRank = Rank(rawValue: 3) {
 }
 ```
 
-열거체의 '경우 값 (case values)' 은 실제 값이며, 단순히 '원시 값 (raw values)' 을 표기하는 또다른 방법인 것이 아닙니다. 실제로, '경우 값' 에 의미있는 '원시 값' 이 없을 때는, 굳이 이를 제공할 필요가 없습니다.
+열거체의 '경우 값 (case values)' 은 실제 값이며, 단순히 '원시 값 (raw values)' 을 표기하는 또 다른 방법인 것이 아닙니다. 실제로, '경우 값' 에 의미있는 '원시 값' 이 없을 때는, 굳이 이를 제공할 필요가 없습니다.
 
 ```swift
 enum Suit {
@@ -596,7 +596,7 @@ let heartsDescription = hearts.simpleDescription()
 
 위에서 열거체의 '`hearts` 경우 값 (case)' 을 참조할 때 두 가지 다른 방법을 썼음에 주목하기 바랍니다: `hearts` 상수에 값을 할당할 때는, 열거체 경우 값 `Suit.hearts` 이 전체 이름으로 참조됐는데 이는 이 상수에 명시적인 타입이 지정된 것이 없기 때문입니다. 'switch (스위치)' 구문 내부에서는, 열거체의 기본 값이 `.hearts` 라는 단축된 양식으로 참조되었으며 이는 `self` 값이 이미 'suit' 인 것을 알고 있기 때문입니다. 이처럼 값의 타입을 이미 알고 있을 때는 언제든 단축된 양식을 사용할 수 있습니다.
 
-열거체가 원시 값을 가질 경우, 이 값은 선언의 일부로써 결정되며, 이는 특정한 '열거체 경우 값 (enumeration case)' 의 모든 인스턴스는 항상 같은 '원시 값' 을 가진다는 것을 의미합니다. 열거체의 경우 값은 또다른 선택을 할 수 있는데 그 경우 값에 관련된 값을 가지도록 하는 것입니다-이 값이 결정될 때는 인스턴스를 만들 때이므로, '열거체 경우 값' 의 개별 인스턴스마다 다를 수 있습니다. '관련된 값 (associated values)' 은 '열거체 경우 값 인스턴스 (enumeration case instance)' 의 '저장 속성' 처럼 동작하는 것으로 생각할 수 있습니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버의 응답은 요청한 정보일 수도 있고, 또는 뭔가 잘못됐을 경우에 대한 설명일 수도 있습니다.
+열거체가 원시 값을 가질 경우, 이 값은 선언의 일부로써 결정되며, 이는 특정한 '열거체 경우 값 (enumeration case)' 의 모든 인스턴스는 항상 같은 '원시 값' 을 가진다는 것을 의미합니다. 열거체의 경우 값은 또 다른 선택을 할 수 있는데 그 경우 값에 관련된 값을 가지도록 하는 것입니다-이 값이 결정될 때는 인스턴스를 만들 때이므로, '열거체 경우 값' 의 개별 인스턴스마다 다를 수 있습니다. '관련된 값 (associated values)' 은 '열거체 경우 값 인스턴스 (enumeration case instance)' 의 '저장 속성' 처럼 동작하는 것으로 생각할 수 있습니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버의 응답은 요청한 정보일 수도 있고, 또는 뭔가 잘못됐을 경우에 대한 설명일 수도 있습니다.
 
 ```swift
 enum ServerResponse {
@@ -620,14 +620,9 @@ case let .failure(message):
 >
 > `ServerResponse` 와 'switch (스위치)' 구문에 세 번째 '경우 값 (case)' 을 추가해 봅시다.
 
-스위치 케이스와 값을 일치시키는 과정에서 ServerResponse 값에서 일출 및 일몰 시간이 어떻게 추출되는지 확인하십시오.
+해당하는 'switch cases (스위치 경우 값)' 을 맞춰볼 때 어떻게 `ServerResponse` 값에서 일출 시간과 일몰 시간을 추출하고 있는지 주목하기 바랍니다.
 
-구조체를 사용하여 구조체를 만듭니다. 구조는 메소드 및 이니셜 라이저를 포함하여 클래스와 동일한 많은 동작을 지원합니다. 구조와 클래스의 가장 중요한 차이점 중 하나는 구조가 코드에서 전달 될 때 항상 복사되지만 클래스는 참조로 전달된다는 것입니다.
-
-
-switch 의 case 와 값을 비교할 때 `ServerResponse` 값에서 일출과 일몰 시간이 어떻게 추출되는지 주목합니다.
-
-`struct` 를 사용해서 구조 타입을 만듭니다. 구조 타입은 메소드와 초기자를 포함하여 클래스와 작동 방식이 같은 것이 많습니다. [^behavior] 구조 타입과 클래스 (객체 타입) 의 가장 중요한 차이점은 구조체는 코드에서 전달될 때 항상 복사되지만 클래스는 참조로 전달된다는 점입니다.
+구조체를 만들려면 `struct` 를 사용합니다. 구조체는 메소드와 초기자를 포함하여, 클래스에서 지원하는 것과 같은 동작들을 많이 지원합니다. 이런 구조체와 클래스의 가장 중요한 차이점 중 하나는 코드내에서 구조체는 항상 복사에 의해 전달된다는 것으로, 클래스는 참조에 의해 전달된다는 것에서 차이가 있습니다.
 
 ```swift
 struct Card {
@@ -641,9 +636,13 @@ let threeOfSpades = Card(rank: .three, suit: .spades)
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```
 
+> 실험
+>
+> 개별 카드가 '계급 (rank)' 과 '패 (suit)'[^suit] 의 조합인, 온전한 카드 한 벌을 담고 있는 배열을 반환하는 함수를 만들어 봅시다.
+
 ### Protocols and Extensions (프로토콜-규약-과 확장)
 
-`protocol` 을 사용해서 프로토콜을 선언합니다.
+'프로토콜 (protocol; 규약)' 을 선언하려면 `protocol` 를 사용하면 됩니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -652,7 +651,7 @@ protocol ExampleProtocol {
 }
 ```
 
-클래스 (객체 타입), 열거 타입, 그리고 구조 타입 모두 프로토콜을 받아들일 수 있습니다. [^adopt]
+'클래스 (classes)', '열거체 (enumerations)', 그리고 '구조체 (structs)' 모두 '프로토콜' 을 '채택 (adopt)'[^adopt] 할 수 있습니다.
 
 ```swift
 class SimpleClass: ExampleProtocol {
@@ -677,9 +676,13 @@ b.adjust()
 let bDescription = b.simpleDescription
 ```
 
-`SimpleStructure` 선언에서 메소드가 구조 타입을 변경하고 있음을 표시하려고 `mutating` 키워드를 사용하고 있음에 주목합니다. `SimpleClass` 의 선언에서는 어떤 메소드도 변경한다는 (mutating) 표시를 할 필요가 없는데, 이는 클래스의 메소드는 언제든지 클래스를 변경할 수 있기 때문입니다.
+> 실험
+>
+> `ExampleProtocol` 에 또 다른 '요구 사항 (requirement)' 을 추가해 봅시다. `SimpleClass` 와 `SimpleStructure` 가 여전히 이 프로토콜을 '준수 (conform)' 하도록 하려면 무엇을 바꿔야 할까요?
 
-기존 타입에 새로운 메소드나 계산 속성 (computed properties) 과 같은 기능을 추가하려면 `extension` 을 사용합니다. [^computed-property] 확장 (extension) 을 사용하면 다른 곳에서 선언된 타입 또는 심지어 라이브러리나 프레임웍에서 불러온 타입도 프로토콜을 받아들이게 할 수 있습니다.
+`SimpleStructure` 선언 내부에서 메소드가 구조체를 수정하고 있음을 표시하기 위해 `mutating` 키워드를 사용함에 주목하기 바랍니다. `SimpleClass` 선언에서는 어떤 메소드도 'mutating (변경)' 표시를 할 필요가 없는데 이는 클래스 메소드는 항상 클래스를 수정할 수 있기 때문입니다.
+
+기존 타입에 `extension` 을 사용하면 새 기능, 가령 새로운 메소드나 '계산 속성 (computed properties)' 을 추가할 수 있습니다. 'extension (확장)' 을 사용하면 다른 곳에서 선언된 타입이나, 또는 라이브러리나 프레임웍에서 'import (불러온)' 타입 까지도, 특정 '프로토콜을 따르도록 (protocol conformance)' 만들 수 있습니다.
 
 ```swift
 extension Int: ExampleProtocol {
@@ -691,21 +694,27 @@ extension Int: ExampleProtocol {
     }
 }
 print(7.simpleDescription)
+"The number 7" 을 출력합니다.
 ```
 
-프로토콜 이름은 모든 다른 보통의 타입처럼 사용할 수 있습니다 - 예를 들어 타입이 다 다르지만 단일 프로토톨을 받아들이고 있는 객체들의 모듬 타입 (collection) 을 만들 수 있습니다. 타입이 프로토콜 타입인 값을 사용할 때는, 프로토콜 정의 외부에 있는 메소드는 접근할 수 없습니다.
+> 실험
+>
+> `Double` 타입에 대한 'extension (확장)' 을 만들어서 `absoluteValue` 속성을 추가해 봅시다.
+
+프로토콜 이름은 마치 또 다른 '이름있는 타입 (named type)' 인 것처럼 사용할 수 있습니다-예를 들어, 서로 다른 타입을 가지지만 모두 단일한 프로토콜을 준수하는 객체들의 '컬렉션 (집합체)' 를 만드는데 사용할 수도 있습니다. 값의 타입이 프로토콜 타입인 경우에는, 프로토콜 정의 밖의 메소드를 사용할 수 없습니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 납니다.
+// "A very simple class.  Now 100% adjusted." 를 출력합니다.
+// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 발생합니다.
 ```
 
-`protocolValue` 변수의 실행 시간 타입은 `SimpleClass` 이지만, 컴파일러는 해당 타입을 `ExampleProtocol` 타입이라고 여깁니다. [^run-time] [^compiler] 이것은 프로토콜을 받아들이면서도 클래스가 구현하고 있는 메소드나 속성에 실수로라도 접근할 수는 없음을 의미합니다.
+`protocolValue` 변수의 '실행 시간 타입 (runtime type)' 이 `SimpleClass` 일지라도, 컴파일러는 주어진 타입을 `ExampleProtocol` 로 취급합니다. 이것은 프로토콜을 준수하게 되면 클래스 구현부의 메소드나 속성에 실수로라도 접근할 수 없다는 것을 의미합니다.
 
 ### Error Handling (에러 처리)
 
-에러를 나타내려면 어떤 타입이든지 `Error` 프로토콜을 받아들이면 됩니다. [^error]
+'에러 (errors)' 를 나타내려면 `Error` 프로토콜을 '채택 (adopt)' 한 타입을 사용하면 됩니다.
 
 ```swift
 enum PrinterError: Error {
@@ -715,7 +724,7 @@ enum PrinterError: Error {
 }
 ```
 
-`throw` 를 사용해서 에러를 던지며 `throws` 를 사용해서 함수가 에러를 던질 수 있음을 표시합니다. 함수에서 에러를 던지면, 그 함수는 즉시 반환되며, 함수를 호출한 코드가 에러를 처리합니다.
+에러를 던지려면 `throw` 를 사용하고 에러를 던질 수 있는 함수라고 표시하려면 `throws `를 사용하면 됩니다. 함수에서 에러를 던지면, 그 함수는 즉시 반환되며 함수를 호출한 코드에서 그 에러를 처리하게 됩니다.
 
 ```swift
 func send(job: Int, toPrinter printerName: String) throws -> String {
@@ -726,7 +735,7 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 }
 ```
 
-에러를 처리하는 방법에는 여러 가지가 있습니다. 한 가지 방법은 `do`-`catch` 를 사용하는 것입니다. `do` 블럭 안에는 에러를 던질 수 있는 코드 앞에 `try` 를 표시합니다. `catch` 블럭 안에서는 다른 이름을 붙이지 않는한 에러는 알아서 `error` 라는 이름을 가집니다.
+에러 처리에는 여러 가지 방법이 있습니다. 한 가지 방법은 `do-catch` 문를 사용하는 것입니다. `do` 블럭 안에서, 에러를 던질 수 있는 코드를 표시하려면 그 앞에 `try` 를 써주면 됩니다. `catch` 블럭 안에서는, 다른 이름을 주지 않았을 경우 에러가 자동으로 `error` 라는 이름을 가지게 됩니다.
 
 ```swift
 do {
@@ -735,9 +744,14 @@ do {
 } catch {
     print(error)
 }
+// "Job sent" 를 츨력합니다.
 ```
 
-지정된 에러를 처리하는 다수의 `catch` 블럭을 제공할 수 있습니다. switch 구문의 `case` 에서 했던 것처럼 `catch` 뒤에도 패턴을 사용할 수 있습니다.
+> 실험
+>
+> 프린터 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지도록 해 봅시다.
+
+여러 개의 `catch` 블럭을 제공해서 지정된 에러들을 처리할 수 있습니다. 'switch (스위치)' 의 `case` 뒤에서 하듯 `catch` 뒤에 '유형 (pattern)' 을 작성하면 됩니다.
 
 ```swift
 do {
@@ -750,16 +764,21 @@ do {
 } catch {
     print(error)
 }
+// "Job sent" 를 츨력합니다.
 ```
 
-에러 처리를 하는 또 다른 방법은 `try?` 를 사용해서 결과를 옵셔널로 바꾸는 것입니다. 함수가 에러를 던지면 지정된 에러는 무시되며 결과는 `nil` 이 됩니다. 그렇지 않으면 결과는 함수가 반환한 값을 가지는 옵셔널이 됩니다.
+> 실험
+>
+> `do` 블럭 내부에 에러를 던지는 코드를 추가해 봅시다. 에러가 첫 번째 `catch` 블럭에서 처리되도록 하려면 어떤 종류의 에러를 던지면 됩니까? 두 번째와 세 번째 블럭에서 되게 하려면요?
+
+에러를 처리하는 또 다른 방법은 `try?` 를 사용하여 결과를 옵셔널로 변환하는 것입니다. 함수가 에러를 던지면, 지정된 그 에러를 버리고 결과를 `nil` 이 됩니다. 다른 경우라면, 결과는 함수가 반환한 값을 가지고 있는 옵셔널이 됩니다.
 
 ```swift
 let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-`defer` 를 사용하면, 함수의 모든 다른 코드 다음에 실행될 코드 블럭을 작성해서 함수가 반환되기 직전에 실행되도록 할 수 있습니다. 이 코드는 함수가 에러를 던지던 말던 상관없이 실행됩니다. `defer` 를 사용하면 서로 다른 시간에 실행되는 설정 코드와 정리 코드도 바로 붙여서 작성할 수 있습니다. [^defer-code]
+`defer` 를 사용하여 작성된 코드 블럭은, 함수 반환의 바로 직전, 함수 내의 모든 다른 코드의 이후에 실행됩니다. 이 코드는 함수가 에러를 던지는 것과는 상관없이 실행됩니다. `defer` 를 사용하면, 서로 다른 시간에 실행될 필요가 있는, '설정 (setup)' 코드와 '정리 (cleanup)' 코드도 서로 이웃하게 작성할 수 있습니다.
 
 ```swift
 var fridgeIsOpen = false
@@ -776,11 +795,12 @@ func fridgeContains(_ food: String) -> Bool {
 }
 fridgeContains("banana")
 print(fridgeIsOpen)
+// "false" 를 출력합니다.
 ```
 
 ### Generics (일반화)
 
-꺽쇠 괄호 안에 이름을 써서 제네릭 함수나 타입을 만듭니다.
+'일반화된 함수 (generic function)' 나 '일반화된 타입 (generic type)' 을 만들려면 '꺽쇠 괄호 (angle brackets)' 안에 이름을 적으면 됩니다.
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -793,10 +813,10 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
-클래스 (객체 타입), 열거 타입, 그리고 구조 타입 뿐만 아니라 함수와 메소드도 제네릭 양식으로 만들 수 있습니다. [^form] [^generic]
+'클래스 (classes)', '열거체 (enumerations)', 그리고 '구조체 (structures)' 뿐만 아니라 함수와 메소드도 '일반화된 양식 (generic forms)' 으로 만들 수 있습니다.
 
 ```swift
-// Reimplement the Swift standard library's optional type
+// 스위프트 표준 라이브러리의 옵셔널 타입을 재구현한 것임
 enum OptionalValue<Wrapped> {
     case none
     case some(Wrapped)
@@ -805,7 +825,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-본체 구문 바로 앞에 `where` 를 사용해서 요구 사항 목록을 지정합니다 [^requirement] — 예를 들어, 타입이 프로토콜을 구현하도록 요구하거나, 두 타입이 같아야 함을 요구하거나, 아니면 클래스가 특정한 상위 클래스를 가져야만 하도록 요구할 수 있습니다.
+본문 바로 앞에 `where` 를 사용하면 '요구 사항의 목록 (a list of requirements)' 을 지정할 수 있습니다-예를 들어, 타입이 프로토콜을 구현해야 한다는 요구 사항, 두 타입이 같아야 한다는 요구 사항, 또는 클래스가 특정한 '상위 클래스' 를 가져야 한다는 요구 사항 등이 있을 수 있습니다.
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
@@ -822,7 +842,12 @@ func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
 anyCommonElements([1, 2, 3], [3])
 ```
 
-`<T: Equatable>` 라고 쓰는 것은 `<T> ... where T: Equatable` 라고 쓰는 것과 같습니다.
+> 실험
+>
+> `anyCommonElements(_:_:)` 함수를 수정하여 두 개의 'sequence (나열값들)' 에 공통된 원소의 배열을 반환하는 함수를 만들어 봅시다.
+
+
+`<T: Equatable>` 이라고 적는 것은 `<T> ... where T: Equatable` 이라고 적는 것과 같습니다.
 
 ### 참고 자료
 
@@ -831,3 +856,7 @@ anyCommonElements([1, 2, 3], [3])
 [^break-out]: 이 말은 스위프트의 'switch' 구문에서는 각 'case' 절마다 끝에 'break' 를 쓸 필요는 없다는 말을 의미합니다.
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 할 수 있습니다. 본문 내용은 스위프트에서는 '함수' 도 '객체' 처럼 'first-class' 라서 앞의 동작들을 모두 다 수행할 수 있다는 것을 의미합니다. 보다 자세한 내용은 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
+
+[^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
+
+[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다' 는 말과는 늬앙스가 조금 다른 것 같습니다.
