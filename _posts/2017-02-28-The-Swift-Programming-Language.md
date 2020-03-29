@@ -12,7 +12,7 @@ categories: Swift Programming Language Grammar
 
 * [About Swift (스위프트에 대하여)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
 * [Version Compatibility (버전 호환성)](http://xho95.github.io/swift/language/grammar/version/compatibility/2020/03/15/Version-Compatibility.html)
-* [A Swift Tour (스위프트 둘러보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html) - 일부
+* [A Swift Tour (스위프트 둘러보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
 ### Language Guide (언어 설명서)
 
@@ -29,7 +29,7 @@ categories: Swift Programming Language Grammar
 * [Methods (메소드)]
 * [Subscripts (첨자 연산)]
 * [Inheritance (상속)]
-* [Initialization (객체 초기화하기)] - 일부
+* [Initialization (객체 초기화하기)]() - 일부
 * [Deinitialization (객체 정리하기)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
 * [Optional Chaining (옵셔널 연쇄)]
 * [Error Handling (에러 처리)]
