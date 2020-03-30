@@ -37,8 +37,22 @@ subscript(index: Int) -> Int {
 
 ```swift
 subscript(index: Int) -> Int {
-  // 여기서 알맞은 첨자 연산 값을 반환합니다. 
+  // 여기서 알맞은 첨자 연산 값을 반환합니다.
 }
+```
+
+다음은 '읽기-전용 첨자 연산' 의 구현 예제로, 정수에 대한 '구구단-n-단' 를 나타내는 `TimesTable` 구조체를 정의하고 있습니다.
+
+```swift
+struct TimesTable {
+  let multiplier: Int
+  subscript(index: Int) -> Int {
+    return multiplier * index
+  }
+}
+let threeTimesTable = TimesTable(multiplier: 3)
+print("six times three is \(threeTimesTable[6])")
+// "six times three is 18" 를 출력합니다.
 ```
 
 ### Subscript Usage (첨자 연산 사용법)
