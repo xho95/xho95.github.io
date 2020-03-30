@@ -14,7 +14,7 @@ categories: Swift Grammar Collection Array Set Dictionary
 
 스위프트는 값의 집합을 저장하는 용도로 세 가지의 주요 _컬렉션 타입 (collection types; 집합체 타입)_[^collections] 을 제공하는데, 이는 '배열 (arrays)', '셋 (sets)[^sets]', 그리고 '딕셔너리 (dictionaries; 사전)[^dictionaries]' 입니다. 배열은 값들이 순서에 따라 모여 있는 컬렉션이고, 셋은 값들이 순서는 없지만 각각 하나씩만 존재하는 컬렉션입니다. 딕셔너리는 '키-값 관련-묶음 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
 
-![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.png)
+![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
 스위프트에 있는 배열, 셋, 그리고 딕셔너리는 저장할 수 있는 값과 키의 타입을 명확하게 알고 있습니다. 이는 실수로 컬렉션에 잘못된 타입의 값을 넣을 가능성은 없다는 의미입니다. 또 컬렉션에서 가져오는 값의 타입을 확신할 수 있다는 의미이기도 합니다.
 
