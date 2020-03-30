@@ -29,15 +29,15 @@ categories: Swift Programming Language Grammar
 * [Methods (메소드)]
 * [Subscripts (첨자 연산)]
 * [Inheritance (상속)]
-* [Initialization (객체 초기화하기)] - [일부](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html)
+* [Initialization (객체 초기화하기)] - [일부 진행중](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html)
 * [Deinitialization (객체 정리하기)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
 * [Optional Chaining (옵셔널 연쇄)]
 * [Error Handling (에러 처리)]
 * [Type Casting (타입 변환)]
 * [Nested Types (품어진 타입)](http://xho95.github.io/swift/language/grammar/nested/types/2017/03/02/Nested-Types.html)
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
-* [Protocols (규약)] - [일부](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
-* [Generics (일반화)] - [일부](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
+* [Protocols (규약)] - [일부 진행중](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
+* [Generics (일반화)] - [일부 진행중](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
 * [Opaque Types (불투명한 타입)](http://xho95.github.io/swift/language/grammar/opaque/type/2020/02/22/Opaque-Types.html)
 * [Automatic Reference Counting (자동 참조 카운팅)]
 * [Memory Safety (메모리 안전 장치)]
@@ -48,7 +48,7 @@ categories: Swift Programming Language Grammar
 
 * [About the Language Reference (언어의 기준에 대하여)](http://xho95.github.io/swift/language/grammar/about/reference/2017/03/13/About-the-Language-Reference.html)
 * [Lexical Structure (어휘 구조)]
-* [Types (타입)] - [일부](http://xho95.github.io/swift/language/grammar/types/self/2020/02/20/Types.html)
+* [Types (타입)] - [일부 진행중](http://xho95.github.io/swift/language/grammar/types/self/2020/02/20/Types.html)
 * [Expressions (표현식)]
 * [Statements (구문)]
 * [Declarations (선언)]

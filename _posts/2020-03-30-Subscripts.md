@@ -1,0 +1,29 @@
+---
+layout: post
+comments: true
+title:  "Swift 5.2: Subscripts (첨자 연산)"
+date:   2020-03-15 10:00:00 +0900
+categories: Swift Language Grammar Subscripts
+---
+
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 부분[^Subscripts]을 번역하고 정리한 글입니다.
+>
+> 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)](http://xho95.github.io/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html) 에서 확인할 수 있습니다.
+
+## Subscripts (첨자 연산)
+
+'클래스 (classes)', '구조체 (structures)', 그리고 '열거체 (enumerations)' 는 '_첨자 연산 (subscripts)_' 을 정의하여, '컬렉션 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 의 멤버 원소에 보다 쉽게 접근할 수 있습니다. '첨자 연산' 을 사용하여 색인으로 값을 설정하고 가져오면 별도의 메소드를 따로 만들 필요도 없습니다. 예를 들어, `Array` 인스턴스의 원소는 `someArray[index]` 라고 접근할 수 있으며, `Dictionary` 인스턴스의 원소는 `someDictionary[key]` 라고 접근할 수 있습니다.
+
+하나의 단일한 타입에 대해 여러 개의 '첨자 연산' 을 정의할 수 있으며, 사용할 첨자 연산은 첨자 연산에 전달한 색인 값의 타입에 따라 알맞게 선택됩니다. 첨자 연산은 1차원으로 제한된 것이 아니므로, 사용자가 정의한 타입의 요구에 맞도록 여러 개의 입력 매개 변수를 갖는 첨자 연산도 정의할 수 있습니다.
+
+### Subscript Syntax (첨자 연산 구문 표현)
+
+### Subscript Usage (첨자 연산 사용법)
+
+### Subscript Options (첨자 연산의 선택 사항들)
+
+### Type Subscript (타입 첨자 연산)
+
+### 참고 자료
+
+[^Subscripts]: 이 글에 대한 원문은 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 에서 확인할 수 있습니다.
