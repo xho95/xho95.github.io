@@ -134,6 +134,8 @@ matrix[1, 0] = 3.2
 
 이 두 문장은 첨자 연산의 'setter (세터)' 를 호출하여 행렬의 맨 위 오른쪽 위치 (행이 `0` 이고 열이 `1` 인 위치) 에 `1.5` 값을 설정하고, 맨 아래 왼쪽 위치 (행이 `1` 이고 열이 `0` 인 위치) 에 `3.2` 값을 설정합니다:
 
+![matrix](/assets/Swift/Swift-Programming-Language/Subscripts-matrix.jpg)
+
 `Matrix` 첨자 연산의 'getter (게터)' 와 'setter (세터)' 모두 첨자 연산의 행과 열 값이 유효한지를 검사하는 '단언 (assertion)' 문을 가지고 있습니다. 이 '단언' 문을 보조하기 위해, `Matrix` 는 `indexIsValid(row:column:)` 이라는 '편의 메소드' 도 포함하는데, 이는 요청한 행과 열이 행렬의 경계 내에 있는지를 검사합니다:
 
 ```swift
