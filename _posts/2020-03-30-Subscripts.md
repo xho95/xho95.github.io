@@ -136,8 +136,6 @@ matrix[1, 0] = 3.2
 
 ![matrix](/assets/Swift/Swift-Programming-Language/Subscripts-matrix.jpg)
 
-The Matrix subscript’s getter and setter both contain an assertion to check that the subscript’s row and column values are valid. To assist with these assertions, Matrix includes a convenience method called indexIsValid(row:column:), which checks whether the requested row and column are inside the bounds of the matrix:
-
 `Matrix` 첨자 연산의 'getter (게터)' 와 'setter (세터)' 모두 첨자 연산의 행과 열 값이 유효한지를 검사하는 '단언 (assertion)' 문을 가지고 있습니다. 이 '단언' 문을 보조하기 위해, `Matrix` 는 `indexIsValid(row:column:)` 이라는 '편의 메소드' 도 포함하는데, 이는 요청한 행과 열이 행렬의 경계 내에 있는지를 검사합니다:
 
 ```swift
