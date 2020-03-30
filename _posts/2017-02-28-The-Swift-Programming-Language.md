@@ -27,7 +27,7 @@ categories: Swift Programming Language Grammar
 * [Structures and Classes (구조체와 클래스)]
 * [Properties (속성)]
 * [Methods (메소드)]
-* [Subscripts (첨자 연산)]
+* [Subscripts (첨자 연산)](http://xho95.github.io/swift/language/grammar/subscripts/2020/03/15/Subscripts.html)
 * [Inheritance (상속)]
 * [Initialization (객체 초기화하기)] - [일부 진행중](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html)
 * [Deinitialization (객체 정리하기)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
