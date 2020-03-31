@@ -102,19 +102,68 @@ class Tandem: Bicycle {
 }
 ```
 
-`Tandem` 은 `Bicycle` 의 모든 속성과 메소드를 상속하며, 이에 따라 `Vehicle` 의 모든 속성과 메소드 역시 상속합니다. `Tandem` 하위 클래스는 또 `currentNumberOfPassengers` 라는 새로운 '저장 속성 (stored property)' 을 추가하고 있는데, 이의 기본 값은 `0` 입니다.
+`Tandem` 은 `Bicycle` 의 모든 속성과 메소드를 상속하며, 이에 따라 `Vehicle` 의 모든 속성과 메소드 역시 상속하게 됩니다. `Tandem` 하위 클래스는 또 `currentNumberOfPassengers` 라는 새로운 '저장 속성 (stored property)' 을 추가하고 있는데, 이의 기본 값은 `0` 입니다.
 
-Tandem의 인스턴스를 작성하는 경우, 새 특성 및 상속 된 특성을 사용하여 Vehicle에서 상속 된 읽기 전용 설명 특성을 조회 할 수 있습니다.
+`Tandem` 의 인스턴스를 만들면, 새로운 속성과 상속한 속성 어떤 것이든 사용할 수 있으며, `Vehicle` 에서 상속한 읽기-전용 속성인 `description` 을 조회하는 것도 가능합니:
+
+```swift
+let tandem = Tandem()
+tandem.hasBasket = true
+tandem.currentNumberOfPassengers = 2
+tandem.currentSpeed = 22.0
+print("Tandem: \(tandem.description)")
+// "Tandem: traveling at 22.0 miles per hour" 를 출력합니다.
+```
 
 ### Overriding (재정의하기)
 
+'하위 클래스' 는 '인스턴스 메소드 (instance method)', '타입 메소드 (type method)', '인스턴스 속성 (instance property)', '타입 속성 (type property)', 또는 '첨자 연산 (subscript)' 을 상위 클래스에서 상속하게 놔두지 말고 따로 사용자 목적에 맞게 자신만의 구현을 제공할 수도 있습니다. 이것을 일컬어 _재정의 (overriding)_ 라고 합니다.
+
+어떤 성질을 상속하는게 아니라 재정의하려면, 재정의할 정의 앞에 `override` 키워드를 접두사 형식으로 붙여주면 됩니다. 그렇게 하면 '재정의 (override)' 를 제공한다는 의도를 분명하게 밝힐 수 있고 또 깜박해서 해당 정의를 제공 안하는 것도 막을 수 있습니다. '재정의' 를 실수로 하게되면 예상하지 못한 동작의 원인이 되기 때문에, 코드를 컴파일할 때 `override` 키워드 없이 '재정의' 한 어떤 것도 에러로 진단합니다.
+
+`override` 키워드는 또한 '재정의를 하는 클래스' 의 '상위 클래스' (나 그 부모 중 하나) 가 제공한 재정의에 해당하는 선언을 가지고 있는지 검사하도록 스위프트 컴파일러에게 시키는 역할도 합니다. 이런 검사를 통해 '재정의' 를 올바르게 했는지 확인할 수 있습니다.
+
 #### Accessing Superclass Methods, Properties, and Subscripts (상위 클래스의 메소드, 속성, 그리고 첨자 연산에 접근하기)
+
+하위 클래스에 메소드, 속성, 또는 첨자 연산의 재정의를 제공할 때, '재정의' 의 일부로 기존 상위 클래스 구현을 사용하면 유용할 때가 있습니다. 예를 들어, 기존 구현의 동작을 조금 다음거나, 기존에 상속한 변수에 수정된 값을 저장하거나 할 경우 등이 있을 수 있습니다.
+
+이렇게 하는 것이 적절할 경우, `super` 접두사를 사용하면 메소드, 속성, 또는 첨자 연산의 '상위 클래스 버전 (superclass version)' 에 접근할 수 있습니다:
+
+* 재정의 메소드의 구현 내에서 `super.someMethod()` 를 호출하면 `someMethod()` 라는 재정의된 메소드가 `someMethod()` 의 '상위 클래스 버전' 을 호출할 수 있습니다.
+* 재정의 속성의 'getter' 나 'setter' 구현 내에서 `super.someProperty` 를 사용하면 `someProperty` 라는 재정의된 속성이 `someProperty` 의 '상위 클래스 버전' 에 접근할 수 있습니다.
+* 재정의 첨자 연산의 구현 내에서 `super[someIndex]` 를 사용하면 `someIndex` 라는 재정의된 첨자 연산이 동일한 첨자 연산의 '상위 클래스 버전' 에 접근할 수 있습니다.
 
 #### Overriding Methods (메소드 재정의하기)
 
+상속받은 인스턴스 메소드나 상속받은 타입 메소드를 재정의하려면 하위 클래스 내에서 그 메소드의 맞춤형 구현을 제공하거나 대체 구현을 제공하면 됩니다.
+
+다음 예제는 `Train` 이라는 `Vehicle` 의 새로운 하위 클래스를 정의하는데, 이 `Train` 은 `Vehicle` 에서 상속받은 `makeNoise()` 메소드를 재정의하고 있습니다:
+
+```swift
+class Train: Vehicle {
+  override func makeNoise() {
+    print("Choo Choo")
+  }
+}
+```
+
+`Train` 의 새 인스턴스를 만든 다음 `makeNoise()` 메소드를 호출하면, `Train` 하위 클래스 버전의 메소드가 호출되는 것을 볼 수 있습니다:
+
+```swift
+let train = Train()
+train.makeNoise()
+// "Choo Choo" 를 출력합니다.
+```
+
 #### Overriding Properties (속성 재정의하기)
 
+상속받은 인스턴스 속성이나 상속받은 타입 속성을 재정의하려면 그 속성에 대한 'getter' 와 'setter' 를 사용자 목적에 맞게 제공하면 되는데, 이 뿐 아니라 '속성 관찰자 (property observers)' 를 추가하여 상속하는 속성이 실제 속성 값의 변화를 관찰하도록 할 수도 있습니다.
+
 **Overriding Property Getters and Setters (속성의 Getters 와 Setters 재정의하기)**
+
+상속 된 속성이 소스에서 저장된 속성 또는 계산 된 속성으로 구현되는지 여부에 관계없이 상속 된 속성을 재정의하는 사용자 지정 getter (및 적절한 경우 setter)를 제공 할 수 있습니다. 상속 된 속성의 저장 또는 계산 된 특성은 서브 클래스에 의해 알려져 있지 않습니다. 상속 된 속성에는 특정 이름과 유형이 있다는 것만 알고 있습니다. 컴파일러가 재정의가 이름과 유형이 같은 수퍼 클래스 속성과 일치하는지 확인할 수 있도록 항상 재정의하려는 속성의 이름과 유형을 모두 명시해야합니다.
+
+서브 클래스 속성 재정의에 게터와 세터를 모두 제공하여 상속 된 읽기 전용 속성을 읽기 / 쓰기 속성으로 표시 할 수 있습니다. 그러나 상속 된 읽기 / 쓰기 속성을 읽기 전용 속성으로 제시 할 수는 없습니다.
 
 **Overriding Property Observers (속성 관찰자 재정의하기)**
 
