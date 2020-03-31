@@ -157,20 +157,80 @@ train.makeNoise()
 
 #### Overriding Properties (속성 재정의하기)
 
-상속받은 인스턴스 속성이나 상속받은 타입 속성을 재정의하려면 그 속성에 대한 'getter' 와 'setter' 를 사용자 목적에 맞게 제공하면 되는데, 이 뿐 아니라 '속성 관찰자 (property observers)' 를 추가하여 상속하는 속성이 실제 속성 값의 변화를 관찰하도록 할 수도 있습니다.
+'상속받은 인스턴스 속성' 이나 '상속받은 타입 속성' 을 재정의하려면 그 속성에 대한 'getter' 와 'setter' 를 사용자 목적에 맞게 제공하면 되는데, 이 외에도 '속성 관찰자 (property observers)' 를 추가하여 '상속하는 속성' 이 '실제 속성 값' 의 변화를 관찰하도록 할 수도 있습니다.
 
 **Overriding Property Getters and Setters (속성의 Getters 와 Setters 재정의하기)**
 
-상속 된 속성이 소스에서 저장된 속성 또는 계산 된 속성으로 구현되는지 여부에 관계없이 상속 된 속성을 재정의하는 사용자 지정 getter (및 적절한 경우 setter)를 제공 할 수 있습니다. 상속 된 속성의 저장 또는 계산 된 특성은 서브 클래스에 의해 알려져 있지 않습니다. 상속 된 속성에는 특정 이름과 유형이 있다는 것만 알고 있습니다. 컴파일러가 재정의가 이름과 유형이 같은 수퍼 클래스 속성과 일치하는지 확인할 수 있도록 항상 재정의하려는 속성의 이름과 유형을 모두 명시해야합니다.
+사용자 정의 'getter' (그리고, 적절한 경우 'setter' 까지) 를 제공하여 상속받은 속성은 _어느 것이든 (any)_ 재정의할 수 있는데, 이 때 원 소스에서 상속받은 속성의 구현이 '저장 속성' 으로 되었든 '계산 속성' 으로 되었든 상관이 없습니다. 상속받은 속성의 본질이 '저장 속성' 인지 '계산 속성' 인지는 '하위 클래스' 에서 알 수가 없습니다-단지 이 상속받은 속성의 이름과 타입이 어떤 것인지만 알 수 있습니다. 재정의하려면 항상 그 속성의 이름과 타입 두 가지 모두 다시 반드시 알려줘야 하며, 이는 컴파일러가 이 '재정의' 에 해당하는 '상위 클래스' 의 속성을 검사하려면 이름과 타입이 같은지를 보고 검사하게 되기 때문입니다.
 
-서브 클래스 속성 재정의에 게터와 세터를 모두 제공하여 상속 된 읽기 전용 속성을 읽기 / 쓰기 속성으로 표시 할 수 있습니다. 그러나 상속 된 읽기 / 쓰기 속성을 읽기 전용 속성으로 제시 할 수는 없습니다.
+하위 클래스에서 속성을 재정의하면서 'getter' 와 'setter' 를 모두 제공하면 '상속받은 읽기-전용 속성 (inherited read-only property)' 을 '읽기-쓰기 혼용 속성 (read-write property)' 로 나타낼 수 있습니다. 하지만, '읽기-쓰기 혼용 속성' 을 '읽기-전용 속성' 으로 나타내는 것은 불가능 합니다.[^read-write-to-read-only]
+
+> 속성을 '재정의' 하면서 'setter (세터)' 를 제공하는 경우, 반드시 그 재정의를 위한 'getter (게터)' 도 제공해야 합니다. '재정의 getter' 내에서 상속받은 속성의 값을 수정하고 싶지 않을 경우, 'getter' 에서 `super.someProperty` 를 반환하여 상속받은 값을 그대로 단순히 전달만 하게 할 수도 있는데, 이 때 `someProperty` 가 '재정의' 속성의 이름이 됩니다.
+
+다음 예제는 `Vehicle` 의 하위 클래스로, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는 새로운 저장 속성인 `gear` 를 도입하여, 기본 값으로 정수 `1` 을 둡니다. `Car` 클래스는 `Vehicle` 에서 상속받은 `description` 속성도 재정의하고 있는데, 이는 사용자 목적에 맞도록 현재 '기어' 를 포함하는 설명을 제공하기 위함입니다.
+
+```swift
+class Car: Vehicle {
+  var gear = 1
+  override var description: String {
+    return super.description + " in gear \(gear)"
+  }
+}
+```
+
+`description` 속성의 '재정의' 는, `Vehicle` 클래스의 `description` 속성을 반환하는, `super.description` 을 호출하는 것으로 시작합니다. 이어서 `Car` 클래스 버전의 `description` 은 기존 설명 끝에 현재 '기어' 정보에 대한 몇가지 여분의 설명을 추가합니다.
+
+`Car` 클래스의 인스턴스를 만들고 `gear` 와 `currentSpeed` 속성을 설정하고 나면, `description` 속성이 `Car` 클래스 내에 정의된 '맞춤형 설명 (tailored description)' 을 반환하는 것을 볼 수 있습니다:
+
+```swift
+let car = Car()
+car.currentSpeed = 25.0
+car.gear = 3
+print("Car: \(car.description)")
+// "Car: traveling at 25.0 miles per hour in gear 3" 를 출력합니다.
+```
 
 **Overriding Property Observers (속성 관찰자 재정의하기)**
 
-### Preventing Overrides (재정의 금지하기)
+'속성 재정의 (property overriding)' 를 사용하여 '상속받은 속성' 에 '속성 관찰자 (property observers)' 를 추가할 수 있습니다. 이것은 상속받은 속성의 값이 바뀔 때 알림을 받을 수 있도록 해주며, 이 때 그 속성이 원래 어떻게 구현됐는지는 상관 없습니다. '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는 [Property Observers (속성 관찰자)](https://docs.swift.org/swift-book/LanguageGuide/Properties.html#ID262) 에서 확인할 수 있습니다.
+
+> '속성 관찰자' 를 '상속받은 상수 저장 속성 (inherited constant stored property)' 이나 '상속받은 읽기-전용 계산 속성 (inherited read-only computed properties)' 에는 추가할 수 없습니다. 이 속성들의 값은 설정 자체가 불가능하므로, '재정의' 하면서 `willSet` 이나 `didSet` 구현을 제공하는 것이 적합하지 않기 때문입니다.
+>
+> 동일한 하나의 속성에 대해 '재정의 세터 (overriding setter)' 와 '재정의 속성 관찰자 (overriding property observer)' 를 동시에 제공할 수 없음에도 주목하기 바랍니다. 속성에 대해 이미 '사용자 정의 세터 (custom setter)' 를 제공하고 있다면, 속성의 값이 바뀌는 것을 관찰하고 싶을 경우, 그 '사용자 정의 세터 (custom setter)' 안에서 바뀔 값을 간단히 관찰하면 되기 때문입니다.
+
+다음 예제는 `Car` 의 하위 클래스로, `AutomaticCar` 라는 새로운 클래스를 정의합니다. 이 `AutomaticCar` 클래스는 '자동 기어박스' 가 있는 자동차를 나타내며, 현재 속도를 기반으로 하여 적절한 기어를 자동으로 선택합니다:
+
+```swift
+class AutomaticCar: Car {
+  override var currentSpeed: Double {
+    didSet {
+      gear = Int(currentSpeed / 10.0) + 1
+    }
+  }
+}
+```
+
+`AutomaticCar` 인스턴스의 `currentSpeed` 속성을 설정할 때마다, 이 속성의 `didSet` '관찰자 (observer)' 가 새 속도에 적합하도록 인스턴스의 `gear` 속성을 설정하게 됩니다. 여기 지정된 '속성 관찰자' 는 새 `currentSpeed` 값을 `10` 으로 나누고, 그 정수인 몫에, `1` 을 더한 값을 '기어' 로 선택합니다. 속도가 `35.0` 이면 기어는 `4` 가 됩니다:
+
+```swift
+let automatic = AutomaticCar()
+automatic.currentSpeed = 35.0
+print("AutomaticCar: \(automatic.description)")
+// "AutomaticCar: traveling at 35.0 miles per hour in gear 4" 를 출력합니다.
+```
+
+### Preventing Overrides (재정의 막기)
+
+메소드, 속성, 또는 첨자 연산이 재정의 되는 것을 막고 싶으면 _final (최종)_ 이라고 표시하면 됩니다. 이렇게 하려면 메소드, 속성, 또는 첨자 연산의 '도입자 (introducer)' 키워드 앞에 `final` '수정자 (modifier)' 를 붙이면 됩니다. (가령 `final var`, `final func`, `final class func`, 그리고 `final subscript` 와 같은 식으로 하면 됩니다.)
+
+'final (최종) 메소드', '최종 속성', 또는 '최종 첨자 연산' 을 하위 클래스에서 '재정의' 하려고 하면 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다. 클래스의 'extension (확장)' 으로 추가한 메소드, 속성, 또는 첨자 연산들도 'extension (확장)' 의 정의 안에서 'final (최종)' 으로 표시할 수 있습니다.
+
+클래스를 정의할 때 `class` 키워드 앞에 `final` '수정자 (modifier)' 를 붙이면 (즉 `final class` 라고 하면) 전체 클래스를 'final (최종)' 으로 표시하게 됩니다. '최종 클래스 (final class)' 를 가지고 '하위 클래스' 를 만들려고 하는 어떤 짓이든 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다.
 
 ### 참고 자료
 
 [^Inheritance]: 이 글에 대한 원문은 [Inheritance](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html) 에서 확인할 수 있습니다.
 
 [^base-class]: 어떤 프로그래밍 언어에서는 'base class' 를 'superclass' 의 의미로 사용하기도 합니다. 하지만 스위프트의 'base class (기본 클래스)' 는 'superclass (상위 클래스)' 와는 다릅니다. 스위프트에서는 '기본 클래스' 가 '상위 클래스' 일 수도 있고 아닐 수도 있으며, '상위 클래스' 도 '기본 클래스' 일 수도 있고 아닐 수도 있습니다. 스위프트의 'base class (기본 클래스)' 는 아무데서도 상속받은 것이 없는 클래스, 즉 상속 관계에서라면 자신이 상속의 출발점이 되는 클래스를 말합니다.
+
+[^read-write-to-read-only]: 이것은 없던 기능을 추가할 수는 있지만, 원래 있던 기능을 없앨 수는 없다고 이해하면 될 것 같습니다.
