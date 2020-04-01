@@ -33,7 +33,7 @@ categories: Swift Programming Language Grammar
 * [Deinitialization (객체 정리하기)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html)
 * [Optional Chaining (옵셔널 연쇄)]
 * [Error Handling (에러 처리)]
-* [Type Casting (타입 변환)]()
+* [Type Casting (타입 변환)](http://xho95.github.io/swift/language/grammar/type/casting/2020/03/31/Type-Casting.html)
 * [Nested Types (품어진 타입)](http://xho95.github.io/swift/language/grammar/nested/types/2017/03/02/Nested-Types.html)
 * [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html)
 * [Protocols (규약)] - [일부 진행중](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html)
