@@ -134,16 +134,16 @@ for item in library {
 
 > '변환 (casting)' 은 실제로 인스턴스를 수정하거나 그 값을 바꾸는 것이 아닙니다. 실제 인스턴스는 그대로 남아 있습니다; 단지 어떤 인스턴스를 변환한 타입으로 취급하고 접근할 수 있게 하는 것일 뿐입니다.
 
-### Type Casting for Any and AnyObject ('Any (어떤 것도)' 와 'AnyObject (어떤 객체라도)' 에 대한 타입 변환)
+### Type Casting for Any and AnyObject ('Any' 와 'AnyObject' 에 대한 타입 변환)
 
-스위프트는 지정하지 않은 타입을 다루기 위해서 특별한 타입 두 개를 제공합니다.
+스위프트는 '지정되지 않은 타입 (nonspecific type)' 을 다루기 위한 두 개의 특별한 타입을 제공합니다.
 
 * `Any` 는 어떤 타입에 대한 인스턴스라도 전부 나타낼 수 있으며, 여기에는 함수 타입도 포함됩니다.
 * `AnyObject` 는 어떤 클래스 타입에 대한 인스턴스라도 나타낼 수 있습니다.
 
-제공하는 동작 및 기능이 명시 적으로 필요한 경우에만 Any 및 AnyObject를 사용하십시오. 코드에서 사용할 것으로 예상되는 유형을 구체적으로 지정하는 것이 좋습니다.
+`Any` 와 `AnyObject` 는 이들이 제공하는 동작과 기능이 명시적으로 필요할 때만 사용하기 바랍니다. 코드에서 작업하는 타입을 예상할 수 있는 경우라면 항상 이를 지정하는 것이 더 좋습니다.
 
-다음은 Any를 사용하여 함수 유형 및 비 클래스 유형을 포함한 다양한 유형의 혼합 작업을 수행하는 예입니다. 이 예제에서는 사물이라는 배열을 작성합니다.이 배열은 Any 유형의 값을 저장할 수 있습니다.
+다음은 `Any` 를 사용하여 서로 다른 타입을 섞어서 작업하는 예제이며, 여기에는 '함수 타입' 과 '비-클래스 타입' 도 포함됩니다. 이 예제는 `Any` 타입의 값을 저장할 수 있는, `things` 라는 배열을 만듭니다:
 
 ```swift
 var things = [Any]()
@@ -157,6 +157,10 @@ things.append((3.0, 5.0))
 things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
 things.append({ (name: String) -> String in "Hello, \(name)" })
 ```
+
+`things` 배열이 가지고 있는 것들은 두 개의 `Int` 값, 두 개의 `Double` 값, 한 개의 `String` 값, 한 개의 `(Double, Double)` 타입인 튜플, "Ghostbusters" 라는 영화, 그리고 한 개의 클로저로 `String` 값을 받아서 또다른 `String` 값을 반환하는 것이 있습니다.
+
+`Any` 나 `AnyObject` 타입만 알고 있는 상태에서 상수나 변수의 '지정된 타입 (specific type)' 을 찾고 싶으면, `switch` 문의 '경우 값 (cases)' 에 `is` 또는 `as` 'pattern (유형)' 을 사용하면 됩니다. 아래 예제는 `things` 배열에 있는 항목들에 동작을 반복 적용시키는데 이 때 `switch` 문으로 각 항목의 타입을 조회합니다. `switch` 문의 여러 개의 '경우 값 (cases)' 들은 해당하는 값을 지정된 타입의 상수에 '연결시켜 (bind)' 그 값을 출력할 수 있도록 합니다:
 
 ```swift
 for thing in things {
@@ -192,6 +196,16 @@ for thing in things {
 // an (x, y) point at 3.0, 5.0
 // a movie called Ghostbusters, dir. Ivan Reitman
 // Hello, Michael
+```
+
+The Any type represents values of any type, including optional types. Swift gives you a warning if you use an optional value where a value of type Any is expected. If you really do need to use an optional value as an Any value, you can use the as operator to explicitly cast the optional to Any, as shown below.
+
+`Any` 타입은 선택적 유형을 포함하여 모든 유형의 값을 나타냅니다. `Any` 타입의 값이 필요한 선택적 값을 사용하면 Swift가 경고를 표시합니다. 선택적 값을 `Any` 값으로 사용해야하는 경우 `as` 연산자를 사용하여 아래와 같이 옵션을 `Any` 로 명시 적으로 캐스트 할 수 있습니다.
+
+> ```swift
+ let optionalNumber: Int? = 3
+things.append(optionalNumber)        // Warning
+things.append(optionalNumber as Any) // No warning
 ```
 
 ### 참고 자료
