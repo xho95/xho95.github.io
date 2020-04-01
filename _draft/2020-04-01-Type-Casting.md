@@ -145,6 +145,55 @@ for item in library {
 
 다음은 Any를 사용하여 함수 유형 및 비 클래스 유형을 포함한 다양한 유형의 혼합 작업을 수행하는 예입니다. 이 예제에서는 사물이라는 배열을 작성합니다.이 배열은 Any 유형의 값을 저장할 수 있습니다.
 
+```swift
+var things = [Any]()
+
+things.append(0)
+things.append(0.0)
+things.append(42)
+things.append(3.14159)
+things.append("hello")
+things.append((3.0, 5.0))
+things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
+things.append({ (name: String) -> String in "Hello, \(name)" })
+```
+
+```swift
+for thing in things {
+  switch thing {
+  case 0 as Int:
+    print("zero as an Int")
+  case 0 as Double:
+    print("zero as a Double")
+  case let someInt as Int:
+    print("and integer value of \(someInt)")
+  case let someDouble as Double where someDouble > 0:
+    print("a positive double value of \(someDouble)")
+  case is Double:
+    print("some other double value that I don't want to print")
+  case let someString as String:
+    print("a string value of \(someString)")
+  case let (x, y) as (Double, Double):
+    print("an (x, y) point at \(x), \(y)")
+  case let movie as Movie:
+    print("a movie called \(movie.name), dir. \(movie.director)")
+  case let stringConverter as (String) -> String:
+    print(stringConverter("Michael"))
+  default:
+    print("something else")
+  }
+}
+
+// zero as an Int
+// zero as a Double
+// an integer value of 42
+// a positive double value of 3.14159
+// a string value of "hello"
+// an (x, y) point at 3.0, 5.0
+// a movie called Ghostbusters, dir. Ivan Reitman
+// Hello, Michael
+```
+
 ### 참고 자료
 
 [^Type-Casting]: 이 글에 대한 원문은 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 에서 확인할 수 있습니다.
