@@ -198,11 +198,9 @@ for thing in things {
 // Hello, Michael
 ```
 
-The Any type represents values of any type, including optional types. Swift gives you a warning if you use an optional value where a value of type Any is expected. If you really do need to use an optional value as an Any value, you can use the as operator to explicitly cast the optional to Any, as shown below.
+> `Any` 타입은 어떤 타입의 값이라도 나타낼 수 있는 것으로, 여기에는 '옵셔널 타입' 도 포함됩니다. `Any` 타입의 값이 필요한 곳에서 '옵셔널 값' 을 사용하면 스위프트가 경고를 띄웁니다. 정말로 '옵셔널 값' 을 `Any` 값의 형태로 사용해야하는 경우라면, `as` 연산자를 사용하여, 아래에 보인 것처럼, 그 '옵셔널' 을 명시적으로 `Any` 로 '변환 (cast)' 해야 합니다.
 
-`Any` 타입은 선택적 유형을 포함하여 모든 유형의 값을 나타냅니다. `Any` 타입의 값이 필요한 선택적 값을 사용하면 Swift가 경고를 표시합니다. 선택적 값을 `Any` 값으로 사용해야하는 경우 `as` 연산자를 사용하여 아래와 같이 옵션을 `Any` 로 명시 적으로 캐스트 할 수 있습니다.
-
-> ```swift
+```swift
  let optionalNumber: Int? = 3
 things.append(optionalNumber)        // Warning
 things.append(optionalNumber as Any) // No warning
