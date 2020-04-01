@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Type Casting ()"
+title:  "Swift 5.2: Type Casting (타입 변환)"
 date:   2020-03-31 10:00:00 +0900
 categories: Swift Language Grammar Type Casting
 ---
