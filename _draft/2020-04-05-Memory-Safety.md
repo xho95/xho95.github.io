@@ -73,7 +73,7 @@ print(myNumber)
 
 함수에 사용되는 모든 '입-출력 매개 변수 (in-out parameters)' 는 장기적인 접근을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 모든 '비-입-출력 매개 변수 (non-in-out parameters)' 가 평가된 다음에 시작하여 전체 함수 호출 기간 동안 지속됩니다. 입-출력 매개 변수가 여러 개 있을 경우, 매개 변수가 나타나는 순서대로 쓰기 접근을 시작합니다.
 
-이러한 장기적인 쓰기 접근의 결과 중의 하나는, 입-출력으로 전달되는 원래의 변수에 접근할 수 없게 된다는 것이며, 이는 다른 경우라면 '범위 규칙 (scoping rules)' 과 '접근 제어 (access control)' 에 의해 허용되더라도 마찬가지입니다-원본에 대한 어떤 접근도 충돌이 됩니다. 예를 들면 다음과 같습니다:
+이러한 장기적인 쓰기 접근의 결과 중의 하나는, 입-출력으로 전달된 변수의 원본에 접근할 수 없다는 것이며, 이는 다른 경우라면 '범위 규칙 (scoping rules)' 과 '접근 제어 (access control)' 에 의해 허용되더라도 마찬가지입니다-원본에 대한 어떤 접근도 충돌이 됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -85,6 +85,23 @@ func increment(_ number: inout Int) {
 increment(&stepSize)
 // 에러: stepSize 에 대한 접근이 충돌함
 ```
+
+위의 코드에서, `stepSize` 는 전역 변수이며, 일반적으로 `increment(_:)` 내에서 접근 가능합니다. 하지만, `stepSize` 에 대한 읽기 접근은 `number` 에 대한 쓰기 접근과 겹칩니다. 아래 그림에 나타낸 것처럼, `number` 와 `stepSize` 둘 다 메모리에서 같은 위치를 참조합니다. 읽기 접근과 쓰기 접근이 같은 메모리를 참조하면서 겹치는 경우, 충돌을 일으킵니다.
+
+![in-out paramters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
+
+이 충돌을 해결하는 한 가지 방법은 `stepSize` 에 대한 명시적인 복사본을 만드는 것입니다:
+
+```swift
+// 명시적인 복사본을 만듭니다.
+var copyOfStepSize = stepSize
+increment(&copyOfStepSize)
+
+// 원본을 갱신합니다.
+stepSize = copyOfStepSize
+// stepSize 는 이제 2 입니다.
+```
+
 
 ### Conflicting Access to self in Methods (메소드 내에서 self 에 접근할 때의 충돌)
 
