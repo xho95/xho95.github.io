@@ -154,7 +154,7 @@ oscar.shareHealth(with: &maria)   // OK. 괜찮습니다.
 ```
 
 
-![access different locations in memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-differenct-memory.jpg)
+![access different locations in memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-different-memory.jpg)
 
 ![access the same memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-same-memory.jpg)
 
