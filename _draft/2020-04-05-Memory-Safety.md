@@ -67,7 +67,7 @@ print(myNumber)
 
 하지만, 메모리에 접근하는 방법에는 여러 가지가 있으며, 그 중 _장기적인 (long-term)_ 접근은, 그 범위가 다른 코드의 실행에 이르기까지 뻗어 있습니다. 단기적인 접근과 장기적인 접근 사이의 차이점은 장기적인 접근의 경우 접근을 시작한 다음에 그것이 끝나기 전이라도 다른 코드를 실행할 수 있다는 것인데, 이를 일컬어 '_겹친다 (overlap)_' 라고 합니다. 장기적인 접근은 다른 장기적인 접근이나 순간적인 접근과 겹쳐질 수 있습니다.
 
-코드에서 '겹치는 접근 (overlapping accesses)' 이 주로 나타나는 때는 함수와 메소드의 '입-출력 매개 변수 (in-out parameters)' 를 사용할 때 또는 구조체를 '변경하는 메소드 (mutating methods)' 를 사용할 때입니다. 지정된 종류의 스위프트 코드에서 장기적인 접근을 사용하는 방법은 아래의 각각의 문단에서 논의하겠습니다.
+코드에서 '겹치는 접근 (overlapping accesses)' 이 주로 나타나는 때는 함수와 메소드의 '입-출력 매개 변수 (in-out parameters)' 를 사용할 때 또는 구조체의 '변경 메소드 (mutating methods)' 를 사용할 때입니다. 지정된 종류의 스위프트 코드에서 장기적인 접근을 사용하는 방법은 아래의 각각의 문단에서 논의하겠습니다.
 
 ### Conflicting Access to In-Out Parameters (입-출력 매개 변수에 접근할 때의 충돌)
 
@@ -123,6 +123,37 @@ balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한
 > 연산자도 함수이기 때문에, 이 역시 입-출력 매개 변수에 대한 장기적인 접근을 하게 됩니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 연산자 함수라면, `playerOneScore <^> playerOneScore` 라고 했을 경우 그 결과로 `balance(& playerOneScore, & playerOneScore)` 와 같이 충돌이 발생할 것입니다.
 
 ### Conflicting Access to self in Methods (메소드 내에서 self 에 접근할 때의 충돌)
+
+구조체의의 '변경 (mutating)' 메소드는 메소드 호출이 지속되는 동안에 `self` 에 대한 쓰기 접근을 하게 됩니다. 예를 들어, 각각의 참여자마다 피해를 받으면 줄어드는 체력 양과, 특수한 능력을 사용하면 줄어드는 에너지 양을 가지고 있는 게임을 생각해 봅시다.
+
+```swift
+struct Player {
+  var name: String
+  var health: Int
+  var energy: Int
+
+  static let maxHealth = 10
+  mutating func restoreHealth() {
+    health = Player.maxHealth
+  }
+}
+```
+
+위의 `restoreHealth()` 메소드에서, `self` 에 대한 쓰기 접근은 메소드의 첫 부분에서 시작하여 메소드가 반환할 때까지 지속됩니다. 이 경우, `restoreHealth()` 안에 있는 코드 중에 `Player` 인스턴스의 속성과 접근이 겹칠 수도 있는 것은 전혀 없습니다. 아래에 있는 `shareHealth(with:)` 메소드는 다른 `Player` 인스턴스를 입-출력 매개 변수로 받으므로, 접근이 겹칠 수 있는 가능성이 생기게 됩니다.
+
+```swift
+extension Player {
+  mutating func shareHealth(with teammate: inout Player) {
+    balance(&teammate.health, &health)
+  }
+}
+
+var oscar = Player(name: "Oscar", health: 10, energy: 10)
+var maria = Player(name: "Maria", health: 5, energy: 10)
+oscar.shareHealth(with: &maria)   // OK. 괜찮습니다.
+```
+
+
 
 ### Conflicting Access to Properties (속성에 접근할 때의 충돌)
 

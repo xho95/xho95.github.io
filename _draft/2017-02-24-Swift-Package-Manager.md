@@ -35,7 +35,7 @@ Swift 는 코드를 모듈로 정리합니다. 각 모듈은 네임 스페이스
 타겟의 의존 모듈은 패키지에 있는 코드가 필요로 하는 모듈을 말합니다. 의존 관계는 패키지의 소스를 가리키는 상대 및 절대 URL 과 사용될 패키지 버전에 대한 요구 조건 집합으로 구성됩니다. 패키지 매니저의 역할은 프로젝트와 의존 관계에 있는 모든 모듈을 내려 받고 빌드하는 과정을 자동화해서 조정 비용을 줄이는 것입니다. [^coordination] 이것은 재귀적인 프로세스입니다 [^process] : 의존 모듈은 스스로가 의존 모듈을 가질 수 있고, 그들은 또 제각각 의존 모듈을 가질 수 있어서, 의존 관계가 그래프 형태를 띄게 됩니다. 패키지 관리자는 전체 의존 관계 그래프를 만족하는 모든 것들을 내려 받고 필드합니다.
 
 > 이어지는 절에서는 Swift 를 사용할 줄 안다고 가정합니다. Swift 가 처음이라면 먼저 소개 자료를 좀 보고 싶을 수 있습니다. [The Swift Programming Language](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/) [^swift-programming-language] 의 [A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1) 부분을 추천합니다.
-> 
+>
 > 코드 예제를 따라하고 싶으면 Swift 를 설치해야 합니다. Swift 를 설치하는 방법은 [Getting Started](https://swift.org/getting-started/#installing-swift) 에 나와 있습니다. [^getting-started]
 
 ### 사용 예제 (Example Usage)
@@ -50,7 +50,7 @@ Swift 패키지 관리자로 무엇을 더 할 수 있는지 완전히 알아보
 * [Dealer](https://github.com/apple/example-package-dealer) - `DeckOfPlayingCards` 을 생성하고, 뒤섞으며, 처음 10장의 카드를 거래하는 실행 파일을 정의합니다.
 
 > 전체 예제를 빌드하고 실행하려면 GitHub 에 있는 [Dealer 프로젝트](https://github.com/apple/example-package-dealer) 에서 소스 코드를 내려 받아서 아래의 명령을 실행하면 됩니다:
-> 
+>
 > ```sh
 > $ cd example-package-dealer
 > $ swift build
@@ -97,7 +97,7 @@ Swift 빌드 프로세스를 시작하려면 `swift build` 를 실행합니다. 
 
 #### 빌드 설정 구문(Build Configuration Statements) 사용하기
 
-다음에 빌드할 모듈은 `FisherYates` 입니다. `PlayingCard` 와 달리 이 모듈은 새로운 타입을 정의하지 않습니다. 대신에 이미 있는 타입 - 특히 `CollectionType` 과 `MutableCollectionType` 프로토콜 – 을 확장해서 `shuffle()` 메소드와 변형(mutating)을 위한 보완 대책인 `shuffleInPlace()` 을 추가합니다.
+다음에 빌드할 모듈은 `FisherYates` 입니다. `PlayingCard` 와 달리 이 모듈은 새로운 타입을 정의하지 않습니다. 대신에 이미 있는 타입 - 특히 `CollectionType` 과 `MutableCollectionType` 프로토콜 – 을 확장해서 `shuffle()` 메소드와 변경(mutating)을 위한 보완 대책인 `shuffleInPlace()` 을 추가합니다.
 
 `shuffleInPlace()` 의 구현은 피셔 (Fisher) - 예이츠 (Yates) 알고리즘을 사용하여 집합에 있는 요소의 순서를 무작위로 바꿉니다. Swift 표준 라이브러리는 난수 생성기를 제공하지 않기 때문에, 이 메소드는 시스템 모듈에 있는 함수를 사용해서 구현해야 합니다. 이 함수를 macOS 와 리눅스에서 호환되도록 하려면 코드에서 빌드 설정 구문을 사용합니다.
 
@@ -247,7 +247,7 @@ To help you get started with the project, we have prepared the following Communi
 
 [^getting-started]: Swift 공식 블로그에 있는 설치 방법 등을 소개하고 있는 글입니다.
 
-[^extension]: 원래는 'extension' 을 '확장'이라고 직역했었는데, 의미가 헷갈릴 수 있을 것 같아서 '익스텐션'이라고 발음대로 사용할까 고민을 했습니다. 하지만 'extension'은 그 자체로 키워드이기도 해서 그냥 원 글을 살리는 방향으로 가기로 했습니다. 
+[^extension]: 원래는 'extension' 을 '확장'이라고 직역했었는데, 의미가 헷갈릴 수 있을 것 같아서 '익스텐션'이라고 발음대로 사용할까 고민을 했습니다. 하지만 'extension'은 그 자체로 키워드이기도 해서 그냥 원 글을 살리는 방향으로 가기로 했습니다.
 
 [^card]: 카드 관련 예제는 The Swift Programming Language 책에도 자주 나오는 예제인데, 예제 자체도 치밀하게 설계되어 설명하고 있음을 알 수 있습니다.
 
