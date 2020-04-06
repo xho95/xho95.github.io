@@ -73,7 +73,7 @@ print(myNumber)
 
 함수에 사용되는 모든 '입-출력 매개 변수 (in-out parameters)' 는 장기적인 접근을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 모든 '비-입-출력 매개 변수 (non-in-out parameters)' 가 평가된 다음에 시작하여 전체 함수 호출 기간 동안 지속됩니다. 입-출력 매개 변수가 여러 개 있을 경우, 매개 변수가 나타나는 순서대로 쓰기 접근을 시작합니다.
 
-이러한 장기적인 쓰기 접근의 결과 중의 하나는, 입-출력으로 전달된 변수의 원본에 접근할 수 없다는 것이며, 이는 다른 경우라면 '범위 규칙 (scoping rules)' 과 '접근 제어 (access control)' 에 의해 허용되더라도 마찬가지입니다-원본에 대한 어떤 접근도 충돌이 됩니다. 예를 들면 다음과 같습니다:
+이러한 장기적인 쓰기 접근으로 인한 결과 중 하나는, 입-출력으로 전달된 변수의 원본에 접근할 수 없다는 것이 있는데, 이는 다른 때라면 '범위 규칙 (scoping rules)' 과 '접근 제어 (access control)' 에 의해 허용되는 경우더라도 그렇습니다-원본에 대한 어떤 접근도 충돌이 됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -88,9 +88,9 @@ increment(&stepSize)
 
 위의 코드에서, `stepSize` 는 전역 변수이며, 일반적으로 `increment(_:)` 내에서 접근 가능합니다. 하지만, `stepSize` 에 대한 읽기 접근은 `number` 에 대한 쓰기 접근과 겹칩니다. 아래 그림에 나타낸 것처럼, `number` 와 `stepSize` 둘 다 메모리에서 같은 위치를 참조합니다. 읽기 접근과 쓰기 접근이 같은 메모리를 참조하면서 겹치는 경우, 충돌을 일으킵니다.
 
-![in-out paramters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
+![in-out parameters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
 
-이 충돌을 해결하는 한 가지 방법은 `stepSize` 에 대한 명시적인 복사본을 만드는 것입니다:
+이러한 충돌을 해결하는 한 가지 방법은 `stepSize` 에 대한 명시적인 복사본을 만드는 것입니다:
 
 ```swift
 // 명시적인 복사본을 만듭니다.
@@ -102,6 +102,25 @@ stepSize = copyOfStepSize
 // stepSize 는 이제 2 입니다.
 ```
 
+`increment(_:)` 를 호출하기 전에 `stepSize` 의 복사본을 만들어 두면, `copyOfStepSize` 의 값이 현재의 '스텝 크기 (step size)' 에 의해 증가됨이 분명해집니다. 쓰기 접근이 시작되기 전에 읽기 접근이 끝나므로, 충돌은 없습니다.
+
+입-출력 매개 변수에 대한 장기적인 쓰기 접근의 또다른 결과는 동일한 함수의 여러 개의 입-출력 매개 변수에 대한 인자로 단일한 변수를 전달하면 충돌을 일으킨다는 것입니다. 예를 들면 다음과 같습니다:
+
+```swift
+func balance(_ x: inout Int, _ y: inout Int) {
+  let sum = x + y
+  x = sum / 2
+  y = sum - x
+}
+var playerOneScore = 42
+var playerTwoScore = 30
+balance(&playerOneScore, &playerTwoScore)   // OK, 괜찮습니다.
+balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한 접근이 충돌합니다.
+```
+
+위의 `balance(_:_:)` 함수는 두 매개 변수의 값을 총 합하여 고르게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 를 인자로 전달하여 호출하면 충돌이 일어나지 않습니다-두 개의 쓰기 접근은 시간이 겹치긴 하지만, 서로다른 메모리 위치에 접근합니다. 이와는 달리, `playerOneScore` 를 두 매개 변수의 값으로 전달하면 충돌이 일어나게 되며 이는 두 개의 쓰기 접근이 동시에 같은 위치의 메모리에 접근하기 때문입니다.
+
+> 연산자도 함수이기 때문에, 이 역시 입-출력 매개 변수에 대한 장기적인 접근을 하게 됩니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 연산자 함수라면, `playerOneScore <^> playerOneScore` 라고 했을 경우 그 결과로 `balance(& playerOneScore, & playerOneScore)` 와 같이 충돌이 발생할 것입니다.
 
 ### Conflicting Access to self in Methods (메소드 내에서 self 에 접근할 때의 충돌)
 
