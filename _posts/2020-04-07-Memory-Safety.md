@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Memory Safety (메모리 안전 장치)"
+title:  "Swift 5.2: Memory Safety (메모리 안전성)"
 date:   2020-04-07 10:00:00 +0900
 categories: Swift Language Grammar Memory Safety
 ---

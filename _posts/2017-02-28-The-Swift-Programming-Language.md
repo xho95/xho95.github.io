@@ -40,7 +40,7 @@ categories: Swift Programming Language Grammar
 * [Generics (일반화)] - [일부 진행중](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html)
 * [Opaque Types (불투명한 타입)](http://xho95.github.io/swift/language/grammar/opaque/type/2020/02/22/Opaque-Types.html)
 * [Automatic Reference Counting (자동 참조 카운팅)]
-* [Memory Safety (메모리 안전 장치)]
+* [Memory Safety (메모리 안전성)](http://xho95.github.io/swift/language/grammar/memory/safety/2020/04/07/Memory-Safety.html)
 * [Access Control (접근 제어)]
 * [Advanced Operators (고급 연산자)]
 
