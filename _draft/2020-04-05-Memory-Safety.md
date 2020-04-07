@@ -124,7 +124,7 @@ balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한
 
 ### Conflicting Access to self in Methods (메소드 내에서 self 에 접근할 때의 충돌)
 
-구조체의의 '변경 (mutating)' 메소드는 메소드 호출이 지속되는 동안에 `self` 에 대한 쓰기 접근을 하게 됩니다. 예를 들어, 각각의 참여자마다 피해를 받으면 줄어드는 체력 양과, 특수한 능력을 사용하면 줄어드는 에너지 양을 가지고 있는 게임을 생각해 봅시다.
+구조체의의 '변경 (mutating)' 메소드는 메소드 호출이 지속되는 동안에 `self` 에 대한 쓰기 접근을 하게 됩니다. 예를 들어, 각각의 참여자마다 피해를 받으면 줄어드는 '체력' 과, 특수한 능력을 사용하면 줄어드는 '에너지' 를 가지고 있는 게임을 생각해 봅시다.
 
 ```swift
 struct Player {
@@ -153,17 +153,63 @@ var maria = Player(name: "Maria", health: 5, energy: 10)
 oscar.shareHealth(with: &maria)   // OK. 괜찮습니다.
 ```
 
+위의 예제에서, 참여자 'Oscar' 의 `shareHealth(with:)` 메소드를 호출해서 체력을 참여자 'Maria' 와 공유해도 충돌은 일어나지 않습니다. 메소드를 호출하는 동안 `oscar` 에 대한 쓰기 접근을 하는데 이는 `oscar` 가 '변경 (mutating) 메소드' 에 있는 `self` 의 값이기 때문인 것으로, 같은 기간 동안 `maria` 에 대해서도 쓰기 접근을 하며 이는 `maria` 가 입-출력 매개 변수로 전달되었기 때문입니다. 아래 그림에서 나타낸 것처럼, 이들은 서로 다른 위치의 메모리에 접근합니다. 이 두 쓰기 접근은 시간이 겹치긴 하지만, 충돌은 하지 않습니다.
 
 ![access different locations in memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-different-memory.jpg)
 
+하지만, `oscar` 를 `shareHealth(with:)` 의 인자로 전달하면, 이는 충돌입니다:
+
+```swift
+oscar.shareHealth(with: &oscar)
+// 에러: oscar 에 대한 접근이 충돌합니다.
+```
+
+변경 메소드는 메소드의 지속 시간 동안 `self` 에 쓰기 접근을 해야 하고, 입-출력 매개 변수는 같은 시간 동안 `teammate` 에 쓰기 접근을 해야합니다. 메소드 범위 내에서, `self` 와 `teammate` 는 같은 위치의 메모리를 참조합니다-이를 나타내면 아래 그림과 같습니다. 두 개의 쓰기 접근이 같은 메모리를 참조하면서 겹치므로, 충둘을 일으킵니다.
+
 ![access the same memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-same-memory.jpg)
 
-
-
 ### Conflicting Access to Properties (속성에 접근할 때의 충돌)
+
+구조체, 튜플, 그리고 열거체와 같은 타입들은 개별 성분 값, 가령 구조체의 속성이나 튜플의 원소들 같은, 것들로 구성되어 있습니다. 이들은 '값 타입' 이기 때문에, 값의 일 부분을 변경하는 것은 전체 값을 변경하는 것이며, 이는 하나의 속성에 대한 읽기나 쓰기 접근이 전체 값에 대한 읽기나 쓰기 접근일 필요가 있다는 것을 의미합니다. 예를 들어, 튜플 원소에 대한 쓰기 접근이 겹칠면 충돌이 일어나게 됩니다:
+
+```swift
+var playerInformation = (health: 10, energy: 20)
+balance(&playerInformation.health, &playerInformation.energy)
+// 에러: playerInformation 에 대한 접근이 충돌합니다.
+```
+
+위의 예제에서, 튜플 원소에 대한 `balance(_:_:)` 호출이 충돌을 일으키는데 이는 `playerInformation` 의 쓰기 접근이 겹치기 때문입니다. `playerInformation.health` 와 `playerInformation.energy` 둘 다 입-출력 매개 변수로 전달됐으며, 이는 `balance(_:_:)` 함수 호출의 지속 시간 동안 쓰기 접근을 할 필요가 있음을 의미합니다. 두 가지 경우 모두, 튜플 원소에 대한 쓰기 접근은 튜플 전체에 대한 쓰기 접근을 필요로 합니다. 이것은 `playerInformation` 에 대한 두 개의 쓰기 접근이 지속 시간 동안 겹친다는 것을 의미하며, 이는 충돌의 원인이 됩니다.
+
+구조체를 '전역 변수 (global variable)' 에 저장하게 되면 이 구조체 속성에 대한 쓰기 접근이 겹칠 경우 똑같은 에러가 발생함을 아래 코드가 보여줍니다.
+
+```swift
+var holly = Player(name: "Holly", health: 10, energy: 10)
+balance(&holly.health, &holly.energy)   // 에러
+```
+
+실제로는, 구조체의 속성에 대한 대부분의 접근은 '겹치는 것에 대해 안전 (overlap safely)' 합니다. 예를 들어, 위 예제의 `holly` 변수를 전역 변수 대신 '지역 변수 (local variable)' 로 바꾸면, 컴파일러가 구조체의 '저장 속성 (stored properties)' 에 대한 접근이 겹치는 것이 안전함을 증명할 수 있게 됩니다[^local-variable]:
+
+```swift
+func someFunction() {
+  var oscar = Player(name: "Oscar", health: 10, energy: 10)
+  balance(&oscar.health, &oscar.energy)   // OK, 괜찮습니다.
+}
+```
+
+위의 예에서, 'Oscar' 의 체력과 에너지는 `balance(_:_:)` 의 두 입-출력 매개 변수로 전달됩니다. 컴파일러는 '메모리 안전성 (memory safety)' 이 보존됨을 증명할 수 있으며 이는 두 저장 속성들이 어떤 방식으로도 상호 작용하고 있지 않기 때문입니다.
+
+메모리의 안전을 유지하기 위해 구조의 속성에 대한 중복 액세스에 대한 제한이 항상 필요한 것은 아닙니다. 메모리 안전성은 바람직한 보장이지만 독점적 액세스는 메모리 안전성보다 엄격한 요구 사항입니다. 이는 메모리에 대한 독점적 액세스를 위반하더라도 일부 코드는 메모리 안전성을 유지함을 의미합니다. 컴파일러가 메모리에 대한 비 배타적 액세스가 여전히 안전하다는 것을 증명할 수있는 경우 Swift는이 메모리 안전 코드를 허용합니다. 특히 다음 조건이 적용되는 경우 구조물의 속성에 대한 중복 액세스가 안전하다는 것을 증명할 수 있습니다.
+
+* 계산 된 속성이나 클래스 속성이 아닌 인스턴스의 저장된 속성에만 액세스하고 있습니다.
+* 구조는 전역 변수가 아닌 지역 변수의 값입니다.
+* 이 구조는 폐쇄에 의해 포착되지 않거나 폐쇄 폐쇄에 의해서만 포착됩니다.
+
+컴파일러가 액세스가 안전하다는 것을 증명할 수 없으면 액세스를 허용하지 않습니다.
 
 ### 참고 자료
 
 [^Memory-Safety]: 이 글에 대한 원문은 [Memory Safety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html) 에서 확인할 수 있습니다.
 
 [^Thread-Sanitizer]: 'Sanitizer' 는 우리 말로 '소독제, 살균제' 등으로 옮길 수 있는데, 'Thread Sanitizer (쓰레드 살균제)' 는 Xcode 에 포함된 도구 중의 하나로 앱에서 'data race (자료 경쟁)' 가 일어나는 지를 찾아줍니다. 'data race' 에 대해서는 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 이나 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 참고하기 바랍니다.
+
+[^local-variable]: 전역 변수에 저장할 경우 컴파일러가 이 변수에 대한 접근이 언제 다시 이루어지게 될지 장담할 수 없으므로 에러가 발생하지만, 지역 변수에 저장할 경우 이 변수에 대한 접근이 특정 지역 내로 한정됨을 알 수 있기 때문인 것으로 추측됩니다. 이 부분에 대해서는 좀 더 확인해봐야 할 것 같습니다.
