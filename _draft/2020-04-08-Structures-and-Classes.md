@@ -40,9 +40,41 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 
 더 자세한 내용은, [Inheritance (상속)](http://xho95.github.io/swift/language/grammar/inheritance/2020/03/31/Inheritance.html), [Type Casting (타입 변환)](http://xho95.github.io/swift/language/grammar/type/casting/2020/03/31/Type-Casting.html), [Deinitialization (객체 정리하기)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html), 그리고 [Automatic Reference Counting (자동 참조 카운팅)] 을 참고하기 바랍니다.
 
-클래스가 지원하는 추가 기능을 쓴다는 것은 복잡성 증가라는 비용을 지불하겠다는 의미입니다. 일반적인 지침을 따른다면, 되도록이면 이유를 파악하기 더 쉬운 구조체를 사용하고, 클래스는 더 적합하거나 꼭 필요한 경우에만 사용하도록 합니다. 실제로, 이것은 사용자가 정의하는 자료 타입의 대부분은 구조체나 열거체일 것이라는 의미입니다. 이에 대한 좀 더 자세히 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 를 첨고하기 바랍니다.
+클래스가 지원하는 추가 기능을 쓴다는 것은 복잡성 증가라는 비용을 지불하겠다는 의미입니다. 일반적인 지침을 따른다면, 되도록이면 이유를 파악하기 더 쉬운 구조체를 사용하고, 클래스는 더 적합하거나 꼭 필요한 경우에만 사용하도록 합니다. 실제로, 이것은 새로 만드는 자료 타입의 대부분은 구조체나 열거체가 될 것임을 의미입니다. 이에 대한 좀 더 자세히 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 를 첨고하기 바랍니다.
 
 #### Definition Syntax (정의 구문 표현)
+
+구조체와 클래스는 비슷한 정의 구문 표현을 가지고 있습니다. 구조체를 도입하려면 `struct` 키워드를 사용하고 클래스는 `class` 키워드를 사용합니다. 둘 다 전체 정의는 한 쌍의 중괄호 안에 집어넣습니다:
+
+```swift
+struct SomeStructure {
+  // 여기서 구조체를 정의합니다.
+}
+class SomeClass {
+  // 여기서 클래스를 정의합니다.
+}
+```
+
+> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하고 있는 것입니다. 타입은 (여기서 `SomeStructure` 와 `SomeClass` 라고 한 것처럼) `UpperCamelCase`-대문자 낙타 활자[^uppser-camel-case] 방식의-이름을 부여해서 표준 스위프트 타입의 대문자 방식 (`String`, `Int`, 그리고 `Bool` 과 같은 것들) 에 맞추도록 합니다. 속성과 메소드는 `lowerCamelCase`-소문자 낙타 활자 방식의-이름 (가령 `frameRate` 와 `incrementCount` 같은 것들) 을 부여해서 타입 이름과 구별되도록 합니다.
+
+아래는 구조체 정의와 클래스 정의에 대한 예제입니다:
+
+```swift
+struct Resolution {
+  var width = 0
+  var height = 0
+}
+class VideoMode {
+  var resolution = Resolution()
+  var interlaced = false
+  var frameRate = 0.0
+  var name: String?
+}
+```
+
+위의 예제는 `Resolution` 이라는 새 구조체를 정의해서, 픽셀 기반 디스플레이의 해상도를 묘사합니다. 이 구조체는 `width` 와 `height` 라는 두 개의 '저장 속성 (stored properties)' 을 가집니다. 저장 속성은 구조체나 클래스의 일부로 포함되어 저장되는 상수나 변수를 말합니다. 이 두 속성은 타입이 `Int` 로 추론되는데 이는 초기 값이 정수인 `0` 으로 설정되었기 때문입니다.
+
+위의 예제는 `VideoMode` 라는 새 클래스도 정의하며, 비디오 디스플레이를 위한 지정된 비디오 모드를 묘사하고 있습니다. 이 클래스는 네 개의 저장 속성 변수를 가집니다. 첫 번째인, `resolution` 은, 새로운 구조체인 `Resolution` 의 인스턴스로 초기화되어, 속성의 타입이 `Resolution` 으로 추론됩니다. 다른 세 개의 속성들로, `interlaced` 설정은 `false` ("비월 주사 방식"[^interlaced]의 의미), '프레임 재생 속도' 는 `0.0`, 그리고 `name` 이라는 옵셔널 `String` 값을 가지고 `VideoMode` 의 새로운 인스턴스가 초기화 됩니다. `name` 속성의 기본 값은 자동으로 `nil`, 또는 "`name` 값이 없음", 이 되는데, 이는 옵셔널 타입이기 때문입니다.
 
 #### Structure and Class Instances (구조체 인스턴스와 클래스 인스턴스)
 
@@ -63,3 +95,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 [^Structures-and-Classes]: 이 글에 대한 원문은 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 에서 확인할 수 있습니다.
 
 [^object-instance]: 여기서 '인스턴스' 가 '객체' 보다 더 일반적인 용어라는 표현을 사용했는데, '객체' 라고 하면 '클래스의 인스턴스' 만을 지칭하지만, 그냥 '인스턴스' 라고 하면 '구조체의 인스턴스' 도 모두 포함하는 개념이기 때문입니다.
+
+[^uppser-camel-case]: 'Camel case' 라면 '낙타 활자' 정도의 의미를 갖고 있는데, 프로그래밍에서 변수 이름을 정할 때 모든 단어를 붙여서 표기하되. 각 단어의 첫 글자를 대문자로 표기하는 방법을 말합니다. 이렇게 하면 모양이 마치 낙타 등처럼 생겼다고 해서 'Camel case' 라고 합니다. 'Camel case' 를 우리 말로 '낙타 대문자' 라고 하는 것 같은데, 이 책에서는 'UpperCamelCase' 와 'LowerCamelCase' 라고 구분을 하고 있어서 각각 '대문자 낙타 활자' 와 '소문자 낙타 활자' 라고 옮기도록 합니다. 'Camel Case' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
+
+[^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 참고하기 바랍니다.
