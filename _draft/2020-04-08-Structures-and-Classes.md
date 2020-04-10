@@ -78,6 +78,17 @@ class VideoMode {
 
 #### Structure and Class Instances (구조체 인스턴스와 클래스 인스턴스)
 
+`Resolution` 구조체의 정의와 `VideoMode` 클래스의 정의는 `Resolution` 이나 `VideoMode` 이 어떤 형태인지만을 설명하는 것입니다. 그 자체로는 지정된 해상도나 비디오 모드에 대해 아무런 설명을 하지 않습니다. 이를 위해서는, 구조체나 클래스의 인스턴스를 만들 필요가 있습니다.
+
+인스턴스를 생성하는 구문 표현은 구조체와 클래스가 서로 매우 비슷합니다:
+
+```swift
+let someResolution = Resolution()
+let someVideoMode = VideoMode()
+```
+
+구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에 더 자세히 설명하도록 합니다.
+
 #### Accessing Properties (속성 접근하기)
 
 #### Memberwise Initializers for Structure Types (구조체 타입의 멤버 초기자)
