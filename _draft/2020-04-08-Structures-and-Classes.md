@@ -87,11 +87,43 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에 더 자세히 설명하도록 합니다.
+구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에서 더 자세히 설명합니다.
 
-#### Accessing Properties (속성 접근하기)
+#### Accessing Properties (속성에 접근하기)
 
-#### Memberwise Initializers for Structure Types (구조체 타입의 멤버 초기자)
+인스턴스의 속성에 접근할 때는 _점 구문 표현 (dot syntax)_ 을 사용합니다. '점 구문 표현' 은, 인스턴스 이름 바로 뒤에 속성 이름을 쓰면서, 쉼표 (`.`) 로 구분하며, 그 사이에 아무 공백도 넣지 않습니다.
+
+```swift
+print ( "The width of someResolution is \(someResolution.width)")
+// "The width of someResolution is 0" 를 출력합니다.
+```
+
+이 예제에서, `someResolution.width` 는 `someResolution` 의 `width` 속성을 참조하므로, 그것의 기본 초기 값인 `0` 을 반환합니다.
+
+'하위 속성' 으로 계속 파고 들 수도 있어서, 가령 `VideoMode` 의 `resolution` 속성에 있는 `width` 속성도 접근 가능합니다:
+
+```swift
+print ( "The width of someVideoMode is \(someVideoMode.resolution.width)")
+// "The width of someVideoMode is 0" 를 출력합니다.
+```
+
+'점 구문 표현 (dot syntax)' 을 사용하여 '변수 속성 (variable property)' 에 새로운 값을 할당할 수도 있습니다:
+
+```swift
+someVideoMode.resolution.width = 1280
+print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
+// "The width of someVideoMode is now 1280" 를 출력합니다.
+```
+
+#### Memberwise Initializers for Structure Types (구조체 타입에 대한 멤버 초기자)
+
+모든 구조체는 자동으로 생겨나는 '_멤버 초기자 (memberwise initializer)_'를 가지고 있어서, 이것을 사용하여 새로운 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다. 새 인스턴스 속성에 대한 초기 값을 멤버 초기자에 전달할 때는 이름을 사용하면 됩니다:
+
+```swift
+let vga = Resolution(width: 640, height: 480)
+```
+
+구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memeberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에서 더 자세히 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 
