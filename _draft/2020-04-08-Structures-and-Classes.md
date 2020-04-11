@@ -123,9 +123,73 @@ print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
 let vga = Resolution(width: 640, height: 480)
 ```
 
-구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memeberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에서 더 자세히 설명합니다.
+구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에서 더 자세히 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
+
+_값 타입 (value type)_ 은, 변수나 상수에 할당하거나 함수에 전달할 때, 그 값이 _복사되는 (copied)_ 타입을 말합니다.
+
+실제로 값 타입은 이전 장에서부터 이미 광범위하게 사용중입니다. 사실, 스위프트의 모든 기본 타입-정수, 부동-소수점 수, 불린 (Booleans), 문자열, 배열 그리고 딕셔너리-들은 값 타입으로, 속을 들여다보면 구조체로 구현되어 있습니다.
+
+스위프트에 있는 모든 구조체와 열거체는 값 타입니다. 이것은 직접 생성하는 구조체나 열거체의 어떤 인스턴스라도-그리고 이들이 속성으로 가지고 있는 어떤 값 타입이라도-코드 내에서 전달될 때는 항상 복사된다는 것을 의미합니다.
+
+> 표준 라이브러리에 정의되어 있는 컬렉션인 배열 (arrays), 딕셔너리 (dictionary), 그리고 문자열 (strings) 들은 최적화를 사용하여 복사하는데 드는 성능 비용을 줄입니다. 이 컬렉션들은, 복사를 바로 하는 대신에, 원본 인스턴스와 복사본 간에 원소가 저정되어 있는 메모리를 공유합니다. 컬렉션의 복사본 중 하나가 수정되면, 이 수정 작업 바로 전에 그 원소를 복사합니다. 코드의 동작은 항상 마치 복사가 즉시 일어난 것처럼 보이게 됩니다.
+
+이제, 앞 예제에 있는 `Resolution` 구조체를 사용하는 예제를 살펴봅시다:
+
+```swift
+let hd = Resolution(width : 1920, height : 1080)
+var cinema = hd
+```
+
+이 예제는 `hd` 라는 상수를 선언하고 여기에 '풀 HD (full HD)' 비디오의 너비와 높이 (1920 픽셀 너비와 1080 픽셀 높이) 를 가지는 `Resolution` 인스턴스를 설정합니다.
+
+그런 다음 `cinema` 라는 변수를 선언하고 여기에 `hd` 의 현재 값을 설정합니다. `Resolution` 은 구조체이므로, 기존 인스턴스의 _복사본 (copy)_ 이 만들어지며, 이 새로운 복사본이  `cinema` 에 할당됩니다. `hd` 와 `cinema` 는 이제 같은 너비와 높이를 가지고 있긴 하지만, 그 속을 들여다보면 두 개의 인스턴스는 완전히 서로 다른 것들입니다.
+
+다음으로, `cinema` 의 `width` 속성을 디지털 영화 송출에 사용되는 것보다 약간 더 넓은 2K 표준 너비 (2048 픽셀 너비와 1080 픽셀 높이) 로 수정합니다.
+
+```swift
+cinema.width = 2048
+```
+
+`cinema` 의 `width` 속성을 검사하면 진짜 `2048` 로 바뀌었는지 볼 수 있습니다:
+
+```swift
+print("cinema is now \(cinema.width) pixels wide")
+// "cinema is now 2048 pixels wide" 를 출력합니다.
+```
+
+하지만, 원본인 `hd` 인스턴스의 `width` 속성은 여전히 `1920` 이라는 옛 값을 가지고 있습니다:
+
+```swift
+print("hd is still \(hd.width) pixels wide")
+// "hd is still 1920 pixels wide" 를 출력합니다.
+```
+
+`cinema` 에 `hd` 의 현재 값을 주면, `hd` 에 저장된 _값 (values)_ 이 새 `cinema` 인스턴스로 복사됩니다. 최종 결과는 동일한 수치 값을 가지지만 완전히 별개인 두 개의 인스턴스입니다. 하지만, 이들은 별개의 인스턴스이기 때문에, `cinema` 의 너비를 `2048` 로 설정해도, `hd` 에 저장된 너비에는 영향이 없으며, 이는 아래 그림에 나타낸 것과 같습니다:
+
+![value type copy](assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
+
+이 같은 동작은 열거체에도 적용됩니다:
+
+```swift
+enum CompassPoint {
+    case north, south, east, west
+    mutating func turnNorth() {
+        self = .north
+    }
+}
+var currentDirection = CompassPoint.west
+let rememberedDirection = currentDirection
+currentDirection.turnNorth()
+
+print("The current direction is \(currentDirection)")
+print("The remembered direction is \(rememberedDirection)")
+// "The current direction is north" 를 출력합니다.
+// "The remembered direction is west" 를 출력합니다.
+```
+
+`rememberedDirection` 에 `currentDirection` 의 값을 할당할 때는, 사실 해당 값의 복사본을 설정하는 것입니다. 이후에 `currentDirection` 값을 바꿔도 `rememberedDirection` 에 저장된 원래 값의 복사본에는 영향이 없습니다.
 
 ### Classes Are Reference Types (클래스는 참조 타입입니다)
 

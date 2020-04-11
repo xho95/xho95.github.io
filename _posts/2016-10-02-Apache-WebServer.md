@@ -60,13 +60,13 @@ It works!
 
 ### 아파치 웹 서버 환경 설정하기
 
-아파치의 기본 설정들을 변경하려면 **/private/etc/apache2/** 폴더에 있는 설정 파일들(***.conf**)을 수정하면 됩니다. 이 설정 파일들 중에서 가장 기본이 되는 것이 **httpd.conf** 파일입니다.[^docs-apache]
+아파치의 기본 설정들을 변경하려면 **/private/etc/apache2** 폴더에 있는 설정 파일들(**/*.conf**)을 수정하면 됩니다. 이 설정 파일들 중에서 가장 기본이 되는 것이 **httpd.conf** 파일입니다.[^docs-apache]
 
-> 참고로 맥에서 **/etc/** 폴더는 주로 환경 설정 파일들이 존재하는 곳입니다.[^webdir] **/etc/** 폴더에 대해서는 [macOS: 맥의 기본 디렉토리 구조 살펴보기](http://xho95.github.io/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html) 라는 포스트에서 좀 더 자세하게 설명해 두었습니다.
+> 참고로 맥에서 **/etc** 폴더는 주로 환경 설정 파일들이 존재하는 곳입니다.[^webdir] **/etc** 폴더에 대해서는 [macOS: 맥의 기본 디렉토리 구조 살펴보기](http://xho95.github.io/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html) 라는 포스트에서 좀 더 자세하게 설명해 두었습니다.
 
 #### DocumentRoot 폴더 변경하기
 
-앞에서 **index.html.en** 파일은 **/Library/WebServer/Documents/** 폴더에 있다고 했는데, 이 폴더는 기본으로 `DocumentRoot`로 지정되어 있습니다.
+앞에서 **index.html.en** 파일은 **/Library/WebServer/Documents** 폴더에 있다고 했는데, 이 폴더는 기본으로 `DocumentRoot`로 지정되어 있습니다.
 
 기본으로 지정된 `DocumentRoot`의 위치를 변경하려면 **httpd.conf** 파일을 열고 `DocumentRoot` 부분과 바로 밑 줄에 있는 `Directory` 부분을 변경하면 됩니다.
 
@@ -85,7 +85,7 @@ DocumentRoot "/Library/WebServer/Documents"
 
 `userdir`를 활성화한다는 것은 이름에서 알 수 있듯이 브라우저에서 `localhost/~username/` 처럼 자신의 계정으로 된 URL을 사용할 수 있게 한다는 의미입니다.
 
-`userdir`을 활성화하려면 **/private/etc/apache2/extra/** 폴더에 있는 **httpd-userdir.conf** 파일을 수정해야 합니다.
+`userdir`을 활성화하려면 **/private/etc/apache2/extra** 폴더에 있는 **httpd-userdir.conf** 파일을 수정해야 합니다.
 
 우선 해당 폴더로 가서 아래와 같은 명령으로 파일을 편집합니다.
 
@@ -122,7 +122,7 @@ Include /private/etc/apache2/users/*.conf
 
 1. **mod\_authz\_core**, **mod\_authz\_host**, **mod\_userdir** 이렇게 3개의 모듈이 필요합니다 : 이 작업은 **httpd.conf** 파일에서 설정합니다.
 2. 사용자의 홈 디렉토리에 `UserDir`로 설정된 **Sites** 라는 디렉토리를 추가해야 합니다. 이는 `~user` 요청에 응답하기 위해서입니다.
-3. **Sites** 디렉토리에 대해 기본 접근 방식을 지정해야 합니다. : 디렉토리를 `read-only`로 지정하기 위해서는 **/private/etc/apache2/users/** 폴더에 자신의 계정명으로 된 **username.conf** 파일을 만들어야 합니다.
+3. **Sites** 디렉토리에 대해 기본 접근 방식을 지정해야 합니다. : 디렉토리를 `read-only`로 지정하기 위해서는 **/private/etc/apache2/users** 폴더에 자신의 계정명으로 된 **username.conf** 파일을 만들어야 합니다.
 4. 그 외에 **httpd.conf** 파일에서 **/private/etc/apache2/extra/httpd-userdir.conf** 파일을 include 하는 코드도 주석을 제거해야 합니다 : 이 파일의 변경 사항을 적용하기 위해서입니다.
 
 일단 이 파일에서 `Include /private/etc/apache2/users/*.conf` 문장의 주석을 제거하고 저장합니다.
