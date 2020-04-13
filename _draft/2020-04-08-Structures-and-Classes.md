@@ -168,7 +168,7 @@ print("hd is still \(hd.width) pixels wide")
 
 `cinema` 에 `hd` 의 현재 값을 주면, `hd` 에 저장된 _값 (values)_ 이 새 `cinema` 인스턴스로 복사됩니다. 최종 결과는 동일한 수치 값을 가지지만 완전히 별개인 두 개의 인스턴스입니다. 하지만, 이들은 별개의 인스턴스이기 때문에, `cinema` 의 너비를 `2048` 로 설정해도, `hd` 에 저장된 너비에는 영향이 없으며, 이는 아래 그림에 나타낸 것과 같습니다:
 
-![value type copy](assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
+![an copy of the value type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
 
 이 같은 동작은 열거체에도 적용됩니다:
 
@@ -216,7 +216,7 @@ alsoTenEighty.frameRate = 30.0
 
 클래스는 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 둘 모두 실제로는 _동일한 (same)_ `VideoMode` 인스턴스에 대한 참조입니다. 사실상, 이들은 동일한 단일 인스턴스에 대한 두 개의 서로 다른 이름인 것이며, 이를 나타내면 아래 그림과 같습니다:
 
-![value type copy](assets/Swift/Swift-Programming-Language/Structures-and-Classes-reference-type-before-after.jpg)
+![before and after of an reference type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-reference-type-before-after.jpg)
 
 `tenEighty` 의 `frameRate` 속성을 검사해보면 실제 `VideoMode` 인스턴스가 갖고 있는 새 '프레임 재생 속도' 인 `30.0` 을 제대로 보고하는 것을 확인할 수 있습니다.
 
