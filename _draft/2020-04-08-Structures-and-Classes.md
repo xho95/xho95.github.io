@@ -20,7 +20,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 
 ### Comparing Structures and Classes (구조체와 클래스 비교하기)
 
-스위프트에서 구조체와 클래스는 공통 점이 아주 많습니다. 이들은 다음과 같습니다:
+스위프트의 구조체와 클래스는 공통점이 아주 많습니다. 다음과 같은 것들이 있습니다:
 
 * 값을 저장하기 위한 속성 정의하기
 * 기능을 제공하기 위한 메소드 정의하기
@@ -192,6 +192,42 @@ print("The remembered direction is \(rememberedDirection)")
 `rememberedDirection` 에 `currentDirection` 의 값을 할당할 때는, 사실 해당 값의 복사본을 설정하는 것입니다. 이후에 `currentDirection` 값을 바꿔도 `rememberedDirection` 에 저장된 원래 값의 복사본에는 영향이 없습니다.
 
 ### Classes Are Reference Types (클래스는 참조 타입입니다)
+
+값 타입과는 달리, _참조 타입 (reference types)_ 은 변수나 상수에 할당되거나 함수에 전달될 때 복사하지 _않습니다 (not)_. 복사하는 대신, 동일한 기존 인스턴스를 가리키는 참조를 사용합니다.
+
+다음 예제는, 위에서 정의한 `VideoMode` 클래스를 사용합니다:
+
+```swift
+let tenEighty = VideoMode()
+tenEighty.resolution = hd
+tenEighty.interlaced = true
+tenEighty.name = "1080i"
+tenEighty.frameRate = 25.0
+```
+
+이 예제에서는 새로운 상수인 `tenEighty` 를 선언하고 `VideoMode` 클래스의 새 인스턴스를 참조하도록 설정했습니다. 비디오 모드에는 이전에 있던 `1920` 너비 `1080` 폭의 'HD 해상도' 에 대한 복사본이 할당됩니다. '비월 주사 방식 (interlaced)' 인 것으로 설정되었고, 이름은 "`1080i`" 로 설정되며, '프레임 재생 속도 (frame rate)' 는 초당 `25.0` 프레임으로 설정되었습니다.
+
+다음으로, `tenEighty` 를 `alsoTenEighty` 라는, 새로운 상수에 할당하여, `alsoTenEighty` 의 프레임 속도를 수정합니다:
+
+```swift
+let alsoTenEighty = tenEighty
+alsoTenEighty.frameRate = 30.0
+```
+
+클래스는 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 둘 모두 실제로는 _동일한 (same)_ `VideoMode` 인스턴스에 대한 참조입니다. 사실상, 이들은 동일한 단일 인스턴스에 대한 두 개의 서로 다른 이름인 것이며, 이를 나타내면 아래 그림과 같습니다:
+
+![value type copy](assets/Swift/Swift-Programming-Language/Structures-and-Classes-reference-type-before-after.jpg)
+
+`tenEighty` 의 `frameRate` 속성을 검사해보면 실제 `VideoMode` 인스턴스가 갖고 있는 새 '프레임 재생 속도' 인 `30.0` 을 제대로 보고하는 것을 확인할 수 있습니다.
+
+```swift
+print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
+// "The frameRate property of tenEighty is now 30.0" 를 출력합니다.
+```
+
+이 예제는 참조 타입이 얼마나 더 이해하기 어려울 수 있는 지도 보여줍니다. `tenEighty` 와 `alsoTenEighty` 가 프로그램 코드에서 서로 멀리 떨어져 있다면, 비디오 모드를 바꾸는 모든 방법을 찾기가 여러울 수도 있습니다. `tenEighty` 를 사용하는 곳마다, `alsoTenEighty` 를 사용하는 코드도 생각하고 있어야 하며, 반대인 경우에도 그렇습니다. 이와는 대조적으로, 값 타입은 이해하기가 더 쉬운데 이는 동일한 값으로 상호 작용하는 모든 코드가 소스 파일 내에서 서로 가까이 있기 때문입니다.
+
+`tenEighty` 와 `alsoTenEighty` 가 변수가 아닌, _상수 (constants)_ 로 선언되었음에도 주목하기 바랍니다. 하지만, `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 는 여전히 바꿀 수 있는데 이는 `tenEighty` 와 `alsoTenEighty` 상수 자신들의 값은 실제로 바뀐게 없기 때문입니다. `tenEighty` 와 `alsoTenEighty` 스스로는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-대신에, 이 둘 모두 그 속을 들여다보면 `VideoMode` 인스턴스를 _참조하고 (refer)_ 있습니다. 실제로는 `VideoMode` 의 `frameRate` 속성이 바뀌는 것이지, 이 `VideoMode` 를 참조하고 있는 상수의 값이 바뀌는 것이 아닙니다.
 
 #### Identity Operators (식별 연산자)
 
