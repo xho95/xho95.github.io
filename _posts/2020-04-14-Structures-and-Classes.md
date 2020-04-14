@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Structures and Classes (구조체와 클래스)"
-date:   2020-04-08 10:00:00 +0900
+date:   2020-04-14 10:00:00 +0900
 categories: Swift Language Grammar Structure Class
 ---
 
