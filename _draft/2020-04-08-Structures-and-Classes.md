@@ -231,6 +231,26 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 #### Identity Operators (식별 연산자)
 
+클래스는 참조 타입이기 때문에, 여러 개의 상수와 변수가 참조하는 대상이 실제로는 클래스의 동일한 단일 인스턴스일 수가 있습니다. (이같은 일은 구조체나 열거체에는 해당하지 않는데, 왜냐면 상수나 변수에 할당되거나 함수에 전달될 때, 항상 복사되기 때문입니다.)
+
+때때로 두 상수나 변수가 참조하는 대상이 정확하게 클래스의 동일 인스턴스인지를 확인할 수 있다면 유용할 것입니다. 이를 위해, 스위프트는 두 개의 식별 연산자를 제공합니다:
+
+* 동일함 (identical to) (`===`)
+* 동일하지 않음 (not identical to) (`!==`)
+
+이 연산자들을 사용하면 두 개의 상수나 변수가 동일한 단일 인스턴스를 참조하고 있는지를 검사할 수 있습니다.
+
+```swift
+if tenEighty === alsoTenEighty {
+  print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
+}
+// "tenEighty and alsoTenEighty refer to the same VideoMode instance." 를 출력합니다.
+```
+
+_동일함 (identical to)_ (세 개의 등호 기호, 또는 `===` 로 표시함) 이 의미하는 것은 _같음 (equal to)_ (두 개의 등호 기호, 또는 `==` 로 표시함) 과 같지 않습니다. _동일함 (identical to)_ 이 의미하는 것은 클래스 타입의 두 상수나 변수가 정확하게 동일한 클래스 인스턴스를 참조하고 있다는 것입니다. _같음 (equal to)_ 이 의미하는 것은 두 인스턴스의 값이 같거나 동등하다고 여겨진다는 것으로, 이는 _같은 (equal)_ 에 대한 어떤 적절한 의미로써, 타입 설계자에 의해 정의된 것에 해당합니다.
+
+자신 만의 커스텀 구조와 클래스를 정의 할 때, 두 인스턴스가 동등한 것으로 결정하는 것은 사용자의 책임입니다. == 및! = 연산자의 자체 구현을 정의하는 프로세스는 동등 연산자에 설명되어 있습니다.
+
 #### Pointers (포인터)
 
 ### 참고 자료
