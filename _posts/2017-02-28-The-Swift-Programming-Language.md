@@ -24,7 +24,7 @@ categories: Swift Programming Language Grammar
 * [Functions (함수)]
 * [Closures (잠금 블럭)](http://xho95.github.io/swift/language/grammar/closure/2020/03/03/Closures.html)
 * [Enumerations (열거체)]
-* [Structures and Classes (구조체와 클래스)]
+* [Structures and Classes (구조체와 클래스)](http://xho95.github.io/swift/language/grammar/structure/class/2020/04/14/Structures-and-Classes.html)
 * [Properties (속성)]
 * [Methods (메소드)]
 * [Subscripts (첨자 연산)](http://xho95.github.io/swift/language/grammar/subscripts/2020/03/15/Subscripts.html)
