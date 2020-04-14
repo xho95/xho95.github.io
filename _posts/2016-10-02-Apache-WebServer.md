@@ -15,7 +15,7 @@ categories: macOS Apache WebServer mod_wsgi
 
 맥에서 [아파치(apache) 웹서버](http://httpd.apache.org) [^apache]를 실행하는 방법은 인터넷에 자료가 꽤 있습니다. [^projectjo]  [^acronym]  [^superakira] 하지만, 많은 경우 설명이 맥 OS 요세미티(Yosemite) 이전 기준이라 내용이 지금 환경에는 안맞는 경우가 많습니다.
 
-macOS 시에라(Sierra)가 출시된 현 시점에서 아파치 웹서버 관련 참고 자료 중에서는 **limslee**님이 [Develop in Mac](http://devmac.tistory.com/) 블로그에 정리한 [맥에 웹서버(Apache, PHP) 구동하기 - 요세미티 기준](http://devmac.tistory.com/11)이라는 글이 가장 정확하게 설명되어 있는 것 같습니다.[^devmac]
+macOS 시에라(Sierra)가 출시된 현 시점에서 아파치 웹서버 관련 참고 자료 중에서는 **limslee** 님이 [Develop in Mac](http://devmac.tistory.com/) 블로그에 정리한 [맥에 웹서버(Apache, PHP) 구동하기 - 요세미티 기준](http://devmac.tistory.com/11)이라는 글이 가장 정확하게 설명되어 있는 것 같습니다.[^devmac]
 
 영어로 된 글 중에서는 [Apple Communities](https://discussions.apple.com/)의 [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083)라는 글도 정리가 잘 된 것 같습니다.[^apple] 이 글에 따르면 macOS 요세미티에서 웹서버 설정에 대한 중요한 변화가 일어났다고 합니다.
 
@@ -48,9 +48,8 @@ $ sudo apachectl start
 
 아파치를 실행한 후 브라우저에서 `localhost` 또는 `127.0.0.1`로 접속하면 큰 문제가 없다면 브라우저 창에 아래와 같은 결과를 볼 수 있습니다.
 
-```
-It works!
-```
+
+![Apache Result](https://xho95.github.io/assets/Apache/apache-result.jpg)
 
 이것은 브라우저가 기본(default) index 페이지를 열었기 때문입니다. 기본 index 페이지는 **/Library/WebServer/Documents** 폴더에 존재하는데, 이는 default로 해당 폴더가 `DocumentRoot`로 지정되어 있기 때문입니다.
 
