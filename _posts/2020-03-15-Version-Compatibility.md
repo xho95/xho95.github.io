@@ -26,7 +26,7 @@ Xcode 11.4 로 스위프트 4 와 스위프트 4.2 의 코드를 빌드할 때, 
 
 [^Version-Compatibility]: 이 글에 대한 원문은 [Version Compatibility](https://docs.swift.org/swift-book/GuidedTour/Compatibility.html) 에서 확인할 수 있습니다.
 
-[^targets]: 엑스코드 에서 하나의 '타겟 (target)' 이란 하나의 '제품 (product) 을 정의한 것' 입니다. 하나의 프로젝트에서도 타겟은 여러 개가 될 수 있습니다. 좀 더 자세한 내용은 [Xcode Target](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html) 문서를 참고하기 바랍니다.
+[^targets]: 엑스코드 에서 하나의 '대상 (target; 타켓)' 이란 하나의 '제품 (product) 을 정의한 것' 입니다. 하나의 프로젝트에서도 타겟은 여러 개가 될 수 있습니다. 좀 더 자세한 내용은 [Xcode Target](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html) 문서를 참고하기 바랍니다.
 
 [^swift-runtime]: 런타임 (runtime) 은 '런타임 라이브러리' 를 의미하는데, 위키피디아의 [Swift (programming language)](https://en.wikipedia.org/wiki/Swift_(programming_language)) 항목에 따르면, 2019년 3월에 공개된 스위프트 5 부터는 ABI 안전성 (ABI Stability)[^ABI-Stability] 을 지원하면서 스위프트 런타임이 애플 운영체제 속에 포함되었다고 합니다. 즉 최신 버전의 스위프트 런타임을 사용하려면 운영체제를 업데이트하는 것이 필요합니다. 스위프트의 런타임에 대한 더 많은 내용은 [The Swift Runtime](https://github.com/apple/swift/blob/master/docs/Runtime.md) 라는 글을 참고하기 바랍니다.
 
