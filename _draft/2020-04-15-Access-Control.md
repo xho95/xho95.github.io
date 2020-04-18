@@ -39,11 +39,20 @@ _소스 파일 (source file)_ 은 모듈 내에 있는 단일한 스위프트 �
 * _file-private access (파일-개인 접근)_ 은 엔티티의 사용을 자신이 정의된 소스 파일로만 제한합니다. 'file-private 접근' 을 사용하면 특정 기능의 세부 구현을 숨기면서 그 세부 정보를 한 파일 내에서만 사용할 수 있도록 합니다.
 * _private access (개인 접근)_ 은 엔티티의 사용을 그를 둘러싼 '선언 (declaration)' 과, 동일 파일 내의 그 선언의 '확장 (extensions)' 으로만 제한합니다. 'private 접근' 을 사용하면 특정 기능의 세부 구현을 숨기면서 그 세부 정보를 단일 선언 내에서만 사용할 수 있도록 합니다.
 
-'open (열린) 접근' 은 가장 높은 (제한이 가장 적은; least restrictive) 접근 수준이며 'private 접근' 은 가장 낮은 (제한이 가장 많은; most restrictive) 접근 수준입니다.
+'open (열린) 접근' 은 가장 높은 (가장 적게 제한된; least restrictive) 접근 수준이며 'private 접근' 은 가장 낮은 (가장 많이 제한된; most restrictive) 접근 수준입니다.
 
 'open (열린) 접근' 은 클래스와 클래스 멤버에만 적용되어, 모듈 외부의 코드에서 하위 클래스를 만들고 '재정의 (override)' 를 할 수 있게 한다는 점이 'public access (공공 접근)' 과 다른 점으로, 이는 아래의 [Subclassing (하위 클래스)](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html#ID16) 에서 설명합니다. 클래스를 'open' 으로 명시적으로 표시한다는 것은 그 클래스를 상위 클래스로 사용하는 다른 모듈의 코드에 대한 영향을 이미 고려했으며, 그에 따라 클래스 코드를 설계했음을 지시하는 것입니다.
 
-#### Guiding Principle of Access Levels (접근 수준의 원칙)
+#### Guiding Principle of Access Levels (접근 수준에 대한 지침)
+
+스위프트의 접근 수준에 적용되는 '전반적인 지침 (overall guiding principle)' 은 다음과 같습니다: _어떤 엔티티도 더 낮은 (더 제한된; more restrictive) 접근 수준을 갖고 있는 엔티티로 정의될 수는 없습니다._
+
+예를 들면 다음과 같습니다:
+
+* 'public variable (공공 변수)' 는 'internal (내부)', 'file-private (파일-개인)', 또는 'private (개인)' 타입을 가지는 것으로 정의할 수 없는데, 이는 공공 변수가 사용되는 모든 곳마다 그 타입을 사용할 수 있는 것은 아니기 때문입니다.
+* '함수' 는 그의 매개 변수와 반환 값보다 더 높은 접근 수준을 가질 수 없는데, 이는 함수를 사용할 때 주위 코드에서 그 성분 요소를 사용할 수 없는 상황도 있을 수 있기 때문입니다.
+
+언어의 서로 다른 부분을 위한 이 지침이 내포하고 있는 의미는 아래에서 자세히 다루도록 합니다:
 
 #### Default Access Levels (기본 접근 수준)
 
