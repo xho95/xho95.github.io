@@ -36,8 +36,8 @@ _소스 파일 (source file)_ 은 모듈 내에 있는 단일한 스위프트 �
 
 * _open access (공개 접근)_ 과 _public access (공용 접근)_ 은 해당 엔티티를 이것이 정의된 모듈의 어떤 소스 파일에서도 사용할 수 있도록 하며, 또한 이 정의된 모듈을 불러온 또다른 모듈의 소스 파일에서도 사용할 수 있도록 합니다. 'open 이나 public 접근' 은 일반적으로 프레임웍의 공용 인터페이스를 지정할 때 사용합니다. 'open 접근' 과 'public 접근' 의 차이점은 아래에 따로 설명합니다.
 * _internal access (내부 접근)_ 은 해당 엔티티를 이것이 정의된 모듈의 어떤 소스 파일에서도 사용할 수 있도록 하지만, 그 모듈 외부에 있다면 어떤 소스 파일에서도 접근하지 못하도록 합니다. 'internal 접근' 은 일반적으로 앱이나 프레임웍의 내부 구조를 정의할 때 사용합니다.
-* _file-private access (파일-개인 접근)_ 은 엔티티의 사용을 자신이 정의된 소스 파일로만 제한합니다. 'file-private 접근' 을 사용하면 특정 기능의 세부 구현을 숨기면서 그 세부 정보를 한 파일 내에서만 사용할 수 있도록 합니다.
-* _private access (개인 접근)_ 은 엔티티의 사용을 그를 둘러싼 '선언 (declaration)' 과, 동일 파일 내의 그 선언의 '확장 (extensions)' 으로만 제한합니다. 'private 접근' 을 사용하면 특정 기능의 세부 구현을 숨기면서 그 세부 정보를 단일 선언 내에서만 사용할 수 있도록 합니다.
+* _file-private access (파일-전용 접근)_ 은 엔티티의 사용을 자신이 정의된 소스 파일로만 제한합니다. 'file-private 접근' 을 사용하면 특정 기능의 세부 구현을 숨기면서 그 세부 정보를 한 파일 내에서만 사용할 수 있도록 합니다.
+* _private access (개인 전용 접근)_ 은 엔티티의 사용을 그를 둘러싼 '선언 (declaration)' 과, 동일 파일 내의 그 선언의 '확장 (extensions)' 으로만 제한합니다. 'private 접근' 을 사용하면 특정 기능의 세부 구현을 숨기면서 그 세부 정보를 단일 선언 내에서만 사용할 수 있도록 합니다.
 
 'open (공개) 접근' 은 가장 높은 (가장 적게 제한된; least restrictive) 접근 수준이며 'private 접근' 은 가장 낮은 (가장 많이 제한된; most restrictive) 접근 수준입니다.
 
@@ -49,7 +49,7 @@ _소스 파일 (source file)_ 은 모듈 내에 있는 단일한 스위프트 �
 
 예를 들면 다음과 같습니다:
 
-* 'public variable (공용 변수)' 는 'internal (내부)', 'file-private (파일-개인)', 또는 'private (개인)' 타입을 가지는 것으로 정의할 수 없는데, 이는 공용 변수가 사용되는 모든 곳마다 그 타입을 사용할 수 있는 것은 아니기 때문입니다.
+* 'public variable (공용 변수)' 는 'internal (내부)', 'file-private (파일-전용)', 또는 'private (개인 전용)' 타입을 가지는 것으로 정의할 수 없는데, 이는 공용 변수가 사용되는 모든 곳마다 그 타입을 사용할 수 있는 것은 아니기 때문입니다.
 * '함수' 는 그의 매개 변수와 반환 값보다 더 높은 접근 수준을 가질 수 없는데, 이는 함수를 사용할 때 주위 코드에서 그 성분 요소를 사용할 수 없는 상황도 있을 수 있기 때문입니다.
 
 언어의 서로 다른 부분들에 대해서 이 지침이 의미하는 바는 아래에서 자세히 다루도록 합니다:
@@ -60,13 +60,13 @@ _소스 파일 (source file)_ 은 모듈 내에 있는 단일한 스위프트 �
 
 #### Access Levels for Single-Target Apps (단일-대상 앱을 위한 접근 수준)
 
-단순한 '단일-대상 앱 (single-target app)' 을 작성할 때는, 앱 코드는 일반적으로 앱 내부로만 한정되므로 앱 모듈 외부에서 사용할 수 있게끔 만들 필요가 없습니다. 기본 접근 수준은 이러한 요구 사항에 이미 해당됩니다. 그러므로, 접근 수준을 따로 지정할 필요가 없는 것입니다. 하지만, 코드 일부를 'file private (파일 개인)' 이나 'private (개인)' 으로 표시하면 앱 모듈 내의 다른 코드로부터 세부 구현 정보를 숨길 수도 있습니다.
+단순한 '단일-대상 앱 (single-target app)' 을 작성할 때는, 앱 코드는 일반적으로 앱 내부로만 한정되므로 앱 모듈 외부에서 사용할 수 있게끔 만들 필요가 없습니다. 기본 접근 수준은 이러한 요구 사항에 이미 해당됩니다. 그러므로, 접근 수준을 따로 지정할 필요가 없는 것입니다. 하지만, 코드 일부를 'file private (파일 전용)' 이나 'private (개인 전용)' 으로 표시하면 앱 모듈 내의 다른 코드로부터 세부 구현 정보를 숨길 수도 있습니다.
 
 #### Access Levels for Frameworks (프레임웍을 위한 접근 수준)
 
 프레임웍을 개발할 때는, 그 프레임웍의 공용-목적의 인터페이스를 'open (공개)' 나 '공용 (public)' 으로 표시해서 다른 모듈, 가령 그 프레임웍을 불러온 앱 같은 것 등에서 볼 수 있고 접근할 수 있도록 해야합니다. 이러한 공용-목적의 인터페이스를 그 프레임웍에 대한 응용 프로그래밍 인터페이스 (또는 API; Application Programming Interface) 라고 합니다.
 
-> 프레임웍의 어떤 'internal (내부)' 세부 구현이라도 기본 접근 수준인 'internal (내부)' 를 그대로 사용할 수도 있고, 프레임웍의 다른 일부 'internal (내부)' 코드로부터 숨길 목적으로 'private (개인)' 이나 'file private (파일 개인)' 으로 표시할 수도 있습니다. 엔티티를 'open (공개)' 나 'public (공용)' 으로 표시하는 것은 오직 그것이 프레임웍의 'API' 일부가 될 경우에만 하도록 합니다.
+> 프레임웍의 어떤 'internal (내부)' 세부 구현이라도 기본 접근 수준인 'internal (내부)' 를 그대로 사용할 수도 있고, 프레임웍의 다른 일부 'internal (내부)' 코드로부터 숨길 목적으로 'private (개인 전용)' 이나 'file private (파일 전용)' 으로 표시할 수도 있습니다. 엔티티를 'open (공개)' 나 'public (공용)' 으로 표시하는 것은 오직 그것이 프레임웍의 'API' 일부가 될 경우에만 하도록 합니다.
 
 #### Access Levels for Unit Test Targets (단위 테스트 대상을 위한 접근 수준)
 
@@ -74,7 +74,53 @@ _소스 파일 (source file)_ 은 모듈 내에 있는 단일한 스위프트 �
 
 ### Access Control Syntax (접근 제어 구문 표현)
 
+'엔티티' 에 대한 접근 수준을 정의하려면 엔티티 선언의 시작 부분에 `open`, `public`, `internal`, `fileprivate`, 또는 `private` 수정자 중 하나를 붙이면 됩니다.
+
+```swift
+public class SomePublicClass {}
+internal class SomeInternalClass {}
+fileprivate class SomeFilePrivateClass {}
+private class SomePrivateClass {}
+
+public var somePublicVariable = 0
+internal let someInternalConstant = 0
+fileprivate func someFilePrivateFunction() {}
+private func somePrivateFunction() {}
+```
+
+따로 지정하지 않는다면, 기본 접근 수준은 'internal (내부)' 이며, 이는 [Default Access Levels (기본 접근 수준)](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html#ID7) 에서 설명한 바 있습니다. 이것은 `SomeInternalClass` 와 `someInternalConstant` 에는 명시적인 '접근-수준 수정자 (access-level modifier)' 를 쓰지 않아도 되며, 그래도 여전히 'internal (내부)' 접근 수준을 가진다는 것을 의미합니다.
+
 ### Custom Types (사용자 정의 타입)
+
+직접 정의한 타입에 대해서 접근 수준을 명시적으로 지정하고 싶으면, 타입을 정의하는 시점에 이를 하도록 합니다. 그러면 이제 접근 수준이 허용되는 곳에서 이 새로운 타입을 사용할 수 있습니다. 예를 들어, 'file-private (파일-전용)' 클래스를 정의하면, 이 'file-private (파일-전용)' 클래스를 정의한 소스 파일 내에서만, 속성의 타입이나, 함수의 매개 변수 또는 반환 값으로 사용할 수 있습니다.
+
+타입의 접근 제어 수준은 그 타입 _멤버 (members)_ (속성, 메소드, 초기자, 그리고 첨자 연산) 의 기본 접근 수준에도 영향을 줍니다. 타입의 접근 수준을 'private (개인 전용)' 이나 'file private (파일 전용)' 으로 정의하면, 멤버의 기본 접근 수준도 'private (개인 전용)' 이나 'file private (파일 전용)' 이 됩니다. 타입의 접근 수준을 'internal (내부)' 나 'public (공용)' 으로 정의하면 (아니면 접근 수준을 명시적으로 지정하지 않고 기본 접근 수준인 'internal (내부)' 를 사용할 경우), 타입 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
+
+> 'public type (공용 타입)' 은 기본적으로 'internal members (내부 멤버)' 를 가지지, 'public members (공용 멤버)' 를 가지지 않습니다. 타입 멤버를 'public (공용)' 으로 만들려면, 명시적으로 표시해야 합니다. 이런 요구 사항은 타입을 위한 공용-목적의 API 는 직접 선택해야 하는 것임을 분명하게 하며, 내부에서 동작하는 타입을 실수로 공용 API 로 드러내는 것을 막아줍니다.
+
+```swift
+public class SomePublicClass {                  // 명시적인 공용 클래스
+  public var somePublicProperty = 0             // 명시적인 공용 클래스 멤버
+  var someInternalProperty = 0                  // 암시적인 내부 클래스 멤버
+  fileprivate func someFilePrivateMethod() {}   // 명시적인 파일-전용 클래스 멤버
+  private func somePrivateMethod() {}           // 명시적인 개인 전용 클래스 멤버
+}
+
+class SomeInternalClass {                       // 암시적인 내부 클래스
+  var someInternalProperty = 0                  // 암시적인 내부 클래스 멤버
+  fileprivate func someFilePrivateMethod() {}   // 명시적인 파일-전용 클래스 멤버
+  private func somePrivateMethod() {}           // 명시적인 개인 전용 클래스 멤버
+}
+
+fileprivate class SomeFilePrivateClass {        // 명시적인 파일-전용 클래스
+  func someFilePrivateMethod() {}               // 암시적인 파일-전용 클래스 멤버
+  private func somePrivateMethod() {}           // 명시적인 개인 전용 클래스 멤버
+}
+
+private class SomePrivateClass {                // 명시적인 개인 전용 클래스
+  func somePrivateMethod() {}                   // 암시적인 개인 전용 클래스 멤버
+}
+```
 
 #### Tuple Types (튜플 타입)
 
