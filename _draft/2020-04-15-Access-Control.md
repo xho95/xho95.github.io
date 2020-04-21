@@ -177,6 +177,38 @@ public enum CompassPoint {
 
 ### Subclassing (하위 클래스)
 
+현재 접근 영역에서 접근할 수 있는 클래스라면 그리고 동일 모듈에서 정의된 하위 클래스라면 어떤 클래스에 대해서도 하위 클래스를 만들 수 있습니다. 또한 다른 모듈에서 정의한 'open (공개)' 클래스에 대해서도 하위 클래스를 만들 수 있습니다. 하위 클래스는 상위 클래스보다 더 높은 접근 수준을 가질 수 없습니다-예를 들어, 'internal (내부)' 인 상위 클래스에 대해서 'public (공용)' 인 하위 클래스를 작성할 수는 없습니다.
+
+그와 더불어, 동일한 모듈에서 정의한 클래스에 대해서는, 어떤 클래스 멤버 (메소드, 속성, 초기자, 그리고 첨자 연산) 라도 정해진 접근 영역에서 보이기만 한다면 '재정의 (override)' 를 할 수 있습니다. 다른 모듈에서 정의한 클래스에 대해서는, 'open (공개)' 클래스 멤버에 대해 '재정의' 할 수 있습니다.
+
+'재정의' 를 하면 상속된 클래스 멤버를 상위 클래스 버전에서 보다 더 접근하기 쉽게 만들 수 있습니다. 아래 예제에 있는, 클래스 `A` 는 'public (공용)' 클래스로 `someMethod()` 라는 'file-private (파일-전용)' 메소드를 가지고 있습니다. 클래스 `B` 는 `A` 의 하위 클래스이며, 접근 수준은 감소해서 "internal (내부)" 입니다. 그럼에도 불구하고, 클래스 `B` 는 `someMethod()` 의 접근 수준을 "internal (내부)" 인 것으로 '재정의' 했는데, 이는 `someMethod()` 의 원래 구현보다 _높은 (higher)_[^higher] 것입니다:
+
+```swift
+public class A {
+  fileprivate func someMethod() {}
+}
+
+internal class B: A {
+  override internal func someMethod() {}
+}
+```
+
+하위 클래스 멤버가 하위 클래스 멤버보다 더 낮은 접근 권한을 가지는 상위 클래스의 멤버를 호출하는 것도 가능한데, 이는 상위 클래스 멤버에 대한 호출이 허용된 접근 수준 영역 내에서 이루어질 때 가능한 것입니다. (다시 말해서, 동일한 소스 파일 내에서 상위 클래스의 'file-private (파일-전용)' 멤버를 호출하는 것, 또는 동일한 모듈 내에서 상위 클래스의 'internal (내부)' 멤버를 호출하는 것, 등이 가능합니다):
+
+```swift
+public class A {
+  fileprivate func someMethod() {}
+}
+
+internal class B: A {
+  override internal func someMethod() {
+    super.someMethod()
+  }
+}
+```
+
+상위 클래스인 `A` 와 하위 클래스인 `B` 가 동일한 소스 파일에서 정의되었기 때문에, `someMethod()` 의 `B` 구현부에서 `super.someMethod()` 를 호출하는 것은 유효합니다.
+
 ### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 및 첨자 연산)
 
 #### Getters and Setters ('게터' 와 '세터')
@@ -208,3 +240,5 @@ public enum CompassPoint {
 [^function-access-level]: '함수가 계산한 접근 수준' 과 '해당 영역의 기본적인 의미' 가 같아야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. 즉, 함수의 접근 수준을 계산해보니 'private' 일 때는, 반드시 함수의 정의에 'private' 을 써줘야 한다는 것 입니다. 그렇게 하지 않으면, '함수가 계산한 접근 수준 (private)' 과 '해당 영역의 기본적인 의미 (internal)' 가 다르므로, 컴파일이 안되게 됩니다.
 
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 '경우 값 (case)' 마다 '원시 값 (raw value)' 과 '관련 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 '경우 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. 관련 값은 '경우 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 '경우 값' 은 `"Sun rise"` 가 됩니다.
+
+[^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
