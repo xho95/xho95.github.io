@@ -59,7 +59,7 @@ categories: Swift Programming Language Grammar
 
 ### Revision History (수정 이력)
 
-* Document Revision History (문서 수정 이력)
+* Document Revision History (문서 개정 이력)
 
 ### 참고 자료
 

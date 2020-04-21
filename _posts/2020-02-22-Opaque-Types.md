@@ -126,11 +126,11 @@ print(trapezoid.draw())
 // *
 ```
 
-이 예제의 `makeTrapezoid()` 함수는 반환 타입을 `some Shape` 으로 선언합니다; 그로 인해, 명확한 타입을 지정하지 않고도 `Shape` 프로토콜을 따르는 임의의 타입으로 반환하게 됩니다. `makeTrapezoid()` 함수를 이런 식으로 작성하는 것은 공용 인터페이스의 기본적인 측면-반환하는 값이 도형이라는 것-을 표한하게 합니다. 공용 인터페이스에서 도형을 만들어 내는 특정 타입을 만들지 않아도 됩니다. 이 구현에서는 두 개의 삼각형과 한 개의 정사각형을 사용했지만, 함수를 재작성해서 다른 방법으로 사다리꼴을 그리도록 만들 수 있으며 이 때 반환 타입을 변경할 필요는 없습니다.
+이 예제에 있는 `makeTrapezoid()` 함수는 반환 타입을 `some Shape` 이라고 선언하고 있습니다; 그 결과, 함수에서 '명확한 타입' 을 지정하지 않았음에도, `Shape` 프로토콜을 준수하는 어떤 주어진 타입의 값을 반환합니다. `makeTrapezoid()` 함수를 이런 식으로 작성하면 '공용 인터페이스' 의 근본적인 부분-반환하는 값이 도형이라는 것-을 표현 하면서도 '공용 인터페이스' 가 만드는 도형의 타입을 지정하지 않아도 됩니다. 이 구현에서는 두 개의 삼각형과 한 개의 정사각형을 사용했지만, 다양한 다른 방법으로 사다리꼴을 그리도록 함수를 새로 작성할 수도 있으며 이 때 반환 타입은 바꾸지 않아도 됩니다.
 
-이 예제는 'opaque (불투명한)' 반환 타입이 'generic (일반화된)' 타입의 반대 방식이라는 것을 강조해서 보여줍니다. `makeTrapezoid()` 내부의 코드는 타입이 `Shape` 프로토콜을 준수하기만 하면 어떤 타입이든 반환할 수 있는데, generic (일반화된) 함수를 호출하는 코드도 이와 같습니다. 함수를 호출하는 코드는 general (일반화된) 방법으로 작성해야 하는데, 그래서 generic (일반화된) 함수의 구현과 같이, `makeTrapezoid()` 가 반환하는 모든 `Shape` 을 사용할 수 있습니다.
+이 예제가 강조하는 것은 'opaque (불투명한)' 반환 타입은 'generic (일반화된)' 타입의 반대에 해당한다는 것입니다. `makeTrapezoid()` 내부 코드는, 타입이 `Shape` 프로토콜을 준수하기만 하면, 필요한 경우 어떤 타입이든 반환할 수 있으며, 이는 'generic (일반화된)' 함수를 호출하는 코드에서 그렇게 하는 것과 유사합니다. 함수를 호출하는 코드는, '일반화된 함수 (generic function)' 가 그렇듯이, '일반화된 방법 (general way)' 으로 작성해야 하는데, 그렇게 해야 `makeTrapezoid()` 가 반환하는 어떤 `Shape` 과도 작동할 수 있기 때문입니다.
 
-Opaque 반환 타입을 generics 과 결합할 수도 있습니다. 아래의 코드에 있는 두 함수는 모두 `Shape` 프로토콜을 따르는 `some` (어떤) 타입을 반환합니다.
+'opaque (불투명한)' 반환 타입을 'generics (일반화)' 와 결합할 수도 있습니다. 아래 코드에 있는 두 개의 함수는 둘 다 `Shape` 프로토콜을 준수하는 'some (어떤)' 타입의 값을 반환합니다.
 
 ```swift
 func flip<T: Shape>(_ shape: T) -> some Shape {
@@ -152,20 +152,20 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-이 예제의 `opaqueJoinedTriangles` 값은 이 장 앞의 **Opaque 타입이 해결하는 문제** 부분에서 generics 를 사용한 예제에 있는 `joinedTriangles` 와 같습니다. 하지만 그 때와는 달리, `flip(_:)` 과 `join(_:_:)` 은 일반화된 (generics) 도형 연산이 반환하는 실제 타입을 opaque 반환 타입으로 감싸서, 보이지 않도록 합니다. 두 함수 모두 의존하는 타입이 genenric 이므로 generic 이며, 함수에 전달되는 타입 매개 변수는 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보로 전달됩니다.
+이 예제에 있는 `opaqueJoinedTriangles` 의 값은 이 장 앞에 있는 [The Problem That Opaque Types Solve (불투명한 타입이 해결하는 문제)](#the-problem-that-opaque-types-solve-불투명한-타입이-해결하는-문제) 부분의 'generics 예제' 에 있는 `joinedTriangles` 과 같습니다. 하지만, 그 예제의 값과는 달리, `flip(_:)` 과 `join(_:_:)` 은 '일반화된 (generics) 도형 연산' 이 반환하는 실제 타입을 'opaque 반환 타입' 으로 감싸서, 타입이 드러나는 것을 막아줍니다. 두 함수 모두 'generic' 에 의존하므로 'generic' 타입이며, 함수의 타입 매개 변수를 통해 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
 
-Opaque 반환 타입을 가지는 함수가 반환을 여러 곳에서 하는 경우, 모든 반환 값들은 반드시 동일한 타입을 가져야 합니다. generic 함수의 경우 반환 타입으로 함수의 generic 타입 매개 변수를 사용할 수는 있지만, 그래도 여전히 단 하나의 타입이어야 합니다. 예를 들어, 아래에 도형을 뒤집는 함수의 _잘못된_ 버전이 있는데 특수한 경우에는 square (정사각형) 을 반환합니다:
+'opaque (불투명한)' 반환 타입을 가지는 함수가 반환을 여러 곳에서 하는 경우, 모든 반환 가능한 값들은 반드시 타입이 같아야 합니다. '일반화된 함수 (generic function)' 에 대해서, 반환 타입으로 함수의 일반화된 타입 매개 변수를 사용할 수는 있지만, 그래도 여전히 단일한 타입이어야만 합니다. 예를 들어, 다음에 나타낸 도형 뒤집기 함수의 _무효한 (invalid)_ 버전은 특수한 경우인 '정사각형 (square)' 에 대한 내용을 포함하고 있습니다:
 
 ```swift
 func invalidFlip<T: Shape>(_ shape: T) -> some Shape {
   if shape is Square {
-    return shape                      // Error: return types doesn't match
+    return shape                      // Error: 에러, 반환 타입이 일치하지 않습니다.
   }
-  return FlippedShape(shape: shape)   // Error: return types doesn't match
+  return FlippedShape(shape: shape)   // Error: 에러, 반환 타입이 일치하지 않습니다.
 }
 ```
 
-이 함수는 `Square` 로 호출하면 `Square` 를 반환하고, 그 외에는 `FlippedShape` 을 반환합니다. 이는 반환 값은 하나의 타입이어야 한다는 요구 사항을 위배하며 따라서 `invalidFlip(_:)` 는 잘못된 것입니다. `invalidFlip(_:)` 을 수정하는 한 가지 방법은 square (정사각형) 이라는 특수한 경우를 `FlippedShape` 의 구현부로 옮겨서, 항상 `FlippedShape` 값을 반환하도록 하는 것입니다:
+이 함수를 호출할 때 `Square` 를 사용하면, `Square` 를 반환합니다; 그 외에는, `FlippedShape` 을 반환합니다. 이는 반환 값은 단 하나의 타입이어야 한다는 요구 사항과 충돌하며 `invalidFlip(_:)` 을 무효한 코드로 만듭니다. `invalidFlip(_:)` 을 고치는 한 가지 방법은 '정사각형 (square)' 이라는 특수한 경우를 `FlippedShape` 의 구현으로 옮겨서, 함수가 항상 `FlippedShape` 값을 반환하게 만드는 것입니다:
 
 ```swift
 struct FlippedShape<T: Shape>: Shape {
@@ -180,7 +180,7 @@ struct FlippedShape<T: Shape>: Shape {
 }
 ```
 
-항상 하나의 타입으로 반환해야 하는 요구 사항이 있다고 해서 opaque 반환 타입에 generics 를 쓸 수 없는 것은 아닙니다. 다음의 함수는 타입 매개 변수를 반환 값의 실제 타입에 통합하는 예입니다:
+항상 단일한 타입을 반환해야 한다는 요구 사항이 'opaque (불투명한)' 반환 타입에 'generics (일반화)' 를 사용하지 못하게 하는 것은 아닙니다. 다음 예제에 있는 함수는 타입 매개 변수를 반환하는 값의 실제 타입에 통합하는 방법을 보여줍니다:
 
 ```swift
 func `repeat`<T: Shape>(shape: T, count: Int) -> some Collection {
@@ -188,13 +188,13 @@ func `repeat`<T: Shape>(shape: T, count: Int) -> some Collection {
 }
 ```
 
-이 경우 반환 값의 실제 타입은 `T` 에 따라 달라집니다: 어떤 도형이 전달 되더라도, `repeat(shape:count:)` 는 해당 도형의 배열을 만들어 반환합니다. 그럼에도 불구하고 반환 값의 실제 타입은 항상 `[T]` 로 동일하므로, opaque 반환 타입을 가지는 함수는 단 한가지 타입의 반환 값을 가져야 한다는 요구 사항을 만족하고 있습니다.
+이 경우에, 반환 값의 실제 타입은 `T` 에 달려 있습니다: 어떤 도형이 전달 되더라도, `repeat(shape:count:)` 는 해당 도형의 배열을 생성해서 반환합니다. 그럼에도 불구하고, 반환 값의 실제 타입은 항상 동일하게 `[T]` 이므로, 'opaque (불투명한)' 반환 타입을 가지는 함수는 단일한 타입의 반환 값을 가져야만 한다는 요구 사항을 만족하게 됩니다.
 
-### Difference Between Opaque Types and Protocol Types (불투명한 타입과 프로토콜-규약 타입의 차이점)
+### Difference Between Opaque Types and Protocol Types (불투명한 타입과 프로토콜 타입의 차이점)
 
-Opaque 타입을 반환하는 것은 함수의 반환 타입으로 프로토콜 타입을 사용하는 것과 매우 비슷하게 보이지만, 이 두 가지는 타입 정체성 (type identity) 을 유지하는가의 여부에 따라 차이가 있습니다. Opaque 타입은 하나의 특정 타입을 가리킵니다. 비록 함수를 호출하는 쪽에서는 어떤 타입인지를 볼 수 없지만요; 프로토콜 타입은 그 프로토콜을 준수하기만 하면 어떤 타입이든 가리킬 수 있습니다. 일반적으로 말해서, 프로토콜 타입은 저장하는 값의 실제 타입이 좀 더 다양할 수 있으며, opaque 타입은 그 타입이 실제 타입임을 더 확실하게 보증합니다.
+'opaque (불투명한) 타입' 을 반환하는 것은 함수의 반환 타입으로 'protocol (프로토콜; 규약) 타입' 을 사용하는 것과 매우 비슷해 보이지만, 이 두 가지의 반환 타입은 '타입 정체성 (type identity)' 을 보존하는 지에 따른 차이가 있습니다. 하나의 'opaque (불투명한)' 타입은 하나의 지정된 타입을 참조하는 것으로, 이는 함수를 호출하는 쪽에서 무슨 타입인지 볼 수 없더라도 그렇습니다; 하나의 프로토콜 타입은 그 프로토콜을 준수하는 어떤 타입이든 참조할 수 있습니다. 일반적으로 말해서, 프로토콜 타입은 저장하고 있는 값의 실제 타입을 좀 더 유연하게 해주는 것이고, 'opaque (불투명한)' 타입은 그 실제 타입을 더 확실해게 보증하는 것입니다.
 
-예를 들어, 여기 반환 타입으로 opaque 반환 타입 대신 프로토콜 타입을 사용하는 `flip(_:)` 함수가 있습니다.
+예를 들어, 반환 타입으로 'opaque 반환 타입' 대신 '프로토콜 타입' 을 사용하는 `flip(_:)` 함수가 여기 있습니다:
 
 ```swift
 func protoFlip<T: Shape>(_ shape: T) -> Shape {
@@ -202,7 +202,7 @@ func protoFlip<T: Shape>(_ shape: T) -> Shape {
 }
 ```
 
-여기 있는 `protoFlip(_:)` 은 `flip(_:)` 과 본문이 같으며, 항상 같은 타입의 값을 반환합니다. 다만 `flip(_:)` 과 달리 `protoFlip(_:)` 이 반환하는 값은 항상 같은 타입이어야 할 필요는 없으며-Shape 프로토콜을 준수하기만 하면 됩니다. 달리 말하면, `protoFlip(_:)` 은 호출하는 쪽과의 API 계약 조건을 `flip(_:)` 보다 훨씬 느슨하게 만듭니다. 이는 여러 타입의 반환 값을 가질 수 있는 여지를 남기게 됩니다:
+이 `protoFlip(_:)` 함수는 `flip(_:)` 과 같은 본문 내용을 가지며, 항상 동일한 타입의 값을 반환합니다. 다만 `flip(_:)` 과는 달리, `protoFlip(_:)` 이 반환하는 값이 항상 같은 타입일 것을 요구하고 있는 것은 아닙니다-단지 `Shape` 프로토콜을 준수하기만 하면 되는 것입니다. 달리 말하면, `protoFlip(_:)` 과 호출하는 쪽의 'API 계약 (API contract)' 은 `flip(_:)` 에서 보다 훨씬 느슨해집니다. 이는 여러 타입의 반환 값을 가질 여지를 남겨 두는 것입니다:
 
 ```swift
 func protoFlip<T: Shape>(_ shape: T) -> Shape {
@@ -213,13 +213,12 @@ func protoFlip<T: Shape>(_ shape: T) -> Shape {
 }
 ```
 
-변경된 버전의 코드는, 어떤 도형을 전달 받았는지에 따라, `Square` 또는 `FlippedShape` 인스턴스를 반환합니다. 이 함수에서 반환된 두 개의 뒤집힌 도형은 완전히 다른 타입일 수 있습니다. 이 함수의 여러 유효한 버전들은, 같은 도형에 대한 다양한 인스턴스들을 뒤집을 때, 다른 타입의 값들을 반환할 수도 있습니다. `protoFlip(_:)` 에서 보듯 덜 구체적인 반환 타입 정보가 의미하는 것은 타입 정보에 의존하는 많은 연산들을 반환 값에 적용할 수 없다는 것입니다. 예를 들어, `==` 연산자를 작성할 수 없기 때문에 이 함수에서 반환한 결과를 비교하는 것도 안됩니다.
+이 개정된 버전의 코드는 어떤 도형을 전달 받았는 지에 따라, `Square` 인스턴스나 `FlippedShape` 인스턴스를 반환합니다. 이 함수가 반환하는 두 개의 뒤집힌 도형은 완전히 서로 다른 타입일 수도 있습니다. 이 함수의 유효한 버전 중에는 같은 도형의 여러 가지 인스턴스를 뒤집는데도 서로 다른 타입의 값을 반환할 지도 모릅니다. `protoFlip(_:)` 에서 지정한 반환 타입 정보가 더 적다는 것은 타입 정보에 의존하는 많은 연산들을 반환 값에 사용할 수 없다는 것을 의미합니다. 예를 들어, 이 함수가 반환하는 결과를 서로 비교하는 `==` 연산자는 작성할 수 없습니다.
 
 ```swift
 let protoFlippedTriangle = protoFlip(smallTriangle)
 let sameThing = protoFlip(smallTriangle)
-
-protoFlippedTriangle == sameThing     //  Error
+protoFlippedTriangle == sameThing     //  Error, 에러
 ```
 
 예제의 마지막 줄에서 오류가 발생하는 건 몇 가지 이유가 있기 때문입니다. 직접적인 문제는 `Shape` 프로토콜이 요구 사항으로 `==` 연산자를 포함하지 않기 때문입니다. 그런데 막상 추가하려고 하면, 그 다음 마주치는 문제는 `==` 연산자가 왼쪽 및 오른쪽 인자의 타입을 알아야 한다는 것입니다. 이런 종류의 연산자는 보통 인자 타입으로 `Self` 를 가지고, 이를 써서 프로토콜을 준수하는 명확한 타입을 찾는데, 문제는 프로토콜에 `Self` 요구 사항을 추가하는 것은 불가능하다는 점이며 이는 프로토콜을 타입으로 쓸 때 타입 삭제가 일어나기 때문입니다.
@@ -228,7 +227,7 @@ protoFlippedTriangle == sameThing     //  Error
 
 이 방법의 또 다른 문제는 도형 변환이 숨겨지지 (nest) 않는다는 점입니다. 삼각형을 뒤집은 결과 값은 `Shape` 타입이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 어떤 (some) 타입의 인자를 가집니다. 하지만 프로토콜 타입의 값은 그 프로토콜을 준수하지 않습니다: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 `protoFlip(protoFlip(smallTriange))` 과 같이 여러번 변환하는 코드가 유효하지 않다는 의미인데 이는 뒤집힌 도형은 `protoFlip(_:)` 의 인자로 유효하지 않기 때문입니다.
 
-반대로, opaque 타입은 실제 타입의 정체성을 보존합니다. 스위프트는 associated types (관련된 타입) 을 추론할 수 있으므로, opaque 타입 값은 프로토콜 타입을 반환 값으로 쓸 수 없는 위치에서도 쓸 수 있습니다. 다음은 **Generics** 에 있는 `Container` 프로토콜의 한가지 예입니다:
+반대로, opaque 타입은 실제 타입의 정체성을 보존합니다. 스위프트는 associated types (관련된 타입) 을 추론할 수 있으므로, opaque 타입 값은 프로토콜 타입을 반환 값으로 쓸 수 없는 위치에서도 쓸 수 있습니다. 다음은 [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html) 에 있는 `Container` 프로토콜의 한가지 예입니다:
 
 ```swift
 protocol Container {
