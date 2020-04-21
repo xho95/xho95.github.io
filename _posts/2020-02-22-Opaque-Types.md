@@ -12,11 +12,11 @@ categories: Swift Language Grammar Opaque Type
 
 ## Opaque Types (불투명한 타입)
 
-함수나 메소드에서 'opaque (불투명한)' 반환 타입을 쓰면 반환 값의 타입 정보를 감춥니다. 함수의 반환 타입으로 '명확한 타입 (concrete type)' 을 제공하는 대신에, 반환 값을 프로토콜로써 묘사합니다. 타입 정보를 감추는 것은 모듈과 그 모듈을 호출하는 코드 사이에서 유용한데, 이는 반환 값의 실제 타입을 사적 영역에 남겨둘 수 있기 때문입니다. 값을 프로토콜 타입으로 반환하는 것과는 다르게, opaque 타입은 타입 정체성 (type identity) 을 보존합니다. - 컴파일러는 타입 정보에 접근하지만, 모듈 사용자는 안됩니다.
+함수나 메소드에서 'opaque (불투명한) 반환 타입' 을 쓰면 그 반환 값의 타입 정보를 감추게 됩니다. 함수의 반환 타입으로 '명확한 타입 (concrete type)' 을 제공하는 대신에, 반환 값을 그가 지원하는 프로토콜로써 설명합니다. 타입 정보를 감추는 것은 모듈과 그 모듈을 호출하는 코드의 경계 지점에서 유용하며, 이는 반환 값의 실제 타입을 'private (개인 전용)' 으로 남겨둘 수 있기 때문입니다.[^private] 값을 프로토콜 타입으로 반환하는 것과는 다르게, 'opaque (불투명한) 타입' 은 '타입 정체성 (type identity)' 을 보존합니다-컴파일러는 타입 정보에 접근할 수 있지만, 모듈의 사용자는 그럴 수 없습니다.
 
 ### The Problem That Opaque Types Solve (불투명한 타입이 해결하는 문제)
 
-예를 들어, ASCII 로 예술적 도형을 그리는 모듈을 제작한다고 칩시다. ASCII 도형 모듈의 기본 성질로 도형을 문자열로 표현해서 반환하는 `draw()` 라는 함수가 있습니다. 이 함수를 `Shape` 프로토콜의 '요구 사항 (requirement)' 으로 사용할 수 있습니다.
+예를 들어, ASCII 로 예술적 도형을 그리는 모듈을 제작한다고 가정해 봅시다. 'ASCII 예술 도형' 모듈은 도형을 문자열로 표현해서 반환하는 `draw()` 라는 함수를 기본으로 가지고 있는데, 이 함수를 `Shape` 프로토콜을 위한 '요구 사항 (requirement)'[^requirement] 으로 사용할 수 있습니다:
 
 ```swift
 protocol Shape {
@@ -42,7 +42,7 @@ print(smallTriangle.draw())
 // ***
 ```
 
-generics (일반화) 를 사용해서 아래 코드 처럼 도형을 수직으로 뒤집는 연산을 구현할 수도 있습니다. 하지만, 이 방식에는 중요한 한계가 있습니다: 뒤집은 결과가 그것을 만드는데 사용한 정확한 generic 타입을 드러낸다는 것입니다.[^flippedTriangle-Type]
+아래 코드처럼, '일반화 (generics)' 를 사용하면 도형을 수직으로 뒤집는 연산도 구현할 수 있을 것 같습니다. 하지만, 이 접근 방식에는 아주 중요한 한계가 존재합니다: 뒤집힌 결과를 만드는데 사용한 '일반화된 (generic) 타입' 이 정확하게 드러난다는 점이 그것입니다.[^flippedTriangle-Type]
 
 ```swift
 struct FlippedShape<T: Shape>: Shape {
@@ -61,7 +61,7 @@ print(flippedTriangle.draw())
 // *
 ```
 
-이 방식으로 두 도형을 수직으로 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 아래와 같이 정의하면, 뒤집힌 삼각형이 다른 삼각형과 붙여져진 타입의 결과는 `JoinedShape<Triangle, FlippedShape<Triangle>>` 가 됩니다.[^joinedTriangle-Type]
+이 접근 방식을 사용하여 두 도형을 수직으로 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하면, 아래에 나타낸 코드와 같이 되는데, 뒤집힌 삼각형을 다른 삼각형과 붙임으로써 타입의 결과는 `JoinedShape<Triangle, FlippedShape<Triangle>>` 와 같은 것이 됩니다.[^joinedTriangle-Type]
 
 ```swift
 struct JoinedShape<T: Shape, U: Shape>: Shape {
@@ -83,19 +83,19 @@ print(joinedTriangle.draw())
 // *
 ```
 
-도형을 생성하는 세부 정보를 드러내는 것은 ASCII 도형 모듈의 공용 인터페이스 (public interface) 가 아닌 타입도 누출하게 되는데, 이는 전체 반환 타입을 명시해야하기 때문입니다. 모듈 안에 있는 코드는 동일한 도형을 다양한 방식으로 만들 수 있어야 하고, 모듈 밖에서 해당 도형을 사용하는 코드는 다양한 방식에 대한 구현 세부 사항을 설명하지 않아도 돼야 합니다. `JoinedShape` 과 `FlippedShape` 같은 wrapper (감싼) 타입은 모듈 사용자에게 의미 없으며 보이지 않도록 해야 합니다. 모듈의 공용 인터페이스는 도형의 합치기 (joining) 나 뒤집기 (flipping) 같은 연산 (operation) 으로 구성되며, 그 연산은 또 하나의 `Shape` 값을 반환합니다.
+도형 생성에 대한 세부 정보를 드러내는 것은 'ASCII 예술' 모듈의 '공용 인터페이스 (public interface)' 가 아닌 타입도 유출하게 되는데, 이는 전체 반환 타입을 분명하게 알려야 할 필요가 있기 때문입니다. 모듈 안에 있는 코드는 동일한 도형을 다양한 방식으로 만들 수 있어야 하면서도, 모듈 밖에서 도형을 사용하는 코드는 그 변환들에 대한 세부 구현을 일일이 서술하지 않도록 해야 합니다. `JoinedShape` 과 `FlippedShape` 같은 '감싼 (wrapper)' 타입은 모듈 사용자에게는 아무 의미가 없으므로, 보이지 않도록 해야 합니다. 모듈의 '공용 인터페이스' 는 도형의 '합치기 (joining)' 와 '뒤집기 (flipping)' 같은 '연산 (operation)' 으로 구성되어야 하며, 이 연산은 또 다른 `Shape` 값을 반환하도록 해야 합니다.
 
-### Returning an Opaque Type (불투명한 타입을 반환하기)
+### Returning an Opaque Type (불투명한 타입 반환하기)
 
-Opaque 타입은 generic 타입이 '반대가 된 것 (reverse)' 으로 생각할 수 있습니다. Generic 타입은 함수를 호출하는 코드가 함수의 매개변수와 반환 값의 타입을 선택하도록 해서 함수 구현에서는 추상화하도록 합니다. 예를 들어, 아래 코드에 있는 함수의 반환 타입은 호출하는 쪽에서 지정합니다:
+'opaque (불투명한) 타입' 은 'generic (일반화된) 타입' 의 '반대 (reverse)' 라고 생각할 수 있습니다. 'generic (일반화된) 타입' 은 함수를 호출하는 코드에서 함수의 매개 변수와 반환 값의 타입을 선택하는 방법으로 이를 함수 구현에서 분리하여 떨어뜨려 놓습니다. 예를 들어, 아래 코드에 있는 함수의 반환 타입은 전적으로 호출하는 쪽에 달려 있습니다:
 
 ```swift
 func max<T>(_ x: T, _ y: T) -> T where T: Comparable { ... }
 ```
 
-`max(_:_:)` 를 호출하는 코드는 x 와 y 의 값을 선택하고, 이 값들의 타입은 T 의 명확한 타입을 결정합니다. 호출하는 코드는 `Comparable` 규약 (protocol) 을 준수하는 모든 타입을 쓸 수 있습니다. 함수 안의 코드는 일반화된 방식 (general way) 으로 작성되기 때문에 호출하는 쪽에서 제공하는 모든 타입을 처리할 수 있습니다. `max(_:_:)` 는 모든 `Comparable` 타입이 공유하는 기능만을 사용하여 구현됩니다.
+`max(_:_:)` 를 호출하는 코드에서 `x` 와 `y` 의 값을 선택하므로, 값의 타입은 명확한 타입인 `T` 로 결정됩니다. 호출하는 코드는 `Comparable` 프로토콜을 준수하면 어떤 타입이든 사용할 수 있습니다. 함수 안의 코드는 '일반화된 방식 (general way)' 으로 작성되므로 호출하는 쪽에서 제공하는 타입이 무엇이든 상관없이 처리할 수 있습니다. `max(_:_:)` 의 구현은 모든 `Comparable` 타입이 공유하는 기능만 사용하게 됩니다.
 
-Opaque 반환 타입을 쓰는 함수에서는 이 역할이 반대가 됩니다. Opaque 타입은 함수 구현부가 반환하는 값의 타입을 선택하도록 해서 함수를 호출하는 코드가 추상화하도록 합니다. 예를 들어, 아래 예제의 함수는 trapezoid (사다리꼴) 을 반환하면서도 도형의 실제 타입을 드러내지 않습니다.
+이 역할은 'opaque (불투명한)' 반환 타입을 쓰는 함수에서 반대가 됩니다. 'opaque (불투명한)' 타입은 함수 구현에서 반환하는 값의 타입을 선택하는 방법으로 이를 함수 호출 코드에서 분리하여 떨여뜨려 놓습니다. 예를 들어, 아래 예제에 있는 함수는 '사다리꼴 (trapezoid)' 을 반환하면서 도형의 실제 타입은 드러내지 않습니다.
 
 ```swift
 struct Square: Shape {
@@ -274,6 +274,10 @@ print(type(of: twelve))
 
 [^Opaque-Types]: 전체 원문은 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html)에서 확인할 수 있습니다.
 
-[^flippedTriangle-Type]: 여기서 `flippedTriangle` 의 타입은 `FlippedShape<Triangle>` 가 됩니다. 책의 내용대로라면 모듈내에 있는 `FlippedShape` 구조체 타입이 밖으로 드러나는 문제가 있다는 의미가 됩니다.
+[^private]: 'private (개인 전용)' 은 스위프트의 '엔티티' 에 대한 '접근 수준 (access level)' 이 'private (개인 전용)' 인 것을 말하는데, 이는 특정 클래스 영역 내에서만 접근 가능하다는 것을 나타냅니다. 다른 프로그래밍 언어의 'private' 과 유사한 의미를 가진다고 이해할 수 있습니다.
 
-[^joinedTriangle-Type]: Swift Programming Language 책에서는 `joinedTriangle` 의 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 인 것으로 나오는데, 오류인 것 같습니다.
+[^requirement]: '프로토콜 (protocol)' 의 '요구 사항 (requirement)' 은 스위프트에서 '프로토콜을 준수 (conforming to protocol)' 하는 대상이 반드시 구현해야 할 요소를 말합니다.
+
+[^flippedTriangle-Type]: 이 예제에서 `flippedTriangle` 의 타입은 `FlippedShape<Triangle>` 가 됩니다. 본문 내용에 의하면, 모듈 내에 있는 `FlippedShape` 이라는 구조체 타입이 밖으로 드러나는 것이 문제라는 것입니다.
+
+[^joinedTriangle-Type]: 원문에는 `joinedTriangle` 의 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 라고 되어 있는데, `JoinedShape<Triangle, FlippedShape<Triangle>>` 이 맞는 것 같습니다.
