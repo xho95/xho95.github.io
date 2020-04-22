@@ -225,6 +225,52 @@ private var privateInstance = SomePrivateClass()
 
 '설정자 (setter)' 에는 그와 연관된 '획득자 (getter)' 보다 더 낮은 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 범위 공간을 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
 
+> 이 규칙은 '계산 속성 (computed properties)' 뿐만 아니라 '저장 속성 (stored properties)' 에도 적용됩니다. '저장 속성' 에 대해서 '획득자 (getter) 와 설정자 (setter)' 를 직접 명시적으로 작성하지 않더라도, 여전히 스위프트는 '저장 속성' 의 뒤쪽 저장 공간에 접근하도록 하는 암시적인 '획득자 (getter) 와 설정자 (setter)' 를 만들어서 통합합니다. '계산 속성' 의 명시적 '설정자 (setter)' 와 동일한 방법을 써서 `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '합성된 설정자 (synthesized setter)' 의 접근 수준을 바꿀 수 있습니다.
+
+아래 예제는 `TrackedString` 이라는 구조체를 정의해서, 문자열 속성이 수정된 횟수를 계속 추적합니다:
+
+```swift
+struct TrackedString {
+  private(set) var numberOfEdits = 0
+  var value: String = "" {
+    didSet {
+      numberOfEdits += 1
+    }
+  }
+}
+```
+
+`TrackedString` 구조체는 '문자열 저장 속성' 인 `value` 를 정의하고, 초기 값은 `""` (빈 문자열) 로 둡니다. 이 구조체는 `numberOfEdits` 라는 '정수 저장 속성' 도 정의하여, `value` 가 수정된 횟수를 추적하는데 사용합니다. 이 '수정 추적 기능' 은 `value` 속성의 `didSet` '속성 관찰자 (property observer)' 를 써서 구현했으며, `value` 속성에 새 값을 설정할 때마다 `numberOfEdits` 를 증가하도록 합니다.
+
+`TrackedString` 구조체와 `value` 속성은 명시적인 '접근-수준 수정자 (access-level modifier)' 를 제공하지 않으므로, 둘 다 기본 접근 수준인 `internal` 을 부여 받습니다. 하지만, `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시해서 속성의 '획득자 (getter)' 가 여전히 기본 접근 수준인 'internal (내부)' 임에도 불구하고, `TrackedString` 구조체 코드의 일부에서는 속성을 설정할 수 있도록 했습니다. 이것은 `TrackedString` 이 `numberOfEdits` 속성을 내부에서는 수정할 수 있게 하면서도, 이 속성이 구조체 정의 외부에서 사용될 때는 '읽기-전용' 임을 나타내도록 해 줍니다.
+
+`TrackedString` 인스턴스를 생성하고나서 그 문자열 값을 몇 번 수정하면, `numberOfEdits` 속성 값이 수정된 횟수 만큼 갱신되는 것을 볼 수 있습니다:
+
+```swift
+var stringToEdit = TrackedString()
+stringToEdit.value = "This string will be tracked."
+stringToEdit.value += " This edit will increment numberOfEdits."
+stringToEdit.value += " So will this one."
+print("The number of edits is \(stringToEdit.numberOfEdits)")
+// "The number of edit is 3" 를 출력합니다.
+```
+
+비록 다른 소스 파일에서도 `numberOfEdits` 속성의 현재 값을 조회할 수는 있겠지만, 다른 소스 파일에서 그 속성을 _수정하는 (modify)_ 것은 불가능합니다. 이러한 제한은 `TrackedString` 의 추적-편집 기능에 대한 세부 구현을 보호하면서도, 여전히 그 기능 부분에 대한 편리한 접근 방법을 제공하도록 해줍니다.
+
+필요하다면 '획득자 (getter)' 와 '설정자 (setter)' 모두에 대해 명시적인 접근 수준을 할당할 수 있음에 주목하기 바랍니다. 아래 예제는 구조체를 명시적으로 'public (공용)' 접근 수준으로 정의한 `TrackedString` 구조체를 보여줍니다. (`numberOfEdits` 속성을 포함한) 구조체의 멤버들은 그러므로 기본적으로 'internal (내부)' 접근 수준을 가지게 됩니다.[^interal-by-default] 구조체의 `numberOfEdits` 속성에서, `public` 과 `private(set)` 수정자 (modifiers) 를 결합하면, '획득자 (getter)' 는 'pulic (공용)' 으로 하면서 '설정자 (setter)' 는 'private (개인 전용)' 으로 만들 수 있습니다:
+
+```swift
+public struct TrackedString {
+  public private(set) var numberOfEdits = 0
+  public var value: String = "" {
+    didSet {
+      numberOfEdits += 1
+    }
+  }
+  public init() {}
+}
+```
+
 ### Initializers (초기자)
 
 #### Default Initializers (기본 초기자)
@@ -256,3 +302,5 @@ private var privateInstance = SomePrivateClass()
 [^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
 
 [^more-public]: 여기서 '더 공개적 (more public)' 이라는 말은, '접근 수준 (access level)' 이 더 높은 것을 말합니다. 스위프트의 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. '상수나 변수가 타입보다 더 공개적일 수 없다' 는 말은 `let a: Int = 0` 에서 `a` 의 접근 수준이 `Int` 의 접근 수준보다 더 공개적일 수 없다-더 높은 접근 수준을 가질 수 없다-는 것을 의미합니다.
+
+[^interal-by-default]: 문서의 앞 부분인 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스의 접근 수준을 'public (공용)' 으로 정의하면 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
