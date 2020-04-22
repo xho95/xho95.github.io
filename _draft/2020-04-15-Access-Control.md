@@ -211,7 +211,19 @@ internal class B: A {
 
 ### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 및 첨자 연산)
 
-#### Getters and Setters ('게터' 와 '세터')
+상수, 변수, 또는 속성은 그것의 타입보다 더 'public (공개적)' 일 수 없습니다.[^more-public] 예를 들면, 'private (개인 전용)' 타입을 가지고 'public (공용)' 속성을 만드는 것은 유효하지 않습니다. 이와 비슷하게, '첨자 연산 (subscript)' 도 그것의 색인 타입이나 반환 타입 그 어느 것보다 더 'public (공개적)' 일 수 없습니다.
+
+상수, 변수, 속성, 또는 첨자 연산을 'private (개인 전용)' 타입으로 만들었을 경우, 그 상수, 변수, 속성, 또는 첨자 연산에는 반드시 `private` 을 표시해야 합니다:
+
+```swift
+private var privateInstance = SomePrivateClass()
+```
+
+#### Getters and Setters ('획득자' 와 '설정자')
+
+상수, 변수, 속성, 및 첨자 연산을 위한 '획득자 (getters)' 와 '설정자 (setters)' 는 자동으로 그것이 속해 있는 상수, 변수, 속성, 또는 첨자 연산과 동일한 접근 수준을 부여 받게 됩니다.
+
+'설정자 (setter)' 에는 그와 연관된 '획득자 (getter)' 보다 더 낮은 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 범위 공간을 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
 
 ### Initializers (초기자)
 
@@ -242,3 +254,5 @@ internal class B: A {
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 '경우 값 (case)' 마다 '원시 값 (raw value)' 과 '관련 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 '경우 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. 관련 값은 '경우 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 '경우 값' 은 `"Sun rise"` 가 됩니다.
 
 [^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
+
+[^more-public]: 여기서 '더 공개적 (more public)' 이라는 말은, '접근 수준 (access level)' 이 더 높은 것을 말합니다. 스위프트의 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. '상수나 변수가 타입보다 더 공개적일 수 없다' 는 말은 `let a: Int = 0` 에서 `a` 의 접근 수준이 `Int` 의 접근 수준보다 더 공개적일 수 없다-더 높은 접근 수준을 가질 수 없다-는 것을 의미합니다.

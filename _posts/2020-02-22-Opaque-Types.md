@@ -253,7 +253,7 @@ func makeProtocolContainer<T, C: Container>(item: T) -> C {
 }
 ```
 
-반환 타입으로 'opaque (불투명한) 타입' 인 `some Container` 를 사용하면 원하던 'API 계약 (API contract)' 을 표현할 수 있습니다-함수는 하나의 '컨테이너 (container)' 를 반환하지만, '컨테이너 (container)' 의 타입은 지정하는 않는다는 것 말입니다:  
+반환 타입으로 'opaque (불투명한) 타입' 인 `some Container` 를 사용해야 원하던 'API 계약 (API contract)' 을 표현하게 됩니다-함수가 하나의 '컨테이너 (container)' 를 반환하지만, '컨테이너 (container)' 의 타입은 지정하지는 않겠다는 것 말입니다:  
 
 ```swift
 func makeOpaqueContainer<T>(item: T) -> some Container {

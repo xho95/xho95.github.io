@@ -165,7 +165,7 @@ train.makeNoise()
 
 하위 클래스에서 속성을 재정의하면서 'getter' 와 'setter' 를 모두 제공하면 '상속받은 읽기-전용 속성 (inherited read-only property)' 을 '읽기-쓰기 혼용 속성 (read-write property)' 로 나타낼 수 있습니다. 하지만, '읽기-쓰기 혼용 속성' 을 '읽기-전용 속성' 으로 나타내는 것은 불가능 합니다.[^read-write-to-read-only]
 
-> 속성을 '재정의' 하면서 'setter (세터)' 를 제공하는 경우, 반드시 그 재정의를 위한 'getter (게터)' 도 제공해야 합니다. '재정의 getter' 내에서 상속받은 속성의 값을 수정하고 싶지 않을 경우, 'getter' 에서 `super.someProperty` 를 반환하여 상속받은 값을 그대로 단순히 전달만 하게 할 수도 있는데, 이 때 `someProperty` 가 '재정의' 속성의 이름이 됩니다.
+> 속성을 '재정의' 하면서 'setter (설정자)' 를 제공하는 경우, 반드시 그 재정의를 위한 'getter (획득자)' 도 제공해야 합니다. 'overriding getter (재정의하는 획득자)' 내에서 상속받은 속성의 값을 수정하고 싶지 않을 경우, 'getter (획득자)' 에서 `super.someProperty` 를 반환함으로써 단순히 상속받은 값을 그대로 전달할 수도 있는데, 여기서 `someProperty` 가 '재정의하는' 속성의 이름입니다.
 
 다음 예제는 `Vehicle` 의 하위 클래스로, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는 새로운 저장 속성인 `gear` 를 도입하여, 기본 값으로 정수 `1` 을 둡니다. `Car` 클래스는 `Vehicle` 에서 상속받은 `description` 속성도 재정의하고 있는데, 이는 사용자 목적에 맞도록 현재 '기어' 를 포함하는 설명을 제공하기 위함입니다.
 
@@ -196,7 +196,7 @@ print("Car: \(car.description)")
 
 > '속성 관찰자' 를 '상속받은 상수 저장 속성 (inherited constant stored property)' 이나 '상속받은 읽기-전용 계산 속성 (inherited read-only computed properties)' 에는 추가할 수 없습니다. 이 속성들의 값은 설정 자체가 불가능하므로, '재정의' 하면서 `willSet` 이나 `didSet` 구현을 제공하는 것이 적합하지 않기 때문입니다.
 >
-> 동일한 하나의 속성에 대해 '재정의 세터 (overriding setter)' 와 '재정의 속성 관찰자 (overriding property observer)' 를 동시에 제공할 수 없음에도 주목하기 바랍니다. 속성에 대해 이미 '사용자 정의 세터 (custom setter)' 를 제공하고 있다면, 속성의 값이 바뀌는 것을 관찰하고 싶을 경우, 그 '사용자 정의 세터 (custom setter)' 안에서 바뀔 값을 간단히 관찰하면 되기 때문입니다.
+> 동일한 하나의 속성에 대해 '재정의 설정자 (overriding setter)' 와 '재정의 속성 관찰자 (overriding property observer)' 를 동시에 제공할 수 없음에도 주목하기 바랍니다. 속성에 대해 이미 '사용자 정의 설정자 (custom setter)' 를 제공하고 있다면, 속성의 값이 바뀌는 것을 관찰하고 싶을 경우, 그 '사용자 정의 설정자 (custom setter)' 안에서 바뀔 값을 간단히 관찰하면 되기 때문입니다.
 
 다음 예제는 `Car` 의 하위 클래스로, `AutomaticCar` 라는 새로운 클래스를 정의합니다. 이 `AutomaticCar` 클래스는 '자동 기어박스' 가 있는 자동차를 나타내며, 현재 속도를 기반으로 하여 적절한 기어를 자동으로 선택합니다:
 
