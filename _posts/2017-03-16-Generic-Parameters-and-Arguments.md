@@ -14,7 +14,7 @@ categories: Swift Language Grammar Generic Parameters Arguments
 
 이번 장에서는 일반화된 (generic) 버전의 타입, 함수, 그리고 초기자 (initializer) 에서 사용하는 매개 변수와 인자에 대해 설명합니다. 일반화된 버전의 타입, 함수, 첨자 연산자 (subscript), 또는 초기자를 선언할 때는, 이들이 사용할 '타입 매개 변수'를 지정하게 됩니다. 이러한 '타입 매개 변수'는 자리를 지키고 있다가 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수나 초기자가 호출될 때 전달되는 인자로 대체되어, 실제의 명확한 타입 (concrete type) 으로 바뀝니다.
 
-스위프트에서의 일반화 (generic) 에 대해서는 [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html) 부분을 참고 바랍니다.
+스위프트에서의 일반화 (generic) 에 대해서는 [Generics (일반화)]({{ site.baseurl }}{% post_url 2020-02-29-Generics.md %}) 부분을 참고 바랍니다.
 
 ### Generic Parameter Clause (일반화된 매개 변수 구절)
 
@@ -60,7 +60,7 @@ where `requirements`
 
 일반화된 함수나 초기자는 타입 매개 변수에 다른 제약 조건, 요구 사항, 또는 둘 다를 제공해서 추가 정의 (overload) 할 수 있습니다. 일반화된 함수나 초기자의 추가 정의 버전을 호출하면 컴파일러는 이들 제약 조건을 사용하여 어떤 추가 정의 함수나 초기자를 실행해야할지를 결정하게 됩니다.
 
-일반화된 `where` 구절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html) 부분을 보면 됩니다.
+일반화된 `where` 구절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화된 'Where' 구절)](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID192) 부분을 보면 됩니다.
 
 > 일반화된 매개 변수 구절의 문법
 >
@@ -100,7 +100,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-일반화된 매개 변수 구절([Generic Parameter Clause](#generic-parameter-clause)) 에서 언급했듯이 일반화된 인자 구절을 사용하여 일반화도니 함수나 초기자의 타입 매개 변수를 지정하지 않도록 합니다.
+[Generic Parameter Clause](#generic-parameter-clause-일반화된-매개-변수-구절) 에서 언급한 것처럼, '일반화된 인자 구절' 을 사용해서 일반화된 함수나 초기자의 '타입 매개 변수' 를 지정하는 것은 아닙니다.
 
 > 일반화된 인자 구절의 문법
 >
