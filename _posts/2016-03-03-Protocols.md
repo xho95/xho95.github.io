@@ -144,7 +144,7 @@ extension PrettyTextRepresentable {
 
 **Adding Constraints to Protocol Extensions (프로토콜을 확장할 때 제약 조건 추가하기)**
 
-프로토콜 확장을 정의할 때 '제약 조건 (constraints)' 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 '제약 조건' 은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)](#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
+프로토콜 확장을 정의할 때 '제약 조건 (constraints)' 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 '제약 조건' 은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)]({{ site.baseurl }}{% post_url 2017-03-16-Generic-Parameters-and-Arguments.md %}#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
 
 예를 들어, `Collection` (집합체) 프로토콜을 확장하면서 각 요소가 `Equatable` 프로토콜을 준수하는 경우에만 적용되도록 할 수 있습니다. 컬렉션의 요소를 (표준 라이브러리의 일부이기도 한) `Equatable` 프로토콜로만 제약하면, `==` 와 `!=` 연산자를 사용하여 두 요소가 같은지 다른지 검사할 수 있습니다.
 
