@@ -45,12 +45,12 @@ _소스 파일 (source file)_ 은 모듈 내에 있는 단일한 스위프트 �
 
 #### Guiding Principle of Access Levels (접근 수준에 대한 지침)
 
-스위프트의 접근 수준에 적용되는 '전반적인 지침 (overall guiding principle)' 은 다음과 같습니다: _어떤 엔티티도 더 낮은 (더 제한된; more restrictive) 접근 수준을 갖고 있는 엔티티로 정의될 수는 없습니다._
+스위프트의 접근 수준에 적용되는 '전반적인 지침 (overall guiding principle)' 은 다음과 같습니다: _어떤 엔티티도 더 낮은 (더 제한된; more restrictive) 접근 수준을 가지고 있는 엔티티로써 정의할 수 없습니다._
 
 예를 들면 다음과 같습니다:
 
-* 'public variable (공용 변수)' 는 'internal (내부)', 'file-private (파일-전용)', 또는 'private (개인 전용)' 타입을 가지는 것으로 정의할 수 없는데, 이는 공용 변수가 사용되는 모든 곳마다 그 타입을 사용할 수 있는 것은 아니기 때문입니다.
-* '함수' 는 그의 매개 변수와 반환 값보다 더 높은 접근 수준을 가질 수 없는데, 이는 함수를 사용할 때 주위 코드에서 그 구성 요소를 사용할 수 없는 상황도 있을 수 있기 때문입니다.
+* 'public variable (공용 변수)' 는 'internal (내부)', 'file-private (파일-전용)', 또는 'private (개인 전용)' 타입을 가지고 있다고 정의할 수 없는데, 이는 그 타입이 '공용 변수' 가 사용되는 모든 곳에서 사용할 수 있는 것은 아니기 때문입니다.
+* '함수' 는 그것의 매개 변수와 반환 값보다 더 높은 접근 수준을 가질 수 없는데, 이는 함수를 사용하면서 주변 코드가 함수의 구성 요소를 사용할 수 없는 상황이 벌어질 수 있기 때문입니다.
 
 언어의 서로 다른 부분들에 대해서 이 지침이 의미하는 바는 아래에서 자세히 다루도록 합니다:
 
@@ -124,13 +124,13 @@ private class SomePrivateClass {                // 명시적인 개인 전용 �
 
 #### Tuple Types (튜플 타입)
 
-튜플 타입의 접근 수준은 해당 튜플에서 사용하는 모든 타입 중 가장 제한적인 접근 수준으로 됩니다. 예를 들어, 두 개의 서로 다른 타입을 가지는 튜플을 구성할 때, 하나는 'internal (내부)' 접근이고 하나는 'private (개인 전용)' 접근이면, 이렇게 구성된 튜플의 접근 수준은 'private (개인 전용)' 이 됩니다.
+튜플 타입의 접근 수준은 해당 튜플에서 사용하는 모든 타입 중 '가장 제한된 접근 수준 (the most restrictive access level)'[^the-most-restrictive] 이 됩니다. 예를 들어, 두 개의 서로 다른 타입을 가지는 튜플을 구성할 때, 하나는 'internal (내부)' 접근이고 하나는 'private (개인 전용)' 접근이면, 이렇게 구성된 튜플의 접근 수준은 'private (개인 전용)' 이 됩니다.
 
 > 튜플 타입에는 클래스, 구조체, 열거체, 그리고 함수와 같은 방식의 독립된 정의가 없습니다. 튜플 타입의 접근 수준은 튜플 타입을 구성하는 타입들에 의해 자동으로 결정되는 것으로, 따로 명시적으로 지정할 수는 없습니다.
 
 #### Function Types (함수 타입)
 
-함수 타입의 접근 수준은 함수의 매개 변수 타입과 반환 타입 중 가장 제한적인 접근 수준인 것으로 계산됩니다. 함수가 계산한 접근 수준이 해당 영역의 기본적인 의미에 들어맞지 않을 경우 그 접근 수준을 함수의 정의 부분에서 명시적으로 지정해야 합니다.[^function-access-level]
+함수 타입의 접근 수준은 함수의 매개 변수 타입과 반환 타입 중 '가장 제한된 접근 수준' 으로 계산됩니다. 함수가 계산한 접근 수준이 해당 영역의 기본적인 의미에 들어맞지 않을 경우 그 접근 수준을 함수의 정의 부분에서 명시적으로 지정해야 합니다.[^function-access-level]
 
 아래 예제는 `someFunction()` 이라는 전역 함수를 정의하면서, 함수 자체에 대한 특정한 접근-수준 '수정자 (modifier)' 를 제공하지 않습니다. 이 함수의 기본 접근 수준이 "internal (내부)" 일 것이라고 예상하겠지만, 그렇지 않습니다. 실제로, `someFunction()` 을 아래와 같이 작성하면 컴파일이 되지 않습니다:
 
@@ -223,7 +223,7 @@ private var privateInstance = SomePrivateClass()
 
 상수, 변수, 속성, 및 첨자 연산을 위한 '획득자 (getters)' 와 '설정자 (setters)' 는 자동으로 그것이 속해 있는 상수, 변수, 속성, 또는 첨자 연산과 동일한 접근 수준을 부여 받게 됩니다.
 
-'설정자 (setter)' 에는 그와 연관된 '획득자 (getter)' 보다 더 낮은 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 범위 공간을 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
+'설정자 (setter)' 에는 연관된 '획득자 (getter)' 보다 더 _낮은 (lower)_ 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역의 범위를 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
 
 > 이 규칙은 '계산 속성 (computed properties)' 뿐만 아니라 '저장 속성 (stored properties)' 에도 적용됩니다. '저장 속성' 에 대해서 '획득자 (getter) 와 설정자 (setter)' 를 직접 명시적으로 작성하지 않더라도, 여전히 스위프트는 '저장 속성' 의 뒤쪽 저장 공간에 접근하도록 하는 암시적인 '획득자 (getter) 와 설정자 (setter)' 를 만들어서 통합합니다. '계산 속성' 의 명시적 '설정자 (setter)' 와 동일한 방법을 써서 `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '합성된 설정자 (synthesized setter)' 의 접근 수준을 바꿀 수 있습니다.
 
@@ -257,7 +257,7 @@ print("The number of edits is \(stringToEdit.numberOfEdits)")
 
 비록 다른 소스 파일에서도 `numberOfEdits` 속성의 현재 값을 조회할 수는 있겠지만, 다른 소스 파일에서 그 속성을 _수정하는 (modify)_ 것은 불가능합니다. 이러한 제한은 `TrackedString` 의 추적-편집 기능에 대한 세부 구현을 보호하면서도, 여전히 그 기능 부분에 대한 편리한 접근 방법을 제공하도록 해줍니다.
 
-필요하다면 '획득자 (getter)' 와 '설정자 (setter)' 모두에 대해 명시적인 접근 수준을 할당할 수 있음에 주목하기 바랍니다. 아래 예제는 구조체를 명시적으로 'public (공용)' 접근 수준으로 정의한 `TrackedString` 구조체를 보여줍니다. (`numberOfEdits` 속성을 포함한) 구조체의 멤버들은 그러므로 기본적으로 'internal (내부)' 접근 수준을 가지게 됩니다.[^interal-by-default] 구조체의 `numberOfEdits` 속성에서, `public` 과 `private(set)` 수정자 (modifiers) 를 결합하면, '획득자 (getter)' 는 'pulic (공용)' 으로 하면서 '설정자 (setter)' 는 'private (개인 전용)' 으로 만들 수 있습니다:
+필요하다면 '획득자 (getter)' 와 '설정자 (setter)' 모두에 대해 명시적인 접근 수준을 할당할 수 있음에 주목하기 바랍니다. 아래 예제는 구조체를 명시적으로 'public (공용)' 접근 수준으로 정의한 `TrackedString` 구조체를 보여줍니다. (`numberOfEdits` 속성을 포함한) 구조체의 멤버들은 그러므로 기본적으로 'internal (내부)' 접근 수준을 가지게 됩니다.[^internal-by-default] 구조체의 `numberOfEdits` 속성에서, `public` 과 `private(set)` 수정자 (modifiers) 를 결합하면, '획득자 (getter)' 는 'public (공용)' 으로 하면서 '설정자 (setter)' 는 'private (개인 전용)' 으로 만들 수 있습니다:
 
 ```swift
 public struct TrackedString {
@@ -281,7 +281,7 @@ public struct TrackedString {
 
 #### Default Memberwise Initializers for Structure Types (구조체 타입을 위한 기본 멤버 초기자)
 
-### Protocols (프로토콜; 규약)
+### Protocols (프로토콜)
 
 #### Protocol Inheritance (프로토콜 상속)
 
@@ -299,6 +299,8 @@ public struct TrackedString {
 
 [^Access-Control]: 이 글에 대한 원문은 [Access Control](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html) 에서 확인할 수 있습니다.
 
+[^the-most-restrictive]: 본문의 설명에 따르면 '가장 제한된 접근 수준' 은 '가장 낮은 접근' 수준을 의미합니다. 스위프트의 접근 수준을 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
+
 [^function-access-level]: '함수가 계산한 접근 수준' 과 '해당 영역의 기본적인 의미' 가 같아야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. 즉, 함수의 접근 수준을 계산해보니 'private' 일 때는, 반드시 함수의 정의에 'private' 을 써줘야 한다는 것 입니다. 그렇게 하지 않으면, '함수가 계산한 접근 수준 (private)' 과 '해당 영역의 기본적인 의미 (internal)' 가 다르므로, 컴파일이 안되게 됩니다.
 
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 '경우 값 (case)' 마다 '원시 값 (raw value)' 과 '관련 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 '경우 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. 관련 값은 '경우 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 '경우 값' 은 `"Sun rise"` 가 됩니다.
@@ -307,4 +309,4 @@ public struct TrackedString {
 
 [^more-public]: 여기서 '더 공개적 (more public)' 이라는 말은, '접근 수준 (access level)' 이 더 높은 것을 말합니다. 스위프트의 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. '상수나 변수가 타입보다 더 공개적일 수 없다' 는 말은 `let a: Int = 0` 에서 `a` 의 접근 수준이 `Int` 의 접근 수준보다 더 공개적일 수 없다-더 높은 접근 수준을 가질 수 없다-는 것을 의미합니다.
 
-[^interal-by-default]: 문서의 앞 부분인 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스의 접근 수준을 'public (공용)' 으로 정의하면 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
+[^internal-by-default]: 문서의 앞 부분인 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스의 접근 수준을 'public (공용)' 으로 정의하면 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
