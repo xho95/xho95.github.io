@@ -273,9 +273,14 @@ public struct TrackedString {
 
 ### Initializers (초기자)
 
-사용자 정의 이니셜 라이저는 초기화하는 유형 이하의 액세스 레벨을 지정할 수 있습니다. 필수 이니셜 라이저 (필수 이니셜 라이저에 정의 된)는 예외입니다. 필요한 이니셜 라이저는 자신이 속한 클래스와 동일한 액세스 레벨을 가져야합니다.
+Custom initializers can be assigned an access level less than or equal to the type that they initialize. The only exception is for required initializers (as defined in Required Initializers). A required initializer must have the same access level as the class it belongs to.
 
-함수 및 메소드 매개 변수와 마찬가지로 이니셜 라이저 매개 변수의 유형은 이니셜 라이저 자신의 액세스 레벨보다 더 비공개 일 수 없습니다.
+As with function and method parameters, the types of an initializer’s parameters can’t be more private than the initializer’s own access level.
+
+
+직접 정의하는 초기자는 그것이 초기화하는 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 '필수 초기자 (required initializers)' 입니다. (이는 [Required Initializers (필수 초기자)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID231) 에서 정의한 바와 같습니다.) '필수 초기자' 는 자신이 속해 있는 클래스와 같은 접근 수준을 가져야만 합니다.
+
+함수 매개 변수 및 메소드 매개 변수 처럼, 초기자의 매개 변수 타입도 초기자가 가지고 있는 접근 수준보다 더 'private (개인적)' 일 수 없습니다.
 
 #### Default Initializers (기본 초기자)
 
