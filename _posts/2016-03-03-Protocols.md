@@ -60,7 +60,7 @@ class Dice {
 
 이 예제는 `Dice` 라는 새로운 클래스로 보드 게임에 사용될 n면체 주사위를 정의합니다. `Dice` 인스턴스에 있는 `sides` 라는 정수 속성은 주사위-면의 개수를 나타내며, `generator` (생성기) 라는 속성은 난수 발생기를 제공하여 '주사위 굴림 값'을 생성합니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 따라서 `RandomNumberGenerator` 프로토콜을 따른다면 어떤 타입의 인스턴스라도 설정할 수 있습니다. 이 속성에 할당하는 인스턴스로 필요한 사항은 반드시 `RandomNumberGenerator` 프로토콜을 따라야 한다는 것 한가지 뿐입니다. 타입이  `RandomNumberGenerator` 이므로, 이 프로토콜을 준수하는 모든 생성기들 (generators) 에 (공통으로) 적용되는 방식으로만, `Dice` 클래스와 `generator` 가 상호 작용할 수 있습니다. 이 말은 생성기의 실제 타입 (underlying type) 에 정의된 메소드나 속성은 사용할 수 없다는 의미입니다. 하지만 상위 클래스에서 하위 클래스로 '내림 변환 (downcast)' 이 가능한 것처럼 프로토콜 타입에서 실제 타입으로 내림 형변환이 가능하긴 합니다. 이는 **Downcasting** 에서 설명합니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 따라서 `RandomNumberGenerator` 프로토콜을 따른다면 어떤 타입의 인스턴스라도 설정할 수 있습니다. 이 속성에 할당하는 인스턴스로 필요한 사항은 반드시 `RandomNumberGenerator` 프로토콜을 따라야 한다는 것 한가지 뿐입니다. 타입이  `RandomNumberGenerator` 이므로, 이 프로토콜을 준수하는 모든 생성기들 (generators) 에 (공통으로) 적용되는 방식으로만, `Dice` 클래스와 `generator` 가 상호 작용할 수 있습니다. 이 말은 생성기의 실제 타입 (underlying type) 에 정의된 메소드나 속성은 사용할 수 없다는 의미입니다. 하지만 상위 클래스에서 하위 클래스로 '내림 변환 (downcast)' 이 가능한 것처럼 프로토콜 타입에서 실제 타입으로 내림 형변환이 가능하긴 합니다. 이는 [Downcasting (내림 변환하기)](http://xho95.github.io/swift/language/grammar/type/casting/2020/03/31/Type-Casting.html#downcasting-내림-변환하기) 에서 설명합니다.
 
 `Dice` 는 초기 상태를 설정하는 초기자 (initializer) 도 가지고 있습니다. 이 초기자는 `generator` 라는 매개 변수를 가지는데, 타입은 역시  `RandomNumberGenerator` 입니다. 이를 준수하는 타입이라면 아무 값이라도 사용하여 새 `Dice` 인스턴스를 초기화 할 수 있습니다.
 
@@ -142,9 +142,9 @@ extension PrettyTextRepresentable {
 }
 ```
 
-**Adding Constraints to Protocol Extensions (규약 확장 시에 제약 조건 추가하기)**
+**Adding Constraints to Protocol Extensions (프로토콜을 확장할 때 제약 조건 추가하기)**
 
-프로토콜 확장을 정의할 때 '제약 조건 (constraints)' 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 '제약 조건' 은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)](#generic-where-clauses-일반화된-Where-구절) 를 참고하기 바랍니다.[^POP]
+프로토콜 확장을 정의할 때 '제약 조건 (constraints)' 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 '제약 조건' 은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)](#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
 
 예를 들어, `Collection` (집합체) 프로토콜을 확장하면서 각 요소가 `Equatable` 프로토콜을 준수하는 경우에만 적용되도록 할 수 있습니다. 컬렉션의 요소를 (표준 라이브러리의 일부이기도 한) `Equatable` 프로토콜로만 제약하면, `==` 와 `!=` 연산자를 사용하여 두 요소가 같은지 다른지 검사할 수 있습니다.
 
