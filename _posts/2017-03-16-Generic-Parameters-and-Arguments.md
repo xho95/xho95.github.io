@@ -47,7 +47,6 @@ simpleMax(3.14159, 2.71828) // T 를 Double 로 추론합니다.
 ```
 
 #### Generic Where Clauses (일반화된 'Where' 구절)
-{: #generic-where-clauses }
 
 '타입 매개 변수 (type parameters)' 및 그의 '연관 타입 (associated types)' 에 추가적인 '필수 조건 (requirements)' 을 지정하려면 타입 또는 함수 본문의 '시작 중괄호' 바로 앞에 '일반화된 `where` 구절 (generic where clause)' 을 집어 넣으면 됩니다. '일반화된 `where` 구절' 은 `where` 키워드 다음에, 쉼표로-구분되는 하나 이상의 '_필수 조건 (requirements)_' 목록을 이어 붙여서 만듭니다.
 
