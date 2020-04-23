@@ -12,25 +12,25 @@ categories: Swift Language Grammar Protocol
 
 ## Protocols (규약)
 
-_프로토콜_ [^protocol]은 메소드, 속성, 그리고 그 밖의 요구 사항들 (requirements) 이 특정 작업이나 일부 기능 (functionality) 에 맞도록 하는 밑그림 (blueprint)[^blueprint]을 정의합니다. 그런 다음 클래스나 구조체 또는 열거체들이 그 프로토콜을 _채택 (adopt)_ 해서 요구 사항들을 실제로 구현합니다. 어떤 타입이든지 프로토콜의 요구 사항을 만족하기만 하면 그 프로토콜을 _준수한다 (conform)_ 라고 말합니다.
+_프로토콜_ [^protocol]은 메소드, 속성, 그리고 그 밖의 '필수 조건 (requirements)' 이 특정 작업이나 일부 기능 (functionality) 에 맞도록 하는 '밑그림 (blueprint)'[^blueprint]을 정의합니다. 그런 다음 클래스나 구조체 또는 열거체들이 그 프로토콜을 _채택 (adopt)_ 하여  '필수 조건 (requirements)' 을 실제로 구현합니다. 어떤 타입이든지 프로토콜의 '필수 조건 (requirements)' 을 만족하기만 하면 그 프로토콜을 _준수한다 (conform)_ 라고 말합니다.
 
-준수 타입 (conforming type) 이 요구 사항을 반드시 구현해야 하는 것과는 별개로, 프로토콜을 확장하는 것 또한 가능해서, 일부 요구 사항을 구현할 수도 있고 추가 기능의 구현을 통해서 준수 타입에게 편의를 제공할 수도 있습니다.
+준수 타입 (conforming type) 이 '필수 조건 (requirements)' 을 반드시 구현해야 하는 것과는 별개로, 프로토콜을 확장하는 것 또한 가능해서, 일부 '필수 조건 (requirements)' 을 구현할 수도 있고 추가 기능의 구현을 통해서 준수 타입에게 편의를 제공할 수도 있습니다.
 
 ### Protocol Syntax
 
-### Property Requirements
+### Property Requirements (속성 필수 조건)
 
-### Method Requirements
+### Method Requirements (메소드 필수 조건)
 
-### Mutating Method Requirements
+### Mutating Method Requirements (변경 메소드 필수 조건)
 
-### Initializer Requirements
+### Initializer Requirements (초기자 필수 조건)
 
 **Class Implementation of Protocol Initializer Requirements**
 
 **Failable Initializer Requirements**
 
-### Protocols as Types (프로토콜을 타입으로 사용하기)
+### Protocols as Types (타입으로써의 프로토콜)
 
 프로토콜은 실제로는 어떤 기능도 스스로 구현하지 않습니다. 그럼에도 불구하고 코드 내에서 온전한 타입인 것처럼 사용할 수 있습니다. 프로토콜을 타입인 것처럼 사용하는 것을 _실존 타입_ 이라 부르기도 하는데, 이것은 " 타입 T 는 **실** 제로 **존** 재하며, T 는 이 프로토콜을 준수한다" 는 문구에서 비롯된 것입니다.
 
@@ -97,15 +97,15 @@ for _ in 1...5 {
 
 ### Protocol Composition
 
-### Checking for Protocol Conformance
+### Checking for Protocol Conformance (프로토콜 준수 검사하기)
 
-### Optional Protocol Requirements
+### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
-### Protocol Extensions (규약 확장)
+### Protocol Extensions (프로토콜 확장)
 
-프로토콜은 확장을 통해서 (규약을) 준수(하는) 타입에 메소드, 초기자, 첨자 연산자, 그리고 계산 속성 (computed property) 들의 구현부를 제공할 수 있습니다. 이렇게 하면 프로토콜 자체에서 행위를 정의할 수 있으므로, 각각의 준수 타입이나 전역 (global) 함수 내에서 하는 것보다 편해집니다.
+프로토콜은 확장해서 이를 준수하는 타입의 메소드, 초기자, '첨자 연산 (subscript), 그리고 '계산 속성 (computed property)' 에 대한 구현을 제공할 수 있습니다. 이것은, 개별 준수 타입이나 전역 함수 대신, 프로토콜 자체에서 동작을 정의할 수 있게 해줍니다.
 
-예를 들어. `RandomNumberGenerator` 프로토콜을 확장하여 `randomBool()` 메서드를 추가하고, 요구 사항에 의해 구현된 `random()` 메서드의 결과를 사용하도록 해서 임의의 `Bool` 값을 반환하도록 할 수 있습니다:
+예를 들어. `RandomNumberGenerator` 프로토콜을 확장하면 `randomBool()` 메소드를 제공하도록 해서, '필수 (required)' 메소드인 `random()` 의 결과를 가지고 `Bool` 난수 값을 반환하게 할 수도 있습니다:
 
 ```swift
 extension RandomNumberGenerator {
@@ -128,9 +128,9 @@ print("And here's a random Boolean: \(generator.randomBool())")
 
 **Providing Default Implementations (기본 구현 제공하기)**
 
-프로토콜 확장을 사용하면 해당 프로토콜의 메소드 요구 사항이나 계산 속성 요구 사항들 어떤 것에 대해서도 기본 구현을 제공할 수 있습니다. 준수 타입이 요구된 (required) 메소드나 속성에 대해 자체적으로 구현을 제공할 경우, 이 구현이 확장에 의해 제공된 것을 대체하여 사용됩니다.
+프로토콜 확장을 사용하면 해당 프로토콜의 어떤 '메소드 필수 조건' 이나 '계산 속성 필수 조건' 에 대한 '기본 구현' 을 제공할 수 있습니다. 준수 타입이 '필수 (required)' 메소드나 속성에 대해 자체적으로 구현을 제공할 경우, 이 구현이 확장에 의해 제공된 것을 대체하여 사용됩니다.
 
-> 확장에 의해 기본 구현이 제공되는 프로토콜 요구 사항은 선택적 (optional) 프로토콜 요구 사항과는 다릅니다. 준수하는 타입이 자체적으로 구현을 제공 할 필요가 없다는 것은 같지만, 기본 구현을 가지는 요구 사항은 옵셔널 체이닝 (optional chaining) 없이 호출 할 수 있습니다.
+> 확장에 의해 기본 구현이 제공되는 프로토콜 '필수 조건' 은 선택적 (optional) 프로토콜 '필수 조건' 과는 다릅니다. 준수하는 타입이 자체적으로 구현을 제공 할 필요가 없다는 것은 같지만, 기본 구현을 가지는 '필수 조건' 은 '옵셔널 연쇄 (optional chaining)' 없이 호출 할 수 있습니다.
 
 예를 들어, `TextRepresentable` 프로토콜을 상속하는 `PrettyTextRepresentable` 프로토콜은 요구 속성인 `prettyTextualDescription` 의 기본 구현으로 간단히 `textualDescription` 속성을 반환하도록 할 수도 있습니다:
 
@@ -179,7 +179,7 @@ print(differentNumbers.allEqual())
 // Prints "false"
 ```
 
->(프로토콜을) 준수하는 타입이 제한 조건이 있는 확장 여러 개의 요구 사항을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 세분화된 제한 조건을 따르는 구현을 사용합니다.
+>(프로토콜을) 준수하는 타입이 제한 조건이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 세분화된 제한 조건을 따르는 구현을 사용합니다.
 
 ### 생각해보기
 

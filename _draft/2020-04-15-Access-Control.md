@@ -273,6 +273,10 @@ public struct TrackedString {
 
 ### Initializers (초기자)
 
+사용자 정의 이니셜 라이저는 초기화하는 유형 이하의 액세스 레벨을 지정할 수 있습니다. 필수 이니셜 라이저 (필수 이니셜 라이저에 정의 된)는 예외입니다. 필요한 이니셜 라이저는 자신이 속한 클래스와 동일한 액세스 레벨을 가져야합니다.
+
+함수 및 메소드 매개 변수와 마찬가지로 이니셜 라이저 매개 변수의 유형은 이니셜 라이저 자신의 액세스 레벨보다 더 비공개 일 수 없습니다.
+
 #### Default Initializers (기본 초기자)
 
 #### Default Memberwise Initializers for Structure Types (구조체 타입을 위한 기본 멤버 초기자)

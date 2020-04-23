@@ -12,7 +12,7 @@ categories: Xcode Swift Grammar Extensions
 
 ## Extensions (확장)
 
-_익스텐션 (Extensions)_ [^extension]은 이미 존재하는 클래스, 구조체, 열거체[^enumeration] 또는 프로토콜 타입에 새로운 기능 (functionality)[^functionality] 을 추가하는 식으로 확장하는 것입니다. 원본 소스 코드에 접근할 수 없는 타입도 확장이 가능합니다. (이를 _`retroactive modeling (소급 적용 모델링)`_ 이라고 합니다.)[^retroactive-modeling] 익스텐션은 오브젝티브-C 의 카테고리 (categries) 와 유사합니다. (하지만 오브젝티브-C 의 카테고리와는 다르게, 스위프트의 익스텐션은 이름을 가지지 않습니다.)
+_익스텐션 (Extensions)_ [^extension]은 이미 존재하는 클래스, 구조체, 열거체[^enumeration] 또는 프로토콜 타입에 새로운 기능 (functionality)[^functionality] 을 추가하는 식으로 확장하는 것입니다. 원본 소스 코드에 접근할 수 없는 타입도 확장이 가능합니다. (이를 _`retroactive modeling (소급 적용 모델링)`_ 이라고 합니다.)[^retroactive-modeling] 익스텐션은 오브젝티브-C 의 카테고리 (categories) 와 유사합니다. (하지만 오브젝티브-C 의 카테고리와는 다르게, 스위프트의 익스텐션은 이름을 가지지 않습니다.)
 
 스위프트의 익스텐션은 다음과 같은 것들을 할 수 있습니다:
 
@@ -23,7 +23,7 @@ _익스텐션 (Extensions)_ [^extension]은 이미 존재하는 클래스, 구�
 * 새로운 '품어진 타입 (nested types)' 정의하고 사용하기
 * 기존 타입이 특정한 프로토콜을 준수하도록 만들기
 
-스위프트에서는 프로토콜도 확장할 수 있어서, 요구 사항 (requirements) 에 대한 구현을 제공하거나 추가 기능을 덧붙여서 준수하는 타입에게 편의를 제공할 수 있습니다. 이에 대한 자세한 내용은 **Protocol Extensions (프로토콜 확장)** 을 참고하기 바랍니다.
+스위프트에서는, 프로토콜을 확장해서 '필수 조건 (requirements)' 에 대한 구현을 제공하거나 또는 추가적인 기능을 추가하여 (프로토콜을) 준수하는 타입에게 편의를 제공할 수도 있습니다. 이에 대한 자세한 내용은 [Protocol Extensions (프로토콜 확장)](#protocol-extensions-프로토콜-규약-확장) 을 참고하기 바랍니다.
 
 > 익스텐션은 타입에 새로운 기능을 추가할 수 있지만, 이미 있는 기능을 덮어쓸 (override) 수는 없습니다.
 
@@ -33,7 +33,7 @@ _익스텐션 (Extensions)_ [^extension]은 이미 존재하는 클래스, 구�
 
 ```swift
 extension SomeType {
-  // 여기에 SomeType 에 추가할 새 기능을 작성합니다.
+  // 여기서 SomeType 의 새로운 기능을 추가합니다.
 }
 ```
 
@@ -41,13 +41,13 @@ extension SomeType {
 
 ```swift
 extension SomeType: SomeProtocol, AnotherProtocol {
-  // 여기에 프로토콜의 요구 사항에 대한 구현을 작성합니다.
+  // 여기서 프로토콜의 '필수 조건 (requirements)' 을 구현합니다.
 }
 ```
 
-이와 같은 방식으로 프로토콜을 준수하도록 하는 방법은 **Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수하도록 만들기)** 부분에서 더 설명하도록 합니다.
+이와 같은 방식으로 프로토콜을 준수하도록 하는 방법은 [Adding Protocol Conformance with an Extension (확장을 써서 프로토콜을 준수하게 만들기)](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#ID277) 부분에서 더 설명하도록 합니다.
 
-익스텐션으로 이미 존재하는 일반화된 타입 (generic type) 도 확장할 수 있으며, 이는 **Extending a Generic Type (일반화된 타입 확장하기)** 에서 설명합니다. 일반화된 타입을 확장할 때 조건부로 기능을 추가할 수도 있는데, 이는 **Extensions with a Generic Where Clause (일반화된 Where 구절을 사용하여 확장하기)** 에서 설명하도록 합니다.
+익스텐션으로 이미 존재하는 일반화된 타입 (generic type) 도 확장할 수 있으며, 이는 [Extending a Generic Type (일반화된 타입 확장하기)](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID185) 에서 설명합니다. 일반화된 타입을 확장할 때 조건부로 기능을 추가할 수도 있는데, 이는 [Extensions with a Generic Where Clause (일반화된 Where 구절을 사용하여 확장하기)](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID553) 에서 설명하도록 합니다.
 
 > 익스텐션을 정의해서 기존 타입에 새 기능을 추가하면, 이 기능은 해당하는 타입의 이미 존재하는 모든 인스턴스에서 사용할수 있으며, 익스텐션이 정의되기 전에 생성된 인스턴스도 예외가 아닙니다.
 

@@ -418,7 +418,7 @@ class NamedShape {
 
 객체를 해제하기 전에 어떤 정리 작업을 수행해야 할 경우 `deinit` 을 사용하여 '정리자 (deinitializer)' 를 만들도록 합니다.
 
-'하위 클래스 (subclasses)' 는 클래스 이름 뒤에, 콜론으로 구분된, '상위 클래스 (superclass)' 이름을 포함합니다. 클래스가 어떤 '표준 루트 클래스 (standard root class)' 의 '하위 클래스' 여야 한다는 요구 사항은 전혀 없으므로, 필요에 따라 '상위 클래스' 를 포함할 수도 있고 생략할 수도 있습니다.
+'하위 클래스 (subclasses)' 는 클래스 이름 뒤에, 콜론으로 구분된, '상위 클래스 (superclass)' 이름을 포함합니다. 클래스가 어떤 '표준 근원 클래스 (standard root class)' 의 '하위 클래스' 여야 한다는 '필수 조건 (requirement)' 은 전혀 없으므로, 필요에 따라 '상위 클래스' 를 포함할 수도 있고 생략할 수도 있습니다.
 
 '하위 클래스' 의 메소드가 '상위 클래스' 의 구현을 '재정의 (override)' 할 경우 `override` 를 써서 표시합니다—우연히 메소드를 재정의하면서, `override` 를 붙이지 않을 경우, 컴파일러는 에러라고 감지합니다. 컴파일러는 메소드에 `override` 를 붙이고도 실제로는 '상위 클래스' 의 어떤 메소드도 재정의하지 않는 경우도 감지합니다.
 
@@ -678,7 +678,7 @@ let bDescription = b.simpleDescription
 
 > 실험
 >
-> `ExampleProtocol` 에 또 다른 '요구 사항 (requirement)' 을 추가해 봅시다. `SimpleClass` 와 `SimpleStructure` 가 여전히 이 프로토콜을 '준수 (conform)' 하도록 하려면 무엇을 바꿔야 할까요?
+> `ExampleProtocol` 에 또 다른 '필수 조건 (requirement)' 을 추가해 봅시다. `SimpleClass` 와 `SimpleStructure` 가 여전히 이 프로토콜을 '준수 (conform)' 하도록 하려면 무엇을 바꿔야 할까요?
 
 `SimpleStructure` 선언 내부에서 메소드가 구조체를 수정하고 있음을 표시하기 위해 `mutating` 키워드를 사용함에 주목하기 바랍니다. `SimpleClass` 선언에서는 어떤 메소드도 'mutating (변경)' 표시를 할 필요가 없는데 이는 클래스 메소드는 항상 클래스를 수정할 수 있기 때문입니다.
 
@@ -825,7 +825,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-본문 바로 앞에 `where` 를 사용하면 '요구 사항의 목록 (a list of requirements)' 을 지정할 수 있습니다-예를 들어, 타입이 프로토콜을 구현해야 한다는 요구 사항, 두 타입이 같아야 한다는 요구 사항, 또는 클래스가 특정한 '상위 클래스' 를 가져야 한다는 요구 사항 등이 있을 수 있습니다.
+본문 바로 앞에 `where` 를 사용하면 '필수 조건들의 목록 (a list of requirements)' 을 지정할 수 있습니다-예를 들어, 이 타입은 필수적으로 어떤 프로토콜을 구현해야 한다거나, 두 타입은 반드시 필수적으로 같아야 한다거나, 또는 이 클래스는 필수적으로 특정 '상위 클래스' 를 가져야 한다거나 등을 지정할 수 있습니다.
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
