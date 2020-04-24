@@ -281,7 +281,7 @@ public struct TrackedString {
 
 [Default Initializers (기본 설정 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-설정-초기자) 에서 설명한 것처럼, 스위프트는 어떤 구조체나 '기본 클래스 (base class)' 가 모든 속성에 대한 '기본 설정 값' 을 제공하면서도 스스로는 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다.
 
-기본 이니셜 라이저는 해당 유형이 public으로 정의되지 않은 경우 초기화하는 유형과 동일한 액세스 레벨을 갖습니다. public으로 정의 된 형식의 경우 기본 이니셜 라이저는 내부로 간주됩니다. 다른 모듈에서 인수를 사용하지 않는 초기화 프로그램을 사용하여 공개 유형을 초기화 할 수있게하려면 유형 정의의 일부로 공개 인수없는 초기화 프로그램을 명시 적으로 제공해야합니다.
+'기본 설정 초기자' 는, 해당 타입이 `public` 으로 정의되어 있는 경우를 제외하면, 자기가 초기화하는 타입과 같은 접근 수준을 가집니다. 타입이 `public` 으로 정의된 경우에는, '기본 설정 초기자' 가 'internal (내부)' 인 것으로 고려됩니다. 'public (공용)' 타입을 다른 모듈에서 사용할 때 '인자가 없는 (no-argument)' 초기자로 초기화하고 싶으면, 반드시 타입을 정의할 때 'public no-argument initializer (공용의 인자-없는 초기자)' 를 명시적으로 제공해야 합니다.
 
 #### Default Memberwise Initializers for Structure Types (구조체 타입을 위한 기본 멤버 초기자)
 
