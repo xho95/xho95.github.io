@@ -88,7 +88,7 @@ fileprivate func someFilePrivateFunction() {}
 private func somePrivateFunction() {}
 ```
 
-따로 지정하지 않는다면, 기본 접근 수준은 'internal (내부)' 이며, 이는 [Default Access Levels (기본 접근 수준)](#default-cccess-levels-기본-접근-수준) 에서 설명한 바 있습니다. 이것은 `SomeInternalClass` 와 `someInternalConstant` 에는 명시적인 '접근-수준 수정자 (access-level modifier)' 를 쓰지 않아도 되며, 그래도 여전히 'internal (내부)' 접근 수준을 가진다는 것을 의미합니다.
+따로 지정하지 않는다면, 기본 접근 수준은 'internal (내부)' 이며, 이는 [Default Access Levels (기본 접근 수준)](#default-access-levels-기본-접근-수준) 에서 설명한 바 있습니다. 이것은 `SomeInternalClass` 와 `someInternalConstant` 에는 명시적인 '접근-수준 수정자 (access-level modifier)' 를 쓰지 않아도 되며, 그래도 여전히 'internal (내부)' 접근 수준을 가진다는 것을 의미합니다.
 
 ### Custom Types (사용자 정의 타입)
 
