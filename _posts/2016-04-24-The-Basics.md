@@ -39,7 +39,7 @@ var currentLoginAttempt = 0
 
 이 코드는 다음 처럼 이해할 수 있습니다:
 
-"새로운 상수 `maximNumberOfLoginAttempts` 를 선언하고, 값은 `10` 으로 줍니다. 그런 다음, 새로운 변수 `currentLoginAttempt` 를 선언하고, 초기 값으로 `0` 을 줍니다."
+"새로운 상수 `maximNumberOfLoginAttempts` 를 선언하고, 값은 `10` 으로 줍니다. 그런 다음, 새로운 변수 `currentLoginAttempt` 를 선언하고, 기본 설정 값으로 `0` 을 줍니다."
 
 이 예에서, '허용 가능한 최대 로그인 시도 횟수' 는 상수로 선언했는데, 이는 최대 값이 절대로 변하지 않기 때문입니다. '현재 로그인 시도 횟수' 는 변수로 선언했는데, 이는 로그인 시도가 실패할 때마다 반드시 값이 증가돼야 하기 때문입니다.
 
@@ -79,7 +79,7 @@ welcomeMessage = "Hello"
 var red, green, blue: Double
 ```
 
-> 실제로 '타입 보조 설명 (type annotations)' 을 쓸 일은 거의 없습니다. 상수나 변수를 정의할 때 초기 값을 제공하면, 스위프트는 거의 항상 상수나 변수에서 사용할 타입을 추론할 수 있으며, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322) 에서 설명합니다. 위에 있는 `welcomeMessage` 예제에서는, 초기 값이 제공되지 않았으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하지 않고 '타입 보조 설명' 으로 지정했습니다.
+> 실제로 '타입 보조 설명 (type annotations)' 을 쓸 일은 거의 없습니다. 상수나 변수를 정의할 때 기본 설정 값을 제공하면, 스위프트는 거의 항상 상수나 변수에서 사용할 타입을 추론할 수 있으며, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322) 에서 설명합니다. 위에 있는 `welcomeMessage` 예제에서는, 기본 설정 값이 제공되지 않았으므로, `welcomeMessage` 변수의 타입을 기본 설정 값으로 추론하지 않고 '타입 보조 설명' 으로 지정했습니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
@@ -122,7 +122,7 @@ print(friendlyWelcome)
 // "Bonjour!" 를 출력합니다.
 ```
 
-`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과 형태로 출력하는 전역 함수입니다. 예를 들어, Xcode (엑스코드) 에서는, `print(_:separator:terminator:)` 함수가 그 결과를 Xcode 의 "console (콘솔)" 창에 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 값을 갖고 있으므로, 이 함수를 호출할 때 생략할 수 있습니다. 기본적으로, 이 함수는 줄의 마지막에 '줄 바꿈 (line break)' 을 추가하여 출력합니다. 값을 출력할 때 끝에 줄 바꿈을 없애려면, 'terminator (종료자)'에 빈 문자열을 전달하면 됩니다-예를 들어, `print(someValue, terminator : "")` 처럼 하면 됩니다. '기본 값을 가지는 매개 변수' 에 대해서는 [Default Parameter Values](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID169) 를 보기 바랍니다.
+`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과 형태로 출력하는 전역 함수입니다. 예를 들어, Xcode (엑스코드) 에서는, `print(_:separator:terminator:)` 함수가 그 결과를 Xcode 의 "console (콘솔)" 창에 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 설정 값을 갖고 있으므로, 이 함수를 호출할 때 생략할 수 있습니다. 기본적으로, 이 함수는 줄의 마지막에 '줄 바꿈 (line break)' 을 추가하여 출력합니다. 값을 출력할 때 끝에 줄 바꿈을 없애려면, 'terminator (종료자)'에 빈 문자열을 전달하면 됩니다-예를 들어, `print(someValue, terminator : "")` 처럼 하면 됩니다. '기본 설정 값을 가지는 매개 변수' 에 대해서는 [Default Parameter Values (기본 설정 매개 변수 값)](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID169) 를 보도록 합니다.
 
 
 스위프트는 '_문자열 보간법 (string interpolation)_' 을 사용하여 긴 문자열 속에 상수나 변수 이름으로 '자리 표시 (placeholder)' 를 하고, 스위프트가 그 자리를 해당 상수나 변수의 현재 값으로 교체하도록 알려줄 수 있습니다. 이는 이름을 괄호로 감싼 다음, 시작 괄호 앞에 역-슬래시 (backslash) 로 'escape (벗어나게)'[^escape] 하면 됩니다:
@@ -226,7 +226,7 @@ _부동-소수점 수 (floating-point numbers)_ 는 분수 성분이 있는 수�
 
 '타입 추론 장치 (type inference)' 덕분에, 스위프트에서 타입 선언이 필요한 경우는 C 나 오브젝트브-C 같은 언어들에 비해 훨씬 적습니다.  상수와 변수의 타입은 여전히 명시적이어야 하지만, 타입을 지정하는 대부분의 작업은 자동으로 이루어집니다.
 
-'타입 추론 장치' 가 더 유용한 순간은 상수나 변수를 선언할 때 초기 값이 있는 경우입니다. 이는 보통 상수나 변수를 선언하는 시점에 _글자표현 값 (literal value)_ (또는 그냥 '_글자표현 (literal)_') 을 할당하는 것으로 이루어 집니다. ('글자표현 값 (literal value)' 은 소스 코드 상에서 직접 드러나는 값을 말하는 것으로, 아래 예제에 있는 `42` 와 `3.14159` 같은 것들이 이에 해당합니다.)
+'타입 추론 장치' 가 더 유용한 순간은 상수나 변수를 선언할 때 기본 설정 값이 있는 경우입니다. 이는 보통 상수나 변수를 선언하는 시점에 _글자표현 값 (literal value)_ (또는 그냥 '_글자표현 (literal)_') 을 할당하는 것으로 이루어 집니다. ('글자표현 값 (literal value)' 은 소스 코드 상에서 직접 드러나는 값을 말하는 것으로, 아래 예제에 있는 `42` 와 `3.14159` 같은 것들이 이에 해당합니다.)
 
 예를 들어, 글자표현 값 `42` 를 새로운 상수에 할당하면서 타입을 알리지 않으면, 스위프트는 원하는 상수가 `Int` 라고 추론하며, 이는 정수 처럼 보이는 수로 초기화를 했기 때문입니다:
 
@@ -328,7 +328,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 양쪽 타입이 모두 `UInt16` 이므로, 더하기가 가능합니다. '결과 상수 (`twoThousandAndOne`)' 의 타입도, 두 `UInt16` 값의 합이기 때문에, `UInt16` 으로 추론됩니다.
 
-`SomeType(ofInitialValue)` 는 스위프트에서 타입의 초기자를 호출하고 초기 값을 전달하는 기본적인 방법입니다. 속을 들여다보면, `UInt16` 는 `UInt8` 값을 받아들이는 초기자를 가지고 있어서, 이 초기자를 사용해서 기존의 `UInt8` 로 새로운 `UInt16` 를 만들 수 있는 것입니다. 여기서, _아무 (any)_ 타입이나 전달해서는 안되며-`UInt16` 가 제공하는 초기자에 맞는 타입이라야만 합니다. 기존 타입을 확장해서 (자기가 정의한 타입을 포함한) 새로운 타입을 받아들이는 초기자를 제공하려면 [Extensions (확장))](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html) 을 참고하기 바랍니다.
+`SomeType(ofInitialValue)` 는 스위프트에서 타입의 초기자를 호출하고 기본 설정 값을 전달하는 기본적인 방법입니다. 속을 들여다보면, `UInt16` 는 `UInt8` 값을 받아들이는 초기자를 가지고 있어서, 이 초기자를 사용해서 기존의 `UInt8` 로 새로운 `UInt16` 를 만들 수 있는 것입니다. 여기서, _아무 (any)_ 타입이나 전달해서는 안되며-`UInt16` 가 제공하는 초기자에 맞는 타입이라야만 합니다. 기존 타입을 확장해서 (자기가 정의한 타입을 포함한) 새로운 타입을 받아들이는 초기자를 제공하려면 [Extensions (확장))](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html) 을 참고하기 바랍니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
@@ -371,7 +371,7 @@ var maxAmplitudeFound = AudioSample.min
 // maxAmplitudeFound 는 이제 0 입니다.
 ```
 
-여기서는, `AudioSample` 을 `UInt16` 의 별명으로 정의했습니다. 이것은 별명이므로, `AudioSample.min` 을 호출하는 것은 실제로 `UInt16.min` 를 호출하는 것이며, 이는 `maxAmplitudeFound` 변수에 초기 값으로 `0` 을 제공하게 됩니다.
+여기서는, `AudioSample` 을 `UInt16` 의 별명으로 정의했습니다. 이것은 별명이므로, `AudioSample.min` 을 호출하는 것은 실제로 `UInt16.min` 를 호출하는 것이며, 이는 `maxAmplitudeFound` 변수에 기본 설정 값으로 `0` 을 제공하게 됩니다.
 
 ### Booleans (불린; 논리 값)
 
@@ -513,7 +513,7 @@ serverResponseCode = nil
 
 > `nil` 은 '옵셔널이-아닌 (non-optional)' 상수와 변수에는 사용할 수 없습니다. 코드 내의 상수나 변수를 쓸 때 특정 조건에서는 값이 없을 수도 있다면, 항상 적당한 타입의 옵셔널 값으로 선언해야 합니다.
 
-옵셔널 변수를 정의할 때 기본 값을 제공하지 않으면, 그 변수는 자동으로 `nil` 로 설정됩니다:
+옵셔널 변수를 정의할 때 기본 설정 값을 제공하지 않으면, 그 변수는 자동으로 `nil` 로 설정됩니다:
 
 ```swift
 var surveyAnswer: String?

@@ -266,7 +266,7 @@ if hasHeader {
 
 ### Nil-Coalescing Operator (Nil-합체 연산자)
 
-_nil-합체 연산자 (nil-coalescing operator)_ (`a ?? b`) 는 옵셔널 `a` 에 값이 있으면 `a` 를 풀고, `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입이어야 합니다. 표현식 `b` 는 반드시 `a` 에 저장된 것과 타입이 일치해야 합니다.
+_nil-합체 연산자 (nil-coalescing operator)_ (`a ?? b`) 는 옵셔널 `a` 에 값이 있으면 `a` 를 풀고, `a` 가 `nil` 이면 기본 설정 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입이어야 합니다. 표현식 `b` 는 반드시 `a` 에 저장된 것과 타입이 일치해야 합니다.
 
 'nil-합체 연산자 (nil-coalescing operator) 는 아래 코드의 약칭에 해당합니다:
 
@@ -285,17 +285,17 @@ let defaultColorName = "red"
 var userDefinedColorName: String?   // 기본으로 nil 이 됩니다.
 
 var colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 값인 "red" 입니다.
+// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 설정 값인 "red" 입니다.
 ```
 
-userDefinedColorName 변수는 선택적 값이며 기본값은 nil입니다. userDefinedColorName은 선택적 유형이므로 nil-coalescing 연산자를 사용하여 해당 값을 고려할 수 있습니다. 위의 예에서 연산자는 colorNameToUse라는 String 변수의 초기 값을 결정하는 데 사용됩니다. userDefinedColorName이 nil이므로 식 userDefinedColorName ?? defaultColorName은 defaultColorName 또는 "red"값을 반환합니다.
+userDefinedColorName 변수는 선택적 값이며 기본값은 nil입니다. userDefinedColorName은 선택적 유형이므로 nil-coalescing 연산자를 사용하여 해당 값을 고려할 수 있습니다. 위의 예에서 연산자는 colorNameToUse라는 String 변수의 기본 설정 값을 결정하는 데 사용됩니다. userDefinedColorName이 nil이므로 식 userDefinedColorName ?? defaultColorName은 defaultColorName 또는 "red"값을 반환합니다.
 
 userDefinedColorName에 nil이 아닌 값을 할당하고 nil-coalescing 연산자 검사를 다시 수행하면 userDefinedColorName에 래핑 된 값이 기본값 대신 사용됩니다.
 
 
-`userDefinedColorName` 변수는 옵셔널 `String` 으로 정의되었으며, 기본 값은 `nil` 입니다. `userDefinedColorName` 이 옵셔널 타입이므로, 해당 값에 `nil-합체 연산자` 를 적용할 수 있습니다. 위 예에서는, 이 연산자를 사용하여 `colorNameToUse` 라는 `String` 변수의 초기 값을 결정합니다. `userDefinedColorName` 이 `nil` 이기 때문에, 표현식 `userDefinedColorName ?? defaultColorName` 은 `defaultColorName` 의 값을 반환하며, 이는 `"red"` 입니다.
+`userDefinedColorName` 변수는 옵셔널 `String` 으로 정의되었으며, 기본 설정 값은 `nil` 입니다. `userDefinedColorName` 이 옵셔널 타입이므로, 해당 값에 `nil-합체 연산자` 를 적용할 수 있습니다. 위 예에서는, 이 연산자를 사용하여 `colorNameToUse` 라는 `String` 변수의 기본 설정 값을 결정합니다. `userDefinedColorName` 이 `nil` 이기 때문에, 표현식 `userDefinedColorName ?? defaultColorName` 은 `defaultColorName` 의 값을 반환하며, 이는 `"red"` 입니다.
 
-만약 '`nil` 이 아닌 값' 을 `userDefinedColorName` 에 할당한 다음에 'nil-합체 연산자' 검사를 다시 수행하면, 기본 값 대신에 `userDefinedColorName` 로 쌓여진 값을 사용합니다:
+만약 '`nil` 이 아닌 값' 을 `userDefinedColorName` 에 할당한 다음에 'nil-합체 연산자' 검사를 다시 수행하면, 기본 설정 값 대신에 `userDefinedColorName` 로 쌓여진 값을 사용합니다:
 
 ```swift
 userDefinedColorName = "green"

@@ -29,7 +29,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 * 기능을 기본 구현 이상으로 확대하도록 확장하기
 * 정해진 종류의 표준 기능을 제공하도록 프로토콜 준수하기
 
-더 자세한 내용은, [Properties (속성)], [Methods (메소드)], [Subscripts (첨자 연산)](http://xho95.github.io/swift/language/grammar/subscripts/2020/03/15/Subscripts.html), [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html), [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html), 그리고 [Protocols (프로토콜; 규약)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 을 참조하기 바랍니다.
+더 자세한 내용은, [Properties (속성)], [Methods (메소드)], [Subscripts (첨자 연산)](http://xho95.github.io/swift/language/grammar/subscripts/2020/03/15/Subscripts.html), [Initialization (초기화하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html), [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html), 그리고 [Protocols (프로토콜; 규약)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 을 참조하기 바랍니다.
 
 클래스는 구조체에는 없는 다음의 추가 기능들을 가지고 있습니다:
 
@@ -72,9 +72,9 @@ class VideoMode {
 }
 ```
 
-위의 예제는 `Resolution` 이라는 새 구조체를 정의해서, 픽셀 기반 디스플레이의 해상도를 묘사합니다. 이 구조체는 `width` 와 `height` 라는 두 개의 '저장 속성 (stored properties)' 을 가집니다. 저장 속성은 구조체나 클래스의 일부로 포함되어 저장되는 상수나 변수를 말합니다. 이 두 속성은 타입이 `Int` 로 추론되는데 이는 초기 값이 정수인 `0` 으로 설정되었기 때문입니다.
+위의 예제는 `Resolution` 이라는 새 구조체를 정의해서, 픽셀 기반 디스플레이의 해상도를 묘사합니다. 이 구조체는 `width` 와 `height` 라는 두 개의 '저장 속성 (stored properties)' 을 가집니다. 저장 속성은 구조체나 클래스의 일부로 포함되어 저장되는 상수나 변수를 말합니다. 이 두 속성은 타입이 `Int` 로 추론되는데 이는 기본 설정 값이 정수인 `0` 으로 설정되었기 때문입니다.
 
-위의 예제는 `VideoMode` 라는 새 클래스도 정의하며, 비디오 디스플레이를 위한 지정된 비디오 모드를 묘사하고 있습니다. 이 클래스는 네 개의 저장 속성 변수를 가집니다. 첫 번째인, `resolution` 은, 새로운 구조체인 `Resolution` 의 인스턴스로 초기화되어, 속성의 타입이 `Resolution` 으로 추론됩니다. 다른 세 개의 속성들로, `interlaced` 설정은 `false` ("비월 주사 방식"[^interlaced]의 의미), '프레임 재생 속도' 는 `0.0`, 그리고 `name` 이라는 옵셔널 `String` 값을 가지고 `VideoMode` 의 새로운 인스턴스가 초기화 됩니다. `name` 속성의 기본 값은 자동으로 `nil`, 또는 "`name` 값이 없음", 이 되는데, 이는 옵셔널 타입이기 때문입니다.
+위의 예제는 `VideoMode` 라는 새 클래스도 정의하며, 비디오 디스플레이를 위한 지정된 비디오 모드를 묘사하고 있습니다. 이 클래스는 네 개의 저장 속성 변수를 가집니다. 첫 번째인, `resolution` 은, 새로운 구조체인 `Resolution` 의 인스턴스로 초기화되어, 속성의 타입이 `Resolution` 으로 추론됩니다. 다른 세 개의 속성들로, `interlaced` 설정은 `false` ("비월 주사 방식"[^interlaced]의 의미), '프레임 재생 속도' 는 `0.0`, 그리고 `name` 이라는 옵셔널 `String` 값을 가지고 `VideoMode` 의 새로운 인스턴스가 초기화 됩니다. `name` 속성의 기본 설정 값은 자동으로 `nil`, 또는 "`name` 값이 없음", 이 되는데, 이는 옵셔널 타입이기 때문입니다.
 
 #### Structure and Class Instances (구조체 인스턴스와 클래스 인스턴스)
 
@@ -87,7 +87,7 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에서 더 자세히 설명합니다.
+구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 설정 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 에서 더 자세히 설명합니다.
 
 #### Accessing Properties (속성에 접근하기)
 
@@ -98,7 +98,7 @@ print ( "The width of someResolution is \(someResolution.width)")
 // "The width of someResolution is 0" 를 출력합니다.
 ```
 
-이 예제에서, `someResolution.width` 는 `someResolution` 의 `width` 속성을 참조하므로, 그것의 기본 초기 값인 `0` 을 반환합니다.
+이 예제에서, `someResolution.width` 는 `someResolution` 의 `width` 속성을 참조하므로, 그것의 기본 기본 설정 값인 `0` 을 반환합니다.
 
 '하위 속성' 으로 계속 파고 들 수도 있어서, 가령 `VideoMode` 의 `resolution` 속성에 있는 `width` 속성도 접근 가능합니다:
 
@@ -117,13 +117,13 @@ print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
 
 #### Memberwise Initializers for Structure Types (구조체 타입에 대한 멤버 초기자)
 
-모든 구조체는 자동으로 생겨나는 '_멤버 초기자 (memberwise initializer)_'를 가지고 있어서, 이것을 사용하여 새로운 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다. 새 인스턴스 속성에 대한 초기 값을 멤버 초기자에 전달할 때는 이름을 사용하면 됩니다:
+모든 구조체는 자동으로 생겨나는 '_멤버 초기자 (memberwise initializer)_'를 가지고 있어서, 이것을 사용하여 새로운 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다. 새 인스턴스 속성에 대한 기본 설정 값을 멤버 초기자에 전달할 때는 이름을 사용하면 됩니다:
 
 ```swift
 let vga = Resolution(width: 640, height: 480)
 ```
 
-구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html) 에서 더 자세히 설명합니다.
+구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 에서 더 자세히 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 

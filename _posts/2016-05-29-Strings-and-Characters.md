@@ -26,7 +26,7 @@ _문자열 (string)_ 문자가 연속되어 있는 것으로, `"hello, world"` �
 
 미리 정의된 `String` 값을 코드 내에 _문자열 글자표현 (string literals)_ 의 형태로 포함할 수 있습니다. '문자열 글자표현' 은 큰 따옴표 (`"`) 로 묶인 일련의 문자들을 말합니다.
 
-문자열 글자표현은 상수나 변수의 초기 값으로 사용됩니다:
+문자열 글자표현은 상수나 변수의 기본 설정 값으로 사용됩니다:
 
 ```swift
 let someString = "Some string literal value"

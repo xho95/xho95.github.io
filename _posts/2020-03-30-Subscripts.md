@@ -82,7 +82,7 @@ numberOfLegs["bird"] = 2
 
 첨자 연산의 입력 매개 변수는 개수가 몇 개가 되든 상관이 없으며, 입력 매개 변수의 타입도 어떤 타입이든 상관이 없습니다. 첨자 연산은 또 어떤 타입의 값이라도 반환할 수 있습니다.
 
-함수와 마찬가지로, 첨자 연산은 가변 개수의 매개 변수도 받을 수 있고 매개 변수에 기본 값을 제공할 수도 있는데, 이는 [Variadic Parameters](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID171) 와 [Default Parameter Values](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID169) 에서 설명하고 있습니다. 하지만, 함수와는 다르게, 첨자 연산에는 'in-out (입-출력)' 매개 변수를 사용할 수는 없습니다.
+함수와 마찬가지로, 첨자 연산은 가변 개수의 매개 변수도 받을 수 있고 매개 변수에 기본 설정 값을 제공할 수도 있는데, 이는 [Variadic Parameters](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID171) 와 [Default Parameter Values](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID169) 에서 설명하고 있습니다. 하지만, 함수와는 다르게, 첨자 연산에는 'in-out (입-출력)' 매개 변수를 사용할 수는 없습니다.
 
 클래스나 구조체는 첨자 연산 구현을 필요한 만큼 많이 제공 할 수 있는데, 이 중에서 어떤 첨자 연산을 사용하는 것이 알맞은 지는 첨자 연산이 사용되는 시점에서 첨자 연산이 괄호 안에 가지고 있는 값이나 갑들의 타입에 기반하여 추론됩니다. 이렇게 여러 개의 첨자 연산을 정의하는 것을 _첨자 연산 중복 정의 (subscript overloading)_ 라고 합니다.
 
@@ -113,7 +113,7 @@ struct Matrix {
 }
 ```
 
-`Matrix` 가 제공하는 초기자는 두 개의 매개 변수인 `rows` 와 `columns` 을 받아서, 타입이 `Double` 이고 `rows * columns` 값들을 저장하기에 충분한 크기의 배열을 만듭니다. 행렬의 각 위치에 주어진 초기 값은 `0.0` 입니다. 이를 위해, 배열의 크기 값과, 초기 셀 값인 `0.0` 을 배열 초기자에 전달하여 정확한 크기의 새 배열을 만들고 초기화하고 있습니다. 이러한 '초기자' 는 [Creating an Array with a Default Value (기본 값을 갖는 배열 만들기)](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID501) 에서 더 자세히 설명하도록 합니다.
+`Matrix` 가 제공하는 초기자는 두 개의 매개 변수인 `rows` 와 `columns` 을 받아서, 타입이 `Double` 이고 `rows * columns` 값들을 저장하기에 충분한 크기의 배열을 만듭니다. 행렬의 각 위치에 주어진 기본 설정 값은 `0.0` 입니다. 이를 위해, 배열의 크기 값과, 초기 셀 값인 `0.0` 을 배열 초기자에 전달하여 정확한 크기의 새 배열을 만들고 초기화하고 있습니다. 이러한 '초기자' 는 [Creating an Array with a Default Value (기본 설정 값을 갖는 배열 만들기)](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID501) 에서 더 자세히 설명하도록 합니다.
 
 알맞은 행과 열의 개수를 초기자에 전달하면 새로운 `Matrix` 인스턴스를 만들 수 있습니다:
 

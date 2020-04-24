@@ -12,7 +12,7 @@ categories: Xcode Swift Grammar Initialization
 
 ## Initialization (객체 초기화하기)
 
-### Setting Initial Values for Stored Properties (저장 속성을 위한 초기 값 설정하기)
+### Setting Initial Values for Stored Properties (저장 속성을 위한 기본 설정 값 설정하기)
 
 #### Initializers (초기자)
 

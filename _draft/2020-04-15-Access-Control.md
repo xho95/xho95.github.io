@@ -273,16 +273,15 @@ public struct TrackedString {
 
 ### Initializers (초기자)
 
-Custom initializers can be assigned an access level less than or equal to the type that they initialize. The only exception is for required initializers (as defined in Required Initializers). A required initializer must have the same access level as the class it belongs to.
+직접 만든 초기자에는 초기화하려는 타입보다 같거나 더 낮은 수준의 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 '필수 초기자 (required initializers)' 입니다. ([Required Initializers (필수 초기자)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID231) 에서 정의한 바와 같습니다.) '필수 초기자' 는 자신이 속해 있는 클래스와 같은 접근 수준을 가져야 합니다.
 
-As with function and method parameters, the types of an initializer’s parameters can’t be more private than the initializer’s own access level.
-
-
-직접 정의하는 초기자는 그것이 초기화하는 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 '필수 초기자 (required initializers)' 입니다. (이는 [Required Initializers (필수 초기자)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID231) 에서 정의한 바와 같습니다.) '필수 초기자' 는 자신이 속해 있는 클래스와 같은 접근 수준을 가져야만 합니다.
-
-함수 매개 변수 및 메소드 매개 변수 처럼, 초기자의 매개 변수 타입도 초기자가 가지고 있는 접근 수준보다 더 'private (개인적)' 일 수 없습니다.
+'함수 매개 변수' 및 '메소드 매개 변수' 처럼, 초기자의 매개 변수 타입도 초기자가 가지고 있는 접근 수준보다 더 '개인적 (private)' 일 수 없습니다.
 
 #### Default Initializers (기본 초기자)
+
+[Default Initializers (기본 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 모든 속성에 대해 기본 값을 제공하면서도 스스로는 단 하나의 초기자를 제공하지 않는 구조체나  모든 속성에 대한 기본값을 제공하고 하나 이상의 이니셜 라이저 자체를 제공하지 않는 구조 또는 기본 클래스에 대한 인수없이 기본 이니셜 라이저를 자동으로 제공합니다.
+
+기본 이니셜 라이저는 해당 유형이 public으로 정의되지 않은 경우 초기화하는 유형과 동일한 액세스 레벨을 갖습니다. public으로 정의 된 형식의 경우 기본 이니셜 라이저는 내부로 간주됩니다. 다른 모듈에서 인수를 사용하지 않는 초기화 프로그램을 사용하여 공개 유형을 초기화 할 수있게하려면 유형 정의의 일부로 공개 인수없는 초기화 프로그램을 명시 적으로 제공해야합니다.
 
 #### Default Memberwise Initializers for Structure Types (구조체 타입을 위한 기본 멤버 초기자)
 
