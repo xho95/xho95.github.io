@@ -77,9 +77,9 @@ Swift에도 C++에서와 같이 사용자 정의 타입에 대해 자동으로 �
 
 ### Class Inheritance and Initialization (클래스 상속과 초기화)
 
-#### Designated Initializers and Convenience Initializers (지명된 초기자와 편의 초기자)
+#### Designated Initializers and Convenience Initializers ('지정 초기자' 와 '편의 초기자')
 
-#### Syntax for Designated and Convenience Initializers (지명된 초기자와 편의 초기자의 구문 표현)
+#### Syntax for Designated and Convenience Initializers ('지정 초기자' 와 '편의 초기자' 의 구문 표현)
 
 #### Initializer Delegation for Class Type (클래스 타입을 위한 초기자 위임하기)
 
@@ -105,25 +105,26 @@ Swift에도 C++에서와 같이 사용자 정의 타입에 대해 자동으로 �
 
 #### Initializer Inheritance and Overriding (초기자 상속과 재정의)
 
-#### Automatic Initializer Inheritance (자동 초기자 상속)
+#### Automatic Initializer Inheritance (자동적인 초기자 상속)
 
-상위 클래스의 초기자를 자동으로 상속받는다는 것은, 사실상 초기자를 중복적재할 필요가 없는 경우가 태반일 뿐만 아니라 상위 클래스의 초기자를 상속받을 때도 최소한의 노력으로 가능한 안전한 상황에서 할 수 있음을 뜻합니다.
+앞서 언급한 대로, 하위 클래스는 기본적으로 상위 클래스의 초기자를 상속받지 않습니다. 하지만, 지정된 조건을 만족할 경우에는 상위 클래스의 초기자를 자동적으로 상속 _받습니다. (are)_. 실제로, 이것은 일반적인 많은 상황에서 초기자를 '재정의 (override)' 할 필요는 없으며, 안전하기만 하다면 언제든 최소한의 노력으로 상위 클래스의 초기자를 상속받을 수 있다는 것을 의미합니다.
 
-우선 모든 속성들에 기본값을 준 하위 클래스를 만들었다면, 다음의 두 규칙이 적용됩니다:
+'하위 클래스' 에서 새로 도입한 모든 속성에 대해 '기본 설정 값' 을 제공한다고 가정하면, 다음의 두 규칙이 적용됩니다:
 
 **규칙 1**
 
-만약 하위 클래스가 어떤 지명된 초기자(designated Initializer)도 정의하지 않았다면, 자동으로 모든 상위 클래스의 지정 초기자를 상속합니다.
+  하위 클래스에서 어떤 '지정 초기자 (designated Initializer)' 도 정의하지 않았을 경우, 상위 클래스의 모든 '지정 초기자' 들을 자동으로 상속받습니다.
 
 **규칙 2**
 
-만약 하위 클래스가 상위 클래스의 모든 지정 초기자를 구현했다면-규칙 1에 의해 상속받거나, 클래스 정의에서 직접 구현했거나 상관없이-, 자동으로 상위 클래스의 모든 편의 초기자(convenience Initializers)를 상속합니다.
+  하위 클래스에서 상위 클래스의 '지정 초기자' 에 대한 모든 구현을 제공할 경우-'규칙 1' 에 의해서 상속을 받았든, 정의하면서 직접 구현을 제공했든 상관없이-이 때는 상위 클래스의 모든 '편의 초기자 (convenience Initializers)' 들을 자동으로 상속받습니다.
 
-이들 규칙은 하위 클래스에 또 다른 '편의 초기자' 를 추가한 경우에도 적용됩니다.
+이 규칙은 하위 클래스에서 '편의 초기자' 를 더 추가했어도 그대로 적용됩니다.
 
-> 하위 클래스는 상위 클래스의 지정 초기자를 편의 초기자로 구현할 수도 있는데, 이 때도 규칙 2를 만족하게 됩니다.
+> '규칙 2' 를 만족하기 위한 방편으로, 상위 클래스의 '지정 초기자' 를 하위 클래스에서 '편의 초기자' 의 형태로 구현할 수도 있습니다.
 
-#### Designated and Convenience Initialization in Action (지명된 초기자와 편의 초기자 실제 사례)
+
+#### Designated and Convenience Initialization in Action ('지정 초기자' 와 '편의 초기자' 의 실제 사례)
 
 ### Failable Initializers (실패 가능한 초기자)
 
