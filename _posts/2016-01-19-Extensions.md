@@ -89,13 +89,13 @@ print("A marathon is \(aMarathon) meters long")
 
 > 익스텐션은 이미 존재하는 속성들에 계산 속성을 새로 추가할 수는 있지만, 저장 속성 (stored properties)이나 속성 옵져버 (property observers) 를 추가할 수는 없습니다.
 
-### Initializers
+### Initializers (초기자)
 
-익스텐션은 이미 존재하는 타입에 초기자 (initializer) 를 새로 추가할 수 있습니다. 이를 활용하면, 다른 타입을 확장해서 초기자의 매개 변수로 내가 만든 타입도 넘겨줄 수 있으며, 원래 타입의 구현에는 없던 새로운 초기자 옵션을 제공하는 것도 가능해집니다.
+익스텐션은 이미 존재하는 타입에 '초기자 (initializer)' 를 새로 추가할 수 있습니다. 이를 활용하면, 다른 타입을 확장해서 초기자의 매개 변수로 내가 만든 타입도 넘겨줄 수 있으며, 원래 타입의 구현에는 없던 새로운 초기자 옵션을 제공하는 것도 가능해집니다.
 
 익스텐션은 클래스에 편의 초기자 (convenience initializers)를 새로 추가할 수는 있지만, 지명된 초기자 (designated initializers) 나 정리자 (deinitializers) 를 추가할 수는 없습니다. 지명된 초기자나 해제자는 반드시 본래의 클래스 구현에서 제공해야만 합니다.
 
-익스텐션을 사용해서 값 타입에 초기자를 추가하는 경우 중에서, 해당 값 타입이 모든 저장 속성에 '기본 설정 값' 을 제공하면서도 초기자가 정의된 것이 하나도 없는 경우, 익스텐션 내의 초기자에서 기본 초기자 (default initializer) 와 멤버 초기자 (memberwise initializer) 를 호출할 수 있습니다. 값 타입의 원래 구현에 초기자가 하나라도 있는 경우에는 해당하지 않으며, 이는 **Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)** 에 설명되어 있습니다.
+익스텐션을 사용해서 값 타입에 초기자를 추가하는 경우 중에서, 해당 값 타입이 모든 저장 속성에 '기본 설정 값' 을 제공하면서도 초기자가 정의된 것이 하나도 없는 경우, 익스텐션 내의 초기자에서 '기본 설정 초기자 (default initializer)' 와 '멤버 초기자 (memberwise initializer)' 를 호출할 수 있습니다. 값 타입의 원래 구현에 초기자가 하나라도 있는 경우에는 해당하지 않으며, 이는 **Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)** 에 설명되어 있습니다.
 
 익스텐션을 사용해서 다른 모듈에서 선언한 구조체에 초기자를 추가할 경우, 이 새 초기자 내에서 `self` 에 접근하려면 모듈에서 정의된 초기자 중 하나를 먼저 호출해야만 합니다.
 
@@ -116,7 +116,7 @@ struct Rect {
 }
 ```
 
-`Rect` 구조체는 모든 속성에 기본 설정 값을 제공하고 있으므로, [Default Initializers (기본 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-초기자) 에 설명한 것처럼, 자동으로 '기본 초기자'와 '멤버 초기자'를 가지게 됩니다. 이 초기자로 새 `Rect` 인스턴스를 만들 수 있습니다:
+`Rect` 구조체는 모든 속성에 기본 설정 값을 제공하고 있으므로, [Default Initializers (기본 설정 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-초기자) 에 설명한 것처럼, 자동으로 '기본 설정 초기자'와 '멤버 초기자'를 가지게 됩니다. 이 초기자로 새 `Rect` 인스턴스를 만들 수 있습니다:
 
 ```swift
 let defaultRect = Rect()

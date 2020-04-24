@@ -107,7 +107,7 @@ GitLab 을 위해서 SSH 를 생성할 때는 보통의 SSH 생성과는 다르�
 $ ssh-keygen -t rsa -C "GitLab" -b 4096
 ```
 
-`-t` 옵션은 SSH 키의 타입을 지정하기 위한 것으로 `rsa` 로 지정했습니다.  `-C` 옵션은 주석을 뜻하며 `"GitLab"` 을 위해 만들었음을 표시합니다. [^haruair-2220] `-b` 옵션은 비트수를 지정하는 부분인데 원래 기본값은 2048이지만, GitLab 은 그 두 배인 4096 을 사용해서 키를 만듭니다. [^storycompiler-112] [^linux-ssh-keygen]
+`-t` 옵션은 SSH 키의 타입을 지정하기 위한 것으로 `rsa` 로 지정했습니다.  `-C` 옵션은 주석을 뜻하며 `"GitLab"` 을 위해 만들었음을 표시합니다. [^haruair-2220] `-b` 옵션은 비트수를 지정하는 부분인데 원래 기본 값은 2048이지만, GitLab 은 그 두 배인 4096 을 사용해서 키를 만듭니다. [^storycompiler-112] [^linux-ssh-keygen]
 
 `ssh-keygen` 관련 옵션이 궁금할 경우 아래와 같이 `man` 명령을 사용해서 확인할 수도 있습니다만, 확실히 터미널에서 보기에는 분량이 많아서 조금 불편합니다.
 
@@ -193,7 +193,7 @@ $ ssh test@127.0.0.1 -p 22
 
 [^backlogtool-ssh]: [SSH 접속 설정](https://backlogtool.com/git-guide/kr/reference/ssh.html) 이라는 글은 Nulab 이라는 곳에서 공개한 온라인 책인 [누구나 쉽게 이해할 수 있는 Git 입문](https://backlogtool.com/git-guide/kr/) 에 있는 글입니다. 책 전체를 공개해 놓은 것을 보면 정말 대인배인 것 같습니다.
 
-[^non-default-ssh-key]: 파일 경로가 기본값이 아닌 경우 이 SSH 키를 GitLab 에 사용하고자 한다면 GitLab 홈페이지의 [Working with non-default SSH key pair paths](https://docs.gitlab.com/ce/ssh/README.html#working-with-non-default-ssh-key-pair-paths) 글을 먼저 참고 하시기 바랍니다. 물론 가능한한 기본 경로를 사용할 것을 추천합니다.
+[^non-default-ssh-key]: 파일 경로가 기본 값이 아닌 경우 이 SSH 키를 GitLab 에 사용하고자 한다면 GitLab 홈페이지의 [Working with non-default SSH key pair paths](https://docs.gitlab.com/ce/ssh/README.html#working-with-non-default-ssh-key-pair-paths) 글을 먼저 참고 하시기 바랍니다. 물론 가능한한 기본 경로를 사용할 것을 추천합니다.
 
 [^gitlab-ssh]: GitLab 에서 정리한 [SSH](https://docs.gitlab.com/ce/ssh/README.html) 관련 공식 문서에는 GitLab 이 비대칭 암호기술 (asymmetric cryptography) 을 사용하여 통신 채널을 암호화하기 때문에 공개키를 가지고 있지 않으면 암호화된 정보에 접근할 수 없다고 설명하고 있습니다.
 

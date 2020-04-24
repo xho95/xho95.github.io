@@ -240,7 +240,7 @@ struct TrackedString {
 }
 ```
 
-`TrackedString` 구조체는 '문자열 저장 속성' 인 `value` 를 정의하고, 초기 값은 `""` (빈 문자열) 로 둡니다. 이 구조체는 `numberOfEdits` 라는 '정수 저장 속성' 도 정의하여, `value` 가 수정된 횟수를 추적하는데 사용합니다. 이 '수정 추적 기능' 은 `value` 속성의 `didSet` '속성 관찰자 (property observer)' 를 써서 구현했으며, `value` 속성에 새 값을 설정할 때마다 `numberOfEdits` 를 증가하도록 합니다.
+`TrackedString` 구조체는 '문자열 저장 속성' 인 `value` 를 정의하고, 기본 설정 값은 `""` (빈 문자열) 로 둡니다. 이 구조체는 `numberOfEdits` 라는 '정수 저장 속성' 도 정의하여, `value` 가 수정된 횟수를 추적하는데 사용합니다. 이 '수정 추적 기능' 은 `value` 속성의 `didSet` '속성 관찰자 (property observer)' 를 써서 구현했으며, `value` 속성에 새 값을 설정할 때마다 `numberOfEdits` 를 증가하도록 합니다.
 
 `TrackedString` 구조체와 `value` 속성은 명시적인 '접근-수준 수정자 (access-level modifier)' 를 제공하지 않으므로, 둘 다 기본 접근 수준인 `internal` 을 부여 받습니다. 하지만, `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시해서 속성의 '획득자 (getter)' 가 여전히 기본 접근 수준인 'internal (내부)' 임에도 불구하고, `TrackedString` 구조체 코드의 일부에서는 속성을 설정할 수 있도록 했습니다. 이것은 `TrackedString` 이 `numberOfEdits` 속성을 내부에서는 수정할 수 있게 하면서도, 이 속성이 구조체 정의 외부에서 사용될 때는 '읽기-전용' 임을 나타내도록 해 줍니다.
 
@@ -277,9 +277,9 @@ public struct TrackedString {
 
 '함수 매개 변수' 및 '메소드 매개 변수' 처럼, 초기자의 매개 변수 타입도 초기자가 가지고 있는 접근 수준보다 더 '개인적 (private)' 일 수 없습니다.
 
-#### Default Initializers (기본 초기자)
+#### Default Initializers (기본 설정 초기자)
 
-[Default Initializers (기본 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 모든 속성에 대해 기본 값을 제공하면서도 스스로는 단 하나의 초기자를 제공하지 않는 구조체나  모든 속성에 대한 기본값을 제공하고 하나 이상의 이니셜 라이저 자체를 제공하지 않는 구조 또는 기본 클래스에 대한 인수없이 기본 이니셜 라이저를 자동으로 제공합니다.
+[Default Initializers (기본 설정 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 어떤 구조체나 '기본 클래스 (base class)' 가 모든 속성에 대한 '기본 설정 값' 을 제공하면서도 스스로는 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다.
 
 기본 이니셜 라이저는 해당 유형이 public으로 정의되지 않은 경우 초기화하는 유형과 동일한 액세스 레벨을 갖습니다. public으로 정의 된 형식의 경우 기본 이니셜 라이저는 내부로 간주됩니다. 다른 모듈에서 인수를 사용하지 않는 초기화 프로그램을 사용하여 공개 유형을 초기화 할 수있게하려면 유형 정의의 일부로 공개 인수없는 초기화 프로그램을 명시 적으로 제공해야합니다.
 
