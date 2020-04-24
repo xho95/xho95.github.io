@@ -41,7 +41,7 @@ _소스 파일 (source file)_ 은 모듈 내에 있는 단일한 스위프트 �
 
 'open (공개) 접근' 은 가장 높은 (가장 적게 제한된; least restrictive) 접근 수준이며 'private 접근' 은 가장 낮은 (가장 많이 제한된; most restrictive) 접근 수준입니다.
 
-'open (공개) 접근' 은 클래스와 클래스 멤버에만 적용되어, 모듈 외부의 코드에서 하위 클래스를 만들고 '재정의 (override)' 를 할 수 있게 한다는 점이 'public access (공용 접근)' 과 다른 점으로, 이는 아래의 [Subclassing (하위 클래스)](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html#ID16) 에서 설명합니다. 클래스를 'open' 으로 명시적으로 표시한다는 것은 그 클래스를 상위 클래스로 사용하는 다른 모듈의 코드에 대한 영향을 이미 고려했으며, 그에 따라 클래스 코드를 설계했음을 지시하는 것입니다.
+'open (공개) 접근' 은 클래스와 클래스 멤버에만 적용되어, 모듈 외부의 코드에서 하위 클래스를 만들고 '재정의 (override)' 를 할 수 있게 한다는 점이 'public access (공용 접근)' 과 다른 점으로, 이는 아래의 [Subclassing (하위 클래스)](#subclassing-하위-클래스) 에서 설명하도록 합니다. 클래스를 'open' 으로 명시적으로 표시한다는 것은 그 클래스를 상위 클래스로 사용하는 다른 모듈의 코드에 대한 영향을 이미 고려했으며, 그에 따라 클래스 코드를 설계했음을 지시하는 것입니다.
 
 #### Guiding Principle of Access Levels (접근 수준에 대한 지침)
 
@@ -88,7 +88,7 @@ fileprivate func someFilePrivateFunction() {}
 private func somePrivateFunction() {}
 ```
 
-따로 지정하지 않는다면, 기본 접근 수준은 'internal (내부)' 이며, 이는 [Default Access Levels (기본 접근 수준)](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html#ID7) 에서 설명한 바 있습니다. 이것은 `SomeInternalClass` 와 `someInternalConstant` 에는 명시적인 '접근-수준 수정자 (access-level modifier)' 를 쓰지 않아도 되며, 그래도 여전히 'internal (내부)' 접근 수준을 가진다는 것을 의미합니다.
+따로 지정하지 않는다면, 기본 접근 수준은 'internal (내부)' 이며, 이는 [Default Access Levels (기본 접근 수준)](#default-cccess-levels-기본-접근-수준) 에서 설명한 바 있습니다. 이것은 `SomeInternalClass` 와 `someInternalConstant` 에는 명시적인 '접근-수준 수정자 (access-level modifier)' 를 쓰지 않아도 되며, 그래도 여전히 'internal (내부)' 접근 수준을 가진다는 것을 의미합니다.
 
 ### Custom Types (사용자 정의 타입)
 
@@ -279,7 +279,7 @@ public struct TrackedString {
 
 #### Default Initializers (기본 설정 초기자)
 
-[Default Initializers (기본 설정 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 어떤 구조체나 '기본 클래스 (base class)' 가 모든 속성에 대한 '기본 설정 값' 을 제공하면서도 스스로는 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다.
+[Default Initializers (기본 설정 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-설정-초기자) 에서 설명한 것처럼, 스위프트는 어떤 구조체나 '기본 클래스 (base class)' 가 모든 속성에 대한 '기본 설정 값' 을 제공하면서도 스스로는 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다.
 
 기본 이니셜 라이저는 해당 유형이 public으로 정의되지 않은 경우 초기화하는 유형과 동일한 액세스 레벨을 갖습니다. public으로 정의 된 형식의 경우 기본 이니셜 라이저는 내부로 간주됩니다. 다른 모듈에서 인수를 사용하지 않는 초기화 프로그램을 사용하여 공개 유형을 초기화 할 수있게하려면 유형 정의의 일부로 공개 인수없는 초기화 프로그램을 명시 적으로 제공해야합니다.
 

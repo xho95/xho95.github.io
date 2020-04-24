@@ -49,36 +49,32 @@ var item = ShoppingListItem()
 
 ### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
-위에서 클래스와 구조체는 초기자를 제공하지 않을 때, '기본 설정 초기자' 를 자동으로 제공한다고 했는데, 구조체에서는 또 다른 초기자가 하나 더 있습니다.
+구조체 타입은 자기 스스로 어떤 초기자도 직접 정의하고 있지 않을 경우 자동적으로 '_멤버 초기자 (memberwise initializer)_' 를 가지게 됩니다. '기본 설정 초기자' 와는 달리, 구조체의 '저장 속성 (stored properties)' 에 '기본 설정 값' 이 없어도 '멤버 초기자' 는 가집니다.
 
-이것을 `memberwise initializer`라고 하는데, 우리말로 하면 `멤버 초기자` 정도로 옮길 수 있을 것 같습니다. 이 초기자는 호출하면서 각 멤버에 대한 초기값을 같이 전달할 수 있는 초기자입니다.
+'멤버 초기자' 는 새로운 구조체 인스턴스의 멤버 속성을 초기화하는 '약칭법 (shorthand way)' 에 해당합니다. 새 인스턴스의 속성에 대한 '초기 값' 을 '멤버 초기자' 에 전달하려면 이름을 사용하면 됩니다.
 
-아래에 간단한 예를 나타냈습니다.
+아래 예제는 `width` 와 `height` 라는 두 속성을 가지는 `Size` 라는 구조체를 정의합니다. 두 속성 모두 '기본 설정 값' 이 `0.0` 으로 할당되므로 타입은 `Double` 로 추론됩니다.
 
-```swift
-  struct WidgetSize {
-    var width = 10, height = 20
-  }
-
-  var widgetSize = WidgetSize(width: 5, height: 10)      // memberwise initializer
-```
-
-위의 코드를 보면 앞의 WidgetClass와 같은 상황인데, 멤버 초기자를 호출하여 widgetSize를 생성할 수 있음을 알 수 있습니다. 이 경우 초기값은 기본값과는 다르게 멤버 초기자에서 제공한 값으로 설정됩니다.
-
-> 초기자에서 바로 초기값을 전달할 수 있으므로 구조체에서는 멤버에 대해 기본값을 제공하지 않아도 인스턴스를 만들 수 있습니다. 물론 이렇게 하면 '기본 설정 초기자' 가 생기지 않으므로 '기본 설정 초기자' 로 구조체를 생성할 수는 없게 됩니다. '기본 설정 초기자' 는 '기본 설정 값' 을 제공할 때만 자동으로 제공된다는 점을 기억하십시오.
+`Size` 구조체는 자동적으로 `init(width:height:)` 멤버 초기자를 가지게 되므로, 이것을 써서 새 `Size` 인스턴스를 초기화할 수 있습니다:
 
 ```swift
-  struct WidgetSize {
-    var width: Double                             
-    var height: Double
-  }
-
-  var newWidgetSize = WidgetSize(width: 10, height: 20)      // memberwise initializer
-
-  // 여기서는, WidgetSize()를 직접 호출할 수 없다.
+struct Size {
+    var width = 0.0, height = 0.0
+}
+let twoByTwo = Size(width: 2.0, height: 2.0)
 ```
 
-위에서는 앞서의 예제와는 다르게 기본값을 제공하지 않았습니다. 하지만 이 경우에도 멤버 초기자는 호출할 수 있음을 알 수 있습니다. 대신에 이제는 '기본 설정 초기자' 를 직접 호출할 수는 없게 됩니다.
+멤버 초기자를 호출할 때, 기본 속성을 가지고 있는 속성은 그 값을 생략할 수도 있습니다. 위의 예에서, `Size` 구조체의 `height` 와 `width` 속성은 둘 다 '기본 설정 값' 을 가지고 있습니다. 따라서 둘 중 하나 또는 두 속성 모두 생략할 수 있으며, 생략된 것은 '기본 설정 값' 으로 초기화 됩니다-예를 들면 다음과 같습니다:
+
+```swift
+let zeroByTwo = Size(height: 2.0)
+print(zeroByTwo.width, zeroByTwo.height)
+// "0.0 2.0" 를 출력합니다.
+
+let zeroByZero = Size()
+print(zeroByZero.width, zeroByZero.height)
+// "0.0 0.0" 를 출력합니다.
+```
 
 ### Initial Delegation for Value Types (값 타입을 위한 초기화 위임하기)
 
