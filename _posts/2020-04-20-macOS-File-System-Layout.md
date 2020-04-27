@@ -47,7 +47,7 @@ $ ls -l
 
 ![macOS standard directories](/assets/macOS/File-System/standard-directories.jpg)
 
-이 디렉토리는 **maxOS X** 가 제공하는 앱이나 사용자가 설치한 앱, 그 외 프로그램을 사용하면서 생성한 파일들을 저장하는 곳입니다. **maxOS X** 사용자라면 꽤 친숙할 것입니다.
+이 디렉토리는 **maxOS X** 가 제공하는 앱이나 사용자가 설치한 앱, 그 외 프로그램을 사용하면서 생성한 파일들을 저장하는 곳입니다. 맥 사용자라면 아주 친숙한 폴더들입니다.
 
 각각의 디렉토리에 대한 더 자세한 설명은 [macOS Standard Directories: Where Files Reside](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) 문서에서 확인할 수 있습니다.
 
@@ -55,17 +55,17 @@ $ ls -l
 
 반면, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 하며, 이들은 '숨겨진 시스템 폴더 (hidden system folder)'[^hidden-folder] 이기 때문에, 기본적으로 **Finder** 에서 확인할 수 없습니다.[^finder]
 
-이름에서 알 수 있듯이, 이 디렉토리들은 유닉스 (UNIX) 파일 시스템에서 유래한 것으로, macOS 의 기반인 '**BSD** (Berkeley Software Distribution) 계층' 을 담당합니다. 유닉스 파일 시스템에서 유래한 것이다 보니 디렉토리 이름이 소문자로 시작할 뿐만 아니라 ASCII 문자로 8자 이내로 만들어진 것도 확인할 수 있습니다.
+이름에서 알 수 있듯이, 이 디렉토리들은 유닉스 (UNIX) 파일 시스템에서 유래한 것으로, macOS 의 기반인 '**BSD** (Berkeley Software Distribution) 계층' 을 담당합니다. 유닉스 파일 시스템에서 유래한 것이다 보니 디렉토리 이름이 소문자로 시작할 뿐만 아니라 ASCII 문자로 8자 이내로 되어 있습니다.
 
 개발 과정에서 수정하는 설정 파일들은 바로 이 '유닉스-고유 디렉토리' 에 위치하게 됩니다. 각 디렉토리에 대해 간단한 설명은 다음과 같습니다.[^UNIX-specific-directories]
 
-* **/bin** — 필수적인 '명령줄 (command-line)' '실행 파일 (binaries)' 을 담고 있는 곳입니다. 보통 이 실행 파일들을 '명령줄' 에서 쳐서 실행합니다.
+* **/bin** — 필수적인 '명령줄 (command-line)' '실행 파일 (binaries)' 을 담고 있는 곳입니다. 보통 '명령줄' 에서 이 실행 파일 이름을 쳐서 실행하게 됩니다.
 * **/dev** — '보조 하드웨어 장비' 와 같은 필수적인 '장치 파일 (device files)' 을 담고 있는 곳입니다.
 * **/etc** — 사용자 고유의 설정 파일을 담는 곳입니다.
 * **/sbin** — 필수적인 시스템 실행 파일을 담고 있는 곳입니다.
 * **/tmp** — 앱이나 시스템에서 생성한 임시 파일들을 담는 곳입니다.
-* **/usr** — 필수적이지는 않은 '명령줄' 실행 파일이나 라이브러리, 헤더 파일, 그리고 그 외의 자료들을 담는 곳입니다.
-* **/var** — 'log (로그)' 파일과 그 외 '변수 값' 을 가지고 있는 파일들을 담는 곳입니다.
+* **/usr** — 필수적이지는 않은 '명령줄 실행 파일' 이나 라이브러리, 헤더 파일, 그리고 기타 자료들을 담는 곳입니다.
+* **/var** — 'log (로그)' 파일 및 '변수 값' 을 가지고 있는 파일들을 담는 곳입니다.
 
 ### 참고 자료
 

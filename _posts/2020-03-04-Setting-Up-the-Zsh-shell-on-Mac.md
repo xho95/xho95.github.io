@@ -159,7 +159,7 @@ ZSH_THEME="ys"
 
 [^recognized]: 실제 맥의 기본 쉘이 변경된 것은 카탈리나가 공개된 후이므로 2019년 10월 경입니다. 물론 기본 쉘이 변경될 것이라는 것을 공개한 것은 WWDC 2019 였으므로, 2019년 6월입니다. 제가 맥의 기본 쉘이 변경되었다는 것을 그만큼 늦게 인지하게 된 것은, WWDC 2019 발표 당시 제가 회사 출장 관계로 개인 PC 를 거의 쓰지 못해서 터미널을 쓸 일이 없었기 때문입니다. 생각해보니 WWDC 2019 발표를 직접 보지도 못했었군요.
 
-[^etc-directory]: macOS 에서 `etc` 디렉토리는 주로 환경 설정 파일들이 존재하는 곳입니다. 보다 자세한 내용은 이 블로그의 [macOS: 맥의 기본 디렉토리 구조 살펴보기](http://xho95.github.io/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html) 를 참고하시기 바랍니다.
+[^etc-directory]: macOS 에서 **/etc** 디렉토리는 주로 환경 설정 파일들이 존재하는 곳입니다. 보다 자세한 내용은 이 블로그의 [macOS: 맥의 기본 디렉토리 구조 살펴보기](http://xho95.github.io/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html) 를 참고하시기 바랍니다.
 
 [^mac-setup]: [macOS Setup Guide](https://sourabhbajaj.com/mac-setup/) 의 [zsh](https://sourabhbajaj.com/mac-setup/iTerm/zsh.html) 라는 문서를 보면 테마 외에도 Plugin 등의 설정을 하는 방법도 설명되어 있습니다. 이 외에도 macOS 를 설정하는 다양한 방법들이 설명되어 있으니 참고하면 좋을 것 같습니다.
 
