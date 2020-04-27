@@ -1,16 +1,16 @@
 ---
 layout: post
 comments: true
-title:  "macOS: 맥의 기본 디렉토리 구조 살펴보기"
+title:  "macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기"
 date:   2016-10-09 02:50:00 +0900
 categories: macOS File-System UNIX-specific Directory
 ---
 
-보통 맥을 사용하다보면 많은 경우 디렉토리를 의식하지 않고 사용하게 됩니다. [^directory-folder] [^mwultong-folder-directory] 예를 들어, 어떤 프로그램을 설치할 경우 대부분의 사용자는 프로그램이 설치되는 위치를 변경하지 않을 것입니다. 그러다 보니 해당 프로그램이 어디에 설치되는지 어떻게 동작하는지 잘 모르고 사용하는 경우가 많습니다.  
+> 이 글은 macOS 의 파일 시스템에 있는 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 대해 정리한 글입니다.
+>
+> macOS 파일 시스템의 기본적인 디렉토리에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조](http://xho95.github.io/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html) 문서를 참고하기 바랍니다.
 
-하지만 맥을 좀 더 잘 사용하고 싶다면 결국 macOS 의 좀 더 밑부분, 그 중에서 macOS 의 디렉토리 구조에 대해서 알아둘 필요가 있습니다. 여기서는 macOS 의 기본 디렉토리 구조에 대해서 정리하도록 합니다.
-
-### 들어가며
+## macOS 파일 시스템의 '유닉스-고유 디렉토리 (UNIX-specific directories)'
 
 이 글은 [흉내쟁이](http://webdir.tistory.com) 님의 [리눅스 디렉토리 구조](http://webdir.tistory.com/101) 라는 글을 기준으로 여기에 기타 다른 자료들을 참고하여 정리하였습니다. [^webdir-101] [^osxdaily-directory] [^wikipedia-unix-filesystem]
 

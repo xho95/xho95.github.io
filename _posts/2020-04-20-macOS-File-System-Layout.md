@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "macOS: 파일 시스템의 기본 디렉토리 알아보기"
+title:  "macOS: 파일 시스템의 기본 디렉토리 구조"
 date:   2020-04-20 10:00:00 +0900
 categories: macOS File-System Directory
 ---
 
-> 이 글은 macOS 의 개발 과정에서 각각의 설정 파일들이 어떤 디렉토리 (directory)[^directory-and-folder]에 위치하는지 이해하기 위해 'macOS 파일 시스템' 의 기본 디렉토리에 대한 내용을 정리한 글입니다.
+> 이 글은 macOS 의 파일 시스템에 있는 기본 디렉토리 (directory)[^directory-and-folder] 들을 정리한 글입니다. 이를 통해 macOS 에서 사용하는 각각의 설정 파일들이 어떤 디렉토리에 위치하게 되는지 이해할 수 있습니다.
 
 ## macOS 파일 시스템의 기본 디렉토리
 
@@ -47,17 +47,17 @@ $ ls -l
 
 ![macOS standard directories](/assets/macOS/File-System/standard-directories.jpg)
 
-이 디렉토리는 **maxOS X** 가 제공하는 앱이나 사용자가 설치한 앱, 그 외 프로그램을 사용하면서 생성한 파일들을 저장하는 곳입니다. **maxOS X** 사용자라면 꽤 친숙한 폴더들입니다.
+이 디렉토리는 **maxOS X** 가 제공하는 앱이나 사용자가 설치한 앱, 그 외 프로그램을 사용하면서 생성한 파일들을 저장하는 곳입니다. **maxOS X** 사용자라면 꽤 친숙할 것입니다.
 
-각각의 디렉토리에 대한 더 자세한 내용은 [macOS Standard Directories: Where Files Reside](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) 문서에서 확인할 수 있습니다.
+각각의 디렉토리에 대한 더 자세한 설명은 [macOS Standard Directories: Where Files Reside](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) 문서에서 확인할 수 있습니다.
 
 ### macOS 의 유닉스-고유 디렉토리
 
 반면, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 하며, 이들은 '숨겨진 시스템 폴더 (hidden system folder)'[^hidden-folder] 이기 때문에, 기본적으로 **Finder** 에서 확인할 수 없습니다.[^finder]
 
-이름에서 알 수 있듯이, 이 디렉토리들은 'UNIX 파일 시스템' 에서 유래한 것으로, macOS 의 기반인 '**BSD** (Berkeley Software Distribution) 계층' 을 담당합니다. 개발 과정에서 설정한 파일들은 바로 이 '유닉스-고유 디렉토리' 에 위치하게 됩니다.
+이름에서 알 수 있듯이, 이 디렉토리들은 유닉스 (UNIX) 파일 시스템에서 유래한 것으로, macOS 의 기반인 '**BSD** (Berkeley Software Distribution) 계층' 을 담당합니다. 유닉스 파일 시스템에서 유래한 것이다 보니 디렉토리 이름이 소문자로 시작할 뿐만 아니라 ASCII 문자로 8자 이내로 만들어진 것도 확인할 수 있습니다.
 
-각 디렉토리에 대해 간단히 설명하면 다음과 같습니다.[^UNIX-specific-directories]
+개발 과정에서 수정하는 설정 파일들은 바로 이 '유닉스-고유 디렉토리' 에 위치하게 됩니다. 각 디렉토리에 대해 간단한 설명은 다음과 같습니다.[^UNIX-specific-directories]
 
 * **/bin** — 필수적인 '명령줄 (command-line)' '실행 파일 (binaries)' 을 담고 있는 곳입니다. 보통 이 실행 파일들을 '명령줄' 에서 쳐서 실행합니다.
 * **/dev** — '보조 하드웨어 장비' 와 같은 필수적인 '장치 파일 (device files)' 을 담고 있는 곳입니다.
