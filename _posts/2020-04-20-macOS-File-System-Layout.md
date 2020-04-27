@@ -1,23 +1,23 @@
 ---
 layout: post
 comments: true
-title:  "macOS: 파일 시스템의 기본 디렉토리 구조 알아보기"
+title:  "macOS: 파일 시스템의 기본 디렉토리 알아보기"
 date:   2020-04-20 10:00:00 +0900
 categories: macOS File-System Directory
 ---
 
-> 이 글은 macOS 의 개발 과정에서 각각의 설정 파일들이 어떤 '디렉토리 (directory)'[^directory-and-folder]에 위치하는지 이해하기 위해 'macOS 파일 시스템' 의 기본 디렉토리 구조를 정리한 글입니다.
+> 이 글은 macOS 의 개발 과정에서 각각의 설정 파일들이 어떤 디렉토리 (directory)[^directory-and-folder]에 위치하는지 이해하기 위해 'macOS 파일 시스템' 의 기본 디렉토리에 대한 내용을 정리한 글입니다.
 
-## macOS 파일 시스템의 기본 디렉토리 구조
+## macOS 파일 시스템의 기본 디렉토리
 
-macOS 에서 사용하는 파일 시스템의 기본 디렉토리 구조를 확인하려면, 다음과 같이 **Terminal** (터미널) 에서 'root 디렉토리' 로 이동[^move-to-root-directory]하여 `ls` 명령을 실행하면 됩니다.
+macOS 파일 시스템의 기본 디렉토리들을 확인하려면, 다음과 같이 **Terminal** (터미널) 에서 'root 디렉토리' 로 이동[^move-to-root-directory]하여 `ls` 명령을 실행하면 됩니다.
 
 ```sh
 $ cd /
 $ ls -l
 ```
 
-그러면 아래와 같은 디렉토리들을 확인할 수 있습니다.[^tree]
+그러면 아래와 같이 최상위에 위치한 디렉토리들을 볼 수 있습니다.[^tree]
 
 ```sh
 ├── Applications
@@ -39,25 +39,25 @@ $ ls -l
 └── var -> private/var
 ```
 
-위의 결과를 보면 macOS 최상위 디렉토리들에는 이름이 대문자로 시작하는 것과, 소문자로 시작하는 것으로 나뉜다는 것을 알 수 있습니다. macOS 에서는 이렇게 대문자로 시작하는 디렉토리들을 'standard directories (표준 디렉토리)' 라고 부르며, 소문자로 시작하는 디렉토리들을 'UNIX-specific directories (유닉스-고유 디렉토리)' 라고 부릅니다.
+위의 결과를 보면 macOS 최상위 디렉토리는 이름이 대문자로 시작하는 것과, 소문자로 시작하는 것으로 구분된다는 것을 알 수 있습니다. macOS 에서 이렇게 대문자로 시작하는 디렉토리들은 '표준 디렉토리 (standard directories)' 라고 하며, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 합니다.
 
 ### macOS 의 표준 디렉토리
 
-앞서 말한 바와 같이, 대문자로 시작하는 디렉토리들을 '표준 디렉토리 (Standard Directories)'[^standard-directories] 라고 하며, 이들은 아래와 같이 **Finder** (파인더) 에서도 확인할 수 있습니다.
+앞서 말한 바와 같이, 대문자로 시작하는 디렉토리들은 '표준 디렉토리 (Standard Directories)'[^standard-directories] 라고 하며, 이들은 아래와 같이 **Finder** (파인더) 에서도 확인할 수 있습니다.
 
 ![macOS standard directories](/assets/macOS/File-System/standard-directories.jpg)
 
-이 디렉토리들은 **maxOS X** 가 제공하는 앱이나 사용자가 설치한 앱, 그 외 프로그램을 사용하면서 생성한 파일들이 저장되는 곳입니다. 이 디렉토리들은 **maxOS X** 사용자라면 꽤 친숙한 폴더들이라고 할 수 있습니다.
+이 디렉토리는 **maxOS X** 가 제공하는 앱이나 사용자가 설치한 앱, 그 외 프로그램을 사용하면서 생성한 파일들을 저장하는 곳입니다. **maxOS X** 사용자라면 꽤 친숙한 폴더들입니다.
 
-각각의 디렉토리에 대한 세세한 내용은 [macOS Standard Directories: Where Files Reside](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) 문서를 참고하기 바랍니다.
+각각의 디렉토리에 대한 더 자세한 내용은 [macOS Standard Directories: Where Files Reside](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) 문서에서 확인할 수 있습니다.
 
 ### macOS 의 유닉스-고유 디렉토리
 
-반면, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 하며, 이들은 '숨겨진 시스템 폴더 (hidden system folder)'[^hidden-folder] 이기 때문에, 기본적으로 **Finder** 에서 확인할 수 없도록 되어 있습니다.[^finder]
+반면, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 하며, 이들은 '숨겨진 시스템 폴더 (hidden system folder)'[^hidden-folder] 이기 때문에, 기본적으로 **Finder** 에서 확인할 수 없습니다.[^finder]
 
-이름에서 알 수 있듯이, 이 디렉토리들은 'UNIX 파일 시스템' 에서 유래한 것으로, macOS 의 기반인 **BSD** (Berkeley Software Distribution) 계층을 담당합니다. 개발 과정에서 설정한 파일들은 바로 이 '유닉스-고유 디렉토리' 에 존재하게 됩니다.
+이름에서 알 수 있듯이, 이 디렉토리들은 'UNIX 파일 시스템' 에서 유래한 것으로, macOS 의 기반인 '**BSD** (Berkeley Software Distribution) 계층' 을 담당합니다. 개발 과정에서 설정한 파일들은 바로 이 '유닉스-고유 디렉토리' 에 위치하게 됩니다.
 
-각 디렉토리에 대한 간단한 설명은 다음과 같습니다.[^UNIX-specific-directories]
+각 디렉토리에 대해 간단히 설명하면 다음과 같습니다.[^UNIX-specific-directories]
 
 * **/bin** — 필수적인 '명령줄 (command-line)' '실행 파일 (binaries)' 을 담고 있는 곳입니다. 보통 이 실행 파일들을 '명령줄' 에서 쳐서 실행합니다.
 * **/dev** — '보조 하드웨어 장비' 와 같은 필수적인 '장치 파일 (device files)' 을 담고 있는 곳입니다.
