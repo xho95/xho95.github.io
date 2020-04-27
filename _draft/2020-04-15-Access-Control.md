@@ -313,6 +313,12 @@ public struct TrackedString {
 
 ### Extensions (확장)
 
+클래스, 구조체, 또는 열거체가 사용 가능한 접근 영역에 있다면 어떤 영역에서든 그 클래스, 구조체, 또는 열거체를 확장할 수 있습니다. 확장에서 추가한 타입 멤버는 어느 것이든 기본적으로 확장할 원래 타입에서 선언된 타입 멤버와 같은 접근 수준을 가집니다. 'public (공용)' 이나 'internal (내부)' 타입을 확장하면, 새로 추가 타입은 어느 것이든 기본 접근 수준으로 'internal (내부)' 을 가지게 됩니다. 'file-private (파일-전용)' 타입을 확장하면, 새로 추가한 타입은 어느 것이든 기본 접근 수준으로 'file private (파일 전용)' 을 가집니다. 'private (개인 전용)' 타입을 확장하면, 새로 추가한 타입은 어느 것이든 기본 접근 수준으로 'private (개인 전용)' 을 가집니다.
+
+다른 방법으로, 'extension (확장)' 에 명시적으로 '접근-수준 수정자 (access-level modifier)' (예를 들어, `private` 같은 것) 을 표시해서, 확장 내에서 정의한 모든 멤버들에 대한 새 '기본 접근 수준 (default access level)' 을 설정할 수 있습니다. 이러한 새 기본 설정을 개별 타입 멤버에 대한 'extension (확장)' 에서 '재정의 (overridden)' 하는 것도 여전히 가능합니다.
+
+'프로토콜 준수 (protocol conformance)' 를 추가하기 위해 'extension (확장)' 을 사용하는 경우에는 그 'extension (확장)' 에 대한 '명시적인 접근-수준 수정자' 를 제공할 수 없습니다. 대신, 프로토콜 자체의 접근 수준을 사용해서 'extension (확장)' 에 있는 각각의 프로토콜 '필수 조건 (requirement)' 구현에 대한 기본 접근 수준을 제공합니다.
+
 ### Private Members in Extensions (확장 내의 비공개 멤버)
 
 ### Generics (일반화-된 타입)

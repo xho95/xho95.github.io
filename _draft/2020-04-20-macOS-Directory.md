@@ -43,7 +43,7 @@ $ ls
 
 위의 디렉토리를 보면 이름이 대문자로 시작하는 것이 있고, 소문자를 시작하는 것이 있습니다.
 
-대문자로 시작하는 것은 macOS 에서 '표준 디렉토리 (Standard Directories)'[^standard-directories] 라고 하는 것으로, **maxOS X** 를 사용하는 사용자가 응용 프로그램을 설치하거나 파일을 만들게 되면 위치하는 곳입니다. 이들은 아래와 같이 **Finder** 프로그램을 통해 확인할 수 있습니다.
+대문자로 시작하는 것은 macOS 에서 '표준 디렉토리 (Standard Directories)'[^standard-directories] 이며, **maxOS X** 사용자가 설치한 응용 프로그램이나 만든 파일들을 저장하는 곳입니다. 이들은 아래와 같이 **Finder** 프로그램을 통해 확인할 수 있습니다.
 
 ![macOS standard directories](/assets/macOS/Directory/standard-directories.jpg)
 
@@ -67,12 +67,9 @@ macOS 에서는 `/home` 디렉토리 대신 `/Users` 디렉토리를 사용한�
 
 `/cores` 디렉토리에 대한 설명은 [OS X El-Capitan - /cores directory taking up a lot of space?](https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space) 글에 잘 되어 있습니다.
 
-
 ### File Sytem Programming Guide
 
 [File System Programming Guide - Apple Developer](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html)
-
-
 
 ### 참고 자료
 
