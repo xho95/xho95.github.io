@@ -55,31 +55,17 @@ $ ls -l
 
 반면, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 하며, 이들은 '숨겨진 시스템 폴더 (hidden system folder)'[^hidden-folder] 이기 때문에, 기본적으로 **Finder** 에서 확인할 수 없도록 되어 있습니다.[^finder]
 
-이름에서 알 수 있듯이, 이 디렉토리들은 'UNIX 파일 시스템' 에서 유래한 것으로, macOS 의 기반인 'BSD (Berkeley Software Distribution)' 계층을 담당합니다. 개발 과정에서 설정한 파일들은 바로 이 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 존재하게 됩니다.
+이름에서 알 수 있듯이, 이 디렉토리들은 'UNIX 파일 시스템' 에서 유래한 것으로, macOS 의 기반인 **BSD** (Berkeley Software Distribution) 계층을 담당합니다. 개발 과정에서 설정한 파일들은 바로 이 '유닉스-고유 디렉토리' 에 존재하게 됩니다.
 
 각 디렉토리에 대한 간단한 설명은 다음과 같습니다.[^UNIX-specific-directories]
 
-* **/bin** — 필수적인 '명령줄 (command-line)' '실행 파일 (binaries)' 을 담는 곳입니다. 보통 이 실행 파일들을 '명령줄' 에서 쳐서 실행합니다.
-* **/dev** — '보조 하드웨어 장비' 와 같은 필수적인 '장치 파일 (device files)' 을 담는 곳입니다.
+* **/bin** — 필수적인 '명령줄 (command-line)' '실행 파일 (binaries)' 을 담고 있는 곳입니다. 보통 이 실행 파일들을 '명령줄' 에서 쳐서 실행합니다.
+* **/dev** — '보조 하드웨어 장비' 와 같은 필수적인 '장치 파일 (device files)' 을 담고 있는 곳입니다.
 * **/etc** — 사용자 고유의 설정 파일을 담는 곳입니다.
-* **/sbin** — 필수적인 시스템 실행 파일을 담는 곳입니다.
+* **/sbin** — 필수적인 시스템 실행 파일을 담고 있는 곳입니다.
 * **/tmp** — 앱이나 시스템에서 생성한 임시 파일들을 담는 곳입니다.
-* **/usr** — 필수적이지는 않은 '명령줄' 실행 파일, 라이브러리, 헤더 파일, 그리고 그 외의 자료들을 담는 곳입니다.
-* **/var** — 'log (로그)' 파일과 그 외 '변수 값' 을 가지고 있는 파일들을 담는 곳입니다. ('로그' 파일은 보통 'console (콘솔)' 앱으로 확인할 수 있습니다.)
-
-### macOS 의 파일 및 폴더 권한 정리하기
-
-**macOS 디렉토리**
-
-macOS 에서는 `/home` 디렉토리 대신 `/Users` 디렉토리를 사용한다고 합니다. [What is standard for OS X filesystem? e.g. /opt/ vs. /usr/](https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr) 글에는 `man hier` 도 설명합니다. 해당 명령을 통해서 macOS 의 기반이 되는 BSD 의 filesystem 에 대한 layout 을 확인할 수 있습니다.
-
-### /cores directory
-
-`/cores` 디렉토리에 대한 설명은 [OS X El-Capitan - /cores directory taking up a lot of space?](https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space) 글에 잘 되어 있습니다.
-
-### File Sytem Programming Guide
-
-[File System Programming Guide - Apple Developer](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html)
+* **/usr** — 필수적이지는 않은 '명령줄' 실행 파일이나 라이브러리, 헤더 파일, 그리고 그 외의 자료들을 담는 곳입니다.
+* **/var** — 'log (로그)' 파일과 그 외 '변수 값' 을 가지고 있는 파일들을 담는 곳입니다.
 
 ### 참고 자료
 
@@ -93,6 +79,6 @@ macOS 에서는 `/home` 디렉토리 대신 `/Users` 디렉토리를 사용한�
 
 [^hidden-folder]: 여기서 '숨겨졌다' 는 의미는 **Finder** 를 기준으로 한 것으로, **Terminal** 에서는 확인 가능합니다.
 
-[^finder]: 애플의 공식 문서 인 [File System Basics](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW2) 에 따르면 사용자 경험을 간소화하기 위해, 사용자가 알 필요가 없는 파일이나 디렉토리는 **Finder** 등의 몇몇 **사용자 인터페이스** 에서 숨겨진다고 합니다., 물론 **Finder** 를 실행 한 후, `command` + `shift` + `G` 메뉴를 사용하면, 여전히 '숨겨진 시스템 폴더 (hidden system folder)' 이동할 수 있습니다. **Finder** 에서 보이지 않는다는 것이지 사용할 수 없는 것은 아니라고 볼 수 있습니다.
+[^finder]: 애플의 공식 문서 인 [File System Basics](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW2) 에 따르면 사용자 경험을 간소화하기 위해, 사용자가 알 필요가 없는 파일이나 디렉토리는 **Finder** 등의 몇몇 사용자 인터페이스에서 숨겨진다고 합니다. 물론 **Finder** 를 실행 한 후, `command` + `shift` + `G` 메뉴를 사용하면, '숨겨진 시스템 폴더' 로 이동할 수는 있습니다. **Finder** 에서 보이지 않는다는 것이지 사용할 수 없는 것은 아니라고 볼 수 있습니다.
 
 [^UNIX-specific-directories]: macOS 의 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 대해서는 [File System Basics](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW2) 문서의 [Hidden Files and Directories: Simplifying the User Experience](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW7) 부분에서 설명하고 있습니다.
