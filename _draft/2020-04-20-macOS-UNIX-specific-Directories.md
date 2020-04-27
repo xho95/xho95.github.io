@@ -42,7 +42,7 @@ Preboot      Volumes      dev          opt          tmp
 └── var -> private/var
 ```
 
-### 유닉스-고유 디렉토리 각각의 기능
+### 각 유닉스-고유 디렉토리의 역할
 
 maxOS 에 있는 '유닉스-고유 디렉토리' 의 기능을 확인할 수 있는 방법 중 가장 간단한 것은 다음과 같이 **Terminal** 에서 `man hier` 명령을 실행하는 것입니다.[^man-hier]
 
@@ -68,7 +68,7 @@ $ cd /
 
 #### `/cores` : 디렉토리
 
-`/cores` 디렉토리에 대한 설명은 [OS X El-Capitan - /cores directory taking up a lot of space?](https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space) 글에 잘 되어 있습니다.
+`/cores` 디렉토리에 대한 설명은 `man hier` 명령으로 확인할 수 없는데, 대신 [OS X El-Capitan - /cores directory taking up a lot of space?](https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space) 라는 글에서 잘 설명하고 있습니다.
 
 #### `/dev` : 장치 파일 디렉토리
 
@@ -76,17 +76,17 @@ $ cd /
 
 #### `/etc` : 환경 설정 디렉토리
 
-사용자 고유의 환경 설정 파일을 저장하는 디렉토리입니다. 대표적으로 'shell (쉘)' 의 기본 설정 파일인 `profile`[^profile] 과 macOS 의 기본 경로 설정 파일인 `paths`[^paths] 등이 여기에 존재합니다.
+사용자 고유의 환경 설정 파일을 저장하는 디렉토리입니다. 대표적으로 'shell (쉘)' 의 기본 설정 파일인 **profile**[^profile] 과 macOS 의 기본 경로 설정 파일인 **paths**[^paths] 등이 여기에 존재합니다.
 
 macOS 에 있는 별도 프로그램들의 설정 파일들은 `/etc` 디렉토리의 하위 디렉토리에 저장됩니다. 예를 들어, **apache** (아파치) 프로그램의 설정 파일은 `/etc/apache2` 디렉토리에 저장되어 있습니다.
 
-#### `/home` : macOS 에서는 사용하지 않음
+#### `/home` : UNIX 시스템의 홈 디렉토리, macOS 에서는 사용하지 않음
 
-macOS 에서는 `/home` 디렉토리 대신 `/Users` 디렉토리를 사용한다고 합니다. [What is standard for OS X filesystem? e.g. /opt/ vs. /usr/](https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr) 
+`/home` 디렉토리는 유닉스에서 기본 '홈 디렉토리' 로 사용되는 곳입니다. 하지만 macOS 의 기본 '홈 디렉토리' 는 `/home` 디렉토리가 아닙니다. 대신 `/Users` 디렉토리를 사용합니다. [What is standard for OS X filesystem? e.g. /opt/ vs. /usr/](https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr)
 
-macOS 의 '홈 디렉토리 (`~`)' 에 대해서는 아래의 [홈 디렉토리]() 를 참고하기 바랍니다.
+macOS 의 '홈 디렉토리 (`~`)' 에 대해서는 아래의 [홈 디렉토리](#user-content---홈-디렉토리) 에서 다시 설명하도록 합니다.
 
-#### `/sbin` : 임시 파일 디렉토리
+#### `/sbin` : 시스템 실행 파일 디렉토리
 
 '단일 사용자 (single-user)' 와 '다중 사용자 (multi-user)' 환경에서 필수적인 '시스템 실행 파일' 을 저장하는 디렉토리입니다. macOS 에서는 **ping** 과 같은 프로그램들이 여기에 있습니다.
 
@@ -94,11 +94,11 @@ macOS 의 '홈 디렉토리 (`~`)' 에 대해서는 아래의 [홈 디렉토리]
 
 앱이나 시스템에서 생성한 임시 파일들을 저장하는 디렉토리입니다.
 
-#### `/usr` : 임시 파일 디렉토리
+#### `/usr` : 사용자 디렉토리
 
 * **/usr** — 필수적이지는 않은 '명령줄 실행 파일' 이나 라이브러리, 헤더 파일, 그리고 기타 자료들을 담는 곳입니다. contains the majority of user utilities and applications
 
-#### `/var` : 임시 파일 디렉토리
+#### `/var` : 변경 파일 디렉토리
 
 자주 변경되는 파일들을 위한 공간입니다. 리눅스 시스템에서는 사용 중에 생성되었다가 삭제되는 데이터를 일시적으로 저장하기 위해 사용합니다. 맥에서도 같은 목적으로 사용하는 디렉토리인 것 같습니다.
 
@@ -108,9 +108,30 @@ macOS 의 '홈 디렉토리 (`~`)' 에 대해서는 아래의 [홈 디렉토리]
 
 * **/var** — 'log (로그)' 파일 및 '변수 값' 을 가지고 있는 파일들을 담는 곳입니다.
 
-### `/private` : 개인 사용자 디렉토리
+#### `/private` : 개인 사용자 디렉토리
 
-### `~` : 홈 디렉토리
+맥에서 `/etc` 디렉토리는 실제 `/private/etc` 디렉토리의 'symbolic link (일종의 바로 가기)' 입니다. [What's the difference between /private/etc/apache2 and /etc/apache2?](https://superuser.com/questions/480135/whats-the-difference-between-private-etc-apache2-and-etc-apache2)
+
+이것은 아래와 같이 `ls -l` 명령을 통해서 확인할 수 있습니다. [How to know if a folder is a symbolic link?](https://askubuntu.com/questions/1145925/how-to-know-if-a-folder-is-a-symbolic-link)
+
+```sh
+$ ls -l
+...
+lrwxr-xr-x@  1 root  admin    11 Oct  9  2019 etc -> private/etc
+...
+drwxr-xr-x   6 root  wheel   192 Apr 12 17:49 private
+...
+```
+
+즉, `/etc` 디렉토리의 파일을 수정하는 것은 `/private/etc` 디렉토리에 있는 파일을 수정하는 것과 완전히 동일합니다.
+
+`/private` 디렉토리는 'NextStep' 운영체제의 유산이라는 얘기도 있습니다. [What is the private folder on a Mac computer?](https://www.quora.com/What-is-the-private-folder-on-a-Mac-computer) 글에 따르면 예전에는 컴퓨터의 저장 공간이 부족해서 OS 정보를 네트웍 상에 분산하기도 했으며, `/private` 디렉토리를 써서 해당 기기에 특화된 정보를 저장했다고 합니다. 그래서 `/etc` 가 `/private/etc` 의 '심볼릭 링크' 가 된 것 같습니다. 좀 더 정리가 필요합니다.
+
+macOS 의 기본 디렉토리의 각각의 기능에 대해서는 [What's the “Private” directory in OS X for?](https://apple.stackexchange.com/questions/227846/whats-the-private-directory-in-os-x-for/227869) 에서 간단하게 소개하고 있습니다.
+
+### `~` : macOS 의 홈 디렉토리
+
+**macOS 에서 '홈 디렉토리' 는 특별하다 할 수 있습니다. 일단 '유닉스-고유 디렉토리' 와 달라지는 지점입니다. 이는 UNIX 와 달리 'GUI' 를 지원했기 때문일 수 있습니다. 확인 필요함. 실제로 '유닉스-고유 디렉토리' 를 사용하지 않고 '표준 디렉토리' 를 사용합니다.**
 
 '홈 (home) 디렉토리' 는 다중 사용자 운영 체제에서의 파일 시스템 디렉토리를 말합니다. [^wikipedia-home]
 
