@@ -148,7 +148,7 @@ $ cd ~
 
 보통의 경우 편리하므로 두번째 방법을 많이 사용합니다. [^another-method]
 
-macOS 에서 실제 홈 디렉토리는 루트 디렉토리 밑의 **/Users/\<** username **\>** 위치에 존재합니다.
+macOS 에서 실제 홈 디렉토리는 루트 디렉토리 밑의 **/Users/\<** username **\>** 위치에 존재합니다. GUI 에서 확인하는 방법은 [Where do I find my user folder in the OS X folder hierarchy?](https://apple.stackexchange.com/questions/51280/where-do-i-find-my-user-folder-in-the-os-x-folder-hierarchy) 에서 설명하고 있습니다. 
 
 ### 참고 자료
 
