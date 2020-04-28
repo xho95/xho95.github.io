@@ -41,7 +41,7 @@ categories: Swift Programming Language Grammar
 * [Opaque Types (불투명한 타입)](http://xho95.github.io/swift/language/grammar/opaque/type/2020/02/22/Opaque-Types.html)
 * [Automatic Reference Counting (자동 참조 카운팅)]
 * [Memory Safety (메모리 안전성)](http://xho95.github.io/swift/language/grammar/memory/safety/2020/04/07/Memory-Safety.html)
-* [Access Control (접근 제어)]
+* [Access Control (접근 제어)](http://xho95.github.io/swift/language/grammar/access/control/2020/04/28/Access-Control.html)
 * [Advanced Operators (고급 연산자)]
 
 ### Language Reference (언어의 기준)
