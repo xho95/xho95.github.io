@@ -239,7 +239,7 @@ protocol Container {
 extension Array: Container { }
 ```
 
-`Container` 프로토콜은 함수의 반환 타입으로 사용할 수 없는데 이는 이 프로토콜이 '관련 타입 (associated type)' 을 가지고 있기 때문입니다. 'generic (일반화된) 반환 타입' 의 '제약 조건 (constraint)' 으로도 사용할 수 없는데 이는 함수 본문 외부에 'generic (일반화된) 타입' 이 무엇인지 추론하는데 필요한 충분한 정보가 없기 때문입니다.
+`Container` 프로토콜은 함수의 반환 타입으로 사용할 수 없는데 이는 이 프로토콜이 '관련 타입 (associated type)' 을 가지고 있기 때문입니다. 'generic (일반화된) 반환 타입' 의 '구속 조건 (constraint)' 으로도 사용할 수 없는데 이는 함수 본문 외부에 'generic (일반화된) 타입' 이 무엇인지 추론하는데 필요한 충분한 정보가 없기 때문입니다.
 
 ```swift
 // Error: 에러, 관련 타입 (associated type) 을 가지는 프로토콜은 반환 타입으로 사용할 수 없습니다.
