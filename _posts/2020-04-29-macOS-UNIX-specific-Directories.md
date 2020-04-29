@@ -70,7 +70,9 @@ $ cd /usr/bin
 
 #### `/bin` : 실행 파일 디렉토리
 
-'단일 사용자 (single-user)' 환경과 '다중 사용자 (multi-user)' 환경 모두에서 사용하는 주요 '명령줄 실행 파일 (command-line binaries)' 을 저장하는 디렉토리입니다. macOS 의 각종 **shell** (쉘) 을 포함하여 **mkdir** 같은 실행 파일들이 여기에 존재합니다.
+'단일 사용자 (single-user)' 환경과 '다중 사용자 (multi-user)' 환경 모두에서 사용하는 주요 '명령줄 실행 파일 (command-line binaries)' 을 저장하는 디렉토리입니다.
+
+macOS 의 각종 **shell** (쉘) 을 포함하여 **mkdir** 같은 실행 파일들이 여기에 존재합니다.
 
 #### `/cores` : 개발 관련 디렉토리
 
