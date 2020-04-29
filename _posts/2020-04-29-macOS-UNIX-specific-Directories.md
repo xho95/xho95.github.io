@@ -150,9 +150,6 @@ macOS 에서는 **ping**, **ifconfig** 와 같은 실행 파일들이 여기에 
 $ ls -l
 lrwxr-xr-x@  1 root  admin    11 Oct  9  2019 etc -> private/etc
 ...
-lrwxr-xr-x@  1 root  admin    11 Oct  9  2019 tmp -> private/tmp
-...
-lrwxr-xr-x@  1 root  admin    11 Oct  9  2019 var -> private/var
 ```
 
 '심볼릭 링크' 는 'GUI' 관점에서는 하나의 '바로 가기' 라고 이해할 수 있으며, 이는 곧 `/etc` 디렉토리의 내용을 수정하는 것은 `/private/etc` 디렉토리의 내용을 수정하는 것과 완전히 동일함을 의미합니다.
