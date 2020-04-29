@@ -67,6 +67,8 @@ $ ls -l
 * **/usr** — 필수적이지는 않은 '명령줄 실행 파일' 이나 라이브러리, 헤더 파일, 그리고 기타 자료들을 담는 곳입니다.
 * **/var** — 'log (로그)' 파일 및 '변수 값' 을 가지고 있는 파일들을 담는 곳입니다.
 
+maxOS 의 '유닉스-고유 디렉토리' 에 대해서는 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기](http://xho95.github.io/macos/file-system/unix-specific/directory/2020/04/28/macOS-UNIX-specific-Directories.html) 에서 좀 더 자세히 다루도록 하겠습니다.
+
 ### 참고 자료
 
 [^directory-and-folder]: 맥을 사용하다보면 '폴더 (folder)' 와 '디렉토리 (directory)' 를 혼용해서 쓸 때가 많습니다. 실제로 이 둘은 거의 같은 의미를 가지고 있긴 합니다. 다만 [Difference between ‘“folder” and “directory”](https://english.stackexchange.com/questions/113606/difference-between-folder-and-directory) 라는 글을 보면, '폴더 (folder)' 는 'GUI 객체' 를 나타내는 논리적인 개념에서 나온 것이고, '디렉토리 (directory)' 는 '파일 시스템 (file system) 의 객체' 에서 나온 개념입니다. 따라서 [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface) 에서는 '폴더 (folder)' 라는 말을, [CLI](https://en.wikipedia.org/wiki/Command-line_interface) 에서는 디렉토리라는 말을 사용하는 것이 일반적입니다.  
