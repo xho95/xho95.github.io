@@ -61,7 +61,7 @@ $ sudo apachectl start
 
 아파치의 기본 설정들을 변경하려면 **/private/etc/apache2** 폴더에 있는 설정 파일들(**/*.conf**)을 수정하면 됩니다. 이 설정 파일들 중에서 가장 기본이 되는 것이 **httpd.conf** 파일입니다.[^docs-apache]
 
-> 참고로 맥에서 **/etc** 폴더는 주로 환경 설정 파일들이 존재하는 곳입니다.[^webdir] **/etc** 폴더에 대해서는 [macOS: 맥의 기본 디렉토리 구조 살펴보기](http://xho95.github.io/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html) 라는 포스트에서 좀 더 자세하게 설명해 두었습니다.
+> 참고로 맥에서 **/etc** 폴더는 주로 환경 설정 파일들이 존재하는 곳입니다.[^webdir] **/etc** 폴더에 대해서는 [macOS: 맥의 기본 디렉토리 구조 살펴보기](http://xho95.github.io/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html) 와 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기](http://xho95.github.io/macos/file-system/unix-specific/directory/2020/04/28/macOS-UNIX-specific-Directories.html) 에서 좀 더 자세하게 설명해 두었습니다.
 
 #### DocumentRoot 폴더 변경하기
 

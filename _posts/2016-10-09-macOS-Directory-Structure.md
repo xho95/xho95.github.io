@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "macOS: 맥의 기본 디렉토리 구조 살펴보기"
 date:   2016-10-09 02:50:00 +0900
-categories: macOS File-System UNIX-specific Directory
+categories: macOS File System Directory
 ---
 
 보통 맥을 사용하다보면 많은 경우 디렉토리를 의식하지 않고 사용하게 됩니다. [^directory-folder] [^mwultong-folder-directory] 예를 들어, 어떤 프로그램을 설치할 경우 대부분의 사용자는 프로그램이 설치되는 위치를 변경하지 않을 것입니다. 그러다 보니 해당 프로그램이 어디에 설치되는지 어떻게 동작하는지 잘 모르고 사용하는 경우가 많습니다.  
