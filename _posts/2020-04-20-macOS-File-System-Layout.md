@@ -49,7 +49,7 @@ $ ls -l
 
 이 디렉토리는 **maxOS X** 가 제공하는 앱이나 사용자가 설치한 앱, 그 외 프로그램을 사용하면서 생성한 파일들을 저장하는 곳입니다. 맥 사용자라면 아주 친숙한 폴더들입니다.
 
-각각의 디렉토리에 대한 더 자세한 설명은 [macOS Standard Directories: Where Files Reside](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) 문서에서 확인할 수 있습니다.
+> 각각의 디렉토리에 대한 더 자세한 설명은 [macOS Standard Directories: Where Files Reside](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) 문서에서 확인할 수 있습니다.
 
 ### macOS 의 유닉스-고유 디렉토리
 
