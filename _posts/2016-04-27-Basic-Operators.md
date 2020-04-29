@@ -483,7 +483,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^Basic-Operators]: 원문은 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 에서 확인할 수 있습니다.
 
-[^modulo-opartion]: 'modulo operation' 은 수학적인 엄밀한 나머지 연산과 관련된 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 글을 참고하기 바랍니다. 이와 관련된 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
+[^modulo-opartion]: 'modulo operation' 은 수학적으로 엄밀한 '나머지 연산' 과 연관되어 있는 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 글을 참고하기 바랍니다. 이와 연관된 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
 
 [^short-circuit]: 'short-circuit evaluation' 를 직역하면 '짧은-회로 평가' 가 되는데, 'minimal evaluation' 이라는 용어도 같이 사용하므로 '최소 평가' 라고 옮깁니다. 컴퓨터 공학에서 계산량을 줄이는 알고리즘이라고 볼 수 있을 것 같습니다. 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 참고하기 바랍니다.
 

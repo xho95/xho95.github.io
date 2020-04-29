@@ -26,7 +26,7 @@ _일반화된 매개 변수 목록 (generic parameter list)_ 은 쉼표로-구�
 
 `type parameter (타입 매개 변수)`: `constraint (구속 조건)`
 
-위에서 보듯 일반화된 매개 변수는 _타입 매개 변수_ 와 _구속 조건_ 으로 구성되며, 여기서 '구속 조건'은 선택 사항 (option) 입니다. _타입 매개 변수_ 는 단순히 해당 자리를 지키기 위한 용도로 사용하는 타입 이름입니다.[^placeholder] (예를 들면 `T`, `U`, `V`, `Key`, `Value` 등을 쓸 수 있습니다.) 타입 매개 변수-및 관련된 타입 (associated type) 모두-는 함수나 초기자의 선언부 (signature)[^signature] 를 포함하여 타입, 함수, 초기자의 나머지 부분에서 접근 가능합니다.
+위에서 보듯 일반화된 매개 변수는 _타입 매개 변수_ 와 _구속 조건_ 으로 구성되며, 여기서 '구속 조건'은 선택 사항 (option) 입니다. _타입 매개 변수_ 는 단순히 해당 자리를 지키기 위한 용도로 사용하는 타입 이름입니다.[^placeholder] (예를 들면 `T`, `U`, `V`, `Key`, `Value` 등을 쓸 수 있습니다.) 타입 매개 변수-및 '관련 타입 (associated type)' 모두-는 함수나 초기자의 선언부 (signature)[^signature] 를 포함하여 타입, 함수, 초기자의 나머지 부분에서 접근 가능합니다.
 
 _구속 조건 (constraint)_ 은 '타입 매개 변수'가 특정한 클래스를 상속 받아야 하는지 또는 프로토콜이나 프로토콜 조합을 따라야 하는지를 지정합니다. 예를 들어 아래의 일반화된 함수에서, 일반화된 매개 변수인 `T: Comparable` 은 타입 매개 변수 `T` 를 대체하는 타입 인자라면 어떤 것이든 반드시 `Comparable` 프로토콜을 따라야함을 나타내고 있습니다.
 
@@ -82,9 +82,9 @@ where `requirements`
 
 _일반화된 인자 구절 (generic argument clause)_ 은 '일반화된 타입' 의 '타입 인자' 를 지정합니다. '일반화된 인자 구절' 은 꺾쇠 괄호 (`<>`) 로 감싸여 있으며 다음과 같은 양식을 가집니다:
 
-<`generic argument list`>
+<`generic argument list (일반화된 인자 목록)`>
 
-일반화된 인자 목록은 쉼표로 구분되는 타입 인자들의 목록입니다. 타입 인자는 실제로 굳혀지는 타입의 이름으로써 이것이 일반화된 타입의 일반화된 매개 변수 구절에 있는 관련된 타입 매개 변수를 대체하게 됩니다. 결과는 일반화된 타입의 특수한 버전입니다. [^specialized-version] 아래에 있는 예제는 Swift 표준 라이브러리의 일반화된 사전 (dictionary) 타입을 간략하게 나타낸 버전입니다.
+_일반화된 인자 목록 (generic argument list)_ 은 쉼표로-구분된 '타입 인자' 들의 목록을 말합니다. _타입 인자 (type argument)_ 는 실제로 '명확한 타입 (concrete type)' 의 이름이며 이것이 '일반화된 타입' 의 '일반화된 매개 변수 구절' 에 있는 연관된 '타입 매개 변수' 를 대체합니다. 그 결과는 '일반화된 타입' 의 '특수한 버전 (specialized version)' 입니다.[^specialized-version] 아래 예제는 스위프트 표준 라이브러리에 있는 '일반화된 딕셔터리 타입 (generic dictionary type)' 을 간추려서 보여줍니다.
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {

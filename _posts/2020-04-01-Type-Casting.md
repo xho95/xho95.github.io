@@ -33,7 +33,7 @@ class MediaItem {
 }
 ```
 
-그 다음 코드 조각은 `MediaItem` 의 두 '하위 클래스' 를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화나 필름에 대한 추가적인 정보를 은닉합니다. 이는 `MediaItem` 이라는 기본 클래스에 `director` 속성 및 그에 관련된 초기자를 추가하고 있습니다. 두 번째 하위 클래스인, `Song` 은, 기본 클래스에 `artist` 속성과 초기자를 추가합니다:
+그 다음 코드 조각은 `MediaItem` 의 두 '하위 클래스' 를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화나 필름에 대한 추가적인 정보를 '캡슐화 (encapsulates)' 합니다. 이는 `MediaItem` 기본 클래스 위에다가 `director` 속성을 추가하고, 그와 연관되는 초기자도 추가합니다. 두 번째 하위 클래스인, `Song` 은, 기본 클래스 위에 `artist` 속성과 초기자를 추가합니다:
 
 ```swift
 class Movie: MediaItem {

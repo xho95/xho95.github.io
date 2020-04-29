@@ -404,7 +404,7 @@ for index in greeting.indices {
 
 #### Inserting and Removing (삽입하고 제거하기)
 
-문자열의 지정된 색인에 단일한 문자를 삽입하려면 `insert(_:at:)` 메소드를 사용하고, 다른 문자열의 '내용 (contents)' 을 지정된 색인에 삽입하려면 `insert(contentsOf:at:)` 메소드를 사용하면 됩니다.
+단일 문자를 문자열의 지정된 색인 위치에 삽입하려면, `insert(_:at:)` 메소드를 사용하고, 다른 문자열 '내용 (contents)' 을 지정된 색인 위치에 삽입하려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
 
 ```swift
 var welcome = "hello"
@@ -415,7 +415,7 @@ welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex)
 // welcome 은 이제 "hello there!" 와 같습니다.
 ```
 
-문자열의 지정된 색인에 있는 단일한 문자를 제거하려면 `remove(at:)` 메소드를 사용하고, 지정된 범위에 있는 '하위 문자열 (substring)' 을 제거하려면 `removeSubrange(_:)` 메소드를 사용하면 됩니다:
+문자열에서 지정된 색인 위치의 단일 문자를 제거하려면, `remove(at:)` 메소드를 사용하고, 지정된 범위에 있는 '하위 문자열 (substring)' 을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
 
 ```swift
 welcome.remove(at: welcome.index(before: welcome.endIndex))

@@ -6,7 +6,7 @@ date:   2020-03-04 11:30:00 +0900
 categories: macOS CLI shell zsh
 ---
 
-macOS 버전 10.15 인 '카탈리나' 부터 기본 쉘 (Shell) 이 bash[^bash] 에서 zsh (Z shell)[^zsh] 로 변경 되었습니다.[^Use-zsh] 일단 쉘을 변경한 이유를 애플에서 직접 밝히진 않았지만, The Verge 라는 언론에서는 bash 쉘의 라이센스와 관련된 이유인 것으로 추측하고 있습니다.[^the-Verge] 이 기사와 애플의 설명을 보면 여러 후보군 중에서 zsh 을 선택한 것은 라이센스 문제를 해결하면서도 기존 bash 쉘과의 호환성을 최대한 지원하기 위함인 것 같습니다.[^Bourne-shell]
+macOS 버전 10.15 인 '카탈리나' 부터 기본 쉘 (Shell) 이 bash[^bash] 에서 zsh (Z shell)[^zsh] 로 변경 되었습니다.[^Use-zsh] 일단 쉘을 변경한 이유를 애플에서 직접 밝히진 않았지만, The Verge 라는 언론에서는 bash 쉘의 라이센스와 연관된 것으로 추측하고 있습니다.[^the-Verge] 이 기사와 애플의 설명을 보면 여러 후보군 중에서 zsh 을 선택한 것은 라이센스 문제를 해결하면서도 기존 bash 쉘과의 호환성을 최대한 지원하기 위함인 것 같습니다.[^Bourne-shell]
 
 사실 zsh 자체는 맥 사용자에게 오래전부터 알려려 있던 것으로, 한 때 [iTerm2](https://iterm2.com)[^iTerms2] 라는 터미널 프로그램이 유행하면서 'Oh My Zsh'[^ohmyzsh] 로 쉘을 변경하는 경우가 꽤 있었던 기억이 납니다. 다만 저는 개인적으로 어지간하면 기본 세팅을 변경하지 않는 사람이여서 zsh 이 있다는 것을 알고만 있었는데, 언젠가부터 터미널을 사용할 때마다 아래와 같은 메시지가 뜨길래 맥의 기본 쉘이 변경된 것을 알게됐습니다.[^recognized]
 
@@ -149,7 +149,7 @@ ZSH_THEME="ys"
 
 [^Use-zsh]: 보다 자세한 내용은 [Use zsh as the default shell on your Mac](https://support.apple.com/en-us/HT208050) 에서 확인할 수 있습니다.
 
-[^the-Verge]: 원문으로 된 기사는 [Apple replaces bash with zsh as the default shell in macOS Catalina](https://www.theverge.com/2019/6/4/18651872/apple-macos-catalina-zsh-bash-shell-replacement-features) 에서 확인할 수 있습니다. 일단 이 기사에서는 bash 쉘의 최신 버전이 GPLv3 라이센스인 것과 관련이 있다고 보고 있습니다.
+[^the-Verge]: 원문으로 된 기사는 [Apple replaces bash with zsh as the default shell in macOS Catalina](https://www.theverge.com/2019/6/4/18651872/apple-macos-catalina-zsh-bash-shell-replacement-features) 에서 확인할 수 있습니다. 일단 이 기사에서는 bash 쉘의 최신 버전이 GPLv3 라이센스인 것과 관계가 있다고 보고 있습니다.
 
 [^Bourne-shell]: bash 쉘은 [Brian Jhan Fox](https://en.wikipedia.org/wiki/Brian_Fox_(computer_programmer)) 가 1989년 최초로 공개한 쉘로, 이는 1979년 벨 연구소의 [Stephen R. Bourne](https://en.wikipedia.org/wiki/Stephen_R._Bourne) 이 공개한 Bourne 쉘을 대체하기 위한 것이었습니다. 애플의 설명에 의하면 zsh 는 이 Bourne shell 과의 호환성이 아주 높기 때문에, bash 쉘과도 약간의 차이점을 제외하면 거의 대부분의 기능이 호환된다고 합니다. 이런 이유로 zsh 을 채택하게 된 것 같습니다.
 

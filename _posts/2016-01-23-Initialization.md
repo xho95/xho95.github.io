@@ -80,9 +80,9 @@ print(zeroByZero.width, zeroByZero.height)
 
 ### Class Inheritance and Initialization (클래스 상속과 초기화)
 
-#### Designated Initializers and Convenience Initializers ('지정 초기자' 와 '편의 초기자')
+#### Designated Initializers and Convenience Initializers ('지명 초기자' 와 '편의 초기자')
 
-#### Syntax for Designated and Convenience Initializers ('지정 초기자' 와 '편의 초기자' 의 구문 표현)
+#### Syntax for Designated and Convenience Initializers ('지명 초기자' 와 '편의 초기자' 의 구문 표현)
 
 #### Initializer Delegation for Class Type (클래스 타입을 위한 초기자 위임하기)
 
@@ -116,18 +116,18 @@ print(zeroByZero.width, zeroByZero.height)
 
 **규칙 1**
 
-  하위 클래스에서 어떤 '지정 초기자 (designated Initializer)' 도 정의하지 않았을 경우, 상위 클래스의 모든 '지정 초기자' 들을 자동으로 상속받습니다.
+  하위 클래스에서 어떤 '지명 초기자 (designated Initializer)' 도 정의하지 않았을 경우, 상위 클래스의 모든 '지명 초기자' 를 자동으로 상속받습니다.
 
 **규칙 2**
 
-  하위 클래스에서 상위 클래스의 '지정 초기자' 에 대한 모든 구현을 제공할 경우-'규칙 1' 에 의해서 상속을 받았든, 정의하면서 직접 구현을 제공했든 상관없이-이 때는 상위 클래스의 모든 '편의 초기자 (convenience Initializers)' 들을 자동으로 상속받습니다.
+  하위 클래스에서 상위 클래스의 '지명 초기자' 에 대한 모든 구현을 제공할 경우-'규칙 1' 에 의해서 상속을 받았든, 정의하면서 직접 구현을 제공했든 상관없이-이 때는 상위 클래스의 모든 '편의 초기자 (convenience Initializers)' 를 자동으로 상속받습니다.
 
 이 규칙은 하위 클래스에서 '편의 초기자' 를 더 추가했어도 그대로 적용됩니다.
 
-> '규칙 2' 를 만족하기 위한 방편으로, 상위 클래스의 '지정 초기자' 를 하위 클래스에서 '편의 초기자' 의 형태로 구현할 수도 있습니다.
+> '규칙 2' 를 만족하기 위한 방편으로, 상위 클래스의 '지명 초기자' 를 하위 클래스에서 '편의 초기자' 의 형태로 구현할 수도 있습니다.
 
 
-#### Designated and Convenience Initialization in Action ('지정 초기자' 와 '편의 초기자' 의 실제 사례)
+#### Designated and Convenience Initialization in Action ('지명 초기자' 와 '편의 초기자' 의 실제 사례)
 
 ### Failable Initializers (실패 가능한 초기자)
 
