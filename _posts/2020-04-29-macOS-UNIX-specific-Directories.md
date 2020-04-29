@@ -78,7 +78,7 @@ macOS 의 각종 **shell** (쉘) 을 포함하여 **mkdir** 같은 실행 파일
 
 `/cores` 디렉토리에 대한 설명은 `man hier` 명령으로 확인할 수 없습니다. 왜냐면 이 디렉토리는 일반적인 상황에서는 나타나지 않기 때문입니다.
 
-`/cores` 디렉토리는 macOS 에서 개발 및 테스트를 하는 과정에서 충돌이 발생할 경우, 그 당시의 '메모리 상태 (the state of the memory)' 를 기록한 파일을 저장하는 디렉토리하고 합니다.[^cores]
+`/cores` 디렉토리는 macOS 에서 개발 및 테스트를 하는 과정에서 충돌이 발생할 경우, 그 당시의 '메모리 상태 (the state of the memory)' 들을 파일로 저장하는 디렉토리라고 합니다.[^cores]
 
 #### `/dev` : 장치 파일 디렉토리
 
@@ -92,7 +92,7 @@ macOS 의 각종 **shell** (쉘) 을 포함하여 **mkdir** 같은 실행 파일
 
 > macOS 에서 `/etc` 디렉토리는 실제로는 `/private/etc` 디렉토리의 '심볼릭 링크 (symbolic link)' 입니다.[^symbolic-link] 즉, `/etc/apache2` 디렉토리는 `/private/etc/apache2` 디렉토리와 같은 곳입니다.
 >
-> `/private` 디렉토리에 대해서는 아래의 [`/private` : 개인 사용자 디렉토리](#private-개인-사용자-디렉토리) 에서 따로 설명하도록 합니다.
+> `/private` 디렉토리에 대해서는 아래의 [`/private` : 개인 사용자 디렉토리](#private--개인-사용자-디렉토리) 에서 따로 설명하도록 합니다.
 
 #### `/home` : 유닉스 시스템의 홈 디렉토리 - macOS 에서는 사용하지 않음
 
@@ -114,7 +114,7 @@ macOS 에서는 **ping**, **ifconfig** 와 같은 실행 파일들이 여기에 
 
 > macOS 에서 `/tmp` 디렉토리는 실제로는 `/private/tmp` 디렉토리의 '심볼릭 링크 (symbolic link)' 입니다. 즉, `/tmp/Developer` 디렉토리는 `/private/tmp/Developer` 디렉토리와 같은 곳입니다.
 >
-> `/private` 디렉토리에 대해서는 아래의 [`/private` : 개인 사용자 디렉토리](#private-개인-사용자-디렉토리) 에서 따로 설명하도록 합니다.
+> `/private` 디렉토리에 대해서는 아래의 [`/private` : 개인 사용자 디렉토리](#private--개인-사용자-디렉토리) 에서 따로 설명하도록 합니다.
 
 #### `/usr` : 사용자 디렉토리
 
@@ -140,7 +140,7 @@ macOS 에서는 **ping**, **ifconfig** 와 같은 실행 파일들이 여기에 
 
 > macOS 에서 `/var` 디렉토리는 실제로는 `/private/var` 디렉토리의 '심볼릭 링크 (symbolic link)' 입니다. 즉, `/var/log` 디렉토리는 `/private/var/log` 디렉토리와 같은 곳입니다.
 >
-> `/private` 디렉토리에 대해서는 아래의 [`/private` : 개인 사용자 디렉토리](#private-개인-사용자-디렉토리) 에서 따로 설명하도록 합니다.
+> `/private` 디렉토리에 대해서는 다음의 [`/private` : 개인 사용자 디렉토리](#private--개인-사용자-디렉토리) 에서 설명합니다.
 
 #### `/private` : 개인 사용자 디렉토리
 
