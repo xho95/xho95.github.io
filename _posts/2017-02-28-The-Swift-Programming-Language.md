@@ -26,7 +26,7 @@ categories: Swift Programming Language Grammar
 * [Enumerations (열거체)]
 * [Structures and Classes (구조체와 클래스)](http://xho95.github.io/swift/language/grammar/structure/class/2020/04/14/Structures-and-Classes.html)
 * [Properties (속성)]
-* [Methods (메소드)]
+* [Methods (메소드)]({% post_url 2020-05-03-Methods.md %})
 * [Subscripts (첨자 연산)](http://xho95.github.io/swift/language/grammar/subscripts/2020/03/15/Subscripts.html)
 * [Inheritance (상속)](http://xho95.github.io/swift/language/grammar/inheritance/2020/03/31/Inheritance.html)
 * [Initialization (객체 초기화하기)] - [일부 진행중](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html)
