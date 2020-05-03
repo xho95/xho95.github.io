@@ -90,14 +90,14 @@ Even though Rank and Suit are nested within BlackjackCard, their type can be inf
 
 ### Referring to Nested Types (품어진 타입 참조하기)
 
-'품어진 타입 (nested type)' 을 자신이 정의된 영역 밖에서도 사용하려면, 그 이름 앞에 자신을 품고있는 타입의 이름을 붙여주면 됩니다:
+'품어진 타입 (nested type)' 을 자신이 정의된 영역 밖에서 사용하려면, 이름 앞에 자신을 품고 있는 타입 이름을 접두사로 붙이면 됩니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 // heartsSymbol 은 "♡" 입니다.
 ```
 
-위 예제를 보면, 이러한 방식은 `Suit`, `Rank` 와 `Values` 의 이름을 의도적으로 짧게 만드는 것을 가능하게 함을 알 수 있는데, 이는 정의되어 있는 영역 (context) 에 의해 이름이 자연스럽게 규정되기 (qualified) 때문입니다.
+위 예제를 보면, 이는 `Suit`, `Rank`, 그리고 `Values` 의 이름을 의식적으로 짧게 유지할 수 있게 해주는데, 이들의 이름이 정의된 영역에 의해 자연스럽게 '규명되기 (qualified)' 때문입니다.
 
 ### 참고 자료
 

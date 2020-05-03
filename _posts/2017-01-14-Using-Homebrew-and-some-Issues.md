@@ -8,7 +8,7 @@ categories: macOS Sierra Package Homebrew Issues
 
 여기서는 [Homebrew](http://brew.sh) 의 사용 방법에 대해서 간단하게 알아보고, Homebrew 를 사용하다가 문제가 발생할 경우의 해결 방법에 대해서 정리합니다.
 
-[Homebrew](http://brew.sh) 는 macOS 용 패키지 관리자입니다. [^brew] [^mimul-homebrew] 이 도구를 사용해서 맥에 필요한 각종 패키지를 설치할 수 있습니다. [^tree] 맥 사용자, 특히 개발자라면 원하든 원하지 않든 반드시 사용할 일이 생깁니다.
+**Homebrew** 는 macOS 용 패키지 관리자[^brew]입니다. [^mimul-homebrew] 이 도구를 사용해서 맥에 필요한 각종 패키지를 설치할 수 있습니다. [^tree] 맥 사용자, 특히 개발자라면 원하든 원하지 않든 반드시 사용할 일이 생깁니다.
 
 > Homebrew 공식 홈페이지에서는 한글도 지원합니다. 첫 화면의 선택 상자에서 한국어를 선택하면 됩니다. [^brew-ko]
 >
@@ -84,25 +84,25 @@ $ brew install wget
 $ brew tap new_repository
 ```
 
-즉 위와 같이 하면 `new_repository`를 `brew`에 등록하게 됩니다. 이제 `new_repository`에 있는 다른 패키지들도 다운 받을 수 있습니다.
+즉 위와 같이 하면 `new_repository`를 `brew`에 등록하게 됩니다. 이제 `new_repository` 에 있는 다른 패키지들도 다운 받을 수 있습니다.
 
 예를 들어 아래와 같이 하면 `some_package`라는 패키지를 다운 받을 수 있습니다.
 
-```
+```sh
 $ brew install some_package
 ```
 
 #### 기타 사용 방법에 대한 글들
 
-[Kevin Elliott](https://gist.github.com/kevinelliott) 님의 [macOS 10.12 Sierra Setup](https://gist.github.com/kevinelliott/7a152c556a83b322e0a8cd2df128235c) 라는 글에는 macOS 시에라에 각종 도구들을 설치하는 방법이 나오는데 Homebrew의 다양한 사용법을 은연 중에 볼 수 있습니다. [^kevin]
+[Kevin Elliott](https://gist.github.com/kevinelliott) 님의 [macOS 10.12 Sierra Setup](https://gist.github.com/kevinelliott/7a152c556a83b322e0a8cd2df128235c) 라는 글에는 macOS 시에라에 각종 도구들을 설치하는 방법이 나오는데 Homebrew 의 다양한 사용법을 은연 중에 볼 수 있습니다. [^kevin]
 
-[RKJun](https://rkjun.wordpress.com) 님의 [HOMEBREW 로 OS X 패키지 관리하기](https://rkjun.wordpress.com/2013/07/14/os-x-missing-package-manager-home-brew/) 라는 글에는 Homebrew의 설치부터 사용법까지 잘 설명되어 있습니다. 특히 특정 패키지의 과거 버전을 사용하는 방법에 대해서 설명이 잘 되어 있는 것 같습니다. [^rkjun]
+[RKJun](https://rkjun.wordpress.com) 님의 [HOMEBREW 로 OS X 패키지 관리하기](https://rkjun.wordpress.com/2013/07/14/os-x-missing-package-manager-home-brew/) 라는 글에는 Homebrew 의 설치부터 사용법까지 잘 설명되어 있습니다. 특히 특정 패키지의 과거 버전을 사용하는 방법에 대해서 설명이 잘 되어 있는 것 같습니다. [^rkjun]
 
 [주경야근](http://apple.viewtreefull.com/index.html) 님의 글 [Homebrew 설치하기](https://veryfaraway.github.io/digging/homebrew.html) 에도 설치 및 사용 방법이 잘 정리되어 있습니다. 특히, 특정 패키지의 버전을 고정하는 `brew pin` 명령에 대한 내용이 설명되어 있습니다. [^veryfaraway-homebrew]
 
 ### Homebrew 이슈 정리
 
-이제 macOS 시에라에서 Homebrew를 사용할 경우 발생할 수 있는 문제들에 대해 살펴봅니다. 사실 글을 작성하는 시점에서는 Homebrew가 시에라를 공식 지원하기 때문에 문제가 해결된 것도 있지만 나중에라도 언제든 발생할 수 있는 부분이라서 기록해 둡니다.
+이제 macOS 시에라에서 Homebrew 를 사용할 경우 발생할 수 있는 문제들에 대해 살펴봅니다. 사실 글을 작성하는 시점에서는 Homebrew 가 시에라를 공식 지원하기 때문에 문제가 해결된 것도 있지만 나중에라도 언제든 발생할 수 있는 부분이라서 기록해 둡니다.
 
 #### `/usr/local` 폴더 권한 문제
 
@@ -117,7 +117,7 @@ $ brew install some_package
 /usr/local/bin
 ```
 
-이것은 Homebrew의 작동 방식이 전용 디렉토리에 패키지를 설치하고 **/usr/local** 위치로 심볼릭 링크를 연결하는 방식인데 해당 폴더에 대한 권한이 없기 때문입니다. [^symbolic-link] 즉, 패키지 자체는 설치되지만 권한 때문에 해당 패키지의 심볼릭 링크를 만들 수 없는 현상이 발생하는 것입니다.
+이것은 Homebrew 의 작동 방식이 전용 디렉토리에 패키지를 설치하고 **/usr/local** 위치로 심볼릭 링크를 연결하는 방식인데 해당 폴더에 대한 권한이 없기 때문입니다. [^symbolic-link] 즉, 패키지 자체는 설치되지만 권한 때문에 해당 패키지의 심볼릭 링크를 만들 수 없는 현상이 발생하는 것입니다.
 
 해결 방법은 [In macOS 10.12 Sierra, /usr/local is readonly.](https://github.com/Homebrew/brew/issues/385) 라는 글에 나와 있는대로 `/usr/local` 폴더의 권한을 다음과 같이 수정하는 것입니다.
 
@@ -129,9 +129,9 @@ $ sudo chown -R $(whoami) /usr/local
 >
 > 최신 Homebrew의 경우 폴더 권한을 알아서 수정해 주는 줄 알았는데, 패키지에 따라서는 폴더 권한을 수정해야 하는 경우가 발생합니다. 일단 한 번만 폴더 권한을 수정하면 되긴 하지만 Homebrew에서 자동으로 폴더 권한을 수정하지는 않는 것 같습니다.
 
-폴더 권한 문제이므로 `brew` 명령에 `sudo`를 붙이면 해결할 수 있지 않을까 생각되지만, `brew`에 `sudo`를 사용하는 것은 위험성 때문에 운영체제에서 막고 있습니다.
+폴더 권한 문제이므로 `brew` 명령에 `sudo` 를 붙이면 해결할 수 있지 않을까 생각되지만, `brew` 에 `sudo` 를 사용하는 것은 위험성 때문에 운영체제에서 막고 있습니다.
 
-`$ sudo brew`를 실행해보면 다음과 같은 에러 메시지를 볼 수 있습니다.
+`$ sudo brew` 를 실행해보면 다음과 같은 에러 메시지를 볼 수 있습니다.
 
 ```
 Error: Running Homebrew as root is extremely dangerous and no longer supported.
@@ -139,7 +139,7 @@ As Homebrew does not drop privileges on installation you would be giving all
 build scripts full access to your system.
 ```
 
-내용을 보면 Homebrew를 루트 권한에서 실행하는 것은 매우 위험하므로 이를 더 이상 지원 하지 않는다고 합니다. Homebrew는 설치시 권한을 낮추지 않기 때문에 빌드 과정에서 특정 구문이 시스템의 모든 부분에 접근할 수 있기 때문이라고 합니다.  
+내용을 보면 Homebrew 를 루트 권한에서 실행하는 것은 매우 위험하므로 이를 더 이상 지원 하지 않는다고 합니다. Homebrew 는 설치시 권한을 낮추지 않기 때문에 빌드 과정에서 특정 구문이 시스템의 모든 부분에 접근할 수 있기 때문이라고 합니다.  
 
 #### brew link 이슈
 
