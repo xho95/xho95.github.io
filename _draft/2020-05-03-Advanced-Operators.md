@@ -30,7 +30,7 @@ _비트 연산자 (bitwise operators)_ 는 자료 구조에서 개별 '원시 �
 
 _비트 논리 부정 연산자 (bitwise NOT operator)_ (`~`) 는 어떤 수치에 있는 모든 비트를 반전시킵니다:
 
-![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-Operator.jpg)
+![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
 '비트 논리 부정 연산자' 는 '접두 연산자 (prefix operator)' 이며, 연산할 값 바로 앞에, 아무 공백없이 위치합니다:
 
@@ -45,7 +45,7 @@ let invertedBits = ~initialBits   // 11110000 과 같습니다.
 
 ### Bitwise AND Operator (비트 논리 곱 연산자)
 
-![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-Operator.jpg)
+![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
 ### Bitwise OR Operator (비트 논리 합 연산자)
 
