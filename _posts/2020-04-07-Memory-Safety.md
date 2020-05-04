@@ -206,8 +206,6 @@ func someFunction() {
 
 컴파일러는 접근이 안전하다는 것을 증명하지 못했을 경우, 그 접근을 허용하지 않습니다.
 
-[Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-18-03-20-The-Swift-Programming-Language.md %})
-
 ### 참고 자료
 
 [^Memory-Safety]: 이 글에 대한 원문은 [Memory Safety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html) 에서 확인할 수 있습니다.
