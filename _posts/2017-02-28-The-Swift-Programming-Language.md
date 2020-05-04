@@ -10,7 +10,7 @@ categories: Swift Programming Language Grammar
 
 ### Welcome to Swift (스위프트 소개)
 
-* [About Swift (스위프트에 대하여)](http://xho95.github.io/swift/language/grammar/about/2017/03/02/About-Swift.html)
+* [About Swift (스위프트에 대하여)]({% post_url 2017-03-02-About-Swift %})
 * [Version Compatibility (버전 호환성)](http://xho95.github.io/swift/language/grammar/version/compatibility/2020/03/15/Version-Compatibility.html)
 * [A Swift Tour (스위프트 둘러보기)](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
 
