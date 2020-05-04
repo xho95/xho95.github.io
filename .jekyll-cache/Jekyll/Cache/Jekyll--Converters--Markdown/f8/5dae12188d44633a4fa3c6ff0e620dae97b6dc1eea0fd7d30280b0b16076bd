@@ -1,0 +1,16 @@
+I"<p>보통 <a href="https://swift.org">Swift</a> 는 맥이나 iOS 앱을 만들기 위해서 사용한다고 생각하기 쉽습니다. <sup id="fnref:swift" role="doc-noteref"><a href="#fn:swift" class="footnote">1</a></sup> 하지만 애플에서 2015년 12월 3일에 Swift 를 오픈 소스로 공개하면서 리눅스 (Linux) 배포판도 같이 공개했습니다. <sup id="fnref:swift-welcome" role="doc-noteref"><a href="#fn:swift-welcome" class="footnote">2</a></sup> <sup id="fnref:swift-linux" role="doc-noteref"><a href="#fn:swift-linux" class="footnote">3</a></sup> 즉, Swift 는 리눅스에서 마치 C/C++ 처럼 사용할 수 있는 언어입니다.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:swift" role="doc-endnote">
+      <p>Swift 는 애플에서 공개한 새로운 프로그래밍 언어로 보다 자세한 내용은 공식 블로그인 <a href="https://swift.org">Swift.org</a> 에서 찾아볼 수 있습니다. <a href="#fnref:swift" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:swift-welcome" role="doc-endnote">
+      <p>2015년 12월 3일에 애플에서 Swift 를 오픈 소스로 공개하면서 Swift 공식 블로그를 만들었습니다. 보다 자세한 내용은 <a href="https://swift.org/blog/welcome/">The Swift.org Blog</a> 라는 글을 보면 알 수 있습니다. <a href="#fnref:swift-welcome" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:swift-linux" role="doc-endnote">
+      <p>Swift 를 리눅스로 포팅한 소식은 블로그의 <a href="https://swift.org/blog/swift-linux-port/">The Swift Linux Port</a> 에 소개하고 있습니다. <a href="#fnref:swift-linux" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET
