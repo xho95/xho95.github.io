@@ -45,11 +45,11 @@ let invertedBits = ~initialBits   // 11110000 과 같습니다.
 
 ### Bitwise AND Operator (비트 논리 곱 연산자)
 
-_비트 논리 합 연산자 (bitwise AND operator)_ (`&`) 는 두 수치 값의 비트를 결합합니다. 이는 입력 수치 _둘 다 (both)_ `1` 인 비트일 때만 해당 비트를 `1` 로 설정된 새로운 수치 값을 반환합니다.
+_비트 논리 합 연산자 (bitwise AND operator)_ (`&`) 는 두 수치 값의 비트를 결합합니다. 이 연산자는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 해당 비트를 `1` 로 설정한 새 수치 값을 반환합니다.
 
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
-아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 중간의 네 자리가 `1` 입니다. '비트 논리 곱 연산자' 는 이를 결합하여 `00111100` 을 만드는데, 이는 부호없는 10-진수 값 `60` 과 같습니다:
+아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 중간의 '네 자리 (four bits)' 가 `1` 입니다. '비트 논리 곱 연산자' 는 이를 결합하여 수치 값 `00111100` 을 만드는데, 이는 부호 없는 10-진수 값 `60` 과 같습니다:
 
 ```swift
 let firstSixBits: UInt8 = 0b11111100
@@ -59,7 +59,31 @@ let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같습니다.
 
 ### Bitwise OR Operator (비트 논리 합 연산자)
 
+_비트 논리 합 연산자 (bitwise OR operator)_ (`|`) 는 두 수치 값을 비트를 비교합니다. 이 연산자는 입력 수치 값의 비트 중 _어느 것이든 (either)_ `1` 이면 해당 비트를 `1` 로 설정한 새 수치 값을 반환합니다.
+
+![bitwise-OR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-OR-operator.jpg)
+
+아래 예제에서, `someBits` 와 `moreBits` 의 값은 서로 다른 '자리들 (bits)' 이 `1` 입니다. '비트 논리 합 연산자' 는 이들을 결합하여 수치 값 `11111110` 을 만드는데, 이는 부호 없는 10-진수 `254` 와 같습니다:
+
+```swift
+let someBits: UInt8 = 0b10110010
+let moreBits: UInt8 = 0b01011110
+let combinedBits = someBits | moreBits // 11111110 와 같습니다.
+```
+
 ### Bitwise XOR Operator (비트 논리 배타 연산자)
+
+_비트 논리 배타 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (exclusive OR operator)"[^exclusive] (`^`) 는 두 수치 값의 비트를 비교합니다. 이 연산자는 입력 비트들이 서로 다르면 해당 비트를 `1` 로 설정하고 입력 비트들이 같으면 해당 비트를 `0` 으로 설정한 새 수치 값을 반환합니다:
+
+![bitwise-XOR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-XOR-operator.jpg)
+
+아래 예제에서, `firstBits` 와 `otherBits` 의 값은 각각 다른 위치에 있는 '자리 (bit)' 가 `1` 입니다. '비트 논리 배타 연산자' 는 결과 값에서 이 '자리들 (bits)' 을 `1` 로 설정합니다. `firstBits` 와 `otherBits` 의 다른 자리들은 모두 일치하므로 출력 값에서 `0` 으로 설정됩니다:
+
+```swift
+let firstBits: UInt8 = 0b00010100
+let otherBits: UInt8 = 0b00000101
+let outputBits = firstBits ^ otherBits // 00010001 과 같습니다.
+```
 
 ### Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)
 
@@ -90,3 +114,5 @@ let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같습니다.
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
 [^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 편의를 위해서 프로그래밍에서 많이 사용하는 '비트' 라는 말을 사용하기로 하며, 필요에 따라 '자리' 이라는 말로 옮기도록 하겠습니다.
+
+[^exclusive]: 'exclusive' 는 경우에 따라 '독점적인' 이라는 말이 더 어울릴 때가 있습니다. 하지만, 프로그래밍 용어에서는 '배타적인' 이라는 용어가 널리 사용되고 있으므로 'exclusive OR' 는 '배타적인 논리 합' 으로 옮기도록 합니다.
