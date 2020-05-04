@@ -28,7 +28,7 @@ _비트 연산자 (bitwise operators)_ 는 자료 구조에서 개별 '원시 �
 
 ### Bitwise NOT Operator (비트 논리 부정 연산자)
 
-_비트 논리 부정 연산자 (bitwise NOT operator)_ (`~`) 는 어떤 수치에 있는 모든 비트를 반전시킵니다:
+_비트 논리 부정 연산자 (bitwise NOT operator)_ (`~`) 는 어떤 수치 값에 있는 모든 비트를 반전시킵니다:
 
 ![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
@@ -45,7 +45,17 @@ let invertedBits = ~initialBits   // 11110000 과 같습니다.
 
 ### Bitwise AND Operator (비트 논리 곱 연산자)
 
+_비트 논리 합 연산자 (bitwise AND operator)_ (`&`) 는 두 수치 값의 비트를 결합합니다. 이는 입력 수치 _둘 다 (both)_ `1` 인 비트일 때만 해당 비트를 `1` 로 설정된 새로운 수치 값을 반환합니다.
+
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
+
+아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 중간의 네 자리가 `1` 입니다. '비트 논리 곱 연산자' 는 이를 결합하여 `00111100` 을 만드는데, 이는 부호없는 10-진수 값 `60` 과 같습니다:
+
+```swift
+let firstSixBits: UInt8 = 0b11111100
+let lastSixBits: UInt8  = 0b00111111
+let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같습니다.
+```
 
 ### Bitwise OR Operator (비트 논리 합 연산자)
 
@@ -79,4 +89,4 @@ let invertedBits = ~initialBits   // 11110000 과 같습니다.
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
-[^bits]: '비트' 를 우리 말로 한다면 '수의 자리' 정도가 될 것 같습니다. 다만 편의를 위해서 프로그래밍에서 많이 사용하는 '비트' 라는 말을 사용하기로 하며, 필요에 따라 '자리' 라는 말로 옮기도록 하겠습니다.
+[^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 편의를 위해서 프로그래밍에서 많이 사용하는 '비트' 라는 말을 사용하기로 하며, 필요에 따라 '자리' 이라는 말로 옮기도록 하겠습니다.
