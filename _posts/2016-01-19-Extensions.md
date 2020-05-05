@@ -116,7 +116,7 @@ struct Rect {
 }
 ```
 
-`Rect` 구조체는 모든 속성에 기본 설정 값을 제공하고 있으므로, [Default Initializers (기본 설정 초기자)](http://xho95.github.io/xcode/swift/grammar/initialization/2016/01/23/Initialization.html#default-initializers-기본-설정-초기자) 에 설명한 것처럼, 자동으로 '기본 설정 초기자'와 '멤버 초기자'를 가지게 됩니다. 이 초기자로 새 `Rect` 인스턴스를 만들 수 있습니다:
+`Rect` 구조체는 모든 속성에 기본 설정 값을 제공하고 있으므로, [Default Initializers (기본 설정 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-설정-초기자) 에 설명한 것처럼, 자동으로 '기본 설정 초기자'와 '멤버 초기자'를 가지게 됩니다. 이 초기자로 새 `Rect` 인스턴스를 만들 수 있습니다:
 
 ```swift
 let defaultRect = Rect()

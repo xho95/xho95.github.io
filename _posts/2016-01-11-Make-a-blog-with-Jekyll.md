@@ -6,7 +6,7 @@ date:   2016-01-11 12:50:00 +0900
 categories: Blog GitHub Jekyll Git
 ---
 
-> 얼마전에 Jekyll 이 Theme 를 사용하는 방식으로 변경되었는데 이런 점을 반영해서 새로 [Jekyll: GitHub Pages 에 블로그 만들기](http://xho95.github.io/blog/github/pages/jekyll/minima/theme/2017/03/04/Jekyll-Blog-with-Minima.html) 라는 글을 작성하였습니다.
+> 얼마전에 Jekyll 이 Theme 를 사용하는 방식으로 변경되었는데 이런 점을 반영해서 새로 [Jekyll: GitHub Pages 에 블로그 만들기]({% post_url 2017-03-05-Jekyll-Blog-with-Minima %}) 라는 글을 작성하였습니다.
 >
 > Jekyll 전반에 대한 내용을 알고자 하시면 이 글을 참고하시고 Jekyll 을 설치하고 테스트 하시려면 위 링크의 새 글을 보시는 것이 좋을 것 같습니다.
 
@@ -165,9 +165,9 @@ $ git push origin master
 
 ### 관련 자료
 
-* 새 버전의 Jekyll 을 설치하고 사용하는 방법에 대해서는 [Jekyll: GitHub Pages 에 블로그 만들기](http://xho95.github.io/blog/github/pages/jekyll/minima/theme/2017/03/04/Jekyll-Blog-with-Minima.html) 글을 참고하시기 바랍니다.
-* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html) 글을 참고하기 바랍니다.
-* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html) 글을 보도록 합니다.
+* 새 버전의 Jekyll 을 설치하고 사용하는 방법에 대해서는 [Jekyll: GitHub Pages 에 블로그 만들기]({% post_url 2017-03-05-Jekyll-Blog-with-Minima %}) 글을 참고하시기 바랍니다.
+* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %}) 글을 참고하기 바랍니다.
+* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지]({% post_url 2017-01-21-Add-Disqus-to-Jekyll %}) 글을 보도록 합니다.
 
 ### 참고 자료
 
