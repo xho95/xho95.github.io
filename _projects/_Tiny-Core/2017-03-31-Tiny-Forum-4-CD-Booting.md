@@ -1,4 +1,4 @@
-![](https://xho95.github.io/assets/TinyCore/cd-booting.jpg)
+![](/assets/TinyCore/cd-booting.jpg)
 
 Thank you everybody.
 

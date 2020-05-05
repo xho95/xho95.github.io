@@ -170,7 +170,7 @@ $ .build/debug/hello-perfect
 
 서버가 동작하는 것을 볼 수 있습니다. 이제 다음과 같이 브라우저를 실행해서 `localhost:8080/hello.txt` 로 접속하면 아래와 같이 동작하는 것을 볼 수 있습니다.
 
-![Perfect-Hello](https://xho95.github.io/assets/Perfect/perfect-hello.png)
+![Perfect-Hello](/assets/Perfect/perfect-hello.png)
 
 이로써 Perfect 프레임웍을 사용해서 Swift 로 서버 개발을 하는 방법을 간단하게나마 살펴보았습니다.
 

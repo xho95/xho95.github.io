@@ -49,7 +49,7 @@ $ sudo apachectl start
 아파치를 실행한 후 브라우저에서 `localhost` 또는 `127.0.0.1`로 접속하면 큰 문제가 없다면 브라우저 창에 아래와 같은 결과를 볼 수 있습니다.
 
 
-![Apache Result](https://xho95.github.io/assets/Apache/apache-result.jpg)
+![Apache Result](/assets/Apache/apache-result.jpg)
 
 이것은 브라우저가 기본(default) index 페이지를 열었기 때문입니다. 기본 index 페이지는 **/Library/WebServer/Documents** 폴더에 존재하는데, 이는 default로 해당 폴더가 `DocumentRoot`로 지정되어 있기 때문입니다.
 

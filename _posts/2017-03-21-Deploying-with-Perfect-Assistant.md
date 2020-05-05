@@ -16,7 +16,7 @@ Ray Wenderlich 사이트에서 Server Side Swift with Perfect 시리즈 동영�
 
 설치하고 나서 실행하면 아래와 같은 화면이 나타납니다. [^install]
 
-![Perfect Assistant](https://xho95.github.io/assets/Perfect/perfect-assistant-aws.jpeg)
+![Perfect Assistant](/assets/Perfect/perfect-assistant-aws.jpeg)
 
 ### AWS 설정하기
 
@@ -114,7 +114,7 @@ $ aws ec2 import-key-pair --key-name "perfect-key" --public-key-material file://
 
 Perfect Asssistant 를 실행한 후 맨 위의 그림과 같은 Welcome 화면에서 **Configure EC2 Credentials...** 를 누릅니다. 그러면 아래와 같은 대화 상자가 나타납니다.
 
-![Perfect EC2 Credentials](https://xho95.github.io/assets/Perfect/perfect-ec2-credentials.jpeg)
+![Perfect EC2 Credentials](/assets/Perfect/perfect-ec2-credentials.jpeg)
 
 대화 상자에서 **Create** 를 눌러서 새로 등록합니다. 'CREDENTIALS NAME'은 perfect 로 지정하고 앞서 저장한 Access Key 와 Secret Access Key 를 넣어줍니다. 'DEFAULT REGION' 은 앞서 지정한 'Default region name' 와 같은 값을 선택합니다. 여기서는 `ap-northeast-2` 를 선택합니다.
 
@@ -126,7 +126,7 @@ Perfect Asssistant 의 Welcome 화면에서 **Import Existing Project** 를 선�
 
 **Save** 버튼을 누릅니다. 그러면 콘솔 창에 저장됐다는 메시지가 뜹니다.
 
-![Perfect Assistant Build](https://xho95.github.io/assets/Perfect/perfect-assistant-build.jpeg)
+![Perfect Assistant Build](/assets/Perfect/perfect-assistant-build.jpeg)
 
 #### 로컬에서 테스트하기
 
@@ -139,7 +139,7 @@ Success.
 
 위와 같이 빌드가 끝나면 **RUN > Local Exe** 를 눌러서 로컬에서 테스트를 할 수 있습니다. 서버가 실행되면 브라우저에서 `localhost:8080` 으로 접속해서 결과를 확인할 수 있습니다.
 
-![Perfect Assistant Local Test](https://xho95.github.io/assets/Perfect/perfect-assistant-local-test.jpeg)
+![Perfect Assistant Local Test](/assets/Perfect/perfect-assistant-local-test.jpeg)
 
 ### AWS 에 배포하기
 
@@ -149,11 +149,11 @@ Success.
 
 Perfect Assistant 의 Welcome 화면에서 **BUILD > Deploy** 메뉴를 선택합니다.
 
-![Perfect Assistant Deploy](https://xho95.github.io/assets/Perfect/perfect-assistant-deploy.jpeg)
+![Perfect Assistant Deploy](/assets/Perfect/perfect-assistant-deploy.jpeg)
 
 그러면 위와 같은 대화 상자가 나타나는데 아직 배포 설정이 갖춰진 것이 없으므로 **Create New...** 버튼을 눌러서 새로 배포 환경을 등록합니다. [^deploy-button] 이후의 화면에서는 **AWS** 를 선택하고 **Next** 를 누릅니다. 그러면 아래와 같은 대화 상자가 나타납니다.
 
-![Perfect AWS Deployment](https://xho95.github.io/assets/Perfect/perfect-aws-deployment.jpeg)
+![Perfect AWS Deployment](/assets/Perfect/perfect-aws-deployment.jpeg)
 
 여기에서 'CONFIGURATION NAME' 은 perfect 로 지정합니다. 실제로는 아무렇게 넣어도 상관없는 것 같습니다.
 
@@ -163,7 +163,7 @@ Perfect Assistant 의 Welcome 화면에서 **BUILD > Deploy** 메뉴를 선택�
 
 'AVAILABLE INSTANCES' 에서는 **Add..** 를 눌러 줍니다. 그러면 새로운 대화 상자가 나타나는데 아래 그림을 참고해서 지정해 줍니다. [^ap-northeast-2]  
 
-![Perfect Available Instance](https://xho95.github.io/assets/Perfect/perfect-available-instance.jpeg)
+![Perfect Available Instance](/assets/Perfect/perfect-available-instance.jpeg)
 
 'SECURITY GROUPS' 에서 hello-perfect 가 나타나야 정상입니다. 이것은 AWS 에서 설정한 Security Group 이 나타나는 곳입니다.
 
@@ -181,7 +181,7 @@ Perfect Assistant 의 Welcome 화면에서 **BUILD > Deploy** 메뉴를 선택�
 
 이제 EC2 Dashboard 에서 실행중인 인스턴스의 **Public DNS** 를 사용해서 접속해보면 아래와 같이  AWS 에서 서버가 동작하는 것을 확인할 수 있습니다.
 
-![Perfect AWS Success](https://xho95.github.io/assets/Perfect/perfect-aws-success.jpeg)
+![Perfect AWS Success](/assets/Perfect/perfect-aws-success.jpeg)
 
 축하합니다! 이제 Perfect Assistant 를 사용해서 자신의 서버를 AWS 에 배포할 수 있게 되었습니다.
 

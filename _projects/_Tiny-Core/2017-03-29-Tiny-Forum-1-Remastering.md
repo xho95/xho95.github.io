@@ -8,9 +8,9 @@ I read the [Netbooting](http://wiki.tinycorelinux.net/wiki:netbooting) article. 
 
 I have built the pxe booting system with Ubuntu 16.04 for server and Tiny Core linux for client, and succeed booting with ISO file of Tiny Core linux.
 
-After then I have tried to change the `bootlocal.sh` file to test the remastering of Tiny Core linux according to the [Remastering TC](http://wiki.tinycorelinux.net/wiki:remastering) article. 
+After then I have tried to change the `bootlocal.sh` file to test the remastering of Tiny Core linux according to the [Remastering TC](http://wiki.tinycorelinux.net/wiki:remastering) article.
 
-However, executing the below command on Ubuntu 16.04 make wrong cpio file in the gz file. 
+However, executing the below command on Ubuntu 16.04 make wrong cpio file in the gz file.
 
 ```
 $ sudo find | sudo cpio -o -H newc | gzip -2 > ~/Documents/core.gz
@@ -18,7 +18,7 @@ $ sudo find | sudo cpio -o -H newc | gzip -2 > ~/Documents/core.gz
 
 As shown below, the core.cpio file is crashed, so It can't boot with the PXE system.
 
-![Tiny Core Remastering Error](http://xho95.github.io/assets/TinyCore/tiny-cpio-error.png)
+![Tiny Core Remastering Error](/assets/TinyCore/tiny-cpio-error.png)
 
 Below are the commands which I used to make ISO file.
 

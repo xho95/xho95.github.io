@@ -26,7 +26,7 @@ categories: macOS Tips Unicode Characters
 
 특수 문자 입력 대화창에서 `0xe9`를 입력해서 검색한 결과는 다음과 같습니다.
 
-![맥 특수 문자 입력기](https://xho95.github.io/assets/macOS/special-character.jpg)
+![맥 특수 문자 입력기](/assets/macOS/special-character.jpg)
 
 검색창에 `0xe9`라 입력하면 각각의 문자도 검색되지만 맨 밑에 해당 문자 코드로 만들 수 있는 글자인 `é`도 같이 검색되는 것을 알 수 있습니다.
 
