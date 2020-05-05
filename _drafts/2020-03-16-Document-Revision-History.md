@@ -12,12 +12,12 @@ categories: Swift Language Grammar Revision History
 
 ## Document Revision History (문서 수정 이력)
 
-**2020-02-05**
+**2020-03-24**
 
-* 스위프트 5.2 의 업데이트 항목입니다.
+* 스위프트 5.2 에서의 갱신 내용입니다.
 * [Methods with Special Names]() 부분을 추가해서 함수 호출 구문에 클래스, 구조체, 열거체 인스턴스를 쓸 수 있도록 하는 구문 표 문법에 대한 정보를 추가했습니다.
-* [Subscript Options]() 부분이 업데이트 되었습니다. 이제 첨자 연산의 매개 변수에 기본 값을 제공할 수 있게 되었습니다.
-* [Self Type]({% post_url 2020-02-20-Types %}#self-type-자기-자신의-타입) 부분이 업데이트 되었습니다. 이제 `Self` 룰 더 많은 곳에서 사용할 수 있습니다.
+* [Subscript Options (첨자 연산의 선택 사항들)]({% post_url 2020-03-30-Types %}#subscript-options-첨자-연산의-선택-사항들) 이 갱신되어, 이제 첨자 연산이 기본 설정 값을 가지는 매개 변수를 지원합니다.
+* [Self Type (자기 자신의 타입)]({% post_url 2020-02-20-Types %}#self-type-자기-자신의-타입) 이 갱신되어, 이제 더 많은 영역에서 `Self` 를 사용할 수 있습니다.
 
 **2019-09-10**
 
