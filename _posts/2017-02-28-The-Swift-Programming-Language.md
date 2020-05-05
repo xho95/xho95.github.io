@@ -27,14 +27,14 @@ categories: Swift Programming Language Grammar
 * [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %})
 * [Properties (속성)]
 * [Methods (메소드)]({% post_url 2020-05-03-Methods %})
-* [Subscripts (첨자 연산)]({% post_url 2020-03-15-Subscripts %})
+* [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %})
 * [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %})
 * [Initialization (객체 초기화하기)] - [일부 진행중]({% post_url 2016-01-23-Initialization %})
-* [Deinitialization (객체 정리하기)]({% post_url 2017-03-02-Deinitialization %})
+* [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %})
 * [Optional Chaining (옵셔널 연쇄)]
 * [Error Handling (에러 처리)]
 * [Type Casting (타입 변환)]({% post_url 2020-03-31-Type-Casting %})
-* [Nested Types (품어진 타입)]({% post_url 2017-03-02-Nested-Types %})
+* [Nested Types (품어진 타입)]({% post_url 2017-03-03-Nested-Types %})
 * [Extensions (확장)]({% post_url 2016-01-19-Extensions %})
 * [Protocols (규약)] - [일부 진행중]({% post_url 2016-03-03-Protocols %})
 * [Generics (일반화)] - [일부 진행중]({% post_url 2020-02-29-Generics %})
@@ -54,7 +54,7 @@ categories: Swift Programming Language Grammar
 * [Declarations (선언)]
 * [Attributes (특성)]
 * [Patterns (유형)]
-* [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-15-Generic-Parameters-and-Arguments %})
+* [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %})
 * [Summary of the Grammar (문법 총정리)]
 
 ### Revision History (수정 이력)
