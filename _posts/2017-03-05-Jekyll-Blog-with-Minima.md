@@ -170,7 +170,7 @@ GitHub Pages 에서 클론 받았기 때문에 따로 `git remote` 명령으로 
 
 * 예전 버전의 Jekyll 로 블로그를 만드는 방법에 대해서는 [Jekyll 기반의 GitHub Pages에 블로그 만들기]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 을 참고하기 바랍니다.
 * Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %}) 을 참고하기 바랍니다.
-* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지]({% post_url 2017-01-21-Add-Disqus-to-Jekyll *}) 를 보도록 합니다.
+* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지]({% post_url 2017-01-21-Add-Disqus-to-Jekyll %}) 를 보도록 합니다.
 
 ### 참고 자료
 
