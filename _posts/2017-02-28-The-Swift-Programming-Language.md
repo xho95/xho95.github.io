@@ -33,7 +33,7 @@ categories: Swift Programming Language Grammar
 * [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %})
 * [Optional Chaining (옵셔널 연쇄)]
 * [Error Handling (에러 처리)]
-* [Type Casting (타입 변환)]({% post_url 2020-03-31-Type-Casting %})
+* [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %})
 * [Nested Types (품어진 타입)]({% post_url 2017-03-03-Nested-Types %})
 * [Extensions (확장)]({% post_url 2016-01-19-Extensions %})
 * [Protocols (규약)] - [일부 진행중]({% post_url 2016-03-03-Protocols %})
