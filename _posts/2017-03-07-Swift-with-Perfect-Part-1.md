@@ -20,7 +20,7 @@ Perfect 는 Swift 를 위한 서버 프레임웍으로 HTTP, JSON, REST 등을 �
 
 일단 리눅스에서 필요한 것들을 설치해둬야 합니다. 당연히 가장 첫 순서는 리눅스에 Swift 를 설치하는 것입니다.
 
-Swift 와 기타 필수 파일들을 따로 설치해도 되며, 귀찮은 분은 아래 목록에서 **설치 과정 한 방에 해결하기**를 통해서 쉘 스크립트로 한 번에 모든 것을 설치할 수도 있습니다. [^install]
+Swift 와 기타 필수 파일들을 따로 설치해도 되며, 귀찮은 분은 아래 목록에서 **설치 과정 한 방에 해결하기** 를 통해서 쉘 스크립트로 한 번에 모든 것을 설치할 수도 있습니다. [^install]
 
 #### Swift 설치하기
 
@@ -116,7 +116,7 @@ import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
 
-print("Hello, world!)
+print("Hello, world!")
 ```
 
 앞서와 같이 터미널에서 `swift build` 를 실행해보면 문제없이 빌드되는 것을 알 수 있습니다.
