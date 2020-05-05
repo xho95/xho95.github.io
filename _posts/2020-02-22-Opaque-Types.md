@@ -227,7 +227,7 @@ protoFlippedTriangle == sameThing     //  Error, 에러
 
 이 접근 방식의 또 다른 문제는 도형 변환을 '숨기지 (nest)'[^nest] 않는다는 것입니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 '어떤 (some) 타입' 인 인자를 받습니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않습니다[^protocol-type-value]: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 `protoFlip(protoFlip(smallTriangle))` 과 같이 여러번 반복해서 변환하는 코드는 유효하지 않음을 의미하는 것으로 '뒤집힌 도형 (flipped shape)' 은 `protoFlip(_:)` 의 인자로 유효하지 않기 때문입니다.
 
-이와는 대조적으로, 'opaque (불투명한) 타입' 은 실제 타입의 정체성을 보존합니다. 스위프트는 'associated types (관련 타입)' 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서도 'opaque (불투명한) 타입 값' 은 사용할 수 있습니다. 예를 들어, 다음은 [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html) 에 있는 `Container` 프로토콜의 한 예시입니다:
+이와는 대조적으로, 'opaque (불투명한) 타입' 은 실제 타입의 정체성을 보존합니다. 스위프트는 'associated types (관련 타입)' 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서도 'opaque (불투명한) 타입 값' 은 사용할 수 있습니다. 예를 들어, 다음은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 `Container` 프로토콜의 한 예시입니다:
 
 ```swift
 protocol Container {

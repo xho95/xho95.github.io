@@ -18,7 +18,7 @@ categories: Swift Grammar Collection Array Set Dictionary
 
 스위프트에 있는 배열, 셋, 그리고 딕셔너리는 저장할 수 있는 값과 키의 타입을 명확하게 알고 있습니다. 이는 실수로 컬렉션에 잘못된 타입의 값을 넣을 가능성은 없다는 의미입니다. 또 컬렉션에서 가져오는 값의 타입을 확신할 수 있다는 의미이기도 합니다.
 
-> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화된 집합체 (generic collections)_ 방식으로 구현되었습니다. 일반화된 타입과 일반화된 집합체 (generic types and collections) 에 대한 더 자세한 내용은 [Generics (일반화)](http://xho95.github.io/swift/language/grammar/generic/2020/02/29/Generics.html) 를 참고하기 바랍니다.
+> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화된 집합체 (generic collections)_ 방식으로 구현되었습니다. 일반화된 타입과 일반화된 집합체 (generic types and collections) 에 대한 더 자세한 내용은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 를 참고하기 바랍니다.
 
 ### Mutability of Collections (집합체의 변경-용이성)
 
@@ -262,7 +262,7 @@ _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 
 > * `a == b` 는 곧 `b == a` (Symmetry; 대칭성[^symmetry])
 > * `a == b && b == c` 는 곧 `a == c` (Transitivity; 추이성[^transitivity])
 >
-> 프로토콜 준수에 대한 더 자세한 내용은 [Protocols](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 을 보도록 합니다.
+> 프로토콜 준수에 대한 더 자세한 내용은 [Protocols]({% post_url 2016-03-03-Protocols %}) 을 보도록 합니다.
 
 #### Set Type Syntax (셋 타입 문법)
 

@@ -173,7 +173,7 @@ $ ssh test@127.0.0.1 -p 22
 
 ### 고찰하기
 
-[Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html) 라는 글에서도 정리했듯이 SSH 말고도 유사한 기술로 [PGP](https://ko.wikipedia.org/wiki/PGP_(소프트웨어)) 라는 것도 있는 것 같습니다. 오픈 소스를 사용하다 보면 비슷비슷한 기술들이 동시에 경쟁하는 것을 볼 수 있는데, 기술의 변화에 유연하게 대처할 수 있도록 틈틈이 관련 내용을 익혀둬야 할 것 같습니다.
+[Swift: 리눅스에서 Swift 개발 환경 구축하기]({% post_url 2017-02-16-Developing-Swift-on-Linux %}) 라는 글에서도 정리했듯이 SSH 말고도 유사한 기술로 [PGP](https://ko.wikipedia.org/wiki/PGP_(소프트웨어)) 라는 것도 있는 것 같습니다. 오픈 소스를 사용하다 보면 비슷비슷한 기술들이 동시에 경쟁하는 것을 볼 수 있는데, 기술의 변화에 유연하게 대처할 수 있도록 틈틈이 관련 내용을 익혀둬야 할 것 같습니다.
 
 ### 참고 자료
 

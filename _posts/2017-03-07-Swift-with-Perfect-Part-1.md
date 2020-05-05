@@ -24,7 +24,7 @@ Swift 와 기타 필수 파일들을 따로 설치해도 되며, 귀찮은 분�
 
 #### Swift 설치하기
 
-리눅스에 Swift 를 설치하는 방법은 [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html) 글을 참고하도록 합니다.
+리눅스에 Swift 를 설치하는 방법은 [Swift: 리눅스에서 Swift 개발 환경 구축하기]({% post_url 2017-02-16-Developing-Swift-on-Linux %}) 글을 참고하도록 합니다.
 
 #### 리눅스에 필요한 요소들 설치하기
 
@@ -72,7 +72,7 @@ $ swift package init --type executable
 $ swift build
 ```
 
-리눅스에서 Swift 로 개발하는 방법은 따로 [Swift: 리눅스에서 Swift 개발 시작하기](http://xho95.github.io/linux/development/swift/repl/package/ubuntu/2017/03/06/Getting-Started-Swift-on-Linux.html) 라는 글로 정리하였으니 참고하시면 됩니다.
+리눅스에서 Swift 로 개발하는 방법은 따로 [Swift: 리눅스에서 Swift 개발 시작하기]({% post_url 2017-03-06-Getting-Started-Swift-on-Linux %}) 라는 글로 정리하였으니 참고하시면 됩니다.
 
 그리고 빌드가 끝나면 다음과 같이 실행하여 결과가 출력되는지를 확인합니다.
 
@@ -178,7 +178,7 @@ $ .build/debug/hello-perfect
 
 ### 관련 자료
 
-* [Swift: 리눅스에서 Perfect 프레임웍으로 서버 개발하기 (Part 2)](http://xho95.github.io/linux/swift/perfect/server/json/rest/2017/03/09/Swift-with-Perfect-Part-2.html)
+* [Swift: 리눅스에서 Perfect 프레임웍으로 서버 개발하기 (Part 2)]({% post_url 2017-03-10-Swift-with-Perfect-Part-2 %})
 
 ### 참고 자료
 
@@ -194,7 +194,7 @@ $ .build/debug/hello-perfect
 
 [^db]: 여기서는 설치만 하는 것으로 당장 데이터베이스를 가지고 뭔가를 실습하지는 않습니다. 이 과정은 따로 Perfect 홈페이지의 문서를 보고 실습해야할 것 같습니다.
 
-[^swift-package]: Swift 패키지 관리자를 사용해서 프로젝트를 만드는 방법에 대해서는 [Swift: 리눅스에서 Swift 개발 시작하기](http://xho95.github.io/linux/development/swift/repl/package/ubuntu/2017/03/06/Getting-Started-Swift-on-Linux.html) 글을 참고하도록 합니다.
+[^swift-package]: Swift 패키지 관리자를 사용해서 프로젝트를 만드는 방법에 대해서는 [Swift: 리눅스에서 Swift 개발 시작하기]({% post_url 2017-03-06-Getting-Started-Swift-on-Linux %}) 글을 참고하도록 합니다.
 
 [^editor]: 리눅스에서 Swift 파일을 편집할 때는 자신이 원하는 아무 편집기를 쓰면되는데 저는 Atom 문서 편집기를 사용합니다. Atom 편집기로 Swift 프로그래밍을 하는 과정은 조만간 정리할 예정입니다.
 

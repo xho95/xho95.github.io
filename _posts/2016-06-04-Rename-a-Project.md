@@ -57,7 +57,7 @@ bundle identifier의 경우 일단 앱스토어에 앱을 한 번 제출하고 �
 
 ### 관련 자료
 
-* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html)
+* [Swift: 리눅스에서 Swift 개발 환경 구축하기]({% post_url 2017-02-16-Developing-Swift-on-Linux %})
 
 ### 참고 자료
 

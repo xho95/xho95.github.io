@@ -8,7 +8,7 @@ categories: macOS File-System UNIX-specific Directory
 
 > 이 글은 macOS 의 파일 시스템에 있는 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 대해 정리한 글입니다.
 >
-> macOS 파일 시스템의 기본적인 디렉토리들에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조](http://xho95.github.io/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html) 를 참고하기 바랍니다.
+> macOS 파일 시스템의 기본적인 디렉토리들에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 를 참고하기 바랍니다.
 
 ## macOS 파일 시스템의 '유닉스-고유 디렉토리 (UNIX-specific directories)'
 
@@ -193,7 +193,7 @@ $ echo $HOME
 
 [^UNIX-specific-directories]: macOS 의 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 대해서는 [File System Basics](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW2) 문서의 [Hidden Files and Directories: Simplifying the User Experience](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW7) 부분에서 설명하고 있습니다.
 
-[^finder]: macOS 의 '표준 디렉토리' 와 '유닉스-고유 디렉토리' 의 차이점에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조](http://xho95.github.io/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html) 문서를 참고하기 바랍니다.
+[^finder]: macOS 의 '표준 디렉토리' 와 '유닉스-고유 디렉토리' 의 차이점에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 문서를 참고하기 바랍니다.
 
 [^man-hier]: 파일 내용이 길 경우 `$ man hier > hier.txt` 와 같이 파일로 옮겨서 따로 확인할 수도 있습니다.
 

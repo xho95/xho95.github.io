@@ -49,7 +49,7 @@ var currentLoginAttempt = 0
 var x = 0.0, y = 0.0, z = 0.0
 ```
 
-> 코드에서 저장된 값이 바뀌지 않는다면, 항상 `let` 키워드를 써서 상수로 선언하기 바랍니다.[^constant-optimization] 변수는 저장된 값이 바뀔 가능성이 있는 경우에만 쓰기 바랍니다.
+> 코드에서 저장된 값이 바뀌지 않는다면, 항상 `let` 키워드를 써서 상수로 선언하기 바랍니다. 변수는 저장된 값이 바뀔 가능성이 있는 경우에만 쓰기 바랍니다.
 
 #### Type Annotations (타입 보조 설명)
 
@@ -328,7 +328,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 양쪽 타입이 모두 `UInt16` 이므로, 더하기가 가능합니다. '결과 상수 (`twoThousandAndOne`)' 의 타입도, 두 `UInt16` 값의 합이기 때문에, `UInt16` 으로 추론됩니다.
 
-`SomeType(ofInitialValue)` 는 스위프트에서 타입의 초기자를 호출하고 기본 설정 값을 전달하는 기본적인 방법입니다. 속을 들여다보면, `UInt16` 는 `UInt8` 값을 받아들이는 초기자를 가지고 있어서, 이 초기자를 사용해서 기존의 `UInt8` 로 새로운 `UInt16` 를 만들 수 있는 것입니다. 여기서, _아무 (any)_ 타입이나 전달해서는 안되며-`UInt16` 가 제공하는 초기자에 맞는 타입이라야만 합니다. 기존 타입을 확장해서 (자기가 정의한 타입을 포함한) 새로운 타입을 받아들이는 초기자를 제공하려면 [Extensions (확장))](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html) 을 참고하기 바랍니다.
+`SomeType(ofInitialValue)` 는 스위프트에서 타입의 초기자를 호출하고 기본 설정 값을 전달하는 기본적인 방법입니다. 속을 들여다보면, `UInt16` 는 `UInt8` 값을 받아들이는 초기자를 가지고 있어서, 이 초기자를 사용해서 기존의 `UInt8` 로 새로운 `UInt16` 를 만들 수 있는 것입니다. 여기서, _아무 (any)_ 타입이나 전달해서는 안되며-`UInt16` 가 제공하는 초기자에 맞는 타입이라야만 합니다. 기존 타입을 확장해서 (자기가 정의한 타입을 포함한) 새로운 타입을 받아들이는 초기자를 제공하려면 [Extensions (확장))]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
@@ -415,7 +415,7 @@ if i == 1 {
 }
 ```
 
-`i == 1` 비교 연산의 결과는 `Bool` 타입이고, 따라서 이 두 번째 예제는 타입 검사를 통과하게 됩니다. `i == 1` 과 같은 비교 연산들은 [Basic Operators (기본 연산자)](http://xho95.github.io/swift/language/grammar/basic/operators/2016/04/27/Basic-Operators.html) 에서 설명합니다.
+`i == 1` 비교 연산의 결과는 `Bool` 타입이고, 따라서 이 두 번째 예제는 타입 검사를 통과하게 됩니다. `i == 1` 과 같은 비교 연산들은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명합니다.
 
 스위프트의 '타입 안전 장치 (type safety)' 에 대한 여타 다른 예제에서 봤듯이, 이런 접근 방법은 실수로 인한 에러를 방지해주며 특정 코드 영역의 의도가 늘 명확하도록 해 줍니다.
 
@@ -759,8 +759,6 @@ precondition(index > 0, "Index must be greater than zero.")
 ### 참고 자료
 
 [^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
-
-[^constant-optimization]: 예전에 작성한 글 [Swift에서 변수 최적화에 대한 의문](http://xho95.github.io/xcode/swift/variables/optimization/2016/01/22/Swift-Variables-Optimization.html) 을 여기로 옮겨서 편집하도록 합니다.
 
 [^private-use-Unicode-scalar-values]: '보조 사용자 영역의 유니코드 크기 값' 이란 '유니코드' 에서 'private-use areas' 를 말하는 것 같습니다. 유니코드에는 `U+E000 ~ U+F8FF` 등, 총 3개의 'private-use areas' 이 있는데, 보다 자세한 내용은 위키피디아의 [Unicode](https://en.wikipedia.org/wiki/Unicode) 항목을 참고하기 바랍니다.
 

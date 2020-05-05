@@ -210,4 +210,4 @@ things.append(optionalNumber as Any) // No warning
 
 [^Type-Casting]: 이 글에 대한 원문은 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 에서 확인할 수 있습니다.
 
-[^base-class]: 스위프트에서 '기본 클래스 (base class)' 라는 것은 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 의미합니다. '기본 클래스' 에 대한 더 자세한 설명은 [Inheritance (상속)](http://xho95.github.io/swift/language/grammar/inheritance/2020/03/31/Inheritance.html#fnref:base-class) 을 참고하기 바랍니다.
+[^base-class]: 스위프트에서 '기본 클래스 (base class)' 라는 것은 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 의미합니다. '기본 클래스' 에 대한 더 자세한 설명은 [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 을 참고하기 바랍니다.

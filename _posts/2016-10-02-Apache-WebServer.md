@@ -9,7 +9,7 @@ categories: macOS Apache WebServer mod_wsgi
 이 글은 아파치 웹 서버를 설정하는 방법에 대한 시리즈 글의 일부입니다. 관련 목차는 아래와 같습니다.
 
 * [맥에서 아파치 웹 서버 실행하기]()
-* [아파치 가상 호스트 설정하기](http://xho95.github.io/macos/apache/webserver/virtualhosts/2016/10/10/Apache-Virtual-Host.html)
+* [아파치 가상 호스트 설정하기]({% post_url 2016-10-10-Apache-Virtual-Host %})
 
 ### 들어가며
 
@@ -61,7 +61,7 @@ $ sudo apachectl start
 
 아파치의 기본 설정들을 변경하려면 **/private/etc/apache2** 폴더에 있는 설정 파일들(**/*.conf**)을 수정하면 됩니다. 이 설정 파일들 중에서 가장 기본이 되는 것이 **httpd.conf** 파일입니다.[^docs-apache]
 
-> 참고로 맥에서 **/etc** 폴더는 주로 환경 설정 파일들이 존재하는 곳입니다.[^webdir] **/etc** 폴더에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조](http://xho95.github.io/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html) 와 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기](http://xho95.github.io/macos/file-system/unix-specific/directory/2020/04/28/macOS-UNIX-specific-Directories.html) 에서 좀 더 자세하게 설명해 두었습니다.
+> 참고로 맥에서 **/etc** 폴더는 주로 환경 설정 파일들이 존재하는 곳입니다.[^webdir] **/etc** 폴더에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 와 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}) 에서 좀 더 자세하게 설명해 두었습니다.
 
 #### DocumentRoot 폴더 변경하기
 

@@ -29,7 +29,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 * 기능을 기본 구현 이상으로 확대하도록 확장하기
 * 정해진 종류의 표준 기능을 제공하도록 프로토콜 준수하기
 
-더 자세한 내용은, [Properties (속성)], [Methods (메소드)], [Subscripts (첨자 연산)](http://xho95.github.io/swift/language/grammar/subscripts/2020/03/15/Subscripts.html), [Initialization (초기화하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html), [Extensions (확장)](http://xho95.github.io/xcode/swift/grammar/extensions/2016/01/19/Extensions.html), 그리고 [Protocols (프로토콜; 규약)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 을 참조하기 바랍니다.
+더 자세한 내용은, [Properties (속성)], [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화하기)]({% post_url 2016-01-23-Initialization %}), [Extensions (확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참조하기 바랍니다.
 
 클래스는 구조체에는 없는 다음의 추가 기능들을 가지고 있습니다:
 
@@ -38,7 +38,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 * '정리자 (deinitializer)' 는 클래스 인스턴스가 할당한 어떤 자원이든 다시 확보할 수 있게 합니다.
 * '참조 카운팅 (reference counting)' 은 클래스 인스턴스에 대해 참조를 한 개 이상 할 수 있게 합니다.
 
-더 자세한 내용은, [Inheritance (상속)](http://xho95.github.io/swift/language/grammar/inheritance/2020/03/31/Inheritance.html), [Type Casting (타입 변환)](http://xho95.github.io/swift/language/grammar/type/casting/2020/03/31/Type-Casting.html), [Deinitialization (객체 정리하기)](http://xho95.github.io/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html), 그리고 [Automatic Reference Counting (자동 참조 카운팅)] 을 참고하기 바랍니다.
+더 자세한 내용은, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 그리고 [Automatic Reference Counting (자동 참조 카운팅)] 을 참고하기 바랍니다.
 
 클래스가 지원하는 추가 기능을 쓴다는 것은 복잡성 증가라는 비용을 지불하겠다는 의미입니다. 일반적인 지침을 따른다면, 되도록이면 이유를 파악하기 더 쉬운 구조체를 사용하고, 클래스는 더 적합하거나 꼭 필요한 경우에만 사용하도록 합니다. 실제로, 이것은 새로 만드는 자료 타입의 대부분은 구조체나 열거체가 될 것임을 의미입니다. 이에 대한 좀 더 자세히 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 를 첨고하기 바랍니다.
 

@@ -101,14 +101,8 @@ Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 
 
 ### 관련 자료
 
-* [Swift: 리눅스에서 Swift 개발 시작하기](http://xho95.github.io/linux/development/swift/repl/package/ubuntu/2017/03/06/Getting-Started-Swift-on-Linux.html)
-
-* [Swift 3.1: 빠르게 (Swift) 둘러보기](http://xho95.github.io/swift/language/grammar/tour/2016/04/17/A-Swift-Tour.html)
-
-### 변경 사항
-
-* **2017. 02. 22.** 환경 설정 부분을 **~/.bash_profile** 에서 **~/.profile** 로 수정했습니다.
-* **2017. 02. 19.** 첫 포스트를 작성했습니다.
+* [Swift: 리눅스에서 Swift 개발 시작하기]({% post_url 2017-03-06-Getting-Started-Swift-on-Linux %})
+* [Swift 3.1: 빠르게 (Swift) 둘러보기]({% post_url 2016-04-17-A-Swift-Tour %})
 
 ### 참고 자료
 

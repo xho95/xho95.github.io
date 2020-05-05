@@ -238,7 +238,7 @@ http://example.com/old-path/old/posta.html, http://example.com/new-path/new/post
 
 [^cjh5414]: [jekyll 블로그에 Disqus 붙이기](https://cjh5414.github.io/Disqus/) : 따라하기 쉽도록 사용법이 그림으로 잘 설명되어 있는 최지훈님 블로그의 글입니다. 다만 해당 글이 쓰여졌을 당시에는 Disqus 에서 Jekyll 을 지원하지 않았던 것 같습니다. 지금은 Disqus 에서 Jekyll 을 지원하므로 조금 다르게 할 수 있습니다.
 
-[^xho95-post]: "YAML Front Matter" 에 대해서는 제 블로그의 다른 글인 [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html) 글에서 **Front matter 설정하기** 부분을 참고하시기 바랍니다.
+[^xho95-post]: "YAML Front Matter" 에 대해서는 제 블로그의 다른 글인 [MarkDown 문서를 이용하여 블로그에 포스트하기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %}) 글에서 **Front matter 설정하기** 부분을 참고하시기 바랍니다.
 
 [^help-2158629]: [Use Configuration Variables to Avoid Split Threads and Missing Comments](https://help.disqus.com/customer/en/portal/articles/2158629) : 쓰레드의 중복 문제를 피하는 방법에 대해서 설명한 글입니다. 솔직히 저도 아직 읽어보진 않았습니다. 나중에 내용을 좀 더 알게 되면 블로그 글에 추가할 수 있도록 하겠습니다.
 

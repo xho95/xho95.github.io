@@ -8,7 +8,7 @@ categories: macOS Apache WebServer VirtualHosts
 
 이 글은 아파치 웹 서버를 설정하는 방법에 대한 시리즈 글의 일부입니다. 관련 목차는 아래와 같습니다.
 
-* [맥에서 아파치 웹 서버 실행하기](http://xho95.github.io/macos/apache/webserver/mod_wsgi/2016/10/02/Apache-WebServer.html)
+* [맥에서 아파치 웹 서버 실행하기]({% post_url 2016-10-02-Apache-WebServer %})
 * [아파치 가상 호스트 설정하기]()
 
 이번 글에서는 아파치 웹서버에서 가상 호스트를 사용하는 방법을 정리합니다. 기본적으로 [**Jason McCreary's  Blog**](https://jason.pureconcepts.net) 글 [Configuring Apache Virtual Hosts on Mac OS X](http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/) 를 중심으로 다른 자료들을 참고해서 정리했습니다. [^pureconcepts]  [^joont]
@@ -140,7 +140,7 @@ You don't have permission to access / on this server.
 
 [^docs-vhosts]: [Apache Virtual Host documentation](http://httpd.apache.org/docs/current/en/vhosts/) :  Virtual Host에 대한 Apache 공식 문서입니다.
 
-[^Apache-WebServer]: [맥에서 아파치 웹 서버 실행하기](http://xho95.github.io/macos/apache/webserver/mod_wsgi/2016/10/02/Apache-WebServer.html) : 아파치 웹 서버를 설정하고 실행하는 방법에 대해서 정리했습니다.
+[^Apache-WebServer]: [맥에서 아파치 웹 서버 실행하기]({% post_url 2016-10-02-Apache-WebServer %}) : 아파치 웹 서버를 설정하고 실행하는 방법에 대해서 정리했습니다.
 
 [^difference]: 이 부분은 [Configuring Apache Virtual Hosts on Mac OS X](http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/) 글과는 조금 다른데, 원문처럼 해도 되지만 다른 자료에서는 이렇게 하는 경우가 많아서 참고 자료와는 다르게 했습니다. 환경 설정에는 다양한 방법이 존재하므로 이 부분은 취향대로 해도 될 것 같습니다. 원문에서는 최대한 원본을 건드리지 않는 방법을 사용한 것 같습니다.
 

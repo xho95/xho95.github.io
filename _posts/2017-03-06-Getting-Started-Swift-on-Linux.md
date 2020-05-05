@@ -10,7 +10,7 @@ categories: Linux Development Swift REPL Package Ubuntu
 
 ### 들어가며
 
-리눅스에서 Swift 로 개발하기 위해서는 먼저 Swift 툴체인을 설치해야 합니다. Swift 툴체인을 설치하는 과정은 이전에 정리한 [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html#fnref:wikipedia-gnu-c-ko) 를 참고하면 됩니다.
+리눅스에서 Swift 로 개발하기 위해서는 먼저 Swift 툴체인을 설치해야 합니다. Swift 툴체인을 설치하는 과정은 이전에 정리한 [Swift: 리눅스에서 Swift 개발 환경 구축하기]({% post_url 2017-02-16-Developing-Swift-on-Linux %}) 를 참고하면 됩니다.
 
 Swift 개발 환경 구축을 마쳤으면 이제 Swift 개발을 시작해 봅시다.
 
@@ -167,7 +167,7 @@ $ .build/debug/Hello `whoami`
 
 ### 관련 자료
 
-* [Swift: 리눅스에서 Swift 개발 환경 구축하기](http://xho95.github.io/linux/development/swift/package/install/2017/02/19/Developing-Swift-on-Linux.html#fnref:wikipedia-gnu-c-ko)
+* [Swift: 리눅스에서 Swift 개발 환경 구축하기]({% post_url 2017-02-16-Developing-Swift-on-Linux %})
 
 ### 참고 자료
 

@@ -649,7 +649,7 @@ for scalar in dogString.unicodeScalars {
 
 [^Strings-and-Characters]: 원문은 [Strings and Characters](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html) 에서 확인할 수 있습니다.
 
-[^collection]: '컬렉션 (collection)' 은 스위프트에서 특정한 값들의 집합을 묘사하는 '집합체' 타입입니다. 보다 자세한 내용은 [Collection Types (집합체 타입)](http://xho95.github.io/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html) 을 참고하기 바랍니다.
+[^collection]: '컬렉션 (collection)' 은 스위프트에서 특정한 값들의 집합을 묘사하는 '집합체' 타입입니다. 보다 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 참고하기 바랍니다.
 
 [^string-literal-syntax]: '문자열 글자표현 구문 (string literal syntax)' 은 말은 어렵지만 개념은 아주 간단합니다. `let greeting = "hello"` 와 같은 문장에서 `"hello"` 가 바로 '문자열 글자표현 구문 (string literal syntax)' 입니다. 이 책에서 말하는 것은 스위프트에서 사용하는 이 '문자열 글자표현 구문' 이 사실상 C 언어와 같아서 이해하기 쉽다는 의미입니다.
 

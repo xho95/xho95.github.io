@@ -6,7 +6,7 @@ date:   2017-03-05 02:00:00 +0900
 categories: Blog GitHub Pages Jekyll Minima Theme
 ---
 
-제가 블로그를 만들면서 처음으로 작성한 글은 [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.
+제가 블로그를 만들면서 처음으로 작성한 글은 [Jekyll 기반의 GitHub Pages에 블로그 만들기]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.
 
 그런데 최근 Jekyll 의 구조가 제가 처음에 익히던 때와는 많이 달라졌다는 것을 알게 되었습니다. 따라서 예전에 정리한 설명도 지금과는 맞지 않는 부분이 생겼습니다.
 
@@ -80,7 +80,7 @@ GitHub Pages 는 [Jekyll Theme Chooser](https://help.github.com/articles/about-g
 
 #### Jekyll 설치하기
 
-Ruby 를 설치했으면 다음과 같이 Gem 이라는 Ruby 의 패키지 관리자를 사용해서 Jekyll 을 설치합니다. 여기서 [예전](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 과 다르게 `jekyll` 뿐만 아니라 `bundler` 도 같이 설치합니다. [^bundler]
+Ruby 를 설치했으면 다음과 같이 Gem 이라는 Ruby 의 패키지 관리자를 사용해서 Jekyll 을 설치합니다. 여기서 [예전]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 과 다르게 `jekyll` 뿐만 아니라 `bundler` 도 같이 설치합니다. [^bundler]
 
 ```sh
 $ sudo gem install jekyll bundler
@@ -119,7 +119,7 @@ $ bundle exec jekyll serve
 
 브라우저를 실행하고 주소창에 `http://localhost:4000` 를 입력하면 다음과 같은 페이지를 볼 수 있습니다.
 
-![Jekyll 실행 결과](https://xho95.github.io/assets/jekyll/jekyll-result.jpeg)
+![Jekyll 실행 결과](/assets/jekyll/jekyll-result.jpeg)
 
 이로써 자신의 컴퓨터에서 Jekyll 블로그를 만들 수 있는 환경을 갖추었습니다.
 
@@ -168,9 +168,9 @@ GitHub Pages 에서 클론 받았기 때문에 따로 `git remote` 명령으로 
 
 ### 관련 자료
 
-* 예전 버전의 Jekyll 로 블로그를 만드는 방법에 대해서는 [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 글을 참고하기 바랍니다.
-* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기](http://xho95.github.io/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html) 글을 참고하기 바랍니다.
-* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지](http://xho95.github.io/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html) 글을 보도록 합니다.
+* 예전 버전의 Jekyll 로 블로그를 만드는 방법에 대해서는 [Jekyll 기반의 GitHub Pages에 블로그 만들기]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 을 참고하기 바랍니다.
+* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %}) 을 참고하기 바랍니다.
+* Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지]({% post_url 2017-01-21-Add-Disqus-to-Jekyll *}) 를 보도록 합니다.
 
 ### 참고 자료
 
@@ -192,4 +192,4 @@ GitHub Pages 에서 클론 받았기 때문에 따로 `git remote` 명령으로 
 
 [^bundler]: Ruby 에서는 하나의 패키지를 젬 (Gem; 보석) 이라는 용어로 부르는데 `bundler` 는 다른 루비 젬들을 관리하는 젬입니다.
 
-[^git]: 각 명령에 대한 설명은 따로 정리할 예정이지만 예전 글인 [Jekyll 기반의 GitHub Pages에 블로그 만들기](http://xho95.github.io/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html) 에도 설명이 조금 있습니다.
+[^git]: 각 명령에 대한 설명은 따로 정리할 예정이지만 예전 글인 [Jekyll 기반의 GitHub Pages에 블로그 만들기]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 에도 설명이 조금 있습니다.

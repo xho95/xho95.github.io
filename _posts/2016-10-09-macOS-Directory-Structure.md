@@ -19,11 +19,11 @@ macOS 는 하이 시에라 (High Sierra)' 부터 [APFS (Apple File System)](http
 
 #### macOS 파일 시스템의 기본 디렉토리
 
-해당 내용은 [macOS: 파일 시스템의 기본 디렉토리 구조](http://xho95.github.io/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html) 문서에 별도로 정리하였습니다.
+해당 내용은 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 문서에 별도로 정리하였습니다.
 
 #### macOS: 파일 시스템의 유닉스-고유 디렉토리
 
-해당 내용은 [macOS: 파일 시스템의 기본 디렉토리 구조](http://xho95.github.io/macos/file-system/unix-specific/directory/2020/04/28/macOS-UNIX-specific-Directories.html) 문서에 별도로 정리하였습니다.
+해당 내용은 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}) 문서에 별도로 정리하였습니다.
 
 ### 참고 자료
 

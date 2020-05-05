@@ -859,4 +859,4 @@ anyCommonElements([1, 2, 3], [3])
 
 [^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
-[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)](http://xho95.github.io/swift/language/grammar/protocol/2016/03/03/Protocols.html) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다' 는 말과는 늬앙스가 조금 다른 것 같습니다.
+[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다' 는 말과는 늬앙스가 조금 다른 것 같습니다.

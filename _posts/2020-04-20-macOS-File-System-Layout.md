@@ -67,7 +67,7 @@ $ ls -l
 * **/usr** — 필수적이지는 않은 '명령줄 실행 파일' 이나 라이브러리, 헤더 파일, 그리고 기타 자료들을 담는 곳입니다.
 * **/var** — 'log (로그)' 파일 및 '변수 값' 을 가지고 있는 파일들을 담는 곳입니다.
 
-maxOS 의 '유닉스-고유 디렉토리' 에 대해서는 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기](http://xho95.github.io/macos/file-system/unix-specific/directory/2020/04/28/macOS-UNIX-specific-Directories.html) 에서 좀 더 자세히 다루도록 하겠습니다.
+maxOS 의 '유닉스-고유 디렉토리' 에 대해서는 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}) 에서 좀 더 자세히 다루도록 하겠습니다.
 
 ### 참고 자료
 
