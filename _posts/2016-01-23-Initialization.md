@@ -148,8 +148,8 @@ print(zeroByZero.width, zeroByZero.height)
 ```swift
 class SomeClass {
   required init () {
-         // 여기서 초기자를 구현합니다.
-     }
+    // 여기서 초기자를 구현합니다.
+  }
 }
 ```
 
@@ -158,8 +158,8 @@ class SomeClass {
 ```swift
 class SomeSubClass: SomeClass {
   required init () {
-         // 여기서 하위 클래스의 필수 초기자를 구현합니다.
-     }
+    // 여기서 하위 클래스의 필수 초기자를 구현합니다.
+  }
 }
 ```
 
