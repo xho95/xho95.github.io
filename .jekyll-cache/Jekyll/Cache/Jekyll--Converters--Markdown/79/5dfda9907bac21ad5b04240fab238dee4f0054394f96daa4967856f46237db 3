@@ -1,0 +1,13 @@
+I"�<p>리눅스에서 Swift 로 프로그램을 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 <a href="https://www.raywenderlich.com">Ray Wenderlich</a> <sup id="fnref:raywenderlich" role="doc-noteref"><a href="#fn:raywenderlich" class="footnote">1</a></sup> 라는 곳에서 <a href="http://perfect.org/">Perfect</a> <sup id="fnref:perfect" role="doc-noteref"><a href="#fn:perfect" class="footnote">2</a></sup> 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:raywenderlich" role="doc-endnote">
+      <p><a href="https://www.raywenderlich.com">Ray Wenderlich</a> 는 iOS 를 비롯하여 Swift 강좌 사이트 중에서는 가히 최고봉이라 할 수 있는 사이트입니다. 한국 맥 사용자에게 <a href="http://macnews.tistory.com">백투더맥</a> 사이트가 필수이듯, <a href="https://www.raywenderlich.com">Ray Wenderlich</a> 는 Swift 개발자라면 필수인 사이트라고 생각합니다. <a href="#fnref:raywenderlich" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:perfect" role="doc-endnote">
+      <p><a href="http://perfect.org/">Perfect</a> 는 캐나다에서 개발되고 있는 Swift 용 서버 프레임웍이라고 합니다. <a href="https://medium.com/@rymcol/benchmarks-for-the-top-server-side-swift-frameworks-vs-node-js-24460cfe0beb#.sk9acg3sw">Benchmarks for the Top Server-Side Swift Frameworks vs. Node.js</a> 라는 자료를 보면 거의 종합 점수로는 1등을 달리고 있는 서버 프레임웍입니다. Node.js 를 성능으로 발라버린다고 하는데 거기까진 아직 잘 모르겠습니다. <a href="#fnref:perfect" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET
