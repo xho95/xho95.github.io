@@ -49,7 +49,7 @@ The underlying Git plumbing tools, such as git ls-files and git read-tree, read 
 * A slash followed by two consecutive asterisks then a slash matches zero or more directories. For example, `a/**/b` matches **a/b**, **a/x/b**, **a/x/y/b** and so on.
 * Other consecutive asterisks are considered invalid.
 
-### 요약 
+### 요약
 
 **gitignore** 파일의 목적은  Git 이 변경 내력을 추적하고 있지 않는 파일들을 계속 추적하지 않도록 남겨 두기 위한 것입니다.
 
@@ -112,7 +112,7 @@ $ cat .gitignore
 !/foo/bar
 ```
 
-### 같이 보기 
+### 같이 보기
 
 [git-rm](https://git-scm.com/docs/git-rm), [gitrepository-layout](https://git-scm.com/docs/gitrepository-layout), [git-check-ignore](https://git-scm.com/docs/git-check-ignore)
 
@@ -120,13 +120,13 @@ $ cat .gitignore
 
 Git 매뉴얼 문서의 전체 목록은 [git](https://git-scm.com/docs/git) 을 보기 바랍니다.
 
-### 원문 자료 
+### 원문 자료
 
 [Git - gitignore Documentation](https://git-scm.com/docs/gitignore)
 
 ### 참고 자료
 
-[^git]: [git](https://git-scm.com) : Git 공식 홈페이지입니다. 
+[^git]: [git](https://git-scm.com) : Git 공식 홈페이지입니다.
 
 [^docs-gitignore]: Git 에서 사용법 외에 각 명령 및 용어들에 대해 매뉴얼을 정리했는데 이 중에서 gitignore 에 해당하는 것이 [Git - gitignore Documentation](https://git-scm.com/docs/gitignore) 인 것 같습니다. 사용법 문서는 한글로 번역되어 있는데 매뉴얼은 번역이 안되어 있는 것 같습니다.
 
@@ -136,4 +136,4 @@ Git 매뉴얼 문서의 전체 목록은 [git](https://git-scm.com/docs/git) 을
 
 [^translate-google]: [Google 번역](https://translate.google.com/?hl=ko&tab=wT) : 이 문장의 경우 구글 번역이 너무 완벽해서 손을 댈 필요가 없을 정도였습니다. 어찌보면 좋은 세상이고 어찌보면 조금 무서운 세상입니다.
 
-[^xho95-gitignore]: `git rm --cached` 명령을 사용하는 방법은 [Git: .gitignore로 버전 관리에서 특정 파일 제외하기](http://xho95.github.io/git/github/xcode/swift/2016/07/15/Making-a-.gitignore-file.html) 라는 글을 참고하시면 됩니다.
+[^xho95-gitignore]: `git rm --cached` 명령을 사용하는 방법은 [Git: .gitignore로 버전 관리에서 특정 파일 제외하기]({% post_url 2016-07-16-Making-a-.gitignore-file %}) 를 참고하기 바랍니다.

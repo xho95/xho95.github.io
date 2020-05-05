@@ -17,7 +17,7 @@ categories: Swift Language Grammar Revision History
 * 스위프트 5.2 의 업데이트 항목입니다.
 * [Methods with Special Names]() 부분을 추가해서 함수 호출 구문에 클래스, 구조체, 열거체 인스턴스를 쓸 수 있도록 하는 구문 표 문법에 대한 정보를 추가했습니다.
 * [Subscript Options]() 부분이 업데이트 되었습니다. 이제 첨자 연산의 매개 변수에 기본 값을 제공할 수 있게 되었습니다.
-* [Self Type](http://xho95.github.io/swift/language/grammar/self/type/2020/02/20/Self-Type.html) 부분이 업데이트 되었습니다. 이제 `Self` 룰 더 많은 곳에서 사용할 수 있습니다.
+* [Self Type]({% post_url 2020-02-20-Types %}#self-type-자기-자신의-타입) 부분이 업데이트 되었습니다. 이제 `Self` 룰 더 많은 곳에서 사용할 수 있습니다.
 
 **2019-09-10**
 
