@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "macOS: 파일 시스템의 기본 디렉토리 구조"
+title:  "macOS: 파일 시스템 (APFS) 의 기본 디렉토리 구조"
 date:   2020-04-20 10:00:00 +0900
 categories: macOS File-System Directory
 ---
