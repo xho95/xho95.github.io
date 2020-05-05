@@ -63,4 +63,4 @@ categories: Swift Programming Language Grammar
 
 ### 참고 자료
 
-[^Swift]: **스위프트 프로그래밍 언어**는 현재 5.2 베타 버전까지 나온 상태이며, [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 에서 원문을 볼 수 있습니다.
+[^Swift]: **스위프트 프로그래밍 언어** 는 현재 5.2 베타 버전까지 나온 상태이며, [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 에서 원문을 볼 수 있습니다.

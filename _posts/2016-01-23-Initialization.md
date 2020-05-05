@@ -143,6 +143,28 @@ print(zeroByZero.width, zeroByZero.height)
 
 ### Required Initializers (필수 초기자)
 
+`required` '수정자 (modifier)' 를 클래스 초기자 정의 앞에 붙이면 모든 하위 클래스에서 그 초기자를 반드시 구현하도록 지시할 수 있습니다:
+
+```swift
+class SomeClass {
+  required init () {
+         // 여기서 초기자를 구현합니다.
+     }
+}
+```
+
+모든 하위 클래스에 있는 필수 초기자의 구현 앞에도 `required` '수정자' 를 붙여줘야 하는데, 이는 초기자 (를 반드시 구현해야 한다는) '필수 조건 (requirement)' 이 연쇄적으로 더 하위의 클래스에도 적용된다는 것을 지시하기 위함입니다. '필수 지명 초기자 (required designated initializer)' 를 재정의할 때는 `override` 는 붙이지 않습니다:
+
+```swift
+class SomeSubClass: SomeClass {
+  required init () {
+         // 여기서 하위 클래스의 필수 초기자를 구현합니다.
+     }
+}
+```
+
+> 상속받은 초기자로 '필수 조건 (requirement)' 를 만족할 수 있는 경우라면 필수 초기자를 명시적으로 구현하지 않아도 됩니다.
+
 ### Setting a Default Property Value with a Closure or Function (클로저나 함수를 사용하여 기본 속성 값 설정하기)
 
 ### 참고 자료
