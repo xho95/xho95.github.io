@@ -4,6 +4,7 @@ comments: true
 title:  "Swift: 리눅스에서 Perfect 프레임웍으로 서버 개발하기 (Part 2)"
 date:   2017-03-10 01:30:00 +0900
 categories: Linux Swift Perfect Server JSON REST
+redirect_from: "/linux/swift/perfect/server/json/rest/2017/03/09/Swift-with-Perfect-Part-2.html"
 ---
 
 지난 번 파트에서 [Perfect](http://perfect.org/) 프레임웍을 사용하여 Swift 로 서버를 개발하는 방법을 알아보았습니다. [^perfect] 이번에는 이어서 [Server Side Swift with Perfect: Getting Started](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started) 동영상의 뒷 부분을 정리합니다. [^raywenderlich]

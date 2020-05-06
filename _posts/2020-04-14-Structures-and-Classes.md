@@ -4,6 +4,7 @@ comments: true
 title:  "Swift 5.2: Structures and Classes (구조체와 클래스)"
 date:   2020-04-14 10:00:00 +0900
 categories: Swift Language Grammar Structure Class
+redirect_from: "/swift/language/grammar/structure/class/2020/04/08/Structures-and-Classes.html"
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 부분[^Structures-and-Classes]을 번역하고 정리한 글입니다.

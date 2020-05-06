@@ -4,6 +4,7 @@ comments: true
 title:  "Jekyll: Disqus 연결부터 마이그레이션까지"
 date:   2017-01-21 02:10:30 +0900
 categories: Blog Jekyll Disqus Migration
+redirect_from: "/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html"
 ---
 
 [Jekyll](https://jekyllrb.com) 블로그는 정적 페이지로만 구성되어 있습니다. [^jekyllrb] 따라서 자체적으로는 댓글 시스템 같은 동적 요소를 만들 수 없습니다. 그래서 보통 Jekyll 블로그에는 [Disqus](https://disqus.com) 와 같은 서비스를 추가해서 댓글 시스템을 구현합니다. [^disqus]

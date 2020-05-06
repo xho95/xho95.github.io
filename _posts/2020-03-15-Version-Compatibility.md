@@ -4,6 +4,7 @@ comments: true
 title:  "Swift 5.2: Version Compatibility (버전 호환성)"
 date:   2020-03-15 10:00:00 +0900
 categories: Swift Language Grammar Version Compatibility
+redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version-Compatibility.html"
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Version Compatibility](https://docs.swift.org/swift-book/GuidedTour/Compatibility.html) 부분[^Version-Compatibility]을 번역하고 정리한 글입니다.

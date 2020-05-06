@@ -4,6 +4,7 @@ comments: true
 title:  "macOS: 파일 시스템 (APFS) 의 유닉스-고유 디렉토리 알아보기"
 date:   2020-04-29 02:50:00 +0900
 categories: macOS File-System UNIX-specific Directory
+redirect_from: "/macos/file-system/unix-specific/directory/2020/04/28/macOS-UNIX-specific-Directories.html"
 ---
 
 > 이 글은 macOS 의 파일 시스템에 있는 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 대해 정리한 글입니다.

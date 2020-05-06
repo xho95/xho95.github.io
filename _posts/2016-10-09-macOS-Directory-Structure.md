@@ -4,6 +4,8 @@ comments: true
 title:  "macOS: 맥의 기본 디렉토리 구조 살펴보기"
 date:   2016-10-09 02:50:00 +0900
 categories: macOS File System Directory
+redirect_from: "/macos/file/system/directory/2016/10/08/macOS-Directory-Structure.html"
+redirect_from: "/macos/file-system/unix-specific/directory/2016/10/08/macOS-Directory-Structure.html"
 ---
 
 

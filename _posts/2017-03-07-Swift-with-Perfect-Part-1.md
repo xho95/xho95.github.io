@@ -4,6 +4,7 @@ comments: true
 title:  "Swift: 리눅스에서 Perfect 프레임웍으로 서버 개발하기 (Part 1)"
 date:   2017-03-07 01:30:00 +0900
 categories: Linux Swift Perfect Package Server
+redirect_from: "/linux/swift/perfect/package/server/2017/03/06/Swift-with-Perfect-Part-1.html"
 ---
 
 리눅스에서 Swift 로 프로그램을 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 [Ray Wenderlich](https://www.raywenderlich.com) [^raywenderlich] 라는 곳에서 [Perfect](http://perfect.org/) [^perfect] 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.

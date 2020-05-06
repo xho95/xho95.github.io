@@ -4,6 +4,7 @@ comments: true
 title:  "Swift 5.2: Deinitialization (객체 정리하기)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Deinitialization
+redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html"
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 부분[^Deinitialization]을 번역하고 정리한 글입니다.

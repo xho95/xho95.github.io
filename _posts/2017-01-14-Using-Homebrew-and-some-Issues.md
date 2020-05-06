@@ -4,6 +4,7 @@ comments: true
 title:  "Homebrew: 설치 및 Sierra 관련 이슈 정리"
 date:   2017-01-14 01:11:30 +0900
 categories: macOS Sierra Package Homebrew Issues
+redirect_from: "/macos/sierra/package/homebrew/issues/2017/01/13/Using-Homebrew-and-some-Issues.html"
 ---
 
 여기서는 [Homebrew](http://brew.sh) 의 사용 방법에 대해서 간단하게 알아보고, Homebrew 를 사용하다가 문제가 발생할 경우의 해결 방법에 대해서 정리합니다.

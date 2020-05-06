@@ -4,9 +4,10 @@ comments: true
 title:  "아톰(Atom) 문서 편집기 활용하기"
 date:   2016-09-28 02:15:00 +0900
 categories: Editor Atom Markdown Python
+redirect_from: "/editor/atom/markdown/python/2016/09/27/Using-Atom-Editor.html"
 ---
 
-[아톰(Atom) 문서 편집기(Atom Editor)](https://atom.io) [^atom] 는 [GitHub](https://github.com) [^github] 에서 만든 문서 편집기입니다. 
+[아톰(Atom) 문서 편집기(Atom Editor)](https://atom.io) [^atom] 는 [GitHub](https://github.com) [^github] 에서 만든 문서 편집기입니다.
 
 아톰의 장점이라면 [일렉트론(Electron)](https://github.com/electron/electron) [^electron] 프레임웍이라는 웹 기반 기술로 만들어서 운영 체제에 상관없이 동작한다는 점입니다. 따라서 Windows, OS X, Linux 등 모든 운영체제에서 동작합니다. [^dovetail]
 
@@ -60,7 +61,7 @@ $ atom .
 
 #### 아톰 편집기에서 콘다(conda) 가상 환경 인식시키기
 
-아나콘다(Anaconda)에는 콘다(conda)라는 패키지 관리 툴이 있습니다. 이 콘다는 패키지 관리 툴이면서 가상 환경을 관리해주기도 하는 툴입니다. 
+아나콘다(Anaconda)에는 콘다(conda)라는 패키지 관리 툴이 있습니다. 이 콘다는 패키지 관리 툴이면서 가상 환경을 관리해주기도 하는 툴입니다.
 
 아톰 편집기를 사용하다 보면 이 콘다에서 만든 가상 환경을 인식해야 하는 경우가 있습니다.
 
@@ -68,7 +69,7 @@ $ atom .
 
 ### 고찰 하기
 
-아톰(Atom) 편집기를 사용하기로 결정하기 전에 서브라임 텍스트(Sublime Text) 등의 여러 다른 편집기들을 비교해서 결정하는 것이 바람직 할 것입니다. 
+아톰(Atom) 편집기를 사용하기로 결정하기 전에 서브라임 텍스트(Sublime Text) 등의 여러 다른 편집기들을 비교해서 결정하는 것이 바람직 할 것입니다.
 
 저의 경우는 아톰 편집기가 깃허브(GitHub)에서 만들다 보니 회사가 탄탄해서 중간에 지원이 끊긴다던가 하는 문제는 없을 것 같아서 계속 사용하고 있습니다.
 

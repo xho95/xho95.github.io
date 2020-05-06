@@ -4,6 +4,7 @@ comments: true
 title:  "Swift 5.2: Subscripts (첨자 연산)"
 date:   2020-03-30 10:00:00 +0900
 categories: Swift Language Grammar Subscripts
+redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 부분[^Subscripts]을 번역하고 정리한 글입니다.

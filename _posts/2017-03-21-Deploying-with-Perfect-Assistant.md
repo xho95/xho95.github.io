@@ -4,6 +4,7 @@ comments: true
 title: "Swift: Perfect Assistant 로 AWS 에 서버 배포하기"
 date: 2017-03-21 02:00:00 +0900
 categories: Linux Swift Perfect Package Server
+redirect_from: "/linux/swift/perfect/package/server/2017/03/20/Deploying-with-Perfect-Assistant.html"
 ---
 
 Ray Wenderlich 사이트에서 Server Side Swift with Perfect 시리즈 동영상으로 [Perfect Assistant 소개하기 (Introduction to Perfect Assistant)](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-introduction-to-perfect-assistant) 라는 영상과 [Perfect Assistant 로 배포하기 (Deploying with Perfect Assistant)](https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-deploying-with-perfect-assistant) 라는 영상을 추가했습니다.

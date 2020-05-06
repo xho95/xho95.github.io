@@ -4,6 +4,7 @@ comments: true
 title:  "macOS: 특수 문자 입력창에서 유니코드 문자 검색해서 입력하기"
 date:   2016-10-08 03:15:00 +0900
 categories: macOS Tips Unicode Characters
+redirect_from: "/macos/tips/unicode/characters/2016/10/07/macOS-Special-Character.html"
 ---
 
 맥의 경우 `command (⌘)`+`control(⌃)`+`space` 키를 누르면 특수 문자를 입력할 수 있는 대화창이 나타납니다.[^macnews-1723]  [^macnews-1439]

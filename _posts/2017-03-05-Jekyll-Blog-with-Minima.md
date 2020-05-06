@@ -4,6 +4,7 @@ comments: true
 title:  "Jekyll: GitHub Pages 에 블로그 만들기"
 date:   2017-03-05 02:00:00 +0900
 categories: Blog GitHub Pages Jekyll Minima Theme
+redirect_from: "/blog/github/pages/jekyll/minima/theme/2017/03/04/Jekyll-Blog-with-Minima.html"
 ---
 
 제가 블로그를 만들면서 처음으로 작성한 글은 [Jekyll 기반의 GitHub Pages에 블로그 만들기]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.

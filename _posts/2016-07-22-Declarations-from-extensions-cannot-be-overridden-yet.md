@@ -4,6 +4,7 @@ comments: true
 title:  "Error: Declarations from extensions cannot be overridden yet"
 date:   2016-07-22 01:50:00 +0900
 categories: Xcode Swift Grammar Errors
+redirect_from: "/xcode/swift/grammar/errors/2016/07/21/Declarations-from-extensions-cannot-be-overridden-yet.html"
 ---
 
 여기서는 **Declarations from extensions cannot be overridden yet** 에러가 발생했을 경우의 해결 방법에 대해서 정리합니다.

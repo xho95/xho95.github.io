@@ -4,6 +4,7 @@ comments: true
 title:  "Xcode 7: 프로젝트 이름 바꾸기"
 date:   2016-06-04 03:30:00 +0900
 categories: Xcode Project Rename Scheme
+redirect_from: "https://xho95.github.io/xcode/project/rename/scheme/2016/06/03/Rename-a-Project.html"
 ---
 
 Xcode로 작업을 하다보면 이미 상당히 진행된 프로젝트나 완료된 프로젝트의 이름을 바꿔야 할 경우가 생깁니다.

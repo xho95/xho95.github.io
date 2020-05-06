@@ -4,6 +4,8 @@ comments: true
 title:  "Swift 5.2: Nested Types (품어진 타입)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Nested Types
+redirect_from: "/swift/language/grammar/nested/2017/03/02/Nested-Types.html"
+redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.html"
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 부분[^Nested-Types]을 번역하고 정리한 글입니다.
