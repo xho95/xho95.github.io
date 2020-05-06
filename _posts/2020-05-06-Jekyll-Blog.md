@@ -14,7 +14,7 @@ categories: Blog Jekyll GitHub
 
 > Jekyll 로 블로그를 제작할 때의 장점들은 그 외에도 몇가지가 더 있는데, 이는 [Jekyll 기반의 GitHub Pages에 블로그 만들기]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 의 앞부분을 참고하기 바랍니다.
 
-여기서는 Jekyll 로 블로그를 제작해서 GitHub Pages 에서 호스팅하는 방법을 정리하도록 합니다.
+여기서는 Jekyll 로 블로그를 제작한 후 GitHub Pages 로 호스팅하는 방법을 정리합니다.
 
 ### Jekyll 로 블로그를 제작하는 방법
 
