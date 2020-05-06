@@ -4,6 +4,7 @@ comments: true
 title:  "macOS: 맥에서 SSH 키 생성하고 사용하기"
 date:   2017-02-22 02:00:00 +0900
 categories: macOS Security OpenSSH SSH GitLab
+redirect_from: "/macos/security/openssh/ssh/gitlab/2017/02/21/Using-SSH-on-Mac.html"
 ---
 
 컴퓨터로 어딘가에 접속하려다 보면 SSH 를 사용해야 하는 경우가 생깁니다. [SSH (Secure Shell)](https://en.wikipedia.org/wiki/Secure_Shell) [^wikipedia-ssh] 는 보안되지 않는 네트웍에서도 네트웍 서비스를 안전하게 운영하기 위한 암호화 기반 네트웍 프로토콜을 말하는데, 가장 대표적인 예는 사용자가 컴퓨터 시스템에 원격으로 로그인하는 것입니다. [^understanding-ssh]
