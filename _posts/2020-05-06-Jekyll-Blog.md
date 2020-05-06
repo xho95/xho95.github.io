@@ -8,7 +8,7 @@ categories: Blog Jekyll GitHub
 
 > 이 곳은 Jekyll 을 사용하여 블로그를 제작하는 방법을 모아서 정리한 곳입니다.
 
-## Jekyll 블로그 개요
+### Jekyll 블로그 개요
 
 [Jekyll](https://jekyllrb.com) 은 [Markdown](https://en.wikipedia.org/wiki/Markdown) 같은 텍스트 파일로 정적 사이트를 만들 수 있게 해주는 '사이트 생성기' 입니다.[^Jekyll] 또 [GitHub](https://github.com) 에서 지원하므로[^github-and-jekyll], GitHub 의 자체 호스팅 서비스인 [GitHub Pages](https://pages.github.com) 에서 무료로 블로그를 운영할 수 있습니다.[^limits]
 
