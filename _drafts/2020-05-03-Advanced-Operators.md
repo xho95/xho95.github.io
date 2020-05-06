@@ -120,10 +120,20 @@ shiftBits >> 2              // 00000001
 
 ```swift
 let pink: UInt32 = 0xCC6699
-let redComponent = (pink & 0xFF0000) >> 16    // redComponet 는 0xCC, 또는 204 가 됩니다.
+let redComponent = (pink & 0xFF0000) >> 16    // redComponent 는 0xCC, 또는 204 가 됩니다.
 let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 가 됩니다.
-let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 이 됩니다. 
+let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 이 됩니다.
 ```
+
+이 예제는 `pink` 라는 `UInt32` 상수를 사용하여 핑크 색상에 대한 'CSS'[^CSS] 값을 저장합니다. CSS 색상 값 `#CC6699` 를 스위프트의 16-진수 수치 표현으로 나타내면 `0xCC6699` 입니다. 그다음 '비트 논리 곱 연산자 (bitwise AND operator)' (`&`) 와 '비트 오른쪽-이동 연산자 (bitwise right shift operator)' (`>>`) 를 사용하여 이 색상을 '빨간색 (`CC`)', '녹색 (`66`)', 그리고 '파란색 (`99`)' 성분으로 분해했습니다.
+
+빨간색 성분은 수치 값 `0xCC6699` 와 `0xFF0000` 를 '비트 논리 곱' 하여 구합니다. `0xFF0000` 에 있는 `0` 들은 `0xCC6699` 의 두 번째와 세 번째 '바이트 (bytes)' 를 효과적으로 "숨기므로 (mask)", `6699` 는 무시되어 결과적으로 `0xCC0000` 만 남습니다.
+
+이 수치는 그다음 16-자리 만큼 오른쪽으로 이동합니다 (`>> 16`). 16-진수에서 두 개의 문자는 8 '자리 (bits)' 를 사용하므로, 오른쪽으로 16 자리 만큼 이동하는 것은 `0xCC0000` 을 `0x0000CC` 로 변환하게 됩니다. 이는 `0xCC` 와 같으며, 10-진수 값으로는 `204` 입니다.
+
+이와 비슷하게, 녹색 성분은 수치 값 `0xCC6699` 와 `0x00FF00` 를 '비트 논리 곱' 하여 구하며, 이 결과 값은 `0x006600` 입니다. 그 다음 이 결과 값을 오른쪽으로 8 자리 이동하면, `0x66` 값을 얻게 되며, 이의 10-진수 값은 `102` 입니다.
+
+마지막으로, 파란색 성분은 `0xCC6699` 와 `0x0000FF` 를 '비트 논리 곱' 하여 구하며, 이 결과 값은 `0x000099` 입니다. `0x000099` 는 이미 `0x99` 와 같기 때문에, 오른쪽 이동은 필요 없으며, 10-진수 값은 `153` 입니다.
 
 **Shifting Behavior for Signed Integers (부호있는 정수를 위한 이동 동작)**
 
@@ -153,4 +163,6 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 [^exclusive]: 'exclusive' 는 경우에 따라 '독점적인' 이라는 말이 더 어울릴 때가 있습니다. 배타적이라는 말과 독점적이라는 말 모두 혼자서 차지한다는 의미를 가지고 있습니다. 하지만, 프로그래밍 분야에서는 '배타적인' 이라는 용어가 이미 널리 사용되고 있으므로 'exclusive OR' 는 '배타적인 논리 합' 으로 옮기도록 합니다.
 
-[^factor]: 원문의 'factor' 는 '인수' 라고 하며, 위키피디아의 [인수](https://ko.wikipedia.org/wiki/인수) 를 보면 수학에서 정수 또는 정식을 몇 개의 곱의 꼴로 하였을 때, 그것의 각 구성요소를 이르는 말이라고 합니다. 쉽게 말해 '인수 분해' 라고 할 때의 인수가 바로 이 'factor' 라고 할 수 있습니다.
+[^factor]: 'factor' 는 수학 용어로 '인수' 라고 하며, '정수 (integer)' 나 '정식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말이라고 합니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. 더 자세한 정보는 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 또는 [인수](https://ko.wikipedia.org/wiki/인수) 를 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
+
+[^CSS]: 원문에서는 'Cascading Style Sheets' 라고 풀어썼지만, 아마도 'CSS' 라는 줄임말이 더 유명할 것입니다. 이에 대해 굳이 더 알고싶은 분은 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 또는 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 를 참고하기 바랍니다.

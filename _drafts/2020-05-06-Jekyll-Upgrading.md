@@ -1,3 +1,11 @@
+---
+layout: post
+comments: true
+title:  "Jekyll: 버전 4.x 로 업그레이드하기"
+date:   2020-05-06 12:30:00 +0900
+categories: Blog Jekyll Upgrade
+---
+
 >이 글은 Jekyll 블로그 제작 중에서 Jekyll 업그레이드에 대한 내용을 정리한 것입니다.
 >
 >Jekyll 블로그 제작과 관련한 내용은 다음을 참고하기 바랍니다.
@@ -28,7 +36,9 @@ $ rvm get stable
 
 ### Gem 명령으로 Jekyll 업데이트
 
-1. Gemfile 이 있는 경우
+이 경우는 프로젝트 폴더에 'Gemfile' 이 이미 있는 경우와 없는 경우로 구분됩니다.
+
+#### Gemfile 이 있는 경우
 
 이미 사이트에 gemfile 이 설치되어 있으면 아래와 같이 바로 gem 을 사용하면 됩니다. []() 에서 보듯 minima 가 적용된 버전이면 gemfile 이 이미 있으므로 바로 업데이트하면 됩니다.
 
@@ -45,7 +55,7 @@ Nothing to update
 
 > 업데이트할 jekyll 의존 정보가 gemfile 에 있는데 gemfile 이 없으므로 문제가 없는 것입니다. 일단 update 가 다 된 것처럼 나오는데 의존된 것이 없으므로 문제가 없습니다. 일단 jekyll 이 최신이어서 일 수 도 있습니다. 하지만 jekyll 이 최신이어서가 아니라 gemfile 이 없어서라면 `bundler` 를 이용하여 먼저 Gemfile 을 생성해 줍니다.
 
-2. Gemfile 이 없는 경우
+#### Gemfile 이 없는 경우
 
 **bundler 로 Gemfile 생성하기**
 
