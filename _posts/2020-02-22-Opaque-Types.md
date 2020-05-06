@@ -42,7 +42,7 @@ print(smallTriangle.draw())
 // ***
 ```
 
-아래 코드처럼, '일반화 (generics)' 를 사용하면 도형을 수직으로 뒤집는 연산도 구현할 수 있을 것 같습니다. 하지만, 이 접근 방식에는 아주 중요한 한계가 존재합니다: 뒤집힌 결과를 만드는데 사용한 '일반화된 (generic) 타입' 이 정확하게 드러난다는 점이 그것입니다.[^flippedTriangle-Type]
+아래 코드처럼, '일반화 (generics)' 를 사용하면 도형을 수직으로 뒤집는 연산도 구현할 수 있을 것 같습니다. 하지만, 이 접근 방법에는 아주 중요한 한계가 존재합니다: 뒤집힌 결과를 만드는데 사용한 '일반화된 (generic) 타입' 이 정확하게 드러난다는 점이 그것입니다.[^flippedTriangle-Type]
 
 ```swift
 struct FlippedShape<T: Shape>: Shape {
@@ -61,7 +61,7 @@ print(flippedTriangle.draw())
 // *
 ```
 
-이 접근 방식을 사용하여 두 도형을 수직으로 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하면, 아래에 나타낸 코드와 같이 되는데, 뒤집힌 삼각형을 다른 삼각형과 붙임으로써 타입의 결과는 `JoinedShape<Triangle, FlippedShape<Triangle>>` 와 같은 것이 됩니다.[^joinedTriangle-Type]
+이 접근 방법을 사용하여 두 도형을 수직으로 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하면, 아래에 나타낸 코드와 같이 되는데, 뒤집힌 삼각형을 다른 삼각형과 붙임으로써 타입의 결과는 `JoinedShape<Triangle, FlippedShape<Triangle>>` 와 같은 것이 됩니다.[^joinedTriangle-Type]
 
 ```swift
 struct JoinedShape<T: Shape, U: Shape>: Shape {
@@ -225,7 +225,7 @@ protoFlippedTriangle == sameThing     //  Error, 에러
 
 함수의 반환 타입으로 프로토콜 타입을 사용하는 것은 유연함을 제공해서 그 프로토콜을 준수하는 어떤 타입도 반환할 수 있게 합니다. 하지만, 그 유연함의 대가로 몇몇 연산을 반환 값에서 사용할 수 없게 됩니다. 이 예제는 `==` 연산자가 왜 불가능한지를 보여줍니다-그것이 의존하는 특정한 타입 정보가 프로토콜 타입을 쓸 경우 보존되지 않기 때문입니다.
 
-이 접근 방식의 또 다른 문제는 도형 변환을 '숨기지 (nest)'[^nest] 않는다는 것입니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 '어떤 (some) 타입' 인 인자를 받습니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않습니다[^protocol-type-value]: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 `protoFlip(protoFlip(smallTriangle))` 과 같이 여러번 반복해서 변환하는 코드는 유효하지 않음을 의미하는 것으로 '뒤집힌 도형 (flipped shape)' 은 `protoFlip(_:)` 의 인자로 유효하지 않기 때문입니다.
+이 접근 방법의 또 다른 문제는 도형 변환을 '숨기지 (nest)'[^nest] 않는다는 것입니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 '어떤 (some) 타입' 인 인자를 받습니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않습니다[^protocol-type-value]: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 `protoFlip(protoFlip(smallTriangle))` 과 같이 여러번 반복해서 변환하는 코드는 유효하지 않음을 의미하는 것으로 '뒤집힌 도형 (flipped shape)' 은 `protoFlip(_:)` 의 인자로 유효하지 않기 때문입니다.
 
 이와는 대조적으로, 'opaque (불투명한) 타입' 은 실제 타입의 정체성을 보존합니다. 스위프트는 'associated types (관련 타입)' 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서도 'opaque (불투명한) 타입 값' 은 사용할 수 있습니다. 예를 들어, 다음은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 `Container` 프로토콜의 한 예시입니다:
 

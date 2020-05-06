@@ -49,7 +49,7 @@ _비트 논리 합 연산자 (bitwise AND operator)_ (`&`) 는 두 수치 값의
 
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
-아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 중간의 '네 자리 (four bits)' 가 `1` 입니다. '비트 논리 곱 연산자' 는 이를 결합하여 수치 값 `00111100` 을 만드는데, 이는 부호 없는 10-진수 값 `60` 과 같습니다:
+아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 중간의 '네 자리 (four bits)' 가 `1` 입니다. '비트 논리 곱 연산자' 는 이를 결합하여 수치 값 `00111100` 을 만드는데, 이는 부호없는 10-진수 값 `60` 과 같습니다:
 
 ```swift
 let firstSixBits: UInt8 = 0b11111100
@@ -63,7 +63,7 @@ _비트 논리 합 연산자 (bitwise OR operator)_ (`|`) 는 두 수치 값을 
 
 ![bitwise-OR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-OR-operator.jpg)
 
-아래 예제에서, `someBits` 와 `moreBits` 의 값은 서로 다른 '자리들 (bits)' 이 `1` 입니다. '비트 논리 합 연산자' 는 이들을 결합하여 수치 값 `11111110` 을 만드는데, 이는 부호 없는 10-진수 `254` 와 같습니다:
+아래 예제에서, `someBits` 와 `moreBits` 의 값은 서로 다른 '자리들 (bits)' 이 `1` 입니다. '비트 논리 합 연산자' 는 이들을 결합하여 수치 값 `11111110` 을 만드는데, 이는 부호없는 10-진수 `254` 와 같습니다:
 
 ```swift
 let someBits: UInt8 = 0b10110010
@@ -87,7 +87,43 @@ let outputBits = firstBits ^ otherBits // 00010001 과 같습니다.
 
 ### Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)
 
-**Shifting Behavior for Unsigned Integers (부호없는 정수를 위한 이동 동작)**
+_비트 왼쪽-이동 연산자 (bitwise left shift operator)_ (`<<`) 와 _비트 오른쪽-이동 연산자 (bitwise right shift operator)_ (`>>`) 는, 아래 정의된 규칙에 따라, 수치 값에 있는 모든 비트를 정해진 위치 값만큼 왼쪽이나 오른쪽으로 이동합니다.
+
+비트를 왼쪽-이동 및 오른쪽-이동 하는 것은 정수 '인수 (factor)'[^factor] `2` 로 곱하거나 나누는 효과를 가집니다. 정수 비트를 왼쪽으로 한 위치 이동하면 값이 두 배가 되며, 오른쪽으로 한 위치 이동하면 값이 절반이 됩니다.
+
+**Shifting Behavior for Unsigned Integers (부호없는 정수에 대한 이동 동작)**
+
+부호없는 정수에 대한 비트-이동 동작은 다음과 같습니다:
+
+1. 기존 비트를 요청한 위치 값만큼 왼쪽이나 오른쪽으로 이동합니다.
+2. 정수 (integer) 의 수용 범위를 넘어서는 비트는 어떤 것이든 버립니다.
+3. 원래 비트를 왼쪽이나 오른쪽으로 이동하면서 남는 공간에는 `0` 을 삽입합니다.
+
+이러한 접근 방법을 _논리적 이동 (logical shift)_ 이라고 합니다.
+
+아래 그림은 `11111111 << 1` (`11111111` 이 `1` 위치 만큼 왼쪽으로 이동한 것) 과 `11111111 >> 1` (`11111111` 이 `1` 위치 만큼 오른쪽으로 이동한 것) 의 결과를 보여줍니다. 파란색 숫자가 이동된 것이고, 회색 숫자는 삭제된 것이며, 주황색 `0` 이 삽입되었습니다:
+
+![shifting behavior for ussigned integer](/assets/Swift/Swift-Programming-Language-shifting-behavior-for-unsigned.jpg)
+
+다음은 스위프트 코드에서 비트 이동을 하는 방법을 보여줍니다:
+
+```swift
+let shiftBits: UInt8 = 4    // 00000100 라는 2-진수 와 같습니다.
+shiftBits << 1              // 00001000
+shiftBits << 2              // 00010000
+shiftBits << 5              // 10000000
+shiftBits << 6              // 00000000
+shiftBits >> 2              // 00000001
+```
+
+'비트 이동 (bit shifting)' 기능을 사용하면 다른 자료 타입 내의 값을 '부호화 (encoding)' 하고 '복호화 (decoding)' 할 수 있습니다:
+
+```swift
+let pink: UInt32 = 0xCC6699
+let redComponent = (pink & 0xFF0000) >> 16    // redComponet 는 0xCC, 또는 204 가 됩니다.
+let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 가 됩니다.
+let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 이 됩니다. 
+```
 
 **Shifting Behavior for Signed Integers (부호있는 정수를 위한 이동 동작)**
 
@@ -113,6 +149,8 @@ let outputBits = firstBits ^ otherBits // 00010001 과 같습니다.
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
-[^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 편의를 위해서 프로그래밍에서 많이 사용하는 '비트' 라는 말을 사용하기로 하며, 필요에 따라 '자리' 이라는 말로 옮기도록 하겠습니다.
+[^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 편의를 위해서 프로그래밍에서 많이 사용하는 '비트' 라는 말을 사용하기로 하며, '자리' 라고 하는 것이 자연스러울 때는 '자리' 라고도 하겠습니다.
 
-[^exclusive]: 'exclusive' 는 경우에 따라 '독점적인' 이라는 말이 더 어울릴 때가 있습니다. 하지만, 프로그래밍 용어에서는 '배타적인' 이라는 용어가 널리 사용되고 있으므로 'exclusive OR' 는 '배타적인 논리 합' 으로 옮기도록 합니다.
+[^exclusive]: 'exclusive' 는 경우에 따라 '독점적인' 이라는 말이 더 어울릴 때가 있습니다. 배타적이라는 말과 독점적이라는 말 모두 혼자서 차지한다는 의미를 가지고 있습니다. 하지만, 프로그래밍 분야에서는 '배타적인' 이라는 용어가 이미 널리 사용되고 있으므로 'exclusive OR' 는 '배타적인 논리 합' 으로 옮기도록 합니다.
+
+[^factor]: 원문의 'factor' 는 '인수' 라고 하며, 위키피디아의 [인수](https://ko.wikipedia.org/wiki/인수) 를 보면 수학에서 정수 또는 정식을 몇 개의 곱의 꼴로 하였을 때, 그것의 각 구성요소를 이르는 말이라고 합니다. 쉽게 말해 '인수 분해' 라고 할 때의 인수가 바로 이 'factor' 라고 할 수 있습니다.

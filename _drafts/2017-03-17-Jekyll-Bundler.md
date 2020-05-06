@@ -4,7 +4,7 @@
 
 ### Jekyll 설치
 
-Jekyll 의 설치는 다음과 같이 Ruby 언어의 `gem` 명령을 사용합니다. 
+Jekyll 의 설치는 다음과 같이 Ruby 언어의 `gem` 명령을 사용합니다.
 
 ```
 $ gem install jekyll bundler
@@ -18,7 +18,7 @@ $ gem install jekyll bundler
 
 ```
 $ jekyll new test-site
-Running bundle install in /Users/kimminho/Documents/test-site... 
+Running bundle install in /Users/kimminho/Documents/test-site...
   Bundler: The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
   Bundler: Fetching gem metadata from https://rubygems.org/...........
   Bundler: Fetching version metadata from https://rubygems.org/..
@@ -48,30 +48,28 @@ Running bundle install in /Users/kimminho/Documents/test-site...
   Bundler: Bundle complete! 4 Gemfile dependencies, 21 gems now installed.
   Bundler: Use `bundle show [gemname]` to see where a bundled gem is installed.
   Bundler: Post-install message from minima:
-  Bundler: 
+  Bundler:
   Bundler: ----------------------------------------------
   Bundler: Thank you for installing minima 2.0!
-  Bundler: 
+  Bundler:
   Bundler: Minima 2.0 comes with a breaking change that
   Bundler: renders '<your-site>/css/main.scss' redundant.
   Bundler: That file is now bundled with this gem as
   Bundler: '<minima>/assets/main.scss'.
-  Bundler: 
+  Bundler:
   Bundler: More Information:
   Bundler: https://github.com/jekyll/minima#customization
   Bundler: ----------------------------------------------
-New jekyll site installed in /Users/kimminho/Documents/test-site. 
+New jekyll site installed in /Users/kimminho/Documents/test-site.
 ```
 
-#### Gemfile 
+#### Gemfile
 
 ```
 $ cd test-site/
 ```
 
-위 처럼 생성된 사이트 디렉토리로 이동했는데 다음과 같은 메시지가 뜹니다.
-
-Gemfile 을 RVM 과 Heroku 가 동시에 사용하는 것이 문제가 되는 것 같습니다.
+위 처럼 생성된 사이트 디렉토리로 이동했는데 다음과 같은 메시지가 뜹니다. ruby 버전과 관련한 경고일 수 있습니다. 일단 무시 가능합니다.
 
 ```
 RVM used your Gemfile for selecting Ruby, it is all fine - Heroku does that too,
@@ -109,7 +107,7 @@ $ bundle exec jekyll serve
 [Quick-start guide](https://jekyllrb.com/docs/quickstart/) 설명은 꼭 이해하도록 합니다. [^jekyllrb-quickstart]
 
 ```
-$ gem update jekyll 
+$ gem update jekyll
 ```
 
 위와 같이 해도 같지 않았을까?

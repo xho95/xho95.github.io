@@ -1,4 +1,4 @@
-I"^�<blockquote>
+I"^�<blockquote>
   <p>Apple 에서 공개한 <a href="https://docs.swift.org/swift-book/">The Swift Programming Language (Swift 5.2)</a> 책의 <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">The Basics</a> 부분<sup id="fnref:The-Basics" role="doc-noteref"><a href="#fn:The-Basics" class="footnote">1</a></sup>을 번역하고 정리한 글입니다.</p>
 
   <p>현재 전체 중에서 번역 완료된 목록은 <a href="/swift/programming/language/grammar/2017/02/28/The-Swift-Programming-Language.html">Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)</a> 에서 확인할 수 있습니다.</p>
@@ -161,7 +161,7 @@
 
 <p><em>정수 (integers)</em> 는 분수 성분이 없는 모든 수를 말하며, <code class="highlighter-rouge">42</code> 와 <code class="highlighter-rouge">-23</code> 등 여기에 해당합니다. 정수에는 <em>부호가 있거나 (signed)</em> (양수, 0, 또는 음수) <em>없을 수 (unsigned)</em> (양수, 또는 0) 있습니다.</p>
 
-<p>스위프트는 8, 16, 32, 그리고 64 비트 양식의 부호 있는 정수와 부호 없는 정수를 제공합니다. 이 정수들은 C 언어의 ‘작명법 (naming convention)’ 에 따라, 8-비트 부호 없는 정수는 타입이 <code class="highlighter-rouge">UInt8</code> 이고, 32-비트 부호 있는 정수는 타입이 <code class="highlighter-rouge">Int32</code> 입니다. 스위프트의 모든 타입들 처럼, 이 정수 타입들의 이름은 대문자로 시작합니다.</p>
+<p>스위프트는 8, 16, 32, 그리고 64 비트 양식의 부호 있는 정수와 부호없는 정수를 제공합니다. 이 정수들은 C 언어의 ‘작명법 (naming convention)’ 에 따라, 8-비트 부호없는 정수는 타입이 <code class="highlighter-rouge">UInt8</code> 이고, 32-비트 부호 있는 정수는 타입이 <code class="highlighter-rouge">Int32</code> 입니다. 스위프트의 모든 타입들 처럼, 이 정수 타입들의 이름은 대문자로 시작합니다.</p>
 
 <h4 id="integer-bounds-정수의-경계">Integer Bounds (정수의 경계)</h4>
 
@@ -186,7 +186,7 @@
 
 <h4 id="uint">UInt</h4>
 
-<p>스위프트는 부호 없는 정수 타입으로, <code class="highlighter-rouge">UInt</code> 도 제공하며, 이는 현 플랫폼의 고유한 워드 크기와 같은 크기를 가집니다:</p>
+<p>스위프트는 부호없는 정수 타입으로, <code class="highlighter-rouge">UInt</code> 도 제공하며, 이는 현 플랫폼의 고유한 워드 크기와 같은 크기를 가집니다:</p>
 
 <ul>
   <li>32-비트 플랫폼에서, <code class="highlighter-rouge">UInt</code> 는 <code class="highlighter-rouge">UInt32</code> 와 크기가 같습니다.</li>
