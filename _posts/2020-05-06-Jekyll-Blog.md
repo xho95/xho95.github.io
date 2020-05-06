@@ -6,8 +6,6 @@ date:   2020-05-06 12:30:00 +0900
 categories: Blog Jekyll GitHub
 ---
 
-## Jekyll: 블로그 제작의 모든 것
-
 여기서는 Jekyll 로 블로그를 제작한 후 GitHub Pages 로 호스팅하는 방법을 정리합니다.
 
 ### Jekyll 블로그 개요
