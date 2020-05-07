@@ -2,9 +2,9 @@
 layout: post
 comments: true
 title:  "Jekyll: GitHub Pages 에 블로그 만들기"
-date:   2017-03-05 02:00:00 +0900
+date: 2017-03-05 02:00:00 +0900
 categories: Blog GitHub-Pages Jekyll Minima Theme
-redirect_from: "/blog/github/pages/jekyll/minima/theme/2017/03/04/"
+redirect_from: "/blog/github/pages/jekyll/minima/theme/2017/03/04/Jekyll-Blog-with-Minima.html"
 ---
 
 > 이 글은 GitHub Pages 에서 지원하는 Jekyll 로 블로그를 만드는 방밥을 정리한 것입니다.

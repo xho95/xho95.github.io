@@ -15,7 +15,7 @@ categories: Blog Jekyll GitHub
 ### Jekyll 로 블로그를 제작하는 방법
 
 * [GitHub Pages 에 블로그 만들기]({% post_url 2017-03-05-Jekyll-Blog-with-Minima %})
-* [MarkDown 문서를 이용하여 블로그에 포스트하기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %})
+* [Markdown 문서로 새 포스트 만들기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %})
 * [Disqus 연결부터 마이그레이션까지]({% post_url 2017-01-21-Add-Disqus-to-Jekyll %})[^disqus]
 
 ### 참고 자료
