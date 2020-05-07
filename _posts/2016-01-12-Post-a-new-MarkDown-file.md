@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Jekyll: Markdown 으로 새 포스트 만들기"
+title:  "Jekyll: Markdown 문서로 새 포스트 만들기"
 date:   2016-01-12 11:58:00 +0900
 categories: Blog Jekyll MarkDown Post kramdown
 redirect_from: "/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html"
@@ -11,7 +11,7 @@ redirect_from: "/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-fi
 >
 > Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 참고하기 바랍니다.
 
-## Jekyll: MarkDown 으로 새 포스트 만들기
+## Jekyll: MarkDown 문서로 새 포스트 만들기
 
 Jekyll 블로그의 가장 큰 장점은 일반 텍스트 파일로 블로그에 포스팅할 수 있다는 것입니다. 물론 HTML 문서로 포스팅해도 무방합니다.[^posts]
 
