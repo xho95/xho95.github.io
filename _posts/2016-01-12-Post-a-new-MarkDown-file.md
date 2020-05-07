@@ -3,7 +3,8 @@ layout: post
 comments: true
 title:  "Jekyll: Markdown 으로 새 포스트 만들기"
 date:   2016-01-12 11:58:00 +0900
-categories: Jekyll MarkDown Atom kramdown
+categories: Blog Jekyll MarkDown Post kramdown
+redirect_from: "/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html"
 ---
 
 > 이 글은 Jekyll 블로그에서 Markdown 로 포스팅하는 방밥을 정리한 것입니다.
@@ -24,7 +25,7 @@ Jekyll 블로그의 포스트는 `_posts` 디렉토리에 위치합니다.
 
 ### 포스트의 이름 규칙
 
-Jekyll 포스트는 이름이 다음 규칙을 따릅니다.[^naming-of-github-pages]
+Jekyll 포스트는 이름이 다음 규칙을 따릅니다.
 
 ```txt
 YYYY-MM-DD-NAME-OF-POST.md
@@ -51,14 +52,10 @@ layout: post
 title:  "Welcome to Jekyll!"
 ---
 
-# Welcome
-
-**Hello world**, this is my first Jekyll blog post.
-
-I hope you like it!
+포스트 내용은 여기에서부터 작성합니다.
 ```
 
-다음은 GitHub Pages 홈페이지에 있는 'front matter' 양식입니다.
+다음은 GitHub Pages 홈페이지에 있는 'front matter' 양식입니다.[^naming-of-github-pages]
 
 ```yml
 ---
@@ -67,6 +64,8 @@ title: "POST TITLE"
 date: YYYY-MM-DD hh:mm:ss -0000
 categories: CATEGORY-1 CATEGORY-2
 ---
+
+포스트 내용은 여기에서부터 작성합니다.
 ```
 
 보통은 위와 같이 하는 것이 가장 일반적입니다.
@@ -75,13 +74,11 @@ categories: CATEGORY-1 CATEGORY-2
 
 Jekyll 에서 Markdown 으로 포스트를 할 수 있는 것은, Jekyll 과 함께 설치된 [kramdown](http://kramdown.gettalong.org) 이라는 루비 패키지가 markdown 을 해석해 주기 때문입니다.
 
-`_config.yml` 문서를 열어보면 다음과 같은 markdown 해석기로 'kramdown' 이 설정이 있는 것을 확인할 수 있습니다.
+`_config.yml` 문서를 열어보면 다음과 같은 markdown 해석기로 'kramdown' 이 설정이 있는 것을 확인할 수 있습니다.[^kramdown]
 
 ```yml
 markdown: kramdown
 ```
-
-다만, 현재는 GitHub에서 kramdown을 이용하고 있으므로 다른 엔진을 설치해도 됩니다.[^kramdown]
 
 ### 참고 자료
 
