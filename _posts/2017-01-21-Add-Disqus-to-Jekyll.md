@@ -7,6 +7,12 @@ categories: Blog Jekyll Disqus Migration
 redirect_from: "/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.html"
 ---
 
+> 이 글은 Jekyll 블로그에 Disqus 를 이용하여 댓글 시스템을 연결하는 방법을 정리한 것입니다.
+>
+> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 참고하기 바랍니다.
+
+## Jekyll: Disqus 연결부터 마이그레이션까지
+
 [Jekyll](https://jekyllrb.com) 블로그는 정적 페이지로만 구성되어 있습니다. [^jekyllrb] 따라서 자체적으로는 댓글 시스템 같은 동적 요소를 만들 수 없습니다. 그래서 보통 Jekyll 블로그에는 [Disqus](https://disqus.com) 와 같은 서비스를 추가해서 댓글 시스템을 구현합니다. [^disqus]
 
 여기서는 Jekyll 블로그에 Disqus 를 추가하고, 댓글 카운팅 기능을 추가한 후, 마지막으로 마이그레이션을 수행하는 방법을 정리하도록 합니다.

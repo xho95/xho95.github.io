@@ -7,6 +7,12 @@ categories: Blog GitHub Pages Jekyll Minima Theme
 redirect_from: "/blog/github/pages/jekyll/minima/theme/2017/03/04/Jekyll-Blog-with-Minima.html"
 ---
 
+> 이 글은 GitHub Pages 에서 지원하는 Jekyll 로 블로그를 만드는 방밥을 정리한 것입니다.
+>
+> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 참고하기 바랍니다.
+
+## Jekyll: GitHub Pages 에 블로그 만들기
+
 제가 블로그를 만들면서 처음으로 작성한 글은 [Jekyll 기반의 GitHub Pages에 블로그 만들기]({% post_url 2016-01-11-Make-a-blog-with-Jekyll %}) 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.
 
 그런데 최근 Jekyll 의 구조가 제가 처음에 익히던 때와는 많이 달라졌다는 것을 알게 되었습니다. 따라서 예전에 정리한 설명도 지금과는 맞지 않는 부분이 생겼습니다.
