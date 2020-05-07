@@ -38,3 +38,12 @@ plugins:
 ```
 
 이것은 Jekyll 이 `jekyll-redirect-from` 플러그인을 사용하겠다고 알리는 것입니다.
+
+### GitHub Pages 에서 한 URL 만 Redirect 되는 현상
+
+[Keeping your site up to date with the GitHub Pages gem](https://help.github.com/en/enterprise/2.13/user/articles/setting-up-your-github-pages-site-locally-with-jekyll#keeping-your-site-up-to-date-with-the-github-pages-gem) 을 보면 github-pages 플러그인을 최신으로 만들어 주라고 하고 있다.
+
+```sh
+$ bundle update github-pages
+Could not find gem 'github-pages'.
+```
