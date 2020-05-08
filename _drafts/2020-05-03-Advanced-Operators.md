@@ -173,8 +173,6 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 ### Overflow Operators (값 넘침 연산자)
 
-For example, the Int16 integer type can hold any signed integer between -32768 and 32767. Trying to set an Int16 constant or variable to a number outside of this range causes an error:
-
 어떤 수를 정수 상수나 변수에 집어 넣을 때 그 값을 수용할 수 없는 경우, 스위프트는 기본적으로 무효한 값이 생성되도록 내버려두지 않고 에러를 보고합니다. 이런 동작 방식은 너무 크거나 너무 작은 수를 다룰 때 부가적인 안전성을 줍니다.
 
 예를 들어, `Int16` 정수 타입은 `-32768` 과 `32767` 사이의 부호있는 정수를 수용할 수 있습니다. `Int16` 상수나 변수에 이 범위를 벗어나는 수를 설정하면 에러를 띄웁니다:
