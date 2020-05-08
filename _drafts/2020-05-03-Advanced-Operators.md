@@ -137,11 +137,21 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 **Shifting Behavior for Signed Integers (부호있는 정수에 대한 이동 동작)**
 
-부호있는 정수가 이진수로 표시되는 방식 때문에 부호없는 정수보다 부호있는 정수의 경우 시프트 동작이 더 복잡합니다. 아래 예제는 단순화를 위해 8 비트 부호있는 정수를 기반으로하지만 모든 크기의 부호있는 정수에 동일한 원칙이 적용됩니다.
+'부호있는 정수 (signed integers)' 에 대한 이동 동작은 '부호없는 정수 (unsigend integers)' 에서보다 더 복잡한데, 이는 부호있는 정수를 2-진수로 표현하는 방식 때문입니다. (아래 예제는 문제를 단순화하기 위해 8-비트 부호있는 정수를 기반으로 하고 있지만, 모든 크기의 부호있는 정수에 대해서 같은 원칙이 적용됩니다.)
 
-부호있는 정수는 첫 번째 비트 (부호 비트라고 함)를 사용하여 정수가 양수인지 음수인지를 나타냅니다. 부호 비트 0은 양수를 의미하고 부호 비트 1은 음수를 의미합니다.
+부호있는 정수는 첫 번째 비트 (_부호 비트 (sign bit)_) 를 사용하여 그 정수가 양수인지 음수인지를 나타냅니다. 부호 비트가 `0` 이면 양수를 의미하고, 부호 비트가 `1` 이면 음수를 의미합니다.
 
-나머지 비트 (값 비트)는 실제 값을 저장합니다. 양수는 부호없는 정수와 정확히 같은 방식으로 0부터 시작하여 저장됩니다. 다음은 Int8 내부의 비트가 숫자 4를 찾는 방법입니다.
+나머지 비트들 (_값 비트들 (value bits)_) 은 실제 값을 저장하고 있습니다. 양수는 부호없는 정수와 정확하게 같은 방식인, `0` 으로 시작하여 저장됩니다. `Int8` 내부 비트로 `4` 라는 수를 나타내는 방법은 다음과 같습니다:
+
+![signed positive 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-positive-4.jpg)
+
+부호 비트는 ("양수 (positive)" 를 의미하는) `0` 이며, 7 개의 값 비트들은 그냥, 2-진수 표기법으로 나타낸, `4` 라는 수입니다.
+
+하지만, 음수는 다른 방식으로 저장됩니다. 음수는 `2` 의 `n` 거듭 제곱에서 자신의 절대 값을 뺀 형태로 저장되는데, 여기서 `n` 은 값 비트의 개수입니다.[^two-s-complement] 8-비트 수는 7 개의 값 비트를 가지므로, 이는 `2`의 `7` 거듭 제곱, 또는 `128` 을 의미하게 됩니다.
+
+`Int8` 내부 비트로 `-4` 라는 수를 나타내는 방법은 다음과 같습니다:
+
+![signed negative 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-negative-4.jpg)
 
 ### Overflow Operators (넘침 연산자)
 
@@ -172,3 +182,5 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 [^factor]: 'factor' 는 수학 용어로 '인수' 라고 하며, '정수 (integer)' 나 '정식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말이라고 합니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. 더 자세한 정보는 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 또는 [인수](https://ko.wikipedia.org/wiki/인수) 를 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
 [^CSS]: 원문에서는 'Cascading Style Sheets' 라고 풀어썼지만, 아마도 'CSS' 라는 줄임말이 더 유명할 것입니다. 이에 대해 굳이 더 알고싶은 분은 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 또는 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 를 참고하기 바랍니다.
+
+[^two-s-complement]: 이런 방식으로 음수를 표현하는 것을 컴퓨터 용어로 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면 `0` 을 한 가지 방식으로 표현할 수 있고, 뺄셈 연산이 자연스러워 지는 등의 장점이 많이 있습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 또는 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 를 참고하기 바랍니다.
