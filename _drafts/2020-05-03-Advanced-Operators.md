@@ -103,9 +103,7 @@ _비트 왼쪽-이동 연산자 (bitwise left shift operator)_ (`<<`) 와 _비�
 
 아래 그림은 `11111111 << 1` (`11111111` 이 `1` 위치 만큼 왼쪽으로 이동한 것) 과 `11111111 >> 1` (`11111111` 이 `1` 위치 만큼 오른쪽으로 이동한 것) 의 결과를 보여줍니다. 파란색 숫자가 이동된 것이고, 회색 숫자는 삭제된 것이며, 주황색 `0` 이 삽입되었습니다:
 
-![shifting behavior for unsigned integer](/assets/Swift/Swift-Programming-Language/Advanced-Operators-shifting-behavior-for-unsigned.jpg)
-/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-XOR-operator.jpg
-/assets/Swift/Swift-Programming-Language/Advanced-Operators-shifting-behavior-for-unsigned.jpg
+![shifting behavior for unsigned integer](/assets/Swift/Swift-Programming-Language/Advanced-Operators-shifting-behavior-for-unsigned.png)
 
 다음은 스위프트 코드에서 비트 이동을 하는 방법을 보여줍니다:
 
