@@ -171,7 +171,28 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 양수와 음수가 저장되는 특수한 방식으로 인해, 둘 중 어떤 것도 오른쪽으로 이동하면 점점 더 `0` 에 가까워집니다. 이동 중에 부호 비트를 같게 유지하는 것은 값이 `0` 에 가까워지더라도 음수는 계속 음수로 남는다는 것을 의미합니다.
 
-### Overflow Operators (넘침 연산자)
+### Overflow Operators (값 넘침 연산자)
+
+For example, the Int16 integer type can hold any signed integer between -32768 and 32767. Trying to set an Int16 constant or variable to a number outside of this range causes an error:
+
+어떤 수를 정수 상수나 변수에 집어 넣을 때 그 값을 수용할 수 없는 경우, 스위프트는 기본적으로 무효한 값이 생성되도록 내버려두지 않고 에러를 보고합니다. 이런 동작 방식은 너무 크거나 너무 작은 수를 다룰 때 부가적인 안전성을 줍니다.
+
+예를 들어, `Int16` 정수 타입은 `-32768` 과 `32767` 사이의 부호있는 정수를 수용할 수 있습니다. `Int16` 상수나 변수에 이 범위를 벗어나는 수를 설정하면 에러를 띄웁니다:
+
+```swift
+var potentialOverflow = Int16.max
+// potentialOverflow 는 32767 과 같으며, 이는 Int16 이 수용할 수 있는 최대 값입니다.
+potentialOverflow += 1
+// 이것은 에러를 띄웁니다.
+```
+
+값이 너무 크거나 너무 작을 때 에러 처리를 제공하는 것은 경계 부근의 값을 가지고 코딩하는 조건에서 더 큰 유연함을 줍니다.
+
+하지만, 수치 값에서 유용한 비트만 잘라내고자 값 넘침 조건을 특별히 원할 때, 에러를 발생시키는 대신 이런 동작 방식을 선택할 수도 있습니다. 스위프트는 정수 계산에 대한 값 넘침 동작을 선택하는 세 가지의 '산술 값 넘침 연산자 (arithmetic overflow operators)' 를 제공합니다. 이 연산자들은 모두 앤드 기호 (ampersand; `&`) 로 시작합니다:
+
+* 값 넘침 더하기 (overflow addition; `&+`)
+* 값 넘침 빼기 (overflow subtraction; `&-`)
+* 값 넘침 곱하기 (overflow multiplication; `&*`)
 
 #### Value Overflow (값 넘침)
 
