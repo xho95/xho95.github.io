@@ -145,13 +145,31 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 ![signed positive 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-positive-4.jpg)
 
-부호 비트는 ("양수 (positive)" 를 의미하는) `0` 이며, 7 개의 값 비트들은 그냥, 2-진수 표기법으로 나타낸, `4` 라는 수입니다.
+부호 비트는 `0` 이며 ("양수 (positive)" 를 의미), 7 개의 값 비트들은 그냥 `4` 라는 수를, 2-진수 표기법으로 나타낸 것입니다.
 
 하지만, 음수는 다른 방식으로 저장됩니다. 음수는 `2` 의 `n` 거듭 제곱에서 자신의 절대 값을 뺀 형태로 저장되는데, 여기서 `n` 은 값 비트의 개수입니다.[^two-s-complement] 8-비트 수는 7 개의 값 비트를 가지므로, 이는 `2`의 `7` 거듭 제곱, 또는 `128` 을 의미하게 됩니다.
 
 `Int8` 내부 비트로 `-4` 라는 수를 나타내는 방법은 다음과 같습니다:
 
 ![signed negative 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-negative-4.jpg)
+
+이번에는, 부호 비트가 `1` 이며 ("음수 (negative)" 를 의미), 7 개의 값 비트들은 `124` 의 2-진수 값을 가집니다 (이는 `128 - 4` 입니다.):
+
+![signed 124](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-124.jpg)
+
+음수를 이렇게 '부호화 (encoding)' 하는 것을 _2의 보수 (two's complement)_ 표현법이라고합니다. 음수를 표현하기에 특이한 방법으로 보일 수 있지만, 이렇게 하는데는 몇 가지 장점이 있습니다.
+
+첫 번째는, `-1` 과 `-4` 를 더할 때, (부호 비트도 포함하여) 8 개의 모든 비트를 단순히 표준 이진 방식으로 더하고, 완료 후 8 비트에 해당되지 않는 것은 버림으로써, 구할 수 있다는 것입니다:
+
+![two complement negative addition](/assets/Swift/Swift-Programming-Language/Advanced-Operators-two-complement-negative-addtion.jpg)
+
+두 번째는, 2의 보수 표현법은 음수 비트를 왼쪽이나 오른쪽으로 이동하는 것도 양수처럼 할 수 있게 해주며, 왼쪽으로 이동할 때마다 두 배로 증가하는 것, 오른쪽으로 이동할 때마다 반으로 나누는 것도 여전히 같습니다. 이를 위해, 부호있는 정수가 오른쪽으로 이동될 때는 부가적인 규칙을 사용합니다: 부호있는 정수를 오른쪽으로 이동할 때는, 부호없는 정수와 동일한 규칙을 적용하지만, 왼쪽에 생기는 빈 '자리 (bits)' 는, `0` 이 아니라, _부호 비트 (sign bit)_ 로 채웁니다.
+
+![two complement negative shift](/assets/Swift/Swift-Programming-Language/Advanced-Operators-two-complement-negative-shift.jpg)
+
+이런 행동은 부호있는 정수가 오른쪽으로 이동된 다음에도 같은 부호를 가지도록 보장하는 것으로, 이를 _산술 이동 (arithmetic shfit)_ 이라고 합니다.[^arithmetic-shift]
+
+양수와 음수가 저장되는 특수한 방식으로 인해, 둘 중 어떤 것도 오른쪽으로 이동하면 점점 더 `0` 에 가까워집니다. 이동 중에 부호 비트를 같게 유지하는 것은 값이 `0` 에 가까워지더라도 음수는 계속 음수로 남는다는 것을 의미합니다.
 
 ### Overflow Operators (넘침 연산자)
 
@@ -183,4 +201,6 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 [^CSS]: 원문에서는 'Cascading Style Sheets' 라고 풀어썼지만, 아마도 'CSS' 라는 줄임말이 더 유명할 것입니다. 이에 대해 굳이 더 알고싶은 분은 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 또는 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 를 참고하기 바랍니다.
 
-[^two-s-complement]: 이런 방식으로 음수를 표현하는 것을 컴퓨터 용어로 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면 `0` 을 한 가지 방식으로 표현할 수 있고, 뺄셈 연산이 자연스러워 지는 등의 장점이 많이 있습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 또는 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 를 참고하기 바랍니다.
+[^two-s-complement]: 이런 방식으로 음수를 표현하는 것을 컴퓨터 용어로 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면 `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워 지는 등의 장점이 있습니다. 이는 본문에서도 조금 언급합니다. 더 자세한 정보는 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 또는 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 를 참고하기 바랍니다.
+
+[^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 또는 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 를 참고하기 바랍니다.
