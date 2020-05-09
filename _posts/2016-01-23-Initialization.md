@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Initialization (객체 초기화하기)"
+title:  "Swift 5.2: Initialization (초기화)"
 date:   2016-01-23 19:35:00 +0900
 categories: Xcode Swift Grammar Initialization
 ---
@@ -10,7 +10,7 @@ categories: Xcode Swift Grammar Initialization
 >
 > 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Initialization (객체 초기화하기)
+## Initialization (초기화)
 
 ### Setting Initial Values for Stored Properties (저장 속성을 위한 기본 설정 값 설정하기)
 

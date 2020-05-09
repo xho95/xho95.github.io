@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Deinitialization (객체 정리하기)"
+title:  "Swift 5.2: Deinitialization (객체 정리)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Deinitialization
 redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html"
@@ -11,7 +11,7 @@ redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitializa
 >
 > 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Deinitialization (객체 정리하기)
+## Deinitialization (객체 정리)
 
 _정리자 (deinitializer)_[^deinitializer] 는 객체 인스턴스가 해제 (deallocated)[^deallocated] 되기 바로 전에 호출됩니다. '정리자' 는 `deinit` 키워드로 작성하며, '초기자 (initializer)' 를 `init` 키워드로 작성하는 것과 비슷하다고 보면 됩니다. '정리자' 는 '클래스 타입 (class types)' 에만 사용 가능합니다.[^class-types]
 

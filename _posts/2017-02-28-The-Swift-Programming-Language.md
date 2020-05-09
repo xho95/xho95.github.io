@@ -30,8 +30,8 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Methods (메소드)]({% post_url 2020-05-03-Methods %})
 * [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %})
 * [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %})
-* [Initialization (객체 초기화하기)] - [일부 진행중]({% post_url 2016-01-23-Initialization %})
-* [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %})
+* [Initialization (초기화)] - [일부 진행중]({% post_url 2016-01-23-Initialization %})
+* [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %})
 * [Optional Chaining (옵셔널 연쇄)]
 * [Error Handling (에러 처리)]
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %})

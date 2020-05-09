@@ -194,6 +194,47 @@ potentialOverflow += 1
 
 #### Value Overflow (값 넘침)
 
+수치 값은 양의 방향과 음의 방향 양쪽으로 다 넘칠 수 있습니다.
+
+다음 예제는 '값 넘침 더하기 연산자 (overflow addtion operator; `&+`)' 를 사용하여, 값 넘침을 허용한 부호없는 정수에서 어떤 일이 일어나는지를 보여줍니다:
+
+```swift
+var unsignedOverflow = UInt8.max
+// unsignedOverflow 는 255 와 같으며, 이는 UInt8 이 수용할 수 있는 최대 값입니다.
+unsignedOverflow = unsignedOverflow &+ 1
+// unsignedOverflow 는 이제 0 과 같습니다.
+```
+
+변수 `unsignedOverflow` 는 `UInt8` 이 수용할 수 있는 최대 값 (`255`, 또는 2-진수 `11111111`) 으로 초기화됩니다. 그런 다음 '값 넘침 더하기 연산자' (`&+`) 로 `1` 만큼 증가합니다. 이는 아래 도표에 나타낸 것처럼, 경계 너머로 값을 넘치게 하므로, 2-진 표현법으로는 `UInt8` 이 수용할 수 있는 크기를 넘겨 버립니다. 값 넘침 더하기 후 `UInt8` 경계 내에 남는 값은 `00000000`, 즉 `0` 입니다.
+
+![value overflow 0](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-0.png)
+
+이와 비슷한 일은 부호없는 정수가 음의 방향으로 값이 넘칠 때도 일어납니다. 다음은 '값 넘침 빼기 연산자 (overflow subtraction operator; `&-`)' 를 사용하는 예제입니다:
+
+```swift
+var unsignedOverflow = UInt8.min
+// unsignedOverflow 는 0 과 같으며, 이는 UInt8 이 수용할 수 있는 최소값입니다.
+unsignedOverflow = unsignedOverflow &- 1
+// unsignedOverflow 는 이제 255 와 같습니다.
+```
+
+`UInt8` 이 수용할 수 있는 최소 값은 `0`, 즉 2-진수 `00000000` 입니다. '값 넘침 빼기 연산자 (`&-`)' 로 `00000000` 에서 `1` 을 빼면, 수치 값이 넘쳐서 `11111111` 또는 10-진수로 `255` 가 되버립니다.
+
+![value overflow 255](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-255.png)
+
+부호있는 정수에서도 값 넘침은 발생합니다. 부호있는 정수에 대한 더하기와 빼기 연산은 모두 비트 방식으로 실행되는데, 이 때 [Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)](#bitwise-left-and-right-shift-operators-비트-왼쪽-이동-및-오른쪽-이동-연산자) 에서 설명한 대로, 부호 비트도 마치 더하거나 빼는 수의 일부인 것처럼 포함합니다.
+
+```swift
+var signedOverflow = Int8.min
+// signedOverflow 는 -128 과 같으며, 이는 Int8 이 수용할 수 있는 최소 값입니다.
+signedOverflow = signedOverflow &- 1
+// signedOverflow 는 이제 127 과 같습니다.
+```
+
+`Int8` 이 수용할 수 있는 최소 값은 `-128`, 즉 2-진수 `10000000` 입니다. '값 넘침 연산자' 로 이 2-진수에서 `1` 을 빼면 `01111111` 이라는 2-진수 값이 되는데, 이는 부호 비트를 전환해서 양수 `127` Int8이 보유 할 수있는 최대 양수 값인 양수 127을 제공합니다.
+
+
+
 ### Precedence and Associativity (우선 순위 및 결합 법칙)
 
 ### Operator Methods (연산자 메소드)
