@@ -283,7 +283,7 @@ public struct TrackedString {
 
 '기본 설정 초기자' 는, 해당 타입이 `public` 으로 정의되어 있는 경우를 제외하면, 자기가 초기화하는 타입과 같은 접근 수준을 가집니다. 타입이 `public` 으로 정의된 경우에는, '기본 설정 초기자' 가 'internal (내부)' 인 것으로 여겨집니다. 다른 모듈에서 'public (공용)' 타입을 '인자가 없는 (no-argument)' 초기자로 초기화할 수 있게 만들고 싶으면, 타입을 정의하면서 반드시 'public no-argument initializer (공용의 인자-없는 초기자)' 를 명시적으로 제공해야 합니다.
 
-#### Default Memberwise Initializers for Structure Types (구조체 타입을 위해서 기본 제공되는 멤버 초기자)
+#### Default Memberwise Initializers for Structure Types (구조체 타입을 위해 기본 제공되는 멤버 초기자)
 
 구조체의 저장 속성 중 어떤 것이라도 'private (개인 전용)' 이면 구조체 타입에 기본 제공되는 '멤버 초기자' 도 'private (개인 전용)' 으로 여겨집니다. 게다가, 구조체의 '저장 속성' 중 어떤 것이라도 'file private (파일 전용)' 이면, 그 초기자는 'file private (파일 전용)' 이 됩니다. 그 외의 경우에는, 초기자의 접근 수준이 'internal (내부)' 가 됩니다.
 

@@ -347,7 +347,46 @@ let alsoPositive = -negative
 
 #### Compound Assignment Operators (복합 할당 연산자)
 
+_복합 할당 연산자 (compound assignment operators)_ 는 할당 (`=`) 과 또 다른 연산을 결합합니다. 예를 들어, '더하기 할당 연산자 (addtion assigment operator; `+=`)' 는 더하기와 대입을 단일한 작업으로 결합합니다. 복합 할당 연산자의 왼쪽 입력 매개 변수 타입은 `inout` 으로 표시해야 하는데, 매개 변수 값이 연산자 메소드 내에서 직접 수정될 것이기 때문입니다.
+
+아래 예제는 `Vector2D` 인스턴스를 위한 '더하기 할당 연산자 메소드' 를 구현합니다:
+
+```swift
+extension Vector2D {
+    static func += (left: inout Vector2D, right: Vector2D) {
+        left = left + right
+    }
+}
+```
+
+앞서 '더하기 연산자' 를 정의 했으므로, 여기서 더하는 과정을 다시 구현할 필요가 없습니다. 그대신, '더하기 할당 연산자 메소드' 는 '더하기 연산자 메소드' 가 이미 존재한다는 점을 활용하여, 왼쪽 값과 오른쪽 값을 더한 것을 왼쪽 값에 설정합니다:
+
+```swift
+var original = Vector2D(x: 1.0, y: 2.0)
+let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
+original += vectorToAdd
+// original 의 값은 이제 (4.0, 6.0) 입니다.
+```
+
+It isn’t possible to overload the default assignment operator (=). Only the compound assignment operators can be overloaded. Similarly, the ternary conditional operator (a ? b : c) can’t be overloaded.
+
+> 기본 제공되는 '할당 연산자 (assignment operator; `=`) 를 '중복정의 (overload)' 하는 것은 불가능합니다. '복합 할당 연산자' 만 '중복정의' 할 수 있습니다. 이와 비슷하게, '삼항 조건 연산자 (ternary conditional operator; `a ? : b : c`)' 도 '중복정의' 할 수 없습니다.
+
 #### Equivalence Operators (같음 비교 연산자)
+
+You provide an implementation of the == operator in the same way as you implement other infix operators:
+
+기본적으로, 사용자 정의 클래스와 구조체는, '_같음 (equal to)_ 연산자 (`==`) 와 '_같지 않음 (not equal to)_ 연산자 (`!=`)' 라는, _같음 비교 연산자 euivalence operators)_ 에 대한 구현을 가지지 않습니다. 보통 `==` 연산자는 구현하고, 이 `==` 연산자의 결과를 반대로 만드는 표준 라이브러리의 기본 제공 `!=` 연산자 구현을 사용합니다. `==` 연산자를 구현하는 데는 두 가지 방법이 있습니다: 이를 직접 구현하거나, 아니면 많은 타입에 대해, 스위프트가 구현을 만들어서 통합하도록 요청할 수도 있습니다. 두 가지 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜 준수 기능을 추가하도록 합니다.
+
+`==` 연산자는 다른 '중위 연산자' 를 구현하는 것과 같은 방식으로 구현을 제공하면 됩니다:
+
+```swift
+extension Vector2D: Equatable {
+    static func == (left: Vector2D, right: Vector2D) -> Bool {
+        return (left.x == right.x) && (left.y == right.y)
+    }
+}
+```
 
 ### Custom Operators (사용자 정의 연산자)
 
