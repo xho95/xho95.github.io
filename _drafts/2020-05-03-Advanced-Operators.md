@@ -284,7 +284,66 @@ signedOverflow = signedOverflow &- 1
 
 ### Operator Methods (연산자 메소드)
 
+클래스와 구조체는 기존 연산자에 대한 자신만의 구현을 제공할 수 있습니다. 이를 기존 연산자의 _중복 정의 (overloading)_ 라고 합니다.
+
+아래 예제는 사용자 정의 구조체에서 '산술 더하기 연산자 (arithmetic addition operator; `+`)' 를 구현하는 방법을 보여줍니다. '산술 더하기 연산자' 는 두 대상에 대해 작동하므로 _이항 연산자 (binary operator)_ 이며 두 대상 사이에 나타내므로 _중위 (infix)_ 라고도 합니다.
+
+이 예제는 2-차원 위치 벡터 `(x, y)` 를 위한 `Vector2D` 구조체를 정의한 다음, 이어서 `Vector2D` 구조체 인스턴스를 서로 더하기 위해 _연산자 메소드 (operator method)_ 를 하나 정의합니다:
+
+```swift
+struct Vector2D {
+  var x = 0.0, y = 0.0
+}
+
+extension Vector2D {
+  static func + (left: Vector2D, right: Vector2D) -> Vector2D {
+    return Vector2D(x: left.x + right.x, y: left.y + right.y)
+  }
+}
+```
+
+이 연산자 메소드는 `Vector2D` 의 타입 메소드로 정의되며, 중복 정의될 연산자 (`+`) 와 일치하는 메소드 이름을 가집니다. 더하기는 '벡터 (vector)' 의 핵심적인 동작은 아니기 때문에, `Vector2D` 구조체의 주요 선언부 대신 `Vector2D` 의 '확장 (extension)' 에서 타입 메소드를 정의합니다. '산술 더하기 연산자' 는 '이항 연산자' 이므로, 이 연산자 메소드는 `Vector2D` 타입의 입력 매개 변수를 두 개 받아서 역시 `Vector2D` 타입인, 단일 출력 값을 반환합니다.
+
+이 구현에서, 입력 매개 변수의 이름인 `left` 와 `right` 는 `+` 연산자의 왼쪽과 오른쪽에 있는 `Vector2D` 인스턴스를 나타냅니다. 이 메소드는 새 `Vector2D` 인스턴스를 반환하는데, 여기서 `x` 와 `y` 속성은 서로 더해지는 두 `Vector2D` 인스턴스의 속성인 `x` 와 `y` 의 합으로 초기화됩니다.
+
+타입 메소드는 기존 `Vector2D` 인스턴스 사이에서 '중위 연산자' 처럼 사용할 수 있습니다:
+
+```swift
+let vector = Vector2D(x: 3.0, y: 1.0)
+let anotherVector = Vector2D(x: 2.0, y: 4.0)
+let combinedVector = vector + anotherVector
+// combinedVector 는 값이 (5.0, 5.0) 인 Vector2D 인스턴스입니다.
+```
+
+이 예제는, 아래 도표와 같이, 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 더하여 벡터 `(5.0, 5.0)` 을 만듭니다.
+
+![operator method](/assets/Swift/Swift-Programming-Language-Advanced-Operators-operator-method.png)
+
 #### Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)
+
+위의 예제는 '이항 중위 연산자 (binary infix operator)' 의 사용자 정의 구현 방법을 보여줍니다. 클래스와 구조체는 표준 _단항 연산자 (unary operators)_ 의 구현도 제공 할 수 있습니다. 단항 연산자는 단일 대상에 대해 작동하는 것입니다. 이들은 대상보다 앞에 (가령 `-a` 같이) 위치하면 _접두사 (prefix)_ 이고  대상보다 뒤에 (가령 `b!` 같이) 위치하면  _접미사 (postfix)_ 연산자입니다.
+
+'접두사 단항 연산자' 나 '접미사 단항 연산자' 를 구현하려면 연산자 메소드를 선언시 `func` 키워드 앞에 `prefix` 또는 `postfix` 수정자를 작성하면 됩니다:
+
+```swift
+extension Vector2D {
+    static prefix func - (vector: Vector2D) -> Vector2D {
+        return Vector2D(x: -vector.x, y: -vector.y)
+    }
+}
+```
+
+위 예제는 `Vector2D` 인스턴스를 위한 '단항 음수 연산자 (unary minus operator; `-a`)' 를 구현합니다. 단항 음수 연산자는 접두사 연산자이므로, 이 메소드는 `prefix` 수정자로 조건을 갖춰야 합니다.
+
+간단한 수치 값에 대해, 단항 음수 연산자는 양수를 등가의 음수로 변환하거나 또는 그 반대로 합니다. `Vector2D` 인스턴스를 위한 해당 구현은 `x` 와 `y` 속성 모두에 대해 이 동작을 실행합니다:
+
+```swift
+let positive = Vector2D(x: 3.0, y: 4.0)
+let negative = -positive
+// negative 는 값이 (-3.0, -4.0) 인 Vector2D 인스턴스입니다.
+let alsoPositive = -negative
+// alsoPositive 값이 (3.0, 4.0) 인 Vector2D 인스턴스입니다.
+```
 
 #### Compound Assignment Operators (복합 할당 연산자)
 
