@@ -217,7 +217,7 @@ if name == "world" {
 예를 들어, 아래에 나타낸 코드처럼, 타입이 `(String, Int)` 인 두 개의 튜플을 비교할 수 있는 것은 `String` 과 `Int` 값 모두 `<` 연산자를 써서 비교할 수 있기 때문입니다. 이와는 다르게, 타입이 `(String, Bool)` 인 두 개의 튜플은 `<` 연산자로 비교할 수 없는데 이는 `<` 연산자를 `Bool` 값에 적용할 수 없기 때문입니다.
 
 ```swift
-("blue", -1) < ("purple", 1)        // OK, true (참) 으로 평가합니다.
+("blue", -1) < ("purple", 1)        // OK, true (참) 으로 계산됩니다.
 ("blue", false) < ("purple", true)  // Error, < 는 불린 값을 비교할 수 없습니다.
 ```
 
@@ -225,7 +225,7 @@ if name == "world" {
 
 ### Ternary Conditional Operator (삼항 조건 연산자)
 
-_삼항 조건 연산자 (ternary conditional operator)_ 는 세 부분으로 구성된 특수한 연산자로, 양식은 `question ? answer1 : answer2` 와 같습니다. 이는 `question` 이 참인지 거짓인지에 따라서 두 표현식 중 하나의 값을 평가하는 '간략한 표기법 (shortcut)' 입니다. `question` 이 참이면, `answer1` 을 평가한 값을 반환하고; 그렇지 않으면, `answer2` 를 평가한 값을 반환합니다.
+_삼항 조건 연산자 (ternary conditional operator)_ 는 세 부분으로 구성된 특수한 연산자로, 양식은 `question ? answer1 : answer2` 입니다. 이는 `question` 이 참인지 거짓인지에 따라서 두 표현식 중 하나의 값을 계산하는 '간략한 표기법 (shortcut)' 입니다. `question` 이 참이면, `answer1` 을 계산한 값을 반환하고; 그렇지 않으면, `answer2` 를 계산한 값을 반환합니다.
 
 '삼항 조건 연산자' 는 아래 코드의 약칭에 해당합니다:
 
@@ -274,9 +274,9 @@ _nil-통합 연산자 (nil-coalescing operator)_ (`a ?? b`) 는 옵셔널 `a` �
 a != nil ? a! : b
 ```
 
-위의 코드는 '삼항 조건 연산자' 와 '강제 풀기 (forced unwrapping)' (`a!`) 를 사용하여 `a` 가 `nil` 이 아니면 `a` 안에 쌓여진 값에 접근하고, 그 외의 경우면 `b` 를 반환합니다. 이와 같이 'nil-통합 연산자' 가 제공하는 우아한 방법을 사용하면 조건 검사 및 풀기 연산을 간결하고 이해하기 쉬운 양식으로 작성할 수 있습니다.
+위의 코드는 '삼항 조건 연산자' 와 'forced unwrapping (강제 풀기; `a!`)' 를 사용하여 `a` 가 `nil` 이 아니면 `a` 안에 쌓여진 값에 접근하고, 그 외의 경우면 `b` 를 반환합니다. 이와 같이 'nil-통합 연산자' 가 제공하는 우아한 방법을 사용하면 조건 검사와 풀기 연산을 간결하고 이해하기 쉬운 양식으로 작성할 수 있습니다.
 
-> `a` 의 값이 `nil` 이 아닐 경우, `b` 의 값을-평가하는 일은 일어나지 않습니다. 이를 '_최소 평가 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
+> `a` 의 값이 `nil` 이 아닐 경우, `b` 의 값을-계산하는 일은 일어나지 않습니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
 
 아래 예제는 'nil-통합 연산자' 를 사용하여 '기본 색상 이름' 과 '사용자가 정의한 옵셔널 색상 이름' 중 하나를 선택합니다:
 
@@ -409,7 +409,7 @@ if !allowedEntry {
 
 _논리 곱 연산자 (logical AND operator)_ (`a && b`) 는 두 값이 모두 `true` (참) 일 때만 전체 표현식이 `true` (참) 이 되는 '논리 표현식 (logical expressions)' 을 생성합니다.
 
-한 값이라도 `false` 면, 전체 표현식도 `false` 가 됩니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 두 번째 값은 평가조차 하지 않으며, 이는 그래봐야 전체 표현식을 `true` 로 만들 수가 없기 때문입니다. 이것을 '최소 평가 (short-circuit evaluation)'[^short-circuit] 라고 합니다.
+한 값이라도 `false` 면, 전체 표현식도 `false` 가 됩니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 두 번째 값은 계산조차 하지 않으며, 이는 그래봐야 전체 표현식을 `true` 로 만들 수가 없기 때문입니다. 이런 방식을 '단락-회로 계산 (short-circuit evaluation)'[^short-circuit] 이라고 합니다.
 
 아래 예제는 두 `Bool` 값을 고려해서 두 값이 모두 `true` 일 때만 접근을 허용합니다:
 
@@ -428,9 +428,9 @@ if enteredDoorCode && passedRetinaScan {
 
 _논리 합 연산자 (logical OR operator)_ (`a || b`) 는 두 '파이프 문자 (`|`)' 를 붙여서 만든 'infix (중위) 연산자' 입니다. 이를 사용하면 두 값 중에서 _하나 (one)_ 만 `true` (참) 이면 전체 표현식이 `true` (참) 이 되는 '논리 표현식 (logical expressions)' 를 생성할 수 있습니다.
 
-앞서의 '논리 곱 연산자 (logical AND operator)' 와 마찬가지로, '논리 합 연산자 (logical OR operator)' 는 표현식을 평가할 때 '최소 평가 (short-circuit evaluation)'[^short-circuit] 방식을 사용합니다. '논리 합 표현식 (logical OR expressions)' 의 왼쪽이 `true` 면, 오른쪽은 평가하지 않으며, 이는 전체 표현식의 결과가 달라질 일이 없기 때문입니다.
+앞서의 '논리 곱 연산자 (logical AND operator)' 와 마찬가지로, '논리 합 연산자 (logical OR operator)' 는 표현식을 계산할 때 '단락-회로 계산 (short-circuit evaluation)'[^short-circuit] 방식을 사용합니다. '논리 합 표현식 (logical OR expressions)' 의 왼쪽이 `true` 면, 오른쪽은 계산하지 않으며, 이는 전체 표현식의 결과가 달라질 일이 없기 때문입니다.
 
-아래 예제에서, 첫 번째 `Bool` 값 (`hasDoorKey`) 은 `false` 지만, 두 번째 값 (`knowsOverridePassword`) 은 `true` 입니다. 한 값이 `true` 이므로, 전체 표현식도 `true` 로 평가되어, 접근을 허용합니다:
+아래 예제에서, 첫 번째 `Bool` 값 (`hasDoorKey`) 은 `false` 지만, 두 번째 값 (`knowsOverridePassword`) 은 `true` 입니다. 한 값이 `true` 이므로, 전체 표현식도 `true` 로 계산하여, 접근을 허용합니다:
 
 ```swift
 let hasDoorKey = false
@@ -462,7 +462,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 
 `enterDoorCode`, `passedRetinaScan` 그리고 `hasDoorKey` 의 값에 의해서, 처음 두 개의 '하위표현식 (subexpressions)' 은 `false` 입니다. 하지만, '비상시 수동해제 비밀번호' 를 알고 있으므로, 전체 복합 표현식은 여전히 `true` 가 됩니다.
 
-> 스위프트의 논리 연산자인 `&&` 와 `||` 는 '왼쪽 우선-결합 (left-associative)'[^left-associative] 으로, 이는 여러 개의 논리 연산자를 가지는 '복합 표현식' 이 있을 때 가장 왼쪽에 있는 '하위표현식' 부터 먼저 평가한다는 의미입니다.
+> 스위프트의 논리 연산자인 `&&` 와 `||` 는 '왼쪽 우선-결합 (left-associative)'[^left-associative] 으로, 이는 여러 개의 논리 연산자를 가지는 '복합 표현식' 이 있을 때 가장 왼쪽에 있는 '하위 표현식' 부터 먼저 계산한다는 의미입니다.
 
 #### Explicit Parentheses (괄호 명시하기)
 
@@ -485,6 +485,6 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^modulo-opartion]: 'modulo operation' 은 수학적으로 엄밀한 '나머지 연산' 과 연관되어 있는 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 글을 참고하기 바랍니다. 이와 연관된 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
 
-[^short-circuit]: 'short-circuit evaluation' 를 직역하면 '짧은-회로 평가' 가 되는데, 'minimal evaluation' 이라는 용어도 같이 사용하므로 '최소 평가' 라고 옮깁니다. 컴퓨터 공학에서 계산량을 줄이는 알고리즘이라고 볼 수 있을 것 같습니다. 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 참고하기 바랍니다.
+[^short-circuit]: 'short-circuit evaluation (단락-회로 계산)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 'short-circuit (단락-회로)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 'minimal evaluation (최소 계산)' 이라는 말도 사용하는 것 같습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 항목에 대한 번역은 아직 없는 것 같습니다.)
 
 [^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
