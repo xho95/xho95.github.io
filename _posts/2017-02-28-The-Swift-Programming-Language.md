@@ -43,7 +43,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Automatic Reference Counting (자동 참조 카운팅)]
 * [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %})
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %})
-* [Advanced Operators (고급 연산자)]
+* [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %})
 
 ### Language Reference (언어의 기준)
 

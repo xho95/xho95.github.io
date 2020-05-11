@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Advanced Operators (고급 연산자)"
-date:   2020-05-03 10:00:00 +0900
+date:   2020-05-11 10:00:00 +0900
 categories: Swift Language Grammar Advanced Operator
 ---
 
@@ -26,7 +26,7 @@ _비트 연산자 (bitwise operators)_ 는 자료 구조에서 개별 '원시 �
 
 스위프트는 아래에서 설명하는 것처럼, C 언어에 있는 모든 비트 연산자를 지원합니다.
 
-### Bitwise NOT Operator (비트 논리 부정 연산자)
+#### Bitwise NOT Operator (비트 논리 부정 연산자)
 
 _비트 논리 부정 연산자 (bitwise NOT operator)_ (`~`) 는 어떤 수치 값에 있는 모든 비트를 반전시킵니다:
 
@@ -43,7 +43,7 @@ let invertedBits = ~initialBits   // 11110000 과 같습니다.
 
 그런 다음 '비트 논리 부정 연산자' 를 사용하여 `invertedBits` 라는 새로운 상수를 생성하는데, 이는 `initialBits` 와 같으나, 모든 비트를 반전한 것입니다. `0` 은 `1` 이 되고, `1` 은 `0` 이 됩니다. `invertedBits` 의 값은 `11110000` 인데, 부호없는 10-진수 값 `240` 과 같습니다.
 
-### Bitwise AND Operator (비트 논리 곱 연산자)
+#### Bitwise AND Operator (비트 논리 곱 연산자)
 
 _비트 논리 합 연산자 (bitwise AND operator)_ (`&`) 는 두 수치 값의 비트를 결합합니다. 이 연산자는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 해당 비트를 `1` 로 설정한 새 수치 값을 반환합니다.
 
@@ -57,7 +57,7 @@ let lastSixBits: UInt8  = 0b00111111
 let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같습니다.
 ```
 
-### Bitwise OR Operator (비트 논리 합 연산자)
+#### Bitwise OR Operator (비트 논리 합 연산자)
 
 _비트 논리 합 연산자 (bitwise OR operator)_ (`|`) 는 두 수치 값을 비트를 비교합니다. 이 연산자는 입력 수치 값의 비트 중 _어느 것이든 (either)_ `1` 이면 해당 비트를 `1` 로 설정한 새 수치 값을 반환합니다.
 
@@ -71,9 +71,9 @@ let moreBits: UInt8 = 0b01011110
 let combinedBits = someBits | moreBits // 11111110 와 같습니다.
 ```
 
-### Bitwise XOR Operator (비트 논리 배타 연산자)
+#### Bitwise XOR Operator (비트 논리 배타 연산자)
 
-_비트 논리 배타 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (exclusive OR operator)"[^exclusive] (`^`) 는 두 수치 값의 비트를 비교합니다. 이 연산자는 입력 비트들이 서로 다르면 해당 비트를 `1` 로 설정하고 입력 비트들이 같으면 해당 비트를 `0` 으로 설정한 새 수치 값을 반환합니다:
+_비트 논리 배타 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (exclusive OR operator; `^`)" 는 두 수치 값의 비트를 비교합니다. 이 연산자는 입력 비트들이 서로 다르면 해당 비트를 `1` 로 설정하고 입력 비트들이 같으면 해당 비트를 `0` 으로 설정한 새 수치 값을 반환합니다:
 
 ![bitwise-XOR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-XOR-operator.jpg)
 
@@ -85,7 +85,7 @@ let otherBits: UInt8 = 0b00000101
 let outputBits = firstBits ^ otherBits // 00010001 과 같습니다.
 ```
 
-### Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)
+#### Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)
 
 _비트 왼쪽-이동 연산자 (bitwise left shift operator)_ (`<<`) 와 _비트 오른쪽-이동 연산자 (bitwise right shift operator)_ (`>>`) 는, 아래 정의된 규칙에 따라, 수치 값에 있는 모든 비트를 정해진 위치 값만큼 왼쪽이나 오른쪽으로 이동합니다.
 
@@ -237,7 +237,7 @@ signedOverflow = signedOverflow &- 1
 
 부호있는 정수와 부호없는 정수에서, 양의 방향으로 넘치면 유효한 최대 정수 값이 최소 값이 되어 돌아오고, 음의 방향으로 넘치면 최소 값이 최대 값이 되어 돌아옵니다.
 
-### Precedence and Associativity (우선 순위 및 결합 법칙)
+### Precedence and Associativity (우선 순위와 결합 법칙)
 
 연산자 _우선 순위 (precedence)_ 는 일부 연산자에 다른 것보다 더 높은 우선권을 주는 것입니다; 이 연산자들은 먼저 적용됩니다.
 
@@ -368,17 +368,13 @@ original += vectorToAdd
 // original 의 값은 이제 (4.0, 6.0) 입니다.
 ```
 
-It isn’t possible to overload the default assignment operator (=). Only the compound assignment operators can be overloaded. Similarly, the ternary conditional operator (a ? b : c) can’t be overloaded.
-
 > 기본 제공되는 '할당 연산자 (assignment operator; `=`) 를 '중복정의 (overload)' 하는 것은 불가능합니다. '복합 할당 연산자' 만 '중복정의' 할 수 있습니다. 이와 비슷하게, '삼항 조건 연산자 (ternary conditional operator; `a ? : b : c`)' 도 '중복정의' 할 수 없습니다.
 
 #### Equivalence Operators (같음 비교 연산자)
 
-You provide an implementation of the == operator in the same way as you implement other infix operators:
-
 기본적으로, 사용자 정의 클래스와 구조체는, '_같음 (equal to)_ 연산자 (`==`) 와 '_같지 않음 (not equal to)_ 연산자 (`!=`)' 라는, _같음 비교 연산자 euivalence operators)_ 에 대한 구현을 가지지 않습니다. 보통 `==` 연산자는 구현하고, 이 `==` 연산자의 결과를 반대로 만드는 표준 라이브러리의 기본 제공 `!=` 연산자 구현을 사용합니다. `==` 연산자를 구현하는 데는 두 가지 방법이 있습니다: 이를 직접 구현하거나, 아니면 많은 타입에 대해, 스위프트가 구현을 만들어서 통합하도록 요청할 수도 있습니다. 두 가지 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜 준수 기능을 추가하도록 합니다.
 
-`==` 연산자는 다른 '중위 연산자' 를 구현하는 것과 같은 방식으로 구현을 제공하면 됩니다:
+`==` 연산자의 구현을 제공하는 방법은 다른 '중위 연산자' 를 구현하는 것과 같은 방식하면 됩니다:
 
 ```swift
 extension Vector2D: Equatable {
@@ -388,23 +384,104 @@ extension Vector2D: Equatable {
 }
 ```
 
+위의 예제는 `==` 연산자를 구현하여 두 `Vector2D` 인스턴스가 같은 값을 가지고 있는지 검사합니다. `Vector2D` 에서, “같음 (equal)” 의 의미는 “두 인스턴스 모두 같은 `x` 값과 `y` 값을 가진다” 는 것으로 고려해도 말이 되므로, 이 논리를 가지고 연산자를 구현합니다.
+
+이제 이 연산자로 두 `Vector2D` 인스턴스가 같은지 검사할 수 있습니다:
+
+```swift
+let twoThree = Vector2D(x: 2.0, y: 3.0)
+let anotherTwoThree = Vector2D(x: 2.0, y: 3.0)
+if twoThree == anotherTwoThree {
+    print("These two vectors are equivalent.")
+}
+// "These two vectors are equivalent." 를 출력합니다.
+```
+
+(구현이) 간단한 많은 경우에, 스위프트가 직접 '같음 비교 연산자' 를 통합해서 구현하도록 요청할 수도 있습니다. 스위프트가 통합된 구현을 제공하는 사용자 정의 타입에는 다음과 같은 것들이 있습니다:
+
+* `Equatable` 프로토콜을 준수하면서 '저장 속성' 만 가지고 있는 구조체
+* `Equatable` 프로토콜을 준수하면서 '관련 타입 (associated types)' 만 가지고 있는 열거체
+* '관련 타입' 이 전혀 없는 열거체
+
+통합된 `==` 구현을 가지고 싶으면, `==` 연산자를 직접 구현하지 말고, 원래 선언을 가지고 있는 파일에서 `Equatable` 을 준수한다고 선언하면 됩니다.
+
+아래 예제는 3-차원 위치 벡터 `(x, y, z)` 에 대한 `Vector3D` 구조체를 정의하는데, `Vector2D` 구조체와 비슷합니다. `x`, `y`, 그리고 `z` 속성이 모두 `Equatable` 타입이므로, `Vector3D` 는 '같음 비교 연산자' 의 '통합된 구현' 을 가지게 됩니다.
+
+```swift
+struct Vector3D: Equatable {
+    var x = 0.0, y = 0.0, z = 0.0
+}
+
+let twoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+if twoThreeFour == anotherTwoThreeFour {
+    print("These two vectors are also equivalent.")
+}
+// "These two vectors are also equivalent." 를 출력합니다.
+```
+
 ### Custom Operators (사용자 정의 연산자)
 
+스위프트에서 제공하는 표준 연산자 말고도 직접 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수도 있습니다. '사용자 정의 연산자' 를 정의하는 데 사용할 수 있는 문자 목록은, [Operators (연산자)](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID418) 를 참고하기 바랍니다.
+
+새 연산자는 `operator` 키워드를 사용하여 전역 수준에서 선언하고, `prefix`, `infix`, 또는 `postfix` '수정자 (modifiers)' 로 표시합니다:
+
+```swift
+prefix operator +++
+```
+
+위의 예제는 `+++` 라는 새로운 '접두 연산자 (prefix operator)' 를 정의합니다. 이 연산자는 기존에는 스위프트에서 아무런 의미가 없던 것으로, 아래와 같이 `Vector2D` 인스턴스와 작업하는 특정 영역에서만 사용자가 정의한 의미를 가지게 됩니다. 이 예제의 목적을 위해, `+++` 는 새로운 “접두 두 배 (prefix doubling)” 연산자인 것처럼 취급됩니다. 이는 `Vector2D` 인스턴스의 `x` 와 `y` 의 값을 두 배로 만들며, 이 때 앞서 정의한 '더하기 할당 연산자' 로 자신을 벡터에 더합니다. `+++` 연산자를 구현하려면, 다음과 같이 `+++` 라는 타입 메소드를 `Vector2D` 에 추가하면 됩니다:
+
+```swift
+extension Vector2D {
+    static prefix func +++ (vector: inout Vector2D) -> Vector2D {
+        vector += vector
+        return vector
+    }
+}
+
+var toBeDoubled = Vector2D(x: 1.0, y: 4.0)
+let afterDoubling = +++toBeDoubled
+// toBeDoubled 의 값은 이제 (2.0, 8.0) 입니다.
+// afterDoubling 도 값이 (2.0, 8.0) 입니다.
+```
+
 #### Precedence for Custom Infix Operators (사용자 정의 중위 연산자에 대한 우선 순위)
+
+'사용자 정의 중위 연산자 (custom infix operators)' 는 각각 '우선 순위 그룹 (precedence group)' 에 속해 있습니다. '우선 순위 그룹' 은 다른 중위 연산자와 관계되어 있는 연산자의 '우선 순위 (precedence)', 및 연산자의 '결합 법칙 (associativity)' 을 지정합니다. [Precedence and Associativity (우선 순위와 결합 법칙)](#precedence-and-associativity-우선-순위와-결합-법칙) 의 설명을 보면 이런 성질이 중위 연산자끼리 상호 작용할 때 미치는 영향에 대해 알 수 있습니다.
+
+'우선 순위 그룹' 에 명시적으로 배치되지 않은 '사용자 정의 중위 연산자' 은 기본 제공 우선 순위 그룹으로 '삼항 조건 연산자' 의 바로 위의 우선 순위를 가지게 됩니다.
+
+다음 예제는 `+-` 라는 새로운 '사용자 정의 중위 연산자' 를 정의하는데, 이는 `AdditionPrecedence` 라는 '우선 순위 그룹' 에 속하게 됩니다:
+
+```swift
+infix operator +-: AdditionPrecedence
+extension Vector2D {
+    static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
+        return Vector2D(x: left.x + right.x, y: left.y - right.y)
+    }
+}
+let firstVector = Vector2D(x: 1.0, y: 2.0)
+let secondVector = Vector2D(x: 3.0, y: 4.0)
+let plusMinusVector = firstVector +- secondVector
+// plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스입니다.
+```
+
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터를 뺍니다. 이는 본질적으로 "더하기에 해당하는 (additive)" 연산자이기 때문에, `+` 와 `-` 등의 '더하기 중위 연산자' 와 같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리에서 제공하는 연산자에 대해서, 연산자 우선 순위 및 결합 법칙 설정 값의 전체 목록을 포함한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다. '우선 순위 그룹' 과 연산자 및 우선 순위 그룹을 직접 정의하기 위한 구문 표현에 대한 더 자세한 정보는,[Operator Declaration (연산자 선언)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380) 을 참고하기 바랍니다.
+
+> '접두 (prefix) 연산자 '나 '접미 (postfix) 연산자' 를 정의할 때는 우선 순위를 지정하지 않습니다. 다만, 피연산자에 '접두 연산자' 와 '접미 연산자' 를 동시에 사용하면, 접미 연산자가 먼저 적용됩니다.
 
 ### 참고 자료
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
-[^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 편의를 위해서 프로그래밍에서 많이 사용하는 '비트' 라는 말을 사용하기로 하며, '자리' 라고 하는 것이 자연스러울 때는 '자리' 라고도 하겠습니다.
-
-[^exclusive]: 'exclusive' 는 경우에 따라 '독점적인' 이라는 말이 더 어울릴 때가 있습니다. 배타적이라는 말과 독점적이라는 말 모두 혼자서 차지한다는 의미를 가지고 있습니다. 하지만, 프로그래밍 분야에서는 '배타적인' 이라는 용어가 이미 널리 사용되고 있으므로 'exclusive OR' 는 '배타적인 논리 합' 으로 옮기도록 합니다.
+[^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 프로그래밍 용어에서 이미 '비트' 라는 말을 널리 사용하고 있으므로 '비트' 를 계속 사용하기로 하며, '자리' 라고 하는 것이 자연스러울 때만 '자리' 라고 하겠습니다.
 
 [^factor]: 'factor' 는 수학 용어로 '인수' 라고 하며, '정수 (integer)' 나 '정식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말이라고 합니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. 더 자세한 정보는 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 또는 [인수](https://ko.wikipedia.org/wiki/인수) 를 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
-[^CSS]: 원문에서는 'Cascading Style Sheets' 라고 풀어썼지만, 아마도 'CSS' 라는 줄임말이 더 유명할 것입니다. 이에 대해 굳이 더 알고싶은 분은 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 또는 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 를 참고하기 바랍니다.
+[^CSS]: 원문에서는 'Cascading Style Sheets' 라고 풀어썼지만, 'CSS' 라는 줄임말이 더 이해하기 쉬울 것입니다. 이에 대한 더 자세한 정보는 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 또는 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 를 참고하기 바랍니다.
 
-[^two-s-complement]: 이런 방식으로 음수를 표현하는 것을 컴퓨터 용어로 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면 `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워 지는 등의 장점이 있습니다. 이는 본문에서도 조금 언급합니다. 더 자세한 정보는 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 또는 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 를 참고하기 바랍니다.
+[^two-s-complement]: 이런 방식으로 음수를 표현하는 것을 컴퓨터 용어로 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면 `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워 지는 등의 장점이 있습니다. 이는 본문에서도 계속해서 언급하고 있습니다. 더 자세한 정보는 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 또는 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 를 참고하기 바랍니다.
 
 [^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 또는 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 를 참고하기 바랍니다.
 
