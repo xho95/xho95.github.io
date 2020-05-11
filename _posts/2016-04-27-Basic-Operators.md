@@ -14,11 +14,11 @@ categories: Swift Language Grammar Basic Operators
 
 _연산자 (operator)_ 는 값을 검사하고, 바꾸거나 결합하는 데 사용하는 특수한 기호 또는 구절을 말합니다. 예를 들어, '더하기 연산자 (`+`)' 는 `let i = 1 + 2` 에서 처럼 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는 `if enterDoorCode && passedRetinaScan` 에서 처럼 두 불린 (Boolean) 값을 결합합니다.
 
-스위프트는 C 언어에서 제공하는 거의 대부분의 표준 연산자를 지원하며서, 거기다 일반적인 코딩 에러를 없애기 위해 몇가지 기능을 개선했습니다. '할당 연산자 (`=`)' 는 값을 반환하지 않아서, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막았습니다. 산술 연산자들 (`+`,`-`, `*`, `/`, `%` 등) 은 '값 넘침 (value overflow)' 을 감지해서 막아주기 때문에, 타입의 허용 범위보다 크거나 작아진 값을 계산하는 바람에 예상하지 못한 결과가 발생하는 것을 막아줍니다. 스위프트의 'overflow (값 넘침) 연산자' 를 사용해서 값을 넘치는 동작을 하도록 선택할 수도 있으며, 이는 [Overflow Operator (값 넘침 연산자)](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#ID37) 에서 설명합니다.
+스위프트는 C 언어에서 제공하는 거의 대부분의 표준 연산자를 지원하며서, 거기다 일반적인 코딩 에러를 없애기 위해 몇가지 기능을 개선했습니다. '할당 연산자 (`=`)' 는 값을 반환하지 않아서, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막았습니다. 산술 연산자들 (`+`,`-`, `*`, `/`, `%` 등) 은 '값 넘침 (value overflow)' 을 감지해서 막아주기 때문에, 타입의 허용 범위보다 크거나 작아진 값을 계산하는 바람에 예상하지 못한 결과가 발생하는 것을 막아줍니다. 스위프트의 'overflow (값 넘침) 연산자' 를 사용해서 값을 넘치는 동작을 하도록 선택할 수도 있으며, 이는 [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명합니다.
 
 스위프트에는 C 언어에는 없는 '범위 (range) 연산자' 도 제공하는데, 가령 `a..<b` 와 `a...b` 가 있으며, 이를 쓰면 아주 간단하게 값의 범위를 표현할 수 있습니다.
 
-이번 장은 스위프트의 일반적인 연산자에 대해 설명합니다. 스위프트의 고급 연산자는 [Advanced Operators (고급 연산자)](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 다루는데, 직접 연산자를 정의하는 방법과 자기가 만든 타입에 대한 표준 연산자 구현 방법에 대해서 설명합니다.
+이번 장은 스위프트의 일반적인 연산자에 대해 설명합니다. 스위프트의 고급 연산자는 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 다루는데, 직접 연산자를 정의하는 방법과 자기가 만든 타입에 대한 표준 연산자 구현 방법에 대해서 설명합니다.
 
 ### Terminology (용어)
 
@@ -74,7 +74,7 @@ if x = y {
 10.0 / 2.5  // 4.0 과 같습니다.
 ```
 
-C 언어나 오브젝티브-C 언어의 산술 연산자와는 다르게, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침을 허용하려면 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하면 됩니다. (`a &+ b` 같은 것이 있습니다.) 이에 대해서는 [Overflow Operator (값 넘침 연산자)](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#ID37) 를 보도록 합니다.
+C 언어나 오브젝티브-C 언어의 산술 연산자와는 다르게, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침을 허용하려면 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하면 됩니다. (`a &+ b` 같은 것이 있습니다.) 이에 대해서는 [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 를 보도록 합니다.
 
 '더하기 연산자 (addition operator)' 로는 `String` 을 연결할 수도 있습니다:
 
@@ -175,7 +175,7 @@ a += 2
 * 크거나 같음 (`a >= b`)
 * 작거나 같음 (`a <= b`)
 
-> 스위프트는 두 개의 '_식별 연산자 (identity operators)_' (`===` 와 `!==`) 도 제공하여, 두 객체에 대한 참조 모두 동일한 객체 인스턴스를 참조하고 있는지를 검사할 수 있습니다. 더 자세한 내용은 [Identity Operators (식별 연산자)](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html#ID90) 를 보기 바랍니다.
+> 스위프트는 두 개의 '_식별 연산자 (identity operators)_' (`===` 와 `!==`) 도 제공하여, 두 객체에 대한 참조 모두 동일한 객체 인스턴스를 참조하고 있는지를 검사할 수 있습니다. 더 자세한 내용은 [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 를 보기 바랍니다.
 
 각각의 '비교 연산자' 는 `Bool` 값을 반환하여 그 구문이 참인지 아닌지를 나타냅니다:
 
@@ -200,7 +200,7 @@ if name == "world" {
 // "hello, world" 를 출력합니다. name 이 진짜 "world" 와 같기 때문입니다.
 ```
 
-`if` 구문에 대해서는, [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 를 보기 바랍니다.
+`if` 구문에 대해서는, [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 을 보기 바랍니다.
 
 두 개의 '튜플 (tuples)' 이 같은 타입에 같은 개수의 값을 가지고 있으면 서로 비교할 수 있습니다. 튜플을 비교할 때는 왼쪽에서 오른쪽으로, 한번에 한 값씩, 두 값이 같지 않을 때까지 비교합니다. 두 값을 비교하면, 이 비교의 결과가 튜플 비교 연산의 전체 결과를 결정합니다. 모든 요소가 같으면, 튜플 자체가 같은 것입니다. 예를 들면 다음과 같습니다:
 
@@ -319,7 +319,7 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-`for-in` 반복문 대해서는, [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 를 보기 바랍니다.
+`for-in` 반복문 대해서는, [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 을 보기 바랍니다.
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 
@@ -339,7 +339,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-이 배열은 4 개의 항목을 갖지만, `0..<count` 는 (배열 마지막 요소의 색인인) `3` 까지만 헤아리며, 이는 '반-열린 연산자' 이기 때문입니다. 배열에 대해서는 [Arrays](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID107) 를 보기 바랍니다.
+이 배열은 4 개의 항목을 갖지만, `0..<count` 는 (배열 마지막 요소의 색인인) `3` 까지만 헤아리며, 이는 '반-열린 연산자' 이기 때문입니다. 배열에 대해서는 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 을 보기 바랍니다.
 
 #### One-Sided Ranges (한-쪽 범위)
 
@@ -487,4 +487,4 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^short-circuit]: 'short-circuit evaluation (단락-회로 계산)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 'short-circuit (단락-회로)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 'minimal evaluation (최소 계산)' 이라는 말도 사용하는 것 같습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 항목에 대한 번역은 아직 없는 것 같습니다.)
 
-[^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
+[^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity (연산자 결합 법칙)](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
