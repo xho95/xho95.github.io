@@ -317,7 +317,7 @@ let combinedVector = vector + anotherVector
 
 이 예제는, 아래 도표와 같이, 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 더하여 벡터 `(5.0, 5.0)` 을 만듭니다.
 
-![operator method](/assets/Swift/Swift-Programming-Language-Advanced-Operators-operator-method.png)
+![operator method](/assets/Swift/Swift-Programming-Language/Advanced-Operators-operator-method.png)
 
 #### Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)
 
