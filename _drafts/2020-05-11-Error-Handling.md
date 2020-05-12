@@ -34,6 +34,14 @@ enum VendingMachineError: Error {
 }
 ```
 
+Throwing an error lets you indicate that something unexpected happened and the normal flow of execution can’t continue. You use a throw statement to throw an error. For example, the following code throws an error to indicate that five additional coins are needed by the vending machine:
+
+에러를 던지는 것은 예기치 않은 일이 발생해서 실행 흐름을 정상적으로 계속할 수 없음을 지시할 수 있게 해줍니다. `throw` 문을 사용하면 에러를 던질 수 있습니다.오 예를 들어, 다음 코드는 자동 판매기에 동전 5개가 추가로 더 필요함을 지시하기 위해 에러를 던집니다:
+
+```swift
+throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
+```
+
 ### Handling Errors (에러 처리하기)
 
 #### Propagating Errors Using Throwing Functions (던지는 함수를 사용하여 에러 전파하기)
