@@ -12,9 +12,7 @@ categories: macOS Apache WebServer mod_wsgi
 
 ## macOS 에서 아파치 웹서버 실행하기
 
-이 글은 macOS 에서 [아파치 웹서버 (apache)](http://httpd.apache.org)[^apache]를 실행하고 설정하는 방법을 정리한 글입니다.
-
-maCOS 에서 웹서버를 설정 방법은 Yosemite (요세미티) 부터 변경되었는데[^apple-DOC-3083], 이 글의 내용은 Catalina (카탈리나) 에서도 확인 완료한 것을 정리한 것입니다.[^references]
+이 글은 Yosemite (요세미티) 이후로 변경된 내용을 반영하여 macOS 에서 [아파치 웹서버 (apache)](http://httpd.apache.org)[^apache]를 실행하고 설정하는 방법을 정리한 글입니다.[^references] 해당 내용은 Catalina (카탈리나) 에서도 정상 동작하는 것을 확인하였습니다.
 
 ### 아파치 웹 서버 구동하기
 
