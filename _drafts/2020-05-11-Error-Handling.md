@@ -14,7 +14,7 @@ categories: Swift Language Grammar Error Handling
 
 _에러 처리 (error handling)_ 는 프로그램의 에러 조건에 대해 응답하고 여기서 복구하는 과정을 말합니다. 스위프트는 실행 시간에 복구 가능한 에러를 던지고, 잡아내고, 전파하며, 조작하는 일급 지원을 제공합니다.
 
-어떤 작업은 완전한 실행이나 유용한 결과를 생성하는 것을 항상 보장하지는 못합니다. '옵셔널 (optoinals)' 을 사용하면 값이 없음은 나타낼 수 있지만, 작업이 실패할 때, 실패한 원인이 무엇인지 이해하면, 코드에서 적절하게 응답할 수 있으므로 유용할 수 있습니다.
+어떤 작업은 실행을 끝내거나 유용한 결과를 생성하는 것을 항상 보장하지 못할 수도 있습니다. '옵셔널 (optoinals)' 을 사용하면 값이 없음을 나타낼 순 있지만, 작업이 실패할 때, 실패한 원인이 무엇인지 이해하면, 코드에서 적절하게 응답할 수 있으므로 유용할 수 있습니다.
 
 예를 들어, 디스크의 파일에 있는 자료를 읽고 처리하는 작업을 고려해 봅시다. 이 작업은 여러가지 이유로 실패할 수 있는데, 지정된 경로에 파일이 존재하지 않을 수도 있고, 그 파일에 대한 읽기 권한이 없을 수도 있고, 또는 그 파일이 호환되는 양식으로 '부호화' 되어 있지 않을 수도 있습니다. 이런 서로 다른 상황을 구별하는 것은 프로그램이 일부 에러를 해결할 수 있게 하고 직접 해결할 수 없다면 사용자와 통신하도록 할 수 있습니다.
 
@@ -142,15 +142,38 @@ struct PurchasedSnack {
 
 ```
 do {
-  try `expression`
-  `statements`
-} catch `pattern 1` {
-  `statements`
-} catch `pattern 1` where `condition` {
-  `statements`
+  try expression
+  statements
+} catch pattern 1 {
+  statements
+} catch pattern 1 where condition {
+  statements
 } catch {
-  `statements`
+  statements
 }
+```
+
+`catch` 뒤에 '유형 (pattern)' 을 작성하여 해당 구절이 처리할 수 있는 에러를 지시합니다. `catch` 구절에 '유형 (pattern)' 이 없으면, 이 구절은 모든 에러에 다 해당되며 이 때 에러는 `error` 라는 지역 상수 이름으로 연결됩니다. '해당하는 유형을 찾는 방법 (pattern matching)' 에 대한 더 자세한 내용은 [Patterns (유형)](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html) 을 참고하기 바랍니다.
+
+예를 들어, 다음 코드는 `VendingMachineError` 열거체에 있는 세 가지 '경우 값 (cases)' 모두에 잘 들어 맞습니다.
+
+```swift
+var vendingMachine = VendingMachine()
+vendingMachine.conisDeposited = 8
+
+do {
+  try buyFavoriteSnack(person: "Alice", vendingMachine: vendingMachine)
+  print("Success! Yum.")
+} catch VendingMachineError.invalidSelection {
+  print("Invalid Selection.")
+} catch VendingMachineError.outOfStock {
+  print("Out of Stock.")
+} catch VendingMachineError.insufficientFunds(let coinsNeeded) {
+  print("Insufficient funds. Please insert an additional \(coinsNeeded) coins.")
+} catch {
+  print("Unexpected error: \(error).")
+}
+// "Insufficient funds. Please insert an additional 2 coins." 를 출력합니다.
 ```
 
 #### Converting Errors to Optional Values (에러를 옵셔널 값으로 변환하기)
