@@ -140,6 +140,7 @@ struct PurchasedSnack {
 
 `do-catch` 문의 일반적인 양식은 다음과 같습니다:
 
+```
 do {
   try `expression`
   `statements`
@@ -150,6 +151,7 @@ do {
 } catch {
   `statements`
 }
+```
 
 #### Converting Errors to Optional Values (에러를 옵셔널 값으로 변환하기)
 
