@@ -50,7 +50,89 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 > 스위프트의 '에러 처리' 는 `try`, `catch` 와 `throw` 키워드를 사용하는, 여타 다른 언어의 '예외 처리 (exception handling)' 와 비슷해 보입니다. 스위프트의 에러 처리가 오브젝티브-C 언어를 포함한-많은 여타 언어들의 '예외 처리' 와 다른 점은, 계산 비용이 많이 드는 과정인, '호출 스택 (call stack)' 을 풀지 않는다는 것입니다. 그로 인해, `throw` 문의 성능은 `return` 문에 필적합니다.
 
-#### Propagating Errors Using Throwing Functions (던지는 함수를 사용하여 에러 전파하기)
+#### Propagating Errors Using Throwing Functions ('던지는 함수' 를 사용하여 에러 전파하기)
+
+함수, 메소드, 또는 초기자가 에러를 던질 수 있음을 지시하려면, 함수 선언의 매개 변수 뒤에 `throws` 키워드를 써주면 됩니다. `throws` 로 표시된 함수를 _던지는 함수 (throwing function)_ 이라고 합니다. 함수가 반환 타입을 지정할 경우, `throws` 키워드를 '반환 화살표 (return arrow; `->`)' 앞에 써주면 됩니다.
+
+```swift
+func canThrowErrors() throws -> String
+
+func cannotThrowErrors() -> String
+```
+
+'던지는 함수 (throwing function)' 는 안에서 던져진 에러를 자신을 호출한 영역으로 전파합니다.
+
+> '던지는 함수' 만 에러를 전파할 수 있습니다. '던지지 않는 함수 (nonthrowing function)' 에서 던져진 에러는 어떤 것이라도 그 함수 내에서 처리해야 합니다.
+
+아래 예제의, `VendingMachine` 클래스는 `vend(itemNamed:)` 메소드를 가지고 있는데, 이는 요청한 항목이 사용 불가능하거나, 재고가 없거나, 아니면 비용이 현재 예치된 금액을 초과할 경우 적절한 `VendingMachineError` 를 던지게 됩니다:
+
+```swift
+struct Item {
+  var price: Int
+  var count: Int
+}
+
+class VendingMachine {
+  var inventory = {
+    "Candy Bar": Item(price: 12, count: 7)
+    "Chips": Item(price: 10, count: 4)
+    "Pretzels": Item(price: 7, count: 11)
+  }
+  var coinsDeposited = 0
+
+  func vend(itemNamed name: String) throws {
+    guard let item = inventory[name] else {
+      throw VendingMachineError.invalidSelection
+    }
+
+    guard item.count > 0 else {
+      throw VendingMachineError.outOfStock
+    }
+
+    guard item.price <= coinsDeposited else {
+      throw VendingMachineError.insufficientFunds(coinsNeeded: item.price - coinsDeposited)
+    }
+
+    coinsDeposited -= item.price
+
+    var newItem = item
+    newItem.count -= 1
+    inventory[name] = newItem
+
+    print("Dispensing \(name)")
+  }
+}
+```
+
+`vend(itemNamed:)` 메소드 구현은, 간식 구매를 하면서 '필수 조건' 이 만족되지 않으면, `guard` 문을 사용하여 메소드를 조기 종료하고 적절한 에러를 던집니다. `throw` 문은 프로그램 제어를 즉시 전달하기 때문에, 모든 '필수 조건' 을 만족할 때만 판매가 이뤄집니다.
+
+`vend(itemNamed:)` 메소드는 던지는 에러 모두 전파하고 있기 때문에, 이 메소드를 호출하는 코드는 각자 에러를 처리해야 합니다-`do-catch` 문이나, `try?`, 또는 `try!` 을 사용해서든-아니면 이를 다시 전파해서든 말입니다. 예를 들어, 아래 예제에 있는 `buyFavoriteSnack(person:vendingMachine:)` 는 자신도 '던지는 함수' 이며, `vend(itemNamed:)` 메소드가 던지는 에러를 다시 위로 전파해서 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출하는 지점으로 보냅니다.
+
+```swift
+let favoriteSnaks = [
+  "Alice": "Chips",
+  "Bob": "Licorice",
+  "Eve": "Pretzels",
+]
+func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
+  let snackName = favoriteSnacks[person] ?? "Candy Bar"
+  try vendingMachine.vend(itemNamed: snackName)
+}
+```
+
+이 예제에 있는, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 스낵을 찾은 다음 `vend(itemNamed:)` 메소드를 호출하여 이를 사려고 합니다. `vend(itemNamed:)` 메소드는 에러를 던질 수 있기 때문에, `try` 키워드를 앞에 붙여서 호출합니다.
+
+'던지는 초기자 (throwing initializers)' 는 '던지는 함수' 와 같은 방법으로 에러를 전파할 수 있습니다. 예를 들어, 아래에 나타낸 `PurchasedSnack` 구조체의 초기자는 초기화 과정에서 '던지는 함수 (throwing function)' 를 호출하고, 에러를 마주치게 되면 이를 호출하는 쪽으로 전파하는 방식으로 처리합니다.
+
+```swift
+struct PurchasedSnack {
+  let name: String
+  init(name: String, vendingMachine: VendingMachine) throws {
+    try vendingMachine.vend(itemNamed: name)
+    self.name = name
+  }
+}
+```
 
 #### Handling Errors Using Do-Catch ('Do-Catch' 구문을 사용하여 에러 처리하기)
 
