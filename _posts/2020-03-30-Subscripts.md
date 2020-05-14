@@ -75,7 +75,7 @@ numberOfLegs["bird"] = 2
 
 위에 있는 예제는 `numberOfLegs` 라는 변수를 정의하고 이를 세 개의 키-값 쌍을 가지고 있는 '딕셔너리 글자표현 (dictionary literal)' 으로 초기화하고 있습니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 로 추론합니다. 딕셔너리를 만든 다음, 이 예제는 첨자 연산 할당을 사용하여 문자열 키가 `"bird"` 이고 `Int` 값이 `2` 인 원소를 딕셔너리에 할당합니다.
 
-`Dictionary` 첨자 연산에 대한 더 많은 정보는 [Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID116) 를 참고하기 바랍니다.
+`Dictionary` 첨자 연산에 대한 더 많은 정보는 [Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리에-접근하고-수정하기) 를 참고하기 바랍니다.
 
 > 스위프트의 '딕셔너리' 타입은 키-값 첨자 연산이 옵셔널 타입을 받아들이고 반환하는 것으로 구현하고 있습니다. 위의 `numberOfLegs` 딕셔너리에서는, 키-값 첨자 연산이 값의 타입으로 `Int?`, 또는 "옵셔널 정수 (optional int)" 를 받아들이고 반환합니다. `Dictionary` 타입이 옵셔널 첨자 연산 타입을 사용한다는 것은 모든 키가 값을 가지는 것은 아니라는 사실을 모델링하고 있기도 하고, 키에 `nil` 값을 할당하여 그 키에 대한 값을 지울 수 있는 방법을 제공하고 있는 것이기도 합니다.
 
@@ -114,7 +114,7 @@ struct Matrix {
 }
 ```
 
-`Matrix` 가 제공하는 초기자는 두 개의 매개 변수인 `rows` 와 `columns` 을 받아서, 타입이 `Double` 이고 `rows * columns` 값들을 저장하기에 충분한 크기의 배열을 만듭니다. 행렬의 각 위치에 주어진 기본 설정 값은 `0.0` 입니다. 이를 위해, 배열의 크기 값과, 초기 셀 값인 `0.0` 을 배열 초기자에 전달하여 정확한 크기의 새 배열을 만들고 초기화하고 있습니다. 이러한 '초기자' 는 [Creating an Array with a Default Value (기본 설정 값을 갖는 배열 만들기)](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID501) 에서 더 자세히 설명하도록 합니다.
+`Matrix` 가 제공하는 초기자는 두 개의 매개 변수인 `rows` 와 `columns` 을 받아서, 타입이 `Double` 이고 `rows * columns` 값들을 저장하기에 충분한 크기의 배열을 만듭니다. 행렬의 각 위치에 주어진 기본 설정 값은 `0.0` 입니다. 이를 위해, 배열의 크기 값과, 초기 셀 값인 `0.0` 을 배열 초기자에 전달하여 정확한 크기의 새 배열을 만들고 초기화하고 있습니다. 이러한 '초기자' 는 [Creating an Array with a Default Value (기본 설정 값을 갖는 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-array-with-a-default-value-기본-설정-값을-가진-배열-생성하기) 에서 더 자세히 설명하도록 합니다.
 
 알맞은 행과 열의 개수를 초기자에 전달하면 새로운 `Matrix` 인스턴스를 만들 수 있습니다:
 

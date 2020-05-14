@@ -599,7 +599,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 // "The removed airport's name is Dublin Airport." 를 출력합니다.
 ```
 
-### Iterating Over a Dictionary (배열에 동작을 반복 적용하기)
+### Iterating Over a Dictionary (딕셔너리에 동작을 반복 적용하기)
 
 `for-in` 반복문을 사용하면 딕셔너리에 있는 전체 키-값 쌍들에 '동작을 반복 적용 (iterate over)' 할 수 있습니다. 딕셔너리의 각 요소는 `(key, value)` 튜플의 형태로 반환되며, 튜플의 멤버는 동작 반복 과정에서 임시 상수나 변수로 분해할 수 있습니다:
 

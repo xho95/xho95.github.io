@@ -79,7 +79,7 @@ welcomeMessage = "Hello"
 var red, green, blue: Double
 ```
 
-> 실제로 '타입 보조 설명 (type annotations)' 을 쓸 일은 거의 없습니다. 상수나 변수를 정의할 때 기본 설정 값을 제공하면, 스위프트는 거의 항상 상수나 변수에서 사용할 타입을 추론할 수 있으며, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322) 에서 설명합니다. 위에 있는 `welcomeMessage` 예제에서는, 기본 설정 값이 제공되지 않았으므로, `welcomeMessage` 변수의 타입을 기본 설정 값으로 추론하지 않고 '타입 보조 설명' 으로 지정했습니다.
+> 실제로 '타입 보조 설명 (type annotations)' 을 쓸 일은 거의 없습니다. 상수나 변수를 정의할 때 기본 설정 값을 제공하면, 스위프트는 거의 항상 상수나 변수에서 사용할 타입을 추론할 수 있으며, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명합니다. 위에 있는 `welcomeMessage` 예제에서는, 기본 설정 값이 제공되지 않았으므로, `welcomeMessage` 변수의 타입을 기본 설정 값으로 추론하지 않고 '타입 보조 설명' 으로 지정했습니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
@@ -132,7 +132,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // "The current value of friendlyWelcome is Bonjour!" 를 출력합니다.
 ```
 
-> 문자열 보간법에서 사용할 수 있는 모든 '선택 사항들 (options)' 은 [String Interpolation (문자열 보간법)](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html#ID292) 에서 설명합니다.
+> 문자열 보간법에서 사용할 수 있는 모든 '선택 사항들 (options)' 은 [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 에서 설명합니다.
 
 ### Comments (주석)
 
@@ -203,7 +203,7 @@ let maxValue = UInt8.max  // maxValue 의 값은 255 과 같고, 타입은 UInt8
 * 32-비트 플랫폼에서, `UInt` 는 `UInt32` 와 크기가 같습니다.
 * 64-비트 플랫폼에서, `UInt` 는 `UInt64` 와 크기가 같습니다.
 
-`UInt` 는 특히 크기는 플랫폼의 워드 크기이면서 부호는 없는 정수가 꼭 필요할 때만 사용하기 바랍니다. 이런 경우가 아니라면, 설령 값이 음수가 될 일이 없더라도 `Int` 를 쓰도록 합니다. 정수 값에 `Int` 를 일관되게 사용하는 것은 코드의 '상호 호환성 (interoperability)' 에 도움이 되고, 서로 다른 수치 타입들끼리 변환해야 할 필요성를 없애며, 정수 타입 추론기와도 어울리는 것으로, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322) 에서 설명하도록 합니다.
+`UInt` 는 특히 크기는 플랫폼의 워드 크기이면서 부호는 없는 정수가 꼭 필요할 때만 사용하기 바랍니다. 이런 경우가 아니라면, 설령 값이 음수가 될 일이 없더라도 `Int` 를 쓰도록 합니다. 정수 값에 `Int` 를 일관되게 사용하는 것은 코드의 '상호 호환성 (interoperability)' 에 도움이 되고, 서로 다른 수치 타입들끼리 변환해야 할 필요성를 없애며, 정수 타입 추론 장치와도 어울리는 것으로, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하도록 합니다.
 
 ### Floating-Point Numbers (부동-소수점 수)
 
@@ -478,9 +478,9 @@ print("The status message is \(http200Status.description)")
 
 튜플은 함수의 반환 값으로 쓸 때 특히 더 유용합니다. 웹 페이지를 가져오는 함수는 그 페이지를 가져오는 것에 성공했는지 실패했는지를 나타내기 위해 `(Int, String)` 튜플 타입을 반환할 수 있을 것입니다. 두 개의 별개의, 서로 타입이 다르기 까지한, 값으로 구성된 튜플을 반환함으로써, 이 함수는 단일한 타입의 단 하나의 값을 반환하는 경우보다 결과물에 대한 더 유용한 정보를 제공할 수 있습니다. 더 자세한 정보는 [Functions with Multiple Return Values (여러 개의 반환 값을 가지는 함수)](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID164) 를 참고하기 바랍니다.
 
-> 튜플은 관계 있는 값을 간단히 그룹지을 때 유용한 것입니다. 복잡한 데이터 구조를 생성하는 데는 적합하지 않습니다. 데이터 구조가 더 복잡해질 수도 있을 것 같으면, 튜플 대신에, 클래스나 구조체로 모델링하도록 합니다. 더 자세한 정보는 [Structures and Classes (구조체와 클래스)](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 를 참고하기 바랍니다.
+> 튜플은 관계 있는 값을 간단히 그룹지을 때 유용한 것입니다. 복잡한 데이터 구조를 생성하는 데는 적합하지 않습니다. 데이터 구조가 더 복잡해질 수도 있을 것 같으면, 튜플 대신에, 클래스나 구조체로 모델링하도록 합니다. 더 자세한 정보는 [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
 
-### Optionals (옵셔널; 조건 선택적 타입)
+### Optionals (옵셔널; 선택적 값 타입)
 
 _옵셔널 (optionals)_ 값이 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 표현합니다: 값이 _있어서 (is)_, 그 옵셔널이 감싸고 있는 값에 접근할 수 있는 경우, 또는 값이 아예 _있지 않은 (isn't)_ 경우가 그것입니다.
 
@@ -546,7 +546,7 @@ if convertedNumber != nil {
 
 > `!` 를 사용해서 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다. `!` 를 사용해서 값을 강제로 풀기 전에 항상 옵셔널이 '`nil` 이 아닌 값 (non-`nil` value)' 을 가지고 있음을 먼저 확인하기 바랍니다.
 
-#### Optional Binding (옵셔널 바인딩; 조건 선택적 연결)
+#### Optional Binding (옵셔널 바인딩; 선택적 값 연결짓기)
 
 _옵셔널 바인딩 (optional binding)_ 을 사용하면 옵셔널이 값을 가지는지 확인해서, 그 경우, 그 값을 임시 상수나 변수의 형태로 사용하게 할 수 있습니다. '옵셔널 바인딩' 을 `if` 와 `while` 문과 같이 사용하면, 옵셔널 안의 값을 검사하고 그 값을 상수나 변수로 추출하는 것을, 단 한 번의 동작으로 할 수 있습니다. `if` 와 `while` 문에 대해서는 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
 
@@ -558,7 +558,7 @@ if let constantName = someOptional {
 }
 ```
 
-[Optionals (옵셔널))](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID330) 에 있는 `possibleNumber` 예제는 '강제 풀기 (forced unwrapping)' 대신 '옵셔널 바인딩 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
+[Optionals (옵셔널))](#optionals-옵셔널-선택적-값-타입) 에 있는 `possibleNumber` 예제는 '강제 풀기 (forced unwrapping)' 대신 '옵셔널 바인딩 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -597,7 +597,7 @@ if let firstNumber = Int("4") {
 
 `if` 문 안의 '옵셔널 바인딩' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료))](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
 
-#### Implicitly Unwrapped Optionals (암시적으로-저절로 풀리는 옵셔널)
+#### Implicitly Unwrapped Optionals (암시적으로 풀리는 옵셔널)
 
 앞서 설명한 것처럼, 옵셔널은 상수나 변수가 "값이 없을" 수 있음을 나타냅니다. 옵셔널은 `if` 문을 사용하여 값이 존재하는지를 검사할 수 있으며, 옵셔널 값에 접근하기 위해 '옵셔널 바인딩' 을 사용하여 값의 유무에 따른 '조건부 풀기 (conditionally unwrapped)' 를 할 수도 있습니다.
 

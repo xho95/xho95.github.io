@@ -155,7 +155,7 @@ do {
 
 `catch` 뒤에 '유형 (pattern)' 을 작성하여 해당 구절이 처리할 수 있는 에러를 지시합니다. `catch` 구절에 '유형 (pattern)' 이 없으면, 이 구절은 모든 에러에 다 해당되며 이 때 에러는 `error` 라는 지역 상수 이름으로 연결됩니다. '해당하는 유형을 찾는 방법 (pattern matching)' 에 대한 더 자세한 내용은 [Patterns (유형)](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html) 을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체에 있는 세 가지 '경우 값 (cases)' 모두에 잘 들어 맞습니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 가지 '경우 값 (cases)' 모두에 해당되도록 만들어졌습니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -175,6 +175,12 @@ do {
 }
 // "Insufficient funds. Please insert an additional 2 coins." 를 출력합니다.
 ```
+
+위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수 있기 때문에, `try` 표현식을 써서 호출하고 있습니다. 에러를 던지면, 프로그램 실행은 즉시 `catch` 절로 전송되어, 전파를 계속하게 할지를 결정합니다. 해당하는 '유형 (pattern)' 이 없으면, 에러는 최종 `catch` 절이 잡아서 `error` 라는 지역 상수로 연결됩니다. 던져진 에러가 없으면, `do` 문 내의 나머지 구문이 실행됩니다.
+
+`catch` 절에서 `do` 절 코드가 던질 가능성이 있는 모든 에러를 처리해야 하는 것은 아닙니다. `catch` 절 중 어느 것도 에러를 처리하지 않으면, 이 에러는 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 반드시 _어떤 (some)_ 주변 영역이 됐든 처리해야 합니다. '던지지 않는 함수 (nonthrowing function)' 안이라면, 비 투사 함수에서 둘러싸는 do-catch 문은 오류를 처리해야합니다. 던지는 함수에서 둘러싸는 do-catch 문 또는 호출자가 오류를 처리해야합니다. 오류를 처리하지 않고 최상위 범위로 전파하면 런타임 오류가 발생합니다.
+
+예를 들어, VendingMachineError가 아닌 오류가 호출 함수에 의해 대신 잡히도록 위 예제를 작성할 수 있습니다.
 
 #### Converting Errors to Optional Values (에러를 옵셔널 값으로 변환하기)
 

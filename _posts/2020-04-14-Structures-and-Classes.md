@@ -250,7 +250,7 @@ if tenEighty === alsoTenEighty {
 
 _동일함 (identical to)_ (세 개의 등호 기호, 또는 `===` 로 표시함) 이 의미하는 것은 _같음 (equal to)_ (두 개의 등호 기호, 또는 `==` 로 표시함) 과 같지 않습니다. _동일함 (identical to)_ 이 의미하는 것은 클래스 타입의 두 상수나 변수가 정확하게 동일한 클래스 인스턴스를 참조하고 있다는 것입니다. _같음 (equal to)_ 이 의미하는 것은 두 인스턴스의 값이 같거나 동등하다고 여겨진다는 것으로, 이는 _같은 (equal)_ 에 대한 어떤 적절한 의미로써, 타입 설계자에 의해 정의된 것에 해당합니다.
 
-자신만의 구조체와 클래스를 정의할 때는, 두 인스턴스의 같음 조건이 무엇인지에 대한 결정을 자기가 책임져야 합니다. `==` 와 `!=` 연산자에 대한 자신만의 구현을 정의하는 과정은 [Equivalence Operators (동등 연산자)](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html#ID45) 에서 설명합니다.
+자신만의 구조체와 클래스를 정의할 때는, 두 인스턴스의 같음 조건이 무엇인지에 대한 결정을 자기가 책임져야 합니다. `==` 와 `!=` 연산자에 대한 자신만의 구현을 정의하는 과정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
 
 #### Pointers (포인터)
 

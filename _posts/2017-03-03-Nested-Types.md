@@ -77,7 +77,7 @@ struct BlackjackCard {
 
 `BlackjackCard` 구조체 그 자신도 두 개의 속성-`rank` 와 `suit`-을 가집니다. 여기다 `description` 이라는 '계산 속성' 도 정의하여, `rank` 와 `suit` 에 저장된 값으로 카드의 이름과 값에 대한 설명을 만들어 냅니다. `description` 속성은 '옵셔널 바인딩 (optional binding)' 을 사용해서 표시할 두 번째 값이 있는 지 검사하며, 있다면 두 번째 값에 대한 추가 세부 설명을 덧붙입니다.
 
-`BlackjackCard` 는 따로 정의된 초기자가 없는 구조체 이므로, 저절로[^implicit] 멤버 초기자를 가지며, 이는 [Memberwise Initializers for Structure Types (구조체를 위한 멤버 초기자)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID214) 에서 설명했습니다. 이 초기자로 다음과 같이 `theAceOfSpades` 라는 새로운 상수를 초기화할 수 있습니다:
+`BlackjackCard` 는 따로 정의된 초기자가 없는 구조체 이므로, 저절로[^implicit] 멤버 초기자를 가지며, 이는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명했습니다. 이 초기자로 다음과 같이 `theAceOfSpades` 라는 새로운 상수를 초기화할 수 있습니다:
 
 ```swift
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)
