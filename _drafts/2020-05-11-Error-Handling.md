@@ -178,12 +178,76 @@ do {
 
 위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수 있기 때문에, `try` 표현식을 써서 호출하고 있습니다. 에러를 던지면, 프로그램 실행은 즉시 `catch` 절로 전송되어, 전파를 계속하게 할지를 결정합니다. 해당하는 '유형 (pattern)' 이 없으면, 에러는 최종 `catch` 절이 잡아서 `error` 라는 지역 상수로 연결됩니다. 던져진 에러가 없으면, `do` 문 내의 나머지 구문이 실행됩니다.
 
-`catch` 절에서 `do` 절 코드가 던질 가능성이 있는 모든 에러를 처리해야 하는 것은 아닙니다. `catch` 절 중 어느 것도 에러를 처리하지 않으면, 이 에러는 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 반드시 _어떤 (some)_ 주변 영역이 됐든 처리해야 합니다. '던지지 않는 함수 (nonthrowing function)' 안이라면, 비 투사 함수에서 둘러싸는 do-catch 문은 오류를 처리해야합니다. 던지는 함수에서 둘러싸는 do-catch 문 또는 호출자가 오류를 처리해야합니다. 오류를 처리하지 않고 최상위 범위로 전파하면 런타임 오류가 발생합니다.
+`catch` 절에서 `do` 절 코드가 던질 가능성이 있는 모든 에러를 처리해야 하는 것은 아닙니다. `catch` 절 중 어느 것도 에러를 처리하지 않으면, 이 에러는 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 반드시 _어떤 (some)_ 주변 영역에서 처리돼야 합니다. '던지지 않는 함수 (nonthrowing function)' 에서는, 둘러싼 `do-catch` 절이 에러를 반드시 처리해야 합니다. '던지는 함수 (throwing function)' 에서는, 둘러싼 `do-catch` 절이나 호출하는 쪽에서 에러를 처리해야 합니다. 처리되지 않은 에러가 최상위 영역까지 전파되면, '실행시간 에러 (runtime error)' 가 발생합니다.
 
-예를 들어, VendingMachineError가 아닌 오류가 호출 함수에 의해 대신 잡히도록 위 예제를 작성할 수 있습니다.
+예를 들어, 위 예제를 새로 작성해서 `VendingMachineError` 가 아닌 에러는 호출 함수에서 잡아내도록 할 수도 있습니다:
+
+```swift
+func nourish(with item: String) throws {
+  do {
+    try vendingMachine.vend(itemNamed: item)
+  } catch is VendingMachineError {
+    print("Invalid selection, out of stock, or not enough money.")
+  }
+}
+
+do {
+  try nourish(with: "Beet-Flavored Chips")
+} catch {
+  print("Unexpected non-vending-machine-related error: \(error)")
+}
+// "Invalid selection, out of stock, or not enough money." 를 출력합니다.
+```
+
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 '경우 값 (cases)' 중 하나에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 출력하는 것으로 이 에러를 처리합니다. 그렇지 않으면, `nourish(with:)` 가 이 에러를 호출하는 쪽으로 전파합니다. 에러는 이제 일반 범용 `catch` 절이 잡아내게 됩니다.
 
 #### Converting Errors to Optional Values (에러를 옵셔널 값으로 변환하기)
 
+`try?` 를 사용하여 에러를 '옵셔널 값 (optional value)' 으로 변환할 수 있습니다. `try?` 표현식의 값을 계산하는 과정에서 에러가 던져지면, 이 표현식의 값은 `nil` 이 됩니다. 예를 들어, 다음의 코드에 있는 `x` 와 `y` 는 같은 값을 가지고 같은 동작을 합니다:
+
+```swift
+func someThrowingFunction() throws -> Int {
+  // ...
+}
+
+let x = try? someThrowingFunction()
+
+let y: Int?
+do {
+  y = try someThrowingFunction()
+} catch {
+  y = nil
+}
+```
+
+`someThrowingFunction()` 이 에러를 던지면, `x` 와 `y` 의 값은 `nil` 입니다. 그렇지 않으면, `x` 와 `y` 의 값은 함수의 반환 값입니다. `x` 와 `y` 는 `someThrowingFunction()` 이 무슨 타입으로 반환하든 '옵셔널 (optional)' 임을 기억하기 바랍니다. 여기서는 함수가 '정수 (integer)' 를 반환하고 있으므로, `x` 와 `y` 는 '옵셔널 정수 (optional integer)' 입니다.
+
+모든 에러를 같은 방식으로 처리하고 싶을 때 `try?` 를 사용하면 에러 처리 코드를 간결하게 만들 수 있습니다.[^error-to-optional] 예를 들어, 아래 코드는 여러 가지 방법을 써서 자료를 가져오는데, 모든 방법이 실패하면 `nil` 을 반환합니다.
+
+```swift
+func fetchData() -> Data? {
+  if let data = try? fetchDataFromDisk() { return data }
+  if let data = try? fetchDataFromServer() { return data }
+  return nil
+}
+```
+
 #### Disabling Error Propagation (에러 전파 못하게 하기)
 
+'던지는 함수' 나 '던지는 메소드' 가 실행시간에 에러를 던지지 않을 거라는 것을, 실제로는, 알고 있을 수 있습니다. 그런 경우, 표현식 앞에 `try!` 를 사용하여 에러 전파를 못하게 하고  호출을 어떤 에러도 던지지 않는다고 하는 '실행시간 단언문 (runtime assertion)' 으로 감쌀 수 있습니다. 에러가 실제로 던져지면, 실행시간 에러가 발생합니다.[^runtime-error]
+
+예를 들어, 다음 코드는 `loadImage(atPath:)` 함수를 사용하여, 주어진 경로의 이미지 자원을 불러오거나 혹은 이미지를 불러올 수 없을 경우 에러를 던집니다. 이런 경우에, 이미지는 응용 프로그램과 함께 출하하게 되므로, 실행 시간에 에러를 던질 일이 없으며, 따라서 에러 전파를 못하게 하는 것이 적절합니다.
+
+```swift
+let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
+```
+
 ### Specifying Cleanup Actions (정리 작업 지정하기)
+
+### 참고 자료
+
+[^Advanced-Operators]: 이 글에 대한 원문은 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 확인할 수 있습니다.
+
+[^error-to-optional]: 본문에도 나와 있듯이 `try?` 는 모든 에러를 `nil` 로 변환하는 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 모든 에러를 무시해도 상관없는 경우에만 사용할 수 있습니다. 생각해보면, 예제에서 사용된 `someThrowingFunction()` 도 원래 `nil` 이 될 수 있는 함수이고, 이 함수의 모든 에러는 '정수 (integer)' 를 만들 수 없는 경우에 해당합니다. 그러므로, 이 경우 모든 에러를 `nil` 로 변경한다고 해서 프로그램 실행에 문제가 될 것은 없습니다.
+
+[^runtime-error]: 실행시간 에러가 발생할 수도 있는데 `try!` 나 '실행시간 단언문 (runtime assertion)' 을 왜 사용하는지 의문이 들 수 있습니다. 사실 좀 더 정확하게 표현하면 `try!` 는 '에러가 발생하지 않을 거라는 것을 알고 있는 상황에서 사용하는 것' 이라기 보다는, '에러가 나면 안되는 상황을 개발 과정에서 미리 알기 위해 사용하는 것' 입니다. 실행 시간에 에러가 나는 것을 막을 수는 없으므로 상황에 맞는 '에러 처리' 는 늘 해야하지만, 에러가 절대 나면 안되는 코드를 개발 과정에서 미리 걸러내려면 `try!` 를 사용한다고 이해할 수 있습니다.
