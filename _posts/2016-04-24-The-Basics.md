@@ -693,9 +693,7 @@ do {
 
 어떤 에러도 던져지지 않으면, `eatASandwich()` 함수가 호출됩니다. 어떤 에러가 던져졌는데 그것이 `SandwichError.outOfCleanDishes` 인 경우에 해당된다면, `washDishes()` 함수가 호출될 것입니다. 어떤 에러가 던져졌는데 그것이 `SandwichError.missingIngredients` 인 경우에 해당된다면, 그 때는 `buyGroceries(_:)` 함수가 호출되면서 관련 값은 `catch` '유형 (pattern)' 이 잡아낸 `[String]` 값을 가지게 됩니다.
 
-Throwing, catching, and propagating errors is covered in greater detail in Error Handling.
-
-에러를 던지고, 잡아내고, 전파하는 것에 대한 [Error Handling (에러 처리)](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 아주 상세히 다루도록 합니다.
+에러를 던지고, 잡아내고, 전파하는 것에 대한 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 상세히 다루도록 합니다.
 
 ### Assertions and Preconditinos (단언과 선행 조건)
 
@@ -703,7 +701,7 @@ _단언 (assertions)_ 과 _선행 조건 (Preconditions)_ 은 '실행 시간 (ru
 
 '단언' 과 '선행 조건' 을 사용하면 코딩 중에 만들게 된 '가정 (assumptions)' 과 코딩 중에 가졌던 '기대값 (expectations)' 을 표현할 수 있으며, 이들을 코드의 일부로 포함할 수 있습니다. '단언' 은 개발 중에 실수한 것과 잘못된 가정을 찾도록 도와주며, '선행 조건' 은 제품의 '문제점 (issues)' 을 미리 감지할 수 있도록 도와줍니다.
 
-실행 시간에 기대값을 검증하는 용도 외에도, '단언' 과 '선행 조건' 은 코드 내에서 문서화를 할 수 있는 편리한 양식이기도 합니다. 앞서 [Error Handling (에러 처리)](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID515) 에서 설명한 에러 조건과는 다르게, '단언' 과 '선행 조건' 은 복구 가능하거나 예상 가능한 에러에 사용하는 것이 아닙니다. 실패한 '단언' 이나 '선행 조건' 은 프로그램의 상태가 유효하지 않음을 나타내는 것이기 때문에, 실패한 '단언' 을 잡아내는 방법이란 건 없습니다.
+실행 시간에 기대값을 검증하는 용도 외에도, '단언' 과 '선행 조건' 은 코드 내에서 문서화를 할 수 있는 편리한 양식이기도 합니다. 앞서 [Error Handling (에러 처리)](#error-handling-에러-처리) 에서 설명한 에러 조건과는 다르게, '단언' 과 '선행 조건' 은 복구 가능하거나 예상 가능한 에러에 사용하는 것이 아닙니다. 실패한 '단언' 이나 '선행 조건' 은 프로그램의 상태가 유효하지 않음을 나타내는 것이기 때문에, 실패한 '단언' 을 잡아내는 방법이란 건 없습니다.
 
 '단언' 과 '선행 조건' 은 예기치 않게 무효한 조건이 발생하는 상황에 대한 코드 설계인 것이 아닙니다. 하지만, 유효한 데이터와 상태에 이를 적용하는 것은 무효한 상태가 발생했을 때 앱이 종료될 것임을 예측 가능하게 해주고, 문제를 더 쉽게 고칠 수 있도록 해 줍니다. 무효한 상태가 감지되자마자 즉시 실행을 중지하는 것은 무효한 상태로 인한 피해를 줄이는 데도 도움이 됩니다.
 
