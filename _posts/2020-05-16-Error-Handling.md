@@ -269,7 +269,7 @@ func processFile(filename: String) throws {
 
 ### 참고 자료
 
-[^Advanced-Operators]: 이 글에 대한 원문은 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 확인할 수 있습니다.
+[^Error-Handling]: 이 글에 대한 원문은 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 확인할 수 있습니다.
 
 [^error-to-optional]: 본문에도 나와 있듯이 `try?` 는 모든 에러를, `nil` 로 변환한다고 하는, 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 모든 에러를 무시해도 상관없는 경우에만 사용할 수 있습니다. 생각해보면, 예제에서 사용된 `someThrowingFunction()` 도 원래 `nil` 이 될 수 있는 함수이고, 이 함수의 모든 에러는 '정수 (integer)' 를 만들 수 없는 경우로 한정됩니다. 따라서, 이 경우에 모든 에러를 `nil` 로 변경한다고 해서 프로그램 실행에 문제가 될 것은 없습니다.
 
