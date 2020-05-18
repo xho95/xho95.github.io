@@ -26,7 +26,7 @@ categories: Xcode Swift Grammar Initialization
 
 ```swift
 struct Fahrenheit {
-    var temperature = 32.0
+  var temperature = 32.0
 }
 ```
 
@@ -50,14 +50,14 @@ struct Fahrenheit {
 
 ```swift
 class SurveyQuestion {
-    let text: String
-    var response: String?
-    init(text: String) {
-        self.text = text
-    }
-    func ask() {
-        print(text)
-    }
+  let text: String
+  var response: String?
+  init(text: String) {
+    self.text = text
+  }
+  func ask() {
+    print(text)
+  }
 }
 let beetsQuestion = SurveyQuestion(text: "How about beets?")
 beetsQuestion.ask()
@@ -94,7 +94,7 @@ var item = ShoppingListItem()
 
 ```swift
 struct Size {
-    var width = 0.0, height = 0.0
+  var width = 0.0, height = 0.0
 }
 let twoByTwo = Size(width: 2.0, height: 2.0)
 ```

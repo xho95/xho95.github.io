@@ -328,7 +328,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 양쪽 타입이 모두 `UInt16` 이므로, 더하기가 가능합니다. '결과 상수 (`twoThousandAndOne`)' 의 타입도, 두 `UInt16` 값의 합이기 때문에, `UInt16` 으로 추론됩니다.
 
-`SomeType(ofInitialValue)` 는 스위프트에서 타입의 초기자를 호출하고 기본 설정 값을 전달하는 기본적인 방법입니다. 속을 들여다보면, `UInt16` 는 `UInt8` 값을 받아들이는 초기자를 가지고 있어서, 이 초기자를 사용해서 기존의 `UInt8` 로 새로운 `UInt16` 를 만들 수 있는 것입니다. 여기서, _아무 (any)_ 타입이나 전달해서는 안되며-`UInt16` 가 제공하는 초기자에 맞는 타입이라야만 합니다. 기존 타입을 확장해서 (자기가 정의한 타입을 포함한) 새로운 타입을 받아들이는 초기자를 제공하려면 [Extensions (확장))]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+`SomeType(ofInitialValue)` 는 스위프트에서 타입의 초기자를 호출하고 기본 설정 값을 전달하는 기본적인 방법입니다. 속을 들여다보면, `UInt16` 는 `UInt8` 값을 받아들이는 초기자를 가지고 있어서, 이 초기자를 사용해서 기존의 `UInt8` 로 새로운 `UInt16` 를 만들 수 있는 것입니다. 여기서, _아무 (any)_ 타입이나 전달해서는 안되며-`UInt16` 가 제공하는 초기자에 맞는 타입이라야만 합니다. 기존 타입을 확장해서 (자기가 정의한 타입을 포함한) 새로운 타입을 받아들이는 초기자를 제공하려면 [Extensions (확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
@@ -395,7 +395,7 @@ if turnipsAreDelicious {
 // "Eww, turnips are horrible." 를 출력합니다.
 ```
 
-`if` 문 같은 조건 구문에 대해서는 [Control Flow (제어 흐름))](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
+`if` 문 같은 조건 구문에 대해서는 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
 
 스위프트의 '타입 안전 장치 (type safety)' 는 '불린-아닌 값 (non-Boolean values)' 이 `Bool` 을 대체하지 못하도록 막아줍니다. 다음 예제는 '컴파일 시간에 (compile-time)' 에러를 띄웁니다:
 
@@ -558,7 +558,7 @@ if let constantName = someOptional {
 }
 ```
 
-[Optionals (옵셔널))](#optionals-옵셔널-선택적-값-타입) 에 있는 `possibleNumber` 예제는 '강제 풀기 (forced unwrapping)' 대신 '옵셔널 바인딩 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널-선택적-값-타입) 에 있는 `possibleNumber` 예제는 '강제 풀기 (forced unwrapping)' 대신 '옵셔널 바인딩 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -595,7 +595,7 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" 를 출력합니다.
 ```
 
-`if` 문 안의 '옵셔널 바인딩' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료))](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
+`if` 문 안의 '옵셔널 바인딩' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 풀리는 옵셔널)
 

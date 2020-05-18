@@ -79,7 +79,7 @@ It also ends with a line break.
 '문자열 글자표현' 은 다음의 특수 문자를 포함할 수 있습니다:
 
 * (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (null-널 문자), `\\` (backslash-백슬래쉬), `\t` (가로 tab-탭), `\n` (line feed-줄 먹임), `\r` (carriage-캐리지 리턴), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
-* 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', `\u{`_n_`}` 의 형태로 작성하며, 여기서 _n_ 은 1~8 자리의 16진수 값입니다. (유니코드는 아래의 [Unicode]() 에서 설명합니다.)
+* 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', `\u{`_n_`}` 의 형태로 작성하며, 여기서 _n_ 은 1~8 자리의 16진수 값입니다. (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 에서 설명합니다.)
 
 아래의 코드에서 특수 문자에 대한 네 가지 예를 보였습니다. `wiseWords` 상수는 두 개의 'escaped (벗어난)' 큰 따옴표를 담고 있습니다. `dollarSign`, `blackHeart` 그리고 `sparklingHeart` 상수는 '유니코드 크기 양식 (Unicode scalar format)' 을 보여줍니다:
 
