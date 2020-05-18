@@ -16,7 +16,19 @@ categories: Xcode Swift Grammar Initialization
 
 #### Initializers (초기자)
 
-#### Default Property Values (기본 속성 값)
+#### Default Property Values (기본 설정 속성 값)
+
+위와 같이, 초기자 내에서 저장 속성의 '초기 값 (initial value)' 을 설정할 수 있습니다. 다른 방법은, 속성을 선언하면서 _기본 설정 속성 값 (default property value)_ 을 지정하는 것입니다. '기본 설정 속성 값' 을 지정하려면 속성을 정의할 때 초기 값을 할당하면 됩니다.
+
+> 속성이 받는 초기 값이 항상 같은 경우, 초기자 내에서 값을 설정하는 것 대신 '기본 설정 값' 을 제공하도록 합니다. 최종 결과는 같지만, '기본 설정 값' 은 속성 초기화를 선언과 더 밀접하게 이어줍니다. 이는 초기자를 더 짧고, 더 명확하게 만들고 '기본 설정 값' 으로 속성의 타입을 추론할 수 있게 해줍니다. '기본 설정 값' 은 또, 이 장의 뒷 부분에서 설명하는 것처럼, '기본 설정 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 이점을 더 쉽게 활용할 수 있도록 합니다.
+
+`temperature` 속성을 선언하는 시점에 '기본 설정 값' 을 제공하면 위에 있는 `Fahrenheit` 구조체를 더 간단한 양식으로 작성할 수 있습니다:
+
+```swift
+struct Fahrenheit {
+    var temperature = 32.0
+}
+```
 
 ### Customizing Initialization (자기만의 초기화 방법 만들기)
 
@@ -29,6 +41,29 @@ categories: Xcode Swift Grammar Initialization
 #### Optional Property Types (옵셔널 속성 타입)
 
 #### Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)
+
+상수 속성의 값은, 초기화를 마칠 때 값이 정확하게 설정되어 있는 한, 초기화하는 동안 어느 지점에서든 할당할 수 있습니다. 단, 일단 상수 속성에 값이 할당되고 나면, 더 이상 수정할 수 없습니다.
+
+> 클래스 인스턴스의, 상수 속성은 그것을 도입한 클래스의 초기화 중에서만 수정할 수 있습니다. 하위 클래스에서는 수정할 수 없습니다.
+
+위의 `SurveyQuestion` 예제에 있는 `text` 속성을 변수 속성이 아닌 상수 속으로 개정하여, 일단 `SurveyQuestion` 인스턴스가 생성되고 나면 질문이 바뀌지 않을 것임일 지시할 수 있습니다. `text` 속성이 상수가 됐다고 해도, 여전히 클래스의 초기자에서 설정할 수 있습니다:
+
+```swift
+class SurveyQuestion {
+    let text: String
+    var response: String?
+    init(text: String) {
+        self.text = text
+    }
+    func ask() {
+        print(text)
+    }
+}
+let beetsQuestion = SurveyQuestion(text: "How about beets?")
+beetsQuestion.ask()
+// "How about beets?" 를 출력합니다.
+beetsQuestion.response = "I also like beets. (But not with cheese.)"
+```
 
 ### Default Initializers (기본 설정 초기자)
 
