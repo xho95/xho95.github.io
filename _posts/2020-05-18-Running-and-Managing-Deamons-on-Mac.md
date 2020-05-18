@@ -40,7 +40,7 @@ $ sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 위에서 `/System/Library/LaunchDaemons` 는 'Apple 이 지원하는 시스템 데몬 (Apple-supplied system daemons)' 이 저장되는 곳입니다.[^apple-launchd]
 
-아파치는 '시스템 데몬' 이기 때문에 `launchctl load` 앞에 `sudo` 를 붙여서 '관리자 권한' 으로 실행해야 합니다.
+참고로 아파치는 '시스템 데몬' 이기 때문에 `launchctl load` 앞에 `sudo` 를 붙여서 '관리자 권한' 으로 실행합니다.
 
 ### Daemon (데몬) 내리기
 
