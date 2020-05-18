@@ -552,7 +552,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 // "6 mansion scenes; 2 cell scenes" 를 출력합니다.
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 대해 '확장된 자소 덩어리' 사이의 개별 문자하나씩 법적으로 동등한지를 비교하는 연산을 수행하며, 이는 [String and Character Equality](#string-and-character-equality-문자열-동등성-및-문자-동등성) 에서 설명했었습니다.
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 대해 '확장된 자소 덩어리' 사이의 개별 문자하나씩 법적으로 동등한지를 비교하는 연산을 수행하며, 이는 [String and Character Equality (문자열 동등성 및 문자 동등성)](#string-and-character-equality-문자열-동등성-및-문자-동등성) 에서 설명했었습니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현)
 
