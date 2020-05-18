@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "macOS: Daemon (데몬) 실행하고 관리하기"
 date:   2020-05-18 10:00:00 +0900
-categories: macOS CLI Shell Daemon
+categories: macOS Daemon launchd launchctl
 ---
 
 > 이 글에서는 macOS 에서 데몬 (daemon) 을 실행하고 관리하는 방법을 알아봅니다.
