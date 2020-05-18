@@ -6,9 +6,7 @@ date:   2020-05-18 10:00:00 +0900
 categories: macOS Daemon launchd launchctl
 ---
 
-> macOS 에서 데몬 (daemon) 을 실행하는 방법은 Unix 나 Linux 와는 조금 다른 부분이 있습니다.
->
-> 이 글에서는 macOS 에서 데몬을 실행하고 관리하는 방법을 알아봅니다.
+> macOS 에서 데몬 (daemon) 을 실행하는 방법은 Unix 나 Linux 와는 조금 다른 부분이 있습니다. 이 글에서는 macOS 에서 데몬을 실행하고 관리하는 방법을 알아봅니다.
 
 ## Daemon (데몬) 실행하고 관리하기
 
