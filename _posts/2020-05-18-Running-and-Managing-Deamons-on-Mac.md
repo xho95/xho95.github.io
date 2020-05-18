@@ -12,7 +12,7 @@ categories: macOS Daemon launchd launchctl
 
 macOS 에서 '데몬 (daemon)'[^daemon] 을 실행하고 관리하는 방식은 Unix 나 Linux 와는 조금 다릅니다. 왜냐면, Apple 에서는 `launchd` 라는 것으로 macOS 의 '부팅 과정시 초기화' 와 '운영체제 서비스 관리' 를 수행하기 때문입니다.[^launchd]
 
-즉, macOS 는 `launchd` 로 '데몬' 과 '에이전트 (agents)' 를 관리합니다. 하지만 `launchd` 를 사용자가 직접 사용하지는 않고, 대신 `launchctl` 라는 명령으로 '데몬' 또는 '에이전트' 를 '올리고 (load)' '내리게 (unload)' 됩니다.[^apple-launchd]
+즉, macOS 는 `launchd` 로 '데몬' 과 '에이전트 (agents)' 를 관리합니다. 하지만 `launchd` 를 사용자가 직접 사용하지는 않고, 대신 `launchctl` 라는 명령을 사용하여 '데몬' 이나 '에이전트' 를 '올리거나 (load)' '내립니다 (unload)'.[^apple-launchd]
 
 #### `launchctl`
 
