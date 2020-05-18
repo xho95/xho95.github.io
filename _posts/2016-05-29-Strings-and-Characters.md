@@ -552,13 +552,13 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 // "6 mansion scenes; 2 cell scenes" 를 출력합니다.
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 대해 '확장된 자소 덩어리' 사이의 개별 문자하나씩 법적으로 동등한지를 비교하는 연산을 수행하며, 이는 [String and Character Equality]() 에 설명되어 있습니다.
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 대해 '확장된 자소 덩어리' 사이의 개별 문자하나씩 법적으로 동등한지를 비교하는 연산을 수행하며, 이는 [String and Character Equality](#string-and-character-equality-문자열-동등성-및-문자-동등성) 에서 설명했었습니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현)
 
 유니코드 문자열을 텍스트 파일이나 다른 저장소에 기록하면, 그 문자열의 '유니코드 크기 값' 은 유니코드에-정의된 여러 '_인코딩 양식 (encording forms; 부호화 양식)_' 중 한 가지로 인코딩 됩니다. 각 양식은 문자열을 _코드 단위 (code units)_ 라는 작은 조각으로 인코딩합니다. 여기에는 UTF-8 인코딩 양식 (문자열을 8-bit '코드 단위' 로 인코딩), UTF-16 인코딩 양식 (문자열을 16-bit '코드 단위' 로 인코딩), 그리고 UTF-32 인코딩 양식 (문자열을 32-bit '코드 단위' 로 인코딩) 이 있습니다.
 
-스위프트는 문자열의 유니코드 '표현 (representations)' 에 접근하는 여러 가지 방법들을 제공합니다. 문자열에 `for-in` 구문을 사용하면, 개별 `Character` 값을 '확장된 자소 덩어리' 의 형태로 접근하여, 동작을 반복 적용시킬 수 있습니다. 이 과정은 [Working with Characters]() 에 설명되어 있습니다.
+스위프트는 문자열의 유니코드 '표현 (representations)' 에 접근하는 여러 가지 방법들을 제공합니다. 문자열에 `for-in` 구문을 사용하면, 개별 `Character` 값을 '확장된 자소 덩어리' 의 형태로 접근하여, 동작을 반복 적용시킬 수 있습니다. 이 과정은 [Working with Characters (문자 다루기)](#working-with-characters-문자-다루기) 에서 설명했었습니다.
 
 다른 방법으로, `String` 값에 대해 다음의 세 가지 '유니코드-부합 표현 (Unicode-compliant representations)' 형태로 접근할 수도 있습니다:
 
