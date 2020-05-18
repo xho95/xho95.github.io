@@ -32,15 +32,15 @@ $ launchctl load -w ~/Library/LaunchAgents/com.apple.myservice.plist
 
 #### Apache (아파치) 실행하기
 
-위에 방법으로, macOS 에서 실제로 아파치를 실행하는 방법은 다음과 같습니다.
+위에 방법으로, macOS 에서 실제로 아파치를 실행하는 방법은 다음과 같습니다.[^apache]
 
 ```zsh
 $ sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 ```
 
-위에서 `/System/Library/LaunchDaemons` 는 'Apple 이 지원하는 시스템 데몬 (Apple-supplied system daemons)' 이 저장되는 곳입니다.[^apple-launchd] 아파치는 '시스템 데몬' 에 해당됨을 알 수 있습니다.
+위에서 `/System/Library/LaunchDaemons` 는 'Apple 이 지원하는 시스템 데몬 (Apple-supplied system daemons)' 이 저장되는 곳입니다.[^apple-launchd]
 
-'시스템 데몬' 이기 때문에 `launchctl load` 앞에 `sudo` 를 붙여서 '관리자 권한' 으로 실행한다는 점에 주목하기 바랍니다.
+아파치는 '시스템 데몬' 이기 때문에 `launchctl load` 앞에 `sudo` 를 붙여서 '관리자 권한' 으로 실행해야 합니다.
 
 ### Daemon (데몬) 내리기
 
@@ -65,3 +65,5 @@ $ launchctl unload -w ~/Library/LaunchAgents/com.apple.myservice.plist
 [^launchctl-load]: 사실 `launchctl start` 라는 명령도 있지만, `launchctl load` 명령이 macOS 에서 '데몬' 을 실행하는 좀 더 표준적인 방법인 듯 합니다. 이부분은 좀 더 알게되면 정리하도록 하겠습니다.
 
 [^launchctl-load-sample]: 여기서 `myservice` 는 실제로 있는 것이 아니라 그냥 하나의 예시입니다. 해당 내용은 [How to start a service using Mac OSX's launchctl](https://superuser.com/questions/930389/how-to-start-a-service-using-mac-osxs-launchctl) 에서 볼 수 있습니다.
+
+[^apache]: 해당 명령은 모든 설정이 완료됐을 때 실행하는 것입니다. macOS 에서 아파치를 설정하고 실행하는 전체 과정은 [Apache : macOS 에서 아파치 웹서버 실행하기]({% post_url 2016-10-02-Apache-WebServer %}) 를 참고하기 바랍니다. 
