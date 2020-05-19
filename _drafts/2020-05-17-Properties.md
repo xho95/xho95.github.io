@@ -34,14 +34,29 @@ struct FixedLengthRange {
     let length: Int
 }
 var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
-// 범위는 정수 값 0, 1, 그리고 2 를 나타냅니다.
+// 이 범위는 정수 값 0, 1, 그리고 2 를 나타냅니다.
 rangeOfThreeItems.firstValue = 6
-// 범위는 이제 정수 값 6, 7, 그리고 8 를 나타냅니다.
+// 이 범위는 이제 정수 값 6, 7, 그리고 8 를 나타냅니다.
 ```
 
 `FixedLengthRange` 인스턴스는 `firstValue` 라는 '변수 저장 속성' 과 `length` 라는 '상수 저장 속성' 을 가지고 있습니다. 위의 예제에서, `length` 는 새로운 범위를 생성할 때 초기화되어 그 이후로는 바꿀 수 없는데, 이는 '상수 속성' 이기 때문입니다.
 
 #### Stored Properties of Constant Structure Instances (상수 구조체 인스턴스의 저장 속성)
+
+구조체의 인스턴스를 생성한 다음 그 인스턴스를 상수에 할당하면, 인스턴스의 속성은 수정할 수 없는데, 이는 '변수 속성' 으로 선언했더라도 마찬가지입니다:
+
+```swift
+let rangeOfFourItems = FixedLengthRange(firstValue : 0, length: 4)
+// 이 범위는 정수 값 0, 1, 2 그리고 3 을 나타냅니다.
+rangeOfFourItems.firstValue = 6
+// 이것은 에러를 보고하는데, firstValue 가 변수 속성 임에도 불구하고 그렇습니다.
+```
+
+`rangeOfFourItems` 을 (`let` 키워드로) 상수로 선언했기 때문에, `firstValue` 가 변수 속성임에도 불구하고, 이 `firstValue` 속성을 바꾸는 것은 불가능합니다.
+
+이런 작동 방식은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시하면, 모든 속성도 마찬가지가 됩니다.
+
+이와 같은 방식은, _참조 타입 (reference types)_ 인, 클래스에는 해당하지 않습니다. 참조 타입의 인스턴스를 상수에 할당하더라도, 그 인스턴스의 '변수 속성' 은 여전히 바꿀 수 있습니다.
 
 #### Lazy Stored Properties (늦은 저장 속성)
 
