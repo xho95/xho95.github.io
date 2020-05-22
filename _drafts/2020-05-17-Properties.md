@@ -30,8 +30,8 @@ _속성 (properties)_ 은 값을 특정한 클래스, 구조체, 또는 열거�
 
 ```swift
 struct FixedLengthRange {
-    var firstValue: Int
-    let length: Int
+ var firstValue: Int
+ let length: Int
 }
 var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
 // 이 범위는 정수 값 0, 1, 그리고 2 를 나타냅니다.
@@ -70,18 +70,18 @@ _느긋한 저장 속성 (lazy stored property)_ 은 맨 처음 사용하는 순
 
 ```swift
 class DataImporter {
-    /*
-    DataImporter 는 외부 파일에서 자료를 불러오는 클래스 입니다.
-    이 클래스를 초기화하는데는 적지 않은 시간이 걸린다고 가정합니다.
-    */
-    var filename = "data.txt"
-    // DataImporter 클래스가 자료를 불러오는 기능을 제공하는 곳은 여기입니다.
+  /*
+  DataImporter 는 외부 파일에서 자료를 불러오는 클래스 입니다.
+  이 클래스를 초기화하는데는 적지 않은 시간이 걸린다고 가정합니다.
+  */
+  var filename = "data.txt"
+  // DataImporter 클래스가 자료를 불러오는 기능을 제공하는 곳은 여기입니다.
 }
 
 class DataManager {
-    lazy var importer = DataImporter()
-    var data = [String]()
-    // DataManager 클래스가 자료를 관리하는 기능을 제공하는 곳은 여기입니다.
+  lazy var importer = DataImporter()
+  var data = [String]()
+  // DataManager 클래스가 자료를 관리하는 기능을 제공하는 곳은 여기입니다.
 }
 
 let manager = DataManager()
@@ -114,11 +114,118 @@ print(manager.importer.filename)
 
 ### Computed Properties (계산 속성)
 
+클래스, 구조체, 그리고 열거체는, '저장 속성' 외에도,  _계산 속성 (computed properties)_ 을 정의할 수 있는데, 이는 실제로 값을 저장하진 않습니다. 대신에, '획득자 (getter)' 와 '선택적인 설정자 (optional setter)'[^optional-setter] 를 제공하여 이로써 다른 속성과 값을 간접적으로 가져오고 설정하게 됩니다.
+
+```swift
+struct Point {
+  var x = 0.0, y = 0.0
+}
+struct Size {
+  var width = 0.0, height = 0.0
+}
+struct Rect {
+  var origin = Point()
+  var size = Size()
+  var center: Point {
+    get {
+      let centerX = origin.x + (size.width / 2)
+      let centerY = origin.y + (size.height / 2)
+      return Point(x: centerX, y: centerY)
+    }
+    set(newCenter) {
+      origin.x = newCenter.x - (size.width / 2)
+      origin.y = newCenter.y - (size.height / 2)
+    }
+  }
+}
+var square = Rect(origin: Point(x: 0.0, y: 0.0), size: Size(width: 10.0, height: 10.0))
+let initialSquareCenter = square.center
+square.center = Point(x: 15.0, y: 15.0)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+// "square.origin is now at (10.0, 10.0)" 를 출력합니다.
+```
+
+이 예제는 기하학적 도형 작업을 위해 세 가지 구조체를 정의합니다.
+
+* `Point` 는 한 점에 대한 x, y 좌표를 캡슐화 합니다.
+* `Size` 는 `width` 와 `height` 를 캡슐화 합니다.
+* `Rect` 는 '원점 (origin point)' 과 '크기 (size)' 를 사용하여 사각형을 정의합니다.
+
+`Rect` 구조체는 `center` 라는 '계산 속성' 도 제공합니다. `Rect` 의 현재 중심 위치는 `origin` 과 `size` 로부터 항상 결정할 수 있으므로, 중심 점을 `Point` 값으로 저장할 필요가 없습니다. 대신, `Rect` 는 `center` 라는 '계산 변수' 에 대한 사용자 정의 '획득자 (getter)' 와 '설정자 (setter)' 를 정의하여, 사각형의 `center` 를 마치 실제 저장 속성인 것처럼 사용할 수 있게 해줍니다.
+
+위의 예제에서는 `square` 라는 새로운 `Rect` 변수를 생성합니다. `square` 변수의 원점은 `(0, 0)`, 폭과 높이는 `10` 으로 초기화 됩니다. 이 '정사각형 (square)' 은 아래 그림에서 파란색 사각형으로 표현됩니다.
+
+`square` 변수의 `center` 속성은 이제 '점 구문 표현 (`square.center`)' 을 통해 접근하게 되는데, 이는 `center` 의 '획득자 (getter)' 를 호출하여, 현재 속성의 값을 가져옵니다. 이 '획득자 (getter)' 는, 존재하고 있는 값을 반환하는게 아니고, 정사각형의 중심을 나타내는 새 `Point` 를 실제로 계산한 다음 반환합니다. 위에서 봤듯이, '획득자' 는 중심점이 `(5, 5)` 라고 정확하게 반환합니다.
+
+`center` 속성은 이제 새 값인 `(15, 15)` 로 설정되며, 이는 정사각형을 오른쪽 위로 이동하게 되는데, 이 새 위치는 아래 그림의 오렌지 정사각형으로 나타냈습니다. `center` 속성을 설정하면 `center` 의 '설정자 (setter)' 를 호출하며, 이는 `origin` 저장 속성의 `x` 와 `y` 값을 수정하여, 정사각형을 새 위치로 이동합니다.
+
+![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
+
 #### Shorthand Setter Declaration (설정자 선언의 약칭 표현)
+
+계산 속성의 '설정자 (setter)' 가 설정할 새 값에 대한 이름을 정의하지 않을 경우, 기본 제공되는 이름인 `newValue` 를 사용합니다. 다음은 이 '약칭 표현법 (shorthand notation)' 의 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
+
+```swift
+struct AlternativeRect {
+  var origin = Point()
+  var size = Size()
+  var center: Point {
+    get {
+      let centerX = origin.x + (size.width / 2)
+      let centerY = origin.y + (size.height / 2)
+      return Point(x: centerX, y: centerY)
+    }
+    set {
+      origin.x = newValue.x - (size.width / 2)
+      origin.y = newValue.y - (size.height / 2)
+    }
+  }
+}
+```
 
 #### Shorthand Getter Declaration (획득자 선언의 약칭 표현)
 
+'획득자 (getter)' 의 전체 본문이 '단일 표현식 (single expression)' 으로 되어 있는 경우, '획득자' 는 암시적으로 그 표현식을 반환합니다. 다음은 이 '약칭 표현법' 과 '설정자' 에 대한 '약칭 표현법' 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
+
+```swift
+struct CompactRect {
+  var origin = Point()
+  var size = Size()
+  var center: Point {
+    get {
+      Point(x: origin.x + (size.width / 2), y: origin.y + (size.height / 2))
+    }
+    set {
+      origin.x = newValue.x - (size.width / 2)
+      origin.y = newValue.y - (size.height / 2)
+    }
+  }
+}
+```
+
+'획득자' 에서 `return` 을 생략하는 것은 함수에서 `return` 을 생략하는 것과 같은 규칙을 따르는 것으로, 이는 [Functions With an Implicit Return (암시적으로 반환하는 함수)](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID607) 에서 설명되어 있습니다.
+
 #### Read-Only Computed Properties (읽기-전용 계산 속성)
+
+획득자는 있지만 설정자는 없는 계산 속성을 _읽기-전용 계산 속성 (read-only computed property)_ 라고 합니다. '읽기-전용 계산 속성' 은 항상 값을 반환하고, '점 구문 표현' 으로 접근할 수 있지만, 다른 값을 설정할 수는 없습니다.
+
+> 계산 속성은-읽기 전용 계산 속성도 포함하여- 반드시 `var` 키워드를 써서 변수 속성으로 선언해야 하는데, 이는 값이 고정된 것이 아니기 때문입니다. `let` 키워드는 상수 속성에만 사용하며, 인스턴스 초기화에서 한 번 설정한 값은 바꿀 수 없음을 지시하는 것입니다.
+
+읽기-전용 계산 속성의 선언은 `get` 키워드와 중괄호를 제거하여 간소화 할 수 있습니다:
+
+```swift
+struct Cuboid {
+  var width = 0.0, height = 0.0, depth = 0.0
+  var volume: Double {
+    return width * height * depth
+  }
+}
+let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
+print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+// "the volume of fourByFiveByTwo is 40.0" 를 출력합니다.
+```
+
+이 예제는 `Cuboid` 라는 새 구조체를 정의하여, `width`, `height`, 그리고 `depth` 속성을 가진 3D 직사각형 상자를 표현합니다. 이 구조체는 `volume` 이라는 읽기-전용 계산 속성도 가지고 있는데, 이는 '직육면체 (cuboid)'[^cuboid] 의 현재 부피를 계산하고 반환합니다. `volume` 은 '설정 가능하다는 (settable)' 것은 말이 안되는데, 왜냐면 특정한 `volume` 값에 대한 `width`, `height`, 그리고 `depth` 값이 어떤 것인지 모호하기 때문입니다. 그렇지만, `Cuboid` 가 읽기-전용 계산 속성을 제공하여 현재 계산된 부피를 외부 사용자도 알 수 있게 하는 것은 유용합니다.
 
 ### Property Observers (속성 관찰자)
 
@@ -139,3 +246,7 @@ print(manager.importer.filename)
 ### 참고 자료
 
 [^Properties]: 이 글에 대한 원문은 [Properties](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 에서 확인할 수 있습니다.
+
+[^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 'optional setter' 라는 용어를 사용합니다.
+
+[^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미하며, 모든 면이 직사각형으로 이루어진 기하학적 도형을 의미합니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조?)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 를 참고하기 바랍니다.
