@@ -229,6 +229,26 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 ### Property Observers (속성 관찰자)
 
+'속성 관찰자 (property observers)' 는 속성 값이 바뀌는 것을 관찰하여 이에 대한 응답을 합니다. 속성 관찰자는 속성의 값이 설정될 때마다 호출되는데, 심지어 새 값이 현재 속성의 값과 같은 경우에도 호출됩니다.
+
+직접 정의한 저장 속성이라면 어떤 것에든, '지연 저장 속성' 만 아니라면, 속성 관찰자를 추가할 수 있습니다. 상속받은 속성에도 (저장 속성이든 계산 속성이든 상관없이) 어느 것에든 속성 관찰자를 추가할 수 있으며, 하위 클래스에서 그 속성을 '재정의 (overriding)' 하면 됩니다. '재정의 하지 않은 계산 속성 (nonoverridden computed properties)'[^nonoverridden-computed-properties] 에는 속성 관찰자를 정의 할 필요가 없는데, 이는 계산 속성의 설정자 (setter) 에서 해당 값의 변화를 관찰하고 응답할 수 있기 때문입니다. '속성 재정의 (property overriding)' 는 [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명합니다.
+
+속성에 대한 관찰자 정의는 다음 중 하나만 하거나 둘 다 하거나 선택할 수 있습니다:
+
+* `willSet` 은 값이 저장되기 바로 직전에 호출됩니다.
+* `didSet` 은 새 값이 저장된 바로 직후에 호출됩니다.
+
+`willSet` 관찰자를 구현하면, 이는 새 속성 값을 상수 매개 변수의 형태로 전달합니다. willSet 구현의 일부로이 매개 변수의 이름을 지정할 수 있습니다. 구현 내에 매개 변수 이름과 괄호를 쓰지 않으면 기본 매개 변수 이름 인 newValue를 사용하여 매개 변수를 사용할 수 있습니다.
+
+마찬가지로 didSet 옵저버를 구현하면 이전 속성 값이 포함 된 상수 매개 변수가 전달됩니다. 매개 변수 이름을 지정하거나 기본 매개 변수 이름 oldValue를 사용할 수 있습니다. 자체 didSet 옵저버 내의 속성에 값을 할당하면 할당 한 새 값이 방금 설정된 값을 대체합니다.
+
+노트
+
+수퍼 클래스 이니셜 라이저가 호출 된 후 서브 클래스 이니셜 라이저에서 특성이 설정되면 수퍼 클래스 특성의 willSet 및 didSet 옵저버가 호출됩니다. 수퍼 클래스 이니셜 라이저가 호출되기 전에 클래스가 자체 속성을 설정하는 동안에는 호출되지 않습니다.
+
+이니셜 라이저 위임에 대한 자세한 내용은 값 유형에 대한 초 기자 위임 및 클래스 유형에 대한 초 기자 위임을 참조하십시오.
+다음은 willSet 및 didSet 작동 예입니다. 아래 예제는 StepCounter라는 새로운 클래스를 정의하며, 걷는 동안 사람이 취하는 총 단계 수를 추적합니다. 이 수업은 만보계 나 다른 걸음 카운터의 입력 데이터와 함께 사용하여 일상 생활에서 사람의 운동을 추적 할 수 있습니다.
+
 ### Property Wrappers (속성 포장)
 
 #### Setting Initial Values for Wrapped Properties (포장된 속성에 대한 초기 값 설정하기)
@@ -250,3 +270,5 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 [^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 'optional setter' 라는 용어를 사용합니다.
 
 [^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미하며, 모든 면이 직사각형으로 이루어진 기하학적 도형을 의미합니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조?)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 를 참고하기 바랍니다.
+
+[^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
