@@ -233,21 +233,56 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 직접 정의한 저장 속성이라면 어떤 것에든, '지연 저장 속성' 만 아니라면, 속성 관찰자를 추가할 수 있습니다. 상속받은 속성에도 (저장 속성이든 계산 속성이든 상관없이) 어느 것에든 속성 관찰자를 추가할 수 있으며, 하위 클래스에서 그 속성을 '재정의 (overriding)' 하면 됩니다. '재정의 하지 않은 계산 속성 (nonoverridden computed properties)'[^nonoverridden-computed-properties] 에는 속성 관찰자를 정의 할 필요가 없는데, 이는 계산 속성의 설정자 (setter) 에서 해당 값의 변화를 관찰하고 응답할 수 있기 때문입니다. '속성 재정의 (property overriding)' 는 [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명합니다.
 
-속성에 대한 관찰자 정의는 다음 중 하나만 하거나 둘 다 하거나 선택할 수 있습니다:
+속성에 다음 관찰자 중에서 하나만 정의할 지 둘 다 정의할 지 선택할 수 있습니다:
 
 * `willSet` 은 값이 저장되기 바로 직전에 호출됩니다.
 * `didSet` 은 새 값이 저장된 바로 직후에 호출됩니다.
 
-`willSet` 관찰자를 구현하면, 이는 새 속성 값을 상수 매개 변수의 형태로 전달합니다. willSet 구현의 일부로이 매개 변수의 이름을 지정할 수 있습니다. 구현 내에 매개 변수 이름과 괄호를 쓰지 않으면 기본 매개 변수 이름 인 newValue를 사용하여 매개 변수를 사용할 수 있습니다.
+`willSet` 관찰자를 구현하면, 새 속성 값은 상수 매개 변수의 형태로 전달됩니다. 이 매개 변수의 이름은 `willSet` 구현부에서 지정할 수 있습니다. 구현부에서 매개 변수 이름과 괄호를 쓰지 않으면, 이 매개 변수는 기본 제공되는 매개 변수 이름인 `newValue` 를 사용하게 됩니다.
 
-마찬가지로 didSet 옵저버를 구현하면 이전 속성 값이 포함 된 상수 매개 변수가 전달됩니다. 매개 변수 이름을 지정하거나 기본 매개 변수 이름 oldValue를 사용할 수 있습니다. 자체 didSet 옵저버 내의 속성에 값을 할당하면 할당 한 새 값이 방금 설정된 값을 대체합니다.
+마찬가지로, `didSet` 관찰자를 구현하면, 이전 속성 값을 담고 있는 상수 매개 변수가 전달됩니다. 매개 변수에 이름을 지정할 수도 있고 기본 제공 매개 변수 이름인 `oldValue` 를 사용할 수도 있습니다. 자신이 가지고 있는 `didSet` 관찰자에서 속성의 값을 할당하면, 새로 할당한 값이 방금 설정된 값을 대체하게 됩니다.
 
-노트
 
-수퍼 클래스 이니셜 라이저가 호출 된 후 서브 클래스 이니셜 라이저에서 특성이 설정되면 수퍼 클래스 특성의 willSet 및 didSet 옵저버가 호출됩니다. 수퍼 클래스 이니셜 라이저가 호출되기 전에 클래스가 자체 속성을 설정하는 동안에는 호출되지 않습니다.
+> 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 하위 클래스의 초기자에서 속성을 설정할 때, 상위 클래스의 초기자를 호출한 후, 호출됩니다. 이들은 클래스 속성을 설정하는 동안, 상위 클래스의 초기자가 호출되기 전에는, 호출되지 않습니다.
+>
+> '초기자 위임 (initializer delegation)' 에 대한 더 많은 정보는, [Initializer Delegation for Value Type (값 타입에 대한 초기자 위임)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID215) 과 [Initializer Delegation for Class Types (클래스 타입에 대한 초기자 위임)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID219) 을 참고하기 바랍니다.
 
-이니셜 라이저 위임에 대한 자세한 내용은 값 유형에 대한 초 기자 위임 및 클래스 유형에 대한 초 기자 위임을 참조하십시오.
-다음은 willSet 및 didSet 작동 예입니다. 아래 예제는 StepCounter라는 새로운 클래스를 정의하며, 걷는 동안 사람이 취하는 총 단계 수를 추적합니다. 이 수업은 만보계 나 다른 걸음 카운터의 입력 데이터와 함께 사용하여 일상 생활에서 사람의 운동을 추적 할 수 있습니다.
+다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는 `StepCounter` 라는 새로운 클래스를 정의하여, 한 사람이 걷는 동안의 총 걸음 수를 추적합니다. 이 클래스는 사람의 운동 과정을 매일 매일 추적하기 위해 '만보계 (pedometer)' 나 다른 '걸음 카운터 (step counter)' 의 입력 데이터를 같이 사용할 수도 있을 것입니다.
+
+```swift
+class StepCounter {
+  var totalSteps: Int = 0 {
+    willSet(newTotalSteps) {
+      print("About to set totalSteps to \(newTotalSteps)")
+    }
+    didSet {
+      if totalSteps > oldValue  {
+        print("Added \(totalSteps - oldValue) steps")
+      }
+    }
+  }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+// About to set totalSteps to 200
+// Added 200 steps
+stepCounter.totalSteps = 360
+// About to set totalSteps to 360
+// Added 160 steps
+stepCounter.totalSteps = 896
+// About to set totalSteps to 896
+// Added 536 steps
+```
+
+`StepCounter` 클래스는 타입이 `Int` 인 `totalSteps` 속성을 선언합니다. 이것은 `willSet` 과 `didSet` 관찰자를 가지고 있는 저장 속성입니다.
+
+`totalSteps` 의 `willSet` 과 `didSet` 관찰자는 속성에 새 값이 할당될 때마다 호출됩니다. 심지어 새 값이 현재 값과 같은 경우에도 그렇습니다.
+
+이 예제의 `willSet` 관찰자는 새로 지정할 값에 `newTotalSteps` 라는 사용자 정의 매개 변수 이름을 사용합니다. 이 예제에서는, 이는 단순히 설정하려는 값을 출력하기만 합니다.
+
+`didSet` 관찰자는 `totalSteps` 값이 갱신된 후에 호출됩니다. 이는 `totalSteps` 의 새 값을 이전 값과 비교합니다. 총 걸음 수가 증가다면, 얼마나 더 걸었는지 나타내기 위해 메시지를 출력합니다. `didSet` 관찰자는 이전 값에 대해 사용자 정의 매개 변수 이름을 제공하지 않고, 그 대신 기본 제공되는 이름인 `oldValue` 를 사용합니다.
+
+> 관찰자를 가지고 있는 속성을 함수의 '입-출력 매개 변수 (in-out parameter)' 로 전달하면, `willSet` 과 `didSet` 관찰자는 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사해 들어가고 (copy-in)' '복사해 나오는 (copy-out)' 모델 때문입니다: 함수의 끝에서 속성의 값은 항상 다시 쓰여집니다. '입-출력 매개 변수' 의 이러한 동작 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID545) 를 참고하기 바랍니다. 
 
 ### Property Wrappers (속성 포장)
 
