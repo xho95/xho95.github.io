@@ -245,7 +245,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 하위 클래스의 초기자에서 속성을 설정할 때, 상위 클래스의 초기자를 호출한 후, 호출됩니다. 이들은 클래스 속성을 설정하는 동안, 상위 클래스의 초기자가 호출되기 전에는, 호출되지 않습니다.
 >
-> '초기자 위임 (initializer delegation)' 에 대한 더 많은 정보는, [Initializer Delegation for Value Type (값 타입에 대한 초기자 위임)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID215) 과 [Initializer Delegation for Class Types (클래스 타입에 대한 초기자 위임)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID219) 을 참고하기 바랍니다.
+> '초기자 위임 (initializer delegation)' 에 대한 더 많은 정보는, [Initializer Delegation for Value Type (값 타입을 위한 초기자 위임하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID215) 와 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 위임하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID219) 을 참고하기 바랍니다.
 
 다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는 `StepCounter` 라는 새로운 클래스를 정의하여, 한 사람이 걷는 동안의 총 걸음 수를 추적합니다. 이 클래스는 사람의 운동 과정을 매일 매일 추적하기 위해 '만보계 (pedometer)' 나 다른 '걸음 카운터 (step counter)' 의 입력 데이터를 같이 사용할 수도 있을 것입니다.
 
@@ -282,7 +282,7 @@ stepCounter.totalSteps = 896
 
 `didSet` 관찰자는 `totalSteps` 값이 갱신된 후에 호출됩니다. 이는 `totalSteps` 의 새 값을 이전 값과 비교합니다. 총 걸음 수가 증가다면, 얼마나 더 걸었는지 나타내기 위해 메시지를 출력합니다. `didSet` 관찰자는 이전 값에 대해 사용자 정의 매개 변수 이름을 제공하지 않고, 그 대신 기본 제공되는 이름인 `oldValue` 를 사용합니다.
 
-> 관찰자를 가지고 있는 속성을 함수의 '입-출력 매개 변수 (in-out parameter)' 로 전달하면, `willSet` 과 `didSet` 관찰자는 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사해 들어가고 (copy-in)' '복사해 나오는 (copy-out)' 모델 때문입니다: 함수의 끝에서 속성의 값은 항상 다시 쓰여집니다. '입-출력 매개 변수' 의 이러한 동작 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID545) 를 참고하기 바랍니다. 
+> 관찰자를 가지고 있는 속성을 함수의 '입-출력 매개 변수 (in-out parameter)' 로 전달하면, `willSet` 과 `didSet` 관찰자는 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사해 들어가고 (copy-in)' '복사해 나오는 (copy-out)' 모델 때문입니다: 함수의 끝에서 속성의 값은 항상 다시 쓰여집니다. '입-출력 매개 변수' 의 이러한 동작 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID545) 를 참고하기 바랍니다.
 
 ### Property Wrappers (속성 포장)
 
