@@ -142,7 +142,7 @@ print(zeroByZero.width, zeroByZero.height)
 
 이 규칙을 그림으로 도식화하면 다음과 같습니다:
 
-![delegation rules](/assets/Swift/Swift-Prgramming-Language/Initialization-delegation-rules.jpg)
+![delegation rules](/assets/Swift/Swift-Programming-Language/Initialization-delegation-rules.jpg)
 
 여기서, 상위 클래스는 한 개의 지명 초기자와 두 개의 편의 초기자를 가지고 있습니다. 한 '편의 초기자' 는 다른 편의 초기자를 호출하고, 그 다음 차례로 지명 초기자를 호출합니다. 이는 위의 '규칙 2' 와 '규칙 3' 을 만족시킵니다. 상위 클래스 그 자체는 다른 상위 클래스를 가지지 않으므로, '규칙 1' 은 적용되지 않습니다.
 
@@ -152,7 +152,7 @@ print(zeroByZero.width, zeroByZero.height)
 
 아래 그림은 네 개의 클래스에 대한 더 복잡한 클래스 계층 구조를 보입니다. 이는 지명 초기자가 계층 구조에서, 클래스 사이의 연쇄적인 상호 관계를 단순화하는, 클래스 초기화의 "합류 (funnel)" 점으로 작용하는 방법을 나타내고 있습니다:
 
-![funnel points](/assets/Swift/Swift-Prgramming-Language/Initialization-funnel.png)
+![funnel points](/assets/Swift/Swift-Programming-Language/Initialization-funnel.png)
 
 #### Two-Phase Initialization (초기화의 두-단계)
 
