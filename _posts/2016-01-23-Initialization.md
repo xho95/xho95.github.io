@@ -111,7 +111,7 @@ print(zeroByZero.width, zeroByZero.height)
 // "0.0 0.0" 를 출력합니다.
 ```
 
-### Initial Delegation for Value Types (값 타입을 위한 초기화 위임하기)
+### Initializer Delegation for Value Types (값 타입을 위한 초기자 위임하기)
 
 초기자는 다른 초기자를 호출하여 인스턴스 초기화의 일부를 진행할 수 있습니다. 이 과정을, _초기자 위임 (initializer delegation)_ 이라고 하는데, 여러 초기자에서 코드가 중복되는 것을 피하도록 해줍니다.
 
@@ -121,13 +121,70 @@ print(zeroByZero.width, zeroByZero.height)
 
 값 타입에서 직접 사용자 정의 초기자를 정의하게 되면, 더 이상 그 타입에 대한 기본 설정 초기자에 (또는, 구조체일 경우, 멤버 초기자에도) 접근할 수 없게 된다는 것을 기억하기 바랍니다. 이러한 구속 조건은 더 복잡한 초기자가 제공하는 추가적인 핵심 설정 작업이 누군가 자동으로 제공되는 초기자 중 하나를 사용하는 바람에 우회해 버리는 상황을 막아줍니다.
 
+> 자신이 직접 만든 값 타입이 '기본 설정 초기자' 와 '멤버 초기자' 로 초기화 가능하면서, 사용자 정의 초기자로도 초기화 가능하도록 하고 싶으면, 자기만의 사용자 정의 초기자를 값 타입의 원래 구현부가 아니라 'extension (확장)' 에서 작성하도록 합니다. 더 많은 정보는, [Extensions (확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+
+다음 예제는 기하학적인 사각형을 나타내는 사용자 정의 구조체인 `Rect` 를 정의합니다. 이 예제에서는 `Size` 와 `Point` 라는 두 개의 보조용 구조체가 필요한데, 이 둘의 모든 속성은 기본값으로 `0.0` 을 제공합니다:
+
+```swift
+struct Size {
+  var width = 0.0, height = 0.0
+}
+struct Point {
+  var x = 0.0, y = 0.0
+}
+```
+
+아래에 있는 `Rect` 구조체는 세 가지 방법 중 하나로 초기화할 수 있습니다-`origin` 과 `size` 속성을 기본 값인 `0` 으로 초기화하는 것을 사용하거나, 원점과 크기에 지정된 값을 제공하거나, 중심점과 크기에 지정된 값을 제공하는 것입니다. 이런 초기화 시의 선택 사항들은 `Rect` 구조체의 정의 부분에 있는 세 개의 사용자 정의 초기자로 표현됩니다:
+
+```swift
+struct Rect {
+  var origin = Point()
+  var size = Size()
+  init() {}
+  init(origin: Point, size: Size) {
+    self.origin = origin
+    self.size = size
+  }
+  init(center: Point, size: Size) {
+    let originX = center.x - (size.width / 2)
+    let originY = center.y - (size.height / 2)
+    self.init(origin: Point(x: originX, y: originY), size: size)
+  }
+}
+```
+
+첫 번째 `Rect` 초기자인, `init()` 는, 사용자 정의 초기자가 없는 구조체가 가지는, '기본 설정 초기자 (default initializer)' 와 기능이 같습니다. 이 초기자는 본문이 비어 있는데, 이는 비어있는 중괄호 `{}` 로 표현되었습니다. 이 초기자를 호출하면 `origin` 과 `size` 속성 모두 각 속성에서 정의한 대로 기본 값인 `Point(x: 0.0, y: 0.0)` 및 `Size(width: 0.0, height: 0.0)` 로 초기화된 `Rect` 인스턴스를 반환합니다:
+
+```swift
+let basicRect = Rect()
+// basicRect 의 원점은 (0.0, 0.0) 이고 크기는 (0.0, 0.0) 입니다.
+```
+
+두 번째 `Rect` 초기자인, `init(origin:size:)` 는, 사용자 정의 초기자가 없는 구조체가 가지는, '멤버 초기자 (memberwise initialzier)' 와 기능이 같습니다. 이 초기자는 단순히 `origin` 과 `size` 인자 값을 알맞은 저장 속성에 할당하기만 합니다:
+
+```swift
+let originRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
+// originRect 의 원점은 (2.0, 2.0) 이고 크기는 (5.0, 5.0) 입니다.
+```
+
+세 번째 `Rect` 초기자인, `init(center:size:)` 는, 조금 더 복잡합니다. 이것은 일단 `center` 와 `size` 값으로 적절한 원점을 계산하는 것으로 시작합니다. 그 다음 `init(origin:size:)` 초기자를 호출 (또는 '_delegates (위임)_') 하여, 새로운 원점과 크기 값을 알맞은 속성에 저장합니다:
+
+```swift
+let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
+// centerRect 의 원점은 (2.5, 2.5) 이고 크기는 (3.0, 3.0) 입니다.
+```
+
+`init(center:size:)` 초기자가 직접 새로운 `origin` 과 `size` 값을 알맞은 속성에 할당할 수도 있습니다. 하지만, 이미 그 기능을 정확하게 제공하는 초기자 있을 경우 `init(center:size:)` 초기자가 이를 활용하도록 하는 것이 더 편리하면서 (의도로 명확하게) 해줍니다.
+
+> 이 예제를 작성하는 다른 방법은 `init()` 과 `init(origin:size:)` 초기자를 직접 정의하지 않는 것인데, 이에 대해서는 [Extensions (확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+
 ### Class Inheritance and Initialization (클래스 상속과 초기화)
 
 #### Designated Initializers and Convenience Initializers ('지명 초기자' 와 '편의 초기자')
 
 #### Syntax for Designated and Convenience Initializers ('지명 초기자' 와 '편의 초기자' 의 구문 표현)
 
-#### Initializer Delegation for Class Type (클래스 타입을 위한 초기자 위임하기)
+#### Initializer Delegation for Class Types (클래스 타입을 위한 초기자 위임하기)
 
 '지명 초기자 (designated initializers)' 와 '편의 초기자 (convenience initializers)' 사이의 관계를 단순화하기 위해, 스위프트는 초기자 간의 '위임 호출 (delegation calls)' 에 대해서 다음의 세 가지 규칙을 적용합니다:
 
@@ -195,7 +252,6 @@ print(zeroByZero.width, zeroByZero.height)
 이 규칙은 하위 클래스에서 '편의 초기자' 를 더 추가했어도 그대로 적용됩니다.
 
 > '규칙 2' 를 만족하기 위한 방편으로, 상위 클래스의 '지명 초기자' 를 하위 클래스에서 '편의 초기자' 의 형태로 구현할 수도 있습니다.
-
 
 #### Designated and Convenience Initialization in Action ('지명 초기자' 와 '편의 초기자' 의 실제 사례)
 

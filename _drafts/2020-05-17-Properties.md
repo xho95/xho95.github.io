@@ -242,10 +242,9 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 마찬가지로, `didSet` 관찰자를 구현하면, 이전 속성 값을 담고 있는 상수 매개 변수가 전달됩니다. 매개 변수에 이름을 지정할 수도 있고 기본 제공 매개 변수 이름인 `oldValue` 를 사용할 수도 있습니다. 자신이 가지고 있는 `didSet` 관찰자에서 속성의 값을 할당하면, 새로 할당한 값이 방금 설정된 값을 대체하게 됩니다.
 
-
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 하위 클래스의 초기자에서 속성을 설정할 때, 상위 클래스의 초기자를 호출한 후, 호출됩니다. 이들은 클래스 속성을 설정하는 동안, 상위 클래스의 초기자가 호출되기 전에는, 호출되지 않습니다.
 >
-> '초기자 위임 (initializer delegation)' 에 대한 더 많은 정보는, [Initializer Delegation for Value Type (값 타입을 위한 초기자 위임하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID215) 와 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 위임하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID219) 을 참고하기 바랍니다.
+> '초기자 위임 (initializer delegation)' 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 위임하기)]({% post_url 2020-03-31-Inheritance %}#initial-delegation-for-value-types-값-타입을-위한-초기자-위임하기) 와 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 위임하기)]({% post_url 2020-03-31-Inheritance %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-위임하기) 을 참고하기 바랍니다.
 
 다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는 `StepCounter` 라는 새로운 클래스를 정의하여, 한 사람이 걷는 동안의 총 걸음 수를 추적합니다. 이 클래스는 사람의 운동 과정을 매일 매일 추적하기 위해 '만보계 (pedometer)' 나 다른 '걸음 카운터 (step counter)' 의 입력 데이터를 같이 사용할 수도 있을 것입니다.
 
