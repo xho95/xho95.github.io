@@ -349,7 +349,178 @@ struct SmallRectangle {
 
 #### Setting Initial Values for Wrapped Properties (포장된 속성에 대한 초기 값 설정하기)
 
-#### Projecting a Value From a Property Wrapper (속성 포장에서 값 투영하기)
+위 예제의 코드는 '포장된 속성 (wrapped property)' 의 초기 값을 설정할 때 `TwelveOrLess` 정의에 있는 `number` 초기 값을 부여합니다. 이 '속성 포장 (property wrapper)' 을 사용하는 코드는, `TwelveOrLess` 로 포장된 속성에 대해 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 의 정의에서 `height` 나 `width` 에 초기 값을 부여할 수 없습니다. 초기 값 설정이나 다른 사용자 동작을 지원하고 싶으면, '속성 포장' 에 초기자를 추가할 필요가 있습니다. 다음은 `TwelveOrless` 를 확장한 버전인 `SmallNumber` 인데 여기에는 포장된 값과 최대 값을 설정하는 초기자가 정의되어 있습니다:
+
+```swift
+@propertyWrapper
+struct SmallNumber {
+  private var maximum: Int
+  private var number: Int
+
+  var wrappedValue: Int {
+    get { return number }
+    set { number = min(newValue, maximum) }
+  }
+  init() {
+    maximum = 12
+    number = 0
+  }
+  init(wrappedValue: Int) {
+    maximum = 12
+    number = min(wrappedValue, maximum)
+  }
+  init(wrappedValue: Int, maximum: Int) {
+    self.maximum = maximum
+    number = min(wrappedValue, maximum)
+  }
+}
+```
+
+`SmallNumber` 의 정의는 세 개의 초기자를 포함하고 있으며-`init()`, `init(wrappedValue:)`, 그리고 `init(wrappedValue:maximum:)`-이는 아래의 예제에서 포장된 값과 최대 값을 설정할 때 사용합니다. '초기자' 와 '초기자 구문 표현 (initializer syntax)' 에 대한 정보는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 를 참고하기 바랍니다.
+
+속성에 포장을 적용하면서 초기 값을 지정하지 않을 경우, 스위프트는 `init()` 초기자를 사용하여 포장을 설정합니다. 예를 들면 다음과 같습니다:
+
+```swift
+struct ZeroRectangle {
+  @SmallNumber var height: Int
+  @SmallNumber var width: Int
+}
+
+var zeroRectangle = ZeroRectangle()
+print(zeroRectangle.height, zeroRectangle.width)
+// "0 0" 를 출력합니다.
+```
+
+`height` 와 `width` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber()` 를 호출하여 생성됩니다. 이 초기자 내부에 있는 코드는 초기 포장 값과 초기 최대 값을, 기본 설정 값인 0 과 12 를 사용하여, 설정합니다. 속성 포장은, `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 이전 예제와 같이, 여전히 초기 값을 모두 제공합니다. 그 예제와 다른 점은, `SmallNumber` 는 속성의 선언 부에서 초기 값을 작성하는 기능도 지원한다는 것입니다.
+
+속성에 대한 초기 값을 지정하게 되면, 스위프트는 `init(wrappedValue:)` 초기자를 사용하여 포장을 설정합니다. 예를 들면 다음과 같습니다:
+
+```swift
+struct UnitRectangle {
+  @SmallNumber var height: Int = 1
+  @SmallNumber var width: Int = 1
+}
+
+var unitRectangle = UnitRectangle()
+print(unitRectangle.height, unitRectangle.width)
+// "1 1" 를 출력합니다.
+```
+
+포장을 가진 속성에 `= 1` 를 작성하면, 이는 `init(wrappedValue:)` 초기자에 대한 호출로 번역됩니다. `height` 와 `width` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 1)` 을 호출하여 생성됩니다. 초기자는 포장 값으로 여기서 지정한 값을 사용하며, 최대 값은 기본 설정 값인 12 를 사용합니다.
+
+'사용자 정의 특성 (custom attribute)' 뒤의 괄호 안에 인자를 작성하면, 스위프트는 이 인자를 받는 초기자를 사용하여 포장을 설정합니다. 예를 들어, 초기 값과 최대 값을 제공할 경우, 스위프트는 `init(wrappedValue:maximum:)` 초기자를 사용합니다:
+
+```swift
+struct NarrowRectangle {
+  @SmallNumber(wrappedValue: 2, maximum: 5) var height: Int
+  @SmallNumber(wrappedValue: 3, maximum: 4) var width: Int
+}
+
+var narrowRectangle = NarrowRectangle()
+print(narrowRectangle.height, narrowRectangle.width)
+// "2 3" 를 출력합니다.
+
+narrowRectangle.height = 100
+narrowRectangle.width = 100
+print(narrowRectangle.height, narrowRectangle.width)
+// "5 4" 를 출력합니다.
+```
+
+`height` 를 포장하는 `SmallNumber` 의 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 5)` 를 호출하여 생성되고, `width` 를 포장하는 인스턴스는 `SmallNumber(wrappedValue: 3, maximum: 4)` 를 호출하여 생성됩니다.
+
+'속성 포장 (property wrapper)' 에 인자를 포함하는 것으로써, 포장의 초기 상태를 설정할 수도 있고 포장을 생성할 때 다른 옵션들을 전달할 수도 있게 됩니다. 이런 구문 표현은 속성 포장을 사용하는 가장 일반적인 방법입니다. '특성 (attributes)' 에 필요한 인자라면 뭐든지 제공할 수 있고, 그러면 이들은 초기자로 전달됩니다.
+
+속성 포장 인자를 포함할 때, '할당 (연산자)' 를 사용하여 초기 값을 지정할 수도 있습니다. 스위프트는 '할당 (assignment)' 을 `wrappedValue` 인자처럼 취급하여 그 인자까지 받아 들이는 초기자를 사용하게 됩니다. 예를 들면 다음과 같습니다:
+
+```swift
+struct MixedRectangle {
+  @SmallNumber var height: Int = 1
+  @SmallNumber(maximum: 9) var width: Int = 2
+}
+
+var mixedRectangle = MixedRectangle()
+print(mixedRectangle.height)
+// "1" 를 출력합니다.
+
+mixedRectangle.height = 20
+print(mixedRectangle.height)
+// "12" 를 출력합니다.
+```
+
+`height` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 를 호출하여 생성되며, 이는 기본 설정 최대 값으로 12 를 사용합니다. `width` 를 포장하는 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 를 호출하여 생성됩니다.
+
+#### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)
+
+'포장된 값 (wrapped value)' 외에도, 속성 포장은 '_드러낸 값 (projected value)_' 를 정의하여 추가적인 기능을 내보일 수있습니다-예를 들어, DB 에 대한 접근을 관리하는 속성 포장은 '드러낸 값' 을 써서 `flushDatabaseConnection()` 메소드를 내보일 수 있습니다. '드러낸 값' 의 이름은, 달러 기호 (`$`) 로 시작 한다는 점만 빼면, '포장된 값' 과 같습니다. `$` 로 시작하는 속성을 코드에서 직접 정의할 수는 없기 때문에 '드러낸 값' 이 직접 정의한 속성을 방해가 될 일은 절대 없습니다.
+
+위의 `SmallNumber` 예제에서, 속성에 너무 큰 수를 설정하게 되면, 속성 포장이 그 수를 저장하기 전에 먼저 조정하게 됩니다. 아래 코드는 `SmallNumber` 구조체에 `projectedValue` 속성을 추가하여 속성 포장이 새 값을 저장하기 전에 먼저 조정했는지 여부를 추적합니다.
+
+```swift
+@propertyWrapper
+struct SmallNumber {
+  private var number: Int
+  var projectedValue: Bool
+  init() {
+    self.number = 0
+    self.projectedValue = false
+  }
+  var wrappedValue: Int {
+    get { return number }
+    set {
+      if newValue > 12 {
+        number = 12
+        projectedValue = true
+      } else {
+        number = newValue
+        projectedValue = false
+      }
+    }
+  }
+}
+struct SomeStructure {
+  @SmallNumber var someNumber: Int
+}
+var someStructure = SomeStructure()
+
+someStructure.someNumber = 4
+print(someStructure.$someNumber)
+// "false" 를 출력합니다.
+
+someStructure.someNumber = 55
+print(someStructure.$someNumber)
+// "true" 를 출력합니다.
+```
+
+`someStructure.$someNumber` 를 작성하여 포장의 '드러낸 값' 에 접근합니다. 4 처럼 작은 수를 저장한 후엔, `someStructure.$someNumber` 의 값은 `false` 가 됩니다. 하지만, 55 같이, 너무 큰 수를 저장하려고 하면 '드러낸 값' 은 `true` 가 됩니다.
+
+속성 포장은 '드러낸 값' 으로 어떤 타입의 값이라도 반환할 수 있습니다. 이 예제에서는, 속성 포장이 단 하나의 정보-그 수를 조정했는지의 여부-만을 내보이므로 '드러낸 값' 을 '불린 값 (Boolean value)' 으로 내보입니다. 더 많은 정보를 내보여야 하는 포장은 어떤 다른 자료 타입의 인스턴스를 반환할 수도 있고, 아니면 `self` 를 반환하여 포장의 인스턴스 자체를 '드러낸 값' 으로 내보일 수도 있습니다.
+
+'드러낸 값' 을, 속성 '획득자 (getter)' 나 인스턴스 메소드 같이, 타입에 있는 코드에서 접근할 때는, 속성 이름 앞의 `self.` 를 생략하여, 다른 속성에 접근하는 것처럼, 접근할 수 있습니다. 다음 예제에 있는 코드는 `height` 와 `width` 에 대한 포장의 '드러낸 값' 을 `$height` 와 `$width` 로 참조합니다.
+
+```swift
+enum Size {
+  case small, large
+}
+
+struct SizedRectangle {
+  @SmallNumber var height: Int
+  @SmallNumber var width: Int
+
+  mutating func resize(to size: Size) -> Bool {
+    switch size {
+    case .small:
+      height = 10
+      width = 20
+    case .large:
+      height = 100
+      width = 100
+    }
+    return $height || $width
+  }
+}
+```
+
+'속성 포장 구문 표현 (property wrapper syntax)' 은 단지 '획득자 (getter)' 와 '설정자 (setter)' 를 가지고 있는 속성의 '구문 표현을 쉽게 나타낸 것 (syntactic sugar)' 에 불과하기 때문에, `height` 와 `width` 에 접근하는 동작은 다른 어떠한 속성에든 접근하는 것과 같은 것입니다. 예를 들어, `resize(to:)` 에 있는 코드는 '속성 포장' 을 사용하여 `height` 와 `width` 에 접근합니다. `resize(to: .large)` 를 호출하는 경우면, '스위치 경우 값 (switch case)' `.large` 에 해당하는 코드가 직사각형의 높이와 폭을 100 으로 설정합니다. 포장은 해당 속성의 값이 12 보다 커지는 것을 막은 다음, '드러낸 값' 을 `true` 로 설정하여, 값이 조정되었다는 사실을 기록합니다. `resize(to:)` 의 끝에서, 반환 구문이 `$heigh` 와 `$width` 를 검사하여 속성 포장이 `height` 나 `width` 를 조정했는 지를 확인합니다.
 
 ### Global and Local Variables (전역 변수 및 지역 변수)
 
