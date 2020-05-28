@@ -159,7 +159,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 `center` 속성은 이제 새 값인 `(15, 15)` 로 설정되며, 이는 정사각형을 오른쪽 위로 이동하게 되는데, 이 새 위치는 아래 그림의 오렌지 정사각형으로 나타냈습니다. `center` 속성을 설정하면 `center` 의 '설정자 (setter)' 를 호출하며, 이는 `origin` 저장 속성의 `x` 와 `y` 값을 수정하여, 정사각형을 새 위치로 이동합니다.
 
-![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.jpg)
+![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
 
 #### Shorthand Setter Declaration (설정자 선언의 약칭 표현)
 
@@ -601,7 +601,7 @@ print(SomeClass.computedTypeProperty)
 
 아래 그림은 스테레오 음향 측정 기기를 모델링하기 위해 이 두 음향 채널을 결합하는 방법을 묘사하고 있습니다. 채널의 음향 단계가 `0` 이면, 그 채널의 모든 빛은 꺼집니다. 이 그림에서, 왼쪽 채널은 현재 단계가 `9` 이고, 오른쪽 채널은 현재 단계가 `7` 입니다:
 
-![audio level meter](assets/Swift/Swift-Programming-Launguage/Properties-audio-level-meter.jpg)
+![audio level meter](/assets/Swift/Swift-Programming-Launguage/Properties-audio-level-meter.jpg)
 
 위에서 묘사한 음향 채널은 `AudioChannel` 구조체의 인스턴스로써 표현됩니다:
 
