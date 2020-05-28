@@ -601,7 +601,7 @@ print(SomeClass.computedTypeProperty)
 
 아래 그림은 스테레오 음향 측정 기기를 모델링하기 위해 이 두 음향 채널을 결합하는 방법을 묘사하고 있습니다. 채널의 음향 단계가 `0` 이면, 그 채널의 모든 빛은 꺼집니다. 이 그림에서, 왼쪽 채널은 현재 단계가 `9` 이고, 오른쪽 채널은 현재 단계가 `7` 입니다:
 
-![audio level meter](/assets/Swift/Swift-Programming-Launguage/Properties-audio-level-meter.jpg)
+![audio level meter](/assets/Swift/Swift-Programming-Language/Properties-audio-level-meter.jpg)
 
 위에서 묘사한 음향 채널은 `AudioChannel` 구조체의 인스턴스로써 표현됩니다:
 
