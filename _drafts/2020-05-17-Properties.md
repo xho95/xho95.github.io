@@ -524,11 +524,145 @@ struct SizedRectangle {
 
 ### Global and Local Variables (전역 변수 및 지역 변수)
 
+위에서 설명한 속성 계산과 속성 관찰 같은 기능들은 _전역 변수 (global variables)_ 와 _지역 변수 (local variables)_ 에서도 사용할 수 있습니다. 전역 변수란 함수든, 메소드든, 클로저든, 또는 타입이든 어떠한 영역 외부에서 정의된 변수를 말합니다. 지역 변수는 함수, 메소드, 또는 클로저 영역 내에서 정의된 변수를 말합니다.
+
+이전 장에서 접했던 전역 변수 및 지역 변수는 모두 _저장 변수 (stored variables)_ 였습니다. '저장 변수' 는, '저장 속성' 과 마찬가지로, 정해진 타입의 값에 대한 저장 공간을 제공해서 값을 설정하고 가져올 수 있습니다.
+
+하지만, 전역이든 지역이든 상관없이, _계산 변수 (computed variables)_ 를 정의할 수도 있고 저장 변수에 대한 '관찰자 (observers)' 를 정의할 수도 있습니다. '계산 변수' 는, 값을 저장하든 대신, 직접 계산하며 '계산 속성' 과 같은 방식으로 작성하면 됩니다.
+
+> 전역 상수와 전역 변수는, [Lazy Stored Properties (느긋한 저장 속성)](#lazy-stored-properties-느긋한-저장-속성) 과 같은 태도로, 항상 '느긋하게 (lazily)' 계산됩니다.
+'느긋한 저장 속성' 과 다른 점은, 전역 상수와 전역 변수는 `lazy` 수정자로 표시할 필요가 없다는 것입니다.
+>
+> 지역 상수와 지역 변수는 절대로 '느긋하게 (lazily)' 계산되지 않습니다.
+
 ### Type Properties (타입 속성)
+
+인스턴스 속성은 특정한 타입의 인스턴스에 속해 있는 속성입니다. 그 타입의 새로운 인스턴스를 생성할 때마다, 다른 어떤 인스턴스와는 구분되는, 자신만의 속성 값 집합을 가지게 됩니다.
+
+해당 타입의 어떤 한 인스턴스가 아니라, 타입 그 자체에 속하는 속성을 정의할 수도 있습니다. 이 속성의 복사본은, 해당 타입의 인스턴스를 생성한 개수와는 상관없이, 단 하나만 존재하게 됩니다. 이런 종류의 속성을 _타입 속성 (type properties)_ 라고 합니다.
+
+타입 속성은 특정한 타입의 _모든 (all)_ 인스턴스에 보편적인 값을 정의하는데 유용하며, 가령 (C 언어의 static (정적) 상수 같이) 모든 인스턴스가 사용할 수 있는 상수나, (C 언어의 static (정적) 변수 같이) 해당 타입의 모든 인스턴스에 전역인 값을 저장하는 변수 속성 등이 이에 해당합니다.
+
+'저장 타입 속성 (stored type properties)' 은 변수이거나 상수일 수 있습니다. '계산 타입 속성 (computed type properties)' 은 항상 '변수 속성' 인 것으로 선언해야 하며, , '계산 인스턴스 속성' 과 그 방식이 같습니다.
+
+> '저장 인스턴스 속성' 과 달리, '저장 타입 속성' 은 반드시 항상 '기본 설정 값' 을 가지고 있어야 합니다. 이것은 타입 그 자체는 초기화시에 '저장 타입 속성' 에 값을 할당할 수 있는 초기자를 가지고 있지 않기 때문입니다.
+>
+> '저장 타입 속성' 은 '느긋하게 (lazily)' 처음 접근할 때 초기화됩니다. 이는 여러 쓰레드에서 동시에 접근해도, 단 한 번만 초기화됨을 보장하며, `lazy` 수정자로 표시할 필요도 없습니다.
 
 #### Type Property Syntax (타입 속성 구문 표현)
 
+C 언어 및 오브젝티브-C 언어에서는, 타입과 관련된 정적 상수와 정적 변수를 '_전역 (global)_ 정적 변수' 의 형태로 정의합니다. 반면, 스위프트의, 타입 속성은 타입 외곽 중괄호 안에 있는 타입 정의 부분에서 작성하며, 각 타입 속성은 명시적으로 자신이 지원하는 타입으로 영역의 범위가 정해집니다.
+
+타입 속성의 정의는 `static` 키워드를 사용합니다. 클래스 타입의 '계산 타입 속성' 에는, `class` 키워드를 대신 써서 하위 클래스에서 상위 클래스의 구현을 '재정의 (override)' 할 수 있게 허용할 수 있습니다. 아래 예제는 저장 타입 속성 및 계산 타입 속성에 대한 '구문 표현 (syntax)' 을 보여줍니다:
+
+```swift
+struct SomeStructure {
+  static var storedTypeProperty = "Some value."
+  static var computedTypeProperty: Int {
+    return 1
+  }
+}
+enum SomeEnumeration {
+  static var storedTypeProperty = "Some value."
+  static var computedTypeProperty: Int {
+    return 6
+  }
+}
+class SomeClass {
+  static var storedTypeProperty = "Some value."
+  static var computedTypeProperty: Int {
+    return 27
+  }
+  class var overrideableComputedTypeProperty: Int {
+    return 107
+  }
+}
+```
+
+> 위에 있는 '계산 타입 속성' 예제는 읽기-전용 계산 타입 속성에 대한 것이지만, '계산 인스턴스 속성' 과 같은 구문 표현을 사용하여 '읽고-쓰기 계산 타입 속성 (read-write computed type properties)' 도 정의할 수 있습니다.
+
 #### Querying and Setting Type Properties (타입 속성 조회하고 설정하기)
+
+타입 속성은, 인스턴스 속성과 마찬가지로, '점 구문 표현 (dot syntax)' 를 사용하여 조회하고 설정할 수 있습니다. 하지만, 타입 속성의 조회와 설정은 _타입 (type)_ 에서 하는 것이지, 그 타입의 인스턴스에서 하는 것이 아닙니다. 예를 들면 다음과 같습니다:
+
+```swift
+print(SomeStructure.storedTypeProperty)
+// "Some value." 를 출력합니다.
+SomeStructure.storedTypeProperty = "Another value."
+print(SomeStructure.storedTypeProperty)
+// "Another value." 를 출력합니다.
+print(SomeEnumeration.computedTypeProperty)
+// "6" 를 출력합니다.
+print(SomeClass.computedTypeProperty)
+// "27" 를 출력합니다.
+```
+
+다음은 다중 음향 채널용 음향 측정 기기를 모델링하는 구조체에서 두 개의 저장 타입 속성을 사용하는 예제입니다. 각 채널은 `0` 에서 `10` 사이의 정수 값의 음향 단계를 가지고 있습니다.
+
+아래 그림은 스테레오 음향 측정 기기를 모델링하기 위해 이 두 음향 채널을 결합하는 방법을 묘사하고 있습니다. 채널의 음향 단계가 `0` 이면, 그 채널의 모든 빛은 꺼집니다. 이 그림에서, 왼쪽 채널은 현재 단계가 `9` 이고, 오른쪽 채널은 현재 단계가 `7` 입니다:
+
+![audio level meter](assets/Swift/Swift-Programming-Launguage/Properties-audio-level-meter.jpg)
+
+위에서 묘사한 음향 채널은 `AudioChannel` 구조체의 인스턴스로써 표현됩니다:
+
+```swift
+struct AudioChannel {
+  static let thresholdLevel = 10
+  static var maxInputLevelForAllChannels = 0
+  var currentLevel: Int = 0 {
+    didSet {
+      if currentLevel > AudioChannel.thresholdLevel {
+        // 새 음향 단계를 임계 값까지로 쳐냅니다.
+        currentLevel = AudioChannel.thresholdLevel
+      }
+      if currentLevel > AudioChannel.maxInputLevelForAllChannels {
+        // 지금까지 중에서 이것이 새로운 최대 입력 단계인 것으로 저장합니다.
+        AudioChannel.maxInputLevelForAllChannels = currentLevel
+      }
+    }
+  }
+}
+```
+
+`AudioChannel` 구조체는 기능을 지원하는 용도로 두 개의 '저장 타입 속성' 을 정의합니다. 첫 번째인, `thresholdLevel` 은, 음향 단계가 취할 수 있는 최대 임계 값을 정의합니다. 이는 모든 `AudioChannel` 인스턴스에 대해서 상수 값 `10` 입니다. `10` 보다 높은 값의 음향 신호가 들어 오면, 이 임계 값까지로 쳐냅니다. (이는 아래에서 설명합니다.)
+
+두 번째 타입 속성은 `maxInputLevelForAllChannels` 라는 '변수 저장 속성' 입니다. 이는 `AudioChannel` 인스턴스 중에서 _어떤 (any)_ 것이든 지금까지 수신한 최대 입력 값을 추적합니다. 초기 값은 `0` 에서 시작합니다.
+
+`AudioChannel` 구조체는 `currentLevel` 이라는 '저장 인스턴스 속성' 도 정의하는데, 이는 채널의 현재 음향 단계를 `0` 에서 `10` 까지의 크기로 표현합니다.
+
+`currentLevel` 속성은 `didSet` 속성 관찰자를 가지고 있어서 `currentLevel` 의 값이 설정될 때마다 그 값을 검사합니다. 이 관찰자는 두 가지 검사를 수행합니다:
+
+* 새 `currentLevel` 값이 `thresholdLevel` 에서 허용된 것보다 큰 경우, 이 '속성 관찰자' 는 `currentLevel` 을 `thresholdLevel` 까지로 쳐냅니다.
+* (쳐낸 후의) 새 `currentLevel` 값이 이전에 `AudioChannel` 인스턴스 중 _어떤 (any)_ 것에서든 수신한 값보다 높은 경우, 이 '속성 관찰자' 는 새 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
+
+> 이 두 검사 중 첫 번째에서, `didSet` 관찰자는 `currentLevel` 을 다른 값으로 설정합니다. 이것은, 하지만, '관찰자' 를 다시 호출하지 않습니다.
+
+`AudioChannel` 구조체로 새로이 `leftChannel` 과 `rightChennel` 이라는 두 개의 음향 채널을 생성하여, 스테레오 음향 시스템에 대한 음향 단계를 표현할 수 있습니다:
+
+```swift
+var leftChannel = AudioChannel()
+var rightChannel = AudioChannel()
+```
+
+_왼쪽 (left)_ 채널의 `currentLevel` 을 `7` 로 설정하면, `maxInputLevelForAllChannels` 타입 속성이 `7` 로 갱신되는 것을 볼 수 있습니다:
+
+```swift
+leftChannel.currentLevel = 7
+print(leftChannel.currentLevel)
+// "7" 을 출력합니다.
+print(AudioChannel.maxInputLevelForAllChannels)
+// "7" 을 출력합니다.
+```
+
+_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려고 하면, 오른쪽 채널의 `currentLevel` 속성이 최대 값 `10` 으로 쳐내지고, `maxInputLevelForAllChannels` 타입 속성이 `10` 으로 갱신되는 것을 볼 수 있습니다:
+
+```swift
+rightChannel.currentLevel = 11
+print(rightChannel.currentLevel)
+// "10" 을 출력합니다.
+print(AudioChannel.maxInputLevelForAllChannels)
+// "10" 을 출력합니다.
+```
 
 ### 참고 자료
 
