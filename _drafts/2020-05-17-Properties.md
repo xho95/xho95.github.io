@@ -159,7 +159,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 `center` 속성은 이제 새 값인 `(15, 15)` 로 설정되며, 이는 정사각형을 오른쪽 위로 이동하게 되는데, 이 새 위치는 아래 그림의 오렌지 정사각형으로 나타냈습니다. `center` 속성을 설정하면 `center` 의 '설정자 (setter)' 를 호출하며, 이는 `origin` 저장 속성의 `x` 와 `y` 값을 수정하여, 정사각형을 새 위치로 이동합니다.
 
-![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
+![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.jpg)
 
 #### Shorthand Setter Declaration (설정자 선언의 약칭 표현)
 
