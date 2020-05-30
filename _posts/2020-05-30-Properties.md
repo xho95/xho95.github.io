@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Properties (속성)"
-date:   2020-05-28 10:00:00 +0900
+date:   2020-05-30 10:00:00 +0900
 categories: Swift Language Grammar Property
 ---
 
@@ -26,7 +26,7 @@ _속성 (properties)_ 은 특정한 클래스나, 구조체, 또는 열거체와
 
 저장 속성을 정의하면서 '기본 설정 값 (default value)' 을 제공할 수 있는데, 이는 [Default Property Values (기본 설정 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-설정-속성-값) 에서 설명합니다. 초기화하는 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는 '상수 저장 속성' 에서도 가능한 것으로, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명합니다.
 
-아래 예제는 `FixedLengthRange` 라는 구조체를 정의하는데, 이는 생성되고 나면 범위의 크기를 바꿀 수 없는 정수 범위를 나타냅니다:
+아래 예제는 `FixedLengthRange` 라는 구조체를 정의하여, 생성된 후에는 범위의 크기 (length) 를 바꿀 수 없는 정수 범위를 묘사합니다:
 
 ```swift
 struct FixedLengthRange {
@@ -34,39 +34,39 @@ struct FixedLengthRange {
  let length: Int
 }
 var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
-// 이 범위는 정수 값 0, 1, 그리고 2 를 나타냅니다.
+// 이 범위는 정수 값 0, 1, 2 를 나타냅니다.
 rangeOfThreeItems.firstValue = 6
-// 이 범위는 이제 정수 값 6, 7, 그리고 8 를 나타냅니다.
+// 이 범위는 이제 정수 값 6, 7, 8 을 나타냅니다.
 ```
 
-`FixedLengthRange` 인스턴스는 `firstValue` 라는 '변수 저장 속성' 과 `length` 라는 '상수 저장 속성' 을 가지고 있습니다. 위의 예제에서, `length` 는 새로운 범위를 생성할 때 초기화되어 그 이후로는 바꿀 수 없는데, 이는 '상수 속성' 이기 때문입니다.
+`FixedLengthRange` 인스턴스는 `firstValue` 라는 '변수 저장 속성' 과 `length` 라는 '상수 저장 속성' 을 가지고 있습니다. 위 예제에 있는, `length` 는 새 범위를 생성할 때 초기화되면 그 다음부터는 바꿀 수 없는데, 이는 '상수 속성' 이기 때문입니다.
 
 #### Stored Properties of Constant Structure Instances (상수 구조체 인스턴스의 저장 속성)
 
-구조체의 인스턴스를 생성한 다음 그 인스턴스를 상수에 할당하면, 인스턴스의 속성은 수정할 수 없는데, 이는 '변수 속성' 으로 선언했더라도 마찬가지입니다:
+구조체의 인스턴스를 생성한 다음 이를 상수에 할당하면, 그 인스턴스에 있는 속성은 수정할 수 없으며, 이는 '변수 속성' 으로 선언된 경우라도 마찬가지입니다:
 
 ```swift
 let rangeOfFourItems = FixedLengthRange(firstValue : 0, length: 4)
-// 이 범위는 정수 값 0, 1, 2 그리고 3 을 나타냅니다.
+// 이 범위는 정수 값 0, 1, 2, 3 을 나타냅니다.
 rangeOfFourItems.firstValue = 6
-// 이것은 에러를 보고하는데, firstValue 가 변수 속성 임에도 불구하고 그렇습니다.
+// 이는 에러를 보고하는데, firstValue 가 변수 속성이라도 마찬가지입니다.
 ```
 
-`rangeOfFourItems` 을 (`let` 키워드로) 상수로 선언했기 때문에, `firstValue` 가 변수 속성임에도 불구하고, 이 `firstValue` 속성을 바꾸는 것은 불가능합니다.
+이는 `rangeOfFourItems` 을 (`let` 키워드를 써서) 상수로 선언했기 때문이며, `firstValue` 가 변수 속성일지라도, `firstValue` 속성을 바꿀 수 없습니다.
 
-이런 작동 방식은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시하면, 모든 속성도 마찬가지가 됩니다.
+이렇게 동작하는 것은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시하면, 거기에 속한 모든 속성도 그렇게 됩니다.
 
-이와 같은 방식은, _참조 타입 (reference types)_ 인, 클래스에는 해당하지 않습니다. 참조 타입의 인스턴스를 상수에 할당하더라도, 그 인스턴스의 '변수 속성' 은 여전히 바꿀 수 있습니다.
+이같은 방식은, _참조 타입 (reference types)_ 인, 클래스에는 적용되지 않습니다. 참조 타입의 인스턴스를 상수에 할당하는 경우, 그 인스턴스의 '변수 속성' 을 여전히 바꿀 수 있습니다.
 
 #### Lazy Stored Properties (느긋한 저장 속성)
 
-_느긋한 저장 속성 (lazy stored property)_ 은 맨 처음 사용하는 순간까지 초기 값을 계산하지 않는 속성을 말합니다. 느긋한 (lazy) 저장 속성을 지시하려면 선언 앞에 `lazy` 수정자를 붙이면 됩니다.
+_느긋한 저장 속성 (lazy stored property)_ 은 맨 처음 사용하는 순간까지 초기 값이 계산되지 않는 속성을 말합니다. 선언 앞에 `lazy` 수정자를 붙여서 느긋한 (lazy) 저장 속성임을 지시합니다.
 
-> 느긋한 속성은 반드시 (`var` 키워드를 써서) 변수로 선언해야 하는데, 인스턴스 초기화가 완료된 후에도 초기 값을 가져오지 못할 수도 있기 때문입니다. 상수 속성은 초기화가 완료되기 _전에 (before)_ 반드시 값을 가져야 하므로, 'lazy (느긋한)' 것으로 선언할 수 없습니다.
+> 느긋한 속성은 반드시 항상 (`var` 키워드를 써서) 변수로 선언해야 하는데, 인스턴스 초기화가 완료된 후에도 초기 값을 가져오지 못할 수도 있기 때문입니다. 상수 속성은 초기화가 완료되기 _전에 (before)_ 반드시 항상 값을 가져야 하므로, 'lazy (느긋한)' 것으로 선언할 수 없습니다.
 
-느긋한 (lazy) 속성은 속성의 초기 값이 외부 요인에 의존하기 때문에 이 값을 인스턴스 초기화가 완료된 후에까지 알 수 없는 경우에 유용합니다. 느긋한 (lazy) 속성은 또 속성의 초기 값을 설정하는 것이 아주 복잡하고 계산 비용이 비싸서 정말 필요한 순간이 아니라면 또 필요하지 않은 순간이라면 수행하지 않아야 하는 경우에 유용합니다.
+느긋한 (lazy) 속성이 속성의 초기 값이 외부 요인에 의존해서 이 값을 인스턴스 초기화가 완료된 후에도 알 수 없을 때 유용합니다. 느긋한 (lazy) 속성은 또 속성의 초기 값을 설정하는 것이 복잡하고 계산 비용이 비싸서 필요하지 않거나 또 필요하기 전까진 수행하지 않는 것이 바람직한 경우에도 유용합니다.
 
-아래 예제는 복잡한 클래스에서 불필요한 초기화를 피하기 위해 느긋한 (lazy) 저장 속성을 사용하고 있습니다. 이 예제는 `DataImporter` 와 `DataManager` 라는 두 개의 클래스를 정의하는데, 둘 다 일부만 나타냈습니다:
+아래 예제는 복잡한 클래스에서의 불필요한 초기화를 피하기 위해 느긋한 (lazy) 저장 속성을 사용합니다. 이 예제에서 정의한 `DataImporter` 와 `DataManager` 라는 두 개의 클래스는, 둘 다 일부분만 나타낸 것입니다:
 
 ```swift
 class DataImporter {
@@ -90,31 +90,31 @@ manager.data.append("Some more data")
 // importer 속성을 위한 DataImporter 인스턴스는 아직 생성되지 않았습니다.
 ```
 
-`DataManager` 클래스에는 `data` 라는 저장 속성이 있는데, 이를 `String` 값을 가지는 새로운, 빈 배열로 초기화합니다. 비록 나머지 기능들을 나타내진 않았지만, `DataManager` 클래스의 목적은 이 `String` 배열 자료에 대한 접근을 제공하고 관리하는 것입니다.
+`DataManager` 클래스는 `data` 라는 저장 속성을 가지는데, `String` 값을 담는 새로운, 빈 배열로 초기화합니다. 비록 나머지 기능을 나타내진 않았지만, `DataManager` 클래스의 목적은 이 `String` 배열 자료에 대한 접근 기능을 제공하고 이를 관리하는 것입니다.
 
-`DataManager` 클래스의 기능 중 하나는 파일에서 데이터를 가져 오는 것입니다. 이 기능은 `DataImporter` 클래스가 제공하는 것으로, 일단 이를 초기화하는 데는 적지 않은 시간이 걸린다고 가정합니다. 왜냐면 `DataImporter` 인스턴스를 초기화할 때는 `DataImporter` 인스턴스가 파일을 열고 그 내용을 읽어서 메모리로 옮겨야 할 필요가 있을 것이기 때문입니다.
+`DataManager` 클래스의 기능 중 하나는 파일에서 자료를 가져오는 것입니다. 이 기능은 `DataImporter` 클래스에서 제공하는데, 이를 초기화하는 데는 적지 않은 시간이 걸린다고 가정합니다. 이렇게 가정한 것은 `DataImporter` 인스턴스를 초기화하려면 `DataImporter` 인스턴스가 파일을 열어서 내용을 읽은 다음 메모리로 옮겨야 할 것이기 때문입니다.
 
-`DataManager` 인스턴스가 자료를 관리하면서 항상 자료를 파일에서 가져와야 하는 것은 아닐 수 있으므로, `DataManager` 가 자신을 생성할 때 `DataImporter` 인스턴스를 새로 생성할 필요는 없습니다. 그대신, `DataImporter` 인스턴스를 맨 처음 사용할 때 그 때 생성하는 것이 더 합리적입니다.
+`DataManager` 인스턴스가 매번 파일에서 가져온 자료만 관리하는 건 아닐 것이므로, `DataManager` 를 생성할 때 새 `DataImporter` 인스턴스를 생성할 필요는 없습니다. 그 대신, `DataImporter` 인스턴스가 맨 처음 사용된다면 그 때 생성하는 것이 더 합리적입니다.
 
-`lazy` 수정자로 표시했기 때문에, `importer` 속성을 위한 `DataImporter` 인스턴스는 `importer` 속성에 맨 처음 접근할 때에 생성되며, 이는 `filename` 속성을 조회할 때 등이 해당됩니다:
+`importer` 속성을 위한 `DataImporter` 인스턴스는, `lazy` 수정자로 표시했기 때문에, `filename` 속성을 조회할 때와 같이, `importer` 속성을 맨 처음 접근할 때 생성됩니다:
 
 ```swift
 print(manager.importer.filename)
-// importer 속성을 위한 DataImporter 인스턴스는 지금 생성됐습니다.
+// importer 속성을 위한 DataImporter 인스턴스는 이제 막 생성됐습니다.
 // "data.txt" 를 출력합니다.
 ```
 
-> `lazy` 수정자로 표시된 속성이 아직 초기화되지 않은 상태에서 다중 쓰레드로 동시에 접근할 경우, 이 속성이 한 번만 초기화될 것이라고 보장할 수 없습니다.
+> `lazy` 수정자로 표시된 속성에 다중 쓰레드로 동시에 접근할 때 이 속성이 아직 초기화되지 않은 상태라면, 이 속성은 한 번만 초기화될 것이라고 보장할 수 없습니다.
 
-#### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)
+#### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)[^instance-variables]
 
-오브젝티브-C 언어에 대한 경험이 있다면, 클래스 인스턴스의 값을 저장하고 참조하는 데는 _두 가지 (two)_ 방법이 있다는 것을 알고 있을 것입니다. 속성 외에도, '인스턴스 변수 (instance variables)' 를 속성에 저장된 값의 '백업 저장소 (backing store)' 로 사용할 수 있습니다.
+오브젝티브-C 언어에 대한 경험이 있다면, 클래스 인스턴스에서 값과 참조를 저장하는 데는 _두 가지 (two)_ 방법이 있다는 것을 알고 있을 것입니다. 속성 외에도, '인스턴스 변수 (instance variables)' 를 속성에 저장된 값의 '백업 저장소 (backing store)' 로 사용할 수 있습니다.
 
-스위프트는 이러한 개념을 '단일 속성 선언' 으로 통합했습니다. 스위프트의 속성은 연관되어 있는 인스턴스 변수를 가지지 않으면, 속성의 '백업 저장소' 에 직접 접근하지 않습니다. 이러한 접근 방식은 서로 다른 영역에서 값을 접근할 때의 혼동을 피하고, 속성의 선언을 단일하고 명확한 구문으로 단순화 해줍니다. 속성에 대한 모든 정보는-이름, 타입, 그리고 메모리 관리 성질을 포함하여-타입 정의라는 단일한 위치에서 정의됩니다.
+스위프트는 이러한 개념을 '단일한 속성 선언' 으로 통합했습니다. 스위프트의 속성은 연관된 '인스턴스 변수' 를 가지지 않으며, 속성의 '백업 저장소' 에 직접 접근하지 않습니다. 이런 접근법은 서로 다른 곳에서 값에 접근할 때의 혼동을 없애주고, 속성 선언을 단일하고 명확한 문장으로 할 수 있게 해 줍니다. 속성에 대한 모든-이름, 타입, 그리고 메모리 관리 방식을 포함한-정보들은 단일한 위치인 '타입 정의 부분' 에서 정의합니다.
 
 ### Computed Properties (계산 속성)
 
-클래스, 구조체, 그리고 열거체는, '저장 속성' 외에도,  _계산 속성 (computed properties)_ 을 정의할 수 있는데, 이는 실제로 값을 저장하진 않습니다. 대신에, '획득자 (getter)' 와 '선택적인 설정자 (optional setter)'[^optional-setter] 를 제공하여 이로써 다른 속성과 값을 간접적으로 가져오고 설정하게 됩니다.
+클래스, 구조체, 그리고 열거체는, '저장 속성' 외에도,  _계산 속성 (computed properties)_ 을 정의할 수 있는데, 이는 실제로는 값을 저장하지 않습니다. 대신에, 제공하는 '획득자 (getter)' 와 '선택적인 설정자 (optional setter)'[^optional-setter] 를 써서 간접적으로 다른 속성의 값을 가져오거나 설정합니다.
 
 ```swift
 struct Point {
@@ -667,6 +667,8 @@ print(AudioChannel.maxInputLevelForAllChannels)
 ### 참고 자료
 
 [^Properties]: 이 글에 대한 원문은 [Properties](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 에서 확인할 수 있습니다.
+
+[^instance-variables]: 이부분은 오브젝티브-C 언어와 스위프트 언어의 차이점에 대한 설명이므로, 오브젝티브-C 언어에 대해 잘 모른다면 넘어가도 됩니다.
 
 [^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 'optional setter' 라는 용어를 사용합니다.
 
