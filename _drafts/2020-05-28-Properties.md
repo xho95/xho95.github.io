@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Properties (속성)"
-date:   2020-05-16 10:00:00 +0900
+date:   2020-05-28 10:00:00 +0900
 categories: Swift Language Grammar Property
 ---
 
@@ -12,19 +12,19 @@ categories: Swift Language Grammar Property
 
 ## Properties (속성)
 
-_속성 (properties)_ 은 값을 특정한 클래스, 구조체, 또는 열거체와 관련짓습니다. '저장 속성 (stored properties)' 은 상수와 변수 값을 인스턴스의 일부로 저장하며, 반면 '계산 속성 (computed properties)' 은 값을 (저장하는 대신) 계산합니다. '계산 속성' 은 클래스, 구조체, 그리고 열거체에서 제공합니다. '저장 속성' 은 클래스와 구조에서만 제공합니다.
+_속성 (properties)_ 은 특정한 클래스나, 구조체, 또는 열거체와 결합되어 있는 값입니다. '저장 속성 (stored properties)' 은 상수 값과 변수 값을 인스턴스 내에 저장하는 반면, '계산 속성 (computed properties)' 은 값을 (저장하지 않고) 계산합니다. '계산 속성' 은 클래스, 구조체, 그리고 열거체에서 제공합니다. '저장 속성' 은 클래스와 구조체에서만 제공합니다.
 
-저장 및 계산 속성은 보통 특정한 타입의 인스턴스와 관련되어 있습니다. 하지만, 속성은 타입 그 자체와 관련될 수도 있습니다. 이러한 속성을 타입 속성이라고 합니다.
+저장 속성과 계산 속성은 보통 특정한 타입의 인스턴스와 결합되어 있습니다. 하지만, 속성은 타입 그 자체에 결합되어 있을 수도 있습니다. 이러한 속성을 '타입 속성 (type properties)' 이라고 합니다.
 
-이에 더하여, '속성 관찰자 (property observers)' 를 정의하면 속성 값이 바뀌는 것을 감시해서, 그 응답으로 자기가 정의한 행동을 하게 할 수도 있습니다. '속성 관찰자' 는 자기 스스로 정의한 '저장 속성' 에 추가할 수 있으며, 상위 클래스에서 상속 받은 하위 클래스 속성에도 추가할 수 있습니다.
+이와 더불어, 속성 값이 바뀌는 것을 감시하기 위해 '속성 관찰자 (property observers)' 를 정의할 수 있으며, 이것을 써서 자신만의 사용자 정의 응답을 할 수도 있습니다. '속성 관찰자' 는 자신이 직접 정의한 '저장 속성' 에도 추가할 수 있고, 상위 클래스에서 상속 받은 하위 클래스의 속성에도 추가할 수 있습니다.
 
-'속성 포장 (property wrapper)' 을 사용하여 여러 속성들의 '획득자 (getter)' 와 '설정자 (setter)' 에 있는 코드를 재사용할 수도 있습니다.
+여러 속성에 걸쳐 '획득자 (getter)' 와 '설정자 (setter)' 의 코드를 재사용하기 위해 '속성 포장 (property wrapper)' 이란 것을 사용할 수도 있습니다.
 
 ### Stored Properties (저장 속성)
 
-가장 간단한 양식의, 저장 속성 중은 특정한 클래스나 구조체 인스턴스의 일부로 저장되는 상수 또는 변수입니다. 저장 속성은 (`var` 키워드로 도입하는) _변수 저장 속성 (variable stored properties)_ 일 수도 있고 (`let` 키워드로 도입하는) _상수 저장 속성 (constant stored properties)_ 일 수도 있습니다.   
+'저장 속성' 중, 가장 간단한 양식은, 특정 클래스나 구조체의 인스턴스에 저장되는 상수나 변수입니다. 저장 속성은 (`var` 키워드를 쓰는) _변수 저장 속성 (variable stored properties)_ 일 수도 있고 (`let` 키워드를 쓰는) _상수 저장 속성 (constant stored properties)_ 일 수도 있습니다.
 
-저장 속성은 정의하면서 '기본 설정 값 (default value)' 을 제공할 수 있으며, 이는 [Default Property Values (기본 설정 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-설정-속성-값) 에서 설명합니다. 초기화하는 과정에서 저장 속성의 초기 값을 설정하고 수정할 수도 있습니다. 이는 '상수 저장 속성' 에서도 마찬가지인데, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명하도록 합니다.
+저장 속성을 정의하면서 '기본 설정 값 (default value)' 을 제공할 수 있는데, 이는 [Default Property Values (기본 설정 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-설정-속성-값) 에서 설명합니다. 초기화하는 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는 '상수 저장 속성' 에서도 가능한 것으로, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명합니다.
 
 아래 예제는 `FixedLengthRange` 라는 구조체를 정의하는데, 이는 생성되고 나면 범위의 크기를 바꿀 수 없는 정수 범위를 나타냅니다:
 
