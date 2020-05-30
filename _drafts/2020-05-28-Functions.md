@@ -20,15 +20,65 @@ _함수 (functions)_ 는 지정된 작업을 수행하는 '독립적인 (self-co
 
 ### Defining and Calling Functions (함수 정의하고 호출하기)
 
-함수를 정의 할 때 함수가 입력으로 사용하는 하나 이상의 명명 된 유형의 값을 매개 변수라고하는 선택적으로 정의 할 수 있습니다. 선택적으로 함수가 완료되면 리턴 유형이라고하는 출력으로 전달할 값 유형을 정의 할 수도 있습니다.
+함수를 정의할 때, 그 함수의 입력으로 이름과 타입이 있는 값을 하나 이상 선택하여 정의할 수 있는데, 이를 _매개 변수 (parameters)_ 라고 합니다. 함수를 완료하고 나면 결과로 되돌려질 값의 타입을 선택하여 정의할 수도 있는데, 이는 _값 타입 (return type)_ 이라고 합니다.
 
-모든 기능에는 기능 이름이 있으며이 기능은 해당 기능이 수행하는 작업을 설명합니다. 함수를 사용하려면 해당 함수의 이름으로 해당 함수를 "호출"하고 함수의 매개 변수 유형과 일치하는 입력 값 (인수)을 전달합니다. 함수의 인수는 항상 함수의 매개 변수 목록과 동일한 순서로 제공되어야합니다.
+모든 함수는 _함수 이름 (function name)_ 을 가지고 있어서, 그 함수가 수행하는 작업을 설명합니다. 함수를 사용하려면, 그 함수를 이름으로 "호출 (call)" 하고 함수의 매개 변수 타입에 해당하는 (_인자 (arguments)_ 라는) 입력 값을 전달하면 됩니다. 함수의 인자는 함수의 매개 변수 목록에 있는 것과 항상 같은 순서로 전달해야 합니다.
 
-아래 예의 함수를 인사 (person :)라고합니다. 그 기능이 바로 사람의 이름을 입력으로 받고 해당 사람의 인사말을 반환하기 때문입니다. 이를 위해 하나의 입력 매개 변수 (person이라고하는 문자열 값)와 그 사람에 대한 인사말을 포함하는 String의 반환 유형을 정의합니다.
+아래 예제의 함수는 `greet(person:)` 이라고 하는데, 하는게 그거라서 그렇습니다-사람의 이름을 입력받아서 그 사람에게 인사말을 반환하는 것 말입니다. 이를 위해, 입력 매개 변수-`person` 이라는 `String` 값-하나와, 그 사람에 대한 인사말을 담고 있는 `String` 타입의 반환 값 하나를 정의합니다.
 
-### Function Parameters and Return Values (함수 매개 변수와 반환 값)
+```swift
+func greet(person: String) -> String {
+  let greeting = "Hello, " + person + "!"
+  return greeting
+}
+```
+
+이 모든 정보가 모여서 함수의 _정의 (definition)_ 가 되며, 이 앞에 `func` 키워드가 붙습니다. 함수의 반환 타입은 _반환 화살표 (return arrow)_ `->` (대쉬 기호 뒤에 꺽쇠 괄호가 붙은 것) 으로 지시하며, 반환할 타입의 이름을 그 뒤에 적어줍니다.
+
+정의는 이 함수가 뭘 하는 지, 뭘 입력받고자 하는 지, 그리고 끝났을 때 뭘 반환하는 지를 설명합니다. 정의는 코드 여러 곳에서 함수를 호출할 때 모호하지 않도록 해줍니다.
+
+```swift
+print(greet(person: "Anna"))
+// "Hello, Anna!" 를 출력합니다.
+print(greet(person: "Brian"))
+// "Hello, Brian!" 를 출력합니다.
+```
+
+`greet(person:)` 함수는 `person` '인자 이름표 (argument label)' 뒤에 `String` 값을 전달하여, 가령 `greet(person: "Anna")` 와 같이, 호출합니다. `greet(person:)` 함수는, `String` 값을 반환하므로, 위에서 본 것처럼, 문자열을 출력하는 `print(_:separator:terminator:)` 함수 호출로 이를 감싸서 그 반환 값을 보도록 할 수도 있습니다.
+
+> `print(_:separator:terminator:)` 함수의 첫 번째 인자는 이름표를 가지고 있지 않으며, 다른 인자들은 기본 설정 값을 가지고 있어서 선택할 수 있습니다. 함수 구문 표현에 대한 이러한 변형들은 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 과 [Default Parameter Values (기본 설정 매개 변수 값)](#default-parameter-values-기본-설정-매개-변수-값) 에서 설명합니다.
+
+`greet(person:)` 함수의 본문은 `greeting` 이라는 새 `String` 상수를 정의하고 여기에 간단한 인사말 메시지를 설정하는 것으로 시작합니다. 그다음 이 인사말은 `return` 키워드로 함수 밖으로 다시 되돌려집니다. `return greeting` 이라는 코드 줄에서, 함수는 실행을 마치고 `greeting` 의 현재 값을 반환합니다.
+
+`greet(person:)` 함수는 서로 다른 입력 값을 사용하여 여러 번 호출할 수 있습니다. 위의 예제는 `"Anna"` 라는 입력 값과, `"Brian"` 이라는 입력 값을 써서 호출했을 때 어떻게 되는 지를 보여줍니다. 함수는 각각의 경우에 맞게 맞춰진 인사말을 반환합니다.
+
+이 함수의 본문을 더 짧게 만들기 위해, 메시지 생성 구문과 반환 구문을 한 줄로 병합할 수도 있습니다:
+
+```swift
+func greetAgain(person: String) -> String {
+    return "Hello again, " + person + "!"
+}
+print(greetAgain(person: "Anna"))
+// "Hello again, Anna!" 를 출력합니다.
+```
+
+### Function Parameters and Return Values (함수의 매개 변수와 반환 값)
+
+스위프트에서 함수의 매개 변수와 반환 값은 엄청 유연합니다. 이름없는 단일 매개 변수를 가진 간단한 '실용 (utility)' 함수에서 부터 현란한 이름의 매개 변수와 다양한 매개 변수 옵션을 가진 복잡한 함수까지 무엇이든 정의할 수 있습니다.
 
 #### Functions Without Parameters (매개 변수가 없는 함수)
+
+입력 매개 변수를 정의하지 않는 함수를 말합니다. 다음은 입력 매개 변수가 없는 함수로, 호출될 때마다 항상 같은 `String` 메시지를 반환합니다:
+
+```swift
+func sayHelloWorld() -> String {
+    return "hello, world"
+}
+print(sayHelloWorld())
+// "hello, world" 를 출력합니다.
+```
+
+함수 정의는, 어떤 매개 변수를 가지지 않더라도, 함수 이름 뒤에 괄호를 붙여야 합니다. 함수를 호출할 때는 함수 이름 뒤에 빈 괄호 쌍을 붙여줍니다.
 
 #### Functions with Multiple Parameters (여러 매개 변수를 가진 함수)
 
@@ -40,7 +90,7 @@ _함수 (functions)_ 는 지정된 작업을 수행하는 '독립적인 (self-co
 
 #### Functions With an Implicit Return (암시적으로 반환하는 함수)
 
-### Function Argument Labels and Parameter Names (함수 인자 이름표와 매개 변수 이름)
+### Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
