@@ -80,11 +80,63 @@ print(sayHelloWorld())
 
 함수 정의는, 어떤 매개 변수를 가지지 않더라도, 함수 이름 뒤에 괄호를 붙여야 합니다. 함수를 호출할 때는 함수 이름 뒤에 빈 괄호 쌍을 붙여줍니다.
 
-#### Functions with Multiple Parameters (여러 매개 변수를 가진 함수)
+#### Functions with Multiple Parameters (매개 변수가 여러 개 있는 함수)
+
+함수는 여러 개의 입력 매개 변수를 가질 수 있는데, 이를 작성할 때는 함수 괄호 안에, 쉼표로 구분해 줍니다.
+
+다음 함수는 사람 이름과 이미 인사를 했는 지를 입력 받아서, 그 사람에 대한 인사말을 적절하게 반환합니다:
+
+```swift
+func greet(person: String, alreadyGreeted: Bool) -> String {
+  if alreadyGreeted {
+    return greetAgain(person: person)
+  } else {
+    return greet(person: person)
+  }
+}
+print(greet(person: "Tim", alreadyGreeted: true))
+// "Hello again, Tim!" 를 출력합니다.
+```
+
+`greet(person:alreadyGreeted:)` 함수를 호출할 때는 괄호 안에 `person` 이름표를 단 `String` 인자 값과 `alreadyGreeted` 이름표를 단 `Bool` 인자 값을, 쉼표로 구분하여, 같이 전달하면 됩니다. 이 함수는 이전 장에서 본 `greet(person:)` 함수와 명확하게 구별된다는 점을 주목하기 바랍니다. 두 함수 모두 이름이 `greet` 으로 시작하지만, `greet(person:alreadyGreeted:)` 함수는 두 개의 인자를 받는데 반하여 `greet(person:)` 함수는 하나만 받습니다.
 
 #### Functions Without Return Values (반환 값이 없는 함수)
 
-#### Functions with Multiple Return Values (여러 반환 값을 가진 함수)
+반환 값을 정의하는 것이 함수에서 필수적인 것은 아닙니다. 다음은 `greet(person:)` 함수의 한 가지로, 자신의 `String` 값을 반환하지 않고 출력하는, 버전입니다:
+
+```swift
+func greet(person: String) {
+  print("Hello, \(person)!")
+}
+greet(person: "Dave")
+// "Hello, Dave!" 를 출력합니다.
+```
+
+값을 반환할 필요가 없기 때문에, 함수 정의는 '반환 화살표 (`->`)' 나 반환 타입을 포함하고 있지 않습니다.
+
+> 엄밀히 말하면, 이 버전의 `greet(person:)` 함수 _역시 (does)_, 반환 값을 아무 것도 정의하지 않았음에도 불구하고, 여전히 값을 반환합니다. 반환 타입을 정의하지 않은 함수는 `Void` 타입인 특수한 값을 반환합니다. 이것은 단순히 빈 튜플 (tuple) 이며, `()` 라고 작성합니다.
+
+함수를 호출할 때 반환 값을 무시할 수 있습니다:
+
+```swift
+func printAndCount(string: String) -> Int {
+  print(string)
+  return string.count
+}
+func printWithoutCounting(string: String) {
+  let _ = printAndCount(string: string)
+}
+printAndCount(string: "hello, world")
+// "hello, world" 를 출력하며 12 를 반환합니다.
+printWithoutCounting(string: "hello, world")
+// "hello, world" 를 출력하지만 반환 값은 없습니다.
+```
+
+첫 번째 함수인, `printAndCount(string:)` 는, 문자열을 출력한 다음, 문자의 개수를 `Int` 로 반환합니다. 두 번째 함수인, `printWithoutCounting(string:)` 은, 첫 번째 함수를 호출하지만, 반환 값은 무시합니다. 두 번째 함수를 호출하면, 메시지는 여전히 첫 번째 함수에 의해 출력되지만, 반환 값은 사용되지 않습니다.
+
+> 반환 값을 무시할 수는 있지만, 값을 반환한다고 말한 함수는 반드시 항상 그걸 해야합니다. 반환 타입을 정의한 함수는 값을 반환하지 않은 채로 제어가 함수를 빠져나가게 할 수 없으며, 이렇게 하려고 하면 그 결과는 '컴파일-시간 에러 (compile-time error)' 입니다.
+
+#### Functions with Multiple Return Values (반환 값이 여러 개 있는 함수)
 
 **Optional Tuple Return Types (옵셔널 튜플 반환 타입)**
 
