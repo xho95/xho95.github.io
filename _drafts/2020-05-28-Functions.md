@@ -296,7 +296,63 @@ someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 입니�
 
 #### Variadic Parameters (가변 매개 변수)
 
+_가변 매개 변수 (variadic parameter)_ 는 지정된 타입에 대한 값을 0 개 또는 그 이상 받아 들입니다. '가변 매개 변수' 를 사용하면 함수를 호출할 때 가변적인 개수의 입력 값을 전달할 수 있습니다. 가변 매개 변수를 작성하려면 매개 변수의 타입 이름 뒤에 세 개의 마침표 (`...`) 를 넣으면 됩니다.
+
+가변 매개 변수로 전달되는 값은 함수 본문에서 적당한 타입의 배열로 사용할 수 있게 만들어 집니다. 예를 들어, `numbers` 라는 이름과 `Double...` 이라는 타입을 가진 가변 매개 변수는 함수 본문에서 이름이 `numbers` 이고 타입이 `[Double]` 인 상수 배열로 사용할 수 있습니다.
+
+아래 예제는 어떤 개수의 수치 값에 대해서도 _산술 평균 (arithmetic mean)_ (또는 그냥 _평균 (average)_) 을 계산할 수 있습니다:
+
+```swift
+func arithmeticMean(_ numbers: Double...) -> Double {
+  var total: Double = 0
+  for number in numbers {
+    total += number
+  }
+  return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+// 다섯 개의 수치 값에 대한 산술 평균인, 3.0 을 반환합니다.
+arithmeticMean(3, 8.25, 18.75)
+// 세 개의 수치 값에 대한 산출 평균인, 10.0 을 반환합니다.
+```
+
+> 함수는 한 개의 가변 매개 변수만 가질 수 있습니다.
+
 #### In-Out Parameters (입-출력 매개 변수)
+
+함수의 매개 변수는 기본적으로 상수입니다. 함수의 매개 변수 값을 그 함수 본문에서 바꾸려고 하면 '컴파일 시간 에러 (compile-time error)' 가 발생합니다. 이것의 의미는 매개 변수의 값이 실수로 바뀔 일은 없다는 것입니다. 함수에서 매개 변수의 값을 수정하고, 그렇게 바뀐 것을 함수 호출이 끝난 후에도 유지하고자 한다면, 이 때는 그 매개 변수를 _입-출력 매개 변수 (in-out parameter)_ 라고 정의하면 됩니다.
+
+입-출력 매개 변수를 작성하려면 매개 변수의 타입 바로 앞에 `inout` 키워드를 위치시킵니다. '입-출력 매개 변수' 는 함수에 _입력 (in)_ 된 다음, 함수에서 수정되고 나서, 원래 값을 대체하기 위해 함수 밖으로 _출력 (out)_ 되는 값을 가지고 있습니다. 입-출력 매개 변수의 동작 방식과 이에 관련된 컴파일러 최적화에 대한 더 자세한 논의는 [In-Out Parameters (입-출력 매개 변수)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID545) 를 참고하기 바랍니다.
+
+입-출력 매개 변수의 인자로는 변수만 전달할 수 있습니다. 상수나 '글자 표현 값 (literal value)' 은 인자로 전달할 수 없는데, 상수와 '글자 표현 (literals)' 은 수정할 수 없기 때문입니다. 입-출력 매개 변수에 인자를 전달할 때는, 함수에서 수정할 수 있는 것을 지시하기 위해, 변수 이름 바로 앞에 '앤드 기호 (`&`; 앰퍼센드)' 를 붙이도록 합니다.
+
+> '입-출력 매개 변수' 는 '기본 설정 값 (default values)' 을 가질 수 없으며, 가변 매개 변수는 `inout` 이라고 표시할 수 없습니다.  
+
+다음은, `a` 와 `b` 라는 두 개의 입-출력 매개 변수를 가지고 있는, `swapTwoInts(_:_:)` 라는 함수에 대한 예제입니다:
+
+```swift
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+  let temporaryA = a
+  a = b
+  b = temporaryA
+}
+```
+
+`swapTwoInts(_:_:)` 함수는 단순히 `b` 값을 `a` 로, `a` 값을 `b` 로 서로 교환합니다. 이 함수는 교환 작업을 위해 `a` 값을 `temporaryA` 라는 임시 상수에 저장한 다음, `b` 값을 `a` 에 할당하고, 다시 `temporaryA` 를 `b` 에 할당합니다.
+
+`swapTwoInts(_:_:)` 함수를 호출하면 `Int` 타입의 두 변수 값을 서로 교환할 수 있습니다. `swapTwoInts(_:_:)` 함수로 전달할 때 `someInt` 와 `anotherInt` 의 이름에는 접두사 '앤드 기호 (앰퍼센드)' 를 붙인다는 것을 기억하기 바랍니다:
+
+```swift
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+// "someInt is now 107, and anotherInt is now 3" 를 출력합니다.
+```
+
+위의 예제는 `someInt` 와 `anotherInt` 의 원래 값이, 함수 외부에서 정의되었음에도 불구하고, `swapTwoInts(_:_:)` 함수에서 수정된 것을 보여줍니다.
+
+> 입-출력 매개 변수는 함수에서 값을 반환하는 것과 같은 것이 아닙니다. 위의 `swapTwoInts` 예제는 반환 타입을 정의하지도 않았고 값을 반환하지도 않지만, 여전히 `someInt` 와 `anotherInt` 의 값을 수정합니다. 입-출력 매개 변수는 함수가 함수 본문 영역의 범위 외부로 효과를 줄 수 있는 또 다른 방법입니다.
 
 ### Function Types (함수 타입)
 
@@ -312,4 +368,4 @@ someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 입니�
 
 [^Functions]: 이 글에 대한 원문은 [Functions](https://docs.swift.org/swift-book/LanguageGuide/Functions.html) 에서 확인할 수 있습니다.
 
-[^optional-tuple-type]: 전자인 `(Int, Int)?` 는 타입 자체가 '옵셔널 (optional)' 이고, 후자인 `(Int?, Int?)` 는 타입은 '튜플 (tuple)' 인데 '옵셔널 타입' 을 담고 있는 것입니다.
+[^optional-tuple-type]: 전자인 `(Int, Int)?` 는 타입 자체가 '옵셔널 (optional)' 이고, 후자인 `(Int?, Int?)` 는 타입은 '튜플 (tuple)' 인데 '옵셔널 타입' 을 담고 있는 것입니다. 즉 후자는 타입 자체가 '옵셔널' 인 것은 아닙니다.
