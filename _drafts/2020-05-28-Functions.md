@@ -356,7 +356,70 @@ print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 
 ### Function Types (함수 타입)
 
+모든 함수는 지정된 _함수 타입 (function type)_ 을 가지는데, 이는 그 함수의 매개 변수 타입과 반환 타입으로 구성됩니다.
+
+예를 들면 다음과 같습니다:
+
+```swift
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
+  return a + b
+}
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
+  return a * b
+}
+```
+
+이 예제는 `addTwoInts` 와 `multiplyTwoInts` 라는 두 개의 간단한 수학 함수를 정의합니다. 이 함수들은 각각 두 개의 `Int` 값을 받아서, 적절한 수학 연산을 수행한 결과를, 한 개의 `Int` 값으로 반환합니다.
+
+이 두 함수 모두 타입이 `(Int, Int) -> Int` 입니다. 이는 다음 처럼 이해할 수 있습니다:
+
+"둘 다 타입이 `Int` 인, 두 개의 매개 변수를 가지고, `Int` 타입인 한 개의 값을 반환하는 함수."
+
+다음은 또 다른 예제로, 매개 변수와 반환 값이 없는 함수입니다:
+
+```swift
+func printHelloWorld() {
+  print("hello, world")
+}
+```
+
+이 함수의 타입은 `() -> Void`, 또는 "매개 변수가 없고, `Void` 를 반환하는 함수" 입니다.
+
 #### Using Function Types (함수 타입 사용하기)
+
+함수 타입은 스위프트에 있는 다른 타입인 것처럼 사용할 수 있습니다. 예를 들어, 상수나 변수를 함수 타입으로 정의하면 그 변수에 적절한 함수를 할당할 수 있습니다:
+
+```swift
+var mathFunction: (Int, Int) -> Int = addTwoInts
+```
+
+이것은 다음과 같이 이해할 수 있습니다:
+
+"타입이 '두 개의 `Int` 값을 가지고, 한 개의 `Int` 값을 반환하는 함수' 인, `mathFunction` 이라는 변수를 정의합니다. 이 새 변수가 `addTwoInts` 라는 함수를 참조하도록 설정합니다."
+
+`addTwoInts(_:_:)` 함수는 `mathFunction` 변수와 같은 타입을 가지므로, 이 할당 작업은 스위프트의 타입-검사기가 허락 해줍니다.
+
+이제 할당한 함수를 `mathFunction` 이라는 이름으로 호출할 수 있습니다:
+
+```swift
+print("Result: \(mathFunction(2, 3))")
+// "Result: 5" 를 출력합니다.
+```
+
+타입만 같으면 동일 변수에 다른 함수도 할당할 수 있으며, 함수가 아닌 타입에서 하듯이 하면 됩니다.
+
+```swift
+mathFunction = multiplyTwoInts
+print("Result: \(mathFunction(2, 3))")
+// "Result: 6" 을 출력합니다.
+```
+
+다른 타입에서 하는 것처럼, 함수를 상수나 변수에 할당할 때 스위프트가 그 함수 타입을 추론하도록 내버려 둘 수도 있습니다.
+
+```swift
+let anotherMathFunction = addTwoInts
+// anotherMathFunction 은 (Int, Int) -> Int 타입으로 추론됩니다.
+```
 
 #### Function Type as Parameter Types (함수 타입을 매개 변수 타입으로 사용하기)
 
