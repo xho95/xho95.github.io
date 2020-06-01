@@ -244,9 +244,55 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
+인자 이름표는 매개 변수 이름 앞에, 공백으로 구분하여, 작성합니다:
+
+```swift
+func someFunction(argumentLabel parameterName: Int) {
+  // 함수 본문에서, parameterName 은
+  // 해당 매개 변수에 대한 인자 값을 참조합니다.
+}
+```
+
+다음은 `greet(person:)` 함수를 변형하여 사람 이름과 출신지를 받아서 인사말을 반환하도록 한 것입니다:
+
+```swift
+func greet(person: String, from hometown: String) -> String {
+  return "Hello \(person)! Glad you could visit from \(hometown)."
+}
+print (greet(person: "Bill", from: "Cupertino"))
+// "Hello Bill! Glad you could visit from Cupertino." 를 출력합니다.
+```
+
+인자 이름표를 사용하면 의미가 잘 드러나며, 일반 문장-같이 함수를 호출할 수 있으면서도, 함수 본문은 여전히 이해하기 쉽고 목적을 명확하게 나타낼 수 있습니다.
+
 #### Omitting Argument Labels (인자 이름표 생략하기)
 
+매개 변수에 인자 이름표를 붙이고 싶지 않으면, 해당 매개 변수에 명시적인 인자 이름표 대신 _밑줄 (underscore)_ (`_`) 을 작성하면 됩니다.
+
+```swift
+func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
+  // 함수 본문에서, firstParameterName 과 secondParameterName 은
+  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
+}
+someFunction (1, secondParameterName: 2)
+```
+
+매개 변수가 인자 이름표를 가지고 있으면, 그 인자는 함수를 호출 할 때 _반드시 (must)_ 이름표를 붙여야 합니다.
+
 #### Default Parameter Values (기본 설정 매개 변수 값)
+
+함수의 매개 변수는 어떤 것이든 그 매개 변수 타입 뒤에 값을 할당하여 _기본 설정 값 (default value)_ 을 정의할 수 있습니다. '기본 설정 값' 을 정의하면, 함수를 호출할 때 해당 매개 변수를 생략할 수 있습니다.
+
+```swift
+func someFunction (parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
+  // 이 함수를 호출할 때 두 번째 인자를 생략하면,
+  // parameterWithDefault 의 값은 함수 본문 내에서 12 가 됩니다.
+}
+someFunction (parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault 는 6 입니다.
+someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 입니다.
+```
+
+기본 설정 값이 없는 매개 변수를, 기본 설정 값이 있는 매개 변수 보다 앞에, 함수 매개 변수 목록의 시작 부분에 위치하도록 합니다. 기본 설정 값이 없는 매개 변수가 함수에서 보통 더 중요한 의미를 가지기 때문에-이를 먼저 작성하는 것은, 어떤 기본 설정 값이 생략되었든 상관없이, 동일 함수를 호출했음을 더 쉽게 인식하게 만들어 줍니다.
 
 #### Variadic Parameters (가변 매개 변수)
 
