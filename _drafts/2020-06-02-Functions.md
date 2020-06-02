@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Functions (함수)"
-date:   2020-05-28 10:00:00 +0900
+date:   2020-06-02 10:00:00 +0900
 categories: Swift Language Grammar Function
 ---
 
@@ -423,12 +423,106 @@ let anotherMathFunction = addTwoInts
 
 #### Function Type as Parameter Types (함수 타입을 매개 변수 타입으로 사용하기)
 
+함수 타입, 가령 `(Int, Int) -> Int` 와 같은 것은 다른 함수의 매개 변수 타입으로 사용할 수 있습니다. 이렇게 하면 함수를 호출할 때 함수를 호출하는 쪽에서 함수 구현의 일부를 제공할 수 있게 됩니다.
+
+다음은 위에 있는 수학 함수의 결과를 출력하는 예제입니다:
+
+```swift
+func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+  print("Result: \(mathFunction(a, b))")
+}
+printMathResult(addTwoInts, 3, 5)
+// "Result: 8" 를 출력합니다.
+```
+
+이 예제는, 세 개의 매개 변수를 가지고 있는, `printMathResult(_:_:_:)` 라는 함수를 정의합니다. 첫 번째 매개 변수는 `mathFunction` 이고, 타입은 `(Int, Int) -> Int` 입니다. 이 타입에 해당하는 함수라면 어떤 것이든 첫 번째 매개 변수의 인자로 전달할 수 있습니다. 두 번째와 세 번째 매개 변수는 `a` 와 `b` 이며, 둘 다 타입은 `Int` 입니다. 이들은 제공한 수학 함수의 두 입력 값으로 사용됩니다.
+
+`printMathResult(_:_:_:)` 를 호출할 때는, `addTwoInts(_:_:)` 함수 및, 정수 값 `3` 과 `5` 를 전달합니다. `3` 과 `5` 를 써서 제공한 함수를 호출한 다음, 그 결과인 `8` 을 출력합니다.
+
+`printMathResult(_:_:_:)` 의 역할은 적절한 타입에 해당하는 수학 함수의 호출 결과를 출력하는 것입니다. 함수의 실제 구현이 무엇인지는 상관없습니다-함수가 올바른 타입인지만 신경씁니다. 이렇게 하면 `printMathResult(_:_:_:)` 가 타입-안전한 방식[^type-safe]으로 기능의 일부를 함수를 호출하는 쪽으로 넘겨줄 수 있게 됩니다.
+
 #### Function Type as Return Types (함수 타입을 반환 타입으로 사용하기)
 
+함수 타입을 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환을 수행하는 함수의 '반환 화살표 (`->`)' 바로 뒤에 '완전한 함수 타입' 을 작성하면 됩니다.
+
+다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 두 개의 간단한 함수를 정의합니다. `stepForward(_:)` 함수는 입력 값보다 하나 더 큰 값을 반환하며, `stepBackward(_:)` 함수는 입력 값보다 하나 더 작은 값을 반환합니다. 두 함수 모두 타입은 `(Int) -> Int` 입니다:
+
+```swift
+func stepForward(_ input: Int) -> Int {
+  return input + 1
+}
+func stepBackward(_ input: Int) -> Int {
+  return input - 1
+}
+```
+
+다음은 `chooseStepFunction(backward:)` 라는 함수이며, 반환 타입은 `(Int) -> Int` 입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불린 (Boolean) 매개 변수를 기반으로 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
+
+```swift
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+  return backward ? stepBackward : stepForward
+}
+```
+
+이제 `chooseStepFunction(backward:)` 을 사용하면 한 쪽 아니면 다른 쪽 방향으로 한 단계 이동하는 함수를 얻을 수 있습니다:
+
+```swift
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+// moveNearerToZero 는 이제 stepBackward() 함수를 참조합니다.
+```
+
+위의 예제는 `currentValue` 라는 변수가 `0` 에 점점 더 가까워지려면 필요한 것이 양의 방향인지 음의 방향인지를 결정합니다. `currentValue` 의 초기 값은 `3` 인데, 이는 `currentValue > 0` 이 `true` 를 반환하며, 결국 `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환할 것임을 의미합니다. 반환된 함수의 참조는 `moveNearerToZero` 라는 상수에 저장합니다.
+
+이제 `moveNearerToZero` 가 올바른 함수를 참조하고 있으므로, `0` 으로 이동하는데 사용할 수 있습니다:
+
+```swift
+print("Counting to zero:")
+// zero 으로 이동합니다:
+while currentValue != 0 {
+    print("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+// 3...
+// 2...
+// 1...
+// zero!
+```
+
 ### Nested Functions (품어진 함수)
+
+이번 장에서 지금까지 마주친 모든 예제에 있는 함수들은, 전역 범위에서 정의한, _전역 함수 (global functions)_ 였습니다. 함수는 다른 함수의 본문 내에서도 정의할 수 있는데, 이를 _품어진 함수 (nested functions)_ 라고 합니다.
+
+'품어진 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수 (enclosing function)' 를 사용하면 여전히 호출할 수 있습니다. '둘러싼 함수' 는 자기가 가지고 있는 '품어진 함수' 중 하나를 반환해서 그 '품어진 함수' 를 다른 영역에서 사용하도록 할 수도 있습니다.
+
+위에 있는 `chooseStepFunction(backward:)` 예제를 '품어진 함수' 를 사용하고 반환하도록 다시 작성하면 다음과 같습니다:
+
+```swift
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+  func stepForward(input: Int) -> Int { return input + 1 }
+  func stepBackward(input: Int) -> Int { return input - 1 }
+  return backward ? stepBackward : stepForward
+}
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+// moveNearerToZero 는 이제 품어진 함수인 stepForward() 를 참조합니다.
+while currentValue != 0 {
+  print("\(currentValue)... ")
+  currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+// -4...
+// -3...
+// -2...
+// -1...
+// zero!
+```
 
 ### 참고 자료
 
 [^Functions]: 이 글에 대한 원문은 [Functions](https://docs.swift.org/swift-book/LanguageGuide/Functions.html) 에서 확인할 수 있습니다.
 
 [^optional-tuple-type]: 전자인 `(Int, Int)?` 는 타입 자체가 '옵셔널 (optional)' 이고, 후자인 `(Int?, Int?)` 는 타입은 '튜플 (tuple)' 인데 '옵셔널 타입' 을 담고 있는 것입니다. 즉 후자는 타입 자체가 '옵셔널' 인 것은 아닙니다.
+
+[^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 이 내용은 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 부분의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 바 있습니다.
