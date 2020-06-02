@@ -83,7 +83,7 @@ numberOfLegs["bird"] = 2
 
 첨자 연산의 입력 매개 변수는 개수가 몇 개가 되든 상관이 없으며, 입력 매개 변수의 타입도 어떤 타입이든 상관이 없습니다. 첨자 연산은 또 어떤 타입의 값이라도 반환할 수 있습니다.
 
-함수와 마찬가지로, 첨자 연산은 가변 개수의 매개 변수도 받을 수 있고 매개 변수에 기본 설정 값을 제공할 수도 있는데, 이는 [Variadic Parameters](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID171) 와 [Default Parameter Values](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID169) 에서 설명하고 있습니다. 하지만, 함수와는 다르게, 첨자 연산에는 'in-out (입-출력)' 매개 변수를 사용할 수는 없습니다.
+함수와 마찬가지로, 첨자 연산은 가변 개수의 매개 변수도 받을 수 있고 매개 변수에 기본 설정 값을 제공할 수도 있는데, 이는 [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 와 [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 에서 설명하고 있습니다. 하지만, 함수와는 다르게, 첨자 연산에는 'in-out (입-출력)' 매개 변수를 사용할 수는 없습니다.
 
 클래스나 구조체는 첨자 연산 구현을 필요한 만큼 많이 제공 할 수 있는데, 이 중에서 어떤 첨자 연산을 사용하는 것이 알맞은 지는 첨자 연산이 사용되는 시점에서 첨자 연산이 괄호 안에 가지고 있는 값이나 갑들의 타입에 기반하여 추론됩니다. 이렇게 여러 개의 첨자 연산을 정의하는 것을 _첨자 연산 중복 정의 (subscript overloading)_ 라고 합니다.
 

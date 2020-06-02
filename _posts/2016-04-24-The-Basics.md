@@ -122,7 +122,7 @@ print(friendlyWelcome)
 // "Bonjour!" 를 출력합니다.
 ```
 
-`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과 형태로 출력하는 전역 함수입니다. 예를 들어, Xcode (엑스코드) 에서는, `print(_:separator:terminator:)` 함수가 그 결과를 Xcode 의 "console (콘솔)" 창에 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 설정 값을 갖고 있으므로, 이 함수를 호출할 때 생략할 수 있습니다. 기본적으로, 이 함수는 줄의 마지막에 '줄 바꿈 (line break)' 을 추가하여 출력합니다. 값을 출력할 때 끝에 줄 바꿈을 없애려면, 'terminator (종료자)'에 빈 문자열을 전달하면 됩니다-예를 들어, `print(someValue, terminator : "")` 처럼 하면 됩니다. '기본 설정 값을 가지는 매개 변수' 에 대해서는 [Default Parameter Values (기본 설정 매개 변수 값)](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID169) 를 보도록 합니다.
+`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과 형태로 출력하는 전역 함수입니다. 예를 들어, Xcode (엑스코드) 에서는, `print(_:separator:terminator:)` 함수가 그 결과를 Xcode 의 "console (콘솔)" 창에 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 설정 값을 갖고 있으므로, 이 함수를 호출할 때 생략할 수 있습니다. 기본적으로, 이 함수는 줄의 마지막에 '줄 바꿈 (line break)' 을 추가하여 출력합니다. 값을 출력할 때 끝에 줄 바꿈을 없애려면, 'terminator (종료자)'에 빈 문자열을 전달하면 됩니다-예를 들어, `print(someValue, terminator : "")` 처럼 하면 됩니다. '기본 설정 값을 가지는 매개 변수' 에 대해서는 [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 를 보도록 합니다.
 
 
 스위프트는 '_문자열 보간법 (string interpolation)_' 을 사용하여 긴 문자열 속에 상수나 변수 이름으로 '자리 표시 (placeholder)' 를 하고, 스위프트가 그 자리를 해당 상수나 변수의 현재 값으로 교체하도록 알려줄 수 있습니다. 이는 이름을 괄호로 감싼 다음, 시작 괄호 앞에 역-슬래시 (backslash) 로 'escape (벗어나게)'[^escape] 하면 됩니다:
@@ -476,7 +476,7 @@ print("The status message is \(http200Status.description)")
 // "The status message is OK" 를 출력합니다.
 ```
 
-튜플은 함수의 반환 값으로 쓸 때 특히 더 유용합니다. 웹 페이지를 가져오는 함수는 그 페이지를 가져오는 것에 성공했는지 실패했는지를 나타내기 위해 `(Int, String)` 튜플 타입을 반환할 수 있을 것입니다. 두 개의 별개의, 서로 타입이 다르기 까지한, 값으로 구성된 튜플을 반환함으로써, 이 함수는 단일한 타입의 단 하나의 값을 반환하는 경우보다 결과물에 대한 더 유용한 정보를 제공할 수 있습니다. 더 자세한 정보는 [Functions with Multiple Return Values (여러 개의 반환 값을 가지는 함수)](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID164) 를 참고하기 바랍니다.
+튜플은 함수의 반환 값으로 쓸 때 특히 더 유용합니다. 웹 페이지를 가져오는 함수는 그 페이지를 가져오는 것에 성공했는지 실패했는지를 나타내기 위해 `(Int, String)` 튜플 타입을 반환할 수 있을 것입니다. 두 개의 별개의, 서로 타입이 다르기 까지한, 값으로 구성된 튜플을 반환함으로써, 이 함수는 단일한 타입의 단 하나의 값을 반환하는 경우보다 결과물에 대한 더 유용한 정보를 제공할 수 있습니다. 더 자세한 정보는 [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 를 참고하기 바랍니다.
 
 > 튜플은 관계 있는 값을 간단히 그룹지을 때 유용한 것입니다. 복잡한 데이터 구조를 생성하는 데는 적합하지 않습니다. 데이터 구조가 더 복잡해질 수도 있을 것 같으면, 튜플 대신에, 클래스나 구조체로 모델링하도록 합니다. 더 자세한 정보는 [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
 

@@ -203,7 +203,7 @@ struct CompactRect {
 }
 ```
 
-'획득자' 에서 `return` 을 생략하는 것은 함수에서 `return` 을 생략하는 것과 같은 규칙을 따르는 것으로, 이는 [Functions With an Implicit Return (암시적으로 반환하는 함수)](https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID607) 에서 설명되어 있습니다.
+'획득자' 에서 `return` 을 생략하는 것은 함수에서 `return` 을 생략하는 것과 같은 규칙을 따르는 것으로, 이는 [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명했었습니다.
 
 #### Read-Only Computed Properties (읽기-전용 계산 속성)
 
