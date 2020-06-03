@@ -16,9 +16,26 @@ categories: Swift Language Grammar Control-Flow For-In While
 
 스위프트는 `for-in` 반복 구문도 제공하므로 배열, 딕셔너리, 범위, 문자열, 및 기타 '일련의 값들 (sequences)' 에 대해 동작을 쉽게 반복 적용할 수 있습니다.
 
-스위프트의 `switch` 문은 C-계열 언어에 있는 것보다 괄목할만하게 더 강력합니다. '경우 값 (cases)' 는 아주 다양한 '유형 (patterns)' 에 대해서 해당하는 것을 찾을 수 있으며, '해당 구간 찾기 (interval matches)', 튜플 찾기, 그리고 지정된 타입으로의 '변환 (casts)' 기능도 포함합니다. `switch` 의 '경우 값(case)' 에 해당하는 값은 임시 상수나 변수로 연결되어서 '경우 값' 본문 내에서 사용할 수 있으며, 각 '경우 값 (case)' 에 `where` 절을 사용하면 해당 조건이 복잡한 것도 표현할 수 있습니다.
+스위프트의 `switch` 문은 C-계열 언어에 있는 것보다 눈에 띄게 더 강력합니다. '경우 값 (cases)' 는 아주 다양한 '유형 (patterns)' 에 대해서 해당하는 것을 찾을 수 있으며, '해당 구간 찾기 (interval matches)', 튜플 찾기, 그리고 지정된 타입으로의 '변환 (casts)' 기능도 포함합니다. `switch` 의 '경우 값(case)' 에 해당하는 값은 임시 상수나 변수로 연결되어서 '경우 값' 본문 내에서 사용할 수 있으며, 각 '경우 값 (case)' 에 `where` 절을 사용하면 해당 조건이 복잡한 것도 표현할 수 있습니다.
 
-### For-In Loops (For-In 반복 구문)
+### For-In Loops (For-In 반복문)
+
+`for-in` 반복문을 사용하면 일련의 값들에 동작을 반복 적용할 수 있는데, 여기에는 배열의 항목, 수치 값의 범위, 또는 문자열의 문자 등이 해당합니다.
+
+다음의 예제는 `for-in` 반복문을 사용하여 배열의 각 항목에 대해 동작을 반복 적용시킵니다:
+
+```swift
+let names = ["Anna", "Alex", "Brian", "Jack"]
+for name in names {
+    print("Hello, \(name)!")
+}
+// Hello, Anna!
+// Hello, Alex!
+// Hello, Brian!
+// Hello, Jack!
+```
+
+'키-값 쌍 (key-value pairs)' 으로 접근하면 '딕셔너리 (dictionary)' 에도 동작을 반복 적용시킬 수 있습니다. 사전이 반복 될 때 사전의 각 항목은 (키, 값) 튜플로 반환되며, (키, 값) 튜플의 멤버를 for-in 루프의 본문 내에서 사용하기 위해 명시 적으로 명명 된 상수로 분해 할 수 있습니다. 아래 코드 예제에서 사전의 키는 animalName이라는 상수로 분해되고 사전의 값은 legCount라는 상수로 분해됩니다.
 
 ### While Loops (While 반복 구문)
 
