@@ -242,7 +242,7 @@ print("Game over!")
 
 정해진 조건에 따라 서로 다른 코드 조각을 실행하는 것이 유용할 때가 있습니다. 에러가 발생했을 때 부가적인 코드 조각을 실행하거나, 아니면 값이 너무 크거나 작을 때 메시지를 나타내고 싶을 수도 있을 것입니다. 이렇게 하려면, 코드 일부를 _조건부 (conditional)_ 로 만들면 됩니다.
 
-스위프트는 코드에 조건 분기를 추가하기 위해 두 가지 방법을 제공합니다: `if` 문과 `switch` 문이 그것입니다. 일반적으로, 가능한 결과가 적은 단순한 조건 값을 계산할 때는 `if` 문을 사용합니다. `switch` 문은 여러 개의 순서를 가지는 좀더 복잡한 조건에 더 적합하며 '유형 맞춤 (pattern matching)' 이 실행할 알맞은 분기를 찾는데 도움을 줄 수 있는 상황에 유용합니다.
+스위프트는 코드에 조건 분기를 추가하기 위해 두 가지 방법을 제공합니다: `if` 문과 `switch` 문이 그것입니다. 일반적으로, 가능한 결과가 적은 단순한 조건 값을 계산할 때는 `if` 문을 사용합니다. `switch` 문은 여러 개의 순서를 가지는 좀더 복잡한 조건에 더 적합하며 '유형 맞춰보기 (pattern matching)' 이 실행할 알맞은 분기를 찾는데 도움을 줄 수 있는 상황에 유용합니다.
 
 #### If (If 문)
 
@@ -302,6 +302,55 @@ if temperatureInFahrenheit <= 32 {
 온도가 `if` 나 `else if` 조건을 일으킬 만큼 너무 춥지도 덥지도 않기 때문에, 아무런 메시지도 출력하지 않습니다.
 
 #### Switch (Switch 문)
+
+`switch` 문은 값을 검토하여 해당 가능한 여러 가지 '유형들 (patterns)' 과 비교합니다. 그런 다음, 성공적으로 들어맞는 첫 번째 '유형' 을 기반으로, 적당한 코드 블럭을 실행합니다. `switch` 문은 `if` 문의 대안으로 다양한 잠재적 상태에 대해 응답을 제공합니다.
+
+가장 간단한 양식의, `switch` 문은 하나의 값을 같은 타입의 하나 이상의 값들과 비교하는 것입니다.
+
+switch `some value to consider (검토할 어떤 값)` {
+case `value 1 (값 1)`:
+    `respond to value 1 (값 1에 대한 응답)`
+case `value 2 (값 2)`,
+     `value 3 (값 3)`:
+    `respond to value 2 or 3 (값 2 또는 3에 대한 응답)`
+default:
+    `otherwise, do something else (그 외의 경우, 여기서 뭔가를 합니다)`
+}
+
+```swift
+switch some value to consider {
+case value 1:
+    respond to value 1
+case value 2,
+     value 3:
+    respond to value 2 or 3
+default:
+    otherwise, do something else
+}
+```
+
+모든 `switch` 문은 여러 가지의 가능성 있는 '_경우 값 (cases)_' 들로 구성되어 있는데, 각각은 `case` 키워드로 시작합니다. 특정한 값과 비교하는 것 외에도, 스위프트는 다양한 방법을 제공하여 각각의 '경우 값 (case)' 에 보다 복잡한 '해당 유형 (matching patterns)' 을 지정할 수 있습니다. 이러한 선택 요소들은 이 장의 뒤에서 설명하도록 합니다.
+
+`if` 문의 본문과 마찬가지로, 각각의 `case` 는 코드 실행의 분기에 해당합니다. `switch` 문은 어떤 분기를 선택해야 하는 지 결정합니다. 이러한 절차를 검토하고 있는 값의 _switching (전환; 스위칭)_ 이라고 합니다.
+
+모든 `switch` 문은 반드시 _빠짐없이 철저해야 (exhaustive)_ 합니다. 다시 말해서, 검토 중인 타입에서 발생 가능한 모든 값은 반드시 `switch` '경우 값 (cases)' 중 하나에는 들어맞아야 합니다. 발생 가능한 모든 값에 대해 '경우 값 (case)' 을 제공하는 것이 적절하지 않은 경우라면, 명시적으로 말하지 않은 어떤 값도 다루도록 '기본 설정 경우 값 (default case)' 을 정의할 수도 있습니다. 이 '기본 설정 경우 값' 은 `default` 키워드로 지시하며, 반드시 항상 마지막에 나타내야 합니다.\
+
+다음 예제는 `switch` 문을 사용하여 `someCharacter` 라는 단일한 소문자를 검토합니다:
+
+```swift
+let someCharacter: Character = "z"
+switch someCharacter {
+case "a":
+  print("The first letter of the alphabet")
+case "z":
+  print("The last letter of the alphabet")
+default:
+  print("Some other character")
+}
+// "The last letter of the alphabet" 를 출력합니다.
+```
+
+`switch` 문의 첫 번째 '경우 값 (case)' 은 영어 알파벳의 첫 번째 글자인, `a` 에 해당하고, 두 번째 '경우 값 (case)' 은 마지막 글자인, `z` 에 해당합니다. `switch` 는 반드시, 모든 알파벳 문자 뿐만 아니라, 발생 가능한 모든 문자에 대한 '경우 값 (case)' 을 가져야 하기 때문에, 이 `switch` 문은 `default` '경우 값 (case)' 를 사용하여 `a` 와 `z` 이외의 모든 문자를 맞춰봅니다. 이런 준비는 `switch` 문이 '빠짐없이 철저하도록 (exhaustive)' 보장합니다.
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
