@@ -356,9 +356,21 @@ default:
 
 C 와 오브젝티브-C 언어의 `switch` 문과 다른 점이라면, 스위프트의 `switch` 문은 기본적으로 각 '경우 값 (case)' 을 빠져나가서 그 다음으로 넘어가지 않습니다. 그 대신, 전체 `switch` 문은, 명시적으로 `break` 문을 쓸 필요없이, 첫 번째로 해당하는 `switch` '경우 값 (case)' 을 완료하는 순간 그 즉시 실행을 종료합니다. 이것은 `switch` 문을 C 언어에 있는 것보다 더 안전하고 편하게 쓸 수 있게 하며 실수로 다른 `switch` '경우 값 (cases)' 을 실행하는 것을 피하도록 해줍니다.
 
-스위프트에서 `break` 는 필수적인 것은 아니지만, `break` 문을 사용하면 특정한 '경우 값 (cases)' 을 맞춰보거나 무시하도록 할 수 있고 아니면 해당하는 '경우 값' 의 실행이 완전이 끝나기 전에 먼저 빠져 나오도록 할 수도 있습니다. 더 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-구문-내의-break-문) 을 참고하기 바랍니다.
+> 스위프트에서 `break` 는 필수적인 것은 아니지만, `break` 문을 사용하면 특정한 '경우 값 (cases)' 을 맞춰보거나 무시하도록 할 수 있고 아니면 해당하는 '경우 값' 의 실행이 완전이 끝나기 전에 먼저 빠져 나오도록 할 수도 있습니다. 더 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-구문-내의-break-문) 을 참고하기 바랍니다.
 
-각 사례의 본문에는 하나 이상의 실행 문이 포함되어야합니다. 첫 번째 경우가 비어 있으므로 다음 코드를 작성하는 것은 유효하지 않습니다.
+각 '경우 값 (case)' 의 본문에는 _반드시 (must)_ 최소 하나 이상의 실행 문이 있어야 합니다. 다음 처럼 작성한 코드는 유효하지 않는데, 첫 번째 '경우 값' 이 비어있기 때문입니다:
+
+```swift
+let anotherCharacter: Character = "a"
+switch anotherCharacter {
+case "a": // 무효, 경우 값이 빈 본문을 가지고 있습니다.
+case "A":
+  print("The letter A")
+default:
+  print("Not the letter A")
+}
+// 이렇게 하면 컴파일-시간 에러를 보고하게 됩니다.
+```
 
 **Interval Matching (구간 맞춤)**
 
@@ -379,6 +391,7 @@ C 와 오브젝티브-C 언어의 `switch` 문과 다른 점이라면, 스위프
 **Break in a Loop Statement (반복 구문 내의 Break 문)**
 
 **Break in a Switch Statement (Switch 구문 내의 Break 문)**
+{: #break-in-a-switch-statement-switch-구문-내의-break-문 }
 
 #### Fallthrough (Fallthrough 문)
 
