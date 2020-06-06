@@ -32,7 +32,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %})
 * [Initialization (초기화)] - [일부 진행중]({% post_url 2016-01-23-Initialization %})
 * [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %})
-* [Optional Chaining (죽 이어진 옵셔널)]
+* [Optional Chaining (이어져 있는 옵셔널)]
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %})
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %})
 * [Nested Types (품어진 타입)]({% post_url 2017-03-03-Nested-Types %})

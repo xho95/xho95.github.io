@@ -393,6 +393,32 @@ default:
 
 **Interval Matching (구간 맞춰보기)**
 
+`switch` '경우 값 (cases)' 에 있는 값은 일정 구간에 포함 되어있는 지 검사할 수 있습니다. 다음 예제는 수치 구간을 사용하여 어떤 크기의 수에 대해서도 자연-어로 헤아릴 수 있는 기능을 제공합니다:
+
+```swift
+let approximateCount = 62
+let countedThings = "moons orbiting Saturn"
+let naturalCount: String
+switch approximateCount {
+case 0:
+  naturalCount = "no"
+case 1..<5:
+  naturalCount = "a few"
+case 5..<12:
+  naturalCount = "several"
+case 12..<100:
+  naturalCount = "dozens of"
+case 100..<1000:
+  naturalCount = "hundreds of"
+default:
+  naturalCount = "many"
+}
+print("There are \(naturalCount) \(countedThings).")
+// "There are dozens of moons orbiting Saturn." 를 출력합니다.
+```
+
+위의 예제의, `approximateCount` 는 `switch` 문 내에서 값을 계산합니다. 각 `case` 는 이 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값은 `12` 와 `100` 사이에 있으므로, `naturalCount` 에는 `"dozens of"` 라는 값을 할당하고, 실행은 `switch` 문 밖으로 전달됩니다.
+
 **Tuples (튜플)**
 
 **Value Bindings (값 연결짓기)**
