@@ -16,7 +16,7 @@ categories: Swift Language Grammar Control-Flow For-In While
 
 스위프트는 `for-in` 반복 구문도 제공하므로 배열, 딕셔너리, 범위, 문자열, 및 기타 '일련의 값들 (sequences)' 에 대해 동작을 쉽게 반복 적용할 수 있습니다.
 
-스위프트의 `switch` 문은 C-계열 언어에 있는 것보다 눈에 띄게 더 강력합니다. '경우 값 (cases)' 는 아주 다양한 '유형 (patterns)' 에 대해서 해당하는 것을 찾을 수 있으며, '구간 찾기 (interval matches)', 튜플 찾기, 그리고 지정된 타입으로의 '변환 (casts)' 기능도 포함합니다. `switch` 의 '경우 값(case)' 에 해당하는 값은 임시 상수나 변수로 연결되어서 '경우 값' 본문 내에서 사용할 수 있으며, 각 '경우 값 (case)' 에 `where` 절을 사용하면 찾는 조건이 복잡한 것도 표현할 수 있습니다.
+스위프트의 `switch` 문은 C-계열 언어에 있는 것보다 눈에 띄게 더 강력합니다. '경우 값 (cases)' 는 아주 다양한 '유형 (patterns)' 에 대해서 해당하는 것을 찾을 수 있으며, '구간 맞춰보기 (interval matches)', 튜플 맞춰보기, 그리고 지정된 타입으로의 '변환 (casts)' 기능도 포함합니다. `switch` 의 '경우 값(case)' 에 해당하는 값은 임시 상수나 변수로 연결되어서 '경우 값' 본문 내에서 사용할 수 있으며, 각 '경우 값 (case)' 에 `where` 절을 사용하면 찾는 조건이 복잡한 것도 표현할 수 있습니다.
 
 ### For-In Loops (For-In 반복문)
 
@@ -372,7 +372,26 @@ default:
 // 이렇게 하면 컴파일-시간 에러를 보고하게 됩니다.
 ```
 
-**Interval Matching (구간 맞춤)**
+C 언어의 `switch` 문과는 다르게, 이 `switch` 문은 `"a"` 와 `"A"` 둘 다를 한번에 맞춰보지 않습니다. 그 보다는, `case "a":` 에는 실행 가능한 구문이 어떤 것도 없다고 '컴파일-시간 에러 (compile-time error)' 를 보고해 버립니다. 이러한 접근 방법은 우연히 한 '경우 값' 에서 다른 '경우 값' 으로 빠져 나가는 것을 피하도록 해서 의도가 더 분명한 더 안전한 코드를 만들 수 있게 해줍니다.
+
+`switch` 에서 `"a"` 와 `"A"` 둘 모두에 해당하는 단일한 '경우 값' 을 만들려면, 두 값을 쉼표로 구분해서, '복합 경우 값 (compound case)' 으로 병합하면 됩니다.
+
+```swift
+let anotherCharacter: Character = "a"
+switch anotherCharacter {
+case "a", "A":
+  print("The letter A")
+default:
+  print("Not the letter A")
+}
+// "The letter A" 를 출력합니다.
+```
+
+가독성을 위해, '복합 경우 값' 을 여러 줄에 나눠서 작성할 수도 있습니다. '복합 경우 값' 에 대한 더 많은 정보는, [Compound Cases (복합 경우 값)]( #compound-cases-복합-경우-값) 을 참고하기 바랍니다.
+
+> 특정한 `switch` '경우 값 (case)' 의 끝에서는 명시적으로 빠져 나가고 싶다면, `fallthrough` 키워드를 사용하면 되는데, 이는 [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명합니다.
+
+**Interval Matching (구간 맞춰보기)**
 
 **Tuples (튜플)**
 
@@ -381,6 +400,7 @@ default:
 **Where (Where 절)**
 
 **Compound Cases (복합 경우 값)**
+{: #compound-cases-복합-경우-값 }
 
 ### Control Transfer Statements (제어 전달 구문)
 
