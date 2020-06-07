@@ -421,16 +421,160 @@ print("There are \(naturalCount) \(countedThings).")
 
 **Tuples (튜플)**
 
-**Value Bindings (값 연결짓기)**
+'튜플 (tuple)' 을 사용하면 동일한 `switch` 문에서 여러 값을 한번에 테스트할 수 있습니다. 이 때 튜플의 각 '원소 (element)' 마다 서로 다른 값 혹은 값 구간을 테스트할 수 있습니다. 다른 방법으로는, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (underscore character; `_`)' 를 사용하여, 발생 가능한 어떤 값도 해당하도록 할 수 있습니다.
+
+아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현한, (x, y) 점 하나를 받아서, 이를 예제 다음에 있는 그래프 상에서 분류합니다.
+
+```swift
+let somePoint = (1, 1)
+switch somePoint {
+case (0, 0):
+  print("\(somePoint) is at the origin")
+case (_, 0):
+  print("\(somePoint) is on the x-axis")
+case (0, _):
+  print("\(somePoint) is on the y-axis")
+case (-2...2, -2...2):
+  print("\(somePoint) is inside the box")
+default:
+  print("\(somePoint) is outside of the box")
+}
+// "(1, 1) is inside the box" 를 출력합니다.
+```
+
+![a (x, y) point with tuples](/assets/Swift/Swift-Programming-Language/Control-Flow-tuples.png)
+
+`switch` 문은 이 점이 있는 곳이 (0, 0) 인 원점인지, 빨간색 x-축인지, 주황색 y-축인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부인지를 결정합니다.
+
+C 언어와는 달리, 스위프트에서는 여러 `switch` '경우 값 (cases)' 에서 같은 값 또는 같은 값들을 검토할 수 있습니다. 실제로, 이 예제에서 '점 (0, 0)' 은 _네 가지 (four)_ 경우 모두에 다 해당할 수 있습니다. 하지만, 해당되는 것이 여러 개일 수 있는 경우, 맨 처음 해당된 '경우 값 (case)' 이 항상 사용됩니다. '점 (0, 0)' 은 먼저 `case (0, 0)` 에 해당하게 되므로, 다른 모든 해당하는 '경우 값 (cases)' 들은 무시하게 됩니다.
+
+**Value Bindings (값 연결)**
+
+`switch` '경우 값 (case)' 은 해당 값이나 값들에 임시 상수 또는 임시 변수에 해당하는 이름을 지어서, '경우 값 (case)' 본문에서 사용할 수 있습니다. 이런 동작 방식을 _값 연결 (value binding)_ 라고 하는데, 이 값은 '경우 값 (case)' 본문 범위 내에서 임시 상수 또는 임시 변수로 연결되기 때문입니다.
+
+아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현한, (x, y) 점 하나를 받아서, 이를 예제 다음에 있는 그래프 상에서 분류합니다:
+
+```swift
+let anotherPoint = (2, 0)
+switch anotherPoint {
+case (let x, 0):
+  print("on the x-axis with an x value of \(x)")
+case (0, let y):
+  print("on the y-axis with a y value of \(y)")
+case let (x, y):
+  print("somewhere else at (\(x), \(y))")
+}
+// "on the x-axis with an x value of 2" 를 출력합니다.
+```
+
+![a (x, y) point with value bindings](/assets/Swift/Swift-Programming-Language/Control-Flow-value-bindings.png)
+
+`switch` 문은 이 점이 있는 곳이 빨간색 x-축인지, 주황색 y-축인지, 아니면 (어느 축도 아닌) 다른 곳인지를 결정합니다.
+
+세 개의 `switch` '경우 값들 (cases)' 은 '자리 표시자 (placeholder)' 상수인 `x` 와 `y` 를 선언하고 있는데, 이는 `anotherPoint` 에 있는 튜플 값 중 하나 또는 두 개 모두를 임시로 맡습니다. 첫 번째 '경우 값' 인, `case (let x, 0)` 는, `y` 값이 `0` 이면 어떤 점에든 해당하여 그 점의 `x` 값을 임시 상수인 `x` 에 할당합니다. 마찬가지로, 두 번째 '경우 값' 인, `case (0, let y)` 는, `x` 값이 `0` 이면 어떤 점에든 해당하여 그 점의 `y` 값을 임시 상수인 `y` 에 할당합니다.
+
+임시 상수를 선언하고 나면, 이를 '경우 값' 의 코드 블럭에서 사용할 수 있습니다. 여기서는, 해당 점의 '분류 (categorization)' 를 출력하는데 사용합니다.
+
+이 `switch` 문에는 `default` '경우 값' 이 없습니다. 마지막 '경우 값' 인, `case let (x, y)` 는, 어떤 값과도 맞춰질 수 있는 두 개의 '자리 표시자' 상수를 가지는 '튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가지고 있는 튜플이기 때문에, 이 경우 모든 가능한 남은 값들에 맞춰질 수 있어서, `switch` 문을 '빠짐없이 철저하게 (exhaustive)' 만들기 위해 `default` '경우 값' 이 필요한 건 아닙니다.
 
 **Where (Where 절)**
+
+`switch` '경우 값 (case)' 에서 `where` 절을 사용하면 추가적인 조건을 검사할 수 있습니다:
+
+아래 예제는 하나의 (x, y) 점을 그 다음의 그래프 상에서 분류합니다:
+
+```swift
+let yetAnotherPoint = (1, -1)
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+  print("(\(x), \(y)) is on the line x == y")
+case let (x, y) where x == -y:
+  print("(\(x), \(y)) is on the line x == -y")
+case let (x, y):
+  print("(\(x), \(y)) is just some arbitrary point")
+}
+// "(1, -1) is on the line x == -y" 를 출력합니다.
+```
+
+![a (x, y) point with where](/assets/Swift/Swift-Programming-Language/Control-Flow-where.png)
+
+`switch` 문은 이 점이 있는 곳이 `x == y` 인 녹색 대각선 상인지, `x == -y` 인 보라색 대각선 상인지, 아니면 어느 쪽도 아닌지를 결정합니다.
+
+세 개의 `switch` '경우 값들 (cases)' 은 '자리 표시자 (placeholder)' 상수인 `x` 와 `y` 를 선언하고 있는데, 이는 `yetAnotherPoint` 에 있는 튜플 값 두 개 모두를 임시로 맡습니다. 이 상수는 `where` 절의 일부로 사용되어, '동적인 필터 (dynamic filter)' 를 생성합니다.
+
+`switch` '경우 값' 은 `where` 절의 조건 값이 `true` 로 계산된 경우에만 현재의 `point` 값과 맞춰봅니다.
+
+이전 예제에서와 같이, 마지막 '경우 값' 은 모든 가능한 남은 값들에 맞춰지므로, `switch` 문을 '빠짐없이 철저하게 (exhaustive)' 만들기 위해 `default` '경우 값' 이 필요한 건 아닙니다.
 
 **Compound Cases (복합 경우 값)**
 {: #compound-cases-복합-경우-값 }
 
+같은 본문을 공유하는 여러 개의 '스위치 경우 값들 (switch cases)' 은 `case` 뒤에 여러 개의 '유형 (patterns)' 을, 그 사이는 쉼표를 써서, 작성하는 것으로 복합할 수 있습니다. '유형' 중 어떤 하나에라도 해당된다면, 그 '경우 값' 에 해당하는 것으로 간주됩니다. '유형 (patterns)' 은, 목록이 길다면, 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+let someCharacter: Character = "e"
+switch someCharacter {
+case "a", "e", "i", "o", "u":
+  print("\(someCharacter) is a vowel")
+case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
+     "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
+  print("\(someCharacter) is a consonant")
+default:
+  print("\(someCharacter) is not a vowel or a consonant")
+}
+// "e is a vowel" 를 출력합니다.
+```
+
+`switch` 문의 첫 번째 '경우 값' 은 영어에 있는 다섯 개의 모든 소문자 '모음 (vowels)' 에 해당합니다. 이와 비슷하게, 두 번째 '경우 값' 는 모든 영어 소문자 '자음 (consonants)' 에 해당합니다. 마지막으로, `default` '경우 값' 에는 어떤 다른 문자라도 해당됩니다.
+
+'복합 경우 값 (compound cases)' 은 '값 연결 (value bindings)' 를 포함할 수도 있습니다. '복합 경우 값' 의 모든 '유형' 은 일종의 같은 '값 연결 (value bindings)' 들만 포함해야 하며, 각각의 '연결 (bindin)' 은 '복합 경우 값' 에 있는 모든 '유형' 에서 같은 타입의 값만 가져와야 합니다. 이렇게 하면, '복합 경우 값' 의 어느 부분이 맞춰진 것이든, '경우 값' 의 본문 코드에서 이 '연결 (bindings)' 값에 항상 접근할 수 있으며 그 값이 항상 같은 타입임을 보장하게 됩니다.
+
+```swift
+let stillAnotherPoint = (9, 0)
+switch stillAnotherPoint {
+case (let distance, 0), (0, let distance):
+  print("On an axis, \(distance) from the origin")
+default:
+  print("Not on an axis")
+}
+// "On an axis, 9 from the origin" 를 출력합니다.
+```
+
+위의 `case` 는 두 개의 '유형 (patterns)' 을 가지고 있습니다: `(let distance, 0)` 은 x-축 위에 있는 점에 해당하며, `(0, let distance)` 는 y-축 위에 있는 점에 해당합니다. 두 '유형' 모두 `distance` 에 대한 '연결 (binding)' 을 포함하고 있으며 `distance` 는 두 '유형' 모두에서 하나의 '정수' 입니다-이것은 `case` 본문 코드가 `distance` 의 값에 항상 접근할 수 있음을 의미합니다.
+
 ### Control Transfer Statements (제어 전달 구문)
 
+_제어 전달 구문 (control transfer statements)_ 은, 제어를 코드 한 곳에서 다른 곳으로 전달하여, 코드가 실행되는 순서를 바꿉니다. 스위프트는 다섯 개의 '제어 전달 구문' 을 가지고 있습니다:
+
+* `continue`
+* `break`
+* `fallthrough`
+* `return`
+* `thorw`
+
+`continue`, `break`, 그리고 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서 설명하며, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
+
 #### Continue (Continue 문)
+
+`continue` 문은 반복문에게 말해서 지금 하고 있는 것을 중지하고 해당 '반복 (loop)' 를 지나쳐서 다음 '회차 (iteration)' 의 맨 앞에서 다시 시작하도록 합니다. 이는 해당 '반복' 을 완전히 떠나지 않은 채로 "현재 '반복 회차 (loop iteration)' 에서 할 건 다했다" 라고 말하는 것입니다.
+
+다음의 예제는 소문자로 된 문자열에서 모든 '모음 (vowels)' 과 '공백 (spaces)' 을 제거하여 '수수께끼 상태 (cryptic puzzle phrase)' 를 생성합니다:
+
+```swift
+let puzzleInput = "great minds think alike"
+var puzzleOutput = ""
+let charactersToRemove: [Character] = ["a", "e", "i", "o", "u", " "]
+for character in puzzleInput {
+  if charactersToRemove.contains(character) {
+    continue
+  }
+  puzzleOutput.append(character)
+}
+print(puzzleOutput)
+// "grtmndsthnklk" 를 출력합니다.
+```
+
+위의 코드는 '모음' 이나 '공백' 에 해당할 때마다 `continue` 키워드를 호출하여, '반복' 의 현재 '회차' 를 즉시 끝내고 다음 '회차' 의 시작으로 곧장 넘어갑니다.
 
 #### Break (Break 문)
 
@@ -456,3 +600,5 @@ print("There are \(naturalCount) \(countedThings).")
 [^do-while]: 본문에서 `repeat-while` 문이 `do-while` 문과 비슷하다고 표현했는데, 사실 초창기 스위프트는 `repeat-while` 의 이름이 `do-while` 이었습니다. 그러므로 이 둘은 사실상 같은 것이라고 볼 수 있습니다. 이름을 왜 바꿨는지는 잘 모르겠습니다.
 
 [^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관 없습니다. 스위프트는 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. '옵셔널 타입 (optional type)' 도 '값을 선택적으로 가질 수 있는 타입' 이라는 의미로 'optional' 이라는 영어 단어를 사용하는 것입니다.
+
+[^wildcard-pattern]: 와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정하게 고정된 문자열만이 아니라, 조건에 부합하는 모든 문자열을 맞춰보는 '패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목 중에서 'wildcard pattern' 에 해당하는 부분을 참고하기 바랍니다.
