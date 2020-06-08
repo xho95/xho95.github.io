@@ -331,7 +331,7 @@ default:
 
 모든 `switch` 문은 여러 가지의 가능성 있는 '_경우 값 (cases)_' 들로 구성되어 있는데, 각각은 `case` 키워드로 시작합니다. 특정한 값과 비교하는 것 외에도, 스위프트는 다양한 방법을 제공하여 각각의 '경우 값 (case)' 에 보다 복잡한 '해당 유형 (matching patterns)' 을 지정할 수 있습니다. 이러한 선택 요소들은 이 장의 뒤에서 설명하도록 합니다.
 
-`if` 문의 본문과 마찬가지로, 각각의 `case` 는 코드 실행의 분기에 해당합니다. `switch` 문은 어떤 분기를 선택해야 하는 지 결정합니다. 이러한 절차를 검토하고 있는 값의 _switching (전환; 스위칭)_ 이라고 합니다.
+`if` 문의 본문과 마찬가지로, 각각의 `case` 는 코드 실행의 분기에 해당합니다. `switch` 문은 어떤 분기를 선택해야 하는 지 확인합니다. 이러한 절차를 검토하고 있는 값의 _switching (전환; 스위칭)_ 이라고 합니다.
 
 모든 `switch` 문은 반드시 _빠짐없이 철저해야 (exhaustive)_ 합니다. 다시 말해서, 검토 중인 타입에서 발생 가능한 모든 값은 반드시 `switch` '경우 값 (cases)' 중 하나에는 들어맞아야 합니다. 발생 가능한 모든 값에 대해 '경우 값 (case)' 을 제공하는 것이 적절하지 않은 경우라면, 명시적으로 말하지 않은 어떤 값도 다루도록 '기본 설정 경우 값 (default case)' 을 정의할 수도 있습니다. 이 '기본 설정 경우 값' 은 `default` 키워드로 지시하며, 반드시 항상 마지막에 나타내야 합니다.\
 
@@ -444,7 +444,7 @@ default:
 
 ![a (x, y) point with tuples](/assets/Swift/Swift-Programming-Language/Control-Flow-tuples.png)
 
-`switch` 문은 이 점이 있는 곳이 (0, 0) 인 원점인지, 빨간색 x-축인지, 주황색 y-축인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부인지를 결정합니다.
+`switch` 문은 이 점이 있는 곳이 (0, 0) 인 원점인지, 빨간색 x-축인지, 주황색 y-축인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부인지를 확인합니다.
 
 C 언어와는 달리, 스위프트에서는 여러 `switch` '경우 값 (cases)' 에서 같은 값 또는 같은 값들을 검토할 수 있습니다. 실제로, 이 예제에서 '점 (0, 0)' 은 _네 가지 (four)_ 경우 모두에 다 해당할 수 있습니다. 하지만, 해당되는 것이 여러 개일 수 있는 경우, 맨 처음 해당된 '경우 값 (case)' 이 항상 사용됩니다. '점 (0, 0)' 은 먼저 `case (0, 0)` 에 해당하게 되므로, 다른 모든 해당하는 '경우 값 (cases)' 들은 무시하게 됩니다.
 
@@ -469,7 +469,7 @@ case let (x, y):
 
 ![a (x, y) point with value bindings](/assets/Swift/Swift-Programming-Language/Control-Flow-value-bindings.png)
 
-`switch` 문은 이 점이 있는 곳이 빨간색 x-축인지, 주황색 y-축인지, 아니면 (어느 축도 아닌) 다른 곳인지를 결정합니다.
+`switch` 문은 이 점이 있는 곳이 빨간색 x-축인지, 주황색 y-축인지, 아니면 (어느 축도 아닌) 다른 곳인지를 확인합니다.
 
 세 개의 `switch` '경우 값들 (cases)' 은 '자리 표시자 (placeholder)' 상수인 `x` 와 `y` 를 선언하고 있는데, 이는 `anotherPoint` 에 있는 튜플 값 중 하나 또는 두 개 모두를 임시로 맡습니다. 첫 번째 '경우 값' 인, `case (let x, 0)` 는, `y` 값이 `0` 이면 어떤 점에든 해당하여 그 점의 `x` 값을 임시 상수인 `x` 에 할당합니다. 마찬가지로, 두 번째 '경우 값' 인, `case (0, let y)` 는, `x` 값이 `0` 이면 어떤 점에든 해당하여 그 점의 `y` 값을 임시 상수인 `y` 에 할당합니다.
 
@@ -498,7 +498,7 @@ case let (x, y):
 
 ![a (x, y) point with where](/assets/Swift/Swift-Programming-Language/Control-Flow-where.png)
 
-`switch` 문은 이 점이 있는 곳이 `x == y` 인 녹색 대각선 상인지, `x == -y` 인 보라색 대각선 상인지, 아니면 어느 쪽도 아닌지를 결정합니다.
+`switch` 문은 이 점이 있는 곳이 `x == y` 인 녹색 대각선 상인지, `x == -y` 인 보라색 대각선 상인지, 아니면 어느 쪽도 아닌지를 확인합니다.
 
 세 개의 `switch` '경우 값들 (cases)' 은 '자리 표시자 (placeholder)' 상수인 `x` 와 `y` 를 선언하고 있는데, 이는 `yetAnotherPoint` 에 있는 튜플 값 두 개 모두를 임시로 맡습니다. 이 상수는 `where` 절의 일부로 사용되어, '동적인 필터 (dynamic filter)' 를 생성합니다.
 
@@ -578,14 +578,104 @@ print(puzzleOutput)
 
 #### Break (Break 문)
 
-**Break in a Loop Statement (반복 구문 내의 Break 문)**
+`break` 문은 '제어 흐름 구문 (control flow statement)' 전체의 실행을 그 즉시 종료합니다. `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때는 `break` 문을 `switch` 문이나 반복문 안에 사용해주면 됩니다.
 
-**Break in a Switch Statement (Switch 구문 내의 Break 문)**
+**Break in a Loop Statement (반복문 내의 Break 문)**
+
+반복문 안에서 사용하는, `break` 는 반복문의 실행을 그 즉시 종료하고 '제어권 (control)' 를 반복문의 '종료 중괄호 (closing brace; `}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차 (iteration)' 에 있는 코드는 더 이상 실행되지 않으며, 반복문의 '회차' 도 더 이상 새로 시작하지 않습니다.
+
+**Break in a Switch Statement (Switch 문 내의 Break 문)**
 {: #break-in-a-switch-statement-switch-구문-내의-break-문 }
+
+`switch` 문 안에서 사용하는, `break` 는 `switch` 문의 실행을 그 즉시 종료하게 만들고 '제어권 (control)' 을 `switch` 문의 '종료 중괄호 (`}`)' 뒤의 코드로 전달합니다.
+
+이런 동작 방식은 `switch` 문의 하나 이상의 '경우 값 (cases)' 에 맞춰지도록 해서 이를 무시하는 데 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저해야 (exhaustive)' 하고 빈 '경우 값 (case)' 을 허용하지 않기 때문에, 의도를 명시적으로 드러내기 위해 어떤 '경우 값 (case)' 를 일부러 맞춰지도록 해서 무시하는 것이 필요할 때가 있습니다. 이렇게 하려면 무시하고 싶은 '경우 값 (case)' 전체 본문으로 `break` 문을 써주면 됩니다. 해당 '경우 값 (case)' 이 `switch` 문에 의해 맞춰지면, '경우 값 (case)' 안에 있는 `break` 문이 `switch` 문의 실행을 그 즉시 종료합니다.
+
+> `switch` '경우 값 (case)' 이 '주석 (comment)' 만 가지고 있으면 '컴파일 시간 에러 (compile-time error)' 를 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 `switch` '경우 값 (case)' 무시하도록 하지 않습니다. `switch` '경우 값 (case)' 를 무시하려면 항상 `break` 문을 사용하도록 합니다.
+
+다음 예제는 `Character` 값을 '전환 (switch)' 하여 이것이 네 가지 언어 중 하나로 표현한 '수치 기호' 가 맞는 지를 확인합니다. 간결하게 하려고, 단일 `switch` '경우 값 (case)' 에서 여러 개의 값을 다루고 있습니다.
+
+```swift
+let numberSymbol: Character = "三"  // 중국 글자로 나타낸 3 이라는 수입니다.
+var possibleIntegerValue: Int?
+switch numberSymbol {
+case "1", "١", "一", "๑":
+  possibleIntegerValue = 1
+case "2", "٢", "二", "๒":
+  possibleIntegerValue = 2
+case "3", "٣", "三", "๓":
+  possibleIntegerValue = 3
+case "4", "٤", "四", "๔":
+  possibleIntegerValue = 4
+default:
+  break
+}
+if let integerValue = possibleIntegerValue {
+  print("The integer value of \(numberSymbol) is \(integerValue).")
+} else {
+  print("An integer value could not be found for \(numberSymbol).")
+}
+// "The integer value of 三 is 3." 를 출력합니다.
+```
+
+이 예제는 `numberSymbol` 을 검사하여 이것이 `1` 에서 `4` 에 이르는 라틴어, 아랍어, 중국어, 또는 태국어 수치 기호인지를 확인합니다. 해당하는 것을 발견하면, `switch` 문의 '경우 값 (cases)' 중 하나에서 `possibleIntegerValue` 라는 '옵셔널 (optional) `Int?`' 변수에 적절한 정수 값을 설정합니다.
+
+`switch` 문의 실행을 완료한 후, 이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 값을 찾았는 지를 확인합니다. `possibleIntegerValue` 변수는 '옵셔널 타입' 이 가지는 미덕에 의해서 암시적으로 `nil` 이라는 초기 값을 가지므로, '옵셔널 연결' 이 성공하는 경우는 `switch` 문의 처음 네 '경우 값 (cases)' 중 하나에 의해 `possibleIntegerValue` 에 실제 값이 설정되었을 때 뿐입니다.
+
+위 예제에서 발생 가능한 모든 `Character` 값을 나열하는 것은 실용적이지 않으므로, `default` '경우 값' 으로 해당하지 않는 모든 문자들을 처리할 수 있습니다. 이 `default` '경우 값' 은 아무런 행동을 할 필요가 없으므로, 본문으로 단일 `break` 문을 작성하면 됩니다. `default` '경우 값' 으로 맞춰지자 마자, `break` 문이 `switch` 문의 실행을 종료하고, 코드 실행은 `if let` 문부터 계속하게 됩니다.
 
 #### Fallthrough (Fallthrough 문)
 
+스위프트의, `switch` 문은 각각의 '경우 값 (case)' 끝에서 빠져 나가서 그 다음으로 넘어가는 행동을 하지 않습니다. 다시 말해서, 가장 먼저 맞춰진 '경우 값 (case)' 을 완료하자 마자 전체 `switch` 문의 실행을 완료합니다. 이와는 대조적으로, C 언어에서는 빠져 나가는 것을 막기 위해 모든 `switch` '경우 값 (case)' 끝에 명시적으로 `break` 문을 넣어주는 것이 필수입니다. 기본적으로 빠져 나가지 않도록 되어 있다는 것은 스위프트의 `switch` 문이 C 언어에 있는 것보다 좀 더 간결하고 예측 가능하다는 것을 의미하며, 그로 인해 여러 개의 `switch` '경우 값' 을 실수로 실행하게 되는 것을 피하도록 해줍니다.
+
+C-스타일의 '빠져 나가는 (fallthrough)' 동작이 필요한 경우, 각각의 경우마다 `fallthrough` 키워드를 사용하면 이런 동작 방식을 선택할 수도 있습니다. 아래의 예제는 `fallthrough` 를 사용하여 수치 값의 글 설명을 생성합니다.
+
+```swift
+let integerToDescribe = 5
+var description = "The number \(integerToDescribe) is"
+switch integerToDescribe {
+case 2, 3, 5, 7, 11, 13, 17, 19:
+  description += " a prime number, and also"
+  fallthrough
+default:
+  description += " an integer."
+}
+print(description)
+// "The number 5 is a prime number, and also an integer." 를 출력합니다.
+```
+
+이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 이 함수는 그 다음 `switch` 문을 사용하여 `integerToDescribe` 의 값을 검토합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는 `description` 끝에 문장을 추가하여, 이 수가 '소수' 임을 표기합니다. 이 다음 `fallthrough` 키워드를 사용하여 `default` '경우 값' 에 까지 "빠져 들어갑니다. (fall into)" `default` '경우 값' 은 설명 끝에 약간의 부가적인 문장을 추가한 후, `switch` 문을 완료합니다.
+
+`integerToDescribe` 의 값이 '알려진 소수' 의 목록에 있는 것이 아니라면, 첫 번째 `switch` '경우 값' 에 맞춰질 일이 전혀 없습니다. 지정된 다른 '경우 값' 이 따로 없으므로, `integerToDescribe` 는 `default` '경우 값' 에 맞춰집니다.
+
+`switch` 문의 실행이 끝난 다음에는, `print(_:separator:terminator:)` 함수를 사용하여 이 수에 대한 설명을 출력합니다. 이 예제에 있는, 수 `5` 는 '소수 (prime number)' 라고 올바르게 식별되고 있습니다.
+
+> `fallthrough` 키워드는 '빠져 들어가서 (fall into)' 실행할 `switch` '경우 값' 에 대한 조건을 검사하지 않습니다. `fallthrough` 키워드는 단순히 코드 실행을 다음 '경우 값' (또는 `default` '경우 값') 에 있는 구문으로 직접 이동하는 것으로, 이는 C 언어의 표준 `switch` 문의 동작과 같습니다.
+
 #### Labeled Statements (이름표 달린 구문)
+
+스위프트는, 반복문과 조건문 안에 다른 반복문과 조건문을 '품어서 (nest)' 복잡한 '제어 흐름 구조 (control flow structures)' 를 생성할 수 있습니다. 하지만, 반복문과 조건문 둘다 `break` 문을 사용하다보면 실행을 너무 이르게 종료할 수 있습니다. 그러므로, `break` 문이 종료하려는 반복문이나 조건문이 어떤 것인지 명시하는 것이 유용할 때가 있습니다. 이와 비슷하게, 다중으로 '품어진 (nested)' 반복문의 경우, `continue` 문이 적용될 반복문이 어떤 것인지 명시하는 것이 유용할 수 있습니다.
+
+이런 최총 목표를 달성하기 위해, 반복 구문이나 조건 구문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건 구문에서는, 구문 이름표와 `break` 문을 같이 사용하여 '이름표 달린 구문 (labeled statement)' 의 실행을 종료할 수 있습니다. 반복 구문에서는, '이름표 달린 구문' 에 `break` 또는 `continue` 문을 같이 사용하여 '이름표 달린 구문' 의 실행을 종료하거나 계속하게 할 수 있습니다.
+
+'이름표 달린 구문' 을 지시하려면 해당 구문의 '도입자 (introducer)' 키워드와 같은 줄에 이름표를 붙이고, 뒤에 '콜론 (colon; `:`)' 을 써주면 됩니다. 다음은 `while` 반복문에 대한 이 '구문 표현' 의 예제이며, 이 원리는 모든 반복문과 `switch` 에서도 동일합니다:
+
+`label name (이름표의 이름)`: while `condition (조건)` {
+    `statements (구문)`
+}
+
+```swift
+label name: while condition {
+    statements
+}
+```
+
+다음 예제는이 장의 앞부분에서 본 Snakes and Ladders 게임의 수정 된 버전에 대해 while 루프와 함께 break 및 continue 문을 사용합니다. 이번에는 게임에 추가 규칙이 있습니다.
+
+이기려면 25 칸에 정확히 착륙해야합니다.
+특정 주사위 굴림이 25 칸을 넘어 서면 25 칸에 도달하는 데 필요한 정확한 숫자를 굴릴 때까지 다시 굴려야합니다.
+
+게임 보드는 이전과 동일합니다.
 
 ### Early Exit (조기 탈출 구문)
 

@@ -546,11 +546,11 @@ if convertedNumber != nil {
 
 > `!` 를 사용해서 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다. `!` 를 사용해서 값을 강제로 풀기 전에 항상 옵셔널이 '`nil` 이 아닌 값 (non-`nil` value)' 을 가지고 있음을 먼저 확인하기 바랍니다.
 
-#### Optional Binding (옵셔널 바인딩; 선택적 값 연결)
+#### Optional Binding (옵셔널 연결)
 
-_옵셔널 바인딩 (optional binding)_ 을 사용하면 옵셔널이 값을 가지는지 확인해서, 그 경우, 그 값을 임시 상수나 변수의 형태로 사용하게 할 수 있습니다. '옵셔널 바인딩' 을 `if` 와 `while` 문과 같이 사용하면, 옵셔널 안의 값을 검사하고 그 값을 상수나 변수로 추출하는 것을, 단 한 번의 동작으로 할 수 있습니다. `if` 와 `while` 문에 대해서는 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
+_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 가지는지 확인해서, 그 경우, 그 값을 임시 상수나 변수의 형태로 사용하게 할 수 있습니다. '옵셔널 연결' 을 `if` 와 `while` 문과 같이 사용하면, 옵셔널 안의 값을 검사하고 그 값을 상수나 변수로 추출하는 것을, 단 한 번의 동작으로 할 수 있습니다. `if` 와 `while` 문에 대해서는 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
 
-if 문에서 '옵셔널 바인딩' 을 작성하는 방법은 다음과 같습니다:
+if 문에서 '옵셔널 연결' 을 작성하는 방법은 다음과 같습니다:
 
 ```
 if let constantName = someOptional {
@@ -558,7 +558,7 @@ if let constantName = someOptional {
 }
 ```
 
-[Optionals (옵셔널)](#optionals-옵셔널-선택적-값-타입) 에 있는 `possibleNumber` 예제는 '강제 풀기 (forced unwrapping)' 대신 '옵셔널 바인딩 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널-선택적-값-타입) 에 있는 `possibleNumber` 예제는 '강제 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -575,9 +575,9 @@ if let actualNumber = Int(possibleNumber) {
 
 이 변환에 성공하면, `if` 문의 첫 번째 분기에서 `actualNumber` 상수를 사용할 수 있게 됩니다. 이것은 옵셔널 _속에 (within)_ 있던 값으로 이미 초기화 됐으므로, 값에 접근할 때 `!` 접미사를 사용할 필요가 없습니다. 이 예제에서, `actualNumber` 는 단순히 변환 결과를 출력하는데 사용되고 있습니다.
 
-상수와 변수 모두 '옵셔널 바인딩' 에는 상수와 변수 모두 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶으면, `if var actualNumber` 를 대신 사용하여, 옵셔널이 갖고 있는 값을 상수가 아닌 변수로 사용하게끔 할 수도 있습니다.
+'옵셔널 연결' 에는 상수와 변수 모두 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶으면, `if var actualNumber` 를 대신 사용하여, 옵셔널이 갖고 있는 값을 상수가 아닌 변수로 사용하게끔 할 수도 있습니다.
 
-단일 `if` 문에 쉼표로 분리하는 방법을 쓰면, '옵셔널 바인딩' 과 '불린 조건 (Boolean conditions)' 을 원하는 만큼 많이 포함시킬 수 있습니다. 옵셔널 바인딩 중 어떤 값이든 `nil` 이거나 혹은 어떤 '불린 (Boolean)' 조건이든 `false` 로 계산된다면, 전체 `if` 문의 조건은 `false` 인 것으로 고려됩니다. 다음의 `if` 문들은 서로 동등합니다:
+단일 `if` 문에 쉼표로 분리하는 방법을 쓰면, '옵셔널 연결' 과 '불린 조건 (Boolean conditions)' 을 원하는 만큼 많이 포함시킬 수 있습니다. 옵셔널 연결 중 어떤 값이든 `nil` 이거나 혹은 어떤 '불린 (Boolean)' 조건이든 `false` 로 계산된다면, 전체 `if` 문의 조건은 `false` 인 것으로 고려됩니다. 다음의 `if` 문들은 서로 동등합니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
@@ -595,11 +595,11 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" 를 출력합니다.
 ```
 
-`if` 문 안의 '옵셔널 바인딩' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
+`if` 문 안의 '옵셔널 연결' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 풀리는 옵셔널)
 
-앞서 설명한 것처럼, 옵셔널은 상수나 변수가 "값이 없을" 수 있음을 나타냅니다. 옵셔널은 `if` 문을 사용하여 값이 존재하는지를 검사할 수 있으며, 옵셔널 값에 접근하기 위해 '옵셔널 바인딩' 을 사용하여 값의 유무에 따른 '조건부 풀기 (conditionally unwrapped)' 를 할 수도 있습니다.
+앞서 설명한 것처럼, 옵셔널은 상수나 변수가 "값이 없을" 수 있음을 나타냅니다. 옵셔널은 `if` 문을 사용하여 값이 존재하는지를 검사할 수 있으며, 옵셔널 값에 접근하기 위해 '옵셔널 연결' 을 사용하여 값의 유무에 따른 '조건부 풀기 (conditionally unwrapped)' 를 할 수도 있습니다.
 
 프로그램의 구조상, 최초로 값을 설정한 후, 옵셔널은 _항상 (always)_ 값을 갖는다는 것은 분명합니다. 이와 같은 경우, 항상 값이 있다고 가정해도 안전하므로, 접근할 때마다 옵셔널 값을 검사하고 풀고할 필요가 없는 것이 유용할 것입니다.
 
@@ -632,7 +632,7 @@ if assumedString != nil {
 
 You can also use an implicitly unwrapped optional with optional binding, to check and unwrap its value in a single statement:
 
-'암시적으로 풀리는 옵셔널' 을 '옵셔널 바인딩' 과 같이 써서, 단일한 구문으로 값을 검사하고 풀기까지 할 수도 있습니다:
+'암시적으로 풀리는 옵셔널' 을 '옵셔널 연결' 과 같이 써서, 단일한 구문으로 값을 검사하고 풀기까지 할 수도 있습니다:
 
 ```swift
 if let definiteString = assumedString {

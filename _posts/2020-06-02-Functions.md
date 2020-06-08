@@ -197,7 +197,7 @@ func minMax(array: [Int]) -> (min: Int, max: Int)? {
 }
 ```
 
-'옵셔널 바인딩 (optional binding)' 을 사용하면 `minMax(array:)` 함수가 실제로 튜플 값을 반환하는 지 `nil` 을 반환하는지 검사할 수 있습니다:
+'옵셔널 연결 (optional binding)' 을 사용하면 `minMax(array:)` 함수가 실제로 튜플 값을 반환하는 지 `nil` 을 반환하는지 검사할 수 있습니다:
 
 ```swift
 if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
