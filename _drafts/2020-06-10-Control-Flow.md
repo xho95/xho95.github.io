@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Control Flow (제어 흐름)"
-date:   2020-06-02 10:00:00 +0900
+date:   2020-06-10 10:00:00 +0900
 categories: Swift Language Grammar Control-Flow For-In While
 ---
 
@@ -670,16 +670,122 @@ label name: while condition {
 }
 ```
 
-다음 예제는이 장의 앞부분에서 본 Snakes and Ladders 게임의 수정 된 버전에 대해 while 루프와 함께 break 및 continue 문을 사용합니다. 이번에는 게임에 추가 규칙이 있습니다.
+다음 예제는 이름표 달린 `while` 반복문에 `break` 문과 `continue` 문을 사용하여 이 장 앞에서 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개선한 버전입니다. 단 이번에는, 게임에 부가적인 규칙이 있습니다:
 
-이기려면 25 칸에 정확히 착륙해야합니다.
-특정 주사위 굴림이 25 칸을 넘어 서면 25 칸에 도달하는 데 필요한 정확한 숫자를 굴릴 때까지 다시 굴려야합니다.
+* 승리하려면, 반드시 _정확하게 (exactly)_ '정사각형 25' 에 도착해야 합니다.
 
-게임 보드는 이전과 동일합니다.
+특정한 '주사위 굴림 값' 이 '정사각형 25' 을 넘어서게 만들 경우, '정사각형 25' 에 정확하게 도착하는 수가 나올 때까지 반드시 다시 굴려야 합니다.
+
+게임 판은 이전과 똑같습니다.
+
+![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
+
+`finalSquare`, `board`,  `square`, 그리고 `diceRoll` 의 값도 이전과 똑같은 방법으로 초기화합니다:
+
+```swift
+let finalSquare = 25
+var board = [Int](repeating: 0, count: finalSquare + 1)
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+var square = 0
+var diceRoll = 0
+```
+
+이 버전의 게임은 `while` 반복문과 `switch` 문을 사용하여 게임 로직을 구현합니다. `while` 반복문은 `gameLoop` 라는 '구문 이름표 (statement label)' 를 가지고 자신이 '뱀과 사다리' 게임의 '주요 게임 반복문' 임을 지시합니다.
+
+`while` 반복문의 조건은 `while square != finalSquare` 이며, 이는 반드시 정확하게 '정사각형 25' 에 도착해야 함을 반영합니다.
+
+```swift
+gameLoop: while square != finalSquare {
+  diceRoll += 1
+  if diceRoll == 7 { diceRoll = 1 }
+  switch square + diceRoll {
+  case finalSquare:
+    // diceRoll will move us to the final square, so the game is over
+    break gameLoop
+  case let newSquare where newSquare > finalSquare:
+    // diceRoll will move us beyond the final square, so roll again
+    continue gameLoop
+  default:
+    // this is a valid move, so find out its effect
+    square += diceRoll
+    square += board[square]
+  }
+}
+print("Game over!")
+```
+
+각각의 반복을 시작할 때마다 주사위를 굴립니다. 이 반복문은 참여자를 곧 바로 이동하는 대신, `switch` 문으로 이동 결과를 검토하여 이동할 수 있는 지를 먼저 확인합니다.
+
+* '주사위 굴림 값' 이 참여자를 '최종 정사각형' 으로 이동시킨다면, 게임이 끝난 것입니다. `break gameLoop` 구문은 '제어권 (control)' 을 `while` 반복문 밖에 있는 코드의 첫 번째 줄로 전달하는데, 이는 게임을 종료합니다.
+* '주사위 굴림 값' 이 참여자를 '최종 정사각형' 너머로 이동시킨다면, 이 이동은 무효한 것이며 참여자는 (주사위를) 다시 굴려야 합니다. `continue gameLoop` 구문은 현재의 `while` 반복 '회차 (iteration)' 을 종료하고 그 다음 반복 '회차' 를 시작합니다.
+* 이외의 다른 모든 경우에는, '주사위 굴림 값' 이 유효합니다. 참여자는 `diceRoll` 개의 정사각형 만큼 앞으로 이동하고, 게임 로직은 뱀인지 사다리인지를 검사합니다. 이제 반복을 종료하고, '제어권 (control)' 이 `while` 조건으로 돌아와서 다른 '차례 (턴; turn)' 이 필요한지를 결정합니다.
+
+> 위의 `break` 문에서 `gameLoop` 이름표를 사용하지 않으면, `while` 문이 아니라, `switch` 문을 중단하게 됩니다. `gameLoop` 이름표를 사용하는 것은 끝나는 제어문이 어떤 것인지를 명확하게 만들어 줍니다.
+>
+> 반복문의 다음 '회차 (iteration)' 로 건너뛰기 위해 `gameLoop` 이름표를 써서 `continue gameLoop` 라고 꼭 호출해야만 할 필요는 없습니다. 이 게임에는 반복문이 하나만 있어서, `continue` 문이 영향을 미칠 반복문이 어떤 것인지 모호할 일이 없습니다. 하지만, `continue` 문에 `gameLoop` 이름표를 사용한다고 문제될 건 아무 것도 없습니다. 이렇게 하면 `break` 문에 짝이 되어 일관성이 있으며 게임 로직을 좀 더 명확하게 읽고 이해하도록 도와줍니다.
 
 ### Early Exit (조기 탈출 구문)
 
-### Checking API Availability (API 사용 가능 여부 검사하기)
+`guard` 문은, `if` 문 처럼, '표현식 (expression)' 의 '불린 값 (Boolean value)' 에 따라 구문을 실행합니다. `guard` 문을 사용하면 `guard` 문 이 후의 코드를 실행하려면 조건이 반드시 '참 (true)' 일 것을 요구하게 됩니다. `if` 문과는 다르게, `guard` 문에는 항상 `else` 절이 있습니다-조건이 '참 (true)' 이 아닐 경우 `else` 절 안에 있는 코드가 실행됩니다.
+
+```swift
+func greet(person: [String: String]) {
+  guard let name = person["name"] else {
+    return
+  }
+
+  print("Hello \(name)!")
+
+  guard let location = person["location"] else {
+    print("I hope the weather is nice near you.")
+    return
+  }
+
+  print("I hope the weather is nice in \(location).")
+}
+
+greet(person: ["name": "John"])
+// "Hello John!" 를 출력합니다.
+// "I hope the weather is nice near you." 를 출력합니다.
+greet(person: ["name": "Jane", "location": "Cupertino"])
+// "Hello Jane!" 를 출력합니다.
+// "I hope the weather is nice in Cupertino." 를 출력합니다.
+```
+
+`guard` 문의 조건에 부합하는 경우, 코드 실행은 `guard` 문의 '종료 중괄호 뒤에서부터 계속됩니다. (`guard` 문의) 조건부에서 '옵셔널 연결 (optional binding)' 로 값을 할당한 변수나 상수는 어떤 것이든 `guard` 문이 있는 코드 블럭의 나머지 부분에서 사용할 수 있습니다.
+
+해당 조건에 부합하지 않는 경우, `else` 분기 내의 코드를 실행합니다. 이 분기는 `guard` 문이 있는 코드 블록을 반드시 탈출하도록 '제어권 (control)' 을 전달해야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 와 같은 '제어 전송 구문 (control transfer statement)' 으로 할 수 있으며, 아니면 아예 `fatalError(_:file:line:)` 같이, 반환을 하지 않는 함수나 메소드를 호출할 수도 있습니다.
+
+'필수 조건 (requirements)' 에 `guard` 문을 사용하면, `if` 문으로 같은 검사를 할 때와 비교해서, 코드의 가독성이 좋아집니다. 일반적으로 실행되는 코드는 `else` 블럭을 쓰지 않고도 작성할 수 있으며, 해당 필수 조건과 이 조건을 위반했을 때 이를 처리할 코드를 나란히 배치할 수 있습니다.
+
+### Checking API Availability (API 사용 가능성 검사하기)
+
+스위프트는 API 사용 가능성을 검사하는 기능을 내장하고 있어서, 주어진 배포 대상에서 사용할 수 없는 API 를 우연히 사용하는 일이 없게 보장해 줍니다.
+
+컴파일러는 SDK 에 있는 사용 가능성 정보를 사용하여 코드에서 사용한 모든 API 가 프로젝트에서 지정한 배포 대상에서 사용 가능한 지를 검증합니다. 사용할 수 없는 API 를 사용하려고 하면 스위프트가 컴파일 시간에 에러를 보고합니다.
+
+`if` 나 `guard` 문에서 _사용 가능성 조건 (availability condition)_ 을 사용하면, 사용하려는 API 가 실행 시간에 사용 가능한 것인지에 따라, 코드 블럭을 조건부로 실행할 수 있습니다. 컴파일러는 해당 코드 블럭의 API 가 사용 가능한 지 검증할 때 '사용 가능성 조건 (availability condition)' 에 있는 정보를 사용합니다.
+
+```swift
+if #available(iOS 10, macOS 10.12, *) {
+  // iOS 에서는 iOS 10 API 를 사용하고, macOS 에서는 macOS 10.12 API 를 사용합니다.
+} else {
+  // 이전 버전의 iOS 와 macOS API 를 사용합니다.
+}
+```
+
+위의 '사용 가능성 조건' 은 iOS 의 경우, iOS 10 이상에서만 `if` 문의 본문을 실행하도록 지정하고; macOS 의 경우, macOS 10.12 이상에서만 실행하도록 지정합니다. 마지막 인자인, `*` 는 필수이며, 자신의 대상으로 지정한 `if` 본문이 실행되는 최소한의 배포 대상, 을 지정하는 것입니다.
+
+일반적인 양식의, '사용 가능성 조건' 은 '플랫폼 이름과 버전 (platform names and versions)' 목록으로 되어 있습니다. 플랫폼 이름으로는 `iOS`, `macOS`, `watchOS`, 그리고 `tvOS` 등을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348) 를 참고하기 바랍니다. iOS 8 이나 macOS 10.10 과 같이 '주요 버전 번호 (major version numbers)' 를 지정하는 것 외에도, iOS 11.2.6 과 macOS 10.13.3 과 같이 '부가 버전 번호' 도 지정할 수 있습니다.
+
+```swift
+if #available(`platform name` `version`, `...`, *) {
+    `statements to execute if the APIs are available`
+} else {
+    `fallback statements to execute if the APIs are unavailable`
+}
+```
 
 ### 참고 자료
 
