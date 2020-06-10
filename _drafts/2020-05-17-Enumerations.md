@@ -69,9 +69,49 @@ directionToHead = .east
 
 `directionToHead` 의 타입을 이미 알고 있으므로, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 명시적으로 타입을 지정한 열거체의 값과 작업할 때 아주 가독성 높은 코드를 만들도록 해 줍니다.
 
-### Matching Enumeration Values with a Switch Statement ('switch' 문으로 해당하는 열거체 값 찾기)
+### Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)
+
+개별 열거체 값은 `switch` 문으로 맞춰볼 수 있습니다:
+
+```swift
+directionToHead = .south
+switch directionToHead {
+case .north:
+  print("Lots of planets have a north")
+case .south:
+  print("Watch out for penguins")
+case .east:
+  print("Where the sun rises")
+case .west:
+  print("Where the skies are blue")
+}
+// "Watch out for penguins" 를 출력합니다.
+```
+
+이 코드는 다음 처럼 이해할 수 있습니다.
+
+“`directionToHead` 의 값을 검토합니다. `.north` 와 같은 경우에는, `"Lots of planets have a north"` 를 출력합니다. `.south` 와 같은 경우에는, `"Watch out for penguins"` 을 출력합니다.
+
+...이렇게 계속됩니다.
+
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것 처럼, 열거체의 '경우 값' 을의 검토할 때 `switch` 문은 반드시 '빠짐없이 철저해야 (exhaustive)' 합니다. 만약 `.west` 에 대한 `case` 를 생략하면, 이 코드는 컴파일되지 않는데, `CompassPoint` '경우 값들' 에 해당하는 전체 목록을 다 검토하지 않기 때문입니다. 빠짐없이 철처할 것을 요구하는 것은 열거체의 '경우 값' 을 우연히 생략하지 않도록 보장합니다.
+
+모든 열거채의 '경우 값' 에 대해 `case` 를 제공하는 것이 적절하지 않을 때는, `default` '경우 값' 을 제공해서 명시적으로 알리지 않은 '경우 값' 이라면 어떤 것도 다루도록 할 수 있습니다:
+
+```swift
+let somePlanet = Planet.earth
+switch somePlanet {
+case .earth:
+  print("Mostly harmless")
+default:
+  print("Not a safe place for humans")
+}
+// "Mostly harmless" 를 출력합니다.
+```
 
 ### Iterating over Enumeration Cases (열거체 경우 값에 대해 동작 반복 적용하기)
+
+일부 열거의 경우 해당 열거의 모든 사례를 수집하는 것이 유용합니다. 열거 이름 뒤에 CaseIterable을 작성하여 사용하도록 설정하십시오. Swift는 모든 케이스의 컬렉션을 열거 형의 allCases 속성으로 노출합니다. 예를 들면 다음과 같습니다.
 
 ### Associated Values (관련 값; 결합 값)
 
