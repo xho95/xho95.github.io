@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Swift 5.2: Control Flow (제어 흐름)"
 date:   2020-06-10 10:00:00 +0900
-categories: Swift Language Grammar Control-Flow For-In While
+categories: Swift Language Grammar Control-Flow For-In While Switch
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 부분[^Control-Flow]을 번역하고 정리한 글입니다.

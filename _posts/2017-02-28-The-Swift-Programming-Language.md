@@ -21,7 +21,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %})
 * [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %})
 * [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %})
-* [Control Flow (제어 흐름)]
+* [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %})
 * [Functions (함수)]({% post_url 2020-06-02-Functions %})
 * [Closures (잠금 블럭)]({% post_url 2020-03-03-Closures %})
 * [Enumerations (열거체)]
