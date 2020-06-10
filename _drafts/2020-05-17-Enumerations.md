@@ -111,7 +111,29 @@ default:
 
 ### Iterating over Enumeration Cases (열거체 경우 값에 대해 동작 반복 적용하기)
 
-일부 열거의 경우 해당 열거의 모든 사례를 수집하는 것이 유용합니다. 열거 이름 뒤에 CaseIterable을 작성하여 사용하도록 설정하십시오. Swift는 모든 케이스의 컬렉션을 열거 형의 allCases 속성으로 노출합니다. 예를 들면 다음과 같습니다.
+어떤 열거체에서는, 열거체의 모든 '경우 값들' 에 대한 '집합체 (collection)' 을 가지는 것이 유용할 수 있습니다. 이렇게 하려면 열거체의 이름 뒤에 `: CaseIterable` 을 붙여주도록 합니다. 스위프트는 해당 열거체 타입의 모든 '경우 값들' 을 위한 '집합체' 를 `allCases` 라는 속성으로 드러냅니다. 예를 들면 다음과 같습니다:
+
+```swift
+enum Beverage: CaseIterable {
+case coffee, tea, juice
+}
+let numberOfChoices = Beverage.allCases.count
+print("\(numberOfChoices) beverages available")
+// "3 beverages available" 를 출력합니다.
+```
+
+위 예제에서는, `Beverage.allCases` 를 써서 `Beverage` 열거체의 모든 '경우 값' 을 담고 있는 '집합체 (collection)' 에 접근합니다. `allCase` 는 다른 모든 '집합체' 들 처럼 사용할 수 있는데-이 집합체의 원소는 열거체 타입의 인스턴스라서, 이 경우에는 `Beverage` 값이 됩니다. 위 예제는 '경우 값' 얼마나 많이 있는 지를 계산하며, 아래 예제는 `for` 반복문을 사용하여 모든 '경우 값' 들에 동작을 반복 적용합니다.
+
+```swift
+for beverage in Beverage.allCases {
+  print(beverage)
+}
+// coffee
+// tea
+// juice
+```
+
+위 예제에서 사용한 구문 표현은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수하도록 표시한 것입니다. 프로토콜에 대한 정보는, [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
 ### Associated Values (관련 값; 결합 값)
 
