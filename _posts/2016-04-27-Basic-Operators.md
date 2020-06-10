@@ -200,7 +200,7 @@ if name == "world" {
 // "hello, world" 를 출력합니다. name 이 진짜 "world" 와 같기 때문입니다.
 ```
 
-`if` 구문에 대해서는, [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 을 보기 바랍니다.
+`if` 구문에 대해서는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 보기 바랍니다.
 
 두 개의 '튜플 (tuples)' 이 같은 타입에 같은 개수의 값을 가지고 있으면 서로 비교할 수 있습니다. 튜플을 비교할 때는 왼쪽에서 오른쪽으로, 한번에 한 값씩, 두 값이 같지 않을 때까지 비교합니다. 두 값을 비교하면, 이 비교의 결과가 튜플 비교 연산의 전체 결과를 결정합니다. 모든 요소가 같으면, 튜플 자체가 같은 것입니다. 예를 들면 다음과 같습니다:
 
@@ -319,7 +319,7 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-`for-in` 반복문 대해서는, [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 을 보기 바랍니다.
+`for-in` 반복문에 대해서는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 참고하기 바랍니다.
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 

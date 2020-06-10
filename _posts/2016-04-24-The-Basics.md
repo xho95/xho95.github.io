@@ -395,7 +395,7 @@ if turnipsAreDelicious {
 // "Eww, turnips are horrible." 를 출력합니다.
 ```
 
-`if` 문 같은 조건 구문에 대해서는 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
+`if` 문 같은 조건 구문에 대해서는 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
 
 스위프트의 '타입 안전 장치 (type safety)' 는 '불린-아닌 값 (non-Boolean values)' 이 `Bool` 을 대체하지 못하도록 막아줍니다. 다음 예제는 '컴파일 시간에 (compile-time)' 에러를 띄웁니다:
 
@@ -542,13 +542,13 @@ if convertedNumber != nil {
 // "convertedNumber has an integer value of 123." 을 출력합니다.
 ```
 
-`if` 문에 대한 더 자세한 내용은 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 을 보기 바랍니다.
+`if` 문에 대한 더 자세한 내용은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 보기 바랍니다.
 
 > `!` 를 사용해서 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다. `!` 를 사용해서 값을 강제로 풀기 전에 항상 옵셔널이 '`nil` 이 아닌 값 (non-`nil` value)' 을 가지고 있음을 먼저 확인하기 바랍니다.
 
 #### Optional Binding (옵셔널 연결)
 
-_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 가지는지 확인해서, 그 경우, 그 값을 임시 상수나 변수의 형태로 사용하게 할 수 있습니다. '옵셔널 연결' 을 `if` 와 `while` 문과 같이 사용하면, 옵셔널 안의 값을 검사하고 그 값을 상수나 변수로 추출하는 것을, 단 한 번의 동작으로 할 수 있습니다. `if` 와 `while` 문에 대해서는 [Control Flow (제어 흐름)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 더 자세히 다룹니다.
+_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 가지는지 확인해서, 그 경우, 그 값을 임시 상수나 변수의 형태로 사용하게 할 수 있습니다. '옵셔널 연결' 을 `if` 와 `while` 문과 같이 사용하면, 옵셔널 안의 값을 검사하고 그 값을 상수나 변수로 추출하는 것을, 단 한 번의 동작으로 할 수 있습니다. `if` 와 `while` 문에 대해서는 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
 
 if 문에서 '옵셔널 연결' 을 작성하는 방법은 다음과 같습니다:
 
@@ -595,7 +595,7 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" 를 출력합니다.
 ```
 
-`if` 문 안의 '옵셔널 연결' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 종료)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID525) 에서 설명하도록 합니다.
+`if` 문 안의 '옵셔널 연결' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 탈출 구문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출-구문) 에서 설명하도록 합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 풀리는 옵셔널)
 

@@ -172,7 +172,7 @@ for character in "Dog!🐶" {
 // 🐶
 ```
 
-`for-in` 반복문은 [For-In Loope (For-In 반복문)](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID121) 에 설명되어 있습니다.
+`for-in` 반복문은 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 에서 설명합니다.
 
 다른 방법으로, `Character` 타입 '주석 (annotation)'[^annotation] 을 쓰면 '단일-문자 문자열 글자표현 (single-character string literal)' 으로 독립된 `Character` 상수나 변수를 만들 수도 있습니다:
 
