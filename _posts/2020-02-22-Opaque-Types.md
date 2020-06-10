@@ -227,7 +227,7 @@ protoFlippedTriangle == sameThing     //  Error, 에러
 
 이 접근 방법의 또 다른 문제는 도형 변환을 '숨기지 (nest)'[^nest] 않는다는 것입니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 '어떤 (some) 타입' 인 인자를 받습니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않습니다[^protocol-type-value]: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 `protoFlip(protoFlip(smallTriangle))` 과 같이 여러번 반복해서 변환하는 코드는 유효하지 않음을 의미하는 것으로 '뒤집힌 도형 (flipped shape)' 은 `protoFlip(_:)` 의 인자로 유효하지 않기 때문입니다.
 
-이와는 대조적으로, 'opaque (불투명한) 타입' 은 실제 타입의 정체성을 보존합니다. 스위프트는 'associated types (관련 타입)' 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서도 'opaque (불투명한) 타입 값' 은 사용할 수 있습니다. 예를 들어, 다음은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 `Container` 프로토콜의 한 예시입니다:
+이와는 대조적으로, 'opaque (불투명한) 타입' 은 실제 타입의 정체성을 보존합니다. 스위프트는 '결합된 타입 (associated types)' 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서도 'opaque (불투명한) 타입 값' 은 사용할 수 있습니다. 예를 들어, 다음은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 `Container` 프로토콜의 한 예시입니다:
 
 ```swift
 protocol Container {
@@ -239,10 +239,10 @@ protocol Container {
 extension Array: Container { }
 ```
 
-`Container` 프로토콜은 함수의 반환 타입으로 사용할 수 없는데 이는 이 프로토콜이 '관련 타입 (associated type)' 을 가지고 있기 때문입니다. 'generic (일반화된) 반환 타입' 의 '구속 조건 (constraint)' 으로도 사용할 수 없는데 이는 함수 본문 외부에 'generic (일반화된) 타입' 이 무엇인지 추론하는데 필요한 충분한 정보가 없기 때문입니다.
+`Container` 프로토콜은 함수의 반환 타입으로 사용할 수 없는데 이는 이 프로토콜이 '결합된 타입 (associated type)' 을 가지고 있기 때문입니다. 'generic (일반화된) 반환 타입' 의 '구속 조건 (constraint)' 으로도 사용할 수 없는데 이는 함수 본문 외부에 'generic (일반화된) 타입' 이 무엇인지 추론하는데 필요한 충분한 정보가 없기 때문입니다.
 
 ```swift
-// Error: 에러, 관련 타입 (associated type) 을 가지는 프로토콜은 반환 타입으로 사용할 수 없습니다.
+// Error: 에러, 결합된 타입 (associated type) 을 가지는 프로토콜은 반환 타입으로 사용할 수 없습니다.
 func makeProtocolContainer<T>(item: T) -> Container {
   return [item]
 }
@@ -267,7 +267,7 @@ print(type(of: twelve))
 // "Int" 를 출력합니다.
 ```
 
-`twelve` 의 타입은 `Int` 로 추론되며, 이는 '타입 추론 (type inference)' 이 'opaque (불투명한) 타입' 과도 잘 작동한다는 사실을 명확히 보여줍니다. `makeOpaqueContainer(item:)` 의 구현에서, 'opaque container (불투명한 집합체)' 의 실제 타입은 `[T]` 입니다. 여기서 `T` 는 `Int` 이므로, 반환 값은 정수 배열이며 '관련 타입 (associated type)' 인 `Item` 은 `Int` 로 추론됩니다. `Container` 의 '첨자 연산 (subscript)' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 로 추론함을 의미합니다.
+`twelve` 의 타입은 `Int` 로 추론되며, 이는 '타입 추론 (type inference)' 이 'opaque (불투명한) 타입' 과도 잘 작동한다는 사실을 명확히 보여줍니다. `makeOpaqueContainer(item:)` 의 구현에서, 'opaque container (불투명한 집합체)' 의 실제 타입은 `[T]` 입니다. 여기서 `T` 는 `Int` 이므로, 반환 값은 정수 배열이며 '결합된 타입 (associated type)' 인 `Item` 은 `Int` 로 추론됩니다. `Container` 의 '첨자 연산 (subscript)' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 로 추론함을 의미합니다.
 
 ### 참고 자료
 

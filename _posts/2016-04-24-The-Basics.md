@@ -691,9 +691,9 @@ do {
 
 이 예제에서, `makeASandwich()` 함수는 남아있는 깨끗한 접시가 하나도 없거나 하나라도 재료가 빠진 경우 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 이 함수 호출을 `try` 표현식으로 감쌌습니다. `do` 구문 속에 함수 호출을 감쌌기 때문에, 어떤 에러가 던져져도 이미 제공한 `catch` 절로 전파될 것입니다.
 
-어떤 에러도 던져지지 않으면, `eatASandwich()` 함수가 호출됩니다. 어떤 에러가 던져졌는데 그것이 `SandwichError.outOfCleanDishes` 인 경우에 해당된다면, `washDishes()` 함수가 호출될 것입니다. 어떤 에러가 던져졌는데 그것이 `SandwichError.missingIngredients` 인 경우에 해당된다면, 그 때는 `buyGroceries(_:)` 함수가 호출되면서 관련 값은 `catch` '유형 (pattern)' 이 잡아낸 `[String]` 값을 가지게 됩니다.
+에러가 던져지지 않으면, `eatASandwich()` 함수를 호출합니다. 에러가 던져지고 이것이 `SandwichError.outOfCleanDishes` '경우 값' 에 해당한다면, `washDishes()` 함수를 호출할 것입니다. 에러가 던져지고 이것이 `SandwichError.missingIngredients` '경우 값' 에 해당한다면, 그 때는 `catch` '유형 (pattern)' 에 의해 붙잡힌 `[String]` '결합 값' 을 가지고 `buyGroceries(_:)` 함수를 호출하게 됩니다.
 
-에러를 던지고, 잡아내고, 전파하는 것에 대한 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 상세히 다루도록 합니다.
+에러를 던지고, 붙잡고, 전파하는 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 아주 상세하게 다룹니다.
 
 ### Assertions and Preconditinos (단언과 선행 조건)
 

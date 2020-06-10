@@ -167,9 +167,9 @@ public enum CompassPoint {
 }
 ```
 
-**Raw Values and Associated Values ('원시 값' 과 '관련 값')**
+**Raw Values and Associated Values ('원시 값' 과 '결합된 값')**
 
-열거체 정의에 있는 '원시 값 (raw values)' 이나 '관련 값 (associated values)'[^raw-values-and-associated-values] 에서 사용되는 타입은 어떤 것이든 적어도 열거체의 접근 수준보다는 높아야 합니다. 예를 들어, 접근 수준이 'internal (내부)' 인 열거체의 '원시-값 (raw-value)' 타입으로 'private (개인 전용)' 타입을 사용할 수는 없습니다.
+열거체 정의에 있는 '원시 값 (raw values)' 이나 '결합된 값 (associated values)'[^raw-values-and-associated-values] 에서 사용되는 타입은 어떤 것이든 적어도 열거체의 접근 수준보다는 높아야 합니다. 예를 들어, 접근 수준이 'internal (내부)' 인 열거체의 '원시-값 (raw-value)' 타입으로 'private (개인 전용)' 타입을 사용할 수는 없습니다.
 
 #### Nested Types (품어진 타입)
 
@@ -223,7 +223,7 @@ private var privateInstance = SomePrivateClass()
 
 상수, 변수, 속성, 및 첨자 연산을 위한 '획득자 (getters)' 와 '설정자 (setters)' 는 자동으로 그것이 속해 있는 상수, 변수, 속성, 또는 첨자 연산과 동일한 접근 수준을 부여 받게 됩니다.
 
-'설정자 (setter)' 에는 연관된 '획득자 (getter)' 보다 더 _낮은 (lower)_ 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역의 범위를 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
+'설정자 (setter)' 에는 연관되어 있는 '획득자 (getter)' 보다 더 _낮은 (lower)_ 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역의 범위를 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
 
 > 이 규칙은 '계산 속성 (computed properties)' 뿐만 아니라 '저장 속성 (stored properties)' 에도 적용됩니다. '저장 속성' 에 대해서 '획득자 (getter) 와 설정자 (setter)' 를 직접 명시적으로 작성하지 않더라도, 여전히 스위프트는 '저장 속성' 의 뒤쪽 저장 공간에 접근하도록 하는 암시적인 '획득자 (getter) 와 설정자 (setter)' 를 만들어서 통합합니다. '계산 속성' 의 명시적 '설정자 (setter)' 와 동일한 방법을 써서 `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '합성된 설정자 (synthesized setter)' 의 접근 수준을 바꿀 수 있습니다.
 
@@ -357,7 +357,7 @@ extension SomeStruct: SomeProtocol {
 
 직접 정의한 'type aliases (타입 별명)' 은 어떤 것이든 접근 수준의 관점에서는 별개의 타입인 것처럼 처리됩니다. '타입 별명' 은 별명을 짓는 타입의 접근 수준보다 낮거나 같은 접근 수준을 가질 수 있습니다. 예를 들어, 'private (개인 전용) 타입 별명' 은 'private (개인 전용)', 'file-private (파일-전용)', 'internal (내부)', 'public (공용)', 또는 'open (공개)' 타입에 대한 별명이 될 수 있지만, 'public (공용) 타입 별명' 은 'internal (내부)', 'file-private (파일-전용)', 또는 'private (개인 전용)' 타입의 별명이 될 수 없습니다.
 
-> 이 규칙은 '프로토콜 준수 기능' 를 만족시킬려고 사용하는 '관련 타입 (associated types)' 를 위한 '타입 별명' 에도 동일하게 적용됩니다.
+> 이 규칙은 '프로토콜 준수 기능' 를 만족시킬려고 사용하는 '결합된 타입 (associated types)' 를 위한 '타입 별명' 에도 동일하게 적용됩니다.
 
 ### 참고 자료
 
@@ -367,7 +367,7 @@ extension SomeStruct: SomeProtocol {
 
 [^function-access-level]: '함수가 계산한 접근 수준' 과 '해당 영역의 기본적인 의미' 가 같아야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. 즉, 함수의 접근 수준을 계산해보니 'private' 일 때는, 반드시 함수의 정의에 'private' 을 써줘야 한다는 것 입니다. 그렇게 하지 않으면, '함수가 계산한 접근 수준 (private)' 과 '해당 영역의 기본적인 의미 (internal)' 가 다르므로, 컴파일이 안되게 됩니다.
 
-[^raw-values-and-associated-values]: 스위프트의 열거체는 각 '경우 값 (case)' 마다 '원시 값 (raw value)' 과 '관련 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 '경우 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. 관련 값은 '경우 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 '경우 값' 은 `"Sun rise"` 가 됩니다.
+[^raw-values-and-associated-values]: 스위프트의 열거체는 각 '경우 값 (case)' 마다 '원시 값 (raw value)' 과 '결합된 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 '경우 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합된 값' 은 '경우 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 '경우 값' 은 `"Sun rise"` 가 됩니다.
 
 [^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
 

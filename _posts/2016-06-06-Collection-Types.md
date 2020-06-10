@@ -253,7 +253,7 @@ _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 
 
 셋에 저장하는 타입은 반드시 _해쉬 가능 (hashable)_[^hashable] 해야 합니다 - 이것은, 이 타입은 반드시 자체적으로 _해쉬 값 (hash value)_[^hash-value] 을 계산할 수 있어야 한다는 말입니다. 여기서 해시 값이란, 하나의 `Int` 값으로서, 비교했을 때 같다고 판단되는 객체들은 모두 같아야 하는 값을 말하는 것으로, 가령 `a == b` 인 경우, 이는 필연적으로 `a.hashValue == b.hashValue` 이라는 말이 됩니다.
 
-스위프트의 모든 기본 타입 (가령 `String`, `Int`, `Double` 그리고 `Bool`) 은 기본적으로 해시 가능하므로, '셋 (set)' 의 값 타입과 '딕셔너리 (dictionary)' 의 키 (key) 타입으로 사용할 수 있습니다. '관련 값 (associated values)' 이 없는 열거체[^enumeration]의 경우 값 (enumeration case value) 역시 기본적으로 해시 가능합니다. (이는 [Enumerations (열거체)](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 에서 설명한 것과 같습니다)  
+스위프트의 모든 기본 타입 (가령 `String`, `Int`, `Double` 그리고 `Bool`) 은 기본적으로 해시 가능하므로, '셋 (set)' 의 값 타입과 '딕셔너리 (dictionary)' 의 키 (key) 타입으로 사용할 수 있습니다. '결합된 값 (associated values)' 이 없는 열거체[^enumeration]의 경우 값 (enumeration case value) 역시 기본적으로 해시 가능합니다. (이는 [Enumerations (열거체)](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 에서 설명한 것과 같습니다)  
 
 > 자신이 만든 타입을 셋의 값 타입이나 딕셔너리의 키 타입으로 사용하고 싶으면, 스위프트 표준 라이브러리에 있는 `Hashable` 프로토콜을 준수하도록 하면 됩니다. `Hashable` 프로토콜을 준수하는 타입은 반드시 `hashValue` 라는 읽을 수 있는 (gettable) `Int` 속성을 제공해야 합니다. 같은 프로그램을 다른 시점에 실행할 때나 다른 프로그램을 실행할 때, 이 타입의 `hashValue` 속성이 반환하는 값을 같도록 만들 필요는 없습니다.
 >
@@ -523,7 +523,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 ### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
 
-딕셔너리는 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 문법 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
+딕셔너리는 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
 
 딕셔너리에 있는 요소의 개수를 알고 싶으면, 배열과 마찬가지로 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
@@ -543,14 +543,14 @@ if airports.isEmpty {
 // "The airports dictionary is not empty." 를 출력합니다.
 ```
 
-딕셔너리에 새 요소를 추가할 때 '첨자 연산 문법 (subscript syntax)' 을 사용할 수 있습니다. 타입에 맞는 새 키를 첨자 연산의 색인으로 두고, 타입에 맞는 새 값을 할당하면 됩니다:  
+딕셔너리에 새 요소를 추가할 때 '첨자 연산 구문 표현' 을 사용할 수 있습니다. 타입에 맞는 새 키를 첨자 연산의 색인으로 두고, 타입에 맞는 새 값을 할당하면 됩니다:  
 
 ```swift
 airports["LHR"] = "London"
 // airports 딕셔너리는 이제 3 개의 요소를 가집니다.
 ```
 
-첨자 연산 문법을 사용해서 특정한 키와 관련되어 있는 값을 바꿀 수도 있습니다:
+'첨자 연산 구문 표현' 을 사용하여 특정한 키와 결합되어 있는 값을 바꿀 수도 있습니다:
 
 ```swift
 airports["LHR"] = "London Heathrow"
