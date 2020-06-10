@@ -352,7 +352,7 @@ default:
 
 `switch` 문의 첫 번째 '경우 값 (case)' 은 영어 알파벳의 첫 번째 글자인, `a` 에 해당하고, 두 번째 '경우 값 (case)' 은 마지막 글자인, `z` 에 해당합니다. `switch` 는 반드시, 모든 알파벳 문자 뿐만 아니라, 발생 가능한 모든 문자에 대한 '경우 값 (case)' 을 가져야 하기 때문에, 이 `switch` 문은 `default` '경우 값 (case)' 를 사용하여 `a` 와 `z` 이외의 모든 문자를 맞춰봅니다. 이런 준비는 `switch` 문이 '빠짐없이 철저하도록 (exhaustive)' 보장합니다.
 
-**No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
+##### No Implicit Fallthrough (암시적으로 빠져나가지 않음)
 
 C 와 오브젝티브-C 언어의 `switch` 문과 다른 점이라면, 스위프트의 `switch` 문은 기본적으로 각 '경우 값 (case)' 을 빠져나가서 그 다음으로 넘어가지 않습니다. 그 대신, 전체 `switch` 문은, 명시적으로 `break` 문을 쓸 필요없이, 첫 번째로 해당하는 `switch` '경우 값 (case)' 을 완료하는 순간 그 즉시 실행을 종료합니다. 이것은 `switch` 문을 C 언어에 있는 것보다 더 안전하고 편하게 쓸 수 있게 하며 실수로 다른 `switch` '경우 값 (cases)' 을 실행하는 것을 피하도록 해줍니다.
 
@@ -391,7 +391,7 @@ default:
 
 > 특정한 `switch` '경우 값 (case)' 의 끝에서는 명시적으로 빠져 나가고 싶다면, `fallthrough` 키워드를 사용하면 되는데, 이는 [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명합니다.
 
-**Interval Matching (구간 맞춰보기)**
+##### Interval Matching (구간 맞춰보기)
 
 `switch` '경우 값 (cases)' 에 있는 값은 일정 구간에 포함 되어있는 지 검사할 수 있습니다. 다음 예제는 수치 구간을 사용하여 어떤 크기의 수에 대해서도 자연-어로 헤아릴 수 있는 기능을 제공합니다:
 
@@ -419,7 +419,7 @@ print("There are \(naturalCount) \(countedThings).")
 
 위의 예제의, `approximateCount` 는 `switch` 문 내에서 값을 계산합니다. 각 `case` 는 이 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값은 `12` 와 `100` 사이에 있으므로, `naturalCount` 에는 `"dozens of"` 라는 값을 할당하고, 실행은 `switch` 문 밖으로 전달됩니다.
 
-**Tuples (튜플)**
+##### Tuples (튜플)
 
 '튜플 (tuple)' 을 사용하면 동일한 `switch` 문에서 여러 값을 한번에 테스트할 수 있습니다. 이 때 튜플의 각 '원소 (element)' 마다 서로 다른 값 혹은 값 구간을 테스트할 수 있습니다. 다른 방법으로는, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (underscore character; `_`)' 를 사용하여, 발생 가능한 어떤 값도 해당하도록 할 수 있습니다.
 
@@ -448,7 +448,7 @@ default:
 
 C 언어와는 달리, 스위프트에서는 여러 `switch` '경우 값 (cases)' 에서 같은 값 또는 같은 값들을 검토할 수 있습니다. 실제로, 이 예제에서 '점 (0, 0)' 은 _네 가지 (four)_ 경우 모두에 다 해당할 수 있습니다. 하지만, 해당되는 것이 여러 개일 수 있는 경우, 맨 처음 해당된 '경우 값 (case)' 이 항상 사용됩니다. '점 (0, 0)' 은 먼저 `case (0, 0)` 에 해당하게 되므로, 다른 모든 해당하는 '경우 값 (cases)' 들은 무시하게 됩니다.
 
-**Value Bindings (값 연결)**
+##### Value Bindings (값 연결)
 
 `switch` '경우 값 (case)' 은 해당 값이나 값들에 임시 상수 또는 임시 변수에 해당하는 이름을 지어서, '경우 값 (case)' 본문에서 사용할 수 있습니다. 이런 동작 방식을 _값 연결 (value binding)_ 라고 하는데, 이 값은 '경우 값 (case)' 본문 범위 내에서 임시 상수 또는 임시 변수로 연결되기 때문입니다.
 
@@ -477,7 +477,7 @@ case let (x, y):
 
 이 `switch` 문에는 `default` '경우 값' 이 없습니다. 마지막 '경우 값' 인, `case let (x, y)` 는, 어떤 값과도 맞춰질 수 있는 두 개의 '자리 표시자' 상수를 가지는 '튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가지고 있는 튜플이기 때문에, 이 경우 모든 가능한 남은 값들에 맞춰질 수 있어서, `switch` 문을 '빠짐없이 철저하게 (exhaustive)' 만들기 위해 `default` '경우 값' 이 필요한 건 아닙니다.
 
-**Where (Where 절)**
+##### Where (Where 절)
 
 `switch` '경우 값 (case)' 에서 `where` 절을 사용하면 추가적인 조건을 검사할 수 있습니다:
 
@@ -506,8 +506,7 @@ case let (x, y):
 
 이전 예제에서와 같이, 마지막 '경우 값' 은 모든 가능한 남은 값들에 맞춰지므로, `switch` 문을 '빠짐없이 철저하게 (exhaustive)' 만들기 위해 `default` '경우 값' 이 필요한 건 아닙니다.
 
-**Compound Cases (복합 경우 값)**
-{: #compound-cases-복합-경우-값 }
+##### Compound Cases (복합 경우 값)
 
 같은 본문을 공유하는 여러 개의 '스위치 경우 값들 (switch cases)' 은 `case` 뒤에 여러 개의 '유형 (patterns)' 을, 그 사이는 쉼표를 써서, 작성하는 것으로 복합할 수 있습니다. '유형' 중 어떤 하나에라도 해당된다면, 그 '경우 값' 에 해당하는 것으로 간주됩니다. '유형 (patterns)' 은, 목록이 길다면, 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
 
@@ -580,12 +579,11 @@ print(puzzleOutput)
 
 `break` 문은 '제어 흐름 구문 (control flow statement)' 전체의 실행을 그 즉시 종료합니다. `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때는 `break` 문을 `switch` 문이나 반복문 안에 사용해주면 됩니다.
 
-**Break in a Loop Statement (반복문 내의 Break 문)**
+##### Break in a Loop Statement (반복문 내의 Break 문)
 
 반복문 안에서 사용하는, `break` 는 반복문의 실행을 그 즉시 종료하고 '제어권 (control)' 를 반복문의 '종료 중괄호 (closing brace; `}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차 (iteration)' 에 있는 코드는 더 이상 실행되지 않으며, 반복문의 '회차' 도 더 이상 새로 시작하지 않습니다.
 
-**Break in a Switch Statement (Switch 문 내의 Break 문)**
-{: #break-in-a-switch-statement-switch-구문-내의-break-문 }
+##### Break in a Switch Statement (Switch 문 내의 Break 문)
 
 `switch` 문 안에서 사용하는, `break` 는 `switch` 문의 실행을 그 즉시 종료하게 만들고 '제어권 (control)' 을 `switch` 문의 '종료 중괄호 (`}`)' 뒤의 코드로 전달합니다.
 
