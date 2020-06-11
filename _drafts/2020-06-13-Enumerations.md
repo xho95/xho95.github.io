@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Enumerations (열거체)"
-date:   2020-05-16 10:00:00 +0900
+date:   2020-06-13 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
@@ -227,6 +227,18 @@ enum ASCIIControlCharacter: Character {
 > '원시 값 (raw values)' 은 '결합된 값 (associated values)' 과 같지 _않습니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드에서와 같이, 미리 채워지는 값으로 코드에서 열거체를 처음 정의할 때 설정되는 것입니다. 즉 특정한 '열거체 경우 값' 에 대한 '원시 값' 은 항상 같습니다. '결합된 값' 은 열거체의 '경우 값' 중 하나를 기반으로 새로운 상수나 변수를 생성할 때 설정되는 것으로, 그렇게 할 때마다 달라질 수 있습니다.
 
 #### Implicitly Assigned Raw Values (암시적으로 할당되는 원시 값)
+
+정수나 문자열 원시 값을 저장하는 열거체와 작업할 때는, 각각의 '경우 값' 에 '원시 값' 을 명시적으로 지정하지 않아도 됩니다. 이렇 경우, 스위프트가 자동으로 값을 할당합니다.
+
+예를 들어, 원시 값으로 정수를 사용할 때는, 각 '경우 값' 에 대한 암시적인 값은 이전 '경우 값' 보다 하나 큰 값이 됩니다. 첫 번째 '경우 값' 에 값을 설정하지 않으면, 그 값은 `0` 이 됩니다.
+
+아래의 열거체는 이전에 있던 `Planet` 열거체를, 태양에 대한 각 행성의 순서를 표현하기 위해 정수 원시 값을 사용하여, 개량한 것입니다:
+
+```swift
+enum Planet: Int {
+  case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
+}
+```
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
 
