@@ -261,6 +261,28 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 #### Failable Initializers for Enumerations with Raw Values (원시 값을 갖는 열거체를 위한 실패 가능한 초기자)
 
+원시 값을 가지는 열거체는 자동적으로 '실패 가능한 초기자 (failable initializer)' 인, `init?(rawValue:)` 를 받게 되는데, 이는 `rawValue` 라는 적절한 원시-값 타입의 매개 변수를 취한 다음 해당하는 열거체 '경우 값' 을 찾으면 이를 선택하고, 해당하는 값이 존재하지 않으면 '초기화 실패 (initialization failure)' 를 일으킵니다.
+
+위에 있는 `TemperatureUnit` 예제를 `Character` 타입의 원시 값을 사용하여 `init?(rawValue:)` 초기자의 이점을 활용하도록 다시 작성할 수 있습니다:
+
+```swift
+enum TemperatureUnit: Character {
+case kelvin = "K", celsius = "C", fahrenheit = "F"
+}
+
+let fahrenheitUnit = TemperatureUnit(rawValue: "F")
+if fahrenheitUnit != nil {
+  print("This is a defined temperature unit, so initialization succeeded.")
+}
+// "This is a defined temperature unit, so initialization succeeded." 를 출력합니다.
+
+let unknownUnit = TemperatureUnit(rawValue: "X")
+if unknownUnit == nil {
+  print("This is not a defined temperature unit, so initialization failed.")
+}
+// "This is not a defined temperature unit, so initialization failed." 를 출력합니다.
+```
+
 #### Propagation of Initialization Failure (초기화 실패의 전파)
 
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
