@@ -24,7 +24,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %})
 * [Functions (함수)]({% post_url 2020-06-02-Functions %})
 * [Closures (잠금 블럭)]({% post_url 2020-03-03-Closures %})
-* [Enumerations (열거체)]
+* [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %})
 * [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %})
 * [Properties (속성)]({% post_url 2020-05-30-Properties %})
 * [Methods (메소드)]({% post_url 2020-05-03-Methods %})
@@ -32,7 +32,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %})
 * [Initialization (초기화)] - [일부 진행중]({% post_url 2016-01-23-Initialization %})
 * [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %})
-* [Optional Chaining (줄지어진 옵셔널)]
+* [Optional Chaining (옵셔널 사슬)]
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %})
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %})
 * [Nested Types (품어진 타입)]({% post_url 2017-03-03-Nested-Types %})
