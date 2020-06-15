@@ -16,7 +16,7 @@ _옵셔널 사슬 (optional chaining)_ 은 현재 값이 `nil` 일 수도 있는
 
 > 스위프트의 '옵셔널 사슬' 은 오브젝티브-C 언어에서 `nil` 메시지를 주고받는 것과 비슷하지만, 어떤 타입과도 작업할 수 있으며, 성공이나 실패를 검사할 수 있습니다.
 
-### Optional Chaining as an Alternative to Forced Unwrapping (강제 풀기의 대안으로 사용되는 옵셔널 사슬)
+### Optional Chaining as an Alternative to Forced Unwrapping (강제 풀기의 대안으로써의 옵셔널 사슬)
 
 '옵셔널 사슬 (optional chaining)' 을 지정하려면 해당 옵셔널이 `nil`-이 아니라면 그의 속성, 메소드, 또는 첨자 연산을 호출하고자 하는 옵셔널 값의 뒤에 '물음표 (`?`)' 를 붙여주면 됩니다. 이것은 강제로 값을 풀 때 옵셔널 값 뒤에 '느낌표 (`!`)' 를 붙이는 것과 아주 비슷합니다. 주요한 차이점은 '옵셔널 사슬' 은 해당 옵셔널이 `nil` 일 때 우아하게 실패하는데 반해, '강제 풀기 (forced unwrapping)' 은 해당 옵셔널이 `nil` 일 때 '실행시간 에러 (runtime error)' 를 일으킨다는 것입니다.
 
@@ -78,7 +78,7 @@ if let roomCount = john.residence?.numberOfRooms {
 john.residence = Residence()
 ```
 
-`john.residence` 는 이제 `nil` 이 아니라, 실제 `Residence` 인스턴스를 가지고 있습니다. 이전과 같은 옵셔널 사슬로 `numberOfRooms` 에 접근하면, 이제는 기본 `numberOfRooms` 값이 `1` 인 `Int?` 를 반환하게 됩니다.
+`john.residence` 는 이제 `nil` 이 아니라, 실제 `Residence` 인스턴스를 가지고 있습니다. 이전과 같은 옵셔널 사슬로 `numberOfRooms` 에 접근하면, 이제는 기본 `numberOfRooms` 값이 `1` 인 `Int?` 를 반환하게 됩니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -89,9 +89,126 @@ if let roomCount = john.residence?.numberOfRooms {
 // "John's residence has 1 room(s)." 를 출력합니다.
 ```
 
-### Defining Model Classes for Optional Chaining (옵셔널 사슬에 대한 클래스 모델 정의하기)
+### Defining Model Classes for Optional Chaining (옵셔널 사슬을 위한 모델 클래스 정의하기)
 
-### Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성 접근하기)
+'옵셔널 사슬 (optional chaining)' 을 사용하면 한 단계보다 더 깊은 곳의 속성, 메소드, 그리고 첨자 연산을 호출할 수 있습니다.  이는 상호 관계된 타입에 대한 복접한 모델의 '하위 속성 (subproperties)' 밑으로 파고 들어서, 그 '하위 속성' 에 대한 속성, 메소드, 그리고 첨자 연산에 접근할 수 있는 지를 검사할 수 있게 해줍니다.
+
+아래의 코드 조각은 네 개의 '모델 클래스 (model classes)' 를 정의하여 이를, 다중-단계 옵셔널 사슬 예제를 포함한, 후속 예제에서 사용합니다. 이 클래스는 위에 있는 `Person` 과 `Residence` 모델을 확장하려고 `Room` 과 `Address` 클래스를, '결합된 값', 메소드, 그리고 첨자 연산과 함께 추가합니다.
+
+`Person` 클래스는 이전과 같은 방법으로 정의합니다:
+
+```swift
+class Person {
+  var residence: Residence?
+}
+```
+
+`Residence` 클래스는 이전보다 더 복잡합니다. 이번에는, `Residence` 클래스에 `rooms` 라는 '변수 속성' 을 정의하고, 이를 `[Room]` 타입의 빈 배열로 초기화합니다:
+
+```swift
+class Residence {
+  var rooms = [Room]()
+  var numberOfRooms: Int {
+    return rooms.count
+  }
+  subscript(i: Int) -> Room {
+    get {
+      return rooms[i]
+    }
+    set {
+      rooms[i] = newValue
+    }
+  }
+  func printNumberOfRooms() {
+    print("The number of rooms is \(numberOfRooms)")
+  }
+  var address: Address?
+}
+```
+
+이 버전의 `Residence` 는 `Room` 인스턴스의 배열을 저장하고 있으므로, `numberOfRooms` 속성을, '저장 속성' 이 아니라, '계산 속성' 으로 구현합니다. `numberOfRooms` 계산 속성은 단순히 `rooms` 배열에 있는 `count` 속성 값을 반환합니다.
+
+`rooms` 배열에 바로 접근할 수 있도록, 이 버전의 `Residence` 는 요청한 색인에 있는 `rooms` 배열의 '방 (room)' 에 접근하는 '읽고-쓰기' 첨자 연산을 제공합니다.
+
+이 버전의 `Residence` 는 `printNumberOfRooms` 라는 메소드도 제공하는데, 이는 단순히 '거주지 (residence)' 에 있는 방의 개수를 출력합니다.
+
+마지막으로, `Residence` 는 타입이 `Address?` 인, `Address` 라는 '옵셔널 속성' 을 정의합니다. 이 속성에서 사용하있는 `Address` 클래스 타입은 아래에서 정의합니다.
+
+`rooms` 배열에서 사용하는 `Room` 클래스는 `name` 이라는 하나의 속성만 가지고 있는 간단한 클래스로, 초기자에서 이 속성에 적당한 방 이름을 설정합니다:
+
+```swift
+class Room {
+  let name: String
+  init(name: String) { self.name = name }
+}
+```
+
+이 모델의 마지막 클래스는 `Address` 입니다. 이 클래스는 `String?` 타입의 옵셔널 속성을 세 개 가지고 있습니다. 처음 두 개의 속성인, `buildingName` 과 `buildingNumber` 는, 주소에서 특정 건물을 식별하기 위한 방법으로 서로를 대체합니다. 세 번째 속성인, `street` 는, 해당 주소의 거리 이름에 사용됩니다:
+
+```swift
+class Address {
+  var buildingName: String?
+  var buildingNumber: String?
+  var street: String?
+  func buildingIdentifier() -> String? {
+    if let buildingNumber = buildingNumber, let street = street {
+      return "\(buildingNumber) \(street)"
+    } else if buildingName != nil {
+      return buildingName
+    } else {
+      return nil
+    }
+  }
+}
+```
+
+`Address` 클래스는, 반환 타입이 `String?` 인, `buildingIdentifier()` 라는 메소드도 제공합니다. 이 메소드는 주소 속성을 검사하여 `buildingNumber` 와 `street` 값이 모두 있으면 이 둘을 이은 값을 반환하고, 그렇진 않지만 `buildingName` 값이 있으면 이를 반환하며, 그것도 아니라면 `nil` 을 반환합니다.
+
+### Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성에 접근하기)
+
+[Optional Chaining as an Alternative to Forced Unwrapping (강제 풀기의 대안으로써의 옵셔널 사슬)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-풀기의-대안으로써의-옵셔널-사슬) 에서 보인 바 있듯이, 옵셔널 사슬을 사용하여 옵셔널 값의 속성에 접근할 수도 있으며, 해당 속성에 대한 접근이 성공했는 지를 검사할 수도 있습니다.
+
+위에서 정의한 클래스를 사용하여 새로운 `Person` 인스턴스를 생성하고, 이전과 같이 `numberOfRooms` 속성에 접근해 봅시다:
+
+```swift
+let john = Person()
+if let roomCount = john.residence?.numberOfRooms {
+  print("John's residence has \(roomCount) room(s).")
+} else {
+  print("Unable to retrieve the number of rooms.")
+}
+// "Unable to retrieve the number of rooms." 를 출력합니다.
+```
+
+`john.residence` 가 `nil` 이기 때문에, 이 옵셔널 사슬 호출은 이전 처럼 실패하게 됩니다.
+
+옵셔널 사슬을 통해 속성의 값을 설정하도록 시도할 수도 있습니다.
+
+```swift
+let someAddress = Address()
+someAddress.buildingNumber = "29"
+someAddress.street = "Acacia Road"
+john.residence?.address = someAddress
+```
+
+이 예제에서는, `john.residence` 의 `address` 를 설정하려는 시도는 실패하게 되는데, 이는 현재 `john.residence` 가 `nil` 이기 때문입니다.
+
+'할당 (assignment)' 은 '옵셔널 사슬 (optional chaining)' 의 일부분이며, 이것의 의미는 `=` 연산자의 오른쪽에 있는 코드의 값은 아무 것도 계산되지 않는다는 것입니다. 앞 예제에서, `someAddress` 의 값이 절대로 계산되지 않는다는 점을 알기는 쉽지 않은데, 상수에 대한 접근은 어떤 부작용도 가지고 있지 않기 때문입니다. 아래는 똑같은 할당 작업을 하지만, 함수를 써서 주소를 생성하고자 합니다. 이 함수는 값을 반환하기 전에 "Function was called (함수를 호출하였습니다)" 를 출력하여, `=` 연산자의 오른쪽 값이 계산되었는 지를 보여줍니다.
+
+```swift
+func createAddress() -> Address {
+  print("Function was called.")
+
+  let someAddress = Address()
+  someAddress.buildingNumber = "29"
+  someAddress.street = "Acacia Road"
+
+  return someAddress
+}
+john.residence?.address = createAddress()
+```
+
+아무 것도 출력되지 않은 것을 보면, `createAddress()` 함수가 호출되지 않는다는 것을 알 수 있습니다.
 
 ### Call Methods Through Optional Chaining (옵셔널 사슬을 통해 메소드 호출하기)
 
