@@ -166,7 +166,7 @@ class Address {
 
 ### Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성에 접근하기)
 
-[Optional Chaining as an Alternative to Forced Unwrapping (강제 풀기의 대안으로써의 옵셔널 사슬)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-풀기의-대안으로써의-옵셔널-사슬) 에서 보인 바 있듯이, 옵셔널 사슬을 사용하여 옵셔널 값의 속성에 접근할 수도 있으며, 해당 속성에 대한 접근이 성공했는 지를 검사할 수도 있습니다.
+[Optional Chaining as an Alternative to Forced Unwrapping (강제 풀기의 대안으로써의 옵셔널 사슬)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-풀기의-대안으로써의-옵셔널-사슬) 에서 보인 바 있듯이, 옵셔널 사슬을 사용하면 옵셔널 값에 대한 속성에 접근할 수 있으며, 해당 속성의 접근이 성공했는 지 검사할 수 있습니다.
 
 위에서 정의한 클래스를 사용하여 새로운 `Person` 인스턴스를 생성하고, 이전과 같이 `numberOfRooms` 속성에 접근해 봅시다:
 
@@ -208,11 +208,60 @@ func createAddress() -> Address {
 john.residence?.address = createAddress()
 ```
 
-아무 것도 출력되지 않은 것을 보면, `createAddress()` 함수가 호출되지 않는다는 것을 알 수 있습니다.
+`createAddress()` 함수가 호출되지 않았다는 건, 아무 것도 출력되지 않았다는 것으로, 알 수 있습니다.
 
 ### Call Methods Through Optional Chaining (옵셔널 사슬을 통해 메소드 호출하기)
 
+옵셔널 사슬을 사용하여 옵셔널 값에 있는 메소드를 호출할 수 있으며, 그 메소드 호출이 성공했는지 여부도 검사할 수 있습니다. 해당 메소드가 반환 값을 정의하지 않은 경우에도 이렇게 할 수 있습니다.
+
+`Residence` 클래스에 있는 `printNumberOfRooms()` 메소드는 현재의 `numberOfRooms` 값을 출력합니다. 메소드는 다음처럼 생겼습니다:
+
+```swift
+func printNumberOfRooms() {
+  print("The number of rooms is \(numberOfRooms)")
+}
+```
+
+이 메소드는 반환 타입을 지정하고 있지 않습니다. 하지만, 반환 타입이 없는 함수와 메소드는 `Void` 라는 암시적인 반환 타입을 가지며, 이는 [Functions Without Return Values (반환 값이 없는 함수)]({% post_url 2020-06-02-Functions %}#functions-without-return-values-반환-값이-없는-함수) 에서 설명한 바 있습니다. 이것의 의미는 `()` 인 값 값, 또는 '빈 튜플 (empty tuple)' 을 반환한다는 것입니다.
+
+옵셔널 값에 있는 이 메소드를 '옵셔널 사슬 (optional chaining)' 을 사용하여 호출하면, 메소드의 반환 타입은, `Void` 가 아니라, `Void?` 가 되는데, 왜냐면 '옵셔널 사슬' 을 통해 호출할 땐 반환 값이 항상 옵셔널 타입이기 때문입니다. 이는, 심지어 메소드 그 자체가 반환 값을 정의하지 않더라도, `if` 문으로 `printNumberOfRooms()` 메소드를 호출할 수 있는 지 여부를 검사할 수 있게 해 줍니다. `printNumberOfRooms` 호출의 반환 값을 `nil` 과 비교하면 이 메소드 호출이 성공했는지 확인할 수 있습니다.
+
+```swift
+if john.residence?.printNumberOfRooms() != nil {
+  print("It was possible to print the number of rooms.")
+} else {
+  print("It was not possible to print the number of rooms.")
+}
+// "It was not possible to print the number of rooms." 를 출력합니다.
+```
+
+옵셔널 사슬을 통해 속성을 설정하려고 하는 경우도 같은 방식입니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성에 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통해-속성에-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 임에도 불구하고, `john.residence` 에 대하여 `address` 값을 설정하려고 합니다. 옵셔널 사슬을 통해 속성을 설정하려는 어떤 시도도 `Void?` 타입의 값을 반환하는데, 이는 속성 설정이 성공했는 지를 확인하기 위해 `nil` 과 비교할 수 있도록 해줍니다:
+
+```swift
+if (john.residence?.address = someAddress) != nil {
+  print("It was possible to set the address.")
+} else {
+  print("It was not possible to set the address.")
+}
+// "It was not possible to set the address." 를 출력합니다.
+```
+
 ### Accessing Subscripts Through Optional Chaining (옵셔널 사슬을 통해 첨자 연산 접근하기)
+
+옵셔널 사슬을 사용하면 옵셔널 값에 있는 첨자 연산으로부터 값을 설정하거나 가져올 수 있으며, 그 첨자 연산 호출이 성공했는지를 검사할 수도 있습니다.
+
+> 옵셔널 사슬로 옵셔널 값의 첨자 연산에 접근할 때는, '물음표' 를 첨자 연산의 대괄호 기호, 뒤가 아니라, _앞에 (before)_ 붙여야 합니다. 옵셔널 사슬의 물음표는 항상 표현식의 옵셔널 부분 곧바로 뒤에 따라와야 합니다.
+
+다음 예제는 `Residence` 클래스에서 정의한 첨자 연산을 사용하여 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방의 이름을 가져오려고 합니다. `john.residence` 는 현재 `nil` 이기 때문에, 첨자 연산 호출은 실패합니다:
+
+```swift
+if let firstRoomName = john.residence?[0].name {
+  print("The first room name is \(firstRoomName).")
+} else {
+  print("Unable to retrieve the first room name.")
+}
+// "Unable to retrieve the first room name." 를 출력합니다.
+```
 
 #### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산 접근하기)
 
