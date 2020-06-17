@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift 5.2: Optional Chaining (옵셔널 사슬)"
-date:   2020-06-13 10:00:00 +0900
+date:   2020-06-17 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
@@ -246,7 +246,7 @@ if (john.residence?.address = someAddress) != nil {
 // "It was not possible to set the address." 를 출력합니다.
 ```
 
-### Accessing Subscripts Through Optional Chaining (옵셔널 사슬을 통해 첨자 연산 접근하기)
+### Accessing Subscripts Through Optional Chaining (옵셔널 사슬을 통해 첨자 연산에 접근하기)
 
 옵셔널 사슬을 사용하면 옵셔널 값에 있는 첨자 연산으로부터 값을 설정하거나 가져올 수 있으며, 그 첨자 연산 호출이 성공했는지를 검사할 수도 있습니다.
 
@@ -263,11 +263,120 @@ if let firstRoomName = john.residence?[0].name {
 // "Unable to retrieve the first room name." 를 출력합니다.
 ```
 
-#### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산 접근하기)
+이 첨자 연산에서 옵셔널 사슬의 물음표는 `john.residence` 바로 뒤, 첨자 연산의 바로 앞에 있는데, 이는 `john.residence` 가 옵셔널 사슬을 시도할 옵셔널 값이기 때문입니다.
 
-### Linking Multiple Levels of Chaining (여러 단계로 이어서 연결하기)
+마찬가지로, 옵셔널 사슬과 첨자 연산을 통해 새로운 값을 설정할 수도 있습니다:
 
-### Chaining on Methods with Optional Return Values (옵셔널 반환 값을 가지는 메소드 줄짓기?)
+```swift
+john.residence?[0] = Room(name: "Bathroom")
+```
+
+이 첨자 연산이 하려고 하는 설정 작업도 실패하는데, 왜냐면 `residence` 가 현재 `nil` 이기 때문입니다.
+
+실제 `Residence` 인스턴스를 생성하고, `rooms` 배열에 하나 이상의 `Room` 인스턴스를 넣은 후, 이를 `john.residence` 에 할당하면, `Residence` 의 첨자 연산을 사용하여 옵셔널 사슬을 통해 `rooms` 배열의 실제 항목에 접근할 수 있게 됩니다:
+
+```swift
+let johnsHouse = Residence()
+johnsHouse.rooms.append(Room(name: "Living Room"))
+johnsHouse.rooms.append(Room(name: "Kitchen"))
+john.residence = johnsHouse
+
+if let firstRoomName = john.residence?[0].name {
+  print("The first room name is \(firstRoomName).")
+} else {
+  print("Unable to retrieve the first room name.")
+}
+// "The first room name is Living Room." 를 출력합니다.
+```
+
+#### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산에 접근하기)
+
+만약 첨자 연산이-스위프트 `Dictionary` 타입의 '키 첨자 연산 (key subscript)' 처럼-옵셔널 타입의 값을 반환한다면 물음표를 해당 첨자 연산의 '종료 대괄호' _뒤에 (after)_ 놓아야 옵셔널 반환 값이 사슬처럼 계속 연결됩니다:
+
+```swift
+var testScores = ["Dave": [86, 82, 84], "Bev": [79, 94, 81]]
+testScores["Dave"]?[0] = 91
+testScores["Bev"]?[0] += 1
+testScores["Brian"]?[0] = 72
+// "Dave" 배열은 이제 [91, 82, 84] 이고 "Bev" 배열은 이제 [80, 94, 81] 입니다.
+```
+
+위 예제는, 하나의 `String` 키를 하나의 `Int` 값 배열에 대응시키고 있는 두 개의 키-값 쌍을 가지는, `testScores` 라는 '딕셔너리' 를 정의합니다. 이 예제는 옵셔널 사슬을 사용하여 `"Dave"` 배열의 첫 번째 항목은 `91` 로 설정하고; `"Bev"` 배열의 첫 번째 항목은 `1` 만큼 증가시키며; 키가 `"Brian"` 인 배열의 첫 번째 항목을 설정하려고 시도합니다. 처음 두 호출은 성공하는데, `testScores` '딕셔너리' 는 `"Dave"` 와 `"Bev"` 키를 가지고 있기 때문입니다. 세 번째 호출은 실패하는데, `testScores` '딕셔너리' 는 `"Brian"` 이라는 키를 가지고 있지 않기 때문입니다.
+
+### Linking Multiple Levels of Chaining (다중 수준의 사슬 연결하기)
+
+다중 수준의 옵셔널 사슬을 서로 연결하여 모델의 더 깊은 곳에 있는 속성, 메소드, 그리고 첨자 연산으로 파고 들어갈 수 있습니다. 하지만, 다중 수준의 옵셔널 사슬이 반환 값의 옵셔널 수준을 더 추가하는 것은 아닙니다.
+
+다른 방식으로 설명하면:
+
+* 가져오려는 타입이 옵셔널이 아니면, 옵셔널 사슬로 인해서 옵셔널이 됩니다.
+* 가져오려는 타입이 _이미 (already)_ 옵셔널이면, 사슬로 인해서 _더 깊은 (more)_ 옵셔널이 되지는 않습니다.
+
+따라서:
+
+* 옵셔널 사슬을 통해서 `Int` 값을 가져오려고 하면, 사슬에 사용된 수준이 얼마나 깊은지 상관없이, 항상 `Int?` 를 반환합니다.
+* 이와 비슷하게, 옵셔널 사슬을 통해 `Int?` 값을 가져오려고 하면, 사슬에 사용된 수준이 얼마나 깊은지 상관없이, 항상 `Int?` 를 반환합니다.
+
+아래 예제는 `john` 의 `residence` 속성에 있는 `address` 속성의 `street` 속성에 접근하려고 시도합니다. 여기서는 _두 (two)_ 단계 수준의 옵셔널 사슬을 사용하여, 둘 다 옵셔널 타입인, `residence` 와 `address` 속성을 사슬처럼 연결합니다:
+
+```swift
+if let johnsStreet = john.residence?.address?.street {
+  print("John's street name is \(johnsStreet).")
+} else {
+  print("Unable to retrieve the address.")
+}
+// "Unable to retrieve the address." 를 출력합니다.
+```
+
+현재 `john.residence` 의 값은 유효한 `Residence` 인스턴스를 가지고 있습니다. 하지만, 현재의 `john.residence.address` 값은 `nil` 입니다. 그렇기 때문에, `john.residence?.address?.street` 에 대한 호출은 실패합니다.
+
+위 예제에서, 가져오려고 하는 값은 `street` 속성임을 기억하기 바랍니다. 이 속성의 타입은 `String?` 입니다. 그러므로 `john.residence?.address?.street` 의 반환 값도 `String?` 이며, 실제 옵셔널 타입의 속성에다가 두 단계 수준의 옵셔널 사슬을 적용했음에도 그렇습니다.
+
+만약 실제 `Address` 인스턴스를 `john.residence.address` 의 값으로 설정한 다음, 주소의 `street` 속성에 실제 값을 설정하면, '다중-수준 옵셔널 사슬 (multilevel optional chaining)' 을 통해 `street` 속성의 값에 접근할 수 있습니다:
+
+```swift
+let johnsAddress = Address()
+johnsAddress.buildingName = "The Larches"
+johnsAddress.street = "Laurel Street"
+john.residence?.address = johnsAddress
+
+if let johnsStreet = john.residence?.address?.street {
+  print("John's street name is \(johnsStreet).")
+} else {
+  print("Unable to retrieve the address.")
+}
+// "John's street name is Laurel Street." 를 출력합니다.
+```
+
+이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는 성공하며, 이는 현재의 `john.residence` 가 유효한 `Residence` 인스턴스를 가지고 있기 때문입니다.
+
+### Chaining on Methods with Optional Return Values (옵셔널 반환 값을 가지는 메소드에 대한 사슬 이어가기)
+
+이전의 예제는 옵셔널 사슬을 통하여 옵셔널 타입의 속성 값을 가져오는 방법을 보여줍니다. 옵셔널 사슬을 사용하여 옵셔널 타입의 갑을 반환하는 메소드를 호출하고, 필요하다면 그 메소드의 반환 값들을 계속 사슬처럼 연결할 수도 있습니다.
+
+아래 예제는 옵셔널 사슬을 통하여 `Address` 클래스의 `buildingIdentifier()` 메소드를 호출합니다. 이 메소드는 `String?` 타입의 값을 반환합니다. 위에서 설명했듯이, 옵셔널 사슬에 이어서 이 메소드를 호출한 궁극적인 반환 타입도 `String?` 입니다:
+
+```swift
+if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
+  print("John's building identifier is \(buildingIdentifier).")
+}
+// "John's building identifier is The Larches." 를 출력합니다.
+```
+
+이 메소드의 반환 값에 대해 옵셔널 사슬을 계속 이어가고 싶으면, 옵셔널 사슬 물음표를 메소드의 괄호 _뒤에 (after)_ 붙이면 됩니다:
+
+```swift
+if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
+  if beginsWithThe {
+    print("John's building identifier begins with \"The\".")
+  } else {
+    print("John's building identifier does not begin with \"The\".")
+  }
+}
+// "John's building identifier begins with "The"." 를 출력합니다.
+```
+
+> 위 예제에서, 옵셔널 사슬 물음표를 괄호 _뒤에 (after)_ 붙였는데, 이는 사슬처럼 연결하려는 옵셔널 값이, `buildingIdentifier()` 메소드 자체가 아니라, `buildingIdentifier()` 메소드의 반환 값이기 때문입니다.
 
 ### 참고 자료
 
