@@ -16,21 +16,80 @@ categories: Swift Language Grammar ARC Automitic Reference Counting
 
 하지만, 메모리 관리를 자동으로 하기 위해서 ARC 가 코드 사이의 관계에 대한 정보를 더 요구하는 경우가 간혹 있습니다. 이번 장에서는 이러한 상황들을 설명하고 ARC 가 모든 앱의 메모리를 관리하도록 만드는 방법을 보이도록 합니다. 스위프트에서 ARC 를 사용하는 것은 오브젝티브-C 와 ARC 를 같이 사용하기 위해 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html) 에서 설명한 접근 방식과 매우 유사합니다.
 
-'참조 카운팅 (reference counting)' 은 클래스의 인스턴스에만 적용됩니다. 구조체와 열거체는 값 타입이지, 참조 타입이 아니라서, 참조의 형태로 저장되거나 전달되지 않습니다.
+'참조 카운팅 (reference counting)' 은 클래스의 인스턴스에만 적용됩니다.[^reference-type] 구조체와 열거체는 값 타입이지, 참조 타입이 아니라서, 참조의 형태로 저장되거나 전달되지 않습니다.
 
-### How ARC Works (ARC 의 작동 원리)
+### How ARC Works (ARC 의 작동 방식)
 
-클래스의 새 인스턴스를 만들 때마다 ARC는 해당 인스턴스에 대한 정보를 저장하기 위해 메모리 청크를 할당합니다. 이 메모리에는 해당 인스턴스와 관련된 저장된 속성 값과 함께 인스턴스 유형에 대한 정보가 있습니다.
+클래스에 대한 새 인스턴스를 생성할 때마다, ARC 는 메모리 덩어리를 할당하여 그 인스턴스에 대한 정보를 저장합니다. 이 메모리는, 그 인스턴스의 타입에 대한 정보와, 해당 인스턴스에 결합된 모든 저장 속성의 값을 함께 담아 둡니다.
 
-또한 인스턴스가 더 이상 필요하지 않은 경우 ARC는 해당 인스턴스가 사용하는 메모리를 비워서 다른 용도로 메모리를 사용할 수 있습니다. 이렇게하면 클래스 인스턴스가 더 이상 필요하지 않을 때 메모리에서 공간을 차지하지 않습니다.
+여기다, 인스턴스가 더 이상 필요하지 않을 때는, ARC 가 그 인스턴스가 사용하고 있는 메모리를 해제하므로 그 메모리를 다른 용도로 사용할 수 있게 됩니다. 이는 클래스 인스턴스가 더 이상 필요없을 때 메모리 공간을 차지하지 않도록 해줍니다.
 
-그러나 ARC가 아직 사용중인 인스턴스를 할당 해제하면 더 이상 해당 인스턴스의 속성에 액세스하거나 해당 인스턴스의 메서드를 호출 할 수 없습니다. 실제로 인스턴스에 액세스하려고하면 앱이 중단 될 가능성이 높습니다.
+하지만, 만약 ARC 가 아직 사용중인 인스턴스의 할당을 해제한 것이라면, 그 인스턴스의 속성에 접근하거나, 그 인스턴스의 메소드를 호출하는 것은 더 이상 가능하지 않을 것입니다. 진짜로, 만약 그 인스턴스에 접근하려고 하면, 거의 확실히 앱이 충돌날 것입니다.
 
-ARC는 인스턴스가 여전히 필요한 동안 사라지지 않도록하기 위해 현재 각 클래스 인스턴스를 참조하는 속성, 상수 및 변수의 수를 추적합니다. ARC는 해당 인스턴스에 대한 하나 이상의 활성 참조가 여전히 존재하는 한 인스턴스 할당을 해제하지 않습니다.
+아직 필요한 동안에는 해당 인스턴스가 사라지지 않도록 하기 위해서, ARC 는 현재의 각 클래스 인스턴스를 몇 개의 속성, 상수, 그리고 변수가 참조하고 있는지를 추적합니다. ARC 는 인스턴스에 대한 '활성화된 (active)' 참조가 하나라도 존재하는 한 그 인스턴스의 할당을 해제하지 않을 것입니다.
 
-이를 가능하게하기 위해 클래스 인스턴스를 속성, 상수 또는 변수에 할당 할 때마다 해당 속성, 상수 또는 변수가 인스턴스를 강력하게 참조합니다. 참조는 "강력한"참조라고하는데, 그 이유는 해당 인스턴스를 확실하게 유지하고 강한 참조가 남아있는 한 할당 해제 할 수 없기 때문입니다.
+이를 가능하게 하기 위해, 클래스 인스턴스를 속성, 상수, 또는 변수에 할당할 때마다, 그 속성, 상수, 또는 변수는 인스턴스에 대한 _강한 참조 (strong reference)_ 를 만듭니다. 이 참조를 "강한 (strong)" 참조라고 하는 이유는 해당 인스턴스를 단단히 움켜쥐고 있어서, 그 '강한 참조' 가 남아 있는 한 할당이 해제되지 않도록 하기 때문입니다.
 
 ### ARC in Action (ARC 의 실제 사례)
+
+다음은 '자동 참조 카운팅 (Automatic Reference Counting)' 의 작동 방식에 대한 예제입니다. 이 예제는, `name` 이라는 저장 속성을 정의하는, `Person` 이라는 간단한 클래스로 시작합니다:
+
+```swift
+class Person {
+  let name: String
+  init(name: String) {
+    self.name = name
+    print("\(name) is being initialized")
+  }
+  deinit {
+    print("\(name) is being deinitialized")
+  }
+}
+```
+
+`Person` 클래스는 인스턴스의 `name` 속성을 설정하고 초기화가 진행 중임을 알리는 메시지를 출력하는 '초기자' 를 가지고 있습니다. `Person` 클래스는 클래스 인스턴스의 할당을 해제할 때 메시지를 출력하는 '정리자 (deinitializer)' 도 가지고 있습니다.
+
+다음의 코드 조각은 `Person?` 타입의 변수를 세 개 정의하는데, 이는 이어지는 코드 조각에서 새 `Person` 인스턴스에 대한 '다중 참조 (multiple references)'[^multiple-references] 를 설정하는데 사용됩니다. 이 변수들은 옵셔널 타입 (`Person` 이 아니라, `Person?`) 이기 때문에, 자동적으로 `nil` 값으로 초기화되어, 지금 당장은 `Person` 인스턴스를 참조하지 않습니다.
+
+```swift
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
+```
+
+이제 새로운 `Person` 인스턴스를 생성하여 이 세 변수 중 하나에 할당할 수 있습니다:
+
+```swift
+reference1 = Person(name: "John Appleseed")
+// "John Appleseed is being initialized" 를 출력합니다.
+```
+
+`Person` 클래스의 초기자를 호출하는 순간에 `"John Appleseed is being initialized"` 메시지가 출력된다는 점을 기억하기 바랍니다. 이는 초기화가 일어났음을 입증합니다.
+
+새 `Person` 인스턴스를 `reference1` 변수에 할당했으므로, 이제 `reference1` 에서 새 `Person` 인스턴스로 향하는 '강한 참조 (strong reference)' 가 생겼습니다. 최소 하나의 '강한 참조' 가 있으므로, ARC 가 이 `Person` 에 대한 메모리를 유지하고 할당을 해제하지 않는다고 확신할 수 있습니다.
+
+똑같은 `Person` 인스턴스를 두 변수에 더 할당하면, 그 인스턴스에 대한 두 개의 '강한 참조' 더 생깁니다:
+
+```swift
+reference2 = reference1
+reference3 = reference1
+```
+
+이제 이 단일한 `Person` 인스턴스에 대한 _세 개의 (three)_ '강한 참조' 가 있습니다.
+
+두 개의 변수에 `nil` 을 할당하여 '강한 참조' 중에서 두 개를 끊더라도 (설령 원래의 참조를 끊더라도), 하나의 '강한 참조' 는 남아 있으므로, `Person` 인스턴스의 할당은 해제되지 않습니다:
+
+```swift
+reference1 = nil
+reference2 = nil
+```
+
+ARC 는 세 번째이자 마지막인 '강한 참조' 를 끊을 때까지, 즉 `Person` 인스턴스를 더 이상 사용하지 않는 것이 분명해질 때까지, `Person` 의 할당을 해제하지 않습니다:
+
+```swift
+reference3 = nil
+// "John Appleseed is being deinitialized" 를 출력합니다.
+```
 
 ### Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)
 
@@ -53,3 +112,7 @@ ARC는 인스턴스가 여전히 필요한 동안 사라지지 않도록하기 �
 ### 참고 자료
 
 [^Automatic-Reference-Counting]: 이 글에 대한 원문은 [Automatic-Reference-Counting](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 에서 확인할 수 있습니다.
+
+[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법으로, 여기서 '메모리 관리' 는 '동적인 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적인 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장소 (free store; 또는 heap)' 라고 하며, '참조 (reference)' 는 '자유 저장소' 에 있는 할당된 메모리 영역을 '참조하는 (또는 가리키는; refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장소' 가 아니라 '스택 (stack)' 이라는 '정적인 메모리' 공간에 생기기 것이라서 메모리 관리의 대상이 아닙니다. 보다 자세한 내용은 위키피디아의 'Memory management' 항목 중 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
+
+[^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.

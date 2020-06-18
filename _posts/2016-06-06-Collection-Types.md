@@ -13,7 +13,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는 값의 집합을 저장하는 용도로 세 가지의 주요 _컬렉션 타입 (collection types; 집합체 타입)_[^collections] 을 제공하는데, 이는 '배열 (arrays)', '셋 (sets)[^sets]', 그리고 '딕셔너리 (dictionaries; 사전)[^dictionaries]' 입니다. 배열은 값들이 순서에 따라 모여 있는 컬렉션이고, 셋은 값들이 순서는 없지만 각각 하나씩만 존재하는 컬렉션입니다. 딕셔너리는 '키-값 관련-묶음 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
+스위프트는 값의 집합을 저장하는 용도로 세 가지의 주요 _컬렉션 타입 (collection types; 집합체 타입)_[^collections] 을 제공하는데, 이는 '배열 (arrays)', '셋 (sets)[^sets]', 그리고 '딕셔너리 (dictionaries; 사전)[^dictionaries]' 입니다. 배열은 값들이 순서에 따라 모여 있는 컬렉션이고, 셋은 값들이 순서는 없지만 각각 하나씩만 존재하는 컬렉션입니다. 딕셔너리는 '키-값 결합 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
@@ -455,9 +455,9 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 ## Dictionaries (딕셔너리; 사전)
 
-딕셔너리는 '키-값 관련-묶음 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
+딕셔너리는 '키-값 결합 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
 
-_딕셔너리 (dictionary; 사전)_ 는 동일한 타입의 키들과 동일한 타입의 값들 사이의 '관련-묶음 (associations)' 을 컬렉션에 순서없이 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 관련지어지며, 이 키는 딕셔너리에서 그 값에 대한 식별자 (identifier) 역할을 합니다. 배열에 있는 요소와는 달리, 딕셔너리에 있는 요소들은 지정된 순서가 없습니다. 딕셔너리는 식별자를 기반으로 하여 값을 찾을 때 쓸 수 있는데, 이는 실제-세계의 사전 (딕셔너리) 이 특정 단어로 정의된 뜻을 찾는 것과 사실상 같은 것입니다.
+_딕셔너리 (dictionary; 사전)_ 는 동일한 타입의 키들과 동일한 타입의 값들 사이의 '결합 (associations)' 을 컬렉션에 순서없이 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 관련지어지며, 이 키는 딕셔너리에서 그 값에 대한 식별자 (identifier) 역할을 합니다. 배열에 있는 요소와는 달리, 딕셔너리에 있는 요소들은 지정된 순서가 없습니다. 딕셔너리는 식별자를 기반으로 하여 값을 찾을 때 쓸 수 있는데, 이는 실제-세계의 사전 (딕셔너리) 이 특정 단어로 정의된 뜻을 찾는 것과 사실상 같은 것입니다.
 
 > 스위프트의 `Dictionary` 타입은 'Foundation' 프레임웍에 있는 `NSDictionary` 클래스와 연동되어 (bridged) 있습니다.
 >
