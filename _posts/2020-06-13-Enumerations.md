@@ -6,7 +6,7 @@ date:   2020-06-13 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Enumerations]을 번역하고 정리한 글입니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Enumerations]을 번역하고 정리한 글입니다.
 >
 > 현재 전체 중에서 번역 완료된 목록은 [Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
@@ -300,7 +300,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 ### Recursive Enumerations (재귀적인 열거체)
 
-_재귀적인 열거체 (recursive enumeration)_ 는 열거체의 '경우 값 (cases)' 이 열거체의 또 다른 인스턴스를 '결합된 값 (associated value)' 으로 하나 이상 가지는 열거체입니다. 열거체의 '경우 값' 을 '재귀적' 으로 지시하려면 그 앞에 `indirect` [^indirect]를 써주면 되는데, 이는 컴파일러에게 간접 계층을 집어넣어야 함을 알리는 역할을 합니다.
+_재귀적인 열거체 (recursive enumeration)_ 는 열거체의 '경우 값 (cases)' 이 열거체의 또 다른 인스턴스를 '결합된 값 (associated value)' 으로 하나 이상 가지는 열거체를 말합니다. 열거체의 '경우 값' 을 '재귀적' 이라고 지시하려면 그 앞에 `indirect` [^indirect]를 써주면 되는데, 이는 컴파일러에게 간접 계층을 집어넣어야 함을 알리는 역할을 합니다.
 
 예를 들어, 다음은 간단한 '산술 표현식 (arithmetic expressions)' 을 저장하는 열거체입니다:
 
