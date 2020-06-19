@@ -112,7 +112,7 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^Deinitialization]: 이 글에 대한 원문은 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 에서 확인할 수 있습니다.
 
-[^deinitializer]: 스위프트의 'deinitializer' 는 '정리자' 라는 말로 옮겼는데, 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 언어에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 말입니다. 스위프트는 메모리 관리를 자동으로 알아서 해주는 언어라서 개발자가 직접 메모리 관리를 하지 않으므로 메모리 '생성' 이나 '소멸' 이라는 개념은 없습니다. 대신 스위프트에는 변수나 상수를 사용하려면 그전에 반드시 '초기화' 를 해줘야 합니다. 그리고 변수나 상수가 사라지기 전에 '초기화' 했던 자원을 정리할 필요가 있습니다. 이것이 '초기자', '정리자' 라는 단어를 선택한 이유입니다.
+[^deinitializer]: 스위프트의 'deinitializer' 는 '정리자' 라는 말로 옮겼는데, 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 언어에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 말입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 이 메모리 관리를 자동으로 해주기 때문에, 개발자가 직접 메모리 관리를 할 일이 드물어서, 메모리 '생성' 이나 '소멸' 이라는 개념은 사실상 없습니다. 그래서 '소멸자' 라는 말을 사용하는 것은 어울리지 않아서, 변수나 상수가 사라지기 전에 '정리' 작업을 할 필요가 있다는 의미로 '정리자' 라고 옮기도록 합니다.
 
 [^deallocated]: 여기서의 'deallocated' 는 메모리상에서의 해제를 말하며, 스위프트에서는 'Auto Reference Counting' 에 의해 자동으로 이루어집니다.
 

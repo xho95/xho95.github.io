@@ -117,13 +117,29 @@ class Apartment {
 }
 ```
 
-모든 Person 인스턴스에는 String 유형의 name 속성과 초기에 nil 인 선택적 아파트 속성이 있습니다. 사람이 항상 아파트를 가지고 있지는 않기 때문에 아파트 속성은 선택 사항입니다.
+모든 `Person` 인스턴스는 `String` 타입인 `name` 속성과 `nil` 로 초기화된 옵셔널 `apartment` 속성을 가지고 있습니다. `apartment` 속성이 '옵셔널' 인건, 사람이 항상 아파트를 가지고 있는 건 아니기 때문입니다.
 
-마찬가지로 모든 Apartment 인스턴스에는 String 유형의 단위 속성이 있으며 초기에는 0 인 선택적 테넌트 속성이 있습니다. 아파트에는 항상 임차인이있을 수 없으므로 임차인 속성은 선택 사항입니다.
+이와 비슷하게, 모든 `Apartment` 인스턴스는 `String` 타입인 `unit` 속성을 가지며 `nil` 로 초기화된 옵셔널 `tenant` 속성도 가지고 있습니다. '소유주 (tenant)' 속성이 옵셔널인 것은 아파트에 항상 소유주가 있는 것은 아니기 때문입니다.
 
-이 두 클래스 모두 deinitializer를 정의하여 해당 클래스의 인스턴스가 초기화되지 않았다는 사실을 인쇄합니다. 이를 통해 Person 및 Apartment 인스턴스가 예상대로 할당 해제되고 있는지 확인할 수 있습니다.
+이 두 클래스 모두, 해당 클래스의 인스턴스가 정리되었다는 사실을 출력하는, '정리자 (deinitializer)'[^deinitializer] 도 정의하고 있습니다. 이는 `Person` 과 `Apartment` 의 인스턴스에 대한 할당이 예상대로 해제되고 있는지를 확인할 수 있도록 해줍니다.
 
-이 다음 코드 스 니펫은 john 및 unit4A라는 선택적 유형의 두 변수를 정의합니다.이 변수는 아래의 특정 아파트 및 개인 인스턴스로 설정됩니다. 이 두 변수는 모두 옵션이기 때문에 초기 값이 nil입니다.
+다음 코드 조각은 `john` 과 `unit4A` 라는 옵셔널 타입의 값을 두 개 정의하는데, 이는 그 아래에서 특정한 `Apartment` 와 `Person` 인스턴스로 설정하게 됩니다. 이 두 변수 모두, 옵셔널이 가지는 장점에 의해, `nil` 이라는 초기 값을 가집니다.
+
+```swift
+var john: Person?
+var unit4A: Apartment?
+```
+
+이제 특정한 `Person` 인스턴스와 `Apartment` 인스턴스를 생성해서 이 새 인스턴스를 `john` 과 `unit4A` 변수에 할당할 수 있습니다:
+
+```swift
+john = Person(name: "John Appleseed")
+unit4A = Apartment(unit: "4A")
+```
+
+이 두 인스턴스를 생성하고 할당하고 나면 '강한 참조' 는 다음 처럼 보이게 됩니다. `john` 변수는 이제 새 `Person` 인스턴스에 대한 '강한 참조' 를 가지고 있고, `unit4A` 변수는 새 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있습니다:
+
+
 
 ### Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)
 
@@ -148,3 +164,5 @@ class Apartment {
 [^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법으로, 여기서 '메모리 관리' 는 '동적인 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적인 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장소 (free store; 또는 heap)' 라고 하며, '참조 (reference)' 는 '자유 저장소' 에 있는 할당된 메모리 영역을 '참조하는 (또는 가리키는; refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장소' 가 아니라 '스택 (stack)' 이라는 '정적인 메모리' 공간에 생기기 것이라서 메모리 관리의 대상이 아닙니다. 보다 자세한 내용은 위키피디아의 'Memory management' 항목 중 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
 
 [^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
+
+[^deinitializer]: 'deinitializer' 를 '정리자' 라고 옮기는 이유는 스위프트 언어에서 '소멸자' 라는 말은 어울리지 않기 때문입니다. 이에 대해서는 [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %}) 의 '[참고 자료]({% post_url 2017-03-03-Deinitialization %}#참고-자료)' 부분을 참고하기 바랍니다.
