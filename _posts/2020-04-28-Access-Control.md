@@ -171,9 +171,9 @@ public enum CompassPoint {
 
 열거체 정의에 있는 '원시 값 (raw values)' 이나 '결합된 값 (associated values)'[^raw-values-and-associated-values] 에서 사용되는 타입은 어떤 것이든 적어도 열거체의 접근 수준보다는 높아야 합니다. 예를 들어, 접근 수준이 'internal (내부)' 인 열거체의 '원시-값 (raw-value)' 타입으로 'private (개인 전용)' 타입을 사용할 수는 없습니다.
 
-#### Nested Types (품어진 타입)
+#### Nested Types (중첩 타입)
 
-'nested (품어진) 타입' 의 접근 수준은, 그것을 품고 있는 타입이 'public (공용)' 이 아닌 한, 품고 있는 타입과 같습니다. 'public (공용)' 타입 내에 정의된 'nested (품어진)' 타입의 접근 수준은 자동으로 'internal (내부)' 가 됩니다. 'public (공용)' 타입 내에 'nested (품어진)' 타입이 '공용' 으로 사용되길 원할 경우, 반드시 이 'nested (품어진)' 타입을 'public (공용)' 이라고 명시적으로 선언해야 합니다.
+'중첩 타입 (nested types)' 의 접근 수준은, 그것을 품고 있는 타입이 'public (공용)' 이 아닌 한, 품고 있는 타입과 같습니다. 'public (공용)' 타입 내에 정의된 '중첩 타입' 의 접근 수준은 자동으로 'internal (내부)' 가 됩니다. 'public (공용)' 타입 내에 '중첩 타입' 이 '공용' 으로 사용되길 원할 경우, 반드시 이 '중첩 타입' 을 'public (공용)' 이라고 명시적으로 선언해야 합니다.
 
 ### Subclassing (하위 클래스)
 

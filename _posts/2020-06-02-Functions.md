@@ -16,7 +16,7 @@ _함수 (functions)_ 는 지정된 작업을 수행하는 '독립적인 (self-co
 
 스위프트의 '통합된 함수 구문 표현 (unified function syntax)' 은 충분히 유연하기 때문에, 매개 변수 이름이 없는 간단한 C-스타일 함수에서 부터 각각의 매개 변수 마다 이름과 인자 이름표가 있는 복잡한 오브젝티브-C-스타일의 메소드까지 뭐든지 표현할 수 있습니다. 매개 변수는 함수 호출을 단순화하기 위해 기본 값을 제공 할 수도 있고, 입-출력 매개 변수의 형태로 전달해서, 함수 실행을 완료했을 때 전달된 변수를 수정하도록 할 수도 있습니다.
 
-스위프트의 모든 함수는, 함수의 매개 변수 타입과 반환 타입으로 이루어진, 타입을 가지게 됩니다. 이 타입은 스위프트에 있는 다른 모든 타입처럼 사용할 수 있어서, 함수를 다른 함수의 매개 변수로 전달하거나, 함수에서 함수를 반환하는 것을 쉽게 만들어 줍니다. 함수를 다른 함수 내에서 작성하여 유용한 기능을 '품어진 함수 (nested function)' 영역 범위로 캡슐화할 수도 있습니다.
+스위프트의 모든 함수는, 함수의 매개 변수 타입과 반환 타입으로 이루어진, 타입을 가지게 됩니다. 이 타입은 스위프트에 있는 다른 모든 타입처럼 사용할 수 있어서, 함수를 다른 함수의 매개 변수로 전달하거나, 함수에서 함수를 반환하는 것을 쉽게 만들어 줍니다. 함수를 다른 함수 내에서 작성하여 유용한 기능을 '중첩 함수 (nested function)' 영역 범위로 캡슐화할 수도 있습니다.
 
 ### Defining and Calling Functions (함수 정의하고 호출하기)
 
@@ -490,13 +490,13 @@ print("zero!")
 // zero!
 ```
 
-### Nested Functions (품어진 함수)
+### Nested Functions (중첩 함수)
 
-이번 장에서 지금까지 마주친 모든 예제에 있는 함수들은, 전역 범위에서 정의한, _전역 함수 (global functions)_ 였습니다. 함수는 다른 함수의 본문 내에서도 정의할 수 있는데, 이를 _품어진 함수 (nested functions)_ 라고 합니다.
+이번 장에서 지금까지 마주친 모든 예제에 있는 함수들은, 전역 범위에서 정의한, _전역 함수 (global functions)_ 였습니다. 함수는 다른 함수의 본문 내에서도 정의할 수 있는데, 이를 _중첩 함수 (nested functions)_ 라고 합니다.
 
-'품어진 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수 (enclosing function)' 를 사용하면 여전히 호출할 수 있습니다. '둘러싼 함수' 는 자기가 가지고 있는 '품어진 함수' 중 하나를 반환해서 그 '품어진 함수' 를 다른 영역에서 사용하도록 할 수도 있습니다.
+'중첩 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수 (enclosing function)' 를 사용하면 여전히 호출할 수 있습니다. '둘러싼 함수' 는 자기가 가지고 있는 '중첩 함수' 중 하나를 반환해서 그 '중첩 함수' 를 다른 영역에서 사용하도록 할 수도 있습니다.
 
-위에 있는 `chooseStepFunction(backward:)` 예제를 '품어진 함수' 를 사용하고 반환하도록 다시 작성하면 다음과 같습니다:
+위에 있는 `chooseStepFunction(backward:)` 예제를 '중첩 함수' 를 사용하고 반환하도록 다시 작성하면 다음과 같습니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -506,7 +506,7 @@ func chooseStepFunction(backward: Bool) -> (Int) -> Int {
 }
 var currentValue = -4
 let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
-// moveNearerToZero 는 이제 품어진 함수인 stepForward() 를 참조합니다.
+// moveNearerToZero 는 이제 중첩 함수인 stepForward() 를 참조합니다.
 while currentValue != 0 {
   print("\(currentValue)... ")
   currentValue = moveNearerToZero(currentValue)

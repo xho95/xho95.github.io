@@ -18,21 +18,21 @@ redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.htm
 
 한 타입을 다른 타입에 중첩하려면, 그 정의를 지원하고자 하는 타입의 '외곽 중괄호 (outer braces)' 안에 작성하면 됩니다. 타입은 필요한 만큼 많은 단계타입을 품는 단계는 원하는 만큼 많이 중첩할 수 있습니다.
 
-### Nested Types in Action (품어진 타입의 실제 사례)
+### Nested Types in Action (중첩 타입의 실제 사례)
 
-아래의 예제는 `BlackjackCard` 라는 구조체를 정의하여, '블랙잭 (Blackjack)' 게임에서 사용할 플레이용 카드의 모델을 만듭니다. `BlackjackCard` 구조체는 `Suit` 와 `Rank` 라는 두 개의 '품어진 열거체 타입 (nested enumeration types)' 을 가집니다.
+아래의 예제는 `BlackjackCard` 라는 구조체를 정의하여, '블랙잭 (Blackjack)' 게임에서 사용할 플레이용 카드의 모델을 만듭니다. `BlackjackCard` 구조체는 `Suit` 와 `Rank` 라는 두 개의 '중첩 열거체 타입 (nested enumeration types)' 을 가집니다.
 
-블랙잭에서, 에이스 카드의 값은 '1' 일 수도 있고 '11' 일 수도 있습니다. 이러한 특징은 `Rank` 열거체 내에 품어진 `Values` 라는 구조체로 표현됩니다:
+'블랙잭' 에서, 에이스 카드의 값은 '1' 일 수도 있고 '11' 일 수도 있습니다. 이러한 특징은, `Rank` 열거체 내에 중첩된, `Values` 라는 구조체로 표현됩니다:
 
 ```swift
 struct BlackjackCard {
 
-    // 품어진 Suit 열거체
+    // 중첩 열거체 Suit
     enum Suit: Character {
         case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
     }
 
-    // 품어진 Rank 열거체
+    // 중첩 열거체 Rank
     enum Rank: Int {
         case two = 2, three, four, five, six, seven, eight, nine, ten
         case jack, queen, king, ace
@@ -68,7 +68,7 @@ struct BlackjackCard {
 
 `Rank` 열거체는 플레이용 카드에서 가능한 13개의 계급을 묘사하고 있으며, `Int` 타입의 원시 값으로 카드 면에 나타날 값을 표현합니다. (이 `Int` 원시 값은 Jack, Queen, King 그리고 에이스 (Ace) 카드에는 사용하지 않습니다.)
 
-위에서 언급한 대로, `Rank` 열거체는 `Values` 라는 한 단계 더 품어진 구조체를 정의합니다. 이 구조체는 거의 모든 카드는 하나의 값을 갖지만, 에이스 카드는 두 값을 가진다는 사실을 내부에 감춥니다. `Values` 구조체는 두 개의 속성을 정의하여 이를 나타냅니다:
+위에서 언급한 대로, `Rank` 열거체는 `Values` 라는 한 단계 더 중첩된 구조체를 정의합니다. 이 구조체는 거의 모든 카드는 하나의 값을 갖지만, 에이스 카드는 두 값을 가진다는 사실을 내부에 감춥니다. `Values` 구조체는 두 개의 속성을 정의하여 이를 나타냅니다:
 
 * 속성 `first`, `Int` 타입임
 * 속성 `second`, `Int?` (또는 “옵셔널 `Int`”) 타입임
@@ -85,14 +85,11 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 // "theAceOfSpades: suit is ♠, value is 1 or 11" 를 출력합니다.
 ```
 
-Even though Rank and Suit are nested within BlackjackCard, their type can be inferred from context, and so the initialization of this instance is able to refer to the enumeration cases by their case names (.ace and .spades) alone. In the example above, the description property correctly reports that the Ace of Spades has a value of 1 or 11.
+비록 `Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있더라도, 영역 내의 문맥으로 타입을 추론할 수 있으므로, 인스턴스의 초기화 시에 그들의 '경우 값 (case)' 이름 (`.ace` 와 `.spades`) 만으로도 '구조체 경우 값 (enumeration cases)' 들을 참조하는 것이 가능합니다.[^refer-to] 위 예제에서, `description` 속성은 '스페이드의 에이스 (Ace of Spades)' 가 `1` 또는 `11` 의 값을 가지고 있음을 정확하게 보고하고 있습니다.
 
+### Referring to Nested Types (중첩 타입 참조하기)
 
-`Rank` 와 `Suit` 는 `BlackjackCard` 안에 품어져 있지만, 이 타입은 문맥으로부터 추론할 수 있으며, 따라서 이 인스턴스를 초기화할 때는 '경우 값 (case)' 의 이름 (`.ace` 와 `.spades`) 만으로도 구조체의 '경우 값들 (cases)' 을 참조할 수 있습니다.[^refer-to] 위의 예제에서, `description` 속성은 '스페이드 에이스' 의 값이 `1` 또는 `11` 임을 정확하게 보고합니다.
-
-### Referring to Nested Types (품어진 타입 참조하기)
-
-'품어진 타입 (nested type)' 을 자신이 정의된 영역 밖에서 사용하려면, 이름 앞에 자신을 품고 있는 타입 이름을 접두사로 붙이면 됩니다:
+'중첩 타입 (nested type)' 을 자신이 정의된 영역 밖에서 사용하려면, 이름 앞에 자신을 품고 있는 타입 이름을 접두사로 붙이면 됩니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
@@ -113,4 +110,4 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^implicit]: 여기서 'implicit memberwise initializer' 는 '멤버 초기자를 저절로' 갖게 된다는 의미입니다.
 
-[^refer-to]: 여기서 '참조할 수 있다' 는 말은 '사용할 수 있다' 는 의미입니다. 즉, `Suit.spades` 같이 타입을 직접 명시 하지 않고 `.spades` 같은 형태로도 사용할 수 있다는 의미입니다.
+[^refer-to]: 이 말은 `Suit.spades` 같이 타입을 직접 명시 하지 않고 `.spades` 같은 형태로도 사용할 수 있다는 의미입니다.
