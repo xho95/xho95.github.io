@@ -16,7 +16,7 @@ redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.htm
 
 열거체는 대체로 지정된 클래스나 구조체의 기능을 보조하기 위해 생성합니다. 이와 비슷하게, '보조용 (utility)' 클래스와 구조체를 정의해서 순전히 좀 더 복잡한 타입 내에서만 사용할 수 있다면 편리할 것입니다. 이를 위해, 스위프트는 _중첩 타입 (nested types)_ 을 정의하도록 해서, '보조용 열거체, 클래스, 및 구조체'[^supporting-types] 를 지원하고자 하는 타입의 정의에서 중첩하도록 해줍니다.
 
-한 타입을 다른 타입에 중첩하려면, 그 정의를 지원하고자 하는 타입의 '외곽 중괄호 (outer braces)' 안에 작성하면 됩니다. 타입은 필요한 만큼 많은 단계타입을 품는 단계는 원하는 만큼 많이 중첩할 수 있습니다.
+한 타입을 다른 타입에 중첩하려면, 그 정의를 지원하고자 하는 타입의 '외곽 중괄호 (outer braces)' 안에 작성하면 됩니다. 타입은 필요한 수준만큼 많이 중첩할 수 있습니다:
 
 ### Nested Types in Action (중첩 타입의 실제 사례)
 
@@ -90,7 +90,7 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 ### Referring to Nested Types (중첩 타입 참조하기)
 
-'중첩 타입 (nested type)' 을 자신이 정의된 영역 밖에서 사용하려면, 이름 앞에 자신을 품고 있는 타입 이름을 접두사로 붙이면 됩니다:
+'중첩 타입 (nested type)' 을 자기가 정의된 영역 외부에서 사용하려면, 이름 앞에 자기를 중첩하고 있는 타입 이름을 접두사로 붙이면 됩니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
