@@ -27,40 +27,41 @@ redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.htm
 ```swift
 struct BlackjackCard {
 
-    // 중첩 열거체 Suit
-    enum Suit: Character {
-        case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
-    }
+  // 중첩 열거체 Suit
+  enum Suit: Character {
+    case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
+  }
 
-    // 중첩 열거체 Rank
-    enum Rank: Int {
-        case two = 2, three, four, five, six, seven, eight, nine, ten
-        case jack, queen, king, ace
-        struct Values {
-            let first: Int, second: Int?
-        }
-        var values: Values {
-            switch self {
-            case .ace:
-                return Values(first: 1, second: 11)
-            case .jack, .queen, .king:
-                return Values(first: 10, second: nil)
-            default:
-                return Values(first: self.rawValue, second: nil)
-            }
-        }
-    }
+  // 중첩 열거체 Rank
+  enum Rank: Int {
+    case two = 2, three, four, five, six, seven, eight, nine, ten
+    case jack, queen, king, ace
 
-    // BlackjackCard 의 속성과 메소드
-    let rank: Rank, suit: Suit
-    var description: String {
-        var output = "suit is \(suit.rawValue),"
-        output += " value is \(rank.values.first)"
-        if let second = rank.values.second {
-            output += " or \(second)"
-        }
-        return output
+    struct Values {
+      let first: Int, second: Int?
     }
+    var values: Values {
+      switch self {
+      case .ace:
+        return Values(first: 1, second: 11)
+      case .jack, .queen, .king:
+        return Values(first: 10, second: nil)
+      default:
+        return Values(first: self.rawValue, second: nil)
+      }
+    }
+  }
+
+  // BlackjackCard 의 속성과 메소드
+  let rank: Rank, suit: Suit
+  var description: String {
+    var output = "suit is \(suit.rawValue),"
+    output += " value is \(rank.values.first)"
+    if let second = rank.values.second {
+      output += " or \(second)"
+    }
+    return output
+  }
 }
 ```
 
@@ -110,4 +111,4 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^implicit]: 여기서 'implicit memberwise initializer' 는 '멤버 초기자를 저절로' 갖게 된다는 의미입니다.
 
-[^refer-to]: 이 말은 `Suit.spades` 같이 타입을 직접 명시 하지 않고 `.spades` 같은 형태로도 사용할 수 있다는 의미입니다.
+[^refer-to]: 이 말은 `Suit.spades` 같이 타입을 직접 명시하지 않고 `.spades` 같은 형태로도 사용할 수 있다는 의미입니다.
