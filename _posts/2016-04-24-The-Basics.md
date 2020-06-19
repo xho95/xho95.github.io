@@ -144,14 +144,14 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // This is a comment.
 ```
 
-여러 줄짜리 주석은 슬래쉬 뒤에 별표가 있는 곳에서 시작하고 (`/*`) 별표 뒤에 슬래쉬가 있는 곳에서 끝납니다 (`*/` ):
+'여러 줄짜리 주석 (multiline comments)' 은 슬래쉬 뒤에 별표가 있는 곳에서 시작하고 (`/*`) 별표 뒤에 슬래쉬가 있는 곳에서 끝납니다 (`*/` ):
 
 ```swift
 /* This is also a comment
  but is written over multiple lines. */
 ```
 
-C 언어의 여러 줄짜리 주석과 달리, 스위프트의 '여러 줄짜리 주석' 은 다른 여러 줄짜리 주석을 '품을 (nested)' 수 있습니다. 이렇게 'nested (품어진) 주석' 을 만들려면 일단 '여러 줄짜리 주석 블럭' 을 시작한 후 이 첫 번째 블럭 안에서 두 번째 '여러 줄짜리 주석을 시작하면 됩니다. 그리고 두 번째 블럭을 먼저 닫고, 첫 번째 블럭을 닫으면 됩니다:
+C 언어의 '여러 줄짜리 주석' 과 달리, 스위프트의 여러 줄짜리 주석은 다른 여러 줄짜리 주석을 '중첩할 (nested)' 수 있습니다. '중첩 주석 (nested comments)' 을 만들려면 일단 '여러 줄짜리 주석 블럭' 을 시작한 후 이 첫 번째 블럭 안에서 두 번째 '여러 줄짜리 주석' 을 시작합니다. 그런 다음 두 번째 블럭을 닫고, 첫 번째 블럭을 닫으면 됩니다:
 
 ```swift
 /* This is the start of the first multiline comment.
@@ -159,7 +159,7 @@ C 언어의 여러 줄짜리 주석과 달리, 스위프트의 '여러 줄짜리
  This is the end of the first multiline comment. */
 ```
 
-'nested (품어진) 여러 줄짜리 주석' 을 사용하면 커다란 코드 블럭도 빠르고 쉽게 주석 처리할 수 있으며, 그 코드에 이미 여러 줄짜리 주석이 있더라도 상관없습니다.
+'중첩된 여러 줄짜리 주석 (nested multiline comments)' 을 사용하면 큰 코드 블럭이, 이미 여러 줄짜리 주석을 가지고 있더라도, 빠르고 쉽게 주석 처리할 수 있습니다.
 
 ### 세미콜론 (Semicolons)
 

@@ -35,7 +35,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %})
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %})
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %})
-* [Nested Types (품어진 타입)]({% post_url 2017-03-03-Nested-Types %})
+* [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %})
 * [Extensions (확장)]({% post_url 2016-01-19-Extensions %})
 * [Protocols (규약)] - [일부 진행중]({% post_url 2016-03-03-Protocols %})
 * [Generics (일반화)] - [일부 진행중]({% post_url 2020-02-29-Generics %})

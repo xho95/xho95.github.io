@@ -93,13 +93,37 @@ reference3 = nil
 
 ### Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)
 
-위의 예에서 ARC는 생성 한 새로운 Person 인스턴스에 대한 참조 수를 추적하고 더 이상 필요하지 않은 경우 해당 Person 인스턴스를 할당 해제 할 수 있습니다.
+위 예제에서, ARC 는 새로 생성한 `Person` 인스턴스의 참조 개수를 추적하여 더 이상 필요하지 않을 때 `Person` 인스턴스의 할당을 해제할 수 있었습니다.
 
-그러나 클래스의 인스턴스가 강력한 참조가없는 지점에 도달하지 않는 코드를 작성할 수 있습니다. 이는 두 클래스 인스턴스가 서로에 대한 강력한 참조를 보유하여 각 인스턴스가 다른 인스턴스를 계속 유지하는 경우에 발생할 수 있습니다. 이를 강력한 참조주기라고합니다.
+하지만, 클래스 인스턴스에 대한 '강한 참조' 가 _절대로 (never)_ 없어지지 않는 코드를 작성하게 될 수도 있습니다. 이것은 두 클래스 인스턴스가 서로에 대한 '강한 참조' 를 움켜쥐고 있는 경우에 발생하는데, 그로 인해 각각의 인스턴스가 다른 것을 계속 살아있게 만드는 것입니다. 이를 '_강한 참조 순환 (strong reference cycle)_' 이라고 합니다.
 
-클래스 간의 관계 중 일부를 강력한 참조가 아닌 약하거나 소유되지 않은 참조로 정의하여 강력한 참조주기를 해결합니다. 이 프로세스는 클래스 인스턴스 간의 강력한 참조주기 해결에 설명되어 있습니다. 그러나 강력한 참조주기를 해결하는 방법을 배우기 전에 이러한주기가 어떻게 발생하는지 이해하는 것이 좋습니다.
+'강한 참조 순환' 을 해결하려면 클래스 사이의 일부 관계를 강한 참조가 아니라 '약한 참조 (weak reference)' 나 '소유자가 없는 참조 (unowned rerference)' 로 정의해야 합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환을 해결하는 방법을 배우기 전에, 어떻게 해서 그런 순환이 일어나는지를 먼저 이해하는 것이 좋을 겁니다.
 
-다음은 우연히 강력한 참조주기를 생성하는 방법에 대한 예입니다. 이 예에서는 개인 및 아파트라는 두 개의 클래스를 정의합니다.이 클래스는 아파트 블록 및 해당 거주자를 모델링합니다.
+다음은 강한 참조 순환이 어떻게 해서 우연히 생성될 수 있는 지를 보여주는 예제입니다. 이 예제는, 아파트 단지 및 그 거주자를 모델링하는, `Person` 과 `Apartment` 라는 두 개의 클래스를 정의합니다:
+
+```swift
+class Person {
+  let name: String
+  init(name: String) { self.name = name }
+  var apartment: Apartment?
+  deinit { print("\(name) is being deinitialized") }
+}
+
+class Apartment {
+  let unit: String
+  init(unit: String) { self.unit = unit }
+  var tenant: Person?
+  deinit { print("Apartment \(unit) is being deinitialized") }
+}
+```
+
+모든 Person 인스턴스에는 String 유형의 name 속성과 초기에 nil 인 선택적 아파트 속성이 있습니다. 사람이 항상 아파트를 가지고 있지는 않기 때문에 아파트 속성은 선택 사항입니다.
+
+마찬가지로 모든 Apartment 인스턴스에는 String 유형의 단위 속성이 있으며 초기에는 0 인 선택적 테넌트 속성이 있습니다. 아파트에는 항상 임차인이있을 수 없으므로 임차인 속성은 선택 사항입니다.
+
+이 두 클래스 모두 deinitializer를 정의하여 해당 클래스의 인스턴스가 초기화되지 않았다는 사실을 인쇄합니다. 이를 통해 Person 및 Apartment 인스턴스가 예상대로 할당 해제되고 있는지 확인할 수 있습니다.
+
+이 다음 코드 스 니펫은 john 및 unit4A라는 선택적 유형의 두 변수를 정의합니다.이 변수는 아래의 특정 아파트 및 개인 인스턴스로 설정됩니다. 이 두 변수는 모두 옵션이기 때문에 초기 값이 nil입니다.
 
 ### Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)
 

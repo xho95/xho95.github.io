@@ -20,7 +20,7 @@ _extensions (확장)_ [^extension]은 이미 존재하는 클래스, 구조체, 
 * 인스턴스 메소드 (instance methods 및 타입 메소드 (type methods) 정의하기
 * 새로운 초기자 (initializer) 제공하기
 * 첨자 연산자 (subscripts) 정의하기
-* 새로운 '품어진 타입 (nested types)' 정의하고 사용하기
+* 새로운 '중첩 타입 (nested types)' 정의하고 사용하기
 * 기존 타입이 특정한 프로토콜을 준수하도록 만들기
 
 스위프트에서는, 프로토콜을 확장해서 '필수 조건 (requirements)' 에 대한 구현을 제공하거나 또는 추가적인 기능을 추가하여 (프로토콜을) 준수하는 타입에게 편의를 제공할 수도 있습니다. 이에 대한 자세한 내용은 [Protocol Extensions (프로토콜 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-확장) 을 참고하기 바랍니다.
@@ -228,9 +228,9 @@ extension Int {
 0746381295[9]
 ```
 
-### Nested Types (품어진 타입)
+### Nested Types (중첩 타입)
 
-익스텐션을 써서 이미 존재하는 클래스, 구조체, 그리고 열거체에 '품어진 타입 (nested type)'[^nested-type]을 새로 추가할 수 있습니다:
+익스텐션을 써서 이미 존재하는 클래스, 구조체, 그리고 열거체에 '중첩 타입 (nested type)'을 새로 추가할 수 있습니다:
 
 ```swift
 extension Int {
@@ -292,7 +292,5 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 [^retroactive-modeling]: 즉 스위프트 표준 라이브러리에서 제공하는 타입이나 패키지에 있는 타입들도 확장 (extensions) 할 수 있습니다. 이것 역시 확장이 대상의 구조 변화없이 기능만을 추가하기 때문이기도 합니다.
 
 [^literal]: `leteral` 은 문자로 표현된 것을 말하며, `leteral value` 는 '문자로 표현된 값'을 말합니다 .예를 들어 코드에서 `0` 이라고 작성할 때 실제로는 문자 '0' 을 입력한 것이지만, `let a = 0` 에서의 `0` 은 하나의 수를 나타냅니다. 여기서 `0` 을 `integer literal value (정수 문자 값)` 라고 하며 '문자로 표현된 정수 값'이라는 의미를 갖습니다.
-
-[^nested-type]: 'nested types' 은 일단 '품어진 타입'으로 옮기도록 합니다.
 
 [^case]: `case` 에 적당한 말을 아직 못 찾았습니다. 임시로 '사례 값'으로 옮깁니다.
