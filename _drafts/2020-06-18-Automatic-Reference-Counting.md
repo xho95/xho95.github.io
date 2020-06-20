@@ -119,7 +119,7 @@ class Apartment {
 
 모든 `Person` 인스턴스는 `String` 타입인 `name` 속성과 `nil` 로 초기화된 옵셔널 `apartment` 속성을 가지고 있습니다. `apartment` 속성이 '옵셔널' 인건, 사람이 항상 아파트를 가지고 있는 건 아니기 때문입니다.
 
-이와 비슷하게, 모든 `Apartment` 인스턴스는 `String` 타입인 `unit` 속성을 가지며 `nil` 로 초기화된 옵셔널 `tenant` 속성도 가지고 있습니다. '소유주 (tenant)' 속성이 옵셔널인 것은 아파트에 항상 소유주가 있는 것은 아니기 때문입니다.
+이와 비슷하게, 모든 `Apartment` 인스턴스는 `String` 타입인 `unit` 속성을 가지며 `nil` 로 초기화된 옵셔널 `tenant` 속성도 가지고 있습니다. '입주자 (tenant)' 속성이 옵셔널인 것은 아파트에 항상 입주자가 있는 것은 아니기 때문입니다.
 
 이 두 클래스 모두, 해당 클래스의 인스턴스가 정리되었다는 사실을 출력하는, '정리자 (deinitializer)'[^deinitializer] 도 정의하고 있습니다. 이는 `Person` 과 `Apartment` 의 인스턴스에 대한 할당이 예상대로 해제되고 있는지를 확인할 수 있도록 해줍니다.
 
@@ -137,13 +137,33 @@ john = Person(name: "John Appleseed")
 unit4A = Apartment(unit: "4A")
 ```
 
-이 두 인스턴스를 생성하고 할당하고 나면 '강한 참조' 는 다음 처럼 보이게 됩니다. `john` 변수는 이제 새 `Person` 인스턴스에 대한 '강한 참조' 를 가지고 있고, `unit4A` 변수는 새 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있습니다:
+다음은 두 인스턴스를 생성하고 할당한 후 '강한 참조' 가 어떻게 보이는지를 나타냅니다. `john` 변수는 이제 새 `Person` 인스턴스에 대한 '강한 참조' 를 가지고 있고, `unit4A` 변수는 새 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있습니다:
 
 ![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-before.jpg)
 
-![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-reference.png)
+이제 두 인스턴스를 서로 연결하여 사람은 아파트를 가지고, 아파트는 입주자를 가지게 할 수 있습니다. `john` 과 `unit4A` 옵셔널 변수 안에 저장된 인스턴스를 풀고 접근하기 위해서, 그래서 그 속성을 설정할 수 있도록 하기 위해서, 느낌표 (`!`) 를 사용한 것을 기억하기 바랍니다:
 
-![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.png)
+```swift
+john!.apartment = unit4A
+unit4A!.tenant = john
+```
+
+다음은 두 인스턴스를 서로 연결하고 난 후 '강한 참조' 가 어떻게 보이는지를 나타냅니다:
+
+![Strong Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-reference.png)
+
+불행히도이 두 인스턴스를 연결하면 두 인스턴스간에 강력한 참조주기가 생성됩니다. Person 인스턴스는 이제 Apartment 인스턴스에 대한 강력한 참조를 가지며 Apartment 인스턴스는 Person 인스턴스에 대한 강력한 참조를 갖습니다. 따라서 john 및 unit4A 변수가 보유한 강력한 참조를 해제하면 참조 카운트가 0으로 떨어지지 않으며 ARC에서 인스턴스를 할당 해제하지 않습니다.
+
+```swift
+john = nil
+unit4A = nil
+```
+
+이 두 변수를 nil로 설정하면 초기화 해제 기가 호출되지 않았습니다. 강력한 참조주기는 Person 및 Apartment 인스턴스가 할당 해제되지 않도록하여 앱에서 메모리 누수를 유발합니다.
+
+다음은 john 및 unit4A 변수를 nil로 설정 한 후 강력한 참조가 어떻게 보이는지 보여줍니다.
+
+![Strong Reference Remaining](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.png)
 
 ### Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)
 
