@@ -152,18 +152,20 @@ unit4A!.tenant = john
 
 ![Strong Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-reference.png)
 
-불행히도이 두 인스턴스를 연결하면 두 인스턴스간에 강력한 참조주기가 생성됩니다. Person 인스턴스는 이제 Apartment 인스턴스에 대한 강력한 참조를 가지며 Apartment 인스턴스는 Person 인스턴스에 대한 강력한 참조를 갖습니다. 따라서 john 및 unit4A 변수가 보유한 강력한 참조를 해제하면 참조 카운트가 0으로 떨어지지 않으며 ARC에서 인스턴스를 할당 해제하지 않습니다.
+불행하게도, 이 두 인스턴스를 연결하는 것은 이들 사이에 '강한 참조 순환 (strong reference cycle)' 을 생성합니다. `Person` 인스턴스는 이제 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지며, `Apartment` 인스턴스는 `Person` 인스턴스에 대한 '강한 참조' 를 가지게 됩니다. 따라서, `john` 과 `unit4A` 변수가 움켜쥐고 있던 '강한 참조' 를 끊더라도, '참조 카운트 (reference counts)' 는 0 으로 떨어지지 않으며, 인스턴스의 할당은 ARC 에 의해 해제되지 않습니다:
 
 ```swift
 john = nil
 unit4A = nil
 ```
 
-이 두 변수를 nil로 설정하면 초기화 해제 기가 호출되지 않았습니다. 강력한 참조주기는 Person 및 Apartment 인스턴스가 할당 해제되지 않도록하여 앱에서 메모리 누수를 유발합니다.
+이 두 변수를 `nil` 로 설정할 때 어느 '정리자 (deinitializer)' 도 호출되지 않는다는 점을 기억하기 바랍니다. '강한 참조 순환' 는 `Person` 과 `Apartment` 인스턴스의 할당이 제되는 것을 막아서, 앱에서 '메모리 누수 (memory leak)' 를 발생시킵니다.
 
-다음은 john 및 unit4A 변수를 nil로 설정 한 후 강력한 참조가 어떻게 보이는지 보여줍니다.
+다음은 `john` 과 `unit4A` 변수에 `nil` 을 설정한 후 '강한 참조' 가 어떻게 보이는지를 나타냅니다:
 
 ![Strong Reference Remaining](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.png)
+
+`Person` 인스턴스와 `Apartment` 인스턴스 사이에 있는 '강한 참조' 는 깨지지 않고 남아 있습니다.
 
 ### Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)
 
