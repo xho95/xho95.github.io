@@ -183,8 +183,66 @@ _약한 참조 (weak reference)_ 는 참조하는 인스턴스를 강하게 움�
 
 약한 참조는, 다른 모든 옵셔널 값들 처럼, 값이 존재하는 지를 검사할 수 있으며, 더 이상 존재하지 않는 무효한 인스턴스에 대한 참조로 끝나서는 절대로 안됩니다.
 
-> ARC 가 약한 참조를 `nil` 로 설정할 때 '속성 관찰자 (property observers)' 는 호출되지 않습니다.
+> ARC 가 약한 참조를 `nil` 로 설정할 때는 '속성 관찰자 (property observers)' 가 호출되지 않습니다.
 
+아래 예제는 위에 있는 `Person` 및 `Apartment` 예제와 모든 점에서 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성을 '약한 참조' 로 선언했습니다:
+
+```swift
+class Person {
+  let name: String
+  init(name: String) { self.name = name }
+  var apartment: Apartment?
+  deinit { print("\(name) is being deinitialized") }
+}
+
+class Apartment {
+  let unit: String
+  init(unit: String) { self.unit = unit }
+  weak var tenant: Person?
+  deinit { print("Apartment \(unit) is being deinitialized") }
+}
+```
+
+두 변수 (`john` 과 `unit4A`) 로부터의 '강한 참조' 와 두 인스턴스 사이의 '연결 고리 (link)' 는 이전 처럼 생성됩니다:
+
+```swift
+var john: Person?
+var unit4A: Apartment?
+
+john = Person(name: "John Appleseed")
+unit4A = Apartment(unit: "4A")
+
+john!.apartment = unit4A
+unit4A!.tenant = john
+```
+
+다음은 두 인스턴스를 서로 연결하고 난 후 '참조' 가 이제 어떻게 보이는지를 나타냅니다:
+
+![Weak Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-reference.jpg)
+
+`Person` 인스턴스는 여전히 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있지만, `Apartment` 인스턴스는 이제 `Person` 인스턴스에 대한 '_약한 (weak)_ 참조' 를 가지고 있습니다. 이것의 의미는 `john` 변수를 `nil` 로 설정하여 이 변수가 강하게 움켜쥐고 있던 참조를 깨뜨릴 경우, 이제 `Person` 인스턴스에 대한 '강한 참조' 는 더 이상 없다는 것입니다.
+
+```swift
+john = nil
+// "John Appleseed is being deinitializaed" 를 출력합니다.
+```
+
+`Person` 인스턴스에 대한 강한 참조가 이제 더 이상 없으므로, 이의 할당은 해제되고 `tenant` 속성은 `nil` 로 설정됩니다:
+
+![Weak Reference nil](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-nil.jpg)
+
+`Apartment` 인스턴스에 대해 남아있는 유일한 '강한 참조' 는 `unit4A` 변수에 의한 것입니다. 만약 _그 (that)_ 강한 참조를 깨뜨리면, `Apartment` 인스턴스에 대한 '강한 참조' 는 이제 더 이상 없습니다:
+
+```swift
+unit4A = nil
+// "Apartment 4A is being deinitialized" 를 출력합니다.
+```
+
+`Apartment` 인스턴스에 대한 강한 참조가 이제 더 이상 없으므로, 이것의 할당 역시 해제됩니다:
+
+![Weak Reference deallocated](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-deallocated.jpg)
+
+> '쓰레기 수집 (gabage collection)'[^gabage-collection] 을 사용하는 시스템에서는, 간단한 '캐싱 메커니즘 (caching mechanism)' 을 구현하기 위해 '약한 참조' 를 사용할 때가 있는데 이는 '메모리 압력' 이 '쓰레기 수집' 을 발생시키는 경우에만 '강한 참조' 가 없는 객체의 할당이 해제되기 때문입니다. 하지만, ARC 에서는, 마지막 '강한 참조' 가 제거되자 마자 값의 할당이 해제되므로, 약한 참조를 그런 용도로 사용하는 것은 적합하지 않습니다.
 
 #### Unowned References (소유자가 없는 참조)
 
@@ -207,3 +265,5 @@ _약한 참조 (weak reference)_ 는 참조하는 인스턴스를 강하게 움�
 [^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
 
 [^deinitializer]: 'deinitializer' 를 '정리자' 라고 옮기는 이유는 스위프트 언어에서 '소멸자' 라는 말은 어울리지 않기 때문입니다. 이에 대해서는 [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %}) 의 '[참고 자료]({% post_url 2017-03-03-Deinitialization %}#참고-자료)' 부분을 참고하기 바랍니다.
+
+[^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학) 항목을 참고하기 바랍니다.
