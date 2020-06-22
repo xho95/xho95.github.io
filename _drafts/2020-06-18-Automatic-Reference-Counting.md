@@ -254,6 +254,35 @@ unit4A = nil
 >
 > 인스턴스의 할당이 해제된 후 '소유자가 없는 참조' 의 값에 접근하려고 하면, '실행시간 에러 (runtime error)' 가 발생할 것입니다.
 
+다음 예제는, '은행 고객' 과 그 고객이 가질 '신용 카드' 를 모델링하기 위해, `Customer` 와 `CreditCard` 라는, 두 개의 클래스를 정의합니다. 이 두 클래스는 각자 서로의 클래스 인스턴스를 속성으로 저장합니다. 이러한 관계는 잠재적으로 '강한 참조 순환' 를 생성하게 됩니다.
+
+`Customer` 와 `CreditCard` 의 관계는 위의 '약한 참조' 예제에서 봤었던 `Apartment` 와 `Person` 의 관계와는 조금 다릅니다. 이 자료 모델에서, 고객은 신용 카드를 가질 수도 있고 가지지 않을 수도 있지만, 하나의 신용 카드는 _항상 (always)_ 한 명의 고객과 연결되어 있을 것입니다. `CreditCard` 인스턴스는 자신이 참조하는 `Customer` 보다 절대로 더 오래 살지 않습니다. 이를 표현하기 위해, `Customer` 클래스는 `card` 라는 옵셔널 속성을 가지지만, `CreditCard` 클래스는 '소유자가 없는 (그리고 옵셔널이-아닌)' `customer` 속성을 가집니다.
+
+더 나아가서, 새 `CreditCard` 인스턴스는 _오직 (only)_ `number` 값과 `custom` 인스턴스를 자체 `CreditCard` 초기자로 전달하는 경우에만 생성할 수 있습니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스가 항상 자신과 결합된 `customer` 인스턴스를 가지고 있음을 보장합니다.
+
+신용 카드는 항상 고객을 가지고 있기 때문에, `customer` 인스턴스를 '소유자가 없는 참조' 로 정의하여, '강한 참조 순환' 을 피할 수 있습니다:
+
+```swift
+class Customer {
+  let name: String
+  var card: CreditCard?
+  init(name: String) {
+    self.name = name
+  }
+  deinit { print("\(name) is being deinitialized") }
+}
+
+class CreditCard {
+  let number: UInt64
+  unowned let customer: Customer
+  init(number: UInt64, customer: Customer) {
+    self.number = number
+    self.customer = customer
+  }
+  deinit { print("Card #\(number) is being deinitialized") }
+}
+```
+
 #### Unowned References and Implicitly Unwrapped Optional Properties (소유자가 없는 참조 및 암시적으로 풀리는 옵셔널 속성)
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
