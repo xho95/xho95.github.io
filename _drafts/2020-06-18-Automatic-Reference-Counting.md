@@ -283,6 +283,23 @@ class CreditCard {
 }
 ```
 
+> `CreditCard` 클래스의 `number` 속성은 `Int` 가 아니라 `UInt64` 타입으로 정의했는데, 이는 `number` 속성의 용량이 32-비트와 64-비트 시스템 모두에서 16-자리 카드 번호를 저장할 만큼 크도록 보장해 줍니다.
+
+이 다음 코드 조각은, 특정 고객에 대한 참조를 저장하는데 사용할, `john` 이라는 옵셔널 `Customer` 변수를 정의합니다. 이 변수는, 옵셔널이 가진 장점에 따라, 'nil' 을 초기 값으로 가집니다:
+
+```swift
+var john: Customer?
+```
+
+이제 `Customer` 인스턴스를 생성하여, 새로운 `CreditCard` 인스턴스를 초기화하고 해당 고객의 `card` 속성으로 할당하는데 사용합니다:
+
+```swift
+john = Customer(name: "John Appleseed")
+john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
+```
+
+다음은 두 인스턴스를 서로 연결하고 난 후, 이제 '참조' 가 어떻게 보이는지를 나타냅니다:
+
 #### Unowned References and Implicitly Unwrapped Optional Properties (소유자가 없는 참조 및 암시적으로 풀리는 옵셔널 속성)
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
