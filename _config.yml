@@ -8,7 +8,7 @@
 # A sentence like as "xho95 = Programmer(with: Swift)" can't use with Jekyll.
 
 # Site settings
-title: xho95's Swift Life (소중한꿈의 영민한 삶)
+title: xho95 (소중한꿈)'s Swift Life
 email: xho1995@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   let me = Programmer(with: .swift)
