@@ -1,13 +1,15 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)"
+title:  "Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)"
 date:   2017-02-28 00:00:00 +0900
 categories: Swift Programming Language Grammar
 redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책을 번역하고 정리한 글을 모아둔 곳입니다.[^Swift]
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/)[^Swift] 책을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다.
+>
+> 현재 번역을 진행하고 있으며, 기존에 Swift 5.2 로 되어 있던 부분도 Swift 5.3 으로 변경을 진행하는 중이라, 일부 문서는 Swift 5.2 기준일 수 있습니다.
 
 ### Welcome to Swift (스위프트 소개)
 
@@ -64,4 +66,4 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### 참고 자료
 
-[^Swift]: **스위프트 프로그래밍 언어** 는 현재 5.2 베타 버전까지 나온 상태이며, [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 에서 원문을 볼 수 있습니다.
+[^Swift]: 'The Swift Programming Language (스위프트 프로그래밍 언어)' 는 Apple 에서 공개한 Swift 책으로, 2020-06-22 에 5.3 버전으로 업데이트되었습니다. 원문은 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 에서 볼 수 있습니다.

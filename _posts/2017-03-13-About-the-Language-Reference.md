@@ -6,7 +6,7 @@ date:   2017-03-13 11:30:00 +0900
 categories: Swift Language Grammar About Reference
 ---
 
-> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 5.2)](https://docs.swift.org/swift-book/) 책의 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 부분[^Language-Reference]을 번역하고 정리한 글입니다.
+> 이 글은 Swift 를 공부하기 위해 애플에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 부분[^Language-Reference]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
 
 ## About the Language Reference (언어의 기준에 대하여)
 
