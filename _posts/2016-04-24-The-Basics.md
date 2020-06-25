@@ -605,7 +605,7 @@ if let firstNumber = Int("4") {
 
 이러한 종류의 옵셔널을 '_암시적으로 풀리는 옵셔널 (implicitly unwrapped optionals)_' 이라고 정의합니다. 암시적으로 풀리는 옵셔널을 작성하려면 옵셔널로 만들고 싶은 타입 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 을 붙이면 됩니다.
 
-'암시적으로 풀리는 옵셔널' 이 유용한 순간은 옵셔널이 처음 정의되자마자 옵셔널 값이 존재한다는 것을 보장할 수 있고 이후 모든 곳에서 존재한다고 가정할 수 있을 때입니다. 스위프트에서 '암시적으로 풀리는 옵셔널' 이 주로 사용되는 곳은 클래스를 초기화하는 곳에서이며,  이는 [Unowned References and Implicitly Unwrapped Optional Properties (소유자가 없는 참조 및 암시적으로 풀리는 옵셔널 속성)](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html#ID55) 에서 설명합니다.
+'암시적으로 풀리는 옵셔널' 이 유용한 순간은 옵셔널이 처음 정의되자마자 옵셔널 값이 존재한다는 것을 보장할 수 있고 이후 모든 곳에서 존재한다고 가정할 수 있을 때입니다. 스위프트에서 '암시적으로 풀리는 옵셔널' 이 주로 사용되는 곳은 클래스를 초기화하는 곳에서이며,  이는 [Unowned References and Implicitly Unwrapped Optional Properties (소유되지 않은 및 암시적으로 풀리는 옵셔널 속성)](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html#ID55) 에서 설명합니다.
 
 '암시적으로 풀리는 옵셔널' 도 그 속을 들여다보면 보통의 옵셔널이지만, '옵셔널이-아닌 값 (non-optional value)' 처럼 쓸 수 있으며, 접근할 때마다 옵셔널 값을 풀 필요도 없습니다. 다음의 예제는 '옵셔널 문자열' 과 '암시적으로 풀리는 옵셔널 문자열' 에서 그들이 감싸고 있는 값을 명시적인 `String` 으로 접근할 때의 동작이 어떻게 다른지를 보여줍니다:
 
