@@ -308,7 +308,9 @@ john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 
 ![Unowned Reference Break](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-break.jpg)
 
-#### Unowned References and Implicitly Unwrapped Optional Properties (소유되지 않은 및 암시적으로 풀리는 옵셔널 속성)
+#### Unowned Optional References (소유되지 않은 옵셔널 참조)
+
+#### Unowned References and Implicitly Unwrapped Optional Properties (소유되지 않은 참조 및 암시적으로 풀리는 옵셔널 속성)
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
 
