@@ -324,9 +324,47 @@ john = nil
 
 #### Unowned Optional References (무소속 옵셔널 참조)
 
-클래스에 대한 선택적 참조를 소유하지 않은 것으로 표시 할 수 있습니다. ARC 소유권 모델과 관련하여 무소속 선택적 참조와 약한 참조는 모두 동일한 컨텍스트에서 사용될 수 있습니다. 차이점은 소유하지 않은 선택적 참조를 사용할 때 항상 유효한 개체를 참조하거나 nil로 설정되어 있는지 확인해야합니다.
+클래스에 대한 '옵셔널 참조 (optional reference)' 를 '무소속 (unowned)' 으로 표시할 수 있습니다. ARC 소유권 모델의 관점에서, '무소속 옵셔널 참조 (unowned optional reference)' 와 '약한 참조' 는 둘 모두 같은 맥락에서 사용될 수 있는 것들입니다. 차이점이라면 '무소속 옵셔널 참조' 를 사용할 때는, 이것이 항상 유효한 개체를 참고하고 있던가 아니면 `nil` 로 설정되어 있다고 확인하는 것을 직접 책임져야 한다는 것입니다.
 
-학교의 특정 부서에서 제공하는 과정을 추적하는 예는 다음과 같습니다.
+다음은 학교의 특정 '학부 (department)' 에서 제안한 '교육 과정 (courses)' 를 추적하는 예제입니다:
+
+```swift
+class Department {
+  var name: String
+  var courses: [Course]
+  init(name: String) {
+    self.name = name
+    self.courses = []
+  }
+}
+
+class Course {
+  var name: String
+  unowned var department: Department
+  unowned var nextCourse: Course?
+  init(name: String, in department: Department) {
+    self.name = name
+    self.department = department
+    self.nextCourse = nil
+  }
+}
+```
+
+`Department` 는 해당 학과가 제안한 각 '교육 과정 (course)' 에 대한 강한 참조를 유지합니다. ARC 소유권 모델의 관점에서는, '학과' 가 '교과 과정' 을 소유합니다. `Course` 는 두 개의 '무소유 참조' 를 가지는데, 하나는 '학과 (department)' 에 대한 것이고 하나는 학생들이 이수해야 하는 그 다음 '교육 과정' 에 대한 것입니다; '교육 과정' 은 이러한 개체들 중 어느 것도 소유하지 않습니다. 모든 '교육 과정' 은 어떤 '학과' 의 일부에 해당하므로 `department` 속성은 옵셔널이 아닙니다. 하지만, 어떤 '교육 과정' 은 권장하는 후속 교육 과정을 가지지 않기 때문에, `nextCourse` 속성은 옵셔널입니다.
+
+다음은 이 클래스들을 사용하는 예제입니다:
+
+```swift
+let department = Department(name: "Horticulture")
+
+let intro = Course(name: "Survey of Plants", in: department)
+let intermediate = Course(name: "Growing Common Herbs", in: department)
+let advanced = Course(name: "Caring for Tropical Plants", in: department)
+
+intro.nextCourse = intermediate
+intermediate.nextCourse = advanced
+department.courses = [intro, intermediate, advanced]
+```
 
 #### Unowned References and Implicitly Unwrapped Optional Properties (무소속 참조 및 암시적으로 풀리는 옵셔널 속성)
 
