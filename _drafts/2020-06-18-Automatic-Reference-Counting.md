@@ -350,7 +350,7 @@ class Course {
 }
 ```
 
-`Department` 는 해당 학과가 제안한 각 '교육 과정 (course)' 에 대한 강한 참조를 유지합니다. ARC 소유권 모델의 관점에서는, '학과' 가 '교과 과정' 을 소유합니다. `Course` 는 두 개의 '무소유 참조' 를 가지는데, 하나는 '학과 (department)' 에 대한 것이고 하나는 학생들이 이수해야 하는 그 다음 '교육 과정' 에 대한 것입니다; '교육 과정' 은 이러한 개체들 중 어느 것도 소유하지 않습니다. 모든 '교육 과정' 은 어떤 '학과' 의 일부에 해당하므로 `department` 속성은 옵셔널이 아닙니다. 하지만, 어떤 '교육 과정' 은 권장하는 후속 교육 과정을 가지지 않기 때문에, `nextCourse` 속성은 옵셔널입니다.
+`Department` 는 해당 학과가 제안한 각 '교육 과정 (course)' 에 대한 강한 참조를 유지합니다. ARC 소유권 모델의 관점에서는, '학과' 가 '교육 과정' 을 소유합니다. `Course` 는 두 개의 '무소유 참조' 를 가지는데, 하나는 '학과 (department)' 에 대한 것이고 하나는 학생들이 이수해야 하는 그 다음 '교육 과정' 에 대한 것입니다; '교육 과정' 은 이러한 개체들 중 어느 것도 소유하지 않습니다. 모든 '교육 과정' 은 어떤 '학과' 의 일부에 해당하므로 `department` 속성은 옵셔널이 아닙니다. 하지만, 어떤 '교육 과정' 은 권장하는 후속 교육 과정을 가지지 않기 때문에, `nextCourse` 속성은 옵셔널입니다.
 
 다음은 이 클래스들을 사용하는 예제입니다:
 
@@ -365,6 +365,18 @@ intro.nextCourse = intermediate
 intermediate.nextCourse = advanced
 department.courses = [intro, intermediate, advanced]
 ```
+
+위 코드는 '학과' 하나와 그에 딸린 세 개의 '교육 과정' 을 생성합니다. '소개 (intro)' 와 '중급 (intermediate)' 과정 둘 다 `nextCourse` 속성에 '권장하는 후속 교육 과정'을 저장하며, 이는 학생이 지금 과정을 마친 다음 이수해야할 과정에 대한 '무소속 옵셔널 참조' 를 유지합니다.
+
+![Unowned Optional Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-optional-reference.png)
+
+'무소속 옵셔널 참조' 는 자신이 '감싸는 (wraps)'[^wraps] 클래스의 인스턴스를 강하게 쥐지 않으므로, ARC 가 그 인스턴스를 해제하는 것을 막지 않습니다. 이 동작 방식은, '무소속 옵셔널 참조' 가 `nil` 이 될 수 있다는 것만 빼면, ARC 에서 '무소속 참조' 가 하는 것과 똑같은 것입니다.
+
+'옵셔널이-아닌 무소속 참조' 와 마찬가지로, `nextCourse` 가 해제되지 않은 '교육 과정' 만 항상 참조한다는 보장은 자기 책임입니다. 이 경우, 예를 들어, `department.courses` 에 있는 '교육 과정' 을 삭제할 때는 다른 '교육 과정' 에서 참조하던 것들도 모두 삭제해야 합니다.
+
+> 옵셔널 값의 실제 타입은 `Optional` 이며, 이는 스위프트 표준 라이브러리에 있는 열거체 중 하나입니다. 하지만, 옵셔널은 값 타입이면 `unowned` 라고 표시할 수 없다는 규칙에 대한 예중 하나입니다.
+>
+> 클래스를 포장하고 있는 옵셔널은 '참조 카운팅' 을 사용하지 않으므로, 그 옵셔널에 대한 '강한 참조' 를 유지할 필요가 없습니다.
 
 #### Unowned References and Implicitly Unwrapped Optional Properties (무소속 참조 및 암시적으로 풀리는 옵셔널 속성)
 
@@ -391,3 +403,5 @@ department.courses = [intro, intermediate, advanced]
 [^deinitializer]: 'deinitializer' 를 '정리자' 라고 옮기는 이유는 스위프트 언어에서 '소멸자' 라는 말은 어울리지 않기 때문입니다. 이에 대해서는 [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %}) 의 '[참고 자료]({% post_url 2017-03-03-Deinitialization %}#참고-자료)' 부분을 참고하기 바랍니다.
 
 [^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학) 항목을 참고하기 바랍니다.
+
+[^wraps]: 여기서 '감싼다 (wrap)' 는 것의 의미는 내부 값을 옵셔널로 감싼다는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `1` 이라는 값을 '옵셔널' 로 감싸고 있다고 이해할 수 있습니다.
