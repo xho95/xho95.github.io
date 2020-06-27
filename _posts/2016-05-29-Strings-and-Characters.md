@@ -174,7 +174,7 @@ for character in "Dog!🐶" {
 
 `for-in` 반복문은 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 에서 설명합니다.
 
-다른 방법으로, `Character` 타입 '주석 (annotation)'[^annotation] 을 쓰면 '단일-문자 문자열 글자표현 (single-character string literal)' 으로 독립된 `Character` 상수나 변수를 만들 수도 있습니다:
+다른 방법으로, `Character` '타입 추가 설명 (type annotation)'[^annotation] 을 쓰면 '단일-문자 문자열 글자표현 (single-character string literal)' 으로 독립된 `Character` 상수나 변수를 만들 수도 있습니다:
 
 ```swift
 let exclamationMark: Character = "!"
@@ -669,7 +669,7 @@ for scalar in dogString.unicodeScalars {
 
 [^optimize-string]: 이 말은 기본적으로 `String` 은 '깊은 복사' 를 한다고는 하지만, 만약 전달받은 `String` 을 상수처럼 사용할 경우, 굳이 값을 복사할 필요가 없으므로 스위프트가 성능 최적화를 해서, 실제 복사를 안할 수도 있다는 말입니다.
 
-[^annotation]: 'annotation' 은 '주석' 이라는 말로 옮길 수 있는데, 스위프트에서 '주석 (annotation)' 이라 하면 `let a: Int = 10` 에서 `Int` 처럼 타입을 지정해 주는 것을 말합니다.
+[^annotation]: '주석' 은 프로그래밍 분야에서 'comment' 를 의미하므로, 'annotation' 을 '추가 설명' 이라고 옮깁니다. 스위프트의 '타입 추가 설명 (type annotation)' 은 `let a: Int = 10` 에서 `Int` 처럼 타입을 지정해 주는 것을 말합니다.
 
 [^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
 

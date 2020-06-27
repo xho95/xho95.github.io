@@ -219,7 +219,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 ![funnel points](/assets/Swift/Swift-Programming-Language/Initialization-funnel.png)
 
-#### Two-Phase Initialization (초기화의 두-단계)
+#### Two-Phase Initialization (두-단계 초기화)
 
 **Safety Check 1 (안전성 검사 1)**
 
