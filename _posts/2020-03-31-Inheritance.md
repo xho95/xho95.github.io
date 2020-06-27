@@ -192,7 +192,7 @@ print("Car: \(car.description)")
 
 **Overriding Property Observers (속성 관찰자 재정의하기)**
 
-'속성 재정의 (property overriding)' 를 사용하여 '상속받은 속성' 에 '속성 관찰자 (property observers)' 를 추가할 수 있습니다. 이것은 상속받은 속성의 값이 바뀔 때 알림을 받을 수 있도록 해주며, 이 때 그 속성이 원래 어떻게 구현됐는지는 상관 없습니다. '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는 [Property Observers (속성 관찰자)](https://docs.swift.org/swift-book/LanguageGuide/Properties.html#ID262) 에서 확인할 수 있습니다.
+'속성 재정의 (property overriding)' 를 사용하여 '상속받은 속성' 에 '속성 관찰자 (property observers)' 를 추가할 수 있습니다. 이것은 상속받은 속성의 값이 바뀔 때 알림을 받을 수 있도록 해주며, 이 때 그 속성이 원래 어떻게 구현됐는지는 상관 없습니다. '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 에서 확인할 수 있습니다.
 
 > '속성 관찰자' 를 '상속받은 상수 저장 속성 (inherited constant stored property)' 이나 '상속받은 읽기-전용 계산 속성 (inherited read-only computed properties)' 에는 추가할 수 없습니다. 이 속성들의 값은 설정 자체가 불가능하므로, '재정의' 하면서 `willSet` 이나 `didSet` 구현을 제공하는 것이 적합하지 않기 때문입니다.
 >
