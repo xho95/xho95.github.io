@@ -64,7 +64,7 @@ reference1 = Person(name: "John Appleseed")
 // "John Appleseed is being initialized" 를 출력합니다.
 ```
 
-`Person` 클래스의 '초기자' 를 호출하는 순간 `"John Appleseed is being initialized"` 라는 메시지를 출력하는 점에 주목하기 바랍니다. 이는 초기화가 일어났음을 입증하는 것입니다.
+`Person` 클래스의 '초기자' 를 호출하는 순간 `"John Appleseed is being initialized"` 라는 메시지를 출력하는 점에 주목하기 바랍니다. 이는 초기화가 일어났음을 증명해 보이는 것입니다.
 
 새 `Person` 인스턴스를 `reference1` 변수에 할당했기 때문에, 이제 `reference1` 에서 새 `Person` 인스턴스로 향하는 '강한 참조 (strong reference)' 가 생겼습니다. 최소 하나의 '강한 참조' 가 있으므로, ARC 는 이 `Person` 에 대한 메모리를 유지하고 할당을 해제하지 않습니다.
 
