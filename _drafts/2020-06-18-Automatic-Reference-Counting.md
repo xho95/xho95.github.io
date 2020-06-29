@@ -432,6 +432,78 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
 
+위에서 두 개의 클래스 인스턴스 속성이 서로에 대한 강한 참조를 쥐고 있을 때 어떻게 해서 강한 참조 순환이 생성되는 지를 살펴 봤습니다. 아울러 약한 참조와 무소속 참조를 사용하여 이러한 강한 참조 순환을 끊는 방법을 살펴 봤습니다.
+
+강한 참조 순환은 또, 클래스 인스턴스의 속성에 클로저를 할당한 다음, 해당 클로저의 본문에서 그 인스턴스를 '붙잡는 (captures)' 경우에도 발생합니다. 이 '붙잡기 (cpature)' 는 클로저의 본문이, `self.someProperty` 처럼, 인스턴스의 속성에 접근하기 때문에 발생할 수도 있고, 아니면 클로저가, `self.someMethod()` 처럼, 인스턴스의 메소드를 호출하기 때문에 발생할 수도 있습니다. 어떤 경우라도, 이러한 접근은 클로저가 `self` 를 "붙잡게 (capture)" 만들어서, 강한 참조 순환을 생성하게 됩니다.
+
+이러한 강한 참조 순환이 발생하는 건 클로저도, 클래스 처럼, _참조 타입 (reference type)_ 이기 때문입니다. 클로저를 속성에 할당할 땐, 해당 클로저에 대한 _참조 (reference)_ 를 할당하는 것입니다. 본질적으로, 위와 같은 문제인 것입니다-두 개의 강한 참조가 서로를 살아 있도록 유지하고 있다는 것 말입니다. 하지만, 이번에는, 두 클래스 인스턴스가 아니라, 한 클래스 인스턴스와 한 클로저가 서로를 살아 있도록 유지하고 있습니다.
+
+스위프트는 이 문제에 대해서, _클로저가 붙잡은 목록 (closure capture list)_ 이라는, 우아한 해법을 제공합니다. 하지만, '클로저가 붙잡은 목록' 으로 강한 참조 순환을 끊는 방법을 배우기 전에, 어떻게 해서 그런 순환이 일어나는 지를 이해하는 것이 좋을 것입니다.
+
+아래 예제는 `self` 를 참조하는 클로저를 사용할 때 어떻게 해서 강한 참조 순환이 생성되는 지를 보여줍니다. 이 예제는, HTML 문서 내의 개별 원소에 대한 간단한 모델을 제공하는, `HTMLElement` 라는 클래스를 정의합니다:
+
+```swift
+class HTMLElement {
+  let name: String
+  let text: String?
+
+  lazy var asHTML: () -> String = {
+    if let text = self.text {
+      return "<\(self.name)>\(text)</\(self.name)>"
+    } else {
+      return "<\(self.name) />"
+    }
+  }
+
+  init(name: String, text: String? = nil) {
+    self.name = name
+    self.text = text
+  }
+
+  deinit {
+    print("\(name) is being deinitialized")
+  }
+}
+```
+
+`HTMLElement` 클래스는 `name` 속성을 정의하는데, 이는 원소의 이름을 지시하는 것으로, 가령 제목 원소에 대해서는 `"h1"`, 문단 요소에 대해서는 `"p"`, 줄 끊음 원소에 대해서는 `"br"` 과 같습니다. `HTMLElement` 는 옵셔널 `text` 속성도 정의하는데, 해당 HTML 원소 내에서 그려지는 '문장 (text)' 을 표현하는 문자열을 여기에 설정할 수 있습니다.
+
+이 두 개의 기본 속성 외에도, `HTMLElement` 클래스는 `asHTML` 이라는 '느긋한 속성 (lazy property)' 도 정의합니다. 이 속성은 `name` 과 `text` 를 결합하여 HTML 문자열 부분으로 만드는 클로저를 참조합니다. `asHTML` 속성의 타입은 `() -> String`, 또는 "매개 변수를 받지 않고, `String` 값을 반환하는 함수" 입니다.
+
+기본적으로, `asHTML` 속성에는 HTML '태그 (tag; 꼬리표)' 에 해당하는 문자열 표현을 반환하는 클로저가 할당됩니다. 이 태그는 값이 존재하면 옵셔널 `text` 값을 담지만, `text` 가 존재하지 않으면 아무런 문장 내용도 가지지 않습니다. 문단 원소에 대해서, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 또는 `<p />` 를 반환할 것입니다.
+
+`asHTML` 속성의 이름과 사용 방법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 인스턴스 메소드가 아닌 클로저 속성이기 때문에, 특정 HTML 원소에 대한 HTML '묘사 (rendering)' 을 바꾸고 싶은 경우, `asHTML` 속성의 기본 설정 값을 자신만의 클로저로 대체할 수 있습니다.
+
+예를 들어, `asHTML` 속성은, '표현 (representation)' 이 '비어있는 HTML 태그' 를 반환하는 것을 막기 위해, `text` 속성이 `nil` 인 경우 어떤 문장을 기본 설정하는 클로저로 설정할 수도 있을 것입니다:
+
+```swift
+let heading = HTMLElement(name: "h1")
+let defaultText = "some default text"
+heading.asHTML = {
+  return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
+}
+print(heading.asHTML())
+// "<h1>some default text</h1>" 를 출력합니다.
+```
+
+> `asHTML` 속성은 '느긋한 속성 (lazy property)' 으로 선언 되었는데, 이는 이 원소가 실제로 어떤 HTML 출력 대상에 대한 문자열 값으로 그려지는 순간에서야 필요한 것이기 때문입니다. `asHTML` 이 '느긋한 속성' 이라는 사실이 의미하는 것은 기본 설정 클로저 내에서 `self` 를 참조할 수 있다는 것이며, 이는 '느긋한 속성' 이 초기화가 완료돼서 `self` 가 존재함을 알기 전까지 접근하지 않을 것이기 때문입니다.
+
+`HTMLElement` 클래스는, 새 원소를 초기화하기 위해 `name` 인자와 (원한다면) `text` 인자 까지를 받는, 초기자 하나를 제공합니다. 이 클래스는 '정리자' 도 정의하여, `HTMLElement` 인스턴스가 해제될 때 보여주는 메시지를 출력합니다:
+
+다음은 `HTMLElement` 클래스를 사용하여 새로운 인스턴스를 생성하고 출력하는 방법을 보여줍니다:
+
+```swift
+var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
+print(paragraph!.asHTML())
+// "<p>hello, world</p>" 를 출력합니다.
+```
+
+> 위에서 `paragraph` 변수는 _옵셔널 (optional)_ `HTMLElement` 로 정의 했으므로, 강한 참조 순환이 존재함을 증명해 보이기 위해 아래에서 `nil` 로 설정할 수 있습니다.
+
+불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 기본 설정 `asHTML` 값에 사용되는 클로저 사이에 강한 참조 순환을 생성합니다. 순환의 모습은 다음과 같습니다:
+
+![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
+
 ### Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)
 
 #### Defining a Capture List (붙잡을 목록 정의하기)
