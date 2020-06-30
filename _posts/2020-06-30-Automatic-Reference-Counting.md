@@ -2,8 +2,8 @@
 layout: post
 comments: true
 title:  "Swift 5.3: Automatic Reference Counting (자동 참조 카운팅)"
-date:   2020-06-18 10:00:00 +0900
-categories: Swift Language Grammar ARC Automitic Reference Counting
+date:   2020-06-30 10:00:00 +0900
+categories: Swift Language Grammar ARC Automatic Reference Counting
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Automatic Reference Counting](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 부분[^Automatic-Reference-Counting]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
@@ -370,7 +370,7 @@ department.courses = [intro, intermediate, advanced]
 
 ![Unowned Optional Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-optional-reference.png)
 
-'무소속 옵셔널 참조' 는 자신이 '감싸는 (wraps)'[^wraps] 클래스의 인스턴스를 강하게 쥐지 않으므로, ARC 가 그 인스턴스를 해제하는 것을 막지 않습니다. 이 동작 방식은, '무소속 옵셔널 참조' 가 `nil` 이 될 수 있다는 것만 빼면, ARC 에서 '무소속 참조' 가 하는 것과 똑같은 것입니다.
+'무소속 옵셔널 참조' 는 자신이 '포장하고 있는 (wraps)'[^wraps] 클래스의 인스턴스를 강하게 쥐지 않으므로, ARC 가 그 인스턴스를 해제하는 것을 막지 않습니다. 이 동작 방식은, '무소속 옵셔널 참조' 가 `nil` 이 될 수 있다는 것만 빼면, ARC 에서 '무소속 참조' 가 하는 것과 똑같은 것입니다.
 
 '옵셔널이-아닌 무소속 참조' 와 마찬가지로, `nextCourse` 가 해제되지 않은 '교육 과정' 만 항상 참조한다는 보장은 자기 책임입니다. 이 경우, 예를 들어, `department.courses` 에 있는 '교육 과정' 을 삭제할 때는 다른 '교육 과정' 에서 참조하던 것들도 모두 삭제해야 합니다.
 
@@ -580,18 +580,28 @@ class HTMLElement {
 }
 ```
 
+이 `HTMLElement` 구현은, `asHTML` 클로저 내에 '붙잡을 목록' 을 추가했다는 것을 빼면, 이전 구현과 모든 점에서 똑같습니다. 이 경우, '붙잡을 목록' 은 `[unowned self]` 이며, 이는 "'self' 를 강한 참조가 아니라 무소속 참조로 붙잡을 것" 을 의미합니다.
+
+이전 처럼 `HTMLElement` 인스턴스를 생성하고 출력할 수 있습니다.
+
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
 // "<p>hello, world</p>" 를 출력합니다.
 ```
 
+다음은 같은 곳에서 '붙잡을 목록 (capture list)' 를 사용하면 참조 어떻게 보이는 지를 나타낸 것입니다.
+
 ![Resloving of Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-resolved.jpg)
+
+이번에는, 클로저가 `self` 를 무소속 참조로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 강한 참조를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 출력하는 것에서 볼 수 있듯이, `HTMLElement` 인스턴스가 해제됩니다.
 
 ```swift
 paragraph = nil
 // "p is being deinitialized" 를 출력합니다.
 ```
+
+'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID544)[^capture-lists] 를 참고하기 바랍니다.
 
 ### 참고 자료
 
@@ -609,4 +619,6 @@ paragraph = nil
 
 [^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학) 항목을 참고하기 바랍니다.
 
-[^wraps]: 여기서 '감싼다 (wrap)' 는 것의 의미는 내부 값을 옵셔널로 감싼다는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `1` 이라는 값을 '옵셔널' 로 감싸고 있다고 이해할 수 있습니다.
+[^wraps]: 여기서 '포장하고 있다 (wrap)' 는 것의 의미는 내부 값을 옵셔널로 포장하고 있다는 의미입니다. `let a: Int? = 1` 에서 `a` 는 '`1` 이라는 값을 옵셔널로 포장하고 있다' 고 이해할 수 있습니다.
+
+[^capture-lists]: 해당 내용은 'Swift Programming Language' 책의 'Language Reference' 부분에 있습니다. 아직 해당 부분의 번역을 진행하지 않아서 일단 원문 링크로 연결해 두었습니다.
