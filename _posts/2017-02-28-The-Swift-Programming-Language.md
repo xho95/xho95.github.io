@@ -42,7 +42,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Protocols (규약)] - [일부 진행중]({% post_url 2016-03-03-Protocols %})
 * [Generics (일반화)] - [일부 진행중]({% post_url 2020-02-29-Generics %})
 * [Opaque Types (불투명한 타입)]({% post_url 2020-02-22-Opaque-Types %})
-* [Automatic Reference Counting (자동 참조 카운팅)]
+* [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %})
 * [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %})
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %})
 * [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %})
