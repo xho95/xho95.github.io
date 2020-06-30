@@ -438,7 +438,7 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 이러한 강한 참조 순환이 발생하는 건 클로저도, 클래스 처럼, _참조 타입 (reference type)_ 이기 때문입니다. 클로저를 속성에 할당할 땐, 해당 클로저에 대한 _참조 (reference)_ 를 할당하는 것입니다. 본질적으로, 위와 같은 문제인 것입니다-두 개의 강한 참조가 서로를 살아 있도록 유지하고 있다는 것 말입니다. 하지만, 이번에는, 두 클래스 인스턴스가 아니라, 한 클래스 인스턴스와 한 클로저가 서로를 살아 있도록 유지하고 있습니다.
 
-스위프트는 이 문제에 대해서, _클로저가 붙잡은 목록 (closure capture list)_ 이라는, 우아한 해법을 제공합니다. 하지만, '클로저가 붙잡은 목록' 으로 강한 참조 순환을 끊는 방법을 배우기 전에, 어떻게 해서 그런 순환이 일어나는 지를 이해하는 것이 좋을 것입니다.
+스위프트는 이 문제에 대해서, _클로저가 붙잡을 목록 (closure capture list)_ 이라는, 우아한 해법을 제공합니다. 하지만, '클로저가 붙잡은 목록' 으로 강한 참조 순환을 끊는 방법을 배우기 전에, 어떻게 해서 그런 순환이 일어나는 지를 이해하는 것이 좋을 것입니다.
 
 아래 예제는 `self` 를 참조하는 클로저를 사용할 때 어떻게 해서 강한 참조 순환이 생성되는 지를 보여줍니다. 이 예제는, HTML 문서 내의 개별 원소에 대한 간단한 모델을 제공하는, `HTMLElement` 라는 클래스를 정의합니다:
 
@@ -504,11 +504,94 @@ print(paragraph!.asHTML())
 
 ![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
 
+인스턴스의 `asHTML` 속성은 자신의 클로저에 대한 강한 참조를 쥐고 있습니다. 하지만, 클로저도 자신의 본문에서 `self` 를 참조하기 때문에 (`self.name` 및 `self.text` 과 같은 방식으로 참조), 이 클로저는 'self' 를 '붙잡게 (capture)' 되며, 이는 다시 `HTMLElement` 인스턴스에 대한 강한 참조를 쥐게 됨을 의미합니다. 즉 이 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 자세한 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
+
+> 클로저가 `self` 를 아무리 여러 번 참조하더라도, 이것이 붙잡는 `HTMLElement` 인스턴스에 대한 강한 참조는 단 하나입니다.
+
+만약 `paragraph` 변수에 `nil` 을 설정하여 `HTMLElement` 인스턴스에 대한 강한 참조를 끊더라도, `HTMLElement` 인스턴스나 클로저나 강한 참조 순환을 이루고 있어서 전혀 해제되지 않습니다:
+
+```swift
+paragraph = nil
+```
+
+`HTMLElement` '정리자 (deinitializer)' 에 있는 메시지가 출력되지 않았음에 주목해야 하는데, 이는 `HTMLElement` 인스턴스가 해제되지 않았음을 보여줍니다.
+
 ### Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)
+
+클로저와 클래스 인스턴스 사이의 강한 참조 순환을 해결하려면 클로저 정의 부분에 _붙잡을 목록 (capture list)_ 을 정의해야 합니다. 붙잡을 목록은 클로저 본문 내에서 하나 이상의 참조 타입을 붙잡을 때 사용할 규칙을 정의합니다. 두 클래스 인스턴스 사이의 강한 참조 순환에서와 마찬가지로, 붙잡을 각각의 참조를 강한 참조가 아닌 '약한 참조 (weak reference)' 나 '무소속 참조 (unowned reference)' 로 선언하면 됩니다. 약한 참조나 무소속 참조를 적절하게 선택하는 것은 서로 다른 코드 간의 관계에 달려있습니다.
+
+> 스위프트에서 클로저에 있는 `self` 의 멤버를 참조할 때는 (`someProperty` 나 `someMethod()` 대신) `self.someProperty` 나 `self.someMethod()` 로 작성하는 것이 필수입니다. 이는 실수로 `self` 를 붙잡을 수도 있음을 상기시켜 줍니다.
 
 #### Defining a Capture List (붙잡을 목록 정의하기)
 
+'붙잡을 목록 (capture list)' 에 있는 각 항목은 `weak` 및 `unowned` 키워드와 클래스 인스턴스에 대한 참조 (가령 `self` 같은 것) 또는 어떤 값으로 초기화된 변수 (가령 `delegate = self.delegate` 같은 것) 를 짝지은 것입니다. 이렇게 짝지어 진 것들을 한 쌍의 대괄호 안에, 쉼표로 구분하여, 작성합니다.
+
+붙잡을 목록을 제공하려면 클로저의 매개 변수 목록과 반환 타입 앞에 붙여주면 됩니다:
+
+```swift
+lazy var someClosure = {
+  [unowned self, weak delegate = self.delegate]
+  (index: Int, stringToProcess: String) -> String in
+  // 여기부터 클로저 본문입니다.
+}
+```
+
+클로저가 영역 문맥으로 추론할 수 있어서 매개 변수나 반환 타입을 지정하지 않아도 될 경우, 붙잡을 목록을 클로저가 시작하는 가장 앞에 붙이고, 그 뒤에 `in` 키워드를 작성합니다:
+
+```swift
+lazy var someClosure = {
+  [unowned self, weak delegate = self.delegate] in
+  // 여기부터 클로저 본문입니다.
+}
+```
+
 #### Weak and Unowned References (약한 참조와 무소속 참조)
+
+클로저와 자신이 붙잡을 인스턴스가 서로를 항상 참조하면서, 해제도 항상 동시에 되는 것이라면, 클로저에서 '무소속 참조' 로 붙잡는다고 정의합니다.
+
+이와는 대조적으로, 미래의 어느 시점에서 붙잡힌 참조가 `nil` 이 될 수도 있는 경우라면, '약한 참조' 로 붙잡는다고 정의합니다. 약한 참조는 항상 옵셔널 타입이며, 자신이 참조하는 인스턴스가 해제될 때 자동으로 `nil` 이 됩니다. 이는 클로저 본문 내에 자신이 존재하는 지 검사할 수 있게 해줍니다.
+
+> 붙잡은 참조가 절대로 `nil` 이 될 일이 없는 경우에는, 약한 참조 대신, 항상 무소속 참조로 붙잡아야 합니다.
+
+위 [Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)](#strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환) 에 있는 `HTMLElement` 예제의 강한 참조 순환을 해결하는 데는 무소속 참조를 사용하는 것이 붙잡는 방법으로 적절합니다. 다음은 순환을 피하도록 `HTMLElement` 클래스를 작성하는 방법입니다:
+
+```swift
+class HTMLElement {
+  let name: String
+  let text: String?
+
+  lazy var asHTML: () -> String = {
+    [unowned self] in
+    if let text = self.text {
+      return "<\(self.name)>\(text)</\(self.name)>"
+    } else {
+      return "<\(self.name) />"
+    }
+  }
+
+  init(name: String, text: String? = nil) {
+    self.name = name
+    self.text = text
+  }
+
+  deinit {
+    print("\(name) is being deinitialized")
+  }
+}
+```
+
+```swift
+var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
+print(paragraph!.asHTML())
+// "<p>hello, world</p>" 를 출력합니다.
+```
+
+![Resloving of Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-resolved.jpg)
+
+```swift
+paragraph = nil
+// "p is being deinitialized" 를 출력합니다.
+```
 
 ### 참고 자료
 
