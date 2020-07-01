@@ -28,25 +28,11 @@ _초기화 (initialization)_ 는 사용하고자 하는 클래스나, 구조체,
 
 #### Initializers (초기자)
 
-_초기자 (initializers)_ 는 특정한 타입의 인스턴스를 새로 생성하려고 호출합니다. 가장 간단한 양식의, 초기자는 아무런 매개 변수도 가지지 않는 인스턴드 메소드와 비슷하며, `init` 키워드를 사용하여 작성합니다:
+_초기자 (initializers)_ 는 특정한 타입의 인스턴스를 새로 생성하려고 호출합니다. 가장 간단한 형태의, 초기자는 아무런 매개 변수도 가지지 않는 인스턴드 메소드와 비슷하며, `init` 키워드를 사용하여 작성합니다:
 
 ```swift
 init() {
   // 여기서 일정한 초기화 작업을 수행합니다.
-}
-```
-
-#### Default Property Values (기본 설정 속성 값)
-
-위와 같이, 초기자 내에서 저장 속성의 '초기 값 (initial value)' 을 설정할 수 있습니다. 다른 방법은, 속성을 선언하면서 _기본 설정 속성 값 (default property value)_ 을 지정하는 것입니다. '기본 설정 속성 값' 을 지정하려면 속성을 정의할 때 초기 값을 할당하면 됩니다.
-
-> 속성이 받는 초기 값이 항상 같은 경우, 초기자 내에서 값을 설정하는 것 대신 '기본 설정 값' 을 제공하도록 합니다. 최종 결과는 같지만, '기본 설정 값' 은 속성 초기화를 선언과 더 밀접하게 이어줍니다. 이는 초기자를 더 짧고, 더 명확하게 만들고 '기본 설정 값' 으로 속성의 타입을 추론할 수 있게 해줍니다. '기본 설정 값' 은 또, 이 장의 뒷 부분에서 설명하는 것처럼, '기본 설정 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 이점을 더 쉽게 활용할 수 있도록 합니다.
-
-`temperature` 속성을 선언하는 시점에 '기본 설정 값' 을 제공하면 위에 있는 `Fahrenheit` 구조체를 더 간단한 양식으로 작성할 수 있습니다:
-
-```swift
-struct Fahrenheit {
-  var temperature = 32.0
 }
 ```
 
@@ -65,6 +51,20 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 ```
 
 이 구조체는 매개 변수가 없는, `init` 이라는, 초기자 하나를 정의하여, 저장할 온도를 (화씨 단위에서 물의 어는 점인) `32.0` 이라는 값으로 초기화합니다.
+
+#### Default Property Values (기본 설정 속성 값)
+
+위에서 본 것처럼, 저장 속성의 초기 값은 초기자 내에서 설정할 수 있습니다. 다른 방법은, 속성의 선언 부분[^property-declaration]에서 _기본 설정 속성 값 (default property value)_ 을 지정하는 것입니다. '기본 설정 속성 값' 을 지정하려면 속성을 정의할 때 초기 값을 할당하면 됩니다.
+
+> 속성이 항상 같은 초기 값을 받아 들인다면, 초기자 내에서 값을 설정하는 것보다 '기본 설정 값' 을 제공하기 바랍니다. 최종 결과는 같지만, 기본 설정 값은 속성의 초기화를 그 선언과 더 밀접하게 이어줍니다. 이는 초기자를 더 짧고, 명확하게 만들며 속성의 타입을 기본 설정 값으로 추론할 수 있게 해줍니다. 기본 설정 값은 또, 이 장의 뒤에서 설명하는 것처럼, '기본 설정 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 이점을 더 쉽게 활용하도록 만들어 줍니다.
+
+속성을 선언하는 시점에 `temperature` 속성에 대한 기본 설정 값을 제공하면 위의 `Fahrenheit` 구조체를 더 간단한 형태로 작성할 수 있습니다:
+
+```swift
+struct Fahrenheit {
+  var temperature = 32.0
+}
+```
 
 ### Customizing Initialization (자기만의 초기화 방법 만들기)
 
@@ -386,3 +386,5 @@ class SomeSubClass: SomeClass {
 ### 참고 자료
 
 [^Initialization]: 원문은 [Initialization](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 에서 확인할 수 있습니다.
+
+[^property-declaration]: 원문에서도 저장 속성의 '기본 설정 값 (default value)' 를 설정하는 부분을 '속성의 정의' 와 '속성의 선언' 이라고 이 둘의 구분없이 사용하고 있습니다.
