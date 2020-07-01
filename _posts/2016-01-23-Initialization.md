@@ -66,9 +66,33 @@ struct Fahrenheit {
 }
 ```
 
-### Customizing Initialization (자기만의 초기화 방법 만들기)
+### Customizing Initialization (사용자 목적에 맞게 초기화 변경하기)
+
+초기화 과정은, 이어지는 장에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입을 사용하거나, 아니면 초기화 동안 상수 속성을 할당하는 것으로써, 사용자 목적에 맞게 변경할 수 있습니다.
 
 #### Initialization Parameters (초기화 매개 변수)
+
+초기자의 정의 부분에서 _초기화 매개 변수 (initialization parameters)_ 를 제공하여, 초기화 과정을 사용자 목적에 맞게 변경하는 값의 타입과 이름을 정의할 수 있습니다. 초기화 매개 변수는 함수 매개 변수 및 메소드 매개 변수와 같은 기능과 구문 표현을 가지고 있습니다.
+
+다음 예제는, 섭씨 단위로 표시된 온도를 저장하는, `Celsius` 라는 구조체를 정의합니다. `Celsius` 구조체는, 각각 다른 눈금의 온도 값을 가지고 구조체의 새 인스턴스를 초기화하는, `init(fromFahrenheit:)` 와 `init(fromKelvin:)` 이라는 두 개의 사용자 정의 초기자를 구현합니다:
+
+```swift
+struct Celsius {
+  var temperatureInCelsius: Double
+  init(fromFahrenheit fahrenheit: Double) {
+    temperatureInCelsius = (fahrenheit - 32.0) / 1.8
+  }
+  init(fromKelvin kelvin: Double) {
+    temperatureInCelsius = kelvin - 273.15
+  }
+}
+let boilingPointOfWater = Celsius(fromFahrenheit: 212.0)
+// boilingPointOfWater.temperatureInCelsius 는 100.0 입니다.
+let freezingPointOfWater = Celsius(fromKelvin: 273.15)
+// freezingPointOfWater.temperatureInCelsius 는 0.0 입니다.
+```
+
+첫 번째 초기자는 인자 이름표가 `fromFahrenheit` 이고 매개 변수 이름이 `fahrenheit` 인 단일한 초기화 매개 변수를 가집니다. 두 번째 초기자는 인자 이름표가 `fromKelvin` 이고 매개 변수 이름이 `kelvin` 인 단일한 초기화 매개 변수를 가집니다. 두 초기자 모두 자신의 단일한 인자를 연관된 섭씨 값으로 변경한 후 `temperatureInCelsius` 라는 속성에다 이 값을 저장합니다.
 
 #### Parameter Names and Argument Labels (매개 변수 이름과 인자 이름표)
 

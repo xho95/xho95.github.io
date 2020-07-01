@@ -17,7 +17,7 @@ _정리자 (deinitializer)_[^deinitializer] 는 객체 인스턴스가 해제 (d
 
 ### How Deinitialization Works (정리자의 작동 방식)
 
-스위프트는 자원을 확보하기 위해 필요 없는 인스턴스는 자동으로 해제합니다.[^free-up] 스위프트에서 인스턴스의 메모리 관리를 처리하는 곳은 '자동 참조 카운팅 (ARC; automatic reference counting)' 이며, 이는 [Automatic Reference Counting (자동 참조 카운팅)](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 에서 설명하도록 합니다. 일반적으로는 인스턴스가 해제된다고 해서 정리 작업을 수동으로 따로 할 일은 없습니다. 하지만, 작업하면서 자기 자신의 자원을 사용하는 경우, 직접 추가 정리 작업을 해야할 수도 있습니다. 예를 들어, 직접 만든 클래스로 어떤 파일을 열고 거기다 뭔가를 썼을 경우, 클래스 인스턴스가 해제되기 전에 그 파일을 직접 닫을 필요가 있습니다.
+스위프트는 자원을 확보하기 위해 필요 없는 인스턴스는 자동으로 해제합니다.[^free-up] 스위프트에서 인스턴스의 메모리 관리를 처리하는 곳은 '자동 참조 카운팅 (ARC; automatic reference counting)' 이며, 이는 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 에서 설명하도록 합니다. 일반적으로는 인스턴스가 해제된다고 해서 정리 작업을 수동으로 따로 할 일은 없습니다. 하지만, 작업하면서 자기 자신의 자원을 사용하는 경우, 직접 추가 정리 작업을 해야할 수도 있습니다. 예를 들어, 직접 만든 클래스로 어떤 파일을 열고 거기다 뭔가를 썼을 경우, 클래스 인스턴스가 해제되기 전에 그 파일을 직접 닫을 필요가 있습니다.
 
 '클래스 정의 (class definitions)' 는 클래스 당 최대 한 개의 '정리자' 만 가집니다. 정리자는 매개 변수를 가지지 않아서 괄호도 쓰지 않습니다:
 
