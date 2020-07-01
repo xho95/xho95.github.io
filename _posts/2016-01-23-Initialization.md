@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Initialization (초기화)"
+title:  "Swift 5.3: Initialization (초기화)"
 date:   2016-01-23 19:35:00 +0900
 categories: Xcode Swift Grammar Initialization
 ---
@@ -18,9 +18,23 @@ _초기화 (initialization)_ 는 사용하고자 하는 클래스나, 구조체,
 
 클래스 타입의 인스턴스는 _정리자 (deinitializers)_ 도 구현할 수 있는데, 이는 해당 클래스의 인스턴스가 해제되기 바로 전에 사용자 정의 정리 작업을 수행합니다. 정리자에 대한 더 자세한 정보는, [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %}) 를 참고하기 바랍니다.
 
-### Setting Initial Values for Stored Properties (저장 속성을 위한 초기 값 설정하기)
+### Setting Initial Values for Stored Properties (저장 속성에 대한 초기 값 설정하기)
+
+클래스와 구조체는 해당 클래스나 구조체의 인스턴스를 생성하는 시점에 _반드시 (must)_ 자신의 모든 저장 속성에 대한 적절한 초기 값을 설정해야 합니다. 저장 속성을 결정하지 않은 상태로 남겨둘 수 없습니다.
+
+저장 속성에 대한 초기 값은 '초기자 (initializer)' 내에서 설정할 수도 있고, 아니면 속성의 정의 부분에서 '기본 설정 속성 값 (default property value)' 을 할당하여 설정할 수도 있습니다. 이러한 동작들은 이어지는 장에서 설명합니다.
+
+> 저장 속성에 기본 설정 값을 할당하거나, 초기자 내에서 초기 값을 설정할 때는, 해당 속성의 값을 직접 설정하며, 어떤 속성 관찰자도 호출되지 않습니다.
 
 #### Initializers (초기자)
+
+_초기자 (initializers)_ 는 특정한 타입의 인스턴스를 새로 생성하려고 호출합니다. 가장 간단한 양식의, 초기자는 아무런 매개 변수도 가지지 않는 인스턴드 메소드와 비슷하며, `init` 키워드를 사용하여 작성합니다:
+
+```swift
+init() {
+  // 여기서 일정한 초기화 작업을 수행합니다.
+}
+```
 
 #### Default Property Values (기본 설정 속성 값)
 
@@ -35,6 +49,22 @@ struct Fahrenheit {
   var temperature = 32.0
 }
 ```
+
+아래 예제는 `Fahrenheit` 라는 새로운 구조체를 정의하여 화씨 눈금으로 표시된 온도를 저장합니다. `Fahrenheit` 구조체는 타입이 `Double` 인, `temperature` 라는, 하나의 저장 속성을 가집니다:
+
+```swift
+struct Fahrenheit {
+  var temperature: Double
+  init() {
+    temperature = 32.0
+  }
+}
+var f = Fahrenheit()
+print("The default temperature is \(f.temperature)° Fahrenheit")
+// "The default temperature is 32.0° Fahrenheit" 를 출력합니다.
+```
+
+이 구조체는 매개 변수가 없는, `init` 이라는, 초기자 하나를 정의하여, 저장할 온도를 (화씨 단위에서 물의 어는 점인) `32.0` 이라는 값으로 초기화합니다.
 
 ### Customizing Initialization (자기만의 초기화 방법 만들기)
 
