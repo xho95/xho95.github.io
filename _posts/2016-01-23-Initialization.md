@@ -96,7 +96,7 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 
 #### Parameter Names and Argument Labels (매개 변수 이름과 인자 이름표)
 
-함수 매개 변수 및 메소드 매개 변수와 마찬가지로, 초기화 매개 변수는 초기자 본문 내에서 사용되는 매개 변수 이름과 초기자를 호출할 때 사용되는 인자 이름표를 모두 가질 수 있습니다.
+함수 매개 변수 및 메소드 매개 변수와 마찬가지로, 초기화 매개 변수는 초기자 본문 내에서 사용되는 매개 변수 이름과 초기자를 호출할 때 사용되는 '인자 이름표 (argument label)' 를 모두 가질 수 있습니다.
 
 하지만, 초기자는 함수와 메소드가 하듯이 자신의 괄호 앞에 식별용 함수 이름을 가지지는 못합니다. 따라서, 초기자에 있는 매개 변수의 이름과 타입은 어떤 초기자를 호출해야 하는지 식별하는데 특히 중요한 역할을 담당합니다. 이것 때문에, 스위프트는 제공하지 않는 것이 하나라도 있다면 초기자의 _모든 (every)_ 매개 변수에 대한 인자 이름표를 제공합니다.
 
@@ -120,21 +120,45 @@ struct Color {
 }
 ```
 
-각 이니셜 라이저 매개 변수에 대해 명명 된 값을 제공하여 두 이니셜 라이저를 사용하여 새 Color 인스턴스를 작성할 수 있습니다.
+두 초기자 모두, 각 초기자의 매개 변수에 대해 이름 붙인 값을 제공하여, 새로운 `Color` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)
 let halfGray = Color(white: 0.5)
 ```
 
-인수 레이블을 사용하지 않고이 이니셜 라이저를 호출 할 수는 없습니다. 인수 레이블은 이니셜 라이저에서 정의 된 경우 항상 사용해야하며 생략하면 컴파일 타임 오류가 발생합니다.
+인자 이름표를 사용하지 않고 이 초기자들을 호출할 수는 없다는 점에 주목하기 바랍니다. 인자 이름표를 정의 했다면 반드시 초기자에서 사용해야 하며, 이를 생략하면 '컴파일 시간 에러 (compile-time error)' 가 발생합니다.
 
 ```swift
 let veryGreen = Color(0.0, 1.0, 0.0)
-// this reports a compile-time error - argument labels are required
+// 이는 컴파일 시간 에러를 띄웁니다 - 인자 이름표는 필수입니다.
 ```
 
 #### Initializer Parameters Without Argument Labels (인자 이름표가 없는 초기자 매개 변수)
+
+초기자 매개 변수에 인자 이름표를 사용하고 싶지 않을 경우, 해당 매개 변수의 인자 이름표에 명시적으로 '밑줄 (`_`)' 을 작성하여 기본 설정 동작을 '재정의 (override)' 하면 됩니다.
+
+다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를 확장한 버전으로,
+이는 이미 썹씨 눈금인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가집니다:
+
+```swift
+struct Celsius {
+  var temperatureInCelsius: Double
+  init(fromFahrenheit fahrenheit: Double) {
+    temperatureInCelsius = (fahrenheit - 32.0) / 1.8
+  }
+  init(fromKelvin kelvin: Double) {
+    temperatureInCelsius = kelvin - 273.15
+  }
+  init(_ celsius: Double) {
+    temperatureInCelsius = celsius
+  }
+}
+let bodyTemperature = Celsius(37.0)
+// bodyTemperature.temperatureInCelsius 는 37.0 입니다.
+```
+
+`Celsius(37.0)` 초기자 호출은 그 의도상 인자 이름표가 필요 없음이 명확합니다. 따라서 이 초기자를 `init(_ celsius: Double)` 로 작성해서 이름 없는 `Double` 값을 제공하여 호출하는 것은 적절한 것입니다.
 
 #### Optional Property Types (옵셔널 속성 타입)
 
