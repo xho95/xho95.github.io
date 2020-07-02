@@ -92,9 +92,47 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 // freezingPointOfWater.temperatureInCelsius 는 0.0 입니다.
 ```
 
-첫 번째 초기자는 인자 이름표가 `fromFahrenheit` 이고 매개 변수 이름이 `fahrenheit` 인 단일한 초기화 매개 변수를 가집니다. 두 번째 초기자는 인자 이름표가 `fromKelvin` 이고 매개 변수 이름이 `kelvin` 인 단일한 초기화 매개 변수를 가집니다. 두 초기자 모두 자신의 단일한 인자를 연관된 섭씨 값으로 변경한 후 `temperatureInCelsius` 라는 속성에다 이 값을 저장합니다.
+첫 번째 초기자는 인자 이름표가 `fromFahrenheit` 이고 매개 변수 이름이 `fahrenheit` 인 단일한 초기화 매개 변수를 가집니다. 두 번째 초기자는 인자 이름표가 `fromKelvin` 이고 매개 변수 이름이 `kelvin` 인 단일한 초기화 매개 변수를 가집니다. 두 초기자 모두 자신의 단일한 인자를 연관된 섭씨 값으로 변경한 다음 이 값을 `temperatureInCelsius` 라는 속성에 저장합니다.
 
 #### Parameter Names and Argument Labels (매개 변수 이름과 인자 이름표)
+
+함수 매개 변수 및 메소드 매개 변수와 마찬가지로, 초기화 매개 변수는 초기자 본문 내에서 사용되는 매개 변수 이름과 초기자를 호출할 때 사용되는 인자 이름표를 모두 가질 수 있습니다.
+
+하지만, 초기자는 함수와 메소드가 하듯이 자신의 괄호 앞에 식별용 함수 이름을 가지지는 못합니다. 따라서, 초기자에 있는 매개 변수의 이름과 타입은 어떤 초기자를 호출해야 하는지 식별하는데 특히 중요한 역할을 담당합니다. 이것 때문에, 스위프트는 제공하지 않는 것이 하나라도 있다면 초기자의 _모든 (every)_ 매개 변수에 대한 인자 이름표를 제공합니다.
+
+다음 예제는, `red`, `green`, 그리고 `blue` 라는 세 개의 상수 속성을 사용하여, `Color` 라는 구조체를 정의합니다. 이 속성들은 `0.0` 에서 `1.0` 사이의 값을 저장하여 색상에 있는 빨간색, 녹색, 그리고 파란색 (성분의) 양을 지시합니다.
+
+`Color` 는 자신의 빨간색, 녹색, 및 파란색 성분에 대하여 적절하게 이름 붙인 `Double` 타입의 매개 변수 세 개를 가지는 초기자를 제공합니다. `Color` 는 `white` 라는 매개 변수 하나를 가지는 두 번째 초기자도 제공하는데, 이는 세 개의 색상 성분 모두에 같은 값을 제공할 때 사용합니다.
+
+```swift
+struct Color {
+  let red, green, blue: Double
+  init(red: Double, green: Double, blue: Double) {
+    self.red   = red
+    self.green = green
+    self.blue  = blue
+  }
+  init(white: Double) {
+    red   = white
+    green = white
+    blue  = white
+  }
+}
+```
+
+각 이니셜 라이저 매개 변수에 대해 명명 된 값을 제공하여 두 이니셜 라이저를 사용하여 새 Color 인스턴스를 작성할 수 있습니다.
+
+```swift
+let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)
+let halfGray = Color(white: 0.5)
+```
+
+인수 레이블을 사용하지 않고이 이니셜 라이저를 호출 할 수는 없습니다. 인수 레이블은 이니셜 라이저에서 정의 된 경우 항상 사용해야하며 생략하면 컴파일 타임 오류가 발생합니다.
+
+```swift
+let veryGreen = Color(0.0, 1.0, 0.0)
+// this reports a compile-time error - argument labels are required
+```
 
 #### Initializer Parameters Without Argument Labels (인자 이름표가 없는 초기자 매개 변수)
 
