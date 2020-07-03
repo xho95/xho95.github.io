@@ -162,13 +162,36 @@ let bodyTemperature = Celsius(37.0)
 
 #### Optional Property Types (옵셔널 속성 타입)
 
+자신의 사용자 정의 타입이 가지고 있는 정의 속성이 논리적으로 "값이 없음 (no value)" 일 수 있는 경우-아마도 초기화 동안에 값을 설정할 수 없기 때문이거나, 아니면 어떤 이후 시점에 "값이 없음" 인 상태일 수 있기 때문에-이 때는 그 속성을 _옵셔널 (optional)_ 타입으로 선언합니다. 옵셔널 타입인 속성은 자동으로 `nil` 값으로 초기화되며, 이는 그 속성이 초기화 동안에 "아직 값이 없는 (no value yet)" 상태인 것이 일부러 의도한 것임을 지시합니다.
+
+다음 예제는, `response` 라는 옵셔널 `String` 속성을 가지는, `SurveyQuestion` 이라는 클래스를 정의합니다:
+
+```swift
+class SurveyQuestion {
+  var text: String
+  var response: String?
+  init(text: String) {
+    self.text = text
+  }
+  func ask() {
+    print(text)
+  }
+}
+let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
+cheeseQuestion.ask()
+// "Do you like cheese?" 를 출력합니다.
+cheeseQuestion.response = "Yes, I do like cheese."
+```
+
+설문 조사에 대한 응답은 질문을 하기 전까지 알 수 없으므로, `response` 속성은 `String?` 타입, 또는 “옵셔널 `String`” 타입으로 선언합니다. `SurveyQuestion` 의 새 인스턴스를 초기화할 때, "아직 값이 없음 (no value yet)" 을 의미하는, `nil` 이라는 기본 설정 값을 여기에다 자동으로 할당합니다.
+
 #### Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)
 
-상수 속성의 값은, 초기화를 마칠 때 값이 정확하게 설정되어 있는 한, 초기화하는 동안 어느 지점에서든 할당할 수 있습니다. 단, 일단 상수 속성에 값이 할당되고 나면, 더 이상 수정할 수 없습니다.
+상수 속성은, 초기화를 마치는 순간에 정확한 값이 설정되어 있기만 하다면, 초기화 동안의 어느 순간에도 값을 할당할 수 있습니다. 일단 한번 상수 속성에 값이 할당되면, 더 이상 수정할 수는 없습니다.
 
-> 클래스 인스턴스의, 상수 속성은 그것을 도입한 클래스의 초기화 중에서만 수정할 수 있습니다. 하위 클래스에서는 수정할 수 없습니다.
+> 클래스 인스턴스의 경우, 상수 속성은 오직 자신을 도입한 클래스의 초기화 동안에만 수정할 수 있습니다. 하위 클래스에서는 수정할 수 없습니다.
 
-위의 `SurveyQuestion` 예제에 있는 `text` 속성을 변수 속성이 아닌 상수 속으로 개정하여, 일단 `SurveyQuestion` 인스턴스가 생성되고 나면 질문이 바뀌지 않을 것임일 지시할 수 있습니다. `text` 속성이 상수가 됐다고 해도, 여전히 클래스의 초기자에서 설정할 수 있습니다:
+위에서 `SurveyQuestion` 예제의 질문에 대한 `text` 속성을 변수 속성이 아닌 상수 속성으로 개량하여, `SurveyQuestion` 의 인스턴스가 일단 생성되면 질문은 바뀌지 않는다고 지시할 수 있습니다. `text` 속성이 이제 상수가 됐음에도 불구하고, 클래스의 초기자에서 설정하는 것은 여전히 가능합니다:
 
 ```swift
 class SurveyQuestion {
@@ -189,9 +212,9 @@ beetsQuestion.response = "I also like beets. (But not with cheese.)"
 
 ### Default Initializers (기본 설정 초기자)
 
-스위프트는 어떤 구조체나 클래스가 모든 속성에 대한 '기본 설정 값 (default values)' 을 제공하면서도 스스로는 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다. '기본 설정 초기자' 는 새로운 인스턴스를 생성할 때 모든 속성을 단순히 '기본 설정 값' 으로 설정합니다.
+스위프트는 어떤 구조체나 클래스가 모든 속성에 대한 '기본 설정 값 (default values)' 을 제공하면서 그 자신은 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다. 기본 설정 초기자는 단순히 모든 속성을 기본 설정 값으로 설정하는 식으로 새로운 인스턴스를 생성합니다.
 
-다음 예제는 `ShoppingListItem` 이라는 클래스를 정의하여, 구매 목록의 각 항목에 대한 '이름', '수량', 그리고 '구매 상태 (purchase state)' 를 캡슐화 합니다:
+다음 예제는 `ShoppingListItem` 이라는 클래스를 정의하여, 구매 목록의 각 항목에 대한 이름, 수량, 그리고 구매 상태를 '은닉합니다 (encapsulates)':
 
 ```swift
 class ShoppingListItem {
@@ -202,9 +225,9 @@ class ShoppingListItem {
 var item = ShoppingListItem()
 ```
 
-`ShoppingListItem` 클래스는 모든 속성이 '기본 설정 값' 을 가지고 있고, 상위 클래스가 없는 '기본 클래스 (base class)' 이므로, 자동적으로 '기본 설정 초기자' 구현을 가지며 이로써 새 인스턴스를 생성할 때 모든 속성을 '기본 설정 값' 으로 설정할 수 있습니다. (`name` 속성은 '옵셔널 (optional)' `String` 속성이므로, 자동적으로 `nil` 이라는 '기본 설정 값' 을 가지므로, 이 값을 코드에 굳이 안써도 됩니다.) 위의 예제는 `ShoppingListItem` 클래스의 '기본 설정 초기자' 를 사용하여 새 인스턴스를 생성하면서, `ShoppingListItem()` 와 같이, '초기자 구문 표현 (initializer syntax)' 를 썼으며, 이 새 인스턴스를 `item` 이라는 변수에 할당했습니다.
+`ShoppingListItem` 클래스는 모든 속성이 기본 설정 값을 가지고 있으며, 상위 클래스가 없는 '기본 클래스 (base class)' 이기 때문에, `ShoppingListItem` 은 자동으로 '기본 설정 초기자' 구현을 가지게 되며 이로써 새 인스턴스를 생성할 때 모든 속성을 기본 설정 값으로 설정합니다. (`name` 속성은 옵셔널 `String` 속성이므로, 코드에 작성된 값이 없더라도, 자동으로 `nil` 이라는 기본 설정 값을 부여 받습니다.) 위 예제는 `ShoppingListItem` 클래스의 기본 설정 초기자와 '초기자 구문 표현 (initializer syntax)' 을 같이 사용하여, `ShoppingListItem()` 처럼 작성해서, 클래스의 새로운 인스턴스를 생성했으며, 이 새로운 인스턴스를 `item` 이라는 변수에 할당하였습니다.
 
-### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
+#### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
 구조체 타입은 자기 스스로 어떤 초기자도 직접 정의하고 있지 않을 경우 자동적으로 '_멤버 초기자 (memberwise initializer)_' 를 가지게 됩니다. '기본 설정 초기자' 와는 달리, 구조체의 '저장 속성 (stored properties)' 에 '기본 설정 값' 이 없어도 '멤버 초기자' 는 가집니다.
 
