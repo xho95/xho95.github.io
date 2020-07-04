@@ -60,7 +60,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %})
 * [Summary of the Grammar (문법 총정리)]
 
-### Revision History (수정 이력)
+### Revision History (개정 이력)
 
 * Document Revision History (문서 개정 이력)
 
