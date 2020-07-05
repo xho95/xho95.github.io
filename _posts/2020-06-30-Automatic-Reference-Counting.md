@@ -414,7 +414,7 @@ class City {
 
 두 클래스 사이의 '상호 의존성 (interdependency)' 을 설정하기 위해, `City` 의 초기자는 `Country` 인스턴스를 받아 들여서, 해당 인스턴스를 `country` 속성에 저장합니다.
 
-`City` 의 초기자는 `Country` 의 초기자에서 호출됩니다. 하지만, [Two-Phase Initialization (두-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-두-단계-초기화) 에서 설명한대로, `Country` 초기자는 새로운 `Country` 인스턴스가 완전히 초기화되지 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
+`City` 의 초기자는 `Country` 의 초기자에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한대로, `Country` 초기자는 새로운 `Country` 인스턴스가 완전히 초기화되지 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
 
 이러한 '필수 조건 (requirement)' 에 대처하려면, `Country` 의 `capitalCity` 속성을 '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언해야 하며, '타입 추가 설명 (type annotation)' 끝에 느낌표를 붙여서 (`City!`) 지정하면 됩니다. 이것의 의미는 `capitalCity` 속성은, 다른 모든 옵셔널 처럼, `nil` 이라는 기본 설정 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 그 값의 포장을 풀지 않고도 접근할 수 있다는 것입니다.
 
