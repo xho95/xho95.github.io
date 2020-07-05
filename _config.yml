@@ -16,7 +16,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xho95.github.io" # the base hostname & protocol for your site
 
-twitter_username: xho951
+twitter_username: xho95
 github_username:  xho95
 facebook_username: xho1995
 
