@@ -442,7 +442,7 @@ convenience init('parameters (매개 변수)') {
 
 1 단계에서 가상 서브 클래스 및 수퍼 클래스에 대한 초기화 호출을 찾는 방법은 다음과 같습니다.
 
-![Phase 1](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-1.png)
+![Phase 1](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-1.jpg)
 
 이 예제에서 초기화는 서브 클래스의 편의 초기화 프로그램에 대한 호출로 시작합니다. 이 편의 초기화 프로그램은 아직 속성을 수정할 수 없습니다. 동일한 클래스에서 지정된 이니셜 라이저로 위임합니다.
 
@@ -454,7 +454,7 @@ convenience init('parameters (매개 변수)') {
 
 2 단계에서 동일한 초기화 호출을 찾는 방법은 다음과 같습니다.
 
-![Phase 2](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-2.jpg)
+![Phase 2](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-2.png)
 
 #### Initializer Inheritance and Overriding (초기자 상속과 재정의)
 
