@@ -337,7 +337,7 @@ _지명 초기자 (designated initializers)_ 는 클래스에 대한 제1의 초
 
 모든 클래스는 최소한 하나의 지명 초기자를 반드시 가져야 합니다. 어떤 경우에, 이러한 '필수 조건 (requirement)' 은 상위 클래스로부터 하나 이상의 지명 초기자를 상속받음으로써 만족시킬 수 있으며, 이는 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명하도록 합니다.
 
-_편의 초기자 (convenient initializers)_ 는 클래스에 대한 제2의, 보조용 초기자입니다. 편의 초기자는 동일한 클래스에 있는 지명 초기자의 일부 매개 변수에 기본 값을 설정하기 위해서 정의할 수 있습니다.[^convenient] 편의 초기자는 또 해당 클래스의 인스턴스를 특정한 용도나 특정한 입력 값 타입에 맞게 생성하기 위해서 정의할 수도 있습니다.
+_편의 초기자 (convenience initializers)_ 는 클래스에 대한 제2의, 보조용 초기자입니다. 편의 초기자는 동일한 클래스에 있는 지명 초기자의 일부 매개 변수에 기본 값을 설정하기 위해서 정의할 수 있습니다.[^convenience] 편의 초기자는 또 해당 클래스의 인스턴스를 특정한 용도나 특정한 입력 값 타입에 맞게 생성하기 위해서 정의할 수도 있습니다.
 
 클래스가 꼭 필요한 것이 아니라면 편의 초기자를 제공하지 않아도 됩니다. '일반적인 초기화 유형 (common initialization pattern)' 을 '간략하게 만든 것 (shortcut)' 이 시간을 절약하거나 클래스 초기화의 의도를 명확하게 만들게 될 때마다 편의 초기자를 생성하기 바랍니다.
 
@@ -565,7 +565,62 @@ print("Hoverboard: \(hoverboard.description)")
 
 > 하위 클래스는 '규칙 2' 를 만족시키기 위한 한 방편으로 상위 클래스의 지명 초기자를 하위 클래스에서 편의 초기자로 구현할 수 있습니다.
 
-#### Designated and Convenience Initialization in Action ('지명 초기자' 와 '편의 초기자' 의 실제 사례)
+#### Designated and Convenience Initialization in Action (지명 초기자와 편의 초기자의 실제 사례)
+
+다음 예제는 지명 초기자, 편의 초기자, 그리고 '자동적인 초기자 상속' 에 대한 실제 사례를 보입니다. 이 예제는 `Food`, `RecipeIngredient`, 그리고 `ShoppingListItem` 이라는 세 개의 클래스로 된 계층 구조를 정의하고, 이 초기자들이 어떻게 상호 작용하는 지를 보여줍니다.
+
+계층 구조에 있는 기본 클래스[^base-class-in-hierachy]는 `Food` 라고 하는데, 식료품의 이름을 '은닉하는 (encapsulate)' 간단한 클래스입니다. `Food` 클래스는 `name` 이라는 단 하나의 `String` 속성을 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자를 제공합니다:
+
+```swift
+class Food {
+  var name: String
+  init(name: String) {
+    self.name = name
+  }
+  convenience init() {
+    self.init(name: "[Unnamed]")
+  }
+}
+```
+
+아래의 그림은 `Food` 클래스에 대한 초기자 연쇄망을 보여줍니다:
+
+![Initializer chain for the Food](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-food.png)
+
+(예제의) 클래스들은 기본 멤버 초기자를 가지지 않으므로[^example], `Food` 클래스는 `name` 이라는 단일 인자를 받는 지명 초기자를 제공합니다. 이 초기자를 사용하여 지정된 이름을 가진 새로운 `Food` 인스턴스를 생성할 수 있습니다:
+
+```swift
+let namedMeat = Food(name: "Bacon")
+// namedMeat 의 이름은 "Bacon" 입니다.
+```
+
+`Food` 클래스에 있는 `init(name: String)` 초기자를 _지명 (designated)_ 초기자로 제공한 것은, 새로운 `Food` 인스턴스의 모든 저장 속성이 완전히 초기화 되었음을 보장해야 하기 때문입니다. `Food` 클래스는 상위 클래스를 가지고 있지 않으므로, `init(name: String)` 초기자는 초기화를 완료하기 위해 `super.init()` 을 호출할 필요가 없습니다.
+
+`Food` 클래스는, 인자가 없는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `Food` 클래스의 `init(name: String)` 에 위임하면서 `name` 값을 `[Unnamed]` 라고 하여 새로운 음식에 대한 자리지킴이 용도의 이름을 제공합니다:
+
+```swift
+let mysteryMeat = Food()
+// mysteryMeat 의 이름은 "[Unnamed]" 입니다.
+```
+
+계층 구조에 있는 두 번째 클래스는 `Food` 의 하위 클래스인 `RecipeIngredient` 입니다. `RecipeIngredient` 클래스는 요리 조리법에 있는 재료를 모델링한 것입니다. 이는 (`Food` 에서 상속받은 `name` 속성에 더하여) `quantity` 라는 `Int` 속성을 도입하며 `RecipeIngredient` 인스턴스를 생성하기 위한 두 개의 초기자를 정의합니다:
+
+```swift
+class RecipeIngredient: Food {
+  var quantity: Int
+  init(name: String, quantity: Int) {
+    self.quantity = quantity
+    super.init(name: name)
+  }
+  override convenience init(name: String) {
+    self.init(name: name, quantity: 1)
+  }
+}
+```
+
+아래 그림은 `RecipeIngredient` 클래스에 대한 초기자 연쇄망을 보여줍니다:
+
+![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
 
 ### Failable Initializers (실패 가능한 초기자)
 
@@ -595,7 +650,7 @@ if unknownUnit == nil {
 // "This is not a defined temperature unit, so initialization failed." 를 출력합니다.
 ```
 
-#### Propagation of Initialization Failure (초기화 실패의 전파)
+#### Propagation of Initialization Failure (초기화 실패 전파하기)
 
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
 
@@ -635,8 +690,12 @@ class SomeSubClass: SomeClass {
 
 [^funnel]: 지명 초기자를 깔대기에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연쇄되는 모습이 깔대기와 흡사하기 때문입니다.
 
-[^convenient]: 이 부분은 원문 자체가 장황하게 설명되어 있는데, 결국 의미 자체는 번역한 문장과 대동소이 하므로, 짧게 줄여서 변역했습니다.
+[^convenience]: 이 부분은 원문 자체가 장황하게 설명되어 있는데, 결국 의미 자체는 번역한 문장과 대동소이 하므로, 짧게 줄여서 변역했습니다.
 
 [^option]: 원문에서는 여기서 'option' 이라는 단어를 사용했습니다. 이는 '지명 초기자 (designated initializer)' 에서 값을 다시 수정하는 작업은 반드시 해야하는 것이 아니라 해도 되고 안해도 되는 일종의 '선택 사항 (option)' 이기 때문입니다. 일단 여기서는 문맥에 맞게 '기회' 라고 옮겼습니다.
 
-[^base-class]: 스위프트에서 '기본 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말합니다. 보통 계층 구조에서 최상단에 위치하는 클래스는 다 기본 클래스라고 할 수 있지만, 계층 구조 없이 홀로 존재하는 클래스도 역시 기본 클래스가 될 수 있습니다. 물론 여기서 프로토콜은 예외에 해당하며, 아무리 프로토콜을 많이 '준수 (conforming)' 하더라도 다른 클래스로부터 직접 상속을 받지 않으면 '기본 클래스' 에 해당합니다.  
+[^base-class]: 스위프트에서 '기본 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말합니다. 보통 계층 구조에서 최상단에 위치하는 클래스는 다 기본 클래스라고 할 수 있지만, 계층 구조 없이 홀로 존재하는 클래스 역시 기본 클래스가 될 수 있습니다. 물론 여기서 프로토콜은 예외에 해당하며, 아무리 프로토콜을 많이 '준수 (conforming)' 하더라도 다른 클래스로부터 직접 상속을 받지 않으면 '기본 클래스' 에 해당합니다.  
+
+[^base-class-in-hierachy]: 앞서 '기본 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말한다고 했는데, 하나의 계층 구조에서 어떤 클래스로부터도 상속을 받지 않는 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 기본 클래스란 계층 구조의 최상단 클래스라고 이해하면 됩니다.
+
+[^example]: 이 예제 자체가 '초기자 상속' 이 자동적으로 이루어지는 과정을 이해하기 위해 만들어진 것입니다. 따라서 '기본 설정 초기자' 나 '기본 멤버 초기자' 가 없는 상태에서 시작하는 것입니다.

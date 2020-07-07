@@ -147,8 +147,8 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 이 예제는 기하학적 도형 작업을 위해 세 가지 구조체를 정의합니다.
 
-* `Point` 는 한 점에 대한 x, y 좌표를 캡슐화 합니다.
-* `Size` 는 `width` 와 `height` 를 캡슐화 합니다.
+* `Point` 는 한 점에 대한 x, y 좌표를 은닉합니다.
+* `Size` 는 `width` 와 `height` 를 은닉합니다.
 * `Rect` 는 '원점 (origin point)' 과 '크기 (size)' 를 사용하여 사각형을 정의합니다.
 
 `Rect` 구조체는 `center` 라는 '계산 속성' 도 제공합니다. `Rect` 의 현재 중심 위치는 `origin` 과 `size` 로부터 항상 결정할 수 있으므로, 중심 점을 `Point` 값으로 저장할 필요가 없습니다. 대신, `Rect` 는 `center` 라는 '계산 변수' 에 대한 사용자 정의 '획득자 (getter)' 와 '설정자 (setter)' 를 정의하여, 사각형의 `center` 를 마치 실제 저장 속성인 것처럼 사용할 수 있게 해줍니다.
