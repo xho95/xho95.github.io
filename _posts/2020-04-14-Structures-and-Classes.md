@@ -88,7 +88,7 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 설정 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 에서 더 자세히 설명합니다.
+구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 설정 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세히 설명합니다.
 
 #### Accessing Properties (속성에 접근하기)
 
@@ -124,7 +124,7 @@ print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
 let vga = Resolution(width: 640, height: 480)
 ```
 
-구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 에서 더 자세히 설명합니다.
+구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세히 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 
