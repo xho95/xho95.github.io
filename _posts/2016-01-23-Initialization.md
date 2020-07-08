@@ -632,7 +632,7 @@ class RecipeIngredient: Food {
 
 이 예제에서, `RecipeIngredient` 의 상위 클래스는 `Food` 이며, 이는 `init()` 이라는 단 하나의 편의 초기자를 가지고 있습니다. 이 초기자가 `RecipeIngredient` 로 상속되는 것입니다. `init()` 의 상속 버전은, `Food` 버전이 아니라 `RecipeIngredient` 버전의 `init(name: String)` 으로 위임한다는 것만 빼면, `Food` 버전과 동작 방식이 정확하게 똑같습니다.
 
-이 세 개의 초기자 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
+이 초기자 세 개 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let oneMysteryItem = RecipeIngredient()
@@ -665,7 +665,25 @@ class ShoppingListItem: RecipeIngredient {
 
 ![Initializer chain for the all](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-all.png)
 
+이 상속받은 초기자 세 개 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
 
+```swift
+var breakfastList = [
+  ShoppingListItem(),
+  ShoppingListItem(name: "Bacon"),
+  ShoppingListItem(name: "Eggs", quantity: 6),
+]
+breakfastList[0].name = "Orange juice"
+breakfastList[0].purchased = true
+for item in breakfastList {
+  print(item.description)
+}
+// 1 x Orange juice ✔
+// 1 x Bacon ✘
+// 6 x Eggs ✘
+```
+
+여기서는, 세 개의 새로운 `ShoppingListItem` 인스턴스를 담고 있는 '배열 글자 표현 (array literal)' 을 사용하여 `breakfastList` 라는 새로운 배열을 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론됩니다. 배열을 생성한 후에는, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매한 것으로 표시합니다. 배열에 있는 각 항목의 설명을 출력해보면 이들의 기본 설정 상태가 예상한 대로 설정 되었는지를 보여줍니다.
 
 ### Failable Initializers (실패 가능한 초기자)
 
