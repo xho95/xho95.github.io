@@ -583,7 +583,7 @@ class Food {
 }
 ```
 
-아래의 그림은 `Food` 클래스에 대한 초기자 연쇄망을 보여줍니다:
+아래의 그림은 `Food` 클래스에 대한 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
 
 ![Initializer chain for the Food](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-food.png)
 
@@ -618,9 +618,54 @@ class RecipeIngredient: Food {
 }
 ```
 
-아래 그림은 `RecipeIngredient` 클래스에 대한 초기자 연쇄망을 보여줍니다:
+아래 그림은 `RecipeIngredient` 클래스에 대한 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
 
 ![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
+
+`RecipeIngredient` 클래스는, `init(name: String, amount: Int)` 라는, 단 하나의 지명 초기자를 가지고, 새로운 `RecipeIngredient` 인스턴스의 모든 속성들을 정착시킵니다. 이 초기자는 전달받은 `quantity` 인자를 `quantity` 속성에 할당하는 것으로 시작하는데, 이는 `RecipeIngredient` 가 도입한 유일한 새 속성입니다. 그런 후에, 이 초기자는 위로 위임하고자 `Food` 클래스의 `init(name: String)` 초기자를 호출합니다. 이 과정은 위의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 에 있는 '안전성 검사 2' 를 만족시킵니다.
+
+`RecipeIngredient` 는, `init(name: String)` 라는, 편의 초기자도 정의하고 있는데, 이를 사용하면 이름만 가지고 `RecipeIngredient` 인스턴스를 생성할 수 있습니다. 이 편의 초기자는 수량을 명시하지 않은 채로 생성하는 `RecipeIngredient` 인스턴스는 수량이 `1` 이라고 가정합니다. 편의 초기자를 이렇게 정의하면 `RecipeIngredient` 인스턴스를 더 빠르고 편리하게 생성하도록 해주며, 수량-한 개 짜리 `RecipeIngredient` 인스턴스를 여러 개 생성할 때의 코드 중복을 피하도록 해줍니다. 이 편의 초기자는 단순히 옆으로 위임하며 클래스의 지명 초기자에, `1` 이라는 `quantity` 값을 전달합니다.
+
+`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 같은 매개 변수를 받아 들입니다. 이 편의 초기자는 상위 클래스에 있는 지명 초기자를 '재정의 (override)' 하고 있기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+
+비록 `RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하긴 했지만, `RecipeIngredient` 는 그럼에도 불구하고 모든 상위 클래스의 지명 초기자에 대한 구현을 제공했습니다. 따라서, `RecipeIngredient` 는 상위 클래스의 모든 편의 초기자를 자동으로 상속받습니다.
+
+이 예제에서, `RecipeIngredient` 의 상위 클래스는 `Food` 이며, 이는 `init()` 이라는 단 하나의 편의 초기자를 가지고 있습니다. 이 초기자가 `RecipeIngredient` 로 상속되는 것입니다. `init()` 의 상속 버전은, `Food` 버전이 아니라 `RecipeIngredient` 버전의 `init(name: String)` 으로 위임한다는 것만 빼면, `Food` 버전과 동작 방식이 정확하게 똑같습니다.
+
+이 세 개의 초기자 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
+
+```swift
+let oneMysteryItem = RecipeIngredient()
+let oneBacon = RecipeIngredient(name: "Bacon")
+let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
+```
+
+계층 구조의 세 번째이자 최종 클래스는 `RecipeIngredient` 의 하위 클래스인 `ShoppingListItem` 입니다. `ShoppingListItem` 클래스는 구매 목록에 표시되는 요리 재료를 모델링합니다.
+
+구매 목록에 있는 모든 항목은 "미구매 (unpurchased)" 상태로 시작합니다. 이러한 사실을 표현하기 위해, `ShoppingListItem` 은 `purchased` 라는, 기본 설정 값이 `false` 인, '불린 (Boolean)' 속성을 도입합니다. `ShoppingListItem` 은 또 `description` 계산 속성을 추가하여, `ShoppingListItem` 인스턴스에 대한 설명을 제공합니다:
+
+```swift
+class ShoppingListItem: RecipeIngredient {
+  var purchased = false
+  var description: String {
+    var output = "\(quantity) x \(name)"
+    output += purchased ? " ✔" : " ✘"
+    return output
+  }
+}
+```
+
+> `ShoppingListItem` 은 `purchased` 에 초기 값을 제공하기 위한 초기자를 정의하지 않는데, 이는 구매 목록에 있는 항목들은 (여기서 모델링한 것처럼) 항상 미구매 상태로 시작하기 때문입니다.
+
+자신이 도입한 모든 속성에 대해 기본 설정 값을 제공하면서 스스로는 아무런 초기자도 정의하지 않고 있으므로, `ShoppingListItem` 은 상위 클래스에 있는 _모든 (all)_ 지명 초기자와 편의 초기자를 자동으로 상속받습니다.
+
+이 속성은 도입 한 모든 속성에 기본값을 제공하고 초기화 프로그램 자체를 정의하지 않기 때문에 ShoppingListItem은 자동으로 지정된 및 편리한 초기화 프로그램을 모두 수퍼 클래스에서 상속합니다.
+
+아래 그림은 세 클래스 모두 연관된 전체적인 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
+
+![Initializer chain for the all](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-all.png)
+
+
 
 ### Failable Initializers (실패 가능한 초기자)
 
