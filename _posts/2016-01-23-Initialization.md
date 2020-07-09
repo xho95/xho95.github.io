@@ -691,17 +691,119 @@ for item in breakfastList {
 
 실패할 수도 있는 초기화 조건에 대처하려면, 클래스, 구조체, 또는 열거체의 정의 부분에서 하나 이상의 '실패 가능한 초기자 (failable initializers)' 를 정의하면 됩니다. 실패 가능한 초기자는 `init` 키워드 뒤에 물음표 기호를 붙여서 (`init?` 라고) 작성합니다.
 
+> '실패 가능한 (failable) 초기자' 와 '실패하지 않는 (nonfailable) 초기자' 를 똑같은 매개 변수 타입과 이름을 가지고 정의할 수는 없습니다.
+
+실패 가능한 초기자는 초기화하는 타입에 대한 _옵셔널 (optional)_ 값을 생성합니다. 실패 가능한 초기자 내에서 `return nil` 을 작성하면 초기화 실패가 발생한 지점을 지시할 수 있습니다.
+
+> 엄밀하게 말해서, 초기자는 값을 반환하지 않습니다. 그 보다, 이들의 역할은 초기화가 끝날 때까지 `self` 가 완전하고 올바르게 초기화되도록 보장하는 것입니다. 비록 초기화 실패를 발생시키기 위해 `return nil` 을 작성한다고 하더라도, 초기화 성공을 나타내기 위해 `return` 키워드를 사용하지는 않습니다.
+
+실제 사례로써, 수치 타입 변환을 위한 실패 가능한 초기자를 구현합니다. 수치 타입 사이의 변환이 값을 정확하게[^exactly] 유지하고 있다는 보장을 하기 위해, `init(exactly:)` 초기자를 사용합니다. 타입 변환이 값을 유지할 수 없는 경우, 이 초기자는 실패합니다.
+
+```swift
+let wholeNumber: Double = 12345.0
+let pi = 3.14159
+
+if let valueMaintained = Int(exactly: wholeNumber) {
+  print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
+}
+// "12345.0 conversion to Int maintains value of 12345" 를 출력합니다.
+
+let valueChanged = Int(exactly: pi)
+// valueChanged 의 타입은 Int? 이며, Int 인 것이 아닙니다.
+
+if valueChanged == nil {
+  print("\(pi) conversion to Int does not maintain value")
+}
+// "3.14159 conversion to Int does not maintain value" 를 출력합니다.
+```
+
+아래 예제는, `species` 라는 상수 `String` 속성을 가지는, `Animal` 이라는 구조체를 정의합니다. 이 `Animal` 구조체는 또 `species` 라는 단일한 매개 변수를 가지는 '실패 가능한 초기자' 도 정의합니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열을 발견하면, 초기화 실패를 발생시킵니다. 그렇지 않으면, `species` 속성에 값을 설정하고, 초기화는 성공합니다:
+
+```swift
+struct Animal {
+  let species: String
+  init?(species: String) {
+    if species.isEmpty { return nil }
+    self.species = species
+  }
+}
+```
+
+이러한 실패 가능한 초기자를 사용하면 새로운 `Animal` 인스턴스에 대한 초기화를 시도하고 초기화가 성공했는지를 확인할 수 있습니다:
+
+```swift
+let someCreature = Animal(species: "Giraffe")
+// someCreature 의 타입은 Animal? 이며, Animal 이 아닙니다.
+
+if let giraffe = someCreature {
+    print("An animal was initialized with a species of \(giraffe.species)")
+}
+// "An animal was initialized with a species of Giraffe" 를 출력합니다.
+```
+
+실패 가능한 초기자의 `species` 매개 변수에 빈 문자열 값을 전달하면, 이 초기자는 초기화 실패를 발생합니다:
+
+```swift
+let anonymousCreature = Animal(species: "")
+// anonymousCreature 의 타입은 Animal? 이며, Animal 이 아닙니다.
+
+if anonymousCreature == nil {
+    print("The anonymous creature could not be initialized")
+}
+// "The anonymous creature could not be initialized" 를 출력합니다.
+```
+
+> 빈 문자열 값 (가령 `"Giraffe"` 가 아닌 `""`) 을 검사하는 것은 _옵셔널 (optional)_ `String` 값의 부재를 나타내는 `nil` 을 검사하는 것과 같은 것이 아닙니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한 것으로, 옵셔널이-아닌 `String` 인 것입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열을 가진다는 것은 적절한 것이 아닙니다. 이러한 제약 조건을 모델링하기 위해, 실패 가능한 초기자는 빈 문자열을 발견하면 초기화 실패를 발생시킵니다.
+
 #### Failable Initializers for Enumerations (열거체를 위한 실패 가능한 초기자)
 
-#### Failable Initializers for Enumerations with Raw Values (원시 값을 갖는 열거체를 위한 실패 가능한 초기자)
+실패 가능한 초기자는 하나 이상의 매개 변수를 기반으로 적절한 '열거체 경우 값 (enumeration case)' 을 선택하기 위해 사용할 수 있습니다. 제공된 매개 변수가 열거체 경우 값과 적당하게 일치하는 게 없다면 이 때 초기자는 실패할 수 있습니다.
 
-원시 값을 가지는 열거체는 자동적으로 '실패 가능한 초기자 (failable initializer)' 인, `init?(rawValue:)` 를 받게 되는데, 이는 `rawValue` 라는 적절한 원시-값 타입의 매개 변수를 취한 다음 해당하는 열거체 '경우 값' 을 찾으면 이를 선택하고, 해당하는 값이 존재하지 않으면 '초기화 실패 (initialization failure)' 를 일으킵니다.
+아래 예제는, 세 개의 상태가 가능한 (`kelvin`, `celsius`, 그리고 `fahrenheit`), `TemperatureUnit` 이라는 열거체를 정의합니다. 실패 가능한 초기자를 사용하여 '온도 기호 (temperature symbol)' 를 나타내는 `Character` 값에 해당하는 적절한 '열거체의 경우 값 (enumeration case)' 를 찾습니다:
 
-위에 있는 `TemperatureUnit` 예제를 `Character` 타입의 원시 값을 사용하여 `init?(rawValue:)` 초기자의 이점을 활용하도록 다시 작성할 수 있습니다:
+```swift
+enum TemperatureUnit {
+  case kelvin, celsius, fahrenheit
+  init?(symbol: Character) {
+    switch symbol {
+    case "K":
+      self = .kelvin
+    case "C":
+      self = .celsius
+    case "F":
+      self = .fahrenheit
+    default:
+      return nil
+    }
+  }
+}
+```
+
+이 실패 가능한 초기자를 사용하면 가능한 세 개의 상태 중에서 적당한 '열거체 경우 값' 을 선택할 수도 있고 매개 변수가 이 상태 세 개와 일치하지 않을 경우 초기화의 실패를 일으킬 수도 있습니다:
+
+```swift
+let fahrenheitUnit = TemperatureUnit(symbol: "F")
+if fahrenheitUnit != nil {
+  print("This is a defined temperature unit, so initialization succeeded.")
+}
+// "This is a defined temperature unit, so initialization succeeded." 를 출력합니다.
+
+let unknownUnit = TemperatureUnit(symbol: "X")
+if unknownUnit == nil {
+  print("This is not a defined temperature unit, so initialization failed.")
+}
+// "This is not a defined temperature unit, so initialization failed." 를 출력합니다.
+```
+
+#### Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)
+
+원시 값을 가지는 열거체는, `init?(rawValue:)` 라는, '실패 가능한 초기자' 를 자동으로 부여 받는데, 이는 `rawValue` 라는 적당한 원시-값 타입의 매개 변수를 받아서 일치하는 값을 찾으면 해당하는 '열거체 경우 값' 을 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시킵니다.
+
+위에 있는 `TemperatureUnit` 예제를 다시 작성하여 `Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 이점을 활용할 수 있습니다:
 
 ```swift
 enum TemperatureUnit: Character {
-case kelvin = "K", celsius = "C", fahrenheit = "F"
+  case kelvin = "K", celsius = "C", fahrenheit = "F"
 }
 
 let fahrenheitUnit = TemperatureUnit(rawValue: "F")
@@ -718,6 +820,12 @@ if unknownUnit == nil {
 ```
 
 #### Propagation of Initialization Failure (초기화 실패 전파하기)
+
+클래스, 구조체, 및 열거체의 실패 가능한 초기자는 같은 클래스, 구조체, 및 열거체에 있는 또 다른 실패 가능한 초기자로 '옆쪽 위임 (delegate across)' 을 할 수 있습니다. 이와 비슷하게, 하위 클래스의 실패 가능한 초기자는 상위 클래스의 실패 가능한 초기자로 '위쪽 위임 (delegate up)' 을 할 수 있습니다.
+
+어떤 경우든, 또 다른 초기자로 위임한 것이 초기화 실패의 원인이 될 경우, 전체 초기화 과정은 즉시 실패하며, 초기화 코드는 더 이상 실행되지 않습니다.
+
+> '실패 가능한 초기자 (failable initializer)' 또한 '실패하지 않는 초기자 (nonfailable initializer)' 로 위임할 수 있습니다. 이 접근 방식은 다른 경우라면 실패하지 않을 기존 초기화 과정에 잠재적인 실패 상태를 추가할 필요가 있을 경우 사용하도록 합니다.
 
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
 
@@ -766,3 +874,5 @@ class SomeSubClass: SomeClass {
 [^base-class-in-hierachy]: 앞서 '기본 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말한다고 했는데, 하나의 계층 구조에서 어떤 클래스로부터도 상속을 받지 않는 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 기본 클래스란 계층 구조의 최상단 클래스라고 이해하면 됩니다.
 
 [^example]: 이 예제 자체가 '초기자 상속' 이 자동적으로 이루어지는 과정을 이해하기 위해 만들어진 것입니다. 따라서 '기본 설정 초기자' 와 '기본 멤버 초기자' 가 없는 상태에서 시작합니다.
+
+[^exactly]: 이 예제에서 '정확하게 (exactly)' 가 의미하는 것은 수치 값 변환을 성공해서 변환된 값을 가지고 있음을 의미하는 것입니다. 변환된 값이 원래 값과 일치할 필요는 없습니다.
