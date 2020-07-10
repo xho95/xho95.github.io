@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Protocols (규약)"
+title:  "Swift 5.3: Protocols (프로토콜; 규약)"
 date:   2016-03-03 23:30:00 +0900
 categories: Swift Language Grammar Protocol
 ---
@@ -10,13 +10,13 @@ categories: Swift Language Grammar Protocol
 >
 > 현재 번역이 진행 중인데, 2020-06-22 에 Swift 5.3 이 발표되어, 이미 번역된 부분과 남은 부분 모두 Swift 5.3 을 기준으로 옮기도록 합니다. 완료된 목록은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있으며, 일부는 Swift 5.2 기준일 수 있습니다.
 
-## Protocols (규약)
+## Protocols (프로토콜; 규약)
 
 _프로토콜_ [^protocol]은 메소드, 속성, 그리고 그 밖의 '필수 조건 (requirements)' 이 특정 작업이나 일부 기능 (functionality) 에 맞도록 하는 '밑그림 (blueprint)'[^blueprint]을 정의합니다. 그런 다음 클래스나 구조체 또는 열거체들이 그 프로토콜을 _채택 (adopt)_ 하여  '필수 조건 (requirements)' 을 실제로 구현합니다. 어떤 타입이든지 프로토콜의 '필수 조건 (requirements)' 을 만족하기만 하면 그 프로토콜을 _준수한다 (conform)_ 라고 말합니다.
 
 준수 타입 (conforming type) 이 '필수 조건 (requirements)' 을 반드시 구현해야 하는 것과는 별개로, 프로토콜을 확장하는 것 또한 가능해서, 일부 '필수 조건 (requirements)' 을 구현할 수도 있고 추가 기능의 구현을 통해서 준수 타입에게 편의를 제공할 수도 있습니다.
 
-### Protocol Syntax
+### Protocol Syntax (프로토콜 구문 표현)
 
 ### Property Requirements (속성 필수 조건)
 
