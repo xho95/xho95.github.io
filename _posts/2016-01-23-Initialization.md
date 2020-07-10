@@ -967,7 +967,67 @@ class SomeSubClass: SomeClass {
 
 > 상속받은 초기자로 '필수 조건 (requirement)' 를 만족시킬 수 있는 경우라면 명시적으로 '필수 초기자' 를 구현하지 않아도 됩니다.
 
-### Setting a Default Property Value with a Closure or Function (클로저나 함수를 사용하여 기본 속성 값 설정하기)
+### Setting a Default Property Value with a Closure or Function (클로저 또는 함수를 사용하여 기본 속성 값 설정하기)
+
+만약 저장 속성의 기본 설정 값에 대해 어떤 사용자 정의 작업이나 설정 작업이 필요한 경우, 클로저 또는 전역 함수를 사용하여 해당 속성에 대해 맞춤형 기본 설정 값을 제공할 수 있습니다. 이 속성이 속해 있는 타입의 새로운 인스턴스가 초기화될 때마다, 클로저나 함수를 호출하여, 이의 반환 값을 속성의 기본 설정 값으로 할당합니다.
+
+이러한 종류의 클로저나 함수는 일반적으로 속성과 같은 타입의 임시 값을 생성하고, 해당 값을 조절하여 원하는 초기 상태를 나타낸 후, 이 임시 값을 반환하여 속성의 기본 설정 값으로 사용하도록 합니다.
+
+다음은 어떻게 하면 클로저로 속성의 기본 설정 값을 제공할 수 있는 지를 대략적으로 보여줍니다:
+
+```swift
+class SomeClass {
+  let someProperty: SomeType = {
+    // 이 클로저 내에서 속성에 대한 기본 설정 값을 생성합니다.
+    // someValue 는 반드시 SomeType 과 같은 타입이어야 합니다.
+    return someValue
+  }()
+}
+```
+
+클로저의 종료 중괄호 뒤에 빈 괄호 쌍이 따라 오는 것에 주목하기 바랍니다. 이는 스위프트보고 클로저를 그 즉시 실행하라고 말하는 것입니다. 이 괄호를 생략하면, 클로저의 반환 값이 아니라, 클로저 자체를 속성에 할당하고 있는 것입니다.
+
+> 클로저를 사용하여 속성을 초기화할 경우, 클로저가 실행되는 시점에 인스턴스의 나머지 부분은 아직 초기화된 것이 아님을 기억하기 바랍니다. 이것의 의미는, 비록 해당 속성이 기본 설정 값을 가지고 있다고 하더라도, 클로저 내에서 어떤 다른 속성 값에도 접근할 수 없다는 것을 뜻합니다. 암시적인 `self` 속성도 사용할 수 없으며, 어떠한 인스턴스 메소드도 호출할 수 없습니다.
+
+아래 예제는, 체스 게임판을 모델링하는, `Chessboard` 라는 구조체를 정의합니다. 체스는, 검은색과 흰색 정사각형이 번갈아 가며 있는, 8 x 8 크기의 판에서 진행합니다.
+
+![Chessboard](/assets/Swift/Swift-Programming-Language/Initialization-chessboard.png)
+
+이 게임판을 표현하기 위해, `Chessboard` 구조체는, 64개의 `Bool` 값의 배열인, `boardColors` 라는 단일한 속성을 가지고 있습니다. 배열에서 `true` 값은 검은색 정사각형을 나타내며 `false` 값은 흰색 정사각형을 나타냅니다. 배열의 첫 번째 항목은 판의 맨 위 왼쪽 정사각형을 나타내며 배열의 마지막 항목은 보드의 맨 아래 오른쪽 정사각형을 나타냅니다.
+
+`boardColors` 배열은 자신의 색상 값을 설정하기 위해 클로저로 초기화됩니다.
+
+```swift
+struct Chessboard {
+  let boardColors: [Bool] = {
+    var temporaryBoard = [Bool]()
+    var isBlack = false
+    for i in 1...8 {
+      for j in 1...8 {
+        temporaryBoard.append(isBlack)
+        isBlack = !isBlack
+      }
+      isBlack = !isBlack
+    }
+    return temporaryBoard
+  }()
+  func squareIsBlackAt(row: Int, column: Int) -> Bool {
+    return boardColors[(row * 8) + column]
+  }
+}
+```
+
+새로운 `Chessboard` 인스턴스를 생성할 때마다, 클로저가 실행되어, `boardColors` 의 기본 설정 값을 계산하여 반환합니다. 위 예제에 있는 클로저는 `temporaryBoard` 라는 임시 배열의 판 위 각 정사각형에 대해 적당한 색상을 계산하고 설정하며, 일단 설정이 완료되면 클로저의 반환 값으로 이 임시 배열을 반환합니다.
+
+반환된 배열 값은 `boardColors` 에 저장되며 `squareIsBlackAt(row:column:)` 라는 보조 함수로 조회할 수 있습니다:
+
+```swift
+let board = Chessboard()
+print(board.squareIsBlackAt(row: 0, column: 1))
+// "true" 를 출력합니다.
+print(board.squareIsBlackAt(row: 7, column: 7))
+// "false" 를 출력합니다.
+```
 
 ### 참고 자료
 
