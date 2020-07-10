@@ -827,9 +827,121 @@ if unknownUnit == nil {
 
 > '실패 가능한 초기자 (failable initializer)' 또한 '실패하지 않는 초기자 (nonfailable initializer)' 로 위임할 수 있습니다. 이 접근 방식은 다른 경우라면 실패하지 않을 기존 초기화 과정에 잠재적인 실패 상태를 추가할 필요가 있을 경우 사용하도록 합니다.
 
+아래 예제는 `Product` 의 하위 클래스인 `CartItem` 을 정의합니다. `CartItem` 클래스는 온라인 장바구니에 담겨있는 항목을 모델링 합니다. `CartItem` 은 `quantity` 라는 상수 저장 속성을 도입하여 이 속성 값이 최소 `1` 이상의 값을 가지도록 보장합니다:
+
+```swift
+class Product {
+  let name: String
+  init?(name: String) {
+    if name.isEmpty { return nil }
+    self.name = name
+  }
+}
+
+class CartItem: Product {
+  let quantity: Int
+  init?(name: String, quantity: Int) {
+    if quantity < 1 { return nil }
+    self.quantity = quantity
+    super.init(name: name)
+  }
+}
+```
+
+`CartItem` 의 실패 가능한 초기자는 부여 받은 `quantity` 값이 `1` 이상인지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정은 그 즉시 실패하고 초기화 코드를 더 이상 실행하지 않습니다. 이와 마찬가지로, `Product` 의 실패 가능한 초기자는 `name` 값을 검사하는데, `name` 이 빈 문자열이면 초기화 과정이 그 즉시 실패합니다.
+
+비어있지 않은 이름과 `1` 이상의 수량으로 `CartItem` 인스턴스를 생성하면, 초기화를 성공합니다:
+
+```swift
+if let twoSocks = CartItem(name: "sock", quantity: 2) {
+  print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+}
+// "Item: sock, quantity: 2" 를 출력합니다.
+```
+
+`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화 실패를 발생시킵니다:
+
+```swift
+if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
+  print("Item: \(zeroShirts.name), quantity: \(zeroShirts.quantity)")
+} else {
+  print("Unable to initialize zero shirts")
+}
+// "Unable to initialize zero shirts" 를 출력합니다.
+```
+
+이와 비슷하게, 빈 `name` 값을 가지고 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 초기자가 초기화 실패를 발생시킵니다:
+
+```swift
+if let oneUnnamed = CartItem(name: "", quantity: 1) {
+  print("Item: \(oneUnnamed.name), quantity: \(oneUnnamed.quantity)")
+} else {
+  print("Unable to initialize one unnamed product")
+}
+// "Unable to initialize one unnamed product" 를 출력합니다.
+```
+
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
 
+상위 클래스의 실패 가능한 초기자는, 여느 다른 초기자들 처럼, 하위 클래스에서 재정의할 수 있습니다. 다른 방법으로, 상위 클래스의 실패 가능한 초기자를 하위 클래스의 '_실패하지 않는 (nonfailable)_' 초기자로 재정의할 수도 있습니다. 이는, 상위 클래스의 초기화가 실패할 수 있음에도 불구하고, 하위 클래스에서 초기화가 실패할 수 없도록 정의할 수 있게 해줍니다.
+
+주목해야 할 것은 상위 클래스의 실패 가능한 초기자를 하위 클래스의 실패하지 않는 초기자로 재정의하는 경우, 상위 클래스로 '위쪽 위임 (delegate up)' 을 하는 유일한 방법은 상위 클래스의 실패 가능한 초기자에 대한 결과를 '강제-포장 풀기 (force-unwrap)' 하는 것 뿐이라는 것입니다.
+
+> 실패 가능한 초기자를 실패하지 않는 초기자로 재정의할 수는 있지만 그 반대는 안됩니다.
+
+아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스가 모델링 하는 '문서 (document)' 는 비어있지 않은 문자열 값 또는 `nil` 일 수는 있지만, 빈 문자열일 수는 없습니다:
+
+```swift
+class Document {
+  var name: String?
+  // 아래 초기자는 이름 값이 nil 인 문서를 생성합니다.
+  init() {}
+  // 아래 초기자는 이름 값이 비어있지 않은 문서를 생성합니다.
+  init?(name: String) {
+    if name.isEmpty { return nil }
+    self.name = name
+  }
+}
+```
+
+이 다음 예제는 `Document` 의 하위 클래스인 `AutomaticNamedDocument` 를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 지명 초기자 둘 모두를 재정의합니다. 이러한 재정의는 만약 해당 인스턴스가 이름 없이 초기화될 경우, 아니면 `init(name:)` 초기자에 빈 문자열이 전달될 경우, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 초기 `name` 값을 가지도록 보장해 줍니다:
+
+```swift
+class AutomaticallyNamedDocument: Document {
+  override init() {
+    super.init()
+    self.name = "[Untitled]"
+  }
+  override init(name: String) {
+    super.init()
+    if name.isEmpty {
+      self.name = "[Untitled]"
+    } else {
+      self.name = name
+    }
+  }
+}
+```
+
+`AutomaticNamedDocument` 는 상위 클래스의 실패 가능한 초기자인 `init?(name:)` 초기자를 실패하지 않는 초기자인 `init(name:)` 으로 재정의합니다. `AutomaticNamedDocument` 는 상위 클래스와는 다른 방법으로 빈 문자열을 처리하기 때문에, 이 초기자는 실패할 필요가 없으므로, 그 대신 실패하지 않는 초기자를 제공하는 것입니다.
+
+초기자 내에서 '강제 포장 풀기 (forced unwrapping)' 를 사용하면 하위 클래스의 실패하지 않는 초기자 구현부에서 상위 클래스의 실패 가능한 초기자를 호출할 수 있습니다. 예를 들어, 아래의 `UntitledDocument` 하위 클래스는 항상 이름을 `"[Untitled]"` 라고 하며, 초기화 동안 상위 클래스에 있는 실패 가능한 초기자인 `init(name:)` 를 사용합니다.
+
+```swift
+class UntitledDocument: Document {
+  override init() {
+    super.init(name: "[Untitled]")!
+  }
+}
+```
+
+이 경우, 만약 상위 클래스의 `init(name:)` 초기자를 빈 문자열 이름을 가지고 호출할 때마다, '강제 포장 풀기 (forced unwrapping)' 동작으로 인해 '실행시간 에러 (runtime error)' 가 발생할 것입니다. 하지만, 문자열 상수를 사용하여 호출하기 때문에, 초기자가 실패하지 않을 거라는 것과, 이 경우 아무런 실행시간 에러도 일어날 수 없다는 것을 알 수 있습니다.
+
 #### The `init!` Failable Initializer (`init!` 실패 가능한 초기자)
+
+일반적으로 init 키워드 뒤에 물음표 (init?)를 붙여 적절한 유형의 선택적 인스턴스를 작성하는 실패 가능한 초기화 프로그램을 정의합니다. 또는 적절한 유형의 내재적으로 랩핑되지 않은 선택적 인스턴스를 작성하는 실패 가능한 초기화 프로그램을 정의 할 수 있습니다. 물음표 대신 init 키워드 (init!) 뒤에 느낌표를 추가하여이를 수행하십시오.
+
+init에서 위임 할 수 있습니까? 초기화하기! 그 반대의 경우도 있고 init를 무시할 수 있습니까? init! 그 반대. init에서 init!로 위임 할 수도 있지만 init 인 경우 어설 션이 트리거됩니다! 이니셜 라이저로 인해 초기화가 실패합니다.
 
 ### Required Initializers (필수 초기자)
 
