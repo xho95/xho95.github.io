@@ -12,13 +12,66 @@ categories: Swift Language Grammar Protocol
 
 ## Protocols (프로토콜; 규약)
 
-_프로토콜_ [^protocol]은 메소드, 속성, 그리고 그 밖의 '필수 조건 (requirements)' 이 특정 작업이나 일부 기능 (functionality) 에 맞도록 하는 '밑그림 (blueprint)'[^blueprint]을 정의합니다. 그런 다음 클래스나 구조체 또는 열거체들이 그 프로토콜을 _채택 (adopt)_ 하여  '필수 조건 (requirements)' 을 실제로 구현합니다. 어떤 타입이든지 프로토콜의 '필수 조건 (requirements)' 을 만족하기만 하면 그 프로토콜을 _준수한다 (conform)_ 라고 말합니다.
+_프로토콜 (protocol)_[^protocol] 은 특정한 작업 또는 기능 (functionality) 에 적합하도록 메소드 필수 조건, 속성 필수 조건, 및 그 외 기타 '필수 조건 (requirements)' 들의 '설계 도면 (blueprint)'[^blueprint] 을 정의하는 것입니다. 그 다음 이 프로토콜은 해당 필수 조건의 실제 구현을 제공하는 클래스나, 구조체, 또는 열거체에 의해 _채택 (adopt)_ 됩니다. 프로토콜의 필수 조건을 만족하는 타입은 어떤 것이든 그 프로토콜을 _준수한다 (conform)_ 고 합니다.
 
-준수 타입 (conforming type) 이 '필수 조건 (requirements)' 을 반드시 구현해야 하는 것과는 별개로, 프로토콜을 확장하는 것 또한 가능해서, 일부 '필수 조건 (requirements)' 을 구현할 수도 있고 추가 기능의 구현을 통해서 준수 타입에게 편의를 제공할 수도 있습니다.
+'준수하는 타입 (conforming type)' 이 반드시 구현해야 하는 필수 조건을 지정하는 것 외에도, 프로토콜을 확장하면 일부 필수 조건을 구현하거나 아니면 추가적인 기능을 구현해서 해당 준수 타입이 활용하도록 만들 수도 있습니다.
 
 ### Protocol Syntax (프로토콜 구문 표현)
 
+프로토콜은 클래스, 구조체, 그리고 열거체와 아주 비슷한 방법으로 정의합니다:
+
+```swift
+protocol SomeProtocol {
+  // 여기서 프로토콜을 정의합니다.
+}
+```
+
+사용자 정의 타입이 특정한 프로토콜을 채택한다고 알리려면 해당 정의 부분에서, 타입 이름 뒤에, 콜론으로 구분한 다음, 프로토콜 이름을 붙이면 됩니다. 여러 개의 프로토콜을 나열 할 수 있으며, 이 때는 쉼표로 구분합니다:
+
+```swift
+struct SomeStructure: FirstProtocol, AnotherProtocol {
+  // 여기서 구조체를 정의합니다.
+}
+```
+
+클래스가 상위 클래스를 가지고 있는 경우, 상위 클래스를 맨 앞에 나열하며, 프로토콜은 쉼표 이후 채택하도록 합니다:
+
+```swift
+class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
+  // 여기서 클래스를 정의합니다.
+}
+```
+
 ### Property Requirements (속성 필수 조건)
+
+프로토콜은 어떠한 준수 타입이 특정한 이름과 타입을 가지는 인스턴스 속성이나 타입 속성을 필수로 제공하도록 요구할 수 있습니다. 프로토콜은 이 속성이 저장 속성인지 계산 속성인지는 지정하지 않습니다-필수적인 속성 이름과 타입만을 지정합니다. 프로토콜은 또 각 속성이 반드시 '획득 가능 (gettable)' 한지 아니면 반드시 '획득 가능 (gettable)' _하면서 (and)_ '설정 가능 (settable)' 하기도 해야 하는 지를 지정합니다.
+
+만약 프로토콜의 필수 조건이 속성은 획득 가능하면서 설정도 가능해야 한다는 것이라면, 해당 속성 필수 조건을 상수 저장 속성이나 읽기-전용 계산 속성으로 충족시킬 수 없습니다. 만약 프로토콜의 필수 조건이 속성은 획득 가능하기만 하면 된다는 것이라면, 이 필수 조건은 어떤 종류의 속성으로도 만족시킬 수 있으며, 심지어 코드에서 유용하다면 이 속성을 설정도 가능하게 만들어도 상관 없습니다.
+
+속성 필수 조건은 항상, `var` 키워드를 사용하여, 변수 속성으로 선언합니다. '획득 가능하면서 설정도 가능한 (gettable and settable)' 속성은 자신의 타입 선언 뒤에 `{ get set}` 을 써서 지시하며, '획득 가능한 (gettable)' 속성은 `{ get }` 을 써서 지시합니다.
+
+```swift
+protocol SomeProtocol {
+  var mustBeSettable: Int { get set }
+  var doesNotNeedToBeSettable: Int { get }
+}
+```
+
+프로토콜 내에서 '타입 속성 필수 조건 (type property requirements)' 을 정의할 때는 `static` 키워드를 접두사로 항상 붙입니다. 이 규칙은 타입 속성 필수 조건을 클래스에서 구현할 때는 `class` 나 `static` 접두사가 붙게되더라도 상관없이 적용되는 것입니다:
+
+```swift
+protocol AnotherProtocol {
+  static var someTypeProperty: Int { get set }
+}
+```
+
+다음 예제는 단 하나의 인스턴스 속성 필수 조건을 가지고 있는 프로토콜입니다:
+
+```swift
+protocol FullyNamed {
+  var fullName: String { get }
+}
+```
 
 ### Method Requirements (메소드 필수 조건)
 
@@ -181,15 +234,13 @@ print(differentNumbers.allEqual())
 
 >(프로토콜을) 준수하는 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 세분화된 '구속 조건' 을 따르는 구현을 사용합니다.
 
-### 생각해보기
-
 ### 참고 자료
 
 [^Protocols]: 원문은 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 에서 확인할 수 있습니다.
 
-[^protocol]: `protocol`은 '규약'이라는 뜻을 갖고 있지만, 스위프트 언어에서는 하나의 keyword 이므로, `class`를 '클래스'라로 하듯이, 발음 그대로 '프로토콜'이라고 옮깁니다. 다만 필요한 경우에는 '규약' 이라는 의미를 살려서 번역하도록 하겠습니다.
+[^protocol]: `protocol` 은 '규약' 이라는 뜻을 갖고 있지만, 스위프트 언어에서는 '키워드 (keyword)' 로도 사용되므로, `class` 를 '클래스'라로 하듯이, 앞으로 '프로토콜' 이라고 옮기겠습니다. 다만 필요한 경우에는 '규약' 이라는 의미를 살려서 번역하도록 하겠습니다.
 
-[^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 좀 더 의미에 와닫게 '밑그림'이라는 단어로 옮겼습니다. 실제 구현이 아니라 따라야할 규약들만 정한다는 의미에서 밑그림이라는 단어를 선택했습니다.
+[^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 이는 과거에 제품 '설계 도면' 을 복사하던 방법이 파란색을 띄었기 때문입니다. Xcode 아이콘을 보시면 항상 망치 밑에 파란색 종이가 깔려 있는 것을 볼 수 있는데, 이것이 바로 '청사진 (blueprint)' 입니다. 여기서는 제품을 제작하기 위해 필요한 밑그림의 의미로 '설계 도면' 이라고 옮기도록 하겠습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
