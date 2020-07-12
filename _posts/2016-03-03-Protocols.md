@@ -79,13 +79,35 @@ protocol FullyNamed {
 
 ```swift
 struct Person: FullyNamed {
-    var fullName: String
+  var fullName: String
 }
 let john = Person(fullName: "John Appleseed")
 // john.fullName 은 "John Appleseed" 입니다.
 ```
 
+이 예제는, 이름이 지정된 사람을 나타내는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫 줄에서 자신이 `FullyNamed` 프로토콜을 채택하고 있음을 알립니다.
 
+`Person` 의 각 인스턴스는, 타입이 `String` 인, `fullName` 이라는 단일한 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일한 필수 조건과 들어 맞으며, `Person` 이 프로토콜을 올바르게 준수하고 있음을 의미하게 됩니다. (스위프트는 프로토콜의 필수 조건이 충족되지 않으면 컴파일-시간 에러를 보고합니다.)
+
+다음은, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 좀 더 복잡한 클래스입니다:
+
+```swift
+class Starship: FullyNamed {
+  var prefix: String?
+  var name: String
+  init(name: String, prefix: String? = nil) {
+    self.name = name
+    self.prefix = prefix
+  }
+  var fullName: String {
+    return (prefix != nil ? prefix! + " " : "") + name
+  }
+}
+var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
+// ncc1701.fullName 은 "USS Enterprise" 입니다.
+```
+
+이 클래스는 `fullName` 속성 필수 조건을 우주선에 대한 읽기-전용 계산 속성으로 구현합니다. 각 `Starship` 클래스 인스턴스는 의무적인 `name` 과 선택적인[^optional] `prefix` 를 저장합니다. `fullName` 속성은 `prefix` 값이 있다면 이것도, `name` 앞에 추가하여 우주선에 대한 전체 이름을 생성합니다.
 
 ### Method Requirements (메소드 필수 조건)
 
@@ -93,9 +115,9 @@ let john = Person(fullName: "John Appleseed")
 
 ### Initializer Requirements (초기자 필수 조건)
 
-**Class Implementation of Protocol Initializer Requirements**
+#### Class Implementation of Protocol Initializer Requirements
 
-**Failable Initializer Requirements**
+#### Failable Initializer Requirements
 
 ### Protocols as Types (타입으로써의 프로토콜)
 
@@ -152,9 +174,11 @@ for _ in 1...5 {
 
 ### Adding Protocol Conformance with an Extension
 
-**Conditionally Conforming to a Protocol**
+#### Conditionally Conforming to a Protocol
 
-**Declaring Protocol Adoption with and Extension**
+#### Declaring Protocol Adoption with and Extension
+
+### Adopting a Protocol Using a Synthesized Implementation
 
 ### Collections of Protocol Types
 
@@ -193,7 +217,7 @@ print("And here's a random Boolean: \(generator.randomBool())")
 ```
 프로토콜 확장은 준수 타입에 구현을 추가 할 수는 있지만, 다른 프로토콜을 확장하거나 상속하여 또 하나의 프로토콜을 만들 수는 없습니다. 프로토콜 상속은 항상 해당 프로토콜 선언 그 자체에 한정된 것입니다.
 
-**Providing Default Implementations (기본 구현 제공하기)**
+#### Providing Default Implementations (기본 구현 제공하기)
 
 프로토콜 확장을 사용하면 해당 프로토콜의 어떤 '메소드 필수 조건' 이나 '계산 속성 필수 조건' 에 대한 '기본 구현' 을 제공할 수 있습니다. 준수 타입이 '필수 (required)' 메소드나 속성에 대해 자체적으로 구현을 제공할 경우, 이 구현이 확장에 의해 제공된 것을 대체하여 사용됩니다.
 
@@ -209,7 +233,7 @@ extension PrettyTextRepresentable {
 }
 ```
 
-**Adding Constraints to Protocol Extensions (프로토콜을 확장할 때 구속 조건 추가하기)**
+#### Adding Constraints to Protocol Extensions (프로토콜을 확장할 때 구속 조건 추가하기)
 
 프로토콜 확장을 정의할 때 '구속 조건 (constraints)' 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 '구속 조건' 은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
 
@@ -255,6 +279,8 @@ print(differentNumbers.allEqual())
 [^protocol]: `protocol` 은 '규약' 이라는 뜻을 갖고 있지만, 스위프트 언어에서는 '키워드 (keyword)' 로도 사용되므로, `class` 를 '클래스'라로 하듯이, 앞으로 '프로토콜' 이라고 옮기겠습니다. 다만 필요한 경우에는 '규약' 이라는 의미를 살려서 번역하도록 하겠습니다.
 
 [^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 이는 과거에 제품 '설계 도면' 을 복사하던 방법이 파란색을 띄었기 때문입니다. Xcode 아이콘을 보시면 항상 망치 밑에 파란색 종이가 깔려 있는 것을 볼 수 있는데, 이것이 바로 '청사진 (blueprint)' 입니다. 여기서는 제품을 제작하기 위해 필요한 밑그림의 의미로 '설계 도면' 이라고 옮기도록 하겠습니다.
+
+[^optional]: 여기서 'optional' 을 '선택적인' 이라고 옮겼는데, 키워드의 의미로 '옵셔널' 로 옮기고 이해해도 상관은 없습니다. 이렇게 값이 있을 수도 있고 없을 수도 있는 '선택적인' 값을 나타내기 위해 '옵셔널' 을 만든 것이라 둘 다 무방한 경우입니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
