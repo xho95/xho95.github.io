@@ -44,7 +44,7 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 
 ### Property Requirements (속성 필수 조건)
 
-프로토콜은 특정한 이름과 타입을 가진 인스턴스 속성이나 타입 속성을 준수 타입이 필수로 제공하도록 만들 수 있습니다. 프로토콜은 이 속성이 저장 속성인지 계산 속성인지는 지정하지 않습니다-필수적인 속성 이름과 타입만을 지정합니다. 프로토콜은 또 각 속성이 반드시 '획득 가능 (gettable)' 한지 아니면 반드시 '획득 가능 (gettable)' _하면서 (and)_ '설정 가능 (settable)' 하기도 해야 하는 지를 지정합니다.
+프로토콜은 준수 타입이 특정 이름과 타입을 가진 인스턴스 속성 또는 타입 속성을 제공하도록 하는 필수 조건을 만들 수 있습니다. 프로토콜은 이 속성이 저장 속성인지 계산 속성인지는 지정하지 않습니다-필수적인 속성 이름과 타입만을 지정합니다. 프로토콜은 또 각 속성이 반드시 '획득 가능 (gettable)' 한지 아니면 반드시 '획득 가능 (gettable)' _하면서 (and)_ '설정 가능 (settable)' 하기도 해야 하는 지를 지정합니다.
 
 만약 프로토콜의 필수 조건이 속성은 획득 가능하면서 설정도 가능해야 한다는 것이라면, 해당 속성 필수 조건을 상수 저장 속성이나 읽기-전용 계산 속성으로 충족시킬 수 없습니다. 만약 프로토콜의 필수 조건이 속성은 획득 가능하기만 하면 된다는 것이라면, 이 필수 조건은 어떤 종류의 속성으로도 만족시킬 수 있으며, 심지어 코드에서 유용하다면 이 속성을 설정도 가능하게 만들어도 상관 없습니다.
 
@@ -111,15 +111,103 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 
 ### Method Requirements (메소드 필수 조건)
 
+프로토콜은 지정한 인스턴스 메소드와 타입 메소드를 준수 타입이 필수로 구현하도록 요구할 수 있습니다. 이러한 메소드를 프로토콜 정의 부분에 작성하는 방법은 일반적인 인스턴스 및 타입 메소드와 정확하게 똑같지만, 중괄호 또는 메소드 본문이 없습니다. 가변 매개 변수도, 일반직인 메소드에서와 같은 규칙을 따른다는 전제하에, 허용합니다. 메소드 매개 변수에 기본 설정 값을 지정하는 것은, 하지만, 프로토콜 정의 내에서 할 수 없습니다.
+
+타입 속성 필수 조건에서와 같이, 타입 메소드 필수 조건을 프로토콜에서 정의할 때는 `static` 키워드를 항상 접두사로 붙여야 합니다. 이는 타입 메소드 필수 조건을 클래스가 `static` 이나 `class` 를 써서 구현하게 되더라도 마찬가지입니다.
+
+```swift
+protocol SomeProtocol {
+  static func someTypeMethod()
+}
+```
+
+다음 예제는 단일한 인스턴스 메소드 필수 조건을 가진 프로토콜을 정의합니다:
+
+```swift
+protocol RandomNumberGenerator {
+  func random() -> Double
+}
+```
+
+이 프로토콜인, `RandomNumberGenerator` 는, 어떤 준수 타입이라도, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 인스턴스 메소드를 필수로 가질 것을 요구합니다. 비록 프로토콜 부분에서 지정되지 않았더라도, 이 값은 `0.0` 에서 (포함은 안되지만) `1.0` 에 이르는 수라고 가정합니다.
+
+`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 를 생성하는 방법에 대해서는 어떤 가정도 하지 않습니다-단순히 '생성기 (generator)' 가 새로운 난수를 생성하는 표준적인 방법을 필수로 제공하도록 요구할 뿐입니다.
+
+다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스에 대한 구현입니다. 이 클래스는 _선형 합동 생성기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사-난수 생성기 (pseudorandom number)' 알고리즘을 구현합니다.
+
+```swift
+class LinearCongruentialGenerator: RandomNumberGenerator {
+  var lastRandom = 42.0
+  let m = 139968.0
+  let a = 3877.0
+  let c = 29573.0
+  func random() -> Double {
+    lastRandom = ((lastRandom * a + c)
+      .truncatingRemainder(dividingBy:m))
+    return lastRandom / m
+  }
+}
+let generator = LinearCongruentialGenerator()
+print("Here's a random number: \(generator.random())")
+// "Here's a random number: 0.3746499199817101" 를 출력합니다.
+print("And another one: \(generator.random())")
+// "And another one: 0.729023776863283" 를 출력합니다.
+```
+
 ### Mutating Method Requirements (변경 메소드 필수 조건)
+
+때때로 메소드는 자신이 속해 있는 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드에서 `mutating` 키워드를 메소드의 `func` 키워드 앞에 붙이면 이 메소드가 자신이 속한 인스턴스 및 해당 인스턴스의 모든 속성을 수정할 수 있음을 지시하는 것입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드에서-값-타입-수정하기) 에서 설명했습니다.
+
+프로토콜을 채택하는 어떤 타입에 대해서든 인스턴스를 변경하려는 의도를 가진 '프로토콜 인스턴스 메소드 필수 조건 (protocol instance method requirements)' 을 정의하는 경우, 프로토콜을 정의할 때 이 메소드에 `mutating` 키워드를 표시하도록 합니다. 이는 구조체와 열거체가 이 프로토콜을 채택하고 해당 메소드 필수 조건을 만족할 수 있게 해줍니다.
+
+> 프로토콜 인스턴스 메소드 필수 조건을 `mutating` 으로 표시한 경우, 해당 메소드의 구현을 클래스에서 작성할 때 `mutating` 키워드를 붙일 필요가 없습니다. `mutating` 키워드는 구조체와 열거체에서만 사용되는 것입니다.
+
+아래 예제는, `toggle` 이라는 단일한 인스턴스 메소드 필수 조건을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름으로 알 수 있듯이, `toggle()` 메소드는 어떤 준수 타입이든, 해당 타입의 속성을 수정하는 것으로써, 타입의 상태를 전환하거나 반전합니다.
+
+`toggle()` 메소드는, 이 메소드를 호출할 때 준수 인스턴스의 상태를 변경하기를 지시하고자, `Togglable` 프로토콜 정의 부분에서 `mutating` 키워드로 표시했습니다:
+
+```swift
+protocol Togglable {
+  mutating func toggle()
+}
+```
+
+`Togglable` 프로토콜을 구조체나 열거체에서 구현하는 경우, `mutating` 으로 표시된 `toggle()` 메소드 구현을 제공하면 해당 구조체나 열거체가 이 프로토콜을 준수할 수 있습니다.
+
+아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, 열거체의 경우 값 `on` 과 `off` 로 나타내는, 두 상태 사이를 왔다갔다 합니다. 이 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 필수 조건에 들어 맞도록, `mutating` 으로 표시합니다:
+
+```swift
+enum OnOffSwitch: Togglable {
+  case off, on
+  mutating func toggle() {
+    switch self {
+    case .off:
+      self = .on
+    case .on:
+      self = .off
+    }
+  }
+}
+var lightSwitch = OnOffSwitch.off
+lightSwitch.toggle()
+// lightSwitch 는 이제 .on 입니다.
+```
 
 ### Initializer Requirements (초기자 필수 조건)
 
-#### Class Implementation of Protocol Initializer Requirements
+프로토콜은 지정한 초기자를 준수 타입이 필수로 구현하도록 요구할 수 있습니다. 이러한 초기자를 프로토콜 정의 부분에 작성하는 방법은 일반적인 초기자와 정확하게 똑같지만, 중괄호 또는 초기자 본문은 없습니다:
 
-#### Failable Initializer Requirements
+```swift
+protocol SomeProtocol {
+  init(someParameter: Int)
+}
+```
 
-### Protocols as Types (타입으로써의 프로토콜)
+#### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건을 클래스에서 구현하기)
+
+#### Failable Initializer Requirements (싪패 가능한 초기자 필수 조건)
+
+### Protocols as Types (프로토콜을 타입으로 사용하기)
 
 프로토콜은 실제로는 어떤 기능도 스스로 구현하지 않습니다. 그럼에도 불구하고 코드 내에서 온전한 타입인 것처럼 사용할 수 있습니다. 프로토콜을 타입인 것처럼 사용하는 것을 _실존 타입_ 이라 부르기도 하는데, 이것은 " 타입 T 는 **실** 제로 **존** 재하며, T 는 이 프로토콜을 준수한다" 는 문구에서 비롯된 것입니다.
 
@@ -281,6 +369,8 @@ print(differentNumbers.allEqual())
 [^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 이는 과거에 제품 '설계 도면' 을 복사하던 방법이 파란색을 띄었기 때문입니다. Xcode 아이콘을 보시면 항상 망치 밑에 파란색 종이가 깔려 있는 것을 볼 수 있는데, 이것이 바로 '청사진 (blueprint)' 입니다. 여기서는 제품을 제작하기 위해 필요한 밑그림의 의미로 '설계 도면' 이라고 옮기도록 하겠습니다.
 
 [^optional]: 여기서 'optional' 을 '선택적인' 이라고 옮겼는데, 키워드의 의미로 '옵셔널' 로 옮기고 이해해도 상관은 없습니다. 이렇게 값이 있을 수도 있고 없을 수도 있는 '선택적인' 값을 나타내기 위해 '옵셔널' 을 만든 것이라 둘 다 무방한 경우입니다.
+
+[^linear-congruential-generator]: '선형 합동 생성기' 는 널리 알려진 '유사난수 생성기' 라고 합니다. 다만 선형 합동 생성기는 인자와 마지막으로 생성된 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 난수 생성기는 아니라고합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
