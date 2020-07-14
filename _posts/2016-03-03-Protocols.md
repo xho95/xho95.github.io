@@ -205,6 +205,22 @@ protocol SomeProtocol {
 
 #### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건을 클래스에서 구현하기)
 
+프로토콜 초기자 필수 조건을 준수 클래스에서 구현할 때는 지명 초기자로 해도 되고 편의 초기자로 해도 됩니다. 두 가지 경우 모두, 초기자 구현시 반드시 `required` 수정자를 표시해야 합니다:
+
+```swift
+class SomeClass: SomeProtocol {
+  required init(someParameter: Int) {
+    // 여기서 초기자를 구현합니다.
+  }
+}
+```
+
+`required` 수정자를 사용하면 준수 클래스의 모든 하위 클래스에 대해서 명시적으로든 또는 상속을 받아서든 초기자 필수 조건의 구현을 제공한다는 것을 보장해서, 하위 클래스에서도 이 프로토콜을 준수하도록 합니다.
+
+필수 초기자에 대한 더 자세한 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 를 참고하기 바랍니다.
+
+> `final` 수정자로 표시한 클래스에서는 프로토콜 초기자 필수 조건을 `required` 수정자로 표시할 필요가 없는데, '최종 클래스 (final class)' 는 하위 클래스를 가지지 않기 때문입니다. `final` 수정자에 대해서는, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+
 #### Failable Initializer Requirements (싪패 가능한 초기자 필수 조건)
 
 ### Protocols as Types (프로토콜을 타입으로 사용하기)
