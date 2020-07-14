@@ -242,7 +242,7 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 }
 ```
 
-#### Failable Initializer Requirements (싪패 가능한 초기자 필수 조건)
+#### Failable Initializer Requirements (실패 가능한 초기자 필수 조건)
 
 프로토콜은, [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에서 정의한 것과 같이, 준수 타입에 대한 실패 가능한 초기자 필수 조건을 정의할 수 있습니다.
 
