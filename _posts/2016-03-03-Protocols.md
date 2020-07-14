@@ -221,7 +221,32 @@ class SomeClass: SomeProtocol {
 
 > `final` 수정자로 표시한 클래스에서는 프로토콜 초기자 필수 조건을 `required` 수정자로 표시할 필요가 없는데, '최종 클래스 (final class)' 는 하위 클래스를 가지지 않기 때문입니다. `final` 수정자에 대해서는, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
 
+만약 하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 초기자 필수 조건에 해당하는 것도 같이 구현하는 경우라면, 해당 초기자의 구현에는 `required` 와 `override` 수정자 둘 다 표시하도록 합니다:
+
+```swift
+protocol SomeProtocol {
+  init()
+}
+
+class SomeSuperClass {
+  init() {
+    // 여기서 초기자를 구현합니다.
+  }
+}
+
+class SomeSubClass: SomeSuperClass, SomeProtocol {
+  // "required" 는 SomeProtocol 을 준수하기 위함이고; "override" 는 SomeSuperClass 를 준수하기 위함입니다.
+  required override init() {
+    // 여기서 초기자를 구현합니다.
+  }
+}
+```
+
 #### Failable Initializer Requirements (싪패 가능한 초기자 필수 조건)
+
+프로토콜은, [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에서 정의한 것과 같이, 준수 타입에 대한 실패 가능한 초기자 필수 조건을 정의할 수 있습니다.
+
+실패 가능한 초기자 필수 조건은 준수 타입에서 실패 가능한 초기자 또는 실패하지 않는 초기자를 써서 만족시킬 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 암시적으로 포장이 풀리는 실패 가능한 초기자를 써서 만족시킬 수 있습니다.
 
 ### Protocols as Types (프로토콜을 타입으로 사용하기)
 
