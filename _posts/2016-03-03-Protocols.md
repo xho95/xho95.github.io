@@ -311,6 +311,7 @@ protocol DiceGame {
     var dice: Dice { get }
     func play()
 }
+
 protocol DiceGameDelegate: AnyObject {
     func gameDidStart(_ game: DiceGame)
     func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
@@ -318,7 +319,44 @@ protocol DiceGameDelegate: AnyObject {
 }
 ```
 
+`DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이라도 채택할 수 있는 프로토콜 입니다.
 
+`DiceGameDelegate` 프로토콜은 `DiceGame` 의 진행 상황을 추적하기 위해 채택할 수 있습니다. 강한 참조 순환을 막기 위해, 위임은 약한 참조로 선언됩니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 클래스-전용으로 표시하는 것[^class-only]은 이 장의 뒤에 있는 `SnakesAndLadders` 클래스가 이 위임을 반드시 약한 참조로 사용할 것을 선언하도록 합니다. 클래스-전용 프로토콜을 표시하는 방법은, [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 설명한 것처럼, `AnyObject` 를 상속하는 것입니다.
+
+다음은 원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 소개했었던 _뱀과 사다리 (Snakes and Ladders)_ 게임의 새로운 버전입니다. 이 버전은 주사위-굴림으로 `Dice` 인스턴스를 사용하기 위해; `DiceGame` 프로토콜을 채택하도록; 그리고 진행 상황을 `DiceGameDelegate` 에 알리기 위해; 개조된 것입니다:
+
+```swift
+class SnakesAndLadders: DiceGame {
+  let finalSquare = 25
+  let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
+  var square = 0
+  var board: [Int]
+  init() {
+    board = Array(repeating: 0, count: finalSquare + 1)
+    board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+    board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+  }
+  weak var delegate: DiceGameDelegate?
+  func play() {
+    square = 0
+    delegate?.gameDidStart(self)
+    gameLoop: while square != finalSquare {
+      let diceRoll = dice.roll()
+      delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
+      switch square + diceRoll {
+      case finalSquare:
+        break gameLoop
+      case let newSquare where newSquare > finalSquare:
+        continue gameLoop
+      default:
+        square += diceRoll
+        square += board[square]
+      }
+    }
+    delegate?.gameDidEnd(self)
+  }
+}
+```
 
 ### Adding Protocol Conformance with an Extension
 
@@ -332,7 +370,7 @@ protocol DiceGameDelegate: AnyObject {
 
 ### Protocol Inheritance
 
-### Class-Only Protocols
+### Class-Only Protocols (클래스-전용 프로토콜)
 
 ### Protocol Composition
 
@@ -434,7 +472,7 @@ print(differentNumbers.allEqual())
 
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
-[^delegate]: 여기서의 'delegate' 는 명사로써 위임된 기능을 수행하는 '대리인' 이라는 의미를 가지도록 옮겼습니다.
+[^delegate]: 여기서의 'delegate' 는 명사로써 위임된 기능을 수행하는 '대리인' 이라는 의미를 가지도록 옮겼습니다. 특별히 필요한 경우가 아니라면 그냥 '위임' 이라고 옮기도록 하겠습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
