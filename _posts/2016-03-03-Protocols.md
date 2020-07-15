@@ -372,6 +372,18 @@ class SnakesAndLadders: DiceGame {
 
 ### Class-Only Protocols (클래스-전용 프로토콜)
 
+프로토콜의 채택을 클래스 타입만 (그리고 구조체나 열거체는 안되도록) 제한하려면 프로토콜의 상속 목록에 `AnyObject` 프로토콜을 추가하면 됩니다.
+
+```swift
+protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
+  // 여기서 클래스-전용 프로토콜을 정의합니다.
+}
+```
+
+위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. 구조체나 열거체 정의에서 `SomeClassOnlyProtocol` 을 채택한다고 작성하는 것은 '컴파일-시간 에러' 가 됩니다.
+
+> 클래스-전용 프로토콜을 사용하는 것은 프로토콜의 필수 조건으로 정의한 작동 방식이 가정하거나 요구하는 준수 타입이 값 의미 구조가 아니라 참조 의미 구조를 가질 때 입니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 와 [Classes Are Reference Types (클래스는 참조 타입입니다)](#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하기 바랍니다.
+
 ### Protocol Composition
 
 ### Checking for Protocol Conformance (프로토콜 준수 검사하기)
