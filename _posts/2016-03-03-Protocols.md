@@ -283,7 +283,6 @@ class Dice {
 
 `Dice` 는, 초기 상태를 설정하기 위한, 초기자도 가지고 있습니다. 이 초기자, 역시 타입이 `RandomNumberGenerator` 인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때 해당 매개 변수에 어떤 준수 타입의 값이라도 전달 할 수 있습니다.
 
-
 `Dice` 는, '1' 에서 '주사위-면 개수' 사이의 정수 값을 반환하는, `roll` 이라는, 인스턴스 메소드 하나를 제공합니다. 이 메소드는 생성기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수를 사용하여 올바른 범위의 '주사위 굴림 값' 을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택하는 것을 알고 있기 때문에, 호출할 `random()` 메소드가 있음이 보증된 것입니다.
 
 다음은 `LinearCongruentialGenerator` 인스턴스를 난수 생성기로 가지는 6-면체 주사위를 어떻게 `Dice` 클래스로 생성하는 지를 보여줍니다:
@@ -301,7 +300,25 @@ for _ in 1...5 {
 // Random dice roll is 4
 ```
 
-### Delegation
+### Delegation (위임)
+
+_위임 (delegation)_ 은 클래스나 구조체가 책임의 일부를 다른 타입의 인스턴스에게로 넘기기-또는 _위임 (delegate)_-할 수 있게 해주는 '디자인 패턴 (design pattern)' 입니다. 이 '디자인 패턴' 은 위임된 책임을 '은닉하는 (encapsulates)' 프로토콜의 정의로 구현하여, ('대리인 (delegate)'[^delegate] 이라고 하는) 준수 타입이 위임된 기능을 제공할 것을 보증합니다. 위임은 특정한 동작에 응답하기 위해서, 또는 해당 소스의 실제 타입을 알 필요 없이 외부 소스의 데이터를 조회하기 위해서, 사용할 수 있습니다.
+
+아래 예제는 주사위-기반 보드 게임에서 사용할 두 개의 프로토콜을 정의합니다:
+
+```swift
+protocol DiceGame {
+    var dice: Dice { get }
+    func play()
+}
+protocol DiceGameDelegate: AnyObject {
+    func gameDidStart(_ game: DiceGame)
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+    func gameDidEnd(_ game: DiceGame)
+}
+```
+
+
 
 ### Adding Protocol Conformance with an Extension
 
@@ -416,6 +433,8 @@ print(differentNumbers.allEqual())
 [^linear-congruential-generator]: '선형 합동 생성기' 는 널리 알려진 '유사난수 생성기' 라고 합니다. 다만 선형 합동 생성기는 인자와 마지막으로 생성된 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 난수 생성기는 아니라고합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
 
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
+
+[^delegate]: 여기서의 'delegate' 는 명사로써 위임된 기능을 수행하는 '대리인' 이라는 의미를 가지도록 옮겼습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
