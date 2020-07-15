@@ -276,15 +276,17 @@ class Dice {
 }
 ```
 
-이 예제는 `Dice` 라는 새로운 클래스로 보드 게임에 사용될 n면체 주사위를 정의합니다. `Dice` 인스턴스에 있는 `sides` 라는 정수 속성은 주사위-면의 개수를 나타내며, `generator` (생성기) 라는 속성은 난수 발생기를 제공하여 '주사위 굴림 값'을 생성합니다.
+이 예제는, 보드 게임에 사용될 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스는, (주사위) 면이 몇 개인지를 나타내는, `sides` 라는 정수 속성을 가지며, '주사위 굴림 값 (dice roll values)' 을 생성하기 위한 '난수 발생기 (random number generator)' 를 제공하는, `generator` 라는 속성을 가지고 있습니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 따라서 `RandomNumberGenerator` 프로토콜을 따른다면 어떤 타입의 인스턴스라도 설정할 수 있습니다. 이 속성에 할당하는 인스턴스로 필요한 사항은 반드시 `RandomNumberGenerator` 프로토콜을 따라야 한다는 것 한가지 뿐입니다. 타입이  `RandomNumberGenerator` 이므로, 이 프로토콜을 준수하는 모든 생성기들 (generators) 에 (공통으로) 적용되는 방식으로만, `Dice` 클래스와 `generator` 가 상호 작용할 수 있습니다. 이 말은 생성기의 실제 타입 (underlying type) 에 정의된 메소드나 속성은 사용할 수 없다는 의미입니다. 하지만 상위 클래스에서 하위 클래스로 '내림 변환 (downcast)' 이 가능한 것처럼 프로토콜 타입에서 실제 타입으로 내림 형변환이 가능하긴 합니다. 이는 [Downcasting (내림 변환하기)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환하기) 에서 설명합니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스라도 설정할 수 있습니다.
+이 속성에 할당하는 인스턴스는, 인스턴스가 `RandomNumberGenerator` 프로토콜을 반드시 채택[^adopt]해야 한다는 것만 빼면, 다른 건 아무 것도 필요하지 않습니다. 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 해당 프로토콜을 준수하는 모든 '생성기 (generator)' 에 적용되는 방식인 `generator` 하고만 상호 작용합니다. 이는 생성기의 실제 타입에서 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 것을 의미합니다. 하지만, [Downcasting (내림 변환하기)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환하기) 에서 설명한 것처럼, 상위 클래스를 하위 클래스로 내림 변환하는 것과 똑같은 방법으로 프로토콜 타입을 실제 타입으로 내림 변환할 수 있습니다.
 
-`Dice` 는 초기 상태를 설정하는 초기자 (initializer) 도 가지고 있습니다. 이 초기자는 `generator` 라는 매개 변수를 가지는데, 타입은 역시  `RandomNumberGenerator` 입니다. 이를 준수하는 타입이라면 아무 값이라도 사용하여 새 `Dice` 인스턴스를 초기화 할 수 있습니다.
+`Dice` 는, 초기 상태를 설정하기 위한, 초기자도 가지고 있습니다. 이 초기자, 역시 타입이 `RandomNumberGenerator` 인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때 해당 매개 변수에 어떤 준수 타입의 값이라도 전달 할 수 있습니다.
 
-`Dice` 의 인스턴스 메소드는 `roll` 한 개 뿐이며, '1' 과 '주사위-면 개수' 사이의 정수 값을 반환합니다. 이 메소드는 생성기의 `random()` 메소드를 호출하여 0.0 과 1.0 사이의 새로운 난수를 생성한 다음, 이 난수를 사용하여 올바른 범위 내에 있는 '주사위 굴림 값'을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 따르고 있기 때문에, 호출할 수 있는 `random()` 메소드를 가지고 있음이 보장됩니다.
 
-`Dice` 클래스를 사용하여 `LinearCongruentialGenerator` 인스턴스를 난수 생성기로 가지는 6면체 주사위를 만드는 방법은 다음과 같습니다:
+`Dice` 는, '1' 에서 '주사위-면 개수' 사이의 정수 값을 반환하는, `roll` 이라는, 인스턴스 메소드 하나를 제공합니다. 이 메소드는 생성기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수를 사용하여 올바른 범위의 '주사위 굴림 값' 을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택하는 것을 알고 있기 때문에, 호출할 `random()` 메소드가 있음이 보증된 것입니다.
+
+다음은 `LinearCongruentialGenerator` 인스턴스를 난수 생성기로 가지는 6-면체 주사위를 어떻게 `Dice` 클래스로 생성하는 지를 보여줍니다:
 
 ```swift
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
@@ -412,6 +414,8 @@ print(differentNumbers.allEqual())
 [^optional]: 여기서 'optional' 을 '선택적인' 이라고 옮겼는데, 키워드의 의미로 '옵셔널' 로 옮기고 이해해도 상관은 없습니다. 이렇게 값이 있을 수도 있고 없을 수도 있는 '선택적인' 값을 나타내기 위해 '옵셔널' 을 만든 것이라 둘 다 무방한 경우입니다.
 
 [^linear-congruential-generator]: '선형 합동 생성기' 는 널리 알려진 '유사난수 생성기' 라고 합니다. 다만 선형 합동 생성기는 인자와 마지막으로 생성된 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 난수 생성기는 아니라고합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
+
+[^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
