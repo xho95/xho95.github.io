@@ -358,6 +358,40 @@ class SnakesAndLadders: DiceGame {
 }
 ```
 
+_뱀과 사다리 (Snakes and Ladders)_ 게임 플레이에 대한 설명은, [Break (Break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 을 참고하기 바랍니다.
+
+이 버전의 게임은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 '포장됩니다 (wrapped up)'. 이는 프로토콜을 준수하기 위해 획득 가능한 `dice` 속성과 `play()` 메소드를 제공합니다. (`dice` 속성은 초기화 이후 바뀔 필요가 없기 때문에 상수 속성으로 선언 했으며, 프로토콜은 이것이 반드시 '획득 가능한' 것이기 만을 요구합니다.)
+
+_뱀과 사다리 (Snakes and Ladders)_ 게임 판 설정은 클래스의 `init()` 초기자 내에서 일어납니다. 모든 게임 로직은 프로토콜의 `play` 메소드 속으로 옮겨지며, 여기서 주사위 굴림 값을 제공하는 `dice` 라는 프로토콜의 필수 속성을 사용합니다.
+
+게임을 플레이하기 위해 '대리인(delegate; 위임)' 이 필수인 것은 아니기 때문에, `delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 로 정의된 것에 주목하기 바랍니다. 옵셔널 타입이기 때문에, `delegate` 속성은 자동으로 `nil` 이라는 초기 값으로 설정됩니다. 그 이후, '게임 인스턴스를 만드는 부분'[^instantiator] 에서 이 속성에 적절한 '대리인 (delegate; 위임)' 을 설정할 기회를 가집니다. `DiceGameDelegate` 프로토콜은 클래스-전용이기 때문에, ''대리인 (delegate; 위임)' 을 `weak` 로 선언해야 참조 순환을 막을 수 있습니다.
+
+`DiceGameDelegate` 는 게임의 진행 상황을 추적하기 위한 세 개의 메소드를 제공합니다. 이 세 메소드는 위의 `play()` 메소드 속에 있는 게임 로직으로 편입되어, 새로운 게임이 시작할 때, 새로운 차례 (turn) 를 시작할 때, 또는 게임이 끝날 때 호출합니다.
+
+`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리인 (delegate)' 에 대한 메소드를 호출할 때마다 '옵셔널 체이닝 (optional chaining)' 을 사용합니다. `delegate` 속성이 'nil' 인 경우, 이 '대리인 (delegate)' 호출은 에러 없이 우아하게 실패합니다. `delegate` 속성이 'nil-이 아닌' 경우, '대리인 메소드 (delegate method)' 를 호출하며, `SnakesAndLadders` 인스턴스를 매개 변수로 전달[^snakes-and-ladders-instance]합니다.
+
+이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택하는, `DiceGameTracker` 라는 클래스를 보여줍니다:
+
+```swift
+class DiceGameTracker: DiceGameDelegate {
+  var numberOfTurns = 0
+  func gameDidStart(_ game: DiceGame) {
+    numberOfTurns = 0
+    if game is SnakesAndLadders {
+      print("Started a new game of Snakes and Ladders")
+    }
+    print("The game is using a \(game.dice.sides)-sided dice")
+  }
+  func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+    numberOfTurns += 1
+    print("Rolled a \(diceRoll)")
+  }
+  func gameDidEnd(_ game: DiceGame) {
+    print("The game lasted for \(numberOfTurns) turns")
+  }
+}
+```
+
 ### Adding Protocol Conformance with an Extension
 
 #### Conditionally Conforming to a Protocol
@@ -485,6 +519,10 @@ print(differentNumbers.allEqual())
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
 [^delegate]: 여기서의 'delegate' 는 명사로써 위임된 기능을 수행하는 '대리인' 이라는 의미를 가지도록 옮겼습니다. 특별히 필요한 경우가 아니라면 그냥 '위임' 이라고 옮기도록 하겠습니다.
+
+[^instantiator]: 이걸 본문에서 'instantiator' 라는 말로 표현했는데, 적당한 말이 없어서 그냥 '인스턴스를 만드는 부분' 으로 옮겼습니다. 아마도 실제 게임을 구현한다면 일종의 'game manager' 역할을 하는 것으로 게임 인스턴스를 만들 수 있을 것입니다. 그 때, 해당 'game manager' 를 'inistantiator' 라고 부르게 되는 것 같습니다.
+
+[^snakes-and-ladders-instance]: 여기서 `SnakesAndLadders` 인스턴스를 매개 변수로 전달하는 것은 각 메소드이 호출에 있는 `self` 인자를 말합니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
