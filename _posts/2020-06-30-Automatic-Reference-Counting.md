@@ -163,7 +163,7 @@ unit4A = nil
 
 다음은 `john` 과 `unit4A` 변수를 `nil` 로 설정한 후 '강한 참조' 가 어떻게 보이는지를 나타냅니다:
 
-![Strong Reference Remaining](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.png)
+![Strong Reference Remaining](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.jpg)
 
 `Person` 인스턴스와 `Apartment` 인스턴스 사이의 '강한 참조' 는 남아 있으며 끊을 수가 없습니다.
 
