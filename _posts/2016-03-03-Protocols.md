@@ -414,7 +414,51 @@ game.play()
 // The game lasted for 4 turns / 이 게임은 4턴 동안 지속됐습니다.
 ```
 
-### Adding Protocol Conformance with an Extension
+### Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)
+
+기존 타입을 확장해서 새로운 프로토콜을 채택하고 준수하도록 만들 수 있으며, 이 때 기존 타입에 대한 소스 코드에 접근할 수 없는 경우라도 상관없습니다. '익스텐션 (extensions; 확장)' 은 기존 타입에 새로운 속성, 메소드, 그리고 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구하는 어떤 필수 조건이라도 추가할 수 있습니다. '익스텐션' 에 대한 더 많은 내용은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+
+> 어떤 타입에서 이미 존재하고 있는 인스턴스는 '익스텐션' 에서 인스턴스의 타입에 '준수성 (conformance)' 이 추가되면 자동으로 해당 프로토콜을 채택하고 춘수하게 됩니다.
+
+예를 들어, `TextRepresentable` 이라는, 이 프로토콜은 '문장 (text)' 으로 표현할 방법을 가지고 있는 어떤 타입이라도 구현할 수 있습니다. 이것은 스스로에 대한 설명일 수도 있고, 현재 상태를 문장으로 나타낸 것일 수도 있습니다:
+
+```swift
+protocol TextRepresentable {
+  var textualDescription: String { get }
+}
+```
+
+위에 있는 `Dice` 클래스는 `TextRepresentable` 을 채택하고 준수하도록 확장할 수 있습니다:
+
+```swift
+extension Dice: TextRepresentable {
+  var textualDescription: String {
+    return "A \(sides)-sided dice"
+  }
+}
+```
+
+이 '익스텐션 (extension)' 은 마치 `Dice` 가 원래 구현에서 부터 이를 제공한 것과 정확하게 같은 방법으로 새로운 프로토콜을 채택합니다. 이 프로토콜 이름은 타입 이름 뒤에, 콜론으로 구분하여 제공하며, '익스텐션' 의 중괄호 내에서 프로토콜의 모든 필수 조건을 구현합니다.
+
+이제 어떤 `Dice` 인스턴스라도 `TextRepresentable` 처럼 다룰 수 있습니다:
+
+```swift
+let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
+print(d12.textualDescription)
+// "A 12-sided dice" 를 출력합니다.
+```
+
+이와 비슷하게, `SnakesAndLadders` 게임 클래스를 확장하여 `TextRepresentable` 프로토콜을 채택하고 준수하도록 만들 수 있습니다:
+
+```swift
+extension SnakesAndLadders: TextRepresentable {
+  var textualDescription: String {
+    return "A game of Snakes and Ladders with \(finalSquare) squares"
+  }
+}
+print(game.textualDescription)
+// "A game of Snakes and Ladders with 25 squares" 를 출력합니다.
+```
 
 #### Conditionally Conforming to a Protocol
 
