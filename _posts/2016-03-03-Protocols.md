@@ -460,9 +460,48 @@ print(game.textualDescription)
 // "A game of Snakes and Ladders with 25 squares" 를 출력합니다.
 ```
 
-#### Conditionally Conforming to a Protocol
+#### Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)
 
-#### Declaring Protocol Adoption with and Extension
+'일반화된 타입 (generic type; 제네릭 타입)'[^generic-type] 은, 가령 타입의 '일반화된 매개 변수 (generic parameter; 제네릭 매개 변수)'가 그 프로토콜을 준수할 때와 같이, 지정된 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. '일반화된 타입 (generic type)' 이 조건에 따라 프로토콜을 준수하도록 만들려면 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하면 됩니다. 이러한 '구속 조건' 을 채택하려는 프로토콜의 이름 뒤에 나열하는 것은 '일반화된 `where` 구절 (generic `where` clause)' 을 사용하여 작성합니다. '일반화된 `where` 구절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화된 where 구절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-where-구절) 을 참고하기 바랍니다.
+
+다음의 '익스텐션 (extension)' 은 `TextRepresentable` 을 준수하는 타입의 원소를 저장할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하도록 만듭니다.
+
+```swift
+extension Array: TextRepresentable where Element: TextRepresentable {
+  var textualDescription: String {
+    let itemsAsText = self.map { $0.textualDescription }
+    return "[" + itemsAsText.joined(separator: ", ") + "]"
+  }
+}
+let myDice = [d6, d12]
+print(myDice.textualDescription)
+// "[A 6-sided dice, A 12-sided dice]" 를 출력합니다.
+```
+
+#### Declaring Protocol Adoption with and Extension (확장으로 프로토콜 채택 선언하기)
+
+만약 타입이 이미 프로토콜의 모든 필수 조건을 준수하고 있지만, 아직 해당 프로토콜을 채택한다고 알리지 않은 경우라면, 비어 있는 '익스텐션 (extension)' 으로 그 프로토콜을 채택하게 만들 수 있습니다:
+
+```swift
+struct Hamster {
+    var name: String
+    var textualDescription: String {
+        return "A hamster named \(name)"
+    }
+}
+extension Hamster: TextRepresentable {}
+```
+
+이제 `TextRepresentable` 이 필수 타입이라고 요구하는 곳에서도 `Hamster` 의 인스턴드를 사용할 수 있습니다:
+
+```swift
+let simonTheHamster = Hamster(name: "Simon")
+let somethingTextRepresentable: TextRepresentable = simonTheHamster
+print(somethingTextRepresentable.textualDescription)
+// "A hamster named Simon" 를 출력합니다.
+```
+
+> 타입은 필수 조건을 만족한다고 해서 자동으로 프로토콜을 채택하는 것이 아닙니다. 그 프로토콜을 채택한다고 반드시 항상 명시적으로 선언해야 합니다.[^adoption]
 
 ### Adopting a Protocol Using a Synthesized Implementation
 
@@ -589,6 +628,10 @@ print(differentNumbers.allEqual())
 [^instantiator]: 이걸 본문에서 'instantiator' 라는 말로 표현했는데, 적당한 말이 없어서 그냥 '인스턴스를 만드는 부분' 으로 옮겼습니다. 아마도 실제 게임을 구현한다면 일종의 'game manager' 역할을 하는 것으로 게임 인스턴스를 만들 수 있을 것입니다. 그 때, 해당 'game manager' 를 'inistantiator' 라고 부르게 되는 것 같습니다.
 
 [^snakes-and-ladders-instance]: 여기서 `SnakesAndLadders` 인스턴스를 매개 변수로 전달하는 것은 각 메소드이 호출에 있는 `self` 인자를 말합니다.
+
+[^generic-type]: 여기서 '일반화된 타입 (generic type)' 은 프로그래밍에서 사용하는 그 '제네릭' 이 맞습니다. 영어로 '제네릭 (generic)' 자체가 '일반화되었다' 는 의미를 담고 있습니다.
+
+[^adoption]: 이것이 스위프트에서 'adoption (채택)' 과 'conformance (준수)' 를 명확하게 구분해서 사용하는 이유일 것입니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
