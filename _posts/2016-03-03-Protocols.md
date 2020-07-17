@@ -715,6 +715,56 @@ beginConcert(in: seattle)
 
 ### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
+[Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) 에서 설명한 `is` 와 `as` 연산자를 사용하면 프로토콜 준수성을 검사할 수 있고, 지정된 프로토콜로 변환할 수도 있습니다. 프로토콜을 검사하고 변환하는 것은 타입을 검사하고 변환하는 것과 정확하게 같은 구문 표현을 따릅니다:
+
+* `is` 연산자는 인스턴스가 프로토콜을 준수하면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다.
+* `as?` 버전의 '내림 변환 (downcast)' 연산자는 프로토콜 타입의 옵셔널 값을 반환하는데, 인스턴스가 해당 프로토콜을 준수하지 않을 경우 값이 `nil` 이 됩니다.
+* `as!` 버전의 '내림 변환 (downcast)' 연산자는 프로토콜 타입으로 강제로 내림 변환하는데 이 내림 변환을 성공하지 못할 경우 실행 시간 에러를 발생시킵니다.
+
+다음 예제는 `area` 라는 획득 가능한 `Double` 속성인 단일 속성 필수 조건을 가지고 있는, `HasArea` 라는 프로토콜을 정의합니다:
+
+```swift
+protocol HasArea {
+  var area: Double { get }
+}
+```
+
+다음은, `Circle` 과 `Country` 라는 두 클래스인데, 이 둘 모두 `HasArea` 프로토콜을 준수합니다:
+
+```swift
+class Circle: HasArea {
+  let pi = 3.1415927
+  var radius: Double
+  var area: Double { return pi * radius * radius }
+  init(radius: Double) { self.radius = radius }
+}
+class Country: HasArea {
+  var area: Double
+  init(area: Double) { self.area = area }
+}
+```
+
+`Circle` 클래스는, `radius` 라는 저장 속성을 기반으로, `area` 속성 필수 조건을 계산 속성으로 구현합니다. `Country` 클래스는 `area` 필수 조건을 저장 속성으로 직접 구현합니다. 두 클래스 모두 올바르게 `HasArea` 프로토콜을 준수하고 있습니다.
+
+다음은, `Animal` 이라는 클래스인데, 이는 `HasArea` 프로토콜을 준수하지 않습니다:
+
+```swift
+class Animal {
+  var legs: Int
+  init(legs: Int) { self.legs = legs }
+}
+```
+
+`Circle`, `Country`, 그리고 `Animal` 클래스에는 서로 공유하는 '기본 클래스 (base class)' 가 없습니다. 그럼에도 불구하고, 이들은 모두 클래스이므로, 이 세 가지 타입의 인스턴스를 모두 사용하여 `AnyObject` 타입의 값을 저장하는 배열을 초기화할 수 있습니다:
+
+```swift
+let objects: [AnyObject] = [
+  Circle(radius: 2.0),
+  Country(area: 243_610),
+  Animal(legs: 4)
+]
+```
+
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
 ### Protocol Extensions (프로토콜 확장)
@@ -796,8 +846,6 @@ print(differentNumbers.allEqual())
 ```
 
 >(프로토콜을) 준수하는 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 세분화된 '구속 조건' 을 따르는 구현을 사용합니다.
-
-#### Adding Constraints to Protocol Extensions
 
 ### 참고 자료
 
