@@ -503,7 +503,61 @@ print(somethingTextRepresentable.textualDescription)
 
 > 타입은 필수 조건을 만족한다고 해서 자동으로 프로토콜을 채택하는 것이 아닙니다. 그 프로토콜을 채택한다고 반드시 항상 명시적으로 선언해야 합니다.[^adoption]
 
-### Adopting a Protocol Using a Synthesized Implementation
+### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
+
+스위프트는 많은 경우 `Equatable`, `Hashable`, 및 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수도 있습니다. 이 '통합된 (synthesized)'[^synthesized] 구현을 사용한다는 것은 프로토콜 필수 조건을 직접 구현하기 위해 '획일적인 (bolilerplate)' 코드를 반복해서 작성할 필요가 없다는 것을 의미합니다.
+
+스위프트는 다음과 같은 종류의 사용자 정의 타입에 대해서 `Equatable` 의 '통합된 구현' 을 제공합니다:
+
+* `Equatable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
+* `Equatable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
+* '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
+
+`==` 의 통합된 구현을 부여 받으려면, `==` 연산자를 직접 구현하지 말고, 원래의 선언을 담고 있는 파일[^original-declaration]에서 `Equatable` 에 대한 '준수성 (conformance)' 을 선언하기 바랍니다. `Equatable` 프로토콜은 `!=` 에 대한 기본 구현을 제공합니다.
+
+아래 예제는, `Vector2D` 구조체와 비슷하게, 3-차원 위치 벡터 `(x, y, z)` 에 대한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성은 모두 `Equatable` 타입이므로, `Vector3D` 는 '같음 비교 연산자 (equivalence operators)' 에 대한 통합된 구현을 부여 받습니다.
+
+```swift
+struct Vector3D: Equatable {
+  var x = 0.0, y = 0.0, z = 0.0
+}
+
+let twoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+if twoThreeFour == anotherTwoThreeFour {
+  print("These two vectors are also equivalent.")
+}
+// "These two vectors are also equivalent." 를 출력합니다.
+```
+
+스위프트는 다음과 같은 종류의 사용자 정의 타입에 대해서 `Hashable` 의 '통합된 구현' 을 제공합니다:
+
+* `Hashable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
+* `Hashable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
+* '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
+
+`hash(into:)` 의 통합된 구현을 부여 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, 원래의 선언을 담고 있는 파일에서 `Hashable` 에 대한 '준수성 (conformance)' 을 선언하기 바랍니다.
+
+스위프트는 '원시 값 (raw value)' 을 가지고 있지 않은 열거체를 위해 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 만약 열거체가 '결합된 타입' 들을 가진다면, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합된 구현을 부여 받으려면, `<` 연산자를 직접 구현하지 말고, 원래의 열거체 선언을 담고 있는 파일에서 `Comparable` 에 대한 '준수성 (conformance)' 을 선언하기 바랍니다. `<=`, `>`, 및 `>=` 에 대한 `Comparable` 프로토콜의 기본 구현은 남아 있는 비교 연산자들을 제공합니다.
+
+아래 예제는 초보자, 중급자, 및 전문가에 대한 '경우 값 (cases)' 을 가지는 `SkillLevel` 열거체를 정의합니다. 전문가는 추가적으로 자신들이 보유한 별의 개수로 등급이 나뉩니다.
+
+```swift
+enum SkillLevel: Comparable {
+  case beginner
+  case intermediate
+  case expert(stars: Int)
+}
+var levels = [SkillLevel.intermediate, SkillLevel.beginner,
+              SkillLevel.expert(stars: 5), SkillLevel.expert(stars: 3)]
+for level in levels.sorted() {
+    print(level)
+}
+// "beginner" 를 출력합니다.
+// "intermediate" 를 출력합니다.
+// "expert(stars: 3)" 를 출력합니다.
+// "expert(stars: 5)" 를 출력합니다.
+```
 
 ### Collections of Protocol Types
 
@@ -632,6 +686,10 @@ print(differentNumbers.allEqual())
 [^generic-type]: 여기서 '일반화된 타입 (generic type)' 은 프로그래밍에서 사용하는 그 '제네릭' 이 맞습니다. 영어로 '제네릭 (generic)' 자체가 '일반화되었다' 는 의미를 담고 있습니다.
 
 [^adoption]: 이것이 스위프트에서 'adoption (채택)' 과 'conformance (준수)' 를 명확하게 구분해서 사용하는 이유일 것입니다.
+
+[^synthesized]: 본문에서 '통합된 구현 (synthesized implementation)' 이라는 것은 스위프트 내부에 이미 구현되어 있는 것을 의미합니다. 즉 `Equatable` 프로토콜을 준수하는 코드는 우리가 따로 만들 수도 있겠지만, 스위프트가 제공하는 '통합된 구현' 을 사용하면 더 쉽게 작성할 수 있다는 의미입니다.
+
+[^original-declaration]: 본문에서 '원래의 선언 (original declaration) 을 담고 있는 파일' 이라는 말을 사용하는 것을 볼 때, 다른 파일에서 `Equatable` 에 대한 '준수성 (conformance)' 를 작성한다고 해서 '통합된 구현' 을 사용할 수 있는 것은 아니라는 것을 추측할 수 있습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
