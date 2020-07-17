@@ -649,7 +649,69 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 > 클래스-전용 프로토콜을 사용하는 것은 프로토콜의 필수 조건으로 정의한 작동 방식이 가정하거나 요구하는 준수 타입이 값 의미 구조가 아니라 참조 의미 구조를 가질 때 입니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 와 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하기 바랍니다.
 
-### Protocol Composition
+### Protocol Composition (프로토콜 조합)
+
+타입이 여러 개의 프로토콜을 준수하도록 요구할 때 이를 동시에 할 수 있다면 좋을 것입니다. _프로토콜 조합 (protocol composition)_ 을 사용하면 여러 개의 프로토콜을 단일한 필수 조건으로 병합할 수 있습니다. '프로토콜 조합' 은 마치 임시 지역 프로토콜을 정의해서 조합에 있는 모든 프로토콜의 필수 조건을 병합한 것처럼 동작합니다. '프로토콜 조합' 은 어떤 새 프로토콜 타입을 정의하는 것이 아닙니다.
+
+프로토콜 조합은 `SomeProtocol & AnotherProtocol` 과 같은 양식을 가집니다. 필요한 만큼 많은 개수의 프로토콜을, '앤드 기호 (`&`; 앰퍼샌드)' 로 구분하여, 나열할 수 있습니다. 프로토콜을 나열하는 것 외에도, 프로토콜 조합은 하나의 클래스 타입도 담을 수 있어서, 이것으로 '필수 상위 클래스 (required superclass)' 를 지정할 수 있습니다.
+
+다음은 `Named` 와 `Aged` 라는 두 개의 프로토콜을 함수 매개 변수에 대한 단일 '프로토콜 조합 필수 조건' 으로 조합하는 예제입니다:
+
+```swift
+protocol Named {
+  var name: String { get }
+}
+protocol Aged {
+  var age: Int { get }
+}
+struct Person: Named, Aged {
+  var name: String
+  var age: Int
+}
+func wishHappyBirthday(to celebrator: Named & Aged) {
+  print("Happy birthday, \(celebrator.name), you're \(celebrator.age)!")
+}
+let birthdayPerson = Person(name: "Malcolm", age: 21)
+wishHappyBirthday(to: birthdayPerson)
+// "Happy birthday, Malcolm, you're 21!" 를 출력합니다.
+```
+
+이 예제에서, `Named` 프로토콜은 `name` 이라는 획득 가능한 `String` 속성에 대한 단일한 필수 조건을 가집니다. `Aged` 프로토콜은 `age` 라는 획득 가능한 `Int` 속성에 대한 단일 필수 조건을 가지고 있습니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택하고 있습니다.
+
+이 예제는 `wishHappyBirthday(to:)` 라는 함수도 정의합니다. `celebrator` 매개 변수의 타입은 `Named & Aged` 인데, 이는 "`Named` 와 `Aged` 프로토콜을 모두 준수하는 어떤 타입" 을 의미합니다. 두 필수 프로토콜을 모두 준수하는 한, 어떤 타입이 함수에 전달되는 지는 별로 중요하지 않습니다.
+
+그런 다음 이 예제는 `birthdayPerson` 이라는 새 `Person` 인스턴스를 생성하고 이 새 인스턴스를 `wishHappyBirthday(to:)` 함수로 전달합니다. `Person` 은 두 프로토콜을 모두 준수하므로, 이 호출은 유효하며, `wishHappyBirthday(to:)` 함수가 생일 인사말을 출력할 수 있습니다.
+
+다음은 이전 예제에 있는 `Named` 프로토콜과 `Location` 클래스를 병합하는 예제입니다:
+
+```swift
+class Location {
+  var latitude: Double
+  var longitude: Double
+  init(latitude: Double, longitude: Double) {
+    self.latitude = latitude
+    self.longitude = longitude
+  }
+}
+class City: Location, Named {
+  var name: String
+  init(name: String, latitude: Double, longitude: Double) {
+    self.name = name
+    super.init(latitude: latitude, longitude: longitude)
+  }
+}
+func beginConcert(in location: Location & Named) {
+  print("Hello, \(location.name)!")
+}
+
+let seattle = City(name: "Seattle", latitude: 47.6, longitude: -122.3)
+beginConcert(in: seattle)
+// "Hello, Seattle!" 를 출력합니다.
+```
+
+`beginConcert(in:)` 함수는 `Location & Named` 타입의 매개 변수를 받아 들이는데, 이는 "`Location` 의 하위 클래스이면서 `Named` 프로토콜을 준수하는 어떤 타입" 을 의미합니다. 이 경우, `City` 는 두 필수 조건을 모두 만족합니다.
+
+`birthdayPerson` 을 `beginConcert(in:)` 함수에 전달하는 것은 무효한데 왜냐면 `Person` 이 `Location` 의 하위 클래스가 아니기 때문입니다. 이와 마찬가지로, `Named` 프로토콜을 준수하지 않는 `Location` 의 하위 클래스를 만든 경우, 이 타입의 인스턴스를 사용하여 `beginConcert(in:)` 를 호출하면 역시 무효할 것입니다.
 
 ### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
