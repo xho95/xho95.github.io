@@ -582,9 +582,62 @@ for thing in things {
 
 ### Protocol Inheritance (프로토콜 상속)
 
+프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 상속받은 필수 조건 위에 필수 조건을 더 추가할 수도 있습니다. 프로토콜 상속을 위한 구문 표현은 클래스 상속을 위한 구문 표현과 비슷하지만, 여러 개의 상속된 프로토콜을, 쉼표로 구분하여, 나열하는 옵션을 가지고 있습니다[^multiple-inherited-protocols]:
+
+```swift
+protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
+  // 여기서 프로토콜을 정의합니다.
+}
+```
+
+다음은 위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜에 대한 예제입니다:
+
+```swift
+protocol PrettyTextRepresentable: TextRepresentable {
+  var prettyTextualDescription: String { get }
+}
+```
+
+이 예제는, `TextRepresentable` 을 상속하는, `PrettyTextRepresentable` 이라는, 새 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택하는 어떤 것이든 반드시 `TextRepresentable` 이 강제하는 모든 필수 조건을 만족해야 하며, 거기에 _더해서 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 필수 조건도 만족해야 합니다. 이 예제에서, `PrettyTextRepresentable` 은 단일한 필수 조건을 추가하여 `String` 을 반환하는 `prettyTextualDescription` 이라는 '획득 가능한 (gettable)' 속성을 제공하도록 합니다.
+
+`SnakesAndLadders` 클래스는 `PrettyTextRepresentable` 을 채택하고 준수하도록 확장할 수 있습니다:
+
+```swift
+extension SnakesAndLadders: PrettyTextRepresentable {
+  var prettyTextualDescription: String {
+    var output = textualDescription + ":\n"
+    for index in 1...finalSquare {
+      switch board[index] {
+      case let ladder where ladder > 0:
+        output += "▲ "
+      case let snake where snake < 0:
+        output += "▼ "
+      default:
+        output += "○ "
+      }
+    }
+    return output
+  }
+}
+```
+
+이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하고 `SnakesAndLadders` 타입을 위해 `prettyTextualDescription` 속성에 대한 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 것은 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 의 구현은 먼저 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 접근한 다음 출력 문자열을 만들기 시작합니다. 이는 콜론과 줄 바꿈을 추가해서, 문장 설명의 시작 부분을 예쁘게 꾸밉니다. 그런 다음 게임판 정사각형에 대한 배열에 동작을 반복 적용시켜서, 각 정사각형의 내용을 표현하는 기하학 도형을 추가합니다:
+
+* 정사각형의 값이 `0` 보다 크다면, 사다리의 밑부분인 것이며, `▲` 로 표현합니다.
+* 정사각형의 값이 `0` 보다 작다면, 뱀의 머리인 것이며, `▼` 로 표현합니다.
+* 그 외의 경우, 정사각형의 값은 `0` 이고, "얽매이지 않은 (free)" 정사각형인 것이며, `○` 로 표현됩니다.
+
+이제 `prettyTextualDescription` 속성을 사용하면 어떤 `SnakesAndLadders` 인스턴스에 대해서도 문장 설명을 예쁘게 꾸밀 수 있습니다:
+
+```swift
+print(game.prettyTextualDescription)
+// A game of Snakes and Ladders with 25 squares:
+// ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○
+```
+
 ### Class-Only Protocols (클래스-전용 프로토콜)
 
-프로토콜의 채택을 클래스 타입만 (그리고 구조체나 열거체는 안되도록) 제한하려면 프로토콜의 상속 목록에 `AnyObject` 프로토콜을 추가하면 됩니다.
+프로토콜의 채택을 (구조체나 열거체는 빼고) 클래스 타입에서만 되도록 제한하고 싶으면 프로토콜의 상속 목록에 `AnyObject` 프로토콜을 추가하면 됩니다.
 
 ```swift
 protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
@@ -592,13 +645,13 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 }
 ```
 
-위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. 구조체나 열거체 정의에서 `SomeClassOnlyProtocol` 을 채택한다고 작성하는 것은 '컴파일-시간 에러' 가 됩니다.
+위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. 구조체나 열거체 정의에서 `SomeClassOnlyProtocol` 을 채택한다고 작성하면 '컴파일-시간 에러' 가 뜹니다.
 
 > 클래스-전용 프로토콜을 사용하는 것은 프로토콜의 필수 조건으로 정의한 작동 방식이 가정하거나 요구하는 준수 타입이 값 의미 구조가 아니라 참조 의미 구조를 가질 때 입니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 와 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하기 바랍니다.
 
 ### Protocol Composition
 
-### Checking for Protocol Conformance (프로토콜 준수 검사하기)
+### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
@@ -682,6 +735,8 @@ print(differentNumbers.allEqual())
 
 >(프로토콜을) 준수하는 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 세분화된 '구속 조건' 을 따르는 구현을 사용합니다.
 
+#### Adding Constraints to Protocol Extensions
+
 ### 참고 자료
 
 [^Protocols]: 원문은 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 에서 확인할 수 있습니다.
@@ -709,6 +764,8 @@ print(differentNumbers.allEqual())
 [^synthesized]: 본문에서 '통합된 구현 (synthesized implementation)' 이라는 것은 스위프트 내부에 이미 구현되어 있는 것을 의미합니다. 즉 `Equatable` 프로토콜을 준수하는 코드는 우리가 따로 만들 수도 있겠지만, 스위프트가 제공하는 '통합된 구현' 을 사용하면 더 쉽게 작성할 수 있다는 의미입니다.
 
 [^original-declaration]: 본문에서 '원래의 선언 (original declaration) 을 담고 있는 파일' 이라는 말을 사용하는 것을 볼 때, 다른 파일에서 `Equatable` 에 대한 '준수성 (conformance)' 를 작성한다고 해서 '통합된 구현' 을 사용할 수 있는 것은 아니라는 것을 추측할 수 있습니다.
+
+[^multiple-inherited-protocols]: 스위프트에서 클래스 상속은 한 개만 되지만, 프로토콜 상속은 여러 개가 가능하다는 것을 말하는 것으로 이해하면 될 것 같습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
