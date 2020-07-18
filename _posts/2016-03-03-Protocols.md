@@ -302,7 +302,7 @@ for _ in 1...5 {
 
 ### Delegation (위임)
 
-_위임 (delegation)_ 은 클래스나 구조체가 책임의 일부를 다른 타입의 인스턴스에게로 넘기기-또는 _위임 (delegate)_-할 수 있게 해주는 '디자인 패턴 (design pattern)' 입니다. 이 '디자인 패턴' 은 위임된 책임을 '은닉하는 (encapsulates)' 프로토콜의 정의로 구현하여, ('대리인 (delegate)'[^delegate] 이라고 하는) 준수 타입이 위임된 기능을 제공할 것을 보증합니다. 위임은 특정한 동작에 응답하기 위해서, 또는 해당 소스의 실제 타입을 알 필요 없이 외부 소스의 데이터를 조회하기 위해서, 사용할 수 있습니다.
+_위임 (delegation)_ 은 클래스나 구조체가 책임의 일부를 다른 타입의 인스턴스에게로 넘기기-또는 _위임 (delegate)_-할 수 있게 해주는 '디자인 패턴 (design pattern)' 입니다. 이 '디자인 패턴' 은 위임된 책임을 '은닉하는 (encapsulates)' 프로토콜의 정의로 구현하여, ('대리자 (delegate)'[^delegate] 라고 하는) 준수 타입이 위임된 기능을 제공할 것을 보증합니다. 위임은 특정한 동작에 응답하기 위해서, 또는 해당 소스의 실제 타입을 알 필요 없이 외부 소스의 데이터를 조회하기 위해서, 사용할 수 있습니다.
 
 아래 예제는 주사위-기반 보드 게임에서 사용할 두 개의 프로토콜을 정의합니다:
 
@@ -364,11 +364,11 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임 플레이에 대한 설명은, [B
 
 _뱀과 사다리 (Snakes and Ladders)_ 게임 판 설정은 클래스의 `init()` 초기자 내에서 일어납니다. 모든 게임 로직은 프로토콜의 `play` 메소드 속으로 옮겨지며, 여기서 주사위 굴림 값을 제공하는 `dice` 라는 프로토콜의 필수 속성을 사용합니다.
 
-게임을 플레이하기 위해 '대리인(delegate; 위임)' 이 필수인 것은 아니기 때문에, `delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 로 정의된 것에 주목하기 바랍니다. 옵셔널 타입이기 때문에, `delegate` 속성은 자동으로 `nil` 이라는 초기 값으로 설정됩니다. 그 이후, '게임 인스턴스를 만드는 부분'[^instantiator] 에서 이 속성에 적절한 '대리인 (delegate; 위임)' 을 설정할 기회를 가집니다. `DiceGameDelegate` 프로토콜은 클래스-전용이기 때문에, ''대리인 (delegate; 위임)' 을 `weak` 로 선언해야 참조 순환을 막을 수 있습니다.
+게임을 플레이하기 위해 '대리자 (delegate; 위임)' 가 필수인 것은 아니기 때문에, `delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 로 정의된 것에 주목하기 바랍니다. 옵셔널 타입이기 때문에, `delegate` 속성은 자동으로 `nil` 이라는 초기 값으로 설정됩니다. 그 이후, '게임 인스턴스를 만드는 부분'[^instantiator] 에서 이 속성에 적절한 '대리자 (delegate)' 를 설정할 기회를 가집니다. `DiceGameDelegate` 프로토콜은 클래스-전용이기 때문에, ''대리자 (delegate)' 를 `weak` 로 선언해야 참조 순환을 막을 수 있습니다.
 
 `DiceGameDelegate` 는 게임의 진행 상황을 추적하기 위한 세 개의 메소드를 제공합니다. 이 세 메소드는 위의 `play()` 메소드 속에 있는 게임 로직으로 편입되어, 새로운 게임이 시작할 때, 새로운 차례 (turn) 를 시작할 때, 또는 게임이 끝날 때 호출합니다.
 
-`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리인 (delegate)' 에 대한 메소드를 호출할 때마다 '옵셔널 연쇄 (optional chaining)' 를 사용합니다. `delegate` 속성이 'nil' 인 경우, 이 '대리인 (delegate)' 호출은 에러 없이 우아하게 실패합니다. `delegate` 속성이 'nil-이 아닌' 경우, '대리인 메소드 (delegate method)' 를 호출하며, `SnakesAndLadders` 인스턴스를 매개 변수로 전달[^snakes-and-ladders-instance]합니다.
+`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리자 (delegate)' 에 대한 메소드를 호출할 때마다 '옵셔널 연쇄 (optional chaining)' 를 사용합니다. `delegate` 속성이 'nil' 인 경우, 이 '대리자 (delegate)' 호출은 에러 없이 우아하게 실패합니다. `delegate` 속성이 'nil-이 아닌' 경우, '대리자 메소드 (delegate method)' 를 호출하며, `SnakesAndLadders` 인스턴스를 매개 변수로 전달[^snakes-and-ladders-instance]합니다.
 
 이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택하는, `DiceGameTracker` 라는 클래스를 보여줍니다:
 
@@ -823,7 +823,40 @@ class Counter {
 }
 ```
 
+`Counter` 클래스는 현재의 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는, 메소드가 호출될 때마다 `count` 속성을 증가하는, `increment` 라는 메소드도 정의합니다.
 
+`increment()` 메소드는 먼저 증가량을 가져오기 위해 데이터 소스에서 `incremental(forCount:)` 메소드의 구현을 찾습니다. `increment()` 메소드는 '옵셔널 연쇄 (optional chaining)' 를 사용하여 `increment(forCount:)` 호출을 시도하며, 현재의 `count` 값을 이 메소드의 단일한 인자로 전달합니다.
+
+여기서 _두 (two)_ 단계 깊이의 옵셔널 연쇄를 사용함에 주목하기 바랍니다. 첫째, `dataSource` 가 `nil` 일 수 있으므로, `dataSource` 이름 뒤에 물음표를 붙여서 `dataSource` 가 `nil` 이 아닌 경우에만 `incremental(forCount:)`  를 호출하도록 지시합니다. 둘째, 설령 `dataSource` 가 존재 _하더라도 (does)_, 이는 옵셔널 필수 조건이기 때문에, `increment(forCount:)` 를 구현했다는 보증을 할 수 없습니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성 또한 '옵셔널 연쇄' 로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재하는 경우에만-즉, `nil` 이 아닌 경우에만-일어납니다. 이것이 `incremental(forCount:)` 이름 뒤에 물음표를 표시한 이유입니다.
+
+`increment(forCount:)` 호출은 이 두 가지 이유로 인해 실패할 수 있기 때문에, 이 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이것은 `increment(forCount:)` 가 `CounterDataSource` 의 정의에서 옵셔널이-아닌 `Int` 값을 반환하도록 정의되어 있더라도 마찬가지입니다. 비록 두 개의 옵셔널 연쇄 작업을, 하나 다음에 또 하나, 이어서 하더라도, 결과는 여전히 단일한 옵셔널로 '포장됩니다 (wrapped)'. 다중 옵셔널 연쇄 작업을 사용하는 것에 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (다중 수준의 연쇄 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-다중-수준의-연쇄-연결하기) 를 참고하기 바랍니다.
+
+`increment(forCount:)` 를 호출 한 후에는, '옵셔널 연결' 을 사용하여, 반환된 옵셔널 `Int` 의 포장을 풀고 `amount` 라는 상수에 넣습니다. 만약 옵셔널 `Int` 가 값을 담고 있으면-다시 말해, '대리자 (delegate)' 와 메소드가 모두 존재하고, 메소드가 값을 반환한 경우-포장 속의 `amount` 가 저장 속성인 `count` 가 추가되어, 증가 연산을 종료합니다.
+
+만약 `increment(forCount:)` 메소드로부터 값을 가져오는 것이 가능하지 _않은 (not)_ 경우라면-`dataSource` 가 `nil` 이기 때문이거나, 아니면 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인 경우-그러면 `increment()` 메소드는 그 대신 데이터 소스의 `fixedIncrement` 속성으로부터 값을 가져오려고 시도합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이므로, 이 값은 옵셔널 `Int` 값인데, `fixedIncrement` 가 `CounterDataSource` 프로토콜 정의에서 옵셔널이-아닌 `Int` 속성으로 정의되어 있더라도 그렇습니다.
+
+다음은 데이터 소스를 조회할 때마다 `3` 이라는 상수 값을 반환하는 간단한 `CounterDataSource` 구현입니다. 이를 위해 옵셔널 `fixedIncrement` 속성 필수 조건을 구현했습니다:
+
+```swift
+class ThreeSource: NSObject, CounterDataSource {
+  let fixedIncrement = 3
+}
+```
+
+`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스에 대한 데이터 소스로 사용할 수 있습니다:
+
+```swift
+var counter = Counter()
+counter.dataSource = ThreeSource()
+for _ in 1...4 {
+  counter.increment()
+  print(counter.count)
+}
+// 3
+// 6
+// 9
+// 12
+```
 
 ### Protocol Extensions (프로토콜 확장)
 
@@ -919,7 +952,7 @@ print(differentNumbers.allEqual())
 
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
-[^delegate]: 여기서의 'delegate' 는 명사로써 위임된 기능을 수행하는 '대리인' 이라는 의미를 가지도록 옮겼습니다. 특별히 필요한 경우가 아니라면 그냥 '위임' 이라고 옮기도록 하겠습니다.
+[^delegate]: 여기서의 'delegate' 는 명사로써 위임된 기능을 수행하는 '대리자' 라는 의미를 가집니다.
 
 [^instantiator]: 이걸 본문에서 'instantiator' 라는 말로 표현했는데, 적당한 말이 없어서 그냥 '인스턴스를 만드는 부분' 으로 옮겼습니다. 아마도 실제 게임을 구현한다면 일종의 'game manager' 역할을 하는 것으로 게임 인스턴스를 만들 수 있을 것입니다. 그 때, 해당 'game manager' 를 'inistantiator' 라고 부르게 되는 것 같습니다.
 
