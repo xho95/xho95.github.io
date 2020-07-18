@@ -368,7 +368,7 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임 판 설정은 클래스의 `init(
 
 `DiceGameDelegate` 는 게임의 진행 상황을 추적하기 위한 세 개의 메소드를 제공합니다. 이 세 메소드는 위의 `play()` 메소드 속에 있는 게임 로직으로 편입되어, 새로운 게임이 시작할 때, 새로운 차례 (turn) 를 시작할 때, 또는 게임이 끝날 때 호출합니다.
 
-`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리인 (delegate)' 에 대한 메소드를 호출할 때마다 '옵셔널 체이닝 (optional chaining)' 을 사용합니다. `delegate` 속성이 'nil' 인 경우, 이 '대리인 (delegate)' 호출은 에러 없이 우아하게 실패합니다. `delegate` 속성이 'nil-이 아닌' 경우, '대리인 메소드 (delegate method)' 를 호출하며, `SnakesAndLadders` 인스턴스를 매개 변수로 전달[^snakes-and-ladders-instance]합니다.
+`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리인 (delegate)' 에 대한 메소드를 호출할 때마다 '옵셔널 연쇄 (optional chaining)' 를 사용합니다. `delegate` 속성이 'nil' 인 경우, 이 '대리인 (delegate)' 호출은 에러 없이 우아하게 실패합니다. `delegate` 속성이 'nil-이 아닌' 경우, '대리인 메소드 (delegate method)' 를 호출하며, `SnakesAndLadders` 인스턴스를 매개 변수로 전달[^snakes-and-ladders-instance]합니다.
 
 이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택하는, `DiceGameTracker` 라는 클래스를 보여줍니다:
 
@@ -765,7 +765,65 @@ let objects: [AnyObject] = [
 ]
 ```
 
+`objects` 배열은 '배열 글자 표현 (array literal)' 로 초기화 되는데 `Circle` 인스턴스는 `2` 인 반지름 단위를 가지고; `Country` 인스턴스는 영국 면적을 제곱 미터로 초기화된 값이며; `Animal` 인스턴스는 네 개의 다리를 가지고 있습니다.
+
+`objects` 배열은 이제 반복 적용해서, 배열에 있는 각 객체가 `HasArea` 프로토콜을 준수하는 있는 지 확인하는 검사를 할 수 있습니다:
+
+```swift
+for object in objects {
+    if let objectWithArea = object as? HasArea {
+        print("Area is \(objectWithArea.area)")
+    } else {
+        print("Something that doesn't have an area")
+    }
+}
+// Area is 12.5663708
+// Area is 243610.0
+// Something that doesn't have an area
+```
+
+배열에 있는 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자로 반환된 옵셔널 값은 포장이 풀리고 '옵셔널 연결 (optional binding; 옵셔널 바인딩)' 을 통해 `objectWithArea` 라는 상수에 들어가게 됩니다. `objectWithArea` 상수의 타입은 `HasArea` 임을 알고 있으므로, '타입-안전 (type-safe)'[^type-safe] 한 방식으로 `area` 속성에 접근하고 이를 출력할 수 있습니다.
+
+'변환 과정 (casting process)' 에서 실제 객체는 바뀌지 않는다는 점에 주목하기 바랍니다. 이들은 계속해서 `Circle`, `Country`, 그리고 `Animal` 입니다. 하지만, 이들이 `objectWithArea` 라는 상수에 저장되는 시점에서, 이들이 `HasArea` 라는 것만 알게 되므로, `area` 속성에만 접근할 수 있습니다.
+
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
+
+프로토콜에 대해서 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이 필수 조건은 프로토콜을 준수하는 타입에서 구현해야만 하는 것은 아닙니다. 옵셔널 필수 조건은 프로토콜을 정의할 때 `optional` 수정자를 접두사로 붙여줍니다. 옵셔널 필수 조건을 사용하여 오브젝티브-C 언어와 상호 호환되는 코드를 작성할 수 있습니다. 프로토콜과 옵셔널 필수 조건 모두 반드시 `@objc` '특성 (attribute)' 으로 표시해야 합니다. `@objc` 프로토콜은 오브젝티브-C 클래스 또는 다른 `@objc` 클래스를 상속하는 클래스에서만 채택할 수 있다는 점에 주목하기 바랍니다. 구조체나 열거체는 채택할 수 없습니다.
+
+메소드와 속성을 옵셔널 필수 조건에서 사용할 때, 이들 타입은 자동으로 옵셔널이 됩니다. 예를 틀어, 타입이 `(Int) -> String` 인 메소드는 `((Int) -> String)?` 이 됩니다. 메소드의 반환 값이 아니라, 전체 함수 타입이 옵셔널로 포장된다는 것에 주목하기 바랍니다.
+
+옵셔널 프로토콜 필수 조건은, 프로토콜을 준수하는 타입이 이 필수 조건을 구현하지 않을 가능성을 기술하기 위하여, '옵셔널 연쇄' 와 같이 사용할 수 있습니다. 옵셔널 메소드의 구현을 검사하려면 호출할 때 메소드의 이름 뒤에, `someOptionalMethod?(someArgument)` 와 같이, 물음표를 붙이면 됩니다. '옵셔널 연쇄 (optional chaining)' 에 대한 정보는, [Optional Chaining (옵셔널 체이닝; 옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 를 참고하기 바랍니다.
+
+다음 예제는 `Counter` 라는 정수를-헤아리는 클래스를 정의하는데, 이는 외부 데이터 소스에서 제공하는 증가량을 사용합니다. 이 데이터 소스는, 두 개의 옵셔널 필수 조건을 가지는, `CounterDataSource` 프로토콜로 정의합니다:
+
+```swift
+@objc protocol CounterDataSource {
+  @objc optional func increment(forCount count: Int) -> Int
+  @objc optional var fixedIncrement: Int { get }
+}
+```
+
+`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 옵셔널 메소드 필수 조건과 `fixedIncrement` 라는 옵셔널 속성 필수 조건을 정의합니다. 이 필수 조건들은 데이터 소스가 `Counter` 인스턴스에게 적절한 증가량을 제공하도록 서로 다른 두 가지 방법을 정의합니다.
+
+> 엄밀하게 말해서, `CounterDataSource` 프로토콜을 준수하는 사용자 정의 클래스를 작성하면서 _어느 (either)_ 프로토콜 필수 조건도 구현하지 않아도 됩니다. 결국, 둘 다 '옵셔널 (optional; 선택 사항)' 인 것입니다. 기술적으로 문제될 건 없지만, 좋은 데이터 소스라고 할 수는 없을 것입니다.
+
+아래에서 정의된, `Counter` 클래스는, `CounterDataSource?` 타입의 옵셔널 `dataSource` 속성을 가집니다:
+
+```swift
+class Counter {
+  var count = 0
+  var dataSource: CounterDataSource?
+  func increment() {
+    if let amount = dataSource?.increment?(forCount: count) {
+      count += amount
+    } else if let amount = dataSource?.fixedIncrement {
+      count += amount
+    }
+  }
+}
+```
+
+
 
 ### Protocol Extensions (프로토콜 확장)
 
@@ -876,6 +934,8 @@ print(differentNumbers.allEqual())
 [^original-declaration]: 본문에서 '원래의 선언 (original declaration) 을 담고 있는 파일' 이라는 말을 사용하는 것을 볼 때, 다른 파일에서 `Equatable` 에 대한 '준수성 (conformance)' 를 작성한다고 해서 '통합된 구현' 을 사용할 수 있는 것은 아니라는 것을 추측할 수 있습니다.
 
 [^multiple-inherited-protocols]: 스위프트에서 클래스 상속은 한 개만 되지만, 프로토콜 상속은 여러 개가 가능하다는 것을 말하는 것으로 이해하면 될 것 같습니다.
+
+[^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은, '스위프트 프로그래밍 언어' 본문에서 꽤 자주 나오는 말인데, 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 각각에 대해서는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하고 있습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
