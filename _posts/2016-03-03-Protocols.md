@@ -858,6 +858,42 @@ for _ in 1...4 {
 // 12
 ```
 
+위의 코드는 새로운 `Counter` 인스턴스를 생성하여; 데이터 소스를 새로운 `ThreeSource` 인스턴스로 설정하며; '카운터 (counter)' 의 `increment()` 메소드를 네 번 호출합니다. 예상 대로, 카운터의 `count` 속성은 `increment()` 를 호출할 때마다 '3' 만큼 증가합니다.
+
+다음은 좀 더 복잡한 데이터 소스인 `TowardsZeroSource` 인데, 이는 `Counter` 인스턴스를 현재의 `count` 값에서 '0' 으로 '카운트 업 (count up)' 또는 '카운트 다운 (count down)' 하도록 합니다:
+
+```swift
+class TowardsZeroSource: NSObject, CounterDataSource {
+  func increment(forCount count: Int) -> Int {
+    if count == 0 {
+      return 0
+    } else if count < 0 {
+      return 1
+    } else {
+      return -1
+    }
+  }
+}
+```
+
+`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 옵셔널 `increment(forCount:)` 메소드를 구현하여 `count` 인자 값을 사용하여 어느 방향으로 '카운트' 할 지를 알아냅니다. 만약 `count` 가 이미 '0' 라면, 이 메소드는 `0` 을 반환하여 더 이상 '카운트' 를 하지 않아도 됨을 지시합니다.
+
+`TowardsZeroSource` 인스턴스를 기존에 존재하던 `Counter` 인스턴스와 같이 사용하여 `-4` 에서 '0' 까지 '카운트' 할 수 있습니다. 일단 한번 '카운터' 가 '0' 에 도달하면, 더 이상 카운트되지 않습니다.
+
+```swift
+counter.count = -4
+counter.dataSource = TowardsZeroSource()
+for _ in 1...5 {
+  counter.increment()
+  print(counter.count)
+}
+// -3
+// -2
+// -1
+// 0
+// 0
+```
+
 ### Protocol Extensions (프로토콜 확장)
 
 프로토콜은 확장해서 이를 준수하는 타입의 메소드, 초기자, '첨자 연산 (subscript), 그리고 '계산 속성 (computed property)' 에 대한 구현을 제공할 수 있습니다. 이것은, 개별 준수 타입이나 전역 함수 대신, 프로토콜 자체에서 동작을 정의할 수 있게 해줍니다.
