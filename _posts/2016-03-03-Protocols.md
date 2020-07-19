@@ -938,9 +938,9 @@ extension PrettyTextRepresentable {
 
 #### Adding Constraints to Protocol Extensions (프로토콜 확장에 대한 구속 조건 추가하기)
 
-프로토콜 확장을 정의할 때 '구속 조건 (constraints)' 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 '구속 조건' 은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
+프로토콜 확장을 정의할 때는, 확장에 있는 메소드와 속성이 사용 가능해지기 전에 준수 타입이 반드시 만족해야 할 '구속 조건 (constraints)' 을 지정할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜의 이름 뒤에 일반화된 `where` 구절을 붙여서 작성합니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
 
-예를 들어, `Collection` (집합체) 프로토콜을 확장하면서 각 요소가 `Equatable` 프로토콜을 준수하는 경우에만 적용되도록 할 수 있습니다. 컬렉션의 요소를 (표준 라이브러리의 일부이기도 한) `Equatable` 프로토콜로만 제약하면, `==` 와 `!=` 연산자를 사용하여 두 요소가 같은지 다른지 검사할 수 있습니다.
+예를 들어, `Collection` 프로토콜에 대한 확장을 정의하면서 어떤 '컬렉션 (collection)' 의 원소가 `Equatable` 프로토콜을 준수하는 경우에만 적용되도록 할 수 있습니다. '컬렉션' 의 원소를, 표준 라이브러리의 일부인, `Equatable` 프로토콜로만 구속하면, `==` 와 `!=` 연산자를 사용하여 두 원소의 '같음 (equality)' 과 '다름 (inequality)' 을 검사할 수 있습니다.
 
 ```swift
 extension Collection where Element: Equatable {
@@ -955,25 +955,25 @@ extension Collection where Element: Equatable {
 }
 ```
 
-`allEqual()` 메소드는 컬렉션의 모든 요소가 같을 때만 `true` 를 반환합니다.
+`allEqual()` 메소드는 컬렉션에 있는 원소가 모두 같은 경우에만 `true` 를 반환합니다.
 
-두 개의 정수 배열 (array) 이 있는데, 하나는 모든 요소가 같고 다른 하나는 그렇지 않다고 해 봅시다:
+두 개의 정수 배열이 있는데, 하나는 모든 원소가 같고, 다른 하나는 그렇지 않다고, 가정해 봅시다:
 
 ```swift
 let equalNumbers = [100, 100, 100, 100, 100]
 let differentNumbers = [100, 100, 200, 100, 200]
 ```
 
-배열 (타입)은 `Collection `을 준수하고 정수 (타입)은 `Equatable` 을 준수하므로, `equalNumbers` 와 `differentNumbers` 는 `allEqual()` 메소드를 사용할 수 있습니다:
+'배열 (arrays)' 은 `Collection `을 준수하고 '정수 (integers)' 는 `Equatable` 을 준수하고 있기 때문에, `equalNumbers` 와 `differentNumbers` 는 `allEqual()` 메소드를 사용할 수 있습니다:
 
 ```swift
 print(equalNumbers.allEqual())
-// Prints "true"
+// "true" 를 출력합니다.
 print(differentNumbers.allEqual())
-// Prints "false"
+// "false" 를 출력합니다.
 ```
 
->(프로토콜을) 준수하는 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 세분화된 '구속 조건' 을 따르는 구현을 사용합니다.
+> 준수 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 '세분화된 구속 조건 (specialized constraints)' 과 관련된 구현을 사용합니다.
 
 ### 참고 자료
 
