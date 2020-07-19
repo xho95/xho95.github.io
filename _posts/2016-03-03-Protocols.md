@@ -896,9 +896,9 @@ for _ in 1...5 {
 
 ### Protocol Extensions (프로토콜 확장)
 
-프로토콜은 확장해서 이를 준수하는 타입의 메소드, 초기자, '첨자 연산 (subscript), 그리고 '계산 속성 (computed property)' 에 대한 구현을 제공할 수 있습니다. 이것은, 개별 준수 타입이나 전역 함수 대신, 프로토콜 자체에서 동작을 정의할 수 있게 해줍니다.
+프로토콜을 확장하여 준수 타입의 메소드, 초기자, 첨자 연산, 및 계산 속성에 대한 구현을 제공할 수 있습니다. 이것은, 각각의 개별 준수 타입 또는 전역 함수 대신, 프로토콜 자체에서 작동 방식을 정의하도록 해줍니다.
 
-예를 들어. `RandomNumberGenerator` 프로토콜을 확장하면 `randomBool()` 메소드를 제공하도록 해서, '필수 (required)' 메소드인 `random()` 의 결과를 가지고 `Bool` 난수 값을 반환하게 할 수도 있습니다:
+예를 들어, `RandomNumberGenerator` 프로토콜을 확장하여, 필수 메소드인 `random()` 의 결과로 `Bool` 타입의 난수 값을 반환하는, `randomBool()` 이라는 메소드를 제공하도록 만들 수 있습니다:
 
 ```swift
 extension RandomNumberGenerator {
@@ -908,16 +908,17 @@ extension RandomNumberGenerator {
 }
 ```
 
-프로토콜에 확장을 만드는 것으로도 모든 준수 타입들이 자동으로 메소드의 구현부를 가지며, 따로 수정같은 것을 할 필요가 전혀 없습니다:
+프로토콜에 대한 '익스텐션 (extension; 확장)' 을 생성하는 것으로, 모든 준수 타입들은 따로 추가적인 수정을 할 필요 없이 자동으로 해당 메소드 구현을 가지게 됩니다:
 
 ```swift
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// Prints "Here's a random number: 0.3746499199817101"
+// "Here's a random number: 0.3746499199817101" 를 출력합니다.
 print("And here's a random Boolean: \(generator.randomBool())")
-// Prints "And here's a random Boolean: true"
+// "And here's a random Boolean: true" 를 출력합니다.
 ```
-프로토콜 확장은 준수 타입에 구현을 추가 할 수는 있지만, 다른 프로토콜을 확장하거나 상속하여 또 하나의 프로토콜을 만들 수는 없습니다. 프로토콜 상속은 항상 해당 프로토콜 선언 그 자체에 한정된 것입니다.
+
+'프로토콜 확장' 은 준수 타입에 대한 구현을 추가할 수 있지만 프로토콜을 확장하거나 다른 프로토콜을 상속받도록 만들 수는 없습니다. '프로토콜 상속' 은 항상 해당 프로토콜 선언에서 직접 지정하는 것입니다.
 
 #### Providing Default Implementations (기본 구현 제공하기)
 
