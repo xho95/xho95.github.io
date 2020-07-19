@@ -922,11 +922,11 @@ print("And here's a random Boolean: \(generator.randomBool())")
 
 #### Providing Default Implementations (기본 구현 제공하기)
 
-프로토콜 확장을 사용하면 해당 프로토콜의 어떤 '메소드 필수 조건' 이나 '계산 속성 필수 조건' 에 대한 '기본 구현' 을 제공할 수 있습니다. 준수 타입이 '필수 (required)' 메소드나 속성에 대해 자체적으로 구현을 제공할 경우, 이 구현이 확장에 의해 제공된 것을 대체하여 사용됩니다.
+프로토콜 확장을 사용하여 해당 프로토콜의 어떤 '메소드 필수 조건' 이나 '계산 속성 필수 조건' 에 대해서도 '기본 구현 (default implementation)' 을 제공할 수 있습니다. 만약 준수 타입이 '필수 메소드' 나 '필수 속성' 에 대한 자체 구현을 제공하는 경우, 확장에서 제공되는 것 대신 해당 구현을 사용하게 됩니다.
 
-> 확장에 의해 기본 구현이 제공되는 프로토콜 '필수 조건' 은 선택적 (optional) 프로토콜 '필수 조건' 과는 다릅니다. 준수하는 타입이 자체적으로 구현을 제공 할 필요가 없다는 것은 같지만, 기본 구현을 가지는 '필수 조건' 은 '옵셔널 연쇄 (optional chaining)' 없이 호출 할 수 있습니다.
+> 확장에서 제공되는 기본 구현을 가진 '프로토콜 필수 조건' 은 '옵셔널 프로토콜 필수 조건' 과는 다릅니다. 어느 쪽도 준수 타입이 직접 구현을 제공할 필요가 없다는 것은 같지만, 기본 구현을 가지는 '필수 조건' 은 '옵셔널 연쇄' 없이 호출할 수 있습니다.
 
-예를 들어, `TextRepresentable` 프로토콜을 상속하는 `PrettyTextRepresentable` 프로토콜은 요구 속성인 `prettyTextualDescription` 의 기본 구현으로 간단히 `textualDescription` 속성을 반환하도록 할 수도 있습니다:
+예를 들어, `TextRepresentable` 프로토콜을 상속하는, `PrettyTextRepresentable` 프로토콜은, 필수 속성인 `prettyTextualDescription` 에 대한 기본 구현을 제공하여 `textualDescription` 속성에 접근한 결과를 단순히 반환하도록 만들 수 있습니다:
 
 ```swift
 extension PrettyTextRepresentable {
@@ -936,7 +936,7 @@ extension PrettyTextRepresentable {
 }
 ```
 
-#### Adding Constraints to Protocol Extensions (프로토콜을 확장할 때 구속 조건 추가하기)
+#### Adding Constraints to Protocol Extensions (프로토콜 확장에 대한 구속 조건 추가하기)
 
 프로토콜 확장을 정의할 때 '구속 조건 (constraints)' 을 지정해서, 조건을 만족하는 준수 타입만 확장에 있는 메소드와 속성을 사용하게 할 수 있습니다. 이 '구속 조건' 은 확장하려는 프로토콜의 이름 뒤에 일반화된 (generic) `where` 구절을 사용해서 붙입니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
 
