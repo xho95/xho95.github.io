@@ -16,7 +16,7 @@ _타입 변환 (Type Casting)_ 은 한 인스턴스의 타입을 검사하는 �
 
 스위프트의 '타입 변환' 은 `is` 와 `as` 연산자로 구현됩니다. 이 두 연산자는 간단하면서도 이해하기 쉬운 방법으로 값의 타입을 검사하거나 값을 다른 타입으로 변환할 수 있도록 해 줍니다.
 
-'타입 변환' 을 사용하면 그 타입이 프로토콜을 준수하고 있는지도 검사할 수 있으며, 이는 [Checking for Protocol Conformance (프로토콜 준수성 검사하기)](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#ID283) 에서 설명하도록 합니다.
+'타입 변환' 을 사용하면 그 타입이 프로토콜을 준수하고 있는지도 검사할 수 있으며, 이는 [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명하도록 합니다.
 
 ### Defining a Class Hierarchy for Type Casting (타입 변환을 위한 클래스 계층 정의하기)
 
