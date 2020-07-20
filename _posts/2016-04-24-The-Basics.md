@@ -51,11 +51,11 @@ var x = 0.0, y = 0.0, z = 0.0
 
 > 코드에서 저장된 값이 바뀌지 않는다면, 항상 `let` 키워드를 써서 상수로 선언하기 바랍니다. 변수는 저장된 값이 바뀔 가능성이 있는 경우에만 쓰기 바랍니다.
 
-#### Type Annotations (타입 추가 설명)
+#### Type Annotations (타입 보조 설명)
 
-상수나 변수를 선언할 때 _타입 추가 설명 (type annotation)_[^annotation] 을 제공해서, 상수나 변수에 저장할 수 있는 값의 종류를 명확하게 드러낼 수 있습니다. '타입 추가 설명' 을 쓰려면 상수나 변수의 이름 뒤에 콜론을 붙이고, 공백으로 띄운 다음, 사용할 타입의 이름을 적으면 됩니다.
+상수나 변수를 선언할 때 _타입 보조 설명 (type annotation)_[^annotation] 을 제공해서, 상수나 변수에 저장할 수 있는 값의 종류를 명확하게 드러낼 수 있습니다. '타입 보조 설명' 을 쓰려면 상수나 변수의 이름 뒤에 콜론을 붙이고, 공백으로 띄운 다음, 사용할 타입의 이름을 적으면 됩니다.
 
-아래 예제는 `welcomeMessage` 라는 변수에 '타입 추가 설명' 을 제공하여, 변수가 `String` 값을 저장할 수 있음을 지시합니다:
+아래 예제는 `welcomeMessage` 라는 변수에 '타입 보조 설명' 을 제공하여, 변수가 `String` 값을 저장할 수 있음을 지시합니다:
 
 ```swift
 var welcomeMessage: String
@@ -73,13 +73,13 @@ var welcomeMessage: String
 welcomeMessage = "Hello"
 ```
 
-서로 관련성이 있는 같은 타입의 변수 여러 개를 한 줄에 정의할 수도 있는데, 이 때는 쉼표로 구분한 후, 마지막 변수 이름 뒤에 '타입 추가 설명' 을 한 번만 붙이면 됩니다:
+서로 관련성이 있는 같은 타입의 변수 여러 개를 한 줄에 정의할 수도 있는데, 이 때는 쉼표로 구분한 후, 마지막 변수 이름 뒤에 '타입 보조 설명' 을 한 번만 붙이면 됩니다:
 
 ```swift
 var red, green, blue: Double
 ```
 
-> 실제로 '타입 추가 설명 (type annotations)' 을 쓸 일은 거의 없습니다. 상수나 변수를 정의할 때 기본 설정 값을 제공하면, 스위프트는 거의 항상 상수나 변수에서 사용할 타입을 추론할 수 있으며, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명합니다. 위에 있는 `welcomeMessage` 예제에서는, 기본 설정 값이 제공되지 않았으므로, `welcomeMessage` 변수의 타입을 기본 설정 값으로 추론하지 않고 '타입 추가 설명' 으로 지정했습니다.
+> 실제로 '타입 보조 설명 (type annotations)' 을 쓸 일은 거의 없습니다. 상수나 변수를 정의할 때 기본 설정 값을 제공하면, 스위프트는 거의 항상 상수나 변수에서 사용할 타입을 추론할 수 있으며, 이는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명합니다. 위에 있는 `welcomeMessage` 예제에서는, 기본 설정 값이 제공되지 않았으므로, `welcomeMessage` 변수의 타입을 기본 설정 값으로 추론하지 않고 '타입 보조 설명' 으로 지정했습니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
@@ -760,7 +760,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^private-use-Unicode-scalar-values]: '보조 사용자 영역의 유니코드 크기 값' 이란 '유니코드' 에서 'private-use areas' 를 말하는 것 같습니다. 유니코드에는 `U+E000 ~ U+F8FF` 등, 총 3개의 'private-use areas' 이 있는데, 보다 자세한 내용은 위키피디아의 [Unicode](https://en.wikipedia.org/wiki/Unicode) 항목을 참고하기 바랍니다.
 
-[^annotation]: 'annotation' 는 사실 '주석' 이라는 옮기는 것이 가장 적당하지만, '주석' 은 프로그래밍 분야에서 'comments' 라는 말로 이미 널리 쓰이고 있으므로, 스위프트의 'annotation' 을 '추가 설명' 이라는 말로 옮기도록 하겠습니다. 실제로 스위프트에서 'annotation' 을 쓸 일은 거의 없기 때문에 이 용어의 의미에 크게 비중을 두지 않아도 될 것 같습니다.
+[^annotation]: 'annotation' 는 사실 '주석' 이라는 옮기는 것이 가장 적당하지만, '주석' 은 프로그래밍 분야에서 'comments' 라는 말로 이미 널리 쓰이고 있으므로, 스위프트의 'annotation' 을 '보조 설명' 이라는 말로 옮기도록 하겠습니다. 실제로 스위프트에서 'annotation' 을 쓸 일은 거의 없기 때문에 이 용어의 의미에 크게 비중을 두지 않아도 될 것 같습니다.
 
 [^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목을 참고하기 바랍니다.
 

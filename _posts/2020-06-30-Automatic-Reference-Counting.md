@@ -416,7 +416,7 @@ class City {
 
 `City` 의 초기자는 `Country` 의 초기자에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한대로, `Country` 초기자는 새로운 `Country` 인스턴스가 완전히 초기화되지 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
 
-이러한 '필수 조건 (requirement)' 에 대처하려면, `Country` 의 `capitalCity` 속성을 '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언해야 하며, '타입 추가 설명 (type annotation)' 끝에 느낌표를 붙여서 (`City!`) 지정하면 됩니다. 이것의 의미는 `capitalCity` 속성은, 다른 모든 옵셔널 처럼, `nil` 이라는 기본 설정 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 그 값의 포장을 풀지 않고도 접근할 수 있다는 것입니다.
+이러한 '필수 조건 (requirement)' 에 대처하려면, `Country` 의 `capitalCity` 속성을 '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언해야 하며, '타입 보조 설명 (type annotation)' 끝에 느낌표를 붙여서 (`City!`) 지정하면 됩니다. 이것의 의미는 `capitalCity` 속성은, 다른 모든 옵셔널 처럼, `nil` 이라는 기본 설정 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 그 값의 포장을 풀지 않고도 접근할 수 있다는 것입니다.
 
 `capitalCity` 는 기본 설정 값 `nil` 을 가지고 있기 때문에, `Country` 인스턴스가 초기자 내에서 `name` 속성을 설정하자마자 새 `Country` 인스턴스를 완전히 초기화된 것으로 봐도 됩니다. 이것의 의미는 `Country` 초기자가 `name` 속성을 설정하자마자 암시적인 `self` 속성의 참조 및 전달을 시작할 수 있다는 것입니다. `Country` 초기자는 따라서 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자에 대한 매개 변수 중 하나로 `self` 를 전달할 수 있습니다.
 
