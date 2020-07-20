@@ -56,7 +56,7 @@ class SomeClass {
 }
 ```
 
-> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하고 있는 것입니다. 타입은 (여기서 `SomeStructure` 와 `SomeClass` 라고 한 것처럼) `UpperCamelCase`-대문자 낙타 활자[^uppser-camel-case] 방식의-이름을 부여해서 표준 스위프트 타입의 대문자 방식 (`String`, `Int`, 그리고 `Bool` 과 같은 것들) 에 맞추도록 합니다. 속성과 메소드는 `lowerCamelCase`-소문자 낙타 활자 방식의-이름 (가령 `frameRate` 와 `incrementCount` 같은 것들) 을 부여해서 타입 이름과 구별되도록 합니다.
+> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하고 있는 것입니다. 타입은 (여기서 `SomeStructure` 와 `SomeClass` 라고 한 것처럼) `UpperCamelCase`-대문자로 시작하는 낙타 등 모양[^uppser-camel-case]-이름을 부여해서 표준 스위프트 타입의 대문자 방식 (`String`, `Int`, 그리고 `Bool` 과 같은 것들) 에 맞추도록 합니다. 속성과 메소드는 `lowerCamelCase`-소문자로 시작하는 낙타 등 모양-이름 (가령 `frameRate` 와 `incrementCount` 같은 것들) 을 부여해서 타입 이름과 구별되도록 합니다.
 
 아래는 구조체 정의와 클래스 정의에 대한 예제입니다:
 
@@ -262,6 +262,6 @@ C, C++ 또는 오브젝티브-C 언어에 대한 경험이 있다면, 이러한 
 
 [^object-instance]: 여기서 '인스턴스' 가 '객체' 보다 더 일반적인 용어라는 표현을 사용했는데, '객체' 라고 하면 '클래스의 인스턴스' 만을 지칭하지만, 그냥 '인스턴스' 라고 하면 '구조체의 인스턴스' 도 모두 포함하는 개념이기 때문입니다.
 
-[^uppser-camel-case]: 'Camel case' 라면 '낙타 활자' 정도의 의미를 갖고 있는데, 프로그래밍에서 변수 이름을 정할 때 모든 단어를 붙여서 표기하되. 각 단어의 첫 글자를 대문자로 표기하는 방법을 말합니다. 이렇게 하면 모양이 마치 낙타 등처럼 생겼다고 해서 'Camel case' 라고 합니다. 'Camel case' 를 우리 말로 '낙타 대문자' 라고 하는 것 같은데, 이 책에서는 'UpperCamelCase' 와 'LowerCamelCase' 라고 구분을 하고 있어서 각각 '대문자 낙타 활자' 와 '소문자 낙타 활자' 라고 옮기도록 합니다. 'Camel Case' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
+[^uppser-camel-case]: 'Camel case' 라면 '낙타 등 모양 문자' 정도의 의미를 갖고 있는데, 변수 이름을 지정할 때 모든 단어를 붙이되. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 마치 낙타 등처럼 생겼다고 해서 'Camel case' 라고 합니다. 'Camel case' 를 우리 말로 '낙타 대문자' 라고 하는 것 같은데, 이 책에서는 'UpperCamelCase' 와 'LowerCamelCase' 라고 구분을 하고 있어서 각각 '대문자로 시작하는 낙타 등 모양' 과 '소문자로 시작하는 낙타 등 모양' 이라고 옮기도록 합니다. 'Camel Case' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
 
 [^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 참고하기 바랍니다.
