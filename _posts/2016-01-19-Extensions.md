@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Extensions (확장)"
+title:  "Swift 5.2: Extensions (익스텐션; 확장)"
 date:   2016-01-19 17:10:00 +0900
 categories: Xcode Swift Grammar Extensions
 ---
@@ -47,7 +47,7 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 
 이와 같은 방식으로 '프로토콜 준수 기능 (protocol conformance)' 을 추가하는 것은 [Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-확장으로-프로토콜-준수성-추가하기) 에서 설명합니다.
 
-'extension (확장)' 으로 이미 존재하는 일반화된 타입 (generic type) 도 확장할 수 있으며, 이는 [Extending a Generic Type (제네릭-일반화된-타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-제네릭-일반화된-타입-확장하기) 에서 설명합니다. 일반화된 타입을 확장할 때 조건부로 기능을 추가할 수도 있는데, 이는 [Extensions with a Generic Where Clause (일반화된 Where 구절을 사용하여 확장하기)](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID553) 에서 설명하도록 합니다.
+'extension (확장)' 으로 이미 존재하는 일반화된 타입 (generic type) 도 확장할 수 있으며, 이는 [Extending a Generic Type (제네릭-일반화된-타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-제네릭--일반화된--타입-확장하기) 에서 설명합니다. 일반화된 타입을 확장할 때 조건부로 기능을 추가할 수도 있는데, 이는 [Extensions with a Generic Where Clause (일반화된 Where 구절을 사용하여 확장하기)](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID553) 에서 설명하도록 합니다.
 
 > 익스텐션을 정의해서 기존 타입에 새 기능을 추가하면, 이 기능은 해당하는 타입의 이미 존재하는 모든 인스턴스에서 사용할수 있으며, 익스텐션이 정의되기 전에 생성된 인스턴스도 예외가 아닙니다.
 
