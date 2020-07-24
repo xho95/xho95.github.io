@@ -462,7 +462,7 @@ print(game.textualDescription)
 
 #### Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)
 
-'일반화된 타입 (generic type; 제네릭 타입)'[^generic-type] 은, 가령 타입의 '일반화된 매개 변수 (generic parameter; 제네릭 매개 변수)'가 그 프로토콜을 준수할 때와 같이, 지정된 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. '일반화된 타입 (generic type)' 이 조건에 따라 프로토콜을 준수하도록 만들려면 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하면 됩니다. 이러한 '구속 조건' 을 채택하려는 프로토콜의 이름 뒤에 나열하는 것은 '일반화된 `where` 구절 (generic `where` clause)' 을 사용하여 작성합니다. '일반화된 `where` 구절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화된 where 구절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-where-구절) 을 참고하기 바랍니다.
+'일반화된 타입 (generic type; 제네릭 타입)'[^generic-type] 은, 가령 타입의 '일반화된 매개 변수 (generic parameter; 제네릭 매개 변수)'가 그 프로토콜을 준수할 때와 같이, 지정된 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. '일반화된 타입 (generic type)' 이 조건에 따라 프로토콜을 준수하도록 만들려면 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하면 됩니다. 이러한 '구속 조건' 을 채택하려는 프로토콜의 이름 뒤에 나열하는 것은 '일반화된 `where` 구절 (generic `where` clause)' 을 사용하여 작성합니다. '일반화된 `where` 구절' 에 대한 더 자세한 내용은, [Generic Where Clauses (제네릭-일반화된 where 구절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-제네릭-일반화된-where-구절) 을 참고하기 바랍니다.
 
 다음의 '익스텐션 (extension)' 은 `TextRepresentable` 을 준수하는 타입의 원소를 저장할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하도록 만듭니다.
 
@@ -938,7 +938,7 @@ extension PrettyTextRepresentable {
 
 #### Adding Constraints to Protocol Extensions (프로토콜 확장에 대한 구속 조건 추가하기)
 
-프로토콜 확장을 정의할 때는, 확장에 있는 메소드와 속성이 사용 가능해지기 전에 준수 타입이 반드시 만족해야 할 '구속 조건 (constraints)' 을 지정할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜의 이름 뒤에 일반화된 `where` 구절을 붙여서 작성합니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
+프로토콜 확장을 정의할 때는, 확장에 있는 메소드와 속성이 사용 가능해지기 전에 준수 타입이 반드시 만족해야 할 '구속 조건 (constraints)' 을 지정할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜의 이름 뒤에 일반화된 `where` 구절을 붙여서 작성합니다. 일반화된 `where` 구절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 구절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-제네릭-일반화된-where-구절) 를 참고하기 바랍니다.[^POP]
 
 예를 들어, `Collection` 프로토콜에 대한 확장을 정의하면서 어떤 '컬렉션 (collection)' 의 원소가 `Equatable` 프로토콜을 준수하는 경우에만 적용되도록 할 수 있습니다. '컬렉션' 의 원소를, 표준 라이브러리의 일부인, `Equatable` 프로토콜로만 구속하면, `==` 와 `!=` 연산자를 사용하여 두 원소의 '같음 (equality)' 과 '다름 (inequality)' 을 검사할 수 있습니다.
 
