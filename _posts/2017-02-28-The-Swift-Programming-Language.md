@@ -40,7 +40,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %})
 * [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %})
 * [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %})
-* [Generics (제네릭; 일반화)] - [일부 진행중]({% post_url 2020-02-29-Generics %})
+* [Generics (제네릭; 일반화)]({% post_url 2020-02-29-Generics %})
 * [Opaque Types (불투명한 타입)]({% post_url 2020-02-22-Opaque-Types %})
 * [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %})
 * [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %})
