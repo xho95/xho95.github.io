@@ -19,7 +19,7 @@ Xcode 12 를 사용하여 스위프트 4 와 스위프트 4.2 코드를 제작�
 
 * 함수가 '불투명한 타입 (opaque type)' 을 반환하려면 '스위프트 5.1 런타임 (runtime)'[^swift-runtime] 이 필요합니다.
 * '`try?` 표현식' 은 이미 '옵셔널 (optionals)' 을 반환하는 표현식에 부가적인 수준의 '옵셔널 성질 (optionality)' 를 추가로 도입하지 않습니다.[^level-of-optionality]
-* '초기화 표현식 (initialization expressions)' 에 '아주 큰 정수 글자표현 (large integer literal)'[^large-integer-literal] 을 사용해도 올바른 정수 타입으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 도 '값 넘침 (overflowing)' 이 아니라 올바른 값을 계산합니다.
+* '초기화 표현식 (initialization expressions)' 에 '아주 큰 정수 글자 값 (large integer literal)'[^large-integer-literal] 을 사용해도 올바른 정수 타입으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 도 '값 넘침 (overflowing)' 이 아니라 올바른 값을 계산합니다.
 
 스위프트 5.3 으로 작성된 '대상 (target)' 은 스위프트 4.2 나 스위프트 4 로 작성된 '대상' 을 의존할 수 있으며, 그 반대도 가능합니다.[^depend-on] 이것의 의미는, '다중 프레임웍' 으로 분할되는 큰 프로젝트에서, 스위프트 4 에서 스위프트 5.2 로 한 번에 한 프레임웍씩 코드를 이전할 수 있다는 것입니다.
 
@@ -37,6 +37,6 @@ Xcode 12 를 사용하여 스위프트 4 와 스위프트 4.2 코드를 제작�
 
 [^level-of-optionality]: 부가적인 수준의 '옵셔널 성질' 를 추가하지 않는다는 말은 '옵셔널 연쇄 (optional chaining)' 에서 처럼, 여러 단계로 감싸여 있어도 전체 '옵셔널 값 (optional value)' 을 구하려면 한 번만 풀면 된다는 의미입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
 
-[^large-integer-literal]: '아주 큰 정수 글자표현' 이란 바로 뒤 예제에 나오는 것처럼, 정수가 아주 클 때 자리 구분 용도로, `0xffff_ffff_ffff_ffff` 처럼, 일정 자리마다 구분한 '글자표현' 을 말합니다. 여기서 '글자표현 (literal; 리터럴)' 이란 '글자 자체로서의 값' 을 의미하며, `let x = 1` 과 같은 구문이 있을 때, `1` 을 문자가 아니라 그 글자가 표현하는 값인 하나의 수 `1` 로 인식한다는 것을 의미합니다.
+[^large-integer-literal]: '아주 큰 정수 글자 값' 이란 바로 뒤 예제에 나오는 것처럼, 정수가 아주 클 때, `0xffff_ffff_ffff_ffff` 처럼, 일정 자리마다 구분자를 표시한 '글자 값' 을 말합니다. 여기서 '글자 값 (literal)' 이란 '글자로 표현된 그 자체로서의 값' 을 의미하며, `let x = 1` 과 같은 구문이 있을 때, `1` 을 문자가 아니라 그 글자가 표현하는 값인 하나의 수 `1` 로 인식한다는 것을 의미합니다.
 
 [^depend-on]: 이것은 ABI 안정성[^ABI-Stability] 에 더해서 스위프트 5.2 부터 모듈 안정성 (module stability) 도 지원하기 때문인 것으로 추측됩니다. 이 부분은 대해서는 [ABI Stability and More](https://swift.org/blog/abi-stability-and-more/) 글을 참고하기 바랍니다.

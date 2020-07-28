@@ -73,7 +73,7 @@ print("Three feet is \(threeFeet) meters")
 // Prints "Three feet is 0.914399970739201 meters"
 ```
 
-이 계산 속성들 (computed properties) 을 사용하면 `Double` 값이 길이 단위를 가진 것처럼 표현할 수 있습니다. 비록 계산 속성으로 구현되었더라도, 속성의 이름을 '부동-소수점 글자표현 값 (floating-point literal value)'[^literal] 뒤에 점을 찍고 붙여서, 거리 변환을 수행하여 사용할 수 있습니다.   
+이 계산 속성들 (computed properties) 을 사용하면 `Double` 값이 길이 단위를 가진 것처럼 표현할 수 있습니다. 비록 계산 속성으로 구현되었더라도, 속성의 이름을 '부동-소수점 글자 값 (floating-point literal value)'[^literal] 뒤에 점을 찍고 붙여서, 거리 변환을 수행하여 사용할 수 있습니다.   
 
 이 예에서, `Double` 값 `1.0` 은 "1 미터" 를 나타내는 것으로 볼 수 있습니다. 이것이 계산 속성 `m` 이 `self` 를 반환하는 이유인데-`1.m` 이라는 표현은 `Double` 값 `1.0` 으로 계산되기 때문입니다.
 

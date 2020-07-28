@@ -683,7 +683,7 @@ for item in breakfastList {
 // 6 x Eggs ✘
 ```
 
-여기서는, 세 개의 새로운 `ShoppingListItem` 인스턴스를 담고 있는 '배열 글자 표현 (array literal)' 을 사용하여 `breakfastList` 라는 새로운 배열을 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론됩니다. 배열을 생성한 후에는, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매한 것으로 표시합니다. 배열에 있는 각 항목의 설명을 출력해보면 이들의 기본 설정 상태가 예상한 대로 설정 되었는지를 보여줍니다.
+여기서는, 세 개의 새로운 `ShoppingListItem` 인스턴스를 담고 있는 '배열 글자 값 (array literal)' 을 사용하여 `breakfastList` 라는 새로운 배열을 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론됩니다. 배열을 생성한 후에는, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매한 것으로 표시합니다. 배열에 있는 각 항목의 설명을 출력해보면 이들의 기본 설정 상태가 예상한 대로 설정 되었는지를 보여줍니다.
 
 ### Failable Initializers (실패 가능한 초기자)
 

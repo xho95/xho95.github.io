@@ -53,7 +53,7 @@ class Song: MediaItem {
 }
 ```
 
-마지막 코드 조각은 `library` 라는 상수 배열을 만들고, 여기에 두 개의 `Movie` 인스턴스와 세 개의 `Song` 인스턴스를 담습니다. `library` 배열에 대한 타입 추론은 이를 '배열 글자표현 (array literal)' 의 내용으로 초기화하는 것으로 이루어 집니다. 스위프트의 '타입 검사기 (type checker)' 는 `Movie` 와 `Song` 이 `MediaItem` 이라는 공통의 '상위 클래스' 를 가지고 있음을 파악할 수 있으므로, `library` 배열의 타입으로 `[MediaItem]` 을 추론합니다.
+마지막 코드 조각은 `library` 라는 상수 배열을 만들고, 여기에 두 개의 `Movie` 인스턴스와 세 개의 `Song` 인스턴스를 담습니다. `library` 배열에 대한 타입 추론은 이를 '배열 글자 값 (array literal)' 의 내용으로 초기화하는 것으로 이루어 집니다. 스위프트의 '타입 검사기 (type checker)' 는 `Movie` 와 `Song` 이 `MediaItem` 이라는 공통의 '상위 클래스' 를 가지고 있음을 파악할 수 있으므로, `library` 배열의 타입으로 `[MediaItem]` 을 추론합니다.
 
 ```swift
 let library = [
