@@ -24,7 +24,7 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 주석은 추가적인 양식과 '마크-업 (markup)' 을 가질 수 있는데, 이는 [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html) 에서 설명합니다.
 
-> [GRAMMAR OF WHITESPACE](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
+> GRAMMAR OF WHITESPACE 생략 : [해당 링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
 
 ### Idenfifiers (식별자)
 
