@@ -758,7 +758,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
 
-[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면' 에서 '사용자 영역 (private-use areas) 평면' 을 말하는 것 같습니다. 유니코드에는 15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`), 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane) 및 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
+[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면' 에서 '사용자 영역 (private-use areas) 평면' 을 말하는 것 같습니다. 유니코드에는 15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`), 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 및 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
 [^annotation]: 'annotation' 는 사실 '주석' 이라는 옮기는 것이 가장 적당하지만, '주석' 은 프로그래밍 분야에서 'comments' 라는 말로 이미 널리 쓰이고 있으므로, 스위프트의 'annotation' 을 '보조 설명' 이라는 말로 옮기도록 하겠습니다. 실제로 스위프트에서 'annotation' 을 쓸 일은 거의 없기 때문에 이 용어의 의미에 크게 비중을 두지 않아도 될 것 같습니다.
 
