@@ -91,7 +91,7 @@ let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
 ```
 
-상수와 변수의 이름은 '공백 (whitespace)', '수학 기호 (mathematical symbols)', '화살표 (arrows)', '보조 사용자 영역의 유니코드 크기 값 (private-use Unicode scalar values)'[^private-use-Unicode-scalar-values], 또는 '선-그리기 (line-drawing)' 및 '상자-그리기 문자 (box-drawing characters)' 를 가질 수 없습니다. 이름을 숫자로 시작하는 것도 안되지만, 숫자가 다른 위치에 있는 건 괜찮습니다.
+상수와 변수의 이름은 '공백 (whitespace)', '수학 기호 (mathematical symbols)', '화살표 (arrows)', '사용자 영역 유니코드 크기 값 (private-use Unicode scalar values)'[^private-use-Unicode-scalar-values], 또는 '선-그리기 (line-drawing)' 및 '상자-그리기 문자 (box-drawing characters)' 를 가질 수 없습니다. 이름을 숫자로 시작하는 것도 안되지만, 숫자가 다른 위치에 있는 건 괜찮습니다.
 
 상수나 변수를 특정 타입으로 한번 선언했으면, 같은 이름을 선언에 다시 사용하거나, 다른 타입의 값을 저장하도록 바꿀 수 없습니다. 상수를 변수로 바꾸거나 변수를 상수로 바꾸는 것도 안됩니다.
 
@@ -758,7 +758,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
 
-[^private-use-Unicode-scalar-values]: '보조 사용자 영역의 유니코드 크기 값' 이란 '유니코드' 에서 'private-use areas' 를 말하는 것 같습니다. 유니코드에는 `U+E000 ~ U+F8FF` 등, 총 3개의 'private-use areas' 이 있는데, 보다 자세한 내용은 위키피디아의 [Unicode](https://en.wikipedia.org/wiki/Unicode) 항목을 참고하기 바랍니다.
+[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면' 에서 '사용자 영역 (private-use areas) 평면' 을 말하는 것 같습니다. 유니코드에는 15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`), 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane) 및 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
 [^annotation]: 'annotation' 는 사실 '주석' 이라는 옮기는 것이 가장 적당하지만, '주석' 은 프로그래밍 분야에서 'comments' 라는 말로 이미 널리 쓰이고 있으므로, 스위프트의 'annotation' 을 '보조 설명' 이라는 말로 옮기도록 하겠습니다. 실제로 스위프트에서 'annotation' 을 쓸 일은 거의 없기 때문에 이 용어의 의미에 크게 비중을 두지 않아도 될 것 같습니다.
 

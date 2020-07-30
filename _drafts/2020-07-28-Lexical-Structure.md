@@ -24,9 +24,19 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 주석은 추가적인 양식과 '마크-업 (markup)' 을 가질 수 있는데, 이는 [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html) 에서 설명합니다.
 
-> GRAMMAR OF WHITESPACE 생략 : [해당 링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
+> GRAMMAR OF WHITESPACE : 생략 - [해당 링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
 
 ### Idenfifiers (식별자)
+
+식별자는 대문자 또는 소문자 A에서 Z까지, 밑줄 (_), 기본 다국어 평면의 비 조합 영숫자 유니 코드 문자 또는 개인용 사용 영역에없는 기본 다국어 평면 외부 문자로 시작합니다. 첫 문자 뒤에 숫자와 조합 유니 코드 문자도 허용됩니다.
+
+예약어를 식별자로 사용하려면 앞뒤에 백틱 (`)을 넣으십시오. 예를 들어, class는 유효한 식별자는 아니지만`class`는 유효합니다. 백틱은 식별자의 일부로 간주되지 않습니다. `x`와 x의 의미는 같습니다.
+
+명시적인 매개 변수 이름이없는 클로저 내에서 매개 변수의 이름은 암시 적으로 $ 0, $ 1, $ 2 등입니다. 이러한 이름은 폐쇄 범위 내에서 유효한 식별자입니다.
+
+컴파일러는 속성 래퍼 투영이있는 속성에 대해 달러 기호 ($)로 시작하는 식별자를 합성합니다. 코드는 이러한 식별자와 상호 작용할 수 있지만 해당 접두사로 식별자를 선언 할 수 없습니다. 자세한 내용은 속성 장의 propertyWrapper 섹션을 참조하십시오.
+
+> GRAMMAR OF IDENTIFIER : 생략 - [해당 링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
 ### Keywords and Punctuation (키워드와 문장 부호)
 
