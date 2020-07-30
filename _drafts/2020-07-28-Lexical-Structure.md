@@ -28,13 +28,13 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 ### Idenfifiers (식별자)
 
-식별자는 대문자 또는 소문자 A에서 Z까지, 밑줄 (_), 기본 다국어 평면의 비 조합 영숫자 유니 코드 문자 또는 개인용 사용 영역에없는 기본 다국어 평면 외부 문자로 시작합니다. 첫 문자 뒤에 숫자와 조합 유니 코드 문자도 허용됩니다.
+_식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국어 기본 평면 (Basic Multilingual Plane)'[^BMP] 에 있는 '혼합되지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)'[^noncombining-alphanumeric], 또는 '다국어 기본 평면' 외부이면서 '사용자 영역 (Private Use Area)' 에는 있지 않은 문자로 시작합니다. 첫 번째 문자 뒤에는, '숫자 (digits)'[^digits] 와 '혼합된 유니코드 문자 (combining Unicode characters)'[^combining] 도 올 수 있습니다.
 
-예약어를 식별자로 사용하려면 앞뒤에 백틱 (`)을 넣으십시오. 예를 들어, class는 유효한 식별자는 아니지만`class`는 유효합니다. 백틱은 식별자의 일부로 간주되지 않습니다. `x`와 x의 의미는 같습니다.
+'예약어 (reserved word)' 를 '식별자' 로 사용하려면, 그 앞뒤에 '역따옴표 (backticks; **`**)'[^backticks] 을 붙이면 됩니다. 예를 들어, `class` 는 식별자로 유효하지 않지만, **`**`class`**`** 는 유효합니다. '역따옴표' 자체는 식별자의 일부로 간주되지 않습니다; **`**`x`**`** 와 `x` 는 같은 의미를 가집니다.
 
-명시적인 매개 변수 이름이없는 클로저 내에서 매개 변수의 이름은 암시 적으로 $ 0, $ 1, $ 2 등입니다. 이러한 이름은 폐쇄 범위 내에서 유효한 식별자입니다.
+명시적인 매개 변수 이름이 없는 클로저 내에서는, 매개 변수가 `$0`, `$1`, `$2`, 등등의 이름을 암시적으로 가지게 됩니다. 이 이름들은 클로저 범위 내에서는 유효한 식별자입니다.
 
-컴파일러는 속성 래퍼 투영이있는 속성에 대해 달러 기호 ($)로 시작하는 식별자를 합성합니다. 코드는 이러한 식별자와 상호 작용할 수 있지만 해당 접두사로 식별자를 선언 할 수 없습니다. 자세한 내용은 속성 장의 propertyWrapper 섹션을 참조하십시오.
+컴파일러는 '속성 포장 돌출부 (property wrapper projection)' 를 가지는 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 식별자를 만들어서 통합합니다. 이런 식별자와 상호 작용하는 코드를 만들 수는 있지만, 이 접두사를 사용해서 식별자를 선언할 수는 없습니다. 더 자세한 정보는, [Attributes (특성)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 장에 있는 [propertyWrapper (프로퍼티 래퍼; 속성 포장)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID621) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF IDENTIFIER : 생략 - [해당 링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
@@ -59,3 +59,13 @@ categories: Swift Language Grammar Reference Lexical-Structure
 [^maximal-munch]: 'maximal munch' 라는 용어를 '최대한 잘라먹기' 라고 옮긴 것은, [Jay Two](https://j2doll.tistory.com) 님의 [최대한 잘라먹기(Maximal Munch)와 컴파일러(Compiler)](https://j2doll.tistory.com/109) 라는 블로그 글을 참고한 것인데, 이 말이 의미를 가장 잘 전달하고 있다고 생각해서 저도 따르기로 했습니다. 'longest match' 와 'maximal munch' 에 대해서는 위피키디아의 [Maximal munch](https://en.wikipedia.org/wiki/Maximal_munch) 항목을 참고하기 바랍니다.
 
 [^form-feed]: '양식 먹임 (form feed)' 이란 화면 내용을 출력할 때, 현재 페이지를 종료하고 다음 페이지의 첫 부분부터 다시 출력하라는 것을 지시하는 문자입니다.
+
+[^BMP]: '다국어 기본 평면 (Basic Multilingual Plane)' 이란 '유니코드 평면 (Unicode planes)' 에서 '0번 평면 (`U+0000 ~ U+FFFF`) 을 말하는 것으로 여기에는 거의 모든 근대 문자와 특수 문자가 포함되어 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 및 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
+
+[^noncombining-alphanumeric]: '혼합되지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)' 에서 '혼합되지 않은 (noncombining)' 은 `é` 처럼 '강세' 같은 기호와 혼합되지 않은 문자라는 의미이며, '영숫자 (alphanumeric)' 란 수학 기호로 사용되는 그리스 및 라틴 문자인 'Mathematical Alphanumeric Symbols' 을 의미합니다. 더 자세한 내용은 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 및 [Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols) 항목을 참고하기 바랍니다.
+
+[^digits]: 여기서의 'digits' 은 'Numerical digit' 을 의미하는 것으로, 수를 표기하기 위한 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Numerical digit](https://en.wikipedia.org/wiki/Numerical_digit) 또는 [숫자](https://ko.wikipedia.org/wiki/숫자) 항목을 참고하기 바랍니다.
+
+[^combining]: '혼합된 유니코드 문자 (combining Unicode characters)' 란 `é` 처럼 '강세' 등의 기호와 혼합되어 있는 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목을 참고하기 바랍니다.
+
+[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
