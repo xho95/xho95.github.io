@@ -23,9 +23,9 @@ print("Hello, world!")
 
 이 둘러보기는 다양한 프로그래밍 작업을 달성하는 방법을 보임으로써 스위프트로 코드 작성을 시작하기에 충분한 정보를 주도록 합니다. 어떤 부분이 이해가 가지 않더라도 걱정할 필요 없습니다-이 둘러보기에서 소개한 모든 것은 이 책의 나머지 부분에서 더 자세히 설명하고 있기 때문입니다.
 
-> 'Xcode (엑스코드)' 가 설치되어 있는 맥, 또는 스위프트 'Playgrounds (놀이터)' 가 있는 아이패드에서는, 이 장을 'playground' 로 열어볼 수 있습니다. 'Playgournd' 에서는 코드 목록을 편집하고 결과를 즉시 확인할 수 있습니다.
+> 'Xcode (엑스코드)' 가 설치되어 있는 맥, 또는 스위프트 'Playgrounds (플레이그라운드; 놀이터)' 가 있는 아이패드에서는, 이 장을 '플레이그라운드' 로 열어볼 수 있습니다. '플레이그라운드 (Playground)' 에서는 코드 목록을 편집하고 결과를 즉시 확인할 수 있습니다.
 >
-> [Download Playground (놀이터 다운로드 하기)](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
+> [Download Playground (플레이그라운드 다운로드 하기)](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
 ### Simple Values (간단한 값들)
 
