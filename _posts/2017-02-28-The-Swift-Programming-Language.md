@@ -13,9 +13,9 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### Welcome to Swift (스위프트 소개)
 
-* [About Swift (스위프트에 대하여)]({% post_url 2017-03-02-About-Swift %}) ![Swift 5.3](https://img.shields.io/badge/swift 5.3-finished-success)
-* [Version Compatibility (버전 호환성)]({% post_url 2020-03-15-Version-Compatibility %}) ![Swift 5.3](https://img.shields.io/badge/swift 5.3-finished-success)
-* [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %}) ![Swift 5.3](https://img.shields.io/badge/swift 5.3-ongoing-yellow)
+* [About Swift (스위프트에 대하여)]({% post_url 2017-03-02-About-Swift %})
+* [Version Compatibility (버전 호환성)]({% post_url 2020-03-15-Version-Compatibility %})
+* [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %})
 
 ### Language Guide (언어 설명서)
 
