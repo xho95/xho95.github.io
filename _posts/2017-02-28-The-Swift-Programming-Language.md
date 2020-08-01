@@ -13,7 +13,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### Translator's words (옮긴이의 말)
 
-* 진행상황: ![5.3](https://img.shields.io/badge/-%205.3-success) 5.3 완료, ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow) 5.3 진행중, 기타 - 5.2 완료
+* 진행 상황: ![5.3](https://img.shields.io/badge/-%205.3-success) 5.3 완료, ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow) 5.3 진행중, 기타 - 5.2 완료
 
 ### Welcome to Swift (스위프트 소개)
 
