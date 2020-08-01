@@ -9,7 +9,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/)[^Swift] 책을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다.
 >
-> 현재 Swift 5.2 로 되어 있던 부분을 Swift 5.3 으로 변경을 진행하는 중이라, 일부 문서는 Swift 5.2 기준일 수 있습니다.
+> 번역 도중에 Swift 5.3 이 발표되어, 일부 문서는 Swift 5.2 기준으로 번역되어 있습니다.
 
 ### Translator's words (옮긴이의 말)
 
