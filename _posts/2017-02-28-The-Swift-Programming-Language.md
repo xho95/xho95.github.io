@@ -9,11 +9,11 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/)[^Swift] 책을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다.
 >
-> 현재 번역을 진행하고 있으며, 기존에 Swift 5.2 로 되어 있던 부분도 Swift 5.3 으로 변경을 진행하는 중이라, 일부 문서는 Swift 5.2 기준일 수 있습니다.
+> 현재 Swift 5.2 로 되어 있던 부분을 Swift 5.3 으로 변경을 진행하는 중이라, 일부 문서는 Swift 5.2 기준일 수 있습니다.
 
-### 들어가며
+### Translator's words (옮긴이의 말)
 
-* 진행상황: ![5.3](https://img.shields.io/badge/-%205.3-success) 5.3 완료,  ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow) 5.3 진행중,  나머지 - 5.2 완료
+* 진행상황: ![5.3](https://img.shields.io/badge/-%205.3-success) 5.3 완료, ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow) 5.3 진행중, 기타 - 5.2 완료
 
 ### Welcome to Swift (스위프트 소개)
 
