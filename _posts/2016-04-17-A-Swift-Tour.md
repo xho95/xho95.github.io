@@ -167,7 +167,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-'switches (전환문)' 은 어떤 종류의 데이터도 상관없으며 폭 넓고 다양한 비교 연산을 지원합니다-정수로만 제한되어 있지 않으며 '같음 (equality)' 비교만 테스트하도록 제한되어 있지도 않습니다.
+'switches (switch 문; 전환문)' 은 어떤 종류의 데이터도 상관없으며 폭 넓고 다양한 비교 연산을 지원합니다-정수로만 제한되어 있지 않으며 '같음 (equality)' 비교만 테스트하도록 제한되어 있지도 않습니다.
 
 ```swift
 let vegetable = "red pepper"
@@ -188,11 +188,11 @@ default:
 >
 > '기본 경우 값 (default case; 디폴트 케이스)' 를 제거해 봅니다. 어떤 에러를 가지게 됩니까?
 
-패턴 안에서 `let` 을 사용하여 패턴에 해당하는 값을 상수에 할당할 수 있음에 주목하기 바랍니다.
+'패턴 (pattern; 유형)' 안에서 `let` 을 사용하면 '패턴' 에 해당하는 값을 상수에 할당할 수 있음에 주목하기 바랍니다.
 
-'스위치 경우 값 (switch case)' 에 해당하는 코드를 실행하고 나면, '스위치 (switch)' 구문을 빠져 나오게 됩니다. 프로그램 실행은 그 다음 '경우 값 (case)' 으로 계속 이어지지 않으므로, 각 '경우 값 (case)' 의 코드 끝에서 '스위치 (switch) 문' 을 '깨고 나와야 한다 (break out)' 고 명시할 필요가 없습니다.[^break-out]
+'switch 문 경우 값 (switch case)' 내의 코드를 실행하고 나면, 프로그램은 'switch 문' 을 빠져 나옵니다. 실행은 그 다음 '경우 값 (case)' 으로 계속되지 않으므로, 각 '경우 값' 코드 끝에서 'switch 문' 을 명시적으로 '깨고 나올 (break out)' 필요가 없습니다.[^break-out]
 
-`for-in` 을 사용하여 '딕셔너리' 에 있는 항목에 동작을 반복 적용시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍' 을 제공하면 됩니다. '딕셔너리' 는 순서가 없는 '컬렉션 (collection' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복 적용시키게 됩니다.
+`for`-`in` 을 사용하여 '딕셔너리' 에 있는 항목에 동작을 반복 적용시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍' 을 제공하면 됩니다. '딕셔너리' 는 순서가 없는 '컬렉션 (collection' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복 적용시키게 됩니다.
 
 ```swift
 let interestingNumbers = [
@@ -855,7 +855,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^indentation]: 이 부분의 설명은 원문만을 봤을 때는 이해하기 어려울 수 있는데, 설명을 생략하기 때문입니다. 실제 더 자세한 설명은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있는 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에서 따로 하고 있습니다.
 
-[^break-out]: 이 말은 스위프트의 'switch' 구문에서는 각 'case' 절마다 끝에 'break' 를 쓸 필요는 없다는 말을 의미합니다.
+[^break-out]: 이 말은 스위프트의 'switch 문' 에서는 각 'case' 마다 끝에 'break' 를 쓸 필요가 없다는 의미입니다.
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 할 수 있습니다. 본문 내용은 스위프트에서는 '함수' 도 '객체' 처럼 'first-class' 라서 앞의 동작들을 모두 다 수행할 수 있다는 것을 의미합니다. 보다 자세한 내용은 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
