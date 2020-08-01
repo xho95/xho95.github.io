@@ -167,7 +167,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-'switches (switch 문; 전환문)' 은 어떤 종류의 데이터도 상관없으며 폭 넓고 다양한 비교 연산을 지원합니다-정수로만 제한되어 있지 않으며 '같음 (equality)' 비교만 테스트하도록 제한되어 있지도 않습니다.
+'switch 문' 은 어떤 종류의 데이터도 상관없으며 폭 넓고 다양한 비교 연산을 지원합니다-정수로만 제한되어 있지 않으며 '같음 (equality)' 비교만 테스트하도록 제한되어 있지도 않습니다.
 
 ```swift
 let vegetable = "red pepper"
@@ -190,7 +190,7 @@ default:
 
 '패턴 (pattern; 유형)' 안에서 `let` 을 사용하면 '패턴' 에 해당하는 값을 상수에 할당할 수 있음에 주목하기 바랍니다.
 
-'switch 문 경우 값 (switch case)' 내의 코드를 실행하고 나면, 프로그램은 'switch 문' 을 빠져 나옵니다. 실행은 그 다음 '경우 값 (case)' 으로 계속되지 않으므로, 각 '경우 값' 코드 끝에서 'switch 문' 을 명시적으로 '깨고 나올 (break out)' 필요가 없습니다.[^break-out]
+'switch 문의 case 절 (switch case)' 내의 코드를 실행하고 나면, 프로그램은 'switch 문' 을 빠져 나옵니다. 실행은 그 다음 'case 절' 로 계속되지 않으므로, 각 'case 절' 코드 끝에서 'switch 문' 을 명시적으로 '깨고 나올 (break out)' 필요가 없습니다.[^break-out]
 
 `for`-`in` 을 사용하여 '딕셔너리' 에 있는 항목에 동작을 반복 적용시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍' 을 제공하면 됩니다. '딕셔너리' 는 순서가 없는 '컬렉션 (collection' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복 적용시키게 됩니다.
 
