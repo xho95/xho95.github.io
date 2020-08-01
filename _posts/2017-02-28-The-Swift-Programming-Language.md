@@ -11,11 +11,15 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 >
 > 현재 번역을 진행하고 있으며, 기존에 Swift 5.2 로 되어 있던 부분도 Swift 5.3 으로 변경을 진행하는 중이라, 일부 문서는 Swift 5.2 기준일 수 있습니다.
 
+### 들어가며
+
+* 진행상황 표시 : 5.3 완료 - ![5.3](https://img.shields.io/badge/-%205.3-success),  5.3 진행중 - ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow),  5.2 완료 - 나머지
+
 ### Welcome to Swift (스위프트 소개)
 
-* [About Swift (스위프트에 대하여)]({% post_url 2017-03-02-About-Swift %})
-* [Version Compatibility (버전 호환성)]({% post_url 2020-03-15-Version-Compatibility %})
-* [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %})
+* [About Swift (스위프트에 대하여)]({% post_url 2017-03-02-About-Swift %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
+* [Version Compatibility (버전 호환성)]({% post_url 2020-03-15-Version-Compatibility %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
+* [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 
 ### Language Guide (언어 설명서)
 
@@ -32,17 +36,17 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Methods (메소드)]({% post_url 2020-05-03-Methods %})
 * [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %})
 * [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %})
-* [Initialization (초기화)]({% post_url 2016-01-23-Initialization %})
+* [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %})
 * [Optional Chaining (옵셔널 체이닝; 옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %})
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %})
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %})
 * [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %})
 * [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %})
-* [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %})
-* [Generics (제네릭; 일반화)]({% post_url 2020-02-29-Generics %})
+* [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
+* [Generics (제네릭; 일반화)]({% post_url 2020-02-29-Generics %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Opaque Types (불투명한 타입)]({% post_url 2020-02-22-Opaque-Types %})
-* [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %})
+* [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %})
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %})
 * [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %})
@@ -50,7 +54,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 ### Language Reference (언어의 기준)
 
 * [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %})
-* [Lexical Structure (어휘 구조)] - [일부 진행중]({% post_url 2020-07-28-Lexical-Structure %})
+* [Lexical Structure (어휘 구조)] - [일부 진행중]({% post_url 2020-07-28-Lexical-Structure %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Types (타입)] - [일부 진행중]({% post_url 2020-02-20-Types %})
 * [Expressions (표현식)]
 * [Statements (구문)]
