@@ -192,7 +192,7 @@ default:
 
 'switch 문의 case 절 (switch case)' 내의 코드를 실행하고 나면, 프로그램은 'switch 문' 을 빠져 나옵니다. 실행은 그 다음 'case 절' 로 계속되지 않으므로, 각 'case 절' 코드 끝에서 'switch 문' 을 명시적으로 '깨고 나올 (break out)' 필요가 없습니다.[^break-out]
 
-`for`-`in` 을 사용하여 '딕셔너리' 에 있는 항목에 동작을 반복 적용시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍' 을 제공하면 됩니다. '딕셔너리' 는 순서가 없는 '컬렉션 (collection' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복 적용시키게 됩니다.
+`for`-`in` 을 사용하여 '딕셔너리' 에 있는 항목에 동작을 반복시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍 (a pair of names)' 을 제공하면 됩니다. '딕셔너리' 는 순서가 없는 '컬렉션 (collection; 집합체)' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복합니다.
 
 ```swift
 let interestingNumbers = [
