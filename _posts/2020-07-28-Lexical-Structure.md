@@ -40,9 +40,9 @@ _식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국
 
 ### Keywords and Punctuation (키워드와 문장 부호)
 
-다음의 '키워드 (keywords)' 들은 예약되어 있어서, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 대로, '역따옴표 (backticks)' 로 '벗어나지 (escaped)' 않는 한, 식별자로 사용할 수 없습니다. `inout`, `var`, 및 `let` 이외의 키워드들은 '역따옴표' 로 '벗어나지' 않고도 함수 선언 내에서나 함수 호출 내에서 매개 변수의 이름으로 사용할 수 있습니다.
+다음의 '키워드 (keywords)' 들은 예약되어 있어서, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 대로, '역따옴표 (backticks)' 로 '벗어나지 (escaped)'[^escaped] 않는 한, 식별자로 사용할 수 없습니다. `inout`, `var`, 및 `let` 이외의 키워드들은 '역따옴표' 로 '벗어나지' 않고도 함수 선언 내에서나 함수 호출 내에서 매개 변수의 이름으로 사용할 수 있습니다.
 
-멤버와 키워드가 같은 이름을 가지고 있다 하더라도, 멤버를 참조하는 것과 키워드를 사용하는 것 사이에 모호함이 없다면, 해당 멤버에 대한 참조를 '역따옴표' 로 '벗어나게' 만들어야 할 필요는 없습니다-예를 들어, `self`, `Type`, 그리고 `Protocol` 은 명시적인 '멤버 표현식 (member expression)' 에서 특수한 의미를 가지고 있으므로, 해당 상황에서는 반드시 '역따옴표' 로 '벗어나게' 만들어야 합니다.
+멤버와 키워드가 같은 이름을 가지고 있다 하더라도, 멤버를 참조하는 것과 키워드를 사용하는 것 사이에 모호함이 없다면, 해당 멤버에 대한 참조를 '역따옴표' 로 '벗어나게' 만들어야 할 필요는 없습니다-예를 들어, `self`, `Type`, 그리고 `Protocol` 은 '명시적인 멤버 표현식 (explicit member expression)' 에서 특수한 의미를 가지고 있으므로, 해당 상황에서는 반드시 '역따옴표' 로 '벗어나게' 만들어야 합니다.
 
 * 선언에서 사용되는 키워드: `associatedtype`, `class`, `deinit`, `enum`, `extension`, `fileprivate`, `func`, `import`, `init`, `inout`, `internal`, `let`, `open`, `operator`, `private`, `protocol`, `public`, `rethrows`, `static`, `struct`, `subscript`, `typealias`, 및 `var`.
 * 구문에서 사용되는 키워드: `break`, `case`, `continue`, `default`, `defer`, `do`, `else`, `fallthrough`, `for`, `guard`, `if`, `in`, `repeat`, `return`, `switch`, `where`, 및 `while`.
@@ -82,3 +82,5 @@ _식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국
 [^combining]: '혼합된 유니코드 문자 (combining Unicode characters)' 란 `é` 처럼 '강세' 등의 기호와 혼합되어 있는 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목을 참고하기 바랍니다.
 
 [^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
+
+[^escaped]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 보통은 'excape character' 라고 하면 `\` 기호를 붙이는 것을 말하지만, 여기서는 `` ` `` 기호를 사용하여 '키워드' 를 마치 일반 단어처럼 사용할 수 있게 만드는 것을 의미합니다.
