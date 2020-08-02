@@ -57,13 +57,13 @@ $ man hier
 
 #### `/` : 루트 디렉토리
 
-macOS 에서는 슬래쉬 (`/`) 기호가 '_루트 디렉토리 (root directory)_' 를 의미합니다. '루트 디렉토리' 는 파일 시스템에서 계층 구조의 첫번째 또는 최상위 디렉토리를 말합니다. **Terminal** 에서 다음과 같은 명령을 사용하면, 어느 위치에 있든 '루트 디렉토리' 로 이동할 수 있습니다.
+macOS 에서는 '빗금 (slash; `/`)' 기호가 '_루트 디렉토리 (root directory)_' 를 의미합니다. '루트 디렉토리' 는 파일 시스템에서 계층 구조의 첫번째 또는 최상위 디렉토리를 말합니다. **Terminal** 에서 다음과 같은 명령을 사용하면, 어느 위치에 있든 '루트 디렉토리' 로 이동할 수 있습니다.
 
 ```sh
 $ cd /
 ```
 
-슬래쉬 (`/`) 기호는 '루트 디렉토리' 를 의미하기도 하지만, 디렉토리를 구분하는 '디렉토리 구분자 (directory separator)' 로도 사용됩니다.[^directory-separator] 즉, `/usr` 디렉토리 밑에 있는 `/usr/bin` 디렉토리로 이동할 때는 다음과 같이 하면 됩니다.
+'빗금 (slash; `/`)' 기호는 '루트 디렉토리' 를 의미하기도 하지만, 디렉토리를 구분하는 '디렉토리 구분자 (directory separator)' 로도 사용됩니다.[^directory-separator] 즉, `/usr` 디렉토리 밑에 있는 `/usr/bin` 디렉토리로 이동할 때는 다음과 같이 하면 됩니다.
 
 ```sh
 $ cd /usr/bin
@@ -200,7 +200,7 @@ $ echo $HOME
 
 [^standard-os-x]: 여기서 따로 설명하지 않은 `/boot` 등의 디렉토리에 대한 설명은 [What is standard for OS X filesystem? e.g. /opt/ vs. /usr/](https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr) 라는 글을 참고하기 바랍니다.
 
-[^directory-separator]: 예전에는 macOS 에서 '디렉토리 구분자' 로 콜론 (`:`) 기호를 사용했으며 그래서 예전 자료를 보다 보면 디렉토리를 구분할 때 콜론 (`:`) 을 사용하는 것을 볼 수가 있습니다. 지금은 macOS 에서 '디렉토리 구분자' 는 슬래쉬 기호로 완전히 통일되었습니다. '콜론 (`:`) 디렉토리 구분자' 에 대해서는 [When did the colon character : become an allowed character in the filesystem?](https://apple.stackexchange.com/questions/173529/when-did-the-colon-character-become-an-allowed-character-in-the-filesystem) 라는 글을 참고하기 바랍니다.
+[^directory-separator]: 예전에는 macOS 에서 '디렉토리 구분자' 로 콜론 (`:`) 기호를 사용했으며 그래서 예전 자료를 보다 보면 디렉토리를 구분할 때 콜론 (`:`) 을 사용하는 것을 볼 수가 있습니다. 지금은 macOS 에서 '디렉토리 구분자' 는 '빗금 기호 (slash)' 로 완전히 통일되었습니다. '콜론 (`:`) 디렉토리 구분자' 에 대해서는 [When did the colon character : become an allowed character in the filesystem?](https://apple.stackexchange.com/questions/173529/when-did-the-colon-character-become-an-allowed-character-in-the-filesystem) 라는 글을 참고하기 바랍니다.
 
 [^cores]: `/cores` 디렉토리에 대한 더 자세한 정보는 [OS X El-Capitan - /cores directory taking up a lot of space?](https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space) 라는 글을 참고하기 바랍니다.
 

@@ -125,7 +125,7 @@ print(friendlyWelcome)
 `print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 결과 형태로 출력하는 전역 함수입니다. 예를 들어, Xcode (엑스코드) 에서는, `print(_:separator:terminator:)` 함수가 그 결과를 Xcode 의 "console (콘솔)" 창에 출력합니다. `separator` 와 `terminator` 매개 변수는 기본 설정 값을 갖고 있으므로, 이 함수를 호출할 때 생략할 수 있습니다. 기본적으로, 이 함수는 줄의 마지막에 '줄 바꿈 (line break)' 을 추가하여 출력합니다. 값을 출력할 때 끝에 줄 바꿈을 없애려면, 'terminator (종료자)'에 빈 문자열을 전달하면 됩니다-예를 들어, `print(someValue, terminator : "")` 처럼 하면 됩니다. '기본 설정 값을 가지는 매개 변수' 에 대해서는 [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 를 보도록 합니다.
 
 
-스위프트는 '_문자열 보간법 (string interpolation)_' 을 사용하여 긴 문자열 속에 상수나 변수 이름으로 '자리 표시 (placeholder)' 를 하고, 스위프트가 그 자리를 해당 상수나 변수의 현재 값으로 교체하도록 알려줄 수 있습니다. 이는 이름을 괄호로 감싼 다음, 시작 괄호 앞에 역-슬래시 (backslash) 로 'escape (벗어나게)'[^escape] 하면 됩니다:
+스위프트는 '_문자열 보간법 (string interpolation)_' 을 사용하여 긴 문자열 속에 상수나 변수 이름으로 '자리 표시 (placeholder)' 를 하고, 스위프트가 그 자리를 해당 상수나 변수의 현재 값으로 교체하도록 알려줄 수 있습니다. 이는 이름을 괄호로 감싼 다음, 시작 괄호 앞에 '역-빗금 (backslash)' 으로 'escape (벗어나게)'[^escape] 하면 됩니다:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
@@ -138,13 +138,13 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 
 '주석 (comments)' 을 사용하면 코드 내에 실행되지 않는 텍스트를 넣어서, 설명이나 기억을 되살리는 용도로 사용할 수 있습니다. 스위프트 컴파일러는 코드를 컴파일할 때 주석은 무시합니다.
 
-스위프트의 주석은 C 언어의 주석과 매우 비슷합니다. 한-줄짜리 주석은 슬래쉬 두 개 (`//`) 로 시작합니다:
+스위프트의 주석은 C 언어의 주석과 매우 비슷합니다. 한-줄짜리 주석은 '빗금 두 개 (`//`)' 로 시작합니다:
 
 ```swift
 // This is a comment.
 ```
 
-'여러 줄짜리 주석 (multiline comments)' 은 슬래쉬 뒤에 별표가 있는 곳에서 시작하고 (`/*`) 별표 뒤에 슬래쉬가 있는 곳에서 끝납니다 (`*/` ):
+'여러 줄짜리 주석 (multiline comments)' 은 빗금 뒤에 별표가 있는 곳에서 시작하고 (`/*`) 별표 뒤에 빗금이 있는 곳에서 끝납니다 (`*/` ):
 
 ```swift
 /* This is also a comment

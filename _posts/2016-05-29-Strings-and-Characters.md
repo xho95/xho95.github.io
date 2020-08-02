@@ -78,7 +78,7 @@ It also ends with a line break.
 
 '문자열 글자 값' 은 다음의 특수 문자를 포함할 수 있습니다:
 
-* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (null-널 문자), `\\` (backslash-역슬래쉬), `\t` (가로 tab-탭), `\n` (line feed-줄 먹임), `\r` (carriage-캐리지 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
+* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (null-널 문자), `\\` (backslash-역 빗금), `\t` (가로 tab-탭), `\n` (line feed-줄 먹임), `\r` (carriage-캐리지 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
 * 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', `\u{`_n_`}` 의 형태로 작성하며, 여기서 _n_ 은 1~8 자리의 16진수 값입니다. (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 에서 설명합니다.)
 
 아래의 코드에서 특수 문자에 대한 네 가지 예를 보였습니다. `wiseWords` 상수는 두 개의 'escaped (벗어난)' 큰 따옴표를 담고 있습니다. `dollarSign`, `blackHeart` 그리고 `sparklingHeart` 상수는 '유니코드 크기 양식 (Unicode scalar format)' 을 보여줍니다:
@@ -102,7 +102,7 @@ Escaping all three quotation mark \"\"\"
 
 #### Extended String Delimiters (확장된 문자열 구분자)
 
-'문자열 글자 값 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, 번호 기호 (`#`)[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '줄 바꿈 escape sequence (이스케잎 시퀀스)'인 (`\n`) 가 그대로 출력됩니다.
+'문자열 글자 값 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, '번호 기호 (`#`)'[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '줄 바꿈 escape sequence (이스케잎 시퀀스)'인 (`\n`) 가 그대로 출력됩니다.
 
 '문자열 글자 값 (string literal)' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 escape 문자 (`\`) 뒤에 같은 개수의 '번호 기호' 를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 일 때, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로 `###"Line 1\###nLine 2"###` 라고 해도 줄 바꿈이 일어납니다.
 
@@ -252,7 +252,7 @@ print(goodStart + end)
 
 ### String Interpolation (문자열 보간법)
 
-_문자열 보간법 (string interpolation)_ 은 상수, 변수, 글자 값, 그리고 표현식들을 서로 섞어서 새로운 `String` 값을 생성하는 방법으로, 이 때 '문자열 글자 값 (string literal)' 안에 그 값을 포함하는 방식을 사용합니다. 문자열 보간법은 한 줄짜리 혹은 여러 줄짜리 '문자열 글자 값 (string literal)' 모두에서 사용 가능합니다. 각 요소를 문자열 글자 값에 삽입하려면 그것을 괄호 쌍으로 감싼 후에 맨 앞에 '백 슬래쉬 (`\`)' 를 붙여주면 됩니다:
+_문자열 보간법 (string interpolation)_ 은 상수, 변수, 글자 값, 그리고 표현식들을 서로 섞어서 새로운 `String` 값을 생성하는 방법으로, 이 때 '문자열 글자 값 (string literal)' 안에 그 값을 포함하는 방식을 사용합니다. 문자열 보간법은 한 줄짜리 혹은 여러 줄짜리 '문자열 글자 값 (string literal)' 모두에서 사용 가능합니다. 각 요소를 문자열 글자 값에 삽입하려면 그것을 괄호 쌍으로 감싼 후에 맨 앞에 '역 빗금 (backslash; `\`)' 를 붙여주면 됩니다:
 
 ```swift
 let multiplier = 3
@@ -271,14 +271,14 @@ print(#"Write an interpolated string in Swift using \(multiplier)."#)
 // "Write an interpolated string in Swift using \(multiplier)." 를 출력합니다.
 ```
 
-'확장된 구분자' 를 사용하는 문자열 내에서 '문자열 보간법' 을 사용하려면, 문자열의 시작과 끝에 있는 '번호 기호' 의 개수와 같은 '번호 기호' 를 백 슬래시 뒤에 붙이면 됩니다. 예를 들면 다음과 같습니다:
+'확장된 구분자' 를 사용하는 문자열 내에서 '문자열 보간법' 을 사용하려면, 문자열의 시작과 끝에 있는 '번호 기호' 의 개수와 같은 '번호 기호' 를 '역 빗금 (backslash)' 뒤에 붙이면 됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
 "6 times 7 is 42." 를 출력합니다.
 ```
 
-> 보간된 문자열 내에서 괄호 안의 표현식은 'unescaped (벗어나지 않은)' 백슬래시 (`\`), 캐리지 리턴 (`\r`), 또는 줄 바꿈 (`\n`) 을 포함할 수 없습니다. 그러나, 다른 '문자열 글자 값 (string literals)' 은 포함할 수 있습니다.
+> 보간된 문자열 내에서 괄호 안의 표현식은 'unescaped (벗어나지 않은)' 역 빗금 (backslash; `\`), 캐리지 리턴 (`\r`), 또는 줄 바꿈 (`\n`) 을 포함할 수 없습니다. 그러나, 다른 '문자열 글자 값 (string literals)' 은 포함할 수 있습니다.
 
 ### Unicode (유니코드)
 
@@ -657,11 +657,11 @@ for scalar in dogString.unicodeScalars {
 
 [^interpolation]: '보간법 (interpolation)' 은 원래 수학 용어로 그래프 상에서 두 점 사이의 값을 근사적으로 구해서 채워넣는 방법을 말합니다. 'string interpolation' 은 굳이 직역하면 '문자열 삽입법' 등으로 옮길 수 있겠지만, 'interpolation' 은 원래부터 '보간법' 이라는 말로 많이 사용하고 있으므로 그대로 '보간법' 을 사용하도록 합니다. '문자열 보간법' 은 한 문자열 중간에 다른 값을 문자열의 형태로 집어넣는 것으로 이해할 수 있습니다.
 
-[^escaped]: 'escaped' 는 우리 말로 '벗어난' 을 의미하는 단어인데, 프로그래밍에서 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나서 다른 의미를 가지게된 특수 문자' 라는 의미가 됩니다. 예를 들어 `n` 이라고 하면, 그냥 하나의 영어 문자가 되지만, `\n` 이라고 하면 본래의 영어 단어의 의미를 벗어나서, `new line (feed)` 이라는 새로운 의미를 가지게 됩니다. 이렇게 문자 앞에 슬래쉬 (`\`) 를 붙여서 '본래 의미를 벗어난 다른 의미를 가지는 문자' 를 일컬어 'escaped characters' 라고 합니다.
+[^escaped]: 'escaped' 는 우리 말로 '벗어난' 을 의미하는 단어인데, 프로그래밍에서 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나서 다른 의미를 가지게된 특수 문자' 라는 의미가 됩니다. 예를 들어 `n` 이라고 하면, 그냥 하나의 영어 문자가 되지만, `\n` 이라고 하면 본래의 영어 단어의 의미를 벗어나서, `new line (feed)` 이라는 새로운 의미를 가지게 됩니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 '본래 의미를 벗어난 다른 의미를 가지는 문자' 를 일컬어 'escaped characters' 라고 합니다.
 
 [^scalar]: 'scalar' 는 원래 수학 용어로 '크기만을 가지는 값' 입니다. 여기서 'Unicode scalar value' 은 각각의 문자에 일대일 대응되는 '유니코드 크기 값' 을 의미합니다. 예를 들어, 문자는 `$` 는 유니코드 크기 값이 `U+0024` 에 해당합니다.
 
-[^escaping]: 여기서 'escaping' 할 필요 없다는 말은 슬래쉬 (`\`) 기호를 붙일 필요가 없다는 것을 의미합니다.
+[^escaping]: 여기서 'escaping' 할 필요 없다는 말은 '역 빗금 (backslash; `\`)' 기호를 붙일 필요가 없다는 것을 의미합니다.
 
 [^number-sign]: '#' 은 영어로 'number sign' 이라고 하는데, 보통 우리 말로는 '샾 기호' 라고 알려져 있습니다. 하지만 실제 샾 기호와는 다르며 하나의 숫자를 의미합니다. 여기서는 '번호 기호' 라고 옮기도록 합니다.
 

@@ -40,6 +40,19 @@ _식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국
 
 ### Keywords and Punctuation (키워드와 문장 부호)
 
+다음의 '키워드 (keywords)' 들은 예약되어 있어서, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 대로, '역따옴표 (backticks)' 로 '벗어나지 (escaped)' 않는 한, 식별자로 사용할 수 없습니다. `inout`, `var`, 및 `let` 이외의 키워드들은 '역따옴표' 로 '벗어나지' 않고도 함수 선언 내에서나 함수 호출 내에서 매개 변수의 이름으로 사용할 수 있습니다.
+
+멤버와 키워드가 같은 이름을 가지고 있다 하더라도, 멤버를 참조하는 것과 키워드를 사용하는 것 사이에 모호함이 없다면, 해당 멤버에 대한 참조를 '역따옴표' 로 '벗어나게' 만들어야 할 필요는 없습니다-예를 들어, `self`, `Type`, 그리고 `Protocol` 은 명시적인 '멤버 표현식 (member expression)' 에서 특수한 의미를 가지고 있으므로, 해당 상황에서는 반드시 '역따옴표' 로 '벗어나게' 만들어야 합니다.
+
+* 선언에서 사용되는 키워드: `associatedtype`, `class`, `deinit`, `enum`, `extension`, `fileprivate`, `func`, `import`, `init`, `inout`, `internal`, `let`, `open`, `operator`, `private`, `protocol`, `public`, `rethrows`, `static`, `struct`, `subscript`, `typealias`, 및 `var`.
+* 구문에서 사용되는 키워드: `break`, `case`, `continue`, `default`, `defer`, `do`, `else`, `fallthrough`, `for`, `guard`, `if`, `in`, `repeat`, `return`, `switch`, `where`, 및 `while`.
+* 표현식과 타입에서 사용되는 키워드: `as`, `Any`, `catch`, `false`, `is`, `nil`, `super`, `self`, `Self`, `throw`, `throws`, `true`, 및 `try`.
+* '패턴 (pattern; 유형)' 에서 사용되는 키워드 : `_`.
+* '번호 기호 (number sign; `#`)' 로 시작하는 키워드: `#available`, `#colorLiteral`, `#column`, `#else`, `#elseif`, `#endif`, `#error`, `#file`, `#filePath`, `#fileLiteral`, `#function`, `#if`, `#imageLiteral`, `#line`, `#selector`, `#sourceLocation`, 및 `#warning`.
+* 특정한 상황을 위해 예약되어 있는 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 및 `willSet`. 문법 상에서 나타나야할 상황 이외의 곳에서는, 이들을 식별자로 사용할 수 있습니다.
+
+다음의 '낱말 (tokens)' 들은 '문장 부호 (punctuation)' 로 예약되어 있어서 사용자 정의 연산자로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, `&` (접두사 연산자), `->`, `` ` ``, `?`, 및 `!` (접미사 연산자).
+
 ### Literals (리터럴; 글자 값)
 
 #### Integer Literals (정수 글자 값)
