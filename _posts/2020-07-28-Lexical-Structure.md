@@ -53,7 +53,24 @@ _식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국
 
 다음의 '낱말 (tokens)' 들은 '문장 부호 (punctuation)' 로 예약되어 있어서 사용자 정의 연산자로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, `&` (접두사 연산자), `->`, `` ` ``, `?`, 및 `!` (접미사 연산자).
 
-### Literals (리터럴; 글자 값)
+### Literals (글자 값; 리터럴)
+
+_글자 값 (literal; 리터럴)_ 은, 수치 값 (number) 또는 문자열 (string) 같이, 타입의 값을 소스 코드 상에서 표현한 것입니다.
+
+다음은 '글자 값' 에 대한 예입니다:
+
+```swift
+42               // 정수 글자 값
+3.14159          // 부동-소수점 글자 값
+"Hello, world!"  // 문자열 글자 값
+true             // 불린 글자 값
+```
+
+글자 값은 그 자체로는 타입을 가지지 않습니다. 대신, '글자 값' 은 무한한 정밀도를 가진 것처럼 해석되며 스위프트의 '타입 추론 장치' 가 그 '글자 값' 에 대한 타입을 추론하려고 합니다. 예를 들어, `let x: Int8 = 42` 라고 선언하면, 스위프트는 명시적인 타입 보조 설명 (`: Int8`) 을 사용하여 정수 글자 값 `42` 가 `Int8` 타입임을 추론합니다. 사용 가능한 적합한 타입 정보가 없을 경우, 스위프트는 이 글자 값의 타입이 스위프트 표준 라이브러리에서 정의한 '기본 설정 글자 타입 (default literal types)' 중의 하나라고 추론합니다. '기본 설정 타입 (default types)' 은 정수 글자 값이면 `Int`, 부동-소수점 글자 값이면 `Double`, 문자열 글자 값이면 `String`, 그리고 불린 글자 값이면 `Bool` 입니다. 예를 들어, `let str = "Hello, world"` 라고 선언하면, 문자열 글자 값 `"Hello, world"` 의 기본 추론 타입은 `String` 입니다.
+
+글자 값에 대한 '타입 보조 설명 (type annotation)' 을 지정할 때는, 이 보조 설명의 타입이 반드시 글자 값으로 인스턴스를 만들 수 있는 타입이어야 합니다. 즉, 타입은 반드시 다음의 '스위프트 표준 라이브러리 프로토콜 (Swift standard library protocols)' 중 하나를 준수해야 합니다: 정수 글자 값은 `ExpressibleByIntegerLiteral`, 부동-소수점 글자 값은 `ExpressibleByFloatLiteral`, 문자열 글자 값은 `ExpressibleByStringLiteral`, 불린 글자 값은 `ExpressibleByBooleanLiteral`, 단 하나의 유니코드 크기 값만 담고 있는 문자열 글자 값은 `ExpressibleByUnicodeScalarLiteral`, 단 하나의 '확장된 자소 덩어리 (extended grapheme cluster)' 를 담고 있는 문자열 글자 값은 `ExpressibleByExtendedGraphemeClusterLiteral` 를 준수해야 합니다. 예를 들어, `Int8` 은 `ExpressibleByIntegerLiteral` 프로토콜을 준수하므로, 정수 글자 값 `42` 에 대한 `let x: Int8 = 42` 선언에서와 같이 정수 글자 값 `42` 에 대한 '타입 보조 설명' 으로 사용할 수 있습니다.
+
+> GRAMMAR OF LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
 #### Integer Literals (정수 글자 값)
 
