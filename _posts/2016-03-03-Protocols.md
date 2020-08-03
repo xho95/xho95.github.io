@@ -621,7 +621,7 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 }
 ```
 
-이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하고 `SnakesAndLadders` 타입을 위해 `prettyTextualDescription` 속성에 대한 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 것은 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 의 구현은 먼저 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 접근한 다음 출력 문자열을 만들기 시작합니다. 이는 콜론과 줄 바꿈을 추가해서, 문장 설명의 시작 부분을 예쁘게 꾸밉니다. 그런 다음 게임판 정사각형에 대한 배열에 동작을 반복 적용시켜서, 각 정사각형의 내용을 표현하는 기하학 도형을 추가합니다:
+이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하고 `SnakesAndLadders` 타입을 위해 `prettyTextualDescription` 속성에 대한 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 것은 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 의 구현은 먼저 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 접근한 다음 출력 문자열을 만들기 시작합니다. 이는 '콜론' 과 '줄 끊음 (line break)' 을 추가해서, 문장 설명의 시작 부분을 예쁘게 꾸밉니다. 그런 다음 게임판 정사각형에 대한 배열에 동작을 반복 적용시켜서, 각 정사각형의 내용을 표현하는 기하학 도형을 추가합니다:
 
 * 정사각형의 값이 `0` 보다 크다면, 사다리의 밑부분인 것이며, `▲` 로 표현합니다.
 * 정사각형의 값이 `0` 보다 작다면, 뱀의 머리인 것이며, `▼` 로 표현합니다.
