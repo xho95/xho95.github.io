@@ -119,7 +119,7 @@ print("The shopping list contains \(shoppingList.count) items.")
 // "The shopping list contains 2 items." 를 출력합니다.
 ```
 
-불린 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
+불리언 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -329,7 +329,7 @@ To find out the number of items in a set, check its read-only count property:
 print("I have \(favoriteGenres.count) favorite music genres.")
 // "I have 3 favorite music genres." 를 출력합니다.
 ```
-`count` 속성이 `0` 인지를 검사해야할 때는 더 간단한 방법으로 불린 (Boolean) 속성인 `isEmpty` 를 사용합니다:
+`count` 속성이 `0` 인지를 검사해야할 때는 더 간단한 방법으로 불리언 (Boolean) 속성인 `isEmpty` 를 사용합니다:
 
 ```swift
 if favoriteGenres.isEmpty {
@@ -532,7 +532,7 @@ print("The airports dictionary contains \(airports.count) items.")
 // "The airports_2 dictionary contains 2 items." 를 출력합니다.
 ```
 
-불린 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
+불리언 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
 
 ```swift
 if airports.isEmpty {

@@ -456,7 +456,7 @@ func stepBackward(_ input: Int) -> Int {
 }
 ```
 
-다음은 `chooseStepFunction(backward:)` 라는 함수이며, 반환 타입은 `(Int) -> Int` 입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불린 (Boolean) 매개 변수를 기반으로 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
+다음은 `chooseStepFunction(backward:)` 라는 함수이며, 반환 타입은 `(Int) -> Int` 입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불리언 (Boolean) 매개 변수를 기반으로 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {

@@ -729,7 +729,7 @@ print("Game over!")
 
 ### Early Exit (조기 탈출 구문)
 
-`guard` 문은, `if` 문 처럼, '표현식 (expression)' 의 '불린 값 (Boolean value)' 에 따라 구문을 실행합니다. `guard` 문을 사용하면 `guard` 문 이 후의 코드를 실행하려면 조건이 반드시 '참 (true)' 일 것을 요구하게 됩니다. `if` 문과는 다르게, `guard` 문에는 항상 `else` 절이 있습니다-조건이 '참 (true)' 이 아닐 경우 `else` 절 안에 있는 코드가 실행됩니다.
+`guard` 문은, `if` 문 처럼, '표현식 (expression)' 의 '불리언 값 (Boolean value)' 에 따라 구문을 실행합니다. `guard` 문을 사용하면 `guard` 문 이 후의 코드를 실행하려면 조건이 반드시 '참 (true)' 일 것을 요구하게 됩니다. `if` 문과는 다르게, `guard` 문에는 항상 `else` 절이 있습니다-조건이 '참 (true)' 이 아닐 경우 `else` 절 안에 있는 코드가 실행됩니다.
 
 ```swift
 func greet(person: [String: String]) {

@@ -124,7 +124,7 @@ var anotherEmptyString = String()   // 초기화 구문 표현 (initializer synt
 // 위 두 문자열은 모두 비어 있으며, 서로 동등합니다.
 ```
 
-`String` 값이 비어있는지 확인하려면, 불린 (Boolean) 속성인 `isEmpty` 를 검사하면 됩니다:
+`String` 값이 비어있는지 확인하려면, 불리언 (Boolean) 속성인 `isEmpty` 를 검사하면 됩니다:
 
 ```swift
 if emptyString.isEmpty {
@@ -501,7 +501,7 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 
 #### Prefix and Suffix Equality (접두사 및 접미사 동등성)
 
-문자열에 특정 문자열로 된 접두사나 접미사가 있는지 확인하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하면 되는데, 이 둘은 모두 `String` 타입의 단일 인자를 가지고, 불린 (Boolean) 값을 반환합니다.
+문자열에 특정 문자열로 된 접두사나 접미사가 있는지 확인하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하면 되는데, 이 둘은 모두 `String` 타입의 단일 인자를 가지고, 불리언 (Boolean) 값을 반환합니다.
 
 아래 예제는 문자열의 배열에 대한 예제로, 이는 셰익스피어의 희곡 _로미오와 줄리엣 (Romeo and Juliet)_ 의 첫 두 막에 대한 각 '장 (scene)' 의 장소입니다:
 

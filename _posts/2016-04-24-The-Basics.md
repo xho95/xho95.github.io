@@ -14,7 +14,7 @@ categories: Swift Language Grammar Basics
 
 스위프트는 iOS, macOS, watchOS, 그리고 tvOS 용 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, C 와 오브젝티브-C 언어로 개발한 경험이 있다면 스위프트의 많은 부분들이 이미 익숙할 것입니다.
 
-스위프트는 C 와 오브젝티브-C 언어에 있는 모든 기본 타입들을 자신만의 버전으로 제공하묘, 여기에는 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불린 (Boolean)' 값을 위한 `Bool`, 그리고 텍스트 데이터를 위한 `String` 을 포함합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, 강력한 세 개의 주요 컬렉션 (collection; 집합체) 타입인, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리) 도 제공합니다.
+스위프트는 C 와 오브젝티브-C 언어에 있는 모든 기본 타입들을 자신만의 버전으로 제공하묘, 여기에는 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불리언 (Boolean)' 값을 위한 `Bool`, 그리고 텍스트 데이터를 위한 `String` 을 포함합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, 강력한 세 개의 주요 컬렉션 (collection; 집합체) 타입인, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리) 도 제공합니다.
 
 C 언어 처럼, 스위프트도 '변수 (variables)' 를 사용하여 '식별 가능한 이름 (identifying name)' 으로 값을 저장하고 참조합니다. 스위프트는 값을 바꿀 수 없는 변수 역시 광범위하게 사용합니다. 이를 '상수 (constants)' 라고 하는데, C 언어의 상수보다 훨씬 더 강력합니다. 상수는 스위프트 전반에 걸쳐 사용되는 것으로 바꿀 필요가 없는 값과 작업할 때 코드를 더 안전하고 의도는 더 명확하게 만들어 줍니다.
 
@@ -373,18 +373,18 @@ var maxAmplitudeFound = AudioSample.min
 
 여기서는, `AudioSample` 을 `UInt16` 의 별명으로 정의합니다. 이는 별명이므로, `AudioSample.min` 호출은 실제로 `UInt16.min` 호출인 것으로, 이는 `maxAmplitudeFound` 변수에 `0` 이라는 초기 값을 제공합니다.
 
-### Booleans (불린; 논리 값)
+### Booleans (불리언; 논리 값)
 
-스위프트는 `Bool` 이라는 기본적인 _불린 타입 (Boolean type)_ 을 가지고 있습니다. '불린 (Boolean)' 값을 일컬어 _논리 값 (logical)_ 이라고도 하는데, 왜냐면 이 값들은 항상 `true` 또는 `false` 일 수 밖에 없기 때문입니다. 스위프트는 두 개의 '불린 (Boolean)' 상수 값, `true` 와 `false` 를 제공합니다:
+스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값을 일컬어 _논리 값 (logical)_ 이라고도 하는데, 왜냐면 이는 항상 `true` 이거나 `false` 일 수 밖에 없기 때문입니다. 스위프트는 두 개의 '불리언' 상수 값인, `true` 와 `false` 를 제공합니다:
 
 ```swift
 let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 이들이 '불린 글자 값 (Boolean literal values)' 으로 초기화되었다는 사실에 의해 `Bool` 로 추론됩니다. 앞서 `Int` 와 `Double` 에서와 같이, 생성하자마자 `true` 나 `false` 로 설정하면, 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 장치 (type inference)' 는 스위프트에서 상수나 변수를 초기화할 때 이미 타입이 알려진 값을 사용할 경우 코드를 더 간결하고 이해하기 쉽게 만들도록 도와줍니다.
+`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 이들이 '불리언 글자 값 (Boolean literal values)' 으로 초기화되었다는 사실에 의해 `Bool` 로 추론됩니다. 앞서 `Int` 와 `Double` 에서와 같이, 생성하자마자 `true` 나 `false` 로 설정하면, 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 장치 (type inference)' 는 스위프트에서 상수나 변수를 초기화할 때 이미 타입이 알려진 값을 사용할 경우 코드를 더 간결하고 이해하기 쉽게 만들도록 도와줍니다.
 
-'불린 (Boolean)' 값은 특히 `if` 문 같은 조건 구문에서 사용할 때 아주 유용합니다:
+'불리언 (Boolean)' 값은 특히 `if` 문 같은 조건 구문에서 사용할 때 아주 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
@@ -397,7 +397,7 @@ if turnipsAreDelicious {
 
 `if` 문 같은 조건 구문에 대해서는 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
 
-스위프트의 '타입 안전 장치 (type safety)' 는 '불린-아닌 값 (non-Boolean values)' 이 `Bool` 을 대체하지 못하도록 막아줍니다. 다음 예제는 '컴파일 시간에 (compile-time)' 에러를 띄웁니다:
+스위프트의 '타입 안전 장치 (type safety)' 는 '불리언-아닌 값 (non-Boolean values)' 이 `Bool` 을 대체하지 못하도록 막아줍니다. 다음 예제는 '컴파일 시간에 (compile-time)' 에러를 띄웁니다:
 
 ```swift
 let i = 1
@@ -577,7 +577,7 @@ if let actualNumber = Int(possibleNumber) {
 
 '옵셔널 연결' 에는 상수와 변수 모두 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶으면, `if var actualNumber` 를 대신 사용하여, 옵셔널이 갖고 있는 값을 상수가 아닌 변수로 사용하게끔 할 수도 있습니다.
 
-단일 `if` 문에 쉼표로 분리하는 방법을 쓰면, '옵셔널 연결' 과 '불린 조건 (Boolean conditions)' 을 원하는 만큼 많이 포함시킬 수 있습니다. 옵셔널 연결 중 어떤 값이든 `nil` 이거나 혹은 어떤 '불린 (Boolean)' 조건이든 `false` 로 계산된다면, 전체 `if` 문의 조건은 `false` 인 것으로 고려됩니다. 다음의 `if` 문들은 서로 동등합니다:
+단일 `if` 문에 쉼표로 분리하는 방법을 쓰면, '옵셔널 연결' 과 '불리언 조건 (Boolean conditions)' 을 원하는 만큼 많이 포함시킬 수 있습니다. 옵셔널 연결 중 어떤 값이든 `nil` 이거나 혹은 어떤 '불리언 (Boolean)' 조건이든 `false` 로 계산된다면, 전체 `if` 문의 조건은 `false` 인 것으로 고려됩니다. 다음의 `if` 문들은 서로 동등합니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
@@ -697,7 +697,7 @@ do {
 
 ### Assertions and Preconditinos (단언과 선행 조건)
 
-_단언 (assertions)_ 과 _선행 조건 (Preconditions)_ 은 '실행 시간 (runtime)' 에 하는 '검사 (checks)' 입니다. 이를 사용하면 그 다음 코드를 실행하기 전에 '필수 조건 (essential condition)' 을 만족하고 있는지 확인할 수 있습니다. '단언' 이나 '선행 조건' 에 있는 '불린 (Boolean) 조건이 `true` 로 계산되면, 코드 실행이 평소처럼 계속됩니다. 조건이 `false` 로 계산되면, 프로그램의 현재 상태가 무효한 것입니다; 코드 실행은 중지되고, 앱을 종료합니다.
+_단언 (assertions)_ 과 _선행 조건 (Preconditions)_ 은 '실행 시간 (runtime)' 에 하는 '검사 (checks)' 입니다. 이를 사용하면 그 다음 코드를 실행하기 전에 '필수 조건 (essential condition)' 을 만족하고 있는지 확인할 수 있습니다. '단언' 이나 '선행 조건' 에 있는 '불리언 (Boolean) 조건이 `true` 로 계산되면, 코드 실행이 평소처럼 계속됩니다. 조건이 `false` 로 계산되면, 프로그램의 현재 상태가 무효한 것입니다; 코드 실행은 중지되고, 앱을 종료합니다.
 
 '단언' 과 '선행 조건' 을 사용하면 코딩 중에 만들게 된 '가정 (assumptions)' 과 코딩 중에 가졌던 '기대값 (expectations)' 을 표현할 수 있으며, 이들을 코드의 일부로 포함할 수 있습니다. '단언' 은 개발 중에 실수한 것과 잘못된 가정을 찾도록 도와주며, '선행 조건' 은 제품의 '문제점 (issues)' 을 미리 감지할 수 있도록 도와줍니다.
 

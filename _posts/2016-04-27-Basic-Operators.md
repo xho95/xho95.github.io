@@ -12,7 +12,7 @@ categories: Swift Language Grammar Basic Operators
 
 ## Basic Operators (기본 연산자)
 
-_연산자 (operator)_ 는 값을 검사하고, 바꾸거나 결합하는 데 사용하는 특수한 기호 또는 구절을 말합니다. 예를 들어, '더하기 연산자 (`+`)' 는 `let i = 1 + 2` 에서 처럼 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는 `if enterDoorCode && passedRetinaScan` 에서 처럼 두 불린 (Boolean) 값을 결합합니다.
+_연산자 (operator)_ 는 값을 검사하고, 바꾸거나 결합하는 데 사용하는 특수한 기호 또는 구절을 말합니다. 예를 들어, '더하기 연산자 (`+`)' 는 `let i = 1 + 2` 에서 처럼 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는 `if enterDoorCode && passedRetinaScan` 에서 처럼 두 불리언 (Boolean) 값을 결합합니다.
 
 스위프트는 C 언어에서 제공하는 거의 대부분의 표준 연산자를 지원하며서, 거기다 일반적인 코딩 에러를 없애기 위해 몇가지 기능을 개선했습니다. '할당 연산자 (`=`)' 는 값을 반환하지 않아서, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막았습니다. 산술 연산자들 (`+`,`-`, `*`, `/`, `%` 등) 은 '값 넘침 (value overflow)' 을 감지해서 막아주기 때문에, 타입의 허용 범위보다 크거나 작아진 값을 계산하는 바람에 예상하지 못한 결과가 발생하는 것을 막아줍니다. 스위프트의 'overflow (값 넘침) 연산자' 를 사용해서 값을 넘치는 동작을 하도록 선택할 수도 있으며, 이는 [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명합니다.
 
@@ -218,7 +218,7 @@ if name == "world" {
 
 ```swift
 ("blue", -1) < ("purple", 1)        // OK, true (참) 으로 계산됩니다.
-("blue", false) < ("purple", true)  // Error, < 는 불린 값을 비교할 수 없습니다.
+("blue", false) < ("purple", true)  // Error, < 는 불리언 값을 비교할 수 없습니다.
 ```
 
 > 스위프트 표준 라이브러리에 있는 튜플 비교 연산자는 7개 미만의 요소를 가진 튜플만 비교할 수 있습니다. 7개 이상의 요소를 가진 튜플을 비교하려면 비교 연산자를 직접 구현해야만 합니다.
@@ -381,7 +381,7 @@ range.contains(-1)  // true (참)
 
 ### Logical Operators (논리 연산자)
 
-_논리 연산자 (logical operators)_ 는 '불린 논리 (Boolean logic)' 값인 `true` 와 `false` 를 수정하거나 결합합니다. 스위프트는 C-기반 언어가 제공하는 세 가지 표준 논리 연산자를 지원합니다:
+_논리 연산자 (logical operators)_ 는 '불리언 논리 (Boolean logic)' 값인 `true` 와 `false` 를 수정하거나 결합합니다. 스위프트는 C-기반 언어가 제공하는 세 가지 표준 논리 연산자를 지원합니다:
 
 * Logical NOT '논리 부정' (`!a`)
 * Logical AND '논리 곱' (`a && b`)
@@ -389,7 +389,7 @@ _논리 연산자 (logical operators)_ 는 '불린 논리 (Boolean logic)' 값�
 
 #### Logical NOT Operator (논리 부정 연산자)
 
-_논리 부정 연산자 (logical NOT operator)_ (`!a`) 는 불린 (Boolean) 값을 반전하므로 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
+_논리 부정 연산자 (logical NOT operator)_ (`!a`) 는 불리언 (Boolean) 값을 반전하므로 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
 
 '논리 부정 연산자' 는 '접두 연산자 (prefix operator)' 라서, 연산할 값 바로 앞에 붙여주며, 공백이 있으면 안됩니다. “Not `a`” (`a` 가 아님) 이라고 읽으며, 아래에 예를 보였습니다:
 
@@ -403,7 +403,7 @@ if !allowedEntry {
 
 `if !allowedEntry` 구절은 "허가된 입장이 아니면 (if not allowed entry)" 으로 읽을 수 있습니다. 그 다음 행은 "허가된 입장이 아니면" 이 참일 때만 실행됩니다; 그것은 곧, `allowedEntry` 가 `false` 일 때입니다.
 
-이 예제와 같이, 불린 (Boolean) 상수와 변수의 이름을 정할 때는 주의 깊에 선택해야 코드를 이해하기 슆고 간결하게 만들 수 있으며, 이중 부정을 하거나 논리 구문을 혼동하는 것을 막을 수 있습니다.
+이 예제와 같이, 불리언 (Boolean) 상수와 변수의 이름을 정할 때는 주의 깊에 선택해야 코드를 이해하기 슆고 간결하게 만들 수 있으며, 이중 부정을 하거나 논리 구문을 혼동하는 것을 막을 수 있습니다.
 
 #### Logical AND Operator (논리 곱 연산자)
 
