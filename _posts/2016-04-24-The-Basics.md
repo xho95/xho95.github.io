@@ -375,16 +375,16 @@ var maxAmplitudeFound = AudioSample.min
 
 ### Booleans (불리언; 논리 값)
 
-스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값을 일컬어 _논리 값 (logical)_ 이라고도 하는데, 왜냐면 이는 항상 `true` 이거나 `false` 일 수 밖에 없기 때문입니다. 스위프트는 두 개의 '불리언' 상수 값인, `true` 와 `false` 를 제공합니다:
+스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값을 일컬어 _논리 값 (logical)_ 이라고도 하는데, 왜냐면 이는 항상 `true` 이거나 `false` 일 수 밖에 없기 때문입니다. 스위프트는 두 개의 불리언 상수 값인, `true` 와 `false` 를 제공합니다:
 
 ```swift
 let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 이들이 '불리언 글자 값 (Boolean literal values)' 으로 초기화되었다는 사실에 의해 `Bool` 로 추론됩니다. 앞서 `Int` 와 `Double` 에서와 같이, 생성하자마자 `true` 나 `false` 로 설정하면, 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 장치 (type inference)' 는 스위프트에서 상수나 변수를 초기화할 때 이미 타입이 알려진 값을 사용할 경우 코드를 더 간결하고 이해하기 쉽게 만들도록 도와줍니다.
+`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 이들이 '불리언 글자 값 (Boolean literal values)' 으로 초기화되었다는 사실에 의해 `Bool` 이라고 추론됩니다. 위의 `Int` 및 `Double` 에서와 같이, 상수 또는 변수를 생성하면서 `true` 나 `false` 라고 설정하면, `Bool` 이라고 선언할 필요가 없습니다. 이미 알고 있는 타입의 값으로 상수나 변수를 초기화 할 때는 '타입 추론 장치 (type inference)' 가 스위프트 코드를 더 간결하고 이해하기 쉽게 만들어 줍니다.
 
-'불리언 (Boolean)' 값은 특히 `if` 문 같은 조건 구문에서 사용할 때 아주 유용합니다:
+불리언 값은 `if` 문 같은 조건 구문과 작업할 때 특히 더 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
@@ -395,46 +395,46 @@ if turnipsAreDelicious {
 // "Eww, turnips are horrible." 를 출력합니다.
 ```
 
-`if` 문 같은 조건 구문에 대해서는 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
+`if` 문 등의 조건 구문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
 
-스위프트의 '타입 안전 장치 (type safety)' 는 '불리언-아닌 값 (non-Boolean values)' 이 `Bool` 을 대체하지 못하도록 막아줍니다. 다음 예제는 '컴파일 시간에 (compile-time)' 에러를 띄웁니다:
+스위프트의 '타입 안전 장치 (type safety)' 는 '불리언이-아닌 (non-Boolean)' 값이 `Bool` 을 대체하는 것을 막아줍니다. 다음 예제는 '컴파일 시간 (compile-time)' 에 에러를 띄웁니다:
 
 ```swift
 let i = 1
 if i {
-    // 이 예제는 컴파일되지 않고, 에러를 띄웁니다.
+    // 이 예제는 컴파일이 되지 않고, 에러를 띄울 것입니다.
 }
 ```
 
-아래 예제는 이에 대한 유효한 대안 방식을 보여줍니다:
+하지만, 아래의 또 다른 예제는 유효합니다:
 
 ```swift
 let i = 1
 if i == 1 {
-    // 이 예제는 성공적으로 컴파일됩니다.
+    // 이 예제는 성공적으로 컴파일될 것입니다.
 }
 ```
 
-`i == 1` 비교 연산의 결과는 `Bool` 타입이고, 따라서 이 두 번째 예제는 타입 검사를 통과하게 됩니다. `i == 1` 과 같은 비교 연산들은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명합니다.
+`i == 1` 비교 연산의 결과는 `Bool` 타입이므로, 이 두 번째 예제는 '타입 검사 (type-check)' 를 통과합니다. `i == 1` 과 같은 비교 연산은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명합니다.
 
-스위프트의 '타입 안전 장치 (type safety)' 에 대한 여타 다른 예제에서 봤듯이, 이런 접근 방법은 실수로 인한 에러를 방지해주며 특정 코드 영역의 의도가 늘 명확하도록 해 줍니다.
+스위프트에 있는 '타입 안전 장치' 의 다른 예제에서와 같이, 이런 접근법은 우연한 에러를 방지해주며 특정한 코드 부분의 의도가 항상 명확하도록 보장합니다.
 
 ### Tuples (튜플; 짝)
 
-_튜플 (tuples)_ 은 여러 개의 값을 그룹지어 단일한 하나의 복합 값으로 만들어 줍니다. 튜플 안의 값은 어떤 타입이어도 상관 없으며 서로 같은 타입이어야할 필요도 없습니다.
+_튜플 (tuples)_ 은 여러 개의 값을 '단일한 복합 값' 으로 그룹지어 줍니다. 튜플 내의 값은 어떤 타입든 상관없으며 서로 같은 타입이어야 할 필요도 없습니다.
 
-다음 예제에서, `(404, "Not Found")` 는 _HTTP 상태 코드 (HTTP status code)_ 를 나타내는 튜플입니다. 'HTTP 상태 코드' 는 웹 페이지를 요청할 때마다 웹 서버가 반환하는 특수한 값을 말합니다. 이 중에서 `404 Not Found` 라는 상태 코드는 요청한 웹페이지가 존재하지 않을 때 반환됩니다.
+다음 예제에서, `(404, "Not Found")` 는 _HTTP 상태 코드 (HTTP status code)_ 를 묘사하는 튜플입니다. 'HTTP 상태 코드' 는 웹 페이지를 요청할 때마다 웹 서버에 의해 반환되는 특수한 값입니다. `404 Not Found` 라는 상태 코드는 존재하지 않는 웹페이지를 요청할 때 반환됩니다.
 
 ```swift
 let http404Error = (404, "Not Found")
-// http404Error 의 타입은 (Int, String) 이고, 값은 (404, "Not Found") 와 같습니다.
+// http404Error 의 타입은 (Int, String) 이고, 값은 (404, "Not Found") 입니다.
 ```
 
-`(404, "Not Found")` 라는 튜플은 `Int` 와 `String` 을 함께 그룹지어서 HTTP 상태 코드에 별개의 두 값을 부여합니다: 수 하나와 사람이-인식할 수 있는 하나의 설명이 그것입니다. 이는 "타입이 `(Int, String)` 인 튜플" 이라고 말할 수 있습니다.
+`(404, "Not Found")` 튜플은 `Int` 하나와 `String` 하나를 같이 그룹지어서 HTTP 상태 코드에 두 개의 구분되는 값을 부여합니다: 수치 값 하나와 사람이-읽을 수 있는 설명 하나가 그것입니다. 이는 "`(Int, String)` 타입인 튜플" 이라고 설명할 수 있습니다.
 
-튜플을 만들 때는 타입의 '순서 (permutation)'[^permutation] 같은 것은 아무 상관이 없으며, 서로 다른 타입을 원하는 만큼 많이 집어 넣어도 상관 없습니다. 타입이 `(Int, Int, Int)` 든 `(String, Bool)` 이든 다 튜플을 만들 수 있으며, 진짜로 원하는 데로 아무 순서로 만들어도 상관없습니다.
+튜플은 타입을 어떤 '순서 (permutation)'[^permutation] 로 해도 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 타입이나, `(String, Bool)` 타입, 아니면 진짜 필요한 대로 아무 순서로 된 튜플도 만들 수 있습니다.
 
-튜플의 내용물은 별도의 상수나 변수로 _분해할 (decompose)_ 수도 있으며, 평소처럼 접근할 수도 있습니다:
+튜플이 담고 있는 내용은 별도의 상수나 변수로 _분해 (decompose)_ 할 수 있으며, 그 다음에는 일반 (변수처럼) 접근할 수 있습니다:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
@@ -772,6 +772,6 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 여러 말로 옮길 수 있는데, 컴퓨터 용어로 엄일하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 밑수라는 말로 옮겼습니다. 일부동-소수점 수에서의 'base-number' 는 '유효 숫자' 에 해당한다고 볼 수 있으며, 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
 
-[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n개의 원소에서 r개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉 r개의 원소들을 서로 다른 순서로 줄 지을 수 있는 가지 수를 말하며, 스위프트의 튜플은 이 모든 경우에 대해서 튜플을 만들 수 있다는 의미가 됩니다. 여기서는 모든 순열에 대해 튜플을 만들 수 있다는 것을 원소의 순서에 상관없이 튜플을 만들 수 있다는 의미로 옮겼습니다. 보다 자세한 내용은 위키피디아의 [순열](https://ko.wikipedia.org/wiki/순열) 또는 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목을 참고하기 바랍니다.
+[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n개의 원소에서 r개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉 r개의 원소들을 서로 다른 순서로 줄 지을 수 있는 가지 수를 말하며, 스위프트의 튜플은 이 모든 가지 수에 대해서 튜플을 만들 수 있다는 의미가 됩니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서' 라는 말로 옮겼습니다. '순열 (permutatio)' 에 대한 더 자세한 내용은 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 이나 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
 [^nature]: '사용중인 데이터의 본질적인 요소 (the nature of the data being used)' 를 '암시적으로 문서화 (implicitly documents)' 한다 라는 말이 좀 어렵게 느껴지는데, 제 생각에는, 예를 들어, `Int` 라고 하면 해당 수치 값에 대한 정보를 알 수 없지만, `UInt8` 이라고 하면 이 데이터의 값이 `0~255` 사이임을 알 수 있게 됩니다. 이런 식으로 타입 정보를 통해서 의미를 부여하고 정보를 전달하는 것을 '암시적인 문서화 (implicitly documents)' 라고 하는 것이 아닌가 추측합니다. 본문의 내용은 이렇게 '암시적인 문서화 (implicitly documents)' 라는 게 꼭 필요한 순간에 `Int` 이외의 타입을 사용하라는 의미가 됩니다.
