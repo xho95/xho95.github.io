@@ -154,9 +154,9 @@ private func someFunction() -> (SomeInternalClass, SomePrivateClass) {
 
 #### Enumeration Types (열거체 타입)
 
-열거체의 각 '경우 값 (cases)' 들은 자동으로 이들이 속해 있는 열거체와 같은 접근 수준을 가지게 됩니다. 열거체의 각각의 '경우 값 (cases)' 에 대해 서로 다른 접근 수준을 지정할 수는 없습니다.
+열거체의 각 'case 값' 들은 자동으로 이들이 속해 있는 열거체와 같은 접근 수준을 가지게 됩니다. 열거체의 각각의 'case 값' 에 대해 서로 다른 접근 수준을 지정할 수는 없습니다.
 
-아래의 예제에서, `CompassPoint` 열거체는 명시적인 접근 수준으로 'public (공용)' 을 가집니다. 그러므로 열거체의 '경우 값 (cases)' 들인 `north`, `south`, `east`, 그리고 `west` 형의 접근 수준도 역시 'public (공용)' 을 가지게 됩니다:
+아래의 예제에서, `CompassPoint` 열거체는 명시적인 접근 수준으로 'public (공용)' 을 가집니다. 그러므로 열거체의 'case 값' 들인 `north`, `south`, `east`, 그리고 `west` 형의 접근 수준도 역시 'public (공용)' 을 가지게 됩니다:
 
 ```swift
 public enum CompassPoint {
@@ -367,7 +367,7 @@ extension SomeStruct: SomeProtocol {
 
 [^function-access-level]: '함수가 계산한 접근 수준' 과 '해당 영역의 기본적인 의미' 가 같아야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. 즉, 함수의 접근 수준을 계산해보니 'private' 일 때는, 반드시 함수의 정의에 'private' 을 써줘야 한다는 것 입니다. 그렇게 하지 않으면, '함수가 계산한 접근 수준 (private)' 과 '해당 영역의 기본적인 의미 (internal)' 가 다르므로, 컴파일이 안되게 됩니다.
 
-[^raw-values-and-associated-values]: 스위프트의 열거체는 각 '경우 값 (case)' 마다 '원시 값 (raw value)' 과 '결합된 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 '경우 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합된 값' 은 '경우 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 '경우 값' 은 `"Sun rise"` 가 됩니다.
+[^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합된 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합된 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
 
 [^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
 

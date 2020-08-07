@@ -757,9 +757,9 @@ if anonymousCreature == nil {
 
 #### Failable Initializers for Enumerations (열거체를 위한 실패 가능한 초기자)
 
-실패 가능한 초기자는 하나 이상의 매개 변수를 기반으로 적절한 '열거체 경우 값 (enumeration case)' 을 선택하기 위해 사용할 수 있습니다. 제공된 매개 변수가 열거체 경우 값과 적당하게 일치하는 게 없다면 이 때 초기자는 실패할 수 있습니다.
+실패 가능한 초기자는 하나 이상의 매개 변수를 기반으로 적절한 '열거체 case 값 (enumeration case)' 을 선택하기 위해 사용할 수 있습니다. 제공된 매개 변수가 '열거체 case 값' 과 적당하게 일치하는 게 없다면 이 때 초기자는 실패할 수 있습니다.
 
-아래 예제는, 세 개의 상태가 가능한 (`kelvin`, `celsius`, 그리고 `fahrenheit`), `TemperatureUnit` 이라는 열거체를 정의합니다. 실패 가능한 초기자를 사용하여 '온도 기호 (temperature symbol)' 를 나타내는 `Character` 값에 해당하는 적절한 '열거체의 경우 값 (enumeration case)' 를 찾습니다:
+아래 예제는, 세 개의 상태가 가능한 (`kelvin`, `celsius`, 그리고 `fahrenheit`), `TemperatureUnit` 이라는 열거체를 정의합니다. 실패 가능한 초기자를 사용하여 '온도 기호 (temperature symbol)' 를 나타내는 `Character` 값에 해당하는 적절한 '열거체 case 값' 를 찾습니다:
 
 ```swift
 enum TemperatureUnit {
@@ -779,7 +779,7 @@ enum TemperatureUnit {
 }
 ```
 
-이 실패 가능한 초기자를 사용하면 가능한 세 개의 상태 중에서 적당한 '열거체 경우 값' 을 선택할 수도 있고 매개 변수가 이 상태 세 개와 일치하지 않을 경우 초기화의 실패를 일으킬 수도 있습니다:
+이 실패 가능한 초기자를 사용하면 가능한 세 개의 상태 중에서 적당한 '열거체 case 값' 을 선택할 수도 있고 매개 변수가 이 상태 세 개와 일치하지 않을 경우 초기화의 실패를 일으킬 수도 있습니다:
 
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
@@ -797,7 +797,7 @@ if unknownUnit == nil {
 
 #### Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)
 
-원시 값을 가지는 열거체는, `init?(rawValue:)` 라는, '실패 가능한 초기자' 를 자동으로 부여 받는데, 이는 `rawValue` 라는 적당한 원시-값 타입의 매개 변수를 받아서 일치하는 값을 찾으면 해당하는 '열거체 경우 값' 을 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시킵니다.
+원시 값을 가지는 열거체는, `init?(rawValue:)` 라는, '실패 가능한 초기자' 를 자동으로 부여 받는데, 이는 `rawValue` 라는 적당한 원시-값 타입의 매개 변수를 받아서 일치하는 값을 찾으면 해당하는 '열거체 case 값' 을 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시킵니다.
 
 위에 있는 `TemperatureUnit` 예제를 다시 작성하여 `Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 이점을 활용할 수 있습니다:
 

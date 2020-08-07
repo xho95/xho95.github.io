@@ -86,7 +86,7 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 // "theAceOfSpades: suit is ♠, value is 1 or 11" 를 출력합니다.
 ```
 
-비록 `Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있더라도, 영역 내의 문맥으로 타입을 추론할 수 있으므로, 인스턴스의 초기화 시에 그들의 '경우 값 (case)' 이름 (`.ace` 와 `.spades`) 만으로도 '구조체 경우 값 (enumeration cases)' 들을 참조하는 것이 가능합니다.[^refer-to] 위 예제에서, `description` 속성은 '스페이드의 에이스 (Ace of Spades)' 가 `1` 또는 `11` 의 값을 가지고 있음을 정확하게 보고하고 있습니다.
+비록 `Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있더라도, 영역 내의 문맥으로 타입을 추론할 수 있으므로, 인스턴스의 초기화 시에 그 'case 값' 이름 (`.ace` 와 `.spades`) 만으로도 '열거체 case 값 (enumeration cases)' 들을 참조하는 것이 가능합니다.[^refer-to] 위 예제에서, `description` 속성은 '스페이드의 에이스 (Ace of Spades)' 가 `1` 또는 `11` 의 값을 가지고 있음을 정확하게 보고하고 있습니다.
 
 ### Referring to Nested Types (중첩 타입 참조하기)
 

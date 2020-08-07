@@ -14,11 +14,11 @@ categories: Swift Language Grammar Error Handling
 
 _열거체 (enumerations)_ 는 관계있는 값 그룹에 '공통 타입' 을 정의하여 이 값들을 코드에서 '타입-안전한 (type-safe)'[^type-safe] 방법으로 사용할 수 있게 해 줍니다.
 
-C 언어에 익숙하다면, C 언어의 열거체는 관계된 이름들에 일종의 정수 값을 할당한다는 것을 알고 있을 것입니다. 스위프트의 열거체는 훨씬 더 유연해서, 열거체의 각 '경우 값 (cases)' 에 값을 제공할 필요도 없습니다. 각 열거체 '경우 값 (case)' 에 값을 제공할 경우 (이를 _원시 값 (raw value)_ 이라 합니다), 이 값은 '문자열 (string)', '문자 (character)', 또는 '정수 (integer)' 나 '부동-소수점 (float-point)' 타입 어떤 것이든 될 수 있습니다.
+C 언어에 익숙하다면, C 언어의 열거체는 관계된 이름들에 일종의 정수 값을 할당한다는 것을 알고 있을 것입니다. 스위프트의 열거체는 훨씬 더 유연해서, 열거체의 각 'case 값' 에 값을 제공할 필요도 없습니다. 각 열거체 'case 값' 에 값을 제공할 경우 (이를 _원시 값 (raw value)_ 이라 합니다), 이 값은 '문자열 (string)', '문자 (character)', 또는 '정수 (integer)' 나 '부동-소수점 (float-point)' 타입 어떤 것이든 될 수 있습니다.
 
-또 다른 방법으로, 열거체의 '경우 값 (cases)' 에는 각 '경우 값' 에 따라 달리 저장되는 '결합된 값 (associated values)' 이라는 것을 _어떤 (any)_ 타입에 대해서든 지정할 수 있어서, 다른 언어에 있는 '공용체 (unions)' 또는 '변형체 (variants)' 와 흡사한 것을 만들 수 있습니다. 관계된 '경우 값들 (cases)' 의 공통 집합을 하나의 열거체로 정의하면서, 제각각 이에 결합된 적당한 타입의 서로 다른 값 집합을 가지도록 정의할 수 있습니다.
+또 다른 방법으로, 열거체의 'case 값' 에는 각 'case 값' 에 따라 달리 저장되는 '결합된 값 (associated values)' 이라는 것을 _어떤 (any)_ 타입에 대해서든 지정할 수 있어서, 다른 언어에 있는 '공용체 (unions)' 또는 '변형체 (variants)' 와 흡사한 것을 만들 수 있습니다. 관계된 'case 값' 들의 공통 집합을 하나의 열거체로 정의하면서, 제각각 이에 결합된 적당한 타입의 서로 다른 값 집합을 가지도록 정의할 수 있습니다.
 
-스위프트의 열거체는 그 자체로 '일급 타입 (first-class types)'[^first-class] 입니다. 전통적으로 클래스에서만 지원하던 많은 특징들을 채택했는데, 열거체의 현재 값에 대한 추가적인 정보를 제공하는 '계산 속성 (computed properties)', 열거체가 표현할 값과 관계된 기능을 제공하는 '인스턴스 메소드 (instance methods)' 등이 이에 해당합니다. 열거체에는 '초기자' 를 정의해서 '초기 경우 값 (initial case value)' 도 제공할 수 있습니다; 기능을 확대해서 원래 구현 이상으로 확장할 수도 있습니다; 프로토콜을 준수해서 표준 기능을 제공할 수도 있습니다.
+스위프트의 열거체는 그 자체로 '일급 타입 (first-class types)'[^first-class] 입니다. 전통적으로 클래스에서만 지원하던 많은 특징들을 채택했는데, 열거체의 현재 값에 대한 추가적인 정보를 제공하는 '계산 속성 (computed properties)', 열거체가 표현할 값과 관계된 기능을 제공하는 '인스턴스 메소드 (instance methods)' 등이 이에 해당합니다. 열거체에는 '초기자' 를 정의해서 '초기 case 값 (initial case value)' 도 제공할 수 있습니다; 기능을 확대해서 원래 구현 이상으로 확장할 수도 있습니다; 프로토콜을 준수해서 표준 기능을 제공할 수도 있습니다.
 
 이러한 '기능들 (capabilities)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
@@ -43,11 +43,11 @@ enum CompassPoint {
 }
 ```
 
-열거체에서 정의한 값들 (가령 `north`, `south`, `east`, 그리고 `west`) 은 _열거체 경우 값 (enumeration cases)_ 입니다. `case` 키워드를 사용하여 새로운 '열거체 경우 값' 을 도입할 수 있습니다.
+열거체에서 정의한 값들 (가령 `north`, `south`, `east`, 그리고 `west`) 은 _열거체 case 값 (enumeration cases)_ 입니다. `case` 키워드를 사용하여 새로운 '열거체 case 값' 을 도입할 수 있습니다.
 
-> 스위프트의 '열거체 경우 값' 은 기본적으로 정수 값으로 설정되지 않으며, 이는 C 언어와 오브젝티브-C 언어와는 다른 점입니다. 위의 `CompassPoint` 예제에 있는, `north`, `south`, `east`, 그리고 `west` 는 암시적으로 `0`, `1`, `2`, 및 `3` 이 되지 않습니다. 그 대신, 서로 다른 '열거체 경우 값' 그 자체가 '값 (values)' 이며, 명시적으로 정의한 `CompassPoint` 가 그 타입입니다.
+> 스위프트의 '열거체 case 값' 은 기본적으로 정수 값으로 설정되지 않으며, 이는 C 언어와 오브젝티브-C 언어와는 다른 점입니다. 위의 `CompassPoint` 예제에 있는, `north`, `south`, `east`, 그리고 `west` 는 암시적으로 `0`, `1`, `2`, 및 `3` 이 되지 않습니다. 그 대신, 서로 다른 '열거체 case 값' 그 자체가 '값 (values)' 이며, 명시적으로 정의한 `CompassPoint` 가 그 타입입니다.
 
-여러 '경우 값' 을, 쉼표로 구분하여, 한 줄로 나타낼 수 있습니다:
+여러 'case 값' 을, 쉼표로 구분하여, 한 줄로 나타낼 수 있습니다:
 
 ```swift
 enum Planet {
@@ -94,9 +94,9 @@ case .west:
 
 ...이렇게 계속됩니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것 처럼, 열거체의 '경우 값' 을의 검토할 때 `switch` 문은 반드시 '빠짐없이 철저해야 (exhaustive)' 합니다. 만약 `.west` 에 대한 `case` 를 생략하면, 이 코드는 컴파일되지 않는데, `CompassPoint` '경우 값들' 에 해당하는 전체 목록을 다 검토하지 않기 때문입니다. 빠짐없이 철처할 것을 요구하는 것은 열거체의 '경우 값' 을 우연히 생략하지 않도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것 처럼, 열거체의 'case 값' 을 검토할 때 `switch` 문은 반드시 '빠짐없이 철저해야 (exhaustive)' 합니다. 만약 `.west` 에 대한 `case` 를 생략하면, 이 코드는 컴파일되지 않는데, `CompassPoint` 'case 값' 들에 해당하는 전체 목록을 다 검토하지 않기 때문입니다. 빠짐없이 철처할 것을 요구하는 것은 열거체의 'case 값' 을 우연히 생략하지 않도록 보장합니다.
 
-모든 열거채의 '경우 값' 에 대해 `case` 를 제공하는 것이 적절하지 않을 때는, `default` '경우 값' 을 제공해서 명시적으로 알리지 않은 '경우 값' 이라면 어떤 것도 다루도록 할 수 있습니다:
+모든 열거채의 'case 값' 에 대해 `case` 를 제공하는 것이 적절하지 않을 때는, `default` 'case 절' 을 제공해서 명시적으로 알리지 않은 'case 값' 이라면 어떤 것도 다루도록 할 수 있습니다:
 
 ```swift
 let somePlanet = Planet.earth
@@ -109,9 +109,9 @@ default:
 // "Mostly harmless" 를 출력합니다.
 ```
 
-### Iterating over Enumeration Cases (열거체 경우 값에 대해 동작 반복 적용하기)
+### Iterating over Enumeration Cases (열거체 case 값에 대해 동작 반복 적용하기)
 
-어떤 열거체에서는, 열거체의 모든 '경우 값들' 에 대한 '집합체 (collection)' 을 가지는 것이 유용할 수 있습니다. 이렇게 하려면 열거체의 이름 뒤에 `: CaseIterable` 을 붙여주도록 합니다. 스위프트는 해당 열거체 타입의 모든 '경우 값들' 을 위한 '집합체' 를 `allCases` 라는 속성으로 드러냅니다. 예를 들면 다음과 같습니다:
+어떤 열거체에서는, 열거체의 모든 'case 값' 들에 대한 '집합체 (collection)' 을 가지는 것이 유용할 수 있습니다. 이렇게 하려면 열거체의 이름 뒤에 `: CaseIterable` 을 붙여주도록 합니다. 스위프트는 해당 열거체 타입의 모든 'case 값' 들을 위한 '집합체' 를 `allCases` 라는 속성으로 드러냅니다. 예를 들면 다음과 같습니다:
 
 ```swift
 enum Beverage: CaseIterable {
@@ -122,7 +122,7 @@ print("\(numberOfChoices) beverages available")
 // "3 beverages available" 를 출력합니다.
 ```
 
-위 예제에서는, `Beverage.allCases` 를 써서 `Beverage` 열거체의 모든 '경우 값' 을 담고 있는 '집합체 (collection)' 에 접근합니다. `allCase` 는 다른 모든 '집합체' 들 처럼 사용할 수 있는데-이 집합체의 원소는 열거체 타입의 인스턴스라서, 이 경우에는 `Beverage` 값이 됩니다. 위 예제는 '경우 값' 얼마나 많이 있는 지를 계산하며, 아래 예제는 `for` 반복문을 사용하여 모든 '경우 값' 들에 동작을 반복 적용합니다.
+위 예제에서는, `Beverage.allCases` 를 써서 `Beverage` 열거체의 모든 'case 값' 을 담고 있는 '집합체 (collection)' 에 접근합니다. `allCase` 는 다른 모든 '집합체' 들 처럼 사용할 수 있는데-이 집합체의 원소는 열거체 타입의 인스턴스라서, 이 경우에는 `Beverage` 값이 됩니다. 위 예제는 'case 값' 이 얼마나 많이 있는 지를 계산하며, 아래 예제는 `for` 반복문을 사용하여 모든 'case 값' 들에 동작을 반복 적용합니다.
 
 ```swift
 for beverage in Beverage.allCases {
@@ -137,9 +137,9 @@ for beverage in Beverage.allCases {
 
 ### Associated Values (결합된 값)
 
-이전 부분에 있는 예제는 열거체의 '경우 값' 이 어떻게 그 자체로 정의된 (그리고 타입을 가진) 값인 지를 보여줍니다. 상수나 변수를 `Planet.earth` 라고 설정할 수 있고, 나중에 검사할 수도 있습니다. 하지만, 이러한 '경우 값' 과 나란히 다른 타입의 값을 저장할 수 있다면 유용할 때가 있습니다. 이 추가적인 정보를 _결합된 값 (associated value)_ 이라고 하며, 이는 그 '경우 값' 을 코드에서 값으로 사용하는 매 순간마다 달라집니다.
+이전 부분에 있는 예제는 열거체의 'case 값' 이 어떻게 그 자체로 정의된 (그리고 타입을 가진) 값인 지를 보여줍니다. 상수나 변수를 `Planet.earth` 라고 설정할 수 있고, 나중에 검사할 수도 있습니다. 하지만, 이러한 'case 값' 과 나란히 다른 타입의 값을 저장할 수 있다면 유용할 때가 있습니다. 이 추가적인 정보를 _결합된 값 (associated value)_ 이라고 하며, 이는 그 'case 값' 을 코드에서 값으로 사용하는 매 순간마다 달라집니다.
 
-스위프트 열거체에는 어떤 타입의 '결합된 값' 도 저장하도록 정의할 수 있으며, 필요하다면 이 값의 타입이 열거체의 각 '경우 값' 마다 달라져도 됩니다. 이와 같은 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_, _tagged unions (꼬리표 달린 공용체)_, 또는 _variants (변형체)_ 라고 합니다.[^variants]
+스위프트 열거체에는 어떤 타입의 '결합된 값' 도 저장하도록 정의할 수 있으며, 필요하다면 이 값의 타입이 열거체의 각 'case 값' 마다 달라져도 됩니다. 이와 같은 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_, _tagged unions (꼬리표 달린 공용체)_, 또는 _variants (변형체)_ 라고 합니다.[^variants]
 
 예를 들어, 서로 다른 두 개의 바코드 타입을 쓰는 제품을 추적하는 '재고 물품 추적 시스템' 을 가정해 봅시다. 일부 제품은 UPC 양식의 1-차원 바코드를 써서, `0` 에서 `9` 까지의 숫자로 된, 이름표를 사용합니다. 각각의 바코드에는 한 자리 수의 시스템에 이어서, 다섯 자리의 '제조업체 코드' 와 다섯 자리의 '제품 코드' 가 있습니다. 맨 뒤에는 한 자리의 검사 코드도 있어서 이 코드를 정확하게 스캔했는 지를 검증합니다:
 
@@ -182,7 +182,7 @@ productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 
 이 시점에서, 원래의 `Barcode.upc` 와 정수 값들은 새 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 나 `.qrCode` 라면 (그 결합된 값과 함께) 아무거나 저장할 수 있지만, 주어진 시점에는 이 중 단 하나만을 저장할 수 있습니다.
 
-서로 다른 바코드 타입들은 'switch' 문을 사용하여 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 'switch' 문에서 '결합된 값' 을 뽑아내게 됩니다. 각각의 '결합된 값' 을 (`let` 접두사를 사용한) 상수나 (`var` 접두사를 사용한) 변수로 뽑아내서 `switch` '경우 값' 의 본문에서 사용합니다:
+서로 다른 바코드 타입들은 'switch' 문을 사용하여 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 'switch' 문에서 '결합된 값' 을 뽑아내게 됩니다. 각각의 '결합된 값' 을 (`let` 접두사를 사용한) 상수나 (`var` 접두사를 사용한) 변수로 뽑아내서 `switch` 문의 'case 절' 본문에서 사용합니다:
 
 ```swift
 switch productBarcode {
@@ -194,7 +194,7 @@ case .qrCode(let productCode):
 // "QR code: ABCDEFGHIJKLMNOP." 를 출력합니다.
 ```
 
-열거체 '경우 값' 에 대한 모든 '결합된 값' 을 상수로 뽑아내거나, 아니면 변수로 뽑아낼 경우, `ver` 나 `let` 키워드를 '경우 값' 이름 앞에 위치해서, 간결하게, 만들 수 있습니다:
+열거체 'case 값' 에 대한 모든 '결합된 값' 을 상수로 뽑아내거나, 아니면 변수로 뽑아낼 경우, `ver` 나 `let` 키워드를 'case 값' 이름 앞에 위치해서, 간결하게, 만들 수 있습니다:
 
 ```swift
 switch productBarcode {
@@ -208,9 +208,9 @@ case let .qrCode(productCode):
 
 ### Raw Values (원시 값)
 
-[Associated Values (결합된 값)](#associated-values-결합된-값) 에 있는 바코드 예제는 열거체의 '경우 값' 이 서로 다른 타입의 '결합된 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합된 값' 에 대한 대안으로, '열거체 경우 값' 은 모두 같은 타입인, (_원시 값 (raw values)_ 이라는) '기본 설정 값 (default values)' 으로 미리 채울 수 있습니다.
+[Associated Values (결합된 값)](#associated-values-결합된-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합된 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합된 값' 에 대한 대안으로, '열거체 case 값' 은 모두 같은 타입인, (_원시 값 (raw values)_ 이라는) '기본 설정 값 (default values)' 으로 미리 채울 수 있습니다.
 
-다음은 '열거체 경우 값' 이 '이름' 과 '원시 ASCII 값' 을 같이 저장하고 있는 예제입니다:
+다음은 '열거체 case 값' 이 '이름' 과 '원시 ASCII 값' 을 같이 저장하고 있는 예제입니다:
 
 ```swift
 enum ASCIIControlCharacter: Character {
@@ -224,13 +224,13 @@ enum ASCIIControlCharacter: Character {
 
 '원시 값' 은 '문자열 (strings)', '문자 (characters)', 또는 '정수 (integer)' 나 '부동-소수점 (floating-point)' 수치 타입 아무거나 될 수 있습니다. 각각의 원시 값은 '열거체 선언' 내에서 반드시 유일해야 합니다.
 
-> '원시 값 (raw values)' 은 '결합된 값 (associated values)' 과 같지 _않습니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드에서와 같이, 미리 채워지는 값으로 코드에서 열거체를 처음 정의할 때 설정되는 것입니다. 즉 특정한 '열거체 경우 값' 에 대한 '원시 값' 은 항상 같습니다. '결합된 값' 은 열거체의 '경우 값' 중 하나를 기반으로 새로운 상수나 변수를 생성할 때 설정되는 것으로, 그렇게 할 때마다 달라질 수 있습니다.
+> '원시 값 (raw values)' 은 '결합된 값 (associated values)' 과 같지 _않습니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드에서와 같이, 미리 채워지는 값으로 코드에서 열거체를 처음 정의할 때 설정되는 것입니다. 즉 특정한 '열거체 case 값' 에 대한 '원시 값' 은 항상 같습니다. '결합된 값' 은 열거체의 'case 값' 중 하나를 기반으로 새로운 상수나 변수를 생성할 때 설정되는 것으로, 그렇게 할 때마다 달라질 수 있습니다.
 
 #### Implicitly Assigned Raw Values (암시적으로 할당되는 원시 값)
 
-정수나 문자열 원시 값을 저장하는 열거체와 작업할 때는, 각각의 '경우 값' 에 '원시 값' 을 명시적으로 지정하지 않아도 됩니다. 이렇 경우, 스위프트가 자동으로 값을 할당합니다.
+정수나 문자열 원시 값을 저장하는 열거체와 작업할 때는, 각각의 'case 값' 에 '원시 값' 을 명시적으로 지정하지 않아도 됩니다. 이렇 경우, 스위프트가 자동으로 값을 할당합니다.
 
-예를 들어, 원시 값으로 정수를 사용할 때는, 각 '경우 값' 에 대한 암시적인 값은 이전 '경우 값' 보다 하나 큰 값이 됩니다. 첫 번째 '경우 값' 에 값을 설정하지 않으면, 그 값은 `0` 이 됩니다.
+예를 들어, 원시 값으로 정수를 사용할 때는, 각 'case 값' 에 대한 암시적인 값은 이전 'case 값' 보다 하나 큰 값이 됩니다. 첫 번째 'case 값' 에 값을 설정하지 않으면, 그 값은 `0` 이 됩니다.
 
 아래의 열거체는 이전에 있던 `Planet` 열거체를, 태양에 대한 각 행성의 순서를 표현하기 위해 정수 원시 값을 사용하여, 개량한 것입니다:
 
@@ -242,7 +242,7 @@ enum Planet: Int {
 
 위 예제에서, `Planet.mercury` 는 명시적인 원시 값 `1` 을 가지고, `Planet.venus` 는 암시적인 원시 값 `2` 를 가지며, 이런 식으로 계속됩니다.
 
-문자열을 원시 값으로 사용하면, '경우 값' 이름에 사용된 문장 자체가 각 '경우 값' 에 대한 암시적인 값이 됩니다.
+문자열을 원시 값으로 사용하면, 'case 값' 이름에 사용된 문장 자체가 각 'case 값' 에 대한 암시적인 값이 됩니다.
 
 아래 열거체는, 문자열 원시 값으로 각 방향의 이름을 표현하도록, 이전 `CompassPoint` 열거체를 개량한 것입니다:
 
@@ -254,7 +254,7 @@ enum CompassPoint: String {
 
 위 예제에서, `CompassPoint.south` 는 암시적인 원시 값 `"south"` 를 가지며, 이런 식으로 계속됩니다.
 
-열거체 경우 값의 원시 값에 접근하려면 `rawValue` 속성을 사용하면 됩니다:
+열거체 case 값의 원시 값에 접근하려면 `rawValue` 속성을 사용하면 됩니다:
 
 ```swift
 let earthsOrder = Planet.earth.rawValue
@@ -266,7 +266,7 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
 
-열거체에 원시-값 타입을 정의하면, 이 열거체는 자동적으로 원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 받는 '초기자' 를 가지며 하나의 열거체 '경우 값' 또는 `nil` 을 반환하게 됩니다. 이 '초기자' 를 사용하면 열거체의 새 인스턴스를 생성할 수 있습니다.
+열거체에 원시-값 타입을 정의하면, 이 열거체는 자동적으로 원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 받는 '초기자' 를 가지며 하나의 열거체 'case 값' 또는 `nil` 을 반환하게 됩니다. 이 '초기자' 를 사용하면 열거체의 새 인스턴스를 생성할 수 있습니다.
 
 다음 예제는 '원시 값' 인 `7` 로 부터 '천왕성 (Uranus)' 을 식별합니다:
 
@@ -275,9 +275,9 @@ let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet 은 타입이 Planet? 이고 값은 Planet.uranus 입니다.
 ```
 
-하지만, 모든 `Int` 에 대해 그에 해당하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '_원시 (raw)_ 값 초기자' 는 항상 _옵셔널 (optional)_ 열거체 '경우 값' 을 반환합니다. 위의 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 (optional) `Planet`” 입니다.
+하지만, 모든 `Int` 에 대해 그에 해당하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '_원시 (raw)_ 값 초기자' 는 항상 _옵셔널 (optional)_ 열거체 'case 값' 을 반환합니다. 위의 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 (optional) `Planet`” 입니다.
 
-> '원시 값 초기자 (raw value initializer)' 는 '실패 가능한 초기자 (failable initializer)' 인데, 모든 원시 값이 열거체 경우 값을 반환하지는 않기 때문입니다. 더 자세한 내용은, [Failable Initializers (실패 가능한 초기자)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID376)[^failable-initializer] 를 참고하기 바랍니다.
+> '원시 값 초기자 (raw value initializer)' 는 '실패 가능한 초기자 (failable initializer)' 인데, 모든 원시 값이 열거체 case 값을 반환하지는 않기 때문입니다. 더 자세한 내용은, [Failable Initializers (실패 가능한 초기자)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID376)[^failable-initializer] 를 참고하기 바랍니다.
 
 위치가 `11` 에 해당하는 행성을 찾으려고 하면, '원시 값 초기자 (raw value initializer)' 가 반환하는 '옵셔널 (optional)' `Planet` 값은 `nil` 이 될 것입니다:
 
@@ -300,7 +300,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 ### Recursive Enumerations (재귀적인 열거체)
 
-_재귀적인 열거체 (recursive enumeration)_ 는 열거체의 '경우 값 (cases)' 이 열거체의 또 다른 인스턴스를 '결합된 값 (associated value)' 으로 하나 이상 가지는 열거체를 말합니다. 열거체의 '경우 값' 을 '재귀적' 이라고 지시하려면 그 앞에 `indirect` [^indirect]를 써주면 되는데, 이는 컴파일러에게 간접 계층을 집어넣어야 함을 알리는 역할을 합니다.
+_재귀적인 열거체 (recursive enumeration)_ 는 열거체의 'case 값' 들이 열거체의 또 다른 인스턴스를 '결합된 값 (associated value)' 으로 하나 이상 가지는 열거체를 말합니다. 열거체의 'case 값' 을 '재귀적' 이라고 지시하려면 그 앞에 `indirect` [^indirect]를 써주면 되는데, 이는 컴파일러에게 간접 계층을 집어넣어야 함을 알리는 역할을 합니다.
 
 예를 들어, 다음은 간단한 '산술 표현식 (arithmetic expressions)' 을 저장하는 열거체입니다:
 
@@ -312,7 +312,7 @@ enum ArithmeticExpression {
 }
 ```
 
-열거체 맨 처음에 `indirect` 를 붙이면 '결합된 값' 이 있는 모든 열거체 '경우 값' 을 한번에 '간접 (indirection)'[^indirection] 으로 만들 수도 있습니다:
+열거체 맨 처음에 `indirect` 를 붙이면 '결합된 값' 이 있는 모든 열거체 'case 값' 을 한번에 '간접 (indirection)'[^indirection] 으로 만들 수도 있습니다:
 
 ```swift
 indirect enum ArithmeticExpression {
@@ -322,7 +322,7 @@ indirect enum ArithmeticExpression {
 }
 ```
 
-이 열거체는 세 가지 종류의 '산술 표현식' 을 저장할 수 있습니다: 하나의 단순한 수, 두 표현식의 덧셈, 그리고 두 표현식의 곱셈이 그것입니다. `addition` 과 `multiplication` '경우 값' 은 그 자체도 '산술 표현식 (arithmetic expression)' 인 '결합된 값 (associated values)' 을 가지고 있습니다-이 '결합된 값' 은 표현식을 '중첩 (nest)' 하는 것을 가능하게 만듭니다. 예를 들어, 표현식 `(5 + 4) * 2` 의 경우 곱셈 오른 쪽은 숫자를 가지고 있고 곱셈 왼 쪽은 또 다른 표현식을 가지고 있습니다. 자료가 중첩되기 때문에, 이 자료를 저장할 열거체 역시 중첩을 지원해야 합니다-이는 열거체가 '재귀적 (recursive)' 일 필요가 있다는 것을 의미합니다. 아래의 코드는 재귀적인 열거체인 `ArithmeticExpression` 를 생성하여 `(5 + 4) * 2` 를 만드는 것을 보여줍니다:
+이 열거체는 세 가지 종류의 '산술 표현식' 을 저장할 수 있습니다: 하나의 단순한 수, 두 표현식의 덧셈, 그리고 두 표현식의 곱셈이 그것입니다. `addition` 과 `multiplication` 'case 값' 은 그 자체도 '산술 표현식 (arithmetic expression)' 인 '결합된 값 (associated values)' 을 가지고 있습니다-이 '결합된 값' 은 표현식을 '중첩 (nest)' 하는 것을 가능하게 만듭니다. 예를 들어, 표현식 `(5 + 4) * 2` 의 경우 곱셈 오른 쪽은 숫자를 가지고 있고 곱셈 왼 쪽은 또 다른 표현식을 가지고 있습니다. 자료가 중첩되기 때문에, 이 자료를 저장할 열거체 역시 중첩을 지원해야 합니다-이는 열거체가 '재귀적 (recursive)' 일 필요가 있다는 것을 의미합니다. 아래의 코드는 재귀적인 열거체인 `ArithmeticExpression` 를 생성하여 `(5 + 4) * 2` 를 만드는 것을 보여줍니다:
 
 ```swift
 let five = ArithmeticExpression.number(5)

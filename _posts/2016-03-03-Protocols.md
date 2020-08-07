@@ -174,7 +174,7 @@ protocol Togglable {
 
 `Togglable` 프로토콜을 구조체나 열거체에서 구현하는 경우, `mutating` 으로 표시된 `toggle()` 메소드 구현을 제공하면 해당 구조체나 열거체가 이 프로토콜을 준수할 수 있습니다.
 
-아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, 열거체의 경우 값 `on` 과 `off` 로 나타내는, 두 상태 사이를 왔다갔다 합니다. 이 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 필수 조건에 들어 맞도록, `mutating` 으로 표시합니다:
+아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, 열거체의 case 값 `on` 과 `off` 로 나타내는, 두 상태 사이를 왔다갔다 합니다. 이 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 필수 조건에 들어 맞도록, `mutating` 으로 표시합니다:
 
 ```swift
 enum OnOffSwitch: Togglable {
@@ -540,7 +540,7 @@ if twoThreeFour == anotherTwoThreeFour {
 
 스위프트는 '원시 값 (raw value)' 을 가지고 있지 않은 열거체를 위해 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 만약 열거체가 '결합된 타입' 들을 가진다면, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합된 구현을 부여 받으려면, `<` 연산자를 직접 구현하지 말고, 원래의 열거체 선언을 담고 있는 파일에서 `Comparable` 에 대한 '준수성 (conformance)' 을 선언하기 바랍니다. `<=`, `>`, 및 `>=` 에 대한 `Comparable` 프로토콜의 기본 구현은 남아 있는 비교 연산자들을 제공합니다.
 
-아래 예제는 초보자, 중급자, 및 전문가에 대한 '경우 값 (cases)' 을 가지는 `SkillLevel` 열거체를 정의합니다. 전문가는 추가적으로 자신들이 보유한 별의 개수로 등급이 나뉩니다.
+아래 예제는 초보자, 중급자, 및 전문가에 대한 'case 값' 을 가지는 `SkillLevel` 열거체를 정의합니다. 전문가는 추가적으로 자신들이 보유한 별의 개수로 등급이 나뉩니다.
 
 ```swift
 enum SkillLevel: Comparable {

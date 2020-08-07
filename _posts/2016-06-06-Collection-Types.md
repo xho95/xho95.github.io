@@ -253,7 +253,7 @@ _셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 
 
 셋에 저장하는 타입은 반드시 _해쉬 가능 (hashable)_[^hashable] 해야 합니다 - 이것은, 이 타입은 반드시 자체적으로 _해쉬 값 (hash value)_[^hash-value] 을 계산할 수 있어야 한다는 말입니다. 여기서 해시 값이란, 하나의 `Int` 값으로서, 비교했을 때 같다고 판단되는 객체들은 모두 같아야 하는 값을 말하는 것으로, 가령 `a == b` 인 경우, 이는 필연적으로 `a.hashValue == b.hashValue` 이라는 말이 됩니다.
 
-스위프트의 모든 기본 타입 (가령 `String`, `Int`, `Double` 그리고 `Bool`) 은 기본적으로 해시 가능하므로, '셋 (set)' 의 값 타입과 '딕셔너리 (dictionary)' 의 키 (key) 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명하듯이) '결합된 값 (associated values)' 이 없는 '열거체[^enumeration]의 경우 값 (enumeration case value)' 역시 기본적으로 해시 가능합니다.   
+스위프트의 모든 기본 타입 (가령 `String`, `Int`, `Double` 그리고 `Bool`) 은 기본적으로 해시 가능하므로, '셋 (set)' 의 값 타입과 '딕셔너리 (dictionary)' 의 키 (key) 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명하듯이) '결합된 값 (associated values)' 이 없는 '열거체[^enumeration] case 값 (enumeration case value)' 역시 기본적으로 해시 가능합니다.   
 
 > 자신이 만든 타입을 셋의 값 타입이나 딕셔너리의 키 타입으로 사용하고 싶으면, 스위프트 표준 라이브러리에 있는 `Hashable` 프로토콜을 준수하도록 하면 됩니다. `Hashable` 프로토콜을 준수하는 타입은 반드시 `hashValue` 라는 읽을 수 있는 (gettable) `Int` 속성을 제공해야 합니다. 같은 프로그램을 다른 시점에 실행할 때나 다른 프로그램을 실행할 때, 이 타입의 `hashValue` 속성이 반환하는 값을 같도록 만들 필요는 없습니다.
 >

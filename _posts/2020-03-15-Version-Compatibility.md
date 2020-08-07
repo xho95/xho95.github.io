@@ -19,7 +19,7 @@ Xcode 12 를 사용하여 스위프트 4 와 스위프트 4.2 코드를 제작�
 
 * 함수가 '불투명한 타입 (opaque type)' 을 반환하려면 '스위프트 5.1 런타임 (runtime)'[^swift-runtime] 이 필수입니다.
 * '`try?` 표현식' 은 이미 '옵셔널 (optionals)' 을 반환하는 표현식에 부가적인 수준의 '옵셔널 성질 (optionality)' 를 추가하지 않습니다.[^level-of-optionality]
-* '초기화 표현식 (initialization expressions)'[^initializtion-expressions] 에 '아주 큰 정수 글자 값 (large integer literal)'[^large-integer-literal] 을 사용해도 올바른 정수 타입으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 도 '값 넘침 (overflowing)' 이 아니라 올바른 값으로 계산합니다.
+* '초기화 표현식 (initialization expressions)'[^initializtion-expressions] 에 '아주 큰 정수 글자 값 (large integer literal)'[^large-integer-literal] 을 사용해도 올바른 정수 타입으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 도 '값 넘침 (overflowing)' 이 아니라 올바른 값이라고 평가합니다.
 
 스위프트 5.3 으로 작성된 '대상 (target)' 은 스위프트 4.2 나 스위프트 4 로 작성된 '대상' 을 의존할 수 있으며, 그 반대도 가능합니다.[^depend-on] 이것의 의미는, '다중 프레임워크' 로 분할되는 큰 프로젝트에서, 스위프트 4 에서 스위프트 5.2 로 코드를 한 번에 한 프레임워크씩 이전할 수 있다는 것입니다.
 

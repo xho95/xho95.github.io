@@ -155,7 +155,7 @@ do {
 
 `catch` 뒤에 '유형 (pattern)' 을 작성하여 그 '구절 (clause)' 이 처리할 수 있는 에러를 지시합니다. `catch` 절이 '유형 (pattern)' 을 가지지 않으면, 이 구절은 모든 에러에 다 해당되며 이 때 에러는 `error` 라는 지역 상수 이름으로 연결됩니다. '유형 맞춰보기 (pattern matching)' 에 대한 더 자세한 내용은 [Patterns (유형)](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html) 을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 가지 '경우 값 (cases)' 모두에 해당될 수 있습니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 가지 'case 값' 모두에 해당될 수 있습니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -199,7 +199,7 @@ do {
 // "Invalid selection, out of stock, or not enough money." 를 출력합니다.
 ```
 
-`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 '경우 값 (cases)' 중 하나에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 출력하는 것으로 이 에러를 처리합니다. 이외의 경우, `nourish(with:)` 는 이 에러를 호출하는 쪽으로 전파합니다. 에러는 이제 일반 범용 `catch` 절에 의해 잡히게 됩니다.
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 중 하나에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 출력하는 것으로 이 에러를 처리합니다. 이외의 경우, `nourish(with:)` 는 이 에러를 호출하는 쪽으로 전파합니다. 에러는 이제 일반 범용 `catch` 절에 의해 잡히게 됩니다.
 
 #### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
 
