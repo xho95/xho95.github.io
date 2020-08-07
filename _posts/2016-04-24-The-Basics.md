@@ -14,7 +14,7 @@ categories: Swift Language Grammar Basics
 
 스위프트는 iOS, macOS, watchOS, 그리고 tvOS 용 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, C 와 오브젝티브-C 언어로 개발한 경험이 있다면 스위프트의 많은 부분들이 이미 익숙할 것입니다.
 
-스위프트는 C 와 오브젝티브-C 언어에 있는 모든 기본 타입들을 자신만의 버전으로 제공하묘, 여기에는 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불리언 (Boolean)' 값을 위한 `Bool`, 그리고 텍스트 데이터를 위한 `String` 을 포함합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, 강력한 세 개의 주요 컬렉션 (collection; 집합체) 타입인, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리) 도 제공합니다.
+스위프트는 C 와 오브젝티브-C 언어에 있는 모든 기본 타입들을 자신만의 버전으로 제공하며, 여기에는 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불리언 (Boolean)' 값을 위한 `Bool`, 그리고 텍스트 데이터를 위한 `String` 을 포함합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, 강력한 세 개의 주요 컬렉션 (collection; 집합체) 타입인, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리) 도 제공합니다.
 
 C 언어 처럼, 스위프트도 '변수 (variables)' 를 사용하여 '식별 가능한 이름 (identifying name)' 으로 값을 저장하고 참조합니다. 스위프트는 값을 바꿀 수 없는 변수 역시 광범위하게 사용합니다. 이를 '상수 (constants)' 라고 하는데, C 언어의 상수보다 훨씬 더 강력합니다. 상수는 스위프트 전반에 걸쳐 사용되는 것으로 바꿀 필요가 없는 값과 작업할 때 코드를 더 안전하고 의도는 더 명확하게 만들어 줍니다.
 
