@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: The Basics (기초)"
+title:  "Swift 5.3: The Basics (기초)"
 date:   2016-04-24 19:45:00 +0900
 categories: Swift Language Grammar Basics
 ---
