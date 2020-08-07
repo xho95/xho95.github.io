@@ -79,7 +79,7 @@ welcomeMessage = "Hello"
 var red, green, blue: Double
 ```
 
-> 실제로 '타입 보조 설명 (type annotations)' 을 작성할 일은 극히 드뭅니다. 상수나 변수를 정의하는 시점에 초기 값을 제공하면, 스위프트는, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 거의 항상 해당 상수나 변수에 대한 타입을 추론할 수 있습니다. 위의 `welcomeMessage` 예제는, 초기 값을 제공하지 않으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하지 않고 '타입 보조 설명' 으로 지정한 것입니다.
+> 실제로 '타입 보조 설명 (type annotations)' 을 작성할 일은 극히 드뭅니다. 상수나 변수를 정의하는 시점에 초기 값을 제공하면, 스위프트는, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하는 것처럼, 거의 항상 해당 상수나 변수에 대한 타입을 추론할 수 있습니다. 위의 `welcomeMessage` 예제는, 초기 값을 제공하지 않으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하지 않고 '타입 보조 설명' 으로 지정한 것입니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
