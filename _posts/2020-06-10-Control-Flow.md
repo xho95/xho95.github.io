@@ -387,7 +387,7 @@ default:
 // "The letter A" 를 출력합니다.
 ```
 
-가독성을 위해, '복합 case 절' 을 여러 줄에 나눠서 작성할 수도 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-경우-값) 을 참고하기 바랍니다.
+가독성을 위해, '복합 case 절' 을 여러 줄에 나눠서 작성할 수도 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
 
 > 특정한 `switch` 'case 절' 의 끝에서는 명시적으로 빠져 나가고 싶다면, `fallthrough` 키워드를 사용하면 되는데, 이는 [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명합니다.
 
