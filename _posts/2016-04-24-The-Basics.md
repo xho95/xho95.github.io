@@ -550,15 +550,15 @@ if convertedNumber != nil {
 
 _옵셔널 연결 (optional binding; 옵셔널 바인딩)_ 을 사용하면 옵셔널이 값을 가지고 있는지 알아내서, 그 경우, 해당 값을 임시 상수나 임시 변수로 사용 가능하게 만들어 줍니다. '옵셔널 연결' 을 `if` 및 `while` 문과 같이 사용하면, 단 한번의 동작으로, 옵셔널 내에 있는 값을 검사하고, 해당 값을 상수나 변수로 추출할 수 있습니다. `if` 및 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 설명하도록 합니다.
 
-if 문에서 '옵셔널 연결' 을 작성하는 방법은 다음과 같습니다:
+`if` 문에 대한 '옵셔널 연결' 은 다음과 같이 작성합니다:
 
 ```
-if let constantName = someOptional {
-    statements
+if let 상수_이름 = 어떤_옵셔널 {
+    구문
 }
 ```
 
-[Optionals (옵셔널)](#optionals-옵셔널-선택적-값-타입) 에 있는 `possibleNumber` 예제는 '강제 포장 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 써서 다음과 같이 고칠 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널-선택적-값-타입) 부분에 있는 `possibleNumber` 예제를 '강제 포장 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 사용하여 재작성할 수도 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -569,15 +569,15 @@ if let actualNumber = Int(possibleNumber) {
 // "The string "123" has an integer value of 123" 을 출력합니다.
 ```
 
-이 코드는 다음과 같이 이해할 수 있습니다:
+이 코드는 다음과 같이 읽을 수 있습니다:
 
-"`Int(possibleNumber)` 에서 반환한 '옵셔널 `Int`' 가 값을 가지고 있으면, 그 옵셔널이 가지고 있는 값을 새로운 상수인 `actualNumber` 에 설정하기 바랍니다."
+"`Int(possibleNumber)` 가 반환하는 옵셔널 `Int` 가 값을 가지고 있으면, `actualNumber` 라는 새로운 상수에 그 옵셔널이 가지고 있는 값을 설정합니다."
 
-이 변환에 성공하면, `if` 문의 첫 번째 분기에서 `actualNumber` 상수를 사용할 수 있게 됩니다. 이것은 옵셔널 _속에 (within)_ 있던 값으로 이미 초기화 됐으므로, 값에 접근할 때 `!` 접미사를 사용할 필요가 없습니다. 이 예제에서, `actualNumber` 는 단순히 변환 결과를 출력하는데 사용되고 있습니다.
+변환을 성공하면, `if` 문의 첫 번째 분기에서 `actualNumber` 상수를 사용할 수 있게 됩니다. 이것은 옵셔널이 _내부에 (within)_ 가지고 있던 값으로 이미 초기화한 것이므로, 값에 접근하기 위해 `!` 접미사를 사용할 필요가 없습니다. 이 예제의, `actualNumber` 는 단순히 변환 결과를 출력하기 위해 사용되고 있습니다.
 
-'옵셔널 연결' 에는 상수와 변수 모두 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶으면, `if var actualNumber` 를 대신 사용하여, 옵셔널이 갖고 있는 값을 상수가 아닌 변수로 사용하게끔 할 수도 있습니다.
+상수와 변수 모두 '옵셔널 연결' 과 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶다면, `if var actualNumber` 라고 작성하여, 옵셔널이 내부가 가지고 있는 값을 상수가 아닌 변수로 사용 가능하게 만들 수도 있습니다.
 
-단일 `if` 문에 쉼표로 분리하는 방법을 쓰면, '옵셔널 연결' 과 '불리언 조건 (Boolean conditions)' 을 원하는 만큼 많이 포함시킬 수 있습니다. 옵셔널 연결 중 어떤 값이든 `nil` 이거나 혹은 어떤 '불리언 (Boolean)' 조건이든 `false` 로 계산된다면, 전체 `if` 문의 조건은 `false` 인 것으로 고려됩니다. 다음의 `if` 문들은 서로 동등합니다:
+단일 `if` 문에 '옵셔널 연결' 과 '불리언 조건' 을 필요한 만큼 많이 포함하려면, 쉼표로 구분하면 됩니다. 옵셔널 연결에 있는 어떤 값이 `nil` 이거나 혹은 어떤 불리언 조건이 `false` 로 계산된다면, `if` 문의 전체 조건이 `false` 인 것으로 여겨집니다. 다음의 `if` 문들은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
@@ -595,33 +595,42 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" 를 출력합니다.
 ```
 
-`if` 문 안의 '옵셔널 연결' 에서 만든 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와는 달리, `guard` 문에서 만든 상수와 변수는 `guard` 문 이후의 코드 줄에서도 사용 가능한데, 이는 [Early Exit (조기 탈출 구문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출-구문) 에서 설명하도록 합니다.
+> `if` 문에 있는 '옵셔널 연결' 로 생성한 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와 대조적으로, `guard` 문으로 생성한 상수와 변수는, [Early Exit (조기 탈출 구문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출-구문) 에서 설명한, `guard` 문 이후의 코드 줄에서도 사용 가능합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)
 
-앞서 설명한 것처럼, 옵셔널은 상수나 변수가 "값이 없을" 수 있음을 나타냅니다. 옵셔널은 `if` 문을 사용하여 값이 존재하는지를 검사할 수 있으며, 옵셔널 값에 접근하기 위해 '옵셔널 연결' 을 사용하여 값의 유무에 따른 '조건부 풀기 (conditionally unwrapped)' 를 할 수도 있습니다.
+위에서 설명한 것처럼, 옵셔널은 "값이 없을" 수도 있는 상수나 변수를 나타냅니다. 옵셔널은 값이 존재하는지 확인하기 위해 `if` 문으로 검사할 수 있으며, 존재하면 그 옵셔널 값에 접근하도록 옵셔널 연결로 '조건부로 포장을 풀기 (conditionally unwrapped)' 할 수도 있습니다.
 
-프로그램의 구조상, 최초로 값을 설정한 후, 옵셔널은 _항상 (always)_ 값을 갖는다는 것은 분명합니다. 이와 같은 경우, 항상 값이 있다고 가정해도 안전하므로, 접근할 때마다 옵셔널 값을 검사하고 풀고할 필요가 없는 것이 유용할 것입니다.
+때때로 프로그램의 구조에 의해서, 해당 값을 먼저 설정하고 나면, 옵셔널이 _항상 (always)_ 값을 가질 거라는 것이 명확한 경우가 있습니다. 이런 경우, 접근할 때마다 옵셔널 값을 검사하고 포장을 풀고할 필요가 없는게 좋을 수도 있는데, 이는 값을 항상 가지고 있다고 가정해도 안전하기 때문입니다.
 
-이러한 종류의 옵셔널을 '_암시적으로 포장이 풀리는 옵셔널 (implicitly unwrapped optionals)_' 이라고 정의합니다. 암시적으로 포장이 풀리는 옵셔널을 작성하려면 옵셔널로 만들고 싶은 타입 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 을 붙이면 됩니다.
+이러한 종류의 옵셔널을 '_암시적으로 포장이 풀리는 옵셔널 (implicitly unwrapped optionals)_' 이라고 정의합니다. '암시적으로 포장이 풀리는 옵셔널' 은 옵셔널로 만들고 싶은 타입의 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 을 붙여서 작성합니다. 사용할 때 옵셔널의 이름 뒤에 느낌표를 붙이는 것이 아니라, 선언할 때 옵셔널의 타입 뒤에 느낌표를 붙이게 됩니다.
 
-'암시적으로 포장이 풀리는 옵셔널' 이 유용한 순간은 옵셔널이 처음 정의되자마자 옵셔널 값이 존재한다는 것을 보장할 수 있고 이후 모든 곳에서 존재한다고 가정할 수 있을 때입니다. 스위프트에서 '암시적으로 포장이 풀리는 옵셔널' 이 주로 사용되는 곳은 클래스를 초기화하는 곳에서이며, 이는 [Unowned References and Implicitly Unwrapped Optional Properties (무소속 참조와 암시적으로 포장이 풀리는 옵셔널 속성)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-and-implicitly-unwrapped-optional-properties-무소속-참조와-암시적으로-포장이-풀리는-옵셔널-속성) 에서 설명합니다.
+'암시적으로 포장이 풀리는 옵셔널' 이 유용한 순간은 옵셔널 값이 옵셔널을 처음 정의하자 마자 존재한다고 확정되고 이후의 매 순간마다 존재한다고 확실하게 가정할 수 있을 때입니다. 스위프트에서 '암시적으로 포장이 풀리는 옵셔널' 의 제1의 용도는, [Unowned References and Implicitly Unwrapped Optional Properties (무소속 참조와 암시적으로 포장이 풀리는 옵셔널 속성)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-and-implicitly-unwrapped-optional-properties-무소속-참조와-암시적으로-포장이-풀리는-옵셔널-속성) 에서 설명한 것처럼, 클래스 초기화 도중에 사용하는 것입니다.
 
-'암시적으로 포장이 풀리는 옵셔널' 도 그 속을 들여다보면 보통의 옵셔널이지만, '옵셔널이-아닌 값 (non-optional value)' 처럼 쓸 수 있으며, 접근할 때마다 옵셔널 값을 풀 필요도 없습니다. 다음의 예제는 '옵셔널 문자열' 과 '암시적으로 포장이 풀리는 옵셔널 문자열' 에서 그들이 감싸고 있는 값을 명시적인 `String` 으로 접근할 때의 동작이 어떻게 다른지를 보여줍니다:
+'암시적으로 포장이 풀리는 옵셔널' 도 그 이면을 살펴보면 보통의 옵셔널이지만, 매번 접근할 때마다 옵셔널 값의 포장을 풀 필요 없이, '옵셔널이-아닌 값 (non-optional value)' 인 것처럼 사용할 수 있습니다. 다음 예제는 '옵셔널 문자열' 과 '암시적으로 포장이 풀리는 옵셔널 문자열' 이 자신의 포장 값을 명시적인 `String` 으로 접근하는 작동 방식의 차이점을 보여줍니다:
 
 ```swift
 let possibleString: String? = "An optional string."
-let forcedString: String = possibleString! // 느낌표가 필요합니다.
+let forcedString: String = possibleString! // 느낌표가 필수입니다.
 
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // 느낌표가 필요없습니다.
+let implicitString: String = assumedString // 느낌표가 필요 없습니다.
 ```
 
-'암시적으로 포장이 풀리는 옵셔널' 은 사용될 때마다 자동으로 옵셔널이 풀리는 권환을 부여받았다고 생각할 수 있습니다. 이는 사용할 때마다 옵셔널 이름 뒤에 느낌표를 붙이는 것이 아니라, 선언할 때 옵셔널을 선언할 때 그 타입 뒤에 느낌표를 붙이는 것에 해당합니다.
+'암시적으로 포장이 풀리는 옵셔널' 은 필요할 때마다 옵셔널의 포장이-강제로 풀리는 권한을 부여한 것으로 생각할 수 있습니다. 이는 사용할 때마다 옵셔널 이름 뒤에 느낌표를 붙이는 것이 아니라, 선언할 때 옵셔널을 선언할 때 그 타입 뒤에 느낌표를 붙이는 것에 해당합니다.
 
-> '암시적으로 포장이 풀리는 옵셔널' 이 `nil` 인데 그것이 감싼 값에 접근하려고 하면, '실행 시간 에러 (runtime error)' 를 발생시키게 됩니다. 이 결과는 값을 갖고 있지 않은 보통의 옵셔널 뒤에 느낌표를 붙이는 것과 정확하게 같습니다.
+'암시적으로 포장이 풀리는 옵셔널' 값을 사용할 때, 스위프트는 먼저 이를 일상적인 옵셔널 값으로 사용하려고 합니다; 옵셔널로 사용할 수 없는 경우, 스위프트는 그 값의 포장을-강제로 풉니다.
 
-'암시적으로 포장이 풀리는 옵셔널' 은 여전히 보통의 옵셔널처럼 취급할 수도 있어서, 다음 처럼 값을 갖고 있는지 검사하는 것도 가능합니다:
+위 코드에 있는, 옵셔널 값인 `assumedString` 은 `implicitString` 에 값을 할당하기 전에 포장이-강제로 풀리는데 `implicitString` 이 명시적이며, 옵셔널이-아닌 `String` 타입을 가지고 있기 때문입니다. 아래 코드에 있는, `optionalString` 은 명시적인 타입을 가지지 않으므로 이는 일상적인 옵셔널입니다.
+
+```swift
+let optionalString = assumedString
+// optionalString 의 타입은 "String?" 이며 assumedString 은 강제로-풀리지 않습니다.
+```
+
+'암시적으로 포장이 풀리는 옵셔널' 이 `nil` 일 때 그것이 포장한 값에 접근하려고 하면, '실행 시간 에러 (runtime error)' 가 발생할 것입니다. 그 결과는 마치 값을 가지고 있지 않은 보통의 옵셔널 뒤에 느낌표를 붙인 것과 정확하게 같습니다.
+
+'암시적으로 포장이 풀리는 옵셔널' 은 보통의 옵셔널을 검사하는 것과 같은 방식으로 `nil` 인지를 검사할 수 있습니다:
 
 ```swift
 if assumedString != nil {
@@ -630,9 +639,7 @@ if assumedString != nil {
 // "An implicitly unwrapped optional string." 를 출력합니다.
 ```
 
-You can also use an implicitly unwrapped optional with optional binding, to check and unwrap its value in a single statement:
-
-'암시적으로 포장이 풀리는 옵셔널' 을 '옵셔널 연결' 과 같이 써서, 단일한 구문으로 값을 검사하고 풀기까지 할 수도 있습니다:
+'암시적으로 포장이 풀리는 옵셔널' 을 '옵셔널 연결' 과 같이 사용하면, 단일 구문으로 값을 검사하고 포장을 풀 수도 있습니다.:
 
 ```swift
 if let definiteString = assumedString {
@@ -641,7 +648,7 @@ if let definiteString = assumedString {
 // "An implicitly unwrapped optional string." 를 출력합니다.
 ```
 
-> 나중에 어느 시점에 변수가 `nil` 이 될 가능성이 조금이라도 있다면 '암시적으로 포장이 풀리는 옵셔널' 을 사용하면 안됩니다. 변수가 존재하는 동안 `nil` 값인지 검사할 필요가 있을 때는 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
+> 변수가 나중에 `nil` 이 될 가능성이 있을 때는 '암시적으로 포장이 풀리는 옵셔널' 을 사용하면 안됩니다. 변수의 일생동안 `nil` 값을 검사할 필요가 있는 경우에는 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
 
 ### Error Handling (에러 처리)
 
