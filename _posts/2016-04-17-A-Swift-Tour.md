@@ -39,7 +39,7 @@ let myConstant = 42
 
 상수나 변수는 반드시 할당하고자 하는 값과 타입이 같아야 합니다. 하지만, 항상 타입을 명시적으로 작성해야 하는 것은 아닙니다. 상수나 변수를 만들 때 값을 제공하면 컴파일러가 그 타입을 추론하게 됩니다. 위의 예제에서, 컴파일러는 `myVariable` 를 정수라고 추론하는데 왜냐면 초기 값이 정수이기 때문입니다.
 
-만약 초기 값이 충분한 정보를 제공하지 않는 경우 (또는 초기 값이 없는 경우), 타입을 지정하려면 변수 뒤에, 콜론 (`:`) 으로 구분한 다음, 작성하면 됩니다.
+만약 초기 값이 충분한 정보를 제공하지 않는 경우 (또는 초기 값이 없는 경우) 일 때, 타입을 지정하려면 변수 뒤에, 콜론 (`:`) 으로 구분한 다음, 작성하면 됩니다.
 
 ```swift
 let implicitInteger = 70
@@ -61,7 +61,7 @@ let widthLabel = label + String(width)
 
 > 실험
 >
-> 마지막 줄에서 `String` 으로 변환하는 부분을 제거해 봅시다. 어떤 에러를 가지게 됩니까?
+> 마지막 줄에서 `String` 으로 변환하는 부분을 제거해 봅시다. 어떤 에러를 보게 됩니까?
 
 문자열에 값을 포함시키는 데는 더 간단한 방법도 있습니다. 괄호 안에 값을 쓰고, 괄호 앞에 '역 빗금 기호 (backshlash; `\`)' 를 쓰면 됩니다. 예를 들면 다음과 같습니다:
 
@@ -85,7 +85,7 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 """
 ```
 
-'배열 (arrays)' 과 '딕셔너리 (dictionary)' 는 대괄호 (`[]`) 를 사용하여 생성하며, 이들의 원소에 접근하려면 대괄호 안에 색인 또는 키를 작성하면 됩니다. 마지막 원소 뒤에 '쉼표 (comma)' 가 있어도 됩니다.
+'배열 (arrays)' 과 '딕셔너리 (dictionary)' 는 대괄호 (`[]`) 를 사용하여 생성하며, 이들의 원소에 접근하려면 대괄호 안에 '색인 (index)' 또는 '키 (key)' 를 작성하면 됩니다. 마지막 원소 뒤에 '쉼표 (comma)' 가 있어도 됩니다.
 
 ```swift
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
@@ -121,7 +121,7 @@ occupations = [:]
 
 ### Control Flow (제어 흐름)
 
-`if` 와 `switch` 를 사용하여 조건문을 만들고, `for`-`in`, `while`, 및 `repeat`-`while` 을 사용하여 반복문을 만듭니다. 조건문 변수 또는 반복문 변수를 감싸는 괄호는 선택 사항입니다. 다만 본문을 감싸는 중괄호는 필수입니다.
+조건문을 만들려면 `if` 와 `switch` 를 사용하고, 반복문을 만들려면 `for`-`in`, `while`, 그리고 `repeat`-`while` 을 사용합니다. 조건문 또는 반복문의 변수 주위의 괄호는 선택 사항입니다. 단 본문 주위의 중괄호는 필수입니다.
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
@@ -137,9 +137,9 @@ print(teamScore)
 // "11" 을 출력합니다.  
 ```
 
-`if` 문에서, '조건절 (the conditional)' 은 반드시 '불리언 표현식 (Boolean expression)' 이어야 합니다-이것의 의미는 가령 `if score { ... }` 와 같은 코드는 에러이지, '0' 으로 암시적인 비교를 하는게 아니라는 것입니다.
+`if` 문에서, '조건절 (the conditional)' 은 반드시 '불리언 표현식 (Boolean expression)' 이어야 합니다-이것은 가령 `if score { ... }` 와 같은 코드는, '0' 과 암시적인 비교를 하는 것이 아니라, 에러라는 것을 의미합니다.
 
-`if` 와 `let` 을 같이 사용하면 값이 누락될 수 있는 상황에서도 작업할 수 있습니다. 이 값은 '옵셔널 (optionals)' 로 표현합니다. 옵셔널 값은 값을 담고 있거나 아니면 값이 누락됐음을 지시하는 `nil` 을 담고 있습니다. 값을 옵셔널이라고 표시하려면 값의 타입 뒤에 '물음표 (`?`)' 를 작성하면 됩니다.
+`if` 와 `let` 을 같이 사용하면 누락될 수 있는 값과도 작업할 수 있습니다. 이 값은 '옵셔널 (optionals)' 로 표현합니다. 옵셔널 값은 값을 가지고 있거나 아니면 값이 누락됐음을 나타내는 `nil` 을 가지고 있습니다. 값을 옵셔널이라고 표시하려면 값의 타입 뒤에 '물음표 (`?`)' 를 붙이면 됩니다.
 
 ```swift
 var optionalString: String? = "Hello"
@@ -157,9 +157,9 @@ if let name = optionalName {
 >
 > `optionalName` 을 `nil` 로 바꿔 봅니다. 어떤 인사말을 받게 됩니까? `else` 절을 추가해서 `optionalName` 이 `nil` 이면 다른 인사말을 하도록 설정해 봅시다.
 
-옵셔널 값이 `nil` 이면, 조건절이 `false` 가 되어 중괄호 안의 코드를 건너뜁니다. 다른 경우라면, 옵셔널 값의 포장이 풀리고 `let` 뒤의 상수에 할당되며, 이는 '포장이 풀린 값 (unwrapped value)' 을 코드 블럭 내에서 사용할 수 있도록 만듭니다.
+옵셔널 값이 `nil` 이면, 조건절은 `false` 이고 중괄호 안의 코드는 건너뜁니다. 다른 경우라면, 옵셔널 값의 포장을 풀고 `let` 뒤의 상수에 할당하여, '포장이 풀린 값 (unwrapped value)' 을 코드 블럭 내에서 사용 가능하게 만듭니다.
 
-옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자를 사용하여 '기본 설정 값 (default value)' 을 제공하는 것입니다. 옵셔널 값이 누락됐다면, 이를 대신하여 기본 설정 값을 사용합니다.
+옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자를 사용하여 '기본 설정 값 (default value)' 을 제공하는 것입니다. 만약 옵셔널 값이 누락된 경우, 이를 대신하여 기본 설정 값을 사용하게 됩니다.
 
 ```swift
 let nickName: String? = nil
@@ -167,7 +167,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-'switch 문' 은 어떤 종류의 데이터도 상관없으며 폭 넓고 다양한 비교 연산을 지원합니다-정수로만 제한되어 있지 않으며 '같음 (equality)' 비교만 테스트하도록 제한되어 있지도 않습니다.
+'switch 문' 은 어떠한 종류의 데이터라도 지원하며 폭 넓고 다양한 비교 연산도 지원합니다-정수만으로 그리고 '같음 (equality)' 비교 테스트만으로 제한하지 않습니다.
 
 ```swift
 let vegetable = "red pepper"
@@ -188,11 +188,11 @@ default:
 >
 > '기본 case 절 (default:)' 를 제거해 봅니다. 어떤 에러를 가지게 됩니까?
 
-'패턴 (pattern; 유형)' 안에서 `let` 을 사용하면 '패턴' 에 해당하는 값을 상수에 할당할 수 있음에 주목하기 바랍니다.
+'패턴 (pattern; 유형)' 에 일치하는 값을 상수에 할당하기 위해 패턴 안에서 `let` 을 어떻게 사용할 수 있는 지에 대해 주목하기 바랍니다.
 
-'switch 문의 case 절 (switch case)' 내의 코드를 실행하고 나면, 프로그램은 'switch 문' 을 빠져 나옵니다. 실행은 그 다음 'case 절' 로 계속되지 않으므로, 각 'case 절' 코드 끝에서 'switch 문' 을 명시적으로 '깨고 나올 (break out)' 필요가 없습니다.[^break-out]
+일치된 'switch 문의 case 절 (switch case)' 에 있는 코드를 실행하고 나면, 프로그램이 'switch 문' 을 빠져 나옵니다. 그 다음 'case 절' 로 실행이 계속되는 것이 아니므로, 각각의 'case 절' 코드 끝에서 'switch 문' 을 명시적으로 '끊고 나올 (break out)' 필요가 없습니다.[^break-out]
 
-`for`-`in` 을 사용하여 '딕셔너리' 에 있는 항목에 동작을 반복시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍 (a pair of names)' 을 제공하면 됩니다. '딕셔너리' 는 순서가 없는 '컬렉션 (collection; 집합체)' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복합니다.
+`for`-`in` 을 사용하면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍 (a pair of names)' 을 제공하는 것으로써 '딕셔너리' 에 있는 항목에 대해 동작을 반복시킬 수 있습니다. 딕셔너리는 순서가 없는 '컬렉션 (collection; 집합체)' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복합니다.
 
 ```swift
 let interestingNumbers = [
@@ -855,7 +855,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^indentation]: 이 부분의 설명은 원문만을 봤을 때는 이해하기 어려울 수 있는데, 설명을 생략하기 때문입니다. 실제 더 자세한 설명은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있는 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에서 따로 하고 있습니다.
 
-[^break-out]: 이 말은 스위프트의 'switch 문' 에서는 각 'case' 마다 끝에 'break' 를 쓸 필요가 없다는 의미입니다.
+[^break-out]: 이 말은 스위프트의 'switch 문' 에서는 각 'case 절' 마다 끝에 'break' 라는 키워드를 쓸 필요가 없다는 의미입니다.
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 할 수 있습니다. 본문 내용은 스위프트에서는 '함수' 도 '객체' 처럼 'first-class' 라서 앞의 동작들을 모두 다 수행할 수 있다는 것을 의미합니다. 보다 자세한 내용은 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
