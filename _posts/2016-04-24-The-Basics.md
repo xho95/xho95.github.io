@@ -124,7 +124,7 @@ print(friendlyWelcome)
 
 `print(_:separator:terminator:)` 함수는 하나 이상의 값을 적당한 결과로 출력하는 전역 함수입니다. 예를 들어, 'Xcode (엑스코드)' 에서, `print(_:separator:terminator:)` 함수는 그 결과를 'Xcode' 의 "console (콘솔)" 창에 출력합니다. `separator` 와 `terminator` 매개 변수는 '기본 설정 값 (default values)' 을 가지고 있으므로, 함수를 호출할 때 생략할 수 있습니다. 기본적으로, 이 함수는 출력하는 줄에 '줄 끊음 (line break)' 을 추가하여 끝냅니다. 값을 '줄 끊음' 없이 출력하려면, 빈 문자열을 'terminator (종결자)' 로 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. '기본 설정 값을 가지는 매개 변수' 에 대한 더 많은 정보는, [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 을 참고하기 바랍니다.
 
-스위프트는 '_문자열 보간법 (string interpolation)_' 을 사용하여 더 긴 문자열 속에 '자리 표시 (placeholder)' 용도로 상수나 변수의 이름을 포함한 후, 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알립니다. 이는 이름을 괄호로 감싼 후, 시작 괄호 앞에 '역-빗금 (backslash)' 으로 'escape (벗어나게)'[^escape] 하면 됩니다:
+스위프트는 '_문자열 보간법 (string interpolation)_' 을 사용하여 더 긴 문자열 속에 '자리 표시 (placeholder)' 용도로 상수나 변수의 이름을 포함한 후, 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알립니다. 이는 이름을 괄호로 감싼 후, 시작 괄호 앞에 '역 빗금 (backslash)' 으로 'escape (벗어나게)'[^escape] 하면 됩니다:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
