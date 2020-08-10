@@ -161,7 +161,9 @@ let x = 3; "1 2 \(x)"
 
 ```swift
   #"characters (문자들)"#
+```
 
+```swift
   #"""
   characters (문자들)
   """#
