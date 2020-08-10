@@ -134,7 +134,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 
 여러 줄짜리 문자열 글자 값에서, 줄 끝에 '역 빗금 (backslash; `\`)' 을 쓰면 문자열에서 '줄 끊음' 을 생략합니다. '역 빗금' 과 '줄 끊음' 사이의 공백도 어떤 것이든 역시 생략합니다.  이러한 구문 표현을 사용하면, 결과 문자열의 값을 바꾸지 않고도, 소스 코드에 있는 여러 줄짜리 문자열 글자 값을 '줄 바꿈을 써서 표현 (hard wrap)'[^hard-wrap] 할 수 있습니다.
 
-'특수 문자 (special characters)' 들은 다음 '일련의 벗어난 문자들 (escape sequences; 확장열)'[^escape-sequences] 을 사용하여 한 줄짜리 및 여러 줄짜리 문자열 글자 값에 포함될 수 있습니다:
+'특수 문자 (special characters)' 들은 다음 '벗어나도록 문자를 나열한 것 (escape sequences; 확장열)'[^escape-sequences] 을 사용하여 한 줄짜리 및 여러 줄짜리 문자열 글자 값에 포함될 수 있습니다:
 
 * 널 문자 (null character; `\0`)
 * 역 빗금 (backslash; `\\`)
@@ -156,6 +156,49 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 "1 2 \(1 + 2)"
 let x = 3; "1 2 \(x)"
 ```
+
+'확장된 구분자 (extended delimiters)' 로 구분된 문자열은 물음표와 하나 이상의 '번호 기호 (number signs; `#`)' 로 양 끝을 '균등하게 (balanced)'[^balanced-set] 둘러싼 일련의 문자들을 말합니다. 확장된 구분자로 구분된 문자열의 양식은 다음과 같습니다:
+
+```swift
+  #"characters (문자들)"#
+
+  #"""
+  characters (문자들)
+  """#
+```
+
+'확장된 구분자로 구분된 문자열' 에 있는 특수 문자는 결과 문자열 내에서 특수 문자가 아니라 평범한 문자인 것처럼 나타납니다. '확장된 구분자' 는 일상적으로는 문자열 보간을 자동 생성하거나, 벗어나도록 문자를 나열하기 시작하거나, 아니면 문자열을 끝내는 등의, 특수한 효과를 가가지는 문자로 구성된 문자열을 생성하는데 사용할 수 있습니다.
+
+다음 예제는 '문자열 글자 값' 과 '확장된 구분자로 구분된 문자열' 로 '서로 같은 (equivalent; 동치인)' 문자열 값을 생성하는 것을 보여줍니다:
+
+```swift
+let string = #"\(x) \ " \u{2603}"#
+let escaped = "\\(x) \\ \" \\u{2603}"
+print(string)
+// "\(x) \ " \u{2603}" 를 출력합니다.
+print(string == escaped)
+// "true" 를 출력합니다.
+```
+
+둘 이상의 '번호 기호' 를 사용하여 '확장된 구분자로 구분된 문자열' 을 형성하려는 경우, 번호 기호 사이에 공백이 있으면 안됩니다:
+
+```swift
+print(###"Line 1\###nLine 2"###) // OK
+print(# # #"Line 1\# # #nLine 2"# # #) // Error
+```
+
+'확장된 구분자' 를 사용하여 생성한 '여러 줄짜리 문자열 글자 값' 은 표준적인 '여러 줄짜리 문자열 글자 값' 과 똑같은 들여쓰기 필수 조건을 가지고 있습니다.
+
+문자열 글자 값의 기본 추론 타입은 `String` 입니다. `String` 타입에 대한 더 자세한 정보는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 및 [String](https://developer.apple.com/documentation/swift/string) 를 참고하기 바랍니다.
+
+`+` 연산자로 이은 문자열 글자 값은 컴파일 시간에 이어집니다. 예를 들어, 아래 예제에 있는 `textA` 와 `textB` 의 값은 모든 점에서 똑같으며-실행 시간 이음은 수행하지 않습니다.
+
+```swift
+let textA = "Hello " + "world"
+let textB = "Hello world"
+```
+
+> GRAMMAR OF A STRING LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
 ### Operators (연산자)
 
@@ -194,3 +237,5 @@ let x = 3; "1 2 \(x)"
 [^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 '자동 줄 바꿈' 과 관련된 개념으로, 실제 문자열 글자 값이 아니라, '편집기 (editor)' 에서 문자열이 보여지는 것과 관련한 용어입니다. 이 책에서 'hard wrap' 이 가능하다는 것은, 실제 글자 값은 그대로 유지하면서, Xcode 에서 '줄 바꿈을 써서' 문자열을 알아보기 쉽게 코딩할 수 있다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 또는 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다. 참고로 영어의 'wrap' 이라는 용어는 '포장' 이라는 의미인데, 'line wrap' 이라고 하면 편집기에서 '(보기 좋게) 줄을 포장한 것' 이라고 이해할 수 있습니다. '자동 줄 바꿈' 은 적절한 곳에서 문자열을 끊어줘서 (즉, 줄을 바꿔줘서) 가독성을 높이는 기능이라고 할 수 있습니다.
 
 [^escape-sequences]: 'escape sequences' 및 '확장열' 에 대한 정보는 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 및 [확장열](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
+
+[^balanced-set]: 원문에서는 'balanced set (균형 집합)' 이라는 용어를 사용하고 있는데, 이는 수학 용어입니다. 번역된 문장은 적당하게 의역한 것인데, 수학 용어인 'balanced set' 과 본문의 내용이 어떻게 연결되는 지는 잘 모르겠습니다. 'balanced set (균형 집합)' 에 대해서는 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 부분을 참고하기 바립니다.

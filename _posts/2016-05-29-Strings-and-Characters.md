@@ -102,11 +102,11 @@ Escaping all three quotation mark \"\"\"
 
 #### Extended String Delimiters (확장된 문자열 구분자)
 
-'문자열 글자 값 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, '번호 기호 (`#`)'[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '줄 끊음 escape sequence (이스케잎 시퀀스)'인 (`\n`) 가 그대로 출력됩니다.
+'문자열 글자 값 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, '번호 기호 (`#`)'[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '벗어나도록 문자를 나열하여 만든 줄 먹임 (line feed escape sequence; `\n`)'[^line-feed-escape-sequence] 을 그대로 출력합니다.
 
-'문자열 글자 값 (string literal)' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 escape 문자 (`\`) 뒤에 같은 개수의 '번호 기호' 를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 일 때, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로 `###"Line 1\###nLine 2"###` 라고 해도 '줄 끊음' 이 일어납니다.
+'문자열 글자 값' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 '벗어나게 하는 문자 (escape character; `\`)' 뒤에 같은 개수의 '번호 기호' 를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 일 때, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로, `###"Line 1\###nLine 2"###` 라고 해도 줄을 끊습니다.
 
-'확장된 구분자' 로 생성한 '문자열 글자 값 (string literal)' 역시 '여러 줄짜리 문자열 글자 값' 이 될 수 있습니다. '확장된 구분자' 를 사용하면 '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있는데, 이 때 본래 가진 '글자 값 (literal) 을 끝낸다' 는 기본 기능을 뒤엎고 (overriding), 단순히 텍스트로 넣을 수 있습니다. 예를 들면 다음과 같습니다:
+'확장된 구분자' 를 사용하여 생성한 '문자열 글자 값' 도 '여러 줄짜리 문자열 글자 값' 이 될 수 있습니다. '확장된 구분자' 를 사용하면, '글자 값을 끝낸다' 는 기본 동작을 재정의 (overriding) 하여, '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```
 let threeMoreDoubleQuotationMarks = #"""
@@ -674,3 +674,5 @@ for scalar in dogString.unicodeScalars {
 [^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
 
 [^locale-sensitive]: 'locale-sensitive' 라는 '지역에 대한 민감성' 을 나타내는데, '비교 연산 (comparison)' 이 '지역에 민감한 (locale-sensitive)' 것은 서로 다른 지역의 언어에 대해 비교 연산을 할 수 없다는 의미로 추측됩니다. 스위프트의 문자열 연산은 유니코드에 부합하므로 지역에 민감하지 않다고 볼 수 있습니다.
+
+[^line-feed-escape-sequence]: '벗어나도록 문자를 나열하여 만든 줄 먹임 (line feed escape sequence)' 은 말 그대로 `\n` 문자를 의미합니다. 스위프트에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자 등은 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
