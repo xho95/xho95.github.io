@@ -18,7 +18,7 @@ C 언어의 '산술 연산자 (arithmetic operators)' 와는 달리, 스위프�
 
 자신만의 구조체, 클래스, 그리고 열거체를 정의할 때는, 이 사용자 정의 타입에 대한 표준 스위프트 연산자의 자신만의 구현을 제공하는 것이 유용할 것입니다. 스위프는 연산자의 맞춤형 구현을 제공하는 것과 생성할 각 타입의 동작이 정확히 무엇인지 결정하는 것을 쉽게 할 수 있도록 해줍니다.
 
-이는 '이미 정의된 (predefined)' 연산자로 한정되지 않습니다. 스위프트에서는 자유롭게 자신만의 사용자 정의 '중위 (infix)', '접두 (prefix)', '접미 (postfix)', 그리고 '할당 연산자' 를 정의할 수 있으며, 사용자 정의 '우선 순위 (precedence)' 와 '결합 법칙 (associativity)' 도 지정할 수 있습니다. 이 연산자는 '이미 정의된' 연산자 처럼 코드에서 채택하여 사용할 수 있고, 심지어 직접 정의한 사용자 정의 연산자를 지원하도록 기존 타입을 확장할 수도 있습니다.
+이는 '이미 정의된 (predefined)' 연산자로 한정되지 않습니다. 스위프트에서는 자유롭게 자신만의 사용자 정의 '중위 (infix)', '접두사 (prefix)', '접미사 (postfix)', 그리고 '할당 연산자' 를 정의할 수 있으며, 사용자 정의 '우선 순위 (precedence)' 와 '결합 법칙 (associativity)' 도 지정할 수 있습니다. 이 연산자는 '이미 정의된' 연산자 처럼 코드에서 채택하여 사용할 수 있고, 심지어 직접 정의한 사용자 정의 연산자를 지원하도록 기존 타입을 확장할 수도 있습니다.
 
 ### Bitwise Operators (비트 연산자)
 
@@ -32,7 +32,7 @@ _비트 논리 부정 연산자 (bitwise NOT operator)_ (`~`) 는 어떤 수치 
 
 ![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
-'비트 논리 부정 연산자' 는 '접두 연산자 (prefix operator)' 이며, 연산할 값 바로 앞에, 아무 공백없이 위치합니다:
+'비트 논리 부정 연산자' 는 '접두사 연산자 (prefix operator)' 이며, 연산할 값 바로 앞에, 아무 공백없이 위치합니다:
 
 ```swift
 let initialBits: UInt8 = 0b00001111
@@ -323,7 +323,7 @@ let combinedVector = vector + anotherVector
 
 위의 예제는 '이항 중위 연산자 (binary infix operator)' 의 사용자 정의 구현 방법을 보여줍니다. 클래스와 구조체는 표준 _단항 연산자 (unary operators)_ 의 구현도 제공 할 수 있습니다. 단항 연산자는 단일 대상에 대해 작동하는 것입니다. 이들은 대상보다 앞에 (가령 `-a` 같이) 위치하면 _접두사 (prefix)_ 이고  대상보다 뒤에 (가령 `b!` 같이) 위치하면  _접미사 (postfix)_ 연산자입니다.
 
-'접두사 단항 연산자' 나 '접미사 단항 연산자' 를 구현하려면 연산자 메소드를 선언시 `func` 키워드 앞에 `prefix` 또는 `postfix` 수정자를 작성하면 됩니다:
+'단항 접두사 연산자' 나 '단항 접미사 연산자' 를 구현하려면 연산자 메소드를 선언시 `func` 키워드 앞에 `prefix` 또는 `postfix` 수정자를 작성하면 됩니다:
 
 ```swift
 extension Vector2D {
@@ -430,7 +430,7 @@ if twoThreeFour == anotherTwoThreeFour {
 prefix operator +++
 ```
 
-위의 예제는 `+++` 라는 새로운 '접두 연산자 (prefix operator)' 를 정의합니다. 이 연산자는 기존에는 스위프트에서 아무런 의미가 없던 것으로, 아래와 같이 `Vector2D` 인스턴스와 작업하는 특정 영역에서만 사용자가 정의한 의미를 가지게 됩니다. 이 예제의 목적을 위해, `+++` 는 새로운 “접두 두 배 (prefix doubling)” 연산자인 것처럼 취급됩니다. 이는 `Vector2D` 인스턴스의 `x` 와 `y` 의 값을 두 배로 만들며, 이 때 앞서 정의한 '더하기 할당 연산자' 로 자신을 벡터에 더합니다. `+++` 연산자를 구현하려면, 다음과 같이 `+++` 라는 타입 메소드를 `Vector2D` 에 추가하면 됩니다:
+위의 예제는 `+++` 라는 새로운 '접두사 연산자 (prefix operator)' 를 정의합니다. 이 연산자는 기존에는 스위프트에서 아무런 의미가 없던 것으로, 아래와 같이 `Vector2D` 인스턴스와 작업하는 특정 영역에서만 사용자가 정의한 의미를 가지게 됩니다. 이 예제의 목적을 위해, `+++` 는 새로운 “접두 두 배 (prefix doubling)” 연산자인 것처럼 취급됩니다. 이는 `Vector2D` 인스턴스의 `x` 와 `y` 의 값을 두 배로 만들며, 이 때 앞서 정의한 '더하기 할당 연산자' 로 자신을 벡터에 더합니다. `+++` 연산자를 구현하려면, 다음과 같이 `+++` 라는 타입 메소드를 `Vector2D` 에 추가하면 됩니다:
 
 ```swift
 extension Vector2D {
@@ -469,7 +469,7 @@ let plusMinusVector = firstVector +- secondVector
 
 이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터를 뺍니다. 이는 본질적으로 "더하기에 해당하는 (additive)" 연산자이기 때문에, `+` 와 `-` 등의 '더하기 중위 연산자' 와 같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리에서 제공하는 연산자에 대해서, 연산자 우선 순위 및 결합 법칙 설정 값의 전체 목록을 포함한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다. '우선 순위 그룹' 과 연산자 및 우선 순위 그룹을 직접 정의하기 위한 구문 표현에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380) 을 참고하기 바랍니다.
 
-> '접두 (prefix) 연산자 '나 '접미 (postfix) 연산자' 를 정의할 때는 우선 순위를 지정하지 않습니다. 다만, 피연산자에 '접두 연산자' 와 '접미 연산자' 를 동시에 사용하면, 접미 연산자가 먼저 적용됩니다.
+> '접두사 (prefix) 연산자 '나 '접미사 (postfix) 연산자' 를 정의할 때는 우선 순위를 지정하지 않습니다. 다만, 피연산자에 '접두사 연산자' 와 '접미사 연산자' 를 동시에 사용하면, 접미사 연산자가 먼저 적용됩니다.
 
 ### 참고 자료
 

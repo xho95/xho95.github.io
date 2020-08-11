@@ -204,6 +204,31 @@ let textB = "Hello world"
 
 ### Operators (연산자)
 
+스위프트 표준 라이브러리는 다수의 연산자를 정의하여 사용하도록 하는데, 이 대부분은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 와 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 설명하고 있습니다.
+
+사용자 정의 연산자는 ASCII 문자 `/`, `=`, `-`, `+`, `!`, `*`, `%`, `<`, `>`, `&`, `|`, `^`, `?` 또는 `~` 중 하나로 시작할 수도 있고, 아니면 아래 문법에서 정의한 유니코드 문자 중의 하나로 시작할 수도 있습니다. (그 중에서도 여기에는 _수학 연산자들 (Mathematical Operators)_, _잡다한 기호들 (Miscellaneous Symbols)_, 그리고 _딩뱃 (Dingbats)_[^dingbats] 유니코드 블럭 문자를 포함합니다.) 첫 번째 문자 다음에는, '혼합된 유니코드 문자 (combining Unicode characters)' 도 허용합니다.
+
+'점 (`.`)' 으로 시작하는 사용자 정의 연산자도 정의할 수 있습니다. 이러한 연산자는 추가적인 점을 가질 수 있습니다. 예를 들어, `.+.` 은 단일한 연산자로 취급합니다. 연산자가 점으로 시작하지 않으면, 다른 위치에 점을 가질 수 없습니다. 예를 들어, `+.+` 는 `+` 연산자 뒤에 `.+` 연산자가 있는 것으로 취급합니다.
+
+'물음표 (`?`)' 를 가지고 있는 사용자 정의 연산자를 정의할 수는 있지만, 단일 물음표 문자만으로 구성할 수는 없습니다.[^optional] 추가적으로, 연산자는 '느낌표 (`!`)' 를 가지고 있을 수는 있지만, '접미사 연산자 (postfix operators)' 는 물음표나 느낌표로 시작할 수 없습니다.
+
+> '낱말 (token)' 인 `=`, `->`, `//`, `/*`, `*/`, `.`, '접두사 (prefix) 연산자' 인 `<`, `&`, `?`, '중위 (infix) 연산자' 인 `?`, '접미사 (postfix) 연산자' 인 `>`, `!`, `?` 는 예약되어 있습니다. 이 낱말들은 '중복정의 (overloaded)' 할 수 없으며, 사용자 정의 연산자로 사용할 수도 없습니다.
+
+연산자 주위의 '공백 (whitespace)' 은 연산자가 '접두사 연산자' 로 사용되는지, '접미사 연산자' 로 사용되는지, 아니면 '이항 (binary) 연산자' 로 사용되는 지를 결정하는 데 사용합니다. 이 작동 방식을 요약하면 다음 규칙과 같습니다:
+
+* 만약 연산자가 양쪽에 공백을 가지고 있거나 어느 쪽도 가지고 있지 않으면, '이항 연산자' 로 취급합니다. 예를 들어, `a+++b` 와 `a +++ b` 에 있는 `+++` 연산자는 이항 연산자로 취급합니다.
+* 만약 연산자가 왼쪽에만 공백을 가지고 있으면, '단항 접두사 연산자 (prefix unary operator)' 로 취급합니다. 예를 들어, `a +++b` 에 있는 `+++` 연산자는 단항 접두사 연산자로 취급합니다.
+* 만약 연산자가 오른쪽에만 공백을 가지고 있으면, '단항 접미사 연산자 (postfix unary operator)' 로 취급합니다. 예를 들어, `a+++ b` 에 있는 `+++` 연산자는 단항 접미사 연산자로 취급합니다.
+* 만약 연산자가 왼쪽에 공백을 가지지 않은 채로 바로 뒤에 '점 (`.`)' 이 오면, '단항 접미사 연산자' 로 (즉, `a +++ .b` 가 아니라 `a+++ .b` 로) 취급합니다.
+
+이러한 규칙을 위해서, 연산자 앞에 있는 `(`, `[`, 및 `{` 문자와, 연산자 뒤에 있는 `)`, `]`, 및 `}` 문자, 그리고 `,`, `;`, 및 `:` 문자들도 공백으로 간주합니다.
+
+위 규칙에는 한 가지 '주의할 점 (caveat)' 이 있습니다. 만약 미리 정의된 연산자인 `!` 또는 `?` 가 왼쪽에 공백을 가지고 있지 않으면, 오른쪽에 공백을 가지는 지의 여부와는 관계없이, 접미사 연산자로 취급합니다. `?` 을 '옵셔널-연쇄 (optional-chaining)' 연산자로 사용하려면, 반드시 왼쪽에 공백을 가지지 않아야 합니다. '삼항 조건 (ternary conditional; `? :`)' 연산자로 사용하려면, 반드시 양쪽 주위에 공백을 가져야 합니다.
+
+정해진 구조에서는, 맨 앞이 `<` 나 `>` 인 연산자가 둘 이상의 낱말로 쪼개질 수도 있습니다. 그 나머지도 같은 방식으로 취급하여 다시 쪼개질 수도 있습니다. 그 결과로, `Dictionary<String, Array<Int>>` 와 같은 구조에서 (두 개가 붙은) 닫는 `>` 문자 사이에 모호함을 없애기 위해 공백을 사용할 필요가 없습니다. 이 예제에서는, 닫는 `>` 문자들을 단일한 낱말로 취급하여 '비트 이동 (bit shift) `>>` 연산자' 로 잘못 해석해 버리는 일은 하지 않습니다.
+
+새로운, 사용자 정의 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 와 [Operator Declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380) 을 참고하기 바랍니다. 기존 연산자를 '중복 정의 (overload)' 하는 방법을 배우려면 [Operator Methods (연산자 메소드)]({% post_url 2020-03-03-Closures %}#operator-methods-연산자-메소드) 를 참고하기 바랍니다.
+
 ### 참고 자료
 
 [^Lexical-Structure]: 이 글에 대한 원문은 [Lexical Structure](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html) 에서 확인할 수 있습니다.
@@ -241,3 +266,7 @@ let textB = "Hello world"
 [^escape-sequences]: 'escape sequences' 및 '확장열' 에 대한 정보는 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 및 [확장열](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
 
 [^balanced-set]: 원문에서는 'balanced set (균형 집합)' 이라는 용어를 사용하고 있는데, 이는 수학 용어입니다. 번역된 문장은 적당하게 의역한 것인데, 수학 용어인 'balanced set' 과 본문의 내용이 어떻게 연결되는 지는 잘 모르겠습니다. 'balanced set (균형 집합)' 에 대해서는 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 부분을 참고하기 바립니다.
+
+[^dingbats]: '딩뱃 (Dingbats)' 이란 조판 시에 사용하는 장식용 문자나 공백을 말한다고 합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
+
+[^optional]: 이것은 '단일 물음표 문자 (single question mark)' 로 구성한 연산자는 스위프트 자체의 '옵셔널 (optional)' 과 의미가 겹치기 때문입니다.

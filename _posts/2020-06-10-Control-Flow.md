@@ -510,7 +510,7 @@ case let (x, y):
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
 </p>
 
-같은 본문을 공유하는 여러 개의 '스위치 case 절 (switch cases)' 들은 `case` 뒤에 여러 개의 '유형 (patterns)' 을, 그 사이는 쉼표를 써서, 작성하는 것으로 복합할 수 있습니다. '유형' 중 어떤 하나에라도 해당된다면, 그 'case 절' 에 해당하는 것으로 간주됩니다. '유형 (patterns)' 은, 목록이 길다면, 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
+같은 본문을 공유하는 여러 'switch 문의 case 절 (switch cases)' 들은 `case` 뒤에 여러 개의 '유형 (patterns)' 을, 그 사이는 쉼표를 써서, 작성하는 것으로 복합할 수 있습니다. '유형' 중 어떤 하나에라도 해당된다면, 그 'case 절' 에 해당하는 것으로 간주합니다. '유형 (patterns)' 은, 목록이 길다면, 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someCharacter: Character = "e"
