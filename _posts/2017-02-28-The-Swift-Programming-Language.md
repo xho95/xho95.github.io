@@ -54,7 +54,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 ### Language Reference (언어의 기준)
 
 * [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %})
-* [Lexical Structure (어휘 구조)] - [일부 진행중]({% post_url 2020-07-28-Lexical-Structure %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
+* [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Types (타입)] - [일부 진행중]({% post_url 2020-02-20-Types %})
 * [Expressions (표현식)]
 * [Statements (구문)]
