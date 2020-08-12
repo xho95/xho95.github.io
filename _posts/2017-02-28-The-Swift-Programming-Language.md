@@ -29,7 +29,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Collection Types (컬렉션 타입; 집합체 타입)]({% post_url 2016-06-06-Collection-Types %})
 * [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %})
 * [Functions (함수)]({% post_url 2020-06-02-Functions %})
-* [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %})
+* [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %})
 * [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %})
 * [Properties (속성)]({% post_url 2020-05-30-Properties %})
@@ -66,7 +66,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### Revision History (개정 이력)
 
-* Document Revision History (문서 개정 이력)
+* Document Revision History (문서 개정 이력) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 
 ### 참고 자료
 
