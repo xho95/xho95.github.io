@@ -643,7 +643,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 ### Protocols and Extensions (프로토콜과 익스텐션; 규약과 확장)
 
-프로토콜 (규약) 을 선언하려면 `protocol` 를 사용합니다.
+'프로토콜 (protocol; 규약)' 을 선언하려면 `protocol` 를 사용합니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -681,9 +681,9 @@ let bDescription = b.simpleDescription
 >
 > `ExampleProtocol` 에 또 다른 '필수 조건 (requirement)' 을 추가해 봅시다. `SimpleClass` 와 `SimpleStructure` 가 여전히 이 프로토콜을 '준수 (conform)' 하게 하려면 무엇을 바꿔야 합니까?
 
-`SimpleStructure` 선언 내부에서 메소드가 구조체를 수정하고 있음을 표시하기 위해 `mutating` 키워드를 사용함에 주목하기 바랍니다. `SimpleClass` 선언에서는 어떤 메소드도 'mutating (변경)' 표시를 할 필요가 없는데 이는 클래스 메소드는 항상 클래스를 수정할 수 있기 때문입니다.
+`SimpleStructure` 선언 내에서 구조체를 수정하는 메소드를 표시하는데 `mutating` 키워드를 사용하고 있음에 주목하기 바랍니다. `SimpleClass` 선언에서는 어떤 메소드도 'mutating' 으로 표시할 필요가 없는데 이는 클래스의 메소드는 그 클래스를 항상 수정할 수 있기 때문입니다.
 
-기존 타입에 `extension` 을 사용하면 새 기능, 가령 새로운 메소드나 '계산 속성 (computed properties)' 을 추가할 수 있습니다. 'extension (확장)' 을 사용하면 다른 곳에서 선언된 타입이나, 또는 라이브러리나 프레임웍에서 'import (불러온)' 타입 까지도, 특정 '프로토콜을 따르도록 (protocol conformance)' 만들 수 있습니다.
+기존 타입에 기능을 추가하려면 `extension` 을 사용하며, 가령 새로운 메소드나 새로운 '계산 속성 (computed properties)' 등을 추가하게 됩니다. '익스텐션 (extension; 확장)' 을 사용하면 다른 곳에서 선언한 타입에, 또는 심지어 라이브러리나 프레임웍에서 불러온 타입에 까지도, '프로토콜 준수성 (protocol conformance)'[^protocol-conformance] 을 추가할 수 있습니다.
 
 ```swift
 extension Int: ExampleProtocol {
@@ -695,14 +695,14 @@ extension Int: ExampleProtocol {
     }
 }
 print(7.simpleDescription)
-"The number 7" 을 출력합니다.
+// "The number 7" 을 출력합니다.
 ```
 
 > 실험
 >
-> `Double` 타입에 대한 'extension (확장)' 을 만들어서 `absoluteValue` 속성을 추가해 봅시다.
+> `Double` 타입에 `absoluteValue` 속성을 추가하는 '익스텐션 (extension)' 을 작성해 봅시다.
 
-프로토콜 이름은 마치 또 다른 '이름있는 타입 (named type)' 인 것처럼 사용할 수 있습니다-예를 들어, 서로 다른 타입을 가지지만 모두 단일한 프로토콜을 준수하는 객체들의 '컬렉션 (집합체)' 를 만드는데 사용할 수도 있습니다. 값의 타입이 프로토콜 타입인 경우에는, 프로토콜 정의 밖의 메소드를 사용할 수 없습니다.
+프로토콜 이름은 어떤 다른 알려진 타입인 것처럼 사용할 수 있습니다-예를 들어, 서로 타입이 다르지만 단일한 프로토콜을 준수하는 객체들의 '컬렉션 (collection)' 을 생성할 수 있습니다. 타입이 프로토콜 타입인 값과 작업할 때는, 프로토콜 정의 외부의 메소드는 사용 가능하지 않습니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
@@ -711,7 +711,7 @@ print(protocolValue.simpleDescription)
 // print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 발생합니다.
 ```
 
-`protocolValue` 변수의 '실행 시간 타입 (runtime type)' 이 `SimpleClass` 일지라도, 컴파일러는 주어진 타입을 `ExampleProtocol` 로 취급합니다. 이것은 프로토콜을 준수하게 되면 클래스 구현부의 메소드나 속성에 실수로라도 접근할 수 없다는 것을 의미합니다.
+비록 `protocolValue` 변수의 '실행 시간 타입 (runtime type)' 은 `SimpleClass` 이지만, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것으로 취급합니다. 이것은 프로토콜 준수와는 별도로 클래스가 구현한 메소드나 속성에는 우연하게라도 접근할 수 없다는 것을 의미합니다.
 
 ### Error Handling (에러 처리)
 
@@ -864,7 +864,9 @@ anyCommonElements([1, 2, 3], [3])
 
 [^each-combination]: 여기서 '개별 혼합 (each combination)' 이라는 것은
 
-[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다 (conform to a protocol)' 는 것과는 의미가 조금 다릅니다.
+[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다 (conform to a protocol)' 는 것과는 의미가 조금 다릅니다
+
+[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-확장으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
 
 [^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로, 스위프트에는 이런 `NSObject` 같은 클래스가 없다는 의미입니다.
 
