@@ -597,7 +597,7 @@ let heartsDescription = hearts.simpleDescription()
 
 위에서 열거체의 `hearts` 'case 값' 을 참조하는데 두 가지 방법을 사용한 것에 주목하기 바랍니다: `hearts` 상수에 값을 할당할 때는, 열거체 case 값을 `Suit.hearts` 라고 온전한 이름으로 참조했는데 왜냐면 이 상수에 명시적인 타입을 지정하지 않았기 때문입니다. 'switch 문' 안에서는, 열거체 case 값을 단축 양식인 `.hearts` 라고 참조했는데 이는 `self` 값이 'suit' 라는 것을 이미 알고 있기 때문입니다. 값의 타입을 이미 알고 있다면 언제든지 단축 양식을 사용할 수 있습니다.
 
-열거체가 원시 값을 가질 경우, 이 값은 선언의 일부로써 결정되며, 이는 특정한 '열거체 case 값' 의 모든 인스턴스는 항상 같은 '원시 값' 을 가진다는 것을 의미합니다. '열거체 case 값' 에 대한 또 다른 선택은 해당 'case 값' 이 '결합된 값 (associated values)' 을 가지는 것입니다-이 값은 인스턴스를 만들 때 결정되므로, '열거체 case 값' 의 각각의 인스턴스마다 다를 수 있습니다. '결합된 값' 은 '열거체 case 값 인스턴스' 의 '저장 속성' 처럼 동작한다고 생각하면 됩니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버의 응답은 요청한 정보일 수도 있고, 또는 뭔가 잘못됐을 경우에 대한 설명일 수도 있습니다.
+열거체가 원시 값을 가지고 있는 경우, 이 값은 선언 시에 결정되며, 이는 특정한 열거체 case 값의 모든 인스턴스들은 항상 같은 원시 값을 가지게 됨을 의미합니다. 열거체 case 값에 대한 또 다른 선택 사항은 'case 값' 에 '결합된 (associated)' 값을 가지는 것입니다-이 값은 인스턴스를 만들 때 결정되며, 열거체 case 값의 각 인스턴스마다 서로 다를 수 있습니다. '결합된 값 (associated values)' 은 '열거체 case 인스턴스' 의 '저장 속성 (stored properties)' 처럼 동작하는 것이라고 생각할 수 있습니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버는 요청한 정보를 가지고 응답하거나, 아니면 뭔가가 잘못됐다는 설명을 가지고 응답하게 됩니다.
 
 ```swift
 enum ServerResponse {
@@ -619,11 +619,11 @@ case let .failure(message):
 
 > 실험
 >
-> `ServerResponse` 와 'switch 문' 에 세 번째 'case 값 및 case 절' 을 추가해 봅시다.
+> 세 번째 'case 값' 을 `ServerResponse` 와 'switch 문' 에 추가해 봅시다.
 
-해당하는 'switch 문의 case 절' 을 맞춰볼 때 어떻게 `ServerResponse` 값에서 일출 시간과 일몰 시간을 추출하고 있는지 주목하기 바랍니다.
+'switch 문의 case 절' 과 값을 맞춰보는 부분에서 `ServerResponse` 값의 일출 시간과 일몰 시간을 어떻게 추출하고 있는 지에 주목하기 바랍니다.
 
-구조체를 만들려면 `struct` 를 사용합니다. 구조체는 메소드와 초기자를 포함하여, 클래스에서 지원하는 것과 같은 동작들을 많이 지원합니다. 이런 구조체와 클래스의 가장 중요한 차이점 중 하나는 코드내에서 구조체는 항상 복사에 의해 전달된다는 것으로, 클래스는 참조에 의해 전달된다는 것에서 차이가 있습니다.
+구조체를 생성하려면 `struct` 를 사용합니다. 구조체는, 메소드와 초기자를 포함하여, 클래스와 똑같은 기능을 많이 지원합니다. 구조체와 클래스의 가장 중요한 차이점이라면 코드 내에서 전달될 때 구조체는 항상 복사되지만, 클래스는 참조에 의해 전달된다는 것입니다.
 
 ```swift
 struct Card {
@@ -639,11 +639,11 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 > 실험
 >
-> 개별 카드가 '계급 (rank)' 과 '패 (suit)'[^suit] 의 조합인, 온전한 카드 한 벌을 담고 있는 배열을 반환하는 함수를 만들어 봅시다.
+> 온전한 카드 한 벌을 가진 배열을 반환하는 함수를 만들어 봅시다. 이 때 각각의 카드는 '계급 (rank)' 과 '패 (suit)'[^suit] 의 개별 조합입니다.
 
-### Protocols and Extensions (프로토콜-규약-과 확장)
+### Protocols and Extensions (프로토콜과 익스텐션; 규약과 확장)
 
-'프로토콜 (protocol; 규약)' 을 선언하려면 `protocol` 를 사용하면 됩니다.
+프로토콜 (규약) 을 선언하려면 `protocol` 를 사용합니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -652,7 +652,7 @@ protocol ExampleProtocol {
 }
 ```
 
-'클래스 (classes)', '열거체 (enumerations)', 그리고 '구조체 (structs)' 모두 '프로토콜' 을 '채택 (adopt)'[^adopt] 할 수 있습니다.
+클래스, 열거체, 및 구조체 모두 프로토콜을 '채택 (adopt)'[^adopt] 할 수 있습니다.
 
 ```swift
 class SimpleClass: ExampleProtocol {
@@ -679,7 +679,7 @@ let bDescription = b.simpleDescription
 
 > 실험
 >
-> `ExampleProtocol` 에 또 다른 '필수 조건 (requirement)' 을 추가해 봅시다. `SimpleClass` 와 `SimpleStructure` 가 여전히 이 프로토콜을 '준수 (conform)' 하도록 하려면 무엇을 바꿔야 할까요?
+> `ExampleProtocol` 에 또 다른 '필수 조건 (requirement)' 을 추가해 봅시다. `SimpleClass` 와 `SimpleStructure` 가 여전히 이 프로토콜을 '준수 (conform)' 하게 하려면 무엇을 바꿔야 합니까?
 
 `SimpleStructure` 선언 내부에서 메소드가 구조체를 수정하고 있음을 표시하기 위해 `mutating` 키워드를 사용함에 주목하기 바랍니다. `SimpleClass` 선언에서는 어떤 메소드도 'mutating (변경)' 표시를 할 필요가 없는데 이는 클래스 메소드는 항상 클래스를 수정할 수 있기 때문입니다.
 
@@ -862,7 +862,9 @@ anyCommonElements([1, 2, 3], [3])
 
 [^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
-[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다' 는 말과는 늬앙스가 조금 다른 것 같습니다.
+[^each-combination]: 여기서 '개별 혼합 (each combination)' 이라는 것은
+
+[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다 (conform to a protocol)' 는 것과는 의미가 조금 다릅니다.
 
 [^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로, 스위프트에는 이런 `NSObject` 같은 클래스가 없다는 의미입니다.
 
