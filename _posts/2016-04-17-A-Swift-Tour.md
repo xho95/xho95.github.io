@@ -520,7 +520,7 @@ print(triangleAndSquare.triangle.sideLength)
 // "50.0" 을 출력합니다.
 ```
 
-옵셔널 값과 작업할 때는, 메소드, 속성, 그리고 '첨자 연산 (subscripting)' 과 같은 연산 앞에 `?` 를 작성할 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 이후의 모든 것이 무시되며 전체 표현식의 값은 `nil` 이 됩니다. 그렇지 않은 경우, 옵셔널 값의 포장이 풀리고, `?` 이후의 모든 것이 이 '포장이 풀린 값 (unwrapped value)' 에 작용합니다. 두 경우 모두, 전체 표현식은 옵셔널 값입니다.
+옵셔널 값과 작업할 때는, 메소드, 속성, 그리고 '첨자 연산 (subscripting)' 과 같은 연산 앞에 `?` 를 작성할 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 이후의 모든 것이 무시되며 전체 표현식의 값은 `nil` 이 됩니다. 다른 경우라면, 옵셔널 값의 포장이 풀리고, `?` 이후의 모든 것이 이 '포장이 풀린 값 (unwrapped value)' 에 작용합니다. 두 경우 모두, 전체 표현식은 옵셔널 값입니다.
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -711,11 +711,11 @@ print(protocolValue.simpleDescription)
 // print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 발생합니다.
 ```
 
-비록 `protocolValue` 변수의 '실행 시간 타입 (runtime type)' 은 `SimpleClass` 이지만, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것으로 취급합니다. 이것은 프로토콜 준수와는 별도로 클래스가 구현한 메소드나 속성에는 우연하게라도 접근할 수 없다는 것을 의미합니다.
+비록 `protocolValue` 변수의 '실행 시간 타입 (runtime type)' 은 `SimpleClass` 이지만, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것으로 취급합니다. 이것은 클래스 구현 중에서 프로토콜 준수와는 별개인 메소드나 속성에는 우연히 접근할 가능성조차 없다는 의미입니다.
 
 ### Error Handling (에러 처리)
 
-'에러 (errors)' 를 나타내려면 `Error` 프로토콜을 '채택 (adopt)' 한 타입을 사용하면 됩니다.
+`Error` 프로토콜을 '채택한 (adopts)' 어떤 타입을 사용하여 에러를 표현합니다.
 
 ```swift
 enum PrinterError: Error {
@@ -725,7 +725,7 @@ enum PrinterError: Error {
 }
 ```
 
-에러를 던지려면 `throw` 를 사용하고 에러를 던질 수 있는 함수라고 표시하려면 `throws `를 사용하면 됩니다. 함수에서 에러를 던지면, 그 함수는 즉시 반환되며 함수를 호출한 코드에서 그 에러를 처리하게 됩니다.
+`throw` 를 사용하여 에러를 던지고 `throws `를 사용하여 에러를 던질 수 있는 함수를 표시합니다. 함수에서 에러를 던지면, 함수는 즉시 반환하며 해당 함수를 호출한 코드에서 에러를 처리합니다.
 
 ```swift
 func send(job: Int, toPrinter printerName: String) throws -> String {
@@ -736,7 +736,7 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 }
 ```
 
-에러 처리에는 여러 가지 방법이 있습니다. 한 가지 방법은 `do-catch` 문를 사용하는 것입니다. `do` 블럭 안에서, 에러를 던질 수 있는 코드를 표시하려면 그 앞에 `try` 를 써주면 됩니다. `catch` 블럭 안에서는, 다른 이름을 주지 않았을 경우 에러가 자동으로 `error` 라는 이름을 가지게 됩니다.
+에러 처리에는 여러 가지 방법이 있습니다. 한 가지 방법은 `do`-`catch` 문를 사용하는 것입니다. `do` 블럭 내부에서는, 그 앞에 `try` 를 작성하여 에러를 던질 수 있는 코드를 표시합니다. `catch` 블럭 내부에서는, 에러에 다른 이름을 부여하지 않을 경우 자동으로 `error` 라는 이름을 부여합니다.
 
 ```swift
 do {
@@ -750,9 +750,9 @@ do {
 
 > 실험
 >
-> 프린터 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지도록 해 봅시다.
+> 프린터 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지도록 해봅시다.
 
-여러 개의 `catch` 블럭을 제공해서 지정된 에러들을 처리할 수 있습니다. 'switch (스위치)' 의 `case` 뒤에서 하듯 `catch` 뒤에 '유형 (pattern)' 을 작성하면 됩니다.
+지정된 에러들을 처리하는 '다중 `catch` 블럭' 을 제공할 수 있습니다. 'switch 문' 의 `case` 절 뒤에서 하듯이 `catch` 절 뒤에 '패턴 (pattern; 유형)' 을 작성합니다.
 
 ```swift
 do {
@@ -770,16 +770,16 @@ do {
 
 > 실험
 >
-> `do` 블럭 내부에 에러를 던지는 코드를 추가해 봅시다. 에러가 첫 번째 `catch` 블럭에서 처리되도록 하려면 어떤 종류의 에러를 던지면 됩니까? 두 번째와 세 번째 블럭에서 되게 하려면요?
+> `do` 블럭 내부에 에러를 던지는 코드를 추가해 봅시다. 에러가 첫 번째 `catch` 블럭에서 처리되게 하려면 어떤 종류의 에러를 던져야 합니까? 두 번째 및 세 번째 블럭에서 되게 하려면 어떻게 합니까?
 
-에러를 처리하는 또 다른 방법은 `try?` 를 사용하여 결과를 옵셔널로 변환하는 것입니다. 함수가 에러를 던지면, 지정된 그 에러를 버리고 결과를 `nil` 이 됩니다. 다른 경우라면, 결과는 함수가 반환한 값을 가지고 있는 옵셔널이 됩니다.
+에러를 처리하는 또 다른 방법은 `try?` 를 사용하여 결과를 옵셔널로 변환하는 것입니다. 함수가 에러를 던지면, 지정된 에러는 버려지고 결과는 `nil` 이 됩니다. 다른 경우라면, 결과는 함수가 반환한 값을 가지는 옵셔널이 됩니다.
 
 ```swift
 let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-`defer` 를 사용하여 작성된 코드 블럭은, 함수 반환의 바로 직전, 함수 내의 모든 다른 코드의 이후에 실행됩니다. 이 코드는 함수가 에러를 던지는 것과는 상관없이 실행됩니다. `defer` 를 사용하면, 서로 다른 시간에 실행될 필요가 있는, '설정 (setup)' 코드와 '정리 (cleanup)' 코드도 서로 이웃하게 작성할 수 있습니다.
+함수가 반환되기 바로 직전에, 함수 내의 모든 다른 코드 다음에 실행되는 코드 블럭을 작성하려면 `defer` 를 사용합니다. 이 코드는 함수가 에러를 던지는 지의 여부와 상관없이 실행됩니다. 서로 다른 시간에 실행되어야 하는, 설정 (setup) 코드와 정리 (cleanup) 코드 조차도 `defer` 를 사용하면 서로 나란하게 작성할 수 있습니다.
 
 ```swift
 var fridgeIsOpen = false
@@ -799,9 +799,9 @@ print(fridgeIsOpen)
 // "false" 를 출력합니다.
 ```
 
-### Generics (일반화)
+### Generics (제네릭; 일반화)
 
-'일반화된 함수 (generic function)' 나 '일반화된 타입 (generic type)' 을 만들려면 '꺽쇠 괄호 (angle brackets)' 안에 이름을 적으면 됩니다.
+'제네릭 함수 (generic function; 일반화된 함수)' 나 '제네릭 타입 (generic type; 일반화된 타입)' 을 만들려면 '꺽쇠 괄호 (angle brackets)' 안에 이름을 작성합니다.
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -814,7 +814,7 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
-'클래스 (classes)', '열거체 (enumerations)', 그리고 '구조체 (structures)' 뿐만 아니라 함수와 메소드도 '일반화된 양식 (generic forms)' 으로 만들 수 있습니다.
+클래스, 열거체, 및 구조체 뿐만 아니라, 함수와 메소드를 '제네릭 형태 (generic forms; 일반화된 형태)' 로 만들 수 있습니다.
 
 ```swift
 // 스위프트 표준 라이브러리의 옵셔널 타입을 재구현한 것임
@@ -826,7 +826,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-본문 바로 앞에 `where` 를 사용하면 '필수 조건들의 목록 (a list of requirements)' 을 지정할 수 있습니다-예를 들어, 이 타입은 필수적으로 어떤 프로토콜을 구현해야 한다거나, 두 타입은 반드시 필수적으로 같아야 한다거나, 또는 이 클래스는 필수적으로 특정 '상위 클래스' 를 가져야 한다거나 등을 지정할 수 있습니다.
+'필수 조건 목록 (a list of requirements)' 을 지정하려면 본문 앞에 `where` 를 사용합니다-이는 예를 들어, 타입이 어떤 프로토콜을 필수로 구현해야 한다거나, 두 타입이 필수로 같아야 한다거나, 아니면 클래스가 특정 상위 클래스를 필수로 가져야 한다는 것 등입니다.
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
@@ -845,10 +845,12 @@ anyCommonElements([1, 2, 3], [3])
 
 > 실험
 >
-> `anyCommonElements(_:_:)` 함수를 수정하여 두 개의 'sequence (나열값들)' 에 공통된 원소의 배열을 반환하는 함수를 만들어 봅시다.
+> `anyCommonElements(_:_:)` 함수를 수정하여 두 '수열 (sequence)' 에 공통인 원소들의 배열을 반환하는 함수를 만들어 봅시다.
 
 
-`<T: Equatable>` 이라고 적는 것은 `<T> ... where T: Equatable` 이라고 적는 것과 같습니다.
+`<T: Equatable>` 이라고 작성하는 것은 `<T> ... where T: Equatable` 이라고 작성하는 것과 같습니다.
+
+[The Basics (기초) > ]({% post_url 2016-04-24-The-Basics %})
 
 ### 참고 자료
 

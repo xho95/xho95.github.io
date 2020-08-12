@@ -761,6 +761,8 @@ precondition(index > 0, "Index must be greater than zero.")
 >
 > `fatalError(_:file:line:)` 함수는 초기 모델이나 초기 개발 중에 아직 구현되지 않는 기능에 대해, `fatalError("Unimplemented")` 처럼 짜투리 구현을 작성하는 등의, 짜투리 표시를 생성하기 위해 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 절대로 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 이 짜투리 구현과 마주치게 되면 실행을 항상 중단할 것임을 확신할 수 있습니다.
 
+[Basic Operators (기본 연산자) > ]({% post_url 2016-04-27-Basic-Operators %})
+
 ### 참고 자료
 
 [^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
