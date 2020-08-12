@@ -47,13 +47,13 @@ simpleMax(17, 42) // T 를 Int 로 추론합니다.
 simpleMax(3.14159, 2.71828) // T 를 Double 로 추론합니다.
 ```
 
-#### Generic Where Clauses (일반화된 'Where' 구절)
+#### Generic Where Clauses (일반화된 'Where' 절)
 
-'타입 매개 변수 (type parameters)' 및 그와 '결합된 타입 (associated types)' 에 추가적인 '필수 조건 (requirements)' 을 지정하려면 타입 또는 함수 본문의 '시작 중괄호' 바로 앞에 '일반화된 `where` 구절 (generic where clause)' 을 집어 넣으면 됩니다. '일반화된 `where` 구절' 은 `where` 키워드 다음에, 쉼표로-구분되는 하나 이상의 '_필수 조건 (requirements)_' 목록을 이어 붙여서 만듭니다.
+'타입 매개 변수 (type parameters)' 및 그와 '결합된 타입 (associated types)' 에 추가적인 '필수 조건 (requirements)' 을 지정하려면 타입 또는 함수 본문의 '시작 중괄호' 바로 앞에 '일반화된 `where` 절 (generic where clause)' 을 집어 넣으면 됩니다. '일반화된 `where` 절' 은 `where` 키워드 다음에, 쉼표로-구분되는 하나 이상의 '_필수 조건 (requirements)_' 목록을 이어 붙여서 만듭니다.
 
 where `requirements`
 
-'일반화된 `where` 구절' 의 '_필수 조건 (requirements)_' 은 '타입 매개 변수' 가 어떤 클래스를 상속받도록 지정하거나 프로토콜 또는 프로토콜 조합을 준수하도록 지정합니다. '일반화된 `where` 구절' 은 '타입 매개 변수' 의 간단한 구속 조건 표현을 표현하도록 쉽게 해주는 꿀팁같은 것을 (예를 들어 `<T: Comparable>` 를 `<T> where T: Comparable` 로 동등하게 표현하는 것 등) 제공해 주지만, 이를 잘 사용하면 타입 매개 변수와 그와 '결합된 타입' 들에 더 복잡한 구속 조건도 부여할 수 있습니다. 가령 타입 매개 변수의 연관 타입이 프로토콜을 따르도록 제약할 수 있습니다. 예를 들어 `<S: Sequence> where S.Iterator.Element: Equatable` 은 이 `S` 가 `Sequence` 프로토콜을 따르면서 그 연관 타입인 `S.Iterator.Element` 가 `Equatable` 프로토콜을 따르도록 지정합니다. 이 구속 조건은 수열의 각 요소가 동등 비교를 수행할 수 있어야 함을 보장합니다.
+'일반화된 `where` 절' 의 '_필수 조건 (requirements)_' 은 '타입 매개 변수' 가 어떤 클래스를 상속받도록 지정하거나 프로토콜 또는 프로토콜 조합을 준수하도록 지정합니다. '일반화된 `where` 절' 은 '타입 매개 변수' 의 간단한 구속 조건 표현을 표현하도록 쉽게 해주는 꿀팁같은 것을 (예를 들어 `<T: Comparable>` 를 `<T> where T: Comparable` 로 동등하게 표현하는 것 등) 제공해 주지만, 이를 잘 사용하면 타입 매개 변수와 그와 '결합된 타입' 들에 더 복잡한 구속 조건도 부여할 수 있습니다. 가령 타입 매개 변수의 연관 타입이 프로토콜을 따르도록 제약할 수 있습니다. 예를 들어 `<S: Sequence> where S.Iterator.Element: Equatable` 은 이 `S` 가 `Sequence` 프로토콜을 따르면서 그 연관 타입인 `S.Iterator.Element` 가 `Equatable` 프로토콜을 따르도록 지정합니다. 이 구속 조건은 수열의 각 요소가 동등 비교를 수행할 수 있어야 함을 보장합니다.
 
 두 타입이 동일해야 함을 요구 조건으로 지정할 수도 있는데 이 때는 `==` 연산자를 사용합니다. 예를 들면 `<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` 는 `S1` 과 `S2` 가 `Sequence` 프로토콜을 따르도록 제약하면서 각 수열의 요소들이 반드시 같은 타입으로 되어 있어야 함을 표현합니다.
 
@@ -61,7 +61,7 @@ where `requirements`
 
 일반화된 함수나 초기자는 타입 매개 변수에 다른 구속 조건, 필수 조건, 또는 둘 다를 제공해서 추가 정의 (overload) 할 수 있습니다. 일반화된 함수나 초기자의 추가 정의 버전을 호출하면 컴파일러는 이들 구속 조건을 사용하여 어떤 추가 정의 함수나 초기자를 실행해야할지를 결정하게 됩니다.
 
-일반화된 `where` 구절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화된 Where 구절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-제네릭-일반화된-where-구절) 부분을 보면 됩니다.
+일반화된 `where` 절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화된 Where 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-제네릭-일반화된-where-절) 부분을 보면 됩니다.
 
 > 일반화된 매개 변수 구절의 문법
 >
@@ -93,7 +93,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 }
 ```
 
-일반화된 `Dictionary` 타입의 특수한 버전인 `Dictionary<String, Int>` 은 일반화된 매개 변수 `Key: Hashable` 과 `Value` 를 굳혀진 타입 인자인 `String` 과 `Int` 로 대체합니다. 각 타입 인자들은 일반화된 매개 변수를 대체할 때 반드시 모든 '구속 조건' 들을 만족해야하며 이 때 일반화된 `where` 구절에서 지정한 모든 추가 요구 사항들도 예외 없이 만족해야 합니다. 위의 예제에서 보면 `Key` 타입 매개 변수는 `Hashable` 프로토콜을 따르도록 제약하고 있으므로 `String` 은 반드시 `Hashable` 프로토콜을 따라야 합니다.
+일반화된 `Dictionary` 타입의 특수한 버전인 `Dictionary<String, Int>` 은 일반화된 매개 변수 `Key: Hashable` 과 `Value` 를 굳혀진 타입 인자인 `String` 과 `Int` 로 대체합니다. 각 타입 인자들은 일반화된 매개 변수를 대체할 때 반드시 모든 '구속 조건' 들을 만족해야하며 이 때 일반화된 `where` 절에서 지정한 모든 추가 요구 사항들도 예외 없이 만족해야 합니다. 위의 예제에서 보면 `Key` 타입 매개 변수는 `Hashable` 프로토콜을 따르도록 제약하고 있으므로 `String` 은 반드시 `Hashable` 프로토콜을 따라야 합니다.
 
 타입 매개 변수를 스스로가 일반화된 타입의 특수화 버전인 타입 인자로 대체할 수도 있습니다. (물론 이 타입 인자도 '구속 조건' 과 '필수 조건' 을 적절하게 만족하도록 주어져야 합니다.) 예를 들어 `Array<Element>` 의 타입 매개 변수인 `Element` 를 행렬의 특수화 버전인 `Array<Int>` 로 대체하여 그 요소들이 스스로 정수 배열인 배열을 만들 수 있습니다. [^specialized-form]
 
