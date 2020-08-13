@@ -14,7 +14,7 @@ categories: Swift Language Grammar Revision History
 
 #### 2020-06-22
 
-* 스위프트 5.3 에 대해 갱신되었습니다.
+* 스위프트 5.3 을 위해 갱신되었습니다.
 * [Trailing Closures (끝자리 클로저)]({% post_url 2020-03-03-Closures %}#trailing-closures-끝자리-클로저) 부분에 '다중 끝자리 클로저 (multiple trailing closures)' 에 대한 정보를 추가하였습니다.
 * [Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합된-구현을-사용하여-프로토콜-채택하기) 부분에 열거체를 위한 `Comparable` 의 통합된 구현에 대한 정보를 추가했습니다.
 * [Contextual Where Clauses (상황별 where 절)]({% post_url 2020-02-29-Generics %}#contextual-where-clauses-상황별-where-절) 부분을 추가하였으며 이제 더 많은 곳에서 제네릭 `where` 절을 작성할 수 있습니다.
