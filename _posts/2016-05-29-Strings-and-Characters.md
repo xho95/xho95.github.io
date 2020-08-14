@@ -14,7 +14,7 @@ categories: Swift Grammar Strings Characters
 
 _문자열 (string)_ 문자가 연속되어 있는 것으로, `"hello, world"` 나 `"albatross"` 같은 것이 이에 해당합니다. 스위프트의 문자열은 `String` 타입으로 표현됩니다. `String` 의 내용물에 접근하는 방법은 `Character` 값의 '컬렉션 (collection)'[^collection] 도 포함하여 다양한 방법이 있습니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드에서 텍스트 작업을 할 때 빠르면서도 '유니코드에 부합하는 (Unicode-compliant)' 방법을 제공합니다. 문자열을 생성하고 조작하는 구문 표현은 가볍고 이해하기 쉬우며, '문자열 글자 값 구문 (string literal syntax)'[^string-literal-syntax] 은 C 언어와 비슷합니다. 문자열 연결은 두 문자열을 `+` 연산자로 결합하기만 하면 될 정도로 간단하며, 문자열의 '가변성 (mutability)' 은 스위프트의 다른 모든 값과 마찬가지로 상수인지 변수인지를 선택하는 것만으로 관리됩니다. 문자열을 사용하면 상수, 변수, '글자 값 (literals)'[^literals], 그리고 '표현식 (expressions)' 들을 더 큰 문자열에 삽입할 수도 있으며, 이 과정을 일컬어 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이것으로 표시, 저장, 출력할 때 필요한 문자열을 아주 쉽게 만들 수 있습니다.
+스위프트의 `String` 과 `Character` 타입은 코드에서 텍스트 작업을 할 때 빠르면서도 '유니코드에 부합하는 (Unicode-compliant)' 방법을 제공합니다. 문자열을 생성하고 조작하는 구문 표현은 가볍고 이해하기 쉬우며, '문자열 글자 값 구문 (string literal syntax)'[^string-literal-syntax] 은 C 언어와 비슷합니다. 문자열 연결은 두 문자열을 `+` 연산자로 결합하기만 하면 될 정도로 간단하며, 문자열의 '변경 가능성 (mutability)' 은 스위프트의 다른 모든 값과 마찬가지로 상수인지 변수인지를 선택하는 것만으로 관리됩니다. 문자열을 사용하면 상수, 변수, '글자 값 (literals)'[^literals], 그리고 '표현식 (expressions)' 들을 더 큰 문자열에 삽입할 수도 있으며, 이 과정을 일컬어 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이것으로 표시, 저장, 출력할 때 필요한 문자열을 아주 쉽게 만들 수 있습니다.
 
 이렇게 간단한 구문 표현을 사용하면서도, 스위프트의 `String` 타입은 빠르고, 현대적인 문자열로 구현되었습니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 구성되며, 다양한 유니코드 표현식으로 해당 문자들에 대한 접근을 지원합니다.
 
@@ -133,7 +133,7 @@ if emptyString.isEmpty {
 // "Nothing to see here" 를 출력합니다.
 ```
 
-### String Mutability (문자열 가변성)
+### String Mutability (문자열 변경 가능성)
 
 특정한 `String` 이 수정 (또는 _변경-mutated_) 가능한지를 지정하려면, 그것을 변수에 (이러면 수정 가능함) 할당하거나, 상수에 (이러면 수정 불가능함) 할당하면 됩니다:
 
@@ -147,7 +147,7 @@ constantString += " and another Highlander"
 // 이것은 컴파일-시간에 -상수 문자열은 수정될 수 없다는 (a constant string cannot be modified -에러를 발생시킵니다.
 ```
 
-> '오브젝티브-C' 와 'Cocoa' 에서의 문자열 가변성 지정 방식은 좀 다른데, 이들은 두 개의 클래스 (`NSString` 와 `NSMutableString`) 중에서 선택하는 것으로써 문자열이 변할 수 있는지를 지정합니다.
+> '오브젝티브-C' 와 'Cocoa' 에서의 문자열 변경 가능성 지정 방식은 좀 다른데, 이들은 두 개의 클래스 (`NSString` 와 `NSMutableString`) 중에서 선택하는 것으로써 문자열이 변할 수 있는지를 지정합니다.
 
 ### Strings Are Value Types (문자열은 값 타입입니다)
 
