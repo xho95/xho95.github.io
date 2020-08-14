@@ -23,7 +23,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ### Mutability of Collections (집합체의 변경-용이성)
 
-배열, 셋 또는 딕셔너리를 하나 만들고, 이를 변수에 할당하면, 이렇게 생성된 컬렉션은 _변경 가능 (mutable)_ 합니다. 이는 컬렉션이 생성된 후, 컬렉션에 요소를 추가, 제거, 또는 변경하는 등의 방법으로 컬렉션을 바꿀 (즉 _변경할_) 수 있다는 의미입니다. 배열, 셋 또는 딕셔너리를 상수에 할당하면 이 컬렉션은 _변경 불가능 (immutable)_ 해져서 크기와 내용을 변경할 수 없습니다.
+배열, 셋 또는 딕셔너리를 하나 만들고, 이를 변수에 할당하면, 이렇게 생성된 컬렉션은 _변경 가능 (mutable)_ 합니다. 이는 컬렉션이 생성된 후, 컬렉션에 항목을 추가, 제거, 또는 변경하는 등의 방법으로 컬렉션을 바꿀 (즉 _변경할_) 수 있다는 의미입니다. 배열, 셋 또는 딕셔너리를 상수에 할당하면 이 컬렉션은 _변경 불가능 (immutable)_ 해져서 크기와 내용을 변경할 수 없습니다.
 
 > 컬렉션을 변경할 필요가 없을 때는 항상 변경 불가능한 컬렉션으로 만드는 습관을 가지도록 합시다. 이렇게 하면 코드를 파악하기 쉬워지며 스위프트 컴파일러가 이 컬렉션의 성능을 최적화할 수 있게 만듭니다.
 
@@ -91,14 +91,14 @@ _배열 글자 값 (array literal)_[^literal] 을 써서 배열을 초기화 할
 
 ```swift
 var shoppingList: [String] = ["Eggs", "Milk"]
-// shoppingList 가 두 초기 요소로 초기화 되었습니다.
+// shoppingList 를 두 개의 초기 항목으로 초기화했습니다.
 ```
 
 `shoppingList` 변수는 `[String]` 을 써서 "문자열 값의 배열" 로 선언했습니다. 이 배열은 `String` 타입의 값만 갖도록 지정됐으므로, 이제 `String` 값만 저장할 수 있습니다. 여기서, `shoppingList` 배열은 '배열 글자 값 (array literal)' 에 있는 두 개의 `String` 값인 (`"Eggs"` 와 `"Milk"`) 로 초기화 되었습니다.
 
-> `shoppingList` 배열은 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 `shoppingList` 에 더 많은 요소를 추가할 것이기 때문입니다.
+> `shoppingList` 배열은 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 `shoppingList` 에 더 많은 항목을 추가할 것이기 때문입니다.
 
-이 경우, '배열 글자 값 (array literal)' 에는 두 개의 `String` 값만 있지 다른 건 전혀 없습니다. 이는 `shoppingList` 변수를 선언할 때의 타입 (`String` 값만 담을 수 있는 배열) 과 들어 맞으므로, '배열 글자 값' 을 할당하는 것이 허용되어 두 개의 초기 요소로 `shoppingList` 를 초기화할 수 있습니다.
+이 경우, '배열 글자 값 (array literal)' 에는 두 개의 `String` 값만 있지 다른 건 전혀 없습니다. 이는 `shoppingList` 변수를 선언할 때의 타입 (`String` 값만 담을 수 있는 배열) 과 들어 맞으므로, '배열 글자 값' 을 할당하는 것이 허용되어 두 개의 초기 항목들로 `shoppingList` 를 초기화할 수 있습니다.
 
 스위프트의 타입 추론 덕분에, 배열의 타입을 안써도 되는 경우가 있는데, 초기화할 때 '배열 글자 값' 이 같은 타입의 값만 가지고 있으면 그렇습니다. 따라서 `shoppingList` 의 초기화는 앞에서보다 더 짧은 형태로도 작성할 수 있습니다:
 
@@ -112,7 +112,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 배열은 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
 
-배열에 있는 요소의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
+배열에 있는 항목의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
@@ -130,20 +130,20 @@ if shoppingList.isEmpty {
 // "The shopping list is not empty." 를 출력합니다.
 ```
 
-배열에 있는 `append(_:)` 메소드를 호출하여 배열의 끝에 새로운 요소를 추가할 수 있습니다:
+배열의 `append(_:)` 메소드를 호출하면 배열 끝에 새로운 항목을 추가할 수 있습니다:
 
 ```swift
 shoppingList.append("Flour")
-// shoppingList 는 이제 3 개의 요소를 가지며, 누군가 팬케이크를 만들 수 있게 됐습니다.
+// shoppingList 는 이제 3 개의 항목을 가지며, 누군가 팬케이크를 만들 수 있게 됐습니다.
 ```
 
-다른 방법으로, 배열에 '더하기 할당 연산자 (addition assignment operator)' (`+=`) 를 사용하여 하나 이상의 호환성 있는 요소를 덧붙일 수 있습니다:
+다른 방법으로는, '더하기 할당 연산자 (addition assignment operator; `+=`)' 로 하나 이상의 호환 가능한 항목을 배열에 덧붙일 수 있습니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 는 이제 4 개의 요소를 가집니다.
+// shoppingList 는 이제 4 개의 항목을 가집니다.
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 는 이제 7 개의 요소를 가집니다.
+// shoppingList 는 이제 7 개의 항목을 가집니다.
 ```
 
 배열에서 값을 가져오려면 _첨자 연산 구문 표현 (subscript syntax)_ 을 사용하며, 이는 배열 이름 바로 뒤의 대괄호 안에 가져올 값의 _색인 (index)_ 을 넣으면 됩니다:
@@ -153,58 +153,58 @@ var firstItem = shoppingList[0]
 // firstItem 은 "Eggs" 가 됩니다.
 ```
 
-> 배열의 첫 번째 요소는 색인으로 `0` 을 갖습니다. `1` 이 아닙니다. 스위프트에 있는 배열은 항상 '영-기준 색인 (zero-indexed)' 입니다.
+> 배열의 첫 번째 항목은, `1` 이 아니라, `0` 번 색인을 가집니다. 스위프트에 있는 배열은 항상 '0 기준-색인 (zero-indexed)' 으로 되어 있습니다.
 
 '첨자 연산 구문 표현' 을 사용하면 주어진 색인 위치의 값을 바꿀 수 있습니다:
 
 ```swift
 shoppingList[0] = "Six eggs"
-// 이제 목록에 있는 첫 번째 요소는 단순히 "Eggs" 가 아니라 "Six eggs" 입니다.
+// 목록에 있는 첫 번째 항목은 이제 "Eggs" 가 아니라 "Six eggs" 입니다.
 ```
 
-'첨자 연산 구문 표현' 을 사용할 때는, 지정한 인덱스가 유효해야 합니다. 예를 들어, 배열 끝에 항목을 추가하려고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하면 '실행 시간 에러 (runtime error)' 로 끝나게 됩니다.[^count-concurrent]
+'첨자 연산 구문 표현' 을 사용할 때, 지정하는 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 추가한다고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하면 '실행 시간 에러 (runtime error)' 로 끝나게 됩니다.[^count-concurrent]
 
-'첨자 연산 구문 표현' 을 사용해서 일정 범위의 값들을 한 번에 바꿀 수도 있는데, 이 때 대체될 값들의 범위와 대체할 범위의 길이가 달라도 문제 없습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 그리고 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 바꾸는 것을 보여줍니다:
+'첨자 연산 구문 표현' 을 사용하면 일정 범위의 값들을 한 번에 바꿀 수도 있는데, 이 때 대체될 값의 범위와 대체할 범위가 서로 다른 길이여도 됩니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 요소를 가집니다.
+// shoppingList 는 이제 6 개의 항목을 가집니다.
 ```
 
 배열에서 지정된 색인 위치에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 요소를 가집니다.
-// "Maple Syrup" 이 이제 목록의 첫 번째 요소입니다.
+// shoppingList 는 이제 7 개의 항목을 가집니다.
+// "Maple Syrup" 이 이제 목록의 첫 번째 항목입니다.
 ```
 
-여기서는 `insert(_:at:)` 메소드를 호출하여 `"Maple Syrup"` 이라는 새 요소를 '쇼핑 목록 (shopping list)' 의 맨 처음 위치-색인 `0` 으로 지시한 곳-에 집어 넣었습니다.
+이 `insert(_:at:)` 메소드 호출은 값이 `"Maple Syrup"` 인 새 항목을 '쇼핑 목록 (shopping list)' 의 맨 처음 위치인, 색인 `0` 으로 나타낸 곳에, 집어 넣습니다.
 
-비슷하게, 배열에 요소를 제거하려면 `remove(at:)` 메소드를 사용합니다. 이 메소드는 특정 색인 위치의 요소를 제거한 후 이 제거한 요소를 반환합니다. (반환 값이 필요 없다면 무시해도 됩니다):
+이와 비슷하게, `remove(at:)` 메소드로 배열에서 항목을 제거합니다. 이 메소드는 지정된 색인 위치의 항목을 제거하며 제거한 그 항목을 반환합니다. (필요 없다면 이 반환 값은 무시할 수도 있습니다):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
-// 색인 0 위치의 값이 방금 제거되었습니다.
-// shoppingList 는 이제 6 개의 요소를 가지며, Maple Syrup 은 더이상 없습니다.
-// 이제 상수 mapleSyrup 은 제거된 문자열인 "Maple Syrup" 이 됩니다.
+// 색인 0 위치의 값을 방금 제거했습니다.
+// shoppingList 는 이제 6 개의 항목을 가지며, Maple Syrup 은 더 이상 없습니다.
+// mapleSyrup 이라는 상수는 이제 제거한 문자열인 "Maple Syrup" 이 됩니다.
 ```
 
 > 배열 범위를 벗어난 색인으로 값에 접근하려고 하거나 수정하려고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다. 색인을 사용하기 전에 유효한 지를 검사하고 싶으면 배열의 `count` 속성과 비교하면 됩니다. 배열에서 유효한 색인으로 가장 큰 것은 `count - 1` 인데, 배열의 '색인은 영-기준 (indexed from zero)' 이기 때문입니다 - 하지만, `count` 가 `0` (즉 배열이 비어있으면) 이면, 유효한 색인이 아예 없습니다.
 
-배열에 요소를 제거할 때 발생하는 틈은 모조리 메꿔지므로, 색인 `0` 에 있는 값은 이제 다시 `"Six eggs"` 와 같아집니다:
+항목을 제거할 때는 배열의 모든 틈이 다 메워지므로, 색인 `0` 에 있는 값은 다시 한번 `"Six eggs"` 가 됩니다:
 
 ```swift
 firstItem = shoppingList[0]
-// firstItem 은 다시 "Six eggs" 입니다.
+// firstItem 은 이제 "Six eggs" 입니다.
 ```
 
-배열에서 마지막 요소를 제거하려면, `remove(at:)` 메소드 대신 `removeLast()` 메소드를 사용하는 것이 좋은데, 이는 배열의 `count` 속성을 조회할 필요가 없기 때문입니다. `remove(at:)` 메소드 처럼, `removeLast()` 메소드도 제거된 요소를 반환합니다:
+배열에서 마지막 항목을 제거하려면, `remove(at:)` 메소드 대신 `removeLast()` 메소드를 사용하는 것이 좋은데, 이는 배열의 `count` 속성을 조회할 필요가 없기 때문입니다. `remove(at:)` 메소드 처럼, `removeLast()` 메소드도 제거한 그 항목을 반환합니다:
 
 ```swift
 let apples = shoppingList.removeLast()
-// 배열의 마지막 요소가 방금 제거되었습니다.
-// shoppingList 는 이제 5 개의 요소를 가지며, Apples 은 더이상 없습니다.
+// 배열의 마지막 항목을 방금 제거했습니다>
+// shoppingList 는 이제 5 개의 항목을 가지며, Apples 은 더 이상 없습니다.
 // 이제 상수 apples 는 제거된 문자열인 "Apples" 가 됩니다.
 ```
 
@@ -224,7 +224,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-각 요소에 대해 값 뿐만 아니라 정수 색인도 필요하다면, 배열에 동작을 반복 적용시킬 때 `enumerated()`[^enumerate] 메소드도 같이 사용하면 됩니다. `enumerated()` 메소드는 배열의 각 요소에 대해서 정수와 요소의 조합으로 된 '튜플 (tuple)'[^tuple] 을 반환합니다. 이 정수는 0 에서 시작해서 각 요소마다 하나씩 증가합니다; 배열 전체를 열거하게 되면, 이 정수들은 결국 요소들의 색인이 됩니다. 반복 적용하는 구문 내에서 '튜플' 을 임시 상수나 변수로 분해 (decompose) 할 수 있습니다:
+각 항목의 값 뿐만 아니라 정수 색인도 필요하다면, 배열에 동작을 반복시킬 때 `enumerated()`[^enumerate] 메소드도 같이 사용하면 됩니다. `enumerated()` 메소드는, 배열의 각 항목에 대해서, 정수와 해당 항목의 조합으로 된 '튜플 (tuple)'[^tuple] 을 반환합니다. 이 정수는 '0' 에서 시작해서 각 항목마다 하나씩 증가합니다; 전체 배열을 열거하는 경우, 이 정수들은 항목들의 색인과 일치하게 됩니다. '반복 구문 (iteration)' 에서 '튜플' 을 임시 상수 또는 임시 변수로 분해 (decompose) 할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -238,12 +238,11 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for-in` 반복문에 대한 더 자세한 정보는 [For-In Loop]() 를 보기 바랍니다.
+`for-in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
 ### Sets (셋; 집합)
 
-_셋 (set)_ 은 같은 타입이지만 서로 다른 값들을 순서는 따로 정의하지 않은채 컬렉션에 저장합니다. 배열 대신 셋을 사용할 때는, 요소의 순서가 중요하지 않거나, 요소가 단 한 번만 나타나도록 해야할 경우 등이 있습니다.
-
+_셋 (set)_ 은 같은 타입의 서로 다른 값들을 정의된 순서없이 컬렉션에 저장합니다. 항목의 순서가 중요하지 않을 때, 또는 항목이 단 한 번만 나타나도록 보장해야할 때, 배열 대신 셋을 사용할 수 있습니다.
 
 > 스위프트의 `Set` 타입은 'Foundation' 프레임웍에 있는 `NSSet` 클래스와 연동되어 (bridged) 있습니다.
 >
@@ -299,14 +298,14 @@ letters = []
 
 ```swift
 var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
-// favoriteGenres 는 3 개의 초기 요소를 가지고 초기화 되었습니다.
+// favoriteGenres 를 3 개의 초기 항목으로 초기화했습니다.
 ```
 
 `favoriteGenres` 변수는 `Set<String>` 을 써서 "`String` 값의 셋” 으로 선언되었습니다. 이 셋은 `String` 타입의 값을 지정했기 때문에, `String` 값만 저장할 수 있습니다. 여기서 `favoriteGenres` 셋은 '배열 글자 값' 에 있는 세 개의 `String` 값인 (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 으로 초기화 됩니다.
 
-> `favoriteGenres` 셋은 (`var` 소개자를 써서) 변수로 선언되었으며, (`let` 소개자를 쓴) 상수가 아닙니다. 이는 아래 예제에서 요소를 추가하거나 제거할 것이기 때문입니다.
+> `favoriteGenres` 셋은 (`var` 소개자를 써서) 변수로 선언되었으며, (`let` 소개자를 쓴) 상수가 아닙니다. 이는 아래 예제에서 항목을 추가하거나 제거할 것이기 때문입니다.
 
-셋 타입은 '배열 글자 값 (array literal)' 만으로는 추론할 수 없으므로[^set-array-literal], `Set` 이라는 타입은 반드시 명시적으로 선언해야 합니다. 그러나 스위프트의 타입 추론 기능에 의해서, '배열 글자 값' 이 하나의 타입만 갖고 있는 경우, 셋 요소 (set's elements) 의 타입은 쓸 필요가 없습니다. 따라서 `favoriteGenres` 의 초기화는 다음 처럼 더 짧은 양식으로 작성 할 수 있습니다:
+셋 타입은 '배열 글자 값 (array literal)' 만으로는 추론할 수 없으므로[^set-array-literal], `Set` 이라는 타입은 반드시 명시적으로 선언해야 합니다. 그러나 스위프트의 타입 추론 기능에 의해서, '배열 글자 값' 이 하나의 타입만 갖고 있는 경우, 셋의 '원소 (elements)' 타입은 쓸 필요가 없습니다. 따라서 `favoriteGenres` 의 초기화는 다음 처럼 더 짧은 양식으로 작성 할 수 있습니다:
 
 ```swift
 var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
@@ -316,14 +315,9 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 
 #### Accessing and Modifying a Set (셋에 접근하고 수정하기)
 
-You access and modify a set through its methods and properties.
+메소드와 속성을 통해 셋에 접근하고 이를 수정할 수 있습니다.
 
-To find out the number of items in a set, check its read-only count property:
-
-
-셋은 메소드 (methods) 와 속성 (properties) 을 사용하여 접근하고 수정할 수 있습니다.
-
-셋에 있는 요소의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
+셋에 있는 항목의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
 ```swift
 print("I have \(favoriteGenres.count) favorite music genres.")
@@ -341,14 +335,14 @@ if favoriteGenres.isEmpty {
 // "I have particular music preferences." 를 출력합니다.
 ```
 
-셋에 새로운 요소를 추가할 때는 `insert(_:)` 메소드를 호출하면 됩니다:
+셋에 새로운 항목을 추가할 때는 `insert(_:)` 메소드를 호출하면 됩니다:
 
 ```swift
 favoriteGenres.insert("Jazz")
-// favoriteGenres 는 이제 4 개의 요소를 갖고 있습니다.
+// favoriteGenres 는 이제 4 개의 항목을 갖고 있습니다.
 ```
 
-셋에서 특정 요소를 제거할 때는 셋의 `remove(_:)` 메소드를 호출하는데, 그 요소가 셋의 멤버면 제거한 후 제거된 값을 반환하며, 만약 셋의 요소가 아니면 `nil` 을 반환합니다. 다른 방법으로, 셋의 모든 요소를 제거하려면 `removeAll()` 메소드를 사용합니다.
+셋에 있는 항목을 제거하려면 셋의 `remove(_:)` 메소드를 호출하면 되는데, 셋의 멤버인 경우라면 그 항목을 제거하고, 제거한 그 값을 반환하지만, 만약 셋이 가지고 있지 않은 경우라면 `nil` 을 반환합니다. 다른 방법으로, `removeAll()` 메소드로 셋에 있는 모든 항목을 제거할 수 있습니다.
 
 ```swift
 if let removeGenres = favoriteGenres.remove("Rock") {
@@ -359,7 +353,7 @@ if let removeGenres = favoriteGenres.remove("Rock") {
 // "Rock? I'm over it." 를 출력합니다.
 ```
 
-셋이 특정한 요소를 가지고 있는지를 검사하려면 `contain(_:)` 메소드를 사용합니다.
+셋이 특정한 항목을 가지고 있는지 검사하려면, `contain(_:)` 메소드를 사용합니다.
 
 ```swift
 if favoriteGenres.contains("Funk") {
@@ -372,7 +366,7 @@ if favoriteGenres.contains("Funk") {
 
 #### Iterating Over a Set (셋에 동작을 반복 적용하기)
 
-`for-in` 반복문 (loop) 을 사용하면 셋에 있는 값들에 '동작을 반복 적용 (iterate over)' 할 수 있습니다:
+`for`-`in` 반복문으로 셋에 있는 값들에 '동작을 반복시킬 (iterate over)' 수 있습니다:
 
 ```swift
 for genre in favoriteGenres {
@@ -384,9 +378,9 @@ for genre in favoriteGenres {
 // Hip Hop
 ```
 
-`for-in` 반복문에 대한 자세한 내용은 [For-In Loops]() 를 참조하기 바랍니다.
+`for`-`in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
-스위프트의 셋 타입에는 정의된 순서란 것이 없습니다. 지정된 순서대로 셋의 값에 '동작을 반복 적용' 하려면, 먼저 `sorted()` 메소드를 사용해야 합니다. 이 함수는 셋의 요소들을 정렬된 배열 형태로 바꿔서 반환하는데, 정렬할 때 `<` 연산자를 사용합니다.
+스위프트의 `Set` 타입은 정의된 순서란 것을 가지고 있지 않습니다. 지정된 순서대로 셋의 값에 동작을 반복시키려면, `<` 연산자로 셋의 원소들을 정렬된 배열 형태로 반환하는, `sorted()` 메소드를 사용합니다.
 
 ```swift
 for genre in favoriteGenres.sort() {
@@ -430,7 +424,7 @@ oddDigits.exclusiveOr(singleDigitPrimeNumbers).sort()
 
 ### Set Membership and Equality (집합-셋의 포함 및 동등 비교)
 
-아래 그림은 세 개의 셋-`a`, `b`, 와 `c`-에서 공유되는 요소를 겹침 영역 (overlapping regions) 으로 보여줍니다. 여기서 집합-셋 `a` 는 집합-셋 `b` 의 _상위집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 요소를 포함하기 때문입니다. 반대로, 집합-셋 `b` 는 집합-셋 `a` 의 _하위집합 (subset; 부분 집합)_ 으로, `b` 의 모든 요소가 `a` 에 포함되기 때문입니다. 집합-셋 `b`와 집합-셋 `c`는 서로 _분리 (disjoint)_[^disjoint] 되었다고 하며, 이는 서로 어떤 요소도 공유하고 있지 않기 때문입니다.
+아래 그림은 세 개의 셋-`a`, `b`, 와 `c`-에서 서로 공유하는 원소들을 겹침 영역 (overlapping regions) 으로 보여줍니다. 여기서 집합-셋 `a` 는 집합-셋 `b` 의 _상위집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 원소를 포함하기 때문입니다. 반대로, 집합-셋 `b` 는 집합-셋 `a` 의 _하위집합 (subset; 부분 집합)_ 으로, `b` 의 모든 원소는 `a` 에도 포함되기 때문입니다. 집합-셋 `b`와 집합-셋 `c`는 서로 _분리 (disjoint)_[^disjoint] 되었다고 하며, 이들은 공유하고 있는 공통 원소가 전혀 없기 때문입니다.
 
 ![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-membership-and-equality.jpg)
 
@@ -457,7 +451,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 딕셔너리는 '키-값 결합 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
 
-_딕셔너리 (dictionary; 사전)_ 는 동일한 타입의 키들과 동일한 타입의 값들 사이의 '결합 (associations)' 을 컬렉션에 순서없이 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 관련지어지며, 이 키는 딕셔너리에서 그 값에 대한 식별자 (identifier) 역할을 합니다. 배열에 있는 요소와는 달리, 딕셔너리에 있는 요소들은 지정된 순서가 없습니다. 딕셔너리는 식별자를 기반으로 하여 값을 찾을 때 쓸 수 있는데, 이는 실제-세계의 사전 (딕셔너리) 이 특정 단어로 정의된 뜻을 찾는 것과 사실상 같은 것입니다.
+_딕셔너리 (dictionary; 사전)_ 는 동일한 타입의 키들과 동일한 타입의 값들 사이의 '결합 (associations)' 을 컬렉션에 순서없이 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 관련지어지며, 이 키는 딕셔너리에서 그 값에 대한 식별자 (identifier) 역할을 합니다. 배열에 있는 항목과는 달리, 딕셔너리에 있는 항목에는 지정된 순서가 없습니다. 딕셔너리는 식별자를 기반으로 하여 값을 찾을 때 쓸 수 있는데, 이는 실제-세계의 사전 (딕셔너리) 이 특정 단어로 정의된 뜻을 찾는 것과 사실상 같은 것입니다.
 
 > 스위프트의 `Dictionary` 타입은 'Foundation' 프레임웍에 있는 `NSDictionary` 클래스와 연동되어 (bridged) 있습니다.
 >
@@ -511,7 +505,7 @@ var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 `airport` 딕셔너리는 두 개의 키-값 쌍을 가지는 '딕셔너리 글자 값' 으로 초기화되었습니다. 첫 번째 쌍의 키는 `"YYZ"` 이고, 값은 `"Toronto Pearson"` 입니다. 두 번째 쌍은 키가 `"DUB"` 이고, 값은 `"Dublin"` 입니다.
 
-이 '딕셔너리 글자 값' 은 두 개의 `String: String` 쌍을 갖고 있습니다. 이 키-값 타입은 `airport` 변수를 선언할 때의 타입 (`String` 키와 `String` 값만 가지는 딕셔너리) 과 들어 맞으므로, '딕셔너리 글자 값' 에 있는 두 요소로 `airport` 딕셔너리를 초기화 하는 것이 허용됩니다.
+이 '딕셔너리 글자 값' 은 두 개의 `String: String` 쌍을 가지고 있습니다. 이 키-값 타입은 `airport` 변수 선언의 타입 (오직 `String` 키와, `String` 값만을 가지는 딕셔너리) 에서와 일치하므로, 두 개의 초기 항목들로 `airports` 딕셔너리를 초기화하기 위해 '딕셔너리 글자 값' 을 할당하는 것도 가능합니다.
 
 배열에서 처럼, 딕셔너리도 초기화할 때 타입을 안써도 되는 경우가 있으며, 이는 딕셔너리 글자 값에 있는 키와 값들의 타입이 일관성이 있는 경우입니다. `airport` 의 초기화는 아래 처럼 더 짧게 작성할 수 있습니다:
 
@@ -523,9 +517,9 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 ### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
 
-딕셔너리는 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
+메소드와 속성을 통해, 아니면 '첨자 연산 구문 표현' 을 사용하여, 딕셔너리에 접근하고 수정합니다.
 
-딕셔너리에 있는 요소의 개수를 알고 싶으면, 배열과 마찬가지로 읽기-전용 속성인 `count` 를 검사하면 됩니다:
+배열에서와 같이, `Dictionary` 에 있는 항목의 개수를 알아내려면 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("The airports dictionary contains \(airports.count) items.")
@@ -543,11 +537,11 @@ if airports.isEmpty {
 // "The airports dictionary is not empty." 를 출력합니다.
 ```
 
-딕셔너리에 새 요소를 추가할 때 '첨자 연산 구문 표현' 을 사용할 수 있습니다. 타입에 맞는 새 키를 첨자 연산의 색인으로 두고, 타입에 맞는 새 값을 할당하면 됩니다:  
+'첨자 연산 구문 표현' 으로 딕셔너리에 새 항목을 추가할 수 있습니다. 알맞은 타입의 새 키를 첨자 연산 색인으로 사용하고, 알맞은 타입의 새 값을 할당하면 됩니다:  
 
 ```swift
 airports["LHR"] = "London"
-// airports 딕셔너리는 이제 3 개의 요소를 가집니다.
+// airports 딕셔너리는 이제 3 개의 항목을 가집니다.
 ```
 
 '첨자 연산 구문 표현' 을 사용하여 특정한 키와 결합되어 있는 값을 바꿀 수도 있습니다:
@@ -588,7 +582,7 @@ airports["APL"] = nil
 // APL 이 방금 딕셔너리에서 지워졌습니다.
 ```
 
-다른 방법으로, 딕셔너리에서 키-값 쌍을 제거하려면 `removeValue(_:forKey)` 메소드를 사용합니다. 이 메소드는 해당 키-값 쌍이 있으면 제거하고나서 그 제거한 값을 반환하고, 없으면 `nil` 을 반환합니다:
+다른 방법으로, 딕셔너리에서 키-값 쌍을 제거하려면 `removeValue(_:forKey)` 메소드를 사용합니다. 이 메소드는 해당 키-값 쌍이 있으면 제거하고나서 제거한 그 값을 반환하고, 없으면 `nil` 을 반환합니다:
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
@@ -601,7 +595,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 
 ### Iterating Over a Dictionary (딕셔너리에 동작을 반복 적용하기)
 
-`for-in` 반복문을 사용하면 딕셔너리에 있는 전체 키-값 쌍들에 '동작을 반복 적용 (iterate over)' 할 수 있습니다. 딕셔너리의 각 요소는 `(key, value)` 튜플의 형태로 반환되며, 튜플의 멤버는 동작 반복 과정에서 임시 상수나 변수로 분해할 수 있습니다:
+`for`-`in` 반복문을 사용하면 딕셔너리에 있는 전체 키-값 쌍들에 '동작을 반복 (iterate over)' 시킬 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플의 형태로 반환되며, 튜플의 멤버는 동작 반복 과정에서 임시 상수 또는 임시 변수로 분해할 수 있습니다:
 
 ```swift
 for (airportCode, airportName) in airports {
@@ -612,7 +606,7 @@ for (airportCode, airportName) in airports {
 // LHR: London Heathrow               
 ```
 
-`for-in` 반복문에 대한 더 자세한 내용은 [For-In Loops]() 를 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
 딕셔너리의 키와 값들에 대해서 '동작을 반복 적용할 수 있는 컬렉션 (iterable collection)' 을 가질 수도 있는데, 이는 딕셔너리의 `keys` 와 `properties` 속성을 사용하면 됩니다:
 
@@ -650,7 +644,7 @@ let airportNames = [String](airports.values)
 
 [^sets]: 'Sets' 은 수학 용어로는 그 자체로 '집합' 이라는 뜻을 가지고 있는데, '집합' 이라고 하면 프로그래밍에서 다른 의미로 해석될 수도 있으므로, 여기서는 스위프트의 자료 타입을 의미하도록 '셋' 이라고 발음 그대로 옮기도록 합니다.
 
-[^dictionaries]: 'dictionaries' 는 '사전' 으로 옮길 수 있는데, 타입의 요소가 실제 사전처럼 '키' 와 '값' 의 두 가지 성분으로 되어있습니다. 다만 '사전' 이라고 옮기면 다른 의미로 해석될 수도 있으므로, 여기서는 스위프트의 자료 타입을 의미하도록 '딕셔너리' 라고 발음 그대로 옮기도록 합니다.
+[^dictionaries]: 'dictionaries' 는 '사전' 으로 옮길 수 있는데, 타입의 항목이 실제 사전처럼 '키' 와 '값' 의 두 가지 성분으로 되어있습니다. 다만 '사전' 이라고 옮기면 다른 의미로 해석될 수도 있으므로, 여기서는 스위프트의 자료 타입을 의미하도록 '딕셔너리' 라고 발음 그대로 옮기도록 합니다.
 
 [^compatible]: 'compatible' 은 컴퓨터 용어에서 '호환성이 있는' 것을 말하며, 이는 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환성이 있는' 데, 이로써 두 값은 서로 같이 연산할 수 있습니다. 그리고 이 때의 연산 결과는 `Double` 타입이 됩니다. 사실 스위프트에서는 특별한 경우가 아니면 `Float` 타입을 따로 쓸 필요가 없긴 합니다.
 
