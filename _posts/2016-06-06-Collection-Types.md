@@ -203,7 +203,7 @@ firstItem = shoppingList[0]
 
 ```swift
 let apples = shoppingList.removeLast()
-// 배열의 마지막 항목을 방금 제거했습니다>
+// 배열의 마지막 항목을 방금 제거했습니다.
 // shoppingList 는 이제 5 개의 항목을 가지며, Apples 은 더 이상 없습니다.
 // 이제 상수 apples 는 제거된 문자열인 "Apples" 가 됩니다.
 ```
