@@ -446,7 +446,7 @@ let newString = String(beginning)
 
 위의 예에서, `greeting` 은 문자열이므로, 이를 구성하는 문자들을 저장하는 메모리 영역을 가지고 있습니다. `beginning` 은 `greeting` 의 하위 문자열이라서, `greeting` 이 가지고 있는 메모리를 재사용합니다. 이와는 다르게, `newString` 은 하나의 문자열로-하위 문자열을 이용해서 생성될 때, 자신만의 저장 공간을 가집니다. 이 관계는 아래 그림과 같습니다:
 
-![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-indent.jpg)
+![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-substrings.jpg)
 
 > `String` 과 `Substring` 은 모두 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 `StringProtocol` 값을 전달받는 '문자열 조작 함수 (string manipulation functions)' 를 쓰는 것이 편할 때가 많다는 것을 의미합니다. 이러한 함수는 `String` 이나 `Substring` 값에 상관없이 호출할 수 있습니다.
 
