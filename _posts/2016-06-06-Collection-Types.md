@@ -110,7 +110,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 #### Accessing and Modifying an Array (배열에 접근하고 수정하기)
 
-배열은 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 문법 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
+배열은 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
 
 배열에 있는 요소의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
@@ -146,7 +146,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList 는 이제 7 개의 요소를 가집니다.
 ```
 
-배열에서 값을 가져오려면 _첨자 연산 문법 (subscript syntax)_ 을 사용하며, 이는 배열 이름 바로 뒤의 대괄호 안에 가져올 값의 _색인 (index)_ 을 넣으면 됩니다:
+배열에서 값을 가져오려면 _첨자 연산 구문 표현 (subscript syntax)_ 을 사용하며, 이는 배열 이름 바로 뒤의 대괄호 안에 가져올 값의 _색인 (index)_ 을 넣으면 됩니다:
 
 ```swift
 var firstItem = shoppingList[0]
@@ -155,23 +155,23 @@ var firstItem = shoppingList[0]
 
 > 배열의 첫 번째 요소는 색인으로 `0` 을 갖습니다. `1` 이 아닙니다. 스위프트에 있는 배열은 항상 '영-기준 색인 (zero-indexed)' 입니다.
 
-'첨자 연산 문법 (subscript syntax)' 을 사용하면 주어진 색인 위치의 값을 바꿀 수 있습니다:
+'첨자 연산 구문 표현' 을 사용하면 주어진 색인 위치의 값을 바꿀 수 있습니다:
 
 ```swift
 shoppingList[0] = "Six eggs"
 // 이제 목록에 있는 첫 번째 요소는 단순히 "Eggs" 가 아니라 "Six eggs" 입니다.
 ```
 
-첨자 연산 문법을 사용할 때는, 지정한 인덱스가 유효해야만 합니다. 예를 들어, 배열 끝에 요소를 추가한답시고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다.[^count-concurrent]
+'첨자 연산 구문 표현' 을 사용할 때는, 지정한 인덱스가 유효해야 합니다. 예를 들어, 배열 끝에 항목을 추가하려고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하면 '실행 시간 에러 (runtime error)' 로 끝나게 됩니다.[^count-concurrent]
 
-첨자 연산 문법을 사용해서 일정 범위의 값들을 한 번에 바꿀 수도 있는데, 이 때 대체될 값들의 범위와 대체할 범위의 길이가 달라도 문제 없습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 그리고 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 바꾸는 것을 보여줍니다:
+'첨자 연산 구문 표현' 을 사용해서 일정 범위의 값들을 한 번에 바꿀 수도 있는데, 이 때 대체될 값들의 범위와 대체할 범위의 길이가 달라도 문제 없습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 그리고 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 바꾸는 것을 보여줍니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
 // shoppingList 는 이제 6 개의 요소를 가집니다.
 ```
 
-배열에 요소를 넣을 때 특정 색인 위치에 넣고 싶으면, 배열의 `insert(_:at:)` 메소드를 호출하면 됩니다:
+배열에서 지정된 색인 위치에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
@@ -203,7 +203,7 @@ firstItem = shoppingList[0]
 
 ```swift
 let apples = shoppingList.removeLast()
-// 배열의 마지막 요소가 바금 제거되었습니다.
+// 배열의 마지막 요소가 방금 제거되었습니다.
 // shoppingList 는 이제 5 개의 요소를 가지며, Apples 은 더이상 없습니다.
 // 이제 상수 apples 는 제거된 문자열인 "Apples" 가 됩니다.
 ```
@@ -658,7 +658,7 @@ let airportNames = [String](airports.values)
 
 [^isEmpty-count]: 실제로 스위프트에서는 배열에 값이 있는지 없는지를 검사할 때는 `isEmpty` 를 사용할 것을 권장합니다. `count` 는 값의 개수가 몇 개인지를 알고 싶을 때 사용하는 것입니다. 즉, 단순히 편리하기 때문에만 `isEmpty` 를 사용하는 것은 아닙니다. 이에 대한 이유는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 이라는 글을 읽어보길 바랍니다.
 
-[^count-concurrent]: `shippingList.count` 는 현재 배열의 요소 전체 개수를 나타내는데, 이 값을 사용해서 요소를 새로 추가하게 되면 그 자ㅔ로 `count` 가 변경돼야 합니다. 즉 `count` 변수에 값을 읽는 작업과 쓰는 작업을 동시에 진행하는 문제가 발생할 수 있습니다.
+[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값을 항목을 새로 추가하는데 사용하면 그 행위 자체로 `count` 를 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생하게 됩니다.
 
 [^iterate-over]: 'iterate over' 는 그냥 '반복하다' 만으로는 의미가 정확한 것 같지 않아서 '동작을 반복 적용하기' 라는 말로 옮깁니다.
 
