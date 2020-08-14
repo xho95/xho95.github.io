@@ -652,7 +652,7 @@ let airportNames = [String](airports.values)
 
 [^isEmpty-count]: 실제로 스위프트에서는 배열에 값이 있는지 없는지를 검사할 때는 `isEmpty` 를 사용할 것을 권장합니다. `count` 는 값의 개수가 몇 개인지를 알고 싶을 때 사용하는 것입니다. 즉, 단순히 편리하기 때문에만 `isEmpty` 를 사용하는 것은 아닙니다. 이에 대한 이유는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 이라는 글을 읽어보길 바랍니다.
 
-[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값을 항목을 새로 추가하는데 사용하면 그 행위 자체로 `count` 를 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생하게 됩니다.
+[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다.
 
 [^iterate-over]: 'iterate over' 는 그냥 '반복하다' 만으로는 의미가 정확한 것 같지 않아서 '동작을 반복 적용하기' 라는 말로 옮깁니다.
 
