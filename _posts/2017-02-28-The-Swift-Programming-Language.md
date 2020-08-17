@@ -24,7 +24,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 ### Language Guide (언어 설명서)
 
 * [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %})
+* [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %})
 * [Collection Types (컬렉션 타입; 집합체 타입)]({% post_url 2016-06-06-Collection-Types %})
 * [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %})

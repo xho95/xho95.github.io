@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Basic Operators (기본 연산자)"
+title:  "Swift 5.3: Basic Operators (기본 연산자)"
 date:   2016-04-27 10:00:00 +0900
 categories: Swift Language Grammar Basic Operators
 ---
@@ -12,13 +12,13 @@ categories: Swift Language Grammar Basic Operators
 
 ## Basic Operators (기본 연산자)
 
-_연산자 (operator)_ 는 값을 검사하고, 바꾸거나 결합하는 데 사용하는 특수한 기호 또는 구절을 말합니다. 예를 들어, '더하기 연산자 (`+`)' 는 `let i = 1 + 2` 에서 처럼 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는 `if enterDoorCode && passedRetinaScan` 에서 처럼 두 불리언 (Boolean) 값을 결합합니다.
+_연산자 (operator)_ 는 값을 검사하고, 바꾸거나, 또는 혼합하기 위해 사용하는 특수한 기호나 구절입니다. 예를 들어, '더하기 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 개의 불리언 (Boolean) 값을 혼합합니다.
 
-스위프트는 C 언어에서 제공하는 거의 대부분의 표준 연산자를 지원하며서, 거기다 일반적인 코딩 에러를 없애기 위해 몇가지 기능을 개선했습니다. '할당 연산자 (`=`)' 는 값을 반환하지 않아서, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막았습니다. 산술 연산자들 (`+`,`-`, `*`, `/`, `%` 등) 은 '값 넘침 (value overflow)' 을 감지해서 막아주기 때문에, 타입의 허용 범위보다 크거나 작아진 값을 계산하는 바람에 예상하지 못한 결과가 발생하는 것을 막아줍니다. 스위프트의 'overflow (값 넘침) 연산자' 를 사용해서 값을 넘치는 동작을 하도록 선택할 수도 있으며, 이는 [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명합니다.
+스위프트는 C 언어 등을 통해 이미 알고 있을 법한 연산자를 지원하면서, 공통된 코딩 에러를 없애기 위해 보유 능력 몇가지를 개선했습니다. '할당 연산자 (`=`)' 는, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막을 수 있게, 값을 반환하지 않습니다. 산술 연산자 (`+`,`-`, `*`, `/`, `%` 등) 은, 타입이 저장할 수 있는 허용 범위보다 커지거나 작아진 값과 작업할 때의 예상치 못한 결과를 피할 수 있도록, '값 넘침 (value overflow)' 을 감지해서 이를 불허합니다. '값 넘침' 작동 방식을 선택하려면, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명하는 것처럼, 스위프트의 'overflow (값 넘침) 연산자' 를 사용하면 됩니다.
 
-스위프트에는 C 언어에는 없는 '범위 (range) 연산자' 도 제공하는데, 가령 `a..<b` 와 `a...b` 가 있으며, 이를 쓰면 아주 간단하게 값의 범위를 표현할 수 있습니다.
+스위프트는 C 언어에는 없는, 값의 범위를 표현하는 '단축키 (shortcut)' 로, `a..<b` 와 `a...b` 같은, '범위 (range) 연산자' 도 제공합니다.
 
-이번 장은 스위프트의 일반적인 연산자에 대해 설명합니다. 스위프트의 고급 연산자는 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 다루는데, 직접 연산자를 정의하는 방법과 자기가 만든 타입에 대한 표준 연산자 구현 방법에 대해서 설명합니다.
+이번 장은 스위프트의 일반적인 연산자에 대해 설명합니다. [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 스위프트의 고급 연산자를 다루며, 이 때 사용자 정의 연산자를 정의하는 방법과 자신의 사용자 정의 타입에 대한 표준 연산자 구현 방법을 설명합니다.
 
 ### Terminology (용어)
 
