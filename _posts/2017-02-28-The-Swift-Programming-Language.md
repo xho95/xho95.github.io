@@ -58,7 +58,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Types (타입)] - [일부 진행중]({% post_url 2020-02-20-Types %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Expressions (표현식)]
 * [Statements (구문)]
-* [Declarations (선언)]
+* [Declarations (선언)] - [일부 진행중]({% post_url 2020-08-15-Declarations %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Attributes (특성)] - [일부 진행중]({% post_url 2020-08-14-Attributes %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Patterns (유형)]
 * [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %})

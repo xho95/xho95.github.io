@@ -60,7 +60,7 @@ protocol ProvidesMain {
 }
 ```
 
-실행 파일을 만들기 위해 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)](#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, 최대 한 개의 최상위-수준 진입점을 가질 수 있습니다.
+실행 파일을 만들기 위해 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, 최대 한 개의 최상위-수준 진입점을 가질 수 있습니다.
 
 #### nonobjc
 

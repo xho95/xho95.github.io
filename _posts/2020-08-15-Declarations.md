@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Swift 5.3: Declarations (선언)"
 date:   2020-08-15 11:30:00 +0900
-categories: Swift Language Grammar Attribute
+categories: Swift Language Grammar Declaration
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html) 부분[^Declarations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
