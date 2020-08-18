@@ -422,7 +422,7 @@ if twoThreeFour == anotherTwoThreeFour {
 
 ### Custom Operators (사용자 정의 연산자)
 
-스위프트에서 제공하는 표준 연산자 말고도 직접 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수도 있습니다. '사용자 정의 연산자' 를 정의하는 데 사용할 수 있는 문자 목록은, [Operators (연산자)](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID418) 를 참고하기 바랍니다.
+스위프트에서 제공하는 표준 연산자 말고도 직접 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수도 있습니다. '사용자 정의 연산자' 를 정의하는 데 사용할 수 있는 문자 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 참고하기 바랍니다.
 
 새 연산자는 `operator` 키워드를 사용하여 전역 수준에서 선언하고, `prefix`, `infix`, 또는 `postfix` '수정자 (modifiers)' 로 표시합니다:
 
