@@ -59,7 +59,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Expressions (표현식)]
 * [Statements (구문)]
 * [Declarations (선언)]
-* [Attributes (특성)]
+* [Attributes (특성)] - [일부 진행중]({% post_url 2020-08-14-Attributes %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Patterns (유형)]
 * [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %})
 * [Summary of the Grammar (문법 총정리)]

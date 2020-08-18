@@ -12,7 +12,18 @@ categories: Swift Language Grammar Attribute
 
 ## Attributes (특성)
 
+스위프트에는 두 가지 종류의 '특성 (attributes)' 이 있습니다: 선언에 적용되는 것과 타입에 적용되는 것이 그것입니다. 특성은 선언 또는 타입에 대한 추가적인 정보를 제공합니다. 예를 들어, 함수 선언에 대한 `discardableResult` 특성은, 함수가 값을 반환하더라도, 컴파일러가 반환 값을 사용하지 않는다는 이유로 경고를 생성하지는 않아야 한다는 것을 나타냅니다.
+
+특성을 지정하려면 `@` 기호 뒤에 특성의 이름과 그 특성이 받아 들이는 아무 인자를 작성합니다:
+
+  @`attribute name`
+  @`attribute name`(`attribute argument`)
+
+몇몇 '선언 특성 (declaration attributes)' 은 특성에 대한 추가 정보를 지정하는 인자와 특정 선언에 적용하는 방법을 지정하는 인자를 받습니다. 이 _특성 인자 (attribute arguments)_ 들은 괄호로 닫혀 있으며, 양식은 그들이 속한 특성에서 정의되어 있습니다.
+
 ### Declaration Attributes (선언 특성)
+
+'선언 특성' 은 선언에만 적용할 수 있습니다.
 
 #### available
 
