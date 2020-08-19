@@ -190,7 +190,9 @@ print("Car: \(car.description)")
 // "Car: traveling at 25.0 miles per hour in gear 3" 를 출력합니다.
 ```
 
-**Overriding Property Observers (속성 관찰자 재정의하기)**
+<p>
+<strong id="overriding-property-observers-속성-관찰자-재정의하기">Overriding Property Observers (속성 관찰자 재정의하기)</strong>
+</p>
 
 '속성 재정의 (property overriding)' 를 사용하여 '상속받은 속성' 에 '속성 관찰자 (property observers)' 를 추가할 수 있습니다. 이것은 상속받은 속성의 값이 바뀔 때 알림을 받을 수 있도록 해주며, 이 때 그 속성이 원래 어떻게 구현됐는지는 상관 없습니다. '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 에서 확인할 수 있습니다.
 

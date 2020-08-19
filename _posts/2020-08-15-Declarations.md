@@ -38,7 +38,7 @@ _선언 (declaration)_ 은 프로그램에 새로운 이름 또는 구조물을 
 
 _변수 선언 (variable declaration)_ 은 프로그램에 '이름 있는 변수 값 (variable named value)' 을 프로그램에 도입하는 것으로 `var` 키워드를 사용하여 선언합니다.
 
-변수 선언은, 저장 및 계산 변수와 속성, 저장 변수 및 속성 관찰자, 그리고 정적 변수 속성을 포함하여, 서로 다른 종류의 이름 있는, 변경 가능한 값을 선언하는 여러 가지 형태를 가지고 있습니다. 어떤 형태를 사용하는게 적절한가 하는 것은 변수를 선언하는 영역이 어디인지 그리고 선언하고자 하는 변수의 종류가 무엇인지에 달려 있습니다.
+변수 선언은, 저장 변수 및 속성과 계산 변수 및 속성, 저장 변수 관찰자 및 저장 속성 관찰자, 그리고 정적 변수 속성을 포함하여, 서로 다른 종류의 이름 있는, 변경 가능한 값을 선언하는 여러 가지 양식을 가지고 있습니다. 어떤 양식을 사용하는게 적절한가 하는 것은 변수를 선언하는 영역이 어디인지 그리고 선언하고자 하는 변수의 종류가 무엇인지에 달려 있습니다.
 
 > [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명하는 것처럼, 프로토콜 선언 상황에서도 속성을 선언할 수 있습니다.
 
@@ -49,6 +49,74 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 있는 변수
 #### Computed Variables and Computed Properties
 
 #### Stored Variable Observers and Property Observers (저장 변수 관찰자와 속성 관찰자)
+
+저장 변수 또는 저장 속성은 `willSet` 및 `didSet` 관찰자로 선언할 수도 있습니다. 관찰자로 선언된 저장 변수 및 저장 속성은 다음의 양식을 가집니다:
+
+```swift
+  var variable name: type = expression {
+    willSet(setter name) {
+      statements
+    }
+    didSet(setter name) {
+      statements
+    }
+  }
+```
+
+이런 양식의 변수 선언은 전역 범위나, 함수의 지역 범위, 또는 클래스 및 구조체 선언에서 정의합니다. 이 양식의 변수 선언을 전역 범위나 함수의 지역 범위에서 선언할 때는, 이 관찰자를 _저장 변수 관찰자 (stored variable observers)_ 라고 합니다. 클래스나 구조체 선언에서 선언할 때는, 이 관찰자를 _속성 관찰자 (property observers)_ 라고 합니다.
+
+속성 관찰자는 어떤 저장 속성에도 추가할 수 있습니다. [Overriding Property Observers (속성 관찰자 재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-property-observers-속성-관찰자-재정의하기) 에서 설명한 것처럼, 하위 클래스에서 속성을 재정의하면 상속받은 어떤 속성에도 (저장 속성인지 계산 속성인지에 상관없이) 속성 관찰자를 추가할 수 있습니다.
+
+초기자 _표현식 (expression)_[^expression] 은 클래스나 구조체 선언에서는 선택 사항이지만, 다른 곳에서는 필수 입니다. _타입 (type)_ 보조 설명은 초기자 _표현식 (expression)_ 으로부터 타입을 추론할 수 있을 때는 선택 사항입니다. 이 표현식은 속성의 값을 맨 처음 읽는 순간에 평가합니다. 속성의 초기 값을 읽지 않고 덮어 쓰면, 이 표현식은 속성에 값을 맨 처음 쓰는 순간 바로 전에 평가합니다.
+
+`willSet` 및 `didSet` 관찰자는 변수나 속성의 값을 설정할 때 관찰 (하고 적절하게 응답) 하는 방법을 제공합니다. 변수나 속성을 맨 처음 초기화 할 때는 관찰자가 호출되지 않습니다. 그 대신, 초기화 상황 이외에서 값을 설정할 때만 호출됩니다.
+
+`willSet` 관찰자는 변수나 속성의 값을 설정하기 바로 직전에 호출됩니다. 새로운 값은 `willSet` 관찰자에 상수로써 전달되므로, `willSet` 절의 구현부에서 이를 바꿀 수 없습니다. `didSet` 관찰자는 새 값을 설정한 바로 직후 호출됩니다. `willSet` 관찰자와는 대조적으로, `didSet` 관찰자에 전달된 변수나 속성의 예전 값은 아직 접근이 필요한 경우입니다. 즉, `didSet` 관찰자 구절에서 변수나 속성에 직접 값을 할당하는 경우, 직접 할당한 새 값이 방금 `willSet` 관찰자에서 전달하고 설정한 것을 대체하게 됩니다.
+
+`willSet` 과 `didSet` 절에 있는 _설정자 이름 (setter name)_ 및 이를 감싼 괄호는 선택 사항입니다. 설정자 이름을 제공하면, 이를 `willSet` 및 `didSet` 관찰자의 매개 변수 이름으로 사용합니다. 설정자 이름을 제공하지 않으면, `willSet` 관찰자의 기본 매개 변수 이름은 `newValue` 으 되고 `didSet` 관찰자의 기본 매개 변수 이름은 `oldValue` 이 됩니다.
+
+`willSet` 절을 제공 할 때면 `didSet` 절은 선택 사항이 됩니다. 마찬가지로, `didSet` 절을 제공 할 때면 `willSet` 절이 선택 사항이 됩니다.
+
+`didSet` 관찰자의 본문에서 예전 값을 참조하는 경우, 예전 값을 사용 가능하게 만들기 위해, 관찰자 이전에 '획득자 (getter)' 가 호출됩니다. 다른 경우라면, 상위 클래스의 '획득자' 를 호출하지 않고 새 값을 저장합니다. 아래 예제는 상위 클래스에서 정의하고 하위 클래스에서 관찰자를 추가하여 재정의한 계산 속성을 보여줍니다:
+
+```swift
+class Superclass {
+  private var xValue = 12
+  var x: Int {
+    get { print("Getter was called"); return xValue }
+    set { print("Setter was called"); xValue = newValue }
+  }
+}
+
+// 이 하위 클래스는 관찰자에서 oldValue 를 참조하지 않으므로,
+// 상위 클래스의 획득자는 값을 출력하기 위해 한 번만 호출됩니다.
+class New: Superclass {
+  override var x: Int {
+    didSet { print("New value \(x)") }
+  }
+}
+let new = New()
+new.x = 100
+// "Setter was called" 를 출력합니다.
+// "Getter was called" 를 출력합니다.
+// "New value 100" 를 출력합니다.
+
+// 이 하위 클래스는 관찰자에서 oldValue 를 참조하므로, 상위 클래스의 획득자는,
+// 설정자 이전에 한 번, 그리고 값을 출력하기 위해 다시 한 번 호출됩니다.
+class NewAndOld: Superclass {
+  override var x: Int {
+    didSet { print("Old value \(oldValue) - new value \(x)") }
+  }
+}
+let newAndOld = NewAndOld()
+newAndOld.x = 200
+// "Getter was called" 를 출력합니다.
+// "Setter was called" 를 출력합니다.
+// "Getter was called" 를 출력합니다.
+// "Old value 12 - new value 200" 를 출력합니다.
+```
+
+속성 관찰자에 대한 더 많은 정보와 이를 사용하는 방법에 대한 예제를 보려면, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 를 참고하기 바랍니다.
 
 #### Type Variable Properties
 
@@ -169,3 +237,7 @@ _프로토콜 선언 (protocol declaration)_ 은 프로그램에 '이름 있는 
 ### 참고 자료
 
 [^Declarations]: 원문은 [Declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html) 에서 확인할 수 있습니다.
+
+[^expression]: 여기서의 '표현식 (expression)' 은 위 예제 양식에 있는 'expression' 을 말합니다. 클래스 선언이나 구조체 선언에서는 이 'expression' 부분이 없어도 된다는 말입니다.
+
+[^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
