@@ -168,6 +168,8 @@ _프로토콜 선언 (protocol declaration)_ 은 프로그램에 '이름 있는 
 
 프로토콜 타입은 다른 프로토콜을 어떤 개수든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 때면, 이 다른 프로토콜에 있는 필수 조건들의 집합은 한데 모여서, 현재 프로토콜을 상속하는 타입이 어떤 것이든 이 모든 필수 조건들을 반드시 준수해야 합니다. 프로토콜 상속을 사용하는 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 을 참고하기 바랍니다.
 
+[Protocol Composition Type (프로토콜 조합 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-조합-타입) 과 [Protocol Composition (프로토콜 조합)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-조합) 에서 설명한 것처럼, 프로토콜 조합 타입을 사용하여 다중 프로토콜의 준수 필수 조건을 한데 모으는 것도 가능합니다.
+
 #### Protocol Property Declaration (프로토콜 속성 선언)
 
 #### Protocol Method Declaration
