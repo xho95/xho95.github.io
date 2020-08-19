@@ -17,7 +17,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 스위프트에서의 일반화 (generic) 에 대해서는 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 부분을 참고 바랍니다.
 
-### Generic Parameter Clause (일반화된 매개 변수 구절)
+### Generic Parameter Clause (일반화된 매개 변수 구절; 제네릭 매개 변수 구절)
 
 _일반화된 매개 변수 구절 (generic parameter clause)_ 은 일반화된 타입이나 일반화된 함수의 '타입 매개 변수' 를 지정하면서, 이 매개 변수와 관련된 모든 '구속 조건 (constraints)' 과 '필수 조건 (requirements)' 도 다같이 지정합니다. '일반화된 매개 변수 구절' 은 꺾쇠 괄호 (`<>`) 로 감싸여 있으며 다음과 같은 양식을 가집니다:
 
@@ -101,7 +101,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-[Generic Parameter Clause (일반화된 매개 변수 구절)](#generic-parameter-clause-일반화된-매개-변수-구절) 에서 언급한 것처럼, '일반화된 인자 구절' 을 사용해서 일반화된 함수나 초기자의 '타입 매개 변수' 를 지정하는 것은 아닙니다.
+[Generic Parameter Clause (일반화된 매개 변수 구절; 제네릭 매개 변수 구절)](#generic-parameter-clause-일반화된-매개-변수-구절-제네릭-매개-변수-구절) 에서 언급한 것처럼, '일반화된 인자 구절' 을 사용해서 일반화된 함수나 초기자의 '타입 매개 변수' 를 지정하는 것은 아닙니다.
 
 > 일반화된 인자 구절의 문법
 >
