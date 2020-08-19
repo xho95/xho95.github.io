@@ -17,7 +17,7 @@ categories: Swift Language Grammar Attribute
 특성을 지정하려면 `@` 기호 뒤에 특성의 이름과 그 특성이 받는 어떤 인자를 작성합니다:
 
 @`attribute name`
-
+<br />
 @`attribute name`(`attribute argument`)
 
 몇몇 '선언 특성 (declaration attributes)' 은 특성에 대한 추가 정보를 지정하는 인자와 특정 선언에 적용하는 방법을 지정하는 인자를 받습니다. 이 _특성 인자 (attribute arguments)_ 들은 괄호로 닫혀 있으며, 양식은 그들이 속한 특성에서 정의되어 있습니다.
