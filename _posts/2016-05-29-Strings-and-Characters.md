@@ -153,7 +153,7 @@ constantString += " and another Highlander"
 
 스위프트의 `String` 타입은 '_값 타입 (value type)_'[^value-type] 입니다. 이것은 새로운 `String` 값을 만들고서, 이를 함수나 메소드에 전달하거나, 상수나 변수에 할당할 때, 이 `String` 값이 _복사 (copied)_ 된다는 것을 말합니다. 각각의 경우에, 기존 `String` 값에 대한 새 복사본이 만들어져서, 원래 버전 대신, 이 복사본이 전달되거나 할당됩니다. 값 타입에 대해서는 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 에서 설명합니다.
 
-스위프트의 `String` 이 '기본적으로-복사 (copy-by-default)' 행동을 한다는 것은 함수나 메소드로 `String` 값을 전달받을 때, 어디서 왔든 신경쓸 필요 없이, 그 `String` 값을 온전히 가지게 됐음을 분명히 한다는 것입니다. 전달받은 문자열은 본인이 직접 수정하지 않는 이상 수정될 일이 없다고 확신헤도 됩니다.
+스위프트의 `String` 이 '기본적으로-복사 (copy-by-default)' 행동을 한다는 것은 함수나 메소드로 `String` 값을 전달받을 때, 어디서 왔든 신경쓸 필요 없이, 그 `String` 값을 온전히 가지게 됐음을 분명히 한다는 것입니다. 전달받은 문자열은 본인이 직접 수정하지 않는 이상 수정될 일이 없다고 확신해도 됩니다.
 
 한편, 스위프트의 컴파일러는 문자열 처리를 최적화하기 때문에 실제 복사는 꼭 필요할 때에만 일어납니다.[^optimize-string] 이것은 값 타입인 문자열을 사용하더라도 항상 뛰어난 성능을 보장받을 수 있다는 의미입니다.
 
