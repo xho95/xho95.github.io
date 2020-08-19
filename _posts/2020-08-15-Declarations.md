@@ -48,7 +48,7 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 있는 변수
 
 #### Computed Variables and Computed Properties
 
-#### Stored Variable Observers and Property Observers
+#### Stored Variable Observers and Property Observers (저장 변수 관찰자와 속성 관찰자)
 
 #### Type Variable Properties
 
@@ -86,7 +86,19 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 있는 변수
 
 ### Class Declaration
 
-### Protocol Declaration
+### Protocol Declaration (프로토콜 선언)
+
+_프로토콜 선언 (protocol declaration)_ 은 프로그램에 '이름 있는 프로토콜 타입' 을 도입합니다. 프로토콜 선언은 `protocol` 키워드를 사용하여 '전역 범위 (global scope)' 에서 선언하며 다음 양식을 가집니다:
+
+```swift
+  protocol protocol name: inherited protocols {
+    protocol member declarations
+  }
+```
+
+프로토콜의 본문은, 이 프로토콜을 채택한 타입이면 어떤 것이든 반드시 충족해야 하는 '준수 필수 조건 (conformance requirements)' 을 설명하는, '0' 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 가집니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 반드시 구현해야 하는 정해진 속성, 메소드, 초기자, 및 첨자 연산을 선언할 수 있습니다. 프로토콜은 또, _결합된 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 을 선언하여, 프로토콜의 다양한 선언들 간의 관계를 지정할 수도 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 가질 수 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 설명합니다.
+
+프로토콜 타입은 다른 프로토콜을 어떤 개수든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 때면, 이 다른 프로토콜에 있는 필수 조건들의 집합은 한데 모여서, 현재 프로토콜을 상속하는 타입이 어떤 것이든 이 모든 필수 조건들을 반드시 준수해야 합니다. 프로토콜 상속을 사용하는 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 을 참고하기 바랍니다.
 
 #### Protocol Property Declaration (프로토콜 속성 선언)
 
