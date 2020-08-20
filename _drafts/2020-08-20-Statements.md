@@ -18,7 +18,7 @@ categories: Swift Language Grammar Statement
 
 '세미콜론 (semicolon; `;`)' 은 어떤 구문 뒤에든 선택적으로 붙일 수 있으며 다중 구문이 같은 줄에 있는 경우 이를 구분하는 데 사용합니다.
 
-> GRAMMAR OF AN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
+> GRAMMAR OF A STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
 ### Loop Statements
 
@@ -81,15 +81,17 @@ do {
 }
 ```
 
-do 코드 블록의 문에서 오류가 발생하면 프로그램 제어는 패턴이 오류와 일치하는 첫 번째 catch 절로 전송됩니다. 일치하는 절이 없으면 오류가 주변 범위로 전파됩니다. 최상위 수준에서 오류가 처리되지 않으면 프로그램 실행이 런타임 오류와 함께 중지됩니다.
+`do` 코드 블럭에 있는 어떤 구문이든 에러를 던지게 되면, 애러와 일치하는 '패턴 (pattern)' 의 첫 번째 `catch` 절로 프로그램 제어를 전달합니다. 일치하는 구절이 없으면, 에러를 주변 영역으로 전파합니다. 에러가 최상위 수준에서도 처리되지 않으면, 실행 시간 에러와 함께 프로그램 실행을 중지합니다.
 
-switch 문과 마찬가지로 컴파일러는 catch 절이 완전한지 여부를 추론합니다. 그러한 결정이 내려지면 오류가 처리 된 것으로 간주됩니다. 그렇지 않으면 오류가 포함 범위 밖으로 전파 될 수 있습니다. 즉, 포함하는 catch 절에서 오류를 처리하거나 포함하는 함수를 throw로 선언해야합니다.
+컴파일러는, `switch` 문 처럼, `catch` 절이 빠짐없이 철저한 지를 추론합니다. 그렇다고 결정할 수 있으면, 에러는 처리되는 것이라 간주됩니다. 다른 경우라면, 에러는 담고 있는 영역 밖으로 전파할 수 있는 것으로, 이는 에러가 둘러싼 `catch` 절에서 반드시 처리되거나 아니면 담고 있는 함수가 반드시 `throws` 로 선언되어야 함을 의미합니다.
 
-여러 패턴이있는 catch 절은 패턴이 오류와 일치하는 경우 오류와 일치합니다. catch 절에 여러 패턴이 포함 된 경우 모든 패턴에는 동일한 상수 또는 변수 바인딩이 포함되어야하며 각 바인딩 된 변수 또는 상수는 모든 catch 절의 패턴에서 동일한 유형을 가져야합니다.
+다중 패턴을 가지고 있는 `catch` 절은 패턴 중에서 어떤 것이 에러와 일치하는 경우 에러와 일치합니다. `catch` 절이 다중 패턴을 가지는 경우, 모든 패턴이 반드시 같은 '상수 연결 (bindings)' 또는 '변수 연결 (bindings)' 을 가져야 하며, 각각의 연결된 변수 또는 상수는 모든 `catch` 절의 패턴에서 반드시 똑같은 타입을 가져야 합니다.
 
-오류가 처리되도록하려면 와일드 카드 패턴 (`_`)과 같이 모든 오류와 일치하는 패턴과 함께 catch 절을 사용하십시오. catch 절이 패턴을 지정하지 않으면 catch 절은 오류를 일치시키고 error라는 로컬 상수에 바인딩합니다. catch 절에서 사용할 수있는 패턴에 대한 자세한 내용은 패턴을 참조하세요.
+에러가 처리되는 것을 보장하려면, `catch` 절에, '와일드카드 패턴 (wildcard pattern; `_`)' 같은, 모든 에러와 일치하는 패턴을 사용합니다. `catch` 절에서 패턴을 지정하지 않으면, 이 `catch` 절은 어떤 에러와도 일치하며 이를 `error` 라는 지역 상수에 연결합니다. `catch` 절에서 사용할 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html) 을 참고하기 바랍니다.
 
-여러 catch 절과 함께 do 문을 사용하는 방법의 예를 보려면 오류 처리를 참조하십시오.
+`do` 문을 여러 개의 `catch` 절과 함께 사용하는 방법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A DO STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID533)
 
 ### Compiler Control Statements
 
