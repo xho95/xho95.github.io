@@ -64,7 +64,7 @@ categories: Swift Language Grammar Statement
 
 스위프트의 `do` 문은 C 언어에서 코드 블럭의 경계를 구분하는데 사용하는 '중괄호 (curly; `{}`)' 와 비슷한 것으로, 실행 시간에 성능 비용을 초래하지 않습니다.
 
-`do` 문은 다음의 형식을 가집니다:
+`do` 문은 다음의 형식을 가지고 있습니다:
 
 ```swift
 do {
@@ -98,6 +98,21 @@ do {
 #### Conditional Compilation Block
 
 #### Line Control Statement (라인 제어문)
+
+'라인 제어문 (line control statement)' 은 컴파일 되는 소스 코드의 '라인 (line)' 번호 및 파일 이름과 다를 수도 있는 라인 번호 및 파일 이름을 지정하기 위해 사용합니다. 스위프트가 진단 및 디버깅 목적으로 사용하는 소스 코드의 위치를 바꾸려면 '라인 제어문' 을 사용하도록 합니다.
+
+라인 제어문은 다음의 형식을 가지고 있습니다:
+
+```swift
+  #sourceLocation(file: file path, line: line number)
+  #sourceLocation()
+```
+
+첫 번째 형식의 라인 제어문은, 라인 제어문 다음의 코드 라인에서 시작하여, `#line`, `#file`, 그리고 `#filePath` 글자 값 표현식의 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 의 값을 바꾸는 것으로 '0' 보다 큰 어떤 정수 글자 값입니다. _파일 경로 (file path)_ 는 `#file` 과 `#filePath` 의 값을 바꾸는 것으로, 문자열 글자 값입니다. 지정한 문자열이 `#filePath` 의 값이 되고, 문자열의 마지막 경로 성분이 `#file` 의 값이 됩니다.
+
+두 번째 형식의 라인 제어문인, `#sourceLocation()` 은, 소스 코드 위치를 기본 라인 번호와 파일 경로로 재설정 합니다.
+
+> GRAMMAR OF A LINE CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 #### Compile-Time Diagnostic Statement
 
