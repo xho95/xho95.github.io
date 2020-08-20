@@ -56,8 +56,8 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %})
 * [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Types (타입)] - [일부 진행중]({% post_url 2020-02-20-Types %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
-* [Expressions (표현식)]
-* [Statements (구문)]
+* [Expressions (표현식)] - [일부 진행중]({% post_url 2020-08-19-Expressions %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
+* [Statements (구문)] - [일부 진행중]({% post_url 2020-08-20-Statements %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Declarations (선언)] - [일부 진행중]({% post_url 2020-08-15-Declarations %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Attributes (특성)] - [일부 진행중]({% post_url 2020-08-14-Attributes %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Patterns (패턴; 유형)]

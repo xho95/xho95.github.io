@@ -97,7 +97,7 @@ do {
 
 #### Conditional Compilation Block
 
-#### Line Control Statement
+#### Line Control Statement (라인 제어문)
 
 #### Compile-Time Diagnostic Statement
 

@@ -45,7 +45,7 @@ _글자 값 표현식 (literal expression)_ 은 일상적인 글자 값 (가령 
 `#function` | `String` | 이 값이 있는 선언의 이름
 `#dsohandle` | `UnsafeRawPointer` | 이 값이 있는 곳에서 사용중인 '동적 공유 객체 (dynamic shared object; DSO) 핸들 (handle)'
 
-`#file` 표현식의 문자열 값은 _module/file_ 형식을 가지며, 여기서 _file_ 은 표현식이 있는 파일의 이름이고 _module_ 은 이 파일이 있는 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '온전한 파일-시스템 경로 (full file-system path)' 입니다. 이 두 값 모두, [Line Control Statement (줄 제어문)]() 에서 설명한 것처럼, `#sourceLocation` 로 바꿀 수 있습니다.
+`#file` 표현식의 문자열 값은 _module/file_ 형식을 가지며, 여기서 _file_ 은 표현식이 있는 파일의 이름이고 _module_ 은 이 파일이 있는 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '온전한 파일-시스템 경로 (full file-system path)' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)](#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 로 바꿀 수 있습니다.
 
 #### Self Expression
 
