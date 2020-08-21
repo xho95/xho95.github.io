@@ -126,7 +126,45 @@ newAndOld.x = 200
 
 #### Parameter Names
 
-#### In-Out Parameters
+#### In-Out Parameters (입-출력 매개 변수)
+
+입-출력 매개 변수는 다음 처럼 전달됩니다:
+
+1. 함수를 호출할 때, 인자의 값을 복사합니다.
+2. 함수 본문에서, 이 복사본을 수정합니다.
+3. 함수를 반환할 때, 복사본의 값을 원래 인자에 할당합니다.
+
+이러한 작동 방식을 _복사-입력 복사-출력 (copy-in copy-out)_ 또는 _값-결과에 의한 호출 (call by value result)_[^call-by-value-result] 라고 합니다. 예를 들어, 계산 속성이나 관찰자를 가진 속성을 입-출력 매개 변수로 전달하면, 함수 호출 시에는 '획득자 (getter)' 가 호출되고 함수 반환 시에는 '설정자 (setter)' 가 호출됩니다.
+
+최적화에 따라서, 인자가 메모리에 있는 물리적 주소에 저장된 값일 때는, 함수 본문의 내부와 외부 둘 다에서 같은 메모리 위치를 사용합니다. 이런 최적화된 작동 방식을 _참조에 의한 호출 (call by reference)_ 이라고 합니다; 이는 '복사-입력 복사-출력' 모델의 필수 조건을 모두 만족하면서 복사에 따른 부담도 제거합니다. 코드를 '복사-입력 복사-출력' 으로 주어진 모델을 사용하여 작성하면, '참조에 의한 호출' 최적화에 의존하지 않으므로, 최적화를 하든 하지 않든 올바르게 작동합니다.
+
+함수 내에서, 원본 값이 현재 영역에서 사용 가능하더라도, '입-출력 인자' 로 전달된 값에는 접근하지 않도록 합니다. 원본에 접근하는 것은 값에 대한 동시 접근이 되어, 스위프트의 '메모리 독점권 보증 (memory exclusivity gurantee)' 을 위반합니다. 같은 이유로 인하여, 같은 값을 여러 개의 입-출력 매개 변수로 전달할 수 없습니다.
+
+메모리 안전성 및 메모리 독점권에 대한 더 자세한 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 를 참고하기 바랍니다.
+
+입-출력 매개 변수를 붙잡는 클로저나 중첩 함수는 반드시 '벗어나지 않는 (nonescaping)' 것 이어야 합니다. 입-출력 매개 변수를 변경없이 붙잡거나 아니면 다른 코드가 바꿨는지 관찰할 필요가 있는 경우, '붙잡을 목록 (capture list)' 을 사용하여 매개 변수를 명시적으로 변경 불가능하게 붙잡아야 합니다.
+
+```swift
+func someFunction(a: inout Int) -> () -> Int {
+  return { [a] in return a + 1 }
+}
+```
+
+입-출력 매개 변수를 붙잡아서 변경해야할 필요가 있는 경우, 함수 반환 전에 모든 변경을 마쳤다고 보장하는 다중 쓰레드 코드 처럼, 명시적인 지역 복사본을 사용하도록 합니다:
+
+```swift
+func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
+  // 지역 복사본을 만들고 이를 다시 수동으로 되돌려서 복사합니다.
+  var localX = x
+  defer { x = localX }
+
+  // localX 에 대한 비동기 연산을 한 후, 반환 전에 기다립니다.
+  queue.async { someMutatingOperation(&localX) }
+  queue.sync {}
+}
+```
+
+더 많은 논의와 입-출력 매개 변수에 대한 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입--출력-매개-변수) 를 참고하기 바랍니다.
 
 #### Special Kinds Paramters
 
@@ -243,3 +281,5 @@ _프로토콜 선언 (protocol declaration)_ 은 프로그램에 '이름 있는 
 [^expression]: 여기서의 '표현식 (expression)' 은 위 예제 양식에 있는 'expression' 을 말합니다. 클래스 선언이나 구조체 선언에서는 이 'expression' 부분이 없어도 된다는 말입니다.
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
+
+[^call-by-value-result]: 기본적으로, '값-결과에 의한 호출 (call by value result)' 은 '값에 의한 호출 (call by value)' 과 '참조에 의한 호출 (call by reference)' 이 합쳐진 것으로 볼 수 있습니다. [프로그래밍 학습법탐구자](http://blog.daum.net/here8now/) 님의 [call by value, call by reference, call by value result, call by name](http://blog.daum.net/here8now/37) 항목에 따르면, 함수 안에서는 '값에 의한 호출 (call by value)' 처럼 동작하고, 함수 반환 시에는 '참조에 의한 호출 (call by reference)' 처럼 동작합니다. 다만, 본문에서 이어서 설명하는 것처럼, '값-결과에 의한 호출' 은 최적화에 따라 '참조에 의한 호출' 처럼 동작하기도 합니다. 즉, 스위프트의 '입-출력 매개 변수' 는 '참조에 의한 호출' 또는 '값-결과에 의한 호출' 을 상황에 따라 적절하게 선택해서 인자를 전달하는 것이라 볼 수 있습니다.
