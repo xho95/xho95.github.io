@@ -164,7 +164,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 }
 ```
 
-더 많은 논의와 입-출력 매개 변수에 대한 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입--출력-매개-변수) 를 참고하기 바랍니다.
+더 많은 논의와 입-출력 매개 변수에 대한 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
 #### Special Kinds Paramters
 
