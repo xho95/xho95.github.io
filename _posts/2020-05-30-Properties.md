@@ -281,7 +281,7 @@ stepCounter.totalSteps = 896
 
 `didSet` 관찰자는 `totalSteps` 값이 갱신된 후에 호출됩니다. 이는 `totalSteps` 의 새 값을 이전 값과 비교합니다. 총 걸음 수가 증가다면, 얼마나 더 걸었는지 나타내기 위해 메시지를 출력합니다. `didSet` 관찰자는 이전 값에 대해 사용자 정의 매개 변수 이름을 제공하지 않고, 그 대신 기본 제공되는 이름인 `oldValue` 를 사용합니다.
 
-> 관찰자를 가지고 있는 속성을 함수의 '입-출력 매개 변수 (in-out parameter)' 로 전달하면, `willSet` 과 `didSet` 관찰자는 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사해 들어가고 (copy-in)' '복사해 나오는 (copy-out)' 모델 때문입니다: 함수의 끝에서 속성의 값은 항상 다시 쓰여집니다. '입-출력 매개 변수' 의 이러한 동작 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID545) 를 참고하기 바랍니다.
+> 관찰자를 가지고 있는 속성을 함수의 '입-출력 매개 변수 (in-out parameter)' 로 전달하면, `willSet` 과 `didSet` 관찰자는 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사해 들어가고 (copy-in)' '복사해 나오는 (copy-out)' 모델 때문입니다: 함수의 끝에서 속성의 값은 항상 다시 쓰여집니다. '입-출력 매개 변수' 의 이러한 동작 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
 ### Property Wrappers (속성 포장)
 
