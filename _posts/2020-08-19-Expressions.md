@@ -47,6 +47,21 @@ _글자 값 표현식 (literal expression)_ 은 일상적인 글자 값 (가령 
 
 `#file` 표현식의 문자열 값은 _module/file_ 형식을 가지며, 여기서 _file_ 은 표현식이 있는 파일의 이름이고 _module_ 은 이 파일이 있는 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '온전한 파일-시스템 경로 (full file-system path)' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 로 바꿀 수 있습니다.
 
+> `#file` 표현식을 해석하려면, 첫 번째 빗금 (`/`) 앞의 문장으로 모듈 이름을 읽고 마지막 빗금 뒤의 문장으로 파일 이름을 읽으면 됩니다. 향후, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, 다중 빗금을 가질 수도 있습니다.
+
+`#function` 의 값은, 함수 내부에서는 해당 함수의 이름이고, 메소드 내부에서는 해당 메소드의 이름이며, 속성 획득자 (getter) 또는 설정자 (setter) 내부에서는 해당 속성의 이름이고, `init` 또는 `subscript` 와 같은 특수 멤버 내부에서는 해당 키워드의 이름이며, 파일의 최상위 수준에서는 현재 모듈의 이름입니다.
+
+함수나 메소드 매개 변수의 기본 설정 값으로 사용될 때는, 특수 글자 값은 호출하는 쪽에서 기본 설정 값 표현식에 대한 값을 평가할 때 결정됩니다.
+
+```swift
+func logFunctionName(string: String = #function) {
+  print(string)
+}
+func myFunction() {
+  logFunctionName() // "myFunction()" 를 출력합니다.
+}
+```
+
 #### Self Expression
 
 #### Superclass Expression
