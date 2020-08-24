@@ -34,7 +34,7 @@ categories: Swift Language Grammar Expression
 
 #### Literal Expression (글자 값 표현식)
 
-_글자 값 표현식 (literal expression)_ 은 일상적인 글자 값 (가령 문자열이나 숫자 등), 배열 또는 딕셔너리 글자 값, '플레이그라운드 글자 값 (playground literal)', 아니면 다음의 특수 글자 값 중 하나로써 구성됩니다:
+_글자 값 표현식 (literal expression)_ 은 일상적인 글자 값 (가령 문자열이나 숫자 등), 배열 또는 딕셔너리 글자 값, '플레이그라운드 글자 값 (playground literal)', 아니면 다음의 '특수 글자 값 (special literals)' 중 하나로써 구성됩니다:
 
 글자 값 | 타입 | 값
 ---|---|---
@@ -47,11 +47,11 @@ _글자 값 표현식 (literal expression)_ 은 일상적인 글자 값 (가령 
 
 `#file` 표현식의 문자열 값은 _module/file_ 형식을 가지며, 여기서 _file_ 은 표현식이 있는 파일의 이름이고 _module_ 은 이 파일이 있는 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '온전한 파일-시스템 경로 (full file-system path)' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 로 바꿀 수 있습니다.
 
-> `#file` 표현식을 해석하려면, 첫 번째 빗금 (`/`) 앞의 문장으로 모듈 이름을 읽고 마지막 빗금 뒤의 문장으로 파일 이름을 읽으면 됩니다. 향후, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, 다중 빗금을 가질 수도 있습니다.
+> `#file` 표현식을 해석하려면, 첫 번째 빗금 (`/`) 앞의 문장으로 모듈 이름을 읽고 마지막 빗금 뒤의 문장으로 파일 이름을 읽으면 됩니다. 향후, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, '다중 빗금' 을 가질 수도 있습니다.
 
-`#function` 의 값은, 함수 내부에서는 해당 함수의 이름이고, 메소드 내부에서는 해당 메소드의 이름이며, 속성 획득자 (getter) 또는 설정자 (setter) 내부에서는 해당 속성의 이름이고, `init` 또는 `subscript` 와 같은 특수 멤버 내부에서는 해당 키워드의 이름이며, 파일의 최상위 수준에서는 현재 모듈의 이름입니다.
+`#function` 의 값은, 함수 내부에서는 해당 함수의 이름이 되고, 메소드 내부에서는 해당 메소드의 이름이 되며, 속성 획득자 (getter) 또는 설정자 (setter) 내부에서는 해당 속성의 이름이 되고, `init` 또는 `subscript` 와 같은 특수 멤버 내부에서는 해당 키워드의 이름이 되며, 파일의 최상위 수준에서는 현재 모듈의 이름이 됩니다.
 
-함수나 메소드 매개 변수의 기본 설정 값으로 사용될 때는, 특수 글자 값은 호출하는 쪽에서 기본 설정 값 표현식에 대한 값을 평가할 때 결정됩니다.
+함수 매개 변수나 메소드 매개 변수의 '기본 설정 값' 으로 사용할 때의, 특수 글자 값은 호출하는 쪽에서 그 '기본 설정 값 표현식' 의 값을 평가하는 순간에 결정됩니다.
 
 ```swift
 func logFunctionName(string: String = #function) {
@@ -61,6 +61,34 @@ func myFunction() {
   logFunctionName() // "myFunction()" 를 출력합니다.
 }
 ```
+
+_배열 글자 값 (array literal)_ 은 값들의 순서 있는 '집합체 (collection)' 입니다. 형식은 다음과 같습니다:
+
+[`value 1 (값 1)`, `value 2 (값 2)`, `...`]
+
+배열의 마지막 표현식 뒤에는 쉼표를 붙여도 됩니다. 배열 글자 값의 타입은 `[T]` 인데, 여기서 `T` 는 안에 있는 표현식의 타입입니다. 만약 다중 타입의 표현식들로 되어 있는 경우, `T` 는 '가장 근접한 공통 상위 타입 (closest common supertype)' 이 됩니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 사용하여 작성하며 지정한 타입의 빈 배열을 생성하기 위해 사용합니다.
+
+```swift
+var emptyArray: [Double] = []
+```
+
+_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 의 순서 없는 '집합체' 입니다. 형식은 다음과 같습니다:
+
+```
+[`key 1 (키 1)`: `value 1 (값 1)`, `key 2 (키 2)`: `value 2 (값 2)`, `...`]
+```
+
+딕셔너리의 마지막 표현식 뒤에는 쉼표를 붙여도 됩니다. 딕셔너리 글자 값의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 표현식 (key expressions)' 의 타입이고 `Value` 는 '값 표현식 (value expressions)' 의 타입입니다. 만약 다중 타입의 표현식들로 되어 있는 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 근접한 공통 상위 타입' 이 됩니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '콜론이 있는 대괄호 쌍 (`[:]`)' 을 써서 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 지정한 키 및 값 타입으로 된 빈 딕셔너리 글자 값을 생성할 수 있습니다.
+
+```
+var emptyDictionary: [String : Double] = [:]
+```
+
+_플레이그라운드 글자 값 (playground literal)_ 은 프로그램 편집기 내에서 상호 작용 형태로 색상, 파일, 또는 이미지 표현을 생성하기 위해 'Xcode (엑스코드)' 가 사용하는 것입니다. '플레이그라운드 글자 값' 을 Xcode 외부의 '평이한 문장' 으로 옮기면 '특수 글자 값 구문 표현' 을 사용하여 표현됩니다.[^playground-literal]
+
+Xcode 에서 '플레이그라운드 글자 값' 을 사용하는 정보는, Xcode 도움말에 있는 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 을 참고하기 바랍니다.
+
+> GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Self Expression
 
@@ -105,3 +133,5 @@ func myFunction() {
 [^Expressions]: 원문은 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 에서 확인할 수 있습니다.
 
 [^side-effect]: 컴퓨터 용어에서 'side effect' 를 '부작용' 이라고 직역하는 것이 옳은 것인지는 잘 모르겠습니다. 위키피디아에서는 'side effect' 를 다음과 같이 설명하고 있습니다. 컴퓨터 과학에서, 연산, 함수, 또는 표현식이 'side effect' 를 가지고 있다는 것은 이들이 지역 범위 외부에 있는 상태 변수의 값을 수정하는 경우를 말하는 것으로, 즉 해당 연산의 호출 쪽에서 함수 반환이라는 '주요 효과 (main effect)' 외에 별도로 '관찰 가능한 효과' 를 가지는 것을 말합니다. 이러한 정의에 따르면, 'side effect' 를 '부작용' 이라기 보다는 '부수적인 효과' 정도로 이해해도 좋을 것입니다. 다만, 'side effect' 가 '부작용' 이라고 널리 쓰이고 있으므로, 컴퓨터 용어에서의 '부작용' 이란 의미를 앞서와 같이 이해할 수도 있을 것입니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+
+[^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png) 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문 표현' 이 됩니다.
