@@ -208,6 +208,41 @@ _프로토콜 선언 (protocol declaration)_ 은 프로그램에 '이름 있는 
 
 > [Protocol Composition Type (프로토콜 조합 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-조합-타입) 과 [Protocol Composition (프로토콜 조합)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-조합) 에서 설명한 것처럼, 프로토콜 조합 타입을 사용하여 다중 프로토콜의 준수 필수 조건을 한데 모으는 것도 가능합니다.
 
+이전에 선언되어 있던 타입에 '프로토콜 준수성' 을 추가하려면 해당 타입의 '익스텐션' 선언에서 그 프로토콜을 채택하면 됩니다. 그 '익스텐션' 에서, 채택한 프로토콜의 모든 필수 조건을 반드시 구현해야 합니다. 타입이 이미 모든 필수 조건을 구현하고 있는 경우에는, '익스텐션' 선언의 본문을 비워둘 수도 있습니다.
+
+기본적으로, 프로토콜을 준수하는 타입은 프로토콜에서 선언한 모든 속성, 메소드, 및 첨자 연산을 반드시 구현해야 합니다. 즉, 이런 프로토콜 멤버 선언을 `optional` 선언 수정자로 표시하면 '준수 타입' 에 의한 구현이 '옵셔널 (optional)' 임을 지정할 수 있습니다.[^optional-member] `optional` '수정자 (modifier)' 는 `objc` '특성 (attribute)' 으로 표시한 멤버와, `objc` 특성으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과로, 클래스 타입만 '옵셔널 멤버 필수 조건' 을 가지는 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자를 사용하는 방법에 대한 더 자세한 정보와 옵셔널 프로토콜 멤버에 접근하는 방법-예를 들어, 준수 타입이 이를 구현했는지 확실하지 않을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 을 참고하기 바랍니다.
+
+'열거체의 case 값' 은 타입 멤버에 대한 프로토콜 필수 조건을 만족할 수 있습니다. 특히, '결합된 값' 이 없는 '열거체 case 값' 은 `Self` 타입의 '읽기-전용 (get-only)' 타입 변수에 대한 프로토콜 필수 조건을 만족하며, '결합된 값' 이 있는 '열거체 case 값' 은 매개 변수와 인자 이름표가 'case 값' 의 '결합된 값' 에 일치하는 `Self` 를 반환하는 함수에 대한 프로토콜 필수 조건을 만족합니다. 예를 들면 다음과 같습니다:
+
+```swift
+protocol SomeProtocol {
+  static var someValue: Self { get }
+  static func someFunction(x: Int) -> Self
+}
+enum MyEnum: SomeProtocol {
+  case someValue
+  case someFunction(x: Int)
+}
+```
+
+프로토콜의 '채택 (adoption)' 을 클래스 타입으로만 제약하려면, 콜론 뒤의 _상속받은 프로토콜 (inherited protocols)_ 목록에 `AnyObject` 프로토콜을 포함하면 됩니다. 예를 들어, 다음 프로토콜은 클래스 타입만 채택할 수 있습니다:
+
+```swift
+protocol SomeProtocol: AnyObject {
+  /* 여기에 프로토콜 멤버를 둡니다 */
+}
+```
+
+`AnyObject` 필수 조건으로 표시한 프로토콜을 상속한 어떤 프로토콜이든 마찬가지로 클래스 타입만 채택할 수 있습니다.
+
+> 프로토콜을 `objc` 특성으로 표시할 경우, `AnyObject` 필수 조건이 해당 프로토콜에 암시적으로 적용됩니다; 이 프로토콜은 `AnyObject` 필수 조건을 명시적으로 표시할 필요가 없습니다.
+
+프로토콜은 '이름 있는 타입 (named types)' 이며, 그래서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 설명한 것처럼, 코드에서 다른 이름 있는 타입과 똑같은 위치에서 나타낼 수 있습니다. 하지만, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없는데, 프로토콜은 그것이 지정한 필수 조건에 대한 구현부를 실제로 제공하는 것이 아니기 때문입니다.
+
+프로토콜을 사용하면, [Delegation (위임)]({% post_url 2016-03-03-Protocols %}#delegation-위임) 에서 설명한 것처럼, 클래스 또는 구조체의 '대리자 (delegate)' 가 구현해야 하는 메소드를 선언할 수 있습니다.
+
+> GRAMMAR OF A PROTOCOL DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
+
 #### Protocol Property Declaration (프로토콜 속성 선언)
 
 #### Protocol Method Declaration
@@ -283,3 +318,5 @@ _프로토콜 선언 (protocol declaration)_ 은 프로그램에 '이름 있는 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
 [^call-by-value-result]: 기본적으로, '값-결과에 의한 호출 (call by value result)' 은 '값에 의한 호출 (call by value)' 과 '참조에 의한 호출 (call by reference)' 이 합쳐진 것으로 볼 수 있습니다. [프로그래밍 학습법탐구자](http://blog.daum.net/here8now/) 님의 [call by value, call by reference, call by value result, call by name](http://blog.daum.net/here8now/37) 항목에 따르면, 함수 안에서는 '값에 의한 호출 (call by value)' 처럼 동작하고, 함수 반환 시에는 '참조에 의한 호출 (call by reference)' 처럼 동작합니다. 다만, 본문에서 이어서 설명하는 것처럼, '값-결과에 의한 호출' 은 최적화에 따라 '참조에 의한 호출' 처럼 동작하기도 합니다. 즉, 스위프트의 '입-출력 매개 변수' 는 '참조에 의한 호출' 또는 '값-결과에 의한 호출' 을 상황에 따라 적절하게 선택해서 인자를 전달하는 것이라 볼 수 있습니다.
+
+[^optional-member]: 여기서의 '옵셔널 (optional)' 은 '선택적' 이라는 말과 '타입이 옵셔널' 이라는 두 가지 의미를 모두 가지고 있습니다. 이는 프로토콜에서 선언한 '필수 조건' 이 구현되어 있는 지가 '옵셔널' 인 것으로 이해할 수 있습니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 그 구현체를 가지는 것이고, 구현이 되어 있지 않으면 `nil` 인 것입니다.
