@@ -87,7 +87,7 @@ do {
 
 다중 패턴을 가지고 있는 `catch` 절은 패턴 중에서 어떤 것이 에러와 일치하는 경우 에러와 일치합니다. `catch` 절이 다중 패턴을 가지는 경우, 모든 패턴이 반드시 같은 '상수 연결 (bindings)' 또는 '변수 연결 (bindings)' 을 가져야 하며, 각각의 연결된 변수 또는 상수는 모든 `catch` 절의 패턴에서 반드시 똑같은 타입을 가져야 합니다.
 
-에러가 처리되는 것을 보장하려면, `catch` 절에, '와일드카드 패턴 (wildcard pattern; `_`)' 같은, 모든 에러와 일치하는 패턴을 사용합니다. `catch` 절에서 패턴을 지정하지 않으면, 이 `catch` 절은 어떤 에러와도 일치하며 이를 `error` 라는 지역 상수에 연결합니다. `catch` 절에서 사용할 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html) 을 참고하기 바랍니다.
+에러가 처리되는 것을 보장하려면, `catch` 절에, '와일드카드 패턴 (wildcard pattern; `_`)' 같은, 모든 에러와 일치하는 패턴을 사용합니다. `catch` 절에서 패턴을 지정하지 않으면, 이 `catch` 절은 어떤 에러와도 일치하며 이를 `error` 라는 지역 상수에 연결합니다. `catch` 절에서 사용할 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
 
 `do` 문을 여러 개의 `catch` 절과 함께 사용하는 방법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 를 참고하기 바랍니다.
 
