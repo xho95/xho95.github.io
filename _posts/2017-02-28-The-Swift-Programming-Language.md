@@ -60,7 +60,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Statements (구문)] - [일부 진행중]({% post_url 2020-08-20-Statements %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Declarations (선언)] - [일부 진행중]({% post_url 2020-08-15-Declarations %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Attributes (특성)] - [일부 진행중]({% post_url 2020-08-14-Attributes %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
-* [Patterns (패턴; 유형)] - [일부 진행중]({% post_url 2020-08-25-Patterns %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
+* [Patterns (패턴; 유형)] - [일부 진행중]({% post_url 2020-08-25-Patterns %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %})
 * [Summary of the Grammar (문법 총정리)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#) - 번역 없이 직접 링크 연결
 
