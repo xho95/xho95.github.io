@@ -143,11 +143,11 @@ for beverage in Beverage.allCases {
 
 예를 들어, 서로 다른 두 개의 바코드 타입을 쓰는 제품을 추적하는 '재고 물품 추적 시스템' 을 가정해 봅시다. 일부 제품은 UPC 양식의 1-차원 바코드를 써서, `0` 에서 `9` 까지의 숫자로 된, 이름표를 사용합니다. 각각의 바코드에는 한 자리 수의 시스템에 이어서, 다섯 자리의 '제조업체 코드' 와 다섯 자리의 '제품 코드' 가 있습니다. 맨 뒤에는 한 자리의 검사 코드도 있어서 이 코드를 정확하게 스캔했는 지를 검증합니다:
 
-![1-d barcode](/assets/Swift/Swift-Programming-Launguage/Enumerations-1d-barcode.png)
+![1-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-1d-barcode.png)
 
 다른 제품은 QR 코드 양식의 2-차원 바코드를 써서, 최대 2,953 개 길이의 ISO 8859-1 문자열로 '부호화 (encoding)' 된, 이름표를 사용합니다.
 
-![2-d barcode](/assets/Swift/Swift-Programming-Launguage/Enumerations-2d-barcode.png)
+![2-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-2d-barcode.png)
 
 '재고 물품 추적 시스템' 에서 UPC 바코드는 네 개의 정수로 된 '튜플' 로 저장하고, QR 코드 바코드는 임의 길이의 문자열로 저장하는 것이 편리합니다.
 
