@@ -172,9 +172,9 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 #### Methods with Special Names
 
-#### Throwing Functions and Nethods
+#### Throwing Functions and Methods (던지는 함수 및 메소드)
 
-#### Rethrowing Functions and Methods
+#### Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)
 
 #### Functions that Never return
 
