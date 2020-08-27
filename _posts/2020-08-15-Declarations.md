@@ -174,7 +174,49 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 #### Throwing Functions and Methods (던지는 함수 및 메소드)
 
+에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이러한 함수와 메소드를 _던지는 함수 (throwing functions)_ 및 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
+
+func `function name`(`parameters`) throws -> `return type` {
+<br />
+    `statements`
+<br />
+}
+
+던지는 함수 또는 던지는 메소드에 대한 호출은 반드시 `try` 나 `try!` 표현식 (즉, `try` 나 `try!` 연산자의 영역 안) 으로 포장돼야 합니다.
+
+`throws` 키워드는 함수 타입의 일부이며, '던지지 않는 함수 (nonthrowing functions)' 는 '던지는 함수' 의 하위 타입입니다. 그 결과, '던지지 않는 함수' 를 '던지는 함수' 와 같은 위치에 사용할 수 있습니다.
+
+함수가 에러를 던질 수 있는 지의 여부 만을 기준으로 하여 함수를 '중복 정의 (overload)' 할 수는 없습니다. 이 말은, 함수의 _매개 변수 (parameter)_ 가 에러를 던질 수 있는 지의 여부를 기준으로는 함수를 중복 정의할 수 있다는 말입니다.
+
+'던지는 메소드' 는 '던지지 않는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '던지지 않는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의할 수 있고, '던지지 않는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
+
 #### Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)
+
+함수 또는 메소드는 함수 매개 변수 중 하나가 에러를 던지는 경우에만 에러를 던진다는 것을 나타내기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이러한 함수 및 메소드를 _다시 던지는 함수 (rethrowing functions)_ 및 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. '다시 던지는 함수' 와 '다시 던지는 메소드' 는 반드시 최소한 하나의 '던지는 함수 매개 변수 (throwing function parameter)' 를 가져야 합니다:
+
+```swift
+func someFunction(callback: () throws -> Void) rethrows {
+  try callback()
+}
+```
+
+다시 던지는 함수 또는 다시 던지는 메소드는 `catch` 절 안에서만 `throw` 문을 가질 수 있습니다. 이는 `do`-`catch` 구문 안에서 '던지는 함수' 를 호출하고 `catch` 절에서는 다른 에러를 던지는 것으로 에러를 처리하게 해줍니다. 여기에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 중 하나에서 던지는 에러만 처리해야 합니다. 예를 들어, 다음은 `catch` 절이 `alwaysThrows()` 가 던지는 에러를 처리하게 되므로 무효입니다.
+
+```swift
+func alwaysThrows() throws {
+  throw SomeError.error
+}
+func someFunction(callback: () throws -> Void) rethrows {
+  do {
+    try callback()
+    try alwaysThrows()  // 무효입니다, alwaysThrows() 는 던지는 매개 변수가 아닙니다.
+  } catch {
+    throw AnotherError.error
+  }
+}
+```
+
+'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
 
 #### Functions that Never return
 
@@ -320,3 +362,5 @@ protocol SomeProtocol: AnyObject {
 [^call-by-value-result]: 기본적으로, '값-결과에 의한 호출 (call by value result)' 은 '값에 의한 호출 (call by value)' 과 '참조에 의한 호출 (call by reference)' 이 합쳐진 것으로 볼 수 있습니다. [프로그래밍 학습법탐구자](http://blog.daum.net/here8now/) 님의 [call by value, call by reference, call by value result, call by name](http://blog.daum.net/here8now/37) 항목에 따르면, 함수 안에서는 '값에 의한 호출 (call by value)' 처럼 동작하고, 함수 반환 시에는 '참조에 의한 호출 (call by reference)' 처럼 동작합니다. 다만, 본문에서 이어서 설명하는 것처럼, '값-결과에 의한 호출' 은 최적화에 따라 '참조에 의한 호출' 처럼 동작하기도 합니다. 즉, 스위프트의 '입-출력 매개 변수' 는 '참조에 의한 호출' 또는 '값-결과에 의한 호출' 을 상황에 따라 적절하게 선택해서 인자를 전달하는 것이라 볼 수 있습니다.
 
 [^optional-member]: 여기서의 '옵셔널 (optional)' 은 '선택적' 이라는 말과 '타입이 옵셔널' 이라는 두 가지 의미를 모두 가지고 있습니다. 이는 프로토콜에서 선언한 '필수 조건' 이 구현되어 있는 지가 '옵셔널' 인 것으로 이해할 수 있습니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 그 구현체를 가지는 것이고, 구현이 되어 있지 않으면 `nil` 인 것입니다.
+
+[^throwing-parameter]: 여기서 '던지는 매개 변수 (throwing paramter)' 는 앞서 얘기한 '던지는 함수 매개 변수 (throwing function parameter)' 를 말하는 것으로, 매개 변수가 '던지는 함수 (throwing function)' 인 것입니다.
