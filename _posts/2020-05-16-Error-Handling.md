@@ -206,7 +206,21 @@ do {
 // "Invalid selection, out of stock, or not enough money." 를 출력합니다.
 ```
 
-`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 중 하나에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 출력하는 것으로 이 에러를 처리합니다. 이외의 경우, `nourish(with:)` 는 이 에러를 호출하는 쪽으로 전파합니다. 에러는 이제 일반 범용 `catch` 절에 의해 잡히게 됩니다.
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 중 하나에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 출력하는 것으로써 이 에러를 처리합니다. 다른 경우라면, `nourish(with:)` 는 에러를 호출 측으로 전파합니다. 에러는 이제 일반적인 `catch` 절이 잡아내게 됩니다.
+
+관계 있는 여러 개의 에러를 잡아내는 또 다른 방법은 `catch` 뒤에, 쉼표로 구분하여, 목록으로 나열하는 것입니다. 예를 들면 다음과 같습니다:
+
+```swift
+func eat(item: String) throws {
+  do {
+    try vendingMachine.vend(itemNamed: item)
+  } catch VendingMachineError.invalidSelection, VendingMachineError.insufficientFunds, VendingMachineError.outOfStock {
+    print("Invalid selection, out of stock, or not enough money.")
+  }
+}
+```
+
+`eat(item:)` 함수는 잡아낼 자판기 에러들을 목록으로 나열하며, 에러 문장은 해당 목록에 있는 항목들과 관련되어 있습니다. 나열된 세 개의 에러 중 어떤 것이라도 던져지면, `catch` 절이 메시지를 출력하는 것으로써 이를 처리합니다. 나중에 추가될 수도 있는 자판기 에러를 포함하여, 다른 에러는 어떤 것이든 주변 영역으로 전파합니다.
 
 #### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
 

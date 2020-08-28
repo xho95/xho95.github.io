@@ -22,7 +22,7 @@ categories: Swift Language Grammar Revision History
 * [main]({% post_url 2020-08-14-Attributes %}#main) 부분에 `@main` 특성에 대한 정보를 추가하였습니다.
 * [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 `#filePath` 를 추가하였으며, `#file` 에 대한 '논의 (discussion)' 를 갱신하였습니다.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 갱신하였으며, 이제 클로저는 더 많은 상황에서 `self` 를 암시적으로 참조할 수 있습니다.
-* [Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-using-do-catch-do-catch-구문으로-에러-처리하기) 와 [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분을 갱신하였으며, 이제 `catch` 절은 다중 에러와 '맞춰볼 (match)' 수 있습니다.
+* [Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-using-do-catch-do-catch-구문으로-에러-처리하기) 와 [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분을 갱신하였으며, 이제 `catch` 절은 '다중 에러 (multiple errors)' 와 일치 여부를 맞춰볼 수 있습니다.
 * [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 갱신하였으며, 이제 느긋한 속성은 관찰자를 가질 수 있습니다.
 * [Protocol Declaration (프로토콜 선언)]({% post_url 2020-08-15-Declarations %}#protocol-declaration-프로토콜-선언) 부분을 갱신하였으며, 이제 열거체의 멤버는 프로토콜의 필수 조건을 만족할 수 있습니다.
 * '획득자 (getter)' 가 관찰자 이전에 호출될 때가 언제인지를 설명하기 위해 [Stored Variable Observers and Property Observers (저장 변수 관찰자와 속성 관찰자)]({% post_url 2020-08-15-Declarations %}#stored-variable-observers-and-property-observers-저장-변수-관찰자와-속성-관찰자) 부분을 갱신하였습니다.
