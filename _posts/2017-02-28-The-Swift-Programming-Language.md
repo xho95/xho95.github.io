@@ -39,7 +39,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %})
 * [Optional Chaining (옵셔널 체이닝; 옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %})
-* [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %})
+* [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %})
 * [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %})
 * [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %})

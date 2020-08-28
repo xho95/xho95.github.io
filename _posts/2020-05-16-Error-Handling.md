@@ -142,21 +142,21 @@ struct PurchasedSnack {
 
 do {
 <br />
-  try `expression`
+&nbsp;try `expression`
 <br />
-  `statements`
+&nbsp;`statements`
 <br />
 } catch `pattern 1` {
 <br />
-  `statements`
+&nbsp;`statements`
 <br />
 } catch `pattern 2` where `condition` {
 <br />
-  `statements`
+&nbsp;`statements`
 <br />
 } catch {
 <br />
-  `statements`
+&nbsp;&nbsp;`statements`
 <br />
 }
 
