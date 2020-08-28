@@ -13,7 +13,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 ## Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)
 
-이번 장에서는 일반화된 (generic) 버전의 타입, 함수, 그리고 초기자 (initializer) 에서 사용하는 매개 변수와 인자에 대해 설명합니다. 일반화된 버전의 타입, 함수, 첨자 연산자 (subscript), 또는 초기자를 선언할 때는, 이들이 사용할 '타입 매개 변수'를 지정하게 됩니다. 이러한 '타입 매개 변수'는 자리를 지키고 있다가 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수나 초기자가 호출될 때 전달되는 인자로 대체되어, 실제의 명확한 타입 (concrete type) 으로 바뀝니다.
+이번 장에서는 일반화된 (generic) 버전의 타입, 함수, 그리고 초기자 (initializer) 에서 사용하는 매개 변수와 인자에 대해 설명합니다. 일반화된 버전의 타입, 함수, 첨자 연산자 (subscript), 또는 초기자를 선언할 때는, 이들이 사용할 '타입 매개 변수'를 지정하게 됩니다. 이러한 '타입 매개 변수'는 자리를 지키고 있다가 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수나 초기자가 호출될 때 전달되는 인자로 대체되어, 실제 '구체적으로 고정된 타입 (concrete type)' 으로 바뀝니다.
 
 스위프트에서의 일반화 (generic) 에 대해서는 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 부분을 참고 바랍니다.
 
@@ -85,7 +85,7 @@ _일반화된 인자 구절 (generic argument clause)_ 은 '일반화된 타입'
 
 <`generic argument list (일반화된 인자 목록)`>
 
-_일반화된 인자 목록 (generic argument list)_ 은 쉼표로-구분된 '타입 인자' 들의 목록을 말합니다. _타입 인자 (type argument)_ 는 실제로 '구체적인 타입 (concrete type)' 이름이며 이것이 '일반화된 타입' 의 '일반화된 매개 변수 구절' 에 있는 연관되어 있는 '타입 매개 변수' 를 대체합니다. 그 결과는 '일반화된 타입' 의 '특수한 버전 (specialized version)' 입니다.[^specialized-version] 아래 예제는 스위프트 표준 라이브러리에 있는 '일반화된 딕셔터리 타입 (generic dictionary type)' 을 간추려서 보여줍니다.
+_일반화된 인자 목록 (generic argument list)_ 은 쉼표로-구분된 '타입 인자' 들의 목록을 말합니다. _타입 인자 (type argument)_ 는 실제 '구체적으로 고정된 타입 (concrete type)' 이름이며 이것이 '일반화된 타입' 의 '일반화된 매개 변수 구절' 에 있는 연관되어 있는 '타입 매개 변수' 를 대체합니다. 그 결과는 '일반화된 타입' 의 '특수한 버전 (specialized version)' 입니다.[^specialized-version] 아래 예제는 스위프트 표준 라이브러리에 있는 '일반화된 딕셔터리 타입 (generic dictionary type)' 을 간추려서 보여줍니다.
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
