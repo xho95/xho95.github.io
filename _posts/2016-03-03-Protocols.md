@@ -649,13 +649,13 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 > 클래스-전용 프로토콜을 사용하는 것은 프로토콜의 필수 조건으로 정의한 작동 방식이 가정하거나 요구하는 준수 타입이 값 의미 구조가 아니라 참조 의미 구조를 가질 때 입니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 와 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하기 바랍니다.
 
-### Protocol Composition (프로토콜 조합)
+### Protocol Composition (프로토콜 합성)
 
-타입이 여러 개의 프로토콜을 준수하도록 요구할 때 이를 동시에 할 수 있다면 좋을 것입니다. _프로토콜 조합 (protocol composition)_ 을 사용하면 여러 개의 프로토콜을 단일한 필수 조건으로 병합할 수 있습니다. '프로토콜 조합' 은 마치 임시 지역 프로토콜을 정의해서 조합에 있는 모든 프로토콜의 필수 조건을 병합한 것처럼 동작합니다. '프로토콜 조합' 은 어떤 새 프로토콜 타입을 정의하는 것이 아닙니다.
+타입이 다중 프로토콜의 준수를 동시에 하도록 요구할 수 있다면 유용할 것입니다. _프로토콜 합성 (protocol composition)_ 을 사용하면 다중 프로토콜을 단일 필수 조건으로 조합할 수 있습니다. '프로토콜 합성' 은 마치 합성에 있는 모든 프로토콜의 필수 조건을 조합한 '임시 지역 프로토콜' 을 정의한 것처럼 동작합니다. '프로토콜 합성' 은 어떤 새 프로토콜 타입을 정의하는 것이 아닙니다.
 
-프로토콜 조합은 `SomeProtocol & AnotherProtocol` 과 같은 양식을 가집니다. 필요한 만큼 많은 개수의 프로토콜을, '앤드 기호 (`&`; 앰퍼샌드)' 로 구분하여, 나열할 수 있습니다. 프로토콜을 나열하는 것 외에도, 프로토콜 조합은 하나의 클래스 타입도 담을 수 있어서, 이것으로 '필수 상위 클래스 (required superclass)' 를 지정할 수 있습니다.
+프로토콜 합성은 `SomeProtocol & AnotherProtocol` 같은 양식을 가집니다. 필요한 만큼 많은 수의 프로토콜을, '앤드 기호 (`&`; 앰퍼샌드)' 로 구분하여, 목록에 나열할 수 있습니다. 프로토콜 목록에 더하여, 프로토콜 합성은 클래스 타입도 하나 가질 수 있어서, 이것으로 '필수 상위 클래스 (required superclass)' 를 지정할 수 있습니다.
 
-다음은 `Named` 와 `Aged` 라는 두 개의 프로토콜을 함수 매개 변수에 대한 단일 '프로토콜 조합 필수 조건' 으로 조합하는 예제입니다:
+다음은 `Named` 와 `Aged` 라는 두 개의 프로토콜을 함수 매개 변수에 대한 단일 '프로토콜 합성' 필수 조건으로 조합하는 예제입니다:
 
 ```swift
 protocol Named {
