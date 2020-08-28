@@ -136,13 +136,13 @@ struct PurchasedSnack {
 
 #### Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)
 
-`do-catch` 문을 사용하면 코드 블럭을 실행하는 것으로 에러를 처리합니다. `do` 절 내에 있는 코드가 에러를 던지면, 어떤 것이 그 에러를 처리할 수 있는지 결정하고자 해당하는 `catch` 절을 찾게 됩니다.
+에러를 처리하는 코드 블럭을 실행하려면 `do`-`catch` 문을 사용합니다. `do` 절의 코드에서 에러를 던지면, `catch` 절과 일치 여부를 맞춰봐서 이 중에서 어떤 것이 에러를 처리할 수 있는 지를 결정합니다.
 
-`do-catch` 문의 일반적인 양식은 다음과 같습니다:
+`do`-`catch` 문의 일반적인 형식은 다음과 같습니다:
 
 do {
 <br />
-&nbsp;try `expression`
+&nbsp;&nbsp;try `expression`
 <br />
 &nbsp;`statements`
 <br />
