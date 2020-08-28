@@ -142,27 +142,27 @@ struct PurchasedSnack {
 
 do {
 <br />
-&nbsp;&nbsp;try `expression`
+&nbsp;&nbsp;&nbsp;&nbsp;try `expression`
 <br />
-&nbsp;`statements`
+&nbsp;&nbsp;&nbsp;&nbsp;`statements`
 <br />
 } catch `pattern 1` {
 <br />
-&nbsp;`statements`
+&nbsp;&nbsp;&nbsp;&nbsp;`statements`
 <br />
 } catch `pattern 2` where `condition` {
 <br />
-&nbsp;`statements`
+&nbsp;&nbsp;&nbsp;&nbsp;`statements`
 <br />
 } catch {
 <br />
-&nbsp;&nbsp;`statements`
+&nbsp;&nbsp;&nbsp;&nbsp;`statements`
 <br />
 }
 
-`catch` 뒤에 '유형 (pattern)' 을 작성하여 그 '구절 (clause)' 이 처리할 수 있는 에러를 지시합니다. `catch` 절이 '유형 (pattern)' 을 가지지 않으면, 이 구절은 모든 에러에 다 해당되며 이 때 에러는 `error` 라는 지역 상수 이름으로 연결됩니다. '유형 맞춰보기 (pattern matching)' 에 대한 더 자세한 내용은 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
+`catch` 뒤에 '패턴 (pattern)' 을 작성하여 해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 지시합니다. 만약 `catch` 절이 '패턴' 을 가지고 있지 않으면, 이 절은 어떤 에러와도 일치하며 이 에러는 `error` 라는 '지역 상수 이름' 에 '연결 (bind)' 됩니다. '패턴 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 자세한 내용은 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 가지 'case 값' 모두에 해당될 수 있습니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 'case 값' 모두와 일치 여부를 맞춰보고 있습니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -183,7 +183,7 @@ do {
 // "Insufficient funds. Please insert an additional 2 coins." 를 출력합니다.
 ```
 
-위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수도 있기 때문에, `try` 표현식 내에서 호출하고 있습니다. 에러가 던져지면, 프로그램 실행은 즉시 `catch` 절로 전송되며, 여기서 전파를 계속하게 할지 결정합니다. 해당하는 '유형 (pattern)' 이 없으면, 에러는 최종 `catch` 절이 잡아내고 지역 상수 `error` 로 연결됩니다. 에러가 던져지지 않으면, `do` 문 내의 나머지 구문들이 실행됩니다.
+위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 `try` 표현식 안에서 호출하는데, 이는 이것이 에러를 던질 수 있기 때문입니다. 에러를 던지면, 실행은 즉시 `catch` 절로 옮겨지며, 여기서 계속 전파하게 둘지를 결정합니다. 일치하는 '패턴' 이 없으면, 에러는 최종 `catch` 절에서 잡히게 되고 지역 상수인 `error` 에 연결됩니다. 에러를 던지지 않으면, `do` 문 안에 있는 나머지 구문을 실행합니다.
 
 `catch` 절이 `do` 절에 있는 코드가 던질 수도 있는 모든 에러를 처리해야하는 것은 아닙니다. `catch` 절에서 처리하지 않은 에러는, 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 _어떤 (some)_ 주변 영역이 됐든 반드시 처리해야 합니다. '던지지 않는 함수 (nonthrowing function)' 는, `do-catch` 절 범위 내에서 이 에러를 반드시 처리해야 합니다. '던지는 함수 (throwing function)' 는, `do-catch` 절 범위 내에서나 호출하는 쪽에서 이 에러를 반드시 처리해야 합니다. 에러가 처리되지 않은 채로 최상위 영역으로 전파되면, '실행시간 에러 (runtime error)' 가 발생합니다.
 
