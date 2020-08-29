@@ -114,7 +114,44 @@ Xcode 에서 '플레이그라운드 글자 값' 을 사용하는 정보는, Xcod
 
 #### Function Call Expression
 
-#### Initializer Expression
+#### Initializer Expression (초기자 표현식)
+
+_초기자 표현식 (initializer expression)_ 은 타입의 초기자에 대한 접근을 제공합니다. 형식은 다음과 같습니다:
+
+`expression-표현식`.init(`initializer arguments-초기자의 인자`)
+
+'초기자 표현식' 을 '함수 호출 표현식' 안에서 사용하여 타입의 새로운 인스턴스를 초기화합니다. 또한 초기자 표현식을 사용하여 상위 클래스의 초기자로 위임합니다.
+
+```swift
+class SomeSubClass: SomeSuperClass {
+    override init() {
+        // 여기서 하위 클래스를 초기화 합니다.
+        super.init()
+    }
+}
+```
+
+함수와 마찬가지로, 초기자를 값으로 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+// String 이 여러 초기자를 가지고 있기 때문에 타입 보조 설명이 필수입니다.
+let initializer: (Int) -> String = String.init
+let oneTwoThree = [1, 2, 3].map(initializer).reduce("", +)
+print(oneTwoThree)
+// "123" 을 출력합니다.
+```
+
+타입을 이름으로 지정한 경우, 초기자 표현식을 사용하지 않고도 타입의 초기자에 접근할 수 있습니다. 그 외의 다른 모든 경우에는, 반드시 초기자 표현식을 사용해야 합니다.
+
+```swift
+let s1 = SomeType.init(data: 3)  // 유효합니다.
+let s2 = SomeType(data: 1)       // 역시 유효합니다.
+
+let s3 = type(of: someValue).init(data: 7)  // 유효합니다.
+let s4 = type(of: someValue)(data: 5)       // 에러입니다.
+```
+
+> GRAMMAR OF AN INITIALIZER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Explicit Member Expression
 
