@@ -32,7 +32,49 @@ _접두사 표현식 (prefix expressions)_ 은 선택 사항인 접두사 연산
 
 #### Try Operator ('try' 연산자)
 
+_try 표현식 (try expression)_ 은 `try` 연산자와 그 뒤에 있는 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
+
+try `expression-표현식`
+
+옵셔널-try 표현식은 `try?` 연산자와 그 뒤에 있는 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
+
+try? `expression-표현식`
+
+_표현식 (expression)_ 이 에러를 던지지 않는 경우, 옵셔널-try 표현식의 값은 _표현식 (expression)_ 의 값을 가지고 있는 옵셔널입니다. 다른 경우라면, 옵셔널-try 표현식의 값은 `nil` 입니다.
+
+_강제-try 표현식_ 은 `try!` 연산자와 그 뒤에 있는 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
+
+try! `expression-표현식`
+
+_표현식 (expression)_ 이 에러를 던지는 경우, 실행 시간 에러를 일으킵니다.
+
+이항 연산자의 왼-편에 있는 표현식에 `try`, `try?`, 또는 `try!` 를 표시하면, 해당 연산자가 전체 이항 표현식에 적용됩니다. 즉, 괄호를 사용하여 연산자가 적용되는 영역을 명시할 수도 있습니다.
+
+```swift
+sum = try someThrowingFunction() + anotherThrowingFunction()   // try 는 두 함수 호출 모두에 적용됩니다.
+sum = try (someThrowingFunction() + anotherThrowingFunction()) // try 는 두 함수 호출 모두에 적용됩니다.
+sum = (try someThrowingFunction()) + anotherThrowingFunction() // Error: try 가 첫 번째 함수 호출에만 적용되었습니다.
+```
+
+이항 연산자가 할당 연산자이거나 `try` 표현식을 괄호로 감싸지 않은 이상, `try` 표현식이 이항 연산자의 오른-편에 있을 수는 없습니다.
+
+더 자세한 정보와 `try`, `try?`, 및 `try!` 를 사용하는 방법에 대한 예제를 보려면, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A TRY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
+
 ### Binary Expressions (이항 표현식)
+
+_이항 표현식 (binary expressions)_ 은 '이항 중위 연산자 (infix binary operator)'[^infix-binary-operator] 와 이의 왼쪽 인자 및 오른쪽 인자로써 취하는 표현식을 조합합니다. 형식은 다음과 같습니다:
+
+`left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
+
+이들 연산자의 작동 방식에 대한 정보는, [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 를 참고하기 바랍니다.
+
+> 구문 해석 시간에, 이항 연산자로 이루어진 표현식은 '단순 리스트 (flat list)'[^list] 로 표현됩니다. 이 '리스트 (list)' 는 연산자 우선 순위를 적용하는 과정을 통해 '트리 (tree)' 로 변환됩니다. 예를 들어, 표현식 `2 + 3 * 5` 는 초기에 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 개의 항목을 가진 '단순 리스트' 라고 이해됩니다. 이 후 과정은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변환합니다.
+
+> GRAMMAR OF A BINARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
 #### Assignment Operator
 
@@ -182,3 +224,7 @@ let s4 = type(of: someValue)(data: 5)       // 에러입니다.
 [^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문 표현' 이 됩니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
+
+[^infix-binary-operator]: 이 책에서는 '중위 이항 연산자 (infix binary operator)' 와 '이항 중위 연산자 (binary infix operator)' 라는 말을 섞어 쓰고 있는데, 편의를 위해서 '이항 중위 연산자' 로 통일하여 옮기도록 합니다.
+
+[^list]: 여기서의 '리스트 (list)' 는 '목록' 이라기 보다는 자료 구조에서의 '리스트' 이기 때문에 용어 그대로 옮기도록 합니다.
