@@ -76,9 +76,24 @@ _이항 표현식 (binary expressions)_ 은 '이항 중위 연산자 (infix bina
 
 > GRAMMAR OF A BINARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
-#### Assignment Operator
+#### Assignment Operator (할당 연산자)
 
-#### Ternary Conditional Operator
+_할당 연산자 (assignment operator)_ 는 주어진 표현식에 새로운 값을 설정합니다. 형식은 다음과 같습니다:
+
+`expression-표현식` = `value-값`
+
+_표현식 (expression)_ 의 값은 _값 (value)_ 부분을 평가하여 구한 값으로 설정됩니다. _표현식 (expression)_ 이 튜플이라면, _값 (value)_ 은 반드시 원소 개수가 같은 튜플이어야 합니다. (중첩된 튜플은 허용됩니다.) 할당 작업은 _값 (value)_ 의 각 부분이 이에 연관된 _표현식 (expression)_ 의 부분으로 수행합니다. 예를 들면 다음과 같습니다:
+
+```swift
+(a, _, (b, c)) = ("test", 9.45, (12, 3))
+// a 는 "test", b 는 12, c 는 3 이 되며, 9.45 는 무시됩니다.
+```
+
+할당 연산자는 어떤 값도 반환하지 않습니다.
+
+> GRAMMAR OF AN ASSIGNMENT OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
+
+#### Ternary Conditional Operator (삼항 조건 연산자)
 
 #### Type-Casting Operators
 
