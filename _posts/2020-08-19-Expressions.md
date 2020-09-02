@@ -207,9 +207,59 @@ Xcode 에서 '플레이그라운드 글자 값' 을 사용하는 정보는, Xcod
 
 > GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Self Expression
+#### Self Expression ('self' 표현식)
 
-#### Superclass Expression
+`self` 표현식은 자기가 속한 곳의 현재 타입 또는 그 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
+
+self
+<br />
+self.`member name-멤버 이름`
+<br />
+self [`subscript index-첨자 연산 색인`]
+<br />
+self (`initializer arguments-초기자 인자`)
+<br />
+self.init(`initializer arguments-초기자 인자`)
+
+초기자, 첨자 연산, 또는 인스턴스 메소드에 있는, `self` 는 자기가 속한 곳의 타입에 대한 현재의 인스턴스를 참조합니다. 타입 메소드에 있는, `self` 는 자기가 속한 곳의 현재 타입을 참조합니다.
+
+`self` 표현식은 멤버에 접근할 때 영역을 지정하기 위해 사용하며, 이는 영역에 함수 매개 변수 같이 같은 이름인 다른 변수가 있을 경우 모호함을 없애줍니다. 예를 들면 다음과 같습니다:
+
+```swift
+class SomeClass {
+  var greeting: String
+  init(greeting: String) {
+    self.greeting = greeting
+  }
+}
+```
+
+값 타입의 변경 메소드에 있는, `self` 에는 해당 값 타입의 새로운 인스턴스를 할당할 수 있습니다.[^mutating-method] 예를 들면 다음과 같습니다:
+
+```swift
+struct Point {
+  var x = 0.0, y = 0.0
+  mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+    self = Point(x: x + deltaX, y: y + deltaY)
+  }
+}
+```
+
+> GRAMMAR OF A SELF EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
+
+#### Superclass Expression (상위 클래스 표현식)
+
+_상위 클래스 표현식 (superclass expression)_ 은 클래스가 상위 클래스와 상호 작용하도록 해줍니다. 형식은 다음 중 하나입니다:
+
+super.`memeber name-멤버 이름`
+super[`subscript index-첨자 연산 색인`]
+super.init(`initializer arguments-초기자 인자`)
+
+첫 번째 형식은 상위 클래스의 멤버에 접근하기 위해 사용합니다. 두 번째 형식은 상위 클래스의 첨자 연산 구현에 접근하기 위해 사용합니다. 세 번째 형식은 상위 클래스의 초기자에 접근하기 위해 사용합니다.
+
+하위 클래스는 상위 클래스에 있는 구현을 사용하기 위해 자신의 멤버, 첨자 연산, 및 초기자의 구현에서 상위 클래스 표현식을 사용할 수 있습니다.
+
+> GRAMMAR OF A SUPERCLASS EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Closure Expression
 
@@ -296,4 +346,6 @@ let s4 = type(of: someValue)(data: 5)       // 에러입니다.
 
 [^list]: 여기서의 '리스트 (list)' 는 '목록' 이라기 보다는 자료 구조에서의 '리스트' 이기 때문에 용어 그대로 옮기도록 합니다.
 
-[^foundation: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
+[^foundation]: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
+
+[^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이 문장의 의미는 'self' 를 다른 인스턴스를 할당하는 것으로써 변경할 수도 있다는 의미입니다.
