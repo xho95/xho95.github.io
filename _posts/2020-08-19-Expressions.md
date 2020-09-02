@@ -105,9 +105,51 @@ _조건 (condition)_ 이 `true` 라고 평가되면, '조건 연산자' 는 첫 
 
 > GRAMMAR OF A CONDITIONAL OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
-#### Type-Casting Operators
+#### Type-Casting Operators (타입-변환 연산자)
 
-### Primary Expressions
+타입-변환 연산자는 네 가지가 있습니다: `is` 연산자, `as` 연산자, `as?` 연산자, 그리고 `as!` 연산자가 그것입니다.
+
+형식은 다음과 같습니다:
+
+`expression-표현식` is `type-타입`
+`expression-표현식` as `type-타입`
+`expression-표현식` as? `type-타입`
+`expression-표현식` as! `type-타입`
+
+`is` 연산자는 실행 시간에 _표현식 (expression)_ 을 지정한 _타입 (type))_ 으로 변환할 수 있는지 검사합니다. _표현식 (expression)_ 을 지정한 타입으로 변환할 수 있는 경우 `true` 를 반환합니다; 다른 경우라면, `false` 를 반환합니다.
+
+`as` 연산자는, '올림 변환 (upcasting)' 또는 '연동 (bridging)' 같이, 항상 변환이 성공함을 컴파일 시간에 알고 있을 때 변환을 수행하는 것입니다. '올림 변환 (upcasting)' 은, 중간 단계의 변수를 사용하지 않고도, 표현식을 그것의 상위 타입의 인스턴스로 사용하게 해줍니다. 다음의 접근 방식은 '동치 (equivalent)' 입니다:
+
+```swift
+func f(_ any: Any) { print("Function for Any") }
+func f(_ int: Int) { print("Function for Int") }
+let x = 10
+f(x)
+// "Function for Int" 를 출력합니다.
+
+let y: Any = x
+f(y)
+// "Function for Any" 를 출력합니다.
+
+f(x as Any)
+// "Function for Any" 를 출력합니다.
+```
+
+'연동 (bridging)' 은 새로운 인스턴스를 생성할 필요없이 `String` 같은 스위프트 표준 라이브러리 타입을 `NSString` 같은 연관된 'Foundation' 타입[^foundation] 으로 사용하게 해줍니다. '연동 (bridging)' 에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 를 참고하기 바랍니다.
+
+`as?` 연산자는 _표현식 (expression)_ 을 지정한 _타입 (type)_ 으로 조건부로 변환합니다. `as?` 연산자는 지정한 _타입 (type)_ 에 대한 '옵셔널' 을 반환합니다. 실행 시간에, 변환을 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하여 반환합니다; 다른 경우에는, `nil` 이라는 값을 반환합니다. 지정한 타입으로 변환하는 것이 실패라고 보증된 경우거나 아니면 성공이라고 보증된 경우에는, 컴파일-시간 에러가 발생합니다.
+
+`as!` 연산자는 _표현식 (expression)_ 을 지정한 _타입 (type)_ 으로 강제 변환합니다. `as!` 연산자는, 옵셔널 타입이 아닌, 지정한 _타입 (type)_ 의 값을 반환합니다. 변환을 실패하면, 실행 시간 에러가 발생합니다. `x as! T` 의 작동 방식은 `(x as? T)!` 의 작동 방식과 같습니다.
+
+타입 변환에 대한 더 많은 정보와 타입-변환 연산자를 사용하는 예제에 대해서는, []() 를 참고하기 바랍니다.
+
+> GRAMMAR OF A TYPE-CASTING OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
+
+### Primary Expressions (제1 표현식)
+
+_제1 표현식 (primary expressions)_ 은 가장 기본적인 종류의 표현식입니다. 이들은 그 자체로 표현식으로 사용할 수 있으며, 다른 '낱말 (tokens)' 과 조합하여 '접두사 표현식 (prefix expression)', '이항 표현식 (binary expression)', '접미사 표현식 (postfix expression)' 을 만들 수도 있습니다.
+
+> GRAMMAR OF A PRIMARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Literal Expression (글자 값 표현식)
 
@@ -253,3 +295,5 @@ let s4 = type(of: someValue)(data: 5)       // 에러입니다.
 [^infix-binary-operator]: 이 책에서는 '중위 이항 연산자 (infix binary operator)' 와 '이항 중위 연산자 (binary infix operator)' 라는 말을 섞어 쓰고 있는데, 편의를 위해서 '이항 중위 연산자' 로 통일하여 옮기도록 합니다.
 
 [^list]: 여기서의 '리스트 (list)' 는 '목록' 이라기 보다는 자료 구조에서의 '리스트' 이기 때문에 용어 그대로 옮기도록 합니다.
+
+[^foundation: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
