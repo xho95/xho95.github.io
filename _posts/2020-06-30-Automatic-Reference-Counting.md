@@ -609,7 +609,7 @@ paragraph = nil
 
 [^ARC-Objective-C]: 해당 내용은 오브젝티드-C 개발자를 위한 내용을, 원문 자체에서 이미 웹페이지로 연결되도록 링크를 달아 놓은 것입니다. 오브젝티브-C 개발자가 아니라면 다 이해할 필요는 없을 것입니다.
 
-[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법으로, 여기서 '메모리 관리' 는 '동적인 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적인 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장소 (free store; 또는 heap)' 라고 하며, '참조 (reference)' 는 '자유 저장소' 에 있는 할당된 메모리 영역을 '참조하는 (또는 가리키는; refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장소' 가 아니라 '스택 (stack)' 이라는 '정적인 메모리' 공간에 생기기 것이라서 메모리 관리의 대상이 아닙니다. 보다 자세한 내용은 위키피디아의 'Memory management' 항목 중 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
+[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법으로, 여기서 '메모리 관리' 는 '동적인 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적인 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장소 (free store; 또는 heap)' 라고 하며, '참조 (reference)' 는 '자유 저장소' 에 있는 할당된 메모리 영역을 '참조하는 (또는 가리키는; refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장소' 가 아니라 '스택 (stack)' 이라는 '정적인 메모리' 공간에 생기는 것이라서 메모리 관리의 대상이 아닙니다. 보다 자세한 내용은 위키피디아의 'Memory management' 항목 중 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
 
 [^stored-constant-property]: 원문은 'stored constant property' 로 직역하면 '저장된 상수 속성' 이라고 해야겠지만, 스위프트의 '저장 속성' 중에서 '상수' 인 것이라는 의미를 살리기 위해 '상수 저장 속성' 이라고 약간 의역해서 옮겼습니다. 우리 말로는 '저장 상수 속성' 보다 '상수 저장 속성' 이라는 말이 좀 더 자연스럽다고 느꼈기 때문입니다.
 
