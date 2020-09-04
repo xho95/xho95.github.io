@@ -261,7 +261,45 @@ super.init(`initializer arguments-초기자 인자`)
 
 > GRAMMAR OF A SUPERCLASS EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Closure Expression
+#### Closure Expression (클로저 표현식)
+
+_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에서 _람다 (lambda)_ 또는 _익명 함수 (anonymous function)_ 라고도 하는, 클로저를 생성합니다. 함수 선언과 마찬가지로, 클로저는 구문을 가지고 있으며, 자신을 둘러싼 영역에 있는 상수와 변수를 '붙잡습니다 (capture)'. 형식은 다음과 같습니다:
+
+{ (`parameter-매개 변수`) -> `return type-반환 타입` in
+<br />
+  `statements-구문`
+  <br />
+}
+
+_매개 변수 (parameter)_ 는, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 같은 형식을 가집니다.
+
+클로저를 더 간결하게 작성할 수 있는 여러 가지 특수한 형식들이 있습니다:
+
+* 클로저는 매개 변수의 타입이나, 반환 타입, 또는 둘 다를 생략할 수 있습니다. 두 타입 모두와 매개 변수 이름을 생략하는 경우, 구문 앞의 `in` 키워드를 생략합니다. 생략한 타입을 추론할 수 없는 경우, 컴파일 시간 에러가 발생합니다.
+* 클로저는 매개 변수의 이름을 생략할 수 있습니다. 이 매개 변수들은 이제 `$` 와 그 뒤의 위치로 구성된 암시적인 이름을 가집니다: `$1`, `$2`,  등으로 계속됩니다.
+* '단일 표현식' 으로만 구성된 클로저는 해당 표현식의 값을 반환하는 것이라고 이해합니다. 해당 표현식의 내용은 주변 표현식에 대한 타입 추론을 수행 할 때도 고려됩니다.
+
+다음의 클로저 표현식들은 '동치 (equivalent)' 입니다:
+
+```swift
+myFunction { (x: Int, y: Int) -> Int in
+  return x + y
+}
+
+myFunction { x, y in
+  return x + y
+}
+
+myFunction { return $0 + $1 }
+
+myFunction { $0 + $1 }
+```
+
+함수에 대한 인자로써 클로저를 전달하는 것에 대한 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 을 참고하기 바랍니다.
+
+클로저 표현식은, 함수 호출에서 클로저를 곧 바로 사용할 때와 같이, 변수나 상수에 저장하지 않고도 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달된 클로저 표현식은 이러한 종류의 '곧바로 사용' 것에 대한 예제입니다. 그 결과로, 클로저 표현식이 '벗어나는 (escaping)' 지 '벗어나지 않는 (nonescaping)' 지는 표현식의 주변 상황에 달려 있는 것입니다. 클로저 표현식은 곧바로 호출되거나 벗어나지 않는 함수 인자로써 전달되는 경우 '벗어나지 않는 (nonescaping)' 것이 됩니다. 다른 경우라면, 클로저 표현식이 '벗어나는 (excaping)' 것입니다.
+
+'벗어나는 클로저' 에 대한 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 를 참고하기 바랍니다.
 
 **Capture Lists**
 
@@ -281,7 +319,7 @@ super.init(`initializer arguments-초기자 인자`)
 
 ### Postfix Expressions
 
-#### Function Call Expression
+#### Function Call Expression (함수 호출 표현식)
 
 #### Initializer Expression (초기자 표현식)
 

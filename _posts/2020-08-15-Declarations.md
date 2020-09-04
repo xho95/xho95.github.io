@@ -122,7 +122,7 @@ newAndOld.x = 200
 
 ### Type Alias Delcaration
 
-### Function Declaration
+### Function Declaration (함수 선언)
 
 #### Parameter Names
 
