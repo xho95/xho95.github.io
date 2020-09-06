@@ -322,7 +322,45 @@ closure()
 // "0 10" 를 출력합니다.
 ```
 
+이름이 `a` 인 변수는, 주변 영역에 있는 변수와 클로저 영역에 있는 상수라는, 서로 다른 두 개로 있지만, 이름이 `b` 인 변수는 하나만 있습니다. 안쪽 영역에 있는 `a` 는 클로저를 생성할 때 바깥 영역에 있는 `a` 의 값으로 초기화 되지만, 이들 값은 어떠한 특수한 방법으로도 연결되어 있지 않습니다. 이것의 의미는 바깥 영역의 `a` 값을 바꾸는 것은 안쪽 영역의 `a` 값에는 영향을 주지 않으며, 클로저 안에 있는 `a` 를 바꾸는 것도 클로저 바깥의 `a` 값에는 영향을 주지 않는다는 것입니다. 이와는 대조적으로, 이름이 `b` 인 변수는-바깥 영역에 있는 `b`-만 단 하나 있으므로 클로저의 안쪽과 바깥에서 바꾸는 것을 양쪽 위치 모두 볼 수 있습니다.
 
+'붙잡은 변수 (captured variable)' 타입이 '참조 의미 구조 (reference semantics)' 를 가질 때는 이것이 잘 구별되지 않습니다. 예를 들어, 아래 코드에는 이름이 `x` 인 것, 바깥 영역에 있는 변수와 안쪽 영역에 있는 상수, 이렇게 두 개 있지만, '참조 의미 구조' 로 인해서 이 둘은 같은 객체를 참조하고 있습니다.
+
+```swift
+class SimpleClass {
+  var value: Int = 0
+}
+var x = SimpleClass()
+var y = SimpleClass()
+let closure = { [x] in
+  print(x.value, y.value)
+}
+
+x.value = 10
+y.value = 10
+closure()
+// "10 10" 을 출력합니다.
+```
+
+표현식 값의 타입이 클래스인 경우라면, '붙잡을 목록 (capture list)' 에 있는 표현식을 `weak` 또는 `unowned` 로 표시하여 표현식의 값을 약한 참조 또는 무소속 참조로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
+
+```swift
+myFunction { print(self.title) }                    // 암시적인 강한 붙잡기 (implicit strong capture)
+myFunction { [self] in print(self.title) }          // 명시적인 강한 붙잡기 (explicit strong capture)
+myFunction { [weak self] in print(self!.title) }    // 약한 붙잡기 (weak capture)
+myFunction { [unowned self] in print(self.title) }  // 무소속 붙잡기 (unowned capture)
+```
+
+임의의 표현식을 '붙잡을 목록' 에 있는 '이름 있는 변수' 에 연결할 수도 있습니다. 이 표현식은 클로저를 생성할 때 값을 평가하며, 값은 지정된 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
+
+```swift
+// "self.parent" 를 "parent" 로 약하게 붙잡기
+myFunction { [weak parent = self.parent] in print(parent!.title) }
+```
+
+클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 을 참고하기 바랍니다. '붙잡을 목록 (capture list)' 에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환-해결하기) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Implicit Member Expression
 
@@ -408,3 +446,7 @@ let s4 = type(of: someValue)(data: 5)       // 에러입니다.
 [^foundation]: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
 
 [^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이 문장의 의미는 'self' 를 다른 인스턴스를 할당하는 것으로써 변경할 수도 있다는 의미입니다.
+
+[^weak-and-unowned-capture]: 클로저는 클래스와 같이 '참조 타입' 이기 때문에, 클래스 안에 있는 클로저가 해당 클래스를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '무소속 참조' 가 필요합니다.
+
+[^strength]: 여기서의 '강하기 (strength)' 는 'string (강한)'-'weak (약한)'-'unowned (무소속)' 등을 구분하는 말인 것으로 추측됩니다.
