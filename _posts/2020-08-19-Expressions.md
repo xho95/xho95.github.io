@@ -362,11 +362,28 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Implicit Member Expression
+#### Implicit Member Expression (암시적인 멤버 표현식)
 
-#### Parenthesized Expression
+_암시적인 멤버 표현식 (implicit member expression)_ 은, 열거체의 'case 값' 또는 타입 메소드 처럼, '타입 추론 장치 (type inference)' 가 암시된 타입을 결정할 수 있는 상황에서, 타입의 멤버에 접근하기 위한 단축 방법입니다. 형식은 다음과 같습니다:
 
-#### Tuple Expression
+  .`member name-멤버 이름`
+
+예를 들면 다음과 같습니다:
+
+```swift
+var x = MyEnumeration.someValue
+x = .anotherValue
+```
+
+> GRAMMAR OF A IMPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
+
+#### Parenthesized Expression (괄호 표현식)
+
+_괄호 표현식 (parenthesized expression)_ 은 괄호로 감싼 표현식으로 구성됩니다. 표현식을 명시적으로 그룹지어서 연산의 '우선순위 (precedence)' 를 지정하기 위해 괄호를 사용할 수 있습니다. 그룹짓는 괄호는 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
+
+> GRAMMAR OF A PARENTHESIZED MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
+
+#### Tuple Expression (튜플 표현식)
 
 #### Wildcard Expression
 
