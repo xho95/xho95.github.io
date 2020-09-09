@@ -450,12 +450,72 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-_경로 (path)_ 는 '자신의 키 경로 (identity key path; `\.self`)' 를 생성하기 위해 `self` 를 참조할 수 있습니다. '자신의 키 경로 (identity key path)' 는 전체 인스턴스를 참조하므로, 변수에 저장된 모든 데이터를 한 번에 접근해서 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
+_경로 (path)_ 는 '스스로의 키 경로 (identity key path; `\.self`)' 를 생성하기 위해 `self` 를 참조할 수 있습니다. '스스로의 키 경로 (identity key path)' 는 전체 인스턴스를 참조하므로, 변수에 저장된 모든 데이터를 한 번에 접근해서 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
 // compoundValue = (a: 10, b: 20) 와 '동치 (equivalent)' 입니다.
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
+```
+
+_경로 (path)_ 는 속성 값에 있는 속성을 참조하기 위해, 마침표로 구분된, 다중 속성 이름을 가질 수 있습니다. 다음 코드는 `OuterStructure` 타입인 `outer` 속성에 있는 `someValue` 에 접근하기 위해 '키 경로 표현식' 인 `\OuterStructure.outer.someValue` 를 사용합니다:
+
+```swift
+struct OuterStructure {
+  var outer: SomeStructure
+  init(someValue: Int) {
+    self.outer = SomeStructure(someValue: someValue)
+  }
+}
+
+let nested = OuterStructure(someValue: 24)
+let nestedKeyPath = \OuterStructure.outer.someValue
+
+let nestedValue = nested[keyPath: nestedKeyPath]
+// nestedValue 는 24 입니다.
+```
+
+_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하기만 하면, 대괄호를 사용하여 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열의 두 번째 원소에 접근하기 위해 '키 경로 (key path)' 에서 첨자 연산을 사용합니다.
+
+```swift
+let greetings = ["hello", "hola", "bonjour", "안녕"]
+let myGreeting = greetings[keyPath: \[String].[1]]
+// myGreeting 은 'hola' 입니다.
+```
+
+첨자 연산에서 사용되는 값은 '이름 있는 값 (named value)' 또는 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 값을 '값 의미 구조 (value semantics)' 를 사용하여 붙잡습니다. 다음 코드는 '키 경로 표현식' 과 클로저 둘 다에서 변수인 `index` 를 사용하여 `greetings` 배열의 세 번째 원소에 접근합니다. `index` 를 수정하면, 키 경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
+
+```swift
+var index = 2
+let path = \[String].[index]
+let fn: ([String]) -> String = { strings in strings[index] }
+
+print(greetings[keyPath: path])
+// "bonjour" 를 출력합니다.
+print(fn(greetings))
+// "bonjour" 를 출력합니다.
+
+// 'index' 에 새 값을 설정하는 것은 'path' 에 영향을 주지 않습니다.
+index += 1
+print(greetings[keyPath: path])
+// "bonjour" 를 출력합니다.
+
+// 'fn' 이 'index' 를 잡아 가뒀기 때문에, 이는 새 값을 사용합니다.
+print(fn(greetings))
+// "안녕" 를 출력합니다.
+```
+
+_경로 (path)_ 는 '옵셔널 연쇄 (optional chaining)' 와 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 다음 코드는 '키 경로' 에서 옵셔널 연쇄를 사용하여 옵셔널 문자열의 속성에 접근합니다:
+
+```swift
+let firstGreeting: String? = greetings.first
+print(firstGreeting?.count as Any)
+// "Optional(5)" 를 출력합니다.
+
+// 키 경로를 사용하여 같은 것을 합니다.
+let count = greetings[keyPath: \[String].first?.count]
+print(count as Any)
+// "Optional(5)" 를 출력합니다.
 ```
 
 #### Selector Expression
