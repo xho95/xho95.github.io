@@ -518,6 +518,59 @@ print(count as Any)
 // "Optional(5)" 를 출력합니다.
 ```
 
+타입 내에 깊숙이 중첩된 값에 접근하기 위해 '키 경로' 의 성분을 혼합하여 일치 여부를 맞춰볼 수 있습니다. 다음 코드는 이런 성분을 조합한 '키-경로 표현식' 을 사용하여 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
+
+```swift
+let interestingNumbers = ["prime": [2, 3, 5, 7, 11, 13, 17],
+                          "triangular": [1, 3, 6, 10, 15, 21, 28],
+                          "hexagonal": [1, 6, 15, 28, 45, 66, 91]]
+print(interestingNumbers[keyPath: \[String: [Int]].["prime"]] as Any)
+// "Optional([2, 3, 5, 7, 11, 13, 17])" 을 출력합니다.
+print(interestingNumbers[keyPath: \[String: [Int]].["prime"]![0]])
+// "2" 를 출력합니다.
+print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count])
+// "7" 을 출력합니다.
+print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count.bitWidth])
+// "64" 를 출력합니다.
+```
+
+보통은 함수나 클로저를 제공하게 되는 상황에서 '키 경로 표현식' 을 사용할 수 있습니다. 특히, '근원 (root)' 타입은 `SomeType` 이면서 경로는 `Value` 타입의 값을 만드는 '키 경로 표현식' 을, `(SomeType) -> Value` 타입의 함수나 클로저 대신, 사용할 수 있습니다.
+
+```swift
+struct Task {
+  var description: String
+  var completed: Bool
+}
+var toDoList = [
+  Task(description: "Practice ping-pong.", completed: false),
+  Task(description: "Buy a pirate costume.", completed: true),
+  Task(description: "Visit Boston in the Fall.", completed: false),
+]
+
+// 아래의 두 접근법은 모두 '동치 (equivalent)' 입니다.
+let descriptions = toDoList.filter(\.completed).map(\.description)
+let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
+```
+
+키 경로 식의 부작용은 어떤 것이든 표현식이 평가되는 그 시점에서만 평가됩니다. 예를 들어, 키 경로 표현식에 있는 첨자 연산에서 함수 호출을 하는 경우, 이 함수는, 키 경로를 사용하는 매 순간이 아니라, 표현식을 평가하면서 단 한번만 호출됩니다.
+
+```swift
+func makeIndex() -> Int {
+  print("Made an index")
+  return 0
+}
+// 아래 줄은 makeIndex() 를 호출합니다.
+let taskKeyPath = \[Task][makeIndex()]
+// "Made an index" 를 출력합니다.
+
+// taskKeyPath 를 사용하면 makeIndex() 를 다시 호출하지 않습니다.
+let someTask = toDoList[keyPath: taskKeyPath]
+```
+
+오브젝티브-C API 와 상호 작용하는 코드에서 '키 경로' 를 사용하는 방법에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 및 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 및 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 를 참고하기 바랍니다.
+
+>> GRAMMAR OF A KEY-PATH EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
+
 #### Selector Expression
 
 #### Key-Path String Expression

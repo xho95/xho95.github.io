@@ -28,7 +28,7 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 ### Idenfifiers (식별자)
 
-_식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국어 기본 평면 (Basic Multilingual Plane)'[^BMP] 에 있는 '혼합되지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)'[^noncombining-alphanumeric], 또는 '다국어 기본 평면' 외부이면서 '사용자 영역 (Private Use Area)' 에는 있지 않은 문자로 시작합니다. 첫 번째 문자 뒤에는, '숫자 (digits)'[^digits] 와 '혼합된 유니코드 문자 (combining Unicode characters)'[^combining] 도 올 수 있습니다.
+_식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국어 기본 평면 (Basic Multilingual Plane)'[^BMP] 에 있는 '조합되지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)'[^noncombining-alphanumeric], 또는 '다국어 기본 평면' 외부이면서 '사용자 영역 (Private Use Area)' 에는 있지 않은 문자로 시작합니다. 첫 번째 문자 뒤에는, '숫자 (digits)'[^digits] 와 '조합된 유니코드 문자 (combining Unicode characters)'[^combining] 도 올 수 있습니다.
 
 '예약어 (reserved word)' 를 '식별자' 로 사용하려면, 그 앞뒤에 '역따옴표 (backticks; `` ` ``)'[^backticks] 을 붙이면 됩니다. 예를 들어, `class` 는 식별자로 유효하지 않지만, ``class`` 는 유효합니다. '역따옴표' 자체는 식별자의 일부로 간주되지 않습니다; ``x`` 와 `x` 는 같은 의미를 가집니다.
 
@@ -128,7 +128,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 
 여러 줄짜리 문자열 글자 값을 시작하는 `"""` 뒤에 있는 '줄 끊음 (line break; `\n`)'[^line-break] 은 문자열의 일부가 아닙니다. 글자 값을 끝내는 `"""` 앞에 있는 '줄 끊음' 도 문자열의 일부가 아닙니다. 여러 줄짜리 문자열 글자 값이 '줄 먹임 (line feed)' 으로 시작하거나 끝나게 하려면, 첫 번째 또는 마지막 줄에 빈 줄을 작성하기 바랍니다.[^begins-or-ends]
 
-여러 줄짜리 문자열 글자 값은 '공백 (spaces)' 과 '탭 (tabs)' 을 어떤 식으로 혼합해서라도 들여쓰기를 할 수 있으며; 이러한 '들여쓰기 (indentation)' 는 문자열에 포함되지 않습니다. 글자 값을 끝내는 `"""` 가 들여쓰기를 결정합니다; 글자 값에 있는 모든 '비어 있지 않은 줄 (nonblank line)' 은 반드시 닫는 `"""` 앞에 있는 것과 똑같은 들여쓰기로 시작해야 합니다; 탭과 공백을 변환하지는 않습니다. 해당 들여쓰기 다음에 추가적인 공백과 탭을 포함할 수도 있습니다; 이러한 공백과 탭이 문자열에서 나타납니다.
+여러 줄짜리 문자열 글자 값은 '공백 (spaces)' 과 '탭 (tabs)' 을 어떤 식으로 조합해서라도 들여쓰기를 할 수 있으며; 이러한 '들여쓰기 (indentation)' 는 문자열에 포함되지 않습니다. 글자 값을 끝내는 `"""` 가 들여쓰기를 결정합니다; 글자 값에 있는 모든 '비어 있지 않은 줄 (nonblank line)' 은 반드시 닫는 `"""` 앞에 있는 것과 똑같은 들여쓰기로 시작해야 합니다; 탭과 공백을 변환하지는 않습니다. 해당 들여쓰기 다음에 추가적인 공백과 탭을 포함할 수도 있습니다; 이러한 공백과 탭이 문자열에서 나타납니다.
 
 여러 줄짜리 문자열 글자 값에 있는 '줄 끊음 (line breaks)' 은 '줄 바꿈 (line feed)' 문자를 사용하도록 '정규화 (normalized)' 됩니다.[^line-break-to-line-feed] 비록 소스 파일이 '캐리지 반환 (carriage return; `\r`)' 과 '줄 먹임 (line feeds; `\n`)' 을 섞어서 사용하더라도, 문자열에 있는 모든 '줄 끊음' 문자들은 다 같은 것입니다.
 
@@ -206,7 +206,7 @@ let textB = "Hello world"
 
 스위프트 표준 라이브러리는 다수의 연산자를 정의하여 사용하도록 하는데, 이 대부분은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 와 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 설명하고 있습니다.
 
-사용자 정의 연산자는 ASCII 문자 `/`, `=`, `-`, `+`, `!`, `*`, `%`, `<`, `>`, `&`, `|`, `^`, `?` 또는 `~` 중 하나로 시작할 수도 있고, 아니면 아래 문법에서 정의한 유니코드 문자 중의 하나로 시작할 수도 있습니다. (그 중에서도 여기에는 _수학 연산자들 (Mathematical Operators)_, _잡다한 기호들 (Miscellaneous Symbols)_, 그리고 _딩뱃 (Dingbats)_[^dingbats] 유니코드 블럭 문자를 포함합니다.) 첫 번째 문자 다음에는, '혼합된 유니코드 문자 (combining Unicode characters)' 도 허용합니다.
+사용자 정의 연산자는 ASCII 문자 `/`, `=`, `-`, `+`, `!`, `*`, `%`, `<`, `>`, `&`, `|`, `^`, `?` 또는 `~` 중 하나로 시작할 수도 있고, 아니면 아래 문법에서 정의한 유니코드 문자 중의 하나로 시작할 수도 있습니다. (그 중에서도 여기에는 _수학 연산자들 (Mathematical Operators)_, _잡다한 기호들 (Miscellaneous Symbols)_, 그리고 _딩뱃 (Dingbats)_[^dingbats] 유니코드 블럭 문자를 포함합니다.) 첫 번째 문자 다음에는, '조합된 유니코드 문자 (combining Unicode characters)' 도 허용합니다.
 
 '점 (`.`)' 으로 시작하는 사용자 정의 연산자도 정의할 수 있습니다. 이러한 연산자는 추가적인 점을 가질 수 있습니다. 예를 들어, `.+.` 은 단일한 연산자로 취급합니다. 연산자가 점으로 시작하지 않으면, 다른 위치에 점을 가질 수 없습니다. 예를 들어, `+.+` 는 `+` 연산자 뒤에 `.+` 연산자가 있는 것으로 취급합니다.
 
@@ -241,11 +241,11 @@ let textB = "Hello world"
 
 [^BMP]: '다국어 기본 평면 (Basic Multilingual Plane)' 이란 '유니코드 평면 (Unicode planes)' 에서 '0번 평면 (`U+0000 ~ U+FFFF`) 을 말하는 것으로 여기에는 거의 모든 근대 문자와 특수 문자가 포함되어 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 및 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
-[^noncombining-alphanumeric]: '혼합되지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)' 에서 '혼합되지 않은 (noncombining)' 은 `é` 처럼 '강세' 같은 기호와 혼합되지 않은 문자라는 의미이며, '영숫자 (alphanumeric)' 란 수학 기호로 사용되는 그리스 및 라틴 문자인 'Mathematical Alphanumeric Symbols' 을 의미합니다. 더 자세한 내용은 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 및 [Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols) 항목을 참고하기 바랍니다.
+[^noncombining-alphanumeric]: '조합되지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)' 에서 '조합되지 않은 (noncombining)' 은 `é` 처럼 '강세' 같은 기호와 조합되지 않은 문자라는 의미이며, '영숫자 (alphanumeric)' 란 수학 기호로 사용되는 그리스 및 라틴 문자인 'Mathematical Alphanumeric Symbols' 을 의미합니다. 더 자세한 내용은 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 및 [Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols) 항목을 참고하기 바랍니다.
 
 [^digits]: 여기서의 'digits' 은 'Numerical digit' 을 의미하는 것으로, 수를 표기하기 위한 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Numerical digit](https://en.wikipedia.org/wiki/Numerical_digit) 또는 [숫자](https://ko.wikipedia.org/wiki/숫자) 항목을 참고하기 바랍니다.
 
-[^combining]: '혼합된 유니코드 문자 (combining Unicode characters)' 란 `é` 처럼 '강세' 등의 기호와 혼합되어 있는 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목을 참고하기 바랍니다.
+[^combining]: '조합된 유니코드 문자 (combining Unicode characters)' 란 `é` 처럼 '강세' 등의 기호와 조합되어 있는 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목을 참고하기 바랍니다.
 
 [^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
 

@@ -12,7 +12,7 @@ categories: Swift Language Grammar Basic Operators
 
 ## Basic Operators (기본 연산자)
 
-_연산자 (operator)_ 는 값을 검사하고, 바꾸거나, 또는 혼합하기 위해 사용하는 특수한 기호나 구절입니다. 예를 들어, '더하기 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 개의 불리언 (Boolean) 값을 혼합합니다.
+_연산자 (operator)_ 는 값을 검사하고, 바꾸거나, 또는 조합하기 위해 사용하는 특수한 기호나 구절입니다. 예를 들어, '더하기 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 개의 불리언 (Boolean) 값을 조합합니다.
 
 스위프트는 C 언어 등을 통해 이미 알고 있을 법한 연산자를 지원하면서, 공통된 코딩 에러를 없애기 위해 보유 능력 몇가지를 개선했습니다. '할당 연산자 (`=`)' 는, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막을 수 있게, 값을 반환하지 않습니다. 산술 연산자 (`+`,`-`, `*`, `/`, `%` 등) 은, 타입이 저장할 수 있는 허용 범위보다 커지거나 작아진 값과 작업할 때의 예상치 못한 결과를 피할 수 있도록, '값 넘침 (value overflow)' 을 감지해서 이를 불허합니다. '값 넘침' 작동 방식을 선택하려면, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명하는 것처럼, 스위프트의 'overflow (값 넘침) 연산자' 를 사용하면 됩니다.
 
