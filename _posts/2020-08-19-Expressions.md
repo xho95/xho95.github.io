@@ -571,7 +571,52 @@ let someTask = toDoList[keyPath: taskKeyPath]
 
 >> GRAMMAR OF A KEY-PATH EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Selector Expression
+#### Selector Expression (선택자 표현식)
+
+_선택자 표현식 (selector expression)_ 은 오브젝티브-C 의 메소드나 속성의 '획득자 (getter)' 또는 '설정자 (setter)' 를 참조하는데 사용하는 '선택자 (selector)' 에 접근하도록 해줍니다. 형식은 다음과 같습니다:
+
+\#selector(`method name-메소드 이름`)
+<br />
+\#selector(getter: `property name-속성 이름`)
+<br />
+\#selector(setter: `property name-속성 이름`)
+
+_메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 반드시 오브젝티드-C 런타임에서 사용 가능한 메소드나 속성에 대한 참조여야 합니다. 선택자 표현식의 값은 `Selector` 타입의 인스턴스입니다. 예를 들면 다음과 같습니다:
+
+```swift
+class SomeClass: NSObject {
+  @objc let property: String
+
+  @objc(doSomethingWithInt:)
+  func doSomething(_ x: Int) { }
+
+  init(property: String) {
+    self.property = property
+  }
+}
+let selectorForMethod = #selector(SomeClass.doSomething(_:))
+let selectorForPropertyGetter = #selector(getter: SomeClass.property)
+```
+
+속성의 획득자 (getter) 에 대한 선택자를 생성할 때의, _속성 이름 (property name)_ 은 변수 또는 상수 속성에 대한 참조일 수 있습니다. 이와는 대조적으로, 속성의 설정자 (setter)에 대한 선택자를 생성할 때의, _속성 이름 (property name)_ 은 반드시 변수 속성에 대한 참조여야 합니다.
+
+_메소드 이름 (method name)_ 은 그룹화를 위한 괄호와, 이름은 공유하지만 타입 서명은 서로 다른 메소드의 혼동을 막기 위한 `as` 연산자를 가질 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+extension SomeClass {
+  @objc(doSomethingWithString:)
+  func doSomething(_ x: String) { }
+}
+let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (String) -> Void)
+```
+
+선택자는 실행 시간이 아니라, 컴파일 시간에 생성되기 때문에, 메소드나 속성이 존재하는지 그리고 오브젝티브-C 런타임에서 노출되는 지를 컴파일러가 검사할 수 있습니다.
+
+> 메소드 이름 (method name) 과 속성 이름 (property name) 은 표현식이긴 하지만, 값은 절대로 평가되지 않습니다.
+
+스위프트 코드에서 선택자를 사용하여 오브젝티브-C 와 상호 작용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A SELECTOR EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Key-Path String Expression
 
