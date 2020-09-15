@@ -610,17 +610,68 @@ extension SomeClass {
 let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (String) -> Void)
 ```
 
-선택자는 실행 시간이 아니라, 컴파일 시간에 생성되기 때문에, 메소드나 속성이 존재하는지 그리고 오브젝티브-C 런타임에서 노출되는 지를 컴파일러가 검사할 수 있습니다.
+선택자는, 실행 시간이 아니라, 컴파일 시간에 생성되기 때문에, 컴파일러가 메소드 또는 속성이 존재하는지 그리고 이들이 오브젝티브-C 런타임 쪽으로 노출되었는 지를 검사할 수 있습니다.
 
 > 메소드 이름 (method name) 과 속성 이름 (property name) 은 표현식이긴 하지만, 값은 절대로 평가되지 않습니다.
 
-스위프트 코드에서 선택자를 사용하여 오브젝티브-C 와 상호 작용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 선택자를 스위프트 코드에서 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다.
 
 > GRAMMAR OF A SELECTOR EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Key-Path String Expression
+#### Key-Path String Expression (키 경로 문자열 표현식)
 
-### Postfix Expressions
+'키-경로 문자열 표현식 (key-path string expression)' 은, '키-값 코딩 (key-value coding)' 과 '키-값 관찰 (key-value observing)' API 를 사용하기 위해, 오브젝티브-C 에 있는 속성을 참조하는데 사용하는 문자열에 접근하도록 해줍니다. 형식은 다음과 같습니다:
+
+\#keyPath(`property name-속성 이름`)
+
+_속성 이름 (property name)_ 은 반드시 오브젝티브-C 런타임에서 사용 가능한 속성에 대한 참조여야 합니다. 컴파일 시간에, '키-경로 문자열 표현식' 은 '문자열 글자 값 (string literal)' 으로 대체됩니다. 예를 들면 다음과 같습니다:
+
+```swift
+class SomeClass: NSObject {
+  @objc var someProperty: Int
+  init(someProperty: Int) {
+    self.someProperty = someProperty
+  }
+}
+
+let c = SomeClass(someProperty: 12)
+let keyPath = #keyPath(SomeClass.someProperty)
+
+if let value = c.value(forKey: keyPath) {
+  print(value)
+}
+// "12" 를 출력합니다.
+```
+
+클래스 내에서 키-경로 문자열 표현식을 사용할 때는, 해당 클래스의 속성을, 클래스 이름없이, 속성 이름만 작성하여 참조할 수 있습니다.
+
+```swift
+extension SomeClass {
+  func getSomeKeyPath() -> String {
+    return #keyPath(someProperty)
+  }
+}
+print(keyPath == c.getSomeKeyPath())
+// "true" 를 출력합니다.
+```
+
+키 경로 문자열은, 실행 시간이 아니라, 컴파일 시간에 생성되기 때문에, 컴파일러가 속성이 존재하는지 그리고 이 속성이 오브젝티브-C 런타임 쪽으로 노출되었는 지를 검사할 수 있습니다.
+
+오브젝티브-C API 와 상호 작용하는 '키 경로 (key paths)' 를 스위프트 코드에서 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 및 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 및 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 를 참고하기 바랍니다.
+
+> 속성 이름 (property name) 은 표현식이지만, 절대로 값을 평가하지 않습니다.
+
+> GRAMMAR OF A KEY-PATH STRING EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
+
+### Postfix Expressions (접미사 표현식)
+
+_접미사 표현식 (postfix expressions)_ 은 접미사 연산자 또는 다른 접미사 구문 표현을 표현식에 적용하여 형성합니다. 구문 표현으로는, 모든 '제1 표현식' 은 또한 '접미사 표현식' 이기도 합니다.
+
+이 연산자들의 작동 방식에 대한 정보는, [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 발랍니다.
+
+> GRAMMAR OF A POSTFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Function Call Expression (함수 호출 표현식)
 
