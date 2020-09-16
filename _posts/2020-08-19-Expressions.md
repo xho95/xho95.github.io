@@ -675,6 +675,40 @@ _접미사 표현식 (postfix expressions)_ 은 접미사 연산자 또는 다�
 
 #### Function Call Expression (함수 호출 표현식)
 
+_함수 호출 표현식 (function call expression)_ 은 함수 이름과 그 뒤의 괄호 속에 있는 쉼표로 구분된 함수 인자 목록으로 구성됩니다. '함수 호출 표현식' 의 형식은 다음과 같습니다:
+
+`function name-함수 이름`(`argument value 1-인자 값 1`, `argument value 2-인자 값 2`)
+
+_함수 이름 (function name)_ 은 값이 함수 타입이면 어떤 표현식이든 될 수 있습니다.
+
+함수 정의에서 매개 변수에 대한 이름을 포함하고 있으면, 함수 호출은 반드시 인자 값 앞에, 콜론 (`:`) 으로 구분된, 이름을 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
+
+`function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
+
+함수 호출 표현식은 닫는 괄호 바로 뒤에 '클로저 표현식' 의 형태로 '끝자리 클로저 (trailing closures)' 를 포함할 수 있습니다. 끝자리 클로저는 함수에 대한 인자로 이해되어, 괄호로 묶인 마지막 인자 뒤에 추가됩니다. 첫 번째 '클로저 표현식' 은 이름표를 붙이지 않습니다; 추가적인 클로저 표현식이라면 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 끝자리 클로저 구문 표현을 사용하는 것과 사용하지 않는 것이 서로 '동치 (version)' 인 함수 호출을 보여줍니다.
+
+```swift
+// someFunction 은 인자로 정수 하나와 클로저 하나를 받습니다.
+someFunction(x: x, f: { $0 == 13 })
+someFunction(x: x) { $0 == 13 }
+
+// anotherFunction 은 인자로 정수 하나와 클로저 두 개를 받습니다.
+anotherFunction(x: x, f: { $0 == 13 }, g: { print(99) })
+anotherFunction(x: x) { $0 == 13 } g: { print(99) }
+```
+
+끝자리 클로저가 함수의 유일한 인자라면, 괄호를 생략할 수 있습니다.
+
+```swift
+// someMethod 는 유일한 인자로 클로저 하나를 받습니다.
+myData.someMethod() { $0 == 13 }
+myData.someMethod { $0 == 13 }
+```
+
+클래스, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 에서 설명한 것 처럼, 여러 메소드 중 하나를 선언하여 '함수 호출 구문' 에 대한 '수월한 구문 표현 (syntatic sugar)' 을 사용하도록 할 수 있습니다.
+
+> GRAMMAR OF A FUNCTION CALL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
+
 #### Initializer Expression (초기자 표현식)
 
 _초기자 표현식 (initializer expression)_ 은 타입의 초기자에 대한 접근을 제공합니다. 형식은 다음과 같습니다:

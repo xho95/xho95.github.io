@@ -170,7 +170,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 #### Special Kinds Methods
 
-#### Methods with Special Names
+#### Methods with Special Names (특수한 이름을 가진 메소드)
 
 #### Throwing Functions and Methods (던지는 함수 및 메소드)
 
