@@ -23,40 +23,45 @@ categories: Swift Language Grammar Revision History
 
 ### Fundamentals (근본 바탕)
 
-* **사용하는 순간에 분명한 것** 이 가장 중요한 목표입니다. 메소드와 속성 같은 엔티티의 선언은 한 번뿐이지만 _사용_ 은 반복됩니다. 명확하고 간결하게 사용할 수 있도록 API 를 설계해야 합니다. 설계를 평가할 때, 선언을 읽고 이해하는 것으로는 충분하지 않습니다; 상황에 따라 명확하게 보일 수 있게 항상 실제 사용 사례를 검토하도록 합니다.
+* **사용하는 순간에 분명한 것** 이 가장 중요한 목표입니다. 메소드와 속성 같은 엔티티는 한 번 선언해서 계속 반복 _사용합니다 (used)_. 명확하고 간결하게 사용할 수 있도록 API 를 설계해야 합니다. 설계를 평가할 때, 선언을 읽고 이해하는 것으로는 충분하지 않습니다; 상황에 따라 명확하게 보일 수 있게 항상 실제 사용 사례를 검토하도록 합니다.
 
 * **분명한 것이 간결한 것보다 더 중요합니다.** 스위프트 코드를 알차게 만들 수는 있더라도, 최소의 문자로 가능한 가장 작은 코드를 만들려고 하는 것이 _목표는-아닙니다 (non-goal)_. 스위프트 코드에서, 발생하는, 간결함이란, 강한 타입 시스템으로 인한 부수적인 효과인 것으로 획일적인 상용구를 자연스럽게 줄이는 특징을 가집니다.
 
-* **문서 주석을 작성하는 것은** 모든 선언마다 합니다. 문서 작성으로 얻은 통찰력은 설계에 대해 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
+* **문서화 주석 (documentation comment) 의 작성을** 모든 선언마다 합니다. 문서화를 작성하며 얻은 통찰력은 설계에 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
 
 API 의 기능을 간단한 용어로 설명하는 데 어려움을 겪고 있다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**
 
-Swift의 Markdown 방언을 사용하세요.
+- 스위프트 '전용 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용하기 바랍니다.
 
-선언되는 엔티티를 설명하는 요약으로 시작합니다. 종종 API는 선언과 요약에서 완전히 이해할 수 있습니다.
+- **요약으로 시작해서** 엔티티 선언에 대한 설명을 합니다. 대체로, API 는 선언과 요약으로도 완전히 이해할 수 있습니다.
 
 ```swift
 /// Returns a "view" of `self` containing the same elements in
 /// reverse order.
+/// 같은 원소를 반대 순서로 가지고 있는 `self` 의 "view" 를 반환합니다.
 func reversed() -> ReverseCollection
 ```
 
-요약에 집중하십시오. 가장 중요한 부분입니다. 많은 훌륭한 문서 주석은 훌륭한 요약에 지나지 않습니다.
+1. **요약에 집중합니다**; 가장 중요한 부분입니다. 훌륭한 문서 주석 대부분은 사실 뛰어난 요약에 지나지 않습니다.
 
-가능하면 마침표로 끝나는 단일 문장 조각을 사용하십시오. 완전한 문장을 사용하지 마십시오.
+2. **단일한 문장 성분을**[^fragment] 가능한한 사용하며, 마침표로 끝맺습니다. 완전한 문장은 사용하지 않습니다.[^complete-sentence]
 
-함수 또는 메서드가 수행하는 작업과 반환하는 작업을 설명하고 null 효과와 Void 반환을 생략합니다.
+3. **함수나 메소드가 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지를 설명하고**, 없는 효과 (null effects) 와 `Void` 반환은 생략합니다:
 
 ```swift
 /// Inserts `newHead` at the beginning of `self`.
+/// `self` 의 처음 위치에 `newHead` 를 집어 넣습니다.
 mutating func prepend(_ newHead: Int)
 
 /// Returns a `List` containing `head` followed by the elements
 /// of `self`.
+/// 뒤에 `self` 의 원소가 있는 `head` 를 담고 있는 `List` 를 반환합니다.
 func prepending(_ head: Element) -> List
 
 /// Removes and returns the first element of `self` if non-empty;
 /// returns `nil` otherwise.
+/// 비어 있지 않은 경우 `self` 의 첫 번째 원소를 제거하고 반환합니다;
+/// 다른 경우라면 `nil` 을 반환합니다.
 mutating func popFirst() -> Element?
 ```
 
@@ -141,3 +146,9 @@ Throws | ToDo | Version | Warning
 #### Argument Labels
 
 ### Special Instructions
+
+### 참고 자료
+
+[^fragment]: 여기서 '문장 성분 (sentence fragment)' 을 사용하라는 것은 완전한 문장이 아니라, 하나의 구절 형태로 사용하라는 의미입니다.
+
+[^complete-sentence]: 왜 완전한 문장을 사용하지 않는 지에 대한 설명은 따로 없는 것 같습니다. 최대한 간단하게 핵심만 정리하라는 의미로 이해할 수 있습니다.
