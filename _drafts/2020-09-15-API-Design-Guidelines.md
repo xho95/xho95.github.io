@@ -88,7 +88,7 @@ init(count n: Int, repeatedElement x: Element)
 ```swift
 /// A collection that supports equally efficient insertion/removal
 /// at any position.
-/// 어떤 위치에서도 같은 효율을 가지는 삽입/제거를 지원하는 컬렉션
+/// 어떤 위치에서도 같은 효율을 가지는 삽입/제거를 지원하는 컬렉션.
 struct List {
 
   /// The element at the beginning of `self`, or `nil` if self is
@@ -133,7 +133,7 @@ public func print(
 ///                                              ⎭
 /// - Note: To print without a trailing          ⎫
 ///   newline, pass `terminator: ""`             ⎟
-///                                              ⎬ Symbol commands
+///                                              ⎬ [Symbol commands](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW13)
 /// - SeeAlso: `CustomDebugStringConvertible`,   ⎟
 ///   `CustomStringConvertible`, `debugPrint`.   ⎭
 public func print(
