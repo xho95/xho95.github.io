@@ -748,7 +748,63 @@ let s4 = type(of: someValue)(data: 5)       // 에러입니다.
 
 > GRAMMAR OF AN INITIALIZER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
-#### Explicit Member Expression
+#### Explicit Member Expression (명시적인 멤버 표현식)
+
+_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 있는 타입 (named type)', 튜플, 또는 모듈의 멤버에 접근하게 해줍니다. 이는 항목과 멤버의 식별자 사이에 마침표 (`.`) 를 둬서 구성합니다.
+
+`expression-표현식`.`member name-멤버 이름`
+
+'이름 있는 타입 (named type)' 의 멤버는 타입에 대한 선언 또는 '익스텐션 (extension; 확장)' 에서 이름이 지어집니다. 예를 들면 다음과 같습니다:
+
+```swift
+class SomeClass {
+  var someProperty = 42
+}
+let c = SomeClass()
+let y = c.someProperty  // 멤버 접근
+```
+
+튜플의 멤버는 정수를 사용하여, '0' 부터 시작해서, 나타나는 순서대로 암시적으로 이름을 짓습니다. 예를 들면 다음과 같습니다:
+
+```swift
+var t = (10, 20, 30)
+t.0 = t.1
+// 이제 t 는 (20, 20, 30) 입니다.
+```
+
+모듈의 멤버는 해당 모듈의 '최상위 선언 (top-level declarations)' 에 접근합니다.
+
+`dynamicMemberLookup` 특성으로 선언된 타입은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 에서 설명한 것처럼, 실행 시간에 조회되는 멤버를 포함합니다.
+
+이름이 다른 것이라고는 인자 이름 뿐인 메소드들 또는 초기자들끼리 구별하려면, 인자 이름을 포함하고, 각각의 인자 이름 뒤에 콜론 (`:`) 을 붙입니다. 이름이 없는 인자에는 밑줄 (`_`) 을 작성합니다. '중복정의한 메소드 (overloaded methods)' 끼리 구별하려면, '타입 보조 설명 (type annotation)' 을 사용합니다. 예를 들면 다음과 같습니다:
+
+```swift
+class SomeClass {
+  func someMethod(x: Int, y: Int) {}
+  func someMethod(x: Int, z: Int) {}
+  func overloadedMethod(x: Int, y: Int) {}
+  func overloadedMethod(x: Int, y: Bool) {}
+}
+let instance = SomeClass()
+
+let a = instance.someMethod              // 모호함
+let b = instance.someMethod(x:y:)        // 모호하지 않음
+
+let d = instance.overloadedMethod        // 모호함
+let d = instance.overloadedMethod(x:y:)  // 아직 모호함
+let d: (Int, Bool) -> Void  = instance.overloadedMethod(x:y:)  // 모호하지 않음
+```
+
+마침표가 줄의 시작에 있으면, '암시적인 멤버 표현식' 이 아니라, '명시적인 멤버 표현식' 인 것으로 이해합니다. 예를 들어, 아래에 나열한 것은 연쇄적인 메소드 호출을 여러 줄로 나누어서 하는 것을 보여줍니다:
+
+```swift
+let x = [10, 3, 20, 15, 4]
+    .sorted()
+    .filter { $0 > 5 }
+    .map { $0 * 100 }
+```
+
+> GRAMMAR OF AN EXPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Postfix Self Expression
 
