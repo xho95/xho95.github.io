@@ -291,7 +291,7 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Initializer Declaration
 
-#### Protocol Subscript Declaration
+#### Protocol Subscript Declaration (프로토콜 첨자 연산 선언)
 
 #### Protocol Associated Type Declaration
 

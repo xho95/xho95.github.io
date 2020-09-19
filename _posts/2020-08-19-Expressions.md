@@ -806,9 +806,31 @@ let x = [10, 3, 20, 15, 4]
 
 > GRAMMAR OF AN EXPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
-#### Postfix Self Expression
+#### Postfix Self Expression (접미사 'self' 표현식)
 
-#### Subscript Expression
+접미사 `self` 표현식은 표현식 또는 타입의 이름, 바로 뒤의 `.self` 로 구성됩니다. 형식은 다음과 같습니다:
+
+`expression`.self
+<br />
+`type`.self
+
+첫 번째 형식은 _표현식 (expression)_ 의 값으로 평가됩니다. 예를 들어, `x.self` 는 `x`  라고 평가됩니다.
+
+두 번째 형식은 _타입 (type)_ 의 값으로 평가됩니다. 타입을 값으로 접근하기 위해 이 형식을 사용합니다. 예를 들어, `SomeClass.self` 는 `SomeClass` 라는 타입 자체로 평가되기 때문에, 타입-수준의 인자를 받아 들이는 함수나 메소드에 전달할 수 있습니다.
+
+> GRAMMAR OF A POSTFIX SELF EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
+
+#### Subscript Expression (첨자 연산 표현식)
+
+_첨자 연산 표현식 (subscript expression)_ 은 연관된 첨자 연산 선언의 획득자 (getter) 와 설정자 (setter) 를 사용하는 첨자 연산 접근을 제공합니다. 형식은 다음과 같습니다:
+
+`expression-표현식`[`index expressions-색인 표현식`]
+
+첨자 연산 표현식의 값을 평가하기 위해서, 첨자 연산 매개 변수로 전달된 _색인 표현식 (index expressions)_ 을 써서  _표현식 (expression)_ 의 타입에 대한 '첨자 연산 획득자 (subscript getter)' 를 호출합니다. 값을 설정하기 위해서는, 같은 방식으로 '첨자 연산 설정자 (subscript setter)' 를 호출합니다.
+
+첨자 연산 선언에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Forced-Value Expression (강제-값 표현식)
 
