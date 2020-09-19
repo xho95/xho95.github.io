@@ -152,6 +152,25 @@ public func print(
 
 ### Naming (이름짓기)
 
+#### Promote Clear Usage (명확한 사용법 권장하기)
+
+* **필요한 모든 단어를 포함하도록 하여** 이름이 사용된 코드를 읽는 사람의 모호함을 피하도록 합니다.
+
+예를 들어, 컬렉션 내에서 주어진 위치의 원소를 제고하는 메소드를 고려해 봅니다.
+
+```swift
+extension List {
+  public mutating func remove(at position: Index) -> Element
+}
+employees.remove(at: x)
+```
+
+'메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략한다면, 읽는 사람이, `x` 를 제거할 원소의 위치를 지정하는데 사용하는 것이 아니라, `x` 와 같은 원소를 찾아서 제거하는 메소드라고 생각할 수 있을 것입니다.
+
+```swift
+employee.remove (x) // 불분명함 : x를 제거하는 것일까요?
+```
+
 #### Promote Clear Usage
 
 #### Strive for Fluent Usage
