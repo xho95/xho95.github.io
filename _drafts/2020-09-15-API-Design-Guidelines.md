@@ -152,7 +152,7 @@ public func print(
 
 ### Naming (이름짓기)
 
-#### Promote Clear Usage (명확한 사용법 권장하기)
+#### Promote Clear Usage (명확한 사용법 촉진하기)
 
 * **필요한 모든 단어를 포함하도록 하여** 이름이 사용된 코드를 읽는 사람의 모호함을 피하도록 합니다.
 
