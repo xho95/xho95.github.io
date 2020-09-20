@@ -171,6 +171,26 @@ employees.remove(at: x)
 employee.remove (x) // 불분명함 : x를 제거하는 것일까요?
 ```
 
+* **불필요한 단어는 생략합니다.** 이름에 있는 모든 단어는 사용하는 쪽에 중요한 정보를 전달해야 합니다.
+
+의도를 명확하게 하거나  의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수 있지만, 읽는 쪽에서 이미 확보한 정보라서 과잉인 것들은 생략해야 합니다. 특히, _단순히 (merely)_ 타입 정보를 반복하는 단어는 생략합니다.
+
+```swift
+public mutating func removeElement(_ member: Element) -> Element?
+
+allViews.removeElement(cancelButton)
+```
+
+이 경우, `Element` 라는 단어는 호출하는 쪽에 중요한 것은 아무 것도 추가하지 않습니다. 다음 API 가 더 좋을 것입니다:
+
+```swift
+public mutating func remove(_ member: Element) -> Element?
+
+allViews.remove(cancelButton) // 더 명확함
+```
+
+경우에 따라, 모호함을 피하기 위해 타입 정보를 반복하는 것도 필요하긴 하지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고하기 바랍니다.
+
 #### Promote Clear Usage
 
 #### Strive for Fluent Usage
