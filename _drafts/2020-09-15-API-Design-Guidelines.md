@@ -10,9 +10,9 @@ categories: Swift Language Grammar Revision History
 
 ### Table of Contents (목차)
 
-* [Fundamentals (근본 바탕)](#fundamentals-근본-바탕)
+* [Fundamentals (기반)](#fundamentals-기반)
 * [Naming](#naming-이름짓기)
-- Promote Clear Usage
+- [Promote Clear Usage](#promote-clear-usage-명확한-사용법-촉진하기)
 - Strive for Fluent Usage
 - Use Terminology Well
 * Conventions
@@ -21,7 +21,7 @@ categories: Swift Language Grammar Revision History
 - Argument Labels
 * Special Instructions
 
-### Fundamentals (근본 바탕)
+### Fundamentals (기반)
 
 * **사용하는 순간에 분명한 것** 이 가장 중요한 목표입니다. 메소드와 속성 같은 '개체 (entities)' 들은 한 번 선언해서 계속 반복 _사용하게 (used)_ 됩니다. 명확하고 간결하게 사용할 수 있도록 API 를 설계해야 합니다. 설계를 평가할 때, 선언을 읽고 이해하는 것으로는 충분하지 않습니다; 상황에 따라 명확하게 보일 수 있게 항상 실제 사용 사례를 검토하도록 합니다.
 

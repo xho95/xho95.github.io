@@ -830,11 +830,74 @@ _첨자 연산 표현식 (subscript expression)_ 은 연관된 첨자 연산 선
 
 첨자 연산 선언에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 를 참고하기 바랍니다.
 
-> GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
+> GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Forced-Value Expression (강제-값 표현식)
 
-#### Optional-Chaining Expression
+_강제-값 표현식 (forced-value expression)_ 은 `nil` 이 아니라고 확신하는 옵셔널 값의 포장을 풉니다. 형식은 다음과 같습니다:
+
+`expression-표현식`!
+
+_표현식 (expression)_ 의 값이 `nil` 이 아닌 경우라면, 옵셔널 값의 포장을 풀고 이와 관련된 옵셔널-아닌 타입으로 반환합니다. 다른 경우라면, 실행시간 에러가 발생합니다.
+
+'강제-값 표현식' 으로 '포장이 풀린 값 (unwrapped value)' 은, 값 자체를 변경하거나, 값의 멤버 중 하나에 할당하는 것으로, 수정할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+var x: Int? = 0
+x! += 1
+// x 는 이제 1 입니다.
+
+var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]
+someDictionary["a"]![0] = 100
+// someDictionary 는 이제 ["a": [100, 2, 3], "b": [10, 20]] 입니다.
+```
+
+> GRAMMAR OF A FORCED-VALUE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
+
+#### Optional-Chaining Expression (옵셔널-연쇄 표현식)
+
+_옵셔널-연쇄 표현식 (optional-chaining expression)_ 은 '접미사 표현식' 에서 옵셔널 값을 사용하기 위한 '간소화한 구문 표현 (simplified syntax)' 을 제공합니다. 형식은 다음과 같습니다:
+
+`expression-표현식`?
+
+'접미사 `?` 연산자' 는 표현식의 값을 바꾸지 않고도 표현식으로 '옵셔널-연쇄 표현식' 을 만듭니다.
+
+옵셔널-연쇄 표현식은 반드시 접미사 표현식 내에서 나타내야 하는데, 이로써 접미자 표현식을 특수한 방법으로 평가하도록 합니다. 만약 옵셔널-연쇄 표현식의 값이 `nil` 이면, 접미사 표현식에 있는 다른 모든 연산을 무시하고 전체 접미사 표현식을 `nil` 로 평가합니다. 옵셔널-연쇄 표현식의 값이 `nil` 이 아니면, 옵셔널-연쇄 표현식 값의 포장을 풀어서 나머지 접미사 표현식을 평가할 때 사용합니다. 어느 경우이든, 접미사 표현식의 값은 여전히 옵셔널 타입입니다.
+
+만약 옵셔널-연쇄 표현식을 가지고 있는 접미사 표현식이 다른 접미사 표현식 안에 중첩되어 있다면, 가장 바깥쪽 표현식만 옵셔널 타입을 반환합니다.[^outmost-expression] 아래 예제에서, `c` 가 `nil` 이 아닐 때는, 그 값의 포장을 풀어서, `.performAction()` 을 평가하는 데 사용하는 값인, `.property` 를 평가하는 데 사용합니다. 전체 표현식인 `c?.property.performAction()` 은 옵셔널 타입의 값을 가집니다.
+
+```swift
+var c: SomeClass?
+var result: Bool? = c?.property.performAction()
+```
+
+다음 예제는 옵셔널 체인을 사용하지 않고 위 예제와 같은 작동을 하는 것을 보여줍니다.
+
+```swift
+var result: Bool?
+if let unwrappedC = c {
+    result = unwrappedC.property.performAction()
+}
+```
+
+'옵셔널-연쇄 표현식' 으로 '포장이 풀린 값 (unwrapped value)' 은, 값 자체를 변경하거나, 값의 멤버 중 하나에 할당하는 것으로, 수정할 수 있습니다. 만약 옵셔널-연쇄 표현식의 값이 `nil` 이면, 할당 연산자의 오른-쪽에 있는 표현식은 평가하지 않습니다. 예를 들면 다음과 같습니다:
+
+```swift
+func someFunctionWithSideEffects() -> Int {
+    return 42  // No actual side effects.
+}
+var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]
+
+someDictionary["not here"]?[0] = someFunctionWithSideEffects()
+// someFunctionWithSideEffects is not evaluated
+// someDictionary is still ["a": [1, 2, 3], "b": [10, 20]]
+
+someDictionary["a"]?[0] = someFunctionWithSideEffects()
+// someFunctionWithSideEffects is evaluated and returns 42
+// someDictionary is now ["a": [42, 2, 3], "b": [10, 20]]
+```
+
+> GRAMMAR OF AN OPTIONAL-CHAINING EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 ### 참고 자료
 
@@ -859,3 +922,5 @@ _첨자 연산 표현식 (subscript expression)_ 은 연관된 첨자 연산 선
 [^strength]: 여기서의 '강하기 (strength)' 는 'string (강한)'-'weak (약한)'-'unowned (무소속)' 등을 구분하는 말인 것으로 추측됩니다.
 
 [^foced-unwrapping-expressions]: '강제로 포장을 푸는 표현식 (foced unwrapping expressions)' 의 정식 이름은 뒤에 나오는 [Forced-Value Expression (강제-값 표현식)](#forced-value-expression-강제-값-표현식) 인 것 같습니다.
+
+[^outmost-expression]: 이 말은 옵셔널을 다시 옵셔널로 포장하지는 않는다는 말입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
