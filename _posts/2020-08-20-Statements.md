@@ -34,11 +34,7 @@ categories: Swift Language Grammar Statement
 
 `for`-`in` 문의 형식은 다음과 같습니다:
 
-for `item-항목` in `collection-컬렉션/집합체` {
-<br />  
-  `statements-구문`
-<br />  
-}
+for `item-항목` in `collection-컬렉션/집합체` {<br /> `statements-구문`<br />}
 
 `makeIterator()` 메소드를 호출하여 _컬렉션 (collection)_ 표현식에 대한 '반복자 타입 (iterator type)'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-인 값을 구합니다. 프로그램은 반복자에 대해서 `next()` 메소드를 호출하는 것으로 반복문의 실행을 시작합니다. 반환 값이 `nil` 이 아닌 경우, 이를 _항목 (item)_ '유형 (pattern)' 에 할당하고, 프로그램은 _구문 (statements)_ 을 실행한 다음, 반복문의 맨 처음에서 실행을 계속합니다. 다른 경우라면, 프로그램은 할당을 수행하거나 _구문 (statements)_ 을 실행하지 않고, `for`-`in` 문의 실행을 종료합니다.
 
@@ -50,11 +46,7 @@ for `item-항목` in `collection-컬렉션/집합체` {
 
 `while` 문의 형식은 다음과 같습니다:
 
-while `condition-조건` {
-  <br />
-  `statements-구문`
-  <br />
-}
+while `condition-조건` {<br /> `statements-구문`<br />}
 
 `while` 문은 다음 처럼 실행합니다:
 
