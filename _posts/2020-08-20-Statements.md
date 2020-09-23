@@ -126,20 +126,18 @@ repeat {
 
 `do` 문은 다음의 형식을 가지고 있습니다:
 
-```swift
-do {
-    try expression
-    statements
-} catch pattern 1 {
-    statements
-} catch pattern 2 where condition {
-    statements
-} catch pattern 3, pattern 4 where condition {
-    statements
-} catch {
-    statements
-}
-```
+`
+do {<br />
+  try `expression-표현식`<br />
+  `statements-구문`<br />
+} catch `pattern 1-유형 1` {<br />
+  `statements-구문`<br />
+} catch `pattern 2-유형 2` where `condition-조건` {<br />
+  `statements-구문`<br />
+} catch `pattern 3-유형 3`, `pattern 4-유형 4` where `condition-조건` {<br />
+  `statements-구문`<br />
+} catch {<br />
+  `statements-구문`<br />}
 
 `do` 코드 블럭에 있는 어떤 구문이든 에러를 던지게 되면, 애러와 일치하는 '패턴 (pattern)' 의 첫 번째 `catch` 절로 프로그램 제어를 전달합니다. 일치하는 구절이 없으면, 에러를 주변 영역으로 전파합니다. 에러가 최상위 수준에서도 처리되지 않으면, 실행 시간 에러와 함께 프로그램 실행을 중지합니다.
 
