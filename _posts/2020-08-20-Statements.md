@@ -134,7 +134,7 @@ do {<br />
 } catch `pattern 1-유형 1` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } catch `pattern 2-유형 2` where `condition-조건` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } catch `pattern 3-유형 3`, `pattern 4-유형 4` where `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } catch {<br />
