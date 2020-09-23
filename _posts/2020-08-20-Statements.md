@@ -34,7 +34,9 @@ categories: Swift Language Grammar Statement
 
 `for`-`in` 문의 형식은 다음과 같습니다:
 
-for `item-항목` in `collection-컬렉션/집합체` {<br /> `statements-구문`<br />}
+for `item-항목` in `collection-컬렉션/집합체` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+}
 
 `makeIterator()` 메소드를 호출하여 _컬렉션 (collection)_ 표현식에 대한 '반복자 타입 (iterator type)'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-인 값을 구합니다. 프로그램은 반복자에 대해서 `next()` 메소드를 호출하는 것으로 반복문의 실행을 시작합니다. 반환 값이 `nil` 이 아닌 경우, 이를 _항목 (item)_ '유형 (pattern)' 에 할당하고, 프로그램은 _구문 (statements)_ 을 실행한 다음, 반복문의 맨 처음에서 실행을 계속합니다. 다른 경우라면, 프로그램은 할당을 수행하거나 _구문 (statements)_ 을 실행하지 않고, `for`-`in` 문의 실행을 종료합니다.
 
@@ -46,7 +48,9 @@ for `item-항목` in `collection-컬렉션/집합체` {<br /> `statements-구문
 
 `while` 문의 형식은 다음과 같습니다:
 
-while `condition-조건` {<br /> `statements-구문`<br />}
+while `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+}
 
 `while` 문은 다음 처럼 실행합니다:
 
@@ -68,10 +72,8 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연
 
 `repeat`-`while` 문의 형식은 다음과 같습니다:
 
-repeat {
-  <br />
-  `statements-구문`
-  <br />
+repeat {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } while `condition-조건`
 
 `repeat`-`while` 문은 다음 처럼 실행합니다:
@@ -127,16 +129,16 @@ repeat {
 `do` 문은 다음의 형식을 가지고 있습니다:
 
 do {<br />
-  try `expression-표현식`<br />
-  `statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } catch `pattern 1-유형 1` {<br />
-  `statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } catch `pattern 2-유형 2` where `condition-조건` {<br />
-  `statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;
 } catch `pattern 3-유형 3`, `pattern 4-유형 4` where `condition-조건` {<br />
-  `statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } catch {<br />
-  `statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
 `do` 코드 블럭에 있는 어떤 구문이든 에러를 던지게 되면, 애러와 일치하는 '패턴 (pattern)' 의 첫 번째 `catch` 절로 프로그램 제어를 전달합니다. 일치하는 구절이 없으면, 에러를 주변 영역으로 전파합니다. 에러가 최상위 수준에서도 처리되지 않으면, 실행 시간 에러와 함께 프로그램 실행을 중지합니다.
