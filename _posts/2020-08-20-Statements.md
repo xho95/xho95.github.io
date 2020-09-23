@@ -20,9 +20,29 @@ categories: Swift Language Grammar Statement
 
 > GRAMMAR OF A STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
-### Loop Statements
+### Loop Statements (반복문)
 
-#### For-In Statement
+반복문은, 반복문에서 지정한 조건에 따라, 코드 블럭을 반복해서 실행하게 해줍니다. 스위프트는 세 가지의 반복문을 가지고 있습니다; 이는 `for`-`in` 문, `while` 문, `repeat`-`while` 문입니다.
+
+반복문의 제어 흐름은 `break` 문과 `continue` 문으로 바꿀 수 있으며 이는 아래의 [Break Statement ('break' 문)](#break-statement-break-문) 및 [Continue Statement ('continue' 문)](#continue-statement-continue-문) 에서 설명합니다.
+
+> GRAMMAR OF A LOOP STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID429)
+
+#### For-In Statement ('for-in' 문)
+
+`for`-`in` 문은 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하는 컬렉션 (또는 어떤 타입) 의 각 항목마다 코드 블럭을 한 번씩 실행하도록 해줍니다.
+
+`for`-`in` 문의 형식은 다음과 같습니다:
+
+for `item-항목` in `collection-컬렉션/집합체` {
+<br />  
+  `statements-구문`
+<br />  
+}
+
+`makeIterator()` 메소드를 호출하여 _컬렉션 (collection)_ 표현식에 대한 '반복자 타입 (iterator type)'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-인 값을 구합니다. 프로그램은 반복자에 대해서 `next()` 메소드를 호출하는 것으로 반복문의 실행을 시작합니다. 반환 값이 `nil` 이 아닌 경우, 이를 _항목 (item)_ '유형 (pattern)' 에 할당하고, 프로그램은 _구문 (statements)_ 을 실행한 다음, 반복문의 맨 처음에서 실행을 계속합니다. 다른 경우라면, 프로그램은 할당을 수행하거나 _구문 (statements)_ 을 실행하지 않고, `for`-`in` 문의 실행을 종료합니다.
+
+> GRAMMAR OF A FOR-IN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
 #### While Statement
 
@@ -46,9 +66,9 @@ categories: Swift Language Grammar Statement
 
 ### Control Transfer Statements
 
-#### Break Statement
+#### Break Statement ('break' 문)
 
-#### Continue Statement
+#### Continue Statement ('continue' 문)
 
 #### Fallthrough Statement
 
