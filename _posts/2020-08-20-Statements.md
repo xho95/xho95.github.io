@@ -44,9 +44,57 @@ for `item-항목` in `collection-컬렉션/집합체` {
 
 > GRAMMAR OF A FOR-IN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
-#### While Statement
+#### While Statement ('while' 문)
+
+`while` 문은, 조건이 참으로 남아 있는 한, 반복해서 코드 블럭을 실행하도록 해줍니다.
+
+`while` 문의 형식은 다음과 같습니다:
+
+while `condition-조건` {
+<br />    
+  `statements-구문`
+<br />  
+}
+
+`while` 문은 다음 처럼 실행합니다:
+
+1. _조건 (condition)_ 을 평가합니다.
+
+  `true` 이면, 실행을 2 단계로 계속합니다. `false` 면, 프로그램은 `while` 문의 실행을 종료합니다.
+
+2. 프로그램은 _구문 (statements)_ 을 실행하고, 실행은 1 단계로 돌아갑니다.
+
+_조건 (condition)_ 의 값은 _구문 (statements)_ 을 실행하기 전에 평가하기 때문에, `while` 문에 있는 _구문 (statements)_ 은 '0' 번 이상 실행될 수 있습니다.
+
+_조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+
+> GRAMMAR OF A WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
 #### Repeat-While Statement
+
+`repeat`-`while` 문은, 조건이 참으로 남아 있는 한, 한 번 이상 코드 블럭을 실행하도록 해줍니다.
+
+`repeat`-`while` 문의 형식은 다음과 같습니다:
+
+repeat {
+<br />    
+  `statements-구문`
+<br />  
+} while `condition-조건`
+
+`repeat`-`while` 문은 다음 처럼 실행합니다:
+
+1. 프로그램은 _구문 (statements)_ 을 실행하고, 실행을 2 단계로 계속합니다.
+
+2. _조건 (condition)_ 을 평가합니다.
+
+  `true` 이면, 실행은 1 단계로 돌아갑니다. `false` 면, 프로그램은 `repeat`-`while` 문의 실행을 종료합니다.
+
+  _조건 (condition)_ 의 값은 _구문 (statements)_ 을 실행한 후에 평가하기 때문에, `repeat`-`while` 문에 있는 _구문 (statements)_ 은 최소한 한 번은 실행됩니다.
+
+  _조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+
+> GRAMMAR OF A REPEAT-WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
 ### Branch Statement
 
