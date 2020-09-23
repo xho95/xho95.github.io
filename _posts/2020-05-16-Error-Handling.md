@@ -8,7 +8,7 @@ categories: Swift Language Grammar Error Handling
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 부분[^Error-Handling]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
 >
-> 현재 번역이 진행 중인데, 2020-06-22 에 Swift 5.3 이 발표되어, 이미 번역된 부분과 남은 부분 모두 Swift 5.3 을 기준으로 옮기도록 합니다. 완료된 목록은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있으며, 일부는 Swift 5.2 기준일 수 있습니다.
+> 스위프트 5.3 에 대한 내용이 다시 일부 수정되어서,[^swift-update] 추가된 내용 먼저 옮기고 나머지 부분을 옮기도록 합니다. 전체 목록은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Error Handling (에러 처리)
 
@@ -291,6 +291,8 @@ func processFile(filename: String) throws {
 ### 참고 자료
 
 [^Error-Handling]: 이 글에 대한 원문은 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 확인할 수 있습니다.
+
+[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^error-to-optional]: 본문에도 나와 있듯이 `try?` 는 모든 에러를, `nil` 로 변환한다고 하는, 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 모든 에러를 무시해도 상관없는 경우에만 사용할 수 있습니다. 생각해보면, 예제에서 사용된 `someThrowingFunction()` 도 원래 `nil` 이 될 수 있는 함수이고, 이 함수의 모든 에러는 '정수 (integer)' 를 만들 수 없는 경우로 한정됩니다. 따라서, 이 경우에 모든 에러를 `nil` 로 변경한다고 해서 프로그램 실행에 문제가 될 것은 없습니다.
 

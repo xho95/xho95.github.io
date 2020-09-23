@@ -8,7 +8,7 @@ categories: Swift Language Grammar Declaration
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html) 부분[^Declarations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
 >
-> 현재 번역이 진행 중인데, 2020-06-22 에 Swift 5.3 이 발표되어, 이미 번역된 부분과 남은 부분 모두 Swift 5.3 을 기준으로 옮기도록 합니다. 완료된 목록은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있으며, 일부는 Swift 5.2 기준일 수 있습니다.
+> 스위프트 5.3 에 대한 내용이 다시 일부 수정되어서,[^swift-update] 추가된 내용 먼저 옮기고 나머지 부분을 옮기도록 합니다. 전체 목록은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Declarations (선언)
 
@@ -28,9 +28,32 @@ _선언 (declaration)_ 은 프로그램에 새로운 이름 또는 구조물을 
 
 > GRAMMAR OF A TOP-LEVEL DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID352)
 
-### Code Blocks
+### Code Blocks (코드 블럭)
 
-### Import Declaration
+코드 블럭은 다양한 선언문과 제어 구조에서 구문을 그룹화하기 위해 사용합니다. 형식은 다음과 같습니다:
+
+{
+<br />
+  `statements-구문`
+<br />  
+}
+
+코드 블록 내의 _구문 (statements)_ 은 선언문, 표현식, 및 다른 종류의 구문을 포함하며 소스 코드에 있는 순서대로 실행됩니다.
+
+> GRAMMAR OF A CODE BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID353)
+
+### Import Declaration (선언 불러오기)
+
+_선언 불러오기 (import declaration)_ 는 현재 파일 밖에서 선언한 기호에 접근할 수 있도록 해줍니다. 기본 형식은 전체 모듈을 불러옵니다; 이는 `import` 키워드와 그 뒤의 모듈 이름으로 구성됩니다:
+
+import `module-모듈`
+
+가져올 심볼에 대한 자세한 제한을 제공하면 특정 하위 모듈이나 모듈 또는 하위 모듈 내에서 특정 선언을 지정할 수 있습니다. 이 세부 양식을 사용하면 가져온 기호 만 (이를 선언하는 모듈이 아닌) 현재 범위에서 사용할 수 있습니다.
+
+import `import kind-불러오는 종류` `module.symbole name-모듈.기호 이름`
+import `module-모듈`.`submodule-하위 모듈`
+
+> GRAMMAR OF AN IMPORT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID354)
 
 ### Constant Declaration
 
@@ -354,6 +377,8 @@ protocol SomeProtocol: AnyObject {
 ### 참고 자료
 
 [^Declarations]: 원문은 [Declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html) 에서 확인할 수 있습니다.
+
+[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^expression]: 여기서의 '표현식 (expression)' 은 위 예제 양식에 있는 'expression' 을 말합니다. 클래스 선언이나 구조체 선언에서는 이 'expression' 부분이 없어도 된다는 말입니다.
 
