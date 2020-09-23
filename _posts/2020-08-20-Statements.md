@@ -51,7 +51,7 @@ for `item-항목` in `collection-컬렉션/집합체` {
 `while` 문의 형식은 다음과 같습니다:
 
 while `condition-조건` {
-<br />    
+<br />
   `statements-구문`
 <br />  
 }
@@ -76,11 +76,7 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연
 
 `repeat`-`while` 문의 형식은 다음과 같습니다:
 
-repeat {
-<br />    
-  `statements-구문`
-<br />  
-} while `condition-조건`
+repeat {<br />`statements-구문`<br />} while `condition-조건`
 
 `repeat`-`while` 문은 다음 처럼 실행합니다:
 
