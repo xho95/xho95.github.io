@@ -195,7 +195,7 @@ allViews.remove(cancelButton) // 더 명확함
 
 경우에 따라, 모호함을 피하기 위해 타입 정보를 반복하는 것도 필요하긴 하지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고하기 바랍니다.
 
-* **변수, 매개 변수, 및 결합된 타입은 역할에 따라 이름을 짓지,** 타입 구속 조건으로 이름을 짓지 않도록 합니다.
+* **변수, 매개 변수, 및 결합된 타입은 역할에 따라 이름을 짓되,** 타입 구속 조건으로 이름을 짓지 않도록 합니다.
 
 ```swift
 // 안좋은 경우
@@ -228,6 +228,25 @@ protocol Sequence {
   associatedtype Iterator : IteratorProtocol
 }
 protocol IteratorProtocol { ... }
+```
+
+* **타입 정보가 약할 경우 보완하여** 매개 변수의 역할을 분명하게 밝히도록 합니다.
+
+특히 매개 변수 타입이 `NSObject`, `Any`, `AnyObject`, 또는 `Int` 및 `String` 같은 기반 타입일 때는, 사용 시점에서의 타입 정보와 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 다음 예제에서, 선언은 명확하지만, 사용하는 쪽은 불분명합니다.
+
+```swift
+// 안좋은 경우
+func add(_ observer: NSObject, for keyPath: String)
+
+grid.add(self, for: graphics) // 불분명함
+```
+
+분명함을 다시 살리려면, 약한 타입인 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙이도록 합니다.
+
+```swift
+// 좋은 경우
+func addObserver(_ observer: NSObject, forKeyPath path: String)
+grid.addObserver(self, forKeyPath: graphics) // 명확함
 ```
 
 #### Strive for Fluent Usage
