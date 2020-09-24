@@ -90,8 +90,13 @@ repeat {<br />
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
-### Branch Statement
+### Branch Statement (분기문)
 
+분기문은 하나 이상의 조건 값에 따라 프로그램이 정해진 코드 부분을 실행하도록 해줍니다. 분기문에서 지정한 조건의 값이 프로그램을 어떻게 분기할 지를 제어하며, 따라서, 어떤 코드 블럭을 실행할 지 제어합니다. 스위프트는 세 가지의 분기문을 가지고 있습니다: `if` 문, `guard` 문, 그리고 `switch` 문이 그것입니다.
+
+`if` 문 또는 `switch` 문에 있는 제어 흐름은 `break` 문으로 바꿀 수 있는데 이는 아래의 [Break Statement ('break' 문)](#break-statement-break-문)) 에서 설명합니다.
+
+> GRAMMAR OF A BRANCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 #### If Statement
 
 #### Guard Statement
