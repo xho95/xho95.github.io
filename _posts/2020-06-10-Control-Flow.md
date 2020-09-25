@@ -256,7 +256,7 @@ if temperatureInFahrenheit <= 32 {
 // "It's very cold. Consider wearing a scarf." 를 출력합니다.
 ```
 
-위의 예제는 온도가 '화씨 (Fahrenheit)' 32도 (물의 어는 점) 보다 낮은 지를 검사합니다. 이에 해당하면, 메시지를 출력합니다. 해당하지 않으면, 메시지를 출력하지 않으며, `if` 문의 '종료 중괄호 (closing brace)' 뒤의 코드를 계속해서 실행합니다.
+위의 예제는 온도가 '화씨 (Fahrenheit)' 32도 (물의 어는 점) 보다 낮은 지를 검사합니다. 이에 해당하면, 메시지를 출력합니다. 해당하지 않으면, 메시지를 출력하지 않으며, `if` 문의 '닫는 중괄호 (closing brace)' 뒤의 코드를 계속해서 실행합니다.
 
 `if` 문은, `if` 조건이 `false` 일 때의 상황을 위해서, `else clause` 이라는, 일정한 대체 구문을 제공할 수 있습니다. 이 구문은 `else` 키워드를 써서 지시합니다.
 
@@ -583,13 +583,13 @@ print(puzzleOutput)
 
 **Break in a Loop Statement (반복문 내의 Break 문)**
 
-반복문 안에서 사용하는, `break` 는 반복문의 실행을 그 즉시 종료하고 '제어권 (control)' 를 반복문의 '종료 중괄호 (closing brace; `}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차 (iteration)' 에 있는 코드는 더 이상 실행되지 않으며, 반복문의 '회차' 도 더 이상 새로 시작하지 않습니다.
+반복문 안에서 사용하는, `break` 는 반복문의 실행을 그 즉시 종료하고 '제어권 (control)' 를 반복문의 '닫는 중괄호 (closing brace; `}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차 (iteration)' 에 있는 코드는 더 이상 실행되지 않으며, 반복문의 '회차' 도 더 이상 새로 시작하지 않습니다.
 
 <p>
 <strong id="break-in-a-switch-statement-switch-문-내의-break-문">Break in a Switch Statement (Switch 문 내의 Break 문)</strong>
 </p>
 
-`switch` 문 안에서 사용하는, `break` 는 `switch` 문의 실행을 그 즉시 종료하게 만들고 '제어권 (control)' 을 `switch` 문의 '종료 중괄호 (`}`)' 뒤의 코드로 전달합니다.
+`switch` 문 안에서 사용하는, `break` 는 `switch` 문의 실행을 그 즉시 종료하게 만들고 '제어권 (control)' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다.
 
 이런 동작 방식은 `switch` 문의 하나 이상의 'case 절' 에 맞춰지도록 해서 이를 무시하는 데 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저해야 (exhaustive)' 하고 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 드러내기 위해 어떤 'case 절' 를 일부러 맞춰지도록 해서 무시하는 것이 필요할 때가 있습니다. 이렇게 하려면 무시하고 싶은 'case 절' 전체 본문으로 `break` 문을 써주면 됩니다. 해당 'case 절' 이 `switch` 문에 의해 맞춰지면, 'case 절' 안에 있는 `break` 문이 `switch` 문의 실행을 그 즉시 종료합니다.
 
@@ -755,7 +755,7 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 // "I hope the weather is nice in Cupertino." 를 출력합니다.
 ```
 
-`guard` 문의 조건에 부합하는 경우, 코드 실행은 `guard` 문의 '종료 중괄호 뒤에서부터 계속됩니다. (`guard` 문의) 조건부에서 '옵셔널 연결 (optional binding)' 로 값을 할당한 변수나 상수는 어떤 것이든 `guard` 문이 있는 코드 블럭의 나머지 부분에서 사용할 수 있습니다.
+`guard` 문의 조건에 부합하는 경우, 코드 실행은 `guard` 문의 '닫는 중괄호 뒤에서부터 계속됩니다. (`guard` 문의) 조건부에서 '옵셔널 연결 (optional binding)' 로 값을 할당한 변수나 상수는 어떤 것이든 `guard` 문이 있는 코드 블럭의 나머지 부분에서 사용할 수 있습니다.
 
 해당 조건에 부합하지 않는 경우, `else` 분기 내의 코드를 실행합니다. 이 분기는 `guard` 문이 있는 코드 블록을 반드시 탈출하도록 '제어권 (control)' 을 전달해야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 와 같은 '제어 전송 구문 (control transfer statement)' 으로 할 수 있으며, 아니면 아예 `fatalError(_:file:line:)` 같이, 반환을 하지 않는 함수나 메소드를 호출할 수도 있습니다.
 

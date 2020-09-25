@@ -1,4 +1,4 @@
-I"�<blockquote>
+I"�<blockquote>
   <p>Apple 에서 공개한 <a href="https://docs.swift.org/swift-book/">The Swift Programming Language (Swift 5.2)</a> 책의 <a href="https://docs.swift.org/swift-book/LanguageGuide/Methods.html">Methods</a> 부분<sup id="fnref:Methods" role="doc-noteref"><a href="#fn:Methods" class="footnote">1</a></sup>을 번역하고 정리한 글입니다.</p>
 
   <p>현재 전체 중에서 번역 완료된 목록은 <a href="/swift/programming/language/grammar/2017/02/28/The-Swift-Programming-Language.html">Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)</a> 에서 확인할 수 있습니다.</p>
@@ -14,7 +14,7 @@
 
 <p><em>‘인스턴스 메소드 (instance methods)’</em> 는 특정한 클래스, 구조체, 또는 열거체의 인스턴스에 속해 있는 함수를 말합니다. 이는, 인스턴스 속성에 접근하고 수정하는 방법을 제공하거나, 또는 인스턴스의 목적과 관계가 있는 기능을 제공함으로써, 그 인스턴스의 기능을 지원합니다. ‘인스턴스 메소드’ 는 ‘함수’ 와 정확하게 똑같은 구문 표현을 가지는데, 함수에 대해서는 <a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html">Functions (함수)</a> 에서 설명하도록 합니다.</p>
 
-<p>인스턴스 메소드는 자신이 속해 있는 타입의 시작 및 종료 중괄호 안에 작성합니다. 인스턴스 메소드는 암시적으로 해당 타입의 모든 다른 인스턴스 메소드와 속성에 접근할 수 있습니다. 인스턴스 메소드는 자신이 속해 있는 타입의 지정된 인스턴스에서만 호출할 수 있습니다. 존재하는 인스턴스가 없다면 독립적으로 호출할 수 없습니다.</p>
+<p>인스턴스 메소드는 자신이 속해 있는 타입의 시작 및 닫는 중괄호 안에 작성합니다. 인스턴스 메소드는 암시적으로 해당 타입의 모든 다른 인스턴스 메소드와 속성에 접근할 수 있습니다. 인스턴스 메소드는 자신이 속해 있는 타입의 지정된 인스턴스에서만 호출할 수 있습니다. 존재하는 인스턴스가 없다면 독립적으로 호출할 수 없습니다.</p>
 
 <p>다음 예제는, 동작 발생 횟수를 계산하는데 사용할 수 있는, 간단한 <code class="highlighter-rouge">Counter</code> 클래스를 정의합니다:</p>
 

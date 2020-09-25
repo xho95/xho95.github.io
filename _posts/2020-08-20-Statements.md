@@ -84,20 +84,53 @@ repeat {<br />
 
   `true` 이면, 실행은 1 단계로 돌아갑니다. `false` 면, 프로그램은 `repeat`-`while` 문의 실행을 종료합니다.
 
-  _조건 (condition)_ 의 값은 _구문 (statements)_ 을 실행한 후에 평가하기 때문에, `repeat`-`while` 문에 있는 _구문 (statements)_ 은 최소한 한 번은 실행됩니다.
+_조건 (condition)_ 의 값은 _구문 (statements)_ 을 실행한 후에 평가하기 때문에, `repeat`-`while` 문에 있는 _구문 (statements)_ 은 최소한 한 번은 실행됩니다.
 
-  _조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+_조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
-### Branch Statement (분기문)
+### Branch Statements (분기문)
 
 분기문은 하나 이상의 조건 값에 따라 프로그램이 정해진 코드 부분을 실행하도록 해줍니다. 분기문에서 지정한 조건의 값이 프로그램을 어떻게 분기할 지를 제어하며, 따라서, 어떤 코드 블럭을 실행할 지 제어합니다. 스위프트는 세 가지의 분기문을 가지고 있습니다: `if` 문, `guard` 문, 그리고 `switch` 문이 그것입니다.
 
 `if` 문 또는 `switch` 문에 있는 제어 흐름은 `break` 문으로 바꿀 수 있는데 이는 아래의 [Break Statement ('break' 문)](#break-statement-break-문)) 에서 설명합니다.
 
 > GRAMMAR OF A BRANCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
-#### If Statement
+
+#### If Statement ('if' 문)
+
+`if` 문은 하나 이상의 조건을 평가한 것을 기초로 하여 코드를 실행하는 데 사용합니다.
+
+`if` 문의 기본 형식에는 두 가지가 있습니다. 각 형식에서, '여는 중괄호' 와 '닫는 중괄호' 는 필수입니다.
+
+첫 번째 형식은 조건이 참일 때만 코드를 실행하도록 해주며 형식은 다음과 같습니다:
+
+if `condition-조건` {<br />
+  `statements-구문`<br />
+}
+
+`if` 문의 두 번째 형식은 (`else` 키워드로 도입하는) 추가적인 _else 절 (else clause)_ 을 제공하여 코드 한 부분은 조건이 참일 때 실행하고 코드의 다른 부분은 같은 조건이 거짓일 때 실행합니다. 단 하나의 `else` 절만 있을 때의, `if` 문의 형식은 다음과 같습니다:
+
+if `condition-조건` {<br />
+  `statements to execute if condition is true-조건이 참인 경우 실행하는 구문`<br />
+} else {<br />
+  `statements to execute if condition is false-조건이 거짓인 경우 실행하는 구문`<br />
+}
+
+`if` 문의 'else 절' 은 둘 이상의 조건을 테스트하기 위해 또 다른 `if` 문을 가질 수 있습니다. 이러한 식으로 서로 연쇄된 `if` 문의 형식은 다음과 같습니다:
+
+if `condition 1-조건 1` {<br />
+  `statements to execute if condition 1 is true-조건 1 이 참인 경우 실행하는 구문`<br />
+} else if `condition 2-조건 2` {<br />
+  `statements to execute if condition 2 is true-조건 2 이 참인 경우 실행하는 구문`<br />
+} else {<br />
+  `statements to execute if both conditions are false- 두 조건 모두 거짓인 경우 실행하는 구문`<br />
+}
+
+`if` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+
+> GRAMMAR OF A BRANCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
 #### Guard Statement
 
