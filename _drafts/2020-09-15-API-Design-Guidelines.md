@@ -249,7 +249,31 @@ func addObserver(_ observer: NSObject, forKeyPath path: String)
 grid.addObserver(self, forKeyPath: graphics) // 명확함
 ```
 
-#### Strive for Fluent Usage
+#### Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)
+
+* **메소드와 함수 이름은 사용하는 쪽에서 문법적인 영어 문장을 형성하게끔 만들기 바랍니다.**
+
+```swift
+// 좋은 경우
+x.insert(y, at: z)          “x 는, y 를 z 위치에 집어 넣습니다”
+x.subViews(havingColor: y)  “x 의 하위 뷰는 y 색상을 가집니다”
+x.capitalizingNouns()       “x 는 명사를 대문자로 만듭니다”
+```
+
+```swift
+// 안좋은 경우
+x.insert(y, position: z)
+x.subViews(color: y)
+x.nounCapitalize()
+```
+
+해당 인자들이 호출의 의미 중심이 아닐 때 첫 번째나 두 번째 인자 이후로 자연스러움의 감소는 받아들일 수 있습니다:
+
+```swift
+AudioUnit.instantiate(
+  with: description,
+  options: [.inProcess], completionHandler: stopProgressBar)
+```
 
 #### Use Terminology Well
 
