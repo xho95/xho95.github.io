@@ -241,7 +241,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 '던지는 메소드' 는 '다시 던지는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
 
-#### Functions that Never return
+#### Functions that Never return ('Never' 를 반환하는 함수)
 
 ### Enumeration Declaration
 

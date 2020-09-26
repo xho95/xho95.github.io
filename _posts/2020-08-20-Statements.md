@@ -132,7 +132,30 @@ if `condition 1-조건 1` {<br />
 
 > GRAMMAR OF A BRANCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
-#### Guard Statement
+#### Guard Statement ('guard' 문)
+
+`guard` 문은 조건이 하나라도 만족하지 않을 경우 프로그램 제어를 영역 밖으로 전달하는데 사용합니다.
+
+`guard` 문의 형식은 다음과 같습니다:
+
+guard `condition-조건` else {<br />
+  `statements-구문`<br />
+}
+
+`guard` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+
+`guard` 문 조건에 있는 '옵셔널 연결 선언 (optional binding declaration)' 으로 값을 할당한 상수나 변수는 어떤 것이든 'guard 문' 을 둘러싼 나머지 영역에서 사용할 수 있습니다.
+
+`guard` 문의 `else` 절은 필수이며, 반드시 반환 타입이 `Never` 인 함수를 호출하거나 아니면 아래의 구문 중 하나를 사용하여 프로그램 제어를 'guard 문' 을 둘러싼 영역 밖으로 옮겨야 합니다:
+
+* `return`
+* `break`
+* `continue`
+* `throw`
+
+'제어 전달 구문 (control transfer statements)' 은 아래의 [Control Transfer Statements (제어 전달 구문)](#control-transfer-statements-제어-전달-구문) 에서 논의합니다. `Never` 라는 반환 타입을 가지는 함수에 대한 더 많은 정보는, [Functions that Never return ('Never' 를 반환하는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-never-를-반환하는-함수) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
 #### Switch Statement
 
@@ -144,7 +167,7 @@ if `condition 1-조건 1` {<br />
 
 ### Labeled Statement
 
-### Control Transfer Statements
+### Control Transfer Statements (제어 전달 구문)
 
 #### Break Statement ('break' 문)
 
