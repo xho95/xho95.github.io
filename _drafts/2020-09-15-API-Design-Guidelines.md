@@ -275,6 +275,34 @@ AudioUnit.instantiate(
   options: [.inProcess], completionHandler: stopProgressBar)
 ```
 
+* **팩토리 메소드 (factory methods; 공장 메소드) 의 이름은 "`make`" 로 시작합니다.** 가령 `x.makeIterator()` 처럼 합니다.
+
+* 이니셜 라이저 및 팩토리 메서드 호출에 대한 첫 번째 인수는 기본 이름으로 시작하는 구문을 형성해서는 안됩니다. x.makeWidget (cogCount : 47)
+
+예를 들어 이러한 호출에 대한 첫 번째 인수는 기본 이름과 동일한 구문의 일부로 읽지 않습니다.
+
+```swift
+// 좋은 경우
+let foreground = Color(red: 32, green: 64, blue: 128)
+let newPart = factory.makeWidget(gears: 42, spindles: 14)
+let ref = Link(target: destination)
+```
+
+다음에서 API 작성자는 첫 번째 인수로 문법적 연속성을 만들려고했습니다.
+
+```swift
+// 안좋은 경우
+let foreground = Color(havingRGBValuesRed: 32, green: 64, andBlue: 128)
+let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
+let ref = Link(to: destination)
+```
+
+실제로이 지침은 인수 레이블에 대한 지침과 함께 호출이 값 보존 형식 변환을 수행하지 않는 한 첫 번째 인수에 레이블이 있음을 의미합니다.
+
+```swift
+let rgbForeground = RGBColor(cmykForeground)
+```
+
 #### Use Terminology Well
 
 ### Conventions
