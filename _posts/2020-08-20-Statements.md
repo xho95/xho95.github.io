@@ -157,7 +157,39 @@ guard `condition-조건` else {<br />
 
 > GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
-#### Switch Statement
+#### Switch Statement ('switch' 문)
+
+`switch` 문은 제어 표현식의 값에 따라 정해진 코드 블럭을 실행하도록 해줍니다.
+
+`switch` 문의 형식은 다음과 같습니다:
+
+switch `control expression-제어 표현식` {<br />
+case `pattern 1-유형 1`:<br />
+  `statements-구문`<br />
+case `pattern 2-유형 2` where `condition-조건`:<br />
+  `statements-구문`<br />
+case `pattern 3-유형 3` where `condition-조건`,<br />
+     `pattern 4-유형 4` where `condition-조건`:<br />
+  `statements-구문`<br />
+default:<br />
+  `statements-구문`<br />
+}
+
+`switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 'case 절' 에서 지정한 '패턴 (patterns; 유형)' 과 비교합니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 내에 열거한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비어 있을 수 없습니다. 그 결과, 각 'case 절' 이름표의 '콜론 (`:`)' 뒤에는 반드시 최소 하나의 구문이 포함되어야 합니다. 일치한 'case 절' 의 본문에서 어떤 코드도 실행하지 않으려면 단일 `break` 문을 사용합니다.
+
+코드를 분기시킬 수 있는 표현식의 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, '크기 값 타입 (scalar types)'[^scalar-types] 의 값에 더하여, 부동-소수점 수, 문자열, 튜플, 사용자 정의 클래스의 인스턴스 및, 옵셔널을 포함한, 어떤 타입의 값으로도 코드를 분기시킬 수 있습니다. _제어 표현식 (control expression)_ 의 값은 심지어 열거체의 'case 값' 과도 일치하는지 맞춰볼 수 있으며 지정한 범위의 값에 포함되는지도 검사할 수 있습니다. 이런 다양한 타입의 값들을 `switch` 문에서 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 을 참고하기 바랍니다.
+
+`switch` 문의 'case 절' 은 선택적으로 각각의 '패턴 (pattern)' 뒤에 `where` 절을 가질 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식을 써서 도입하며, 'case 절' 에 있는 패턴이 _제어 표현식 (control expression)_ 과 일치한다고 간주하기 전에 추가적인 조건을 제공하기 위해 사용합니다. `where` 절이 있으면, 관계가 있는 'case 절' 내의 _구문 (statements)_ 은 _제어 표현식 (control expression)_ 의 값이 'case 절' 의 패턴 중 하나와 일치하면서 `where` 절의 표현식이 `true` 로 평가될 때만 실행됩니다. 예를 들어, _제어 표현식 (control expression)_ 은 아래 예제의 'case 절' 과 튜플이면서, `(1, 1)` 처럼, 똑같은 값을 담고 있을 때만 일치합니다.
+
+```switch
+case let (x, y) where x == y:
+```
+
+위 예제에서 볼 수 있듯이, 'case 절' 에 있는 패턴은 `let` 키워드를 사용하여 상수를 연결할 수 있습니다 (`var` 키워드를 사용하여 변수를 연결할 수도 있습니다). 이런 상수 (또는 변수) 는 관련된 `where` 절과 'case 절' 영역 내의 나머지 코드에서 참조할 수 있습니다. 만약 'case 절' 이 제어 표현식과 일치하는 다중 패턴을 가지고 있는 경우, 모든 패턴은 반드시똑같은 상수 연결 또는 변수 연결을 담고 있어야 하며, 각 연결된 변수 또는 상수는 반드시 'case 절' 의 모든 패턴들과 똑같은 타입을 가져야 합니다.
+
+`switch` 문은 또, `default` 키워드로 도입한, '기본 case 절 (default case)' 을 포함할수 있습니다. '기본 case 절' 에 있는 코드는 다른 'case 절' 어느 것도 제어 표현식과 일치하지 않는 경우에만 실행됩니다. `switch` 문은 단 하나의 '기본 case 절' 을 포함할 수 있으며, 이는 반드시 `switch` 문의 맨 끝에 있어야 합니다.
+
+비록 '패턴 매칭 (pattern-matching; 유형 맞춤)' 연산의 실제 실행 순서, 및 특히 'case 절' 에 있는 패턴의 평가 순서는, 지정되어 있지 않더라도, `switch` 문에 있는 '패턴 매칭' 은 마치 값 평가를 소스 순서-즉, 소스 코드에 있는 순서-대로 하는 것처럼 작동합니다. 그 결과, 같은 값으로 평가되어, 제어 표현식의 값과 일치할 수 있는, 패턴을 가지는 'case 절' 이 여러 개인 경우, 프로그램은 소스 순서상 처음으로 일치하는 'case 절' 에 있는 코드만 실행합니다.
 
 **Switch Statements Must Be Exhaustive**
 
@@ -244,3 +276,5 @@ do {<br />
 [^Statements]: 원문은 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+
+[^scalar-types]: '크기 타입 (scalar types)' 은 수학에서 사용하는 '스칼라량 (scalar)' 과 비슷하게 크기 값만 가지는 타입이라고 이해할 수 있습니다.
