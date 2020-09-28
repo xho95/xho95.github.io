@@ -275,11 +275,11 @@ AudioUnit.instantiate(
   options: [.inProcess], completionHandler: stopProgressBar)
 ```
 
-* **팩토리 메소드 (factory methods; 공장 메소드) 의 이름은 "`make`" 로 시작합니다.** 가령 `x.makeIterator()` 처럼 합니다.
+* **'공장 메소드 (factory methods)' 의 이름은 "`make`" 로 시작합니다.** 가령 `x.makeIterator()` 처럼 합니다.
 
-* 이니셜 라이저 및 팩토리 메서드 호출에 대한 첫 번째 인수는 기본 이름으로 시작하는 구문을 형성해서는 안됩니다. x.makeWidget (cogCount : 47)
+* **초기자 및 [factory methods](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 에 대한 첫 번째 인자는 '기본 이름 (base name)'[^base-name] 으로 시작하는 구절을 형성하지 않도록 합니다, 가령 `x.makeWidget(cogCount: 47)` 처럼 하지 않습니다.
 
-예를 들어 이러한 호출에 대한 첫 번째 인수는 기본 이름과 동일한 구문의 일부로 읽지 않습니다.
+예를 들어, 이런 호출에 대한 첫 번째 인자는 '기본 이름 (base name)' 과 같은 구절인 것으로 이해하지는 않습니다.
 
 ```swift
 // 좋은 경우
@@ -288,7 +288,7 @@ let newPart = factory.makeWidget(gears: 42, spindles: 14)
 let ref = Link(target: destination)
 ```
 
-다음에서 API 작성자는 첫 번째 인수로 문법적 연속성을 만들려고했습니다.
+다음에 있는 것들은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 생성하려고 한 것입니다.
 
 ```swift
 // 안좋은 경우
@@ -297,7 +297,7 @@ let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
 let ref = Link(to: destination)
 ```
 
-실제로이 지침은 인수 레이블에 대한 지침과 함께 호출이 값 보존 형식 변환을 수행하지 않는 한 첫 번째 인수에 레이블이 있음을 의미합니다.
+실제로, 이 지침은 [argument labels](#argument-labels-인자-이름표) 에 대한 지침과 같이 호출이 [value preserving type conversion (값을 보존하는 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자가 이름표를 가질 것임을 의미합니다.
 
 ```swift
 let rgbForeground = RGBColor(cmykForeground)
@@ -311,7 +311,9 @@ let rgbForeground = RGBColor(cmykForeground)
 
 #### Parameters
 
-#### Argument Labels
+#### Argument Labels (인자 이름표)
+
+<strong id="type-conversion">초기자에서 '값을 보존하는 타입 변환 (value preserving type conversion)' 을 하는 경우, 첫 번째 인자 이름표는 생략합니다.</strong>
 
 ### Special Instructions
 
@@ -322,3 +324,5 @@ let rgbForeground = RGBColor(cmykForeground)
 [^complete-sentence]: 왜 완전한 문장을 사용하지 않는 지에 대한 설명은 따로 없는 것 같습니다. 최대한 간단하게 핵심만 정리하라는 의미로 이해할 수 있습니다.
 
 [^symbol-comman-syntax]: 사실 링크 자체는 바로 위에 있는 링크와 같은 문서로 연결됩니다.
+
+[^base-name]: 여기서 '기본 이름 (base name)' 은 함수 또는 메소드의 식별자 이름을 의미하는 것이라 추측됩니다.
