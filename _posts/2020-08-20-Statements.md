@@ -191,11 +191,38 @@ case let (x, y) where x == y:
 
 비록 '패턴 매칭 (pattern-matching; 유형 맞춤)' 연산의 실제 실행 순서, 및 특히 'case 절' 에 있는 패턴의 평가 순서는, 지정되어 있지 않더라도, `switch` 문에 있는 '패턴 매칭' 은 마치 값 평가를 소스 순서-즉, 소스 코드에 있는 순서-대로 하는 것처럼 작동합니다. 그 결과, 같은 값으로 평가되어, 제어 표현식의 값과 일치할 수 있는, 패턴을 가지는 'case 절' 이 여러 개인 경우, 프로그램은 소스 순서상 처음으로 일치하는 'case 절' 에 있는 코드만 실행합니다.
 
-**Switch Statements Must Be Exhaustive**
+**Switch Statements Must Be Exhaustive (switch 문은 반드시 빠짐없이 철저해야 합니다)**
 
-**Switching Over Future Enumeration Cases**
+스위프트에서는, '제어 표현식' 의 타입으로 생성 가능한 모든 값은 최소한 반드시 하나의 'case 절' 패턴과 일치해야 합니다. 이의 실현이 간단한 것이 아닐 때는 (예를 들어, '제어 표현식' 의 타입이 `Int` 일 때) 는, 필수 조건을 만족하기 위해 '기본 case 값 (default case)' 을 포함시킬 수 있습니다.
 
-**Execution Does Not Fall Through Cases Implicitly**
+**Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)**
+
+_동결되지 않은 열거체 (nonfrozen enumeration)_ 는 미래-심지어 앱을 컴파일하고 출하한 후-에도 새로운 열거체 case 값을 가질 수 있는 특수한 종류의 열거체입니다. 동결되지 않은 열거체에서 전환 (switching) 을 하려면 '부가적인 고려 (extra consideration)' 가 필수로 요구됩니다. 라이브러리 작성자가 열거체를 '동결되지 않은 (nonfrozen)' 것으로 표시하면, 새로운 열거체 case 절을 추가할 수 있는 권리를 예약한 것으로, 해당 열거체와 상호 작용하는 코드는 어떤 것이든 _반드시 (must)_ 재컴파일 없이 이런 미래의 'case 값' 을 처리할 수 있어야 합니다. '라이브러리 진화 모드 (library evolution mode)' 에서 컴파일된 코드, 표준 라이브러리에 있는 코드, '애플 프레임웍 (Apple frameworks)' 을 위한 '스위프트 오버레이 (Swift overlays)'[^Swift-overlays], 및 C 와 오브젝티브-C 코드는 '동결되지 않은 열거체' 라고 선언할 수 있습니다. 동결 열거체 및 동결되지 않은 열거체에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 를 참고하기 바랍니다.
+
+동결되지 않은 열거체 값을 전환할 때는, 열거체의 모든 'case 값' 이 그와 관련된 'switch 문의 case 절' 을 가지고 있더라도, 항상 '기본 case 절' 을 포함해야 합니다. '기본 case 절' 에 `@unknown` 속성을 적용할 수 있는데, 이는 기본 case 절이 미래에 추가되는 열거체 case 값과만 일치해야 함을 지시합니다. 스위프트는 '기본 case 절' 이 컴파일 시간에 이미 알고 있는 어떤 열거체 case 값과 일치하면 경고를 일으킵니다. 이 미래의 경고는 라이브러리 작성자가 switch 문에서 관련된 case 절을 가지지 않은 열거체에 새로운 case 값을 추가했음을 알려줍니다.
+
+다음 예제는 표준 라이브러리에 있는 [Mirror.AncestorRepresentation](https://developer.apple.com/documentation/swift/mirror/ancestorrepresentation) 열거체의 기존 case 값 세 개 모두에 대한 전환을 보여줍니다. 미래에 추가적인 'case 값' 을 추가할 경우, 컴파일러는 새로운 'case 값' 을 고려하기 위해 'switch 문' 을 갱신할 필요가 있음을 나타내고자 경고를 생성합니다.
+
+```swift
+let representation: Mirror.AncestorRepresentation = .generated
+switch representation {
+case .customized:
+    print("Use the nearest ancestor’s implementation.")
+case .generated:
+    print("Generate a default mirror for all ancestor classes.")
+case .suppressed:
+    print("Suppress the representation of all ancestor classes.")
+@unknown default:
+    print("Use a representation that was unknown when this code was compiled.")
+}
+// "Generate a default mirror for all ancestor classes." 를 출력합니다.
+```
+
+**Execution Does Not Fall Through Cases Implicitly (실행은 case 절을 암시적으로 뚫고 가지 않습니다)**
+
+프로그램은, 일치한 case 절에 있는 코드의 실행을 종료하면, `switch` 문을 빠져나갑니다. 프로그램 실행은 그 다음 'case 절' 이나 '기본 case 절' 로 계속되거나 "뚫고 가지 (fall through)" 않습니다. 즉, 한 'case 절' 에서 그 다음으로 실행이 계속되길 원한다면, 실행을 계속하길 원하는 'case 절' 안에, 단순히 `fallthrough` 키워드로 구성된, `fallthrough` 문을 명시적으로 포함시키도록 합니다. `fallthrough` 문에 대한 더 많은 정보는, 아래의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 을 참고하기 바랍니다.
+
+> GRAMMAR OF A SWITCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
 ### Labeled Statement
 
@@ -205,7 +232,7 @@ case let (x, y) where x == y:
 
 #### Continue Statement ('continue' 문)
 
-#### Fallthrough Statement
+#### Fallthrough Statement ('fallthrough' 문)
 
 #### Return Statement
 
@@ -278,3 +305,5 @@ do {<br />
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^scalar-types]: '크기 타입 (scalar types)' 은 수학에서 사용하는 '스칼라량 (scalar)' 과 비슷하게 크기 값만 가지는 타입이라고 이해할 수 있습니다.
+
+[^Swift-overlays]: 여기에서 '스위프트 오버레이 (Swift overlays)' 는 '뷰 (View)' 위에 다른 '뷰 (View)' 를 덧입힐 수 있는 UI 관련 프레임웍으로 추측됩니다.

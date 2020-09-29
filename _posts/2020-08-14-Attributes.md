@@ -34,7 +34,7 @@ categories: Swift Language Grammar Attribute
 
 #### dynamicMemberLookup
 
-#### frozen
+#### frozen (동결)
 
 #### GKInspectable
 
