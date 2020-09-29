@@ -311,7 +311,7 @@ let rgbForeground = RGBColor(cmykForeground)
 
 - **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 때때로 비슷한 '의미 구조 (semantics)' 를 가진 '변경하지 않는 (nonmutating)' 변형체를 가지게 되는데, 이는 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환합니다.
 
-* 연산이 동사로 자연스럽게 설명되는 경우 변형 방법에 동사의 명령형을 사용하고 "ed"또는 "ing"접미사를 적용하여 변형되지 않는 대응 이름을 지정합니다.
+* 연산이 **자연스럽게 동사로 설명될** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
 
 **Mutating (변경)** | **Nonmutating (변경하지 않는)**
 ---|---
