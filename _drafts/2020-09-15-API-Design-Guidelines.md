@@ -303,6 +303,21 @@ let ref = Link(to: destination)
 let rgbForeground = RGBColor(cmykForeground)
 ```
 
+* **함수와 메소드는 '부작용 (side-effects)'[^side-effects] 에 따라 이름을 짓습니다.**
+
+- '부작용 (side-effects)' 이 없는 것들은, `x.distance(to: y)`, `i.successor()` 처럼, 명사구 처럼 읽혀야 합니다.
+
+- '부작용 (side-effects)' 이 있는 것들은, `print(x)`, `x.sort()`, `x.append(y)` 처럼, '명령형 동사구 (imperative verb phrases)' 로 읽혀야 합니다.
+
+- **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 때때로 비슷한 '의미 구조 (semantics)' 를 가진 '변경하지 않는 (nonmutating)' 변형체를 가지게 되는데, 이는 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환합니다.
+
+* 연산이 동사로 자연스럽게 설명되는 경우 변형 방법에 동사의 명령형을 사용하고 "ed"또는 "ing"접미사를 적용하여 변형되지 않는 대응 이름을 지정합니다.
+
+**Mutating (변경)** | **Nonmutating (변경하지 않는)**
+---|---
+`x.sort()` | `z = x.sorted()`
+`x.append(y)` | `z = x.appending(y)`
+
 #### Use Terminology Well
 
 ### Conventions
@@ -326,3 +341,5 @@ let rgbForeground = RGBColor(cmykForeground)
 [^symbol-comman-syntax]: 사실 링크 자체는 바로 위에 있는 링크와 같은 문서로 연결됩니다.
 
 [^base-name]: 여기서 '기본 이름 (base name)' 은 함수 또는 메소드의 식별자 이름을 의미하는 것이라 추측됩니다.
+
+[^side-effects]: 컴퓨터 용어에서의 '부작용 (side-effects)' 은 무조건 나쁜 것이 아니라 '부가적인 효과' 정도의 의미로 이해할 수 있습니다.
