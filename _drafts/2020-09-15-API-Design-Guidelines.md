@@ -309,14 +309,55 @@ let rgbForeground = RGBColor(cmykForeground)
 
 - '부작용 (side-effects)' 이 있는 것들은, `print(x)`, `x.sort()`, `x.append(y)` 처럼, '명령형 동사구 (imperative verb phrases)' 로 읽혀야 합니다.
 
-- **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 때때로 비슷한 '의미 구조 (semantics)' 를 가진 '변경하지 않는 (nonmutating)' 변형체를 가지게 되는데, 이는 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환합니다.
+- **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 때때로 비슷한 '의미 구조 (semantics)' 를 가진 '변경하지 않는 (nonmutating)' 것을 별도로 가지게 되는데, 이는 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환합니다.
 
-* 연산이 **자연스럽게 동사로 설명될** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
+* 연산을 **동사로 설명하는 것이 자연스러울** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
 
 **Mutating (변경)** | **Nonmutating (변경하지 않는)**
 ---|---
 `x.sort()` | `z = x.sorted()`
 `x.append(y)` | `z = x.appending(y)`
+
+- 변경하지 않는 것의 이름은 (보통 "ed" 를 추가한) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하도록 합니다:
+
+```swift
+/// 그 자리에서 `self` 를 거꾸로 뒤집습니다.
+mutating func reverse()
+
+/// `self` 를 거꾸로 한 것의 복사본을 반환합니다.
+func reversed() -> Self
+...
+x.reverse()
+let y = x.reversed()
+```
+
+- 동사가 직접 목적어를 가지기 때문에 "ed" 를 추가하는 것이 문법적으로 맞지 않을 때는, 동사의 '현재 분사 [participle](https://en.wikipedia.org/wiki/Participle)' 를 사용하여, "ing" 를 덧붙여서, 변경하지 않는 것의 이름을 짓도록 합니다.
+
+```swift
+/// `self` 에서 모든 개행 문자를 벗겨냅니다.
+mutating func stripNewlines()
+
+/// `self` 에서 모든 개행 문자가 벗겨진 것의 복사본을 반환합니다.
+func strippingNewlines() -> String
+...
+s.stripNewlines()
+let oneLine = t.strippingNewlines()
+```
+
+* 연산을 **명사로 설명하는 것이 자연스러울** 때는, '변경하지 않는 메소드 (nonmutating method)' 에 대해서 명사를 사용하고 이에 대응되는 '변경하는 (nonmutating)' 것의 이름에 "form" 접두사를 적용합니다.
+
+**Nonmutating (변경하지 않는)** | **Mutating (변경)**
+---|---
+`x = y.union(z)` | `y.formUnion(z)`
+`j = c.successor(i)` | `c.formSuccessor(&i)`
+
+* 사용할 때 변경되지 않는다면 **불리언 메소드와 불리언 속성은 받는 쪽에서 단언문으로 읽히도록 사용합니다** 가령 `x.isEmpty`, `line1.intersects(line2)` 같은 것이 있습니다.
+
+* **그것이 무엇인지를 설명하는 프로토콜은 명사로 읽혀지도록 해야 합니다** (가령 `Collection` 같은 것이 있습니다).
+
+* **_보유 능력 (capability)_ 을 설명하는 프로토콜은 `able`, `ible`, 또는 `ing` 접미사를 사용하여 이름을 지어야 합니다.** (가령 `Equatable`, `ProgressReporting` 같은 것이 있습니다).
+
+* 그 외 다른 **타입, 속성, 변수, 및 상수는 명사로 읽혀지도록** 이름을 짓습니다.
 
 #### Use Terminology Well
 
@@ -343,3 +384,5 @@ let rgbForeground = RGBColor(cmykForeground)
 [^base-name]: 여기서 '기본 이름 (base name)' 은 함수 또는 메소드의 식별자 이름을 의미하는 것이라 추측됩니다.
 
 [^side-effects]: 컴퓨터 용어에서의 '부작용 (side-effects)' 은 무조건 나쁜 것이 아니라 '부가적인 효과' 정도의 의미로 이해할 수 있습니다.
+
+[^participle]: 원문 자체가 위키피디아의 [participle](https://en.wikipedia.org/wiki/Participle) 항목에 대한 링크로 되어 있습니다.
