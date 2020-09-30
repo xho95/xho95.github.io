@@ -379,11 +379,11 @@ let oneLine = t.strippingNewlines()
 
 * **선례를 받아들이도록 합니다.** 기존 문화에 대한 준수를 희생하면서까지 완전 초보자를 위해 용어를 최적화하지는 않도록 합니다.
 
-초보자가 List의 의미를 더 쉽게 이해할 수 있지만 List와 같은 단순화 된 용어를 사용하는 것보다 연속적인 데이터 구조 Array의 이름을 지정하는 것이 좋습니다. 배열은 현대 컴퓨팅의 기본이므로 모든 프로그래머는 배열이 무엇인지 알고 있거나 곧 알게 될 것입니다. 대부분의 프로그래머가 익숙한 용어를 사용하면 웹 검색 및 질문에 대한 보상이 주어집니다.
+자료가 서로 인접해 있는 구조의 경우, 초보자라면 의미를 파악하기에 `List` 가 더 쉽더라도, `List` 라는 단순화된 용어보다 `Array` 라고 이름을 짓는 것이 더 좋습니다. '배열 (arrays)' 은 '현대의 컴퓨팅 (modern computing)' 에서 기반이므로, 모든 프로그래머가 배열이 무엇인지 알고 있거나-곧 배우게 될 것입니다. 대부분의 프로그래머에게 친숙한 용어를 사용하여, 웹 검색이나 질문을 통해 보상받을 수 있게 합니다.
 
-수학과 같은 특정 프로그래밍 영역 내에서 sin (x)와 같이 널리 사용되는 용어가 verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle (x)와 같은 설명 문구보다 선호됩니다. 이 경우, 약어를 피하기 위해 선례가 지침보다 중요하다는 점에 유의하십시오. 완전한 단어는 사인이지만“sin (x)”는 수십 년 동안 프로그래머와 수세기 동안 수학자 사이에서 일반적으로 사용되었습니다.
+수학 같은, 특정한 프로그래밍 _분야 (domain)_ 에서는 `sin(x)` 처럼 이미 널리 사용되는 용어가 `verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle(x)`[^sin] 와 같은 설명 방식의 구절보다 더 적합합니다. 이 경우에는, 축약어를 피하라는 지침보다 선례가 더 중시된다는 점에 주목하기 바랍니다: 완전한 단어는 `sine` 일지라도, “sin(x)” 는 프로그래머 사이에서는 수십년 동안, 그리고 수학자 사이에서는 수백년 동안 일상적으로 사용된 것입니다.
 
-### Conventions
+### Conventions (협약)
 
 #### General Conventions
 
@@ -410,3 +410,5 @@ let oneLine = t.strippingNewlines()
 [^participle]: 원문 자체가 위키피디아의 [participle](https://en.wikipedia.org/wiki/Participle) 항목에 대한 링크로 되어 있습니다.
 
 [^term-of-art]: 이어지는 내용을 보면 알겠지만, 스위프트는 이런 '기술 용어 (term of art)' 대신 일상 용어를 더 많이 사용할 것을 권장하고 있습니다. 스위프트 표준 라이브러리에 있는 클래스들을 봐도, `Image` 나 `Button` 처럼, 접두사 없이 일상 용어로 타입 이름을 정하는 것을 볼 수 있습니다.
+
+[^sin]: 'verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle' 이 말을 직역하면 '각도를 가진 반지름의 끝이 원점에 있는 단위 원 상에 있을 때의 수직 위치' 정도로 옮길 수 있습니다.
