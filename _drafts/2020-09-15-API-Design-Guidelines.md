@@ -12,9 +12,9 @@ categories: Swift Language Grammar Revision History
 
 * [Fundamentals (기반)](#fundamentals-기반)
 * [Naming](#naming-이름짓기)
-- [Promote Clear Usage](#promote-clear-usage-명확한-사용법-촉진하기)
-- Strive for Fluent Usage
-- Use Terminology Well
+- [Promote Clear Usage](#promote-clear-usage-명확한-사용법을-추구합니다)
+- [Strive for Fluent Usage](#strive-for-fluent-usage-사용법이-자연스럽도록-노력합니다)
+- [Use Terminology Well](#use-terminology-well-용어를-잘-사용합니다)
 * Conventions
 - General Conventions
 - Parameters
@@ -152,7 +152,7 @@ public func print(
 
 ### Naming (이름짓기)
 
-#### Promote Clear Usage (명확한 사용법 촉진하기)
+#### Promote Clear Usage (명확한 사용법을 추구합니다)
 
 * **필요한 모든 단어를 포함시켜서** 이름이 사용된 곳의 코드를 읽을 때 모호함이 없도록 합니다.
 
@@ -249,7 +249,7 @@ func addObserver(_ observer: NSObject, forKeyPath path: String)
 grid.addObserver(self, forKeyPath: graphics) // 명확함
 ```
 
-#### Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)
+#### Strive for Fluent Usage (사용법이 자연스럽도록 노력합니다)
 
 * **메소드와 함수 이름은 사용하는 쪽에서 문법적인 영어 문장을 형성하게끔 만들기 바랍니다.**
 
@@ -359,7 +359,29 @@ let oneLine = t.strippingNewlines()
 
 * 그 외 다른 **타입, 속성, 변수, 및 상수는 명사로 읽혀지도록** 이름을 짓습니다.
 
-#### Use Terminology Well
+#### Use Terminology Well (용어를 잘 사용합니다)
+
+**Term of Art-기술 용어** _명사 (noun)_ 특정 분야 또는 직업에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
+
+* **애매한 용어는 피하고** 더 일반적이고 의미도 잘 전달하는 단어를 사용합니다. "피부 (skin)" 가 의도에 맞다면 굳이 "표피 (epidermis)" 라고 하지 않습니다. '기술 용어 (term of art)' 는 '핵심적인 소통 도구' 이지만, 다른 경우라면 잃어 버릴 수도 있는 '결정적인 의미 (crucial meaning)' 를 붙잡아야할 때만 사용하도록 합니다.
+
+* **기존에 확립된 의미를 유지한 채로** 기술 용어를 사용합니다.
+
+더 일반적인 단어 대신 '전문적인 용어 (technical term)' 를 사용하는 유일한 이유는 다른 경우라면 모호하거나 불명확한 것을 _엄밀하게 (precisely)_ 표현하기 때문입니다. 그러므로, API 는 합당한 의미에 따라 엄격하게 용어를 사용해야 합니다.
+
+- **전문가를 놀라게 하지 않도록 합니다.**: 이미 용어에 친숙한 사람이 새로운 의미가 발명된 것을 보면 놀랍기도 하고 화가 나기도 할 것입니다.
+
+- **초보자를 혼란스럽게 하지 않도록 합니다.**: 용어를 배우려는 사람은 웹 검색을 하게 될 것이고 전통적인 의미를 찾게 될 것입니다.
+
+* **축약어를 피하도록 합니다.** '축약어 (abbreviations)', 특히 표준이-아닌 것은, 이해를 하려면 축약되지-않은 형태로 올바르게 번역해야만 한다는 점에서, 사실상 '기술 용어 (terms-of-art)' 인 것입니다.
+
+> 사용한 축약어는 어떤 것이든 의도한 의미를 웹 검색으로 쉽게 찾을 수 있어야 합니다.
+
+* **선례를 받아들이도록 합니다.** 기존 문화에 대한 준수를 희생하면서까지 완전 초보자를 위해 용어를 최적화하지는 않도록 합니다.
+
+초보자가 List의 의미를 더 쉽게 이해할 수 있지만 List와 같은 단순화 된 용어를 사용하는 것보다 연속적인 데이터 구조 Array의 이름을 지정하는 것이 좋습니다. 배열은 현대 컴퓨팅의 기본이므로 모든 프로그래머는 배열이 무엇인지 알고 있거나 곧 알게 될 것입니다. 대부분의 프로그래머가 익숙한 용어를 사용하면 웹 검색 및 질문에 대한 보상이 주어집니다.
+
+수학과 같은 특정 프로그래밍 영역 내에서 sin (x)와 같이 널리 사용되는 용어가 verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle (x)와 같은 설명 문구보다 선호됩니다. 이 경우, 약어를 피하기 위해 선례가 지침보다 중요하다는 점에 유의하십시오. 완전한 단어는 사인이지만“sin (x)”는 수십 년 동안 프로그래머와 수세기 동안 수학자 사이에서 일반적으로 사용되었습니다.
 
 ### Conventions
 
@@ -386,3 +408,5 @@ let oneLine = t.strippingNewlines()
 [^side-effects]: 컴퓨터 용어에서의 '부작용 (side-effects)' 은 무조건 나쁜 것이 아니라 '부가적인 효과' 정도의 의미로 이해할 수 있습니다.
 
 [^participle]: 원문 자체가 위키피디아의 [participle](https://en.wikipedia.org/wiki/Participle) 항목에 대한 링크로 되어 있습니다.
+
+[^term-of-art]: 이어지는 내용을 보면 알겠지만, 스위프트는 이런 '기술 용어 (term of art)' 대신 일상 용어를 더 많이 사용할 것을 권장하고 있습니다. 스위프트 표준 라이브러리에 있는 클래스들을 봐도, `Image` 나 `Button` 처럼, 접두사 없이 일상 용어로 타입 이름을 정하는 것을 볼 수 있습니다.
