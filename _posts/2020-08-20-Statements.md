@@ -66,7 +66,7 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연
 
 > GRAMMAR OF A WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
-#### Repeat-While Statement
+#### Repeat-While Statement ('repeat'-'while' 문)
 
 `repeat`-`while` 문은, 조건이 참으로 남아 있는 한, 한 번 이상 코드 블럭을 실행하도록 해줍니다.
 
@@ -224,7 +224,16 @@ case .suppressed:
 
 > GRAMMAR OF A SWITCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
-### Labeled Statement
+### Labeled Statement (이름표 달린 구문)
+
+반복문, `if` 문, `switch` 문, 또는 `do` 문은, 이름표와 바로 뒤의 콜론 (`:`) 으로 구성된, _구문 이름표 (statement label)_ 를 접두사로 가질 수 있습니다.  
+반복문이나 `switch` 문에서 제어 흐름을 어떻게 바꾸고 싶은 지를 명시하려면, 아래의 [Break Statement ('break' 문)](#break-statement-break-문) 및 [Continue Statement ('continue' 문)](#continue-statement-continue-문) 에서 설명한 것처럼, `break` 문과 `continue` 문에서 '구문 이름표 (statement label)' 를 사용하면 됩니다.
+
+'이름표 달린 구문 (labeled statement)' 의 영역은 '구문 이름표' 뒤의 전체 구문입니다. '이름표 달린 구문' 은 중첩할 수 있지만, 각각의 '구문 이름표' 는 반드시 유일해야 합니다.
+
+더 자세한 정보와 구문 이름표를 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Labeled Statements (이름표 달린 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-달린-구문) 을 참고하기 바랍니다.
+
+> GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
 ### Control Transfer Statements (제어 전달 구문)
 
