@@ -385,15 +385,15 @@ let oneLine = t.strippingNewlines()
 
 ### Conventions (협약)
 
-#### General Conventions
+#### General Conventions (일반적인 협약)
 
-#### Parameters
+#### Parameters (매개 변수)
 
 #### Argument Labels (인자 이름표)
 
 <strong id="type-conversion">초기자에서 '값을 보존하는 타입 변환 (value preserving type conversion)' 을 하는 경우, 첫 번째 인자 이름표는 생략합니다.</strong>
 
-### Special Instructions
+### Special Instructions (특수한 지시 사항들)
 
 ### 참고 자료
 
