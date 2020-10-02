@@ -243,6 +243,22 @@ case .suppressed:
 
 #### Break Statement ('break' 문)
 
+`break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 종료합니다. `break` 문은, 아래에서 보는 것처럼, `break` 키워드로만 구성하거나, `break` 키워드와 그 뒤의 '구문 이름표 (statement label)' 이름으로 구성할 수 있습니다.
+
+break
+<br />
+break `label name-이름표 이름`
+
+`break` 문 다음에 '구문 이름표' 이름이 올 때는, 해당 이름표로 이름을 붙인 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 종료합니다.
+
+`break` 문 다음에 '구문 이름표' 이름이 오지 않을 때는, 자기가 있는 `switch` 문 또는 가장 안쪽에서 둘러싼 반복문의 프로그램 실행을 종료합니다. 이름표가 없는 `break` 문을 사용하여 `if` 문을 끊고 나올 수는 없습니다.
+
+두 경우 모두, 프로그램 제어를 둘러싼 반복문이나 `switch` 문 뒤의 코드, 만약에 있다면, 첫 번째 줄로 전달합니다.
+
+`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (Break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 달린 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-달린-구문) 을 참고하기 바랍니다.
+
+> GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
+
 #### Continue Statement ('continue' 문)
 
 #### Fallthrough Statement ('fallthrough' 문)
