@@ -50,7 +50,7 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 > 스위프트의 '에러 처리' 는, `try`, `catch` 와 `throw` 키워드를 사용하는, 다른 언어의 '예외 처리 (exception handling)' 와 비슷해 보입니다. 다만, 오브젝티브-C 언어를 포함한-많은 언어들의 '예외 처리' 와 다르게, 스위프트의 에러 처리는 계산 비용이 많이 드는 과정인, '호출 스택 (call stack)' 을 풀지 않습니다. 그로 인해, `throw` 문의 성능은 `return` 문에 필적합니다.
 
-#### Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)
+#### Propagating Errors Using Throwing Functions ('던지는 함수' 를 사용하여 에러 전파하기)
 
 함수, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, 함수 선언의 매개 변수 뒤에 `throws` 키워드를 써주면 됩니다. `throws` 로 표시된 함수를 _던지는 함수 (throwing function)_ 이라고 합니다. 이 함수가 반환 타입을 지정할 경우, `throws` 키워드는 '반환 화살표 (return arrow; `->`)' 앞에 써줍니다.
 

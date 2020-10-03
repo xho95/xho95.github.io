@@ -309,6 +309,20 @@ return `expression-표현식`
 
 #### Throw Statement ('throw' 문)
 
+`throw` 문은 타입을 `throws` 키워드로 표시한 '던지는 함수 (throwing function)' 이나 '던지는 메소드' 의 본문, 및 클로저 표현식의 본문에 둡니다.
+
+`throw` 문은 프로그램이 현재 영역의 실행을 종료하도록 하고 자신을 둘러싼 영역으로 에러 전파를 시작하도록 합니다. 던져진 에러는 `do` 문의 `catch` 절에서 처리할 때까지 계속 전파됩니다.
+
+`throw`, 아래에서 보는 것처럼, `throw` 키워드와 그 뒤의 표현식으로 구성됩니다.
+
+throw `expression-표현식`
+
+_표현식 (expression)_ 의 값은 반드시 `Error` 프로토콜을 준수하는 타입이어야 합니다.
+
+`throw` 문을 사용하는 방법에 대한 예제는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에 있는 [Propagating Errors Using Throwing Functions ('던지는 함수' 를 사용하여 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-를-사용하여-에러-전파하기) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A THROW STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
+
 ### Defer Statement
 
 ### Do Statement ('do' 구문)

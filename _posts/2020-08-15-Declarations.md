@@ -320,7 +320,7 @@ protocol SomeProtocol: AnyObject {
 
 ### Initializer Declaration
 
-#### Failable Initializers
+#### Failable Initializers (실패 가능한 초기자)
 
 ### Deinitializer Declaration
 
