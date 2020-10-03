@@ -281,9 +281,15 @@ continue `label name-이름표 이름`
 
 #### Fallthrough Statement ('fallthrough' 문)
 
-#### Return Statement
+`fallthrough` 문은 `fallthrough` 키워드로 구성되며 `switch` 문의 'case 절' 블럭에서만 발생합니다. `fallthrough` 문은 프로그램 실행을 `switch` 문의 한 'case 절' 에서 그 다음 'case 절' 로 계속하도록 합니다. 프로그램 실행은 심지어 'case 절' 이름표의 패턴이 `switch` 문의 제어 표현식에 있는 값과 일치하지 않더라도 그 다음 'case 절' 로 계속됩니다.
 
-#### Throw Statement
+`fallthrough` 문은 'case 절' 블럭의 마지막 구문으로써만이 아니라, `switch` 문 내부의 어디에서나 있을 수 있지만, 최종 'case 절' 블럭에서는 사용할 수 없습니다. 이는 또 프로그램 제어를 '값 연결 패턴 (value binding patterns)' 을 가지고 있는 패턴으로 전달할 수는 없습니다.
+
+`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Control Transfer Statements (제어 전달 구문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달-구문) 을 참고하기 바랍니다.
+
+#### Return Statement ('return' 문)
+
+#### Throw Statement ('throw' 문)
 
 ### Defer Statement
 
