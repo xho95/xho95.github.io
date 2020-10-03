@@ -287,7 +287,25 @@ continue `label name-이름표 이름`
 
 `switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Control Transfer Statements (제어 전달 구문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달-구문) 을 참고하기 바랍니다.
 
+> GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
+
 #### Return Statement ('return' 문)
+
+`return` 문은 함수나 메소드 정의의 본문에 둬서 프로그램 실행을 호출한 쪽의 함수나 메소드로 반환하도록 합니다. 프로그램 실행은 함수나 메소드 호출의 바로 그 다음 지점에서 계속됩니다.
+
+`return` 문은, 아래에서 보는 것처럼, `return` 키워드로만 구성하거나, `return` 키워드와 그 뒤의 표현식으로 구성할 수 있습니다.
+
+return
+<br />
+return `expression-표현식`
+
+`return` 문 뒤에 표현식이 있을 때는, 이 표현식의 값이 호출한 함수 또는 메소드로 반환됩니다. 만약 표현식의 값이 함수나 메소드 선언에서 선언한 반환 타입의 값과 일치하지 않으면, 표현식의 값은 호출한 함수나 메소드로 반환되기 전에 해당 반환 타입으로 변환됩니다.
+
+> [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자) 에서 설명한 것처럼, 초기화의 실패를 지시하기 위해 '실패 가능한 초기자' 에서는  특수한 형식의 `return` 문인 (`return nil`) 을 사용할 수 있습니다.
+
+`return` 문 뒤에 표현식이 없을 때는, 값을 반환하지 않는 함수 또는 메소드의 반환에서만 사용할 수 있습니다 (이는, 함수나 메소드의 반환 타입이 `Void` 또는 `()` 일 때입니다).
+
+> GRAMMAR OF A RETURN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
 #### Throw Statement ('throw' 문)
 
