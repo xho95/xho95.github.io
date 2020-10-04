@@ -323,7 +323,35 @@ _표현식 (expression)_ 의 값은 반드시 `Error` 프로토콜을 준수하�
 
 > GRAMMAR OF A THROW STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
-### Defer Statement
+### Defer Statement ('defer' 문)
+
+`defer` 문은 `defer` 문이 있는 영역 밖으로 프로그램 제어를 전달하기 바로 직전에 코드를 실행하기 위해서 사용합니다.
+
+`defer` 문의 형식은 다음과 같습니다:
+
+defer {<br />
+  `statements-구문`<br />
+}
+
+`defer` 문 내에 있는 구문들은 프로그램 제어가 전달되는 방식과는 상관없이 실행됩니다. 이것은 , 예를 들어, '파일 서술자 (file descriptors)'[^file-discriptors] 닫기 같은 '수동 자원 관리 (manual resource management)' 를 수행하고, 에러를 던지더라도 해야할 필요가 있는 행동을 수행하기 위해 `defer` 문을 사용할 수 있다는 것을 의미합니다.
+
+같은 영역에 여러 개의 `defer` 문이 있는 경우, 나타난 순서와 실행 순서는 반대입니다. 주어진 영역에서 마지막 `defer` 문이 먼저 실행된다는 것은 마지막 `defer` 문 안에 있는 구문은 다른 `defer` 문에서 정리할 자원도 참조할 수 있다는 것을 의미합니다.
+
+```swift
+func f() {
+    defer { print("First defer") }
+    defer { print("Second defer") }
+    print("End of function")
+}
+f()
+// "End of function" 를 출력합니다.
+// "Second defer" 를 출력합니다.
+// "First defer" 를 출력합니다.
+```
+
+`defer` 문에 있는 구문이 프로그램 제어를 `defer` 문 밖으로 전달할 수는 없습니다.
+
+> GRAMMAR OF A DEFER STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID532)
 
 ### Do Statement ('do' 구문)
 
@@ -392,3 +420,5 @@ do {<br />
 [^scalar-types]: '크기 타입 (scalar types)' 은 수학에서 사용하는 '스칼라량 (scalar)' 과 비슷하게 크기 값만 가지는 타입이라고 이해할 수 있습니다.
 
 [^Swift-overlays]: 여기에서 '스위프트 오버레이 (Swift overlays)' 는 '뷰 (View)' 위에 다른 '뷰 (View)' 를 덧입힐 수 있는 UI 관련 프레임웍으로 추측됩니다.
+
+[^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
