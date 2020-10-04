@@ -387,6 +387,28 @@ let oneLine = t.strippingNewlines()
 
 #### General Conventions (일반적인 협약)
 
+* **계산 속성의 복잡도가 'O(1)' 이 아닌 경우 이를 문서화합니다.**[^complexity] 사람들은 속성에 접근 할 때, 이를 저장 속성이라고 생각하기 때문에, 이것이 상당한 계산과 엮여 있지는 않을 것이라고 가정합니다. 이러한 가정을 위반할 때는 반드시 경고해야 합니다.
+
+* **자유 함수 (free functions) 보다는 메소드와 속성을 사용하도록 합니다.** '자유 함수 (free function)'[^free-function] 는 다음과 같은 특수한 경우에만 사용합니다:
+
+1. `self` 가 분명하지 않을 때:
+
+```swift
+min(x, y, z)
+```
+
+2. 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
+
+```swift
+print(x)
+```
+
+3. '함수 구문 표현' 이 '확립된 분야의 표기법' 에 해당할 때:
+
+```swift
+sin(x)
+```
+
 #### Parameters (매개 변수)
 
 #### Argument Labels (인자 이름표)
@@ -412,3 +434,7 @@ let oneLine = t.strippingNewlines()
 [^term-of-art]: 이어지는 내용을 보면 알겠지만, 스위프트는 이런 '기술 용어 (term of art)' 대신 일상 용어를 더 많이 사용할 것을 권장하고 있습니다. 스위프트 표준 라이브러리에 있는 클래스들을 봐도, `Image` 나 `Button` 처럼, 접두사 없이 일상 용어로 타입 이름을 정하는 것을 볼 수 있습니다.
 
 [^sin]: 'verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle' 이 말을 직역하면 '각도를 가진 반지름의 끝이 원점에 있는 단위 원 상에 있을 때의 수직 위치' 정도로 옮길 수 있습니다.
+
+[^complexity]: 컴퓨터 용어로 '복잡도 (complexity)' 라는 것은 알고리즘을 실행하는데 필요한 자원의 총량을 나타내는 말입니다. 보다 자세한 내용은 위키피디아의 [Computational complexity](https://en.wikipedia.org/wiki/Computational_complexity) 항목을 참고하기 바랍니다.
+
+[^free-function]: 스위프트에서 '자유 함수 (free function)' 는 어느 영역에도 소속되어 있지 않은 '멤버가 아닌 함수 (non-member function)'-즉 일종의 전역 함수-를 의미합니다. 보다 자세한 내용은 위키피디아의 [Free function](https://en.wikipedia.org/wiki/Free_function) 항목을 참고하기 바랍니다.
