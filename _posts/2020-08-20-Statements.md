@@ -409,7 +409,7 @@ _컴파일 조건 (compile condition)_ 은 `true` 및 `false` 불리언 글자 �
 **Platform condition (플랫폼 조건)** || **Valid arguments (유효한 인자)**
 ---|---|---
 `os()` || `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`
-`arch()` || `i386`, `x86_64`, `arm64`
+`arch()` || `i386`, `x86_64`, `arm`, `arm64`
 `swift()` || `>=` 또는 `<` 와 그 뒤의 버전 번호
 `compiler()` || `>=` 또는 `<` 와 그 뒤의 버전 번호
 `canImport()` || 모듈 이름
@@ -431,6 +431,28 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 // "Compiled in Swift 4.2 mode or later" 를 출력합니다.
 // "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5" 를 출력합니다.
 ```
+
+`canImport()` 플랫폼 조건에 대한 인자는 모든 플랫폼에 존재하지는 않을 수도 있는 모듈의 이름입니다. 이 조건은 모듈을 불러오는 것이 가능한지 검사하지만, 실제로 불러오는 것은 아닙니다. 해당 모듈이 있는 경우, 플랫폼 조건은 `true` 를 반환합니다; 다른 경우라면, `false` 를 반환합니다.
+
+`targetEnvironment()` 플랫폼 조건은 코드를 시뮬레이터 용으로 컴파일할 때 `true` 를 반환합니다; 다른 경우라면, `false` 를 반환합니다.
+
+> `arch(arm)` 플랫폼 조건은 'ARM 64' 기기에 대해서 `true` 를 반환하지는 않습니다. `arch(i386)` 플랫폼 조건은 코드를 '32-비트 iOS 시뮬레이터' 용으로 컴파일할 때 `true` 를 반환합니다.
+
+논리 연산자인 `&&`, `||`, 및 `!` 와 그룹화를 위한 괄호를 사용하여 컴파일 조건을 조합할 수 있습니다. 이 연산자들은 일상적인 불리언 표현식을 조합하는데 사용하는 논리 연산자와 같은 '결합 법칙 (associativity)' 과 '우선순위 (precedence)' 를 가지고 있습니다.
+
+`if` 문과 비슷하게, 서로 다른 컴파일 조건을 검사하기 위해 '다중 조건 분기 (multiple conditional branches)' 를 추가할 수 있습니다. `#elseif` 절을 사용하면 어떤 개수로든 추가적인 분기를 추가할 수 있습니다. `#else` 절을 ​​사용하면 최종적인 추가 분기를 추가 할 수 있습니다. '다중 분기' 를 가지고 있는 '조건부 컴파일 블럭' 의 형식은 다음과 같습니다:
+
+\#if `compilation condition 1-컴파일 조건 1`<br />
+`statements to compile if compilation condition 1 is true-컴파일 조건 1이 참일 때 컴파일하는 구문`<br />
+\#elseif `compilation condition 2-컴파일 조건 2`<br />
+`statements to compile if compilation condition 2 is true-컴파일 조건 2가 참일 때 컴파일하는 구문`<br />
+\#else<br />
+`statements to compile if both compilation conditions are false-두 컴파일 조건 모두 거짓일 때 컴파일하는 구문`<br />
+\#endif
+
+> '조건부 컴파일 블럭' 의 본문에 있는 각각의 구문은 컴파일되지 않는 경우에도 해석됩니다. 하지만, 컴파일 조건이 `swift()` 플랫폼 조건을 포함하고 있는 경우는 예외입니다: 이 구문은 컴파일러의 스위프트 버전이 플랫폼 조건서 지정한 것과 일치하는 경우에만 해석됩니다. 이런 예외는 새 버전의 스위프트에서 도입한 '구문 표현 (syntax)' 을 더 예전 컴파일러가 해석하지 않도록 보장합니다.
+
+> GRAMMAR OF A CONDITIONAL COMPILATION BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 #### Line Control Statement (라인 제어문)
 
