@@ -406,14 +406,14 @@ do {<br />
 
 _컴파일 조건 (compile condition)_ 은 `true` 및 `false` 불리언 글자 값, `-D` '명령 줄 깃표 (command line flag)'[^flag] 와 함께 사용된 식별자, 또는 아래 표에서 나열한 어떤 '플랫폼 조건 (platform)' 을 포함할 수 있습니다.
 
-**Platform condition (플랫폼 조건)** | **Valid arguments (유효한 인자)**
----|---
-`os()` | `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`
-`arch()` | `i386`, `x86_64`, `arm64`
-`swift()` | `>=` 또는 `<` 와 그 뒤의 버전 번호
-`compiler()` | `>=` 또는 `<` 와 그 뒤의 버전 번호
-`canImport()` | 모듈 이름
-`targetEnvironment()` | `simulator`, `macCatalyst`
+**Platform condition (플랫폼 조건)** |---| **Valid arguments (유효한 인자)**
+---|---|---
+`os()` |---| `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`
+`arch()` |---| `i386`, `x86_64`, `arm64`
+`swift()` |---| `>=` 또는 `<` 와 그 뒤의 버전 번호
+`compiler()` |---| `>=` 또는 `<` 와 그 뒤의 버전 번호
+`canImport()` |---| 모듈 이름
+`targetEnvironment()` |---| `simulator`, `macCatalyst`
 
 `swift()` 와 `compiler()` 에 대한 버전 번호는, 버전 번호의 각 부분을 구분하는 점 (`.`) 과 함께, '주요 번호 (major number)', 선택 사항인 '부수 번호 (minor number)', 선택 사항인 '땜빵 번호 (patch number)', 등등으로 구성됩니다. '비교 연산자 (comparison operator)' 와 '버전 번호' 사이에는 반드시 공백이 없어야 합니다. `compiler()` 에 대한 버전은, 컴파일러에 전달된 '스위프트 버전 설정' 과 관계없는, 컴파일러 버전입니다.[^Swift-version-setting] `swift()` 에 대한 버전은 현재 컴파일하고 있는 언어 버전입니다. 예를 들어, 스위프트 5 컴파일러를 사용하면서 스위프트 4.2 모드로 컴파일하는 경우, '컴파일러 버전' 은 '5' 이고 '언어 버전' 은 '4.2' 입니다. 이렇게 설정하면, 다음 코드는 세 개의 메시지를 모두 출력합니다:
 
