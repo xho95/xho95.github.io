@@ -394,6 +394,44 @@ do {<br />
 
 #### Conditional Compilation Block (조건부 컴파일 블럭)
 
+'조건부 컴파일 블럭 (conditional compile block)' 은 하나 이상의 컴파일 조건 값에 따라 코드를 조건부로 컴파일하게 해줍니다.
+
+모든 조건부 컴파일 블럭은 `#if` '컴파일 지시자 (compilation directive)' 로 시작해서 `#endif` 컴파일 지시사로 끝납니다. 단순 조건부 컴파일 블럭의 형식은 다음과 같습니다:
+
+\#if `compilation condition-컴파일 조건`<br />
+  `statements-구문`<br />
+\#endif
+
+`if` 문의 조건과는 다르게, _컴파일 조건 (compile condition)_ 은 컴파일 시간에 값을 평가합니다. 그 결과, 컴파일 시간에 _컴파일 조건 (compile condition)_  이 `true` 라고 평가될 때만 _구문 (statements)_ 을 컴파일하고 실행합니다.
+
+_컴파일 조건 (compile condition)_ 은 `true` 및 `false` 불리언 글자 값, `-D` '명령 줄 깃표 (command line flag)'[^flag] 와 함께 사용된 식별자, 또는 아래 표에서 나열한 어떤 '플랫폼 조건 (platform)' 을 포함할 수 있습니다.
+
+**Platform condition (플랫폼 조건)** | **Valid arguments (유효한 인자)**
+---|---
+`os()` | `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`
+`arch()` | `i386`, `x86_64`, `arm64`
+`swift()` | `>=` 또는 `<` 와 그 뒤의 버전 번호
+`compiler()` | `>=` 또는 `<` 와 그 뒤의 버전 번호
+`canImport()` | 모듈 이름
+`targetEnvironment()` | `simulator`, `macCatalyst`
+
+`swift()` 와 `compiler()` 에 대한 버전 번호는, 버전 번호의 각 부분을 구분하는 점 (`.`) 과 함께, '주요 번호 (major number)', 선택 사항인 '부수 번호 (minor number)', 선택 사항인 '땜빵 번호 (patch number)', 등등으로 구성됩니다. '비교 연산자 (comparison operator)' 와 '버전 번호' 사이에는 반드시 공백이 없어야 합니다. `compiler()` 에 대한 버전은, 컴파일러에 전달된 '스위프트 버전 설정' 과 관계없는, 컴파일러 버전입니다.[^Swift-version-setting] `swift()` 에 대한 버전은 현재 컴파일하고 있는 언어 버전입니다. 예를 들어, 스위프트 5 컴파일러를 사용하면서 스위프트 4.2 모드로 컴파일하는 경우, '컴파일러 버전' 은 '5' 이고 '언어 버전' 은 '4.2' 입니다. 이렇게 설정하면, 다음 코드는 세 개의 메시지를 모두 출력합니다:
+
+```swift
+#if compiler(>=5)
+print("Compiled with the Swift 5 compiler or later")
+#endif
+#if swift(>=4.2)
+print("Compiled in Swift 4.2 mode or later")
+#endif
+#if compiler(>=5) && swift(<5)
+print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5")
+#endif
+// "Compiled with the Swift 5 compiler or later" 를 출력합니다.
+// "Compiled in Swift 4.2 mode or later" 를 출력합니다.
+// "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5" 를 출력합니다.
+```
+
 #### Line Control Statement (라인 제어문)
 
 '라인 제어문 (line control statement)' 은 컴파일 되는 소스 코드의 '라인 (line)' 번호 및 파일 이름과 다를 수도 있는 라인 번호 및 파일 이름을 지정하기 위해 사용합니다. 스위프트가 진단 및 디버깅 목적으로 사용하는 소스 코드의 위치를 바꾸려면 '라인 제어문' 을 사용하도록 합니다.
@@ -426,3 +464,7 @@ do {<br />
 [^Swift-overlays]: 여기에서 '스위프트 오버레이 (Swift overlays)' 는 '뷰 (View)' 위에 다른 '뷰 (View)' 를 덧입힐 수 있는 UI 관련 프레임웍으로 추측됩니다.
 
 [^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
+
+[^flag]: '명령 줄 깃표 (command line flag)' 는 '비트 필드' 의 한 비트를 `On`/`Off` 하여 프로그램에 약속된 신호를 남기기 위해 사용하는 미리 정의된 비트를 말합니다. 보다 자세한 내용은 위키피디아의 [플래그](https://ko.wikipedia.org/wiki/플래그) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다.
+
+[^Swift-version-setting]: 이것은 '스위프트 컴파일러 버전' 과 '소스 코드 상의 스위프트 언어 버전' 이 다를 수 있기 때문입니다. 예를 들어, 새로운 컴파일러를 설치한 후에 예전 소스 코드를 컴파일할 경우, '스위프트 버전 설정' 은 예전 버전으로 두면서 컴파일은 최신 버전으로 할 수도 있습니다.
