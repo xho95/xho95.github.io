@@ -386,9 +386,13 @@ do {<br />
 
 > GRAMMAR OF A DO STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID533)
 
-### Compiler Control Statements
+### Compiler Control Statements (컴파일러 제어문)
 
-#### Conditional Compilation Block
+'컴파일러 제어문 (compiler control statements)' 는 프로그램이 컴파일러의 작동 방식을 바꿀 수 있게 해줍니다. 스위프트는 세 개의 컴파일러 제어문을 가지고 있습니다: '조건부 컴파일 블럭 (conditional compilation block)', '라인 제어문 (line control statement)', 그리고 '컴파일-시간 진단문 (compile-time diagnostic statement)' 가 그것입니다.
+
+> GRAMMAR OF A COMPILER CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
+
+#### Conditional Compilation Block (조건부 컴파일 블럭)
 
 #### Line Control Statement (라인 제어문)
 
@@ -407,7 +411,7 @@ do {<br />
 
 > GRAMMAR OF A LINE CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
-#### Compile-Time Diagnostic Statement
+#### Compile-Time Diagnostic Statement (컴파일-시간 진단문)
 
 ### Availability Condition
 
