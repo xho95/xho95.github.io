@@ -12,14 +12,14 @@ categories: Swift Language Grammar Revision History
 
 * [Fundamentals (기반)](#fundamentals-기반)
 * [Naming](#naming-이름짓기)
-- [Promote Clear Usage](#promote-clear-usage-명확한-사용법을-추구합니다)
-- [Strive for Fluent Usage](#strive-for-fluent-usage-사용법이-자연스럽도록-노력합니다)
-- [Use Terminology Well](#use-terminology-well-용어를-잘-사용합니다)
-* [Conventions](#conventions-협약)
-- [General Conventions](#general-conventions-일반적인-협약)
-- [Parameters](#parameters-매개-변수)
-- Argument Labels
-* Special Instructions
+- [Promote Clear Usage (명확한 사용법 추구하기)](#promote-clear-usage-명확한-사용법-추구하기)
+- [Strive for Fluent Usage (사용법이 자연스럽도록 노력하기)](#strive-for-fluent-usage-사용법이-자연스럽도록-노력하기)
+- [Use Terminology Well (용어를 잘 사용하기)](#use-terminology-well-용어를-잘-사용하기)
+* [Conventions (협약)](#conventions-협약)
+- [General Conventions (일반적인 협약)](#general-conventions-일반적인-협약)
+- [Parameters (매개 변수)](#parameters-매개-변수)
+- [Argument Labels (인자 이름표)](#argument-labels-인자-이름표)
+* [Special Instructions (특수한 지시 사항들)](#special-instructions-특수한-지시-사항들)
 
 ### Fundamentals (기반)
 
@@ -152,7 +152,7 @@ public func print(
 
 ### Naming (이름짓기)
 
-#### Promote Clear Usage (명확한 사용법을 추구합니다)
+#### Promote Clear Usage (명확한 사용법 추구하기)
 
 * **필요한 모든 단어를 포함시켜서** 이름이 사용된 곳의 코드를 읽을 때 모호함이 없도록 합니다.
 
@@ -249,7 +249,7 @@ func addObserver(_ observer: NSObject, forKeyPath path: String)
 grid.addObserver(self, forKeyPath: graphics) // 명확함
 ```
 
-#### Strive for Fluent Usage (사용법이 자연스럽도록 노력합니다)
+#### Strive for Fluent Usage (사용법이 자연스럽도록 노력하기)
 
 * **메소드와 함수 이름은 사용하는 쪽에서 문법적인 영어 문장을 형성하게끔 만들기 바랍니다.**
 
@@ -359,7 +359,7 @@ let oneLine = t.strippingNewlines()
 
 * 그 외 다른 **타입, 속성, 변수, 및 상수는 명사로 읽혀지도록** 이름을 짓습니다.
 
-#### Use Terminology Well (용어를 잘 사용합니다)
+#### Use Terminology Well (용어를 잘 사용하기)
 
 **Term of Art-기술 용어** _명사 (noun)_ 특정 분야 또는 직업에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
 
@@ -572,7 +572,56 @@ extension String {
 
 #### Argument Labels (인자 이름표)
 
-<strong id="type-conversion">초기자에서 '값을 보존하는 타입 변환 (value preserving type conversion)' 을 하는 경우, 첫 번째 인자 이름표는 생략합니다.</strong>
+```swift
+func move(from start: Point, to end: Point)
+x.move(from: x, to: y)
+```
+
+* **인자를 구별하는게 쓸모 없을 때는 모든 이름표를 생략합니다.**, 가령 `min(number1, number2)`, `zip(sequence1, sequence2)` 라고 합니다.
+
+* <strong id="type-conversion">'값을 보존하는 타입 변환 (value preserving type conversion)' 을 하는 초기자에서, 첫 번째 인자 이름표는 생략합니다</strong>, 가령 `Int64(someUInt32)` 라고 합니다.
+
+첫 번째 인수는 항상 변환의 소스 여야합니다.
+
+```swift
+extension String {
+  // Convert `x` into its textual representation in the given radix
+  init(_ x: BigInt, radix: Int = 10)   ← Note the initial underscore
+}
+
+text = "The value is: "
+text += String(veryLargeNumber)
+text += " and in hexadecimal, it's"
+text += String(veryLargeNumber, radix: 16)
+```
+
+그러나 "좁히기"유형 변환에서는 축소를 설명하는 레이블이 권장됩니다.
+
+```swift
+extension UInt32 {
+  /// Creates an instance having the specified `value`.
+  init(_ value: Int16)            ← Widening, so no label
+  /// Creates an instance having the lowest 32 bits of `source`.
+  init(truncating source: UInt64)
+  /// Creates an instance having the nearest representable
+  /// approximation of `valueToApproximate`.
+  init(saturating valueToApproximate: UInt64)
+}
+```
+
+extension String {
+  // Convert `x` into its textual representation in the given radix
+  init(_ x: BigInt, radix: Int = 10)   ← Note the initial underscore
+}
+
+text = "The value is: "
+text += String(veryLargeNumber)
+text += " and in hexadecimal, it's"
+text += String(veryLargeNumber, radix: 16)### Special Instructions (특수한 지시 사항들)
+
+유형 변환을 보존하는 값은 단일 형태입니다. 즉, 소스 값의 모든 차이가 결과 값의 차이를 초래합니다. 예를 들어, Int8에서 Int64 로의 변환은 모든 고유 한 Int8 값이 고유 한 Int64 값으로 변환되기 때문에 값이 보존됩니다. 그러나 다른 방향으로의 변환은 값을 보존 할 수 없습니다. Int64에는 Int8에서 표현할 수있는 것보다 더 많은 가능한 값이 있습니다.
+
+참고 : 원래 값을 검색하는 기능은 전환이 가치 보존인지 여부와 관계가 없습니다.
 
 ### Special Instructions (특수한 지시 사항들)
 
