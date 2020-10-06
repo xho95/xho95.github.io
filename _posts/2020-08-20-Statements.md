@@ -482,7 +482,25 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 > GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
-### Availability Condition
+### Availability Condition (사용 가능성 조건)
+
+_사용 가능성 조건 (availablility condition)_ 은, 지정한 플랫폼 인자를 기반으로, 실행 시간에 API 의 사용 가능성을 조회하기 위해 `if`, `while`, 및 `guard` 문의 조건으로 사용되는 것입니다.
+
+사용 가능성 조건의 형식은 다음과 같습니다:
+
+if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
+  `statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
+} else {<br />
+  `fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
+}
+
+'사용 가능성 조건' 은, 사용하고 싶은 API 가 실행 시간에 사용 가능한 지에 따라, 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭에 있는 API 가 사용 가능한 지를 증명할 때 사용 가능성 조건의 정보를 사용합니다.
+
+'사용 가능성 조건' 은 플랫폼 이름과 버전으로 된 것을 쉼표로 구분한 목록을 받아 들입니다. 플랫폼 이름으로는 `iOS`, `macOS`, `watchOS`, 와 `tvOS` 를 사용하며, 연관된 버전 번호를 포함합니다. `*` 인자는 필수인데, '사용 가능성 조건' 이 보호하고 있는 코드 블럭이 최소 배포 대상으로 지정한, 어떤 플랫폼에서라도 실행되도록 지정합니다.
+
+불리언 조건과는 다르게, `&&` 와 `||` 같은 논리 연산자를 사용하여 '사용 가능성 조건' 을 조합할 수는 없습니다.
+
+> GRAMMAR OF AN AVAILABILITY CONDITION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID522)
 
 ### 참고 자료
 
