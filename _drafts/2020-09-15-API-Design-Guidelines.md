@@ -297,7 +297,7 @@ let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
 let ref = Link(to: destination)
 ```
 
-실제로, 이 지침은 [argument labels](#argument-labels-인자-이름표) 에 대한 지침과 같이 호출이 [value preserving type conversion (값을 보존하는 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자가 이름표를 가질 것임을 의미합니다.
+실제로, 이 지침은 [argument labels](#argument-labels-인자-이름표) 에 대한 지침과 같이 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자가 이름표를 가질 것임을 의미합니다.
 
 ```swift
 let rgbForeground = RGBColor(cmykForeground)
@@ -549,7 +549,7 @@ extension String {
 }
 ```
 
-위에 있는 것은 간단한 것 같지 않지만, 다음 보다는 훨씬 더 간단합니다:
+위에 있는 것은 간단하지 않은 것 같지만, 다음 보다는 훨씬 더 간단합니다:
 
 ```swift
 // 안좋은 경우
@@ -579,14 +579,14 @@ x.move(from: x, to: y)
 
 * **인자를 구별하는게 쓸모 없을 때는 모든 이름표를 생략합니다.**, 가령 `min(number1, number2)`, `zip(sequence1, sequence2)` 라고 합니다.
 
-* <strong id="type-conversion">'값을 보존하는 타입 변환 (value preserving type conversion)' 을 하는 초기자에서, 첫 번째 인자 이름표는 생략합니다</strong>, 가령 `Int64(someUInt32)` 라고 합니다.
+* <strong id="type-conversion">'값 보존 타입 변환 (value preserving type conversion)' 을 하는 초기자에서, 첫 번째 인자 이름표는 생략합니다</strong>, 가령 `Int64(someUInt32)` 라고 합니다.
 
-첫 번째 인수는 항상 변환의 소스 여야합니다.
+첫 번째 인자는 항상 변환의 '원천 (source)' 이어야 합니다.
 
 ```swift
 extension String {
   // Convert `x` into its textual representation in the given radix
-  init(_ x: BigInt, radix: Int = 10)   ← Note the initial underscore
+  init(_ x: BigInt, radix: Int = 10)          ← 초기 밑줄에 주목합니다.
 }
 
 text = "The value is: "
@@ -595,12 +595,12 @@ text += " and in hexadecimal, it's"
 text += String(veryLargeNumber, radix: 16)
 ```
 
-그러나 "좁히기"유형 변환에서는 축소를 설명하는 레이블이 권장됩니다.
+하지만, "좁히는 (narrowing)" 타입 변환에서는, 좁힘을 설명하는 이름표를 하기를 추천합니다.
 
 ```swift
 extension UInt32 {
   /// Creates an instance having the specified `value`.
-  init(_ value: Int16)            ← Widening, so no label
+  init(_ value: Int16)                        ← 넓히는 것이므로, 이름표가 없습니다.
   /// Creates an instance having the lowest 32 bits of `source`.
   init(truncating source: UInt64)
   /// Creates an instance having the nearest representable
@@ -609,17 +609,7 @@ extension UInt32 {
 }
 ```
 
-extension String {
-  // Convert `x` into its textual representation in the given radix
-  init(_ x: BigInt, radix: Int = 10)   ← Note the initial underscore
-}
-
-text = "The value is: "
-text += String(veryLargeNumber)
-text += " and in hexadecimal, it's"
-text += String(veryLargeNumber, radix: 16)### Special Instructions (특수한 지시 사항들)
-
-유형 변환을 보존하는 값은 단일 형태입니다. 즉, 소스 값의 모든 차이가 결과 값의 차이를 초래합니다. 예를 들어, Int8에서 Int64 로의 변환은 모든 고유 한 Int8 값이 고유 한 Int64 값으로 변환되기 때문에 값이 보존됩니다. 그러나 다른 방향으로의 변환은 값을 보존 할 수 없습니다. Int64에는 Int8에서 표현할 수있는 것보다 더 많은 가능한 값이 있습니다.
+값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스의 값에 있는 모든 차이가 결과의 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 '값 보존' 인데 이는 모든 별개의 `Int8` 값이 별개의 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로의 변환은 '값 보존' 일 수 없습니다: `Int64` 은 `Int8` 이 표현할 수 있는 것보다 더 많은 값이 있습니다.
 
 참고 : 원래 값을 검색하는 기능은 전환이 가치 보존인지 여부와 관계가 없습니다.
 
@@ -652,3 +642,5 @@ text += String(veryLargeNumber, radix: 16)### Special Instructions (특수한 �
 [^acronyms]: '두문자어 (Acronyms and Initialisms)' 는 'ASCII' 같이 단어의 앞머리 글자만 떼어 만든 줄임말을 의미합니다. 그리고 영어의 'Acronyms' 와 'Initialisms' 는 사실상 같은 단어입니다. 보다 자세한 내용은 위키피디아의 [Acronym](https://en.wikipedia.org/wiki/Acronym) 항목과 [두문자어](https://ko.wikipedia.org/wiki/두문자어) 항목을 참고하기 바랍니다.
 
 [^simpler]: '기본 설정 매개 변수 (default parameters)' 를 사용하면 함수를 호출할 때 그와 연관된 인자를 생략할 수 있어서 코드가 간단해집니다. 스위프트의 `print(_:separator:terminator:)` 함수가 대표적인 예라고 할 수 있습니다.
+
+[^monomorphism]: '단사 사상 (monomorphism)' 은
