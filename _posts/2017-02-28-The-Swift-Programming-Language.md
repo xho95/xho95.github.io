@@ -57,7 +57,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Types (타입)]({% post_url 2020-02-20-Types %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Statements (구문)] - [일부 진행중]({% post_url 2020-08-20-Statements %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
+* [Statements (구문)]({% post_url 2020-08-20-Statements %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Declarations (선언)] - [일부 진행중]({% post_url 2020-08-15-Declarations %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Attributes (특성)] - [일부 진행중]({% post_url 2020-08-14-Attributes %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
@@ -70,4 +70,4 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### 참고 자료
 
-[^Swift]: 'The Swift Programming Language (스위프트 프로그래밍 언어)' 는 Apple 에서 공개한 Swift 책으로, 2020-06-22 에 5.3 버전으로 업데이트되었습니다. 원문은 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 에서 볼 수 있습니다.
+[^Swift]: 'The Swift Programming Language (스위프트 프로그래밍 언어)' 는 애플 에서 공개한 스위프트 문법 책으로, WWDC 20 에 맞춰 2020-06-22 일에 발표했다가, 2020-09-16 일에 다시 갱신 되었습니다.원문은 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 에서 볼 수 있습니다.

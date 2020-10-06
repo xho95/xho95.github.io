@@ -15,9 +15,9 @@ categories: Swift Language Grammar Revision History
 - [Promote Clear Usage](#promote-clear-usage-명확한-사용법을-추구합니다)
 - [Strive for Fluent Usage](#strive-for-fluent-usage-사용법이-자연스럽도록-노력합니다)
 - [Use Terminology Well](#use-terminology-well-용어를-잘-사용합니다)
-* Conventions
-- General Conventions
-- Parameters
+* [Conventions](#conventions-협약)
+- [General Conventions](#general-conventions-일반적인-협약)
+- [Parameters](#parameters-매개-변수)
 - Argument Labels
 * Special Instructions
 
@@ -484,6 +484,92 @@ extension Box {
 
 #### Parameters (매개 변수)
 
+```swift
+func move(from start: Point, to end: Point)
+```
+
+* **매개 변수 이름은 문서화에 도움이 되도록 선택합니다.** 매개 변수 이름은 함수나 메소드를 사용하는 곳에서는 나타나지 않지만, 설명에 있어서 중요한 역할을 합니다.
+
+이 이름들은 문서가 쉽게 읽히도록 선택합니다. 예를 들어, 이런 이름은 문서를 자연스럽게 읽히도록 만듭니다.
+
+```swift
+// 좋은 경우
+
+/// Return an `Array` containing the elements of `self`
+/// that satisfy `predicate`.
+/// `self` 의 원소 중 `predicate` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
+func filter(_ predicate: (Element) -> Bool) -> [Generator.Element]
+
+/// Replace the given `subRange` of elements with `newElements`.
+/// 주어진 `subRange` 의 원소들을 `newElements` 로 대체합니다.
+mutating func replaceRange(_ subRange: Range, with newElements: [E])
+```
+
+하지만, 아래 있는 것들은 문서를 어색하고 문법적이지 않도록 만듭니다.
+
+```swift
+// 않좋은 경우
+
+/// Return an `Array` containing the elements of `self`
+/// that satisfy `includedInResult`.
+/// `self` 의 원소 중 `includedInResult` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
+func filter(_ includedInResult: (Element) -> Bool) -> [Generator.Element]
+
+/// Replace the range of elements indicated by `r` with
+/// the contents of `with`.
+/// `r` 로 지시한 범위의 원소들을 `with` 의 내용으로 대체합니다.
+mutating func replaceRange(_ r: Range, with: [E])
+```
+
+* **기본 설정 매개 변수 (defaulted parameters) 의 장점은** 공통된 사용법을 간단하게 만들 때마다 취하도록 합니다. 매개 변수가 공통적으로-사용되는 단일한 값을 가진다면 '기본 설정 (default)' 의 후보입니다.
+
+'기본 설정 인자 (default arguments)' 는 관계가 없는 정보를 숨겨 가독성을 개선합니다. 예를 들면 다음과 같습니다:
+
+```swift
+// 안좋은 경우
+let order = lastName.compare(
+  royalFamilyName, options: [], range: nil, locale: nil)
+```
+
+위는 훨씬 더 간단해질 수 있습니다:[^simpler]
+
+```swift
+// 좋은 경우
+let order = lastName.compare(royalFamilyName)
+```
+
+'기본 설정 인자' 가 일반적으로 '메소드 일가 (method families)' 보다 더 나은데, 이는 API 를 이해하려는 사람에게 부담이 더 적기 때문입니다.
+
+```swift
+// 좋은 경우
+extension String {
+  /// ...설명...
+  public func compare(_ other: String, options: CompareOptions = [], range: Range? = nil, locale: Locale? = nil
+  ) -> Ordering
+}
+```
+
+위에 있는 것은 간단한 것 같지 않지만, 다음 보다는 훨씬 더 간단합니다:
+
+```swift
+// 안좋은 경우
+extension String {
+  /// ...설명 1...
+  public func compare(_ other: String) -> Ordering
+  /// ...설명 2...
+  public func compare(_ other: String, options: CompareOptions) -> Ordering
+  /// ...설명 3...
+  public func compare(
+     _ other: String, options: CompareOptions, range: Range) -> Ordering
+  /// ...설명 4...
+  public func compare(_ other: String, options: StringCompareOptions, range: Range, locale: Locale) -> Ordering
+}
+```
+
+'메소드 일가 (method family)' 는 모든 구성원에 대해 사용자가 별도로 문서화해서 이해할 필요가 있습니다. 이 중에서 결정하려면, 사용자가 이 모든 것을 이해해야 하며, 가끔 있는 놀라운 관계-예를 들어, `foo(bar: nil)` 과 `foo()` 가 항상 동의어는 아니라는 것-은 이를 대부분은 똑같은 문서에서 사소한 차이점을 캐내는 지루한 과정으로 만듭니다. 기본 설정을 가진 단일 메소드의 사용은 대단히 우수한 프로그래머 경험을 제공합니다.
+
+* **기본 설정을 가진 매개 변수의 위치는** 매개 변수 목록의 끝으로 보내는 것이 낫습니다. 기본 설정이 없는 매개 변수가 보통 메소드의 의미 구조상 더 본질적이며, 메소드가 호출되는 곳에서 사용하기에 안정적인 '초기화 패턴 (initial pattern)' 을 제공합니다.
+
 #### Argument Labels (인자 이름표)
 
 <strong id="type-conversion">초기자에서 '값을 보존하는 타입 변환 (value preserving type conversion)' 을 하는 경우, 첫 번째 인자 이름표는 생략합니다.</strong>
@@ -515,3 +601,5 @@ extension Box {
 [^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
 
 [^acronyms]: '두문자어 (Acronyms and Initialisms)' 는 'ASCII' 같이 단어의 앞머리 글자만 떼어 만든 줄임말을 의미합니다. 그리고 영어의 'Acronyms' 와 'Initialisms' 는 사실상 같은 단어입니다. 보다 자세한 내용은 위키피디아의 [Acronym](https://en.wikipedia.org/wiki/Acronym) 항목과 [두문자어](https://ko.wikipedia.org/wiki/두문자어) 항목을 참고하기 바랍니다.
+
+[^simpler]: '기본 설정 매개 변수 (default parameters)' 를 사용하면 함수를 호출할 때 그와 연관된 인자를 생략할 수 있어서 코드가 간단해집니다. 스위프트의 `print(_:separator:terminator:)` 함수가 대표적인 예라고 할 수 있습니다.
