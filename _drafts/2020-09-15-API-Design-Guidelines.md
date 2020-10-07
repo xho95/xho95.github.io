@@ -631,6 +631,29 @@ a.moveTo(x: b, y: c)
 a.fadeFrom(red: b, green: c, blue: d)
 ```
 
+* **그 외의 경우에서, 첫 번째 인자가 문법적인 구절을 형성하는 경우, 이름표를 생략하고**, `x.addSubview(y)` 처럼, '기본 이름 (base name)' 앞에 어떤 단어를 추가합니다.
+
+이 지침은, 첫 번째 인자가 문법적인 구절을 형성하지 _않는 (doesn't)_ 경우, 이름표를 가져야 함을 의미합니다.
+
+```swift
+// 좋은 경우
+view.dismiss(animated: false)
+let text = words.split(maxSplits: 12)
+let studentsByName = students.sorted(isOrderedBefore: Student.namePrecedes)
+```
+
+구절은 올바른 의미를 전달하는 것이 중요함에 주의합니다. 다음은 문법적으로는 맞겠지만 잘못된 것을 표현하게 됩니다.
+
+```swift
+// 안좋은 경우
+view.dismiss(false)   // 물러나지 말아야 하는 것인가? 불리언 값을 물러가게 하라는 것인가?
+words.split(12)       // 12 라는 수를 쪼개야 하는가?
+```
+
+기본 설정 값을 가지는 인자는 생략할 수 있어서, 문법적인 구절을 형성하지 않을 수도 있으므로, 항상 이름표를 가져야 함에 주의하기 바랍니다.
+
+* **다른 모든 인자들은 이름표를 붙입니다.**
+
 ### Special Instructions (특수한 지시 사항들)
 
 ### 참고 자료
