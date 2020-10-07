@@ -611,7 +611,25 @@ extension UInt32 {
 
 > 값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스의 값에 있는 모든 차이가 결과의 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 '값 보존' 인데 이는 모든 별개의 `Int8` 값이 별개의 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로의 변환은 '값 보존' 일 수 없습니다: `Int64` 은 `Int8` 으로 표현할 수 있는 것보다 더 많은 값을 가지고 있습니다.
 >
-> 참고 : 원래의 값을 가져오는 능력은 변환이 '값 보존' 인지의 여부와는 관계가 없습니다. 
+> 참고 : 원래의 값을 가져오는 능력은 변환이 '값 보존' 인지의 여부와는 관계가 없습니다.
+
+* **첫 번째 인자가 [전치사 구 (prepositional phrase)](https://en.wikipedia.org/wiki/Adpositional_phrase#Prepositional_phrases) 를 형성할 때는, 인자 이름표를 부여합니다.** 인자 이름표는, `x.removeBoxes(havingLength: 12)` 처럼, 보통은 [전치사 (preposition)](https://en.wikipedia.org/wiki/Preposition_and_postposition) 로 시작해야 합니다.
+
+처음 두 인자가 '단일 추상 명사 (single abstraction)' 를 표현할 때는 예외가 생깁니다.
+
+```swift
+// 안좋은 경우
+a.move(toX: b, y: c)
+a.fade(fromRed: b, green: c, blue: d)
+```
+
+이런 경우, 추상 명사를 명확하게 유지하도록, 인자 이름표를 전치사 _뒤에서 (after)_ 부터 시작합니다.
+
+```swift
+// 좋은 경우
+a.moveTo(x: b, y: c)
+a.fadeFrom(red: b, green: c, blue: d)
+```
 
 ### Special Instructions (특수한 지시 사항들)
 
