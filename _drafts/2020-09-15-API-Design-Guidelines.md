@@ -17,7 +17,7 @@ categories: Swift Language Grammar Revision History
 - [Use Terminology Well (용어를 잘 사용하기)](#use-terminology-well-용어를-잘-사용하기)
 * [Conventions (협약)](#conventions-협약)
 - [General Conventions (일반적인 협약)](#general-conventions-일반적인-협약)
-- [Parameters (매개 변수)](#parameters-매개-변수)
+- [Parameters (매개 변수)]()
 - [Argument Labels (인자 이름표)](#argument-labels-인자-이름표)
 * [Special Instructions (특수한 지시 사항들)](#special-instructions-특수한-지시-사항들)
 
@@ -655,6 +655,30 @@ words.split(12)       // 12 라는 수를 쪼개야 하는가?
 * **다른 모든 인자들은 이름표를 붙입니다.**
 
 ### Special Instructions (특수한 지시 사항들)
+
+* **튜플 멤버의 이름표와 클로저 매개 변수의 이름은** API 에 나타날 때마다 붙이도록 합니다.
+
+이 이름들은 설명에 아주 도움이 되며, '문서화 주석 (documentation comments)' 에서 참조할 수 있으며, 튜플 멤버를 접근할 때 의미 전달이 잘 됩니다.
+
+```swift
+/// Ensure that we hold uniquely-referenced storage for at least
+/// `requestedCapacity` elements.
+///
+/// If more storage is needed, `allocate` is called with
+/// `byteCount` equal to the number of maximally-aligned
+/// bytes to allocate.
+///
+/// - Returns:
+///   - reallocated: `true` iff a new block of memory
+///     was allocated.
+///   - capacityChanged: `true` iff `capacity` was updated.
+mutating func ensureUniqueStorage(
+  minimumCapacity requestedCapacity: Int,
+  allocate: (_ byteCount: Int) -> UnsafePointer<Void>
+) -> (reallocated: Bool, capacityChanged: Bool)
+```
+
+클로저 매개 변수에 사용하는 이름은 최상위 함수의 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 처럼 선택해야 합니다. 클로저 인자에 대한 이름표는 호출하는 쪽에서는 지원하지 않습니다.
 
 ### 참고 자료
 
