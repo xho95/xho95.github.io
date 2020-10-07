@@ -98,7 +98,19 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 있는 변수
 
 [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 `override` 선언 수정자로 표시하면 하위 클래스에서 속성을 재정의할 수 있습니다.
 
-#### Stored Variables and Stored Variable Properties
+#### Stored Variables and Stored Variable Properties (저장 변수와 저장 변수 속성)
+
+다음의 형식은 '저장 변수 (stored variables)' 또는 '저장 변수 속성 (stored variable properties)'[^stored-variable-property] 을 선언합니다:
+
+var `variable name-변수 이름`: `type-타입` = `expression-표현식`
+
+이런 형식의 변수 선언은 '전역 범위 (global scope)' 나, 함수의 '지역 범위 (local scope)', 또는 클래스 및 구조체 선언인 상황에서 정의하게 됩니다. 이 형식의 변수 선언을 '전역 범위' 나 함수의 '지역 범위' 에서 선언할 때는, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언에서 선언한 상황일 때는, 이를 _저장 변수 속성 (stored variable property)_ 라고 합니다.
+
+'초기자 _표현식 (expression)_' 이 프로토콜 선언에서 있을 수는 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 선택 사항입니다. 이 말은, 초기자 _표현식 (expression)_ 이 아무 것도 없다면, 변수 선언은 반드시 명시적인 '타입 보조 설명-`:` _타입 (type)_' 을 포함해야 한다는 것입니다.
+
+상수 선언에서와 마찬가지로, _변수 이름 (variable name)_ 이 '튜플 패턴' 이면, 튜플에 있는 각각의 항목 이름이 '초기자 _표현식 (expression)_' 에 있는 연관된 값과 연결됩니다.
+
+이름으로 연상되는 것처럼, 저장 변수 또는 저장 변수 속성의 값은 메모리에 저장됩니다.
 
 #### Computed Variables and Computed Properties
 
@@ -424,3 +436,5 @@ protocol SomeProtocol: AnyObject {
 [^immutable]: 스위프트의 '상수' 는 참조하고 있는 대상을 다른 대상을 참조하도록 바꾸는 것이 안된다는 의미라는 것을 알 수 있습니다. 이 경우 참조하고 있는 대상 자체가 바뀌는 것은 상관없습니다. 물론 이것은 'class' 같은 '참조 타입 (reference type)' 에만 해당하는 것으로 'struct' 같은 '값 타입 (value type)' 에는 해당하지 않는 이야기 입니다.
 
 [^final]: 이미 'final' 이고 항상 'final' 이므로, 다시 'final' 로 만들거나 'final' 을 없앨 수는 없다는 의미입니다.
+
+[^stored-variable-property]: 이 책에는 '저장 변수 속성 (stored variable property)' 이라는 말과 '변수 저장 속성 (variable stored property)' 이라는 말을 같이 사용하고 있는데, 사실 이 둘은 같은 말입니다. '저장 변수 속성' 은 '저장 변수' 중에서 '속성' 에 해당하는 것이고, '변수 저장 속성' 은 '저장 속성' 중에서 '변수' 에 해당하는 것으로, 결국 같은 것입니다.
