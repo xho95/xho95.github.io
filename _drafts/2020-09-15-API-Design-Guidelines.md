@@ -609,9 +609,9 @@ extension UInt32 {
 }
 ```
 
-값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스의 값에 있는 모든 차이가 결과의 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 '값 보존' 인데 이는 모든 별개의 `Int8` 값이 별개의 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로의 변환은 '값 보존' 일 수 없습니다: `Int64` 은 `Int8` 이 표현할 수 있는 것보다 더 많은 값이 있습니다.
-
-참고 : 원래 값을 검색하는 기능은 전환이 가치 보존인지 여부와 관계가 없습니다.
+> 값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스의 값에 있는 모든 차이가 결과의 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 '값 보존' 인데 이는 모든 별개의 `Int8` 값이 별개의 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로의 변환은 '값 보존' 일 수 없습니다: `Int64` 은 `Int8` 으로 표현할 수 있는 것보다 더 많은 값을 가지고 있습니다.
+>
+> 참고 : 원래의 값을 가져오는 능력은 변환이 '값 보존' 인지의 여부와는 관계가 없습니다. 
 
 ### Special Instructions (특수한 지시 사항들)
 
@@ -643,4 +643,4 @@ extension UInt32 {
 
 [^simpler]: '기본 설정 매개 변수 (default parameters)' 를 사용하면 함수를 호출할 때 그와 연관된 인자를 생략할 수 있어서 코드가 간단해집니다. 스위프트의 `print(_:separator:terminator:)` 함수가 대표적인 예라고 할 수 있습니다.
 
-[^monomorphism]: '단사 사상 (monomorphism)' 은
+[^monomorphism]: 원문에서는 '단사 사상 (monomorphism)' 이라는 말을 사용하고 있지만, 이를 사실 '단사 함수 (injective function)' 의 의미로써 사용하고 있습니다. '단사 함수' 는 '정의역 또는 소스 (source)' 에 있는 서로 다른 원소를 '공역 또는 결과 (result)' 에 있는 서로 다른 원소로 대응시키는 함수를 말합니다. 보다 자세한 내용은 위키피디아의 [Monomorphism](https://en.wikipedia.org/wiki/Monomorphism) 항목 및 [단사 사상](https://ko.wikipedia.org/wiki/단사_사상) 항목, 그리고 [Injective function](https://en.wikipedia.org/wiki/Injective_function) 항목 및 [단사 함수](https://ko.wikipedia.org/wiki/단사_함수) 항목을 참고하기 바랍니다.
