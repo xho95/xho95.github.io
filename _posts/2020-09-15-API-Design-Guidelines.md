@@ -11,7 +11,7 @@ categories: Swift Language Grammar Revision History
 ### Table of Contents (목차)
 
 * [Fundamentals (기반)](#fundamentals-기반)
-* [Naming](#naming-이름짓기)
+* [Naming (이름짓기)](#naming-이름짓기)
 - [Promote Clear Usage (명확한 사용법 추구하기)](#promote-clear-usage-명확한-사용법-추구하기)
 - [Strive for Fluent Usage (사용법이 자연스럽도록 노력하기)](#strive-for-fluent-usage-사용법이-자연스럽도록-노력하기)
 - [Use Terminology Well (용어를 잘 사용하기)](#use-terminology-well-용어를-잘-사용하기)
