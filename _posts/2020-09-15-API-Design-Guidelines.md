@@ -99,7 +99,7 @@ struct List {
   ...
 ```
 
-- **선택 사항으로**, 하나 이상의 문단과 '목록 항목 (bullet items)' 을 이어갈 수 있습니다. 문단은 빈 줄로 구분하며 '완전한 문장 (complete sentences)' 을 사용합니다.
+- **선택 사항으로, 계속해서** 하나 이상의 문단과 '목록 항목 (bullet items)' 을 붙일 수 있습니다. 문단은 '완전한 문장 (complete sentences)' 을 사용하며 문단끼리는 빈 줄로 구분합니다.
 
 ```swift
 /// Writes the textual representation of each    ← Summary
@@ -119,19 +119,19 @@ struct List {
 /// - SeeAlso: `CustomDebugStringConvertible`,   ⎟
 ///   `CustomStringConvertible`, `debugPrint`.   ⎭
 
-/// `items` 에 있는 각 원소에 대한 문장 형태의 표현을      ← 요약
-/// 표준 출력 장치에 작성합니다.
+/// `items` 의 각 원소에 대한 문장화된 표현을            ← 요약
+/// 표준 출력 장치에 작성함.
 ///                                              ← 빈 줄
-/// 각각의 항목 `x` 에 대한 문장 형태의 표현은            ← 추가적인 설명
-/// `String(x)` 표현식으로 생성합니다.
+/// 각 항목 `x` 에 대한 문장화된 표현은                 ← 추가적인 설명
+/// `String(x)` 라는 표현식으로 생성합니다.
 ///
-/// - Parameter separator: 항목들 사이에 출력되는 문장   ⎫
-/// - Parameter terminator: 맨 끝에 출력되는 문장      ⎬ 매개 변수 부분
+/// - 매개 변수 구분자: 항목 사이 사이에 출력되는 문장       ⎫
+/// - 매개 변수 종결자: 맨 끝에 출력되는 문장              ⎬ 매개 변수 부분
 ///                                               ⎭
-/// - Note: 끝자리에 '새 줄 (newline)' 없이 출력하려면   ⎫
-///   `terminator: ""` 를 전달합니다                 ⎟
+/// - 노트: 끝에 '새 줄 문자 (newline)' 없이 출력하려면   ⎫
+///   `terminator: ""` 를 전달할 것                 ⎟
 ///                                               ⎬ 기호 명령
-/// - SeeAlso: `CustomDebugStringConvertible`,    ⎟
+/// - 같이보기: `CustomDebugStringConvertible`,     ⎟
 ///   `CustomStringConvertible`, `debugPrint`.    ⎭
 public func print(
   _ items: Any..., separator: String = " ", terminator: String = "\n")
