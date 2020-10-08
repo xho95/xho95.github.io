@@ -13,7 +13,7 @@ categories: Swift Language Grammar Revision History
 * [Fundamentals (기반)](#fundamentals-기반)
 * [Naming (이름짓기)](#naming-이름짓기)
 - [Promote Clear Usage (명확한 사용법 추구하기)](#promote-clear-usage-명확한-사용법-추구하기)
-- [Strive for Fluent Usage (사용법이 자연스럽도록 노력하기)](#strive-for-fluent-usage-사용법이-자연스럽도록-노력하기)
+- [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)](#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기)
 - [Use Terminology Well (용어를 잘 사용하기)](#use-terminology-well-용어를-잘-사용하기)
 * [Conventions (협약)](#conventions-협약)
 - [General Conventions (일반적인 협약)](#general-conventions-일반적인-협약)
@@ -154,9 +154,9 @@ public func print(
 
 #### Promote Clear Usage (명확한 사용법 추구하기)
 
-* **필요한 모든 단어를 포함시켜서** 이름이 사용된 곳의 코드를 읽을 때 모호함이 없도록 합니다.
+* **모호함이 없도록 필요한 모든 단어를 포함시킨** 이름으로 된 코드를 사람이 읽도록 합니다.
 
-예를 들어, '컬렉션 (collection)' 에서 주어진 위치의 원소를 제거하는 메소드를 고려해 봅시다.
+예를 들어, '컬렉션 (collection)' 에서 주어진 위치의 원소를 제거하는 메소드를 생각해 봅시다.
 
 ```swift
 // 좋은 예제
@@ -166,16 +166,16 @@ extension List {
 employees.remove(at: x)
 ```
 
-'메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략한다면, 읽는 사람이, `x` 를 제거할 원소의 위치를 지정하는데 사용하는 것이 아니라, `x` 와 같은 원소를 찾아서 제거하는 메소드라고 생각할 수 있을 것입니다.
+이 '메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략하면, `x` 가 제거할 원소의 위치를 지시하는 것이 아니라, `x` 와 같은 원소를 찾아서 제거하는 메소드라고 생각하게 될 것입니다.
 
 ```swift
 // 잘못된 예제
-employee.remove(x) // 불분명함 : x를 제거하는 것일까요?
+employee.remove(x) // 불분명함 : x를 제거하는 것입니까?
 ```
 
-* **불필요한 단어는 생략합니다.** 이름에 있는 모든 단어는 사용하는 쪽에 중요한 정보를 전달해야 합니다.
+* **필요없는 단어는 생략합니다.** 이름에 있는 모든 단어는 사용하는 쪽에 중요한 정보를 전달해야 합니다.
 
-의도를 명확하게 하거나  의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수 있지만, 읽는 쪽에서 이미 확보한 정보라서 과잉인 것들은 생략해야 합니다. 특히, _단순히 (merely)_ 타입 정보를 반복하는 단어는 생략합니다.
+의도를 명확하게 하거나 의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수도 있지만, 읽는 쪽에서 이미 확보해서 과잉인 정보는 생략해야 합니다. 특히, 타입 정보를 _단순하게 반복하는 (merely repeat)_ 단어는 생략합니다.
 
 ```swift
 // 잘못된 예제
@@ -184,7 +184,7 @@ public mutating func removeElement(_ member: Element) -> Element?
 allViews.removeElement(cancelButton)
 ```
 
-이 경우, `Element` 라는 단어는 호출하는 쪽에 중요한 것은 아무 것도 추가하지 않습니다. 다음 API 가 더 좋을 것입니다:
+이 경우, `Element` 라는 단어는 호출하는 쪽에 아무런 중요한 것도 추가하지 않습니다. 다음 API 가 더 좋을 것입니다:
 
 ```swift
 // 좋은 예제
@@ -193,9 +193,9 @@ public mutating func remove(_ member: Element) -> Element?
 allViews.remove(cancelButton) // 더 명확함
 ```
 
-경우에 따라, 모호함을 피하기 위해 타입 정보를 반복하는 것도 필요하긴 하지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고하기 바랍니다.
+가끔씩, 타입 정보를 반복하는 것도 모호함을 피하기 위해 필요하긴 하지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고합니다.
 
-* **변수, 매개 변수, 및 결합된 타입은 역할에 따라 이름을 짓되,** 타입 구속 조건으로 이름을 짓지 않도록 합니다.
+* **변수, 매개 변수, 및 결합된 타입은 역할에 따라 이름을 짓도록 하며,** 타입 구속 조건으로 이름을 짓지 않도록 합니다.
 
 ```swift
 // 잘못된 예제
@@ -208,7 +208,7 @@ class ProductionLine {
 }
 ```
 
-이런 식으로 타입 이름을 재사용하면 분명함과 표현력에 대한 최적화를 실패하게 됩니다. 그 대신, '개체 (entity)' 의 _역할 (role)_ 을 표현하는 이름을 선택하려고 노력합니다.
+이런 식으로 타입 이름을 재사용하면 분명함과 표현력을 최적화하는데 실패하게 됩니다. 이 보다는, '개체' 의 _역할 (role)_ 을 표현하는 이름을 선택하려고 노력합니다.
 
 ```swift
 // 좋은 예제
@@ -221,7 +221,7 @@ class ProductionLine {
 }
 ```
 
-'결합된 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어 있어서 프로토콜 이름이 역할 _인 (is)_ 경우, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피하도록 합니다:
+'결합된 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어서 프로토콜 이름이 역할 _이기도 (is)_ 한 경우라면, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피하도록 합니다:
 
 ```swift
 protocol Sequence {
@@ -230,9 +230,9 @@ protocol Sequence {
 protocol IteratorProtocol { ... }
 ```
 
-* **타입 정보가 약할 경우 보완하여** 매개 변수의 역할을 분명하게 밝히도록 합니다.
+* **타입 정보가 약하면 보완하여** 매개 변수의 역할을 분명하게 밝힙니다.
 
-특히 매개 변수 타입이 `NSObject`, `Any`, `AnyObject`, 또는 `Int` 및 `String` 같은 기반 타입일 때는, 사용 시점에서의 타입 정보와 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 다음 예제에서, 선언은 명확하지만, 사용하는 쪽은 불분명합니다.
+특히, 매개 변수 타입이 `NSObject`, `Any`, `AnyObject` 이거나, `Int` 및 `String` 같은 기반 타입일 때는, 사용 시점에서 타입 정보와 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 다음 예제에서, 선언은 명확한 듯 하지만, 사용하는 쪽은 분명하지가 않습니다.
 
 ```swift
 // 잘못된 예제
@@ -241,7 +241,7 @@ func add(_ observer: NSObject, for keyPath: String)
 grid.add(self, for: graphics) // 불분명함
 ```
 
-분명함을 다시 살리려면, 약한 타입인 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙이도록 합니다.
+분명함을 되살리려면, 타입이 약한 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙입니다.
 
 ```swift
 // 좋은 예제
@@ -249,15 +249,15 @@ func addObserver(_ observer: NSObject, forKeyPath path: String)
 grid.addObserver(self, forKeyPath: graphics) // 명확함
 ```
 
-#### Strive for Fluent Usage (사용법이 자연스럽도록 노력하기)
+#### Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)
 
-* **메소드와 함수 이름은 사용하는 쪽에서 문법적인 영어 문장을 형성하게끔 만들기 바랍니다.**
+* **메소드와 함수 이름은 사용할 때 문법에 맞는 영어 구절이 되도록 만드는 것이 좋습니다.**
 
 ```swift
 // 좋은 예제
-x.insert(y, at: z)          “x 는, y 를 z 위치에 집어 넣습니다”
-x.subViews(havingColor: y)  “x 의 하위 뷰는 y 색상을 가집니다”
-x.capitalizingNouns()       “x 는 명사를 대문자로 만듭니다”
+x.insert(y, at: z)          // “x 는, y 를 z 위치에 집어 넣습니다”
+x.subViews(havingColor: y)  // “x 의 하위 뷰는 y 라는 색상을 가집니다”
+x.capitalizingNouns()       // “x 는 명사를 대문자로 만듭니다”
 ```
 
 ```swift
@@ -267,7 +267,7 @@ x.subViews(color: y)
 x.nounCapitalize()
 ```
 
-해당 인자들이 호출의 의미 중심이 아닐 때 첫 번째나 두 번째 인자 이후로 자연스러움의 감소는 받아들일 수 있습니다:
+첫 번째나 두 번째 인자 이후로 인자들이 호출 시에 의미상 중심 역할을 하지 않을 때는 자연스러움이 좀 줄더라도 괜찮습니다:
 
 ```swift
 AudioUnit.instantiate(
@@ -275,11 +275,11 @@ AudioUnit.instantiate(
   options: [.inProcess], completionHandler: stopProgressBar)
 ```
 
-* **'공장 메소드 (factory methods)' 의 이름은 "`make`" 로 시작합니다.** 가령 `x.makeIterator()` 처럼 합니다.
+* **'공장 메소드 (factory methods)'[^factory-method] 의 이름은 "`make`" 로 시작합니다.** 예를 들어, `x.makeIterator()` 처럼 합니다.
 
-* **초기자 및 [factory methods](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 에 대한 첫 번째 인자는 '기본 이름 (base name)'[^base-name] 으로 시작하는 구절을 형성하지 않도록 합니다, 가령 `x.makeWidget(cogCount: 47)` 처럼 하지 않습니다.
+* **초기자 및 [공장 메소드 (factory methods)](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 의 첫 번째 인자는 '기본 이름 (base name)'[^base-name] 으로 시작하는 구절을 형성하지 않도록 합니다. 예를 들어, `x.makeWidget(cogCount: 47)` 처럼 합니다.
 
-예를 들어, 이런 호출에 대한 첫 번째 인자는 '기본 이름 (base name)' 과 같은 구절인 것으로 이해하지는 않습니다.
+예를 들어, 이러한 호출의 첫 번째 인자는 '기본 이름 (base name)' 과 같은 구절에 있는 것으로 읽히지 않아야 합니다.
 
 ```swift
 // 좋은 예제
@@ -288,7 +288,7 @@ let newPart = factory.makeWidget(gears: 42, spindles: 14)
 let ref = Link(target: destination)
 ```
 
-다음에 있는 것들은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 생성하려고 한 것입니다.
+다음에 있는 것들은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 부여하려고 한 것입니다.
 
 ```swift
 // 잘못된 예제
@@ -297,7 +297,7 @@ let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
 let ref = Link(to: destination)
 ```
 
-실제로, 이 지침은 [argument labels](#argument-labels-인자-이름표) 에 대한 지침과 같이 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자가 이름표를 가질 것임을 의미합니다.
+실제로, 이 지침은 [argument labels (인자 이름표)](#argument-labels-인자-이름표) 에 대한 것과 마찬가지로 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하는 것이 아닌 한 첫 번째 인자가 이름표를 가질 것임을 의미합니다.
 
 ```swift
 let rgbForeground = RGBColor(cmykForeground)
@@ -730,7 +730,9 @@ struct Array {
 
 [^symbol-comman-syntax]: 링크 자체는 바로 위의 링크와 같은 [symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1) 문서로 연결됩니다.
 
-[^base-name]: 여기서 '기본 이름 (base name)' 은 함수 또는 메소드에서 매개 변수와 괄호를 뺀 순수한 함수만의 이름을 의미하는 것으로 추측됩니다.
+[^factory-method]: '공장 메소드 (factory method)' 는 '공장 메소드 패턴 (factory method pattern)' 에서 사용하는 메소드로, '구체적으로 고정된 타입 (concrete type)' 을 지정하지 않은 채 객체를 생성할 수 있게 해줍니다. 보다 자세한 내용은 위키피디아의 [Factory method pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) 및 [팩토리 메서드 패턴](https://ko.wikipedia.org/wiki/팩토리_메서드_패턴) 항목을 참고하기 바랍니다.
+
+[^base-name]: '기본 이름 (base name)' 은 함수 또는 메소드에서 매개 변수와 괄호를 뺀 순수한 함수 자체의 이름인 것으로 추측됩니다.
 
 [^side-effects]: 컴퓨터 용어에서의 '부작용 (side-effects)' 은 무조건 나쁜 것이 아니라 '부가적인 효과' 정도의 의미로 이해할 수 있습니다.
 
