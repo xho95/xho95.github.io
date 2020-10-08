@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Swift: API Design Guidelines (API 설계 지침)"
-date:   2020-03-16 10:00:00 +0900
+date:   2020-10-08 10:00:00 +0900
 categories: Swift Language Grammar Revision History
 ---
 
@@ -17,7 +17,7 @@ categories: Swift Language Grammar Revision History
 - [Use Terminology Well (용어를 잘 사용하기)](#use-terminology-well-용어를-잘-사용하기)
 * [Conventions (협약)](#conventions-협약)
 - [General Conventions (일반적인 협약)](#general-conventions-일반적인-협약)
-- [Parameters (매개 변수)]()
+- [Parameters (매개 변수)](#parameters-매개-변수)
 - [Argument Labels (인자 이름표)](#argument-labels-인자-이름표)
 * [Special Instructions (특수한 지시 사항들)](#special-instructions-특수한-지시-사항들)
 
@@ -159,7 +159,7 @@ public func print(
 예를 들어, '컬렉션 (collection)' 에서 주어진 위치의 원소를 제거하는 메소드를 고려해 봅시다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 extension List {
   public mutating func remove(at position: Index) -> Element
 }
@@ -169,7 +169,7 @@ employees.remove(at: x)
 '메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략한다면, 읽는 사람이, `x` 를 제거할 원소의 위치를 지정하는데 사용하는 것이 아니라, `x` 와 같은 원소를 찾아서 제거하는 메소드라고 생각할 수 있을 것입니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 employee.remove(x) // 불분명함 : x를 제거하는 것일까요?
 ```
 
@@ -178,7 +178,7 @@ employee.remove(x) // 불분명함 : x를 제거하는 것일까요?
 의도를 명확하게 하거나  의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수 있지만, 읽는 쪽에서 이미 확보한 정보라서 과잉인 것들은 생략해야 합니다. 특히, _단순히 (merely)_ 타입 정보를 반복하는 단어는 생략합니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 public mutating func removeElement(_ member: Element) -> Element?
 
 allViews.removeElement(cancelButton)
@@ -187,7 +187,7 @@ allViews.removeElement(cancelButton)
 이 경우, `Element` 라는 단어는 호출하는 쪽에 중요한 것은 아무 것도 추가하지 않습니다. 다음 API 가 더 좋을 것입니다:
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 public mutating func remove(_ member: Element) -> Element?
 
 allViews.remove(cancelButton) // 더 명확함
@@ -198,7 +198,7 @@ allViews.remove(cancelButton) // 더 명확함
 * **변수, 매개 변수, 및 결합된 타입은 역할에 따라 이름을 짓되,** 타입 구속 조건으로 이름을 짓지 않도록 합니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 var string = "Hello"
 protocol ViewController {
   associatedtype ViewType : View
@@ -211,7 +211,7 @@ class ProductionLine {
 이런 식으로 타입 이름을 재사용하면 분명함과 표현력에 대한 최적화를 실패하게 됩니다. 그 대신, '개체 (entity)' 의 _역할 (role)_ 을 표현하는 이름을 선택하려고 노력합니다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 var greeting = "Hello"
 protocol ViewController {
   associatedtype ContentView : View
@@ -235,7 +235,7 @@ protocol IteratorProtocol { ... }
 특히 매개 변수 타입이 `NSObject`, `Any`, `AnyObject`, 또는 `Int` 및 `String` 같은 기반 타입일 때는, 사용 시점에서의 타입 정보와 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 다음 예제에서, 선언은 명확하지만, 사용하는 쪽은 불분명합니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 func add(_ observer: NSObject, for keyPath: String)
 
 grid.add(self, for: graphics) // 불분명함
@@ -244,7 +244,7 @@ grid.add(self, for: graphics) // 불분명함
 분명함을 다시 살리려면, 약한 타입인 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙이도록 합니다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 func addObserver(_ observer: NSObject, forKeyPath path: String)
 grid.addObserver(self, forKeyPath: graphics) // 명확함
 ```
@@ -254,14 +254,14 @@ grid.addObserver(self, forKeyPath: graphics) // 명확함
 * **메소드와 함수 이름은 사용하는 쪽에서 문법적인 영어 문장을 형성하게끔 만들기 바랍니다.**
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 x.insert(y, at: z)          “x 는, y 를 z 위치에 집어 넣습니다”
 x.subViews(havingColor: y)  “x 의 하위 뷰는 y 색상을 가집니다”
 x.capitalizingNouns()       “x 는 명사를 대문자로 만듭니다”
 ```
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 x.insert(y, position: z)
 x.subViews(color: y)
 x.nounCapitalize()
@@ -282,7 +282,7 @@ AudioUnit.instantiate(
 예를 들어, 이런 호출에 대한 첫 번째 인자는 '기본 이름 (base name)' 과 같은 구절인 것으로 이해하지는 않습니다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 let foreground = Color(red: 32, green: 64, blue: 128)
 let newPart = factory.makeWidget(gears: 42, spindles: 14)
 let ref = Link(target: destination)
@@ -291,7 +291,7 @@ let ref = Link(target: destination)
 다음에 있는 것들은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 생성하려고 한 것입니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 let foreground = Color(havingRGBValuesRed: 32, green: 64, andBlue: 128)
 let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
 let ref = Link(to: destination)
@@ -431,7 +431,7 @@ var enjoysScubaDiving = true
 예를 들어, 다음과 같은 것들이 권장되는 것은, 이 메소드들이 본질적으로 같은 것을 하기 때문입니다:
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 extension Shape {
   /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
   func contains(_ other: Point) -> Bool { ... }
@@ -447,7 +447,7 @@ extension Shape {
 그리고 '기하학 타입 (geometric types)' 과 '집합체 타입 (collections)' 은 서로 별도의 분야이므로, 같은 프로그램 내에서 다음과 같이 하는 것 또한 괜찮습니다:
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 extension Collection where Element : Equatable {
   /// `self` 가 `sought` 와 같은 원소를 가지고 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
   func contains(_ sought: Element) -> Bool { ... }
@@ -457,7 +457,7 @@ extension Collection where Element : Equatable {
 하지만, 아래의 `index` 메소드들은 다른 '의미 구조 (semantics)' 를 가지므로, 이름을 다르게 지어야 합니다:
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 extension Database {
   /// Rebuilds the database's search index
   func index() { ... }
@@ -470,7 +470,7 @@ extension Database {
 마지막으로, "반환 타입에 대한 중복 정의 (overloading on return type)" 는 타입 추론 시에 모호함을 유발할 수 있기 때문에 피합니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 extension Box {
   /// Returns the `Int` stored in `self`, if any, and
   /// `nil` otherwise.
@@ -493,7 +493,7 @@ func move(from start: Point, to end: Point)
 이 이름들은 문서가 쉽게 읽히도록 선택합니다. 예를 들어, 이런 이름은 문서를 자연스럽게 읽히도록 만듭니다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 
 /// Return an `Array` containing the elements of `self`
 /// that satisfy `predicate`.
@@ -508,7 +508,7 @@ mutating func replaceRange(_ subRange: Range, with newElements: [E])
 하지만, 아래 있는 것들은 문서를 어색하고 문법적이지 않도록 만듭니다.
 
 ```swift
-// 않좋은 경우
+// 잘못된 예제
 
 /// Return an `Array` containing the elements of `self`
 /// that satisfy `includedInResult`.
@@ -526,7 +526,7 @@ mutating func replaceRange(_ r: Range, with: [E])
 '기본 설정 인자 (default arguments)' 는 관계가 없는 정보를 숨겨 가독성을 개선합니다. 예를 들면 다음과 같습니다:
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 let order = lastName.compare(
   royalFamilyName, options: [], range: nil, locale: nil)
 ```
@@ -534,14 +534,14 @@ let order = lastName.compare(
 위는 훨씬 더 간단해질 수 있습니다:[^simpler]
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 let order = lastName.compare(royalFamilyName)
 ```
 
 '기본 설정 인자' 가 일반적으로 '메소드 일가 (method families)' 보다 더 나은데, 이는 API 를 이해하려는 사람에게 부담이 더 적기 때문입니다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 extension String {
   /// ...설명...
   public func compare(_ other: String, options: CompareOptions = [], range: Range? = nil, locale: Locale? = nil
@@ -552,7 +552,7 @@ extension String {
 위에 있는 것은 간단하지 않은 것 같지만, 다음 보다는 훨씬 더 간단합니다:
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 extension String {
   /// ...설명 1...
   public func compare(_ other: String) -> Ordering
@@ -618,7 +618,7 @@ extension UInt32 {
 처음 두 인자가 '단일 추상 명사 (single abstraction)' 를 표현할 때는 예외가 생깁니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 a.move(toX: b, y: c)
 a.fade(fromRed: b, green: c, blue: d)
 ```
@@ -626,7 +626,7 @@ a.fade(fromRed: b, green: c, blue: d)
 이런 경우, 추상 명사를 명확하게 유지하도록, 인자 이름표를 전치사 _뒤에서 (after)_ 부터 시작합니다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 a.moveTo(x: b, y: c)
 a.fadeFrom(red: b, green: c, blue: d)
 ```
@@ -636,7 +636,7 @@ a.fadeFrom(red: b, green: c, blue: d)
 이 지침은, 첫 번째 인자가 문법적인 구절을 형성하지 _않는 (doesn't)_ 경우, 이름표를 가져야 함을 의미합니다.
 
 ```swift
-// 좋은 경우
+// 좋은 예제
 view.dismiss(animated: false)
 let text = words.split(maxSplits: 12)
 let studentsByName = students.sorted(isOrderedBefore: Student.namePrecedes)
@@ -645,7 +645,7 @@ let studentsByName = students.sorted(isOrderedBefore: Student.namePrecedes)
 구절은 올바른 의미를 전달하는 것이 중요함에 주의합니다. 다음은 문법적으로는 맞겠지만 잘못된 것을 표현하게 됩니다.
 
 ```swift
-// 안좋은 경우
+// 잘못된 예제
 view.dismiss(false)   // 물러나지 말아야 하는 것인가? 불리언 값을 물러가게 하라는 것인가?
 words.split(12)       // 12 라는 수를 쪼개야 하는가?
 ```
@@ -679,6 +679,48 @@ mutating func ensureUniqueStorage(
 ```
 
 클로저 매개 변수에 사용하는 이름은 최상위 함수의 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 처럼 선택해야 합니다. 클로저 인자에 대한 이름표는 호출하는 쪽에서는 지원하지 않습니다.
+
+* **'구속 조건이 없는 다형성 (unconstrained polymorphism)' 은 좀 더 주의해서** (`Any`, `AnyObject`, 및 구속 조건이 없는 제네릭 매개 변수 등의) 중복정의 집합에서 모호함을 피하도록 합니다.
+
+예를 들어, 다음의 중복정의 집합을 고려해 봅시다:
+
+```swift
+// 잘못된 예제
+struct Array {
+  /// Inserts `newElement` at `self.endIndex`.
+  public mutating func append(_ newElement: Element)
+
+  /// Inserts the contents of `newElements`, in order, at
+  /// `self.endIndex`.
+  public mutating func append(_ newElements: S)
+    where S.Generator.Element == Element
+}
+```
+
+이 메소드들은 '의미 상의 일가족 (semantic family)' 을 형성하며, 맨 처음에 있는 인자 타입은 뚜렷하게 구별됩니다. 하지만, `Element` 가 `Any` 일 때는, '단일 원소 (single element)' 가 '일련의 원소들 (sequnce of elements)' 과 같은 타입을 가질 수 있습니다.
+
+```swift
+// 잘못된 예제
+var values: [Any] = [1, "a"]
+values.append([2, 3, 4]) // [1, "a", [2, 3, 4]] or [1, "a", 2, 3, 4]?
+```
+
+모호함을 없애기 위해, 두 번째 중복정의는 더 명시적으로 이름을 짓도록 합니다.
+
+```swift
+// 좋은 예제
+struct Array {
+  /// Inserts `newElement` at `self.endIndex`.
+  public mutating func append(_ newElement: Element)
+
+  /// Inserts the contents of `newElements`, in order, at
+  /// `self.endIndex`.
+  public mutating func append(contentsOf newElements: S)
+    where S.Generator.Element == Element
+}
+```
+
+새로운 이름이 '문서화 주석' 과 얼마나 더 잘 일치하는 지에 주목하기 바랍니다. 이 경우, 문서화 주석을 작성하는 행위가 실제로 API 작성자에게 논점을 떠올리게 합니다.
 
 ### 참고 자료
 
