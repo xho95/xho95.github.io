@@ -137,9 +137,9 @@ public func print(
   _ items: Any..., separator: String = " ", terminator: String = "\n")
 ```
 
-1. **인식이 되는 '기호 문서화 마크업 ([symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1))' 원소를 사용하여**, 적당할 때마다, 요약 이외의 정보를 추가합니다.
+1. **인증받은 '기호화된 문서화 마크업 ([symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1))' 원소를 사용하여**, 적절할 때마다, 요약 이상의 정보를 추가합니다.
 
-2. '기호 명령 구문 표현 ([symbol command syntax](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW13))'[^symbol-comman-syntax] 으로 된 인식이 되는 '목록 항목 (bullet items)' 을 알아 보고 사용하도록 합니다. 'Xcode' 같은 대중적인 개발 도구들은 아래 키워드로 시작하는 '목록 항목 (bullet items)' 을 특수하게 처리합니다.
+2. **인증받은 목록 항목을 알아보고 '기호화된 명령 구문 표현 ([symbol command syntax](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW13))'[^symbol-comman-syntax] 과 함께 사용하도록 합니다.** '엑스코드 (Xcode)' 같은 대중적인 개발 도구는 다음 키워드로 시작하는 '목록 항목 (bullet items)' 을 특수하게 취급합니다.
 
 ---|---|---|---|---|---
  | [Attention](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Attention.html)	| [Author](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Author.html) | [Authors](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Authors.html) | [Bug](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Bug.html) |
@@ -728,7 +728,7 @@ struct Array {
 
 [^fragment]: 여기서 '문장 구절 (sentence fragment)' 을 사용하라는 것은 완전한 문장이 아니라, 하나의 구절 형태로 사용하라는 의미입니다. 'API 설계 지침' 에서는 '요약 (summary)' 에는 '문장 구절' 을 사용하고, 이어지는 '문단 설명' 에서는 '완전한 문장' 사용하라고 조언하고 있습니다.
 
-[^symbol-comman-syntax]: 사실 링크 자체는 바로 위에 있는 링크와 같은 문서로 연결됩니다.
+[^symbol-comman-syntax]: 링크 자체는 바로 위의 링크와 같은 [symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1) 문서로 연결됩니다.
 
 [^base-name]: 여기서 '기본 이름 (base name)' 은 함수 또는 메소드에서 매개 변수와 괄호를 뺀 순수한 함수만의 이름을 의미하는 것으로 추측됩니다.
 
