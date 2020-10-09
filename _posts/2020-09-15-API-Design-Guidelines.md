@@ -32,6 +32,7 @@ categories: Swift Language Grammar Revision History
   <hr />
   API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**
   <hr />
+
   <div markdown="span" class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i>API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**</div>
 
    - **스위프트의 '자체 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용합니다.**
