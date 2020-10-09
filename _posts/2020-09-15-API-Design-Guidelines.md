@@ -253,103 +253,103 @@ categories: Swift Language Grammar Revision History
 
 * **메소드와 함수 이름은 사용할 때 문법에 맞는 영어 구절이 되도록 만드는 것이 좋습니다.**
 
-```swift
-// 좋은 예제
-x.insert(y, at: z)          // “x 는, y 를 z 위치에 집어 넣습니다”
-x.subViews(havingColor: y)  // “x 의 하위 뷰는 y 라는 색상을 가집니다”
-x.capitalizingNouns()       // “x 는 명사를 대문자로 만듭니다”
-```
+  ```swift
+  // 좋은 예제
+  x.insert(y, at: z)          // “x 는, y 를 z 위치에 집어 넣습니다”
+  x.subViews(havingColor: y)  // “x 의 하위 뷰는 y 라는 색상을 가집니다”
+  x.capitalizingNouns()       // “x 는 명사를 대문자로 만듭니다”
+  ```
 
-```swift
-// 잘못된 예제
-x.insert(y, position: z)
-x.subViews(color: y)
-x.nounCapitalize()
-```
+  ```swift
+  // 잘못된 예제
+  x.insert(y, position: z)
+  x.subViews(color: y)
+  x.nounCapitalize()
+  ```
 
-첫 번째나 두 번째 인자 이후로 인자들이 호출 시에 의미상 중심 역할을 하지 않을 때는 자연스러움이 좀 줄더라도 괜찮습니다:
+  첫 번째나 두 번째 인자 이후로 인자들이 호출 시에 의미상 중심 역할을 하지 않을 때는 자연스러움이 좀 줄더라도 괜찮습니다:
 
-```swift
-AudioUnit.instantiate(
-  with: description,
-  options: [.inProcess], completionHandler: stopProgressBar)
-```
+  ```swift
+  AudioUnit.instantiate(
+    with: description,
+    options: [.inProcess], completionHandler: stopProgressBar)
+  ```
 
 * **'공장 메소드 (factory methods)'[^factory-method] 의 이름은 "`make`" 로 시작합니다.** 예를 들어, `x.makeIterator()` 라고 합니다.
 
 * **초기자 및 [공장 메소드 (factory methods)](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 의 첫 번째 인자는 '기본 이름 (base name)[^base-name] 으로 시작하는 구절' 을 형성하지 않도록 합니다. 예를 들어, `x.makeWidget(cogCount: 47)` 라고 합니다.
 
-예를 들어, 이러한 호출의 첫 번째 인자는 '기본 이름 (base name) 과 같은 구절' 인 것처럼 읽히지 않아야 합니다.
+  예를 들어, 이러한 호출의 첫 번째 인자는 '기본 이름 (base name) 과 같은 구절' 인 것처럼 읽히지 않아야 합니다.
 
-```swift
-// 좋은 예제
-let foreground = Color(red: 32, green: 64, blue: 128)
-let newPart = factory.makeWidget(gears: 42, spindles: 14)
-let ref = Link(target: destination)
-```
+  ```swift
+  // 좋은 예제
+  let foreground = Color(red: 32, green: 64, blue: 128)
+  let newPart = factory.makeWidget(gears: 42, spindles: 14)
+  let ref = Link(target: destination)
+  ```
 
-다음은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 부여하려고 한 것입니다.
+  다음은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 부여하려고 한 것입니다.
 
-```swift
-// 잘못된 예제
-let foreground = Color(havingRGBValuesRed: 32, green: 64, andBlue: 128)
-let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
-let ref = Link(to: destination)
-```
+  ```swift
+  // 잘못된 예제
+  let foreground = Color(havingRGBValuesRed: 32, green: 64, andBlue: 128)
+  let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
+  let ref = Link(to: destination)
+  ```
 
-사실상, 이 지침은 [argument labels (인자 이름표)](#argument-labels-인자-이름표) 에 대한 것과 마찬가지로 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자는 이름표를 가질 것을 의미합니다.
+  사실상, 이 지침은 [argument labels (인자 이름표)](#argument-labels-인자-이름표) 에 대한 것과 마찬가지로 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자는 이름표를 가질 것을 의미합니다.
 
-```swift
-let rgbForeground = RGBColor(cmykForeground)
-```
+  ```swift
+  let rgbForeground = RGBColor(cmykForeground)
+  ```
 
 * **함수와 메소드는 '부작용 (side-effects)'[^side-effects] 에 따라 이름을 짓습니다.**
 
-- '부작용 (side-effects)' 이 없는 것은, `x.distance(to: y)`, `i.successor()` 처럼, '명사구' 로 읽히도록 합니다.
+  - '부작용 (side-effects)' 이 없는 것은, `x.distance(to: y)`, `i.successor()` 처럼, '명사구' 로 읽히도록 합니다.
 
-- '부작용 (side-effects)' 이 있는 것은, `print(x)`, `x.sort()`, `x.append(y)` 처럼, '명령형 동사구 (imperative verb phrases)' 로 읽히도록 합니다.
+  - '부작용 (side-effects)' 이 있는 것은, `print(x)`, `x.sort()`, `x.append(y)` 처럼, '명령형 동사구 (imperative verb phrases)' 로 읽히도록 합니다.
 
-- **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 종종 비슷한 '의미 구조 (semantics)' 를 가지는 별도의 '변경하지 않는 (nonmutating)', 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환하는, 버전을 가집니다.
+  - **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 종종 비슷한 '의미 구조 (semantics)' 를 가지는 별도의 '변경하지 않는 (nonmutating)', 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환하는, 버전을 가집니다.
 
-* 연산을 **동사로 설명하는 것이 자연스러울** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
+    * 연산을 **동사로 설명하는 것이 자연스러울** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
 
-**Mutating (변경)** | **Nonmutating (변경하지 않는)**
----|---
-`x.sort()` | `z = x.sorted()`
-`x.append(y)` | `z = x.appending(y)`
+      **Mutating (변경)** | **Nonmutating (변경하지 않는)**
+      ---|---
+      `x.sort()` | `z = x.sorted()`
+      `x.append(y)` | `z = x.appending(y)`
 
-- 변경하지 않는 것의 이름은 (보통 "ed" 를 추가한) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하도록 합니다:
+      - 변경하지 않는 것의 이름은 (보통 "ed" 를 추가한) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하도록 합니다:
 
-```swift
-/// 그 자리에서 `self` 를 거꾸로 뒤집습니다.
-mutating func reverse()
+      ```swift
+      /// 그 자리에서 `self` 를 거꾸로 뒤집습니다.
+      mutating func reverse()
 
-/// `self` 를 거꾸로 한 것의 복사본을 반환합니다.
-func reversed() -> Self
-...
-x.reverse()
-let y = x.reversed()
-```
+      /// `self` 를 거꾸로 한 것의 복사본을 반환합니다.
+      func reversed() -> Self
+      ...
+      x.reverse()
+      let y = x.reversed()
+      ```
 
-- 동사가 직접 목적어를 가지기 때문에 "ed" 를 추가하는 것이 문법적으로 맞지 않을 때는, 동사의 '현재 분사 [participle](https://en.wikipedia.org/wiki/Participle)' 를 사용하여, "ing" 를 덧붙여서, 변경하지 않는 것의 이름을 짓도록 합니다.
+      - 동사가 직접 목적어를 가지기 때문에 "ed" 를 추가하는 것이 문법적으로 맞지 않을 때는, 동사의 '현재 분사 [participle](https://en.wikipedia.org/wiki/Participle)' 를 사용하여, "ing" 를 덧붙여서, 변경하지 않는 것의 이름을 짓도록 합니다.
 
-```swift
-/// `self` 에서 모든 개행 문자를 벗겨냅니다.
-mutating func stripNewlines()
+      ```swift
+      /// `self` 에서 모든 개행 문자를 벗겨냅니다.
+      mutating func stripNewlines()
 
-/// `self` 에서 모든 개행 문자가 벗겨진 것의 복사본을 반환합니다.
-func strippingNewlines() -> String
-...
-s.stripNewlines()
-let oneLine = t.strippingNewlines()
-```
+      /// `self` 에서 모든 개행 문자가 벗겨진 것의 복사본을 반환합니다.
+      func strippingNewlines() -> String
+      ...
+      s.stripNewlines()
+      let oneLine = t.strippingNewlines()
+      ```
 
-* 연산을 **명사로 설명하는 것이 자연스러울** 때는, '변경하지 않는 메소드 (nonmutating method)' 에 대해서 명사를 사용하고 이에 대응되는 '변경하는 (nonmutating)' 것의 이름에 "form" 접두사를 적용합니다.
+    * 연산을 **명사로 설명하는 것이 자연스러울** 때는, '변경하지 않는 메소드 (nonmutating method)' 에 대해서 명사를 사용하고 이에 대응되는 '변경하는 (nonmutating)' 것의 이름에 "form" 접두사를 적용합니다.
 
-**Nonmutating (변경하지 않는)** | **Mutating (변경)**
----|---
-`x = y.union(z)` | `y.formUnion(z)`
-`j = c.successor(i)` | `c.formSuccessor(&i)`
+      **Nonmutating (변경하지 않는)** | **Mutating (변경)**
+      ---|---
+      `x = y.union(z)` | `y.formUnion(z)`
+      `j = c.successor(i)` | `c.formSuccessor(&i)`
 
 * 사용할 때 변경되지 않는다면 **불리언 메소드와 불리언 속성은 받는 쪽에서 단언문으로 읽히도록 사용합니다** 가령 `x.isEmpty`, `line1.intersects(line2)` 같은 것이 있습니다.
 
