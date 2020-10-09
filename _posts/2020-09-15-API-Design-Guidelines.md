@@ -395,19 +395,19 @@ categories: Swift Language Grammar Revision History
 
 * **자유 함수 (free functions) 보다는 메소드와 속성을 사용하도록 합니다.** '자유 함수 (free function)'[^free-function] 는 다음과 같은 특수한 경우에만 사용합니다:
 
-  - `self` 가 분명하지 않을 때:
+  1 . `self` 가 분명하지 않을 때:
 
     ```swift
     min(x, y, z)
     ```
 
-  - 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
+  2 . 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
 
     ```swift
     print(x)
     ```
 
-  - '함수 구문 표현' 이 '확립된 분야의 표기법' 에 해당할 때:
+  3 . '함수 구문 표현' 이 '확립된 분야의 표기법' 에 해당할 때:
 
     ```swift
     sin(x)
