@@ -394,96 +394,96 @@ categories: Swift Language Grammar Revision History
 
 * **자유 함수 (free functions) 보다는 메소드와 속성을 사용하도록 합니다.** '자유 함수 (free function)'[^free-function] 는 다음과 같은 특수한 경우에만 사용합니다:
 
-1. `self` 가 분명하지 않을 때:
+  1. `self` 가 분명하지 않을 때:
 
-```swift
-min(x, y, z)
-```
+    ```swift
+    min(x, y, z)
+    ```
 
-2. 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
+  2. 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
 
-```swift
-print(x)
-```
+    ```swift
+    print(x)
+    ```
 
-3. '함수 구문 표현' 이 '확립된 분야의 표기법' 에 해당할 때:
+  3. '함수 구문 표현' 이 '확립된 분야의 표기법' 에 해당할 때:
 
-```swift
-sin(x)
-```
+    ```swift
+    sin(x)
+    ```
 
 * **대소문자 협약을 따르도록 합니다.** 타입과 프로토콜의 이름은 `UpperCamelCase` (낙타 모양 대문자)[^uppser-camel-case] 입니다. 그 외 모든 것들은 `lowCamelCase` (낙타 모양 소문자) 입니다.
 
-미국 영어에서 일상적으로 모두 대문자로 나타내는 [두문자어 (Acronyms and Initialisms)](https://en.wikipedia.org/wiki/Acronym)[^acronyms] 는 '대소문자 협약' 에 따라 대문자 또는 소문자로 균일하게 표기해야 합니다.
+  미국 영어에서 일상적으로 모두 대문자로 나타내는 [두문자어 (Acronyms and Initialisms)](https://en.wikipedia.org/wiki/Acronym)[^acronyms] 는 '대소문자 협약' 에 따라 대문자 또는 소문자로 균일하게 표기해야 합니다.
 
-```swift
-var utf8Bytes: [UTF8.CodeUnit]
-var isRepresentableAsASCII = true
-var userSMTPServer: SecureSMTPServer
-```
+  ```swift
+  var utf8Bytes: [UTF8.CodeUnit]
+  var isRepresentableAsASCII = true
+  var userSMTPServer: SecureSMTPServer
+  ```
 
-그 외 다른 두문자어는 일상적인 단어로 취급합니다:
+  그 외 다른 두문자어는 일상적인 단어로 취급합니다:
 
-```swift
-var radarDetector: RadarScanner
-var enjoysScubaDiving = true
-```
+  ```swift
+  var radarDetector: RadarScanner
+  var enjoysScubaDiving = true
+  ```
 
 * **메소드는 기본 이름을 공유할 수 있는데** 이는 기본 의미를 같이 공유하거나 서로 별개인 분야에서 작동할 때에 그렇습니다.
 
-예를 들어, 다음과 같은 것들이 권장되는 것은, 이 메소드들이 본질적으로 같은 것을 하기 때문입니다:
+  예를 들어, 다음과 같은 것들이 권장되는 것은, 이 메소드들이 본질적으로 같은 것을 하기 때문입니다:
 
-```swift
-// 좋은 예제
-extension Shape {
-  /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
-  func contains(_ other: Point) -> Bool { ... }
+  ```swift
+  // 좋은 예제
+  extension Shape {
+    /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    func contains(_ other: Point) -> Bool { ... }
 
-  /// `other` 전체가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
-  func contains(_ other: Shape) -> Bool { ... }
+    /// `other` 전체가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    func contains(_ other: Shape) -> Bool { ... }
 
-  /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
-  func contains(_ other: LineSegment) -> Bool { ... }
-}
-```
+    /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    func contains(_ other: LineSegment) -> Bool { ... }
+  }
+  ```
 
-그리고 '기하학 타입 (geometric types)' 과 '집합체 타입 (collections)' 은 서로 별도의 분야이므로, 같은 프로그램 내에서 다음과 같이 하는 것 또한 괜찮습니다:
+  그리고 '기하학 타입 (geometric types)' 과 '집합체 타입 (collections)' 은 서로 별도의 분야이므로, 같은 프로그램 내에서 다음과 같이 하는 것 또한 괜찮습니다:
 
-```swift
-// 좋은 예제
-extension Collection where Element : Equatable {
-  /// `self` 가 `sought` 와 같은 원소를 가지고 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
-  func contains(_ sought: Element) -> Bool { ... }
-}
-```
+  ```swift
+  // 좋은 예제
+  extension Collection where Element : Equatable {
+    /// `self` 가 `sought` 와 같은 원소를 가지고 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    func contains(_ sought: Element) -> Bool { ... }
+  }
+  ```
 
-하지만, 아래의 `index` 메소드들은 다른 '의미 구조 (semantics)' 를 가지므로, 이름을 다르게 지어야 합니다:
+  하지만, 아래의 `index` 메소드들은 다른 '의미 구조 (semantics)' 를 가지므로, 이름을 다르게 지어야 합니다:
 
-```swift
-// 잘못된 예제
-extension Database {
-  /// Rebuilds the database's search index
-  func index() { ... }
+  ```swift
+  // 잘못된 예제
+  extension Database {
+    /// Rebuilds the database's search index
+    func index() { ... }
 
-  /// Returns the `n`th row in the given table.
-  func index(_ n: Int, inTable: TableID) -> TableRow { ... }
-}
-```
+    /// Returns the `n`th row in the given table.
+    func index(_ n: Int, inTable: TableID) -> TableRow { ... }
+  }
+  ```
 
-마지막으로, "반환 타입에 대한 중복 정의 (overloading on return type)" 는 타입 추론 시에 모호함을 유발할 수 있기 때문에 피합니다.
+  마지막으로, "반환 타입에 대한 중복 정의 (overloading on return type)" 는 타입 추론 시에 모호함을 유발할 수 있기 때문에 피합니다.
 
-```swift
-// 잘못된 예제
-extension Box {
-  /// Returns the `Int` stored in `self`, if any, and
-  /// `nil` otherwise.
-  func value() -> Int? { ... }
+  ```swift
+  // 잘못된 예제
+  extension Box {
+    /// Returns the `Int` stored in `self`, if any, and
+    /// `nil` otherwise.
+    func value() -> Int? { ... }
 
-  /// Returns the `String` stored in `self`, if any, and
-  /// `nil` otherwise.
-  func value() -> String? { ... }
-}
-```
+    /// Returns the `String` stored in `self`, if any, and
+    /// `nil` otherwise.
+    func value() -> String? { ... }
+  }
+  ```
 
 #### Parameters (매개 변수)
 
