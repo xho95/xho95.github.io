@@ -37,13 +37,13 @@ categories: Swift Language Grammar Revision History
 
    - **요약 (summary) 으로 시작하여** 선언 중인 '개체 (entity)' 를 설명합니다. 때때로, 선언과 요약으로 API 를 완전히 이해할 수도 있습니다.
 
-    ```swift
-    /// Returns a "view" of `self` containing the same elements in
-    /// reverse order.
-    /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
-    func reversed() -> ReverseCollection
-    ```
-      
+  ```swift
+  /// Returns a "view" of `self` containing the same elements in
+  /// reverse order.
+  /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
+  func reversed() -> ReverseCollection
+  ```
+
       * **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
 
       * **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
