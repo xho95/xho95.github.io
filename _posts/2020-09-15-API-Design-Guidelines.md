@@ -313,43 +313,43 @@ categories: Swift Language Grammar Revision History
 
     * 연산을 **동사로 설명하는 것이 자연스러울** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
 
-      **Mutating (변경)** | **Nonmutating (변경하지 않는)**
-      ---|---
-      `x.sort()` | `z = x.sorted()`
-      `x.append(y)` | `z = x.appending(y)`
+      **Mutating** | | **Nonmutating**
+      ---|---|---
+      `x.sort()` | | `z = x.sorted()`
+      `x.append(y)` | | `z = x.appending(y)`
 
       - 변경하지 않는 것의 이름은 (보통 "ed" 를 추가한) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하도록 합니다:
 
-      ```swift
-      /// 그 자리에서 `self` 를 거꾸로 뒤집습니다.
-      mutating func reverse()
+        ```swift
+        /// 그 자리에서 `self` 를 거꾸로 뒤집습니다.
+        mutating func reverse()
 
-      /// `self` 를 거꾸로 한 것의 복사본을 반환합니다.
-      func reversed() -> Self
-      ...
-      x.reverse()
-      let y = x.reversed()
-      ```
+        /// `self` 를 거꾸로 한 것의 복사본을 반환합니다.
+        func reversed() -> Self
+        ...
+        x.reverse()
+        let y = x.reversed()
+        ```
 
       - 동사가 직접 목적어를 가지기 때문에 "ed" 를 추가하는 것이 문법적으로 맞지 않을 때는, 동사의 '현재 분사 [participle](https://en.wikipedia.org/wiki/Participle)' 를 사용하여, "ing" 를 덧붙여서, 변경하지 않는 것의 이름을 짓도록 합니다.
 
-      ```swift
-      /// `self` 에서 모든 개행 문자를 벗겨냅니다.
-      mutating func stripNewlines()
+        ```swift
+        /// `self` 에서 모든 개행 문자를 벗겨냅니다.
+        mutating func stripNewlines()
 
-      /// `self` 에서 모든 개행 문자가 벗겨진 것의 복사본을 반환합니다.
-      func strippingNewlines() -> String
-      ...
-      s.stripNewlines()
-      let oneLine = t.strippingNewlines()
-      ```
+        /// `self` 에서 모든 개행 문자가 벗겨진 것의 복사본을 반환합니다.
+        func strippingNewlines() -> String
+        ...
+        s.stripNewlines()
+        let oneLine = t.strippingNewlines()
+        ```
 
     * 연산을 **명사로 설명하는 것이 자연스러울** 때는, '변경하지 않는 메소드 (nonmutating method)' 에 대해서 명사를 사용하고 이에 대응되는 '변경하는 (nonmutating)' 것의 이름에 "form" 접두사를 적용합니다.
 
-      **Nonmutating (변경하지 않는)** | **Mutating (변경)**
-      ---|---
-      `x = y.union(z)` | `y.formUnion(z)`
-      `j = c.successor(i)` | `c.formSuccessor(&i)`
+      **Nonmutating** | | **Mutating**
+      ---|---|---
+      `x = y.union(z)` | | `y.formUnion(z)`
+      `j = c.successor(i)` | | `c.formSuccessor(&i)`
 
 * 사용할 때 변경되지 않는다면 **불리언 메소드와 불리언 속성은 받는 쪽에서 단언문으로 읽히도록 사용합니다** 가령 `x.isEmpty`, `line1.intersects(line2)` 같은 것이 있습니다.
 
