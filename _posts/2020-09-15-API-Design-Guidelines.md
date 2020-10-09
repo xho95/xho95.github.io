@@ -493,83 +493,87 @@ func move(from start: Point, to end: Point)
 
 * **매개 변수 이름은 문서화에 도움이 되도록 선택합니다.** 매개 변수 이름은 함수나 메소드를 사용하는 곳에서는 나타나지 않지만, 설명에 있어서 중요한 역할을 합니다.
 
-이 이름들은 문서가 쉽게 읽히도록 선택합니다. 예를 들어, 이런 이름은 문서를 자연스럽게 읽히도록 만듭니다.
+  이 이름들은 문서가 쉽게 읽히도록 선택합니다. 예를 들어, 이런 이름은 문서를 자연스럽게 읽히도록 만듭니다.
 
-```swift
-// 좋은 예제
+  ```swift
+  // 좋은 예제
 
-/// Return an `Array` containing the elements of `self`
-/// that satisfy `predicate`.
-/// `self` 의 원소 중 `predicate` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
-func filter(_ predicate: (Element) -> Bool) -> [Generator.Element]
+  /// Return an `Array` containing the elements of `self`
+  /// that satisfy `predicate`.
+  /// `self` 의 원소 중 `predicate` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
+  func filter(_ predicate: (Element) -> Bool) -> [Generator.Element]
 
-/// Replace the given `subRange` of elements with `newElements`.
-/// 주어진 `subRange` 의 원소들을 `newElements` 로 대체합니다.
-mutating func replaceRange(_ subRange: Range, with newElements: [E])
-```
+  /// Replace the given `subRange` of elements with `newElements`.
+  /// 주어진 `subRange` 의 원소들을 `newElements` 로 대체합니다.
+  mutating func replaceRange(_ subRange: Range, with newElements: [E])
+  ```
 
-하지만, 아래 있는 것들은 문서를 어색하고 문법적이지 않도록 만듭니다.
+  하지만, 아래 있는 것들은 문서를 어색하고 문법적이지 않도록 만듭니다.
 
-```swift
-// 잘못된 예제
+  ```swift
+  // 잘못된 예제
 
-/// Return an `Array` containing the elements of `self`
-/// that satisfy `includedInResult`.
-/// `self` 의 원소 중 `includedInResult` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
-func filter(_ includedInResult: (Element) -> Bool) -> [Generator.Element]
+  /// Return an `Array` containing the elements of `self`
+  /// that satisfy `includedInResult`.
+  /// `self` 의 원소 중 `includedInResult` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
+  func filter(_ includedInResult: (Element) -> Bool) -> [Generator.Element]
 
-/// Replace the range of elements indicated by `r` with
-/// the contents of `with`.
-/// `r` 로 지시한 범위의 원소들을 `with` 의 내용으로 대체합니다.
-mutating func replaceRange(_ r: Range, with: [E])
-```
+  /// Replace the range of elements indicated by `r` with
+  /// the contents of `with`.
+  /// `r` 로 지시한 범위의 원소들을 `with` 의 내용으로 대체합니다.
+  mutating func replaceRange(_ r: Range, with: [E])
+  ```
 
 * **기본 설정 매개 변수 (defaulted parameters) 의 장점은** 공통된 사용법을 간단하게 만들 때마다 취하도록 합니다. 매개 변수가 공통적으로-사용되는 단일한 값을 가진다면 '기본 설정 (default)' 의 후보입니다.
 
-'기본 설정 인자 (default arguments)' 는 관계가 없는 정보를 숨겨 가독성을 개선합니다. 예를 들면 다음과 같습니다:
+  '기본 설정 인자 (default arguments)' 는 관계가 없는 정보를 숨겨 가독성을 개선합니다. 예를 들면 다음과 같습니다:
 
-```swift
-// 잘못된 예제
-let order = lastName.compare(
-  royalFamilyName, options: [], range: nil, locale: nil)
-```
+  ```swift
+  // 잘못된 예제
+  let order = lastName.compare(
+    royalFamilyName, options: [], range: nil, locale: nil)
+  ```
 
-위는 훨씬 더 간단해질 수 있습니다:[^simpler]
+  위는 훨씬 더 간단해질 수 있습니다:[^simpler]
 
-```swift
-// 좋은 예제
-let order = lastName.compare(royalFamilyName)
-```
+  ```swift
+  // 좋은 예제
+  let order = lastName.compare(royalFamilyName)
+  ```
 
-'기본 설정 인자' 가 일반적으로 '메소드 일가 (method families)' 보다 더 나은데, 이는 API 를 이해하려는 사람에게 부담이 더 적기 때문입니다.
+  '기본 설정 인자' 가 일반적으로 '메소드 일가 (method families)' 보다 더 나은데, 이는 API 를 이해하려는 사람에게 부담이 더 적기 때문입니다.
 
-```swift
-// 좋은 예제
-extension String {
-  /// ...설명...
-  public func compare(_ other: String, options: CompareOptions = [], range: Range? = nil, locale: Locale? = nil
-  ) -> Ordering
-}
-```
+  ```swift
+  // 좋은 예제
+  extension String {
+    /// ...설명...
+    public func compare(
+      _ other: String, options: CompareOptions = [],
+      range: Range? = nil, locale: Locale? = nil
+    ) -> Ordering
+  }
+  ```
 
-위에 있는 것은 간단하지 않은 것 같지만, 다음 보다는 훨씬 더 간단합니다:
+  위에 있는 것은 간단하지 않은 것 같지만, 다음 보다는 훨씬 더 간단합니다:
 
-```swift
-// 잘못된 예제
-extension String {
-  /// ...설명 1...
-  public func compare(_ other: String) -> Ordering
-  /// ...설명 2...
-  public func compare(_ other: String, options: CompareOptions) -> Ordering
-  /// ...설명 3...
-  public func compare(
-     _ other: String, options: CompareOptions, range: Range) -> Ordering
-  /// ...설명 4...
-  public func compare(_ other: String, options: StringCompareOptions, range: Range, locale: Locale) -> Ordering
-}
-```
+  ```swift
+  // 잘못된 예제
+  extension String {
+    /// ...설명 1...
+    public func compare(_ other: String) -> Ordering
+    /// ...설명 2...
+    public func compare(_ other: String, options: CompareOptions) -> Ordering
+    /// ...설명 3...
+    public func compare(
+      _ other: String, options: CompareOptions, range: Range) -> Ordering
+    /// ...설명 4...
+    public func compare(
+      _ other: String, options: StringCompareOptions,
+      range: Range, locale: Locale) -> Ordering
+  }
+  ```
 
-'메소드 일가 (method family)' 는 모든 구성원에 대해 사용자가 별도로 문서화해서 이해할 필요가 있습니다. 이 중에서 결정하려면, 사용자가 이 모든 것을 이해해야 하며, 가끔 있는 놀라운 관계-예를 들어, `foo(bar: nil)` 과 `foo()` 가 항상 동의어는 아니라는 것-은 이를 대부분은 똑같은 문서에서 사소한 차이점을 캐내는 지루한 과정으로 만듭니다. 기본 설정을 가진 단일 메소드의 사용은 대단히 우수한 프로그래머 경험을 제공합니다.
+  '메소드 일가 (method family)' 는 모든 구성원에 대해 사용자가 별도로 문서화해서 이해할 필요가 있습니다. 이 중에서 결정하려면, 사용자가 이 모든 것을 이해해야 하며, 가끔 있는 놀라운 관계-예를 들어, `foo(bar: nil)` 과 `foo()` 가 항상 동의어는 아니라는 것-은 이를 대부분은 똑같은 문서에서 사소한 차이점을 캐내는 지루한 과정으로 만듭니다. 기본 설정을 가진 단일 메소드의 사용은 대단히 우수한 프로그래머 경험을 제공합니다.
 
 * **기본 설정을 가진 매개 변수의 위치는** 매개 변수 목록의 끝으로 보내는 것이 낫습니다. 기본 설정이 없는 매개 변수가 보통 메소드의 의미 구조상 더 본질적이며, 메소드가 호출되는 곳에서 사용하기에 안정적인 '초기화 패턴 (initial pattern)' 을 제공합니다.
 
@@ -584,76 +588,76 @@ x.move(from: x, to: y)
 
 * <strong id="type-conversion">'값 보존 타입 변환 (value preserving type conversion)' 을 하는 초기자에서, 첫 번째 인자 이름표는 생략합니다</strong>, 가령 `Int64(someUInt32)` 라고 합니다.
 
-첫 번째 인자는 항상 변환의 '원천 (source)' 이어야 합니다.
+  첫 번째 인자는 항상 변환의 '원천 (source)' 이어야 합니다.
 
-```swift
-extension String {
-  // Convert `x` into its textual representation in the given radix
-  init(_ x: BigInt, radix: Int = 10)          ← 초기 밑줄에 주목합니다.
-}
+  ```swift
+  extension String {
+    // Convert `x` into its textual representation in the given radix
+    init(_ x: BigInt, radix: Int = 10)          ← 초기 밑줄에 주목합니다.
+  }
 
-text = "The value is: "
-text += String(veryLargeNumber)
-text += " and in hexadecimal, it's"
-text += String(veryLargeNumber, radix: 16)
-```
+  text = "The value is: "
+  text += String(veryLargeNumber)
+  text += " and in hexadecimal, it's"
+  text += String(veryLargeNumber, radix: 16)
+  ```
 
-하지만, "좁히는 (narrowing)" 타입 변환에서는, 좁힘을 설명하는 이름표를 하기를 추천합니다.
+  하지만, "좁히는 (narrowing)" 타입 변환에서는, 좁힘을 설명하는 이름표를 하기를 추천합니다.
 
-```swift
-extension UInt32 {
-  /// Creates an instance having the specified `value`.
-  init(_ value: Int16)                        ← 넓히는 것이므로, 이름표가 없습니다.
-  /// Creates an instance having the lowest 32 bits of `source`.
-  init(truncating source: UInt64)
-  /// Creates an instance having the nearest representable
-  /// approximation of `valueToApproximate`.
-  init(saturating valueToApproximate: UInt64)
-}
-```
+  ```swift
+  extension UInt32 {
+    /// Creates an instance having the specified `value`.
+    init(_ value: Int16)                        ← 넓히는 것이므로, 이름표가 없습니다.
+    /// Creates an instance having the lowest 32 bits of `source`.
+    init(truncating source: UInt64)
+    /// Creates an instance having the nearest representable
+    /// approximation of `valueToApproximate`.
+    init(saturating valueToApproximate: UInt64)
+  }
+  ```
 
-> 값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스의 값에 있는 모든 차이가 결과의 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 '값 보존' 인데 이는 모든 별개의 `Int8` 값이 별개의 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로의 변환은 '값 보존' 일 수 없습니다: `Int64` 은 `Int8` 으로 표현할 수 있는 것보다 더 많은 값을 가지고 있습니다.
->
-> 참고 : 원래의 값을 가져오는 능력은 변환이 '값 보존' 인지의 여부와는 관계가 없습니다.
+  > 값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스의 값에 있는 모든 차이가 결과의 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 '값 보존' 인데 이는 모든 별개의 `Int8` 값이 별개의 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로의 변환은 '값 보존' 일 수 없습니다: `Int64` 은 `Int8` 으로 표현할 수 있는 것보다 더 많은 값을 가지고 있습니다.
+  >
+  > 참고 : 원래의 값을 가져오는 능력은 변환이 '값 보존' 인지의 여부와는 관계가 없습니다.
 
 * **첫 번째 인자가 [전치사 구 (prepositional phrase)](https://en.wikipedia.org/wiki/Adpositional_phrase#Prepositional_phrases) 를 형성할 때는, 인자 이름표를 부여합니다.** 인자 이름표는, `x.removeBoxes(havingLength: 12)` 처럼, 보통은 [전치사 (preposition)](https://en.wikipedia.org/wiki/Preposition_and_postposition) 로 시작해야 합니다.
 
-처음 두 인자가 '단일 추상 명사 (single abstraction)' 를 표현할 때는 예외가 생깁니다.
+  처음 두 인자가 '단일 추상 명사 (single abstraction)' 를 표현할 때는 예외가 생깁니다.
 
-```swift
-// 잘못된 예제
-a.move(toX: b, y: c)
-a.fade(fromRed: b, green: c, blue: d)
-```
+  ```swift
+  // 잘못된 예제
+  a.move(toX: b, y: c)
+  a.fade(fromRed: b, green: c, blue: d)
+  ```
 
-이런 경우, 추상 명사를 명확하게 유지하도록, 인자 이름표를 전치사 _뒤에서 (after)_ 부터 시작합니다.
+  이런 경우, 추상 명사를 명확하게 유지하도록, 인자 이름표를 전치사 _뒤에서 (after)_ 부터 시작합니다.
 
-```swift
-// 좋은 예제
-a.moveTo(x: b, y: c)
-a.fadeFrom(red: b, green: c, blue: d)
-```
+  ```swift
+  // 좋은 예제
+  a.moveTo(x: b, y: c)
+  a.fadeFrom(red: b, green: c, blue: d)
+  ```
 
 * **그 외의 경우에서, 첫 번째 인자가 문법적인 구절을 형성하는 경우, 이름표를 생략하고**, `x.addSubview(y)` 처럼, '기본 이름 (base name)' 앞에 어떤 단어를 추가합니다.
 
-이 지침은, 첫 번째 인자가 문법적인 구절을 형성하지 _않는 (doesn't)_ 경우, 이름표를 가져야 함을 의미합니다.
+  이 지침은, 첫 번째 인자가 문법적인 구절을 형성하지 _않는 (doesn't)_ 경우, 이름표를 가져야 함을 의미합니다.
 
-```swift
-// 좋은 예제
-view.dismiss(animated: false)
-let text = words.split(maxSplits: 12)
-let studentsByName = students.sorted(isOrderedBefore: Student.namePrecedes)
-```
+  ```swift
+  // 좋은 예제
+  view.dismiss(animated: false)
+  let text = words.split(maxSplits: 12)
+  let studentsByName = students.sorted(isOrderedBefore: Student.namePrecedes)
+  ```
 
-구절은 올바른 의미를 전달하는 것이 중요함에 주의합니다. 다음은 문법적으로는 맞겠지만 잘못된 것을 표현하게 됩니다.
+  구절은 올바른 의미를 전달하는 것이 중요함에 주의합니다. 다음은 문법적으로는 맞겠지만 잘못된 것을 표현하게 됩니다.
 
-```swift
-// 잘못된 예제
-view.dismiss(false)   // 물러나지 말아야 하는 것인가? 불리언 값을 물러가게 하라는 것인가?
-words.split(12)       // 12 라는 수를 쪼개야 하는가?
-```
+  ```swift
+  // 잘못된 예제
+  view.dismiss(false)   // 물러나지 말아야 하는 것인가? 불리언 값을 물러가게 하라는 것인가?
+  words.split(12)       // 12 라는 수를 쪼개야 하는가?
+  ```
 
-기본 설정 값을 가지는 인자는 생략할 수 있어서, 문법적인 구절을 형성하지 않을 수도 있으므로, 항상 이름표를 가져야 함에 주의하기 바랍니다.
+  기본 설정 값을 가지는 인자는 생략할 수 있어서, 문법적인 구절을 형성하지 않을 수도 있으므로, 항상 이름표를 가져야 함에 주의하기 바랍니다.
 
 * **다른 모든 인자들은 이름표를 붙입니다.**
 
@@ -661,69 +665,69 @@ words.split(12)       // 12 라는 수를 쪼개야 하는가?
 
 * **튜플 멤버의 이름표와 클로저 매개 변수의 이름은** API 에 나타날 때마다 붙이도록 합니다.
 
-이 이름들은 설명에 아주 도움이 되며, '문서화 주석 (documentation comments)' 에서 참조할 수 있으며, 튜플 멤버를 접근할 때 의미 전달이 잘 됩니다.
+  이 이름들은 설명에 아주 도움이 되며, '문서화 주석 (documentation comments)' 에서 참조할 수 있으며, 튜플 멤버를 접근할 때 의미 전달이 잘 됩니다.
 
-```swift
-/// Ensure that we hold uniquely-referenced storage for at least
-/// `requestedCapacity` elements.
-///
-/// If more storage is needed, `allocate` is called with
-/// `byteCount` equal to the number of maximally-aligned
-/// bytes to allocate.
-///
-/// - Returns:
-///   - reallocated: `true` iff a new block of memory
-///     was allocated.
-///   - capacityChanged: `true` iff `capacity` was updated.
-mutating func ensureUniqueStorage(
-  minimumCapacity requestedCapacity: Int,
-  allocate: (_ byteCount: Int) -> UnsafePointer<Void>
-) -> (reallocated: Bool, capacityChanged: Bool)
-```
+  ```swift
+  /// Ensure that we hold uniquely-referenced storage for at least
+  /// `requestedCapacity` elements.
+  ///
+  /// If more storage is needed, `allocate` is called with
+  /// `byteCount` equal to the number of maximally-aligned
+  /// bytes to allocate.
+  ///
+  /// - Returns:
+  ///   - reallocated: `true` iff a new block of memory
+  ///     was allocated.
+  ///   - capacityChanged: `true` iff `capacity` was updated.
+  mutating func ensureUniqueStorage(
+    minimumCapacity requestedCapacity: Int,
+    allocate: (_ byteCount: Int) -> UnsafePointer<Void>
+  ) -> (reallocated: Bool, capacityChanged: Bool)
+  ```
 
-클로저 매개 변수에 사용하는 이름은 최상위 함수의 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 처럼 선택해야 합니다. 클로저 인자에 대한 이름표는 호출하는 쪽에서는 지원하지 않습니다.
+  클로저 매개 변수에 사용하는 이름은 최상위 함수의 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 처럼 선택해야 합니다. 클로저 인자에 대한 이름표는 호출하는 쪽에서는 지원하지 않습니다.
 
 * **'구속 조건이 없는 다형성 (unconstrained polymorphism)' 은 좀 더 주의해서** (`Any`, `AnyObject`, 및 구속 조건이 없는 제네릭 매개 변수 등의) 중복정의 집합에서 모호함을 피하도록 합니다.
 
-예를 들어, 다음의 중복정의 집합을 고려해 봅시다:
+  예를 들어, 다음의 중복정의 집합을 고려해 봅시다:
 
-```swift
-// 잘못된 예제
-struct Array {
-  /// Inserts `newElement` at `self.endIndex`.
-  public mutating func append(_ newElement: Element)
+  ```swift
+  // 잘못된 예제
+  struct Array {
+    /// Inserts `newElement` at `self.endIndex`.
+    public mutating func append(_ newElement: Element)
 
-  /// Inserts the contents of `newElements`, in order, at
-  /// `self.endIndex`.
-  public mutating func append(_ newElements: S)
-    where S.Generator.Element == Element
-}
-```
+    /// Inserts the contents of `newElements`, in order, at
+    /// `self.endIndex`.
+    public mutating func append(_ newElements: S)
+      where S.Generator.Element == Element
+  }
+  ```
 
-이 메소드들은 '의미 상의 일가족 (semantic family)' 을 형성하며, 맨 처음에 있는 인자 타입은 뚜렷하게 구별됩니다. 하지만, `Element` 가 `Any` 일 때는, '단일 원소 (single element)' 가 '일련의 원소들 (sequnce of elements)' 과 같은 타입을 가질 수 있습니다.
+  이 메소드들은 '의미 상의 일가족 (semantic family)' 을 형성하며, 맨 처음에 있는 인자 타입은 뚜렷하게 구별됩니다. 하지만, `Element` 가 `Any` 일 때는, '단일 원소 (single element)' 가 '일련의 원소들 (sequnce of elements)' 과 같은 타입을 가질 수 있습니다.
 
-```swift
-// 잘못된 예제
-var values: [Any] = [1, "a"]
-values.append([2, 3, 4]) // [1, "a", [2, 3, 4]] or [1, "a", 2, 3, 4]?
-```
+  ```swift
+  // 잘못된 예제
+  var values: [Any] = [1, "a"]
+  values.append([2, 3, 4]) // [1, "a", [2, 3, 4]] or [1, "a", 2, 3, 4]?
+  ```
 
-모호함을 없애기 위해, 두 번째 중복정의는 더 명시적으로 이름을 짓도록 합니다.
+  모호함을 없애기 위해, 두 번째 중복정의는 더 명시적으로 이름을 짓도록 합니다.
 
-```swift
-// 좋은 예제
-struct Array {
-  /// Inserts `newElement` at `self.endIndex`.
-  public mutating func append(_ newElement: Element)
+  ```swift
+  // 좋은 예제
+  struct Array {
+    /// Inserts `newElement` at `self.endIndex`.
+    public mutating func append(_ newElement: Element)
 
-  /// Inserts the contents of `newElements`, in order, at
-  /// `self.endIndex`.
-  public mutating func append(contentsOf newElements: S)
-    where S.Generator.Element == Element
-}
-```
+    /// Inserts the contents of `newElements`, in order, at
+    /// `self.endIndex`.
+    public mutating func append(contentsOf newElements: S)
+      where S.Generator.Element == Element
+  }
+  ```
 
-새로운 이름이 '문서화 주석' 과 얼마나 더 잘 일치하는 지에 주목하기 바랍니다. 이 경우, 문서화 주석을 작성하는 행위가 실제로 API 작성자에게 논점을 떠올리게 합니다.
+  새로운 이름이 '문서화 주석' 과 얼마나 더 잘 일치하는 지에 주목하기 바랍니다. 이 경우, 문서화 주석을 작성하는 행위가 실제로 API 작성자에게 논점을 떠올리게 합니다.
 
 ### 참고 자료
 
