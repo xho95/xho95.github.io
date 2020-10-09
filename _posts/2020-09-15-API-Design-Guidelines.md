@@ -33,22 +33,22 @@ categories: Swift Language Grammar Revision History
   ---|---|---
    | API 의 기능을 간단한 용어로 설명하는 데 어려움을 겪고 있다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.** |
 
-- **스위프트의 '자체 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용합니다.**
+   - **스위프트의 '자체 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용합니다.**
 
-- **요약 (summary) 으로 시작하여** 선언 중인 '개체 (entity)' 를 설명합니다. 때때로, 선언과 요약으로 API 를 완전히 이해할 수도 있습니다.
+   - **요약 (summary) 으로 시작하여** 선언 중인 '개체 (entity)' 를 설명합니다. 때때로, 선언과 요약으로 API 를 완전히 이해할 수도 있습니다.
 
-```swift
-/// Returns a "view" of `self` containing the same elements in
-/// reverse order.
-/// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
-func reversed() -> ReverseCollection
-```
+   ```swift
+   /// Returns a "view" of `self` containing the same elements in
+   /// reverse order.
+   /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
+   func reversed() -> ReverseCollection
+   ```
 
-1. **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
+    * **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
 
-2. **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
+    * **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
 
-3. **함수 또는 메소드는 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지 설명하고**, '없는 효과 (null effects)' 와 `Void` 반환은 생략합니다:
+    * **함수 또는 메소드는 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지 설명하고**, '없는 효과 (null effects)' 와 `Void` 반환은 생략합니다:
 
 ```swift
 /// Inserts `newHead` at the beginning of `self`.
