@@ -364,7 +364,7 @@ categories: Swift Language Grammar Revision History
 #### Use Terminology Well (용어를 잘 사용하기)
 
     ---|---|---
-    **Term of Art-기술 용어** | | _명사 (noun)_ 특정 분야 또는 직업에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
+     **Term of Art-기술 용어** | | _명사 (noun)_ 특정 분야 또는 직업에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
 
 * **애매한 용어는 피하고** 더 일반적이고 의미도 잘 전달하는 단어를 사용합니다. "피부 (skin)" 가 의도에 맞다면 굳이 "표피 (epidermis)" 라고 하지 않습니다. '기술 용어 (term of art)' 는 '핵심적인 소통 도구' 이지만, 다른 경우라면 잃어 버릴 수도 있는 '결정적인 의미 (crucial meaning)' 를 붙잡아야할 때만 사용하도록 합니다.
 
@@ -396,9 +396,9 @@ categories: Swift Language Grammar Revision History
 
   1. `self` 가 분명하지 않을 때:
 
-  ```swift
-  min(x, y, z)
-  ```
+    ```swift
+    min(x, y, z)
+    ```
 
   2. 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
 
