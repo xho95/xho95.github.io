@@ -620,6 +620,7 @@ x.move(from: x, to: y)
   >
   > 참고 : 원래의 값을 가져오는 능력은 변환이 '값 보존' 인지의 여부와는 관계가 없습니다.
 
+
 * **첫 번째 인자가 [전치사 구 (prepositional phrase)](https://en.wikipedia.org/wiki/Adpositional_phrase#Prepositional_phrases) 를 형성할 때는, 인자 이름표를 부여합니다.** 인자 이름표는, `x.removeBoxes(havingLength: 12)` 처럼, 보통은 [전치사 (preposition)](https://en.wikipedia.org/wiki/Preposition_and_postposition) 로 시작해야 합니다.
 
   처음 두 인자가 '단일 추상 명사 (single abstraction)' 를 표현할 때는 예외가 생깁니다.
@@ -637,6 +638,7 @@ x.move(from: x, to: y)
   a.moveTo(x: b, y: c)
   a.fadeFrom(red: b, green: c, blue: d)
   ```
+
 
 * **그 외의 경우에서, 첫 번째 인자가 문법적인 구절을 형성하는 경우, 이름표를 생략하고**, `x.addSubview(y)` 처럼, '기본 이름 (base name)' 앞에 어떤 단어를 추가합니다.
 
