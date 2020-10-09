@@ -29,8 +29,12 @@ categories: Swift Language Grammar Revision History
 
 * **문서화 주석 (documentation comment)[^ducumentation-comment] 을** 모든 선언마다 작성합니다. 문서화를 작성하면서 가지게 된 통찰력은 설계에 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
 
----|---|---
- | API 의 기능을 간단한 용어로 설명하는 데 어려움을 겪고 있다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.** |
+  ```
+  API 의 기능을 간단한 용어로 설명하는 데 어려움을 겪고 있다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**
+  ```
+
+  ---|---|---
+   | API 의 기능을 간단한 용어로 설명하는 데 어려움을 겪고 있다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.** |
 
 - **스위프트의 '자체 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용합니다.**
 
