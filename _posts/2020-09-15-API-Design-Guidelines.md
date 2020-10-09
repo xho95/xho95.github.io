@@ -12,9 +12,9 @@ categories: Swift Language Grammar Revision History
 
 * [Fundamentals (기반)](#fundamentals-기반)
 * [Naming (이름짓기)](#naming-이름짓기)
-- [Promote Clear Usage (명확한 사용법 추구하기)](#promote-clear-usage-명확한-사용법-추구하기)
-- [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)](#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기)
-- [Use Terminology Well (용어를 잘 사용하기)](#use-terminology-well-용어를-잘-사용하기)
+a. [Promote Clear Usage (명확한 사용법 추구하기)](#promote-clear-usage-명확한-사용법-추구하기)
+b. [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)](#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기)
+c. [Use Terminology Well (용어를 잘 사용하기)](#use-terminology-well-용어를-잘-사용하기)
 * [Conventions (협약)](#conventions-협약)
 - [General Conventions (일반적인 협약)](#general-conventions-일반적인-협약)
 - [Parameters (매개 변수)](#parameters-매개-변수)
