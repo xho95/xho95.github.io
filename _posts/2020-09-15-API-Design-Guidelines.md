@@ -39,70 +39,70 @@ categories: Swift Language Grammar Revision History
 
    - **요약 (summary) 으로 시작하여** 선언 중인 '개체 (entity)' 를 설명합니다. 때때로, 선언과 요약으로 API 를 완전히 이해할 수도 있습니다.
 
-   ```swift
-   /// Returns a "view" of `self` containing the same elements in
-   /// reverse order.
-   /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
-   func reversed() -> ReverseCollection
-   ```
+    ```swift
+    /// Returns a "view" of `self` containing the same elements in
+    /// reverse order.
+    /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
+    func reversed() -> ReverseCollection
+    ```
 
-    * **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
+      * **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
 
-    * **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
+      * **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
 
-    * **함수 또는 메소드는 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지 설명하고**, '없는 효과 (null effects)' 와 `Void` 반환은 생략합니다:
+      * **함수 또는 메소드는 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지 설명하고**, '없는 효과 (null effects)' 와 `Void` 반환은 생략합니다:
 
-```swift
-/// Inserts `newHead` at the beginning of `self`.
-/// `self` 의 맨 처음 위치에 `newHead` 를 집어 넣음.
-mutating func prepend(_ newHead: Int)
+        ```swift
+        /// Inserts `newHead` at the beginning of `self`.
+        /// `self` 의 맨 처음 위치에 `newHead` 를 집어 넣음.
+        mutating func prepend(_ newHead: Int)
 
-/// Returns a `List` containing `head` followed by the elements
-/// of `self`.
-/// `head` 및 그 뒤에 `self` 의 원소들이 있는 것을 담은 `List` 를 반환함.
-func prepending(_ head: Element) -> List
+        /// Returns a `List` containing `head` followed by the elements
+        /// of `self`.
+        /// `head` 및 그 뒤에 `self` 의 원소들이 있는 것을 담은 `List` 를 반환함.
+        func prepending(_ head: Element) -> List
 
-/// Removes and returns the first element of `self` if non-empty;
-/// returns `nil` otherwise.
-/// 비어 있지 않으면 `self` 의 첫 번째 원소를 제거하면서 반환함;
-/// 그 외 경우면 `nil` 을 반환함.
-mutating func popFirst() -> Element?
-```
+        /// Removes and returns the first element of `self` if non-empty;
+        /// returns `nil` otherwise.
+        /// 비어 있지 않으면 `self` 의 첫 번째 원소를 제거하면서 반환함;
+        /// 그 외 경우면 `nil` 을 반환함.
+        mutating func popFirst() -> Element?
+        ```
 
-참고: 드물게 위의 `popFirst` 같이, '요약' 이 세미콜론으로 구분된 여러 개의 문장으로 형성되기도 합니다.
+      참고: 드물게 위의 `popFirst` 같이, '요약' 이 세미콜론으로 구분된 여러 개의 문장으로 형성되기도 합니다.
 
-4. **첨자 연산이 무엇에 _접근하는 (accesses)_ 지 설명합니다.**:
+      * **첨자 연산이 무엇에 _접근하는 (accesses)_ 지 설명합니다.**:
 
-```swift
-/// Accesses the `index`th element.
-/// `index` 번째 원소에 접근함.
-subscript(index: Int) -> Element { get set }
-```
+        ```swift
+        /// Accesses the `index`th element.
+        /// `index` 번째 원소에 접근함.
+        subscript(index: Int) -> Element { get set }
+        ```
 
-5. **초기자가 무엇을 _생성하는 (creates)_ 지 설명합니다.**:
+      * **초기자가 무엇을 _생성하는 (creates)_ 지 설명합니다.**:
 
-```swift
-/// Creates an instance containing `n` repetitions of `x`.
-/// `x` 를 `n` 번 반복한 것을 가지고 있는 인스턴스를 생성함.
-init(count n: Int, repeatedElement x: Element)
-```
+        ```swift
+        /// Creates an instance containing `n` repetitions of `x`.
+        /// `x` 를 `n` 번 반복한 것을 가지고 있는 인스턴스를 생성함.
+        init(count n: Int, repeatedElement x: Element)
+        ```
 
-6. 다른 모든 선언은, **선언한 '개체' 가 무엇 _인지 (is)_ 를 설명합니다.**
+      * 다른 모든 선언은, **선언한 '개체' 가 무엇 _인지 (is)_ 를 설명합니다.**
 
-```swift
-/// A collection that supports equally efficient insertion/removal
-/// at any position.
-/// 어떤 위치에서도 똑같은 효율의 삽입/제거를 지원하는 컬렉션.
-struct List {
+        ```swift
+        /// A collection that supports equally efficient insertion/removal
+        /// at any position.
+        /// 어떤 위치에서도 똑같은 효율의 삽입/제거를 지원하는 컬렉션.
+        struct List {
 
-  /// The element at the beginning of `self`, or `nil` if self is
-  /// empty.
-  /// `self` 의 맨 처음 위치에 있는 원소, 또는 `self` 가 빈 것이면 `nil`.
-  var first: Element?
-  ...
-```
+        /// The element at the beginning of `self`, or `nil` if self is
+        /// empty.
+        /// `self` 의 맨 처음 위치에 있는 원소, 또는 `self` 가 빈 것이면 `nil`.
+        var first: Element?
+        ...
+        ```
 
-- **선택 사항으로, 계속해서** 하나 이상의 문단과 '목록 항목 (bullet items)' 을 붙일 수 있습니다. 문단은 '완전한 문장 (complete sentences)' 을 사용하며 문단끼리는 빈 줄로 구분합니다.
+    - **선택 사항으로, 계속해서** 하나 이상의 문단과 '목록 항목 (bullet items)' 을 붙일 수 있습니다. 문단은 '완전한 문장 (complete sentences)' 을 사용하며 문단끼리는 빈 줄로 구분합니다.
 
 ```swift
 /// Writes the textual representation of each    ← Summary
