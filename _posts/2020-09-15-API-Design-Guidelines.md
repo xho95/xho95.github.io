@@ -396,21 +396,21 @@ categories: Swift Language Grammar Revision History
 
   1. `self` 가 분명하지 않을 때:
 
-    ```swift
-    min(x, y, z)
-    ```
+  ```swift
+  min(x, y, z)
+  ```
 
   2. 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
 
-    ```swift
-    print(x)
-    ```
+  ```swift
+  print(x)
+  ```
 
   3. '함수 구문 표현' 이 '확립된 분야의 표기법' 에 해당할 때:
 
-    ```swift
-    sin(x)
-    ```
+  ```swift
+  sin(x)
+  ```
 
 * **대소문자 협약을 따르도록 합니다.** 타입과 프로토콜의 이름은 `UpperCamelCase` (낙타 모양 대문자)[^uppser-camel-case] 입니다. 그 외 모든 것들은 `lowCamelCase` (낙타 모양 소문자) 입니다.
 
