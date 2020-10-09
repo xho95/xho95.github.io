@@ -30,6 +30,8 @@ categories: Swift Language Grammar Revision History
 * **문서화 주석 (documentation comment)[^ducumentation-comment] 을** 모든 선언마다 작성합니다. 문서화를 작성하면서 가지게 된 통찰력은 설계에 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
 
   <hr />
+  API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**
+  <hr />
   ---|---|---
    | API 의 기능을 간단한 용어로 설명하는 데 어려움을 겪고 있다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.** |
 
