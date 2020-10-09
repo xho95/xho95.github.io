@@ -275,11 +275,11 @@ AudioUnit.instantiate(
   options: [.inProcess], completionHandler: stopProgressBar)
 ```
 
-* **'공장 메소드 (factory methods)'[^factory-method] 의 이름은 "`make`" 로 시작합니다.** 예를 들어, `x.makeIterator()` 처럼 합니다.
+* **'공장 메소드 (factory methods)'[^factory-method] 의 이름은 "`make`" 로 시작합니다.** 예를 들어, `x.makeIterator()` 라고 합니다.
 
-* **초기자 및 [공장 메소드 (factory methods)](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 의 첫 번째 인자는 '기본 이름 (base name)'[^base-name] 으로 시작하는 구절을 형성하지 않도록 합니다. 예를 들어, `x.makeWidget(cogCount: 47)` 처럼 합니다.
+* **초기자 및 [공장 메소드 (factory methods)](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 의 첫 번째 인자는 '기본 이름 (base name)[^base-name] 으로 시작하는 구절' 을 형성하지 않도록 합니다. 예를 들어, `x.makeWidget(cogCount: 47)` 라고 합니다.
 
-예를 들어, 이러한 호출의 첫 번째 인자는 '기본 이름 (base name)' 과 같은 구절에 있는 것으로 읽히지 않아야 합니다.
+예를 들어, 이러한 호출의 첫 번째 인자는 '기본 이름 (base name) 과 같은 구절' 인 것처럼 읽히지 않아야 합니다.
 
 ```swift
 // 좋은 예제
@@ -288,7 +288,7 @@ let newPart = factory.makeWidget(gears: 42, spindles: 14)
 let ref = Link(target: destination)
 ```
 
-다음에 있는 것들은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 부여하려고 한 것입니다.
+다음은, API 작성자가 첫 번째 인자에 '문법적인 연속성 (grammatical continuity)' 을 부여하려고 한 것입니다.
 
 ```swift
 // 잘못된 예제
@@ -297,7 +297,7 @@ let newPart = factory.makeWidget(havingGearCount: 42, andSpindleCount: 14)
 let ref = Link(to: destination)
 ```
 
-실제로, 이 지침은 [argument labels (인자 이름표)](#argument-labels-인자-이름표) 에 대한 것과 마찬가지로 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하는 것이 아닌 한 첫 번째 인자가 이름표를 가질 것임을 의미합니다.
+사실상, 이 지침은 [argument labels (인자 이름표)](#argument-labels-인자-이름표) 에 대한 것과 마찬가지로 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자는 이름표를 가질 것을 의미합니다.
 
 ```swift
 let rgbForeground = RGBColor(cmykForeground)
@@ -305,11 +305,11 @@ let rgbForeground = RGBColor(cmykForeground)
 
 * **함수와 메소드는 '부작용 (side-effects)'[^side-effects] 에 따라 이름을 짓습니다.**
 
-- '부작용 (side-effects)' 이 없는 것들은, `x.distance(to: y)`, `i.successor()` 처럼, 명사구 처럼 읽혀야 합니다.
+- '부작용 (side-effects)' 이 없는 것은, `x.distance(to: y)`, `i.successor()` 처럼, '명사구' 로 읽히도록 합니다.
 
-- '부작용 (side-effects)' 이 있는 것들은, `print(x)`, `x.sort()`, `x.append(y)` 처럼, '명령형 동사구 (imperative verb phrases)' 로 읽혀야 합니다.
+- '부작용 (side-effects)' 이 있는 것은, `print(x)`, `x.sort()`, `x.append(y)` 처럼, '명령형 동사구 (imperative verb phrases)' 로 읽히도록 합니다.
 
-- **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 때때로 비슷한 '의미 구조 (semantics)' 를 가진 '변경하지 않는 (nonmutating)' 것을 별도로 가지게 되는데, 이는 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환합니다.
+- **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 종종 비슷한 '의미 구조 (semantics)' 를 가지는 별도의 '변경하지 않는 (nonmutating)', 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환하는, 버전을 가집니다.
 
 * 연산을 **동사로 설명하는 것이 자연스러울** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
 
