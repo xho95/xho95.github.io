@@ -317,7 +317,7 @@ categories: Swift Language Grammar Revision History
       ---|---|---
       `x.sort()` | | `z = x.sorted()`
       `x.append(y)` | | `z = x.appending(y)`
-
+       | | 
 
       - 변경하지 않는 것의 이름은 (보통 "ed" 를 추가한) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하도록 합니다:
 
@@ -351,7 +351,7 @@ categories: Swift Language Grammar Revision History
       ---|---|---
       `x = y.union(z)` | | `y.formUnion(z)`
       `j = c.successor(i)` | | `c.formSuccessor(&i)`
-
+       | |
 
 * 사용할 때 변경되지 않는다면 **불리언 메소드와 불리언 속성은 받는 쪽에서 단언문으로 읽히도록 사용합니다** 가령 `x.isEmpty`, `line1.intersects(line2)` 같은 것이 있습니다.
 
@@ -364,8 +364,8 @@ categories: Swift Language Grammar Revision History
 #### Use Terminology Well (용어를 잘 사용하기)
 
 ---|---|---|---
-          | **Term of Art (기술 용어)** |     | _명사 (noun)_ 특정 분야 또는 직업에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
-          | |     |
+ | **Term of Art (기술 용어)** | | _명사 (noun)_ 특정 분야 또는 직업에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
+ | | |
 
 * **애매한 용어는 피하고** 더 일반적이고 의미도 잘 전달하는 단어를 사용합니다. "피부 (skin)" 가 의도에 맞다면 굳이 "표피 (epidermis)" 라고 하지 않습니다. '기술 용어 (term of art)' 는 '핵심적인 소통 도구' 이지만, 다른 경우라면 잃어 버릴 수도 있는 '결정적인 의미 (crucial meaning)' 를 붙잡아야할 때만 사용하도록 합니다.
 
