@@ -156,98 +156,98 @@ categories: Swift Language Grammar Revision History
 
 * **모호함이 없도록 필요한 모든 단어를 포함시킨** 이름으로 된 코드를 사람이 읽도록 합니다.
 
-예를 들어, '컬렉션 (collection)' 에서 주어진 위치의 원소를 제거하는 메소드를 생각해 봅시다.
+  예를 들어, '컬렉션 (collection)' 에서 주어진 위치의 원소를 제거하는 메소드를 생각해 봅시다.
 
-```swift
-// 좋은 예제
-extension List {
-  public mutating func remove(at position: Index) -> Element
-}
-employees.remove(at: x)
-```
+  ```swift
+  // 좋은 예제
+  extension List {
+    public mutating func remove(at position: Index) -> Element
+  }
+  employees.remove(at: x)
+  ```
 
-이 '메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략하면, `x` 가 제거할 원소의 위치를 지시하는 것이 아니라, `x` 와 같은 원소를 찾아서 제거하는 메소드라고 생각하게 될 것입니다.
+  이 '메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략하면, `x` 가 제거할 원소의 위치를 지시하는 것이 아니라, `x` 와 같은 원소를 찾아서 제거하는 메소드라고 생각하게 될 것입니다.
 
-```swift
-// 잘못된 예제
-employee.remove(x) // 불분명함 : x를 제거하는 것입니까?
-```
+  ```swift
+  // 잘못된 예제
+  employee.remove(x) // 불분명함 : x를 제거하는 것입니까?
+  ```
 
 * **필요없는 단어는 생략합니다.** 이름에 있는 모든 단어는 사용하는 쪽에 중요한 정보를 전달해야 합니다.
 
-의도를 명확하게 하거나 의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수도 있지만, 읽는 쪽에서 이미 확보해서 과잉인 정보는 생략해야 합니다. 특히, 타입 정보를 _단순하게 반복하는 (merely repeat)_ 단어는 생략합니다.
+  의도를 명확하게 하거나 의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수도 있지만, 읽는 쪽에서 이미 확보해서 과잉인 정보는 생략해야 합니다. 특히, 타입 정보를 _단순하게 반복하는 (merely repeat)_ 단어는 생략합니다.
 
-```swift
-// 잘못된 예제
-public mutating func removeElement(_ member: Element) -> Element?
+  ```swift
+  // 잘못된 예제
+  public mutating func removeElement(_ member: Element) -> Element?
 
-allViews.removeElement(cancelButton)
-```
+  allViews.removeElement(cancelButton)
+  ```
 
-이 경우, `Element` 라는 단어는 호출하는 쪽에 아무런 중요한 것도 추가하지 않습니다. 다음 API 가 더 좋을 것입니다:
+  이 경우, `Element` 라는 단어는 호출하는 쪽에 아무런 중요한 것도 추가하지 않습니다. 다음 API 가 더 좋을 것입니다:
 
-```swift
-// 좋은 예제
-public mutating func remove(_ member: Element) -> Element?
+  ```swift
+  // 좋은 예제
+  public mutating func remove(_ member: Element) -> Element?
 
-allViews.remove(cancelButton) // 더 명확함
-```
+  allViews.remove(cancelButton) // 더 명확함
+  ```
 
-가끔씩, 타입 정보를 반복하는 것도 모호함을 피하기 위해 필요하긴 하지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고합니다.
+  가끔씩, 타입 정보를 반복하는 것도 모호함을 피하기 위해 필요하긴 하지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고합니다.
 
 * **변수, 매개 변수, 및 결합된 타입은 역할에 따라 이름을 짓도록 하며,** 타입 구속 조건으로 이름을 짓지 않도록 합니다.
 
-```swift
-// 잘못된 예제
-var string = "Hello"
-protocol ViewController {
-  associatedtype ViewType : View
-}
-class ProductionLine {
-  func restock(from widgetFactory: WidgetFactory)
-}
-```
+  ```swift
+  // 잘못된 예제
+  var string = "Hello"
+  protocol ViewController {
+    associatedtype ViewType : View
+  }
+  class ProductionLine {
+    func restock(from widgetFactory: WidgetFactory)
+  }
+  ```
 
-이런 식으로 타입 이름을 재사용하면 분명함과 표현력을 최적화하는데 실패하게 됩니다. 이 보다는, '개체' 의 _역할 (role)_ 을 표현하는 이름을 선택하려고 노력합니다.
+  이런 식으로 타입 이름을 재사용하면 분명함과 표현력을 최적화하는데 실패하게 됩니다. 이 보다는, '개체' 의 _역할 (role)_ 을 표현하는 이름을 선택하려고 노력합니다.
 
-```swift
-// 좋은 예제
-var greeting = "Hello"
-protocol ViewController {
-  associatedtype ContentView : View
-}
-class ProductionLine {
-  func restock(from supplier: WidgetFactory)
-}
-```
+  ```swift
+  // 좋은 예제
+  var greeting = "Hello"
+  protocol ViewController {
+    associatedtype ContentView : View
+  }
+  class ProductionLine {
+    func restock(from supplier: WidgetFactory)
+  }
+  ```
 
-'결합된 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어서 프로토콜 이름이 역할 _이기도 (is)_ 한 경우라면, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피하도록 합니다:
+  '결합된 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어서 프로토콜 이름이 역할 _이기도 (is)_ 한 경우라면, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피하도록 합니다:
 
-```swift
-protocol Sequence {
-  associatedtype Iterator : IteratorProtocol
-}
-protocol IteratorProtocol { ... }
-```
+  ```swift
+  protocol Sequence {
+    associatedtype Iterator : IteratorProtocol
+  }
+  protocol IteratorProtocol { ... }
+  ```
 
 * **타입 정보가 약하면 보완하여** 매개 변수의 역할을 분명하게 밝힙니다.
 
-특히, 매개 변수 타입이 `NSObject`, `Any`, `AnyObject` 이거나, `Int` 및 `String` 같은 기반 타입일 때는, 사용 시점에서 타입 정보와 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 다음 예제에서, 선언은 명확한 듯 하지만, 사용하는 쪽은 분명하지가 않습니다.
+  특히, 매개 변수 타입이 `NSObject`, `Any`, `AnyObject` 이거나, `Int` 및 `String` 같은 기반 타입일 때는, 사용 시점에서 타입 정보와 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 다음 예제에서, 선언은 명확한 듯 하지만, 사용하는 쪽은 분명하지가 않습니다.
 
-```swift
-// 잘못된 예제
-func add(_ observer: NSObject, for keyPath: String)
+  ```swift
+  // 잘못된 예제
+  func add(_ observer: NSObject, for keyPath: String)
 
-grid.add(self, for: graphics) // 불분명함
-```
+  grid.add(self, for: graphics) // 불분명함
+  ```
 
-분명함을 되살리려면, 타입이 약한 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙입니다.
+  분명함을 되살리려면, 타입이 약한 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙입니다.
 
-```swift
-// 좋은 예제
-func addObserver(_ observer: NSObject, forKeyPath path: String)
-grid.addObserver(self, forKeyPath: graphics) // 명확함
-```
+  ```swift
+  // 좋은 예제
+  func addObserver(_ observer: NSObject, forKeyPath path: String)
+  grid.addObserver(self, forKeyPath: graphics) // 명확함
+  ```
 
 #### Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)
 
