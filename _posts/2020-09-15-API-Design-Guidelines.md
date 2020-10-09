@@ -29,26 +29,24 @@ categories: Swift Language Grammar Revision History
 
 * **문서화 주석 (documentation comment)[^ducumentation-comment] 을** 모든 선언마다 작성합니다. 문서화를 작성하면서 가지게 된 통찰력은 설계에 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
 
-  <hr />
   API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**
-  <hr />
 
   - **스위프트의 '자체 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용합니다.**
 
   - **요약 (summary) 으로 시작하여** 선언 중인 '개체 (entity)' 를 설명합니다. 때때로, 선언과 요약으로 API 를 완전히 이해할 수도 있습니다.
 
-  ```swift
-  /// Returns a "view" of `self` containing the same elements in
-  /// reverse order.
-  /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
-  func reversed() -> ReverseCollection
-  ```
+    ```swift
+    /// Returns a "view" of `self` containing the same elements in
+    /// reverse order.
+    /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
+    func reversed() -> ReverseCollection
+    ```
 
-      * **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
+    * **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
 
-      * **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
+    * **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
 
-      * **함수 또는 메소드는 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지 설명하고**, '없는 효과 (null effects)' 와 `Void` 반환은 생략합니다:
+    * **함수 또는 메소드는 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지 설명하고**, '없는 효과 (null effects)' 와 `Void` 반환은 생략합니다:
 
         ```swift
         /// Inserts `newHead` at the beginning of `self`.
@@ -69,7 +67,7 @@ categories: Swift Language Grammar Revision History
 
       참고: 드물게 위의 `popFirst` 같이, '요약' 이 세미콜론으로 구분된 여러 개의 문장으로 형성되기도 합니다.
 
-      * **첨자 연산이 무엇에 _접근하는 (accesses)_ 지 설명합니다.**:
+    * **첨자 연산이 무엇에 _접근하는 (accesses)_ 지 설명합니다.**:
 
         ```swift
         /// Accesses the `index`th element.
@@ -77,7 +75,7 @@ categories: Swift Language Grammar Revision History
         subscript(index: Int) -> Element { get set }
         ```
 
-      * **초기자가 무엇을 _생성하는 (creates)_ 지 설명합니다.**:
+    * **초기자가 무엇을 _생성하는 (creates)_ 지 설명합니다.**:
 
         ```swift
         /// Creates an instance containing `n` repetitions of `x`.
@@ -85,7 +83,7 @@ categories: Swift Language Grammar Revision History
         init(count n: Int, repeatedElement x: Element)
         ```
 
-      * 다른 모든 선언은, **선언한 '개체' 가 무엇 _인지 (is)_ 를 설명합니다.**
+    * 다른 모든 선언은, **선언한 '개체' 가 무엇 _인지 (is)_ 를 설명합니다.**
 
         ```swift
         /// A collection that supports equally efficient insertion/removal
@@ -100,7 +98,7 @@ categories: Swift Language Grammar Revision History
         ...
         ```
 
-    - **선택 사항으로, 계속해서** 하나 이상의 문단과 '목록 항목 (bullet items)' 을 붙일 수 있습니다. 문단은 '완전한 문장 (complete sentences)' 을 사용하며 문단끼리는 빈 줄로 구분합니다.
+  - **선택 사항으로, 계속해서** 하나 이상의 문단과 '목록 항목 (bullet items)' 을 붙일 수 있습니다. 문단은 '완전한 문장 (complete sentences)' 을 사용하며 문단끼리는 빈 줄로 구분합니다.
 
 ```swift
 /// Writes the textual representation of each    ← Summary
@@ -138,17 +136,17 @@ public func print(
   _ items: Any..., separator: String = " ", terminator: String = "\n")
 ```
 
-1. **인증받은 '기호화된 문서화 마크업 ([symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1))' 원소를 사용하여**, 적절할 때마다, 요약 이상의 정보를 추가합니다.
+    * **인증받은 '기호화된 문서화 마크업 ([symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1))' 원소를 사용하여**, 적절할 때마다, 요약 이상의 정보를 추가합니다.
 
-2. **인증받은 목록 항목을 알아보고 '기호화된 명령 구문 표현 ([symbol command syntax](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW13))'[^symbol-comman-syntax] 과 함께 사용하도록 합니다.** '엑스코드 (Xcode)' 같은 대중적인 개발 도구는 다음 키워드로 시작하는 '목록 항목 (bullet items)' 을 특수하게 취급합니다.
+    * **인증받은 목록 항목을 알아보고 '기호화된 명령 구문 표현 ([symbol command syntax](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW13))'[^symbol-comman-syntax] 과 함께 사용하도록 합니다.** '엑스코드 (Xcode)' 같은 대중적인 개발 도구는 다음 키워드로 시작하는 '목록 항목 (bullet items)' 을 특수하게 취급합니다.
 
----|---|---|---|---|---
- | [Attention](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Attention.html)	| [Author](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Author.html) | [Authors](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Authors.html) | [Bug](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Bug.html) |
- | [Complexity](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Complexity.html) | [Copyright](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Copyright.html)	| [Date](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Date.html) | [Experiment](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Experiment.html) |
- | [Important](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Important.html)	| [Invariant](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Invariant.html) | [Note](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Note.html) | [Parameter](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Parameter.html) |
- | [Parameters](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Parameters.html) | [Postcondition](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Postcondition.html) | [Precondition](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Precondition.html) | [Remark](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Remark.html) |
- | [Requires](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Requires.html) | [Returns](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Returns.html) | [SeeAlso](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SeeAlso.html) | [Since](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Since.html) |
- | [Throws](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Throws.html) | [ToDo](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Todo.html) | [Version](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Version.html) | [Warning](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Warning.html) |
+      ---|---|---|---|---|---
+         | [Attention](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Attention.html)	| [Author](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Author.html) | [Authors](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Authors.html) | [Bug](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Bug.html) |
+         | [Complexity](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Complexity.html) | [Copyright](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Copyright.html)	| [Date](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Date.html) | [Experiment](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Experiment.html) |
+         | [Important](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Important.html)	| [Invariant](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Invariant.html) | [Note](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Note.html) | [Parameter](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Parameter.html) |
+         | [Parameters](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Parameters.html) | [Postcondition](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Postcondition.html) | [Precondition](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Precondition.html) | [Remark](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Remark.html) |
+         | [Requires](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Requires.html) | [Returns](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Returns.html) | [SeeAlso](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SeeAlso.html) | [Since](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Since.html) |
+         | [Throws](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Throws.html) | [ToDo](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Todo.html) | [Version](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Version.html) | [Warning](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/Warning.html) |
 
 
 ### Naming (이름짓기)
