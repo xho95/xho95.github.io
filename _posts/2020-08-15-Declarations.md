@@ -203,13 +203,17 @@ newAndOld.x = 200
 
 속성 관찰자에 대한 더 많은 정보와 이를 사용하는 방법에 대한 예제를 보려면, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 를 참고하기 바랍니다.
 
-#### Type Variable Properties
+#### Type Variable Properties (타입 변수 속성)
 
-### Type Alias Delcaration
+'타입 변수 속성 (type variable property)' 을 선언하려면, 선언을 `static` 선언 수정자로 표시합니다. 클래스는 '타입 계산 속성' 을 `class` 선언 수정자로 표시하여 하위 클래스에서 상위 클래스의 구현을 재정의하도록 할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
+
+> GRAMMAR OF A VARIABLE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID356)
+
+### Type Alias Delcaration (타입 별명 선언)
 
 ### Function Declaration (함수 선언)
 
-#### Parameter Names
+#### Parameter Names (매개 변수 이름)
 
 #### In-Out Parameters (입-출력 매개 변수)
 
