@@ -104,7 +104,7 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 있는 변수
 
 var `variable name-변수 이름`: `type-타입` = `expression-표현식`
 
-이런 형식의 변수 선언은 '전역 범위 (global scope)' 나, 함수의 '지역 범위 (local scope)', 또는 클래스 및 구조체 선언인 상황에서 정의하게 됩니다. 이 형식의 변수 선언을 '전역 범위' 나 함수의 '지역 범위' 에서 선언할 때는, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언에서 선언한 상황일 때는, 이를 _저장 변수 속성 (stored variable property)_ 라고 합니다.
+이런 형식의 변수 선언은 '전역 범위 (global scope)' 나, 함수의 '지역 범위 (local scope)', 또는 클래스 및 구조체 선언인 상황에서 정의하게 됩니다. 이 형식의 변수 선언을 '전역 범위' 나 함수의 '지역 범위' 에서 선언할 때는, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언인 상황에서 선언할 때는, 이를 _저장 변수 속성 (stored variable property)_ 라고 합니다.
 
 '초기자 _표현식 (expression)_' 이 프로토콜 선언에서 있을 수는 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 선택 사항입니다. 이 말은, 초기자 _표현식 (expression)_ 이 아무 것도 없다면, 변수 선언은 반드시 명시적인 '타입 보조 설명-`:` _타입 (type)_' 을 포함해야 한다는 것입니다.
 
@@ -112,7 +112,28 @@ var `variable name-변수 이름`: `type-타입` = `expression-표현식`
 
 이름으로 연상되는 것처럼, 저장 변수 또는 저장 변수 속성의 값은 메모리에 저장됩니다.
 
-#### Computed Variables and Computed Properties
+#### Computed Variables and Computed Properties (계산 변수와 계산 속성)
+
+다음 형식은 '계산 변수 (computed variables)' 또는 '계산 속성 (computed properties)' 을 선언합니다:
+
+var `variable name-변수 이름`: `type-타입` {<br />
+  get {<br />
+    `statements-구문`<br />
+  }<br />
+  set (`setter name-설정자 이름`) {<br />
+    `statement-구문`<br />
+  }<br />
+}
+
+이 형식의 변수 선언은 '전역 범위' 나, 함수의 '지역 범위' 또는, 클래스, 구조체, 열거체 및, '익스텐션 (extension; 확장)' 선언인 상황에서 정의합니다. 이 형식의 변수 선언이 '전역 범위' 나 함수의 '지역 범위' 에서 선언될 때, 이를 _계산 변수 (computed variable)_ 라고 합니다. 이를 클래스, 구조체, 또는 '익스텐션' 선언인 상황에서 선언할 때는, _계산 속성 (computed property)_ 라고 합니다.
+
+'획득자 (getter)' 는 값을 읽는 데 사용하고, '설정자 (setter)' 는 값을 쓰는 데 사용합니다. 'setter 절' 은 선택 사항이며, 획득자만 필요할 때는, [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 두 절 모두 생략하고 요청한 값을 직접 간단히 반환할 수 있습니다. 하지만 'setter 절' 을 제공하는 경우라면, 반드시 'getter 절' 도 제공해야 합니다.
+
+_설정자 이름 (setter name)_ 과 이를 둘러싼 괄호는 선택 사항입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 에 대한 매개 변수의 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (설정자 선언의 약칭 표현)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-설정자-선언의-약칭-표현) 에서 설명한 것처럼, '설정자' 에 대한 '기본 설정 매개 변수 이름' 은 `newValue` 가 됩니다.
+
+'이름 있는 저장 값'[^stored-named-values] 과 '저장 변수 속성' 과는 다르게, '이름 있는 계산 값' 의 값 또는 '계산 속성' 은 메모리에 저장되지 않습니다.
+
+더 자세한 정보 및 계산 속성에 대한 예제는, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 를 참고하기 바랍니다.
 
 #### Stored Variable Observers and Property Observers (저장 변수 관찰자와 속성 관찰자)
 
@@ -438,3 +459,5 @@ protocol SomeProtocol: AnyObject {
 [^final]: 이미 'final' 이고 항상 'final' 이므로, 다시 'final' 로 만들거나 'final' 을 없앨 수는 없다는 의미입니다.
 
 [^stored-variable-property]: 이 책에는 '저장 변수 속성 (stored variable property)' 이라는 말과 '변수 저장 속성 (variable stored property)' 이라는 말을 같이 사용하고 있는데, 사실 이 둘은 같은 말입니다. '저장 변수 속성' 은 '저장 변수' 중에서 '속성' 에 해당하는 것이고, '변수 저장 속성' 은 '저장 속성' 중에서 '변수' 에 해당하는 것으로, 결국 같은 것입니다.
+
+[^stored-named-values]: 원문에서 '이름 있는 저장 값 (stored named values)' 이라는 하는 것은 '저장 변수 (stored variable)' 를 의미하고 있습니다.
