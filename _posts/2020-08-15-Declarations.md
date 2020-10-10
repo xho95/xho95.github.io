@@ -32,10 +32,8 @@ _선언 (declaration)_ 은 프로그램에 새로운 이름 또는 구조물을 
 
 코드 블럭은 다양한 선언문과 제어 구조에서 구문을 그룹화하기 위해 사용합니다. 형식은 다음과 같습니다:
 
-{
-<br />
-  `statements-구문`
-<br />  
+{<br />
+  `statements-구문`<br />  
 }
 
 코드 블록 내의 _구문 (statements)_ 은 선언문, 표현식, 및 다른 종류의 구문을 포함하며 소스 코드에 있는 순서대로 실행됩니다.
@@ -50,7 +48,7 @@ import `module-모듈`
 
 가져올 심볼에 대한 자세한 제한을 제공하면 특정 하위 모듈이나 모듈 또는 하위 모듈 내에서 특정 선언을 지정할 수 있습니다. 이 세부 양식을 사용하면 가져온 기호 만 (이를 선언하는 모듈이 아닌) 현재 범위에서 사용할 수 있습니다.
 
-import `import kind-불러오는 종류` `module.symbole name-모듈.기호 이름`
+import `import kind-불러오는 종류` `module-모듈`.`symbole name-기호 이름`<br />
 import `module-모듈`.`submodule-하위 모듈`
 
 > GRAMMAR OF AN IMPORT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID354)
