@@ -211,6 +211,55 @@ newAndOld.x = 200
 
 ### Type Alias Delcaration (타입 별명 선언)
 
+타입 별명 선언은 기존 타입에 대한 '이름 있는 별명' 을 프로그램에 도입합니다. 타입 별명 선언은 `typealias` 키워드를 사용하여 선언하며 다음과 같은 형식을 가집니다:
+
+typealias `name-이름` = `existing type-기존 타입`
+
+타입 별명을 선언한 후에는, 프로그램 어디서나 별명인 _이름 (name)_ 을 _기존 타입 (existing type)_ 대신 사용할 수 있습니다. _기존 타입 (existing type)_ '이름 있는 타입' 또는 '복합 타입 (compound type)' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하는 것이 아닙니다; 이는 단순히 기존 타입을 참조하기 위한 이름을 허용하는 것입니다.
+
+타입 별명 선언은 '제네릭 (일반화된) 매개 변수' 를 사용하여 '기존 제네릭 타입' 에 이름을 부여할 수 있습니다. 이 타입 별명은 기존 타입의 일부 또는 모든 제네릭 매개 변수에 대해서 '구체적으로 고정된 타입 (concrete type)' 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+typealias StringDictionary<Value> = Dictionary<String, Value>
+
+// 다음의 딕셔너리들은 같은 타입입니다.
+var dictionary1: StringDictionary<Int> = [:]
+var dictionary2: Dictionary<String, Int> = [:]
+```
+
+타입 별명이 '제네릭 (일반화된) 매개 변수' 와 같이 선언할 때는, 해당 매개 변수의 구속 조건이 반드시 기존 타입의 제네릭 매개 변수에 대한 구속 조건과 정확하게 일치해야 합니다. 예를 들면 다음과 같습니다:
+
+```swift
+typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
+```
+
+타입 별명과 기존 타입은 서로 바꿔서 사용할 수 있어야 하기 때문에, 타입 별명이 추가적인 '제네릭 구속 조건 (generic constraints)' 을 도입할 수는 없습니다.
+
+타입 별명은 선언에서 모든 '제네릭 매개 변수' 를 생략하는 것으로써 기존 타입의 '제네릭 매개 변수' 를 전달할 수 있습니다. 예를 들어, 아래에서 선언한 `Diccionario` 타입 별명은 `Dictionary` 와 똑같은 '제네릭 매개 변수' 와 '구속 조건' 을 가집니다.
+
+```swift
+typealias Diccionario = Dictionary
+```
+
+프로토콜 선언 내에서, 타입 별명은 자주 사용하는 타입에 대해 더 짧고 더 편리한 이름을 부여할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+protocol Sequence {
+  associatedtype Iterator: IteratorProtocol
+  typealias Element = Iterator.Element
+}
+
+func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
+  // ...
+}
+```
+
+이 타입 별명이 없다면, `sum` 함수는 '결합된 타입' 을 `T.Element` 가 아니라 `T.Iterator.Element` 라고 참조해야 할 것입니다.
+
+[Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합된-타입-선언) 을 참고하기 바랍니다.
+
+> GRAMMAR OF A TYPE ALIAS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID361)
+
 ### Function Declaration (함수 선언)
 
 #### Parameter Names (매개 변수 이름)
@@ -382,7 +431,7 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Subscript Declaration (프로토콜 첨자 연산 선언)
 
-#### Protocol Associated Type Declaration
+#### Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)
 
 ### Initializer Declaration
 
