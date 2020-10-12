@@ -359,8 +359,8 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 매개 변수는, 다음의 형식을 사용하여, 무시할 수도 있고, 다양한 개수의 값을 받을 수 있으며, 기본 설정 값을 제공할 수도 있습니다:
 
-\_ : `parameter type-매개 변수 타입`
-`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...
+\_ : `parameter type-매개 변수 타입`<br />
+`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...<br />
 `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입` = `default argument value-기본 설정 인자 값`
 
 '밑줄 (`_`) 매개 변수' 는 명시적으로 무시되며 함수 본문에서 접근할 수 없습니다.
