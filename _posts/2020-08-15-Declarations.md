@@ -262,6 +262,32 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 ### Function Declaration (함수 선언)
 
+_함수 선언 (function declaration)_ 은 함수 또는 메소드를 프로그램에 도입합니다. 클래스, 구조체, 열거체, 또는 프로토콜인 상황 속에서 선언된 함수를 _메소드 (method)_ 라고 합니다. '함수 선언' 은 `func` 키워드를 사용하여 선언하며 다음과 같은 형식을 가집니다:
+
+func `function name-함수 이름`(`parameters-매개 변수`) -> `return type-반환 타입` {<br />
+  `statements-구문`<br />
+}
+
+함수의 반환 타입이 `Void` 인 경우, 이 반환 타입은 다음처럼 생략할 수 있습니다:
+
+func `function name-함수 이름`(`parameters-매개 변수`) {<br />
+  `statements-구문`<br />
+}
+
+각각의 매개 변수에 대한 타입은 반드시 포함해야 합니다-이는 추론될 수 있는 것이 아닙니다. `inout` 을 매개 변수의 타입 앞에 작성하면, 이 매개 변수는 함수 영역 내에서 수정할 수 있게 됩니다. '입-출력 매개 변수' 는 아래의, [In-Out Parameters (입-출력 매개 변수)](#in-out-parameters-입-출력-매개-변수) 에서 자세하게 논의합니다.
+
+그 _구문 (statements)_ 이 단일 표현식만을 포함하고 있는 함수 선언은 해당 표현식의 값을 반환하는 것으로 이해합니다. 표현식의 타입과 함수의 반환 타입이 `Void` 가 아닐 때 그리고 `Never` 처럼 어떤 'case 값' 도 가지지 않는 열거체가 아닐 때에만 이 '암시적인 반환 구문 표현 (implicit return syntax)' 이 고려됩니다.
+
+튜플 타입을 함수의 반환 타입으로 사용하면 함수가 여러 개의 값을 반환 할 수 있습니다.
+
+또 다른 함수 선언 안에 '함수 정의 (function definition)'[^function-definition] 가 있을 수 있습니다. 이런 종류의 함수를 _중첩 함수 (nested function)_ 라고 합니다.
+
+중첩 함수는 in-out 매개 변수와 같이 절대 이스케이프되지 않는 값을 캡처하거나 비스 케이 핑 함수 인수로 전달되는 경우 비스 케이 핑입니다. 그렇지 않으면 중첩 된 함수는 이스케이프 함수입니다.
+
+중첩 함수는 절대로 벗어나지 않는다는 것을 보증하는 값-가령 '입-출력 매개 변수 (in-out parameter)'-또는 '벗어나지 않는 함수 인자 (nonescaping function argument)' 로 전달한 것-을 붙잡을 경우 '벗어나지 않는 (nonescaping)' 것이 됩니다. 다른 경우라면, 중첩 함수는 '벗어나는 함수 (escaping function)' 가 됩니다.
+
+중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 를 참고하기 바랍니다.
+
 #### Parameter Names (매개 변수 이름)
 
 #### In-Out Parameters (입-출력 매개 변수)
@@ -512,3 +538,5 @@ protocol SomeProtocol: AnyObject {
 [^stored-variable-property]: 이 책에는 '저장 변수 속성 (stored variable property)' 이라는 말과 '변수 저장 속성 (variable stored property)' 이라는 말을 같이 사용하고 있는데, 사실 이 둘은 같은 말입니다. '저장 변수 속성' 은 '저장 변수' 중에서 '속성' 에 해당하는 것이고, '변수 저장 속성' 은 '저장 속성' 중에서 '변수' 에 해당하는 것으로, 결국 같은 것입니다.
 
 [^stored-named-values]: 원문에서 '이름 있는 저장 값 (stored named values)' 이라는 하는 것은 '저장 변수 (stored variable)' 를 의미하고 있습니다.
+
+[^function-definition]: 스위프트는 보통 선언-정의-초기화를 한 번에 하는 경우가 많아서 함수 선언과 함수 정의가 크게 구분되지는 않습니다. 다만 여기서 '함수 정의 (function definition)' 란 말을 사용한 것은 함수 본문 전체를 의미하기 위해서 일 것으로 추측됩니다.
