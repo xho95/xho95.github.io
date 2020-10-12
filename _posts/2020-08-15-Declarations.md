@@ -290,6 +290,31 @@ func `function name-함수 이름`(`parameters-매개 변수`) {<br />
 
 #### Parameter Names (매개 변수 이름)
 
+함수 매개 변수는 각각의 매개 변수가 여러 가지 형식 중 하나를 가지는 쉼표로-구분된 목록을 말합니다. 함수 호출에 있는 인자 순서는 반드시 함수 선언에 있는 매개 변수 순서와 일치해야 합니다. 매개 변수 목록에서 가장 단순한 '참가자 (entry)' 의 형식은 다음과 같습니다:
+
+`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
+
+매개 변수는, 함수 본문에서 사용하는, 이름과 함께, 함수 또는 메소드를 호출할 때 사용하는, '인자 이름표 (argument label)' 도 가집니다. 기본적으로, 매개 변수 이름을 '인자 이름표' 로도 사용합니다. 예를 들면 다음과 같습니다:
+
+```swift
+func f(x: Int, y: Int) -> Int { return x + y }
+f(x: 1, y: 2) // x 와 y 모두 이름표가 있습니다.
+```
+
+인자 이름표의 기본 작동 방식을 다음 형식 중 하나를 가지고 '재정의 (override)' 할 수 있습니다.
+
+`argument label-인자 이름표` `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`<br />
+\_ `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
+
+매개 변수 이름 앞에 있는 이름은, 매개 변수 이름과 다를 수 있는, 명시적인 인자 이름표를 매개 변수에 부여합니다. 이와 관련된 인자는 반드시 함수 또는 메소드 호출 시에 주어진 인자 이름표를 사용해야 합니다.
+
+매개 변수 이름 앞에 있는 '밑줄 (`_`)' 은 '인자 이름표' 를 억제합니다. 이와 관련된 인자는 반드시 함수 또는 메소드 호출 시에 이름표를 가지지 않아야 합니다.
+
+```swift
+func repeatGreeting(_ greeting: String, count n: Int) { /* 인사를 n 번 합니다 */ }
+repeatGreeting("Hello, world!", count: 2) //  count 는 이름표가 있지만, greeting 은 그렇지 않습니다.
+```
+
 #### In-Out Parameters (입-출력 매개 변수)
 
 입-출력 매개 변수는 다음 처럼 전달됩니다:
@@ -330,9 +355,28 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 더 많은 논의와 입-출력 매개 변수에 대한 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
-#### Special Kinds Paramters
+#### Special Kinds of Paramters (특수한 종류의 매개 변수)
 
-#### Special Kinds Methods
+매개 변수는, 다음의 형식을 사용하여, 무시할 수도 있고, 다양한 개수의 값을 받을 수 있으며, 기본 설정 값을 제공할 수도 있습니다:
+
+\_ : `parameter type-매개 변수 타입`
+`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...
+`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입` = `default argument value-기본 설정 인자 값`
+
+'밑줄 (`_`) 매개 변수' 는 명시적으로 무시되며 함수 본문에서 접근할 수 없습니다.
+
+기본 타입 이름 바로 뒤에 세 점 (`...`) 이 있는 매개 변수는 '가변 매개 변수 (variadic parameter)' 인 것으로 이해합니다. 함수는 최대 하나의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 기본 타입 이름의 원소를 담고 있는 배열로 취급합니다. 예를 들어, 가변 매개 변수 `Int...` 는 `[Int]` 인 것으로 취급합니다. 가변 매개 변수를 사용하는 예제에 대해서는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 를 참고하기 바랍니다.
+
+타입 뒤에 '등호 (`=`)' 와 표현식이 있는 매개 변수는 주어진 표현식 형태의 기본 설정 값을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 값을 평가합니다. 함수를 호출할 때 매개 변수를 생략하면, 기본 설정 값을 대신 사용하게 됩니다.
+
+```swift
+func f(x: Int = 42) -> Int { return x }
+f()       // 유효함, 기본 설정 값을 사용
+f(x: 7)   // 유효함, 제공된 값을 사용
+f(7)      // 무효함, 인자 이름표가 누락됨
+```
+
+#### Special Kinds of Methods (특수한 종류의 메소드)
 
 #### Methods with Special Names (특수한 이름을 가진 메소드)
 
