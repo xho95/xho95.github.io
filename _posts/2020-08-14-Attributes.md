@@ -30,9 +30,9 @@ categories: Swift Language Grammar Attribute
 
 #### discardableResult
 
-#### dynamicCallable
+#### dynamicCallable (동적으로 호출 가능한)
 
-#### dynamicMemberLookup
+#### dynamicMemberLookup (동적으로 멤버 찾아보기)
 
 #### frozen (동결)
 

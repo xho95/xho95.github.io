@@ -378,7 +378,45 @@ f(7)      // 무효함, 인자 이름표가 누락됨
 
 #### Special Kinds of Methods (특수한 종류의 메소드)
 
+열거체 또는 구조체의 `self` 를 수정하는 메소드는 반드시 `mutating` '선언 수정자 (declaration modifier)' 로 표시해야 합니다.
+
+상위 클래스의 메소드를 재정의하는 메소드는 반드시 `override` '선언 수정자' 로 표시해야 합니다. 메소드를 `override` 수정자 없이 재정의 하는 것 또는 상위 클래스의 메소드를 재정의하지 않는 메소드에 `override` 수정자를 사용하는 것은 컴파일-시간에 에러가 됩니다.
+
+타입의 인스턴스가 아닌 타입 자체와 결합된 메소드는 열거체와 구조체에서는 `static` 선언 수정자로, 클래스에 대해서는 `static` 또는 `class` 중 하나의 선언 수정자로 반드시 표시해야 합니다. `class` 선언 수정자로 표시한 클래스 타입 메소드는 하위 클래스 구현에서 재정의할 수 있습니다; `class final` 또는 `static` 으로 표시한 클래스 타입 메소드는 재정의할 수 없습니다.
+
 #### Methods with Special Names (특수한 이름을 가진 메소드)
+
+특수한 이름을 가지는 몇몇 메소드들은 '함수 호출 구문 표현 (function call syntax)' 이라는 '수월한 구문 표현 (syntactic sugar)' 을 사용할 수 있게 해줍니다.[^syntatic-sugar] 타입이 이 메소드 중 하나를 정의하면, 이 타입의 인스턴스는 '함수 호출 구문 표현' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에 있는 '특수한 이름을 가진 메소드' 들 중 하나에 대한 호출인 것으로 이해합니다.
+
+클래스, 구조체, 또는 열거체는, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의하는 것, 또는 아래에서 설명하는 것처럼, 함수-처럼-호출하는 메소드 (call-as-function method) 를 정의하는 것으로써, '함수 호출 구문 표현' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성을 사용하는 메소드 중 하나를 둘 다 정의하고 있는 경우, 컴파일러는 어느 메소드도 사용할 수 있는 상황에서 '함수-처럼-호출하는 메소드 (call-as-function method)' 에 우선권을 부여합니다.
+
+'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()`, 또는 `callAsFunction(` 으로 시작해서 이름표가 있는 인자나 이름표가 없는 인자를 추가한 또 다른 형태의 이름입니다.-예를 들어, `callAsFunction(_:_:)` 및 `callAsFunction(something:)` 역시 '함수-처럼-호출하는 메소드' 이름으로 유효합니다.
+
+다음의 함수 호출은 서로 '동치 (equivalent)' 입니다:
+
+```swift
+struct CallableStruct {
+  var value: Int
+  func callAsFunction(_ number: Int, scale: Int) {
+    print(scale * (number + value))
+  }
+}
+let callable = CallableStruct(value: 100)
+callable(4, scale: 2)
+callable.callAsFunction(4, scale: 2)
+// 두 함수 호출 모두 208 을 출력합니다.
+```
+
+'함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성을 사용하는 메소드는 타입 시스템에 얼마나 많은 정보를 '코딩 (encode)' 하는 지와 실행 시간에 얼마나 많은 동적 동작이 가능한 지 사이에 서로 다른 모순점을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 때는, 인자의 개수와, 각각의 인자의 타입과 이름표를 지정해야 합니다. `dynamicCallable` 특성의 메소드는 인자 배열을 쥐고 있는 데 사용되는 타입만 지정합니다.
+
+'함수-처럼-호출하는 메소드', 또는 `dynamicCallable` 특성인 메소드를 정의하는 것은, '함수 호출 표현식' 이 아닌 어떠한 상황에서도 마치 그것이 함수인 것처럼 해당 타입의 인스턴스를 사용하도록 하는 것은 아닙니다. 예를 들면 다음과 같습니다:
+
+```swift
+let someFunction1: (Int, Int) -> Void = callable(_:scale:)  // 에러
+let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
+```
+
+`subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberLookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, 멤버를 찾아보기 위한 '수월한 구문 표현' 을 사용할 수 있게 해줍니다.
 
 #### Throwing Functions and Methods (던지는 함수 및 메소드)
 
@@ -427,6 +465,14 @@ func someFunction(callback: () throws -> Void) rethrows {
 '던지는 메소드' 는 '다시 던지는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
 
 #### Functions that Never return ('Never' 를 반환하는 함수)
+
+스위프트는, 함수나 메소드가 호출하는 쪽으로 반환하지 않는다는 것을 지시하는, `Never` 타입을 정의하고 있습니다. `Never` 라는 반환 타입을 가지는 함수나 메소드를 _반환하지 않는 (nonreturning)_ 것이라고 합니다. '반환하지 않는 함수와 메소드' 는 복구할 수 없는 에러를 유발하거나 '무기한으로 계속되는 일련의 작업' 을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 후에 즉시 실행할 코드가 절대로 실행되지 않는다는 것을 의미합니다. '던지는 함수 (throwing function)' 및 '다시 던지는 함수 (rethrowing function)' 는, '반환하지 않는' 것이더라도, 적절한 `catch` 블럭으로 프로그램 제어를 전달할 수 있습니다.
+
+반환하지 않는 함수 또는 반환하지 않는 메소드는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 설명한 것처럼, 'guard 문' 의 `else` 절을 ​​끝내기 위해 호출할 수 있습니다.
+
+반환하지 않는 메소드를 재정의할 수는 있지만, 이 새로운 메소드는 반드시 반환 타입과 '반환하지 않는' 동작 방식을 보존해야 합니다.
+
+> GRAMMAR OF A FUNCTION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362)
 
 ### Enumeration Declaration
 
@@ -584,3 +630,7 @@ protocol SomeProtocol: AnyObject {
 [^stored-named-values]: 원문에서 '이름 있는 저장 값 (stored named values)' 이라는 하는 것은 '저장 변수 (stored variable)' 를 의미하고 있습니다.
 
 [^function-definition]: 스위프트는 보통 선언-정의-초기화를 한 번에 하는 경우가 많아서 함수 선언과 함수 정의가 크게 구분되지는 않습니다. 다만 여기서 '함수 정의 (function definition)' 란 말을 사용한 것은 함수 본문 전체를 의미하기 위해서 일 것으로 추측됩니다.
+
+[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용되는 데, 이는 프로그램이 실행되는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 프로그램의 종료 시점을 컴파일 시간에 알 수 없기 때문에 `Never` 타입을 사용한다고 이해할 수 있습니다.
+
+[^syntatic-sugar]: 여기서 설명하는 내용은 C++ 언어의 '함수 객체' 와 비슷한 개념입니다.
