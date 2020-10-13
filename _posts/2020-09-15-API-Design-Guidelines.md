@@ -154,7 +154,7 @@ categories: Swift Language Grammar Revision History
 
 #### Promote Clear Usage (명확한 사용법 추구하기)
 
-* **모호함이 없도록 필요한 모든 단어를 포함시킨** 이름으로 된 코드를 사람이 읽도록 합니다.
+* **모호함이 없도록 필요한 모든 단어를 포함시킨** 이름이 사용된 코드를 읽을 수 있도록 합니다.
 
   예를 들어, '컬렉션 (collection)' 에서 주어진 위치의 원소를 제거하는 메소드를 생각해 봅시다.
 
@@ -166,7 +166,7 @@ categories: Swift Language Grammar Revision History
   employees.remove(at: x)
   ```
 
-  이 '메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략하면, `x` 가 제거할 원소의 위치를 지시하는 것이 아니라, `x` 와 같은 원소를 찾아서 제거하는 메소드라고 생각하게 될 것입니다.
+  이 '메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략하면, 이 메소드가 `x` 와 같은 원소를 찾아서 제거하는 것이라고 생각하지, 제거할 원소의 위치를 지시하려고 `x` 를 사용한다고 생각하지 않을 것입니다.
 
   ```swift
   // 잘못된 예제
