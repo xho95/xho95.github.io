@@ -474,7 +474,19 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 > GRAMMAR OF A FUNCTION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362)
 
-### Enumeration Declaration
+### Enumeration Declaration (열거체 선언)
+
+_열거체 선언 (enumeration declaration)_ 은 '이름 있는 열거체 타입' 을 프로그램에 도입합니다.
+
+'열거체 선언' 에는 두 가지의 기본 형식이 있으며 `enum` 키워드를 사용하여 선언합니다. 어느 형식으로든 열거체를 선언하면 그 본문은 '0' 개 이상의-열거체 'case 값' 이라고 하는-값과 더불어, 계산 속성, 인스턴스 메소드, 타입 메소드, 초기자, 타입 별명, 그리고 심지어 다른 열거체, 구조체, 및 클래스 선언을 포함한, 선언들을 개수가 몇 개든 가집니다. 열거체 선언은 '정리자 (deinitializer)' 또는 '프로토콜 선언' 을 가질 수 없습니다.
+
+열거체 타입은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 구조체, 또는 다른 열거체를 상속할 수는 없습니다.
+
+클래스 및 구조체와는 다르게, 열거체 타입은 암시적으로 제공되는 '기본 설정 초기자 (default initializer)' 를 가지지 않습니다; 모든 초기자는 반드시 명시적으로 선언해야 합니다. 초기자가 열거체 내의 다른 초기자로 위임을 할 수 있지만, 초기화 과정은 초기자가 열거체 'case 값' 중 하나를 `self` 에 할당한 후에만 완료돼야 합니다.
+
+클래스와는 다르지만 구조체와는 비슷하게, 열거체는 값 타입입니다; 열거체의 인스턴스는 변수나 상수에 할당할 때, 또는 함수 호출에 대한 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
+
+열거체 타입의 작동 방식은, [Extension Declaration (익스텐션 선언; 확장 선언)](#extension-declaration-익스텐션-선언-확장-선언) 에서 논의한 것처럼, '익스텐션 선언 (확장 선언)' 으로 확장할 수 있습니다.
 
 #### Enumerations with Cases of Any Type
 
@@ -555,7 +567,7 @@ protocol SomeProtocol: AnyObject {
 
 ### Deinitializer Declaration
 
-### Extension Declaration
+### Extension Declaration (익스텐션 선언; 확장 선언)
 
 #### Conditional Conformance
 
