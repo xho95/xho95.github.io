@@ -23,13 +23,13 @@ categories: Swift Language Grammar Revision History
 
 ### Fundamentals (기반)
 
-* **사용하는 순간에 분명한 것** 이 가장 중요한 목표입니다. 메소드와 속성 같은 '개체 (entities)' 들은 한 번 선언해서 계속 반복 _사용 (used)_ 합니다. 명확하고 간결하게 사용하도록 API 를 설계합니다. 설계가 잘 됐는지 평가할 때, 선언만 보는 것은 충분치 않습니다; 항상 실제 사용 사례를 검토해야 상황에 따라 명확한지 확인할 수 있습니다.
+* **사용하는 시점에 분명한 것** 이 가장 중요한 목표입니다. 메소드와 속성 같은 '개체 (entities)' 들은 한 번 선언한 후 반복해서 _사용 (used)_ 합니다. 사용법을 명확하고 간결하게 하도록 API 를 설계합니다. 설계를 잘 했는지 평가할 때, 선언만 봐서는 충분치 않습니다; 상황에 따라 명확하게 보이는지 확인하려면 항상 실제 사례를 검토하기 바랍니다.
 
-* **분명한 것이 간결한 것보다 더 중요합니다.** 스위프트 코드를 더 짧게 만들 수 있더라도, 최소한의 문자로 가장 작은 코드를 만드는 것이 _목표인 것은 아닙니다 (non-goal)_. 스위프트 코드에서, 발생하는, 간결함이란, '강한 타입 시스템 (strong type system)' 으로 인한 '부수적인 효과' 이며 '획일적인 코드 (boilerplate)' 를 자연스럽게 줄이는 특징을 가집니다.
+* **분명한 것이 간결한 것보다 더 중요합니다.** 스위프트 코드를 더 짧게 만들 순 있겠지만, 최소한의 문자로 코드를 가장 작게 만드는 것이 _목표는 아닙니다 (non-goal)_. 스위프트 코드에서, 발생하는, 간결함이란, '강한 타입 시스템 (strong type system)' 으로 인한 '부수적인 효과' 와 '획일적인 코드 (boilerplate)' 를 자연스럽게 줄이는 특징을 말합니다.
 
-* **문서화 주석 (documentation comment)[^ducumentation-comment] 을** 모든 선언마다 작성합니다. 문서화를 작성하면서 가지게 된 통찰력은 설계에 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
+* **문서화 주석 (documentation comment)[^ducumentation-comment] 은** 모든 선언마다 작성합니다. 문서화를 작성하면서 획득한 통찰력은 설계에 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
 
-  API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**
+  <textarea>API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**</textarea>
 
   - **스위프트의 '자체 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용합니다.**
 
@@ -317,7 +317,7 @@ categories: Swift Language Grammar Revision History
       ---|---|---
       `x.sort()` | | `z = x.sorted()`
       `x.append(y)` | | `z = x.appending(y)`
-       | | 
+       | |
 
       - 변경하지 않는 것의 이름은 (보통 "ed" 를 추가한) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하도록 합니다:
 
