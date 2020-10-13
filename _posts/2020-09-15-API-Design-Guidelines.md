@@ -29,24 +29,24 @@ categories: Swift Language Grammar Revision History
 
 * **문서화 주석 (documentation comment)[^ducumentation-comment] 은** 모든 선언마다 작성합니다. 문서화를 작성하면서 획득한 통찰력은 설계에 큰 영향을 줄 수 있으므로, 미루지 않도록 합니다.
 
-  <div style="background: ghostyellow; border: 1px solid yellow;">API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, **잘못된 API 를 설계하고 있는 것일 수 있습니다.**</div>
+  <div style="background: rightyellow; border: 1px solid yellow;">API 의 기능을 간단한 용어로 설명하는 것이 어렵다면, <strong>잘못된 API 를 설계하고 있는 것일 수 있습니다.</strong></div>
 
   - **스위프트의 '자체 마크 다운 ([dialect of Markdown](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/))' 을 사용합니다.**
 
-  - **시작을 '요약 (summary)' 으로 해서** 선언 중인 '개체 (entity)' 를 먼저 설명합니다. 종종, 선언과 요약으로 API 를 완전히 이해할 수도 있습니다.
+  - **시작을 '요약 (summary)' 으로 해서** 선언 중인 '개체 (entity)' 를 먼저 설명합니다. 종종, API 를 선언과 요약만으로 완전히 이해할 수도 있습니다.
 
     ```swift
     /// Returns a "view" of `self` containing the same elements in
     /// reverse order.
-    /// 같은 원소를 순서를 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
+    /// 같은 원소를 순서만 거꾸로 하여 담고 있는 `self` 의 "view" 를 반환함.
     func reversed() -> ReverseCollection
     ```
 
-    * **요약에 집중합니다**; 가장 중요한 부분입니다. 많은 훌륭한 '문서화 주석' 은 사실 뛰어난 요약 만으로 구성됩니다.
+    * **요약에 집중합니다**; 가장 중요한 부분입니다. 훌륭한 '문서화 주석' 대부분은 사실 뛰어난 요약으로만 구성되어 있습니다.
 
-    * **단일 문장 구절을** 가능한 사용하며, 마침표로 끝맺도록 합니다. 완전한 문장은 사용하지 않습니다.[^fragment]
+    * **단일 문장 구절을** 가능한 사용하고, 마침표로 끝냅니다. 완전한 문장은 사용하지 않습니다.[^fragment]
 
-    * **함수 또는 메소드는 무엇을 _하는 (does)_ 지 무엇을 _반환하는 (returns)_ 지 설명하고**, '없는 효과 (null effects)' 와 `Void` 반환은 생략합니다:
+    * **함수 및 메소드는 무엇을 _하는 (does)_ 지와 무엇을 _반환하는 (returns)_ 지 설명하고**, '널 효과 (null effects)' 와 `Void` 반환은 생략합니다:
 
       ```swift
       /// Inserts `newHead` at the beginning of `self`.
@@ -55,7 +55,7 @@ categories: Swift Language Grammar Revision History
 
       /// Returns a `List` containing `head` followed by the elements
       /// of `self`.
-      /// `head` 및 그 뒤에 `self` 의 원소들이 있는 것을 담은 `List` 를 반환함.
+      /// `head` 와 그 뒤로 `self` 의 원소들을 담고 있는 `List` 를 반환함.
       func prepending(_ head: Element) -> List
 
       /// Removes and returns the first element of `self` if non-empty;
@@ -65,9 +65,9 @@ categories: Swift Language Grammar Revision History
       mutating func popFirst() -> Element?
       ```
 
-      참고: 드물게 위의 `popFirst` 같이, '요약' 이 세미콜론으로 구분된 여러 개의 문장으로 형성되기도 합니다.
+      참고: 위의 `popFirst` 같이 드문 경우에, 세미콜론으로 구분된 여러 개의 문장으로 '요약' 을 만들기도 합니다.
 
-    * **첨자 연산이 무엇에 _접근하는 (accesses)_ 지 설명합니다.**:
+    * **첨자 연산은 무엇에 _접근하는 (accesses)_ 지 설명합니다.**:
 
       ```swift
       /// Accesses the `index`th element.
@@ -75,30 +75,30 @@ categories: Swift Language Grammar Revision History
       subscript(index: Int) -> Element { get set }
       ```
 
-    * **초기자가 무엇을 _생성하는 (creates)_ 지 설명합니다.**:
+    * **초기자는 무엇을 _생성하는 (creates)_ 지 설명합니다.**:
 
       ```swift
       /// Creates an instance containing `n` repetitions of `x`.
-      /// `x` 를 `n` 번 반복한 것을 가지고 있는 인스턴스를 생성함.
+      /// `x` 를 `n` 번 반복하여 담고 있는 인스턴스를 생성함.
       init(count n: Int, repeatedElement x: Element)
       ```
 
-    * 다른 모든 선언은, **선언한 '개체' 가 무엇 _인지 (is)_ 를 설명합니다.**
+    * 그 외 다른 모든 선언들은, **선언한 '개체' _가 (is)_ 무엇인지 설명합니다.**
 
       ```swift
       /// A collection that supports equally efficient insertion/removal
       /// at any position.
-      /// 어떤 위치에서도 똑같은 효율의 삽입/제거를 지원하는 컬렉션.
+      /// 어떤 위치에서도 똑같이 효율적인 삽입/제거를 지원하는 컬렉션.
       struct List {
 
       /// The element at the beginning of `self`, or `nil` if self is
       /// empty.
-      /// `self` 의 맨 처음 위치에 있는 원소, 또는 `self` 가 빈 것이면 `nil`.
+      /// `self` 의 맨 처음 위치에 있는 원소, 또는 `self` 가 비었을 경우 `nil`.
       var first: Element?
       ...
       ```
 
-  - **선택 사항으로, 계속해서** 하나 이상의 문단과 '목록 항목 (bullet items)' 을 붙일 수 있습니다. 문단은 '완전한 문장 (complete sentences)' 을 사용하며 문단끼리는 빈 줄로 구분합니다.
+  - **선택 사항으로, 계속해서** 하나 이상의 문단 및 '목록 항목 (bullet items)' 을 둘 수 있습니다. 문단은 서로 빈 줄로 구분되도록 하며 '완전한 문장 (complete sentences)' 을 사용합니다.
 
     ```swift
     /// Writes the textual representation of each    ← Summary
@@ -124,8 +124,8 @@ categories: Swift Language Grammar Revision History
     /// 각 항목 `x` 에 대한 문장화된 표현은                 ← 추가적인 설명
     /// `String(x)` 라는 표현식으로 생성합니다.
     ///
-    /// - 매개 변수 구분자: 항목 사이 사이에 출력되는 문장       ⎫
-    /// - 매개 변수 종결자: 맨 끝에 출력되는 문장              ⎬ 매개 변수 부분
+    /// - 매개 변수 separator: 항목 사이마다 출력되는 문장     ⎫
+    /// - 매개 변수 terminator: 맨 끝에 출력되는 문장        ⎬ 매개 변수 부분
     ///                                               ⎭
     /// - 노트: 끝에 '새 줄 문자 (newline)' 없이 출력하려면   ⎫
     ///   `terminator: ""` 를 전달할 것                 ⎟
