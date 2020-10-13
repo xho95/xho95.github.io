@@ -136,9 +136,9 @@ categories: Swift Language Grammar Revision History
       _ items: Any..., separator: String = " ", terminator: String = "\n")
     ```
 
-    * **인증받은 '기호화된 문서화 마크업 ([symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1))' 원소를 사용하여**, 적절할 때마다, 요약 이상의 정보를 추가합니다.
+    * **공인된 '기호화된 문서화 마크업 ([symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1))' 원소를 사용하여**, 적절할 때마다, 요약 이외의 정보를 추가합니다.
 
-    * **인증받은 목록 항목을 알아보고 '기호화된 명령 구문 표현 ([symbol command syntax](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW13))'[^symbol-comman-syntax] 과 함께 사용하도록 합니다.** '엑스코드 (Xcode)' 같은 대중적인 개발 도구는 다음 키워드로 시작하는 '목록 항목 (bullet items)' 을 특수하게 취급합니다.
+    * **'기호화된 명령 구문 표현 ([symbol command syntax](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW13))'[^symbol-comman-syntax] 을 가지는 공인된 '목록 항목' 을 알아보고 사용하도록 합니다.** '엑스코드 (Xcode)' 같은 대중적으로 인기 있는 개발 도구는 다음 키워드로 시작하는 '목록 항목 (bullet items)' 을 특수하게 취급합니다.
 
 
       ---|---|---|---|---|---|---|---|---
