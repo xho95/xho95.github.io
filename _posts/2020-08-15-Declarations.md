@@ -488,7 +488,34 @@ _열거체 선언 (enumeration declaration)_ 은 '이름 있는 열거체 타입
 
 열거체 타입의 작동 방식은, [Extension Declaration (익스텐션 선언; 확장 선언)](#extension-declaration-익스텐션-선언-확장-선언) 에서 논의한 것처럼, '익스텐션 선언 (확장 선언)' 으로 확장할 수 있습니다.
 
-#### Enumerations with Cases of Any Type
+#### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)
+
+다음 형식은 어떤 타입이어도 되는 열거체 'case 값' 을 가지고 있는 열거체 타입을 선언합니다:
+
+enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
+    case `enumeration case 1-열거체 case 값 1`<br />
+    case `enumeration case 2-열거체 case 값 2`(`associated value types 결합된 값의 타입`)<br />
+}
+
+이런 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 때때로 _discriminated unions (차별화된 공용체)_ 라고 합니다.
+
+이 형식에서, 각각의 'case' 블럭은 `case` 키워드 및 그 뒤의, 쉼표로 구분된, 하나 이상의 열거체 'case 값' 으로 구성됩니다. 각 'case 값' 의 이름은 반드시 유일해야 합니다. 각 'case 값' 은 주어진 타입의 값을 저장하도록 지정할 수도 있습니다. 이런 타입은, 'case 값' 의 이름 바로 뒤에, _결합된 값의 타입 (associated value types)_ 튜플에서 지정합니다.
+
+'결합된 값' 을 저장하는 열거체 'case 값' 은 지정된 '결합 값 (associated values)' 으로 열거체의 인스턴스를 생성하는 함수인 것처럼 사용할 수 있습니다. 그리고 함수에서와 같이, 열거체 'case 값' 에 대한 참조를 가지고 이를 이후의 코드에 적용할 수도 있습니다.
+
+```swift
+enum Number {
+  case integer(Int)
+  case real(Double)
+}
+let f = Number.integer
+// f 는 타입이 (Int) -> Number 인 함수입니다.
+
+// 정수 값으로 된 Number 인스턴스의 배열을 생성하기 위해 f 를 적용합니다.
+let evenInts: [Number] = [0, 2, 4, 6].map(f)
+```
+
+더 많은 정보 및 결합된 값의 타입을 가지는 'case 값' 에 대한 예제를 보려면, [Associated Values (결합된 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합된-값) 를 참고하기 바랍니다.
 
 **Enumerations with Indirection**
 
