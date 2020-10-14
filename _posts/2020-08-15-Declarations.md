@@ -517,7 +517,7 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 더 많은 정보 및 결합된 값의 타입을 가지는 'case 값' 에 대한 예제를 보려면, [Associated Values (결합된 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합된-값) 를 참고하기 바랍니다.
 
-**Enumerations with Indirection ('간접 (indirect)' 을 가지는 열거체)**
+**Enumerations with Indirection ('간접 (indirection)' 을 가지는 열거체)**
 
 열거체는 '재귀적인 구조 (recursive structure)' 를 가질 수 있는데, 그 말인즉슨, 열거체 타입 그 자체의 인스턴스이기도 한 '결합된 값' 을 가지는 'case 값' 을 가질 수 있다는 것입니다. 하지만, 열거체 타입의 인스턴스는 '값' 의미 구조를 가지며, 이는 메모리 상에서 '고정된 구획 (fixed layout)' 을 가진다는 것을 의미합니다. '재귀 (recursion)' 를 지원하기 위해서는, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
 
@@ -534,9 +534,47 @@ enum Tree<T> {
 
 `indirect` 수정자로 표시한 열거체는 '결합된 값' 을 가지는 'case 값' 과 그렇지 않은 'case 값' 이 혼합된 것을 가질 수 있습니다. 그건 그렇고, 또한 `indirect` 수정자로 표시한 'case 값' 은 어떤 것이든 가질 수 없습니다.
 
-#### Enumerations with Cases of a Raw-Value Type
+#### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
-#### Accessing Enumeration Cases
+다음 형식은 기본 타입이 같은 열거체 'case 값' 을 가지는 열거체 타입을 선언합니다:
+
+enum `enumeration name-열거체 이름`: `raw-value type-원시-값 타입`, `adopted protocols-채택한 프로토콜` {<br />
+    case `enumeration case 1-열거체 case 값 1` = `원시 값 1-raw value 1`<br />
+    case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
+}
+
+이 형식에서, 각각의 'case' 블럭은 `case` 키워드와, 그 뒤에 하나 이상의 열거체 'case 값' 을, 쉼표로 구분한 것으로 구성됩니다. 첫 번째 형식의 'case 값' 과는 다르게, 각각의 'case 값' 은, 기본 타입이 같은, _원시 값 (raw value)_ 라고 하는, 실제의 값을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 으로 지정하는데, 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 `Equatable` 프로토콜과 다음 프로토콜 중 하나를 반드시 준수해야 합니다: '정수 글자 값' 일 때는 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 일 때는 `ExpressibleByFloatLiteral`, 어떤 개수의 문자라도 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByStringLiteral`, 그리고 단 하나의 문자만을 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 입니다. 각각의 'case 값' 은 반드시 유일한 이름을 가져야 하며 유일한 원시 값을 할당해야 합니다.
+
+원시-값 타입을 `Int` 로 지정하고서 'case 값' 을 명시적으로 할당하지 않으면, `0`, `1`, `2`, 등의 값이 암시적으로 할당됩니다. 할당되지 않은 각각의 `Int` 타입 'case 값' 은 이전 'case 값' 의 '원시 값' 에서 자동으로 증가된 '원시 값' 을 암시적으로 할당합니다.
+
+```swift
+enum ExampleEnum: Int {
+  case a, b, c = 5, d
+}
+```
+
+위 예제에서, `ExampleEnum.a` 의 원시 값은 `0` 이고 `ExampleEnum.b` 의 값은 `1` 입니다. 그리고 `ExampleEnum.c` 의 값을 명시적으로 `5` 로 설정했기 때문에, `ExampleEnum.d` 의 값은 `5` 에서 자동으로 증가한 `6` 가 됩니다.
+
+원시-값 타입을 `String` 으로 지정하고서 'case 값' 을 명시적으로 할당하지 않으면, 할당되지 않은 각각의 'case 값' 은 암시적으로 해당 'case 값' 의 이름과 똑같은 문장으로 된 문자열을 할당합니다.
+
+```swift
+enum GamePlayMode: String {
+  case cooperative, individual, competitive
+}
+```
+
+위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"`, `GamePlayMode.individual` 의 원시 값은 `"individual"`, 그리고 `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
+
+원시-값 타입의 'case 값' 을 가지는 열거체는, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 암시적으로 준수합니다. 그 결과, `rawValue` 속성과 '서명 (signature)' `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다.
+`rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 에서와 같이, 열거체 'case 값' 의 '원시 값' 에 접근할 수 있습니다. 원시 값과 연관되어 있는 'case 값' 이, 하나라도 있는 경우, `ExampleEnum(rawValue: 5)` 에서와 같이, 옵셔널 'case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출하여 찾을 수도 있습니다. 더 많은 정보와 원시-값 타입의 'case 값' 에 대한 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 을 참고하기 바랍니다.
+
+#### Accessing Enumeration Cases (열거체의 'case 값' 에 접근하기)
+
+열거체 타입의 'case 값' 을 참조하려면, `EnumerationType.enumerationCase` 에서와 같이, '점 (`.`) 구문 표현' 을 사용합니다. 열거체 타입을 추론할 수 있는 상황일 때는, [Enumeration Syntax (열거체 구문 표현)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문-표현) 과 [Implicit Member Expression (암시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적인-멤버-표현식) 에서 설명한 것처럼, 이를 생략할 수 있습니다 ('점' 은 그래도 필수입니다).
+
+열거체 'case 값' 의 값을 검사하려면, [Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에서 본 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 값 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-값-패턴) 에서 설명한 것처럼, `switch` 문의 'case 절' 블럭에 있는 '열거체 case 값 패턴' 과 유형이 일치하는 지를 맞춰보게 됩니다.
+
+> GRAMMAR OF AN ENUMERATION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID364)
 
 ### Structure Declaration
 
