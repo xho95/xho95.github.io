@@ -154,7 +154,7 @@ categories: Swift Language Grammar Revision History
 
 #### Promote Clear Usage (명확한 사용법 추구하기)
 
-* **모호함이 없도록 필요한 모든 단어를 포함시킨** 이름이 사용된 코드를 읽을 수 있도록 합니다.
+* **필요한 모든 단어를 포함시킨** 이름을 사용하여 코드를 읽는데 모호함이 없도록 합니다.
 
   예를 들어, '컬렉션 (collection)' 에서 주어진 위치의 원소를 제거하는 메소드를 생각해 봅시다.
 
@@ -166,16 +166,16 @@ categories: Swift Language Grammar Revision History
   employees.remove(at: x)
   ```
 
-  이 '메소드 서명 (method signature)' 에서 `at` 이라는 단어를 생략하면, 이 메소드가 `x` 와 같은 원소를 찾아서 제거하는 것이라고 생각하지, 제거할 원소의 위치를 지시하려고 `x` 를 사용한다고 생각하지 않을 것입니다.
+  이 '메소드 서명 (method signature)'[^method-signature] 에서 `at` 이라는 단어를 생략하면, 메소드가 `x` 와 같은 원소를 찾아서 제거하는 것이라고 생각하지, `x` 를 사용해서 제거할 원소의 위치를 지시한다고는 생각하지 않을 수 있습니다.
 
   ```swift
   // 잘못된 예제
   employee.remove(x) // 불분명함 : x를 제거하는 것입니까?
   ```
 
-* **필요없는 단어는 생략합니다.** 이름에 있는 모든 단어는 사용하는 쪽에 중요한 정보를 전달해야 합니다.
+* **필요없는 단어는 생략합니다.** 이름에 있는 모든 단어는 사용자 쪽에 중요한 정보를 전달해야 합니다.
 
-  의도를 명확하게 하거나 의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수도 있지만, 읽는 쪽에서 이미 확보해서 과잉인 정보는 생략해야 합니다. 특히, 타입 정보를 _단순하게 반복하는 (merely repeat)_ 단어는 생략합니다.
+  의도를 명확하게 하거나 의미의 모호함을 없애기 위해 더 많은 단어가 필요할 수도 있지만, 사용자가 이미 확보한 정보라서 과잉인 것들은 생략해야 합니다. 특히, 타입 정보를 _단순하게 반복하는 (merely repeat)_ 단어는 생략합니다.
 
   ```swift
   // 잘못된 예제
@@ -193,9 +193,9 @@ categories: Swift Language Grammar Revision History
   allViews.remove(cancelButton) // 더 명확함
   ```
 
-  가끔씩, 타입 정보를 반복하는 것도 모호함을 피하기 위해 필요하긴 하지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고합니다.
+  가끔씩, 모호함을 피하기 위해 타입 정보를 반복할 때도 있지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고합니다.
 
-* **변수, 매개 변수, 및 결합된 타입은 역할에 따라 이름을 짓도록 하며,** 타입 구속 조건으로 이름을 짓지 않도록 합니다.
+* **변수, 매개 변수, 및 결합된 타입은 그 역할에 따라 이름을 지으며,** 타입 구속 조건으로 짓지 않도록 합니다.
 
   ```swift
   // 잘못된 예제
@@ -208,7 +208,7 @@ categories: Swift Language Grammar Revision History
   }
   ```
 
-  이런 식으로 타입 이름을 재사용하면 분명함과 표현력을 최적화하는데 실패하게 됩니다. 이 보다는, '개체' 의 _역할 (role)_ 을 표현하는 이름을 선택하려고 노력합니다.
+  이런 식으로 타입 이름을 재사용하면 분명함과 표현력의 최적화에 실패하게 됩니다. 이 보다는, '개체' 의 _역할 (role)_ 을 표현하는 이름을 선택하려고 노력합니다.
 
   ```swift
   // 좋은 예제
@@ -221,7 +221,7 @@ categories: Swift Language Grammar Revision History
   }
   ```
 
-  '결합된 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어서 프로토콜 이름이 역할 _이기도 (is)_ 한 경우라면, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피하도록 합니다:
+  '결합된 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어서 프로토콜 이름 _이 (is)_ 역할인 경우라면, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피합니다:
 
   ```swift
   protocol Sequence {
@@ -230,9 +230,9 @@ categories: Swift Language Grammar Revision History
   protocol IteratorProtocol { ... }
   ```
 
-* **타입 정보가 약하면 보완하여** 매개 변수의 역할을 분명하게 밝힙니다.
+* **약한 타입 정보를 보완하여** 매개 변수의 역할이 분명하도록 합니다.
 
-  특히, 매개 변수 타입이 `NSObject`, `Any`, `AnyObject` 이거나, `Int` 및 `String` 같은 기반 타입일 때는, 사용 시점에서 타입 정보와 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 다음 예제에서, 선언은 명확한 듯 하지만, 사용하는 쪽은 분명하지가 않습니다.
+  특히, 매개 변수 타입이 `NSObject`, `Any`, `AnyObject` 이거나, `Int` 및 `String` 같은 '기반 타입 (fundamental type)' 일 때는, 타입 정보와 사용 시의 상황이 의도를 온전히 전달하지 못할 수도 있습니다. 아래 예제에서, 선언만 보면 명확한 것 같지만, 사용할 때는 막연합니다.
 
   ```swift
   // 잘못된 예제
@@ -241,7 +241,7 @@ categories: Swift Language Grammar Revision History
   grid.add(self, for: graphics) // 불분명함
   ```
 
-  분명함을 되살리려면, 타입이 약한 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙입니다.
+  분명함을 되살리려면, **타입이 약한 각각의 매개 변수 앞에 역할을 설명하는 명사를 붙입니다**:
 
   ```swift
   // 좋은 예제
@@ -267,7 +267,7 @@ categories: Swift Language Grammar Revision History
   x.nounCapitalize()
   ```
 
-  첫 번째나 두 번째 인자 이후로 인자들이 호출 시에 의미상 중심 역할을 하지 않을 때는 자연스러움이 좀 줄더라도 괜찮습니다:
+  첫 번째 인자 또는 두 번째 이후로 인자의 의미가 호출에서 중심이 아닐 때는 자연스러움이 줄어들어도 괜찮습니다:
 
   ```swift
   AudioUnit.instantiate(
@@ -275,11 +275,11 @@ categories: Swift Language Grammar Revision History
     options: [.inProcess], completionHandler: stopProgressBar)
   ```
 
-* **'공장 메소드 (factory methods)'[^factory-method] 의 이름은 "`make`" 로 시작합니다.** 예를 들어, `x.makeIterator()` 라고 합니다.
+* **'공장 메소드 (factory methods)'[^factory-method] 의 이름은 "`make`" 로 시작합니다.** 가령, `x.makeIterator()` 라고 합니다.
 
-* **초기자 및 [공장 메소드 (factory methods)](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 의 첫 번째 인자는 '기본 이름 (base name)[^base-name] 으로 시작하는 구절' 을 형성하지 않도록 합니다. 예를 들어, `x.makeWidget(cogCount: 47)` 라고 합니다.
+* **초기자 및 [공장 메소드 (factory methods)](https://en.wikipedia.org/wiki/Factory_method_pattern) 호출** 의 첫 번째 인자는 '기본 이름 (base name)[^base-name] 으로 시작하는 구절' 을 형성하지 않도록 합니다. 가령, `x.makeWidget(cogCount: 47)` 라고 합니다.
 
-  예를 들어, 이러한 호출의 첫 번째 인자는 '기본 이름 (base name) 과 같은 구절' 인 것처럼 읽히지 않아야 합니다.
+  예를 들어, 이런 호출의 첫 번째 인자는 '기본 이름 (base name) 과 같은 구절' 인 것 처럼 읽히도록 하지 않습니다.
 
   ```swift
   // 좋은 예제
@@ -297,7 +297,7 @@ categories: Swift Language Grammar Revision History
   let ref = Link(to: destination)
   ```
 
-  사실상, 이 지침은 [argument labels (인자 이름표)](#argument-labels-인자-이름표) 에 대한 것과 마찬가지로 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자는 이름표를 가질 것을 의미합니다.
+  사실상, [argument labels (인자 이름표)](#argument-labels-인자-이름표) 에 대한 것과 마찬가지로 이 지침이 의미하는 것은 호출이 [value preserving type conversion (값 보존 타입 변환)](#type-conversion) 을 하지 않는 한 첫 번째 인자는 이름표를 가진다는 것입니다.
 
   ```swift
   let rgbForeground = RGBColor(cmykForeground)
@@ -305,13 +305,13 @@ categories: Swift Language Grammar Revision History
 
 * **함수와 메소드는 '부작용 (side-effects)'[^side-effects] 에 따라 이름을 짓습니다.**
 
-  - '부작용 (side-effects)' 이 없는 것은, `x.distance(to: y)`, `i.successor()` 처럼, '명사구' 로 읽히도록 합니다.
+  - '부작용' 이 없는 것은 '명사구' 로 읽히도록 합니다, 가령 `x.distance(to: y)`, `i.successor()` 라고 합니다.
 
-  - '부작용 (side-effects)' 이 있는 것은, `print(x)`, `x.sort()`, `x.append(y)` 처럼, '명령형 동사구 (imperative verb phrases)' 로 읽히도록 합니다.
+  - '부작용' 이 있는 것은 '명령형 동사구 (imperative verb phrases)' 로 읽히도록 합니다, 가령 `print(x)`, `x.sort()`, `x.append(y)` 라고 합니다.
 
-  - **변경/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 종종 비슷한 '의미 구조 (semantics)' 를 가지는 별도의 '변경하지 않는 (nonmutating)', 그 자리에서 인스턴스를 갱신하는 대신 새로운 값을 반환하는, 버전을 가집니다.
+  - **변경하는/변경하지 않는 메소드 쌍의 이름은** 일관성이 있어야 합니다. '변경 메소드 (mutating method)' 는 종종 비슷한 '의미 구조 (semantics)' 를 가지지만, 그 자리에서 인스턴스를 갱신하는 대신 새 값을 반환하는, '변경하지 않는 (nonmutating)' '별도 버전 (variant)' 을 가집니다.
 
-    * 연산을 **동사로 설명하는 것이 자연스러울** 때는, '변경 메소드 (mutating method)' 에 대해서 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름은 "ed" 또는 "ing" 접미사를 적용합니다.
+    * 연산을 **동사로 설명하는 것이 자연스러울** 때는, '변경 메소드 (mutating method)' 에 동사의 '명령형 (imperative)' 을 사용하고 이에 대응되는 '변경하지 않는 (nonmutating)' 것의 이름에 "ed" 나 "ing" 접미사를 적용합니다.
 
       **Mutating** | | **Nonmutating**
       ---|---|---
@@ -319,20 +319,20 @@ categories: Swift Language Grammar Revision History
       `x.append(y)` | | `z = x.appending(y)`
        | |
 
-      - 변경하지 않는 것의 이름은 (보통 "ed" 를 추가한) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하도록 합니다:
+      - 변경하지 않는 '별도 버전 (variant)' 의 이름은 (주로 "ed" 를 덧붙여서) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하는 것이 좋습니다:
 
         ```swift
-        /// 그 자리에서 `self` 를 거꾸로 뒤집습니다.
+        /// 그 자리에서 `self` 를 거꾸로 만듭니다.
         mutating func reverse()
 
-        /// `self` 를 거꾸로 한 것의 복사본을 반환합니다.
+        /// `self` 를 거꾸로 만든 것의 복사본을 반환합니다.
         func reversed() -> Self
         ...
         x.reverse()
         let y = x.reversed()
         ```
 
-      - 동사가 직접 목적어를 가지기 때문에 "ed" 를 추가하는 것이 문법적으로 맞지 않을 때는, 동사의 '현재 분사 [participle](https://en.wikipedia.org/wiki/Participle)' 를 사용하여, "ing" 를 덧붙여서, 변경하지 않는 것의 이름을 짓도록 합니다.
+      - 동사가 직접 목적어를 가지기 때문에 "ed" 를 추가하는 것이 문법적으로 맞지 않을 때는, 변경하지 않는 '별도 버전 (variant)' 의 이름에, "ing" 를 덧붙이는, 동사의 '현재 분사 [participle](https://en.wikipedia.org/wiki/Participle)' 를 사용합니다.
 
         ```swift
         /// `self` 에서 모든 개행 문자를 벗겨냅니다.
@@ -345,7 +345,7 @@ categories: Swift Language Grammar Revision History
         let oneLine = t.strippingNewlines()
         ```
 
-    * 연산을 **명사로 설명하는 것이 자연스러울** 때는, '변경하지 않는 메소드 (nonmutating method)' 에 대해서 명사를 사용하고 이에 대응되는 '변경하는 (nonmutating)' 것의 이름에 "form" 접두사를 적용합니다.
+    * 연산을 **명사로 설명하는 것이 자연스러울** 때는, '변경하지 않는 메소드 (nonmutating method)' 에 명사를 사용하고 이에 대응되는 '변경하는 (nonmutating)' 것의 이름에 "form" 접두사를 적용합니다.
 
       **Nonmutating** | | **Mutating**
       ---|---|---
@@ -353,35 +353,35 @@ categories: Swift Language Grammar Revision History
       `j = c.successor(i)` | | `c.formSuccessor(&i)`
        | |
 
-* 사용할 때 변경되지 않는다면 **불리언 메소드와 불리언 속성은 받는 쪽에서 단언문으로 읽히도록 사용합니다** 가령 `x.isEmpty`, `line1.intersects(line2)` 같은 것이 있습니다.
+* 사용자가 변경하지 않는다면 **불리언 메소드와 불리언 속성을 사용할 때 받는 쪽에서 '단언문 (assertions)' 으로 읽혀지도록 합니다** 가령 `x.isEmpty`, `line1.intersects(line2)` 라고 합니다.
 
-* **그것이 무엇인지를 설명하는 프로토콜은 명사로 읽혀지도록 해야 합니다** (가령 `Collection` 같은 것이 있습니다).
+* **_어떤 것이 무엇인지 (what something is)_ 설명하는 프로토콜은 명사로 읽혀지도록 합니다** (가령 `Collection` 이라고 합니다).
 
-* **_보유 능력 (capability)_ 을 설명하는 프로토콜은 `able`, `ible`, 또는 `ing` 접미사를 사용하여 이름을 지어야 합니다.** (가령 `Equatable`, `ProgressReporting` 같은 것이 있습니다).
+* **_보유 능력 (capability)_ 을 설명하는 프로토콜은 `able`, `ible`, 또는 `ing` 접미사를 사용하여 이름을 지어야 합니다.** (가령 `Equatable`, `ProgressReporting` 이라고 합니다).
 
 * 그 외 다른 **타입, 속성, 변수, 및 상수는 명사로 읽혀지도록** 이름을 짓습니다.
 
 #### Use Terminology Well (용어를 잘 사용하기)
 
 ---|---|---|---
- | **Term of Art (기술 용어)** | | _명사 (noun)_ 특정 분야 또는 직업에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
+ | **Term of Art (전문 기술 용어)** | | _명사 (noun)_ - 특정한 분야나 특정한 직업 내에서 엄밀하고, 특수한 의미를 가지는 단어 또는 구절[^term-of-art]
  | | |
 
-* **애매한 용어는 피하고** 더 일반적이고 의미도 잘 전달하는 단어를 사용합니다. "피부 (skin)" 가 의도에 맞다면 굳이 "표피 (epidermis)" 라고 하지 않습니다. '기술 용어 (term of art)' 는 '핵심적인 소통 도구' 이지만, 다른 경우라면 잃어 버릴 수도 있는 '결정적인 의미 (crucial meaning)' 를 붙잡아야할 때만 사용하도록 합니다.
+* **애매한 용어는 피하고** 더 일상적이고 의미도 잘 전달하는 단어를 사용합니다. "피부 (skin)" 가 목적에 알맞다면 굳이 "표피 (epidermis)" 라고 하지 않습니다. '전문 기술 용어 (term of art)' 는 '핵심적인 소통 도구' 이지만, 다른 경우라면 잃어 버릴 '결정적인 의미 (crucial meaning)' 를 붙잡기 위해서만 사용해야 합니다.
 
-* **기존에 확립된 의미를 유지한 채로** 기술 용어를 사용합니다.
+* **기존에 확립된 의미를 유지하면서** 전문 기술 용어를 사용합니다.
 
-  더 일반적인 단어 대신 '전문적인 용어 (technical term)' 를 사용하는 유일한 이유는 다른 경우라면 모호하거나 불명확한 것을 _엄밀하게 (precisely)_ 표현하기 때문입니다. 그러므로, API 는 합당한 의미에 따라 엄격하게 용어를 사용해야 합니다.
+  더 일상적인 단어 대신 '기술적인 용어 (technical term)' 를 사용해야 하는 유일한 이유는 다른 경우라면 모호하거나 불명확해질 어떤 것을 _엄밀하게 (precisely)_ 표현하는 것이기 때문입니다. 그러므로, API 는 '이론의 여지가 없는 의미' 에 따라 엄격하게 용어를 사용해야 합니다.
 
-  - **전문가를 놀라게 하지 않도록 합니다.**: 이미 용어에 친숙한 사람이 새로운 의미가 발명된 것을 보면 놀랍기도 하고 화가 나기도 할 것입니다.
+  - **전문가를 놀라게 하지 않도록 합니다**: 이미 용어에 익숙한 사람이라도 새로운 의미가 발명된 것을 보면 놀라면서 화가 날 것입니다.
 
-  - **초보자를 혼란스럽게 하지 않도록 합니다.**: 용어를 배우려는 사람은 웹 검색을 하게 될 것이고 전통적인 의미를 찾게 될 것입니다.
+  - **초보자를 혼란스럽게 하지 않도록 합니다**: 용어를 배우려는 사람은 웹 검색을 할 것이고 전통적인 의미도 찾을 것입니다.
 
-* **축약어를 피하도록 합니다.** '축약어 (abbreviations)', 특히 표준이-아닌 것은, 이해를 하려면 축약되지-않은 형태로 올바르게 번역해야만 한다는 점에서, 사실상 '기술 용어 (terms-of-art)' 인 것입니다.
+* **축약어를 피하도록 합니다.** '축약어 (abbreviations)', 특히 표준이-아닌 것은, 이해를 하려면 축약되지-않은 형태로 올바르게 번역해야만 한다는 점에서, 사실상 '전문 기술 용어 (terms-of-art)' 입니다.
 
-  > 사용한 축약어는 어떤 것이든 의도한 의미를 웹 검색으로 쉽게 찾을 수 있어야 합니다.
+  > 사용한 축약어가 의도한 의미가 어떤 것이든 웹 검색으로 쉽게 찾을 수 있어야 합니다.
 
-* **선례를 받아들이도록 합니다.** 기존 문화에 대한 준수를 희생하면서까지 완전 초보자를 위해 용어를 최적화하지는 않도록 합니다.
+* **선례를 받아들이도록 합니다.** 기존 문화를 준수하지 않으면서까지 완전 초보자를 위해 용어를 최적화하지는 않도록 합니다.
 
   자료가 서로 인접해 있는 구조의 경우, 초보자라면 의미를 파악하기에 `List` 가 더 쉽더라도, `List` 라는 단순화된 용어보다 `Array` 라고 이름을 짓는 것이 더 좋습니다. '배열 (arrays)' 은 '현대의 컴퓨팅 (modern computing)' 에서 기반이므로, 모든 프로그래머가 배열이 무엇인지 알고 있거나-곧 배우게 될 것입니다. 대부분의 프로그래머에게 친숙한 용어를 사용하여, 웹 검색이나 질문을 통해 보상받을 수 있게 합니다.
 
@@ -763,3 +763,5 @@ x.move(from: x, to: y)
 [^simpler]: '기본 설정 매개 변수 (default parameters)' 를 사용하면 함수를 호출할 때 그와 연관된 인자를 생략할 수 있어서 코드가 간단해집니다. 스위프트의 `print(_:separator:terminator:)` 함수가 대표적인 예라고 할 수 있습니다.
 
 [^monomorphism]: 원문에서는 '단사 사상 (monomorphism)' 이라는 말을 사용하고 있지만, 이를 사실 '단사 함수 (injective function)' 의 의미로써 사용하고 있습니다. '단사 함수' 는 '정의역 또는 소스 (source)' 에 있는 서로 다른 원소를 '공역 또는 결과 (result)' 에 있는 서로 다른 원소로 대응시키는 함수를 말합니다. 보다 자세한 내용은 위키피디아의 [Monomorphism](https://en.wikipedia.org/wiki/Monomorphism) 항목 및 [단사 사상](https://ko.wikipedia.org/wiki/단사_사상) 항목, 그리고 [Injective function](https://en.wikipedia.org/wiki/Injective_function) 항목 및 [단사 함수](https://ko.wikipedia.org/wiki/단사_함수) 항목을 참고하기 바랍니다.
+
+[^method-signature]: '메소드 서명 (method signature)' 은 메소드 이름과 매개 변수의 개수 및 타입, 그리고 순서 등으로 구성된 것으로, 메소드를 식별하기 위해 사용되는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목에 있는 [Method signature](https://en.wikipedia.org/wiki/Type_signature#Method_signature) 부분을 참고하기 바랍니다.
