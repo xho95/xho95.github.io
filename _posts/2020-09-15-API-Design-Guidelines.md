@@ -658,48 +658,45 @@ x.move(from: x, to: y)
 
 ### Special Instructions (특수한 지시 사항들)
 
-* **튜플 멤버의 이름표와 클로저 매개 변수의 이름은** API 에 나타날 때마다 붙이도록 합니다.
+* **튜플 멤버의 이름표와 클로저 매개 변수의 이름은** API 에 있는 곳마다 붙입니다.
 
-  이 이름들은 설명에 아주 도움이 되며, '문서화 주석 (documentation comments)' 에서 참조할 수 있으며, 튜플 멤버를 접근할 때 의미 전달이 잘 됩니다.
+  이 이름들은 설명에 큰 힘이 되며, '문서화 주석 (documentation comments)' 에서 참조할 수도 있고, 튜플 멤버에 접근할 때 의미 부여를 할 수 있게 됩니다.
 
   ```swift
-  /// Ensure that we hold uniquely-referenced storage for at least
-  /// `requestedCapacity` elements.
+  /// 최소한 `requestedCapacity` 원소들을 위한 유일-참조 저장소를 쥐고 있음을 보장함.
   ///
-  /// If more storage is needed, `allocate` is called with
-  /// `byteCount` equal to the number of maximally-aligned
-  /// bytes to allocate.
+  /// 더 많은 저장소가 필요하면, 할당 시의 최대-할당 바이트 개수인
+  /// `byteCount` 를 가지고 `allocate` 를 호출한다.
   ///
-  /// - Returns:
-  ///   - reallocated: `true` iff a new block of memory
-  ///     was allocated.
-  ///   - capacityChanged: `true` iff `capacity` was updated.
+  /// - 반환 값:
+  ///   - reallocated: `true` 새로운 메모리 블럭이 할당된 경우 `true`
+  ///   - capacityChanged: `capacity` 가 갱신된 경우 `true`
   mutating func ensureUniqueStorage(
     minimumCapacity requestedCapacity: Int,
     allocate: (_ byteCount: Int) -> UnsafePointer<Void>
   ) -> (reallocated: Bool, capacityChanged: Bool)
   ```
 
-  클로저 매개 변수에 사용하는 이름은 최상위 함수의 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 처럼 선택해야 합니다. 클로저 인자에 대한 이름표는 호출하는 쪽에서는 지원하지 않습니다.
+  클로저 매개 변수의 이름은 최상위-수준 함수에 대한 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 인 것처럼 선택해야 합니다. 클로저 인자에 대한 이름표를 호출할 때 나타내는 것은 지원하지 않습니다.
 
-* **'구속 조건이 없는 다형성 (unconstrained polymorphism)' 은 좀 더 주의해서** (`Any`, `AnyObject`, 및 구속 조건이 없는 제네릭 매개 변수 등의) 중복정의 집합에서 모호함을 피하도록 합니다.
+* **'구속 조건이 없는 다형성 (unconstrained polymorphism)' 은 좀 더 주의해서** (가령 `Any`, `AnyObject`, 및 구속 조건이 없는 제네릭 매개 변수의) 중복정의 집합에서 모호함을 피하도록 합니다.
 
   예를 들어, 다음의 중복정의 집합을 고려해 봅시다:
 
   ```swift
   // 잘못된 예제
   struct Array {
-    /// Inserts `newElement` at `self.endIndex`.
+    /// `newElement` 를 `self.endIndex` 위치에 집어 넣음.
     public mutating func append(_ newElement: Element)
 
-    /// Inserts the contents of `newElements`, in order, at
-    /// `self.endIndex`.
+    /// `newElements` 의 내용들을 , 순서대로,
+    /// `self.endIndex` 위치에, 집어 넣음.
     public mutating func append(_ newElements: S)
       where S.Generator.Element == Element
   }
   ```
 
-  이 메소드들은 '의미 상의 일족 (semantic family)' 을 형성하며, 맨 처음에 있는 인자 타입은 뚜렷하게 구별됩니다. 하지만, `Element` 가 `Any` 일 때는, '단일 원소 (single element)' 가 '일련의 원소들 (sequnce of elements)' 과 같은 타입을 가질 수 있습니다.
+  이 메소드들은 '의미 구조 상의 일족 (semantic family)' 을 형성하며, 맨 처음에 나타나는 인자 타입은 뚜렷하게 구별됩니다. 하지만, `Element` 가 `Any` 일 때, '단일 원소 (single element)' 도 '일련의 원소들 (sequnce of elements)' 과 같은 타입을 가질 수 있습니다.
 
   ```swift
   // 잘못된 예제
@@ -707,22 +704,22 @@ x.move(from: x, to: y)
   values.append([2, 3, 4]) // [1, "a", [2, 3, 4]] or [1, "a", 2, 3, 4]?
   ```
 
-  모호함을 없애기 위해, 두 번째 중복정의는 더 명시적으로 이름을 짓도록 합니다.
+  모호함을 없애기 위해, 두 번째 중복정의의 이름을 더 명시적으로 만듭니다.
 
   ```swift
   // 좋은 예제
   struct Array {
-    /// Inserts `newElement` at `self.endIndex`.
+    /// `newElement` 를 `self.endIndex` 위치에 집어 넣음.
     public mutating func append(_ newElement: Element)
 
-    /// Inserts the contents of `newElements`, in order, at
-    /// `self.endIndex`.
+    /// `newElements` 의 내용들 (contents of) 을 , 순서대로,
+    /// `self.endIndex` 위치에, 집어 넣음.
     public mutating func append(contentsOf newElements: S)
       where S.Generator.Element == Element
   }
   ```
 
-  새로운 이름이 '문서화 주석' 과 얼마나 더 잘 일치하는 지에 주목하기 바랍니다. 이 경우, 문서화 주석을 작성하는 행위가 실제로 API 작성자에게 논점을 떠올리게 합니다.
+  새로운 이름이 '문서화 주석' 과 얼마나 더 잘 일치하는 지를 주목하기 바랍니다. 이 경우, 문서화 주석을 작성한 행위가 실제로 API 작성자의 관심을 논점으로 이끈 것입니다.
 
 ### 참고 자료
 
