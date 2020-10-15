@@ -576,9 +576,35 @@ enum GamePlayMode: String {
 
 > GRAMMAR OF AN ENUMERATION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID364)
 
-### Structure Declaration
+### Structure Declaration (구조체 선언)
 
-### Class Declaration
+_구조체 선언 (structure declaration)_ 은 '이름 있는 구조체 타입' 을 프로그램에 도입합니다. 구조체 선언은 `struct` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+
+struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토콜` {<br />
+  `declarations-선언들`<br />
+}
+
+구조체의 본문은 '0' 개 이상의 _선언들 (declarations)_ 을 담고 있습니다. 이 _선언들 (declarations)_ 은 저장 및 계산 속성 둘 모두와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 및 열거체 선언도 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 또는 '프로토콜 선언' 을 가질 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 여러 가지 예제 및 논의에 대해서는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 를 참고하기 바랍니다.
+
+구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 수는 없습니다.
+
+이전에 선언한 구조체의 인스턴스를 생성하는 방법은 세 가지가 있습니다:
+
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 구조체에서 선언한 초기자 중의 하나를 호출합니다.
+* 선언한 초기자가 없는 경우, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 '멤버 초기자 (memberwise initializer)' 를 호출합니다.
+* 선언한 초기자가 없지만, 구조체 선언의 모든 속성에 초기 값이 주어진 경우, [Default Initializers (기본 설정 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-설정-초기자) 에서 설명한 것처럼, 구조체의 '기본 초기자 (default initializer)' 를 호출합니다.
+
+구조체에서 선언한 속성을 초기화하는 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
+
+구조체 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문 표현' 을 사용하여 접근할 수 있습니다.
+
+구조체는 '값 타입' 입니다; 구조체의 인스턴스는 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
+
+구조체 타입의 작동 방식은, [Extension Declaration (익스텐션 선언; 확장 선언)](#extension-declaration-익스텐션-선언-확장-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
+
+> GRAMMAR OF A STRUCTURE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID367)
+
+### Class Declaration (클래스 선언)
 
 ### Protocol Declaration (프로토콜 선언)
 
