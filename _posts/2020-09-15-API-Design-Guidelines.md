@@ -67,7 +67,7 @@ categories: Swift Language Grammar Revision History
 
       참고: 위의 `popFirst` 같이 드문 경우에, 세미콜론으로 구분된 여러 개의 문장으로 '요약' 을 만들기도 합니다.
 
-    * **첨자 연산은 무엇에 _접근하는 (accesses)_ 지 설명합니다.**:
+    * **첨자 연산은 무엇에 _접근하는 (accesses)_ 지 설명합니다**:
 
       ```swift
       /// Accesses the `index`th element.
@@ -75,7 +75,7 @@ categories: Swift Language Grammar Revision History
       subscript(index: Int) -> Element { get set }
       ```
 
-    * **초기자는 무엇을 _생성하는 (creates)_ 지 설명합니다.**:
+    * **초기자는 무엇을 _생성하는 (creates)_ 지 설명합니다**:
 
       ```swift
       /// Creates an instance containing `n` repetitions of `x`.
@@ -322,10 +322,10 @@ categories: Swift Language Grammar Revision History
       - 변경하지 않는 '별도 버전 (variant)' 의 이름은 (주로 "ed" 를 덧붙여서) 동사의 '과거 분사 (past [participle](https://en.wikipedia.org/wiki/Participle)[^participle])' 를 사용하는 것이 좋습니다:
 
         ```swift
-        /// 그 자리에서 `self` 를 거꾸로 만듭니다.
+        /// 그 자리에서 `self` 를 거꾸로 만듬.
         mutating func reverse()
 
-        /// `self` 를 거꾸로 만든 것의 복사본을 반환합니다.
+        /// `self` 를 거꾸로 만든 것의 복사본을 반환함.
         func reversed() -> Self
         ...
         x.reverse()
@@ -335,10 +335,10 @@ categories: Swift Language Grammar Revision History
       - 동사가 직접 목적어를 가지기 때문에 "ed" 를 추가하는 것이 문법적으로 맞지 않을 때는, 변경하지 않는 '별도 버전 (variant)' 의 이름에, "ing" 를 덧붙이는, 동사의 '현재 분사 [participle](https://en.wikipedia.org/wiki/Participle)' 를 사용합니다.
 
         ```swift
-        /// `self` 에서 모든 개행 문자를 벗겨냅니다.
+        /// `self` 에서 모든 개행 문자를 벗겨냄.
         mutating func stripNewlines()
 
-        /// `self` 에서 모든 개행 문자가 벗겨진 것의 복사본을 반환합니다.
+        /// `self` 에서 모든 개행 문자를 벗겨낸 것의 복사본을 반환함.
         func strippingNewlines() -> String
         ...
         s.stripNewlines()
@@ -381,41 +381,41 @@ categories: Swift Language Grammar Revision History
 
   > 사용한 축약어가 의도한 의미가 어떤 것이든 웹 검색으로 쉽게 찾을 수 있어야 합니다.
 
-* **선례를 받아들이도록 합니다.** 기존 문화를 준수하지 않으면서까지 완전 초보자를 위해 용어를 최적화하지는 않도록 합니다.
+* **선례를 받아들이도록 합니다.** 기존 문화를 준수하는 것을 희생하면서까지 완전 초보자를 위해 용어를 최적화하지는 않도록 합니다.
 
-  자료가 서로 인접해 있는 구조의 경우, 초보자라면 의미를 파악하기에 `List` 가 더 쉽더라도, `List` 라는 단순화된 용어보다 `Array` 라고 이름을 짓는 것이 더 좋습니다. '배열 (arrays)' 은 '현대의 컴퓨팅 (modern computing)' 에서 기반이므로, 모든 프로그래머가 배열이 무엇인지 알고 있거나-곧 배우게 될 것입니다. 대부분의 프로그래머에게 친숙한 용어를 사용하여, 웹 검색이나 질문을 통해 보상받을 수 있게 합니다.
+  서로 인접하게 붙은 형태의 자료 구조는, 초보자라면 `List` 라고 하는게 의미 파악이 더 쉬울지라도, `List` 라는 단순화된 용어보다 `Array` 라고 이름을 짓는 것이 더 좋습니다. '배열 (arrays)' 은 '현대 컴퓨팅 (modern computing)' 의 기반인 것으로, 모든 프로그래머가 배열이 무엇인지 알고 있거나-곧 배우게 될 것입니다. 거의 모든 프로그래머에게 익숙한 용어를 사용해야, 웹 검색이나 질문에 대한 보상을 받을 것입니다.
 
-  수학 같은, 특정한 프로그래밍 _분야 (domain)_ 에서는 `sin(x)` 처럼 이미 널리 사용되는 용어가 `verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle(x)`[^sin] 와 같은 설명 방식의 구절보다 더 적합합니다. 이 경우에는, 축약어를 피하라는 지침보다 선례가 더 중시된다는 점에 주목하기 바랍니다: 완전한 단어는 `sine` 일지라도, “sin(x)” 는 프로그래머 사이에서는 수십년 동안, 그리고 수학자 사이에서는 수백년 동안 일상적으로 사용된 것입니다.
+  수학 같은, 특정한 프로그래밍 _분야 (domain)_ 에서는 `sin(x)` 처럼 이미 널리 사용되는 용어가 `verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle(x)`[^sin] 같은 설명 방식의 구절보다 더 적합합니다. 이 경우에는, 축약어를 피하라는 지침보다 선례가 더 중시된다는 점을 기억하도록 합니다: 완전한 단어는 `sine` 일지라도, “sin(x)” 이 프로그래머 사이에서는 수십년 동안, 그리고 수학자 사이에서는 수백년 동안 일상적으로 사용되어 왔습니다.
 
 ### Conventions (협약)
 
 #### General Conventions (일반적인 협약)
 
-* **계산 속성의 복잡도가 'O(1)' 이 아닌 경우 이를 문서화합니다.**[^complexity] 사람들은 속성에 접근 할 때, 이를 저장 속성이라고 생각하기 때문에, 이것이 상당한 계산과 엮여 있지는 않을 것이라고 가정합니다. 이러한 가정을 위반할 때는 반드시 경고해야 합니다.
+* **계산 속성의 복잡도가 'O(1)' 이 아니라면 이를 문서화합니다.**[^complexity] 사람들은 속성에 접근할 때, 당연히 저장 속성이라고 생각하기 때문에, 상당한 계산과 얽힐 일은 없을 것이라고 가정합니다. 이러한 가정을 위반하게 될 때는 경고를 하도록 합니다.
 
-* **자유 함수 (free functions) 보다는 메소드와 속성을 사용하도록 합니다.** '자유 함수 (free function)'[^free-function] 는 다음과 같은 특수한 경우에만 사용합니다:
+* **자유 함수 (free functions) 보다는 메소드와 속성을 사용하도록 합니다.** '자유 함수 (free function)'[^free-function] 는 특수한 경우에만 사용합니다:
 
   1 . `self` 가 분명하지 않을 때:
 
-    ```swift
-    min(x, y, z)
-    ```
+      ```swift
+      min(x, y, z)
+      ```
 
   2 . 함수가 '구속 조건이 없는 제네릭 (unconstrained generic)' 일 때:
 
-    ```swift
-    print(x)
-    ```
+      ```swift
+      print(x)
+      ```
 
   3 . '함수 구문 표현' 이 '확립된 분야의 표기법' 에 해당할 때:
 
-    ```swift
-    sin(x)
-    ```
+      ```swift
+      sin(x)
+      ```
 
 * **대소문자 협약을 따르도록 합니다.** 타입과 프로토콜의 이름은 `UpperCamelCase` (낙타 모양 대문자)[^uppser-camel-case] 입니다. 그 외 모든 것들은 `lowCamelCase` (낙타 모양 소문자) 입니다.
 
-  미국 영어에서 일상적으로 모두 대문자로 나타내는 [두문자어 (Acronyms and Initialisms)](https://en.wikipedia.org/wiki/Acronym)[^acronyms] 는 '대소문자 협약' 에 따라 대문자 또는 소문자로 균일하게 표기해야 합니다.
+  미국 영어에서 일상적으로 모두 대문자로 나타내는 [두문자어 (Acronyms and Initialisms)](https://en.wikipedia.org/wiki/Acronym)[^acronyms] 는 '대소문자 협약' 에 따라 대문자나 소문자로 균일하게 표기해야 합니다:
 
   ```swift
   var utf8Bytes: [UTF8.CodeUnit]
@@ -423,65 +423,65 @@ categories: Swift Language Grammar Revision History
   var userSMTPServer: SecureSMTPServer
   ```
 
-  그 외 다른 두문자어는 일상적인 단어로 취급합니다:
+  그 외 다른 '두문자어' 는 일상적인 단어로 취급합니다:
 
   ```swift
   var radarDetector: RadarScanner
   var enjoysScubaDiving = true
   ```
 
-* **메소드는 기본 이름을 공유할 수 있는데** 이는 기본 의미를 같이 공유하거나 서로 별개인 분야에서 작동할 때에 그렇습니다.
+* **메소드는 기본 이름을 공유할 수 있는데** 동일한 기본 의미를 공유할 때 또는 서로 별개인 분야에서 작동할 때 하면 됩니다.
 
-  예를 들어, 다음과 같은 것들이 권장되는 것은, 이 메소드들이 본질적으로 같은 것을 하기 때문입니다:
+  예를 들어, 메소드들이 본질적으로 같은 것을 하는 경우, 다음 처럼 할 것을 권장합니다:
 
   ```swift
   // 좋은 예제
   extension Shape {
-    /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환함.
     func contains(_ other: Point) -> Bool { ... }
 
-    /// `other` 전체가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    /// `other` 전체가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환함.
     func contains(_ other: Shape) -> Bool { ... }
 
-    /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    /// `other` 가 `self` 내에 있다는 필요충분조건을 만족하면 `true` 를 반환함.
     func contains(_ other: LineSegment) -> Bool { ... }
   }
   ```
 
-  그리고 '기하학 타입 (geometric types)' 과 '집합체 타입 (collections)' 은 서로 별도의 분야이므로, 같은 프로그램 내에서 다음과 같이 하는 것 또한 괜찮습니다:
+  '기하학 타입 (geometric types)' 과 '집합체 타입 (collections; 컬렉션)' 은 서로 별도의 분야이므로, 동일한 프로그램에서 아래 처럼 해도 괜찮습니다:
 
   ```swift
   // 좋은 예제
   extension Collection where Element : Equatable {
-    /// `self` 가 `sought` 와 같은 원소를 가지고 있다는 필요충분조건을 만족하면 `true` 를 반환합니다.
+    /// `self` 가 `sought` 와 같은 원소를 가지고 있다는 필요충분조건을 만족하면 `true` 를 반환함.
     func contains(_ sought: Element) -> Bool { ... }
   }
   ```
 
-  하지만, 아래의 `index` 메소드들은 다른 '의미 구조 (semantics)' 를 가지므로, 이름을 다르게 지어야 합니다:
+  하지만, 아래의 `index` 메소드들은 서로 다른 '의미 구조 (semantics)' 를 가지므로, 이름을 서로 다르게 지어야 합니다:
 
   ```swift
   // 잘못된 예제
   extension Database {
-    /// Rebuilds the database's search index
+    /// 데이터베이스의 검색 색인을 다시 제작함.
     func index() { ... }
 
-    /// Returns the `n`th row in the given table.
+    /// 주어진 테이블에서 `n` 번째 행을 반환함.
     func index(_ n: Int, inTable: TableID) -> TableRow { ... }
   }
   ```
 
-  마지막으로, "반환 타입에 대한 중복 정의 (overloading on return type)" 는 타입 추론 시에 모호함을 유발할 수 있기 때문에 피합니다.
+  마지막으로, "반환 타입에 대한 중복 정의 (overloading on return type)" 는 타입 추론 시에 모호함을 유발할 수 있기 때문에 피하도록 합니다.
 
   ```swift
   // 잘못된 예제
   extension Box {
-    /// Returns the `Int` stored in `self`, if any, and
-    /// `nil` otherwise.
+    /// 만약 있다면, `self` 에 저장된 `Int` 를 반환하고,
+    /// 다른 경우라면 `nil` 을 반환함.
     func value() -> Int? { ... }
 
-    /// Returns the `String` stored in `self`, if any, and
-    /// `nil` otherwise.
+    /// 만약 있다면, `self` 에 저장된 `String` 을 반환하고,
+    /// 다른 경우라면 `nil` 을 반환함.
     func value() -> String? { ... }
   }
   ```
@@ -492,42 +492,35 @@ categories: Swift Language Grammar Revision History
 func move(from start: Point, to end: Point)
 ```
 
-* **매개 변수 이름은 문서화에 도움이 되도록 선택합니다.** 매개 변수 이름은 함수나 메소드를 사용하는 곳에서는 나타나지 않지만, 설명에 있어서 중요한 역할을 합니다.
+* **매개 변수 이름은 문서화에 알맞게 선택합니다.** 매개 변수 이름이 함수나 메소드를 사용할 때는 나타나지 않는다 하더라도, 설명에 있어서는 중요한 역할을 합니다.
 
-  이 이름들은 문서가 쉽게 읽히도록 선택합니다. 예를 들어, 이런 이름은 문서를 자연스럽게 읽히도록 만듭니다.
+  '문서화' 한 것이 쉽게 읽을 수 있도록 하는 이름을 선택합니다. 예를 들어, 아래의 이름은 '문서화' 한 것을 자연스럽게 읽히도록 만듭니다.
 
   ```swift
   // 좋은 예제
 
-  /// Return an `Array` containing the elements of `self`
-  /// that satisfy `predicate`.
-  /// `self` 의 원소 중 `predicate` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
+  /// `self` 의 원소 중 `predicate` 를 만족하는 것을 담은 `Array` 를 반환함.
   func filter(_ predicate: (Element) -> Bool) -> [Generator.Element]
 
-  /// Replace the given `subRange` of elements with `newElements`.
-  /// 주어진 `subRange` 의 원소들을 `newElements` 로 대체합니다.
+  /// 주어진 `subRange` 의 원소들을 `newElements` 로 대체함.
   mutating func replaceRange(_ subRange: Range, with newElements: [E])
   ```
 
-  하지만, 아래 있는 것들은 문서를 어색하고 문법적이지 않도록 만듭니다.
+  하지만, 아래는 '문서화' 를 어색하고 문법에 맞지 않게 만듭니다.
 
   ```swift
   // 잘못된 예제
 
-  /// Return an `Array` containing the elements of `self`
-  /// that satisfy `includedInResult`.
-  /// `self` 의 원소 중 `includedInResult` 를 만족하는 것을 담고 있는 `Array` 를 반환합니다.
+  /// `self` 의 원소 중 `includedInResult` 를 만족하는 것을 담은 `Array` 를 반환함.
   func filter(_ includedInResult: (Element) -> Bool) -> [Generator.Element]
 
-  /// Replace the range of elements indicated by `r` with
-  /// the contents of `with`.
-  /// `r` 로 지시한 범위의 원소들을 `with` 의 내용으로 대체합니다.
+  /// `r` 로 지시한 범위의 원소들을 `with` 의 내용으로 대체함.
   mutating func replaceRange(_ r: Range, with: [E])
   ```
 
-* **기본 설정 매개 변수 (defaulted parameters) 의 장점은** 공통된 사용법을 간단하게 만들 때마다 취하도록 합니다. 매개 변수가 공통적으로-사용되는 단일한 값을 가진다면 '기본 설정 (default)' 의 후보입니다.
+* **기본 설정 매개 변수 (defaulted parameters) 의 장점은** 일상적인 사용법을 단순화할 때마다 취하도록 합니다. 일상적으로-사용되는 단일 값을 가지는 매개 변수라면 어떤 것이든 '기본 설정 (default)' 에 대한 후보입니다.
 
-  '기본 설정 인자 (default arguments)' 는 관계가 없는 정보를 숨겨 가독성을 개선합니다. 예를 들면 다음과 같습니다:
+  '기본 설정 인자 (default arguments)' 는 관련 없는 정보를 숨겨서 가독성을 개선합니다. 예를 들어:
 
   ```swift
   // 잘못된 예제
@@ -535,14 +528,14 @@ func move(from start: Point, to end: Point)
     royalFamilyName, options: [], range: nil, locale: nil)
   ```
 
-  위는 훨씬 더 간단해질 수 있습니다:[^simpler]
+  는 훨씬 더 간단하게 될 수 있습니다:[^simpler]
 
   ```swift
   // 좋은 예제
   let order = lastName.compare(royalFamilyName)
   ```
 
-  '기본 설정 인자' 가 일반적으로 '메소드 일가 (method families)' 보다 더 나은데, 이는 API 를 이해하려는 사람에게 부담이 더 적기 때문입니다.
+  '기본 설정 인자' 가 일반적으로 '메소드 일족 (method families)' 을 사용하는 것보다 더 좋은데, 왜냐면 API 를 이해하려는 사람에게 더 부담을 적게 주기 때문입니다.
 
   ```swift
   // 좋은 예제
@@ -555,7 +548,7 @@ func move(from start: Point, to end: Point)
   }
   ```
 
-  위에 있는 것은 간단하지 않은 것 같지만, 다음 보다는 훨씬 더 간단합니다:
+  위에 있는 것은 간단해 보이지 않지만, 아래 보다는 훨씬 더 간단합니다:
 
   ```swift
   // 잘못된 예제
@@ -574,9 +567,9 @@ func move(from start: Point, to end: Point)
   }
   ```
 
-  '메소드 일가 (method family)' 는 모든 구성원에 대해 사용자가 별도로 문서화해서 이해할 필요가 있습니다. 이 중에서 결정하려면, 사용자가 이 모든 것을 이해해야 하며, 가끔 있는 놀라운 관계-예를 들어, `foo(bar: nil)` 과 `foo()` 가 항상 동의어는 아니라는 것-은 이를 대부분은 똑같은 문서에서 사소한 차이점을 캐내는 지루한 과정으로 만듭니다. 기본 설정을 가진 단일 메소드의 사용은 대단히 우수한 프로그래머 경험을 제공합니다.
+  '메소드 일족 (method family)' 의 모든 구성원은 사용자가 별도로 문서화해서 이해해야 합니다. 이 중에서 결정을 하려면, 사용자가 이 모든 것을 이해할 필요가 있으며, 가끔 있는 놀라운 관계-예를 들어, `foo(bar: nil)` 과 `foo()` 가 항상 '동의어 (synonyms)' 는 아니라는 것-은 이를 거의 대부분이 똑같은 '문서화' 에서 사소한 차이점을 캐내야 하는 지루한 과정으로 만들어 버립니다. 기본 설정을 가진 단일 메소드를 사용하는 것은 대단한 상급 프로그래밍 경험을 제공합니다.
 
-* **기본 설정을 가진 매개 변수의 위치는** 매개 변수 목록의 끝으로 보내는 것이 낫습니다. 기본 설정이 없는 매개 변수가 보통 메소드의 의미 구조상 더 본질적이며, 메소드가 호출되는 곳에서 사용하기에 안정적인 '초기화 패턴 (initial pattern)' 을 제공합니다.
+* **기본 설정을 가진 매개 변수의 위치는** 매개 변수 목록의 끝으로 보내는 것이 좋습니다. 기본 설정이 없는 매개 변수가 주로 메소드의 의미 구조상 더 본질적이며, 메소드 호출에서 사용하기에 안정된 '초기화 패턴 (initial pattern)' 을 제공합니다.
 
 #### Argument Labels (인자 이름표)
 
@@ -585,16 +578,16 @@ func move(from start: Point, to end: Point)
 x.move(from: x, to: y)
 ```
 
-* **인자를 구별하는게 쓸모 없을 때는 모든 이름표를 생략합니다.**, 가령 `min(number1, number2)`, `zip(sequence1, sequence2)` 라고 합니다.
+* **인자를 구별하는게 쓸모 없을 때는 모든 이름표를 생략합니다**, 가령 `min(number1, number2)`, `zip(sequence1, sequence2)` 처럼 합니다.
 
-* <strong id="type-conversion">'값 보존 타입 변환 (value preserving type conversion)' 을 하는 초기자에서, 첫 번째 인자 이름표는 생략합니다</strong>, 가령 `Int64(someUInt32)` 라고 합니다.
+* <strong id="type-conversion">'값 보존 타입 변환 (value preserving type conversion)' 을 하는 초기자에서, 첫 번째의 인자 이름표는 생략합니다</strong>, 가령 `Int64(someUInt32)` 처럼 합니다.
 
-  첫 번째 인자는 항상 변환의 '원천 (source)' 이어야 합니다.
+  첫 번째 인자는 항상 '변환의 원천 (source)' 이어야 합니다.
 
   ```swift
   extension String {
-    // Convert `x` into its textual representation in the given radix
-    init(_ x: BigInt, radix: Int = 10)          ← 초기 밑줄에 주목합니다.
+    // `x` 를 주어진 '진수 (radix)' 표현의 문장으로 변환함.
+    init(_ x: BigInt, radix: Int = 10)      // ← 초기 밑줄에 주목합니다.
   }
 
   text = "The value is: "
@@ -603,23 +596,22 @@ x.move(from: x, to: y)
   text += String(veryLargeNumber, radix: 16)
   ```
 
-  하지만, "좁히는 (narrowing)" 타입 변환에서는, 좁힘을 설명하는 이름표를 하기를 추천합니다.
+  하지만, (범위를) "좁히는 (narrowing)" 타입 변환의 경우, 좁힘을 설명하는 이름표를 권장합니다.
 
   ```swift
   extension UInt32 {
-    /// Creates an instance having the specified `value`.
-    init(_ value: Int16)                        ← 넓히는 것이므로, 이름표가 없습니다.
-    /// Creates an instance having the lowest 32 bits of `source`.
+    /// 지정한 `value` 를 가지는 인스턴스를 생성함.
+    init(_ value: Int16)                    // ← 넓히는 것이므로, 이름표가 없습니다.
+    /// `source` 에서 가장 낮은 32 자리에 해당하는 것을 가지는 인스턴스를 생성함.
     init(truncating source: UInt64)
-    /// Creates an instance having the nearest representable
-    /// approximation of `valueToApproximate`.
+    /// `valueToApproximate` 를 가장 근접하게 표현할 수 있는 근사 값을 가지는 인스턴스를 생성함.
     init(saturating valueToApproximate: UInt64)
   }
   ```
 
-  > 값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스의 값에 있는 모든 차이가 결과의 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 '값 보존' 인데 이는 모든 별개의 `Int8` 값이 별개의 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로의 변환은 '값 보존' 일 수 없습니다: `Int64` 은 `Int8` 으로 표현할 수 있는 것보다 더 많은 값을 가지고 있습니다.
+  > 값 보존 타입 변환은 [단사 사상 (monomorphism)](https://en.wikipedia.org/wiki/Monomorphism)[^monomorphism] 입니다. 즉, 소스 값에 있는 모든 차이가 결과 값에 있는 차이로 귀결됩니다. 예를 들어, `Int8` 에서 `Int64` 로의 변환은 값 보존인데 서로 다른 모든 `Int8` 값이 서로 다른 `Int64` 값으로 변환되기 때문입니다. 하지만, 다른 방향으로 변환하는 것은 값 보존일 수 없습니다: `Int64` 은 `Int8` 으로 표현할 수 있는 것보다 더 많은 값을 가지고 있습니다.
   >
-  > 참고 : 원래의 값을 가져오는 능력은 변환이 '값 보존' 인지의 여부와는 관계가 없습니다.
+  > 참고 : 원래의 값을 가져오는 능력은 변환이 값 보존인지 와는 관계가 없습니다.
 
 
 * **첫 번째 인자가 [전치사 구 (prepositional phrase)](https://en.wikipedia.org/wiki/Adpositional_phrase#Prepositional_phrases) 를 형성할 때는, 인자 이름표를 부여합니다.** 인자 이름표는, `x.removeBoxes(havingLength: 12)` 처럼, 보통은 [전치사 (preposition)](https://en.wikipedia.org/wiki/Preposition_and_postposition) 로 시작해야 합니다.
@@ -707,7 +699,7 @@ x.move(from: x, to: y)
   }
   ```
 
-  이 메소드들은 '의미 상의 일가족 (semantic family)' 을 형성하며, 맨 처음에 있는 인자 타입은 뚜렷하게 구별됩니다. 하지만, `Element` 가 `Any` 일 때는, '단일 원소 (single element)' 가 '일련의 원소들 (sequnce of elements)' 과 같은 타입을 가질 수 있습니다.
+  이 메소드들은 '의미 상의 일족 (semantic family)' 을 형성하며, 맨 처음에 있는 인자 타입은 뚜렷하게 구별됩니다. 하지만, `Element` 가 `Any` 일 때는, '단일 원소 (single element)' 가 '일련의 원소들 (sequnce of elements)' 과 같은 타입을 가질 수 있습니다.
 
   ```swift
   // 잘못된 예제
@@ -758,7 +750,7 @@ x.move(from: x, to: y)
 
 [^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
 
-[^acronyms]: '두문자어 (Acronyms and Initialisms)' 는 'ASCII' 같이 단어의 앞머리 글자만 떼어 만든 줄임말을 의미합니다. 그리고 영어의 'Acronyms' 와 'Initialisms' 는 사실상 같은 단어입니다. 보다 자세한 내용은 위키피디아의 [Acronym](https://en.wikipedia.org/wiki/Acronym) 항목과 [두문자어](https://ko.wikipedia.org/wiki/두문자어) 항목을 참고하기 바랍니다.
+[^acronyms]: '두문자어 (Acronyms and Initialisms)' 는 'ASCII' 같이 단어의 앞머리 글자만 떼어 만든 줄임말을 의미합니다. 그리고 영어의 'Acronyms' 와 'Initialisms' 는 사실상 같은 단어입니다. 우리말의 [초성체](https://ko.wikipedia.org/wiki/초성체) 도 사실상 두문자어라고 할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Acronym](https://en.wikipedia.org/wiki/Acronym) 항목과 [두문자어](https://ko.wikipedia.org/wiki/두문자어) 항목을 참고하기 바랍니다.
 
 [^simpler]: '기본 설정 매개 변수 (default parameters)' 를 사용하면 함수를 호출할 때 그와 연관된 인자를 생략할 수 있어서 코드가 간단해집니다. 스위프트의 `print(_:separator:terminator:)` 함수가 대표적인 예라고 할 수 있습니다.
 
