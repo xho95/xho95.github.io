@@ -614,9 +614,9 @@ x.move(from: x, to: y)
   > 참고 : 원래의 값을 가져오는 능력은 변환이 값 보존인지 와는 관계가 없습니다.
 
 
-* **첫 번째 인자가 [전치사 구 (prepositional phrase)](https://en.wikipedia.org/wiki/Adpositional_phrase#Prepositional_phrases) 를 형성할 때는, 인자 이름표를 부여합니다.** 인자 이름표는, `x.removeBoxes(havingLength: 12)` 처럼, 보통은 [전치사 (preposition)](https://en.wikipedia.org/wiki/Preposition_and_postposition) 로 시작해야 합니다.
+* **첫 번째 인자가 [전치사 구 (prepositional phrase)](https://en.wikipedia.org/wiki/Adpositional_phrase#Prepositional_phrases) 를 형성할 때는, 인자 이름표를 부여합니다.** 인자 이름표는 보통 [전치사 (preposition)](https://en.wikipedia.org/wiki/Preposition_and_postposition) 로 시작해야 합니다, 가령 `x.removeBoxes(havingLength: 12)` 처럼 합니다.
 
-  처음 두 인자가 '단일 추상 명사 (single abstraction)' 를 표현할 때는 예외가 생깁니다.
+  처음 두 인자가 '단일 추상 명사 (single abstraction)' 를 표현할 때는 예외입니다.
 
   ```swift
   // 잘못된 예제
@@ -624,7 +624,7 @@ x.move(from: x, to: y)
   a.fade(fromRed: b, green: c, blue: d)
   ```
 
-  이런 경우, 추상 명사를 명확하게 유지하도록, 인자 이름표를 전치사 _뒤에서 (after)_ 부터 시작합니다.
+  이런 경우, 전치사 _다음에 (after)_ 인자 이름표를 시작해서, '추상성 (abstraction)' 을 명확하게 유지합니다.
 
   ```swift
   // 좋은 예제
@@ -633,9 +633,9 @@ x.move(from: x, to: y)
   ```
 
 
-* **그 외의 경우에서, 첫 번째 인자가 문법적인 구절을 형성하는 경우, 이름표를 생략하고**, `x.addSubview(y)` 처럼, '기본 이름 (base name)' 앞에 어떤 단어를 추가합니다.
+* **그 외 다른 경우, 첫 번째 인자가 문법에 맞는 구절을 형성한다면, 이름표를 생략하고**, '기본 이름 (base name)' 앞에 어떤 단어를 추가합니다, 가령 `x.addSubview(y)` 처럼 합니다.
 
-  이 지침은, 첫 번째 인자가 문법적인 구절을 형성하지 _않는 (doesn't)_ 경우, 이름표를 가져야 함을 의미합니다.
+  이 지침은 만약 첫 번째 인자가 문법에 맞는 구절을 형성하지 _않는 (doesn't)_ 다면, 이름표를 가져야만 한다는 것을 의미합니다.
 
   ```swift
   // 좋은 예제
@@ -644,7 +644,7 @@ x.move(from: x, to: y)
   let studentsByName = students.sorted(isOrderedBefore: Student.namePrecedes)
   ```
 
-  구절은 올바른 의미를 전달하는 것이 중요함에 주의합니다. 다음은 문법적으로는 맞겠지만 잘못된 것을 표현하게 됩니다.
+  구절은 올바른 의미를 전달하는 것이 중요하다는 것을 기억하기 바랍니다. 아래에 있는 것은 문법에는 맞겠지만 잘못된 것을 표현하게 될 것입니다.
 
   ```swift
   // 잘못된 예제
@@ -652,7 +652,7 @@ x.move(from: x, to: y)
   words.split(12)       // 12 라는 수를 쪼개야 하는가?
   ```
 
-  기본 설정 값을 가지는 인자는 생략할 수 있어서, 문법적인 구절을 형성하지 않을 수도 있으므로, 항상 이름표를 가져야 함에 주의하기 바랍니다.
+  기본 설정 값을 가지는 인자는 생략할 수 있어서, 그 경우 문법에 맞는 구절을 형성하지 않게 되므로, 이름표를 항상 가져야 한다는 것 또한 기억하기 바랍니다.
 
 * **다른 모든 인자들은 이름표를 붙입니다.**
 
