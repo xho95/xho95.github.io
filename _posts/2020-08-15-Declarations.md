@@ -708,7 +708,7 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 프로토콜을 준수하는 타입이 어떤 메소드를 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 메소드 선언' 을 포함하면 됩니다. 프로토콜 메소드 선언은 함수 선언과 형식이 똑같지만, 두 가지 예외가 있습니다: 일단 함수 본문을 포함하지 않으며, 함수 선언에서 어떤 '기본 설정 매개 변수 값' 도 제공할 수 없습니다.  프로토콜의 '메소드 필수 조건 (method requirements)' 을 구현하는 준수 타입에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 을 참고하기 바랍니다.
 
-프로토콜 선언에서 '클래스 메소드 (class method)' 나 '정적 메소드 (static method)' 필수 조건을 선언하려면, 해당 메소드 선언을 `static` 선언 수정자로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 메소드를 `static` 키워드로 선언하고, 이 프로토콜을 준수하는 것이 클래스라면 속성을 `static` 이나 `class` 키워드 중 하나로 선언합니다. '익스텐션 (extension; 확장)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 메소드 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
+프로토콜 선언에서 '클래스 메소드 (class method)' 나 '정적 메소드 (static method)' 필수 조건을 선언하려면, 해당 메소드 선언을 `static` 선언 수정자로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 메소드를 선언하면서 `static` 키워드를 사용하고, 이 프로토콜을 준수하는 것이 클래스라면 메소드를 선언하면서 `static` 이나 `class` 키워드 중 하나를 사용합니다. '익스텐션 (extension; 확장)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 메소드 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
 [Function Declaration (함수 선언)](#function-declaration-함수-선언) 부분도 참고하기 바랍니다.
 
@@ -727,6 +727,18 @@ var `property name-속성 이름`: `type-타입` { get set }
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Subscript Declaration (프로토콜 첨자 연산 선언)
+
+프로토콜을 준수하는 타입이 어떤 '첨자 연산 (subcript)' 을 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 첨자 연산 선언' 을 포함하면 됩니다. 프로토콜 첨자 연산 선언은 은 특수한 형식의 변수 선언입니다:
+
+subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set }
+
+'첨자 연산 선언' 은 프로토콜을 준수하는 타입에 대한 '획득자 및 설정자의 최소 구현 필수 조건' 만 선언합니다. 만약 '첨자 연산 선언' 이 `get` 과 `set` 키워드를 둘 다 포함할 경우, 준수 타입은 '획득자 (getter) 및 설정자 (setter) 절' 둘 다를 반드시 구현해야 합니다. 첨자 연산 선언이 `get` 키워드 만을 포함할 경우, 준수 타입은 _최소한 (at least)_ '획득자 (getter) 절' 은 반드시 구현해야 하며 '설정자 (setter) 절' 은 선택해서 구현할 수 있습니다.
+
+프로토콜 선언에서 '정적 첨자 연산 (static subscript)' 필수 조건을 선언하려면, 해당 첨자 연산 선언을 `static` 선언 수정자로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 첨자 연산을 선언하면서 `static` 키워드를 사용하고, 프로토콜을 준수하는 것이 클래스라면 첨자 연산을 선언하면서 `static` 이나 `class` 키워드 중 하나를 사용합니다. '익스텐션 (extension; 확장)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 첨자 연산 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
+
+[Subscipt Declaration (첨자 연산 선언)](#subscipt-declaration-첨자-연산-선언) 부분도 참고하기 바랍니다.
+
+> GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)
 
@@ -748,7 +760,7 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 **Resolving Implicit Redundancy**
 
-### Subscipt Declaration
+### Subscipt Declaration (첨자 연산 선언)
 
 #### Type Subscript Declarations
 
