@@ -698,13 +698,21 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 획득자 및 설정자 필수 조건은 '준수 타입' 에서 다양한 방식으로 만족시킬 수 있습니다. 속성 선언이 `get` 과 `set` 키워드 둘 다를 포함하고 있는 경우, '준수 타입' 은 이를 읽기와 쓰기가 모두 가능한 (즉, 획득자와 설정자 둘 모두를 구현한) 저장 변수 속성 또는 계산 속성으로 구현할 수 있습니다. 하지만, 해당 속성 선언을 상수 속성 또는 읽기-전용 계산 속성으로 구현할 수는 없습니다. 속성 선언이 `get` 키워드만을 포함하고 있는 경우, 이를 모든 종류의 속성으로 구현할 수 있습니다. 프로토콜의 속성 필수 조건을 구현하는 준수 타입에 대한 예제는, [Property Requirements (속성 필수 조건)]({% post_url 2016-03-03-Protocols %}#property-requirements-속성-필수-조건) 를 참고하기 바랍니다.
 
-프로토콜 선언에서 '타입 속성 필수 조건' 을 선언하려면, 이 속성 선언을 `static` 키워드로 표시합니다. 프로토콜을 준수하는 것이 구조체와 열거체라면 속성을 `static` 키워드로 선언하고, 프로토콜을 준수하는 것이 클래스라면 속성을 `static` 또는 `class` 키워드 중 하나로 선언합니다. '프로토콜 준수성 (protocol conformance)' 을 구조체, 열거체, 또는 클래스에 추가하는 '익스텐션 (extension; 확장)' 은 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 속성 필수 조건' 에 대한 '기본 구현' 을 제공하는 익스텐션은 `static` 키워드를 사용합니다.
+프로토콜 선언에서 '타입 속성 필수 조건' 을 선언하려면, 이 속성 선언을 `static` 키워드로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 속성을 `static` 키워드로 선언하고, 이 프로토콜을 준수하는 것이 클래스라면 속성을 `static` 이나 `class` 키워드 중 하나로 선언합니다. '익스텐션 (extension; 확장)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 속성 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
-[Variable Declaration (변수 선언)](#variable-declaration-변수-선언) 도 참고하기 바랍니다.
+[Variable Declaration (변수 선언)](#variable-declaration-변수-선언) 부분도 참고하기 바랍니다.
 
 > GRAMMAR OF A PROTOCOL PROPERTY DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
-#### Protocol Method Declaration
+#### Protocol Method Declaration (프로토콜 메소드 선언)
+
+프로토콜을 준수하는 타입이 반드시 어떤 메소드를 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 메소드 선언' 을 포함하면 됩니다. 프로토콜 메소드 선언은 함수 선언과 형식이 똑같지만, 두 가지 예외가 있습니다: 일단 함수 본문을 포함하지 않으며, 함수 선언에서 어떤 '기본 설정 매개 변수 값' 도 제공할 수 없습니다.  프로토콜의 '메소드 필수 조건 (method requirements)' 을 구현하는 준수 타입에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 을 참고하기 바랍니다.
+
+프로토콜 선언에서 '클래스 메소드 (class method)' 나 '정적 메소드 (static method)' 필수 조건을 선언하려면, 해당 메소드 선언을 `static` 선언 수정자로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 메소드를 `static` 키워드로 선언하고, 이 프로토콜을 준수하는 것이 클래스라면 속성을 `static` 이나 `class` 키워드 중 하나로 선언합니다. '익스텐션 (extension; 확장)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 메소드 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
+
+[Function Declaration (함수 선언)](#function-declaration-함수-선언) 부분도 참고하기 바랍니다.
+
+> GRAMMAR OF A PROTOCOL METHOD DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Initializer Declaration
 
