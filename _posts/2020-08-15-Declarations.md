@@ -690,7 +690,7 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Property Declaration (프로토콜 속성 선언)
 
-프로토콜을 준수하는 타입이 반드시 어떤 속성을 구현하도록 선언하려면 프로토콜 선언의 본문에서 _프로토콜 속성 선언 (protocol property declaration)_ 을 포함하면 됩니다. '프로토콜 속성 선언' 은 특수한 형식의 변수 선언입니다:
+프로토콜을 준수하는 타입이 어떤 속성을 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 _프로토콜 속성 선언 (protocol property declaration)_ 을 포함하면 됩니다. '프로토콜 속성 선언' 은 특수한 형식의 변수 선언입니다:
 
 var `property name-속성 이름`: `type-타입` { get set }
 
@@ -706,7 +706,7 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 #### Protocol Method Declaration (프로토콜 메소드 선언)
 
-프로토콜을 준수하는 타입이 반드시 어떤 메소드를 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 메소드 선언' 을 포함하면 됩니다. 프로토콜 메소드 선언은 함수 선언과 형식이 똑같지만, 두 가지 예외가 있습니다: 일단 함수 본문을 포함하지 않으며, 함수 선언에서 어떤 '기본 설정 매개 변수 값' 도 제공할 수 없습니다.  프로토콜의 '메소드 필수 조건 (method requirements)' 을 구현하는 준수 타입에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 을 참고하기 바랍니다.
+프로토콜을 준수하는 타입이 어떤 메소드를 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 메소드 선언' 을 포함하면 됩니다. 프로토콜 메소드 선언은 함수 선언과 형식이 똑같지만, 두 가지 예외가 있습니다: 일단 함수 본문을 포함하지 않으며, 함수 선언에서 어떤 '기본 설정 매개 변수 값' 도 제공할 수 없습니다.  프로토콜의 '메소드 필수 조건 (method requirements)' 을 구현하는 준수 타입에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 을 참고하기 바랍니다.
 
 프로토콜 선언에서 '클래스 메소드 (class method)' 나 '정적 메소드 (static method)' 필수 조건을 선언하려면, 해당 메소드 선언을 `static` 선언 수정자로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 메소드를 `static` 키워드로 선언하고, 이 프로토콜을 준수하는 것이 클래스라면 속성을 `static` 이나 `class` 키워드 중 하나로 선언합니다. '익스텐션 (extension; 확장)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 메소드 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
@@ -714,7 +714,17 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 > GRAMMAR OF A PROTOCOL METHOD DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
-#### Protocol Initializer Declaration
+#### Protocol Initializer Declaration (프로토콜 초기자 선언)
+
+프로토콜을 준수하는 타입이 어떤 초기자를 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 초기자 선언' 을 포함하면 됩니다. '프로토콜 초기자 선언' 은, 초기자의 본문을 포함하지 않는다는 것만 제외하면, 초기자 선언과 형식이 같습니다.
+
+준수 타입이 '실패하지 않는 프로토콜 초기자 필수 조건' 을 만족하게 하려면 '실패하지 않는 초기자 (nonfailable initializer)' 또는 `init!` 라는 '실패 가능한 초기자 (failable initializer)' 를 구현하면 됩니다. 준수 타입이 '실패 가능한 프로토콜 초기자 필수 조건' 을 만족하게 하려면 어떤 종류의 초기자라도 구현하면 됩니다.
+
+클래스에서 프로토콜의 '초기자 필수 조건' 을 만족하기 위해 초기자를 구현할 때는, 해당 클래스를 이미 `final` 선언 수정자로 표시하지 않은 이상 그 초기자를 반드시 `required` 선언 수정자로 표시해야 합니다.
+
+[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 부분도 참고하기 바랍니다.
+
+> GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Subscript Declaration (프로토콜 첨자 연산 선언)
 
