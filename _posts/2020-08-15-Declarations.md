@@ -209,7 +209,7 @@ newAndOld.x = 200
 
 > GRAMMAR OF A VARIABLE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID356)
 
-### Type Alias Delcaration (타입 별명 선언)
+### Type Alias Declaration (타입 별명 선언)
 
 타입 별명 선언은 기존 타입에 대한 '이름 있는 별명' 을 프로그램에 도입합니다. 타입 별명 선언은 `typealias` 키워드를 사용하여 선언하며 다음과 같은 형식을 가집니다:
 
@@ -741,6 +741,28 @@ subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)
+
+프로토콜은 `associatedtype` 키워드를 사용하여 '결합된 타입 (associated types)' 을 선언합니다. '결합된 타입' 은 프로토콜의 선언에서 사용되는 타입을 위한 '별명 (alias)' 을 제공합니다. '결합된 타입' 은 '제네릭 (일반화된) 매개 변수 절' 의 '타입 매개 변수' 와 비슷하지만, 이를 선언하는 프로토콜의 `Self` 와 '결합되어 (associated)' 있습니다. 해당 상황에서, `Self` 는 프로토콜을 준수하는 '최후의 타입 (eventual type)' 을 참조합니다. 더 많은 정보 및 예제는, [Associated Types (결합된 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합된-타입) 을 참고하기 바랍니다.
+
+프로토콜 선언에서 제네릭 where 절을 사용하여 연결된 형식을 다시 선언하지 않고 다른 프로토콜에서 상속 된 관련 형식에 제약 조건을 추가합니다. 예를 들어 아래의 SubProtocol 선언은 동일합니다.
+
+```swift
+protocol SomeProtocol {
+  associatedtype SomeType
+}
+
+protocol SubProtocolA: SomeProtocol {
+  // 다음 구문 표현은 경고 (warning) 를 일으킵니다.
+  associatedtype SomeType: Equatable
+}
+
+// 다음 구문 표현이 더 좋습니다.
+protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
+```
+
+[Type Alias Declaration (타입 별명 선언)](#type-alias-declaration-타입-별명-선언) 부분도 참고하기 바랍니다.
+
+> GRAMMAR OF A PROTOCOL ASSOCIATED TYPE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 ### Initializer Declaration (초기자 선언)
 
