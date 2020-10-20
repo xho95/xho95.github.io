@@ -742,9 +742,9 @@ subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set 
 
 #### Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)
 
-프로토콜은 `associatedtype` 키워드를 사용하여 '결합된 타입 (associated types)' 을 선언합니다. '결합된 타입' 은 프로토콜의 선언에서 사용되는 타입을 위한 '별명 (alias)' 을 제공합니다. '결합된 타입' 은 '제네릭 (일반화된) 매개 변수 절' 의 '타입 매개 변수' 와 비슷하지만, 이를 선언하는 프로토콜의 `Self` 와 '결합되어 (associated)' 있습니다. 해당 상황에서, `Self` 는 프로토콜을 준수하는 '최후의 타입 (eventual type)' 을 참조합니다. 더 많은 정보 및 예제는, [Associated Types (결합된 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합된-타입) 을 참고하기 바랍니다.
+프로토콜은 `associatedtype` 키워드를 사용하여 '결합된 타입 (associated types)' 을 선언합니다. '결합된 타입' 은 프로토콜의 선언에서 사용되는 타입을 위한 '별명 (alias)' 을 제공합니다. '결합된 타입' 은 '일반화된 (generic) 매개 변수 절' 의 '타입 매개 변수' 와 비슷하지만, 이를 선언하는 프로토콜의 `Self` 와 '결합되어 (associated)' 있습니다. 해당 상황에서, `Self` 는 프로토콜을 '최종적으로 (eventual) 준수하고 있는 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합된 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합된-타입) 을 참고하기 바랍니다.
 
-프로토콜 선언에서 제네릭 where 절을 사용하여 연결된 형식을 다시 선언하지 않고 다른 프로토콜에서 상속 된 관련 형식에 제약 조건을 추가합니다. 예를 들어 아래의 SubProtocol 선언은 동일합니다.
+또 다른 프로토콜에서 상속받은 '결합된 타입' 에, '결합된 타입' 의 '재선언 (redeclaring)' 없이, '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화된 (generic) `where` 절' 을 사용하면 됩니다. 예를 들어, 아래에 있는 `SubProtocol` 선언들은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 protocol SomeProtocol {
