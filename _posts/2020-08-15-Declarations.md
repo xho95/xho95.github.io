@@ -846,6 +846,22 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 ### Deinitializer Declaration (정리자 선언)
 
+_정리자 선언 (deinitializer declaration)_ 은 클래스 타입에 대한 '정리자' 를 선언합니다. '정리자' 는 매개 변수를 취하지 않으며 형식은 다음과 같습니다:
+
+deinit {<br />
+  `statements-구문`<br />
+}
+
+정리자는 더 이상 클래스 객체에 대한 어떤 참조도 존재하지 않을 때, 클래스 객체가 할당 해제되기 바로 직전에, 자동으로 호출됩니다. 정리자는 클래스 선언의 본문-그러나 클래스의 '익스텐션 (extension; 확장)' 은 아닌 곳-에서만 선언할 수 있으며 각 클래스마다 최대 하나만 가질 수 있습니다.
+
+하위 클래스는 상위 클래스의 정리자를 상속받는데, 이는 하위 클래스 객체가 할당 해제되기 바로 직전에 암시적으로 호출됩니다. 하위 클래스 객체는 '상속 연쇄망 (inheritance chain)' 에 있는 모든 정리자가 실행을 마치기 전까지 할당이 해제되지 않습니다.
+
+정리자는 직접 호출하는 것이 아닙니다.
+
+클래스 선언에서 정리자를 사용하는 방법에 대한 예제는, [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %}) 를 참고하기 바랍니다.
+
+> GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
+
 ### Extension Declaration (익스텐션 선언; 확장 선언)
 
 #### Conditional Conformance
