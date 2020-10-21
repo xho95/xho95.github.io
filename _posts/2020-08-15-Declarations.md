@@ -804,6 +804,46 @@ convenience init (`parameters-매개 변수`) {<br />
 
 #### Failable Initializers (실패 가능한 초기자)
 
+_실패 가능한 초기자 (failable initializer)_ 는 초기자를 선언한 타입에 대한 '옵셔널 인스턴스 (optional instance)' 또는 '암시적으로 포장이 풀리는 (implicitly unwrapped) 옵셔널 인스턴스' 를 생산하는 타입의 초기자입니다. 그 결과로, '실패 가능한 초기자' 는 초기화가 실패한 것을 나타내기 위해 `nil` 을 반환할 수 있습니다.
+
+'옵셔널 인스턴스' 를 생산하는 '실패 가능한 초기자' 를 선언하려면, 초기자 선언에 있는 `init` 키워드에 물음표를 추가합니다 (`init?`). '암시적으로 포장이 풀리는 옵셔널 인스턴스' 를 생산하는 '실패 가능한 초기자' 를 선언하려면, 느낌표를 대신 추가합니다 (`init!`). 아래 예제는 구조체에 대한 옵셔널 인스턴스를 생산하는 '`init?` 실패 가능한 초기자' 를 보여줍니다.
+
+```swift
+struct SomeStruct {
+  let property: String
+  // 'SomeStruct' 의 옵셔널 인스턴스를 생산합니다.
+  init?(input: String) {
+    if input.isEmpty {
+      // 'self' 를 버리고 'nil' 을 반환합니다.
+      return nil
+    }
+    property = input
+  }
+}
+```
+
+`init?` 실패 가능한 초기자는, 반드시 결과의 '옵셔널 성질 (optionality)' 을 다뤄야 한다는 것만 빼면, '실패하지 않는 초기자' 의 호출과 똑같은 방식으로 호출할 수 있숩나다.
+
+```swift
+if let actualInstance = SomeStruct(input: "Hello") {
+  // 'SomeStruct' 의 인스턴스로 뭔가를 합니다.
+} else {
+  // 'SomeStruct' 의 초기화를 실패했으며 초기자가 'nil' 을 반환했습니다.
+}
+```
+
+실패 가능한 초기자는 초기자를 구현하는 본문의 어느 시점에서도 `nil` 을 반환할 수 있습니다.
+
+실패 가능한 초기자는 어떤 종류의 초기자로도 위임할 수 있습니다. '실패하지 않는 초기자' 는 또 다른 실패하지 않는 초기자 또는 `init!` 실패 가능한 초기자로 위임할 수 있습니다. 실패하지 않는 초기자는 상위 클래스 초기자의 결과를 '강제-포장풀기 (force-unwrapping)' 하는 것으로써 `init?` 실패 가능한 초기자로 위임할 수 있습니다-예를 들어, `super.init()!` 처럼 작성합니다.
+
+'초기화 실패 (initialization failure)' 는 초기자 위임을 통하여 전파됩니다. 특히, '실패 가능한 초기자' 가 위임한 초기자가 실패하고 `nil` 을 반환한 경우, 이 때는 위임을 맡긴 초기자 역시 실패하고 암시적으로 `nil` 을 반환합니다. 실패하지 않는 초기자가 위임한 '`init!` 실패 가능한 초기자' 가 실패하고 `nil` 을 반환한 경우, 이 때는 실행 시간 에러가 발생합니다 (이는 `nil` 값을 가진 옵셔널의 포장을 풀려고 `!` 연산자를 사용한 것과 같습니다).
+
+'실패 가능한 지명 초기자' 는 하위 클래스에 있는 모든 종류의 지명 초기자로 '재정의 (overridden)' 될 수 있습니다. '실패하지 않는 지명 초기자' 는 하위 클래스에 있는 '실패하지 않는 지명 초기자' 로만 재정의될 수 있습니다.
+
+더 자세한 정보 및 실패 가능한 초기자에 대한 예제는, [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 를 참고하기 바랍니다.
+
+> GRAMMAR OF AN INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID375)
+
 ### Deinitializer Declaration (정리자 선언)
 
 ### Extension Declaration (익스텐션 선언; 확장 선언)
