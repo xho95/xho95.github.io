@@ -486,7 +486,7 @@ _열거체 선언 (enumeration declaration)_ 은 '이름 있는 열거체 타입
 
 클래스와는 다르지만 구조체와는 비슷하게, 열거체는 값 타입입니다; 열거체의 인스턴스는 변수나 상수에 할당할 때, 또는 함수 호출에 대한 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
 
-열거체 타입의 작동 방식은, [Extension Declaration (익스텐션 선언; 확장 선언)](#extension-declaration-익스텐션-선언-확장-선언) 에서 논의한 것처럼, '익스텐션 선언 (확장 선언)' 으로 확장할 수 있습니다.
+열거체 타입의 작동 방식은, [Extension Declaration (익스텐션-확장 선언)](#extension-declaration-익스텐션-확장-선언) 에서 논의한 것처럼, '익스텐션 선언 (확장 선언)' 으로 확장할 수 있습니다.
 
 #### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)
 
@@ -600,7 +600,7 @@ struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토
 
 구조체는 '값 타입' 입니다; 구조체의 인스턴스는 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
 
-구조체 타입의 작동 방식은, [Extension Declaration (익스텐션 선언; 확장 선언)](#extension-declaration-익스텐션-선언-확장-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
+구조체 타입의 작동 방식은, [Extension Declaration (익스텐션-확장 선언)](#extension-declaration-익스텐션-확장-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
 
 > GRAMMAR OF A STRUCTURE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID367)
 
@@ -633,7 +633,7 @@ _상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 �
 
 클래스는 '참조 타입' 입니다; 클래스의 인스턴스는, 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사되지 않고, 참조를 합니다. 참조 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 를 참고하기 바랍니다.
 
-클래스 타입의 작동 방식은, [Extension Declaration (익스텐션 선언; 확장 선언)](#extension-declaration-익스텐션-선언-확장-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
+클래스 타입의 작동 방식은, [Extension Declaration (익스텐션-확장 선언)](#extension-declaration-익스텐션-확장-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
 
 > GRAMMAR OF A CLASS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID368)
 
@@ -862,7 +862,31 @@ deinit {<br />
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
 
-### Extension Declaration (익스텐션 선언; 확장 선언)
+### Extension Declaration (익스텐션-확장 선언)
+
+_익스텐션 (확장) 선언 (extension declaration)_ 은 기존 타입의 작동 방식을 확장하도록 합니다. '익스텐션 선언' 은 `extension` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+
+extension `type name-타입 이름` where `requirements-필수 조건` {<br />
+  `declarations-선언`<br />
+}
+
+익스텐션 선언의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 가집니다. 이 _선언 (declarations)_ 들은 계산 속성, 계산 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산 선언, 그리고 심지어 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. '익스텐션 (확장) 선언' 은 정리자 또는 프로토콜 선언, 저장 속성, 속성 관찰자, 및 다른 '익스텐션 (확장) 선언' 을 가질 수 없습니다. '프로토콜 익스텐션' 에 있는 선언들은 `final` 이라고 표시할 수 없습니다. 다양한 종류의 선언을 포함하고 있는 '익스텐션 (확장)' 에 대한 논의 및 예제에 대해서는, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+
+_타입 이름 (type name)_ 이 클래스, 구조체, 또는 열거체 타입인 경우, '익스텐션' 은 해당 타입을 확장합니다. _타입 이름 (type name)_ 이 프로토콜 타입인 경우, '익스텐션' 은 해당 프로토콜을 준수하는 모든 타입을 확장합니다.
+
+결합된 타입을 가지는 '제네릭 타입 (generic type; 일반화된 타입)' 또는 프로토콜을 확장하는 '익스텐션 선언' 은 _필수 조건 (requirements)_ 을 포함할 수 있습니다. 확장된 타입의 인스턴스 또는 확장된 프로토콜을 준수하는 타입의 인스턴스가 _필수 조건 (requirements)_ 을 만족하는 경우, 이 인스턴스는 선언에서 지정한 '작동 방식 (behavior)' 을 가지게 됩니다.
+
+'익스텐션 선언' 은 초기자 선언을 가질 수 있습니다. 그건 그렇고, 확장하려는 타입이 다른 모듈에서 정의된 경우, 초기자 선언은 해당 타입의 멤버가 알맞게 초기화되는 것을 보장하도록 해당 모듈에서 이미 정의한 초기자로 위임을 반드시 해야 합니다.
+
+기존 타입의 속성, 메소드, 그리고 초기자는 해당 타입의 '익스텐션' 에서 재정의할 수 없습니다.
+
+'익스텐션 선언' 은 _채택한 프로토콜 (adopted protocols)_ 들을 지정하여 기존 클래스, 구조체, 또는 열거체에 '프로토콜 준수성 (protocol conformance)' 을 추가할 수 있습니다:
+
+extension `type name-타입 이름`: `adopted protocols-채택한 프로토콜` where `requirements-필수 조건` {<br />
+  `declarations-선언`<br />
+}
+
+'익스텐션 선언' 은 기존 클래스에 '클래스 상속' 을 추가할 수는 없으며, 따라서 _타입 이름 (type name)_ 과 콜론 뒤에 프로토콜 목록만을 지정할 수 있습니다.
 
 #### Conditional Conformance
 
