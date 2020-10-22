@@ -888,9 +888,11 @@ extension `type name-타입 이름`: `adopted protocols-채택한 프로토콜` 
 
 '익스텐션 선언' 은 기존 클래스에 '클래스 상속' 을 추가할 수는 없으며, 따라서 _타입 이름 (type name)_ 과 콜론 뒤에 프로토콜 목록만을 지정할 수 있습니다.
 
-#### Conditional Conformance
+#### Conditional Conformance (조건부 준수성)
 
-**Overridden Requirements Aren't Used in Some Generic Contexts**
+일반화된 타입을 확장하면서 조건부로 프로토콜을 준수하도록 할 수 있는데, 이는 타입의 인스턴스가 정해진 필수 조건을 만날 때만 프로토콜을 준수하게 됩니다. '조건부 준수성 (conditional conformance)' 을 프로토콜에 추가하려면 '익스텐션 선언' 에 _필수 조건 (requirements)_ 을 추가하면 됩니다.
+
+**Overridden Requirements Aren't Used in Some Generic Contexts (재정의한 필수 조건은 어떤 제네릭-일반화 상황에서는 사용되지 않습니다)**
 
 #### Protocol Conformance Must Not Be Redundant
 
