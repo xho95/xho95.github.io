@@ -973,7 +973,7 @@ print(differentNumbers.allEqual())
 // "false" 를 출력합니다.
 ```
 
-> 준수 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 '세분화된 구속 조건 (specialized constraints)' 과 관련된 구현을 사용합니다.
+> 준수 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 '특수화된 구속 조건 (specialized constraints)' 과 관련된 구현을 사용합니다.
 
 ### 참고 자료
 
@@ -1009,4 +1009,4 @@ print(differentNumbers.allEqual())
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
-[^specialized]: 추가 설명이나 예제가 있으면 좋겠지만, 원문에 따로 설명된 것이 없는게 아쉽습니다. Apple Forum 의 질문 답변 중 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 이라는 글에 따르면, 여러 개의 '구속 조건 (constraints)' 을 동시에 만족하는 경우는 타입이 계층 관계일 때 발생하는데, '가장 세분화된 구속 조건' 을 따른다는 것은 타입의 계층 관계에서 가장 하위의 클래스를를 따른다는 의미일 것 같습니다.
+[^specialized]: 추가 설명이나 예제가 있으면 좋겠지만, 원문에 따로 설명된 것이 없는게 아쉽습니다. Apple Forum 의 질문 답변 중 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 이라는 글에 따르면, 여러 개의 '구속 조건 (constraints)' 을 동시에 만족하는 경우는 타입이 계층 관계일 때 발생하는데, '가장 특수화된 구속 조건' 을 따른다는 것은 타입의 계층 관계에서 가장 하위 클래스를 따르는 것으로 추측됩니다.

@@ -892,7 +892,70 @@ extension `type name-타입 이름`: `adopted protocols-채택한 프로토콜` 
 
 일반화된 타입을 확장하면서 조건부로 프로토콜을 준수하도록 할 수 있는데, 이는 타입의 인스턴스가 정해진 필수 조건을 만날 때만 프로토콜을 준수하게 됩니다. '조건부 준수성 (conditional conformance)' 을 프로토콜에 추가하려면 '익스텐션 선언' 에 _필수 조건 (requirements)_ 을 추가하면 됩니다.
 
-**Overridden Requirements Aren't Used in Some Generic Contexts (재정의한 필수 조건은 어떤 제네릭-일반화 상황에서는 사용되지 않습니다)**
+**Overridden Requirements Aren't Used in Some Generic Contexts (재정의된 필수 조건은 일부의 일반화 (generic) 상황에서 사용되지 않습니다)**
+
+일부의 일반화 (generic) 상황에서, 프로토콜에 대한 '조건부 준수성' 에서 '작동 방식 (behavior)' 을 획득하는 타입이 해당 프로토콜의 필수 조건에 대한 '특수화된 구현 (specialized implementations)' 을 항상 사용하지는 않습니다. 이 작동 방식을 명확히 설명하기 위해, 다음 예제에서 두 개의 프로토콜과 이 두 프로토콜을 조건부로 준수하는 '일반화된 (generic) 타입' 을 정의합니다.
+
+```swift
+protocol Loggable {
+  func log()
+}
+extension Loggable {
+  func log() {
+    print(self)
+  }
+}
+
+protocol TitledLoggable: Loggable {
+  static var logTitle: String { get }
+}
+extension TitledLoggable {
+  func log() {
+    print("\(Self.logTitle): \(self)")
+  }
+}
+
+struct Pair<T>: CustomStringConvertible {
+  let first: T
+  let second: T
+  var description: String {
+    return "(\(first), \(second))"
+  }
+}
+
+extension Pair: Loggable where T: Loggable { }
+extension Pair: TitledLoggable where T: TitledLoggable {
+  static var logTitle: String {
+    return "Pair of '\(T.logTitle)'"
+  }
+}
+
+extension String: TitledLoggable {
+  static var logTitle: String {
+    return "String"
+  }
+}
+```
+
+`Pair` 구조체는 그 일반화된 (generic) 타입이, 각각 `Loggable` 또는 `TitledLoggable` 을 준수할 때마다, `Loggable` 과 `TitledLoggable` 을 준수합니다. 아래 예제에서, `oneAndTwo` 는 `Pair<String>` 의 인스턴스로, `TitledLoggable` 을 준수하는데 이는 `String` 이 `TitleLoggable` 을 준수하기 때문입니다. `oneAndTwo` 에 대한 `log()` 메소드를 직접 호출할 때는, 제목 문자열을 가지고 있는 '특수화된 버전 (specialized version)' 이 사용됩니다.
+
+```swift
+let oneAndTwo = Pair(first: "one", second: "two")
+oneAndTwo.log()
+// "Pair of 'String': (one, two)" 를 출력합니다.
+```
+
+하지만, `oneAndTwo` 가 '일반화 상황 (generic context)' 에서 사용되거나 `Loggable` 프로토콜의 인스턴스로써 사용될 때는, '특수화된 버전' 이 사용되지 않습니다. 스위프트는 `Pair` 가 `Loggable` 을 준수하는 데 필요한 최소 필수 조건만을 참고하여 어떤 `log()` 구현을 호출할 지를 뽑습니다. 이러한 이유로, `Loggable` 프로토콜이 제공하는 기본 구현을 대신 사용합니다.
+
+```swift
+func doSomething<T: Loggable>(with x: T) {
+  x.log()
+}
+doSomething(with: oneAndTwo)
+// "(one, two)" 를 출력합니다.
+```
+
+`doSomething(_:)` 에 전달된 인스턴스에 대한 `log()` 를 호출할 때는, '기록된 문자열 (logged string)' 에서 '사용자 정의 제목 (customized title)' 을 생략합니다.
 
 #### Protocol Conformance Must Not Be Redundant
 
