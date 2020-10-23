@@ -957,11 +957,84 @@ doSomething(with: oneAndTwo)
 
 `doSomething(_:)` 에 전달된 인스턴스에 대한 `log()` 를 호출할 때는, '기록된 문자열 (logged string)' 에서 '사용자 정의 제목 (customized title)' 을 생략합니다.
 
-#### Protocol Conformance Must Not Be Redundant
+#### Protocol Conformance Must Not Be Redundant (프로토콜 준수는 반드시 과잉되지 않아야 합니다)
 
-**Resolving Explicit Redundancy**
+'구체적으로 고정된 타입 (concrete type)' 은 특정 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 과잉인 프로토콜 준수를 에러라고 표시합니다. 이런 종류의 에러는 두 가지 상황에서 마주치게 됩니다. 첫 번째 상황은 똑같은 프로토콜을 명시적으로 여러 번 준수하면서, 필수 조건은 다르게 할 때 입니다. 두 번째 상황은 똑같은 프로토콜을 암시적으로 여러 번 상속받을 때 입니다. 이 상황들은 아래 부분에서 논의합니다.
 
-**Resolving Implicit Redundancy**
+**Resolving Explicit Redundancy (명시적인 과잉 문제 해결하기)**
+
+구체적으로 고정된 타입에 대한 '다중 확장 (extension)' 은, 그 '확장 (extension)' 의 필수 조건이 서로 배타적이더라도, 똑같은 프로토콜에 대한 준수성을 추가할 수 없습니다. 이런 제약 조건은 아래 예제에서 증명해 보입니다. 두 '확장 (extension) 선언' 은 `Serializable` 프로토콜에 조건부 준수성을 추가하려고 시도하는데, 하나는 `Int` 원소를 가지는 배열에 대한 것이고, 다른 하나는 `String` 원소를 가지는 배열에 대한 것입니다.
+
+```swift
+protocol Serializable {
+  func serialize() -> Any
+}
+
+extension Array: Serializable where Element == Int {
+  func serialize() -> Any {
+    // 구현
+  }
+}
+extension Array: Serializable where Element == String {
+  func serialize() -> Any {
+    // 구현
+  }
+}
+// 에러: 'Array<Element>' 가 'Serializable' 프로토콜을 과잉 준수함
+```
+
+여러 개의 고정 타입을 기초로 하여 '조건부 준수성' 을 추가할 필요가 있는 경우, 각각의 타입이 준수할 수 있는 새로운 프로토콜을 생성하고 '조건부 준수성' 을 선언할 때 해당 프로토콜을 '필수 조건' 처럼 사용하면 됩니다.
+
+```swift
+protocol SerializableInArray { }
+extension Int: SerializableInArray { }
+extension String: SerializableInArray { }
+
+extension Array: Serializable where Element: SerializableInArray {
+  func serialize() -> Any {
+    // 구현
+  }
+}
+```
+
+**Resolving Implicit Redundancy (암시적인 과잉 문제 해결하기)**
+
+구체적으로 고정된 타입이 프로토콜을 조건부로 준수할 때, 해당 타입은 같은 필수 조건을 가지는 부모 프로토콜은 어떤 것이든 암시적으로 준수합니다.
+
+단일 부모를 상속하는 두 프로토콜을 조건부로 준수하는 타입이 필요한 경우, 부모 프로토콜에 대한 준수를 명시적으로 선언합니다. 이렇게 하면 서로 다른 필수 조건을 가지는 부모 프로토콜을 암시적으로 두 번 준수하는 것을 피하게 됩니다.
+
+다음 예제는 `TitledLoggable` 및 새로운 `MarkedLoggable` 프로토콜 둘 모두에 대한 조건부 준수성를 선언할 때의 충돌을 피하기 위해 `Loggable` 에 대한 '조건부 준수성' 을 `Array` 에 명시적으로 선언한 것입니다.
+
+```swift
+protocol MarkedLoggable: Loggable {
+  func markAndLog()
+}
+
+extension MarkedLoggable {
+  func markAndLog() {
+    print("----------")
+    log()
+  }
+}
+
+extension Array: Loggable where Element: Loggable { }
+extension Array: TitledLoggable where Element: TitledLoggable {
+  static var logTitle: String {
+    return "Array of '\(Element.logTitle)'"
+  }
+}
+extension Array: MarkedLoggable where Element: MarkedLoggable { }
+```
+
+`Loggable` 에 대한 '조건부 준수' 를 명시적으로 선언하는 '확장 (extension)' 이 없다면, 다른 `Array` '확장 (extension)' 이 이 선언들을 암시적으로 생성하하게 될 것이고, 에러로 귀결될 것입니다:
+
+```swift
+extension Array: Loggable where Element: TitledLoggable { }
+extension Array: Loggable where Element: MarkedLoggable { }
+// 에러: 'Array<Element>' 가 'Loggable' 프로토콜을 과잉 준수함
+```
+
+> GRAMMAR OF AN EXTENSION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID378)
 
 ### Subscipt Declaration (첨자 연산 선언)
 
