@@ -1038,6 +1038,19 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 ### Subscipt Declaration (첨자 연산 선언)
 
+_첨자 연산 선언 (subscript declaration)_ 은 특정 타입의 객체에 대한 '첨자 연산 보조 기능' 을 추가하도록 하며 이는 전통적으로 '집합체 (collection)', '리스트 (list)', 및 '수열 (sequence)' 에 있는 원소의 접근에 대한 '편의 구문 표현 (convenient syntax)' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+
+subscript (`parameters-매개 변수`) -> `return type-반환 타입` {<br />
+  get {<br />
+    `statements-구문`<br />
+  }<br />
+  set(`setter name-설정자 이름`) {<br />
+    `statements-구문`<br />
+  }<br />
+}
+
+'첨자 연산 선언' 은 클래스, 구조체 선언, 열거체, '확장 (extension)', 또는 '프로토콜 선언' 인 상황에서만 나타날 수 있습니다.
+
 #### Type Subscript Declarations
 
 ### Operator Declaration
