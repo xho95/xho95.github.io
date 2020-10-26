@@ -355,7 +355,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 더 많은 논의와 입-출력 매개 변수에 대한 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
-#### Special Kinds of Paramters (특수한 종류의 매개 변수)
+#### Special Kinds of Parameters (특수한 종류의 매개 변수)
 
 매개 변수는, 다음의 형식을 사용하여, 무시할 수도 있고, 다양한 개수의 값을 받을 수 있으며, 기본 설정 값을 제공할 수도 있습니다:
 
@@ -1049,15 +1049,33 @@ subscript (`parameters-매개 변수`) -> `return type-반환 타입` {<br />
   }<br />
 }
 
-'첨자 연산 선언' 은 클래스, 구조체 선언, 열거체, '확장 (extension)', 또는 '프로토콜 선언' 인 상황에서만 나타날 수 있습니다.
+'첨자 연산 선언' 은 클래스, 구조체 선언, 열거체, '확장 (extension)', 또는 '프로토콜 선언' 인 상황에서만 쓸 수 있습니다.
 
-#### Type Subscript Declarations
+_'paramter-매개 변수'_ 는 '첨자 연산 표현식' 에 관련된 타입의 원소에 접근하는 색인을 하나 이상의 지정하는데 사용됩니다 (예를 들어, `object[i]` 표현식의 `i` 같은 것입니다). 원소 접근에 필요한 색인은 어떤 타입이어도 상관없지만, 각 매개 변수는 각각의 색인 타입을 지정하기 위한 '타입 보조 설명' 을 반드시 포함해야 합니다. _'return type-반환 타입'_ 은 접근하고 있는 원소의 타입을 지정합니다.
 
-### Operator Declaration
+'계산 속성' 이 그런 것처럼, 첨자 연산 선언은 접근한 원소의 값에 대한 읽기와 쓰기 기능을 지원합니다. '획득자 (getter)' 는 값을 읽는 데 사용되며, '설정자 (setter)' 는 값을 쓰는 데 사용됩니다. '설정자 (setter) 절' 은 선택 사항이며, '획득자 (getter)' 만 필요할 때, 두 구절을 모두 생략하여 요청받은 값을 직접 반환 할 수도 있습니다. 그건 그렇고, '획득자 (setter) 절' 을 제공할 경우, 반드시 '획득자 (getter) 절' 도 제공해야 합니다.
 
-### Precedence Group Declaration
+_'setter name-설정자 이름'_ 과 이를 둘러싼 괄호는 선택 사항입니다. '설정자 이름' 을 제공하면, 이는 설정자에 대한 매개 변수 이름으로 사용됩니다 '설정자 이름' 을 제공하지 않는 경우, 설정자에 대한 '기본 설정 매개 변수 이름' 은 `value` 가 됩니다. 설정자에 대한 매개 변수의 타입은 _'return type-반환 타입'_ 과 같습니다.
 
-### Declaration Modifiers
+첨자 연산 선언은, _'paramter-매개 변수'_ 또는 _'return type-반환 타입'_ 이 '중복 정의 (overloading)' 하려는 것과 다르기만 하다면, 자신이 선언되어 있는 타입 내에서 '중복 정의' 할 수 있습니다. 상위 클래스에서 상속받은 첨자 연산 선언을 '재정의 (override)' 할 수도 있습니다. 이렇게 할 때는, 재정의한 첨자 연산 선언을 반드시 `override` 선언 수정자로 표시해야 합니다.
+
+'첨자 연산 매개 변수' 는 '함수 매개 변수' 와 같은 규칙을 따르지만, 두 가지 예외가 있습니다. 기본적으로, 첨자 연산에 사용되는 매개 변수는, 함수, 메소드, 및 초기자와는 다르게 '인자 이름표' 를 가지지 않습니다. 하지만, 함수, 메소드, 및 초기자가 사용하는 것과 똑같은 '구문 표현' 을 사용하여 인자 이름표를 명시적으로 제공할 수도 있습니다. 이에 더하여, 첨자 연산은 입-출력 매개 변수를 가질 수 없습니다. 첨자 연산 매개 변수는, [Special Kinds of Parameters (특수한 종류의 매개 변수)](#special-kinds-of-parameters-특수한-종류의-매개 변수) 에서 설명한 구문 표현을 사용하여, 기본 설정 값을 가질 수 있습니다.
+
+[Protocol Subscript Declaration (프로토콜 첨자 연산 선언)](#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 에서 설명한 것처럼, 프로토콜 선언인 상황에서 첨자 연산을 선언할 수도 있습니다.
+
+첨자 연산에 대한 더 자세한 정보 및 첨자 연산 선언에 대한 예제를 보려면, [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}) 을 참고하기 바랍니다.
+
+#### Type Subscript Declarations (타입 첨자 연산 선언)
+
+타입의 인스턴스가 아닌, 타입 자체가 노출하는 첨자 연산을 선언하려면, 첨자 연산 선언을 `static` 선언 수정자로 표시합니다. 클래스의 경우 하위 클래스가 상위 클래스의 구현을 재정의 할 수 있도록 하기 위하여 '타입 계산 속성' 을 `class` 선언 수정자로 대신 표시할 수 있습니다. 클래스 선언에서, `static` 키워드는 선언을 `class` 와 `final` 선언 수정자 둘 모두를 써서 표시한 것과 똑같은 효과를 가집니다.
+
+> GRAMMAR OF A SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID379)
+
+### Operator Declaration (연산자 선언)
+
+### Precedence Group Declaration (우선 순위 그룹 선언)
+
+### Declaration Modifiers (선언 수정자)
 
 #### Access Control Levels (접근 제어 수준)
 
