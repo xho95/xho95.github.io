@@ -18,7 +18,7 @@ C 언어의 '산술 연산자 (arithmetic operators)' 와는 달리, 스위프�
 
 자신만의 구조체, 클래스, 그리고 열거체를 정의할 때는, 이 사용자 정의 타입에 대한 표준 스위프트 연산자의 자신만의 구현을 제공하는 것이 유용할 것입니다. 스위프는 연산자의 맞춤형 구현을 제공하는 것과 생성할 각 타입의 동작이 정확히 무엇인지 결정하는 것을 쉽게 할 수 있도록 해줍니다.
 
-이는 '이미 정의된 (predefined)' 연산자로 한정되지 않습니다. 스위프트에서는 자유롭게 자신만의 사용자 정의 '중위 (infix)', '접두사 (prefix)', '접미사 (postfix)', 그리고 '할당 연산자' 를 정의할 수 있으며, 사용자 정의 '우선 순위 (precedence)' 와 '결합 법칙 (associativity)' 도 지정할 수 있습니다. 이 연산자는 '이미 정의된' 연산자 처럼 코드에서 채택하여 사용할 수 있고, 심지어 직접 정의한 사용자 정의 연산자를 지원하도록 기존 타입을 확장할 수도 있습니다.
+이는 '이미 정의된 (predefined)' 연산자로 한정되지 않습니다. 스위프트에서는 자유롭게 자신만의 사용자 정의 '중위 (infix)', '접두사 (prefix)', '접미사 (postfix)', 그리고 '할당 연산자' 를 정의할 수 있으며, 사용자 정의 '우선 순위 (precedence)' 와 '결합성 (associativity)' 도 지정할 수 있습니다. 이 연산자는 '이미 정의된' 연산자 처럼 코드에서 채택하여 사용할 수 있고, 심지어 직접 정의한 사용자 정의 연산자를 지원하도록 기존 타입을 확장할 수도 있습니다.
 
 ### Bitwise Operators (비트 연산자)
 
@@ -237,13 +237,13 @@ signedOverflow = signedOverflow &- 1
 
 부호있는 정수와 부호없는 정수에서, 양의 방향으로 넘치면 유효한 최대 정수 값이 최소 값이 되어 돌아오고, 음의 방향으로 넘치면 최소 값이 최대 값이 되어 돌아옵니다.
 
-### Precedence and Associativity (우선 순위와 결합 법칙)
+### Precedence and Associativity (우선 순위와 결합성)
 
 연산자 _우선 순위 (precedence)_ 는 일부 연산자에 다른 것보다 더 높은 우선권을 주는 것입니다; 이 연산자들은 먼저 적용됩니다.
 
-연산자 _결합 법칙 (associativity)_[^associativity] 은 같은 우선 순위의 연산자들을 서로 그룹짓는 방법을 정의하는 것입니다-왼쪽으로 그룹짓거나, 오른쪽으로 그룹지을 수 있습니다. 이 의미는 “왼쪽의 표현식과 결합되어 있다”, 거나 “오른쪽의 표현식과 결합되어 있다” 로 생각하면 됩니다.
+연산자 _결합성 (associativity)_[^associativity] 은 같은 우선 순위의 연산자들을 서로 그룹짓는 방법을 정의하는 것입니다-왼쪽으로 그룹짓거나, 오른쪽으로 그룹지을 수 있습니다. 이 의미는 “왼쪽의 표현식과 결합되어 있다”, 거나 “오른쪽의 표현식과 결합되어 있다” 로 생각하면 됩니다.
 
-각 연산자의 우선 순위와 결합 법칙을 고려해야 복합 표현식의 계산 순서를 알아낼 수 있다는 점에서 중요합니다. 예를 들어, 연산자 우선 순위는 다음의 표현식이 `17` 인 이유를 설명해 줍니다.
+각 연산자의 우선 순위와 결합성을 고려해야 복합 표현식의 계산 순서를 알아낼 수 있다는 점에서 중요합니다. 예를 들어, 연산자 우선 순위는 다음의 표현식이 `17` 인 이유를 설명해 줍니다.
 
 ```swift
 2 + 3 % 4 * 5
@@ -258,7 +258,7 @@ signedOverflow = signedOverflow &- 1
 
 하지만, 실제 답은 `17` 이지, `5` 가 아닙니다. 높은-우선 순위 연산자가 낮은-우선 순위인 것보다 먼저 계산됩니다. 스위프트에서는, C 언어에서와 같이, '나머지 연산자 (remainder operator; `%`)' 와 '곱하기 연산자 (multiplication operator; `*`)' 가 '더하기 연산자 (addtion operator; `+`) 보다 더 높은 우선 순위를 가집니다. 결과적으로, 더하기를 하기 전에 이 둘을 먼저 계산합니다.
 
-하지만, 나머지와 곱하기는 서로 _같은 (same)_ 우선 순위를 가지고 있습니다. 정확한 계산 순서를 알고 사용하려면, 이들 간의 결합 법칙도 고려할 필요가 있습니다. 나머지와 곱하기 둘 모두 왼쪽에 있는 표현식과 결합되어 있습니다. 이는 이 부분의 표현식에, 왼쪽에서 시작하는, 암시적인 괄호를 추가하는 것으로 생각하면 됩니다:
+하지만, 나머지와 곱하기는 서로 _같은 (same)_ 우선 순위를 가지고 있습니다. 정확한 계산 순서를 알고 사용하려면, 이들 간의 결합성도 고려할 필요가 있습니다. 나머지와 곱하기 둘 모두 왼쪽에 있는 표현식과 결합되어 있습니다. 이는 이 부분의 표현식에, 왼쪽에서 시작하는, 암시적인 괄호를 추가하는 것으로 생각하면 됩니다:
 
 ```swift
 2 + ((3 % 4) * 5)
@@ -278,9 +278,9 @@ signedOverflow = signedOverflow &- 1
 
 이 계산의 최종 답은 `17` 입니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자와, 여기에 설정된 연산자 우선 순위와 결합 법칙에 대한 완전한 목록에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자와, 여기에 설정된 연산자 우선 순위와 결합성에 대한 완전한 목록에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다.
 
-> 스위프트의 연산자 우선 순위와 결합 법칙은 C 언어와 오브젝티브-C 언어에서보다 더 간단하고 이해하기 쉽습니다. 하지만, 이말은 C-기반 언어에 있는 것들과 정확하게 같지는 않다는 것을 의미합니다. 기존 코드를 스위프트로 이식할 때는 연산자의 상호 작용이 원하는 방식을 유지할 수 있도록 주의해야 합니다.
+> 스위프트의 연산자 우선 순위와 결합성은 C 언어와 오브젝티브-C 언어에서보다 더 간단하고 이해하기 쉽습니다. 하지만, 이말은 C-기반 언어에 있는 것들과 정확하게 같지는 않다는 것을 의미합니다. 기존 코드를 스위프트로 이식할 때는 연산자의 상호 작용이 원하는 방식을 유지할 수 있도록 주의해야 합니다.
 
 ### Operator Methods (연산자 메소드)
 
@@ -448,7 +448,7 @@ let afterDoubling = +++toBeDoubled
 
 #### Precedence for Custom Infix Operators (사용자 정의 중위 연산자에 대한 우선 순위)
 
-'사용자 정의 중위 연산자 (custom infix operators)' 는 각각 '우선 순위 그룹 (precedence group)' 에 속해 있습니다. '우선 순위 그룹' 은 다른 중위 연산자와 관계되어 있는 연산자의 '우선 순위 (precedence)', 및 연산자의 '결합 법칙 (associativity)' 을 지정합니다. [Precedence and Associativity (우선 순위와 결합 법칙)](#precedence-and-associativity-우선-순위와-결합-법칙) 의 설명을 보면 이런 성질이 중위 연산자끼리 상호 작용할 때 미치는 영향에 대해 알 수 있습니다.
+'사용자 정의 중위 연산자 (custom infix operators)' 는 각각 '우선 순위 그룹 (precedence group)' 에 속해 있습니다. '우선 순위 그룹' 은 다른 중위 연산자와 관계되어 있는 연산자의 '우선 순위 (precedence)', 및 연산자의 '결합성 (associativity)' 을 지정합니다. [Precedence and Associativity (우선 순위와 결합성)](#precedence-and-associativity-우선-순위와-결합성) 의 설명을 보면 이런 성질이 중위 연산자끼리 상호 작용할 때 미치는 영향에 대해 알 수 있습니다.
 
 '우선 순위 그룹' 에 명시적으로 배치되지 않은 '사용자 정의 중위 연산자' 은 기본 제공 우선 순위 그룹으로 '삼항 조건 연산자' 의 바로 위의 우선 순위를 가지게 됩니다.
 
@@ -467,7 +467,7 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스입니다.
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터를 뺍니다. 이는 본질적으로 "더하기에 해당하는 (additive)" 연산자이기 때문에, `+` 와 `-` 등의 '더하기 중위 연산자' 와 같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리에서 제공하는 연산자에 대해서, 연산자 우선 순위 및 결합 법칙 설정 값의 전체 목록을 포함한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다. '우선 순위 그룹' 과 연산자 및 우선 순위 그룹을 직접 정의하기 위한 구문 표현에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380) 을 참고하기 바랍니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터를 뺍니다. 이는 본질적으로 "더하기에 해당하는 (additive)" 연산자이기 때문에, `+` 와 `-` 등의 '더하기 중위 연산자' 와 같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리에서 제공하는 연산자에 대해서, 연산자 우선 순위 및 결합성 설정 값의 전체 목록을 포함한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다. '우선 순위 그룹' 과 연산자 및 우선 순위 그룹을 직접 정의하기 위한 구문 표현에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380) 을 참고하기 바랍니다.
 
 > '접두사 (prefix) 연산자 '나 '접미사 (postfix) 연산자' 를 정의할 때는 우선 순위를 지정하지 않습니다. 다만, 피연산자에 '접두사 연산자' 와 '접미사 연산자' 를 동시에 사용하면, 접미사 연산자가 먼저 적용됩니다.
 
@@ -487,4 +487,4 @@ let plusMinusVector = firstVector +- secondVector
 
 [^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 또는 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 를 참고하기 바랍니다.
 
-[^associativity]: 'associativity' 는 '관련성' 정도로 번역할 수도 있겠지만, 수학 용어로 '결합 법칙' 이라고 널리 쓰이고 있습니다. 이에 대한 더 자세한 내용은 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 또는 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 을 참고하기 바랍니다.
+[^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. '결합 법칙' 에 대한 더 자세한 내용은 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 또는 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 을 참고하기 바랍니다.

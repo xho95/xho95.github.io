@@ -1093,7 +1093,7 @@ prefix operator `operator name-연산자 이름`
 
 _접두사 연산자 (prefix operator)_ 는, 표현식 `!a` 에 있는 '접두사 논리 부정 연산자 (`!`)' 처럼, 피연산자 바로 앞에 작성하는 '단항 연산자 (unary operator)' 입니다.
 
-'접두사 연산자 선언' 은 '우선 순위 수준 (predecence level)' 를 지정하지 않습니다. '접두사 연산자' 는 '결합 법칙을 따르지 않는 (nonassociative)'[^nonassociative] 것입니다.
+'접두사 연산자 선언' 은 '우선 순위 수준 (predecence level)' 를 지정하지 않습니다. '접두사 연산자' 는 '비결합적 (nonassociative)'[^nonassociative] 입니다.
 
 다음 형식은 새로운 '접미사 연산자' 를 선언합니다:
 
@@ -1101,13 +1101,36 @@ postfix operator `operator name-연산자 이름`
 
 _접미사 연산자 (postfix operator)_ 는, 표현식 `a!` 에 있는 '강제-포장 풀기 연산자 (`!`)' 처럼, 피연산자 바로 뒤에 작성하는 '단항 연산자 (unary operator)' 입니다.
 
-접두사 연산자에서와 같이, '접미사 연산자 선언' 은 '우선 순위 수준' 을 지정하지 않습니다. '접미사 연산자' 는 '결합 법칙을 따르지 않는 (nonassociative)'[^nonassociative] 것입니다.
+접두사 연산자에서와 같이, '접미사 연산자 선언' 은 '우선 순위 수준' 을 지정하지 않습니다. '접미사 연산자' 는 '비결합적 (nonassociative)'[^nonassociative] 입니다.
 
 새로운 연산자를 선언한 후, 이 연산자와 같은 이름을 가지는 '정적 메소드' 를 선언하는 것으로써 이를 구현합니다. '정적 메소드' 는 연산자가 인자로 취하는 그 값의 타입 중 하나에 대한 멤버입니다-예를 들어, `Double` 에 `Int` 를 곱하는 연산자는 `Double` 또는 `Int` 구조체 중 하나에 대한 '정적 메소드' 로 구현됩니다. 접두사 연산자나 접미사 연산자를 구현하고 있는 경우, 해당 메소드 선언 역시 반드시 그와 연관된 `prefix` 또는 `postfix` 선언 수정자로 표시해야 합니다. 새로운 연산자를 생성하고 구현하는 방법에 대한 예제는, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 참고하기 바랍니다.
 
 > GRAMMAR OF AN OPERATOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380)
 
 ### Precedence Group Declaration (우선 순위 그룹 선언)
+
+_우선 순위 그룹 선언 (precedence group declaration)_ 은 '중위 연산자' 의 우선 순위에 대한 새로운 '그룹 방식 (grouping)' 을 프로그램에 도입합니다. 연산자의 우선 순위는, '괄호로 그룹지은 것 (grouping parentheses)' 이 없을 때, 연산자가 피연산자에 얼마나 꽉 연결되는 지를 지정합니다.
+
+'우선 순위 그룹 선언' 의 형식은 다음과 같습니다:
+
+precedencegroup `precedence group name-우선 순위 그룹 이름` {
+    higherThan: `lower group names-낮아야 하는 그룹 이름`
+    lowerThan: `higher group names-높아야 하는 그룹 이름`
+    associativity: `associativity-결합성`
+    assignment: `assignment-할당`
+}
+
+_lower group names-낮아야 하는 그룹 이름_ 과 _higher group names-높아야 하는 그룹 이름_ 목록은 기존 '우선 순위 그룹' 에 새로운 '우선 순위 그룹' 관계를 지정합니다. `lowerThan` 우선 순위 그룹 특성은 현재 모듈의 외부에서 선언한 우선 순위 그룹을 참조할 때만 사용할 수도 있습니다. `2 + 3 * 5` 라는 표현식에서 처럼, 두 연산자가 피연산자를 두고 서로 경쟁할 때, 상대적으로 더 높은 우선 순위를 가지는 연산자가 피연산자와 더 꽉 연결됩니다.
+
+> `lower group names` 과 `higher group names` 의 사용으로 서로 관련된 우선 순위 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 에 들어맞아야 하지만, '선형 계층 (linear hierarchy)' 을 형성해야하는 것은 아닙니다. 이는 상대적인 우선 순위가 정의되지 않은 '우선 순위 그룹' 을 가지는 것이 가능함을 의미합니다. 이러한 우선 순위 그룹에 있는 연산자들은 '괄호로 그룹지은 것' 없이 서로 나란히 사용할 수 없습니다.
+
+스위프트는 표준 라이브러리가 제공하는 연산자와 함께 사용할 수 있는 수많은 '우선 순위 그룹' 을 정의하고 있습니다. 예를 들어, '더하기 (`+`)' 및 '빼기 (`-`)' 연산자는 `AdditionPrecedence` 그룹에 속하고, '곱하기 (`*`)' 및 '나누기 (`/`)' 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리에서 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 바랍니다.
+
+연산자의 _associativity-결합성_ 은 '괄호로 그룹지은 것' 이 없을 때 똑같은 우선 순위 수준을 가진 일련의 연산자들이 어떻게 서로 그룹지어져야 하는 지를 지정합니다. 연산자의 결합성은 '상황에-따른 (context-sensitive)' 키워드인 `left`, `right`, 또는 `none` 중 하나를 작성하여 지정합니다-만약 '결합성' 을 생략할 경우, 기본 설정 값은 `none` 입니다. '왼쪽-결합 (left-associative)' 인 연산자는 '왼쪽에서 오른쪽으로 (left-to-right)' 로 그룹짓습니다. 예를 들어, 빼기 연산자 (`-`) 는 '왼쪽-결합' 이므로, 표현식 `4 - 5 - 6` 은 `(4 - 5) - 6` 으로 그룹지어 지고 값은 `-7` 이라고 평가됩니다. '오른쪽-결합' 인 연산자는 '오른쪽에서 왼쪽으로 (right-to-left)' 그룹지으며, 결합성을 `none` 으로 지정한 연산자는 어떤 것도 결합하지 않습니다. 우선 순위 수준이 같은 '비결합적 연산자 (nonassociative operators)' 는 서로 인접하여 있을 수 없습니다. 예를 들어, `<` 연산자는 `none` 이라는 '결합성' 을 가지는데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아님을 의미합니다.
+
+'우선 순위 그룹' 의 _assignment-할당_ 은 연산자가 '옵셔널 연쇄 (optional chaining)' 를 포함한 연산에서 사용될 때의 우선 순위를 지정합니다. `true` 로 설정하면, 관련 우선 순위 그룹에 있는 연산자는 '옵셔널 연쇄' 중에 표준 라이브러리의 '할당 연산자' 와 똑같은 '그룹화 규칙 (grouping rules)' 을 사용합니다. 다른 경우, 즉 `false` 로 설정하거나 생략한 경우라면, 우선 순위 그룹에 있는 연산자는 할당을 수행하지 않는 연산자와 똑같은 '옵셔널 연쇄' 규칙을 따릅니다.
+
+> GRAMMAR OF A PRECEDENCE GROUP DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID550)
 
 ### Declaration Modifiers (선언 수정자)
 
@@ -1175,4 +1198,6 @@ _접미사 연산자 (postfix operator)_ 는, 표현식 `a!` 에 있는 '강제-
 
 [^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 
-[^nonassociative]: '결합 법칙을 따르지 않는다 (nonassociative)' 는 것은 수학에서 두 연산자의 적용 순서를 바꾸면 결과가 달라진다는 것을 의미합니다.
+[^nonassociative]: '비결합적 (nonassociative)' 이라는 것은 '결합성 (associativity)' 이 `none` 인 것을 말하는 것으로 추측됩니다. 보다 자세한 내용은 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 을 참고하기 바랍니다.
+
+[^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
