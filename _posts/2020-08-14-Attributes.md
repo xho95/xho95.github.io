@@ -16,9 +16,8 @@ categories: Swift Language Grammar Attribute
 
 특성을 지정하려면 `@` 기호 뒤에 특성의 이름과 그 특성이 받는 어떤 인자를 작성합니다:
 
-@`attribute name`
-<br />
-@`attribute name`(`attribute argument`)
+@`attribute name-특성 이름`<br />
+@`attribute name-특성 이름`(`attribute argument-특성 인자`)
 
 몇몇 '선언 특성 (declaration attributes)' 은 특성에 대한 추가 정보를 지정하는 인자와 특정 선언에 적용하는 방법을 지정하는 인자를 받습니다. 이 _특성 인자 (attribute arguments)_ 들은 괄호로 닫혀 있으며, 양식은 그들이 속한 특성에서 정의합니다.
 
@@ -26,7 +25,41 @@ categories: Swift Language Grammar Attribute
 
 '선언 특성' 은 선언에만 적용할 수 있습니다.
 
-#### available
+#### available (사용 가능한)
+
+이 특성을 적용하면 선언의 '생명 주기 (life cycle)' 가 정해진 스위프트 언어 버전 또는 정해진 플랫폼 및 운영 체제 버전과 관계되어 있다는 것을 지시합니다.
+
+`available` 특성은 항상 두 개 이상의 쉼표로 구분된 특성 인자들의 목록과 같이 사용합니다. 이 인자들은 다음의 플랫폼 또는 언어 이름 중 하나로 시작합니다:
+
+* `iOS`
+* `iOSApplicationExtension`
+* `macOS`
+* `macOSApplicationExtension`
+* `macCatalyst`
+* `macCatalystApplicationExtension`
+* `watchOS`
+* `watchOSApplicationExtension`
+* `tvOS`
+* `tvOSApplicationExtension`
+* `swift`
+
+'별표 (asterisk; `*`)' 를 사용하면 위에 나열한 모든 플랫폼 이름에 대한 선언의 '사용 가능성 (availability)' 을 지시할 수도 있습니다. '스위프트 버전 번호' 를 사용하여 '사용 가능성' 을 지시하는 `available` 특성은 '별표' 를 사용할 수 없습니다.
+
+나머지 인자들은 어떤 순서로 나타내도 상관 없으며, 중요한 '이정표 (milestones)' 를 포함한, 선언의 생명 주기에 대한 추가적인 정보를 지정할 수 있습니다.
+
+* `unavailable` 인자는 이 선언이 지정한 플랫폼에서는 사용 가능하지 않음을 지시합니다. 이 인자는 '스위프트 버전 사용 가능성' 을 지정할 때는 사용할 수 없습니다.
+
+* `introduced` 인자는 이 선언을 도입하도록 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 형식은 다음과 같습니다:
+
+  introduce: `version number-버전 번호`
+
+  _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다.
+
+* `deprecated` 인자는 이 선언을 폐지하도록 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 형식은 다음과 같습니다:
+
+  deprecated: `version number-버전 번호`
+
+  선택 사항인 _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다. '버전 번호' 를 생략하면, 폐지 시점에 대한 어떤 정보도 없이, 이 선언이 현재 폐지되었다는 것을 지시합니다. 버전 번호를 생략할 경우, '콜론 (`:`)' 도 생략합니다.
 
 #### discardableResult
 
