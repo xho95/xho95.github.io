@@ -1138,7 +1138,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 `class`
 
-  이 수정자를 클래스의 멤버에 적용하면 그 멤버는, 클래스 인스턴스의 멤버가 아니라, 클래스 자체의 멤버임을 나타냅니다. 상위 클래스의 멤버가 이 수정자를 가지고 있으면서 `final` 수정자를 가지고 있지 않으면 하위 클래스에서 재정의할 수 있습니다.
+  이 수정자를 클래스의 멤버에 적용하면 그 멤버는, 클래스 인스턴스의 멤버가 아니라, 클래스 자체의 멤버라는 것을 지시합니다. 상위 클래스의 멤버가 이 수정자를 가지고 있으면서 `final` 수정자를 가지고 있지 않으면 하위 클래스에서 재정의할 수 있습니다.
 
 `dynamic`
 
@@ -1148,7 +1148,41 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 `final`
 
-  이 수정자는 클래스 또는 클래스의 속성, 메소드, 및 첨자 연산 멤버에 적용합니다. 클래스에 적용하면 그 클래스로 하위 클래스를 만들 수 없음을 나타냅니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버가 어떤 하위 클래스에서도 재정의할 수 없음을 나타냅니다. `final` 특성을 사용하는 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+  이 수정자는 클래스 또는 클래스의 속성, 메소드, 및 첨자 연산 멤버에 적용합니다. 클래스에 적용하면 그 클래스로 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버가 어떤 하위 클래스에서도 재정의할 수 없음을 나타냅니다. `final` 특성을 사용하는 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+
+`lazy`
+
+  이 수정자를 클래스나 구조체의 저장 변수 속성에 적용하면 그 속성의 초기 값은, 속성에 처음 접근할 때, 최대 한 번만 계산하고 저장한다는 것을 지시합니다. `lazy` 수정자를 사용하는 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 를 참고하기 바랍니다.
+
+`optional`
+
+  이 수정자를 프로토콜의 속성, 메소드, 또는 첨자 연산 멤버에 적용하면 준수하는 타입이 해당 멤버를 구현하는 것이 필수가 아님을 지시합니다.
+
+  `optional` 수정자는 `objc` 특성으로 표시한 프로토콜에만 적용할 수 있습니다. 그 결과, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 담고 있는 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자를 사용하는 방법에 대한 더 많은 정보와 '옵셔널 프로토콜 멤버' 의 접근 방법에 대한 길잡이-예를 들어, 준수 타입이 이들을 구현하는 것이 맞는지 확실하지 않을 때 등-은 [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 을 참고하기 바랍니다.
+
+`required`
+
+  이 수정자를 클래스의 '지명 초기자' 및 '편의 초기자' 에 적용하면 모든 하위 클래스가 반드시 해당 초기자를 구현해야 한다는 것을 지시합니다. 해당 초기자의 하위 클래스 구현도 반드시 `required` 수정자로 표시해야 합니다.
+
+`static`
+
+  이 수정자를 구조체, 클래스, 열거체, 또는 프로토콜의 멤버에 적용하면 그 멤버는, 해당 타입의 인스턴스 멤버가 아니라, 타입 자체의 멤버라는 것을 지시합니다. 클래스 선언 영역에서, 멤버 선언에 `static` 수정자를 작성하면 해당 멤버 선언에 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과를 가집니다.[^class-final] 하지만, 클래스의 '상수 타입 속성' 은 예외입니다: 여기서의 `static` 은 클래스가 아닐 때의, 보통의 의미를 가지는데 왜냐면 이 선언에서는 `class` 나 `final` 을 쓸 수 없기 때문입니다.
+
+`unowned`
+
+  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '무소속 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 실행 시간 에러가 발생합니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (무소속 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-무소속-참조) 를 참고하기 바랍니다.
+
+`unowned(safe)`
+
+  `unowned` 의 (전체) 철자를 명시한 것.
+
+`unowned(unsafe)`
+
+  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '무소속 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 객체가 있던 위치의 메모리에 접근하게 되는 데, 이것이 '메모리가-안전하지 않은 (memory-unsafe)' 연산입니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (무소속 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-무소속-참조) 를 참고하기 바랍니다.
+
+`weak`
+
+  이 수정자를 저장 변수 또는 '저장 변수 속성' 에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '약한 참조 (weak reference)' 라는 것을 지시합니다. 변수 또는 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체가 해제된 후에 변수 또는 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제 및 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 를 참고하기 바랍니다.
 
 #### Access Control Levels (접근 제어 수준)
 
@@ -1217,3 +1251,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^nonassociative]: '비결합적 (nonassociative)' 이라는 것은 '결합성 (associativity)' 이 `none` 인 것을 말하는 것으로 추측됩니다. 보다 자세한 내용은 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
+
+[^class-final]: 즉 클래스 선언에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
