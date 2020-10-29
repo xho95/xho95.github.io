@@ -301,7 +301,9 @@ myFunction { $0 + $1 }
 
 '벗어나는 클로저' 에 대한 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 를 참고하기 바랍니다.
 
-**Capture Lists (붙잡을 목록)**
+<p>
+<strong id="capture-lists-붙잡을-목록">Capture Lists (붙잡을 목록)</strong>
+</p>
 
 기본적으로, 클로저 표현식은 주변 영역에 있는 상수와 변수를 해당 값에 대한 '강한 참조 (strong references)' 를 사용하여 '붙잡습니다 (capture)'. _붙잡을 목록 (capture list)_ 을 사용하면 클로저가 값을 캡처하는 방법을 명시적으로 제어할 수 있습니다.
 

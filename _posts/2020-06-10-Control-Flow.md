@@ -779,7 +779,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 위의 '사용 가능성 조건' 은 iOS 의 경우, iOS 10 이상에서만 `if` 문의 본문을 실행하도록 지정하고; macOS 의 경우, macOS 10.12 이상에서만 실행하도록 지정합니다. 마지막 인자인, `*` 는 필수이며, 자신의 대상으로 지정한 `if` 본문이 실행되는 최소한의 배포 대상, 을 지정하는 것입니다.
 
-일반적인 양식의, '사용 가능성 조건' 은 '플랫폼 이름과 버전 (platform names and versions)' 목록으로 되어 있습니다. 플랫폼 이름으로는 `iOS`, `macOS`, `watchOS`, 그리고 `tvOS` 등을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID348) 를 참고하기 바랍니다. iOS 8 이나 macOS 10.10 과 같이 '주요 버전 번호 (major version numbers)' 를 지정하는 것 외에도, iOS 11.2.6 과 macOS 10.13.3 과 같이 '부가 버전 번호' 도 지정할 수 있습니다.
+일반적인 양식의, '사용 가능성 조건' 은 '플랫폼 이름과 버전 (platform names and versions)' 목록으로 되어 있습니다. 플랫폼 이름으로는 `iOS`, `macOS`, `watchOS`, 그리고 `tvOS` 등을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. iOS 8 이나 macOS 10.10 과 같이 '주요 버전 번호 (major version numbers)' 를 지정하는 것 외에도, iOS 11.2.6 과 macOS 10.13.3 과 같이 '부가 버전 번호' 도 지정할 수 있습니다.
 
 ```swift
 if #available(`platform name` `version`, `...`, *) {

@@ -601,7 +601,7 @@ paragraph = nil
 // "p is being deinitialized" 를 출력합니다.
 ```
 
-'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID544)[^capture-lists] 를 참고하기 바랍니다.
+'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록)[^capture-lists] 를 참고하기 바랍니다.
 
 ### 참고 자료
 

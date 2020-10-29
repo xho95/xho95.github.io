@@ -467,7 +467,7 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스입니다.
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터를 뺍니다. 이는 본질적으로 "더하기에 해당하는 (additive)" 연산자이기 때문에, `+` 와 `-` 등의 '더하기 중위 연산자' 와 같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리에서 제공하는 연산자에 대해서, 연산자 우선 순위 및 결합성 설정 값의 전체 목록을 포함한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다. '우선 순위 그룹' 과 연산자 및 우선 순위 그룹을 직접 정의하기 위한 구문 표현에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380) 을 참고하기 바랍니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터를 뺍니다. 이는 본질적으로 "더하기에 해당하는 (additive)" 연산자이기 때문에, `+` 와 `-` 등의 '더하기 중위 연산자' 와 같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리에서 제공하는 연산자에 대해서, 연산자 우선 순위 및 결합성 설정 값의 전체 목록을 포함한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다. '우선 순위 그룹' 과 연산자 및 우선 순위 그룹을 직접 정의하기 위한 구문 표현에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 을 참고하기 바랍니다.
 
 > '접두사 (prefix) 연산자 '나 '접미사 (postfix) 연산자' 를 정의할 때는 우선 순위를 지정하지 않습니다. 다만, 피연산자에 '접두사 연산자' 와 '접미사 연산자' 를 동시에 사용하면, 접미사 연산자가 먼저 적용됩니다.
 

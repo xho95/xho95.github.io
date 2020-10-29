@@ -277,7 +277,7 @@ let possiblePlanet = Planet(rawValue: 7)
 
 하지만, 모든 `Int` 에 대해 그에 해당하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '_원시 (raw)_ 값 초기자' 는 항상 _옵셔널 (optional)_ 열거체 'case 값' 을 반환합니다. 위의 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 (optional) `Planet`” 입니다.
 
-> '원시 값 초기자 (raw value initializer)' 는 '실패 가능한 초기자 (failable initializer)' 인데, 모든 원시 값이 열거체 case 값을 반환하지는 않기 때문입니다. 더 자세한 내용은, [Failable Initializers (실패 가능한 초기자)](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID376)[^failable-initializer] 를 참고하기 바랍니다.
+> '원시 값 초기자 (raw value initializer)' 는 '실패 가능한 초기자 (failable initializer)' 인데, 모든 원시 값이 열거체 case 값을 반환하지는 않기 때문입니다. 더 자세한 내용은, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자)[^failable-initializer] 를 참고하기 바랍니다.
 
 위치가 `11` 에 해당하는 행성을 찾으려고 하면, '원시 값 초기자 (raw value initializer)' 가 반환하는 '옵셔널 (optional)' `Planet` 값은 `nil` 이 될 것입니다:
 

@@ -34,7 +34,7 @@ _식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국
 
 명시적인 매개 변수 이름이 없는 클로저 내에서는, 매개 변수가 `$0`, `$1`, `$2`, 등등의 이름을 암시적으로 가지게 됩니다. 이 이름들은 클로저 범위 내에서는 유효한 식별자입니다.
 
-컴파일러는 '속성 포장 돌출부 (property wrapper projection)' 를 가지는 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 식별자를 만들어서 통합합니다. 이런 식별자와 상호 작용하는 코드를 만들 수는 있지만, 이 접두사를 사용해서 식별자를 선언할 수는 없습니다. 더 자세한 정보는, [Attributes (특성)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 장에 있는 [propertyWrapper (프로퍼티 래퍼; 속성 포장)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID621) 부분을 참고하기 바랍니다.
+컴파일러는 '속성 포장 돌출부 (property wrapper projection)' 를 가지는 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 식별자를 만들어서 통합합니다. 이런 식별자와 상호 작용하는 코드를 만들 수는 있지만, 이 접두사를 사용해서 식별자를 선언할 수는 없습니다. 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 [propertyWrapper (프로퍼티 래퍼; 속성 포장)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID621) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
@@ -227,7 +227,7 @@ let textB = "Hello world"
 
 정해진 구조에서는, 맨 앞이 `<` 나 `>` 인 연산자가 둘 이상의 낱말로 쪼개질 수도 있습니다. 그 나머지도 같은 방식으로 취급하여 다시 쪼개질 수도 있습니다. 그 결과로, `Dictionary<String, Array<Int>>` 와 같은 구조에서 (두 개가 붙은) 닫는 `>` 문자 사이에 모호함을 없애기 위해 공백을 사용할 필요가 없습니다. 이 예제에서는, 닫는 `>` 문자들을 단일한 낱말로 취급하여 '비트 이동 (bit shift) `>>` 연산자' 로 잘못 해석해 버리는 일은 하지 않습니다.
 
-새로운, 사용자 정의 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 와 [Operator Declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380) 을 참고하기 바랍니다. 기존 연산자를 '중복 정의 (overload)' 하는 방법을 배우려면 [Operator Methods (연산자 메소드)]({% post_url 2020-03-03-Closures %}#operator-methods-연산자-메소드) 를 참고하기 바랍니다.
+새로운, 사용자 정의 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 와 [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 을 참고하기 바랍니다. 기존 연산자를 '중복 정의 (overload)' 하는 방법을 배우려면 [Operator Methods (연산자 메소드)]({% post_url 2020-03-03-Closures %}#operator-methods-연산자-메소드) 를 참고하기 바랍니다.
 
 ### 참고 자료
 
