@@ -61,13 +61,70 @@ categories: Swift Language Grammar Attribute
 
   선택 사항인 _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다. '버전 번호' 를 생략하면, 폐지 시점에 대한 어떤 정보도 없이, 이 선언이 현재 폐지 예정이라는 것을 지시합니다. 버전 번호를 생략할 경우, '콜론 (`:`)' 도 생략합니다.
 
-* `obsoleted` 인자는 이 선언이 '폐기 (obsoleted)' 하기로 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 선언을 폐기하면, 지정한 플랫폼 또는 언어에서 제거되며 더 이상 사용할 수 없게 됩니다. 형식은 다음과 같습니다:
+* `obsoleted` 인자는 이 선언을 '폐기 (obsoleted)' 하기로 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 선언을 폐기하면, 지정한 플랫폼 또는 언어에서 제거되며 더 이상 사용할 수 없게 됩니다. 형식은 다음과 같습니다:
 
   obsoleted: `version number-버전 번호`
 
   _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다.
 
-#### discardableResult
+* `message` 인자는 '폐기 예정 (deprecated)' 이거나 '폐기한 (obsoleted)' 선언의 사용에 대한 '경고 (warning)' 또는 '에러 (error)' 를 내보낼 때 컴파일러가 보여주는 문장 형태의 메시지를 제공합니다. 형식은 다음과 같습니다:
+
+  message: `message-메시지`
+
+  _message-메시지_ 는 '문자열 글자 값 (string literal)' 으로 구성됩니다.
+
+* `rename` 인자는 이름이 바뀐 선언에 대한 새 이름을 지시하는 문장 형태의 메시지를 제공합니다. 컴파일러는 이름이 바뀐 선언에 대한 에러를 내보낼 때 이 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
+
+  renamed: `new name-새 이름`
+
+  _new name-새 이름_ 은 '문자열 글자 값' 으로 구성됩니다.
+
+  아래에 보인 것처럼, `rename` 인자와 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 선언 (type alias declaration)' 에 적용하면, 선언의 이름이 프레임웍 또는 라이브러리의 발매 중에 바뀌었다는 것을 지시할 수 있습니다. 이렇게 조합하면 이 선언의 이름이 바뀌었다는 컴파일 시간 에러로 끝나게 됩니다.
+
+  ```swift
+  // 첫 번재 발매
+  protocol MyProtocol {
+    // 프로토콜 정의
+  }
+
+  // 뒤이은 발매에서는 MyProtocol 의 이름을 바꿉니다.
+  protocol MyRenamedProtocol {
+    // 프로토콜 정의
+  }
+
+  @available(*, unavailable, renamed: "MyRenamedProtocol")
+  typealias MyProtocol = MyRenamedProtocol
+  ```
+
+'다중 `available` 특성' 을 단일 선언에 적용하면 서로 다른 플랫폼 및 서로 다른 버전의 스위프트에 대한 선언의 사용 가능성을 지정할 수 있습니다. 만약 특성에서 지정한 플랫폼 또는 언어 버전이 현재 대상과 일치하지 않는 경우 그 `available` 특성을 적용한 선언은 무시됩니다. 다중 `available` 특성을 사용할 경우, 플랫폼 사용 가능성과 스위프트 사용 가능성을 조합하는 것이 효과적입니다.
+
+`avaiable` 특성이 플랫폼 또는 언어 이름 인자과 더불어 `introdued` 인자 만을 지정하는 경우, 다음의 '약칭 구문 표현 (shorhand syntax)' 를 대신 사용할 수 있습니다:
+
+\@available(`platform name-플랫폼 이름` `version number-버전 번호`, *)<br />
+\@available(swift `version number-버전 번호`)
+
+`avaiable` 특성에 대한 '약칭 구문 표현' 은 다중 플랫폼에 대한 사용 가능성을 간결하게 표현해줍니다. 두 형식이 기능적으로 '동치 (equivalent)' 이더라도, 가능할 때마다 '약칭' 형식을 사용하는 것이 좋습니다.
+
+```swift
+@available(iOS 10.0, macOS 10.12, *)
+class MyClass {
+  // 클래스 정의
+}
+```
+
+스위프트 버전 번호를 사용하여 '사용 가능성' 을 지정하는 `available` 특성은 선언의 플랫폼 사용 가능성을 추가적으로 지정할 수 없습니다. 그 대신, '스위프트 버전 사용 가능성' 과 하나 이상의 '플랫폼 사용 가능성' 을 지정하려면 별도의 `available` 특성을 사용합니다.
+
+```swift
+@available(swift 3.0.2)
+@available(macOS 10.12, *)
+struct MyStruct {
+  // 구조체 정의
+}
+```
+
+#### discardableResult (버릴 수 있는 결과)
+
+이 특성을 함수 선언 또는 메소드 선언에 적용하면 값을 반환하는 함수나 메소드가 결과를 사용하지 않은 채로 호출할 때도 컴파일러가 경고를 내지 못하게 합니다.
 
 #### dynamicCallable (동적으로 호출 가능한)
 
