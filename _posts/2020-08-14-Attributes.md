@@ -124,9 +124,73 @@ struct MyStruct {
 
 #### discardableResult (버릴 수 있는 결과)
 
-이 특성을 함수 선언 또는 메소드 선언에 적용하면 값을 반환하는 함수나 메소드가 결과를 사용하지 않은 채로 호출할 때도 컴파일러가 경고를 내지 못하게 합니다.
+이 특성을 함수 선언 또는 메소드 선언에 적용하면 값을 반환하는 함수나 메소드가 결과를 사용하지 않은 채로 호출할 때도 컴파일러가 경고를 내지 않도록 합니다.
 
 #### dynamicCallable (동적으로 호출 가능한)
+
+이 특성을 클래스, 구조체, 열거체, 또는 프로토콜에 적용하면 그 타입의 인스턴스를 호출 가능한 함수처럼 취급합니다. 해당 타입은 반드시 `dynamicCall(withArguments:)` 메소드나, `dynamicCall(withKeywordArguments:)` 메소드 중 하나, 또는 둘 다를 구현해야 합니다.
+
+동적으로 호출 가능한 타입의 인스턴스는 마치 어떤 개수의 인자도 받을 수 있는 함수인 것처럼 호출할 수 있습니다.
+
+```swift
+@dynamicCallable
+struct TelephoneExchange {
+  func dynamicallyCall(withArguments phoneNumber: [Int]) {
+    if phoneNumber == [4, 1, 1] {
+      print("Get Swift help on forums.swift.org")
+    } else {
+      print("Unrecognized number")
+    }
+  }
+}
+
+let dial = TelephoneExchange()
+
+// 동적 메소드 호출을 사용합니다.
+dial(4, 1, 1)
+// "Get Swift help on forums.swift.org" 를 출력합니다.
+
+dial(8, 6, 7, 5, 3, 0, 9)
+// "Unrecognized number" 를 출력합니다.
+
+// 실제 메소드를 직접 호출합니다.
+dial.dynamicallyCall(withArguments: [4, 1, 1])
+```
+
+`dynamicCall(withArguments:)` 메소드의 선언은-위 예제에 있는 `[Int]` 와 같이-반드시 [ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral) 프로토콜을 준수하는 단일 매개 변수를 가져야 합니다. 반환 타입은 어떤 타입든 될 수 있습니다.
+
+`dynamicCall(withKeywordArguments:)` 메소드를 구현하는 경우에는 '동적 메소드 호출' 에서 이름표를 포함시킬 수 있습니다.
+
+```swift
+@dynamicCallable
+struct Repeater {
+  func dynamicallyCall(withKeywordArguments pairs: KeyValuePairs<String, Int>) -> String {
+    return pairs
+      .map { label, count in
+        repeatElement(label, count: count).joined(separator: " ")
+      }
+      .joined(separator: "\n")
+  }
+}
+
+let repeatLabels = Repeater()
+print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
+// a
+// b b
+// c c c
+// b b
+// a
+```
+
+`dynamicCall(withKeywordArguments:)` 메소드의 선언은 반드시 [ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral) 프로토콜을 준수하는 단일 매개 변수를 가져야 하며, 반환 타입은 어떤 타입이든 될 수 있습니다. 매개 변수의 [Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key) 는 반드시 [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 이어야 합니다. 이전 예제는 [KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs) 를 매개 변수 타입으로 사용하므로 '호출자 (caller)' 가 중복된 매개 변수 레이블을 포함할 수 있습니다-`a` 와 `b` 는 `repeat` 호출에서 여러 번 나타납니다.
+
+두 개의 `dynamicCall` 메소드를 모두 구현하는 경우, 메소드 호출이 키워드 인자를 포함할 땐 `dynamicCall(withKeywordArguments:)` 을 호출합니다. 그 외 모든 다른 경우에는, `dynamicCall(withArguments:)` 를 호출합니다.
+
+동적으로 호출 가능한 인스턴스는 `dynamicallyCall` 메소드 구현에서 지정한 타입과 일치하는 인자와 반환 값을 가질 때만 호출할 수 있습니다. 다음 예제에 있는 호출은 컴파일 되지 않는데 왜냐면 `KeyValuePairs<String, String>` 을 받는 `dynamicCall(withArguments:)` 구현은 없기 때문입니다.
+
+```swift
+repeatLabels(a: "four") // 에러
+```
 
 #### dynamicMemberLookup (동적으로 멤버 찾아보기)
 
