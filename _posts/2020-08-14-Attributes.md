@@ -192,7 +192,55 @@ print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
 repeatLabels(a: "four") // 에러
 ```
 
-#### dynamicMemberLookup (동적으로 멤버 찾아보기)
+#### dynamicMemberLookup (동적으로 멤버 찾아가기)
+
+이 특성을 클래스, 구조체, 열거체, 또는 프로토콜에 적용하면 실행 시간에 멤버를 이름으로 찾아갈 수 있습니다. 그 타입은 반드시 `subscript(dynamicMemberLookup:)` 첨자 연산을 구현해야 합니다.
+
+명시적인 '멤버 표현식' 에 있는, 이름 있는 멤버와 관련된 선언이 없는 경우, 이 표현식은, 멤버에 대한 정보를 인자로 전달하는, 타입의 `subscript(dynamicMemberLookup:)` 첨자 연산에 대한 호출인 것으로 이해합니다. 첨자 연산은 '키 경로 (key path)' 또는 '멤버 이름' 인 매개 변수를 받을 수 있습니다; 두 첨자 연산 모두들 구현한 경우, 키 경로 인자를 취하는 첨자 연산을 사용합니다.
+
+`subscript(dynamicMemberLookup:)` 의 구현은 키 경로의 경우 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 및 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 인 인자를 받을 수 있습니다. 멤버 이름의 경우 [ExpressibleByStringLiteral] 프로토콜을 준수하는 타입인 인자를 받을 수 있습니다-대부분의 경우, `String` 입니다. 첨자 연산의 반환 타입은 어떤 타입이든 될 수 있습니다.
+
+'동적으로 멤버 찾아가기' 를 '멤버 이름' 으로 하는 것은, 다른 언어로 된 자료를 스위프트로 연동할 때 처럼, 컴파일 시간에 타입 검사를 할 수 없는 자료에 대한 '포장 타입 (wrapper type; 래퍼 타입)' 을 생성하는 용도로 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+@dynamicMemberLookup
+struct DynamicStruct {
+  let dictionary = ["someDynamicMember": 325,
+                    "someOtherMember": 787]
+  subscript(dynamicMember member: String) -> Int {
+    return dictionary[member] ?? 1054
+  }
+}
+let s = DynamicStruct()
+
+// '동적으로 멤버 찾아가기' 를 사용합니다.
+let dynamic = s.someDynamicMember
+print(dynamic)
+// "325" 를 출력합니다.
+
+// 실제 첨자 연산을 직접 호출합니다.
+let equivalent = s[dynamicMember: "someDynamicMember"]
+print(dynamic == equivalent)
+// "true" 를 출력합니다.
+```
+
+'동적으로 멤버 찾아가기' 를 '키 경로' 로 하는 것은 컴파일-시간 타입 검사를 지원하는 방식으로 '포장 타입' 을 구현하는 용도로 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+struct Point { var x, y: Int }
+
+@dynamicMemberLookup
+struct PassthroughWrapper<Value> {
+  var value: Value
+  subscript<T>(dynamicMember member: KeyPath<Value, T>) -> T {
+    get { return value[keyPath: member] }
+  }
+}
+
+let point = Point(x: 381, y: 431)
+let wrapper = PassthroughWrapper(value: point)
+print(wrapper.x)
+```
 
 #### frozen (동결)
 
