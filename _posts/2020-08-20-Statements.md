@@ -195,7 +195,9 @@ case let (x, y) where x == y:
 
 스위프트에서는, '제어 표현식' 의 타입으로 생성 가능한 모든 값은 최소한 반드시 하나의 'case 절' 패턴과 일치해야 합니다. 이의 실현이 간단한 것이 아닐 때는 (예를 들어, '제어 표현식' 의 타입이 `Int` 일 때) 는, 필수 조건을 만족하기 위해 '기본 case 값 (default case)' 을 포함시킬 수 있습니다.
 
-**Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)**
+<p>
+<strong id="switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기">Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)</strong>
+</p>
 
 _동결되지 않은 열거체 (nonfrozen enumeration)_ 는 미래-심지어 앱을 컴파일하고 출하한 후-에도 새로운 열거체 case 값을 가질 수 있는 특수한 종류의 열거체입니다. 동결되지 않은 열거체에서 전환 (switching) 을 하려면 '부가적인 고려 (extra consideration)' 가 필수로 요구됩니다. 라이브러리 작성자가 열거체를 '동결되지 않은 (nonfrozen)' 것으로 표시하면, 새로운 열거체 case 절을 추가할 수 있는 권리를 예약한 것으로, 해당 열거체와 상호 작용하는 코드는 어떤 것이든 _반드시 (must)_ 재컴파일 없이 이런 미래의 'case 값' 을 처리할 수 있어야 합니다. '라이브러리 진화 모드 (library evolution mode)' 에서 컴파일된 코드, 표준 라이브러리에 있는 코드, '애플 프레임웍 (Apple frameworks)' 을 위한 '스위프트 오버레이 (Swift overlays)'[^Swift-overlays], 및 C 와 오브젝티브-C 코드는 '동결되지 않은 열거체' 라고 선언할 수 있습니다. 동결 열거체 및 동결되지 않은 열거체에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 를 참고하기 바랍니다.
 

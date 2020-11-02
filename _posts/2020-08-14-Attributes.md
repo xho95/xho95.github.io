@@ -244,9 +244,23 @@ print(wrapper.x)
 
 #### frozen (동결)
 
-#### GKInspectable
+이 특성을 구조체나 열거체 선언에 적용하면 타입에 대해서 할 수 있는 변화의 종류를 제약합니다. 이 특성은 '라이브러리 진화 모드 (library evolution mode)' 에서 컴파일할 때만 허용됩니다. '미래 버전 (future versions)' 의 라이브러리는 열거체의 'case 값' 또는 구조체의 저장 인스턴스 속성을 추가, 삭제, 및 '재배치 (reordering)' 하는 것으로써 선언을 바꿀 수 없습니다. 이러한 변화는 '동결되지 않은 타입 (nonfrozen types)' 에 대해서는 허용된 것이지만, '동결된 타입 (frozen types)' 에서는 'ABI 호환성 (ABI compatibility)' 을 깨뜨립니다.
 
-#### inlinable
+> 컴파일러가 '라이브러리 진화 모드' 이지 않을 때는, 모든 구조체와 열거체는 암시적으로 '동결 (frozen)' 이 되어, 이 특성이 무시됩니다.
+
+'라이브러리 진화 모드' 에서, '동결되지 않은' 구조체 및 열거체의 멤버와 상호 작용하는 코드는 '미래 버전' 의 라이브러리가 해당 타입의 멤버 일부를 추가, 삭제, 또는 재배치하는 경우에라도 다시 컴파일하지 않고 계속 작업할 수 있는 방식으로 컴파일됩니다. 컴파일러는 실행 시간에 정보를 찾아가는 것 및 간접 계층을 추가하는 것과 같은 기술을 사용하여 이를 가능하게 만듭니다. 구조체 또는 열거체를 '동결 (frozen)' 로 만드는 것은 성능을 얻기 위해 이 유연함을 포기하는 것입니다: 미래 버전의 라이브러리는 타입에 대해서 제한된 변화만을 줄 수 있지만, 컴파일러는 타입의 멤버와 상호 작용하는 코드에 추가적인 최적화를 만들 수 있습니다.
+
+'동결된 타입', '동결된 구조체' 에 있는 저장 속성의 타입, 그리고 동결된 열거체 'case 값' 과 '결합된 값 (associated values)' 은 반드시 '공용 (public)' 이거나 또는 `usableFromInline` 특성으로 표시해야 합니다. '동결된 구조체' 의 속성은 '속성 관찰자' 를 가질 수 없으며, 저장 인스턴스 속성에 초기 값을 제공하는 표현식은, [inlinable (인라인 가능한)](#inlinable-인라인-가능한) 에서 논의한 것처럼, 반드시 '인라인 가능한 함수 (inlinable functions)' 와 같은 '제약 조건 (restrictions)' 을 따라야 합니다.
+
+'명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 켜려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 켜려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (Build Libraries for Distribution)" 이라는 빌드 설정인 (`BUILD_LIBRARY_FOR_DISTRIBUTION`) 을 '예 (Yes)' 로 설정합니다.
+
+'동결된 열거체' 에 대한 'switch' 문은, [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)](#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 에서 논의한 것처럼, `default` 'case 절' 이 필수가 아닙니다. '동결된 열거체' 를 전환할 때 `default` 또는 `@unknown default` 'case 절' 를 포함하면 '경고' 를 일으키는데 왜냐면 해당 코드는 절대로 실행되지 않기 때문입니다.
+
+#### GKInspectable (점검 가능한 GameplayKit 성분)
+
+이 특성을 적용하면 사용자 지정 'GameplayKit' '성분 (component) 속성' 을 'SpriteKit' 편집기의 'UI' 로 내보입니다. 이 특성을 적용하는 것은 또한 `objc` 특성이기도 함을 의미합니다.
+
+#### inlinable (인라인 가능한)
 
 #### main
 
