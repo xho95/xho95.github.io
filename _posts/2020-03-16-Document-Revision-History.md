@@ -19,7 +19,7 @@ categories: Swift Language Grammar Revision History
 * 열거체를 위한 `Comparable` 의 통합 구현에 대한 정보 구현이 통합되의 통합된 구현에 대한 정보를[Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합된-구현을-사용하여-프로토콜-채택하기) 부분에 추가했습니다.
 * [Contextual Where Clauses (상황별 where 절)]({% post_url 2020-02-29-Generics %}#contextual-where-clauses-상황별-where-절) 부분을 추가했으며 이제 더 많은 곳에서 '제네릭 (generic; 일반화된) `where` 절' 을 작성할 수 있게 되었습니다.
 * 옵셔널 값을 가지는 '무소속 참조 (undowned reference)' 의 사용에 대한 정보를 [Unowned Optional References (무소속 옵셔널 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-optional-references-무소속-옵셔널-참조) 부분에 추가했습니다.
-* '`@main` 특성 (attribute)' 에 대한 정보를 [main]({% post_url 2020-08-14-Attributes %}#main) 부분에 추가했습니다.
+* '`@main` 특성 (attribute)' 에 대한 정보를 [main (메인)]({% post_url 2020-08-14-Attributes %}#main-메인) 부분에 추가했습니다.
 * `#filePath` 를 [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 추가했으며, `#file` 에 대한 '논의 (discussion)' 를 갱신했습니다.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 갱신했으며, 이제 클로저는 더 많은 상황에서 `self` 를 암시적으로 참조할 수 있게 되었습니다.
 * [Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-using-do-catch-do-catch-구문으로-에러-처리하기) 와 [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분을 갱신했으며, 이제 `catch` 절은 '다중 에러 (multiple errors)' 와도 일치시킬 수 있게 되었습니다.
