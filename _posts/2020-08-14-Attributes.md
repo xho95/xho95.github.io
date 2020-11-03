@@ -270,7 +270,7 @@ print(wrapper.x)
 
 #### main (메인)
 
-이 특성을 구조체, 클래스, 또는 열거체 선언에 적용하면 그것이 프로그램 흐름에 대한 '최상위-수준의 진입점 (top-level entry point)' 을 가진다는 것을 지시합니다. 그 타입은 반드시 어떤 인자도 취하지 않으며 `Void` 를 반환하는 `main` 이라는 타입 함수를 제공해야 합니다. 예를 들면 다음과 같습니다:
+이 특성을 구조체, 클래스, 또는 열거체 선언에 적용하면 그것이 프로그램 흐름에 대한 '최상위-수준 진입점 (top-level entry point)' 을 가진다는 것을 지시합니다. 그 타입은 반드시 어떤 인자도 취하지 않으며 `Void` 를 반환하는 `main` 이라는 타입 함수를 제공해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 @main
@@ -289,7 +289,7 @@ protocol ProvidesMain {
 }
 ```
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, 최상위-수준 진입점을 최대 한 개만 가질 수 있습니다.
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, '최상위-수준 진입점' 을 최대 한 개만 가질 수 있습니다.
 
 #### nonobjc (오브젝티브-C 가 아닌)
 
@@ -301,13 +301,30 @@ protocol ProvidesMain {
 
 `nonobjc` 특성으로 표시한 메소드는 `objc` 특성으로 표시한 메소드를 '재정의 (override)' 할 수 없습니다. 하지만, `objc` 특성으로 표시한 메소드는 `nonobjc` 특성으로 표시한 메소드를 '재정의' 할 수 있습니다. 이와 비슷하게, `nonobjc` 특성으로 표시한 메소드는 `objc` 특성으로 표시한 메소드에 대한 '프로토콜 필수 조건 (protocol requirement)' 을 만족시킬 수 없습니다.
 
-#### NSApplicationMain
+#### NSApplicationMain (NS 앱 메인)
 
-#### NSCopying
+이 특성을 클래스에 적용하면 이것이 '응용 프로그램 대리자 (application delegate)' 라는 것을 지시합니다. 이 특성을 사용하는 것은 `NSApplicationMain(_:_:)` 함수를 호출하는 것과 '동치 (equivalent)' 입니다.
 
-#### NSManaged
+이 특성을 사용하지 않을 경우, 다음과 같이 `NSApplicationMain(_:_:)` 함수를 호출하는 '최상위 수준' 코드를 가지는 `main.swift` 파일을 제공하도록 합니다.
 
-#### objc
+```swift
+import AppKit
+NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+```
+
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, '최상위-수준 진입점' 을 최대 한 개만 가질 수 있습니다.
+
+#### NSCopying (NS 복사)
+
+이 특성은 클래스의 '저장 변수 속성' 에 적용합니다. 이 특성은 속성의 '설정자 (setter)' 가-속성 자체의 값 대신-`copyWithZone(_:)` 메소드가 반환하는-속성 값의 _복사본 (copy)_ 을 만들어서 통합되도록 합니다. 속성의 타입은 반드시 `NSCopying` 프로토콜을 준수해야 합니다.
+
+`NSCopying` 특성은 오브젝티브-C 의 `copy` 속성 특성과 비슷한 방식으로 동작합니다.
+
+#### NSManaged (NS 관리)
+
+이 특성을 `NSManagedObject` 를 상속받은 클래스의 인스턴스 메소드 또는 저장 변수 속성에 적용하면, '코어 데이터 (Core Data)' 가, '결합된 개체 설명 (associated entity description)'[^associated-entity-description] 을 기초로 하여, 실행 시간에 동적으로 그 구현을 제공한다는 것을 지시합니다. `NSManaged` 특성으로 표시한 속성에 대해서, '코어 데이터 (Core Data)' 는 실행 시간에 '저장 공간 (storage)' 도 제공합니다. 이 특성을 적용하는 것은 또한 `objc` 특성이기도 함을 의미합니다.
+
+#### objc (오브젝티브-C)
 
 #### objcMembers
 
@@ -342,3 +359,5 @@ protocol ProvidesMain {
 [^Attributes]: 원문은 [Attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+
+[^associated-entity-description]: '결합된 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 스키마 (database schema)' 를 의미합니다. 여기서 '개체 (entity; 엔티티)' 는 다른 '데이터베이스 언어' 의 '테이블 (table)' 에 해당합니다.
