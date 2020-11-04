@@ -358,6 +358,10 @@ class ExampleClass: NSObject {
 
 #### objcMembers (오브젝티브-C 멤버)
 
+이 특성을 클래스 선언에 적용하면, 클래스, 및 그 '익스텐션 (확장)', 그 하위 클래스, 그리고 하위 클래스의 모든 '익스텐션' 에 있는 오브젝티브-C 호환 가능한 모든 멤버에 대해 `objc` 특성을 암시적으로 적용합니다.
+
+대부분의 코드는 `objc` 특성을 대신 사용하여, 필요한 선언만 노출하도록 해야 합니다. 많은 선언을 노출할 필요가 있을 경우, 그들을 `objc` 특성을 가지는 '익스텐션' 으로 그룹지으면 됩니다. `objcMembers` 특성은 오브젝티브-C '런타임 (runtime)' 의 '내부 검사 기능 (introspection facilities)' 을 아주 많이 사용하는 라이브러리의 편의를 위한 것입니다. 불필요할 때 `objc`[^objc] 속성을 적용하는 것은 '바이너리 크기' 를 증가시키고 성능에 부정적인 영향을 미칠 수 있습니다.
+
 #### propertyWrapper
 
 #### requires_stored_property_inits
@@ -391,3 +395,5 @@ class ExampleClass: NSObject {
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^associated-entity-description]: '결합된 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 스키마 (database schema)' 를 의미합니다. 여기서 '개체 (entity; 엔티티)' 는 다른 '데이터베이스 언어' 의 '테이블 (table)' 에 해당합니다.
+
+[^objc]: 원문 자체에서 `objc` 라고 되어 있는데, `objcMembers` 를 잘못 적은 것이 아닐까 추측됩니다.
