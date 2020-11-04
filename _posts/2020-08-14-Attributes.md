@@ -326,7 +326,37 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 #### objc (오브젝티브-C)
 
-#### objcMembers
+이 특성은 오브젝티브-C 에서 표현할 수 있는 어떤 선언에든 적용합니다-예를 들어, 중첩되지 않은 클래스, 프로토콜, 제네릭이 아닌 (정수인 원시-값 타입으로 구속된) 열거체, 클래스의 속성과 (획득자 및 설정자를 포함한) 메소드, 프로토콜과 프로토콜의 옵셔널 멤버, 초기자, 그리고 첨자 연산이 그것입니다. `objc` 특성은 선언이 오브젝티브-C 코드에서 사용 가능함을 컴파일러에게 알립니다.
+
+이 특성을 '익스텐션 (확장)' 에 적용하면 해당 '익스텐션' 에서 명시적으로 `nonobjc` 특성을 표시하지 않은 모든 멤버들에 이를 적용하는 것과 같은 효과를 가집니다.
+
+컴파일러는 오브젝티브-C 에서 정의한 어떤 클래스의 하위 클래스에든 `objc` 특성을 암시적으로 추가합니다. 하지만, 이 하위 클래스는 반드시 제네릭이 아니어야 하며, 반드시 어떤 제네릭 클래스에서든 상속받은 것이 아니어야 합니다. 이러한 기준에 부합하는 하위 클래스에는, 아래에서 논의하는 것처럼 오브젝티브-C 이름을 지정하기 위해, 명시적으로 `objc` 특성을 추가할 수 있습니다. `objc` 특성으로 표시한 프로토콜은 이 특성으로 표시되지 않은 프로토콜을 상속할 수 없습니다.
+
+`objc` 특성은 다음과 같은 경우에도 암시적으로 추가됩니다:
+
+* 해당 선언은 하위 클래스에서 '재정의 (override)' 한 것인데, 상위 클래스의 선언이 `objc` 특성을 가지고 있는 경우
+* 해당 선언이 `objc` 특성을 가지고 있는 프로토콜의 필수 조건을 만족하는 경우
+* 해단 선언이 `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, `IBInspectable`, `NSManaged`, 또는 `GKInspectable` 특성을 가지고 있는 경우
+
+`objc` 특성을 열거체에 적용하면, 각각의 열거체 'case 값' 은 열거체 이름과 'case 값' 이름이 이어진 형태로 오브젝티드-C 코드에 노출됩니다. 'case 값' 이름의 첫 번째 글자는 대문자가 됩니다. 예를 들어, 스위프트 열거체인 `Planet` 에 있는 `venus` 라는 이름의 'case 값' 은 오브젝티브-C 에서는 `PlanetVenus` 라는 이름의 'case 값' 으로 노출됩니다.
+
+`objc` 특성은, '식별자 (identifier)' 로 구성된, 단일 특성 인자를 선택적으로 수를 선택적으로 받아 들입니다. 이 식별자는 `objc` 특성을 적용하는 '개체 (entity)' 가 오브젝티브-C 에서 노출될 이름을 지정합니다. 이 인자는 클래스, 열거체, 열거체 'case 값', 프로토콜, 메소드, 획득자, 설정자, 그리고 초기자의 이름을 짓는데 사용할 수 있습니다. 클래스, 프로토콜, 또는 열거체에 대한 오브젝티브-C 이름을 지정할 경우, [Programming with Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210) 의 [Conventions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Conventions/Conventions.html#//apple_ref/doc/uid/TP40011210-CH10-SW1) 에서 설명한 것처럼, 이름에 '세-글자짜리 접두사 (three-letter prefix)' 를 포함하도록 합니다. 아래 예제는 `ExampleClass` 의 `enabled` 속성에 대한 '획득자 (getter)' 를 속성 그 자체의 이름이 아니라 `isEnabled` 로써 오브젝티브-C 코드에 노출합니다.
+
+```swift
+class ExampleClass: NSObject {
+  @objc var enabled: Bool {
+    @objc(isEnabled) get {
+      // 적절한 값을 반환합니다.
+    }
+  }
+}
+```
+
+더 자세한 정보는, [Importing Swift into Objective-C](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c) 를 참고하기 바랍니다.
+
+`objc` 특성에 전달한 인자는 해당 선언에 대한 '실행 시간 이름 (runtime name)' 도 바꿀 수 있습니다. '실행 시간 이름' 은 [NSClassFromString](https://developer.apple.com/documentation/foundation/1395135-nsclassfromstring) 처럼, 오브젝티브-C '런타임 (runtime)' 과 상호 작용하는 함수를 호출할 때와, 앱의 'Info.plist' 파일에서 클래스 이름을 지정할 때 사용합니다. 인자를 전달하여 이름을 지정하면, 해당 이름이 오브젝티브-C 코드에 있는 이름인 것처럼 그리고 '실행 시간 (runtime)' 이름인 것처럼 사용됩니다. 인자를 생략하면, 오브젝티브-C 코드에서 사용하는 이름은 스위프트 코드의 이름과 일치하며, '실행 시간 (runtime)' 이름은 스위프트 컴파일러의 일반적인 '이름 뭉개기 (name mangling)' 협약을 따릅니다.
+
+#### objcMembers (오브젝티브-C 멤버)
 
 #### propertyWrapper
 
