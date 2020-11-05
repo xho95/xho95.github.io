@@ -429,6 +429,8 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### requires_stored_property_inits
 
+이 특성을 클래스 선언에 적용하면 클래스 내에 있는 모든 저장 속성이 정의 시에 필수로 '기본 설정 값 (default value)' 을 제공할 것을 요구합니다. 이 특성은 `NSManagedObject` 로부터 상속받은 클래스는 어떤 것에든 적용됩니다.[^infer]
+
 #### testable
 
 #### UIApplicationMain
@@ -460,3 +462,5 @@ s.$x.wrapper  // WrapperWithProjection 값
 [^associated-entity-description]: '결합된 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 스키마 (database schema)' 를 의미합니다. 여기서 '개체 (entity; 엔티티)' 는 다른 '데이터베이스 언어' 의 '테이블 (table)' 에 해당합니다.
 
 [^objc]: 원문 자체에서 `objc` 라고 되어 있는데, `objcMembers` 를 잘못 적은 것이 아닐까 추측됩니다.
+
+[^infer]: 원문에서는 '추론된다 (inferred)' 고 되어 있는데, '암시적으로 적용된다 (imply)' 는 의미로 사용된 것으로 추측됩니다.
