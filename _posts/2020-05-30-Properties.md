@@ -455,7 +455,7 @@ print(mixedRectangle.height)
 
 `height` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 를 호출하여 생성되며, 이는 기본 설정 최대 값으로 12 를 사용합니다. `width` 를 포장하는 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 를 호출하여 생성됩니다.
 
-#### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)
+#### Projecting a Value From a Property Wrapper (속성 포장에서 값 드러내기)
 
 '포장된 값 (wrapped value)' 외에도, 속성 포장은 '_드러낸 값 (projected value)_' 를 정의하여 추가적인 기능을 내보일 수있습니다-예를 들어, DB 에 대한 접근을 관리하는 속성 포장은 '드러낸 값' 을 써서 `flushDatabaseConnection()` 메소드를 내보일 수 있습니다. '드러낸 값' 의 이름은, 달러 기호 (`$`) 로 시작 한다는 점만 빼면, '포장된 값' 과 같습니다. `$` 로 시작하는 속성을 코드에서 직접 정의할 수는 없기 때문에 '드러낸 값' 이 직접 정의한 속성을 방해가 될 일은 절대 없습니다.
 

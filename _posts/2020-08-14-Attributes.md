@@ -362,7 +362,70 @@ class ExampleClass: NSObject {
 
 대부분의 코드는 `objc` 특성을 대신 사용하여, 필요한 선언만 노출하도록 해야 합니다. 많은 선언을 노출할 필요가 있을 경우, 그들을 `objc` 특성을 가지는 '익스텐션' 으로 그룹지으면 됩니다. `objcMembers` 특성은 오브젝티브-C '런타임 (runtime)' 의 '내부 검사 기능 (introspection facilities)' 을 아주 많이 사용하는 라이브러리의 편의를 위한 것입니다. 불필요할 때 `objc`[^objc] 속성을 적용하는 것은 '바이너리 크기' 를 증가시키고 성능에 부정적인 영향을 미칠 수 있습니다.
 
-#### propertyWrapper
+#### propertyWrapper (속성 포장)
+
+이 특성을 클래스, 구조체, 또는 열거체 선언에 적용하면 해당 타입을 '속성 포장 (property wrapper)' 으로 사용합니다. 이 특성을 타입에 적용할 때는, 그 타입과 같은 이름을 가지는 '사용자 지정 특성 (custom attribute)' 을 생성하는 것입니다. 이 새 특성을 클래스, 구조체, 및 열거체의 속성에 적용하면 속성에 대한 접근을 '포장 타입 (wrapper type)' 의 인스턴스로 '포장 (wrap)' 합니다. 지역 변수와 전역 변수는 '속성 포장 (property wrappers)' 를 사용할 수 없습니다.
+
+'포장 (wrapper)' 은 반드시 `wrappedValue` 인스턴스 속성을 정의해야 합니다. 속성의 _포장된 값 (wrapped value)_ 은 이 속성에 대해서 '획득자 (getter)' 와 '설정자 (setter)' 가 노출하는 값입니다. 대부분의 경우, `wrappedValue` 는 '계산된 값 (computed value)' 이지만, '저장된 값 (stored value)' 이 될 수도 있습니다. '포장 (wrapper)' 은 자신이 포장하는 값에 필요한 '실제 저장 공간' 의 정의와 관리를 책임집니다. 컴파일러는 '포장된 속성' 의 이름에 접두사로 밑줄 (`_`) 을 붙여서 '포장 타입' 의 인스턴스에 대한 저장 공간을 만들고 통합합니다-예를 들어, `someProperty` 에 대한 포장은 `_someProperty` 라고 저장됩니다. '포장' 을 위해 '통합된 저장 공간 (synthesized storage)' 은 `private` 접근 제어 수준을 가집니다.
+
+속성 포장을 가지고 있는 속성은 `willSet` 과 `didSet` 블럭을 포함할 수 있지만, 컴파일러가-통합한 `get` 또는 `set` 블럭을 '재정의 (override)' 할 수는 없습니다.
+
+스위프트는 '속성 포장' 의 초기화를 위해 두 가지 형식의 '수월한 구문 표현 (syntactic sugar)' 을 제공합니다. '포장된 값 (wrapped value)' 의 정의에서 '할당 구문 표현 (assignment syntax)' 을 사용하면 할당의 오른-쪽에 있는 표현식을 '속성 포장' 초기자의 `wrappedValue` 매개 변수에 인자로 전달할 수 있습니다. 특성을 속성에 적용할 때 인자를 제공할 수도 있으며, 이 인자들은 '속성 포장' 의 초기자로 전달됩니다. 예를 들어, 아래 코드에서, `SomeStruct` 는 `SomeWrapper` 가 정의하고 있는 각각의 초기자를 호출합니다.
+
+```swift
+@propertyWrapper
+struct SomeWrapper {
+  var wrappedValue: Int
+  var someValue: Double
+  init() {
+    self.wrappedValue = 100
+    self.someValue = 12.3
+  }
+  init(wrappedValue: Int) {
+    self.wrappedValue = wrappedValue
+    self.someValue = 45.6
+  }
+  init(wrappedValue value: Int, custom: Double) {
+    self.wrappedValue = value
+    self.someValue = custom
+  }
+}
+
+struct SomeStruct {
+  // init() 을 사용합니다.
+  @SomeWrapper var a: Int
+
+  // init(wrappedValue:) 을 사용합니다.
+  @SomeWrapper var b = 10
+
+  // 둘 다 init(wrappedValue:custom:) 을 사용합니다.
+  @SomeWrapper(custom: 98.7) var c = 30
+  @SomeWrapper(wrappedValue: 30, custom: 98.7) var d
+}
+```
+
+'포장된 속성' 을 위한 _드러낸 값 (projected value)_ 은 '속성 포장' 이 추가적인 기능성을 노출하기 위해 사용할 수 있는 두 번째 값입니다. '속성 포장' 타입의 작성자는 이 '드러낸 값 (projected value)' 의 의미를 결정하고 '드러낸 값' 을 노출하는 인터페이스를 정의할 책임이 있습니다. 속성 포장으로 부터 값을 드러내려면, 포장 타입에 대한 `projectedValue` 인스턴스 속성을 정의합니다. 컴파일러는 '포장된 속성' 의 이름에 달러 기호 (`$`) 를 접두사로 붙여서 '드러낸 값' 에 대한 식별자를 만들고 통합합니다-예를 들어, `someProperty` 에 대한 '드러낸 값' 은 `$someProperty` 입니다. '드러낸 값' 은 원래 '포장된 값' 과 같은 수준의 접근 제어 수준을 가집니다.
+
+```swift
+@propertyWrapper
+struct WrapperWithProjection {
+  var wrappedValue: Int
+  var projectedValue: SomeProjection {
+    return SomeProjection(wrapper: self)
+  }
+}
+struct SomeProjection {
+  var wrapper: WrapperWithProjection
+}
+
+struct SomeStruct {
+  @WrapperWithProjection var x = 123
+}
+let s = SomeStruct()
+s.x           // Int 값
+s.$x          // SomeProjection 값
+s.$x.wrapper  // WrapperWithProjection 값
+```
 
 #### requires_stored_property_inits
 
