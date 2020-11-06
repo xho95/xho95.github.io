@@ -427,13 +427,21 @@ s.$x          // SomeProjection 값
 s.$x.wrapper  // WrapperWithProjection 값
 ```
 
-#### requires_stored_property_inits
+#### requires_stored_property_inits (저장 속성의 초기화를 필수로 요구함)
 
 이 특성을 클래스 선언에 적용하면 클래스 내에 있는 모든 저장 속성이 정의 시에 필수로 '기본 설정 값 (default value)' 을 제공할 것을 요구합니다. 이 특성은 `NSManagedObject` 로부터 상속받은 클래스는 어떤 것에든 적용됩니다.[^infer]
 
-#### testable
+#### testable (테스트 가능한)
 
-#### UIApplicationMain
+이 특성을 `import` 선언에 적용하면 해당 모듈을 불러올 때 이 모듈 코드의 테스트를 단순화하도록 접근 제어를 바꿉니다. 불러오는 모듈에서 `internal` 접근-수준 수정자로 표시된 '개체 (entities)' 들은 마치 `public` 접근-수준 수정자로 선언한 것처럼 불러옵니다. `internal` 또는 `public` 접근-수준 수정자로 표시한 클래스와 클래스 멤버는 마치 `open` 접근-수준 수정자로 선언한 것처럼 불러옵니다. 불러온 모듈은 반드시 테스트를 할 수 있게한 상태에서 컴파일해야 합니다.
+
+#### UIApplicationMain (UI 앱 메인)
+
+이 특성을 클래스에 적용하면 이것이 '응용 프로그램 대리자 (application delegate)' 임을 지시합니다. 이 특성을 사용하는 것은 `UIApplicationMain` 함수를 호출하고 이 클래스 이름을 '대리자 클래스 (delegate)' 이름으로 전달하는 것과 '동치 (equivalent)' 입니다.
+
+이 특성을 사용하지 않는 경우, `UIApplicationMain(_:_:_:_:)` 함수를 호출하는 최상위 수준의 코드를 가진 `main.swift` 파일을 제공하도록 합니다. 예를 들어, 앱에서 사용자가 정의한 `UIApplication` 의 하위 클래스를 '주 클래스 (principal class)' 로 사용할 경우, 이 특성을 사용하는 대신 `UIApplicationMain(_:_:_:_:)` 함수를 호출하도록 합니다.
+
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, '최상위-수준 진입점' 을 최대 한 개만 가질 수 있습니다.
 
 #### usableFromInline
 
