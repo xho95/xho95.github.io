@@ -443,7 +443,13 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, '최상위-수준 진입점' 을 최대 한 개만 가질 수 있습니다.
 
-#### usableFromInline
+#### usableFromInline (인라인에서 사용 가능한)
+
+이 특성을 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 '정리자 (deinitilaizer)' 선언에 적용하면 그 선언과 같은 모듈에서 정의한 인라인 가능한 코드에서 해당 기호를 사용하는 것을 허용합니다. 그 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 그 속성들이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 그 'case 값' 의 '원시 값' 과 '결합된 값' 이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다.
+
+`public` 접근 수준 수정자와 마찬가지로, 이 특성은 선언을 모듈의 '공개 인터페이스 (public interface)' 로 노출합니다. `public` 과는 달리, 컴파일러는 `usableFromInline` 으로 표시한 선언이, 그 선언의 기호를 밖으로 내보내더라도, 모듈 외부의 코드에서 이름으로 참조하는 것을 허용하지 않습니다. 하지만, 모듈 외부의 코드는 '실행 시간 동작 (runtime behavior)' 를 사용함으로써 여전히 그 선언의 기호와 상호 작용할 수도 있습니다.
+
+`inlinable` 특성으로 표시한 선언은 암시적으로 '인라인 가능한 코드 (inlinable code)' 에서 사용 가능합니다. `inlinable` 또는 `usableFromInline` 은 각각 `internal` 선언에 적용할 수 있다하더라도, 두 특성을 모두 적용하는 것은 에러입니다.
 
 #### warn_unqualifed_access
 
