@@ -451,9 +451,19 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 `inlinable` 특성으로 표시한 선언은 암시적으로 '인라인 가능한 코드 (inlinable code)' 에서 사용 가능합니다. `inlinable` 또는 `usableFromInline` 은 각각 `internal` 선언에 적용할 수 있다하더라도, 두 특성을 모두 적용하는 것은 에러입니다.
 
-#### warn_unqualifed_access
+#### warn_unqualifed_access (조건을 갖추치 않은 접근 경고하기)
 
-#### Declaration Attributes Used by Interface Builder
+이 특성을 최상위-수준 함수, 인스턴스 메소드, 또는 클래스 메소드나 정적 메소드에 적용하면 해당 함수나 메소드가 모듈 이름, 타입 이름, 또는 인스턴스 변수나 인스턴스 상수 같은, '선행 자격자 (preceding qualifier)' 없이 사용할 때 경고를 일으킵니다. 이 특성을 사용하면 같은 이름을 가진 함수가 동일한 영역에서 접근 가능할 때의 모호함을 방지할 수 있습니다.
+
+예를 들어, 스위프트 표준 라이브러리는 최상위-수준의 `min(_:_:)` 함수와 비교 가능한 원소를 가지는 '시퀀스 (sequence; 수열)' 에 대한 `min()` 메소드 둘 다를 포함하고 있습니다. 이 '시퀀스' 메소드는 `warn_unqualified_access` 특성으로 선언하여 `Sequence` '익스텐션' 내에서 둘 중 하나를 사용하려고 할 때의 혼동을 줄이도록 해줍니다.
+
+#### Declaration Attributes Used by Interface Builder (인터페이스 빌더가 사용하는 선언 특성)
+
+'인터페이스 빌더 (interface builder)' 특성은 '엑스코드 (Xcode)' 와 동기화하기 위해 '인터페이스 빌더' 에서 사용하는 '선언 특성' 입니다. 스위프트는 다음의 '인터페이스 빌더' 특성을 제공합니다: `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 그리고 `IBInspectable`. 이 특성들의 개념은 오브젝티브-C 에서의 대응되는 것들과 같습니다.
+
+`IBOutlet` 과 `IBInspectable` 특성은 클래스의 속성 선언에 적용합니다. `IBAction` 과 `IBSegueAction` 특성은 클래스의 메소드 선언에 적용하고 `IBDesignable` 특성은 클래스 선언에 적용합니다.
+
+`IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 및 `IBInspectable` 특성을 적용하는 것은 또한 `objc` 특성이기도 함을 의미합니다.
 
 ### Type Attributes
 
