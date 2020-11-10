@@ -34,7 +34,7 @@ _식별자 (identifiers)_ 는 대소문자 'A' 에서 'Z', 밑줄 (`_`), '다국
 
 명시적인 매개 변수 이름이 없는 클로저 내에서는, 매개 변수가 `$0`, `$1`, `$2`, 등등의 이름을 암시적으로 가지게 됩니다. 이 이름들은 클로저 범위 내에서는 유효한 식별자입니다.
 
-컴파일러는 '속성 포장 돌출부 (property wrapper projection)' 를 가지는 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 식별자를 만들어서 통합합니다. 이런 식별자와 상호 작용하는 코드를 만들 수는 있지만, 이 접두사를 사용해서 식별자를 선언할 수는 없습니다. 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 [propertyWrapper (프로퍼티 래퍼; 속성 포장)](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID621) 부분을 참고하기 바랍니다.
+컴파일러는 '속성 포장 돌출부 (property wrapper projection)' 를 가지는 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 식별자를 만들어서 통합합니다. 이런 식별자와 상호 작용하는 코드를 만들 수는 있지만, 이 접두사를 사용해서 식별자를 선언할 수는 없습니다. 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 [propertyWrapper (프로퍼티 래퍼; 속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
