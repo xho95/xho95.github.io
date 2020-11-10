@@ -465,17 +465,39 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 및 `IBInspectable` 특성을 적용하는 것은 또한 `objc` 특성이기도 함을 의미합니다.
 
-### Type Attributes
+### Type Attributes (타입 특성)
 
-#### autoclosure
+'타입 특성' 은 타입에만 적용할 수 있습니다.
 
-#### convention
+#### autoclosure (자동 클로저; 자동 잠금 블럭)
 
-#### escaping
+이 특성을 적용하면 해당 표현식을 인자가 없는 클로저 안에 자동으로 포장함으로써 표현식의 평가를 늦춥니다. 이는 메소드 선언 또는 함수 선언에 있는 매개 변수 타입 중에서, 그 매개 변수의 타입이 인자를 받지 않고 표현식 타입의 값을 반환하는 함수 타입에 대하여, 적용합니다. `autoclosure` 특성을 사용하는 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 을 참고하기 바랍니다.
 
-### Switch Case Attributes
+#### convention (협약)
 
-#### unknown
+이 특성을 함수의 타입에 적용하면 그것의 '호출 협약 (calling conventions)' 을 지시합니다.[^calling-convention]
+
+`convention` 특성은 항상 다음의 인자 중 하나와 함께 나타냅니다:
+
+* '스위프트 함수 참조 (swift function reference)' 를 지시하는 `swift` 인자. 이는 스위프트에 있는 함수 값에 대한 '표준 호출 협약 (standard calling convention)' 입니다.
+* '오브젝티브-C 와 호환 가능한 블럭 참조' 를 지시하는 `block` 인자. 함수 값은, 그 안에 '발동 함수 (invocation function)' 를 갖고 있는 객체이자 '`id`-호환 가능한' 오브젝티브-C 객체인, 블럭 객체에 대한 참조로써 표현됩니다. '발동 함수' 는 'C 호출 협약 (C calling convention)' 을 사용합니다.
+* 'C 함수 참조' 를 지시하는 `c` 인자. 함수 값은 아무런 '컨텍스트 (context)' 도 옮기지 않으며 'C 호출 협약' 을 사용합니다.
+
+몇 가지 예외를 제외한다면, 어떤 '호출 협약' 의 함수든 다른 '호출 협약' 이 필요한 곳에서 사용할 수도 있습니다. '제네릭이 아닌 전역 함수 (nongeneric global function)', 어떤 지역 변수도 '붙잡지 (capture)' 않는 지역 함수 및 어떤 지역 변수도 '붙잡지' 않는 클로저는 'C 호출 협약' 으로 '변환 (converted)' 할 수 있습니다. 다른 스위프트 함수는 'C 호출 협약' 으로 변환할 수 없습니다. '오브젝티브-C 블럭 호출 협약' 을 가지는 함수는 'C 호출 협약' 으로 변환 할 수 없습니다.
+
+#### escaping (벗어나는)
+
+이 특성을 메소드 선언 또는 함수 선언에 있는 매개 변수의 타입에 적용하면 더 나중에 실행하기 위해 그 매개 변수의 값을 저장할 수 있음을 지시합니다. 이는 그 값이 호출의 수명보다 더 오래 살도록 허용한다는 것을 의미합니다. `escaping` 타입 특성을 가지는 함수 타입 매개 변수는 속성 또는 메소드에 대해 `self.` 를 명시적으로 사용하는 것이 필수입니다. `escaping` 특성을 사용하는 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 를 참고하기 바랍니다.
+
+### Switch Case Attributes ('switch 문의 case 절' 특성)
+
+'switch 문 case 절' 특성은 'switch 문의 case 절' 에만 적용할 수 있습니다.
+
+#### unknown (알지 못하는)
+
+이 특성을 'switch 문의 case 절' 에 적용하면 이것이 코드를 컴파일하는 시점에 알고 있는 열거체의 어떤 'case 값' 과도 일치하지 않을 것으로 예상된다는 것을 지시합니다. `unknown` 특성을 사용하는 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 를 참고하기 바랍니다.
+
+> GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
 
 ### 참고 자료
 
@@ -488,3 +510,5 @@ s.$x.wrapper  // WrapperWithProjection 값
 [^objc]: 원문 자체에서 `objc` 라고 되어 있는데, `objcMembers` 를 잘못 적은 것이 아닐까 추측됩니다.
 
 [^infer]: 원문에서는 '추론된다 (inferred)' 고 되어 있는데, '암시적으로 적용된다 (imply)' 는 의미로 사용된 것으로 추측됩니다.
+
+[^calling-convention]: 스위프트의 '호출 협약 (calling conventions)' 에 대한 더 자세한 정보는 '깃허브 (GitHub)' 의 '애플 (Apple)' 저장소에 있는 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 문서를 참고하기 바랍니다.
