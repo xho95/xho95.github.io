@@ -35,7 +35,7 @@ categories: Swift Language Grammar Revision History
 * 클로저를 대신하는 '키 경로 (key path)' 전달에 대한 정보를 [Key-Path Expression (키-경로 표현식)]({% post_url 2020-08-19-Expressions %}#key-path-expression-키-경로-표현식) 부분에 추가함.
 * 클래스, 구조체, 및 열거체의 인스턴스를 '함수 호출 구문 표현' 에서 사용할 수 있게 하는 '수월한 구문 표현 (syntatic sugar)' 에 대한 정보를 가지고 있는 [Methods with Special Names (특수한 이름을 가진 메소드)](#methods-with-special-names-특수한-이름을-가진-메소드) 부분을 추가함.
 * [Subscript Options (첨자 연산의 선택 사항들)]({% post_url 2020-03-30-Subscripts %}#subscript-options-첨자-연산의-선택-사항들) 부분을 갱신했으며, 이제 '첨자 연산'이 '기본 설정 값' 을 가지는 매개 변수를 지원함.
-* [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-Self-타입) 부분을 갱신했으며, 이제 `Self` 를 더 많은 상황에서 사용할 수 있음.
+* [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-self-타입) 부분을 갱신했으며, 이제 `Self` 를 더 많은 상황에서 사용할 수 있음.
 * '암시적으로 포장이 풀리는 옵셔널 값' 은 '옵셔널 값' 으로든 '옵셔널이-아닌 값' 으로든 사용할 수 있다는 것을 확실히 하기 위해 [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 부분을 갱신함.
 
 #### 2019-09-10
@@ -50,7 +50,7 @@ categories: Swift Language Grammar Revision History
 * [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 갱신했으며, 이제 기본 설정 값을 가진 매개 변수에 대해서 '멤버 초기자 (memberwise initializers)' 도 매개 변수의 생략을 지원함.
 * 실행 시간에 '키 경로 (key path)' 로 찾아 가는 동적 멤버에 대한 정보를 [dynamicMemberLookup (동적으로 멤버 찾아가기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아가기) 부분에 추가함.
 * [Compiler Control Statements (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 에 있는 '대상 환경 (target environment)' 목록에 `macCatalyst` 를 추가함.
-* [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-Self-타입) 부분을 갱신했으며, 이제 `Self` 는 현재의 클래스, 구조체, 또는 열거체 선언에서 도입한 타입을 참조하기 위해 사용할 수 있음.
+* [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-self-타입) 부분을 갱신했으며, 이제 `Self` 는 현재의 클래스, 구조체, 또는 열거체 선언에서 도입한 타입을 참조하기 위해 사용할 수 있음.
 
 ### 참고 자료
 
