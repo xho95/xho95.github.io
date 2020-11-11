@@ -62,11 +62,11 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %})
-* [Summary of the Grammar (문법 총정리)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#) - 번역 없이 직접 링크 연결
+* Summary of the Grammar (문법 총정리) - [직접 링크 (번역 없음)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#)
 
 ### Revision History (개정 이력)
 
-* Document Revision History (문서 개정 이력) - [일부 진행중]({% post_url 2020-03-16-Document-Revision-History %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
+* [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 
 ### 참고 자료
 
