@@ -677,17 +677,17 @@ _접미사 표현식 (postfix expressions)_ 은 접미사 연산자 또는 다�
 
 #### Function Call Expression (함수 호출 표현식)
 
-_함수 호출 표현식 (function call expression)_ 은 함수 이름과 그 뒤의 괄호 속에 있는 쉼표로 구분된 함수 인자 목록으로 구성됩니다. '함수 호출 표현식' 의 형식은 다음과 같습니다:
+_함수 호출 표현식 (function call expression)_ 은 함수 이름과 그 뒤에 함수 인자들을 쉼표로 구분한 목록을 괄호로 감싼 것으로 구성됩니다. '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
 
 `function name-함수 이름`(`argument value 1-인자 값 1`, `argument value 2-인자 값 2`)
 
-_함수 이름 (function name)_ 은 값이 함수 타입이면 어떤 표현식이든 될 수 있습니다.
+_함수 이름 (function name)_ 은 그 값이 함수 타입이라면 어떤 표현식이든 상관 없습니다.
 
-함수 정의에서 매개 변수에 대한 이름을 포함하고 있으면, 함수 호출은 반드시 인자 값 앞에, 콜론 (`:`) 으로 구분된, 이름을 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
+함수 정의에서 매개 변수에 대한 이름을 포함하고 있는 경우, 함수 호출은 반드시 인자 값 앞에, 콜론 (`:`) 으로 구분된, 이름을 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
 
 `function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
 
-함수 호출 표현식은 닫는 괄호 바로 뒤에 '클로저 표현식' 의 형태로 '끝자리 클로저 (trailing closures)' 를 포함할 수 있습니다. 끝자리 클로저는 함수에 대한 인자로 이해되어, 괄호로 묶인 마지막 인자 뒤에 추가됩니다. 첫 번째 '클로저 표현식' 은 이름표를 붙이지 않습니다; 추가적인 클로저 표현식이라면 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 끝자리 클로저 구문 표현을 사용하는 것과 사용하지 않는 것이 서로 '동치 (version)' 인 함수 호출을 보여줍니다.
+함수 호출 표현식은 닫는 괄호 바로 뒤에 '클로저 표현식' 형식인 '끝자리 클로저 (trailing closures)' 를 포함할 수 있습니다. 끝자리 클로저는 함수의 인자인 것으로 이해되며, 마지막으로 괄호로 묶인 인자 뒤에 추가됩니다. 첫 번째 '클로저 표현식' 은 이름표를 붙이지 않습니다; 추가적인 클로저 표현식은 어떤 것이든 그 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 끝자리 클로저 구문 표현을 사용하는 것과 사용하지 않는 서로 '동치 (version)' 인 함수 호출을 보여줍니다:
 
 ```swift
 // someFunction 은 인자로 정수 하나와 클로저 하나를 받습니다.
@@ -707,7 +707,45 @@ myData.someMethod() { $0 == 13 }
 myData.someMethod { $0 == 13 }
 ```
 
-클래스, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 에서 설명한 것 처럼, 여러 메소드 중 하나를 선언하여 '함수 호출 구문' 에 대한 '수월한 구문 표현 (syntatic sugar)' 을 사용하도록 할 수 있습니다.
+끝자리 클로저를 인자에 포함시키기 위해, 컴파일러는 다음과 같이 왼쪽에서 오른쪽으로 함수의 매개 변수를 검토합니다:
+
+끝자리 클로저 | 매개 변수 | 행동
+---|---|---
+이름표가 있음 | 이름표가 있음 | 이름표가 같은 경우, 클로저는 매개 변수와 일치합니다; 다른 경우라면, 그 매개 변수는 건너 뜁니다.
+이름표가 있음 | 이름표가 없음 | 그 매개 변수를 건너 뜁니다.
+이름표가 없음 | 이름표가 있거나 없음 | 아래에서 정의한 것처럼, 매개 변수가 함수 타입과 '구조적으로 닮은 (structually resembles)' 경우, 클로저는 매개 변수와 일치합니다; 다른 경우라면, 그 매개 변수는 건너 뜁니다.
+
+끝자리 클로저는 그와 일치하는 매개 변수에 대한 인자로 전달됩니다. 조사 과정 중에 건너 뛴 매개 변수는 전달된 인자를 가지지 않습니다-예를 들어, '기본 설정 매개 변수 (default parameter)' 를 사용할 수 있습니다. 일치하는 것을 찾은 후, 조사는 그 다음 끝자리 클로저와 그 다음 매개 변수로 계속됩니다. 일치 과정이 끝날 때는, 모든 끝자리 클로저가 반드시 일치하는 것을 가져야 합니다.
+
+매개 변수가 입-출력 매개 변수가 아니면서, 다음 중의 하나에 해당하는 경우, 그 매개 변수는 함수 타입과 _구조적으로 닮은 (structually resembles)_ 것입니다:
+
+* `(Bool) -> Int` 와 같이, 그 타입이 함수 타입인 매개 변수
+* `@autoclosure ()-> ((Bool)-> Int)` 와 같이, 그 포장된 표현식의 타입이 함수 타입인 '자동 클로저 (autoclosure)' 매개 변수
+* `((Bool) -> Int)...` 와 같이, 그 배열 원소 타입이 함수 타입인 '가변 (variadic)' 매개 변수
+* `Optional<(Bool) -> Int>` 와 같이, 그 타입이 하나 이상의 옵셔널 '층 (layers)' 으로 포장된 매개 변수
+* `(Optional<(Bool) -> Int>) ...` 와 같이, 그 타입이 이렇게 허용된 타입을 조합한 것인 매개 변수
+
+끝자리 클로저가, 함수는 하니지만, 함수 타입과 '구조적으로 닮은' 타입인 매개 변수와 일치할 때, 그 클로저는 필요에 따라 '포장 (wrapped)' 됩니다. 예를 들어, 매개 변수의 타입이 옵셔널 타입인 경우, 이 클로저는 자동으로 `Optional` 로 포장됩니다.
+
+이러한 일치 작업을 오른쪽에서 왼쪽으로 수행한-5.3 이전 스위프트 코드의 '이전 (migration)' 을 쉽게 하기 위해서, 컴파일러는 왼쪽-에서-오른쪽 그리고 오른쪽-에서-왼쪽 순서로 모두 검사합니다. 조사 방향으로 인해 다른 결과가 발생하는 경우, 예전 방식인 오른쪽-에서-왼쪽 순서를 사용하며 컴파일러가 경고를 생성합니다. 미래 버전의 스위프트는 항상 왼쪽-에서-오른쪽 순서를 사용할 것입니다.[^left-to-right]
+
+```swift
+typealias Callback = (Int) -> Int
+func someFunction(firstClosure: Callback? = nil,
+                  secondClosure: Callback? = nil) {
+  let first = firstClosure?(10)
+  let second = secondClosure?(20)
+  print(first ?? "-", second ?? "-")
+}
+
+someFunction()  // "- -" 를 인쇄합니다.
+someFunction { return $0 + 100 }  // 모호함 (ambiguous)
+someFunction { return $0 } secondClosure: { return $0 }  // "10 20" 를 인쇄합니다.
+```
+
+위 예제에서, "모호함 (ambiguous)" 으로 표시한 함수 호출은 "- 120" 을 인쇄하고 스위프트 5.3 에서는 '컴파일러 경고' 를 일으킵니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 것입니다.
+
+클래스, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 에서 설명한 것처럼, 여러 메소드 중 하나를 선언함으로써 '함수 호출 구문' 에 대한 '수월한 구문 표현 (syntatic sugar)' 을 사용하게 할 수 있습니다.
 
 > GRAMMAR OF A FUNCTION CALL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
@@ -928,3 +966,5 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^foced-unwrapping-expressions]: '강제로 포장을 푸는 표현식 (foced unwrapping expressions)' 의 정식 이름은 뒤에 나오는 [Forced-Value Expression (강제-값 표현식)](#forced-value-expression-강제-값-표현식) 인 것 같습니다.
 
 [^outmost-expression]: 이 말은 옵셔널을 다시 옵셔널로 포장하지는 않는다는 말입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
+
+[^left-to-right]: 스위프트 5.3 버전 이전에 '오른쪽-에서-왼쪽' 순서를 사용한 것은 매개 변수에 '끝자리 클로저 (trailing closure)' 가 하나뿐이면서 가장 오른쪽 매개 변수로 존재 했기 때문이라고 생각됩니다. 이제 '끝자리 클로저' 가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 적용한다고 볼 수 있습니다.
