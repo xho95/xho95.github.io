@@ -493,9 +493,9 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 'switch 문 case 절' 특성은 'switch 문의 case 절' 에만 적용할 수 있습니다.
 
-#### unknown (알지 못하는)
+#### unknown (알려지지 않은)
 
-이 특성을 'switch 문의 case 절' 에 적용하면 이것이 코드를 컴파일하는 시점에 알고 있는 열거체의 어떤 'case 값' 과도 일치하지 않을 것으로 예상된다는 것을 지시합니다. `unknown` 특성을 사용하는 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 를 참고하기 바랍니다.
+이 특성을 'switch 문의 case 절' 에 적용하면 이것이 코드를 컴파일하는 시점에 알려진 열거체의 어떤 'case 값' 과도 일치하지 않을 것으로 예상된다는 것을 지시합니다. `unknown` 특성을 사용하는 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 를 참고하기 바랍니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
 

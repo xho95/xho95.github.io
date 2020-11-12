@@ -505,17 +505,17 @@ print(somethingTextRepresentable.textualDescription)
 
 ### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
 
-스위프트는 많은 경우 `Equatable`, `Hashable`, 및 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수도 있습니다. 이 '통합된 (synthesized)'[^synthesized] 구현을 사용한다는 것은 프로토콜 필수 조건을 직접 구현하기 위해 '획일적인 (bolilerplate)' 코드를 반복해서 작성할 필요가 없다는 것을 의미합니다.
+스위프트는 많은 단순한 경우에서 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수 있습니다. 이 '통합된 (synthesized)'[^synthesized] 구현을 사용한다는 것은 프로토콜 필수 조건을 직접 구현하기 위해 '획일적인 (bolilerplate)' 코드를 반복해서 작성할 필요가 없다는 의미입니다.
 
-스위프트는 다음과 같은 종류의 사용자 정의 타입에 대해서 `Equatable` 의 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 의 '통합된 구현' 을 제공합니다:
 
 * `Equatable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
 * `Equatable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
 * '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
 
-`==` 의 통합된 구현을 부여 받으려면, `==` 연산자를 직접 구현하지 말고, 원래의 선언을 담고 있는 파일[^original-declaration]에서 `Equatable` 에 대한 '준수성 (conformance)' 을 선언하기 바랍니다. `Equatable` 프로토콜은 `!=` 에 대한 기본 구현을 제공합니다.
+`==` 의 통합된 구현을 받으려면, `==` 연산자를 직접 구현하지 않고, 원래의 선언을 담고 있는 파일[^original-declaration]에서 `Equatable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다. `Equatable` 프로토콜은 `!=` 에 대한 기본 구현을 제공합니다.
 
-아래 예제는, `Vector2D` 구조체와 비슷하게, 3-차원 위치 벡터 `(x, y, z)` 에 대한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성은 모두 `Equatable` 타입이므로, `Vector3D` 는 '같음 비교 연산자 (equivalence operators)' 에 대한 통합된 구현을 부여 받습니다.
+아래 예제는, `Vector2D` 구조체와 비슷하게, 3-차원 위치 벡터 `(x, y, z)` 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 연산자 (equivalence operators)' 에 대한 통합된 구현을 받습니다.
 
 ```swift
 struct Vector3D: Equatable {
@@ -530,17 +530,17 @@ if twoThreeFour == anotherTwoThreeFour {
 // "These two vectors are also equivalent." 를 출력합니다.
 ```
 
-스위프트는 다음과 같은 종류의 사용자 정의 타입에 대해서 `Hashable` 의 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 의 '통합된 구현' 을 제공합니다:
 
 * `Hashable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
 * `Hashable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
 * '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
 
-`hash(into:)` 의 통합된 구현을 부여 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, 원래의 선언을 담고 있는 파일에서 `Hashable` 에 대한 '준수성 (conformance)' 을 선언하기 바랍니다.
+`hash(into:)` 의 통합된 구현을 받으려면, `hash(into:)` 메소드를 직접 구현하지 않고, 원래의 선언을 담고 있는 파일에서 `Hashable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다.
 
-스위프트는 '원시 값 (raw value)' 을 가지고 있지 않은 열거체를 위해 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 만약 열거체가 '결합된 타입' 들을 가진다면, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합된 구현을 부여 받으려면, `<` 연산자를 직접 구현하지 말고, 원래의 열거체 선언을 담고 있는 파일에서 `Comparable` 에 대한 '준수성 (conformance)' 을 선언하기 바랍니다. `<=`, `>`, 및 `>=` 에 대한 `Comparable` 프로토콜의 기본 구현은 남아 있는 비교 연산자들을 제공합니다.
+스위프트는 '원시 값 (raw value)' 을 가지지 않은 열거체에 대해서 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 만약 열거체가 '결합된 타입' 을 가진다면, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합된 구현을 받으려면, `<` 연산자를 직접 구현하지 않고, 원래의 열거체 선언을 담고 있는 파일에서 `Comparable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다. `Comparable` 프로토콜의 `<=`, `>`, 및 `>=` 에 대한 기본 구현은 남은 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
 
-아래 예제는 초보자, 중급자, 및 전문가에 대한 'case 값' 을 가지는 `SkillLevel` 열거체를 정의합니다. 전문가는 추가적으로 자신들이 보유한 별의 개수로 등급이 나뉩니다.
+아래 예제는 '초보자', '중급자', 그리고 '전문가' 라는 'case 값' 을 가지는 `SkillLevel` 열거체를 정의합니다. '전문가' 는 자신들이 보유한 별의 개수로 등급이 추가적으로 나뉩니다.
 
 ```swift
 enum SkillLevel: Comparable {
@@ -1010,3 +1010,5 @@ print(differentNumbers.allEqual())
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
 [^specialized]: 추가 설명이나 예제가 있으면 좋겠지만, 원문에 따로 설명된 것이 없는게 아쉽습니다. Apple Forum 의 질문 답변 중 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 이라는 글에 따르면, 여러 개의 '구속 조건 (constraints)' 을 동시에 만족하는 경우는 타입이 계층 관계일 때 발생하는데, '가장 특수화된 구속 조건' 을 따른다는 것은 타입의 계층 관계에서 가장 하위 클래스를 따르는 것으로 추측됩니다.
+
+[^remaining-comparison-operators]: 여기서 남은 비교 연산자들을 제공한다는 것은 `<` 연산자만 있으면, 이를 통해 `<=`, `>`, `>=` 연산자는 자동으로 만들어진다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 받을 수 있다면, 실제로는 아무 것도 구현할 필요가 없습니다.

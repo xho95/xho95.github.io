@@ -18,7 +18,7 @@ categories: Swift Language Grammar Revision History
 * '다중 끝자리 클로저 (multiple trailing closures)' 에 대한 정보를 [Trailing Closures (끝자리 클로저)]({% post_url 2020-03-03-Closures %}#trailing-closures-끝자리-클로저) 부분에 추가했으며, 끝자리 클로저를 매개 변수와 일치시키는 방법에 대한 정보는 [Function Call Expression (함수 호출 표현식)]({% post_url 2020-08-19-Expressions %}#function-call-expression-함수-호출-표현식) 부분에 추가함.
 * 열거체에 대한 `Comparable` 의 통합된 구현에 대한 정보를 [Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합된-구현을-사용하여-프로토콜-채택하기) 부분에 추가함.
 * [Contextual Where Clauses (상황별 where 절)]({% post_url 2020-02-29-Generics %}#contextual-where-clauses-상황별-where-절) 부분을 추가했으며 이제 더 많은 곳에서 '일반화된 (generic) `where` 절' 을 작성할 수 있음.
-* 옵셔널 값을 가지는 '무소속 참조 (undowned reference)' 의 사용에 대한 정보를 [Unowned Optional References (무소속 옵셔널 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-optional-references-무소속-옵셔널-참조) 부분에 추가함.
+* 옵셔널 값에 대한 '소유되지 않은 참조 (undowned reference)' 의 사용에 대한 정보를 [Unowned Optional References (소유되지 않은 옵셔널 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-optional-references-소유되지-않은-옵셔널-참조) 부분에 추가함.
 * '`@main` 특성 (attribute)' 에 대한 정보를 [main (메인)]({% post_url 2020-08-14-Attributes %}#main-메인) 부분에 추가함.
 * `#filePath` 를 [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 추가했으며, `#file` 에 대한 '논의 (discussion)' 를 갱신함.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 갱신했으며, 이제 클로저는 더 많은 상황에서 암시적으로 `self` 를 참조할 수 있음.
@@ -57,7 +57,7 @@ categories: Swift Language Grammar Revision History
 * 스위프트 5.0 에서 갱신됨.
 * [Extended String Delimiters (확장된 문자열 구분자)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-string-delimiters-확장된-문자열-구분자) 부분을 추가했으며 '확장된 문자열 구분자 (extended string delimiters)' 에 대한 정보를 가진 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 갱신함.
 * `dynamicCallable` 특성을 사용하여 함수처럼 동적으로 호출하는 인스턴스에 대한 정보를 가진 [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 부분을 추가함.
-* 'switch' 문에 있는 미래의 열거체 'case 값' 을 처리하기 위하여 `unknown` 이라는 'switch 문의 case 절' 특성을 사용하는 것에 대한 정보를 가진 [unknown (알지 못하는)]({% post_url 2020-08-14-Attributes %}#unknown-알지-못하는) 과 [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 부분을 추가함.
+* 'switch' 문에 있는 미래의 열거체 'case 값' 을 처리하기 위하여 `unknown` 이라는 'switch 문의 case 절' 특성을 사용하는 것에 대한 정보를 가진 [unknown (알려지지 않은)]({% post_url 2020-08-14-Attributes %}#unknown-알려지지-않은) 과 [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 부분을 추가함.
 * '자기 식별 키 경로 (identity key path; `\.self`)' 에 대한 정보를 [Key-Path Expression (키-경로 표현식)]({% post_url 2020-08-19-Expressions %}#key-path-expression-키-경로-표현식) 부분에 추가함.
 * '플랫폼 조건 (platform conditions)' 에서 '보다 작음 연산자 (less than operator; `<`)' 를 사용하는 것에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분에 추가함.
 

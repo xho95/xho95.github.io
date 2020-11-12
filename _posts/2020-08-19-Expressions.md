@@ -344,13 +344,13 @@ closure()
 // "10 10" 을 출력합니다.
 ```
 
-표현식 값의 타입이 클래스인 경우라면, '붙잡을 목록 (capture list)' 에 있는 표현식을 `weak` 또는 `unowned` 로 표시하여 표현식의 값을 약한 참조 또는 무소속 참조로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
+표현식 값의 타입이 클래스인 경우라면, '붙잡을 목록 (capture list)' 에 있는 표현식을 `weak` 또는 `unowned` 로 표시하여 표현식의 값을 약한 참조 또는 소유되지 않은 참조로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
 
 ```swift
 myFunction { print(self.title) }                    // 암시적인 강한 붙잡기 (implicit strong capture)
 myFunction { [self] in print(self.title) }          // 명시적인 강한 붙잡기 (explicit strong capture)
 myFunction { [weak self] in print(self!.title) }    // 약한 붙잡기 (weak capture)
-myFunction { [unowned self] in print(self.title) }  // 무소속 붙잡기 (unowned capture)
+myFunction { [unowned self] in print(self.title) }  // 소유되지 않게 붙잡기 (unowned capture)
 ```
 
 임의의 표현식을 '붙잡을 목록' 에 있는 '이름 있는 변수' 에 연결할 수도 있습니다. 이 표현식은 클로저를 생성할 때 값을 평가하며, 값은 지정된 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
@@ -959,9 +959,9 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이 문장의 의미는 'self' 를 다른 인스턴스를 할당하는 것으로써 변경할 수도 있다는 의미입니다.
 
-[^weak-and-unowned-capture]: 클로저는 클래스와 같이 '참조 타입' 이기 때문에, 클래스 안에 있는 클로저가 해당 클래스를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '무소속 참조' 가 필요합니다.
+[^weak-and-unowned-capture]: 클로저는 클래스와 같이 '참조 타입' 이기 때문에, 클래스 안에 있는 클로저가 해당 클래스를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유되지 않은 참조' 가 필요합니다.
 
-[^strength]: 여기서의 '강하기 (strength)' 는 'string (강한)'-'weak (약한)'-'unowned (무소속)' 등을 구분하는 말인 것으로 추측됩니다.
+[^strength]: 여기서의 '강하기 (strength)' 는 'string (강한)'-'weak (약한)'-'unowned (소유되지 않은)' 등을 구분하는 말인 것으로 추측됩니다.
 
 [^foced-unwrapping-expressions]: '강제로 포장을 푸는 표현식 (foced unwrapping expressions)' 의 정식 이름은 뒤에 나오는 [Forced-Value Expression (강제-값 표현식)](#forced-value-expression-강제-값-표현식) 인 것 같습니다.
 

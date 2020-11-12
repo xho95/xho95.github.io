@@ -1170,7 +1170,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 `unowned`
 
-  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '무소속 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 실행 시간 에러가 발생합니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (무소속 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-무소속-참조) 를 참고하기 바랍니다.
+  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '소유되지 않은 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 실행 시간 에러가 발생합니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유되지 않은 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유되지-않은-참조) 를 참고하기 바랍니다.
 
 `unowned(safe)`
 
@@ -1178,7 +1178,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 `unowned(unsafe)`
 
-  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '무소속 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 객체가 있던 위치의 메모리에 접근하게 되는 데, 이것이 '메모리가-안전하지 않은 (memory-unsafe)' 연산입니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (무소속 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-무소속-참조) 를 참고하기 바랍니다.
+  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '소유되지 않은 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 객체가 있던 위치의 메모리에 접근하게 되는 데, 이것이 '메모리가-안전하지 않은 (memory-unsafe)' 연산입니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유되지 않은 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유되지-않은-참조) 를 참고하기 바랍니다.
 
 `weak`
 

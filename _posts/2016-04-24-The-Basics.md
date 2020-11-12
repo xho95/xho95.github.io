@@ -605,7 +605,7 @@ if let firstNumber = Int("4") {
 
 이러한 종류의 옵셔널을 '_암시적으로 포장이 풀리는 옵셔널 (implicitly unwrapped optionals)_' 이라고 정의합니다. '암시적으로 포장이 풀리는 옵셔널' 은 옵셔널로 만들고 싶은 타입의 뒤에 물음표 (`String?`) 대신 느낌표 (`String!`) 을 붙여서 작성합니다. 사용할 때 옵셔널의 이름 뒤에 느낌표를 붙이는 것이 아니라, 선언할 때 옵셔널의 타입 뒤에 느낌표를 붙이게 됩니다.
 
-'암시적으로 포장이 풀리는 옵셔널' 이 유용한 순간은 옵셔널 값이 옵셔널을 처음 정의하자 마자 존재한다고 확정되고 이후의 매 순간마다 존재한다고 확실하게 가정할 수 있을 때입니다. 스위프트에서 '암시적으로 포장이 풀리는 옵셔널' 의 제1의 용도는, [Unowned References and Implicitly Unwrapped Optional Properties (무소속 참조와 암시적으로 포장이 풀리는 옵셔널 속성)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-and-implicitly-unwrapped-optional-properties-무소속-참조와-암시적으로-포장이-풀리는-옵셔널-속성) 에서 설명한 것처럼, 클래스 초기화 도중에 사용하는 것입니다.
+'암시적으로 포장이 풀리는 옵셔널' 이 유용한 순간은 옵셔널 값이 옵셔널을 처음 정의하자 마자 존재한다고 확정되고 이후의 매 순간마다 존재한다고 확실하게 가정할 수 있을 때입니다. 스위프트에서 '암시적으로 포장이 풀리는 옵셔널' 의 제1의 용도는, [Unowned References and Implicitly Unwrapped Optional Properties (소유되지 않은 참조와 암시적으로 포장이 풀리는 옵셔널 속성)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-and-implicitly-unwrapped-optional-properties-소유되지-않은-참조와-암시적으로-포장이-풀리는-옵셔널-속성) 에서 설명한 것처럼, 클래스 초기화 도중에 사용하는 것입니다.
 
 '암시적으로 포장이 풀리는 옵셔널' 도 그 이면을 살펴보면 보통의 옵셔널이지만, 매번 접근할 때마다 옵셔널 값의 포장을 풀 필요 없이, '옵셔널이-아닌 값 (non-optional value)' 인 것처럼 사용할 수 있습니다. 다음 예제는 '옵셔널 문자열' 과 '암시적으로 포장이 풀리는 옵셔널 문자열' 이 자신의 포장 값을 명시적인 `String` 으로 접근하는 작동 방식의 차이점을 보여줍니다:
 
