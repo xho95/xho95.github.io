@@ -37,7 +37,7 @@ extension SomeType {
 }
 ```
 
-익스텐션으로 기존 타입을 확장하여 하나 이상의 프로토콜을 채택 (adopt) 하도록 만들 수 있습니다. '프로토콜 준수 기능 (protocol conformance)' 을 추가하려면, (상속할 때) 클래스나 구조체의 이름을 작성하는 것과 같은 방법으로 프로토콜 이름을 작성하면 됩니다:
+익스텐션으로 기존 타입을 확장하여 하나 이상의 프로토콜을 채택 (adopt) 하도록 만들 수 있습니다. '프로토콜 준수성 (protocol conformance)' 을 추가하려면, (상속할 때) 클래스나 구조체의 이름을 작성하는 것과 같은 방법으로 프로토콜 이름을 작성하면 됩니다:
 
 ```swift
 extension SomeType: SomeProtocol, AnotherProtocol {
@@ -45,7 +45,7 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 }
 ```
 
-이와 같은 방식으로 '프로토콜 준수 기능 (protocol conformance)' 을 추가하는 것은 [Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-확장으로-프로토콜-준수성-추가하기) 에서 설명합니다.
+이와 같은 방식으로 '프로토콜 준수성 (protocol conformance)' 을 추가하는 것은 [Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-확장으로-프로토콜-준수성-추가하기) 에서 설명합니다.
 
 'extension (확장)' 으로 이미 존재하는 일반화된 타입 (generic type) 도 확장할 수 있으며, 이는 [Extending a Generic Type (제네릭-일반화된-타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-제네릭-일반화된-타입-확장하기) 에서 설명합니다. 일반화된 타입을 확장할 때 조건부로 기능을 추가할 수도 있는데, 이는 [Extensions with a Generic Where Clause (제네릭 where 절을 가지는 익스텐션; 일반화된 where 절을 가지는 확장)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-제네릭-where-절을-가지는-익스텐션-일반화된-where-절을-가지는-확장) 에서 설명하도록 합니다.
 

@@ -309,7 +309,7 @@ public struct TrackedString {
 
 타입을 작성하거나 확장하면서 프로토콜을 준수할 때는, 프로토콜의 각 '필수 조건 (requirement)' 에 대한 구현이 적어도 타입 준수하는 프로토콜과 같은 접근 수준을 가지도록 해야 합니다. 예를 들어, 'public (공용)' 타입이 'internal (내부)' 프로토콜을 준수하는 경우, 프로토콜의 각 '필수 조건' 을 구현할 때는 최소한 'internal (내부)' 가 되도록 해야 합니다.
 
-> 스위프트에서는, 오브젝티브-C 에서와 마찬가지로, '프로토콜 준수 기능 (protocol conformance)' 이 '전역 (global)' 입니다-같은 프로그램에서 한 프로토콜을 서로 다른 두 가지 방법으로 준수하는 것은 불가능합니다.
+> 스위프트에서는, 오브젝티브-C 에서와 마찬가지로, '프로토콜 준수성 (protocol conformance)' 이 '전역 (global)' 입니다-같은 프로그램에서 한 프로토콜을 서로 다른 두 가지 방법으로 준수하는 것은 불가능합니다.
 
 ### Extensions (확장)
 
@@ -317,7 +317,7 @@ public struct TrackedString {
 
 다른 방법으로, 'extension (확장)' 에 명시적으로 '접근-수준 수정자 (access-level modifier)' (예를 들어, `private` 같은 것) 을 표시해서, 확장 내에서 정의한 모든 멤버들에 대한 새 '기본 접근 수준 (default access level)' 을 설정할 수 있습니다. 이러한 새 기본 설정을 개별 타입 멤버에 대한 'extension (확장)' 에서 '재정의 (overridden)' 하는 것도 여전히 가능합니다.
 
-'프로토콜 준수 기능 (protocol conformance)' 를 추가하기 위해 'extension (확장)' 을 사용하는 경우에는 그 'extension (확장)' 에 대한 '명시적인 접근-수준 수정자' 를 제공할 수 없습니다. 대신, 프로토콜 자체의 접근 수준을 사용해서 'extension (확장)' 에 있는 각각의 프로토콜 '필수 조건 (requirement)' 구현에 대한 기본 접근 수준을 제공합니다.
+'프로토콜 준수성 (protocol conformance)' 을 추가하기 위해 'extension (확장)' 을 사용하는 경우에는 그 'extension (확장)' 에 대한 '명시적인 접근-수준 수정자' 를 제공할 수 없습니다. 대신, 프로토콜 자체의 접근 수준을 사용해서 'extension (확장)' 에 있는 각각의 프로토콜 '필수 조건 (requirement)' 구현에 대한 기본 접근 수준을 제공합니다.
 
 ### Private Members in Extensions (확장 내의 '개인 전용' 멤버)
 
@@ -335,7 +335,7 @@ protocol SomeProtocol {
 }
 ```
 
-이제 아래와 같이, 'extension (확장)' 을 사용하여 '프로토콜 준수 기능' 을 추가할 수 있습니다:
+이제 아래와 같이, 'extension (확장)' 을 사용하여 '프로토콜 준수성' 을 추가할 수 있습니다:
 
 ```swift
 struct SomeStruct {
@@ -357,7 +357,7 @@ extension SomeStruct: SomeProtocol {
 
 직접 정의한 'type aliases (타입 별명)' 은 어떤 것이든 접근 수준의 관점에서는 별개의 타입인 것처럼 처리됩니다. '타입 별명' 은 별명을 짓는 타입의 접근 수준보다 낮거나 같은 접근 수준을 가질 수 있습니다. 예를 들어, 'private (개인 전용) 타입 별명' 은 'private (개인 전용)', 'file-private (파일-전용)', 'internal (내부)', 'public (공용)', 또는 'open (공개)' 타입에 대한 별명이 될 수 있지만, 'public (공용) 타입 별명' 은 'internal (내부)', 'file-private (파일-전용)', 또는 'private (개인 전용)' 타입의 별명이 될 수 없습니다.
 
-> 이 규칙은 '프로토콜 준수 기능' 를 만족시킬려고 사용하는 '결합된 타입 (associated types)' 를 위한 '타입 별명' 에도 동일하게 적용됩니다.
+> 이 규칙은 '프로토콜 준수성' 을 만족시킬려고 사용하는 '결합된 타입 (associated types)' 를 위한 '타입 별명' 에도 동일하게 적용됩니다.
 
 ### 참고 자료
 
