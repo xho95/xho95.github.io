@@ -77,7 +77,7 @@ categories: Swift Language Grammar Revision History
 * 스위프트 4.1 에서 갱신됨.
 * '같음 비교 연산자 (equivalence operators)' 의 통합된 구현에 대한 정보를 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 부분에 추가함.
 * '조건부 프로토콜 준수성 (conditional protocol conformance)' 에 대한 정보를 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Extension Declaration (익스텐션-확장 선언)]({% post_url 2020-08-15-Declarations %}#extension-declaration-익스텐션-확장-선언) 부분과, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)]({% post_url 2016-03-03-Protocols %}#conditionally-conforming-to-a-protocol-조건에-따라-프로토콜-준수하기) 부분에, 추가함.
-* '재귀적인 프로토콜 구속 조건 (recursive protocol constraints)' 에 대한 정보를 [Using a Protocol in Its Associated Type's Constraints (프로토콜을 자신에게 결합된 타입의 구속 조건에서 사용하기)]({% post_url 2020-02-29-Generics %}#using-a-protocol-in-its-associated-type-s-Constraints-프로토콜을-자신에게-결합된-타입의-구속-조건에서-사용하기) 부분에 추가함.
+* '재귀적인 프로토콜 구속 조건 (recursive protocol constraints)' 에 대한 정보를 [Using a Protocol in Its Associated Type's Constraints (프로토콜을 자신에게 결합된 타입의 구속 조건에서 사용하기)]({% post_url 2020-02-29-Generics %}#using-a-protocol-in-its-associated-types-constraints-프로토콜을-자신에게-결합된-타입의-구속-조건에서-사용하기) 부분에 추가함.
 * `canImport()` 와 `targetEnvironment()` '플랫폼 조건 (platform conditions)' 에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 에 추가함.
 
 #### 2017-12-04
