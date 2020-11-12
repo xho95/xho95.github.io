@@ -126,7 +126,7 @@ routes.add(method: .post, uri: "post", handler: {
 
 글을 작성할 때 맥에서 하다보니 스크린샷이 맥으로 되어 있는데, 사실 리눅스 터미널에서 Swift 를 빌드하고 실행하는 방법으로 맥의 터미널에서 똑같이 빌드하고 실행할 수 있습니다. 코드에 Cocoa 프레임웍 부분이 들어가지 않는다면 동일한 코드로 서로 다른 플랫폼에서 그대로 빌드가 가능하다고 볼 수 있습니다.
 
-그 외에도 Swift 에서는 `#if` 와 같은 구문을 조건부 컴파일 블럭 (Conditional Compilation Block) 이라 부르는데, 이 조건부 컴파일 블럭을 사용하면 리눅스와 맥에서 동시에 컴파일 가능한 코드를 작성할 수 있습니다. [^statements]
+그 외에도 Swift 에서는 `#if` 와 같은 구문을 '조건부 컴파일 블럭 (Conditional Compilation Block)' 이라 부르는데, 이 조건부 컴파일 블럭을 사용하면 리눅스와 맥에서 동시에 컴파일 가능한 코드를 작성할 수 있습니다. [^statements]
 
 Firefox 에서는 [RESTED](https://addons.mozilla.org/En-us/firefox/addon/rested/) 라는 Add on을 설치해서 테스트할 수도 있습니다. [^firefox-rested]
 
@@ -152,6 +152,6 @@ Firefox 에서는 [RESTED](https://addons.mozilla.org/En-us/firefox/addon/rested
 
 [^getpostman]: [Postman](https://www.getpostman.com) 은 구글 크롬 브라우저의 플러그인으로 사용하는 경우가 많은데 맥에서는 앱으로 설치해서 사용할 수도 있습니다.
 
-[^statements]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 설명은 [Compiler Control Statements (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 을 참고하기 바랍니다.
+[^statements]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 설명은 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 을 참고하기 바랍니다.
 
 [^firefox-rested]: [RESTED](https://addons.mozilla.org/En-us/firefox/addon/rested/) 는 FireFox 를 위한 Rest 클라이언트입니다. 이런 종류의 앱이나 프로그램은 많이 있어서 선택해서 사용하면 될 것 같습니다.

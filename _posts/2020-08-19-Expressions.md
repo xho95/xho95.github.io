@@ -452,7 +452,7 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-_경로 (path)_ 는 '스스로의 키 경로 (identity key path; `\.self`)' 를 생성하기 위해 `self` 를 참조할 수 있습니다. '스스로의 키 경로 (identity key path)' 는 전체 인스턴스를 참조하므로, 변수에 저장된 모든 데이터를 한 번에 접근해서 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
+_경로 (path)_ 는 '자기 식별 키 경로 (identity key path; `\.self`)' 를 생성하기 위해 `self` 를 참조할 수 있습니다. '자기 식별 키 경로 (identity key path)' 는 전체 인스턴스를 참조하므로, 변수에 저장된 모든 데이터를 한 번에 접근해서 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
