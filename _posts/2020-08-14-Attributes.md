@@ -98,12 +98,12 @@ categories: Swift Language Grammar Attribute
 
 '다중 `available` 특성' 을 단일 선언에 적용하면 서로 다른 플랫폼 및 서로 다른 버전의 스위프트에 대한 선언의 사용 가능성을 지정할 수 있습니다. 만약 특성에서 지정한 플랫폼 또는 언어 버전이 현재 대상과 일치하지 않는 경우 그 `available` 특성을 적용한 선언은 무시됩니다. 다중 `available` 특성을 사용할 경우, 플랫폼 사용 가능성과 스위프트 사용 가능성을 조합하는 것이 효과적입니다.
 
-`avaiable` 특성이 플랫폼 또는 언어 이름 인자과 더불어 `introdued` 인자 만을 지정하는 경우, 다음의 '약칭 구문 표현 (shorhand syntax)' 를 대신 사용할 수 있습니다:
+`available` 특성이 플랫폼 또는 언어 이름 인자과 더불어 `introdued` 인자 만을 지정하는 경우, 다음의 '약칭 구문 표현 (shorhand syntax)' 를 대신 사용할 수 있습니다:
 
 \@available(`platform name-플랫폼 이름` `version number-버전 번호`, *)<br />
 \@available(swift `version number-버전 번호`)
 
-`avaiable` 특성에 대한 '약칭 구문 표현' 은 다중 플랫폼에 대한 사용 가능성을 간결하게 표현해줍니다. 두 형식이 기능적으로 '동치 (equivalent)' 이더라도, 가능할 때마다 '약칭' 형식을 사용하는 것이 좋습니다.
+`available` 특성에 대한 '약칭 구문 표현' 은 다중 플랫폼에 대한 사용 가능성을 간결하게 표현해줍니다. 두 형식이 기능적으로 '동치 (equivalent)' 이더라도, 가능할 때마다 '약칭' 형식을 사용하는 것이 좋습니다.
 
 ```swift
 @available(iOS 10.0, macOS 10.12, *)

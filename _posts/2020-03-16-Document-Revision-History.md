@@ -97,6 +97,18 @@ categories: Swift Language Grammar Revision History
 * [Extension Declaration (익스텐션-확장 선언)]({% post_url 2020-08-15-Declarations %}#extension-declaration-익스텐션-확장-선언) 에 있는 '프로토콜 익스텐션 (protocol extensions)' 에 대한 논의를 갱신했으며, 이제 `final` 은 여기서 허용되지 않음.
 * '선행 조건문 (preconditions)' 과 '치명적인 에러 (fatal errors)' 에 대한 정보를 [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 부분에 추가함.
 
+#### 2017-03-27
+
+* 스위프트 3.1 에서 갱신됨.
+* '필수 조건 (requirements)' 을 포함한 '익스텐션 (extensions)' 에 대한 정보가 있는 [Extensions with a Generic Where Clause (일반화된 (generic) 'where' 절을 가진 익스텐션 (extensions))]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화된-generic-where-절을-가진-익스텐션-extensions) 부분을 추가함.
+* '범위 (range)' 에 동작을 반복시키는 것에 대한 예제를 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분에 추가함.
+* 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 부분에 추가함.
+* `available` 특성을 스위프트 언어 버전에 사용하는 것에 대하여 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 정보를 추가함.
+* '인자 이름표 (argument labels)' 는 함수 타입을 작성할 때는 허용되지 않는다는 것에 주목하기 위해 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 논의를 갱신함.
+* [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분에 있는 '스위프트 언어의 버전 번호' 에 대한 논의를 갱신했으며, 이제 선택 사항으로 '덧댐 번호 (patch number)' 가 허용됩니다.
+* [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 논의를 갱신했으며, 이제 스위프트는 다중 매개 변수를 취하는 함수와 튜플 타입인 단일 매개 변수를 취하는 함수를 서로 구별함.
+* [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장에서 '동적 타입 표현식 (Dynamic Type Expression)' 부분을 제거했으며, 이제 `type(of:)` 는 스위프트 표준 라이브러리 함수임.
+
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
