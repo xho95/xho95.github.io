@@ -109,6 +109,14 @@ categories: Swift Language Grammar Revision History
 * [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 논의를 갱신했으며, 이제 스위프트는 다중 매개 변수를 취하는 함수와 튜플 타입인 단일 매개 변수를 취하는 함수를 서로 구별함.
 * [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장에서 '동적 타입 표현식 (Dynamic Type Expression)' 부분을 제거했으며, 이제 `type(of:)` 는 스위프트 표준 라이브러리 함수임.
 
+#### 2016-10-27
+
+* 스위프트 3.0.1 에서 갱신됨.
+* [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장에 있는 '약한 참조 (weak references)' 와 '소유되지 않은 참조 (unowned references)' 에 대한 논의를 갱신함.
+* [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분에 있는 `unowned`, `unowned(safe)`, 및 `unowned(unsafe)` 선언 수정자에 대한 정보를 추가함.
+* `Any` 타입인 값이 예상될 때 옵셔널 값을 사용하는 것에 대하여 [Type Casting for Any and AnyObject ('Any' 와 'AnyObject' 에 대한 타입 변환)]({% post_url 2020-04-01-Type-Casting %}#type-casting-for-any-and-anyobject-any-와-anyobject-에-대한-타입-변환) 에 기록을 추가함.
+* '괄호 표현식 (parenthesized expressions)' 과 '튜플 표현식 (tuple expressions)' 에 대한 논의를 구분하기 위하여 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장을 갱신함.
+
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
