@@ -195,7 +195,7 @@ _배열 글자 값 (array literal)_ 은 값이 '정렬되어 있는 집합체 (o
 var emptyArray: [Double] = []
 ```
 
-_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 이 '정렬되지 않은 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
+_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 이 '정렬되어 있지 않은 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
 
 [`key 1 (키 1)`: `value 1 (값 1)`, `key 2 (키 2)`: `value 2 (값 2)`, `...`]
 
