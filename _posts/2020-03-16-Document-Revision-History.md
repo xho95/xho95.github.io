@@ -121,6 +121,10 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 3.0 에서 갱신됨.
 * 모든 매개 변수는 기본적으로 '인자 이름표 (arguement label)' 을 가진다는 것에 주목하기 위해 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장과 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분에 있는 함수에 대한 논의를 갱신함.
+* [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장에 있는 연산자에 대한 논의를 갱신했으며, 이제 이를 '전역 함수 (global functions)' 대신 '타입 메소드 (type methods)' 로 구현함.
+* `open` 과 `fileprivate` 접근-수준 수정자에 대한 정보를 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 추가함.
+* `inout` 이 매개 변수의 이름 앞이 아니라 매개 변수의 타입 앞에 나타남에 주목하기 위해 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분의 논의를 갱신함.
+* [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 와 [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 부분 그리고 [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 `@noescape` 와 `@autoclosure` 에 대한 논의를 갱신했으며 이제 이들은, '선언 특성' 이 아니라, '타입 특성' 임.
 
 ### 참고 자료
 
