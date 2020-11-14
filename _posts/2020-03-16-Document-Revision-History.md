@@ -117,6 +117,11 @@ categories: Swift Language Grammar Revision History
 * `Any` 타입인 값이 예상될 때 옵셔널 값을 사용하는 것에 대하여 [Type Casting for Any and AnyObject ('Any' 와 'AnyObject' 에 대한 타입 변환)]({% post_url 2020-04-01-Type-Casting %}#type-casting-for-any-and-anyobject-any-와-anyobject-에-대한-타입-변환) 에 기록을 추가함.
 * '괄호 표현식 (parenthesized expressions)' 과 '튜플 표현식 (tuple expressions)' 에 대한 논의를 구분하기 위하여 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장을 갱신함.
 
+#### 2016-09-13
+
+* 스위프트 3.0 에서 갱신됨.
+* 모든 매개 변수는 기본적으로 '인자 이름표 (arguement label)' 을 가진다는 것에 주목하기 위해 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장과 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분에 있는 함수에 대한 논의를 갱신함.
+
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
