@@ -153,24 +153,30 @@ _제1 표현식 (primary expressions)_ 은 가장 기본적인 종류의 표현�
 
 #### Literal Expression (글자 값 표현식)
 
-_글자 값 표현식 (literal expression)_ 은 일상적인 글자 값 (가령 문자열이나 숫자 등), 배열 또는 딕셔너리 글자 값, '플레이그라운드 글자 값 (playground literal)', 아니면 다음의 '특수 글자 값 (special literals)' 중 하나로써 구성됩니다:
+_글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 일상적인 글자 값이나, 배열 및 딕셔너리 글자 값, '플레이그라운드 (playground) 글자 값', 아니면 다음의 '특수 글자 값 (special literals)' 중 하나로 구성됩니다:
 
-글자 값 | 타입 | 값
----|---|---
-`#file` | `String` |  이 값이 있는 파일 및 모듈의 이름
-`#filePath` | `String` | 이 값이 있는 파일의 경로
-`#line` | `Int` | 이 값이 있는 줄의 번호
-`#column` | `Int` | 이 값이 시작하는 열의 번호
-`#function` | `String` | 이 값이 있는 선언의 이름
-`#dsohandle` | `UnsafeRawPointer` | 이 값이 있는 곳에서 사용중인 '동적 공유 객체 (dynamic shared object; DSO) 핸들 (handle)'
+글자 값 || 타입 || 값
+---|---|---|---|---
+`#file` | | `String` | |  이 값이 있는 파일의 경로
+`#fileID` | | `String` | | 이 값이 있는 파일과 모듈의 이름
+`#filePath` | | `String` | | 이 값이 있는 파일의 경로
+`#line` | | `Int` | | 이 값이 있는 줄의 번호
+`#column` | | `Int` | | 이 값이 시작하는 열의 번호
+`#function` | | `String` | | 이 값이 있는 선언의 이름
+`#dsohandle` | | `UnsafeRawPointer` | | 이 값이 있는 곳에서 사용중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
 
-`#file` 표현식의 문자열 값은 _module/file_ 형식을 가지며, 여기서 _file_ 은 표현식이 있는 파일의 이름이고 _module_ 은 이 파일이 있는 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '온전한 파일-시스템 경로 (full file-system path)' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 로 바꿀 수 있습니다.
 
-> `#file` 표현식을 해석하려면, 첫 번째 빗금 (`/`) 앞의 문장으로 모듈 이름을 읽고 마지막 빗금 뒤의 문장으로 파일 이름을 읽으면 됩니다. 향후, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, '다중 빗금' 을 가질 수도 있습니다.
+`#file` 의 문자열 값은, 예전의 `#filePath` 작동 방식에서 새로운 `#fileID` 작동 방식으로 '이전 (migration)' 할 수 있도록, 언어 버전에 따라 달라집니다.[^filePath-and-fildID] 현재의, `#file` 은 `#filePath` 와 같은 값을 가집니다. 미래 버전의 스위프트에서는, 그대신 `#file` 이 `#fileID` 와 같은 값을 가질 것입니다. 미래의 작동 방식을 채택하도록, `#file` 을 `#fileID` 또는 `#filePath` 로 적절하게 대체하기 바랍니다.[^file-to-filePath-and-fildID]
 
-`#function` 의 값은, 함수 내부에서는 해당 함수의 이름이 되고, 메소드 내부에서는 해당 메소드의 이름이 되며, 속성 획득자 (getter) 또는 설정자 (setter) 내부에서는 해당 속성의 이름이 되고, `init` 또는 `subscript` 와 같은 특수 멤버 내부에서는 해당 키워드의 이름이 되며, 파일의 최상위 수준에서는 현재 모듈의 이름이 됩니다.
+`#fileID` 표현식의 문자열 값은 _module/file_ 형식을 가지며, 여기서 _file_ 은 표현식이 있는 파일의 이름이고 _module_ 은 이 파일이 속해 있는 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '전체 파일-시스템 경로' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 으로 바꿀 수 있습니다. `#fileID` 는, `#filePath` 와는 다르게, 소스 파일에 대한 '전체 경로' 를 집어 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 '컴파일된 바이너리' 의 크기를 줄여줍니다. '출하용 프로그램' 에 속하지 않는 테스트, 빌드 스크립트, 또는 그 외 다른 코드 외부에는 `#filePath` 의 사용을 피하도록 합니다.
 
-함수 매개 변수나 메소드 매개 변수의 '기본 설정 값' 으로 사용할 때의, 특수 글자 값은 호출하는 쪽에서 그 '기본 설정 값 표현식' 의 값을 평가하는 순간에 결정됩니다.
+#fileID 표현식을 구문 분석하려면 모듈 이름을 첫 번째 슬래시 (/) 앞의 텍스트로 읽고 파일 이름을 마지막 슬래시 뒤의 텍스트로 읽습니다. 앞으로 문자열에는 MyModule / some / disambiguation / MyFile.swift와 같은 여러 슬래시가 포함될 수 있습니다.
+
+> `#fileID` 표현식을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞을 문장으로 읽고 파일 이름은 마지막 빗금 뒤를 문장으로 읽도록 합니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, '다중 빗금' 을 담고 있을 수도 있습니다.
+
+`#function` 의 값은, 함수 내부에서는 해당 함수의 이름이 되고, 메소드 내부에서는 해당 메소드의 이름이 되며, 속성의 '획득자' 나 '설정자' 내부에서는 해당 속성의 이름이 되며, `init` 이나 `subscript` 같은 특수 멤버 내부에서는 해당 키워드의 이름이 되며, 파일의 최상위 수준에서는 현재 모듈의 이름이 됩니다.
+
+'특수 글자 값 (special literals)' 을, 함수 또는 메소드 매개 변수의 '기본 설정 값' 으로 사용할 때는, 호출하는 쪽에서 '기본 설정 값 표현식' 을 평가할 때 그 값이 결정됩니다.
 
 ```swift
 func logFunctionName(string: String = #function) {
@@ -181,29 +187,29 @@ func myFunction() {
 }
 ```
 
-_배열 글자 값 (array literal)_ 은 값들의 순서 있는 '집합체 (collection)' 입니다. 형식은 다음과 같습니다:
+_배열 글자 값 (array literal)_ 은 값이 '정렬되어 있는 집합체 (ordered collection)' 입니다. 형식은 다음과 같습니다:
 
 [`value 1 (값 1)`, `value 2 (값 2)`, `...`]
 
-배열의 마지막 표현식 뒤에는 쉼표를 붙여도 됩니다. 배열 글자 값의 타입은 `[T]` 인데, 여기서 `T` 는 안에 있는 표현식의 타입입니다. 만약 다중 타입의 표현식들로 되어 있는 경우, `T` 는 '가장 근접한 공통 상위 타입 (closest common supertype)' 이 됩니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 사용하여 작성하며 지정한 타입의 빈 배열을 생성하기 위해 사용합니다.
+배열의 마지막 표현식 뒤에는 옵션으로 쉼표를 붙여도 됩니다. 배열 글자 값의 타입은 `[T]` 인데, 여기서 `T` 는 그 안에 있는 표현식의 타입입니다. 표현식이 여러 개의 타입으로 되어 있는 경우, `T` 는 '가장 가까운 공통 상위 타입 (closest common supertype)' 입니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 써서 작성하며 지정한 타입의 빈 배열을 생성하기 위해 사용합니다.
 
 ```swift
 var emptyArray: [Double] = []
 ```
 
-_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 의 순서 없는 '집합체' 입니다. 형식은 다음과 같습니다:
+_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 이 '정렬되지 않은 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
 
 [`key 1 (키 1)`: `value 1 (값 1)`, `key 2 (키 2)`: `value 2 (값 2)`, `...`]
 
-딕셔너리의 마지막 표현식 뒤에는 쉼표를 붙여도 됩니다. 딕셔너리 글자 값의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 표현식 (key expressions)' 의 타입이고 `Value` 는 '값 표현식 (value expressions)' 의 타입입니다. 만약 다중 타입의 표현식들로 되어 있는 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 근접한 공통 상위 타입' 이 됩니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '콜론이 있는 대괄호 쌍 (`[:]`)' 을 써서 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 지정한 키 및 값 타입으로 된 빈 딕셔너리 글자 값을 생성할 수 있습니다.
+딕셔너리의 마지막 표현식 뒤에는 옵션으로 쉼표를 붙여도 됩니다. 딕셔너리 글자 값의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 표현식 (key expressions)' 의 타입이고 `Value` 는 '값 표현식 (value expressions)' 의 타입입니다. 표현식이 여러 개의 타입으로 되어 있는 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 가까운 공통 상위 타입' 입니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '콜론이 있는 대괄호 쌍 (`[:]`)' 을 써서 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 지정한 키 타입과 값 타입으로 된 '빈 딕셔너리 글자 값' 을 생성할 수 있습니다.
 
 ```swift
 var emptyDictionary: [String : Double] = [:]
 ```
 
-_플레이그라운드 글자 값 (playground literal)_ 은 프로그램 편집기 내에서 상호 작용 형태로 색상, 파일, 또는 이미지 표현을 생성하기 위해 'Xcode (엑스코드)' 가 사용하는 것입니다. '플레이그라운드 글자 값' 을 Xcode 외부의 '평이한 문장' 으로 옮기면 '특수 글자 값 구문 표현' 을 사용하여 표현됩니다.[^playground-literal]
+_플레이그라운드 글자 값 (playground literal)_ 은 'Xcode (엑스코드)' 가 '프로그램 편집기' 에서 색상, 파일, 또는 이미지에 대한 '상호 작용하는 표현' 을 생성하기 위해 사용합니다. 'Xcode' 외부의 평범한 문장 속에 있는 '플레이그라운드 글자 값' 은 '특수 글자 값 구문 표현' 으로 표현됩니다.[^playground-literal]
 
-Xcode 에서 '플레이그라운드 글자 값' 을 사용하는 정보는, Xcode 도움말에 있는 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 을 참고하기 바랍니다.
+'Xcode' 에서 '플레이그라운드 글자 값' 을 사용하는 것에 대한 정보는, 'Xcode' 도움말에 있는 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -968,3 +974,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^outmost-expression]: 이 말은 옵셔널을 다시 옵셔널로 포장하지는 않는다는 말입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
 
 [^left-to-right]: 스위프트 5.3 버전 이전에 '오른쪽-에서-왼쪽' 순서를 사용한 것은 매개 변수에 '끝자리 클로저 (trailing closure)' 가 하나뿐이면서 가장 오른쪽 매개 변수로 존재 했기 때문이라고 생각됩니다. 이제 '끝자리 클로저' 가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 적용한다고 볼 수 있습니다.
+
+[^filePath-and-fildID]: `#file` 은 예전 버전에서는 '파일 및 모듈의 이름' 이었지만, 지금 버전에서는 '파일의 경로' 입니다. 이는 스위프트 5.3 에서 새로 생긴 `#fileID` 와 관련이 있는 것으로 추측됩니다.
+
+[^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 에는 사용하지 말 것을 권유하는데, 이러한 역할 구분은 '개인 정보 (privacy)' 보호 정채과도 관련이 있는 것으로 추측됩니다.
