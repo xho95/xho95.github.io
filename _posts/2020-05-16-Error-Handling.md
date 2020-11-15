@@ -136,7 +136,7 @@ struct PurchasedSnack {
 
 #### Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)
 
-코드 블럭을 실행해서 에러를 처리하려면 `do`-`catch` 문을 사용합니다. `do` 절에 있는 코드에서 에러를 던지면, 이를 `catch` 절과 맞춰봐서 어디에서 에러를 처리할 수 있는지 결정합니다.
+코드 블럭을 실행해서 에러를 처리하려면 `do`-`catch` 문을 사용합니다. `do` 절에 있는 코드에서 에러를 던지면, 이것이 `catch` 절과 일치하는 지를 맞춰봄으로써 어디에서 에러를 처리할 수 있는 지를 결정합니다.
 
 다음은 `do`-`catch` 문의 일반적인 형식입니다:
 
@@ -153,9 +153,9 @@ do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-`catch` 뒤에 '패턴 (pattern)' 을 작성하여 해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 지시합니다. 만약 `catch` 절이 '패턴' 을 가지고 있지 않으면, 이 절은 어떤 에러와도 일치하며 이 에러는 `error` 라는 '지역 상수 이름' 에 '연결 (bind)' 됩니다. '패턴 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 자세한 내용은 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
+해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지를 지시하기 위해 `catch` 뒤에 '유형 (pattern)' 을 작성합니다. 만약 `catch` 절이 '유형' 을 가지고 있지 않으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 에 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 자세한 내용은 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 'case 값' 모두와 일치 여부를 맞춰보고 있습니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 'case 값' 모두에 대해서 일치하는 지를 맞춰봅니다.
 
 ```swift
 var vendingMachine = VendingMachine()
