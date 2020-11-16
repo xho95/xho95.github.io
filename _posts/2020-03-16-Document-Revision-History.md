@@ -22,7 +22,7 @@ categories: Swift Language Grammar Revision History
 * '`@main` 특성 (attribute)' 에 대한 정보를 [main (메인)]({% post_url 2020-08-14-Attributes %}#main-메인) 부분에 추가함.
 * `#filePath` 를 [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 추가했으며, `#file` 에 대한 '논의 (discussion)' 를 갱신함.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 갱신했으며, 이제 클로저는 더 많은 상황에서 암시적으로 `self` 를 참조할 수 있음.
-* [Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-using-do-catch-do-catch-구문으로-에러-처리하기) 와 [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분을 갱신했으며, 이제 '`catch` 절' 은 '다중 에러 (multiple errors)' 와도 일치할 수 있음.
+* [Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-using-do-catch-do-catch-구문으로-에러-처리하기) 와 [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분을 갱신했으며, 이제 '`catch` 절' 은 '다중 에러 (multiple errors)' 와도 일치하는지 맞춰볼 수 있음.
 * `Any` 에 대한 더 많은 정보를 추가했으며 이를 새로운 [Any Type ('Any' 타입)]({% post_url 2020-02-20-Types %}#any-type-any-타입) 부분으로 옮김.
 * [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 갱신했으며, 이제 '느긋한 속성 (lazy properties)' 도 관찰자를 가질 수 있음.
 * [Protocol Declaration (프로토콜 선언)]({% post_url 2020-08-15-Declarations %}#protocol-declaration-프로토콜-선언) 부분을 갱신했으며, 이제 열거체의 멤버도 '프로토콜 필수 조건 (protocol requirements)' 을 만족할 수 있음.
@@ -131,7 +131,7 @@ categories: Swift Language Grammar Revision History
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 논의를 갱신했으며, 이제 클로저는 '벗어나지 않는 (nonescaping)' 것이 기본임.
 * [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [While Statement ('while' 문)]({% post_url 2020-08-20-Statements %}#while-statement-while-문) 부분에 있는 논의를 갱신했으며, 이제 `if`, `while`, 그리고 `guard` 문은 `where` 절 없이 쉼표로-구분된 조건 목록을 사용함.
 * '다중 유형 (multiple patterns)' 을 가지는 'switch 문 case 절' 에 대한 정보를 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [Switch Statement ('switch' 문)]({% post_url 2020-08-20-Statements %}#switch-statement-switch-문) 부분에 추가함.
-* [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 함수 타입에 대한 논의를 갱신했으며 이제 함수 인자 이름표는 더 이상 함수 타입의 일부가 아님. 
+* [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 함수 타입에 대한 논의를 갱신했으며 이제 함수 인자 이름표는 더 이상 함수 타입의 일부가 아님.
 
 ### 참고 자료
 
