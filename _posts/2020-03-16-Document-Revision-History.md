@@ -125,6 +125,9 @@ categories: Swift Language Grammar Revision History
 * `open` 과 `fileprivate` 접근-수준 수정자에 대한 정보를 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 추가함.
 * `inout` 이 매개 변수의 이름 앞이 아니라 매개 변수의 타입 앞에 나타남에 주목하기 위해 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분의 논의를 갱신함.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 와 [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 부분 그리고 [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 `@noescape` 와 `@autoclosure` 에 대한 논의를 갱신했으며 이제 이들은, '선언 특성' 이 아니라, '타입 특성' 임.
+* '연산자 우선 순위 그룹 (operator precedence groups)' 에 대한 정보를 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장의 [Precedence for Custom Infix Operators (사용자 정의 중위 연산자에 대한 우선 순위)]({% post_url 2020-05-11-Advanced-Operators %}#precedence-for-custom-infix-operators-사용자-정의-중위-연산자에-대한-우선-순위) 부분과, [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Precedence Group Declaration (우선 순위 그룹 선언)]({% post_url 2020-08-15-Declarations %}#precedence-group-declaration-우선-순위-그룹-선언) 부분에, 추가함.
+* 'OS X' 대신 'macOS' 를, `ErrorProtocol` 대신 `Error` 를, 그리고 `StringLiteralConvertible` 대신 `ExpressibleByStringLiteral` 같은 프로토콜 이름을 사용하도록 전체에 걸쳐서 논의를 갱신함.
+* [Generics (제네릭; 일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Generic Where Clauses (일반화된 (generic) 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-generic-where-절) 부분과 [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}) 장에 있는 논의를 갱신했으며, 이제 '일반화된 (generic) `where` 절' 은 선언의 끝에 작성함. 
 
 ### 참고 자료
 

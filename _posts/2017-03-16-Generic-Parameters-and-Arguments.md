@@ -47,7 +47,7 @@ simpleMax(17, 42) // T 를 Int 로 추론합니다.
 simpleMax(3.14159, 2.71828) // T 를 Double 로 추론합니다.
 ```
 
-#### Generic Where Clauses (일반화된 'Where' 절)
+#### Generic Where Clauses (일반화된 (generic) 'Where' 절)
 
 '타입 매개 변수 (type parameters)' 및 그와 '결합된 타입 (associated types)' 에 추가적인 '필수 조건 (requirements)' 을 지정하려면 타입 또는 함수 본문의 '여는 중괄호' 바로 앞에 '일반화된 `where` 절 (generic where clause)' 을 집어 넣으면 됩니다. '일반화된 `where` 절' 은 `where` 키워드 다음에, 쉼표로-구분되는 하나 이상의 '_필수 조건 (requirements)_' 목록을 이어 붙여서 만듭니다.
 
@@ -61,7 +61,7 @@ where `requirements`
 
 일반화된 함수나 초기자는 타입 매개 변수에 다른 구속 조건, 필수 조건, 또는 둘 다를 제공해서 추가 정의 (overload) 할 수 있습니다. 일반화된 함수나 초기자의 추가 정의 버전을 호출하면 컴파일러는 이들 구속 조건을 사용하여 어떤 추가 정의 함수나 초기자를 실행해야할지를 결정하게 됩니다.
 
-일반화된 `where` 절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화된 Where 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-제네릭-일반화된-where-절) 부분을 보면 됩니다.
+일반화된 `where` 절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화된 (generic) 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-generic-where-절) 부분을 보면 됩니다.
 
 > 일반화된 매개 변수 구절의 문법
 >
@@ -117,7 +117,7 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 [^placeholder]: 즉, 특정한 타입의 이름이 아니므로 사용자가 편리한 데로 임의로 정할 수 있는 이름입니다.
 
-[^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 함수의 이름과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다. 
+[^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 함수의 이름과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
 
 [^specialized-version]: 이 부분은 C++ 언어의 메타 프로그래밍에서 나오는 일반화 (generalization) 및 특수화 (specialization) 의 개념과 유사한 것 같습니다. Swift 의 일반화 (generic; 제네릭) 이 C++ 의 템플릿 (template) 과 사실상 동등한 개념이므로 당연한 것이라고 할 수 있습니다.
 
