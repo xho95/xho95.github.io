@@ -132,9 +132,29 @@ categories: Swift Language Grammar Revision History
 * [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [While Statement ('while' 문)]({% post_url 2020-08-20-Statements %}#while-statement-while-문) 부분에 있는 논의를 갱신했으며, 이제 `if`, `while`, 그리고 `guard` 문은 `where` 절 없이 쉼표로-구분된 조건 목록을 사용함.
 * '다중 유형 (multiple patterns)' 을 가지는 'switch 문 case 절' 에 대한 정보를 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [Switch Statement ('switch' 문)]({% post_url 2020-08-20-Statements %}#switch-statement-switch-문) 부분에 추가함.
 * [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 함수 타입에 대한 논의를 갱신했으며 이제 함수 인자 이름표는 더 이상 함수 타입의 일부가 아님.
+* 새로운 구문 표현인 `Protocol1 & Protocol2` 을 사용하기 위해 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 부분과 [Types (타입)]({% post_url 2020-02-20-Types %}) 장의 [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 부분에 있는 '프로토콜 합성 타입 (protocol composition types)' 에 대한 논의를 갱신함.
+* '동적 타입 표현식' 에 대해서 새로운 구문 표현인 `type(of:)` 를 사용하기 위해 '동적 타입 표현식 (Dynamic Type Expression)'[^dynamic-type-expression] 부분에 있는 논의를 갱신함.
+* [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 `#sourceLocation(file:line:)` 구문 표현을 사용하기 위해 '라인 제어 구문' 에 대한 논의를 갱신함.
+* 새로운 타입인 `Never` 를 사용하기 위해 [Functions that Never Return ('Never' 를 반환하는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-never-를-반환하는-함수) 에 있는 논의를 갱신함.
+* '플레이그라운드 글자 값 (playground literals)' 에 대한 정보를 [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 추가함.
+* '벗어나지 않는 클로저 (nonescaping closures)' 만 '입-출력 매개 변수 (in-out parameters)' 를 붙잡을 수 있다는 것에 주목하기 위해 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 부분에 있는 논의를 갱신함
+* [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 부분에 있는 '기본 설정 매개 변수' 에 대한 논의를 갱신했으며, 이제 이들을 함수 호출에서 재정렬할 수 있음.
+* [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에서 콜론을 사용하도록 '특성 인자 (attribute arguments)' 를 갱신함.
+* '다시 던지는 함수 (rethrowing function)' 의 'catch' 블럭 내에서 에러를 던지는 것에 대한 정보를 [Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)]({% post_url 2020-08-15-Declarations %}#rethrowing-functions-and-methods-다시-던지는-함수-및-메소드) 부분에 추가함.
+* 오브젝티브-C 에 있는 '획득자 (getter)' 와 '설정자 (setter)' 의 '선택자 (selector)' 에 접근하는 것에 대한 정보를 [Selector Expression (선택자 표현식)]({% post_url 2020-08-19-Expressions %}#selector-expression-선택자-표현식) 부분에 추가함.
+* '일반화된 타입 별명 (generic type aliases)' 과 프로토콜 내에서 '타입 별명 (type aliases)' 을 사용하는 것에 대해서 [Type Alias Declaration (타입 별명 선언)]({% post_url 2020-08-15-Declarations %}#type-alias-declaration-타입-별명-선언) 부분에 정보를 추가함.
+* '매개 변수 타입' 주위에는 괄호가 필수라는 것에 주목하기 위해 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 '함수 타입' 에 대한 논의를 갱신함.
+* `@IBAction`, `@IBOutlet`, 그리고 `@NSManaged` 특성은 `@objc` 특성을 내포하고 있음에 주목하기 위해 [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 갱신함
+* `@GKInspectable` 특성에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 추가함.
+* '옵셔널 프로토콜 필수 조건 (optional protocol requirements)' 은 오브젝티브-C 와 상호 호환되는 코드에서만 사용된다는 것을 분명하게 하기 위해 [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분에 있는 논의를 갱신함.
+* 함수 매개 변수에서 `let` 을 명시적으로 사용하는 것에 대한 논의를 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분에서 제거함.
+* `Boolean` 프로토콜에 대한 논의를 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장에서 제거했으며, 이제 이 프로토콜은 스위프트 표준 라이브러리에서 제거된 것임.
+* [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 있는 `@NSApplicatinMain` 특성에 대한 논의를 올바르게 바로 잡음.
 
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 과 함께 발표 되었다가, 2020-09-16 일에 Apple Event 와 함께 다시 갱신 되었습니다.
+
+[^dynamic-type-expression]: '2017-03-27' 일에 공개한 스위프트 3.1 에서 이 부분 자체가 책에서 제거되었기 때문에 링크가 없습니다.
