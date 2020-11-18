@@ -151,6 +151,25 @@ categories: Swift Language Grammar Revision History
 * `Boolean` 프로토콜에 대한 논의를 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장에서 제거했으며, 이제 이 프로토콜은 스위프트 표준 라이브러리에서 제거된 것임.
 * [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 있는 `@NSApplicatinMain` 특성에 대한 논의를 올바르게 바로 잡음.
 
+#### 2016-03-21
+
+* 스위프트 2.2 에서 갱신됨.
+* 사용중인 스위프트 버전에 따라 조건부로 코드를 컴파일하는 방법에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분에 추가함.
+* 이름이 다른 것이라곤 인자 이름뿐인 메소드와 초기자를 구별하는 방법에 대한 정보를 [Explicit Member Expression (명시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적인-멤버-표현식) 부분에 추가함.
+* 오브젝티브-C '선택자 (selectors)' 를 위한 `#selector` 구문 표현에 대한 정보를 [Selector Expression (선택자 표현식)]({% post_url 2020-08-19-Expressions %}#selector-expression-선택자-표현식) 부분에 추가함.
+* [Associated Types (결합된 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합된-타입) 과 [Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)]({% post_url 2020-08-15-Declarations %}#protocol-associated-type-declaration-프로토콜의-결합된-타입-선언) 부분에서 `associatedtype` 키워드를 사용하기 위한 '결합된 타입 (associated types)' 에 대한 논의를 갱신함.
+* [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 부분에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 갱신함.
+* '튜플 (tuples)' 을 비교하는 것에 대한 정보를 [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 부분에 추가함.
+* 키워드를 외부 매개 변수 이름으로 사용하는 것에 대한 정보를 [Keywords and Punctuation (키워드와 문장 부호)]({% post_url 2020-07-28-Lexical-Structure %}#keywords-and-punctuation-키워드와-문장-부호) 부분에 추가함.
+* 열거체와 열거체 'case 값' 이 `@objc` 특성을 사용할 수 있다는 것에 주목하기 위해 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 있는 논의를 갱신함.
+* '점 (dot)' 을 담고 있는 사용자 정의 연산자에 대한 논의를 가지고 있는 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 갱신함.
+* [Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)]({% post_url 2020-08-15-Declarations %}#rethrowing-functions-and-methods-다시-던지는-함수-및-메소드) 부분에 '다시 던지는 함수 (rethrowing functions)' 는 직접 에러를 던질 수 없다는 기록을 추가함.
+* [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분에 속성을 '입-출력 (in-out) 매개 변수' 로 전달할 때 호출되는 '속성 관찰자 (property observers)' 에 대한 기록을 추가함.
+* '에러 처리 (error handling)' 에 대한 부분을 [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %}) 장에 추가함.
+* 할당 해제 과장을 더 명확하게 보여주기 위해 [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분에 있는 그림을 갱신함.
+* C-언어 스타일의 `for` 반복문과, `++` 접두사 및 접미사 연산자, 그리고 `--` 접두사 및 접미사 연산자에 대한 논의를 제거함.
+* '변수인 함수 인자 (variable function arguments)'[^variable-function-arguments] 그리고 '커리 함수 (curried functions)' 를 위한 특수한 구문 표현에 대한 논의를 제거함.
+
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
@@ -158,3 +177,5 @@ categories: Swift Language Grammar Revision History
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 과 함께 발표 되었다가, 2020-09-16 일에 Apple Event 와 함께 다시 갱신 되었습니다.
 
 [^dynamic-type-expression]: '2017-03-27' 일에 공개한 스위프트 3.1 에서 이 부분 자체가 책에서 제거되었기 때문에 링크가 없습니다.
+
+[^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.
