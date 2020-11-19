@@ -170,6 +170,18 @@ categories: Swift Language Grammar Revision History
 * C-언어 스타일의 `for` 반복문과, `++` 접두사 및 접미사 연산자, 그리고 `--` 접두사 및 접미사 연산자에 대한 논의를 제거함.
 * '변수인 함수 인자 (variable function arguments)'[^variable-function-arguments] 그리고 '커리 함수 (curried functions)' 를 위한 특수한 구문 표현에 대한 논의를 제거함.
 
+#### 2015-10-20
+
+* 스위프트 2.1 에서 갱신됨.
+* [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 과 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 갱신했으며 이제 '문자열 보간법' 은 '문자열 글자 값' 을 담을 수 있음.
+* `@noescape` 특성에 대한 정보를 가진 [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 추가함.
+* 'tvOS' 에 대한 정보를 가진 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 과 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분을 갱신함.
+* '입-출력 매개 변수 (in-out parameters)' 의 작동 방식에 대한 정보를 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 부분에 추가함.
+* '클로저가 붙잡을 목록 (closure capture lists)' 에서 지정한 값을 붙잡는 방법에 대하여 [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 부분에 정보를 추가함.
+* '옵셔널 연쇄 (optional chaining)' 를 통한 할당이 작동하는 방법을 분명하게 밝기기 위해 [Accessing Properties Through Optional Chaining (옵셔널 연쇄를 통해 속성에 접근하기)]({% post_url 2020-06-17-Optional-Chaining %}#accessing-properties-through-optional-chaining-옵셔널-연쇄를-통해-속성에-접근하기) 부분을 갱신함.
+* [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 부분에 있는 '자동 클로저 (autoclosures)' 에 대한 논의를 개선함.
+* `??` 연산자를 사용하는 것에 대한 예제를 [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %}) 장에 추가함.
+
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
