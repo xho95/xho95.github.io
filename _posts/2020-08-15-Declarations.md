@@ -490,7 +490,7 @@ _열거체 선언 (enumeration declaration)_ 은 '이름 있는 열거체 타입
 
 #### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)
 
-다음 형식은 어떤 타입이어도 되는 열거체 'case 값' 을 가지고 있는 열거체 타입을 선언합니다:
+다음 형식은 어떤 타입이어도 되는 열거체 'case 값' 을 가지고 있는 열거체 타입을 선언합니다:[^any-type]
 
 enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
     case `enumeration case 1-열거체 case 값 1`<br />
@@ -1253,3 +1253,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
 
 [^class-final]: 즉 클래스 선언에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
+
+[^any-type]: 이 부분에서 사용한 'Any Type' 은 스위프트의 '`Any` 타입' 과는 다른 의미입니다.

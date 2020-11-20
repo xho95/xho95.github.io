@@ -113,7 +113,7 @@ languageName = "Swift++"
 // 이것은 컴파일-시간 에러가 됩니다: languageName cannot be changed. (languageName 은 바꿀 수 없습니다.)
 ```
 
-#### Prints Constants and Variables (상수와 변수 출력하기)
+#### Printing Constants and Variables (상수와 변수 출력하기)
 
 상수 또는 변수의 현재 값은 `print(_:separator:terminator:)` 함수로 출력할 수 있습니다:
 
