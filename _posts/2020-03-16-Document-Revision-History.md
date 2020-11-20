@@ -182,6 +182,22 @@ categories: Swift Language Grammar Revision History
 * [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 부분에 있는 '자동 클로저 (autoclosures)' 에 대한 논의를 개선함.
 * `??` 연산자를 사용하는 것에 대한 예제를 [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %}) 장에 추가함.
 
+#### 2015-09-16
+
+* 스위프트 2.0 에서 갱신됨.
+* '에러 처리 (error handling)' 에 대한 정보를 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장과, [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분, [Throw Statement ('throw' 문)]({% post_url 2020-08-20-Statements %}#throw-statement-throw-문) 부분, [Defer Statement ('defer' 문)]({% post_url 2020-08-20-Statements %}#defer-statement-defer-문) 부분, 그리고 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분에 추가함.
+* [Representing and Throwing Errors (에러를 표현하고 던지기)]({% post_url 2020-05-16-Error-Handling %}#representing-and-throwing-errors-에러를-표현하고-던지기) 부분을 갱신했으며, 이제 모든 타입이 `ErrorType` 프로토콜을 준수할 수 있음.
+* 새롭게 `try?` 키워드에 대한 정보를 [Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)]({% post_url 2020-05-16-Error-Handling %}#converting-errors-to-optional-values-에러를-옵셔널-값-으로-변환하기) 부분에 추가함.
+* '재귀적인 열거체 (recursive enumerations)' 에 대한 정보를 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Recursive Enumerations (재귀적인 열거체)]({% post_url 2020-06-13-Enumerations %}#recursive-enumerations-재귀적인-열거체) 부분과 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-any-type-어떤-타입이어도-되는-case-값-을-가지는-열거체) 부분에 추가함.
+* 'API 사용 가능성 (API avaiability)' 에 대한 정보를 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Checking API Availability (API 사용 가능성 검사하기)]({% post_url 2020-06-10-Control-Flow %}#checking-api-availability-api-사용-가능성-검사하기) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [Availability Condition (사용 가능성 조건)]({% post_url 2020-08-20-Statements %}#availability-condition-사용-가능성-조건) 부분에 추가함.
+* 새롭게 `guard` 문에 대한 정보를 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Early Exit (조기 탈출 구문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출-구문) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 부분에 추가함.
+* '프로토콜 익스텐션 (protocol extensions)' 에 대한 정보를 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분에 추가함.
+* '단위 테스트 (unit testing)' 을 위한 '접근 제어 (access control)' 에 대한 정보를 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장의 [Access Levels for Unit Test Targets (단위 테스트 대상을 위한 접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-for-unit-test-targets-단위-테스트-대상을-위한-접근-수준) 부분에 추가함.
+* 새롭게 '옵셔널 패턴 (optional pattern; 옵셔널 유형)' 에 대한 정보를 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장의 [Optional Pattern (옵셔널 패턴)]({% post_url 2020-08-25-Patterns %}#optional-pattern-옵셔널-패턴) 부분에 추가함.
+* `repeat`-`while` 반복문에 대한 정보를 가지고 [Repeat-While (Repeat-While 문)]({% post_url 2020-06-10-Control-Flow %}#repeat-while-repeat-while-문) 부분을 갱신함.
+* [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 갱신했으며, 이제 `String` 은 더 이상 스위프트 표준 라이브러리의 `CollectionType` 프로토콜을 준수하지 않음.
+* 스위프트 표준 라이브러리의 새로운 `print(_:separator:terminator)` 함수에 대한 정보를 [Printing Constants and Variables (상수와 변수 출력하기)]({% post_url 2016-04-24-The-Basics %}#printing-constants-and-variables-상수와-변수-출력하기) 부분에 추가함.
+
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
