@@ -197,6 +197,11 @@ categories: Swift Language Grammar Revision History
 * `repeat`-`while` 반복문에 대한 정보를 가지고 [Repeat-While (Repeat-While 문)]({% post_url 2020-06-10-Control-Flow %}#repeat-while-repeat-while-문) 부분을 갱신함.
 * [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 갱신했으며, 이제 `String` 은 더 이상 스위프트 표준 라이브러리의 `CollectionType` 프로토콜을 준수하지 않음.
 * 스위프트 표준 라이브러리의 새로운 `print(_:separator:terminator)` 함수에 대한 정보를 [Printing Constants and Variables (상수와 변수 출력하기)]({% post_url 2016-04-24-The-Basics %}#printing-constants-and-variables-상수와-변수-출력하기) 부분에 추가함.
+* `String` 원시 값을 가지는 열거체 'case 값' 의 작동 방식에 대한 정보를 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Implicitly Assigned Raw Values (암시적으로 할당되는 원시 값)]({% post_url 2020-06-13-Enumerations %}#implicitly-assigned-raw-values-암시적으로-할당되는-원시-값) 부분과 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-값-을-가지는-열거체) 부분에 추가함.
+* `@autoclosure` 특성에 대한 정보를-그의 `@autoclosure(escaping)` 형식을 포함하여-[Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 부분에 추가함.
+* `@available` 과 `@warn_unused_result` 특성에 대한 정보를 가지고 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 갱신함.
+* `@convention` 특성에 대한 정보를 가지고 [Type Attributes (타입 특성)]({% post_url 2020-08-14-Attributes %}#type-attributes-타입-특성) 부분을 갱신함.
+* `where` 절로 '다중 옵셔널 연결 (multiple optional bindings)' 을 사용하는 예제를 [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 부분에 추가함.[^multiple-optional-bindings]
 
 ### 참고 자료
 
@@ -207,3 +212,5 @@ categories: Swift Language Grammar Revision History
 [^dynamic-type-expression]: '2017-03-27' 일에 공개한 스위프트 3.1 에서 이 부분 자체가 책에서 제거되었기 때문에 링크가 없습니다.
 
 [^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.
+
+[^multiple-optional-bindings]: 초창기 스위프트 문법으로써, 현재는 '옵셔널 연결' 을 여러 번 이어 붙일 수 있기 때문에 없어졌습니다.
