@@ -49,7 +49,7 @@ categories: Swift Language Grammar Revision History
 * [Enumeration Case Pattern (열거체 case 값 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-값-패턴) 부분을 갱신했으며, 이제 '열거체 case 값 패턴' 도 옵셔널 값과 일치할 수 있음.
 * [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 갱신했으며, 이제 기본 설정 값을 가진 매개 변수에 대해서 '멤버 초기자 (memberwise initializers)' 도 매개 변수의 생략을 지원함.
 * 실행 시간에 '키 경로 (key path)' 로 찾아 가는 동적 멤버에 대한 정보를 [dynamicMemberLookup (동적으로 멤버 찾아가기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아가기) 부분에 추가함.
-* [Compiler Control Statements (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 에 있는 '대상 환경 (target environment)' 목록에 `macCatalyst` 를 추가함.
+* [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 에 있는 '대상 환경 (target environment)' 목록에 `macCatalyst` 를 추가함.
 * [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-self-타입) 부분을 갱신했으며, 이제 `Self` 는 현재의 클래스, 구조체, 또는 열거체 선언에서 도입한 타입을 참조하기 위해 사용할 수 있음.
 
 #### 2019-03-25
@@ -202,6 +202,16 @@ categories: Swift Language Grammar Revision History
 * `@available` 과 `@warn_unused_result` 특성에 대한 정보를 가지고 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 갱신함.
 * `@convention` 특성에 대한 정보를 가지고 [Type Attributes (타입 특성)]({% post_url 2020-08-14-Attributes %}#type-attributes-타입-특성) 부분을 갱신함.
 * `where` 절로 '다중 옵셔널 연결 (multiple optional bindings)' 을 사용하는 예제를 [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 부분에 추가함.[^multiple-optional-bindings]
+* `+` 연산자를 사용하여 문자열 글자 값을 서로 잇는 것이 컴파일 시간에 이루진다는 것에 대하여 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에 정보를 추가함.
+* '메타 타입 (metatype)' 값을 비교하고 이를 사용하여 초기자 표현식으로 인스턴스를 생성하는 것에 대하여 [Metatype Type (메타타입 타입)]({% post_url 2020-02-20-Types %}#metatype-type-메타타입-타입) 부분에 정보를 추가함.
+* 사용자-정의 단언문이 사용 불가능한 것이 언제인지에 대하여 [Debugging with Assertions (단언문으로 디버깅하기)]({% post_url 2016-04-24-The-Basics %}#debugging-with-assertions-단언문으로-디버깅하기) 부분에 기록을 추가함.
+* [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 있는 `@NSManaged` 특성에 대한 논의를 갱신했으며, 이제 이 특성은 정해진 인스턴스 메소드에 적용할 수 있음.
+* [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 갱신했으며, 이제 '가변 매개 변수' 는 함수 매개 변수 목록의 어떤 위치에서라도 선언할 수 있음.
+* 상위 클래스 초기자의 결과를 '강제 포장 풀기 (force-unwrapping)' 하면 '실패하지 않는 초기자 (nonfailable initializer)' 가 '실패 가능한 초기자 (failable initializer)' 로 '위로 위임 (delegate up)' 할 수 있다는 것에 대하여 [Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)]({% post_url 2016-01-23-Initialization %}#overriding-a-failable-initializer-실패-가능한-초기자-재정의하기) 부분에 정보를 추가함.
+* '열거체 case 값 (enumeration cases)' 을 함수처럼 사용하는 것에 대한 정보를 [Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-any-type-어떤-타입이어도-되는-case-값-을-가지는-열거체) 부분에 추가함.
+* 초기자를 명시적으로 참조하는 것에 대한 정보를 [Initializer Expression (초기자 표현식)]({% post_url 2020-08-19-Expressions %}#initializer-expression-초기자-표현식) 부분에 추가함.
+* '제작 구성 (build configuration)' 과 '라인 제어문 (line control statements)' 에 대한 정보를 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 부분에 추가함.
+* '메타 타입 (metatype)' 값으로부터 클래스 인스턴스를 생성하는 것에 대하여 [Metatype Type (메타타입 타입)]({% post_url 2020-02-20-Types %}#metatype-type-메타타입-타입) 부분에 기록을 추가함.
 
 ### 참고 자료
 
