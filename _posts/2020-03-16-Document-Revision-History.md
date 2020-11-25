@@ -212,6 +212,21 @@ categories: Swift Language Grammar Revision History
 * 초기자를 명시적으로 참조하는 것에 대한 정보를 [Initializer Expression (초기자 표현식)]({% post_url 2020-08-19-Expressions %}#initializer-expression-초기자-표현식) 부분에 추가함.
 * '제작 구성 (build configuration)' 과 '라인 제어문 (line control statements)' 에 대한 정보를 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 부분에 추가함.
 * '메타 타입 (metatype)' 값으로부터 클래스 인스턴스를 생성하는 것에 대하여 [Metatype Type (메타타입 타입)]({% post_url 2020-02-20-Types %}#metatype-type-메타타입-타입) 부분에 기록을 추가함.
+* '약한 참조 (weak references)' 는 '캐싱 (caching)' 에 적합하지 않다는 것에 대하여 [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분에 기록을 추가함.
+* '저장 타입 속성 (stored type properties)' 은 '느긋하게 초기화된다 (lazily initialized)' 는 것을 언급하기 위해 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분에 있는 기록을 갱신함.
+* 변수와 상수가 클로저에서 붙잡히는 방법을 분명하게 밝히기 위해 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 갱신함.
+* 언제 `@objc` 특성을 클래스에 적용할 수 있는 지를 설명하기 위해 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 갱신함.
+* `throw` 문의 실행 성능에 대하여 [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 부분에 기록을 추가함. [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분에 있는 `do` 문에 대하여 비슷한 정보를 추가함.
+* 클래스, 구조체, 그리고 열거체에 대한 '저장 타입 속성' 및 '계산 타입 속성' 에 대한 정보를 가지고 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분을 갱신함.
+* '이름표 달린 break 문 (labeled break statements)' 에 대한 정보를 가지고 [Break Statement ('break' 문)]({% post_url 2020-08-20-Statements %}#break-statement-break-문) 부분을 갱신함.
+* `willSet` 과 `didSet` 관찰자의 작동 방식을 분명하게 밝히기 위해 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분에 있는 기록을 갱신함.
+* `private` 접근의 영역에 대한 정보를 가지고 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 부분에 기록을 추가함.
+* '쓰레기 수집 시스템 (garbage collected systems)' 과 'ARC' 간의 '약한 참조 (weak references)' 에 있는 차이점에 대하여 [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분에 기록을 추가함.
+* '유니코드 크기 값 (Unicode scalars)' 의 더 엄밀한 정의를 가지고 [Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값에-있는-특수-문자) 부분을 갱신함.
+
+#### 2015-04-08
+
+* 스위프트 1.2 에서 갱신됨.
 
 ### 참고 자료
 
