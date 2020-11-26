@@ -269,6 +269,6 @@ let textB = "Hello world"
 
 [^balanced-set]: 원문에서는 'balanced set (균형 집합)' 이라는 용어를 사용하고 있는데, 이는 수학 용어입니다. 번역된 문장은 적당하게 의역한 것인데, 수학 용어인 'balanced set' 과 본문의 내용이 어떻게 연결되는 지는 잘 모르겠습니다. 'balanced set (균형 집합)' 에 대해서는 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 부분을 참고하기 바립니다.
 
-[^dingbats]: '딩뱃 (Dingbats)' 이란 조판 시에 사용하는 장식용 문자나 공백을 말한다고 합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
+[^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
 
 [^optional]: 이것은 '단일 물음표 문자 (single question mark)' 로 구성한 연산자는 스위프트 자체의 '옵셔널 (optional)' 과 의미가 겹치기 때문입니다.

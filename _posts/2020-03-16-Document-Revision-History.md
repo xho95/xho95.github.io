@@ -201,7 +201,7 @@ categories: Swift Language Grammar Revision History
 * `@autoclosure` 특성에 대한 정보를-그의 `@autoclosure(escaping)` 형식을 포함하여-[Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 부분에 추가함.
 * `@available` 과 `@warn_unused_result` 특성에 대한 정보를 가지고 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 갱신함.
 * `@convention` 특성에 대한 정보를 가지고 [Type Attributes (타입 특성)]({% post_url 2020-08-14-Attributes %}#type-attributes-타입-특성) 부분을 갱신함.
-* `where` 절로 '다중 옵셔널 연결 (multiple optional bindings)' 을 사용하는 예제를 [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 부분에 추가함.[^multiple-optional-bindings]
+* `where` 절로 '다중 옵셔널 연결 (multiple optional bindings)' 을 사용하는 예제를 [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 부분에 추가함.
 * `+` 연산자를 사용하여 문자열 글자 값을 서로 잇는 것이 컴파일 시간에 이루진다는 것에 대하여 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에 정보를 추가함.
 * '메타 타입 (metatype)' 값을 비교하고 이를 사용하여 초기자 표현식으로 인스턴스를 생성하는 것에 대하여 [Metatype Type (메타타입 타입)]({% post_url 2020-02-20-Types %}#metatype-type-메타타입-타입) 부분에 정보를 추가함.
 * 사용자-정의 단언문이 사용 불가능한 것이 언제인지에 대하여 [Debugging with Assertions (단언문으로 디버깅하기)]({% post_url 2016-04-24-The-Basics %}#debugging-with-assertions-단언문으로-디버깅하기) 부분에 기록을 추가함.
@@ -227,6 +227,33 @@ categories: Swift Language Grammar Revision History
 #### 2015-04-08
 
 * 스위프트 1.2 에서 갱신됨.
+* 스위프트는 이제 그 자체의 `Set` '집합체 (collection)' 타입을 가집니다. 더 많은 정보는, [Sets (셋; 집합)]({% post_url 2016-06-06-Collection-Types %}#sets-셋-집합) 를 참고하기 바랍니다.
+* `@autoclosure` 는 이제, 매개 변수의 타입이 아니라, 매개 변수 선언의 특성입니다. 새로운 매개 변수 선언 특성인 `@noescape` 도 있습니다. 더 많은 정보는, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 를 참고하기 바랍니다.
+* '타입 메소드' 와 '타입 속성' 은 이제 `static` 키워드를 '선언 수정자' 로 사용합니다. 더 많은 정보는 [Type Variable Properties (타입 변수 속성)]({% post_url 2020-08-15-Declarations %}#type-variable-properties-타입-변수-속성) 을 참고하기 바랍니다.
+* 스위프트는 이제 `as?` 와 `as!` 라는 '실패 가능한 내림 변환 연산자 (failable downcast operators)' 를 포함합니다. [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 를 참고하기 바랍니다.
+* [String Indices (문자열 색인)]({% post_url 2016-05-29-Strings-and-Characters %}#string-indices-문자열-색인) 에 대하여 새로운 지침 부분을 추가함.
+* [Overflow Operators (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 '값 넘침 나누기 (overflow division; `&/`)' 와 '값 넘침 나머지 (overflow remainder; `&%`)' 연산자를 제거함.
+* 상수 및 상수 속성 선언과 초기화에 대한 규칙을 갱신함. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고 바람.
+* '문자열 글자 값 (string literals)' 에 있는 '유니코드 크기 값 (Unicode scalars)' 의 정의를 갱신함. [Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값에-있는-특수-문자) 를 참고 바람.
+* 시작 색인과 끝 색인이 같은 '반-열린 범위 (half-open range)' 는 비어 있을 것이라는 것에 주목하기 위해 [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 갱신함.
+* 변수를 붙잡는 규칙을 분명히 밝히기 위해 [Closures Are Reference Types (클로저는 참조 타입입니다)]({% post_url 2020-03-03-Closures %}#closures-are-reference-types-클로저는-참조-타입입니다) 를 갱신함.
+* 부호 있는 정수와 부호 없는 정수에 대한 '값 넘침' 작동 방식을 분명히 밝히기 위해 [Value Overflow (값 넘침)]({% post_url 2020-05-11-Advanced-Operators %}#value-overflow-값-넘침) 을 갱신함.
+* 프로토콜 선언의 '영역 (scope)' 과 '멤버 (members; 구성원)' 을 분명히 밝히기 위해 [Protocol Declaration (프로토콜 선언)]({% post_url 2020-08-15-Declarations %}#protocol-declaration-프로토콜-선언) 을 갱신함.
+* '클로저가 붙잡을 목록 (closure capture lists)' 에 있는 '약한 참조 (weak references)' 와 '소유되지 않은 참조 (unowned references)' 에 대한 구문 표현을 분명히 밝히기 위해 [Defining a Capture List (붙잡을 목록 정의하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#defining-a-capture-list-붙잡을-목록-정의하기) 을 갱신함.
+* 사용자 정의 연산자를 위해 지원되는 문자들, 가령 수학 연산자들, 잡다한 기호들, 그리고 '딩뱃 (dingbats)[^dingbats] 유니코드 블럭들', 에 대한 예제를 명시적으로 언급하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 갱신함.
+* 이제 지역 함수 영역에서는 상수를 초기화하지 않고도 선언할 수 있습니다. 맨 처음 사용하기 전에 설정 값을 반드시 가져야 합니다. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고하기 바랍니다.
+* '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 를 참고하기 바랍니다.
+* '다중 옵셔널 연결 (multiple optional bindings)' 은 이제 쉼표로-구분된 할당 표현식 목록으로써 단일 `if` 문에 나타낼 수 있습니다. 더 많은 정보는, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 을 참고하기 바랍니다.
+* [Optional-Chaining Expression (옵셔널-연쇄 표현식)]({% post_url 2020-08-19-Expressions %}#optional-chaining-expression-옵셔널-연쇄-표현식) 은 반드시 '접미사 표현식 (postfix expression)' 내에 있어야 합니다.
+* '프로토콜 변환 (protocol casts)' 은 더 이상 `@objc` 프로토콜로 제한되지 않습니다.
+* 실행 시간에 실패할 수 있는 '타입 변환 (type casts)' 은 이제 `as?` 또는 `as!` 연산자를 사용하며, 실패하지 않는다고 보증한 '타입 변환' 은 `as` 연산자를 사용합니다. 더 많은 정보는, [Type-Casting Operators (타입-변환 연산자)]({% post_url 2020-08-19-Expressions %}#type-casting-operators-타입-변환-연산자) 를 참고하기 바랍니다.
+
+#### 2014-10-16
+
+* 스위프트 1.1 에서 갱신됨.
+
+#### 2014-08-18
+
 
 ### 참고 자료
 
@@ -238,4 +265,4 @@ categories: Swift Language Grammar Revision History
 
 [^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.
 
-[^multiple-optional-bindings]: 초창기 스위프트 문법으로써, 현재는 '옵셔널 연결' 을 여러 번 이어 붙일 수 있기 때문에 없어졌습니다.
+[^dingbats]: '딩뱃 (dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
