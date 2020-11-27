@@ -251,9 +251,18 @@ categories: Swift Language Grammar Revision History
 #### 2014-10-16
 
 * 스위프트 1.1 에서 갱신됨.
+* [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에 온전한 전체 지침을 추가함.
+* 프로토콜의 [Failable Initializer Requirements (실패 가능한 초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#failable-initializer-requirements-실패-가능한-초기자-필수-조건) 에 대한 설명을 추가함.
+* `Any` 타입인 상수와 변수는 이제 함수 인스턴스를 가질 수 있음. `switch` 문 내에서 함수 타입을 검사하고 변환하는 방법을 보여주기 위해 [Type Casting for Any and AnyObject ('Any' 와 'AnyObject' 에 대한 타입 변환)]({% post_url 2020-04-01-Type-Casting %}#type-casting-for-any-and-anyobject-any-와-anyobject-에-대한-타입-변환) 에 있는 예제를 갱신함.
+* '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능한 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-값-을-가지는-열거체) 를 참고하기 바랍니다.
+* 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자) 에 대하여 새로운 기준 부분을 추가함.
+* 사용자 정의 연산자는 이제 `?` 문자를 가질 수 있음. 개정된 규칙을 설명하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 의 기준을 갱신함. [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 에서 유효한 연산자 문자 집합에 대한 중복된 설명을 제거함.
 
 #### 2014-08-18
-
+* 'iOS' 와 'OS X' 앱을 제작하기 위한 '애플 (Apple)' 의 새로운 프로그래밍 언어인, '스위프트 (Swift) 1.0' 을 설명하는 새로운 문서.
+* 프로토콜에 있는 [Initializer Requirements (초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#initializer-requirements-초기자-필수-조건) 에 대하여 새로운 부분을 추가함.
+* [Class-Only Protocols (클래스-전용 프로토콜)]({% post_url 2016-03-03-Protocols %}#class-only-protocols-클래스-전용-프로토콜) 에 대하여 새로운 부분을 추가함.
+* [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 는 이제 '문자열 보간법 (string interpolation)' 을 사용할 수 있음. 그와 반대인 기록을 제거함.
 
 ### 참고 자료
 
