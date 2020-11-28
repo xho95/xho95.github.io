@@ -210,7 +210,7 @@ john.residence?.address = createAddress()
 
 `createAddress()` 함수가 호출되지 않았다는 건, 아무 것도 출력되지 않았다는 것으로, 알 수 있습니다.
 
-### Call Methods Through Optional Chaining (옵셔널 연쇄를 통해 메소드 호출하기)
+### Calling Methods Through Optional Chaining (옵셔널 연쇄를 통해 메소드 호출하기)
 
 옵셔널 연쇄를 사용하여 옵셔널 값에 있는 메소드를 호출할 수 있으며, 그 메소드 호출이 성공했는지 여부도 검사할 수 있습니다. 해당 메소드가 반환 값을 정의하지 않은 경우에도 이렇게 할 수 있습니다.
 
