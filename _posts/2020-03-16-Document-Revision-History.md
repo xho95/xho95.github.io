@@ -263,6 +263,11 @@ categories: Swift Language Grammar Revision History
 * 프로토콜에 있는 [Initializer Requirements (초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#initializer-requirements-초기자-필수-조건) 에 대하여 새로운 부분을 추가함.
 * [Class-Only Protocols (클래스-전용 프로토콜)]({% post_url 2016-03-03-Protocols %}#class-only-protocols-클래스-전용-프로토콜) 에 대하여 새로운 부분을 추가함.
 * [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 는 이제 '문자열 보간법 (string interpolation)' 을 사용할 수 있음. 그와 반대인 기록을 제거함.
+* 이제 더 이상 `String` 과 `Character` 값을 '더하기 연산자 (`+`)' 나 '더하기 할당 연산자 (`+=`)' 로 조합할 수 없다는 사실을 반영하기 위해 [Concatenating Strings and Characters (문자열 및 문자 연결하기)](% post_url 2016-05-29-Strings-and-Characters %}#concatenating-strings-and-characters-문자열-및-문자-연결하기) 부분을 갱신함. 이러한 연산자들은 이제 `String` 값에만 사용됨. 단일 `Character` 값을 문자열 끝에 덧붙이려면 `String` 타입의 `append(_:)` 메소드를 사용할 것.
+* `availability` 특성에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 추가함.
+* [Optionals (옵셔널; 선택적 값 타입)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널-선택적-값-타입) 은 이제, '옵셔널 `Bool` 값' 과 작업할 때의 혼동을 피하기 위해, 값을 가지고 있을 때는 `true` 로 그렇지 않을 때는 `false` 라는 식의 암시적인 평가를 더 이상 하지 않음. 옵셔널이 값을 담고 있는지 알아내려면, 그 대신, `nil` 인지를 `==` 및 `!=` 연산자로 명시적으로 검사하기 바람.
+* 스위프트는 이제, 옵셔널의 값이 존재하면 포장을 풀고, 옵셔널이 `nil` 이면 '기본 설정 값' 을 반환하는, [Nil-Coalescing Operator (Nil-통합 연산자)]({% post_url 2016-04-27-Basic-Operators %}#nil-coalescing-operator-nil-통합-연산자) (`a ?? b`) 를 가짐.
+* '문자열과 문자 비교' 및 '접두사 / 접미사 비교' 는 이제 '확장된 자소 덩어리 (extended grapheme clusters)' 의 '유니코드 값이 법적으로 동등함 (Unicode canonical equivalence)'[^canonical] 에 기초한다는 것을 반영하고 또 증명해 보이기 위해 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 갱신하고 확장함.
 
 ### 참고 자료
 
@@ -275,3 +280,5 @@ categories: Swift Language Grammar Revision History
 [^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.
 
 [^dingbats]: '딩뱃 (dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
+
+[^canonical]: 여기서 원문의 'canonical' 을 '표준적인' 이라는 말이 아니라 '법적인' 이라는 말로 옮겼는데, 이는 'canon' 이 원래 '교회 법' 을 의미하는 말이기 때문입니다. '법적으로 동등함' 이 무엇인지에 대해서는 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 참고하기 바랍니다.
