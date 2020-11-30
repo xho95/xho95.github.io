@@ -159,7 +159,9 @@ train.makeNoise()
 
 '상속받은 인스턴스 속성' 이나 '상속받은 타입 속성' 을 재정의하려면 그 속성에 대한 'getter' 와 'setter' 를 사용자 목적에 맞게 제공하면 되는데, 이 외에도 '속성 관찰자 (property observers)' 를 추가하여 '상속하는 속성' 이 '실제 속성 값' 의 변화를 관찰하도록 할 수도 있습니다.
 
-**Overriding Property Getters and Setters (속성의 Getters 와 Setters 재정의하기)**
+<p>
+<strong id="overriding-property-getters-and-setters-속성의-getters-와-setters-재정의하기">Overriding Property Getters and Setters (속성의 Getters 와 Setters 재정의하기)</strong>
+</p>
 
 사용자 정의 'getter' (그리고, 적절한 경우 'setter' 까지) 를 제공하여 상속받은 속성은 _어느 것이든 (any)_ 재정의할 수 있는데, 이 때 원 소스에서 상속받은 속성의 구현이 '저장 속성' 으로 되었든 '계산 속성' 으로 되었든 상관이 없습니다. 상속받은 속성의 본질이 '저장 속성' 인지 '계산 속성' 인지는 '하위 클래스' 에서 알 수가 없습니다-단지 이 상속받은 속성의 이름과 타입이 어떤 것인지만 알 수 있습니다. 재정의하려면 항상 그 속성의 이름과 타입 두 가지 모두 다시 반드시 알려줘야 하며, 이는 컴파일러가 이 '재정의' 에 해당하는 '상위 클래스' 의 속성을 검사하려면 이름과 타입이 같은지를 보고 검사하게 되기 때문입니다.
 
