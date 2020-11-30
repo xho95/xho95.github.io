@@ -284,9 +284,9 @@ print(#"6 times 7 is \#(6 * 7)."#)
 
 _유니코드 (Unicode)_ 는 서로 다른 '문자 (writing system)' 끼리 텍스트를 '부호화하고 (encoding)', 표현하며, 처리하는 국제 표준입니다. 이를 통해 어떤 언어로도 거의 모든 문자를 표준화된 형태로 표현할 수 있으며, 텍스트 파일이나 웹 페이지와 같은 외부 소스에서 그 문자를 읽고 쓸 수 있게 됩니다. 스위프트의 `String` 과 `Character` 타입은 완전히 유니코드에 부합하며 (Unicode-compliant), 이번 장에서 그것을 확인할 수 있습니다.
 
-#### Unicode Scalars (유니코드 크기 값)
+#### Unicode Scalar Values (유니코드 크기 값)
 
-속을 들여다보면, 본래 스위프트의 `String` 타입은 _유니코드 크기 값 (Unicode scalar value)_ 으로 만들어져 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대해 유일하게 지정된 21-bit 수를 말하여, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`), 또 `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 입니다.
+속을 들여다보면, 본래 스위프트의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 만들어져 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대해 유일하게 지정된 21-bit 수를 말하여, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`), 또 `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 입니다.
 
 모든 21-bit '유니코드 크기 값' 에 문자가 할당되어 있는 것은 아님을 명심하기 바랍니다-일부 크기 값은 미래에 할당될 때나 UTF-16 부호화 (encoding) 에 사용될 때를 대비해서 예약되어 있습니다. 문자에 할당된 '크기 값 (scalar values)' 은 보통 이름을 가지고 있으며, 위에서 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 이 그런 예입니다.
 

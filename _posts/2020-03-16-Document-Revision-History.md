@@ -259,7 +259,7 @@ categories: Swift Language Grammar Revision History
 * 사용자 정의 연산자는 이제 `?` 문자를 가질 수 있음. 개정된 규칙을 설명하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 의 기준을 갱신함. [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 에서 유효한 연산자 문자 집합에 대한 중복된 설명을 제거함.
 
 #### 2014-08-18
-* 'iOS' 와 'OS X' 앱을 제작하기 위한 '애플 (Apple)' 의 새로운 프로그래밍 언어인, '스위프트 (Swift) 1.0' 을 설명하는 새로운 문서.
+* 'iOS' 와 'OS X' 앱을 제작하기 위한 '애플 (Apple)' 의 새로운 프로그래밍 언어인, '스위프트 (Swift) 1.0' 을 설명하는 새로운 문서.[^introducing-swift]
 * 프로토콜에 있는 [Initializer Requirements (초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#initializer-requirements-초기자-필수-조건) 에 대하여 새로운 부분을 추가함.
 * [Class-Only Protocols (클래스-전용 프로토콜)]({% post_url 2016-03-03-Protocols %}#class-only-protocols-클래스-전용-프로토콜) 에 대하여 새로운 부분을 추가함.
 * [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 는 이제 '문자열 보간법 (string interpolation)' 을 사용할 수 있음. 그와 반대인 기록을 제거함.
@@ -272,6 +272,20 @@ categories: Swift Language Grammar Revision History
 * '옵셔널 연쇄 (optional chaining)' 을 통하여 [Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산에 접근하기)]({% post_url 2020-06-17-Optional-Chaining %}#accessing-subscripts-of-optional-type-옵셔널-타입의-첨자-연산에-접근하기) 에 대하여 새로운 부분을 추가함.
 * 더 이상 `+=` 연산자로 단일 항목을 배열에 덧붙일 수 없음에 주목하기 위해 [Accessing and Modifying an Array (배열에 접근하고 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-an-array-배열에-접근하고-수정하기) 부분을 갱신함. 그 대신, `append(_:)` 메소드를 사용하거나, `+=` 연산자로 '단일-항목의 배열 (single-item array)' 을 덧붙이도록 함.
 * [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 인 `a...b` 와 `a..<b` 에서 시작 값인 `a` 는 반드시 끝 값인 `b` 보다 크면 안된다는 것에 대한 기록을 추가함.
+* '초기자 재정의 (initializer overrides)' 를 다루는 도입부를 제거하기 위해 [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장을 재작성함. 이 장은 이제 하위 클래스에서 새로운 '기능성 (functionality)' 을 추가하는 것과, '재정의' 로 기존 '기능성' 을 수정하는 것에 더 집중함. 이 장의 [Overriding Property Getters and Setters (속성의 Getters 와 Setters 재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-property-getters-and-setters-속성의-getters-와-setters-재정의하기) 예제는 `description` 속성을 재정의하는 방법을 보여주기 위해 재작성됨. (하위 클래스의 초기자에서 상속한 속성의 '기본 설정 값' 을 수정하는 것에 대한 예제는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장으로 옮김.)
+* '지명 초기자 (designated initializer)' 의 재정의는 반드시 이제 `override` 수정자로 표시해야 함을 알리기 위해 [Initializer Inheritance and Overriding (초기자 상속 및 재정의)]({% post_url 2016-01-23-Initialization %}#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 부분을 갱신함.
+* 이제 '필수 초기자' 의 모든 하위 클래스 구현 앞에 `required` 수정자를 붙여야 하며, '필수 초기자' 의 '필수 조건 (requirements)' 은 '자동으로 상속된 초기자' 로 만족시킬 수 있음을 알리기 위해, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 갱신함.
+* '중위 (infix)' [Operator Methods (연산자 메소드)]({% post_url 2020-05-11-Advanced-Operators %}#operator-methods-연산자-메소드) 는 이제 더 이상 `@infix` 특성을 필수로 요구하지 않음.
+* [Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-연산자와-접미사-연산자) 에 대한 `@prefix` 와 `@postfix` 특성은 `prefix` 와 `postfix` 선언 수정자로 대체되었음.
+* 동일한 '피연산자 (operand)' 에 '접두사 (prefix) 연산자' 와 '접미사 (postfix) 연산자' 를 둘 다 적용할 때 [Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-연산자와-접미사-연산자) 가 적용되는 순서에 대한 기록을 추가함.
+* [Compound Assignment Operators (복합 할당 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#compound-assignment-operators-복합-할당-연산자) 에 대한 '연산자 함수 (operator functions)' 는 이제 함수를 정의할 때 더 이상 `@assignment` 특성을 사용하지 않습니다.
+* [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 지정하는 수정자의 순서가 바뀌었음. 예를 들어, 이제 `operator prefix` 가 아니라 `prefix operator` 라고 작성함.
+* [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 에 있는 `dynamic` 선언 수정자에 대한 정보를 추가함.
+* '타입 추론 (type inference)' 이 [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 과 작업하는 방법에 대한 정보를 추가함.
+* '커리 함수 (curried functions)' 에 대한 정보를 추가함.[^curried-functions]
+* [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 에 대한 새로운 장을 추가함.
+* 스위프트의 `Character` 타입은 이제 단일한 '유니코드 확장 자소 덩어리 (Unicode extended grapheme cluster)' 를 나타낸다는 사실을 반영하기 위해 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 갱신함. 이는 [Extended Grapheme Clusters (확장된 자소 덩어리)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-grapheme-clusters-확장된-자소-덩어리) 에 대한 새로운 부분과 [Unicode Scalar Values (유니코드 크기 값)]({% post_url 2016-05-29-Strings-and-Characters %}#unicode-scalar-values-유니코드-크기-값) 및 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 에 대한 더 많은 정보를 포함함.
+* '문자열 글자 값 (string literals)' 안에 있는 '유니코드 크기 값 (Unicode scalars)' 은 이제, 유니코드 '코드 공간 (codespace)' 범위인, '0' 에서 '10FFFF' 사이의 16-진수인 `n` 을 써서, `\u{n}` 처럼 작성된다는 것을 알리기 위해 [String Literals (문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#string-literals-문자열-글자-값) 부분을 갱신함.
 
 ### 참고 자료
 
@@ -286,3 +300,7 @@ categories: Swift Language Grammar Revision History
 [^dingbats]: '딩뱃 (dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
 
 [^canonical]: 여기서 원문의 'canonical' 을 '표준적인' 이라는 말이 아니라 '법적인' 이라는 말로 옮겼는데, 이는 'canon' 이 원래 '교회 법' 을 의미하는 말이기 때문입니다. '법적으로 동등함' 이 무엇인지에 대해서는 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 참고하기 바랍니다.
+
+[^introducing-swift]: '스위프트 (Swift)' 프로그래밍 언어는 2014년 'WWDC' 에서 2014년 6월 2일에 최초로 발표되었습니다. 2014년 8월 18일은 그 이후 최초로 갱신된 내용입니다.
+
+[^curried-functions]: '커리 함수 (curried functions)' 에 대한 내용은 '2016-03-21' 일에 공개한 스위프트 2.2 에서 제거되었기 때문에 링크가 없습니다.
