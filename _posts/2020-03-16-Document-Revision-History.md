@@ -293,7 +293,7 @@ categories: Swift Language Grammar Revision History
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 과 함께 발표 되었다가, 2020-09-16 일에 Apple Event 와 함께 다시 갱신 되었습니다.
 
-[^dynamic-type-expression]: '2017-03-27' 일에 공개한 스위프트 3.1 에서 이 부분 자체가 책에서 제거되었기 때문에 링크가 없습니다.
+[^dynamic-type-expression]: '동적 타입 표현식 (Dynamic Type Expression)' 에 대한 내용은 [2017-03-27](#2017-03-27) 일에 공개한 스위프트 3.1 에서 제거되었기 때문에 링크가 없습니다.
 
 [^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.
 
@@ -303,4 +303,4 @@ categories: Swift Language Grammar Revision History
 
 [^introducing-swift]: '스위프트 (Swift)' 프로그래밍 언어는 2014년 'WWDC' 에서 2014년 6월 2일에 최초로 발표되었습니다. 2014년 8월 18일은 그 이후 최초로 갱신된 내용입니다.
 
-[^curried-functions]: '커리 함수 (curried functions)' 에 대한 내용은 '2016-03-21' 일에 공개한 스위프트 2.2 에서 제거되었기 때문에 링크가 없습니다.
+[^curried-functions]: '커리 함수 (curried functions)' 에 대한 내용은 [2016-03-21](#2016-03-21) 일에 공개한 스위프트 2.2 에서 제거되었기 때문에 링크가 없습니다.
