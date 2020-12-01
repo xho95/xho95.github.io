@@ -286,6 +286,25 @@ categories: Swift Language Grammar Revision History
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 에 대한 새로운 장을 추가함.
 * 스위프트의 `Character` 타입은 이제 단일한 '유니코드 확장 자소 덩어리 (Unicode extended grapheme cluster)' 를 나타낸다는 사실을 반영하기 위해 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 갱신함. 이는 [Extended Grapheme Clusters (확장된 자소 덩어리)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-grapheme-clusters-확장된-자소-덩어리) 에 대한 새로운 부분과 [Unicode Scalar Values (유니코드 크기 값)]({% post_url 2016-05-29-Strings-and-Characters %}#unicode-scalar-values-유니코드-크기-값) 및 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 에 대한 더 많은 정보를 포함함.
 * '문자열 글자 값 (string literals)' 안에 있는 '유니코드 크기 값 (Unicode scalars)' 은 이제, 유니코드 '코드 공간 (codespace)' 범위인, '0' 에서 '10FFFF' 사이의 16-진수인 `n` 을 써서, `\u{n}` 처럼 작성된다는 것을 알리기 위해 [String Literals (문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#string-literals-문자열-글자-값) 부분을 갱신함.
+* `NSString length` 속성은 이제, `utf16count` 가 아니라, `utf16Count`으로써 스위프트 자체의 `Sting` 타입에 대응됨.
+* 스위프트의 자체 `String` 타입은 이제 더 이상 `uppercaseString` 이나 `lowercaseString` 속성을 가지지 않음. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있던 관련된 부분을 제거했으며, 다양한 코드 예제를 갱신함.
+* [Initializer Parameters Without Argument Labels (인자 이름표가 없는 초기자 매개 변수)]({% post_url 2016-01-23-Initialization %}#initializer-parameters-without-argument-labels-인자-이름표가-없는-초기자-매개-변수) 에 대하여 새로운 부분을 추가함.
+* [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에 대하여 새로운 부분을 추가함.
+* [Optional Tuple Return Types (옵셔널 튜플 반환 타입)]({% post_url 2020-06-02-Functions %}#optional-tuple-return-types-옵셔널-튜플-반환-타입) 에 대하여 새로운 부분을 추가함.
+* 서로 관계가 있는 '여러 개의 변수들' 을 한 개의 '타입 보조 설명 (type annotation)' 으로 된 한 줄에서 정의 할 수 있음을 알리기 위해 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 갱신함.
+* `@optional`, `@lazy`, `@final`, 그리고 `@required` 특성은 이제 `optional`, `lazy`, `final`, 그리고 `required` [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 임.
+* `..<` 를 ("반-닫힌 범위 연산자 (half-closed range operator) 대신") [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 로 '언급 (refer)' 하도록 전체 책을 갱신함.
+* `Dictionary` 는 이제 '불리언 (Boolean)' 속성인 `isEmpty` 를 가진다는 것을 알리기 위해 [Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리에-접근하고-수정하기) 부분을 갱신함.
+* [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 사용할 수 있는 전체 문자 목록을 명확히 밝힘.
+* `nil` 과 '불리언 (Boolean)' 인 `true` 및 `false` 는 이제 [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 임.
+* 스위프트의 `Array` 타입은 이제 온전하게 '값 의미 구조 (value semantics)' 를 가짐. 새로운 접근 방식을 반영하기 위해 [Mutability of Collections (집합체의 변경 가능성)](#mutability-of-collections-집합체의-변경-가능성) 과 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 에 대한 정보를 갱신함. 또한 '문자열 배열 (strings arrays)' 및 '딕셔너리 (dictionaries)' 에 대한 할당 및 복사 작동 방식도 분명하게 밝힘.
+* [Array Type Shorthand Syntax (배열 타입 약칭 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#array-type-shorthand-syntax-배열-타입-약칭-구문-표현) 은 이제 `SomeType[]` 대신 `[SomeType]` 으로 작성됨.
+* `[KeyType : ValueType]` 로 작성하는, [Dictionary Type Shorthand Syntax (딕셔너리 타입 약칭 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#dictionary-type-shorthand-syntax-딕셔너리-타입-약칭-구문-표현) 에 대하여 새로운 부분을 추가함.
+* [Hash Values for Set Types (셋 타입의 해쉬 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입의-해쉬-값) 에 대한 새로운 부분을 추가함.
+* [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 의 예제는 이제, 새롭게 배열의 '값 의미 구조 (value semantics)' 을 반영하기 위해, '전역 `sort(_:_:)` 함수' 대신 '전역 `sorted(_:_:)` 함수' 를 사용함.
+* 구조체의 저장 속성이 기본 설정 값을 가지고 있지 않은 경우라도 구조체의 '멤버 초기자 (memberwise initializer)' 가 사용 가능함을 분명히 밝히기 위해 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에 대한 정보를 갱신함.
+* [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 를 `..` 대신 `..<` 로 갱신함.
+* [Extending a Generic Type (일반화된 (generic) 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화된-generic-타입-확장하기) 에 대한 예제를 추가함.
 
 ### 참고 자료
 
