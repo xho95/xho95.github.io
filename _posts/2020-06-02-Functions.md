@@ -171,7 +171,9 @@ print("min is \(bounds.min) and max is \(bounds.max)")
 
 튜플 멤버의 이름은 함수에서 튜플을 반환할 때 지을 필요는 없는데, 이는 함수 반환 타입 부분에서 이미 이름을 지어줬기 때문입니다.
 
-**Optional Tuple Return Types (옵셔널 튜플 반환 타입)**
+<p>
+<strong id="optional-tuple-return-types-옵셔널-튜플-반환-타입">Optional Tuple Return Types (옵셔널 튜플 반환 타입)</strong>
+</p>
 
 함수가 반환하는 튜플 타입에서 전체 튜플이 "값이 없음 (no value)" 일 가능성이 있는 경우, _옵셔널 (optional)_ 튜플 반환 타입을 사용하여 이 전체 튜플이 `nil` 이 될 수 있다는 사실을 반영할 수 있습니다. '옵셔널 튜플 반환 타입 (optional tuple return type)' 을 작성하려면 튜플 타입의 '닫음 괄호' 뒤에 물음표를 붙이면 되는데, 가령 `(Int, Int)?` 나 `(String, Int, Bool)?` 같은 것입니다.
 
