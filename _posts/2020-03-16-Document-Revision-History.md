@@ -22,7 +22,7 @@ categories: Swift Language Grammar Revision History
 * '`@main` 특성 (attribute)' 에 대한 정보를 [main (메인)]({% post_url 2020-08-14-Attributes %}#main-메인) 부분에 추가함.
 * `#filePath` 를 [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 추가했으며, `#file` 에 대한 '논의 (discussion)' 를 갱신함.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 갱신했으며, 이제 클로저는 더 많은 상황에서 암시적으로 `self` 를 참조할 수 있음.
-* [Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-using-do-catch-do-catch-구문으로-에러-처리하기) 와 [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분을 갱신했으며, 이제 '`catch` 절' 은 '다중 에러 (multiple errors)' 와도 일치하는지 맞춰볼 수 있음.
+* [Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-using-do-catch-do-catch-구문으로-에러-처리하기) 와 [Do Statement ('do' 문)]({% post_url 2020-08-20-Statements %}#do-statement-do-문) 부분을 갱신했으며, 이제 '`catch` 절' 은 '다중 에러 (multiple errors)' 와도 일치하는지 맞춰볼 수 있음.
 * `Any` 에 대한 더 많은 정보를 추가했으며 이를 새로 [Any Type ('Any' 타입)]({% post_url 2020-02-20-Types %}#any-type-any-타입) 부분으로 옮김.
 * [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 갱신했으며, 이제 '느긋한 속성 (lazy properties)' 도 관찰자를 가질 수 있음.
 * [Protocol Declaration (프로토콜 선언)]({% post_url 2020-08-15-Declarations %}#protocol-declaration-프로토콜-선언) 부분을 갱신했으며, 이제 열거체의 멤버도 '프로토콜 필수 조건 (protocol requirements)' 을 만족할 수 있음.
@@ -185,7 +185,7 @@ categories: Swift Language Grammar Revision History
 #### 2015-09-16
 
 * 스위프트 2.0 에서 갱신됨.
-* '에러 처리 (error handling)' 에 대한 정보를 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장과, [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분, [Throw Statement ('throw' 문)]({% post_url 2020-08-20-Statements %}#throw-statement-throw-문) 부분, [Defer Statement ('defer' 문)]({% post_url 2020-08-20-Statements %}#defer-statement-defer-문) 부분, 그리고 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분에 추가함.
+* '에러 처리 (error handling)' 에 대한 정보를 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장과, [Do Statement ('do' 문)]({% post_url 2020-08-20-Statements %}#do-statement-do-문) 부분, [Throw Statement ('throw' 문)]({% post_url 2020-08-20-Statements %}#throw-statement-throw-문) 부분, [Defer Statement ('defer' 문)]({% post_url 2020-08-20-Statements %}#defer-statement-defer-문) 부분, 그리고 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분에 추가함.
 * [Representing and Throwing Errors (에러를 표현하고 던지기)]({% post_url 2020-05-16-Error-Handling %}#representing-and-throwing-errors-에러를-표현하고-던지기) 부분을 갱신했으며, 이제 모든 타입이 `ErrorType` 프로토콜을 준수할 수 있음.
 * 새롭게 `try?` 키워드에 대한 정보를 [Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)]({% post_url 2020-05-16-Error-Handling %}#converting-errors-to-optional-values-에러를-옵셔널-값-으로-변환하기) 부분에 추가함.
 * '재귀적인 열거체 (recursive enumerations)' 에 대한 정보를 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Recursive Enumerations (재귀적인 열거체)]({% post_url 2020-06-13-Enumerations %}#recursive-enumerations-재귀적인-열거체) 부분과 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-any-type-어떤-타입이어도-되는-case-값-을-가지는-열거체) 부분에 추가함.
@@ -216,7 +216,7 @@ categories: Swift Language Grammar Revision History
 * '저장 타입 속성 (stored type properties)' 은 '느긋하게 초기화된다 (lazily initialized)' 는 것을 언급하기 위해 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분에 있는 기록을 갱신함.
 * 변수와 상수가 클로저에서 붙잡히는 방법을 분명하게 밝히기 위해 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 갱신함.
 * 언제 `@objc` 특성을 클래스에 적용할 수 있는 지를 설명하기 위해 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 갱신함.
-* `throw` 문의 실행 성능에 대하여 [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 부분에 기록을 추가함. [Do Statement ('do' 구문)]({% post_url 2020-08-20-Statements %}#do-statement-do-구문) 부분에 있는 `do` 문에 대하여 비슷한 정보를 추가함.
+* `throw` 문의 실행 성능에 대하여 [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 부분에 기록을 추가함. [Do Statement ('do' 문)]({% post_url 2020-08-20-Statements %}#do-statement-do-문) 부분에 있는 `do` 문에 대하여 비슷한 정보를 추가함.
 * 클래스, 구조체, 그리고 열거체에 대한 '저장 타입 속성' 및 '계산 타입 속성' 에 대한 정보를 가지고 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분을 갱신함.
 * '이름표 달린 break 문 (labeled break statements)' 에 대한 정보를 가지고 [Break Statement ('break' 문)]({% post_url 2020-08-20-Statements %}#break-statement-break-문) 부분을 갱신함.
 * `willSet` 과 `didSet` 관찰자의 작동 방식을 분명하게 밝히기 위해 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분에 있는 기록을 갱신함.

@@ -136,7 +136,7 @@ struct PurchasedSnack {
 
 #### Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)
 
-코드 블럭을 실행해서 에러를 처리하려면 `do`-`catch` 문을 사용합니다. `do` 절에 있는 코드에서 에러를 던지면, 이것이 `catch` 절과 일치하는 지를 맞춰봄으로써 어디에서 에러를 처리할 수 있는 지를 결정합니다.
+에러를 처리하기 위해 코드 블럭을 실행하려면 `do`-`catch` 문을 사용합니다. `do` 절의 코드가 에러를 던지면, 어느 것이 에러를 처리할 수 있는 지를 결정하기 위해 `catch` 절과 일치 여부를 맞춰봅니다.
 
 다음은 `do`-`catch` 문의 일반적인 형식입니다:
 
@@ -153,9 +153,9 @@ do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지를 지시하기 위해 `catch` 뒤에 '유형 (pattern)' 을 작성합니다. 만약 `catch` 절이 '유형' 을 가지고 있지 않으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 에 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 자세한 내용은 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
+`catch` 뒤에 '유형 (pattern)' 을 작성하여 해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 지시합니다. `catch` 절이 '유형 (pattern)' 을 가지고 있지 않으면, 이 절은 어떤 에러와도 일치하며 해당 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 자세한 정보는 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 'case 값' 모두에 대해서 일치하는 지를 맞춰봅니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 'case 값' 모두와 일치 여부를 맞춰봅니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -176,11 +176,11 @@ do {
 // "Insufficient funds. Please insert an additional 2 coins." 를 출력합니다.
 ```
 
-위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 `try` 표현식 안에서 호출했는데, 이는 에러를 던질 수 있기 때문입니다. 에러가 던져지면, 실행은 곧바로 `catch` 절로 옮겨지며, 여기서 전파를 계속 허용할지 결정합니다. 일치하는 '유형 (pattern)' 이 없으면, 에러는 최종 `catch` 절에서 잡히며 지역 상수인 `error` 에 연결됩니다. 에러가 던져지지 않으면, `do` 문 안에 있는 나머지 구문이 실행됩니다.
+위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 `try` 표현식 안에서 호출하는데, 이는 이것이 에러를 던질 수 있기 때문입니다. 에러를 던지면, 실행은 즉시 `catch` 절로 옮겨가며, 여기서 전파를 계속 허용할 지를 결정합니다. 일치하는 '유형 (pattern)' 이 없으면, 에러는 '마지막 `catch` 절' 에서 잡혀서 `error` 라는 지역 상수에 연결됩니다. 에러를 던지지 않으면, `do` 문에 있는 나머지 구문들이 실행됩니다.
 
-`catch` 절이 `do` 절에 있는 코드가 던질 가능성이 있는 모든 에러를 처리해야 하는 것은 아닙니다. 어느 `catch` 절에서도 에러를 처리하지 않는다면, 이 에러는 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 _어떤 (some)_ 주변 영역이 됐든 반드시 처리돼야 합니다. '던지지 않는 함수 (nonthrowing function)' 에서는, `do`-`catch` 로 둘러싼 구문이 반드시 에러를 처리해야 합니다. '던지는 함수 (throwing function)' 에서는, `do-catch` 로 둘러싼 구문 또는 '호출자 (caller)' 둘 중 한 곳에서 반드시 에러를 처리해야 합니다. 만약 에러가 처리되지 않은 채로 최상위 영역으로 전파된다면, '실행시간 에러' 를 갖게 될 것입니다.
+`catch` 절이 `do` 절의 코드가 던질 수 있는 모든 에러를 처리해야 하는 것은 아닙니다. 어느 `catch` 절에서도 에러를 처리하지 않으면, 이 에러는 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 _어떤 (some)_ 주변 영역이 됐든 간에 반드시 처리되어야 합니다. '던지지 않는 함수 (nonthrowing function)' 에서는, `do`-`catch` 로 둘러싼 구문이 반드시 에러를 처리해야 합니다. '던지는 함수 (throwing function)' 에서는, `do-catch` 로 둘러싼 구문이든 '호출한 쪽 (caller)' 이든 간에 한 곳에서 반드시 에러를 처리해야 합니다. 에러가 처리되지 않고 최상위 영역으로 전파되면, '실행시간 에러' 를 받게 됩니다.
 
-예를 들어, 위 예제는 `VendingMachineError` 가 아닌 에러는 어떤 것이든 호출 함수에서 대신 잡아내도록 작성할 수도 있습니다:
+예를 들어, 위 예제는 `VendingMachineError` 가 아닌 에러는 어떤 것이든 호출 함수에서 대신 잡아내도록 작성할 수 있습니다:
 
 ```swift
 func nourish(with item: String) throws {
@@ -199,9 +199,9 @@ do {
 // "Invalid selection, out of stock, or not enough money." 를 출력합니다.
 ```
 
-`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 에 해당하는 에러를 던질 경우, `nourish(with:)` 는 메시지를 출력하는 것으로써 에러를 처리합니다. 다른 경우라면, `nourish(with:)` 는 이를 호출한 곳으로 에러를 전파합니다. 에러는 이제 '일반적인 `catch` 절' 에서 잡히게 됩니다.
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 들 중 하나인 에러를 던지면, 메시지를 출력하는 것으로써 `nourish(with:)` 가 이 에러를 처리합니다. 다른 경우, `nourish(with:)` 는 호출한 쪽으로 이 에러를 전파합니다. 에러는 이제 '일반적인 `catch` 절' 이 잡아냅니다.
 
-서로 관련된 여러 에러를 잡아내는 또 다른 방법은 이들을 `catch` 뒤에, 쉼표로 구분된, 목록으로 나열하는 것입니다. 예를 들면 다음과 같습니다:
+서로 관련있는 여러 에러를 잡아내는 또 다른 방법은 `catch` 뒤에 이들을, 쉼표로 구분하여, 나열하는 것입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func eat(item: String) throws {
@@ -213,7 +213,7 @@ func eat(item: String) throws {
 }
 ```
 
-`eat(item:)` 함수는 잡아야할 '자판기 (vending machine)' 에러를 목록으로 나열하고 있으며, 에러 문장은 해당 목록에 있는 항목과 관련되어 있습니다. 나열된 세 에러 중 어떤 것이든 던져지면, 이 `catch` 절이 메시지를 출력함으로써 이를 처리합니다. 그 외 다른 에러들은, 나중에 추가될 수도 있는 자판기 에러를 포함하여, 어떤 것이든 주변 영역으로 전파합니다.
+`eat(item:)` 함수는 잡아내야할 '자판기' 에러를 나열하고 있으며, 에러 문장은 해당 목록의 항목과 관련이 있습니다. 나열된 세 개의 에러 중 어떤 것을 던지면, 메시지를 출력하는 것으로 이 `catch` 절이 이를 처리합니다. 그 외 다른 에러는, 나중에 추가될 수도 있는 자판기 에러를 포함하여, 어떤 것이 됐든 주변 영역으로 전파됩니다.
 
 #### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
 
