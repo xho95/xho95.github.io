@@ -120,10 +120,10 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 
 `while` 반복문은 단일 조건의 값을 계산하는 것으로 시작합니다. 조건이 `true` 이면, 조건이 `false` 가 될 때까지 일정한 구문들을 반복합니다.
 
-`while` 반복문의 일반적인 양식은 다음과 같습니다:
+`while` 반복문의 일반적인 형식은 다음과 같습니다:
 
-while `condition (조건)` {
-  `statements (구문)`
+while `condition (조건)` {<br />
+  `statements (구문)`<br />
 }
 
 ```swift
@@ -193,12 +193,11 @@ print("Game over!")
 
 > 스위프트의 `repeat-while` 반복문은 다른 언어에 있는 `do-while` 반복문과 비슷합니다.[^do-while]
 
-`repeat-while` 반복문의 일반적인 양식은 다음과 같습니다:
+`repeat-while` 반복문의 일반적인 형식은 다음과 같습니다:
 
-repeat {
-  `statements (구문)`
-} while `condition (조건)`
-```
+repeat {<br />
+  `statements (구문)`<br />
+} while `condition (조건)`<br />
 
 ```swift
 repeat {
