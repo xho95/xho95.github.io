@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Subscripts (첨자 연산)"
+title:  "Swift 5.3: Subscripts (첨자 연산)"
 date:   2020-03-30 10:00:00 +0900
 categories: Swift Language Grammar Subscripts
 redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
@@ -9,7 +9,7 @@ redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 부분[^Subscripts]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
 >
-> 스위프트 5.3 에 대한 내용이 다시 일부 수정되어서,[^swift-update] 추가된 내용 먼저 옮기고 나머지 부분을 옮기도록 합니다. 전체 목록은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Subscripts (첨자 연산)
 
