@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Optional Chaining (옵셔널 체이닝; 옵셔널 연쇄)"
+title:  "Swift 5.3: Optional Chaining (옵셔널 체이닝; 옵셔널 연쇄)"
 date:   2020-06-17 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Inheritance (상속)"
+title:  "Swift 5.3: Inheritance (상속)"
 date:   2020-03-31 10:00:00 +0900
 categories: Swift Language Grammar Inheritance
 ---

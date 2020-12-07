@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Access Control (접근 제어)"
+title:  "Swift 5.3: Access Control (접근 제어)"
 date:   2020-04-28 10:00:00 +0900
 categories: Swift Language Grammar Access Control
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Deinitialization (객체 정리)"
+title:  "Swift 5.3: Deinitialization (객체 정리)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Deinitialization
 redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html"

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Structures and Classes (구조체와 클래스)"
+title:  "Swift 5.3: Structures and Classes (구조체와 클래스)"
 date:   2020-04-14 10:00:00 +0900
 categories: Swift Language Grammar Structure Class
 redirect_from: "/swift/language/grammar/structure/class/2020/04/08/Structures-and-Classes.html"

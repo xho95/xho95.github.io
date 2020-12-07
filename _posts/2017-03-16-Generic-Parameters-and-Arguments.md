@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)"
+title:  "Swift 5.3: Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)"
 date:   2017-03-16 00:00:00 +0900
 categories: Swift Language Grammar Generic Parameters Arguments
 redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/Generic-Parameters-and-Arguments.html"

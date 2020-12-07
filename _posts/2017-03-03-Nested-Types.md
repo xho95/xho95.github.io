@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Nested Types (중첩 타입)"
+title:  "Swift 5.3: Nested Types (중첩 타입)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Nested Types
 redirect_from: "/swift/language/grammar/nested/2017/03/02/Nested-Types.html"

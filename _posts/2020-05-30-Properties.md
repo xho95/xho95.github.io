@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Properties (속성)"
+title:  "Swift 5.3: Properties (속성)"
 date:   2020-05-30 10:00:00 +0900
 categories: Swift Language Grammar Property
 ---

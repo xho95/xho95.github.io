@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Collection Types (집합체 타입)"
+title:  "Swift 5.3: Collection Types (집합체 타입)"
 date:   2016-06-06 19:45:00 +0900
 categories: Swift Grammar Collection Array Set Dictionary
 redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html"

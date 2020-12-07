@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Opaque Types (불투명한 타입)"
+title:  "Swift 5.3: Opaque Types (불투명한 타입)"
 date:   2020-02-22 11:30:00 +0900
 categories: Swift Language Grammar Opaque Type
 ---

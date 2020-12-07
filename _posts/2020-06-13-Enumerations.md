@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Enumerations (열거체)"
+title:  "Swift 5.3: Enumerations (열거체)"
 date:   2020-06-13 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---

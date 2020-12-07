@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.2: Subscripts (첨자 연산)"
+title:  "Swift 5.3: Subscripts (첨자 연산)"
 date:   2020-03-30 10:00:00 +0900
 categories: Swift Language Grammar Subscripts
 redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
