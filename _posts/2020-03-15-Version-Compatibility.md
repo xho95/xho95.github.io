@@ -19,7 +19,7 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 * '`try?` 표현식' 은 이미 '옵셔널 (optionals)' 을 반환하는 표현식에 부가적인 수준의 '옵셔널성 (optionality)' 를 도입하지 않습니다.[^level-of-optionality]
 * '아주 큰 정수 글자 값 초기화 표현식 (large integer literal initialization expressions)'[^large-integer-literal] 은 올바른 정수 타입인 것으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 도 '값 넘침 (overflowing)' 이 아닌 올바른 값으로 평가합니다.
 
-스위프트 5.3 으로 작성된 대상은 스위프트 4.2 나 스위프트 4 로 작성된 대상에 의존할 수 있으며, 그 반대도 가능합니다.[^depend-on] 이것의 의미는, 프로젝트가 아주 커서 프레임웍이 여러 개로 분할된 경우, 코드를 스위프트 4 에서 스위프트 5.5 으로 한 번에 한 프레임웍씩 이전할 수 있다는 것입니다.
+스위프트 5.3 으로 작성된 대상은 스위프트 4.2 나 스위프트 4 로 작성된 대상에 의존할 수 있으며, 그 반대도 가능합니다.[^depend-on] 이것의 의미는, 프로젝트가 아주 커서 프레임웍이 여러 개로 분할된 경우, 코드를 스위프트 4 에서 스위프트 5.3 으로 한 번에 한 프레임웍씩 이전할 수 있다는 것입니다.
 
 [A Swift Tour (스위프트 둘러보기) >]({% post_url 2016-04-17-A-Swift-Tour %})
 
