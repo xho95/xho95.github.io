@@ -7,9 +7,9 @@ categories: Swift Programming Language Grammar
 redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/)[^Swift] 책을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/)[^Swift] 책을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리했습니다.
 >
-> 번역 도중에 Swift 5.3 이 발표되어, 일부 문서는 Swift 5.2 기준으로 번역되어 있습니다.
+> 1차 번역은 완료했으며, 현재는 문장을 다듬고 오류를 고치는 중입니다. 보시고 수정 사항이 있으면 댓글이나 <a href="mailto:{{ site.email }}">메일</a>로 연락주시면 감사하겠습니다.
 
 ### Translator's words (옮긴이의 말)
 
@@ -70,4 +70,4 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### 참고 자료
 
-[^Swift]: 'The Swift Programming Language (스위프트 프로그래밍 언어)' 는 애플 에서 공개한 스위프트 문법 책으로, WWDC 20 에 맞춰 2020-06-22 일에 발표했다가, 2020-09-16 일에 다시 갱신 되었습니다.원문은 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 에서 볼 수 있습니다.
+[^Swift]: 'The Swift Programming Language (스위프트 프로그래밍 언어)' 는 애플에서 공개한 스위프트 언어 문법 책으로, 2020-09-16 에 최신 버전으로 갱신되었습니다. 원문은 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 에서 볼 수 있습니다.
