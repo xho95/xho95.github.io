@@ -6,30 +6,28 @@ date:   2016-04-17 19:45:00 +0900
 categories: Swift Language Grammar Tour
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 부분[^A-Swift-Tour]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 부분[^A-Swift-Tour]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## A Swift Tour (스위프트 둘러보기)
+## A Swift Tour (스위프트 둘러보기)[^a-swift-tour]
 
-전통으로 내려오는 것 중에 새로운 언어로 된 첫 번째 프로그램은 화면에 `"Hello, world!"` 라는 문장을 출력해야 한다는 것이 있습니다. 스위프트는, 이것을 단 한 줄로 할 수 있습니다:
+전통적으로 새로운 언어의 첫 프로그램은 `"Hello, world!"` 라는 말을 화면에 쇄합니다. 스위프트는, 이를 단 한 줄로 할 수 있습니다:
 
 ```swift
 print("Hello, world!")
-// "Hello, world!"  를 출력합니다.
+// "Hello, world!"  를 인쇄합니다.
 ```
 
-'C' 나 '오브젝티브-C' 로 코딩을 해봤다면, 이 '구문 표현 (syntax)' 이 익숙한 듯 보이겠지만-스위프트에서, 이 코드 한 줄은 완전한 프로그램입니다. 입/출력 또는 문자열 처리와 같은 기능을 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역 범위에서 작성한 코드는 프로그램의 '진입점 (entry point)' 으로 사용되므로, `main()` 함수도 필요 없습니다. 문장이 끝날 때마다 세미콜론을 붙일 필요조차 없습니다.
+'C' 나 '오브젝티브-C' 로 코딩을 해봤다면, 이 '구문 표현 (syntax)' 이 익숙해 보이겠지만-스위프트에서는, 이 한 줄의 코드가 완전한 프로그램입니다. 입/출력 또는 문자열 처리 같은 기능을 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역 범위에서 작성된 코드는 프로그램의 '진입점 (entry point)' 으로 사용되므로, `main()` 함수도 필요 없습니다. 구문 끝에 매번 세미콜론을 작성할 필요도 없습니다.
 
-이 둘러보기는 다양한 프로그래밍 작업을 달성하는 방법을 보임으로써 스위프트로 코드 작성을 시작하기에 충분한 정보를 주도록 합니다. 어떤 부분이 이해가 가지 않더라도 걱정할 필요 없습니다-이 둘러보기에서 소개한 모든 것은 이 책의 나머지 부분에서 더 자세히 설명하고 있기 때문입니다.
+'둘러보기' 에서는 스위프트로 코드 작성을 시작하기에 충분한 정보를 제공하고자 다양한 프로그래밍 임무를 달성하는 방법을 보입니다. 이해가 안되는 것이 있어도 걱정할 필요 없습니다-둘러보기에서 소개한 모든 것들을 이 책의 나머지 부분에서 더 자세히 설명하기 때문입니다.
 
-> 'Xcode (엑스코드)' 가 설치되어 있는 맥, 또는 스위프트 'Playgrounds (플레이그라운드; 놀이터)' 가 있는 아이패드에서는, 이 장을 '플레이그라운드' 로 열어볼 수 있습니다. '플레이그라운드 (Playground)' 에서는 코드 목록을 편집하고 결과를 즉시 확인할 수 있습니다.
+> 최상의 경험을 위해서, 이 장을 '엑스코드 (Xcode)' 에 있는 '플레이그라운드 (Playgrounds; 놀이터)' 로 열도록 합니다. '플레이그라운드' 는 나열된 코드를 편집하고 결과를 즉시 확인할 수 있게 해줍니다.
 >
 > [Download Playground (플레이그라운드 다운로드 하기)](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
 ### Simple Values (간단한 값)
 
-상수를 만들려면 `let` 을 사용하고 변수를 만들려면 `var` 를 사용합니다. 상수의 값을 컴파일 시간에 알아야 할 필요는 없지만, 정확히 한 번은 반드시 값을 할당해야 합니다. 이것의 의미는 상수란 한 번만 결정하면 많은 곳에서 사용할 수 있는 값에 이름을 짓기 위해 사용한다는 것입니다.
+`let` 을 사용해서 상수를 만들고 `var` 를 사용해서 변수를 만듭니다. 상수의 값을 컴파일 시간에 알아야 하는 건 아니지만, 반드시 한 번은 정확하게 값을 할당해야 합니다. 이는 결정은 한 번만 하지만 많은 곳에서 사용하는 값에 이름을 짓기 위해 상수를 사용할 수 있다는 것을 의미합니다.
 
 ```swift
 var myVariable = 42
@@ -37,9 +35,9 @@ myVariable = 50
 let myConstant = 42
 ```
 
-상수나 변수는 반드시 할당하고자 하는 값과 타입이 같아야 합니다. 하지만, 항상 타입을 명시적으로 작성해야 하는 것은 아닙니다. 상수나 변수를 만들 때 값을 제공하면 컴파일러가 그 타입을 추론하게 됩니다. 위의 예제에서, 컴파일러는 `myVariable` 를 정수라고 추론하는데 왜냐면 초기 값이 정수이기 때문입니다.
+상수나 변수는 반드시 할당하고자 하는 값과 같은 타입을 가져야 합니다. 하지만, 타입을 항상 명시적으로 작성해야 하는 것은 아닙니다. 상수나 변수를 생성할 때 값을 제공하면 컴파일러가 타입을 추론하게 됩니다. 위 예제에서, 컴파일러는 `myVariable` 을 정수라고 추론하는데 초기 값이 정수이기 때문입니다.
 
-만약 초기 값이 충분한 정보를 제공하지 않는 경우 (또는 초기 값이 없는 경우) 일 때, 타입을 지정하려면 변수 뒤에, 콜론 (`:`) 으로 구분한 다음, 작성하면 됩니다.
+초기 값이 충분한 정보를 제공하지 않는 (아니면 초기 값이 없는) 경우, 변수 뒤에, 콜론 (`:`) 으로 구분된, 타입을 작성하여 지정합니다.
 
 ```swift
 let implicitInteger = 70
@@ -51,7 +49,7 @@ let explicitDouble: Double = 70
 >
 > 명시적인 타입이 `Float` 이고 값이 `4` 인 상수를 생성해 봅시다.
 
-값은 절대 다른 타입으로 암시적으로 변환되지 않습니다. 값을 다른 타입으로 변환할 필요가 있다면, 원하는 타입에 대한 인스턴스를 명시적으로 만들어야 합니다.
+값은 절대 다른 타입으로 암시적으로 변환되지 않습니다. 값을 다른 타입으로 변환해야 한다면, 원하는 타입의 인스턴스를 명시적으로 만들도록 합니다.
 
 ```swift
 let label = "The width is "
@@ -61,9 +59,9 @@ let widthLabel = label + String(width)
 
 > 실험
 >
-> 마지막 줄에서 `String` 으로 변환하는 부분을 제거해 봅시다. 어떤 에러를 보게 됩니까?
+> 마지막 줄에서 `String` 으로의 변환을 제거해 봅시다. 어떤 에러를 갖게 됩니까?
 
-문자열에 값을 포함시키는 데는 더 간단한 방법도 있습니다. 괄호 안에 값을 쓰고, 괄호 앞에 '역 빗금 기호 (backshlash; `\`)' 를 쓰면 됩니다. 예를 들면 다음과 같습니다:
+문자열에 값을 포함시키는 더 간단한 방법도 있습니다: 괄호 안에 값을 작성하고, 그 괄호 앞에 '역 빗금 기호 (backshlash; `\`)' 를 작성합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let apples = 3
@@ -74,9 +72,9 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 
 > 실험
 >
-> `\()` 를 사용하여 문자열에 부동-소수점 계산을 포함시켜 보고 또 인사말에 다른 사람 이름을 포함시켜 봅시다.
+> `\()` 를 사용해서 문자열에 부동-소수점 계산을 포함시켜 보고 인사말에 어떤 사람의 이름을 포함시켜 봅시다.
 
-따옴표 세 개 (`"""`) 를 써서 '여러 줄짜리 문자열' 을 만들 수 있습니다. 닫는 따옴표 앞에 들여쓰기가 있으면, 그에 해당하는 만큼의 들여쓰기를 각 줄 시작시마다 제거합니다.[^indentation] 예를 들면 다음과 같습니다:
+'여러 줄 (multiple lines)' 을 차지하는 문자열은 '세 따옴표 (three double quotation marks; `"""`)' 를 사용합니다. 각 줄의 시작시마다, '닫는 따옴표' 의 들여쓰기와 일치하는 만큼의, 들여쓰기를 제거합니다.[^indentation] 예를 들면 다음과 같습니다:
 
 ```swift
 let quotation = """
@@ -85,7 +83,7 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 """
 ```
 
-'배열 (arrays)' 과 '딕셔너리 (dictionary)' 는 대괄호 (`[]`) 를 사용하여 생성하며, 이들의 원소에 접근하려면 대괄호 안에 '색인 (index)' 또는 '키 (key)' 를 작성하면 됩니다. 마지막 원소 뒤에 '쉼표 (comma)' 가 있어도 됩니다.
+대괄호 (brackets, `[]`) 를 사용하여 '배열 (arrays)' 과 '딕셔너리 (dictionary)' 를 생성하며, 대괄호 안에 '색인 (index)' 또는 '키 (key)' 를 작성하여 이들의 원소에 접근합니다. 마지막 원소 뒤에 '쉼표 (comma)' 를 두는 것도 허용합니다.
 
 ```swift
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
@@ -105,14 +103,14 @@ shoppingList.append("blue paint")
 print(shoppingList)
 ```
 
-빈 배열이나 빈 딕셔너리를 생성하려면, '초기자 구문 표현 (initializer syntax)' 을 사용합니다.
+빈 배열 또는 딕셔너리를 생성하려면, '초기자 구문 표현 (initializer syntax)' 을 사용합니다.
 
 ```swift
 let emptyArray = [String]()
 let emptyDictionary = [String: Float]()
 ```
 
-'타입 정보 (type information)' 를 추론할 수 있는 경우라면, 빈 배열은 `[]` 라고 작성할 수 있고 빈 딕셔너리는 `[:]` 라고 작성할 수 있습니다-예를 들어, 변수에 새로운 값을 설정할 때 혹은 함수에 인자를 전달할 때 등이 있습니다.
+'타입 정보' 를 추론할 수 있는 경우, 빈 배열은 `[]` 로 그리고 빈 딕셔너리는 `[:]` 로 작성할 수 있습니다-예를 들어, 변수에 대해서 새로운 값을 설정할 때 또는 함수에 인자로 전달할 때에 그렇습니다.
 
 ```swift
 shoppingList = []
@@ -121,7 +119,7 @@ occupations = [:]
 
 ### Control Flow (제어 흐름)
 
-조건문을 만들려면 `if` 와 `switch` 를 사용하고, 반복문을 만들려면 `for`-`in`, `while`, 그리고 `repeat`-`while` 을 사용합니다. 조건문 또는 반복문의 변수 주위의 괄호는 선택 사항입니다. 단 본문 주위의 중괄호는 필수입니다.
+`if` 와 `switch` 를 사용해서 조건문을 만들고, `for`-`in`, `while`, 그리고 `repeat`-`while` 을 사용해서 반복문을 만듭니다. 조건문이나 반복문 변수 주위의 괄호는 선택 사항입니다. 본문 주위의 '중괄호 (braces)' 는 필수입니다.
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
@@ -134,17 +132,17 @@ for score in individualScores {
     }
 }
 print(teamScore)
-// "11" 을 출력합니다.  
+// "11" 을 인쇄합니다.  
 ```
 
-`if` 문에서, '조건절 (the conditional)' 은 반드시 '불리언 표현식 (Boolean expression)' 이어야 합니다-이것은 가령 `if score { ... }` 와 같은 코드는, '0' 과 암시적인 비교를 하는 것이 아니라, 에러라는 것을 의미합니다.
+`if` 문에 있는, '조건절 (the conditional)' 은 반드시 '불리언 표현식 (Boolean expression)' 이어야 합니다-이것은 `if score { ... }` 와 같은 코드는 에러이며, '0' 과 암시적인 비교를 하는 것이 아니라는 것을, 의미합니다.
 
-`if` 와 `let` 을 같이 사용하면 누락될 수 있는 값과도 작업할 수 있습니다. 이 값은 '옵셔널 (optionals)' 로 표현합니다. 옵셔널 값은 값을 가지고 있거나 아니면 값이 누락됐음을 나타내는 `nil` 을 가지고 있습니다. 값을 옵셔널이라고 표시하려면 값의 타입 뒤에 '물음표 (`?`)' 를 붙이면 됩니다.
+'없을 (missing)' 수도 있는 값과 작업하기 위해 `if` 와 `let` 을 함께 사용할 수 있습니다. 이러한 값은 '옵셔널 (optionals)' 로 표현합니다. '옵셔널 값' 은 값을 담고 있거나 아니면 값의 없음을 지시하는 `nil` 을 담고 있습니다. 값을 옵셔널로 표시하려면 값의 타입 뒤에 '물음표 (`?`)' 를 작성합니다.
 
 ```swift
 var optionalString: String? = "Hello"
 print(optionalString == nil)
-// "false" 를 출력합니다.
+// "false" 를 인쇄합니다.
 
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
@@ -155,11 +153,11 @@ if let name = optionalName {
 
 > 실험
 >
-> `optionalName` 을 `nil` 로 바꿔 봅니다. 어떤 인사말을 받게 됩니까? `else` 절을 추가해서 `optionalName` 이 `nil` 이면 다른 인사말을 하도록 설정해 봅시다.
+> `optionalName` 을 `nil` 로 바꿔 봅시다. 어떤 인사말을 갖게 됩니까? `optionalName` 이 `nil` 이면 다른 인사말을 설정하도록 `else` 절을 추가해 봅시다.
 
-옵셔널 값이 `nil` 이면, 조건절은 `false` 이고 중괄호 안의 코드는 건너뜁니다. 다른 경우라면, 옵셔널 값의 포장을 풀고 `let` 뒤의 상수에 할당하여, '포장이 풀린 값 (unwrapped value)' 을 코드 블럭 내에서 사용 가능하게 만듭니다.
+옵셔널 값이 `nil` 이면, 조건절은 `false` 이고 중괄호 안의 코드를 건너뜁니다. 다른 경우라면, 옵셔널 값의 포장을 풀어서 `let` 뒤의 상수에 할당하는데, 이는 코드 블럭 안에서 '포장이 풀린 값 (unwrapped value)' 을 사용 가능하게 만듭니다.
 
-옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자를 사용하여 '기본 설정 값 (default value)' 을 제공하는 것입니다. 만약 옵셔널 값이 누락된 경우, 이를 대신하여 기본 설정 값을 사용하게 됩니다.
+옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자를 사용하여 '기본 설정 값 (default value)' 을 제공하는 것입니다. 옵셔널 값이 없으면, '기본 설정 값' 을 대신 사용합니다.
 
 ```swift
 let nickName: String? = nil
@@ -167,7 +165,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-'switch 문' 은 어떠한 종류의 데이터라도 지원하며 폭 넓고 다양한 비교 연산도 지원합니다-정수만으로 그리고 '같음 (equality)' 비교 테스트만으로 제한하지 않습니다.
+'switch 문' 은 어떤 종류의 '자료형 (data)' 도 지원하며 폭넓고 다양한 비교 연산도 지원합니다-정수만 되고 '같음 (equality)' 비교만 테스트하도록 제한되지 않았습니다.
 
 ```swift
 let vegetable = "red pepper"
@@ -181,18 +179,18 @@ case let x where x.hasSuffix("pepper"):
 default:
     print("Everything tastes good in soup.")
 }
-// "Is it a spicy red pepper?" 를 출력합니다.
+// "Is it a spicy red pepper?" 를 인쇄합니다.
 ```
 
 > 실험
 >
-> '기본 case 절 (default:)' 를 제거해 봅니다. 어떤 에러를 가지게 됩니까?
+> '기본 (default) case 절' 을 제거해 봅니다. 어떤 에러를 갖게 됩니까?
 
-'패턴 (pattern; 유형)' 에 일치하는 값을 상수에 할당하기 위해 패턴 안에서 `let` 을 어떻게 사용할 수 있는 지에 대해 주목하기 바랍니다.
+'유형 (pattern; 패턴)' 과 일치하는 값을 상수에 할당하기 위해 '유형 (pattern)' 안에서 `let` 을 사용할 수 있는 방법이 있음에 주목하도록 합니다.
 
-일치된 'switch 문의 case 절 (switch case)' 에 있는 코드를 실행하고 나면, 프로그램이 'switch 문' 을 빠져 나옵니다. 그 다음 'case 절' 로 실행이 계속되는 것이 아니므로, 각각의 'case 절' 코드 끝에서 'switch 문' 을 명시적으로 '끊고 나올 (break out)' 필요가 없습니다.[^break-out]
+일치한 'switch 문의 case 절' 내의 코드를 실행한 후에는, 프로그램이 'switch 문' 을 빠져 나옵니다. 실행은 그 다음 'case 절' 로 계속되는 않으므로, 각 'case 절' 의 코드 끝에서 'switch 문' 을 명시적으로 '끊고 (break)' 나올 필요가 없습니다.[^break-out]
 
-`for`-`in` 을 사용하면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍 (a pair of names)' 을 제공하는 것으로써 '딕셔너리' 에 있는 항목에 대해 동작을 반복시킬 수 있습니다. 딕셔너리는 순서가 없는 '컬렉션 (collection; 집합체)' 이므로, 이 키와 값들은 임의의 순서로 동작을 반복합니다.
+`for`-`in` 을 사용하여 '딕셔너리' 에 있는 항목 전체에 동작을 반복시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍' 을 제공하도록 합니다. 딕셔너리는 '정렬되지 않은 컬렉션 (unordered collection)' 이므로, 전체 키와 값은 임의 순서로 동작합니다.
 
 ```swift
 let interestingNumbers = [
@@ -209,14 +207,14 @@ for (kind, numbers) in interestingNumbers {
     }
 }
 print(largest)
-// "25" 를 출력합니다.
+// "25" 를 인쇄합니다.
 ```
 
 > 실험
 >
-> 또 다른 변수를 추가하여, 가장 큰 수가 무엇이었는지 추적한 것처럼, 가장 큰 수의 종류가 무엇인지를 추적해 봅시다.
+> 가장 큰 수에 대해 한 것처럼, 가장 큰 수의 종류가 무엇인지를 추적하기 위한 또 다른 변수를 추가해 봅시다.
 
-조건이 바뀔 때까지 '코드 블럭 (block of code)' 을 반복하려면 `while` 문을 사용하기 바랍니다. '반복문 (loop)' 의 조건은, 반복문의 실행을 최소 한 번은 보장하기 위해, 맨 끝에 둘 수도 있습니다.
+조건이 바뀔 때까지 '코드 블럭' 을 반복하려면 `while` 문을 사용합니다. 반복문이 최소 한 번은 실행됨을 보장하기 위해, 반복 조건을 끝에 대신 둘 수 있습니다.
 
 ```swift
 var n = 2
@@ -234,7 +232,7 @@ print(m)
 // "128" 을 출력합니다.
 ```
 
-`..<` 를 사용하여 '색인의 범위 (range of indexes)' 를 만들면 반복문 내에서 '색인 (index)' 을 유지할 수 있습니다.
+`..<` 를 사용하여 '색인의 범위 (range of indexes)' 를 만들면 반복 시에 '색인' 을 유지할 수 있습니다.
 
 ```swift
 var total = 0
@@ -242,10 +240,10 @@ for i in 0..<4 {
     total += i
 }
 print(total)
-// "6" 을 출력합니다.
+// "6" 을 인쇄합니다.
 ```
 
-최상단 값을 생략하는 범위를 만들려면 `..<` 을 사용하고, 양 끝단 값을 모두 포함하는 범위를 만들려면 `...` 를 사용합니다.
+'최상단 값 (upper value)' 을 생략한 범위를 만들려면 `..<` 을 사용하고, 양 끝단 값을 모두 포함하는 범위를 만들려면 `...` 를 사용합니다.
 
 ### Functions and Closures (함수와 클로져)
 
@@ -858,9 +856,11 @@ anyCommonElements([1, 2, 3], [3])
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^indentation]: 이 부분의 설명은 원문만을 봤을 때는 이해하기 어려울 수 있는데, 설명을 생략하기 때문입니다. 실제 더 자세한 설명은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있는 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에서 따로 하고 있습니다.
+[^a-swift-tour]: 'Swift' 는 '재빠른' 이라는 의미도 가지고 있기 때문에, 이 장의 제목인 'A Swift Tour' 는 '재빨리 둘러보기' 라는 중의적인 의미도 가지고 있습니다.
 
-[^break-out]: 이 말은 스위프트의 'switch 문' 에서는 각 'case 절' 마다 끝에 'break' 라는 키워드를 쓸 필요가 없다는 의미입니다.
+[^indentation]: 이 부분은 설명보다는 예제를 보는 것이 이해하기 좋은데, 예제는 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
+
+[^break-out]: 이 말은 스위프트의 'switch 문' 에서는 각 'case 절' 끝마다 'break' 를 쓸 필요가 없다는 것을 의미입니다.
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 할 수 있습니다. 본문 내용은 스위프트에서는 '함수' 도 '객체' 처럼 'first-class' 라서 앞의 동작들을 모두 다 수행할 수 있다는 것을 의미합니다. 보다 자세한 내용은 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
