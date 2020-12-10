@@ -637,11 +637,11 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 > 실험
 >
-> 카드 하나가 '계급 (rank)' 과 '패 (suit)'[^suit] 의 각 조합으로 이루어진,온전한 카드 한 벌을 담은 배열을 반환하는 함수를 작성해 봅시다.  
+> 각각의 카드가 '계급 (rank)' 과 '패 (suit)'[^suit] 의 조합인, 온전한 한 벌의 카드 배열을 반환하는 함수를 작성해 봅시다.  
 
 ### Protocols and Extensions (프로토콜과 익스텐션; 규약과 확장)
 
-'프로토콜 (protocol; 규약)' 을 선언하려면 `protocol` 를 사용합니다.
+`protocol` 를 사용하여 '프로토콜 (protocol; 규약)' 을 선언합니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -650,7 +650,7 @@ protocol ExampleProtocol {
 }
 ```
 
-클래스, 열거체, 및 구조체 모두 프로토콜을 '채택 (adopt)'[^adopt] 할 수 있습니다.
+클래스, 열거체, 그리고 구조체는 모두 프로토콜을 '채택 (adopt)'[^adopt] 할 수 있습니다.
 
 ```swift
 class SimpleClass: ExampleProtocol {
@@ -677,11 +677,11 @@ let bDescription = b.simpleDescription
 
 > 실험
 >
-> `ExampleProtocol` 에 또 다른 '필수 조건 (requirement)' 을 추가해 봅시다. `SimpleClass` 와 `SimpleStructure` 가 여전히 이 프로토콜을 '준수 (conform)' 하게 하려면 무엇을 바꿔야 합니까?
+> `ExampleProtocol` 에 또 다른 '필수 조건 (requirement)' 을 추가해 봅시다. 무엇을 바꿔야 `SimpleClass` 와 `SimpleStructure` 가 여전히 프로토콜을 '준수 (conform)' 하게 만들 수 있습니까?
 
-`SimpleStructure` 선언 내에서 구조체를 수정하는 메소드를 표시하는데 `mutating` 키워드를 사용하고 있음에 주목하기 바랍니다. `SimpleClass` 선언에서는 어떤 메소드도 'mutating' 으로 표시할 필요가 없는데 이는 클래스의 메소드는 그 클래스를 항상 수정할 수 있기 때문입니다.
+`SimpleStructure` 선언에서는 구조체를 수정하는 메소드를 `mutating` 키워드로 표시함에 주목합니다. `SimpleClass` 의 선언에서는 어떤 메소드도 '변경 (mutating)' 이라고 표시할 필요가 없는데 클래스의 메소드는 클래스를 항상 수정할 수 있기 때문입니다.
 
-기존 타입에 기능을 추가하려면 `extension` 을 사용하며, 가령 새로운 메소드나 새로운 '계산 속성 (computed properties)' 등을 추가하게 됩니다. '익스텐션 (extension; 확장)' 을 사용하면 다른 곳에서 선언한 타입에, 또는 심지어 라이브러리나 프레임웍에서 불러온 타입에 까지도, '프로토콜 준수성 (protocol conformance)'[^protocol-conformance] 을 추가할 수 있습니다.
+`extension` 을 사용하여 기존 타입에, 새로운 메소드나 새로운 '계산 속성 (computed properties)' 같은, 기능성을 추가합니다. '익스텐션 (extension; 확장)' 은 다른 곳에서 선언한 타입, 또는 심지어 라이브러리나 프레임웍에서 불러온 타입에도, '프로토콜 준수성 (protocol conformance)'[^protocol-conformance] 을 추가할 수 있습니다.
 
 ```swift
 extension Int: ExampleProtocol {
@@ -693,27 +693,27 @@ extension Int: ExampleProtocol {
     }
 }
 print(7.simpleDescription)
-// "The number 7" 을 출력합니다.
+// "The number 7" 을 인쇄합니다.
 ```
 
 > 실험
 >
-> `Double` 타입에 `absoluteValue` 속성을 추가하는 '익스텐션 (extension)' 을 작성해 봅시다.
+> `Double` 타입에 `absoluteValue` 속성을 추가하는 '익스텐션' 을 작성해 봅시다.
 
-'프로토콜 이름' 은 어떤 다른 '이름 있는 타입 (named type)' 인 것처럼 사용할 수 있습니다-예를 들어, 서로 타입이 다르지만 단일한 프로토콜을 준수하는 객체들의 '컬렉션 (collection)' 을 생성할 수 있습니다. 타입이 프로토콜 타입인 값과 작업할 때는, 프로토콜 정의 외부의 메소드는 사용 가능하지 않습니다.
+'프로토콜 이름' 은 다른 어떤 '이름 있는 타입 (named type)' 처럼-예를 들어, 타입이 서로 다르지만 모두 단일 프로토콜을 준수하는 객체의 '컬렉션 (collection)' 을 생성하기 위해-사용할 수 있습니다. 타입이 프로토콜 타입인 값과 작업할 때, 프로토콜 정의 밖의 메소드는 사용 불가능합니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// "A very simple class.  Now 100% adjusted." 를 출력합니다.
-// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 발생합니다.
+// "A very simple class.  Now 100% adjusted." 를 인쇄합니다.
+// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 나타납니다.
 ```
 
-비록 `protocolValue` 변수의 '실행 시간 타입 (runtime type)' 은 `SimpleClass` 이지만, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것으로 취급합니다. 이것은 클래스 구현 중에서 프로토콜 준수와는 별개인 메소드나 속성에는 우연히 접근할 가능성조차 없다는 의미입니다.
+`protocolValue` 변수의 '실행 시간 타입 (runtime type)' 이 `SimpleClass` 이더라도, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것처럼 취급합니다. 이는 프로토콜 준수와 별개로 클래스가 구현한 메소드나 속성에 예기치 않게 접근하는 일은 안생긴다는 의미입니다.
 
 ### Error Handling (에러 처리)
 
-`Error` 프로토콜을 '채택한 (adopts)' 어떤 타입을 사용하여 에러를 표현합니다.
+에러는 `Error` 프로토콜을 '채택한 (adopts)' 어떤 타입으로 표현합니다.
 
 ```swift
 enum PrinterError: Error {
@@ -723,7 +723,7 @@ enum PrinterError: Error {
 }
 ```
 
-`throw` 를 사용하여 에러를 던지고 `throws `를 사용하여 에러를 던질 수 있는 함수를 표시합니다. 함수에서 에러를 던지면, 함수는 즉시 반환하며 해당 함수를 호출한 코드에서 에러를 처리합니다.
+`throw` 를 사용하여 에러를 던지고 `throws` 로 에러를 던질 수 있는 함수를 표시합니다. 함수에서 에러를 던지면, 함수는 즉시 반환하며 함수를 호출한 코드가 에러를 처리합니다.
 
 ```swift
 func send(job: Int, toPrinter printerName: String) throws -> String {
@@ -734,7 +734,7 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 }
 ```
 
-에러 처리에는 여러 가지 방법이 있습니다. 한 가지 방법은 `do`-`catch` 문를 사용하는 것입니다. `do` 블럭 내부에서는, 그 앞에 `try` 를 작성하여 에러를 던질 수 있는 코드를 표시합니다. `catch` 블럭 내부에서는, 에러에 다른 이름을 부여하지 않을 경우 자동으로 `error` 라는 이름을 부여합니다.
+에러 처리에는 여러 가지 방법이 있습니다. 한 가지는 `do`-`catch` 문을 사용하는 것입니다. `do` 블럭 내에서, 에러를 던질 수 있는 코드는 그 앞에 `try` 를 써서 표시합니다. `catch` 블럭 내에서, 에러는 다른 이름을 부여하지 않는 이상 자동으로 `error` 라는 이름을 부여합니다.
 
 ```swift
 do {
@@ -743,14 +743,14 @@ do {
 } catch {
     print(error)
 }
-// "Job sent" 를 츨력합니다.
+// "Job sent" 를 인쇄합니다.
 ```
 
 > 실험
 >
-> 프린터 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지도록 해봅시다.
+> 프린터 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지게 해봅시다.
 
-지정된 에러들을 처리하는 '다중 `catch` 블럭' 을 제공할 수 있습니다. 'switch 문' 의 `case` 절 뒤에서 하듯이 `catch` 절 뒤에 '패턴 (pattern; 유형)' 을 작성합니다.
+'다중 `catch` 블럭' 을 제공하여 지정된 에러를 처리하게 할 수 있습니다. 'switch 문' 의 `case` 절 뒤에 하는 것처럼 `catch` 절 뒤에 '유형 (pattern; 패턴)' 을 작성합니다.
 
 ```swift
 do {
@@ -763,21 +763,21 @@ do {
 } catch {
     print(error)
 }
-// "Job sent" 를 츨력합니다.
+// "Job sent" 를 인쇄합니다.
 ```
 
 > 실험
 >
-> `do` 블럭 내부에 에러를 던지는 코드를 추가해 봅시다. 에러가 첫 번째 `catch` 블럭에서 처리되게 하려면 어떤 종류의 에러를 던져야 합니까? 두 번째 및 세 번째 블럭에서 되게 하려면 어떻게 합니까?
+> `do` 블럭 내에 에러를 던지는 코드를 추가해 봅시다. 무슨 종류의 에러를 던져야 에러가 첫 번째 `catch` 블럭에서 처리됩니까? 두 번째와 세 번째 블럭에 대해서는 무엇입니까?
 
-에러를 처리하는 또 다른 방법은 `try?` 를 사용하여 결과를 옵셔널로 변환하는 것입니다. 함수가 에러를 던지면, 지정된 에러는 버려지고 결과는 `nil` 이 됩니다. 다른 경우라면, 결과는 함수가 반환한 값을 가지는 옵셔널이 됩니다.
+에러를 처리하는 또 다른 방법은 `try?` 를 사용하여 결과를 옵셔널로 변환하는 것입니다. 함수가 에러를 던지면, 지정된 에러를 버리고 결과는 `nil` 이 됩니다. 다른 경우, 결과는 함수가 반환한 값을 담은 옵셔널이 됩니다.
 
 ```swift
 let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-함수가 반환되기 바로 직전에, 함수 내의 모든 다른 코드 다음에 실행되는 코드 블럭을 작성하려면 `defer` 를 사용합니다. 이 코드는 함수가 에러를 던지는 지의 여부와 상관없이 실행됩니다. 서로 다른 시간에 실행되어야 하는, 설정 (setup) 코드와 정리 (cleanup) 코드 조차도 `defer` 를 사용하면 서로 나란하게 작성할 수 있습니다.
+`defer` 를 사용하여 작성한 코드는, 함수 반환 바로 직전에, 함수에 있는 모든 다른 코드 다음에 실행됩니다. 이 코드는 함수가 에러를 던지더라도 이에 상관없이 실행됩니다. `defer` 를 사용하면, 서로 다른 시간에 실행되어야 하는, '설정 (setup) 코드' 와 '정리 (cleanup) 코드' 도 서로 나란하게 작성할 수 있습니다.
 
 ```swift
 var fridgeIsOpen = false
@@ -794,12 +794,12 @@ func fridgeContains(_ food: String) -> Bool {
 }
 fridgeContains("banana")
 print(fridgeIsOpen)
-// "false" 를 출력합니다.
+// "false" 를 인쇄합니다.
 ```
 
 ### Generics (제네릭; 일반화)
 
-'제네릭 함수 (generic function; 일반화된 함수)' 나 '제네릭 타입 (generic type; 일반화된 타입)' 을 만들려면 '꺽쇠 괄호 (angle brackets)' 안에 이름을 작성합니다.
+'꺽쇠 괄호 (angle brackets)' 안에 이름을 작성하여 '일반화된 (generic) 함수' 나 '일반화된 (generic) 타입' 을 만듭니다.
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -812,10 +812,10 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
-클래스, 열거체, 및 구조체 뿐만 아니라, 함수와 메소드를 '제네릭 형태 (generic forms; 일반화된 형태)' 로 만들 수 있습니다.
+클래스, 열거체, 그리고 구조체 뿐만 아니라, 함수와 메소드의 '일반화된 형식 (generic forms)' 도 만들 수 있습니다.
 
 ```swift
-// 스위프트 표준 라이브러리의 옵셔널 타입을 재구현한 것임
+// 스위프트 표준 라이브러리의 옵셔널 타입을 재구현함
 enum OptionalValue<Wrapped> {
     case none
     case some(Wrapped)
@@ -824,7 +824,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-'필수 조건 목록 (a list of requirements)' 을 지정하려면 본문 앞에 `where` 를 사용합니다-이는 예를 들어, 타입이 어떤 프로토콜을 필수로 구현해야 한다거나, 두 타입이 필수로 같아야 한다거나, 아니면 클래스가 특정 상위 클래스를 필수로 가져야 한다는 것 등입니다.
+본문 바로 앞에 `where` 를 사용하여 '필수 조건 (requirements)' 목록-예를 들어, 타입이 프로토콜을 필수로 구현할 것, 두 개의 타입이 필수로 같을 것, 또는 클래스가 특정 상위 클래스를 필수로 가질 것 등-을 지정합니다.
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
@@ -843,10 +843,10 @@ anyCommonElements([1, 2, 3], [3])
 
 > 실험
 >
-> `anyCommonElements(_:_:)` 함수를 수정하여 두 '수열 (sequence)' 에 공통인 원소들의 배열을 반환하는 함수를 만들어 봅시다.
+> `anyCommonElements(_:_:)` 함수를 수정하여 두 '수열 (sequence)' 에 공통인 원소의 배열을 반환하는 함수를 만들어 봅시다.
 
 
-`<T: Equatable>` 이라고 작성하는 것은 `<T> ... where T: Equatable` 이라고 작성하는 것과 같습니다.
+`<T: Equatable>` 로 작성하는 것은 `<T> ... where T: Equatable` 로 작성하는 것과 똑같습니다.
 
 [The Basics (기초) > ]({% post_url 2016-04-24-The-Basics %})
 
