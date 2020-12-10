@@ -247,7 +247,7 @@ print(total)
 
 ### Functions and Closures (함수와 클로져)
 
-`func` 을 사용하여 함수를 선언합니다. 함수는 이름 뒤에 인자 목록을 담은 괄호를 붙여서 호출합니다. `->` 를 사용하여 매개 변수의 이름과 타입을 함수의 반환 타입으로부터 구분합니다.
+`func` 을 사용하여 함수를 선언합니다. 함수 호출은 이름 뒤에 인자 목록이 있는 괄호를 붙여서 합니다. `->` 로 매개 변수의 이름과 타입을 함수의 반환 타입과 구분합니다.
 
 ```swift
 func greet(person: String, day: String) -> String {
@@ -258,9 +258,9 @@ greet(person: "Bob", day: "Tuesday")
 
 > 실험
 >
-> `day` 매개 변수를 제거해 봅시다. 인사말에 오늘의 점심 특선을 포함하도록 매개 변수를 추가해 봅시다.
+> `day` 매개 변수를 제거해 봅시다. 오늘의 점심 특선을 인사말에 포함하는 매개 변수를 추가해 봅시다.
 
-기본적으로, 함수는 자신의 매개 변수 이름을 인자에 대한 '이름표 (labels)' 로 사용합니다. 매개 변수 이름 앞에 '사용자 정의 인자 이름표 (custom argument label)' 를 작성하거나, 아니면 인자 이름표를 전혀 사용하지 않도록 `_` 를 작성합니다.
+기본적으로, 함수는 매개 변수 이름을 인자의 '이름표 (labels)' 로 사용합니다. 매개 변수 이름 앞에 '사용자 정의 인자 이름표 (custom argument label)' 를 작성하거나, 또는 인자 이름표를 사용하지 않기 위한 `_` 를 작성합니다.
 
 ```swift
 func greet(_ person: String, on day: String) -> String {
@@ -269,7 +269,7 @@ func greet(_ person: String, on day: String) -> String {
 greet("John", on: "Wednesday")
 ```
 
-'튜플 (tuple)' 을 사용하여 '복합 값 (compound value)' 을 만들 수 있습니다-예를 들어, 함수에서 여러 개의 값을 반환할 수 있습니다. '튜플' 의 원소는 이름이나 번호로 참조할 수 있습니다.
+'튜플 (tuple)' 을 사용하여 '복합 값 (compound value)'-예를 들어, 함수에서 '여러 개의 값 (multiple values)' 을 반환하는-것을 만듭니다. 튜플의 원소는 이름이나 번호로 참조할 수 있습니다.
 
 ```swift
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
@@ -290,12 +290,12 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
-// "120" 을 출력합니다.
+// "120" 을 인쇄합니다.
 print(statistics.2)
-// "120" 을 출력합니다.
+// "120" 을 인쇄합니다.
 ```
 
-함수는 '중첩될 (nested)' 수 있습니다. '중첩 함수 (nested functions)' 는 외부 함수에서 선언한 변수에 접근할 수 있습니다. '중첩 함수' 는 길고 복잡한 함수에 있는 코드를 정돈하기 위해 사용할 수 있습니다.
+함수는 중첩될 수 있습니다. '중첩된 함수 (nested functions)' 는 외부 함수에서 선언한 변수에 접근할 수 있습니다. 중첩된 함수를 사용하면 길고 복잡한 함수 코드를 정돈할 수 있습니다.
 
 ```swift
 func returnFifteen() -> Int {
@@ -309,7 +309,7 @@ func returnFifteen() -> Int {
 returnFifteen()
 ```
 
-함수는 '일급 타입 (first-class type)' 입니다.[^first-class] 이것은 함수가 다른 함수를 값으로써 반환할 수 있다는 것을 의미합니다.
+함수는 '일급 타입 (first-class type)' 입니다.[^first-class] 이는 함수가 또 다른 함수를 값처럼 반환할 수 있다는 의미입니다.
 
 ```swift
 func makeIncrementer() -> ((Int) -> Int) {
@@ -322,7 +322,7 @@ var increment = makeIncrementer()
 increment(7)
 ```
 
-함수는 다른 함수를 하나의 인자의써 받아들일 수 있습니다.
+함수는 또 다른 함수를 하나의 인자처럼 받을 수 있습니다.
 
 ```swift
 func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
@@ -342,7 +342,7 @@ var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
 ```
 
-함수는 실제로는 '클로저 (closure; 잠금 블럭)' 라는: 나중에 호출 할 수 있는 '코드 블럭', 의 한 가지 특수한 경우에 해당합니다. 클로저 내의 코드는 그 클로저를 생성한 영역에서 사용 가능한 변수와 함수들에 대한 접근을 가지고 있는데, 심지어 클로저를 실행할 때는 다른 영역이어도 상관없습니다-이에 대한 예제는 '중첩 함수' 를 통해서 이미 봤습니다. 코드를 중괄호 (`{}`) 로 감싸면 이름이 없는 클로저를 작성할 수 있습니다. `in` 을 사용하여 인자 및 반환 타입을 본문과 구분합니다.
+함수는 사실, 나중에 호출 할 수 있는 '코드 블럭' 인: '클로저 (closure; 잠금 블럭)' 의 한 특수한 경우에 해당합니다. 클로저의 코드는 클로저가 생성된 영역에서 사용 가능한 변수와 함수 같은 것에 접근할 수 있는데, 이는 실행할 때 클로저가 다른 영역에 있더라도 그렇습니다-이에 대한 예제는 '중첩된 함수' 에서 이미 봤습니다. 코드를 중괄호 (`{}`) 로 감싸서 '이름 없는 클로저' 를 작성할 수 있습니다. `in` 으로 인자와 반환 타입을 본문과 구분합니다.
 
 ```swift
 numbers.map({ (number: Int) -> Int in
@@ -353,27 +353,27 @@ numbers.map({ (number: Int) -> Int in
 
 > 실험
 >
-> 모든 홀수에 대해 '0' 을 반환하도록 클로저를 재작성해 봅시다.
+> 클로저를 재작성하여 모든 홀수에 대해서 '0' 을 반환하도록 해봅시다.
 
-클로저를 더 간결하게 작성할 수 있는 옵션이 여러 개 있습니다. 가령 '대리자 (delegate)' 의 '콜백 (callback)' 처럼, 클로저의 타입을 이미 알고 있는 경우, 매개 변수의 타입이나, 반환 타입, 또는 둘 다를 생략할 수 있습니다. '단일 구문 클로저 (single statement closures)' 는 하나 뿐인 구문의 값을 암시적으로 반환합니다.
+클로저를 더 간결하게 작성하기 위한 몇 가지 옵션이 있습니다. '대리자 (delegate)' 에 대한 '콜백 (callback)' 처럼, 클로저의 타입을 이미 알고 있으면, 매개 변수, 반환 타입, 또는 둘 다의 타입을 생략할 수 있습니다. '단일 구문 클로저 (single statement closures)' 는 암시적으로 유일한 구문의 값을 반환합니다.
 
 ```swift
 let mappedNumbers = numbers.map({ number in 3 * number })
 print(mappedNumbers)
-// "[60, 57, 21, 36]" 을 출력합니다.
+// "[60, 57, 21, 36]" 을 인쇄합니다.
 ```
 
-매개 변수를 이름 대신 '번호 (number)' 로 참조 할 수 있습니다-이러한 접근법은 아주 짧은 클로저에서 특히 유용합니다. 함수의 마지막 인자로 전달된 클로저는 괄호 바로 뒤에 나타낼 수 있습니다. 클로저가 함수의 유일한 인자일 때는, 괄호 전체를 생략할 수 있습니다.
+매개 변수를 이름 대신 '번호 (number)' 로 참조 할 수 있습니다-이 접근 방식은 특히 클로저가 아주 짧을 때 좋습니다. 함수의 마지막 인자로 전달된 클로저는 괄호 바로 뒤에 둘 수 있습니다. 클로저가 함수의 유일한 인자일 때, 괄호 전체를 생략할 수 있습니다.
 
 ```swift
 let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
-// "[20, 19, 12, 7]" 을 출력합니다.
+// "[20, 19, 12, 7]" 을 인쇄합니다.
 ```
 
 #### Objects and Classes (객체와 클래스)
 
-`class` 와 그 뒤의 클래스 이름을 사용하여 클래스를 생성합니다. 클래스에 있는 속성 선언은, 그것이 클래스 안이라는 상황만 제외한다면, 상수 또는 변수의 선언과 똑같은 방법으로 작성합니다. 마찬가지로, 메소드 및 함수 선언도 같은 방법으로 작성합니다.
+`class` 뒤에 클래스 이름을 붙여서 클래스를 생성합니다. 클래스 내의 속성 선언은, 클래스인 상황이라는 것만 제외하면, 상수나 변수 선언과 작성 방법이 똑같습니다. 마찬가지로, 메소드와 함수 선언도 같은 방법으로 작성합니다.
 
 ```swift
 class Shape {
@@ -386,9 +386,9 @@ class Shape {
 
 > 실험
 >
-> `let` 으로 상수 속성을 추가해 보고, 인자를 받는 다른 메소드도 추가해 봅시다.
+> `let` 으로 상수 속성을 추가하고, 인자를 받는 또 다른 메소드도 추가해 봅시다.
 
-클래스의 인스턴스를 생성하려면 클래스 이름 뒤에 괄호를 두면 됩니다. 인스턴스의 속성과 메소드에 접근하려면 '점 구문 표현 (dot syntax)' 을 사용합니다.
+클래스의 인스턴스는 클래스 이름 뒤에 괄호를 붙임으로써 생성합니다. 인스턴스의 속성과 메소드에 대한 접근은 '점 구문 표현 (dot syntax)' 을 사용합니다.
 
 ```swift
 var shape = Shape()
@@ -396,7 +396,7 @@ shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
 ```
 
-이 버전의 `Shape` 클래스는 뭔가 중요한 것을 빠뜨렸습니다: 인스턴스가 생성될 때 클래스를 설정하는 '초기자 (initializer)' 가 그것입니다. `init` 을 사용하여 하나 생성해 봅니다.
+이 버전의 `Shape` 클래스는 뭔가 중요한 것이 빠졌습니다: 인스턴스를 생성할 때 클래스를 설정하는 '초기자 (initializer)' 입니다. `init` 을 사용하여 하나 생성해 봅니다.
 
 ```swift
 class NamedShape {
@@ -413,13 +413,13 @@ class NamedShape {
 }
 ```
 
-어떻게 `self` 를 사용하여 `name` 속성을 '초기자' 의 `name` 인자와 구별하는 지에 주목하기 바랍니다. 초기자의 인자는 클래스의 인스턴스를 생성할 때 함수를 호출하는 것과 비슷하게 전달됩니다. 모든 속성에는 할당할 값이 필요합니다-(`numberOfSides` 처럼) 선언에서 아니면 (`name` 처럼) 초기자 내에서 줘야 합니다.
+`self` 를 사용하여 `name` 속성과 '초기자' 의 `name` 인자를 구별하는 방법에 주목합니다. 초기자의 인자는 클래스의 인스턴스를 생성할 때 함수 호출인 것처럼 전달됩니다. 모든 속성은-(`numberOfSides` 에서 처럼) 선언에서든 (`name` 에서 처럼) 초기자에서든-할당된 값이 필요합니다.
 
-객체를 해제하기 전에 어떤 정리 작업을 수행해야 한다면 `deinit` 을 사용하여 '정리자 (deinitializer)' 를 생성합니다.
+객체를 해제하기 전에 어떤 정리 작업을 수행할 필요가 있다면 `deinit` 으로 '정리자 (deinitializer)' 를 생성합니다.
 
-'하위 클래스 (subclasses)' 는 클래스 이름 뒤에, 콜론으로 구분된, '상위 클래스 (superclass)' 이름을 포함하고 있습니다. 클래스가 어떤 '표준 근원 클래스 (standard root class)'[^standard-root-class] 의 하위 클래스여야 하는 '필수 조건 (requirement)' 은 아예 없으므로, 필요에 따라 '상위 클래스' 를 포함할 수도 생략할 수도 있습니다.
+'하위 클래스 (subclasses)' 는 '상위 클래스 (superclass)' 이름을 클래스 이름 뒤에, 콜론으로 구분하여, 포함합니다. 클래스가 어떤 '표준 근원 클래스 (standard root class)'[^standard-root-class] 의 하위 클래스여야 한다는 '필수 조건 (requirement)' 은 없으므로, 필요에 따라 상위 클래스를 포함하거나 생략할 수 있습니다.
 
-하위 클래스의 메소드가 상위 클래스의 구현을 '재정의 (override)' 한다면 `override` 로 표시합니다—우연하게, `override` 없이, 메소드를 재정의하면, 컴파일러가 에러로 감지합니다. 컴파일러는 실제로는 상위 클래스의 어떤 메소드도 재정의하지 않으면서 `override` 라고 한 메소드 역시 감지합니다.
+상위 클래스의 구현을 '재정의 (override)' 하는 하위 클래스의 메소드는 `override` 로 표시합니다—`override` 없이, 우연히 메소드를 재정의하는 것은, 컴파일러가 에러라고 감지합니다. 컴파일러는 실제로는 상위 클래스의 어떤 메소드도 재정의하지 않는 `override` 메소드도 감지합니다.
 
 ```swift
 class Square: NamedShape {
@@ -446,9 +446,9 @@ test.simpleDescription()
 
 > 실험
 >
-> `Circle` 이라는 초기자의 인자로 반지름과 이름을 받아들이는 `NamedShape` 의 또 다른 하위 클래스로를 만들어 봅시다. `Circle` 클래스에 `area()` 와 `simpleDescription()` 메소드를 구현해 봅시다.
+> `NamedShape` 의 또 다른 하위 클래스로 반지름과 이름을 초기자의 인자로 받는 `Circle` 을 만들어 봅시다. `Circle` 클래스에 대한 `area()` 와 `simpleDescription()` 메소드를 구현해 봅시다.
 
-저장 되는 간단한 속성에 더하여, 속성은 '획득자 (getter)' 와 '설정자 (setter)' 를 가질 수 있습니다.[^getter-and-setter]
+저장된다는 단순한 속성에 더하여, 속성은 '획득자 (getter)' 와 '설정자 (setter)' 를 가질 수 있습니다.[^getter-and-setter]
 
 ```swift
 class EquilateralTriangle: NamedShape {
@@ -475,21 +475,21 @@ class EquilateralTriangle: NamedShape {
 }
 var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
-// "9.3" 을 출력합니다.
+// "9.3" 을 인쇄합니다.
 triangle.perimeter = 9.9
 print(triangle.sideLength)
-// "3.3000000000000003" 을 출력합니다.
+// "3.3000000000000003" 을 인쇄합니다.
 ```
 
-`perimeter` 의 '설정자' 안에서, 새로운 값은 `newValue` 라는 암시적인 이름을 가집니다. `set` 뒤의 괄호 안에서 명시적인 이름을 제공할 수도 있습니다.
+`perimeter` 의 '설정자' 안에서, 새로운 값은 `newValue` 라는 암시적인 이름을 가집니다. `set` 뒤의 괄호에서 명시적인 이름을 제공할 수 있습니다.
 
-`EquilateralTriangle` 클래스의 초기자는 세 개의 서로 다른 절차를 가지고 있음에 주목하기 바랍니다:
+`EquilateralTriangle` 클래스의 초기자는 세 가지 다른 단계를 가진다는 것에 주목합니다:
 
-1. 하위 클래스가 선언한 속성의 값을 설정하기
-2. 상위 클래스의 초기자 호출하기
-3. 상위 클래스에서 정의한 속성의 값 바꾸기. 메소드, '획득자', 또는 '설정자' 를 사용하는 어떠한 추가 설정 작업이라도 이 시점에서 할 수 있습니다.
+1. 하위 클래스가 선언한 속성의 값을 설정함
+2. 상위 클래스의 초기자를 호출함
+3. 상위 클래스에서 정의한 속성의 값을 바꿈. 이 시점에서 메소드, 획득자, 및 설정자를 사용한 어떤 추가적인 설정 작업도 할 수 있음.
 
-만약 속성을 계산할 필요는 없지더라도 새 값을 설정한 전후에 실행될 코드를 제공할 필요가 있는 경우라면, `willSet` 과  `didSet` 을 사용하도록 합니다. 제공한 코드는 초기자 외부에서 값이 바뀔 때마다 실행됩니다. 예를 들어, 아래의 클래스는 삼각형의 한 변의 길이가 항상 사각형의 한 변의 길이와 같도록 보장합니다.
+속성을 계산할 필요는 없지만 새 값의 설정 전후에 실행할 코드를 아직 제공해야 하는 경우, `willSet` 과  `didSet` 을 사용합니다. 제공한 코드는 초기자 밖에서 값이 바뀔 때마다 실행됩니다. 예를 들어, 아래 클래스는 삼각형의 한 변의 길이가 정사각형의 한 변의 길이와 같음을 항상 보장합니다.
 
 ```swift
 class TriangleAndSquare {
@@ -510,15 +510,15 @@ class TriangleAndSquare {
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
 print(triangleAndSquare.square.sideLength)
-// "10.0" 을 출력합니다.
+// "10.0" 을 인쇄합니다.
 print(triangleAndSquare.triangle.sideLength)
-// "10.0" 을 출력합니다.
+// "10.0" 을 인쇄합니다.
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
-// "50.0" 을 출력합니다.
+// "50.0" 을 인쇄합니다.
 ```
 
-옵셔널 값과 작업할 때는, 메소드, 속성, 그리고 '첨자 연산 (subscripting)' 과 같은 연산 앞에 `?` 를 작성할 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 이후의 모든 것이 무시되며 전체 표현식의 값은 `nil` 이 됩니다. 다른 경우라면, 옵셔널 값의 포장이 풀리고, `?` 이후의 모든 것이 이 '포장이 풀린 값 (unwrapped value)' 에 작용합니다. 두 경우 모두, 전체 표현식은 옵셔널 값입니다.
+옵셔널 값과 작업할 때, 메소드, 속성, 그리고 '첨자 연산 (subscripting)' 같은 연산 앞에 `?` 를 작성할 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 뒤의 모든 것을 무시하며 전체 표현식의 값은 `nil` 입니다. 다른 경우, 옵셔널 값의 포장을 풀고, `?` 뒤의 모든 것이 '포장이 풀린 값 (unwrapped value)' 에 작용합니다. 두 경우 모두, 전체 표현식은 옵셔널 값입니다.
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -527,7 +527,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures (열거체와 구조체)
 
-열거체를 생성하려면 `enum` 을 사용합니다. 클래스 및 다른 모든 '이름 있는 타입 (named types)' 들 처럼, 열거체도 자신과 결합된 메소드를 가질 수 있습니다.
+`enum` 을 사용하여 열거체를 생성합니다. 클래스와 다른 모든 '이름 있는 타입 (named types)' 같이, 열거체는 자신과 결합된 메소드를 가질 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -555,11 +555,11 @@ let aceRawValue = ace.rawValue
 
 > 실험
 >
-> 두 `Rank` 값을 비교하기 위하여 그 '원시 값 (raw value)' 을 비교하는 작성해 봅시다.
+> '원시 값 (raw value)' 을 비교해서 두 `Rank` 값을 비교하는 함수를 작성해 봅시다.
 
-기본적으로, 스위프트가 할당하는 '원시 값 (raw value)' 은 '0' 에서 시작하여 매번 '1' 씩 증가하는데, 이런 작동 방식은 값을 명시적으로 지정하여 바꿀 수 있습니다. 위 예제에서, `Ace` 의 원시 값은 명시적으로 `1` 로 부여하며, 나머지 원시 값은 순서대로 할당되도록 합니다. 열거체의 원시 (값) 타입으로 '문자열' 이나 '부동-소수점 수' 를 사용할 수도 있습니다. '열거체 case 값 (enumeration case)' 의 원시 값에 접근하려면 `rawValue` 속성을 사용합니다.
+기본적으로, 스위프트는 '0' 에서 시작해서 매번 '1' 씩 증가하는 '원시 값 (raw value)' 을 할당하지만, 이 작동 방식은 값을 명시적으로 지정함으로써 바꿀 수 있습니다. 위 예제에서, `Ace` 는 `1` 이라는 원시 값을 명시적으로 부여받으며, 나머지 원시 값은 순서대로 할당됩니다. 열거체의 원시 타입으로 문자열이나 부동-소수점 수도 사용할 수 있습니다. '열거체 case 값 (enumeration case)' 의 원시 값에 접근하려면 `rawValue` 속성을 사용합니다.
 
-원시 값으로 열거체의 인스턴스를 만들려면 `init?(rawValue:)` 초기자를 사용합니다. 이는 '원시 값' 에 해당하는 '열거체 case 값' 을 반환하거나 아니면 해당하는 `Rank` 가 없는 경우인 `nil` 을 반환합니다.
+원시 값을 가지고 열거체의 인스턴스를 만들려면`init?(rawValue:)` 초기자를 사용합니다. 이는 원시 값과 일치하는 '열거체 case 값' 을 반환하거나 일치하는 `Rank` 가 없을 경우 `nil` 을 반환합니다.
 
 ```swift
 if let convertedRank = Rank(rawValue: 3) {
@@ -567,7 +567,7 @@ if let convertedRank = Rank(rawValue: 3) {
 }
 ```
 
-열거체의 'case 값' 은 실제 값이며, 원시 값을 작성하는 또 다른 방법인 것이 아닙니다. 실제로, 의미있는 원시 값이 있지 않은 경우, 굳이 이를 제공할 필요는 없습니다.
+열거체의 'case 값' 은, 원시 값을 작성하는 또 다른 방법이 아니라, 실제 값입니다. 사실상, 원시 값이 의미가 없는 경우, 이를 제공할 필요가 없습니다.
 
 ```swift
 enum Suit {
@@ -591,11 +591,11 @@ let heartsDescription = hearts.simpleDescription()
 
 > 실험
 >
-> `Suit` 에 `color()` 메소드를 추가하여, '스페이드 (spades)' 와 '클럽 (clubs)' 일 때는 "검정색" 을 반환하고, '하트 (hearts)' 와 '다이아몬드 (diamonds)' 일 때는 "빨간색" 을 반환하게 해봅시다.
+> `'스페이드 (spades)' 와 '클럽 (clubs)' 이면 "검정색 (black)" 을 반환하고, '하트 (hearts)' 와 '다이아몬드 (diamonds)' 면 "빨간색 (red)" 을 반환하는 `color()` 라는 메소드를 `Suit` 에 추가해 봅시다.
 
-위에서 열거체의 `hearts` 'case 값' 을 참조하는데 두 가지 방법을 사용한 것에 주목하기 바랍니다: `hearts` 상수에 값을 할당할 때는, 열거체 case 값을 `Suit.hearts` 라고 온전한 이름으로 참조했는데 왜냐면 이 상수에 명시적인 타입을 지정하지 않았기 때문입니다. 'switch 문' 안에서는, 열거체 case 값을 단축 양식인 `.hearts` 라고 참조했는데 이는 `self` 값이 'suit' 라는 것을 이미 알고 있기 때문입니다. 값의 타입을 이미 알고 있다면 언제든지 단축 양식을 사용할 수 있습니다.
+위에서 두 가지 방식으로 열거체의 `hearts` 'case 값' 을 참조한 것에 주목합니다: `hearts` 상수에 값을 할당할 때는, 열거체 case 값인 `Suit.hearts` 를 전체 이름으로 참조하는데 이는 상수에 지정된 명시적인 타입이 없기 때문입니다. 'switch 문' 안에서는, 열거체 case 값을 단축 형식인 `.hearts` 로 참조하는데 이는 `self` 값이 'suit' 임을 이미 알고 있기 때문입니다. 값의 타입을 이미 알고 있을 때는 언제든지 단축 형식을 사용할 수 있습니다.
 
-열거체가 원시 값을 가지고 있는 경우, 이 값은 선언 시에 결정되며, 이는 특정한 열거체 case 값의 모든 인스턴스들은 항상 같은 원시 값을 가지게 됨을 의미합니다. 열거체 case 값에 대한 또 다른 선택 사항은 'case 값' 에 '결합된 (associated)' 값을 가지는 것입니다-이 값은 인스턴스를 만들 때 결정되며, 열거체 case 값의 각 인스턴스마다 서로 다를 수 있습니다. '결합된 값 (associated values)' 은 '열거체 case 인스턴스' 의 '저장 속성 (stored properties)' 처럼 동작하는 것이라고 생각할 수 있습니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버는 요청한 정보를 가지고 응답하거나, 아니면 뭔가가 잘못됐다는 설명을 가지고 응답하게 됩니다.
+열거체가 원시 값을 가지고 있으면, 그 값은 선언 시에 결정되는데, 이는 특정 '열거체 case 값' 의 모든 인스턴스는 항상 똑같은 원시 값을 가진다는 의미입니다. '열거체 case 값' 에 대한 또 다른 선택은 'case 값' 과 '결합된 (associated)' 값을 가지게 하는 겁니다-이 값은 인스턴스를 만들 때 결정되며, '열거체 case 값' 의 각 인스턴스마다 서로 다를 수 있습니다. '결합된 값 (associated values)' 은 '열거체 case 값 인스턴스' 의 '저장 속성 (stored properties)' 인 것처럼 작동한다고 생각해도 됩니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버는 요청받은 정보를 가지고 응답하거나, 뭔가 잘못된 것의 설명을 가지고 응답합니다.
 
 ```swift
 enum ServerResponse {
@@ -612,16 +612,16 @@ case let .result(sunrise, sunset):
 case let .failure(message):
     print("Failure...  \(message)")
 }
-"Sunrise is at 6:00 am and sunset is at 8:09 pm." 을 출력합니다.
+// "Sunrise is at 6:00 am and sunset is at 8:09 pm." 을 인쇄합니다.
 ```
 
 > 실험
 >
-> 세 번째 'case 값' 을 `ServerResponse` 와 'switch 문' 에 추가해 봅시다.
+> `ServerResponse` 와 'switch 문' 에 세 번째 'case 값' 을 추가해 봅시다.
 
-'switch 문의 case 절' 과 값을 맞춰보는 부분에서 `ServerResponse` 값의 일출 시간과 일몰 시간을 어떻게 추출하고 있는 지에 주목하기 바랍니다.
+'switch 문의 case 절' 과 값이 일치하는지 맞춰보는 부분에서 `ServerResponse` 값의 일출 시간과 일몰 시간이 추출되는 방법에 주목합니다.
 
-구조체를 생성하려면 `struct` 를 사용합니다. 구조체는, 메소드와 초기자를 포함하여, 클래스와 똑같은 기능을 많이 지원합니다. 구조체와 클래스의 가장 중요한 차이점이라면 코드 내에서 전달될 때 구조체는 항상 복사되지만, 클래스는 참조에 의해 전달된다는 것입니다.
+`struct` 를 사용하여 구조체를 생성합니다. 구조체는, 메소드와 초기자를 포함하여, 클래스와 똑같은 작동 방식을 많이 지원합니다. 구조체와 클래스 사이의 가장 중요한 차이점 하나는, 클래스는 참조로써 전달되지만, 구조체는 코드에서 전달될 때 항상 복사된다는 것입니다.
 
 ```swift
 struct Card {
@@ -637,7 +637,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 > 실험
 >
-> 온전한 카드 한 벌을 가진 배열을 반환하는 함수를 만들어 봅시다. 이 때 각각의 카드는 '계급 (rank)' 과 '패 (suit)'[^suit] 의 개별 조합입니다.
+> 카드 하나가 '계급 (rank)' 과 '패 (suit)'[^suit] 의 각 조합으로 이루어진,온전한 카드 한 벌을 담은 배열을 반환하는 함수를 작성해 봅시다.  
 
 ### Protocols and Extensions (프로토콜과 익스텐션; 규약과 확장)
 
