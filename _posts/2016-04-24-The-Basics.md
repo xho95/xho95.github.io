@@ -223,7 +223,7 @@ _부동-소수점 수 (floating-point numbers)_ 는, `3.14159`, `0.1`, 그리고
 
 '타입 추론' 으로 인하여, 스위프트에서 선언이 필수인 경우는 C 나 오브젝티브-C 같은 언어보다 훨씬 적습니다. 상수와 변수의 타입은 여전히 명시적이어야 하지만, 타입을 지정하는 작업 대부분을 알아서 해줍니다.
 
-'타입 추론' 은 초기 값을 가진 상수나 변수를 선언할 때 특히 더 유용합니다. 이는 종종 상수나 변수를 선언하는 순간에 _글자 표현 값 (literal value)_-또는 _글자 값 (literal)_-을 할당하여 수행합니다. ('글자 값 (literal value)' 은, 아래 예제의 `42` 와 `3.14159` 같이, 소스 코드에 직접 나타난 값을 말합니다.)
+'타입 추론' 은 특히 초기 값을 가진 상수나 변수를 선언할 때 아주 유용합니다. 이는 종종 상수나 변수를 선언하는 순간에 _글자 표현 값 (literal value)_-또는 _글자 값 (literal)_-을 할당하여 수행합니다. ('글자 값 (literal value)' 은, 아래 예제의 `42` 와 `3.14159` 같이, 소스 코드에 직접 나타난 값을 말합니다.)
 
 예를 들어, 새로운 상수에 글자 값 `42` 를 할당하면서 타입이 무엇인지 말하지 않으면, 정수처럼 보이는 수로 초기화하기 때문에, 스위프트는 이 상수가 `Int` 이길 원한다고 추론합니다:
 
@@ -373,150 +373,150 @@ var maxAmplitudeFound = AudioSample.min
 
 ### Booleans (불리언; 논리 값)
 
-스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값을 일컬어 _논리 값 (logical)_ 이라고도 하는데, 왜냐면 이는 항상 `true` 이거나 `false` 일 수 밖에 없기 때문입니다. 스위프트는 두 개의 불리언 상수 값인, `true` 와 `false` 를 제공합니다:
+스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값은 _논리 값 (logical)_ 이라고도 하는데, 늘`true` 또는 `false` 만 될 수 있기 때문입니다. 스위프트는, `true` 와 `false` 라는, 두 개의 불리언 상수 값을 제공합니다:
 
 ```swift
 let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 이들이 '불리언 글자 값 (Boolean literal values)' 으로 초기화되었다는 사실에 의해 `Bool` 이라고 추론됩니다. 위의 `Int` 및 `Double` 에서와 같이, 상수 또는 변수를 생성하면서 `true` 나 `false` 라고 설정하면, `Bool` 이라고 선언할 필요가 없습니다. 이미 알고 있는 타입의 값으로 상수나 변수를 초기화 할 때는 '타입 추론 장치 (type inference)' 가 스위프트 코드를 더 간결하고 이해하기 쉽게 만들어 줍니다.
+`orangesAreOrange` 와 `turnipsAreDelicious` 은 '불리언 글자 값 (Boolean literal values)' 으로 초기화된다는 사실로 부터 타입이 `Bool` 이라고 추론합니다. 위의 `Int` 와 `Double` 에서 처럼, 생성하자마자 `true` 나 `false` 로 설정하는 경우 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 (type inference)' 은 타입을 이미 알고 있는 다른 값으로 상수나 변수를 초기화 할 때 스위프트 코드를 더 간결하고 이해하기 쉽도록 만들어 줍니다.
 
-불리언 값은 `if` 문 같은 조건 구문과 작업할 때 특히 더 유용합니다:
+불리언 값은 특히 `if` 문 같은 조건 구문과 작업할 때 아주 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
-    print("Mmm, tasty turnips!")
+  print("Mmm, tasty turnips!")
 } else {
-    print("Eww, turnips are horrible.")
+  print("Eww, turnips are horrible.")
 }
-// "Eww, turnips are horrible." 를 출력합니다.
+// "Eww, turnips are horrible." 를 인쇄합니다.
 ```
 
-`if` 문 등의 조건 구문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
+`if` 문 같은 조건 구문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
 
-스위프트의 '타입 안전 장치 (type safety)' 는 '불리언이-아닌 (non-Boolean)' 값이 `Bool` 을 대체하는 것을 막아줍니다. 다음 예제는 '컴파일 시간 (compile-time)' 에 에러를 띄웁니다:
+스위프트의 '타입 안전 장치 (type safety)' 는 '불리언이-아닌 (non-Boolean)' 값이 `Bool` 을 대체하는 것을 막아줍니다. 다음 예제는 '컴파일 시간 (compile-time)' 에러를 보고합니다:
 
 ```swift
 let i = 1
 if i {
-    // 이 예제는 컴파일이 되지 않고, 에러를 띄울 것입니다.
+  // 이 예제는 컴파일이 되지 않고, 에러를 보고할 것입니다.
 }
 ```
 
-하지만, 아래의 또 다른 예제는 유효합니다:
+하지만, 아래 예제에 있는 대안은 유효합니다:
 
 ```swift
 let i = 1
 if i == 1 {
-    // 이 예제는 성공적으로 컴파일될 것입니다.
+  // 이 예제는 컴파일이 성공할 것입니다.
 }
 ```
 
-`i == 1` 비교 연산의 결과는 `Bool` 타입이므로, 이 두 번째 예제는 '타입 검사 (type-check)' 를 통과합니다. `i == 1` 과 같은 비교 연산은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명합니다.
+`i == 1` 비교 연산의 결과는 `Bool` 타입이므로, 두 번째 예제는 '타입 검사 (type-check)' 를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 논의합니다.
 
-스위프트에 있는 '타입 안전 장치' 의 다른 예제에서와 같이, 이런 접근법은 우연한 에러를 방지해주며 특정한 코드 부분의 의도가 항상 명확하도록 보장합니다.
+스위프트의 다른 '타입 안전 장치' 예제에서 처럼, 이 접근 방식은 예기치 않은 에러를 피하고 특정 코드의 의도를 항상 명확하게 드러내도록 보장합니다.
 
 ### Tuples (튜플; 짝)
 
-_튜플 (tuples)_ 은 여러 개의 값을 '단일한 복합 값' 으로 그룹지어 줍니다. 튜플 내의 값은 어떤 타입든 상관없으며 서로 같은 타입이어야 할 필요도 없습니다.
+_튜플 (tuples)_ 은 여러 값을 '단일 복합 값' 으로 그룹짓습니다. 튜플 내의 값은 어떤 타입도 될 수 있으며 서로 같은 타입일 필요도 없습니다.
 
-다음 예제에서, `(404, "Not Found")` 는 _HTTP 상태 코드 (HTTP status code)_ 를 묘사하는 튜플입니다. 'HTTP 상태 코드' 는 웹 페이지를 요청할 때마다 웹 서버에 의해 반환되는 특수한 값입니다. `404 Not Found` 라는 상태 코드는 존재하지 않는 웹페이지를 요청할 때 반환됩니다.
+다음 예제의, `(404, "Not Found")` 는 _HTTP 상태 코드 (HTTP status code)_ 를 설명하는 튜플입니다. 'HTTP 상태 코드' 는 웹 페이지를 요청할 때마다 웹 서버가 반환하는 특수한 값입니다. `404 Not Found` 라는 상태 코드는 요청한 웹 페이지가 존재하지 않을 경우 반환됩니다.
 
 ```swift
 let http404Error = (404, "Not Found")
-// http404Error 의 타입은 (Int, String) 이고, 값은 (404, "Not Found") 입니다.
+// http404Error 은 (Int, String) 타입이고, 값은 (404, "Not Found") 입니다.
 ```
 
-`(404, "Not Found")` 튜플은 `Int` 하나와 `String` 하나를 같이 그룹지어서 HTTP 상태 코드에 두 개의 구분되는 값을 부여합니다: 수치 값 하나와 사람이-읽을 수 있는 설명 하나가 그것입니다. 이는 "`(Int, String)` 타입인 튜플" 이라고 설명할 수 있습니다.
+`(404, "Not Found")` 라는 튜플은 `Int` 와 `String` 을 함께 그룹지어서 HTTP 상태 코드에 별도인 두 개의 값: '하나의 수' 와 '사람이-이해할 수 있는 설명' 을 부여합니다. 이는 "`(Int, String)` 타입인 튜플" 이라고 설명할 수 있습니다.
 
-튜플은 타입을 어떤 '순서 (permutation)'[^permutation] 로 해도 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 타입이나, `(String, Bool)` 타입, 아니면 진짜 필요한 대로 아무 순서로 된 튜플도 만들 수 있습니다.
+튜플은 어떤 '순서 (permutation)'[^permutation] 의 타입으로도 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 나, `(String, Bool)` , 또는 진짜 순서를 필요한 대로 아무렇게나 섞은 타입인 튜플도 만들 수 있습니다.
 
-튜플이 담고 있는 내용은 별도의 상수나 변수로 _분해 (decompose)_ 할 수 있으며, 그 다음에는 일반 (변수처럼) 접근할 수 있습니다:
+튜플의 내용은 별도의 상수나 변수로 _분해 (decompose)_ 한 다음, 평소 처럼 접근할 수 있습니다:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
 print("The status code is \(statusCode)")
-// "The status code is 404" 를 출력합니다.
+// "The status code is 404" 를 인쇄합니다.
 print("The status message is \(statusMessage)")
-// "The status message is Not Found" 를 출력합니다.
+// "The status message is Not Found" 를 인쇄합니다.
 ```
 
-튜플 값 중에서 일부분만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore; `_`) 로 나머지 부분을 무시할 수 있습니다:
+튜플 값에서 일부만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore; `_`) 을 써서 튜플 일부를 무시합니다:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
 print("The status code is \(justTheStatusCode)")
-// "The status code is 404" 를 출력합니다.
+// "The status code is 404" 를 인쇄합니다.
 ```
 
-다른 방법으로, 튜플에 있는 개별 원소 값에 접근하려면 '0' 으로 시작하는 '색인 번호 (index numbers)' 을 사용합니다ㄴ:
+대안으로, 0 으로 시작하는 '색인 번호 (index numbers)' 을 사용하여 튜플의 개별 원소 값에 접근합니다:
 
 ```swift
 print("The status code is \(http404Error.0)")
-// "The status code is 404" 를 출력합니다.
+// "The status code is 404" 를 인쇄합니다.
 print("The status message is \(http404Error.1)")
-// "The status message is Not Found" 를 출력합니다.
+// "The status message is Not Found" 를 인쇄합니다.
 ```
 
-튜플을 정의할 때 튜플에 있는 개별 원소에 이름을 지을 수도 있습니다.:
+튜플을 정의할 때 튜플의 개별 원소에 이름을 붙일 수 있습니다:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
 ```
 
-튜플의 원소에 이름을 지으면, 그 원소의 값에 접근할 때 원소의 이름을 사용할 수 있습니다:
+튜플 원소에 이름을 붙이면, 해당 원소의 값에 접근하기 위해 원소 이름을 사용할 수 있습니다:
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
-// "The status code is 200" 를 출력합니다.
+// "The status code is 200" 를 인쇄합니다.
 print("The status message is \(http200Status.description)")
-// "The status message is OK" 를 출력합니다.
+// "The status message is OK" 를 인쇄합니다.
 ```
 
-튜플은 특히 함수의 반환 값으로 사용할 때 아주 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지를 가져오는데 성공했는지 실패했는지를 설명하기 위해 `(Int, String)` 튜플 타입을 반환할 수도 있습니다. 각각의 타입이 다른, 별개의 두 값으로 된 튜플을 반환함으로써, 이 함수는 단일한 타입의 단일한 값만을 반환할 때보다 결과물에 대한 더 유용한 정보를 제공할 수 있게 됩니다. 더 자세한 정보는 [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 를 참고하기 바랍니다.
+튜플은 특히 함수의 반환 값으로 아주 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지 가져오기의 성공 또는 실패를 설명하고자 `(Int, String)` 튜플 타입을 반환할 수도 있습니다. 함수는, 각 타입이 서로 다른, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입인 단일 값만 반환하는 경우보다 결과물에 대한 더 유용한 정보를 제공합니다. 더 많은 정보는 [Functions with Multiple Return Values (다중 반환 값을 가진 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-다중-반환-값을-가진-함수) 를 참고하기 바랍니다.
 
-> 튜플은 관계 있는 값들을 단순히 그룹지을 때 유용한 것입니다. 복잡한 데이터 구조를 생성하는 데는 적합하지 않습니다. 데이터 구조가 더 복잡해질 것 같으면, 튜플 대신에, 클래스나 구조체로 모델링하기 바랍니다. 더 자세한 정보는 [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
+> 튜플은 관련 값들의 간단한 그룹에서 유용한 것입니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡해질 거 같으면, 튜플이 아니라, 클래스나 구조체로 모델을 만듭니다. 더 많은 정보는 [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
 
-### Optionals (옵셔널; 선택적 값 타입)
+### Optionals (옵셔널)
 
-_옵셔널 (optionals)_ 은 값이 없을 수도 있는 상황에서 사용합니다. '옵셔널' 은 두 가지 가능성을 표현합니다: 거기에 값이 _있는 (is)_, 그래서 옵셔널의 포장을 풀고 해당 값에 접근할 수 있는 경우, 또는 거기에 값이 전혀 _없는 (isn't)_ 경우가 그것입니다.
+_옵셔널 (optionals)_ 은 값이 없을 수도 있는 상황에서 사용합니다. '옵셔널' 은 두 개의 가능성: 즉, 값이 _있고 (is)_, 해당 값에 접근하기 위해 옵셔널의 포장을 풀 수 있는 경우, 또는 값이 전혀 _없는 (isn't)_ 경우를 표현합니다.
 
-> 옵셔널이라는 개념은 C 나 오브젝티브-C 언어에는 존재하지 않습니다. 오브젝티브-C 언어에서 그나마 가장 근접한 개념은 다른 때라면 객체를 반환할 메소드가 `nil` 을 반환하는 능력을 가지는 것인데, 여기서의 `nil` 은 "유효한 객체가 없음" 을 의미합니다. 하지만, 이것은 오직 객체에 대해서만 작동합니다-구조체나, 기본 C 타입들, 또는 열거체에 대해서는 작동하지 않습니다. 이 타입들을 위해서, 오브젝티브-C 의 메소드는 보통 (`NSNotFound` 같은) 특수한 값을 반환해서 값이 없다는 것을 나타냅니다. 이런 식의 접근법은 테스트를 해야할 특수한 값이 있다는 것과 그것의 검사를 기억하고 있다는 것을 메소드를 호출한 쪽에서 알고 있다고 가정하고 있는 것입니다. 스위프트의 옵셔널은 _어떤 타입에 대해서든 (any type at all)_ 값의 없음을 나타낼 수 있으며, 특수한 상수도 필요하지 않습니다.
+> 옵셔널이라는 개념은 C 나 오브젝티브-C 에는 존재하지 않습니다. 오브젝티브-C 에서 가장 가까운 것은, "유효한 객체가 없음" 을 의미하는 `nil` 을 써서, 다른 경우라면 객체를 반환했을 법한 메소스가 `nil` 을 반환하는 능력입니다. 하지만, 이는 객체에서만 작동합니다-구조체나, 기본 C 타입, 또는 열거체에서는 작동하지 않습니다. 이러한 타입을 위해, 오브젝티브-C 메소드는 값이 없음을 나타내는 전형적인 (`NSNotFound` 같은) 특수한 값을 반환합니다. 이러한 접근 방식은 메소드를 호출하는 사람이 테스트할 특수한 값이 있음도 알고 검사를 해야함도 기억하고 있다고 가정합니다. 스위프트의 옵셔널은, 특수한 상수 없이도, _어떤 타입에든 (any type at all)_ 값이 없다는 것을 나타내도록 해줍니다.
 
-다음 예제는 옵셔널을 사용하여 값이 없는 상황을 대처하는 방법을 보여줍니다. 스위프트의 `Int` 타입은 `String` 값을 `Int` 값으로 변환하려고 하는 '초기자 (initializer)' 를 가지고 있습니다. 하지만, 모든 문자열을 정수로 변환할 수 있는 것은 아닙니다. 문자열 `"123"` 은 수치 값 `123` 으로 변환할 수 있지만, 문자열 `"hello, world"` 는 변환할만큼 분명한 수치 값을 가지고 있지 않습니다:
+다음은 옵셔널로 값이 없는 상황을 대처하는 방법에 대한 예제입니다. 스위프트의 `Int` 타입에는 `String` 값을 `Int` 값으로 변환하려는 '초기자 (initializer)' 가 있습니다. 하지만, 모든 문자열을 정수로 변환할 수 있는 것은 아닙니다. 문자열 `"123"` 은 수치 값 `123` 으로 변환할 수 있지만, 문자열 `"hello, world"` 는 변환할 수치 값이 분명하지 않습니다:
 
-아래 예제는 '초기자' 를 사용하여 `String` 을 `Int` 로 변환하려고 합니다:
+아래 예제는 `String` 을 `Int` 로 변환하기 위해 이 초기자를 사용합니다:
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
-// convertedNumber 는 "Int?", 또는 "optional Int" 타입이라고 추론합니다.
+// convertedNumber 는 "Int?" 나, "optional Int" 타입으로 추론됩니다.
 ```
 
-초기자가 실패할 수도 있기 때문에, `Int` 가 아니라, '_옵셔널 (optional)_ `Int`' 를 반환합니다. '옵셔널 `Int`' 는, `Int` 대신, `Int?` 라고 적습니다. 물음표는 옵셔널 값을 가지고 있음을 나타내는데, _어떤 (some)_ `Int` 값을 가지고 있거나, 아니면 _아무 값이 아닌 (no value at all)_ 상태를 가지고 있다는 것을 의미합니다. (그 외의 어떤 것, 가령 `Bool` 값이나 `String` 값을 가질 수는 없습니다. 이것은 하나의 `Int` 이거나, 아무 것도 아닌 것입니다.)
+초기자가 실패할 수도 있으므로, `Int` 대신, '_옵셔널 (optional)_ `Int`' 를 반환합니다. '옵셔널 `Int`' 는, `Int` 가 아니라, `Int?` 라고 작성합니다. 물음표는 담고 있는 값이 옵셔널임을 나타내는데, _어떤 (some)_ `Int` 값을 담고 있거나, 아니면 _아예 아무 값도 (no value at all)_ 담고 있지 않음을 의미합니다. (`Bool` 값이나 `String` 값 같은, 다른 어떤 것도 담을 수 없습니다. `Int` 이거나, '아예 아무 것도 아닌 것' 입니다.)
 
 #### nil
 
-옵셔널 변수에 값이 없는 상태를 설정하려면 `nil` 이라는 특수한 값을 할당하면 됩니다:
+옵셔널 변수에 특수한 값인 `nil` 을 할당함으로써 '값이 없는 상태 (valueless state)' 를 설정합니다:
 
 ```swift
 var serverResponseCode: Int? = 404
-// serverResponseCode 는 404 라는 실제 Int 값을 가집니다.
+// serverResponseCode 는 404 라는 실제 Int 값을 담고 있습니다.
 serverResponseCode = nil
-// serverResponseCode 는 이제 아무 값도 가지지 않습니다.
+// serverResponseCode 는 이제 아무 값도 담고 있지 않습니다.
 ```
 
-> `nil` 은 '옵셔널이-아닌 (non-optional)' 상수와 변수에는 사용할 수 없습니다. 코드에 있는 상수나 변수가 정해진 조건 하에서 값이 없는 상태를 다뤄야 할 필요가 있을 경우에는, 항상 적당한 타입에 대한 옵셔널 값이라고 선언하기 바랍니다.
+> `nil` 은 '옵셔널이-아닌 (non-optional)' 상수와 변수와는 사용할 수 없습니다. 정해진 조건 아래에서 코드의 상수나 변수가 값의 없음을 다뤄야 한다면, 이를 항상 적절한 타입의 옵셔널 값으로 선언합니다.
 
-옵셔널 변수를 정의하면서 기본 설정 값을 제공하지 않으면, 이 변수는 자동으로 `nil` 로 설정됩니다:
+옵셔널 변수를 정의하면서 '기본 설정 값 (default value)' 을 제공하지 않으면, 이 변수는 `nil` 로 자동 설정합니다:
 
 ```swift
 var surveyAnswer: String?
-// surveyAnswer 는 자동으로 nil 로 설정됩니다.
+// surveyAnswer 는 nil 로 자동 설정됩니다.
 ```
 
-> 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 같지 않습니다. 오브젝티브-C 에서, `nil` 은 존재하지 않는 객체에 대한 포인터입니다. 스위프트에서, `nil` 은 포인터가 아닙니다-이것은 정해진 타입에 대한 '값의 없음 (absence of a value)' 입니다. _어떤 (any)_ 타입의 옵셔널에도 `nil` 을 설정할 수 있으며, 객체 타입에만 해당되지 않습니다.
+> 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 같은 것이 아닙니다. 오브젝티브-C 의, `nil` 은 존재하지 않는 객체에 대한 '포인터 (pointer)' 입니다. 스위프트의, `nil` 은 포인터가 아닙니다-이는 정해진 타입 '값의 없음' 입니다. 객체 타입뿐만 아니라, _어떤 (any)_ 타입의 옵셔널도 `nil` 로 설정할 수 있습니다.
 
 #### If Statements and Forced Unwrapping (If 문과 강제 포장 풀기)
 
@@ -556,7 +556,7 @@ if let 상수_이름 = 어떤_옵셔널 {
 }
 ```
 
-[Optionals (옵셔널)](#optionals-옵셔널-선택적-값-타입) 부분에 있는 `possibleNumber` 예제를 '강제 포장 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 사용하여 재작성할 수도 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널) 부분에 있는 `possibleNumber` 예제를 '강제 포장 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 사용하여 재작성할 수도 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
