@@ -136,7 +136,7 @@ printWithoutCounting(string: "hello, world")
 
 > 반환 값을 무시할 수는 있지만, 값을 반환한다고 말한 함수는 반드시 항상 그걸 해야합니다. 반환 타입을 정의한 함수는 값을 반환하지 않은 채로 제어가 함수를 빠져나가게 할 수 없으며, 이렇게 하려고 하면 그 결과는 '컴파일-시간 에러 (compile-time error)' 입니다.
 
-#### Functions with Multiple Return Values (반환 값이 여러 개인 함수)
+#### Functions with Multiple Return Values (다중 반환 값을 가진 함수)
 
 '튜플 (tuple)' 타입을 함수의 반환 타입으로 사용하면 여러 개의 반환 값을 하나의 복합된 반환 값으로 만들어서 반환할 수 있습니다.
 

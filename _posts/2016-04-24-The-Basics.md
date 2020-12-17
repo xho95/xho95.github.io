@@ -223,7 +223,7 @@ _부동-소수점 수 (floating-point numbers)_ 는, `3.14159`, `0.1`, 그리고
 
 '타입 추론' 으로 인하여, 스위프트에서 선언이 필수인 경우는 C 나 오브젝티브-C 같은 언어보다 훨씬 적습니다. 상수와 변수의 타입은 여전히 명시적이어야 하지만, 타입을 지정하는 작업 대부분을 알아서 해줍니다.
 
-'타입 추론' 은 초기 값을 가진 상수나 변수를 선언할 때 특히 더 유용합니다. 이는 종종 상수나 변수를 선언하는 순간에 _글자 표현 값 (literal value)_-또는 _글자 값 (literal)_-을 할당하여 수행합니다. ('글자 값 (literal value)' 은, 아래 예제의 `42` 와 `3.14159` 같이, 소스 코드에 직접 나타난 값을 말합니다.)
+'타입 추론' 은 특히 초기 값을 가진 상수나 변수를 선언할 때 아주 유용합니다. 이는 종종 상수나 변수를 선언하는 순간에 _글자 표현 값 (literal value)_-또는 _글자 값 (literal)_-을 할당하여 수행합니다. ('글자 값 (literal value)' 은, 아래 예제의 `42` 와 `3.14159` 같이, 소스 코드에 직접 나타난 값을 말합니다.)
 
 예를 들어, 새로운 상수에 글자 값 `42` 를 할당하면서 타입이 무엇인지 말하지 않으면, 정수처럼 보이는 수로 초기화하기 때문에, 스위프트는 이 상수가 `Int` 이길 원한다고 추론합니다:
 
@@ -382,7 +382,7 @@ let turnipsAreDelicious = false
 
 `orangesAreOrange` 와 `turnipsAreDelicious` 은 '불리언 글자 값 (Boolean literal values)' 으로 초기화된다는 사실로 부터 타입이 `Bool` 이라고 추론합니다. 위의 `Int` 와 `Double` 에서 처럼, 생성하자마자 `true` 나 `false` 로 설정하는 경우 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 (type inference)' 은 타입을 이미 알고 있는 다른 값으로 상수나 변수를 초기화 할 때 스위프트 코드를 더 간결하고 이해하기 쉽도록 만들어 줍니다.
 
-불리언 값은 `if` 문 같은 조건 구문과 작업할 때 특히 더 유용합니다:
+불리언 값은 특히 `if` 문 같은 조건 구문과 작업할 때 아주 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
@@ -419,64 +419,64 @@ if i == 1 {
 
 ### Tuples (튜플; 짝)
 
-_튜플 (tuples)_ 은 여러 개의 값을 '단일한 복합 값' 으로 그룹지어 줍니다. 튜플 내의 값은 어떤 타입든 상관없으며 서로 같은 타입이어야 할 필요도 없습니다.
+_튜플 (tuples)_ 은 여러 값을 '단일 복합 값' 으로 그룹짓습니다. 튜플 내의 값은 어떤 타입도 될 수 있으며 서로 같은 타입일 필요도 없습니다.
 
-다음 예제에서, `(404, "Not Found")` 는 _HTTP 상태 코드 (HTTP status code)_ 를 묘사하는 튜플입니다. 'HTTP 상태 코드' 는 웹 페이지를 요청할 때마다 웹 서버에 의해 반환되는 특수한 값입니다. `404 Not Found` 라는 상태 코드는 존재하지 않는 웹페이지를 요청할 때 반환됩니다.
+다음 예제의, `(404, "Not Found")` 는 _HTTP 상태 코드 (HTTP status code)_ 를 설명하는 튜플입니다. 'HTTP 상태 코드' 는 웹 페이지를 요청할 때마다 웹 서버가 반환하는 특수한 값입니다. `404 Not Found` 라는 상태 코드는 요청한 웹 페이지가 존재하지 않을 경우 반환됩니다.
 
 ```swift
 let http404Error = (404, "Not Found")
-// http404Error 의 타입은 (Int, String) 이고, 값은 (404, "Not Found") 입니다.
+// http404Error 은 (Int, String) 타입이고, 값은 (404, "Not Found") 입니다.
 ```
 
-`(404, "Not Found")` 튜플은 `Int` 하나와 `String` 하나를 같이 그룹지어서 HTTP 상태 코드에 두 개의 구분되는 값을 부여합니다: 수치 값 하나와 사람이-읽을 수 있는 설명 하나가 그것입니다. 이는 "`(Int, String)` 타입인 튜플" 이라고 설명할 수 있습니다.
+`(404, "Not Found")` 라는 튜플은 `Int` 와 `String` 을 함께 그룹지어서 HTTP 상태 코드에 별도인 두 개의 값: '하나의 수' 와 '사람이-이해할 수 있는 설명' 을 부여합니다. 이는 "`(Int, String)` 타입인 튜플" 이라고 설명할 수 있습니다.
 
-튜플은 타입을 어떤 '순서 (permutation)'[^permutation] 로 해도 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 타입이나, `(String, Bool)` 타입, 아니면 진짜 필요한 대로 아무 순서로 된 튜플도 만들 수 있습니다.
+튜플은 어떤 '순서 (permutation)'[^permutation] 의 타입으로도 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 나, `(String, Bool)` , 또는 진짜 순서를 필요한 대로 아무렇게나 섞은 타입인 튜플도 만들 수 있습니다.
 
-튜플이 담고 있는 내용은 별도의 상수나 변수로 _분해 (decompose)_ 할 수 있으며, 그 다음에는 일반 (변수처럼) 접근할 수 있습니다:
+튜플의 내용은 별도의 상수나 변수로 _분해 (decompose)_ 한 다음, 평소 처럼 접근할 수 있습니다:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
 print("The status code is \(statusCode)")
-// "The status code is 404" 를 출력합니다.
+// "The status code is 404" 를 인쇄합니다.
 print("The status message is \(statusMessage)")
-// "The status message is Not Found" 를 출력합니다.
+// "The status message is Not Found" 를 인쇄합니다.
 ```
 
-튜플 값 중에서 일부분만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore; `_`) 로 나머지 부분을 무시할 수 있습니다:
+튜플 값에서 일부만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore; `_`) 을 써서 튜플 일부를 무시합니다:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
 print("The status code is \(justTheStatusCode)")
-// "The status code is 404" 를 출력합니다.
+// "The status code is 404" 를 인쇄합니다.
 ```
 
-다른 방법으로, 튜플에 있는 개별 원소 값에 접근하려면 '0' 으로 시작하는 '색인 번호 (index numbers)' 을 사용합니다ㄴ:
+대안으로, 0 으로 시작하는 '색인 번호 (index numbers)' 을 사용하여 튜플의 개별 원소 값에 접근합니다:
 
 ```swift
 print("The status code is \(http404Error.0)")
-// "The status code is 404" 를 출력합니다.
+// "The status code is 404" 를 인쇄합니다.
 print("The status message is \(http404Error.1)")
-// "The status message is Not Found" 를 출력합니다.
+// "The status message is Not Found" 를 인쇄합니다.
 ```
 
-튜플을 정의할 때 튜플에 있는 개별 원소에 이름을 지을 수도 있습니다.:
+튜플을 정의할 때 튜플의 개별 원소에 이름을 붙일 수 있습니다:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
 ```
 
-튜플의 원소에 이름을 지으면, 그 원소의 값에 접근할 때 원소의 이름을 사용할 수 있습니다:
+튜플 원소에 이름을 붙이면, 해당 원소의 값에 접근하기 위해 원소 이름을 사용할 수 있습니다:
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
-// "The status code is 200" 를 출력합니다.
+// "The status code is 200" 를 인쇄합니다.
 print("The status message is \(http200Status.description)")
-// "The status message is OK" 를 출력합니다.
+// "The status message is OK" 를 인쇄합니다.
 ```
 
-튜플은 특히 함수의 반환 값으로 사용할 때 아주 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지를 가져오는데 성공했는지 실패했는지를 설명하기 위해 `(Int, String)` 튜플 타입을 반환할 수도 있습니다. 각각의 타입이 다른, 별개의 두 값으로 된 튜플을 반환함으로써, 이 함수는 단일한 타입의 단일한 값만을 반환할 때보다 결과물에 대한 더 유용한 정보를 제공할 수 있게 됩니다. 더 자세한 정보는 [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 를 참고하기 바랍니다.
+튜플은 특히 함수의 반환 값으로 아주 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지 가져오기의 성공 또는 실패를 설명하고자 `(Int, String)` 튜플 타입을 반환할 수도 있습니다. 함수는, 각 타입이 서로 다른, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입인 단일 값만 반환하는 경우보다 결과물에 대한 더 유용한 정보를 제공합니다. 더 많은 정보는 [Functions with Multiple Return Values (다중 반환 값을 가진 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-다중-반환-값을-가진-함수) 를 참고하기 바랍니다.
 
-> 튜플은 관계 있는 값들을 단순히 그룹지을 때 유용한 것입니다. 복잡한 데이터 구조를 생성하는 데는 적합하지 않습니다. 데이터 구조가 더 복잡해질 것 같으면, 튜플 대신에, 클래스나 구조체로 모델링하기 바랍니다. 더 자세한 정보는 [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
+> 튜플은 관련 값들의 간단한 그룹에서 유용한 것입니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡해질 거 같으면, 튜플이 아니라, 클래스나 구조체로 모델을 만듭니다. 더 많은 정보는 [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
 
 ### Optionals (옵셔널; 선택적 값 타입)
 
