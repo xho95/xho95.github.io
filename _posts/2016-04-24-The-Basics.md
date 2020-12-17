@@ -373,49 +373,49 @@ var maxAmplitudeFound = AudioSample.min
 
 ### Booleans (불리언; 논리 값)
 
-스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값을 일컬어 _논리 값 (logical)_ 이라고도 하는데, 왜냐면 이는 항상 `true` 이거나 `false` 일 수 밖에 없기 때문입니다. 스위프트는 두 개의 불리언 상수 값인, `true` 와 `false` 를 제공합니다:
+스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값은 _논리 값 (logical)_ 이라고도 하는데, 늘`true` 또는 `false` 만 될 수 있기 때문입니다. 스위프트는, `true` 와 `false` 라는, 두 개의 불리언 상수 값을 제공합니다:
 
 ```swift
 let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-`orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 이들이 '불리언 글자 값 (Boolean literal values)' 으로 초기화되었다는 사실에 의해 `Bool` 이라고 추론됩니다. 위의 `Int` 및 `Double` 에서와 같이, 상수 또는 변수를 생성하면서 `true` 나 `false` 라고 설정하면, `Bool` 이라고 선언할 필요가 없습니다. 이미 알고 있는 타입의 값으로 상수나 변수를 초기화 할 때는 '타입 추론 장치 (type inference)' 가 스위프트 코드를 더 간결하고 이해하기 쉽게 만들어 줍니다.
+`orangesAreOrange` 와 `turnipsAreDelicious` 은 '불리언 글자 값 (Boolean literal values)' 으로 초기화된다는 사실로 부터 타입이 `Bool` 이라고 추론합니다. 위의 `Int` 와 `Double` 에서 처럼, 생성하자마자 `true` 나 `false` 로 설정하는 경우 상수나 변수를 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 (type inference)' 은 타입을 이미 알고 있는 다른 값으로 상수나 변수를 초기화 할 때 스위프트 코드를 더 간결하고 이해하기 쉽도록 만들어 줍니다.
 
 불리언 값은 `if` 문 같은 조건 구문과 작업할 때 특히 더 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
-    print("Mmm, tasty turnips!")
+  print("Mmm, tasty turnips!")
 } else {
-    print("Eww, turnips are horrible.")
+  print("Eww, turnips are horrible.")
 }
-// "Eww, turnips are horrible." 를 출력합니다.
+// "Eww, turnips are horrible." 를 인쇄합니다.
 ```
 
-`if` 문 등의 조건 구문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
+`if` 문 같은 조건 구문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 다룹니다.
 
-스위프트의 '타입 안전 장치 (type safety)' 는 '불리언이-아닌 (non-Boolean)' 값이 `Bool` 을 대체하는 것을 막아줍니다. 다음 예제는 '컴파일 시간 (compile-time)' 에 에러를 띄웁니다:
+스위프트의 '타입 안전 장치 (type safety)' 는 '불리언이-아닌 (non-Boolean)' 값이 `Bool` 을 대체하는 것을 막아줍니다. 다음 예제는 '컴파일 시간 (compile-time)' 에러를 보고합니다:
 
 ```swift
 let i = 1
 if i {
-    // 이 예제는 컴파일이 되지 않고, 에러를 띄울 것입니다.
+  // 이 예제는 컴파일이 되지 않고, 에러를 보고할 것입니다.
 }
 ```
 
-하지만, 아래의 또 다른 예제는 유효합니다:
+하지만, 아래 예제에 있는 대안은 유효합니다:
 
 ```swift
 let i = 1
 if i == 1 {
-    // 이 예제는 성공적으로 컴파일될 것입니다.
+  // 이 예제는 컴파일이 성공할 것입니다.
 }
 ```
 
-`i == 1` 비교 연산의 결과는 `Bool` 타입이므로, 이 두 번째 예제는 '타입 검사 (type-check)' 를 통과합니다. `i == 1` 과 같은 비교 연산은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명합니다.
+`i == 1` 비교 연산의 결과는 `Bool` 타입이므로, 두 번째 예제는 '타입 검사 (type-check)' 를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 논의합니다.
 
-스위프트에 있는 '타입 안전 장치' 의 다른 예제에서와 같이, 이런 접근법은 우연한 에러를 방지해주며 특정한 코드 부분의 의도가 항상 명확하도록 보장합니다.
+스위프트의 다른 '타입 안전 장치' 예제에서 처럼, 이 접근 방식은 예기치 않은 에러를 피하고 특정 코드의 의도를 항상 명확하게 드러내도록 보장합니다.
 
 ### Tuples (튜플; 짝)
 
