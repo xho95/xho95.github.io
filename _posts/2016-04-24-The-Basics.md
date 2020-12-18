@@ -122,7 +122,7 @@ print(friendlyWelcome)
 
 `print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 출력 (장치) 로 인쇄하는 전역 함수입니다. 예를 들어, '엑스코드 (Xcode)' 의 `print(_:separator:terminator:)` 함수는 출력을 '엑스코드' 의 "콘솔 (console)" 에 인쇄합니다. `separator` 와 `terminator` 매개 변수는 '기본 설정 (default) 값' 을 가지므로, 함수 호출시 생략할 수 있습니다. 기본적으로, 이 함수는 인쇄 줄을 끝낼 때 '줄 끊음 (line break)' 을 추가합니다. 값을 '줄 끊음' 없이 인쇄하려면, '종결자 (terminator)' 에 빈 문자열을 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. '기본 설정 값을 가지는 매개 변수' 에 대한 정보는, [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 을 참고하기 바랍니다.
 
-스위프트는 상수나 변수의 이름을 더 긴 문자열 내의 '자리 표시자 (placeholder)' 로 포함시키기 위해, 그리고 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알리기 위해 '_문자열 보간법 (string interpolation)_' 을 사용합니다. 이름을 괄호로 포장한 다음 시작 괄호 앞에 '역 빗금 (backslash)' 을 써서 '벗어나게 (escape)'[^escape] 합니다:
+스위프트는 상수나 변수의 이름을 더 긴 문자열 내의 '자리 표시자 (placeholder)' 로 포함시키기 위해, 그리고 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알리기 위해 '_문자열 보간법 (string interpolation)_'[^string-interpolation] 을 사용합니다. 이름을 괄호로 포장한 다음 시작 괄호 앞에 '역 빗금 (backslash)' 을 써서 '벗어나게 (escape)'[^escape] 합니다:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
@@ -642,91 +642,91 @@ if let definiteString = assumedString {
 // "An implicitly unwrapped optional string." 를 인쇄합니다.
 ```
 
-> 변수가 나중에 `nil` 이 될 가능성이 있을 때는 '암시적으로 포장이 풀리는 옵셔널' 을 사용하지 않습니다. 변수 일생 중에 `nil` 값을 검사할 필요가 있을 경우 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
+> 변수가 나중에 `nil` 이 될 가능성이 있을 때는 '암시적으로 포장이 풀리는 옵셔널' 을 사용하지 않도록 합니다. 변수 일생 중에 `nil` 값을 검사할 필요가 있을 경우 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
 
 ### Error Handling (에러 처리)
 
-_에러 처리 (error handling)_ 는 프로그램이 실행 중에 마주칠 수도 있는 에러 조건들에 응답하기 위해 사용합니다.
+프로그램 실행 중 마주칠 수도 있는 에러 조건에 응답하기 위해 _에러 처리 (error handling)_ 를 사용합니다.
 
-함수의 성공 또는 실패를 전달하는데 값의 있음 또는 없음을 사용하는, 옵셔널과는 대조적으로, 에러 처리는 실패의 실제 원인을 확인하도록 해주며, 그리고, 필요하다면, 에러를 프로그램의 또 다른 부분으로 전파하도록 해줍니다.
+값의 있고 없음으로 함수의 성공이나 실패를 전할 수 있는, 옵셔널과는 대조적으로, 에러 처리는 실패의 실제 원인을 결정하도록 하고, 필요하다면, 프로그램 다른 부분으로 에러를 전파하도록 허용합니다.
 
-함수가 에러 조건과 마주치게 되면, 에러를 _던집니다 (throws)_. 해당 함수를 호출한 쪽은 그 다음 그 에러를 _잡아낼 (catch)_ 수 있으며 적절하게 응답할 수 있습니다.
+함수는 에러 조건과 마주칠 때, 에러를 _던집니다 (throws)_. 이러면 해당 함수의 '호출자 (caller)' 가 에러를 _잡아내고 (catch)_ 적절하게 응답할 수 있습니다.
 
 ```swift
 func canThrowAnError() throws {
-    // 이 함수는 에러를 던질수도 있고 아닐 수도 있습니다.
+  // 이 함수는 에러를 던질 수도 있고 아닐 수도 있습니다.
 }
 ```
 
-함수가 에러를 던질 수 있다고 나타내려면 선언 시에 `throws` 키워드를 포함시킵니다. 에러를 던질 수 있는 함수를 호출할 때는, `try` 키워드를 표현식 '앞에 붙입니다 (prepend)'.
+함수는 선언 시에 `throws` 키워드를 포함하는 것으로써 에러를 던질 수 있음을 나타냅니다. 에러를 던질 수 있는 함수를 호출할 땐, `try` 키워드를 표현식 '앞에 붙입니다 (prepend)'.
 
-스위프트는 `catch` 절이 처리할 때까지 에러를 자동으로 현재 범위 밖으로 전파합니다.
+스위프트는 `catch` 절에서 처리될 때까지 에러를 자동으로 현재 범위 밖으로 전파합니다.
 
 ```swift
 do {
-    try canThrowAnError()
-    // 아무 에러도 던져지지 않았습니다.
+  try canThrowAnError()
+  // 에러가 던져지지 않았습니다.
 } catch {
-    // 어떤 에러가 던져 졌습니다.
+  // 에러가 던져 졌습니다.
 }
 ```
 
-`do` 구문은 새 '담는 영역 (containing scope)' 을 생성하여, 에러를 하나 이상의 `catch` 절로 전파할 수 있도록 해줍니다.
+`do` 구문은, 에러를 하나 이상의 `catch` 절로 전파하도록 하는. 새로운 '포함 영역 (containing scope)' 을 생성합니다.
 
-다음 예제는 '에러 처리' 를 사용하여 어떻게 서로 다른 에러 조건에 응답할 수 있는 지를 보여줍니다:
+다음은 에러 처리로 서로 다른 에러 조건에 응답하는 방법에 대한 예제입니다:
 
 ```swift
 func makeASandwich() throws {
-    // ...
+  // ...
 }
 
 do {
-    try makeASandwich()
-    eatASandwich()
+  try makeASandwich()
+  eatASandwich()
 } catch SandwichError.outOfCleanDishes {
-    washDishes()
+  washDishes()
 } catch SandwichError.missingIngredients(let ingredients) {
-    buyGroceries(ingredients)
+  buyGroceries(ingredients)
 }
 ```
 
-이 예제의, `makeASandwich()` 함수는 사용 가능한 깨끗한 접시가 아무 것도 없는 경우 또는 어떤 재료를 빠뜨린 경우 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 함수 호출을 `try` 표현식으로 '포장했습니다 (wrapped)'. 함수 호출을 `do` 구문으로 포장하여서, 어떤 에러를 던지더라도 제공한 `catch` 절로 전파될 것입니다.
+이 예제에서, `makeASandwich()` 함수는 사용할 수 있는 깨끗한 접시가 없거나 어떤 재료가 빠진 경우 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 함수 호출을 `try` 표현식으로 '포장됩니다 (wrapped).' 함수 호출을 `do` 구문으로 포장함으로써, 던져진 에러가 어떤 것이든 제공된 `catch` 절로 전파될 것입니다.
 
-에러를 던지지 않으면, `eatASandwich()` 함수가 호출됩니다. 에러를 던졌는데 이것이 `SandwichError.outOfCleanDishes` 'case 절' 에 해당한다면, 그 때는 `washDishes()` 함수를 호출할 것입니다. 에러를 던졌는데 이것이 `SandwichError.missingIngredients` 'case 절' 에 해당한다면, 그 때는 `catch` '패턴 (pattern)' 으로 붙잡은 '결합된 `[String]` 값' 을 사용하여 `buyGroceries(_:)` 함수를 호출합니다.
+던져진 에러가 없으면, `eatASandwich()` 함수를 호출합니다. 던져진 에러가 `SandwichError.outOfCleanDishes` 'case 절' 과 일치하면, 그 땐 `washDishes()` 함수를 호출할 것입니다. 던져진 에러가 `SandwichError.missingIngredients` 'case 절' 과 일치하면, 그 땐 `catch` '유형 (pattern)' 이 붙잡은 '결합된 `[String]` 값' 을 가지고 `buyGroceries(_:)` 함수를 호출합니다.
 
-에러를 던지고, 붙잡고, 전파하는 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 아주 상세하게 다룹니다.
+에러를 던지고, 붙잡고, 전파하는 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 아주 자세하게 다룹니다.
 
 ### Assertions and Preconditions (단언문과 선행 조건문)
 
-_단언문 (assertions)_ 과 _선행 조건문 (Preconditions)_ 은 '실행 시간 (runtime)' 에 하는 검사입니다. 이는 어떤 코드를 더 실행하기 전에 핵심적인 조건을 만족하고 있는 지를 확인하기 위해 사용합니다. 만약 단언문이나 선행 조건문에 있는 '불리언 조건' 이 `true` 라고 평가되면, 코드 실행을 평소처럼 계속합니다. 만약 조건이 `false` 라고 평가되면, 프로그램의 현재 상태는 무효한 것입니다; 코드 실행은 중지되고, 앱은 종료됩니다.
+_단언문 (assertions)_ 과 _선행 조건문 (Preconditions)_ 은 '실행 시간 (runtime)' 에 하는 검사입니다. 이는 어떤 코드를 더 실행하기 전에 핵심적인 조건을 만족하고 있는지 확인하려고 사용합니다. 단언문이나 선행 조건문에 있는 '불리언 조건' 이 `true` 로 평가되면, 코드 실행을 평소처럼 계속합니다. 조건이 `false` 로 평가되면, 프로그램의 현재 상태는 무효가 되고; 코드 실행을 중지하며, 앱을 종료합니다.
 
-단언문과 선행 조건문은 코딩 중에 만든 '가정 (assumptions)' 과 코딩 중에 가졌던 '예상값 (expectations)' 들을 표현하려고 사용하는 것이므로, 이들을 코드 일부분에 포함할 수 있습니다. 단언문은 개발 도중의 실수와 잘못된 가정들을 찾도록 도와주며, 선행 조건문은 제품에 있는 '문제점 (issues)' 을 감지하도록 도와줍니다.
+단언문과 선행 조건문은 코딩하면서 만들고 가지게 된 '가정 (assumptions)' 과 '예상값 (expectations)' 을 표현하기 위해 사용하는 것이므로, 코드에 포함시킬 수 있습니다. 단언문은 개발 도중의 실수와 잘못된 가정을 찾는데 도움이 되며, 선행 조건문은 제품의 '문제점 (issues)' 을 감지하는데 도움이 됩니다.
 
-실행 시에 예상값들을 검증하는 것에 더하여, 단언문과 선행 조건문은 또한 코드 내에서 문서화를 하는 유용한 형태이기도 합니다. 위의 [Error Handling (에러 처리)](#error-handling-에러-처리) 에서 설명한 에러 조건과는 다르게, 단언문과 선행 조건문은 복구 가능하거나 예상한 에러에 대해 사용하는 것이 아닙니다. 실패한 단언문 또는 실패한 선행 조건문은 프로그램 상태가 무효하다는 것을 나타내기 때문에, 실패한 단언문을 잡아내는 방법이란 건 없습니다.
+실행 시간에 예상값을 검증하는 것과는 별도로, 단언문과 선행 조건문은 코드 내에서의 문서화 형식으로도 유용합니다. 위의 [Error Handling (에러 처리)](#error-handling-에러-처리) 에서 설명한 에러 조건과는 달리, 단언문과 선행 조건문은 복구 가능하거나 예상했던 에러를 위해 사용하지 않습니다. 실패한 단언문이나 선행 조건문은 무효한 프로그램 상태를 나타내기 때문에, 실패한 단언문을 잡아내는 방법이란 건 없습니다.
 
-단언문과 선행 조건문은 무효한 조건이 예기치 않게 생기는 상황에서의 코드 설계를 대체하는 것은 아닙니다. 하지만, 이를 사용하면 유효한 데이터와 상태를 강제하여 혹시 무효한 상태가 발생하는 경우라도 앱이 좀 더 예측 가능하게 종료하도록 하며, 문제를 더 쉽게 '고치도록 (debug)' 도와줍니다. 무효한 상태를 감지하자 마자 실행을 중지하는 것 또한 무효한 상태로 인해 야기되는 피해를 제한하도록 도와줍니다.
+단언문과 선행 조건문을 사용하는 것은 무효한 조건이 일어나지 않을 것 같다는 식의 코드 설계를 대신하지 않습니다. 하지만, 유효한 자료와 상태를 강제하도록 이를 사용하는 것은 무효한 상태가 일어난 경우에도 앱이 좀 더 예측 가능하게 종료하도록 하며, 문제를 더 쉽게 '고치도록 (debug)' 도와줍니다. 무효한 상태를 감지하자 마자 곧바로 실행을 중지하는 것도 무효한 상태로 인한 피해를 제한하도록 도와줍니다.
 
-단언문과 선행 조건문의 차이점은 검사가 되는 시점에 있습니다: 단언문은 오직 '디버그 빌드 (debug builds)' 시에만 검사하지만, 선행 조건문은 '디버그 및 제품 빌드 (debug and production builds)' 시에 모두 검사합니다. 제품 빌드 시에는, 단언문 내의 조건은 평가하지 않습니다. 이것이 의미하는 것은 개발 과정 동안에는, 제품의 성능에는 영향을 주지 않으면서, 원하는 만큼 많이 단언문을 사용할 수 있다는 것입니다.
+단언문과 선행 조건문의 차이점은 검사하는 시점에 있습니다: 단언문은 '디버그 빌드 (debug builds)' 일 때만 검사하지만, 선행 조건문은 '디버그 빌드와 제품 빌드 (debug and production builds)' 일 때 모두 검사합니다. 제품 빌드일 때는, 단언문 내의 조건을 평가하지 않습니다. 이는 개발 과정 동안, 제품 성능의 손실없이, 원하는 만큼 많은 단언문을 사용할 수 있음을 의미합니다.
 
 #### Debugging with Assertions (단언문으로 디버깅하기)
 
-단언문은 스위프트 표준 라이브러리에 있는 [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert) 함수를 호출하여 작성합니다. 이 함수에 `true` 또는 `false` 로 평가되는 표현식과 조건의 결과가 `false` 일 경우 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
+단언문은 스위프트 표준 라이브러리의 [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert) 함수를 호출하여 작성합니다. 이 함수에 `true` 나 `false` 로 평가할 표현식과 조건 결과가 `false` 이면 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let age = -3
 asset(age >= 0, "A person's age can't be less than zero.")
-// 이 단언문은 -3 >= 0 이 틀렸기 때문에 실패합니다.
+// 이 단언문은 -3 이 >= 0 이 아니기 때문에 실패합니다.
 ```
 
-이 예제에서, 코드 실행이 계속 되는 것은 `age >= 0` 를 `true` 로 평가하는 경우로, 다시 말해서, `age` 의 값이 음수가 아닌 경우입니다. 만약 `age` 의 값이 음수라면, 위 코드에 있는 것처럼, 이 때는 `age >= 0` 를 `false` 로 평가하며, 단언문이 실패하여, 응용 프로그램을 종료하게 됩니다.
+이 예제는, `age >= 0` 를 `true` 로 평가하면, 즉 다시 말해서, `age` 의 값이 음수가 아니면, 코드 실행을 계속합니다. `age` 의 값이 음수면, 위 코드처럼, 그 땐 `age >= 0` 을 `false` 로 평가하여, 단언문이 실패하고, 응용 프로그램을 종료합니다.
 
-단언문의 메시지는 생략할 수 있습니다-예를 들어, 그냥 조건문을 글의 형태로 단순히 반복할 때 등입니다.
+단언문의 메시지는 생략할 수 있습니다.-예를 들어, 조건문을 그냥 글자 형태로 반복할 때 등입니다.
 
 ```swift
 assert(age >= 0)
 ```
 
-만약 코드가 조건을 이미 검사한 경우, 단언문이 실패했다고 나타내려면 [assertionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539616-assertionfailure) 함수를 사용합니다. 예를 들면 다음과 같습니다:
+코드가 이미 조건을 검사했다면, 단언문이 실패했음을 나타내기 위해 [assertionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539616-assertionfailure) 함수를 사용합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 if age > 10 {
@@ -740,20 +740,20 @@ if age > 10 {
 
 #### Enforcing Preconditions (선행 조건 강제하기)
 
-선행 조건문은 조건이 잠재적으로 거짓이 될 수 있지만, 코드 실행을 계속하려면 _확실하게 (definitely)_ 참이어야 할 때마다 사용하기 바랍니다. 예를 들어, 선행 조건문을 사용하여 첨자 연산이 범위를 벗어나지 않았는지 검사하거나, 함수에 유효한 값을 전달했는지 검사하기 바랍니다.
+선행 조건문은, 코드를 계속 실행하려면 반드시 _확실하게 (definitely)_ 참이어야 하는, 조건이 거짓이 될 잠재성을 가질 때마다 사용합니다. 예를 들어, 첨자 연산이 범위를 벗어나지 않았는지 검사하거나, 함수에 유효한 값이 전달 됐는지 검사하기 위해 선행 조건문을 사용하기 바랍니다.
 
-선행 조건문은 [precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition) 함수를 호출하여 작성합니다. 이 함수에 `true` 또는 `false` 로 평가되는 표현식과 조건의 결과가 `false` 일 경우 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
+선행 조건문은 [precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition) 함수를 호출하여 작성합니다. 이 함수에 `true` 나 `false` 로 평가할 표현식과 조건 결과가 `false` 이면 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
-// 첨자 연산 (subscript) 의 구현 내부에서 ...
+// 첨자 연산 (subscript) 의 구현부에서  ...
 precondition(index > 0, "Index must be greater than zero.")
 ```
 
-실패가 발생했음을 나타내기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다-예를 들어, 'switch 문' 의 '기본 (default) case 절' 이 선택된 상황이 그러한 것인데, 유효한 데이터라면 'switch 문' 의 다른 'case 절' 들에서 모두 처리되었을 것이기 때문입니다.
+실패가 발생했다는 것-예를 들어, 모든 유효한 입력 자료는 'switch 문' 의 다른 'case 절' 에서 처리됐어야 함에도, 'switch 문의 기본 (default) case 절' 이 선택된 경우 등-을 나타내기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다.
 
-> '검사하지 않는 모드 (unchecked mode; `-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건들이 항상 참이라고 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과는 상관없이, 실행을 항상 중단합니다.
+> '검사하지 않는 모드 (unchecked mode; `-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 해당 선행 조건문이 항상 참이라고 가정하며, 이에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과는 상관없이, 항상 실행을 중단합니다.
 >
-> `fatalError(_:file:line:)` 함수는 초기 모델이나 초기 개발 중에 아직 구현되지 않는 기능에 대해, `fatalError("Unimplemented")` 처럼 짜투리 구현을 작성하는 등의, 짜투리 표시를 생성하기 위해 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 절대로 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 이 짜투리 구현과 마주치게 되면 실행을 항상 중단할 것임을 확신할 수 있습니다.
+> `fatalError(_:file:line:)` 함수는 프로토타입 및 초기 개발 동안에, 땜빵 구현처럼 `fatalError("Unimplemented")` 을 작성함으로써, 아직 구현하지 않는 기능에 대한 땜빵을 생성하기 위해 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 절대 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 땜빵 구현과 마주치면 실행이 항상 중단될 거라고 확신할 수 있습니다.
 
 [Basic Operators (기본 연산자) > ]({% post_url 2016-04-27-Basic-Operators %})
 
@@ -763,22 +763,22 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^set-dictionary]: 'Set (셋)' 은 그 자체로 수학 용어인 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 그 자체로 '사전' 을 의미합니다. 이들은 실제 용어의 의미에 맞는 역할을 하지만, '자료 타입' 임을 나타내기 위해 이 책에서는 각각 '셋' 과 '딕셔너리' 라고 발음대로 옮깁니다. 'Array (배열)' 의 경우 이미 '배열' 이라는 용어가 하나의 '자료 타입' 으로 사용되고 있으므로 계속 '배열' 이라고 옮깁니다.
+[^set-dictionary]: 'Set (셋)' 은 수학 용어로 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 '사전' 을 의미합니다. 이들의 역할은 용어의 의미와 일치하지만, 이름 자체로 '자료 타입' 임을 확실히 나타내기 위해 여기서는 각각 '셋' 과 '딕셔너리' 라는 발음대로 옮깁니다. 'Array (배열)' 의 경우 이미 '배열' 이라는 용어가 '자료 타입' 으로 널리 사용되고 있으므로 계속 '배열' 이라고 옮깁니다.
 
-[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면 (Unicode planes)' 에서 '사용자 영역 (private-use areas)' 에 있는 값을 말합니다. 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)', 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 및 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
+[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면 (Unicode planes)' 에서 '사용자 영역 (private-use areas)' 에 있는 값을 말합니다. 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)', 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
-[^annotation]: 'annotation' 는 사실 '주석' 이라는 옮기는 것이 가장 적당하지만, '주석' 은 프로그래밍 분야에서 'comments' 라는 말로 이미 널리 쓰이고 있으므로, 스위프트의 'annotation' 을 '보조 설명' 이라는 말로 옮기도록 하겠습니다. 실제로 스위프트에서 'annotation' 을 쓸 일은 거의 없기 때문에 이 용어의 의미에 크게 비중을 두지 않아도 될 것 같습니다.
+[^annotation]: 'annotation' 는 사실 '주석' 이라고 옮기는 것이 가장 적당하지만, 프로그래밍 분야에서는 'comments' 가 '주석' 이라고 이미 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라고 옮깁니다. 실제로 스위프트에서는 'annotation' 을 쓸 일이 거의 없기 때문에 이 용어에는 비중을 크게 두지 않아도 됩니다.
 
-[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
+[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
 
-[^string-interpolation]: 'interpolation' 은 원래 수학 용어로 '보간법' 이라고 하며 두 값 사이의 값을 근사식으로 구해서 집어넣는 것을 말합니다. 'string interpolation' 은 '문자열 삽입법' 정도로 할 수 있겠지만, 수학 용어로 '보간법' 이라는 말이 널리 쓰이고 있으므로 '문자열 보간법' 이라고 옮기도록 합니다.
+[^string-interpolation]: 'interpolation' 은 원래 수학 용어로 '보간법' 이라고 하며, 두 값 사이에 근사식으로 구한 값을 집어넣는 것을 말합니다. 'string interpolation' 은 '문자열 삽입법' 정도로 옮길 수도 있지만, 수학 용어로 '보간법' 이라는 말이 널리 쓰이고 있으므로 '문자열 보간법' 이라고 옮깁니다.
 
-[^escape]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 참고로 스위프트에서 'escaping closure' 는 '(본래 영역을) 벗어날 수 있는 클로저' 를 의미합니다.
+[^escape]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 는 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자'-즉, '특수한 의미를 가지는 문자' 정도로 이해할 수 있습니다. 참고로 스위프트에는 'escaping closure' 라는 것도 있는데, 이는 '(자신이 정의되어 있는 영역을) 벗어나서 (존재할 수 있는) 클로저'-즉, '영역을 벗어날 수 있는 클로저' 정도의 의미를 가지고 있습니다.
 
 [^word]: 컴퓨터 용어로 'word (워드; 단어)' 는 프로세서에서 한 번에 처리할 수 있는 데이터 단위를 말합니다.
 
-[^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 여러 말로 옮길 수 있는데, 컴퓨터 용어로 엄일하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 밑수라는 말로 옮겼습니다. 일부동-소수점 수에서의 'base-number' 는 '유효 숫자' 에 해당한다고 볼 수 있으며, 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
+[^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
 
-[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n개의 원소에서 r개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉 r개의 원소들을 서로 다른 순서로 줄 지을 수 있는 가지 수를 말하며, 스위프트의 튜플은 이 모든 가지 수에 대해서 튜플을 만들 수 있다는 의미가 됩니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서' 라는 말로 옮겼습니다. '순열 (permutatio)' 에 대한 더 자세한 내용은 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 이나 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
+[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n 개의 원소에서 r 개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉, 스위프트에서 n 개의 원소를 가진 튜플이 가질 수 있는 경우의 수는 이 '순열 (permetation)' 개수 만큼 많다는 걸 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서' 라는 말로 옮겼습니다. '순열 (permutation)' 에 대한 더 자세한 내용은 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목이나 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
-[^nature]: '자료의 본질을 암시적으로 문서화 (implicitly documents the nature of the data)' 한다는 것은, 예를 들어, `Int` 라고 할 것을 `UInt8` 이라고 하면 값이 `0~255` 사이임을 알 수 있는 것처럼, 코드로 '문서화' 를 한다는 의미입니다.  '암시적인 문서화 (implicitly documents)' 는 따로 주석을 기입하거나 문서를 만들지 않고 코드 자체로 '문서화 (documentation)' 가 되는 것을 말합니다. '문서화 (documentation)' 는 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 '문서화 주석' 에 대한 설명을 참고하기 바랍니다.
+[^nature]: '자료의 본질을 암시적으로 문서화 (implicitly documents the nature of the data)' 한다는 말은, 예를 들어, `Int` 라고 할 것을 `UInt8` 이라고 하면 값이 `0 ~ 255` 범위에 있다는 자료의 본질적인 정보를, 코드 자체가 제공한다는 의미입니다. '암시적인 문서화 (implicitly documents)' 는 별도의 주석이나 문서를 작성하지 않고 코드 자체가 저절도 '문서화 (documentation)' 효과를 가지는 것을 말합니다. '문서화 (documentation)' 에 대한 더 자세한 정보는 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 '문서화 주석' 설명 부분을 참고하기 바랍니다.
