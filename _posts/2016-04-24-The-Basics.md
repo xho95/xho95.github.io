@@ -516,33 +516,33 @@ var surveyAnswer: String?
 // surveyAnswer 는 nil 로 자동 설정됩니다.
 ```
 
-> 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 같은 것이 아닙니다. 오브젝티브-C 의, `nil` 은 존재하지 않는 객체에 대한 '포인터 (pointer)' 입니다. 스위프트의, `nil` 은 포인터가 아닙니다-이는 정해진 타입 '값의 없음' 입니다. 객체 타입뿐만 아니라, _어떤 (any)_ 타입의 옵셔널도 `nil` 로 설정할 수 있습니다.
+> 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 같지 않습니다. 오브젝티브-C 의, `nil` 은 존재하지 않는 객체에 대한 '포인터 (pointer)' 입니다. 스위프트의, `nil` 은 포인터가 아닙니다-이는 정해진 타입의 '값이 없는 것' 입니다. 객체 타입뿐만 아니라, _어떤 (any)_ 타입의 옵셔널에도 `nil` 을 설정할 수 있습니다.
 
 #### If Statements and Forced Unwrapping (If 문과 강제 포장 풀기)
 
-`if` 문을 사용하면 옵셔널을 `nil` 과 비교하여 옵셔널이 값을 가지고 있는지를 알아낼 수 있습니다. 이러한 비교는 "같음 (equal to)" 연산자 (`==`) 또는 "같지 않음 (not equal to)" 연산자 (`!=`) 로 수행합니다:
+`if` 문을 사용하면 옵셔널을 `nil` 과 비교함으로써 옵셔널이 값을 담고 있는지 알아낼 수 있습니다. 이 비교 연산은 "같음 (equal to)" 연산자 (`==`) 나 "같지 않음 (not equal to)" 연산자 (`!=`) 로 수행합니다:
 
-옵셔널이 값을 가지고 있으면, `nil` 과 "같지 않은" 것으로 여겨집니다:
+만약 옵셔널이 값을 가지고 있으면, `nil` 과 "같지 않은" 것으로 간주합니다:
 
 ```swift
 if convertedNumber != nil {
     print("convertedNumber contains some integer value.")
 }
-// "convertedNumber contains some integer value." 를 출력합니다.
+// "convertedNumber contains some integer value." 를 인쇄합니다.
 ```
 
-일단 옵셔널이 값을 가지고 있다고 확신 _하는 (does)_ 경우라면, 옵셔널의 이름 끝에 느낌표 (`!`) 를 추가하여 그 '실제 값 (underlying value)' 에 접근할 수 있습니다. 느낌표는 사실상 이렇게 말하는 것입니다, "나는 이 옵셔널이 확실하게 값을 가지고 있음을 알고 있으니; 그걸 사용하기 바랍니다." 이것을 옵셔널 값에 대한 '강제 포장 풀기 (forced unwrapping)' 라고 합니다:
+옵셔널이 값을 담고 있음을 한 번 확신 _하고 (does)_ 나면, 옵셔널 이름 끝에 느낌표 (`!`) 를 붙여서 '실제 값 (underlying value)' 에 접근할 수 있습니다. 느낌표는 사실상, "옵셔널이 값을 가짐을 확실히 알고 있으니; 사용하기 바랍니다." 라고 말하는 것입니다. 이것이 옵셔널 값의 '강제 포장 풀기 (forced unwrapping)' 라는 것입니다:
 
 ```swift
 if convertedNumber != nil {
     print("convertedNumber has an integer value of \(convertedNumber!).")
 }
-// "convertedNumber has an integer value of 123." 을 출력합니다.
+// "convertedNumber has an integer value of 123." 을 인쇄합니다.
 ```
 
-`if` 문에 대한 더 자세한 내용은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 보기 바랍니다.
+`if` 문에 대한 더 많은 것들은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 참고하기 바랍니다.
 
-> `!` 를 사용하여 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 하면 '실행 시간에 에러 (runtime error)' 를 발생시킵니다. `!` 를 사용해서 그 값의 포장을-강제로 풀기 전에 항상 옵셔널이 '`nil` 이 아닌 값 (non-`nil` value)' 을 가지고 있음을 확인하기 바랍니다.
+> `!` 를 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 사용하면 '실행 시간 에러 (runtime error)' 를 발생합니다. 값의 포장을-강제로 풀려고 `!` 를 사용하려면 항상 그전에 옵셔널이 '`nil` 아닌 값을 담고 있는지를 먼저 확인합니다.
 
 #### Optional Binding (옵셔널 연결; 옵셔널 바인딩)
 
