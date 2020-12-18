@@ -642,59 +642,59 @@ if let definiteString = assumedString {
 // "An implicitly unwrapped optional string." 를 인쇄합니다.
 ```
 
-> 변수가 나중에 `nil` 이 될 가능성이 있을 때는 '암시적으로 포장이 풀리는 옵셔널' 을 사용하지 않습니다. 변수 일생 중에 `nil` 값을 검사할 필요가 있을 경우 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
+> 변수가 나중에 `nil` 이 될 가능성이 있을 때는 '암시적으로 포장이 풀리는 옵셔널' 을 사용하지 않도록 합니다. 변수 일생 중에 `nil` 값을 검사할 필요가 있을 경우 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
 
 ### Error Handling (에러 처리)
 
-_에러 처리 (error handling)_ 는 프로그램이 실행 중에 마주칠 수도 있는 에러 조건들에 응답하기 위해 사용합니다.
+프로그램 실행 중 마주칠 수도 있는 에러 조건에 응답하기 위해 _에러 처리 (error handling)_ 를 사용합니다.
 
-함수의 성공 또는 실패를 전달하는데 값의 있음 또는 없음을 사용하는, 옵셔널과는 대조적으로, 에러 처리는 실패의 실제 원인을 확인하도록 해주며, 그리고, 필요하다면, 에러를 프로그램의 또 다른 부분으로 전파하도록 해줍니다.
+값의 있고 없음으로 함수의 성공이나 실패를 전할 수 있는, 옵셔널과는 대조적으로, 에러 처리는 실패의 실제 원인을 결정하도록 하고, 필요하다면, 프로그램 다른 부분으로 에러를 전파하도록 허용합니다.
 
-함수가 에러 조건과 마주치게 되면, 에러를 _던집니다 (throws)_. 해당 함수를 호출한 쪽은 그 다음 그 에러를 _잡아낼 (catch)_ 수 있으며 적절하게 응답할 수 있습니다.
+함수는 에러 조건과 마주칠 때, 에러를 _던집니다 (throws)_. 이러면 해당 함수의 '호출자 (caller)' 가 에러를 _잡아내고 (catch)_ 적절하게 응답할 수 있습니다.
 
 ```swift
 func canThrowAnError() throws {
-    // 이 함수는 에러를 던질수도 있고 아닐 수도 있습니다.
+  // 이 함수는 에러를 던질 수도 있고 아닐 수도 있습니다.
 }
 ```
 
-함수가 에러를 던질 수 있다고 나타내려면 선언 시에 `throws` 키워드를 포함시킵니다. 에러를 던질 수 있는 함수를 호출할 때는, `try` 키워드를 표현식 '앞에 붙입니다 (prepend)'.
+함수는 선언 시에 `throws` 키워드를 포함하는 것으로써 에러를 던질 수 있음을 나타냅니다. 에러를 던질 수 있는 함수를 호출할 땐, `try` 키워드를 표현식 '앞에 붙입니다 (prepend)'.
 
-스위프트는 `catch` 절이 처리할 때까지 에러를 자동으로 현재 범위 밖으로 전파합니다.
+스위프트는 `catch` 절에서 처리될 때까지 에러를 자동으로 현재 범위 밖으로 전파합니다.
 
 ```swift
 do {
-    try canThrowAnError()
-    // 아무 에러도 던져지지 않았습니다.
+  try canThrowAnError()
+  // 에러가 던져지지 않았습니다.
 } catch {
-    // 어떤 에러가 던져 졌습니다.
+  // 에러가 던져 졌습니다.
 }
 ```
 
-`do` 구문은 새 '담는 영역 (containing scope)' 을 생성하여, 에러를 하나 이상의 `catch` 절로 전파할 수 있도록 해줍니다.
+`do` 구문은, 에러를 하나 이상의 `catch` 절로 전파하도록 하는. 새로운 '포함 영역 (containing scope)' 을 생성합니다.
 
-다음 예제는 '에러 처리' 를 사용하여 어떻게 서로 다른 에러 조건에 응답할 수 있는 지를 보여줍니다:
+다음은 에러 처리로 서로 다른 에러 조건에 응답하는 방법에 대한 예제입니다:
 
 ```swift
 func makeASandwich() throws {
-    // ...
+  // ...
 }
 
 do {
-    try makeASandwich()
-    eatASandwich()
+  try makeASandwich()
+  eatASandwich()
 } catch SandwichError.outOfCleanDishes {
-    washDishes()
+  washDishes()
 } catch SandwichError.missingIngredients(let ingredients) {
-    buyGroceries(ingredients)
+  buyGroceries(ingredients)
 }
 ```
 
-이 예제의, `makeASandwich()` 함수는 사용 가능한 깨끗한 접시가 아무 것도 없는 경우 또는 어떤 재료를 빠뜨린 경우 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 함수 호출을 `try` 표현식으로 '포장했습니다 (wrapped)'. 함수 호출을 `do` 구문으로 포장하여서, 어떤 에러를 던지더라도 제공한 `catch` 절로 전파될 것입니다.
+이 예제에서, `makeASandwich()` 함수는 사용할 수 있는 깨끗한 접시가 없거나 어떤 재료가 빠진 경우 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 함수 호출을 `try` 표현식으로 '포장됩니다 (wrapped).' 함수 호출을 `do` 구문으로 포장함으로써, 던져진 에러가 어떤 것이든 제공된 `catch` 절로 전파될 것입니다.
 
-에러를 던지지 않으면, `eatASandwich()` 함수가 호출됩니다. 에러를 던졌는데 이것이 `SandwichError.outOfCleanDishes` 'case 절' 에 해당한다면, 그 때는 `washDishes()` 함수를 호출할 것입니다. 에러를 던졌는데 이것이 `SandwichError.missingIngredients` 'case 절' 에 해당한다면, 그 때는 `catch` '패턴 (pattern)' 으로 붙잡은 '결합된 `[String]` 값' 을 사용하여 `buyGroceries(_:)` 함수를 호출합니다.
+던져진 에러가 없으면, `eatASandwich()` 함수를 호출합니다. 던져진 에러가 `SandwichError.outOfCleanDishes` 'case 절' 과 일치하면, 그 땐 `washDishes()` 함수를 호출할 것입니다. 던져진 에러가 `SandwichError.missingIngredients` 'case 절' 과 일치하면, 그 땐 `catch` '유형 (pattern)' 이 붙잡은 '결합된 `[String]` 값' 을 가지고 `buyGroceries(_:)` 함수를 호출합니다.
 
-에러를 던지고, 붙잡고, 전파하는 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 아주 상세하게 다룹니다.
+에러를 던지고, 붙잡고, 전파하는 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 아주 자세하게 다룹니다.
 
 ### Assertions and Preconditions (단언문과 선행 조건문)
 
