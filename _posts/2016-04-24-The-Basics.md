@@ -122,7 +122,7 @@ print(friendlyWelcome)
 
 `print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 출력 (장치) 로 인쇄하는 전역 함수입니다. 예를 들어, '엑스코드 (Xcode)' 의 `print(_:separator:terminator:)` 함수는 출력을 '엑스코드' 의 "콘솔 (console)" 에 인쇄합니다. `separator` 와 `terminator` 매개 변수는 '기본 설정 (default) 값' 을 가지므로, 함수 호출시 생략할 수 있습니다. 기본적으로, 이 함수는 인쇄 줄을 끝낼 때 '줄 끊음 (line break)' 을 추가합니다. 값을 '줄 끊음' 없이 인쇄하려면, '종결자 (terminator)' 에 빈 문자열을 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. '기본 설정 값을 가지는 매개 변수' 에 대한 정보는, [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 을 참고하기 바랍니다.
 
-스위프트는 상수나 변수의 이름을 더 긴 문자열 내의 '자리 표시자 (placeholder)' 로 포함시키기 위해, 그리고 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알리기 위해 '_문자열 보간법 (string interpolation)_' 을 사용합니다. 이름을 괄호로 포장한 다음 시작 괄호 앞에 '역 빗금 (backslash)' 을 써서 '벗어나게 (escape)'[^escape] 합니다:
+스위프트는 상수나 변수의 이름을 더 긴 문자열 내의 '자리 표시자 (placeholder)' 로 포함시키기 위해, 그리고 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알리기 위해 '_문자열 보간법 (string interpolation)_'[^string-interpolation] 을 사용합니다. 이름을 괄호로 포장한 다음 시작 괄호 앞에 '역 빗금 (backslash)' 을 써서 '벗어나게 (escape)'[^escape] 합니다:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
@@ -763,22 +763,22 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^set-dictionary]: 'Set (셋)' 은 그 자체로 수학 용어인 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 그 자체로 '사전' 을 의미합니다. 이들은 실제 용어의 의미에 맞는 역할을 하지만, '자료 타입' 임을 나타내기 위해 이 책에서는 각각 '셋' 과 '딕셔너리' 라고 발음대로 옮깁니다. 'Array (배열)' 의 경우 이미 '배열' 이라는 용어가 하나의 '자료 타입' 으로 사용되고 있으므로 계속 '배열' 이라고 옮깁니다.
+[^set-dictionary]: 'Set (셋)' 은 수학 용어로 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 '사전' 을 의미합니다. 이들의 역할은 용어의 의미와 일치하지만, 이름 자체로 '자료 타입' 임을 확실히 나타내기 위해 여기서는 각각 '셋' 과 '딕셔너리' 라는 발음대로 옮깁니다. 'Array (배열)' 의 경우 이미 '배열' 이라는 용어가 '자료 타입' 으로 널리 사용되고 있으므로 계속 '배열' 이라고 옮깁니다.
 
-[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면 (Unicode planes)' 에서 '사용자 영역 (private-use areas)' 에 있는 값을 말합니다. 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)', 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 및 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
+[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면 (Unicode planes)' 에서 '사용자 영역 (private-use areas)' 에 있는 값을 말합니다. 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)', 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
-[^annotation]: 'annotation' 는 사실 '주석' 이라는 옮기는 것이 가장 적당하지만, '주석' 은 프로그래밍 분야에서 'comments' 라는 말로 이미 널리 쓰이고 있으므로, 스위프트의 'annotation' 을 '보조 설명' 이라는 말로 옮기도록 하겠습니다. 실제로 스위프트에서 'annotation' 을 쓸 일은 거의 없기 때문에 이 용어의 의미에 크게 비중을 두지 않아도 될 것 같습니다.
+[^annotation]: 'annotation' 는 사실 '주석' 이라고 옮기는 것이 가장 적당하지만, 프로그래밍 분야에서는 'comments' 가 '주석' 이라고 이미 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라고 옮깁니다. 실제로 스위프트에서는 'annotation' 을 쓸 일이 거의 없기 때문에 이 용어에는 비중을 크게 두지 않아도 됩니다.
 
-[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
+[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
 
-[^string-interpolation]: 'interpolation' 은 원래 수학 용어로 '보간법' 이라고 하며 두 값 사이의 값을 근사식으로 구해서 집어넣는 것을 말합니다. 'string interpolation' 은 '문자열 삽입법' 정도로 할 수 있겠지만, 수학 용어로 '보간법' 이라는 말이 널리 쓰이고 있으므로 '문자열 보간법' 이라고 옮기도록 합니다.
+[^string-interpolation]: 'interpolation' 은 원래 수학 용어로 '보간법' 이라고 하며, 두 값 사이에 근사식으로 구한 값을 집어넣는 것을 말합니다. 'string interpolation' 은 '문자열 삽입법' 정도로 옮길 수도 있지만, 수학 용어로 '보간법' 이라는 말이 널리 쓰이고 있으므로 '문자열 보간법' 이라고 옮깁니다.
 
-[^escape]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 참고로 스위프트에서 'escaping closure' 는 '(본래 영역을) 벗어날 수 있는 클로저' 를 의미합니다.
+[^escape]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 는 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자'-즉, '특수한 의미를 가지는 문자' 정도로 이해할 수 있습니다. 참고로 스위프트에는 'escaping closure' 라는 것도 있는데, 이는 '(자신이 정의되어 있는 영역을) 벗어나서 (존재할 수 있는) 클로저'-즉, '영역을 벗어날 수 있는 클로저' 정도의 의미를 가지고 있습니다.
 
 [^word]: 컴퓨터 용어로 'word (워드; 단어)' 는 프로세서에서 한 번에 처리할 수 있는 데이터 단위를 말합니다.
 
-[^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 여러 말로 옮길 수 있는데, 컴퓨터 용어로 엄일하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 밑수라는 말로 옮겼습니다. 일부동-소수점 수에서의 'base-number' 는 '유효 숫자' 에 해당한다고 볼 수 있으며, 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
+[^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
 
-[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n개의 원소에서 r개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉 r개의 원소들을 서로 다른 순서로 줄 지을 수 있는 가지 수를 말하며, 스위프트의 튜플은 이 모든 가지 수에 대해서 튜플을 만들 수 있다는 의미가 됩니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서' 라는 말로 옮겼습니다. '순열 (permutatio)' 에 대한 더 자세한 내용은 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 이나 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
+[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n 개의 원소에서 r 개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉, 스위프트에서 n 개의 원소를 가진 튜플이 가질 수 있는 경우의 수는 이 '순열 (permetation)' 개수 만큼 많다는 걸 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서' 라는 말로 옮겼습니다. '순열 (permutation)' 에 대한 더 자세한 내용은 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목이나 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
-[^nature]: '자료의 본질을 암시적으로 문서화 (implicitly documents the nature of the data)' 한다는 것은, 예를 들어, `Int` 라고 할 것을 `UInt8` 이라고 하면 값이 `0~255` 사이임을 알 수 있는 것처럼, 코드로 '문서화' 를 한다는 의미입니다.  '암시적인 문서화 (implicitly documents)' 는 따로 주석을 기입하거나 문서를 만들지 않고 코드 자체로 '문서화 (documentation)' 가 되는 것을 말합니다. '문서화 (documentation)' 는 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 '문서화 주석' 에 대한 설명을 참고하기 바랍니다.
+[^nature]: '자료의 본질을 암시적으로 문서화 (implicitly documents the nature of the data)' 한다는 말은, 예를 들어, `Int` 라고 할 것을 `UInt8` 이라고 하면 값이 `0 ~ 255` 범위에 있다는 자료의 본질적인 정보를, 코드 자체가 제공한다는 의미입니다. '암시적인 문서화 (implicitly documents)' 는 별도의 주석이나 문서를 작성하지 않고 코드 자체가 저절도 '문서화 (documentation)' 효과를 가지는 것을 말합니다. '문서화 (documentation)' 에 대한 더 자세한 정보는 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 '문서화 주석' 설명 부분을 참고하기 바랍니다.
