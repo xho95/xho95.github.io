@@ -544,56 +544,54 @@ if convertedNumber != nil {
 
 > `!` 를 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 사용하면 '실행 시간 에러 (runtime error)' 를 발생합니다. 값의 포장을-강제로 풀려고 `!` 를 사용하려면 항상 그전에 옵셔널이 '`nil` 아닌 값을 담고 있는지를 먼저 확인합니다.
 
-#### Optional Binding (옵셔널 연결; 옵셔널 바인딩)
+#### Optional Binding (옵셔널 연결)
 
-_옵셔널 연결 (optional binding; 옵셔널 바인딩)_ 을 사용하면 옵셔널이 값을 가지고 있는지 알아내서, 그 경우, 해당 값을 임시 상수나 임시 변수로 사용 가능하게 만들어 줍니다. '옵셔널 연결' 을 `if` 및 `while` 문과 같이 사용하면, 단 한번의 동작으로, 옵셔널 내에 있는 값을 검사하고, 해당 값을 상수나 변수로 추출할 수 있습니다. `if` 및 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세히 설명하도록 합니다.
+_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 담고 있는지 알아내서, 그 경우, 해당 값을 임시 상수나 변수로 사용 가능하게 만들어 줍니다. '옵셔널 연결' 을 `if` 와 `while` 문과 같이 사용하면, 단일 작업으로, 옵셔널 안의 값을 검사하고, 해당 값을 상수나 변수로 추출할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세하게 설명합니다.
 
-`if` 문에 대한 '옵셔널 연결' 은 다음과 같이 작성합니다:
+`if` 문의 '옵셔널 연결' 은 다음 처럼 작성합니다:
 
-```
-if let 상수_이름 = 어떤_옵셔널 {
-    구문
+if let `constantName-상수 이름` = `someOptional-어떤 옵셔널` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
-```
 
-[Optionals (옵셔널)](#optionals-옵셔널) 부분에 있는 `possibleNumber` 예제를 '강제 포장 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 사용하여 재작성할 수도 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널) 에 있는 `possibleNumber` 예제는 '강제 포장 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 사용하도록 재작성할 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
-    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+  print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
 } else {
-    print("The string \"\(possibleNumber)\" could not be converted to an integer")
+  print("The string \"\(possibleNumber)\" could not be converted to an integer")
 }
-// "The string "123" has an integer value of 123" 을 출력합니다.
+// "The string "123" has an integer value of 123" 을 인쇄합니다.
 ```
 
-이 코드는 다음과 같이 읽을 수 있습니다:
+이 코드는 다음처럼 이해할 수 있습니다:
 
-"`Int(possibleNumber)` 가 반환하는 옵셔널 `Int` 가 값을 가지고 있으면, `actualNumber` 라는 새로운 상수에 그 옵셔널이 가지고 있는 값을 설정합니다."
+"`Int(possibleNumber)` 에서 반환된 옵셔널 `Int` 가 값을 담고 있으면, `actualNumber` 라는 새로운 상수를 옵셔널에 담긴 값에 설정합니다."
 
-변환을 성공하면, `if` 문의 첫 번째 분기에서 `actualNumber` 상수를 사용할 수 있게 됩니다. 이것은 옵셔널이 _내부에 (within)_ 가지고 있던 값으로 이미 초기화한 것이므로, 값에 접근하기 위해 `!` 접미사를 사용할 필요가 없습니다. 이 예제의, `actualNumber` 는 단순히 변환 결과를 출력하기 위해 사용되고 있습니다.
+변환이 성공하면, `actualNumber` 상수가 `if` 문의 첫 번째 분기에서 사용 가능해 집니다. 이는 이미 옵셔널 _내에 (within)_ 담긴 값으로 초기화되었으므로, 값에 접근하려고 `!` 접미사를 사용할 필요가 없습니다. 이 예제의, `actualNumber` 는 단순히 변환 결과를 인쇄하는데 사용됩니다.
 
-상수와 변수 모두 '옵셔널 연결' 과 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶다면, `if var actualNumber` 라고 작성하여, 옵셔널이 내부가 가지고 있는 값을 상수가 아닌 변수로 사용 가능하게 만들 수도 있습니다.
+'옵셔널 연결' 은 상수와 변수 둘 모두와 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶으면, 대신 `if var actualNumber` 라고 작성하여, 옵셔널 내에 담긴 값을 상수가 아니라 변수로 사용 가능하도록 만들 수도 있습니다.
 
-단일 `if` 문에 '옵셔널 연결' 과 '불리언 조건' 을 필요한 만큼 많이 포함하려면, 쉼표로 구분하면 됩니다. 만약 옵셔널 연결에 있는 어떤 값이 `nil` 이거나 어떤 불리언 조건이 `false` 라는 값을 평가하는 경우, `if` 문의 전체 조건이 `false` 인 것으로 여겨집니다. 다음의 `if` 문들은 서로 '동치 (equivalent)' 입니다:
+단일 `if` 문에는 필요한 만큼 많은 '옵셔널 연결' 과 '불리언 조건' 을, 쉽표로 구분하여, 포함시킬 수 있습니다. 옵셔널 연결에 있는 어떤 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 로 평가된다면, 전체 `if` 문의 조건이 `false` 인 것으로 간주됩니다. 다음의 `if` 문들은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
-    print("\(firstNumber) < \(secondNumber) < 100")
+  print("\(firstNumber) < \(secondNumber) < 100")
 }
-// "4 < 42 < 100" 를 출력합니다.
+// "4 < 42 < 100" 를 인쇄합니다.
 
 if let firstNumber = Int("4") {
-    if let secondNumber = Int("42") {
-        if firstNumber < secondNumber && secondNumber < 100 {
-            print("\(firstNumber) < \(secondNumber) < 100")
-        }
+  if let secondNumber = Int("42") {
+    if firstNumber < secondNumber && secondNumber < 100 {
+      print("\(firstNumber) < \(secondNumber) < 100")
     }
+  }
 }
-// "4 < 42 < 100" 를 출력합니다.
+// "4 < 42 < 100" 를 인쇄합니다.
 ```
 
-> `if` 문에 있는 '옵셔널 연결' 로 생성한 상수와 변수는 `if` 문의 본문 내에서만 사용 가능합니다. 이와 대조적으로, `guard` 문으로 생성한 상수와 변수는, [Early Exit (조기 탈출 구문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출-구문) 에서 설명한, `guard` 문 이후의 코드 줄에서도 사용 가능합니다.
+> `if` 문에서 '옵셔널 연결' 로 생성한 상수와 변수는 `if` 문의 본문 안에서만 사용 가능합니다. 이와 대조적으로, `guard` 문으로 생성한 상수와 변수는, [Early Exit (조기 탈출 구문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출-구문) 에서 설명한 것처럼, `guard` 문 이후의 코드에서 사용 가능합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)
 
