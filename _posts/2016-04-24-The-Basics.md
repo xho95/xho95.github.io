@@ -749,11 +749,11 @@ if age > 10 {
 precondition(index > 0, "Index must be greater than zero.")
 ```
 
-실패가 발생했음을 나타내기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다-예를 들어, 'switch 문' 의 '기본 (default) case 절' 이 선택된 상황이 그러한 것인데, 유효한 데이터라면 'switch 문' 의 다른 'case 절' 들에서 모두 처리되었을 것이기 때문입니다.
+실패가 발생했다는 것-예를 들어, 모든 유효한 입력 자료는 'switch 문' 의 다른 'case 절' 에서 처리됐어야 함에도, 'switch 문의 기본 (default) case 절' 이 선택된 경우 등-을 나타내기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다.
 
-> '검사하지 않는 모드 (unchecked mode; `-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건들이 항상 참이라고 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과는 상관없이, 실행을 항상 중단합니다.
+> '검사하지 않는 모드 (unchecked mode; `-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 해당 선행 조건문이 항상 참이라고 가정하며, 이에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과는 상관없이, 항상 실행을 중단합니다.
 >
-> `fatalError(_:file:line:)` 함수는 초기 모델이나 초기 개발 중에 아직 구현되지 않는 기능에 대해, `fatalError("Unimplemented")` 처럼 짜투리 구현을 작성하는 등의, 짜투리 표시를 생성하기 위해 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 절대로 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 이 짜투리 구현과 마주치게 되면 실행을 항상 중단할 것임을 확신할 수 있습니다.
+> `fatalError(_:file:line:)` 함수는 프로토타입 및 초기 개발 동안에, 땜빵 구현처럼 `fatalError("Unimplemented")` 을 작성함으로써, 아직 구현하지 않는 기능에 대한 땜빵을 생성하기 위해 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 절대 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 땜빵 구현과 마주치면 실행이 항상 중단될 거라고 확신할 수 있습니다.
 
 [Basic Operators (기본 연산자) > ]({% post_url 2016-04-27-Basic-Operators %})
 
