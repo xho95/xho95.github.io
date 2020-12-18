@@ -62,7 +62,7 @@ while `condition-조건` {<br />
 
 _조건 (condition)_ 의 값은 _구문 (statements)_ 을 실행하기 전에 평가하기 때문에, `while` 문에 있는 _구문 (statements)_ 은 '0' 번 이상 실행될 수 있습니다.
 
-_조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+_조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
 
 > GRAMMAR OF A WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
@@ -86,7 +86,7 @@ repeat {<br />
 
 _조건 (condition)_ 의 값은 _구문 (statements)_ 을 실행한 후에 평가하기 때문에, `repeat`-`while` 문에 있는 _구문 (statements)_ 은 최소한 한 번은 실행됩니다.
 
-_조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+_조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
@@ -128,7 +128,7 @@ if `condition 1-조건 1` {<br />
   `statements to execute if both conditions are false- 두 조건 모두 거짓인 경우 실행하는 구문`<br />
 }
 
-`if` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+`if` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
 
 > GRAMMAR OF A BRANCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
@@ -142,7 +142,7 @@ guard `condition-조건` else {<br />
   `statements-구문`<br />
 }
 
-`guard` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결; 옵셔널 바인딩)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결-옵셔널-바인딩) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+`guard` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
 
 `guard` 문 조건에 있는 '옵셔널 연결 선언 (optional binding declaration)' 으로 값을 할당한 상수나 변수는 어떤 것이든 'guard 문' 을 둘러싼 나머지 영역에서 사용할 수 있습니다.
 
