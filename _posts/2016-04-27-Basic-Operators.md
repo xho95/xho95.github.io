@@ -6,19 +6,17 @@ date:   2016-04-27 10:00:00 +0900
 categories: Swift Language Grammar Basic Operators
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 부분[^Basic-Operators]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 부분[^The-Basics]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Basic Operators (기본 연산자)
 
-_연산자 (operator)_ 는 값을 검사하고, 바꾸거나, 또는 조합하기 위해 사용하는 특수한 기호나 구절입니다. 예를 들어, '더하기 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 개의 불리언 (Boolean) 값을 조합합니다.
+_연산자 (operator)_ 는 값을 검사하거나, 바꾸는데, 또는 조합하는데 사용하는 특수한 '기호 (symbol)' 나 '구절 (phrase)' 입니다. 예를 들어, '더하기 (addition) 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 '불리언 (Boolean)' 값을 조합합니다.
 
-스위프트는 C 언어 등을 통해 이미 알고 있을 법한 연산자를 지원하면서, 공통된 코딩 에러를 없애기 위해 보유 능력 몇가지를 개선했습니다. '할당 연산자 (`=`)' 는, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막을 수 있게, 값을 반환하지 않습니다. 산술 연산자 (`+`,`-`, `*`, `/`, `%` 등) 은, 타입이 저장할 수 있는 허용 범위보다 커지거나 작아진 값과 작업할 때의 예상치 못한 결과를 피할 수 있도록, '값 넘침 (value overflow)' 을 감지해서 이를 불허합니다. '값 넘침' 작동 방식을 선택하려면, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명하는 것처럼, 스위프트의 'overflow (값 넘침) 연산자' 를 사용하면 됩니다.
+스위프트는 C 등의 언어를 통해 이미 알고 있을 연산자를 지원하며, 공통된 코딩 에러를 없애기 위해 보유 능력 몇 가지를 개선했습니다. '할당 (assignment) 연산자 (`=`)' 는, '같음 (equal to) 연산자 (`==`)' 를 의도했는데 실수로 사용되는 것을 막기 위해, 값을 반환하지 않습니다. '산술 (arithmetic) 연산자 (`+`,`-`, `*`, `/`, `%` 등등)' 은, 이를 저장하는 타입의 허용 범위보다 크거나 작아진 값과 작업할 때의 예기치 않은 결과를 피하기 위해, '값 넘침 (value overflow)' 을 감지하고 이를 불허합니다. '값 넘침' 동작은, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명한 것처럼, 스위프트의 '값 넘침 (overflow) 연산자' 를 사용함으로써 직접 선택할 수 있습니다.
 
-스위프트는 C 언어에는 없는, 값의 범위를 표현하는 '단축키 (shortcut)' 로, `a..<b` 와 `a...b` 같은, '범위 (range) 연산자' 도 제공합니다.
+스위프트는 C 에는 없는 '범위 (range) 연산자' 도 제공하는데, 값의 범위를 표현하기 위한 '단축 형태 (shortcut)' 인, `a..<b` 와 `a...b` 등이 있습니다.
 
-이번 장은 스위프트의 일반적인 연산자에 대해 설명합니다. [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 스위프트의 고급 연산자를 다루며, 이 때 사용자 정의 연산자를 정의하는 방법과 자신의 사용자 정의 타입에 대한 표준 연산자 구현 방법을 설명합니다.
+이 장은 스위프트의 일반적인 연산자를 설명합니다. [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 는 스위프트의 고급 연산자를 다루고, 자신만의 연산자를 정의하는 방법과 자신만의 타입을 위한 표준 연산자를 구현하는 방법도 설명합니다.
 
 ### Terminology (용어)
 
