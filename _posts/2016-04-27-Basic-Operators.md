@@ -124,26 +124,26 @@ _나머지 연산자 (remainder operator)_ (`a % b`) 는 `a` 를 `b` 배수 몇 
 
 #### Unary Minus Operator (단항 음수 연산자)
 
-수치 값의 부호를 전환하려면 접두사 `-` 를 붙이며, 이를 '_단항 음수 연산자 (unary minus operator)_' 라고 합니다.
+수치 값의 부호는, _단항 음수 연산자 (unary minus operator)_ 라는, `-` 접두사를 사용하여, '전환할 (toggled)' 수 있습니다:
 
 ```swift
 let three = 3
 let minusThree = -three       // minusThree 는 -3 과 같습니다.
-let plusThree = -minusThree   // plusThree 는 3 과 같으며, "minus minus three" 라고도 합니다.
+let plusThree = -minusThree   // plusThree 는 3 또는, "minus minus three" 와 같습니다.
 ```
 
-'단항 음수 연산자 (`-`)' 는 빈 공백없이 연산될 값 바로 앞에 위치합니다.
+'단항 음수 연산자 (`-`)' 는, 어떤 공백도 없이, 작용하는 값 바로 앞에 붙입니다.
 
 #### Unary Plus Operator (단항 양수 연산자)
 
-'_단항 양수 연산자 (unary plus operator)_' (`+`) 는 단순히 연산 값을 그대로 반환하며, 어떤 변경도 하지 않습니다:
+_단항 양수 연산자_ (_unary plus operator;_ `+`) 는, 어떤 바뀜도 없이, 작용하는 값을 단순히 반환합니다:
 
 ```swift
 let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같습니다.
 ```
 
-'단항 양수 연산자' 가 실제로 하는 일은 없지만, 이것을 양수에 사용하면 '단항 음수 연산자' 로 표현한 음수와 나란하게 코드를 배치할 수 있습니다.
+비록 '단항 양수 연산자' 는 실제로 아무 것도 하지 않지만, 음수에 '단항 음수 연산자' 를 사용하고 있을 때 양수에 이를 사용하면 코드에 '대칭성 (symmetry)' 을 제공할 수 있습니다.
 
 ### Compound Assignment Operators (복합 할당 연산자)
 
