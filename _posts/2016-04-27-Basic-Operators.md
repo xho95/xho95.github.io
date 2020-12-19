@@ -164,41 +164,41 @@ a += 2
 
 ### Comparison Operators (비교 연산자)
 
-스위프트는 C 언어에 있는 모든 표준 _비교 연산자 (comparison operators)_ 를 지원합니다:
+스위프트는 다음의 _비교 연산자 (comparison operators)_ 를 지원합니다:
 
-* 같음 (`a == b`) - 등호
-* 같지 않음 (`a != b`) - 부등호
-* 보다 큼 (`a > b`)
-* 보다 작음 (`a < b`)
-* 크거나 같음 (`a >= b`)
-* 작거나 같음 (`a <= b`)
+* 같음 (equal to; `a == b`)
+* 같지 않음 (not equal to; `a != b`)
+* 보다 큼 (greater than; `a > b`)
+* 보다 작음 (less than; `a < b`)
+* 크거나 같음 (greater than or equal to; `a >= b`)
+* 작거나 같음 (less than or equal to; `a <= b`)
 
-> 스위프트는 두 개의 '_식별 연산자 (identity operators)_' (`===` 와 `!==`) 도 제공하여, 두 객체에 대한 참조 모두 동일한 객체 인스턴스를 참조하고 있는지를 검사할 수 있습니다. 더 자세한 내용은 [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 를 보기 바랍니다.
+> 스위프트는 두 개의 '_식별 연산자 (identity operators)_' (`===` 와 `!==`) 도 제공하는데, 이는 두 개의 객체 참조 모두 똑같은 객체 인스턴스를 참조하는 지를 검사하는데 사용합니다. 더 자세한 정보는, [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 를 참고하기 바랍니다.
 
-각각의 '비교 연산자' 는 `Bool` 값을 반환하여 그 구문이 참인지 아닌지를 나타냅니다:
+각 '비교 연산자' 는 구문이 '참 (true)' 인지의 여부를 나타내기 위해 `Bool` 값을 반환합니다:
 
 ```swift
-1 == 1   // true (참), 1 은 1 과 같기 때문입니다.
-2 != 1   // true (참), 2 는 1 과 같지 않기 때문입니다.
-2 > 1    // true (참b, 2 는 1 보다 크기 때문입니다.
-1 < 2    // true (참), 1 은 2 보다 작기 때문입니다.
-1 >= 1   // true (참), 1 은 1 보다 크거가 같기 때문입니다.
-2 <= 1   // false (거짓), 2 는 1 보다 작거나 같지 않기 때문입니다.
+1 == 1   // 참 (true), 1 은 1 과 같기 때문입니다.
+2 != 1   // 참 (true), 2 는 1 과 같지 않기 때문입니다.
+2 > 1    // 참 (true), 2 는 1 보다 크기 때문입니다.
+1 < 2    // 참 (true), 1 은 2 보다 작기 때문입니다.
+1 >= 1   // 참 (true), 1 은 1 보다 크거가 같기 때문입니다.
+2 <= 1   // 거짓 (false), 2 는 1 보다 작거나 같지 않기 때문입니다.
 ```
 
-비교 연산자 주로 '조건 구문 (conditional statements)' 에서 사용되며, 여기에는 `if` 구문 등이 있습니다:
+비교 연산자는 종종, `if` 문 같은, '조건문 (conditional statements)' 에서 사용됩니다:
 
 ```swift
 let name = "world"
 if name == "world" {
-    print("hello, world")
+  print("hello, world")
 } else {
-    print("I'm sorry \(name), but I don't recognize you")
+  print("I'm sorry \(name), but I don't recognize you")
 }
-// "hello, world" 를 출력합니다. name 이 진짜 "world" 와 같기 때문입니다.
+// "hello, world" 를 인쇄하는데, 이는 name 이 진짜로 "world" 와 같기 때문입니다.
 ```
 
-`if` 구문에 대해서는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 보기 바랍니다.
+`if` 구문에 대한 더 많은 내용은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 참고하기 바랍니다.
 
 두 개의 '튜플 (tuples)' 이 같은 타입에 같은 개수의 값을 가지고 있으면 서로 비교할 수 있습니다. 튜플을 비교할 때는 왼쪽에서 오른쪽으로, 한번에 한 값씩, 두 값이 같지 않을 때까지 비교합니다. 두 값을 비교하면, 이 비교의 결과가 튜플 비교 연산의 전체 결과를 결정합니다. 모든 요소가 같으면, 튜플 자체가 같은 것입니다. 예를 들면 다음과 같습니다:
 
