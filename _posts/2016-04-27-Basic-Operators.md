@@ -82,45 +82,45 @@ C 와 오브젝티브-C 의 산술 연산자와는 달리, 스위프트의 산�
 
 #### Remainder Operator (나머지 연산자)
 
-_나머지 연산자 (remainder operator)_ (`a % b`) 는 `a` 안을 `b` 의 배수로 채운 다음에 그래도 남는 값을 반환합니다. (이를 _나머지 (remainder)_ 라고 합니다.)
+_나머지 연산자 (remainder operator)_ (`a % b`) 는 `a` 를 `b` 배수 몇 개로 채울지 알아낸 다음 (_나머지 (remainder)_ 라고 하는) 남아 있는 값을 반환합니다.
 
-> 다른 언어에서는 '나머지 연산자 (remainder operator)' (`%`) 를 '_모듈러 연산자 (modulo operator)_' 라고도 합니다. 하지만, 음수에 대한 연산 방식을 보면, 스위프트에서는 엄밀히 말해서, _모듈러 연산 (modulo operation)_[^modulo-opartion] 이라기 보다는 나머지라고 하는 것이 맞습니다.
+> '나머지 연산자 (remainder operator; `%`)' 를 다른 언어에서는 '_모듈러 연산자 (modulo operator)_' 라고도 합니다. 하지만, 스위프트에서 음수에 대한 작동 방식은, 엄밀히 말해서, '모듈러 연산 (modulo operation)'[^modulo-opartion] 이 아니라 나머지가 맞습니다.
 
-이제 '나머지 연산자' 의 작동 방식을 알아봅시다. `9 % 4` 를 계산하면, 일단 `4` 의 배수로 `9` 를 채웁니다:
+다음은 '나머지 연산자' 가 작동하는 방식입니다. `9 % 4` 를 계산하기 위해, 먼저 `9` 를 몇 개의 `4` 로 채울지 알아냅니다:
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Basic-Operators-remainder-operator-works.jpg)
 
-`4` 2 개로 `9` 를 채우고 나면, 나머지는 `1` 이 됩니다. (주황색 부분입니다.)
+두 개의 `4` 로 `9` 를 채울 수 있으며, 나머지는 (주황색으로 나타낸) `1` 입니다.
 
-스위프트로는, 이를 다음 처럼 작성합니다:
+스위프트에서, 이는 다음처럼 작성합니다:
 
 ```
 9 % 4    // 1 과 같습니다.
 ```
 
-`a % b` 의 답을 결정하기 위해, '`%` 연산자' 는 다음 식을 계산한 후 그 결과로 `remainder` 를 반환합니다:
+`a % b` 에 대한 답을 결정하기 위해, `%` 연산자는 다음 식을 계산하며 결과로 `remainder` 를 반환합니다:
 
 `a` = (`b` x `some multiplier`) + `remainder`
 
-여기서 `some multiplier` 는 `a` 내부를 채울 수 있는 `b` 의 가장 큰 배수입니다.
+여기서 `some multiplier` 는 `a` 내부를 채울 `b` 의 가장 큰 배수입니다.
 
-`9` 와 `4` 를 넣으면 다음 식이 도출됩니다:
+식에 `9` 와 `4` 를 넣으면 다음 결과가 나옵니다:
 
 `9` = (`4` x `2`) + `1`
 
-같은 방법으로 `a` 가 음수일 때도 나머지를 계산할 수 있습니다:
+음수인 `a` 에 대하여 나머지를 계산할 때도 같은 방법을 적용합니다:
 
 ```
 -9 % 4   // -1 과 같습니다.
 ```
 
-`9` 와 `4` 를 넣으면 다음 식이 도출됩니다:
+식에 `-9` 와 `4` 를 넣으면 다음 결과가 나옵니다:
 
 `-9` = (`4` x `-2`) + `-1`
 
-주어진 식의 나머지 값은 `-1` 입니다.
+나머지 값으로 `-1` 을 줍니다.
 
-여기서 `b` 가 음수 값일 때라도 `b` 의 부호를 무시합니다. 이는 `a % b` 와 `a % -b` 의 답이 항상 같다는 것을 의미합니다.
+`b` 가 음수일 땐 `b` 의 부호를 무시합니다. 이는 `a % b` 와 `a % -b` 가 항상 똑같은 답을 준다는 의미입니다.
 
 #### Unary Minus Operator (단항 음수 연산자)
 
@@ -483,7 +483,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^modulo-opartion]: 'modulo operation' 은 수학적으로 엄밀한 '나머지 연산' 과 연관되어 있는 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 글을 참고하기 바랍니다. 이와 연관된 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
+[^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 수학적으로 엄밀한 '나머지 연산' 과 연관있는 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 참고하기 바랍니다. 이에 대한 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
 
 [^short-circuit]: 'short-circuit evaluation (단락-회로 계산)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 'short-circuit (단락-회로)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 'minimal evaluation (최소 계산)' 이라는 말도 사용하는 것 같습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 항목에 대한 번역은 아직 없는 것 같습니다.)
 
