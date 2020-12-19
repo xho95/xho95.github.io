@@ -147,20 +147,20 @@ let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같습니다.
 
 ### Compound Assignment Operators (복합 할당 연산자)
 
-C 언어처럼, 스위프트는 _복합 할당 연산자 (compound assignment operators)_ 를 제공하며 이는 '할당 연산 (`=`)' 을 다른 연산과 결합합니다. 한 가지 예로는 '더하기 할당 연산자 (addition assignment operator)' (`+=`)  가 있습니다:
+C 와 같이, 스위프트는 '할당 연산 (`=`)' 을 다른 연산과 조합한 _복합 할당 연산자 (compound assignment operators)_ 를 제공합니다. 한 가지 예는 '더하기 할당 연산자 (addition assignment operator; `+=`)' 입니다:
 
 ```swift
 var a = 1
 a += 2
-// a 는  3 과 같습니다.
+// a 는 이제 3 입니다
 ```
 
-표현식 `a += 2` 는 `a = a + 2` 의 약칭입니다. 효과적으로, 더하기와 할당 연산을 하나의 연산자로 결합하여 한번에 두 작업을 동시에 수행합니다.
+표현식 `a += 2` 는 `a = a + 2` 를 '줄인 표현 (shorthand)' 입니다. 사실상, 더하기와 할당을 한 연산자로 조합하여 두 작업을 동시에 수행합니다.
 
-> '복합 할당 연산자' 는 값을 반환하지 않습니다. 예를 들어 `let b = a += 2` 라고 작성할 수 없습니다.
+> '복합 할당 연산자' 는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 처럼 작성할 수 없습니다.
 
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는 [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 보기 바랍니다.
+스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 을 참고하기 바랍니다.
 
 ### Comparison Operators (비교 연산자)
 
@@ -490,3 +490,5 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 [^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity (연산자 결합성)](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
 
 [^infix]: 'infix는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대해서는 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
+
+[^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
