@@ -10,13 +10,13 @@ categories: Swift Language Grammar Basic Operators
 
 ## Basic Operators (기본 연산자)
 
-_연산자 (operator)_ 는 값을 검사하거나, 바꾸고, 아니면 조합하는데 사용하는 특수한 '기호 (symbol)' 나 '구절 (phrase)' 입니다. 예를 들어, '더하기 (addition) 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 '불리언 (Boolean)' 값을 조합합니다.
+_연산자 (operator)_ 는 값을 검사하거나, 바꾸며, 또는 조합하기 위해 사용하는 특수한 '기호 (symbol)' 나 '구절 (phrase)' 입니다. 예를 들어, '더하기 (addition) 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 '불리언 (Boolean)' 값을 조합합니다.
 
-스위프트는 C 등의 언어를 통해 이미 알고 있을 연산자를 지원하며, 공통된 코딩 에러를 없애기 위해 보유 능력 몇 가지를 개선했습니다. '할당 (assignment) 연산자 (`=`)' 는, '같음 (equal to) 연산자 (`==`)' 를 의도했는데 실수로 사용되는 것을 막기 위해, 값을 반환하지 않습니다. '산술 (arithmetic) 연산자 (`+`,`-`, `*`, `/`, `%` 등등)' 은, 이를 저장하는 타입의 허용 범위보다 크거나 작아진 값과 작업할 때의 예기치 않은 결과를 피하기 위해, '값 넘침 (value overflow)' 을 감지하고 이를 불허합니다. '값 넘침' 동작은, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명한 것처럼, 스위프트의 '값 넘침 (overflow) 연산자' 를 사용함으로써 직접 선택할 수 있습니다.
+스위프트는 C 등의 언어를 통해 이미 알고 있을 연산자를 지원하며, 일반적인 코딩 에러를 없애기 위해 보유 능력 몇 가지를 개선했습니다. '할당 (assignment) 연산자 (`=`)' 는, '같음 (equal to) 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막기 위해, 값을 반환하지 않습니다. '산술 (arithmetic) 연산자 (`+`,`-`, `*`, `/`, `%` 등등)' 은, 이를 저장하는 타입의 허용 범위보다 크거나 작은 값과 작업할 때의 예기치 않은 결과를 피하기 위해, '값 넘침 (value overflow)' 을 감지하고 이를 불허합니다. '값 넘침' 동작은, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명한 것처럼, 스위프트의 '값 넘침 (overflow) 연산자' 를 사용함으로써 직접 선택할 수 있습니다.
 
-스위프트는 C 에는 없는 '범위 (range) 연산자' 도 제공하는데, 값의 범위를 표현하기 위한 '단축 형태 (shortcut)' 인, `a..<b` 와 `a...b` 등이 있습니다.
+스위프트는 C 에는 없는 '범위 (range) 연산자' 도 제공하는데, 값의 범위를 표현하는 '줄임말 (shortcut)' 로써, `a..<b` 와 `a...b` 등이 있습니다.
 
-이 장은 스위프트의 일반적인 연산자를 설명합니다. [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 는 스위프트의 고급 연산자를 다루고, 자신만의 연산자를 정의하는 방법과 자신만의 타입을 위한 표준 연산자를 구현하는 방법도 설명합니다.
+이 장은 스위프트의 일반적인 연산자를 설명합니다. 스위프트의 고급 연산자는 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 다루는데, 자신만의 연산자를 정의하는 방법과 자신만의 타입을 위해 표준 연산자를 구현하는 방법도 설명합니다.
 
 ### Terminology (용어)
 
@@ -155,7 +155,7 @@ a += 2
 // a 는 이제 3 입니다
 ```
 
-표현식 `a += 2` 는 `a = a + 2` 를 '줄인 표현 (shorthand)' 입니다. 사실상, 더하기와 할당을 한 연산자로 조합하여 두 작업을 동시에 수행합니다.
+표현식 `a += 2` 는 `a = a + 2` 의 '줄임 표현 (shorthand)' 입니다. 사실상, 더하기와 할당을 한 연산자로 조합하여 두 작업을 동시에 수행합니다.
 
 > '복합 할당 연산자' 는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 처럼 작성할 수 없습니다.
 
@@ -223,44 +223,44 @@ if name == "world" {
 
 ### Ternary Conditional Operator (삼항 조건 연산자)
 
-_삼항 조건 연산자 (ternary conditional operator)_ 는 세 부분으로 구성된 특수한 연산자로, 양식은 `question ? answer1 : answer2` 입니다. 이는 `question` 이 참인지 거짓인지에 따라서 두 표현식 중 하나의 값을 계산하는 '간략한 표기법 (shortcut)' 입니다. `question` 이 참이면, `answer1` 을 계산한 값을 반환하고; 그렇지 않으면, `answer2` 를 계산한 값을 반환합니다.
+_삼항 조건 연산자 (ternary conditional operator)_ 는 세 부분을 가진 특수한 연산자로, `question ? answer1 : answer2` 라는 형식을 취합니다. 이는 `question` 이 참인지 거짓인지에 기초하여 두 표현식 중 하나를 평가하는 '줄임말 (shortcut)' 입니다. `question` 이 참이면, `answer1` 을 평가한 값을 반환하며; 다른 경우, `answer2` 를 평가한 값을 반환합니다.
 
-'삼항 조건 연산자' 는 아래 코드의 약칭에 해당합니다:
+'삼항 조건 연산자' 는 아래 코드의 '줄임 표현 (shorthand)' 입니다:
 
 ```swift
 if question {
-    answer1
+  answer1
 } else {
-    answer2
+  answer2
 }
 ```
 
-다음은 테이블에서 행의 높이를 계산하는 예제입니다. 행에 '헤더 (header)' 가 있으면 '행 높이 (row height)' 가 '내용물 높이 (content height)' 보다 50 포인트 만큼 더 높고, 헤더가 없으면 20 포인트 만큼 더 높습니다:
+다음은, 표의 행 높이를 계산하는, 예제입니다. '행 높이' 는 그 행이 '표제 (header)' 를 가진 경우 '내용물 높이 (content height)' 보다 50 포인트 만큼 더 크며, '표제' 를 가지지 않은 경우 20 포인트 만큼 더 큽니다:
 
 ```swift
 let contentHeight = 40
 let hasHeader = true
 let rowHeight = contentHeight + (hasHeader ? 50 : 20)
-// rowHeight 는 90 과 같습니다.
+// rowHeight 는 90 입니다.
 ```
 
-위 예제는 아래 코드의 약칭에 해당합니다:
+위 예제는 아래 코드의 '줄임 표현 (shorthand)' 입니다:
 
 ```swift
 let contentHeight = 40
 let hasHeader = true
 let rowHeight: Int
 if hasHeader {
-    rowHeight = contentHeight + 50
+  rowHeight = contentHeight + 50
 } else {
-    rowHeight = contentHeight + 20
+  rowHeight = contentHeight + 20
 }
-// rowHeight 는 90 과 같습니다.
+// rowHeight 는 90 입니다.
 ```
 
-첫 번째 예제에서 '삼항 조건 연산자' 를 사용함으로써 `rowHeight` 의 값을 코드 한 줄로 올바르게 설정할 수 있었으며, 이는 두 번째 예제의 코드보다 훨씬 더 간결합니다.
+첫 번째 예제에서 '삼항 조건 연산자' 를 사용한 건, 단 한 줄의 코드로도 `rowHeight` 에 올바른 값을 설정할 수 있음을 의미하며, 이는 두 번째 예제에서 사용한 코드보다 더 간결합니다.
 
-'삼항 조건 연산자' 는 두 표현식 중 하나를 고르는 구문에 대한 효율적인 약칭을 제공합니다. 하지만, 삼항 조건 연산자는 주의해서 사용하기 바랍니다. 간결함을 추구한 나머지 너무 과용하다보면 코드를 이해하기가 어려워집니다. 여러 개의 삼항 조건 연산자 구문를 결합해서 하나의 복합 구문을 만드는 것은 피하는 것이 좋습니다.
+삼항 조건 연산자는 두 표현식 중에서 검토할 것을 고르는데 효율적인 '줄임 표현 (shorthand)' 을 제공합니다. 하지만, 삼항 조건 연산자를 주의해서 사용하기 바랍니다. 간결하다고 너무 남용하면 이해하기-어려운 코드를 만들게 됩니다. 다중 삼항 조건 연산자를 하나의 복합 구문으로 조합하는 것은 피하도록 합니다.
 
 ### Nil-Coalescing Operator (Nil-통합 연산자)
 
