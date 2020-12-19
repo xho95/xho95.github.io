@@ -10,7 +10,7 @@ categories: Swift Language Grammar Basic Operators
 
 ## Basic Operators (기본 연산자)
 
-_연산자 (operator)_ 는 값을 검사하거나, 바꾸는데, 또는 조합하는데 사용하는 특수한 '기호 (symbol)' 나 '구절 (phrase)' 입니다. 예를 들어, '더하기 (addition) 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 '불리언 (Boolean)' 값을 조합합니다.
+_연산자 (operator)_ 는 값을 검사하거나, 바꾸고, 아니면 조합하는데 사용하는 특수한 '기호 (symbol)' 나 '구절 (phrase)' 입니다. 예를 들어, '더하기 (addition) 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 '불리언 (Boolean)' 값을 조합합니다.
 
 스위프트는 C 등의 언어를 통해 이미 알고 있을 연산자를 지원하며, 공통된 코딩 에러를 없애기 위해 보유 능력 몇 가지를 개선했습니다. '할당 (assignment) 연산자 (`=`)' 는, '같음 (equal to) 연산자 (`==`)' 를 의도했는데 실수로 사용되는 것을 막기 위해, 값을 반환하지 않습니다. '산술 (arithmetic) 연산자 (`+`,`-`, `*`, `/`, `%` 등등)' 은, 이를 저장하는 타입의 허용 범위보다 크거나 작아진 값과 작업할 때의 예기치 않은 결과를 피하기 위해, '값 넘침 (value overflow)' 을 감지하고 이를 불허합니다. '값 넘침' 동작은, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명한 것처럼, 스위프트의 '값 넘침 (overflow) 연산자' 를 사용함으로써 직접 선택할 수 있습니다.
 
@@ -20,45 +20,45 @@ _연산자 (operator)_ 는 값을 검사하거나, 바꾸는데, 또는 조합�
 
 ### Terminology (용어)
 
-연산자에는 단항, 이항, 삼항 연산자가 있습니다:
+연산자는 '단항 (unary)', '이항 (binary)', 또는 '삼항 (ternary)' 입니다:
 
-* _단항 (Unary)_ 연산자는 (`-a` 처럼) 단일 대상에 작용합니다. '단항 _접두사 (prefix)_ 연산자' 는 (`!b` 처럼) 대상의 바로 앞에 위치하고 , '단항 _접미사 (suffix)_ 연산자' 는 (`c!` 처럼) 대상 바로 뒤에 위치합니다.
-* _이항 (Binary)_ 연산자는 (`2 + 3` 처럼) 두 대상에 작용하며, 두 대상 사이에 위치하므로 _infix (중위))_ 라고 합니다. [^infix]
-* _삼항 (Ternary)_ 연산자는 세 개의 대상에 작용합니다. C 언어 처럼, 스위프트도 삼항 연산자는 한 개 뿐인데, 이는 '삼항 조건 연산자 (`a ? b : c`)' 입니다.
+* _단항 (Unary)_ 연산자는 (`-a` 처럼) 단일 대상에 작용합니다. '단항 _접두사 (prefix)_ 연산자' 는 (`!b` 처럼) 대상 바로 앞에 위치하며 , '단항 _접미사 (suffix)_ 연산자' 는 (`c!` 처럼) 대상 바로 뒤에 위치합니다.
+* _이항 (Binary)_ 연산자는 (`2 + 3` 처럼) 두 개의 대상에 작용하며, 두 대상 사이에 위치하기 때문에 _infix (중위))_[^infix] 라고도 합니다.
+* _삼항 (Ternary)_ 연산자는 세 개의 대상에 작용합니다. C 와 같이, 스위프트도, '삼항 조건 연산자 (`a ? b : c`)' 라는, 단 한 개의 삼항 연산자만을 가지고 있습니다.
 
-연산자가 영향을 주는 값을 _피연산자 (operands)_ 라고 합니다. `1 + 2` 라는 식이 있을 때, `+` 기호는 '이항 연산자' 이고, 이것의 피연산자 두 개는 값 `1` 과 값 `2` 입니다.
+연산자와 작용하는 값을 _피연산자 (operands)_ 라고 합니다. 표현식 `1 + 2` 에서, `+` 기호는 '이항 연산자' 이며 이의 두 '피연산자' 는 값 `1` 과 `2` 입니다.
 
 ### Assignment Operator (할당 연산자)
 
-_할당 연산자 (assignment operator)_ (`a = b`) 는 `a` 의 값을 `b` 의 값으로 초기화하거나 갱신 (update) 합니다:
+_할당 연산자 (assignment operator)_ (`a = b`) 는 `a` 의 값을 `b` 의 값으로 초기화하거나 '갱신 (update)' 합니다:
 
 ```swift
 let b = 10
 var a = 5
 a = b
-// a 는 이제 10 과 같습니다.
+// a 는 이제 10 입니다.
 ```
 
-할당할 때 오른쪽이 '튜플 (tuple)' 이라 여러 값을 가지고 있을 경우, 그 요소들을 한번에 여러 개의 상수나 변수로 분해할 수 있습니다:
+할당의 오른쪽이 '다중 (multiple) 값' 을 가진 '튜플' 이면, 원소들을 한 번에 다중 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 let (x, y) = (1, 2)
-// x 는 1 과 같고, y 는 2 와 같아집니다.
+// x 는 1 이고, y 는 2 입니다.
 ```
 
-C 언어나 오브젝티브-C 언어의 할당 연산자와는 다르게, 스위프트의 할당 연산자는 스스로 값을 반환하지 않습니다. 즉, 아래의 구문은 유효하지 않습니다:
+C 와 오브젝티브-C 의 할당 연산자와는 달리, 스위프트의 할당 연산자는 스스로 값을 반환하지 않습니다. 아래 구문은 유효하지 않습니다:
 
 ```swift
 if x = y {
-    // 이것은 유효하지 않는데, x = y 는 값을 반환하지 않기 때문입니다.
+  // x = y 가 값을 반환하지 않기 때문에, 유효하지 않습니다.
 }
 ```
 
-이러한 특징은 실제로는 '같음 연산자 (`==`)' 를 쓰려고 했는데 우연히 '할당 연산자 (`=`)' 를 써버리는 것을 막아줍니다. `if x = y` 를 유효하지 않게 만드는 것으로써, 스위프트는 코드에서 이런 종류의 에러를 피하도록 해줍니다.
+이런 특징은 실제로는 '같음 연산자 (`==`)' 를 의도한 것인데 우연히 '할당 연산자 (`=`)' 가 사용되는 것을 막아줍니다. `if x = y` 를 무효하게 만듦으로써, 스위프트는 이런 종류의 에러를 피하도록 도와줍니다.
 
 ### Arithmetic Operators (산술 연산자)
 
-스위프트는 모든 수치 타입에 대해 다음의 네 가지 표준 _산술 연산자 (arithmetic operators)_ 를 지원합니다:
+스위프트는 모든 수치 타입에 대해서 네 개의 표준 _산술 연산자 (arithmetic operators)_ 를 지원합니다:
 
 * 더하기 (`+`)
 * 빼기 (`-`)
@@ -72,12 +72,12 @@ if x = y {
 10.0 / 2.5  // 4.0 과 같습니다.
 ```
 
-C 언어나 오브젝티브-C 언어의 산술 연산자와는 다르게, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침을 허용하려면 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하면 됩니다. (`a &+ b` 같은 것이 있습니다.) 이에 대해서는 [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 를 보도록 합니다.
+C 와 오브젝티브-C 의 산술 연산자와는 달리, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침 작동 방식은 (`a &+ b` 같은) 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하여 직접 선택할 수 있습니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 를 참고하기 바랍니다.
 
-'더하기 연산자 (addition operator)' 로는 `String` 을 연결할 수도 있습니다:
+'더하기 (addition) 연산자' 는 '`String` 이어붙이기 (concatenation)' 도 지원합니다:
 
 ```swift
-"hello, " + "world"  // "hello, world" 와 같아집니다.
+"hello, " + "world"  // "hello, world" 와 같습니다.
 ```
 
 #### Remainder Operator (나머지 연산자)
@@ -488,3 +488,5 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 [^short-circuit]: 'short-circuit evaluation (단락-회로 계산)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 'short-circuit (단락-회로)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 'minimal evaluation (최소 계산)' 이라는 말도 사용하는 것 같습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 항목에 대한 번역은 아직 없는 것 같습니다.)
 
 [^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity (연산자 결합성)](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
+
+[^infix]: 'infix는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대해서는 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
