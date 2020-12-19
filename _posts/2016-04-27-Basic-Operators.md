@@ -6,61 +6,59 @@ date:   2016-04-27 10:00:00 +0900
 categories: Swift Language Grammar Basic Operators
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 부분[^Basic-Operators]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 부분[^The-Basics]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Basic Operators (기본 연산자)
 
-_연산자 (operator)_ 는 값을 검사하고, 바꾸거나, 또는 조합하기 위해 사용하는 특수한 기호나 구절입니다. 예를 들어, '더하기 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 개의 불리언 (Boolean) 값을 조합합니다.
+_연산자 (operator)_ 는 값을 검사하거나, 바꾸고, 아니면 조합하는데 사용하는 특수한 '기호 (symbol)' 나 '구절 (phrase)' 입니다. 예를 들어, '더하기 (addition) 연산자 (`+`)' 는, `let i = 1 + 2` 에서 처럼, 두 수를 더하고, '논리 곱 (logical AND) 연산자 (`&&`)' 는, `if enterDoorCode && passedRetinaScan` 에서 처럼, 두 '불리언 (Boolean)' 값을 조합합니다.
 
-스위프트는 C 언어 등을 통해 이미 알고 있을 법한 연산자를 지원하면서, 공통된 코딩 에러를 없애기 위해 보유 능력 몇가지를 개선했습니다. '할당 연산자 (`=`)' 는, '같음 연산자 (`==`)' 를 의도한 곳에서 실수로 사용되는 것을 막을 수 있게, 값을 반환하지 않습니다. 산술 연산자 (`+`,`-`, `*`, `/`, `%` 등) 은, 타입이 저장할 수 있는 허용 범위보다 커지거나 작아진 값과 작업할 때의 예상치 못한 결과를 피할 수 있도록, '값 넘침 (value overflow)' 을 감지해서 이를 불허합니다. '값 넘침' 작동 방식을 선택하려면, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명하는 것처럼, 스위프트의 'overflow (값 넘침) 연산자' 를 사용하면 됩니다.
+스위프트는 C 등의 언어를 통해 이미 알고 있을 연산자를 지원하며, 공통된 코딩 에러를 없애기 위해 보유 능력 몇 가지를 개선했습니다. '할당 (assignment) 연산자 (`=`)' 는, '같음 (equal to) 연산자 (`==`)' 를 의도했는데 실수로 사용되는 것을 막기 위해, 값을 반환하지 않습니다. '산술 (arithmetic) 연산자 (`+`,`-`, `*`, `/`, `%` 등등)' 은, 이를 저장하는 타입의 허용 범위보다 크거나 작아진 값과 작업할 때의 예기치 않은 결과를 피하기 위해, '값 넘침 (value overflow)' 을 감지하고 이를 불허합니다. '값 넘침' 동작은, [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명한 것처럼, 스위프트의 '값 넘침 (overflow) 연산자' 를 사용함으로써 직접 선택할 수 있습니다.
 
-스위프트는 C 언어에는 없는, 값의 범위를 표현하는 '단축키 (shortcut)' 로, `a..<b` 와 `a...b` 같은, '범위 (range) 연산자' 도 제공합니다.
+스위프트는 C 에는 없는 '범위 (range) 연산자' 도 제공하는데, 값의 범위를 표현하기 위한 '단축 형태 (shortcut)' 인, `a..<b` 와 `a...b` 등이 있습니다.
 
-이번 장은 스위프트의 일반적인 연산자에 대해 설명합니다. [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 스위프트의 고급 연산자를 다루며, 이 때 사용자 정의 연산자를 정의하는 방법과 자신의 사용자 정의 타입에 대한 표준 연산자 구현 방법을 설명합니다.
+이 장은 스위프트의 일반적인 연산자를 설명합니다. [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 는 스위프트의 고급 연산자를 다루고, 자신만의 연산자를 정의하는 방법과 자신만의 타입을 위한 표준 연산자를 구현하는 방법도 설명합니다.
 
 ### Terminology (용어)
 
-연산자에는 단항, 이항, 삼항 연산자가 있습니다:
+연산자는 '단항 (unary)', '이항 (binary)', 또는 '삼항 (ternary)' 입니다:
 
-* _단항 (Unary)_ 연산자는 (`-a` 처럼) 단일 대상에 작용합니다. '단항 _접두사 (prefix)_ 연산자' 는 (`!b` 처럼) 대상의 바로 앞에 위치하고 , '단항 _접미사 (suffix)_ 연산자' 는 (`c!` 처럼) 대상 바로 뒤에 위치합니다.
-* _이항 (Binary)_ 연산자는 (`2 + 3` 처럼) 두 대상에 작용하며, 두 대상 사이에 위치하므로 _infix (중위))_ 라고 합니다. [^infix]
-* _삼항 (Ternary)_ 연산자는 세 개의 대상에 작용합니다. C 언어 처럼, 스위프트도 삼항 연산자는 한 개 뿐인데, 이는 '삼항 조건 연산자 (`a ? b : c`)' 입니다.
+* _단항 (Unary)_ 연산자는 (`-a` 처럼) 단일 대상에 작용합니다. '단항 _접두사 (prefix)_ 연산자' 는 (`!b` 처럼) 대상 바로 앞에 위치하며 , '단항 _접미사 (suffix)_ 연산자' 는 (`c!` 처럼) 대상 바로 뒤에 위치합니다.
+* _이항 (Binary)_ 연산자는 (`2 + 3` 처럼) 두 개의 대상에 작용하며, 두 대상 사이에 위치하기 때문에 _infix (중위))_[^infix] 라고도 합니다.
+* _삼항 (Ternary)_ 연산자는 세 개의 대상에 작용합니다. C 와 같이, 스위프트도, '삼항 조건 연산자 (`a ? b : c`)' 라는, 단 한 개의 삼항 연산자만을 가지고 있습니다.
 
-연산자가 영향을 주는 값을 _피연산자 (operands)_ 라고 합니다. `1 + 2` 라는 식이 있을 때, `+` 기호는 '이항 연산자' 이고, 이것의 피연산자 두 개는 값 `1` 과 값 `2` 입니다.
+연산자와 작용하는 값을 _피연산자 (operands)_ 라고 합니다. 표현식 `1 + 2` 에서, `+` 기호는 '이항 연산자' 이며 이의 두 '피연산자' 는 값 `1` 과 `2` 입니다.
 
 ### Assignment Operator (할당 연산자)
 
-_할당 연산자 (assignment operator)_ (`a = b`) 는 `a` 의 값을 `b` 의 값으로 초기화하거나 갱신 (update) 합니다:
+_할당 연산자 (assignment operator)_ (`a = b`) 는 `a` 의 값을 `b` 의 값으로 초기화하거나 '갱신 (update)' 합니다:
 
 ```swift
 let b = 10
 var a = 5
 a = b
-// a 는 이제 10 과 같습니다.
+// a 는 이제 10 입니다.
 ```
 
-할당할 때 오른쪽이 '튜플 (tuple)' 이라 여러 값을 가지고 있을 경우, 그 요소들을 한번에 여러 개의 상수나 변수로 분해할 수 있습니다:
+할당의 오른쪽이 '다중 (multiple) 값' 을 가진 '튜플' 이면, 원소들을 한 번에 다중 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 let (x, y) = (1, 2)
-// x 는 1 과 같고, y 는 2 와 같아집니다.
+// x 는 1 이고, y 는 2 입니다.
 ```
 
-C 언어나 오브젝티브-C 언어의 할당 연산자와는 다르게, 스위프트의 할당 연산자는 스스로 값을 반환하지 않습니다. 즉, 아래의 구문은 유효하지 않습니다:
+C 와 오브젝티브-C 의 할당 연산자와는 달리, 스위프트의 할당 연산자는 스스로 값을 반환하지 않습니다. 아래 구문은 유효하지 않습니다:
 
 ```swift
 if x = y {
-    // 이것은 유효하지 않는데, x = y 는 값을 반환하지 않기 때문입니다.
+  // x = y 가 값을 반환하지 않기 때문에, 유효하지 않습니다.
 }
 ```
 
-이러한 특징은 실제로는 '같음 연산자 (`==`)' 를 쓰려고 했는데 우연히 '할당 연산자 (`=`)' 를 써버리는 것을 막아줍니다. `if x = y` 를 유효하지 않게 만드는 것으로써, 스위프트는 코드에서 이런 종류의 에러를 피하도록 해줍니다.
+이런 특징은 실제로는 '같음 연산자 (`==`)' 를 의도한 것인데 우연히 '할당 연산자 (`=`)' 가 사용되는 것을 막아줍니다. `if x = y` 를 무효하게 만듦으로써, 스위프트는 이런 종류의 에러를 피하도록 도와줍니다.
 
 ### Arithmetic Operators (산술 연산자)
 
-스위프트는 모든 수치 타입에 대해 다음의 네 가지 표준 _산술 연산자 (arithmetic operators)_ 를 지원합니다:
+스위프트는 모든 수치 타입에 대해서 네 개의 표준 _산술 연산자 (arithmetic operators)_ 를 지원합니다:
 
 * 더하기 (`+`)
 * 빼기 (`-`)
@@ -74,133 +72,133 @@ if x = y {
 10.0 / 2.5  // 4.0 과 같습니다.
 ```
 
-C 언어나 오브젝티브-C 언어의 산술 연산자와는 다르게, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침을 허용하려면 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하면 됩니다. (`a &+ b` 같은 것이 있습니다.) 이에 대해서는 [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 를 보도록 합니다.
+C 와 오브젝티브-C 의 산술 연산자와는 달리, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침 작동 방식은 (`a &+ b` 같은) 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하여 직접 선택할 수 있습니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 를 참고하기 바랍니다.
 
-'더하기 연산자 (addition operator)' 로는 `String` 을 연결할 수도 있습니다:
+'더하기 (addition) 연산자' 는 '`String` 이어붙이기 (concatenation)' 도 지원합니다:
 
 ```swift
-"hello, " + "world"  // "hello, world" 와 같아집니다.
+"hello, " + "world"  // "hello, world" 와 같습니다.
 ```
 
 #### Remainder Operator (나머지 연산자)
 
-_나머지 연산자 (remainder operator)_ (`a % b`) 는 `a` 안을 `b` 의 배수로 채운 다음에 그래도 남는 값을 반환합니다. (이를 _나머지 (remainder)_ 라고 합니다.)
+_나머지 연산자 (remainder operator)_ (`a % b`) 는 `a` 를 `b` 배수 몇 개로 채울지 알아낸 다음 (_나머지 (remainder)_ 라고 하는) 남아 있는 값을 반환합니다.
 
-> 다른 언어에서는 '나머지 연산자 (remainder operator)' (`%`) 를 '_모듈러 연산자 (modulo operator)_' 라고도 합니다. 하지만, 음수에 대한 연산 방식을 보면, 스위프트에서는 엄밀히 말해서, _모듈러 연산 (modulo operation)_[^modulo-opartion] 이라기 보다는 나머지라고 하는 것이 맞습니다.
+> '나머지 연산자 (remainder operator; `%`)' 를 다른 언어에서는 '_모듈러 연산자 (modulo operator)_' 라고도 합니다. 하지만, 스위프트에서 음수에 대한 작동 방식은, 엄밀히 말해서, '모듈러 연산 (modulo operation)'[^modulo-opartion] 이 아니라 나머지가 맞습니다.
 
-이제 '나머지 연산자' 의 작동 방식을 알아봅시다. `9 % 4` 를 계산하면, 일단 `4` 의 배수로 `9` 를 채웁니다:
+다음은 '나머지 연산자' 가 작동하는 방식입니다. `9 % 4` 를 계산하기 위해, 먼저 `9` 를 몇 개의 `4` 로 채울지 알아냅니다:
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Basic-Operators-remainder-operator-works.jpg)
 
-`4` 2 개로 `9` 를 채우고 나면, 나머지는 `1` 이 됩니다. (주황색 부분입니다.)
+두 개의 `4` 로 `9` 를 채울 수 있으며, 나머지는 (주황색으로 나타낸) `1` 입니다.
 
-스위프트로는, 이를 다음 처럼 작성합니다:
+스위프트에서, 이는 다음처럼 작성합니다:
 
 ```
 9 % 4    // 1 과 같습니다.
 ```
 
-`a % b` 의 답을 결정하기 위해, '`%` 연산자' 는 다음 식을 계산한 후 그 결과로 `remainder` 를 반환합니다:
+`a % b` 에 대한 답을 결정하기 위해, `%` 연산자는 다음 식을 계산하며 결과로 `remainder` 를 반환합니다:
 
 `a` = (`b` x `some multiplier`) + `remainder`
 
-여기서 `some multiplier` 는 `a` 내부를 채울 수 있는 `b` 의 가장 큰 배수입니다.
+여기서 `some multiplier` 는 `a` 내부를 채울 `b` 의 가장 큰 배수입니다.
 
-`9` 와 `4` 를 넣으면 다음 식이 도출됩니다:
+식에 `9` 와 `4` 를 넣으면 다음 결과가 나옵니다:
 
 `9` = (`4` x `2`) + `1`
 
-같은 방법으로 `a` 가 음수일 때도 나머지를 계산할 수 있습니다:
+음수인 `a` 에 대하여 나머지를 계산할 때도 같은 방법을 적용합니다:
 
 ```
 -9 % 4   // -1 과 같습니다.
 ```
 
-`9` 와 `4` 를 넣으면 다음 식이 도출됩니다:
+식에 `-9` 와 `4` 를 넣으면 다음 결과가 나옵니다:
 
 `-9` = (`4` x `-2`) + `-1`
 
-주어진 식의 나머지 값은 `-1` 입니다.
+나머지 값으로 `-1` 을 줍니다.
 
-여기서 `b` 가 음수 값일 때라도 `b` 의 부호를 무시합니다. 이는 `a % b` 와 `a % -b` 의 답이 항상 같다는 것을 의미합니다.
+`b` 가 음수일 땐 `b` 의 부호를 무시합니다. 이는 `a % b` 와 `a % -b` 가 항상 똑같은 답을 준다는 의미입니다.
 
 #### Unary Minus Operator (단항 음수 연산자)
 
-수치 값의 부호를 전환하려면 접두사 `-` 를 붙이며, 이를 '_단항 음수 연산자 (unary minus operator)_' 라고 합니다.
+수치 값의 부호는, _단항 음수 연산자 (unary minus operator)_ 라는, `-` 접두사를 사용하여, '전환할 (toggled)' 수 있습니다:
 
 ```swift
 let three = 3
 let minusThree = -three       // minusThree 는 -3 과 같습니다.
-let plusThree = -minusThree   // plusThree 는 3 과 같으며, "minus minus three" 라고도 합니다.
+let plusThree = -minusThree   // plusThree 는 3 또는, "minus minus three" 와 같습니다.
 ```
 
-'단항 음수 연산자 (`-`)' 는 빈 공백없이 연산될 값 바로 앞에 위치합니다.
+'단항 음수 연산자 (`-`)' 는, 어떤 공백도 없이, 작용하는 값 바로 앞에 붙입니다.
 
 #### Unary Plus Operator (단항 양수 연산자)
 
-'_단항 양수 연산자 (unary plus operator)_' (`+`) 는 단순히 연산 값을 그대로 반환하며, 어떤 변경도 하지 않습니다:
+_단항 양수 연산자_ (_unary plus operator;_ `+`) 는, 어떤 바뀜도 없이, 작용하는 값을 단순히 반환합니다:
 
 ```swift
 let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같습니다.
 ```
 
-'단항 양수 연산자' 가 실제로 하는 일은 없지만, 이것을 양수에 사용하면 '단항 음수 연산자' 로 표현한 음수와 나란하게 코드를 배치할 수 있습니다.
+비록 '단항 양수 연산자' 는 실제로 아무 것도 하지 않지만, 음수에 '단항 음수 연산자' 를 사용하고 있을 때 양수에 이를 사용하면 코드에 '대칭성 (symmetry)' 을 제공할 수 있습니다.
 
 ### Compound Assignment Operators (복합 할당 연산자)
 
-C 언어처럼, 스위프트는 _복합 할당 연산자 (compound assignment operators)_ 를 제공하며 이는 '할당 연산 (`=`)' 을 다른 연산과 결합합니다. 한 가지 예로는 '더하기 할당 연산자 (addition assignment operator)' (`+=`)  가 있습니다:
+C 와 같이, 스위프트는 '할당 연산 (`=`)' 을 다른 연산과 조합한 _복합 할당 연산자 (compound assignment operators)_ 를 제공합니다. 한 가지 예는 '더하기 할당 연산자 (addition assignment operator; `+=`)' 입니다:
 
 ```swift
 var a = 1
 a += 2
-// a 는  3 과 같습니다.
+// a 는 이제 3 입니다
 ```
 
-표현식 `a += 2` 는 `a = a + 2` 의 약칭입니다. 효과적으로, 더하기와 할당 연산을 하나의 연산자로 결합하여 한번에 두 작업을 동시에 수행합니다.
+표현식 `a += 2` 는 `a = a + 2` 를 '줄인 표현 (shorthand)' 입니다. 사실상, 더하기와 할당을 한 연산자로 조합하여 두 작업을 동시에 수행합니다.
 
-> '복합 할당 연산자' 는 값을 반환하지 않습니다. 예를 들어 `let b = a += 2` 라고 작성할 수 없습니다.
+> '복합 할당 연산자' 는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 처럼 작성할 수 없습니다.
 
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는 [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 보기 바랍니다.
+스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 을 참고하기 바랍니다.
 
 ### Comparison Operators (비교 연산자)
 
-스위프트는 C 언어에 있는 모든 표준 _비교 연산자 (comparison operators)_ 를 지원합니다:
+스위프트는 다음의 _비교 연산자 (comparison operators)_ 를 지원합니다:
 
-* 같음 (`a == b`) - 등호
-* 같지 않음 (`a != b`) - 부등호
-* 보다 큼 (`a > b`)
-* 보다 작음 (`a < b`)
-* 크거나 같음 (`a >= b`)
-* 작거나 같음 (`a <= b`)
+* 같음 (equal to; `a == b`)
+* 같지 않음 (not equal to; `a != b`)
+* 보다 큼 (greater than; `a > b`)
+* 보다 작음 (less than; `a < b`)
+* 크거나 같음 (greater than or equal to; `a >= b`)
+* 작거나 같음 (less than or equal to; `a <= b`)
 
-> 스위프트는 두 개의 '_식별 연산자 (identity operators)_' (`===` 와 `!==`) 도 제공하여, 두 객체에 대한 참조 모두 동일한 객체 인스턴스를 참조하고 있는지를 검사할 수 있습니다. 더 자세한 내용은 [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 를 보기 바랍니다.
+> 스위프트는 두 개의 '_식별 연산자 (identity operators)_' (`===` 와 `!==`) 도 제공하는데, 이는 두 개의 객체 참조 모두 똑같은 객체 인스턴스를 참조하는 지를 검사하는데 사용합니다. 더 자세한 정보는, [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 를 참고하기 바랍니다.
 
-각각의 '비교 연산자' 는 `Bool` 값을 반환하여 그 구문이 참인지 아닌지를 나타냅니다:
+각 '비교 연산자' 는 구문이 '참 (true)' 인지의 여부를 나타내기 위해 `Bool` 값을 반환합니다:
 
 ```swift
-1 == 1   // true (참), 1 은 1 과 같기 때문입니다.
-2 != 1   // true (참), 2 는 1 과 같지 않기 때문입니다.
-2 > 1    // true (참b, 2 는 1 보다 크기 때문입니다.
-1 < 2    // true (참), 1 은 2 보다 작기 때문입니다.
-1 >= 1   // true (참), 1 은 1 보다 크거가 같기 때문입니다.
-2 <= 1   // false (거짓), 2 는 1 보다 작거나 같지 않기 때문입니다.
+1 == 1   // 참 (true), 1 은 1 과 같기 때문입니다.
+2 != 1   // 참 (true), 2 는 1 과 같지 않기 때문입니다.
+2 > 1    // 참 (true), 2 는 1 보다 크기 때문입니다.
+1 < 2    // 참 (true), 1 은 2 보다 작기 때문입니다.
+1 >= 1   // 참 (true), 1 은 1 보다 크거가 같기 때문입니다.
+2 <= 1   // 거짓 (false), 2 는 1 보다 작거나 같지 않기 때문입니다.
 ```
 
-비교 연산자 주로 '조건 구문 (conditional statements)' 에서 사용되며, 여기에는 `if` 구문 등이 있습니다:
+비교 연산자는 종종, `if` 문 같은, '조건문 (conditional statements)' 에서 사용됩니다:
 
 ```swift
 let name = "world"
 if name == "world" {
-    print("hello, world")
+  print("hello, world")
 } else {
-    print("I'm sorry \(name), but I don't recognize you")
+  print("I'm sorry \(name), but I don't recognize you")
 }
-// "hello, world" 를 출력합니다. name 이 진짜 "world" 와 같기 때문입니다.
+// "hello, world" 를 인쇄하는데, 이는 name 이 진짜로 "world" 와 같기 때문입니다.
 ```
 
-`if` 구문에 대해서는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 보기 바랍니다.
+`if` 구문에 대한 더 많은 내용은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 참고하기 바랍니다.
 
 두 개의 '튜플 (tuples)' 이 같은 타입에 같은 개수의 값을 가지고 있으면 서로 비교할 수 있습니다. 튜플을 비교할 때는 왼쪽에서 오른쪽으로, 한번에 한 값씩, 두 값이 같지 않을 때까지 비교합니다. 두 값을 비교하면, 이 비교의 결과가 튜플 비교 연산의 전체 결과를 결정합니다. 모든 요소가 같으면, 튜플 자체가 같은 것입니다. 예를 들면 다음과 같습니다:
 
@@ -485,8 +483,12 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^modulo-opartion]: 'modulo operation' 은 수학적으로 엄밀한 '나머지 연산' 과 연관되어 있는 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 글을 참고하기 바랍니다. 이와 연관된 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
+[^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 수학적으로 엄밀한 '나머지 연산' 과 연관있는 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 참고하기 바랍니다. 이에 대한 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
 
 [^short-circuit]: 'short-circuit evaluation (단락-회로 계산)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 'short-circuit (단락-회로)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 'minimal evaluation (최소 계산)' 이라는 말도 사용하는 것 같습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 항목에 대한 번역은 아직 없는 것 같습니다.)
 
 [^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity (연산자 결합성)](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
+
+[^infix]: 'infix는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대해서는 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
+
+[^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
