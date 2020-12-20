@@ -260,40 +260,40 @@ if hasHeader {
 
 첫 번째 예제에서 '삼항 조건 연산자' 를 사용한 건, 단 한 줄의 코드로도 `rowHeight` 에 올바른 값을 설정할 수 있음을 의미하며, 이는 두 번째 예제에서 사용한 코드보다 더 간결합니다.
 
-삼항 조건 연산자는 두 표현식 중에서 검토할 것을 고르는데 효율적인 '줄임 표현 (shorthand)' 을 제공합니다. 하지만, 삼항 조건 연산자를 주의해서 사용하기 바랍니다. 간결하다고 너무 남용하면 이해하기-어려운 코드를 만들게 됩니다. 다중 삼항 조건 연산자를 하나의 복합 구문으로 조합하는 것은 피하도록 합니다.
+삼항 조건 연산자는 두 표현식 중에서 검토할 것을 고르는데 효율적인 '줄임 표현 (shorthand)' 을 제공합니다. 하지만, 삼항 조건 연산자를 주의해서 사용하기 바랍니다. 간결하다고 너무 남용하면 이해하기-어려운 코드를 만들게 됩니다. 다중 삼항 조건 연산자를 하나의 복합 구문으로 조합하는 것은 피하도록 합니다
 
 ### Nil-Coalescing Operator (Nil-통합 연산자)
 
-_nil-통합 연산자 (nil-coalescing operator)_ (`a ?? b`) 는 옵셔널 `a` 에 값이 있으면 `a` 를 풀고, `a` 가 `nil` 이면 기본 설정 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입이어야 합니다. 표현식 `b` 는 반드시 `a` 에 저장된 것과 타입이 일치해야 합니다.
+_nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` 가 값을 담고 있으면 포장을 풀고, `a` 가 `nil` 이면 기본 설정 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 에 저장된 것과 타입이 일치해야 합니다.
 
-'nil-통합 연산자 (nil-coalescing operator) 는 아래 코드의 약칭에 해당합니다:
+'nil-통합 연산자' 는 아래 코드의 '줄임 표현 (shorthand)' 입니다:
 
 ```swift
 a != nil ? a! : b
 ```
 
-위의 코드는 '삼항 조건 연산자' 와 '강제 포장 풀기 (forced unwrapping; `a!`)' 를 사용하여 `a` 가 `nil` 이 아니면 `a` 안에 쌓여진 값에 접근하고, 그 외의 경우면 `b` 를 반환합니다. 이와 같이 'nil-통합 연산자' 가 제공하는 우아한 방법을 사용하면 조건 검사와 풀기 연산을 간결하고 이해하기 쉬운 양식으로 작성할 수 있습니다.
+위 코드는 '삼항 조건 연산자' 와 '강제 포장 풀기 (forced unwrapping; `a!`)' 를 사용하여 `a` 가 `nil` 이 아닐 땐 `a` 안에 포장된 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-통합 연산자' 는 간결하고 이해하기 쉬운 형식 속에 이런 조건 검사와 포장 풀기를 은닉하는 더 우아한 방법을 제공합니다.
 
-> `a` 의 값이 `nil` 이 아닐 경우, `b` 의 값을-계산하는 일은 일어나지 않습니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
+> `a` 의 값이 `nil` 이 아니면, `b` 의 값은 평가하지 않습니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
 
-아래 예제는 'nil-통합 연산자' 를 사용하여 '기본 색상 이름' 과 '사용자가 정의한 옵셔널 색상 이름' 중 하나를 선택합니다:
+아래 예제는 기본 색상 이름' 과 '사용자가-정의한 옵셔널 색상 이름' 중 하나를 선택하기 위해 'nil-통합 연산자' 를 사용합니다:
 
 ```swift
 let defaultColorName = "red"
-var userDefinedColorName: String?   // 기본으로 nil 이 됩니다.
+var userDefinedColorName: String?   // 기본 값은 nil 입니다.
 
 var colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 설정 값인 "red" 입니다.
+// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 설정 값인 "red" 로 설정됩니다.
 ```
 
-`userDefinedColorName` 변수는 옵셔널 `String` 으로 정의되었으며, 기본 설정 값은 `nil` 입니다. `userDefinedColorName` 이 옵셔널 타입이므로, 해당 값에 `nil-통합 연산자` 를 적용할 수 있습니다. 위 예에서는, 이 연산자를 사용하여 `colorNameToUse` 라는 `String` 변수의 기본 설정 값을 결정합니다. `userDefinedColorName` 이 `nil` 이기 때문에, 표현식 `userDefinedColorName ?? defaultColorName` 은 `defaultColorName` 의 값을 반환하며, 이는 `"red"` 입니다.
+`userDefinedColorName` 변수는, 기본 설정 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
 
-만약 '`nil` 이 아닌 값' 을 `userDefinedColorName` 에 할당한 다음에 'nil-통합 연산자 (nil-coalescing operator)' 검사를 다시 수행하면, 기본 설정 값 대신 `userDefinedColorName` 로 감싼 값을 사용합니다:
+만약 `nil` 이 아닌 값을 `userDefinedColorName` 에 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 설정 값 대신 `userDefinedColorName` 안에 포장된 값을 사용합니다:
 
 ```swift
 userDefinedColorName = "green"
 colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이 아니므로, colorNameToUse 는 "green" 으로 설정됩니다.
+// userDefinedColorName 이 nil 이 아니므로, colorNameToUse 를 "green" 으로 설정합니다.
 ```
 
 ### Range Operators (범위 연산자)
