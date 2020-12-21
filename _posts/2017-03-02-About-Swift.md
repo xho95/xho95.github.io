@@ -29,6 +29,8 @@ categories: Swift Language Grammar About
 
 스위프트는 수 년간 다듬어져 왔으며, 새로운 특징과 보유 능력을 가지고 계속 진화하고 있습니다. 스위프트에 대한 우리의 목표는 원대합니다. 여러분들이 이것으로 무엇을 만들지 정말 정말 기대됩니다.
 
+### 다음 장
+
 [Version Compatibility (버전 호환성) >]({% post_url 2020-03-15-Version-Compatibility %})
 
 ### 참고 자료

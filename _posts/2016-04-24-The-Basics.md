@@ -755,6 +755,8 @@ precondition(index > 0, "Index must be greater than zero.")
 >
 > `fatalError(_:file:line:)` 함수는 프로토타입 및 초기 개발 동안에, 땜빵 구현처럼 `fatalError("Unimplemented")` 을 작성함으로써, 아직 구현하지 않는 기능에 대한 땜빵을 생성하기 위해 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 절대 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 땜빵 구현과 마주치면 실행이 항상 중단될 거라고 확신할 수 있습니다.
 
+### 다음 장
+
 [Basic Operators (기본 연산자) > ]({% post_url 2016-04-27-Basic-Operators %})
 
 ### 참고 자료
