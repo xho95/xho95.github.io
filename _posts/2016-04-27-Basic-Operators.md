@@ -389,7 +389,7 @@ _논리 연산자 (logical operators)_ 는 '불리언 논리 (Boolean logic) 값
 
 '_논리 부정 연산자_ (_logical NOT operator;_ `!a`)' 는 '불리언 (Boolean)' 값을 거꾸로 만들어서 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
 
-'논리 부정 (logical NOT) 연산자' 는, 어떠한 공백도 없이, 연산 값 바로 앞에 붙이는, '접두사 (prefix) 연산자' 입니다. 이는, 다음 예제에서 보인 것처럼, “`a` 가 아닌 것 (not `a`)” 으로 이해할 수 있습니다:
+'논리 부정 (logical NOT) 연산자' 는, 어떠한 공백도 없이, 작용할 값 바로 앞에 붙이는, '접두사 (prefix) 연산자' 입니다. 이는, 다음 예제에서 보인 것처럼, “`a` 가 아닌 것 (not `a`)” 으로 이해할 수 있습니다:
 
 ```swift
 let allowedEntry = false
@@ -441,41 +441,41 @@ if hasDoorKey || knowsOverridePassword {
 // "Welcome!" 을 인쇄합니다.
 ```
 
-#### Combining Logical Operators (논리 연산자 결합하기)
+#### Combining Logical Operators (논리 연산자 조합하기)
 
-여러 개의 논리 연산자를 결합하여 더 긴 '복합 표현식 (compound expressions)' 을 만들 수 있습니다:
+여러 논리 연산자를 조합하여 더 긴 '복합 표현식 (compound expressions)' 을 생성할 수 있습니다:
 
 ```swift
 if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
-    print("Welcome!")
+  print("Welcome!")
 } else {
-    print("ACCESS DENIED")
+  print("ACCESS DENIED")
 }
-// "Welcome!" 을 출력합니다.
+// "Welcome!" 을 인쇄합니다.
 ```
 
-이 예제에서는 여러 개의 `&&` 와 `||` 연산자를 써서 더 긴 '복합 표현식 (compound expressions)' 을 만들었습니다. 하지만, `&&` 와 `||` 연산자는 여전히 두 값에 대해서만 동작하므로, 실제로는 세 개의 작은 식이 서로 줄줄이 이어져 있는 형태입니다. 이 예제는 다음과 같이 이해할 수 있습니다:
+이 예제는 더 긴 '복합 표현식' 을 생성하기 위해 여러 개의 `&&` 와 `||` 연산자를 사용합니다. 하지만, `&&` 와 `||` 연산자는 여전히 두 값에만 작용하므로, 이는 실제로 세 개의 작은 표현식이 서로 '연쇄되어 있는 (chained)' 것입니다. 이 예제는 다음 처럼 이해할 수 있습니다:
 
-올바른 출입문 코드를 입력하고 망막 스캔을 통과했거나, 알맞은 출입문 키를 갖고 있거나, '비상시 수동해제 비밀번호 (emergency override password)' 를 알고 있는 경우라면, 접근을 허용합니다.
+올바른 출입문 코드를 입력했고 망막 스캔도 통과한 경우, 또는 유효한 출입문 키를 가진 경우, 아니면 '비상용 수동해제 비밀번호 (emergency override password)' 를 알고 있는 경우라면, 접근을 허용하기 바랍니다.
 
-`enterDoorCode`, `passedRetinaScan` 그리고 `hasDoorKey` 의 값에 의해서, 처음 두 개의 '하위표현식 (subexpressions)' 은 `false` 입니다. 하지만, '비상시 수동해제 비밀번호' 를 알고 있으므로, 전체 복합 표현식은 여전히 `true` 가 됩니다.
+`enterDoorCode`, `passedRetinaScan`, 그리고 `hasDoorKey` 의 값에 기초하면, 처음 두 '하위표현식 (subexpressions)' 은 `false` 입니다. 하지만, '비상용 수동해제 비밀번호' 를 알고 있으므로, 전체적인 복합 표현식은 여전히 `true` 로 평가됩니다.
 
-> 스위프트의 논리 연산자인 `&&` 와 `||` 는 '왼쪽 우선-결합 (left-associative)'[^left-associative] 으로, 이는 여러 개의 논리 연산자를 가지는 '복합 표현식' 이 있을 때 가장 왼쪽에 있는 '하위 표현식' 부터 먼저 계산한다는 의미입니다.
+> 스위프트 논리 연산자 `&&` 와 `||` 는 '왼쪽-결합 (left-associative)'[^left-associative] 인데, 이는 '다중 (multiple) 논리 연산자' 를 가진 '복합 표현식' 이 가장 왼쪽 '하위 표현식' 을 먼저 계산한다는 의미입니다.
 
-#### Explicit Parentheses (괄호 명시하기)
+#### Explicit Parentheses (명시적인 괄호)
 
-반드시 넣어야 하는 것은 아니지만, 그래도 '괄호 (parentheses)' 를 넣어주면, 복합한 표현식의 의도를 이해하기가 훨씬 쉬어집니다. 위에 있는 '출입문 접근' 예제에서도, '복합 표현식' 의 첫 부분에 괄호를 추가하면 그 의도를 더 명확하게 알 수 있게 됩니다:
+꼭 필요하진 않을 때라도, 복잡한 표현식의 의도를 이해하기 더 쉽도록, '괄호 (parentheses)' 를 포함시키는 것이 유용할 때가 있습니다. 위 '출입문 접근' 예제에서, 의도를 명시적으로 만들려면 복합 표현식의 첫 번째 부분에 괄호를 추가하는 것이 좋습니다:
 
 ```swift
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
-    print("Welcome!")
+  print("Welcome!")
 } else {
-    print("ACCESS DENIED")
+  print("ACCESS DENIED")
 }
-// "Welcome!" 를 출력합니다.
+// "Welcome!" 를 인쇄합니다.
 ```
 
-괄호를 사용하면 처음 두 값들이 전체 논리에서 별도로 검토할 수 있음을 분명하게 보여줍니다. 복합 표현식의 결과에는 전혀 영향이 없으면서도, 전체 의도를 이해하기는 훨씬 더 쉽습니다. 가독성을 간결함보다 더 우선하기 바랍니다; 괄호가 의도를 분명히 드러내는데 도움이 된다면 사용하는 것이 좋습니다.
+괄호는 처음 두 값이 전체적인 논리에서 '별도로 가능한 상태' 로 고려된다는 것을 명확하게 만듭니다. 복합 표현식의 출력은 바뀌지 않지만, 전체적인 의도는 더 명확해 집니다. '가독성 (readability)' 은 항상 '간결함 (brevity)' 보다 좋습니다; 의도를 명확하게 만드는데 도움이 될 때는 괄호를 사용하기 바랍니다.
 
 ### 참고 자료
 
@@ -487,7 +487,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 '최소 계산 (minimal evaluation)' 이라는 말도 사용하는 것 같은데, 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 이 항목에 대한 번역은 아직 없는 것 같습니다.)
 
-[^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity (연산자 결합성)](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
+[^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다. (위키피디아에 이 항목에 대한 번역은 아직 없는 것 같습니다.)
 
 [^infix]: 'infix는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대해서는 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
 
