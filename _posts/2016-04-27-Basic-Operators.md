@@ -379,66 +379,66 @@ range.contains(-1)  // true (참)
 
 ### Logical Operators (논리 연산자)
 
-_논리 연산자 (logical operators)_ 는 '불리언 논리 (Boolean logic)' 값인 `true` 와 `false` 를 수정하거나 결합합니다. 스위프트는 C-기반 언어가 제공하는 세 가지 표준 논리 연산자를 지원합니다:
+_논리 연산자 (logical operators)_ 는 '불리언 논리 (Boolean logic) 값' `true` 와 `false` 를 수정하거나 조합합니다. 스위프트는 'C-에 기초한 언어'[^c-based-languages] 에 있는 세 개의 표준 논리 연산자를 지원합니다:
 
-* Logical NOT '논리 부정' (`!a`)
-* Logical AND '논리 곱' (`a && b`)
-* Logical OR '논리 합' (`a || b`)
+* 논리 부정 (Logical NOT; `!a`)
+* 논리 곲 (Logical AND; `a && b`)
+* 논리 합 (Logical OR; `a || b`)
 
 #### Logical NOT Operator (논리 부정 연산자)
 
-_논리 부정 연산자 (logical NOT operator)_ (`!a`) 는 불리언 (Boolean) 값을 반전하므로 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
+'_논리 부정 연산자_ (_logical NOT operator;_ `!a`)' 는 '불리언 (Boolean)' 값을 거꾸로 만들어서 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
 
-'논리 부정 연산자' 는 '접두사 연산자 (prefix operator)' 라서, 연산할 값 바로 앞에 붙여주며, 공백이 있으면 안됩니다. “Not `a`” (`a` 가 아님) 이라고 읽으며, 아래에 예를 보였습니다:
+'논리 부정 (logical NOT) 연산자' 는, 어떠한 공백도 없이, 연산 값 바로 앞에 붙이는, '접두사 (prefix) 연산자' 입니다. 이는, 다음 예제에서 보인 것처럼, “`a` 가 아닌 것 (not `a`)” 으로 이해할 수 있습니다:
 
 ```swift
 let allowedEntry = false
 if !allowedEntry {
-    print("ACCESS DENIED")
+  print("ACCESS DENIED")
 }
-// "ACCESS DENIED" 를 출력합니다.
+// "ACCESS DENIED" 를 인쇄합니다.
 ```
 
-`if !allowedEntry` 구절은 "허가된 입장이 아니면 (if not allowed entry)" 으로 읽을 수 있습니다. 그 다음 행은 "허가된 입장이 아니면" 이 참일 때만 실행됩니다; 그것은 곧, `allowedEntry` 가 `false` 일 때입니다.
+`if !allowedEntry` 라는 구절은 "허가된 입장이 아닌 것이면 (if not allowed entry)" 으로 이해할 수 있습니다. 그 뒤에 이어지는 줄은 "허가된 입장이 아닌 것" 이 참일 때만 실행됩니다; 즉, `allowedEntry` 가 `false` 인 경우입니다.
 
-이 예제와 같이, 불리언 (Boolean) 상수와 변수의 이름을 정할 때는 주의 깊에 선택해야 코드를 이해하기 슆고 간결하게 만들 수 있으며, 이중 부정을 하거나 논리 구문을 혼동하는 것을 막을 수 있습니다.
+이 예제에 있는 것처럼, '불리언 (Boolean)' 상수와 변수의 이름은 조심해서 선택해야, 이중 부정이나 논리 구문의 혼동을 피하면서, 코드를 이해하기 쉽고 간결하게 유지할 수 있습니다.
 
 #### Logical AND Operator (논리 곱 연산자)
 
-_논리 곱 연산자 (logical AND operator)_ (`a && b`) 는 두 값이 모두 `true` (참) 일 때만 전체 표현식이 `true` (참) 이 되는 '논리 표현식 (logical expressions)' 을 생성합니다.
+'_논리 곱 연산자_ (_logical AND operator;_ `a && b`)' 는 두 값 모두 반드시 `true` 여야만 전체적인 표현식도 `true` 가 되는 '논리 표현식 (logical expressions)' 을 생성합니다.
 
-한 값이라도 `false` 면, 전체 표현식도 `false` 가 됩니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 두 번째 값은 계산조차 하지 않으며, 이는 그래봐야 전체 표현식을 `true` 로 만들 수가 없기 때문입니다. 이런 방식을 '단락-회로 계산 (short-circuit evaluation)'[^short-circuit] 이라고 합니다.
+어느 값이든 `false` 면, 전체적인 표현식도 `false` 가 될 것입니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 두 번째 값은 평가조차 하지 않을 것인데, 이는 아무리 해봐야 전체적인 표현식을 `true` 로 만들 수 없기 때문입니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_'[^short-circuit] 이라고 합니다.
 
-아래 예제는 두 `Bool` 값을 고려해서 두 값이 모두 `true` 일 때만 접근을 허용합니다:
+다음 예제는 두 개의 `Bool` 값을 고려하며 두 값 모두 `true` 일 때만 접근을 허용합니다:
 
 ```swift
 let enteredDoorCode = true
 let passedRetinaScan = false
 if enteredDoorCode && passedRetinaScan {
-    print("Welcome!")
+  print("Welcome!")
 } else {
-    print("ACCESS DENIED")
+  print("ACCESS DENIED")
 }
-// "ACCESS DENIED" 를 출력합니다.
+// "ACCESS DENIED" 를 인쇄합니다.
 ```
 
 #### Logical OR Operator (논리 합 연산자)
 
-_논리 합 연산자 (logical OR operator)_ (`a || b`) 는 두 '파이프 문자 (`|`)' 를 붙여서 만든 'infix (중위) 연산자' 입니다. 이를 사용하면 두 값 중에서 _하나 (one)_ 만 `true` (참) 이면 전체 표현식이 `true` (참) 이 되는 '논리 표현식 (logical expressions)' 를 생성할 수 있습니다.
+'_논리 합 연산자_ (_logical OR operator;_ `a || b`)' 는 두 개의 인접한 '파이프 문자 (`|`)' 로 만든 '중위 (infix) 연산자' 입니다. 이를 사용하여 두 값 중 _하나 (one)_ 만 `true` 면 전체적인 표현식이 `true` 가 되는 '논리 표현식' 를 생성합니다.
 
-앞서의 '논리 곱 연산자 (logical AND operator)' 와 마찬가지로, '논리 합 연산자 (logical OR operator)' 는 표현식을 계산할 때 '단락-회로 계산 (short-circuit evaluation)'[^short-circuit] 방식을 사용합니다. '논리 합 표현식 (logical OR expressions)' 의 왼쪽이 `true` 면, 오른쪽은 계산하지 않으며, 이는 전체 표현식의 결과가 달라질 일이 없기 때문입니다.
+위의 '논리 곱 연산자' 와 같이, '논리 합 (Logical OR) 연산자' 는 표현식을 고려할 때 '단락-회로 계산'[^short-circuit] 을 사용합니다. '논리 합 표현식' 의 왼쪽이 `true` 면, 오른쪽은 평가하지 않는데, 이것이 전체적인 표현식의 결과물을 바꿀 순 없기 때문입니다.
 
-아래 예제에서, 첫 번째 `Bool` 값 (`hasDoorKey`) 은 `false` 지만, 두 번째 값 (`knowsOverridePassword`) 은 `true` 입니다. 한 값이 `true` 이므로, 전체 표현식도 `true` 로 계산하여, 접근을 허용합니다:
+아래 예제에서, 첫 번째 `Bool` 값인 (`hasDoorKey`) 는 `false` 지만, 두 번째 값인 (`knowsOverridePassword`) 는 `true` 입니다. 한 값이 `true` 이기 때문에, 전체적인 표현식 역시 `true` 로 평가하여, 접근을 허용합니다:
 
 ```swift
 let hasDoorKey = false
 let knowsOverridePassword = true
 if hasDoorKey || knowsOverridePassword {
-    print("Welcome!")
+  print("Welcome!")
 } else {
-    print("ACCESS DENIED")
+  print("ACCESS DENIED")
 }
-// "Welcome!" 을 출력합니다.
+// "Welcome!" 을 인쇄합니다.
 ```
 
 #### Combining Logical Operators (논리 연산자 결합하기)
@@ -485,7 +485,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 수학적으로 엄밀한 '나머지 연산' 과 연관있는 것 같습니다. 보다 자세한 내용은 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 참고하기 바랍니다. 이에 대한 한글 자료가 거의 없는 거 같은데, 한글로는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 부분을 보면 도움이 될 것 같습니다.
 
-[^short-circuit]: 'short-circuit evaluation (단락-회로 계산)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 'short-circuit (단락-회로)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 'minimal evaluation (최소 계산)' 이라는 말도 사용하는 것 같습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 항목에 대한 번역은 아직 없는 것 같습니다.)
+[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 '최소 계산 (minimal evaluation)' 이라는 말도 사용하는 것 같은데, 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 이 항목에 대한 번역은 아직 없는 것 같습니다.)
 
 [^left-associative]: 'left-associative' 를 '왼쪽 우선-결합' 이라고 옮겼습니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity (연산자 결합성)](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
 
@@ -494,3 +494,5 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
 
 [^zero-based]: '0-에 기초한 (zero-based) 목록' 이란 '색인 (index)' 가 '0 부터 시작하는 목록' 이라고 이해할 수 있습니다.
+
+[^c-based-languages]: 'C-에 기초한 언어 (C-based languages)' 는 'C-family' 라고도 하며, 여기에 속한 언어들의 목록은 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 확인할 수 있습니다. 애플에서 만든 '오브젝티브-C (Objective-C)' 와 '스위프트 (Swift)' 는 모두 'C-family' 임을 알 수 있습니다.
