@@ -10,9 +10,9 @@ categories: Swift Grammar Strings Characters
 
 ## Strings and Characters (문자열과 문자)
 
-_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 처럼, 문자들이 연속된 것입니다. 스위프트의 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 에는, `Character` 값의 '컬렉션 (collection)'[^collection] 을 포함하여, 다양한 방법으로 접근할 수 있습니다.
+_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 처럼, 연속된 문자들입니다. 스위프트의 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 에는, `Character` 값의 '컬렉션 (collection)'[^collection] 을 포함하여, 다양한 방법으로 접근할 수 있습니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드 내의 '문장 (text)' 작업을 위한 빠르고, '유니코드를 따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은 가볍고 이해하기 쉬우며, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 가집니다. 문자열 '이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, 문자열의 '변경 가능성 (mutability)' 은, 스위프트의 어떤 다른 값에서 처럼, 상수나 변수를 선택하는 것으로써 관리합니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 그리고 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣는, '문자열 보간법 (string interpolation)'[^interpolation] 이라고 하는 과정에서도 사용할 수 있습니다. 이를 사용하면 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성할 수 있습니다.
+스위프트의 `String` 과 `Character` 타입은 코드 내의 '문장 (text)' 작업을 위한 빠르고, '유니코드를 따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은 가볍고 이해하기 쉬우며, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 가집니다. 문자열 '이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, 문자열의 '변경 가능성 (mutability)' 은, 스위프트의 어떤 다른 값에서 처럼, 상수나 변수를 선택하는 것으로써 관리합니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 및 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣기 위해서도 사용할 수 있는데, 이는 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 하는 과정입니다. 이를 사용하면 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성할 수 있습니다.
 
 구문 표현의 간단함에도 불구하고, 스위프트의 `String` 타입은 빠르고, 최신인 문자열 구현입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 구성되며, 해당 문자들을 다양한 유니코드 표현법으로 접근하도록 지원합니다.
 
@@ -22,19 +22,19 @@ _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 처럼, 문자들�
 
 ### String Literals (문자열 글자 값)
 
-미리 정의된 `String` 값을 코드 내에 _문자열 글자 값 (string literals)_ 의 형태로 포함할 수 있습니다. '문자열 글자 값' 은 큰 따옴표 (`"`) 로 묶인 일련의 문자들을 말합니다.
+미리 정의된 `String` 값을 '_문자열 글자 값 (string literals)_' 으로써 코드 내에 포함시킬 수 있습니다. '문자열 글자 값' 은 연속된 문자들을 '큰 따옴표 (`"`)' 로 둘러싼 것입니다.
 
-문자열 글자 값은 상수나 변수의 기본 설정 값으로 사용됩니다:
+문자열 글자 값은 상수나 변수를 위한 '초기 값 (initial value)' 으로 사용합니다:
 
 ```swift
 let someString = "Some string literal value"
 ```
 
-`someString` 상수가 '문자열 글자 값' 으로 초기화되었기 때문에, 스위프트가 이를 `String` 타입으로 추론할 수 있음을 명심하기 바랍니다.
+스위프트는 '문자열 글자 값' 으로 초기화했기 때문에 `someString` 상수를 `String` 타입으로 추론한다는 것을 기억하기 바랍니다.
 
 #### Multiline String Literals (여러 줄짜리 문자열 글자 값)
 
-여러 줄에 걸쳐있는 문자열이 필요한 경우, '여러 줄짜리 문자열 글자 값 (multiline string literal)'-세 개의 큰 따옴표로 묶인 일련의 문자들-을 사용하십시오:
+여러 줄에 걸쳐 있는 문자열이 필요한 경우, '여러 줄짜리 문자열 글자 값 (multiline string literal)'-연속된 문자들을 큰 따옴표 세 개로 둘러싼 것-을 사용합니다:
 
 ```swift
 let quotation = """
@@ -46,7 +46,7 @@ till you come to the end; then stop."
 """
 ```
 
-'여러 줄짜리 문자열 글자 값' 은 여는 따옴표와 닫는 따옴표 사이의 모든 줄도 포함합니다. 문자열은 여는 따옴표 (`"""`) 다음의 첫 번째 줄에서 시작하고 닫는 따옴표 앞의 줄에서 끝나며, 이는 아래에 있는 문자열은 어느 것도 '줄 끊음 (line break)' 으로 시작하거나 끝나지 않음을 의미합니다:
+'여러 줄짜리 문자열 글자 값' 은 여는 따옴표와 닫는 따옴표 사이의 모든 줄을 포함합니다. 문자열은 '여는 따옴표 (`"""`)' 뒤의 첫 번째 줄에서 시작해서 '닫는 따옴표' 앞의 줄에서 끝나는데, 이는 아래 문자열은 어느 것도 '줄 끊음 (line break)' 으로 시작하거나 끝나지 않음을 의미합니다:
 
 ```swift
 let singleLineString = "These are the same."
