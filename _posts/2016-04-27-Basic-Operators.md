@@ -264,7 +264,7 @@ if hasHeader {
 
 ### Nil-Coalescing Operator (Nil-통합 연산자)
 
-_nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` 가 값을 담고 있으면 포장을 풀고, `a` 가 `nil` 이면 기본 설정 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 에 저장된 것과 타입이 일치해야 합니다.
+_nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` 가 값을 담고 있으면 포장을 풀고, `a` 가 `nil` 이면 기본 설정 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 에 저장된 값과 타입이 일치해야 합니다.
 
 'nil-통합 연산자' 는 아래 코드의 '줄임 표현 (shorthand)' 입니다:
 
@@ -272,11 +272,11 @@ _nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` �
 a != nil ? a! : b
 ```
 
-위 코드는 '삼항 조건 연산자' 와 '강제 포장 풀기 (forced unwrapping; `a!`)' 를 사용하여 `a` 가 `nil` 이 아닐 땐 `a` 안에 포장된 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-통합 연산자' 는 간결하고 이해하기 쉬운 형식 속에 이런 조건 검사와 포장 풀기를 은닉하는 더 우아한 방법을 제공합니다.
+위 코드는 '삼항 조건 연산자' 와 '강제 포장 풀기 (forced unwrapping; `a!`)' 를 사용하여 `a` 가 `nil` 이 아닐 땐 `a` 안에 포장된 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-통합 연산자' 는 이러한 조건 검사와 포장 풀기를 간결하고 이해가 쉬운 형식 속에 은닉하는 방식의 더 우아한 방법을 제공합니다.
 
 > `a` 의 값이 `nil` 이 아니면, `b` 의 값은 평가하지 않습니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
 
-아래 예제는 기본 색상 이름' 과 '사용자가-정의한 옵셔널 색상 이름' 중 하나를 선택하기 위해 'nil-통합 연산자' 를 사용합니다:
+아래 예제는 '기본 색상 이름' 과 '사용자가-정의한 옵셔널 색상 이름' 중 하나를 선택하기 위해 'nil-통합 연산자' 를 사용합니다:
 
 ```swift
 let defaultColorName = "red"
@@ -286,9 +286,9 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 설정 값인 "red" 로 설정됩니다.
 ```
 
-`userDefinedColorName` 변수는, 기본 설정 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
+`userDefinedColorName` 변수를, 기본 설정 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
 
-만약 `nil` 이 아닌 값을 `userDefinedColorName` 에 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 설정 값 대신 `userDefinedColorName` 안에 포장된 값을 사용합니다:
+만약 `userDefinedColorName` 에 `nil` 아닌 값을 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 설정 값 대신 `userDefinedColorName` 안에 포장된 값을 사용합니다:
 
 ```swift
 userDefinedColorName = "green"
@@ -298,17 +298,17 @@ colorNameToUse = userDefinedColorName ?? defaultColorName
 
 ### Range Operators (범위 연산자)
 
-스위프트는 값의 범위를 간단하게 표현할 수 있는 여러 가지의 _범위 연산자 (range operators)_ 를 포함하고 있습니다.
+스위프트는, 값의 범위를 표현하기 위한 '줄임말 (shortcuts)' 인, _범위 연산자 (range operators)_ 몇 개를 포함합니다.
 
 #### Closed Range Operator (닫힌 범위 연산자)
 
-'닫힌 범위 연산자 (closed range operator)' (`a...b`) 는 `a` 에서 `b` 에 이르는 범위를 정의하면서, `a` 와 `b` 의 값을 포함합니다. 여기서 `a` 의 값은 `b` 보다 절대로 크면 안됩니다.
+'_닫힌 범위 연산자_ (_closed range operator;_ `a...b`)' 는 `a` 에서 `b` 에 이르는 범위를 정의하며, `a` 와 `b` 의 값도 포함합니다. `a` 의 값은 반드시 `b` 보다 크지 않아야 합니다.
 
-'닫힌 범위 연산자' 는 범위 내에 있는 모든 값에 동작을 반복 적용할 때 유용하며, 보통 `for-in` 반복문과 같이 사용하게 됩니다:
+닫힌 범위 연산자는, `for`-`in` 반복문 같이, 범위 내의 모든 값을 사용하여 동작을 반복하고 싶을 때 유용합니다:
 
 ```swift
 for index in 1...5 {
-    print("\(index) times 5 is \(index * 5)")
+  print("\(index) times 5 is \(index * 5)")
 }
 // 1 times 5 is 5
 // 2 times 5 is 10
@@ -321,15 +321,15 @@ for index in 1...5 {
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 
-'_반-열린 범위 연산자 (half-open range operator)_' (`a..<b`) 는 `a` 에서 `b` 에 이르는 범위를 정의하면서, `b` 는 포함하지 않습니다. _반-열린 (half-open)_ 이라는 말은 이것이 첫 번째 값은 갖지만, 마지막 값은 갖지 않기 때문입니다. '닫힌 범위 연산자' 와 마찬가지로, `a` 의 값은 `b` 보다 절대로 크면 안됩니다. 만약 `a` 의 값이 `b` 와 같을 경우, 그 결과는 빈 범위가 됩니다.
+'_반-열린 범위 연산자_ (_half-open range operator;_ `a..<b`)' 는 `a` 에서 `b` 에 이르는 범위를 정의하지만, `b` 는 포함하지 않습니다. _반-열린 (half-open)_ 이라고 하는 것은 첫 번째 값은 담고 있지만, 최종 값은 담지 않기 때문입니다. 닫힌 범위 연산자에서와 마찬가지로, `a` 의 값은 반드시 `b` 보다 크지 않아야 합니다. `a` 의 값이 `b` 와 같으면, 이 때의 결과는 '빈 (empty) 범위' 가 될 것입니다.
 
-'반-열린 범위 연산자' 는 배열처럼 '0-시작 목록 (zero-based lists)' 과 작업할 때 특히 더 유용한데, 이는 목록 전체를 반복하면서 마지막 수를 포함하지 않기 때문입니다.
+'반-열린 범위' 는 배열 같이 '0-에 기초한 (zero-based)[^zero-based] 목록' 과 작업할 때 특히 더 유용하며, 이 때 목록의 길이를 (포함하지는 않으면서) 셀 때 유용합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
 let count = names.count
 for i in 0..<count {
-    print("Person \(i + 1) is called \(names[i])")
+  print("Person \(i + 1) is called \(names[i])")
 }
 // Person 1 is called Anna
 // Person 2 is called Alex
@@ -337,11 +337,11 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-이 배열은 4 개의 항목을 갖지만, `0..<count` 는 (배열 마지막 요소의 색인인) `3` 까지만 헤아리며, 이는 '반-열린 연산자' 이기 때문입니다. 배열에 대해서는 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 을 보기 바랍니다.
+배열이 네 개의 항목을 담고 있지만, `0..<count` 는, '반-열린 연산자' 이기 때문에, (배열에 있는 마지막 항목의 색인인) `3` 까지만 셉니다. 배열에 대해서는, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 을 참고하기 바랍니다.
 
 #### One-Sided Ranges (한-쪽 범위)
 
-'닫힌 범위 연산자' 는 한 방향으로 가능한 멀리 계속되는 범위를 나타낼 수 있는 '대체 양식 (alternative form)' 을 갖고 있습니다-예를 들어, 한 배열에 대해 2 에서 부터 끝까지의 모든 배열 요소를 포함하는 범위가 있을 수 있습니다. 이 경우, 범위 연산자의 한-쪽 값을 생략할 수 있습니다. 이러한 종류의 범위를 _한-쪽 범위 (one-sided range)_ 라고 부르며, 이는 연산자가 오직 한 쪽 값만을 갖고 있기 때문입니다. 예를 들면 다음과 같습니다:
+'닫힌 범위 연산자' 는 한쪽 방향으로 계속되는 범위-예를 들어, 2 부터 배열 끝까지 배열의 모든 원소를 포함하는 범위 등-을 위해 '또 다른 형식 (alternative form)' 을 가집니다. 이 경우, 범위 연산자의 한쪽에 있는 값을 생략할 수 있습니다. 이런 종류의 범위를 '_한-쪽 범위 (one-sided range)_' 라고 하는데 이는 연산자가 한쪽에만 값을 가지고 있기 때문입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 for name in names[2...] {
@@ -358,7 +358,7 @@ for name in names[...2] {
 // Brian
 ```
 
-'반-열린 범위 연산자' 도 '한-쪽 양식 (one-sided form)' 을 갖고 있지만 대신 한-쪽 값은 반드시 마지막 값이어야 합니다. 값을 양쪽에 적어줄 때와 마찬가지로, 마지막 값은 범위에 포함되지 않습니다. 예를 들면 다음과 같습니다:
+'반-열린 범위 연산자' 도 최종 값만 작성하는 '한-쪽 형식 (one-sided form)' 을 가지고 있습니다. 양쪽에 값을 포함할 때와 마찬가지로, 이 최종 값은 범위의 일부가 아닙니다. 예를 들면 다음과 같습니다:
 
 ```swift
 for name in names[..<2] {
@@ -368,7 +368,7 @@ for name in names[..<2] {
 // Alex
 ```
 
-'한-쪽 범위 (one-sided range)' 는 '첨자 연산 (subscript)' 뿐만 아니라, 다른 곳에서도 사용할 수 있습니다. '한-쪽 범위' 가 생략한 값이 첫 번째 값이면 동작을 반복 적용시킬 수 없는데, 이는 동작을 어디서부터 반복해야할 지 명확하지 않기 때문입니다. '한-쪽 범위' 가 마지막 값을 생략했을 때는 동작을 반복 적용시키는 것이 _가능 (can)_ 합니다; 다만, 범위가 무한정 계속되므로, 반복문에 명시적으로 종료 조건을 추가해야 합니다. '한-쪽 범위' 가 특정 값을 갖고 있는지를 검사할 수도 있는데, 이는 아래 코드 처럼 하면 됩니다:
+'한-쪽 범위' 는, '첨자 연산 (subscript)' 뿐 아니라, 다른 상황에서도 사용할 수 있습니다. 첫 번째 값을 생략한 '한-쪽 범위' 에는 동작을 반복할 수 없는데, 반복 동작을 어디서 시작해야할 지 명확하지 않기 때문입니다. 최종 값을 생략한 '한-쪽 범위' 에는 동작을 반복 _할 수 (can)_ 있습니다; 하지만, 범위가 무한정 계속되기 때문에, 명시적인 종료 조건을 반복문에 확실히 추가해야 합니다. '한-쪽 범위' 는, 아래 코드에서 보인 것처럼, 특정 값을 담고 있는 지도 검사할 수 있습니다.
 
 ```swift
 let range = ...5
@@ -492,3 +492,5 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 [^infix]: 'infix는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대해서는 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
+
+[^zero-based]: '0-에 기초한 (zero-based) 목록' 이란 '색인 (index)' 가 '0 부터 시작하는 목록' 이라고 이해할 수 있습니다.
