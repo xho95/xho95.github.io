@@ -848,6 +848,8 @@ anyCommonElements([1, 2, 3], [3])
 
 `<T: Equatable>` 로 작성하는 것은 `<T> ... where T: Equatable` 로 작성하는 것과 똑같습니다.
 
+### 다음 장
+
 [The Basics (기초) > ]({% post_url 2016-04-24-The-Basics %})
 
 ### 참고 자료

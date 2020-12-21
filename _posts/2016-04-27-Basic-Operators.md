@@ -477,6 +477,10 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 괄호는 처음 두 값이 전체적인 논리에서 '별도로 가능한 상태' 로 고려된다는 것을 명확하게 만듭니다. 복합 표현식의 출력은 바뀌지 않지만, 전체적인 의도는 더 명확해 집니다. '가독성 (readability)' 은 항상 '간결함 (brevity)' 보다 좋습니다; 의도를 명확하게 만드는데 도움이 될 때는 괄호를 사용하기 바랍니다.
 
+### 다음 장
+
+[Strings and Characters (문자열과 문자) > ]({% post_url 2016-05-29-Strings-and-Characters %})
+
 ### 참고 자료
 
 [^Basic-Operators]: 원문은 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 에서 확인할 수 있습니다.
