@@ -262,7 +262,7 @@ print(goodStart + end)
 
 ### String Interpolation (문자열 보간법)
 
-_문자열 보간법 (string interpolation)_ 은 상수, 변수, 글자 값, 그리고 표현식들을 서로 섞어서 새로운 `String` 값을 생성하는 방법으로, 이 때 '문자열 글자 값 (string literal)' 안에 그 값을 포함하는 방식을 사용합니다. 문자열 보간법은 한 줄짜리 혹은 여러 줄짜리 '문자열 글자 값 (string literal)' 모두에서 사용 가능합니다. 각 요소를 문자열 글자 값에 삽입하려면 그것을 괄호 쌍으로 감싼 후에 맨 앞에 '역 빗금 (backslash; `\`)' 를 붙여주면 됩니다:
+_문자열 보간법 (string interpolation)_ 은 '문자열 글자 값' 안에 상수, 변수, 글자 값, 그리고 표현식의 값을 포함시켜 섞음으로써 새로운 `String` 값을 생성하는 방법입니다. 문자열 보간법은 '한-줄짜리' 와 '여러 줄짜리' 문자열 글자 값 둘 모두에서 사용할 수 있습니다. 문자열 글자 값 안에 집어 넣을 각 항목은 괄호 쌍으로 포장하고, '역 빗금 (backslash; `\`)' 접두사를 붙입니다:
 
 ```swift
 let multiplier = 3
@@ -270,25 +270,25 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 // message 는 "3 times 2.5 is 7.5" 입니다.
 ```
 
-위의 예에서 처럼, `multiplier` 의 값을 '문자열 글자 값' 에 삽입하려면 `\(multiplier)` 라고 하면 됩니다. 이것이 있는 자리는 `multiplier` 의 실제 값으로 교체되는데, 이는 실제 문자열을 생성하려고 '문자열 보간' 값을 퍙가할 때 이뤄집니다.
+위 예제에서, `multiplier` 의 값은 문자열 글자 값 안에 `\(multiplier)` 라고 집어 넣습니다. 이 '자리 표시자 (placeholder)' 는 실제 문자열을 생성하기 위해 문자열 보간법을 평가할 때 `multiplier` 의 실제 값으로 대체됩니다.
 
-`multiplier` 는 문자열에 나오는 '더 큰 표현식' 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 의 값을 계산한 후 결과인 (`7.5`) 를 문자열에 삽입합니다. 이 경우, 표현식을 '문자열 글자 값' 안에 넣으려면 `\(Double(multiplier) * 2.5)` 라고 하면 됩니다.
+`multiplier` 의 값은 문자열 뒤에 있는 '더 큰 표현식' 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 의 값을 계산하고 결과인 (`7.5`) 를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함될 때의 표현식은 `\(Double(multiplier) * 2.5)` 라고 작성합니다.
 
-'확장된 문자열 구분자 (extended string delimiters)' 를 사용하면 '문자열 보간법' 으로 취급되는 문자를 그대로 담고 있는 문자열도 만들 수 있습니다. 예를 들면 다음과 같습니다:
+다른 경우라면 문자열 보간법으로 취급될 문자를 담고 있는 문자열을 생성하기 위해 '확장된 문자열 구분자 (extended string delimiters)' 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
-// "Write an interpolated string in Swift using \(multiplier)." 를 출력합니다.
+// "Write an interpolated string in Swift using \(multiplier)." 를 인쇄합니다.
 ```
 
-'확장된 구분자' 를 사용하는 문자열 내에서 '문자열 보간법' 을 사용하려면, 문자열의 시작과 끝에 있는 '번호 기호' 의 개수와 같은 '번호 기호' 를 '역 빗금 (backslash)' 뒤에 붙이면 됩니다. 예를 들면 다음과 같습니다:
+'확장된 구분자' 를 사용하는 문자열에서 '문자열 보간법' 을 사용하려면, '역 빗금 (backslash)' 뒤의 '번호 기호' 개수를 문자열 시작과 끝에 있는 '번호 기호' 개수와 일치시키면 됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
 "6 times 7 is 42." 를 출력합니다.
 ```
 
-> 보간된 문자열 내에서 괄호 안의 표현식은 'unescaped (벗어나지 않은)' 역 빗금 (backslash; `\`), 캐리지 반환 (`\r`), 또는 줄 끊음 (`\n`) 을 포함할 수 없습니다. 그러나, 다른 '문자열 글자 값 (string literals)' 은 포함할 수 있습니다.
+> 보간된 문자열 내의 괄호 안에서 작성한 표현식은 '벗어나지 않은 역 빗금 (unescaped backslash; `\`)', 캐리지 반환 (`\r`), 또는 '줄 먹임 (`\n`)' 을 담을 수 없습니다. 하지만, 다른 '문자열 글자 값' 들은 담을 수 있습니다.
 
 ### Unicode (유니코드)
 
