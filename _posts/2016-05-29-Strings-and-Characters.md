@@ -201,34 +201,34 @@ print(catString)
 
 ### Concatenating Strings and Characters (문자열과 문자 이어붙이기)
 
-`String` 값을 '더하기 연산자 (`+`)' 로 서로 더하기-또는 _연결 (concatenated)_ 하여 새 `String` 값을 만들 수 있습니다:
+`String` 값은 새로운 `String` 값을 생성하기 위해 '더하기 연산자 (`+`)' 로 서로 더하거나- _이어붙일 (concatenated)_-수 있습니다:
 
 ```swift
 let string1 = "hello"
 let string2 = " there"
 var welcome = string1 + string2
-// welcome 은 이제 "hello there" 와 같습니다.
+// welcome 은 이제 "hello there" 입니다.
 ```
 
-`String` 값을 '더하고 할당하기 연산자 (`+=`)' 로 기존 `String` 변수에 덧붙일 수 있습니다:
+`String` 값을 기존 `String` 변수에 '더하기 할당 연산자 (`+=`)' 로 덧붙일 수도 있습니다:
 
 ```swift
 var instruction = "look over"
 instruction += string2
-// instruction 은 이제 "look over there" 와 같습니다.
+// instruction 은 이제 "look over there" 입니다.
 ```
 
-`Character` 값을 `String` 변수에 덧붙이려면 `String` 타입의 `append()` 메소드를 사용하면 됩니다:
+`Character` 값은 `String` 변수에 `String` 타입의 `append()` 메소드로 덧붙일 수 있습니다:
 
 ```swift
 let exclamationMark: Character = "!"
 welcome.append(exclamationMark)
-// welcome 은 이제 "hello there!" 와 같습니다.
+// welcome 은 이제 "hello there!" 입니다.
 ```
 
-> `String` 이나 `Character` 를 기존 `Character` 변수에 덧붙일 수는 없으며, 이는 `Character` 값은 반드시 단 하나의 문자만 가질 수 있기 때문입니다.
+> `String` 이나 `Character` 를 기존 `Character` 변수에 덧붙일 수는 없는데, `Character` 값은 반드시 단일 문자만 담을 수 있기 때문입니다.
 
-'여러 줄짜리 문자열 글자 값' 으로 더 긴 줄의 문자열을 만들 때, 문자열의 모든 줄이 마지막 줄도 포함해서, '줄 끊음 (line break)' 으로 끝나기를 원할 것입니다. 예를 들면 다음과 같습니다:
+더 긴 줄의 문자열을 제작하기 위해 '여러 줄짜리 문자열 글자 값' 을 사용 중인 경우, 마지막 줄을 포함한, 문자열의 모든 줄이 '줄 끊음 (line break)' 으로 끝나길 원할 것입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let basStart = """
@@ -258,7 +258,7 @@ print(goodStart + end)
 // three
 ```
 
-위의 코드에서, `badStart` 와 `end` 를 연결하니 두 줄짜리 문자열이 만들어졌는데, 이는 원하는 결과가 아닙니다. 왜냐면 `badStart` 의 마지막 줄이 '줄 끊음 (line break)' 으로 끝나지 않아서, 그 줄이 `end` 의 첫 줄과 붙어버렸기 때문입니다. 이와는 다르게, `goodStart` 의 두 줄은 모두 '줄 끊음' 으로 끝나므로, `end` 와 결합해도 결과는 예상한 대로 세 줄이 됩니다.
+위 코드에서, `badStart` 와 `end` 를 이어붙이면 두-줄짜리 문자열을 내놓는데, 이는 원하는 결과가 아닙니다. `badStart` 의 마지막 줄이 '줄 끊음' 으로 끝나지 않기 때문에, 해당 줄이 `end` 의 첫 번째 줄과 뭉쳐집니다. 이와는 대조적으로, `goodStart` 의 두 줄은 모두 '줄 끊음' 으로 끝나서, `end` 와 조합할 때도 결과는, 예상한 것처럼, 세 줄이 됩니다.
 
 ### String Interpolation (문자열 보간법)
 
