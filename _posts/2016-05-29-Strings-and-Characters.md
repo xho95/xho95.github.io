@@ -88,7 +88,7 @@ It also ends with a line break.
 
 '문자열 글자 값' 은 다음의 특수 문자를 포함할 수 있습니다:
 
-* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed), `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
+* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed)[^line-feed], `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
 * `\u{`_n_`}` 라고 작성하는, 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', 여기서 _n_ 은 1-8 자리 16진수입니다. (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 에서 논의합니다.)
 
 아래 코드는 이러한 특수 문자의 네 가지 예를 보여줍니다. `wiseWords` 상수는 두 개의 '벗어난 (escaped)' 큰 따옴표를 담고 있습니다. `dollarSign`, `blackHeart`, 그리고 `sparklingHeart` 상수는 '유니코드 크기 값 양식 (Unicode scalar format)' 을 실증해 보입니다:
@@ -101,7 +101,7 @@ let blackHeart = "\u{2665}"       // ♥, 유니코드 크기 값 U+2665
 let sparklingHeart = "\u{1F496}"  // 💖, 유니코드 크기 값 U+1F496
 ```
 
-'여러 줄짜리 문자열 글자 값' 은 하나가 아니라 세 개의 큰 따옴표를 사용하기 때문에, '벗어나게 (escaping)'[^escaping] 하지 않고도 '여러 줄짜리 문자열 글자 값' 안에 '큰 따옴표 (`"`)' 를 포함할 수 있습니다. '여러 줄짜리 문자열' 이 `"""` 를 문장 형태로 포함하려면, 최소 하나 이상의 따옴표는 '벗어나야 (escape)' 합니다. 예를 들면 다음과 같습니다:
+'여러 줄짜리 문자열 글자 값' 은 하나가 아니라 세 개의 큰 따옴표를 사용하기 때문에, '벗어나게 (escaping)'[^escaping] 하지 않고도 '여러 줄짜리 문자열 글자 값' 안에 '큰 따옴표 (`"`)' 를 포함할 수 있습니다. '여러 줄짜리 문자열' 이 `"""` 을 '글자 (text)' 로써 포함하려면, 최소 하나 이상의 따옴표는 '벗어나야 (escape)' 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let threeDoubleQuotationMarks = """
@@ -112,11 +112,11 @@ Escaping all three quotation mark \"\"\"
 
 #### Extended String Delimiters (확장된 문자열 구분자)
 
-'문자열 글자 값 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, '번호 기호 (`#`)'[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '벗어나도록 문자를 나열하여 만든 줄 먹임 (line feed escape sequence; `\n`)'[^line-feed-escape-sequence] 을 그대로 출력합니다.
+특수 문자를 효과 발현 없이 문자열에 포함시키기 위해 '문자열 글자 값' 을 '_확장된 구분자 (extended delimiters)_' 내에 위치시킬 수 있습니다. 문자열을 따옴표 (`"`) 안에 위치시키고 이를 '번호 기호 (number signs; `#`)'[^number-sign] 로 감쌉니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 인쇄하면 문자열을 두 줄로 인쇄하지 않고 '줄 먹임으로 벗어나도록 나열한 것 (line feed escape sequence; `\n`)'[^line-feed-escape-sequence] 을 인쇄합니다.
 
-'문자열 글자 값' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 '벗어나게 하는 문자 (escape character; `\`)' 뒤에 같은 개수의 '번호 기호' 를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 일 때, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로, `###"Line 1\###nLine 2"###` 라고 해도 줄을 끊습니다.
+'문자열 글자 값' 에 있는 문자의 특수 효과가 필요한 경우, '벗어나는 문자 (escape character; `\`)' 뒤의 문자에 '번호 기호' 개수를 일치 시킵니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 인데 줄을 끊고 싶으면, `#"Line 1\#nLine 2"#` 를 대신 사용하면 됩니다. 비슷하게, `###"Line 1\###nLine 2"###` 도 줄을 끊습니다.
 
-'확장된 구분자' 를 사용하여 생성한 '문자열 글자 값' 도 '여러 줄짜리 문자열 글자 값' 이 될 수 있습니다. '확장된 구분자' 를 사용하면, '글자 값을 끝낸다' 는 기본 동작을 재정의 (overriding) 하여, '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있습니다. 예를 들면 다음과 같습니다:
+'확장된 구분자' 로 생성한 '문자열 글자 값' 도 '여러 줄짜리 문자열 글자 값' 일 수 있습니다. '여러 줄짜리 문자열' 에 `"""` 을, 문자열을 끝낸다는 기본 작동 방식을 재정의하여, '글자 (text)' 로써 포함시키기 위해 '확장된 구분자' 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```
 let threeMoreDoubleQuotationMarks = #"""
@@ -687,7 +687,9 @@ for scalar in dogString.unicodeScalars {
 
 [^locale-sensitive]: 'locale-sensitive' 는 '지역에 대한 민감성' 을 나타내는데, '비교 연산 (comparison)' 이 '지역에 민감한 (locale-sensitive)' 것은 서로 다른 지역의 언어에 대해 비교 연산을 할 수 없다는 의미로 추측됩니다. 스위프트의 문자열 연산은 유니코드에 부합하므로 지역에 민감하지 않다고 볼 수 있습니다.
 
-[^line-feed-escape-sequence]: '벗어나도록 문자를 나열하여 만든 줄 먹임 (line feed escape sequence)' 은 말 그대로 `\n` 문자를 의미합니다. 스위프트에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자 등은 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
+[^line-feed]: 스위프트 (라기 보다는 애플 운영체제) 에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자는 셋 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
+
+[^line-feed-escape-sequence]: '줄 먹임으로 벗어나도록 나열한 것 (line feed escape sequence)' 은 말 그대로 `\n` 문자열 자체를 의미합니다. `\n` 을 '줄 먹임' 문자로 인식하는 것이 아니라 `\` 과 `n` 문자가 나열된 것으로 인식한다는 의미입니다.
 
 [^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
