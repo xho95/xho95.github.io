@@ -10,11 +10,11 @@ categories: Swift Grammar Strings Characters
 
 ## Strings and Characters (문자열과 문자)
 
-_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 처럼, 연속된 문자들입니다. 스위프트의 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 에는, `Character` 값의 '컬렉션 (collection)'[^collection] 을 포함하여, 다양한 방법으로 접근할 수 있습니다.
+_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 처럼, 문자들이 연속된 것입니다. 스위프트 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 에는, `Character` 값의 '컬렉션 (collection)'[^collection] 을 포함한, 다양한 방법으로 접근할 수 있습니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드 내의 '문장 (text)' 작업을 위한 빠르고, '유니코드를 따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은 가볍고 이해하기 쉬우며, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 가집니다. 문자열 '이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, 문자열의 '변경 가능성 (mutability)' 은, 스위프트의 어떤 다른 값에서 처럼, 상수나 변수를 선택하는 것으로써 관리합니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 및 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣기 위해서도 사용할 수 있는데, 이는 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 하는 과정입니다. 이를 사용하면 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성할 수 있습니다.
+스위프트의 `String` 과 `Character` 타입은 코드에서 '문장 (text)' 작업을 위한 빠르고, '유니코드를 따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 써서, 가볍고 이해하기 쉽습니다. 문자열 '이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, 문자열의 '변경 가능성 (mutability)' 은, 스위프트에 있는의 다른 값들처럼, 상수나 변수를 선택하는 것으로 관리됩니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 및 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣기 위해서도 사용할 수 있는데, 이 과정을 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이는 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성하도록 해줍니다.
 
-구문 표현의 간단함에도 불구하고, 스위프트의 `String` 타입은 빠르고, 최신인 문자열 구현입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 구성되며, 해당 문자들을 다양한 유니코드 표현법으로 접근하도록 지원합니다.
+구문 표현이 간단함에도 불구하고, 스위프트의 `String` 타입은 빠르고, 최신인 문자열 구현입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 구성되며, 다양한 유니코드 표현법으로 해당 문자들에 접근하는 것을 지원합니다.
 
 > 스위프트의 `String` 타입은 'Foundation'[^Foundation] 의 `NSString` 클래스와 '연동되어 (bridged)' 있습니다. 'Foundation' 은 `NSString` 에서 정의한 메소드를 드러내기 위해 `String` 도 확장합니다. 이는, 'Foundation' 을 '불러 오는 (import)' 경우, 해당 `NSString` 메소드를 `String` 에서 '타입 변환 (casting)' 없이 접근할 수 있다는 의미입니다.
 >
@@ -22,19 +22,19 @@ _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 처럼, 연속된 �
 
 ### String Literals (문자열 글자 값)
 
-미리 정의된 `String` 값을 '_문자열 글자 값 (string literals)_' 으로써 코드 내에 포함시킬 수 있습니다. '문자열 글자 값' 은 연속된 문자들을 '큰 따옴표 (`"`)' 로 둘러싼 것입니다.
+미리 정의된 `String` 값을 코드 내에 '_문자열 글자 값 (string literals)_' 으로 포함할 수 있습니다. '문자열 글자 값' 은 '큰 따옴표 (`"`)' 로 둘러싼 연속된 문자들를 말합니다.
 
-문자열 글자 값은 상수나 변수를 위한 '초기 값 (initial value)' 으로 사용합니다:
+문자열 글자 값은 상수나 변수의 '초기 값 (initial value)' 으로 사용합니다:
 
 ```swift
 let someString = "Some string literal value"
 ```
 
-스위프트는 '문자열 글자 값' 으로 초기화했기 때문에 `someString` 상수를 `String` 타입으로 추론한다는 것을 기억하기 바랍니다.
+'문자열 글자 값' 으로 초기화했기 때문에 스위프트가 `someString` 상수를 `String` 타입이라고 추론함을 기억하기 바랍니다.
 
 #### Multiline String Literals (여러 줄짜리 문자열 글자 값)
 
-여러 줄에 걸쳐 있는 문자열이 필요한 경우, '여러 줄짜리 문자열 글자 값 (multiline string literal)'-연속된 문자들을 큰 따옴표 세 개로 둘러싼 것-을 사용합니다:
+여러 줄에 걸쳐진 문자열이 필요한 경우, 큰 따옴표 세 개로 둘러싼 연속된 문자열인-'여러 줄짜리 문자열 글자 값 (multiline string literal)' 을 사용합니다:
 
 ```swift
 let quotation = """
@@ -46,7 +46,7 @@ till you come to the end; then stop."
 """
 ```
 
-'여러 줄짜리 문자열 글자 값' 은 여는 따옴표와 닫는 따옴표 사이의 모든 줄을 포함합니다. 문자열은 '여는 따옴표 (`"""`)' 뒤의 첫 번째 줄에서 시작해서 '닫는 따옴표' 앞의 줄에서 끝나는데, 이는 아래 문자열은 어느 것도 '줄 끊음 (line break)' 으로 시작하거나 끝나지 않음을 의미합니다:
+'여러 줄짜리 문자열 글자 값' 은 여는 따옴표와 닫는 따옴표 사이의 모든 줄을 포함합니다. 문자열은 '여는 따옴표 (`"""`)' 뒤의 첫 번째 줄에서 시작해서 '닫는 따옴표' 앞의 줄에서 끝나는데, 이는 아래 문자열 중 그 어느 것도 '줄 끊음 (line break)' 으로 시작하거나 끝나지 않음을 의미합니다:[^single-and-multiline]
 
 ```swift
 let singleLineString = "These are the same."
@@ -55,7 +55,19 @@ These are the same.
 """
 ```
 
-'줄 끊음' 으로 시작하거나 끝나는 '여러 줄짜리 문자열 글자 값' 을 만들려면, 첫 줄 또는 마지막 줄에 빈 줄을 쓰면 됩니다. 예를 들면 다음과 같습니다:
+소스 코드가 '여러 줄짜리 문자열 글자 값' 안에 '줄 끊음' 을 포함할 땐, 해당 '줄 끊음' 이 문자열 값에도 나타납니다. '줄 끊음' 을 써서 소스 코드를 더 이해하기 쉽게 만들고 싶지만, '줄 끊음' 이 문자열 값 일부가 되진 않길 원하는 경우, 해당 줄 끝에 '역 빅금 (backslash; `\`)' 을 작성합니다:
+
+```swift
+let softWrappedQuotation = """
+The White Rabbit put on his spectacles.  "Where shall I begin, \
+please your Majesty?" he asked.
+
+"Begin at the beginning," the King said gravely, "and go on \
+till you come to the end; then stop."
+"""
+```
+
+'여러 줄짜리 문자열 글자 값' 이 '줄 끊음' 으로 시작하거나 끝나게 만들려면, 첫 번째 또는 마지막 줄에 빈 줄을 작성합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let lineBreaks = """
@@ -66,20 +78,20 @@ It also ends with a line break.
 """
 ```
 
-'여러 줄짜리 문자열 (multiline string)' 은 들여쓰기를 해서 주변 코드와 위치를 맞출 수 있습니다. 닫는 따옴표 (`"""`) 앞에 있는 공백은 스위프트가 모든 줄에서 그 만큼의 공백을 무시하도록 합니다. 하지만, 줄 맨 앞에 닫는 따옴표 앞에 있는 것보다 더 많은 공백을 입력하면, 그 공백은 문자열에 포함됩니다.
+'여러 줄짜리 (multiline) 문자열' 은 주위 코드와 일치하도록 들여쓰기를 할 수 있습니다. '닫는 따옴표 (`"""`)' 앞의 공백은 다른 모든 줄에서 무시할 공백이 무엇인지를 스위프트에게 알리는 것입니다. 하지만, 닫는 따옴표 앞에 있는 것에 더하여 줄 앞에 공백을 작성한 경우, 그 공백 _은 (is)_ 포함됩니다.
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-indent.jpg)
 
-위의 예에서, '여러 줄짜리 문자열 글자 값 (multiline string literal)' 전체가 들여쓰기되어 있지만, 문자열의 첫 줄과 마지막 줄은 공백으로 시작하지 않습니다. 가운데 줄은 닫는 따옴표보다 더 많이 들여쓰기 되어 있으므로, 이것만 추가로 4칸 들여쓰기로 시작합니다.
+위 예제에서, '여러 줄짜리 문자열 글자 값' 전체가 들여쓰기 되었음에도 불구하고, 문자열의 첫 번째와 마지막 줄은 어떠한 공백으로도 시작하지 않습니다. 중간 줄은 닫는 따옴표보다 더 들여쓰기 되었으므로, 여분의 네-칸 들여쓰기로 시작합니다.
 
 #### Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)
 
 '문자열 글자 값' 은 다음의 특수 문자를 포함할 수 있습니다:
 
-* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (null-널 문자), `\\` (backslash-역 빗금), `\t` (가로 tab-탭), `\n` (line feed-줄 먹임), `\r` (carriage-캐리지 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
-* 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', `\u{`_n_`}` 의 형태로 작성하며, 여기서 _n_ 은 1~8 자리의 16진수 값입니다. (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 에서 설명합니다.)
+* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed)[^line-feed], `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
+* `\u{`_n_`}` 라고 작성하는, 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', 여기서 _n_ 은 1-8 자리 16진수입니다. (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 에서 논의합니다.)
 
-아래의 코드에서 특수 문자에 대한 네 가지 예를 보였습니다. `wiseWords` 상수는 두 개의 'escaped (벗어난)' 큰 따옴표를 담고 있습니다. `dollarSign`, `blackHeart` 그리고 `sparklingHeart` 상수는 '유니코드 크기 양식 (Unicode scalar format)' 을 보여줍니다:
+아래 코드는 이러한 특수 문자의 네 가지 예를 보여줍니다. `wiseWords` 상수는 두 개의 '벗어난 (escaped)' 큰 따옴표를 담고 있습니다. `dollarSign`, `blackHeart`, 그리고 `sparklingHeart` 상수는 '유니코드 크기 값 양식 (Unicode scalar format)' 을 실증해 보입니다:
 
 ```swift
 let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
@@ -89,7 +101,7 @@ let blackHeart = "\u{2665}"       // ♥, 유니코드 크기 값 U+2665
 let sparklingHeart = "\u{1F496}"  // 💖, 유니코드 크기 값 U+1F496
 ```
 
-'여러 줄짜리 문자열 글자 값 (multiline string literals)' 은 하나가 아닌 세 개의 큰 따옴표를 사용하므로, 여러 줄짜리 문자열 글자 값 안에 큰 따옴표 (`"`) 를 포함할 때는 'escaping (본래 의미를 벗어나게)'[^escaping] 할 필요가 없습니다. 여러 줄짜리 문자열에 `"""` 텍스트를 포함시키려면, 최소한 하나 이상의 따옴표를 'escape (본래 의미를 벗어나게)' 만들어야 합니다. 예를 들면 다음과 같습니다:
+'여러 줄짜리 문자열 글자 값' 은 하나가 아니라 세 개의 큰 따옴표를 사용하기 때문에, '벗어나게 (escaping)'[^escaping] 하지 않고도 '여러 줄짜리 문자열 글자 값' 안에 '큰 따옴표 (`"`)' 를 포함할 수 있습니다. '여러 줄짜리 문자열' 이 `"""` 을 '글자 (text)' 로써 포함하려면, 최소 하나 이상의 따옴표는 '벗어나야 (escape)' 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let threeDoubleQuotationMarks = """
@@ -100,11 +112,11 @@ Escaping all three quotation mark \"\"\"
 
 #### Extended String Delimiters (확장된 문자열 구분자)
 
-'문자열 글자 값 (string literal)' 을 _확장된 구분자 (extended delimiters)_ 안에 배치하면, 문자열에 특수 문자를 포함시키면서 효과는 발현 안되게 할 수 있습니다. 이것은 문자열을 따옴표 (`"`) 안에 넣고, '번호 기호 (`#`)'[^number-sign] 로 감싸면 됩니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 출력하면 문자열이 두 줄로 출력되는 대신 '벗어나도록 문자를 나열하여 만든 줄 먹임 (line feed escape sequence; `\n`)'[^line-feed-escape-sequence] 을 그대로 출력합니다.
+특수 문자를 효과 발현 없이 문자열에 포함시키기 위해 '문자열 글자 값' 을 '_확장된 구분자 (extended delimiters)_' 내에 위치시킬 수 있습니다. 문자열을 따옴표 (`"`) 안에 위치시키고 이를 '번호 기호 (number signs; `#`)'[^number-sign] 로 감쌉니다. 예를 들어, '문자열 글자 값' `#"Line 1\nLine 2"#` 를 인쇄하면 문자열을 두 줄로 인쇄하지 않고 '줄 먹임으로 벗어나도록 나열한 것 (line feed escape sequence; `\n`)'[^line-feed-escape-sequence] 을 인쇄합니다.
 
-'문자열 글자 값' 에 있는 문자의 특수 효과를 사용하고 싶을 때는, 문자열 내에서 '벗어나게 하는 문자 (escape character; `\`)' 뒤에 같은 개수의 '번호 기호' 를 붙여주면 됩니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 일 때, 줄을 바꾸고 싶으면 `#"Line 1\#nLine 2"#` 라고 하면 됩니다. 마찬가지로, `###"Line 1\###nLine 2"###` 라고 해도 줄을 끊습니다.
+'문자열 글자 값' 에 있는 문자의 특수 효과가 필요한 경우, '벗어나는 문자 (escape character; `\`)' 뒤의 문자에 '번호 기호' 개수를 일치 시킵니다. 예를 들어, 문자열이 `#"Line 1\nLine 2"#` 인데 줄을 끊고 싶으면, `#"Line 1\#nLine 2"#` 를 대신 사용하면 됩니다. 비슷하게, `###"Line 1\###nLine 2"###` 도 줄을 끊습니다.
 
-'확장된 구분자' 를 사용하여 생성한 '문자열 글자 값' 도 '여러 줄짜리 문자열 글자 값' 이 될 수 있습니다. '확장된 구분자' 를 사용하면, '글자 값을 끝낸다' 는 기본 동작을 재정의 (overriding) 하여, '여러 줄짜리 문자열' 에 `"""` 텍스트를 넣을 수 있습니다. 예를 들면 다음과 같습니다:
+'확장된 구분자' 로 생성한 '문자열 글자 값' 도 '여러 줄짜리 문자열 글자 값' 일 수 있습니다. '여러 줄짜리 문자열' 에 `"""` 을, 문자열을 끝낸다는 기본 작동 방식을 재정의하여, '글자 (text)' 로써 포함시키기 위해 '확장된 구분자' 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```
 let threeMoreDoubleQuotationMarks = #"""
@@ -114,26 +126,26 @@ Here are three more double quotes: """
 
 ### Initializing an Empty String (빈 문자열 초기화하기)
 
-더 긴 문자열을 만들기 위한 시작점으로 빈 `String` 을 만들려면, 변수에 '빈 문자열 글자 값 (empty string literal)' 을 할당하거나, '초기화 구문 표현 (initializer syntax)' 을 써서 새로운 `String` 인스턴스를 초기화하면 됩니다:
+긴 문자열 제작을 시작하기 위해 먼저 빈 `String` 값을 생성하려면, 변수에 '빈 문자열 글자 값 (empty string literal)' 을 할당하거나, 아니면 '초기화 구문 표현 (initializer syntax)' 으로 새로운 `String` 인스턴스를 초기화합니다:
 
 ```swift
 var emptyString = ""                // 빈 문자열 글자 값 (empty string literal)
 var anotherEmptyString = String()   // 초기화 구문 표현 (initializer syntax)
-// 위 두 문자열은 모두 비어 있으며, 서로 동등합니다.
+// 이 두 문자열은 모두 빈 것이며, 서로 '동치 (equivalent)' 입니다.
 ```
 
-`String` 값이 비어있는지 확인하려면, 불리언 (Boolean) 속성인 `isEmpty` 를 검사하면 됩니다:
+`String` 값이 비어 있는 지는 '불리언 (Boolean)' 속성인 `isEmpty` 를 검사하여 알아냅니다:
 
 ```swift
 if emptyString.isEmpty {
-    print("Nothing to see here")
+  print("Nothing to see here")
 }
-// "Nothing to see here" 를 출력합니다.
+// "Nothing to see here" 를 인쇄합니다.
 ```
 
 ### String Mutability (문자열 변경 가능성)
 
-특정한 `String` 이 수정 (또는 _변경-mutated_) 가능한지를 지정하려면, 그것을 변수에 (이러면 수정 가능함) 할당하거나, 상수에 (이러면 수정 불가능함) 할당하면 됩니다:
+특정 `String` 이 수정 (또는 _변경-mutated_) 가능한지의 여부는, 이를 변수에 할당하거나 (이 경우 수정할 수 있음), 아니면 상수에 할당하는 것 (이 경우 수정할 수 없음) 으로, 지시합니다:
 
 ```swift
 var variableString = "Horse"
@@ -142,22 +154,22 @@ variableString += " and carriage"
 
 let constantString = "Highlander"
 constantString += " and another Highlander"
-// 이것은 컴파일-시간에 -상수 문자열은 수정될 수 없다는 (a constant string cannot be modified -에러를 발생시킵니다.
+// 이것은 컴파일-시간 에러를 보고합니다-상수 문자열은 수정할 수 없습니다 (a constant string cannot be modified)
 ```
 
-> '오브젝티브-C' 와 'Cocoa' 에서의 문자열 변경 가능성 지정 방식은 좀 다른데, 이들은 두 개의 클래스 (`NSString` 와 `NSMutableString`) 중에서 선택하는 것으로써 문자열이 변할 수 있는지를 지정합니다.
+> 이런 접근 방식은 '오브젝티브-C' 와 'Cocoa' 의 문자열 '변경 방식 (mutation)' 과는 다른데, 이들은 문자열이 변경 가능함을 지시하기 위해 (`NSString` 와 `NSMutableString` 라는) 두 클래스 중 하나를 선택합니다.
 
 ### Strings Are Value Types (문자열은 값 타입입니다)
 
-스위프트의 `String` 타입은 '_값 타입 (value type)_'[^value-type] 입니다. 이것은 새로운 `String` 값을 만들고서, 이를 함수나 메소드에 전달하거나, 상수나 변수에 할당할 때, 이 `String` 값이 _복사 (copied)_ 된다는 것을 말합니다. 각각의 경우에, 기존 `String` 값에 대한 새 복사본이 만들어져서, 원래 버전 대신, 이 복사본이 전달되거나 할당됩니다. 값 타입에 대해서는 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 에서 설명합니다.
+스위프트의 `String` 타입은 '_값 타입 (value type)_'[^value-type] 입니다. 새로운 `String` 값을 생성하면, 해당 `String` 값은, 함수나 메소드에 전달될 때나 상수나 변수에 할당될 때, _복사 (copied)_ 됩니다. 각 경우마다, 기존 `String` 값의 새로운 복사본이 생성되며, 원래 버전이 아니라, 이 새로운 복사본을 전달하거나 할당합니다. 값 타입은 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 에서 설명합니다.
 
-스위프트의 `String` 이 '기본적으로-복사 (copy-by-default)' 행동을 한다는 것은 함수나 메소드로 `String` 값을 전달받을 때, 어디서 왔든 신경쓸 필요 없이, 그 `String` 값을 온전히 가지게 됐음을 분명히 한다는 것입니다. 전달받은 문자열은 본인이 직접 수정하지 않는 이상 수정될 일이 없다고 확신해도 됩니다.
+스위프트 `String` 의 '기본적으로-복사하는 (copy-by-default)' 작동 방식은 함수나 메소드가 `String` 값을 전달할 때, 이것이 어디서 왔든 상관없이, 정확한 `String` 값을 명확하게 가지도록 보장합니다. 전달받은 문자열은 직접 수정하지 않는한 수정되지 않을 것임을 확신할 수 있습니다.
 
-한편, 스위프트의 컴파일러는 문자열 처리를 최적화하기 때문에 실제 복사는 꼭 필요할 때에만 일어납니다.[^optimize-string] 이것은 값 타입인 문자열을 사용하더라도 항상 뛰어난 성능을 보장받을 수 있다는 의미입니다.
+그 이면을 살펴보면, 스위프트 컴파일러는 문자열 사용법을 최적화해서 실제 복사는 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 값 타입인 문자열과 작업할 때도 항상 뛰어난 성능을 얻는다는 의미입니다.
 
 ### Working with Characters (문자 다루기)
 
-`String` 에 있는 개별 `Character` 값에 접근하려면, `for-in` 반복문으로 문자열에 '동작을 반복 적용 (interating over)' 시키면 됩니다:
+`String` 의 개별 `Character` 값은 `for-in` 반복문으로 문자열에 '동작을 반복하는 것 (interating over)' 으로 접근할 수 있습니다:
 
 ```swift
 for character in "Dog!🐶" {
@@ -172,22 +184,22 @@ for character in "Dog!🐶" {
 
 `for-in` 반복문은 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 에서 설명합니다.
 
-다른 방법으로, `Character` '타입 보조 설명 (type annotation)'[^annotation] 을 쓰면 '단일-문자 문자열 글자 값 (single-character string literal)' 으로 독립된 `Character` 상수나 변수를 만들 수도 있습니다:
+또 다른 방법으로, `Character` '타입 보조 설명 (type annotation)'[^annotation] 을 제공하는 것으로 '단일-문자 문자열 글자 값 (single-character string literal)' 으로부터 독립된 `Character` 상수나 변수를 생성할 수 있습니다:
 
 ```swift
 let exclamationMark: Character = "!"
 ```
 
-`String` 값은 초기자의 인자로 `Character` 값의 배열을 전달하는 것으로도 생성할 수 있습니다:
+`String` 값은 `Character` 값의 배열을 초기자의 인자로 전달하는 것으로써 생성할 수 있습니다:
 
 ```swift
 let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
 let catString = String(catCharacters)
 print(catString)
-// "Cat!🐱" 을 출력합니다.
+// "Cat!🐱" 을 인쇄합니다.
 ```
 
-### Concatenating Strings and Characters (문자열 및 문자 연결하기)
+### Concatenating Strings and Characters (문자열과 문자 이어붙이기)
 
 `String` 값을 '더하기 연산자 (`+`)' 로 서로 더하기-또는 _연결 (concatenated)_ 하여 새 `String` 값을 만들 수 있습니다:
 
@@ -667,7 +679,7 @@ for scalar in dogString.unicodeScalars {
 
 [^value-type]: '값 타입 (value type)' 이라는 말은, 프로그래밍 용어에서 '깊은 복사' 와 '옅은 복사' 라는 말이 있는데, 이 중에서 복사 시의 기본 동작이 '깊은 복사' 인 타입이라고 이해할 수 있습니다.
 
-[^optimize-string]: 이 말은 기본적으로 `String` 은 '깊은 복사' 를 한다고는 하지만, 만약 전달받은 `String` 을 상수처럼 사용할 경우, 굳이 값을 복사할 필요가 없으므로 스위프트가 성능 최적화를 해서, 실제 복사를 안할 수도 있다는 말입니다.
+[^optimize-string]: 이 말은 기본적으로 `String` 은 '깊은 복사' 를 하지만, 만약 전달받은 `String` 이 상수라면, 어차피 값이 바뀌지 않으므로 최적화에 의해, 실제 복사를 안할 수도 있다는 말입니다. 하지만 이런 경우에라도 밖에서 보는 작동 방식은 동일하므로, 개발자는 `String` 이 마치 계속 '복사 (copy)' 된다고 이해하고 사용해도 문제가 없습니다.
 
 [^annotation]: '주석' 은 프로그래밍 분야에서 'comment' 를 의미하므로, 'annotation' 을 '보조 설명' 이라고 옮깁니다. 스위프트의 '타입 보조 설명 (type annotation)' 은 `let a: Int = 10` 에서 타입을 지정하는 `Int` 를 말하는 것입니다.
 
@@ -675,8 +687,12 @@ for scalar in dogString.unicodeScalars {
 
 [^locale-sensitive]: 'locale-sensitive' 는 '지역에 대한 민감성' 을 나타내는데, '비교 연산 (comparison)' 이 '지역에 민감한 (locale-sensitive)' 것은 서로 다른 지역의 언어에 대해 비교 연산을 할 수 없다는 의미로 추측됩니다. 스위프트의 문자열 연산은 유니코드에 부합하므로 지역에 민감하지 않다고 볼 수 있습니다.
 
-[^line-feed-escape-sequence]: '벗어나도록 문자를 나열하여 만든 줄 먹임 (line feed escape sequence)' 은 말 그대로 `\n` 문자를 의미합니다. 스위프트에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자 등은 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
+[^line-feed]: 스위프트 (라기 보다는 애플 운영체제) 에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자는 셋 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
+
+[^line-feed-escape-sequence]: '줄 먹임으로 벗어나도록 나열한 것 (line feed escape sequence)' 은 말 그대로 `\n` 문자열 자체를 의미합니다. `\n` 을 '줄 먹임' 문자로 인식하는 것이 아니라 `\` 과 `n` 문자가 나열된 것으로 인식한다는 의미입니다.
 
 [^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
+
+[^single-and-multiline]: 이 말은 예제에 있는 `singleLineString` 과 `multilineString` 이 사실상 같은 것이라는 의미입니다. `multilineString` 은 큰 따옴표 세 개를 사용했지만, 한-줄짜리 문자열만 담고 있으므로, 여기서는 두 문자열이 똑같은 상태입니다.
