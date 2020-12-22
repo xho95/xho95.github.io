@@ -201,34 +201,34 @@ print(catString)
 
 ### Concatenating Strings and Characters (문자열과 문자 이어붙이기)
 
-`String` 값을 '더하기 연산자 (`+`)' 로 서로 더하기-또는 _연결 (concatenated)_ 하여 새 `String` 값을 만들 수 있습니다:
+`String` 값은 새로운 `String` 값을 생성하기 위해 '더하기 연산자 (`+`)' 로 서로 더하거나- _이어붙일 (concatenated)_-수 있습니다:
 
 ```swift
 let string1 = "hello"
 let string2 = " there"
 var welcome = string1 + string2
-// welcome 은 이제 "hello there" 와 같습니다.
+// welcome 은 이제 "hello there" 입니다.
 ```
 
-`String` 값을 '더하고 할당하기 연산자 (`+=`)' 로 기존 `String` 변수에 덧붙일 수 있습니다:
+`String` 값을 기존 `String` 변수에 '더하기 할당 연산자 (`+=`)' 로 덧붙일 수도 있습니다:
 
 ```swift
 var instruction = "look over"
 instruction += string2
-// instruction 은 이제 "look over there" 와 같습니다.
+// instruction 은 이제 "look over there" 입니다.
 ```
 
-`Character` 값을 `String` 변수에 덧붙이려면 `String` 타입의 `append()` 메소드를 사용하면 됩니다:
+`Character` 값은 `String` 변수에 `String` 타입의 `append()` 메소드로 덧붙일 수 있습니다:
 
 ```swift
 let exclamationMark: Character = "!"
 welcome.append(exclamationMark)
-// welcome 은 이제 "hello there!" 와 같습니다.
+// welcome 은 이제 "hello there!" 입니다.
 ```
 
-> `String` 이나 `Character` 를 기존 `Character` 변수에 덧붙일 수는 없으며, 이는 `Character` 값은 반드시 단 하나의 문자만 가질 수 있기 때문입니다.
+> `String` 이나 `Character` 를 기존 `Character` 변수에 덧붙일 수는 없는데, `Character` 값은 반드시 단일 문자만 담을 수 있기 때문입니다.
 
-'여러 줄짜리 문자열 글자 값' 으로 더 긴 줄의 문자열을 만들 때, 문자열의 모든 줄이 마지막 줄도 포함해서, '줄 끊음 (line break)' 으로 끝나기를 원할 것입니다. 예를 들면 다음과 같습니다:
+더 긴 줄의 문자열을 제작하기 위해 '여러 줄짜리 문자열 글자 값' 을 사용 중인 경우, 마지막 줄을 포함한, 문자열의 모든 줄이 '줄 끊음 (line break)' 으로 끝나길 원할 것입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let basStart = """
@@ -258,11 +258,11 @@ print(goodStart + end)
 // three
 ```
 
-위의 코드에서, `badStart` 와 `end` 를 연결하니 두 줄짜리 문자열이 만들어졌는데, 이는 원하는 결과가 아닙니다. 왜냐면 `badStart` 의 마지막 줄이 '줄 끊음 (line break)' 으로 끝나지 않아서, 그 줄이 `end` 의 첫 줄과 붙어버렸기 때문입니다. 이와는 다르게, `goodStart` 의 두 줄은 모두 '줄 끊음' 으로 끝나므로, `end` 와 결합해도 결과는 예상한 대로 세 줄이 됩니다.
+위 코드에서, `badStart` 와 `end` 를 이어붙이면 두-줄짜리 문자열을 내놓는데, 이는 원하는 결과가 아닙니다. `badStart` 의 마지막 줄이 '줄 끊음' 으로 끝나지 않기 때문에, 해당 줄이 `end` 의 첫 번째 줄과 뭉쳐집니다. 이와는 대조적으로, `goodStart` 의 두 줄은 모두 '줄 끊음' 으로 끝나서, `end` 와 조합할 때도 결과는, 예상한 것처럼, 세 줄이 됩니다.
 
 ### String Interpolation (문자열 보간법)
 
-_문자열 보간법 (string interpolation)_ 은 상수, 변수, 글자 값, 그리고 표현식들을 서로 섞어서 새로운 `String` 값을 생성하는 방법으로, 이 때 '문자열 글자 값 (string literal)' 안에 그 값을 포함하는 방식을 사용합니다. 문자열 보간법은 한 줄짜리 혹은 여러 줄짜리 '문자열 글자 값 (string literal)' 모두에서 사용 가능합니다. 각 요소를 문자열 글자 값에 삽입하려면 그것을 괄호 쌍으로 감싼 후에 맨 앞에 '역 빗금 (backslash; `\`)' 를 붙여주면 됩니다:
+_문자열 보간법 (string interpolation)_ 은 '문자열 글자 값' 안에 상수, 변수, 글자 값, 그리고 표현식의 값을 포함시켜 섞음으로써 새로운 `String` 값을 생성하는 방법입니다. 문자열 보간법은 '한-줄짜리' 와 '여러 줄짜리' 문자열 글자 값 둘 모두에서 사용할 수 있습니다. 문자열 글자 값 안에 집어 넣을 각 항목은 괄호 쌍으로 포장하고, '역 빗금 (backslash; `\`)' 접두사를 붙입니다:
 
 ```swift
 let multiplier = 3
@@ -270,51 +270,51 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 // message 는 "3 times 2.5 is 7.5" 입니다.
 ```
 
-위의 예에서 처럼, `multiplier` 의 값을 '문자열 글자 값' 에 삽입하려면 `\(multiplier)` 라고 하면 됩니다. 이것이 있는 자리는 `multiplier` 의 실제 값으로 교체되는데, 이는 실제 문자열을 생성하려고 '문자열 보간' 값을 퍙가할 때 이뤄집니다.
+위 예제에서, `multiplier` 의 값은 문자열 글자 값 안에 `\(multiplier)` 라고 집어 넣습니다. 이 '자리 표시자 (placeholder)' 는 실제 문자열을 생성하기 위해 문자열 보간법을 평가할 때 `multiplier` 의 실제 값으로 대체됩니다.
 
-`multiplier` 는 문자열에 나오는 '더 큰 표현식' 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 의 값을 계산한 후 결과인 (`7.5`) 를 문자열에 삽입합니다. 이 경우, 표현식을 '문자열 글자 값' 안에 넣으려면 `\(Double(multiplier) * 2.5)` 라고 하면 됩니다.
+`multiplier` 의 값은 문자열 뒤에 있는 '더 큰 표현식' 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 의 값을 계산하고 결과인 (`7.5`) 를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함될 때의 표현식은 `\(Double(multiplier) * 2.5)` 라고 작성합니다.
 
-'확장된 문자열 구분자 (extended string delimiters)' 를 사용하면 '문자열 보간법' 으로 취급되는 문자를 그대로 담고 있는 문자열도 만들 수 있습니다. 예를 들면 다음과 같습니다:
+다른 경우라면 문자열 보간법으로 취급될 문자를 담고 있는 문자열을 생성하기 위해 '확장된 문자열 구분자 (extended string delimiters)' 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
-// "Write an interpolated string in Swift using \(multiplier)." 를 출력합니다.
+// "Write an interpolated string in Swift using \(multiplier)." 를 인쇄합니다.
 ```
 
-'확장된 구분자' 를 사용하는 문자열 내에서 '문자열 보간법' 을 사용하려면, 문자열의 시작과 끝에 있는 '번호 기호' 의 개수와 같은 '번호 기호' 를 '역 빗금 (backslash)' 뒤에 붙이면 됩니다. 예를 들면 다음과 같습니다:
+'확장된 구분자' 를 사용하는 문자열에서 '문자열 보간법' 을 사용하려면, '역 빗금 (backslash)' 뒤의 '번호 기호' 개수를 문자열 시작과 끝에 있는 '번호 기호' 개수와 일치시키면 됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
 "6 times 7 is 42." 를 출력합니다.
 ```
 
-> 보간된 문자열 내에서 괄호 안의 표현식은 'unescaped (벗어나지 않은)' 역 빗금 (backslash; `\`), 캐리지 반환 (`\r`), 또는 줄 끊음 (`\n`) 을 포함할 수 없습니다. 그러나, 다른 '문자열 글자 값 (string literals)' 은 포함할 수 있습니다.
+> 보간된 문자열 내의 괄호 안에서 작성한 표현식은 '벗어나지 않은 역 빗금 (unescaped backslash; `\`)', 캐리지 반환 (`\r`), 또는 '줄 먹임 (`\n`)' 을 담을 수 없습니다. 하지만, 다른 '문자열 글자 값' 들은 담을 수 있습니다.
 
 ### Unicode (유니코드)
 
-_유니코드 (Unicode)_ 는 서로 다른 '문자 (writing system)' 끼리 텍스트를 '부호화하고 (encoding)', 표현하며, 처리하는 국제 표준입니다. 이를 통해 어떤 언어로도 거의 모든 문자를 표준화된 형태로 표현할 수 있으며, 텍스트 파일이나 웹 페이지와 같은 외부 소스에서 그 문자를 읽고 쓸 수 있게 됩니다. 스위프트의 `String` 과 `Character` 타입은 완전히 유니코드에 부합하며 (Unicode-compliant), 이번 장에서 그것을 확인할 수 있습니다.
+_유니코드 (Unicode)_ 는 서로 다른 '문자 체계 (writing system)' 에서 문장을 '부호화 (encoding)' 하고, 표현하며, 가공하기 위한 국제 표준입니다. 이는 어떤 언어에 대해서든 거의 대부분의 문자를 표준화된 형식으로 표현하고, '텍스트 파일' 이나 웹 페이지 같은 외부 소스에서 해당 문자를 읽고 쓸 수 있도록 해줍니다. 스위프트의 `String` 과 `Character` 타입은, 이번 부분에서 설명하는 것처럼, 온전히 '유니코드를-따르고 (Unicode-compliant)' 있습니다.
 
 #### Unicode Scalar Values (유니코드 크기 값)
 
-속을 들여다보면, 본래 스위프트의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 만들어져 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대해 유일하게 지정된 21-bit 수를 말하여, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`), 또 `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 입니다.
+그 이면을 살펴보면, 스위프트 그 자체의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 제작되어 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 유일한 21-자리 수를 말하며, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`) 에, `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 에 대한 것입니다.
 
-모든 21-bit '유니코드 크기 값' 에 문자가 할당되어 있는 것은 아님을 명심하기 바랍니다-일부 크기 값은 미래에 할당될 때나 UTF-16 부호화 (encoding) 에 사용될 때를 대비해서 예약되어 있습니다. 문자에 할당된 '크기 값 (scalar values)' 은 보통 이름을 가지고 있으며, 위에서 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 이 그런 예입니다.
+모든 21-자리 '유니코드 크기 값' 이 문자에 할당된 것은 아님을 기억하기 바랍니다-어떤 크기 값은 미래의 할당을 위해서 또는 'UTF-16 부호화 (encoding)' 에서 사용하기 위해서 예약되어 있습니다. 문자에 할당되어 있는 '크기 값' 은 전형적으로, 위 예제의 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 같이, 이름도 가지고 있습니다.
 
 #### Extended Grapheme Clusters (확장된 자소 덩어리)
 
-스위프트 `Character` 타입의 모든 인스턴스는 하나의 단일한 _확장된 자소 덩어리 (extended grapheme cluster)_ 를 표현합니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 하나 이상의 유니코드 크기 값이 연속되어 있는 것으로 (서로 결합하면) 사람이 읽을 수 있는 단일한 문자를 만들어 냅니다.
+스위프트 `Character` 타입의 모든 인스턴스는 단일한 '_확장된 자소 덩어리 (extended grapheme cluster)_' 를 표현합니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 하나 이상의 유니코드 크기 값이 연속된 것으로 (서로 조합하면) 사람이-이해할 수 있는 단일 문자를 만들어 냅니다.
 
-여기 예를 들어 보겠습니다. 문자 `é` 는 단일한 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE`, 또는 `U+00E9`) 로 표현될 수 있습니다. 하지만, 같은 문자를 한 _쌍 (pair)_ 의 '크기 값 (scalars)' 으로도 표시 할 수 있습니다-표준 문자 `e` (`LATIN SMALL LETTER E`, 또는 `U+0065`), 에다가 `COMBINING ACUTE ACCENT` 크기 값 (`U+0301`) 를 뒤에 붙인 것 말입니다. `COMBINING ACUTE ACCENT` 크기 값은 그 앞에 오는 크기 값의 모양을 바꾸는 역할을 하며, 유니코드-인식 글자-표현 시스템에 의해 `e` 를 `é` 로 바꾸게 됩니다.
+예를 들어 보겠습니다. 문자 `é` 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE`, 또는 `U+00E9`) 로 표현할 수 있습니다. 하지만, 똑같은 문자를 한 _쌍 (pair)_ 의 '크기 값'-표준 문자 `e` (`LATIN SMALL LETTER E`, 또는 `U+0065`) 과, 그 뒤의 `COMBINING ACUTE ACCENT` 크기 값 (`U+0301`)-으로 표현할 수도 있습니다. `COMBINING ACUTE ACCENT` 크기 값은 앞에 있는 크기 값에 시각적으로 적용되어, '유니코드-인식 글자-그리기 시스템' 이 이를 그릴 때 `e` 를 `é` 로 바꾸게 됩니다.
 
-두 경우에서 문자 `é` 는 스위프트에서 '확장된 자소 덩어리' 를 표현하는 단일한 `Character` 값을 나타냅니다. 첫 번째에서는, 덩어리가 단일한 크기 값을 갖고 있고; 두 번째에서는 덩어리가 두 개의 크기 값을 갖고 있습니다:
+두 경우 모두에서, 문자 `é` 는 하나의 '확장된 자소 덩어리' 를 표현하는 단일 스위프트 `Character` 값으로 표현됩니다. 첫 번째 경우는, '덩어리 (cluster)' 가 단일 크기 값을 담고 있으며; 두 번째 경우는, 두 크기 값을 가진 '덩어리' 입니다:
 
 ```swift
 let eAcute: Character = "\u{E9}"                // é
-let combinedEAcute: Character = "\u{65}\u{301}" // e followed by ́
-// eAcute 는 é 이고, combinedEAcute 는 é 입니다.
+let combinedEAcute: Character = "\u{65}\u{301}" // e 와 그 뒤의  ́
+// eAcute 는 é 이고, combinedEAcute 도 é 입니다.
 ```
 
-'확장된 자소 덩어리 (extended grapheme clusters)' 라는 유연한 방법 덕분에 문자 표기법이 많고 복잡하더라도 이를 단일한 `Character` 값으로 표현할 수 있게 되었습니다. 예를 들어, 한글로 한국어 음절을 표현하는 방식은 '완성형 (precomposed)' 과 '조합형 (decomposed)' 두 가지가 있습니다. 스위프트에서는 이 두 표현 방식 모두 단일한 `Character` 값으로인정받습니다:
+'확장된 자소 덩어리' 는 '쓰는 방법이 많고 복잡한 문자 (many complex script characters)' 를 단일 `Character` 값으로 표현하는데 유연한 방법입니다. 예를 들어, '한글' 에서 '한국어 음절' 은 '완성형 (precomposed)' 또는 '조합형 (decomposed)' 어느 것으로도 표현할 수 있습니다. 이 두 표현법 모두는 스위프트에서 단일 `Character` 값으로 인정 받습니다:
 
 ```swift
 let precomposed: Character = "\u{D55C}"                 // 한
@@ -322,21 +322,21 @@ let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"  // ᄒ, ᅡ, ᆫ
 // precomposed 는 '한' 이고, decomposed 도 '한' 입니다.
 ```
 
-'확장된 자소 덩어리' 를 사용하면 테두리 기호 (가령 `COMBINING ENCLOSING CIRCLE`, 또는 `U+20DD`) 크기 값으로 다른 유니코드 크기 값에 테두리를 만들어서 하나의 단일한 `Character` 값을 만드는 것도 가능합니다:
+'확장된 자소 덩어리' 는 단일 `Character` 값을 위해 (`COMBINING ENCLOSING CIRCLE`, 또는 `U+20DD` 같은) 테두리 표시용 크기 값으로 다른 유니코드 크기 값에 테두리도 칠 수 있게 해줍니다.
 
 ```swift
 let enclosedEAcute: Character = "\u{E9}\u{20DD}"
 // enclosedEAcute 은 é⃝ 입니다.
 ```
 
-'지역 표시 기호' 에 대한 유니코드 크기 값 한 쌍을 결합해서 하나의 단일한 `Character` 값을 만들 수 있는데, 가령 `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 를 결합하면 아래와 같습니다:
+'지역 지시 기호 (regional indicator symbols)' 에 대한 유니코드 크기 값은 단일 `Character` 값을 만들기 위해, `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 의 조합처럼, 쌍으로 조합할 수 있습니다.:
 
 ```swift
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
-// regionalIndicatorForUS is 🇺🇸
+// regionalIndicatorForUS 은 🇺🇸 입니다.
 ```
 
-### Counting Characters (문자 개수 살리기)
+### Counting Characters (문자 개수 세기)
 
 문자열에 있는 `Character` 의 개수를 구하려면, 문자열의 `count` 속성을 사용하면 됩니다:
 
