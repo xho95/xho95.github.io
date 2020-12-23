@@ -367,19 +367,19 @@ print("the number of characters in \(word) is \(word.characters.count)")
 
 ### Accessing and Modifying a String (문자열에 접근하고 수정하기)
 
-문자열에 접근하고 수정하려면, 문자열의 메소드와 속성, 또는 '첨자 연산 구문 (subscript syntax)' 을 사용하면 됩니다.
+문자열은 메소드와 속성, 또는 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여 접근하고 수정합니다.
 
 #### String Indices (문자열 색인)
 
-각각의 `String` 값은 관련된 색인 타입인 `String.Index` 을 가지고 있는데, 이 값은 문자열에서 각 `Character` 의 위치에 해당합니다.
+각 `String` 값은 '결합된 _색인 타입 (index type)_ 인', `String.Index` 을 가지고 있는데, 이는 문자열에 있는 각 `Character` 의 위치와 관련되어 있습니다.
 
-앞에서 언급했듯이, 서로 다른 문자들을 저장할 때의 메모리 양이 서로 다를 수 있으므로, 특정 위치에 있는 `Character` 가 무엇인지 판별하려면, 문자열의 처음부터 끝까지 각 '유니코드 크기 값' 을 뒤지는 동작을 반복 적용해야만 합니다. 이러한 이유로, 스위프트의 문자열은 정수 값의 색인을 가질 수 없습니다.
+위에서 언급한 것처럼, 서로 다른 문자들은 저장을 위해 서로 다른 크기의 메모리가 필수일 수 있으므로, 특정 위치의 `Character` 가 어는 것인지를 결정하려면, 반드시 해당 `String` 의 처음부터 끝까지 각 '유니코드 크기 값' 에 동작을 반복해야 합니다. 이런 이유로, 스위프트 문자열의 정수 값으로 색인될 수 없습니다.[^indexed-by-integer-values]
 
-`String` 의 첫 번째에 위치한 `Character` 에 접근하려면 `startIndex` 속성을 사용해야 합니다. `endIndex` 속성은 `String` 에서 마지막 문자의 그 다음 위치를 가리킵니다. 따라서 `endIndex` 속성은 문자열의 '첨자 연산 (subscript)' 인자로 유효하지 않습니다. `String` 이 비어있으면, `startIndex` 와 `endIndex` 이 같습니다.
+`String` 의 첫 번째 `Character` 위치에 접근하려면 `startIndex` 속성을 사용합니다. `endIndex` 속성은 `String` 에 있는 마지막 문자 다음 위치입니다. 그 결과, `endIndex` 속성은 문자열의 '첨자 연산' 에 대한 인자로 유효하지 않습니다. `String` 이 비어있으면, `startIndex` 와 `endIndex` 가 같습니다.
 
-주어진 색인 전후의 색인에 접근하려면 `String` 에 있는 `index(before:)` 와 `index(after:)` 메소드를 사용하기 바랍니다. 주어진 색인에서 멀리 떨어진 색인에 접근하려면, 앞서의 메소드들을 여러 번 호출하는 대신 `index(_:offsetBy:)` 메소드를 사용하면 됩니다.
+`String` 의 `index(before:)` 와 `index(after:)` 메소드를 사용하여 주어진 색인 전후의 색인에 접근합니다. 주어진 색인에서 멀리 떨어진 색인에 접근하려면, 이러한 메소드를 여러 번 호출하는 대신 `index(_:offsetBy:)` 메소드를 사용할 수 있습니다.
 
-'첨자 연산 구문 (subscript syntax)' 을 사용하여 특정 `String` 색인에 있는 `Character` 에 접근할 수 있습니다.
+특정 `String` 색인에 있는 `Character` 에 접근하기 위해 '첨자 연산 구문 표현' 을 사용할 수 있습니다.[^particular-index]
 
 ```swift
 let greeting = "Guten Tag!"
@@ -394,49 +394,49 @@ greeting[index]
 // a
 ```
 
-문자열 범위 밖의 색인이나 문자열 범위 밖의 색인에 있는 `Character` 에 접근하려고 시도하면 'runtime error (실행시간에 에러)' 를 띄웁니다.
+문자열 범위 밖의 색인 또는 문자열 범위 밖의 색인에 있는 `Character` 에 접근하려는 것은 '실행 시간 에러' 를 일으킬 것입니다.
 
 ```swift
 // greeting[greeting.endIndex]  // 에러
 // greeting.index(after: greeting.endIndex) // 에러
 ```
 
-`indices` 속성을 사용하면 문자열에 있는 개별 문자의 모든 색인에 접근할 수 있습니다.
+문자열에 있는 모든 개별 문자의 색인에 접근하려면 `indices` 속성을 사용합니다.
 
 ```swift
 for index in greeting.indices {
-    print("\(greeting[index]) ", terminator: "")
+  print("\(greeting[index]) ", terminator: "")
 }
-// "G u t e n   T a g ! " 를 출력합니다.
+// "G u t e n   T a g ! " 를 인쇄합니다.
 ```
 
-> `startIndex` 와 `endIndex` 속성들 및 `index(before:)`, `index(after:)` 와 `index(_:offsetBy:)` 메소드들은 `Collection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
+> `startIndex` 와 `endIndex` 속성들 그리고 `index(before:)`, `index(after:)`, 및 `index(_:offsetBy:)` 메소드는 `Collection` 프로토콜을 준수하는 어떤 타입에서도 사용할 수 있습니다. 이는, 여기서 보인, `String` 뿐만 아니라 `Array`, `Dictionary`, 및 `Set` 같은 컬렉션 타입을 포함합니다.
 
 #### Inserting and Removing (집어 넣기와 제거하기)
 
-단일 문자를 문자열의 지정된 색인 위치에 삽입하려면, `insert(_:at:)` 메소드를 사용하고, 다른 문자열 '내용 (contents)' 을 지정된 색인 위치에 삽입하려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
+단일 문자를 문자열의 지정된 색인에 집어 넣으려면, `insert(_:at:)` 메소드를 사용하고, 다른 문자열의 '내용물 (contents)' 을 지정된 색인에 집어 넣으려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
 
 ```swift
 var welcome = "hello"
 welcome.insert("!", at: welcome.endIndex)
-// welcome 은 이제 "hello!" 와 같습니다.
+// welcome 은 이제 "hello!" 입니다.
 
 welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
-// welcome 은 이제 "hello there!" 와 같습니다.
+// welcome 은 이제 "hello there!" 입니다.
 ```
 
-문자열에서 지정된 색인 위치의 단일 문자를 제거하려면, `remove(at:)` 메소드를 사용하고, 지정된 범위에 있는 '하위 문자열 (substring)' 을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
+단일 문자를 문자열의 지정된 색인에서 제거하려면, `remove(at:)` 메소드를 사용하고, 지정된 범위의 '하위 문자열 (substring)' 을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
 
 ```swift
 welcome.remove(at: welcome.index(before: welcome.endIndex))
-// welcome 은 이제 "hello there" 와 같습니다.
+// welcome 은 이제 "hello there" 입니다.
 
 let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
 welcome.removeSubrange(range)
-// welcome 은 이제 "hello" 와 같습니다.
+// welcome 은 이제 "hello" 입니다.
 ```
 
-> `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 그리고 `removeSubrange(_:)` 메소드들은 `RangeReplaceableCollection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
+> `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 그리고 `removeSubrange(_:)` 메소드는 `RangeReplaceableCollection` 프로토콜을 준수하는 어떤 타입에서도 사용할 수 있습니다. 이는, 여기서 보인, `String` 뿐만 아니라 `Array`, `Dictionary`, 및 `Set` 같은 컬렉션 타입을 포함합니다.
 
 ### Substrings (하위 문자열)
 
@@ -698,3 +698,7 @@ for scalar in dogString.unicodeScalars {
 [^single-and-multiline]: 이 말은 예제에 있는 `singleLineString` 과 `multilineString` 이 사실상 같은 것이라는 의미입니다. `multilineString` 은 큰 따옴표 세 개를 사용했지만, 한-줄짜리 문자열만 담고 있으므로, 여기서는 두 문자열이 똑같은 상태입니다.
 
 [^letter]: 이 책에서는 '문자' 를 'character' 와 'letter' 두 개의 단어로 사용하고 있는데, 엄밀하게 말해서 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 하지만, 여기서는 둘 다 같은 '문자' 라고 옮기도록 합니다.
+
+[^indexed-by-integer-values]: '정수 값으로 색인될 수 없다' 는 말은 `var myString: String` 이라는 값이 있을 때, `myString[3]` 처럼 정수 색인으로 '임의 접근 (random access)' 할 수 없다는 의미로 추측됩니다. 이어지는 설명을 볼 때, 스위프트의 `String` 은 '배열 (스위프트의 `Array` 컬렉션이 아닌 자료구조로써의 배열)' 이 아니라 '리스트 (역시 'SwiftUI' 의 리스트뷰가 아닌 자료구조로써의 리스트)' 로 구현되었음을 알 수 있습니다.
+
+[^particular-index]: 여기서 사용하는 '첨자 연산 구문 표현' 은 '배열' 자료구조에서 사용하는 '임의 접근 (random access)' 과는 다른 것입니다. 항상 처음과 끝에서 시작해서 순차적으로 탐색해 가는 '리스트' 자료구조 처럼 동작하는 것입니다.
