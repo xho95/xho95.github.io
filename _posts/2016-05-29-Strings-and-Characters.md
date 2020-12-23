@@ -258,7 +258,7 @@ print(goodStart + end)
 // three
 ```
 
-위 코드에서, `badStart` 와 `end` 를 이어붙이면 두-줄짜리 문자열을 내놓는데, 이는 원하는 결과가 아닙니다. `badStart` 의 마지막 줄이 '줄 끊음' 으로 끝나지 않기 때문에, 해당 줄이 `end` 의 첫 번째 줄과 뭉쳐집니다. 이와는 대조적으로, `goodStart` 의 두 줄은 모두 '줄 끊음' 으로 끝나서, `end` 와 조합할 때도 결과는, 예상한 것처럼, 세 줄이 됩니다.
+위 코드에서, `badStart` 와 `end` 를 이어붙이면 두-줄짜리 문자열을 내놓는데, 이는 원하는 결과가 아닙니다. `badStart` 의 마지막 줄이 '줄 끊음' 으로 끝나지 않기 때문에, 해당 줄이 `end` 의 첫 번째 줄과 뭉쳐집니다. 이와는 대조적으로, `goodStart` 의 두 줄은 모두 '줄 끊음' 으로 끝나므로, `end` 와 조합할 때, 예상대로, 결과가 세 줄이 됩니다.
 
 ### String Interpolation (문자열 보간법)
 
@@ -296,17 +296,17 @@ _유니코드 (Unicode)_ 는 서로 다른 '문자 체계 (writing system)' 에�
 
 #### Unicode Scalar Values (유니코드 크기 값)
 
-그 이면을 살펴보면, 스위프트 그 자체의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 제작되어 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 유일한 21-자리 수를 말하며, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`) 에, `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 에 대한 것입니다.
+그 이면을 살펴보면, 스위프트 그 자체의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 제작되어 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대한 '유일한 21-자리 수' 로, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`) 에, `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 에 대한 것입니다.
 
 모든 21-자리 '유니코드 크기 값' 이 문자에 할당된 것은 아님을 기억하기 바랍니다-어떤 크기 값은 미래의 할당을 위해서 또는 'UTF-16 부호화 (encoding)' 에서 사용하기 위해서 예약되어 있습니다. 문자에 할당되어 있는 '크기 값' 은 전형적으로, 위 예제의 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 같이, 이름도 가지고 있습니다.
 
 #### Extended Grapheme Clusters (확장된 자소 덩어리)
 
-스위프트 `Character` 타입의 모든 인스턴스는 단일한 '_확장된 자소 덩어리 (extended grapheme cluster)_' 를 표현합니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 하나 이상의 유니코드 크기 값이 연속된 것으로 (서로 조합하면) 사람이-이해할 수 있는 단일 문자를 만들어 냅니다.
+스위프트의 모든 `Character` 타입 인스턴스는 단 하나의 '_확장된 자소 덩어리 (extended grapheme cluster)_' 를 표현합니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 하나 이상의 유니코드 크기 값이 나열된 것으로 (조합하면) 사람이-이해할 수 있는 단일한 문자를 만들어 냅니다.
 
-예를 들어 보겠습니다. 문자 `é` 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE`, 또는 `U+00E9`) 로 표현할 수 있습니다. 하지만, 똑같은 문자를 한 _쌍 (pair)_ 의 '크기 값'-표준 문자 `e` (`LATIN SMALL LETTER E`, 또는 `U+0065`) 과, 그 뒤의 `COMBINING ACUTE ACCENT` 크기 값 (`U+0301`)-으로 표현할 수도 있습니다. `COMBINING ACUTE ACCENT` 크기 값은 앞에 있는 크기 값에 시각적으로 적용되어, '유니코드-인식 글자-그리기 시스템' 이 이를 그릴 때 `e` 를 `é` 로 바꾸게 됩니다.
+예를 들어 보겠습니다. '문자 (letter)'[^letter] `é` 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 및, `U+00E9`) 로 표현할 수 있습니다. 하지만, 똑같은 문자를 한 _쌍 (pair)_ 의 '크기 값'-표준 문자 `e` (`LATIN SMALL LETTER E` 및, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` 크기 값 (`U+0301`)-으로 표현할 수도 있습니다. `COMBINING ACUTE ACCENT` 크기 값은, '유니코드를-인식하는 글자-그리기 시스템' 이 이를 그릴 때 `e` 를 `é` 로 바꾸도록, 자기 앞의 크기 값에 시각적으로 적용됩니다.
 
-두 경우 모두에서, 문자 `é` 는 하나의 '확장된 자소 덩어리' 를 표현하는 단일 스위프트 `Character` 값으로 표현됩니다. 첫 번째 경우는, '덩어리 (cluster)' 가 단일 크기 값을 담고 있으며; 두 번째 경우는, 두 크기 값을 가진 '덩어리' 입니다:
+두 경우 모두, 문자 `é` 는 하나의 '확장된 자소 덩어리' 를 표현하는 '단일 스위프트 `Character` 값' 으로 표현됩니다. 첫 번째 경우엔, '덩어리 (cluster)' 가 단일 크기 값을 담고 있으며; 두 번째 경우, 이는 두 크기 값의 '덩어리' 입니다:
 
 ```swift
 let eAcute: Character = "\u{E9}"                // é
@@ -314,7 +314,7 @@ let combinedEAcute: Character = "\u{65}\u{301}" // e 와 그 뒤의  ́
 // eAcute 는 é 이고, combinedEAcute 도 é 입니다.
 ```
 
-'확장된 자소 덩어리' 는 '쓰는 방법이 많고 복잡한 문자 (many complex script characters)' 를 단일 `Character` 값으로 표현하는데 유연한 방법입니다. 예를 들어, '한글' 에서 '한국어 음절' 은 '완성형 (precomposed)' 또는 '조합형 (decomposed)' 어느 것으로도 표현할 수 있습니다. 이 두 표현법 모두는 스위프트에서 단일 `Character` 값으로 인정 받습니다:
+'확장된 자소 덩어리' 는 '쓰는 방법이 많고 복잡한 문자 (many complex script characters)' 를 단일 `Character` 값으로 표현하는 유연한 방법입니다. 예를 들어, '한글' 에서 '한국어 음절' 은 '완성형 (precomposed)' 또는 '조합형 (decomposed)' 어느 것으로도 표현할 수 있습니다. 이 두 표현법 모두 스위프트에서 '단일 `Character` 값' 으로 인정합니다:
 
 ```swift
 let precomposed: Character = "\u{D55C}"                 // 한
@@ -322,14 +322,14 @@ let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"  // ᄒ, ᅡ, ᆫ
 // precomposed 는 '한' 이고, decomposed 도 '한' 입니다.
 ```
 
-'확장된 자소 덩어리' 는 단일 `Character` 값을 위해 (`COMBINING ENCLOSING CIRCLE`, 또는 `U+20DD` 같은) 테두리 표시용 크기 값으로 다른 유니코드 크기 값에 테두리도 칠 수 있게 해줍니다.
+'확장된 자소 덩어리' 는 (`COMBINING ENCLOSING CIRCLE` 및, `U+20DD` 같은) 테두리 표시를 위한 크기 값으로 다른 유니코드 크기 값에 테두리를 쳐서 단일 `Character` 값을 만들게 해줍니다.
 
 ```swift
 let enclosedEAcute: Character = "\u{E9}\u{20DD}"
 // enclosedEAcute 은 é⃝ 입니다.
 ```
 
-'지역 지시 기호 (regional indicator symbols)' 에 대한 유니코드 크기 값은 단일 `Character` 값을 만들기 위해, `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 의 조합처럼, 쌍으로 조합할 수 있습니다.:
+'지역 지시 기호 (regional indicator symbols)' 에 대한 유니코드 크기 값은 서로 쌍으로 조합하여 단일 `Character` 값을 만들 수 있는데, 가령 `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 의 조합은 다음과 같습니다:
 
 ```swift
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
@@ -338,32 +338,32 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 
 ### Counting Characters (문자 개수 세기)
 
-문자열에 있는 `Character` 의 개수를 구하려면, 문자열의 `count` 속성을 사용하면 됩니다:
+문자열에서 `Character` 값의 개수를 가져오려면, 문자열의 `count` 속성을 사용합니다:
 
 ```swift
 let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
 print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
-// "unusualMenagerie has 40 characters" 를 출력합니다.
+// "unusualMenagerie has 40 characters" 를 인쇄합니다.
 ```
 
-스위프트에서는 `Character` 값으로 '확장된 자소 덩어리' 를 사용하므로 문자열을 연결하거나 수정하더라도 문자열의 문자 개수가 변하지 않을 수도 있다는 점을 명심하기 바랍니다.
+스위프트의 `Character` 값에 '확장된 자소 덩어리' 를 사용함으로 인해 문자열 이어붙이기와 수정이 문자열의 글자 개수에 항상 영향을 주지는 않는다는 점을 기억하기 바랍니다.
 
-예를 들어, 새로운 문자열을 4-개의 글자로 된 단어 `cafe` 로 초기화한 후, 문자열 끝에 `COMBINING ACUTE ACCENT` (`U+0301`) 를 덧붙이면, 그 결과 문자열의 글자 개수는 여전히 `4` 개이며, 네 번째 문자는 `e` 대신 `é` 가 됩니다:
+예를 들어, 새로운 문자열을 네-글자 단어인 `cafe` 로 초기화하고 나서, 문자열 끝에 `COMBINING ACUTE ACCENT` (`U+0301`) 를 덧붙인 경우, 네 번째 문자로, `e` 대신, `é` 를 가진, 결과 문자열은 여전히 `4` 라는 글자 개수를 가질 것입니다:
 
 ```swift
 var word = "cafe"
 print("the number of characters in \(word) is \(word.characters.count)")
-// "the number of characters in cafe is 4" 를 출력합니다.
+// "the number of characters in cafe is 4" 를 인쇄합니다.
 
 word += "\u{301}"       // COMBINING ACUTE ACCENT, U+0301
 
 print("the number of characters in \(word) is \(word.characters.count)")
-// "the number of characters in café is 4" 를 출력합니다.
+// "the number of characters in café is 4" 를 인쇄합니다.
 ```
 
-> 확장된 자소 덩어리 (extended grapheme clusters) 는 여러 가지의 유니코드 크기 값들로 구성 될 수 있습니다. 이것은 다른 문자들-그리고 같은 문자에 대한 다른 표현 방법들-을 저장할 때 메모리의 크기가 다를 수도 있다는 것을 의미합니다. 이러한 이유로, 스위프트의 문자들은 각각이 문자열 내에서 같은 크기의 메모리를 차지하고 있지 않습니다. 그 결과, 문자열의 문자 개수를 계산하려면 문자열 전체에 동작을 반복하는 과정이 반드시 필요하며, 이는 확장된 자소 덩어리의 경계를 알아야 하기 때문입니다. 특히 긴 문자열을 사용하면서 `count` 속성을 사용하게 되면, 문자열의 문자 개수를 구하기 위해 전체 문자열에 있는 유니코드 크기 값을 구하는 동작을 반복하게 된다는 것을 알고 있어야 합니다.
+> '확장된 자소 덩어리' 는 '다중 유니코드 크기 값' 으로 구성될 수 있습니다. 이는 서로 다른 문자들-및 같은 문자에 대한 서로 다른 표현법들-은 저장을 위해 서로 다른 크기의 메모리가 필수일 수 있다는 것을 의미합니다. 이 때문에, 스위프트의 문자는 문자열 표현 내에서 각각이 같은 크기의 메모리를 차지하지 않습니다. 그 결과, 문자열의 글자 개수는 '확장된 자소 덩어리' 의 경계를 결정하기 위해 문자열 전체에 동작을 반복해야만 계산할 수 있습니다. 특별히 긴 문자열과 작업할 경우, `count` 속성이 해당 문자열의 글자를 결정하기 위해서는 반드시 전체 문자열의 유니코드 크기 값에 동작을 반복해야 함을 깨달아야 합니다.
 >
-> `count` 속성이 반환하는 문자 개수는 같은 문자들을 갖고 있는 `NSString` 의 `length` (길이) 속성과 다를 수도 있습니다. `NSString` 의 길이 값은 문자열의 UTF-16 표현 방식에 있는 '16-비트 코드 단위' 의 개수를 기반으로 한 것이며 문자열에 있는 유니코드 방식의 '확장된 자소 덩어리' 개수가 아닙니다.
+> `count` 속성이 반환하는 글자 개수는 똑같은 문자를 담은 `NSString` 의 `length` 속성과 항상 같지는 않습니다. `NSString` 의 '길이' 는 문자열 내의 유니코드 식의 '확장된 자소 덩어리' 개수가 아니라 문자열의 UTF-16 표현법 내의 '16-자리 코드 단위' 의 개수에 기초한 것입니다.
 
 ### Accessing and Modifying a String (문자열에 접근하고 수정하기)
 
@@ -412,7 +412,7 @@ for index in greeting.indices {
 
 > `startIndex` 와 `endIndex` 속성들 및 `index(before:)`, `index(after:)` 와 `index(_:offsetBy:)` 메소드들은 `Collection` 프로토콜을 준수하기만 하면 어떤 타입에서도 사용할 수 있습니다. 여기에는 지금까지 설명한 `String` 외에도 `Array`, `Dictionary` 그리고 `Set` 같은 컬렉션 타입들이 포함됩니다.
 
-#### Inserting and Removing (삽입하고 제거하기)
+#### Inserting and Removing (집어 넣기와 제거하기)
 
 단일 문자를 문자열의 지정된 색인 위치에 삽입하려면, `insert(_:at:)` 메소드를 사용하고, 다른 문자열 '내용 (contents)' 을 지정된 색인 위치에 삽입하려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
 
@@ -696,3 +696,5 @@ for scalar in dogString.unicodeScalars {
 [^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
 
 [^single-and-multiline]: 이 말은 예제에 있는 `singleLineString` 과 `multilineString` 이 사실상 같은 것이라는 의미입니다. `multilineString` 은 큰 따옴표 세 개를 사용했지만, 한-줄짜리 문자열만 담고 있으므로, 여기서는 두 문자열이 똑같은 상태입니다.
+
+[^letter]: 이 책에서는 '문자' 를 'character' 와 'letter' 두 개의 단어로 사용하고 있는데, 엄밀하게 말해서 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 하지만, 여기서는 둘 다 같은 '문자' 라고 옮기도록 합니다.
