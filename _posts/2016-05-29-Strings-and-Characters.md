@@ -440,7 +440,7 @@ welcome.removeSubrange(range)
 
 ### Substrings (하위 문자열)
 
-문자열에서 '하위 문자열 (substring)' 을 가져오면-예를 들어, 첨자 연산이나 `prefix(_:)` 같은 메소드를 쓸 경우-그 결과는 하나의 [Substring](https://developer.apple.com/documentation/swift/substring) 인스턴스이며, 또 다른 문자열 (타입) 인 것이 아닙니다. 스위프트의 '하위 문자열 (substring)' 은 '문자열 (string)' 과 거의 같은 메소드를 가지고 있기 때문에, 하위 문자열을 문자열을 쓰듯이 작업할 수 있긴 합니다. 하지만, 문자열과는 달리, 하위 문자열로 문자열 작업을 수행할 때는 짧은 시간 동안만 사용하도록 합니다. 결과를 더 오랜 시간동안 저장하려고 한다면, 하위 문자열을 `String` 인스턴스로 변환하도록 합니다. 예를 들면 다음과 같습니다:
+문자열에서 '하위 문자열 (substring)' 을 가져올 때-예를 들어, '첨자 연산' 이나 `prefix(_:)` 같은 메소드를 사용하는 경우-결과는, 또 하나의 문자열이 아니라, [Substring](https://developer.apple.com/documentation/swift/substring) 의 인스턴스입니다. 스위프트의 '하위 문자열' 은 문자열과 거의 똑같은 메소드를 가지는데, 이는 문자열을 작업할 때와 똑같은 방식으로 하위 문자열과 작업할 수 있다는 것을 의미합니다. 하지만, 문자열과는 달리, 하위 문자열은 문자열 작업을 하는 짧은 시간 동안에만 사용합니다. 결과를 더 오랫동안 저장할 준비가 됐을 때, 하위 문자열을 `String` 의 인스턴스로 변환합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let greeting = "Hello, world!"
@@ -448,17 +448,17 @@ let index = greeting.firstIndex(of: ",") ?? greeting.endIndex
 let beginning = greeting[..<index]
 // beginning 은 "Hello" 입니다.
 
-// 오래 저장하기 위해 결과를 String 으로 변환합니다.
+// 오랜-기간 저장하기 위해 결과를 String 으로 변환합니다.
 let newString = String(beginning)
 ```
 
-문자열과 마찬가지로, 각각의 하위 문자열은 그 하위 문자열을 구성하는 문자들을 저장하는 메모리 영역이 있습니다. 문자열과 하위 문자열의 차이점은, 성능 최적화로 인해, 하위 문자열은 원래 문자열 또는 다른 하위 문자열이 저장된 메모리의 일부를 재사용할 수도 있다는 것입니다. (문자열도 비슷한 최적화 기능을 갖고 있지만, 두 문자열이 메모리를 공유할 때는, 서로 같을 때 뿐입니다.) 이러한 성능 최적화가 의미하는 것은 문자열이나 하위 문자열의 경우 수정하기 전까지는 메모리를 복사하는데 드는 성능 비용을 신경쓰지 않아도 된다는 점입니다. 앞서 언급한 대로, 하위 문자열은 오랜-기간 저장하는 용도로는 적합하지 않습니다-이는 원래 문자열의 저장 공간을 재사용할 경우, 하위 문자열을 사용하는 한 원래 문자열 전체에 대한 메모리를 계속 유지해야만 하기 때문입니다.
+문자열과 같이, 각 하위 문자열은 하위 문자열을 이루는 문자들이 저장된 메모리 영역을 가지고 있습니다. 문자열과 하위 문자열의 차이점은 하위 문자열의 경우, 성능 최적화로 의해, 원래의 문자열을 저장하고자 사용하는 메모리, 또는 다른 하위 문자열을 저장하고자 사용하는 메모리를 재사용할 수 있다는 것입니다. (문자열도 비슷한 최적화를 하지만, 두 문자열이 메모리를 할 때, 이들은 똑같은 것입니다.) 이런 성능 최적화는 문자열이나 하위 문자열 중 하나를 수정하기 전까지 메모리 복사를 위한 성능 비용을 지불하지 않아도 된다는 것을 의미합니다. 위에서 언급한 것처럼, 하위 문자열은 '오랜-기간 저장 (long-term storage)' 하는 데는 적합하지 않습니다-왜냐면 이는 원래 문자열의 저장 공간을 재사용하므로, 하위 문자열 중 어떤 것이든 사용 중이라면 반드시 원래 문자열 전체를 메모리에 유지해야 하기 때문입니다.
 
-위의 예에서, `greeting` 은 문자열이므로, 이를 구성하는 문자들을 저장하는 메모리 영역을 가지고 있습니다. `beginning` 은 `greeting` 의 하위 문자열이라서, `greeting` 이 가지고 있는 메모리를 재사용합니다. 이와는 다르게, `newString` 은 하나의 문자열로-하위 문자열을 이용해서 생성될 때, 자신만의 저장 공간을 가집니다. 이 관계는 아래 그림과 같습니다:
+위 예제에서, `greeting` 은 문자열인데, 이는 문자열을 이루는 문자들이 저장된 메모리 영역을 가지고 있음을 의미합니다. `beginning` 은 `greeting` 의 하위 문자열이기 때문에, 이는 `greeting` 이 사용하는 메모리를 재사용합니다. 이와는 대조적으로, `newString` 은 문자열입니다-하위 문자열을 써서 생성할 때, 이는 자신만의 저장 공간을 가지게 됩니다. 아래 그림은 이러한 관계를 보여줍니다:
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-substrings.jpg)
 
-> `String` 과 `Substring` 은 모두 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 `StringProtocol` 값을 전달받는 '문자열 조작 함수 (string manipulation functions)' 를 쓰는 것이 편할 때가 많다는 것을 의미합니다. 이러한 함수는 `String` 이나 `Substring` 값에 상관없이 호출할 수 있습니다.
+> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 대체로 `StringProtocol` 값을 받는 '문자열 조작 (string-manipulation) 함수' 에 알맞음을 의미합니다. 그런 함수는 `String` 이나 `Substring` 값 어느 것으로도 호출할 수 있습니다.
 
 ### Comparing Strings (문자열 비교하기)
 
