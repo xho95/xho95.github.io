@@ -458,43 +458,43 @@ let newString = String(beginning)
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-substrings.jpg)
 
-> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 대체로 `StringProtocol` 값을 받는 '문자열 조작 (string-manipulation) 함수' 에 알맞음을 의미합니다. 그런 함수는 `String` 이나 `Substring` 값 어느 것으로도 호출할 수 있습니다.
+> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 '문자열 조작 (string-manipulation) 함수' 의 경우 `StringProtocol` 값을 받는 것이 대체로 편리하다는 것을 의미합니다. 그런 함수는 `String` 이나 `Substring` 값 어느 것으로도 호출할 수 있습니다.
 
 ### Comparing Strings (문자열 비교하기)
 
-스위프트는 '글자 형태의 값 (textual values)' 을 비교하는 다음의 세 가지 방법을 제공합니다: '문자열과 문자 동등성 (string and character equality)', '접두사 동등성 (prefix equality)', '접미사 동등성 (suffix equality)'.
+스위프트는 '문장 형태의 (textual) 값' 을 비교하는 세 가지 방법을 제공합니다: '문자열과 문자의 같음 비교 (string and character equality)', '접두사 같음 비교 (prefix equality)', '접미사 같음 비교 (suffix equality)' 이 그것입니다.
 
-#### String and Character Equality (문자열 동등성 및 문자 동등성)
+#### String and Character Equality (문자열과 문자의 같음 비교)
 
-문자열 동등성 및 문자의 동등성은 "같음" 연산자 (`==`) 와 "같지 않음" 연산자 (`!=`) 로 검사하며, 이는 [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 에서 설명한 바 있습니다:
+'문자열과 문자의 같음 비교' 는, [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 에서 설명한 것처럼, "같음 (equal to)" 연산자 (`==`) 와 "같지 않음 (not equal to)" 연산자 (`!=`) 로 검사합니다:
 
 ```swift
 let quotation = "We're a lot alike, you and I."
 let sameQuotation = "We're a lot alike, you and I."
 if quotation == sameQuotation {
-    print("These two strings are considered equal")
+  print("These two strings are considered equal")
 }
-// "These two strings are considered equal." 을 출력합니다.
+// "These two strings are considered equal." 을 인쇄합니다.
 ```
 
-두 개의 `String` 값 (또는 두 개의 `Character` 값) 은 그들의 '확장된 자소 덩어리 (extended grapheme clusters)' 가 _법적으로 동등하면 (canonically equivalent)_ 서로 같다고 여겨집니다. 확장된 자소 덩어리가 법적으로 동등하다는 말은, 그들이 실제로는 서로 다른 '유니코드 크기 값' 으로 구성되었더라도, 언어적인 의미와 형태가 같다면 동등하다는 말입니다.
+두 `String` 값들 (또는 두 `Character` 값들) 은 그들의 '확장된 자소 덩어리' 가 '_법적으로 동치 (canonically equivalent)_'[^canonically] 이면 같다고 간주합니다. 확장된 자소 덩어리는 그들이, 심지어 그 이면에서는 서로 다른 '유니코드 크기 값' 으로 구성되었다 할지라도, '언어적으로 (linguistic)' 같은 의미와 형태를 가지면 '법적으로 동치' 입니다.
 
-예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 `LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 붙은 것과 법적으로 동등합니다. 이 두 개의 '확장된 자소 덩어리' 는 모두 문자 `é` 를 표현하는 유효한 방법이므로, 법적으로 동등하다고 볼 수 있습니다:
+예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 `LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 붙은 것과 '법적으로 동치' 입니다. 이 두 '확장된 자소 덩어리' 모두 문자 `é` 를 표현하는 방식으로 유효하므로, 이들은 '법적으로 동치' 라고 간주할 수 있습니다:
 
 ```swift
-// "Voulez-vous un café?" using LATIN SMALL LETTER E WITH ACUTE
+// "Voulez-vous un café?" 가 LATIN SMALL LETTER E WITH ACUTE 를 사용한 경우
 let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
 
-// "Voulez-vous un café?" using LATIN SMALL LETTER E and COMBINING ACUTE ACCENT
+// "Voulez-vous un café?" 가 LATIN SMALL LETTER E 와 COMBINING ACUTE ACCENT 를 사용한 경우
 let combinedEAccuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
 
 if eAcuteQuestion == combinedEAccuteQuestion {
     print("These two strings are considered equal")
 }
-// "These two strings are considered equal" 를 출력합니다.
+// "These two strings are considered equal" 를 인쇄합니다.
 ```
 
-이와는 다르게, 영어에서 사용되는 `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는 러시아어에서 사용되는 `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 같지 _않 (not)_ 습니다. 두 문자는 비슷해 보이지만, 동일한 언어적인 의미를 가지지 않기 때문입니다:
+거꾸로 말해서, 영어에서 사용된, `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는, 러시아어에서 사용된, `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 동치가 _아닙니다 (not)_. 이 문자들은 보기에는 비슷하지만, 언어적으로 같은 의미를 가지지 않습니다:
 
 ```swift
 let latinCapitalLetterA: Character = "\u{41}"
@@ -502,18 +502,18 @@ let latinCapitalLetterA: Character = "\u{41}"
 let cyrillicCapitalLetterA: Character = "\u{0410}"
 
 if latinCapitalLetterA != cyrillicCapitalLetterA {
-    print("These two characters are not equivalent")
+  print("These two characters are not equivalent")
 }
-// "These two characters are not equivalent" 를 출력합니다.
+// "These two characters are not equivalent" 를 인쇄합니다.
 ```
 
-> 스위프트의 문자열 비교 연산 및 문자 비교 연산은 '지역에-민감하지 (locale-sensitive)'[^locale-sensitive] 않습니다.
+> 스위프트의 문자열과 문자 비교 연산은 '지역에-민감 (locale-sensitive)'[^locale-sensitive] 하지 않습니다.
 
-#### Prefix and Suffix Equality (접두사 및 접미사 동등성)
+#### Prefix and Suffix Equality (접두사와 접미사의 같음 비교)
 
-문자열에 특정 문자열로 된 접두사나 접미사가 있는지 확인하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하면 되는데, 이 둘은 모두 `String` 타입의 단일 인자를 가지고, 불리언 (Boolean) 값을 반환합니다.
+문자열이 특정 문자열의 접두사나 접미사를 가지고 있는지 검사하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하는데, 이 둘 모두 `String` 타입의 단일 인자를 취하고 '불리언 (Boolean)' 값을 반환합니다.
 
-아래 예제는 문자열의 배열에 대한 예제로, 이는 셰익스피어의 희곡 _로미오와 줄리엣 (Romeo and Juliet)_ 의 첫 두 막에 대한 각 '장 (scene)' 의 장소입니다:
+아래 예제는 셰익스피어의 _로미오와 줄리엣 (Romeo and Juliet)_ 에 있는 첫 두 '막 (acts)' 의 각 '장(면; scene)' 을 표현하는 문자열 배열을 고려합니다:
 
 ```swift
 let romeoAndJuliet = [
@@ -531,38 +531,37 @@ let romeoAndJuliet = [
 ]
 ```
 
-`hasPrefix(_:)` 메소드를 `romeoAndJuliet` 배열에 사용하여, 희곡의 제 1 막에 있는 '장 (scene)' 의 개수를 계산할 수 있습니다:
+`hasPrefix(_:)` 메소드를 `romeoAndJuliet` 배열에 사용하면 '희곡 (play)' 의 '제 1막' 에 있는 '장(면)' 의 수를 셀 수 있습니다:
 
 ```swift
 var act1SceneCount = 0
 
 for scene in romeoAndJuliet {
-    if scene.hasPrefix("Act 1") {
-        act1SceneCount += 1
-    }
+  if scene.hasPrefix("Act 1") {
+    act1SceneCount += 1
+  }
 }
 print("There are \(act1SceneCount) scenes in Act 1")
-// "There are 5 scenes in Act 1" 를 출력합니다.
+// "There are 5 scenes in Act 1" 를 인쇄합니다.
 ```
 
-이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하여 '장 (scene)' 에서 'Capulet's mansion (저택)' 과 'Friar Lawrence's cell (작은 방)' 위치에 대한 개수를 계산할 수 있습니다:
+이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하면 '캐퓰렛 저택 (Capulet's mansion)'[^capulet] 과 '로렌스 수사의 작은 방 (Friar Lawrence's cell)'[^friar] 인 곳 또는 이 곳 주변에서 일어나는 '장(면)' 의 수를 셀 수 있습니다.:
 
 ```swift
 var mansionCount = 0
 var cellCount = 0
 for scene in romeoAndJuliet {
-    if scene.hasSuffix("Capulet's mansion") {
-        mansionCount += 1
-    } else if scene.hasSuffix("Friar Lawrence's cell") {
-        cellCount += 1
-    }
+  if scene.hasSuffix("Capulet's mansion") {
+    mansionCount += 1
+  } else if scene.hasSuffix("Friar Lawrence's cell") {
+    cellCount += 1
+  }
 }
 print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
-
-// "6 mansion scenes; 2 cell scenes" 를 출력합니다.
+// "6 mansion scenes; 2 cell scenes" 를 인쇄합니다.
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 대해 '확장된 자소 덩어리' 사이의 개별 문자하나씩 법적으로 동등한지를 비교하는 연산을 수행하며, 이는 [String and Character Equality (문자열 동등성 및 문자 동등성)](#string-and-character-equality-문자열-동등성-및-문자-동등성) 에서 설명했었습니다.
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는, [String and Character Equality (문자열과 문자의 같음 비교)](#string-and-character-equality-문자열과-문자의-같음-비교) 에서 설명한 것처럼, 각 문자열에 있는 '확장된 자소 덩어리' 사이에 문자 하나씩마다 법적으로 동치인지를 비교하는 연산을 수행합니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현)
 
@@ -685,7 +684,7 @@ for scalar in dogString.unicodeScalars {
 
 [^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
 
-[^locale-sensitive]: 'locale-sensitive' 는 '지역에 대한 민감성' 을 나타내는데, '비교 연산 (comparison)' 이 '지역에 민감한 (locale-sensitive)' 것은 서로 다른 지역의 언어에 대해 비교 연산을 할 수 없다는 의미로 추측됩니다. 스위프트의 문자열 연산은 유니코드에 부합하므로 지역에 민감하지 않다고 볼 수 있습니다.
+[^locale-sensitive]: '지역에-민감 (locale-sensitive)' 하다는 말은, [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, 비교 연산을 수행하기 위해 '지역 정보 (locale) 객체' 를 요구하는 것을 말한다고 합니다. 보다 자세한 내용은 해당 링크의 내용을 참고하기 바랍니다.
 
 [^line-feed]: 스위프트 (라기 보다는 애플 운영체제) 에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자는 셋 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
 
@@ -702,3 +701,9 @@ for scalar in dogString.unicodeScalars {
 [^indexed-by-integer-values]: '정수 값으로 색인될 수 없다' 는 말은 `var myString: String` 이라는 값이 있을 때, `myString[3]` 처럼 정수 색인으로 '임의 접근 (random access)' 할 수 없다는 의미로 추측됩니다. 이어지는 설명을 볼 때, 스위프트의 `String` 은 '배열 (스위프트의 `Array` 컬렉션이 아닌 자료구조로써의 배열)' 이 아니라 '리스트 (역시 'SwiftUI' 의 리스트뷰가 아닌 자료구조로써의 리스트)' 로 구현되었음을 알 수 있습니다.
 
 [^particular-index]: 여기서 사용하는 '첨자 연산 구문 표현' 은 '배열' 자료구조에서 사용하는 '임의 접근 (random access)' 과는 다른 것입니다. 항상 처음과 끝에서 시작해서 순차적으로 탐색해 가는 '리스트' 자료구조 처럼 동작하는 것입니다.
+
+[^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 는 '표준적으로' 라고 옮길 수도 있는데, 이 역시 '교회 법' 이 하나의 '표준' 이기 때문에 유래한 의미입니다.
+
+[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 성입니다. 즉, 줄리엣의 본명은 '줄리엣 캐퓰렛' 입니다.
+
+[^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 일정 시간 동안 죽은 것 같은 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 의 의미가 있습니다.
