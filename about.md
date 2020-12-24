@@ -23,5 +23,9 @@ permalink: /about/
 
 * 2020-06-28 : SwiftUI 스터디 모임 Steppers 시작
 
+### Papers
+
+* 2013 : [A Study of Path Planning Algorithm Based on the Survival Probability](https://link.springer.com/chapter/10.1007/978-3-642-33926-4_72)
+
 [profile]: /assets/Me/Memoji.jpeg
 {: margin="50px" align="right" height="100px"}
