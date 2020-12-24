@@ -12,7 +12,7 @@ categories: Swift Grammar Strings Characters
 
 _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 처럼, 문자들이 연속된 것입니다. 스위프트 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 에는, `Character` 값의 '컬렉션 (collection)'[^collection] 을 포함한, 다양한 방법으로 접근할 수 있습니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드에서 '문장 (text)' 작업을 위한 빠르고, '유니코드를 따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 써서, 가볍고 이해하기 쉽습니다. 문자열 '이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, 문자열의 '변경 가능성 (mutability)' 은, 스위프트에 있는의 다른 값들처럼, 상수나 변수를 선택하는 것으로 관리됩니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 및 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣기 위해서도 사용할 수 있는데, 이 과정을 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이는 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성하도록 해줍니다.
+스위프트의 `String` 과 `Character` 타입은 코드에서 '문장 (text)' 작업을 위한 빠르고, '유니코드를-따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 써서, 가볍고 이해하기 쉽습니다. 문자열 '이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, 문자열의 '변경 가능성 (mutability)' 은, 스위프트에 있는의 다른 값들처럼, 상수나 변수를 선택하는 것으로 관리됩니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 및 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣기 위해서도 사용할 수 있는데, 이 과정을 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이는 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성하도록 해줍니다.
 
 구문 표현이 간단함에도 불구하고, 스위프트의 `String` 타입은 빠르고, 최신인 문자열 구현입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 구성되며, 다양한 유니코드 표현법으로 해당 문자들에 접근하는 것을 지원합니다.
 
@@ -296,9 +296,9 @@ _유니코드 (Unicode)_ 는 서로 다른 '문자 체계 (writing system)' 에�
 
 #### Unicode Scalar Values (유니코드 크기 값)
 
-그 이면을 살펴보면, 스위프트 그 자체의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 제작되어 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대한 '유일한 21-자리 수' 로, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`) 에, `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 에 대한 것입니다.
+그 이면을 살펴보면, 스위프트 그 자체의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 제작되어 있습니다. '유니코드 크기 값' 은 하나의 문자 또는 '수정자 (modifier)' 에 대한 '유일한 21-비트 수' 로, 가령 `U+0061` 은 `LATIN SMALL LETTER A` (`"a"`) 에, `U+1F425` 는 `FRONT-FACING BABY CHICK` (`"🐥"`) 에 대한 것입니다.
 
-모든 21-자리 '유니코드 크기 값' 이 문자에 할당된 것은 아님을 기억하기 바랍니다-어떤 크기 값은 미래의 할당을 위해서 또는 'UTF-16 부호화 (encoding)' 에서 사용하기 위해서 예약되어 있습니다. 문자에 할당되어 있는 '크기 값' 은 전형적으로, 위 예제의 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 같이, 이름도 가지고 있습니다.
+모든 21-비트 '유니코드 크기 값' 이 문자에 할당된 것은 아님을 기억하기 바랍니다-어떤 크기 값은 미래의 할당을 위해서 또는 'UTF-16 부호화 (encoding)' 에서 사용하기 위해서 예약되어 있습니다. 문자에 할당되어 있는 '크기 값' 은 전형적으로, 위 예제의 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 같이, 이름도 가지고 있습니다.
 
 #### Extended Grapheme Clusters (확장된 자소 덩어리)
 
@@ -363,7 +363,7 @@ print("the number of characters in \(word) is \(word.characters.count)")
 
 > '확장된 자소 덩어리' 는 '다중 유니코드 크기 값' 으로 구성될 수 있습니다. 이는 서로 다른 문자들-및 같은 문자에 대한 서로 다른 표현법들-은 저장을 위해 서로 다른 크기의 메모리가 필수일 수 있다는 것을 의미합니다. 이 때문에, 스위프트의 문자는 문자열 표현 내에서 각각이 같은 크기의 메모리를 차지하지 않습니다. 그 결과, 문자열의 글자 개수는 '확장된 자소 덩어리' 의 경계를 결정하기 위해 문자열 전체에 동작을 반복해야만 계산할 수 있습니다. 특별히 긴 문자열과 작업할 경우, `count` 속성이 해당 문자열의 글자를 결정하기 위해서는 반드시 전체 문자열의 유니코드 크기 값에 동작을 반복해야 함을 깨달아야 합니다.
 >
-> `count` 속성이 반환하는 글자 개수는 똑같은 문자를 담은 `NSString` 의 `length` 속성과 항상 같지는 않습니다. `NSString` 의 '길이' 는 문자열 내의 유니코드 식의 '확장된 자소 덩어리' 개수가 아니라 문자열의 UTF-16 표현법 내의 '16-자리 코드 단위' 의 개수에 기초한 것입니다.
+> `count` 속성이 반환하는 글자 개수는 똑같은 문자를 담은 `NSString` 의 `length` 속성과 항상 같지는 않습니다. `NSString` 의 '길이' 는 문자열 내의 유니코드 식의 '확장된 자소 덩어리' 개수가 아니라 문자열의 UTF-16 표현법 내의 '16-비트 코드 단위'[^16-bit-code-units] 의 개수에 기초한 것입니다.
 
 ### Accessing and Modifying a String (문자열에 접근하고 수정하기)
 
@@ -561,87 +561,85 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 // "6 mansion scenes; 2 cell scenes" 를 인쇄합니다.
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는, [String and Character Equality (문자열과 문자의 같음 비교)](#string-and-character-equality-문자열과-문자의-같음-비교) 에서 설명한 것처럼, 각 문자열에 있는 '확장된 자소 덩어리' 사이에 문자 하나씩마다 법적으로 동치인지를 비교하는 연산을 수행합니다.
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 있는 '확장된 자소 덩어리' 사이를, [String and Character Equality (문자열과 문자의 같음 비교)](#string-and-character-equality-문자열과-문자의-같음-비교) 에서 설명한 것처럼, 문자와 문자끼리 법적 동치인지를 비교하여 수행합니다.
 
-### Unicode Representations of Strings (문자열의 유니코드 표현)
+### Unicode Representations of Strings (문자열의 유니코드 표현법)
 
-유니코드 문자열을 텍스트 파일이나 다른 저장소에 기록하면, 그 문자열의 '유니코드 크기 값' 은 유니코드에-정의된 여러 '_인코딩 양식 (encording forms; 부호화 양식)_' 중 한 가지로 인코딩 됩니다. 각 양식은 문자열을 _코드 단위 (code units)_ 라는 작은 조각으로 인코딩합니다. 여기에는 UTF-8 인코딩 양식 (문자열을 8-bit '코드 단위' 로 인코딩), UTF-16 인코딩 양식 (문자열을 16-bit '코드 단위' 로 인코딩), 그리고 UTF-32 인코딩 양식 (문자열을 32-bit '코드 단위' 로 인코딩) 이 있습니다.
+유니코드 문자열이 문서 파일이나 다른 저장 공간에 작성되어 있을 때, 해당 문자열에 있는 '유니코드 크기 값' 은 유니코드에서-정의한 여러 가지 '_인코딩 형식 (encording forms)_' 중 하나로 '인코딩 (encoding; 복호화)' 되어 있습니다. 각 형식은 문자열을 '_코드 단위 (code units)_' 라는 작은 조각으로 '인코딩' 합니다. 이는 (문자열을 8-비트 '코드 단위' 로 인코딩하는) 'UTF-8' 인코딩 형식 , (문자열을 16-비트 '코드 단위' 로 인코딩하는) 'UTF-16' 인코딩 형식 , 그리고 (문자열을 32-비트 '코드 단위' 로 인코딩하는) 'UTF-32' 인코딩 형식을 포함합니다.
 
-스위프트는 문자열의 유니코드 '표현 (representations)' 에 접근하는 여러 가지 방법들을 제공합니다. 문자열에 `for-in` 구문을 사용하면, 개별 `Character` 값을 '확장된 자소 덩어리' 의 형태로 접근하여, 동작을 반복 적용시킬 수 있습니다. 이 과정은 [Working with Characters (문자 다루기)](#working-with-characters-문자-다루기) 에서 설명했었습니다.
+스위프트는 문자열의 '유니코드 표현법' 에 접근하는 여러 가지 방법을 제공합니다. 문자열은, 개별 `Character` 값을 '유니코드 방식의 '확장된 자소 덩어리' 로 접근하기 위해, `for`-`in` 구문으로 동작을 반복할 수 있습니다. 이 과정은 [Working with Characters (문자 다루기)](#working-with-characters-문자-다루기) 에서 설명했습니다.
 
-다른 방법으로, `String` 값에 대해 다음의 세 가지 '유니코드-부합 표현 (Unicode-compliant representations)' 형태로 접근할 수도 있습니다:
+또 다른 방법으로, 세 가지 다른 '유니코드를-따르는 표현법 (Unicode-compliant representations)' 으로 `String` 값에 접근합니다:
 
-* UTF-8 '코드 단위' 의 컬렉션 (문자열의 `utf8` 속성으로 접근 가능)
-* UTF-16 '코드 단위' 의 컬렉션 (문자열의 `utf16` 속성으로 접근 가능)
-* 21-bit '유니코드 크기 값' 의 컬렉션, 문자열의 UTF-32 인코딩 양식과 동등함 (문자열의 `unicodeScalars` 속성으로 접근 가능)
+* UTF-8 코드 단위의 '집합체 (collection)' (문자열의 `utf8` 속성으로 접근함)
+* UTF-16 코드 단위의 집합체 (문자열의 `utf16` 속성으로 접근함)
+* 문자열의 UTF-32 인코딩 형식과 동치인, 21-비트 유니코드 크기 값의 집합체 (문자열의 `unicodeScalars` 속성으로 접근함)
 
-이제부터 나올 각 예제는 다음 문자열에 대한 서로 다른 '표현 (representaions)' 을 보여줍니다. 이 문자열은 문자 `D`, `o`, `g`, `‼` (`DOUBLE EXCLAMATION MARK`, 또는 유니코드 크기 값 `U+203C`) 와 문자 `🐶` (`DOG FACE` 또는 유니코드 크기 값 `U+1F436`) 로 구성되어 있습니다:
+아래의 각 예제는, 문자 `D`, `o`, `g`, `‼` (`DOUBLE EXCLAMATION MARK`, 또는 유니코드 크기 값 `U+203C`), 그리고 `🐶` 문자 (`DOG FACE`, 또는 유니코드 크기 값 `U+1F436`) 로 이루어진, 다음 문자열의 서로 다른 표현법을 보여줍니다:
 
 ```swift
 let dogString = "Dog!!🐶"
 ```
 
-#### UTF-8 Representation (UTF-8 표현)
+#### UTF-8 Representation (UTF-8 표현법)
 
-`String` 의 'UTF-8 표현' 에 접근하려면 `utf8` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `String.UTF8View` 이며, 이는 문자열의 UTF-8 표현에 있는 각각의 바이트 (byte) 하나가 부호없는 8-bit (`UInt8`) 값으로 된 컬렉션 (집합체) 임을 의미합니다:
+`String` 의 'UTF-8 표현법' 에는 `utf8` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `String.UTF8View` 이며, 이는, 문자열의 UTF-8 표현법에 있는 각 바이트 하나가, 부호없는 8-비트 (`UInt8`) 인 값들의 '집합체 (collection)' 입니다:
 
 ![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
 ```swift
 for codeUnit in dogString.utf8 {
-    print("\(codeUnit) ", terminator: "")
+  print("\(codeUnit) ", terminator: "")
 }
 print("")
-// "68 111 103 226 128 188 240 159 144 182 " 를 출력합니다.
+// "68 111 103 226 128 188 240 159 144 182 " 를 인쇄합니다.
 ```
 
-위의 예에서, `codeUnit` 의 처음 세 10-진수의 값들 (`68`, `111`, `103`) 은 문자 `D`, `o`, 그리고 `g` 를 나타내며, 이들의 'UTF-8 표현' 은 'ASCII 표현' 과 같음을 알 수 있습니다. `codeUnit` 의 그 다음의 세 10-진수 값들 (`226`, `128`, `188`) 은 `DOUBLE EXCLAMATION MARK` 문자에 대한 3-바이트짜리 'UTF-8 표현' 입니다. `codeUnit` 의 마지막 네 값들 (`240`, `159`, `144`, `182`) 은 `DOG FACE` 문자에 대한 4-바이트짜리 'UTF-8 표현' 입니다.
+위 예제에서, 처음 세 10-진 `codeUnit` 값 (`68`, `111`, `103`) 들은, 'UTF-8 표현법' 이 'ASCII 표현법' 과 똑같이, 문자 `D`, `o`, 그리고 `g` 를 표현합니다. 그 다음 세 10-진 `codeUnit` 값 (`226`, `128`, `188`) 들은 `DOUBLE EXCLAMATION MARK` 문자의 3-바이트 짜리 'UTF-8 표현법' 입니다. 마지막 네 `codeUnit` 값 (`240`, `159`, `144`, `182`) 들은 `DOG FACE` 문자의 4-바이트 짜리 'UTF-8 표현법' 입니다.
 
-#### UTF-16 Representation (UTF-16 표현)
+#### UTF-16 Representation (UTF-16 표현법)
 
-`String` 의 'UTF-16 표현' 에 접근하려면 `utf16` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `String.UTF16View` 이며, 이는 문자열의 UTF-16 표현에 있는 각각의 바이트 (byte) 하나가 부호없는 16-bit (`UInt16`) 값으로 된 컬렉션 (집합체) 임을 의미합니다:
+`String` 의 'UTF-16 표현법' 에는 `utf16` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `String.UTF16View` 이며, 이는, 문자열의 UTF-16 표현법에 있는 각 16-비트 코드 유닛 하나가, 부호없는 16-비트 (`UInt16`) 인 값들의 '집합체 (collection)' 입니다:
 
 ![UTF-16 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-16-representation.jpg)
 
 ```swift
 for codeUnit in dogString.utf16 {
-    print("\(codeUnit) ", terminator: "")
+  print("\(codeUnit) ", terminator: "")
 }
 print("")
-// "68 111 103 8252 55357 56374 " 를 출력합니다.
+// "68 111 103 8252 55357 56374 " 를 인쇄합니다.
 ```
 
-위의 예에서, `codeUnit` 의 처음 세 10-진수의 값들 (`68`, `111`, `103`) 은 문자 `D`, `o`, 그리고 `g` 를 나타내며, 이들의 'UTF-8 표현' 은 'ASCII 표현' 과 같음을 알 수 있습니다. `codeUnit` 의 그 다음의 세 10-진수 값들 (`226`, `128`, `188`) 은 `DOUBLE EXCLAMATION MARK` 문자에 대한 3-바이트짜리 'UTF-8 표현' 입니다. `codeUnit` 의 마지막 네 값들 (`240`, `159`, `144`, `182`) 은 `DOG FACE` 문자에 대한 4-바이트짜리 'UTF-8 표현' 입니다.
+또다시, 처음 세 `codeUnit` 값 (`68`, `111`, `103`) 들은 문자 `D`, `o`, 그리고 `g` 를 표현하는데, 이 'UTF-16 코드 단위' 들은 문자열의 'UTF-8 표현법' 에 있는 것과 똑같은 값을 가집니다 ('유니코드 크기 값' 들이 'ASCII 문자' 를 표현하기 때문입니다).
 
-또다시, `codeUnit` 의 처음 세 값들 (`68`, `111`, `103`) 은 문자 `D`, `o`, 그리고 `g` 를 나타내며, 이들의 'UTF-16 표현' 은 'UTF-8 표현' 과 같습니다. (왜냐면 이들의 '유니코드 크기 값' 은 'ASCII 문자' 를 나타내기 때문입니다.)
+네 번째 `codeUnit` 값 (`8252`) 은 16-진 값 `203C` 와 동치인 10-진 값으로, 이는 `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 표현합니다. 이 문자는 'UTF-16' 에서는 단일 '코드 단위' 로 표현할 수 있습니다.
 
-`codeUnit` 의 네 번째 값 (`8252`) 은 16-진수 값 `203C` 에 해당하는 10-진수 값으로, `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 나타냅니다. 이 문자는 'UTF-16' 에서 단일한 '코드 단위' 로 표시할 수 있습니다.
+다섯 번째와 여섯 번째 `codeUnit` 값 (`55357` 와 `56374`) 들은 `DOG FACE` 문자에 대한 'UTF-16 대용 쌍 (surrogate pair)[^surrogate-pair] 표현법' 입니다. 이 값들은 (10-진 값이 `55357` 인) '높은자리-대용 값' `U+D83D` 와 (10-진 값이 `56374` 인) '낮은자리-대용 값' `U+DC36` 입니다.
 
-`codeUnit` 의 다섯 번째와 여섯 번째 값들 (`55357` 와 `56374`) 은 `DOG FACE` 문자에 대한 'UTF-16 대체-쌍 (surrogate pair) 표현' 입니다. 이들의 값은 '높은자리-대체 값' `U+D83D` (10-진수 값 `55357`) 과 '낮은자리-대체 값' `U+DC36` (10-진수 값 `56374`) 입니다.
+#### Unicode Scalar Representation ('유니코드 크기 값' 표현법)
 
-#### Unicode Scalar Representation ('유니코드 크기 값' 표현)
+`String` 값의 '유니코드 크기 값 표현법' 에는 `unicodeScalars` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `UnicodeScalarView` 이며, 이는 타입이 `UnicodeScalar` 인 값들의 '집합체 (collection)' 입니다.
 
-`String` 값의 '유니코드 크기 값 표현' 에 접근하려면 `unicodeScalars` 속성에 동작을 반복 적용하면 (iterating over) 됩니다. 이 속성의 타입은 `UnicodeScalarView` 이며, 이는 타입이 `UnicodeScalar` 인 값들의 컬렉션 (집합체) 임을 의미합니다.
-
-각 `UnicodeScalar` 은 '크기 값' 을 21-bit 값으로 반환하는 `value` 속성을 갖고 있는데, 이 반환 값은 `UInt32` 값으로 표현됩니다:
+각 `UnicodeScalar` 는 '크기 값 (scalar)' 의, `UInt32` 값 내에 표현된, 21-비트 값을 반환하는 `value` 속성을 가집니다:
 
 ![Unicode Scalar representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-Unicode-scalar-representation.jpg)
 
 ```swift
 for scalar in dogString.unicodeScalars {
-    print("\(scalar.value) ", terminator: "")
+  print("\(scalar.value) ", terminator: "")
 }
 print("")
-// "68 111 103 8252 128054 " 를 출력합니다.
+// "68 111 103 8252 128054 " 를 인쇄합니다.
 ```
 
-`UnicodeScalar` 의 처음 세 값들에 대한 `value` 속성들 (`68`, `111`, `103`) 은 또다시 문자 `D`, `o`, 그리고 `g` 를 나타냅니다.
+처음 세 `UnicodeScalar` 값 (`68`, `111`, `103`) 들에 대한 `value` 속성은 다시 한번 문자 `D`, `o`, 그리고 `g` 를 표현합니다.
 
-네 번째 값 (`8252`) 은 또다시 16-진수 값 `203C` 에 해당하는 10-진수 값으로, `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 나타냅니다.
+네 번째 `codeUnit` 값 (`8252`) 은 또다시 16-진 값 `203C` 와 동치인 10-진 값이며, 이는 `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 표현합니다.
 
-`UnicodeScalar` 의 다섯 번째이자 마지막 값에 대한 `value` 속성, `128054`, 는 16-진수 값 `1F436` 에 해당하는 10-진수 값으로, `DOG FACE` 문자에 대한 '유니코드 크기 값' `U+1F436` 을 나타냅니다.
+다섯 번째이자 최종인 `UnicodeScalar` 의 `value` 속성, `128054`, 는 16-진 값 `1F436` 와 동치인 10-진 값으로, `DOG FACE` 문자에 대한 '유니코드 크기 값' `U+1F436` 을 표현합니다.
 
-`value` 속성을 조회하는 대신, 각각의 `UnicodeScalar` 값을 사용하여 새로운 `String` 값을 생성할 수 있으며, 가령 '문자열 보간법 (string interpolation)' 이 이에 해당합니다:
+이 `value` 속성의 조회를 대신하여, 각 `UnicodeScalar` 값 자체도 새로운 `String` 값을 생성하기 위해, '문자열 보간법' 에서 처럼, 사용할 수 있습니다:
 
 ```swift
 for scalar in dogString.unicodeScalars {
@@ -653,6 +651,10 @@ for scalar in dogString.unicodeScalars {
 // ‼
 // 🐶
 ```
+
+### 다음 장
+
+[Collection Types (컬렉션 타입; 집합체 타입) > ]({% post_url 2016-06-06-Collection-Types %})
 
 ### 참고 자료
 
@@ -704,6 +706,10 @@ for scalar in dogString.unicodeScalars {
 
 [^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 는 '표준적으로' 라고 옮길 수도 있는데, 이 역시 '교회 법' 이 하나의 '표준' 이기 때문에 유래한 의미입니다.
 
-[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 성입니다. 즉, 줄리엣의 본명은 '줄리엣 캐퓰렛' 입니다.
+[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 성 (가문 이름) 입니다. 즉, 줄리엣의 본명이 '줄리엣 캐퓰렛' 입니다.
 
-[^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 일정 시간 동안 죽은 것 같은 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 의 의미가 있습니다.
+[^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 잠시동안 죽는 듯한 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 라는 의미로 '수도사' 중에서 수도원에 머무르지 않는 이들을 의미한다고 합니다.
+
+[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는 아래의 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
+
+[^surrogate-pair]: '대용 쌍 (surrogate pair)' 는 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. 보다 자세한 내용은 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 참고하기 바랍니다.
