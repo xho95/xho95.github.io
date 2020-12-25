@@ -114,7 +114,7 @@ struct Matrix {
 }
 ```
 
-`Matrix` 가 제공하는 초기자는 두 개의 매개 변수인 `rows` 와 `columns` 을 받아서, 타입이 `Double` 이고 `rows * columns` 값들을 저장하기에 충분한 크기의 배열을 만듭니다. 행렬의 각 위치에 주어진 기본 설정 값은 `0.0` 입니다. 이를 위해, 배열의 크기 값과, 초기 셀 값인 `0.0` 을 배열 초기자에 전달하여 정확한 크기의 새 배열을 만들고 초기화하고 있습니다. 이러한 '초기자' 는 [Creating an Array with a Default Value (기본 설정 값을 갖는 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-array-with-a-default-value-기본-설정-값을-가진-배열-생성하기) 에서 더 자세히 설명하도록 합니다.
+`Matrix` 가 제공하는 초기자는 두 개의 매개 변수인 `rows` 와 `columns` 을 받아서, 타입이 `Double` 이고 `rows * columns` 값들을 저장하기에 충분한 크기의 배열을 만듭니다. 행렬의 각 위치에 주어진 기본 설정 값은 `0.0` 입니다. 이를 위해, 배열의 크기 값과, 초기 셀 값인 `0.0` 을 배열 초기자에 전달하여 정확한 크기의 새 배열을 만들고 초기화하고 있습니다. 이러한 '초기자' 는 [Creating an Array with a Default Value (기본 설정 값으로 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-array-with-a-default-value-기본-설정-값으로-배열-생성하기) 에서 더 자세히 설명하도록 합니다.
 
 알맞은 행과 열의 개수를 초기자에 전달하면 새로운 `Matrix` 인스턴스를 만들 수 있습니다:
 
