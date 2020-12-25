@@ -60,11 +60,11 @@ someInts = []
 
 #### Creating an Array with a Default Value (기본 설정 값을 가진 배열 생성하기)
 
-스위프트의 `Array` 타입에는 특정 크기의 배열을 생성하면서 모든 값을 동일한 기본 설정 값으로 설정할 수 있는 초기자도 있습니다. 이 초기자에 적절한 타입의 기본 설정 값 (명칭은 `repeating`): 과 이 값이 배열에서 반복되야할 횟수 (명칭은 `count`): 를 전달하면 됩니다:
+스위프트의 `Array` 타입은 정해진 크기의 배열을 생성하면서 모든 값을 똑같은 기본 설정 값으로 설정하는 초기자도 제공합니다. 이 초기자에는 (`repeating:` 이라는) 적절한 타입의 기본 설정 값과: (`count` 라는) 해당 값이 배열에서 반복되는 횟수를 전달합니다:
 
 ```swift
 var threeDoubles = Array(repeating: 0.0, count: 3)
-// threeDoubles 의 타입은 [Double] 이고, 값은 [0.0, 0.0, 0.0] 과 같습니다.
+// threeDoubles 의 타입은 [Double] 이고, 값은 [0.0, 0.0, 0.0] 입니다.
 ```
 
 #### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 하나의 배열 생성하기)
