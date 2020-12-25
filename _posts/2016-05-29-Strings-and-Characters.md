@@ -654,7 +654,7 @@ for scalar in dogString.unicodeScalars {
 
 ### 다음 장
 
-[Collection Types (컬렉션 타입; 집합체 타입) > ]({% post_url 2016-06-06-Collection-Types %})
+[Collection Types (집합체 타입) > ]({% post_url 2016-06-06-Collection-Types %})
 
 ### 참고 자료
 

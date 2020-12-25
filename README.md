@@ -9,7 +9,5 @@ A blog to summarize my studies about the Swift programming language and some oth
 
 ### Translations
 
-* [Swift Programming Language (스위프트 프로그래밍 언어)](https://xho95.github.io/swift/programming/language/grammar/2017/02/28/The-Swift-Programming-Language.html)
-* [API Design Guidelines (API 설계 지침)](https://xho95.github.io/swift/language/grammar/revision/history/2020/10/08/API-Design-Guidelines.html)
-
-* [API Design Guidelines (API 설계 지침)](_posts/2020-09-15-API-Design-Guidelines.md)
+* Swift Programming Language (스위프트 프로그래밍 언어) : [GitHub](_posts/2017-02-28-The-Swift-Programming-Language.md) [Blog](https://xho95.github.io/swift/programming/language/grammar/2017/02/28/The-Swift-Programming-Language.html)
+* API Design Guidelines (API 설계 지침) : [GitHub](_posts/2020-09-15-API-Design-Guidelines.md) [Blog](https://xho95.github.io/swift/language/grammar/revision/history/2020/10/08/API-Design-Guidelines.html)
