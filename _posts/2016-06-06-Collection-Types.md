@@ -27,35 +27,35 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ### Arrays (배열)
 
-_배열 (array)_ 은 같은 타입의 값들을 순서에 따라 줄지어 저장합니다. 값끼리 같아도 한 배열 안에서 위치가 다르면 여러 번 나타날 수 있습니다.
+_배열 (array)_ 은 같은 타입의 값을 '순서가 있는 리스트 (ordered list)'[^ordered-list] 에 저장합니다. 배열에서는 똑같은 값이 서로 다른 위치에 여러 번 나타날 수 있습니다.
 
-> 스위프트의 `Array` 타입은 'Foundation' 프레임웍에 있는 `NSArray` 클래스와 연동되어 (bridged) 있습니다.
+> 스위프트의 `Array` 타입은 'Foundation'[^Foundation] 의 `NSArray` 클래스와 '연동되어 (bridged)' 있습니다.
 >
-> 'Foundation' 및 'Cocoa' 프레임웍과 `Array` 를 같이 사용하는 방법에 대해서는 [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 에서 더 자세히 알 수 있습니다.
+> `Array` 를 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 을 참고하기 바랍니다.
 
-#### Array Type Shorthand Syntax (배열 타입 약칭 구문 표현)
+#### Array Type Shorthand Syntax (배열 타입의 줄임 구문 표현)
 
-스위프트의 배열 타입을 온전하게 작성하는 방법은 `Array<Element>` 이며, 여기서 `Element` 는 배열에 저장하는 값의 타입입니다. 또한 배열 타입은 약칭으로 `[Element]` 와 같은 형태로 작성할 수도 있습니다. 두 양식의 기능은 동일하지만, 약칭 형태를 권장하며 이 책의 전체에서도 배열 타입은 약칭 형태로 사용하도록 합니다.
+스위프트의 배열 타입을 온전하게 작성하려면 `Array<Element>` 라고 하는데, 여기서 `Element` 는 배열이 저장할 수 있는 값의 타입니다. 배열의 타입은 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 비록 두 형식이 기능적으로는 완전히 똑같지만, 줄임 형식이 더 좋으며 이 책 전체에 걸쳐서 배열의 타입을 참조할 때도 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
-특정 타입의 빈 배열을 생성하려면 초기자 문법을 사용합니다:
+정해진 타입의 빈 배열은 '초기자 구문 표현 (initializer syntax)' 을 사용하여 생성할 수 있습니다:
 
 ```swift
 var someInts = [Int]()
 print(("someInts is of type [Int] with \(someInts.count) items.")
-// "someInts is of type [Int] with 0 items." 를 출력합니다.
+// "someInts is of type [Int] with 0 items." 를 인쇄합니다.
 ```
 
-`someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론할 수 있음을 기억하기 바랍니다.
+`someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론됨을 기억하기 바랍니다.
 
-다른 방법으로, 영역 내에서 이미 타입 정보를 제공하는 경우, 예를 들면 함수 인자에서나 이미 타입이 알려진 변수 또는 상수일 경우에, '빈 배열 글자 값 (empty array literal)' 을 써서 빈 배을을 생성할 수도 있으며, 이 때는 `[]` (빈 대괄호 쌍) 만 써주면 됩니다:
+또 다른 방법으로, 이미 타입 정보를 제공한 상황, 가령 함수 인자에서 또는 이미 타입을 정한 변수나 상수 같은 상황인 경우, 빈 배열은, `[]` (빈 대괄호 쌍) 으로 작성하는, '빈 배열 글자 값 (empty array literal)' 으로 생성할 수 있습니다:
 
 ```swift
 someInts.append(3)
-// someInts 는 이제 Int 타입 값 1 개를 갖습니다.
+// someInts 는 이제 Int 타입 값 한 개를 갖습니다.
 someInts = []
-// someInts 는 이제 빈 배열이 됐지만, 타입은 여전히 [Int] 입니다.
+// someInts 는 이제 빈 배열이지만, 타입은 아직 [Int] 입니다.
 ```
 
 #### Creating an Array with a Default Value (기본 설정 값을 가진 배열 생성하기)
@@ -685,3 +685,9 @@ let airportNames = [String](airports.values)
 [^optional-value]: 'optional value' 는 '선택적 값' 이라고도 옮길 수 있겠지만, 여기서는 스위프트의 타입임을 드러내기 위해서 발음을 따라서 '옵셔널 값' 으로 옮깁니다.
 
 [^ordered-collection]: 여기서 'ordered collections' 을 '순서가 있는 집합체' 라고 옮겼는데, 보통 '정렬된 집합체' 라고 옮길 수도 있긴 합니다. 다만 수학 용어에 'sorted collection' 이란 것도 있는데, 만약 'sort algorithm' 을 '정렬 알고리즘' 이라고 옮긴다면 'sorted collection' 이 '정렬된 집합체' 가 되어야 할 것입니다. 게다가, 'ordered' 는 엄밀히 말해서 '정렬되어 있는 것' 을 의미하는 것은 아니므로, 여기서는 'ordered collection' 을 그냥 '순서가 있는 집합체' 라고 옮기도록 합니다.  
+
+[^ordered-list]: 여기서 사용된 'ordered list' 의 'list' 는 '자료 구조' 로써의 '리스트' 를 의미하는 것으로 추측됩니다. 리스트에 대한 더 많은 정보는 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목 또는 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
+
+[^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+
+[^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
