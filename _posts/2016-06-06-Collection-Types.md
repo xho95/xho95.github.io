@@ -58,7 +58,7 @@ someInts = []
 // someInts 는 이제 빈 배열이지만, 타입은 아직 [Int] 입니다.
 ```
 
-#### Creating an Array with a Default Value (기본 설정 값을 가진 배열 생성하기)
+#### Creating an Array with a Default Value (기본 설정 값으로 배열 생성하기)
 
 스위프트의 `Array` 타입은 정해진 크기의 배열을 생성하면서 모든 값을 똑같은 기본 설정 값으로 설정하는 초기자도 제공합니다. 이 초기자에는 (`repeating:` 이라는) 적절한 타입의 기본 설정 값과: (`count` 라는) 해당 값이 배열에서 반복되는 횟수를 전달합니다:
 
@@ -67,44 +67,44 @@ var threeDoubles = Array(repeating: 0.0, count: 3)
 // threeDoubles 의 타입은 [Double] 이고, 값은 [0.0, 0.0, 0.0] 입니다.
 ```
 
-#### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 하나의 배열 생성하기)
+#### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 배열 생성하기)
 
-두 개의 기존 배열이 더하기 연산자 (`+`) 에 대해 '호환성을 가지는 (compatible)'[^compatible] 타입들인 경우 서로 더해서 새로운 배열을 생성할 수 있습니다. 새 배열의 타입은 서로 더한 두 배열의 타입으로부터 추론합니다:
+더하기 연산자 (`+`) 에 '호환 가능한 (compatible)'[^compatible] 타입인 두 개의 기존 배열을 더함으로써 새로운 배열을 생성할 수 있습니다. 새로운 배열의 타입은 서로 더한 두 배열의 타입을 통해 추론합니다:
 
 ```swift
 var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
-// anotherThreeDoubles 의 타입은 [Double] 이고, 값은 [2.5, 2.5, 2.5] 와 같습니다.
+// anotherThreeDoubles 의 타입은 [Double] 이고, 값은 [2.5, 2.5, 2.5] 입니다.
 
 var sixDoubles = threeDoubles + anotherThreeDoubles
-// sixDoubles 의 타입은 [Double] 로 추론되며, 값은 [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같습니다.
+// sixDoubles 의 타입은 [Double] 로 추론하며, 값은 [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 입니다.
 ```
 
-#### Creating an Array with an Array Literal (배열 글자 값을 사용해서 배열 생성하기)
+#### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
 
-_배열 글자 값 (array literal)_[^literal] 을 써서 배열을 초기화 할 수도 있는데, 이는 하나 이상의 값을 가진 배열 집합체 (array collection) 를 '약칭 (shorthand)' 으로 만들 수 있는 방법입니다. '배열 글자 값' 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다.
+배열은 _배열 글자 값 (array literal)_[^literal] 으로 초기화할 수도 있는데, 이는 하나 이상의 값을 '배열 집합체 (array collection)' 로 작성하는 '줄임 표현법' 입니다. '배열 글자 값' 은, 쉼표로 구분된, 값을 나열한 다음, 주위를 대괄호 쌍으로 감싸서 작성합니다:
 
-[`value 1`, `value 2`, `value 3`]
+[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
 
-아래 예제는 `shoppingList` 라는 배열을 만들어 `String` 값을 저장하고 있습니다:
+아래 예제는 `String` 값들을 저장하기 위해 `shoppingList` 라는 배열을 생성합니다:
 
 ```swift
 var shoppingList: [String] = ["Eggs", "Milk"]
-// shoppingList 를 두 개의 초기 항목으로 초기화했습니다.
+// shoppingList 가 두 개의 초기 항목으로 초기화되었습니다.
 ```
 
-`shoppingList` 변수는 `[String]` 을 써서 "문자열 값의 배열" 로 선언했습니다. 이 배열은 `String` 타입의 값만 갖도록 지정됐으므로, 이제 `String` 값만 저장할 수 있습니다. 여기서, `shoppingList` 배열은 '배열 글자 값 (array literal)' 에 있는 두 개의 `String` 값인 (`"Eggs"` 와 `"Milk"`) 로 초기화 되었습니다.
+`shoppingList` 변수는, `[String]` 을 써서, "문자열 값의 배열" 이라고 선언합니다. 특정 배열이 `String` 타입의 값을 갖도록 지정했기 때문에, `String` 값만 저장을 허용합니다. 여기 있는, `shoppingList` 배열은 '배열 글자 값' 내에 작성된, 두 개의 `String` 값 (`"Eggs"` 와 `"Milk"`) 로 초기화됩니다.
 
-> `shoppingList` 배열은 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 `shoppingList` 에 더 많은 항목을 추가할 것이기 때문입니다.
+> `shoppingList` 배열은 (`let` '도입자-introducer-' 를 쓰는) 상수가 아니라 (`var` '도입자' 를 써서) 변수로 선언되었는데 이는 아래 예제에서 이 '구매 목록 (shopping list)' 에 더 많은 항목이 추가되기 때문입니다.
 
-이 경우, '배열 글자 값 (array literal)' 에는 두 개의 `String` 값만 있지 다른 건 전혀 없습니다. 이는 `shoppingList` 변수를 선언할 때의 타입 (`String` 값만 담을 수 있는 배열) 과 들어 맞으므로, '배열 글자 값' 을 할당하는 것이 허용되어 두 개의 초기 항목들로 `shoppingList` 를 초기화할 수 있습니다.
+이 경우, '배열 글자 값' 은 두 개의 `String` 값 외에 다른 것은 아무 것도 담고 있지 않습니다. 이는 `shoppingList` 변수의 선언 타입 (`String` 값만 담을 수 있는 배열) 과 일치하므로, '배열 글자 값' 의 할당이 두 초기 항목으로 `shoppingList` 를 초기화하는 방법으로써 허가됩니다.
 
-스위프트의 타입 추론 덕분에, 배열의 타입을 안써도 되는 경우가 있는데, 초기화할 때 '배열 글자 값' 이 같은 타입의 값만 가지고 있으면 그렇습니다. 따라서 `shoppingList` 의 초기화는 앞에서보다 더 짧은 형태로도 작성할 수 있습니다:
+스위프트의 '타입 추론 (type inference)' 에 감사하게도, 같은 타입의 값을 담은 '배열 글자 값' 으로 초기화할 경우 배열의 타입은 작성하지 않아도 됩니다. `shoppingList` 의 초기화를 '줄임 형식' 으로 대신 작성할 수 있게 됩니다:
 
 ```swift
 var shoppingList = ["Eggs", "Milk"]
 ```
 
-'배열 글자 값' 의 모든 값이 같은 타입이므로, 스위프트는 `shoppingList` 변수가 정확하게 `[String]` 타입임을 추론할 수 있습니다.
+'배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트는 `[String]` 이 `shoppingList` 변수에 사용할 정확한 타입이라고 추론할 수 있습니다.
 
 #### Accessing and Modifying an Array (배열에 접근하고 수정하기)
 
@@ -646,7 +646,7 @@ let airportNames = [String](airports.values)
 
 [^dictionaries]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
 
-[^compatible]: 'compatible' 은 컴퓨터 용어에서 '호환성이 있는' 것을 말하며, 이는 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환성이 있는' 데, 이로써 두 값은 서로 같이 연산할 수 있습니다. 그리고 이 때의 연산 결과는 `Double` 타입이 됩니다. 사실 스위프트에서는 특별한 경우가 아니면 `Float` 타입을 따로 쓸 필요가 없긴 합니다.
+[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 것은, 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환 가능 (compatible)' 해서, 두 값을 서로 같이 연산할 수 있습니다. 이처럼, 본문에서 '호환 가능 (compatible)' 하다는 표현을 사용한 것은 두 타입이 꼭 같을 필요는 없고 호환 가능하기만 하면 되기 때문으로 추측됩니다.  
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
