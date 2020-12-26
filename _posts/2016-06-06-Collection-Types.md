@@ -104,65 +104,65 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 var shoppingList = ["Eggs", "Milk"]
 ```
 
-'배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트는 `[String]` 이 `shoppingList` 변수에 사용할 정확한 타입이라고 추론할 수 있습니다.
+'배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트가 `shoppingList` 변수에 대한 올바른 타입이 `[String]` 이라고 추론할 수 있습니다.
 
 #### Accessing and Modifying an Array (배열에 접근하고 수정하기)
 
-배열은 메소드 (methods) 와 속성 (properties), 또는 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여 접근하고 수정할 수 있습니다.
+배열은 메소드와 속성을 통해서, 아니면 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여, 접근하고 수정합니다.
 
-배열에 있는 항목의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
+배열의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
-// "The shopping list contains 2 items." 를 출력합니다.
+// "The shopping list contains 2 items." 를 인쇄합니다.
 ```
 
-불리언 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
+`count` 속성이 `0` 인지를 검사하는 것의 '줄임말 (shortcut)' 로써 '불리언 (Boolean)' 속성인 `isEmpty` 를 사용합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
-    print("The shopping list is empty.")
+  print("The shopping list is empty.")
 } else {
-    print("The shopping list is not empty.")
+  print("The shopping list is not empty.")
 }
-// "The shopping list is not empty." 를 출력합니다.
+// "The shopping list is not empty." 를 인쇄합니다.
 ```
 
-배열의 `append(_:)` 메소드를 호출하면 배열 끝에 새로운 항목을 추가할 수 있습니다:
+배열의 `append(_:)` 메소드를 호출함으로써 배열 끝에 새로운 항목을 덧붙일 수 있습니다:
 
 ```swift
 shoppingList.append("Flour")
-// shoppingList 는 이제 3 개의 항목을 가지며, 누군가 팬케이크를 만들 수 있게 됐습니다.
+// shoppingList 는 이제 3 개의 항목을 담고 있으며, 누군가 팬케이크를 만들고 있습니다.
 ```
 
-다른 방법으로는, '더하기 할당 연산자 (addition assignment operator; `+=`)' 로 하나 이상의 호환 가능한 항목을 배열에 덧붙일 수 있습니다:
+또 다른 방법으로, '더하기 할당 연산자 (`+=`)' 로 하나 이상의 호환 가능한 항목들의 배열을 덧붙입니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 는 이제 4 개의 항목을 가집니다.
+// shoppingList 는 이제 4 개의 항목을 담고 있습니다.
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 는 이제 7 개의 항목을 가집니다.
+// shoppingList 는 이제 7 개의 항목을 담고 있습니다.
 ```
 
-배열에서 값을 가져오려면 _첨자 연산 구문 표현 (subscript syntax)_ 을 사용하며, 이는 배열 이름 바로 뒤의 대괄호 안에 가져올 값의 _색인 (index)_ 을 넣으면 됩니다:
+배열의 값은, 배열 이름 바로 뒤의 대괄호에 가져오고자 하는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 표현 (subscript syntax)_ 을 사용하여 가져옵니다.:
 
 ```swift
 var firstItem = shoppingList[0]
-// firstItem 은 "Eggs" 가 됩니다.
+// firstItem 은 "Eggs" 입니다.
 ```
 
-> 배열의 첫 번째 항목은, `1` 이 아니라, `0` 번 색인을 가집니다. 스위프트에 있는 배열은 항상 '0 기준-색인 (zero-indexed)' 으로 되어 있습니다.
+> 배열에 있는 첫 번째 항목은, `1` 이 아닌, `0` 이라는 색인을 가집니다. 스위프트의 배열은 항상 '0 으로-색인 (zero-indexed)' 됩니다.
 
-'첨자 연산 구문 표현' 을 사용하면 주어진 색인 위치의 값을 바꿀 수 있습니다:
+주어진 색인의 기존 값을 바꾸기 위해 '첨자 연산 구문 표현' 을 사용할 수 있습니다:
 
 ```swift
 shoppingList[0] = "Six eggs"
-// 목록에 있는 첫 번째 항목은 이제 "Eggs" 가 아니라 "Six eggs" 입니다.
+// 목록의 첫 번째 항목은 이제 "Eggs" 가 아니라 "Six eggs" 입니다.
 ```
 
-'첨자 연산 구문 표현' 을 사용할 때, 지정하는 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 추가한다고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하면 '실행 시간 에러 (runtime error)' 로 끝나게 됩니다.[^count-concurrent]
+'첨자 연산 구문 표현' 을 사용할 때는, 유효한 색인을 지정해야 합니다. 예를 들어, 배열 끝에 항목을 추가하려고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하는 것은 '실행 시간 에러' 로 끝나게 됩니다.[^count-concurrent]
 
-'첨자 연산 구문 표현' 을 사용하면 일정 범위의 값들을 한 번에 바꿀 수도 있는데, 이 때 대체될 값의 범위와 대체할 범위가 서로 다른 길이여도 됩니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
+'첨자 연산 구문 표현' 은 일정 범위의 값을 한 번에 바꿀 수도 있는데, 이 때 대체될 값의 범위와 대체할 범위가 서로 다른 길이여도 됩니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
@@ -650,9 +650,9 @@ let airportNames = [String](airports.values)
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
-[^isEmpty-count]: 실제로 스위프트에서는 배열에 값이 있는지 없는지를 검사할 때는 `isEmpty` 를 사용할 것을 권장합니다. `count` 는 값의 개수가 몇 개인지를 알고 싶을 때 사용하는 것입니다. 즉, 단순히 편리하기 때문에만 `isEmpty` 를 사용하는 것은 아닙니다. 이에 대한 이유는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 이라는 글을 읽어보길 바랍니다.
+[^isEmpty-count]: 실제로, 스위프트는 배열에 값이 있는지 없는지를 검사하는 것은 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수가 몇 개인지를 알고 싶을 때 사용하는 것입니다. 즉, 단순히 편리하기 때문에만 `isEmpty` 를 사용하는 것은 아닙니다. 이에 대한 이유는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 이라는 글을 읽어보길 바랍니다.
 
-[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다.
+[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 즉 `shippingList.count` 는 유효한 색인이 아닙니다.
 
 [^iterate-over]: 'iterate over' 는 그냥 '반복하다' 만으로는 의미가 정확한 것 같지 않아서 '동작을 반복 적용하기' 라는 말로 옮깁니다.
 
