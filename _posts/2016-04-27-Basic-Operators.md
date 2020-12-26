@@ -497,6 +497,6 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
 
-[^zero-based]: '0-에 기초한 (zero-based) 목록' 이란 '색인 (index)' 가 '0 부터 시작하는 목록' 이라고 이해할 수 있습니다.
+[^zero-based]: '0-에 기초한 (zero-based) 목록' 이란 '색인 (index)' 가 '0 부터 시작하는 목록' 이라고 이해할 수 있습니다. 이에 대한 더 많은 정보는 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 참고하기 바랍니다.
 
 [^c-based-languages]: 'C-에 기초한 언어 (C-based languages)' 는 'C-family' 라고도 하며, 여기에 속한 언어들의 목록은 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 확인할 수 있습니다. 애플에서 만든 '오브젝티브-C (Objective-C)' 와 '스위프트 (Swift)' 는 모두 'C-family' 임을 알 수 있습니다.
