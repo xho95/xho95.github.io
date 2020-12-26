@@ -106,9 +106,9 @@ var shoppingList = ["Eggs", "Milk"]
 
 '배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트가 `shoppingList` 변수에 대한 올바른 타입이 `[String]` 이라고 추론할 수 있습니다.
 
-#### Accessing and Modifying an Array (배열에 접근하고 수정하기)
+#### Accessing and Modifying an Array (배열 접근하기와 수정하기)
 
-배열은 메소드와 속성을 통해서, 아니면 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여, 접근하고 수정합니다.
+배열은 메소드와 속성을 통하여, 아니면 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여, 접근하고 수정합니다.
 
 배열의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
@@ -160,59 +160,59 @@ shoppingList[0] = "Six eggs"
 // 목록의 첫 번째 항목은 이제 "Eggs" 가 아니라 "Six eggs" 입니다.
 ```
 
-'첨자 연산 구문 표현' 을 사용할 때는, 유효한 색인을 지정해야 합니다. 예를 들어, 배열 끝에 항목을 추가하려고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하는 것은 '실행 시간 에러' 로 끝나게 됩니다.[^count-concurrent]
+'첨자 연산 구문 표현' 을 사용할 때는, 유효한 색인을 지정할 필요가 있습니다. 예를 들어, 배열 끝에 항목을 추가하려고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하면 '실행 시간 에러' 가 되버립니다.[^count-concurrent]
 
-'첨자 연산 구문 표현' 은 일정 범위의 값을 한 번에 바꿀 수도 있는데, 이 때 대체될 값의 범위와 대체할 범위가 서로 다른 길이여도 됩니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
+일정 범위의 값들을 한 번에 바꾸기 위해 '첨자 연산 구문 표현' 을 사용할 수도 있는데, 이 때 대체할 값의 집합이 대체될 범위와는 다른 길이를 가지더라도 무방합니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 와 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 항목을 가집니다.
+// shoppingList 는 이제 6 개의 항목을 담고 있습니다.
 ```
 
-배열에서 지정된 색인 위치에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
+배열에서 지정된 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 항목을 가집니다.
-// "Maple Syrup" 이 이제 목록의 첫 번째 항목입니다.
+// shoppingList 는 이제 7 개의 항목을 담고 있습니다.
+// "Maple Syrup" 이 이제 목록에 있는 첫 번째 항목입니다.
 ```
 
-이 `insert(_:at:)` 메소드 호출은 값이 `"Maple Syrup"` 인 새 항목을 '쇼핑 목록 (shopping list)' 의 맨 처음 위치인, 색인 `0` 으로 나타낸 곳에, 집어 넣습니다.
+이 `insert(_:at:)` 메소드 호출은, 색인 `0` 으로 지시한, '구매 목록' 의 맨 앞에, 값이 `"Maple Syrup"` 인 새로운 항목을 집어 넣습니다.
 
-이와 비슷하게, `remove(at:)` 메소드로 배열에서 항목을 제거합니다. 이 메소드는 지정된 색인 위치의 항목을 제거하며 제거한 그 항목을 반환합니다. (필요 없다면 이 반환 값은 무시할 수도 있습니다):
+이와 비슷하게, `remove(at:)` 메소드로 배열에서 항목을 삭제합니다. 이 메소드는 지정된 색인의 항목을 삭제하고 삭제한 항목을 반환합니다. (물론 필요 없다면 이 반환 값을 무시할 수 있습니다):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
-// 색인 0 위치의 값을 방금 제거했습니다.
-// shoppingList 는 이제 6 개의 항목을 가지며, Maple Syrup 은 더 이상 없습니다.
-// mapleSyrup 이라는 상수는 이제 제거한 문자열인 "Maple Syrup" 이 됩니다.
+// 색인이 0 인 값을 방금 삭제했습니다.
+// shoppingList 는 이제 6 개의 항목을 담고 있으며, Maple Syrup 은 없습니다.
+// mapleSyrup 상수는 이제 삭제한 문자열인 "Maple Syrup" 입니다.
 ```
 
-> 배열 범위를 벗어난 색인으로 값에 접근하려고 하거나 수정하려고 하면 '실행 시간에 에러 (runtime error)' 를 띄웁니다. 색인을 사용하기 전에 유효한 지를 검사하고 싶으면 배열의 `count` 속성과 비교하면 됩니다. 배열에서 유효한 색인으로 가장 큰 것은 `count - 1` 인데, 배열의 '색인은 영-기준 (indexed from zero)' 이기 때문입니다 - 하지만, `count` 가 `0` (즉 배열이 비어있으면) 이면, 유효한 색인이 아예 없습니다.
+> 배열이 존재하는 범위 밖에 있는 색인의 값에 접근하려고 하거나 수정하려고 하면, 실행 시간 에러를 발생시키게 됩니다. 색인이 유효한 지는 사용하기 전에 배열의 `count` 속성과 비교함으로써 검사할 수 있습니다. 배열에서 유효한 색인으로 가장 큰 것은 `count - 1` 인데 이는 배열이 '0-부터 색인 (indexed from zero)' 되기 때문입니다-하지만, `count` 가 (배열이 비어있음을 의미하는) `0` 일 땐, 유효한 색인은 아예 없습니다.
 
-항목을 제거할 때는 배열의 모든 틈이 다 메워지므로, 색인 `0` 에 있는 값은 다시 한번 `"Six eggs"` 가 됩니다:
+배열에서 항목을 삭제할 때는 어떤 빈틈이든 메워지므로, 색인 `0` 의 값은 다시 한 번 `"Six eggs"` 가 됩니다:
 
 ```swift
 firstItem = shoppingList[0]
 // firstItem 은 이제 "Six eggs" 입니다.
 ```
 
-배열에서 마지막 항목을 제거하려면, `remove(at:)` 메소드 대신 `removeLast()` 메소드를 사용하는 것이 좋은데, 이는 배열의 `count` 속성을 조회할 필요가 없기 때문입니다. `remove(at:)` 메소드 처럼, `removeLast()` 메소드도 제거한 그 항목을 반환합니다:
+배열에서 최종 항목을 삭제하고 싶으면, 배열의 `count` 속성 조회를 피하도록 `remove(at:)` 메소드 보다는 `removeLast()` 메소드를 사용합니다. `remove(at:)` 메소드와 같이, `removeLast()` 메소드도 삭제한 항목을 반환합니다:
 
 ```swift
 let apples = shoppingList.removeLast()
-// 배열의 마지막 항목을 방금 제거했습니다.
-// shoppingList 는 이제 5 개의 항목을 가지며, Apples 은 더 이상 없습니다.
-// 이제 상수 apples 는 제거된 문자열인 "Apples" 가 됩니다.
+// 배열의 마지막 항목을 방금 삭제했습니다.
+// shoppingList 는 이제 5 개의 항목을 담고 있으며, apple 은 없습니다.
+// apples 상수는 이제 삭제한 문자열인 "Apples" 입니다.
 ```
 
-#### Iterating Over an Array (배열에 동작을 반복 적용하기)
+#### Iterating Over an Array (배열에 동작을 반복시키기)
 
-`for-in` 반복문 (loop) 을 사용하면 배열에 있는 전체 값들에 '동작을 반복 적용 (iterate over)'[^iterate-over] 할 수 있습니다:
+배열에 있는 전체 값들은 `for`-`in` 반복문으로 '동작을 반복시킬 (iterate over)'[^iterate-over] 수 있습니다:
 
 ```swift
 for item in shoppingList {
-    print(item)
+  print(item)
 }
 
 // Six eggs
@@ -222,11 +222,11 @@ for item in shoppingList {
 // Bananas
 ```
 
-각 항목의 값 뿐만 아니라 정수 색인도 필요하다면, 배열에 동작을 반복시킬 때 `enumerated()`[^enumerate] 메소드도 같이 사용하면 됩니다. `enumerated()` 메소드는, 배열의 각 항목에 대해서, 정수와 해당 항목의 조합으로 된 '튜플 (tuple)'[^tuple] 을 반환합니다. 이 정수는 '0' 에서 시작해서 각 항목마다 하나씩 증가합니다; 전체 배열을 열거하는 경우, 이 정수들은 항목들의 색인과 일치하게 됩니다. '반복 구문 (iteration)' 에서 '튜플' 을 임시 상수 또는 임시 변수로 분해 (decompose) 할 수 있습니다:
+값 뿐만 아니라 각 항목의 정수 색인도 필요한 경우, 배열에 동작을 반복시키기 위해 대신 `enumerated()` 메소드를 사용합니다. 배열의 각 항목마다, `enumerated()` 메소드는 정수와 항목으로 구성된 '튜플 (tuple)' 을 반환합니다. 이 정수는 '0' 에서 시작하며 각 항목마다 하나씩 세어 갑니다; 전체 배열을 '열거하는 (enumerate over)' 경우엔, 이 정수들이 항목들의 색인과 일치합니다. 튜플은 '회차 (iteration)' 마다 임시 상수나 변수로 분해할 수 있습니다.:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
-    print("Item \(index + 1): \(value)")
+  print("Item \(index + 1): \(value)")
 }
 
 // Item 1: Six eggs
@@ -236,7 +236,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for-in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
 ### Sets (셋; 집합)
 
@@ -654,12 +654,6 @@ let airportNames = [String](airports.values)
 
 [^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 즉 `shippingList.count` 는 유효한 색인이 아닙니다.
 
-[^iterate-over]: 'iterate over' 는 그냥 '반복하다' 만으로는 의미가 정확한 것 같지 않아서 '동작을 반복 적용하기' 라는 말로 옮깁니다.
-
-[^enumerate]: 'enumerate' 에는 '열거하다, 헤아리다' 라는 의미가 있으며, 스위프트에서 'enumeration (열거체)' 는 하나의 타입이기도 합니다.
-
-[^tuple]: 'tuple' 은 '두 개로 짝을 이룬 것' 을 나타내는 데, 스위프트의 타입 중 하나를 나타내기 위해 '튜플' 이라는 발음 그대로 사용하기로 합니다.
-
 [^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 가지고 있다는 의미가 됩니다. 용어 자체는 맞는 말이 없으므로 '해쉬' 라고 발음 그대로 사용하도록 합니다.
 
 [^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개지고 뒤섞일 수 있게 재가공된 값' 정도로 이해할 수 있을 것 같습니다.
@@ -691,3 +685,5 @@ let airportNames = [String](airports.values)
 [^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
+
+[^iterate-over]: 여기서 '동작을 반복시킨다 (iterate over)' 시킨다는 말은 배열에 있는 모든 항목들마다 한 번씩 동작을 시킨다는 의미입니다.
