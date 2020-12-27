@@ -298,7 +298,7 @@ categories: Swift Language Grammar Revision History
 * 스위프트의 `Array` 타입은 이제 온전하게 '값 의미 구조 (value semantics)' 를 가짐. 새로운 접근 방식을 반영하기 위해 [Mutability of Collections (집합체의 변경 가능성)](#mutability-of-collections-집합체의-변경-가능성) 과 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 에 대한 정보를 갱신함. 또한 '문자열 배열 (strings arrays)' 및 '딕셔너리 (dictionaries)' 에 대한 할당 및 복사 작동 방식도 분명하게 밝힘.
 * [Array Type Shorthand Syntax (배열 타입 약칭 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#array-type-shorthand-syntax-배열-타입-약칭-구문-표현) 은 이제 `SomeType[]` 대신 `[SomeType]` 으로 작성됨.
 * `[KeyType : ValueType]` 로 작성하는, [Dictionary Type Shorthand Syntax (딕셔너리 타입 약칭 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#dictionary-type-shorthand-syntax-딕셔너리-타입-약칭-구문-표현) 에 대하여 새로운 부분을 추가함.
-* [Hash Values for Set Types (셋 타입의 해쉬 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입의-해쉬-값) 에 대한 새로운 부분을 추가함.
+* [Hash Values for Set Types (셋 타입을 위한 해쉬 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해쉬-값) 에 대한 새로운 부분을 추가함.
 * [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 의 예제는 이제, 새롭게 배열의 '값 의미 구조 (value semantics)' 을 반영하기 위해, '전역 `sort(_:_:)` 함수' 대신 '전역 `sorted(_:_:)` 함수' 를 사용함.
 * 구조체의 저장 속성이 기본 설정 값을 가지고 있지 않은 경우라도 구조체의 '멤버 초기자 (memberwise initializer)' 가 사용 가능함을 분명히 밝히기 위해 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에 대한 정보를 갱신함.
 * [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 를 `..` 대신 `..<` 로 갱신함.

@@ -246,46 +246,37 @@ _셋 (set)_[^sets] 은 '집합체 (collection)' 에 같은 타입의 서로 별�
 >
 > `Set` 을 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 참고하기 바랍니다.
 
-#### Hash Values for Set Types (셋 타입의 해쉬 값)
+#### Hash Values for Set Types (셋 타입을 위한 해쉬 값)
 
-셋에 저장하는 타입은 반드시 _해쉬 가능 (hashable)_[^hashable] 해야 합니다 - 이것은, 이 타입은 반드시 자체적으로 _해쉬 값 (hash value)_[^hash-value] 을 계산할 수 있어야 한다는 말입니다. 여기서 해시 값이란, 하나의 `Int` 값으로서, 비교했을 때 같다고 판단되는 객체들은 모두 같아야 하는 값을 말하는 것으로, 가령 `a == b` 인 경우, 이는 필연적으로 `a.hashValue == b.hashValue` 이라는 말이 됩니다.
+'셋' 에 저장하는 타입은 반드시 _해쉬 가능 (hashable)_[^hashable] 해야 합니다-즉, 타입 스스로 반드시 _해쉬 값 (hash value)_[^hash-value] 을 계산하는 방식을 제공해야 합니다. '해쉬 값' 은 비교해서 같은 모든 객체끼리는 똑같은 하나의 `Int` 값으로, 가령 `a == b` 라면, `a` 의 해쉬 값은 `b` 의 해쉬 값과 같습니다.
 
-스위프트의 모든 기본 타입 (가령 `String`, `Int`, `Double` 그리고 `Bool`) 은 기본적으로 해시 가능하므로, '셋 (set)' 의 값 타입과 '딕셔너리 (dictionary)' 의 키 (key) 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명하듯이) '결합된 값 (associated values)' 이 없는 '열거체[^enumeration] case 값 (enumeration case value)' 역시 기본적으로 해시 가능합니다.   
+스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해쉬 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합된 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해쉬 가능합니다.   
 
-> 자신이 만든 타입을 셋의 값 타입이나 딕셔너리의 키 타입으로 사용하고 싶으면, 스위프트 표준 라이브러리에 있는 `Hashable` 프로토콜을 준수하도록 하면 됩니다. `Hashable` 프로토콜을 준수하는 타입은 반드시 `hashValue` 라는 읽을 수 있는 (gettable) `Int` 속성을 제공해야 합니다. 같은 프로그램을 다른 시점에 실행할 때나 다른 프로그램을 실행할 때, 이 타입의 `hashValue` 속성이 반환하는 값을 같도록 만들 필요는 없습니다.
->
-> `HashValue` 프로토콜은 `Equatable`[^equtable] 을 준수하므로, ('Hashable' 을) '준수하는 타입 (conforming types)' 은 반드시 '같음 연산자 (`==`)' 도 구현해야 합니다. `Equatable` 프로토콜은 '같은 값을 가진 관계 (equivalent relation)' 임을 알기 위해서 어떤 형태로든 `==` 의 구현이 필요하기 때문입니다. 좀 더 정확하게 말하면, 모든 `a`, `b`, `c` 값에서, `==` 의 구현은  다음의 세 가지를 반드시 만족해야 합니다:
->
-> * `a == a` (Reflexivity; 반사성[^reflexivity])
-> * `a == b` 는 곧 `b == a` (Symmetry; 대칭성[^symmetry])
-> * `a == b && b == c` 는 곧 `a == c` (Transitivity; 추이성[^transitivity])
->
-> 프로토콜 준수에 대한 더 자세한 내용은 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 을 보도록 합니다.
+> 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수하게 만드는 것으로써 '셋' 값 타입이나 '딕셔너리' 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 참고하기 바랍니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
-#### Set Type Syntax (셋 타입 문법)
+#### Set Type Syntax (셋 타입 구문 표현)
 
-스위프트의 '셋' 타입은 `Set<Element>` 라고 작성하며, 여기서 `Element` 는 셋에 저장할 수 있는 타입을 말합니다. '배열' 과 달리, '셋' 은 약칭으로 쓸 수 있는 형태가 없습니다.
+스위프트의 '셋' 타입은 `Set<Element>` 라고 작성하는데, 여기서 `Element` 는 셋에 저장하도록 허용한 타입입니다. '배열' 과는 달리, '셋' 은 동치인 '줄임 표현' 이 없습니다.
 
 #### Creating and Initializing an Empty Set (빈 셋 생성하고 초기화하기)
 
-특정 타입의 빈 '셋' 을 만들려면 초기자 문법을 사용하면 됩니다:
+정해진 타입의 빈 '셋' 은 '초기자 구문 표현 (initializer syntax)' 을 사용하여 생성할 수 있습니다:
 
 ```swift
 var letters = Set<Character>()
 print("letters is of type Set<Character> with \(letters.count) items.")
-// "letters is of type Set<Character> with 0 items." 을 출력합니다.
+// "letters is of type Set<Character> with 0 items." 을 인쇄합니다.
 ```
 
-> `letters` 변수의 타입은 초기자의 타입에 의해 `Set<Character>` 로 추론됩니다.
+> `letters` 변수의 타입은, 초기자의 타입으로부터, `Set<Character>` 라고 추론됩니다.
 
-다른 방법으로는, 영역 내에서 타입 정보를 제공하는 경우, 가령 함수 인자이거나 이미 타입이 알려진 변수 또는 상수인 경우, 빈 배열은 '빈 배열 글자 값' 을 써서 생성할 수 있습니다:
-
+또 다른 방법으로, 이미 타입 정보를 제공한 상황, 가령 함수 인자에서 또는 이미 타입을 정한 변수나 상수 같은 상황인 경우, 빈 '셋' 을 '빈 배열 글자 값 (empty array literal)'[^empty-array-literal] 으로 생성할 수 있습니다:
 
 ```swift
 letters.insert("a")
-// letters 는 이제 Character 타입 값 1 개를 갖고 있습니다.
+// letters 는 이제 Character 타입의 값 1 개를 담고 있습니다.
 letters = []
-// letters 는 이제 빈 셋이 됐지만, 타입은 여전히 Set<Character> 입니다.
+// letters 는 이제 빈 셋이지만, 타입은 여전히 Set<Character> 입니다.
 ```
 
 #### Creating a Set with an Array Literal (배열 글자 값을 사용하여 셋-집합 생성하기)
@@ -654,11 +645,9 @@ let airportNames = [String](airports.values)
 
 [^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 즉 `shippingList.count` 는 유효한 색인이 아닙니다.
 
-[^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 가지고 있다는 의미가 됩니다. 용어 자체는 맞는 말이 없으므로 '해쉬' 라고 발음 그대로 사용하도록 합니다.
+[^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 가능하겠지만, 컴퓨터 용어임을 의미하도록 '해쉬' 라고 발음대로 옮기도록 합니다.
 
-[^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개지고 뒤섞일 수 있게 재가공된 값' 정도로 이해할 수 있을 것 같습니다.
-
-[^enumeration]: 'enumeration' 은 '열거체' 라는 말로 옮깁니다. 이는 'class' 를 '객체', 'structure' 를 '구조체' 라고 하는 것과 맞추기 위함입니다.
+[^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개고 뒤섞어서 다진 값' 정도로 이해할 수 있습니다. 역시 컴퓨터 용어임을 의미하도록 '해쉬 값' 이라고 발음대로 옮기도록 합니다.
 
 [^equtable]: 'equtable' 은 '서로 같은 지를 비교할 수 있는' 지를 의미합니다.
 
@@ -689,3 +678,5 @@ let airportNames = [String](airports.values)
 [^iterate-over]: 여기서 '동작을 반복시킨다 (iterate over)' 시킨다는 말은 배열에 있는 모든 항목들마다 한 번씩 동작을 시킨다는 의미입니다.
 
 [^no-defined-ordering]: '정의된 순서없이 (no defined ordering)' 라는 말도 '정렬되지 않은 채로' 라고 옮길 수도 있지만 'sorted' 와의 구별을 위해 '순서가 없이' 라는 말로 옮깁니다.
+
+[^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 이 아니라 '빈 배열 글자 값 (empty array literal)' 입니다. '빈 셋 글자 값' 같은 건 따로 없고, '빈 배열 글자 값' 을 그대로 사용합니다.
