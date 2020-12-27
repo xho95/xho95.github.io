@@ -225,7 +225,7 @@ categories: Swift Language Grammar Revision History
 #### 2015-04-08
 
 * 스위프트 1.2 에서 갱신됨.
-* 스위프트는 이제 그 자체의 `Set` '집합체 (collection)' 타입을 가집니다. 더 많은 정보는, [Sets (셋; 집합)]({% post_url 2016-06-06-Collection-Types %}#sets-셋-집합) 를 참고하기 바랍니다.
+* 스위프트는 이제 그 자체의 `Set` '집합체 (collection)' 타입을 가집니다. 더 많은 정보는, [Sets (셋)]({% post_url 2016-06-06-Collection-Types %}#sets-셋-집합) 를 참고하기 바랍니다.
 * `@autoclosure` 는 이제, 매개 변수의 타입이 아니라, 매개 변수 선언의 특성입니다. 새로운 매개 변수 선언 특성인 `@noescape` 도 있습니다. 더 많은 정보는, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 를 참고하기 바랍니다.
 * '타입 메소드' 와 '타입 속성' 은 이제 `static` 키워드를 '선언 수정자' 로 사용합니다. 더 많은 정보는 [Type Variable Properties (타입 변수 속성)]({% post_url 2020-08-15-Declarations %}#type-variable-properties-타입-변수-속성) 을 참고하기 바랍니다.
 * 스위프트는 이제 `as?` 와 `as!` 라는 '실패 가능한 내림 변환 연산자 (failable downcast operators)' 를 포함합니다. [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 를 참고하기 바랍니다.

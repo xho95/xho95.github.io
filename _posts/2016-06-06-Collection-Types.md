@@ -238,13 +238,13 @@ for (index, value) in shoppingList.enumerated() {
 
 `for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
-### Sets (셋; 집합)
+### Sets (셋)
 
-_셋 (set)_ 은 같은 타입의 서로 다른 값들을 정의된 순서없이 컬렉션에 저장합니다. 항목의 순서가 중요하지 않을 때, 또는 항목이 단 한 번만 나타나도록 보장해야할 때, 배열 대신 셋을 사용할 수 있습니다.
+_셋 (set)_[^sets] 은 '집합체 (collection)' 에 같은 타입의 서로 별개인 값들을 '정의된 순서없이 (no defined ordering)'[^no-defined-ordering] 저장합니다. '셋' 은 항목의 순서가 중요하지 않을 때나, 항목이 한 번만 나타나도록 보장해야 할 때에, 배열 대신 사용할 수 있습니다.
 
-> 스위프트의 `Set` 타입은 'Foundation' 프레임웍에 있는 `NSSet` 클래스와 연동되어 (bridged) 있습니다.
+> 스위프트의 `Set` 타입은 'Foundation'[^Foundation] 의 `NSSet` 클래스와 연동되어 (bridged) 있습니다.
 >
-> 'Foundation' 및 'Cocoa' 프레임웍과 `Set` 을 같이 사용하는 방법에 대해서는 [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 에서 더 자세히 알 수 있습니다.
+> `Set` 을 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 참고하기 바랍니다.
 
 #### Hash Values for Set Types (셋 타입의 해쉬 값)
 
@@ -642,7 +642,7 @@ let airportNames = [String](airports.values)
 
 [^collections]: 'collection' 은 '집합', '묶음' 등 여러 가지 말로 옮길 수 있지만 여기서는 '집합체' 라는 말을 사용합니다. 이는 프로그래밍 용어에서 '객체', '구조체', '열거체' 등이 하나의 '타입' 을 의미하는 것에서 착안한 것입니다. '집합체' 는 어떤 성분들의 집합으로 이루어진 '타입' 이라고 이해하면 좋을 것 같습니다.
 
-[^sets]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있지만, '집합' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '셋' 이라고 발음 그대로 옮깁니다.
+[^sets]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있으며, 스위프트의 '셋 (sets)' 역시 수학에 있는 '집합 (sets)' 에서 유래한 개념입니다. 하지만, '집합' 이라고 하면 수학 용어인지 자료 타입인지 모호할 수 있으므로, 스위프트의 자료 타입임을 의미할 때는 '셋' 이라는 발음대로 옮기도록 합니다.
 
 [^dictionaries]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
 
@@ -687,3 +687,5 @@ let airportNames = [String](airports.values)
 [^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
 
 [^iterate-over]: 여기서 '동작을 반복시킨다 (iterate over)' 시킨다는 말은 배열에 있는 모든 항목들마다 한 번씩 동작을 시킨다는 의미입니다.
+
+[^no-defined-ordering]: '정의된 순서없이 (no defined ordering)' 라는 말도 '정렬되지 않은 채로' 라고 옮길 수도 있지만 'sorted' 와의 구별을 위해 '순서가 없이' 라는 말로 옮깁니다.
