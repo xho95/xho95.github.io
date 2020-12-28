@@ -35,7 +35,7 @@ _배열 (array)_ 은 같은 타입의 값을 '순서가 있는 리스트 (ordere
 
 #### Array Type Shorthand Syntax (배열 타입의 줄임 구문 표현)
 
-스위프트의 배열 타입을 온전하게 작성하려면 `Array<Element>` 라고 하는데, 여기서 `Element` 는 배열이 저장할 수 있는 값의 타입니다. 배열의 타입은 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 비록 두 형식이 기능적으로는 완전히 똑같지만, 줄임 형식이 더 좋으며 이 책 전체에 걸쳐서 배열의 타입을 참조할 때도 이를 사용합니다.
+스위프트의 배열 타입을 온전하게 작성하려면 `Array<Element>` 라고 하는데, 여기서 `Element` 는 배열이 저장할 수 있는 값의 타입니다. 배열의 타입은 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 비록 두 형식이 기능적으로는 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전체에서 배열 타입을 참조할 때는 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
@@ -242,7 +242,7 @@ for (index, value) in shoppingList.enumerated() {
 
 _셋 (set)_[^sets] 은 '집합체 (collection)' 에 같은 타입의 서로 별개인 값들을 '정의된 순서없이 (no defined ordering)'[^no-defined-ordering] 저장합니다. '셋' 은 항목의 순서가 중요하지 않을 때나, 항목이 한 번만 나타나도록 보장해야 할 때에, 배열 대신 사용할 수 있습니다.
 
-> 스위프트의 `Set` 타입은 'Foundation'[^Foundation] 의 `NSSet` 클래스와 연동되어 (bridged) 있습니다.
+> 스위프트의 `Set` 타입은 'Foundation'[^Foundation] 의 `NSSet` 클래스와 '연동되어 (bridged)' 있습니다.
 >
 > `Set` 을 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 참고하기 바랍니다.
 
@@ -434,45 +434,43 @@ farmAnimals.isDisjoint(with: cityAnimals)
 // 참
 ```
 
-## Dictionaries (딕셔너리; 사전)
+### Dictionaries (딕셔너리)
 
-딕셔너리는 '키-값 결합 (key-value associations)' 들이 순서없이 모여 있는 컬렉션입니다.
+_딕셔너리 (dictionary)_ 는 똑같은 타입인 키들과 똑같은 타입인 값들 사이의 '결합 (associations)' 을 '정의된 순서' 없이 '집합체 (collection)' 에 저장합니다. 각 값은 유일한 _키 (key)_ 와 결합되며, 이는 딕셔너리 내에서 해당 값을 위한 '식별자 (identifier)' 로 작동합니다. 배열의 항목과는 달리, 딕셔너리의 항목은 '지정된 순서 (specified order)' 를 가지지 않습니다. 딕셔너리는, 실제-세계의 '사전 (dictionary)' 이 특정 단어에 대한 정의를 찾아 보는 것과 거의 같은 방식으로, 식별자를 기초로 하여 값을 찾아 볼 때 사용합니다.
 
-_딕셔너리 (dictionary; 사전)_ 는 동일한 타입의 키들과 동일한 타입의 값들 사이의 '결합 (associations)' 을 컬렉션에 순서없이 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 관련지어지며, 이 키는 딕셔너리에서 그 값에 대한 식별자 (identifier) 역할을 합니다. 배열에 있는 항목과는 달리, 딕셔너리에 있는 항목에는 지정된 순서가 없습니다. 딕셔너리는 식별자를 기반으로 하여 값을 찾을 때 쓸 수 있는데, 이는 실제-세계의 사전 (딕셔너리) 이 특정 단어로 정의된 뜻을 찾는 것과 사실상 같은 것입니다.
-
-> 스위프트의 `Dictionary` 타입은 'Foundation' 프레임웍에 있는 `NSDictionary` 클래스와 연동되어 (bridged) 있습니다.
+> 스위프트의 `Dictionary` 타입은 'Foundation'[^Foundation] 의 `NSDictionary` 클래스와 '연동되어 (bridged)' 있습니다.
 >
-> 'Foundation' 및 'Cocoa' 프레임웍과 `Dictionary` 를 같이 사용하는 방법에 대해서는 [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 에서 더 자세히 알 수 있습니다.
+> `Dictionary` 를 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 를 참고하기 바랍니다.
 
-### Dictionary Type Shorthand Syntax (딕셔너리 타입 약칭 구문 표현)
+#### Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문 표현)
 
-스위프트의 딕셔너리 타입을 온전하게 작성하는 방법은 `Dictionary<Key, Value>` 이며, 여기서 `Key` 는 딕셔너리에서 키로 사용되는 값의 타입이고, `Value` 이 키로 딕셔너리에 저장되는 값의 타입입니다.
+스위프트의 딕셔너리 타입을 온전하게 작성하려면 `Dictionary<Key, Value>` 라고 하는데, 여기서 `Key` 는 딕셔너리의 키로 사용될 수 있는 값의 타입이며, `Value` 는 딕셔너리가 해당 키로 저장하는 값의 타입입니다.
 
-> '딕셔너리' 의 `Key` 타입은 '셋' 의 값 타입처럼 반드시 `Hashable` 프로토콜을 준수해야 합니다.
+> 딕셔너리의 `Key` 타입은, '셋' 의 값 타입과 같이, 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-또한 딕셔너리 타입은 약칭으로 `[Key : Value]` 와 같은 형태로 작성할 수도 있습니다. 두 양식의 기능은 동일하지만 약칭 형태를 권장하며, 이 책에서도 딕셔너리 타입은 약칭 형태로 참조하도록 합니다.
+딕셔너리 타입은 `[Key: Value]` 라는 '줄임 형식' 으로 작성할 수도 있습니다. 비록 두 형식이 기능적으로는 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전체에서 딕셔너리 타입을 참조할 때는 이를 사용합니다.
 
-### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
+#### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
 
-빈 `Dictionary` 를 만들려면 배열 처럼 '초기자 문법 (initializer syntax)' 을 사용합니다:
+배열에서 처럼, 빈 `Dictionary`  '초기자 구문 표현 (initializer syntax)' 을 사용하여 생성할 수 있습니다:
 
 ```swift
 var namesOfIntegers = [Int: String]()
 // namesOfIntegers 는 [Int: String] 타입의 빈 딕셔너리입니다.
 ```
 
-아래 예제는 `[Int: String]` 타입의 빈 딕셔너리를 생성해서 사람이 읽을 수 있는 정수의 이름을 저장합니다. 키는 `Int` 타입이고, 값은 `String` 타입입니다.
+다음 예제는 정수 값을 '사람이-읽을 수 있는 이름' 으로 저장하기 위해 `[Int: String]` 타입의 빈 딕셔너리를 생성합니다. 이것의 키는 `Int` 타입이고, 값은 `String` 타입입니다.
 
-영역 내에서 이미 타입 정보를 제공하는 경우, 빈 딕셔너리는 '빈 딕셔너리 글자 값 (empty dictionary literal)' 으로 생성할 수도 있는데, 이는 `[:]` 처럼 (대괄호 쌍 안에 콜론) 을 써 주면 됩니다:
+이미 타입 정보를 제공한 상황인 경우, 빈 딕셔너리는, `[:]` (대괄호 쌍 안의 콜론) 으로 작성하는, '빈 딕셔너리 글자 값 (empty dictionary literal)' 으로 생성할 수 있습니다:
 
 ```swift
 namesOfIntegers[16] = "sixteen"
-// namesOfIntegers 는 이제 1 개의 키-값 쌍을 갖고 있습니다.
+// namesOfIntegers 는 이제 1 개의 '키-값 쌍' 을 담고 있습니다.
 namesOfIntegers = [:]
-// namesOfIntegers 는 다시 빈 딕셔너리가 됐으며 타입은 [Int: String] 입니다.
+// namesOfIntegers 는 다시 한 번 타입이 [Int: String] 인 빈 딕셔너리 입니다.
 ```
 
-### Creating a Dictionary with a Dictionary Literal (딕셔너리 글자 값을 사용하여 딕셔너리 생성하기)
+#### Creating a Dictionary with a Dictionary Literal (딕셔너리 글자 값을 사용하여 딕셔너리 생성하기)
 
 _딕셔너리 글자 값 (dictionary literal)_ 을 써서 딕셔너리를 초기화할 수도 있는데, 이는 앞서 본 '배열 글자 값' 과 문법이 비슷합니다. 딕셔너리 글자 값은 하나 이상의 키-값 쌍을 가진 `Dictionary` 컬렉션을 약칭 (shorthand) 으로 만들 수 있는 방법입니다.
 
@@ -502,7 +500,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 '글자 값 (literals)' 에 있는 모든 키들이 서로 같은 타입이면서 모든 값들도 같은 타입이므로, 스위프트는 `airport` 딕셔너리의 타입이 정확하게 `[String: String]` 타입임을 추론할 수 있습니다.
 
-### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
+#### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
 
 메소드와 속성을 통해, 아니면 '첨자 연산 구문 표현' 을 사용하여, 딕셔너리에 접근하고 수정합니다.
 
@@ -580,7 +578,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 // "The removed airport's name is Dublin Airport." 를 출력합니다.
 ```
 
-### Iterating Over a Dictionary (딕셔너리에 동작을 반복 적용하기)
+#### Iterating Over a Dictionary (딕셔너리에 동작을 반복 적용하기)
 
 `for`-`in` 반복문을 사용하면 딕셔너리에 있는 전체 키-값 쌍들에 '동작을 반복 (iterate over)' 시킬 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플의 형태로 반환되며, 튜플의 멤버는 동작 반복 과정에서 임시 상수 또는 임시 변수로 분해할 수 있습니다:
 
