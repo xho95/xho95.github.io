@@ -379,20 +379,20 @@ for genre in favoriteGenres.sort() {
 // Jazz
 ```
 
-### Performing Set Operations (집합-셋 연산 수행하기)
+### Performing Set Operations (집합 연산 수행하기)
 
-(셋으로) 기본 '(집합) 연산'[^set-operations] 을 효율적으로 수행할 수 있습니다. 이에는 두 집합-셋-을 서로 합하는 것, 두 집합-셋-에 공통인 값을 결정하는 것, 또는 두 집합-셋-에 있는 값이 모두 같은 지, 일부만 같은 지, 아니면 같은 게 전혀 없는 지를 결정하는 것 등이 있습니다.
+('셋' 으로) 기본적인 '집합 연산 (set operations)'[^set-operations] 들, 가령 두 집합을 서로 '조합하는 것 (combining)', 두 집합이 공통적으로 가지고 있는 값을 결정하는 것, 또는 두 집합이 모두 같은, 일부만 같은, 아니면 아무 것도 같지 않은 값들을 담고 있는 지를 결정하는 것 등, 을 효율적으로 수행할 수 있습니다.  
 
-### Fundamental Set Operations (기본 집합-셋 연산)
+### Fundamental Set Operations (기본적인 집합 연산)
 
-아래 그림은 두 개의 셋-`a` 와 `b`-에 대해 다양한 집합-셋 연산을 수행한 결과를 음영으로 보여줍니다.
+아래 그림은 두 집합-`a` 와 `b`-에 다양한 집합 연산을 수행한 결과를 '음영 영역' 으로 보입니다.
 
 ![Fundamental-Set-Operations](/assets/Swift/Swift-Programming-Language/Collection-Types-fundamental-set-operations.jpg)
 
-* `intersect(_:)` 메소드를 사용하여 생성한 새 집합-셋은 두 집합-셋에 공통된 값만 담고 있습니다.
-* `exclusiveOr(_:)` 메소드를 사용하여 생성한 새 집합-셋은 각각의 집합-셋에는 있지만 공통되지는 않는 값만 담고 있습니다.
-* `union(_:)` : 메소드를 사용하여 생성한 새 집합-셋은 두 집합-셋에 있는 모든 값을 담고 있습니다.
-* `subtract(_:)` 메소드를 사용하여 생성한 새 집합-셋은 특정한 집합-셋에는 없는 값만을 답고 있습니다.
+* `intersect(_:)`[^intersection] 메소드는 두 집합에 공통인 값만으로 새 집합을 생성하기 위해 사용합니다.
+* `symmetricDifference(_:)`[^symmetric-difference] 메소드는 각 집합에는 있지만, 동시에 있지는 않은 값으로 새 집합을 생성하기 위해 사용합니다.
+* `union(_:)` : 메소드는 두 집합에 있는 모든 값으로 새 집합을 생성하기 위해 사용합니다.
+* `subtracting(_:)`[^subtracting] 메소드는 지정한 집합에는 없는 값으로 새 집합을 생성하기 위해 사용합니다.
 
 ```swift
 let oddDigits: Set = [1, 3, 5, 7, 9]
@@ -401,25 +401,25 @@ let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
 
 oddDigits.union(evenDigits).sort()
 // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-oddDigits.intersect(evenDigits).sort()
+oddDigits.intersection(evenDigits).sort()
 // []
-oddDigits.subtract(singleDigitPrimeNumbers).sort()
+oddDigits.subtracting(singleDigitPrimeNumbers).sort()
 // [1, 9]
-oddDigits.exclusiveOr(singleDigitPrimeNumbers).sort()
+oddDigits.symmetricDifference(singleDigitPrimeNumbers).sort()
 // [1, 2, 9]
 ```
 
-### Set Membership and Equality (집합-셋의 포함 및 동등 비교)
+### Set Membership and Equality (집합의 포함관계 및 같음 비교)
 
-아래 그림은 세 개의 셋-`a`, `b`, 와 `c`-에서 서로 공유하는 원소들을 겹침 영역 (overlapping regions) 으로 보여줍니다. 여기서 집합-셋 `a` 는 집합-셋 `b` 의 _상위집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 원소를 포함하기 때문입니다. 반대로, 집합-셋 `b` 는 집합-셋 `a` 의 _하위집합 (subset; 부분 집합)_ 으로, `b` 의 모든 원소는 `a` 에도 포함되기 때문입니다. 집합-셋 `b`와 집합-셋 `c`는 서로 _분리 (disjoint)_[^disjoint] 되었다고 하며, 이들은 공유하고 있는 공통 원소가 전혀 없기 때문입니다.
+아래 그림은 세 '집합 (sets)'[^sets]-`a`, `b`, 와 `c`-에서 서로 공유하는 원소를 '겹침 영역' 으로 표현하여 보입니다. 집합 `a` 는 집합 `b` 의 _상위 집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 원소를 담고 있기 때문입니다. 거꾸로, 집합 `b` 는 집합 `a` 의 _하위 집합 (subset)_[^subset] 이며, 이는 `b` 의 모든 원소가 `a` 에도 담겨 있기 때문입니다. 집합 `b`와 집합 `c`는 서로 _분리 (disjoint)_[^disjoint] 라고 하며, 이는 서로 공통인 원소를 공유하고 있지 않기 때문입니다.
 
 ![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-membership-and-equality.jpg)
 
-* “같음 (is equal)” 연산자 (`==`) 를 사용하여 두 집합-셋이 모두 같은 값을 가지고 있는지를 확인합니다.
-* `isSubset(of:)` 메소드를 사용하여 한 집합-셋에 있는 모든 값들이 지정된 집합-셋에 포함되어 있는지를 확인합니다.
-* `isSuperset(of:)` 메소드를 사용하여 한 집합-셋이 지정된 집합-셋에 있는 모든 값을 포함하는지를 확인합니다.
-* `isStrictSubset(of:)` 또는 `isStrictSuperset(of:)` 메소드를 사용하여 한 집합-셋이 지정된 집합-셋의 하위집합 (부분집합) 또는 상위집합이면서, 같지는 않은 관계인지를 확인합니다.
-* `isDisjoint(with:)` 메소드를 사용하여 두 집합-셋이 공통된 값을 가지고 있지 않은 것을 확인합니다.
+* “같음 (is equal)” 연산자 (`==`) 는 두 집합이 모두 같은 값을 담고 있는지 결정하기 위해 사용합니다.
+* `isSubset(of:)` 메소드는 집합의 모든 값이 지정된 집합에 담겨 있는지 결정하기 위해 사용합니다.
+* `isSuperset(of:)` 메소드는 집합이 지정한 집합에 있는 값을 모두 담고 있는지 결정하기 위해 사용합니다.
+* `isStrictSubset(of:)` 또는 `isStrictSuperset(of:)` 메소드는 집합이, 지정된 집합의, '진 하위 집합 (진 부분 집합)' 또는 '진 상위 집합' 인지 결정하기 위해 사용합니다.
+* `isDisjoint(with:)` 메소드는 두 집합에 공통인 값이 없는지 결정하기 위해 사용합니다.
 
 ```swift
 let houseAnimals: Set = ["🐶", "🐱"]
@@ -427,11 +427,11 @@ let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
 let cityAnimals: Set = ["🐦", "🐭"]
 
 houseAnimals.isSubset(of: farmAnimals)
-// true
+// 참
 farmAnimals.isSuperset(of: houseAnimals)
-// true
+// 참
 farmAnimals.isDisjoint(with: cityAnimals)
-// true
+// 참
 ```
 
 ## Dictionaries (딕셔너리; 사전)
@@ -649,17 +649,13 @@ let airportNames = [String](airports.values)
 
 [^equtable]: 'equtable' 은 '서로 같은 지를 비교할 수 있는' 지를 의미합니다.
 
-[^reflexivity]: 여기서 말하는 '반사성' 은 수학에서 말하는 '반사 관계' 를 말하는 것 같습니다. '반사 관계' 에 대해서는 위키피디아의 [Reflexive relation](https://en.wikipedia.org/wiki/Reflexive_relation) 문서를 참고하기 바랍니다.
-
-[^symmetry]: 여기서 말하는 '대칭성' 은 수학에서 말하는 '대칭 관계' 를 말하는 것 같습니다. '대칭 관계' 에 대해서는 위키피디아의 [Symmetric relation](https://en.wikipedia.org/wiki/Symmetric_relation) 문서를 참고하기 바랍니다.
-
-[^transitivity]: 여기서 말하는 '추이성' 은 수학에서 말하는 '추이 관계' 를 말하는 것 같습니다. '추이 관계' 에 대해서는 위키피디아의 [Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation) 문서를 참고하기 바랍니다.
-
 [^set-array-literal]: '셋 글자 값 (set literal)' 이란 것이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값 (array literal)' 만 사용하면 타입을 `Array` 로 추론하게 됩니다.
 
-[^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산에 사용하는 타입이라 이해할 수 있습니다. 따라서 여기서의 'set operations' 은 '집합 연산'의 의미로 이해하는 것이 맞을 것 같습니다.
+[^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set)' 타입 자체가 수학에서의 '집합 (set)' 을표현하는 타입이기도 해서, 수학에서 다루는 '집합 연산' 을 하고자 할 때는 스위프트의 '셋 (set)' 타입을 사용하면 효율적으로 할 수 있다 정도로 이해하면 좋을 것 같습니다.
 
-[^disjoint]: 이를 수학 용어로는 '분리 집합 (disjoint sets)' 이라고 하는 것 같습니다. 분리 집합에 대해서는 위키피디아의 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets)문서를 참고하기 바랍니다. 한글로는 '[서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합)' 이라는 용어가 있는데, 프로그래밍 분야에서는 '분리 집합' 이라는 표현도 같이 사용하고 있는 듯 합니다.
+[^sets]: 여기서도 앞 부분과 마찬가지 이유로 'set' 을 '집합' 으로 옮깁니다.
+
+[^disjoint]: 'disjoint' 는 수학에서 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어가 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
 [^key-value-pair]: 여러 개의 '키-값 쌍 (key-value pair)' 을 묶은 '키-값 쌍들 (key-value pairs)' 자체가 하나의 '딕셔너리 글자 값 (dictionary literal)' 이라고 할 수 있습니다.
 
@@ -679,4 +675,12 @@ let airportNames = [String](airports.values)
 
 [^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 이 아니라 '빈 배열 글자 값 (empty array literal)' 입니다. '빈 셋 글자 값' 같은 건 따로 없고, '빈 배열 글자 값' 을 그대로 사용합니다.
 
-[^set]: 여기서의 '셋 (set)' 은 수학에서 말하는 '집합 (set)' 과 같은 의미로 사용되었다고 볼 수 있습니다. 실제 자료 구조로써의 '셋 (set)' 은 수학에서의 '집합 (set)' 을 구현하고 있는 것입니다.  
+[^set]: 여기서의 '셋 (set)' 은 수학에서 말하는 '집합 (set)' 과 같은 의미로 사용되었다고 볼 수 있습니다. 실제 자료 구조로써의 '셋 (set)' 은 수학에서의 '집합 (set)' 을 구현하고 있는 것입니다.
+
+[^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 라는 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 정함으로써 원본은 변경하지 않음을 나타내고 있습니다.
+
+[^symmetric-difference]: 원래는 메소드의 이름이 `exclusiveOr` 였는데, `symmetricDifference` 로 바뀌었습니다. 앞서와 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 라는 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 정함으로써 원본은 변경하지 않음을 나타내고 있습니다.
+
+[^subtracting]: 원래는 메소드의 이름이 `subtract` 였는데, `subtracting` 으로 바뀌었습니다. 역시 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 라는 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 정함으로써 원본은 변경하지 않음을 나타내고 있습니다.
+
+[^subset]: '하위집합 (subset)' 은 수학에서 '부분집합' 으로 이미 사용되고 있습니다. 다만, 'subset' 과 대응되는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위집합 (subset)' 이라고 옮깁니다. 영어로 '부분집합' 은 'subset' 이라고 하고, 그 반대는 'superset' 이라고 한다고 이해하면 될 것입니다.
