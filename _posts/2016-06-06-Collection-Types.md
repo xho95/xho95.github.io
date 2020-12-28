@@ -98,7 +98,7 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 
 이 경우, '배열 글자 값' 은 두 개의 `String` 값 외에 다른 것은 아무 것도 담고 있지 않습니다. 이는 `shoppingList` 변수의 선언 타입 (`String` 값만 담을 수 있는 배열) 과 일치하므로, '배열 글자 값' 의 할당이 두 초기 항목으로 `shoppingList` 를 초기화하는 방법으로써 허가됩니다.
 
-스위프트의 '타입 추론 (type inference)' 에 감사하게도, 같은 타입의 값을 담은 '배열 글자 값' 으로 초기화할 경우 배열의 타입은 작성하지 않아도 됩니다. `shoppingList` 의 초기화를 '줄임 형식' 으로 대신 작성할 수 있게 됩니다:
+스위프트의 '타입 추론 (type inference)' 에 감사하게도, 같은 타입의 값을 담은 '배열 글자 값' 으로 초기화할 경우 배열의 타입은 작성하지 않아도 됩니다. `shoppingList` 의 초기화는 '줄임 형식' 으로 대신 작성할 수도 있습니다:
 
 ```swift
 var shoppingList = ["Eggs", "Milk"]
@@ -470,35 +470,35 @@ namesOfIntegers = [:]
 // namesOfIntegers 는 다시 한 번 타입이 [Int: String] 인 빈 딕셔너리 입니다.
 ```
 
-#### Creating a Dictionary with a Dictionary Literal (딕셔너리 글자 값을 사용하여 딕셔너리 생성하기)
+#### Creating a Dictionary with a Dictionary Literal (딕셔너리 글자 값으로 딕셔너리 생성하기)
 
-_딕셔너리 글자 값 (dictionary literal)_ 을 써서 딕셔너리를 초기화할 수도 있는데, 이는 앞서 본 '배열 글자 값' 과 문법이 비슷합니다. 딕셔너리 글자 값은 하나 이상의 키-값 쌍을 가진 `Dictionary` 컬렉션을 약칭 (shorthand) 으로 만들 수 있는 방법입니다.
+'딕셔너리' 는, 이전에 본 '배열 글자 값' 과 비슷한 구문 표현을 가진, _딕셔너리 글자 값 (dictionary literal)_ 으로 초기화할 수도 있습니다. '딕셔너리 글자 값' 은 하나 이상의 '키-값 쌍' 을 `Dictionary` '집합체 (collection)' 로 작성하는 '줄임 표현법' 입니다.
 
-_키-값 쌍 (key-value pair)_ 은 키와 값의 조합입니다. 딕셔너리 글자 값의 각 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분됩니다. '키-값 쌍들'[^key-value-pairs] 을 작성하려면 값을 나열하면서, 쉼표로 나누고, 대괄호 쌍으로 감싸면 됩니다:
+_키-값 쌍 (key-value pair)_ 은 '키' 와 '값' 이 조합된 것입니다. '딕셔너리 글자 값' 에서, 각 '키-값 쌍' 에 있는 '키' 와 '값' 은 '콜론 (colon)' 으로 구분됩니다. '키-값 쌍' 들은, 쉼표로 구분된, 목록, 주위를 대괄호 쌍으로 감싸서 작성합니다:
 
-[`key 1`: `value 1`, `key 2`: `value 2`, `key 3`: `value 3`]
+[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `key 3-키 3`: `value 3-값 3`]
 
-아래 예제는 국제 공항의 이름을 저장하는 딕셔너리를 생성합니다. 이 딕셔너리에서, 키는 3-글자로 된 국제 항공운송협회 코드이며, 값은 공항의 이름입니다:
+아래 예제는 국제 공항의 이름을 저장하는 '딕셔너리' 를 생성합니다. 이 딕셔너리에서, '키' 는 세-글자의 '국제 항공 운송 협회 (International Air Transport Association)'[^IATA] 코드 이며, '값' 은 공항 이름입니다:
 
 ```swift
 var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-`airport` 딕셔너리는 `[String: String]` 타입으로 선언되었는데, 이는 "키가 `String` 타입이고 값이 `String` 타입인 `Dictionary`" 임을 의미합니다.
+`airport` 딕셔너리는 `[String: String]` 타입을 가지는 것으로 선언했는데, 이는 "키는 `String` 타입이며, 값도 `String` 타입인 `Dictionary`" 를 의미합니다.
 
-> `airport` 딕셔너리는 (`var` 소개자를 쓰는) 변수로 선언되었지 (`let` 소개자를 쓰는) 상수로 선언된 것이 아닙니다. 이는 아래 예제에서 이 딕셔너리에 더 많은 공항을 추가할 것이기 때문입니다.
+> `airport` 딕셔너리는, (`let` '도입자' 를 쓰는) 상수가 아니라, (`var` '도입자' 를 써서) 변수로 선언했는데, 이는 아래 예제에서 이 '딕셔너리' 에 공항을 더 추가하기 때문입니다.
 
-`airport` 딕셔너리는 두 개의 키-값 쌍을 가지는 '딕셔너리 글자 값' 으로 초기화되었습니다. 첫 번째 쌍의 키는 `"YYZ"` 이고, 값은 `"Toronto Pearson"` 입니다. 두 번째 쌍은 키가 `"DUB"` 이고, 값은 `"Dublin"` 입니다.
+`airports` 딕셔너리는 두 개의 '키-값 쌍' 을 담은 '딕셔너리 글자 값' 으로 초기화됩니다. 첫 번째 쌍은 `"YYZ"` 라는 '키' 와 `"Toronto Pearson"` 라는 '값' 을 가집니다. 두 번째 쌍은 `"DUB"` 이라는 '키' 와 `"Dublin"` 이라는 '값' 을 가집니다.
 
-이 '딕셔너리 글자 값' 은 두 개의 `String: String` 쌍을 가지고 있습니다. 이 키-값 타입은 `airport` 변수 선언의 타입 (오직 `String` 키와, `String` 값만을 가지는 딕셔너리) 에서와 일치하므로, 두 개의 초기 항목들로 `airports` 딕셔너리를 초기화하기 위해 '딕셔너리 글자 값' 을 할당하는 것도 가능합니다.
+이 '딕셔너리 글자 값' 은 두 개의 `String: String` 쌍을 담고 있습니다. 이 '키-값 타입' 은  `airports` 변수의 선언 타입 (`String` 키와, `String` 값만을 가지는 딕셔너리) 와 일치하므로, '딕셔너리 글자 값' 의 할당이 두 초기 항목으로 `airports` 딕셔너리를 초기화하는 방법으로써 허가됩니다.
 
-배열에서 처럼, 딕셔너리도 초기화할 때 타입을 안써도 되는 경우가 있으며, 이는 딕셔너리 글자 값에 있는 키와 값들의 타입이 일관성이 있는 경우입니다. `airport` 의 초기화는 아래 처럼 더 짧게 작성할 수 있습니다:
+배열에서 처럼, 일관성 있는 타입의 키와 값을 가진 딕셔너리로 초기화하는 경우 디셔너리의 타입을 작성하지 않아도 됩니다. `airports` 의 초기화는 '줄임 형식' 으로 대신 작성할 수도 있습니다:
 
 ```swift
 var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-'글자 값 (literals)' 에 있는 모든 키들이 서로 같은 타입이면서 모든 값들도 같은 타입이므로, 스위프트는 `airport` 딕셔너리의 타입이 정확하게 `[String: String]` 타입임을 추론할 수 있습니다.
+'글자 값' 에 있는 모든 키가 서로 같은 타입이고, 마찬가지로 모든 값도 서로 같은 타입이기 때문에, 스위프트가 `airports` 딕셔너리에 대한 올바른 타입이 `[String: String]` 이라고 추론할 수 있습니다.
 
 #### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
 
@@ -655,8 +655,6 @@ let airportNames = [String](airports.values)
 
 [^disjoint]: 'disjoint' 는 수학에서 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어가 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
-[^key-value-pair]: 여러 개의 '키-값 쌍 (key-value pair)' 을 묶은 '키-값 쌍들 (key-value pairs)' 자체가 하나의 '딕셔너리 글자 값 (dictionary literal)' 이라고 할 수 있습니다.
-
 [^optional-value]: 'optional value' 는 '선택적 값' 이라고도 옮길 수 있겠지만, 여기서는 스위프트의 타입임을 드러내기 위해서 발음을 따라서 '옵셔널 값' 으로 옮깁니다.
 
 [^ordered-collection]: 여기서 'ordered collections' 을 '순서가 있는 집합체' 라고 옮겼는데, 보통 '정렬된 집합체' 라고 옮길 수도 있긴 합니다. 다만 수학 용어에 'sorted collection' 이란 것도 있는데, 만약 'sort algorithm' 을 '정렬 알고리즘' 이라고 옮긴다면 'sorted collection' 이 '정렬된 집합체' 가 되어야 할 것입니다. 게다가, 'ordered' 는 엄밀히 말해서 '정렬되어 있는 것' 을 의미하는 것은 아니므로, 여기서는 'ordered collection' 을 그냥 '순서가 있는 집합체' 라고 옮기도록 합니다.  
@@ -682,3 +680,5 @@ let airportNames = [String](airports.values)
 [^subtracting]: 원래는 메소드의 이름이 `subtract` 였는데, `subtracting` 으로 바뀌었습니다. 역시 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 라는 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 정함으로써 원본은 변경하지 않음을 나타내고 있습니다.
 
 [^subset]: '하위집합 (subset)' 은 수학에서 '부분집합' 으로 이미 사용되고 있습니다. 다만, 'subset' 과 대응되는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위집합 (subset)' 이라고 옮깁니다. 영어로 '부분집합' 은 'subset' 이라고 하고, 그 반대는 'superset' 이라고 한다고 이해하면 될 것입니다.
+
+[^IATA]: 본문에 있는 '국제 항공 운송 협회 (International Air Transport Association)' 는 예제를 위한 것이 아니라 실제로 존재하는 협회입니다. 이 협회의 홈페이지는 [https://www.iata.org](https://www.iata.org) 입니다.
