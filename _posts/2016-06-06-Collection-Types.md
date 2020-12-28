@@ -252,7 +252,7 @@ _셋 (set)_[^sets] 은 '집합체 (collection)' 에 같은 타입의 서로 별�
 
 스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해쉬 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합된 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해쉬 가능합니다.   
 
-> 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수하게 만드는 것으로써 '셋' 값 타입이나 '딕셔너리' 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 참고하기 바랍니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
+> 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수함으로써 '셋' 의 값 타입 또는 '딕셔너리' 의 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 참고하기 바랍니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
 #### Set Type Syntax (셋 타입 구문 표현)
 
@@ -268,7 +268,7 @@ print("letters is of type Set<Character> with \(letters.count) items.")
 // "letters is of type Set<Character> with 0 items." 을 인쇄합니다.
 ```
 
-> `letters` 변수의 타입은, 초기자의 타입으로부터, `Set<Character>` 라고 추론됩니다.
+> `letters` 변수의 타입을, 초기자의 타입으로부터, `Set<Character>` 라고 추론합니다.
 
 또 다른 방법으로, 이미 타입 정보를 제공한 상황, 가령 함수 인자에서 또는 이미 타입을 정한 변수나 상수 같은 상황인 경우, 빈 '셋' 을 '빈 배열 글자 값 (empty array literal)'[^empty-array-literal] 으로 생성할 수 있습니다:
 
@@ -279,28 +279,28 @@ letters = []
 // letters 는 이제 빈 셋이지만, 타입은 여전히 Set<Character> 입니다.
 ```
 
-#### Creating a Set with an Array Literal (배열 글자 값을 사용하여 셋-집합 생성하기)
+#### Creating a Set with an Array Literal (배열 글자 값으로 셋 생성하기)
 
-'배열 글자 값' 으로 '셋 (set)' 을 초기화할 수도 있는데, 이는 '셋 컬렉션 (set collection)' 에 하나 이상의 값을 할당하는 '약칭법 (shorthand way)' 입니다.
+'셋' 은, 하나 이상의 값을 '셋 집합체 (set collection)' 에 작성하는 '줄임 표현법' 인, '배열 글자 값' 으로 초기화할 수도 있습니다.
 
-아래 예제는 `favoriteGenres` 라는 셋을 만든 후 `String` 값을 저장하는 방법을 보여줍니다:
+아래 예제는 `String` 값을 저장하는 `favoriteGenres` 라는 '셋' 을 생성합니다:
 
 ```swift
 var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
-// favoriteGenres 를 3 개의 초기 항목으로 초기화했습니다.
+// favoriteGenres 는 세 개의 초기 항목들로 초기화되었습니다.
 ```
 
-`favoriteGenres` 변수는 `Set<String>` 을 써서 "`String` 값의 셋” 으로 선언되었습니다. 이 셋은 `String` 타입의 값을 지정했기 때문에, `String` 값만 저장할 수 있습니다. 여기서 `favoriteGenres` 셋은 '배열 글자 값' 에 있는 세 개의 `String` 값인 (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 으로 초기화 됩니다.
+`favoriteGenres` 변수는, `Set<String>` 을 써서, "`String` 값의 '셋 (set)'[^set]” 으로 선언합니다. 이 특정 셋은 값 타입이 `String` 이라고 지정했기 때문에, `String` 값 _만 (only)_ 저장하도록 허용합니다. 여기서의, `favoriteGenres` 셋은, '배열 글자 값' 에서 작성된, 세 개의 `String` (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 값으로 초기화 됩니다.
 
-> `favoriteGenres` 셋은 (`var` 소개자를 써서) 변수로 선언되었으며, (`let` 소개자를 쓴) 상수가 아닙니다. 이는 아래 예제에서 항목을 추가하거나 제거할 것이기 때문입니다.
+> `favoriteGenres` 셋은 (`let` '도입자' 를 쓰는) 상수가 아니라 (`var` '도입자' 를 써서) 변수로 선언되었는데 이는 아래 예제에서 항목이 추가되거나 삭제되기 때문입니다.
 
-셋 타입은 '배열 글자 값 (array literal)' 만으로는 추론할 수 없으므로[^set-array-literal], `Set` 이라는 타입은 반드시 명시적으로 선언해야 합니다. 그러나 스위프트의 타입 추론 기능에 의해서, '배열 글자 값' 이 하나의 타입만 갖고 있는 경우, 셋의 '원소 (elements)' 타입은 쓸 필요가 없습니다. 따라서 `favoriteGenres` 의 초기화는 다음 처럼 더 짧은 양식으로 작성 할 수 있습니다:
+'셋' 타입은 '배열 글자 값' 홀로 있으면 추론할 수 없으므로[^set-array-literal], `Set` 타입은 반드시 명시적으로 선언해야 합니다. 하지만, 스위프트의 타입 추론으로 인하여, 단 한 가지 타입의 값을 담은 '배열 글자 값' 으로 초기화하는 경우 '셋' 의 '원소 (elements)' 타입은 작성하지 않아도 됩니다. `favoriteGenres` 의 초기화는 '줄임 형식' 으로 대신 작성할 수도 있습니다:
 
 ```swift
 var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 ```
 
-'배열 글자 값' 에 있는 모든 값들이 같은 타입이므로, 스위프트는 `favoriteGenres` 변수가 `Set<String>` 임을 올바르게 추론할 수 있습니다.
+'배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트가 `favoriteGenres` 변수에 대한 올바른 타입이 `Set<String>` 이라고 추론할 수 있습니다.
 
 #### Accessing and Modifying a Set (셋에 접근하고 수정하기)
 
@@ -657,7 +657,7 @@ let airportNames = [String](airports.values)
 
 [^transitivity]: 여기서 말하는 '추이성' 은 수학에서 말하는 '추이 관계' 를 말하는 것 같습니다. '추이 관계' 에 대해서는 위키피디아의 [Transitive relation](https://en.wikipedia.org/wiki/Transitive_relation) 문서를 참고하기 바랍니다.
 
-[^set-array-literal]: 이것은 '배열 글자 값 (array literal)' 만 사용할 경우, `Array` 로 추론되기 때문일 것입니다.
+[^set-array-literal]: '셋 글자 값 (set literal)' 이란 것이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값 (array literal)' 만 사용하면 타입을 `Array` 로 추론하게 됩니다.
 
 [^set-operations]: '셋' 은 실제로 수학에서 '집합' 을 가리키는 용어인데, 스위프트의 '셋' 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산에 사용하는 타입이라 이해할 수 있습니다. 따라서 여기서의 'set operations' 은 '집합 연산'의 의미로 이해하는 것이 맞을 것 같습니다.
 
@@ -680,3 +680,5 @@ let airportNames = [String](airports.values)
 [^no-defined-ordering]: '정의된 순서없이 (no defined ordering)' 라는 말도 '정렬되지 않은 채로' 라고 옮길 수도 있지만 'sorted' 와의 구별을 위해 '순서가 없이' 라는 말로 옮깁니다.
 
 [^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 이 아니라 '빈 배열 글자 값 (empty array literal)' 입니다. '빈 셋 글자 값' 같은 건 따로 없고, '빈 배열 글자 값' 을 그대로 사용합니다.
+
+[^set]: 여기서의 '셋 (set)' 은 수학에서 말하는 '집합 (set)' 과 같은 의미로 사용되었다고 볼 수 있습니다. 실제 자료 구조로써의 '셋 (set)' 은 수학에서의 '집합 (set)' 을 구현하고 있는 것입니다.  
