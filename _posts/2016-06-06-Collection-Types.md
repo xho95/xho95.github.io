@@ -620,6 +620,10 @@ let airportNames = [String](airports.values)
 
 스위프트의 `Dictionary` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 지정된 순서로 딕셔너리의 키 또는 값들에 동작을 반복시키려면, `keys` 또는 `values` 속성에 `sorted()` 메소드를 사용합니다.
 
+### 다음 장
+
+[Control Flow (제어 흐름) > ]({% post_url 2020-06-10-Control-Flow %})
+
 ### 참고 자료
 
 [^Collection-Types]: 원문은 [Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html) 에서 확인할 수 있습니다.
