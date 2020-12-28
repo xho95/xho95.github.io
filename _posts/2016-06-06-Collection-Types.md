@@ -117,7 +117,7 @@ print("The shopping list contains \(shoppingList.count) items.")
 // "The shopping list contains 2 items." 를 인쇄합니다.
 ```
 
-`count` 속성이 `0` 인지를 검사하는 것의 '줄임말 (shortcut)' 로써 '불리언 (Boolean)' 속성인 `isEmpty` 를 사용합니다[^isEmpty-count]:
+`count` 속성이 `0` 인지를 검사하는 것은 '줄임말 (shortcut)' 로써 '불리언 (Boolean)' 속성인 `isEmpty` 를 사용합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -302,66 +302,65 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 
 '배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트가 `favoriteGenres` 변수에 대한 올바른 타입이 `Set<String>` 이라고 추론할 수 있습니다.
 
-#### Accessing and Modifying a Set (셋에 접근하고 수정하기)
+#### Accessing and Modifying a Set (셋 접근하기와 수정하기)
 
-메소드와 속성을 통해 셋에 접근하고 이를 수정할 수 있습니다.
+'셋' 은 메소드와 속성을 통하여 접근하고 수정합니다.
 
-셋에 있는 항목의 개수를 알고 싶으면, 읽기-전용 속성인 `count` 를 검사하면 됩니다:
+'셋' 의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("I have \(favoriteGenres.count) favorite music genres.")
-// "I have 3 favorite music genres." 를 출력합니다.
+// "I have 3 favorite music genres." 를 인쇄합니다.
 ```
-`count` 속성이 `0` 인지를 검사해야할 때는 더 간단한 방법으로 불리언 (Boolean) 속성인 `isEmpty` 를 사용합니다:
+
+`count` 속성이 `0` 인지를 검사하는 것은 '줄임말 (shortcut)' 로써 '불리언' 속성인 `isEmpty` 를 사용합니다:
 
 ```swift
 if favoriteGenres.isEmpty {
-    print("As far as music goes, I'm not picky.")
+  print("As far as music goes, I'm not picky.")
 } else {
-    print("I have particular music preferences.")
+  print("I have particular music preferences.")
 }
-
-// "I have particular music preferences." 를 출력합니다.
+// "I have particular music preferences." 를 인쇄합니다.
 ```
 
-셋에 새로운 항목을 추가할 때는 `insert(_:)` 메소드를 호출하면 됩니다:
+`insert(_:)` 메소드를 호출하여 '셋' 에 새로운 항목을 추가할 수 있습니다:
 
 ```swift
 favoriteGenres.insert("Jazz")
-// favoriteGenres 는 이제 4 개의 항목을 갖고 있습니다.
+// favoriteGenres 는 이제 4 개의 항목을 담고 있습니다.
 ```
 
-셋에 있는 항목을 제거하려면 셋의 `remove(_:)` 메소드를 호출하면 되는데, 셋의 멤버인 경우라면 그 항목을 제거하고, 제거한 그 값을 반환하지만, 만약 셋이 가지고 있지 않은 경우라면 `nil` 을 반환합니다. 다른 방법으로, `removeAll()` 메소드로 셋에 있는 모든 항목을 제거할 수 있습니다.
+'셋' 의 `remove(_:)` 메소드를 호출하여 셋에 있는 항목을 삭제할 수 있는데, 이는 그 항목이 셋의 멤버라면 이를 삭제하고, 삭제한 값을 반환하지만, '셋' 이 이를 담고 있지 않은 경우 `nil` 을 반환합니다. 또 다른 방법으로는, `removeAll()` 메소드로 '셋' 에 있는 모든 항목을 삭제할 수 있습니다.
 
 ```swift
 if let removeGenres = favoriteGenres.remove("Rock") {
-    print("\(removeGenres)? I'm over it.")
+  print("\(removeGenres)? I'm over it.")
 } else {
-    print("I never much cared for that.")
+  print("I never much cared for that.")
 }
-// "Rock? I'm over it." 를 출력합니다.
+// "Rock? I'm over it." 를 인쇄합니다.
 ```
 
-셋이 특정한 항목을 가지고 있는지 검사하려면, `contain(_:)` 메소드를 사용합니다.
+셋이 특정 항목을 담고 있는 지를 검사하려면, `contains(_:)` 메소드를 사용합니다.
 
 ```swift
 if favoriteGenres.contains("Funk") {
-    print("I get up on the good foot.")
+  print("I get up on the good foot.")
 } else {
-    print("It's too funky in here.")
+  print("It's too funky in here.")
 }
-// "It's too funky in here." 를 출력합니다.
+// "It's too funky in here." 를 인쇄합니다.
 ```
 
-#### Iterating Over a Set (셋에 동작을 반복 적용하기)
+#### Iterating Over a Set (셋에 동작을 반복시키기)
 
-`for`-`in` 반복문으로 셋에 있는 값들에 '동작을 반복시킬 (iterate over)' 수 있습니다:
+셋에 있는 값들은 `for`-`in` 반복문으로 '동작을 반복시킬' 수 있습니다.
 
 ```swift
 for genre in favoriteGenres {
-    print("\(genre)")
+  print("\(genre)")
 }
-
 // Classical
 // Jazz
 // Hip Hop
@@ -369,13 +368,12 @@ for genre in favoriteGenres {
 
 `for`-`in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
-스위프트의 `Set` 타입은 정의된 순서란 것을 가지고 있지 않습니다. 지정된 순서대로 셋의 값에 동작을 반복시키려면, `<` 연산자로 셋의 원소들을 정렬된 배열 형태로 반환하는, `sorted()` 메소드를 사용합니다.
+스위프트의 `Set` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 셋의 값을 지정된 순서대로 동작을 반복시키려면, `<` 연산자를 사용하여 '정렬된 배열' 로 '셋' 의 원소를 반환하는, `sorted()` 메소드를 사용합니다.
 
 ```swift
 for genre in favoriteGenres.sort() {
-    print("\(genre)")
+  print("\(genre)")
 }
-
 // Classical
 // Hip Hop
 // Jazz
