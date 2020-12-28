@@ -11,7 +11,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는, 값의 집합체를 저장하기 위해, '배열 (arrays)', '셋 (sets)[^sets]', 그리고 '딕셔너리 (dictionaries)[^dictionaries]' 라는, 세 개의 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 값의 '순서가 있는 집합체 (ordered collections)'[^ordered-collection] 이고, 셋은 유일한 값들이 '순서없이 있는 (unordered) 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations)' 들이 '순서없이 있는 집합체' 입니다.
+스위프트는, 값의 집합체를 저장하기 위해, '배열 (arrays)', '셋 (sets)[^sets-type]', 그리고 '딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 개의 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 값의 '순서가 있는 집합체 (ordered collections)'[^ordered-collection] 이고, 셋은 유일한 값들이 '순서없이 있는 (unordered) 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations)' 들이 '순서없이 있는 집합체' 입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
@@ -117,7 +117,7 @@ print("The shopping list contains \(shoppingList.count) items.")
 // "The shopping list contains 2 items." 를 인쇄합니다.
 ```
 
-`count` 속성이 `0` 인지를 검사하는 것은 '줄임말 (shortcut)' 로써 '불리언 (Boolean)' 속성인 `isEmpty` 를 사용합니다[^isEmpty-count]:
+'불리언 (Boolean)' 속성 `isEmpty` 는 `count` 속성이 `0` 인지 검사하는 것의 '줄임말 (shortcut)' 로써 사용합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -222,7 +222,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-값 뿐만 아니라 각 항목의 정수 색인도 필요한 경우, 배열에 동작을 반복시키기 위해 대신 `enumerated()` 메소드를 사용합니다. 배열의 각 항목마다, `enumerated()` 메소드는 정수와 항목으로 구성된 '튜플 (tuple)' 을 반환합니다. 이 정수는 '0' 에서 시작하며 각 항목마다 하나씩 세어 갑니다; 전체 배열을 '열거하는 (enumerate over)' 경우엔, 이 정수들이 항목들의 색인과 일치합니다. 튜플은 '회차 (iteration)' 마다 임시 상수나 변수로 분해할 수 있습니다.:
+값 뿐만 아니라 각 항목의 정수 색인도 필요한 경우, 배열에 동작을 반복시키기 위해 대신 `enumerated()` 메소드를 사용합니다. 배열의 각 항목마다, `enumerated()` 메소드는 정수와 항목으로 구성된 '튜플 (tuple)' 을 반환합니다. 이 정수는 '0' 에서 시작하며 각 항목마다 하나씩 세어 갑니다; 전체 배열을 '열거하는 (enumerate over)' 경우엔, 이 정수들이 항목들의 색인과 일치합니다. 튜플은 '반복 회차 (iteration)' 마다 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -240,7 +240,7 @@ for (index, value) in shoppingList.enumerated() {
 
 ### Sets (셋)
 
-_셋 (set)_[^sets] 은 '집합체 (collection)' 에 같은 타입의 서로 별개인 값들을 '정의된 순서없이 (no defined ordering)'[^no-defined-ordering] 저장합니다. '셋' 은 항목의 순서가 중요하지 않을 때나, 항목이 한 번만 나타나도록 보장해야 할 때에, 배열 대신 사용할 수 있습니다.
+_셋 (set)_ 은 '집합체 (collection)' 에 같은 타입의 서로 별개인 값들을 '정의된 순서없이 (no defined ordering)'[^no-defined-ordering] 저장합니다. '셋' 은 항목의 순서가 중요하지 않을 때나, 항목이 한 번만 나타나도록 보장해야 할 때에, 배열 대신 사용할 수 있습니다.
 
 > 스위프트의 `Set` 타입은 'Foundation'[^Foundation] 의 `NSSet` 클래스와 '연동되어 (bridged)' 있습니다.
 >
@@ -313,7 +313,7 @@ print("I have \(favoriteGenres.count) favorite music genres.")
 // "I have 3 favorite music genres." 를 인쇄합니다.
 ```
 
-`count` 속성이 `0` 인지를 검사하는 것은 '줄임말 (shortcut)' 로써 '불리언' 속성인 `isEmpty` 를 사용합니다:
+'불리언' 속성 `isEmpty` 는 `count` 속성이 `0` 인지 검사하는 것의 '줄임말' 로써 사용합니다[[^isEmpty-count]]:
 
 ```swift
 if favoriteGenres.isEmpty {
@@ -368,7 +368,7 @@ for genre in favoriteGenres {
 
 `for`-`in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
-스위프트의 `Set` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 셋의 값을 지정된 순서대로 동작을 반복시키려면, `<` 연산자를 사용하여 '정렬된 배열' 로 '셋' 의 원소를 반환하는, `sorted()` 메소드를 사용합니다.
+스위프트의 `Set` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 지정된 순서로 셋의 값들에 동작을 반복시키려면, '셋' 의 원소를 `<` 연산자로 '정렬된 배열' 로써 반환하는, `sorted()` 메소드를 사용합니다.
 
 ```swift
 for genre in favoriteGenres.sort() {
@@ -500,126 +500,129 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 '글자 값' 에 있는 모든 키가 서로 같은 타입이고, 마찬가지로 모든 값도 서로 같은 타입이기 때문에, 스위프트가 `airports` 딕셔너리에 대한 올바른 타입이 `[String: String]` 이라고 추론할 수 있습니다.
 
-#### Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)
+#### Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)
 
-메소드와 속성을 통해, 아니면 '첨자 연산 구문 표현' 을 사용하여, 딕셔너리에 접근하고 수정합니다.
+딕셔너리는 메소드와 속성을 통하여, 아니면 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여, 접근하고 수정합니다.
 
-배열에서와 같이, `Dictionary` 에 있는 항목의 개수를 알아내려면 읽기-전용 속성인 `count` 를 검사합니다:
+배열에서 처럼, 읽기-전용 속성인 `count` 를 검사하여 `Dictionary` 의 항목 개수를 알아냅니다:
 
 ```swift
 print("The airports dictionary contains \(airports.count) items.")
-// "The airports_2 dictionary contains 2 items." 를 출력합니다.
+// "The airports_2 dictionary contains 2 items." 를 인쇄합니다.
 ```
 
-불리언 (Boolean) 속성인 `isEmpty` 를 사용하면, `count` 속성이 `0` 과 같은 지를 더 간단하게 검사할 수 있습니다[^isEmpty-count]:
+'불리언' 속성 `isEmpty` 는 `count` 속성이 `0` 인지 검사하는 것의 '줄임말' 로써 사용합니다[^isEmpty-count]:
 
 ```swift
 if airports.isEmpty {
-    print("The airports dictionary is empty.")
+  print("The airports dictionary is empty.")
 } else {
-    print("The airports dictionary is not empty.")
+  print("The airports dictionary is not empty.")
 }
-// "The airports dictionary is not empty." 를 출력합니다.
+// "The airports dictionary is not empty." 를 인쇄합니다.
 ```
 
-'첨자 연산 구문 표현' 으로 딕셔너리에 새 항목을 추가할 수 있습니다. 알맞은 타입의 새 키를 첨자 연산 색인으로 사용하고, 알맞은 타입의 새 값을 할당하면 됩니다:  
+'첨자 연산 구문 표현' 으로 딕셔너리에 새 항목을 추가할 수 있습니다. '첨자 연산의 색인 (subscript index)' 으로 적절한 타입의 새로운 키를 사용해서, 적절한 타입의 새로운 값을 할당합니다:  
 
 ```swift
 airports["LHR"] = "London"
-// airports 딕셔너리는 이제 3 개의 항목을 가집니다.
+// airports 딕셔너리는 이제 3 개의 항목을 담고 있습니다.
 ```
 
-'첨자 연산 구문 표현' 을 사용하여 특정한 키와 결합되어 있는 값을 바꿀 수도 있습니다:
+'첨자 연산 구문 표현' 은 특정 키와 결합된 값을 바꾸는데도 사용합니다:
 
 ```swift
 airports["LHR"] = "London Heathrow"
-// "LHR" 에 해당하는 값이 "London Heathrow" 로 바뀌었습니다.
+// "LHR" 에 대한 값을 "London Heathrow" 로 바꿨습니다.
 ```
 
-첨자 연산의 대안으로, 딕셔너리에 있는 `updateValue(_:forKey:)` 메소드를 사용하여 특정 키에 대한 값을 설정하고 업데이트하도록 합니다. 위의 첨자 연산 예제와 같이, `updateValue(_:forKey:)` 메소드는 해당 키가 존재하지 않으면 키의 값을 설정하고, 키가 이미 존재하면 값을 업데이트합니다. 하지만 첨자 연산과는 달리, `updateValue(_:forKey:)` 메소드는 업데이트를 수행한 다음 _예전 (old)_ 값을 반환합니다. 이것으로 업데이트가 실제로 일어났는지를 검사할 수 있습니다.
+첨자 연산의 대안으로, 특정 키에 대한 값을 설정하거나 갱신하려면 딕셔너리의 `updateValue(_:forKey:)` 메소드를 사용합니다. 위의 첨자 연산 예제에서와 같이, `updateValue(_:forKey:)` 메소드는 아무 것도 존재하지 않으면 키에 대한 값을 설정하고, 해당 키가 이미 존재하면 값을 갱신합니다. 하지만, 첨자 연산과는 달리, `updateValue(_:forKey:)` 메소드는 갱신을 한 후에 _예전 (old)_ 값을 반환합니다. 이는 갱신이 일어났는지 아닌지를 검사할 수 있게 해줍니다.
 
-`updateValue(_:forKey:)` 메소드는 딕셔너리 값 타입에 대한 옵셔널 값 (optional value)[^optional-value] 을 반환합니다. 예를 들어, `String` 값을 저장하는 딕셔너리의 경우, 이 메소드는 ("옵셔널 `String`" 이라고 하는) `String?` 타입의 값을 반환합니다. 이 옵셔널 값은 업데이트 이전에 값이 있었으면 해당 키에 대한 예전 값을 가지고, 없었으면 `nil` 을 가집니다:
+`updateValue(_:forKey:)` 메소드는 딕셔너리의 값 타입에 대한 '옵셔널 (optional) 값' 을 반환합니다. 예를 들어, `String` 값을 저장하는 딕셔너리에 대해서는, 메소드가 `String?` 타입의 값, 또는 "옵셔널 `String`", 을 반환합니다. 이 옵셔널 값은, 갱신 전에 값이 존재했으면 해당 키에 대한 예전 값을, 아무 값도 존재하지 않았으면 `nil` 을, 담고 있습니다:
 
 ```swift
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
-    print("The old value for DUB was \(oldValue).")
+  print("The old value for DUB was \(oldValue).")
 }
-// "The old value for DUB was Dublin." 를 출력합니다.
+// "The old value for DUB was Dublin." 를 인쇄합니다.
 ```
 
-첨자 연산 문법을 사용하여 딕셔너리에서 특정 키에 대한 값을 가져올 수도 있습니다. 요청한 키에 대해서 값이 없을 수도 있으므로, 딕셔너리의 첨자 연산은 딕셔너리의 값 타입에 대한 옵셔널 값을 반환합니다. 딕셔너리가 요청한 키에 대한 값을 가지고 있는 경우, 첨자 연산은 그 키에 대한 값을 담고 있는 옵셔널 값을 반환합니다. 그렇지 않는 경우, 첨자 연산은 `nil` 을 반환합니다:
+'첨자 연산 구문 표현' 은 딕셔너리에서 특정 키에 대한 값을 가져오기 위해 사용할 수도 있습니다. 값이 존재하지 않는 키로 요청할 수도 있기 때문에, 딕셔너리의 첨자 연산은 딕셔너리의 '값 타입' 에 대한 '옵셔널 값' 을 반환합니다. 딕셔너리가 요청한 키에 대한 값을 담고 있으면, 첨자 연산이 해당 키에 존재하고 있는 값을 담은 '옵셔널 값' 을 반환합니다. 다른 경우라면, 첨자 연산이 `nil` 을 반환합니다:
 
 ```swift
 if let airportName = airports["DUB"] {
-    print("The name of the airport is \(airportName).")
+  print("The name of the airport is \(airportName).")
 } else {
-    print("That airport is not in the airports dictionary.")
+  print("That airport is not in the airports dictionary.")
 }
-// "The name of the airport is Dublin Airport." 를 출력합니다.
+// "The name of the airport is Dublin Airport." 를 인쇄합니다.
 ```
 
-첨자 연산 문법을 사용하여 키에 대한 값으로 `nil` 을 할당하면 딕셔너리에서 '키-값 쌍' 을 제거할 수 있습니다:
+'첨자 연산 구문 표현' 은 해당 키에 `nil` 값을 할당함으로써 딕셔너리에서 '키-값 쌍' 을 삭제하기 위해 사용할 수 있습니다:
 
 ```swift
 airports["APL"] = "Apple International"
-// APL 및 "Apple International" 은 실제 공항이 아닙니다, 이제 지워봅시다.
+// "Apple International" 은 APL 에 대한 실제 공항이 아니므로, 이를 지웁니다.
 airports["APL"] = nil
-// APL 이 방금 딕셔너리에서 지워졌습니다.
+// APL 이 이제 딕셔너리에서 삭제되었습니다.
 ```
 
-다른 방법으로, 딕셔너리에서 키-값 쌍을 제거하려면 `removeValue(_:forKey)` 메소드를 사용합니다. 이 메소드는 해당 키-값 쌍이 있으면 제거하고나서 제거한 그 값을 반환하고, 없으면 `nil` 을 반환합니다:
+또 다른 방법으로, `removeValue(_:forKey)` 메소드로 딕셔너리에서 '키-값 쌍' 을 삭제합니다. 이 메소드는 '키-값 쌍' 이 존재하면 이를 삭제하고 삭제한 값을 반환하며, 값이 존재하지 않았으면 `nil` 을 반환합니다:
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
-    print("The removed airport's name is \(removedValue).")
+  print("The removed airport's name is \(removedValue).")
 } else {
-    print("The airports dictionary does not contain a value for DUB.")
+  print("The airports dictionary does not contain a value for DUB.")
 }
-// "The removed airport's name is Dublin Airport." 를 출력합니다.
+// "The removed airport's name is Dublin Airport." 를 인쇄합니다.
 ```
 
-#### Iterating Over a Dictionary (딕셔너리에 동작을 반복 적용하기)
+#### Iterating Over a Dictionary (딕셔너리에 동작을 반복시키기)
 
-`for`-`in` 반복문을 사용하면 딕셔너리에 있는 전체 키-값 쌍들에 '동작을 반복 (iterate over)' 시킬 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플의 형태로 반환되며, 튜플의 멤버는 동작 반복 과정에서 임시 상수 또는 임시 변수로 분해할 수 있습니다:
+딕셔너리에 있는 '키-값 쌍' 들은 `for`-`in` 반복문으로 '동작을 반복시킬 (iterate over)' 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플로써 반환되며, 튜플의 '멤버 (member)' 는 '반복 회차 (iteration)' 마다 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (airportCode, airportName) in airports {
-    print("\(airportCode): \(airportName)")
+  print("\(airportCode): \(airportName)")
 }
-
-// YYZ: Toronto Pearson
 // LHR: London Heathrow               
+// YYZ: Toronto Pearson
 ```
 
 `for`-`in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
 
-딕셔너리의 키와 값들에 대해서 '동작을 반복 적용할 수 있는 컬렉션 (iterable collection)' 을 가질 수도 있는데, 이는 딕셔너리의 `keys` 와 `properties` 속성을 사용하면 됩니다:
+딕셔너리의 키와 값들은 `keys` 와 `values` 속성에 접근함으로써 '반복 가능한 집합체 (iterable collection)' 로 가져올 수도 있습니다:
 
 ```swift
 for airportCode in airports.keys {
-    print("Airport code: \(airportCode)")
+  print("Airport code: \(airportCode)")
 }
-// Airport code: YYZ
 // Airport code: LHR
+// Airport code: YYZ
 
 for airportName in airports.values {
-    print("Airport name: \(airportName)")
+  print("Airport name: \(airportName)")
 }
-// Airport name: Toronto Pearson
 // Airport name: London Heathrow
+// Airport name: Toronto Pearson
 ```
 
-딕셔너리의 키와 값을 `Array` 인스턴스를 요구하는 API 에 전달하려면, `keys` 와 `properties` 속성으로 새 배열을 초기화하면 됩니다:
+딕셔너리의 키와 값들을 `Array` 인스턴스를 취하는 API 와 같이 사용할 필요가 있는 경우, `keys` 또는 `values` 속성으로 새로운 배열을 초기화 합니다:
 
 ```swift
 let airportCodes = [String](airports.keys)
-// airportCodes 는 ["YYZ", "LHR"] 가 됩니다.
+// airportCodes 는 ["LHR", "YYZ"] 입니다.
 
 let airportNames = [String](airports.values)
-// airportNames 은 ["Toronto Pearson", "London Heathrow"] 가 됩니다.
+// airportNames 은 ["London Heathrow", "Toronto Pearson"] 입니다.
 ```
 
-스위프트의 `Dictionary` 타입에는 따로 정의된 순서가 없습니다. 딕셔너리의 키와 값에 동작을 반복 적용할 때 특정 순서를 따르게 하고 싶으면, `sort()` 를 `keys` 와 `values` 속성에 사용하면 됩니다.
+스위프트의 `Dictionary` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 지정된 순서로 딕셔너리의 키 또는 값들에 동작을 반복시키려면, `keys` 또는 `values` 속성에 `sorted()` 메소드를 사용합니다.
+
+### 다음 장
+
+[Control Flow (제어 흐름) > ]({% post_url 2020-06-10-Control-Flow %})
 
 ### 참고 자료
 
@@ -629,23 +632,21 @@ let airportNames = [String](airports.values)
 
 [^collections]: 'collection' 은 '집합', '묶음' 등 여러 가지 말로 옮길 수 있지만 여기서는 '집합체' 라는 말을 사용합니다. 이는 프로그래밍 용어에서 '객체', '구조체', '열거체' 등이 하나의 '타입' 을 의미하는 것에서 착안한 것입니다. '집합체' 는 어떤 성분들의 집합으로 이루어진 '타입' 이라고 이해하면 좋을 것 같습니다.
 
-[^sets]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있으며, 스위프트의 '셋 (sets)' 역시 수학에 있는 '집합 (sets)' 에서 유래한 개념입니다. 하지만, '집합' 이라고 하면 수학 용어인지 자료 타입인지 모호할 수 있으므로, 스위프트의 자료 타입임을 의미할 때는 '셋' 이라는 발음대로 옮기도록 합니다.
+[^sets-type]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있으며, 스위프트의 '셋 (sets)' 역시 수학에 있는 '집합 (sets)' 에서 유래한 개념입니다. 하지만, '집합' 이라고 하면 수학 용어인지 자료 타입인지 모호할 수 있으므로, 스위프트의 자료 타입임을 의미할 때는 '셋' 이라는 발음대로 옮기도록 합니다.
 
-[^dictionaries]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
+[^dictionaries-type]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
 
 [^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 것은, 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환 가능 (compatible)' 해서, 두 값을 서로 같이 연산할 수 있습니다. 이처럼, 본문에서 '호환 가능 (compatible)' 하다는 표현을 사용한 것은 두 타입이 꼭 같을 필요는 없고 호환 가능하기만 하면 되기 때문으로 추측됩니다.  
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
-[^isEmpty-count]: 실제로, 스위프트는 배열에 값이 있는지 없는지를 검사하는 것은 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수가 몇 개인지를 알고 싶을 때 사용하는 것입니다. 즉, 단순히 편리하기 때문에만 `isEmpty` 를 사용하는 것은 아닙니다. 이에 대한 이유는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 이라는 글을 읽어보길 바랍니다.
+[^isEmpty-count]: 실제로, 스위프트는 배열, 셋, 또는 딕셔너리에 값이 비어 있는지 검사할 때는 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수를 셀 때 사용하는 것입니다. 둘은 서로 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것은 아닙니다. 이는 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 에서 설명한 것처럼, `count` 를 사용할 경우 배열에 있는 전체 항목에 동작을 반복하는 과정이 필요할 수도 있기 때문입니다. 이에 대해서는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 라는 글도 참고할만 합니다.
 
 [^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 즉 `shippingList.count` 는 유효한 색인이 아닙니다.
 
 [^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 가능하겠지만, 컴퓨터 용어임을 의미하도록 '해쉬' 라고 발음대로 옮기도록 합니다.
 
 [^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개고 뒤섞어서 다진 값' 정도로 이해할 수 있습니다. 역시 컴퓨터 용어임을 의미하도록 '해쉬 값' 이라고 발음대로 옮기도록 합니다.
-
-[^equtable]: 'equtable' 은 '서로 같은 지를 비교할 수 있는' 지를 의미합니다.
 
 [^set-array-literal]: '셋 글자 값 (set literal)' 이란 것이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값 (array literal)' 만 사용하면 타입을 `Array` 로 추론하게 됩니다.
 
@@ -654,8 +655,6 @@ let airportNames = [String](airports.values)
 [^sets]: 여기서도 앞 부분과 마찬가지 이유로 'set' 을 '집합' 으로 옮깁니다.
 
 [^disjoint]: 'disjoint' 는 수학에서 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어가 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
-
-[^optional-value]: 'optional value' 는 '선택적 값' 이라고도 옮길 수 있겠지만, 여기서는 스위프트의 타입임을 드러내기 위해서 발음을 따라서 '옵셔널 값' 으로 옮깁니다.
 
 [^ordered-collection]: 여기서 'ordered collections' 을 '순서가 있는 집합체' 라고 옮겼는데, 보통 '정렬된 집합체' 라고 옮길 수도 있긴 합니다. 다만 수학 용어에 'sorted collection' 이란 것도 있는데, 만약 'sort algorithm' 을 '정렬 알고리즘' 이라고 옮긴다면 'sorted collection' 이 '정렬된 집합체' 가 되어야 할 것입니다. 게다가, 'ordered' 는 엄밀히 말해서 '정렬되어 있는 것' 을 의미하는 것은 아니므로, 여기서는 'ordered collection' 을 그냥 '순서가 있는 집합체' 라고 옮기도록 합니다.  
 
@@ -667,18 +666,18 @@ let airportNames = [String](airports.values)
 
 [^iterate-over]: 여기서 '동작을 반복시킨다 (iterate over)' 시킨다는 말은 배열에 있는 모든 항목들마다 한 번씩 동작을 시킨다는 의미입니다.
 
-[^no-defined-ordering]: '정의된 순서없이 (no defined ordering)' 라는 말도 '정렬되지 않은 채로' 라고 옮길 수도 있지만 'sorted' 와의 구별을 위해 '순서가 없이' 라는 말로 옮깁니다.
+[^no-defined-ordering]: '정의된 순서없이 (no defined ordering)' 라는 말도 '정렬되지 않은 채로' 라고 옮길 수도 있지만, 'ordered collections'[^ordered-collection] 과 같이, 'sorted' 와의 구별을 위해 '순서가 없이' 라고 옮깁니다.
 
 [^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 이 아니라 '빈 배열 글자 값 (empty array literal)' 입니다. '빈 셋 글자 값' 같은 건 따로 없고, '빈 배열 글자 값' 을 그대로 사용합니다.
 
 [^set]: 여기서의 '셋 (set)' 은 수학에서 말하는 '집합 (set)' 과 같은 의미로 사용되었다고 볼 수 있습니다. 실제 자료 구조로써의 '셋 (set)' 은 수학에서의 '집합 (set)' 을 구현하고 있는 것입니다.
 
-[^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 라는 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 정함으로써 원본은 변경하지 않음을 나타내고 있습니다.
+[^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
-[^symmetric-difference]: 원래는 메소드의 이름이 `exclusiveOr` 였는데, `symmetricDifference` 로 바뀌었습니다. 앞서와 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 라는 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 정함으로써 원본은 변경하지 않음을 나타내고 있습니다.
+[^symmetric-difference]: 원래는 메소드의 이름이 `exclusiveOr` 였는데, `symmetricDifference` 로 바뀌었습니다. 앞서와 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
-[^subtracting]: 원래는 메소드의 이름이 `subtract` 였는데, `subtracting` 으로 바뀌었습니다. 역시 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 라는 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 정함으로써 원본은 변경하지 않음을 나타내고 있습니다.
+[^subtracting]: 원래는 메소드의 이름이 `subtract` 였는데, `subtracting` 으로 바뀌었습니다. 역시 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
-[^subset]: '하위집합 (subset)' 은 수학에서 '부분집합' 으로 이미 사용되고 있습니다. 다만, 'subset' 과 대응되는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위집합 (subset)' 이라고 옮깁니다. 영어로 '부분집합' 은 'subset' 이라고 하고, 그 반대는 'superset' 이라고 한다고 이해하면 될 것입니다.
+[^subset]: '하위 집합 (subset)' 은 수학에서 말하는 '부분 집합' 입니다. 다만, 'subset' 에 대응되는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위 집합 (subset)' 이라고 옮깁니다. 영어로 '부분집합' 은 'subset' 이라고 하고, 그 반대는 'superset' 이라고 한다고 이해하면 될 것입니다.
 
 [^IATA]: 본문에 있는 '국제 항공 운송 협회 (International Air Transport Association)' 는 예제를 위한 것이 아니라 실제로 존재하는 협회입니다. 이 협회의 홈페이지는 [https://www.iata.org](https://www.iata.org) 입니다.
