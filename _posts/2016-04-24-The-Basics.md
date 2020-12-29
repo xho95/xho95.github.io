@@ -413,7 +413,7 @@ if i == 1 {
 }
 ```
 
-`i == 1` 비교 연산의 결과는 `Bool` 타입이므로, 두 번째 예제는 '타입 검사 (type-check)' 를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 논의합니다.
+`i == 1` 비교 연산의 결과는 `Bool` 타입이므로, 두 번째 예제는 '타입 검사 (type-check)' 를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 논의합니다.
 
 스위프트의 다른 '타입 안전 장치' 예제에서 처럼, 이 접근 방식은 예기치 않은 에러를 피하고 특정 코드의 의도를 항상 명확하게 드러내도록 보장합니다.
 
@@ -757,7 +757,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 ### 다음 장
 
-[Basic Operators (기본 연산자) > ]({% post_url 2016-04-27-Basic-Operators %})
+[Basic Operators (기초 연산자) > ]({% post_url 2016-04-27-Basic-Operators %})
 
 ### 참고 자료
 

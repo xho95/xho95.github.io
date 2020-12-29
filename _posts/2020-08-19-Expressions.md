@@ -22,7 +22,7 @@ categories: Swift Language Grammar Expression
 
 _접두사 표현식 (prefix expressions)_ 은 선택 사항인 접두사 연산자를 표현식과 조합합니다. '접두사 연산자 (prefix operators)' 는 하나의 인자를 취하는데, 뒤에 있는 표현식이 그것입니다.
 
-이런 연산자의 작동 방식에 대한 정보는, [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+이런 연산자의 작동 방식에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
 
 스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 발랍니다.
 
@@ -68,7 +68,7 @@ _이항 표현식 (binary expressions)_ 은 '이항 중위 연산자 (infix bina
 
 `left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
 
-이들 연산자의 작동 방식에 대한 정보는, [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+이들 연산자의 작동 방식에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
 
 스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 를 참고하기 바랍니다.
 
@@ -673,7 +673,7 @@ print(keyPath == c.getSomeKeyPath())
 
 _접미사 표현식 (postfix expressions)_ 은 접미사 연산자 또는 다른 접미사 구문 표현을 표현식에 적용하여 형성합니다. 구문 표현으로는, 모든 '제1 표현식' 은 또한 '접미사 표현식' 이기도 합니다.
 
-이 연산자들의 작동 방식에 대한 정보는, [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+이 연산자들의 작동 방식에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
 
 스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 발랍니다.
 
