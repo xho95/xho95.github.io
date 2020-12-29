@@ -175,29 +175,23 @@ print("Game over!")
 
 > 이러한 검사를 하지 않으면, `board[square]` 가 `board` 배열 경계 밖의 값에 접근할 수도 있는데, 이는 '실행 시간 에러' 를 일으킬 것입니다.
 
-이제 `while` 반복문의 현재 회차 실행이 끝났으며, 반복문이 다시 실행돼야 하는지 확인하기 위해 반복문의 조건을 검사합니다. 참가자 `25` 번 정사각형 위에 있거나 그 너머에 있으면, 반복문의 조건은 `false` 로 평가되고 게임이 끝납니다.
+이제 `while` 반복문의 현재 회차 실행이 끝났으며, 반복문을 다시 실행해야 하는지 확인하기 위해 반복문의 조건을 검사합니다. 참가자가 `25` 번 정사각형 위나 그 너머로 이동했으면, 반복문의 조건은 `false` 로 평가되며 게임이 끝납니다.
 
-`while` 반복문은 이 경우에 적합하며, 이는 `while` 반복문을 시작할 때 게임의 '횟수 (length)' 를 명확히 알 수 없기 때문입니다. 그 대신, 반복문을 특정 조건이 만족될 때까지 실행하게 됩니다.
+`while` 반복문을 시작할 때 게임이 '얼마나 길어질지 (length)' 를 명확히 알 수 없는 상황이므로, 이 경우 `while` 반복문은 적절한 것입니다. 반복문은 특정 조건을 만족할 때까지 실행하기 때문입니다.
 
 #### Repeat-While (Repeat-While 문)
 
-`while` 반복문의 변형으로, `repeat-while` 반복문이 있는데, 이는 반복문의 조건을 검토하기 _전에 (before)_, 먼저 반복문 블럭을 한 번 통과하여 실행합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 루프를 계속 '반복합니다 (repeat)'.
+`while` 반복문의 다른 변형으로, `repeat`-`while` 반복문이 있는데, 반복문의 조건을 고려하기 _전에 (before)_, '반복문 블럭' 을 먼저 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 '되풀이합니다 (repeat)'.
 
-> 스위프트의 `repeat-while` 반복문은 다른 언어에 있는 `do-while` 반복문과 비슷합니다.[^do-while]
+> 스위프트의 `repeat`-`while` 반복문은 다른 언어의 `do`-`while` 반복문과 유사한 것입니다.[^do-while]
 
-`repeat-while` 반복문의 일반적인 형식은 다음과 같습니다:
+다음은 `repeat`-`while` 반복문의 일반적인 형식입니다:
 
 repeat {<br />
-  `statements (구문)`<br />
-} while `condition (조건)`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+} while `condition-조건`<br />
 
-```swift
-repeat {
-  statements
-} while condition
-```
-
-다음은 _뱀과 사다리 (Snakes and Ladders)_ 예제를, `while` 반복문 대신 `repeat-while` 반복문으로 다시 작성한 것입니다. `finalSquare`, `board`, `square`, 와 `diceRoll` 의 값은 `while` 반복문과 완전히 같은 방법으로 초기화됩니다.
+다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문과 정확하게 똑같은 방법으로 초기화합니다.
 
 ```swift
 let finalSquare = 25
@@ -208,26 +202,26 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임에서, 반복문이 _처음으로 (first)_ 하는 행동은 사다리인지 뱀인지를 검사하는 것입니다. 게임 판의 사다리 중에 참여자를 곧바로 '정사각형 25' 로 보내는 것은 없어서, 사다리로 올라갔다고 게임을 이기지는 않습니다. 따라서, 반복문의 처음 행동이 뱀인지 사다리인지 검사하는 것은 안전합니다.
+이 버전의 게임에서, 반복문의 _처음 (first)_ 행동은 사다리인지 뱀인지 검사하는 것입니다. 게임판의 사다리 중 참가자를 곧바로 '25 번 정사각형' 으로 보내는 것은 없으므로, 사다리를 올라가는 것으로써 게임을 이길 수는 없습니다. 그러므로, 반복문의 처음 행동으로 뱀인지 사다리인지 검사하는 것은 안전합니다.
 
-게임을 시작하면, 참여자는 “정사각형 0 (square zero)” 에 있습니다. `board[0]` 은 항상 `0` 이므로 아무런 영향이 없습니다.
+게임을 시작할 떄, 참가자는 “0 번 정사각형” 에 있습니다. `board[0]` 는 항상 `0` 이며 아무 영향이 없습니다.[^square-zero]
 
 ```swift
 repeat {
-  // 뱀인지 사다리인지에 따라 위나 아래로 이동합니다.
+  // 뱀인지 사다리인지에 따라 위 아래로 이동합니다.
   square += board[square]
   // 주사위를 굴립니다.
   diceRoll += 1
   if diceRoll == 7 { diceRoll = 1 }
-  // 굴린 값에 따라 이동합니다.
+  // 굴림 양에 따라 이동합니다.
   square += diceRoll
 } while square < finalSquare
 print("Game over!")
 ```
 
-코드에서 뱀인지 사다리인지 확인한 후에는, 주사위를 굴려서 참여자를 `diceRoll` 개의 정사각형 만큼 앞으로 이동합니다. 그러면 현재의 반복문 실행이 끝나게 됩니다.
+코드에서 뱀인지 사다리인지 검사한 후, 주사위를 굴리고 참가자를 `diceRoll` 개의 정사각형 만큼 앞으로 이동합니다. 현재 '회차' 실행은 이러면 끝납니다.
 
-반복문의 조건 (`while square < finalSquare`) 은 이전과 동일하지만, 이번에는 반복문을 최초 실행이 _끝 (end)_ 나기 전에는 이 값을 계산하지 않습니다. 이 게임 구조에서는 `repeat-while` 반복문이 이전 예제에 있는 `while` 반복문 보다 더 적합합니다. 위 `repeat-while` 반복문에서는, 반복문의 `while` 조건이 `square` 가 여전히 게임 판 위에 있음을 확인 _하자마자 그 즉시 (immediately after)_ `square += board[square]` 를 항상 실행합니다. 이러한 동작 방식은 먼저 설명한 `while` 반복문 버전의 게임에 있던 배열의 경계 값 검사를 필요없게 만듭니다.
+반복문의 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번에는 반복문을 통과한 최초 실행이 _끝 (end)_ 나기 전에는 이를 평가하지 않습니다. `repeat`-`while` 반복문 구조는 이전 예제의 `while` 반복문 보다 이 게임에 더 적합합니다. 위의 `repeat`-`while` 반복문에서는, `square += board[square]` 이 항상 반복문의 `while` 조건이 `square` 가 아직 게임판 위임을 확정한 _다음에 즉시 (immediately after)_ 실행됩니다. 이런 작동 방식은 앞서 설명한 `while` 반복문 버전의 게임에서 본 '배열 경계 값 검사' 를 필요없게 만듭니다.
 
 ### Conditional Statements (조건 구문)
 
@@ -788,7 +782,7 @@ if #available(`platform name` `version`, `...`, *) {
 
 [^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 참고하기 바랍니다.
 
-[^do-while]: 본문에서 `repeat-while` 문이 `do-while` 문과 비슷하다고 표현했는데, 사실 초창기 스위프트는 `repeat-while` 의 이름이 `do-while` 이었습니다. 그러므로 이 둘은 사실상 같은 것이라고 볼 수 있습니다. 이름을 왜 바꿨는지는 잘 모르겠습니다.
+[^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 이력을 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
 
 [^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관 없습니다. 스위프트는 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. '옵셔널 타입 (optional type)' 도 '값을 선택적으로 가질 수 있는 타입' 이라는 의미로 'optional' 이라는 영어 단어를 사용하는 것입니다.
 
@@ -801,3 +795,5 @@ if #available(`platform name` `version`, `...`, *) {
 [^dictionary-contents]: 이는 딕셔너리의 '내용물 (contents)' 을 저장할 때 '해시 함수 (hash function)' 를 사용하기 때문에, 태생적으로 내용물의 순서를 알 방법이 없기 때문입니다. 이에 대한 더 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에 있는 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 및 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
 
 [^stride-to-through]: 예제를 보면 `stride(from:to:by:)` 는 '반-열린 범위' 를 대신하고, `stride(from:through:by:)` 는 '닫힌 범위' 를 대신하는 것임을 알 수 있습니다.
+
+[^square-zero]: 게임을 시작할 때 참가자가 '0 번 정사각형' 에 있다는 말은 `square` 가 '0' 이라는 말입니다. 즉, 게임을 시작할 때는 `square < finalSquare` 조건이 항상 참이기 때문에, 이 비교를 하지 않아도 아무런 영향이 없다는 의미입니다.
