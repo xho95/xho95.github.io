@@ -6,23 +6,21 @@ date:   2020-06-10 10:00:00 +0900
 categories: Swift Language Grammar Control-Flow For-In While Switch
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 부분[^Control-Flow]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 부분[^Control-Flow]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Control Flow (제어 흐름)
 
-스위프트는 다양한 제어 흐름 구문을 제공합니다. 여기에 포함된 것은 작업을 여러 번 수행하는 `while` 반복 구문; 정해진 조건에 따라 다른 분기에 있는 코드를 실행하는 `if`, `guard`, 및 `switch` 구문; 그리고 `break` 와 `continue` 같이 실행 흐름을 코드의 다른 지점으로 전달하는 구문입니다.
+스위프트는 다양한 제어 흐름 구문을 제공합니다. 이는 작업을 여러 번 수행하는 `while` 반복문; 정해진 조건을 기초로 서로 다른 분기의 코드를 실행하는 `if`, `guard`, 및 `switch` 문; 그리고 실행 흐름을 코드의 또 다른 곳으로 전달하는 `break` 와 `continue` 같은 구문을 포함합니다.
 
-스위프트는 `for-in` 반복 구문도 제공하므로 배열, 딕셔너리, 범위, 문자열, 및 기타 '일련의 값들 (sequences)' 에 대해 동작을 쉽게 반복 적용할 수 있습니다.
+스위프트는 배열, 딕셔너리, 범위, 문자열, 그리고 다른 '일련 값 (sequences)'[^sequences] 들에 동작을 쉽게 반복시키도록 해주는 `for`-`in` 반복문도 제공합니다.
 
-스위프트의 `switch` 문은 C-계열 언어에 있는 것보다 눈에 띄게 더 강력합니다. 'case 절' 는 아주 다양한 '유형 (patterns)' 에 대해서 해당하는 것을 찾을 수 있으며, '구간 맞춰보기 (interval matches)', 튜플 맞춰보기, 그리고 지정된 타입으로의 '변환 (casts)' 기능도 포함합니다. `switch` 의 'case 절' 에 해당하는 값은 임시 상수나 변수로 연결되어서 'case 절' 본문 내에서 사용할 수 있으며, 각 'case 절' 에 `where` 절을 사용하면 찾는 조건이 복잡한 것도 표현할 수 있습니다.
+스위프트의 `switch` 문은 대다수의 'C-와 비슷한 (C-like) 언어'[^C-like] 에서 보다 더 확연하게 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 그리고 지정된 타입으로의 '타입 변환 (casts)' 을 포함한, 아주 많은 서로 다른 '유형 (patterns)' 과 일치 여부를 맞춰볼 수 있습니다. '`switch` 문의 case 절' 에 일치한 값은 'case 절' 본문에서 사용하도록 임시 상수나 변수로 연결할 수 있으며, '복잡한 맞춤 조건 (complex matching comditions)' 은 각 'case 절' 에 대한 `where` 절로 표현할 수 있습니다.
 
 ### For-In Loops (For-In 반복문)
 
-`for-in` 반복문을 사용하면 일련의 값들에 동작을 반복 적용할 수 있는데, 여기에는 배열의 항목, 수치 값의 범위, 또는 문자열의 문자 등이 해당합니다.
+`for`-`in` 반복문은, 배열, 수치 범위, 또는 문자열에 있는 문자들 같이, '일련 값 (sequences)' 들에 동작을 반복시키기 위해 사용합니다.
 
-다음의 예제는 `for-in` 반복문을 사용하여 배열의 각 항목에 대해 동작을 반복 적용시킵니다:
+다음 예제는 배열에 있는 항목들에 동작을 반복시키기 위해 `for`-`in` 반복문을 사용합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -35,7 +33,7 @@ for name in names {
 // Hello, Jack!
 ```
 
-'딕셔너리 (dictionary)' 도 '키-값 쌍 (key-value pairs)' 에 접근해서 동작을 반복 적용시킬 수 있습니다. '딕셔너리' 를 반복할 때 '딕셔너리' 에 있는 각 항목은 `(key, value)` 튜플의 형태로 반환되며, 이 `(key, value` 튜플의 멤버는 `for-in` 반복문의 본문에서 사용시 명시적인 상수 이름인 것처럼 분해할 수 있습니다. 아래 코드의 예제에서, '딕셔너리' 의 키는 `animalName` 이라는 상수로 분해되었고, '딕셔너리' 의 값은 `legCount` 라는 상수로 분해되었습니다.
+'키-값 쌍 (key-value pairs)' 에 접근하기 위해 '딕셔너리' 에 동작을 반복시킬 수도 있습니다. 딕셔너리에 있는 각 항목은 딕셔너리를 반복할 때 `(key, value)` 튜플로 반환되며, `(key, value` 튜플의 멤버는 `for`-`in` 반복문의 본문에서 사용하기 위해 명시적인 이름을 가진 상수로 분해할 수 있습니다. 아래 예제 코드에서는, 딕셔너리의 키들이 `animalName` 이라는 상수로 분해되며, 딕셔너리의 값들은 `legCount` 라는 상수로 분해됩니다.
 
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
@@ -47,9 +45,9 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` 의 내용은 그 본질상 순서가 없으며, 동작을 반복 적용하는 것이 가져오는 순서대로 라는 보장이 없습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서는 반복하는 순서와 아무 상관이 없습니다. 배열과 사전에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 참고하기 바랍니다.
+`Dictionary` 의 '내용물 (contents)' 은 태생적으로 순서가 없으며[^dictionary-contents], 이에 동작을 반복시키는 것은 가져올 순서라는 보장이 없습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 이들이 반복되는 순서를 정의하는 것도 아닙니다. '배열' 과 '딕셔너리' 에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 참고하기 바랍니다.
 
-`for-in` 반복문은 '수치 값 범위 (numeric ranges)' 와도 같이 사용할 수 있습니다. 다음 예제는 구구단 5-단 중에서 앞부분 일부를 출력하는 것입니다:
+`for`-`in` 반복문은 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 '값들 (entries)' 을 인쇄합니다:
 
 ```swift
 for index in 1...5 {
@@ -62,11 +60,11 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-반복 적용할 일련의 값들은 `1` 에서 `5` 까지의 수의 범위이며, '닫힌 범위 연산자 (closed range operator; `...`)' 를 사용하여 끝 값까지 포함하도록 했습니다. `index` 의 값은 범위의 첫 번째 수 (`1`) 로 설정된 다음, 반복문 내의 구문을 실행합니다. 이 경우, 반복문은 단 하나의 구문만 담고 있으며, 구구단 5-단 중에서 현재 `index` 값에 해당하는 항목을 출력합니다. 구문을 실행하고 난 후에, `index` 값은 범위의 두 번째 값 (`2`) 을 담도록 갱신되며, `print(_:separator:terminator:)` 함수를 다시 호출합니다. 이 과정을 범위 끝에 도달할 때까지 계속합니다.
+동작이 반복되는 '일련 값' 은 `1` 에서 `5` 까지의 수치 범위이며, '끝 값을 포함 (inclusive)' 하도록, '닫힌 범위 연산자 (`...`)' 로 지시합니다. `index` 값은 범위에 있는 첫 번째 수 (`1`) 로 설정되고, 반복문 안의 구문을 실행합니다. 이 경우, 반복문은 단 하나의 구문만 담고 있는데, 이는 현재 `index` 값에 대한 구구단 5-단 '값 (entry)' 을 인쇄합니다. 구문을 실행한 다음, `index` 값이 범위에 있는 두 번째 값 (`2`) 을 담도록 갱신되며, `print(_:separator:terminator:)` 함수가 다시 호출됩니다. 이 과정을 범위 끝에 닿을 때까지 계속합니다.
 
-위의 예제에서, `index` 는 반복문의 각 '회차 (iteration)' 를 시작할 때 자동으로 설정되는 상수입니다. 그로 인해, 사용 전에 `index` 를 선언할 필요가 없습니다. 단순히 반복문 선언에 포함하기만 해도 암시적으로 선언되며, `let` 선언 키워드도 필요없습니다.
+위 예제에서, `index` 는 반복문의 각 '회차 (iteration)' 를 시작할 때 자동으로 값이 설정되는 상수입니다. 그로 인해, 사용하기 전에 `index` 를 선언할 필요가 없습니다. `let` 선언 키워드를 사용할 필요 없이, 단순히 반복문 선언에 포함하는 것으로써 암시적으로 선언됩니다.
 
-일련의 값들에서 각 값이 굳이 필요없을 경우, 변수 이름 위치에 '밑줄 (underscore; `_`)' 을 사용하면 그 값을 무시할 수 있습니다.
+'일련 값' 에서 각각의 값 필요하진 않는 경우, 변수 이름이 있는 곳에 '밑줄 (underscore; `_`)' 을 사용함으로써 그 값을 무시할 수 있습니다.
 
 ```swift
 let base = 3
@@ -76,7 +74,7 @@ for _ in 1...power {
   answer *= base
 }
 print("\(base) to the power of \(power) is \(answer)")
-// "3 to the power of 10 is 59049" 를 출력합니다.
+// "3 to the power of 10 is 59049" 를 인쇄합니다.
 ```
 
 위의 예제는 한 수에 대한 다른 수의 거듭 제곱 (이 경우는, `3` 의 `10` 제곱) 을 계산합니다. 이는 시작 값 `1` (즉, `3` 의 `0` 제곱) 에 `3` 을, `1` 에서 시작해서 `10` 에서 끝나는 '닫힌 범위' 를 사용하여, 10 번 곱합니다. 이 계산에서, 반복문의 매 회차에서 개별 카운터 값은 필요 없습니다-코드는 단순히 반복문을 올바른 횟수만큼 실행합니다. 반복 변수 자리에 '밑줄 문자 (`_`)' 를 사용하면 개별 값을 무시하고 반복문의 각 회차에서 현재 값에 대한 접근을 제공하지 않게 합니다.
@@ -801,3 +799,9 @@ if #available(`platform name` `version`, `...`, *) {
 [^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관 없습니다. 스위프트는 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. '옵셔널 타입 (optional type)' 도 '값을 선택적으로 가질 수 있는 타입' 이라는 의미로 'optional' 이라는 영어 단어를 사용하는 것입니다.
 
 [^wildcard-pattern]: 와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정하게 고정된 문자열만이 아니라, 조건에 부합하는 모든 문자열을 맞춰보는 '패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목 중에서 'wildcard pattern' 에 해당하는 부분을 참고하기 바랍니다.
+
+[^sequences]: 'sequence' 는 그 자체로 수학에서의 '수열' 을 의미하는 단어이지만, 여기서는 '수열' 과 비슷하게 '같은 타입의 값들이 쭉 나열되어 있는 것' 이라는 의미로 '일련 값' 이라고 옮깁니다. 실제로 수학에서 말하는 '수열' 을 의미할 때는 '수열' 이라고 옮기도록 합니다.
+
+[^C-like]: 'C-와 비슷한 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 사용한 'C-에 기초한 언어 (C-based languages)' 와 사실상 같은 의미입니다. 이는 'C-family' 라고도 표현하며, 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이러한 언어들을 확인할 수 있습니다.
+
+[^dictionary-contents]: 이는 딕셔너리의 '내용물 (contents)' 을 저장할 때 '해시 함수 (hash function)' 를 사용하기 때문에, 태생적으로 내용물의 순서를 알 방법이 없기 때문입니다. 이에 대한 더 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에 있는 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 및 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.

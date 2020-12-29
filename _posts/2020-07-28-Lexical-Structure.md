@@ -196,7 +196,7 @@ let textB = "Hello world"
 
 ### Operators (연산자)
 
-스위프트 표준 라이브러리는 다수의 연산자를 정의하여 사용하도록 하는데, 이 대부분은 [Basic Operators (기본 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 와 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 설명하고 있습니다.
+스위프트 표준 라이브러리는 다수의 연산자를 정의하여 사용하도록 하는데, 이 대부분은 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 와 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 설명하고 있습니다.
 
 사용자 정의 연산자는 ASCII 문자 `/`, `=`, `-`, `+`, `!`, `*`, `%`, `<`, `>`, `&`, `|`, `^`, `?` 또는 `~` 중 하나로 시작할 수도 있고, 아니면 아래 문법에서 정의한 유니코드 문자 중의 하나로 시작할 수도 있습니다. (그 중에서도 여기에는 _수학 연산자들 (Mathematical Operators)_, _잡다한 기호들 (Miscellaneous Symbols)_, 그리고 _딩뱃 (Dingbats)_[^dingbats] 유니코드 블럭 문자를 포함합니다.) 첫 번째 문자 다음에는, '조합된 유니코드 문자 (combining Unicode characters)' 도 허용합니다.
 
