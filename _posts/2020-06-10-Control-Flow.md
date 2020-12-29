@@ -77,27 +77,27 @@ print("\(base) to the power of \(power) is \(answer)")
 // "3 to the power of 10 is 59049" 를 인쇄합니다.
 ```
 
-위의 예제는 한 수에 대한 다른 수의 거듭 제곱 (이 경우는, `3` 의 `10` 제곱) 을 계산합니다. 이는 시작 값 `1` (즉, `3` 의 `0` 제곱) 에 `3` 을, `1` 에서 시작해서 `10` 에서 끝나는 '닫힌 범위' 를 사용하여, 10 번 곱합니다. 이 계산에서, 반복문의 매 회차에서 개별 카운터 값은 필요 없습니다-코드는 단순히 반복문을 올바른 횟수만큼 실행합니다. 반복 변수 자리에 '밑줄 문자 (`_`)' 를 사용하면 개별 값을 무시하고 반복문의 각 회차에서 현재 값에 대한 접근을 제공하지 않게 합니다.
+위 예제는 한 수의 값을 다른 수로 거듭 제곱 (이 경우는, `3` 의 `10` 제곱) 합니다. 이는 시작 값 `1` (즉, `3` 의 `0` 제곱) 에 `3` 을 곱하는 것을, `1` 에서 시작해서 `10` 에서 끝나는 '닫힌 범위' 를 사용하여, 열 번 수행합니다. 이런 계산에서는, 반복문을 매 번 통과할 때마다 '개별 횟수 값 (counter values)' 이 필요 없습니다-코드가 단순히 반복문을 올바른 횟수만큼 실행합니다. 반복 변수 자리에 '밑줄 문자 (underscore character; `_`)' 를 사용하면 개별 값을 무시하도록 하여 반복문의 각 '회차 (iteration)' 마다 현재 값에 대한 접근을 제공하지 않도록 합니다.
 
-상황에 따라, 두 끝 값을 포함해야 하는, '닫힌 범위' 를 사용하고 싶지 않을 수 있습니다. 시계에서 매 분에 대한 눈금을 그린다고 해 봅시다. `60` 분에 대한 눈금은, `0` 분에서 시작하도록, 그리고 싶을 겁니다. '반-열린 범위 연산자 (half-open operator; `..<`)' 를 사용하면 '낮은 경계 값 (lower bound)' 은 포함하고 '높은 경계 값 (upper bound)' 은 포함하지 않게 할 수 있습니다. 범위에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 참고하기 바랍니다.
+어떤 상황에서는, 두 끝 값을 포함하는, '닫힌 범위' 를 사용하고 싶지 않을 수도 있습니다. 매 분마다 '눈금 (tick marks)' 을 그리는 시계를 고려해 봅시다. `60` 눈금을, `0` 분에서 시작하도록, 그리고 싶습니다. '낮은 경계 값 (lower bound)' 은 포함하지만 '높은 경계 값 (upper bound)' 은 빼고 싶으면 '반-열린 범위 연산자 (half-open operator; `..<`)' 를 사용합니다. '범위' 에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 참고하기 바랍니다.
 
 ```swift
 let minutes = 60
 for tickMark in 0..<minutes {
-  // 매 분에 대한 눈금 표시를 (60 번) 그립니다.
+  // 매 분마다 눈금을 그립니다. (60 번)
 }
 ```
 
-일부 사용자는 UI 에 눈금이 더 적은 것을 원할 수 있습니다. `5` 분마다 눈금이 하나씩 있는 걸 더 선호할 수도 있습니다. `stride(from:to:by:)` 함수를 사용하면 원하지 않는 눈금을 건너 뛸 수 있습니다.
+어떤 사용자는 UI 에 눈금이 더 적은 것을 원할 수도 있습니다. 눈금이 `5` 분마다 하나씩 있는 걸 좋아할 수도 있을 것입니다. 원하지 않는 눈금을 건너뛰려면 `stride(from:to:by:)` 함수를 사용합니다.
 
 ```swift
 let minuteInterval = 5
 for tickMark in stride(from: 0, to: minutes, by: minuteInterval) {
-  // 5 분마다 눈금을 (0, 5, 10, 15, ... 45, 50, 55) 그립니다.
+  // 5 분마다 눈금을 그립니다. (0, 5, 10, 15, ... 45, 50, 55)
 }
 ```
 
-이 대신 `stride(from:through:by:)` 를 사용하면, '닫힌 범위' 도 사용할 수 있습니다:
+'닫힌 범위' 역시, `stride(from:through:by:)` 로 대신 사용하는 것이, 가능합니다:[^stride-to-through]
 
 ```swift
 let hours = 12
@@ -109,54 +109,48 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 
 ### While Loops (While 반복문)
 
-`while` 반복문은 조건이 `false` 가 될 때까지 일정한 구문들을 수행합니다. 이런 종류의 반복문이 가장 많이 사용되는 곳은 첫 번째 '회차 (iteration)' 를 시작하기 전에 반복할 횟수를 알 수 없는 곳입니다. 스위프트는 두 가지 종류의 `while` 반복문을 제공합니다:
+`while` 반복문은 조건이 `false` 가 될 때까지 '일련의 구문 집합' 을 수행합니다. 이런 종류의 반복문은 첫 번째 '회차' 의 시작 전에 '반복 횟수' 를 알 수 없을 때 사용하는 것이 가장 좋습니다. 스위프트는 두 가지 종류의 `while` 반복문을 제공합니다:
 
-* `whle` 문은 각각을 반복할 때 시작 위치에서 조건 값을 계산합니다.
-* `repeat-while` 문은 각각을 반복할 때 종료 위치에서 조건 값을 계산합니다.
+* `whle` 문은 반복문을 매 번 통과하기 시작할 때 조건을 평가합니다.
+* `repeat`-`while` 문은 반복문을 매 번 통과한 끝에서 조건을 평가합니다.
 
 #### While (While 문)
 
-`while` 반복문은 단일 조건의 값을 계산하는 것으로 시작합니다. 조건이 `true` 이면, 조건이 `false` 가 될 때까지 일정한 구문들을 반복합니다.
+`while` 반복문은 단일 조건을 평가하는 것으로써 시작합니다. 조건이 `true` 이면, 조건이 `false` 가 될 때까지 '일련의 구문 집합' 들이 반복됩니다.
 
-`while` 반복문의 일반적인 형식은 다음과 같습니다:
+다음은 `while` 반복문의 일반적인 형식입니다:
 
-while `condition (조건)` {<br />
-  `statements (구문)`<br />
+while `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-```swift
-while condition {
-  statements
-}
-```
-
-다음 예제는 _뱀과 사다리 (Snakes and Ladders)_[^snakes-and-ladders] 라는 간단한 개임을 플레이합니다. (이 게임은 _Chutes and Ladders_ (미끄럼틀과 사다리) 라고도 합니다.)
+다음 예제는 _뱀과 사다리 (Snakes and Ladders)_[^snakes-and-ladders] 라는 (혹은 _미끄럼틀과 사다리 (Chutes and Ladders)_ 라고도 하는) 간단한 게임을 합니다.
 
 ![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
 
-게임의 규칙은 다음과 같습니다:
+게임 규칙은 다음과 같습니다:
 
-* 게임 '판 (board)' 에는 25 개의 정사각형이 있는데, 최종 목표는 '정사각형 25' 에 도달하거나 이를 넘어가는 것입니다.
-* 참여자가 출발하는 곳은 “정사각형 0 (square zero)” 인데, 이는 보드 가장 왼쪽-밑 모서리 외부에 있는 (가상의) 위치입니다.
-* 매 '차례 (turn; 턴)' 마다, 6-면체 주사위를 굴려서 그 수만 큼 정사각형, 위에 점선 화살표로 지시한 수평 경로를 따라, 이동합니다.
-* 자기 차례일 때 사다리 밑에 도착하게 되면, 그 사다리를 올라갑니다.
-* 자기 차례일 때 뱀의 머리에 도착하, 그 뱀 밑으로 내려옵니다.
+* '게임판 (board)' 은 25 개의 정사각형을 가지며, 최종 목표는 '25 번 정사각형' 위에 착륙하거나 이를 넘어서는 것입니다.
+* '참가자 (player)' 의 시작 사각형 위치는, 게임판의 가장 왼쪽-밑 모서리 바로 밖의, “0 번 정사각형 (square zero)” 입니다.
+* 매 '차례 (turn)' 마다, 6-면 주사위를 굴리고 해당 수만큼의 사각형을, 위에 점선 화살표로 나타낸 수평 경로를 따라서, 이동합니다.
+* 자기 차례인데 사다리 바닥에서 끝나면, 해당 사다리를 올라갑니다.
+* 자기 차례인데 뱀의 머리에서 끝나면, 해당 뱀을 내려옵니다.
 
-게임 판은 `Int` 값의 배열로 표현합니다. 크기는 `finalSquare` 라는 상수를 기반으로 하며, 이는 배열을 초기화하는데도 사용하고 예제 끝에서 승리 조건을 검사할 때도 사용하기도 합니다. 참여자가 시작하는 곳이, "정사각형 0" 이기 때문에, 게임 판은 `25` 개가 아니라, `26` 개의 `Int` 값 0 으로 초기화 됩니다.
+게임 판은 `Int` 값의 배열로 표현됩니다. 크기는 `finalSquare` 라는 상수에 기초하는데, 이는 배열을 초기화할 때도 그리고 예제 나중에 '승리 조건' 을 검사할 때도 사용합니다. 참가자가, "0 번 정사각형" 이라는, 게임판 밖에서 시작하기 때문에, 게임판은, `25` 가 아닌, `26` 개의 `Int` '0' 으로 초기화됩니다.
 
 ```swift
 let finalSquare = 25
 var board = [Int](repeating: 0, count: finalSquare + 1)
 ```
 
-그 다음 일부 정사각형들에 특정한 값을 설정하여 뱀과 사다리를 나타내도록 합니다. 사다리 받침이 있는 정사각형은 게임 판에서 위로 이동할 수 있도록 양수를 가지는 반면, 뱀의 머리가 있는 정사각형은 게임 판에서 아래로 내려가도록 음수를 가지게 됩니다.
+어떤 정사각형은 그 다음에 뱀과 사다리를 위해 더 지정된 값을 가지도록 설정됩니다. 사다리 받침을 가진 정사각형은 게임 판을 올라가기 위해 양수를 가지는 반면, 뱀 머리를 가진 정사각형은 게임판을 다시 내려가기 위해 음수를 가집니다.
 
 ```swift
 board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
 board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
 ```
 
-'정사각형 3' 은 '정사각형 11' 로 올라갈 수 있는 사다리 받침을 가지고 있습니다. 이를 표현하고자, `board[03]` 는 `+08` 라고 두며, 이는 (`3` 과 `11` 의 차이인) 정수 값 `8` 과 같은 것입니다. 값과 구문을 보기 좋게 정렬하기 위해, '단항 양수 연산자 (unary plus operator; `+i`)' 를 '단항 음수 연산자 (unary minus operator; `-`)' 와 같이 사용하였으며 `10` 보다 작은 수치 값은 0 으로 채웠습니다. (문장을 꾸미는 기교는 꼭 필요한 건 아니지만, 코드를 좀 더 깔끔하게 만들어 줍니다.)
+'3 번 정사각형' 은 '11 번 정사각형' 으로 올라가도록 하는 사다리 받침을 담고 있습니다. 이를 나타내기 위해, `board[03]` 은 `+08` 인데, 이는 (`3` 과 `11` 의 차이인) 정수 값 `8` 과 '동치 (eqivalent)' 입니다. 값과 구문을 정렬하기 위해, '단항 양수 연산자 (unary plus operator; `+i`)' 를 '단항 음수 연산자 (unary minus operator; `-i`)' 와 같이 사용하였으며 `10` 보다 작은 수는 '0' 으로 채웠습니다. (꾸밈 기술은 그 어느 것도 엄밀하게 말해 필요하진 않지만, 코드를 더 깔끔하게 만듭니다.)
 
 ```swift
 var square = 0
@@ -165,10 +159,10 @@ while square < finalSquare {
   // 주사위를 굴립니다.
   diceRoll += 1
   if diceRoll == 7 { diceRoll = 1 }
-  // 굴린 결과 만큼 이동합니다.
+  // 굴림 양만큼 이동합니다.
   square += diceRoll
   if square < board.count {
-    // 아직도 게임 판 위에 있다면, 뱀이냐 사다리냐에 따라 올라가거나 내려가도록 합니다.
+    // 아직도 게임 판 위라면, 뱀 또는 사다리를 따라 올라가거나 내려갑니다.
     square += board[square]
   }
 }
@@ -805,3 +799,5 @@ if #available(`platform name` `version`, `...`, *) {
 [^C-like]: 'C-와 비슷한 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 사용한 'C-에 기초한 언어 (C-based languages)' 와 사실상 같은 의미입니다. 이는 'C-family' 라고도 표현하며, 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이러한 언어들을 확인할 수 있습니다.
 
 [^dictionary-contents]: 이는 딕셔너리의 '내용물 (contents)' 을 저장할 때 '해시 함수 (hash function)' 를 사용하기 때문에, 태생적으로 내용물의 순서를 알 방법이 없기 때문입니다. 이에 대한 더 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에 있는 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 및 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+
+[^stride-to-through]: 예제를 보면 `stride(from:to:by:)` 는 '반-열린 범위' 를 대신하고, `stride(from:through:by:)` 는 '닫힌 범위' 를 대신하는 것임을 알 수 있습니다.
