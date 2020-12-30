@@ -82,7 +82,7 @@ It also ends with a line break.
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-indent.jpg)
 
-위 예제에서, '여러 줄짜리 문자열 글자 값' 전체가 들여쓰기 되었음에도 불구하고, 문자열의 첫 번째와 마지막 줄은 어떠한 공백으로도 시작하지 않습니다. 중간 줄은 닫는 따옴표보다 더 들여쓰기 되었으므로, 여분의 네-칸 들여쓰기로 시작합니다.
+위 예제에서, '여러 줄짜리 문자열 글자 값' 전체가 들여쓰기 되었음에도 불구하고, 문자열의 첫 번째와 마지막 줄은 어떠한 공백으로도 시작하지 않습니다. 중간 줄은 닫는 따옴표보다 더 들여쓰기 되었으므로, 그 부가적인 네-칸 들여쓰기로 시작합니다.
 
 #### Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)
 

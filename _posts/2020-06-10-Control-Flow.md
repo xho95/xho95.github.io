@@ -16,7 +16,7 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 스위프트의 `switch` 문은 대다수의 'C-와 비슷한 (C-like) 언어'[^C-like] 에서 보다 더 확연하게 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 그리고 지정된 타입으로의 '타입 변환 (casts)' 을 포함한, 아주 많은 서로 다른 '유형 (patterns)' 과 일치 여부를 맞춰볼 수 있습니다. '`switch` 문의 case 절' 에 일치한 값은 'case 절' 본문에서 사용하도록 임시 상수나 변수로 연결할 수 있으며, '복잡한 맞춤 조건 (complex matching comditions)' 은 각 'case 절' 에 대한 `where` 절로 표현할 수 있습니다.
 
-### For-In Loops (For-In 반복문)
+### For-In Loops (for-in 반복문)
 
 `for`-`in` 반복문은, 배열, 수치 범위, 또는 문자열에 있는 문자들 같이, '일련 값 (sequences)' 들에 동작을 반복시키기 위해 사용합니다.
 
@@ -77,27 +77,27 @@ print("\(base) to the power of \(power) is \(answer)")
 // "3 to the power of 10 is 59049" 를 인쇄합니다.
 ```
 
-위의 예제는 한 수에 대한 다른 수의 거듭 제곱 (이 경우는, `3` 의 `10` 제곱) 을 계산합니다. 이는 시작 값 `1` (즉, `3` 의 `0` 제곱) 에 `3` 을, `1` 에서 시작해서 `10` 에서 끝나는 '닫힌 범위' 를 사용하여, 10 번 곱합니다. 이 계산에서, 반복문의 매 회차에서 개별 카운터 값은 필요 없습니다-코드는 단순히 반복문을 올바른 횟수만큼 실행합니다. 반복 변수 자리에 '밑줄 문자 (`_`)' 를 사용하면 개별 값을 무시하고 반복문의 각 회차에서 현재 값에 대한 접근을 제공하지 않게 합니다.
+위 예제는 한 수의 값을 다른 수로 거듭 제곱 (이 경우는, `3` 의 `10` 제곱) 합니다. 이는 시작 값 `1` (즉, `3` 의 `0` 제곱) 에 `3` 을 곱하는 것을, `1` 에서 시작해서 `10` 에서 끝나는 '닫힌 범위' 를 사용하여, 열 번 수행합니다. 이런 계산에서는, 반복문을 매 번 통과할 때마다 '개별 횟수 값 (counter values)' 이 필요 없습니다-코드가 단순히 반복문을 올바른 횟수만큼 실행합니다. 반복 변수 자리에 '밑줄 문자 (underscore character; `_`)' 를 사용하면 개별 값을 무시하도록 하여 반복문의 각 '회차 (iteration)' 마다 현재 값에 대한 접근을 제공하지 않도록 합니다.
 
-상황에 따라, 두 끝 값을 포함해야 하는, '닫힌 범위' 를 사용하고 싶지 않을 수 있습니다. 시계에서 매 분에 대한 눈금을 그린다고 해 봅시다. `60` 분에 대한 눈금은, `0` 분에서 시작하도록, 그리고 싶을 겁니다. '반-열린 범위 연산자 (half-open operator; `..<`)' 를 사용하면 '낮은 경계 값 (lower bound)' 은 포함하고 '높은 경계 값 (upper bound)' 은 포함하지 않게 할 수 있습니다. 범위에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 참고하기 바랍니다.
+어떤 상황에서는, 두 끝 값을 포함하는, '닫힌 범위' 를 사용하고 싶지 않을 수도 있습니다. 매 분마다 '눈금 (tick marks)' 을 그리는 시계를 고려해 봅시다. `60` 눈금을, `0` 분에서 시작하도록, 그리고 싶습니다. '낮은 경계 값 (lower bound)' 은 포함하지만 '높은 경계 값 (upper bound)' 은 빼고 싶으면 '반-열린 범위 연산자 (half-open operator; `..<`)' 를 사용합니다. '범위' 에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 참고하기 바랍니다.
 
 ```swift
 let minutes = 60
 for tickMark in 0..<minutes {
-  // 매 분에 대한 눈금 표시를 (60 번) 그립니다.
+  // 매 분마다 눈금을 그립니다. (60 번)
 }
 ```
 
-일부 사용자는 UI 에 눈금이 더 적은 것을 원할 수 있습니다. `5` 분마다 눈금이 하나씩 있는 걸 더 선호할 수도 있습니다. `stride(from:to:by:)` 함수를 사용하면 원하지 않는 눈금을 건너 뛸 수 있습니다.
+어떤 사용자는 UI 에 눈금이 더 적은 것을 원할 수도 있습니다. 눈금이 `5` 분마다 하나씩 있는 걸 좋아할 수도 있을 것입니다. 원하지 않는 눈금을 건너뛰려면 `stride(from:to:by:)` 함수를 사용합니다.
 
 ```swift
 let minuteInterval = 5
 for tickMark in stride(from: 0, to: minutes, by: minuteInterval) {
-  // 5 분마다 눈금을 (0, 5, 10, 15, ... 45, 50, 55) 그립니다.
+  // 5 분마다 눈금을 그립니다. (0, 5, 10, 15, ... 45, 50, 55)
 }
 ```
 
-이 대신 `stride(from:through:by:)` 를 사용하면, '닫힌 범위' 도 사용할 수 있습니다:
+'닫힌 범위' 역시, `stride(from:through:by:)` 로 대신 사용하는 것이, 가능합니다:[^stride-to-through]
 
 ```swift
 let hours = 12
@@ -107,56 +107,50 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 }
 ```
 
-### While Loops (While 반복문)
+### While Loops (while 반복문)
 
-`while` 반복문은 조건이 `false` 가 될 때까지 일정한 구문들을 수행합니다. 이런 종류의 반복문이 가장 많이 사용되는 곳은 첫 번째 '회차 (iteration)' 를 시작하기 전에 반복할 횟수를 알 수 없는 곳입니다. 스위프트는 두 가지 종류의 `while` 반복문을 제공합니다:
+`while` 반복문은 조건이 `false` 가 될 때까지 '일련의 구문 집합' 을 수행합니다. 이런 종류의 반복문은 첫 번째 '회차' 의 시작 전에 '반복 횟수' 를 알 수 없을 때 사용하는 것이 가장 좋습니다. 스위프트는 두 가지 종류의 `while` 반복문을 제공합니다:
 
-* `whle` 문은 각각을 반복할 때 시작 위치에서 조건 값을 계산합니다.
-* `repeat-while` 문은 각각을 반복할 때 종료 위치에서 조건 값을 계산합니다.
+* `whle` 문은 반복문을 매 번 통과하기 시작할 때 조건을 평가합니다.
+* `repeat`-`while` 문은 반복문을 매 번 통과한 끝에서 조건을 평가합니다.
 
-#### While (While 문)
+#### While (while 문)
 
-`while` 반복문은 단일 조건의 값을 계산하는 것으로 시작합니다. 조건이 `true` 이면, 조건이 `false` 가 될 때까지 일정한 구문들을 반복합니다.
+`while` 반복문은 단일 조건을 평가하는 것으로써 시작합니다. 조건이 `true` 이면, 조건이 `false` 가 될 때까지 '일련의 구문 집합' 들이 반복됩니다.
 
-`while` 반복문의 일반적인 형식은 다음과 같습니다:
+다음은 `while` 반복문의 일반적인 형식입니다:
 
-while `condition (조건)` {<br />
-  `statements (구문)`<br />
+while `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-```swift
-while condition {
-  statements
-}
-```
-
-다음 예제는 _뱀과 사다리 (Snakes and Ladders)_[^snakes-and-ladders] 라는 간단한 개임을 플레이합니다. (이 게임은 _Chutes and Ladders_ (미끄럼틀과 사다리) 라고도 합니다.)
+다음 예제는 _뱀과 사다리 (Snakes and Ladders)_[^snakes-and-ladders] 라는 (혹은 _미끄럼틀과 사다리 (Chutes and Ladders)_ 라고도 하는) 간단한 게임을 합니다.
 
 ![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
 
-게임의 규칙은 다음과 같습니다:
+게임 규칙은 다음과 같습니다:
 
-* 게임 '판 (board)' 에는 25 개의 정사각형이 있는데, 최종 목표는 '정사각형 25' 에 도달하거나 이를 넘어가는 것입니다.
-* 참여자가 출발하는 곳은 “정사각형 0 (square zero)” 인데, 이는 보드 가장 왼쪽-밑 모서리 외부에 있는 (가상의) 위치입니다.
-* 매 '차례 (turn; 턴)' 마다, 6-면체 주사위를 굴려서 그 수만 큼 정사각형, 위에 점선 화살표로 지시한 수평 경로를 따라, 이동합니다.
-* 자기 차례일 때 사다리 밑에 도착하게 되면, 그 사다리를 올라갑니다.
-* 자기 차례일 때 뱀의 머리에 도착하, 그 뱀 밑으로 내려옵니다.
+* '게임판 (board)' 은 25 개의 정사각형을 가지며, 최종 목표는 '25 번 정사각형' 위에 착륙하거나 이를 넘어서는 것입니다.
+* '참가자 (player)' 의 시작 사각형 위치는, 게임판의 가장 왼쪽-밑 모서리 바로 밖의, “0 번 정사각형 (square zero)” 입니다.
+* 매 '차례 (turn)' 마다, 6-면 주사위를 굴리고 해당 수만큼의 사각형을, 위에 점선 화살표로 나타낸 수평 경로를 따라서, 이동합니다.
+* 자기 차례인데 사다리 바닥에서 끝나면, 해당 사다리를 올라갑니다.
+* 자기 차례인데 뱀의 머리에서 끝나면, 해당 뱀을 내려옵니다.
 
-게임 판은 `Int` 값의 배열로 표현합니다. 크기는 `finalSquare` 라는 상수를 기반으로 하며, 이는 배열을 초기화하는데도 사용하고 예제 끝에서 승리 조건을 검사할 때도 사용하기도 합니다. 참여자가 시작하는 곳이, "정사각형 0" 이기 때문에, 게임 판은 `25` 개가 아니라, `26` 개의 `Int` 값 0 으로 초기화 됩니다.
+게임 판은 `Int` 값의 배열로 표현됩니다. 크기는 `finalSquare` 라는 상수에 기초하는데, 이는 배열을 초기화할 때도 그리고 예제 나중에 '승리 조건' 을 검사할 때도 사용합니다. 참가자가, "0 번 정사각형" 이라는, 게임판 밖에서 시작하기 때문에, 게임판은, `25` 가 아닌, `26` 개의 `Int` '0' 으로 초기화됩니다.
 
 ```swift
 let finalSquare = 25
 var board = [Int](repeating: 0, count: finalSquare + 1)
 ```
 
-그 다음 일부 정사각형들에 특정한 값을 설정하여 뱀과 사다리를 나타내도록 합니다. 사다리 받침이 있는 정사각형은 게임 판에서 위로 이동할 수 있도록 양수를 가지는 반면, 뱀의 머리가 있는 정사각형은 게임 판에서 아래로 내려가도록 음수를 가지게 됩니다.
+어떤 정사각형은 그 다음에 뱀과 사다리를 위해 더 지정된 값을 가지도록 설정됩니다. 사다리 받침을 가진 정사각형은 게임 판을 올라가기 위해 양수를 가지는 반면, 뱀 머리를 가진 정사각형은 게임판을 다시 내려가기 위해 음수를 가집니다.
 
 ```swift
 board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
 board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
 ```
 
-'정사각형 3' 은 '정사각형 11' 로 올라갈 수 있는 사다리 받침을 가지고 있습니다. 이를 표현하고자, `board[03]` 는 `+08` 라고 두며, 이는 (`3` 과 `11` 의 차이인) 정수 값 `8` 과 같은 것입니다. 값과 구문을 보기 좋게 정렬하기 위해, '단항 양수 연산자 (unary plus operator; `+i`)' 를 '단항 음수 연산자 (unary minus operator; `-`)' 와 같이 사용하였으며 `10` 보다 작은 수치 값은 0 으로 채웠습니다. (문장을 꾸미는 기교는 꼭 필요한 건 아니지만, 코드를 좀 더 깔끔하게 만들어 줍니다.)
+'3 번 정사각형' 은 '11 번 정사각형' 으로 올라가도록 하는 사다리 받침을 담고 있습니다. 이를 나타내기 위해, `board[03]` 은 `+08` 인데, 이는 (`3` 과 `11` 의 차이인) 정수 값 `8` 과 '동치 (eqivalent)' 입니다. 값과 구문을 정렬하기 위해, '단항 양수 연산자 (unary plus operator; `+i`)' 를 '단항 음수 연산자 (unary minus operator; `-i`)' 와 같이 사용하였으며 `10` 보다 작은 수는 '0' 으로 채웠습니다. (꾸밈 기술은 엄밀하게 말해서 딱히 필요하진 않지만, 코드를 더 깔끔하게 만듭니다.)
 
 ```swift
 var square = 0
@@ -165,45 +159,39 @@ while square < finalSquare {
   // 주사위를 굴립니다.
   diceRoll += 1
   if diceRoll == 7 { diceRoll = 1 }
-  // 굴린 결과 만큼 이동합니다.
+  // 굴림 양만큼 이동합니다.
   square += diceRoll
   if square < board.count {
-    // 아직도 게임 판 위에 있다면, 뱀이냐 사다리냐에 따라 올라가거나 내려가도록 합니다.
+    // 아직도 게임 판 위라면, 뱀이나 사다리를 따라 오르 내립니다.
     square += board[square]
   }
 }
 print("Game over!")
 ```
 
-위의 예제는 주사위를 굴리는 방식이 매우 간단합니다. '난수 (random number)' 를 생성하는 대신, `diceRoll` 값이 `0` 인 상태에서 시작합니다. 매 번 `while` 반복문을 통과할 때마다, `diceRoll` 은 1 만큼 증가한 다음 너무 커진게 아닌지 검사합니다. `7` 을 반환할 때마다, 이 때는 '주사위 굴림 값' 이 너무 커진 것이므로 값을 `1` 로 재설정합니다. 그 결과 일련의 `diceRoll` 값은 항상 `1`, `2`, `3`, `4`, `5`, `6`, `1`, `2` 와 같이 계속됩니다.
+위 예제는 아주 간단한 주사위 굴림 방식을 사용합니다. '난수 (random number)' 를 발생시키는 대신, `0` 이라는 `diceRoll` 값에서 시작합니다. 매 번 `while` 반복문을 통과할 때마다, `diceRoll` 은 하나씩 증가하며 너무 크진 않은 지를 검사합니다. 이 반환 값이 `7` 일 때마다, '주사위 굴림 (dice roll)' 이 너무 커진 것이므로 `1` 이라는 값으로 재설정됩니다. 결과는 항상 `1`, `2`, `3`, `4`, `5`, `6`, `1`, `2`, 등으로 계속되는 '일련의 `diceRoll` 값' 입니다.
 
-주사위를 굴리고 나면, 참여자는 `diceRoll` 개의 정사각형 만큼 앞으로 이동합니다. '주사위 굴림 값' 이 참여자를 '정사각형 25' 너머로 이동하게 할 수도 있는데, 이 경우 게임은 끝나게 됩니다. 이런 상황을 대처하기 위해, 코드는 `square` 가 `board` 배열의 `count` 속성보다 작은 지를 검사합니다. `square` 가 유효한 경우, `board[square]` 에 저장된 값이 현재의 `square` 값에 추가되어 사다리냐 뱀이냐에 따라 참여자를 위로 이동시키기도 하고 아래로 이동시키기도 합니다.
+주사위를 굴린 후, 참가자는 `diceRoll` 개의 정사각형 만큼 앞으로 이동합니다. '주사위 굴림' 이 '25 번 정사각형' 너머로 참가자를 이동하도록 할수도 있는데, 이 경우는 게임이 끝납니다. 이런 줄거리에 대처하기 위해, 코드는 `square` 가 `board` 배열의 `count` 속성보다 작은 지를 검사합니다. `square` 가 유효하면, `board[square]` 에 저장된 값을 현재의 `square` 값에 추가하고 사다리냐 뱀이냐에 따라 참가자를 위 아래로 이동시킵니다.
 
-> 이 검사를 하지 않으면, `board[square]` 이 `board` 배열의 경계를 벗어난 값에 접근하려고 할 수도 있어서, '실행시간 에러 (runtime error)' 가 발생할 수도 있습니다.
+> 이러한 검사를 하지 않으면, `board[square]` 가 `board` 배열 경계 밖의 값에 접근할 수도 있는데, 이는 '실행 시간 에러' 를 일으킬 것입니다.
 
-이러면 현재의 `while` 반복문 실행이 끝난 것이며, 이제 반복문을 다시 실행해야하는 지 확인하기 위해 반복문의 조건을 검사합니다. 참여자가 '정사각형 `25`' 위나 그 너머로 이동했으면, 반복문의 조건 값은 `false` 로 계산되고 게임이 끝납니다.
+이제 `while` 반복문의 현재 회차 실행이 끝났으며, 반복문을 다시 실행해야 하는지 확인하기 위해 반복문의 조건을 검사합니다. 참가자가 `25` 번 정사각형 위나 그 너머로 이동했으면, 반복문의 조건은 `false` 로 평가되며 게임이 끝납니다.
 
-이 예제는 `while` 반복문이 알맞은 경우인데, 왜냐면 `while` 반복문을 시작할 때 게임 길이가 명확하지 않기 때문입니다. 이 반복문은 특정한 조건을 만족할 때까지 실행됩니다.
+`while` 반복문을 시작할 때 게임이 '얼마나 길어질지 (length)' 를 명확히 알 수 없는 상황이므로, 이 경우 `while` 반복문은 적절한 것입니다. 반복문은 특정 조건을 만족할 때까지 실행하기 때문입니다.
 
-#### Repeat-While (Repeat-While 문)
+#### Repeat-While (repeat-while 문)
 
-`while` 반복문의 변형으로, `repeat-while` 반복문이 있는데, 이는 반복문의 조건을 검토하기 _전에 (before)_, 먼저 반복문 블럭을 한 번 통과하여 실행합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 루프를 계속 '반복합니다 (repeat)'.
+`while` 반복문의 다른 변형으로, `repeat`-`while` 반복문이 있는데, 반복문의 조건을 고려하기 _전에 (before)_, '반복문 블럭' 을 먼저 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 '되풀이합니다 (repeat)'.
 
-> 스위프트의 `repeat-while` 반복문은 다른 언어에 있는 `do-while` 반복문과 비슷합니다.[^do-while]
+> 스위프트의 `repeat`-`while` 반복문은 다른 언어의 `do`-`while` 반복문과 유사한 것입니다.[^do-while]
 
-`repeat-while` 반복문의 일반적인 형식은 다음과 같습니다:
+다음은 `repeat`-`while` 반복문의 일반적인 형식입니다:
 
 repeat {<br />
-  `statements (구문)`<br />
-} while `condition (조건)`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+} while `condition-조건`<br />
 
-```swift
-repeat {
-  statements
-} while condition
-```
-
-다음은 _뱀과 사다리 (Snakes and Ladders)_ 예제를, `while` 반복문 대신 `repeat-while` 반복문으로 다시 작성한 것입니다. `finalSquare`, `board`, `square`, 와 `diceRoll` 의 값은 `while` 반복문과 완전히 같은 방법으로 초기화됩니다.
+다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문과 정확하게 똑같은 방법으로 초기화합니다.
 
 ```swift
 let finalSquare = 25
@@ -214,48 +202,48 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임에서, 반복문이 _처음으로 (first)_ 하는 행동은 사다리인지 뱀인지를 검사하는 것입니다. 게임 판의 사다리 중에 참여자를 곧바로 '정사각형 25' 로 보내는 것은 없어서, 사다리로 올라갔다고 게임을 이기지는 않습니다. 따라서, 반복문의 처음 행동이 뱀인지 사다리인지 검사하는 것은 안전합니다.
+이 버전의 게임에서, 반복문의 _처음 (first)_ 행동은 사다리인지 뱀인지 검사하는 것입니다. 게임판의 사다리 중 참가자를 곧바로 '25 번 정사각형' 으로 보내는 것은 없으므로, 사다리를 올라가는 것으로써 게임을 이길 수는 없습니다. 그러므로, 반복문의 처음 행동으로 뱀인지 사다리인지 검사하는 것은 안전합니다.
 
-게임을 시작하면, 참여자는 “정사각형 0 (square zero)” 에 있습니다. `board[0]` 은 항상 `0` 이므로 아무런 영향이 없습니다.
+게임을 시작할 떄, 참가자는 “0 번 정사각형” 에 있습니다. `board[0]` 는 항상 `0` 이며 아무 영향이 없습니다.[^square-zero]
 
 ```swift
 repeat {
-  // 뱀인지 사다리인지에 따라 위나 아래로 이동합니다.
+  // 뱀인지 사다리인지에 따라 위 아래로 이동합니다.
   square += board[square]
   // 주사위를 굴립니다.
   diceRoll += 1
   if diceRoll == 7 { diceRoll = 1 }
-  // 굴린 값에 따라 이동합니다.
+  // 굴림 양에 따라 이동합니다.
   square += diceRoll
 } while square < finalSquare
 print("Game over!")
 ```
 
-코드에서 뱀인지 사다리인지 확인한 후에는, 주사위를 굴려서 참여자를 `diceRoll` 개의 정사각형 만큼 앞으로 이동합니다. 그러면 현재의 반복문 실행이 끝나게 됩니다.
+코드에서 뱀인지 사다리인지 검사한 후, 주사위를 굴리고 참가자를 `diceRoll` 개의 정사각형 만큼 앞으로 이동합니다. 현재 '회차' 실행은 이러면 끝납니다.
 
-반복문의 조건 (`while square < finalSquare`) 은 이전과 동일하지만, 이번에는 반복문을 최초 실행이 _끝 (end)_ 나기 전에는 이 값을 계산하지 않습니다. 이 게임 구조에서는 `repeat-while` 반복문이 이전 예제에 있는 `while` 반복문 보다 더 적합합니다. 위 `repeat-while` 반복문에서는, 반복문의 `while` 조건이 `square` 가 여전히 게임 판 위에 있음을 확인 _하자마자 그 즉시 (immediately after)_ `square += board[square]` 를 항상 실행합니다. 이러한 동작 방식은 먼저 설명한 `while` 반복문 버전의 게임에 있던 배열의 경계 값 검사를 필요없게 만듭니다.
+반복문의 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번에는 반복문을 통과한 최초 실행이 _끝 (end)_ 나기 전에는 이를 평가하지 않습니다. `repeat`-`while` 반복문 구조는 이전 예제의 `while` 반복문 보다 이 게임에 더 적합합니다. 위의 `repeat`-`while` 반복문에서는, `square += board[square]` 이 항상 반복문의 `while` 조건이 `square` 가 아직 게임판 위임을 확정한 _후 그 즉시 (immediately after)_ 실행됩니다. 이런 작동 방식은 앞서 설명한 `while` 반복문 버전 게임에서 본 '배열 경계 값 검사' 의 필요성을 없앱니다.
 
-### Conditional Statements (조건 구문)
+### Conditional Statements (조건문)
 
-정해진 조건에 따라 서로 다른 코드 조각을 실행하는 것이 유용할 때가 있습니다. 에러가 발생했을 때 부가적인 코드 조각을 실행하거나, 아니면 값이 너무 크거나 작을 때 메시지를 나타내고 싶을 수도 있을 것입니다. 이렇게 하려면, 코드 일부를 _조건부 (conditional)_ 로 만들면 됩니다.
+정해진 조건에 따라 서로 다른 코드 부분을 실행하는 것이 유용할 때가 종종 있습니다. 에러가 발생할 때 부가적인 코드 부분을 실행하고 싶을 수도, 값이 너무 커지거나 작아지면 메시지를 보여주고 싶을 수도 있습니다. 이렇게 하기 위해, 코드 일부를 _조건문 (conditional)_ 으로 만듭니다.
 
-스위프트는 코드에 조건 분기를 추가하기 위해 두 가지 방법을 제공합니다: `if` 문과 `switch` 문이 그것입니다. 일반적으로, 가능한 결과가 적은 단순한 조건 값을 계산할 때는 `if` 문을 사용합니다. `switch` 문은 여러 개의 순서를 가지는 좀더 복잡한 조건에 더 적합하며 '패턴 매칭 (pattern matching; 유형 맞춤)' 을 실행할 알맞은 분기를 찾는데 도움을 줄 수 있는 상황에 유용합니다.
+스위프트는 조건 분기를 코드에 추가하는 방법을 두 가지로 제공합니다: `if` 문과 `switch` 문입니다. 전형적으로, `if` 문은 적은 결과만이 가능한 간단한 조건을 평가할 때 사용합니다. `switch` 문은 가능한 순서 조합이 여러 개인 좀 더 복잡한 조건에 더 적합하며 '유형 맞춤 (pattern matching; 패턴 매칭)' 이 실행을 위한 적절한 코드 블럭 선택을 도와줄 수 있는 상황에서 유용합니다.
 
-#### If (If 문)
+#### If (if 문)
 
-가장 간단한 양식의, `if` 구문은 단일한 `if` 조건을 가지고 있습니다. 이 조건이 `true` 일 때만 일정한 구문을 실행합니다.
+가장 간단한 형식의, `if` 문은 단일 `if` 조건을 가집니다. 이는 해당 조건이 `true` 일 때만 '일련의 구문 집합' 을 실행합니다.
 
 ```swift
 var temperatureInFahrenheit = 30
 if temperatureInFahrenheit <= 32 {
   print("It's very cold. Consider wearing a scarf.")
 }
-// "It's very cold. Consider wearing a scarf." 를 출력합니다.
+// "It's very cold. Consider wearing a scarf." 를 인쇄합니다.
 ```
 
-위의 예제는 온도가 '화씨 (Fahrenheit)' 32도 (물의 어는 점) 보다 낮은 지를 검사합니다. 이에 해당하면, 메시지를 출력합니다. 해당하지 않으면, 메시지를 출력하지 않으며, `if` 문의 '닫는 중괄호 (closing brace)' 뒤의 코드를 계속해서 실행합니다.
+위 예제는 온도가 '화씨 (Fahrenheit)' 로 (물의 어는 점인) 32 도[^Fahrenheit-32] 이하인지 검사합니다. 그렇다면, 메시지를 인쇄합니다. 다른 경우라면, 메시지는 인쇄하지 않고, `if` 문의 '닫는 중괄호 (closing brace)' 뒤에서 코드 실행을 계속합니다.
 
-`if` 문은, `if` 조건이 `false` 일 때의 상황을 위해서, `else clause` 이라는, 일정한 대체 구문을 제공할 수 있습니다. 이 구문은 `else` 키워드를 써서 지시합니다.
+`if` 문은, `if` 조건이 `false` 인 상황을 위해, `else clause` (else 절) 이라는, 또 다른 구문 집합을 제공할 수 있습니다. 이 구문은 `else` 키워드로 지시합니다.
 
 ```swift
 temperatureInFahrenheit = 40
@@ -264,12 +252,12 @@ if temperatureInFahrenheit <= 32 {
 } else {
   print("It's not that cold. Wear a t-shirt.")
 }
-// "It's not that cold. Wear a t-shirt." 를 출력합니다.
+// "It's not that cold. Wear a t-shirt." 를 인쇄합니다.
 ```
 
-이 두 개의 분기 중 하나는 항상 실행됩니다. 온도가 화씨 40도 까지 올랐으므로, 더 이상 스카프를 하라고 조언할 만큼 춥지 않아서 `else` 분기를 대신 실행하게 됩니다.
+이 두 분기 중 하나는 항상 실행됩니다. 온도가 '화씨 40 도' 까지 증가해서, 스카프를 두르라고 조언할 정도로 춥진 않으므로 `else` 분기가 대신 실행됩니다.
 
-여러 개의 `if` 구문을 서로 죽 이으면 추가적인 구절을 검토할 수 있습니다.
+추가적인 절을 고려하기 위해 '다중 `if` 문' 을 서로 '연쇄 (chain)' 할 수 있습니다.
 
 ```swift
 temperatureInFahrenheit = 90
@@ -280,12 +268,12 @@ if temperatureInFahrenheit <= 32 {
 } else {
   print("It's not that cold. Wear a t-shirt.")
 }
-// "It's really warm. Don't forget to wear sunscreen." 를 출력합니다.
+// "It's really warm. Don't forget to wear sunscreen." 를 인쇄합니다.
 ```
 
-여기서는, 추가적인 `if` 구문을 추가하여 특별히 따뜻한 온도일 때 응답하도록 합니다. 마지막 `else` 절은 남아 있어서, 너무 덥지도 춥지도 않는 온도일 때에 대한 응답을 출력합니다.
+여기서는, 특별히 따뜻한 온도일 때 응답하기 위해 '추가적인 `if` 문' 을 더합니다. '최종 `else` 절' 은 남아서, 너무 덥지도 춥지도 않는 어떤 온도에 대해서든 응답을 인쇄합니다.
 
-하지만, 마지막 `else` 절은 '선택 사항 (optional)'[^optional] 이라, 일정한 조건이 '완전해야 (to be complete)' 할 필요가 없는 경우에는 이를 제외할 수 있습니다.
+하지만, '최종 `else` 절' 은 '선택 사항 (optional)'[^optional] 으로, 조건 집합이 '완전할 (to be complete)' 필요가 없으면 이를 배제할 수 있습니다.
 
 ```swift
 temperatureInFahrenheit = 72
@@ -296,35 +284,23 @@ if temperatureInFahrenheit <= 32 {
 }
 ```
 
-온도가 `if` 나 `else if` 조건을 일으킬 만큼 너무 춥지도 덥지도 않기 때문에, 아무런 메시지도 출력하지 않습니다.
+온도가 `if` 나 `else if` 조건을 발동시킬 만큼 너무 춥지도 덥지도 않기 때문에, 아무 메시지도 인쇄하지 않습니다.
 
-#### Switch (Switch 문)
+#### Switch (switch 문)
 
 `switch` 문은 값을 검토하여 해당 가능한 여러 가지 '유형들 (patterns)' 과 비교합니다. 그런 다음, 성공적으로 들어맞는 첫 번째 '유형' 을 기반으로, 적당한 코드 블럭을 실행합니다. `switch` 문은 `if` 문의 대안으로 다양한 잠재적 상태에 대해 응답을 제공합니다.
 
 가장 간단한 양식의, `switch` 문은 하나의 값을 같은 타입의 하나 이상의 값들과 비교하는 것입니다.
 
-switch `some value to consider (검토할 어떤 값)` {
-case `value 1 (값 1)`:
-    `respond to value 1 (값 1에 대한 응답)`
-case `value 2 (값 2)`,
-     `value 3 (값 3)`:
-    `respond to value 2 or 3 (값 2 또는 3에 대한 응답)`
-default:
-    `otherwise, do something else (그 외의 경우, 여기서 뭔가를 합니다)`
+switch `some value to consider-고려할 어떤 값` {<br />
+case `value 1-값 1`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 1-값 1 에 대한 응답`<br />
+case `value 2-값 2`,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`value 3-값 3`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 2 or 3-값 2 또는 3 에 대한 응답`<br />
+default:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-다른 경우에, 그 외의 어떤 것을 합니다`<br />
 }
-
-```swift
-switch some value to consider {
-case value 1:
-    respond to value 1
-case value 2,
-     value 3:
-    respond to value 2 or 3
-default:
-    otherwise, do something else
-}
-```
 
 모든 `switch` 문은 여러 가지의 가능성 있는 '_case 절 (cases)_' 들로 구성되어 있는데, 각각은 `case` 키워드로 시작합니다. 특정한 값과 비교하는 것 외에도, 스위프트는 다양한 방법을 제공하여 각각의 'case 절' 에 보다 복잡한 '해당 유형 (matching patterns)' 을 지정할 수 있습니다. 이러한 선택 요소들은 이 장의 뒤에서 설명하도록 합니다.
 
@@ -780,9 +756,9 @@ if #available(iOS 10, macOS 10.12, *) {
 
 ```swift
 if #available(`platform name` `version`, `...`, *) {
-    `statements to execute if the APIs are available`
+  `statements to execute if the APIs are available`
 } else {
-    `fallback statements to execute if the APIs are unavailable`
+  `fallback statements to execute if the APIs are unavailable`
 }
 ```
 
@@ -794,9 +770,9 @@ if #available(`platform name` `version`, `...`, *) {
 
 [^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 참고하기 바랍니다.
 
-[^do-while]: 본문에서 `repeat-while` 문이 `do-while` 문과 비슷하다고 표현했는데, 사실 초창기 스위프트는 `repeat-while` 의 이름이 `do-while` 이었습니다. 그러므로 이 둘은 사실상 같은 것이라고 볼 수 있습니다. 이름을 왜 바꿨는지는 잘 모르겠습니다.
+[^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 이력을 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
 
-[^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관 없습니다. 스위프트는 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. '옵셔널 타입 (optional type)' 도 '값을 선택적으로 가질 수 있는 타입' 이라는 의미로 'optional' 이라는 영어 단어를 사용하는 것입니다.
+[^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관이 없습니다. 스위프트는 (사실 그 보다는 '애플' 이라는 회사 자체가) 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. 사실 거꾸로 말해서 '옵셔널 (optional)' 타입 자체가 '값을 가지는 것이 선택 사항' 이기 때문에 붙은 이름입니다.
 
 [^wildcard-pattern]: 와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정하게 고정된 문자열만이 아니라, 조건에 부합하는 모든 문자열을 맞춰보는 '패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목 중에서 'wildcard pattern' 에 해당하는 부분을 참고하기 바랍니다.
 
@@ -805,3 +781,9 @@ if #available(`platform name` `version`, `...`, *) {
 [^C-like]: 'C-와 비슷한 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 사용한 'C-에 기초한 언어 (C-based languages)' 와 사실상 같은 의미입니다. 이는 'C-family' 라고도 표현하며, 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이러한 언어들을 확인할 수 있습니다.
 
 [^dictionary-contents]: 이는 딕셔너리의 '내용물 (contents)' 을 저장할 때 '해시 함수 (hash function)' 를 사용하기 때문에, 태생적으로 내용물의 순서를 알 방법이 없기 때문입니다. 이에 대한 더 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에 있는 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 및 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+
+[^stride-to-through]: 예제를 보면 `stride(from:to:by:)` 는 '반-열린 범위' 를 대신하고, `stride(from:through:by:)` 는 '닫힌 범위' 를 대신하는 것임을 알 수 있습니다.
+
+[^square-zero]: 게임을 시작할 때 참가자가 '0 번 정사각형' 에 있다는 말은 `square` 가 '0' 이라는 말입니다. 즉, 게임을 시작할 때는 `square < finalSquare` 조건이 항상 참이기 때문에, 이 비교를 하지 않아도 아무런 영향이 없다는 의미입니다.
+
+[^Fahrenheit-32]: '화씨 (Fahrenheit)' 32 도는 '섭씨 (Celsius)' 0 도와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.

@@ -430,7 +430,7 @@ let http404Error = (404, "Not Found")
 
 `(404, "Not Found")` 라는 튜플은 `Int` 와 `String` 을 함께 그룹지어서 HTTP 상태 코드에 별도인 두 개의 값: '하나의 수' 와 '사람이-이해할 수 있는 설명' 을 부여합니다. 이는 "`(Int, String)` 타입인 튜플" 이라고 설명할 수 있습니다.
 
-튜플은 어떤 '순서 (permutation)'[^permutation] 의 타입으로도 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 나, `(String, Bool)` , 또는 진짜 순서를 필요한 대로 아무렇게나 섞은 타입인 튜플도 만들 수 있습니다.
+튜플은 어떤 '순서 조합 (permutation)'[^permutation] 으로 된 타입이든 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 나, `(String, Bool)` , 또는 진짜 순서를 필요한 대로 아무렇게나 섞은 타입인 튜플도 만들 수 있습니다.
 
 튜플의 내용은 별도의 상수나 변수로 _분해 (decompose)_ 한 다음, 평소 처럼 접근할 수 있습니다:
 
@@ -781,6 +781,6 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
 
-[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n 개의 원소에서 r 개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉, 스위프트에서 n 개의 원소를 가진 튜플이 가질 수 있는 경우의 수는 이 '순열 (permetation)' 개수 만큼 많다는 걸 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서' 라는 말로 옮겼습니다. '순열 (permutation)' 에 대한 더 자세한 내용은 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목이나 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
+[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n 개의 원소에서 r 개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉, 스위프트에서 n 개의 원소를 가진 튜플이 가질 수 있는 경우의 수는 이 '순열 (permetation)' 개수 만큼 많다는 걸 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서 조합' 라는 말로 옮겼습니다. '순열 (permutation)' 에 대한 더 자세한 내용은 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목이나 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
 [^nature]: '자료의 본질을 암시적으로 문서화 (implicitly documents the nature of the data)' 한다는 말은, 예를 들어, `Int` 라고 할 것을 `UInt8` 이라고 하면 값이 `0 ~ 255` 범위에 있다는 자료의 본질적인 정보를, 코드 자체가 제공한다는 의미입니다. '암시적인 문서화 (implicitly documents)' 는 별도의 주석이나 문서를 작성하지 않고 코드 자체가 저절도 '문서화 (documentation)' 효과를 가지는 것을 말합니다. '문서화 (documentation)' 에 대한 더 자세한 정보는 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 '문서화 주석' 설명 부분을 참고하기 바랍니다.
