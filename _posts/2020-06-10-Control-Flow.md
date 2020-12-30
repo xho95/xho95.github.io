@@ -288,9 +288,9 @@ if temperatureInFahrenheit <= 32 {
 
 #### Switch (switch 문)
 
-`switch` 문은 값을 검토하여 해당 가능한 여러 가지 '유형들 (patterns)' 과 비교합니다. 그런 다음, 성공적으로 들어맞는 첫 번째 '유형' 을 기반으로, 적당한 코드 블럭을 실행합니다. `switch` 문은 `if` 문의 대안으로 다양한 잠재적 상태에 대해 응답을 제공합니다.
+`switch` 문은 값을 고려해서 이를 일치 가능한 여러 '유형 (patterns)' 들과 비교합니다. 그런 다음 성공적으로 일치한 첫 번째 '유형 (pattern)' 에 기초하여 적절한 코드 블럭을 실행합니다. `switch` 문은 '잠재적인 다중 상태' 에 응답함에 있어서 `if` 문의 대안을 제공합니다.
 
-가장 간단한 양식의, `switch` 문은 하나의 값을 같은 타입의 하나 이상의 값들과 비교하는 것입니다.
+가장 간단한 형식의, `switch` 문은 하나의 값을 같은 타입의 하나 이상의 값과 비교합니다.
 
 switch `some value to consider-고려할 어떤 값` {<br />
 case `value 1-값 1`:<br />
@@ -299,16 +299,16 @@ case `value 2-값 2`,<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`value 3-값 3`:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`respond to value 2 or 3-값 2 또는 3 에 대한 응답`<br />
 default:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-다른 경우에, 그 외의 어떤 것을 합니다`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-다른 경우라면, 그 외의 어떤 것을 합니다`<br />
 }
 
-모든 `switch` 문은 여러 가지의 가능성 있는 '_case 절 (cases)_' 들로 구성되어 있는데, 각각은 `case` 키워드로 시작합니다. 특정한 값과 비교하는 것 외에도, 스위프트는 다양한 방법을 제공하여 각각의 'case 절' 에 보다 복잡한 '해당 유형 (matching patterns)' 을 지정할 수 있습니다. 이러한 선택 요소들은 이 장의 뒤에서 설명하도록 합니다.
+모든 `switch` 문은 '여러 가능한 _case 절 (cases)_'[^multiple-possible-cases] 들로 구성되는데, 이들 각각은 `case` 키워드로 시작합니다. 지정된 값을 비교하는 것에 더하여, 스위프트는 각 'case 절' 이 더 복잡한 '맞춤 유형 (matching patterns)' 을 지정하는 여러 방식을 제공합니다. 이 옵션들은 이 장 나중에 설명합니다.
 
-`if` 문의 본문과 마찬가지로, 각각의 `case` 는 코드 실행의 분기에 해당합니다. `switch` 문은 어떤 분기를 선택해야 하는 지 확인합니다. 이러한 절차를 검토하고 있는 값의 _switching (전환; 스위칭)_ 이라고 합니다.
+`if` 문의 본문과 같이, 각 `case` 절은 별도의 코드 실행 분기입니다. `switch` 문은 어느 분기를 선택해야할 지 결정합니다. 이런 절차를 고려 중인 값에 대한 _switching (스위칭; 전환)_ 이라고 합니다.
 
-모든 `switch` 문은 반드시 _빠짐없이 철저해야 (exhaustive)_ 합니다. 다시 말해서, 검토 중인 타입에서 발생 가능한 모든 값은 반드시 `switch` 'case 절' 중 하나에는 들어맞아야 합니다. 발생 가능한 모든 값에 대해 'case 절' 을 제공하는 것이 적절하지 않은 경우라면, 명시적으로 말하지 않은 어떤 값도 다루도록 '기본 case 절 (default case)' 을 정의할 수도 있습니다. 이 '기본 case 절' 은 `default` 키워드로 지시하며, 반드시 항상 마지막에 나타내야 합니다.
+모든 `switch` 문은 반드시 _빠짐없이 철저 (exhaustive)_[^exhaustive] 해야 합니다. 즉, 고려중인 타입의 모든 가능한 값은 '`switch` 문의 case 절' 중 하나와는 반드시 일치해야 합니다. 모든 가능한 값에 대해 'case 절' 을 제공하는 것이 적절하지 않은 경우, 명시적으로 언급하지 않은 어떤 값이든 다루도록 '기본 (default) case 절' 을 정의할 수 있습니다. 이 '기본 case 절' 은 `default` 키워드로 지시하며, 반드시 항상 마지막에 있어야 합니다.
 
-다음 예제는 `switch` 문을 사용하여 `someCharacter` 라는 단일한 소문자를 검토합니다:
+다음 예제는 `someCharacter` 라는 '단일 소문자' 를 고려하기 위해 `switch` 문을 사용합니다:
 
 ```swift
 let someCharacter: Character = "z"
@@ -320,10 +320,10 @@ case "z":
 default:
   print("Some other character")
 }
-// "The last letter of the alphabet" 를 출력합니다.
+// "The last letter of the alphabet" 를 인쇄합니다.
 ```
 
-`switch` 문의 첫 번째 'case 절' 은 영어 알파벳의 첫 번째 글자인, `a` 에 해당하고, 두 번째 'case 절' 은 마지막 글자인, `z` 에 해당합니다. `switch` 는 반드시, 모든 알파벳 문자 뿐만 아니라, 발생 가능한 모든 문자에 대한 'case 절' 을 가져야 하기 때문에, 이 `switch` 문은 `default` 'case 절' 를 사용하여 `a` 와 `z` 이외의 모든 문자를 맞춰봅니다. 이런 준비는 `switch` 문이 '빠짐없이 철저하도록 (exhaustive)' 보장합니다.
+`switch` 문의 첫 번째 'case 절' 은 영어 알파벳의 첫 번째 '글자 (letter)'[^letter] 인, `a`, 와 일치하고, 두 번째 'case 절' 은 마지막 글자인, `z`, 와 일치합니다. `switch` 는 반드시, 모든 알파벳 글자에 대해서 만이 아니라, 모든 가능한 글자에 대한 'case 절' 을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 가 아닌 다른 모든 '문자' 와 일치 여부를 맞춰보기 위해 '`default` case 절' 를 사용합니다. 이런 식의 '대비 (provision)' 는 `switch` 문이 '빠짐없이 철저 (exhaustive)' 하도록 보장합니다.
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
@@ -787,3 +787,9 @@ if #available(`platform name` `version`, `...`, *) {
 [^square-zero]: 게임을 시작할 때 참가자가 '0 번 정사각형' 에 있다는 말은 `square` 가 '0' 이라는 말입니다. 즉, 게임을 시작할 때는 `square < finalSquare` 조건이 항상 참이기 때문에, 이 비교를 하지 않아도 아무런 영향이 없다는 의미입니다.
 
 [^Fahrenheit-32]: '화씨 (Fahrenheit)' 32 도는 '섭씨 (Celsius)' 0 도와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
+
+[^multiple-possible-cases]: 본문의 'multiple possible cases' 는 '여러 가능한 경우들' 이라고 옮길 수 있는데, 키워드인 `case` 가 영어에서 '경우' 라는 의미를 가지기 때문에 영어로는 자연스러운 문장이 됩니다. 일단 여기서는 '키워드' 임을 나타내도록 'case 절' 이라고 옮깁니다.
+
+[^exhaustive]: '빠짐없이 철저 (exhaustive)' 하다는 말은 바로 이어지는 문장에서도 설명하고 있듯이, `switch` 문으로 전달된 변수나 상수가 반드시 해당 `switch` 문에 있는 `case` 절에서 다뤄져야 한다는 것을 의미합니다. 스위프트 컴파일러는 `switch` 문이 '빠짐없이 철저' 하지 않으면 컴파일 시간 에러를 띄웁니다.
+
+[^letter]: 엄밀히 말해서, 영어의 'character' 는 '표의 문자', 'letter' 는 '표음 문자' 를 의미한다고 합니다. 원문에서도 영어 알파벳에 대해서는 꾸준히 'letter' 라고 사용하고 있습니다.
