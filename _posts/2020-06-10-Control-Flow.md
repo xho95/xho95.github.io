@@ -16,7 +16,7 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 스위프트의 `switch` 문은 대다수의 'C-와 비슷한 (C-like) 언어'[^C-like] 에서 보다 더 확연하게 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 그리고 지정된 타입으로의 '타입 변환 (casts)' 을 포함한, 아주 많은 서로 다른 '유형 (patterns)' 과 일치 여부를 맞춰볼 수 있습니다. '`switch` 문의 case 절' 에 일치한 값은 'case 절' 본문에서 사용하도록 임시 상수나 변수로 연결할 수 있으며, '복잡한 맞춤 조건 (complex matching comditions)' 은 각 'case 절' 에 대한 `where` 절로 표현할 수 있습니다.
 
-### For-In Loops (For-In 반복문)
+### For-In Loops (for-in 반복문)
 
 `for`-`in` 반복문은, 배열, 수치 범위, 또는 문자열에 있는 문자들 같이, '일련 값 (sequences)' 들에 동작을 반복시키기 위해 사용합니다.
 
@@ -107,14 +107,14 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 }
 ```
 
-### While Loops (While 반복문)
+### While Loops (while 반복문)
 
 `while` 반복문은 조건이 `false` 가 될 때까지 '일련의 구문 집합' 을 수행합니다. 이런 종류의 반복문은 첫 번째 '회차' 의 시작 전에 '반복 횟수' 를 알 수 없을 때 사용하는 것이 가장 좋습니다. 스위프트는 두 가지 종류의 `while` 반복문을 제공합니다:
 
 * `whle` 문은 반복문을 매 번 통과하기 시작할 때 조건을 평가합니다.
 * `repeat`-`while` 문은 반복문을 매 번 통과한 끝에서 조건을 평가합니다.
 
-#### While (While 문)
+#### While (while 문)
 
 `while` 반복문은 단일 조건을 평가하는 것으로써 시작합니다. 조건이 `true` 이면, 조건이 `false` 가 될 때까지 '일련의 구문 집합' 들이 반복됩니다.
 
@@ -179,7 +179,7 @@ print("Game over!")
 
 `while` 반복문을 시작할 때 게임이 '얼마나 길어질지 (length)' 를 명확히 알 수 없는 상황이므로, 이 경우 `while` 반복문은 적절한 것입니다. 반복문은 특정 조건을 만족할 때까지 실행하기 때문입니다.
 
-#### Repeat-While (Repeat-While 문)
+#### Repeat-While (repeat-while 문)
 
 `while` 반복문의 다른 변형으로, `repeat`-`while` 반복문이 있는데, 반복문의 조건을 고려하기 _전에 (before)_, '반복문 블럭' 을 먼저 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 '되풀이합니다 (repeat)'.
 
@@ -221,29 +221,29 @@ print("Game over!")
 
 코드에서 뱀인지 사다리인지 검사한 후, 주사위를 굴리고 참가자를 `diceRoll` 개의 정사각형 만큼 앞으로 이동합니다. 현재 '회차' 실행은 이러면 끝납니다.
 
-반복문의 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번에는 반복문을 통과한 최초 실행이 _끝 (end)_ 나기 전에는 이를 평가하지 않습니다. `repeat`-`while` 반복문 구조는 이전 예제의 `while` 반복문 보다 이 게임에 더 적합합니다. 위의 `repeat`-`while` 반복문에서는, `square += board[square]` 이 항상 반복문의 `while` 조건이 `square` 가 아직 게임판 위임을 확정한 _다음에 즉시 (immediately after)_ 실행됩니다. 이런 작동 방식은 앞서 설명한 `while` 반복문 버전의 게임에서 본 '배열 경계 값 검사' 를 필요없게 만듭니다.
+반복문의 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번에는 반복문을 통과한 최초 실행이 _끝 (end)_ 나기 전에는 이를 평가하지 않습니다. `repeat`-`while` 반복문 구조는 이전 예제의 `while` 반복문 보다 이 게임에 더 적합합니다. 위의 `repeat`-`while` 반복문에서는, `square += board[square]` 이 항상 반복문의 `while` 조건이 `square` 가 아직 게임판 위임을 확정한 _후 그 즉시 (immediately after)_ 실행됩니다. 이런 작동 방식은 앞서 설명한 `while` 반복문 버전 게임에서 본 '배열 경계 값 검사' 의 필요성을 없앱니다.
 
-### Conditional Statements (조건 구문)
+### Conditional Statements (조건문)
 
-정해진 조건에 따라 서로 다른 코드 조각을 실행하는 것이 유용할 때가 있습니다. 에러가 발생했을 때 부가적인 코드 조각을 실행하거나, 아니면 값이 너무 크거나 작을 때 메시지를 나타내고 싶을 수도 있을 것입니다. 이렇게 하려면, 코드 일부를 _조건부 (conditional)_ 로 만들면 됩니다.
+정해진 조건에 따라 서로 다른 코드 부분을 실행하는 것이 유용할 때가 종종 있습니다. 에러가 발생할 때 부가적인 코드 부분을 실행하고 싶을 수도, 값이 너무 커지거나 작아지면 메시지를 보여주고 싶을 수도 있습니다. 이렇게 하기 위해, 코드 일부를 _조건문 (conditional)_ 으로 만듭니다.
 
-스위프트는 코드에 조건 분기를 추가하기 위해 두 가지 방법을 제공합니다: `if` 문과 `switch` 문이 그것입니다. 일반적으로, 가능한 결과가 적은 단순한 조건 값을 계산할 때는 `if` 문을 사용합니다. `switch` 문은 여러 개의 순서를 가지는 좀더 복잡한 조건에 더 적합하며 '패턴 매칭 (pattern matching; 유형 맞춤)' 을 실행할 알맞은 분기를 찾는데 도움을 줄 수 있는 상황에 유용합니다.
+스위프트는 조건 분기를 코드에 추가하는 방법을 두 가지로 제공합니다: `if` 문과 `switch` 문입니다. 전형적으로, `if` 문은 적은 결과만이 가능한 간단한 조건을 평가할 때 사용합니다. `switch` 문은 가능한 순서 조합이 여러 개인 좀 더 복잡한 조건에 더 적합하며 '유형 맞춤 (pattern matching; 패턴 매칭)' 이 실행을 위한 적절한 코드 블럭 선택을 도와줄 수 있는 상황에서 유용합니다.
 
-#### If (If 문)
+#### If (if 문)
 
-가장 간단한 양식의, `if` 구문은 단일한 `if` 조건을 가지고 있습니다. 이 조건이 `true` 일 때만 일정한 구문을 실행합니다.
+가장 간단한 형식의, `if` 문은 단일 `if` 조건을 가집니다. 이는 해당 조건이 `true` 일 때만 '일련의 구문 집합' 을 실행합니다.
 
 ```swift
 var temperatureInFahrenheit = 30
 if temperatureInFahrenheit <= 32 {
   print("It's very cold. Consider wearing a scarf.")
 }
-// "It's very cold. Consider wearing a scarf." 를 출력합니다.
+// "It's very cold. Consider wearing a scarf." 를 인쇄합니다.
 ```
 
-위의 예제는 온도가 '화씨 (Fahrenheit)' 32도 (물의 어는 점) 보다 낮은 지를 검사합니다. 이에 해당하면, 메시지를 출력합니다. 해당하지 않으면, 메시지를 출력하지 않으며, `if` 문의 '닫는 중괄호 (closing brace)' 뒤의 코드를 계속해서 실행합니다.
+위 예제는 온도가 '화씨 (Fahrenheit)' 로 (물의 어는 점인) 32 도[^Fahrenheit-32] 이하인지 검사합니다. 그렇다면, 메시지를 인쇄합니다. 다른 경우라면, 메시지는 인쇄하지 않고, `if` 문의 '닫는 중괄호 (closing brace)' 뒤에서 코드 실행을 계속합니다.
 
-`if` 문은, `if` 조건이 `false` 일 때의 상황을 위해서, `else clause` 이라는, 일정한 대체 구문을 제공할 수 있습니다. 이 구문은 `else` 키워드를 써서 지시합니다.
+`if` 문은, `if` 조건이 `false` 인 상황을 위해, `else clause` (else 절) 이라는, 또 다른 구문 집합을 제공할 수 있습니다. 이 구문은 `else` 키워드로 지시합니다.
 
 ```swift
 temperatureInFahrenheit = 40
@@ -252,12 +252,12 @@ if temperatureInFahrenheit <= 32 {
 } else {
   print("It's not that cold. Wear a t-shirt.")
 }
-// "It's not that cold. Wear a t-shirt." 를 출력합니다.
+// "It's not that cold. Wear a t-shirt." 를 인쇄합니다.
 ```
 
-이 두 개의 분기 중 하나는 항상 실행됩니다. 온도가 화씨 40도 까지 올랐으므로, 더 이상 스카프를 하라고 조언할 만큼 춥지 않아서 `else` 분기를 대신 실행하게 됩니다.
+이 두 분기 중 하나는 항상 실행됩니다. 온도가 '화씨 40 도' 까지 증가해서, 스카프를 두르라고 조언할 정도로 춥진 않으므로 `else` 분기가 대신 실행됩니다.
 
-여러 개의 `if` 구문을 서로 죽 이으면 추가적인 구절을 검토할 수 있습니다.
+추가적인 절을 고려하기 위해 '다중 `if` 문' 을 서로 '연쇄 (chain)' 할 수 있습니다.
 
 ```swift
 temperatureInFahrenheit = 90
@@ -268,12 +268,12 @@ if temperatureInFahrenheit <= 32 {
 } else {
   print("It's not that cold. Wear a t-shirt.")
 }
-// "It's really warm. Don't forget to wear sunscreen." 를 출력합니다.
+// "It's really warm. Don't forget to wear sunscreen." 를 인쇄합니다.
 ```
 
-여기서는, 추가적인 `if` 구문을 추가하여 특별히 따뜻한 온도일 때 응답하도록 합니다. 마지막 `else` 절은 남아 있어서, 너무 덥지도 춥지도 않는 온도일 때에 대한 응답을 출력합니다.
+여기서는, 특별히 따뜻한 온도일 때 응답하기 위해 '추가적인 `if` 문' 을 더합니다. '최종 `else` 절' 은 남아서, 너무 덥지도 춥지도 않는 어떤 온도에 대해서든 응답을 인쇄합니다.
 
-하지만, 마지막 `else` 절은 '선택 사항 (optional)'[^optional] 이라, 일정한 조건이 '완전해야 (to be complete)' 할 필요가 없는 경우에는 이를 제외할 수 있습니다.
+하지만, '최종 `else` 절' 은 '선택 사항 (optional)'[^optional] 으로, 조건 집합이 '완전할 (to be complete)' 필요가 없으면 이를 배제할 수 있습니다.
 
 ```swift
 temperatureInFahrenheit = 72
@@ -284,35 +284,23 @@ if temperatureInFahrenheit <= 32 {
 }
 ```
 
-온도가 `if` 나 `else if` 조건을 일으킬 만큼 너무 춥지도 덥지도 않기 때문에, 아무런 메시지도 출력하지 않습니다.
+온도가 `if` 나 `else if` 조건을 발동시킬 만큼 너무 춥지도 덥지도 않기 때문에, 아무 메시지도 인쇄하지 않습니다.
 
-#### Switch (Switch 문)
+#### Switch (switch 문)
 
 `switch` 문은 값을 검토하여 해당 가능한 여러 가지 '유형들 (patterns)' 과 비교합니다. 그런 다음, 성공적으로 들어맞는 첫 번째 '유형' 을 기반으로, 적당한 코드 블럭을 실행합니다. `switch` 문은 `if` 문의 대안으로 다양한 잠재적 상태에 대해 응답을 제공합니다.
 
 가장 간단한 양식의, `switch` 문은 하나의 값을 같은 타입의 하나 이상의 값들과 비교하는 것입니다.
 
-switch `some value to consider (검토할 어떤 값)` {
-case `value 1 (값 1)`:
-    `respond to value 1 (값 1에 대한 응답)`
-case `value 2 (값 2)`,
-     `value 3 (값 3)`:
-    `respond to value 2 or 3 (값 2 또는 3에 대한 응답)`
-default:
-    `otherwise, do something else (그 외의 경우, 여기서 뭔가를 합니다)`
+switch `some value to consider-고려할 어떤 값` {<br />
+case `value 1-값 1`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 1-값 1 에 대한 응답`<br />
+case `value 2-값 2`,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`value 3-값 3`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 2 or 3-값 2 또는 3 에 대한 응답`<br />
+default:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-다른 경우에, 그 외의 어떤 것을 합니다`<br />
 }
-
-```swift
-switch some value to consider {
-case value 1:
-    respond to value 1
-case value 2,
-     value 3:
-    respond to value 2 or 3
-default:
-    otherwise, do something else
-}
-```
 
 모든 `switch` 문은 여러 가지의 가능성 있는 '_case 절 (cases)_' 들로 구성되어 있는데, 각각은 `case` 키워드로 시작합니다. 특정한 값과 비교하는 것 외에도, 스위프트는 다양한 방법을 제공하여 각각의 'case 절' 에 보다 복잡한 '해당 유형 (matching patterns)' 을 지정할 수 있습니다. 이러한 선택 요소들은 이 장의 뒤에서 설명하도록 합니다.
 
@@ -768,9 +756,9 @@ if #available(iOS 10, macOS 10.12, *) {
 
 ```swift
 if #available(`platform name` `version`, `...`, *) {
-    `statements to execute if the APIs are available`
+  `statements to execute if the APIs are available`
 } else {
-    `fallback statements to execute if the APIs are unavailable`
+  `fallback statements to execute if the APIs are unavailable`
 }
 ```
 
@@ -784,7 +772,7 @@ if #available(`platform name` `version`, `...`, *) {
 
 [^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 이력을 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
 
-[^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관 없습니다. 스위프트는 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. '옵셔널 타입 (optional type)' 도 '값을 선택적으로 가질 수 있는 타입' 이라는 의미로 'optional' 이라는 영어 단어를 사용하는 것입니다.
+[^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관이 없습니다. 스위프트는 (사실 그 보다는 '애플' 이라는 회사 자체가) 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. 사실 거꾸로 말해서 '옵셔널 (optional)' 타입 자체가 '값을 가지는 것이 선택 사항' 이기 때문에 붙은 이름입니다.
 
 [^wildcard-pattern]: 와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정하게 고정된 문자열만이 아니라, 조건에 부합하는 모든 문자열을 맞춰보는 '패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목 중에서 'wildcard pattern' 에 해당하는 부분을 참고하기 바랍니다.
 
@@ -797,3 +785,5 @@ if #available(`platform name` `version`, `...`, *) {
 [^stride-to-through]: 예제를 보면 `stride(from:to:by:)` 는 '반-열린 범위' 를 대신하고, `stride(from:through:by:)` 는 '닫힌 범위' 를 대신하는 것임을 알 수 있습니다.
 
 [^square-zero]: 게임을 시작할 때 참가자가 '0 번 정사각형' 에 있다는 말은 `square` 가 '0' 이라는 말입니다. 즉, 게임을 시작할 때는 `square < finalSquare` 조건이 항상 참이기 때문에, 이 비교를 하지 않아도 아무런 영향이 없다는 의미입니다.
+
+[^Fahrenheit-32]: '화씨 (Fahrenheit)' 32 도는 '섭씨 (Celsius)' 0 도와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
