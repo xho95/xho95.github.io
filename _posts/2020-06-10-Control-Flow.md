@@ -364,9 +364,9 @@ default:
 
 > 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
 
-**Interval Matching (구간 맞춰보기)**
+**Interval Matching (구간 맞춤)**
 
-`switch` 'case 절' 에 있는 값은 일정 구간에 포함 되어있는 지 검사할 수 있습니다. 다음 예제는 수치 구간을 사용하여 어떤 크기의 수에 대해서도 자연-어로 헤아릴 수 있는 기능을 제공합니다:
+'`switch` case 절' 의 값은 일정 '구간 (interval)' 안에 포함된 것인지 검사할 수 있습니다. 다음 예제는 어떤 크기의 수도 자연-어로 세는 기능을 제공하기 위해 '수치 구간 (number intervals)' 을 사용합니다:
 
 ```swift
 let approximateCount = 62
@@ -387,16 +387,16 @@ default:
   naturalCount = "many"
 }
 print("There are \(naturalCount) \(countedThings).")
-// "There are dozens of moons orbiting Saturn." 를 출력합니다.
+// "There are dozens of moons orbiting Saturn." 를 인쇄합니다.
 ```
 
-위의 예제의, `approximateCount` 는 `switch` 문 내에서 값을 계산합니다. 각 `case` 는 이 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값은 `12` 와 `100` 사이에 있으므로, `naturalCount` 에는 `"dozens of"` 라는 값을 할당하고, 실행은 `switch` 문 밖으로 전달됩니다.
+위 예제는, `approximateCount` 가 `switch` 문에서 평가됩니다. 각 '`case` 절' 은 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값이 `12` 와 `100` 사이에 놓이기 때문에, `naturalCount` 의 값이 `"dozens of"` 로 할당된 다음, 실행이 `switch` 문 외부로 옮겨집니다.
 
 **Tuples (튜플)**
 
-'튜플 (tuple)' 을 사용하면 동일한 `switch` 문에서 여러 값을 한번에 테스트할 수 있습니다. 이 때 튜플의 각 '원소 (element)' 마다 서로 다른 값 혹은 값 구간을 테스트할 수 있습니다. 다른 방법으로는, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (underscore character; `_`)' 를 사용하여, 발생 가능한 어떤 값도 해당하도록 할 수 있습니다.
+동일한 `switch` 문에서 여러 값을 테스트하기 위해 '튜플' 을 사용할 수 있습니다. 튜플의 각 원소는 서로 다른 값 또는 서로 다른 값인 구간과 테스트할 수 있습니다. 또 다른 방법으로, 가능한 어떤 값과도 일치 여부를 맞춰보려면, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (`_`)' 를 사용합니다.
 
-아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현한, (x, y) 점 하나를 받아서, 이를 예제 다음에 있는 그래프 상에서 분류합니다.
+아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현된, (x, y) 점 하나를 받아서, 이를 예제 뒤의 그래프 위에 분류합니다.
 
 ```swift
 let somePoint = (1, 1)
@@ -412,14 +412,14 @@ case (-2...2, -2...2):
 default:
   print("\(somePoint) is outside of the box")
 }
-// "(1, 1) is inside the box" 를 출력합니다.
+// "(1, 1) is inside the box" 를 인쇄합니다.
 ```
 
 ![a (x, y) point with tuples](/assets/Swift/Swift-Programming-Language/Control-Flow-tuples.png)
 
-`switch` 문은 이 점이 있는 곳이 (0, 0) 인 원점인지, 빨간색 x-축인지, 주황색 y-축인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부인지를 확인합니다.
+`switch` 문은 이 점이 '원점 (0, 0)' 위 인지, 빨간색 x-축 위인지, 주황색 y-축 위인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부 인지를 결정합니다.
 
-C 언어와는 달리, 스위프트에서는 여러 `switch` 'case 절' 에서 같은 값 또는 같은 값들을 검토할 수 있습니다. 실제로, 이 예제에서 '점 (0, 0)' 은 _네 가지 (four)_ 경우 모두에 다 해당할 수 있습니다. 하지만, 해당되는 것이 여러 개일 수 있는 경우, 맨 처음 해당된 'case 절' 이 항상 사용됩니다. '점 (0, 0)' 은 먼저 `case (0, 0)` 에 해당하게 되므로, 다른 모든 해당하는 'case 절' 들은 무시하게 됩니다.
+C 와는 달리, 스위프트는 똑같은 값이나 값들을 고려하는 '다중 `switch` case 절' 을 허용합니다. 사실상, '점 (0, 0)' 은 이 예제의 _네 (four)_ 'case 절' 모두와 일치할 수 있을 것입니다. 하지만, '다중 맞춤 (multiple matches)' 이 가능한 경우, 항상 맨 처음 일치한 'case 절' 을 사용합니다. '점 (0, 0)' 은 처음에 `case (0, 0)` 과 일치할 것이므로, 다른 모든 일치 가능한 'case 절' 들이 무시될 것입니다.
 
 **Value Bindings (값 연결)**
 
