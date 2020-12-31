@@ -327,11 +327,11 @@ default:
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
-C 와 오브젝티브-C 언어의 `switch` 문과 다른 점이라면, 스위프트의 `switch` 문은 기본적으로 각 'case 절' 을 빠져나가서 그 다음으로 넘어가지 않습니다. 그 대신, 전체 `switch` 문은, 명시적으로 `break` 문을 쓸 필요없이, 첫 번째로 해당하는 `switch` 'case 절' 을 완료하는 순간 그 즉시 실행을 종료합니다. 이것은 `switch` 문을 C 언어에 있는 것보다 더 안전하고 편하게 쓸 수 있게 하며 실수로 다른 `switch` 'case 절' 을 실행하는 것을 피하도록 해줍니다.
+C 와 오브젝티브-C 의 `switch` 문과는 대조적으로, 스위프트의 `switch` 문은 기본적으로 각 'case 절' 의 밑을 빠져나가서 그 다음으로 들어가지 않습니다. 그 대신, 전체 `switch` 문은, 명시적인 `break` 문을 쓸 필요없이, 처음으로 일치한 '`switch` case 절' 을 완료하는 순간 바로 실행을 종료합니다. 이는 `switch` 문을 C 에 있는 것보다 더 안전하고 쉽게 사용하게 만들며 실수로 하나 이상의 '`switch` case 절' 을 실행하는 것을 피하도록 해줍니다.
 
-> 스위프트에서 `break` 는 필수적인 것은 아니지만, `break` 문을 사용하면 특정한 'case 절' 을 맞춰보거나 무시하도록 할 수 있고 아니면 해당하는 'case 절' 의 실행이 완전이 끝나기 전에 먼저 빠져 나오도록 할 수도 있습니다. 더 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-내의-break-문) 을 참고하기 바랍니다.
+> 스위프트에서 `break` 가 필수는 아니더라도, 특정 'case 절' 과 일치시키거나 무시하기 위해 또는 해당 'case 절' 의 실행을 완료하기 전에 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-내의-break-문) 을 참고하기 바랍니다.
 
-각 'case 절' 의 본문에는 _반드시 (must)_ 최소 하나 이상의 실행 문이 있어야 합니다. 다음 처럼 작성한 코드는 유효하지 않는데, 첫 번째 'case 절' 이 비어있기 때문입니다:
+각 'case 절' 의 본문은 _반드시 (must)_ 최소 하나 이상의 실행문을 담고 있어야 합니다. 코드를 다음 처럼 작성하면 유효하지 않은데, 이는 첫 번째 'case 절' 이 비어있기 때문입니다:
 
 ```swift
 let anotherCharacter: Character = "a"
@@ -342,12 +342,12 @@ case "A":
 default:
   print("Not the letter A")
 }
-// 이렇게 하면 컴파일-시간 에러를 보고하게 됩니다.
+// 이는 '컴파일-시간 에러' 를 보고할 것입니다.
 ```
 
-C 언어의 `switch` 문과는 다르게, 이 `switch` 문은 `"a"` 와 `"A"` 둘 다를 한번에 맞춰보지 않습니다. 그 보다는, `case "a":` 에는 실행 가능한 구문이 어떤 것도 없다고 '컴파일-시간 에러 (compile-time error)' 를 보고해 버립니다. 이러한 접근 방법은 우연히 한 'case 절' 에서 다른 'case 절' 으로 빠져 나가는 것을 피하도록 해서 의도가 더 분명한 더 안전한 코드를 만들 수 있게 해줍니다.
+C 의 `switch` 문과는 달리, 이 `switch` 문은 `"a"` 와 `"A"` 둘 모두와 일치하지 않습니다. 그 보다, `case "a":` 가 어떤 실행 가능한 구문도 담고 있지 않다는 실행-시간 에러를 보고합니다. 이런 접근 방식은 한 'case 절' 에서 다른 곳으로 예기치 않게 빠져 나가는 것을 피하며 의도가 명확한 더 안전한 코드를 만들어 줍니다.
 
-`switch` 에서 `"a"` 와 `"A"` 둘 모두에 해당하는 단일한 'case 절' 을 만들려면, 두 값을 쉼표로 구분해서, '복합 case 절 (compound case)' 으로 병합하면 됩니다.
+`"a"` 와 `"A"` 둘 모두와 일치하는 단일 'case 절' 을 가진 `switch` 문을 만들려면, 두 값을, 쉼표로 구분하여, '복합 (compound) case 절' 로 조합합니다.
 
 ```swift
 let anotherCharacter: Character = "a"
@@ -357,16 +357,16 @@ case "a", "A":
 default:
   print("Not the letter A")
 }
-// "The letter A" 를 출력합니다.
+// "The letter A" 를 인쇄합니다.
 ```
 
-가독성을 위해, '복합 case 절' 을 여러 줄에 나눠서 작성할 수도 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
+가독성을 위해, '복합 case 절' 도 여러 줄에 걸쳐 작성할 수 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
 
-> 특정한 `switch` 'case 절' 의 끝에서는 명시적으로 빠져 나가고 싶다면, `fallthrough` 키워드를 사용하면 되는데, 이는 [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명합니다.
+> 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
 
-**Interval Matching (구간 맞춰보기)**
+**Interval Matching (구간 맞춤)**
 
-`switch` 'case 절' 에 있는 값은 일정 구간에 포함 되어있는 지 검사할 수 있습니다. 다음 예제는 수치 구간을 사용하여 어떤 크기의 수에 대해서도 자연-어로 헤아릴 수 있는 기능을 제공합니다:
+'`switch` case 절' 의 값은 일정 '구간 (interval)' 안에 포함된 것인지 검사할 수 있습니다. 다음 예제는 어떤 크기의 수도 자연-어로 세는 기능을 제공하기 위해 '수치 구간 (number intervals)' 을 사용합니다:
 
 ```swift
 let approximateCount = 62
@@ -387,16 +387,16 @@ default:
   naturalCount = "many"
 }
 print("There are \(naturalCount) \(countedThings).")
-// "There are dozens of moons orbiting Saturn." 를 출력합니다.
+// "There are dozens of moons orbiting Saturn." 를 인쇄합니다.
 ```
 
-위의 예제의, `approximateCount` 는 `switch` 문 내에서 값을 계산합니다. 각 `case` 는 이 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값은 `12` 와 `100` 사이에 있으므로, `naturalCount` 에는 `"dozens of"` 라는 값을 할당하고, 실행은 `switch` 문 밖으로 전달됩니다.
+위 예제는, `approximateCount` 가 `switch` 문에서 평가됩니다. 각 '`case` 절' 은 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값이 `12` 와 `100` 사이에 놓이기 때문에, `naturalCount` 의 값이 `"dozens of"` 로 할당된 다음, 실행이 `switch` 문 외부로 옮겨집니다.
 
 **Tuples (튜플)**
 
-'튜플 (tuple)' 을 사용하면 동일한 `switch` 문에서 여러 값을 한번에 테스트할 수 있습니다. 이 때 튜플의 각 '원소 (element)' 마다 서로 다른 값 혹은 값 구간을 테스트할 수 있습니다. 다른 방법으로는, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (underscore character; `_`)' 를 사용하여, 발생 가능한 어떤 값도 해당하도록 할 수 있습니다.
+동일한 `switch` 문에서 여러 값을 테스트하기 위해 '튜플' 을 사용할 수 있습니다. 튜플의 각 원소는 서로 다른 값 또는 서로 다른 값인 구간과 테스트할 수 있습니다. 또 다른 방법으로, 가능한 어떤 값과도 일치 여부를 맞춰보려면, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (`_`)' 를 사용합니다.
 
-아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현한, (x, y) 점 하나를 받아서, 이를 예제 다음에 있는 그래프 상에서 분류합니다.
+아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현된, (x, y) 점 하나를 받아서, 이를 예제 뒤의 그래프 위에 분류합니다.
 
 ```swift
 let somePoint = (1, 1)
@@ -412,14 +412,14 @@ case (-2...2, -2...2):
 default:
   print("\(somePoint) is outside of the box")
 }
-// "(1, 1) is inside the box" 를 출력합니다.
+// "(1, 1) is inside the box" 를 인쇄합니다.
 ```
 
 ![a (x, y) point with tuples](/assets/Swift/Swift-Programming-Language/Control-Flow-tuples.png)
 
-`switch` 문은 이 점이 있는 곳이 (0, 0) 인 원점인지, 빨간색 x-축인지, 주황색 y-축인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부인지를 확인합니다.
+`switch` 문은 이 점이 '원점 (0, 0)' 위 인지, 빨간색 x-축 위인지, 주황색 y-축 위인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부 인지를 결정합니다.
 
-C 언어와는 달리, 스위프트에서는 여러 `switch` 'case 절' 에서 같은 값 또는 같은 값들을 검토할 수 있습니다. 실제로, 이 예제에서 '점 (0, 0)' 은 _네 가지 (four)_ 경우 모두에 다 해당할 수 있습니다. 하지만, 해당되는 것이 여러 개일 수 있는 경우, 맨 처음 해당된 'case 절' 이 항상 사용됩니다. '점 (0, 0)' 은 먼저 `case (0, 0)` 에 해당하게 되므로, 다른 모든 해당하는 'case 절' 들은 무시하게 됩니다.
+C 와는 달리, 스위프트는 똑같은 값이나 값들을 고려하는 '다중 `switch` case 절' 을 허용합니다. 사실상, '점 (0, 0)' 은 이 예제의 _네 (four)_ 'case 절' 모두와 일치할 수 있을 것입니다. 하지만, '다중 맞춤 (multiple matches)' 이 가능한 경우, 항상 맨 처음 일치한 'case 절' 을 사용합니다. '점 (0, 0)' 은 처음에 `case (0, 0)` 과 일치할 것이므로, 다른 모든 일치 가능한 'case 절' 들이 무시될 것입니다.
 
 **Value Bindings (값 연결)**
 
