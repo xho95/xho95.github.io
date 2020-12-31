@@ -331,7 +331,7 @@ C 와 오브젝티브-C 의 `switch` 문과는 대조적으로, 스위프트의 
 
 > 스위프트에서 `break` 가 필수는 아니더라도, 특정 'case 절' 과 일치시키거나 무시하기 위해 또는 해당 'case 절' 의 실행을 완료하기 전에 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-내의-break-문) 을 참고하기 바랍니다.
 
-각 'case 절' 의 본문에는 _반드시 (must)_ 최소 하나 이상의 실행 문이 있어야 합니다. 다음 처럼 작성한 코드는 유효하지 않는데, 첫 번째 'case 절' 이 비어있기 때문입니다:
+각 'case 절' 의 본문은 _반드시 (must)_ 최소 하나 이상의 실행문을 담고 있어야 합니다. 코드를 다음 처럼 작성하면 유효하지 않은데, 이는 첫 번째 'case 절' 이 비어있기 때문입니다:
 
 ```swift
 let anotherCharacter: Character = "a"
@@ -342,12 +342,12 @@ case "A":
 default:
   print("Not the letter A")
 }
-// 이렇게 하면 컴파일-시간 에러를 보고하게 됩니다.
+// 이는 '컴파일-시간 에러' 를 보고할 것입니다.
 ```
 
-C 언어의 `switch` 문과는 다르게, 이 `switch` 문은 `"a"` 와 `"A"` 둘 다를 한번에 맞춰보지 않습니다. 그 보다는, `case "a":` 에는 실행 가능한 구문이 어떤 것도 없다고 '컴파일-시간 에러 (compile-time error)' 를 보고해 버립니다. 이러한 접근 방법은 우연히 한 'case 절' 에서 다른 'case 절' 으로 빠져 나가는 것을 피하도록 해서 의도가 더 분명한 더 안전한 코드를 만들 수 있게 해줍니다.
+C 의 `switch` 문과는 달리, 이 `switch` 문은 `"a"` 와 `"A"` 둘 모두와 일치하지 않습니다. 그 보다, `case "a":` 가 어떤 실행 가능한 구문도 담고 있지 않다는 실행-시간 에러를 보고합니다. 이런 접근 방식은 한 'case 절' 에서 다른 곳으로 예기치 않게 빠져 나가는 것을 피하며 의도가 명확한 더 안전한 코드를 만들어 줍니다.
 
-`switch` 에서 `"a"` 와 `"A"` 둘 모두에 해당하는 단일한 'case 절' 을 만들려면, 두 값을 쉼표로 구분해서, '복합 case 절 (compound case)' 으로 병합하면 됩니다.
+`"a"` 와 `"A"` 둘 모두와 일치하는 단일 'case 절' 을 가진 `switch` 문을 만들려면, 두 값을, 쉼표로 구분하여, '복합 (compound) case 절' 로 조합합니다.
 
 ```swift
 let anotherCharacter: Character = "a"
@@ -357,12 +357,12 @@ case "a", "A":
 default:
   print("Not the letter A")
 }
-// "The letter A" 를 출력합니다.
+// "The letter A" 를 인쇄합니다.
 ```
 
-가독성을 위해, '복합 case 절' 을 여러 줄에 나눠서 작성할 수도 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
+가독성을 위해, '복합 case 절' 도 여러 줄에 걸쳐 작성할 수 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
 
-> 특정한 `switch` 'case 절' 의 끝에서는 명시적으로 빠져 나가고 싶다면, `fallthrough` 키워드를 사용하면 되는데, 이는 [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명합니다.
+> 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
 
 **Interval Matching (구간 맞춰보기)**
 
