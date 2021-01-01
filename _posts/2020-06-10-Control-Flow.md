@@ -362,7 +362,7 @@ default:
 
 가독성을 위해, '복합 case 절' 도 여러 줄에 걸쳐 작성할 수 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
 
-> 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
+> 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
 
 **Interval Matching (구간 맞춤)**
 
@@ -597,11 +597,11 @@ if let integerValue = possibleIntegerValue {
 
 위 예제에서 가능한 모든 `Character` 값의 목록은 실용적이지 않기 때문에, 일치하지 않는 문자는 어떤 것이든 '`default` case 절' 이 처리합니다. 이 '`default` case 절' 은 어떤 행동도 할 필요 없으므로, 본문을 '단일 `break` 문' 으로 작성합니다. '`default` case 절' 은 일치하자 마자, `break` 문이 `switch` 문의 실행을 끝내며, 코드 실행은 `if let` 문부터 계속됩니다.
 
-#### Fallthrough (Fallthrough 문)
+#### Fallthrough (fallthrough 문)
 
-스위프트의, `switch` 문은 각각의 'case 절' 끝에서 빠져 나가서 그 다음으로 넘어가는 행동을 하지 않습니다. 다시 말해서, 가장 먼저 맞춰진 'case 절' 을 완료하자 마자 전체 `switch` 문의 실행을 완료합니다. 이와는 대조적으로, C 언어에서는 빠져 나가는 것을 막기 위해 모든 `switch` 'case 절' 끝에 명시적으로 `break` 문을 넣어주는 것이 필수입니다. 기본적으로 빠져 나가지 않도록 되어 있다는 것은 스위프트의 `switch` 문이 C 언어에 있는 것보다 좀 더 간결하고 예측 가능하다는 것을 의미하며, 그로 인해 여러 개의 `switch` 'case 절' 을 실수로 실행하게 되는 것을 피하도록 해줍니다.
+스위프트에서, `switch` 문은 각 'case 절' 의 끝을 빠져 나가서 그 다음으로 넘어가지 않습니다. 즉, 전체 `switch` 문은 첫 째로 일치한 'case 절' 을 완료하자 마자 실행을 완료합니다. 이와는 대조적으로, C 는 빠져 나가는 것을 막기 위해 모든 '`switch` case 절' 끝에 명시적인 `break` 문을 필수로 집어 넣어야 합니다. 기본적인 빠져 나감을 피하는 것은 스위프트의 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 '다중 `switch` case 절' 을 실수로 실행하는 것을 피하게 해준다는 것을 의미합니다.
 
-C-스타일의 '빠져 나가는 (fallthrough)' 동작이 필요한 경우, 각각의 경우마다 `fallthrough` 키워드를 사용하면 이런 동작 방식을 선택할 수도 있습니다. 아래의 예제는 `fallthrough` 를 사용하여 수치 값의 글 설명을 생성합니다.
+C-스타일의 '빠져 나감 (fallthrough)' 작동 방식이 필요한 경우, 이 작동 방식은 `fallthrough` 키워드를 각 경우마다 써서 직접 선택할 수 있습니다. 아래 예제는 수에 대한 문장 형태의 설명을 생성하고자 `fallthrough` 를 사용합니다.
 
 ```swift
 let integerToDescribe = 5
@@ -614,7 +614,7 @@ default:
   description += " an integer."
 }
 print(description)
-// "The number 5 is a prime number, and also an integer." 를 출력합니다.
+// "The number 5 is a prime number, and also an integer." 를 인쇄합니다.
 ```
 
 이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 이 함수는 그 다음 `switch` 문을 사용하여 `integerToDescribe` 의 값을 검토합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는 `description` 끝에 문장을 추가하여, 이 수가 '소수' 임을 표기합니다. 이 다음 `fallthrough` 키워드를 사용하여 `default` 'case 절' 에 까지 "빠져 들어갑니다. (fall into)" `default` 'case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 후, `switch` 문을 완료합니다.
@@ -698,7 +698,7 @@ print("Game over!")
 >
 > 반복문의 다음 '회차 (iteration)' 로 건너뛰기 위해 `gameLoop` 이름표를 써서 `continue gameLoop` 라고 꼭 호출해야만 할 필요는 없습니다. 이 게임에는 반복문이 하나만 있어서, `continue` 문이 영향을 미칠 반복문이 어떤 것인지 모호할 일이 없습니다. 하지만, `continue` 문에 `gameLoop` 이름표를 사용한다고 문제될 건 아무 것도 없습니다. 이렇게 하면 `break` 문에 짝이 되어 일관성이 있으며 게임 로직을 좀 더 명확하게 읽고 이해하도록 도와줍니다.
 
-### Early Exit (조기 탈출 구문)
+### Early Exit (조기 탈출문)
 
 `guard` 문은, `if` 문 처럼, '표현식 (expression)' 의 '불리언 값 (Boolean value)' 에 따라 구문을 실행합니다. `guard` 문을 사용하면 `guard` 문 이 후의 코드를 실행하려면 조건이 반드시 '참 (true)' 일 것을 요구하게 됩니다. `if` 문과는 다르게, `guard` 문에는 항상 `else` 절이 있습니다-조건이 '참 (true)' 이 아닐 경우 `else` 절 안에 있는 코드가 실행됩니다.
 
