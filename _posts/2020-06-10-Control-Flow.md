@@ -554,15 +554,15 @@ print(puzzleOutput)
 
 **Break in a Loop Statement (반복문 안의 break 문)**
 
-반복문 안에서 사용할 때, `break` 는 반복문의 실행을 즉시 끝내며 '제어' 를 반복문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차' 에 있는 코드를 더 이상 실행하지도 않고, 반복문의 '회차' 도 더 이상 시작하지 않습니다.
+반복문 안에서 사용할 때, `break` 는 반복문의 실행을 즉시 끝내며 '제어 (control)' 를 반복문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차' 에 있는 코드를 더 이상 실행하지도 않고, 반복문의 '회차' 도 더 이상 시작하지 않습니다.
 
 <p>
 <strong id="break-in-a-switch-statement-switch-문-안의-break-문">Break in a Switch Statement (switch 문 안의 break 문)</strong>
 </p>
 
-`switch` 문 안에서 사용하는, `break` 는 `switch` 문의 실행을 그 즉시 종료하게 만들고 '제어권 (control)' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다.
+`switch` 문 안에서 사용할 때, `break` 는 `switch` 문이 실행을 즉시 끝도록 하며 '제어' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달하도록 합니다.
 
-이런 동작 방식은 `switch` 문의 하나 이상의 'case 절' 에 맞춰지도록 해서 이를 무시하는 데 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저해야 (exhaustive)' 하고 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 드러내기 위해 어떤 'case 절' 를 일부러 맞춰지도록 해서 무시하는 것이 필요할 때가 있습니다. 이렇게 하려면 무시하고 싶은 'case 절' 전체 본문으로 `break` 문을 써주면 됩니다. 해당 'case 절' 이 `switch` 문에 의해 맞춰지면, 'case 절' 안에 있는 `break` 문이 `switch` 문의 실행을 그 즉시 종료합니다.
+이 작동 방식은 `switch` 문의 하나 이상의 'case 절' 을 일치시키고 무시하기 위해 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저 (exhaustive)' 해서 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 드러내기 위해 어떤 'case 절' 를 일부러 맞춰지도록 해서 무시하는 것이 필요할 때가 있습니다. 이렇게 하려면 무시하고 싶은 'case 절' 전체 본문으로 `break` 문을 써주면 됩니다. 해당 'case 절' 이 `switch` 문에 의해 맞춰지면, 'case 절' 안에 있는 `break` 문이 `switch` 문의 실행을 그 즉시 종료합니다.
 
 > `switch` 'case 절' 이 '주석 (comment)' 만 가지고 있으면 '컴파일 시간 에러 (compile-time error)' 를 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 `switch` 'case 절' 무시하도록 하지 않습니다. `switch` 'case 절' 를 무시하려면 항상 `break` 문을 사용하도록 합니다.
 
