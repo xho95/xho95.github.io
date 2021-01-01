@@ -329,7 +329,7 @@ default:
 
 C 와 오브젝티브-C 의 `switch` 문과는 대조적으로, 스위프트의 `switch` 문은 기본적으로 각 'case 절' 의 밑을 빠져나가서 그 다음으로 들어가지 않습니다. 그 대신, 전체 `switch` 문은, 명시적인 `break` 문을 쓸 필요없이, 처음으로 일치한 '`switch` case 절' 을 완료하는 순간 바로 실행을 종료합니다. 이는 `switch` 문을 C 에 있는 것보다 더 안전하고 쉽게 사용하게 만들며 실수로 하나 이상의 '`switch` case 절' 을 실행하는 것을 피하도록 해줍니다.
 
-> 스위프트에서 `break` 가 필수는 아니더라도, 특정 'case 절' 과 일치시키거나 무시하기 위해 또는 해당 'case 절' 의 실행을 완료하기 전에 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-내의-break-문) 을 참고하기 바랍니다.
+> 스위프트에서 `break` 가 필수는 아니더라도, 특정 'case 절' 과 일치시키거나 무시하기 위해 또는 해당 'case 절' 의 실행을 완료하기 전에 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 참고하기 바랍니다.
 
 각 'case 절' 의 본문은 _반드시 (must)_ 최소 하나 이상의 실행문을 담고 있어야 합니다. 코드를 다음 처럼 작성하면 유효하지 않은데, 이는 첫 번째 'case 절' 이 비어있기 때문입니다:
 
@@ -362,7 +362,7 @@ default:
 
 가독성을 위해, '복합 case 절' 도 여러 줄에 걸쳐 작성할 수 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
 
-> 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (Fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
+> 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
 
 **Interval Matching (구간 맞춤)**
 
@@ -450,7 +450,7 @@ case let (x, y):
 
 이 `switch` 문은 '`default` case 절' 을 가지지 않습니다. '최종 case 절' 인, `case let (x, y)` 는, 어떤 값과도 일치할 수 있는 두 '자리 표시자' 상수를 가진 '튜플' 을 선언합니다. `anotherPoint` 가 항상 두 값을 가지는 튜플이라, 이 'case 절' 은 남아 있는 모든 가능한 값과 일치할 수 있기 때문에, `switch` 문을 '빠짐없이 철저하게 (exhaustive)' 만들기 위해 '`default` case 절' 이 필요하진 않습니다.
 
-**Where (Where 절)**
+**Where (where 절)**
 
 '`switch` case 절' 은 추가적인 조건을 검사하기 위해 '`where` 절' 을 사용할 수 있습니다.
 
@@ -481,7 +481,7 @@ case let (x, y):
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
 </p>
 
-같은 본문을 공유하는 여러 'switch 문의 case 절 (switch cases)' 들은 `case` 뒤에 여러 개의 '유형 (patterns)' 을, 그 사이는 쉼표를 써서, 작성하는 것으로 복합할 수 있습니다. '유형' 중 어떤 하나에라도 해당된다면, 그 'case 절' 에 해당하는 것으로 간주합니다. '유형 (patterns)' 은, 목록이 길다면, 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
+switch 문에서 똑같은 본문을 공유하는 '다중 case 절' 은 `case` 뒤에, 각 '유형 (patterns)' 은 쉼표로 구분하여, 여러 개의 '유형' 을 작성함으로써 조합할 수 있습니다. '유형 (patterns)' 중 어떤 것이든 일치하면, 그 'case 절' 이 일치하는 것으로 간주됩니다. '유형 (patterns)' 들은 목록이 길 경우 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someCharacter: Character = "e"
@@ -494,12 +494,12 @@ case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
 default:
   print("\(someCharacter) is not a vowel or a consonant")
 }
-// "e is a vowel" 를 출력합니다.
+// "e is a vowel" 를 인쇄합니다.
 ```
 
-`switch` 문의 첫 번째 'case 절' 은 영어에 있는 다섯 개의 모든 소문자 '모음 (vowels)' 에 해당합니다. 이와 비슷하게, 두 번째 'case 절' 는 모든 영어 소문자 '자음 (consonants)' 에 해당합니다. 마지막으로, `default` 'case 절' 에는 어떤 다른 문자라도 해당됩니다.
+`switch` 문의 첫 번째 'case 절' 은 영어에 있는 모든 다섯 개의 소문자 '모음 (vowels)' 과 일치합니다. 이와 비슷하게, 두 번째 'case 절' 은 영어의 모든 소문자 '자음 (consonants)' 과 일치합니다. 최종적으로, '`default` case 절' 은 어떤 다른 문자와도 일치합니다.[^default-case-character]
 
-'복합 case 절 (compound cases)' 은 '값 연결 (value bindings)' 를 포함할 수도 있습니다. '복합 case 절' 의 모든 '유형' 은 일종의 같은 '값 연결 (value bindings)' 들만 포함해야 하며, 각각의 '연결 (bindin)' 은 '복합 case 절' 에 있는 모든 '유형' 에서 같은 타입의 값만 가져와야 합니다. 이렇게 하면, '복합 case 절' 의 어느 부분이 맞춰진 것이든, 'case 절' 의 본문 코드에서 이 '연결 (bindings)' 값에 항상 접근할 수 있으며 그 값이 항상 같은 타입임을 보장하게 됩니다.
+'복합 case 절' 은 '값 연결 (value bindings)' 를 포함할 수도 있습니다. '복합 case 절' 의 모든 '유형 (patterns)' 은 똑같은 집합의 '값 연결' 을 포함해야 하며, 각 '연결 (binding)' 은 '복합 case 절' 의 모든 '유형' 에서 같은 타입의 값만 가져야 합니다. 이는, '복합 case 절' 의 어느 부분이 일치한 것이든 상관없이, 'case 절' 의 본문 코드는 항상 '연결' 한 값에 접근할 수 있으며 그 값은 항상 똑같은 타입을 가짐을 보장합니다.
 
 ```swift
 let stillAnotherPoint = (9, 0)
@@ -509,14 +509,14 @@ case (let distance, 0), (0, let distance):
 default:
   print("Not on an axis")
 }
-// "On an axis, 9 from the origin" 를 출력합니다.
+// "On an axis, 9 from the origin" 를 인쇄합니다.
 ```
 
-위의 `case` 는 두 개의 '유형 (patterns)' 을 가지고 있습니다: `(let distance, 0)` 은 x-축 위에 있는 점에 해당하며, `(0, let distance)` 는 y-축 위에 있는 점에 해당합니다. 두 '유형' 모두 `distance` 에 대한 '연결 (binding)' 을 포함하고 있으며 `distance` 는 두 '유형' 모두에서 하나의 '정수' 입니다-이것은 `case` 본문 코드가 `distance` 의 값에 항상 접근할 수 있음을 의미합니다.
+위의 '`case` 절' 은 두 개의 '유형 (patterns)' 을 가지고 있습니다: `(let distance, 0)` 은 x-축 위의 점과 일치하며, `(0, let distance)` 는 y-축 위의 점과 일치합니다. 두 '유형' 모두 `distance` 에 대한 '연결' 을 포함하며 `distance` 는 두 '유형' 모두에서 '정수' 입니다-이는 '`case` 절' 의 본문 코드가 항상 `distance` 에 대한 값에 접근할 수 있음을 의미합니다.
 
-### Control Transfer Statements (제어 전달 구문)
+### Control Transfer Statements (제어 전달문)
 
-_제어 전달 구문 (control transfer statements)_ 은, 제어를 코드 한 곳에서 다른 곳으로 전달하여, 코드가 실행되는 순서를 바꿉니다. 스위프트는 다섯 개의 '제어 전달 구문' 을 가지고 있습니다:
+_제어 전달문 (control transfer statements)_ 은, 제어를 한 코드에서 다른 곳으로 전달함으로써, 코드를 실행하는 순서를 바꿉니다. 스위프트는 다섯 개의 '제어 전달문' 을 가집니다:
 
 * `continue`
 * `break`
@@ -524,13 +524,13 @@ _제어 전달 구문 (control transfer statements)_ 은, 제어를 코드 한 �
 * `return`
 * `thorw`
 
-`continue`, `break`, 그리고 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서 설명하며, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
+`continue`, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
 
-#### Continue (Continue 문)
+#### Continue (continue 문)
 
-`continue` 문은 반복문에게 말해서 지금 하고 있는 것을 중지하고 해당 '반복 (loop)' 를 지나쳐서 다음 '회차 (iteration)' 의 맨 앞에서 다시 시작하도록 합니다. 이는 해당 '반복' 을 완전히 떠나지 않은 채로 "현재 '반복 회차 (loop iteration)' 에서 할 건 다했다" 라고 말하는 것입니다.
+`continue` 문은 반복문이 지금 하고 있는 것을 멈추고 반복문을 통과하여 다음 '회차 (iteration)' 의 맨 앞에서 다시 시작하라고 말합니다. 이는 반복문을 완전히 떠나지 않은 채 "현재 '반복 회차' 에서 할 건 다했다" 라고 말하는 것입니다.
 
-다음의 예제는 소문자로 된 문자열에서 모든 '모음 (vowels)' 과 '공백 (spaces)' 을 제거하여 '수수께끼 상태 (cryptic puzzle phrase)' 를 생성합니다:
+다음의 예제는 '수수께끼 문장 (cryptic puzzle phrase)' 을 생성하기 위해 소문자 문자열에서 모든 '모음 (vowels)' 과 '공백 (spaces)' 을 삭제합니다.
 
 ```swift
 let puzzleInput = "great minds think alike"
@@ -543,33 +543,33 @@ for character in puzzleInput {
   puzzleOutput.append(character)
 }
 print(puzzleOutput)
-// "grtmndsthnklk" 를 출력합니다.
+// "grtmndsthnklk" 를 인쇄합니다.
 ```
 
-위의 코드는 '모음' 이나 '공백' 에 해당할 때마다 `continue` 키워드를 호출하여, '반복' 의 현재 '회차' 를 즉시 끝내고 다음 '회차' 의 시작으로 곧장 넘어갑니다.
+위 코드는 '모음' 이나 '공백' 과 일치할 때마다 `continue` 키워드를 호출하여, 반복문의 현재 '회차' 를 즉시 끝내고 다음 '회차' 시작으로 곧장 넘어 가도록 합니다.
 
-#### Break (Break 문)
+#### Break (break 문)
 
-`break` 문은 '제어 흐름 구문 (control flow statement)' 전체의 실행을 그 즉시 종료합니다. `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때는 `break` 문을 `switch` 문이나 반복문 안에 사용해주면 됩니다.
+`break` 문은 전체 '제어 흐름문' 의 실행을 즉시 끝냅니다. `break` 문은 `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때 `switch` 문이나 반복문 안에서 사용합니다.
 
-**Break in a Loop Statement (반복문 내의 Break 문)**
+**Break in a Loop Statement (반복문 안의 break 문)**
 
-반복문 안에서 사용하는, `break` 는 반복문의 실행을 그 즉시 종료하고 '제어권 (control)' 를 반복문의 '닫는 중괄호 (closing brace; `}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차 (iteration)' 에 있는 코드는 더 이상 실행되지 않으며, 반복문의 '회차' 도 더 이상 새로 시작하지 않습니다.
+반복문 안에서 사용할 때, `break` 는 반복문의 실행을 즉시 끝내며 '제어 (control)' 를 반복문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차' 에 있는 코드를 더 이상 실행하지도 않고, 반복문의 '회차' 도 더 이상 시작하지 않습니다.
 
 <p>
-<strong id="break-in-a-switch-statement-switch-문-내의-break-문">Break in a Switch Statement (Switch 문 내의 Break 문)</strong>
+<strong id="break-in-a-switch-statement-switch-문-안의-break-문">Break in a Switch Statement (switch 문 안의 break 문)</strong>
 </p>
 
-`switch` 문 안에서 사용하는, `break` 는 `switch` 문의 실행을 그 즉시 종료하게 만들고 '제어권 (control)' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다.
+`switch` 문 안에서 사용할 때, `break` 는 `switch` 문이 실행을 즉시 끝도록 하며 '제어' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달하도록 합니다.
 
-이런 동작 방식은 `switch` 문의 하나 이상의 'case 절' 에 맞춰지도록 해서 이를 무시하는 데 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저해야 (exhaustive)' 하고 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 드러내기 위해 어떤 'case 절' 를 일부러 맞춰지도록 해서 무시하는 것이 필요할 때가 있습니다. 이렇게 하려면 무시하고 싶은 'case 절' 전체 본문으로 `break` 문을 써주면 됩니다. 해당 'case 절' 이 `switch` 문에 의해 맞춰지면, 'case 절' 안에 있는 `break` 문이 `switch` 문의 실행을 그 즉시 종료합니다.
+이 작동 방식은 `switch` 문의 하나 이상의 'case 절' 과 일치시켜서 무시하기 위해 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저 (exhaustive)' 해서 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 만들기 위해서는 일부러 'case 절' 을 일치시켜서 무시하는 것이 필요할 때가 있습니다. 이를 하려면 무시하고 싶은 'case 절' 의 전체 본문을 `break` 문으로 작성하면 됩니다. 해당 'case 절' 이 `switch` 문과 일치할 때, 'case 절' 안의 `break` 문이 `switch` 문의 실행을 즉시 끝냅니다.
 
-> `switch` 'case 절' 이 '주석 (comment)' 만 가지고 있으면 '컴파일 시간 에러 (compile-time error)' 를 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 `switch` 'case 절' 무시하도록 하지 않습니다. `switch` 'case 절' 를 무시하려면 항상 `break` 문을 사용하도록 합니다.
+> '주석 (comment)' 만 담고 있는 '`switch` case 절' 은 '컴파일 시간 에러' 라고 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 '`switch` case 절' 이 무시되도록 만들지 않습니다. '`switch` case 절' 를 무시하기 위해서는 항상 `break` 문을 사용합니다.
 
-다음 예제는 `Character` 값을 '전환 (switch)' 하여 이것이 네 가지 언어 중 하나로 표현한 '수치 기호' 가 맞는 지를 확인합니다. 간결하게 하려고, 단일 `switch` 'case 절' 에서 여러 개의 값을 다루고 있습니다.
+다음 예제는 `Character` 값을 '전환 (switch)' 하여 네 언어 중 하나의 '수치 기호' 로 표현된 것인지를 결정합니다. 간결함을 위해, '다중 값 (multiple values)' 을 '단일 `switch` case 절' 에서 다룹니다.
 
 ```swift
-let numberSymbol: Character = "三"  // 중국 글자로 나타낸 3 이라는 수입니다.
+let numberSymbol: Character = "三"  // '3' 이라는 수의 중국어 기호
 var possibleIntegerValue: Int?
 switch numberSymbol {
 case "1", "١", "一", "๑":
@@ -588,20 +588,20 @@ if let integerValue = possibleIntegerValue {
 } else {
   print("An integer value could not be found for \(numberSymbol).")
 }
-// "The integer value of 三 is 3." 를 출력합니다.
+// "The integer value of 三 is 3." 를 인쇄합니다.
 ```
 
-이 예제는 `numberSymbol` 을 검사하여 이것이 `1` 에서 `4` 에 이르는 라틴어, 아랍어, 중국어, 또는 태국어 수치 기호인지를 확인합니다. 해당하는 것을 발견하면, `switch` 문의 'case 절' 중 하나에서 `possibleIntegerValue` 라는 '옵셔널 (optional) `Int?`' 변수에 적절한 정수 값을 설정합니다.
+이 예제는 `numberSymbol` 을 검사하여 `1` 에서 `4` 까지의 라틴어, 아랍어, 중국어, 또는 태국어 기호인지 결정합니다. 일치한 것을 찾으면, `switch` 문의 'case 절' 증 하나가 `possibleIntegerValue` 라는 '옵셔널 `Int?`' 변수에 적절한 정수 값을 설정합니다.
 
-`switch` 문의 실행을 완료한 후, 이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 값을 찾았는 지를 확인합니다. `possibleIntegerValue` 변수는 '옵셔널 타입' 이 가지는 미덕에 의해서 암시적으로 `nil` 이라는 초기 값을 가지므로, '옵셔널 연결' 이 성공하는 경우는 `switch` 문의 처음 네 'case 절' 중 하나에 의해 `possibleIntegerValue` 에 실제 값이 설정되었을 때 뿐입니다.
+`switch` 문이 실행을 완료한 후, 이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 값을 찾았는지 결정합니다. `possibleIntegerValue` 변수는 '옵셔널 타입' 인 덕에 `nil` 이라는 '암시적인 초기 값' 을 가지므로, '옵셔널 연결' 은 `switch` 문의 처음 네 'case 절' 중 하나가 `possibleIntegerValue` 에 실제 값을 설정한 경우에만 성공할 것입니다.
 
-위 예제에서 발생 가능한 모든 `Character` 값을 나열하는 것은 실용적이지 않으므로, `default` 'case 절' 으로 해당하지 않는 모든 문자들을 처리할 수 있습니다. 이 `default` 'case 절' 은 아무런 행동을 할 필요가 없으므로, 본문으로 단일 `break` 문을 작성하면 됩니다. `default` 'case 절' 으로 맞춰지자 마자, `break` 문이 `switch` 문의 실행을 종료하고, 코드 실행은 `if let` 문부터 계속하게 됩니다.
+위 예제에서 가능한 모든 `Character` 값의 목록은 실용적이지 않기 때문에, 일치하지 않는 문자는 어떤 것이든 '`default` case 절' 이 처리합니다. 이 '`default` case 절' 은 어떤 행동도 할 필요 없으므로, 본문을 '단일 `break` 문' 으로 작성합니다. '`default` case 절' 은 일치하자 마자, `break` 문이 `switch` 문의 실행을 끝내며, 코드 실행은 `if let` 문부터 계속됩니다.
 
-#### Fallthrough (Fallthrough 문)
+#### Fallthrough (fallthrough 문)
 
-스위프트의, `switch` 문은 각각의 'case 절' 끝에서 빠져 나가서 그 다음으로 넘어가는 행동을 하지 않습니다. 다시 말해서, 가장 먼저 맞춰진 'case 절' 을 완료하자 마자 전체 `switch` 문의 실행을 완료합니다. 이와는 대조적으로, C 언어에서는 빠져 나가는 것을 막기 위해 모든 `switch` 'case 절' 끝에 명시적으로 `break` 문을 넣어주는 것이 필수입니다. 기본적으로 빠져 나가지 않도록 되어 있다는 것은 스위프트의 `switch` 문이 C 언어에 있는 것보다 좀 더 간결하고 예측 가능하다는 것을 의미하며, 그로 인해 여러 개의 `switch` 'case 절' 을 실수로 실행하게 되는 것을 피하도록 해줍니다.
+스위프트에서, `switch` 문은 각 'case 절' 의 끝을 빠져 나가서 그 다음으로 넘어가지 않습니다. 즉, 전체 `switch` 문은 첫 째로 일치한 'case 절' 을 완료하자 마자 실행을 완료합니다. 이와는 대조적으로, C 는 빠져 나가는 것을 막기 위해 모든 '`switch` case 절' 끝에 명시적인 `break` 문을 필수로 집어 넣어야 합니다. 기본적인 빠져 나감을 피하는 것은 스위프트의 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 '다중 `switch` case 절' 을 실수로 실행하는 것을 피하게 해준다는 것을 의미합니다.
 
-C-스타일의 '빠져 나가는 (fallthrough)' 동작이 필요한 경우, 각각의 경우마다 `fallthrough` 키워드를 사용하면 이런 동작 방식을 선택할 수도 있습니다. 아래의 예제는 `fallthrough` 를 사용하여 수치 값의 글 설명을 생성합니다.
+C-스타일의 '빠져 나감 (fallthrough)' 작동 방식이 필요한 경우, 이 작동 방식은 각 경우마다 `fallthrough` 키워드를 작성함으로써 직접 선택할 수 있습니다. 아래 예제는 수를 설명하는 문장의 생성을 위해 `fallthrough` 를 사용합니다.
 
 ```swift
 let integerToDescribe = 5
@@ -614,16 +614,16 @@ default:
   description += " an integer."
 }
 print(description)
-// "The number 5 is a prime number, and also an integer." 를 출력합니다.
+// "The number 5 is a prime number, and also an integer." 를 인쇄합니다.
 ```
 
-이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 이 함수는 그 다음 `switch` 문을 사용하여 `integerToDescribe` 의 값을 검토합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는 `description` 끝에 문장을 추가하여, 이 수가 '소수' 임을 표기합니다. 이 다음 `fallthrough` 키워드를 사용하여 `default` 'case 절' 에 까지 "빠져 들어갑니다. (fall into)" `default` 'case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 후, `switch` 문을 완료합니다.
+이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 그런 다음 이 함수는 `switch` 문을 사용하여 `integerToDescribe` 의 값을 고려합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는, 이 수가 '소수' 임을 기록하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 '`default` case 절' 에 까지 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. '`default` case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 다음, `switch` 문을 완료합니다.
 
-`integerToDescribe` 의 값이 '알려진 소수' 의 목록에 있는 것이 아니라면, 첫 번째 `switch` 'case 절' 에 맞춰질 일이 전혀 없습니다. 지정된 다른 'case 절' 이 따로 없으므로, `integerToDescribe` 는 `default` 'case 절' 에 맞춰집니다.
+`integerToDescribe` 의 값이 알고 있는 소수 목록에 있지 않으면, 첫 번째 '`switch` case 절' 과는 전혀 일치하지 않습니다. 지정한 다른 'case 절' 이 없기 때문에, `integerToDescribe` 는 '`default` case 절' 과 일치합니다.
 
-`switch` 문의 실행이 끝난 다음에는, `print(_:separator:terminator:)` 함수를 사용하여 이 수에 대한 설명을 출력합니다. 이 예제에 있는, 수 `5` 는 '소수 (prime number)' 라고 올바르게 식별되고 있습니다.
+`switch` 문의 실행을 종료한 후, `print(_:separator:terminator:)` 함수가 수의 설명을 인쇄합니다. 이 예제에서, 수 `5` 는 '소수' 라고 올바르게 식별됩니다.
 
-> `fallthrough` 키워드는 '빠져 들어가서 (fall into)' 실행할 `switch` 'case 절' 에 대한 조건을 검사하지 않습니다. `fallthrough` 키워드는 단순히 코드 실행을 다음 'case 절' (또는 `default` 'case 절') 에 있는 구문으로 직접 이동하는 것으로, 이는 C 언어의 표준 `switch` 문의 동작과 같습니다.
+> `fallthrough` 키워드는 실행이 '빠져 드는 (fall into)' '`switch` case 절' 에 대한 조건은 검사하지 않습니다. `fallthrough` 키워드는, C 의 표준 `swtich` 문 작동 방식 처럼, 단순히 코드 실행을 그 다음 'case 절' (또는 '`default` case 절') 내의 구문으로 직접 이동하게 만듭니다.
 
 #### Labeled Statements (이름표 달린 구문)
 
@@ -698,7 +698,7 @@ print("Game over!")
 >
 > 반복문의 다음 '회차 (iteration)' 로 건너뛰기 위해 `gameLoop` 이름표를 써서 `continue gameLoop` 라고 꼭 호출해야만 할 필요는 없습니다. 이 게임에는 반복문이 하나만 있어서, `continue` 문이 영향을 미칠 반복문이 어떤 것인지 모호할 일이 없습니다. 하지만, `continue` 문에 `gameLoop` 이름표를 사용한다고 문제될 건 아무 것도 없습니다. 이렇게 하면 `break` 문에 짝이 되어 일관성이 있으며 게임 로직을 좀 더 명확하게 읽고 이해하도록 도와줍니다.
 
-### Early Exit (조기 탈출 구문)
+### Early Exit (조기 탈출문)
 
 `guard` 문은, `if` 문 처럼, '표현식 (expression)' 의 '불리언 값 (Boolean value)' 에 따라 구문을 실행합니다. `guard` 문을 사용하면 `guard` 문 이 후의 코드를 실행하려면 조건이 반드시 '참 (true)' 일 것을 요구하게 됩니다. `if` 문과는 다르게, `guard` 문에는 항상 `else` 절이 있습니다-조건이 '참 (true)' 이 아닐 경우 `else` 절 안에 있는 코드가 실행됩니다.
 
@@ -793,3 +793,5 @@ if #available(`platform name` `version`, `...`, *) {
 [^letter]: 엄밀히 말해서, 영어의 'character' 는 '표의 문자', 'letter' 는 '표음 문자' 를 의미한다고 합니다. 원문에서도 영어 알파벳에 대해서는 꾸준히 'letter' 라고 사용하고 있습니다.
 
 [^the-first-case]: 이것도 앞서 설명한 것처럼, 영어의 'case' 가 '경우' 라는 의미이기 때문에, 영어식으로 말하면 '첫 번째 경우' 라는 자연스러운 문장이 됩니다. 프로그래밍 언어들은 대부분 예전부터 영어 문장과 유사했지만 최근의 프로그래밍 언어들은 특히 영어 문장으로써 더 자연스러워지는 추세입니다.
+
+[^default-case-character]: 이 예제는 '`default` case 절' 을 가지고 있어야, '빠짐없이 철저 (exhaustive)' 하게 됩니다. 왜냐면, `Character` 값이 '엉어 문자' 가 아닌 다른 '유니코드 문자' 를 가질 수도 있기 때문입니다.

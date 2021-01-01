@@ -591,7 +591,7 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" 를 인쇄합니다.
 ```
 
-> `if` 문에서 '옵셔널 연결' 로 생성한 상수와 변수는 `if` 문의 본문 안에서만 사용 가능합니다. 이와 대조적으로, `guard` 문으로 생성한 상수와 변수는, [Early Exit (조기 탈출 구문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출-구문) 에서 설명한 것처럼, `guard` 문 이후의 코드에서 사용 가능합니다.
+> `if` 문에서 '옵셔널 연결' 로 생성한 상수와 변수는 `if` 문의 본문 안에서만 사용 가능합니다. 이와 대조적으로, `guard` 문으로 생성한 상수와 변수는, [Early Exit (조기 탈출문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-조기-탈출문) 에서 설명한 것처럼, `guard` 문 이후의 코드에서 사용 가능합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)
 
