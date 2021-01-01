@@ -118,10 +118,10 @@ categories: Swift Language Grammar Revision History
     /// - SeeAlso: `CustomDebugStringConvertible`,   ⎟
     ///   `CustomStringConvertible`, `debugPrint`.   ⎭
 
-    /// `items` 의 각 원소에 대한 문장화된 표현을            ← 요약
+    /// `items` 의 각 원소를 표현하는 문장을                ← 요약
     /// 표준 출력 장치에 작성함.
     ///                                              ← 빈 줄
-    /// 각 항목 `x` 에 대한 문장화된 표현은                 ← 추가적인 설명
+    /// 각 항목 `x` 를 표현하는 문장은                     ← 추가적인 설명
     /// `String(x)` 라는 표현식으로 생성합니다.
     ///
     /// - 매개 변수 separator: 항목 사이마다 출력되는 문장     ⎫

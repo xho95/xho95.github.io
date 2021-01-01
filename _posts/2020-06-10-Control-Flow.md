@@ -601,7 +601,7 @@ if let integerValue = possibleIntegerValue {
 
 스위프트에서, `switch` 문은 각 'case 절' 의 끝을 빠져 나가서 그 다음으로 넘어가지 않습니다. 즉, 전체 `switch` 문은 첫 째로 일치한 'case 절' 을 완료하자 마자 실행을 완료합니다. 이와는 대조적으로, C 는 빠져 나가는 것을 막기 위해 모든 '`switch` case 절' 끝에 명시적인 `break` 문을 필수로 집어 넣어야 합니다. 기본적인 빠져 나감을 피하는 것은 스위프트의 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 '다중 `switch` case 절' 을 실수로 실행하는 것을 피하게 해준다는 것을 의미합니다.
 
-C-스타일의 '빠져 나감 (fallthrough)' 작동 방식이 필요한 경우, 이 작동 방식은 `fallthrough` 키워드를 각 경우마다 써서 직접 선택할 수 있습니다. 아래 예제는 수에 대한 문장 형태의 설명을 생성하고자 `fallthrough` 를 사용합니다.
+C-스타일의 '빠져 나감 (fallthrough)' 작동 방식이 필요한 경우, 이 작동 방식은 각 경우마다 `fallthrough` 키워드를 작성함으로써 직접 선택할 수 있습니다. 아래 예제는 수를 설명하는 문장의 생성을 위해 `fallthrough` 를 사용합니다.
 
 ```swift
 let integerToDescribe = 5
@@ -617,13 +617,13 @@ print(description)
 // "The number 5 is a prime number, and also an integer." 를 인쇄합니다.
 ```
 
-이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 이 함수는 그 다음 `switch` 문을 사용하여 `integerToDescribe` 의 값을 검토합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는 `description` 끝에 문장을 추가하여, 이 수가 '소수' 임을 표기합니다. 이 다음 `fallthrough` 키워드를 사용하여 `default` 'case 절' 에 까지 "빠져 들어갑니다. (fall into)" `default` 'case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 후, `switch` 문을 완료합니다.
+이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 그런 다음 이 함수는 `switch` 문을 사용하여 `integerToDescribe` 의 값을 고려합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는, 이 수가 '소수' 임을 기록하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 '`default` case 절' 에 까지 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. '`default` case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 다음, `switch` 문을 완료합니다.
 
-`integerToDescribe` 의 값이 '알려진 소수' 의 목록에 있는 것이 아니라면, 첫 번째 `switch` 'case 절' 에 맞춰질 일이 전혀 없습니다. 지정된 다른 'case 절' 이 따로 없으므로, `integerToDescribe` 는 `default` 'case 절' 에 맞춰집니다.
+`integerToDescribe` 의 값이 알고 있는 소수 목록에 있지 않으면, 첫 번째 '`switch` case 절' 과는 전혀 일치하지 않습니다. 지정한 다른 'case 절' 이 없기 때문에, `integerToDescribe` 는 '`default` case 절' 과 일치합니다.
 
-`switch` 문의 실행이 끝난 다음에는, `print(_:separator:terminator:)` 함수를 사용하여 이 수에 대한 설명을 출력합니다. 이 예제에 있는, 수 `5` 는 '소수 (prime number)' 라고 올바르게 식별되고 있습니다.
+`switch` 문의 실행을 종료한 후, `print(_:separator:terminator:)` 함수가 수의 설명을 인쇄합니다. 이 예제에서, 수 `5` 는 '소수' 라고 올바르게 식별됩니다.
 
-> `fallthrough` 키워드는 '빠져 들어가서 (fall into)' 실행할 `switch` 'case 절' 에 대한 조건을 검사하지 않습니다. `fallthrough` 키워드는 단순히 코드 실행을 다음 'case 절' (또는 `default` 'case 절') 에 있는 구문으로 직접 이동하는 것으로, 이는 C 언어의 표준 `switch` 문의 동작과 같습니다.
+> `fallthrough` 키워드는 실행이 '빠져 드는 (fall into)' '`switch` case 절' 에 대한 조건은 검사하지 않습니다. `fallthrough` 키워드는, C 의 표준 `swtich` 문 작동 방식 처럼, 단순히 코드 실행을 그 다음 'case 절' (또는 '`default` case 절') 내의 구문으로 직접 이동하게 만듭니다.
 
 #### Labeled Statements (이름표 달린 구문)
 
