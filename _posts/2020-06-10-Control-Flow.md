@@ -396,7 +396,7 @@ print("There are \(naturalCount) \(countedThings).")
 
 동일한 `switch` 문에서 여러 값을 테스트하기 위해 '튜플' 을 사용할 수 있습니다. 튜플의 각 원소는 서로 다른 값 또는 서로 다른 값인 구간과 테스트할 수 있습니다. 또 다른 방법으로, 가능한 어떤 값과도 일치 여부를 맞춰보려면, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (`_`)' 를 사용합니다.
 
-아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현된, (x, y) 점 하나를 받아서, 이를 예제 뒤의 그래프 위에 분류합니다.
+아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현된, (x, y) 점 하나를 받아서, 이를 예제 뒤의 그래프 상에서 분류합니다.
 
 ```swift
 let somePoint = (1, 1)
@@ -425,7 +425,7 @@ C 와는 달리, 스위프트는 똑같은 값이나 값들을 고려하는 '다
 
 '`switch` case 절' 은 일치하는 값 또는 값들을, 'case 절' 의 본문에서 사용하기 위해, 임시 상수나 변수로 이름을 붙일 수 있습니다. 이 작동 방식을 _값 연결 (value binding)_ 이라고 하는데, 값이 'case 절' 본문 내의 임시 상수나 변수로 연결되기 때문입니다.
 
-아래 예제는, `(Int, Int)` 타입의 튜플로 표현된, (x, y) 점 하나를 받아서, 뒤에 있는 그래프 위에 분류합니다:
+아래 예제는, `(Int, Int)` 타입의 튜플로 표현된, (x, y) 점 하나를 받아서, 뒤에 있는 그래프 상에서 분류합니다:
 
 ```swift
 let anotherPoint = (2, 0)
@@ -452,9 +452,9 @@ case let (x, y):
 
 **Where (Where 절)**
 
-`switch` 'case 절' 에서 `where` 절을 사용하면 추가적인 조건을 검사할 수 있습니다:
+'`switch` case 절' 은 추가적인 조건을 검사하기 위해 '`where` 절' 을 사용할 수 있습니다.
 
-아래 예제는 하나의 (x, y) 점을 그 다음의 그래프 상에서 분류합니다:
+아래 예제는 (x, y) 점을 그 뒤의 그래프 상에서 분류합니다:
 
 ```swift
 let yetAnotherPoint = (1, -1)
@@ -466,18 +466,16 @@ case let (x, y) where x == -y:
 case let (x, y):
   print("(\(x), \(y)) is just some arbitrary point")
 }
-// "(1, -1) is on the line x == -y" 를 출력합니다.
+// "(1, -1) is on the line x == -y" 를 인쇄합니다.
 ```
 
 ![a (x, y) point with where](/assets/Swift/Swift-Programming-Language/Control-Flow-where.png)
 
-`switch` 문은 이 점이 있는 곳이 `x == y` 인 녹색 대각선 상인지, `x == -y` 인 보라색 대각선 상인지, 아니면 어느 쪽도 아닌지를 확인합니다.
+`switch` 문은 이 점이 `x == y` 인 녹색 대각선 위인지, `x == -y` 인 보라색 대각선 위인지, 아니면 어느 쪽도 아닌지를 결정합니다.
 
-세 개의 `switch` 'case 절' 들은 '자리 표시용 (placeholder)' 상수인 `x` 와 `y` 를 선언하고 있는데, 이는 `yetAnotherPoint` 에 있는 튜플 값 두 개 모두를 임시로 맡습니다. 이 상수는 `where` 절의 일부로 사용되어, '동적인 필터 (dynamic filter)' 를 생성합니다.
+세 '`switch` case 절' 은, 임시로 `yetAnotherPoint` 로 부터 두 개의 튜플 값을 취하는, '자리 표시자 (placeholder)' 상수인 `x` 와 `y` 를 선언합니다. 이 상수들은, '동적 필터 (dynamic filter)' 를 생성하기 위해, `where` 절에서 사용됩니다. '`switch` case 절' 은 `where` 절의 조건이 해당 값에 대해 `true` 로 평가되는 경우에만 현재의 `point` 값과 일치합니다.
 
-`switch` 'case 절' 은 `where` 절의 조건 값이 `true` 로 계산된 경우에만 현재의 `point` 값과 맞춰봅니다.
-
-이전 예제에서와 같이, 마지막 'case 절' 은 모든 가능한 남은 값들에 맞춰지므로, `switch` 문을 '빠짐없이 철저하게 (exhaustive)' 만들기 위해 `default` 'case 절' 이 필요한 건 아닙니다.
+이전 예제에서 처럼, '최종 case 절' 은 남아 있는 모든 가능한 값과 일치하므로, `switch` 문을 '빠짐없이 철저하게' 만들기 위해 '`default` case 절' 이 필요하진 않습니다.
 
 <p>
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
