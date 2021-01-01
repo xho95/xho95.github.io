@@ -562,14 +562,14 @@ print(puzzleOutput)
 
 `switch` 문 안에서 사용할 때, `break` 는 `switch` 문이 실행을 즉시 끝도록 하며 '제어' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달하도록 합니다.
 
-이 작동 방식은 `switch` 문의 하나 이상의 'case 절' 을 일치시키고 무시하기 위해 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저 (exhaustive)' 해서 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 드러내기 위해 어떤 'case 절' 를 일부러 맞춰지도록 해서 무시하는 것이 필요할 때가 있습니다. 이렇게 하려면 무시하고 싶은 'case 절' 전체 본문으로 `break` 문을 써주면 됩니다. 해당 'case 절' 이 `switch` 문에 의해 맞춰지면, 'case 절' 안에 있는 `break` 문이 `switch` 문의 실행을 그 즉시 종료합니다.
+이 작동 방식은 `switch` 문의 하나 이상의 'case 절' 과 일치시켜서 무시하기 위해 사용할 수 있습니다. 스위프트의 `switch` 문은 '빠짐없이 철저 (exhaustive)' 해서 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 만들기 위해서는 일부러 'case 절' 을 일치시켜서 무시하는 것이 필요할 때가 있습니다. 이를 하려면 무시하고 싶은 'case 절' 의 전체 본문을 `break` 문으로 작성하면 됩니다. 해당 'case 절' 이 `switch` 문과 일치할 때, 'case 절' 안의 `break` 문이 `switch` 문의 실행을 즉시 끝냅니다.
 
-> `switch` 'case 절' 이 '주석 (comment)' 만 가지고 있으면 '컴파일 시간 에러 (compile-time error)' 를 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 `switch` 'case 절' 무시하도록 하지 않습니다. `switch` 'case 절' 를 무시하려면 항상 `break` 문을 사용하도록 합니다.
+> '주석 (comment)' 만 담고 있는 '`switch` case 절' 은 '컴파일 시간 에러' 라고 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 '`switch` case 절' 이 무시되도록 만들지 않습니다. '`switch` case 절' 를 무시하기 위해서는 항상 `break` 문을 사용합니다.
 
-다음 예제는 `Character` 값을 '전환 (switch)' 하여 이것이 네 가지 언어 중 하나로 표현한 '수치 기호' 가 맞는 지를 확인합니다. 간결하게 하려고, 단일 `switch` 'case 절' 에서 여러 개의 값을 다루고 있습니다.
+다음 예제는 `Character` 값을 '전환 (switch)' 하여 네 언어 중 하나의 '수치 기호' 로 표현된 것인지를 결정합니다. 간결함을 위해, '다중 값 (multiple values)' 을 '단일 `switch` case 절' 에서 다룹니다.
 
 ```swift
-let numberSymbol: Character = "三"  // 중국 글자로 나타낸 3 이라는 수입니다.
+let numberSymbol: Character = "三"  // '3' 이라는 수의 중국어 기호
 var possibleIntegerValue: Int?
 switch numberSymbol {
 case "1", "١", "一", "๑":
@@ -588,14 +588,14 @@ if let integerValue = possibleIntegerValue {
 } else {
   print("An integer value could not be found for \(numberSymbol).")
 }
-// "The integer value of 三 is 3." 를 출력합니다.
+// "The integer value of 三 is 3." 를 인쇄합니다.
 ```
 
-이 예제는 `numberSymbol` 을 검사하여 이것이 `1` 에서 `4` 에 이르는 라틴어, 아랍어, 중국어, 또는 태국어 수치 기호인지를 확인합니다. 해당하는 것을 발견하면, `switch` 문의 'case 절' 중 하나에서 `possibleIntegerValue` 라는 '옵셔널 (optional) `Int?`' 변수에 적절한 정수 값을 설정합니다.
+이 예제는 `numberSymbol` 을 검사하여 `1` 에서 `4` 까지의 라틴어, 아랍어, 중국어, 또는 태국어 기호인지 결정합니다. 일치한 것을 찾으면, `switch` 문의 'case 절' 증 하나가 `possibleIntegerValue` 라는 '옵셔널 `Int?`' 변수에 적절한 정수 값을 설정합니다.
 
-`switch` 문의 실행을 완료한 후, 이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 값을 찾았는 지를 확인합니다. `possibleIntegerValue` 변수는 '옵셔널 타입' 이 가지는 미덕에 의해서 암시적으로 `nil` 이라는 초기 값을 가지므로, '옵셔널 연결' 이 성공하는 경우는 `switch` 문의 처음 네 'case 절' 중 하나에 의해 `possibleIntegerValue` 에 실제 값이 설정되었을 때 뿐입니다.
+`switch` 문이 실행을 완료한 후, 이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 값을 찾았는지 결정합니다. `possibleIntegerValue` 변수는 '옵셔널 타입' 인 덕에 `nil` 이라는 '암시적인 초기 값' 을 가지므로, '옵셔널 연결' 은 `switch` 문의 처음 네 'case 절' 중 하나가 `possibleIntegerValue` 에 실제 값을 설정한 경우에만 성공할 것입니다.
 
-위 예제에서 발생 가능한 모든 `Character` 값을 나열하는 것은 실용적이지 않으므로, `default` 'case 절' 으로 해당하지 않는 모든 문자들을 처리할 수 있습니다. 이 `default` 'case 절' 은 아무런 행동을 할 필요가 없으므로, 본문으로 단일 `break` 문을 작성하면 됩니다. `default` 'case 절' 으로 맞춰지자 마자, `break` 문이 `switch` 문의 실행을 종료하고, 코드 실행은 `if let` 문부터 계속하게 됩니다.
+위 예제에서 가능한 모든 `Character` 값의 목록은 실용적이지 않기 때문에, 일치하지 않는 문자는 어떤 것이든 '`default` case 절' 이 처리합니다. 이 '`default` case 절' 은 어떤 행동도 할 필요 없으므로, 본문을 '단일 `break` 문' 으로 작성합니다. '`default` case 절' 은 일치하자 마자, `break` 문이 `switch` 문의 실행을 끝내며, 코드 실행은 `if let` 문부터 계속됩니다.
 
 #### Fallthrough (Fallthrough 문)
 
