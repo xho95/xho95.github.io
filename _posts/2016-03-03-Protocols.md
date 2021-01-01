@@ -358,7 +358,7 @@ class SnakesAndLadders: DiceGame {
 }
 ```
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임 플레이에 대한 설명은, [Break (Break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 을 참고하기 바랍니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임 플레이에 대한 설명은, [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 을 참고하기 바랍니다.
 
 이 버전의 게임은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 '포장됩니다 (wrapped up)'. 이는 프로토콜을 준수하기 위해 획득 가능한 `dice` 속성과 `play()` 메소드를 제공합니다. (`dice` 속성은 초기화 이후 바뀔 필요가 없기 때문에 상수 속성으로 선언 했으며, 프로토콜은 이것이 반드시 '획득 가능한' 것이기 만을 요구합니다.)
 

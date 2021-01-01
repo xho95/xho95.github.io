@@ -153,7 +153,7 @@ guard `condition-조건` else {<br />
 * `continue`
 * `throw`
 
-'제어 전달 구문 (control transfer statements)' 은 아래의 [Control Transfer Statements (제어 전달 구문)](#control-transfer-statements-제어-전달-구문) 에서 논의합니다. `Never` 라는 반환 타입을 가지는 함수에 대한 더 많은 정보는, [Functions that Never Return ('Never' 를 반환하는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-never-를-반환하는-함수) 를 참고하기 바랍니다.
+'제어 전달 구문 (control transfer statements)' 은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 라는 반환 타입을 가지는 함수에 대한 더 많은 정보는, [Functions that Never Return ('Never' 를 반환하는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-never-를-반환하는-함수) 를 참고하기 바랍니다.
 
 > GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
@@ -237,9 +237,9 @@ case .suppressed:
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
-### Control Transfer Statements (제어 전달 구문)
+### Control Transfer Statements (제어 전달문)
 
-'제어 전달 구문 (control transfer statements)' 은 '프로그램 제어' 를 코드 한 곳에서 또 다른 곳으로 무조건적으로 전달하여 프로그램에서 코드의 실행 순서를 바꿀 수 있습니다. 스위프트는 다섯 가지의 제어 전달 구문을 가지고 있습니다: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문이 그것입니다.
+'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 코드 한 곳에서 또 다른 곳으로 무조건적으로 전달하여 프로그램에서 코드의 실행 순서를 바꿀 수 있습니다. 스위프트는 다섯 가지의 제어 전달 구문을 가지고 있습니다: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문이 그것입니다.
 
 > GRAMMAR OF A CONTROL TRANSFER STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -257,7 +257,7 @@ break `label name-이름표 이름`
 
 두 경우 모두, 프로그램 제어를 둘러싼 반복문이나 `switch` 문 뒤의 코드, 만약에 있다면, 첫 번째 줄로 전달합니다.
 
-`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (Break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 달린 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-달린-구문) 을 참고하기 바랍니다.
+`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 달린 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-달린-구문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -287,7 +287,7 @@ continue `label name-이름표 이름`
 
 `fallthrough` 문은 'case 절' 블럭의 마지막 구문으로써만이 아니라, `switch` 문 내부의 어디에서나 있을 수 있지만, 최종 'case 절' 블럭에서는 사용할 수 없습니다. 이는 또 프로그램 제어를 '값 연결 패턴 (value binding patterns)' 을 가지고 있는 패턴으로 전달할 수는 없습니다.
 
-`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Control Transfer Statements (제어 전달 구문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달-구문) 을 참고하기 바랍니다.
+`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 

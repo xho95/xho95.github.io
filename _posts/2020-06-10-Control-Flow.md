@@ -329,7 +329,7 @@ default:
 
 C 와 오브젝티브-C 의 `switch` 문과는 대조적으로, 스위프트의 `switch` 문은 기본적으로 각 'case 절' 의 밑을 빠져나가서 그 다음으로 들어가지 않습니다. 그 대신, 전체 `switch` 문은, 명시적인 `break` 문을 쓸 필요없이, 처음으로 일치한 '`switch` case 절' 을 완료하는 순간 바로 실행을 종료합니다. 이는 `switch` 문을 C 에 있는 것보다 더 안전하고 쉽게 사용하게 만들며 실수로 하나 이상의 '`switch` case 절' 을 실행하는 것을 피하도록 해줍니다.
 
-> 스위프트에서 `break` 가 필수는 아니더라도, 특정 'case 절' 과 일치시키거나 무시하기 위해 또는 해당 'case 절' 의 실행을 완료하기 전에 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-내의-break-문) 을 참고하기 바랍니다.
+> 스위프트에서 `break` 가 필수는 아니더라도, 특정 'case 절' 과 일치시키거나 무시하기 위해 또는 해당 'case 절' 의 실행을 완료하기 전에 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 참고하기 바랍니다.
 
 각 'case 절' 의 본문은 _반드시 (must)_ 최소 하나 이상의 실행문을 담고 있어야 합니다. 코드를 다음 처럼 작성하면 유효하지 않은데, 이는 첫 번째 'case 절' 이 비어있기 때문입니다:
 
@@ -514,9 +514,9 @@ default:
 
 위의 '`case` 절' 은 두 개의 '유형 (patterns)' 을 가지고 있습니다: `(let distance, 0)` 은 x-축 위의 점과 일치하며, `(0, let distance)` 는 y-축 위의 점과 일치합니다. 두 '유형' 모두 `distance` 에 대한 '연결' 을 포함하며 `distance` 는 두 '유형' 모두에서 '정수' 입니다-이는 '`case` 절' 의 본문 코드가 항상 `distance` 에 대한 값에 접근할 수 있음을 의미합니다.
 
-### Control Transfer Statements (제어 전달 구문)
+### Control Transfer Statements (제어 전달문)
 
-_제어 전달 구문 (control transfer statements)_ 은, 제어를 코드 한 곳에서 다른 곳으로 전달하여, 코드가 실행되는 순서를 바꿉니다. 스위프트는 다섯 개의 '제어 전달 구문' 을 가지고 있습니다:
+_제어 전달문 (control transfer statements)_ 은, 제어를 한 코드에서 다른 곳으로 전달함으로써, 코드를 실행하는 순서를 바꿉니다. 스위프트는 다섯 개의 '제어 전달문' 을 가집니다:
 
 * `continue`
 * `break`
@@ -524,13 +524,13 @@ _제어 전달 구문 (control transfer statements)_ 은, 제어를 코드 한 �
 * `return`
 * `thorw`
 
-`continue`, `break`, 그리고 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서 설명하며, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
+`continue`, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
 
-#### Continue (Continue 문)
+#### Continue (continue 문)
 
-`continue` 문은 반복문에게 말해서 지금 하고 있는 것을 중지하고 해당 '반복 (loop)' 를 지나쳐서 다음 '회차 (iteration)' 의 맨 앞에서 다시 시작하도록 합니다. 이는 해당 '반복' 을 완전히 떠나지 않은 채로 "현재 '반복 회차 (loop iteration)' 에서 할 건 다했다" 라고 말하는 것입니다.
+`continue` 문은 반복문이 지금 하고 있는 것을 멈추고 반복문을 통과하여 다음 '회차 (iteration)' 의 맨 앞에서 다시 시작하라고 말합니다. 이는 반복문을 완전히 떠나지 않은 채 "현재 '반복 회차' 에서 할 건 다했다" 라고 말하는 것입니다.
 
-다음의 예제는 소문자로 된 문자열에서 모든 '모음 (vowels)' 과 '공백 (spaces)' 을 제거하여 '수수께끼 상태 (cryptic puzzle phrase)' 를 생성합니다:
+다음의 예제는 '수수께끼 문장 (cryptic puzzle phrase)' 을 생성하기 위해 소문자 문자열에서 모든 '모음 (vowels)' 과 '공백 (spaces)' 을 삭제합니다.
 
 ```swift
 let puzzleInput = "great minds think alike"
@@ -543,21 +543,21 @@ for character in puzzleInput {
   puzzleOutput.append(character)
 }
 print(puzzleOutput)
-// "grtmndsthnklk" 를 출력합니다.
+// "grtmndsthnklk" 를 인쇄합니다.
 ```
 
-위의 코드는 '모음' 이나 '공백' 에 해당할 때마다 `continue` 키워드를 호출하여, '반복' 의 현재 '회차' 를 즉시 끝내고 다음 '회차' 의 시작으로 곧장 넘어갑니다.
+위 코드는 '모음' 이나 '공백' 과 일치할 때마다 `continue` 키워드를 호출하여, 반복문의 현재 '회차' 를 즉시 끝내고 다음 '회차' 시작으로 곧장 넘어 가도록 합니다.
 
-#### Break (Break 문)
+#### Break (break 문)
 
-`break` 문은 '제어 흐름 구문 (control flow statement)' 전체의 실행을 그 즉시 종료합니다. `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때는 `break` 문을 `switch` 문이나 반복문 안에 사용해주면 됩니다.
+`break` 문은 전체 '제어 흐름문' 의 실행을 즉시 끝냅니다. `break` 문은 `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때 `switch` 문이나 반복문 안에서 사용합니다.
 
-**Break in a Loop Statement (반복문 내의 Break 문)**
+**Break in a Loop Statement (반복문 안의 break 문)**
 
-반복문 안에서 사용하는, `break` 는 반복문의 실행을 그 즉시 종료하고 '제어권 (control)' 를 반복문의 '닫는 중괄호 (closing brace; `}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차 (iteration)' 에 있는 코드는 더 이상 실행되지 않으며, 반복문의 '회차' 도 더 이상 새로 시작하지 않습니다.
+반복문 안에서 사용할 때, `break` 는 반복문의 실행을 즉시 끝내며 '제어' 를 반복문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차' 에 있는 코드를 더 이상 실행하지도 않고, 반복문의 '회차' 도 더 이상 시작하지 않습니다.
 
 <p>
-<strong id="break-in-a-switch-statement-switch-문-내의-break-문">Break in a Switch Statement (Switch 문 내의 Break 문)</strong>
+<strong id="break-in-a-switch-statement-switch-문-안의-break-문">Break in a Switch Statement (switch 문 안의 break 문)</strong>
 </p>
 
 `switch` 문 안에서 사용하는, `break` 는 `switch` 문의 실행을 그 즉시 종료하게 만들고 '제어권 (control)' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다.
