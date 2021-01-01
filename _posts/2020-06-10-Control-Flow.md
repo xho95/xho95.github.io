@@ -450,7 +450,7 @@ case let (x, y):
 
 이 `switch` 문은 '`default` case 절' 을 가지지 않습니다. '최종 case 절' 인, `case let (x, y)` 는, 어떤 값과도 일치할 수 있는 두 '자리 표시자' 상수를 가진 '튜플' 을 선언합니다. `anotherPoint` 가 항상 두 값을 가지는 튜플이라, 이 'case 절' 은 남아 있는 모든 가능한 값과 일치할 수 있기 때문에, `switch` 문을 '빠짐없이 철저하게 (exhaustive)' 만들기 위해 '`default` case 절' 이 필요하진 않습니다.
 
-**Where (Where 절)**
+**Where (where 절)**
 
 '`switch` case 절' 은 추가적인 조건을 검사하기 위해 '`where` 절' 을 사용할 수 있습니다.
 
@@ -481,7 +481,7 @@ case let (x, y):
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
 </p>
 
-같은 본문을 공유하는 여러 'switch 문의 case 절 (switch cases)' 들은 `case` 뒤에 여러 개의 '유형 (patterns)' 을, 그 사이는 쉼표를 써서, 작성하는 것으로 복합할 수 있습니다. '유형' 중 어떤 하나에라도 해당된다면, 그 'case 절' 에 해당하는 것으로 간주합니다. '유형 (patterns)' 은, 목록이 길다면, 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
+switch 문에서 똑같은 본문을 공유하는 '다중 case 절' 은 `case` 뒤에, 각 '유형 (patterns)' 은 쉼표로 구분하여, 여러 개의 '유형' 을 작성함으로써 조합할 수 있습니다. '유형 (patterns)' 중 어떤 것이든 일치하면, 그 'case 절' 이 일치하는 것으로 간주됩니다. '유형 (patterns)' 들은 목록이 길 경우 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someCharacter: Character = "e"
@@ -494,12 +494,12 @@ case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
 default:
   print("\(someCharacter) is not a vowel or a consonant")
 }
-// "e is a vowel" 를 출력합니다.
+// "e is a vowel" 를 인쇄합니다.
 ```
 
-`switch` 문의 첫 번째 'case 절' 은 영어에 있는 다섯 개의 모든 소문자 '모음 (vowels)' 에 해당합니다. 이와 비슷하게, 두 번째 'case 절' 는 모든 영어 소문자 '자음 (consonants)' 에 해당합니다. 마지막으로, `default` 'case 절' 에는 어떤 다른 문자라도 해당됩니다.
+`switch` 문의 첫 번째 'case 절' 은 영어에 있는 모든 다섯 개의 소문자 '모음 (vowels)' 과 일치합니다. 이와 비슷하게, 두 번째 'case 절' 은 영어의 모든 소문자 '자음 (consonants)' 과 일치합니다. 최종적으로, '`default` case 절' 은 어떤 다른 문자와도 일치합니다.[^default-case-character]
 
-'복합 case 절 (compound cases)' 은 '값 연결 (value bindings)' 를 포함할 수도 있습니다. '복합 case 절' 의 모든 '유형' 은 일종의 같은 '값 연결 (value bindings)' 들만 포함해야 하며, 각각의 '연결 (bindin)' 은 '복합 case 절' 에 있는 모든 '유형' 에서 같은 타입의 값만 가져와야 합니다. 이렇게 하면, '복합 case 절' 의 어느 부분이 맞춰진 것이든, 'case 절' 의 본문 코드에서 이 '연결 (bindings)' 값에 항상 접근할 수 있으며 그 값이 항상 같은 타입임을 보장하게 됩니다.
+'복합 case 절' 은 '값 연결 (value bindings)' 를 포함할 수도 있습니다. '복합 case 절' 의 모든 '유형 (patterns)' 은 똑같은 집합의 '값 연결' 을 포함해야 하며, 각 '연결 (binding)' 은 '복합 case 절' 의 모든 '유형' 에서 같은 타입의 값만 가져야 합니다. 이는, '복합 case 절' 의 어느 부분이 일치한 것이든 상관없이, 'case 절' 의 본문 코드는 항상 '연결' 한 값에 접근할 수 있으며 그 값은 항상 똑같은 타입을 가짐을 보장합니다.
 
 ```swift
 let stillAnotherPoint = (9, 0)
@@ -509,10 +509,10 @@ case (let distance, 0), (0, let distance):
 default:
   print("Not on an axis")
 }
-// "On an axis, 9 from the origin" 를 출력합니다.
+// "On an axis, 9 from the origin" 를 인쇄합니다.
 ```
 
-위의 `case` 는 두 개의 '유형 (patterns)' 을 가지고 있습니다: `(let distance, 0)` 은 x-축 위에 있는 점에 해당하며, `(0, let distance)` 는 y-축 위에 있는 점에 해당합니다. 두 '유형' 모두 `distance` 에 대한 '연결 (binding)' 을 포함하고 있으며 `distance` 는 두 '유형' 모두에서 하나의 '정수' 입니다-이것은 `case` 본문 코드가 `distance` 의 값에 항상 접근할 수 있음을 의미합니다.
+위의 '`case` 절' 은 두 개의 '유형 (patterns)' 을 가지고 있습니다: `(let distance, 0)` 은 x-축 위의 점과 일치하며, `(0, let distance)` 는 y-축 위의 점과 일치합니다. 두 '유형' 모두 `distance` 에 대한 '연결' 을 포함하며 `distance` 는 두 '유형' 모두에서 '정수' 입니다-이는 '`case` 절' 의 본문 코드가 항상 `distance` 에 대한 값에 접근할 수 있음을 의미합니다.
 
 ### Control Transfer Statements (제어 전달 구문)
 
@@ -793,3 +793,5 @@ if #available(`platform name` `version`, `...`, *) {
 [^letter]: 엄밀히 말해서, 영어의 'character' 는 '표의 문자', 'letter' 는 '표음 문자' 를 의미한다고 합니다. 원문에서도 영어 알파벳에 대해서는 꾸준히 'letter' 라고 사용하고 있습니다.
 
 [^the-first-case]: 이것도 앞서 설명한 것처럼, 영어의 'case' 가 '경우' 라는 의미이기 때문에, 영어식으로 말하면 '첫 번째 경우' 라는 자연스러운 문장이 됩니다. 프로그래밍 언어들은 대부분 예전부터 영어 문장과 유사했지만 최근의 프로그래밍 언어들은 특히 영어 문장으로써 더 자연스러워지는 추세입니다.
+
+[^default-case-character]: 이 예제는 '`default` case 절' 을 가지고 있어야, '빠짐없이 철저 (exhaustive)' 하게 됩니다. 왜냐면, `Character` 값이 '엉어 문자' 가 아닌 다른 '유니코드 문자' 를 가질 수도 있기 때문입니다.
