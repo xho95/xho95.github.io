@@ -31,7 +31,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Functions (함수)]({% post_url 2020-06-02-Functions %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
-* [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %})
+* [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
 * [Properties (속성)]({% post_url 2020-05-30-Properties %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Methods (메소드)]({% post_url 2020-05-03-Methods %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
 * [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
