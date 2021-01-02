@@ -627,7 +627,7 @@ print(description)
 
 #### Labeled Statements (이름표를 단 구문)
 
-스위프트는, 복잡한 '제어 흐름 구조' 를 생성하기 위해 반복문과 조건문이 다른 반복문과 조건문을 '중첩 (nest)' 할 수 있습니다. 하지만, 반복문과 조건문은 둘 다 실행을 미리 끝내기 위해 `break` 문을 사용 수 있습니다. 그러므로, `break` 문이 종료하고 싶은 반복문이나 조건문이 어느 것인지 명시하는 것이 유용할 때가 있습니다. 이와 비슷하게, '다중 중첩된 (multiple nested)' 반복문을 가진 경우, `continue` 문이 영향을 줘야하는 반복문이 어느 것인지 명시하는 것이 유용할 수 있습니다.
+스위프트는, 복잡한 '제어 흐름 구조' 를 생성하기 위해 반복문과 조건문이 다른 반복문과 조건문을 '중첩 (nest)' 할 수 있습니다. 하지만, 반복문과 조건문은 둘 다 실행을 미리 끝내기 위해 `break` 문을 사용 수 있습니다. 그러므로, `break` 문이 종료하고 싶은 반복문이나 조건문이 어느 것인지 명시하는 것이 유용할 때가 있습니다. 이와 비슷하게, '다중 중첩된 (multiple nested)' 반복문을 가진 경우, `continue` 문이 영향을 미칠 반복문이 어느 것인지 명시하는 것이 유용할 수 있습니다.
 
 이러한 목표를 달성하기 위해, 반복문 또는 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문은, '이름표를 단 구문 (labeled statment)' 의 실행을 끝내기 위해 '구문 이름표' 와 `break` 문을 같이 사용할 수 있습니다. 반복문은, '이름표를 단 구문' 의 실행을 끝내거나 계속하기 위해 '구문 이름표' 와 `break` 또는 `continue` 문을 같이 사용할 수 있습니다.
 
@@ -690,11 +690,11 @@ print("Game over!")
 
 > 만약 위의 `break` 문에서 `gameLoop` 라는 이름표를 사용하지 않으면, `while` 문이 아닌, `switch` 문을 끊고 나올 것입니다. `gameLoop` 라는 이름표를 사용하는 것은 종료해야 하는 제어문이 어느 것인지를 명확하게 만듭니다.
 >
-> 반복문의 다음 '회차 (iteration)' 로 건너뛰기 위해 `gameLoop` 이름표를 써서 `continue gameLoop` 라고 꼭 호출해야만 할 필요는 없습니다. 이 게임에는 반복문이 하나만 있어서, `continue` 문이 영향을 미칠 반복문이 어떤 것인지 모호할 일이 없습니다. 하지만, `continue` 문에 `gameLoop` 이름표를 사용한다고 문제될 건 아무 것도 없습니다. 이렇게 하면 `break` 문에 짝이 되어 일관성이 있으며 게임 로직을 좀 더 명확하게 읽고 이해하도록 도와줍니다.
+> 다음 반복문 '회차' 로 넘어 가려고 `continue gameLoop` 를 호출할 때 엄밀히 말해서 `gameLoop` 라는 이름표를 꼭 사용해야 하는 건 아닙니다. 이 게임에는 한 개의 반복문만 있으므로, `continue` 문이 어느 반복문에 영향을 미치는 지가 모호하지 않습니다. 하지만, `continue` 문과 `gameLoop` 이름표를 같이 사용하는 것은 문제가 전혀 없습니다. 이렇게 하는 것은 `break` 문이 이름표를 사용하는 것과 나란하여 일관성이 있으며 게임 로직을 읽고 이해하기 더 명확하게 만들도록 도와둡니다.
 
 ### Early Exit (조기 탈출문)
 
-`guard` 문은, `if` 문 처럼, '표현식 (expression)' 의 '불리언 값 (Boolean value)' 에 따라 구문을 실행합니다. `guard` 문을 사용하면 `guard` 문 이 후의 코드를 실행하려면 조건이 반드시 '참 (true)' 일 것을 요구하게 됩니다. `if` 문과는 다르게, `guard` 문에는 항상 `else` 절이 있습니다-조건이 '참 (true)' 이 아닐 경우 `else` 절 안에 있는 코드가 실행됩니다.
+`guard` 문은, `if` 문 같이, 표현식의 '불리언 (Boolean) 값' 에 따라 구문을 실행합니다. `guard` 문은 `guard` 문 이후의 코드를 실행하기 위해서는 반드시 조건이 '참 (true)' 이기를 요구하기 위해 사용합니다. `if` 문과는 다르게, `guard` 문은 항상 `else` 절을 가집니다-`else` 절 안의 코드는 조건이 '참' 이 아닐 경우 실행됩니다.
 
 ```swift
 func greet(person: [String: String]) {
@@ -713,46 +713,44 @@ func greet(person: [String: String]) {
 }
 
 greet(person: ["name": "John"])
-// "Hello John!" 를 출력합니다.
-// "I hope the weather is nice near you." 를 출력합니다.
+// "Hello John!" 을 인쇄합니다.
+// "I hope the weather is nice near you." 를 인쇄합니다.
 greet(person: ["name": "Jane", "location": "Cupertino"])
-// "Hello Jane!" 를 출력합니다.
-// "I hope the weather is nice in Cupertino." 를 출력합니다.
+// "Hello Jane!" 을 인쇄합니다.
+// "I hope the weather is nice in Cupertino." 를 인쇄합니다.
 ```
 
-`guard` 문의 조건에 부합하는 경우, 코드 실행은 `guard` 문의 '닫는 중괄호 뒤에서부터 계속됩니다. (`guard` 문의) 조건부에서 '옵셔널 연결 (optional binding)' 로 값을 할당한 변수나 상수는 어떤 것이든 `guard` 문이 있는 코드 블럭의 나머지 부분에서 사용할 수 있습니다.
+`guard` 문의 조건에 부합하면, `guard` 문의 '닫는 중괄호' 뒤에서 코드 실행을 계속합니다. 조건 절에서 '옵셔널 연결 (optional binding)' 을 사용하여 값을 할당한 어떤 변수나 상수라도 `guard` 문이 있는 코드 블럭의 나머지에서 사용 가능합니다.
 
-해당 조건에 부합하지 않는 경우, `else` 분기 내의 코드를 실행합니다. 이 분기는 `guard` 문이 있는 코드 블록을 반드시 탈출하도록 '제어권 (control)' 을 전달해야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 와 같은 '제어 전송 구문 (control transfer statement)' 으로 할 수 있으며, 아니면 아예 `fatalError(_:file:line:)` 같이, 반환을 하지 않는 함수나 메소드를 호출할 수도 있습니다.
+해당 조건에 부합하지 않으면, `else` 분기 안의 코드를 실행합니다. 해당 분기는 반드시 `guard` 문이 있는 코드 블록을 탈출하도록 '제어 (control)' 를 옯겨야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 같은 '제어 전달문' 으로 할 수도 있고, 아니면 `fatalError(_:file:line:)` 같은, 반환하지 않는 함수나 메소드를 호출할 수도 있습니다.
 
-'필수 조건 (requirements)' 에 `guard` 문을 사용하면, `if` 문으로 같은 검사를 할 때와 비교해서, 코드의 가독성이 좋아집니다. 일반적으로 실행되는 코드는 `else` 블럭을 쓰지 않고도 작성할 수 있으며, 해당 필수 조건과 이 조건을 위반했을 때 이를 처리할 코드를 나란히 배치할 수 있습니다.
+'필수 조건 (requirements)'[^requirements] 에 `guard` 문을 사용하는 것은, 같은 검사를 `if` 문으로 하는 것과 비교하여, 코드의 가독성을 향상시킵니다. 이는 전형적인 실행 코드를 '`else` 블럭' 으로 포장하지 않고도 작성하도록 해주며, 필수 조건을 위반했을 때 처리하는 코드를 필수 조건과 나란히 배치할 수 있게 해줍니다.
 
 ### Checking API Availability (API 사용 가능성 검사하기)
 
-스위프트는 API 사용 가능성을 검사하는 기능을 내장하고 있어서, 주어진 배포 대상에서 사용할 수 없는 API 를 우연히 사용하는 일이 없게 보장해 줍니다.
+스위프트는 API 의 사용 가능성을 검사하는 '내장 지원 기능 (built-in support)' 을 가지고 있어서, 예기치 않게 주어진 '배포 대상 (deployment target)' 에서는 사용 불가능한 API 를 사용하진 않도록 보장합니다.
 
-컴파일러는 SDK 에 있는 사용 가능성 정보를 사용하여 코드에서 사용한 모든 API 가 프로젝트에서 지정한 배포 대상에서 사용 가능한 지를 검증합니다. 사용할 수 없는 API 를 사용하려고 하면 스위프트가 컴파일 시간에 에러를 보고합니다.
+컴파일러는 코드에서 사용한 모든 API 가 프로젝트에서 지정한 '배포 대상' 에서 사용 가능한지 검증하기 위해 SDK[^SDK] 에 있는 '사용 가능성 정보' 를 사용합니다.[^availability-information] 사용 불가능한 API 를 사용하려고 하면 스위프트가 컴파일 시간에 에러를 보고합니다.
 
-`if` 나 `guard` 문에서 _사용 가능성 조건 (availability condition)_ 을 사용하면, 사용하려는 API 가 실행 시간에 사용 가능한 것인지에 따라, 코드 블럭을 조건부로 실행할 수 있습니다. 컴파일러는 해당 코드 블럭의 API 가 사용 가능한 지 검증할 때 '사용 가능성 조건 (availability condition)' 에 있는 정보를 사용합니다.
+_사용 가능성 조건 (availability condition)_[^availability-condition] 은 `if` 문이나 `guard` 문 안에서, 사용하고 싶은 API 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭에 있는 API 가 사용 가능한지 검증할 때 '사용 가능성 조건' 의 정보를 사용합니다.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
-  // iOS 에서는 iOS 10 API 를 사용하고, macOS 에서는 macOS 10.12 API 를 사용합니다.
+  // iOS 에서는 'iOS 10' API 를 사용하고, macOS 에서는 'macOS 10.12' API 를 사용합니다.
 } else {
-  // 이전 버전의 iOS 와 macOS API 를 사용합니다.
+  // 뒤로 물러나서 이전 iOS 와 macOS API 를 사용합니다.
 }
 ```
 
-위의 '사용 가능성 조건' 은 iOS 의 경우, iOS 10 이상에서만 `if` 문의 본문을 실행하도록 지정하고; macOS 의 경우, macOS 10.12 이상에서만 실행하도록 지정합니다. 마지막 인자인, `*` 는 필수이며, 자신의 대상으로 지정한 `if` 본문이 실행되는 최소한의 배포 대상, 을 지정하는 것입니다.
+위 '사용 가능성 조건' 은 iOS 라면, 'iOS 10' 이후 버전에서만; macOS 라면, 'macOS 10.12' 이후 버전에서만; `if` 문의 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수로 대상에서 지정한 것은 '최소 배포 대상' 이며 그 외 어떤 '플랫폼 (platform)' 에서든 `if` 문의 본문을 실행하라고 지정하는 것입니다.
 
-일반적인 양식의, '사용 가능성 조건' 은 '플랫폼 이름과 버전 (platform names and versions)' 목록으로 되어 있습니다. 플랫폼 이름으로는 `iOS`, `macOS`, `watchOS`, 그리고 `tvOS` 등을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. iOS 8 이나 macOS 10.10 과 같이 '주요 버전 번호 (major version numbers)' 를 지정하는 것 외에도, iOS 11.2.6 과 macOS 10.13.3 과 같이 '부가 버전 번호' 도 지정할 수 있습니다.
+일반적인 형식의, '사용 가능성 조건' 은 '플랫폼 이름과 버전' 목록을 받아 들입니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 그리고 `tvOS` 같은 것을 사용합니다-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. 'iOS 8' 이나 'macOS 10.10' 같이 '주요 (major) 버전 번호' 를 지정하는 것에 더하여, 'iOS 11.2.6' 및 'macOS 10.13.3' 같은 '보조 (minor) 버전 번호' 도 지정할 수 있습니다.
 
-```swift
-if #available(`platform name` `version`, `...`, *) {
-  `statements to execute if the APIs are available`
-} else {
-  `fallback statements to execute if the APIs are unavailable`
+if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능할 때 실행하는 구문`<br />
+} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능할 때 실행하는 구문`<br />
 }
-```
 
 ### 다음 장
 
@@ -793,3 +791,11 @@ if #available(`platform name` `version`, `...`, *) {
 [^the-first-case]: 이것도 앞서 설명한 것처럼, 영어의 'case' 가 '경우' 라는 의미이기 때문에, 영어식으로 말하면 '첫 번째 경우' 라는 자연스러운 문장이 됩니다. 프로그래밍 언어들은 대부분 예전부터 영어 문장과 유사했지만 최근의 프로그래밍 언어들은 특히 영어 문장으로써 더 자연스러워지는 추세입니다.
 
 [^default-case-character]: 이 예제는 '`default` case 절' 을 가지고 있어야, '빠짐없이 철저 (exhaustive)' 하게 됩니다. 왜냐면, `Character` 값이 '엉어 문자' 가 아닌 다른 '유니코드 문자' 를 가질 수도 있기 때문입니다.
+
+[^requirements]: 여기서의 '필수 조건 (requirements)' 는 `Protocol` 의 '필수 조건 (requirements)' 과 개념은 비슷하지만 용어 자체로는 다른 것입니다. 이 역시 스위프트가 일상 영어를 많이 사용하면서 일어나는 현상입니다.
+
+[^SDK]: 'SDK' 는 '소프트웨어 개발 키트 (Software development kit)' 의 약자입니다. '엑스코드 (Xcode)' 같은 '통합 개발 환경 (IDE; Integrated Development Environment)' 과는 의미가 조금 다릅니다. '통합 개발 환경' 이 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이라면, '소프트웨어 개발 키트' 는 개발에 필요한, 컴파일러와 패키지 등을 포함한, 실제 '도구' 들을 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
+
+[^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, '스위프트 4.0 용 SDK' 로 '스위프트 5.0' 에 있는 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
+
+[^availability-condition]: '사용 가능성 조건 (avaailability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, '컴파일러 제어문' 은 컴파일 시간에 동작하는 반면, '사용 가능성 조건' 은 '실행 시간' 에 동작한다는 점에서, 이 둘은 서로 완전히 다른 것입니다.
