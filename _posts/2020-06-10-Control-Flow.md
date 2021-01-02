@@ -694,7 +694,7 @@ print("Game over!")
 
 ### Early Exit (조기 탈출문)
 
-`guard` 문은, `if` 문 처럼, '표현식 (expression)' 의 '불리언 값 (Boolean value)' 에 따라 구문을 실행합니다. `guard` 문을 사용하면 `guard` 문 이 후의 코드를 실행하려면 조건이 반드시 '참 (true)' 일 것을 요구하게 됩니다. `if` 문과는 다르게, `guard` 문에는 항상 `else` 절이 있습니다-조건이 '참 (true)' 이 아닐 경우 `else` 절 안에 있는 코드가 실행됩니다.
+`guard` 문은, `if` 문 같이, 표현식의 '불리언 (Boolean) 값' 에 의존하여 구문을 실행합니다. `guard` 문은 `guard` 문 이후의 코드를 실행하기 위해서는 반드시 조건이 '참 (true)' 이기를 요구하기 위해 사용합니다. `if` 문과는 다르게, `guard` 문은 항상 `else` 절을 가집니다-`else` 절 안의 코드는 조건이 '참' 이 아닐 경우 실행됩니다.
 
 ```swift
 func greet(person: [String: String]) {
@@ -713,18 +713,18 @@ func greet(person: [String: String]) {
 }
 
 greet(person: ["name": "John"])
-// "Hello John!" 를 출력합니다.
-// "I hope the weather is nice near you." 를 출력합니다.
+// "Hello John!" 을 인쇄합니다.
+// "I hope the weather is nice near you." 를 인쇄합니다.
 greet(person: ["name": "Jane", "location": "Cupertino"])
-// "Hello Jane!" 를 출력합니다.
-// "I hope the weather is nice in Cupertino." 를 출력합니다.
+// "Hello Jane!" 을 인쇄합니다.
+// "I hope the weather is nice in Cupertino." 를 인쇄합니다.
 ```
 
-`guard` 문의 조건에 부합하는 경우, 코드 실행은 `guard` 문의 '닫는 중괄호 뒤에서부터 계속됩니다. (`guard` 문의) 조건부에서 '옵셔널 연결 (optional binding)' 로 값을 할당한 변수나 상수는 어떤 것이든 `guard` 문이 있는 코드 블럭의 나머지 부분에서 사용할 수 있습니다.
+`guard` 문의 조건에 부합하면, `guard` 문의 '닫는 중괄호' 뒤에서 코드 실행을 계속합니다. 조건 절에서 '옵셔널 연결 (optional binding)' 을 사용하여 값을 할당한 어떤 변수나 상수라도 `guard` 문이 있는 코드 블럭의 나머지에서 사용 가능합니다.
 
-해당 조건에 부합하지 않는 경우, `else` 분기 내의 코드를 실행합니다. 이 분기는 `guard` 문이 있는 코드 블록을 반드시 탈출하도록 '제어권 (control)' 을 전달해야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 와 같은 '제어 전송 구문 (control transfer statement)' 으로 할 수 있으며, 아니면 아예 `fatalError(_:file:line:)` 같이, 반환을 하지 않는 함수나 메소드를 호출할 수도 있습니다.
+해당 조건에 부합하지 않으면, `else` 분기 안의 코드를 실행합니다. 해당 분기는 반드시 `guard` 문이 있는 코드 블록을 탈출하도록 '제어 (control)' 를 옯겨야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 같은 '제어 전달문' 으로 할 수도 있고, 아니면 `fatalError(_:file:line:)` 같은, 반환하지 않는 함수나 메소드를 호출할 수도 있습니다.
 
-'필수 조건 (requirements)' 에 `guard` 문을 사용하면, `if` 문으로 같은 검사를 할 때와 비교해서, 코드의 가독성이 좋아집니다. 일반적으로 실행되는 코드는 `else` 블럭을 쓰지 않고도 작성할 수 있으며, 해당 필수 조건과 이 조건을 위반했을 때 이를 처리할 코드를 나란히 배치할 수 있습니다.
+'필수 조건 (requirements)' 에 `guard` 문을 사용하는 것은, 같은 검사를 `if` 문으로 하는 것과 비교하여, 코드의 가독성을 향상시킵니다. 이는 전형적인 실행 코드를 '`else` 블럭' 으로 포장하지 않고도 작성하도록 해주며, 필수 조건을 위반했을 때 처리하는 코드를 필수 조건과 나란히 배치할 수 있게 해줍니다.
 
 ### Checking API Availability (API 사용 가능성 검사하기)
 
