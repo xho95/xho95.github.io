@@ -623,37 +623,31 @@ print(description)
 
 `switch` 문의 실행을 종료한 후, `print(_:separator:terminator:)` 함수가 수의 설명을 인쇄합니다. 이 예제에서, 수 `5` 는 '소수' 라고 올바르게 식별됩니다.
 
-> `fallthrough` 키워드는 실행이 '빠져 드는 (fall into)' '`switch` case 절' 에 대한 조건은 검사하지 않습니다. `fallthrough` 키워드는, C 의 표준 `swtich` 문 작동 방식 처럼, 단순히 코드 실행을 그 다음 'case 절' (또는 '`default` case 절') 내의 구문으로 직접 이동하게 만듭니다.
+> `fallthrough` 키워드는 '빠져 들어 (fall into)' 실행할 '`switch` case 절' 의 조건은 검사하지 않습니다. `fallthrough` 키워드는 단순히, C 의 표준 `swtich` 문 작동 방식에서 처럼, 코드 실행을 그 다음 'case 절' (또는 '`default` case 절') 의 구문으로 직접 이동 시킵니다.
 
-#### Labeled Statements (이름표 달린 구문)
+#### Labeled Statements (이름표를 단 구문)
 
-스위프트는, 복잡한 '제어 흐름 구조' 를 생성하기 위해 반복문과 조건문을 다른 반복문과 조건문 안에 '중첩 (nest)' 할 수 있습니다. 하지만, 반복문과 조건문 둘다 `break` 문을 사용하다보면 실행을 너무 이르게 종료할 수 있습니다. 그러므로, `break` 문이 어떤 반복문이나 어떤 조건문을 종료할 것인지를 명시하는 것이 좋을 때가 있습니다. 이와 비슷하게, '다중 중첩 반복문 (multiple nested loops)' 에서는, `continue` 문이 어떤 반복문에 적용될 지를 명시하는 것이 좋을 수 있습니다.
+스위프트는, 복잡한 '제어 흐름 구조' 를 생성하기 위해 반복문과 조건문이 다른 반복문과 조건문을 '중첩 (nest)' 할 수 있습니다. 하지만, 반복문과 조건문은 둘 다 실행을 미리 끝내기 위해 `break` 문을 사용 수 있습니다. 그러므로, `break` 문이 종료하고 싶은 반복문이나 조건문이 어느 것인지 명시하는 것이 유용할 때가 있습니다. 이와 비슷하게, '다중 중첩된 (multiple nested)' 반복문을 가진 경우, `continue` 문이 영향을 줘야하는 반복문이 어느 것인지 명시하는 것이 유용할 수 있습니다.
 
-이런 최총 목표를 달성하기 위해, 반복 구문이나 조건 구문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건 구문에서는, 구문 이름표와 `break` 문을 같이 사용하여 '이름표 달린 구문 (labeled statement)' 의 실행을 종료할 수 있습니다. 반복 구문에서는, '이름표 달린 구문' 에 `break` 또는 `continue` 문을 같이 사용하여 '이름표 달린 구문' 의 실행을 종료하거나 계속하게 할 수 있습니다.
+이러한 목표를 달성하기 위해, 반복문 또는 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문은, '이름표를 단 구문 (labeled statment)' 의 실행을 끝내기 위해 '구문 이름표' 와 `break` 문을 같이 사용할 수 있습니다. 반복문은, '이름표를 단 구문' 의 실행을 끝내거나 계속하기 위해 '구문 이름표' 와 `break` 또는 `continue` 문을 같이 사용할 수 있습니다.
 
-'이름표 달린 구문' 을 지시하려면 해당 구문의 '도입자 (introducer)' 키워드와 같은 줄에 이름표를 붙이고, 뒤에 '콜론 (colon; `:`)' 을 써주면 됩니다. 다음은 `while` 반복문에 대한 이 '구문 표현' 의 예제이며, 이 원리는 모든 반복문과 `switch` 에서도 동일합니다:
+'이름표를 단 구문' 은 '구문 도입자 (introducer)' 키워드와 같은 줄에 이름표를 달고, 뒤에 콜론을 붙이는 것으로, 지시합니다. 아래는 `while` 반복문에 대한 '구문 표현' 의 한 예제로, 이 원리는 모든 반복문과 `switch` 문에 대해서 동일합니다:
 
-`label name (이름표의 이름)`: while `condition (조건)` {
-    `statements (구문)`
+`label name-이름표 이름`: while `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-```swift
-label name: while condition {
-    statements
-}
-```
+다음 예제는 `break` 문과 `continue` 문을 '이름표를 단 `while` 반복문' 과 같이 사용하여 이 장 앞에서 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개조한 버전입니다. 단 이번에는, 게임이 부가적인 규칙을 가집니다:
 
-다음 예제는 이름표 달린 `while` 반복문에 `break` 문과 `continue` 문을 사용하여 이 장 앞에서 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개선한 버전입니다. 단 이번에는, 게임에 부가적인 규칙이 있습니다:
+* 승리하려면, 반드시 _정확하게 (exactly)_ '25 번 정사각형' 위에 도착해야 합니다.
 
-* 승리하려면, 반드시 _정확하게 (exactly)_ '정사각형 25' 에 도착해야 합니다.
+만약 특정 '주사위 굴림' 이 '25 번 정사각형' 을 넘어서도록 만든다면, 반드시 정확하게 '25 번 정사각형' 위에 도착하기 위한 수를 굴릴 때까지 다시 굴려야 합니다.
 
-특정한 '주사위 굴림 값' 이 '정사각형 25' 을 넘어서게 만들 경우, '정사각형 25' 에 정확하게 도착하는 수가 나올 때까지 반드시 다시 굴려야 합니다.
-
-게임 판은 이전과 똑같습니다.
+게임판은 이전과 똑같습니다.
 
 ![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
 
-`finalSquare`, `board`,  `square`, 그리고 `diceRoll` 의 값도 이전과 똑같은 방법으로 초기화합니다:
+`finalSquare`, `board`,  `square`, 및 `diceRoll` 의 값도 이전과 똑같은 방법으로 초기화합니다:
 
 ```swift
 let finalSquare = 25
@@ -664,9 +658,9 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임은 `while` 반복문과 `switch` 문을 사용하여 게임 로직을 구현합니다. `while` 반복문은 `gameLoop` 라는 '구문 이름표 (statement label)' 를 가지고 자신이 '뱀과 사다리' 게임의 '주요 게임 반복문' 임을 지시합니다.
+이 버전의 게임은 '게임 로직' 을 구현하기 위해 `while` 반복문과 `switch` 문을 사용합니다. `while` 반복문은 자신이 '뱀과 사다리' 게임의 '주요 게임 반복문' 임을 나타내기 위해 `gameLoop` 라는 '구문 이름표' 를 가지고 있습니다.
 
-`while` 반복문의 조건은 `while square != finalSquare` 이며, 이는 반드시 정확하게 '정사각형 25' 에 도착해야 함을 반영합니다.
+`while` 반복문의 조건은, 반드시 정확하게 '25 번 정사각형' 위에 도착해야 함을 반영하는, `while square != finalSquare` 입니다.
 
 ```swift
 gameLoop: while square != finalSquare {
@@ -674,13 +668,13 @@ gameLoop: while square != finalSquare {
   if diceRoll == 7 { diceRoll = 1 }
   switch square + diceRoll {
   case finalSquare:
-    // diceRoll will move us to the final square, so the game is over
+    // diceRoll 이 최종 정사각형으로 이동시킬 것이므로, 게임이 끝나게 됩니다.
     break gameLoop
   case let newSquare where newSquare > finalSquare:
-    // diceRoll will move us beyond the final square, so roll again
+    // diceRoll 이 최종 정사각형 너머로 이동시킬 것이므로, 다시 굴려야 합니다.
     continue gameLoop
   default:
-    // this is a valid move, so find out its effect
+    // 이는 유효한 이동이므로, 그 영향을 알아 냅니다.
     square += diceRoll
     square += board[square]
   }
@@ -688,13 +682,13 @@ gameLoop: while square != finalSquare {
 print("Game over!")
 ```
 
-각각의 반복을 시작할 때마다 주사위를 굴립니다. 이 반복문은 참여자를 곧 바로 이동하는 대신, `switch` 문으로 이동 결과를 검토하여 이동할 수 있는 지를 먼저 확인합니다.
+각각의 반복을 시작할 때마다 주사위를 굴립니다. 반복문은, 참가자를 곧바로 이동하는 대신, 이동 결과를 고려해서 이동을 허용해도 되는지 결정하기 위해 `switch` 문을 사용합니다.
 
-* '주사위 굴림 값' 이 참여자를 '최종 정사각형' 으로 이동시킨다면, 게임이 끝난 것입니다. `break gameLoop` 구문은 '제어권 (control)' 을 `while` 반복문 밖에 있는 코드의 첫 번째 줄로 전달하는데, 이는 게임을 종료합니다.
-* '주사위 굴림 값' 이 참여자를 '최종 정사각형' 너머로 이동시킨다면, 이 이동은 무효한 것이며 참여자는 (주사위를) 다시 굴려야 합니다. `continue gameLoop` 구문은 현재의 `while` 반복 '회차 (iteration)' 을 종료하고 그 다음 반복 '회차' 를 시작합니다.
-* 이외의 다른 모든 경우에는, '주사위 굴림 값' 이 유효합니다. 참여자는 `diceRoll` 개의 정사각형 만큼 앞으로 이동하고, 게임 로직은 뱀인지 사다리인지를 검사합니다. 이제 반복을 종료하고, '제어권 (control)' 이 `while` 조건으로 돌아와서 다른 '차례 (턴; turn)' 이 필요한지를 결정합니다.
+* 만약 '주사위 굴림 값' 이 참가자를 '최종 정사각형' 위로 이동시킨다면, 게임이 끝납니다. `break gameLoop` 문은 '제어' 를 `while` 반복문 밖의 첫 번째 코드 줄로 옮기며, 여기서 게임을 끝냅니다.
+* 만약 '주사위 굴림 값' 이 참가자를 '최종 정사각형' 너머로 이동시킨다면, 이 이동은 무효이며 참가자는 주사위를 다시 굴려야 합니다. `continue gameLoop` 문은 `while` 반복문의 현재 '회차 (iteration)' 을 끝내고 그 다음 반복 '회차' 를 시작합니다.
+* 그 외 다른 모든 경우의, '주사위 굴림 값' 은 유효한 이동입니다. 참가자는 `diceRoll` 개의 정사각형 만큼 앞으로 이동하고, '게임 로직' 은 뱀이든 사다리든 어떤 것이 있는지 검사합니다. 그런 다음 반복을 끝내고, 또 다른 '차례 (turn)' 가 필요한지를 결정하기 위해 '제어 (control)' 가 `while` 조건으로 반환됩니다.
 
-> 위의 `break` 문에서 `gameLoop` 이름표를 사용하지 않으면, `while` 문이 아니라, `switch` 문을 중단하게 됩니다. `gameLoop` 이름표를 사용하는 것은 끝나는 제어문이 어떤 것인지를 명확하게 만들어 줍니다.
+> 만약 위의 `break` 문에서 `gameLoop` 라는 이름표를 사용하지 않으면, `while` 문이 아닌, `switch` 문을 끊고 나올 것입니다. `gameLoop` 라는 이름표를 사용하는 것은 종료해야 하는 제어문이 어느 것인지를 명확하게 만듭니다.
 >
 > 반복문의 다음 '회차 (iteration)' 로 건너뛰기 위해 `gameLoop` 이름표를 써서 `continue gameLoop` 라고 꼭 호출해야만 할 필요는 없습니다. 이 게임에는 반복문이 하나만 있어서, `continue` 문이 영향을 미칠 반복문이 어떤 것인지 모호할 일이 없습니다. 하지만, `continue` 문에 `gameLoop` 이름표를 사용한다고 문제될 건 아무 것도 없습니다. 이렇게 하면 `break` 문에 짝이 되어 일관성이 있으며 게임 로직을 좀 더 명확하게 읽고 이해하도록 도와줍니다.
 
@@ -759,6 +753,10 @@ if #available(`platform name` `version`, `...`, *) {
   `fallback statements to execute if the APIs are unavailable`
 }
 ```
+
+### 다음 장
+
+[Functions (함수) > ]({% post_url 2020-06-02-Functions %})
 
 ### 참고 자료
 

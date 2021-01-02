@@ -233,7 +233,7 @@ case .suppressed:
 
 '이름표 달린 구문 (labeled statement)' 의 영역은 '구문 이름표' 뒤의 전체 구문입니다. '이름표 달린 구문' 은 중첩할 수 있지만, 각각의 '구문 이름표' 는 반드시 유일해야 합니다.
 
-더 자세한 정보와 구문 이름표를 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Labeled Statements (이름표 달린 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-달린-구문) 을 참고하기 바랍니다.
+더 자세한 정보와 구문 이름표를 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Labeled Statements (이름표를 단 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표를-단-구문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
@@ -257,7 +257,7 @@ break `label name-이름표 이름`
 
 두 경우 모두, 프로그램 제어를 둘러싼 반복문이나 `switch` 문 뒤의 코드, 만약에 있다면, 첫 번째 줄로 전달합니다.
 
-`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 달린 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-달린-구문) 을 참고하기 바랍니다.
+`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표를 단 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표를-단-구문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -277,7 +277,7 @@ continue `label name-이름표 이름`
 
 `for` 문에서, `continue` 문을 실행한 후에도 '증가 표현식 (increment expression)' 은 여전히 평가되는데, 이는 '증가 표현식' 이 반복문의 본문을 실행한 후에 평가되기 때문입니다.
 
-`continue` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 달린 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-달린-구문) 을 참고하기 바랍니다.
+`continue` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표를 단 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표를-단-구문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A CONTINUE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
