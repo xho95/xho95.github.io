@@ -6,17 +6,15 @@ date:   2020-06-02 10:00:00 +0900
 categories: Swift Language Grammar Function
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Functions](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 부분[^Functions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Functions](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 부분[^Functions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Functions (함수)
 
-_함수 (functions)_ 는 지정된 작업을 수행하는 '독립적인 (self-contained)' 코드 조각입니다. 함수는 그것이 뭔지를 식별하도록 이름을 가지며, 작업을 수행할 필요가 있을 때 이 이름을 사용하여 함수를 "호출 (call)" 합니다.
+_함수 (functions)_ 는 지정된 작업을 수행하는 '독립적인 (self-contained)' 코드 조각입니다. 함수에는 뭘하는지 식별하기 위한 이름을 부여하며, 이 이름은 필요한 작업을 하기 위해 함수를 "호출 (call)" 할 때 사용합니다.
 
-스위프트의 '통합된 함수 구문 표현 (unified function syntax)' 은 충분히 유연하기 때문에, 매개 변수 이름이 없는 간단한 C-스타일 함수에서 부터 각각의 매개 변수 마다 이름과 인자 이름표가 있는 복잡한 오브젝티브-C-스타일의 메소드까지 뭐든지 표현할 수 있습니다. 매개 변수는 함수 호출을 단순화하기 위해 기본 값을 제공 할 수도 있고, 입-출력 매개 변수의 형태로 전달해서, 함수 실행을 완료했을 때 전달된 변수를 수정하도록 할 수도 있습니다.
+스위프트의 '통일된 (unified) 함수 구문 표현' 은 매개 변수 이름이 없는 단순한 C-스타일 함수에서 각 매개 변수마다 이름과 '인자 이름표 (argument labels)' 가 있는 복잡한 오브젝티브-C-스타일의 메소드까지 어떤 것이든 표현할 만큼 충분히 유연합니다. 매개 변수는 함수 호출을 단순화하기 위해 '기본 설정 (default) 값' 을 제공 할 수 있으며, 한 번 함수의 실행을 완료하면 전달된 변수를 수정하는, '입-출력 (in-out) 매개 변수' 로 전달될 수도 있습니다.
 
-스위프트의 모든 함수는, 함수의 매개 변수 타입과 반환 타입으로 이루어진, 타입을 가지게 됩니다. 이 타입은 스위프트에 있는 다른 모든 타입처럼 사용할 수 있어서, 함수를 다른 함수의 매개 변수로 전달하거나, 함수에서 함수를 반환하는 것을 쉽게 만들어 줍니다. 함수를 다른 함수 내에서 작성하여 유용한 기능을 '중첩 함수 (nested function)' 영역 범위로 은닉할 수도 있습니다.
+스위프트에 있는 모든 함수는, 함수의 매개 변수 타입과 반환 타입으로 구성된, 타입을 가집니다. 이 타입은 스위프트의 다른 어떤 타입인 듯 사용할 수 있으며, 이는 함수를 다른 함수의 매개 변수로 전달하기 쉽게, 함수에서 함수를 반환하기 쉽게 만들어 줍니다. 함수는 유용한 기능을 '중첩 함수 (nested function)' 영역 내로만 은닉하기 위해 다른 함수 내에서 작성될 수도 있습니다.
 
 ### Defining and Calling Functions (함수 정의하고 호출하기)
 
