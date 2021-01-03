@@ -78,7 +78,7 @@ print(sayHelloWorld())
 
 어떤 매개 변수도 받지 않을지라도, 함수 정의에는 함수 이름 뒤의 괄호가 여전히 필요합니다. 함수를 호출할 때는 함수 이름 뒤에 빈 괄호 쌍도 붙여줘야 합니다.
 
-#### Functions with Multiple Parameters (매개 변수가 여러 개인 함수)
+#### Functions with Multiple Parameters (다중 매개 변수를 가진 함수)
 
 함수는 여러 개의 입력 매개 변수를 가질 수 있는데, 이를 작성할 때는 함수 괄호 안에, 쉼표로 구분해 줍니다.
 
