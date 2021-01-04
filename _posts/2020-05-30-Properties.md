@@ -161,7 +161,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 ![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
 
-#### Shorthand Setter Declaration (설정자 선언의 약칭 표현)
+#### Shorthand Setter Declaration (설정자 선언의 줄임 표현)
 
 계산 속성의 '설정자 (setter)' 가 설정할 새 값에 대한 이름을 정의하지 않을 경우, 기본 제공되는 이름인 `newValue` 를 사용합니다. 다음은 이 '약칭 표현법 (shorthand notation)' 의 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
 
@@ -183,7 +183,7 @@ struct AlternativeRect {
 }
 ```
 
-#### Shorthand Getter Declaration (획득자 선언의 약칭 표현)
+#### Shorthand Getter Declaration (획득자 선언의 줄임 표현)
 
 '획득자 (getter)' 의 전체 본문이 '단일 표현식 (single expression)' 으로 되어 있는 경우, '획득자' 는 암시적으로 그 표현식을 반환합니다. 다음은 이 '약칭 표현법' 과 '설정자' 에 대한 '약칭 표현법' 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
 
