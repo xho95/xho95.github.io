@@ -127,7 +127,7 @@ var `variable name-변수 이름`: `type-타입` {<br />
 
 '획득자 (getter)' 는 값을 읽는 데 사용하고, '설정자 (setter)' 는 값을 쓰는 데 사용합니다. 'setter 절' 은 선택 사항이며, 획득자만 필요할 때는, [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 두 절 모두 생략하고 요청한 값을 직접 간단히 반환할 수 있습니다. 하지만 'setter 절' 을 제공하는 경우라면, 반드시 'getter 절' 도 제공해야 합니다.
 
-_설정자 이름 (setter name)_ 과 이를 둘러싼 괄호는 선택 사항입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 에 대한 매개 변수의 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (설정자 선언의 약칭 표현)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-설정자-선언의-약칭-표현) 에서 설명한 것처럼, '설정자' 에 대한 '기본 설정 매개 변수 이름' 은 `newValue` 가 됩니다.
+_설정자 이름 (setter name)_ 과 이를 둘러싼 괄호는 선택 사항입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 에 대한 매개 변수의 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (설정자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-설정자-선언의-줄임-표현) 에서 설명한 것처럼, '설정자' 에 대한 '기본 설정 매개 변수 이름' 은 `newValue` 가 됩니다.
 
 '이름 있는 저장 값'[^stored-named-values] 과 '저장 변수 속성' 과는 다르게, '이름 있는 계산 값' 의 값 또는 '계산 속성' 은 메모리에 저장되지 않습니다.
 

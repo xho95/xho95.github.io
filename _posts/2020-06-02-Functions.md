@@ -138,7 +138,7 @@ printWithoutCounting(string: "hello, world")
 
 여러 값을 하나의 '복합 (compound) 반환 값' 으로 반환하기 위해 '튜플' 타입을 함수의 반환 타입으로 사용할 수 있습니다.
 
-아래 예제는, `Int` 배열에서 최소 값과 최대 값을 찾는, `minMax(array:)` 라는 함수를 정의합니다:
+아래 예제는, `Int` 값의 배열에서 최소 값과 최대 값을 찾는, `minMax(array:)` 라는 함수를 정의합니다:
 
 ```swift
 func minMax(array: [Int]) -> (min: Int, max: Int) {
@@ -155,31 +155,31 @@ func minMax(array: [Int]) -> (min: Int, max: Int) {
 }
 ```
 
-`minMax(array:)` 함수는 두 개의 `Int` 값을 담고 있는 '튜플 (tuple)' 을 반환합니다. 이 값에는 `min` 과 `max` 라는 이름표가 있어서 함수의 반환 값을 조회할 때 이름으로 접근할 수 있습니다.
+`minMax(array:)` 함수는 두 `Int` 값을 담은 '튜플' 을 반환합니다. 이 값들은 `min` 과 `max` 라는 이름표가 달려 있어서 함수의 반환 값을 조회할 때 이름으로 접근할 수 있습니다.
 
-`minMax(array:)` 함수의 본문은 두 개의 작업 변수인 `currentMin` 과 `currentMax` 를 배열의 첫 번째 정수 값으로 설정하는 것으로 시작합니다. 그런 다음 이 함수는 배열의 나머지 값에 동작을 반복 적용해서 각각의 값이 `currentMin` 과 `currentMax` 값보다 작은 지 큰 지를 하나씩 검사합니다. 마지막으로, 전체의 최소 값과 최대 값이 두 `Int` 값을 가진 튜플 (tuple) 의 형태로 반환됩니다.
+`minMax(array:)` 함수의 본문은 `currentMin` 과 `currentMax` 라는 두 작업 변수에 배열의 첫 번째 정수 값을 설정하는 것으로 시작합니다. 그런 다음 함수는 배열에 남아 있는 각 값에 동작을 반복해서 각 값이 `currentMin` 과 `currentMax` 값보다 큰지 작은지를 검사합니다. 최종적으로, 전체적인 최소 값과 최대 값을 두 `Int` 값을 가진 '튜플' 로써 반환합니다.
 
-함수 반환 타입 부분에서 튜플 멤버 값에 이름을 지어줬기 때문에, 최소 값과 최대 값을 '점 구문 표현 (dot syntax)' 으로 접근하여 가져올 수 있습니다:
+함수의 반환 타입에서 '튜플' 의 멤버 값에 이름을 붙였기 때문에, 최소 값과 최대 값으로 찾은 값을 가져올 때 '점 구문 표현 (dot syntax)' 으로 이에 접근할 수 있습니다:
 
 ```swift
 let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
 print("min is \(bounds.min) and max is \(bounds.max)")
-// "min is -6 and max is 109" 를 출력합니다.
+// "min is -6 and max is 109" 를 인쇄합니다.
 ```
 
-튜플 멤버의 이름은 함수에서 튜플을 반환할 때 지을 필요는 없는데, 이는 함수 반환 타입 부분에서 이미 이름을 지어줬기 때문입니다.
+튜플 멤버의, 이름은 함수의 반환 타입에서 이미 지정했기 때문에, 함수에서 튜플을 반환하는 순간에는 이름을 붙일 필요가 없다는 점을 기억하기 바랍니다.
 
 <p>
 <strong id="optional-tuple-return-types-옵셔널-튜플-반환-타입">Optional Tuple Return Types (옵셔널 튜플 반환 타입)</strong>
 </p>
 
-함수가 반환하는 튜플 타입에서 전체 튜플이 "값이 없음 (no value)" 일 가능성이 있는 경우, _옵셔널 (optional)_ 튜플 반환 타입을 사용하여 이 전체 튜플이 `nil` 이 될 수 있다는 사실을 반영할 수 있습니다. '옵셔널 튜플 반환 타입 (optional tuple return type)' 을 작성하려면 튜플 타입의 '닫음 괄호' 뒤에 물음표를 붙이면 되는데, 가령 `(Int, Int)?` 나 `(String, Int, Bool)?` 같은 것입니다.
+함수가 '튜플 타입' 을 반환할 때 잠재적으로 전체 '튜플' 이 "값이 없을 (no value)" 수도 있는 경우, 전체 '튜플' 이 `nil` 일 수 있다는 사실을 반영하기 위해 '_옵셔널 (optional)_ 튜플 반환 타입' 을 사용할 수 있습니다. '옵셔널 튜플 반환 타입' 은 튜플 타입의 '닫는 괄호' 뒤에, `(Int, Int)?` 나 `(String, Int, Bool)?` 처럼, 물음표를 붙여서 작성합니다.
 
-> `(Int, Int)?` 와 같은 '옵셔널 튜플 타입' 은 `(Int?, Int?)` 와 같은 '옵셔널 타입을 담고 있는 튜플' 과는 다른 것입니다.[^optional-tuple-type] 옵셔널 튜플 타입은, 전체 튜플이 옵셔널인 것이며, 튜플에 있는 각각의 개별 값만 옵셔널인 것이 아닙니다.
+> `(Int, Int)?` 같은 '옵셔널 튜플 타입' 은 `(Int?, Int?)` 같은 '옵셔널 타입을 담은 튜플' 과 서로 다릅니다.[^optional-tuple-type] '옵셔널 튜플 타입' 에서는, 튜플에 있는 개별 값만이 아니라, 전체 튜플이 옵셔널입니다.
 
-위의 `minMax(array:)` 함수는 두 `Int` 값을 담고 있는 튜플을 반환합니다. 하지만, 이 함수는 전달받은 배열의 안전성 검사를 전혀 하지 않고 있습니다. 만약 `array` 인자가 빈 배열을 담고 있다면, 위에서 정의한, `minMax(array:)` 함수는, `array[0]` 에 접근하려고 할 때 '실행 시간 에러 (runtime error)' 를 띄울 것입니다.
+위의 `minMax(array:)` 함수는 두 `Int` 값을 담은 튜플을 반환합니다. 하지만, 이 함수는 전달받은 배열에 대한 어떤 안전성 검사도 하지 않고 있습니다. 만약 `array` 인자가 빈 배열을 담고 있다면, 위에서 정의한, `minMax(array:)` 함수는, `array[0]` 에 접근하려고 할 때 '실행시간 에러' 를 발생시킬 것입니다.
 
-빈 배열을 안전하게 처리하려면, `minMax(array:)` 함수를 작성하면서 옵셔널 튜플 반환 타입을 사용하여 배열이 비었을 때 `nil` 값을 반환하면 됩니다:
+빈 배열을 안전하게 처리하려면, `minMax(array:)` 함수를 '옵셔널 튜플 반환 타입' 으로 작성하며 배열이 비었을 때는 `nil` 값을 반환합니다:
 
 ```swift
 func minMax(array: [Int]) -> (min: Int, max: Int)? {
@@ -197,50 +197,50 @@ func minMax(array: [Int]) -> (min: Int, max: Int)? {
 }
 ```
 
-'옵셔널 연결 (optional binding)' 을 사용하면 `minMax(array:)` 함수가 실제로 튜플 값을 반환하는 지 `nil` 을 반환하는지 검사할 수 있습니다:
+이 버전의 `minMax(array:)` 함수가 실제 튜플 값을 반환하는 지 `nil` 을 반환하는 지 검사하기 위해 '옵셔널 연결 (optional binding)' 을 사용할 수 있습니다:
 
 ```swift
 if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
   print("min is \(bounds.min) and max is \(bounds.max)")
 }
-// "min is -6 and max is 109" 를 출력합니다.
+// "min is -6 and max is 109" 를 인쇄합니다.
 ```
 
 #### Functions With an Implicit Return (암시적으로 반환하는 함수)
 
-함수의 전체 본문이 단일한 표현식으로 되어 있는 경우, 함수는 이 표현식을 암시적으로 반환합니다. 예를 들어, 아래 두 함수 모두 같은 동작을 합니다:
+함수의 전체 본문이 '단일 표현식' 인 경우, 함수는 해당 표현식을 암시적으로 반환합니다. 예를 들어, 아래의 두 함수는 작동 방식이 같습니다:
 
 ```swift
 func greeting(for person: String) -> String {
   "Hello, " + person + "!"
 }
 print(greeting(for: "Dave"))
-// "Hello, Dave!" 를 출력합니다.
+// "Hello, Dave!" 를 인쇄합니다.
 
 func anotherGreeting(for person: String) -> String {
   return "Hello, " + person + "!"
 }
 print(anotherGreeting(for: "Dave"))
-// "Hello, Dave!" 를 출력합니다.
+// "Hello, Dave!" 를 인쇄합니다.
 ```
 
-`greeting(for:)` 함수는 전체 정의가 인사말 메시지를 반환하는 것이며, 이는 곧 이렇게 '단축 양식 (shorter form)' 을 사용할 수 있다는 것을 의미합니다. `anotherGreeting(for:)` 함수는 똑같은 인사말 메시지를, `return` 키워드를 사용하여 더 긴 함수 형태로 반환합니다. 하나의 `return` 줄로만 작성된 함수는 어떤 것이든 이 `return` 을 생략할 수 있습니다.
+`greeting(for:)` 함수의 전체 정의가 반환하는 인사말 메시지인데, 이는 이런 '줄인 형식 (shorter form)' 을 사용할 수 있다는 의미입니다. `anotherGreeting(for:)` 함수는, 더 긴 함수 같이 `return` 키워드를 사용하여, 똑같은 인사말 메시지를 반환합니다. `return` 줄 하나로만 작성된 함수는 어떤 것이든 `return` 을 생략할 수 있습니다.
 
-[Shorthand Getter Declaration (획득자 선언의 약칭 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-약칭-표현) 에서 보게 될 것 처럼, '속성 획득자 (property getter)' 도 암시적인 반환 기능을 사용할 수 있습니다.
+[Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 보게 될 것처럼, '속성 획득자 (property getter)' 에서도 암시적인 반환을 사용할 수 있습니다.
 
 ### Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)
 
-함수의 각 매개 변수는 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 을 둘 다 가집니다. 인자 이름표는 함수를 호출할 때 사용합니다; 함수 호출에서 각 인자는 그 앞에 인자 이름표를 붙여서 작성합니다. 매개 변수 이름은 함수 구현 내에서 사용합니다. 기본적으로, 매개 변수는 매개 변수 이름을 인자 이름표로 사용합니다.
+각각의 함수 매개 변수는 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 둘 다를 가집니다. '인자 이름표' 는 함수를 호출할 때 사용합니다; 함수 호출 시에 각 인자는 그 앞에 '인자 이름표' 를 작성합니다. '매개 변수 이름' 은 함수 구현에서 사용합니다. 기본적으로, 매개 변수는 '매개 변수 이름' 을 '인자 이름표' 로 사용합니다.
 
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수에 대한 인자 값을 참조합니다.
+  // 첫 번째와 두 번째 매개 변수에 대한 인자 값을 참조합니다.
 }
 someFunction(firstParameterName: 1, secondParameterName: 2)
 ```
 
-모든 매개 변수는 반드시 유일한 이름을 가져야 합니다. 인자 이름표는 여러 매개 변수에서 동일하게 할 수는 있지만, 유일한 인자 이름표를 사용하면 코드를 이해하기 더 편할 것입니다.
+모든 매개 변수는 반드시 유일한 이름을 가져야 합니다. 여러 매개 변수가 똑같은 '인자 이름표' 가지는 것이 가능은 할지라도, 유일한 인자 이름표는 코드를 더 이해하기 쉽게 만들어 줍니다.
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
