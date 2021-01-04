@@ -100,21 +100,21 @@ print(greet(person: "Tim", alreadyGreeted: true))
 
 #### Functions Without Return Values (반환 값이 없는 함수)
 
-반환 값을 정의하는 것이 함수에서 필수적인 것은 아닙니다. 다음은 `greet(person:)` 함수의 한 가지로, 자신의 `String` 값을 반환하지 않고 출력하는, 버전입니다:
+함수에서 반환 타입을 정의하는 것은 필수가 아닙니다. 다음은, 자신의 `String` 값을 반환하지 않고 직접 인쇄하는, 버전의  `greet(person:)` 함수입니다.:
 
 ```swift
 func greet(person: String) {
   print("Hello, \(person)!")
 }
 greet(person: "Dave")
-// "Hello, Dave!" 를 출력합니다.
+// "Hello, Dave!" 를 인쇄합니다.
 ```
 
-값을 반환할 필요가 없기 때문에, 함수 정의는 '반환 화살표 (`->`)' 나 반환 타입을 포함하고 있지 않습니다.
+값을 반환할 필요가 없기 때문에, 함수 정의가 '반환 화살표 (`->`)' 나 반환 타입을 포함하지 않습니다.
 
-> 엄밀히 말하면, 이 버전의 `greet(person:)` 함수 _역시 (does)_, 반환 값을 아무 것도 정의하지 않았음에도 불구하고, 여전히 값을 반환합니다. 반환 타입을 정의하지 않은 함수는 `Void` 타입인 특수한 값을 반환합니다. 이것은 단순히 빈 튜플 (tuple) 이며, `()` 라고 작성합니다.
+> 엄밀하게 말해서, 이 버전의 `greet(person:)` 함수는, 반환 값을 정의하지 않았음에도 불구하고, 여전히 값을 반환 _합니다 (does)_. 반환 타입을 정의하지 않은 함수는 `Void` 타입이라는 특수한 값을 반환합니다. 이는 단순히, `()` 라고 작성된, '빈 튜플 (tuple)' 입니다.
 
-함수를 호출할 때 반환 값을 무시할 수 있습니다:
+함수를 호출할 때는 반환 값을 무시할 수 있습니다:
 
 ```swift
 func printAndCount(string: String) -> Int {
@@ -125,20 +125,20 @@ func printWithoutCounting(string: String) {
   let _ = printAndCount(string: string)
 }
 printAndCount(string: "hello, world")
-// "hello, world" 를 출력하며 12 를 반환합니다.
+// "hello, world" 를 인쇄하고 12 라는 값을 반환합니다.
 printWithoutCounting(string: "hello, world")
-// "hello, world" 를 출력하지만 반환 값은 없습니다.
+// "hello, world" 를 인쇄하지만 값을 반환하진 않습니다.
 ```
 
-첫 번째 함수인, `printAndCount(string:)` 는, 문자열을 출력한 다음, 문자의 개수를 `Int` 로 반환합니다. 두 번째 함수인, `printWithoutCounting(string:)` 은, 첫 번째 함수를 호출하지만, 반환 값은 무시합니다. 두 번째 함수를 호출하면, 메시지는 여전히 첫 번째 함수에 의해 출력되지만, 반환 값은 사용되지 않습니다.
+첫 번째 함수인, `printAndCount(string:)` 은, 문자열을 인쇄한 다음, 문자 개수를 `Int` 로 반환합니다. 두 번째 함수인, `printWithoutCounting(string:)` 은, 첫 번째 함수를 호출하지만, 반환 값은 무시합니다. 두 번째 함수를 호출할 때, 메시지는 첫 번째 함수로 여전히 인쇄하지만, 반환된 값은 사용하지 않습니다.
 
-> 반환 값을 무시할 수는 있지만, 값을 반환한다고 말한 함수는 반드시 항상 그걸 해야합니다. 반환 타입을 정의한 함수는 값을 반환하지 않은 채로 제어가 함수를 빠져나가게 할 수 없으며, 이렇게 하려고 하면 그 결과는 '컴파일-시간 에러 (compile-time error)' 입니다.
+> 반환 값을 무시할 순 있지만, 값을 반환한다고 말한 함수는 반드시 항상 그렇게 해야 합니다. 반환 타입을 정의한 함수는 값을 반환하지 않고는 함수 끝을 빠져나가는 제어를 허용하지 않으며, 그런 시도롤 하는 것은 '컴파일-시간 에러' 가 되버릴 것입니다.
 
-#### Functions with Multiple Return Values (다중 반환 값을 가진 함수)
+#### Functions with Multiple Return Values (반환 값이 여러 개인 함수)
 
-'튜플 (tuple)' 타입을 함수의 반환 타입으로 사용하면 여러 개의 반환 값을 하나의 복합된 반환 값으로 만들어서 반환할 수 있습니다.
+여러 값을 하나의 '복합 (compound) 반환 값' 으로 반환하기 위해 '튜플' 타입을 함수의 반환 타입으로 사용할 수 있습니다.
 
-아래 예제는, `Int` 값 배열에서 최소 값과 최대 값을 찾는, `minMax(array:)` 라는 함수를 정의합니다:
+아래 예제는, `Int` 배열에서 최소 값과 최대 값을 찾는, `minMax(array:)` 라는 함수를 정의합니다:
 
 ```swift
 func minMax(array: [Int]) -> (min: Int, max: Int) {
