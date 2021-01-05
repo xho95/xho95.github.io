@@ -296,11 +296,11 @@ someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 입니�
 
 #### Variadic Parameters (가변 매개 변수)
 
-_가변 매개 변수 (variadic parameter)_ 는 지정된 타입에 대한 값을 0 개 또는 그 이상 받아 들입니다. '가변 매개 변수' 를 사용하면 함수를 호출할 때 가변적인 개수의 입력 값을 전달할 수 있습니다. 가변 매개 변수를 작성하려면 매개 변수의 타입 이름 뒤에 세 개의 마침표 (`...`) 를 넣으면 됩니다.
+_가변 매개 변수 (variadic parameter)_ 는 지정한 타입의 값을 0 개 이상 받습니다. '가변 매개 변수' 는 함수를 호출할 때 가변 개수의 입력 값을 전달할 수 있음을 지정하기 위해 사용합니다. 가변 매개 변수는 매개 변수의 타입 이름 뒤에 세 개의 '마침표 (period characters; `...`)' 를 집어 넣는 것으로 작성합니다.
 
-가변 매개 변수로 전달되는 값은 함수 본문에서 적당한 타입의 배열로 사용할 수 있게 만들어 집니다. 예를 들어, `numbers` 라는 이름과 `Double...` 이라는 타입을 가진 가변 매개 변수는 함수 본문에서 이름이 `numbers` 이고 타입이 `[Double]` 인 상수 배열로 사용할 수 있습니다.
+가변 매개 변수로 전달된 값은 함수 본문에서 적절한 타입의 배열로 사용 가능하게 만들어 집니다. 예를 들어, 이름이 `numbers` 이고 타입이 `Double...` 인 가변 매개 변수는 함수 본문에서 `[Double]` 타입의 `numbers` 라는 상수 배열로 사용 가능합니다.
 
-아래 예제는 어떤 개수의 수치 값에 대해서도 _산술 평균 (arithmetic mean)_ (또는 그냥 _평균 (average)_) 을 계산할 수 있습니다:
+아래 예제는 어떤 길이의 수 목록에 대해서도 _산술 평균 (arithmetic mean)_-그냥 _평균 (average)_ 이라고도 하는 것-을 계산합니다:
 
 ```swift
 func arithmeticMean(_ numbers: Double...) -> Double {
@@ -311,12 +311,12 @@ func arithmeticMean(_ numbers: Double...) -> Double {
   return total / Double(numbers.count)
 }
 arithmeticMean(1, 2, 3, 4, 5)
-// 다섯 개의 수치 값에 대한 산술 평균인, 3.0 을 반환합니다.
+// 다섯 수의 산술 평균인, 3.0 을 반환합니다.
 arithmeticMean(3, 8.25, 18.75)
-// 세 개의 수치 값에 대한 산출 평균인, 10.0 을 반환합니다.
+// 세 수의 산술 평균인, 10.0 을 반환합니다.
 ```
 
-> 함수는 한 개의 가변 매개 변수만 가질 수 있습니다.
+> 함수는 최대 한 개의 가변 매개 변수만을 가질 수 있습니다.
 
 #### In-Out Parameters (입-출력 매개 변수)
 
