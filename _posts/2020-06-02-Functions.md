@@ -244,7 +244,7 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
-인자 이름표는 매개 변수 이름 앞에, 공백으로 구분하여, 작성합니다:
+'인자 이름표' 는 '매개 변수 이름' 앞에, 공백으로 구분하여, 작성합니다:
 
 ```swift
 func someFunction(argumentLabel parameterName: Int) {
@@ -253,31 +253,31 @@ func someFunction(argumentLabel parameterName: Int) {
 }
 ```
 
-다음은 `greet(person:)` 함수를 변형하여 사람 이름과 출신지를 받아서 인사말을 반환하도록 한 것입니다:
+다음은 사람 이름과 출신지를 받아서 인사말을 반환하도록 `greet(person:)` 함수를 변형한 것입니다:
 
 ```swift
 func greet(person: String, from hometown: String) -> String {
   return "Hello \(person)! Glad you could visit from \(hometown)."
 }
 print (greet(person: "Bill", from: "Cupertino"))
-// "Hello Bill! Glad you could visit from Cupertino." 를 출력합니다.
+// "Hello Bill! Glad you could visit from Cupertino." 를 인쇄합니다.
 ```
 
-인자 이름표를 사용하면 의미가 잘 드러나며, 일반 문장-같이 함수를 호출할 수 있으면서도, 함수 본문은 여전히 이해하기 쉽고 목적을 명확하게 나타낼 수 있습니다.
+인자 이름표를 사용하면, 여전히 이해하기 쉽고 의도가 명확한 함수 본문을 제공하면서도, 함수를 의미 전달력이 좋고, '일반 문장-같은 (sentence-like)' 방식으로 호출하도록 해줍니다.
 
 #### Omitting Argument Labels (인자 이름표 생략하기)
 
-매개 변수에 인자 이름표를 붙이고 싶지 않으면, 해당 매개 변수에 명시적인 인자 이름표 대신 _밑줄 (underscore)_ (`_`) 을 작성하면 됩니다.
+매개 변수에 인자 이름표를 붙이고 싶지 않으면, 해당 매개 변수에 명시적인 인자 이름표 대신 _밑줄 (underscore;_ `_` _)_ 을 작성합니다.
 
 ```swift
 func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
+  // 첫 번째와 두 번째 매개 변수에 대한 인자 값을 참조합니다.
 }
 someFunction (1, secondParameterName: 2)
 ```
 
-매개 변수가 인자 이름표를 가지고 있으면, 그 인자는 함수를 호출 할 때 _반드시 (must)_ 이름표를 붙여야 합니다.
+매개 변수에 인자 이름표가 있는 경우, 함수를 호출할 때 그 인자에 _반드시 (must)_ 이름표를 붙여야 합니다.
 
 #### Default Parameter Values (기본 설정 매개 변수 값)
 
