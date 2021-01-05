@@ -429,7 +429,7 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### requires_stored_property_inits (저장 속성의 초기화를 필수로 요구함)
 
-이 특성을 클래스 선언에 적용하면 클래스 내에 있는 모든 저장 속성이 정의 시에 필수로 '기본 설정 값 (default value)' 을 제공할 것을 요구합니다. 이 특성은 `NSManagedObject` 로부터 상속받은 클래스는 어떤 것에든 적용됩니다.[^infer]
+이 특성을 클래스 선언에 적용하면 클래스 내에 있는 모든 저장 속성이 정의 시에 필수로 '기본 값 (default value)' 을 제공할 것을 요구합니다. 이 특성은 `NSManagedObject` 로부터 상속받은 클래스는 어떤 것에든 적용됩니다.[^infer]
 
 #### testable (테스트 가능한)
 

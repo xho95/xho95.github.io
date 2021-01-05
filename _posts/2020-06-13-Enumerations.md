@@ -208,7 +208,7 @@ case let .qrCode(productCode):
 
 ### Raw Values (원시 값)
 
-[Associated Values (결합된 값)](#associated-values-결합된-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합된 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합된 값' 에 대한 대안으로, '열거체 case 값' 은 모두 같은 타입인, (_원시 값 (raw values)_ 이라는) '기본 설정 값 (default values)' 으로 미리 채울 수 있습니다.
+[Associated Values (결합된 값)](#associated-values-결합된-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합된 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합된 값' 에 대한 대안으로, '열거체 case 값' 은 모두 같은 타입인, (_원시 값 (raw values)_ 이라는) '기본 값 (default values)' 으로 미리 채울 수 있습니다.
 
 다음은 '열거체 case 값' 이 '이름' 과 '원시 ASCII 값' 을 같이 저장하고 있는 예제입니다:
 
