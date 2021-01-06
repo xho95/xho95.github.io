@@ -416,9 +416,9 @@ class City {
 
 `City` 의 초기자는 `Country` 의 초기자에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한대로, `Country` 초기자는 새로운 `Country` 인스턴스가 완전히 초기화되지 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
 
-이러한 '필수 조건 (requirement)' 에 대처하려면, `Country` 의 `capitalCity` 속성을 '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언해야 하며, '타입 보조 설명 (type annotation)' 끝에 느낌표를 붙여서 (`City!`) 지정하면 됩니다. 이것의 의미는 `capitalCity` 속성은, 다른 모든 옵셔널 처럼, `nil` 이라는 기본 설정 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 그 값의 포장을 풀지 않고도 접근할 수 있다는 것입니다.
+이러한 '필수 조건 (requirement)' 에 대처하려면, `Country` 의 `capitalCity` 속성을 '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언해야 하며, '타입 보조 설명 (type annotation)' 끝에 느낌표를 붙여서 (`City!`) 지정하면 됩니다. 이것의 의미는 `capitalCity` 속성은, 다른 모든 옵셔널 처럼, `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 그 값의 포장을 풀지 않고도 접근할 수 있다는 것입니다.
 
-`capitalCity` 는 기본 설정 값 `nil` 을 가지고 있기 때문에, `Country` 인스턴스가 초기자 내에서 `name` 속성을 설정하자마자 새 `Country` 인스턴스를 완전히 초기화된 것으로 봐도 됩니다. 이것의 의미는 `Country` 초기자가 `name` 속성을 설정하자마자 암시적인 `self` 속성의 참조 및 전달을 시작할 수 있다는 것입니다. `Country` 초기자는 따라서 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자에 대한 매개 변수 중 하나로 `self` 를 전달할 수 있습니다.
+`capitalCity` 는 기본 값 `nil` 을 가지고 있기 때문에, `Country` 인스턴스가 초기자 내에서 `name` 속성을 설정하자마자 새 `Country` 인스턴스를 완전히 초기화된 것으로 봐도 됩니다. 이것의 의미는 `Country` 초기자가 `name` 속성을 설정하자마자 암시적인 `self` 속성의 참조 및 전달을 시작할 수 있다는 것입니다. `Country` 초기자는 따라서 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자에 대한 매개 변수 중 하나로 `self` 를 전달할 수 있습니다.
 
 이 모든 것이 의미하는 것은, 강한 참조 순환을 생성하지 않고도, `Country` 와 `City` 인스턴스를 단일 구문으로 생성할 수 있으며, 옵셔널 값의 포장을 풀기 위해 느낌표를 사용하지 않고도, `capitalCity` 속성에 직접 접근하는 것이 가능하다는 것입니다:
 
@@ -472,7 +472,7 @@ class HTMLElement {
 
 기본적으로, `asHTML` 속성에는 HTML '태그 (tag; 꼬리표)' 에 해당하는 문자열 표현을 반환하는 클로저가 할당됩니다. 이 태그는 값이 존재하면 옵셔널 `text` 값을 담지만, `text` 가 존재하지 않으면 아무런 문장 내용도 가지지 않습니다. 문단 원소에 대해서, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 또는 `<p />` 를 반환할 것입니다.
 
-`asHTML` 속성의 이름과 사용 방법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 인스턴스 메소드가 아닌 클로저 속성이기 때문에, 특정 HTML 원소에 대한 HTML '묘사 (rendering)' 을 바꾸고 싶은 경우, `asHTML` 속성의 기본 설정 값을 자신만의 클로저로 대체할 수 있습니다.
+`asHTML` 속성의 이름과 사용 방법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 인스턴스 메소드가 아닌 클로저 속성이기 때문에, 특정 HTML 원소에 대한 HTML '묘사 (rendering)' 을 바꾸고 싶은 경우, `asHTML` 속성의 기본 값을 자신만의 클로저로 대체할 수 있습니다.
 
 예를 들어, `asHTML` 속성은, '표현 (representation)' 이 '비어있는 HTML 태그' 를 반환하는 것을 막기 위해, `text` 속성이 `nil` 인 경우 어떤 문장을 기본 설정하는 클로저로 설정할 수도 있을 것입니다:
 

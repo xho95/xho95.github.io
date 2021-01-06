@@ -38,7 +38,7 @@ class Residence {
 }
 ```
 
-`Residence` 의 인스턴스는, 기본 설정 값이 `1` 인, `numberOfRooms` 라는 단일한 `Int` 속성을 가집니다. `Person` 의 인스턴스는 타입이 `Residence?` 인 하나의 옵셔널 `residence` 속성을 가집니다.
+`Residence` 의 인스턴스는, 기본 값이 `1` 인, `numberOfRooms` 라는 단일한 `Int` 속성을 가집니다. `Person` 의 인스턴스는 타입이 `Residence?` 인 하나의 옵셔널 `residence` 속성을 가집니다.
 
 새로운 `Person` 인스턴스를 생성하면, `residence` 속성은 기본적으로 `nil` 로 초기화되는데, 이는 '옵셔널' 이 가지는 장점에 해당합니다. 아래 코드에서, `john` 은 값이 `nil` 인 `residence` 속성을 가집니다:
 

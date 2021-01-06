@@ -120,7 +120,7 @@ print(friendlyWelcome)
 // "Bonjour!" 를 인쇄합니다.
 ```
 
-`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 출력 (장치) 로 인쇄하는 전역 함수입니다. 예를 들어, '엑스코드 (Xcode)' 의 `print(_:separator:terminator:)` 함수는 출력을 '엑스코드' 의 "콘솔 (console)" 에 인쇄합니다. `separator` 와 `terminator` 매개 변수는 '기본 설정 (default) 값' 을 가지므로, 함수 호출시 생략할 수 있습니다. 기본적으로, 이 함수는 인쇄 줄을 끝낼 때 '줄 끊음 (line break)' 을 추가합니다. 값을 '줄 끊음' 없이 인쇄하려면, '종결자 (terminator)' 에 빈 문자열을 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. '기본 설정 값을 가지는 매개 변수' 에 대한 정보는, [Default Parameter Values (기본 설정 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-설정-매개-변수-값) 을 참고하기 바랍니다.
+`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 출력 (장치) 로 인쇄하는 전역 함수입니다. 예를 들어, '엑스코드 (Xcode)' 의 `print(_:separator:terminator:)` 함수는 출력을 '엑스코드' 의 "콘솔 (console)" 에 인쇄합니다. `separator` 와 `terminator` 매개 변수는 '기본 설정 (default) 값' 을 가지므로, 함수 호출시 생략할 수 있습니다. 기본적으로, 이 함수는 인쇄 줄을 끝낼 때 '줄 끊음 (line break)' 을 추가합니다. 값을 '줄 끊음' 없이 인쇄하려면, '종결자 (terminator)' 에 빈 문자열을 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. '기본 값을 가지는 매개 변수' 에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 을 참고하기 바랍니다.
 
 스위프트는 상수나 변수의 이름을 더 긴 문자열 내의 '자리 표시자 (placeholder)' 로 포함시키기 위해, 그리고 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알리기 위해 '_문자열 보간법 (string interpolation)_'[^string-interpolation] 을 사용합니다. 이름을 괄호로 포장한 다음 시작 괄호 앞에 '역 빗금 (backslash)' 을 써서 '벗어나게 (escape)'[^escape] 합니다:
 
@@ -509,7 +509,7 @@ serverResponseCode = nil
 
 > `nil` 은 '옵셔널이-아닌 (non-optional)' 상수와 변수와는 사용할 수 없습니다. 정해진 조건 아래에서 코드의 상수나 변수가 값의 없음을 다뤄야 한다면, 이를 항상 적절한 타입의 옵셔널 값으로 선언합니다.
 
-옵셔널 변수를 정의하면서 '기본 설정 값 (default value)' 을 제공하지 않으면, 이 변수는 `nil` 로 자동 설정합니다:
+옵셔널 변수를 정의하면서 '기본 값 (default value)' 을 제공하지 않으면, 이 변수는 `nil` 로 자동 설정합니다:
 
 ```swift
 var surveyAnswer: String?

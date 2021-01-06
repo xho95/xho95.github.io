@@ -24,7 +24,7 @@ _속성 (properties)_ 은 특정한 클래스나, 구조체, 또는 열거체와
 
 '저장 속성' 중, 가장 간단한 양식은, 특정 클래스나 구조체의 인스턴스에 저장되는 상수나 변수입니다. 저장 속성은 (`var` 키워드를 쓰는) _변수 저장 속성 (variable stored properties)_ 일 수도 있고 (`let` 키워드를 쓰는) _상수 저장 속성 (constant stored properties)_ 일 수도 있습니다.
 
-저장 속성을 정의하면서 '기본 설정 값 (default value)' 을 제공할 수 있는데, 이는 [Default Property Values (기본 설정 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-설정-속성-값) 에서 설명합니다. 초기화하는 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는 '상수 저장 속성' 에서도 가능한 것으로, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명합니다.
+저장 속성을 정의하면서 '기본 값 (default value)' 을 제공할 수 있는데, 이는 [Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명합니다. 초기화하는 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는 '상수 저장 속성' 에서도 가능한 것으로, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명합니다.
 
 아래 예제는 `FixedLengthRange` 라는 구조체를 정의하여, 생성된 후에는 범위의 크기 (length) 를 바꿀 수 없는 정수 범위를 묘사합니다:
 
@@ -397,7 +397,7 @@ print(zeroRectangle.height, zeroRectangle.width)
 // "0 0" 를 출력합니다.
 ```
 
-`height` 와 `width` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber()` 를 호출하여 생성됩니다. 이 초기자 내부에 있는 코드는 초기 포장 값과 초기 최대 값을, 기본 설정 값인 0 과 12 를 사용하여, 설정합니다. 속성 포장은, `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 이전 예제와 같이, 여전히 초기 값을 모두 제공합니다. 그 예제와 다른 점은, `SmallNumber` 는 속성의 선언 부에서 초기 값을 작성하는 기능도 지원한다는 것입니다.
+`height` 와 `width` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber()` 를 호출하여 생성됩니다. 이 초기자 내부에 있는 코드는 초기 포장 값과 초기 최대 값을, 기본 값인 0 과 12 를 사용하여, 설정합니다. 속성 포장은, `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 이전 예제와 같이, 여전히 초기 값을 모두 제공합니다. 그 예제와 다른 점은, `SmallNumber` 는 속성의 선언 부에서 초기 값을 작성하는 기능도 지원한다는 것입니다.
 
 속성에 대한 초기 값을 지정하게 되면, 스위프트는 `init(wrappedValue:)` 초기자를 사용하여 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
@@ -412,7 +412,7 @@ print(unitRectangle.height, unitRectangle.width)
 // "1 1" 를 출력합니다.
 ```
 
-포장을 가진 속성에 `= 1` 를 작성하면, 이는 `init(wrappedValue:)` 초기자에 대한 호출로 번역됩니다. `height` 와 `width` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 1)` 을 호출하여 생성됩니다. 초기자는 포장 값으로 여기서 지정한 값을 사용하며, 최대 값은 기본 설정 값인 12 를 사용합니다.
+포장을 가진 속성에 `= 1` 를 작성하면, 이는 `init(wrappedValue:)` 초기자에 대한 호출로 번역됩니다. `height` 와 `width` 를 포장하는 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 1)` 을 호출하여 생성됩니다. 초기자는 포장 값으로 여기서 지정한 값을 사용하며, 최대 값은 기본 값인 12 를 사용합니다.
 
 '사용자 정의 특성 (custom attribute)' 뒤의 괄호 안에 인자를 작성하면, 스위프트는 이 인자를 받는 초기자를 사용하여 포장을 설정합니다. 예를 들어, 초기 값과 최대 값을 제공할 경우, 스위프트는 `init(wrappedValue:maximum:)` 초기자를 사용합니다:
 
@@ -551,7 +551,7 @@ struct SizedRectangle {
 
 '저장 타입 속성 (stored type properties)' 은 변수이거나 상수일 수 있습니다. '계산 타입 속성 (computed type properties)' 은 항상 '변수 속성' 인 것으로 선언해야 하며, , '계산 인스턴스 속성' 과 그 방식이 같습니다.
 
-> '저장 인스턴스 속성' 과 달리, '저장 타입 속성' 은 반드시 항상 '기본 설정 값' 을 가지고 있어야 합니다. 이것은 타입 그 자체는 초기화시에 '저장 타입 속성' 에 값을 할당할 수 있는 초기자를 가지고 있지 않기 때문입니다.
+> '저장 인스턴스 속성' 과 달리, '저장 타입 속성' 은 반드시 항상 '기본 값' 을 가지고 있어야 합니다. 이것은 타입 그 자체는 초기화시에 '저장 타입 속성' 에 값을 할당할 수 있는 초기자를 가지고 있지 않기 때문입니다.
 >
 > '저장 타입 속성' 은 '느긋하게 (lazily)' 처음 접근할 때 초기화됩니다. 이는 여러 쓰레드에서 동시에 접근해도, 단 한 번만 초기화됨을 보장하며, `lazy` 수정자로 표시할 필요도 없습니다.
 

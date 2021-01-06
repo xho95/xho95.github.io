@@ -44,7 +44,7 @@ print(greet(person: "Brian"))
 
 `greet(person:)` 함수는, `greet(person: "Anna")` 처럼, `person` '인자 이름표' 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, `greet(person:)` 함수는, 위에 보인 것처럼, 해당 문자열을 인쇄하고 그 반환 값을 보기 위해 `print(_:separator:terminator:)` 함수 호출로 포장할 수 있습니다.
 
-> `print(_:separator:terminator:)` 함수는 첫 번째 인자에 대한 이름표는 가지지 않으며, 다른 인자들은 '기본 설정 값' 을 가지고 있기 때문에 '선택 사항' 입니다. 함수 구문 표현에 대한 이러한 '변형 (variations)' 들은 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 과 [Default Parameter Values (기본 설정 매개 변수 값)](#default-parameter-values-기본-설정-매개-변수-값) 에서 논의합니다.
+> `print(_:separator:terminator:)` 함수는 첫 번째 인자에 대한 이름표는 가지지 않으며, 다른 인자들은 '기본 값' 을 가지고 있기 때문에 '선택 사항' 입니다. 함수 구문 표현에 대한 이러한 '변형 (variations)' 들은 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 과 [Default Parameter Values (기본 매개 변수 값)](#default-parameter-values-기본-매개-변수-값) 에서 논의합니다.
 
 `greet(person:)` 함수의 본문은 `greeting` 이라는 새로운 `String` 상수를 정의하고 간단한 인사말 메시지를 설정하는 것으로 시작합니다. 그런 다음 이 인사말은 `return` 키워드를 사용하여 함수 밖으로 다시 되돌려집니다. `return greeting` 라고 하는 코드 줄에서, 함수는 실행을 종료하며 `greeting` 의 현재 값을 반환합니다.
 
@@ -244,7 +244,7 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
-인자 이름표는 매개 변수 이름 앞에, 공백으로 구분하여, 작성합니다:
+'인자 이름표' 는 '매개 변수 이름' 앞에, 공백으로 구분하여, 작성합니다:
 
 ```swift
 func someFunction(argumentLabel parameterName: Int) {
@@ -253,54 +253,54 @@ func someFunction(argumentLabel parameterName: Int) {
 }
 ```
 
-다음은 `greet(person:)` 함수를 변형하여 사람 이름과 출신지를 받아서 인사말을 반환하도록 한 것입니다:
+다음은 사람 이름과 출신지를 받아서 인사말을 반환하도록 `greet(person:)` 함수를 변형한 것입니다:
 
 ```swift
 func greet(person: String, from hometown: String) -> String {
   return "Hello \(person)! Glad you could visit from \(hometown)."
 }
 print (greet(person: "Bill", from: "Cupertino"))
-// "Hello Bill! Glad you could visit from Cupertino." 를 출력합니다.
+// "Hello Bill! Glad you could visit from Cupertino." 를 인쇄합니다.
 ```
 
-인자 이름표를 사용하면 의미가 잘 드러나며, 일반 문장-같이 함수를 호출할 수 있으면서도, 함수 본문은 여전히 이해하기 쉽고 목적을 명확하게 나타낼 수 있습니다.
+인자 이름표를 사용하면, 여전히 이해하기 쉽고 의도가 명확한 함수 본문을 제공하면서도, 함수를 의미 전달력이 좋고, '일반 문장-같은 (sentence-like)' 방식으로 호출하도록 해줍니다.
 
 #### Omitting Argument Labels (인자 이름표 생략하기)
 
-매개 변수에 인자 이름표를 붙이고 싶지 않으면, 해당 매개 변수에 명시적인 인자 이름표 대신 _밑줄 (underscore)_ (`_`) 을 작성하면 됩니다.
+매개 변수에 인자 이름표를 붙이고 싶지 않으면, 해당 매개 변수에 명시적인 인자 이름표 대신 _밑줄 (underscore;_ `_` _)_ 을 작성합니다.
 
 ```swift
 func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
+  // 첫 번째와 두 번째 매개 변수에 대한 인자 값을 참조합니다.
 }
 someFunction (1, secondParameterName: 2)
 ```
 
-매개 변수가 인자 이름표를 가지고 있으면, 그 인자는 함수를 호출 할 때 _반드시 (must)_ 이름표를 붙여야 합니다.
+매개 변수에 인자 이름표가 있는 경우, 함수를 호출할 때 그 인자에 _반드시 (must)_ 이름표를 붙여야 합니다.
 
-#### Default Parameter Values (기본 설정 매개 변수 값)
+#### Default Parameter Values (기본 매개 변수 값)
 
-함수의 매개 변수는 어떤 것이든 그 매개 변수 타입 뒤에 값을 할당하여 _기본 설정 값 (default value)_ 을 정의할 수 있습니다. '기본 설정 값' 을 정의하면, 함수를 호출할 때 해당 매개 변수를 생략할 수 있습니다.
+함수에 있는 매개 변수는 어떤 것이든 값을 해당 매개 변수의 타입 뒤에 할당함으로써 _기본 값 (default value)_ 을 정의할 수 있습니다. '기본 값' 을 정의한 경우, 함수를 호출할 때 해당 매개 변수를 생략할 수 있습니다.
 
 ```swift
 func someFunction (parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
   // 이 함수를 호출할 때 두 번째 인자를 생략하면,
-  // parameterWithDefault 의 값은 함수 본문 내에서 12 가 됩니다.
+  // 함수 본문에서 parameterWithDefault 의 값은 12 가 됩니다.
 }
 someFunction (parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault 는 6 입니다.
 someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 입니다.
 ```
 
-기본 설정 값이 없는 매개 변수를, 기본 설정 값이 있는 매개 변수 보다 앞에, 함수 매개 변수 목록의 시작 부분에 위치하도록 합니다. 기본 설정 값이 없는 매개 변수가 함수에서 보통 더 중요한 의미를 가지기 때문에-이를 먼저 작성하는 것은, 어떤 기본 설정 값이 생략되었든 상관없이, 동일 함수를 호출했음을 더 쉽게 인식하게 만들어 줍니다.
+'기본 값' 을 가지지 않는 매개 변수를, '기본 값' 을 가지는 매개 변수 보다 앞인, 함수 매개 변수 목록의 맨 앞에 위치하도록 합니다. 기본 값을 가지지 않는 매개 변수는 대체로 함수에서 더 중요한 의미를 가집니다-이를 먼저 작성하는 것은, 어떤 기본 값이 생략되든 간에, 똑같은 함수를 호출하고 있다는 것을 인식할 수 있게 만들어 줍니다.
 
 #### Variadic Parameters (가변 매개 변수)
 
-_가변 매개 변수 (variadic parameter)_ 는 지정된 타입에 대한 값을 0 개 또는 그 이상 받아 들입니다. '가변 매개 변수' 를 사용하면 함수를 호출할 때 가변적인 개수의 입력 값을 전달할 수 있습니다. 가변 매개 변수를 작성하려면 매개 변수의 타입 이름 뒤에 세 개의 마침표 (`...`) 를 넣으면 됩니다.
+_가변 매개 변수 (variadic parameter)_ 는 지정한 타입의 값을 0 개 이상 받습니다. '가변 매개 변수' 는 함수를 호출할 때 가변 개수의 입력 값을 전달할 수 있음을 지정하기 위해 사용합니다. 가변 매개 변수는 매개 변수의 타입 이름 뒤에 세 개의 '마침표 (period characters; `...`)' 를 집어 넣는 것으로 작성합니다.
 
-가변 매개 변수로 전달되는 값은 함수 본문에서 적당한 타입의 배열로 사용할 수 있게 만들어 집니다. 예를 들어, `numbers` 라는 이름과 `Double...` 이라는 타입을 가진 가변 매개 변수는 함수 본문에서 이름이 `numbers` 이고 타입이 `[Double]` 인 상수 배열로 사용할 수 있습니다.
+가변 매개 변수로 전달된 값은 함수 본문에서 적절한 타입의 배열로 사용 가능하게 만들어 집니다. 예를 들어, 이름이 `numbers` 이고 타입이 `Double...` 인 가변 매개 변수는 함수 본문에서 `[Double]` 타입의 `numbers` 라는 상수 배열로 사용 가능합니다.
 
-아래 예제는 어떤 개수의 수치 값에 대해서도 _산술 평균 (arithmetic mean)_ (또는 그냥 _평균 (average)_) 을 계산할 수 있습니다:
+아래 예제는 어떤 길이의 수 목록에 대해서도 _산술 평균 (arithmetic mean)_-그냥 _평균 (average)_ 이라고도 하는 것-을 계산합니다:
 
 ```swift
 func arithmeticMean(_ numbers: Double...) -> Double {
@@ -311,22 +311,22 @@ func arithmeticMean(_ numbers: Double...) -> Double {
   return total / Double(numbers.count)
 }
 arithmeticMean(1, 2, 3, 4, 5)
-// 다섯 개의 수치 값에 대한 산술 평균인, 3.0 을 반환합니다.
+// 다섯 수의 산술 평균인, 3.0 을 반환합니다.
 arithmeticMean(3, 8.25, 18.75)
-// 세 개의 수치 값에 대한 산출 평균인, 10.0 을 반환합니다.
+// 세 수의 산술 평균인, 10.0 을 반환합니다.
 ```
 
-> 함수는 한 개의 가변 매개 변수만 가질 수 있습니다.
+> 함수는 최대 한 개의 가변 매개 변수만을 가질 수 있습니다.
 
 #### In-Out Parameters (입-출력 매개 변수)
 
-함수의 매개 변수는 기본적으로 상수입니다. 함수의 매개 변수 값을 그 함수 본문에서 바꾸려고 하면 '컴파일 시간 에러 (compile-time error)' 가 발생합니다. 이것의 의미는 매개 변수의 값이 실수로 바뀔 일은 없다는 것입니다. 함수에서 매개 변수의 값을 수정하고, 그렇게 바뀐 것을 함수 호출이 끝난 후에도 유지하고자 한다면, 이 때는 그 매개 변수를 _입-출력 매개 변수 (in-out parameter)_ 라고 정의하면 됩니다.
+함수 매개 변수는 기본적으로 상수입니다. 함수 매개 변수의 값을 해당 함수 본문에서 바꾸려고 하는 것은 '컴파일-시간 에러' 가 되버립니다. 이는 매개 변수의 값이 실수로 바뀔 일은 없다는 의미입니다. 함수에서 매개 변수의 값을 수정하고 싶고, 이렇게 바뀐 것을 함수 호출이 끝난 후에도 유지하고 싶으면, 해당 매개 변수를 _입-출력 매개 변수 (in-out parameter)_ 로 대신 정의합니다.
 
-입-출력 매개 변수를 작성하려면 매개 변수의 타입 바로 앞에 `inout` 키워드를 위치시킵니다. '입-출력 매개 변수' 는 함수에 _입력 (in)_ 된 다음, 함수에서 수정되고 나서, 원래 값을 대체하기 위해 함수 밖으로 _출력 (out)_ 되는 값을 가지고 있습니다. 입-출력 매개 변수의 동작 방식과 이에 관련된 컴파일러 최적화에 대한 더 자세한 논의는 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
+'입-출력 매개 변수' 는 매개 변수 타입 바로 앞에 `inout` 키워드를 붙여서 작성합니다. '입-출력 매개 변수' 는 원래 값을 대체하기 위해 함수에 _입력 (in)_ 되고, 함수에서 수정된 다음, 함수 밖으로 _출력 (out)_ 되는 값을 가집니다. 입-출력 매개 변수의 작동 방식 및 이와 결합된 컴파일러 최적화에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
-입-출력 매개 변수의 인자로는 변수만 전달할 수 있습니다. 상수나 '글자 (표현) 값 (literal value)' 은 인자로 전달할 수 없는데, 상수와 '글자 값 (literals)' 은 수정할 수 없기 때문입니다. 입-출력 매개 변수에 인자를 전달할 때는, 함수에서 수정할 수 있는 것을 지시하기 위해, 변수 이름 바로 앞에 '앤드 기호 (`&`; 앰퍼센드)' 를 붙이도록 합니다.
+'변수 (variable)' 만 입-출력 매개 변수의 인자로 전달할 수 있습니다. 상수나 '글자 (literal) 값' 을 인자로 전달할 수는 없는데, 상수와 '글자 값' 은 수정할 수 없기 때문입니다. 변수를 입-출력 매개 변수의 인자로 전달할 때는, 함수에서 수정될 ₩1ㅈ  수 있음을 지시하기 위해, 변수 이름 바로 앞에 '앤드 기호 (ampersand; `&`)' 를 붙입니다.
 
-> '입-출력 매개 변수' 는 '기본 설정 값 (default values)' 을 가질 수 없으며, 가변 매개 변수는 `inout` 이라고 표시할 수 없습니다.  
+> '입-출력 매개 변수' 는 '기본 (default) 값' 을 가질 수 없으며, '가변 매개 변수' 를 `inout` 으로 표시할 수는 없습니다.  
 
 다음은, `a` 와 `b` 라는 두 개의 입-출력 매개 변수를 가지고 있는, `swapTwoInts(_:_:)` 라는 함수에 대한 예제입니다:
 

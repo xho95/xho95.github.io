@@ -24,7 +24,7 @@ categories: Swift Language Grammar Inheritance
 
 > 스위프트의 클래스는 '범용 기본 클래스 (universal base class)' 를 상속하지 않습니다. 클래스를 정의할 때 '상위 클래스' 를 지정하지 않으면 자동으로 '기본 클래스' 가 됩니다.
 
-아래 예제는 `Vehicle` 이라는 '기본 클래스' 를 정의합니다. 이 기본 클래스는 `currentSpeed` 라는 '저장 속성 (stored property)' 을 정의하고, 기본 설정 값을 `0.0` 으로 둡니다. (추론된 속성의 타입은 `Double` 입니다) `currentSpeed` 속성의 값은 `description` 이라는 `String` 타입의 일기-전용 계산 속성에서 사용되어 차량에 대한 설명을 만들게 됩니다.
+아래 예제는 `Vehicle` 이라는 '기본 클래스' 를 정의합니다. 이 기본 클래스는 `currentSpeed` 라는 '저장 속성 (stored property)' 을 정의하고, 기본 값을 `0.0` 으로 둡니다. (추론된 속성의 타입은 `Double` 입니다) `currentSpeed` 속성의 값은 `description` 이라는 `String` 타입의 일기-전용 계산 속성에서 사용되어 차량에 대한 설명을 만들게 됩니다.
 
 `Vehicle` 기본 클래스는 `makeNoise` 라는 메소드도 정의합니다. 이 메소드는 기본 `Vehicle` 인스턴스에서는 실제로 하는 것이 아무 것도 없지만, 나중에 `Vehicle` 의 하위 클래스에서 사용자의 목적에 맞게 바뀔 것입니다:
 
@@ -77,7 +77,7 @@ class Bicycle: Vehicle {
 
 이 새로운 `Bicycle` 클래스는 `Vehicle` 의 모든 성질을 자동으로 얻으며, 이에는 `currentSpeed` 와 `description` 속성 및 `makeNoise()` 메소드 등이 있습니다.
 
-이런 상속하는 성질들에 더하여, `Bicycle` 클래스는 새로운 '저장 속성' 인 `hasBasket` 을 정의하며, 기본 설정 값으로 `false` 를 부여합니다. (속성의 타입은 `Bool` 로 추론됩니다)
+이런 상속하는 성질들에 더하여, `Bicycle` 클래스는 새로운 '저장 속성' 인 `hasBasket` 을 정의하며, 기본 값으로 `false` 를 부여합니다. (속성의 타입은 `Bool` 로 추론됩니다)
 
 기본적으로, 새로 만들어진 `Bicycle` 인스턴스라면 어떤 것도 '바구니 (basket)' 를 가지지 않을 것입니다. 해당 인스턴스를 만들고 나면 특정 `Bicycle` 인스턴스의 `hasBasket` 속성을 `true` 로 설정하는 것이 가능합니다.
 
@@ -102,7 +102,7 @@ class Tandem: Bicycle {
 }
 ```
 
-`Tandem` 은 `Bicycle` 의 모든 속성과 메소드를 상속하며, 이에 따라 `Vehicle` 의 모든 속성과 메소드 역시 상속하게 됩니다. `Tandem` 하위 클래스는 또 `currentNumberOfPassengers` 라는 새로운 '저장 속성 (stored property)' 을 추가하고 있는데, 이의 기본 설정 값은 `0` 입니다.
+`Tandem` 은 `Bicycle` 의 모든 속성과 메소드를 상속하며, 이에 따라 `Vehicle` 의 모든 속성과 메소드 역시 상속하게 됩니다. `Tandem` 하위 클래스는 또 `currentNumberOfPassengers` 라는 새로운 '저장 속성 (stored property)' 을 추가하고 있는데, 이의 기본 값은 `0` 입니다.
 
 `Tandem` 의 인스턴스를 만들면, 새로운 속성과 상속한 속성 어떤 것이든 사용할 수 있으며, `Vehicle` 에서 상속한 읽기-전용 속성인 `description` 을 조회하는 것도 가능합니:
 
@@ -169,7 +169,7 @@ train.makeNoise()
 
 > 속성을 '재정의' 하면서 'setter (설정자)' 를 제공하는 경우, 반드시 그 재정의를 위한 'getter (획득자)' 도 제공해야 합니다. 'overriding getter (재정의하는 획득자)' 내에서 상속받은 속성의 값을 수정하고 싶지 않을 경우, 'getter (획득자)' 에서 `super.someProperty` 를 반환함으로써 단순히 상속받은 값을 그대로 전달할 수도 있는데, 여기서 `someProperty` 가 '재정의하는' 속성의 이름입니다.
 
-다음 예제는 `Vehicle` 의 하위 클래스로, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는 새로운 저장 속성인 `gear` 를 도입하여, 기본 설정 값으로 정수 `1` 을 둡니다. `Car` 클래스는 `Vehicle` 에서 상속받은 `description` 속성도 재정의하고 있는데, 이는 사용자 목적에 맞도록 현재 '기어' 를 포함하는 설명을 제공하기 위함입니다.
+다음 예제는 `Vehicle` 의 하위 클래스로, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는 새로운 저장 속성인 `gear` 를 도입하여, 기본 값으로 정수 `1` 을 둡니다. `Car` 클래스는 `Vehicle` 에서 상속받은 `description` 속성도 재정의하고 있는데, 이는 사용자 목적에 맞도록 현재 '기어' 를 포함하는 설명을 제공하기 위함입니다.
 
 ```swift
 class Car: Vehicle {

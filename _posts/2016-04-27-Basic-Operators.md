@@ -264,7 +264,7 @@ if hasHeader {
 
 ### Nil-Coalescing Operator (Nil-통합 연산자)
 
-_nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` 가 값을 담고 있으면 포장을 풀고, `a` 가 `nil` 이면 기본 설정 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 에 저장된 값과 타입이 일치해야 합니다.
+_nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` 가 값을 담고 있으면 포장을 풀고, `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 에 저장된 값과 타입이 일치해야 합니다.
 
 'nil-통합 연산자' 는 아래 코드의 '줄임 표현 (shorthand)' 입니다:
 
@@ -283,12 +283,12 @@ let defaultColorName = "red"
 var userDefinedColorName: String?   // 기본 값은 nil 입니다.
 
 var colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 설정 값인 "red" 로 설정됩니다.
+// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 값인 "red" 로 설정됩니다.
 ```
 
-`userDefinedColorName` 변수를, 기본 설정 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
+`userDefinedColorName` 변수를, 기본 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
 
-만약 `userDefinedColorName` 에 `nil` 아닌 값을 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 설정 값 대신 `userDefinedColorName` 안에 포장된 값을 사용합니다:
+만약 `userDefinedColorName` 에 `nil` 아닌 값을 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 값 대신 `userDefinedColorName` 안에 포장된 값을 사용합니다:
 
 ```swift
 userDefinedColorName = "green"
