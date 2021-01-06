@@ -322,13 +322,13 @@ arithmeticMean(3, 8.25, 18.75)
 
 함수 매개 변수는 기본적으로 상수입니다. 함수 매개 변수의 값을 해당 함수 본문에서 바꾸려고 하는 것은 '컴파일-시간 에러' 가 되버립니다. 이는 매개 변수의 값이 실수로 바뀔 일은 없다는 의미입니다. 함수에서 매개 변수의 값을 수정하고 싶고, 이렇게 바뀐 것을 함수 호출이 끝난 후에도 유지하고 싶으면, 해당 매개 변수를 _입-출력 매개 변수 (in-out parameter)_ 로 대신 정의합니다.
 
-'입-출력 매개 변수' 는 매개 변수 타입 바로 앞에 `inout` 키워드를 붙여서 작성합니다. '입-출력 매개 변수' 는 원래 값을 대체하기 위해 함수에 _입력 (in)_ 되고, 함수에서 수정된 다음, 함수 밖으로 _출력 (out)_ 되는 값을 가집니다. 입-출력 매개 변수의 작동 방식 및 이와 결합된 컴파일러 최적화에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
+'입-출력 매개 변수' 는 매개 변수 타입 바로 앞에 `inout` 키워드를 붙여서 작성합니다. '입-출력 매개 변수' 는 원본 값을 대체하기 위해 함수에 _입력 (in)_ 되고, 함수에서 수정된 다음, 함수 밖으로 _출력 (out)_ 되는 값을 가집니다. 입-출력 매개 변수의 작동 방식 및 이와 결합된 컴파일러 최적화에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
 '변수 (variable)' 만 입-출력 매개 변수의 인자로 전달할 수 있습니다. 상수나 '글자 (literal) 값' 을 인자로 전달할 수는 없는데, 상수와 '글자 값' 은 수정할 수 없기 때문입니다. 변수를 입-출력 매개 변수의 인자로 전달할 때는, 함수에서 수정될 ₩1ㅈ  수 있음을 지시하기 위해, 변수 이름 바로 앞에 '앤드 기호 (ampersand; `&`)' 를 붙입니다.
 
 > '입-출력 매개 변수' 는 '기본 (default) 값' 을 가질 수 없으며, '가변 매개 변수' 를 `inout` 으로 표시할 수는 없습니다.  
 
-다음은, `a` 와 `b` 라는 두 개의 입-출력 매개 변수를 가지고 있는, `swapTwoInts(_:_:)` 라는 함수에 대한 예제입니다:
+다음은, `a` 와 `b` 라는 두 '입-출력 매개 변수' 를 가지는, `swapTwoInts(_:_:)` 라는 함수에 대한 예제입니다:
 
 ```swift
 func swapTwoInts(_ a: inout Int, _ b: inout Int) {
@@ -338,21 +338,21 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 }
 ```
 
-`swapTwoInts(_:_:)` 함수는 단순히 `b` 값을 `a` 로, `a` 값을 `b` 로 서로 교환합니다. 이 함수는 교환 작업을 위해 `a` 값을 `temporaryA` 라는 임시 상수에 저장한 다음, `b` 값을 `a` 에 할당하고, 다시 `temporaryA` 를 `b` 에 할당합니다.
+`swapTwoInts(_:_:)` 함수는 단순히 `b` 값을 `a` 로, `a` 값을 `b` 로 서로 교환합니다. 함수는 `a` 값을 `temporaryA` 라는 임시 상수에 저장하고, `b` 값을 `a` 에 할당한 다음, `temporaryA` 를 `b` 에 할당하는 것으로 이 교환 작업을 수행합니다.
 
-`swapTwoInts(_:_:)` 함수를 호출하면 `Int` 타입의 두 변수 값을 서로 교환할 수 있습니다. `swapTwoInts(_:_:)` 함수로 전달할 때 `someInt` 와 `anotherInt` 의 이름에는 접두사 '앤드 기호 (앰퍼센드)' 를 붙인다는 것을 기억하기 바랍니다:
+`swapTwoInts(_:_:)` 함수는 값을 서로 교환하기 위한 두 `Int` 타입 변수를 가지고 호출할 수 있습니다. `someInt` 와 `anotherInt` 는 `swapTwoInts(_:_:)` 함수로 전달할 때 이름 앞에 '앤드 기호 (ampersand)' 접두사를 붙인다는 것을 기억하기 바랍니다:
 
 ```swift
 var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
 print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
-// "someInt is now 107, and anotherInt is now 3" 를 출력합니다.
+// "someInt is now 107, and anotherInt is now 3" 를 인쇄합니다.
 ```
 
-위의 예제는 `someInt` 와 `anotherInt` 의 원래 값이, 함수 외부에서 정의되었음에도 불구하고, `swapTwoInts(_:_:)` 함수에서 수정된 것을 보여줍니다.
+위 예제는 `someInt` 와 `anotherInt` 의 원본 값이, 함수 외부에서 정의했음에도 불구하고, `swapTwoInts(_:_:)` 함수에서 수정된다는 것을 보여줍니다.
 
-> 입-출력 매개 변수는 함수에서 값을 반환하는 것과 같은 것이 아닙니다. 위의 `swapTwoInts` 예제는 반환 타입을 정의하지도 않았고 값을 반환하지도 않지만, 여전히 `someInt` 와 `anotherInt` 의 값을 수정합니다. 입-출력 매개 변수는 함수가 함수 본문 영역의 범위 외부로 효과를 줄 수 있는 또 다른 방법입니다.
+> 입-출력 매개 변수는 함수에서 값을 반환하는 것과 똑같은 것이 아닙니다. 위의 `swapTwoInts` 예제는 '반환 타입' 을 정의하지도 않고 값을 반환하지도 않지만, 여전히 `someInt` 와 `anotherInt` 의 값을 수정합니다. 입-출력 매개 변수는 함수가 함수 본문 외부 영역으로 효과를 줄 수 있는 또 다른 방법입니다.
 
 ### Function Types (함수 타입)
 
