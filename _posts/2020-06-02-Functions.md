@@ -443,9 +443,9 @@ printMathResult(addTwoInts, 3, 5)
 
 #### Function Type as Return Types (반환 타입으로써의 함수 타입)
 
-함수 타입을 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환을 수행하는 함수의 '반환 화살표 (`->`)' 바로 뒤에 '완전한 함수 타입' 을 작성하면 됩니다.
+함수 타입은 또 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환하는 함수의 '반환 화살표 (`->`)' 바로 뒤에 '완전한 함수 타입' 을 작성하면 됩니다.
 
-다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 두 개의 간단한 함수를 정의합니다. `stepForward(_:)` 함수는 입력 값보다 하나 더 큰 값을 반환하며, `stepBackward(_:)` 함수는 입력 값보다 하나 더 작은 값을 반환합니다. 두 함수 모두 타입은 `(Int) -> Int` 입니다:
+다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 두 개의 간단한 함수를 정의합니다. `stepForward(_:)` 함수는 입력 값보다 하나 큰 값을 반환하고, `stepBackward(_:)` 함수는 입력 값보다 하나 작은 값을 반환합니다. 두 함수 다 `(Int) -> Int` 타입입니다:
 
 ```swift
 func stepForward(_ input: Int) -> Int {
@@ -456,7 +456,7 @@ func stepBackward(_ input: Int) -> Int {
 }
 ```
 
-다음은 `chooseStepFunction(backward:)` 라는 함수이며, 반환 타입은 `(Int) -> Int` 입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불리언 (Boolean) 매개 변수를 기반으로 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
+다음은, 반환 타입이 `(Int) -> Int` 인, `chooseStepFunction(backward:)` 라는 함수입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 '불리언 (Boolean)' 매개 변수에 기초하여 `stepForward(_:)` 함수 또는 `stepBackward(_:)` 함수를 반환합니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -464,7 +464,7 @@ func chooseStepFunction(backward: Bool) -> (Int) -> Int {
 }
 ```
 
-이제 `chooseStepFunction(backward:)` 을 사용하면 한 쪽 아니면 다른 쪽 방향으로 한 단계 이동하는 함수를 얻을 수 있습니다:
+이제 `chooseStepFunction(backward:)` 를 사용하여 한 쪽 또는 다른 쪽 방향으로 한 단계 이동하는 함수를 구할 수 있습니다:
 
 ```swift
 var currentValue = 3
@@ -472,16 +472,16 @@ let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
 // moveNearerToZero 는 이제 stepBackward() 함수를 참조합니다.
 ```
 
-위의 예제는 `currentValue` 라는 변수가 `0` 에 점점 더 가까워지려면 필요한 것이 양의 방향인지 음의 방향인지를 결정합니다. `currentValue` 의 초기 값은 `3` 인데, 이는 `currentValue > 0` 이 `true` 를 반환하며, 결국 `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환할 것임을 의미합니다. 반환된 함수의 참조는 `moveNearerToZero` 라는 상수에 저장합니다.
+위 예제는 `currentValue` 라는 변수가 `0` 에 점점 더 가깝게 이동하려면 필요한 방향이 양인지 음인지 결정합니다. `currentValue` 는 초기 값으로 `3` 을 가지고 있는데, 이는 `currentValue > 0` 이 `true` 를 반환하여, `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환하도록 함을 의미합니다. 반환한 함수에 대한 참조는 `moveNearerToZero` 라는 상수에 저장됩니다.
 
-이제 `moveNearerToZero` 가 올바른 함수를 참조하고 있으므로, `0` 으로 이동하는데 사용할 수 있습니다:
+이제 `moveNearerToZero` 가 올바른 함수를 참조하므로, `0` 까지 세는데 사용할 수 있습니다:
 
 ```swift
 print("Counting to zero:")
-// zero 으로 이동합니다:
+// 'zero (영)' 까지 셉니다:
 while currentValue != 0 {
-    print("\(currentValue)... ")
-    currentValue = moveNearerToZero(currentValue)
+  print("\(currentValue)... ")
+  currentValue = moveNearerToZero(currentValue)
 }
 print("zero!")
 // 3...
@@ -492,11 +492,11 @@ print("zero!")
 
 ### Nested Functions (중첩 함수)
 
-이번 장에서 지금까지 마주친 모든 예제에 있는 함수들은, 전역 범위에서 정의한, _전역 함수 (global functions)_ 였습니다. 함수는 다른 함수의 본문 내에서도 정의할 수 있는데, 이를 _중첩 함수 (nested functions)_ 라고 합니다.
+이 장에서 지금까지 마주쳤던 모든 함수는, 전역 범위에서 정의한, _전역 함수 (global functions)_ 였습니다. 함수는 다른 함수의 본문 안에서도 정의할 수 있는데, 이는 _중첩 함수 (nested functions)_ 라고 합니다.
 
-'중첩 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수 (enclosing function)' 를 사용하면 여전히 호출할 수 있습니다. '둘러싼 함수' 는 자기가 가지고 있는 '중첩 함수' 중 하나를 반환해서 그 '중첩 함수' 를 다른 영역에서 사용하도록 할 수도 있습니다.
+'중첩 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수' 에 의해 여전히 호출되고 사용될 수 있습니다. '둘러싼 함수' 는 다른 영역에서 '중첩 함수' 를 사용하도록 허용하고자 자신의 '중첩 합수' 중 하나를 반환할 수도 있습니다.
 
-위에 있는 `chooseStepFunction(backward:)` 예제를 '중첩 함수' 를 사용하고 반환하도록 다시 작성하면 다음과 같습니다:
+위의 `chooseStepFunction(backward:)` 예제는 중첩 함수를 사용하고 반환하도록 재작성할 수 있습니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -518,6 +518,10 @@ print("zero!")
 // -1...
 // zero!
 ```
+
+### 다음 장
+
+[Closures (클로저; 잠금 블럭) > ]({% post_url 2020-03-03-Closures %})
 
 ### 참고 자료
 
