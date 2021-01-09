@@ -322,13 +322,13 @@ arithmeticMean(3, 8.25, 18.75)
 
 함수 매개 변수는 기본적으로 상수입니다. 함수 매개 변수의 값을 해당 함수 본문에서 바꾸려고 하는 것은 '컴파일-시간 에러' 가 되버립니다. 이는 매개 변수의 값이 실수로 바뀔 일은 없다는 의미입니다. 함수에서 매개 변수의 값을 수정하고 싶고, 이렇게 바뀐 것을 함수 호출이 끝난 후에도 유지하고 싶으면, 해당 매개 변수를 _입-출력 매개 변수 (in-out parameter)_ 로 대신 정의합니다.
 
-'입-출력 매개 변수' 는 매개 변수 타입 바로 앞에 `inout` 키워드를 붙여서 작성합니다. '입-출력 매개 변수' 는 원래 값을 대체하기 위해 함수에 _입력 (in)_ 되고, 함수에서 수정된 다음, 함수 밖으로 _출력 (out)_ 되는 값을 가집니다. 입-출력 매개 변수의 작동 방식 및 이와 결합된 컴파일러 최적화에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
+'입-출력 매개 변수' 는 매개 변수 타입 바로 앞에 `inout` 키워드를 붙여서 작성합니다. '입-출력 매개 변수' 는 원본 값을 대체하기 위해 함수에 _입력 (in)_ 되고, 함수에서 수정된 다음, 함수 밖으로 _출력 (out)_ 되는 값을 가집니다. 입-출력 매개 변수의 작동 방식 및 이와 결합된 컴파일러 최적화에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
 '변수 (variable)' 만 입-출력 매개 변수의 인자로 전달할 수 있습니다. 상수나 '글자 (literal) 값' 을 인자로 전달할 수는 없는데, 상수와 '글자 값' 은 수정할 수 없기 때문입니다. 변수를 입-출력 매개 변수의 인자로 전달할 때는, 함수에서 수정될 ₩1ㅈ  수 있음을 지시하기 위해, 변수 이름 바로 앞에 '앤드 기호 (ampersand; `&`)' 를 붙입니다.
 
 > '입-출력 매개 변수' 는 '기본 (default) 값' 을 가질 수 없으며, '가변 매개 변수' 를 `inout` 으로 표시할 수는 없습니다.  
 
-다음은, `a` 와 `b` 라는 두 개의 입-출력 매개 변수를 가지고 있는, `swapTwoInts(_:_:)` 라는 함수에 대한 예제입니다:
+다음은, `a` 와 `b` 라는 두 '입-출력 매개 변수' 를 가지는, `swapTwoInts(_:_:)` 라는 함수에 대한 예제입니다:
 
 ```swift
 func swapTwoInts(_ a: inout Int, _ b: inout Int) {
@@ -338,25 +338,25 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 }
 ```
 
-`swapTwoInts(_:_:)` 함수는 단순히 `b` 값을 `a` 로, `a` 값을 `b` 로 서로 교환합니다. 이 함수는 교환 작업을 위해 `a` 값을 `temporaryA` 라는 임시 상수에 저장한 다음, `b` 값을 `a` 에 할당하고, 다시 `temporaryA` 를 `b` 에 할당합니다.
+`swapTwoInts(_:_:)` 함수는 단순히 `b` 값을 `a` 로, `a` 값을 `b` 로 서로 교환합니다. 함수는 `a` 값을 `temporaryA` 라는 임시 상수에 저장하고, `b` 값을 `a` 에 할당한 다음, `temporaryA` 를 `b` 에 할당하는 것으로 이 교환 작업을 수행합니다.
 
-`swapTwoInts(_:_:)` 함수를 호출하면 `Int` 타입의 두 변수 값을 서로 교환할 수 있습니다. `swapTwoInts(_:_:)` 함수로 전달할 때 `someInt` 와 `anotherInt` 의 이름에는 접두사 '앤드 기호 (앰퍼센드)' 를 붙인다는 것을 기억하기 바랍니다:
+`swapTwoInts(_:_:)` 함수는 값을 서로 교환하기 위한 두 `Int` 타입 변수를 가지고 호출할 수 있습니다. `someInt` 와 `anotherInt` 는 `swapTwoInts(_:_:)` 함수로 전달할 때 이름 앞에 '앤드 기호 (ampersand)' 접두사를 붙인다는 것을 기억하기 바랍니다:
 
 ```swift
 var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
 print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
-// "someInt is now 107, and anotherInt is now 3" 를 출력합니다.
+// "someInt is now 107, and anotherInt is now 3" 를 인쇄합니다.
 ```
 
-위의 예제는 `someInt` 와 `anotherInt` 의 원래 값이, 함수 외부에서 정의되었음에도 불구하고, `swapTwoInts(_:_:)` 함수에서 수정된 것을 보여줍니다.
+위 예제는 `someInt` 와 `anotherInt` 의 원본 값이, 함수 외부에서 정의했음에도 불구하고, `swapTwoInts(_:_:)` 함수에서 수정된다는 것을 보여줍니다.
 
-> 입-출력 매개 변수는 함수에서 값을 반환하는 것과 같은 것이 아닙니다. 위의 `swapTwoInts` 예제는 반환 타입을 정의하지도 않았고 값을 반환하지도 않지만, 여전히 `someInt` 와 `anotherInt` 의 값을 수정합니다. 입-출력 매개 변수는 함수가 함수 본문 영역의 범위 외부로 효과를 줄 수 있는 또 다른 방법입니다.
+> 입-출력 매개 변수는 함수에서 값을 반환하는 것과 똑같은 것이 아닙니다. 위의 `swapTwoInts` 예제는 '반환 타입' 을 정의하지도 않고 값을 반환하지도 않지만, 여전히 `someInt` 와 `anotherInt` 의 값을 수정합니다. 입-출력 매개 변수는 함수가 함수 본문 외부 영역으로 효과를 줄 수 있는 또 다른 방법입니다.
 
 ### Function Types (함수 타입)
 
-모든 함수는 지정된 _함수 타입 (function type)_ 을 가지는데, 이는 그 함수의 매개 변수 타입과 반환 타입으로 구성됩니다.
+모든 함수는, 함수의 매개 변수 타입들과 반환 타입으로 이루어진, 지정된 _함수 타입 (function type)_ 을 가집니다.
 
 예를 들면 다음과 같습니다:
 
@@ -369,13 +369,13 @@ func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
 }
 ```
 
-이 예제는 `addTwoInts` 와 `multiplyTwoInts` 라는 두 개의 간단한 수학 함수를 정의합니다. 이 함수들은 각각 두 개의 `Int` 값을 받아서, 적절한 수학 연산을 수행한 결과를, 한 개의 `Int` 값으로 반환합니다.
+이 예제는 `addTwoInts` 와 `multiplyTwoInts` 라는 간단한 수학 함수 두 개를 정의합니다. 이 함수들은 저마다 두 개의 `Int` 값을 받아서, 적절한 수학 연산을 한 결과를, 한 개의 `Int` 값으로 반환합니다.
 
-이 두 함수 모두 타입이 `(Int, Int) -> Int` 입니다. 이는 다음 처럼 이해할 수 있습니다:
+이 두 함수 모두의 타입은 `(Int, Int) -> Int` 입니다. 이는 다음 처럼 이해할 수 있습니다:
 
-"둘 다 타입이 `Int` 인, 두 개의 매개 변수를 가지고, `Int` 타입인 한 개의 값을 반환하는 함수."
+"둘 다 `Int` 타입인, 매개 변수 두 개를 가지며, `Int` 타입의 값을 반환하는 함수."
 
-다음은 또 다른 예제로, 매개 변수와 반환 값이 없는 함수입니다:
+다음은, 매개 변수 또는 반환 값이 없는 함수에 대한, 또 다른 예제입니다:
 
 ```swift
 func printHelloWorld() {
@@ -387,65 +387,65 @@ func printHelloWorld() {
 
 #### Using Function Types (함수 타입 사용하기)
 
-함수 타입은 스위프트에 있는 다른 타입인 것처럼 사용할 수 있습니다. 예를 들어, 상수나 변수를 함수 타입으로 정의하면 그 변수에 적절한 함수를 할당할 수 있습니다:
+함수 타입은 스위프트의 다른 타입과 똑같은 것처럼 사용할 수 있습니다. 예를 들어, 상수나 변수를 함수 타입으로 정의하고 해당 변수에 적절한 함수를 할당할 수 있습니다:
 
 ```swift
 var mathFunction: (Int, Int) -> Int = addTwoInts
 ```
 
-이것은 다음과 같이 이해할 수 있습니다:
+이는 다음 처럼 이해할 수 있습니다:
 
-"타입이 '두 개의 `Int` 값을 가지고, 한 개의 `Int` 값을 반환하는 함수' 인, `mathFunction` 이라는 변수를 정의합니다. 이 새 변수가 `addTwoInts` 라는 함수를 참조하도록 설정합니다."
+"`mathFunction` 이라는 변수를 정의하는데, 이는 '두 `Int` 값을 취해서, `Int` 값을 반환하는 함수' 타입 입니다. 이 새로운 변수가 `addTwoInts` 라는 함수를 참조하도록 설정합니다."
 
-`addTwoInts(_:_:)` 함수는 `mathFunction` 변수와 같은 타입을 가지므로, 이 할당 작업은 스위프트의 타입-검사기가 허락 해줍니다.
+`addTwoInts(_:_:)` 함수는 `mathFunction` 변수와 같은 타입을 가지고 있으므로, 스위프트의 '타입-검사기' 가 이 할당을 허용합니다.
 
 이제 할당한 함수를 `mathFunction` 이라는 이름으로 호출할 수 있습니다:
 
 ```swift
 print("Result: \(mathFunction(2, 3))")
-// "Result: 5" 를 출력합니다.
+// "Result: 5" 를 인쇄합니다.
 ```
 
-타입만 같으면 동일 변수에 다른 함수도 할당할 수 있으며, 함수가 아닌 타입에서 하듯이 하면 됩니다.
+함수 아닌 타입과 똑같은 방식으로, 일치하는 타입을 가진 서로 다른 함수를 같은 변수에 할당할 수 있습니다.
 
 ```swift
 mathFunction = multiplyTwoInts
 print("Result: \(mathFunction(2, 3))")
-// "Result: 6" 을 출력합니다.
+// "Result: 6" 을 인쇄합니다.
 ```
 
-다른 타입에서 하는 것처럼, 함수를 상수나 변수에 할당할 때 스위프트가 그 함수 타입을 추론하도록 내버려 둘 수도 있습니다.
+다른 타입에서 처럼, 함수를 상수나 변수에 할당할 때 함수의 타입을 스위프트가 추론하게 내버려둘 수 있습니다.
 
 ```swift
 let anotherMathFunction = addTwoInts
 // anotherMathFunction 은 (Int, Int) -> Int 타입으로 추론됩니다.
 ```
 
-#### Function Type as Parameter Types (함수 타입을 매개 변수 타입으로 사용하기)
+#### Function Type as Parameter Types (매개 변수 타입으로써의 함수 타입)
 
-함수 타입, 가령 `(Int, Int) -> Int` 와 같은 것은 다른 함수의 매개 변수 타입으로 사용할 수 있습니다. 이렇게 하면 함수를 호출할 때 함수를 호출하는 쪽에서 함수 구현의 일부를 제공할 수 있게 됩니다.
+`(Int, Int) -> Int` 와 같은 함수 타입을 다른 함수에 대한 매개 변수 타입으로 사용할 수 있습니다. 이는 함수를 호출할 때 함수를 호출하는 쪽에서 함수 구현의 일부분을 제공할 수 있게 해줍니다.
 
-다음은 위에 있는 수학 함수의 결과를 출력하는 예제입니다:
+다음은 위에 있는 수학 함수의 결과를 인쇄하는 예제입니다:
 
 ```swift
 func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
   print("Result: \(mathFunction(a, b))")
 }
 printMathResult(addTwoInts, 3, 5)
-// "Result: 8" 를 출력합니다.
+// "Result: 8" 를 인쇄합니다.
 ```
 
-이 예제는, 세 개의 매개 변수를 가지고 있는, `printMathResult(_:_:_:)` 라는 함수를 정의합니다. 첫 번째 매개 변수는 `mathFunction` 이고, 타입은 `(Int, Int) -> Int` 입니다. 이 타입에 해당하는 함수라면 어떤 것이든 첫 번째 매개 변수의 인자로 전달할 수 있습니다. 두 번째와 세 번째 매개 변수는 `a` 와 `b` 이며, 둘 다 타입은 `Int` 입니다. 이들은 제공한 수학 함수의 두 입력 값으로 사용됩니다.
+이 예제는, 세 개의 매개 변수를 가지는, `printMathResult(_:_:_:)` 라는 함수를 정의합니다. 첫 번째 매개 변수는 `mathFunction` 이라고 하며, `(Int, Int) -> Int` 타입입니다. 해당 타입인 어떤 함수라도 이 첫 번째 매개 변수의 인자로 전달할 수 있습니다. 두 번째와 세 번째 매개 변수는 `a` 와 `b` 라고 하며, 둘 다 `Int` 타입입니다. 이들은 제공된 수학 함수의 두 입력 값으로 사용됩니다.
 
-`printMathResult(_:_:_:)` 를 호출할 때는, `addTwoInts(_:_:)` 함수 및, 정수 값 `3` 과 `5` 를 전달합니다. `3` 과 `5` 를 써서 제공한 함수를 호출한 다음, 그 결과인 `8` 을 출력합니다.
+`printMathResult(_:_:_:)` 를 호출할 때, `addTwoInts(_:_:)` 함수와, `3` 과 `5` 라는 정수 값을 전달합니다. 이는 `3` 과 `5` 를 가지고 제공한 함수를 호출하며, 결과인 `8` 을 인쇄합니다.
 
-`printMathResult(_:_:_:)` 의 역할은 적절한 타입에 해당하는 수학 함수의 호출 결과를 출력하는 것입니다. 함수의 실제 구현이 무엇인지는 상관없습니다-함수가 올바른 타입인지만 신경씁니다. 이렇게 하면 `printMathResult(_:_:_:)` 가 타입-안전한 방식[^type-safe]으로 기능의 일부를 함수를 호출하는 쪽으로 넘겨줄 수 있게 됩니다.
+`printMathResult(_:_:_:)` 의 역할은 수학 함수를 호출한 결과를 적절한 타입으로 인쇄하는 것입니다. 해당 함수의 구현이 실제로 무엇을 하는지는 중요하지 않습니다-함수가 올바른 타입인지 만이 중요합니다. 이는 `printMathResult(_:_:_:)` 가 타입-안전한[^type-safe] 방식으로 기능 일부를 함수를 호출하는 쪽으로 작업을 넘길 수 있도록 해줍니다.
 
-#### Function Type as Return Types (함수 타입을 반환 타입으로 사용하기)
+#### Function Type as Return Types (반환 타입으로써의 함수 타입)
 
-함수 타입을 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환을 수행하는 함수의 '반환 화살표 (`->`)' 바로 뒤에 '완전한 함수 타입' 을 작성하면 됩니다.
+함수 타입은 또 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환하는 함수의 '반환 화살표 (`->`)' 바로 뒤에 '완전한 함수 타입' 을 작성하면 됩니다.
 
-다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 두 개의 간단한 함수를 정의합니다. `stepForward(_:)` 함수는 입력 값보다 하나 더 큰 값을 반환하며, `stepBackward(_:)` 함수는 입력 값보다 하나 더 작은 값을 반환합니다. 두 함수 모두 타입은 `(Int) -> Int` 입니다:
+다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 두 개의 간단한 함수를 정의합니다. `stepForward(_:)` 함수는 입력 값보다 하나 큰 값을 반환하고, `stepBackward(_:)` 함수는 입력 값보다 하나 작은 값을 반환합니다. 두 함수 다 `(Int) -> Int` 타입입니다:
 
 ```swift
 func stepForward(_ input: Int) -> Int {
@@ -456,7 +456,7 @@ func stepBackward(_ input: Int) -> Int {
 }
 ```
 
-다음은 `chooseStepFunction(backward:)` 라는 함수이며, 반환 타입은 `(Int) -> Int` 입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불리언 (Boolean) 매개 변수를 기반으로 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
+다음은, 반환 타입이 `(Int) -> Int` 인, `chooseStepFunction(backward:)` 라는 함수입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 '불리언 (Boolean)' 매개 변수에 기초하여 `stepForward(_:)` 함수 또는 `stepBackward(_:)` 함수를 반환합니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -464,7 +464,7 @@ func chooseStepFunction(backward: Bool) -> (Int) -> Int {
 }
 ```
 
-이제 `chooseStepFunction(backward:)` 을 사용하면 한 쪽 아니면 다른 쪽 방향으로 한 단계 이동하는 함수를 얻을 수 있습니다:
+이제 `chooseStepFunction(backward:)` 를 사용하여 한 쪽 또는 다른 쪽 방향으로 한 단계 이동하는 함수를 구할 수 있습니다:
 
 ```swift
 var currentValue = 3
@@ -472,16 +472,16 @@ let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
 // moveNearerToZero 는 이제 stepBackward() 함수를 참조합니다.
 ```
 
-위의 예제는 `currentValue` 라는 변수가 `0` 에 점점 더 가까워지려면 필요한 것이 양의 방향인지 음의 방향인지를 결정합니다. `currentValue` 의 초기 값은 `3` 인데, 이는 `currentValue > 0` 이 `true` 를 반환하며, 결국 `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환할 것임을 의미합니다. 반환된 함수의 참조는 `moveNearerToZero` 라는 상수에 저장합니다.
+위 예제는 `currentValue` 라는 변수가 `0` 에 점점 더 가깝게 이동하려면 필요한 방향이 양인지 음인지 결정합니다. `currentValue` 는 초기 값으로 `3` 을 가지고 있는데, 이는 `currentValue > 0` 이 `true` 를 반환하여, `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환하도록 함을 의미합니다. 반환한 함수에 대한 참조는 `moveNearerToZero` 라는 상수에 저장됩니다.
 
-이제 `moveNearerToZero` 가 올바른 함수를 참조하고 있으므로, `0` 으로 이동하는데 사용할 수 있습니다:
+이제 `moveNearerToZero` 가 올바른 함수를 참조하므로, `0` 까지 세는데 사용할 수 있습니다:
 
 ```swift
 print("Counting to zero:")
-// zero 으로 이동합니다:
+// 'zero (영)' 까지 셉니다:
 while currentValue != 0 {
-    print("\(currentValue)... ")
-    currentValue = moveNearerToZero(currentValue)
+  print("\(currentValue)... ")
+  currentValue = moveNearerToZero(currentValue)
 }
 print("zero!")
 // 3...
@@ -492,11 +492,11 @@ print("zero!")
 
 ### Nested Functions (중첩 함수)
 
-이번 장에서 지금까지 마주친 모든 예제에 있는 함수들은, 전역 범위에서 정의한, _전역 함수 (global functions)_ 였습니다. 함수는 다른 함수의 본문 내에서도 정의할 수 있는데, 이를 _중첩 함수 (nested functions)_ 라고 합니다.
+이 장에서 지금까지 마주쳤던 모든 함수는, 전역 범위에서 정의한, _전역 함수 (global functions)_ 였습니다. 함수는 다른 함수의 본문 안에서도 정의할 수 있는데, 이는 _중첩 함수 (nested functions)_ 라고 합니다.
 
-'중첩 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수 (enclosing function)' 를 사용하면 여전히 호출할 수 있습니다. '둘러싼 함수' 는 자기가 가지고 있는 '중첩 함수' 중 하나를 반환해서 그 '중첩 함수' 를 다른 영역에서 사용하도록 할 수도 있습니다.
+'중첩 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수' 에 의해 여전히 호출되고 사용될 수 있습니다. '둘러싼 함수' 는 다른 영역에서 '중첩 함수' 를 사용하도록 허용하고자 자신의 '중첩 합수' 중 하나를 반환할 수도 있습니다.
 
-위에 있는 `chooseStepFunction(backward:)` 예제를 '중첩 함수' 를 사용하고 반환하도록 다시 작성하면 다음과 같습니다:
+위의 `chooseStepFunction(backward:)` 예제는 중첩 함수를 사용하고 반환하도록 재작성할 수 있습니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -518,6 +518,10 @@ print("zero!")
 // -1...
 // zero!
 ```
+
+### 다음 장
+
+[Closures (클로저; 잠금 블럭) > ]({% post_url 2020-03-03-Closures %})
 
 ### 참고 자료
 
