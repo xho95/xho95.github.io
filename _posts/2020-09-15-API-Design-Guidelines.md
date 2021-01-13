@@ -729,7 +729,7 @@ x.move(from: x, to: y)
 
 [^symbol-comman-syntax]: 링크 자체는 바로 위의 링크와 같은 [symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1) 문서로 연결됩니다.
 
-[^factory-method]: '공장 메소드 (factory method)' 는 '공장 메소드 패턴 (factory method pattern)' 에서 사용하는 메소드로, '구체적으로 고정된 타입 (concrete type)' 을 지정하지 않은 채 객체를 생성할 수 있게 해줍니다. 보다 자세한 내용은 위키피디아의 [Factory method pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) 및 [팩토리 메서드 패턴](https://ko.wikipedia.org/wiki/팩토리_메서드_패턴) 항목을 참고하기 바랍니다.
+[^factory-method]: '공장 메소드 (factory method)' 는 '공장 메소드 패턴 (factory method pattern)' 에서 사용하는 메소드로, 구체적으로 '고정된 타입 (concrete type)' 을 지정하지 않은 채 객체를 생성할 수 있게 해줍니다. 이에 대한 더 자세한 정보는 위키피디아의 [Factory method pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) 항목과 [팩토리 메서드 패턴](https://ko.wikipedia.org/wiki/팩토리_메서드_패턴) 항목을 참고하기 바랍니다.
 
 [^base-name]: '기본 이름 (base name)' 은 함수 또는 메소드에서 매개 변수와 괄호를 뺀 순수한 함수 자체의 이름인 것으로 추측됩니다.
 
