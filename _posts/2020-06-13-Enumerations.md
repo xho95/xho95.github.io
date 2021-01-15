@@ -107,9 +107,9 @@ default:
 // "Mostly harmless" 를 인쇄합니다.
 ```
 
-### Iterating over Enumeration Cases (열거체 case 값에 대해 동작 반복 적용하기)
+### Iterating over Enumeration Cases (열거체 case 값들에 동작 반복시키기)
 
-어떤 열거체에서는, 열거체의 모든 'case 값' 들에 대한 '집합체 (collection)' 을 가지는 것이 유용할 수 있습니다. 이렇게 하려면 열거체의 이름 뒤에 `: CaseIterable` 을 붙여주도록 합니다. 스위프트는 해당 열거체 타입의 모든 'case 값' 들을 위한 '집합체' 를 `allCases` 라는 속성으로 드러냅니다. 예를 들면 다음과 같습니다:
+어떤 열거체에서는, 해당 열거체의 모든 'case 값' 에 대한 '집합체 (collection)' 를 가지는 것이 유용합니다. 이렇게 하려면 열거체 이름 뒤에 `: CaseIterable` 을 작성합니다. 스위프트는 열거체 타입의 `allCases` 속성으로 모든 'case 값' 집합체를 드러냅니다. 다음은 예제입니다:
 
 ```swift
 enum Beverage: CaseIterable {
@@ -117,10 +117,10 @@ case coffee, tea, juice
 }
 let numberOfChoices = Beverage.allCases.count
 print("\(numberOfChoices) beverages available")
-// "3 beverages available" 를 출력합니다.
+// "3 beverages available" 를 인쇄합니다.
 ```
 
-위 예제에서는, `Beverage.allCases` 를 써서 `Beverage` 열거체의 모든 'case 값' 을 담고 있는 '집합체 (collection)' 에 접근합니다. `allCase` 는 다른 모든 '집합체' 들 처럼 사용할 수 있는데-이 집합체의 원소는 열거체 타입의 인스턴스라서, 이 경우에는 `Beverage` 값이 됩니다. 위 예제는 'case 값' 이 얼마나 많이 있는 지를 계산하며, 아래 예제는 `for` 반복문을 사용하여 모든 'case 값' 들에 동작을 반복 적용합니다.
+위 예제는, `Beverage` 열거체의 모든 'case 값' 을 담은 '집합체' 에 접근하기 위해 `Beverage.allCases` 를 작성합니다. `allCase` 는 다른 집합체 처럼 똑같이 사용할 수 있습니다-집합체의 원소는 열거체 타입의 인스턴스이므로, 이 경우는 `Beverage` 값입니다. 위 예제는 'case 값' 이 얼마나 있는지를 세며, 아래 예제는 모든 'case 값' 에 동작을 반복시키기 위해 `for` 반복문을 사용합니다.
 
 ```swift
 for beverage in Beverage.allCases {
@@ -131,7 +131,7 @@ for beverage in Beverage.allCases {
 // juice
 ```
 
-위 예제에서 사용한 구문 표현은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수하도록 표시한 것입니다. 프로토콜에 대한 정보는, [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
+위 예제에서 사용한 구문 표현은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수하는 것으로 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
 ### Associated Values (결합된 값)
 
