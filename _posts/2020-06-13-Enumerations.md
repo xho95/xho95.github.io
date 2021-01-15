@@ -67,7 +67,7 @@ directionToHead = .east
 
 `directionToHead` 의 타입은 이미 알고 있으므로, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 타입을 명시적으로 지정한 열거체의 값과 작업할 때 가독성 높은 코드를 만들어 줍니다.
 
-### Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)
+### Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)
 
 개별 열거체 값은 `switch` 문으로 맞춰볼 수 있습니다:
 
@@ -83,18 +83,18 @@ case .east:
 case .west:
   print("Where the skies are blue")
 }
-// "Watch out for penguins" 를 출력합니다.
+// "Watch out for penguins" 를 인쇄합니다.
 ```
 
-이 코드는 다음 처럼 이해할 수 있습니다.
+이 코드는 다음 처럼 이해할 수 있습니다:
 
-“`directionToHead` 의 값을 검토합니다. `.north` 와 같은 경우에는, `"Lots of planets have a north"` 를 출력합니다. `.south` 와 같은 경우에는, `"Watch out for penguins"` 을 출력합니다.
+“`directionToHead` 의 값을 검토합니다. `.north` 와 같은 경우, `"Lots of planets have a north"` 를 인쇄합니다. `.south` 와 같은 경우, `"Watch out for penguins"` 을 인쇄합니다."
 
-...이렇게 계속됩니다.
+...이를 계속합니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것 처럼, 열거체의 'case 값' 을 검토할 때 `switch` 문은 반드시 '빠짐없이 철저해야 (exhaustive)' 합니다. 만약 `.west` 에 대한 `case` 를 생략하면, 이 코드는 컴파일되지 않는데, `CompassPoint` 'case 값' 들에 해당하는 전체 목록을 다 검토하지 않기 때문입니다. 빠짐없이 철처할 것을 요구하는 것은 열거체의 'case 값' 을 우연히 생략하지 않도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, `switch` 문은 '열거체 case 값' 을 검토할 때 반드시 '빠짐없이 철저 (exhaustive)' 해야 합니다. 만약 `.west` 에 대한 '`case` 절' 을 생략하면, '`CompassPoint` case 값' 의 완료된 목록을 검토하지 않기 때문에, 코드를 컴파일하지 않습니다. '빠짐없이 철처함' 을 요구하는 것은 예기치 않게 '열거체 case 값' 을 생략하지 않도록 보장합니다.
 
-모든 열거채의 'case 값' 에 대해 `case` 를 제공하는 것이 적절하지 않을 때는, `default` 'case 절' 을 제공해서 명시적으로 알리지 않은 'case 값' 이라면 어떤 것도 다루도록 할 수 있습니다:
+모든 '열거채 case 값' 에 '`case` 절' 를 제공하는 것이 적절하지 않을 때는, 명시적으로 알리지 않은 어떤 'case 값' 도 다룰 수 있는 '`default` case 절' 을 제공할 수 있습니다:
 
 ```swift
 let somePlanet = Planet.earth
@@ -104,7 +104,7 @@ case .earth:
 default:
   print("Not a safe place for humans")
 }
-// "Mostly harmless" 를 출력합니다.
+// "Mostly harmless" 를 인쇄합니다.
 ```
 
 ### Iterating over Enumeration Cases (열거체 case 값에 대해 동작 반복 적용하기)
@@ -180,7 +180,7 @@ productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 
 이 시점에서, 원래의 `Barcode.upc` 와 정수 값들은 새 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 나 `.qrCode` 라면 (그 결합된 값과 함께) 아무거나 저장할 수 있지만, 주어진 시점에는 이 중 단 하나만을 저장할 수 있습니다.
 
-서로 다른 바코드 타입들은 'switch' 문을 사용하여 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 'switch' 문에서 '결합된 값' 을 뽑아내게 됩니다. 각각의 '결합된 값' 을 (`let` 접두사를 사용한) 상수나 (`var` 접두사를 사용한) 변수로 뽑아내서 `switch` 문의 'case 절' 본문에서 사용합니다:
+서로 다른 바코드 타입들은 'switch' 문을 사용하여 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 'switch' 문에서 '결합된 값' 을 뽑아내게 됩니다. 각각의 '결합된 값' 을 (`let` 접두사를 사용한) 상수나 (`var` 접두사를 사용한) 변수로 뽑아내서 `switch` 문의 'case 절' 본문에서 사용합니다:
 
 ```swift
 switch productBarcode {
