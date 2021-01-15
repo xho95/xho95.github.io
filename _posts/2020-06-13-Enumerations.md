@@ -6,33 +6,31 @@ date:   2020-06-13 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Enumerations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Enumerations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Enumerations (열거체)
 
-_열거체 (enumerations)_ 는 관계있는 값 그룹에 '공통 타입' 을 정의하여 이 값들을 코드에서 '타입-안전한 (type-safe)'[^type-safe] 방법으로 사용할 수 있게 해 줍니다.
+_열거체 (enumerations)_ 는 관련된 값의 그룹에 '공통 타입' 을 정의하여 이 값들을 코드에서 '타입-안전한 (type-safe)'[^type-safe] 방식으로 작업할 수 있게 해줍니다.
 
-C 언어에 익숙하다면, C 언어의 열거체는 관계된 이름들에 일종의 정수 값을 할당한다는 것을 알고 있을 것입니다. 스위프트의 열거체는 훨씬 더 유연해서, 열거체의 각 'case 값' 에 값을 제공할 필요도 없습니다. 각 열거체 'case 값' 에 값을 제공할 경우 (이를 _원시 값 (raw value)_ 이라 합니다), 이 값은 '문자열 (string)', '문자 (character)', 또는 '정수 (integer)' 나 '부동-소수점 (float-point)' 타입 어떤 것이든 될 수 있습니다.
+C 에 익숙하다면, C 열거체는 관련된 이름에 일련의 정수 값을 할당한다는 것을 알고 있을 겁니다. 스위프트의 열거체는 훨씬 더 유연하며, 열거체의 각 'case 값' 에 값을 제공할 필요가 없습니다. 만약 열거체의 각 'case 값' 에 (_원시 값 (raw value)_ 이라는) 값을 제공할 경우, 이 값은 '문자열 (string)' 이나, '문자 (character)', 또는 '정수 (integer)' 나 '부동-소수점 (float-point)' 등 어떤 타입의 값이든 될 수 있습니다.
 
-또 다른 방법으로, 열거체의 'case 값' 에는 각 'case 값' 에 따라 달리 저장되는 '결합된 값 (associated values)' 이라는 것을 _어떤 (any)_ 타입에 대해서든 지정할 수 있어서, 다른 언어에 있는 '공용체 (unions)' 또는 '변형체 (variants)' 와 흡사한 것을 만들 수 있습니다. 관계된 'case 값' 들의 공통 집합을 하나의 열거체로 정의하면서, 제각각 이에 결합된 적당한 타입의 서로 다른 값 집합을 가지도록 정의할 수 있습니다.
+또 다른 방법으로, 열거체의 'case 값' 은 서로 다른 각 'case 값' 에 나란히 저장되는, 다른 언어의 '공용체 (unions)' 나 '변형체 (variants)' 와 거의 같은, '결합된 값 (associated values)' 을 _어떤 (any)_ 타입이로든 지정할 수 있습니다. 관련된 'case 값' 들의 공통 집합은, 저마다 이와 결합된 적절한 타입의 서로 다른 값 집합을 가진, 하나의 열거체로 정의할 수 있습니다.
 
-스위프트의 열거체는 그 자체로 '일급 타입 (first-class types)'[^first-class] 입니다. 전통적으로 클래스에서만 지원하던 많은 특징들을 채택했는데, 열거체의 현재 값에 대한 추가적인 정보를 제공하는 '계산 속성 (computed properties)', 열거체가 표현할 값과 관계된 기능을 제공하는 '인스턴스 메소드 (instance methods)' 등이 이에 해당합니다. 열거체에는 '초기자' 를 정의해서 '초기 case 값 (initial case value)' 도 제공할 수 있습니다; 기능을 확대해서 원래 구현 이상으로 확장할 수도 있습니다; 프로토콜을 준수해서 표준 기능을 제공할 수도 있습니다.
+스위프트의 열거체는 그 자체로 '일급 (first-class) 타입'[^first-class] 입니다. 이는, 열거체의 현재 값에 대한 추가적인 정보를 제공하는 '계산 속성 (computed properties)' 과, 열거체가 표현하는 값과 관련된 기능을 제공하는 '인스턴스 메소드' 같이, 전통적으로 클래스에서만 지원하던 많은 특징들을 채택하고 있습니다. 열거체는 '초기 case 값' 을 제공하기 위해 '초기자 (initializers)' 도 정의할 수 있고; 원래의 구현 너머로 기능을 확대하기 위해 확장될 수도 있으며; 표준 기능을 제공하기 위해 프로토콜을 준수할 수도 있습니다.
 
-이러한 '보유 능력들 (capabilities)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
+이 '보유 능력 (capabilities)' 들에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
 ### Enumeration Syntax (열거체 구문 표현)
 
-열거체를 도입하려면 `enum` 키워드를 사용하며 중괄호 쌍 안에 전체 정의를 작성하면 됩니다:
+열거체는 `enum` 키워드로 도입하며 그의 전체 정의는 중괄호 쌍 안에 둡니다:
 
 ```swift
 enum SomeEnumeration {
-  // 여기에서 열거체를 정의합니다.
+  // 열거체 정의는 여기에 둡니다.
 }
 ```
 
-다음은 '나침반 (compass)' 의 네 가지 주요 지점을 나타내는 예제입니다:
+다음은 '나침반' 의 네 주요 '방위 (points)' 에 대한 예제입니다:
 
 ```swift
 enum CompassPoint {
@@ -43,11 +41,11 @@ enum CompassPoint {
 }
 ```
 
-열거체에서 정의한 값들 (가령 `north`, `south`, `east`, 그리고 `west`) 은 _열거체 case 값 (enumeration cases)_ 입니다. `case` 키워드를 사용하여 새로운 '열거체 case 값' 을 도입할 수 있습니다.
+열거체에서 정의한 (`north`, `south`, `east`, 그리고 `west` 같은) 값들은 _열거체 case 값 (enumeration cases)_ 입니다.[^cases] 새로운 '열거체 case 값' 을 도입하려면 `case` 키워드를 사용합니다.
 
-> 스위프트의 '열거체 case 값' 은 기본적으로 정수 값으로 설정되지 않으며, 이는 C 언어와 오브젝티브-C 언어와는 다른 점입니다. 위의 `CompassPoint` 예제에 있는, `north`, `south`, `east`, 그리고 `west` 는 암시적으로 `0`, `1`, `2`, 및 `3` 이 되지 않습니다. 그 대신, 서로 다른 '열거체 case 값' 그 자체가 '값 (values)' 이며, 명시적으로 정의한 `CompassPoint` 가 그 타입입니다.
+> 스위프트의 '열거체 case 값' 은, 'C' 와 ''오브젝티브-C' 같은 언어와는 달리, 기본적으로 정수 값으로 설정되지 않습니다. 위의 `CompassPoint` 예제에 있는, `north`, `south`, `east`, 및 `west` 는 `0`, `1`, `2`, 및 `3` 과 암시적으로 같아 지지 않습니다. 그 대신, 서로 다른 '열거체 case 값' 은 그 자체로, `CompassPoint` 라는 명시적으로 정의된 타입을 가진, '값 (values)' 입니다.
 
-여러 'case 값' 을, 쉼표로 구분하여, 한 줄로 나타낼 수 있습니다:
+'다중 (multiple) case 값' 은, 쉼표로 구분하여, 한 줄로 나타낼 수 있습니다:
 
 ```swift
 enum Planet {
@@ -55,19 +53,19 @@ case mercury, venus, earth, mars, jupiter, saturn uranus, neptune
 }
 ```
 
-각각의 열거체 정의는 새로운 타입을 정의합니다. 스위프트의 다른 타입들과 마찬가지로, 이 이름 (가령 `CompassPoint` 와 `Planet` 등) 은 대문자로 시작합니다. 열거체의 타입은, 자명하게 이해되도록, 복수형 이름이 아니라 단수형을 부여하도록 합니다:
+각각의 열거체 정의는 새로운 타입을 정의합니다. 스위프트에 있는 다른 타입들 같이, (`CompassPoint` 와 `Planet` 같은) 그 이름은 대문자로 시작합니다. 열거체 타입은, 자명하게 이해되도록, '복수형 (plural)' 보다는 '단수형 (singular) 이름' 을 부여합니다[^plural-vs-singular]:
 
 ```swift
 var directionToHead = CompassPoint.west
 ```
 
-`directionToHead` 의 타입은 `CompassPoint` 중 한 가지 값으로 초기화될 때 추론됩니다. `directionToHead` 가 한번 `CompassPoint` 로 선언되고 나면, '단축 점 구문 표현 (shorter dot syntax)' 을 사용하여 다른 `CompassPoint` 값을 설정할 수 있습니다:
+`directionToHead` 의 타입은 이를 가능한 `CompassPoint` 값들 중 하나로 초기화할 때 추론됩니다. `directionToHead` 를 `CompassPoint` 로 한 번 선언하고 나면, '줄인 점 구문 표현 (shorter dot syntax)' 을 사용하여 이를 다른 `CompassPoint` 값으로 설정할 수 있습니다:
 
 ```swift
 directionToHead = .east
 ```
 
-`directionToHead` 의 타입을 이미 알고 있으므로, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 명시적으로 타입을 지정한 열거체의 값과 작업할 때 아주 가독성 높은 코드를 만들도록 해 줍니다.
+`directionToHead` 의 타입은 이미 알고 있으므로, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 타입을 명시적으로 지정한 열거체의 값과 작업할 때 가독성 높은 코드를 만들어 줍니다.
 
 ### Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)
 
@@ -357,9 +355,9 @@ print(evaluate(product))
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 이 내용은 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 부분의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 바 있습니다.
+[^type-safe]: 여기서 '타입-안전한 (type-safe) 방식' 은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있음을 의미합니다. 이에 대한 더 자세한 정보는 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
-[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 합니다. 이에 대한 보다 자세한 내용은 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
+[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 합니다. 이에 대한 더 자세한 정보는 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
 [^variants]: 이 세가지 개념은 사실상 같은 것으로, 각각은 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union), [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 'discriminated union' 가 'tagged union' 을 의미한다고 하며 이 둘은 따로 항목이 나뉘지 않습니다.
 
@@ -368,3 +366,7 @@ print(evaluate(product))
 [^indirect]: 여기서 '재귀적인 (recursive)' 열거체를 만들기 위해 `indirect` 라는 키워드를 사용하고 있는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 에서 온 개념으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 를 참고하기 바랍니다.
 
 [^indirection]: 본문을 보면 '재귀적 (recursive)' 이라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하고 있는데, 이는 스위프트 열거체를 '재귀적' 으로 만드는 방식이 내부적으로는 메모리의 '간접 주소' 방식을 써서 구현했기 때문으로 추측됩니다. 물론 스위프트 프로그래밍을 위해 이런 걸 알아야 하는 것은 아니므로 그런게 있다고 넘어가면 될 것 같습니다.
+
+[^cases]: 'case' 는 '경우' 라고 옮길 수 있지만, 스위프트의 'case' 는 하나의 '키워드 (keyword)' 이기도 하면서, 때에 따라 'case 값', 'case 절', 그리고 그냥 '경우' 를 의미하기도 하기 때문에, 한글로 '경우' 를 의미할 때만 '경우' 라고 하고, 그 이외의 상황에서는 'case 값' 또는 'case 절' 이라고 옮깁니다.
+
+[^plural-vs-singular]: '열거체 이름' 을 '복수형' 으로 만들면 본문 예제는 `CompassPoints` 가 될 것입니다. 이 경우, 아래 예제는 `CompassPoints.west` 가 되는데, '나침판 (compass)' 의 방향이 동시에 여러 개일 수 있다고 착각할 수 있을 것입니다.
