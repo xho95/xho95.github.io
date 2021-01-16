@@ -14,7 +14,7 @@ _열거체 (enumerations)_ 는 관련된 값의 그룹에 '공통 타입' 을 �
 
 C 에 익숙하다면, C 열거체는 관련된 이름에 일련의 정수 값을 할당한다는 것을 알고 있을 겁니다. 스위프트의 열거체는 훨씬 더 유연하며, 열거체의 각 'case 값' 에 값을 제공할 필요가 없습니다. 만약 열거체의 각 'case 값' 에 (_원시 값 (raw value)_ 이라는) 값을 제공할 경우, 이 값은 '문자열 (string)' 이나, '문자 (character)', 또는 '정수 (integer)' 나 '부동-소수점 (float-point)' 등 어떤 타입의 값이든 될 수 있습니다.
 
-또 다른 방법으로, 열거체의 'case 값' 은 서로 다른 각 'case 값' 에 나란히 저장되는, 다른 언어의 '공용체 (unions)' 나 '변형체 (variants)' 와 거의 같은, '결합된 값 (associated values)' 을 _어떤 (any)_ 타입이로든 지정할 수 있습니다. 관련된 'case 값' 들의 공통 집합은, 저마다 이와 결합된 적절한 타입의 서로 다른 값 집합을 가진, 하나의 열거체로 정의할 수 있습니다.
+또 다른 방법으로, 열거체의 'case 값' 은 서로 다른 각 'case 값' 에 나란히 저장되는, 다른 언어의 '공용체 (unions)' 나 '가변체 (variants)' 와 거의 같은, '결합된 값 (associated values)' 을 _어떤 (any)_ 타입이로든 지정할 수 있습니다. 관련된 'case 값' 들의 공통 집합은, 저마다 이와 결합된 적절한 타입의 서로 다른 값 집합을 가진, 하나의 열거체로 정의할 수 있습니다.
 
 스위프트의 열거체는 그 자체로 '일급 (first-class) 타입'[^first-class] 입니다. 이는, 열거체의 현재 값에 대한 추가적인 정보를 제공하는 '계산 속성 (computed properties)' 과, 열거체가 표현하는 값과 관련된 기능을 제공하는 '인스턴스 메소드' 같이, 전통적으로 클래스에서만 지원하던 많은 특징들을 채택하고 있습니다. 열거체는 '초기 case 값' 을 제공하기 위해 '초기자 (initializers)' 도 정의할 수 있고; 원래의 구현 너머로 기능을 확대하기 위해 확장될 수도 있으며; 표준 기능을 제공하기 위해 프로토콜을 준수할 수도 있습니다.
 
@@ -135,21 +135,21 @@ for beverage in Beverage.allCases {
 
 ### Associated Values (결합된 값)
 
-이전 부분에 있는 예제는 열거체의 'case 값' 이 어떻게 그 자체로 정의된 (그리고 타입을 가진) 값인 지를 보여줍니다. 상수나 변수를 `Planet.earth` 라고 설정할 수 있고, 나중에 검사할 수도 있습니다. 하지만, 이러한 'case 값' 과 나란히 다른 타입의 값을 저장할 수 있다면 유용할 때가 있습니다. 이 추가적인 정보를 _결합된 값 (associated value)_ 이라고 하며, 이는 그 'case 값' 을 코드에서 값으로 사용하는 매 순간마다 달라집니다.
+이전 부분에 있는 예제는 열거체의 'case 값' 이 그 자체로 (타입을 가지고) 정의된 값이 되는 방법을 보여줍니다. 상수나 변수를 `Planet.earth` 로 설정하고, 나중에 이 값을 검사할 수 있습니다. 하지만, 이 'case 값' 들과 나란히 다른 타입의 값을 저장할 수 있다면 유용할 때가 있습니다. 이런 추가적인 정보를 _결합된 값 (associated value)_ 이라고 하며, 이는 매 번 해당 'case 값' 을 코드에서 값으로 사용할 때마다 달라집니다.
 
-스위프트 열거체에는 어떤 타입의 '결합된 값' 도 저장하도록 정의할 수 있으며, 필요하다면 이 값의 타입이 열거체의 각 'case 값' 마다 달라져도 됩니다. 이와 같은 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_, _tagged unions (꼬리표 달린 공용체)_, 또는 _variants (변형체)_ 라고 합니다.[^variants]
+스위프트 열거체는 어떤 타입의 '결합된 값' 이든 저장하라고 정의할 수 있으며, 필요하면 값 타입이 열거체의 각 'case 값' 마다 서로 달라도 됩니다. 이와 유사한 열거체를 다른 프로그래밍 언어에서는 _차별화된 공용체 (discriminated unions)_, _꼬리표 단 공용체 (tagged unions)_, 또는 _가변체 (variants)_ 라고 합니다.[^variants]
 
-예를 들어, 서로 다른 두 개의 바코드 타입을 쓰는 제품을 추적하는 '재고 물품 추적 시스템' 을 가정해 봅시다. 일부 제품은 UPC 양식의 1-차원 바코드를 써서, `0` 에서 `9` 까지의 숫자로 된, 이름표를 사용합니다. 각각의 바코드에는 한 자리 수의 시스템에 이어서, 다섯 자리의 '제조업체 코드' 와 다섯 자리의 '제품 코드' 가 있습니다. 맨 뒤에는 한 자리의 검사 코드도 있어서 이 코드를 정확하게 스캔했는 지를 검증합니다:
+예를 들어, '재고 추적 시스템' 이 서로 다른 두 타입의 바코드로 물품을 추적할 필요가 있다고 가정합니다. 어떤 물품은, `0` 에서 `9` 까지의 숫자를 사용하는, UPC 양식의 1-차원 바코드로 이름표를 붙입니다. 각 바코드는 한 자리 수의 '시스템 코드' 뒤에, 다섯 자리의 '제조회사 코드' 와 다섯 자리의 '물품 코드' 를 가집니다. 그 뒤에는 코드를 올바르게 '스캔 (scan)' 했는지를 증명하기 위한 '검사 자리' 가 있습니다:
 
 ![1-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-1d-barcode.png)
 
-다른 제품은 QR 코드 양식의 2-차원 바코드를 써서, 최대 2,953 개 길이의 ISO 8859-1 문자열로 '부호화 (encoding)' 된, 이름표를 사용합니다.
+다른 제품은, 어떤 'ISO 8859-1' 문자도 사용할 수 있고 최대 '2,953' 개 길이의 문자열을 '부호화 (encoding)' 할 수 있는, QR 코드 양식의 2-차원 바코드로 이름표를 붙입니다:
 
 ![2-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-2d-barcode.png)
 
-'재고 물품 추적 시스템' 에서 UPC 바코드는 네 개의 정수로 된 '튜플' 로 저장하고, QR 코드 바코드는 임의 길이의 문자열로 저장하는 것이 편리합니다.
+UPC 바코드는 네 정수의 '튜플' 로 저장하고, QR 코드 바코드는 임의 길이 문자열로 저장하는 것이 '재고 추적 시스템' 에게 편리합니다.
 
-스위프트에서, 어느 타입도 가질 수 있는 '제품 바코드' 를 열거체로 정의하면 다음과 같을 것입니다:
+스위프트에서, 어느 타입이든 다 되는 '물품 바코드' 를 정의한 열거체는 다음 같이 보일 수도 있습니다:
 
 ```swift
 enum Barcode {
@@ -158,7 +158,7 @@ enum Barcode {
 }
 ```
 
-이것은 다음 처럼 이해할 수 있습니다:
+이는 다음처럼 이해할 수 있습니다:
 
 "`Barcode` 라는 열거체를 정의하는데, 이는 '결합된 값' 의 타입이 (`Int`, `Int`, `Int`, `Int`) 인 `upc` 값을 취하거나, '결합된 값' 의 타입이 `String` 인 `qrCode` 값을 취합니다."
 
@@ -359,7 +359,7 @@ print(evaluate(product))
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 합니다. 이에 대한 더 자세한 정보는 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
-[^variants]: 이 세가지 개념은 사실상 같은 것으로, 각각은 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union), [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 'discriminated union' 가 'tagged union' 을 의미한다고 하며 이 둘은 따로 항목이 나뉘지 않습니다.
+[^variants]: 사실상, 이 세가지 용어는 같은 것입니다. 각각에 대한 더 자세한 정보는 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 을 의미하기 때문에 이 둘은 서로 항목이 나뉘지도 않았습니다.
 
 [^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값을-가지는-열거체를-위한-실패-가능한-초기자) 에서도 설명하고 있습니다.
 
