@@ -14,7 +14,7 @@ _열거체 (enumerations)_ 는 관련된 값의 그룹에 '공통 타입' 을 �
 
 C 에 익숙하다면, C 열거체는 관련된 이름에 일련의 정수 값을 할당한다는 것을 알고 있을 겁니다. 스위프트의 열거체는 훨씬 더 유연하며, 열거체의 각 'case 값' 에 값을 제공할 필요가 없습니다. 만약 열거체의 각 'case 값' 에 (_원시 값 (raw value)_ 이라는) 값을 제공할 경우, 이 값은 '문자열 (string)' 이나, '문자 (character)', 또는 '정수 (integer)' 나 '부동-소수점 (float-point)' 등 어떤 타입의 값이든 될 수 있습니다.
 
-또 다른 방법으로, 열거체의 'case 값' 은 서로 다른 각 'case 값' 에 나란히 저장되는, 다른 언어의 '공용체 (unions)' 나 '변형체 (variants)' 와 거의 같은, '결합된 값 (associated values)' 을 _어떤 (any)_ 타입이로든 지정할 수 있습니다. 관련된 'case 값' 들의 공통 집합은, 저마다 이와 결합된 적절한 타입의 서로 다른 값 집합을 가진, 하나의 열거체로 정의할 수 있습니다.
+또 다른 방법으로, 열거체의 'case 값' 은 서로 다른 각 'case 값' 에 나란히 저장되는, 다른 언어의 '공용체 (unions)' 나 '가변체 (variants)' 와 거의 같은, '결합된 값 (associated values)' 을 _어떤 (any)_ 타입이로든 지정할 수 있습니다. 관련된 'case 값' 들의 공통 집합은, 저마다 이와 결합된 적절한 타입의 서로 다른 값 집합을 가진, 하나의 열거체로 정의할 수 있습니다.
 
 스위프트의 열거체는 그 자체로 '일급 (first-class) 타입'[^first-class] 입니다. 이는, 열거체의 현재 값에 대한 추가적인 정보를 제공하는 '계산 속성 (computed properties)' 과, 열거체가 표현하는 값과 관련된 기능을 제공하는 '인스턴스 메소드' 같이, 전통적으로 클래스에서만 지원하던 많은 특징들을 채택하고 있습니다. 열거체는 '초기 case 값' 을 제공하기 위해 '초기자 (initializers)' 도 정의할 수 있고; 원래의 구현 너머로 기능을 확대하기 위해 확장될 수도 있으며; 표준 기능을 제공하기 위해 프로토콜을 준수할 수도 있습니다.
 
@@ -67,7 +67,7 @@ directionToHead = .east
 
 `directionToHead` 의 타입은 이미 알고 있으므로, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 타입을 명시적으로 지정한 열거체의 값과 작업할 때 가독성 높은 코드를 만들어 줍니다.
 
-### Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)
+### Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)
 
 개별 열거체 값은 `switch` 문으로 맞춰볼 수 있습니다:
 
@@ -83,18 +83,18 @@ case .east:
 case .west:
   print("Where the skies are blue")
 }
-// "Watch out for penguins" 를 출력합니다.
+// "Watch out for penguins" 를 인쇄합니다.
 ```
 
-이 코드는 다음 처럼 이해할 수 있습니다.
+이 코드는 다음 처럼 이해할 수 있습니다:
 
-“`directionToHead` 의 값을 검토합니다. `.north` 와 같은 경우에는, `"Lots of planets have a north"` 를 출력합니다. `.south` 와 같은 경우에는, `"Watch out for penguins"` 을 출력합니다.
+“`directionToHead` 의 값을 검토합니다. `.north` 와 같은 경우, `"Lots of planets have a north"` 를 인쇄합니다. `.south` 와 같은 경우, `"Watch out for penguins"` 을 인쇄합니다."
 
-...이렇게 계속됩니다.
+...이를 계속합니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것 처럼, 열거체의 'case 값' 을 검토할 때 `switch` 문은 반드시 '빠짐없이 철저해야 (exhaustive)' 합니다. 만약 `.west` 에 대한 `case` 를 생략하면, 이 코드는 컴파일되지 않는데, `CompassPoint` 'case 값' 들에 해당하는 전체 목록을 다 검토하지 않기 때문입니다. 빠짐없이 철처할 것을 요구하는 것은 열거체의 'case 값' 을 우연히 생략하지 않도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, `switch` 문은 '열거체 case 값' 을 검토할 때 반드시 '빠짐없이 철저 (exhaustive)' 해야 합니다. 만약 `.west` 에 대한 '`case` 절' 을 생략하면, '`CompassPoint` case 값' 의 완료된 목록을 검토하지 않기 때문에, 코드를 컴파일하지 않습니다. '빠짐없이 철처함' 을 요구하는 것은 예기치 않게 '열거체 case 값' 을 생략하지 않도록 보장합니다.
 
-모든 열거채의 'case 값' 에 대해 `case` 를 제공하는 것이 적절하지 않을 때는, `default` 'case 절' 을 제공해서 명시적으로 알리지 않은 'case 값' 이라면 어떤 것도 다루도록 할 수 있습니다:
+모든 '열거채 case 값' 에 '`case` 절' 를 제공하는 것이 적절하지 않을 때는, 명시적으로 알리지 않은 어떤 'case 값' 도 다룰 수 있는 '`default` case 절' 을 제공할 수 있습니다:
 
 ```swift
 let somePlanet = Planet.earth
@@ -104,12 +104,12 @@ case .earth:
 default:
   print("Not a safe place for humans")
 }
-// "Mostly harmless" 를 출력합니다.
+// "Mostly harmless" 를 인쇄합니다.
 ```
 
-### Iterating over Enumeration Cases (열거체 case 값에 대해 동작 반복 적용하기)
+### Iterating over Enumeration Cases (열거체 case 값들에 동작 반복시키기)
 
-어떤 열거체에서는, 열거체의 모든 'case 값' 들에 대한 '집합체 (collection)' 을 가지는 것이 유용할 수 있습니다. 이렇게 하려면 열거체의 이름 뒤에 `: CaseIterable` 을 붙여주도록 합니다. 스위프트는 해당 열거체 타입의 모든 'case 값' 들을 위한 '집합체' 를 `allCases` 라는 속성으로 드러냅니다. 예를 들면 다음과 같습니다:
+어떤 열거체에서는, 해당 열거체의 모든 'case 값' 에 대한 '집합체 (collection)' 를 가지는 것이 유용합니다. 이렇게 하려면 열거체 이름 뒤에 `: CaseIterable` 을 작성합니다. 스위프트는 열거체 타입의 `allCases` 속성으로 모든 'case 값' 집합체를 드러냅니다. 다음은 예제입니다:
 
 ```swift
 enum Beverage: CaseIterable {
@@ -117,10 +117,10 @@ case coffee, tea, juice
 }
 let numberOfChoices = Beverage.allCases.count
 print("\(numberOfChoices) beverages available")
-// "3 beverages available" 를 출력합니다.
+// "3 beverages available" 를 인쇄합니다.
 ```
 
-위 예제에서는, `Beverage.allCases` 를 써서 `Beverage` 열거체의 모든 'case 값' 을 담고 있는 '집합체 (collection)' 에 접근합니다. `allCase` 는 다른 모든 '집합체' 들 처럼 사용할 수 있는데-이 집합체의 원소는 열거체 타입의 인스턴스라서, 이 경우에는 `Beverage` 값이 됩니다. 위 예제는 'case 값' 이 얼마나 많이 있는 지를 계산하며, 아래 예제는 `for` 반복문을 사용하여 모든 'case 값' 들에 동작을 반복 적용합니다.
+위 예제는, `Beverage` 열거체의 모든 'case 값' 을 담은 '집합체' 에 접근하기 위해 `Beverage.allCases` 를 작성합니다. `allCase` 는 다른 집합체 처럼 똑같이 사용할 수 있습니다-집합체의 원소는 열거체 타입의 인스턴스이므로, 이 경우는 `Beverage` 값입니다. 위 예제는 'case 값' 이 얼마나 있는지를 세며, 아래 예제는 모든 'case 값' 에 동작을 반복시키기 위해 `for` 반복문을 사용합니다.
 
 ```swift
 for beverage in Beverage.allCases {
@@ -131,25 +131,25 @@ for beverage in Beverage.allCases {
 // juice
 ```
 
-위 예제에서 사용한 구문 표현은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수하도록 표시한 것입니다. 프로토콜에 대한 정보는, [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
+위 예제에서 사용한 구문 표현은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수하는 것으로 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
 ### Associated Values (결합된 값)
 
-이전 부분에 있는 예제는 열거체의 'case 값' 이 어떻게 그 자체로 정의된 (그리고 타입을 가진) 값인 지를 보여줍니다. 상수나 변수를 `Planet.earth` 라고 설정할 수 있고, 나중에 검사할 수도 있습니다. 하지만, 이러한 'case 값' 과 나란히 다른 타입의 값을 저장할 수 있다면 유용할 때가 있습니다. 이 추가적인 정보를 _결합된 값 (associated value)_ 이라고 하며, 이는 그 'case 값' 을 코드에서 값으로 사용하는 매 순간마다 달라집니다.
+이전 부분에 있는 예제는 열거체의 'case 값' 이 그 자체로 (타입을 가지고) 정의된 값이 되는 방법을 보여줍니다. 상수나 변수를 `Planet.earth` 로 설정하고, 나중에 이 값을 검사할 수 있습니다. 하지만, 이 'case 값' 들과 나란히 다른 타입의 값을 저장할 수 있다면 유용할 때가 있습니다. 이런 추가적인 정보를 _결합된 값 (associated value)_ 이라고 하며, 이는 매 번 해당 'case 값' 을 코드에서 값으로 사용할 때마다 달라집니다.
 
-스위프트 열거체에는 어떤 타입의 '결합된 값' 도 저장하도록 정의할 수 있으며, 필요하다면 이 값의 타입이 열거체의 각 'case 값' 마다 달라져도 됩니다. 이와 같은 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_, _tagged unions (꼬리표 달린 공용체)_, 또는 _variants (변형체)_ 라고 합니다.[^variants]
+스위프트 열거체는 어떤 타입의 '결합된 값' 이든 저장하라고 정의할 수 있으며, 필요하면 값 타입이 열거체의 각 'case 값' 마다 서로 달라도 됩니다. 이와 유사한 열거체를 다른 프로그래밍 언어에서는 _차별화된 공용체 (discriminated unions)_, _꼬리표 단 공용체 (tagged unions)_, 또는 _가변체 (variants)_ 라고 합니다.[^variants]
 
-예를 들어, 서로 다른 두 개의 바코드 타입을 쓰는 제품을 추적하는 '재고 물품 추적 시스템' 을 가정해 봅시다. 일부 제품은 UPC 양식의 1-차원 바코드를 써서, `0` 에서 `9` 까지의 숫자로 된, 이름표를 사용합니다. 각각의 바코드에는 한 자리 수의 시스템에 이어서, 다섯 자리의 '제조업체 코드' 와 다섯 자리의 '제품 코드' 가 있습니다. 맨 뒤에는 한 자리의 검사 코드도 있어서 이 코드를 정확하게 스캔했는 지를 검증합니다:
+예를 들어, '재고 추적 시스템' 이 서로 다른 두 타입의 바코드로 물품을 추적할 필요가 있다고 가정합니다. 어떤 물품은, `0` 에서 `9` 까지의 숫자를 사용하는, UPC 양식의 1-차원 바코드로 이름표를 붙입니다. 각 바코드는 한 자리 수의 '시스템 코드' 뒤에, 다섯 자리의 '제조회사 코드' 와 다섯 자리의 '물품 코드' 를 가집니다. 그 뒤에는 코드를 올바르게 '스캔 (scan)' 했는지를 증명하기 위한 '검사 자리' 가 있습니다:
 
 ![1-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-1d-barcode.png)
 
-다른 제품은 QR 코드 양식의 2-차원 바코드를 써서, 최대 2,953 개 길이의 ISO 8859-1 문자열로 '부호화 (encoding)' 된, 이름표를 사용합니다.
+다른 제품은, 어떤 'ISO 8859-1' 문자도 사용할 수 있고 최대 '2,953' 개 길이의 문자열을 '부호화 (encoding)' 할 수 있는, QR 코드 양식의 2-차원 바코드로 이름표를 붙입니다:
 
 ![2-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-2d-barcode.png)
 
-'재고 물품 추적 시스템' 에서 UPC 바코드는 네 개의 정수로 된 '튜플' 로 저장하고, QR 코드 바코드는 임의 길이의 문자열로 저장하는 것이 편리합니다.
+UPC 바코드는 네 정수의 '튜플' 로 저장하고, QR 코드 바코드는 임의 길이 문자열로 저장하는 것이 '재고 추적 시스템' 에게 편리합니다.
 
-스위프트에서, 어느 타입도 가질 수 있는 '제품 바코드' 를 열거체로 정의하면 다음과 같을 것입니다:
+스위프트에서, 어느 타입이든 다 되는 '물품 바코드' 를 정의한 열거체는 다음 같이 보일 수도 있습니다:
 
 ```swift
 enum Barcode {
@@ -158,7 +158,7 @@ enum Barcode {
 }
 ```
 
-이것은 다음 처럼 이해할 수 있습니다:
+이는 다음처럼 이해할 수 있습니다:
 
 "`Barcode` 라는 열거체를 정의하는데, 이는 '결합된 값' 의 타입이 (`Int`, `Int`, `Int`, `Int`) 인 `upc` 값을 취하거나, '결합된 값' 의 타입이 `String` 인 `qrCode` 값을 취합니다."
 
@@ -180,7 +180,7 @@ productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 
 이 시점에서, 원래의 `Barcode.upc` 와 정수 값들은 새 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 나 `.qrCode` 라면 (그 결합된 값과 함께) 아무거나 저장할 수 있지만, 주어진 시점에는 이 중 단 하나만을 저장할 수 있습니다.
 
-서로 다른 바코드 타입들은 'switch' 문을 사용하여 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement ('switch' 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 'switch' 문에서 '결합된 값' 을 뽑아내게 됩니다. 각각의 '결합된 값' 을 (`let` 접두사를 사용한) 상수나 (`var` 접두사를 사용한) 변수로 뽑아내서 `switch` 문의 'case 절' 본문에서 사용합니다:
+서로 다른 바코드 타입들은 'switch' 문을 사용하여 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 'switch' 문에서 '결합된 값' 을 뽑아내게 됩니다. 각각의 '결합된 값' 을 (`let` 접두사를 사용한) 상수나 (`var` 접두사를 사용한) 변수로 뽑아내서 `switch` 문의 'case 절' 본문에서 사용합니다:
 
 ```swift
 switch productBarcode {
@@ -359,7 +359,7 @@ print(evaluate(product))
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 합니다. 이에 대한 더 자세한 정보는 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
-[^variants]: 이 세가지 개념은 사실상 같은 것으로, 각각은 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union), [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 'discriminated union' 가 'tagged union' 을 의미한다고 하며 이 둘은 따로 항목이 나뉘지 않습니다.
+[^variants]: 사실상, 이 세가지 용어는 같은 것입니다. 각각에 대한 더 자세한 정보는 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 을 의미하기 때문에 이 둘은 서로 항목이 나뉘지도 않았습니다.
 
 [^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값을-가지는-열거체를-위한-실패-가능한-초기자) 에서도 설명하고 있습니다.
 
