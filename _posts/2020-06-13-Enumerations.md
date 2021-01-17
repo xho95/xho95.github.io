@@ -160,27 +160,27 @@ enum Barcode {
 
 이는 다음처럼 이해할 수 있습니다:
 
-"`Barcode` 라는 열거체 타입을 정의하는데, 이는 결합 값이 (`Int`, `Int`, `Int`, `Int`) 타입인 `upc` 값, 또는 결합 값이 `String` 타입인 `qrCode` 값을 취할 수 있습니다."
+"결합 값이 (`Int`, `Int`, `Int`, `Int`) 타입인 `upc` 값, 또는 결합 값이 `String` 타입인 `qrCode` 값을 취할 수 있는 `Barcode` 라는 열거체 타입을 정의합니다."
 
 이 정의는 실제로 어떤 `Int` 나 `String` 값을 제공하지 않습니다-단지 `Barcode.upc` 나 `Barcode.qrCode` 일 때 `Barcode` 상수와 변수가 저장할 수 있는 '결합 값' 의 _타입 (type)_ 만을 정의합니다.
 
-그런 다음 어느 한 타입을 사용해서 새로운 바코드를 생성할 수 있습니다:
+그러면 어느 타입을 사용해도 새로운 바코드를 생성할 수 있습니다:
 
 ```swift
 var productBarcode = Barcode.upc(8, 85909, 51226, 3)
 ```
 
-이 예제는 `productBarcode` 라는 새로운 변수를 생성한 다음 `(8, 85909, 51226, 3)` 라는 '결합된 튜플 값' 을 가진 `Barcode.upc` 값을 할당합니다.
+이 예제는 `productBarcode` 라는 새로운 변수를 생성한 다음 `(8, 85909, 51226, 3)` 라는 튜플 '결합 값' 을 가진 `Barcode.upc` 값을 할당합니다.
 
-같은 제품에 다른 타입의 바코드를 할당할 수 있습니다:
+똑같은 물품에 다른 타입의 바코드를 할당할 수 있습니다:
 
 ```swift
 productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 ```
 
-이 시점에서, 원래의 `Barcode.upc` 와 정수 값들은 새 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 나 `.qrCode` 라면 (그 결합 값과 함께) 아무거나 저장할 수 있지만, 주어진 시점에는 이 중 단 하나만을 저장할 수 있습니다.
+이 순간, 원래의 `Barcode.upc` 와 정수 값들이 새로운 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 이든 `.qrCode` 이든 (결합 값과 같이) 저장할 수 있지만, 주어진 순간에 단 한 가지만을 저장할 수 있습니다.
 
-서로 다른 바코드 타입들은 'switch' 문을 사용하여 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 'switch' 문에서 '결합 값' 을 뽑아내게 됩니다. 각각의 '결합 값' 을 (`let` 접두사를 사용한) 상수나 (`var` 접두사를 사용한) 변수로 뽑아내서 `switch` 문의 'case 절' 본문에서 사용합니다:
+서로 다른 바코드 타입은, [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 의 예제와 비슷하게, 'switch 문' 으로 검사할 수 있습니다. 하지만, 이번에는 'switch 문' 에서 '결합 값' 을 뽑아냅니다. 각 '결합 값' 은 '`switch` 문의 case 절' 본문에서 사용하려고 (`let` 접두사를 가진) 상수 또는 (`var` 접두사를 가진) 변수로써 뽑아냅니다:
 
 ```swift
 switch productBarcode {
@@ -189,10 +189,10 @@ case .upc(let numberSystem, let manufacturer, let product, let check):
 case .qrCode(let productCode):
   print("QR code: \(productCode).")
 }
-// "QR code: ABCDEFGHIJKLMNOP." 를 출력합니다.
+// "QR code: ABCDEFGHIJKLMNOP." 를 인쇄합니다.
 ```
 
-열거체 'case 값' 에 대한 모든 '결합 값' 을 상수로 뽑아내거나, 아니면 변수로 뽑아낼 경우, `ver` 나 `let` 키워드를 'case 값' 이름 앞에 위치해서, 간결하게, 만들 수 있습니다:
+'열거체 case 값' 의 '결합 값' 모두를 상수로 뽑아내거나, 변수로 뽑아내려면, 간결함을 위해, 'case 값' 의 이름 앞에 단일 `var` 또는 `let` '보조 설명 (annotation)' 을 붙일 수 있습니다:
 
 ```swift
 switch productBarcode {
@@ -201,7 +201,7 @@ case let .upc(numberSystem, manufacturer, product, check):
 case let .qrCode(productCode):
   print("QR code: \(productCode).")
 }
-// "QR code: ABCDEFGHIJKLMNOP." 를 출력합니다.
+// "QR code: ABCDEFGHIJKLMNOP." 를 인쇄합니다.
 ```
 
 ### Raw Values (원시 값)
