@@ -250,7 +250,7 @@ print(wrapper.x)
 
 '라이브러리 진화 모드' 에서, '동결되지 않은' 구조체 및 열거체의 멤버와 상호 작용하는 코드는 '미래 버전' 의 라이브러리가 해당 타입의 멤버 일부를 추가, 삭제, 또는 재배치하는 경우에라도 다시 컴파일하지 않고 계속 작업할 수 있는 방식으로 컴파일됩니다. 컴파일러는 실행 시간에 정보를 찾아가는 것 및 간접 계층을 추가하는 것과 같은 기술을 사용하여 이를 가능하게 만듭니다. 구조체 또는 열거체를 '동결된 (frozen)' 것으로 만드는 것은 성능을 얻기 위해 이 유연함을 포기하는 것입니다: 미래 버전의 라이브러리는 타입에 대해서 제한된 변화만을 줄 수 있지만, 컴파일러는 타입의 멤버와 상호 작용하는 코드에 추가적인 최적화를 만들 수 있습니다.
 
-'동결된 타입', '동결된 구조체' 에 있는 저장 속성의 타입, 그리고 동결된 열거체 'case 값' 과 '결합된 값 (associated values)' 은 반드시 '공용 (public)' 이거나 또는 `usableFromInline` 특성으로 표시해야 합니다. '동결된 구조체' 의 속성은 '속성 관찰자' 를 가질 수 없으며, 저장 인스턴스 속성에 초기 값을 제공하는 표현식은, [inlinable (인라인 가능한)](#inlinable-인라인-가능한) 에서 논의한 것처럼, 반드시 '인라인 가능한 함수 (inlinable functions)' 와 같은 '제약 조건 (restrictions)' 을 따라야 합니다.
+'동결된 타입', '동결된 구조체' 에 있는 저장 속성의 타입, 그리고 동결된 열거체 'case 값' 의 '결합 값 (associated values)' 은 반드시 '공용 (public)' 이거나 또는 `usableFromInline` 특성으로 표시해야 합니다. '동결된 구조체' 의 속성은 '속성 관찰자' 를 가질 수 없으며, 저장 인스턴스 속성에 초기 값을 제공하는 표현식은, [inlinable (인라인 가능한)](#inlinable-인라인-가능한) 에서 논의한 것처럼, 반드시 '인라인 가능한 함수 (inlinable functions)' 와 같은 '제약 조건 (restrictions)' 을 따라야 합니다.
 
 '명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 켜려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 켜려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (Build Libraries for Distribution)" 이라는 빌드 설정인 (`BUILD_LIBRARY_FOR_DISTRIBUTION`) 을 '예 (Yes)' 로 설정합니다.
 
@@ -445,7 +445,7 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### usableFromInline (인라인에서 사용 가능한)
 
-이 특성을 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 '정리자 (deinitilaizer)' 선언에 적용하면 그 선언과 같은 모듈에서 정의한 인라인 가능한 코드에서 해당 기호를 사용하는 것을 허용합니다. 그 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 그 속성들이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 그 'case 값' 의 '원시 값' 과 '결합된 값' 이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다.
+이 특성을 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 '정리자 (deinitilaizer)' 선언에 적용하면 그 선언과 같은 모듈에서 정의한 인라인 가능한 코드에서 해당 기호를 사용하는 것을 허용합니다. 그 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 그 속성들이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 그 'case 값' 의 '원시 값' 과 '결합 값' 이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다.
 
 `public` 접근 수준 수정자와 마찬가지로, 이 특성은 선언을 모듈의 '공개 인터페이스 (public interface)' 로 노출합니다. `public` 과는 달리, 컴파일러는 `usableFromInline` 으로 표시한 선언이, 그 선언의 기호를 밖으로 내보내더라도, 모듈 외부의 코드에서 이름으로 참조하는 것을 허용하지 않습니다. 하지만, 모듈 외부의 코드는 '실행 시간 동작 (runtime behavior)' 를 사용함으로써 여전히 그 선언의 기호와 상호 작용할 수도 있습니다.
 
