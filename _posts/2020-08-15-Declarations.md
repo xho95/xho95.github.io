@@ -492,14 +492,14 @@ _열거체 선언 (enumeration declaration)_ 은 '이름 있는 열거체 타입
 
 enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
     case `enumeration case 1-열거체 case 값 1`<br />
-    case `enumeration case 2-열거체 case 값 2`(`associated value types 결합된 값의 타입`)<br />
+    case `enumeration case 2-열거체 case 값 2`(`associated value types 결합 값의 타입`)<br />
 }
 
 이런 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 때때로 _discriminated unions (차별화된 공용체)_ 라고 합니다.
 
-이 형식에서, 각각의 'case' 블럭은 `case` 키워드 및 그 뒤의, 쉼표로 구분된, 하나 이상의 열거체 'case 값' 으로 구성됩니다. 각 'case 값' 의 이름은 반드시 유일해야 합니다. 각 'case 값' 은 주어진 타입의 값을 저장하도록 지정할 수도 있습니다. 이런 타입은, 'case 값' 의 이름 바로 뒤에, _결합된 값의 타입 (associated value types)_ 튜플에서 지정합니다.
+이 형식에서, 각각의 'case' 블럭은 `case` 키워드 및 그 뒤의, 쉼표로 구분된, 하나 이상의 열거체 'case 값' 으로 구성됩니다. 각 'case 값' 의 이름은 반드시 유일해야 합니다. 각 'case 값' 은 주어진 타입의 값을 저장하도록 지정할 수도 있습니다. 이런 타입은, 'case 값' 의 이름 바로 뒤에, _결합 값의 타입 (associated value types)_ 튜플에서 지정합니다.
 
-'결합된 값' 을 저장하는 열거체 'case 값' 은 지정된 '결합 값 (associated values)' 으로 열거체의 인스턴스를 생성하는 함수인 것처럼 사용할 수 있습니다. 그리고 함수에서와 같이, 열거체 'case 값' 에 대한 참조를 가지고 이를 이후의 코드에 적용할 수도 있습니다.
+'결합 값' 을 저장하는 열거체 'case 값' 은 지정된 '결합 값 (associated values)' 으로 열거체의 인스턴스를 생성하는 함수인 것처럼 사용할 수 있습니다. 그리고 함수에서와 같이, 열거체 'case 값' 에 대한 참조를 가지고 이를 이후의 코드에 적용할 수도 있습니다.
 
 ```swift
 enum Number {
@@ -513,13 +513,13 @@ let f = Number.integer
 let evenInts: [Number] = [0, 2, 4, 6].map(f)
 ```
 
-더 많은 정보 및 결합된 값의 타입을 가지는 'case 값' 에 대한 예제를 보려면, [Associated Values (결합된 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합된-값) 를 참고하기 바랍니다.
+더 많은 정보 및 결합 값의 타입을 가지는 'case 값' 에 대한 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 를 참고하기 바랍니다.
 
 **Enumerations with Indirection ('간접 (indirection)' 을 가지는 열거체)**
 
-열거체는 '재귀적인 구조 (recursive structure)' 를 가질 수 있는데, 그 말인즉슨, 열거체 타입 그 자체의 인스턴스이기도 한 '결합된 값' 을 가지는 'case 값' 을 가질 수 있다는 것입니다. 하지만, 열거체 타입의 인스턴스는 '값' 의미 구조를 가지며, 이는 메모리 상에서 '고정된 구획 (fixed layout)' 을 가진다는 것을 의미합니다. '재귀 (recursion)' 를 지원하기 위해서는, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
+열거체는 '재귀적인 구조 (recursive structure)' 를 가질 수 있는데, 그 말인즉슨, 열거체 타입 그 자체의 인스턴스이기도 한 '결합 값' 을 가지는 'case 값' 을 가질 수 있다는 것입니다. 하지만, 열거체 타입의 인스턴스는 '값' 의미 구조를 가지며, 이는 메모리 상에서 '고정된 구획 (fixed layout)' 을 가진다는 것을 의미합니다. '재귀 (recursion)' 를 지원하기 위해서는, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
 
-특정 열거체 'case 값' 이 '간접 (indirection)' 할 수 있게 하려면, 이를 `indirect` 선언 수정자로 표시합니다. 간접 'case 값' 은 반드시 '결합된 값' 을 가져야 합니다.
+특정 열거체 'case 값' 이 '간접 (indirection)' 할 수 있게 하려면, 이를 `indirect` 선언 수정자로 표시합니다. 간접 'case 값' 은 반드시 '결합 값' 을 가져야 합니다.
 
 ```swift
 enum Tree<T> {
@@ -528,9 +528,9 @@ enum Tree<T> {
 }
 ```
 
-'결합된 값' 을 가지는 모든 열거체 'case 값' 이 '간접 (indirection)' 할 수 있게 하려면, 열거체 전체를 `indirect` 수정자로 표시합니다-열거체가 `indirect` 수정자로 표시해야 하는 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
+'결합 값' 을 가지는 모든 열거체 'case 값' 이 '간접 (indirection)' 할 수 있게 하려면, 열거체 전체를 `indirect` 수정자로 표시합니다-열거체가 `indirect` 수정자로 표시해야 하는 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
 
-`indirect` 수정자로 표시한 열거체는 '결합된 값' 을 가지는 'case 값' 과 그렇지 않은 'case 값' 이 혼합된 것을 가질 수 있습니다. 그건 그렇고, 또한 `indirect` 수정자로 표시한 'case 값' 은 어떤 것이든 가질 수 없습니다.
+`indirect` 수정자로 표시한 열거체는 '결합 값' 을 가지는 'case 값' 과 그렇지 않은 'case 값' 이 혼합된 것을 가질 수 있습니다. 그건 그렇고, 또한 `indirect` 수정자로 표시한 'case 값' 은 어떤 것이든 가질 수 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
@@ -653,7 +653,7 @@ protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프
 
 기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜에서 선언한 속성, 메소드, 그리고 첨자 연산을 모두 구현해야 합니다. 그건 그렇고, 이러한 프로토콜 멤버 선언을 '준수 타입' 에서 구현하는 것이 '옵셔널 (optional)' 임을 지정하기 위해 '`optional` 선언 수정자 (declaration modifier)' 로 표시할 수 있습니다.[^optional-member] '`optional` 수정자' 는 '`objc` 특성 (attribute)' 으로 표시한 멤버와, `objc` 특성으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과로, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 가진 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자를 사용하는 방법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버에 접근하는 방법-예를 들어, '준수 타입' 이 이를 구현하는 지가 확실하지 않을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 을 참고하기 바랍니다.
 
-열거체의 'case 값' 은 '타입 멤버 (type members)' 에 대한 '프로토콜 필수 조건' 을 만족할 수 있습니다. 특히, 어떤 '결합된 값 (associated values)' 도 가지지 않는 '열거체 case 값' 은 `Self` 타입의 '읽기-전용 (get-only) 타입 변수' 에 대한 '프로토콜 필수 조건' 을 만족하며,[^enumeration-get-only] '결합된 값' 을 가진 '열거체 case 값' 은 `Self` 를 반환하는 함수에 대한 프로토콜 필수 조건을 만족하는데 여기서 '매개 변수' 와 '인자 이름표' 는 'case 값의 결합된 값' 과 일치합니다.[^enumeration-function] 예를 들면 다음과 같습니다:
+열거체의 'case 값' 은 '타입 멤버 (type members)' 에 대한 '프로토콜 필수 조건' 을 만족할 수 있습니다. 특히, 어떤 '결합 값 (associated values)' 도 가지지 않는 '열거체 case 값' 은 `Self` 타입의 '읽기-전용 (get-only) 타입 변수' 에 대한 '프로토콜 필수 조건' 을 만족하며,[^enumeration-get-only] '결합 값' 을 가진 '열거체 case 값' 은 `Self` 를 반환하는 함수에 대한 프로토콜 필수 조건을 만족하는데 여기서 '매개 변수' 와 '인자 이름표' 는 'case 값' 의 결합 값 과 일치합니다.[^enumeration-function] 예를 들면 다음과 같습니다:
 
 ```swift
 protocol SomeProtocol {

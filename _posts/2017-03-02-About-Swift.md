@@ -14,7 +14,7 @@ categories: Swift Language Grammar About
 
 스위프트는 새로운 프로그래머에게 친절합니다. 산업계-품질의 프로그래밍 언어면서도 스크립트 언어처럼 표현의 의미 전달력이 좋으며 즐겁게 작업할 수 있습니다. 'Playground (놀이터)' 로 스위프트 코드를 작성하는 것은, 앱을 제작하고 실행하는 부담없이, 코드를 실험하고 결과를 즉시 확인하도록 해줍니다.
 
-스위프트는 '최신 프로그래밍 패턴 (modern programming pattern)' 을 채택함으로써 많은 부류의 공통적인 프로그래밍 에러를 미리 없애버립니다:
+스위프트는 '최신 프로그래밍 패턴 (modern programming pattern)'[^modern] 을 채택함으로써 많은 부류의 공통적인 프로그래밍 에러를 미리 없애버립니다:
 
 * '변수 (variables)' 는 사용 전에 항상 초기화합니다.
 * '배열 색인 (array indices)' 은 '경계를-벗어난 (out-of-bounds)' 에러를 검사합니다.
@@ -36,3 +36,5 @@ categories: Swift Language Grammar About
 ### 참고 자료
 
 [^About-Swift]: 원문은 [About Swift](https://docs.swift.org/swift-book/) 에서 확인할 수 있습니다.
+
+[^modern]: 'modern' 이란 단어는 '최신' 이란 의미와 '현대적인' 이라는 의미를 모두 담고 있는 단어입니다.

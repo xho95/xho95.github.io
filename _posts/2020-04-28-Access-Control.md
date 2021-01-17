@@ -167,9 +167,9 @@ public enum CompassPoint {
 }
 ```
 
-**Raw Values and Associated Values ('원시 값' 과 '결합된 값')**
+**Raw Values and Associated Values ('원시 값' 과 '결합 값')**
 
-열거체 정의에 있는 '원시 값 (raw values)' 이나 '결합된 값 (associated values)'[^raw-values-and-associated-values] 에서 사용되는 타입은 어떤 것이든 적어도 열거체의 접근 수준보다는 높아야 합니다. 예를 들어, 접근 수준이 'internal (내부)' 인 열거체의 '원시-값 (raw-value)' 타입으로 'private (개인 전용)' 타입을 사용할 수는 없습니다.
+열거체 정의에 있는 '원시 값 (raw values)' 이나 '결합 값 (associated values)'[^raw-values-and-associated-values] 에서 사용되는 타입은 어떤 것이든 적어도 열거체의 접근 수준보다는 높아야 합니다. 예를 들어, 접근 수준이 'internal (내부)' 인 열거체의 '원시-값 (raw-value)' 타입으로 'private (개인 전용)' 타입을 사용할 수는 없습니다.
 
 #### Nested Types (중첩 타입)
 
@@ -369,7 +369,7 @@ extension SomeStruct: SomeProtocol {
 
 [^function-access-level]: '함수가 계산한 접근 수준' 과 '해당 영역의 기본적인 의미' 가 같아야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. 즉, 함수의 접근 수준을 계산해보니 'private' 일 때는, 반드시 함수의 정의에 'private' 을 써줘야 한다는 것 입니다. 그렇게 하지 않으면, '함수가 계산한 접근 수준 (private)' 과 '해당 영역의 기본적인 의미 (internal)' 가 다르므로, 컴파일이 안되게 됩니다.
 
-[^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합된 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합된 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
+[^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
 
 [^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
 

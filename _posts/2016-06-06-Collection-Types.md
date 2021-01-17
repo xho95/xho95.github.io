@@ -250,7 +250,7 @@ _셋 (set)_ 은 '집합체 (collection)' 에 같은 타입의 서로 별개인 �
 
 '셋' 에 저장하는 타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 합니다-즉, 타입 스스로 반드시 _해시 값 (hash value)_[^hash-value] 을 계산하는 방식을 제공해야 합니다. '해시 값' 은 비교해서 같은 모든 객체끼리는 똑같은 하나의 `Int` 값으로, 가령 `a == b` 라면, `a` 의 해시 값은 `b` 의 해시 값과 같습니다.
 
-스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해시 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합된 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해시 가능합니다.   
+스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해시 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해시 가능합니다.   
 
 > 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수함으로써 '셋' 의 값 타입 또는 '딕셔너리' 의 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 참고하기 바랍니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
@@ -529,7 +529,7 @@ airports["LHR"] = "London"
 // airports 딕셔너리는 이제 3 개의 항목을 담고 있습니다.
 ```
 
-'첨자 연산 구문 표현' 은 특정 키와 결합된 값을 바꾸는데도 사용합니다:
+'첨자 연산 구문 표현' 은 특정 키와 결합되어 있는 값을 바꾸는데도 사용합니다:
 
 ```swift
 airports["LHR"] = "London Heathrow"
