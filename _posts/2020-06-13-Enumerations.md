@@ -192,7 +192,7 @@ case .qrCode(let productCode):
 // "QR code: ABCDEFGHIJKLMNOP." 를 인쇄합니다.
 ```
 
-'열거체 case 값' 의 '결합 값' 모두를 상수로 뽑아내거나, 변수로 뽑아내려면, 간결함을 위해, 'case 값' 의 이름 앞에 단일 `var` 또는 `let` '보조 설명 (annotation)' 을 붙일 수 있습니다:
+'열거체 case 값' 의 '결합 값' 모두를 상수로 뽑아내거나, 변수로 뽑아내려면, 간결하게, 'case 값' 이름 앞에 단일 `var` 또는 `let` '보조 설명 (annotation)' 을 붙일 수 있습니다:
 
 ```swift
 switch productBarcode {
@@ -206,9 +206,9 @@ case let .qrCode(productCode):
 
 ### Raw Values (원시 값)
 
-[Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합 값' 에 대한 대안으로, '열거체 case 값' 은 모두 같은 타입인, (_원시 값 (raw values)_ 이라는) '기본 값 (default values)' 으로 미리 채울 수 있습니다.
+[Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합 값' 에 대한 대안으로써, '열거체 case 값' 은, (_원시 값 (raw values)_ 이라는),  모두 같은 타입인, '기본 값' 으로 미리 채울 수 있습니다.
 
-다음은 '열거체 case 값' 이 '이름' 과 '원시 ASCII 값' 을 같이 저장하고 있는 예제입니다:
+다음은 이름 있는 '열거체 case 값' 에 나란하게 '원시 ASCII 값' 을 저장하는 예제입니다:
 
 ```swift
 enum ASCIIControlCharacter: Character {
@@ -218,19 +218,19 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-여기서, `ASCIIControlCharacter` 라는 열거체는 '원시 값 (raw values)' 은 `Character` 타입으로 정의되어, 좀 더 일상적인 ASCII 제어 문자들로 설정됩니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명했습니다.
+여기서, `ASCIIControlCharacter` 라는 열거체에 대한 '원시 값' 은 `Character` 타입으로 정의되었으며, 좀 더 공통적인 ASCII 제어 문자로 설정됩니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명합니다.
 
-'원시 값' 은 '문자열 (strings)', '문자 (characters)', 또는 '정수 (integer)' 나 '부동-소수점 (floating-point)' 수치 타입 아무거나 될 수 있습니다. 각각의 원시 값은 '열거체 선언' 내에서 반드시 유일해야 합니다.
+'원시 값' 은 '문자열 (strings)', '문자 (characters)', 또는 어떤 '정수 (integer)' 나 '부동-소수점(floating-point) 수' 타입이든 될 수 있습니다. 각각의 원시 값은 '열거체 선언' 내에서 반드시 유일해야 합니다.
 
-> '원시 값 (raw values)' 은 '결합 값 (associated values)' 과 같지 _않습니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드에서와 같이, 미리 채워지는 값으로 코드에서 열거체를 처음 정의할 때 설정되는 것입니다. 즉 특정한 '열거체 case 값' 에 대한 '원시 값' 은 항상 같습니다. '결합 값' 은 열거체의 'case 값' 중 하나를 기반으로 새로운 상수나 변수를 생성할 때 설정되는 것으로, 그렇게 할 때마다 달라질 수 있습니다.
+> '원시 값' 은 '결합 값' 과 같은 것이 _아닙니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드와 같이, 코드에서 열거체를 맨 처음 선언할 때 미리 채워지는 값으로 설정됩니다. 특정 '열거체 case 값' 에 대한 '원시 값' 은 항상 같습니다. '결합 값' 은 열거체의 'case 값' 중 하나에 기초하여 새로운 상수나 변수를 생성할 때 설정되먀, 그럴 때마다 서로 다를 수 있습니다.
 
 #### Implicitly Assigned Raw Values (암시적으로 할당되는 원시 값)
 
-정수나 문자열 원시 값을 저장하는 열거체와 작업할 때는, 각각의 'case 값' 에 '원시 값' 을 명시적으로 지정하지 않아도 됩니다. 이렇 경우, 스위프트가 자동으로 값을 할당합니다.
+정수나 문자열 원시 값을 저장하는 열거체와 작업할 때, 각 'case 값' 에 대한 '원시 값' 을 명시적으로 할당할 필요는 없습니다. 안할 때는, 스위프트가 값을 자동으로 할당합니다.
 
-예를 들어, 원시 값으로 정수를 사용할 때는, 각 'case 값' 에 대한 암시적인 값은 이전 'case 값' 보다 하나 큰 값이 됩니다. 첫 번째 'case 값' 에 값을 설정하지 않으면, 그 값은 `0` 이 됩니다.
+예를 들어, 정수를 원시 값으로 사용할 때, 각 'case 값' 에 대한 암시적인 값은 '이전 case 값' 보다 하나 큰 값입니다. 첫 번째 'case 값' 에 설정된 값이 없는 경우, 값은 `0` 이 됩니다.
 
-아래의 열거체는 이전에 있던 `Planet` 열거체를, 태양에 대한 각 행성의 순서를 표현하기 위해 정수 원시 값을 사용하여, 개량한 것입니다:
+아래의 열거체는, 각 행성을 태양 순으로 표현하는 정수 원시 값을 갖도록, 앞에 있던 `Planet` 열거체를 개량한 것입니다:
 
 ```swift
 enum Planet: Int {
@@ -238,11 +238,11 @@ enum Planet: Int {
 }
 ```
 
-위 예제에서, `Planet.mercury` 는 명시적인 원시 값 `1` 을 가지고, `Planet.venus` 는 암시적인 원시 값 `2` 를 가지며, 이런 식으로 계속됩니다.
+위 예제에서, `Planet.mercury` 는 명시적인 원시 값인 `1` 을 가지고, `Planet.venus` 는 암시적인 원시 값인 `2` 를 가지며, 이렇게 계속됩니다.
 
-문자열을 원시 값으로 사용하면, 'case 값' 이름에 사용된 문장 자체가 각 'case 값' 에 대한 암시적인 값이 됩니다.
+문자열을 원시 값으로 사용할 때, 각 'case 값' 에 대한 암시적인 값은 해당 'case 값' 의 이름에 쓰인 글자입니다.
 
-아래 열거체는, 문자열 원시 값으로 각 방향의 이름을 표현하도록, 이전 `CompassPoint` 열거체를 개량한 것입니다:
+아래의 열거체는, 각 방향의 이름을 표현하는 문자열 원시 값을 갖도록, 앞에 있던 `CompassPoint` 열거체를 개량한 것입니다:
 
 ```swift
 enum CompassPoint: String {
@@ -250,16 +250,16 @@ enum CompassPoint: String {
 }
 ```
 
-위 예제에서, `CompassPoint.south` 는 암시적인 원시 값 `"south"` 를 가지며, 이런 식으로 계속됩니다.
+위 예제에서, `CompassPoint.south` 는 암시적인 원시 값 `"south"` 를 가지며, 이렇게 계속됩니다.
 
-열거체 case 값의 원시 값에 접근하려면 `rawValue` 속성을 사용하면 됩니다:
+'열거체 case 값' 의 원시 값은 `rawValue` 속성으로 접근합니다:
 
 ```swift
 let earthsOrder = Planet.earth.rawValue
-// earthsOrder (지구의 순번) 은 3 입니다.
+// earthsOrder (지구 순서) 는 3 입니다.
 
 let sunsetDirection = CompassPoint.west.rawValue
-// sunsetDirection (해가 지는 방향) 은 "west" (서쪽) 입니다.
+// sunsetDirection (해지는 방향) 은 "west (서쪽)" 입니다.
 ```
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
