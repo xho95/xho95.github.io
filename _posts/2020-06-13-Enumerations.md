@@ -192,7 +192,7 @@ case .qrCode(let productCode):
 // "QR code: ABCDEFGHIJKLMNOP." 를 인쇄합니다.
 ```
 
-'열거체 case 값' 의 '결합 값' 모두를 상수로 뽑아내거나, 변수로 뽑아내려면, 간결함을 위해, 'case 값' 의 이름 앞에 단일 `var` 또는 `let` '보조 설명 (annotation)' 을 붙일 수 있습니다:
+'열거체 case 값' 의 '결합 값' 모두를 상수로 뽑아내거나, 변수로 뽑아내려면, 간결하게, 'case 값' 이름 앞에 단일 `var` 또는 `let` '보조 설명 (annotation)' 을 붙일 수 있습니다:
 
 ```swift
 switch productBarcode {
@@ -206,9 +206,9 @@ case let .qrCode(productCode):
 
 ### Raw Values (원시 값)
 
-[Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합 값' 에 대한 대안으로, '열거체 case 값' 은 모두 같은 타입인, (_원시 값 (raw values)_ 이라는) '기본 값 (default values)' 으로 미리 채울 수 있습니다.
+[Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합 값' 에 대한 대안으로써, '열거체 case 값' 은, (_원시 값 (raw values)_ 이라는),  모두 같은 타입인, '기본 값' 으로 미리 채울 수 있습니다.
 
-다음은 '열거체 case 값' 이 '이름' 과 '원시 ASCII 값' 을 같이 저장하고 있는 예제입니다:
+다음은 이름 있는 '열거체 case 값' 에 나란하게 '원시 ASCII 값' 을 저장하는 예제입니다:
 
 ```swift
 enum ASCIIControlCharacter: Character {
@@ -218,11 +218,11 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-여기서, `ASCIIControlCharacter` 라는 열거체는 '원시 값 (raw values)' 은 `Character` 타입으로 정의되어, 좀 더 일상적인 ASCII 제어 문자들로 설정됩니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명했습니다.
+여기서, `ASCIIControlCharacter` 라는 열거체에 대한 '원시 값' 은 `Character` 타입으로 정의되었으며, 좀 더 공통적인 ASCII 제어 문자로 설정됩니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명합니다.
 
-'원시 값' 은 '문자열 (strings)', '문자 (characters)', 또는 '정수 (integer)' 나 '부동-소수점 (floating-point)' 수치 타입 아무거나 될 수 있습니다. 각각의 원시 값은 '열거체 선언' 내에서 반드시 유일해야 합니다.
+'원시 값' 은 '문자열 (strings)', '문자 (characters)', 또는 어떤 '정수 (integer)' 나 '부동-소수점(floating-point) 수' 타입이든 될 수 있습니다. 각각의 원시 값은 '열거체 선언' 내에서 반드시 유일해야 합니다.
 
-> '원시 값 (raw values)' 은 '결합 값 (associated values)' 과 같지 _않습니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드에서와 같이, 미리 채워지는 값으로 코드에서 열거체를 처음 정의할 때 설정되는 것입니다. 즉 특정한 '열거체 case 값' 에 대한 '원시 값' 은 항상 같습니다. '결합 값' 은 열거체의 'case 값' 중 하나를 기반으로 새로운 상수나 변수를 생성할 때 설정되는 것으로, 그렇게 할 때마다 달라질 수 있습니다.
+> '원시 값' 은 '결합 값' 과 같은 것이 _아닙니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드와 같이, 코드에서 열거체를 맨 처음 선언할 때 미리 채워지는 값으로 설정됩니다. 특정 '열거체 case 값' 에 대한 '원시 값' 은 항상 같습니다. '결합 값' 은 열거체의 'case 값' 중 하나에 기초하여 새로운 상수나 변수를 생성할 때 설정되먀, 그럴 때마다 서로 다를 수 있습니다.
 
 #### Implicitly Assigned Raw Values (암시적으로 할당되는 원시 값)
 
