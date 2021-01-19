@@ -298,9 +298,9 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 ### Recursive Enumerations (재귀적인 열거체)
 
-_재귀적인 열거체 (recursive enumeration)_ 는 열거체의 'case 값' 들이 열거체의 또 다른 인스턴스를 '결합 값 (associated value)' 으로 하나 이상 가지는 열거체를 말합니다. 열거체의 'case 값' 을 '재귀적' 이라고 지시하려면 그 앞에 `indirect` [^indirect]를 써주면 되는데, 이는 컴파일러에게 간접 계층을 집어넣어야 함을 알리는 역할을 합니다.
+_재귀적인 열거체 (recursive enumeration)_ 는 또 다른 열거체의 인스턴스를 하나 이상의 '열거체 case 값' 에 대한 '결합 값' 으로 가지는 열거체입니다. '열거체 case 값' 은 그 앞에 `indirect` [^indirect] 를 작성하여 '재귀적' 임을 지시하는데, 이는 필요한 '간접 계층 (layer of indirection)' 을 집어 넣을 것을 컴파일러에게 알립니다.
 
-예를 들어, 다음은 간단한 '산술 표현식 (arithmetic expressions)' 을 저장하는 열거체입니다:
+예를 들어, 다음은 간단한 '산술 (arithmetic) 표현식' 을 저장하는 열거체입니다:
 
 ```swift
 enum ArithmeticExpression {
@@ -310,7 +310,7 @@ enum ArithmeticExpression {
 }
 ```
 
-열거체 맨 처음에 `indirect` 를 붙이면 '결합 값' 이 있는 모든 열거체 'case 값' 을 한번에 '간접 (indirection)'[^indirection] 으로 만들 수도 있습니다:
+'결합 값' 을 가진 모든 '열거체 case 값' 이 '간접 (indirection)'[^indirection] 일 수 있도록 열거체 맨 앞에 `indirect` 를 작성할 수도 있습니다:
 
 ```swift
 indirect enum ArithmeticExpression {
@@ -363,7 +363,7 @@ print(evaluate(product))
 
 [^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값을-가지는-열거체를-위한-실패-가능한-초기자) 에서도 설명하고 있습니다.
 
-[^indirect]: 여기서 '재귀적인 (recursive)' 열거체를 만들기 위해 `indirect` 라는 키워드를 사용하고 있는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 에서 온 개념으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 를 참고하기 바랍니다.
+[^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 참고하기 바랍니다.
 
 [^indirection]: 본문을 보면 '재귀적 (recursive)' 이라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하고 있는데, 이는 스위프트 열거체를 '재귀적' 으로 만드는 방식이 내부적으로는 메모리의 '간접 주소' 방식을 써서 구현했기 때문으로 추측됩니다. 물론 스위프트 프로그래밍을 위해 이런 걸 알아야 하는 것은 아니므로 그런게 있다고 넘어가면 될 것 같습니다.
 
