@@ -19,27 +19,27 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드의 '�
 
 ### Comparing Structures and Classes (구조체와 클래스 비교하기)
 
-스위프트의 구조체와 클래스는 공통점이 아주 많습니다. 다음과 같은 것들이 있습니다:
+스위프트의 구조체와 클래스는 공통점을 많이 가지고 있습니다. 둘 다 다음을 할 수 있습니다:
 
-* 값을 저장하기 위한 속성 정의하기
-* 기능을 제공하기 위한 메소드 정의하기
-* 첨자 연산 구문으로 값에 접근할 수 있도록 첨자 연산 정의하기
-* 초기 상태를 설정하기 위한 초기자 정의하기
-* 기능을 기본 구현 이상으로 확대하도록 확장하기
-* 정해진 종류의 표준 기능을 제공하도록 프로토콜 준수하기
+* 값을 저장하는 속성을 정의함
+* 기능을 제공하는 메소드를 정의함
+* 값에 대한 접근을 첨자 연산 구문으로 제공하는 첨자 연산을 정의함
+* 초기 상태를 설정하는 초기자를 정의함
+* 기본 구현 너머로 기능을 확대하도록 확장됨
+* 정해진 종류의 표준 기능을 제공하기 위해 프로토콜을 준수함
 
-더 자세한 내용은, [Properties (속성)], [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화하기)]({% post_url 2016-01-23-Initialization %}), [Extensions (확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참조하기 바랍니다.
+더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
-클래스는 구조체에는 없는 다음의 추가 기능들을 가지고 있습니다:
+클래스는 구조체에는 없는 추가적인 보유 능력을 가집니다:
 
-* '상속 (inheritance)' 은 한 클래스가 다른 클래스의 성질을 상속 할 수 있게 합니다.
-* '타입 변환 (type casting)' 은 클래스 인스턴스의 타입을 '실행 시간 (runtime)' 에 검사하고 해석할 수 있게 합니다.
-* '정리자 (deinitializer)' 는 클래스 인스턴스가 할당한 어떤 자원이든 다시 확보할 수 있게 합니다.
-* '참조 카운팅 (reference counting)' 은 클래스 인스턴스에 대해 참조를 한 개 이상 할 수 있게 합니다.
+* '상속 (inheritance)' 은 한 클래스가 또 다른 클래스의 '성질 (characteristics)' 을 상속하도록 해줍니다.
+* '타입 변환 (type casting)' 은 클래스 인스턴스의 타입을 '실행 시간' 에 검사하고 해석하도록 해줍니다.
+* '정리자 (deinitializer)' 는 클래스 인스턴스가 할당 받은 어떤 자원이든 자유롭게 풀어주도록 합니다.
+* '참조 카운팅 (reference counting)' 은 클래스 인스턴스에 대한 참조를 하나 이상 허용합니다.
 
-더 자세한 내용은, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 그리고 [Automatic Reference Counting (자동 참조 카운팅)] 을 참고하기 바랍니다.
+더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 그리고 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 을 참고하기 바랍니다.
 
-클래스가 지원하는 추가 기능을 쓴다는 것은 복잡성 증가라는 비용을 지불하겠다는 의미입니다. 일반적인 지침을 따른다면, 되도록이면 이유를 파악하기 더 쉬운 구조체를 사용하고, 클래스는 더 적합하거나 꼭 필요한 경우에만 사용하도록 합니다. 실제로, 이것은 새로 만드는 자료 타입의 대부분은 구조체나 열거체가 될 것임을 의미입니다. 이에 대한 좀 더 자세히 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 를 첨고하기 바랍니다.
+클래스가 지원하는 추가적인 보유 능력은 복잡성 증가라는 비용에 직면합니다. 일반적인 '지침 (guideline)' 대로, 이유를 파악하기가 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 실제로, 이는 대부분의 사용자 정의 자료 타입은 구조체나 열거체로 정의된다는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)[^choosing-between-structures-and-classes] 문서를 첨고하기 바랍니다.
 
 #### Definition Syntax (정의 구문 표현)
 
@@ -265,3 +265,5 @@ C, C++ 또는 오브젝티브-C 언어에 대한 경험이 있다면, 이러한 
 [^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 'UpperCamelCase' 와 'LowerCamelCase' 라고 또다시 구분을 하고 있기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮기도록 합니다.'낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
 
 [^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 참고하기 바랍니다.
+
+[^choosing-between-structures-and-classes]: 원문 자체가 애플 '개발자 (developer)' 문서의 링크입니다.
