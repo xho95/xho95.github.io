@@ -264,20 +264,20 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
 
-열거체에 원시-값 타입을 정의하면, 이 열거체는 자동적으로 원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 받는 '초기자' 를 가지며 하나의 열거체 'case 값' 또는 `nil` 을 반환하게 됩니다. 이 '초기자' 를 사용하면 열거체의 새 인스턴스를 생성할 수 있습니다.
+원시-값 타입을 가진 열거체를 정의할 경우, 열거체는 (`rawValue` 라는 매개 변수로써) 원시 값 타입의 값을 취해서 '열거체 case 값' 또는 `nil` 을 반환하는 '초기자 (initializers)' 를 자동으로 받습니다. 이 '초기자' 는 열거체의 새로운 인스턴스를 생성할 때 사용할 수 있습니다.
 
-다음 예제는 '원시 값' 인 `7` 로 부터 '천왕성 (Uranus)' 을 식별합니다:
+다음 예제는 `7` 이라는 '원시 값' 으로 '천왕성 (Uranus)' 임을 식별합니다:
 
 ```swift
 let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet 은 타입이 Planet? 이고 값은 Planet.uranus 입니다.
 ```
 
-하지만, 모든 `Int` 에 대해 그에 해당하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '_원시 (raw)_ 값 초기자' 는 항상 _옵셔널 (optional)_ 열거체 'case 값' 을 반환합니다. 위의 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 (optional) `Planet`” 입니다.
+하지만, 가능한 모든 `Int` 값마다 일치하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '원시 값 초기자 (raw value initializer)' 는 항상 _옵셔널 (optional)_ '열거체 case 값' 을 반환합니다. 위 예제에서, `possiblePlanet` 는 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
 
-> '원시 값 초기자 (raw value initializer)' 는 '실패 가능한 초기자 (failable initializer)' 인데, 모든 원시 값이 열거체 case 값을 반환하지는 않기 때문입니다. 더 자세한 내용은, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자)[^failable-initializer] 를 참고하기 바랍니다.
+> '원시 값 초기자' 는 '실패 가능한 (failable) 초기자' 인데, 모든 '원시 값' 마다 '열거체 case 값' 을 반환하는 것은 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자)[^failable-initializer] 를 참고하기 바랍니다.
 
-위치가 `11` 에 해당하는 행성을 찾으려고 하면, '원시 값 초기자 (raw value initializer)' 가 반환하는 '옵셔널 (optional)' `Planet` 값은 `nil` 이 될 것입니다:
+`11` 번 째 위치의 행성을 찾으려고 하면, '원시 값 초기자' 가 반환하는 '옵셔널 `Planet`' 값은 `nil` 일 것입니다:
 
 ```swift
 let positionToFind = 11
@@ -291,16 +291,16 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 } else {
   print("There isn't a planet at position \(positionToFind)")
 }
-// "There isn't a planet at position 11" 를 출력합니다.
+// "There isn't a planet at position 11" 를 인쇄합니다.
 ```
 
-이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 원시 값이 `11` 인 행성에 접근하려고 시도합니다. `if let somePlanet = Planet(rawValue : 11)` 구문은 옵셔널 `Planet` 을 하나 생성한 다음, 가져올 수 있다면 이 옵셔널 `Planet` 의 값을 `somePlanet` 에 설정합니다. 이 경우, 위치가 `11` 인 행성은 가져올 수 없으므로, `else` 분기를 대신 실행합니다.
+이 예제는 원시 값이 `11` 인 행성에 접근하기 위해 '옵셔널 연결 (optional binding)' 을 사용합니다. `if let somePlanet = Planet(rawValue : 11)` 은 '옵셔널 `Planet`' 을 생성하고, 가져올 수 있었다면 이 `somePlanet` 에 해당 '옵셔널 `Planet`' 의 값을 설정합니다. 이 경우, `11` 번 째 위치의 행성을 가져오는 것이 불가능하므로, 그 대신 `else` 분기를 실행합니다.
 
 ### Recursive Enumerations (재귀적인 열거체)
 
-_재귀적인 열거체 (recursive enumeration)_ 는 열거체의 'case 값' 들이 열거체의 또 다른 인스턴스를 '결합 값 (associated value)' 으로 하나 이상 가지는 열거체를 말합니다. 열거체의 'case 값' 을 '재귀적' 이라고 지시하려면 그 앞에 `indirect` [^indirect]를 써주면 되는데, 이는 컴파일러에게 간접 계층을 집어넣어야 함을 알리는 역할을 합니다.
+_재귀적인 열거체 (recursive enumeration)_ 는 또 다른 열거체의 인스턴스를 하나 이상의 '열거체 case 값' 에 대한 '결합 값' 으로 가지는 열거체입니다. '열거체 case 값' 은 그 앞에 `indirect` [^indirect] 를 작성하여 '재귀적' 임을 지시하는데, 이는 필요한 '간접 계층 (layer of indirection)' 을 집어 넣을 것을 컴파일러에게 알립니다.
 
-예를 들어, 다음은 간단한 '산술 표현식 (arithmetic expressions)' 을 저장하는 열거체입니다:
+예를 들어, 다음은 간단한 '산술 (arithmetic) 표현식' 을 저장하는 열거체입니다:
 
 ```swift
 enum ArithmeticExpression {
@@ -310,7 +310,7 @@ enum ArithmeticExpression {
 }
 ```
 
-열거체 맨 처음에 `indirect` 를 붙이면 '결합 값' 이 있는 모든 열거체 'case 값' 을 한번에 '간접 (indirection)'[^indirection] 으로 만들 수도 있습니다:
+'결합 값' 을 가진 모든 '열거체 case 값' 이 '간접 (indirection)'[^indirection] 일 수 있도록 열거체 맨 앞에 `indirect` 를 작성할 수도 있습니다:
 
 ```swift
 indirect enum ArithmeticExpression {
@@ -320,7 +320,7 @@ indirect enum ArithmeticExpression {
 }
 ```
 
-이 열거체는 세 가지 종류의 '산술 표현식' 을 저장할 수 있습니다: 하나의 단순한 수, 두 표현식의 덧셈, 그리고 두 표현식의 곱셈이 그것입니다. `addition` 과 `multiplication` 'case 값' 은 그 자체도 '산술 표현식 (arithmetic expression)' 인 '결합 값 (associated values)' 을 가지고 있습니다-이 '결합 값' 은 표현식을 '중첩 (nest)' 하는 것을 가능하게 만듭니다. 예를 들어, 표현식 `(5 + 4) * 2` 의 경우 곱셈 오른 쪽은 숫자를 가지고 있고 곱셈 왼 쪽은 또 다른 표현식을 가지고 있습니다. 자료가 중첩되기 때문에, 이 자료를 저장할 열거체 역시 중첩을 지원해야 합니다-이는 열거체가 '재귀적 (recursive)' 일 필요가 있다는 것을 의미합니다. 아래의 코드는 재귀적인 열거체인 `ArithmeticExpression` 를 생성하여 `(5 + 4) * 2` 를 만드는 것을 보여줍니다:
+이 열거체는 세 가지 종류의 '산술 표현식' 을 저장할 수 있는데: 평범한 수, 두 표현식의 덧셈, 그리고 두 표현식의 곱셈입니다. `addition` 과 `multiplication` 'case 값' 은 또 다시 '산술 표현식' 을 '결합 값' 으로 가집니다-이 '결합 값' 들은 표현식을 '중첩' 가능하게 만듭니다. 예를 들어, 표현식 `(5 + 4) * 2` 는 곱셈 오른-쪽엔 수를 가지고 곱셈 왼-쪽엔 또 다른 표현식을 가집니다. '자료 (data)' 가 중첩되어 있기 때문에, 자료를 저장하기 위해 사용되는 열거체도 중첩을 지원할 필요가 있습니다-이는 열거체가 '재귀적 (recursive)' 일 필요가 있다는 의미입니다. 아래 코드는 `(5 + 4) * 2` 를 위해 생성되는 재귀적인 열거체인 `ArithmeticExpression` 을 보여줍니다:
 
 ```swift
 let five = ArithmeticExpression.number(5)
@@ -329,7 +329,7 @@ let sum = ArithmeticExpression.addition(five, four)
 let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
 ```
 
-'재귀 함수 (recursive function)' 는 재귀 구조를 가지는 자료와 작업하기 수월한 방법입니다. 예를 들어, 다음은 '산술 표현식' 의 값을 계산하는 함수입니다:
+'재귀 함수 (recursive function)' 는 재귀 구조를 가진 자료와 작업하기 위한 직접적인 방법입니다. 예를 들어, 다음은 '산술 표현식' 을 평가하는 함수입니다:
 
 ```swift
 func evaluate(_ expression: ArithmeticExpression) -> Int {
@@ -344,10 +344,14 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
 }
 
 print(evaluate(product))
-// "18" 를 출력합니다.
+// "18" 를 인쇄합니다.
 ```
 
-이 함수는 '하나의 단순한 수' 일 경우 그냥 그 '결합 값' 을 반환하는 것으로 계산을 끝냅니다. 덧셈과 곱셈은 왼쪽 표현식을 계산한 다음, 오른쪽 표현식을 계산하고, 이들을 더하거나 곱하는 것으로 계산합니다.
+이 함수는 '평범한 수' 는 단순히 그 '결합 값' 을 반환함으로써 평가합니다. 덧셈과 곱셈은 왼-쪽의 표현식을 평가하고, 오른-쪽의 표현식을 평가한 다음, 이를 더하거나 곱함으로써 평가합니다.
+
+### 다음 장
+
+[Structures and Classes (구조체와 클래스) > ]({% post_url 2020-04-14-Structures-and-Classes %})
 
 ### 참고 자료
 
@@ -363,7 +367,7 @@ print(evaluate(product))
 
 [^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값을-가지는-열거체를-위한-실패-가능한-초기자) 에서도 설명하고 있습니다.
 
-[^indirect]: 여기서 '재귀적인 (recursive)' 열거체를 만들기 위해 `indirect` 라는 키워드를 사용하고 있는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 에서 온 개념으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 를 참고하기 바랍니다.
+[^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 참고하기 바랍니다.
 
 [^indirection]: 본문을 보면 '재귀적 (recursive)' 이라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하고 있는데, 이는 스위프트 열거체를 '재귀적' 으로 만드는 방식이 내부적으로는 메모리의 '간접 주소' 방식을 써서 구현했기 때문으로 추측됩니다. 물론 스위프트 프로그래밍을 위해 이런 걸 알아야 하는 것은 아니므로 그런게 있다고 넘어가면 될 것 같습니다.
 
