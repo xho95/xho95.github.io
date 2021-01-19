@@ -7,17 +7,15 @@ categories: Swift Language Grammar Structure Class
 redirect_from: "/swift/language/grammar/structure/class/2020/04/08/Structures-and-Classes.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 부분[^Structures-and-Classes]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 부분[^Structures-and-Classes]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Structures and Classes (구조체와 클래스)
 
-_구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서 건축 자재 역할을 하는 범용적이고, 유연한 구조물을 말합니다. 구조체와 클래스에 기능을 추가하기 위해 속성과 메소드를 정의할 때는 상수, 변수, 그리고 함수를 정의할 때와 똑같은 구문 표현을 사용하면 됩니다.
+_구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드의 '건축 자재 (building blocks)' 역할을 하는 범용적이고, 유연한 '구조물 (constructs)' 입니다. 구조체와 클래스에 기능을 추가하기 위한 속성과 메소드는 상수와, 변수, 및 함수를 정의할 때와 똑같은 구문 표현을 사용하여 정의합니다.
 
-다른 프로그래밍 언어들과는 다르게, 스위프트에서는 구조체와 클래스에 대해서 인터페이스 파일과 구현 파일을 별도로 분리해서 만들 필요가 없습니다. 스위프트에서는, 구조체나 클래스는 단일한 파일내에서 정의하면 되고, 그 클래스나 구조체에 대한 외부 인터페이스는 다른 코드에서 자동으로 사용할 수 있도록 만들어 줍니다.
+다른 프로그래밍 언어와는 달리, 스위프트는 사용자 정의 구조체와 클래스에서 인터페이스 파일과 구현 파일을 분리하여 생성할 필요가 없습니다. 스위프트에서는, 구조체나 클래스를 단일 파일로 정의하며, 해당 클래스나 구조체에 대한 외부 인터페이스는 다른 코드에서 자동으로 사용 가능합니다.
 
-> 클래스의 인스턴스는 전통적으로 _객체 (object)_ 라고 알려져 있습니다. 하지만, 스위프트의 구조체와 클래스는 그 기능 면에서 다른 언어에서 보다 훨씬 더 가까우며, 이번 장에서 설명하는 기능 대부분은 클래스이든 구조체이든 _어느 쪽의 (either)_ 인스턴스에도 적용할 수 있습니다. 이러한 이유로 때문에, 더 일반적인 용어인 _인스턴스 (instance)_ 를 사용합니다.[^object-instance]
+> 클래스의 인스턴스는 전통적으로 _객체 (object)_ 라고 합니다. 하지만, 스위프트의 구조체와 클래스는 다른 언어보다 그 기능이 훨씬 더 가까우며, 이 장 대부분이 클래스나 구조체 _어느 (either)_ 것의 인스턴트에든 적용되는 기능을 설명합니다. 이 때문에, 더 일반적인 용어인 _인스턴스 (instance)_ 를 사용합니다.[^object-instance]
 
 ### Comparing Structures and Classes (구조체와 클래스 비교하기)
 
