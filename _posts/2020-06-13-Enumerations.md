@@ -329,7 +329,7 @@ let sum = ArithmeticExpression.addition(five, four)
 let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
 ```
 
-'재귀 함수 (recursive function)' 는 재귀 구조를 가지는 자료와 작업하기 수월한 방법입니다. 예를 들어, 다음은 '산술 표현식' 의 값을 계산하는 함수입니다:
+'재귀 함수 (recursive function)' 는 재귀 구조를 가진 자료와 작업하기 위한 직접적인 방법입니다. 예를 들어, 다음은 '산술 표현식' 을 평가하는 함수입니다:
 
 ```swift
 func evaluate(_ expression: ArithmeticExpression) -> Int {
@@ -344,10 +344,14 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
 }
 
 print(evaluate(product))
-// "18" 를 출력합니다.
+// "18" 를 인쇄합니다.
 ```
 
-이 함수는 '하나의 단순한 수' 일 경우 그냥 그 '결합 값' 을 반환하는 것으로 계산을 끝냅니다. 덧셈과 곱셈은 왼쪽 표현식을 계산한 다음, 오른쪽 표현식을 계산하고, 이들을 더하거나 곱하는 것으로 계산합니다.
+이 함수는 '평범한 수' 는 단순히 그 '결합 값' 을 반환함으로써 평가합니다. 덧셈과 곱셈은 왼-쪽의 표현식을 평가하고, 오른-쪽의 표현식을 평가한 다음, 이를 더하거나 곱함으로써 평가합니다.
+
+### 다음 장
+
+[Structures and Classes (구조체와 클래스) > ]({% post_url 2020-04-14-Structures-and-Classes %})
 
 ### 참고 자료
 
