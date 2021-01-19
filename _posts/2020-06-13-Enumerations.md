@@ -264,20 +264,20 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
 
-열거체에 원시-값 타입을 정의하면, 이 열거체는 자동적으로 원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 받는 '초기자' 를 가지며 하나의 열거체 'case 값' 또는 `nil` 을 반환하게 됩니다. 이 '초기자' 를 사용하면 열거체의 새 인스턴스를 생성할 수 있습니다.
+원시-값 타입을 가진 열거체를 정의할 경우, 열거체는 (`rawValue` 라는 매개 변수로써) 원시 값 타입의 값을 취해서 '열거체 case 값' 또는 `nil` 을 반환하는 '초기자 (initializers)' 를 자동으로 받습니다. 이 '초기자' 는 열거체의 새로운 인스턴스를 생성할 때 사용할 수 있습니다.
 
-다음 예제는 '원시 값' 인 `7` 로 부터 '천왕성 (Uranus)' 을 식별합니다:
+다음 예제는 `7` 이라는 '원시 값' 으로 '천왕성 (Uranus)' 임을 식별합니다:
 
 ```swift
 let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet 은 타입이 Planet? 이고 값은 Planet.uranus 입니다.
 ```
 
-하지만, 모든 `Int` 에 대해 그에 해당하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '_원시 (raw)_ 값 초기자' 는 항상 _옵셔널 (optional)_ 열거체 'case 값' 을 반환합니다. 위의 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 (optional) `Planet`” 입니다.
+하지만, 가능한 모든 `Int` 값마다 일치하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '원시 값 초기자 (raw value initializer)' 는 항상 _옵셔널 (optional)_ '열거체 case 값' 을 반환합니다. 위 예제에서, `possiblePlanet` 는 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
 
-> '원시 값 초기자 (raw value initializer)' 는 '실패 가능한 초기자 (failable initializer)' 인데, 모든 원시 값이 열거체 case 값을 반환하지는 않기 때문입니다. 더 자세한 내용은, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자)[^failable-initializer] 를 참고하기 바랍니다.
+> '원시 값 초기자' 는 '실패 가능한 (failable) 초기자' 인데, 모든 '원시 값' 마다 '열거체 case 값' 을 반환하는 것은 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자)[^failable-initializer] 를 참고하기 바랍니다.
 
-위치가 `11` 에 해당하는 행성을 찾으려고 하면, '원시 값 초기자 (raw value initializer)' 가 반환하는 '옵셔널 (optional)' `Planet` 값은 `nil` 이 될 것입니다:
+`11` 번 째 위치의 행성을 찾으려고 하면, '원시 값 초기자' 가 반환하는 '옵셔널 `Planet`' 값은 `nil` 일 것입니다:
 
 ```swift
 let positionToFind = 11
@@ -291,10 +291,10 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 } else {
   print("There isn't a planet at position \(positionToFind)")
 }
-// "There isn't a planet at position 11" 를 출력합니다.
+// "There isn't a planet at position 11" 를 인쇄합니다.
 ```
 
-이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 원시 값이 `11` 인 행성에 접근하려고 시도합니다. `if let somePlanet = Planet(rawValue : 11)` 구문은 옵셔널 `Planet` 을 하나 생성한 다음, 가져올 수 있다면 이 옵셔널 `Planet` 의 값을 `somePlanet` 에 설정합니다. 이 경우, 위치가 `11` 인 행성은 가져올 수 없으므로, `else` 분기를 대신 실행합니다.
+이 예제는 원시 값이 `11` 인 행성에 접근하기 위해 '옵셔널 연결 (optional binding)' 을 사용합니다. `if let somePlanet = Planet(rawValue : 11)` 은 '옵셔널 `Planet`' 을 생성하고, 가져올 수 있었다면 이 `somePlanet` 에 해당 '옵셔널 `Planet`' 의 값을 설정합니다. 이 경우, `11` 번 째 위치의 행성을 가져오는 것이 불가능하므로, 그 대신 `else` 분기를 실행합니다.
 
 ### Recursive Enumerations (재귀적인 열거체)
 
