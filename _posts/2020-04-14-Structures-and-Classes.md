@@ -39,24 +39,24 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드의 '�
 
 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 그리고 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 을 참고하기 바랍니다.
 
-클래스가 지원하는 추가적인 보유 능력은 복잡성 증가라는 비용에 직면합니다. 일반적인 '지침 (guideline)' 대로, 이유를 파악하기가 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 실제로, 이는 대부분의 사용자 정의 자료 타입은 구조체나 열거체로 정의된다는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)[^choosing-between-structures-and-classes] 문서를 첨고하기 바랍니다.
+클래스가 지원하는 추가적인 보유 능력은 복잡성 증가라는 비용에 직면합니다. 일반적인 '지침 (guideline)' 대로, 이유를 파악하기가 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 실제로, 이는 대부분의 사용자 정의 자료 타입은 구조체나 열거체로 정의된다는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
 
 #### Definition Syntax (정의 구문 표현)
 
-구조체와 클래스는 비슷한 정의 구문 표현을 가지고 있습니다. 구조체를 도입하려면 `struct` 키워드를 사용하고 클래스는 `class` 키워드를 사용합니다. 둘 다 전체 정의는 한 쌍의 중괄호 안에 집어넣습니다:
+구조체와 클래스를 정의하는 구문 표현은 비슷합니다. 구조체는 `struct` 키워드로 도입하고 클래스는 `class` 키워드로 도입합니다. 둘 다 한 쌍의 중괄호 안에 전체 정의를 둡니다:
 
 ```swift
 struct SomeStructure {
-  // 여기서 구조체를 정의합니다.
+  // 구조체 정의는 여기에 둡니다.
 }
 class SomeClass {
-  // 여기서 클래스를 정의합니다.
+  // 클래스 정의는 여기에 둡니다.
 }
 ```
 
-> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하고 있는 것입니다. 타입은 (여기서 `SomeStructure` 와 `SomeClass` 라고 한 것처럼) `UpperCamelCase`-낙타 모양 대문자[^uppser-camel-case]-이름을 부여해서 (`String`, `Int`, 그리고 `Bool` 같은) 표준 스위프트 타입의 대문자 방식에 맞추도록 합니다. 속성과 메소드는 (`frameRate` 와 `incrementCount` 같이) `lowerCamelCase`-낙타 모양 소문자-이름을 부여해서 타입 이름과 구별하도록 합니다.
+> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 것입니다. 타입은 (`String`, `Int`, 그리고 `Bool` 같은) 표준 스위프트 타입의 대문자 방식과 일치하도록 (여기 있는 `SomeStructure` 와 `SomeClass` 같이) `UpperCamelCase`[^uppser-camel-case] (낙타 모양 대문자) 이름을 부여합니다. 속성과 메소드는 타입 이름과 구별하기 위해 (`frameRate` 와 `incrementCount` 같이) `lowerCamelCase` (낙타 모양 소문자) 이름을 부여합니다.
 
-아래는 구조체 정의와 클래스 정의에 대한 예제입니다:
+다음은 구조체 정의와 클래스 정의에 대한 예제입니다:
 
 ```swift
 struct Resolution {
@@ -71,66 +71,66 @@ class VideoMode {
 }
 ```
 
-위의 예제는 `Resolution` 이라는 새 구조체를 정의해서, 픽셀 기반 디스플레이의 해상도를 묘사합니다. 이 구조체는 `width` 와 `height` 라는 두 개의 '저장 속성 (stored properties)' 을 가집니다. 저장 속성은 구조체나 클래스의 일부로 포함되어 저장되는 상수나 변수를 말합니다. 이 두 속성은 타입이 `Int` 로 추론되는데 이는 기본 값이 정수인 `0` 으로 설정되었기 때문입니다.
+위 예제는, 픽셀-기반 디스플레이 해상도를 설명하는, `Resolution` 이라는 새로운 구조체를 정의합니다. 이 구조체는 `width` 와 `height` 라는 두 개의 '저장 속성 (stored properties)' 을 가집니다. 저장 속성은 구조체나 클래스에 뭉쳐져 저장되는 상수나 변수입니다. 이 두 속성들은 `0` 이라는 초기 값으로 설정되므로 `Int` 타입으로 추론됩니다.
 
-위의 예제는 `VideoMode` 라는 새 클래스도 정의하며, 비디오 디스플레이를 위한 특정 비디오 모드를 묘사하고 있습니다. 이 클래스는 네 개의 '변수 저장 속성' 을 가집니다. 첫 번째인, `resolution` 은, 새로운 구조체인 `Resolution` 의 인스턴스로 초기화되어, 속성의 타입이 `Resolution` 으로 추론됩니다. 다른 세 개의 속성들로, `interlaced` 설정은 `false` ("비월 주사 방식"[^interlaced]의 의미), '프레임 재생 속도' 는 `0.0`, 그리고 `name` 이라는 옵셔널 `String` 값을 가지고 `VideoMode` 의 새로운 인스턴스가 초기화 됩니다. `name` 속성의 기본 값은 자동으로 `nil`, 또는 "`name` 값이 없음", 이 되는데, 이는 옵셔널 타입이기 때문입니다.
+위 예제는, 영상 디스플레이에 지정된 영상 모드를 설명하는, `VideoMode` 라는 새로운 클래스도 정의합니다. 이 클래스는 네 개의 '저장 속성' 변수를 가집니다. 첫 번째인, `resolution` 은, 속성 타입을 `Resolution` 으로 추론하도록, 새로운 `Resolution` 구조체 인스턴스로 초기화됩니다. 다른 세 속성의 경우, `interalced` 는 ("비월 주사 방식 (noninterlaced) 영상"[^interlaced] 을 의미하는) `false`, '녹화 프레임 재생 속도' 는 `0.0`, 그리고 `name` 이라는 '옵셔널 `String` 값' 을 가지고 새로운 `VideoMode` 인스턴스가 초기화될 것입니다. `name` 속성은, 옵셔널 타입이기 때문에, 기본 값이 `nil`, 또는 "`name` 값이 없음", 으로 자동으로 주어집니다.
 
-#### Structure and Class Instances (구조체 인스턴스와 클래스 인스턴스)
+#### Structure and Class Instances (구조체와 클래스 인스턴스)
 
-`Resolution` 구조체의 정의와 `VideoMode` 클래스의 정의는 `Resolution` 이나 `VideoMode` 이 어떤 형태인지만을 설명하는 것입니다. 그 자체로는 지정된 해상도나 비디오 모드에 대해 아무런 설명을 하지 않습니다. 이를 위해서는, 구조체나 클래스의 인스턴스를 만들 필요가 있습니다.
+`Resolution` 구조체 정의와 `VideoMode` 클래스 정의는 `Resolution` 또는 `VideoMode` 가 무엇으로 보일 지만을 설명합니다. 그 자체로는 지정된 해상도나 영상 모드를 설명하지 않습니다. 그렇게 하기 위해서는, 구조체나 클래스의 인스턴스를 생성할 필요가 있습니다.
 
-인스턴스를 생성하는 구문 표현은 구조체와 클래스가 서로 매우 비슷합니다:
+인스턴스를 생성하는 구문 표현은 구조체와 클래스 둘 다 매우 비슷합니다:
 
 ```swift
 let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 모두 '초기자 구문 표현 (initializer syntax)' 을 사용해서 새로운 인스턴스를 만듭니다. 초기자 구문 표현의 가장 간단한 양식은 클래스나 구조체의 타입 이름을 쓰고 뒤에 빈 괄호를 붙이는 것으로, 가령 `Resolution()` 이나 `VideoMode()` 와 같은 것들이 이에 해당합니다. 이렇게 하면 클래스나 구조체의 새 인스턴스가 생성되며, 모든 속성들은 기본 값으로 초기화됩니다. 클래스와 구조체의 초기화는 [Initialization (초기화하기)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세히 설명합니다.
+구조체와 클래스 둘 다 새로운 인스턴스를 위해 '초기자 구문 표현 (initializer syntax)' 을 사용합니다. 가장 간단한 형식의 초기자 구문 표현은, `Resolution()` 이나 `VideoMode()` 처럼, 클래스나 구조체의 타입 이름 뒤에 빈 괄호를 사용합니다. 이는 클래스나 구조체의, 어떤 속성이든 '기본 값' 으로 초기화 된, 새로운 인스턴스를 생성합니다. 클래스와 구조체의 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세하게 설명합니다.
 
 #### Accessing Properties (속성에 접근하기)
 
-인스턴스의 속성에 접근할 때는 _점 구문 표현 (dot syntax)_ 을 사용합니다. '점 구문 표현' 은, 인스턴스 이름 바로 뒤에 속성 이름을 쓰면서, 쉼표 (`.`) 로 구분하며, 그 사이에 아무 공백도 넣지 않습니다.
+인스턴스의 속성은 _점 구문 표현 (dot syntax)_ 을 사용하여 접근할 수 있습니다. '점 구문 표현' 에서, 속성 이름은 인스턴스 이름 바로 뒤에, 어떤 공백도 없이, '마침표 (period; `.`)' 로 구분하여, 작성합니다:
 
 ```swift
 print ( "The width of someResolution is \(someResolution.width)")
-// "The width of someResolution is 0" 를 출력합니다.
+// "The width of someResolution is 0" 를 인쇄합니다.
 ```
 
-이 예제에서, `someResolution.width` 는 `someResolution` 의 `width` 속성을 참조하므로, 기본 값인 `0` 을 반환합니다.
+이 예제에서, `someResolution.width` 는 `someResolution` 의 `width` 속성을 참조하며, `0` 이라는 '기본 초기 값' 을 반환합니다.
 
-'하위 속성' 으로 계속 파고 들 수도 있어서, 가령 `VideoMode` 의 `resolution` 속성에 있는 `width` 속성도 접근 가능합니다:
+`VideoMode` 의 `resolution` 속성에 있는 `width` 속성 처럼, '하위 속성' 으로 파고 들어 갈 수 있습니다:
 
 ```swift
 print ( "The width of someVideoMode is \(someVideoMode.resolution.width)")
-// "The width of someVideoMode is 0" 를 출력합니다.
+// "The width of someVideoMode is 0" 를 인쇄합니다.
 ```
 
-'점 구문 표현 (dot syntax)' 을 사용하여 '변수 속성 (variable property)' 에 새로운 값을 할당할 수도 있습니다:
+'점 구문 표현' 은 '변수 속성' 에 새로운 값을 할당하기 위해서도 사용할 수 있습니다:
 
 ```swift
 someVideoMode.resolution.width = 1280
 print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
-// "The width of someVideoMode is now 1280" 를 출력합니다.
+// "The width of someVideoMode is now 1280" 를 인쇄합니다.
 ```
 
-#### Memberwise Initializers for Structure Types (구조체 타입에 대한 멤버 초기자)
+#### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
-모든 구조체는 자동으로 생겨나는 '_멤버 초기자 (memberwise initializer)_'를 가지고 있어서, 이것을 사용하여 새로운 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다. 새 인스턴스 속성에 대한 기본 값을 멤버 초기자에 전달할 때는 이름을 사용하면 됩니다:
+모든 구조체는 자동으로 생기는 _멤버 초기자 (memberwise initializer)_ 를 가지는데, 이는 새로운 구조체 인스턴스의 멤버 속성을 초기화하는데 사용할 수 있습니다. 새로운 인스턴스의 속성 기본 값은 멤버 초기자에 이름으로써 전달할 수 있습니다:
 
 ```swift
 let vga = Resolution(width: 640, height: 480)
 ```
 
-구조체와는 다르게, 클래스 인스턴스에는 '기본 멤버 초기자 (default memberwise initializer)' 가 없습니다. 초기자에 대해서는 [Initialization (초기화하기)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세히 설명합니다.
+구조체와는 달리, 클래스 인스턴스는 '기본 멤버 초기자' 를 받지 않습니다. 초기자는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세하게 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 
-_값 타입 (value type)_ 은, 변수나 상수에 할당하거나 함수에 전달할 때, 그 값이 _복사되는 (copied)_ 타입을 말합니다.
+_값 타입 (value type)_ 은 변수나 상수에 할당될 때, 또는 함수에 전달될 때, 값이 _복사되는 (copied)_ 타입입니다.
 
-실제로 값 타입은 이전 장에서부터 이미 광범위하게 사용중입니다. 사실, 스위프트의 모든 기본 타입-정수, 부동-소수점 수, 불리언 (Booleans), 문자열, 배열 그리고 딕셔너리-들은 값 타입으로, 속을 들여다보면 구조체로 구현되어 있습니다.
+실제로 값 타입은 이전 장 전체에서 광범위하게 사용했습니다. 사실상, 스위프트의 모든 기본 타입-정수, 부동 소수점 수, '불리언 (Booleans)', 문자열, 배열, 그리고 딕셔너리-들은 값 타입이며, 그 이면을 살펴보면 구조체로 구현되어 있습니다.
 
-스위프트에 있는 모든 구조체와 열거체는 값 타입니다. 이것은 직접 생성하는 구조체나 열거체의 어떤 인스턴스라도-그리고 이들이 속성으로 가지고 있는 어떤 값 타입이라도-코드 내에서 전달될 때는 항상 복사된다는 것을 의미합니다.
+스위프트에서 모든 구조체와 열거체는 값 타입니다. 이는 생성하는 어떤 구조체와 열거체 인스턴스-그리고 속성으로 가진 어떤 값 타입-이라도 코드에서 전달될 때 항상 복사된다는 의미입니다.
 
 > 표준 라이브러리에 정의되어 있는 컬렉션인 배열 (arrays), 딕셔너리 (dictionary), 그리고 문자열 (strings) 들은 최적화를 사용하여 복사하는데 드는 성능 비용을 줄입니다. 이 컬렉션들은, 복사를 바로 하는 대신에, 원본 인스턴스와 복사본 간에 원소가 저정되어 있는 메모리를 공유합니다. 컬렉션의 복사본 중 하나가 수정되면, 이 수정 작업 바로 전에 그 원소를 복사합니다. 코드의 동작은 항상 마치 복사가 즉시 일어난 것처럼 보이게 됩니다.
 
@@ -262,7 +262,7 @@ C, C++ 또는 오브젝티브-C 언어에 대한 경험이 있다면, 이러한 
 
 [^object-instance]: 여기서 '인스턴스' 가 '객체' 보다 더 일반적인 용어라는 표현을 사용했는데, '객체' 라고 하면 '클래스의 인스턴스' 만을 지칭하지만, 그냥 '인스턴스' 라고 하면 '구조체의 인스턴스' 도 모두 포함하는 개념이기 때문입니다.
 
-[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 'UpperCamelCase' 와 'LowerCamelCase' 라고 또다시 구분을 하고 있기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮기도록 합니다.'낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
+[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 `UpperCamelCase` 와 `lowerCamelCase` 로 또다시 구분을 하기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮깁니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
 
 [^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 참고하기 바랍니다.
 
