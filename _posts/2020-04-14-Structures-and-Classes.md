@@ -151,32 +151,32 @@ var cinema = hd
 cinema.width = 2048
 ```
 
-`cinema` 의 `width` 속성을 검사하면 진짜 `2048` 로 바뀐 것을 보여줍니다:
+`cinema` 의 `width` 속성을 검사하여 진짜 `2048` 로 바뀌었는지 봅니다:
 
 ```swift
 print("cinema is now \(cinema.width) pixels wide")
 // "cinema is now 2048 pixels wide" 를 인쇄합니다.
 ```
 
-하지만, 원본인 `hd` 인스턴스의 `width` 속성은 여전히 `1920` 이라는 예전 값을 가집니다:
+하지만, 원본인 `hd` 인스턴스의 `width` 속성은 여전히 예전 값인 `1920` 을 가집니다:
 
 ```swift
 print("hd is still \(hd.width) pixels wide")
 // "hd is still 1920 pixels wide" 를 인쇄합니다.
 ```
 
-`cinema` 에 `hd` 의 현재 값을 주면, `hd` 에 저장된 _값 (values)_ 이 새 `cinema` 인스턴스로 복사됩니다. 최종 결과는 동일한 수치 값을 가지지만 완전히 별개인 두 개의 인스턴스입니다. 하지만, 이들은 별개의 인스턴스이기 때문에, `cinema` 의 너비를 `2048` 로 설정해도, `hd` 에 저장된 너비에는 영향이 없으며, 이는 아래 그림에 나타낸 것과 같습니다:
+`cinema` 에 `hd` 의 현재 값을 부여할 때는, `hd` 에 저장된 _값 (values)_ 이 새로운 `cinema` 인스턴스로 복사됩니다. 최종 결과는 똑같은 수치 값을 담은 완전히 분리된 두 인스턴스입니다. 하지만, 분리된 인스턴스이기 때문에,  `cinema` 의 너비를 `2048` 로 설정하는 것은, 아래 그럼에 있는 것처럼, `hd` 에 저장된 너비에 영향을 주지 않습니다:
 
 ![an copy of the value type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
 
-이 같은 동작은 열거체에도 적용됩니다:
+열거체에도 똑같은 작동 방식이 적용됩니다:
 
 ```swift
 enum CompassPoint {
-    case north, south, east, west
-    mutating func turnNorth() {
-        self = .north
-    }
+  case north, south, east, west
+  mutating func turnNorth() {
+    self = .north
+  }
 }
 var currentDirection = CompassPoint.west
 let rememberedDirection = currentDirection
@@ -184,11 +184,11 @@ currentDirection.turnNorth()
 
 print("The current direction is \(currentDirection)")
 print("The remembered direction is \(rememberedDirection)")
-// "The current direction is north" 를 출력합니다.
-// "The remembered direction is west" 를 출력합니다.
+// "The current direction is north" 를 인쇄합니다.
+// "The remembered direction is west" 를 인쇄합니다.
 ```
 
-`rememberedDirection` 에 `currentDirection` 의 값을 할당할 때는, 사실 해당 값의 복사본을 설정하는 것입니다. 이후에 `currentDirection` 값을 바꿔도 `rememberedDirection` 에 저장된 원래 값의 복사본에는 영향이 없습니다.
+`rememberedDirection` 에 `currentDirection` 의 값을 할당할 때, 실제로는 해당 값의 복사본을 설정하는 것입니다. 그러므로 `currentDirection` 값을 바꾸는 것은 `rememberedDirection` 에 저장된 원래 값의 복사본에는 영향을 주지 않습니다.
 
 ### Classes Are Reference Types (클래스는 참조 타입입니다)
 
@@ -227,6 +227,7 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 이 예제는 참조 타입이 얼마나 더 이해하기 어려울 수 있는 지도 보여줍니다. `tenEighty` 와 `alsoTenEighty` 가 프로그램 코드에서 서로 멀리 떨어져 있다면, 비디오 모드를 바꾸는 모든 방법을 찾기가 여러울 수도 있습니다. `tenEighty` 를 사용하는 곳마다, `alsoTenEighty` 를 사용하는 코드도 생각하고 있어야 하며, 반대인 경우에도 그렇습니다. 이와는 대조적으로, 값 타입은 이해하기가 더 쉬운데 이는 동일한 값으로 상호 작용하는 모든 코드가 소스 파일 내에서 서로 가까이 있기 때문입니다.
 
 `tenEighty` 와 `alsoTenEighty` 가 변수가 아닌, _상수 (constants)_ 로 선언되었음에도 주목하기 바랍니다. 하지만, `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 는 여전히 바꿀 수 있는데 이는 `tenEighty` 와 `alsoTenEighty` 상수 자신들의 값은 실제로 바뀐게 없기 때문입니다. `tenEighty` 와 `alsoTenEighty` 스스로는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-대신에, 이 둘 모두 그 속을 들여다보면 `VideoMode` 인스턴스를 _참조하고 (refer)_ 있습니다. 실제로는 `VideoMode` 의 `frameRate` 속성이 바뀌는 것이지, 이 `VideoMode` 를 참조하고 있는 상수의 값이 바뀌는 것이 아닙니다.
+
 
 #### Identity Operators (식별 연산자)
 
