@@ -272,4 +272,4 @@ C, C++ 또는 오브젝티브-C 에 대한 경험이 있다면, 이 언어들은
 
 [^choosing-between-structures-and-classes]: 원문 자체가 애플 '개발자 (developer)' 문서에 대한 링크입니다.
 
-[^manual-memory-management]: 이것 역시 원문 자체가 애플 '개발자' 문서에 대한 링크입니다.
+[^manual-memory-management]: 이것 역시 원문 자체가 애플 '개발자' 문서에 대한 링크입니다. 초창기에는 `UnsagePointer` 에 대한 설명이 본문에도 있었으나, 스위프트를 갱신하면서 관련 설명이 없어졌습니다.
