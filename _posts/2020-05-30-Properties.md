@@ -6,19 +6,17 @@ date:   2020-05-30 10:00:00 +0900
 categories: Swift Language Grammar Property
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Properties](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 부분[^Properties]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Properties](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 부분[^Properties]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Properties (속성)
 
-_속성 (properties)_ 은 특정한 클래스나, 구조체, 또는 열거체와 결합되어 있는 값입니다. '저장 속성 (stored properties)' 은 상수 값과 변수 값을 인스턴스 내에 저장하는 반면, '계산 속성 (computed properties)' 은 값을 (저장하지 않고) 계산합니다. '계산 속성' 은 클래스, 구조체, 그리고 열거체에서 제공합니다. '저장 속성' 은 클래스와 구조체에서만 제공합니다.
+_속성 (properties)_ 은 값을 특정 클래스, 구조체, 또는 열거체와 결합합니다. '저장 (stored) 속성' 은 상수와 변수 값을 인스턴스 일부로 저장하는 반면, '계산 (computed) 속성' 은 값을 (저장하는 대신) 계산합니다. '계산 속성' 은 클래스, 구조체, 그리고 열거체가 제공합니다. '저장 속성' 은 클래스와 구조체만 제공합니다.
 
-저장 속성과 계산 속성은 보통 특정한 타입의 인스턴스와 결합되어 있습니다. 하지만, 속성은 타입 그 자체에 결합되어 있을 수도 있습니다. 이러한 속성을 '타입 속성 (type properties)' 이라고 합니다.
+저장 속성과 계산 속성은 대체로 특정 타입의 인스턴스와 결합됩니다. 하지만, 속성은 타입 그 자체와 결합될 수도 있습니다. 그런 속성을 '타입 (type) 속성' 이라고 합니다.
 
-이와 더불어, 속성 값이 바뀌는 것을 감시하기 위해 '속성 관찰자 (property observers)' 를 정의할 수 있으며, 이것을 써서 자신만의 사용자 정의 응답을 할 수도 있습니다. '속성 관찰자' 는 자신이 직접 정의한 '저장 속성' 에도 추가할 수 있고, 상위 클래스에서 상속 받은 하위 클래스의 속성에도 추가할 수 있습니다.
+이에 더하여, 속성의 값이 바뀌는 것을 감시하는 '속성 관찰자 (property observers)' 를 정의할 수 있는데, 이로써 응답시 사용자 정의 행동을 할 수 있습니다. '속성 관찰자' 는 자신이 직접 정의한 '저장 속성' 에 추가할 수 있으며, 상위 클래스에서 하위 클래스가 상속 받은 속성에도 추가할 수 있습니다.
 
-여러 속성에 걸쳐 '획득자 (getter)' 와 '설정자 (setter)' 의 코드를 재사용하기 위해 '속성 포장 (property wrapper)' 이란 것을 사용할 수도 있습니다.
+여러 속성에서 '획득자 (getter)' 와 '설정자 (setter)' 코드를 재사용하기 위해 '속성 포장 (property wrapper)' 을 사용할 수도 있습니다.
 
 ### Stored Properties (저장 속성)
 
