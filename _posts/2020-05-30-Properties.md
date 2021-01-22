@@ -20,41 +20,41 @@ _속성 (properties)_ 은 값을 특정 클래스, 구조체, 또는 열거체�
 
 ### Stored Properties (저장 속성)
 
-'저장 속성' 중, 가장 간단한 양식은, 특정 클래스나 구조체의 인스턴스에 저장되는 상수나 변수입니다. 저장 속성은 (`var` 키워드를 쓰는) _변수 저장 속성 (variable stored properties)_ 일 수도 있고 (`let` 키워드를 쓰는) _상수 저장 속성 (constant stored properties)_ 일 수도 있습니다.
+가장 간단한 형식의, '저장 속성' 은, 특정 클래스나 구조체 인스턴스에 저장되는 상수 또는 변수입니다. 저장 속성은 (`var` 키워드로 도입하는) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입하는) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
 
-저장 속성을 정의하면서 '기본 값 (default value)' 을 제공할 수 있는데, 이는 [Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명합니다. 초기화하는 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는 '상수 저장 속성' 에서도 가능한 것으로, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명합니다.
+[Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명하는 것처럼, 저장 속성을 정의하면서 '기본 값 (default value)' 을 제공할 수 있습니다. 초기화 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명하는 것처럼, '상수 저장 속성' 이더라도 그렇습니다.
 
-아래 예제는 `FixedLengthRange` 라는 구조체를 정의하여, 생성된 후에는 범위의 크기 (length) 를 바꿀 수 없는 정수 범위를 묘사합니다:
+아래 예제는, 생성 후에는 범위의 '길이 (length)' 를 바꿀 수 없는 '정수 범위' 를 묘사하는, `FixedLengthRange` 라는 구조체를 정의합니다:
 
 ```swift
 struct FixedLengthRange {
- var firstValue: Int
- let length: Int
+  var firstValue: Int
+  let length: Int
 }
 var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
-// 이 범위는 정수 값 0, 1, 2 를 나타냅니다.
+// 이 범위는 정수 값 0, 1, 2 를 표현합니다.
 rangeOfThreeItems.firstValue = 6
-// 이 범위는 이제 정수 값 6, 7, 8 을 나타냅니다.
+// 이 범위는 이제 정수 값 6, 7, 8 을 표현합니다.
 ```
 
-`FixedLengthRange` 인스턴스는 `firstValue` 라는 '변수 저장 속성' 과 `length` 라는 '상수 저장 속성' 을 가지고 있습니다. 위 예제에 있는, `length` 는 새 범위를 생성할 때 초기화되면 그 다음부터는 바꿀 수 없는데, 이는 '상수 속성' 이기 때문입니다.
+`FixedLengthRange` 의 인스턴스는 `firstValue` 라는 '변수 저장 속성' 과 `length` 라는 '상수 저장 속성' 을 가집니다. 위 예제에서, `length` 는 새로운 범위를 생성할 때 초기화되며 그 이후로는 바꿀 수가 없는데, 왜냐면 '상수 속성' 이기 때문입니다.
 
 #### Stored Properties of Constant Structure Instances (상수 구조체 인스턴스의 저장 속성)
 
-구조체의 인스턴스를 생성한 다음 이를 상수에 할당하면, 그 인스턴스에 있는 속성은 수정할 수 없으며, 이는 '변수 속성' 으로 선언된 경우라도 마찬가지입니다:
+구조체의 인스턴스를 생성한 다음 해당 인스턴스를 상수에 할당하면, 인스턴스의 속성을, '변수 속성' 으로 선언한 경우 이더라도, 그 속성을 수정할 수 없습니다:
 
 ```swift
 let rangeOfFourItems = FixedLengthRange(firstValue : 0, length: 4)
-// 이 범위는 정수 값 0, 1, 2, 3 을 나타냅니다.
+// 이 범위는 정수 값 0, 1, 2, 3 을 표현합니다.
 rangeOfFourItems.firstValue = 6
-// 이는 에러를 보고하는데, firstValue 가 변수 속성이라도 마찬가지입니다.
+// 이는, firstValue 가 변수 속성일지라도, 에러를 보고할 것입니다.
 ```
 
-이는 `rangeOfFourItems` 을 (`let` 키워드를 써서) 상수로 선언했기 때문이며, `firstValue` 가 변수 속성일지라도, `firstValue` 속성을 바꿀 수 없습니다.
+`rangeOfFourItems` 을 (`let` 키워드를 가진) 상수로 선언했기 때문에, `firstValue` 가 변수 속성일지라도, 자신의 `firstValue` 속성을 바꾸는 것이 불가능합니다.
 
-이렇게 동작하는 것은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시하면, 거기에 속한 모든 속성도 그렇게 됩니다.
+이 작동 방식은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시할 때는, 모든 속성 또한 그렇게 됩니다.
 
-이같은 방식은, _참조 타입 (reference types)_ 인, 클래스에는 적용되지 않습니다. 참조 타입의 인스턴스를 상수에 할당하는 경우, 그 인스턴스의 '변수 속성' 을 여전히 바꿀 수 있습니다.
+이같은 일은, _참조 타입 (reference types)_ 인, 클래스에서는 일어나지 않습니다. 참조 타입의 인스턴스를 상수에 할당한 경우, 해당 인스턴스의 '변수 속성' 은 여전히 바꿀 수 있습니다.
 
 #### Lazy Stored Properties (느긋한 저장 속성)
 
