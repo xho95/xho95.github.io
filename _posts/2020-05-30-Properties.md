@@ -20,72 +20,72 @@ _속성 (properties)_ 은 값을 특정 클래스, 구조체, 또는 열거체�
 
 ### Stored Properties (저장 속성)
 
-'저장 속성' 중, 가장 간단한 양식은, 특정 클래스나 구조체의 인스턴스에 저장되는 상수나 변수입니다. 저장 속성은 (`var` 키워드를 쓰는) _변수 저장 속성 (variable stored properties)_ 일 수도 있고 (`let` 키워드를 쓰는) _상수 저장 속성 (constant stored properties)_ 일 수도 있습니다.
+가장 간단한 형식의, '저장 속성' 은, 특정 클래스나 구조체 인스턴스에 저장되는 상수 또는 변수입니다. 저장 속성은 (`var` 키워드로 도입하는) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입하는) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
 
-저장 속성을 정의하면서 '기본 값 (default value)' 을 제공할 수 있는데, 이는 [Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명합니다. 초기화하는 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는 '상수 저장 속성' 에서도 가능한 것으로, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명합니다.
+[Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명하는 것처럼, 저장 속성을 정의하면서 '기본 값 (default value)' 을 제공할 수 있습니다. 초기화 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명하는 것처럼, '상수 저장 속성' 이더라도 그렇습니다.
 
-아래 예제는 `FixedLengthRange` 라는 구조체를 정의하여, 생성된 후에는 범위의 크기 (length) 를 바꿀 수 없는 정수 범위를 묘사합니다:
+아래 예제는, 생성 후에는 범위의 '길이 (length)' 를 바꿀 수 없는 '정수 범위' 를 묘사하는, `FixedLengthRange` 라는 구조체를 정의합니다:
 
 ```swift
 struct FixedLengthRange {
- var firstValue: Int
- let length: Int
+  var firstValue: Int
+  let length: Int
 }
 var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
-// 이 범위는 정수 값 0, 1, 2 를 나타냅니다.
+// 이 범위는 정수 값 0, 1, 2 를 표현합니다.
 rangeOfThreeItems.firstValue = 6
-// 이 범위는 이제 정수 값 6, 7, 8 을 나타냅니다.
+// 이 범위는 이제 정수 값 6, 7, 8 을 표현합니다.
 ```
 
-`FixedLengthRange` 인스턴스는 `firstValue` 라는 '변수 저장 속성' 과 `length` 라는 '상수 저장 속성' 을 가지고 있습니다. 위 예제에 있는, `length` 는 새 범위를 생성할 때 초기화되면 그 다음부터는 바꿀 수 없는데, 이는 '상수 속성' 이기 때문입니다.
+`FixedLengthRange` 의 인스턴스는 `firstValue` 라는 '변수 저장 속성' 과 `length` 라는 '상수 저장 속성' 을 가집니다. 위 예제에서, `length` 는 새로운 범위를 생성할 때 초기화되며 그 이후로는 바꿀 수가 없는데, 왜냐면 '상수 속성' 이기 때문입니다.
 
 #### Stored Properties of Constant Structure Instances (상수 구조체 인스턴스의 저장 속성)
 
-구조체의 인스턴스를 생성한 다음 이를 상수에 할당하면, 그 인스턴스에 있는 속성은 수정할 수 없으며, 이는 '변수 속성' 으로 선언된 경우라도 마찬가지입니다:
+구조체의 인스턴스를 생성한 다음 해당 인스턴스를 상수에 할당하면, 인스턴스의 속성을, '변수 속성' 으로 선언한 경우 이더라도, 그 속성을 수정할 수 없습니다:
 
 ```swift
 let rangeOfFourItems = FixedLengthRange(firstValue : 0, length: 4)
-// 이 범위는 정수 값 0, 1, 2, 3 을 나타냅니다.
+// 이 범위는 정수 값 0, 1, 2, 3 을 표현합니다.
 rangeOfFourItems.firstValue = 6
-// 이는 에러를 보고하는데, firstValue 가 변수 속성이라도 마찬가지입니다.
+// 이는, firstValue 가 변수 속성일지라도, 에러를 보고할 것입니다.
 ```
 
-이는 `rangeOfFourItems` 을 (`let` 키워드를 써서) 상수로 선언했기 때문이며, `firstValue` 가 변수 속성일지라도, `firstValue` 속성을 바꿀 수 없습니다.
+`rangeOfFourItems` 을 (`let` 키워드를 가진) 상수로 선언했기 때문에, `firstValue` 가 변수 속성일지라도, 자신의 `firstValue` 속성을 바꾸는 것이 불가능합니다.
 
-이렇게 동작하는 것은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시하면, 거기에 속한 모든 속성도 그렇게 됩니다.
+이 작동 방식은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시할 때는, 모든 속성 또한 그렇게 됩니다.
 
-이같은 방식은, _참조 타입 (reference types)_ 인, 클래스에는 적용되지 않습니다. 참조 타입의 인스턴스를 상수에 할당하는 경우, 그 인스턴스의 '변수 속성' 을 여전히 바꿀 수 있습니다.
+이같은 일은, _참조 타입 (reference types)_ 인, 클래스에서는 일어나지 않습니다. 참조 타입의 인스턴스를 상수에 할당한 경우, 해당 인스턴스의 '변수 속성' 은 여전히 바꿀 수 있습니다.
 
 #### Lazy Stored Properties (느긋한 저장 속성)
 
-_느긋한 저장 속성 (lazy stored property)_ 은 맨 처음 사용하는 순간까지 초기 값이 계산되지 않는 속성을 말합니다. 선언 앞에 `lazy` 수정자를 붙여서 느긋한 (lazy) 저장 속성임을 지시합니다.
+_느긋한 저장 속성 (lazy stored property)_ 은 처음으로 사용하게 될 때까지 초기 값을 계산하지 않는 속성입니다. '느긋한 저장 속성' 은 선언 앞에 '`lazy` 수정자 (modifier)' 를 작성하여 지시합니다.
 
-> 느긋한 속성은 반드시 항상 (`var` 키워드를 써서) 변수로 선언해야 하는데, 인스턴스 초기화가 완료된 후에도 초기 값을 가져오지 못할 수도 있기 때문입니다. 상수 속성은 초기화가 완료되기 _전에 (before)_ 반드시 항상 값을 가져야 하므로, 'lazy (느긋한)' 것으로 선언할 수 없습니다.
+> 느긋한 속성은 반드시 항상 (`var` 키워드를 가진) 변수로 선언해야 하는데, 이는 인스턴스 초기화를 완료한 후에 까지 초기 값을 가져오지 못할 수도 있기 때문입니다. 상수 속성은 초기화가 완료되기 _전에 (before)_ 반드시 항상 값을 가져야 하므로, '느긋하다 (lazy)' 고 선언할 수 없습니다.
 
-느긋한 (lazy) 속성이 속성의 초기 값이 외부 요인에 의존해서 이 값을 인스턴스 초기화가 완료된 후에도 알 수 없을 때 유용합니다. 느긋한 (lazy) 속성은 또 속성의 초기 값을 설정하는 것이 복잡하고 계산 비용이 비싸서 필요하지 않거나 또 필요하기 전까진 수행하지 않는 것이 바람직한 경우에도 유용합니다.
+'느긋한 속성' 은 속성에 대한 초기 값이 외부 요인에 의존해서 인스턴스의 초기화를 완료한 후에 까지 알 수 없을 때 유용합니다. '느긋한 속성' 은 또한 속성에 대한 초기 값이 꼭 필요할 때까진 안해도 되는 복잡하거나 계산 비용이 비싼 설정 작업을 요구할 때에도 유용합니다.
 
-아래 예제는 복잡한 클래스에서의 불필요한 초기화를 피하기 위해 느긋한 (lazy) 저장 속성을 사용합니다. 이 예제에서 정의한 `DataImporter` 와 `DataManager` 라는 두 개의 클래스는, 둘 다 일부분만 나타낸 것입니다:
+아래 예제는 복잡한 클래스의 불필요한 초기화를 피하기 위해 '느긋한 저장 속성' 을 사용합니다. 이 예제는 `DataImporter` 와 `DataManager` 라는, 둘 다 일부만 나타낸, 두 클래스를 정의합니다:
 
 ```swift
 class DataImporter {
   /*
-  DataImporter 는 외부 파일에서 자료를 불러오는 클래스 입니다.
-  이 클래스를 초기화하는데는 적지 않은 시간이 걸린다고 가정합니다.
+  DataImporter 는 외부 파일에서 자료를 불러오는 클래스입니다.
+  이 클래스는 초기화하는데 유의미한 양의 시간이 걸린다고 가정합니다.
   */
   var filename = "data.txt"
-  // DataImporter 클래스가 자료를 불러오는 기능을 제공하는 곳은 여기입니다.
+  // DataImporter 클래스는 여기서 자료를 불러오는 기능을 제공할 것입니다.
 }
 
 class DataManager {
   lazy var importer = DataImporter()
   var data = [String]()
-  // DataManager 클래스가 자료를 관리하는 기능을 제공하는 곳은 여기입니다.
+  // DataManager 클래스는 여기서 자료를 관리하는 기능을 제공할 것입니다.
 }
 
 let manager = DataManager()
 manager.data.append("Some data")
 manager.data.append("Some more data")
-// importer 속성을 위한 DataImporter 인스턴스는 아직 생성되지 않았습니다.
+// importer 속성을 위한 DataImporter 인스턴스는 아직 생성하지 않습니다.
 ```
 
 `DataManager` 클래스는 `data` 라는 저장 속성을 가지는데, `String` 값을 담는 새로운, 빈 배열로 초기화합니다. 비록 나머지 기능을 나타내진 않았지만, `DataManager` 클래스의 목적은 이 `String` 배열 자료에 대한 접근 기능을 제공하고 이를 관리하는 것입니다.
