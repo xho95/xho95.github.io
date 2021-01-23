@@ -88,31 +88,31 @@ manager.data.append("Some more data")
 // importer 속성을 위한 DataImporter 인스턴스는 아직 생성하지 않습니다.
 ```
 
-`DataManager` 클래스는 `data` 라는 저장 속성을 가지는데, `String` 값을 담는 새로운, 빈 배열로 초기화합니다. 비록 나머지 기능을 나타내진 않았지만, `DataManager` 클래스의 목적은 이 `String` 배열 자료에 대한 접근 기능을 제공하고 이를 관리하는 것입니다.
+`DataManager` 클래스는, 새로운, 빈 `String` 값 배열로 초기화되는, `data` 라는 저장 속성을 가집니다. 나머지 기능을 보이진 않았지만, 이 `DataManager` 클래스의 목적은 이 `String` 자료인 이 배열에 대한 접근을 제공하고 관리하는 것입니다.
 
-`DataManager` 클래스의 기능 중 하나는 파일에서 자료를 가져오는 것입니다. 이 기능은 `DataImporter` 클래스에서 제공하는데, 이를 초기화하는 데는 적지 않은 시간이 걸린다고 가정합니다. 이렇게 가정한 것은 `DataImporter` 인스턴스를 초기화하려면 `DataImporter` 인스턴스가 파일을 열어서 내용을 읽은 다음 메모리로 옮겨야 할 것이기 때문입니다.
+`DataManager` 클래스의 일부 기능은 파일에서 자료를 불러오는 능력입니다. 이 기능은 `DataImporter` 클래스에서 제공하는데, 이를 초기화하는데 유의미한 양의 시간이 걸린다고 가정합니다. 이 (가정) 은 `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열고 그 내용을 메모리로 읽어올 필요가 있을 수 있기 때문입니다.
 
-`DataManager` 인스턴스가 매번 파일에서 가져온 자료만 관리하는 건 아닐 것이므로, `DataManager` 를 생성할 때 새 `DataImporter` 인스턴스를 생성할 필요는 없습니다. 그 대신, `DataImporter` 인스턴스가 맨 처음 사용된다면 그 때 생성하는 것이 더 합리적입니다.
+`DataManager` 인스턴스는 파일에서 불러오지 않은 자료도 관리하는 것이 가능하므로, `DataManager` 자체를 생성할 때 새로운 `DataImporter` 인스턴스를 생성할 필요는 없습니다. 그 대신, `DataImporter` 인스턴스를 맨 처음 사용할 때, 그 때 생성하는 것이 더 합리적입니다.
 
-`importer` 속성을 위한 `DataImporter` 인스턴스는, `lazy` 수정자로 표시했기 때문에, `filename` 속성을 조회할 때와 같이, `importer` 속성을 맨 처음 접근할 때 생성됩니다:
+`lazy` 수정자로 표시했기 때문에, `importer` 속성을 위한 `DataImporter` 인스턴스는, `filename` 속성을 조회할 때 같이, `importer` 속성을 맨 처음 접근할 때에만 생성됩니다:
 
 ```swift
 print(manager.importer.filename)
-// importer 속성을 위한 DataImporter 인스턴스는 이제 막 생성됐습니다.
-// "data.txt" 를 출력합니다.
+// importer 속성을 위한 DataImporter 인스턴스가 이제 막 생성 되었습니다.
+// "data.txt" 를 인쇄합니다.
 ```
 
-> `lazy` 수정자로 표시된 속성에 다중 쓰레드로 동시에 접근할 때 이 속성이 아직 초기화되지 않은 상태라면, 이 속성은 한 번만 초기화될 것이라고 보장할 수 없습니다.
+> `lazy` 수정자로 표시한 속성에서 이 속성이 아직 초기화되지 않았는데 다중 쓰레드로 동시에 접근하는 경우, 속성이 한 번만 초기화될 것이라고 보장할 수 없습니다.
 
-#### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)[^instance-variables]
+#### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)
 
-오브젝티브-C 언어에 대한 경험이 있다면, 클래스 인스턴스에서 값과 참조를 저장하는 데는 _두 가지 (two)_ 방법이 있다는 것을 알고 있을 것입니다. 속성 외에도, '인스턴스 변수 (instance variables)' 를 속성에 저장된 값의 '백업 저장소 (backing store)' 로 사용할 수 있습니다.
+오브젝티브-C 에 대한 경험이 있다면, 클래스 인스턴스에서 값과 참조를 저장하기 위한 _두 가지 (two)_ 방법을 제공한다는 것을 알고 있을 것입니다. '속성' 에 더하여, 속성에 저장된 값의 '백업 저장 공간 (backing store)' 으로써 '인스턴스 변수 (instance variables)' 를 사용할 수 있습니다.[^instance-variables]
 
-스위프트는 이러한 개념을 '단일한 속성 선언' 으로 통합했습니다. 스위프트의 '속성' 에는 연관되어 있는 '인스턴스 변수' 가 없으며, 속성의 '백업 저장소' 에 직접 접근할 일이 없습니다. 이런 접근법은 서로 다른 곳에서 값에 접근할 때의 혼동을 없애주고, 속성 선언을 단일하고 명확한 문장으로 할 수 있게 해 줍니다. 속성에 대한 모든-이름, 타입, 그리고 메모리 관리 방식을 포함한-정보들은 단일한 위치인 '타입 정의 부분' 에서 정의합니다.
+스위프트는 이 개념들을 '단일 속성 선언' 으로 통일했습니다. 스위프트의 '속성' 은 연관된 '인스턴스 변수' 를 가지지 않으며, 속성에 대한 '백업 저장 공간' 을 직접 접근하지 않습니다. 이런 접근 방식은 서로 다른 상황에서 값에 접근하는 방법에 대한 혼란을 피하도록 하며 속성의 선언을 단일하고, 확실한 구문으로 단순화하게 합니다. 속성에 대한-이름, 타입, 그리고 메모리 관리 성질을 포함한-모든 정보들은 단일한 위치인 타입의 '정의 (definition)' 부분에서 정의합니다.
 
 ### Computed Properties (계산 속성)
 
-클래스, 구조체, 그리고 열거체는, '저장 속성' 외에도,  _계산 속성 (computed properties)_ 을 정의할 수 있는데, 이는 실제로는 값을 저장하지 않습니다. 대신에, 제공하는 '획득자 (getter)' 와 '선택적인 설정자 (optional setter)'[^optional-setter] 를 써서 간접적으로 다른 속성의 값을 가져오거나 설정합니다.
+'저장 속성' 에 더하여, 클래스, 구조체, 그리고 열거체는, 실제로는 값을 저장하지 않는, _계산 속성 (computed properties)_ 을 정의할 수 있습니다. 그 대신, 이는 다른 속성과 값을 간접적으로 가져오고 설정하기 위한 '획득자 (getter)' 와 선택적인 '설정자 (setter)'[^optional-setter] 를 제공합니다.
 
 ```swift
 struct Point {
@@ -676,7 +676,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^instance-variables]: 이부분은 오브젝티브-C 언어와 스위프트 언어의 차이점에 대한 설명이므로, 오브젝티브-C 언어에 대해 잘 모른다면 넘어가도 됩니다.
 
-[^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 'optional setter' 라는 용어를 사용합니다.
+[^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 선택 사항이라는 의미에서 'optional setter' 라고 합니다.
 
 [^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미하며, 모든 면이 직사각형으로 이루어진 기하학적 도형을 의미합니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조?)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 를 참고하기 바랍니다.
 
