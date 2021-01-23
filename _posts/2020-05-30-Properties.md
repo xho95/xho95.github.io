@@ -112,7 +112,7 @@ print(manager.importer.filename)
 
 ### Computed Properties (계산 속성)
 
-클래스, 구조체, 그리고 열거체는, '저장 속성' 외에도,  _계산 속성 (computed properties)_ 을 정의할 수 있는데, 이는 실제로는 값을 저장하지 않습니다. 대신에, 제공하는 '획득자 (getter)' 와 '선택적인 설정자 (optional setter)'[^optional-setter] 를 써서 간접적으로 다른 속성의 값을 가져오거나 설정합니다.
+'저장 속성' 에 더하여, 클래스, 구조체, 그리고 열거체는, 실제로는 값을 저장하지 않는, _계산 속성 (computed properties)_ 을 정의할 수 있습니다. 그 대신, 이는 다른 속성과 값을 간접적으로 가져오고 설정하기 위한 '획득자 (getter)' 와 선택적인 '설정자 (setter)'[^optional-setter] 를 제공합니다.
 
 ```swift
 struct Point {
@@ -676,7 +676,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^instance-variables]: 이부분은 오브젝티브-C 언어와 스위프트 언어의 차이점에 대한 설명이므로, 오브젝티브-C 언어에 대해 잘 모른다면 넘어가도 됩니다.
 
-[^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 'optional setter' 라는 용어를 사용합니다.
+[^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 선택 사항이라는 의미에서 'optional setter' 라고 합니다.
 
 [^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미하며, 모든 면이 직사각형으로 이루어진 기하학적 도형을 의미합니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조?)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 를 참고하기 바랍니다.
 
