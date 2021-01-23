@@ -88,21 +88,21 @@ manager.data.append("Some more data")
 // importer 속성을 위한 DataImporter 인스턴스는 아직 생성하지 않습니다.
 ```
 
-`DataManager` 클래스는 `data` 라는 저장 속성을 가지는데, `String` 값을 담는 새로운, 빈 배열로 초기화합니다. 비록 나머지 기능을 나타내진 않았지만, `DataManager` 클래스의 목적은 이 `String` 배열 자료에 대한 접근 기능을 제공하고 이를 관리하는 것입니다.
+`DataManager` 클래스는, 새로운, 빈 `String` 값 배열로 초기화되는, `data` 라는 저장 속성을 가집니다. 나머지 기능을 보이진 않았지만, 이 `DataManager` 클래스의 목적은 이 `String` 자료인 이 배열에 대한 접근을 제공하고 관리하는 것입니다.
 
-`DataManager` 클래스의 기능 중 하나는 파일에서 자료를 가져오는 것입니다. 이 기능은 `DataImporter` 클래스에서 제공하는데, 이를 초기화하는 데는 적지 않은 시간이 걸린다고 가정합니다. 이렇게 가정한 것은 `DataImporter` 인스턴스를 초기화하려면 `DataImporter` 인스턴스가 파일을 열어서 내용을 읽은 다음 메모리로 옮겨야 할 것이기 때문입니다.
+`DataManager` 클래스의 일부 기능은 파일에서 자료를 불러오는 능력입니다. 이 기능은 `DataImporter` 클래스에서 제공하는데, 이를 초기화하는데 유의미한 양의 시간이 걸린다고 가정합니다. 이 (가정) 은 `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열고 그 내용을 메모리로 읽어올 필요가 있을 수 있기 때문입니다.
 
-`DataManager` 인스턴스가 매번 파일에서 가져온 자료만 관리하는 건 아닐 것이므로, `DataManager` 를 생성할 때 새 `DataImporter` 인스턴스를 생성할 필요는 없습니다. 그 대신, `DataImporter` 인스턴스가 맨 처음 사용된다면 그 때 생성하는 것이 더 합리적입니다.
+`DataManager` 인스턴스는 파일에서 불러오지 않은 자료도 관리하는 것이 가능하므로, `DataManager` 자체를 생성할 때 새로운 `DataImporter` 인스턴스를 생성할 필요는 없습니다. 그 대신, `DataImporter` 인스턴스를 맨 처음 사용할 때, 그 때 생성하는 것이 더 합리적입니다.
 
-`importer` 속성을 위한 `DataImporter` 인스턴스는, `lazy` 수정자로 표시했기 때문에, `filename` 속성을 조회할 때와 같이, `importer` 속성을 맨 처음 접근할 때 생성됩니다:
+`lazy` 수정자로 표시했기 때문에, `importer` 속성을 위한 `DataImporter` 인스턴스는, `filename` 속성을 조회할 때 같이, `importer` 속성을 맨 처음 접근할 때에만 생성됩니다:
 
 ```swift
 print(manager.importer.filename)
-// importer 속성을 위한 DataImporter 인스턴스는 이제 막 생성됐습니다.
-// "data.txt" 를 출력합니다.
+// importer 속성을 위한 DataImporter 인스턴스가 이제 막 생성 되었습니다.
+// "data.txt" 를 인쇄합니다.
 ```
 
-> `lazy` 수정자로 표시된 속성에 다중 쓰레드로 동시에 접근할 때 이 속성이 아직 초기화되지 않은 상태라면, 이 속성은 한 번만 초기화될 것이라고 보장할 수 없습니다.
+> `lazy` 수정자로 표시한 속성에서 이 속성이 아직 초기화되지 않았는데 다중 쓰레드로 동시에 접근하는 경우, 속성이 한 번만 초기화될 것이라고 보장할 수 없습니다.
 
 #### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)[^instance-variables]
 
