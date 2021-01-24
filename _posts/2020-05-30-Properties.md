@@ -161,7 +161,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 #### Shorthand Setter Declaration (설정자 선언의 줄임 표현)
 
-계산 속성의 '설정자 (setter)' 가 설정할 새 값에 대한 이름을 정의하지 않을 경우, 기본 제공되는 이름인 `newValue` 를 사용합니다. 다음은 이 '약칭 표현법 (shorthand notation)' 의 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
+계산 속성의 설정자가 설정할 새 값에 대한 이름을 정의하지 않은 경우, '기본 이름' 인 `newValue` 를 사용합니다. 다음은 이런 '줄임 표기법 (shorthand notation)' 의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
 
 ```swift
 struct AlternativeRect {
@@ -183,7 +183,7 @@ struct AlternativeRect {
 
 #### Shorthand Getter Declaration (획득자 선언의 줄임 표현)
 
-'획득자 (getter)' 의 전체 본문이 '단일 표현식 (single expression)' 으로 되어 있는 경우, '획득자' 는 암시적으로 그 표현식을 반환합니다. 다음은 이 '약칭 표현법' 과 '설정자' 에 대한 '약칭 표현법' 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
+획득자의 전체 본문이 '단일 표현식 (single expression)' 인 경우, 획득자는 해당 표현식을 암시적으로 반환합니다. 다음은 이런 '줄임 표기법' 과 설정자에 대한 '줄임 표기법' 의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
 
 ```swift
 struct CompactRect {
@@ -201,7 +201,7 @@ struct CompactRect {
 }
 ```
 
-'획득자' 에서 `return` 을 생략하는 것은 함수에서 `return` 을 생략하는 것과 같은 규칙을 따르는 것으로, 이는 [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명했었습니다.
+획득자에서 `return` 을 생략하는 것은, [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명한 것처럼, 함수에서 `return` 을 생략하는 것과 같은 규칙을 따릅니다.
 
 #### Read-Only Computed Properties (읽기-전용 계산 속성)
 
