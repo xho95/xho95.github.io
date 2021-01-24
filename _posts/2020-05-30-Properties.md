@@ -205,11 +205,11 @@ struct CompactRect {
 
 #### Read-Only Computed Properties (읽기-전용 계산 속성)
 
-획득자는 있지만 설정자는 없는 계산 속성을 _읽기-전용 계산 속성 (read-only computed property)_ 라고 합니다. '읽기-전용 계산 속성' 은 항상 값을 반환하고, '점 구문 표현' 으로 접근할 수 있지만, 다른 값을 설정할 수는 없습니다.
+'획득자' 는 가지지만 '설정자' 는 가지지 않은 '계산 속성' 을 _읽기-전용 계산 속성 (read-only computed property)_ 이라고 합니다. '읽기-전용 계산 속성' 은 값을 항상 반환하며, '점 구문 표현' 을 통해 접근할 수 있지만, 다른 값을 설정할 수는 없습니다.
 
-> 계산 속성은-읽기 전용 계산 속성도 포함하여- 반드시 `var` 키워드를 써서 변수 속성으로 선언해야 하는데, 이는 값이 고정된 것이 아니기 때문입니다. `let` 키워드는 상수 속성에만 사용하며, 인스턴스 초기화에서 한 번 설정한 값은 바꿀 수 없음을 지시하는 것입니다.
+> 읽기-전용 계산 속성을 포함한-계산 속성은 반드시 `var` 키워드를 가진 변수 속성으로 선언해야 하는데, 이 값은 고정된 것이 아니기 때문입니다. `let` 키워드는, 인스턴스 초기화에서 한 번 설정한 값은 바꿀 수 없음을 지시하기 위해, 상수 속성에서만 사용합니다.
 
-읽기-전용 계산 속성의 선언은 `get` 키워드와 중괄호를 제거하여 간소화 할 수 있습니다:
+읽기-전용 계산 속성은 `get` 키워드와 중괄호를 제거하여 선언을 단순화할 수 있습니다[^simplify]:
 
 ```swift
 struct Cuboid {
@@ -220,10 +220,10 @@ struct Cuboid {
 }
 let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
-// "the volume of fourByFiveByTwo is 40.0" 를 출력합니다.
+// "the volume of fourByFiveByTwo is 40.0" 를 인쇄합니다.
 ```
 
-이 예제는 `Cuboid` 라는 새 구조체를 정의하여, `width`, `height`, 그리고 `depth` 속성을 가진 3D 직사각형 상자를 표현합니다. 이 구조체는 `volume` 이라는 읽기-전용 계산 속성도 가지고 있는데, 이는 '직육면체 (cuboid)'[^cuboid] 의 현재 부피를 계산하고 반환합니다. `volume` 은 '설정 가능하다는 (settable)' 것은 말이 안되는데, 왜냐면 특정한 `volume` 값에 대한 `width`, `height`, 그리고 `depth` 값이 어떤 것인지 모호하기 때문입니다. 그렇지만, `Cuboid` 가 읽기-전용 계산 속성을 제공하여 현재 계산된 부피를 외부 사용자도 알 수 있게 하는 것은 유용합니다.
+이 예제는, `width`, `height`, 그리고 `depth` 속성을 가진 '3차원 직사각형 상자' 를 표현하는, `Cuboid` 라는 새로운 구조체를 정의합니다.[^cuboid] 이 구조체는, '직육면체 (cuboid)' 의 현재 부피를 계산하고 반환하는, `volume` 이라는 읽기-전용 계산 속성도 가집니다. 특정 `volume` 값을 만들기 위해 `width`, `height`, 그리고 `depth` 값이 어떻게 돼야 할지 모호하기 때문에, `volume` 이 '설정 가능 (settable)' 하다는 것은 이치에 맞지 않습니다. 그럼에도 불구하고, 외부 사용자가 현재 계산된 부피를 알도록 하기 위해 `Cuboid` 가 읽기-전용 계산 속성을 제공하는 것이 유용합니다.
 
 ### Property Observers (속성 관찰자)
 
@@ -678,7 +678,9 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^optional-setter]: 원문은 'optional setter' 라고 되어 있는데 여기서의 'optional' 은 스위프트의 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 아닐 수도 있기 때문에 '선택 사항' 이라는 의미에서 'optional setter' 라고 한 것입니다.
 
-[^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미하며, 모든 면이 직사각형으로 이루어진 기하학적 도형을 의미합니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조?)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 를 참고하기 바랍니다.
+[^simplify]: 이 예제의 '계산 속성' 은 '단일 표현식' 이기도 하기 때문에 `return` 키워드도 생략 가능합니다. 앞서 [Shorthand Getter Declaration (획득자 선언의 줄임 표현)](#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 '획득자' 가 '단일 표현식' 이면 `return` 을 생략할 수 있다고 했는데, 이는 전체 '계산 속성' 에도 그대로 적용됩니다.
+
+[^cuboid]: 사실 'cuboid' 자체가 수학 용어로 '직육면체' 를 의미하는 것으로, 직육면체는 모든 면이 직사각형으로 이루어진 기하학적 도형입니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 참고하기 바랍니다.
 
 [^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
 
