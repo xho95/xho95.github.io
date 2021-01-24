@@ -112,7 +112,7 @@ print(manager.importer.filename)
 
 ### Computed Properties (계산 속성)
 
-'저장 속성' 에 더하여, 클래스, 구조체, 그리고 열거체는, 실제로는 값을 저장하지 않는, _계산 속성 (computed properties)_ 을 정의할 수 있습니다. 그 대신, 이는 다른 속성과 값을 간접적으로 가져오고 설정하기 위한 '획득자 (getter)' 와 선택적인 '설정자 (setter)'[^optional-setter] 를 제공합니다.
+'저장 속성' 에 더하여, 클래스, 구조체, 그리고 열거체는, 실제로는 값을 저장하지 않는, _계산 속성 (computed properties)_ 을 정의할 수 있습니다. 그 대신, 이는 다른 속성과 값을 간접적으로 가져오고 설정하기 위한 '획득자 (getter)' 와 선택 사항인 '설정자 (setter)'[^optional-setter] 를 제공합니다.
 
 ```swift
 struct Point {
@@ -143,25 +143,25 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 // "square.origin is now at (10.0, 10.0)" 를 출력합니다.
 ```
 
-이 예제는 기하학적 도형 작업을 위해 세 가지 구조체를 정의합니다.
+이 예제는 기하학적 도형과 작업하기 위한 세 개의 구조체를 정의합니다:
 
-* `Point` 는 한 점에 대한 x, y 좌표를 은닉합니다.
-* `Size` 는 `width` 와 `height` 를 은닉합니다.
-* `Rect` 는 '원점 (origin point)' 과 '크기 (size)' 를 사용하여 사각형을 정의합니다.
+* 한 점의 x- 와 y-좌표를 은닉하는 `Point`
+* `width` 와 `height` 를 은닉하는 `Size`
+* '원점' 과 '크기' 로 직사각형을 정의하는 `Rect`
 
-`Rect` 구조체는 `center` 라는 '계산 속성' 도 제공합니다. `Rect` 의 현재 중심 위치는 `origin` 과 `size` 로부터 항상 결정할 수 있으므로, 중심 점을 `Point` 값으로 저장할 필요가 없습니다. 대신, `Rect` 는 `center` 라는 '계산 변수' 에 대한 사용자 정의 '획득자 (getter)' 와 '설정자 (setter)' 를 정의하여, 사각형의 `center` 를 마치 실제 저장 속성인 것처럼 사용할 수 있게 해줍니다.
+`Rect` 구조체는 `center` 라는 '계산 속성' 도 제공합니다. `Rect` 의 현재 중심 위치는 항상 `origin` 과 `size` 로 결정할 수 있으므로, 중심점을 명시적인 `Point` 값으로 저장할 필요가 없습니다. 그 대신, `Rect` 는, 직사각형의 `center` 가 마치 실제 저장 속성인 것처럼 작업할 수 있게 하기 위해, `center` 라는 '계산 변수' 에 대한 사용자 정의 '획득자' 와 '설정자' 를 정의합니다.
 
-위의 예제에서는 `square` 라는 새로운 `Rect` 변수를 생성합니다. `square` 변수의 원점은 `(0, 0)`, 폭과 높이는 `10` 으로 초기화 됩니다. 이 '정사각형 (square)' 은 아래 그림에서 파란색 사각형으로 표현됩니다.
+위 예제에서는 `square` 라는 새로운 `Rect` 변수를 생성합니다. `square` 변수는 원점이 `(0, 0)` 이고, 폭과 높이는 `10` 인 것으로 초기화됩니다. 이 '정사각형'[^square] 은 아래 그림에 있는 파란색 정사각형을 나타냅니다.
 
-`square` 변수의 `center` 속성은 이제 '점 구문 표현 (`square.center`)' 을 통해 접근하게 되는데, 이는 `center` 의 '획득자 (getter)' 를 호출하여, 현재 속성의 값을 가져옵니다. 이 '획득자 (getter)' 는, 존재하고 있는 값을 반환하는게 아니고, 정사각형의 중심을 나타내는 새 `Point` 를 실제로 계산한 다음 반환합니다. 위에서 봤듯이, '획득자' 는 중심점이 `(5, 5)` 라고 정확하게 반환합니다.
+그런 다음 `square` 변수의 `center` 속성은 '점 구문 표현 (`square.center`)' 을 통해 접근하는데, 이는 현재 속성 값을 가져오기 위해, `center` 에 대한 '획득자' 를 호출하도록 합니다. 기존 값을 반환하는 대신, '획득자' 는 실제로 정사각형의 중심을 표현하는 새로운 `Point` 를 계산한 다음 반환합니다. 위에서 볼 수 있는 것처럼, '획득자' 는 중심점이 `(5, 5)` 라고 올바르게 반환합니다.
 
-`center` 속성은 이제 새 값인 `(15, 15)` 로 설정되며, 이는 정사각형을 오른쪽 위로 이동하게 되는데, 이 새 위치는 아래 그림의 오렌지 정사각형으로 나타냈습니다. `center` 속성을 설정하면 `center` 의 '설정자 (setter)' 를 호출하며, 이는 `origin` 저장 속성의 `x` 와 `y` 값을 수정하여, 정사각형을 새 위치로 이동합니다.
+그런 다음 `center` 속성은 `(15, 15)` 라는 새로운 값으로 설정되는데, 이는 정사각형을, 아래 그림의 오렌지 정사각형으로 나타낸 새로운 위치인, 오른쪽 위로 이동합니다. `center` 속성을 설정하면 `center` 에 대한 '설정자' 를 호출하는데, 이는 저장 속성인 `origin` 의 `x` 와 `y` 값을 수정하며, 정사각형을 새로운 위치로 이동합니다.
 
 ![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
 
 #### Shorthand Setter Declaration (설정자 선언의 줄임 표현)
 
-계산 속성의 '설정자 (setter)' 가 설정할 새 값에 대한 이름을 정의하지 않을 경우, 기본 제공되는 이름인 `newValue` 를 사용합니다. 다음은 이 '약칭 표현법 (shorthand notation)' 의 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
+계산 속성의 설정자가 설정할 새 값에 대한 이름을 정의하지 않은 경우, '기본 이름' 인 `newValue` 를 사용합니다. 다음은 이런 '줄임 표기법 (shorthand notation)' 의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
 
 ```swift
 struct AlternativeRect {
@@ -183,7 +183,7 @@ struct AlternativeRect {
 
 #### Shorthand Getter Declaration (획득자 선언의 줄임 표현)
 
-'획득자 (getter)' 의 전체 본문이 '단일 표현식 (single expression)' 으로 되어 있는 경우, '획득자' 는 암시적으로 그 표현식을 반환합니다. 다음은 이 '약칭 표현법' 과 '설정자' 에 대한 '약칭 표현법' 이점을 활용하여 `Rect` 구조체를 다른 방법으로 만들어 본 것입니다:
+획득자의 전체 본문이 '단일 표현식 (single expression)' 인 경우, 획득자는 해당 표현식을 암시적으로 반환합니다. 다음은 이런 '줄임 표기법' 과 설정자에 대한 '줄임 표기법' 의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
 
 ```swift
 struct CompactRect {
@@ -201,7 +201,7 @@ struct CompactRect {
 }
 ```
 
-'획득자' 에서 `return` 을 생략하는 것은 함수에서 `return` 을 생략하는 것과 같은 규칙을 따르는 것으로, 이는 [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명했었습니다.
+획득자에서 `return` 을 생략하는 것은, [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명한 것처럼, 함수에서 `return` 을 생략하는 것과 같은 규칙을 따릅니다.
 
 #### Read-Only Computed Properties (읽기-전용 계산 속성)
 
@@ -674,9 +674,9 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^instance-variables]: 이부분은 오브젝티브-C 언어와 스위프트 언어의 차이점에 대한 설명이므로, 오브젝티브-C 언어에 대해 잘 모른다면 넘어가도 됩니다.
+[^instance-variables]: 이 부분은 오브젝티브-C 와 스위프트의 차이점에 대한 설명이므로, 오브젝티브-C 에 익숙하지 않다면 넘어가도 상관없습니다.
 
-[^optional-setter]: 여기서의 'optional' 은 스위프트에 있는 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 안가질 수도 있기 때문에 선택 사항이라는 의미에서 'optional setter' 라고 합니다.
+[^optional-setter]: 원문은 'optional setter' 라고 되어 있는데 여기서의 'optional' 은 스위프트의 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 아닐 수도 있기 때문에 '선택 사항' 이라는 의미에서 'optional setter' 라고 한 것입니다.
 
 [^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미하며, 모든 면이 직사각형으로 이루어진 기하학적 도형을 의미합니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조?)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 를 참고하기 바랍니다.
 
