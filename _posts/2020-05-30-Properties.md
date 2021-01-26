@@ -246,11 +246,11 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 이와 비슷하게, `didSet` 관찰자를 구현한 경우, 예전 속성 값을 담고 있는 '상수 매개 변수' 가 전달됩니다. 매개 변수의 이름을 지을 수도 있고 '기본 매개 변수 이름' 인 `oldValue` 를 사용할 수도 있습니다. 자신의 `didSet` 관찰자에서 속성에 값을 할당한 경우, 새로 할당한 값이 방금 설정했던 것을 대체합니다.
 
-> 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스의 초기자가 호출된 후, 하위 클래스의 초기자에서 속성을 설정할 때 호출됩니다. 이는, 상위 클래스의 초기자가 호출되기 전, 클래스가 자신의 속성을 설정하는 동안에는 호출되지는 않습니다.[^obervers-and-superclass]
+> 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스의 초기자를 호출한 다음, 하위 클래스의 초기자에서 속성을 설정할 때 호출됩니다. 이들은, 상위 클래스의 초기자를 호출하기 전, 클래스가 자신의 속성을 설정하는 동안에는 호출되지 않습니다.[^obervers-and-superclass]
 >
 > '초기자의 위임 (initializer delegation)' 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자의-위임) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자의-위임) 을 참고하기 바랍니다.
 
-다음은 `willSet` 과 `didSet` 의 실제 사례에 대한 예제입니다. 아래 예제는, 한 사람이 걷는 동안의 총 걸음 수를 추적하는, `StepCounter` 라는 새로운 클래스를 정의합니다. 이 클래스는 한 사람의 운동 습관을 추적하기 위해 '만보계 (pedometer)' 나 다른 '걸음 측정기 (step counter)' 에서 온 입력 자료를 사용할 수도 있습니다.
+다음은 `willSet` 과 `didSet` 에 대한 실제 사례입니다. 아래 예제는 `StepCounter` 라는 새로운 클래스를 정의하는데, 이는 사람이 걷는 동안의 총 걸음 수를 추적합니다. 이 클래스는 사람의 운동 습관을 추적하기 위해 '만보계 (pedometer)' 또는 다른 '걸음 측정기 (step counter)' 의 입력 자료를 사용할 수도 있을 것입니다.
 
 ```swift
 class StepCounter {
@@ -277,15 +277,15 @@ stepCounter.totalSteps = 896
 // Added 536 steps
 ```
 
-`StepCounter` 클래스는 `Int` 타입인 `totalSteps` 라는 속성을 선언합니다. 이는 `willSet` 과 `didSet` 관찰자를 가진 '저장 속성' 입니다.
+`StepCounter` 클래스는 `Int` 타입의 `totalSteps` 속성을 선언합니다. 이는 `willSet` 과 `didSet` 관찰자를 가진 저장 속성입니다.
 
-`totalSteps` 의 `willSet` 과 `didSet` 관찰자는 속성에 새 값을 할당할 때마다 호출됩니다. 이는 새 값이 현재 값과 똑같더라도 그렇습니다.
+`totalSteps` 에 대한 `willSet` 과 `didSet` 관찰자는 속성에 새로운 값을 할당할 때마다 호출됩니다. 이는 새로운 값이 현재 값과 똑같은 경우에도 그렇습니다.
 
-이 예제의 `willSet` 관찰자는 다가올 새 값에 `newTotalSteps` 라는 '사용자 정의 매개 변수 이름' 을 사용합니다. 이 예제에서는, 이제 막 설정하려는 값을 단순히 출력합니다.
+이 예제의 `willSet` 관찰자는 다가올 새 값에 `newTotalSteps` 라는 '사용자 정의 매개 변수 이름' 을 사용합니다. 이 예제는, 이제 막 설정할 값을 단순히 인쇄합니다.
 
-`didSet` 관찰자는 `totalSteps` 의 값이 갱신된 후 호출됩니다. 이는 `totalSteps` 의 새 값을 예전 값과 비교합니다. 만약 '총 걸음 수' 가 증가했으면, 새로 걸은 걸음 수가 얼마인지를 나타내기 위해 메시지를 인쇄합니다. `didSet` 관찰자는 예전 값을 위해 '사용자 정의 매개 변수 이름' 을 제공하지 않으며, 그 대신 `oldValue` 라는 '기본 설정 이름' 을 사용합니다.
+`didSet` 관찰자는 `totalSteps` 의 값을 갱신한 다음 호출됩니다. 이는 `totalSteps` 의 새 값을 예전 값과 비교합니다. '총 걸음 수' 가 증가한 경우, 새로운 걸음 수가 얼마인지를 표시하기 위해 메시지를 인쇄합니다. `didSet` 관찰자는 예전 값에 대한 '사용자 정의 매개 변수 이름' 을 제공하지 않으며, 그 대신 `oldValue` 라는 기본 이름을 사용합니다.
 
-> 관찰자를 가진 속성을 함수에 '입-출력 매개 변수 (in-out parameter)' 로 전달하면, `willSet` 과 `didSet` 관찰자가 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사-입력 복사-출력 (copy-in copy-out)' 메모리 모델 방식 때문입니다: 이는 함수 끝에서 값이 항상 속성으로 다시 작성되는 것입니다. '입-출력 매개 변수' 의 작동 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
+> 관찰자를 가진 속성을 함수에 '입-출력 매개 변수 (in-out parameter)' 로써 전달하는 경우, `willSet` 과 `didSet` 관찰자는 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사-입력 복사-출력 (copy-in copy-out)' 메모리 모델 방식 때문입니다: 이는 값이 항상 함수 끝에서 속성으로 되돌려서 작성되는 방식입니다. '입-출력 매개 변수' 의 작동 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
 
 ### Property Wrappers (속성 포장)
 
@@ -684,6 +684,6 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
 
-[^property-wrapper]: 굳이 복잡하게 '속성 포장 (property wrapper)' 를 왜 사용하는지 의문이 들 수 있습니다. 사실, 스위프트에서 '속성 포장' 을 사용하는 이유는 스위프트 언어 외부에서 지원하는 기능을 사용하기 위함입니다. iOS 라면 쓰레드 관리는 [GCD (Grand_Central_Dispatch)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 를 이용하고, DB 는 [SQLite](https://www.sqlite.org/index.html) 를 이용할 수 있을 것입니다. 이들은 스위프트 외부에 존재하므로 '속성 포장 (property wrapper)' 을 통해서 관리 기능을 일종의 '위임 (delegation)' 하게 한다고 볼 수 있습니다.
+[^property-wrapper]: 굳이 복잡하게 '속성 포장 (property wrapper)' 를 왜 사용하는지 의문이 들 수 있습니다. 사실, 스위프트에서 '속성 포장' 을 사용하는 이유는 스위프트 언어 외부에서 지원하는 기능을 사용하기 위함입니다. iOS 라면 쓰레드 관리는 [GCD (Grand Central Dispatch)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 를 이용하고, DB 는 [SQLite](https://www.sqlite.org/index.html) 를 이용할 수 있을 것입니다. 이들은 스위프트 외부에 존재하므로 '속성 포장 (property wrapper)' 을 통해서 관리 기능을 일종의 '위임 (delegation)' 하게 한다고 볼 수 있습니다.
 
-[^obervers-and-superclass]: 이 말은 '속성 관찰자' 가 자신의 '초기자' 에서 값을 설정할 때는 호출되지 않는다는 것을 의미합니다. 초기자의 초기화 과정은 두 단계로 이루어 지는데, 먼저 자신의 속성들을 초기화하고 상위 클래스의 초기자를 호출한 다음, 나머지 부분에서 상위 클래스 속성을 바꾸는 과정을 다시 거칩니다. 이렇게 상위 클래스의 속성을 바꾸는 과정에서 상위 클래스의 '속성 관찰자' 가 호출되는 것입니다.
+[^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 부분을 참고하기 바랍니다.
