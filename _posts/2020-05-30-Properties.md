@@ -309,7 +309,9 @@ struct TwelveOrLess {
 
 > 위 예제에서 `number` 선언은 `private` 인 변수라고 표시하는데, 이는 `number` 가 `TwelveOrLess` 의 구현부에서만 사용됨을 보장합니다. 그 밖의 어떤 다른 곳에서 작성된 코드도, `number` 를 직접적으로 사용할 수 없으며, `wrappedValue` 에 대한 획득자와 설정자를 사용하여 값에 접근합니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 를 참고하기 바랍니다.
 
-'속성 (property)' 에 '포장 (wrapper)' 을 적용하려면 속성 앞에 '특성 (attribute)' 처럼 포장의 이름을 작성하면 됩니다. 다음은 작은 직사각형을 저장하는 구조체로, `TwelveOrLess` '속성 포장 (property wrapper)' 에서 구현한 것과 같은 (다소 임의의) "작은 (small)" 에 대한 정의를 사용합니다:
+'포장 (wrapper)' 은 속성 앞에 '포장' 의 이름을 '특성 (attribute)' 으로 작성함으로써 속성에 적용합니다. 다음은 작은 직사각형을 저장하는 구조체로,
+
+'속성 (property)' 에 '포장 (wrapper)' 을 적용하려면 속성 앞에 '특성 (attribute)' 처럼 포장의 이름을 작성하면 됩니다. 다음은, `TwelveOrLess` '속성 포장' 에서 구현한 (다소 임의적인) "작은 (small)" 과 같은 정의를 사용하여, 작은 직사각형을 저장하는 구조체입니다:
 
 ```swift
 struct SmallRectangle {
@@ -319,20 +321,20 @@ struct SmallRectangle {
 
 var rectangle = SmallRectangle()
 print(rectangle.height)
-// "0" 을 출력합니다.
+// "0" 을 인쇄합니다.
 
 rectangle.height = 10
 print(rectangle.height)
-// "10" 을 출력합니다.
+// "10" 을 인쇄합니다.
 
 rectangle.height = 24
 print(rectangle.height)
-// "12" 를 출력합니다.
+// "12" 를 인쇄합니다.
 ```
 
-`height` 와 `width` 속성은 `TwelveOrLess` 정의에서 초기 값을 가져오는데, 이는 `TwelveOrLess.number` 를 0 으로 설정합니다. 10 을 `rectangle.height` 에 저장하는 것은 성공하는데 작은 수이기 때문입니다. 24 를 저장하려고 하면 실제로는 12 값이 대신 저장되는데, 24 는 속성 '설정자 (setter)' 의 규칙에 따르면 너무 크기 때문입니다.
+`height` 와 `width` 속성은, `TwelveOrLess.number` 를 '0' 으로 설정gks, `TwelveOrLess` 정의에서 초기 값을 획득합니다. 수 '10' 을 `rectangle.height` 에 저장하는 것은 작은 수이기 때문에 성공합니다. 수 '24' 를 저장하려고 하면 그 대신 '12' 라는 값이 저장되는데, 속성 설정자의 규칙에 따르면 수 '24' 는 너무 크기 때문입니다.
 
-속성에 '포장 (wrapper)' 을 적용하면, 포장을 위해 저장소를 제공하는 코드와 포장을 통해 속성에 대한 접근을 제공하는 코드를 컴파일러가 만들어서 통합해 줍니다. ('속성 포장 (property wrapper)' 은 포장된 값을 저장하는 책임을 지므로, 따로 만들어져서 통합되는 코드가 없습니다.) '특성 구문 표현 (attribute syntax)' 의 이점을 특별히 사용하지 않고, '속성 포장' 역할을 하는 코드를 직접 작성할 수도 있습니다. 예를 들어, 다음은 이전 코드에 있는 `SmallRectangle` 에서, `@TwelveOrLess` 특성 대신, `TwelveOrLess` 구조체를 명시적으로 써서 속성을 포장한 버전입니다:
+'포장' 을 속성에 적용할 때는, 포장을 위해 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 컴파일러가 통합해 줍니다. ('속성 포장' 은 포장된 값을 저장하는 책임을 지므로, 그에 대한 통합 코드는 없습니다.) 특수한 '특성 구문 표현 (attribute syntax)' 의 장점을 취하지 않고, '속성 포장' 과 같은 작동을 하는 코드를 작성할 수도 있을 것입니다. 예를 들어, 다음은 이전에 나열한 코드에서, `@TwelveOrLess` '특성' 을 작성하는 대신, `TwelveOrLess` 구조체의 속성을 명시적으로 포장한 `SmallRectangle` 버전입니다[^explicitly-wrap]:
 
 ```swift
 struct SmallRectangle {
@@ -349,7 +351,7 @@ struct SmallRectangle {
 }
 ```
 
-`_height` 와 `_width` 속성은 '속성 포장' 인, `TwelveOrLess` 의 인스턴스를 저장합니다. `height` 와 `width` 의 획득자 (getter) 및 설정자 (setter) 는 `wrappedValue` 속성에 대한 접근을 포장합니다.
+`_height` 와 `_width` 속성은 '속성 포장' 인, `TwelveOrLess` 의 인스턴스를 저장합니다. `height` 와 `width` 에 대한 획득자와 설정자는 `wrappedValue` 속성에 대한 접근을 포장합니다.
 
 #### Setting Initial Values for Wrapped Properties (포장된 속성에 대한 초기 값 설정하기)
 
@@ -689,3 +691,5 @@ print(AudioChannel.maxInputLevelForAllChannels)
 [^dispatch]: 예전에는 [Grand Central Dispatch (GCD)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 라는 용어를 많이 사용하였는데, 최근에는 'Dispatch' 라고만 하고 있으며, [Dispatch](https://developer.apple.com/documentation/dispatch) 프레임웍 문서에서 'Dispatch' 를 'Grand Central Dispatch (GCD)' 라고도 한다고 설명하고 있습니다.
 
 [^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 참고하기 바랍니다.
+
+[^explicitly-wrap]: 이 예제를 보면 '속성 포장' 이란 것은 '사용자 정의 획득자' 와 '사용자 정의 설정자' 를 제공하는 코드를 재활용하기 위한 것임을 알 수 있습니다.
