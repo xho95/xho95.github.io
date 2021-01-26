@@ -289,27 +289,29 @@ stepCounter.totalSteps = 896
 
 ### Property Wrappers (속성 포장)
 
-'속성 포장 (property wrapper)' 은 속성 저장 방법을 관리하는 코드와 속성을 정의하는 코드를 구분하는 '계층 (layer)' 을 추가합니다. 예를 들어, 쓰레드-안전성 검사를 제공하는 속성이나 실제 자료를 DB 에 저장하는 속성이 있다면, 이에 해당하는 코드를 모든 속성마다 작성해야 합니다. 이 때 속성 포장을 사용하여, 포장을 정의할 때 관리 코드를 한 번만 작성하면, 그 관리 코드를 여러 속성에 적용하여 재사용하면 됩니다.[^property-wrapper]
+'속성 포장 (property wrapper)' 은 속성 저장 방법을 관리하는 코드와 속성을 정의하는 코드 사이에 '구분 계층 (layer of seperation)' 을 추가합니다. 예를 들어, '쓰레드-안전성 검사' 를 제공하거나 실제 자료를 데이터베이스에 저장하는 속성을 가진 경우, 해당 코드를 모든 속성마다 작성해야 합니다. 속성 포장을 사용할 때는, 포장을 정의할 때 관리 코드를 한 번 작성한 다음, 해당 관리 코드를 여러 속성에 적용함으로써 재사용합니다.[^property-wrapper]
 
-속성 포장을 정의하려면, 구조체, 열거체, 또는 클래스를 만들 때 `wrappedValue` 속성을 정의하면 됩니다. 아래 코드에서, `TwelveOrLess` 구조체는 포장 값이 항상 12 보다 작거나 같도록 보장합니다. 더 큰 수를 저장하라고 요청하면, 그 대신 12 를 저장합니다.
+속성 포장을 정의하려면, `wrappedValue` 속성을 정의하는 구조체, 열거체, 또는 클래스를 만듭니다. 아래 코드에서, `TwelveOrLess` 구조체는 자신이 포장한 값이 '12' 이하의 수를 항상 담음을 보장합니다. 더 큰 수를 저장하라고 요청하면, 대신 12 를 저장합니다.
 
 ```swift
 @propertyWrapper
 struct TwelveOrLess {
-    private var number: Int
-    init() { self.number = 0 }
-    var wrappedValue: Int {
-        get { return number }
-        set { number = min(newValue, 12) }
-    }
+  private var number: Int
+  init() { self.number = 0 }
+  var wrappedValue: Int {
+    get { return number }
+    set { number = min(newValue, 12) }
+  }
 }
 ```
 
-'설정자 (setter)' 는 새 값이 12 보다 작음을 보장하고, '획득자 (getter)' 는 저장된 값을 반환합니다.
+설정자는 새로운 값이 '12' 보다 작음을 보장하고, 획득자는 저장된 값을 반환합니다.
 
-> 위의 예제에서 `number` 선언은 `private` 변수라고 표시됐는데, 이는 `number` 가 `TwelveOrLess` 구현에서만 사용됨을 보장합니다. 다른 곳에서 작성된 코드는 `wrappedValue` 의 '획득자 (getter)' 와 '설정자 (setter)' 로 값에 접근해야 하며, `number` 를 직접 사용할 수 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 를 참고하기 바랍니다.
+> 위 예제에서 `number` 선언은 `private` 인 변수라고 표시하는데, 이는 `number` 가 `TwelveOrLess` 의 구현부에서만 사용됨을 보장합니다. 그 밖의 어떤 다른 곳에서 작성된 코드도, `number` 를 직접적으로 사용할 수 없으며, `wrappedValue` 에 대한 획득자와 설정자를 사용하여 값에 접근합니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 를 참고하기 바랍니다.
 
-'속성 (property)' 에 '포장 (wrapper)' 을 적용하려면 속성 앞에 '특성 (attribute)' 처럼 포장의 이름을 작성하면 됩니다. 다음은 작은 직사각형을 저장하는 구조체로, `TwelveOrLess` '속성 포장 (property wrapper)' 에서 구현한 것과 같은 (다소 임의의) "작은 (small)" 에 대한 정의를 사용합니다:
+'포장 (wrapper)' 은 속성 앞에 '포장' 의 이름을 '특성 (attribute)' 으로 작성함으로써 속성에 적용합니다. 다음은 작은 직사각형을 저장하는 구조체로,
+
+'속성 (property)' 에 '포장 (wrapper)' 을 적용하려면 속성 앞에 '특성 (attribute)' 처럼 포장의 이름을 작성하면 됩니다. 다음은, `TwelveOrLess` '속성 포장' 에서 구현한 (다소 임의적인) "작은 (small)" 과 같은 정의를 사용하여, 작은 직사각형을 저장하는 구조체입니다:
 
 ```swift
 struct SmallRectangle {
@@ -319,20 +321,20 @@ struct SmallRectangle {
 
 var rectangle = SmallRectangle()
 print(rectangle.height)
-// "0" 을 출력합니다.
+// "0" 을 인쇄합니다.
 
 rectangle.height = 10
 print(rectangle.height)
-// "10" 을 출력합니다.
+// "10" 을 인쇄합니다.
 
 rectangle.height = 24
 print(rectangle.height)
-// "12" 를 출력합니다.
+// "12" 를 인쇄합니다.
 ```
 
-`height` 와 `width` 속성은 `TwelveOrLess` 정의에서 초기 값을 가져오는데, 이는 `TwelveOrLess.number` 를 0 으로 설정합니다. 10 을 `rectangle.height` 에 저장하는 것은 성공하는데 작은 수이기 때문입니다. 24 를 저장하려고 하면 실제로는 12 값이 대신 저장되는데, 24 는 속성 '설정자 (setter)' 의 규칙에 따르면 너무 크기 때문입니다.
+`height` 와 `width` 속성은, `TwelveOrLess.number` 를 '0' 으로 설정gks, `TwelveOrLess` 정의에서 초기 값을 획득합니다. 수 '10' 을 `rectangle.height` 에 저장하는 것은 작은 수이기 때문에 성공합니다. 수 '24' 를 저장하려고 하면 그 대신 '12' 라는 값이 저장되는데, 속성 설정자의 규칙에 따르면 수 '24' 는 너무 크기 때문입니다.
 
-속성에 '포장 (wrapper)' 을 적용하면, 포장을 위해 저장소를 제공하는 코드와 포장을 통해 속성에 대한 접근을 제공하는 코드를 컴파일러가 만들어서 통합해 줍니다. ('속성 포장 (property wrapper)' 은 포장된 값을 저장하는 책임을 지므로, 따로 만들어져서 통합되는 코드가 없습니다.) '특성 구문 표현 (attribute syntax)' 의 이점을 특별히 사용하지 않고, '속성 포장' 역할을 하는 코드를 직접 작성할 수도 있습니다. 예를 들어, 다음은 이전 코드에 있는 `SmallRectangle` 에서, `@TwelveOrLess` 특성 대신, `TwelveOrLess` 구조체를 명시적으로 써서 속성을 포장한 버전입니다:
+'포장' 을 속성에 적용할 때는, 포장을 위해 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 컴파일러가 통합해 줍니다. ('속성 포장' 은 포장된 값을 저장하는 책임을 지므로, 그에 대한 통합 코드는 없습니다.) 특수한 '특성 구문 표현 (attribute syntax)' 의 장점을 취하지 않고, '속성 포장' 과 같은 작동을 하는 코드를 작성할 수도 있을 것입니다. 예를 들어, 다음은 이전에 나열한 코드에서, `@TwelveOrLess` '특성' 을 작성하는 대신, `TwelveOrLess` 구조체의 속성을 명시적으로 포장한 `SmallRectangle` 버전입니다[^explicitly-wrap]:
 
 ```swift
 struct SmallRectangle {
@@ -349,7 +351,7 @@ struct SmallRectangle {
 }
 ```
 
-`_height` 와 `_width` 속성은 '속성 포장' 인, `TwelveOrLess` 의 인스턴스를 저장합니다. `height` 와 `width` 의 획득자 (getter) 및 설정자 (setter) 는 `wrappedValue` 속성에 대한 접근을 포장합니다.
+`_height` 와 `_width` 속성은 '속성 포장' 인, `TwelveOrLess` 의 인스턴스를 저장합니다. `height` 와 `width` 에 대한 획득자와 설정자는 `wrappedValue` 속성에 대한 접근을 포장합니다.
 
 #### Setting Initial Values for Wrapped Properties (포장된 속성에 대한 초기 값 설정하기)
 
@@ -680,10 +682,14 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^simplify]: 이 예제의 '계산 속성' 은 '단일 표현식' 이기도 하기 때문에 `return` 키워드도 생략 가능합니다. 앞서 [Shorthand Getter Declaration (획득자 선언의 줄임 표현)](#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 '획득자' 가 '단일 표현식' 이면 `return` 을 생략할 수 있다고 했는데, 이는 전체 '계산 속성' 에도 그대로 적용됩니다.
 
-[^cuboid]: 사실 'cuboid' 자체가 수학 용어로 '직육면체' 를 의미하는 것으로, 직육면체는 모든 면이 직사각형으로 이루어진 기하학적 도형입니다. 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 참고하기 바랍니다.
+[^cuboid]: 사실 'cuboid' 자체가 수학 용어로 '직육면체' 를 의미합니다. '직육면체' 는 모든 면이 직사각형으로 이루어진 기하학적 도형을 말하느데, 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 참고하기 바랍니다.
 
 [^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
 
-[^property-wrapper]: 굳이 복잡하게 '속성 포장 (property wrapper)' 를 왜 사용하는지 의문이 들 수 있습니다. 사실, 스위프트에서 '속성 포장' 을 사용하는 이유는 스위프트 언어 외부에서 지원하는 기능을 사용하기 위함입니다. iOS 라면 쓰레드 관리는 [GCD (Grand Central Dispatch)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 를 이용하고, DB 는 [SQLite](https://www.sqlite.org/index.html) 를 이용할 수 있을 것입니다. 이들은 스위프트 외부에 존재하므로 '속성 포장 (property wrapper)' 을 통해서 관리 기능을 일종의 '위임 (delegation)' 하게 한다고 볼 수 있습니다.
+[^property-wrapper]: 본문에서 '관리 코드' 를 재사용할 수 있다고 했는데, 보통 이러한 '관리 코드' 는 스위프트 언어 외부의 프레임웍 등에서 이미 제공되는 경우가 많습니다. 본문에서 예를 들고 있는 '쓰레드-안전성 검사' 와 '데이터베이스 저장' 기능의 경우, 애플에서는 각각 [Dispatch](https://developer.apple.com/documentation/dispatch)[^dispatch] 와 [Core Data](https://developer.apple.com/documentation/coredata) 프레임웍을 제공하고 있습니다. '속성 포장 (property wrapper)' 은 자신이 직접 새로 만들 수도 있지만, 이렇게 스위프트 언어 외부에서 제공하는 부가 기능을 사용하는 용도로 사용한다고도 볼 수 있습니다.
 
-[^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 부분을 참고하기 바랍니다.
+[^dispatch]: 예전에는 [Grand Central Dispatch (GCD)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 라는 용어를 많이 사용하였는데, 최근에는 'Dispatch' 라고만 하고 있으며, [Dispatch](https://developer.apple.com/documentation/dispatch) 프레임웍 문서에서 'Dispatch' 를 'Grand Central Dispatch (GCD)' 라고도 한다고 설명하고 있습니다.
+
+[^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 참고하기 바랍니다.
+
+[^explicitly-wrap]: 이 예제를 보면 '속성 포장' 이란 것은 '사용자 정의 획득자' 와 '사용자 정의 설정자' 를 제공하는 코드를 재활용하기 위한 것임을 알 수 있습니다.
