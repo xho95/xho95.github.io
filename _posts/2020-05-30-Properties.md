@@ -457,9 +457,11 @@ print(mixedRectangle.height)
 
 #### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)
 
-'포장된 값 (wrapped value)' 외에도, 속성 포장은 '_드러낸 값 (projected value)_' 를 정의하여 추가적인 기능을 내보일 수있습니다-예를 들어, DB 에 대한 접근을 관리하는 속성 포장은 '드러낸 값' 을 써서 `flushDatabaseConnection()` 메소드를 내보일 수 있습니다. '드러낸 값' 의 이름은, 달러 기호 (`$`) 로 시작 한다는 점만 빼면, '포장된 값' 과 같습니다. `$` 로 시작하는 속성을 코드에서 직접 정의할 수는 없기 때문에 '드러낸 값' 이 직접 정의한 속성을 방해가 될 일은 절대 없습니다.
+'포장된 값' 에 더하여, 속성 포장은 _드러낸 값 (projected value)_ 을 정의함으로써 추가적인 기능을 노출할 수 있습니다-예를 들어, 데이터베이스 접근을 관리하는 속성 포장은 자신이 '드러낸 값' 에 대한 `flushDatabaseConnection()` 메소드를 노출할 수 있습니다. '드러낸 값' 의 이름은, '달러 기호 (`$`)' 로 시작한다는 것만 빼면, '포장된 값' 과 똑같습니다. `$` 로 시작하는 속성은 코드에서 정의할 수 없기 때문에 '드러낸 값' 이 직접 정의한 속성을 방해할 일은 절대 없습니다.
 
-위의 `SmallNumber` 예제에서, 속성에 너무 큰 수를 설정하게 되면, 속성 포장이 그 수를 저장하기 전에 먼저 조정하게 됩니다. 아래 코드는 `SmallNumber` 구조체에 `projectedValue` 속성을 추가하여 속성 포장이 새 값을 저장하기 전에 먼저 조정했는지 여부를 추적합니다.
+위의 SmallNumber 예제에서 속성을 너무 큰 숫자로 설정하려고하면 속성 래퍼가 숫자를 저장하기 전에 조정합니다. 아래 코드는 SmallNumber 구조에 projectedValue 속성을 추가하여 속성 래퍼가 새 값을 저장하기 전에 속성의 새 값을 조정했는지 여부를 추적합니다.
+
+위 `SmallNumber` 예제에서, 속성에 너무 큰 수를 설정하려고 하면, 저장하기 전에 속성 포장이 수를 조정합니다. 아래 코드는 `SmallNumber` 구조체에 `projectedValue` 속성을 추가하여 속성에 새로운 값을 저장하기 전에 속성 포장이 새로운 값을 조정했는 지를 추적합니다.
 
 ```swift
 @propertyWrapper
@@ -490,11 +492,11 @@ var someStructure = SomeStructure()
 
 someStructure.someNumber = 4
 print(someStructure.$someNumber)
-// "false" 를 출력합니다.
+// "false" 를 인쇄합니다.
 
 someStructure.someNumber = 55
 print(someStructure.$someNumber)
-// "true" 를 출력합니다.
+// "true" 를 인쇄합니다.
 ```
 
 `someStructure.$someNumber` 를 작성하여 포장의 '드러낸 값' 에 접근합니다. 4 처럼 작은 수를 저장한 후엔, `someStructure.$someNumber` 의 값은 `false` 가 됩니다. 하지만, 55 같이, 너무 큰 수를 저장하려고 하면 '드러낸 값' 은 `true` 가 됩니다.
