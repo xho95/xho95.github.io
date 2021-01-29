@@ -602,13 +602,13 @@ print(SomeClass.computedTypeProperty)
 // "27" 를 인쇄합니다.
 ```
 
-다음은 다중 음향 채널용 음향 측정 기기를 모델링하는 구조체에서 두 개의 저장 타입 속성을 사용하는 예제입니다. 각 채널은 `0` 에서 `10` 사이의 정수 값의 음향 단계를 가지고 있습니다.
+이어지는 예제는 다수 음향 채널에 대한 '음향 측정기 (audio level meter)' 를 모델링하는 구조체로 두 개의 '저장 타입 속성' 사용합니다. 각 채널은 `0` 에서 `10` 에 이르는 '정수 값 음향 단계' 를 가집니다.
 
-아래 그림은 스테레오 음향 측정 기기를 모델링하기 위해 이 두 음향 채널을 결합하는 방법을 묘사하고 있습니다. 채널의 음향 단계가 `0` 이면, 그 채널의 모든 빛은 꺼집니다. 이 그림에서, 왼쪽 채널은 현재 단계가 `9` 이고, 오른쪽 채널은 현재 단계가 `7` 입니다:
+아래 그림은 '스테레오 (stereo) 음향 측정기' 를 모델링하기 위해 어떻게 두 개의 음향 채널을 조합할 수 있는지 묘사합니다. 채널의 음향 단계가 `0` 일 때는, 해당 채널에 대한 불은 어느 것도 켜지지 않습니다. 음향 단계가 `10` 일 때는, 해당 채널에 대한 모든 불이 켜집니다. 이 그림에서, 왼쪽 채널은 현재 단계가 `9` 이고, 오른쪽 채널은 현재 단계가 `7` 입니다:
 
 ![audio level meter](/assets/Swift/Swift-Programming-Language/Properties-audio-level-meter.jpg)
 
-위에서 묘사한 음향 채널은 `AudioChannel` 구조체의 인스턴스로써 표현됩니다:
+위에서 설명한 음향 채널은 `AudioChannel` 구조체에 대한 인스턴스로 표현됩니다:
 
 ```swift
 struct AudioChannel {
@@ -617,11 +617,11 @@ struct AudioChannel {
   var currentLevel: Int = 0 {
     didSet {
       if currentLevel > AudioChannel.thresholdLevel {
-        // 새 음향 단계를 임계 값까지로 쳐냅니다.
+        // 새 음향 단계를 임계 단계까지로 상한을 정합니다.
         currentLevel = AudioChannel.thresholdLevel
       }
       if currentLevel > AudioChannel.maxInputLevelForAllChannels {
-        // 지금까지 중에서 이것이 새로운 최대 입력 단계인 것으로 저장합니다.
+        // 이것을 새로운 전체적인 최대 입력 단계로 저장합니다.
         AudioChannel.maxInputLevelForAllChannels = currentLevel
       }
     }
