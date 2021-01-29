@@ -586,20 +586,20 @@ class SomeClass {
 
 > 위 '계산 타입 속성' 예제는 '읽기-전용 (read-only) 계산 타입 속성' 에 대한 것이지만, '읽고-쓰기 (read-write) 계산 타입 속성' 도 '계산 인스턴스 속성' 에 대한 것과 똑같은 구문 표현으로 정의할 수 있습니다.
 
-#### Querying and Setting Type Properties (타입 속성 조회하고 설정하기)
+#### Querying and Setting Type Properties (타입 속성 조회하기와 설정하기)
 
-타입 속성은, 인스턴스 속성과 마찬가지로, '점 구문 표현 (dot syntax)' 를 사용하여 조회하고 설정할 수 있습니다. 하지만, 타입 속성의 조회와 설정은 _타입 (type)_ 에서 하는 것이지, 그 타입의 인스턴스에서 하는 것이 아닙니다. 예를 들면 다음과 같습니다:
+타입 속성은, 인스턴스 속성에서와 같이, '점 구문 표현 (dot syntax)' 으로 조회하고 설정합니다. 하지만, 타입 속성은, 해당 타입의 인스턴스에 대해서가 아니라, _타입 (type)_ 에 대해서 조회하고 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(SomeStructure.storedTypeProperty)
-// "Some value." 를 출력합니다.
+// "Some value." 를 인쇄합니다.
 SomeStructure.storedTypeProperty = "Another value."
 print(SomeStructure.storedTypeProperty)
-// "Another value." 를 출력합니다.
+// "Another value." 를 인쇄합니다.
 print(SomeEnumeration.computedTypeProperty)
-// "6" 를 출력합니다.
+// "6" 를 인쇄합니다.
 print(SomeClass.computedTypeProperty)
-// "27" 를 출력합니다.
+// "27" 를 인쇄합니다.
 ```
 
 다음은 다중 음향 채널용 음향 측정 기기를 모델링하는 구조체에서 두 개의 저장 타입 속성을 사용하는 예제입니다. 각 채널은 `0` 에서 `10` 사이의 정수 값의 음향 단계를 가지고 있습니다.
