@@ -602,13 +602,13 @@ print(SomeClass.computedTypeProperty)
 // "27" 를 인쇄합니다.
 ```
 
-이어지는 예제는 다수 음향 채널에 대한 '음향 측정기 (audio level meter)' 를 모델링하는 구조체로 두 개의 '저장 타입 속성' 사용합니다. 각 채널은 `0` 에서 `10` 에 이르는 '정수 값 음향 단계' 를 가집니다.
+이어지는 예제는 다수 음향 채널에 대한 '음향 측정기 (audio level meter)' 를 모델링하는 구조체로 두 개의 '저장 타입 속성' 사용합니다. 각 채널은 `0` 에서 `10` 에 이르는 정수 '음량 (audio level)' 를 가집니다.
 
-아래 그림은 '스테레오 (stereo) 음향 측정기' 를 모델링하기 위해 어떻게 두 개의 음향 채널을 조합할 수 있는지 묘사합니다. 채널의 음향 단계가 `0` 일 때는, 해당 채널에 대한 불은 어느 것도 켜지지 않습니다. 음향 단계가 `10` 일 때는, 해당 채널에 대한 모든 불이 켜집니다. 이 그림에서, 왼쪽 채널은 현재 단계가 `9` 이고, 오른쪽 채널은 현재 단계가 `7` 입니다:
+아래 그림은 두 음향 채널을 조합하여 '스테레오 (stereo) 음향 측정기' 를 모델링하는 방법을 묘사합니다. 채널의 '음량' 이 `0` 일 때는, 해당 채널의 '불 (lights)' 은 전혀 켜지지 않습니다. '음량' 이 `10` 일 때는, 해당 채널에 대한 모든 '불' 이 켜집니다. 이 그림에서, 왼쪽 채널은 현재 양이 `9` 이고, 오른쪽 채널은 현재 양이 `7` 입니다:
 
 ![audio level meter](/assets/Swift/Swift-Programming-Language/Properties-audio-level-meter.jpg)
 
-위에서 설명한 음향 채널은 `AudioChannel` 구조체에 대한 인스턴스로 표현됩니다:
+위에서 설명한 음향 채널은 `AudioChannel` 구조체의 인스턴스로써 표현됩니다:
 
 ```swift
 struct AudioChannel {
@@ -617,11 +617,11 @@ struct AudioChannel {
   var currentLevel: Int = 0 {
     didSet {
       if currentLevel > AudioChannel.thresholdLevel {
-        // 새 음향 단계를 임계 단계까지로 상한을 정합니다.
+        // 새로운 음량의 상한을 임계 값까지로 정합니다.
         currentLevel = AudioChannel.thresholdLevel
       }
       if currentLevel > AudioChannel.maxInputLevelForAllChannels {
-        // 이것을 새로운 전체적인 최대 입력 단계로 저장합니다.
+        // 이를 전체에 대한 새로운 최대 입력량으로 저장합니다.
         AudioChannel.maxInputLevelForAllChannels = currentLevel
       }
     }
@@ -629,45 +629,49 @@ struct AudioChannel {
 }
 ```
 
-`AudioChannel` 구조체는 기능을 지원하는 용도로 두 개의 '저장 타입 속성' 을 정의합니다. 첫 번째인, `thresholdLevel` 은, 음향 단계가 취할 수 있는 최대 임계 값을 정의합니다. 이는 모든 `AudioChannel` 인스턴스에 대해서 상수 값 `10` 입니다. `10` 보다 높은 값의 음향 신호가 들어 오면, 이 임계 값까지로 쳐냅니다. (이는 아래에서 설명합니다.)
+`AudioChannel` 구조체는 기능을 지원하는 두 '저장 타입 속성' 을 정의합니다. 첫 번째인, `thresholdLevel` 은, '음량' 이 취할 수 있는 최대 임계 값을 정의합니다. 이는 모든 `AudioChannel` 인스턴스에서 `10` 이라는 상수 값입니다. `10` 보다 높은 값의 음향 신호가 들어 오면, (아래에서 설명하는 것처럼) 상한이 이 임계 값까지로 정해질 것입니다.
 
-두 번째 타입 속성은 `maxInputLevelForAllChannels` 라는 '변수 저장 속성' 입니다. 이는 `AudioChannel` 인스턴스 중에서 _어떤 (any)_ 것이든 지금까지 수신한 최대 입력 값을 추적합니다. 초기 값은 `0` 에서 시작합니다.
+두 번째 타입 속성은 `maxInputLevelForAllChannels` 라는 '변수 저장 속성' 입니다. 이는 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 것이든 지금까지의 최대 입력 값을 추적합니다. 초기 값은 `0` 으로 시작합니다.
 
-`AudioChannel` 구조체는 `currentLevel` 이라는 '저장 인스턴스 속성' 도 정의하는데, 이는 채널의 현재 음향 단계를 `0` 에서 `10` 까지의 크기로 표현합니다.
+`AudioChannel` 구조체는 `currentLevel` 이라는 '저장 인스턴스 속성' 도 정의하고 있는데, 이는 채널의 현재 음량을 `0` 에서 `10` 까지의 '척도 (scale)' 로 표현합니다.
 
-`currentLevel` 속성은 `didSet` 속성 관찰자를 가지고 있어서 `currentLevel` 의 값이 설정될 때마다 그 값을 검사합니다. 이 관찰자는 두 가지 검사를 수행합니다:
+`currentLevel` 속성은 `currentLevel` 의 값을 설정할 때마다 그 값을 검사하는 '`didSet` 속성 관찰자' 를 가지고 있습니다. 이 관찰자는 두 가지를 검사합니다:
 
-* 새 `currentLevel` 값이 `thresholdLevel` 에서 허용된 것보다 큰 경우, 이 '속성 관찰자' 는 `currentLevel` 을 `thresholdLevel` 까지로 쳐냅니다.
-* (쳐낸 후의) 새 `currentLevel` 값이 이전에 `AudioChannel` 인스턴스 중 _어떤 (any)_ 것에서든 수신한 값보다 높은 경우, 이 '속성 관찰자' 는 새 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
+* `currentLevel` 의 새 값이 `thresholdLevel` 가 허용하는 것보다 크면, '속성 관찰자' 가 `currentLevel` 의 상한을 `thresholdLevel` 까지로 정합니다.
+* (상한을 정한 후에) `currentLevel` 의 새 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 어떤 값보다도 높으면, '속성 관찰자' 가 새로운 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
 
-> 이 두 검사 중 첫 번째에서, `didSet` 관찰자는 `currentLevel` 을 다른 값으로 설정합니다. 이것은, 하지만, '관찰자' 를 다시 호출하지 않습니다.
+> 이 두 검사 중 첫 번째에서, `didSet` 관찰자는 `currentLevel` 을 다른 값으로 설정합니다. 하지만, 이는 '관찰자' 를 다시 호출하도록 하지는 않습니다.
 
-`AudioChannel` 구조체로 새로이 `leftChannel` 과 `rightChennel` 이라는 두 개의 음향 채널을 생성하여, 스테레오 음향 시스템에 대한 음향 단계를 표현할 수 있습니다:
+`AudioChannel` 구조체는, '스테레오 음향 시스템' 의 음량을 표현하는, `leftChannel` 과 `rightChennel` 이라는 두 '음향 채널' 을 생성하기 위해 사용할 수 있습니다:
 
 ```swift
 var leftChannel = AudioChannel()
 var rightChannel = AudioChannel()
 ```
 
-_왼쪽 (left)_ 채널의 `currentLevel` 을 `7` 로 설정하면, `maxInputLevelForAllChannels` 타입 속성이 `7` 로 갱신되는 것을 볼 수 있습니다:
+_왼쪽 (left)_ 채널의 `currentLevel` 을 `7` 로 설정하면, '`maxInputLevelForAllChannels` 타입 속성' 이 `7` 로 갱신되는 것을 볼 수 있습니다:
 
 ```swift
 leftChannel.currentLevel = 7
 print(leftChannel.currentLevel)
-// "7" 을 출력합니다.
+// "7" 을 인쇄합니다.
 print(AudioChannel.maxInputLevelForAllChannels)
-// "7" 을 출력합니다.
+// "7" 을 인쇄합니다.
 ```
 
-_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려고 하면, 오른쪽 채널의 `currentLevel` 속성이 최대 값 `10` 으로 쳐내지고, `maxInputLevelForAllChannels` 타입 속성이 `10` 으로 갱신되는 것을 볼 수 있습니다:
+_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려고 하면, 오른쪽 채널의 `currentLevel` 속성이 `10` 이라는 최대 값으로 상한이 정해지고, '`maxInputLevelForAllChannels` 타입 속성' 이 `10` 으로 갱신되는 것을 볼 수 있습니다:
 
 ```swift
 rightChannel.currentLevel = 11
 print(rightChannel.currentLevel)
-// "10" 을 출력합니다.
+// "10" 을 인쇄합니다.
 print(AudioChannel.maxInputLevelForAllChannels)
-// "10" 을 출력합니다.
+// "10" 을 인쇄합니다.
 ```
+
+### 다음 장
+
+[Methods (메소드) > ]({% post_url 2020-05-03-Methods %})
 
 ### 참고 자료
 
