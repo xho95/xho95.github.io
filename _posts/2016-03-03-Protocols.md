@@ -156,7 +156,7 @@ print("And another one: \(generator.random())")
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
 
-때때로 메소드는 자신이 속해 있는 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드에서 `mutating` 키워드를 메소드의 `func` 키워드 앞에 붙이면 이 메소드가 자신이 속한 인스턴스 및 해당 인스턴스의 모든 속성을 수정할 수 있음을 지시하는 것입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드에서-값-타입-수정하기) 에서 설명했습니다.
+때때로 메소드는 자신이 속해 있는 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드에서 `mutating` 키워드를 메소드의 `func` 키워드 앞에 붙이면 이 메소드가 자신이 속한 인스턴스 및 해당 인스턴스의 모든 속성을 수정할 수 있음을 지시하는 것입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 에서 설명했습니다.
 
 프로토콜을 채택하는 어떤 타입에 대해서든 인스턴스를 변경하려는 의도를 가진 '프로토콜 인스턴스 메소드 필수 조건 (protocol instance method requirements)' 을 정의하는 경우, 프로토콜을 정의할 때 이 메소드에 `mutating` 키워드를 표시하도록 합니다. 이는 구조체와 열거체가 이 프로토콜을 채택하고 해당 메소드 필수 조건을 만족할 수 있게 해줍니다.
 
