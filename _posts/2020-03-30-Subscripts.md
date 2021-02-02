@@ -7,15 +7,13 @@ categories: Swift Language Grammar Subscripts
 redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 부분[^Subscripts]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 부분[^Subscripts]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Subscripts (첨자 연산)
 
-'클래스 (classes)', '구조체 (structures)', 그리고 '열거체 (enumerations)' 는 '_첨자 연산 (subscripts)_' 을 정의하여, '컬렉션 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 의 멤버 원소에 접근하는 간편한 방법을 제공합니다. '첨자 연산' 을 사용하면 색인으로 값을 설정하고 가져올 수 있어서 별도의 메소드를 따로 만들 필요도 없습니다. 예를 들어, `Array` 인스턴스의 원소는 `someArray[index]` 로 접근할 수 있으며, `Dictionary` 인스턴스의 원소는 `someDictionary[key]` 로 접근할 수 있습니다.
+클래스, 구조체, 그리고 열거체는, '집합체 (collection)', '리스트 (list)', 또는 '일련 값 (sequence)' 의 멤버 원소에 접근하는 '줄임말 (shorcuts)' 인, _첨자 연산 (subscripts)_ 을 정의할 수 있습니다. '첨자 연산' 은 별도의 메소드가 필요없이 '색인 (index)' 으로 값을 설정하고 가져오기 위해 사용합니다. 예를 들어, `Array` 인스턴스에 있는 원소는 `someArray[index]` 로 `Dictionary` 인스턴스에 있는 원소는 `someDictionary[key]` 로 접근합니다.
 
-하나의 단일한 타입에 대해 여러 개의 '첨자 연산' 을 정의할 수도 있으며, 이 때 첨자 연산에 전달한 색인 값의 타입에 따라 첨자 연산을 적절하게 선택하고 사용합니다. 첨자 연산은 1차원으로만 한정된 것이 아니라서, 사용자 정의 타입의 요구에 맞게 여러 개의 입력 매개 변수를 갖는 첨자 연산도 정의할 수 있습니다.
+단일 타입에 대해 여러 개의 '첨자 연산' 을 정의할 수 있으며, 사용할 적절한 첨자 연산은 첨자 연산에 전달한 색인 값의 타입에 기초하여 선택됩니다. 첨자 연산은 1-차원으로만 제한되지 않으며, 사용자 정의 타입의 필요에 적합하도록 '다중 입력 매개 변수' 를 가진 첨자 연산을 정의할 수도 있습니다.
 
 ### Subscript Syntax (첨자 연산 구문 표현)
 
@@ -173,3 +171,5 @@ print(mars)
 [^Subscripts]: 이 글에 대한 원문은 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+
+[^sequences]: '일련 값 (sequence)' 은 그 자체로 수학에서의 '수열' 을 의미하는 단어이지만, 여기서는 '수열' 과 비슷하게 '같은 타입의 값들이 쭉 나열되어 있는 것' 이라는 의미로 '일련 값' 이라고 옮깁니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '일련 값 (sequence)' 등은 모두 알고리즘에서 사용하는 수학적인 '자료 구조' 를 의미합니다.
