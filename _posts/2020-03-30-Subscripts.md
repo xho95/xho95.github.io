@@ -62,18 +62,18 @@ print("six times three is \(threeTimesTable[6])")
 
 ### Subscript Usage (첨자 연산 사용법)
 
-"첨자 연산" 의 정확한 의미는 그것이 사용되는 영역에 달려 있습니다. 첨자 연산은 보통 컬렉션, 리스트, 또는 시퀀스의 멤버 원소에 접근하기 위한 간편한 방법으로 사용됩니다. 첨자 연산의 구현은 아주 자유롭기 때문에 특정 클래스나 구조체의 기능에 가장 알맞은 방식으로 구현할 수 있습니다.
+"첨자 연산 (subscript)" 의 정확한 의미는 사용되는 상황에 달려 있습니다. 첨자 연산은 전형적으로 '집합체 (collection)', 리스트, 또는 '일련 값 (sequence)' 에 있는 멤버 원소에 접근하기 위한 '줄임말 (shortcut)' 로 사용됩니다. 첨자 연산은 특정 클래스나 구조체의 기능에 가장 적절한 방식으로 자유롭게 구현할 수 있습니다.
 
-예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장된 값을 설정하고 가져오는 첨자 연산을 구현하고 있습니다. '딕셔너리' 에 값을 설정하려면 첨자 연산의 괄호 안에 '딕셔너리' 키 타입의 키를 제공한 다음, 첨자 연산에 '딕셔너리' 값 타입의 값을 할당하면 됩니다.
+예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장되어 있는 값을 설정하고 가져오기 위해 첨자 연산을 구현합니다. 딕셔너리는 첨자 연산 대괄호 안에 딕셔너리 키 타입의 키를 제공하고, 첨자 연산에 딕셔너리 값 타입의 값을 할당함으로써, 값을 설정할 수 있습니다:
 
 ```swift
 var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 numberOfLegs["bird"] = 2
 ```
 
-위에 있는 예제는 `numberOfLegs` 라는 변수를 정의하고 이를 세 개의 키-값 쌍을 가지고 있는 '딕셔너리 글자 값 (dictionary literal)' 으로 초기화하고 있습니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 로 추론합니다. 딕셔너리를 만든 다음, 이 예제는 첨자 연산 할당을 사용하여 문자열 키가 `"bird"` 이고 `Int` 값이 `2` 인 원소를 딕셔너리에 할당합니다.
+위 예제는 `numberOfLegs` 라는 변수를 정의하고 이를 세 개의 '키-값 쌍' 을 담고 있는 '딕셔너리 글자 값' 으로 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론됩니다. 딕셔너리를 생성한 후, 이 예제는 딕셔너리에 `String` 키 타입 `"bird"` 와 `Int` 값이 `2` 를 추가하기 위해 '첨자 연산 할당' 을 사용합니다.
 
-`Dictionary` 첨자 연산에 대한 더 많은 정보는 [Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리에-접근하고-수정하기) 를 참고하기 바랍니다.
+`Dictionary` 의 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 를 참고하기 바랍니다.
 
 > 스위프트의 '딕셔너리' 타입은 키-값 첨자 연산이 옵셔널 타입을 받아들이고 반환하는 것으로 구현하고 있습니다. 위의 `numberOfLegs` 딕셔너리에서는, 키-값 첨자 연산이 값의 타입으로 `Int?`, 또는 "옵셔널 정수 (optional int)" 를 받아들이고 반환합니다. `Dictionary` 타입이 옵셔널 첨자 연산 타입을 사용한다는 것은 모든 키가 값을 가지는 것은 아니라는 사실을 모델링하고 있기도 하고, 키에 `nil` 값을 할당하여 그 키에 대한 값을 지울 수 있는 방법을 제공하고 있는 것이기도 합니다.
 
