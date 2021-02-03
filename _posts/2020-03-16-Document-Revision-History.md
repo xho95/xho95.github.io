@@ -292,7 +292,7 @@ categories: Swift Language Grammar Revision History
 * 서로 관계가 있는 '여러 개의 변수들' 을 한 개의 '타입 보조 설명 (type annotation)' 으로 된 한 줄에서 정의 할 수 있음을 알리기 위해 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 갱신함.
 * `@optional`, `@lazy`, `@final`, 그리고 `@required` 특성은 이제 `optional`, `lazy`, `final`, 그리고 `required` [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 임.
 * `..<` 를 ("반-닫힌 범위 연산자 (half-closed range operator) 대신") [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 로 '언급 (refer)' 하도록 전체 책을 갱신함.
-* `Dictionary` 는 이제 '불리언 (Boolean)' 속성인 `isEmpty` 를 가진다는 것을 알리기 위해 [Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리에-접근하고-수정하기) 부분을 갱신함.
+* `Dictionary` 는 이제 '불리언 (Boolean)' 속성인 `isEmpty` 를 가진다는 것을 알리기 위해 [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 갱신함.
 * [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 사용할 수 있는 전체 문자 목록을 명확히 밝힘.
 * `nil` 과 '불리언 (Boolean)' 인 `true` 및 `false` 는 이제 [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 임.
 * 스위프트의 `Array` 타입은 이제 온전하게 '값 의미 구조 (value semantics)' 를 가짐. 새로운 접근 방식을 반영하기 위해 [Mutability of Collections (집합체의 변경 가능성)](#mutability-of-collections-집합체의-변경-가능성) 과 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 에 대한 정보를 갱신함. 또한 '문자열 배열 (strings arrays)' 및 '딕셔너리 (dictionaries)' 에 대한 할당 및 복사 작동 방식도 분명하게 밝힘.
