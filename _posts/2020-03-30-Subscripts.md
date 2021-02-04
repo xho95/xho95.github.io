@@ -62,7 +62,7 @@ print("six times three is \(threeTimesTable[6])")
 
 ### Subscript Usage (첨자 연산 사용법)
 
-"첨자 연산 (subscript)" 의 정확한 의미는 사용되는 상황에 달려 있습니다. 첨자 연산은 전형적으로 '집합체 (collection)', 리스트, 또는 '일련 값 (sequence)' 에 있는 멤버 원소에 접근하기 위한 '줄임말 (shortcut)' 로 사용됩니다. 첨자 연산은 특정 클래스나 구조체의 기능에 가장 적절한 방식으로 자유롭게 구현할 수 있습니다.
+"첨자 연산 (subscript)" 의 정확한 의미는 사용하는 상황에 달려 있습니다. 첨자 연산은 전형적으로 '집합체 (collection)', 리스트, 또는 '일련 값 (sequence)' 에 있는 멤버 원소에 접근하기 위한 '줄임말 (shortcut)' 로써 사용됩니다. 첨자 연산은 특정 클래스나 구조체의 기능에 가장 적절한 방식으로 자유롭게 구현할 수 있습니다.
 
 예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장되어 있는 값을 설정하고 가져오기 위해 첨자 연산을 구현합니다. 딕셔너리는 첨자 연산 대괄호 안에 딕셔너리 키 타입의 키를 제공하고, 첨자 연산에 딕셔너리 값 타입의 값을 할당함으로써, 값을 설정할 수 있습니다:
 
@@ -75,7 +75,7 @@ numberOfLegs["bird"] = 2
 
 `Dictionary` 의 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 를 참고하기 바랍니다.
 
-> 스위프트의 '딕셔너리' 타입은 키-값 첨자 연산이 옵셔널 타입을 받아들이고 반환하는 것으로 구현하고 있습니다. 위의 `numberOfLegs` 딕셔너리에서는, 키-값 첨자 연산이 값의 타입으로 `Int?`, 또는 "옵셔널 정수 (optional int)" 를 받아들이고 반환합니다. `Dictionary` 타입이 옵셔널 첨자 연산 타입을 사용한다는 것은 모든 키가 값을 가지는 것은 아니라는 사실을 모델링하고 있기도 하고, 키에 `nil` 값을 할당하여 그 키에 대한 값을 지울 수 있는 방법을 제공하고 있는 것이기도 합니다.
+> 스위프트의 `Dictionary` 타입은 '키-값 첨자 연산' 을 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자 연산으로 구현합니다. 위의 `numberOfLegs` 딕셔너리는, '키-값 첨자 연산' 이 `Int?`, 또는 "옵셔널 정수 (optional int)" 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 모든 키가 값을 가지진 않는다는 사실을 모델링하고, 해당 키에 `nil` 값을 할당함으로써 키의 값을 지우는 방법을 부여하기 위해, '옵셔널 첨자 연산 타입' 을 사용합니다.
 
 ### Subscript Options (첨자 연산의 선택 사항들)
 
@@ -174,6 +174,6 @@ print(mars)
 
 [^sequences]: '일련 값 (sequence)' 은 그 자체로 수학에서의 '수열' 을 의미하는 단어이지만, 여기서는 '수열' 과 비슷하게 '같은 타입의 값들이 쭉 나열되어 있는 것' 이라는 의미로 '일련 값' 이라고 옮깁니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '일련 값 (sequence)' 등은 모두 알고리즘에서 사용하는 수학적인 '자료 구조' 를 의미합니다.
 
-[^read-only]: 이러한 작동 방식은 바로 뒤에 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보자면 '계산 속성' 과 '첨자 연산' 은 '인스턴스 메소드' 의 특수한 한 종류라고 볼 수 있습니다.
+[^read-only]: 이러한 작동 방식은 바로 뒤에 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보자면 '계산 속성' 과 '첨자 연산' 은 '인스턴스 메소드' 의 특수한 한 형태라고 볼 수 있습니다.
 
-[^initializer]: 여기서 사용한 '초기자 (initializer)' 는 구조체 타입에 대해서 자동으로 생기는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 생기기 때문에 코드에는 명시적으로 나타나지 않습니다. 멤버 초기자에 대한 더 자세한 정보는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
+[^initializer]: 여기서 사용한 '초기자 (initializer)' 는 구조체 타입에 대해서 자동으로 생기는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 부여되므로 코드에 나타나지는 않습니다. 멤버 초기자에 대한 더 자세한 정보는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
