@@ -6,17 +6,15 @@ date:   2020-03-31 10:00:00 +0900
 categories: Swift Language Grammar Inheritance
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Inheritance](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html) 부분[^Inheritance]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Inheritance](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html) 부분[^Inheritance]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Inheritance (상속)
 
-클래스는 다른 클래스의 메소드, 속성 그리고 기타 성질들을 _상속 (inherit)_ 할 수 있습니다. 한 클래스가 다른 것을 상속할 때, 상속을 받는 클래스를 _하위 클래스 (subclass)_ 라 하고, 상속을 해주는 클래스를 _상위 클래스 (superclass)_ 라고 합니다. 상속은 '클래스 (class)' 고유의 행동으로 이것이 스위프트의 다른 타입들과 차별되는 점입니다.
+클래스는 다른 클래스에서 메소드, 속성, 그리고 다른 '성질 (characteristics)' 들을 _상속 (inherit)_ 할 수 있습니다. 한 클래스가 또 다른 것을 상속할 때, 상속하는 클래스는 _하위 클래스 (subclass)_ 라고 하고, 상속을 주는 클래스는 _상위 클래스 (superclass)_ 라고 합니다. 상속은 스위프트에서 클래스를 다른 타입들과 구분짓는 기본 작동 방식입니다.
 
-스위프트의 클래스는 '상위 클래스 (superclass)' 의 메소드, 속성, 그리고 첨자 연산에 접근하고 호출할 수 있으며, 그 행동을 다듬고 수정해서 해당 메소드, 속성, 그리고 첨자 연산에 대한 자기만의 '재정의 버전 (overriding version)' 을 제공할 수도 있습니다. 스위프트는 '재정의한 정의 (override definition)' 에 해당하는 상위 클래스의 정의를 검사하여 해당 '재정의 (overrides)' 가 올바른지를 확인해 줍니다.
+스위프트의 클래스는 '상위 클래스' 에 속한 메소드, 속성, 및 첨자 연산을 호출하고 접근할 수 있으며 작동 방식을 개량하거나 수정하기 위해 그러한 메소드, 속성, 및 첨자 연산에 대한 자신만의 '재정의 (overriding) 버전' 을 제공할 수도 있습니다. 스위프트는 '재정의한 정의' 가 '상위 클래스' 의 정의와 일치하는 지를 검사하여 자신이 '재정의' 한 것이 올바르다는 것을 보장해 줍니다.
 
-클래스는 상속받은 속성에 '속성 관찰자 (property observers)' 도 추가할 수 있는데 이는 속성 값이 바뀔 때 알림을 받을 수 있게 해 줍니다. '속성 관찰자' 는 어떤 속성에든 추가할 수 있으며, 원래 속성이 '저장 속성 (stored property)' 이든 '계산 속성 (computed property)' 이든 상관 없습니다.
+클래스는 속성 값이 바뀔 때 알림을 받기 위하여 상속한 속성에 '속성 관찰자 (property observers)' 를 추가할 수도 있습니다. '속성 관찰자' 는, 원래가 '저장 (stored) 속성' 인지 '계산 (computed) 속성' 인지에 상관 없이, 어떤 속성에도 추가할 수 있습니다.
 
 ### Defining a Base Class (기본 클래스 정의하기)
 
