@@ -16,15 +16,15 @@ categories: Swift Language Grammar Inheritance
 
 클래스는 속성 값이 바뀔 때 알림을 받기 위하여 상속한 속성에 '속성 관찰자 (property observers)' 를 추가할 수도 있습니다. '속성 관찰자' 는, 원래가 '저장 (stored) 속성' 인지 '계산 (computed) 속성' 인지에 상관 없이, 어떤 속성에도 추가할 수 있습니다.
 
-### Defining a Base Class (기본 클래스 정의하기)
+### Defining a Base Class (기초 클래스 정의하기)
 
-어떤 클래스든 다른 클래스를 상속하지 않으면 이를 _기본 클래스 (base class)_[^base-class] 라고 합니다.
+또 다른 클래스를 상속하지 않는 클래스는 어떤 것이든 _기초 클래스 (base class)_[^base-class] 라고 합니다.
 
-> 스위프트의 클래스는 '범용 기본 클래스 (universal base class)' 를 상속하지 않습니다. 클래스를 정의할 때 '상위 클래스' 를 지정하지 않으면 자동으로 '기본 클래스' 가 됩니다.
+> 스위프트의 클래스는 '보편적인 기초 클래스 (universal base class)'[^universal-base-class] 를 상속하지 않습니다.[^inherit-from-a-universal-base-class] 상위 클래스를 지정하지 않고 정의한 클래스는 제작할 때 자동으로 '기초 클래스' 가 됩니다.
 
-아래 예제는 `Vehicle` 이라는 '기본 클래스' 를 정의합니다. 이 기본 클래스는 `currentSpeed` 라는 '저장 속성 (stored property)' 을 정의하고, 기본 값을 `0.0` 으로 둡니다. (추론된 속성의 타입은 `Double` 입니다) `currentSpeed` 속성의 값은 `description` 이라는 `String` 타입의 일기-전용 계산 속성에서 사용되어 차량에 대한 설명을 만들게 됩니다.
+아래 예제는 `Vehicle` 이라는 '기초 클래스' 를 정의합니다. 이 기초 클래스는, 기본 값이 `0.0` 인 (속성 타입은 `Double` 로 추론되는), `currentSpeed` 라는 '저장 속성' 을 정의합니다. `currentSpeed` 속성의 값은 '차량 (vehicle)' 의 설명을 생성하기 위해 `description` 이라는 `String` 타입의 '읽기-전용 계산 속성' 에서 사용합니다.
 
-`Vehicle` 기본 클래스는 `makeNoise` 라는 메소드도 정의합니다. 이 메소드는 기본 `Vehicle` 인스턴스에서는 실제로 하는 것이 아무 것도 없지만, 나중에 `Vehicle` 의 하위 클래스에서 사용자의 목적에 맞게 바뀔 것입니다:
+`Vehicle` 기초 클래스는 `makeNoise` 라는 메소드도 정의합니다. 이 메소드는 실제로 '기초 `Vehicle` 인스턴스' 를 위해서는 어떤 것도 하지 않지만, 나중에 `Vehicle` 의 '하위 클래스' 에서 사용자화 될 것입니다:
 
 ```swift
 class Vehicle {
@@ -33,7 +33,7 @@ class Vehicle {
     return "traveling at \(currentSpeed) miles per hour"
   }
   func makeNoise() {
-    // 아무 것도 하지 않습니다 - 임의의 차량은 소음을 발생시킬 필요가 없습니다.
+    // 아무 것도 안합니다 - 임의의 차량은 소음을 만들 필요가 없습니다
   }
 }
 ```
@@ -235,6 +235,10 @@ print("AutomaticCar: \(automatic.description)")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^base-class]: 어떤 프로그래밍 언어에서는 'base class' 를 'superclass' 의 의미로 사용하기도 합니다. 하지만 스위프트의 'base class (기본 클래스)' 는 'superclass (상위 클래스)' 와는 다릅니다. 스위프트에서는 '기본 클래스' 가 '상위 클래스' 일 수도 있고 아닐 수도 있으며, '상위 클래스' 도 '기본 클래스' 일 수도 있고 아닐 수도 있습니다. 스위프트의 'base class (기본 클래스)' 는 아무데서도 상속받은 것이 없는 클래스, 즉 상속 관계에서라면 자신이 상속의 출발점이 되는 클래스를 말합니다.
+[^base-class]: 'base class' 라는 용어는 프로그래밍 언어마다 의미가 조금씩 다른데, 'base class' 를 '상위 클래스 (superclass)' 의 의미로 사용하는 언어도 있습니다. 하지만, 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass)' 와는 의미가 조금 다릅니다. 스위프트의 '기초 클래스' 는 '상위 클래스' 인지 아닌지의 여부와는 상관없이, 아무 클래스도 상속하지 않는 클래스, 즉, '상속 계층' 이 있다면 자신이 상속의 출발점이 되는 클래스를 말합니다.
+
+[^universal-base-class]: '보편적인 기초 클래스 (universal base class)' 라는 것은 많은 프로그래밍 언어들에서 `Object` 라는 이름을 가진 '상속 계층' 의 최상단에 있는 클래스를 말합니다. 오브젝티브-C 언어만 하더라도 `NSObject` 라는 '보편적인 기초 클래스' 를 가지고 있습니다. 초창기 'OOP' 언어의 프레임웍은 이런 '보편적인 기초 클래스' 를 가진 경우가 많았습니다.
+
+[^inherit-from-a-universal-base-class]: 기본적으로, 스위프트 클래스는 '보편적인 기초 클래스' 를 상속하지 않지만, 해당 클래스를 오브젝티브-C 와 호환되게 하려면, `NSObject` 라는 '보편적인 기초 클래스' 를 상속받아야 합니다. 클래스 앞에 `@objc` 라는 '특성 (attribute)' 을 붙이는 것도 내부적으로는 `NSObject` 를 상속하도록 만드는 것입니다.
 
 [^read-write-to-read-only]: 이것은 없던 기능을 추가할 수는 있지만, 원래 있던 기능을 없앨 수는 없다고 이해하면 될 것 같습니다.
