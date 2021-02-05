@@ -38,20 +38,20 @@ class Vehicle {
 }
 ```
 
-`Vehicle` 의 새 인스턴스를 만들려면 _초기자 구문 표현 (initializer syntax)_ 을 사용하면 되며, 이는 타입 이름 뒤에 빈 괄호를 써주면 됩니다:
+`Vehicle` 의 새로운 인스턴스는, 타입 이름 뒤에 빈 괄호를 붙여서 작성하는, _초기자 구문 표현 (initializer syntax)_ 으로 생성합니다:
 
 ```swift
 let someVehicle = Vehicle()
 ```
 
-새 `Vehicle` 인스턴스를 만들고 나면, `description` 속성에 접근하여 차량의 현재 속도를 사람이 읽을 수 있는 형태로 출력할 수 있습니다:
+새 `Vehicle` 인스턴스를 생성했으면, 차량의 현재 속도를 사람이-이해 가능한 설명으로 인쇄하기 위해 `description` 속성에 접근할 수 있습니다:
 
 ```swift
 print("Vehicle: \(someVehicle.description)")
-// "Vehicle: traveling at 0.0 miles per hour" 를 출력합니다.
+// "Vehicle: traveling at 0.0 miles per hour" 를 인쇄합니다.
 ```
 
-`Vehicle` 클래스는 임의의 차량에 공통된 성질을 정의하지만, 그 자체로는 크게 쓸모가 없습니다. 좀 더 쓸모있게 만들려면, 구체적인 차량 종류에 맞게 설명을 다듬을 필요가 있습니다.
+`Vehicle` 클래스는 임의의 차량에 '공통인 성질' 을 정의하지만, 그 자체로는 많이 사용되지 않습니다. 더 유용하게 만들려면, 특정하게 지정된 종류의 차량을 설명하도록 이를 개량할 필요가 있습니다.
 
 ### Subclassing (하위 클래스 만들기)
 
