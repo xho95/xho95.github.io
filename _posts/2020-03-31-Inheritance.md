@@ -178,16 +178,16 @@ class Car: Vehicle {
 }
 ```
 
-`description` 속성의 '재정의' 는, `Vehicle` 클래스의 `description` 속성을 반환하는, `super.description` 을 호출하는 것으로 시작합니다. 이어서 `Car` 클래스 버전의 `description` 은 기존 설명 끝에 현재 '기어' 정보에 대한 몇가지 여분의 설명을 추가합니다.
+`description` 속성의 재정의는, `Vehicle` 클래스의 `description` 속성을 반환하는, `super.description` 을 호출하는 것으로써 시작합니다. `Car` 클래스 버전의 `description` 은 그런 다음 현재 '기어' 에 대한 정보를 제공하기 위해 기존 설명 끝에 약간의 부가적인 문장을 추가합니다.
 
-`Car` 클래스의 인스턴스를 만들고 `gear` 와 `currentSpeed` 속성을 설정하고 나면, `description` 속성이 `Car` 클래스 내에 정의된 '맞춤형 설명 (tailored description)' 을 반환하는 것을 볼 수 있습니다:
+`Car` 클래스의 인스턴스를 생성하고 `gear` 와 `currentSpeed` 속성을 설정하면, `description` 속성이 `Car` 클래스에서 정의한 '맞춤식 설명' 을 반환하는 것을 볼 수 있습니다:
 
 ```swift
 let car = Car()
 car.currentSpeed = 25.0
 car.gear = 3
 print("Car: \(car.description)")
-// "Car: traveling at 25.0 miles per hour in gear 3" 를 출력합니다.
+// "Car: traveling at 25.0 miles per hour in gear 3" 를 인쇄합니다.
 ```
 
 <p>
