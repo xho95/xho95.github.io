@@ -167,7 +167,7 @@ train.makeNoise()
 
 > 속성을 '재정의' 하면서 '설정자' 를 제공할 경우, 반드시 해당 재정의에 대한 '획득자' 도 제공해야 합니다. '재정의하는 획득자' 에서 상속한 속성의 값을 수정하고 싶지 않은 경우, `someProperty` 가 재정의하는 속성의 이름이라면, '획득자' 에서 `super.someProperty` 를 반환함으로써 단순히 상속한 값을 그대로 전달할 수도 있습니다.
 
-다음 예제는 `Vehicle` 의 하위 클래스로, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는 새로운 저장 속성인 `gear` 를 도입하여, 기본 값으로 정수 `1` 을 둡니다. `Car` 클래스는 `Vehicle` 에서 상속받은 `description` 속성도 재정의하고 있는데, 이는 사용자 목적에 맞도록 현재 '기어' 를 포함하는 설명을 제공하기 위함입니다.
+다음 예제는 `Car` 라는, `Vehicle` 의 새로운 하위 클래스를, 정의합니다. `Car` 클래스는, 기본 값이 `1` 인, `gear` 라는 새로운 저장 속성을 도입합니다. `Car` 클래스는, 현재 '기어 (gear)' 정보도 포함한 사용자 설명을 제공하기 위해, `Vehicle` 에서 상속한 `description` 속성도 재정의합니다:
 
 ```swift
 class Car: Vehicle {
@@ -178,16 +178,16 @@ class Car: Vehicle {
 }
 ```
 
-`description` 속성의 '재정의' 는, `Vehicle` 클래스의 `description` 속성을 반환하는, `super.description` 을 호출하는 것으로 시작합니다. 이어서 `Car` 클래스 버전의 `description` 은 기존 설명 끝에 현재 '기어' 정보에 대한 몇가지 여분의 설명을 추가합니다.
+`description` 속성의 재정의는, `Vehicle` 클래스의 `description` 속성을 반환하는, `super.description` 을 호출하는 것으로써 시작합니다. `Car` 클래스 버전의 `description` 은 그런 다음 현재 '기어' 에 대한 정보를 제공하기 위해 기존 설명 끝에 약간의 부가적인 문장을 추가합니다.
 
-`Car` 클래스의 인스턴스를 만들고 `gear` 와 `currentSpeed` 속성을 설정하고 나면, `description` 속성이 `Car` 클래스 내에 정의된 '맞춤형 설명 (tailored description)' 을 반환하는 것을 볼 수 있습니다:
+`Car` 클래스의 인스턴스를 생성하고 `gear` 와 `currentSpeed` 속성을 설정하면, `description` 속성이 `Car` 클래스에서 정의한 '맞춤식 설명' 을 반환하는 것을 볼 수 있습니다:
 
 ```swift
 let car = Car()
 car.currentSpeed = 25.0
 car.gear = 3
 print("Car: \(car.description)")
-// "Car: traveling at 25.0 miles per hour in gear 3" 를 출력합니다.
+// "Car: traveling at 25.0 miles per hour in gear 3" 를 인쇄합니다.
 ```
 
 <p>
