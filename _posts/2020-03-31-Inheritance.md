@@ -196,9 +196,9 @@ print("Car: \(car.description)")
 
 상속한 속성에 '속성 관찰자' 를 추가하기 위해 '속성 재정의' 를 사용할 수 있습니다. 이는, 해당 속성이 원래 어떻게 구현되어 있는지에 상관없이, 상속한 속성의 값이 바뀔 때 알림을 받을 수 있게 해줍니다. '속성 관찰자' 에 대한 더 많은 정보는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 를 참고하기 바랍니다.
 
-> '속성 관찰자' 를 '상속받은 상수 저장 속성 (inherited constant stored property)' 이나 '상속받은 읽기-전용 계산 속성 (inherited read-only computed properties)' 에는 추가할 수 없습니다. 이 속성들의 값은 설정 자체가 불가능하므로, '재정의' 하면서 `willSet` 이나 `didSet` 구현을 제공하는 것이 적합하지 않기 때문입니다.
+> 속성 관찰자는 상속한 '상수 저장 속성' 이나 상속한 '읽기-전용 계산 속성' 에는 추가할 수 없습니다. 이 속성들의 값은 설정할 수 없으므로, '재정의' 에서 `willSet` 또는 `didSet` 구현을 제공하는 것은 적절하지 않습니다.
 >
-> 동일한 하나의 속성에 대해 '재정의 설정자 (overriding setter)' 와 '재정의 속성 관찰자 (overriding property observer)' 를 동시에 제공할 수 없음에도 주목하기 바랍니다. 속성에 대해 이미 '사용자 정의 설정자 (custom setter)' 를 제공하고 있다면, 속성의 값이 바뀌는 것을 관찰하고 싶을 경우, 그 '사용자 정의 설정자 (custom setter)' 안에서 바뀔 값을 간단히 관찰하면 되기 때문입니다.
+> 똑같은 속성에 대해 '재정의 설정자' 와 '재정의 속성 관찰자' 를 둘 다 제공할 수 없다는 것도 기억하기 바랍니다. 속성의 값이 바뀌는 것을 관찰하고 싶은데, 해당 속성에서 이미 '사용자 정의 설정자' 를 제공하고 있는 경우, 단순히 '사용자 정의 설정자' 내에서 어떤 값의 바뀜이라도 관찰할 수 있습니다.
 
 다음 예제는 `Car` 의 하위 클래스로, `AutomaticCar` 라는 새로운 클래스를 정의합니다. 이 `AutomaticCar` 클래스는 '자동 기어박스' 가 있는 자동차를 나타내며, 현재 속도를 기반으로 하여 적절한 기어를 자동으로 선택합니다:
 
@@ -218,7 +218,7 @@ class AutomaticCar: Car {
 let automatic = AutomaticCar()
 automatic.currentSpeed = 35.0
 print("AutomaticCar: \(automatic.description)")
-// "AutomaticCar: traveling at 35.0 miles per hour in gear 4" 를 출력합니다.
+// "AutomaticCar: traveling at 35.0 miles per hour in gear 4" 를 인쇄합니다.
 ```
 
 ### Preventing Overrides (재정의 막기)
