@@ -200,7 +200,7 @@ print("Car: \(car.description)")
 >
 > 똑같은 속성에 대해 '재정의 설정자' 와 '재정의 속성 관찰자' 를 둘 다 제공할 수 없다는 것도 기억하기 바랍니다. 속성의 값이 바뀌는 것을 관찰하고 싶은데, 해당 속성에서 이미 '사용자 정의 설정자' 를 제공하고 있는 경우, 단순히 '사용자 정의 설정자' 내에서 어떤 값의 바뀜이라도 관찰할 수 있습니다.
 
-다음 예제는 `Car` 의 하위 클래스로, `AutomaticCar` 라는 새로운 클래스를 정의합니다. 이 `AutomaticCar` 클래스는 '자동 기어박스' 가 있는 자동차를 나타내며, 현재 속도를 기반으로 하여 적절한 기어를 자동으로 선택합니다:
+다음 예제는, `Car` 의 하위 클래스인, `AutomaticCar` 라는 새로운 클래스를 정의합니다. `AutomaticCar` 클래스는, 현재 속도를 기초로 적절한 기어를 자동으로 선택하는, '자동 변속기 (gearbox)' 를 가진 자동차를 표현합니다:
 
 ```swift
 class AutomaticCar: Car {
@@ -212,7 +212,7 @@ class AutomaticCar: Car {
 }
 ```
 
-`AutomaticCar` 인스턴스의 `currentSpeed` 속성을 설정할 때마다, 이 속성의 `didSet` '관찰자 (observer)' 가 새 속도에 적합하도록 인스턴스의 `gear` 속성을 설정하게 됩니다. 여기서 지정한 '속성 관찰자' 는 새 `currentSpeed` 값을 `10` 으로 나누고, 그 정수인 몫에, `1` 을 더한 값을 '기어' 로 선택합니다. 속도가 `35.0` 이면 기어는 `4` 가 됩니다:
+`AutomaticCar` 인스턴스의 `currentSpeed` 속성을 설정할 때마다, 속성의 '`didSet` 관찰자' 가 새로운 속도에 적절한 기어를 선택하도록 인스턴스의 `gear` 속성을 설정합니다. 특별히, 속성 관찰자는 새 `currentSpeed` 값을 `10` 으로 나눠서, 소수점 이하는 버린 다음, `1` 을 더한 '기어' 를 선택합니다. 속도가 `35.0` 이면 `4` 라는 기어를 `4` 내놓습니다:
 
 ```swift
 let automatic = AutomaticCar()
@@ -228,6 +228,10 @@ print("AutomaticCar: \(automatic.description)")
 'final (최종) 메소드', '최종 속성', 또는 '최종 첨자 연산' 을 하위 클래스에서 '재정의' 하려고 하면 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다. 클래스의 'extension (확장)' 으로 추가한 메소드, 속성, 또는 첨자 연산들도 'extension (확장)' 의 정의 안에서 'final (최종)' 으로 표시할 수 있습니다.
 
 클래스를 정의할 때 `class` 키워드 앞에 `final` '수정자 (modifier)' 를 붙이면 (즉 `final class` 라고 하면) 전체 클래스를 'final (최종)' 으로 표시하게 됩니다. '최종 클래스 (final class)' 를 가지고 '하위 클래스' 를 만들려고 하는 어떤 짓이든 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다.
+
+### 다음 장
+
+[Initialization (초기화) > ]({% post_url 2016-01-23-Initialization %})
 
 ### 참고 자료
 
