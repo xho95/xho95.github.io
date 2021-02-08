@@ -223,11 +223,11 @@ print("AutomaticCar: \(automatic.description)")
 
 ### Preventing Overrides (재정의 막기)
 
-메소드, 속성, 또는 첨자 연산이 재정의 되는 것을 막고 싶으면 _final (최종)_ 이라고 표시하면 됩니다. 이렇게 하려면 메소드, 속성, 또는 첨자 연산의 '도입자 (introducer)' 키워드 앞에 `final` '수정자 (modifier)' 를 붙이면 됩니다. (가령 `final var`, `final func`, `final class func`, 그리고 `final subscript` 와 같은 식으로 하면 됩니다.)
+메소드, 속성, 또는 첨자 연산은 _최종 (final)_ 이라고 표시함으로써 '재정의' 되는 것을 막을 수 있습니다. 이렇게 하려면 (`final var`, `final func`, `final class func`, 및 `final subscript` 처럼) 메소드, 속성, 또는 첨자 연산의 '도입자 (introducer)' 키워드 앞에 '`final` 수정자 (modifier)' 를 작성하면 됩니다.
 
-'final (최종) 메소드', '최종 속성', 또는 '최종 첨자 연산' 을 하위 클래스에서 '재정의' 하려고 하면 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다. 클래스의 'extension (확장)' 으로 추가한 메소드, 속성, 또는 첨자 연산들도 'extension (확장)' 의 정의 안에서 'final (최종)' 으로 표시할 수 있습니다.
+'최종' 메소드, 속성, 또는 첨자 연산을 재정의하려는 어떤 시도도 컴파일-시간 에러라고 보고합니다. 클래스의 '익스텐션 (extension)' 에서 추가한 메소드, 속성, 또는 첨자 연산도 '익스텐션 (extension)' 정의 내에서 '최종' 이라고 표시할 수 있습니다.
 
-클래스를 정의할 때 `class` 키워드 앞에 `final` '수정자 (modifier)' 를 붙이면 (즉 `final class` 라고 하면) 전체 클래스를 'final (최종)' 으로 표시하게 됩니다. '최종 클래스 (final class)' 를 가지고 '하위 클래스' 를 만들려고 하는 어떤 짓이든 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다.
+클래스 정의에 있는 `class` 키워드 앞에 '`final` 수정자' 를 (`final class` 처럼) 작성함으로써 전체 클래스를 '최종' 이라고 표시할 수 있습니다. '최종 클래스' 로 '하위 클래스' 를 만들려는 어떤 시도도 컴파일-시간 에러라고 보고합니다.
 
 ### 다음 장
 
