@@ -194,13 +194,13 @@ print("Car: \(car.description)")
 <strong id="overriding-property-observers-속성-관찰자-재정의하기">Overriding Property Observers (속성 관찰자 재정의하기)</strong>
 </p>
 
-'속성 재정의 (property overriding)' 를 사용하여 '상속받은 속성' 에 '속성 관찰자 (property observers)' 를 추가할 수 있습니다. 이것은 상속받은 속성의 값이 바뀔 때 알림을 받을 수 있도록 해주며, 이 때 그 속성이 원래 어떻게 구현됐는지는 상관 없습니다. '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 에서 확인할 수 있습니다.
+상속한 속성에 '속성 관찰자' 를 추가하기 위해 '속성 재정의' 를 사용할 수 있습니다. 이는, 해당 속성이 원래 어떻게 구현되어 있는지에 상관없이, 상속한 속성의 값이 바뀔 때 알림을 받을 수 있게 해줍니다. '속성 관찰자' 에 대한 더 많은 정보는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 를 참고하기 바랍니다.
 
-> '속성 관찰자' 를 '상속받은 상수 저장 속성 (inherited constant stored property)' 이나 '상속받은 읽기-전용 계산 속성 (inherited read-only computed properties)' 에는 추가할 수 없습니다. 이 속성들의 값은 설정 자체가 불가능하므로, '재정의' 하면서 `willSet` 이나 `didSet` 구현을 제공하는 것이 적합하지 않기 때문입니다.
+> 속성 관찰자는 상속한 '상수 저장 속성' 이나 상속한 '읽기-전용 계산 속성' 에는 추가할 수 없습니다. 이 속성들의 값은 설정할 수 없으므로, '재정의' 에서 `willSet` 또는 `didSet` 구현을 제공하는 것은 적절하지 않습니다.
 >
-> 동일한 하나의 속성에 대해 '재정의 설정자 (overriding setter)' 와 '재정의 속성 관찰자 (overriding property observer)' 를 동시에 제공할 수 없음에도 주목하기 바랍니다. 속성에 대해 이미 '사용자 정의 설정자 (custom setter)' 를 제공하고 있다면, 속성의 값이 바뀌는 것을 관찰하고 싶을 경우, 그 '사용자 정의 설정자 (custom setter)' 안에서 바뀔 값을 간단히 관찰하면 되기 때문입니다.
+> 똑같은 속성에 대해 '재정의 설정자' 와 '재정의 속성 관찰자' 를 둘 다 제공할 수 없다는 것도 기억하기 바랍니다. 속성의 값이 바뀌는 것을 관찰하고 싶은데, 해당 속성에서 이미 '사용자 정의 설정자' 를 제공하고 있는 경우, 단순히 '사용자 정의 설정자' 내에서 어떤 값의 바뀜이라도 관찰할 수 있습니다.
 
-다음 예제는 `Car` 의 하위 클래스로, `AutomaticCar` 라는 새로운 클래스를 정의합니다. 이 `AutomaticCar` 클래스는 '자동 기어박스' 가 있는 자동차를 나타내며, 현재 속도를 기반으로 하여 적절한 기어를 자동으로 선택합니다:
+다음 예제는, `Car` 의 하위 클래스인, `AutomaticCar` 라는 새로운 클래스를 정의합니다. `AutomaticCar` 클래스는, 현재 속도를 기초로 적절한 기어를 자동으로 선택하는, '자동 변속기 (gearbox)' 를 가진 자동차를 표현합니다:
 
 ```swift
 class AutomaticCar: Car {
@@ -212,22 +212,26 @@ class AutomaticCar: Car {
 }
 ```
 
-`AutomaticCar` 인스턴스의 `currentSpeed` 속성을 설정할 때마다, 이 속성의 `didSet` '관찰자 (observer)' 가 새 속도에 적합하도록 인스턴스의 `gear` 속성을 설정하게 됩니다. 여기서 지정한 '속성 관찰자' 는 새 `currentSpeed` 값을 `10` 으로 나누고, 그 정수인 몫에, `1` 을 더한 값을 '기어' 로 선택합니다. 속도가 `35.0` 이면 기어는 `4` 가 됩니다:
+`AutomaticCar` 인스턴스의 `currentSpeed` 속성을 설정할 때마다, 속성의 '`didSet` 관찰자' 가 새로운 속도에 적절한 기어를 선택하도록 인스턴스의 `gear` 속성을 설정합니다. 특별히, 속성 관찰자는 새 `currentSpeed` 값을 `10` 으로 나눠서, 소수점 이하는 버린 다음, `1` 을 더한 '기어' 를 선택합니다. 속도가 `35.0` 이면 `4` 라는 기어를 `4` 내놓습니다:
 
 ```swift
 let automatic = AutomaticCar()
 automatic.currentSpeed = 35.0
 print("AutomaticCar: \(automatic.description)")
-// "AutomaticCar: traveling at 35.0 miles per hour in gear 4" 를 출력합니다.
+// "AutomaticCar: traveling at 35.0 miles per hour in gear 4" 를 인쇄합니다.
 ```
 
 ### Preventing Overrides (재정의 막기)
 
-메소드, 속성, 또는 첨자 연산이 재정의 되는 것을 막고 싶으면 _final (최종)_ 이라고 표시하면 됩니다. 이렇게 하려면 메소드, 속성, 또는 첨자 연산의 '도입자 (introducer)' 키워드 앞에 `final` '수정자 (modifier)' 를 붙이면 됩니다. (가령 `final var`, `final func`, `final class func`, 그리고 `final subscript` 와 같은 식으로 하면 됩니다.)
+메소드, 속성, 또는 첨자 연산은 _최종 (final)_ 이라고 표시함으로써 '재정의' 되는 것을 막을 수 있습니다. 이렇게 하려면 (`final var`, `final func`, `final class func`, 및 `final subscript` 처럼) 메소드, 속성, 또는 첨자 연산의 '도입자 (introducer)' 키워드 앞에 '`final` 수정자 (modifier)' 를 작성하면 됩니다.
 
-'final (최종) 메소드', '최종 속성', 또는 '최종 첨자 연산' 을 하위 클래스에서 '재정의' 하려고 하면 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다. 클래스의 'extension (확장)' 으로 추가한 메소드, 속성, 또는 첨자 연산들도 'extension (확장)' 의 정의 안에서 'final (최종)' 으로 표시할 수 있습니다.
+'최종' 메소드, 속성, 또는 첨자 연산을 재정의하려는 어떤 시도도 컴파일-시간 에러라고 보고합니다. 클래스의 '익스텐션 (extension)' 에서 추가한 메소드, 속성, 또는 첨자 연산도 '익스텐션 (extension)' 정의 내에서 '최종' 이라고 표시할 수 있습니다.
 
-클래스를 정의할 때 `class` 키워드 앞에 `final` '수정자 (modifier)' 를 붙이면 (즉 `final class` 라고 하면) 전체 클래스를 'final (최종)' 으로 표시하게 됩니다. '최종 클래스 (final class)' 를 가지고 '하위 클래스' 를 만들려고 하는 어떤 짓이든 '컴파일 시간에 에러 (compile-time error)' 를 띄웁니다.
+클래스 정의에 있는 `class` 키워드 앞에 '`final` 수정자' 를 (`final class` 처럼) 작성함으로써 전체 클래스를 '최종' 이라고 표시할 수 있습니다. '최종 클래스' 로 '하위 클래스' 를 만들려는 어떤 시도도 컴파일-시간 에러라고 보고합니다.
+
+### 다음 장
+
+[Initialization (초기화) > ]({% post_url 2016-01-23-Initialization %})
 
 ### 참고 자료
 
