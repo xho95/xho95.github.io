@@ -52,11 +52,11 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 
 #### Default Property Values (기본 속성 값)
 
-위에서 본 것처럼, 저장 속성의 초기 값은 초기자 내에서 설정할 수 있습니다. 다른 방법은, 속성의 선언 부분[^property-declaration]에서 _기본 속성 값 (default property value)_ 을 지정하는 것입니다. '기본 속성 값' 을 지정하려면 속성을 정의할 때 초기 값을 할당하면 됩니다.
+위에서 본 것처럼, 저장 속성의 초기 값은 '초기자' 에서 설정할 수 있습니다. 대안으로, 속성의 선언[^property-declaration]에서 _기본 속성 값 (default property value)_ 을 지정합니다. '기본 속성 값' 은 정의할 때 속성에 초기 값을 할당함으로써 지정합니다.
 
-> 속성이 항상 같은 초기 값을 받아 들인다면, 초기자 내에서 값을 설정하는 것보다 '기본 값' 을 제공하기 바랍니다. 최종 결과는 같지만, 기본 값은 속성의 초기화를 그 선언과 더 밀접하게 이어줍니다. 이는 초기자를 더 짧고, 명확하게 만들며 속성의 타입을 기본 값으로 추론할 수 있게 해줍니다. 기본 값은 또, 이 장의 뒤에서 설명하는 것처럼, '기본 설정 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 이점을 더 쉽게 활용하도록 만들어 줍니다.
+> 속성이 항상 똑같은 초기 값을 취한다면, 초기자에서 값을 설정하는 대신 '기본 값' 을 제공하도록 합니다. 최종 결과는 똑같지만, 기본 값은 속성의 초기화를 선언과 더 가깝게 묶어줍니다. 이는 초기자를 더 짧고, 더 명확하게 해주며 기본 값으로 속성의 타입을 추론할 수 있게 해줍니다. 기본 값은, 이 장 나중에 설명하는 것처럼, '기본 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 장점도 더 쉽게 취하도록 해줍니다.
 
-속성을 선언하는 시점에 `temperature` 속성에 대한 기본 값을 제공하면 위의 `Fahrenheit` 구조체를 더 간단한 형태로 작성할 수 있습니다:
+위에 있는 `Fahrenheit` 구조체는 속성을 선언하는 시점에 `temperature` 속성에 기본 값을 제공함으로써 더 간단한 형식으로 작성할 수 있습니다:
 
 ```swift
 struct Fahrenheit {
@@ -208,7 +208,7 @@ beetsQuestion.ask()
 beetsQuestion.response = "I also like beets. (But not with cheese.)"
 ```
 
-### Default Initializers (기본 설정 초기자)
+### Default Initializers (기본 초기자)
 
 스위프트는 어떤 구조체나 클래스가 모든 속성에 대한 '기본 값 (default values)' 을 제공하면서 그 자신은 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다. 기본 설정 초기자는 단순히 모든 속성을 기본 값으로 설정하는 식으로 새로운 인스턴스를 생성합니다.
 
@@ -468,7 +468,7 @@ convenience init('parameters (매개 변수)') {
 
 사용자 정의 하위 클래스에 상위 클래스에 있는 것과 똑같은 초기자를 주고 싶을 경우, 하위 클래스에서 해당 초기자에 대한 사용자 구현을 제공할 수 있습니다.
 
-하위 클래스 초기자를 작성할 때 상위 클래스의 _지명 (designated)_ 초기자와 일치하는 경우, 이는 사실상 해당 지명 초기자에 대한 '재정의 (override)' 를 제공하는 것입니다. 그러므로, 하위 클래스의 초기자 정의 앞에 반드시 `override` 수정자를 붙여줘야 합니다. 이는, [Default Initializers (기본 설정 초기자)](#default-initializers-기본-설정-초기자) 에서 설명한 것처럼, 자동으로 제공되는 '기본 설정 초기자' 를 재정의하는 경우에도 마찬가지 입니다.
+하위 클래스 초기자를 작성할 때 상위 클래스의 _지명 (designated)_ 초기자와 일치하는 경우, 이는 사실상 해당 지명 초기자에 대한 '재정의 (override)' 를 제공하는 것입니다. 그러므로, 하위 클래스의 초기자 정의 앞에 반드시 `override` 수정자를 붙여줘야 합니다. 이는, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 제공되는 '기본 설정 초기자' 를 재정의하는 경우에도 마찬가지 입니다.
 
 재정의된 속성, 메소드, 및 첨자 연산에서와 같이, `override` 수정자가 있다는 것은 스위프트를 재촉하여 상위 클래스가 재정의된 것과 일치하는 지명 초기자를 가지고 있는지 검사하도록 하며, 재정의한 초기자에 대한 매개 변수가 의도한대로 지정되었는 지를 입증합니다.
 
@@ -487,7 +487,7 @@ class Vehicle {
 }
 ```
 
-`Vehicle` 클래스는 하나 뿐인 저장 속성에 대해 기본 값을 제공하며, 자기 스스로는 어떤 초기자도 제공하지 않습니다. 결과적으로, [Default Initializers (기본 설정 초기자)](#default-initializers-기본-설정-초기자) 에서 설명한대로, 자동으로 기본 설정 초기자를 부여 받습니다. 기본 설정 초기자는 (사용 가능한 경우) 항상 클래스에 대한 '지명 초기자' 이며, 이를 사용하여 `numberOfWheels` 가 `0` 인 새로운 `Vehicle` 인스턴스를 생성할 수 있습니다:
+`Vehicle` 클래스는 하나 뿐인 저장 속성에 대해 기본 값을 제공하며, 자기 스스로는 어떤 초기자도 제공하지 않습니다. 결과적으로, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한대로, 자동으로 기본 설정 초기자를 부여 받습니다. 기본 설정 초기자는 (사용 가능한 경우) 항상 클래스에 대한 '지명 초기자' 이며, 이를 사용하여 `numberOfWheels` 가 `0` 인 새로운 `Vehicle` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let vehicle = Vehicle()
@@ -1033,7 +1033,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^property-declaration]: 원문에서도 저장 속성의 '기본 값 (default value)' 를 설정하는 부분을 '속성의 정의' 와 '속성의 선언' 이라고 이 둘의 구분없이 사용하고 있습니다.
+[^property-declaration]: 본문의 앞 부분인 [Setting Initial Values for Stored Properties (저장 속성에 대한 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-대한-초기-값-설정하기) 를 보면, '기본 값' 을 속성의 '정의 (definition)' 에서 할 수 있다고 했다가, 여기서는 속성의 '선언 (declaration)' 에서 지정한다고 말하고 있는데, 이는 잘못된 것이 아닙니다. [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 맨 처음을 읽어 보면, 스위프트에서는 대부분의 '선언' 이 '정의' 이기도 하기 때문에, 이 둘의 구분은 중요하지 않으므로, 대부분 이 둘을 같은 의미로 사용한다고 설명하고 있습니다.
 
 [^funnel]: 지명 초기자를 깔대기에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연쇄되는 모습이 깔대기와 흡사하기 때문입니다.
 
