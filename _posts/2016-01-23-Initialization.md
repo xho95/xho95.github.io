@@ -64,15 +64,15 @@ struct Fahrenheit {
 }
 ```
 
-### Customizing Initialization (사용자 목적에 맞게 초기화 변경하기)
+### Customizing Initialization (초기화를 사용자 정의하기)
 
-초기화 과정은, 이어지는 장에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입을 사용하거나, 아니면 초기화 동안 상수 속성을 할당하는 것으로써, 사용자 목적에 맞게 변경할 수 있습니다.
+초기화 과정은, 다음 부분에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입으로, 또는 초기화하는 동안 상수 속성을 할당함으로써, 사용자 정의할 수 있습니다.
 
 #### Initialization Parameters (초기화 매개 변수)
 
-초기자의 정의 부분에서 _초기화 매개 변수 (initialization parameters)_ 를 제공하여, 초기화 과정을 사용자 목적에 맞게 변경하는 값의 타입과 이름을 정의할 수 있습니다. 초기화 매개 변수는 함수 매개 변수 및 메소드 매개 변수와 같은 기능과 구문 표현을 가지고 있습니다.
+초기자의 정의는, 초기화 과정을 사용자 정의하는 값의 타입과 이름을 정의하도록, _초기화 매개 변수 (initialization parameters)_ 를 제공할 수 있습니다. '초기화 매개 변수' 는 함수 및 메소드 매개 변수와 똑같은 '보유 능력' 과 '구문 표현' 을 가집니다.
 
-다음 예제는, 섭씨 단위로 표시된 온도를 저장하는, `Celsius` 라는 구조체를 정의합니다. `Celsius` 구조체는, 각각 다른 눈금의 온도 값을 가지고 구조체의 새 인스턴스를 초기화하는, `init(fromFahrenheit:)` 와 `init(fromKelvin:)` 이라는 두 개의 사용자 정의 초기자를 구현합니다:
+다음 예제는, '섭씨 (Celsius)' 눈금으로 표현된 온도를 저장하는, `Celsius` 라는 구조체를 정의합니다. `Celsius` 구조체는, 다른 '척도 (scale)' 의 온도 값을 가지고 새 구조체 인스턴스를 초기화하는, `init(fromFahrenheit:)` 와 `init(fromKelvin:)` 이라는 두 개의 '사용자 정의 초기자' 를 구현합니다:
 
 ```swift
 struct Celsius {
@@ -90,7 +90,7 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 // freezingPointOfWater.temperatureInCelsius 는 0.0 입니다.
 ```
 
-첫 번째 초기자는 인자 이름표가 `fromFahrenheit` 이고 매개 변수 이름이 `fahrenheit` 인 단일한 초기화 매개 변수를 가집니다. 두 번째 초기자는 인자 이름표가 `fromKelvin` 이고 매개 변수 이름이 `kelvin` 인 단일한 초기화 매개 변수를 가집니다. 두 초기자 모두 자신의 단일한 인자를 연관된 섭씨 값으로 변경한 다음 이 값을 `temperatureInCelsius` 라는 속성에 저장합니다.
+첫 번째 초기자는 `fromFahrenheit` 라는 '인자 이름표' 와 `fahrenheit` 라는 '매개 변수 이름' 을 가진 '단일 초기화 매개 변수' 를 가지고 있습니다. 두 번째 초기자는 `fromKelvin` 이라는 '인자 이름표' 와 `kelvin` 이라는 '매개 변수 이름' 을 가진 '단일 초기화 매개 변수' 를 가집니다. 두 초기자 모두 자신의 단일 인자를 관련된 섭씨 값으로 변환하며 `temperatureInCelsius` 라는 속성에 이 값을 저장합니다.
 
 #### Parameter Names and Argument Labels (매개 변수 이름과 인자 이름표)
 
@@ -1033,7 +1033,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^property-declaration]: 본문의 앞 부분인 [Setting Initial Values for Stored Properties (저장 속성에 대한 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-대한-초기-값-설정하기) 를 보면, '기본 값' 을 속성의 '정의 (definition)' 에서 할 수 있다고 했다가, 여기서는 속성의 '선언 (declaration)' 에서 지정한다고 말하고 있는데, 이는 잘못된 것이 아닙니다. [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 맨 처음을 읽어 보면, 스위프트에서는 대부분의 '선언' 이 '정의' 이기도 하기 때문에, 이 둘의 구분은 중요하지 않으므로, 대부분 이 둘을 같은 의미로 사용한다고 설명하고 있습니다.
+[^property-declaration]: 본문의 앞 부분인 [Setting Initial Values for Stored Properties (저장 속성에 대한 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-대한-초기-값-설정하기) 를 보면, '기본 값' 을 속성의 '정의 (definition)' 에서 할 수 있다고 했다가, 여기서는 속성의 '선언 (declaration)' 에서 지정한다고 말하고 있는데, 이는 잘못된 것이 아닙니다. [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 맨 처음을 읽어 보면, 스위프트에서는 대부분의 '선언' 이 '정의' 이기도 하기 때문에, 이 둘의 구분은 중요하지 않으며, 이 두 용어를 대부분 같은 의미로 사용한다고 설명하고 있습니다.
 
 [^funnel]: 지명 초기자를 깔대기에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연쇄되는 모습이 깔대기와 흡사하기 때문입니다.
 
