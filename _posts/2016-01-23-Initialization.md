@@ -159,9 +159,9 @@ let bodyTemperature = Celsius(37.0)
 
 #### Optional Property Types (옵셔널 속성 타입)
 
-자신의 사용자 정의 타입이 가지고 있는 정의 속성이 논리적으로 "값이 없음 (no value)" 일 수 있는 경우-아마도 초기화 동안에 값을 설정할 수 없기 때문이거나, 아니면 어떤 이후 시점에 "값이 없음" 인 상태일 수 있기 때문에-이 때는 그 속성을 _옵셔널 (optional)_ 타입으로 선언합니다. 옵셔널 타입인 속성은 자동으로 `nil` 값으로 초기화되며, 이는 그 속성이 초기화 동안에 "아직 값이 없는 (no value yet)" 상태인 것이 일부러 의도한 것임을 지시합니다.
+자신만의 사용자 정의 타입이-아마도 값을 초기화 동안 설정할 수 없기 때문에, 또는 더 나중의 일정 시점에 "값이 없울" 수 있기 때문에-"값이 없음 (no value)" 을 논리적으로 허용한 저장 속성을 가진 경우, 그 속성을 _옵셔널 (optional)_ 타입으로 선언합니다. 옵셔널 타입의 속성은, 속성이 초기화 동안에는 "아직 값이 없는" 것이 일부로 의도한 것임을 표시하는, `nil` 이라는 값으로 초기화 됩니다.
 
-다음 예제는, `response` 라는 옵셔널 `String` 속성을 가지는, `SurveyQuestion` 이라는 클래스를 정의합니다:
+다음 예제는, `response` 라는 '옵셔널 `String` 속성' 을 가진, `SurveyQuestion` 이라는 클래스를 정의합니다:
 
 ```swift
 class SurveyQuestion {
@@ -176,7 +176,7 @@ class SurveyQuestion {
 }
 let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
 cheeseQuestion.ask()
-// "Do you like cheese?" 를 출력합니다.
+// "Do you like cheese?" 를 인쇄합니다.
 cheeseQuestion.response = "Yes, I do like cheese."
 ```
 
