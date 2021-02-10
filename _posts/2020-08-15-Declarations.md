@@ -590,7 +590,7 @@ struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토
 
 * [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 구조체에서 선언한 초기자 중 하나를 호출합니다.
 * 선언한 초기자가 없는 경우, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 '멤버 초기자 (memberwise initializer)' 를 호출합니다.
-* 선언한 초기자가 없지만, 구조체 선언의 모든 속성에 초기 값이 주어진 경우, [Default Initializers (기본 설정 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-설정-초기자) 에서 설명한 것처럼, 구조체의 '기본 초기자 (default initializer)' 를 호출합니다.
+* 선언한 초기자가 없지만, 구조체 선언의 모든 속성에 초기 값이 주어진 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 '기본 초기자 (default initializer)' 를 호출합니다.
 
 구조체에서 선언한 속성을 초기화하는 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
@@ -625,7 +625,7 @@ _상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 �
 이전에 선언한 클래스의 인스턴스를 생성하는 방법은 두 가지가 있습니다:
 
 * [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 클래스에서 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자가 없지만, 클래스 선언의 모든 속성에 초기 값이 주어진 경우, [Default Initializers (기본 설정 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-설정-초기자) 에서 설명한 것처럼, 클래스의 '기본 초기자 (default initializer)' 를 호출합니다.
+* 선언한 초기자가 없지만, 클래스 선언의 모든 속성에 초기 값이 주어진 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 '기본 초기자 (default initializer)' 를 호출합니다.
 
 클래스 인스턴스의 속성에 접근하려면, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문 표현' 을 사용합니다.
 
