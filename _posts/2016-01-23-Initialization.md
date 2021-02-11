@@ -222,7 +222,7 @@ class ShoppingListItem {
 var item = ShoppingListItem()
 ```
 
-`ShoppingListItem` 클래스는 모든 속성이 기본 값을 가지고 있으며, 상위 클래스가 없는 '기본 클래스 (base class)' 이기 때문에, `ShoppingListItem` 은 자동으로 '기본 설정 초기자' 구현을 가지게 되며 이로써 새 인스턴스를 생성할 때 모든 속성을 기본 값으로 설정합니다. (`name` 속성은 옵셔널 `String` 속성이므로, 코드에 작성된 값이 없더라도, 자동으로 `nil` 이라는 기본 값을 부여 받습니다.) 위 예제는 `ShoppingListItem` 클래스의 기본 설정 초기자와 '초기자 구문 표현 (initializer syntax)' 을 같이 사용하여, `ShoppingListItem()` 처럼 작성해서, 클래스의 새로운 인스턴스를 생성했으며, 이 새로운 인스턴스를 `item` 이라는 변수에 할당하였습니다.
+`ShoppingListItem` 클래스는 모든 속성이 기본 값을 가지고 있기 때문에, 그리고 '상위 클래스' 를 가지지 않는 '기본 클래스'[^base-class] 이기 때문에, `ShoppingListItem` 은 모든 속성을 기본 값으로 설정하는 것으로 새로운 인스턴스를 생성하는 '기본 초기자' 구현을 자동으로 가지게 됩니다. (`name` 속성은 '옵셔널 `String` 속성' 이므로, 코드에 값을 작성하지 않더라도, `nil` 이라는 기본 값을 자동으로 받습니다.) 위 예제는 `ShoppingListItem` 클래스가, `ShoppingListItem()` 라고 작성한, '초기자 구문 표현' 으로 클래스의 새로운 인스턴스를 생성하는데 '기본 초기자' 를 사용하며, 이 새 인스턴스를 `item` 이라는 변수에 할당합니다.
 
 #### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
