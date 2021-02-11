@@ -184,11 +184,11 @@ cheeseQuestion.response = "Yes, I do like cheese."
 
 #### Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)
 
-상수 속성은, 초기화를 마치는 순간에 정확한 값이 설정되어 있기만 하다면, 초기화 동안의 어느 순간에도 값을 할당할 수 있습니다. 일단 한번 상수 속성에 값이 할당되면, 더 이상 수정할 수는 없습니다.
+상수 속성의 값은, 초기화를 종료할 때까지 확실한 값이 설정되기만 한다면, 초기화 동안의 어떤 시점에도 할당할 수 있습니다. 상수 속성에 값을 한 번 설정하고 나면, 더 이상 수정할 수 없습니다.
 
-> 클래스 인스턴스의 경우, 상수 속성은 오직 자신을 도입한 클래스의 초기화 동안에만 수정할 수 있습니다. 하위 클래스에서는 수정할 수 없습니다.
+> 클래스 인스턴스에서의, 상수 속성은 이를 도입한 클래스의 초기화 동안에만 수정할 수 있습니다. 하위 클래스에서 수정할 수는 없습니다.
 
-위에서 `SurveyQuestion` 예제의 질문에 대한 `text` 속성을 변수 속성이 아닌 상수 속성으로 개량하여, `SurveyQuestion` 의 인스턴스가 일단 생성되면 질문은 바뀌지 않는다고 지시할 수 있습니다. `text` 속성이 이제 상수가 됐음에도 불구하고, 클래스의 초기자에서 설정하는 것은 여전히 가능합니다:
+위에 있는 `SurveyQuestion` 예제는, `SurveyQuestion` 인스턴스를 한 번 생성하고 나면 질문은 바뀔 수 없음을 지시하기 위해, 질문에 대한 `text` 속성을 '변수 속성' 대신 '상수 속성' 을 사용하도록 개정할 수 있습니다. `text` 속성은 이제 상수일지라도, 여전히 클래스의 초기자에서 설정할 수 있습니다:
 
 ```swift
 class SurveyQuestion {
@@ -203,7 +203,7 @@ class SurveyQuestion {
 }
 let beetsQuestion = SurveyQuestion(text: "How about beets?")
 beetsQuestion.ask()
-// "How about beets?" 를 출력합니다.
+// "How about beets?" 를 인쇄합니다.
 beetsQuestion.response = "I also like beets. (But not with cheese.)"
 ```
 
