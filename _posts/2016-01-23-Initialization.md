@@ -159,7 +159,7 @@ let bodyTemperature = Celsius(37.0)
 
 #### Optional Property Types (옵셔널 속성 타입)
 
-자신만의 사용자 정의 타입이-아마도 값을 초기화 동안 설정할 수 없기 때문에, 또는 더 나중의 일정 시점에 "값이 없울" 수 있기 때문에-"값이 없음 (no value)" 을 논리적으로 허용한 저장 속성을 가진 경우, 그 속성을 _옵셔널 (optional)_ 타입으로 선언합니다. 옵셔널 타입의 속성은, 속성이 초기화 동안에는 "아직 값이 없는" 것이 일부로 의도한 것임을 표시하는, `nil` 이라는 값으로 초기화 됩니다.
+자신만의 사용자 정의 타입이-초기화 동안 값을 설정할 수 없거나, 나중의 어떤 시점에 "값이 없울" 수도 있기 때문에-논리적으로 "값이 없음 (no value)" 을 허용한 저장 속성을 가질 경우, 그 속성은 _옵셔널 (optional)_ 타입으로 선언합니다. 옵셔널 타입인 속성은, 초기화 동안 속성의 "값이 아직 없음" 은 일부로 의도한 것임을 지시하는, `nil` 값으로 초기화 됩니다.
 
 다음 예제는, `response` 라는 '옵셔널 `String` 속성' 을 가진, `SurveyQuestion` 이라는 클래스를 정의합니다:
 
@@ -180,15 +180,15 @@ cheeseQuestion.ask()
 cheeseQuestion.response = "Yes, I do like cheese."
 ```
 
-설문 조사에 대한 응답은 질문을 하기 전까지 알 수 없으므로, `response` 속성은 `String?` 타입, 또는 “옵셔널 `String`” 타입으로 선언합니다. `SurveyQuestion` 의 새 인스턴스를 초기화할 때, "아직 값이 없음 (no value yet)" 을 의미하는, `nil` 이라는 기본 값을 여기에다 자동으로 할당합니다.
+'설문 조사 (survey question)' 에 대한 응답은 질문하기 전까지는 알 수 없으므로, `response` 속성을 `String?`, 또는 “옵셔널 `String`” 타입으로 선언합니다. 이는, 새로운 `SurveyQuestion` 인스턴스를 초기화할 때, "값이 아직 없음" 을 의미하는, `nil` 기본 값으로 자동 할당됩니다.
 
 #### Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)
 
-상수 속성은, 초기화를 마치는 순간에 정확한 값이 설정되어 있기만 하다면, 초기화 동안의 어느 순간에도 값을 할당할 수 있습니다. 일단 한번 상수 속성에 값이 할당되면, 더 이상 수정할 수는 없습니다.
+상수 속성의 값은, 초기화를 종료할 때까지 확실한 값이 설정되기만 한다면, 초기화 동안의 어떤 시점에도 할당할 수 있습니다. 상수 속성에 값을 한 번 설정하고 나면, 더 이상 수정할 수 없습니다.
 
-> 클래스 인스턴스의 경우, 상수 속성은 오직 자신을 도입한 클래스의 초기화 동안에만 수정할 수 있습니다. 하위 클래스에서는 수정할 수 없습니다.
+> 클래스 인스턴스에서의, 상수 속성은 이를 도입한 클래스의 초기화 동안에만 수정할 수 있습니다. 하위 클래스에서 수정할 수는 없습니다.
 
-위에서 `SurveyQuestion` 예제의 질문에 대한 `text` 속성을 변수 속성이 아닌 상수 속성으로 개량하여, `SurveyQuestion` 의 인스턴스가 일단 생성되면 질문은 바뀌지 않는다고 지시할 수 있습니다. `text` 속성이 이제 상수가 됐음에도 불구하고, 클래스의 초기자에서 설정하는 것은 여전히 가능합니다:
+위에 있는 `SurveyQuestion` 예제는, `SurveyQuestion` 인스턴스를 한 번 생성하고 나면 질문은 바뀔 수 없음을 지시하기 위해, 질문에 대한 `text` 속성을 '변수 속성' 대신 '상수 속성' 을 사용하도록 개정할 수 있습니다. `text` 속성은 이제 상수일지라도, 여전히 클래스의 초기자에서 설정할 수 있습니다:
 
 ```swift
 class SurveyQuestion {
@@ -203,7 +203,7 @@ class SurveyQuestion {
 }
 let beetsQuestion = SurveyQuestion(text: "How about beets?")
 beetsQuestion.ask()
-// "How about beets?" 를 출력합니다.
+// "How about beets?" 를 인쇄합니다.
 beetsQuestion.response = "I also like beets. (But not with cheese.)"
 ```
 
