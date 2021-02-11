@@ -209,9 +209,9 @@ beetsQuestion.response = "I also like beets. (But not with cheese.)"
 
 ### Default Initializers (기본 초기자)
 
-스위프트는 어떤 구조체나 클래스가 모든 속성에 대한 '기본 값 (default values)' 을 제공하면서 그 자신은 단 하나의 초기자도 제공하지 않을 경우 '_기본 설정 초기자 (default initializer)_' 를 제공합니다. 기본 설정 초기자는 단순히 모든 속성을 기본 값으로 설정하는 식으로 새로운 인스턴스를 생성합니다.
+스위프트는 모든 속성에 '기본 값' 을 제공면서 자체로는 단 하나의 초기자도 제공하지 않는 어떤 구조체나 클래스든 '_기본 초기자 (default initializer)_' 를 제공합니다. '기본 초기자' 는 단순히 모든 속성을 기본 값으로 설정하는 것으로 새로운 인스턴스를 생성합니다.
 
-다음 예제는 `ShoppingListItem` 이라는 클래스를 정의하여, 구매 목록의 각 항목에 대한 이름, 수량, 그리고 구매 상태를 '은닉합니다 (encapsulates)':
+이 예제는, '구매 목록 (shopping list)' 의 각 항목에 대한 이름, 수량, 그리고 '구매 상태' 를 '은닉 (encapsulate)' 하는, `ShoppingListItem` 이라는 클래스를 정의합니다:
 
 ```swift
 class ShoppingListItem {
