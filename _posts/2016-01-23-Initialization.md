@@ -328,7 +328,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 #### Designated Initializers and Convenience Initializers (지명 초기자와 편의 초기자)
 
-_지명 초기자 (designated initializers)_ 는 클래스에 대한 제1의 초기자입니다. 지명 초기자는 해당 클래스가 도입한 모든 속성을 완전히 초기화하고 적당한 상위 클래스 초기자를 호출하여 위쪽 상위 클래스 연쇄망으로 초기화 과정을 계속 이어갑니다.
+_지명 초기자 (designated initializers)_ 는 클래스의 '주 (primary) 초기자' 입니다. 지명 초기자는 해당 클래스가 도입한 모든 속성을 완전히 초기화하고 적당한 상위 클래스 초기자를 호출하여 위쪽 상위 클래스 연쇄망으로 초기화 과정을 계속 이어갑니다.
 
 클래스는 아주 적은 수의 지명 초기자만 가지는 경향이 있으며, 사실 단 하나만 가지는 것이 일반적입니다. 지명 초기자는 이를 통해 초기화가 일어나고, 이를 통해 초기화 과정이 위쪽 상위 클래스 연쇄망으로 계속되는, 일종의 "깔때기 (funnel)"[^funnel] 같은 곳입니다.
 
