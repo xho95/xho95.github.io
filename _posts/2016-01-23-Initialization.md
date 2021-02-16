@@ -449,17 +449,17 @@ convenience init(`parameters-매개 변수`) {<br />
 
 ![Phase 2](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-2.png)
 
-상위 클래스의 지명 초기자는 (꼭 해야하는 것은 아니지만) 이제 인스턴스를 한 번 더 사용자 정의할 기회를 가집니다.
+상위 클래스의 지명 초기자는 이제 (꼭 해야하는 것은 아닐지라도) 인스턴스를 한 번 더 사용자 정의할 기회를 가집니다.
 
 상위 클래스의 지명 초기자가 (작업을) 종료하고 나면, 하위 클래스의 지명 초기자가 추가적인 사용자 정의를 수행할 수 있습니다. (다시 말하지만, 꼭 해야하는 것은 아닙니다).
 
-최종적으로, 하위 클래스의 지명 초기자가 (작업을) 종료하고 나면, 원래 호출했던 편의 초기자가 추가적인 사용자 정의를 수행할 수 있습니다.
+최종적으로, 하위 클래스의 지명 초기자가 종료하면, 원래 호출했던 편의 초기자가 추가적인 사용자 정의를 수행할 수 있습니다.
 
-#### Initializer Inheritance and Overriding (초기자 상속 및 재정의)
+#### Initializer Inheritance and Overriding (초기자 상속과 재정의)
 
-오브젝티브-C 언어의 하위 클래스와는 다르게, 스위프트 하위 클래스는 기본적으로 자신의 상위 클래스에 있는 초기자를 상속받지 않습니다. 스위프트의 접근 방식은 상위 클래스에 있는 간단한 초기자를 더 특수한 하위 클래스가 상속 받는 바람에 하위 클래스의 새로운 인스턴스를 완전하고 올바르게 초기화 하지 못하는 상황이 발생하는 것을 막아줍니다.
+오브젝티브-C 의 하위 클래스와는 달리, 스위프트 하위 클래스는 자신의 상위 클래스 초기자를 기본적으로 상속하지 않습니다. 스위프트의 접근 방식은 상위 클래스의 단순한 초기자를 더 특수화된 하위 클래스가 상속해서 온전히 또는 올바르게 초기화되지 않은 하위 클래스의 인스턴스를 생성하는 상황을 막아줍니다.
 
-> 상위 클래스 초기자는 정해진 상황에서는 상속이 _되는데 (are)_, 단 그것도 안전하면서 적절한 상황에서만 되는 것입니다. 더 자세한 정보는, [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 을 참고하기 바랍니다.  
+> 상위 클래스 초기자 _는 (are)_ 정해진 상황에서는 상속되는데, 그렇게 하는 것이 안전하고 적절할 때만 그렇습니다. 더 많은 정보는, 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 을 참고하기 바랍니다.  
 
 사용자 정의 하위 클래스에 상위 클래스에 있는 것과 똑같은 초기자를 주고 싶을 경우, 하위 클래스에서 해당 초기자에 대한 사용자 구현을 제공할 수 있습니다.
 
@@ -619,7 +619,7 @@ class RecipeIngredient: Food {
 
 `RecipeIngredient` 는, `init(name: String)` 라는, 편의 초기자도 정의하고 있는데, 이를 사용하면 이름만 가지고 `RecipeIngredient` 인스턴스를 생성할 수 있습니다. 이 편의 초기자는 수량을 명시하지 않은 채로 생성하는 `RecipeIngredient` 인스턴스는 수량이 `1` 이라고 가정합니다. 편의 초기자를 이렇게 정의하면 `RecipeIngredient` 인스턴스를 더 빠르고 편리하게 생성하도록 해주며, 수량-한 개 짜리 `RecipeIngredient` 인스턴스를 여러 개 생성할 때의 코드 중복을 피하도록 해줍니다. 이 편의 초기자는 단순히 옆으로 위임하며 클래스의 지명 초기자에, `1` 이라는 `quantity` 값을 전달합니다.
 
-`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 같은 매개 변수를 받아 들입니다. 이 편의 초기자는 상위 클래스에 있는 지명 초기자를 '재정의 (override)' 하고 있기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 같은 매개 변수를 받아 들입니다. 이 편의 초기자는 상위 클래스에 있는 지명 초기자를 '재정의 (override)' 하고 있기 때문에, ([Initializer Inheritance and Overriding (초기자 상속과 재정의)](#initializer-inheritance-and-overriding-초기자-상속과-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
 
 비록 `RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하긴 했지만, `RecipeIngredient` 는 그럼에도 불구하고 모든 상위 클래스의 지명 초기자에 대한 구현을 제공했습니다. 따라서, `RecipeIngredient` 는 상위 클래스의 모든 편의 초기자를 자동으로 상속받습니다.
 
