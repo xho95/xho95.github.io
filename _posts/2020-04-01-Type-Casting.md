@@ -22,7 +22,7 @@ _타입 변환 (Type Casting)_ 은 한 인스턴스의 타입을 검사하는 �
 
 '타입 변환 (type casting)'[^type-casting-and-type-conversion] 을 '클래스 및 하위 클래스들의 계층 (hierarchy of classes and subclasses)' 과 같이 사용하면 특정한 클래스 인스턴스의 타입을 검사할 수 있으며 그 인스턴스를 같은 계층 내에 있는 다른 클래스로 '변환 (cast)' 할 수도 있습니다. 아래에 있는 세 개의 코드 조각은 '클래스 계층' 및 이 클래스들의 인스턴스를 가질 배열을 정의하는 것으로, 이 후 타입 변환 예제에서 사용할 것입니다.
 
-첫 번째 코드 조각은 `MediaItem` 이라는 새로운 '기본 클래스 (base class)'[^base-class] 를 정의합니다. 이 클래스는 '디지털 미디어 라이브러리 (digital media library)' 에서 표시할 모든 종류의 항목을 위한 '기본 기능' 을 제공합니다. 특히, `String` 타입의 `name` 속성과, `init name` 초기자를 선언하고 있습니다. (이는 모든 미디어 항목들이, 가령 모든 영화와 노래를 포함한 것들이, 이름을 가질 것이라고 가정하고 있는 것입니다.)
+첫 번째 코드 조각은 `MediaItem` 이라는 새로운 '기초 클래스 (base class)'[^base-class] 를 정의합니다. 이 클래스는 '디지털 미디어 라이브러리 (digital media library)' 에서 표시할 모든 종류의 항목을 위한 '기본 기능' 을 제공합니다. 특히, `String` 타입의 `name` 속성과, `init name` 초기자를 선언하고 있습니다. (이는 모든 미디어 항목들이, 가령 모든 영화와 노래를 포함한 것들이, 이름을 가질 것이라고 가정하고 있는 것입니다.)
 
 ```swift
 class MediaItem {
@@ -33,7 +33,7 @@ class MediaItem {
 }
 ```
 
-그 다음 코드 조각은 `MediaItem` 의 두 '하위 클래스' 를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화나 필름에 대한 추가적인 정보를 '은닉 (encapsulates)' 합니다. 이는 `MediaItem` 기본 클래스 위에다가 `director` 속성을 추가하고, 그와 연관되는 초기자도 추가합니다. 두 번째 하위 클래스인, `Song` 은, 기본 클래스 위에 `artist` 속성과 초기자를 추가합니다:
+그 다음 코드 조각은 `MediaItem` 의 두 '하위 클래스' 를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화나 필름에 대한 추가적인 정보를 '은닉 (encapsulates)' 합니다. 이는 `MediaItem` 기초 클래스 위에다가 `director` 속성을 추가하고, 그와 연관되는 초기자도 추가합니다. 두 번째 하위 클래스인, `Song` 은, 기초 클래스 위에 `artist` 속성과 초기자를 추가합니다:
 
 ```swift
 class Movie: MediaItem {
@@ -212,6 +212,6 @@ things.append(optionalNumber as Any) // No warning
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^base-class]: 스위프트에서 '기본 클래스 (base class)' 라는 것은 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 의미합니다. '기본 클래스' 에 대한 더 자세한 설명은 [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 을 참고하기 바랍니다.
+[^base-class]: 스위프트에서 '기초 클래스 (base class)' 라는 것은 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 의미합니다. '기초 클래스' 에 대한 더 자세한 설명은 [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 을 참고하기 바랍니다.
 
 [^type-casting-and-type-conversion]: '타입 변환' 이라는 말은 영어로 'type casting' 과 'type conversion' 둘 다에 적용할 수 있지만, 이 둘은 서로 조금 다른 개념입니다. 'type casting' 과 'type conversion' 의 차이점에 대해서는 [Difference Between Type Casting and Type Conversion](https://techdifferences.com/difference-between-type-casting-and-type-conversion.html) 이라는 글을 참고하기 바랍니다.

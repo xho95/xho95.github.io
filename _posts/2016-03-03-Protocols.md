@@ -755,7 +755,7 @@ class Animal {
 }
 ```
 
-`Circle`, `Country`, 그리고 `Animal` 클래스에는 서로 공유하는 '기본 클래스 (base class)' 가 없습니다. 그럼에도 불구하고, 이들은 모두 클래스이므로, 이 세 가지 타입의 인스턴스를 모두 사용하여 `AnyObject` 타입의 값을 저장하는 배열을 초기화할 수 있습니다:
+`Circle`, `Country`, 그리고 `Animal` 클래스에는 서로 공유하는 '기초 클래스 (base class)' 가 없습니다. 그럼에도 불구하고, 이들은 모두 클래스이므로, 이 세 가지 타입의 인스턴스를 모두 사용하여 `AnyObject` 타입의 값을 저장하는 배열을 초기화할 수 있습니다:
 
 ```swift
 let objects: [AnyObject] = [
