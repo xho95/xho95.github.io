@@ -538,7 +538,7 @@ print("Hoverboard: \(hoverboard.description)")
 // Hoverboard: 0 wheel(s) in a beautiful silver
 ```
 
-> 하위 클래스는 초기화 동안 상속받은 변수 속성을 수정할 수는 있지만, 상속받은 상수 속성을 수정할 수는 없습니다.
+> 하위 클래스는 초기화 동안 '상속한 변수 속성' 을 수정할 수 있지만, '상속한 상수 속성' 을 수정할 수는 없습니다.
 
 #### Automatic Initializer Inheritance (자동적인 초기자 상속)
 
