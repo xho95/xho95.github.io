@@ -620,7 +620,7 @@ class `class name-클래스 이름`: `superclass-상위 클래스`, `adopted pro
 
 하위 클래스가 상위 클래스의 초기자를 필수로 구현하게 만들려면, 상위 클래스의 초기자를 `required` 선언 수정자로 표시합니다. 해당 초기자에 대한 하위 클래스의 구현 또한 반드시 `required` 선언 수정자로 표시해야 합니다.
 
-_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스에서 상속한다고 하더라도, 상위 클래스에서 선언한 '지명 초기자' 는 하위 클래스가 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명한 조건을 만족할 때만 상속됩니다. 스위프트의 클래스는 '범용 기본 클래스 (universal base class)'[^universal-base-class] 에서 상속된 것이 아닙니다.
+_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스에서 상속한다고 하더라도, 상위 클래스에서 선언한 '지명 초기자' 는 하위 클래스가 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명한 조건을 만족할 때만 상속됩니다. 스위프트의 클래스는 '범용 기초 클래스 (universal base class)'[^universal-base-class] 에서 상속된 것이 아닙니다.
 
 이전에 선언한 클래스의 인스턴스를 생성하는 방법은 두 가지가 있습니다:
 
@@ -1240,7 +1240,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^designated-initializers]: 여기서 '초기자' 가 아니라 '지명 초기자' 라고 한 것은, 재정의한 초기자가 상위 클래스에서 '지명 초기자' 이든 '편의 초기자' 이든, 재정의하고 나면 무조건 '지명 초기자' 가 되기 때문입니다.
 
-[^universal-base-class]: '범용 기본 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로 추측됩니다.
+[^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로 추측됩니다.
 
 [^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 

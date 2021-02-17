@@ -222,7 +222,7 @@ class ShoppingListItem {
 var item = ShoppingListItem()
 ```
 
-`ShoppingListItem` 클래스는 모든 속성이 기본 값을 가지고 있기 때문에, 그리고 '상위 클래스' 를 가지지 않는 '기본 클래스'[^base-class] 이기 때문에, `ShoppingListItem` 은 모든 속성을 기본 값으로 설정하는 것으로 새로운 인스턴스를 생성하는 '기본 초기자' 구현을 자동으로 가지게 됩니다. (`name` 속성은 '옵셔널 `String` 속성' 이므로, 코드에 값을 작성하지 않더라도, `nil` 이라는 기본 값을 자동으로 받습니다.) 위 예제는 `ShoppingListItem` 클래스가, `ShoppingListItem()` 라고 작성한, '초기자 구문 표현' 으로 클래스의 새로운 인스턴스를 생성하는데 '기본 초기자' 를 사용하며, 이 새 인스턴스를 `item` 이라는 변수에 할당합니다.
+`ShoppingListItem` 클래스는 모든 속성이 기본 값을 가지고 있기 때문에, 그리고 '상위 클래스' 를 가지지 않는 '기초 클래스'[^base-class] 이기 때문에, `ShoppingListItem` 은 모든 속성을 기본 값으로 설정하는 것으로 새로운 인스턴스를 생성하는 '기본 초기자' 구현을 자동으로 가지게 됩니다. (`name` 속성은 '옵셔널 `String` 속성' 이므로, 코드에 값을 작성하지 않더라도, `nil` 이라는 기본 값을 자동으로 받습니다.) 위 예제는 `ShoppingListItem` 클래스가, `ShoppingListItem()` 라고 작성한, '초기자 구문 표현' 으로 클래스의 새로운 인스턴스를 생성하는데 '기본 초기자' 를 사용하며, 이 새 인스턴스를 `item` 이라는 변수에 할당합니다.
 
 #### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
@@ -449,29 +449,29 @@ convenience init(`parameters-매개 변수`) {<br />
 
 ![Phase 2](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-2.png)
 
-상위 클래스의 지명 초기자는 (꼭 해야하는 것은 아니지만) 이제 인스턴스를 한 번 더 사용자 정의할 기회를 가집니다.
+상위 클래스의 지명 초기자는 이제 (꼭 해야하는 것은 아닐지라도) 인스턴스를 한 번 더 사용자 정의할 기회를 가집니다.
 
 상위 클래스의 지명 초기자가 (작업을) 종료하고 나면, 하위 클래스의 지명 초기자가 추가적인 사용자 정의를 수행할 수 있습니다. (다시 말하지만, 꼭 해야하는 것은 아닙니다).
 
-최종적으로, 하위 클래스의 지명 초기자가 (작업을) 종료하고 나면, 원래 호출했던 편의 초기자가 추가적인 사용자 정의를 수행할 수 있습니다.
+최종적으로, 하위 클래스의 지명 초기자가 종료하면, 원래 호출했던 편의 초기자가 추가적인 사용자 정의를 수행할 수 있습니다.
 
-#### Initializer Inheritance and Overriding (초기자 상속 및 재정의)
+#### Initializer Inheritance and Overriding (초기자 상속과 재정의)
 
-오브젝티브-C 언어의 하위 클래스와는 다르게, 스위프트 하위 클래스는 기본적으로 자신의 상위 클래스에 있는 초기자를 상속받지 않습니다. 스위프트의 접근 방식은 상위 클래스에 있는 간단한 초기자를 더 특수한 하위 클래스가 상속 받는 바람에 하위 클래스의 새로운 인스턴스를 완전하고 올바르게 초기화 하지 못하는 상황이 발생하는 것을 막아줍니다.
+오브젝티브-C 의 하위 클래스와는 달리, 스위프트 하위 클래스는 자신의 상위 클래스 초기자를 기본적으로 상속하지 않습니다. 스위프트의 접근 방식은 상위 클래스의 단순한 초기자를 더 특수화된 하위 클래스가 상속해서 온전히 또는 올바르게 초기화되지 않은 하위 클래스의 인스턴스를 생성하는 상황을 막아줍니다.
 
-> 상위 클래스 초기자는 정해진 상황에서는 상속이 _되는데 (are)_, 단 그것도 안전하면서 적절한 상황에서만 되는 것입니다. 더 자세한 정보는, [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 을 참고하기 바랍니다.  
+> 상위 클래스 초기자 _는 (are)_ 정해진 상황에서는 상속되는데, 그렇게 하는 것이 안전하고 적절할 때만 그렇습니다. 더 많은 정보는, 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 을 참고하기 바랍니다.  
 
-사용자 정의 하위 클래스에 상위 클래스에 있는 것과 똑같은 초기자를 주고 싶을 경우, 하위 클래스에서 해당 초기자에 대한 사용자 구현을 제공할 수 있습니다.
+사용자 정의 하위 클래스가 자신의 상위 클래스와 똑같은 초기자를 하나 이상 가지게 하고 싶으면, 하위 클래스 내에서 해당 초기자들의 사용자 정의 구현을 제공할 수 있습니다.
 
-하위 클래스 초기자를 작성할 때 상위 클래스의 _지명 (designated)_ 초기자와 일치하는 경우, 이는 사실상 해당 지명 초기자에 대한 '재정의 (override)' 를 제공하는 것입니다. 그러므로, 하위 클래스의 초기자 정의 앞에 반드시 `override` 수정자를 붙여줘야 합니다. 이는, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 제공되는 '기본 설정 초기자' 를 재정의하는 경우에도 마찬가지 입니다.
+상위 클래스의 _지명 (designated)_ 초기자와 일치하는 하위 클래스 초기자를 작성할 때는, 실제로 해당 지명 초기자를 '재정의 (override)' 하고 있는 것입니다. 그러므로, 하위 클래스의 초기자 정의 앞에 반드시 `override` 수정자를 작성해야 합니다. 이는, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 제공된 '기본 초기자' 를 재정의하고 있는 경우에도 그렇습니다.
 
-재정의된 속성, 메소드, 및 첨자 연산에서와 같이, `override` 수정자가 있다는 것은 스위프트를 재촉하여 상위 클래스가 재정의된 것과 일치하는 지명 초기자를 가지고 있는지 검사하도록 하며, 재정의한 초기자에 대한 매개 변수가 의도한대로 지정되었는 지를 입증합니다.
+속성, 메소드, 또는 첨자 연산의 '재정의' 에서 처럼, `override` 수정자를 붙이면 재정의한 것과 일치하는 '지명 초기자' 를 상위 클래스가 가지고 있는지 검사하도록 스위프트를 재촉하며, 직접 재정의한 초기자에 대한 매개 변수가 의도대로 지정되었는지 검증합니다.
 
-> 상위 클래스의 지명 초기자를 재정의할 때는 항상 `override` 수정자를 붙여줘야 하는데, 이는 하위 클래스에서 그 초기자를 편의 초기자로 구현하더라도 그렇습니다.
+> 상위 클래스의 지명 초기자를 재정의할 때는, 하위 클래스에서 구현하는 초기자가 편의 초기자인 경우이더라도, 항상 `override` 수정자를 작성합니다.
 
-거꾸로 말해서, 상위 클래스의 _편의 (convenience)_ 초기자와 일치하는 하위 클래스의 초기자를 작성할 경우, 해당 상위 클래스의 편의 초기자는, 위의 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자의 위임)](#initializer-delegation-for-class-types-클래스-타입을-위한-초기자의-위임) 에서 설명한 규칙에 따라, 절대로 하위 클래스가 직접 호출할 수 없습니다. 그러므로, 이 하위 클래스는 (엄밀하게 말해서) 상위 클래스 초기자의 '재정의 (override)' 를 제공하는 것이 아닙니다. 결과적으로, 상위 클래스의 편의 초기자와 일치하는 구현을 제공할 때는 `override` 수정자를 붙이지 않습니다.
+거꾸로 말해서, 상위 클래스의 _편의 (convenience)_ 초기자와 일치하는 하위 클래스 초기자를 작성하는 경우, 해당 상위 클래스의 편의 초기자는, 위의 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자의 위임)](#initializer-delegation-for-class-types-클래스-타입을-위한-초기자의-위임) 에서 설명한 규칙에 따라, 하위 클래스가 절대로 직접 호출할 수 없습니다. 그러므로, 이 하위 클래스는 (엄밀하게 말해서) 상위 클래스 초기자의 '재정의' 를 제공하는 것이 아닙니다. 그 결과, 상위 클래스의 편의 초기자와 일치하는 구현을 제공할 때는 `override` 수정자를 작성하지 않습니다.
 
-아래 예제는 `Vehicle` 이라는 '기본 클래스 (base class)'[^base-class] 를 정의합니다. 이 기본 클래스는, `0` 인 기본 설정 `Int` 값을 가지는, `numberOfWheels` 라는 저장 속성을 선언합니다. `description` 이라는 계산 속성이 차량 성질에 대한 `String` 타입의 설명을 생성하는데 이 `numberOfWheels` 속성을 사용합니다:
+아래 예제는 `Vehicle` 이라는 '기초 클래스'[^base-class] 를 정의합니다. 이 기초 클래스는, 기본 `Int` 값이 `0` 인, `numberOfWheels` 라는 저장 속성을 선언합니다. `numberOfWheels` 속성은 `description` 이라는 계산 속성이 차량의 성질에 대한 `String` 설명을 생성하는데 사용합니다:
 
 ```swift
 class Vehicle {
@@ -482,7 +482,7 @@ class Vehicle {
 }
 ```
 
-`Vehicle` 클래스는 하나 뿐인 저장 속성에 대해 기본 값을 제공하며, 자기 스스로는 어떤 초기자도 제공하지 않습니다. 결과적으로, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한대로, 자동으로 기본 설정 초기자를 부여 받습니다. 기본 설정 초기자는 (사용 가능한 경우) 항상 클래스에 대한 '지명 초기자' 이며, 이를 사용하여 `numberOfWheels` 가 `0` 인 새로운 `Vehicle` 인스턴스를 생성할 수 있습니다:
+`Vehicle` 클래스는 단 하나의 저장 속성에 기본 값을 제공하며, 어떤 사용자 정의 초기자도 직접 제공하지 않습니다. 그 결과, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한 것처럼, 기본 초기자를 자동으로 받습니다. 기본 초기자는 (사용 가능할 땐) 항상 클래스의 '지명 초기자' 이며, `numberOfWheels` 가 `0` 인 새로운 `Vehicle` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let vehicle = Vehicle()
@@ -490,7 +490,7 @@ print("Vehicle: \(vehicle.description)")
 // Vehicle: 0 wheel(s)
 ```
 
-그 다음은 `Bicycle` 이라는 `Vehicle` 의 하위 클래스를 정의하는 예제입니다:
+그 다음 예제는 `Bicycle` 이라는 `Vehicle` 의 하위 클래스를 정의합니다:
 
 ```swift
 class Bicycle: Vehicle {
@@ -501,11 +501,11 @@ class Bicycle: Vehicle {
 }
 ```
 
-이 `Bicycle` 하위 클래스는 사용자 정의 지명 초기자인, `init()` 를 정의합니다. 이 지명 초기자는 `Bicycle` 의 상위 클래스에 있는 지명 초기자와 일치하므로, 이 초기자의 `Bicycle` 버전은 `override` 수정자로 표시됩니다.
+`Bicycle` 하위 클래스는 사용자 정의 지명 초기자인, `init()` 을, 정의합니다. 이 지명 초기자는 `Bicycle` 의 상위 클래스에 있는 지명 초기자와 일치하므로, 이 `Bicycle` 초기자 버전을 `override` 수정자로 표시합니다.
 
-`Bicycle` 의 `init()` 초기자는, `Bicycle` 클래스의 상위 클래스에 대한 기본 설정 초기자의 호출인, `super.init()` 을 호출하는 것으로 시작합니다. 이는 `Bicycle` 이 상속받은 속성인 `numberOfWheels` 을 수정할 기회를 가지기 전에 이 속성을 `Vehicle` 이 먼저 초기화하도록 보장해 줍니다. `super.init()` 를 호출한 후, `numberOfWheels` 의 원래 값을 새로운 값인 `2` 로 대체합니다.
+`Bicycle` 의 `init()` 초기자는, `Bicycle` 의 상위 클래스에 대한 기본 초기자를 호출하는, `super.init()` 의 호출로 시작합니다. 이는 `Bicycle` 이 속성을 수정할 기회를 가지기 전에 `Vehicle` 이 상속한 속성인 `numberOfWheels` 를 초기화하도록 보장합니다. `super.init()` 를 호출한 후에, `numberOfWheels` 의 원본 값을 `2` 라는 새 값으로 대체합니다.
 
-`Bicycle` 의 인스턴스를 생성하면, 상속받은 계산 속성인 `description` 을 호출하여 `numberOfWheels` 속성이 어떻게 갱신됐는지 확인할 수 있습니다:
+`Bicycle` 의 인스턴스를 생성한 경우, `numberOfWheels` 속성이 갱신된 것을 보기 위해 상속한 계산 속성인 `description` 을 호출할 수 있습니다:
 
 ```swift
 let bicycle = Bicycle()
@@ -513,16 +513,16 @@ print("Bicycle: \(bicycle.description)")
 // Bicycle: 2 wheel(s)
 ```
 
-하위 클래스의 초기자가 초기화 과정의 2 단계에서 아무런 사용자 정의를 수행하지 않으면서, 상위 클래스가 '인자가-전혀 없는 (zero-argument)' 지명 초기자를 가지고 있는 경우, 하위 클래스의 모든 저장 속성에 값을 할당한 후 `super.init()` 에 대한 호출을 생략할 수 있습니다.
+하위 클래스의 초기자가 초기화 과정 '2-단계' 에서 아무런 사용자 정의를 하지 않으면서, 상위 클래스가 '인자가-0개인' 지명 초기자를 가진 경우, 하위 클래스의 모든 저장 속성에 값을 할당한 후에 `super.init()` 호출을 생략할 수 있습니다.
 
-다음 예제는, `Hoverboard` 라는, `Vehicle` 의 또 다른 하위 클래스를 정의합니다. 자신의 초기자 내에서, `Hoverboard` 클래스는 `color` 속성만 설정합니다. 이 초기자는 (초기화) 과정을 완료하기 위해, `super.init()` 를 명시적으로 호출하는 대신, 상위 클래스에 대한 암시적인 호출에 의지하고 있습니다.
+이 예제는, `Hoverboard` 라는, `Vehicle` 의 또 다른 하위 클래스를 정의합니다. `Hoverboard` 클래스는, 초기자에서, 자신의 `color` 속성만을 설정합니다. `super.init()` 을 명시적으로 호출하는 대신, 이 초기자는 상위 클래스의 초기자에 대한 암시적인 호출에 의지하여 과정을 완료합니다.
 
 ```swift
 class Hoverboard: Vehicle {
   var color: String
   init(color: String) {
     self.color = color
-    // 여기서 super.init() 를 암시적으로 호출합니다.
+    // 여기에서 super.init() 을 암시적으로 호출합니다.
   }
   override var description: String {
     return "\(super.description) in a beautiful \(color)"
@@ -538,7 +538,7 @@ print("Hoverboard: \(hoverboard.description)")
 // Hoverboard: 0 wheel(s) in a beautiful silver
 ```
 
-> 하위 클래스는 초기화 동안 상속받은 변수 속성을 수정할 수는 있지만, 상속받은 상수 속성을 수정할 수는 없습니다.
+> 하위 클래스는 초기화 동안 '상속한 변수 속성' 을 수정할 수 있지만, '상속한 상수 속성' 을 수정할 수는 없습니다.
 
 #### Automatic Initializer Inheritance (자동적인 초기자 상속)
 
@@ -562,7 +562,7 @@ print("Hoverboard: \(hoverboard.description)")
 
 다음 예제는 지명 초기자, 편의 초기자, 그리고 '자동적인 초기자 상속' 에 대한 실제 사례를 보입니다. 이 예제는 `Food`, `RecipeIngredient`, 그리고 `ShoppingListItem` 이라는 세 개의 클래스로 된 계층 구조를 정의하고, 이 초기자들이 어떻게 상호 작용하는 지를 보여줍니다.
 
-계층 구조에 있는 기본 클래스[^base-class-in-hierachy]는 `Food` 라고 하는데, 식료품의 이름을 '은닉하는 (encapsulate)' 간단한 클래스입니다. `Food` 클래스는 `name` 이라는 단 하나의 `String` 속성을 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자를 제공합니다:
+계층 구조에 있는 기초 클래스[^base-class-in-hierachy]는 `Food` 라고 하는데, 식료품의 이름을 '은닉하는 (encapsulate)' 간단한 클래스입니다. `Food` 클래스는 `name` 이라는 단 하나의 `String` 속성을 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자를 제공합니다:
 
 ```swift
 class Food {
@@ -619,7 +619,7 @@ class RecipeIngredient: Food {
 
 `RecipeIngredient` 는, `init(name: String)` 라는, 편의 초기자도 정의하고 있는데, 이를 사용하면 이름만 가지고 `RecipeIngredient` 인스턴스를 생성할 수 있습니다. 이 편의 초기자는 수량을 명시하지 않은 채로 생성하는 `RecipeIngredient` 인스턴스는 수량이 `1` 이라고 가정합니다. 편의 초기자를 이렇게 정의하면 `RecipeIngredient` 인스턴스를 더 빠르고 편리하게 생성하도록 해주며, 수량-한 개 짜리 `RecipeIngredient` 인스턴스를 여러 개 생성할 때의 코드 중복을 피하도록 해줍니다. 이 편의 초기자는 단순히 옆으로 위임하며 클래스의 지명 초기자에, `1` 이라는 `quantity` 값을 전달합니다.
 
-`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 같은 매개 변수를 받아 들입니다. 이 편의 초기자는 상위 클래스에 있는 지명 초기자를 '재정의 (override)' 하고 있기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 같은 매개 변수를 받아 들입니다. 이 편의 초기자는 상위 클래스에 있는 지명 초기자를 '재정의 (override)' 하고 있기 때문에, ([Initializer Inheritance and Overriding (초기자 상속과 재정의)](#initializer-inheritance-and-overriding-초기자-상속과-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
 
 비록 `RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하긴 했지만, `RecipeIngredient` 는 그럼에도 불구하고 모든 상위 클래스의 지명 초기자에 대한 구현을 제공했습니다. 따라서, `RecipeIngredient` 는 상위 클래스의 모든 편의 초기자를 자동으로 상속받습니다.
 
@@ -1036,9 +1036,9 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^option]: 여기서 '옵션 (option)' 이라고 한 것은 인스턴스를 한 번 더 사용자 정의하는 것은 반드시 해야하는 것이 아니라 해도 되고 안해도 되는 '선택 사항 (option)' 이기 때문입니다.
 
-[^base-class]: 스위프트에서 '기본 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말합니다. 보통 계층 구조에서 최상단에 위치하는 클래스는 다 기본 클래스라고 할 수 있지만, 계층 구조 없이 홀로 존재하는 클래스 역시 기본 클래스가 될 수 있습니다. 물론 여기서 프로토콜은 예외에 해당하며, 아무리 프로토콜을 많이 '준수 (conforming)' 하더라도 다른 클래스로부터 직접 상속을 받지 않으면 '기본 클래스' 에 해당합니다.  
+[^base-class]: 스위프트에서 '기초 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말합니다. 보통 계층 구조에서 최상단에 위치하는 클래스는 다 기초 클래스라고 할 수 있지만, 계층 구조 없이 홀로 존재하는 클래스 역시 기초 클래스가 될 수 있습니다. 물론 여기서 프로토콜은 예외에 해당하며, 아무리 프로토콜을 많이 '준수 (conforming)' 하더라도 다른 클래스로부터 직접 상속을 받지 않으면 '기초 클래스' 에 해당합니다.  
 
-[^base-class-in-hierachy]: 앞서 '기본 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말한다고 했는데, 하나의 계층 구조에서 어떤 클래스로부터도 상속을 받지 않는 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 기본 클래스란 계층 구조의 최상단 클래스라고 이해하면 됩니다.
+[^base-class-in-hierachy]: 앞서 '기초 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말한다고 했는데, 하나의 계층 구조에서 어떤 클래스로부터도 상속을 받지 않는 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 기초 클래스란 계층 구조의 최상단 클래스라고 이해하면 됩니다.
 
 [^example]: 이 예제 자체가 '초기자 상속' 이 자동적으로 이루어지는 과정을 이해하기 위해 만들어진 것입니다. 따라서 '기본 설정 초기자' 와 '기본 멤버 초기자' 가 없는 상태에서 시작합니다.
 
