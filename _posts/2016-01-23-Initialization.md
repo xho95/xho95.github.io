@@ -615,17 +615,17 @@ class RecipeIngredient: Food {
 
 ![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
 
-`RecipeIngredient` 클래스는, `init(name: String, amount: Int)` 라는, 단 하나의 지명 초기자를 가지고, 새로운 `RecipeIngredient` 인스턴스의 모든 속성들을 정착시킵니다. 이 초기자는 전달받은 `quantity` 인자를 `quantity` 속성에 할당하는 것으로 시작하는데, 이는 `RecipeIngredient` 가 도입한 유일한 새 속성입니다. 그런 후에, 이 초기자는 위로 위임하고자 `Food` 클래스의 `init(name: String)` 초기자를 호출합니다. 이 과정은 위의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 에 있는 '안전성 검사 2' 를 만족시킵니다.
+`RecipeIngredient` 클래스는, 새 `RecipeIngredient` 인스턴스의 모든 속성을 정착시키는데 사용할 수 있는, `init(name: String, amount: Int)` 라는, 단일 지명 초기자를 가집니다. 이 초기자는 전달받은 `quantity` 인자를, `RecipeIngredient` 가 도입한 유일한 새 속성인, `quantity` 속성에 할당하는 것으로 시작합니다. 그런 후에, 초기자는 `Food` 클래스의 `init(name: String)` 초기자로 '위로 위임' 합니다. 이 과정은 위의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 에 있는 '안전성 검사 2' 를 만족합니다.
 
-`RecipeIngredient` 는, `init(name: String)` 라는, 편의 초기자도 정의하고 있는데, 이를 사용하면 이름만 가지고 `RecipeIngredient` 인스턴스를 생성할 수 있습니다. 이 편의 초기자는 수량을 명시하지 않은 채로 생성하는 `RecipeIngredient` 인스턴스는 수량이 `1` 이라고 가정합니다. 편의 초기자를 이렇게 정의하면 `RecipeIngredient` 인스턴스를 더 빠르고 편리하게 생성하도록 해주며, 수량-한 개 짜리 `RecipeIngredient` 인스턴스를 여러 개 생성할 때의 코드 중복을 피하도록 해줍니다. 이 편의 초기자는 단순히 옆으로 위임하며 클래스의 지명 초기자에, `1` 이라는 `quantity` 값을 전달합니다.
+`RecipeIngredient` 는, 이름 만으로 `RecipeIngredient` 인스턴스를 생성하고자 사용하는, `init(name: String)` 이라는, 편의 초기자도 정의합니다. 이 편의 초기자는 명시적인 수량 없이 생성된 `RecipeIngredient` 인스턴스는 어떤 것이든 수량이 `1` 이라고 가정합니다. 이런 편의 초기자 정의는 `RecipeIngredient` 인스턴스의 생성을 더 빠르고 편리하게 해주며, 여러 개의 단일-수량 `RecipeIngredient` 인스턴스를 생성할 때 코드 중복을 피하게 해줍니다. 이 편의 초기자는 단순히 클래스 지명 초기자에, `1` 이라는 `quantity` 값을 전달하여, '옆으로 위임' 합니다.
 
-`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 같은 매개 변수를 받아 들입니다. 이 편의 초기자는 상위 클래스에 있는 지명 초기자를 '재정의 (override)' 하고 있기 때문에, ([Initializer Inheritance and Overriding (초기자 상속과 재정의)](#initializer-inheritance-and-overriding-초기자-상속과-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+`RecipeIngredient` 가 제공한 `init(name: String)` 편의 초기자는 `Food` 의 _지명 (designated)_ 초기자인 `init(name: String)` 과 똑같은 매개 변수를 취합니다. 이 편의 초기자는 상위 클래스의 지명 초기자를 '재정의' 하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속과 재정의)](#initializer-inheritance-and-overriding-초기자-상속과-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
 
-비록 `RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하긴 했지만, `RecipeIngredient` 는 그럼에도 불구하고 모든 상위 클래스의 지명 초기자에 대한 구현을 제공했습니다. 따라서, `RecipeIngredient` 는 상위 클래스의 모든 편의 초기자를 자동으로 상속받습니다.
+`RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하고 있을지라도, 그럼에도 불구하고 `RecipeIngredient` 는 상위 클래스에 대한 모든 지명 초기자의 구현을 제공하고 있는 것입니다. 그러므로, `RecipeIngredient` 또한 상위 클래스의 모든 편의 초기자를 자동으로 상속합니다.
 
-이 예제에서, `RecipeIngredient` 의 상위 클래스는 `Food` 이며, 이는 `init()` 이라는 단 하나의 편의 초기자를 가지고 있습니다. 이 초기자가 `RecipeIngredient` 로 상속되는 것입니다. `init()` 의 상속 버전은, `Food` 버전이 아니라 `RecipeIngredient` 버전의 `init(name: String)` 으로 위임한다는 것만 빼면, `Food` 버전과 동작 방식이 정확하게 똑같습니다.
+이 예제에서, `RecipeIngredient` 의 상위 클래스는, `init()` 이라는 단일 편의 초기자를 가진, `Food` 입니다. 그러므로 이 초기자를 `RecipeIngredient` 가 상속합니다. 상속한 버전의 `init()` 은, `Food` 버전 대신 `RecipeIngredient` 버전의 `init(name: String)` 으로 위임한다는 것만 제외하면, `Food` 버전과 정확히 똑같은 방식으로 기능합니다.
 
-이 초기자 세 개 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
+이 세 초기자 모두 새 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let oneMysteryItem = RecipeIngredient()
