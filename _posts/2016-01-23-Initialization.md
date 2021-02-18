@@ -589,14 +589,14 @@ let namedMeat = Food(name: "Bacon")
 
 `Food` 클래스의 `init(name: String)` 초기자를 _지명 (designated)_ 초기자로 제공한 것은, 새로운 `Food` 인스턴스의 모든 저장 속성이 온전하게 초기화 된다는 것을 보장해야 하기 때문입니다. `Food` 클래스는 상위 클래스를 가지지 않으므로, `init(name: String)` 초기자는 초기화를 완료하기 위해 `super.init()` 을 호출할 필요가 없습니다.
 
-`Food` 클래스는, 인자가 없는, `init()` 이라는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `Food` 클래스의 `init(name: String)` 에 위임하면서 `name` 값을 `[Unnamed]` 라고 하여 새로운 음식에 대한 자리지킴이 용도의 이름을 제공합니다:
+`Food` 클래스는, `init()` 이라는, 인자가 없는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `[Unnamed]` 라는 `name` 값으로 `Food` 클래스의 `init(name: String)` 에 '옆으로 위임' 함으로써 새로운 음식에 대한 기본적인 '자리 표시자 (placeholder)' 이름을 제공합니다:
 
 ```swift
 let mysteryMeat = Food()
 // mysteryMeat 의 이름은 "[Unnamed]" 입니다.
 ```
 
-계층 구조에 있는 두 번째 클래스는 `Food` 의 하위 클래스인 `RecipeIngredient` 입니다. `RecipeIngredient` 클래스는 요리 조리법에 있는 재료를 모델링한 것입니다. 이는 (`Food` 에서 상속받은 `name` 속성에 더하여) `quantity` 라는 `Int` 속성을 도입하며 `RecipeIngredient` 인스턴스를 생성하기 위한 두 개의 초기자를 정의합니다:
+계층 구조의 두 번째 클래스는 `RecipeIngredient` 라는 `Food` 의 하위 클래스입니다. `RecipeIngredient` 클래스는 요리 조리법에 있는 '재료 (ingredient)' 를 모델링합니다. 이는 (`Food` 에서 상속한 `name` 속성에 더하여) `quantity` 라는 `Int` 속성을 도입하며 `RecipeIngredient` 인스턴스를 생성하기 위한 두 초기자를 정의합니다:
 
 ```swift
 class RecipeIngredient: Food {
@@ -611,7 +611,7 @@ class RecipeIngredient: Food {
 }
 ```
 
-아래 그림은 `RecipeIngredient` 클래스에 대한 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
+아래 그림은 `RecipeIngredient` 클래스의 초기자 '연쇄망' 을 보여줍니다:
 
 ![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
 
