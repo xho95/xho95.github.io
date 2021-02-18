@@ -633,9 +633,9 @@ let oneBacon = RecipeIngredient(name: "Bacon")
 let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
 ```
 
-계층 구조의 세 번째이자 최종 클래스는 `RecipeIngredient` 의 하위 클래스인 `ShoppingListItem` 입니다. `ShoppingListItem` 클래스는 구매 목록에 표시되는 요리 재료를 모델링합니다.
+계층 구조의 세 번째이자 최종 클래스는 `ShoppingListItem` 라는 `RecipeIngredient` 의 하위 클래스입니다. `ShoppingListItem` 클래스는 구매 목록에 있는 '조리 재료 (recipe ingredient)' 를 모델링합니다.
 
-구매 목록에 있는 모든 항목은 "미구매 (unpurchased)" 상태로 시작합니다. 이러한 사실을 표현하기 위해, `ShoppingListItem` 은 `purchased` 라는, 기본 값이 `false` 인, '불리언 (Boolean)' 속성을 도입합니다. `ShoppingListItem` 은 또 `description` 계산 속성을 추가하여, `ShoppingListItem` 인스턴스에 대한 설명을 제공합니다:
+구매 목록의 모든 항목은 "미구매 (unpurchased)" 로 시작합니다. 이 사실을 표현하기 위해, `ShoppingListItem` 은, 기본 값이 `false` 인, `purchased` 라는 '불리언 (Boolean)' 속성을 도입합니다. `ShoppingListItem` 은, `ShoppingListItem` 인스턴스를 설명하는 문장을 제공하는, `description` 계산 속성도 추가합니다:
 
 ```swift
 class ShoppingListItem: RecipeIngredient {
