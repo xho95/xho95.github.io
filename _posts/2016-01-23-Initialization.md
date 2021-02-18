@@ -648,17 +648,15 @@ class ShoppingListItem: RecipeIngredient {
 }
 ```
 
-> `ShoppingListItem` 은 `purchased` 에 초기 값을 제공하기 위한 초기자를 정의하지 않는데, 이는 구매 목록에 있는 항목들은 (여기서 모델링한 것처럼) 항상 미구매 상태로 시작하기 때문입니다.
+> `ShoppingListItem` 은 `purchased` 에 초기 값을 제공하는 초기자를 하나도 정의하지 않는데, (여기서 모델링한) 구매 목록의 항목은 항상 '미구매' 로 시작하기 때문입니다.
 
-자신이 도입한 모든 속성에 대해 기본 값을 제공하면서 스스로는 아무런 초기자도 정의하지 않고 있으므로, `ShoppingListItem` 은 상위 클래스에 있는 _모든 (all)_ 지명 초기자와 편의 초기자를 자동으로 상속받습니다.
+`ShoppingListItem` 은, 도입한 모든 속성에 '기본 값' 을 제공하면서 어떤 초기자도 직접 정의하지 않기 때문에, 상위 클래스의 _모든 (all)_ 지명 및 편의 초기자를 자동으로 상속합니다.
 
-이 속성은 도입 한 모든 속성에 기본값을 제공하고 초기화 프로그램 자체를 정의하지 않기 때문에 ShoppingListItem은 자동으로 지정된 및 편리한 초기화 프로그램을 모두 수퍼 클래스에서 상속합니다.
-
-아래 그림은 세 클래스 모두 연관된 전체적인 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
+아래 그림은 세 클래스 모두의 전체적인 초기자 연쇄망을 보여줍니다:
 
 ![Initializer chain for the all](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-all.png)
 
-이 상속받은 초기자 세 개 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
+상속한 세 초기자 모두 새 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 var breakfastList = [
@@ -676,7 +674,7 @@ for item in breakfastList {
 // 6 x Eggs ✘
 ```
 
-여기서는, 세 개의 새로운 `ShoppingListItem` 인스턴스를 담고 있는 '배열 글자 값 (array literal)' 을 사용하여 `breakfastList` 라는 새로운 배열을 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론됩니다. 배열을 생성한 후에는, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매한 것으로 표시합니다. 배열에 있는 각 항목의 설명을 출력해보면 이들의 기본 설정 상태가 예상한 대로 설정 되었는지를 보여줍니다.
+여기서, `breakfastList` 라는 새로운 배열은 새로운 세 `ShoppingListItem` 인스턴스를 담은 '배열 글자 값 (array literal)' 으로 생성합니다. 배열의 타입은 `[ShoppingListItem]` 으로 추론됩니다. 배열을 생성한 후, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매했다고 표시합니다. 배열의 각 항목에 대한 설명을 인쇄하면 이들의 기본 상태가 예상대로 설정된 것을 보여줍니다.
 
 ### Failable Initializers (실패 가능한 초기자)
 
