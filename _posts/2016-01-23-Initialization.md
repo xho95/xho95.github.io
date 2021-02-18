@@ -542,27 +542,27 @@ print("Hoverboard: \(hoverboard.description)")
 
 #### Automatic Initializer Inheritance (자동적인 초기자 상속)
 
-위에서 언급한 대로, 하위 클래스가 상위 클래스의 초기자를 기본적으로 상속받는 것은 아닙니다. 하지만, 정해진 조건을 만족한다면 상위 클래스의 초기자를 자동으로 상속 받게 _됩니다 (are)_. 이는 실제로, 많은 일반적인 상황에서 초기자를 '재정의 (override)' 할 필요가 없으며, 안전하기만 하다면 언제든 최소의 노력으로 상위 클래스의 초기자를 상속받을 수 있음을 의미합니다.
+위에서 언급한 것처럼, 하위 클래스는 기본적으로 자신의 상위 클래스를 상속하지 않습니다. 하지만, 정해진 조건과 만나는 경우에는 상위 클래스의 초기자 _를 (are)_ 자동으로 상속합니다. 실제로, 이는 일반적인 많은 상황에서 '초기자 재정의' 를 작성할 필요가 없으며, 자신의 상위 클래스 초기자를 상속하는게 안전할 때마다 최소한의 노력으로 그렇게 할 수 있다는 의미입니다.
 
-하위 클래스에서 도입한 새로운 속성마다 기본 값을 제공했다고 가정할 경우, 다음의 두 규칙이 적용됩니다:
+하위 클래스에서 자신이 도입한 어떤 새로운 속성에 대해서든 기본 값을 제공한다고 가정하면, 다음의 두 규칙이 적용됩니다:
 
 **Rule 1 (규칙 1)**
 
-  하위 클래스가 어떤 지명 초기자도 정의하지 않은 경우, 상위 클래스 모든 지명 초기자를 자동으로 상속 받습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;하위 클래스가 어떤 지명 초기자도 정의하지 않는 경우, 상위 클래스의 모든 지명 초기자를 자동으로 상속합니다.
 
 **Rule 2 (규칙 2)**
 
-  하위 클래스가 상위 클래스의 _모든 (all)_ 지명 초기자에 대한 구현을 제공할 경우-'규칙 1' 에 의해 상속을 받은 것이든, 정의 부분에서 직접 구현을 제공한 것이든 상관없이-그러면 상위 클래스의 모든 편의 초기자를 자동으로 상속 받습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;하위 클래스가 상위 클래스의 _모든 (all)_ 지명 초기자 구현을 제공하는 경우-'규칙 1' 에 따라 상속한 것이든, 정의에서 사용자 정의 구현을 제공한 것이든-그러면 상위 클래스의 모든 편의 초기자를 자동으로 상속합니다.
 
-이 규칙들은 하위 클래스에서 편의 초기자를 더 추가한 경우에도 그대로 적용됩니다.
+이 규칙들은 자신의 하위 클래스에서 편의 초기자를 더 추가한 경우에도 적용됩니다.
 
-> 하위 클래스는 '규칙 2' 를 만족시키기 위한 한 방편으로 상위 클래스의 지명 초기자를 하위 클래스에서 편의 초기자로 구현할 수 있습니다.
+> 하위 클래스는 '규칙 2' 를 만족하기 위한 방편으로 상위 클래스의 지명 초기자를 하위 클래스의 편의 초기자로 구현할 수 있습니다.
 
 #### Designated and Convenience Initialization in Action (지명 초기자와 편의 초기자의 실제 사례)
 
-다음 예제는 지명 초기자, 편의 초기자, 그리고 '자동적인 초기자 상속' 에 대한 실제 사례를 보입니다. 이 예제는 `Food`, `RecipeIngredient`, 그리고 `ShoppingListItem` 이라는 세 개의 클래스로 된 계층 구조를 정의하고, 이 초기자들이 어떻게 상호 작용하는 지를 보여줍니다.
+다음 예제는 지명 초기자, 편의 초기자, 그리고 '자동적인 초기자 상속' 에 대한 실제 사례를 보여줍니다. 이 예제는 `Food`, `RecipeIngredient`, 그리고 `ShoppingListItem` 이라는 세 클래스 계층 구조를 정의하고, 이 초기자들이 상호 작용하는 방법을 실증합니다.
 
-계층 구조에 있는 기초 클래스[^base-class-in-hierachy]는 `Food` 라고 하는데, 식료품의 이름을 '은닉하는 (encapsulate)' 간단한 클래스입니다. `Food` 클래스는 `name` 이라는 단 하나의 `String` 속성을 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자를 제공합니다:
+계층 구조의 '기초 클래스'[^base-class-in-hierachy] 는 `Food` 라고 하는데, 식료품의 이름을 '은닉 (encapsulate)' 하는 단순한 클래스입니다. `Food` 클래스는 `name` 이라는 '단일 `String` 속성' 을 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자를 제공합니다:
 
 ```swift
 class Food {
@@ -576,27 +576,27 @@ class Food {
 }
 ```
 
-아래의 그림은 `Food` 클래스에 대한 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
+아래의 그림은 `Food` 클래스의 초기자 '연쇄망 (chain)' 을 보여줍니다:
 
 ![Initializer chain for the Food](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-food.png)
 
-(예제의) 클래스들은 기본 멤버 초기자를 가지지 않으므로[^example], `Food` 클래스는 `name` 이라는 단일 인자를 받는 지명 초기자를 제공합니다. 이 초기자를 사용하여 지정된 이름을 가진 새로운 `Food` 인스턴스를 생성할 수 있습니다:
+클래스들이 기본적인 '멤버 초기자' 를 가지지 않으므로[^default-member-initializer], `Food` 클래스는 `name` 이라는 단일 인자를 취하는 지명 초기자를 제공합니다. 이 초기자는 지정한 이름을 가진 새 `Food` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let namedMeat = Food(name: "Bacon")
 // namedMeat 의 이름은 "Bacon" 입니다.
 ```
 
-`Food` 클래스에 있는 `init(name: String)` 초기자를 _지명 (designated)_ 초기자로 제공한 것은, 새로운 `Food` 인스턴스의 모든 저장 속성이 완전히 초기화 되었음을 보장해야 하기 때문입니다. `Food` 클래스는 상위 클래스를 가지고 있지 않으므로, `init(name: String)` 초기자는 초기화를 완료하기 위해 `super.init()` 을 호출할 필요가 없습니다.
+`Food` 클래스의 `init(name: String)` 초기자를 _지명 (designated)_ 초기자로 제공한 것은, 새로운 `Food` 인스턴스의 모든 저장 속성이 온전하게 초기화 된다는 것을 보장해야 하기 때문입니다. `Food` 클래스는 상위 클래스를 가지지 않으므로, `init(name: String)` 초기자는 초기화를 완료하기 위해 `super.init()` 을 호출할 필요가 없습니다.
 
-`Food` 클래스는, 인자가 없는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `Food` 클래스의 `init(name: String)` 에 위임하면서 `name` 값을 `[Unnamed]` 라고 하여 새로운 음식에 대한 자리지킴이 용도의 이름을 제공합니다:
+`Food` 클래스는, `init()` 이라는, 인자가 없는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `[Unnamed]` 라는 `name` 값으로 `Food` 클래스의 `init(name: String)` 에 '옆으로 위임' 함으로써 새로운 음식에 대한 기본적인 '자리 표시자 (placeholder)' 이름을 제공합니다:
 
 ```swift
 let mysteryMeat = Food()
 // mysteryMeat 의 이름은 "[Unnamed]" 입니다.
 ```
 
-계층 구조에 있는 두 번째 클래스는 `Food` 의 하위 클래스인 `RecipeIngredient` 입니다. `RecipeIngredient` 클래스는 요리 조리법에 있는 재료를 모델링한 것입니다. 이는 (`Food` 에서 상속받은 `name` 속성에 더하여) `quantity` 라는 `Int` 속성을 도입하며 `RecipeIngredient` 인스턴스를 생성하기 위한 두 개의 초기자를 정의합니다:
+계층 구조의 두 번째 클래스는 `RecipeIngredient` 라는 `Food` 의 하위 클래스입니다. `RecipeIngredient` 클래스는 요리 조리법에 있는 '재료 (ingredient)' 를 모델링합니다. 이는 (`Food` 에서 상속한 `name` 속성에 더하여) `quantity` 라는 `Int` 속성을 도입하며 `RecipeIngredient` 인스턴스를 생성하기 위한 두 초기자를 정의합니다:
 
 ```swift
 class RecipeIngredient: Food {
@@ -611,21 +611,21 @@ class RecipeIngredient: Food {
 }
 ```
 
-아래 그림은 `RecipeIngredient` 클래스에 대한 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
+아래 그림은 `RecipeIngredient` 클래스의 초기자 '연쇄망' 을 보여줍니다:
 
 ![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
 
-`RecipeIngredient` 클래스는, `init(name: String, amount: Int)` 라는, 단 하나의 지명 초기자를 가지고, 새로운 `RecipeIngredient` 인스턴스의 모든 속성들을 정착시킵니다. 이 초기자는 전달받은 `quantity` 인자를 `quantity` 속성에 할당하는 것으로 시작하는데, 이는 `RecipeIngredient` 가 도입한 유일한 새 속성입니다. 그런 후에, 이 초기자는 위로 위임하고자 `Food` 클래스의 `init(name: String)` 초기자를 호출합니다. 이 과정은 위의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 에 있는 '안전성 검사 2' 를 만족시킵니다.
+`RecipeIngredient` 클래스는, 새 `RecipeIngredient` 인스턴스의 모든 속성을 정착시키는데 사용할 수 있는, `init(name: String, amount: Int)` 라는, 단일 지명 초기자를 가집니다. 이 초기자는 전달받은 `quantity` 인자를, `RecipeIngredient` 가 도입한 유일한 새 속성인, `quantity` 속성에 할당하는 것으로 시작합니다. 그런 후에, 초기자는 `Food` 클래스의 `init(name: String)` 초기자로 '위로 위임' 합니다. 이 과정은 위의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 에 있는 '안전성 검사 2' 를 만족합니다.
 
-`RecipeIngredient` 는, `init(name: String)` 라는, 편의 초기자도 정의하고 있는데, 이를 사용하면 이름만 가지고 `RecipeIngredient` 인스턴스를 생성할 수 있습니다. 이 편의 초기자는 수량을 명시하지 않은 채로 생성하는 `RecipeIngredient` 인스턴스는 수량이 `1` 이라고 가정합니다. 편의 초기자를 이렇게 정의하면 `RecipeIngredient` 인스턴스를 더 빠르고 편리하게 생성하도록 해주며, 수량-한 개 짜리 `RecipeIngredient` 인스턴스를 여러 개 생성할 때의 코드 중복을 피하도록 해줍니다. 이 편의 초기자는 단순히 옆으로 위임하며 클래스의 지명 초기자에, `1` 이라는 `quantity` 값을 전달합니다.
+`RecipeIngredient` 는, 이름 만으로 `RecipeIngredient` 인스턴스를 생성하고자 사용하는, `init(name: String)` 이라는, 편의 초기자도 정의합니다. 이 편의 초기자는 명시적인 수량 없이 생성된 `RecipeIngredient` 인스턴스는 어떤 것이든 수량이 `1` 이라고 가정합니다. 이런 편의 초기자 정의는 `RecipeIngredient` 인스턴스의 생성을 더 빠르고 편리하게 해주며, 여러 개의 단일-수량 `RecipeIngredient` 인스턴스를 생성할 때 코드 중복을 피하게 해줍니다. 이 편의 초기자는 단순히 클래스 지명 초기자에, `1` 이라는 `quantity` 값을 전달하여, '옆으로 위임' 합니다.
 
-`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 같은 매개 변수를 받아 들입니다. 이 편의 초기자는 상위 클래스에 있는 지명 초기자를 '재정의 (override)' 하고 있기 때문에, ([Initializer Inheritance and Overriding (초기자 상속과 재정의)](#initializer-inheritance-and-overriding-초기자-상속과-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+`RecipeIngredient` 가 제공한 `init(name: String)` 편의 초기자는 `Food` 의 _지명 (designated)_ 초기자인 `init(name: String)` 과 똑같은 매개 변수를 취합니다. 이 편의 초기자는 상위 클래스의 지명 초기자를 '재정의' 하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속과 재정의)](#initializer-inheritance-and-overriding-초기자-상속과-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
 
-비록 `RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하긴 했지만, `RecipeIngredient` 는 그럼에도 불구하고 모든 상위 클래스의 지명 초기자에 대한 구현을 제공했습니다. 따라서, `RecipeIngredient` 는 상위 클래스의 모든 편의 초기자를 자동으로 상속받습니다.
+`RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하고 있을지라도, 그럼에도 불구하고 `RecipeIngredient` 는 상위 클래스에 대한 모든 지명 초기자의 구현을 제공하고 있는 것입니다. 그러므로, `RecipeIngredient` 또한 상위 클래스의 모든 편의 초기자를 자동으로 상속합니다.
 
-이 예제에서, `RecipeIngredient` 의 상위 클래스는 `Food` 이며, 이는 `init()` 이라는 단 하나의 편의 초기자를 가지고 있습니다. 이 초기자가 `RecipeIngredient` 로 상속되는 것입니다. `init()` 의 상속 버전은, `Food` 버전이 아니라 `RecipeIngredient` 버전의 `init(name: String)` 으로 위임한다는 것만 빼면, `Food` 버전과 동작 방식이 정확하게 똑같습니다.
+이 예제에서, `RecipeIngredient` 의 상위 클래스는, `init()` 이라는 단일 편의 초기자를 가진, `Food` 입니다. 그러므로 이 초기자를 `RecipeIngredient` 가 상속합니다. 상속한 버전의 `init()` 은, `Food` 버전 대신 `RecipeIngredient` 버전의 `init(name: String)` 으로 위임한다는 것만 제외하면, `Food` 버전과 정확히 똑같은 방식으로 기능합니다.
 
-이 초기자 세 개 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
+이 세 초기자 모두 새 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let oneMysteryItem = RecipeIngredient()
@@ -633,9 +633,9 @@ let oneBacon = RecipeIngredient(name: "Bacon")
 let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
 ```
 
-계층 구조의 세 번째이자 최종 클래스는 `RecipeIngredient` 의 하위 클래스인 `ShoppingListItem` 입니다. `ShoppingListItem` 클래스는 구매 목록에 표시되는 요리 재료를 모델링합니다.
+계층 구조의 세 번째이자 최종 클래스는 `ShoppingListItem` 라는 `RecipeIngredient` 의 하위 클래스입니다. `ShoppingListItem` 클래스는 구매 목록에 있는 '조리 재료 (recipe ingredient)' 를 모델링합니다.
 
-구매 목록에 있는 모든 항목은 "미구매 (unpurchased)" 상태로 시작합니다. 이러한 사실을 표현하기 위해, `ShoppingListItem` 은 `purchased` 라는, 기본 값이 `false` 인, '불리언 (Boolean)' 속성을 도입합니다. `ShoppingListItem` 은 또 `description` 계산 속성을 추가하여, `ShoppingListItem` 인스턴스에 대한 설명을 제공합니다:
+구매 목록의 모든 항목은 "미구매 (unpurchased)" 로 시작합니다. 이 사실을 표현하기 위해, `ShoppingListItem` 은, 기본 값이 `false` 인, `purchased` 라는 '불리언 (Boolean)' 속성을 도입합니다. `ShoppingListItem` 은, `ShoppingListItem` 인스턴스를 설명하는 문장을 제공하는, `description` 계산 속성도 추가합니다:
 
 ```swift
 class ShoppingListItem: RecipeIngredient {
@@ -648,17 +648,15 @@ class ShoppingListItem: RecipeIngredient {
 }
 ```
 
-> `ShoppingListItem` 은 `purchased` 에 초기 값을 제공하기 위한 초기자를 정의하지 않는데, 이는 구매 목록에 있는 항목들은 (여기서 모델링한 것처럼) 항상 미구매 상태로 시작하기 때문입니다.
+> `ShoppingListItem` 은 `purchased` 에 초기 값을 제공하는 초기자를 하나도 정의하지 않는데, (여기서 모델링한) 구매 목록의 항목은 항상 '미구매' 로 시작하기 때문입니다.
 
-자신이 도입한 모든 속성에 대해 기본 값을 제공하면서 스스로는 아무런 초기자도 정의하지 않고 있으므로, `ShoppingListItem` 은 상위 클래스에 있는 _모든 (all)_ 지명 초기자와 편의 초기자를 자동으로 상속받습니다.
+`ShoppingListItem` 은, 도입한 모든 속성에 '기본 값' 을 제공하면서 어떤 초기자도 직접 정의하지 않기 때문에, 상위 클래스의 _모든 (all)_ 지명 및 편의 초기자를 자동으로 상속합니다.
 
-이 속성은 도입 한 모든 속성에 기본값을 제공하고 초기화 프로그램 자체를 정의하지 않기 때문에 ShoppingListItem은 자동으로 지정된 및 편리한 초기화 프로그램을 모두 수퍼 클래스에서 상속합니다.
-
-아래 그림은 세 클래스 모두 연관된 전체적인 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
+아래 그림은 세 클래스 모두의 전체적인 초기자 연쇄망을 보여줍니다:
 
 ![Initializer chain for the all](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-all.png)
 
-이 상속받은 초기자 세 개 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
+상속한 세 초기자 모두 새 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 var breakfastList = [
@@ -676,7 +674,7 @@ for item in breakfastList {
 // 6 x Eggs ✘
 ```
 
-여기서는, 세 개의 새로운 `ShoppingListItem` 인스턴스를 담고 있는 '배열 글자 값 (array literal)' 을 사용하여 `breakfastList` 라는 새로운 배열을 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론됩니다. 배열을 생성한 후에는, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매한 것으로 표시합니다. 배열에 있는 각 항목의 설명을 출력해보면 이들의 기본 설정 상태가 예상한 대로 설정 되었는지를 보여줍니다.
+여기서, `breakfastList` 라는 새로운 배열은 새로운 세 `ShoppingListItem` 인스턴스를 담은 '배열 글자 값 (array literal)' 으로 생성합니다. 배열의 타입은 `[ShoppingListItem]` 으로 추론됩니다. 배열을 생성한 후, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매했다고 표시합니다. 배열의 각 항목에 대한 설명을 인쇄하면 이들의 기본 상태가 예상대로 설정된 것을 보여줍니다.
 
 ### Failable Initializers (실패 가능한 초기자)
 
@@ -1038,9 +1036,9 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^base-class]: 스위프트에서 '기초 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말합니다. 보통 계층 구조에서 최상단에 위치하는 클래스는 다 기초 클래스라고 할 수 있지만, 계층 구조 없이 홀로 존재하는 클래스 역시 기초 클래스가 될 수 있습니다. 물론 여기서 프로토콜은 예외에 해당하며, 아무리 프로토콜을 많이 '준수 (conforming)' 하더라도 다른 클래스로부터 직접 상속을 받지 않으면 '기초 클래스' 에 해당합니다.  
 
-[^base-class-in-hierachy]: 앞서 '기초 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말한다고 했는데, 하나의 계층 구조에서 어떤 클래스로부터도 상속을 받지 않는 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 기초 클래스란 계층 구조의 최상단 클래스라고 이해하면 됩니다.
+[^base-class-in-hierachy]: 앞에서 '기초 클래스 (base class)' 란 어떤 클래스도 상속하지 않는 클래스라고 했는데, 계층 구조에서 이런 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 '기초 클래스' 란 '최상단 클래스' 입니다.
 
-[^example]: 이 예제 자체가 '초기자 상속' 이 자동적으로 이루어지는 과정을 이해하기 위해 만들어진 것입니다. 따라서 '기본 설정 초기자' 와 '기본 멤버 초기자' 가 없는 상태에서 시작합니다.
+[^default-member-initializer]: 여기서 '클래스들이 기본적인 멤버 초기자를 가지지 않는다' 고 복수형을 사용한 것은, '기초 클래스' 의 '저장 속성' 이 '기본 값' 을 가지고 있지 않기 때문에, 이 '기초 클래스' 의 모든 하위 클래스들도 '기본 값' 을 가지지 않게 되어, 계층 구조의 모든 클래스들이 '멤버 초기자' 를 자동으로 부여받지 않기 때문입니다. [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체라면 이런 경우에도 '멤버 초기자' 를 부여 받지만, '상속 계층' 을 사용하는 클래스는 이에 해당되지 않습니다.
 
 [^exactly]: 이 예제에서 '정확하게 (exactly)' 가 의미하는 것은 수치 값 변환을 성공해서 변환된 값을 가지고 있음을 의미하는 것입니다. 변환된 값이 원래 값과 일치할 필요는 없습니다.
 
@@ -1050,6 +1048,6 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^argument-label]: 바로 위에서 스위프트의 초기자는 '자동 인자 이름표' 를 가진다고 했습니다. 그러므로, 초기자를 호출할 때는 반드시 '인자 이름표' 를 붙이는 것이 기본입니다. 그럼에도 불구하고, 본문에서 '인자 이름표 가 정의되어 있다면' 이라고 단서를 붙인 것은 바로 다음 부분에서 이어지는 '밑줄 (underscore; `_`)' 을 써서 '인자 이름표' 를 명시적으로 무시하는 것도 가능하기 때문입니다.
 
-[^delegate-up]: 여기서 '상위 클래스 초기자' 로 '위로 위임 (delegate up)' 한다는 말은 '상위 클래스 초기자' 를 '호출' 한다는 의미로 이해하면 됩니다. '위임' 은 '호출' 을 통해서 이루어지기 때문입니다.
+[^delegate-up]: 여기서 '상위 클래스 초기자' 로 '위로 위임 (delegate up)' 한다는 말은 '상위 클래스 초기자' 를 '호출' 한다는 것입니다. '위임' 은 '호출' 을 통해서 이루어지기 때문입니다.
 
 [^final-class]: '최종 클래스 (final class)' 는 '상속 구조' 의 가장 밑에 있는 클래스를 말합니다. 스위프트에서 `final` 이라는 키워드는 원래 더 이상 상속을 하지 못하도록 하는 역할을 합니다.
