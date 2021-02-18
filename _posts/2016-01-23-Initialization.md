@@ -560,9 +560,9 @@ print("Hoverboard: \(hoverboard.description)")
 
 #### Designated and Convenience Initialization in Action (지명 초기자와 편의 초기자의 실제 사례)
 
-다음 예제는 지명 초기자, 편의 초기자, 그리고 '자동적인 초기자 상속' 에 대한 실제 사례를 보입니다. 이 예제는 `Food`, `RecipeIngredient`, 그리고 `ShoppingListItem` 이라는 세 개의 클래스로 된 계층 구조를 정의하고, 이 초기자들이 어떻게 상호 작용하는 지를 보여줍니다.
+다음 예제는 지명 초기자, 편의 초기자, 그리고 '자동적인 초기자 상속' 에 대한 실제 사례를 보여줍니다. 이 예제는 `Food`, `RecipeIngredient`, 그리고 `ShoppingListItem` 이라는 세 클래스 계층 구조를 정의하고, 이 초기자들이 상호 작용하는 방법을 실증합니다.
 
-계층 구조에 있는 기초 클래스[^base-class-in-hierachy]는 `Food` 라고 하는데, 식료품의 이름을 '은닉하는 (encapsulate)' 간단한 클래스입니다. `Food` 클래스는 `name` 이라는 단 하나의 `String` 속성을 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자를 제공합니다:
+계층 구조의 '기초 클래스'[^base-class-in-hierachy] 는 `Food` 라고 하는데, 식료품의 이름을 '은닉 (encapsulate)' 하는 단순한 클래스입니다. `Food` 클래스는 `name` 이라는 '단일 `String` 속성' 을 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자를 제공합니다:
 
 ```swift
 class Food {
@@ -576,20 +576,20 @@ class Food {
 }
 ```
 
-아래의 그림은 `Food` 클래스에 대한 '초기자 연쇄망 (initializer chain)' 을 보여줍니다:
+아래의 그림은 `Food` 클래스의 초기자 '연쇄망 (chain)' 을 보여줍니다:
 
 ![Initializer chain for the Food](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-food.png)
 
-(예제의) 클래스들은 기본 멤버 초기자를 가지지 않으므로[^example], `Food` 클래스는 `name` 이라는 단일 인자를 받는 지명 초기자를 제공합니다. 이 초기자를 사용하여 지정된 이름을 가진 새로운 `Food` 인스턴스를 생성할 수 있습니다:
+클래스들이 기본적인 '멤버 초기자' 를 가지지 않으므로[^default-member-initializer], `Food` 클래스는 `name` 이라는 단일 인자를 취하는 지명 초기자를 제공합니다. 이 초기자는 지정한 이름을 가진 새 `Food` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let namedMeat = Food(name: "Bacon")
 // namedMeat 의 이름은 "Bacon" 입니다.
 ```
 
-`Food` 클래스에 있는 `init(name: String)` 초기자를 _지명 (designated)_ 초기자로 제공한 것은, 새로운 `Food` 인스턴스의 모든 저장 속성이 완전히 초기화 되었음을 보장해야 하기 때문입니다. `Food` 클래스는 상위 클래스를 가지고 있지 않으므로, `init(name: String)` 초기자는 초기화를 완료하기 위해 `super.init()` 을 호출할 필요가 없습니다.
+`Food` 클래스의 `init(name: String)` 초기자를 _지명 (designated)_ 초기자로 제공한 것은, 새로운 `Food` 인스턴스의 모든 저장 속성이 온전하게 초기화 된다는 것을 보장해야 하기 때문입니다. `Food` 클래스는 상위 클래스를 가지지 않으므로, `init(name: String)` 초기자는 초기화를 완료하기 위해 `super.init()` 을 호출할 필요가 없습니다.
 
-`Food` 클래스는, 인자가 없는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `Food` 클래스의 `init(name: String)` 에 위임하면서 `name` 값을 `[Unnamed]` 라고 하여 새로운 음식에 대한 자리지킴이 용도의 이름을 제공합니다:
+`Food` 클래스는, 인자가 없는, `init()` 이라는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `Food` 클래스의 `init(name: String)` 에 위임하면서 `name` 값을 `[Unnamed]` 라고 하여 새로운 음식에 대한 자리지킴이 용도의 이름을 제공합니다:
 
 ```swift
 let mysteryMeat = Food()
@@ -1038,9 +1038,9 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^base-class]: 스위프트에서 '기초 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말합니다. 보통 계층 구조에서 최상단에 위치하는 클래스는 다 기초 클래스라고 할 수 있지만, 계층 구조 없이 홀로 존재하는 클래스 역시 기초 클래스가 될 수 있습니다. 물론 여기서 프로토콜은 예외에 해당하며, 아무리 프로토콜을 많이 '준수 (conforming)' 하더라도 다른 클래스로부터 직접 상속을 받지 않으면 '기초 클래스' 에 해당합니다.  
 
-[^base-class-in-hierachy]: 앞서 '기초 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말한다고 했는데, 하나의 계층 구조에서 어떤 클래스로부터도 상속을 받지 않는 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 기초 클래스란 계층 구조의 최상단 클래스라고 이해하면 됩니다.
+[^base-class-in-hierachy]: 앞에서 '기초 클래스 (base class)' 란 어떤 클래스도 상속하지 않는 클래스라고 했는데, 계층 구조에서 이런 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 '기초 클래스' 란 '최상단 클래스' 입니다.
 
-[^example]: 이 예제 자체가 '초기자 상속' 이 자동적으로 이루어지는 과정을 이해하기 위해 만들어진 것입니다. 따라서 '기본 설정 초기자' 와 '기본 멤버 초기자' 가 없는 상태에서 시작합니다.
+[^default-member-initializer]: 여기서 '클래스들이 기본적인 멤버 초기자를 가지지 않는다' 고 복수형을 사용한 것은, '기초 클래스' 의 '저장 속성' 이 '기본 값' 을 가지고 있지 않기 때문에, 이 '기초 클래스' 의 모든 하위 클래스들도 '기본 값' 을 가지지 않게 되어, 계층 구조의 모든 클래스들이 '멤버 초기자' 를 자동으로 부여받지 않기 때문입니다. [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체라면 이런 경우에도 '멤버 초기자' 를 부여 받지만, '상속 계층' 을 사용하는 클래스는 이에 해당되지 않습니다.
 
 [^exactly]: 이 예제에서 '정확하게 (exactly)' 가 의미하는 것은 수치 값 변환을 성공해서 변환된 값을 가지고 있음을 의미하는 것입니다. 변환된 값이 원래 값과 일치할 필요는 없습니다.
 
