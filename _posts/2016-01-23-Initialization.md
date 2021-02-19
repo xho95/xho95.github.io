@@ -810,15 +810,15 @@ if unknownUnit == nil {
 // "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
 ```
 
-#### Propagation of Initialization Failure (초기화 실패 전파하기)
+#### Propagation of Initialization Failure (초기화 실패의 전파)
 
-클래스, 구조체, 및 열거체의 실패 가능한 초기자는 같은 클래스, 구조체, 및 열거체에 있는 또 다른 실패 가능한 초기자로 '옆쪽 위임 (delegate across)' 을 할 수 있습니다. 이와 비슷하게, 하위 클래스의 실패 가능한 초기자는 상위 클래스의 실패 가능한 초기자로 '위쪽 위임 (delegate up)' 을 할 수 있습니다.
+클래스, 구조체, 또는 열거체의 '실패 가능한 초기자' 는 동일한 클래스, 구조체, 또는 열거체에 있는 또 다른 '실패 가능한 초기자' 에 '옆으로 위임' 할 수 있습니다. 이와 비슷하게, 하위 클래스의 '실패 가능한 초기자' 는 상위 클래스의 '실패 가능한 초기자' 에 '위로 위임' 할 수 있습니다.
 
-어떤 경우든, 또 다른 초기자로 위임한 것이 초기화 실패의 원인이 될 경우, 전체 초기화 과정은 즉시 실패하며, 초기화 코드는 더 이상 실행되지 않습니다.
+어느 경우든, 초기화 실패를 유발하는 또 다른 초기자로 위임한 경우, 전체 초기화 과정은 곧바로 실패하며, 더 이상 초기화 코드를 실행하지 않습니다.
 
-> '실패 가능한 초기자 (failable initializer)' 또한 '실패하지 않는 초기자 (nonfailable initializer)' 로 위임할 수 있습니다. 이 접근 방식은 다른 경우라면 실패하지 않을 기존 초기화 과정에 잠재적인 실패 상태를 추가할 필요가 있을 경우 사용하도록 합니다.
+> '실패 가능한 초기자' 는 '실패하지 않는 초기자' 로도 위임할 수 있습니다. 다른 경우라면 실패하지 않을 기존의 '실패하지 않는 초기자' 에 잠재적인 실패 상태를 추가할 필요가 있을 경우 이 접근 방식을 사용합니다.
 
-아래 예제는 `Product` 의 하위 클래스인 `CartItem` 을 정의합니다. `CartItem` 클래스는 온라인 장바구니에 담겨있는 항목을 모델링 합니다. `CartItem` 은 `quantity` 라는 상수 저장 속성을 도입하여 이 속성 값이 최소 `1` 이상의 값을 가지도록 보장합니다:
+아래 예제는 `CartItem` 라는 `Product` 의 하위 클래스를 정의합니다. `CartItem` 클래스는 온라인 '장바구니 (shopping cart)' 에 있는 항목을 모델링 합니다. `CartItem` 은 `quantity` 라는 상수 저장 속성을 도입하며 이 속성이 항상 최소 `1` 이상의 값을 가지도록 보장합니다:
 
 ```swift
 class Product {
@@ -839,18 +839,18 @@ class CartItem: Product {
 }
 ```
 
-`CartItem` 의 실패 가능한 초기자는 부여 받은 `quantity` 값이 `1` 이상인지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정은 그 즉시 실패하고 초기화 코드를 더 이상 실행하지 않습니다. 이와 마찬가지로, `Product` 의 실패 가능한 초기자는 `name` 값을 검사하는데, `name` 이 빈 문자열이면 초기화 과정이 그 즉시 실패합니다.
+`CartItem` 의 '실패 가능한 초기자' 는 `1` 이상의 `quantity` 값을 받았는지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정이 곧바로 실패하며 더 이상 초기화 코드를 실행하지 않습니다. 마찬가지로, `Product` 의 '실패 가능한 초기자' 는 `name` 값을 검사하며, `name` 이 빈 문자열이면 초기화 과정이 곧바로 실패합니다.
 
-비어있지 않은 이름과 `1` 이상의 수량으로 `CartItem` 인스턴스를 생성하면, 초기화를 성공합니다:
+이름이 비어있지 않고 수량이 `1` 이상인 `CartItem` 인스턴스를 생성하면, 초기화를 성공합니다:
 
 ```swift
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
   print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
 }
-// "Item: sock, quantity: 2" 를 출력합니다.
+// "Item: sock, quantity: 2" 를 인쇄합니다.
 ```
 
-`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화 실패를 발생시킵니다:
+`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하도록 합니다:
 
 ```swift
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
@@ -858,10 +858,10 @@ if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
 } else {
   print("Unable to initialize zero shirts")
 }
-// "Unable to initialize zero shirts" 를 출력합니다.
+// "Unable to initialize zero shirts" 를 인쇄합니다.
 ```
 
-이와 비슷하게, 빈 `name` 값을 가지고 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 초기자가 초기화 실패를 발생시킵니다:
+이와 비슷하게, 빈 `name` 값을 가진 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하도록 합니다:
 
 ```swift
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
@@ -869,7 +869,7 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 } else {
   print("Unable to initialize one unnamed product")
 }
-// "Unable to initialize one unnamed product" 를 출력합니다.
+// "Unable to initialize one unnamed product" 를 인쇄합니다.
 ```
 
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
