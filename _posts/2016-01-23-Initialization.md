@@ -674,21 +674,21 @@ for item in breakfastList {
 // 6 x Eggs ✘
 ```
 
-여기서, `breakfastList` 라는 새로운 배열은 새로운 세 `ShoppingListItem` 인스턴스를 담은 '배열 글자 값 (array literal)' 으로 생성합니다. 배열의 타입은 `[ShoppingListItem]` 으로 추론됩니다. 배열을 생성한 후, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매했다고 표시합니다. 배열의 각 항목에 대한 설명을 인쇄하면 이들의 기본 상태가 예상대로 설정된 것을 보여줍니다.
+여기서, `breakfastList` 라는 새로운 배열을 세 개의 새로운 `ShoppingListItem` 인스턴스를 담은 '배열 글자 값 (array literal)' 으로 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론합니다. 배열을 생성한 후에, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매 완료 표시를 합니다. 각 배열 항목의 설명을 인쇄하면 예상대로 설정된 기본 상태를 보여줍니다.
 
 ### Failable Initializers (실패 가능한 초기자)
 
-때로는 초기화가 실패할 수도 있는 클래스, 구조체, 또는 열거체를 정의한다면 좋을 것입니다. 이러한 실패는 무효한 초기화 매개 변수 값에 의해서거나, 필수적인 외부 소스가 없어서 이거나, 아니면 어떤 다른 조건이 초기화가 성공하는 것을 막고 있기 때문에 발생할 수 있을 겁니다.
+초기화가 실패할 수 있는 클래스, 구조체, 또는 열거체를 정의하는 것이 유용할 때가 있습니다. 이 실패는 '무효한 초기화 매개 변수 값' 에 의해서, 또는 필수적인 외부 자원이 없어서, 아니면 초기화가 성공하는 것을 막는 어떤 다른 조건에 의해서 발생할 수가 있습니다.
 
-실패할 수도 있는 초기화 조건에 대처하려면, 클래스, 구조체, 또는 열거체의 정의 부분에서 하나 이상의 '실패 가능한 초기자 (failable initializers)' 를 정의하면 됩니다. 실패 가능한 초기자는 `init` 키워드 뒤에 물음표 기호를 붙여서 (`init?` 라고) 작성합니다.
+실패할 수 있는 초기화 조건에 대처하기 위해, 클래스, 구조체, 또는 열거체의 정의에서 하나 이상의 '실패 가능한 초기자 (failable initializers)' 를 정의합니다. '실패 가능한 초기자' 는 `init` 키워드 뒤에 물음표를 붙여서 (`init?` 라고) 작성합니다.
 
-> '실패 가능한 (failable) 초기자' 와 '실패하지 않는 (nonfailable) 초기자' 를 똑같은 매개 변수 타입과 이름을 가지고 정의할 수는 없습니다.
+> 똑같은 매개 변수 타입과 이름을 가진 '실패 가능한 초기자' 와 '실패하지 않는 초기자' 를 정의할 수는 없습니다.
 
-실패 가능한 초기자는 초기화하는 타입에 대한 _옵셔널 (optional)_ 값을 생성합니다. 실패 가능한 초기자 내에서 `return nil` 을 작성하면 초기화 실패가 발생한 지점을 지시할 수 있습니다.
+'실패 가능한 초기자' 는 초기화하는 타입의 _옵셔널 (optional)_ 값을 생성합니다. 실패 가능한 초기자에서 `return nil` 을 작성하여 초기화 실패가 발생한 지점을 지시합니다.
 
-> 엄밀하게 말해서, 초기자는 값을 반환하지 않습니다. 그 보다, 이들의 역할은 초기화가 끝날 때까지 `self` 가 완전하고 올바르게 초기화되도록 보장하는 것입니다. 비록 초기화 실패를 발생시키기 위해 `return nil` 을 작성한다고 하더라도, 초기화 성공을 나타내기 위해 `return` 키워드를 사용하지는 않습니다.
+> 엄밀하게 말해서, 초기자는 값을 반환하지 않습니다. 그 보다는, 초기화가 끝날 때까지 `self` 가 온전히 그리고 올바르게 초기화되도록 보장하는 역할을 합니다. 비록 초기화 실패를 발생시키도록 `return nil` 을 작성할지라도, 초기화 성공을 지시하고자 `return` 키워드를 사용하지는 않습니다.
 
-실제 사례로써, 수치 타입 변환을 위한 실패 가능한 초기자를 구현합니다. 수치 타입 사이의 변환이 값을 정확하게[^exactly] 유지하고 있다는 보장을 하기 위해, `init(exactly:)` 초기자를 사용합니다. 타입 변환이 값을 유지할 수 없는 경우, 이 초기자는 실패합니다.
+구체적인 예를 들어 보면, 수치 타입 변환을 위해 구현된 '실패 가능한 초기자' 가 있습니다. 수치 타입 간의 변환이 값을 정확하게 유지하도록 보장하려면, `init(exactly:)` 초기자를 사용합니다.[^exactly] 타입 변환이 값을 유지할 수 없으면, 초기자가 실패합니다.
 
 ```swift
 let wholeNumber: Double = 12345.0
@@ -697,18 +697,18 @@ let pi = 3.14159
 if let valueMaintained = Int(exactly: wholeNumber) {
   print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
 }
-// "12345.0 conversion to Int maintains value of 12345" 를 출력합니다.
+// "12345.0 conversion to Int maintains value of 12345" 를 인쇄합니다.
 
 let valueChanged = Int(exactly: pi)
-// valueChanged 의 타입은 Int? 이며, Int 인 것이 아닙니다.
+// valueChanged 는, Int 타입이 아니라, Int? 타입입니다.
 
 if valueChanged == nil {
   print("\(pi) conversion to Int does not maintain value")
 }
-// "3.14159 conversion to Int does not maintain value" 를 출력합니다.
+// "3.14159 conversion to Int does not maintain value" 를 인쇄합니다.
 ```
 
-아래 예제는, `species` 라는 상수 `String` 속성을 가지는, `Animal` 이라는 구조체를 정의합니다. 이 `Animal` 구조체는 또 `species` 라는 단일한 매개 변수를 가지는 '실패 가능한 초기자' 도 정의합니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열을 발견하면, 초기화 실패를 발생시킵니다. 그렇지 않으면, `species` 속성에 값을 설정하고, 초기화는 성공합니다:
+아래 예제는, `species` 라는 '상수 `String` 속성' 을 가진, `Animal` 이라는 구조체를 정의합니다. `Animal` 구조체는 `species` 라는 단일 매개 변수를 가진 '실패 가능한 초기자' 도 정의합니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열인 경우, 초기화 실패가 발생합니다. 다른 경우라면, `species` 속성의 값을 설정하고, 초기화가 성공합니다:
 
 ```swift
 struct Animal {
@@ -720,37 +720,37 @@ struct Animal {
 }
 ```
 
-이러한 실패 가능한 초기자를 사용하면 새로운 `Animal` 인스턴스에 대한 초기화를 시도하고 초기화가 성공했는지를 확인할 수 있습니다:
+이 '실패 가능한 초기자' 는 새로운 `Animal` 인스턴스를 초기화하고 초기화가 성공했는지 검사하기 위해 사용할 수 있습니다:
 
 ```swift
 let someCreature = Animal(species: "Giraffe")
-// someCreature 의 타입은 Animal? 이며, Animal 이 아닙니다.
+// someCreature 의 타입은, Animal 이 아니라, Animal? 입니다.
 
 if let giraffe = someCreature {
     print("An animal was initialized with a species of \(giraffe.species)")
 }
-// "An animal was initialized with a species of Giraffe" 를 출력합니다.
+// "An animal was initialized with a species of Giraffe" 를 인쇄합니다.
 ```
 
-실패 가능한 초기자의 `species` 매개 변수에 빈 문자열 값을 전달하면, 이 초기자는 초기화 실패를 발생합니다:
+빈 문자열 값을 '실패 가능한 초기자' 의 `species` 매개 변수에 전달하면, 초기자가 초기화 실패를 발생시킵니다:
 
 ```swift
 let anonymousCreature = Animal(species: "")
-// anonymousCreature 의 타입은 Animal? 이며, Animal 이 아닙니다.
+// anonymousCreature 의 타입은, Animal 이 아니라, Animal? 입니다.
 
 if anonymousCreature == nil {
     print("The anonymous creature could not be initialized")
 }
-// "The anonymous creature could not be initialized" 를 출력합니다.
+// "The anonymous creature could not be initialized" 를 인쇄합니다.
 ```
 
-> 빈 문자열 값 (가령 `"Giraffe"` 가 아닌 `""`) 을 검사하는 것은 _옵셔널 (optional)_ `String` 값의 부재를 나타내는 `nil` 을 검사하는 것과 같은 것이 아닙니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한 것으로, 옵셔널이-아닌 `String` 인 것입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열을 가진다는 것은 적절한 것이 아닙니다. 이러한 제약 조건을 모델링하기 위해, 실패 가능한 초기자는 빈 문자열을 발견하면 초기화 실패를 발생시킵니다.
+> (`"Giraffe"` 가 아닌 `""` 같은) 빈 문자열 값을 검사하는 것은 _옵셔널 (optional)_ `String` 값의 없음을 표시하는 `nil` 을 검사하는 것과 같지 않습니다. 위 예제에서, 빈 문자열 (`""`) 은 옵셔널이-아닌, 유효한 `String` 입니다. 하지만, 동물이 자신의 `species` 속성 값으로 빈 문자열을 가지는 것은 적절하지 않습니다. 이런 제약 조건을 모델링하기 위해, 빈 문자열을 찾은 경우 실패 가능한 초기자가 초기화 실패를 발생시킵니다.
 
 #### Failable Initializers for Enumerations (열거체를 위한 실패 가능한 초기자)
 
-실패 가능한 초기자는 하나 이상의 매개 변수를 기반으로 적절한 '열거체 case 값 (enumeration case)' 을 선택하기 위해 사용할 수 있습니다. 제공된 매개 변수가 '열거체 case 값' 과 적당하게 일치하는 게 없다면 이 때 초기자는 실패할 수 있습니다.
+실패 가능한 초기자는 하나 이상의 매개 변수를 기초로 적절한 '열거체 case 값' 을 선택하기 위해 사용할 수 있습니다. 그런 다음 제공한 매개 변수가 적절한 '열거체 case 값' 과 일치하지 않을 경우 초기자가 실패할 수 있습니다.
 
-아래 예제는, 세 개의 상태가 가능한 (`kelvin`, `celsius`, 그리고 `fahrenheit`), `TemperatureUnit` 이라는 열거체를 정의합니다. 실패 가능한 초기자를 사용하여 '온도 기호 (temperature symbol)' 를 나타내는 `Character` 값에 해당하는 적절한 '열거체 case 값' 를 찾습니다:
+아래 예제는, (`kelvin`, `celsius`, 그리고 `fahrenheit` 라는) 세 개의 가능한 상태를 가진, `TemperatureUnit` 이라는 열거체를 정의합니다. '실패 가능한 초기자' 는 '온도 (temperature) 기호' 를 표현하는 `Character` 값에 대한 적절한 '열거체 case 값' 을 찾기 위해 사용합니다:
 
 ```swift
 enum TemperatureUnit {
@@ -770,27 +770,27 @@ enum TemperatureUnit {
 }
 ```
 
-이 실패 가능한 초기자를 사용하면 가능한 세 개의 상태 중에서 적당한 '열거체 case 값' 을 선택할 수도 있고 매개 변수가 이 상태 세 개와 일치하지 않을 경우 초기화의 실패를 일으킬 수도 있습니다:
+이 '실패 가능한 초기자' 는 세 가능한 상태에 대한 적절한 '열거체 case 값' 을 선택하고 매개 변수가 이 세 상태 중 어느 것도 일치하지 않는 경우 초기화가 실패하도록 하고자 사용할 수 있습니다:
 
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
   print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded." 를 출력합니다.
+// "This is a defined temperature unit, so initialization succeeded." 를 인쇄합니다.
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
   print("This is not a defined temperature unit, so initialization failed.")
 }
-// "This is not a defined temperature unit, so initialization failed." 를 출력합니다.
+// "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
 ```
 
-#### Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)
+#### Failable Initializers for Enumerations with Raw Values (원시 값을 가진 열거체를 위한 실패 가능한 초기자)
 
-원시 값을 가지는 열거체는, `init?(rawValue:)` 라는, '실패 가능한 초기자' 를 자동으로 부여 받는데, 이는 `rawValue` 라는 적당한 원시-값 타입의 매개 변수를 받아서 일치하는 값을 찾으면 해당하는 '열거체 case 값' 을 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시킵니다.
+원시 값을 가진 열거체는, 적절한 원시-값 타입의 `rawValue` 라는 매개 변수를 취해서 일치하는 '열거체 case 값' 을 찾으면 이를 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시키는, `init?(rawValue:)` 라는, '실패 가능한 초기자' 를 자동으로 부여 받습니다.   
 
-위에 있는 `TemperatureUnit` 예제를 다시 작성하여 `Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 이점을 활용할 수 있습니다:
+위에 있는 `TemperatureUnit` 예제는 `Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 장점을 취하여 재작성할 수 있습니다:
 
 ```swift
 enum TemperatureUnit: Character {
@@ -801,24 +801,24 @@ let fahrenheitUnit = TemperatureUnit(rawValue: "F")
 if fahrenheitUnit != nil {
   print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded." 를 출력합니다.
+// "This is a defined temperature unit, so initialization succeeded." 를 인쇄합니다.
 
 let unknownUnit = TemperatureUnit(rawValue: "X")
 if unknownUnit == nil {
   print("This is not a defined temperature unit, so initialization failed.")
 }
-// "This is not a defined temperature unit, so initialization failed." 를 출력합니다.
+// "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
 ```
 
-#### Propagation of Initialization Failure (초기화 실패 전파하기)
+#### Propagation of Initialization Failure (초기화 실패의 전파)
 
-클래스, 구조체, 및 열거체의 실패 가능한 초기자는 같은 클래스, 구조체, 및 열거체에 있는 또 다른 실패 가능한 초기자로 '옆쪽 위임 (delegate across)' 을 할 수 있습니다. 이와 비슷하게, 하위 클래스의 실패 가능한 초기자는 상위 클래스의 실패 가능한 초기자로 '위쪽 위임 (delegate up)' 을 할 수 있습니다.
+클래스, 구조체, 또는 열거체의 '실패 가능한 초기자' 는 동일한 클래스, 구조체, 또는 열거체에 있는 또 다른 '실패 가능한 초기자' 에 '옆으로 위임' 할 수 있습니다. 이와 비슷하게, 하위 클래스의 '실패 가능한 초기자' 는 상위 클래스의 '실패 가능한 초기자' 에 '위로 위임' 할 수 있습니다.
 
-어떤 경우든, 또 다른 초기자로 위임한 것이 초기화 실패의 원인이 될 경우, 전체 초기화 과정은 즉시 실패하며, 초기화 코드는 더 이상 실행되지 않습니다.
+어느 경우든, 초기화 실패를 유발하는 또 다른 초기자로 위임한 경우, 전체 초기화 과정은 곧바로 실패하며, 더 이상 초기화 코드를 실행하지 않습니다.
 
-> '실패 가능한 초기자 (failable initializer)' 또한 '실패하지 않는 초기자 (nonfailable initializer)' 로 위임할 수 있습니다. 이 접근 방식은 다른 경우라면 실패하지 않을 기존 초기화 과정에 잠재적인 실패 상태를 추가할 필요가 있을 경우 사용하도록 합니다.
+> '실패 가능한 초기자' 는 '실패하지 않는 초기자' 로도 위임할 수 있습니다. 다른 경우라면 실패하지 않을 기존의 '실패하지 않는 초기자' 에 잠재적인 실패 상태를 추가할 필요가 있을 경우 이 접근 방식을 사용합니다.
 
-아래 예제는 `Product` 의 하위 클래스인 `CartItem` 을 정의합니다. `CartItem` 클래스는 온라인 장바구니에 담겨있는 항목을 모델링 합니다. `CartItem` 은 `quantity` 라는 상수 저장 속성을 도입하여 이 속성 값이 최소 `1` 이상의 값을 가지도록 보장합니다:
+아래 예제는 `CartItem` 라는 `Product` 의 하위 클래스를 정의합니다. `CartItem` 클래스는 온라인 '장바구니 (shopping cart)' 에 있는 항목을 모델링 합니다. `CartItem` 은 `quantity` 라는 상수 저장 속성을 도입하며 이 속성이 항상 최소 `1` 이상의 값을 가지도록 보장합니다:
 
 ```swift
 class Product {
@@ -839,18 +839,18 @@ class CartItem: Product {
 }
 ```
 
-`CartItem` 의 실패 가능한 초기자는 부여 받은 `quantity` 값이 `1` 이상인지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정은 그 즉시 실패하고 초기화 코드를 더 이상 실행하지 않습니다. 이와 마찬가지로, `Product` 의 실패 가능한 초기자는 `name` 값을 검사하는데, `name` 이 빈 문자열이면 초기화 과정이 그 즉시 실패합니다.
+`CartItem` 의 '실패 가능한 초기자' 는 `1` 이상의 `quantity` 값을 받았는지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정이 곧바로 실패하며 더 이상 초기화 코드를 실행하지 않습니다. 마찬가지로, `Product` 의 '실패 가능한 초기자' 는 `name` 값을 검사하며, `name` 이 빈 문자열이면 초기화 과정이 곧바로 실패합니다.
 
-비어있지 않은 이름과 `1` 이상의 수량으로 `CartItem` 인스턴스를 생성하면, 초기화를 성공합니다:
+이름이 비어있지 않고 수량이 `1` 이상인 `CartItem` 인스턴스를 생성하면, 초기화를 성공합니다:
 
 ```swift
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
   print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
 }
-// "Item: sock, quantity: 2" 를 출력합니다.
+// "Item: sock, quantity: 2" 를 인쇄합니다.
 ```
 
-`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화 실패를 발생시킵니다:
+`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하도록 합니다:
 
 ```swift
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
@@ -858,10 +858,10 @@ if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
 } else {
   print("Unable to initialize zero shirts")
 }
-// "Unable to initialize zero shirts" 를 출력합니다.
+// "Unable to initialize zero shirts" 를 인쇄합니다.
 ```
 
-이와 비슷하게, 빈 `name` 값을 가지고 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 초기자가 초기화 실패를 발생시킵니다:
+이와 비슷하게, 빈 `name` 값을 가진 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하도록 합니다:
 
 ```swift
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
@@ -869,12 +869,12 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 } else {
   print("Unable to initialize one unnamed product")
 }
-// "Unable to initialize one unnamed product" 를 출력합니다.
+// "Unable to initialize one unnamed product" 를 인쇄합니다.
 ```
 
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
 
-상위 클래스의 실패 가능한 초기자는, 여느 다른 초기자들 처럼, 하위 클래스에서 재정의할 수 있습니다. 다른 방법으로, 상위 클래스의 실패 가능한 초기자를 하위 클래스의 '_실패하지 않는 (nonfailable)_' 초기자로 재정의할 수도 있습니다. 이는, 상위 클래스의 초기화가 실패할 수 있음에도 불구하고, 하위 클래스에서 초기화가 실패할 수 없도록 정의할 수 있게 해줍니다.
+상위 클래스의 실패 가능한 초기자는, 어떤 다른 초기자들에서와 같이, 하위 클래스에서 재정의 할 수 있습니다. 대안으로, 상위 클래스의 '실패 가능한 초기자' 를 하위 클래스에서 '_실패하지 않는 (nonfailable)_ 초기자' 로 재정의할 수 있습니다. 이는, 상위 클래스의 초기화가 실패를 허용할지라도, 초기화가 실패할 수 없는 하위 클래스를 정의할 수 있게 해줍니다.
 
 주목해야 할 것은 상위 클래스의 실패 가능한 초기자를 하위 클래스의 실패하지 않는 초기자로 재정의하는 경우, 상위 클래스로 '위쪽 위임 (delegate up)' 을 하는 유일한 방법은 상위 클래스의 실패 가능한 초기자에 대한 결과를 '강제-포장 풀기 (force-unwrap)' 하는 것 뿐이라는 것입니다.
 
@@ -1040,8 +1040,6 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^default-member-initializer]: 여기서 '클래스들이 기본적인 멤버 초기자를 가지지 않는다' 고 복수형을 사용한 것은, '기초 클래스' 의 '저장 속성' 이 '기본 값' 을 가지고 있지 않기 때문에, 이 '기초 클래스' 의 모든 하위 클래스들도 '기본 값' 을 가지지 않게 되어, 계층 구조의 모든 클래스들이 '멤버 초기자' 를 자동으로 부여받지 않기 때문입니다. [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체라면 이런 경우에도 '멤버 초기자' 를 부여 받지만, '상속 계층' 을 사용하는 클래스는 이에 해당되지 않습니다.
 
-[^exactly]: 이 예제에서 '정확하게 (exactly)' 가 의미하는 것은 수치 값 변환을 성공해서 변환된 값을 가지고 있음을 의미하는 것입니다. 변환된 값이 원래 값과 일치할 필요는 없습니다.
-
 [^function-name]: 사실 초기자는 함수 이름을 가지지 않는다기 보다 모든 함수 이름이 `init` 으로 똑같은 경우입니다. 이렇기 때문에, '함수 이름' 으로 초기자를 식별할 수 없으며 그래서 본문에서 '식별용 (identifying)' 함수 이름을 가지진 않는다고 표현한 것입니다.
 
 [^automatic-argument-label]: '자동 인자 이름표 (automatic argument label)' 은 '매개 변수 이름' 이 자동으로 '인자 이름표' 가 되는 것을 말합니다.
@@ -1051,3 +1049,5 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 [^delegate-up]: 여기서 '상위 클래스 초기자' 로 '위로 위임 (delegate up)' 한다는 말은 '상위 클래스 초기자' 를 '호출' 한다는 것입니다. '위임' 은 '호출' 을 통해서 이루어지기 때문입니다.
 
 [^final-class]: '최종 클래스 (final class)' 는 '상속 구조' 의 가장 밑에 있는 클래스를 말합니다. 스위프트에서 `final` 이라는 키워드는 원래 더 이상 상속을 하지 못하도록 하는 역할을 합니다.
+
+[^exactly]: `init(exactly:)` 초기자를 사용하면 값이 정확하게 유지될 때만 타입을 변환합니다. 본문의 예제를 보면 `3.14159` 는 값을 유지하면서 `Int` 타입으로 변환할 수 없기 때문에 변환이 실패합니다.  
