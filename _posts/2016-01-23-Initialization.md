@@ -748,9 +748,9 @@ if anonymousCreature == nil {
 
 #### Failable Initializers for Enumerations (열거체를 위한 실패 가능한 초기자)
 
-실패 가능한 초기자는 하나 이상의 매개 변수를 기반으로 적절한 '열거체 case 값 (enumeration case)' 을 선택하기 위해 사용할 수 있습니다. 제공된 매개 변수가 '열거체 case 값' 과 적당하게 일치하는 게 없다면 이 때 초기자는 실패할 수 있습니다.
+실패 가능한 초기자는 하나 이상의 매개 변수를 기초로 적절한 '열거체 case 값' 을 선택하기 위해 사용할 수 있습니다. 그런 다음 제공한 매개 변수가 적절한 '열거체 case 값' 과 일치하지 않을 경우 초기자가 실패할 수 있습니다.
 
-아래 예제는, 세 개의 상태가 가능한 (`kelvin`, `celsius`, 그리고 `fahrenheit`), `TemperatureUnit` 이라는 열거체를 정의합니다. 실패 가능한 초기자를 사용하여 '온도 기호 (temperature symbol)' 를 나타내는 `Character` 값에 해당하는 적절한 '열거체 case 값' 를 찾습니다:
+아래 예제는, (`kelvin`, `celsius`, 그리고 `fahrenheit` 라는) 세 개의 가능한 상태를 가진, `TemperatureUnit` 이라는 열거체를 정의합니다. '실패 가능한 초기자' 는 '온도 (temperature) 기호' 를 표현하는 `Character` 값에 대한 적절한 '열거체 case 값' 을 찾기 위해 사용합니다:
 
 ```swift
 enum TemperatureUnit {
@@ -770,20 +770,20 @@ enum TemperatureUnit {
 }
 ```
 
-이 실패 가능한 초기자를 사용하면 가능한 세 개의 상태 중에서 적당한 '열거체 case 값' 을 선택할 수도 있고 매개 변수가 이 상태 세 개와 일치하지 않을 경우 초기화의 실패를 일으킬 수도 있습니다:
+이 '실패 가능한 초기자' 는 세 가능한 상태에 대한 적절한 '열거체 case 값' 을 선택하고 매개 변수가 이 세 상태 중 어느 것도 일치하지 않는 경우 초기화가 실패하도록 하고자 사용할 수 있습니다:
 
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
   print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded." 를 출력합니다.
+// "This is a defined temperature unit, so initialization succeeded." 를 인쇄합니다.
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
   print("This is not a defined temperature unit, so initialization failed.")
 }
-// "This is not a defined temperature unit, so initialization failed." 를 출력합니다.
+// "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
 ```
 
 #### Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)
