@@ -786,11 +786,11 @@ if unknownUnit == nil {
 // "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
 ```
 
-#### Failable Initializers for Enumerations with Raw Values (원시 값을 가지는 열거체를 위한 실패 가능한 초기자)
+#### Failable Initializers for Enumerations with Raw Values (원시 값을 가진 열거체를 위한 실패 가능한 초기자)
 
-원시 값을 가지는 열거체는, `init?(rawValue:)` 라는, '실패 가능한 초기자' 를 자동으로 부여 받는데, 이는 `rawValue` 라는 적당한 원시-값 타입의 매개 변수를 받아서 일치하는 값을 찾으면 해당하는 '열거체 case 값' 을 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시킵니다.
+원시 값을 가진 열거체는, 적절한 원시-값 타입의 `rawValue` 라는 매개 변수를 취해서 일치하는 '열거체 case 값' 을 찾으면 이를 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시키는, `init?(rawValue:)` 라는, '실패 가능한 초기자' 를 자동으로 부여 받습니다.   
 
-위에 있는 `TemperatureUnit` 예제를 다시 작성하여 `Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 이점을 활용할 수 있습니다:
+위에 있는 `TemperatureUnit` 예제는 `Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 장점을 취하여 재작성할 수 있습니다:
 
 ```swift
 enum TemperatureUnit: Character {
@@ -801,13 +801,13 @@ let fahrenheitUnit = TemperatureUnit(rawValue: "F")
 if fahrenheitUnit != nil {
   print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded." 를 출력합니다.
+// "This is a defined temperature unit, so initialization succeeded." 를 인쇄합니다.
 
 let unknownUnit = TemperatureUnit(rawValue: "X")
 if unknownUnit == nil {
   print("This is not a defined temperature unit, so initialization failed.")
 }
-// "This is not a defined temperature unit, so initialization failed." 를 출력합니다.
+// "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
 ```
 
 #### Propagation of Initialization Failure (초기화 실패 전파하기)
