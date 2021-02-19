@@ -674,21 +674,21 @@ for item in breakfastList {
 // 6 x Eggs ✘
 ```
 
-여기서, `breakfastList` 라는 새로운 배열은 새로운 세 `ShoppingListItem` 인스턴스를 담은 '배열 글자 값 (array literal)' 으로 생성합니다. 배열의 타입은 `[ShoppingListItem]` 으로 추론됩니다. 배열을 생성한 후, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매했다고 표시합니다. 배열의 각 항목에 대한 설명을 인쇄하면 이들의 기본 상태가 예상대로 설정된 것을 보여줍니다.
+여기서, `breakfastList` 라는 새로운 배열을 세 개의 새로운 `ShoppingListItem` 인스턴스를 담은 '배열 글자 값 (array literal)' 으로 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론합니다. 배열을 생성한 후에, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매 완료 표시를 합니다. 각 배열 항목의 설명을 인쇄하면 예상대로 설정된 기본 상태를 보여줍니다.
 
 ### Failable Initializers (실패 가능한 초기자)
 
-때로는 초기화가 실패할 수도 있는 클래스, 구조체, 또는 열거체를 정의한다면 좋을 것입니다. 이러한 실패는 무효한 초기화 매개 변수 값에 의해서거나, 필수적인 외부 소스가 없어서 이거나, 아니면 어떤 다른 조건이 초기화가 성공하는 것을 막고 있기 때문에 발생할 수 있을 겁니다.
+초기화가 실패할 수 있는 클래스, 구조체, 또는 열거체를 정의하는 것이 유용할 때가 있습니다. 이 실패는 '무효한 초기화 매개 변수 값' 에 의해서, 또는 필수적인 외부 자원이 없어서, 아니면 초기화가 성공하는 것을 막는 어떤 다른 조건에 의해서 발생할 수가 있습니다.
 
-실패할 수도 있는 초기화 조건에 대처하려면, 클래스, 구조체, 또는 열거체의 정의 부분에서 하나 이상의 '실패 가능한 초기자 (failable initializers)' 를 정의하면 됩니다. 실패 가능한 초기자는 `init` 키워드 뒤에 물음표 기호를 붙여서 (`init?` 라고) 작성합니다.
+실패할 수 있는 초기화 조건에 대처하기 위해, 클래스, 구조체, 또는 열거체의 정의에서 하나 이상의 '실패 가능한 초기자 (failable initializers)' 를 정의합니다. '실패 가능한 초기자' 는 `init` 키워드 뒤에 물음표를 붙여서 (`init?` 라고) 작성합니다.
 
-> '실패 가능한 (failable) 초기자' 와 '실패하지 않는 (nonfailable) 초기자' 를 똑같은 매개 변수 타입과 이름을 가지고 정의할 수는 없습니다.
+> 똑같은 매개 변수 타입과 이름을 가진 '실패 가능한 초기자' 와 '실패하지 않는 초기자' 를 정의할 수는 없습니다.
 
-실패 가능한 초기자는 초기화하는 타입에 대한 _옵셔널 (optional)_ 값을 생성합니다. 실패 가능한 초기자 내에서 `return nil` 을 작성하면 초기화 실패가 발생한 지점을 지시할 수 있습니다.
+'실패 가능한 초기자' 는 초기화하는 타입의 _옵셔널 (optional)_ 값을 생성합니다. 실패 가능한 초기자에서 `return nil` 을 작성하여 초기화 실패가 발생한 지점을 지시합니다.
 
-> 엄밀하게 말해서, 초기자는 값을 반환하지 않습니다. 그 보다, 이들의 역할은 초기화가 끝날 때까지 `self` 가 완전하고 올바르게 초기화되도록 보장하는 것입니다. 비록 초기화 실패를 발생시키기 위해 `return nil` 을 작성한다고 하더라도, 초기화 성공을 나타내기 위해 `return` 키워드를 사용하지는 않습니다.
+> 엄밀하게 말해서, 초기자는 값을 반환하지 않습니다. 그 보다는, 초기화가 끝날 때까지 `self` 가 온전히 그리고 올바르게 초기화되도록 보장하는 역할을 합니다. 비록 초기화 실패를 발생시키도록 `return nil` 을 작성할지라도, 초기화 성공을 지시하고자 `return` 키워드를 사용하지는 않습니다.
 
-실제 사례로써, 수치 타입 변환을 위한 실패 가능한 초기자를 구현합니다. 수치 타입 사이의 변환이 값을 정확하게[^exactly] 유지하고 있다는 보장을 하기 위해, `init(exactly:)` 초기자를 사용합니다. 타입 변환이 값을 유지할 수 없는 경우, 이 초기자는 실패합니다.
+구체적인 예를 들어 보면, 수치 타입 변환을 위해 구현된 '실패 가능한 초기자' 가 있습니다. 수치 타입 간의 변환이 값을 정확하게 유지하도록 보장하려면, `init(exactly:)` 초기자를 사용합니다.[^exactly] 타입 변환이 값을 유지할 수 없으면, 초기자가 실패합니다.
 
 ```swift
 let wholeNumber: Double = 12345.0
@@ -697,15 +697,15 @@ let pi = 3.14159
 if let valueMaintained = Int(exactly: wholeNumber) {
   print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
 }
-// "12345.0 conversion to Int maintains value of 12345" 를 출력합니다.
+// "12345.0 conversion to Int maintains value of 12345" 를 인쇄합니다.
 
 let valueChanged = Int(exactly: pi)
-// valueChanged 의 타입은 Int? 이며, Int 인 것이 아닙니다.
+// valueChanged 는, Int 타입이 아니라, Int? 타입입니다.
 
 if valueChanged == nil {
   print("\(pi) conversion to Int does not maintain value")
 }
-// "3.14159 conversion to Int does not maintain value" 를 출력합니다.
+// "3.14159 conversion to Int does not maintain value" 를 인쇄합니다.
 ```
 
 아래 예제는, `species` 라는 상수 `String` 속성을 가지는, `Animal` 이라는 구조체를 정의합니다. 이 `Animal` 구조체는 또 `species` 라는 단일한 매개 변수를 가지는 '실패 가능한 초기자' 도 정의합니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열을 발견하면, 초기화 실패를 발생시킵니다. 그렇지 않으면, `species` 속성에 값을 설정하고, 초기화는 성공합니다:
@@ -1040,8 +1040,6 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^default-member-initializer]: 여기서 '클래스들이 기본적인 멤버 초기자를 가지지 않는다' 고 복수형을 사용한 것은, '기초 클래스' 의 '저장 속성' 이 '기본 값' 을 가지고 있지 않기 때문에, 이 '기초 클래스' 의 모든 하위 클래스들도 '기본 값' 을 가지지 않게 되어, 계층 구조의 모든 클래스들이 '멤버 초기자' 를 자동으로 부여받지 않기 때문입니다. [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체라면 이런 경우에도 '멤버 초기자' 를 부여 받지만, '상속 계층' 을 사용하는 클래스는 이에 해당되지 않습니다.
 
-[^exactly]: 이 예제에서 '정확하게 (exactly)' 가 의미하는 것은 수치 값 변환을 성공해서 변환된 값을 가지고 있음을 의미하는 것입니다. 변환된 값이 원래 값과 일치할 필요는 없습니다.
-
 [^function-name]: 사실 초기자는 함수 이름을 가지지 않는다기 보다 모든 함수 이름이 `init` 으로 똑같은 경우입니다. 이렇기 때문에, '함수 이름' 으로 초기자를 식별할 수 없으며 그래서 본문에서 '식별용 (identifying)' 함수 이름을 가지진 않는다고 표현한 것입니다.
 
 [^automatic-argument-label]: '자동 인자 이름표 (automatic argument label)' 은 '매개 변수 이름' 이 자동으로 '인자 이름표' 가 되는 것을 말합니다.
@@ -1051,3 +1049,5 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 [^delegate-up]: 여기서 '상위 클래스 초기자' 로 '위로 위임 (delegate up)' 한다는 말은 '상위 클래스 초기자' 를 '호출' 한다는 것입니다. '위임' 은 '호출' 을 통해서 이루어지기 때문입니다.
 
 [^final-class]: '최종 클래스 (final class)' 는 '상속 구조' 의 가장 밑에 있는 클래스를 말합니다. 스위프트에서 `final` 이라는 키워드는 원래 더 이상 상속을 하지 못하도록 하는 역할을 합니다.
+
+[^exactly]: `init(exactly:)` 초기자를 사용하면 값이 정확하게 유지될 때만 타입을 변환합니다. 본문의 예제를 보면 `3.14159` 는 값을 유지하면서 `Int` 타입으로 변환할 수 없기 때문에 변환이 실패합니다.  
