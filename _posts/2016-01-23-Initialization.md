@@ -708,7 +708,7 @@ if valueChanged == nil {
 // "3.14159 conversion to Int does not maintain value" 를 인쇄합니다.
 ```
 
-아래 예제는, `species` 라는 상수 `String` 속성을 가지는, `Animal` 이라는 구조체를 정의합니다. 이 `Animal` 구조체는 또 `species` 라는 단일한 매개 변수를 가지는 '실패 가능한 초기자' 도 정의합니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열을 발견하면, 초기화 실패를 발생시킵니다. 그렇지 않으면, `species` 속성에 값을 설정하고, 초기화는 성공합니다:
+아래 예제는, `species` 라는 '상수 `String` 속성' 을 가진, `Animal` 이라는 구조체를 정의합니다. `Animal` 구조체는 `species` 라는 단일 매개 변수를 가진 '실패 가능한 초기자' 도 정의합니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열인 경우, 초기화 실패가 발생합니다. 다른 경우라면, `species` 속성의 값을 설정하고, 초기화가 성공합니다:
 
 ```swift
 struct Animal {
@@ -720,28 +720,28 @@ struct Animal {
 }
 ```
 
-이러한 실패 가능한 초기자를 사용하면 새로운 `Animal` 인스턴스에 대한 초기화를 시도하고 초기화가 성공했는지를 확인할 수 있습니다:
+이 '실패 가능한 초기자' 는 새로운 `Animal` 인스턴스를 초기화하고 초기화가 성공했는지 검사하기 위해 사용할 수 있습니다:
 
 ```swift
 let someCreature = Animal(species: "Giraffe")
-// someCreature 의 타입은 Animal? 이며, Animal 이 아닙니다.
+// someCreature 의 타입은, Animal 이 아니라, Animal? 입니다.
 
 if let giraffe = someCreature {
     print("An animal was initialized with a species of \(giraffe.species)")
 }
-// "An animal was initialized with a species of Giraffe" 를 출력합니다.
+// "An animal was initialized with a species of Giraffe" 를 인쇄합니다.
 ```
 
-실패 가능한 초기자의 `species` 매개 변수에 빈 문자열 값을 전달하면, 이 초기자는 초기화 실패를 발생합니다:
+빈 문자열 값을 '실패 가능한 초기자' 의 `species` 매개 변수에 전달하면, 초기자가 초기화 실패를 발생시킵니다:
 
 ```swift
 let anonymousCreature = Animal(species: "")
-// anonymousCreature 의 타입은 Animal? 이며, Animal 이 아닙니다.
+// anonymousCreature 의 타입은, Animal 이 아니라, Animal? 입니다.
 
 if anonymousCreature == nil {
     print("The anonymous creature could not be initialized")
 }
-// "The anonymous creature could not be initialized" 를 출력합니다.
+// "The anonymous creature could not be initialized" 를 인쇄합니다.
 ```
 
 > 빈 문자열 값 (가령 `"Giraffe"` 가 아닌 `""`) 을 검사하는 것은 _옵셔널 (optional)_ `String` 값의 부재를 나타내는 `nil` 을 검사하는 것과 같은 것이 아닙니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한 것으로, 옵셔널이-아닌 `String` 인 것입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열을 가진다는 것은 적절한 것이 아닙니다. 이러한 제약 조건을 모델링하기 위해, 실패 가능한 초기자는 빈 문자열을 발견하면 초기화 실패를 발생시킵니다.
