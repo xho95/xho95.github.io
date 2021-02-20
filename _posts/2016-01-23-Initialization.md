@@ -960,16 +960,16 @@ class SomeSubClass: SomeClass {
 
 ### Setting a Default Property Value with a Closure or Function (클로저나 함수로 기본 속성 값 설정하기)
 
-만약 저장 속성의 기본 값에 대해 어떤 사용자 정의 작업이나 설정 작업이 필요한 경우, 클로저 또는 전역 함수를 사용하여 해당 속성에 대해 맞춤형 기본 값을 제공할 수 있습니다. 이 속성이 속해 있는 타입의 새로운 인스턴스가 초기화될 때마다, 클로저나 함수를 호출하여, 이의 반환 값을 속성의 기본 값으로 할당합니다.
+저장 속성의 기본 값을 사용자 정의하거나 설정하는 것이 필수인 경우, 해당 속성에 사용자 정의 기본 값을 제공하기 위해 클로저나 전역 함수를 사용할 수 있습니다. 속성이 속한 타입에 대한 새로운 인스턴스를 초기화할 때마다, 클로저나 함수를 호출하여, 반환 값을 속성의 기본 값으로 할당합니다.
 
-이러한 종류의 클로저나 함수는 일반적으로 속성과 같은 타입의 임시 값을 생성하고, 해당 값을 조절하여 원하는 초기 상태를 나타낸 후, 이 임시 값을 반환하여 속성의 기본 값으로 사용하도록 합니다.
+이런 종류의 클로저나 함수는 전형적으로, 속성과 똑같은 타입의 임시 값을 생성해서, 원하는 초기 상태를 표현하도록 값을 맞춘 다음, 속성의 기본 값으로 사용할 임시 값을 반환합니다.
 
-다음은 어떻게 하면 클로저로 속성의 기본 값을 제공할 수 있는 지를 대략적으로 보여줍니다:
+다음은 기본 속성 값을 제공하기 위해 클로저를 사용할 수 있는 방법에 대한 '뼈대 (skeleton outline)' 입니다:
 
 ```swift
 class SomeClass {
   let someProperty: SomeType = {
-    // 이 클로저 내에서 속성에 대한 기본 값을 생성합니다.
+    // 이 클로저 안에서 속성을 위한 기본 값을 생성함
     // someValue 는 반드시 SomeType 과 같은 타입이어야 합니다.
     return someValue
   }()
@@ -1015,10 +1015,14 @@ struct Chessboard {
 ```swift
 let board = Chessboard()
 print(board.squareIsBlackAt(row: 0, column: 1))
-// "true" 를 출력합니다.
+// "true" 를 인쇄합니다.
 print(board.squareIsBlackAt(row: 7, column: 7))
-// "false" 를 출력합니다.
+// "false" 를 인쇄합니다.
 ```
+
+### 다음 장
+
+[Deinitialization (뒷정리) > ]({% post_url 2017-03-03-Deinitialization %})
 
 ### 참고 자료
 
