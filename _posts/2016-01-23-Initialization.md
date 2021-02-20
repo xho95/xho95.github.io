@@ -841,7 +841,7 @@ class CartItem: Product {
 
 `CartItem` 의 '실패 가능한 초기자' 는 `1` 이상의 `quantity` 값을 받았는지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정이 곧바로 실패하며 더 이상 초기화 코드를 실행하지 않습니다. 마찬가지로, `Product` 의 '실패 가능한 초기자' 는 `name` 값을 검사하며, `name` 이 빈 문자열이면 초기화 과정이 곧바로 실패합니다.
 
-이름이 비어있지 않고 수량이 `1` 이상인 `CartItem` 인스턴스를 생성하면, 초기화를 성공합니다:
+이름이 비어있지 않고 수량이 `1` 이상인 `CartItem` 인스턴스를 생성하면, 초기화가 성공합니다:
 
 ```swift
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
@@ -850,7 +850,7 @@ if let twoSocks = CartItem(name: "sock", quantity: 2) {
 // "Item: sock, quantity: 2" 를 인쇄합니다.
 ```
 
-`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하도록 합니다:
+`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
@@ -861,7 +861,7 @@ if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
 // "Unable to initialize zero shirts" 를 인쇄합니다.
 ```
 
-이와 비슷하게, 빈 `name` 값을 가진 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하도록 합니다:
+이와 비슷하게, 빈 `name` 값을 가진 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
@@ -874,13 +874,13 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
 
-상위 클래스의 실패 가능한 초기자는, 어떤 다른 초기자들에서와 같이, 하위 클래스에서 재정의 할 수 있습니다. 대안으로, 상위 클래스의 '실패 가능한 초기자' 를 하위 클래스에서 '_실패하지 않는 (nonfailable)_ 초기자' 로 재정의할 수 있습니다. 이는, 상위 클래스의 초기화가 실패를 허용할지라도, 초기화가 실패할 수 없는 하위 클래스를 정의할 수 있게 해줍니다.
+상위 클래스의 '실패 가능한 초기자' 는, 다른 어떤 초기자들과 마찬가지로, 하위 클래스에서 재정의 할 수 있습니다. 대안으로, 상위 클래스의 '실패 가능한 초기자' 를 하위 클래스의 '_실패하지 않는 (nonfailable)_ 초기자' 로 재정의할 수 있습니다. 이는, 상위 클래스의 초기화가 실패를 허용할지라도, 초기화가 실패하지 않는 하위 클래스를 정의할 수 있도록 해줍니다.
 
 실패 가능한 상위 클래스 초기자를 실패하지 않는 하위 클래스 초기자로 재정의하는 경우, 상위 클래스로 '위로 위임' 하는 유일한 방법은 실패 가능한 상위 클래스 초기자의 결과를 '강제-포장 풀기 (force-unwrap)' 하는 것임을 기억하기 바랍니다.
 
-> 실패 가능한 초기자를 실패하지 않는 초기자로 재정의할 수 있지만 그 반대는 안됩니다.
+> 실패 가능한 초기자는 실패하지 않는 초기자로 재정의할 수 있지만 그 반대는 안됩니다.
 
-아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스는 비어있지 않은 문자열 또는 `nil` 일 순 있지만, 빈 문자열일 수는 없는, `name` 속성을 가진 문서를 모델링 합니다:
+아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스는 비어있지 않은 문자열 값이나 `nil` 일 순 있지만, 빈 문자열일 수는 없는, `name` 속성으로 초기화할 수 있는 '문서 (document)' 를 모델링합니다:
 
 ```swift
 class Document {
@@ -895,7 +895,7 @@ class Document {
 }
 ```
 
-이 다음 예제는 `Document` 의 하위 클래스인 `AutomaticNamedDocument` 를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 지명 초기자 둘 모두를 재정의합니다. 이러한 재정의는 만약 해당 인스턴스가 이름 없이 초기화될 경우, 아니면 `init(name:)` 초기자에 빈 문자열이 전달될 경우, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 초기 `name` 값을 가지도록 보장해 줍니다:
+이 다음 예제는 `AutomaticNamedDocument` 라는 `Document` 의 하위 클래스를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 두 개의 지명 초기자 모두 재정의합니다. 이 재정의들은, 인스턴스를 이름 없이 초기화할 경우, 또는 `init(name:)` 초기자에 빈 문자열을 전달하는 경우, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 '초기 `name` 값' 을 가지도록 보장합니다:
 
 ```swift
 class AutomaticallyNamedDocument: Document {
