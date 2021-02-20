@@ -841,7 +841,7 @@ class CartItem: Product {
 
 `CartItem` 의 '실패 가능한 초기자' 는 `1` 이상의 `quantity` 값을 받았는지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정이 곧바로 실패하며 더 이상 초기화 코드를 실행하지 않습니다. 마찬가지로, `Product` 의 '실패 가능한 초기자' 는 `name` 값을 검사하며, `name` 이 빈 문자열이면 초기화 과정이 곧바로 실패합니다.
 
-이름이 비어있지 않고 수량이 `1` 이상인 `CartItem` 인스턴스를 생성하면, 초기화를 성공합니다:
+이름이 비어있지 않고 수량이 `1` 이상인 `CartItem` 인스턴스를 생성하면, 초기화가 성공합니다:
 
 ```swift
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
@@ -850,7 +850,7 @@ if let twoSocks = CartItem(name: "sock", quantity: 2) {
 // "Item: sock, quantity: 2" 를 인쇄합니다.
 ```
 
-`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하도록 합니다:
+`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
@@ -861,7 +861,7 @@ if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
 // "Unable to initialize zero shirts" 를 인쇄합니다.
 ```
 
-이와 비슷하게, 빈 `name` 값을 가진 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하도록 합니다:
+이와 비슷하게, 빈 `name` 값을 가진 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
@@ -874,20 +874,20 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 
 #### Overriding a Failable Initializer (실패 가능한 초기자 재정의하기)
 
-상위 클래스의 실패 가능한 초기자는, 어떤 다른 초기자들에서와 같이, 하위 클래스에서 재정의 할 수 있습니다. 대안으로, 상위 클래스의 '실패 가능한 초기자' 를 하위 클래스에서 '_실패하지 않는 (nonfailable)_ 초기자' 로 재정의할 수 있습니다. 이는, 상위 클래스의 초기화가 실패를 허용할지라도, 초기화가 실패할 수 없는 하위 클래스를 정의할 수 있게 해줍니다.
+상위 클래스의 '실패 가능한 초기자' 는, 다른 어떤 초기자들과 마찬가지로, 하위 클래스에서 재정의 할 수 있습니다. 대안으로, 상위 클래스의 '실패 가능한 초기자' 를 하위 클래스의 '_실패하지 않는 (nonfailable)_ 초기자' 로 재정의할 수 있습니다. 이는, 상위 클래스의 초기화가 실패를 허용할지라도, 초기화가 실패하지 않는 하위 클래스를 정의할 수 있도록 해줍니다.
 
-주목해야 할 것은 상위 클래스의 실패 가능한 초기자를 하위 클래스의 실패하지 않는 초기자로 재정의하는 경우, 상위 클래스로 '위쪽 위임 (delegate up)' 을 하는 유일한 방법은 상위 클래스의 실패 가능한 초기자에 대한 결과를 '강제-포장 풀기 (force-unwrap)' 하는 것 뿐이라는 것입니다.
+실패 가능한 상위 클래스 초기자를 실패하지 않는 하위 클래스 초기자로 재정의하는 경우, 상위 클래스로 '위로 위임' 하는 유일한 방법은 실패 가능한 상위 클래스 초기자의 결과를 '강제-포장 풀기 (force-unwrap)' 하는 것임을 기억하기 바랍니다.
 
-> 실패 가능한 초기자를 실패하지 않는 초기자로 재정의할 수는 있지만 그 반대는 안됩니다.
+> 실패 가능한 초기자는 실패하지 않는 초기자로 재정의할 수 있지만 그 반대는 안됩니다.
 
-아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스가 모델링 하는 '문서 (document)' 는 비어있지 않은 문자열 값 또는 `nil` 일 수는 있지만, 빈 문자열일 수는 없습니다:
+아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스는 비어있지 않은 문자열 값이나 `nil` 일 순 있지만, 빈 문자열일 수는 없는, `name` 속성으로 초기화할 수 있는 '문서 (document)' 를 모델링합니다:
 
 ```swift
 class Document {
   var name: String?
-  // 아래 초기자는 이름 값이 nil 인 문서를 생성합니다.
+  // 이 초기자는 nil 이라는 이름 값을 가진 문서를 생성합니다.
   init() {}
-  // 아래 초기자는 이름 값이 비어있지 않은 문서를 생성합니다.
+  // 이 초기자는 이름 값이 비어있지 않은 문서를 생성합니다.
   init?(name: String) {
     if name.isEmpty { return nil }
     self.name = name
@@ -895,7 +895,7 @@ class Document {
 }
 ```
 
-이 다음 예제는 `Document` 의 하위 클래스인 `AutomaticNamedDocument` 를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 지명 초기자 둘 모두를 재정의합니다. 이러한 재정의는 만약 해당 인스턴스가 이름 없이 초기화될 경우, 아니면 `init(name:)` 초기자에 빈 문자열이 전달될 경우, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 초기 `name` 값을 가지도록 보장해 줍니다:
+이 다음 예제는 `AutomaticNamedDocument` 라는 `Document` 의 하위 클래스를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 두 개의 지명 초기자 모두 재정의합니다. 이 재정의들은, 인스턴스를 이름 없이 초기화할 경우, 또는 `init(name:)` 초기자에 빈 문자열을 전달하는 경우, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 '초기 `name` 값' 을 가지도록 보장합니다:
 
 ```swift
 class AutomaticallyNamedDocument: Document {
@@ -914,9 +914,9 @@ class AutomaticallyNamedDocument: Document {
 }
 ```
 
-`AutomaticNamedDocument` 는 상위 클래스의 실패 가능한 초기자인 `init?(name:)` 초기자를 실패하지 않는 초기자인 `init(name:)` 으로 재정의합니다. `AutomaticNamedDocument` 는 상위 클래스와는 다른 방법으로 빈 문자열을 처리하기 때문에, 이 초기자는 실패할 필요가 없으므로, 그 대신 실패하지 않는 초기자를 제공하는 것입니다.
+`AutomaticNamedDocument` 는 상위 클래스의 '실패 가능한 `init?(name:)` 초기자' 를 '실패하지 않는 `init(name:)`  초기자' 로 재정의합니다. `AutomaticNamedDocument` 는 상위 클래스와 다른 방식으로 빈 문자열을 처리하기 때문에, 초기자가 실패할 필요가 없으므로, 실패하지 않는 초기자 버전을 대신 제공합니다.
 
-초기자 내에서 '강제 포장 풀기 (forced unwrapping)' 를 사용하면 하위 클래스의 실패하지 않는 초기자 구현부에서 상위 클래스의 실패 가능한 초기자를 호출할 수 있습니다. 예를 들어, 아래의 `UntitledDocument` 하위 클래스는 항상 이름을 `"[Untitled]"` 라고 하며, 초기화 동안 상위 클래스에 있는 실패 가능한 초기자인 `init(name:)` 를 사용합니다.
+하위 클래스의 '실패하지 않는 초기자' 에서 상위 클래스에 있는 '실패 가능한 초기자' 를 호출하기 위해 초기자에서 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 예를 들어, 아래의 `UntitledDocument` 하위 클래스는 항상 `"[Untitled]"` 라는 이름을 붙이며, 초기화 동안 상위 클래스의 '실패 가능한 `init(name:)` 초기자' 를 사용합니다.
 
 ```swift
 class UntitledDocument: Document {
@@ -926,39 +926,39 @@ class UntitledDocument: Document {
 }
 ```
 
-이 경우, 만약 상위 클래스의 `init(name:)` 초기자를 빈 문자열 이름을 가지고 호출할 때마다, '강제 포장 풀기 (forced unwrapping)' 동작으로 인해 '실행시간 에러 (runtime error)' 가 발생할 것입니다. 하지만, 문자열 상수를 사용하여 호출하기 때문에, 초기자가 실패하지 않을 거라는 것과, 이 경우 아무런 실행시간 에러도 일어날 수 없다는 것을 알 수 있습니다.
+이 경우, 상위 클래스의 `init(name:)` 초기자를 빈 문자열의 이름을 가지고 호출했다면, '강제 포장 풀기' 연산이 '실행시간 에러' 로 끝났을 것입니다. 하지만, 문자열 상수를 가지고 호출했기 때문에, 초기자가 실패하지 않을 거라는 것을, 그래서 이 경우 아무런 실행시간 에러도 일어날 수 없음을, 알 수 있습니다.
 
 #### The `init!` Failable Initializer (`init!` 실패 가능한 초기자)
 
-일반적으로 적당한 타입의 옵셔널 인스턴스를 생성하는 실패 가능한 초기자는 `init` 키워드 뒤에 물음표 기호를 (`init?` 처럼) 붙여서 정의합니다. 다른 방법으로, 암시적으로 포장이 풀리는 적당한 타입의 옵셔널 인스턴스를 생성하는 실패 가능한 초기자를 정의할 수 있습니다. 이렇게 하려면 `init` 키워드 뒤에 물음표 대신 느낌표를 (`init!` 처럼) 붙이면 됩니다.
+적절한 타입의 옵셔널 인스턴스를 생성하는 '실패 가능한 초기자' 는 전형적으로 `init` 키워드 뒤에 물음표를 붙여 (`init?` 처럼) 정의합니다. 대안으로, 적절한 타입의 '암시적으로 포장이 풀리는 옵셔널 인스턴스' 를 생성하는 '실패 가능한 초기자' 를 정의할 수 있습니다. 이는 `init` 키워드 뒤에 물음표 대신 느낌표를 붙여서 (`init!` 처럼) 합니다.
 
-`init` 에서 `init!` 으로 또 그 반대로도 위임할 수 있으며, `init?` 를 `init!` 으로 또 그 반대로도 재정의할 수 있습니다. `init` 에서 `init!` 으로 위임할 수도 있지만, 이렇게 하면 `init!` 초기자가 초기화 실패를 일으킬 경우 '단언문 (asssertion)' 을 '발동할 (trigger)' 것입니다.
+`init?` 에서 `init!` 로 또 그 반대로도 위임할 수 있으며, `init?` 를 `init!` 로 또 그 반대로도 재정의할 수 있습니다. `init` 에서 `init!` 으로 위임할 수도 있지만, 그렇게 하면 `init!` 초기자가 초기화를 실패하도록 할 경우 '단언문 (asssertion)' 을 발동할 것입니다.
 
 ### Required Initializers (필수 초기자)
 
-클래스 초기자의 정의 앞에 `required` 수정자를 붙이면 이 클래스의 모든 하위 클래스가 반드시 해당 초기자를 구현하도록 지시할 수 있습니다:
+클래스의 모든 하위 클래스가 해당 초기자를 반드시 구현하도록 지시하려면 클래스 초기자의 정의 앞에 `required` 수정자를 작성합니다:
 
 ```swift
 class SomeClass {
   required init () {
-    // 여기서 초기자를 구현합니다.
+    // 초기자 구현은 여기에 둡니다.
   }
 }
 ```
 
-필수 초기자의 모든 하위 클래스 구현부도 반드시 `required` 수정자를 붙여야 하는데, 이는 연쇄망에 있는 하위 클래스도 이 초기자 '필수 조건 (requirement)' 을 계속 적용해야 함을 지시하는 것입니다. '필수 지명 초기자 (required designated initializer)' 를 재정의할 때는 `override` 는 붙이지 않습니다:
+필수 초기자의 모든 하위 클래스 구현 앞에도, 초기자 '필수 조건 (requirement)' 이 더 멀리 있는 연쇄망의 하위 클래스에도 적용됨을 지시하기 위해, 반드시 `required` 수정자를 작성해야 합니다. '필수 (required) 지명 초기자' 를 재정의할 때는 `override` 수정자를 작성하지 않습니다:
 
 ```swift
 class SomeSubClass: SomeClass {
   required init () {
-    // 여기서 필수 초기자의 하위 클래스 버전을 구현합니다.
+    // 필수 초기자의 하위 클래스 구현을 여기에 둡니다.
   }
 }
 ```
 
-> 상속받은 초기자로 '필수 조건 (requirement)' 를 만족시킬 수 있는 경우라면 명시적으로 '필수 초기자' 를 구현하지 않아도 됩니다.
+> 상속한 초기자로 '필수 조건' 를 만족할 수 있는 경우에는 필수 조가자의 명시적인 구현을 제공하지 않아도 됩니다.
 
-### Setting a Default Property Value with a Closure or Function (클로저 또는 함수를 사용하여 기본 속성 값 설정하기)
+### Setting a Default Property Value with a Closure or Function (클로저나 함수로 기본 속성 값 설정하기)
 
 만약 저장 속성의 기본 값에 대해 어떤 사용자 정의 작업이나 설정 작업이 필요한 경우, 클로저 또는 전역 함수를 사용하여 해당 속성에 대해 맞춤형 기본 값을 제공할 수 있습니다. 이 속성이 속해 있는 타입의 새로운 인스턴스가 초기화될 때마다, 클로저나 함수를 호출하여, 이의 반환 값을 속성의 기본 값으로 할당합니다.
 
