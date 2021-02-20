@@ -1,19 +1,17 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.3: Deinitialization (객체 정리)"
+title:  "Swift 5.3: Deinitialization (뒷정리)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Deinitialization
 redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 부분[^Deinitialization]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 부분[^Deinitialization]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Deinitialization (객체 정리)
+## Deinitialization (뒷정리)
 
-_정리자 (deinitializer)_[^deinitializer] 는 객체 인스턴스가 해제 (deallocated)[^deallocated] 되기 바로 전에 호출됩니다. '정리자' 는 `deinit` 키워드로 작성하며, '초기자 (initializer)' 를 `init` 키워드로 작성하는 것과 비슷하다고 보면 됩니다. '정리자' 는 '클래스 타입 (class types)' 에만 사용 가능합니다.[^class-types]
+_정리자 (deinitializer)_[^deinitializer] 는 클래스 인스턴스를 '해제하기 (deallocated)'[^deallocated] 바로 전에 호출됩니다. '정리자' 는, '초기자' 를 `init` 키워드로 작성하는 것과 비슷하게, `deinit` 키워드로 작성합니다. 정리자는 '클래스 타입' 에서만 사용 가능합니다.[^class-types]
 
 ### How Deinitialization Works (정리자의 작동 방식)
 
@@ -114,11 +112,9 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^deinitializer]: 스위프트의 'deinitializer' 는 '정리자' 라는 말로 옮겼는데, 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 언어에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 말입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 이 메모리 관리를 자동으로 해주기 때문에, 개발자가 직접 메모리 관리를 할 일이 드물어서, 메모리 '생성' 이나 '소멸' 이라는 개념은 사실상 없습니다. 그래서 '소멸자' 라는 말을 사용하는 것은 어울리지 않아서, 변수나 상수가 사라지기 전에 '정리' 작업을 할 필요가 있다는 의미로 '정리자' 라고 옮기도록 합니다.
+[^deinitializer]: 'deinitializer' 를 '정리자' 라고 옮긴 것은 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 것입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 을 사용하여 메모리 관리를 자동으로 하기 때문에, 사실상 메모리 '생성' 이나 '소멸' 이라는 개념이 거의 없습니다. 그러므로 '생성' 이나 '소멸' 같이 메모리 할당, 해제를 연상시키는 용어 대신 '초기자' 와 '정리자' 같은 말은 선택했습니다.
 
-[^deallocated]: 여기서의 'deallocated' 는 메모리상에서의 해제를 말하며, 스위프트에서는 'Auto Reference Counting' 에 의해 자동으로 이루어집니다.
-
-[^class-types]: 이것이 이 글의 제목인 'deinitialization' 을 '정리하기' 가 아니라 '객체 정리하기' 라고 옮긴 이유입니다. '정리' 의 대상은 'class' 일 때만 가능함을 알 수 있습니다.
+[^deallocated]: 여기서 'deallocated' 는 메모리에서 해제되는 것을 말하며, 스위프트가 'Auto Reference Counting' 을 사용하여 자동으로 해줍니다.
 
 [^free-up]: 여기서 자원을 'free up' 하는 것을 운영 체제의 관점에서 자원을 '확보한다' 는 말로 옮겼습니다.
 
