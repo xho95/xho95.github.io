@@ -27,33 +27,33 @@ deinit {
 
 정리자는, 인스턴스 해제가 일어나기 직전에, 자동으로 호출됩니다. 정리자를 직접 호출하는 것은 허용하지 않습니다. 상위 클래스의 정리자는 하위 클래스로 상속되며, 상위 클래스 정리자는 하위 클래스 정리자의 구현 끝에서 자동으로 호출됩니다. 상위 클래스 정리자는, 하위 클래스가 자신만의 정리자를 제공하지 않더라도, 항상 호출됩니다.
 
-인스턴스는 정리자를 호출한 후까지 해제되지 않기 때문에, 정리자는 자신을 호출한 인스턴스의 모든 속성에 접근할 수 있으며 해당 속성을 기초로 (닫아야할 파일의 이름을 찾아보는 것 같이) 작동 방식을 수정할 수 있습니다. 
+인스턴스는 정리자를 호출한 후까지 해제되지 않기 때문에, 정리자는 자신을 호출한 인스턴스의 모든 속성에 접근할 수 있으며 해당 속성을 기초로 (닫아야할 파일의 이름을 찾아보는 것 같이) 작동 방식을 수정할 수 있습니다.
 
 ### Deinitializers in Action (정리자의 실제 사례)
 
-다음 예제는 정리자의 실제 사례입니다. 이 예제에서는 간단한 게임을 위해 두개의 새로운 타입인 `Bank` 와 `Player` 를 정의했습니다. `Bank` 클래스는 가상의 통화를 관리하는데 유통되는 동전이 절대로 10,000 개를 넘지 않도록 합니다. 이 게임에는 단 하나의 `Bank` 만 있으므로, `Bank` 는 '타입 속성' 과 '타입 메소드' 를 가지는 클래스로 구현하여 현재 상태를 저장하고 관리합니다[^Bank-class]:
+다음은 정리자의 실제 사례입니다. 이 예제는, 단순한 게임을 위해, `Bank` 와 `Player` 라는, 두 개의 새로운 타입을 정의합니다. `Bank` 클래스는, 유통 과정에서 동전이 절대로 10,000 개를 넘지 않는, '가상 통화' 를 관리합니다. 게임에는 늘 하나의 `Bank` 만 있을 수 있으므로, 현재 상태를 저장하고 관리하기 위해 `Bank` 를 타입 속성과 메소드를 가진 클래스로 구현합니다[^singleton]:
 
 ```swift
 class Bank {
-    static var coinsInBank = 10_000
-    static func distribute(coins numberOfCoinsRequested: Int) -> Int {
-        let numberOfCoinsToVend = min(numberOfCoinsRequested, coinsInBank)
-        coinsInBank -= numberOfCoinsToVend
-        return numberOfCoinsToVend
-    }
-    static func receive(coins: Int) {
-        coinsInBank += coins
-    }
+  static var coinsInBank = 10_000
+  static func distribute(coins numberOfCoinsRequested: Int) -> Int {
+    let numberOfCoinsToVend = min(numberOfCoinsRequested, coinsInBank)
+    coinsInBank -= numberOfCoinsToVend
+    return numberOfCoinsToVend
+  }
+  static func receive(coins: Int) {
+    coinsInBank += coins
+  }
 }
 ```
 
-`Bank` 에는 현재 보유하고 있는 동전 수를 추적하기 위한 `coinsInBank` 이 있습니다. 또 동전의 분배와 수집을 처리하기 위한 두 개의 메소드 (`distribute(coins:)` 와 `receive(coins:)`) 를 제공합니다.
+`Bank` 는 현재 보유한 동전 수를 `coinsInBank` 속성으로 추적합니다. 이는 동전의 배포와 수집을 처리하는-`distribute(coins:)` 와 `receive(coins:)` 라는-두 개의 메소드도 제안합니다.
 
-`distribute(coins:)` 메소드는 분배하기 전에 은행에 동전이 충분히 있는 지 검사합니다. 동전이 충분하지 않으면, `Bank` 는 요청받은 개수보다 적은 개수를 반환합니다. (은행에 남은 동전이 없으면 0 을 반환합니다). 반환하는 정수 값은 실제 제공되는 동전의 수를 나타냅니다.
+`distribute(coins:)` 메소드는 배포 전에 은행에 동전이 충분히 있는지 검사합니다. 동전이 충분하지 않으면, `Bank` 는 요청한 개수보다 적은 수를 반환 (하고 은행에 남은 동전이 없으면 '0' 을 반환) 합니다. 실제 제공된 동전 수를 표시하고자 '정수 값' 을 반환합니다.
 
-`receive(coins:)` 메소드는 받은 동전의 개수를 다시 은행의 동전 창고 (store) 에 더하는 것으로 끝납니다.
+`receive(coins:)` 메소드는 받은 동전 수를 다시 은행의 '동전 창고' 에 단순히 더합니다.
 
-`Player` 클래스는 게임에 있는 '참여자 (player)' 를 묘사합니다. 각각의 참여자는 언제든지 지갑에 일정 수의 동전을 저장할 수 있습니다. 이는 참여자의 `coinsInPurse` 속성으로 나타냅니다:
+`Player` 클래스는 게임의 '참여자' 를 설명합니다. 각 참여자는 언제든지 정해진 수의 동전을 지갑에 저장합니다. 이는 참여자의 `coinsInPurse` 속성으로 표현합니다:
 
 ```swift
 class Player {
@@ -106,6 +106,10 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 참여자가 방금 막 게임을 떠났습니다. 이는 '옵셔널 `playerOne`' 변수를 (“`Player` 인스턴스가 없음” 을 의미하는) `nil` 로 설정하여 표현합니다. 이렇게 하면, `Player` 인스턴스를 가리키는 `playerOne` 변수의 참조가 끊어집니다. 어떤 다른 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 메모리 자원을 확보하기 위해 해제됩니다. 이 일이 일어나기 바로 전에, 정리자가 자동으로 호출되며, 동전은 은행으로 반환됩니다.
 
+### 다음 장
+
+[Optional Chaining (옵셔널 연쇄) > ]({% post_url 2020-06-17-Optional-Chaining %})
+
 ### 참고 자료
 
 [^Deinitialization]: 이 글에 대한 원문은 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 에서 확인할 수 있습니다.
@@ -116,4 +120,4 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^deallocated]: 여기서 'deallocated' 는 메모리에서 해제되는 것을 말하며, 스위프트가 'Auto Reference Counting' 을 사용하여 자동으로 해줍니다.
 
-[^Bank-class]: 이 예제에서의 `Bank` 클래스는 'singleton (싱글턴)' 이라고 볼 수 있습니다.
+[^singleton]: `Bank` 클래스는, 참조 타입인 클래스라서 복사가 일어나지 않으며, 타입 속성과 메소드로 구현되어 개별 인스턴스를 따로 생성하지 않으므로, '싱글턴 (singleton) 패턴' 에 해당합니다. 사실 `Bank` 클래스는 스위프트에서 '싱글턴 패턴' 을 구현하는 방법을 보여주는 것입니다. '싱글턴 패턴' 에 대한 더 자세한 정보는 위키피디아의 [Singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 과 [싱글턴 패턴](https://ko.wikipedia.org/wiki/싱글턴_패턴) 항목을 참고하기 바랍니다.
