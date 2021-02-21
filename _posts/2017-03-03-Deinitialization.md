@@ -1,112 +1,114 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.3: Deinitialization (객체 정리)"
+title:  "Swift 5.3: Deinitialization (뒷정리)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Deinitialization
 redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 부분[^Deinitialization]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 부분[^Deinitialization]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Deinitialization (객체 정리)
+## Deinitialization (뒷정리)
 
-_정리자 (deinitializer)_[^deinitializer] 는 객체 인스턴스가 해제 (deallocated)[^deallocated] 되기 바로 전에 호출됩니다. '정리자' 는 `deinit` 키워드로 작성하며, '초기자 (initializer)' 를 `init` 키워드로 작성하는 것과 비슷하다고 보면 됩니다. '정리자' 는 '클래스 타입 (class types)' 에만 사용 가능합니다.[^class-types]
+_정리자 (deinitializer)_[^deinitializer] 는 클래스 인스턴스를 '해제하기 (deallocated)'[^deallocated] 바로 전에 호출됩니다. '정리자' 는, '초기자' 를 `init` 키워드로 작성하는 것과 비슷하게, `deinit` 키워드로 작성합니다. 정리자는 '클래스 타입' 에서만 사용 가능합니다.
 
 ### How Deinitialization Works (정리자의 작동 방식)
 
-스위프트는 자원을 확보하기 위해 필요 없는 인스턴스는 자동으로 해제합니다.[^free-up] 스위프트에서 인스턴스의 메모리 관리를 처리하는 곳은 '자동 참조 카운팅 (ARC; automatic reference counting)' 이며, 이는 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 에서 설명하도록 합니다. 일반적으로는 인스턴스가 해제된다고 해서 정리 작업을 수동으로 따로 할 일은 없습니다. 하지만, 작업하면서 자기 자신의 자원을 사용하는 경우, 직접 추가 정리 작업을 해야할 수도 있습니다. 예를 들어, 직접 만든 클래스로 어떤 파일을 열고 거기다 뭔가를 썼을 경우, 클래스 인스턴스가 해제되기 전에 그 파일을 직접 닫을 필요가 있습니다.
+스위프트는, 자원을 확보하기 위해, 인스턴스가 더 이상 필요 없을 때 자동으로 해제합니다. 스위프트는, [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 에서 설명한 것처럼, '자동 참조 카운팅 (ARC)' 을 통해 인스턴스의 메모리를 관리합니다. 일반적으로 인스턴스를 해제할 때 수동으로 정리할 필요는 없습니다. 하지만, 자신만의 자원을 가지고 작업할 때는, 몇몇 추가적인 정리를 직접 해야할 필요가 있을 수도 있습니다. 예를 들어, 파일을 열고 어떤 자료를 작성하는 사용자 정의 클래스를 생성한 경우, 클래스 인스턴스를 해제하기 전에 파일을 닫을 필요가 있습니다.
 
-'클래스 정의 (class definitions)' 는 클래스 당 최대 한 개의 '정리자' 만 가집니다. 정리자는 매개 변수를 가지지 않아서 괄호도 쓰지 않습니다:
+'클래스 정의' 는 클래스 당 최대 하나의 '정리자' 를 가질 수 있습니다. 정리자는 어떤 매개 변수도 취하지 않으며 괄호 없이 작성합니다:
 
 ```swift
 deinit {
-    // 여기서 정리 작업을 수행합니다.
+  // 뒷정리를 수행합니다.
 }
 ```
 
-정리자는 인스턴스의 해제가 일어나기 바로 전에 자동으로 호출됩니다. 정리자를 직접 호출하는 것은 안됩니다. '상위 클래스 (supperclass)' 의 정리자는 '하위 클래스 (subclasses)' 로 상속되며, '상위 클래스 정리자' 는 '하위 클래스 정리자' 의 구현부 끝에서 자동으로 호출됩니다. '상위 클래스 정리자' 는 항상 호출되는 것으로, 심지어 하위 클래스가 자신의 정리자를 제공하지 않는 경우에도 호출됩니다.
+정리자는, 인스턴스 해제가 일어나기 직전에, 자동으로 호출됩니다. 정리자를 직접 호출하는 것은 허용하지 않습니다. 상위 클래스의 정리자는 하위 클래스로 상속되며, 상위 클래스 정리자는 하위 클래스 정리자의 구현 끝에서 자동으로 호출됩니다. 상위 클래스 정리자는, 하위 클래스가 자신만의 정리자를 제공하지 않더라도, 항상 호출됩니다.
 
-정리자의 호출이 끝나기 전에는 인스턴스가 해제되지 않으므로, 정리자는 자기를 호출한 인스턴스의 모든 속성에 접근할 수 있으며 해당 속성에 기초하여 행동을 수정할 수 있습니다. (가령 닫아야 할 파일을 이름으로 조회하는 것 등이 가능합니다.)
+인스턴스는 정리자를 호출한 후까지 해제되지 않기 때문에, 정리자는 자신을 호출한 인스턴스의 모든 속성에 접근할 수 있으며 해당 속성을 기초로 (닫아야할 파일의 이름을 찾아보는 것 같이) 작동 방식을 수정할 수 있습니다.
 
 ### Deinitializers in Action (정리자의 실제 사례)
 
-다음 예제는 정리자의 실제 사례입니다. 이 예제에서는 간단한 게임을 위해 두개의 새로운 타입인 `Bank` 와 `Player` 를 정의했습니다. `Bank` 클래스는 가상의 통화를 관리하는데 유통되는 동전이 절대로 10,000 개를 넘지 않도록 합니다. 이 게임에는 단 하나의 `Bank` 만 있으므로, `Bank` 는 '타입 속성' 과 '타입 메소드' 를 가지는 클래스로 구현하여 현재 상태를 저장하고 관리합니다[^Bank-class]:
+다음은 정리자의 실제 사례입니다. 이 예제는, 단순한 게임을 위해, `Bank` 와 `Player` 라는, 두 개의 새로운 타입을 정의합니다. `Bank` 클래스는, 유통 과정에서 동전이 절대로 10,000 개를 넘지 않는, '가상 통화' 를 관리합니다. 게임에는 늘 하나의 `Bank` 만 있을 수 있으므로, 현재 상태를 저장하고 관리하기 위해 `Bank` 를 타입 속성과 메소드를 가진 클래스로 구현합니다[^singleton]:
 
 ```swift
 class Bank {
-    static var coinsInBank = 10_000
-    static func distribute(coins numberOfCoinsRequested: Int) -> Int {
-        let numberOfCoinsToVend = min(numberOfCoinsRequested, coinsInBank)
-        coinsInBank -= numberOfCoinsToVend
-        return numberOfCoinsToVend
-    }
-    static func receive(coins: Int) {
-        coinsInBank += coins
-    }
+  static var coinsInBank = 10_000
+  static func distribute(coins numberOfCoinsRequested: Int) -> Int {
+    let numberOfCoinsToVend = min(numberOfCoinsRequested, coinsInBank)
+    coinsInBank -= numberOfCoinsToVend
+    return numberOfCoinsToVend
+  }
+  static func receive(coins: Int) {
+    coinsInBank += coins
+  }
 }
 ```
 
-`Bank` 에는 현재 보유하고 있는 동전 수를 추적하기 위한 `coinsInBank` 이 있습니다. 또 동전의 분배와 수집을 처리하기 위한 두 개의 메소드 (`distribute(coins:)` 와 `receive(coins:)`) 를 제공합니다.
+`Bank` 는 현재 보유한 동전 수를 `coinsInBank` 속성으로 추적합니다. 이는 동전의 배포와 수집을 처리하는-`distribute(coins:)` 와 `receive(coins:)` 라는-두 개의 메소드도 제안합니다.
 
-`distribute(coins:)` 메소드는 분배하기 전에 은행에 동전이 충분히 있는 지 검사합니다. 동전이 충분하지 않으면, `Bank` 는 요청받은 개수보다 적은 개수를 반환합니다. (은행에 남은 동전이 없으면 0 을 반환합니다). 반환하는 정수 값은 실제 제공되는 동전의 수를 나타냅니다.
+`distribute(coins:)` 메소드는 배포 전에 은행에 동전이 충분히 있는지 검사합니다. 동전이 충분하지 않으면, `Bank` 는 요청한 개수보다 적은 수를 반환 (하고 은행에 남은 동전이 없으면 '0' 을 반환) 합니다. 실제 제공된 동전 수를 표시하고자 '정수 값' 을 반환합니다.
 
-`receive(coins:)` 메소드는 받은 동전의 개수를 다시 은행의 동전 창고 (store) 에 더하는 것으로 끝납니다.
+`receive(coins:)` 메소드는 받은 동전 수를 은행의 '동전 창고' 에 다시 단순히 더합니다.
 
-`Player` 클래스는 게임에 있는 '참여자 (player)' 를 묘사합니다. 각각의 참여자는 언제든지 지갑에 일정 수의 동전을 저장할 수 있습니다. 이는 참여자의 `coinsInPurse` 속성으로 나타냅니다:
+`Player` 클래스는 게임의 '참여자' 를 설명합니다. 각 참여자는 지갑에 언제든지 정해진 수의 동전을 저장합니다. 이는 참여자의 `coinsInPurse` 속성으로 표현합니다:
 
 ```swift
 class Player {
-    var coinsInPurse: Int
-    init(coins: Int) {
-        coinsInPurse = Bank.distribute(coins: coins)
-    }
-    func win(coins: Int) {
-        coinsInPurse += Bank.distribute(coins: coins)
-    }
-    deinit {
-        Bank.receive(coins: coinsInPurse)
-    }
+  var coinsInPurse: Int
+  init(coins: Int) {
+    coinsInPurse = Bank.distribute(coins: coins)
+  }
+  func win(coins: Int) {
+    coinsInPurse += Bank.distribute(coins: coins)
+  }
+  deinit {
+    Bank.receive(coins: coinsInPurse)
+  }
 }
 ```
 
-각 `Player` 인스턴스는 초기화할 때 은행에서 지정한 동전 개수만큼의 '초기 할당량 (staring allowance)' 으로 초기화 되는데, 동전이 충분하지 않으면 특정 `Player` 인스턴스는 그보다 적은 개수를 가지게 될 수도 있습니다.
+각 `Player` 인스턴스는 초기화 동안 은행으로부터 '최초 할당량' 이라는 지정한 동전 수로 초기화되는데, 동전이 충분하지 않으면 `Player` 인스턴스가 해당 수보다 적게 받을 수도 있습니다.
 
-`Player` 클래스는 `win(coins:)` 메소드를 정의하여, 은행에서 받은 특정 개수의 동전을 자기 지갑에 더합니다. `Player` 클래스는 '정리자' 도 구현하며, 이는 `Player` 인스턴스가 해제되기 바로 직전에 호출됩니다. 여기서 정리자는 단순히 자신의 모든 동전을 은행에 반환합니다:
+`Player` 클래스는, 은행으로부터 정해진 수의 동전을 받고 이를 참여자의 지갑에 더하는, `win(coins:)` 메소드를 정의합니다. `Player` 클래스는, `Player` 클래스를 해제하기 직전에 호출되는, '정리자' 도 구현합니다. 여기서, 정리자는 단순히 참여자의 모든 동전을 은행에 반환합니다:
 
 ```swift
 var playerOne: Player? = Player(coins: 100)
 print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
-// "A new player has joined the game with 100 coins" 를 출력합니다.
+// "A new player has joined the game with 100 coins" 를 인쇄합니다.
 print("There are now \(Bank.coinsInBank) coins left in the bank")
-// "There are now 9900 coins left in the bank" 를 출력합니다.
+// "There are now 9900 coins left in the bank" 를 인쇄합니다.
 ```
 
-새로운 `Player` 인스턴스를 생성하면서, 동전 100개가 가능한 지 요청합니다. 이어서 이 `Player` 인스턴스를 `playerOne` 이라는 '옵셔널 (optional) `Player`' 변수에 저장합니다. 여기서 옵셔널 변수를 사용했는데, 참여자는 언제든지 게임을 떠날 수 있기 때문입니다. 옵셔널을 사용하면 현재 게임에 참여자가 있는지 없는지를 추적할 수 있습니다.
+새로운 `Player` 인스턴스를 생성하면서, 동전 '100' 개가 가능한지 요청합니다. 이 `Player` 인스턴스를 `playerOne` 이라는 '옵셔널 `Player` 변수' 에 저장합니다. 여기서 옵셔널 변수를 사용한 것은, 참여자가 언제든지 게임을 떠날 수 있기 때문입니다. 옵셔널은 게임에 현재 참여자가 있는지를 추적하게 해줍니다.
 
-`playerOne` 은 옵셔널이므로, `coinsInPurse` 속성에 접근해서 동전의 개수를 출력할 때나, `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 를 붙여서 자격을 갖춰야 합니다:
+`playerOne` 이 옵셔널이기 때문에, `coinsInPurse` 속성에 접근하여 기본 동전 수를 출력할 때, 그리고 `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 로 '규명 (qualified)' 합니다.:
 
 ```swift
 playerOne!.win(coins: 2_000)
 print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
-// "PlayerOne won 2000 coins & now has 2100 coins" 를 출력합니다.
+// "PlayerOne won 2000 coins & now has 2100 coins" 를 인쇄합니다.
 print("The bank now only has \(Bank.coinsInBank) coins left")
-// "The bank now only has 7900 coins left" 를 출력합니다.
+// "The bank now only has 7900 coins left" 를 인쇄합니다.
 ```
 
-참여자가 승리해서 동전 2,000 개를 획득했습니다. 이제 참여자의 지갑에는 동전이 2,100 개 있으며, 은행에 남은 동전은 7,900 개 입니다.
+여기서, 참여자가 이겨서 동전 '2,000' 개를 손에 넣었습니다. 참여자의 지갑에는 이제 동전 '2,100' 개가 담겨 있고, 은행에는 '7,900' 개의 동전만이 남아 있습니다.
 
 ```swift
 playerOne = nil
 print("PlayerOne has left the game")
-// "PlayerOne has left the game" 을 출력합니다.
+// "PlayerOne has left the game" 을 인쇄합니다.
 print("The bank now has \(Bank.coinsInBank) coins")
-// "The bank now has 10000 coins" 를 출력합니다.
+// "The bank now has 10000 coins" 를 인쇄합니다.
 ```
 
-참여자가 방금 막 게임을 떠났습니다. 이는 '옵셔널 `playerOne`' 변수를 (“`Player` 인스턴스가 없음” 을 의미하는) `nil` 로 설정하여 표현합니다. 이렇게 하면, `Player` 인스턴스를 가리키는 `playerOne` 변수의 참조가 끊어집니다. 어떤 다른 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 메모리 자원을 확보하기 위해 해제됩니다. 이 일이 일어나기 바로 전에, 정리자가 자동으로 호출되며, 동전은 은행으로 반환됩니다.
+참여자가 이제 게임을 떠났습니다. 이는 '옵셔널 `Player` 변수에, "`Player` 인스턴스가 없음" 을 의미하는, `nil` 을 설정함으로써 지시합니다. 이것이 일어나는 시점에, `Player` 인스턴스에 대한 `playerOne` 변수의 참조가 끊어집니다. 다른 어느 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 메모리 확보를 위해 해제됩니다. 이것이 일어나기 직전에, 정리자를 자동으로 호출하여, 동전을 은행으로 반환합니다.
+
+### 다음 장
+
+[Optional Chaining (옵셔널 연쇄) > ]({% post_url 2020-06-17-Optional-Chaining %})
 
 ### 참고 자료
 
@@ -114,12 +116,8 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^deinitializer]: 스위프트의 'deinitializer' 는 '정리자' 라는 말로 옮겼는데, 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 언어에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 말입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 이 메모리 관리를 자동으로 해주기 때문에, 개발자가 직접 메모리 관리를 할 일이 드물어서, 메모리 '생성' 이나 '소멸' 이라는 개념은 사실상 없습니다. 그래서 '소멸자' 라는 말을 사용하는 것은 어울리지 않아서, 변수나 상수가 사라지기 전에 '정리' 작업을 할 필요가 있다는 의미로 '정리자' 라고 옮기도록 합니다.
+[^deinitializer]: 'deinitializer' 를 '정리자' 라고 옮긴 것은 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 것입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 을 사용하여 메모리 관리를 자동으로 하기 때문에, 사실상 메모리 '생성' 이나 '소멸' 이라는 개념이 거의 없습니다. 그러므로 '생성' 이나 '소멸' 같이 메모리 할당, 해제를 연상시키는 용어 대신 '초기자' 와 '정리자' 같은 말은 선택했습니다.
 
-[^deallocated]: 여기서의 'deallocated' 는 메모리상에서의 해제를 말하며, 스위프트에서는 'Auto Reference Counting' 에 의해 자동으로 이루어집니다.
+[^deallocated]: 여기서 'deallocated' 는 메모리에서 해제되는 것을 말하며, 스위프트가 'Auto Reference Counting' 을 사용하여 자동으로 해줍니다.
 
-[^class-types]: 이것이 이 글의 제목인 'deinitialization' 을 '정리하기' 가 아니라 '객체 정리하기' 라고 옮긴 이유입니다. '정리' 의 대상은 'class' 일 때만 가능함을 알 수 있습니다.
-
-[^free-up]: 여기서 자원을 'free up' 하는 것을 운영 체제의 관점에서 자원을 '확보한다' 는 말로 옮겼습니다.
-
-[^Bank-class]: 이 예제에서의 `Bank` 클래스는 'singleton (싱글턴)' 이라고 볼 수 있습니다.
+[^singleton]: `Bank` 클래스는, 참조 타입인 클래스라서 복사가 일어나지 않으며, 타입 속성과 메소드로 구현되어 개별 인스턴스를 따로 생성하지 않으므로, '싱글턴 (singleton) 패턴' 에 해당합니다. 사실 `Bank` 클래스는 스위프트에서 '싱글턴 패턴' 을 구현하는 방법을 보여주는 것입니다. '싱글턴 패턴' 에 대한 더 자세한 정보는 위키피디아의 [Singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 과 [싱글턴 패턴](https://ko.wikipedia.org/wiki/싱글턴_패턴) 항목을 참고하기 바랍니다.

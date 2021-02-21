@@ -1,20 +1,18 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.3: Optional Chaining (옵셔널 체이닝; 옵셔널 연쇄)"
+title:  "Swift 5.3: Optional Chaining (옵셔널 연쇄)"
 date:   2020-06-17 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Optional Chaining](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Optional-Chaining]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Optional Chaining](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Optional-Chaining]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Optional Chaining (옵셔널 연쇄)
 
-_옵셔널 연쇄 (optional chaining)_ 는 현재 값이 `nil` 일 수도 있는 '옵셔널' 의 속성, 메소드, 그리고 첨자 연산을 조회하고 호출하는 '과정 (process)' 을 말합니다. 만약 '옵셔널' 이 값을 가지고 있으면, 속성, 메소드, 또는 첨자 연산에 대한 호출은 성공합니다; 먄약 '옵셔널' 이 `nil` 이라면, 속성, 메소드, 또는 첨자 연산에 대한 호출은 `nil` 을 반환합니다. '다중 조회 (multiple queries)' 는 서로 연쇄될 수 있으며, 연쇄망 중에 어느 한 고리라도 `nil` 이면 전체 연쇄망이 우아하게 실패합니다.[^gracefully-fail]
+_옵셔널 연쇄 (optional chaining)_ 는 현재 `nil` 일 수도 있는 '옵셔널' 에 대한 속성, 메소드, 그리고 첨자 연산을 조회하고 호출하는 과정입니다. '옵셔널' 이 값을 담고 있으면, 속성, 메소드, 또는 첨자 연산 호출이 성공하며; '옵셔널' 이 `nil` 이면, 속성, 메소드, 또는 첨자 연산 호출이 `nil` 을 반환합니다. 여러 개의 조회는 '연쇄망 (chain)' 으로 서로 이을 수 있으며, 연쇄망에 있는 어떤 고리가 `nil` 이이라도 '전체 연쇄망' 이 '우아하게 (gracefully)'[^gracefully-fail] 실패합니다.
 
-> 스위프트의 '옵셔널 연쇄' 는 오브젝티브-C 언어에서 `nil` 메시지를 주고받는 것과 비슷하지만, 어떤 타입과도 작업할 수 있으며, 성공이나 실패를 검사할 수 있습니다.
+> 스위프트의 '옵셔널 연쇄' 는 오브젝티브-C 에서 `nil` 메시지를 주고받는 것과 비슷하지만, 어떤 타입과도 작업할 수 있는 방식이며, 성공인지 실패인지 검사할 수 있습니다.
 
 ### Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안으로써의 옵셔널 연쇄)
 
@@ -384,4 +382,4 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^gracefully-fail]: 본문에서 사용한 '우아하게 실패한다 (fail gracefully)' 라는 말은 '실행-시간 에러 (runtime error)' 가 발생하지 않고 `nil` 이 되는 것을 말합니다.
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. '연쇄망' 의 어떤 '고리' 라도 `nil` 이면, 실행시간 에러가 발생하는 대신, 전체 연쇄망이 `nil` 이 된다는 의미입니다.
