@@ -51,60 +51,60 @@ class Bank {
 
 `distribute(coins:)` 메소드는 배포 전에 은행에 동전이 충분히 있는지 검사합니다. 동전이 충분하지 않으면, `Bank` 는 요청한 개수보다 적은 수를 반환 (하고 은행에 남은 동전이 없으면 '0' 을 반환) 합니다. 실제 제공된 동전 수를 표시하고자 '정수 값' 을 반환합니다.
 
-`receive(coins:)` 메소드는 받은 동전 수를 다시 은행의 '동전 창고' 에 단순히 더합니다.
+`receive(coins:)` 메소드는 받은 동전 수를 은행의 '동전 창고' 에 다시 단순히 더합니다.
 
-`Player` 클래스는 게임의 '참여자' 를 설명합니다. 각 참여자는 언제든지 정해진 수의 동전을 지갑에 저장합니다. 이는 참여자의 `coinsInPurse` 속성으로 표현합니다:
+`Player` 클래스는 게임의 '참여자' 를 설명합니다. 각 참여자는 지갑에 언제든지 정해진 수의 동전을 저장합니다. 이는 참여자의 `coinsInPurse` 속성으로 표현합니다:
 
 ```swift
 class Player {
-    var coinsInPurse: Int
-    init(coins: Int) {
-        coinsInPurse = Bank.distribute(coins: coins)
-    }
-    func win(coins: Int) {
-        coinsInPurse += Bank.distribute(coins: coins)
-    }
-    deinit {
-        Bank.receive(coins: coinsInPurse)
-    }
+  var coinsInPurse: Int
+  init(coins: Int) {
+    coinsInPurse = Bank.distribute(coins: coins)
+  }
+  func win(coins: Int) {
+    coinsInPurse += Bank.distribute(coins: coins)
+  }
+  deinit {
+    Bank.receive(coins: coinsInPurse)
+  }
 }
 ```
 
-각 `Player` 인스턴스는 초기화할 때 은행에서 지정한 동전 개수만큼의 '초기 할당량 (staring allowance)' 으로 초기화 되는데, 동전이 충분하지 않으면 특정 `Player` 인스턴스는 그보다 적은 개수를 가지게 될 수도 있습니다.
+각 `Player` 인스턴스는 초기화 동안 은행으로부터 '최초 할당량' 이라는 지정한 동전 수로 초기화되는데, 동전이 충분하지 않으면 `Player` 인스턴스가 해당 수보다 적게 받을 수도 있습니다.
 
-`Player` 클래스는 `win(coins:)` 메소드를 정의하여, 은행에서 받은 특정 개수의 동전을 자기 지갑에 더합니다. `Player` 클래스는 '정리자' 도 구현하며, 이는 `Player` 인스턴스가 해제되기 바로 직전에 호출됩니다. 여기서 정리자는 단순히 자신의 모든 동전을 은행에 반환합니다:
+`Player` 클래스는, 은행으로부터 정해진 수의 동전을 받고 이를 참여자의 지갑에 더하는, `win(coins:)` 메소드를 정의합니다. `Player` 클래스는, `Player` 클래스를 해제하기 직전에 호출되는, '정리자' 도 구현합니다. 여기서, 정리자는 단순히 참여자의 모든 동전을 은행에 반환합니다:
 
 ```swift
 var playerOne: Player? = Player(coins: 100)
 print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
-// "A new player has joined the game with 100 coins" 를 출력합니다.
+// "A new player has joined the game with 100 coins" 를 인쇄합니다.
 print("There are now \(Bank.coinsInBank) coins left in the bank")
-// "There are now 9900 coins left in the bank" 를 출력합니다.
+// "There are now 9900 coins left in the bank" 를 인쇄합니다.
 ```
 
-새로운 `Player` 인스턴스를 생성하면서, 동전 100개가 가능한 지 요청합니다. 이어서 이 `Player` 인스턴스를 `playerOne` 이라는 '옵셔널 (optional) `Player`' 변수에 저장합니다. 여기서 옵셔널 변수를 사용했는데, 참여자는 언제든지 게임을 떠날 수 있기 때문입니다. 옵셔널을 사용하면 현재 게임에 참여자가 있는지 없는지를 추적할 수 있습니다.
+새로운 `Player` 인스턴스를 생성하면서, 동전 '100' 개가 가능한지 요청합니다. 이 `Player` 인스턴스를 `playerOne` 이라는 '옵셔널 `Player` 변수' 에 저장합니다. 여기서 옵셔널 변수를 사용한 것은, 참여자가 언제든지 게임을 떠날 수 있기 때문입니다. 옵셔널은 게임에 현재 참여자가 있는지를 추적하게 해줍니다.
 
-`playerOne` 은 옵셔널이므로, `coinsInPurse` 속성에 접근해서 동전의 개수를 출력할 때나, `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 를 붙여서 자격을 갖춰야 합니다:
+`playerOne` 이 옵셔널이기 때문에, `coinsInPurse` 속성에 접근하여 기본 동전 수를 출력할 때, 그리고 `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 로 '규명 (qualified)' 합니다.:
 
 ```swift
 playerOne!.win(coins: 2_000)
 print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
-// "PlayerOne won 2000 coins & now has 2100 coins" 를 출력합니다.
+// "PlayerOne won 2000 coins & now has 2100 coins" 를 인쇄합니다.
 print("The bank now only has \(Bank.coinsInBank) coins left")
-// "The bank now only has 7900 coins left" 를 출력합니다.
+// "The bank now only has 7900 coins left" 를 인쇄합니다.
 ```
 
-참여자가 승리해서 동전 2,000 개를 획득했습니다. 이제 참여자의 지갑에는 동전이 2,100 개 있으며, 은행에 남은 동전은 7,900 개 입니다.
+여기서, 참여자가 이겨서 동전 '2,000' 개를 손에 넣었습니다. 참여자의 지갑에는 이제 동전 '2,100' 개가 담겨 있고, 은행에는 '7,900' 개의 동전만이 남아 있습니다.
 
 ```swift
 playerOne = nil
 print("PlayerOne has left the game")
-// "PlayerOne has left the game" 을 출력합니다.
+// "PlayerOne has left the game" 을 인쇄합니다.
 print("The bank now has \(Bank.coinsInBank) coins")
-// "The bank now has 10000 coins" 를 출력합니다.
+// "The bank now has 10000 coins" 를 인쇄합니다.
 ```
 
-참여자가 방금 막 게임을 떠났습니다. 이는 '옵셔널 `playerOne`' 변수를 (“`Player` 인스턴스가 없음” 을 의미하는) `nil` 로 설정하여 표현합니다. 이렇게 하면, `Player` 인스턴스를 가리키는 `playerOne` 변수의 참조가 끊어집니다. 어떤 다른 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 메모리 자원을 확보하기 위해 해제됩니다. 이 일이 일어나기 바로 전에, 정리자가 자동으로 호출되며, 동전은 은행으로 반환됩니다.
+참여자가 이제 게임을 떠났습니다. 이는 '옵셔널 `Player` 변수에, "`Player` 인스턴스가 없음" 을 의미하는, `nil` 을 설정함으로써 지시합니다. 이것이 일어나는 시점에, `Player` 인스턴스에 대한 `playerOne` 변수의 참조가 끊어집니다. 다른 어느 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 메모리 확보를 위해 해제됩니다. 이것이 일어나기 직전에, 정리자를 자동으로 호출하여, 동전을 은행으로 반환합니다.
 
 ### 다음 장
 
