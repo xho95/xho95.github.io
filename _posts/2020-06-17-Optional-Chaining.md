@@ -36,15 +36,15 @@ class Residence {
 }
 ```
 
-`Residence` 의 인스턴스는, 기본 값이 `1` 인, `numberOfRooms` 라는 단일한 `Int` 속성을 가집니다. `Person` 의 인스턴스는 타입이 `Residence?` 인 하나의 옵셔널 `residence` 속성을 가집니다.
+`Residence` 인스턴스는, 기본 값이 `1` 인, `numberOfRooms` 라는 단일 `Int` 속성을 가집니다. `Person` 인스턴스는 타입이 `Residence?` 인 옵셔널 `residence` 속성을 가집니다.
 
-새로운 `Person` 인스턴스를 생성하면, `residence` 속성은 기본적으로 `nil` 로 초기화되는데, 이는 '옵셔널' 이 가지는 장점에 해당합니다. 아래 코드에서, `john` 은 값이 `nil` 인 `residence` 속성을 가집니다:
+새로운 `Person` 인스턴스를 생성하면, `residence` 속성은, 옵셔널인 덕에, 기본적으로 `nil` 로 초기화됩니다. 아래 코드에서, `john` 은 `residence` 속성 값으로 `nil` 을 가집니다:
 
 ```swift
 let john = Person()
 ```
 
-이 사람의 `residence` 에 있는 `numberOfRooms` 속성에 접근하기 위해, `residence` 뒤에 '느낌표' 를 붙여서 값을 '강제로 풀려고' 하면, '실행시간 에러 (runtime error)' 가 발생하는데, `residence` 값이 없어서 풀 수가 없기 때문입니다:
+이 사람의 `residence` 뒤에, 강제로 값의 포장을 풀기 위한 느낌표를 붙여서, `numberOfRooms` 속성에 접근하려고 하면, 실행시간 에러가 발생하는데, 이는 포장을 풀 `residence` 값이 없기 때문입니다:
 
 ```swift
 let roomCount = john.residence!.numberOfRooms
