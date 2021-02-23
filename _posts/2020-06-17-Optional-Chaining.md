@@ -44,16 +44,16 @@ class Residence {
 let john = Person()
 ```
 
-이 사람의 `residence` 뒤에, 강제로 값의 포장을 풀기 위한 느낌표를 붙여서, `numberOfRooms` 속성에 접근하려고 하면, 실행시간 에러가 발생하는데, 이는 포장을 풀 `residence` 값이 없기 때문입니다:
+이 사람의 `residence` 에 있는 `numberOfRooms` 속성에, 강제로 값의 포장을 푸는 느낌표를 `residence` 뒤에 붙여서, 접근하려고 하면, 포장을 풀 `residence` 값이 없기 때문에, 실행시간 에러가 발생합니다:
 
 ```swift
 let roomCount = john.residence!.numberOfRooms
 // 이는 실행시간 에러를 발생시킵니다.
 ```
 
-위 코드는 `john.residence` 가 `nil`-아닌 값을 가질 때 성공해서 적절한 방의 개수를 가지는 `Int` 값으로 `roomCount` 를 설정하게 됩니다. 하지만, 이 코드는 `residence` 가 `nil` 일 때는, 위에서 본 것처럼, 항상 실행시간 에러를 일으킵니다.
+위 코드는 `john.residence` 가 `nil` 이 아닌 값일 때 성공하여 적절한 방 개수를 담은 `Int` 값으로 `roomCount` 를 설정할 것입니다. 하지만, 이 코드는, 위에서 묘사한 것처럼, `residence` 가 `nil` 일 때는, 항상 실행시간 에러를 발생시킵니다.
 
-옵셔널 연쇄는 `numberOfRooms` 값에 접근하는 또 다른 방법을 제공합니다. 옵셔널 연쇄를 사용하려면, '느낌표' 자리에 '물음표' 를 사용하면 됩니다:
+옵셔널 연쇄는 `numberOfRooms` 값에 접근하는 대안을 제공합니다. 옵셔널 연쇄를 사용하려면, 느낌표 자리에 물음표를 사용합니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -61,10 +61,10 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "Unable to retrieve the number of rooms." 를 출력합니다.
+// "Unable to retrieve the number of rooms." 를 인쇄합니다.
 ```
 
-이것은 스위프트에게 말해서 옵셔널 `residence` 속성을 "연쇄하여 (chain)" `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 하는 것입니다.
+이는 스위프트에게 말해서 옵셔널 `residence` 속성을 "연쇄하여 (chain)" `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 하는 것입니다.
 
 `numberOfRooms` 에 접근하려는 시도는 잠재적으로 실패할 수 있기 때문에, 옵셔널 연쇄 시도는 `Int?` 타입, 혹은 "옵셔널 `Int`" 타입의 값을 반환합니다. 위의 예제 처럼, `residence` 가 `nil` 일 때, `numberOfRooms` 에 접근할 수 없다는 사실을 반영해서, 이 옵셔널 `Int` 역시 `nil` 이 될 것입니다. 이 옵셔널 `Int` 를 '옵셔널 연결 (optional binding)' 로 접근하여 정수를 풀고 옵셔널-아닌 값을 `roomCount` 변수에 할당합니다.
 
