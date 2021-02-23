@@ -64,19 +64,20 @@ if let roomCount = john.residence?.numberOfRooms {
 // "Unable to retrieve the number of rooms." 를 인쇄합니다.
 ```
 
-이는 스위프트에게 말해서 옵셔널 `residence` 속성을 "연쇄하여 (chain)" `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 하는 것입니다.
+이는 '옵셔널 `residence` 속성' 을 "연쇄 (chain)" 해서 `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 스위프트에게 말하는 것입니다.
 
-`numberOfRooms` 에 접근하려는 시도는 잠재적으로 실패할 수 있기 때문에, 옵셔널 연쇄 시도는 `Int?` 타입, 혹은 "옵셔널 `Int`" 타입의 값을 반환합니다. 위의 예제 처럼, `residence` 가 `nil` 일 때, `numberOfRooms` 에 접근할 수 없다는 사실을 반영해서, 이 옵셔널 `Int` 역시 `nil` 이 될 것입니다. 이 옵셔널 `Int` 를 '옵셔널 연결 (optional binding)' 로 접근하여 정수를 풀고 옵셔널-아닌 값을 `roomCount` 변수에 할당합니다.
+`numberOfRooms` 에 접근하려는 시도는 실패할 가능성이 있기 때문에, 옵셔널 연쇄 시도는 `Int?`, 또는 "옵셔널 `Int`" 타입의 값을 반환합니다. `residence` 가 `nil` 일 땐, 위 예제에 있는 것처럼, `numberOfRooms` 에 접근하는 것이 가능하지 않다는 사실을 반영하기 위해, 이 옵셔널 `Int` 도 `nil` 일 것입니다. 옵셔널 `Int` 는 '옵셔널 연결 (optional binding)'[^optional-binding] 을 통해 정수 포장을 풀고 옵셔널-아닌 값을 `roomCount` 상수에 할당합니다.
 
-이것은 `numberOfRooms` 가 옵셔널 `Int`-가 아니어도 마찬가지라는 점을 기억하기 바랍니다. 옵셔널 연쇄로 조회한다는 것의 의미는 `numberOfRooms` 호출이 `Int` 가 아니라 항상 `Int?` 를 반환할 것이라는 사실입니다.
+이는 `numberOfRooms` 가 옵셔널이 아닌 `Int` 일지라도 그렇다는 것을 기억하기 바랍니다. 옵셔널 연쇄를 통해 조회한다는 사실은 `numberOfRooms` 에 대한 호출이 `Int` 대신 항상 `Int?` 를 반환할 것이라는 의미입니다.
 
-`john.residence` 에 `Residence` 인스턴스를 할당하면, 더 이상 `nil` 값을 가지지 않게 됩니다:
+`Residence` 인스턴스를 `john.residence` 에 할당하여, 더 이상 `nil` 값을 가지지 않도록, 할 수 있습니다:
 
 ```swift
 john.residence = Residence()
 ```
 
-`john.residence` 는 이제 `nil` 이 아니라, 실제 `Residence` 인스턴스를 가지고 있습니다. 이전과 같은 옵셔널 연쇄로 `numberOfRooms` 에 접근하면, 이제는 기본 `numberOfRooms` 값이 `1` 인 `Int?` 를 반환하게 됩니다:
+`john.residence` 는 이제, `nil` 이 아닌, 실제 `Residence` 인스턴스를 담고 있습니다. 이전과 똑같은 옵셔널 연쇄로 `numberOfRooms` 에 접근하려고 하면, 이제 `1` 이라는
+기본 `numberOfRooms` 값' 을 담은 `Int?` 를 반환할 것입니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -84,7 +85,7 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "John's residence has 1 room(s)." 를 출력합니다.
+// "John's residence has 1 room(s)." 를 인쇄합니다.
 ```
 
 ### Defining Model Classes for Optional Chaining (옵셔널 연쇄를 위한 모델 클래스 정의하기)
@@ -383,3 +384,5 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. '연쇄망' 의 어떤 '고리' 라도 `nil` 이면, 실행시간 에러가 발생하는 대신, 전체 연쇄망이 `nil` 이 된다는 의미입니다.
+
+[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
