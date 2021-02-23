@@ -44,16 +44,16 @@ class Residence {
 let john = Person()
 ```
 
-이 사람의 `residence` 뒤에, 강제로 값의 포장을 풀기 위한 느낌표를 붙여서, `numberOfRooms` 속성에 접근하려고 하면, 실행시간 에러가 발생하는데, 이는 포장을 풀 `residence` 값이 없기 때문입니다:
+이 사람의 `residence` 에 있는 `numberOfRooms` 속성에, 강제로 값의 포장을 푸는 느낌표를 `residence` 뒤에 붙여서, 접근하려고 하면, 포장을 풀 `residence` 값이 없기 때문에, 실행시간 에러가 발생합니다:
 
 ```swift
 let roomCount = john.residence!.numberOfRooms
 // 이는 실행시간 에러를 발생시킵니다.
 ```
 
-위 코드는 `john.residence` 가 `nil`-아닌 값을 가질 때 성공해서 적절한 방의 개수를 가지는 `Int` 값으로 `roomCount` 를 설정하게 됩니다. 하지만, 이 코드는 `residence` 가 `nil` 일 때는, 위에서 본 것처럼, 항상 실행시간 에러를 일으킵니다.
+위 코드는 `john.residence` 가 `nil` 이 아닌 값일 때 성공하여 적절한 방 개수를 담은 `Int` 값으로 `roomCount` 를 설정할 것입니다. 하지만, 이 코드는, 위에서 묘사한 것처럼, `residence` 가 `nil` 일 때는, 항상 실행시간 에러를 발생시킵니다.
 
-옵셔널 연쇄는 `numberOfRooms` 값에 접근하는 또 다른 방법을 제공합니다. 옵셔널 연쇄를 사용하려면, '느낌표' 자리에 '물음표' 를 사용하면 됩니다:
+옵셔널 연쇄는 `numberOfRooms` 값에 접근하는 대안을 제공합니다. 옵셔널 연쇄를 사용하려면, 느낌표 자리에 물음표를 사용합니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -61,22 +61,23 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "Unable to retrieve the number of rooms." 를 출력합니다.
+// "Unable to retrieve the number of rooms." 를 인쇄합니다.
 ```
 
-이것은 스위프트에게 말해서 옵셔널 `residence` 속성을 "연쇄하여 (chain)" `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 하는 것입니다.
+이는 '옵셔널 `residence` 속성' 을 "연쇄 (chain)" 해서 `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 스위프트에게 말하는 것입니다.
 
-`numberOfRooms` 에 접근하려는 시도는 잠재적으로 실패할 수 있기 때문에, 옵셔널 연쇄 시도는 `Int?` 타입, 혹은 "옵셔널 `Int`" 타입의 값을 반환합니다. 위의 예제 처럼, `residence` 가 `nil` 일 때, `numberOfRooms` 에 접근할 수 없다는 사실을 반영해서, 이 옵셔널 `Int` 역시 `nil` 이 될 것입니다. 이 옵셔널 `Int` 를 '옵셔널 연결 (optional binding)' 로 접근하여 정수를 풀고 옵셔널-아닌 값을 `roomCount` 변수에 할당합니다.
+`numberOfRooms` 에 접근하려는 시도는 실패할 가능성이 있기 때문에, 옵셔널 연쇄 시도는 `Int?`, 또는 "옵셔널 `Int`" 타입의 값을 반환합니다. `residence` 가 `nil` 일 땐, 위 예제에 있는 것처럼, `numberOfRooms` 에 접근하는 것이 가능하지 않다는 사실을 반영하기 위해, 이 옵셔널 `Int` 도 `nil` 일 것입니다. 옵셔널 `Int` 는 '옵셔널 연결 (optional binding)'[^optional-binding] 을 통해 정수 포장을 풀고 옵셔널-아닌 값을 `roomCount` 상수에 할당합니다.
 
-이것은 `numberOfRooms` 가 옵셔널 `Int`-가 아니어도 마찬가지라는 점을 기억하기 바랍니다. 옵셔널 연쇄로 조회한다는 것의 의미는 `numberOfRooms` 호출이 `Int` 가 아니라 항상 `Int?` 를 반환할 것이라는 사실입니다.
+이는 `numberOfRooms` 가 옵셔널이 아닌 `Int` 일지라도 그렇다는 것을 기억하기 바랍니다. 옵셔널 연쇄를 통해 조회한다는 사실은 `numberOfRooms` 에 대한 호출이 `Int` 대신 항상 `Int?` 를 반환할 것이라는 의미입니다.
 
-`john.residence` 에 `Residence` 인스턴스를 할당하면, 더 이상 `nil` 값을 가지지 않게 됩니다:
+`Residence` 인스턴스를 `john.residence` 에 할당하여, 더 이상 `nil` 값을 가지지 않도록, 할 수 있습니다:
 
 ```swift
 john.residence = Residence()
 ```
 
-`john.residence` 는 이제 `nil` 이 아니라, 실제 `Residence` 인스턴스를 가지고 있습니다. 이전과 같은 옵셔널 연쇄로 `numberOfRooms` 에 접근하면, 이제는 기본 `numberOfRooms` 값이 `1` 인 `Int?` 를 반환하게 됩니다:
+`john.residence` 는 이제, `nil` 이 아닌, 실제 `Residence` 인스턴스를 담고 있습니다. 이전과 똑같은 옵셔널 연쇄로 `numberOfRooms` 에 접근하려고 하면, 이제 `1` 이라는
+기본 `numberOfRooms` 값' 을 담은 `Int?` 를 반환할 것입니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -84,16 +85,16 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "John's residence has 1 room(s)." 를 출력합니다.
+// "John's residence has 1 room(s)." 를 인쇄합니다.
 ```
 
 ### Defining Model Classes for Optional Chaining (옵셔널 연쇄를 위한 모델 클래스 정의하기)
 
-'옵셔널 연쇄 (optional chaining)' 를 사용하면 한 단계보다 더 깊은 곳의 속성, 메소드, 그리고 첨자 연산을 호출할 수 있습니다.  이는 상호 관계된 타입에 대한 복접한 모델의 '하위 속성 (subproperties)' 밑으로 파고 들어서, 그 '하위 속성' 에 대한 속성, 메소드, 그리고 첨자 연산에 접근할 수 있는 지를 검사할 수 있게 해줍니다.
+깊이가 한 단계 이상인 속성, 메소드, 그리고 첨자 연산에 대한 호출을 가진 '옵셔널 연쇄' 를 사용할 수 있습니다.  이는 상관 관계가 있는 복잡한 타입 모델 내의 '하위 속성 (subproperties)' 밑으로 파고 들어서, 해당 '하위 속성' 에 대한 속성, 메소드, 그리고 첨자 연산에 접근하는 것이 가능한지를 검사할 수 있게 해줍니다.
 
-아래의 코드 조각은 네 개의 '모델 클래스 (model classes)' 를 정의하여 이를, 다중-단계 옵셔널 연쇄 예제를 포함한, 후속 예제에서 사용합니다. 이 클래스는 위에 있는 `Person` 과 `Residence` 모델을 확장하려고 `Room` 과 `Address` 클래스를, '결합 값', 메소드, 그리고 첨자 연산과 함께 추가합니다.
+아래 코드 조각들은, 다중 단계 옵셔널 연쇄에 대한 예제를 포함한, 여러 후속 예제에서 사용하기 위한 네 개의 '모델 클래스' 를 정의합니다. 이 클래스들은 위에 있는 `Person` 과 `Residence` 모델을, `Room` 과 `Address` 클래스, 및 이와 결합된 속성, 메소드, 그리고 첨자 연산를 추가함으로써, 확대합니다.
 
-`Person` 클래스는 이전과 같은 방법으로 정의합니다:
+`Person` 클래스는 이전과 똑같은 방식으로 정의합니다:
 
 ```swift
 class Person {
@@ -101,7 +102,7 @@ class Person {
 }
 ```
 
-`Residence` 클래스는 이전보다 더 복잡합니다. 이번에는, `Residence` 클래스에 `rooms` 라는 '변수 속성' 을 정의하고, 이를 `[Room]` 타입의 빈 배열로 초기화합니다:
+`Residence` 클래스는 이전보다 더 복잡합니다. 이번에는, `Residence` 클래스가, `[Room]` 타입의 빈 배열로 초기화하는, `rooms` 라는 변수 속성을 정의합니다:
 
 ```swift
 class Residence {
@@ -383,3 +384,5 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. '연쇄망' 의 어떤 '고리' 라도 `nil` 이면, 실행시간 에러가 발생하는 대신, 전체 연쇄망이 `nil` 이 된다는 의미입니다.
+
+[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
