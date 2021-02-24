@@ -125,15 +125,15 @@ class Residence {
 }
 ```
 
-이 버전의 `Residence` 는 `Room` 인스턴스의 배열을 저장하고 있으므로, `numberOfRooms` 속성을, '저장 속성' 이 아니라, '계산 속성' 으로 구현합니다. `numberOfRooms` 계산 속성은 단순히 `rooms` 배열에 있는 `count` 속성 값을 반환합니다.
+이 버전의 `Residence` 는 `Room` 인스턴스 배열을 저장하고 있기 때문에, `numberOfRooms` 속성을, 저장 속성이 아닌, 계산 속성으로 구현합니다. `numberOfRooms` 계산 속성은 단순히 `rooms` 배열에 있는 `count` 속성의 값을 반환합니다.
 
-`rooms` 배열에 바로 접근할 수 있도록, 이 버전의 `Residence` 는 요청한 색인에 있는 `rooms` 배열의 '방 (room)' 에 접근하는 '읽고-쓰기' 첨자 연산을 제공합니다.
+`rooms` 배열에 접근하기 위한 '줄임말' 로써, 이 버전의 `Residence` 는 `rooms` 배열 중에서 요청한 색인의 '객실 (room)' 에 대한 접근을 제공하는 '읽고-쓰기 (read-write) 첨자 연산' 을 제공합니다.
 
-이 버전의 `Residence` 는 `printNumberOfRooms` 라는 메소드도 제공하는데, 이는 단순히 '거주지 (residence)' 에 있는 방의 개수를 출력합니다.
+이 버전의 `Residence` 는, 단순히 '거주지 (residence)' 의 객실 수를 인쇄하는, `printNumberOfRooms` 라는 메소드도 제공합니다.
 
-마지막으로, `Residence` 는 타입이 `Address?` 인, `Address` 라는 '옵셔널 속성' 을 정의합니다. 이 속성에서 사용하있는 `Address` 클래스 타입은 아래에서 정의합니다.
+마지막으로, `Residence` 는, 타입이 `Address?` 인, `address` 라는 '옵셔널 속성' 을 정의합니다. 이 속성을 위한 '`Address` 클래스 타입' 은 아래에서 정의합니다.
 
-`rooms` 배열에서 사용하는 `Room` 클래스는 `name` 이라는 하나의 속성만 가지고 있는 간단한 클래스로, 초기자에서 이 속성에 적당한 방 이름을 설정합니다:
+`rooms` 배열을 위한 '`Room` 클래스' 는 `name` 이라는 속성 하나와, 해당 속성에 적합한 객실 이름을 설정하는 초기자로 된, 단순한 클래스입니다:
 
 ```swift
 class Room {
@@ -142,7 +142,7 @@ class Room {
 }
 ```
 
-이 모델의 마지막 클래스는 `Address` 입니다. 이 클래스는 `String?` 타입의 옵셔널 속성을 세 개 가지고 있습니다. 처음 두 개의 속성인, `buildingName` 과 `buildingNumber` 는, 주소에서 특정 건물을 식별하기 위한 방법으로 서로를 대체합니다. 세 번째 속성인, `street` 는, 해당 주소의 거리 이름에 사용됩니다:
+이 모델의 마지막 클래스는 `Address` 라고 합니다. 이 클래스는 `String?` 타입인 세 개의 옵셔널 속성을 가집니다. 처음 두 개인, `buildingName` 과 `buildingNumber` 속성은, 주소에서 특정 건물을 식별하기 위한 수단입니다. 세 번째 속성인, `street` 는, 해당 주소에서 거리 이름에 사용합니다:
 
 ```swift
 class Address {
@@ -161,7 +161,7 @@ class Address {
 }
 ```
 
-`Address` 클래스는, 반환 타입이 `String?` 인, `buildingIdentifier()` 라는 메소드도 제공합니다. 이 메소드는 주소 속성을 검사하여 `buildingNumber` 와 `street` 값이 모두 있으면 이 둘을 이은 값을 반환하고, 그렇진 않지만 `buildingName` 값이 있으면 이를 반환하며, 그것도 아니라면 `nil` 을 반환합니다.
+`Address` 클래스는, 반환 타입이 `String?` 인, `buildingIdentifier()` 라는 메소드도 제공합니다. 이 메소드는 주소의 속성을 검사해서, `buildingNumber` 와 `street` 가 둘 다 값을 가지면 이 둘을 이어서 반환하거나, `buildingName` 이 값을 가지면 이를 반환하며, 그 외 경우라면 `nil` 을 반환합니다.
 
 ### Accessing Properties Through Optional Chaining (옵셔널 연쇄를 통해 속성에 접근하기)
 
