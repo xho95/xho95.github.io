@@ -165,9 +165,9 @@ class Address {
 
 ### Accessing Properties Through Optional Chaining (옵셔널 연쇄를 통해 속성에 접근하기)
 
-[Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안으로써의 옵셔널 연쇄)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-포장-풀기의-대안으로써의-옵셔널-연쇄) 에서 보인 바 있듯이, 옵셔널 연쇄를 사용하면 옵셔널 값에 대한 속성에 접근할 수 있으며, 해당 속성의 접근이 성공했는 지 검사할 수 있습니다.
+[Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안으로써의 옵셔널 연쇄)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-포장-풀기의-대안으로써의-옵셔널-연쇄) 에서 실증한 것처럼, 옵셔널 값에 대한 속성에 접근해서, 해당 속성 접근이 성공했는지 검사하기 위해 옵셔널 연쇄를 사용할 수 있습니다.
 
-위에서 정의한 클래스를 사용하여 새로운 `Person` 인스턴스를 생성하고, 이전과 같이 `numberOfRooms` 속성에 접근해 봅시다:
+위에서 정의한 클래스를 사용하여 새로운 `Person` 인스턴스를 생성하고, 이전 처럼 `numberOfRooms` 속성에 접근해 봅니다:
 
 ```swift
 let john = Person()
@@ -176,12 +176,12 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "Unable to retrieve the number of rooms." 를 출력합니다.
+// "Unable to retrieve the number of rooms." 를 인쇄합니다.
 ```
 
-`john.residence` 가 `nil` 이기 때문에, 이 옵셔널 연쇄 호출은 이전 처럼 실패하게 됩니다.
+`john.residence` 가 `nil` 이기 때문에, 이 옵셔널 연쇄 호출은 이전과 똑같이 실패합니다.
 
-옵셔널 연쇄를 통해 속성의 값을 설정하도록 시도할 수도 있습니다.
+옵셔널 연쇄를 통해 속성의 값을 설정하는 시도를 할 수도 있습니다:
 
 ```swift
 let someAddress = Address()
@@ -190,9 +190,9 @@ someAddress.street = "Acacia Road"
 john.residence?.address = someAddress
 ```
 
-이 예제에서는, `john.residence` 의 `address` 를 설정하려는 시도는 실패하게 되는데, 이는 현재 `john.residence` 가 `nil` 이기 때문입니다.
+이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는,`john.residence` 가 현재 `nil` 이기 때문에, 실패할 것입니다.
 
-'할당 (assignment)' 은 '옵셔널 연쇄 (optional chaining)' 의 일부분이며, 이것의 의미는 `=` 연산자의 오른쪽에 있는 코드의 값은 아무 것도 계산되지 않는다는 것입니다. 앞 예제에서, `someAddress` 의 값이 절대로 계산되지 않는다는 점을 알기는 쉽지 않은데, 상수에 대한 접근은 어떤 '부작용 (side effect)' 도 가지고 있지 않기 때문입니다. 아래는 똑같은 할당 작업을 하지만, 함수를 써서 주소를 생성하고자 합니다. 이 함수는 값을 반환하기 전에 "Function was called (함수를 호출하였습니다)" 를 출력하여, `=` 연산자의 오른쪽 값이 계산되었는 지를 보여줍니다.
+'할당 (assignment)' 은 옵셔널 연쇄의 일부이며, 이는 `=` 연산자의 오른-쪽에 있는 코드는 아무 것도 평가하지 않는다는 의미입니다. 이전 예제에서, `someAddress` 를 절대로 평가하지 않는다는 것은 알기가 쉽지 않은데, 이는 상수에 접근하는 것이 어떠한 '부작용 (side effect)'[^side-effect] 도 가지지 않기 때문입니다. 아래에 나열한 것은 똑같은 할당을 하지만, 주소를 생성하기 위해 함수를 사용합니다. 함수는 값을 반환하기 전에, `=` 연산자의 오른-쪽 값을 평가했는지 볼 수 있도록, "Function was called" 를 인쇄합니다.[^function-was-called]
 
 ```swift
 func createAddress() -> Address {
@@ -207,7 +207,7 @@ func createAddress() -> Address {
 john.residence?.address = createAddress()
 ```
 
-`createAddress()` 함수가 호출되지 않았다는 건, 아무 것도 출력되지 않았다는 것으로, 알 수 있습니다.
+아무 것도 인쇄하지 않기 때문에, `createAddress()` 함수가 호출되지 않는다고 말할 수 있습니다.
 
 ### Calling Methods Through Optional Chaining (옵셔널 연쇄를 통해 메소드 호출하기)
 
@@ -386,3 +386,7 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 [^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. '연쇄망' 의 어떤 '고리' 라도 `nil` 이면, 실행시간 에러가 발생하는 대신, 전체 연쇄망이 `nil` 이 된다는 의미입니다.
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
+
+[^side-effect]: 프로그래밍에서의 '부작용 (side effects)' 는 '부수적인 효과' 정도의 의미로 이해하는 것이 좋습니다. 본문의 내용은 상수에 대한 접근이 '부수적인 효과' 를 가지지 않기 때문에, `someAddress` 를 평가했는지 아닌지를 우리가 알 방법이 없다는 의미입니다. 프로그래밍 분야에서의 '부작용' 에 대한 더 자세한 내용은, [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 참고하기 바랍니다.
+
+[^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것이 프로그래밍에서 말하는 '부수적인 효과', 즉, '부작용 (side effects)' 입니다. 이 함수의 본 목적은 주소를 생성하는 것인데, `print` 문은 주소를 생성하는 것과 직접적으로 관련이 없습니다.

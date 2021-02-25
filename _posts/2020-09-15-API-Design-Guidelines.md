@@ -733,7 +733,7 @@ x.move(from: x, to: y)
 
 [^base-name]: '기본 이름 (base name)' 은 함수 또는 메소드에서 매개 변수와 괄호를 뺀 순수한 함수 자체의 이름인 것으로 추측됩니다.
 
-[^side-effects]: 컴퓨터 용어에서의 '부작용 (side-effects)' 은 무조건 나쁜 것이 아니라 '부가적인 효과' 정도의 의미로 이해할 수 있습니다.
+[^side-effects]: 컴퓨터 용어에서의 '부작용 (side-effects)' 은 무조건 나쁜 것이 아니라 '부수적인 효과' 정도의 의미로 이해할 수 있습니다.
 
 [^participle]: 원문 자체가 위키피디아의 [participle](https://en.wikipedia.org/wiki/Participle) 항목에 대한 링크로 되어 있습니다.
 
