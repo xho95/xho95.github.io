@@ -247,11 +247,11 @@ if (john.residence?.address = someAddress) != nil {
 
 ### Accessing Subscripts Through Optional Chaining (옵셔널 연쇄를 통해 첨자 연산에 접근하기)
 
-옵셔널 연쇄를 사용하면 옵셔널 값에 있는 첨자 연산으로부터 값을 설정하거나 가져올 수 있으며, 그 첨자 연산 호출이 성공했는지를 검사할 수도 있습니다.
+옵셔널 값에 대한 첨자 연산으로 값을 가져오려고 하거나 설정하려고 한 다음, 해당 첨자 연산의 호출이 성공했는지 검사하기 위해, 옵셔널 연쇄를 사용할 수 있습니다.
 
-> 옵셔널 연쇄로 옵셔널 값의 첨자 연산에 접근할 때는, '물음표' 를 첨자 연산의 대괄호 기호, 뒤가 아니라, _앞에 (before)_ 붙여야 합니다. 옵셔널 연쇄의 물음표는 항상 표현식의 옵셔널 부분 곧바로 뒤에 따라와야 합니다.
+> 옵셔널 값에 대한 첨자 연산을 옵셔널 연쇄로 접근할 때는, 물음표를 첨자 연산의 대괄호, 뒤가 아니라, _앞에 (before)_ 붙입니다. 옵셔널 연쇄의 물음표는 항상 옵셔널인 표현식의 바로 뒤에 따라옵니다.
 
-다음 예제는 `Residence` 클래스에서 정의한 첨자 연산을 사용하여 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방의 이름을 가져오려고 합니다. `john.residence` 는 현재 `nil` 이기 때문에, 첨자 연산 호출은 실패합니다:
+아래 예제는 `Residence` 클래스에서 정의한 첨자 연산을 사용하여 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방 이름을 가져오려고 시도합니다. `john.residence` 는 현재 `nil` 이기 때문에, 첨자 연산 호출이 실패합니다:
 
 ```swift
 if let firstRoomName = john.residence?[0].name {
@@ -259,20 +259,20 @@ if let firstRoomName = john.residence?[0].name {
 } else {
   print("Unable to retrieve the first room name.")
 }
-// "Unable to retrieve the first room name." 를 출력합니다.
+// "Unable to retrieve the first room name." 를 인쇄합니다.
 ```
 
-이 첨자 연산에서 옵셔널 연쇄의 물음표는 `john.residence` 바로 뒤, 첨자 연산의 바로 앞에 있는데, 이는 `john.residence` 가 옵셔널 연쇄를 시도할 옵셔널 값이기 때문입니다.
+이 첨자 연산의 옵셔널 연쇄 물음표는, 옵셔널 연쇄를 시도하고 있는 옵셔널 값이 `john.residence` 이기 때문에, `john.residence` 바로 뒤인, 첨자 연산 대괄호 바로 앞에, 위치합니다.
 
-마찬가지로, 옵셔널 연쇄과 첨자 연산을 통해 새로운 값을 설정할 수도 있습니다:
+이와 비슷하게, 옵셔널 연쇄로 첨자 연산을 통해 새로운 값을 설정하려고 할 수 있습니다:
 
 ```swift
 john.residence?[0] = Room(name: "Bathroom")
 ```
 
-이 첨자 연산이 하려고 하는 설정 작업도 실패하는데, 왜냐면 `residence` 가 현재 `nil` 이기 때문입니다.
+이 첨자 연산의 설정 시도도, `residence` 가 현재 `nil` 이기 때문에, 실패합니다.
 
-실제 `Residence` 인스턴스를 생성하고, `rooms` 배열에 하나 이상의 `Room` 인스턴스를 넣은 후, 이를 `john.residence` 에 할당하면, `Residence` 의 첨자 연산을 사용하여 옵셔널 연쇄를 통해 `rooms` 배열의 실제 항목에 접근할 수 있게 됩니다:
+실제 `Residence` 인스턴스를 생성하고 `john.residence` 에 할당하여, `rooms` 배열이 하나 이상의 `Room` 인스턴스를 가진 경우, 옵셔널 연쇄를 통해 `rooms` 배열의 실제 항목에 접근하기 위해 `Residence` 의 첨자 연산을 사용할 수 있습니다:
 
 ```swift
 let johnsHouse = Residence()
@@ -285,7 +285,7 @@ if let firstRoomName = john.residence?[0].name {
 } else {
   print("Unable to retrieve the first room name.")
 }
-// "The first room name is Living Room." 를 출력합니다.
+// "The first room name is Living Room." 를 인쇄합니다.
 ```
 
 #### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산에 접근하기)
