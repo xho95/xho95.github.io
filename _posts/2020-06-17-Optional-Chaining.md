@@ -247,11 +247,11 @@ if (john.residence?.address = someAddress) != nil {
 
 ### Accessing Subscripts Through Optional Chaining (옵셔널 연쇄를 통해 첨자 연산에 접근하기)
 
-옵셔널 연쇄를 사용하면 옵셔널 값에 있는 첨자 연산으로부터 값을 설정하거나 가져올 수 있으며, 그 첨자 연산 호출이 성공했는지를 검사할 수도 있습니다.
+옵셔널 값에 대한 첨자 연산으로 값을 가져오려고 하거나 설정하려고 한 다음, 해당 첨자 연산의 호출이 성공했는지 검사하기 위해, 옵셔널 연쇄를 사용할 수 있습니다.
 
-> 옵셔널 연쇄로 옵셔널 값의 첨자 연산에 접근할 때는, '물음표' 를 첨자 연산의 대괄호 기호, 뒤가 아니라, _앞에 (before)_ 붙여야 합니다. 옵셔널 연쇄의 물음표는 항상 표현식의 옵셔널 부분 곧바로 뒤에 따라와야 합니다.
+> 옵셔널 값에 대한 첨자 연산을 옵셔널 연쇄로 접근할 때는, 물음표를 첨자 연산의 대괄호, 뒤가 아니라, _앞에 (before)_ 붙입니다. 옵셔널 연쇄의 물음표는 항상 옵셔널인 표현식의 바로 뒤에 따라옵니다.
 
-다음 예제는 `Residence` 클래스에서 정의한 첨자 연산을 사용하여 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방의 이름을 가져오려고 합니다. `john.residence` 는 현재 `nil` 이기 때문에, 첨자 연산 호출은 실패합니다:
+아래 예제는 `Residence` 클래스에서 정의한 첨자 연산을 사용하여 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방 이름을 가져오려고 시도합니다. `john.residence` 는 현재 `nil` 이기 때문에, 첨자 연산 호출이 실패합니다:
 
 ```swift
 if let firstRoomName = john.residence?[0].name {
@@ -259,20 +259,20 @@ if let firstRoomName = john.residence?[0].name {
 } else {
   print("Unable to retrieve the first room name.")
 }
-// "Unable to retrieve the first room name." 를 출력합니다.
+// "Unable to retrieve the first room name." 를 인쇄합니다.
 ```
 
-이 첨자 연산에서 옵셔널 연쇄의 물음표는 `john.residence` 바로 뒤, 첨자 연산의 바로 앞에 있는데, 이는 `john.residence` 가 옵셔널 연쇄를 시도할 옵셔널 값이기 때문입니다.
+이 첨자 연산의 옵셔널 연쇄 물음표는, 옵셔널 연쇄를 시도하고 있는 옵셔널 값이 `john.residence` 이기 때문에, `john.residence` 바로 뒤인, 첨자 연산 대괄호 바로 앞에, 위치합니다.
 
-마찬가지로, 옵셔널 연쇄과 첨자 연산을 통해 새로운 값을 설정할 수도 있습니다:
+이와 비슷하게, 옵셔널 연쇄로 첨자 연산을 통해 새로운 값을 설정하려고 할 수 있습니다:
 
 ```swift
 john.residence?[0] = Room(name: "Bathroom")
 ```
 
-이 첨자 연산이 하려고 하는 설정 작업도 실패하는데, 왜냐면 `residence` 가 현재 `nil` 이기 때문입니다.
+이 첨자 연산의 설정 시도도, `residence` 가 현재 `nil` 이기 때문에, 실패합니다.
 
-실제 `Residence` 인스턴스를 생성하고, `rooms` 배열에 하나 이상의 `Room` 인스턴스를 넣은 후, 이를 `john.residence` 에 할당하면, `Residence` 의 첨자 연산을 사용하여 옵셔널 연쇄를 통해 `rooms` 배열의 실제 항목에 접근할 수 있게 됩니다:
+실제 `Residence` 인스턴스를 생성하고 `john.residence` 에 할당하여, `rooms` 배열이 하나 이상의 `Room` 인스턴스를 가진 경우, 옵셔널 연쇄를 통해 `rooms` 배열의 실제 항목에 접근하기 위해 `Residence` 의 첨자 연산을 사용할 수 있습니다:
 
 ```swift
 let johnsHouse = Residence()
@@ -285,12 +285,12 @@ if let firstRoomName = john.residence?[0].name {
 } else {
   print("Unable to retrieve the first room name.")
 }
-// "The first room name is Living Room." 를 출력합니다.
+// "The first room name is Living Room." 를 인쇄합니다.
 ```
 
 #### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산에 접근하기)
 
-만약 첨자 연산이-스위프트 `Dictionary` 타입의 '키 첨자 연산 (key subscript)' 처럼-옵셔널 타입의 값을 반환한다면 물음표를 해당 첨자 연산의 '종료 대괄호' _뒤에 (after)_ 놓아야 옵셔널 반환 값이 계속 연쇄됩니다:
+만약 첨자 연산이-스위프트의 `Dictionary` 타입에 있는 '키 (key) 첨자 연산' 처럼-옵셔널 타입의 값을 반환한다면, 옵셔널 반환 값에 대한 연쇄를 하기 위해 첨자 연산의 닫는 대괄호 _뒤에 (after)_ 물음표를 붙입니다:
 
 ```swift
 var testScores = ["Dave": [86, 82, 84], "Bev": [79, 94, 81]]
@@ -300,21 +300,21 @@ testScores["Brian"]?[0] = 72
 // "Dave" 배열은 이제 [91, 82, 84] 이고 "Bev" 배열은 이제 [80, 94, 81] 입니다.
 ```
 
-위 예제는, 하나의 `String` 키를 하나의 `Int` 값 배열에 대응시키고 있는 두 개의 키-값 쌍을 가지는, `testScores` 라는 '딕셔너리' 를 정의합니다. 이 예제는 옵셔널 연쇄를 사용하여 `"Dave"` 배열의 첫 번째 항목은 `91` 로 설정하고; `"Bev"` 배열의 첫 번째 항목은 `1` 만큼 증가시키며; 키가 `"Brian"` 인 배열의 첫 번째 항목을 설정하려고 시도합니다. 처음 두 호출은 성공하는데, `testScores` '딕셔너리' 는 `"Dave"` 와 `"Bev"` 키를 가지고 있기 때문입니다. 세 번째 호출은 실패하는데, `testScores` '딕셔너리' 는 `"Brian"` 이라는 키를 가지고 있지 않기 때문입니다.
+위 예제는, `String` 키를 `Int` 값 배열에 '대응 (map)' 시키는 '키-값 쌍' 두 개를 담은, `testScores` 라는 딕셔너리를 정의합니다. 예제는 `"Dave"` 배열의 첫 번째 항목을 `91` 로 설정하기 위해; `"Bev"` 배열의 첫 번째 항목을 `1` 만큼 증가시키기 위해; 그리고 '키 (key)' 가 `"Brian"` 인 배열의 첫 번째 항목을 설정하기 위해 옵셔널 연쇄를 사용합니다. 처음 두 호출은 성공하는데, `testScores` 딕셔너리가 `"Dave"` 와 `"Bev"` 라는 키를 담고 있기 때문입니다. 세 번째 호출은 실패하는데, `testScores` 딕셔너리가 `"Brian"` 이라는 키를 담고 있지 않기 때문입니다.
 
 ### Linking Multiple Levels of Chaining (다중 수준의 연쇄 연결하기)
 
-다중 수준의 옵셔널 연쇄를 서로 연결하여 모델의 더 깊은 곳에 있는 속성, 메소드, 그리고 첨자 연산으로 파고 들어갈 수 있습니다. 하지만, 다중 수준의 옵셔널 연쇄가 반환 값의 옵셔널 수준을 더 추가하는 것은 아닙니다.
+모델 안의 더 깊은 속성, 메소드, 그리고 첨자 연산으로 파고 들어가기 위해 다중 수준의 옵셔널 연쇄를 서로 연결할 수 있습니다. 하지만, '다중 수준의 옵셔널 연쇄' 는 반환 값의 옵셔널 수준을 더 추가하지 않습니다.
 
-다른 방식으로 설명하면:
+다른 식으로 말해서:
 
-* 가져오려는 타입이 옵셔널이 아니면, 옵셔널 연쇄로 인해서 옵셔널이 됩니다.
-* 가져오려는 타입이 _이미 (already)_ 옵셔널이면, 연쇄로 인해서 _더 깊은 (more)_ 옵셔널이 되지는 않습니다.
+* 가져오려는 타입이 옵셔널이 아니면, 옵셔널 연쇄이기 때문에 옵셔널이 될 것입니다.
+* 가져오려는 타입이 _이미 (already)_ 옵셔널이면, 옵셔널 연쇄이기 때문에 _더 (more)_ 옵셔널[^more-optional]이 되지는 않을 것입니다.
 
-따라서:
+그러므로:
 
-* 옵셔널 연쇄를 통해서 `Int` 값을 가져오려고 하면, 연쇄 수준이 얼마나 깊은지 상관없이, 항상 `Int?` 를 반환합니다.
-* 이와 비슷하게, 옵셔널 연쇄를 통해 `Int?` 값을 가져오려고 하면, 연쇄 수준이 얼마나 깊은지 상관없이, 항상 `Int?` 를 반환합니다.
+* 옵셔널 연쇄를 통해서 `Int` 값을 가져오려고 하면, 얼마나 많은 연쇄 수준을 사용하던 간에, 항상 `Int?` 를 반환합니다.
+* 이와 비슷하게, 옵셔널 연쇄를 통해 `Int?` 값을 가져오려고 하면, 얼마나 많은 연쇄 수준을 사용하던 간에, 항상 `Int?` 를 반환합니다.
 
 아래 예제는 `john` 의 `residence` 속성에 있는 `address` 속성의 `street` 속성에 접근하려고 시도합니다. 여기서는 _두 (two)_ 단계 수준의 옵셔널 연쇄를 사용하여, 둘 다 옵셔널 타입인, `residence` 와 `address` 속성을 연쇄적으로 연결합니다:
 
@@ -390,3 +390,5 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 [^side-effect]: 프로그래밍에서의 '부작용 (side effects)' 는 '부수적인 효과' 정도의 의미로 이해하는 것이 좋습니다. 본문의 내용은 상수에 대한 접근이 '부수적인 효과' 를 가지지 않기 때문에, `someAddress` 를 평가했는지 아닌지를 우리가 알 방법이 없다는 의미입니다. 프로그래밍 분야에서의 '부작용' 에 대한 더 자세한 내용은, [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 참고하기 바랍니다.
 
 [^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것이 프로그래밍에서 말하는 '부수적인 효과', 즉, '부작용 (side effects)' 입니다. 이 함수의 본 목적은 주소를 생성하는 것인데, `print` 문은 주소를 생성하는 것과 직접적으로 관련이 없습니다.
+
+[^more-optional]: '더 옵셔널이 되지는 않는다' 는 것은 '옵셔널의 옵셔널' 같은 것은 없다는 의미입니다.
