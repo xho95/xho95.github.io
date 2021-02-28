@@ -18,11 +18,11 @@ _에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하�
 
 > 스위프트의 에러 처리는 'Cocoa' 와 오브젝티브-C 에서 `NSError` 클래스를 사용한 '에러 처리 패턴' 과 상호 호환됩니다. 이 클래스에 대한 더 많은 정보는, [Handling Cocoa Errors in Swift (스위프트에서 Cocoa 에러 처리하기)](https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift) 를 참고하기 바랍니다.
 
-### Representing and Throwing Errors (에러를 표현하고 던지기)
+### Representing and Throwing Errors (에러 표현하기와 던지기)
 
-스위프트의, 에러는 `Error` 프로토콜을 준수하는 타입의 값으로 표현합니다. 이 빈 프로토콜은 에러 처리에 사용될 수 있는 타입을 지시합니다.
+스위프트에서, 에러는 `Error` 프로토콜을 준수하는 타입의 값으로 표현합니다. 이 '빈 프로토콜'[^empty-protocol] 은 에러 처리에 타입을 사용할 수 있음을 지시합니다.
 
-스위프트의 열거체는 관계가 있는 에러 상황들을 그룹으로 모델링 하는데 특화되어 있으며, '결합 값 (associated values)' 으로 에러의 본질에 대한 추가적인 정보를 전달할 수 있습니다. 예를 들어, 게임에서 자동 판매기가 작동할 때의 에러 상황들은 다음과 같이 표현할 수도 있을 것입니다:
+스위프트의 열거체는 특히 관련된 에러 조건의 그룹을, 소통할 에러의 본질에 대한 추가적인 정보를 허용하는 '결합 값' 으로, 모델링하기에 꽤 적합합니다. 예를 들어, 다음은 게임 내 '자동 판매기' 작동의 에러 조건들을 표현할 수도 있는 방법입니다:
 
 ```swift
 enum VendingMachineError: Error {
@@ -32,7 +32,7 @@ enum VendingMachineError: Error {
 }
 ```
 
-에러를 던진다는 것은 예기치 않은 일이 발생해서 정상적인 실행 흐름을 계속할 수 없음을 지시합니다. 에러를 던지려면 `throw` 문을 사용합니다. 예를 들어, 다음 코드는 에러를 던져서 자동 판매기에 추가로 동전 5개가 더 필요함을 알립니다:
+'에러를 던지는 것' 은 예상하지 못한 어떤 것이 발생해서 보통의 실행 흐름을 계속할 수 없음을 지시합니다. 에러를 던지기 위해서는 `throw` 문을 사용합니다. 예를 들어, 다음 코드는 자동 판매기가 추가로 5개의 동전이 더 필요함을 지시하는 에러를 던집니다:
 
 ```swift
 throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
@@ -292,3 +292,5 @@ func processFile(filename: String) throws {
 [^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
 
 [^first-class-support]: 여기서 말하는 '일급 지원 (first-class support)' 이란, '복구 가능한 에러 (recoverable errors)' 를 하나의 객체로써 취급할 수 있다는 의미로 추측됩니다.
+
+[^empty-protocol]: 실제로 스위프트에서 `Error` 프로토콜은 아무 내용이 없는 '빈 (empty) 프로토콜' 입니다. 즉, `Error` 라는 타입만을 정의하고 있습니다.
