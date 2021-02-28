@@ -6,13 +6,11 @@ date:   2020-05-16 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 부분[^Error-Handling]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 부분[^Error-Handling]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Error Handling (에러 처리)
 
-_에러 처리 (error handling)_ 는 프로그램의 에러 상황에 대해 응답하고 여기서 복구하는 과정을 말합니다. 스위프트는 복구 가능한 에러를 실행 시간에 던지고, 잡아내며, 전파하고, 조작하기 위한 일급의 지원 기능을 제공합니다.
+_에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하고 여기로부터 복구하는 과정입니다. 스위프트는 복구 가능한 에러를 실행 시간에 던지고, 잡아내며, 전파하고, 조작하기 위한 일급의 지원 기능을 제공합니다.
 
 어떤 작업은 '실행의 종료' 나 '유용한 결과의 생성' 을 항상 보장하지는 않습니다. '옵셔널 (optionals)' 을 사용하면 '값이 없음' 을 나타낼 순 있지만, 작업이 실패했을 때, 실패한 원인이 무엇인지 이해할 수 있다면, 코드에서 적절하게 응답할 수 있으므로 이또한 유용할 것입니다.
 
