@@ -349,20 +349,20 @@ if let johnsStreet = john.residence?.address?.street {
 
 이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는 성공하는데, 이는 `john.residence` 가 현재 유효한 `Residence` 인스턴스 값을 담고 있기 때문입니다.
 
-### Chaining on Methods with Optional Return Values (옵셔널 반환 값을 가지는 메소드 연쇄하기)
+### Chaining on Methods with Optional Return Values (옵셔널 반환 값을 가진 메소드 연쇄하기)
 
-이전의 예제는 옵셔널 연쇄를 통하여 옵셔널 타입의 속성 값을 가져오는 방법을 보여줍니다. 옵셔널 연쇄를 사용하여 옵셔널 타입의 갑을 반환하는 메소드를 호출하고, 필요하다면 그 메소드의 반환 값들을 계속 연쇄적으로 연결할 수도 있습니다.
+이전 예제는 옵셔널 연쇄를 통해서 옵셔널 타입의 속성 값을 가져오는 방법을 보여줍니다. 옵셔널 연쇄는, 옵셔널 타입인 값을 반환하는 메소드를 호출하기 위해서도, 그리고 필요한 경우 해당 메소드의 반환 값에 대해서 연쇄하기 위해서도, 사용할 수 있습니다.
 
-아래 예제는 옵셔널 연쇄를 통하여 `Address` 클래스의 `buildingIdentifier()` 메소드를 호출합니다. 이 메소드는 `String?` 타입의 값을 반환합니다. 위에서 설명했듯이, 옵셔널 연쇄에 이어서 이 메소드를 호출한 궁극적인 반환 타입도 `String?` 입니다:
+아래 예제는 옵셔널 연쇄를 통하여 `Address` 클래스의 `buildingIdentifier()` 메소드를 호출합니다. 이 메소드는 `String?` 타입의 값을 반환합니다. 위에서 설명한 것처럼, 옵셔널 연쇄 다음에 하는 이 메소드 호출 역시 궁극적인 반환 타입은 `String?` 입니다:
 
 ```swift
 if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
   print("John's building identifier is \(buildingIdentifier).")
 }
-// "John's building identifier is The Larches." 를 출력합니다.
+// "John's building identifier is The Larches." 를 인쇄합니다.
 ```
 
-이 메소드의 반환 값에 대해 옵셔널 연쇄를 계속 이어가고 싶으면, 옵셔널 연쇄 물음표를 메소드의 괄호 _뒤에 (after)_ 붙이면 됩니다:
+이 메소드의 반환 값에 대해 옵셔널 연쇄를 더 하고 싶으면, 메소드의 괄호 _뒤에 (after)_ '옵셔널 연쇄 물음표' 를 붙입니다:
 
 ```swift
 if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
@@ -372,10 +372,14 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
     print("John's building identifier does not begin with \"The\".")
   }
 }
-// "John's building identifier begins with "The"." 를 출력합니다.
+// "John's building identifier begins with "The"." 를 인쇄합니다.
 ```
 
-> 위 예제에서, 옵셔널 연쇄 물음표를 괄호 _뒤에 (after)_ 붙였는데, 이는 연쇄하려는 옵셔널 값이, `buildingIdentifier()` 메소드 자체가 아니라, `buildingIdentifier()` 메소드의 반환 값이기 때문입니다.
+> 위 예제에서, '옵셔널 연쇄 물음표' 를 괄호 _뒤에 (after)_ 붙였는데, 이는 연쇄하는 옵셔널 값이, `buildingIdentifier()` 메소드 자체가 아니라, `buildingIdentifier()` 메소드의 반환 값이기 때문입니다.
+
+### 다음 장
+
+[Error Handling (에러 처리) > ]({% post_url 2020-05-16-Error-Handling %})
 
 ### 참고 자료
 

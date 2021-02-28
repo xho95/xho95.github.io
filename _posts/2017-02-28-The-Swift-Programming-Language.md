@@ -38,7 +38,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) ![5.3](https://img.shields.io/badge/-%205.3-yellow)
+* [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) ![5.3 on-going](https://img.shields.io/badge/-%205.3-yellow)
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
 * [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
