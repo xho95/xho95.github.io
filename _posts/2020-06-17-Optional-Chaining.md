@@ -316,7 +316,7 @@ testScores["Brian"]?[0] = 72
 * 옵셔널 연쇄를 통해서 `Int` 값을 가져오려고 하면, 얼마나 많은 연쇄 수준을 사용하던 간에, 항상 `Int?` 를 반환합니다.
 * 이와 비슷하게, 옵셔널 연쇄를 통해 `Int?` 값을 가져오려고 하면, 얼마나 많은 연쇄 수준을 사용하던 간에, 항상 `Int?` 를 반환합니다.
 
-아래 예제는 `john` 의 `residence` 속성에 있는 `address` 속성의 `street` 속성에 접근하려고 시도합니다. 여기서는 _두 (two)_ 단계 수준의 옵셔널 연쇄를 사용하여, 둘 다 옵셔널 타입인, `residence` 와 `address` 속성을 연쇄적으로 연결합니다:
+아래 예제는 `john` 의 `residence` 속성에 있는 `address` 속성의 `street` 속성에 접근하려고 합니다. 여기서는, 둘 다 옵셔널 타입인, `residence` 와 `address` 속성을 연쇄하기 위해, _두 (two)_ 단계 수준의 옵셔널 연쇄를 사용 중입니다:
 
 ```swift
 if let johnsStreet = john.residence?.address?.street {
@@ -324,14 +324,14 @@ if let johnsStreet = john.residence?.address?.street {
 } else {
   print("Unable to retrieve the address.")
 }
-// "Unable to retrieve the address." 를 출력합니다.
+// "Unable to retrieve the address." 를 인쇄합니다.
 ```
 
-현재 `john.residence` 의 값은 유효한 `Residence` 인스턴스를 가지고 있습니다. 하지만, 현재의 `john.residence.address` 값은 `nil` 입니다. 그렇기 때문에, `john.residence?.address?.street` 에 대한 호출은 실패합니다.
+`john.residence` 의 값은 현재 유효한 `Residence` 인스턴스를 담고 있습니다. 하지만, `john.residence.address` 값은 현재 `nil` 입니다. 이 때문에, `john.residence?.address?.street` 호출은 실패합니다.
 
-위 예제에서, 가져오려고 하는 값은 `street` 속성임을 기억하기 바랍니다. 이 속성의 타입은 `String?` 입니다. 그러므로 `john.residence?.address?.street` 의 반환 값도 `String?` 이며, 실제 옵셔널 타입의 속성에다가 두 단계 수준의 옵셔널 연쇄를 적용했음에도 그렇습니다.
+위 예제에서, `street` 속성의 값을 가져오려고 하는 중임을 기억하기 바랍니다. 이 속성의 타입은 `String?` 입니다. 그러므로 `john.residence?.address?.street` 의 반환 값은, 속성의 실제 옵셔널 타입에 더하여 두 단계 수준의 옵셔널 연쇄를 적용할지라도, 역시 `String?` 입니다.
 
-만약 실제 `Address` 인스턴스를 `john.residence.address` 의 값으로 설정한 다음, 주소의 `street` 속성에 실제 값을 설정하면, '다중-수준 옵셔널 연쇄 (multilevel optional chaining)' 를 통해 `street` 속성의 값에 접근할 수 있습니다:
+`john.residence.address` 의 값에 실제 `Address` 인스턴스를 설정하고, '주소 (address)' 의 `street` 속성에 실제 값을 설정한 경우, '다중 수준 (multilevel) 옵셔널 연쇄' 를 통해 `street` 속성의 값에 접근할 수 있습니다:
 
 ```swift
 let johnsAddress = Address()
@@ -344,10 +344,10 @@ if let johnsStreet = john.residence?.address?.street {
 } else {
   print("Unable to retrieve the address.")
 }
-// "John's street name is Laurel Street." 를 출력합니다.
+// "John's street name is Laurel Street." 를 인쇄합니다.
 ```
 
-이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는 성공하며, 이는 현재의 `john.residence` 가 유효한 `Residence` 인스턴스를 가지고 있기 때문입니다.
+이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는 성공하는데, 이는 `john.residence` 가 현재 유효한 `Residence` 인스턴스 값을 담고 있기 때문입니다.
 
 ### Chaining on Methods with Optional Return Values (옵셔널 반환 값을 가지는 메소드 연쇄하기)
 
