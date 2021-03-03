@@ -132,9 +132,9 @@ struct PurchasedSnack {
 }
 ```
 
-#### Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)
+#### Handling Errors Using Do-Catch ('Do-Catch' 문으로 에러 처리하기)
 
-에러를 처리하기 위해 코드 블럭을 실행하려면 `do`-`catch` 문을 사용합니다. `do` 절의 코드가 에러를 던지면, 어느 것이 에러를 처리할 수 있는 지를 결정하기 위해 `catch` 절과 일치 여부를 맞춰봅니다.
+`do`-`catch` 문은 코드 블럭을 실행하는 것으로 에러를 처리하고자 사용합니다. `do` 절의 코드가 에러를 던지면, 에러를 처리할 수 있는 것을 결정하기 위해 `catch` 절과 맞춰봅니다.
 
 다음은 `do`-`catch` 문의 일반적인 형식입니다:
 
@@ -151,9 +151,9 @@ do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-`catch` 뒤에 '유형 (pattern)' 을 작성하여 해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 지시합니다. `catch` 절이 '유형 (pattern)' 을 가지고 있지 않으면, 이 절은 어떤 에러와도 일치하며 해당 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 자세한 정보는 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
+해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 표시하려면 `catch` 뒤에 '유형 (pattern)' 을 작성합니다. `catch` 절에 '유형' 이 없으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 'case 값' 모두와 일치 여부를 맞춰봅니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 모든 세 'case 값' 들과 맞춰봅니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -171,10 +171,10 @@ do {
 } catch {
   print("Unexpected error: \(error).")
 }
-// "Insufficient funds. Please insert an additional 2 coins." 를 출력합니다.
+// "Insufficient funds. Please insert an additional 2 coins." 를 인쇄합니다.
 ```
 
-위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 `try` 표현식 안에서 호출하는데, 이는 이것이 에러를 던질 수 있기 때문입니다. 에러를 던지면, 실행은 즉시 `catch` 절로 옮겨가며, 여기서 전파를 계속 허용할 지를 결정합니다. 일치하는 '유형 (pattern)' 이 없으면, 에러는 '마지막 `catch` 절' 에서 잡혀서 `error` 라는 지역 상수에 연결됩니다. 에러를 던지지 않으면, `do` 문에 있는 나머지 구문들이 실행됩니다.
+위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수 있기 때문에, '`try` 표현식'[^try-expression] 안에서 호출합니다. 에러를 던지면, 실행은 곧바로, 전파를 계속 허용할 지를 결정하는, `catch` 절로 옮깁니다. 아무 '유형' 과도 일치하지 않으면, 에러는 '최종 `catch` 절' 이 잡아내며 `error` 라는 지역 상수와 연결됩니다. 아무 에러도 던지지 않으면, `do` 문에 있는 나머지 구문들을 실행합니다.
 
 `catch` 절이 `do` 절의 코드가 던질 수 있는 모든 에러를 처리해야 하는 것은 아닙니다. 어느 `catch` 절에서도 에러를 처리하지 않으면, 이 에러는 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 _어떤 (some)_ 주변 영역이 됐든 간에 반드시 처리되어야 합니다. '던지지 않는 함수 (nonthrowing function)' 에서는, `do`-`catch` 로 둘러싼 구문이 반드시 에러를 처리해야 합니다. '던지는 함수 (throwing function)' 에서는, `do-catch` 로 둘러싼 구문이든 '호출한 쪽 (caller)' 이든 간에 한 곳에서 반드시 에러를 처리해야 합니다. 에러가 처리되지 않고 최상위 영역으로 전파되면, '실행시간 에러' 를 받게 됩니다.
 
@@ -295,4 +295,6 @@ func processFile(filename: String) throws {
 
 [^empty-protocol]: 실제로 스위프트에서 `Error` 프로토콜은 아무 내용이 없는 '빈 (empty) 프로토콜' 입니다. 즉, `Error` 라는 타입만을 정의하고 있습니다.
 
-[^unwinding-call-stack] '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 참고하기 바랍니다.
+[^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 참고하기 바랍니다.
+
+[^try-expression]: '`try` 표현식' 에 대한 더 자세한 정보는 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장의 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분을 참고하기 바랍니다.
