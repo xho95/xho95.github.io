@@ -40,17 +40,17 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 ### Handling Errors (에러 처리하기)
 
-에러를 던지면, 주변 코드 어디선가 에러 처리를 반드시 책임져야-예를 들어, 문제를 올바로 고치던가, 다른 대안 접근 방식을 시도하던가, 아니면 사용자에게 실패를 알리던가-해야 합니다.
+에러를 던지면, 주변에 있는 어느 코드에서 반드시 에러 처리-예를 들어, 문제를 올바로 고치거나, 다른 대안을 시도하거나, 또는 사용자에게 실패를 알리거나 하는 등-에 대한 책임을 져야 합니다.
 
-스위프트의 에러 처리 방법에는 네 가지가 있습니다. 에러를 함수에서 해당 함수를 호출한 코드로 전파하거나, `do-catch` 문으로 처리하며, '옵셔널 값' 으로 처리하거나, 또는 에러가 일어나지 않을 것이라고 '단언 (assert)' 할 수 있습니다. 각각의 접근 방식은 아래 부분에서 설명합니다.
+스위프트의 에러 처리에는 네 가지 방법이 있습니다. 에러는 (발생한) 함수에서 해당 함수를 호출한 코드로 '전파 (propagate)' 하거나, 에러를 `do-catch` 문으로 처리하거나, 또는 에러를 '옵셔널 값' 으로 처리하거나, 아니면 에러가 일어나지 않을 것이라고 '단언 (assert)' 할 수 있습니다. 각각의 접근 방식에 대해서는 아래 부분에서 설명합니다.
 
-함수가 에러를 던질 때는, 프로그램의 흐름을 바꾸게 되므로, 에러를 던질 수 있는 위치를 코드에서 빨리 식별할 수 있는 것이 중요합니다. 코드에서 이런 위치를 식별하기 위해, 에러를 던질 수 있는 함수, 메소드, 또는 초기자 호출 코드 앞에 `try` 키워드-또는 `try?` 나 `try!` 같은 변형-들을 작성합니다. 이 '키워드' 들은 아래 부분에서 설명합니다.
+함수가 에러를 던질 때, 프로그램의 흐름이 바뀌므로, 에러를 던질 수 있는 위치를 코드에서 빨리 식별할 수 있는 것이 중요합니다. 코드에서 이런 위치를 식별하려면, 에러를 던질 수 있는 함수, 메소드, 또는 초기자 호출 코드 앞에, `try` 키워드-또는 `try?` 나 `try!` 같은 변형-을 작성합니다. 이 '키워드' 들에 대해서는 아래 부분에서 설명합니다.
 
-> 스위프트의 '에러 처리' 는, `try`, `catch`, 그리고 `throw` 키워드를 가진, 다른 언어의 '예외 (exception) 처리' 를 닮았습니다. 오브젝티브-C 를 포함한-많은 언어들의 '예외 처리' 와는 달리, 스위프트의 에러 처리는, 계산 비용이 비쌀 수 있는 과정인, '호출 스택 풀기 (unwinding call stack)' 와 엮여 있지 않습니다. 그로 인해, `throw` 문의 성능은 `return` 문에 필적합니다.
+> 스위프트의 '에러 처리' 는, `try`, `catch`, 그리고 `throw` 키워드를 사용하는, 다른 언어의 '예외 (exception) 처리' 와 닮았습니다. 오브젝티브-C 를 포함한-많은 언어에서의 '예외 처리' 와는 달리, 스위프트의 에러 처리는, 계산 비용이 비쌀 수 있는 과정인, '호출 스택 풀기 (unwinding call stack)'[^unwinding-call-stack] 와 엮여 있지 않습니다. 그로 인해, `throw` 문의 성능은 `return` 문에 필적합니다.
 
 #### Propagating Errors Using Throwing Functions ('던지는 함수' 를 사용하여 에러 전파하기)
 
-함수, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, 함수 선언의 매개 변수 뒤에 `throws` 키워드를 써주면 됩니다. `throws` 로 표시된 함수를 _던지는 함수 (throwing function)_ 이라고 합니다. 이 함수가 반환 타입을 지정할 경우, `throws` 키워드는 '반환 화살표 (return arrow; `->`)' 앞에 써줍니다.
+함수, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, 함수 선언에 있는 매개 변수 뒤에 `throws` 키워드를 작성합니다. `throws` 로 표시한 함수를 _던지는 함수 (throwing function)_ 라고 합니다. 함수가 반환 타입을 지정하는 경우, `throws` 키워드를 '반환 화살표 (`->`)' 앞에 작성합니다.
 
 ```swift
 func canThrowErrors() throws -> String
@@ -58,11 +58,11 @@ func canThrowErrors() throws -> String
 func cannotThrowErrors() -> String
 ```
 
-'던지는 함수' 는 안에서 던져진 에러를 자신을 호출한 영역으로 전파합니다.
+'던지는 함수' 는 자기 안에서 던져진 에러를 자기를 호출하는 영역으로 전파합니다.
 
-> '던지는 함수' 만 에러를 전파할 수 있습니다. '던지지 않는 함수 (nonthrowing function)' 내에서 던져진 에러는 반드시 그 함수 내에서 처리해야 합니다.
+> 오직 '던지는 함수' 만이 에러를 전파할 수 있습니다. '던지지 않는 (nonthrowing) 함수' 안에서 던져진 에러는 어떤 것이든 반드시 함수 안에서 처리해야 합니다.
 
-아래 예제에 있는, `VendingMachine` 클래스는 `vend(itemNamed:)` 메소드를 가지고 있는데, 이는 요청한 항목이 유효하지 않거나, 재고가 없거나, 아니면 비용이 현재 예치된 금액을 초과할 경우, 이에 따른 적절한 `VendingMachineError` 를 던집니다:
+아래 예제에서, `VendingMachine` 클래스는, 요청한 항목이 사용 가능하지 않거나, 재고가 없거나, 아니면 비용이 현재 보관중인 양을 초과할 경우, 적절한 `VendingMachineError` 를 던지는 `vend(itemNamed:)` 메소드를 가집니다:
 
 ```swift
 struct Item {
@@ -102,9 +102,9 @@ class VendingMachine {
 }
 ```
 
-`vend(itemNamed:)` 메소드는, 간식 구매를 위한 '필수 조건' 이 만족되지 않으면, `guard` 문으로 메소드를 조기 종료하고 적절한 에러를 던지도록 구현되었습니다. `throw` 문은 프로그램 제어를 즉시 전달하므로, 모든 '필수 조건' 을 만족해야만 항목을 판매합니다.
+`vend(itemNamed:)` 메소드의 구현은 간식 구매를 위한 어떤 '필수 조건' 도 만족하지 않을 경우 메소드를 조기에 종료하고 적절한 에러를 던지기 위해 `guard` 문을 사용합니다. `throw` 문은 프로그램 제어를 곧바로 전달하기 때문에, 모든 '필수 조건' 을 만족할 경우에만 항목을 판매할 것입니다.
 
-`vend(itemNamed:)` 메소드는 던지는 에러는 어떤 것이든 다 전파하므로, 이 메소드를 호출하는 코드는 어떤 것이든 각자 반드시 에러를 처리해야 합니다-`do-catch` 문으로든, `try?`, 또는 `try!` 을 사용하든-아니면 다시 전파하든 말입니다. 예를 들어, 아래 예제의 `buyFavoriteSnack(person:vendingMachine:)` 는 자신도 '던지는 함수' 라서, `vend(itemNamed:)` 메소드가 던지는 에러는 어떤 것이든 다시 위로 전파하여 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출하는 곳으로 보냅니다.
+`vend(itemNamed:)` 메소드는 어떤 에러를 던져도 다 전파하기 때문에, 이 메소드를 호출하는 코드는 어떤 것이든 반드시-`do-catch` 문, `try?`, 또는 `try!` 을 사용하여-에러를 처리하던가, 아니면 전파를 계속하던가 해야 합니다. 예를 들어, 아래 예제에 있는 `buyFavoriteSnack(person:vendingMachine:)` 도 '던지는 함수' 이며, `vend(itemNamed:)` 메소드가 던지는 어떤 에러든 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출하는 곳으로 '위로 전파 (propagate up)' 할 것입니다.
 
 ```swift
 let favoriteSnaks = [
@@ -118,9 +118,9 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
 }
 ```
 
-이 예제의, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 과자를 찾은 다음 `vend(itemNamed:)` 메소드를 호출하여 이를 사려고 시도합니다. `vend(itemNamed:)` 메소드는 에러를 던질 수 있으므로, 호출할 때 `try` 키워드를 앞에 붙입니다.
+이 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 간식거리를 찾아 보고 `vend(itemNamed:)` 메소드를 호출하여 이를 사려고 합니다. `vend(itemNamed:)` 메소드는 에러를 던질 수 있기 때문에, 앞에다 `try` 키워드 붙여서 호출합니다.
 
-'던지는 초기자 (throwing initializers)' 는 '던지는 함수' 와 같은 방법으로 에러를 전파할 수 있습니다. 예를 들어, 아래의 `PurchasedSnack` 구조체에 대한 초기자는 초기화 과정에서 '던지는 함수' 를 호출하며, 어떤 에러든 마주치기만 하면 호출하는 쪽으로 전파하는 것으로 이를 처리합니다.
+'던지는 초기자 (throwing initializers)' 는 '던지는 함수' 와 같은 방식으로 에러를 전파할 수 있습니다. 예를 들어, 아래에 나열한 `PurchasedSnack` 구조체의 초기자는 초기화 과정에서 '던지는 함수' 를 호출하며, 마주치는 어떤 에러든 호출하는 쪽으로 전파하는 것으로써 이를 처리합니다.
 
 ```swift
 struct PurchasedSnack {
@@ -132,9 +132,9 @@ struct PurchasedSnack {
 }
 ```
 
-#### Handling Errors Using Do-Catch ('Do-Catch' 구문으로 에러 처리하기)
+#### Handling Errors Using Do-Catch ('Do-Catch' 문으로 에러 처리하기)
 
-에러를 처리하기 위해 코드 블럭을 실행하려면 `do`-`catch` 문을 사용합니다. `do` 절의 코드가 에러를 던지면, 어느 것이 에러를 처리할 수 있는 지를 결정하기 위해 `catch` 절과 일치 여부를 맞춰봅니다.
+`do`-`catch` 문은 코드 블럭을 실행하는 것으로 에러를 처리하고자 사용합니다. `do` 절의 코드가 에러를 던지면, 에러를 처리할 수 있는 것을 결정하기 위해 `catch` 절과 맞춰봅니다.
 
 다음은 `do`-`catch` 문의 일반적인 형식입니다:
 
@@ -151,9 +151,9 @@ do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-`catch` 뒤에 '유형 (pattern)' 을 작성하여 해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 지시합니다. `catch` 절이 '유형 (pattern)' 을 가지고 있지 않으면, 이 절은 어떤 에러와도 일치하며 해당 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 자세한 정보는 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
+해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 표시하려면 `catch` 뒤에 '유형 (pattern)' 을 작성합니다. `catch` 절에 '유형' 이 없으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 'case 값' 모두와 일치 여부를 맞춰봅니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 모든 세 'case 값' 들과 맞춰봅니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -171,14 +171,14 @@ do {
 } catch {
   print("Unexpected error: \(error).")
 }
-// "Insufficient funds. Please insert an additional 2 coins." 를 출력합니다.
+// "Insufficient funds. Please insert an additional 2 coins." 를 인쇄합니다.
 ```
 
-위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 `try` 표현식 안에서 호출하는데, 이는 이것이 에러를 던질 수 있기 때문입니다. 에러를 던지면, 실행은 즉시 `catch` 절로 옮겨가며, 여기서 전파를 계속 허용할 지를 결정합니다. 일치하는 '유형 (pattern)' 이 없으면, 에러는 '마지막 `catch` 절' 에서 잡혀서 `error` 라는 지역 상수에 연결됩니다. 에러를 던지지 않으면, `do` 문에 있는 나머지 구문들이 실행됩니다.
+위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수 있기 때문에, '`try` 표현식'[^try-expression] 안에서 호출합니다. 에러를 던지면, 실행은 곧바로, 전파를 계속 허용할 지를 결정하는, `catch` 절로 옮깁니다. 아무 '유형' 과도 일치하지 않으면, 에러는 '최종 `catch` 절' 이 잡아내며 `error` 라는 지역 상수와 연결됩니다. 아무 에러도 던지지 않으면, `do` 문에 있는 나머지 구문들을 실행합니다.
 
-`catch` 절이 `do` 절의 코드가 던질 수 있는 모든 에러를 처리해야 하는 것은 아닙니다. 어느 `catch` 절에서도 에러를 처리하지 않으면, 이 에러는 주변 영역으로 전파됩니다. 하지만, 전파된 에러는 _어떤 (some)_ 주변 영역이 됐든 간에 반드시 처리되어야 합니다. '던지지 않는 함수 (nonthrowing function)' 에서는, `do`-`catch` 로 둘러싼 구문이 반드시 에러를 처리해야 합니다. '던지는 함수 (throwing function)' 에서는, `do-catch` 로 둘러싼 구문이든 '호출한 쪽 (caller)' 이든 간에 한 곳에서 반드시 에러를 처리해야 합니다. 에러가 처리되지 않고 최상위 영역으로 전파되면, '실행시간 에러' 를 받게 됩니다.
+`catch` 절은 `do` 절의 코드가 던질 가능성이 있는 모든 에러를 처리하지 않아도 됩니다. 아무런 `catch` 절도 에러를 처리하지 않으면, 에러를 주변 영역으로 전파합니다. 하지만, 전파한 에러는 _어떤 (some)_ 주변 영역이든 간에 반드시 처리해야 합니다. '던지지 않는 (nonthrowing) 함수' 는, '테두리를 친 `do`-`catch` 문' 이 에러를 반드시 처리해야 합니다. '던지는 함수' 는, '테두리를 친 `do-catch` 문' 이든 '호출한 쪽 (caller)' 이든 어느 한 곳에서 에러를 반드시 처리해야 합니다. 에러가 처리되지 않은 채로 '최상단 (top-level) 영역' 으로 전파되면, 실행시간 에러를 가질 것입니다.
 
-예를 들어, 위 예제는 `VendingMachineError` 가 아닌 에러는 어떤 것이든 호출 함수에서 대신 잡아내도록 작성할 수 있습니다:
+예를 들어, 위 예제는 `VendingMachineError` 가 아닌 에러는 어떤 것이든 호출 함수가 대신 잡아내도록 작성할 수 있습니다:
 
 ```swift
 func nourish(with item: String) throws {
@@ -194,12 +194,12 @@ do {
 } catch {
   print("Unexpected non-vending-machine-related error: \(error)")
 }
-// "Invalid selection, out of stock, or not enough money." 를 출력합니다.
+// "Invalid selection, out of stock, or not enough money." 를 인쇄합니다.
 ```
 
-`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 들 중 하나인 에러를 던지면, 메시지를 출력하는 것으로써 `nourish(with:)` 가 이 에러를 처리합니다. 다른 경우, `nourish(with:)` 는 호출한 쪽으로 이 에러를 전파합니다. 에러는 이제 '일반적인 `catch` 절' 이 잡아냅니다.
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 인쇄하는 것으로써 에러를 처리합니다. 그 외의 경우, `nourish(with:)` 는 호출한 쪽으로 에러를 전파합니다. 그런 다음 '일반적인 `catch` 절' 이 에러를 잡아냅니다.
 
-서로 관련있는 여러 에러를 잡아내는 또 다른 방법은 `catch` 뒤에 이들을, 쉼표로 구분하여, 나열하는 것입니다. 예를 들면 다음과 같습니다:
+서로 관련된 여러 에러를 잡아내는 또 다른 방법은 `catch` 뒤에, 쉼표로 구분하여, 이들을 나열하는 것입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func eat(item: String) throws {
@@ -211,11 +211,11 @@ func eat(item: String) throws {
 }
 ```
 
-`eat(item:)` 함수는 잡아내야할 '자판기' 에러를 나열하고 있으며, 에러 문장은 해당 목록의 항목과 관련이 있습니다. 나열된 세 개의 에러 중 어떤 것을 던지면, 메시지를 출력하는 것으로 이 `catch` 절이 이를 처리합니다. 그 외 다른 에러는, 나중에 추가될 수도 있는 자판기 에러를 포함하여, 어떤 것이 됐든 주변 영역으로 전파됩니다.
+`eat(item:)` 함수는 잡아낼 '자판기 (vending machine) 에러' 를 나열하며, 에러 문장은 해당 목록에 있는 항목과 연관이 있습니다. 나열된 세 개의 에러 중 어떤 것이든 던져지면, 이 `catch` 절은 메시지를 인쇄하는 것으로써 이를 처리합니다. 나중에 추가될 수도 있는 자판기 에러를 포함한, 다른 에러는 어떤 것이든 주변 영역으로 전파합니다.
 
 #### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
 
-`try?` 를 사용하면 에러를 '옵셔널 값 (optional value)' 으로 변환할 수 있습니다. `try?` 표현식의 값을 계산할 때 에러가 던져진 경우, 이 표현식의 값은 `nil` 이 됩니다. 예를 들어, 다음의 코드의 `x` 와 `y` 는 같은 값을 가지며 동작도 같습니다:
+`try?` 는 옵셔널 값으로 변환함으로써 에러를 처리하기 위해 사용합니다. `try?` 표현식을 평가하는 동안 에러를 던지면, 표현식의 값이 `nil` 입니다. 예를 들어, 다음의 `x` 와 `y` 코드는 똑같은 값과 작동 방식을 가집니다:
 
 ```swift
 func someThrowingFunction() throws -> Int {
@@ -232,9 +232,9 @@ do {
 }
 ```
 
-`someThrowingFunction()` 이 에러를 던지면, `x` 와 `y` 의 값은 `nil` 이 됩니다. 이외의 경우, `x` 와 `y` 의 값은 함수의 반환 값이 됩니다. `x` 와 `y` 는 `someThrowingFunction()` 의 반환하는 것이 무슨 타입이든 '옵셔널 (optional)' 임을 기억하기 바랍니다. 여기서는 함수가 '정수 (integer)' 를 반환하므로, `x` 와 `y` 는 '옵셔널 정수 (optional integers)' 입니다.
+`someThrowingFunction()` 이 에러를 던지면, `x` 와 `y` 의 값은 `nil` 입니다. 그 외의 경우, `x` 와 `y` 의 값은 함수가 반환한 값입니다. `x` 와 `y` 는 `someThrowingFunction()` 이 무슨 타입을 반환하던 '옵셔널' 임을 기억하기 바랍니다. 여기선 함수가 '정수 (integer)' 를 반환하므로, `x` 와 `y` 는 '옵셔널 정수' 들입니다.
 
-모든 에러를 같은 방식으로 처리하고 싶을 때 `try?` 를 사용하면 에러 처리 코드를 간결하게 작성할 수 있습니다.[^error-to-optional] 예를 들어, 아래 코드는 자료를 가져오기 위해 여러 가지 방법을 사용하는데, 모든 방법이 실패할 경우 `nil` 을 반환합니다.
+`try?` 를 사용하는 것은 모든 에러를 똑같은 방식으로 처리하고 싶을 때 '에러 처리 코드' 를 간결하게 작성하도록 해줍니다.[^error-to-optional] 예를 들어, 다음 코드는 자료를 가져오기 위해 여러 접근 방식을 사용하며, 모든 접근 방식이 실패하면 `nil` 을 반환합니다.
 
 ```swift
 func fetchData() -> Data? {
@@ -246,9 +246,9 @@ func fetchData() -> Data? {
 
 #### Disabling Error Propagation (에러 전파 못하게 하기)
 
-'던지는 함수' 나 '던지는 메소드' 가, 실제로는, 실행시간에 에러를 던지지 않을 거라는 것을 알 수도 있습니다. 그런 경우, 표현식 앞에 `try!` 를 사용하면 에러 전파를 못하게 하고 이 호출을 '실행시간 단언문 (runtime assertion)' 으로 감싸서 에러를 던지지 않을 거라고 단언할 수 있습니다. 이 때 에러가 실제로 던져지면, 실행시간 에러가 발생합니다.[^runtime-error]
+'던지는' 함수나 메소드가, 사실상, 실행 시간에 에러를 던지지 않을 것임을 알고 있을 때가 있습니다. 그럴 때는, 에러 전파를 못하게 하고 아무런 에러도 던지지 않을 거라는 '실행시간 단언문 (runtime assertion)' 으로 호출을 포장하기 위해 표현식 앞에 `try!` 를 작성할 수 있습니다. 에러를 실제로 던지게 되면, 실행시간 에러를 가질 것입니다.[^runtime-error]
 
-예를 들어, 다음 코드는 `loadImage(atPath:)` 함수로, 주어진 경로의 이미지 자원을 불러오거나 혹은 이미지를 불러올 수 없다는 에러를 던집니다. 이런 경우, 이미지는 응용 프로그램과 함께 출하하므로, 실행 시간에 에러를 던질 일이 없으며, 따라서 에러 전파를 못하게 하는 것이 아주 적절합니다.
+예를 들어, 다음 코드는, 주어진 경로의 이미지 자원을 불러오거나 이미지를 불러올 수 없다면 에러를 던지는, `loadImage(atPath:)` 함수를 사용합니다. 이 경우, 이미지는 응용 프로그램과 같이 출하하기 때문에, 실행 시간에 에러를 던지지 않을 것이므로, 에러 전파를 못하게 하는 것이 적절합니다.
 
 ```swift
 let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
@@ -256,9 +256,9 @@ let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 
 ### Specifying Cleanup Actions (정리 작업 지정하기)
 
-`defer` 문을 사용하면 실행 코드가 현재 코드 블럭을 나가기 전에 일정 구문을 실행할 수 있습니다. 이 구문을 사용하면 현재 코드 블럭을 _어떤 방법으로 (how)_ 나가든 상관없이 해야할 필요가 있는 정리를 할 수 있습니다-에러가 던져져서 나가게 됐든 아니면 `return` 이나 `break` 문 등으로 나가게 됐든 상관없습니다. 예를 들어, `defer` 문을 사용하면 'file descriptors (파일 서술자)'[^file-discriptors] 를 닫고 수동으로 할당된 메모리를 풀어서 확보했다고 보장할 수 있습니다.
+`defer` 문은 실행이 현재 코드 블럭을 떠나기 직전에 일정 구문 집합을 실행하기 위해 사용합니다. 이 구문은 실행이 현재 코드 블럭을-에러를 던지기 때문에 아니면 `return` 이나 `break` 같은 구문 때문에 떠나는 것이든-떠나는 _방법 (how)_ 에는 관계 없이 수행할 필요가 있는 정리는 어떤 것이든 하도록 해줍니다. 예를 들어, '파일 서술자 (file descriptors)'[^file-discriptors] 를 닫고 수동으로 할당한 메모리를 풀어서 확보한다는 것을 보장하기 위해 `defer` 문을 사용할 수 있습니다.
 
-`defer` 문은 현재 영역이 종료될 때까지 실행을 지연합니다. 이 구문은 `defer` 키워드와 나중에 실행할 구문들로 구성됩니다. '지연 구문 (deferred statements)' 은, `break` 나 `return` 문 등, 또는 에러를 던지는 것 등의, 제어를 구문 밖으로 전달하게 되는 코드는 포함하지 않는 것이 좋습니다. 지연된 작업은 소스 코드에 작성된 것과 반대 순서로 실행됩니다. 즉, 첫 번째 `defer` 문 코드가 맨 마지막에 실행되고, 두 번째 `defer` 문 코드가 마지막에서 두 번째로 실행되며, 죽 이런 식입니다. 소스 코드 순서에서 가장 마지막의 `defer` 문이 맨 처음에 실행됩니다.
+`defer` 문은 현재 영역을 빠져나갈 때까지 실행을 지연합니다. 이 구문은 `defer` 키워드와 나중에 실행할 구문들로 이루어져 있습니다. '지연된 (deferred) 구문' 들은, `break` 나 `return` 문, 또는 에러를 던지는 것과 같이, 제어를 구문 외부로 옮기는 어떤 코드를 담고 있지 않을 수도 있습니다. '지연된 행동' 들은 소스 코드에서 작성한 것과 반대 순서로 실행됩니다. 즉, 첫 번째 `defer` 문 코드를 마지막에 실행하고, 두 번째 `defer` 문 코드를 마지막에서 두 번째로 실행하며, 이를 계속합니다. 소스 코드 순서로 마지막인 `defer` 문을 맨 처음 실행합니다.
 
 ```swift
 func processFile(filename: String) throws {
@@ -268,16 +268,20 @@ func processFile(filename: String) throws {
       close(file)
     }
     while let line = try file.readline() {
-      // 파일 작업을 수행합니다.
+      // 파일 작업을 함.
     }
-    // close(file) 은, 영역의 끝인, 여기서 호출됩니다.
+    // close(file) 은, 영역의 끝인, 여기서 호출합니다.
   }
 }
 ```
 
-위의 예제는 `open(_:)` 함수와 연관되어 있는 `close(_:)` 를 호출할 것임을 보장하기 위해 `defer` 문을 사용하고 있습니다.
+위 예제는 `open(_:)` 함수가 `close(_:)` 라는 연관된 호출을 가진다는 것을 보장하기 위해 `defer` 문을 사용합니다.
 
-> `defer` 문은 에러 처리 코드와 상관없이 사용할 수 있습니다.
+> `defer` 문은 에러 처리 코드와 엮여 있지 않은 때에도 사용할 수 있습니다.
+
+### 다음 장
+
+[Type Casting (타입 변환) > ]({% post_url 2020-04-01-Type-Casting %})
 
 ### 참고 자료
 
@@ -285,12 +289,16 @@ func processFile(filename: String) throws {
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^error-to-optional]: 본문에도 나와 있듯이 `try?` 는 모든 에러를, `nil` 로 변환한다고 하는, 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 모든 에러를 무시해도 상관없는 경우에만 사용할 수 있습니다. 생각해보면, 예제에서 사용된 `someThrowingFunction()` 도 원래 `nil` 이 될 수 있는 함수이고, 이 함수의 모든 에러는 '정수 (integer)' 를 만들 수 없는 경우로 한정됩니다. 따라서, 이 경우에 모든 에러를 `nil` 로 변경한다고 해서 프로그램 실행에 문제가 될 것은 없습니다.
-
-[^runtime-error]: 실행시간 에러가 발생할 수도 있는데 `try!` 나 '실행시간 단언문 (runtime assertion)' 을 왜 사용하는지 의문이 들 수 있습니다. 사실 좀 더 정확하게 표현하면 `try!` 는 '에러가 발생하지 않을 거라는 것을 알고 있는 상황에서 사용하는 것' 이라기 보다는, '에러가 나면 안되는 상황을 개발 과정에서 미리 알기 위해 사용하는 것' 입니다. 실행 시간에 에러가 나는 것을 막을 수는 없으므로 상황에 맞는 '에러 처리' 는 항상 필요하지만, 에러가 절대 나면 안되는 코드를 미리 걸러내고 싶을 때는 개발 과정에서 `try!` 를 사용하면 된다고 이해할 수 있습니다.
-
-[^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
-
 [^first-class-support]: 여기서 말하는 '일급 지원 (first-class support)' 이란, '복구 가능한 에러 (recoverable errors)' 를 하나의 객체로써 취급할 수 있다는 의미로 추측됩니다.
 
 [^empty-protocol]: 실제로 스위프트에서 `Error` 프로토콜은 아무 내용이 없는 '빈 (empty) 프로토콜' 입니다. 즉, `Error` 라는 타입만을 정의하고 있습니다.
+
+[^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 참고하기 바랍니다.
+
+[^try-expression]: '`try` 표현식' 에 대한 더 자세한 정보는 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장의 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분을 참고하기 바랍니다.
+
+[^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 사실상 에러를 무시해도 상관없을 때 사용합니다. 예제에서 사용한 `someThrowingFunction()` 함수의 경우 모든 에러는 결국 '정수 (integer)' 를 반환할 수 없을 경우에만 발생합니다. 즉, 정수를 반환할 수 없는 모든 경우에 대해 발생하는 모든 에러를 `nil` 로 변환해서 무시하고자 한다면, `try?` 를 사용할 수 있습니다.
+
+[^runtime-error]: 실행시간 에러가 발생할 수도 있는데 `try!` 를 왜 사용하는지 의문이 들 수도 있습니다. 본문에서 표현한 '실행 시간에 에러를 던지지 않을 것임을 알고 있을 때' 라는 건, 결국 '실행 시간에 에러가 나면 안되는 상황' 을 말하는 것입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 상황을 개발 과정에서 미리 파악하고 해결하기 위해서 사용하는 것입니다. 실행 시간에 에러가 절대로 나면 안되는 코드라면, 개발 과정에서 `try!` 를 사용한다고 이해하면 됩니다.
+
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.

@@ -6,17 +6,15 @@ date:   2020-03-31 10:00:00 +0900
 categories: Swift Language Grammar Type Casting
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 부분[^Type-Casting]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 부분[^Type-Casting]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Type Casting (타입 변환)
 
-_타입 변환 (Type Casting)_ 은 한 인스턴스의 타입을 검사하는 방법 또는, 그 인스턴스가 속한 '클래스 계층 (class hierarchy)' 의 어딘가에 있는 다른 '상위 클래스' 나 '하위 클래스' 로 취급하는 방법을 말합니다.
+_타입 변환 (Type Casting)_ 은 인스턴스의 타입을 검사하거나, 해당 인스턴스를 자신의 '클래스 계층 (class hierarchy)' 어딘가에 있는 다른 '상위 클래스' 또는 '하위 클래스' 로써 취급하기 위한 방법입니다.
 
-스위프트의 '타입 변환' 은 `is` 와 `as` 연산자로 구현됩니다. 이 두 연산자는 간단하면서도 이해하기 쉬운 방법으로 값의 타입을 검사하거나 값을 다른 타입으로 변환할 수 있도록 해 줍니다.
+스위프트의 '타입 변환' 은 `is` 와 `as` 연산자로 구현합니다. 이 두 연산자는 값의 타입을 검사하거나 값을 다른 타입으로 변환하기 위한 간단하면서도 이해하기 쉬운 방법을 제공합니다.
 
-'타입 변환' 을 사용하면 그 타입이 프로토콜을 준수하고 있는지도 검사할 수 있으며, 이는 [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명하도록 합니다.
+타입 변환은, [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명한 것처럼, 타입이 프로토콜을 준수하는지 검사하기 위해 사용할 수도 있습니다.
 
 ### Defining a Class Hierarchy for Type Casting (타입 변환을 위한 클래스 계층 정의하기)
 
