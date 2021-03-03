@@ -102,9 +102,9 @@ class VendingMachine {
 }
 ```
 
-`vend(itemNamed:)` 메소드는, 간식 구매를 위한 '필수 조건' 이 만족되지 않으면, `guard` 문으로 메소드를 조기 종료하고 적절한 에러를 던지도록 구현되었습니다. `throw` 문은 프로그램 제어를 즉시 전달하므로, 모든 '필수 조건' 을 만족해야만 항목을 판매합니다.
+`vend(itemNamed:)` 메소드의 구현은 간식 구매를 위한 어떤 '필수 조건' 도 만족하지 않을 경우 메소드를 조기에 종료하고 적절한 에러를 던지기 위해 `guard` 문을 사용합니다. `throw` 문은 프로그램 제어를 곧바로 전달하기 때문에, 모든 '필수 조건' 을 만족할 경우에만 항목을 판매할 것입니다.
 
-`vend(itemNamed:)` 메소드는 던지는 에러는 어떤 것이든 다 전파하므로, 이 메소드를 호출하는 코드는 어떤 것이든 각자 반드시 에러를 처리해야 합니다-`do-catch` 문으로든, `try?`, 또는 `try!` 을 사용하든-아니면 다시 전파하든 말입니다. 예를 들어, 아래 예제의 `buyFavoriteSnack(person:vendingMachine:)` 는 자신도 '던지는 함수' 라서, `vend(itemNamed:)` 메소드가 던지는 에러는 어떤 것이든 다시 위로 전파하여 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출하는 곳으로 보냅니다.
+`vend(itemNamed:)` 메소드는 어떤 에러를 던져도 다 전파하기 때문에, 이 메소드를 호출하는 코드는 어떤 것이든 반드시-`do-catch` 문, `try?`, 또는 `try!` 을 사용하여-에러를 처리하던가, 아니면 전파를 계속하던가 해야 합니다. 예를 들어, 아래 예제에 있는 `buyFavoriteSnack(person:vendingMachine:)` 도 '던지는 함수' 이며, `vend(itemNamed:)` 메소드가 던지는 어떤 에러든 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출하는 곳으로 '위로 전파 (propagate up)' 할 것입니다.
 
 ```swift
 let favoriteSnaks = [
@@ -118,9 +118,9 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
 }
 ```
 
-이 예제의, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 과자를 찾은 다음 `vend(itemNamed:)` 메소드를 호출하여 이를 사려고 시도합니다. `vend(itemNamed:)` 메소드는 에러를 던질 수 있으므로, 호출할 때 `try` 키워드를 앞에 붙입니다.
+이 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 간식거리를 찾아 보고 `vend(itemNamed:)` 메소드를 호출하여 이를 사려고 합니다. `vend(itemNamed:)` 메소드는 에러를 던질 수 있기 때문에, 앞에다 `try` 키워드 붙여서 호출합니다.
 
-'던지는 초기자 (throwing initializers)' 는 '던지는 함수' 와 같은 방법으로 에러를 전파할 수 있습니다. 예를 들어, 아래의 `PurchasedSnack` 구조체에 대한 초기자는 초기화 과정에서 '던지는 함수' 를 호출하며, 어떤 에러든 마주치기만 하면 호출하는 쪽으로 전파하는 것으로 이를 처리합니다.
+'던지는 초기자 (throwing initializers)' 는 '던지는 함수' 와 같은 방식으로 에러를 전파할 수 있습니다. 예를 들어, 아래에 나열한 `PurchasedSnack` 구조체의 초기자는 초기화 과정에서 '던지는 함수' 를 호출하며, 마주치는 어떤 에러든 호출하는 쪽으로 전파하는 것으로써 이를 처리합니다.
 
 ```swift
 struct PurchasedSnack {
