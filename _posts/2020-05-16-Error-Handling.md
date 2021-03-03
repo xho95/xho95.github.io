@@ -215,8 +215,7 @@ func eat(item: String) throws {
 
 #### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
 
-`try?` 는 에러를 옵셔널 값으로 변환하는 것으로써 처리하고자 사용합니다.
-`try?` 표현식을 평가할 동안 에러가 던져지면, 표현식의 값은 `nil` 입니다. 예를 들어, 다음의 `x` 와 `y` 코드는 똑같은 값과 작동 방식을 가집니다:
+`try?` 는 옵셔널 값으로 변환함으로써 에러를 처리하기 위해 사용합니다. `try?` 표현식을 평가하는 동안 에러를 던지면, 표현식의 값이 `nil` 입니다. 예를 들어, 다음의 `x` 와 `y` 코드는 똑같은 값과 작동 방식을 가집니다:
 
 ```swift
 func someThrowingFunction() throws -> Int {
@@ -249,7 +248,7 @@ func fetchData() -> Data? {
 
 '던지는' 함수나 메소드가, 사실상, 실행 시간에 에러를 던지지 않을 것임을 알고 있을 때가 있습니다. 그럴 때는, 에러 전파를 못하게 하고 아무런 에러도 던지지 않을 거라는 '실행시간 단언문 (runtime assertion)' 으로 호출을 포장하기 위해 표현식 앞에 `try!` 를 작성할 수 있습니다. 에러를 실제로 던지게 되면, 실행시간 에러를 가질 것입니다.[^runtime-error]
 
-예를 들어, 다음 코드는 `loadImage(atPath:)` 함수로, 주어진 경로의 이미지 자원을 불러오거나 혹은 이미지를 불러올 수 없다는 에러를 던집니다. 이런 경우, 이미지는 응용 프로그램과 함께 출하하므로, 실행 시간에 에러를 던질 일이 없으며, 따라서 에러 전파를 못하게 하는 것이 아주 적절합니다.
+예를 들어, 다음 코드는, 주어진 경로의 이미지 자원을 불러오거나 이미지를 불러올 수 없다면 에러를 던지는, `loadImage(atPath:)` 함수를 사용합니다. 이 경우, 이미지는 응용 프로그램과 같이 출하하기 때문에, 실행 시간에 에러를 던지지 않을 것이므로, 에러 전파를 못하게 하는 것이 적절합니다.
 
 ```swift
 let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
@@ -257,9 +256,9 @@ let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 
 ### Specifying Cleanup Actions (정리 작업 지정하기)
 
-`defer` 문을 사용하면 실행 코드가 현재 코드 블럭을 나가기 전에 일정 구문을 실행할 수 있습니다. 이 구문을 사용하면 현재 코드 블럭을 _어떤 방법으로 (how)_ 나가든 상관없이 해야할 필요가 있는 정리를 할 수 있습니다-에러가 던져져서 나가게 됐든 아니면 `return` 이나 `break` 문 등으로 나가게 됐든 상관없습니다. 예를 들어, `defer` 문을 사용하면 'file descriptors (파일 서술자)'[^file-discriptors] 를 닫고 수동으로 할당된 메모리를 풀어서 확보했다고 보장할 수 있습니다.
+`defer` 문은 실행이 현재 코드 블럭을 떠나기 직전에 일정 구문 집합을 실행하기 위해 사용합니다. 이 구문은 실행이 현재 코드 블럭을-에러를 던지기 때문에 아니면 `return` 이나 `break` 같은 구문 때문에 떠나는 것이든-떠나는 _방법 (how)_ 에는 관계 없이 수행할 필요가 있는 정리는 어떤 것이든 하도록 해줍니다. 예를 들어, '파일 서술자 (file descriptors)'[^file-discriptors] 를 닫고 수동으로 할당한 메모리를 풀어서 확보한다는 것을 보장하기 위해 `defer` 문을 사용할 수 있습니다.
 
-`defer` 문은 현재 영역이 종료될 때까지 실행을 지연합니다. 이 구문은 `defer` 키워드와 나중에 실행할 구문들로 구성됩니다. '지연 구문 (deferred statements)' 은, `break` 나 `return` 문 등, 또는 에러를 던지는 것 등의, 제어를 구문 밖으로 전달하게 되는 코드는 포함하지 않는 것이 좋습니다. 지연된 작업은 소스 코드에 작성된 것과 반대 순서로 실행됩니다. 즉, 첫 번째 `defer` 문 코드가 맨 마지막에 실행되고, 두 번째 `defer` 문 코드가 마지막에서 두 번째로 실행되며, 죽 이런 식입니다. 소스 코드 순서에서 가장 마지막의 `defer` 문이 맨 처음에 실행됩니다.
+`defer` 문은 현재 영역을 빠져나갈 때까지 실행을 지연합니다. 이 구문은 `defer` 키워드와 나중에 실행할 구문들로 이루어져 있습니다. '지연된 (deferred) 구문' 들은, `break` 나 `return` 문, 또는 에러를 던지는 것과 같이, 제어를 구문 외부로 옮기는 어떤 코드를 담고 있지 않을 수도 있습니다. '지연된 행동' 들은 소스 코드에서 작성한 것과 반대 순서로 실행됩니다. 즉, 첫 번째 `defer` 문 코드를 마지막에 실행하고, 두 번째 `defer` 문 코드를 마지막에서 두 번째로 실행하며, 이를 계속합니다. 소스 코드 순서로 마지막인 `defer` 문을 맨 처음 실행합니다.
 
 ```swift
 func processFile(filename: String) throws {
@@ -269,24 +268,26 @@ func processFile(filename: String) throws {
       close(file)
     }
     while let line = try file.readline() {
-      // 파일 작업을 수행합니다.
+      // 파일 작업을 함.
     }
-    // close(file) 은, 영역의 끝인, 여기서 호출됩니다.
+    // close(file) 은, 영역의 끝인, 여기서 호출합니다.
   }
 }
 ```
 
-위의 예제는 `open(_:)` 함수와 연관되어 있는 `close(_:)` 를 호출할 것임을 보장하기 위해 `defer` 문을 사용하고 있습니다.
+위 예제는 `open(_:)` 함수가 `close(_:)` 라는 연관된 호출을 가진다는 것을 보장하기 위해 `defer` 문을 사용합니다.
 
-> `defer` 문은 에러 처리 코드와 상관없이 사용할 수 있습니다.
+> `defer` 문은 에러 처리 코드와 엮여 있지 않은 때에도 사용할 수 있습니다.
+
+### 다음 장
+
+[Type Casting (타입 변환) > ]({% post_url 2020-04-01-Type-Casting %})
 
 ### 참고 자료
 
 [^Error-Handling]: 이 글에 대한 원문은 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
 
 [^first-class-support]: 여기서 말하는 '일급 지원 (first-class support)' 이란, '복구 가능한 에러 (recoverable errors)' 를 하나의 객체로써 취급할 수 있다는 의미로 추측됩니다.
 
@@ -299,3 +300,5 @@ func processFile(filename: String) throws {
 [^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 사실상 에러를 무시해도 상관없을 때 사용합니다. 예제에서 사용한 `someThrowingFunction()` 함수의 경우 모든 에러는 결국 '정수 (integer)' 를 반환할 수 없을 경우에만 발생합니다. 즉, 정수를 반환할 수 없는 모든 경우에 대해 발생하는 모든 에러를 `nil` 로 변환해서 무시하고자 한다면, `try?` 를 사용할 수 있습니다.
 
 [^runtime-error]: 실행시간 에러가 발생할 수도 있는데 `try!` 를 왜 사용하는지 의문이 들 수도 있습니다. 본문에서 표현한 '실행 시간에 에러를 던지지 않을 것임을 알고 있을 때' 라는 건, 결국 '실행 시간에 에러가 나면 안되는 상황' 을 말하는 것입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 상황을 개발 과정에서 미리 파악하고 해결하기 위해서 사용하는 것입니다. 실행 시간에 에러가 절대로 나면 안되는 코드라면, 개발 과정에서 `try!` 를 사용한다고 이해하면 됩니다.
+
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
