@@ -211,11 +211,12 @@ func eat(item: String) throws {
 }
 ```
 
-`eat(item:)` 함수는 잡아낼 '자판기 (vending machine) 에러' 를 나열하며, 에러 문장은 해당 목록에 있는 항목과 연관이 있습니다. 나열된 세 개의 에러 중 어떤 것이든 던져지면, 이 `catch` 절은 메시지를 인쇄하는 것으로써 이를 처리합니다. 나중에 추가될 수도 있는 어떤 자판기 에러를 포함한, 다른 에러는 어떤 것이든 주변 영역으로 전파됩니다.
+`eat(item:)` 함수는 잡아낼 '자판기 (vending machine) 에러' 를 나열하며, 에러 문장은 해당 목록에 있는 항목과 연관이 있습니다. 나열된 세 개의 에러 중 어떤 것이든 던져지면, 이 `catch` 절은 메시지를 인쇄하는 것으로써 이를 처리합니다. 나중에 추가될 수도 있는 자판기 에러를 포함한, 다른 에러는 어떤 것이든 주변 영역으로 전파합니다.
 
 #### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
 
-`try?` 를 사용하면 에러를 '옵셔널 값 (optional value)' 으로 변환할 수 있습니다. `try?` 표현식의 값을 계산할 때 에러가 던져진 경우, 이 표현식의 값은 `nil` 이 됩니다. 예를 들어, 다음의 코드의 `x` 와 `y` 는 같은 값을 가지며 동작도 같습니다:
+`try?` 는 에러를 옵셔널 값으로 변환하는 것으로써 처리하고자 사용합니다.
+`try?` 표현식을 평가할 동안 에러가 던져지면, 표현식의 값은 `nil` 입니다. 예를 들어, 다음의 `x` 와 `y` 코드는 똑같은 값과 작동 방식을 가집니다:
 
 ```swift
 func someThrowingFunction() throws -> Int {
@@ -232,9 +233,9 @@ do {
 }
 ```
 
-`someThrowingFunction()` 이 에러를 던지면, `x` 와 `y` 의 값은 `nil` 이 됩니다. 이외의 경우, `x` 와 `y` 의 값은 함수의 반환 값이 됩니다. `x` 와 `y` 는 `someThrowingFunction()` 의 반환하는 것이 무슨 타입이든 '옵셔널 (optional)' 임을 기억하기 바랍니다. 여기서는 함수가 '정수 (integer)' 를 반환하므로, `x` 와 `y` 는 '옵셔널 정수 (optional integers)' 입니다.
+`someThrowingFunction()` 이 에러를 던지면, `x` 와 `y` 의 값은 `nil` 입니다. 그 외의 경우, `x` 와 `y` 의 값은 함수가 반환한 값입니다. `x` 와 `y` 는 `someThrowingFunction()` 이 무슨 타입을 반환하던 '옵셔널' 임을 기억하기 바랍니다. 여기선 함수가 '정수 (integer)' 를 반환하므로, `x` 와 `y` 는 '옵셔널 정수' 들입니다.
 
-모든 에러를 같은 방식으로 처리하고 싶을 때 `try?` 를 사용하면 에러 처리 코드를 간결하게 작성할 수 있습니다.[^error-to-optional] 예를 들어, 아래 코드는 자료를 가져오기 위해 여러 가지 방법을 사용하는데, 모든 방법이 실패할 경우 `nil` 을 반환합니다.
+`try?` 를 사용하는 것은 모든 에러를 똑같은 방식으로 처리하고 싶을 때 '에러 처리 코드' 를 간결하게 작성하도록 해줍니다.[^error-to-optional] 예를 들어, 다음 코드는 자료를 가져오기 위해 여러 접근 방식을 사용하며, 모든 접근 방식이 실패하면 `nil` 을 반환합니다.
 
 ```swift
 func fetchData() -> Data? {
@@ -285,8 +286,6 @@ func processFile(filename: String) throws {
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^error-to-optional]: 본문에도 나와 있듯이 `try?` 는 모든 에러를, `nil` 로 변환한다고 하는, 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 모든 에러를 무시해도 상관없는 경우에만 사용할 수 있습니다. 생각해보면, 예제에서 사용된 `someThrowingFunction()` 도 원래 `nil` 이 될 수 있는 함수이고, 이 함수의 모든 에러는 '정수 (integer)' 를 만들 수 없는 경우로 한정됩니다. 따라서, 이 경우에 모든 에러를 `nil` 로 변경한다고 해서 프로그램 실행에 문제가 될 것은 없습니다.
-
 [^runtime-error]: 실행시간 에러가 발생할 수도 있는데 `try!` 나 '실행시간 단언문 (runtime assertion)' 을 왜 사용하는지 의문이 들 수 있습니다. 사실 좀 더 정확하게 표현하면 `try!` 는 '에러가 발생하지 않을 거라는 것을 알고 있는 상황에서 사용하는 것' 이라기 보다는, '에러가 나면 안되는 상황을 개발 과정에서 미리 알기 위해 사용하는 것' 입니다. 실행 시간에 에러가 나는 것을 막을 수는 없으므로 상황에 맞는 '에러 처리' 는 항상 필요하지만, 에러가 절대 나면 안되는 코드를 미리 걸러내고 싶을 때는 개발 과정에서 `try!` 를 사용하면 된다고 이해할 수 있습니다.
 
 [^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
@@ -298,3 +297,5 @@ func processFile(filename: String) throws {
 [^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 참고하기 바랍니다.
 
 [^try-expression]: '`try` 표현식' 에 대한 더 자세한 정보는 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장의 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분을 참고하기 바랍니다.
+
+[^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 사실상 에러를 무시해도 상관없을 때 사용합니다. 예제에서 사용한 `someThrowingFunction()` 함수의 경우 모든 에러는 결국 '정수 (integer)' 를 반환할 수 없을 경우에만 발생합니다. 즉, 정수를 반환할 수 없는 모든 경우에 대해 발생하는 모든 에러를 `nil` 로 변환해서 무시하고자 한다면, `try?` 를 사용할 수 있습니다.
