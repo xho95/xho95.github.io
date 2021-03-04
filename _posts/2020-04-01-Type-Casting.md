@@ -20,7 +20,7 @@ _타입 변환 (Type Casting)_ 은 인스턴스의 타입을 검사하거나, �
 
 '타입 변환 (type casting)'[^type-casting-and-type-conversion] 을 '클래스와 하위 클래스의 계층 (hierarchy)' 과 함께 사용하여 특정 클래스 인스턴스의 타입을 검사하고 해당 인스턴스를 같은 '계층' 내의 다른 클래스로 변환할 수 있습니다. 아래의 세 코드 조각들은, '타입 변환' 예제에서 사용하기 위한, '클래스들의 계층' 과 이 클래스들의 인스턴스를 담은 배열을 정의합니다.
 
-첫 번째 조각은 `MediaItem` 이라는 새로운 '기초 (base) 클래스'[^base-class] 를 정의합니다. 이 클래스는 '디지털 미디어 라이브러리 (digital media library)' 에서 표시할 모든 종류의 항목을 위한 '기본 기능' 을 제공합니다. 특히, `String` 타입의 `name` 속성과, `init name` 초기자를 선언하고 있습니다. (이는 모든 미디어 항목들이, 가령 모든 영화와 노래를 포함한 것들이, 이름을 가질 것이라고 가정하고 있는 것입니다.)
+첫 번째 조각은 `MediaItem` 이라는 새로운 '기초 (base) 클래스'[^base-class] 를 정의합니다. 이 클래스는 '디지털 미디어 라이브러리' 의 어떤 항목에든 기초가 되는 기능을 제공합니다. 특별히, 이는 `String` 타입의 `name` 속성과, `init name` 초기자를 선언합니다. (모든 영화와 노래를 포함한, 모든 미디어 항목들은 이름을 가질 것으로 가정합니다.)
 
 ```swift
 class MediaItem {
@@ -31,7 +31,7 @@ class MediaItem {
 }
 ```
 
-그 다음 코드 조각은 `MediaItem` 의 두 '하위 클래스' 를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화나 필름에 대한 추가적인 정보를 '은닉 (encapsulates)' 합니다. 이는 `MediaItem` 기초 클래스 위에다가 `director` 속성을 추가하고, 그와 연관되는 초기자도 추가합니다. 두 번째 하위 클래스인, `Song` 은, 기초 클래스 위에 `artist` 속성과 초기자를 추가합니다:
+그 다음 조각은 `MediaItem` 의 두 '하위 클래스' 를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화나 필름에 대한 추가적인 정보를 '은닉 (encapsulates)' 합니다. 이는 `MediaItem` 기초 클래스 위에, 관련된 초기자를 가진, `director` 속성을 추가합니다. 두 번째 하위 클래스인, `Song` 은, 기초 클래스 위에 `artist` 속성과 초기자를 추가합니다:
 
 ```swift
 class Movie: MediaItem {
@@ -51,7 +51,7 @@ class Song: MediaItem {
 }
 ```
 
-마지막 코드 조각은 `library` 라는 상수 배열을 만들고, 여기에 두 개의 `Movie` 인스턴스와 세 개의 `Song` 인스턴스를 담습니다. `library` 배열에 대한 타입 추론은 이를 '배열 글자 값 (array literal)' 의 내용으로 초기화하는 것으로 이루어 집니다. 스위프트의 '타입 검사기 (type checker)' 는 `Movie` 와 `Song` 이 `MediaItem` 이라는 공통의 '상위 클래스' 를 가지고 있음을 파악할 수 있으므로, `library` 배열의 타입으로 `[MediaItem]` 을 추론합니다.
+마지막 조각은, 두 개의 `Movie` 인스턴스와 세 개의 `Song` 인스턴스를 담은, `library` 라는 상수 배열을 생성합니다. `library` 배열의 타입은 배열 '글자 값 (literal)' 내용으로 초기화하는 것으로써 추론합니다. 스위프트의 '타입 검사기 (type checker)' 는 `Movie` 와 `Song` 이 `MediaItem` 이라는 '공통 상위 클래스' 를 가짐을 이끌어 낼 수 있으므로, `library` 배열의 타입을 `[MediaItem]` 이라고 추론합니다:
 
 ```swift
 let library = [
@@ -61,10 +61,10 @@ let library = [
   Song(name: "The One And Only", artist: "Chesney Hawkes"),
   Song(name: "Never Gonna Give You Up", artist: "Rick Astley"),  
 ]
-// "library" 의 타입은 [MediaItem] 으로 추론됩니다.
+// "library" 의 타입은 [MediaItem] 이라고 추론합니다.
 ```
 
-속을 들여다보면 `library` 에 저장된 항목들은 여전히 `Movie` 와 `Song` 인스턴스 입니다. 하지만, 이 배열의 내용에 '동작을 반복 적용시켜 (iterate over)' 보면, 되돌려 받는 항목들은 타입이 `MediaItem` 이지, `Movie` 나 `Song` 이 아닙니다. 이들을 각자의 본래 타입에 맞게 작업하려면, 이들의 타입을 _검사 (check)_ 하거나, 이들을 다른 타입으로 '_내림 변환 (downcast)_' 해야 하며, 이제부터 그 방법을 설명할 것입니다.
+그 이면을 살펴보면 `library` 에 저장된 항목은 여전히 `Movie` 와 `Song` 인스턴스 입니다. 하지만, 이 배열의 내용에 동작을 반복하면, 되돌려 받는 항목은, `Movie` 나 `Song` 이 아니라, `MediaItem` 타입입니다. 이들과 본래 타입으로 작업하기 위해서는, 아래에 설명한 것처럼, 이들의 타입을 _검사 (check)_ 하거나, 이들을 다른 타입으로 '_내림 변환 (downcast)_' 할 필요가 있습니다.
 
 ### Checking Type (타입 검사하기)
 
