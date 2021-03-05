@@ -388,7 +388,7 @@ f(7)      // 무효, 인자 이름표를 누락함
 
 '함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표 있는 또는 이름표 없는 인자를 추가한-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 같은-다른 이름 역시 유효한 '함수-처럼-호출하는 메소드' 이름입니다.
 
-다음 함수 호출들은 '동치 (equivalent)' 입니다:
+다음 함수 호출은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 struct CallableStruct {
