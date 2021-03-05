@@ -353,23 +353,23 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 #### Special Kinds of Parameters (특수한 종류의 매개 변수)
 
-매개 변수는, 다음의 형식을 사용하여, 무시할 수도 있고, 다양한 개수의 값을 받을 수 있으며, 기본 값을 제공할 수도 있습니다:
+매개 변수는, 다음 형식을 사용하여, 무시하거나, 가변 개수의 값을 취하거나, 기본 값을 제공할 수 있습니다:
 
-\_ : `parameter type-매개 변수 타입`<br />
-`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...<br />
-`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입` = `default argument value-기본 설정 인자 값`
+&nbsp;&nbsp;&nbsp;&nbsp;\_ : `parameter type-매개 변수 타입`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입` = `default argument value-기본 설정 인자 값`
 
-'밑줄 (`_`) 매개 변수' 는 명시적으로 무시되며 함수 본문에서 접근할 수 없습니다.
+'밑줄 (`_`) 매개 변수' 는 명시적으로 무시하며 함수 본문 안에서 접근할 수 없습니다.
 
-기본 타입 이름 바로 뒤에 세 점 (`...`) 이 있는 매개 변수는 '가변 매개 변수 (variadic parameter)' 인 것으로 이해합니다. 함수는 최대 하나의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 기본 타입 이름의 원소를 담고 있는 배열로 취급합니다. 예를 들어, 가변 매개 변수 `Int...` 는 `[Int]` 인 것으로 취급합니다. 가변 매개 변수를 사용하는 예제에 대해서는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 를 참고하기 바랍니다.
+'기초 타입 이름' 바로 뒤에 세 점 (`...`) 이 붙은 매개 변수는 '가변 매개 변수 (variadic parameter)' 라고 이해합니다. '가변 매개 변수' 바로 뒤에 있는 매개 변수는 반드시 인자 이름표를 가져야 합니다. 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름' 의 원소를 담은 배열이라고 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. 가변 매개 변수를 사용하는 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 를 참고하기 바랍니다.
 
-타입 뒤에 '등호 (`=`)' 와 표현식이 있는 매개 변수는 주어진 표현식 형태의 기본 값을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 값을 평가합니다. 함수를 호출할 때 매개 변수를 생략하면, 기본 값을 대신 사용하게 됩니다.
+타입 뒤에 '등호 (`=`)' 와 표현식을 가진 매개 변수는 주어진 표현식의 '기본 값' 을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 평가합니다. 함수를 호출할 때 매개 변수를 생략하면, 기본 값을 대신 사용합니다.
 
 ```swift
 func f(x: Int = 42) -> Int { return x }
-f()       // 유효함, 기본 값을 사용
-f(x: 7)   // 유효함, 제공된 값을 사용
-f(7)      // 무효함, 인자 이름표가 누락됨
+f()       // 유효, 기본 값 사용
+f(x: 7)   // 유효, 제공한 값을 사용
+f(7)      // 무효, 인자 이름표를 누락함
 ```
 
 #### Special Kinds of Methods (특수한 종류의 메소드)
