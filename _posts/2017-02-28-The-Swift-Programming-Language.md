@@ -66,7 +66,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### Revision History (개정 이력)
 
-* [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %})  ![5.3](https://img.shields.io/badge/-%205.3-success)
+* [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %})  ![5.4](https://img.shields.io/badge/-%205.3-yellow)
 
 ### 참고 자료
 
