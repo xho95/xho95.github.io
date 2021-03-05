@@ -192,7 +192,7 @@ print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
 repeatLabels(a: "four") // 에러
 ```
 
-#### dynamicMemberLookup (동적으로 멤버 찾아가기)
+#### dynamicMemberLookup (동적으로 멤버 찾아보기)
 
 이 특성을 클래스, 구조체, 열거체, 또는 프로토콜에 적용하면 실행 시간에 멤버를 이름으로 찾아갈 수 있습니다. 그 타입은 반드시 `subscript(dynamicMemberLookup:)` 첨자 연산을 구현해야 합니다.
 

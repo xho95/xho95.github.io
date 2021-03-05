@@ -382,13 +382,13 @@ f(7)      // 무효, 인자 이름표를 누락함
 
 #### Methods with Special Names (특수한 이름을 가진 메소드)
 
-특수한 이름을 가진 여러 메소드들은 '함수 호출 구문' 에 대한 '수월한 구문 표현 (syntactic sugar)' 을 할 수 있게 해줍니다.[^method-with-special-anme] 타입이 이 메소드들 중 하나를 정의한 경우, 타입의 인스턴스를 '함수 호출 구문' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에서 '특수하게 이름 붙인 메소드' 중 하나를 호출하는 것으로 이해합니다.
+특수한 이름을 가진 여러 메소드들은 '함수 호출 구문' 을 위한 '수월한 구문 표현 (syntactic sugar)' 을 할 수 있게 해줍니다.[^method-with-special-anme] 타입에서 이 메소드들을 정의한 경우, 타입의 인스턴스를 '함수 호출 구문' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에서 '특수하게 이름 붙인 메소드' 들을 호출하는 것으로 이해합니다.
 
-클래스, 구조체, 또는 열거체는, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의하는 것, 또는 아래에서 설명하는 것처럼, 함수-처럼-호출하는 메소드 (call-as-function method) 를 정의하는 것으로써, '함수 호출 구문 표현' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성을 사용하는 메소드 중 하나를 둘 다 정의하고 있는 경우, 컴파일러는 어느 메소드도 사용할 수 있는 상황에서 '함수-처럼-호출하는 메소드 (call-as-function method)' 에 우선권을 부여합니다.
+클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래에서 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성이 사용하는 메소드 둘 다를 정의하는 경우, 어느 메소드를 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 부여합니다.
 
-'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()`, 또는 `callAsFunction(` 으로 시작해서 이름표가 있는 인자나 이름표가 없는 인자를 추가한 또 다른 형태의 이름입니다.-예를 들어, `callAsFunction(_:_:)` 및 `callAsFunction(something:)` 역시 '함수-처럼-호출하는 메소드' 이름으로 유효합니다.
+'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표 있는 또는 이름표 없는 인자를 추가한-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 같은-다른 이름 역시 유효한 '함수-처럼-호출하는 메소드' 이름입니다.
 
-다음의 함수 호출은 서로 '동치 (equivalent)' 입니다:
+다음 함수 호출들은 '동치 (equivalent)' 입니다:
 
 ```swift
 struct CallableStruct {
@@ -400,37 +400,35 @@ struct CallableStruct {
 let callable = CallableStruct(value: 100)
 callable(4, scale: 2)
 callable.callAsFunction(4, scale: 2)
-// 두 함수 호출 모두 208 을 출력합니다.
+// 두 함수 호출 모두 208 을 인쇄합니다.
 ```
 
-'함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성을 사용하는 메소드는 타입 시스템에 얼마나 많은 정보를 '코딩 (encode)' 하는 지와 실행 시간에 얼마나 많은 동적 동작이 가능한 지 사이에 서로 다른 모순점을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 때는, 인자의 개수와, 각각의 인자의 타입과 이름표를 지정해야 합니다. `dynamicCallable` 특성의 메소드는 인자 배열을 쥐고 있는 데 사용되는 타입만 지정합니다.
+'함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성인 메소드' 는 타입 시스템에 '부호화 (encode)' 해서 넣을 정보의 양과 실행 시간에 가능한 동적 작동 방식 사이에 서로 다른 '타협점' 을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 땐, 인자의 개수와, 각 인자의 타입과 이름표를 지정합니다. '`dynamicCallable` 특성인 메소드' 는 인자 배열을 쥐고 있기 위해 사용할 타입만을 지정합니다.
 
-'함수-처럼-호출하는 메소드', 또는 `dynamicCallable` 특성인 메소드를 정의하는 것은, '함수 호출 표현식' 이 아닌 어떠한 상황에서도 마치 그것이 함수인 것처럼 해당 타입의 인스턴스를 사용하도록 하는 것은 아닙니다. 예를 들면 다음과 같습니다:
+'함수-처럼-호출하는 메소드' 나, '`dynamicCallable` 특성인 메소드' 를 정의하는 것은, 해당 타입의 인스턴스를 '함수 호출 표현식' 이 아닌 상황에서 마치 함수인 것처럼 사용하게 해주지는 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someFunction1: (Int, Int) -> Void = callable(_:scale:)  // 에러
 let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 ```
 
-`subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아가기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아가기) 에서 설명한 것처럼, 멤버를 찾아보기 위한 '수월한 구문 표현' 을 사용할 수 있게 해줍니다.
+`subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, 멤버를 '수월한 구문 표현' 으로 찾아볼 수 있게 해줍니다.
 
 #### Throwing Functions and Methods (던지는 함수 및 메소드)
 
-에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이러한 함수와 메소드를 _던지는 함수 (throwing functions)_ 및 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
+에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _던지는 함수 (throwing functions)_ 와 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
 
-func `function name`(`parameters`) throws -> `return type` {
-<br />
-    `statements`
-<br />
+func `function name-함수 이름`(`parameters-매개 변수`) throws -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-던지는 함수 또는 던지는 메소드에 대한 호출은 반드시 `try` 나 `try!` 표현식 (즉, `try` 나 `try!` 연산자의 영역 안) 으로 포장돼야 합니다.
+던지는 함수나 메소드의 호출은 반드시 `try` 나 `try!` 표현식 (즉, `try` 나 `try!` 연산자 영역 안) 으로 포장해야 합니다.
 
-`throws` 키워드는 함수 타입의 일부이며, '던지지 않는 함수 (nonthrowing functions)' 는 '던지는 함수' 의 하위 타입입니다. 그 결과, '던지지 않는 함수' 를 '던지는 함수' 와 같은 위치에 사용할 수 있습니다.
+`throws` 키워드는 함수의 타입 일부분이며, '던지지 않는 (nonthrowing) 함수' 는 '던지는 함수' 의 '하위 타입' 입니다. 그 결과, '던지지 않는 함수' 는 '던지는 것' 과 똑같은 위치에 사용할 수 있습니다.
 
-함수가 에러를 던질 수 있는 지의 여부 만을 기준으로 하여 함수를 '중복 정의 (overload)' 할 수는 없습니다. 이 말은, 함수의 _매개 변수 (parameter)_ 가 에러를 던질 수 있는 지의 여부를 기준으로는 함수를 중복 정의할 수 있다는 말입니다.
+함수는 함수가 에러를 던질 수 있는지 만을 기초로 '중복 정의 (overload)' 할 수 없습니다. 그건 그렇고, 함수는 '함수 _매개 변수 (parameter)_' 가 에러를 던질 수 있는지를 기초로 '중복 정의' 할 수 있습니다.
 
-'던지는 메소드' 는 '던지지 않는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '던지지 않는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의할 수 있고, '던지지 않는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
+'던지는 메소드' 는 '던지지 않는 메소드' 를 재정의 할 수 없으며, '던지는 메소드' 는 '던지지 않는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 없습니다. 그건 그렇고, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '던지지 않는 메소드' 는 '던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 있습니다.
 
 #### Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)
 
