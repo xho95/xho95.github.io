@@ -432,7 +432,7 @@ func `function name-함수 이름`(`parameters-매개 변수`) throws -> `return
 
 #### Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)
 
-함수 또는 메소드는 함수 매개 변수 중 하나가 에러를 던지는 경우에만 에러를 던진다는 것을 나타내기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이러한 함수 및 메소드를 _다시 던지는 함수 (rethrowing functions)_ 및 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. '다시 던지는 함수' 와 '다시 던지는 메소드' 는 반드시 최소한 하나의 '던지는 함수 매개 변수 (throwing function parameter)' 를 가져야 합니다:
+함수나 메소드는 함수 매개 변수에서 에러를 던지는 경우에만 에러를 던지는 것을 지시하기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이 함수와 메소드들을 _다시 던지는 함수 (rethrowing functions)_ 와 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. 다시 던지는 함수와 메소드는 최소 하나의 '던지는 함수 매개 변수' 를 반드시 가져야 합니다:
 
 ```swift
 func someFunction(callback: () throws -> Void) rethrows {
@@ -440,7 +440,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 }
 ```
 
-다시 던지는 함수 또는 다시 던지는 메소드는 `catch` 절 안에서만 `throw` 문을 가질 수 있습니다. 이는 `do`-`catch` 구문 안에서 '던지는 함수' 를 호출하고 `catch` 절에서는 다른 에러를 던지는 것으로 에러를 처리하게 해줍니다. 여기에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 중 하나에서 던지는 에러만 처리해야 합니다. 예를 들어, 다음은 `catch` 절이 `alwaysThrows()` 가 던지는 에러를 처리하게 되므로 무효입니다.
+다시 던지는 함수나 메소드는 '`catch` 절' 안에서만 `throw` 문을 담을 수 있습니다. 이는 '던지는 함수' 를 `do`-`catch` 구문 안에서 호출하고 `catch` 절에서 다른 에러를 던짐으로써 에러를 처리하도록 해줍니다. 이에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 에서 던지는 에러만을 처리해야 합니다. 예를 들어, 다음은 `catch` 절이 `alwaysThrows()` 가 던진 에러를 처리할 것이기 때문에 무효입니다.
 
 ```swift
 func alwaysThrows() throws {
@@ -449,22 +449,22 @@ func alwaysThrows() throws {
 func someFunction(callback: () throws -> Void) rethrows {
   do {
     try callback()
-    try alwaysThrows()  // 무효입니다, alwaysThrows() 는 던지는 매개 변수가 아닙니다.
+    try alwaysThrows()  // 무효, alwaysThrows() 는 '던지는 매개 변수' 가 아닙니다.
   } catch {
     throw AnotherError.error
   }
 }
 ```
 
-'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
+'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의 할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 없습니다. 그건 그렇고, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 있습니다.
 
-#### Functions that Never Return ('Never' 를 반환하는 함수)
+#### Functions that Never Return (절대 반환하지 않는 함수)
 
-스위프트는, 함수나 메소드가 호출하는 쪽으로 반환하지 않는다는 것을 지시하는, `Never` 타입을 정의하고 있습니다. `Never` 라는 반환 타입을 가지는 함수나 메소드를 _반환하지 않는 (nonreturning)_ 것이라고 합니다. '반환하지 않는 함수와 메소드' 는 복구할 수 없는 에러를 유발하거나 '무기한으로 계속되는 일련의 작업' 을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 후에 즉시 실행할 코드가 절대로 실행되지 않는다는 것을 의미합니다. '던지는 함수 (throwing function)' 및 '다시 던지는 함수 (rethrowing function)' 는, '반환하지 않는' 것이더라도, 적절한 `catch` 블럭으로 프로그램 제어를 전달할 수 있습니다.
+스위프트는, 함수나 메소드가 호출하는 쪽으로 반환하지 않음을 지시하는, `Never` 타입을 정의합니다. '`Never` 반환 타입' 을 가진 함수와 메소드를 '_반환하지 않는 (nonreturning)_' 다고 합니다. 반환하지 않는 함수와 메소드는 '복구할 수 없는 에러' 를 유발하거나 '무기한 계속하는 일련의 작업' 을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 후에 즉시 실행할 코드를 절대로 실행하지 않는다는 의미입니다. '던지는 함수' 와 '다시 던지는 함수 ' 는, '반환하지 않을 (nonreturning)' 때에도, 프로그램 제어를 적절한 '`catch` 블럭' 으로 옮길 수 있습니다.
 
-반환하지 않는 함수 또는 반환하지 않는 메소드는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 설명한 것처럼, 'guard 문' 의 `else` 절을 ​​끝내기 위해 호출할 수 있습니다.
+반환하지 않는 함수나 메소드는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 설명한 것처럼, 'guard 문' 의 `else` 절을 결말짓기 위해 호출할 수 있습니다.
 
-반환하지 않는 메소드를 재정의할 수는 있지만, 이 새로운 메소드는 반드시 반환 타입과 '반환하지 않는' 동작 방식을 보존해야 합니다.
+'반환하지 않는 메소드' 를 재정의 할 순 있지만, 새로운 메소드는 자신의 반환 타입과 '반환하지 않는' 다는 작동 방식을 반드시 보존해야 합니다.
 
 > GRAMMAR OF A FUNCTION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362)
 
@@ -1222,7 +1222,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^optional-member]: 여기서의 '옵셔널 (optional)' 은 '선택 사항' 이라는 말과 '타입이 옵셔널' 이라는 두 가지 의미를 모두 가지고 있습니다. 이는 프로토콜에서 선언한 '필수 조건' 이 구현되어 있는 지의 여부 자체가 '옵셔널' 이라는 것으로 이해할 수 있습니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 그 구현체를 가지는 것이고, 구현이 되어 있지 않으면 `nil` 인 것입니다.
 
-[^throwing-parameter]: 여기서 '던지는 매개 변수 (throwing paramter)' 는 앞서 얘기한 '던지는 함수 매개 변수 (throwing function parameter)' 를 말하는 것으로, 매개 변수가 '던지는 함수 (throwing function)' 인 것입니다.
+[^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수 매개 변수 (throwing function parameter)' 를 말하는 것으로, 매개 변수 자체가 '던지는 함수 (throwing function)' 입니다.
 
 [^immutable]: 스위프트의 '상수' 는 참조하고 있는 대상을 다른 대상을 참조하도록 바꾸는 것이 안된다는 의미라는 것을 알 수 있습니다. 이 경우 참조하고 있는 대상 자체가 바뀌는 것은 상관없습니다. 물론 이것은 'class' 같은 '참조 타입 (reference type)' 에만 해당하는 것으로 'struct' 같은 '값 타입 (value type)' 에는 해당하지 않는 이야기 입니다.
 
@@ -1234,7 +1234,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 함수 본문 전체를 의미하기 때문에 '함수 정의 (function definition)' 라고 하는 것이 맞습니다.
 
-[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용되는 데, 이는 프로그램이 실행되는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 프로그램의 종료 시점을 컴파일 시간에 알 수 없기 때문에 `Never` 타입을 사용한다고 이해할 수 있습니다.
+[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다.
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다.
 

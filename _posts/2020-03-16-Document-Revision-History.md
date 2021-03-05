@@ -140,7 +140,7 @@ categories: Swift Language Grammar Revision History
 * 새로운 구문 표현인 `Protocol1 & Protocol2` 을 사용하기 위해 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 부분과 [Types (타입)]({% post_url 2020-02-20-Types %}) 장의 [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 부분에 있는 '프로토콜 합성 타입 (protocol composition types)' 에 대한 논의를 갱신함.
 * '동적 타입 표현식' 에 대해서 새로운 구문 표현인 `type(of:)` 를 사용하기 위해 '동적 타입 표현식 (Dynamic Type Expression)'[^dynamic-type-expression] 부분에 있는 논의를 갱신함.
 * [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 `#sourceLocation(file:line:)` 구문 표현을 사용하기 위해 '라인 제어 구문' 에 대한 논의를 갱신함.
-* 새로운 타입인 `Never` 를 사용하기 위해 [Functions that Never Return ('Never' 를 반환하는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-never-를-반환하는-함수) 에 있는 논의를 갱신함.
+* 새로운 타입인 `Never` 를 사용하기 위해 [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 에 있는 논의를 갱신함.
 * '플레이그라운드 글자 값 (playground literals)' 에 대한 정보를 [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 추가함.
 * '벗어나지 않는 클로저 (nonescaping closures)' 만 '입-출력 매개 변수 (in-out parameters)' 를 붙잡을 수 있다는 것에 주목하기 위해 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 부분에 있는 논의를 갱신함
 * [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분에 있는 '기본 설정 매개 변수' 에 대한 논의를 갱신했으며, 이제 이들을 함수 호출에서 재정렬할 수 있음.
