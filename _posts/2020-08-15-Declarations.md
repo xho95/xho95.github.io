@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.3: Declarations (선언)"
+title:  "Swift 5.4: Declarations (선언)"
 date:   2020-08-15 11:30:00 +0900
 categories: Swift Language Grammar Declaration
 ---
@@ -382,7 +382,7 @@ f(7)      // 무효, 인자 이름표를 누락함
 
 #### Methods with Special Names (특수한 이름을 가진 메소드)
 
-특수한 이름을 가지는 몇몇 메소드들은 '함수 호출 구문 표현 (function call syntax)' 이라는 '수월한 구문 표현 (syntactic sugar)' 을 사용할 수 있게 해줍니다.[^syntatic-sugar] 타입이 이 메소드 중 하나를 정의하면, 이 타입의 인스턴스는 '함수 호출 구문 표현' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에 있는 '특수한 이름을 가진 메소드' 들 중 하나에 대한 호출인 것으로 이해합니다.
+특수한 이름을 가진 여러 메소드들은 '함수 호출 구문' 에 대한 '수월한 구문 표현 (syntactic sugar)' 을 할 수 있게 해줍니다.[^method-with-special-anme] 타입이 이 메소드들 중 하나를 정의한 경우, 타입의 인스턴스를 '함수 호출 구문' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에서 '특수하게 이름 붙인 메소드' 중 하나를 호출하는 것으로 이해합니다.
 
 클래스, 구조체, 또는 열거체는, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의하는 것, 또는 아래에서 설명하는 것처럼, 함수-처럼-호출하는 메소드 (call-as-function method) 를 정의하는 것으로써, '함수 호출 구문 표현' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성을 사용하는 메소드 중 하나를 둘 다 정의하고 있는 경우, 컴파일러는 어느 메소드도 사용할 수 있는 상황에서 '함수-처럼-호출하는 메소드 (call-as-function method)' 에 우선권을 부여합니다.
 
@@ -1238,7 +1238,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용되는 데, 이는 프로그램이 실행되는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 프로그램의 종료 시점을 컴파일 시간에 알 수 없기 때문에 `Never` 타입을 사용한다고 이해할 수 있습니다.
 
-[^syntatic-sugar]: 여기서 설명하는 내용은 C++ 언어의 '함수 객체' 와 비슷한 개념입니다.
+[^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다.
 
 [^designated-initializers]: 여기서 '초기자' 가 아니라 '지명 초기자' 라고 한 것은, 재정의한 초기자가 상위 클래스에서 '지명 초기자' 이든 '편의 초기자' 이든, 재정의하고 나면 무조건 '지명 초기자' 가 되기 때문입니다.
 
