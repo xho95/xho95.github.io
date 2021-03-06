@@ -461,15 +461,44 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 `static func buildExpression(_ expression: Expression) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;표현식으로부터 '부분 결과' 를 제작함. 이 메소드는 전처리-예를 들어, 표현식을 내부 타입으로 변환하는-과정을 수행하거나 사용자 측에 타입 추론에 대한 추가적인 정보를 제공하기 위해 구현할 수 있음.
 
 `static func buildFinalResult(_ component: Compnent) -> FinalResult`
 
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;부분적인 결과로부터 '최총 결과' 를 제작함. 이 메소드는, 부분 결과와 최종 결과에서 서로 다른 타입을 사용하는 '결과 제작자' 에서, 또는 반환하기 전에 결과에 다른 후처리 과정을 수행하기 위해, 구현할 수 있음.
 
 `static func buildLimitedAvailablility(_ component: Compnent) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;사용 가능성 검사를 수행하는 컴파일러-제어문 이외의 타입 정보를 전파하거나 지운 '부분 결과' 를 제작함. 이는 조건 분기 마다 달라지는 타입 정보를 지우기 위해 사용할 수 있음.
+
+예를 들어, 아래 코드는 정수 배열을 제작하는 단순한 '결과 제작자' 를 정의합니다. 이 코드는, 아래 예제와 위 메소드 목록을 더 쉽게 일치하도록 하려고, `Component` 와 `Expression` 을 '타입 별명 (type aliases)' 으로 정의합니다.
+
+```swift
+@resultBuilder
+struct ArrayBuilder {
+  typealias Component = [Int]
+  typealias Expression = Int
+  static func buildExpression(_ element: Expression) -> Component {
+    return [element]
+  }
+  static func buildOptional(_ component: Component?) -> Component {
+    guard let component = component else { return [] }
+    return component
+  }
+  static func buildEither(first component: Component) -> Component {
+    return component
+  }
+  static func buildEither(second component: Component) -> Component {
+    return component
+  }
+  static func buildArray(_ components: [Component]) -> Component {
+    return Array(components.joined())
+  }
+  static func buildBlock(_ components: Component...) -> Component {
+    return Array(components.joined())
+  }
+}
+```
 
 **Result Transformations (결과 변형)**
 
