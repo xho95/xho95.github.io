@@ -500,9 +500,26 @@ struct ArrayBuilder {
 }
 ```
 
-**Result Transformations (결과 변형)**
+**Result Transformations (결과 변화 규칙)**
+
+'결과-제작자' 구문을 사용한 코드를 '결과 제작자' 타입의 정적 메소드를 호출한 코드로 바꾸기 위해 다음의 구문 변화들을 재귀적으로 적용합니다:
+
+* '결과 제작자' 가 `buildExpression(_:)` 메소드를 가진 경우, 각 표현식은 해당 메소드에 대한 호출이 됩니다. 이 변화가 항상 첫 번째입니다. 예를 들어, 다음 선언들은 서로 '동치 (equivalent)' 입니다:
+
+```swift
+@ArrayBuilder var builderNumber: [Int] { 10 }
+var manualNumber = ArrayBuilder.buildExpression(10)
+```
 
 **Custom Result-Builder Attributes (사용자 정의 결과-제작자 특성)**
+
+결과 제작자 타입을 생성하면 똑같은 이름을 가진 사용자 정의 특성을 생성합니다. 해당 특성을 다음 위치에 적용할 수 있습니다:
+
+* 결과 제작자가 함수의 본문을 제작하도록, 함수 선언에
+* 결과 제작자가 획득자의 본문을 제작하도록, 획득자를 포함하고 있는 변수나 첨자 연산 선언에
+* 결과 제작자가 관련된 인자로 전달된 클로저의 본문을 제작하도록, 함수 선언의 매개 변수에
+
+결과 제작자 특성을 적용하는 것은 'ABI 호환성' 에 영향을 주지 않습니다. 결과 제작자 특성을 매개 변수에 적용하는 것은 해당 특성을, 소스 호환성에 영향을 줄 수 있는, 함수 인터페이스가 되도록 만듭니다.
 
 #### requires_stored_property_inits (저장 속성의 초기화를 필수로 요구함)
 
