@@ -429,6 +429,51 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### resultBuilder (결과 제작자)
 
+클래스, 구조체, 열거체를 '결과 제작자' 로 사용하려면 해당 타입에 이 특성을 적용합니다. _결과 제작자 (result builder)_ 는 '중첩된 자료 구조' 를 한걸음씩 단계별로 제작하는 타입니다. '결과 제작자' 는 '중첩된 자료 구조' 를 자연스럽고, 선언적인 방식으로, 생성하기 위해 '분야에-특화된 언어 (domain-specific language; DSL)' 을 구현하고자 사용합니다. `resultBuilder` 특성을 사용하는 방법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 를 참고하기 바랍니다.
+
+**Result-Building Methods (결과-제작 메소드)**
+
+'결과 제작자' 는 아래에서 설명할 '정적 (static) 메소드' 를 구현합니다. 결과 제작자의 모든 기능은 정적 메소드를 통하여 노출하기 때문에, 해당 타입의 인스턴스를 절대로 초기화하지 않습니다. `buildBlock(_:)` 메소드는 필수이며; DSL 에 추가적인 기능을 부여하는-다른 메소드들은 선택 사항입니다. 결과 제작자 타입의 선언은 실제로 어떤 프로토콜 준수성도 포함할 필요가 없습니다.
+
+정적 메소드에 대한 설명은 세 개의 타입을 '자리 표시자 (placeholder)' 로 사용합니다. `Expression` 타입은 '결과 제작자' 의 입력 타입에 대한 자리 표시자이고, `Component` 는 부분적인 결과 타입에 대한 자리 표시자이며, `FinalResult` 는 '결과 제작자' 가 만들어 내는 결과 타입에 대한 자리 표시자입니다. 이 타입들은 결과 제작자가 사용하는 실제 타입으로 대체합니다. '결과-제작 메소드' 가 `Expression` 이나 `FinalResult` 에 대한 타입을 지정하지 않으면, 기본적으로 `Component` 과 똑같아 집니다.
+
+'결과-제작 메소드' 들은 다음과 같습니다:
+
+`static func buildBlock(_ components: Compnent...) -> Component`
+
+&nbsp;&nbsp;&nbsp;&nbsp;부분적인 결과들의 배열을 단일 '부분 결과' 로 조합함. '결과 제작자' 는 이 메소드를 반드시 구현해야 함.
+
+`static func buildOptional(_ component: Compnent?) -> Component`
+
+&nbsp;&nbsp;&nbsp;&nbsp;`nil` 일 수 있는 부분적인 결과로부터 '부분 결과' 를 제작함. 이 메소드는 `else` 절을 포함하지 않은 `if` 문을 지원하기 위해 구현함.
+
+`static func buildEither(first: Compnent) -> Component`
+
+&nbsp;&nbsp;&nbsp;&nbsp;어떤 조건에 따라 값이 달라지는 '부분 결과' 를 제작함. 이 메소드와 `buildEither(second:)` 는 `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 함께 구현함.
+
+`static func buildEither(second: Compnent) -> Component`
+
+&nbsp;&nbsp;&nbsp;&nbsp;어떤 조건에 따라 값이 달라지는 '부분 결과' 를 제작함. 이 메소드와 `buildEither(first:)` 는 `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 함께 구현함.
+
+`static func buildArray(_ components: [Compnent]) -> Component`
+
+&nbsp;&nbsp;&nbsp;&nbsp;부분적인 결과들의 배열로부터 '부분 결과' 를 제작함. 이 메소드는 `for` 반복분을 지원하기 위해 구현함.
+
+`static func buildExpression(_ expression: Expression) -> Component`
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+`static func buildFinalResult(_ component: Compnent) -> FinalResult`
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+`static func buildLimitedAvailablility(_ component: Compnent) -> Component`
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+**Result Transformations (결과 변형)**
+
+**Custom Result-Builder Attributes (사용자 정의 결과-제작자 특성)**
 
 #### requires_stored_property_inits (저장 속성의 초기화를 필수로 요구함)
 
