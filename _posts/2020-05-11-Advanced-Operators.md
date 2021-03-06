@@ -471,6 +471,78 @@ let plusMinusVector = firstVector +- secondVector
 
 > '접두사 (prefix) 연산자 '나 '접미사 (postfix) 연산자' 를 정의할 때는 우선 순위를 지정하지 않습니다. 다만, 피연산자에 '접두사 연산자' 와 '접미사 연산자' 를 동시에 사용하면, 접미사 연산자가 먼저 적용됩니다.
 
+### Result Builders (결과 제작자)
+
+_결과 제작자 (result builder)_ 는, 자연스럽고, 선언적인 방식으로, '리스트 (list)' 나 '트리 (tree)' 같은, '중첩된 자료' 의 생성 구문을 추가하는, 직접 정의하는 타입입니다. '결과 제작자' 를 사용한 코드는, 조건문이나 자료의 반복을 처리하기 위해, `if` 와 `for` 같은, 일상적인 스위프트 구문을 포함할 수 있습니다.
+
+아래 코드는 한 줄에 별과 문장을 사용한 그림을 그리기 위한 몇몇 타입을 정의합니다.
+
+```swift
+protocol Drawable {
+  func draw() -> String
+}
+struct Line: Drawable {
+  var elements: [Drawable]
+  func draw() -> String {
+    return elements.map { $0.draw() }.joined(separator: "")
+  }
+}
+struct Text: Drawable {
+  var content: String
+  init(_ content: String) { self.content = content }
+  func draw() -> String { return content }
+}
+struct Space: Drawable {
+  func draw() -> String { return " " }
+}
+struct Stars: Drawable {
+  var length: Int
+  func draw() -> String { return String(repeating: "*", count: length) }
+}
+struct AllCaps: Drawable {
+  var content: Drawable
+  func draw() -> String { return content.draw().uppercased() }
+}
+```
+
+`Drawable` 프로토콜은, 선이나 도형 같이, 그릴 수 있는 것을 위한 '필수 조건 (requirement)' 을 정의하는데: 여기서는 '타입이 반드시 `draw()` 함수를 구현해야 한다' 는 것입니다. `Line` 구조체는 '한-줄 그리기' 를 표현하며, 대부분의 그림에 대해 최상단 '컨테이너 (container)'[^container] 의 역할을 담당합니다. `Line` 을 그리기 위해, 구조체는 '줄 (line)' 의 각 성분에 대해 `draw()` 를 호출하며, 그런 다음 결과 문자열을 단일 문자열로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 그림의 일부로 만듭니다. `AllCaps` 구조체는 다른 그림을 포장하며, 그림에 있는 어떤 문장이든 대문자로 변환하는, 수정을 합니다.
+
+이 타입들의 초기자를 호출함으로써 그림을 만드는 것이 가능합니다:
+
+```swift
+let name: String? = "Ravi Patel"
+let manualDrawing = Line(elements: [
+  Stars(length: 3),
+  Text("Hello"),
+  Space(),
+  AllCaps(content: Text((name ?? "World") + "!")),
+  Stars(length: 2),
+  ])
+print(manualDrawing.draw())
+// "***Hello RAVI PATEL!**" 를 인쇄합니다.
+```
+
+이 코드는 작동하긴 하지만, 조금 어색합니다. `AllCaps` 뒤의 깊이 중첩된 괄호들은 이해하기가 힘듭니다. `name` 이 `nil` 일 때 "World" 를 사용하는 '대체 논리' 는 `??` 연산자를 사용하여 '인라인' 으로 해야하는데, 더 복잡한 것을 해봐야 어렵기만 할 것입니다. 그림 일부를 제작하기 위해 'switch 문' 이나 `for` 반복문을 포함할 필요가 있는 경우에도, 그렇게 할 방법이 없습니다. '결과 제작자' 는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 처럼 보이도록 해줍니다.
+
+'결과 제작자' 를 정의하려면, 타입 선언에 '`@resultBuilder` 특성 (attribute)' 을 작성합니다. 예를 들어, 다음 코드는, 그림을 '선언적인 구문 표현 (declarative syntax)' 으로 설명할 수 있도록 하는, `DrawingBuilder` 라는 '결과 제작자' 를 정의합니다:
+
+```swift
+@resultBuilder
+struct DrawingBuilder {
+  static func buildBlock(_ components: Drawable...) -> Drawable {
+    return Line(elements: components)
+  }
+  static func buildEither(first: Drawable) -> Drawable {
+    return first
+  }
+  static func buildEither(second: Drawable) -> Drawable {
+    return second
+  }
+}
+```
+
+
+
 ### 참고 자료
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
@@ -488,3 +560,5 @@ let plusMinusVector = firstVector +- secondVector
 [^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 또는 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 를 참고하기 바랍니다.
 
 [^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. '결합 법칙' 에 대한 더 자세한 내용은 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 또는 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 을 참고하기 바랍니다.
+
+[^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
