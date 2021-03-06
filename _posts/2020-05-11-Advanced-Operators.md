@@ -615,7 +615,7 @@ let manyStars = draw {
 
 위 코드에서, `for` 반복문은 그림들의 배열을 생성하고, `buildArray(_:)` 메소드는 해당 배열을 `Line` 으로 바꿉니다.
 
-스위프트가 '제작자 구문 (builder syntax)' 을 제작자 타입의 메소드 호출로 변형하는 방법에 대한 완전한 목록은, [resultBuilder]() 를 참고하기 바랍니다.
+스위프트가 '제작자 구문 (builder syntax)' 을 제작자 타입의 메소드 호출로 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 를 참고하기 바랍니다.
 
 
 ### 참고 자료

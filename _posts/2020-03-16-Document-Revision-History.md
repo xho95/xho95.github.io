@@ -13,7 +13,7 @@ categories: Swift Language Grammar Revision History
 #### 2021-02-17
 
 * 스위프트 5.4 에서 갱신한 것.
-* '결과 제작자 (result builders)' 에 대한 정보를 가진 [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 와 [resultBuilder]() 부분을 추가함.
+* '결과 제작자 (result builders)' 에 대한 정보를 가진 [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 와 [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 부분을 추가함.
 * 함수 호출 시에 '입-출력 매개 변수' 를 '안전하지 않은 (unsafe) 포인터' 로 암시적으로 변환할 수 있는 방법에 대한 정보를 가진 [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)]({% post_url 2020-08-19-Expressions %}#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환) 부분을 추가함
 * [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 와 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분을 갱신했으며, 이제 함수는 '다중 가변 매개 변수' 를 가질 수 있음.
 
