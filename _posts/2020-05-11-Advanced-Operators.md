@@ -541,6 +541,81 @@ struct DrawingBuilder {
 }
 ```
 
+`DrawingBuilder` 구조체는 '결과 제작자' 구문 표현의 일부분을 구현하는 세 개의 메소드를 정의합니다. `buildBlock(_:)` 메소드는 코드 블럭에 연속된 '줄 (lines)' 들을 작성하는 지원을 추가합니다. 이는 해당 블럭의 성분들을 하나의 `Line` 으로 조합합니다. `buildEither(first:)` 와 `buildEither(second:)` 메소드는 `if`-`else` 문에 대한 지원을 추가합니다.
+
+`@DrawingBuilder` 를 함수의 매개 변수에 적용하여, 함수에 전달한 클로저를 해당 클로저로부터엥 결과 제작자가 생성한 값으로 바꿀 수 있습니다. 예를 들어 다음과 같습니다:
+
+```swift
+func draw(@DrawingBuilder content: () -> Drawable) -> Drawable {
+  return content()
+}
+func caps(@DrawingBuilder content: () -> Drawable) -> Drawable {
+  return AllCaps(content: content())
+}
+
+func makeGreeting(for name: String? = nil) -> Drawable {
+  let greeting = draw {
+    Stars(length: 3)
+    Text("Hello")
+    Space()
+    caps {
+      if let name = name {
+        Text(name + "!")
+      } else {
+        Text("World!")
+      }
+    }
+    Stars(length: 2)
+  }
+  return greeting
+}
+let genericGreeting = makeGreeting()
+print(genericGreeting.draw())
+// "***Hello WORLD!**" 를 인쇄합니다.
+
+let personalGreeting = makeGreeting(for: "Ravi Patel")
+print(personalGreeting.draw())
+// "***Hello RAVI PATEL!**" 를 인쇄합니다.
+```
+
+`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하고 이를 사용해서 개인화한 인사말을 그립니다. `draw(_:)` 와 `caps(_:)` 함수는 둘 다 인자로, `@DrawingBuilder` 특성으로 표시된, 단일 클로저를 취합니다. 이 함수들을 호출할 땐, `DrawingBuilder` 가 정의한 특수한 구문을 사용합니다. 스위프트는 '선언적인 그림 설명' 을 `DrawingBuilder` 에 대한 연속된 메소드 호출로 변형하여 함수 인자로 전달할 값을 제작합니다. 예를 들어, 스위프트는 해당 예제에 있는 `caps(_:)` 에 대한 호출을 다음과 같은 코드로 변형합니다:
+
+```swift
+let capsDrawing = caps {
+  let partialDrawing: Drawable
+  if let name = name {
+    let text = Text(name + "!")
+    partialDrawing = DrawingBuilder.buildEither(first: text)
+  } else {
+    let text = Text("World!")
+    partialDrawing = DrawingBuilder.buildEither(second: text)
+  }
+  return partialDrawing
+}
+```
+
+스위프트는 `if`-`else` 블럭을 `buildEither(first:)` 와 `buildEither(second:)` 메소드에 대한 호출로 변형합니다. 비록 이 메소드들을 자신의 코드에서 호출할 순 없을지라도, 변형의 결과를 보이는 것은 `DrawingBuilder` 구문을 사용할 때 스위프트가 코드를 변형하는 방법을 알아보기 쉽도록 합니다.
+
+'특수한 그리기 구문' 에서 `for` 반복문 작성에 대한 지원을 추가하려면, `buildArray(_:)` 메소드를 추가합니다:
+
+```swift
+extension DrawingBuilder {
+  static func buildArray(_ components: [Drawable]) -> Drawable {
+    return Line(elements: components)
+  }
+}
+let manyStars = draw {
+  Text("Stars:")
+  for length in 1...3 {
+    Space()
+    Stars(length: length)
+  }
+}
+```
+
+위 코드에서, `for` 반복문은 그림들의 배열을 생성하고, `buildArray(_:)` 메소드는 해당 배열을 `Line` 으로 바꿉니다.
+
+스위프트가 '제작자 구문 (builder syntax)' 을 제작자 타입의 메소드 호출로 변형하는 방법에 대한 완전한 목록은, [resultBuilder]() 를 참고하기 바랍니다.
 
 
 ### 참고 자료
