@@ -13,9 +13,9 @@ categories: Swift Language Grammar Revision History
 #### 2021-02-17
 
 * 스위프트 5.4 에서 갱신한 것.
-* '결과 제작자 (result builders)' 에 대한 정보를 가진 [Result Builders]() 와 [resultBuilder]() 부분을 추가함.
-* '입-출력 매개 변수' 가 함수 호출에서 '안전하지 않은 포인터 (unsafe pointers)' 로 암시적으로 변환될 수 있는 방법에 대한 정보를 가진 [Implicit Conversion to a Pointer Type]() 부분을 추가함
-* [Variadic Parameters]() 와 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분을 갱신했으며, 이제 함수는 '다중 가변 매개 변수' 를 가질 수 있음.
+* '결과 제작자 (result builders)' 에 대한 정보를 가진 [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 와 [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 부분을 추가함.
+* 함수 호출 시에 '입-출력 매개 변수' 를 '안전하지 않은 (unsafe) 포인터' 로 암시적으로 변환할 수 있는 방법에 대한 정보를 가진 [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)]({% post_url 2020-08-19-Expressions %}#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환) 부분을 추가함
+* [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 와 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분을 갱신했으며, 이제 함수는 '다중 가변 매개 변수' 를 가질 수 있음.
 
 #### 2020-09-16
 
@@ -53,7 +53,7 @@ categories: Swift Language Grammar Revision History
 * 타입에서 첨자 연산을 사용하는 것에 대한 정보를 [Type Subscripts (타입 첨자 연산)]({% post_url 2020-03-30-Subscripts %}#type-subscripts-타입-첨자-연산) 부분에 추가함.
 * [Enumeration Case Pattern (열거체 case 값 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-값-패턴) 부분을 갱신했으며, 이제 '열거체 case 값 패턴' 도 옵셔널 값과 일치할 수 있음.
 * [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 갱신했으며, 이제 기본 값을 가진 매개 변수에 대해서 '멤버 초기자 (memberwise initializers)' 도 매개 변수의 생략을 지원함.
-* 실행 시간에 '키 경로 (key path)' 로 찾아 가는 동적 멤버에 대한 정보를 [dynamicMemberLookup (동적으로 멤버 찾아가기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아가기) 부분에 추가함.
+* 실행 시간에 '키 경로 (key path)' 로 찾아 가는 동적 멤버에 대한 정보를 [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 부분에 추가함.
 * [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 에 있는 '대상 환경 (target environment)' 목록에 `macCatalyst` 를 추가함.
 * [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-self-타입) 부분을 갱신했으며, 이제 `Self` 는 현재의 클래스, 구조체, 또는 열거체 선언에서 도입한 타입을 참조하기 위해 사용할 수 있음.
 
@@ -140,7 +140,7 @@ categories: Swift Language Grammar Revision History
 * 새로운 구문 표현인 `Protocol1 & Protocol2` 을 사용하기 위해 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 부분과 [Types (타입)]({% post_url 2020-02-20-Types %}) 장의 [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 부분에 있는 '프로토콜 합성 타입 (protocol composition types)' 에 대한 논의를 갱신함.
 * '동적 타입 표현식' 에 대해서 새로운 구문 표현인 `type(of:)` 를 사용하기 위해 '동적 타입 표현식 (Dynamic Type Expression)'[^dynamic-type-expression] 부분에 있는 논의를 갱신함.
 * [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 `#sourceLocation(file:line:)` 구문 표현을 사용하기 위해 '라인 제어 구문' 에 대한 논의를 갱신함.
-* 새로운 타입인 `Never` 를 사용하기 위해 [Functions that Never Return ('Never' 를 반환하는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-never-를-반환하는-함수) 에 있는 논의를 갱신함.
+* 새로운 타입인 `Never` 를 사용하기 위해 [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 에 있는 논의를 갱신함.
 * '플레이그라운드 글자 값 (playground literals)' 에 대한 정보를 [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분에 추가함.
 * '벗어나지 않는 클로저 (nonescaping closures)' 만 '입-출력 매개 변수 (in-out parameters)' 를 붙잡을 수 있다는 것에 주목하기 위해 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 부분에 있는 논의를 갱신함
 * [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분에 있는 '기본 설정 매개 변수' 에 대한 논의를 갱신했으며, 이제 이들을 함수 호출에서 재정렬할 수 있음.

@@ -382,13 +382,13 @@ f(7)      // 무효, 인자 이름표를 누락함
 
 #### Methods with Special Names (특수한 이름을 가진 메소드)
 
-특수한 이름을 가진 여러 메소드들은 '함수 호출 구문' 에 대한 '수월한 구문 표현 (syntactic sugar)' 을 할 수 있게 해줍니다.[^method-with-special-anme] 타입이 이 메소드들 중 하나를 정의한 경우, 타입의 인스턴스를 '함수 호출 구문' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에서 '특수하게 이름 붙인 메소드' 중 하나를 호출하는 것으로 이해합니다.
+특수한 이름을 가진 여러 메소드들은 '함수 호출 구문' 을 위한 '수월한 구문 표현 (syntactic sugar)' 을 할 수 있게 해줍니다.[^method-with-special-anme] 타입에서 이 메소드들을 정의한 경우, 타입의 인스턴스를 '함수 호출 구문' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에서 '특수하게 이름 붙인 메소드' 들을 호출하는 것으로 이해합니다.
 
-클래스, 구조체, 또는 열거체는, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의하는 것, 또는 아래에서 설명하는 것처럼, 함수-처럼-호출하는 메소드 (call-as-function method) 를 정의하는 것으로써, '함수 호출 구문 표현' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성을 사용하는 메소드 중 하나를 둘 다 정의하고 있는 경우, 컴파일러는 어느 메소드도 사용할 수 있는 상황에서 '함수-처럼-호출하는 메소드 (call-as-function method)' 에 우선권을 부여합니다.
+클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래에서 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성이 사용하는 메소드 둘 다를 정의하는 경우, 어느 메소드를 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 부여합니다.
 
-'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()`, 또는 `callAsFunction(` 으로 시작해서 이름표가 있는 인자나 이름표가 없는 인자를 추가한 또 다른 형태의 이름입니다.-예를 들어, `callAsFunction(_:_:)` 및 `callAsFunction(something:)` 역시 '함수-처럼-호출하는 메소드' 이름으로 유효합니다.
+'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표 있는 또는 이름표 없는 인자를 추가한-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 같은-다른 이름 역시 유효한 '함수-처럼-호출하는 메소드' 이름입니다.
 
-다음의 함수 호출은 서로 '동치 (equivalent)' 입니다:
+다음 함수 호출은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 struct CallableStruct {
@@ -400,41 +400,39 @@ struct CallableStruct {
 let callable = CallableStruct(value: 100)
 callable(4, scale: 2)
 callable.callAsFunction(4, scale: 2)
-// 두 함수 호출 모두 208 을 출력합니다.
+// 두 함수 호출 모두 208 을 인쇄합니다.
 ```
 
-'함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성을 사용하는 메소드는 타입 시스템에 얼마나 많은 정보를 '코딩 (encode)' 하는 지와 실행 시간에 얼마나 많은 동적 동작이 가능한 지 사이에 서로 다른 모순점을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 때는, 인자의 개수와, 각각의 인자의 타입과 이름표를 지정해야 합니다. `dynamicCallable` 특성의 메소드는 인자 배열을 쥐고 있는 데 사용되는 타입만 지정합니다.
+'함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성인 메소드' 는 타입 시스템에 '부호화 (encode)' 해서 넣을 정보의 양과 실행 시간에 가능한 동적 작동 방식 사이에 서로 다른 '타협점' 을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 땐, 인자의 개수와, 각 인자의 타입과 이름표를 지정합니다. '`dynamicCallable` 특성인 메소드' 는 인자 배열을 쥐고 있기 위해 사용할 타입만을 지정합니다.
 
-'함수-처럼-호출하는 메소드', 또는 `dynamicCallable` 특성인 메소드를 정의하는 것은, '함수 호출 표현식' 이 아닌 어떠한 상황에서도 마치 그것이 함수인 것처럼 해당 타입의 인스턴스를 사용하도록 하는 것은 아닙니다. 예를 들면 다음과 같습니다:
+'함수-처럼-호출하는 메소드' 나, '`dynamicCallable` 특성인 메소드' 를 정의하는 것은, 해당 타입의 인스턴스를 '함수 호출 표현식' 이 아닌 상황에서 마치 함수인 것처럼 사용하게 해주지는 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someFunction1: (Int, Int) -> Void = callable(_:scale:)  // 에러
 let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 ```
 
-`subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아가기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아가기) 에서 설명한 것처럼, 멤버를 찾아보기 위한 '수월한 구문 표현' 을 사용할 수 있게 해줍니다.
+`subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, 멤버를 '수월한 구문 표현' 으로 찾아볼 수 있게 해줍니다.
 
 #### Throwing Functions and Methods (던지는 함수 및 메소드)
 
-에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이러한 함수와 메소드를 _던지는 함수 (throwing functions)_ 및 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
+에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _던지는 함수 (throwing functions)_ 와 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
 
-func `function name`(`parameters`) throws -> `return type` {
-<br />
-    `statements`
-<br />
+func `function name-함수 이름`(`parameters-매개 변수`) throws -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-던지는 함수 또는 던지는 메소드에 대한 호출은 반드시 `try` 나 `try!` 표현식 (즉, `try` 나 `try!` 연산자의 영역 안) 으로 포장돼야 합니다.
+던지는 함수나 메소드의 호출은 반드시 `try` 나 `try!` 표현식 (즉, `try` 나 `try!` 연산자 영역 안) 으로 포장해야 합니다.
 
-`throws` 키워드는 함수 타입의 일부이며, '던지지 않는 함수 (nonthrowing functions)' 는 '던지는 함수' 의 하위 타입입니다. 그 결과, '던지지 않는 함수' 를 '던지는 함수' 와 같은 위치에 사용할 수 있습니다.
+`throws` 키워드는 함수의 타입 일부분이며, '던지지 않는 (nonthrowing) 함수' 는 '던지는 함수' 의 '하위 타입' 입니다. 그 결과, '던지지 않는 함수' 는 '던지는 것' 과 똑같은 위치에 사용할 수 있습니다.
 
-함수가 에러를 던질 수 있는 지의 여부 만을 기준으로 하여 함수를 '중복 정의 (overload)' 할 수는 없습니다. 이 말은, 함수의 _매개 변수 (parameter)_ 가 에러를 던질 수 있는 지의 여부를 기준으로는 함수를 중복 정의할 수 있다는 말입니다.
+함수는 함수가 에러를 던질 수 있는지 만을 기초로 '중복 정의 (overload)' 할 수 없습니다. 그건 그렇고, 함수는 '함수 _매개 변수 (parameter)_' 가 에러를 던질 수 있는지를 기초로 '중복 정의' 할 수 있습니다.
 
-'던지는 메소드' 는 '던지지 않는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '던지지 않는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의할 수 있고, '던지지 않는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
+'던지는 메소드' 는 '던지지 않는 메소드' 를 재정의 할 수 없으며, '던지는 메소드' 는 '던지지 않는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 없습니다. 그건 그렇고, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '던지지 않는 메소드' 는 '던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 있습니다.
 
 #### Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)
 
-함수 또는 메소드는 함수 매개 변수 중 하나가 에러를 던지는 경우에만 에러를 던진다는 것을 나타내기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이러한 함수 및 메소드를 _다시 던지는 함수 (rethrowing functions)_ 및 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. '다시 던지는 함수' 와 '다시 던지는 메소드' 는 반드시 최소한 하나의 '던지는 함수 매개 변수 (throwing function parameter)' 를 가져야 합니다:
+함수나 메소드는 함수 매개 변수에서 에러를 던지는 경우에만 에러를 던지는 것을 지시하기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이 함수와 메소드들을 _다시 던지는 함수 (rethrowing functions)_ 와 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. 다시 던지는 함수와 메소드는 최소 하나의 '던지는 함수 매개 변수' 를 반드시 가져야 합니다:
 
 ```swift
 func someFunction(callback: () throws -> Void) rethrows {
@@ -442,7 +440,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 }
 ```
 
-다시 던지는 함수 또는 다시 던지는 메소드는 `catch` 절 안에서만 `throw` 문을 가질 수 있습니다. 이는 `do`-`catch` 구문 안에서 '던지는 함수' 를 호출하고 `catch` 절에서는 다른 에러를 던지는 것으로 에러를 처리하게 해줍니다. 여기에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 중 하나에서 던지는 에러만 처리해야 합니다. 예를 들어, 다음은 `catch` 절이 `alwaysThrows()` 가 던지는 에러를 처리하게 되므로 무효입니다.
+다시 던지는 함수나 메소드는 '`catch` 절' 안에서만 `throw` 문을 담을 수 있습니다. 이는 '던지는 함수' 를 `do`-`catch` 구문 안에서 호출하고 `catch` 절에서 다른 에러를 던짐으로써 에러를 처리하도록 해줍니다. 이에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 에서 던지는 에러만을 처리해야 합니다. 예를 들어, 다음은 `catch` 절이 `alwaysThrows()` 가 던진 에러를 처리할 것이기 때문에 무효입니다.
 
 ```swift
 func alwaysThrows() throws {
@@ -451,22 +449,22 @@ func alwaysThrows() throws {
 func someFunction(callback: () throws -> Void) rethrows {
   do {
     try callback()
-    try alwaysThrows()  // 무효입니다, alwaysThrows() 는 던지는 매개 변수가 아닙니다.
+    try alwaysThrows()  // 무효, alwaysThrows() 는 '던지는 매개 변수' 가 아닙니다.
   } catch {
     throw AnotherError.error
   }
 }
 ```
 
-'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 없습니다. 이 말은, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 에 대한 프로토콜 필수 조건을 만족할 수 있다는 말입니다.
+'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의 할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 없습니다. 그건 그렇고, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 있습니다.
 
-#### Functions that Never Return ('Never' 를 반환하는 함수)
+#### Functions that Never Return (절대 반환하지 않는 함수)
 
-스위프트는, 함수나 메소드가 호출하는 쪽으로 반환하지 않는다는 것을 지시하는, `Never` 타입을 정의하고 있습니다. `Never` 라는 반환 타입을 가지는 함수나 메소드를 _반환하지 않는 (nonreturning)_ 것이라고 합니다. '반환하지 않는 함수와 메소드' 는 복구할 수 없는 에러를 유발하거나 '무기한으로 계속되는 일련의 작업' 을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 후에 즉시 실행할 코드가 절대로 실행되지 않는다는 것을 의미합니다. '던지는 함수 (throwing function)' 및 '다시 던지는 함수 (rethrowing function)' 는, '반환하지 않는' 것이더라도, 적절한 `catch` 블럭으로 프로그램 제어를 전달할 수 있습니다.
+스위프트는, 함수나 메소드가 호출하는 쪽으로 반환하지 않음을 지시하는, `Never` 타입을 정의합니다. '`Never` 반환 타입' 을 가진 함수와 메소드를 '_반환하지 않는 (nonreturning)_' 다고 합니다. 반환하지 않는 함수와 메소드는 '복구할 수 없는 에러' 를 유발하거나 '무기한 계속하는 일련의 작업' 을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 후에 즉시 실행할 코드를 절대로 실행하지 않는다는 의미입니다. '던지는 함수' 와 '다시 던지는 함수 ' 는, '반환하지 않을 (nonreturning)' 때에도, 프로그램 제어를 적절한 '`catch` 블럭' 으로 옮길 수 있습니다.
 
-반환하지 않는 함수 또는 반환하지 않는 메소드는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 설명한 것처럼, 'guard 문' 의 `else` 절을 ​​끝내기 위해 호출할 수 있습니다.
+반환하지 않는 함수나 메소드는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 설명한 것처럼, 'guard 문' 의 `else` 절을 결말짓기 위해 호출할 수 있습니다.
 
-반환하지 않는 메소드를 재정의할 수는 있지만, 이 새로운 메소드는 반드시 반환 타입과 '반환하지 않는' 동작 방식을 보존해야 합니다.
+'반환하지 않는 메소드' 를 재정의 할 순 있지만, 새로운 메소드는 자신의 반환 타입과 '반환하지 않는' 다는 작동 방식을 반드시 보존해야 합니다.
 
 > GRAMMAR OF A FUNCTION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362)
 
@@ -1224,7 +1222,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^optional-member]: 여기서의 '옵셔널 (optional)' 은 '선택 사항' 이라는 말과 '타입이 옵셔널' 이라는 두 가지 의미를 모두 가지고 있습니다. 이는 프로토콜에서 선언한 '필수 조건' 이 구현되어 있는 지의 여부 자체가 '옵셔널' 이라는 것으로 이해할 수 있습니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 그 구현체를 가지는 것이고, 구현이 되어 있지 않으면 `nil` 인 것입니다.
 
-[^throwing-parameter]: 여기서 '던지는 매개 변수 (throwing paramter)' 는 앞서 얘기한 '던지는 함수 매개 변수 (throwing function parameter)' 를 말하는 것으로, 매개 변수가 '던지는 함수 (throwing function)' 인 것입니다.
+[^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수 매개 변수 (throwing function parameter)' 를 말하는 것으로, 매개 변수 자체가 '던지는 함수 (throwing function)' 입니다.
 
 [^immutable]: 스위프트의 '상수' 는 참조하고 있는 대상을 다른 대상을 참조하도록 바꾸는 것이 안된다는 의미라는 것을 알 수 있습니다. 이 경우 참조하고 있는 대상 자체가 바뀌는 것은 상관없습니다. 물론 이것은 'class' 같은 '참조 타입 (reference type)' 에만 해당하는 것으로 'struct' 같은 '값 타입 (value type)' 에는 해당하지 않는 이야기 입니다.
 
@@ -1236,7 +1234,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 함수 본문 전체를 의미하기 때문에 '함수 정의 (function definition)' 라고 하는 것이 맞습니다.
 
-[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용되는 데, 이는 프로그램이 실행되는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 프로그램의 종료 시점을 컴파일 시간에 알 수 없기 때문에 `Never` 타입을 사용한다고 이해할 수 있습니다.
+[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다.
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다.
 

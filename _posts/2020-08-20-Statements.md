@@ -153,7 +153,7 @@ guard `condition-조건` else {<br />
 * `continue`
 * `throw`
 
-'제어 전달 구문 (control transfer statements)' 은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 라는 반환 타입을 가지는 함수에 대한 더 많은 정보는, [Functions that Never Return ('Never' 를 반환하는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-never-를-반환하는-함수) 를 참고하기 바랍니다.
+'제어 전달 구문 (control transfer statements)' 은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 라는 반환 타입을 가지는 함수에 대한 더 많은 정보는, [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 를 참고하기 바랍니다.
 
 > GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
