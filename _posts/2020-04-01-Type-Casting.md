@@ -90,7 +90,7 @@ print("Media library contains \(movieCount) movies and \(songCount) songs")
 
 이 예제는 `library` 배열에 있는 모든 항목에 걸쳐 동작을 반복합니다. 메 번 지나갈 때마다, `for-in` 반복문은 `item` 상수를 배열의 그 다음 `MediaItem` 으로 설정합니다.
 
-`item is Movie` 는 현재의 `MediaItem` 이 `Movie` 인스턴스면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다. 이와 비슷하게, `item is Song` 은 항목이 `Song` 인스턴스인지 검사합니다. `for-in` 반복문의 끝에서, `movieCount` 와 `songCount` 의 값은 각 타입 별로 찾은 `MediaItem` 인스턴스의 개수를 가지게 됩니다.
+`item is Movie` 는 현재의 `MediaItem` 이 `Movie` 인스턴스면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다. 이와 비슷하게, `item is Song` 은 항목이 `Song` 인스턴스인지 검사합니다. `for-in` 반복문의 끝에서, `movieCount` 와 `songCount` 의 값은 각 타입 별로 찾은 `MediaItem` 인스턴스 개수를 담고 있습니다.
 
 ### Downcasting (내림 변환하기)
 
