@@ -244,7 +244,7 @@ print(wrapper.x)
 
 #### frozen (동결된)
 
-이 특성을 구조체나 열거체 선언에 적용하면 타입에 대해서 할 수 있는 변화의 종류를 제약합니다. 이 특성은 '라이브러리 진화 모드 (library evolution mode)' 에서 컴파일할 때만 허용됩니다. '미래 버전 (future versions)' 의 라이브러리는 열거체의 'case 값' 또는 구조체의 저장 인스턴스 속성을 추가, 삭제, 및 '재배치 (reordering)' 하는 것으로써 선언을 바꿀 수 없습니다. 이러한 변화는 '동결되지 않은 타입 (nonfrozen types)' 에 대해서는 허용된 것이지만, '동결된 타입 (frozen types)' 에서는 'ABI 호환성 (ABI compatibility)' 을 깨뜨립니다.
+이 특성은 타입이 바뀔 수 있는 종류를 제약하기 위해 구조체나 열거체 선언에 적용합니다. 이 특성은 '라이브러리 진화 모드 (library evolution mode)' 에서 컴파일할 때만 허용됩니다. '미래 버전 (future versions)' 의 라이브러리는 열거체의 'case 값' 또는 구조체의 저장 인스턴스 속성을 추가, 삭제, 및 '재배치 (reordering)' 하는 것으로써 선언을 바꿀 수 없습니다. 이러한 변화는 '동결되지 않은 타입 (nonfrozen types)' 에 대해서는 허용된 것이지만, '동결된 타입 (frozen types)' 에서는 'ABI 호환성 (ABI compatibility)' 을 깨뜨립니다.
 
 > 컴파일러가 '라이브러리 진화 모드' 이지 않을 때는, 모든 구조체와 열거체는 암시적으로 '동결된 (frozen)' 것이 되어, 이 특성이 무시됩니다.
 
@@ -500,9 +500,196 @@ struct ArrayBuilder {
 }
 ```
 
-**Result Transformations (결과 변형)**
+**Result Transformations (결과 변화)**
+
+다음의 구문 변화들을 재귀적으로 적용하여 '결과-제작자' 구문을 사용한 코드를 '결과 제작자' 타입의 '정적 메소드' 를 호출하는 코드로 바꿉니다:
+
+* '결과 제작자' 가 `buildExpression(_:)` 메소드를 가진 경우, 각 표현식은 해당 메소드에 대한 호출이 됩니다. 이 변화가 항상 첫 번째입니다. 예를 들어, 다음 선언은 서로 '동치 (equivalent)' 입니다:
+
+```swift
+@ArrayBuilder var builderNumber: [Int] { 10 }
+var manualNumber = ArrayBuilder.buildExpression(10)
+```
+
+* 할당문은 표현식과 같이 변화하지만, `()` 를 평가하는 것으로 이해합니다. 할당을 특별하게 처리하기 위해 `()` 타입의 인자를 취하는 `buildExpression(_:)` 을 '중복 정의 (overload)' 할 수 있습니다.
+
+* 사용 가능성 조건을 검사하는 분기문은 `buildLimitedAvailablility(_:)` 메소드에 대한 호출이 됩니다. 이 변화는 `buildEither(first:)`, `buildEither(second:)`, 및 `buildOptional(_:)` 호출로의 변화 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드는 어느 분기를 취하는 지에 따라 바뀌는 타입 정보를 지우기 위해 사용합니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 두 분기 모두에 대한 타입 정보를 붙잡는 '일반화된 (generic) 타입' 을 사용합니다.
+
+```swift
+protocol Drawable {
+  func draw() -> String
+}
+struct Text: Drawable {
+  var content: String
+  init(_ content: String) { self.content = content }
+  func draw() -> String { return content }
+}
+struct Line<D: Drawable>: Drawable {
+  var elements: [D]
+  func draw() -> String {
+    return elements.map { $0.draw() }.joined(separator: "")
+  }
+}
+struct DrawEither<First: Drawable, Second: Drawable>: Drawable {
+  var content: Drawable
+  func draw() -> String { return content.draw() }
+}
+
+@resultBuilder
+struct DrawingBuilder {
+  static func buildBlock<D: Drawable>(_ components: D...) -> Line<D> {
+    return Line(elements: components)
+  }
+  static func buildEither<First, Second>(first: First) -> DrawEither<First, Second> {
+    return DrawEither(content: first)
+  }
+  static func buildEither<First, Second>(second: Second) -> DrawEither<First, Second> {
+    return DrawEither(content: second)
+  }
+}
+```
+
+하지만, 이 접근 방식은 사용 가능성 검사를 가진 코드에서 문제를 유발합니다:
+
+```swift
+@available(macOS 99, *)
+struct FutureText: Drawable {
+  var content: String
+  init(_ content: String) { self.content = content }
+  func draw() -> String { return content }
+}
+@DrawingBuilder var brokenDrawing: Drawable {
+  if #available(macOS 99, *) {
+    FutureText("Inside.future")  // 문제
+  } else {
+    Text("Inside.present")
+  }
+}
+// brokenDrawing 의 타입은 Line<DrawEither<Line<FutureText>, Line<Text>>> 입니다.
+```
+
+위 코드에서는, `brokenDrawing` 타입에 `FutureText` 가 있는데 이것이 `DrawEither` 라는 '일반화된 (generic) 타입' 에 있는 타입이기 때문입니다. 이는 `FutureText` 가 실행 시간에 사용 가능하지 않은 경우, 해당 타입이 명시적으로는 사용하지 않는 상태인 경우이더라도, 프로그램의 충돌을 일으킬 수 있습니다.
+
+이 문제를 풀려면, 타입 정보를 지우는 `buildLimitedAvailability(_:)` 메소드를 구현합니다. 예를 들어, 아래 코드는 사용 가능성 검사에서 `AnyDrawable` 값을 제작합니다.
+
+```swift
+struct AnyDrawable: Drawable {
+  var content: Drawable
+  func draw() -> String { return content.draw() }
+}
+extension DrawingBuilder {
+  static func buildLimitedAvailability(_ content: Drawable) -> AnyDrawable {
+    return AnyDrawable(content: content)
+  }
+}
+
+@DrawingBuilder var typeErasedDrawing: Drawable {
+  if #available(macOS 99, *) {
+    FutureText("Inside.future")
+  } else {
+    Text("Inside.present")
+  }
+}
+// typeErasedDrawing 의 타입은 Line<DrawEither<AnyDrawable, Line<Text>>> 입니다.
+```
+
+* 분기문은 `buildEither(first:)` 와 `buildEither(second:)` 메소드에 대한 '연속된 중첩 호출' 이 됩니다. 구문의 조건과 'case 값' 은 '이진 (binary) 트리' 의 '잎 (leaf) 노드' 에 대응되며, 구문은 '근원 (root) 노드' 에서 해당 '잎 노드' 로의 경로를 따르는 `buildEither` 메소드의 '중첩 호출' 이 됩니다.
+
+예를 들어, 세 개의 'case 절' 을 가진 'switch 문' 을 작성한 경우, 컴파일러는 '잎 노드' 가 세 개인 '이진 트리' 를 사용합니다. 마찬가지로, '근원 노드' 에서 '두 번째 case 절' 로의 경로가 "두 번째 자식" 다음에 "첫 번째 자식" 이기 때문에, 해당 'case 절' 은 `buildEither(first: buildEither(second: ...))` 같은 '중첩 호출' 이 됩니다. 다음 선언은 서로 '동치' 입니다:  
+
+```swift
+let someNumber = 19
+@ArrayBuilder var builderConditional: [Int] {
+  if someNumber < 12 {
+    31
+  } else if someNumber == 19 {
+    32
+  } else {
+    33
+  }
+}
+
+var manualConditional: [Int]
+if someNumber < 12 {
+  let partialResult = ArrayBuilder.buildExpression(31)
+  let outerPartialResult = ArrayBuilder.buildEither(first: partialResult)
+  manualConditional = ArrayBuilder.buildEither(first: outerPartialResult)
+} else if someNumber == 19 {
+  let partialResult = ArrayBuilder.buildExpression(32)
+  let outerPartialResult = ArrayBuilder.buildEither(second: partialResult)
+  manualConditional = ArrayBuilder.buildEither(first: outerPartialResult)
+} else {
+  let partialResult = ArrayBuilder.buildExpression(33)
+  manualConditional = ArrayBuilder.buildEither(second: partialResult)
+}
+```
+
+* '`else` 절' 이 없는 `if` 문 같이, 값을 만들지 않을 수도 있는 분기문은, `buildOptional(_:)` 에 대한 호출이 됩니다. `if` 문의 조건을 만족하면, 코드 블럭을 변화하여 인자로 전달하며; 그 외 경우, `nil` 인 인자를 가지고 `buildOptional(_:)` 을 호출합니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+
+```swift
+@ArrayBuilder var builderOptional: [Int] {
+  if (someNumber % 2) == 1 { 20 }
+}
+
+var partialResult: [Int]? = nil
+if (someNumber % 2) == 1 {
+  partialResult = ArrayBuilder.buildExpression(20)
+}
+var manualOptional = ArrayBuilder.buildOptional(partialResult)
+```
+
+* 코드 블럭이나 `do` 문은 `buildBlock(_:)` 메소드에 대한 호출이 됩니다. 블럭 안에 있는 각 구문들은, 한번에 하나씩, 변하여 `buildBlock(_:)` 메소드의 인자가 됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+
+```swift
+@ArrayBuilder var builderBlock: [Int] {
+  100
+  200
+  300
+}
+
+var manualBlock = ArrayBuilder.buildBlock(
+  ArrayBuilder.buildExpression(100),
+  ArrayBuilder.buildExpression(200),
+  ArrayBuilder.buildExpression(300)
+)
+```
+
+* `for` 반복문은 임시 변수와, `for` 반복문, 그리고 `buildArray(_:)` 메소드에 대한 호출이 됩니다.[^temporary-variable] 새 `for` 반복문은 '일련 값 (sequence)' 에 동작을 반복하여 각 '부분 결과' 를 해당 배열에 덧붙입니다. 임시 배열은 `buildArray(_:)` 호출의 인자로 전달됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+
+```swift
+@ArrayBuilder var builderArray: [Int] {
+  for i in 5...7 {
+    100 + i
+  }
+}
+
+var temporary: [[Int]] = []
+for i in 5...7 {
+  let partialResult = ArrayBuilder.buildExpression(100 + i)
+  temporary.append(partialResult)
+}
+let manualArray = ArrayBuilder.buildArray(temporary)
+```
+
+* '결과 제작자' 가 `buildFinalResult(_:)` 메소드를 가지고 있는 경우, '최종 결과' 는 해당 메소드에 대한 호출이 됩니다. 이 변화가 항상 마지막입니다.
+
+변화의 작동 방식을 '임시 변수' 로 설명하고 있을지라도, 결과 제작자를 사용하는 것이 코드 나머지에서 눈에 보이는 새로운 어떤 선언을 실제로 생성하는 것은 아닙니다.
+
+'결과 제작자' 가 변화할 코드에 `break`, `continue`, `defer`, `guard`, 나 `return` 문, `while` 문, 또는 `do`-`catch` 문을 사용할 수는 없습니다.
+
+'변화 과정 (transformation process)' 은, 표현식을 한 조각씩 제작하기 위해 임시 상수와 변수를 사용하도록 하는, 코드 내의 선언을 바꾸지 않습니다. 이는 또 `throw` 문, '컴파일-시간 진단문', 또는 `return` 문을 담고 있는 클로저를 바꾸지 않습니다.
+
+가능할 때마다, 변화는 통합됩니다. 예를 들어, 표현식 `4 + 5 * 6` 은 해당 함수를 여러 번 호출하는 대신 `buildExpression(4 + 5 * 6)` 가 됩니다. 마찬가지로, 중첩된 분기문은 `buildEither` 메소드를 호출하는 단일 이진 트리가 됩니다. 
 
 **Custom Result-Builder Attributes (사용자 정의 결과-제작자 특성)**
+
+결과 제작자 타입을 생성하면 똑같은 이름을 가진 사용자 정의 특성을 생성합니다. 해당 특성을 다음 위치에 적용할 수 있습니다:
+
+* 결과 제작자가 함수의 본문을 제작하도록, 함수 선언에
+* 결과 제작자가 획득자의 본문을 제작하도록, 획득자를 포함하고 있는 변수나 첨자 연산 선언에
+* 결과 제작자가 관련된 인자로 전달된 클로저의 본문을 제작하도록, 함수 선언의 매개 변수에
+
+결과 제작자 특성을 적용하는 것은 'ABI 호환성' 에 영향을 주지 않습니다. 결과 제작자 특성을 매개 변수에 적용하는 것은 해당 특성을, 소스 호환성에 영향을 줄 수 있는, 함수 인터페이스가 되도록 만듭니다.
 
 #### requires_stored_property_inits (저장 속성의 초기화를 필수로 요구함)
 
@@ -589,3 +776,5 @@ struct ArrayBuilder {
 [^infer]: 원문에서는 '추론된다 (inferred)' 고 되어 있는데, '암시적으로 적용된다 (imply)' 는 의미로 사용된 것으로 추측됩니다.
 
 [^calling-convention]: 스위프트의 '호출 협약 (calling conventions)' 에 대한 더 자세한 정보는 '깃허브 (GitHub)' 의 '애플 (Apple)' 저장소에 있는 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 문서를 참고하기 바랍니다.
+
+[^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
