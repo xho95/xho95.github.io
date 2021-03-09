@@ -6,26 +6,24 @@ date:   2016-01-19 17:10:00 +0900
 categories: Xcode Swift Grammar Extensions
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) 부분[^Extensions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) 부분[^Extensions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Extensions (확장)
+## Extensions (익스텐션; 확장)
 
-_extensions (확장)_ [^extension]은 이미 존재하는 클래스, 구조체, 열거체[^enumeration] 또는 프로토콜 타입에 새로운 기능 (functionality)[^functionality] 을 추가하는 식으로 확장하는 것입니다. 원본 소스 코드에 접근할 수 없는 타입도 확장이 가능합니다. (이를 _`retroactive modeling (소급 적용 모델링)`_ 이라고 합니다.)[^retroactive-modeling] 익스텐션은 오브젝티브-C 의 'categories (카테고리; 범주)' 와 유사합니다. (하지만 오브젝티브-C 의 카테고리와는 다르게, 스위프트의 익스텐션은 이름을 가지지 않습니다.)
+_익스텐션 (extensions; 확장)_ [^extension] 은 기존의 클래스, 구조체, 열거체, 또는 프로토콜 타입에 새로운 기능 (functionality)[^functionality] 을 추가합니다. 이는 원본 소스 코드에 접근하지 못하는 타입을 확장하는 (_소급 적용 모델링 (retroactive modeling)_[^retroactive-modeling] 이라는) 능력을 포함합니다. '익스텐션' 은 오브젝티브-C 에 있는 '카테고리 (categories; 범주)' 와 비슷합니다. (오브젝티브-C 의 '카테고리' 와는 달리, 스위프트의 '익스텐션' 은 이름이 없습니다.)
 
-스위프트의 익스텐션은 다음과 같은 것들을 할 수 있습니다:
+스위프트의 '익스텐션' 은 다음을 할 수 있습니다:
 
-* 계산 인스턴스 속성 (computed instance properties) 및 계산 타입 속성 (computed type properties) 추가하기
-* 인스턴스 메소드 (instance methods 및 타입 메소드 (type methods) 정의하기
-* 새로운 초기자 (initializer) 제공하기
-* 첨자 연산자 (subscripts) 정의하기
-* 새로운 '중첩 타입 (nested types)' 정의하고 사용하기
-* 기존 타입이 특정한 프로토콜을 준수하도록 만들기
+* '계산 인스턴스 속성' 과 '계산 타입 속성' 을 추가함
+* '인스턴스 메소드' 와 '타입 메소드' 를 정의함
+* 새로운 '초기자' 를 제공함
+* '첨자 연산' 을 정의함
+* 새로운 '중첩 타입' 을 정의하고 사용함
+* 기존 타입이 프로토콜을 준수하도록 만듦
 
-스위프트에서는, 프로토콜을 확장해서 '필수 조건 (requirements)' 에 대한 구현을 제공하거나 또는 추가적인 기능을 추가하여 (프로토콜을) 준수하는 타입에게 편의를 제공할 수도 있습니다. 이에 대한 자세한 내용은 [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 을 참고하기 바랍니다.
+스위프트에서는, 심지어 프로토콜도 확장하여 '필수 조건 (requirements)' 의 구현을 제공하거나 준수하는 타입이 장점을 취할 수 있는 추가적인 기능을 추가할 수 있습니다. 더 자세한 것은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 을 참고하기 바랍니다.
 
-> 익스텐션은 타입에 새로운 기능을 추가할 수 있지만, 이미 있는 기능을 덮어쓸 (override) 수는 없습니다.
+> '익스텐션' 은 타입에 새로운 기능을 추가할 순 있지만, 기존 기능을 '재정의 (override)' 할 수는 없습니다.
 
 ### Extension Syntax (확장 구문 표현)
 
@@ -285,13 +283,11 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^extension]: `extension` 은 키워드이기도 하면서 '확장'이라는 뜻도 가지고 있는데, 키워드로 사용될 때는 익스텐션이라고 발음으로 옮기고, 확장이라는 의미로 사용될 때는 '확장'이라고 옮기도록 합니다.
+[^extension]: 스위프트에서 `extension` 은 '확장' 이라는 의미를 가진 키워드입니다. 보통 키워드 자체로 사용할 때는 '익스텐션' 이라고 발음대로 사용하지만, 키워드가 아니라 '확장' 이라는 의미가 강조될 때는 '확장' 이라고 옮기도록 합니다.
 
-[^enumeration]: `class` 를 '객체', `structure` 를 '구조체' 라고 하듯이, 일관성을 유지하기 위해서 `enumeration` 을 '열거체' 라고 옮깁니다.
+[^functionality]: 여기서 '기능 (functionality)' 을 추가한다는 말은, 기존 타입의 구조를 바꾸는 '저장 속성' 등은 추가하지 않는다는 의미를 내포하고 있습니다. 사실 '기능' 만을 추가하기 때문에, 기존 타입을 '확장 (extension)' 하는 것이 가능한 것입니다.
 
-[^functionality]: 여기서 기능이라는 말이 중요한데, 확장 (extensions) 은 대상의 구조는 변화시키지 않고 기능만을 더하는 것입니다. 클래스를 예로 들면 실제로 새로운 '속성'이 추가되는 것은 없고 일종의 '메소드' -또는 메소드에 준하는 요소-만 추가된다고 볼 수 있습니다.
-
-[^retroactive-modeling]: 즉 스위프트 표준 라이브러리에서 제공하는 타입이나 패키지에 있는 타입들도 확장 (extensions) 할 수 있습니다. 이것 역시 확장이 대상의 구조 변화없이 기능만을 추가하기 때문이기도 합니다.
+[^retroactive-modeling]: 스위프트는, '소급 적용 모델링 (retroactive modeling)' 을 통하여, 스위프트 표준 라이브러리의 타입과 패키지의 타입도 '확장' 할 수 있습니다. '소급 적용 모델링' 에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 참고하기 바랍니다.
 
 [^literal]: `leteral` 은 문자로 표현된 것을 말하며, `leteral value` 는 '문자로 표현된 값'을 말합니다 .예를 들어 코드에서 `0` 이라고 작성할 때 실제로는 문자 '0' 을 입력한 것이지만, `let a = 0` 에서의 `0` 은 하나의 수를 나타냅니다. 여기서 `0` 을 `integer literal value (정수 문자 값)` 라고 하며 '문자로 표현된 정수 값'이라는 의미를 갖습니다.
 
