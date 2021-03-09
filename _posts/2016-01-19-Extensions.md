@@ -25,9 +25,9 @@ _익스텐션 (extensions; 확장)_ [^extension] 은 기존의 클래스, 구조
 
 > '익스텐션' 은 타입에 새로운 기능을 추가할 순 있지만, 기존 기능을 '재정의 (override)' 할 수는 없습니다.
 
-### Extension Syntax (확장 구문 표현)
+### Extension Syntax (익스텐션 구문 표현)
 
-익스텐션을 선언할 때는 `extension` 키워드를 사용합니다:
+'익스텐션' 은 `extension` 키워드로 선언합니다:
 
 ```swift
 extension SomeType {
