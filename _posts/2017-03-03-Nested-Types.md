@@ -88,14 +88,18 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 ### Referring to Nested Types (중첩 타입 참조하기)
 
-'중첩 타입 (nested type)' 을 자기가 정의된 영역 외부에서 사용하려면, 이름 앞에 자기를 중첩하고 있는 타입 이름을 접두사로 붙이면 됩니다:
+자신을 정의한 상황 밖에서 '중첩 타입' 을 사용하려면, 자기 이름 앞에 자신이 중첩되어 있는 타입의 이름을 접두사로 붙입니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 // heartsSymbol 은 "♡" 입니다.
 ```
 
-위 예제를 보면, 이는 `Suit`, `Rank`, 그리고 `Values` 의 이름을 의식적으로 짧게 유지할 수 있게 해주는데, 이들의 이름이 정의된 영역에 의해 자연스럽게 '규명되기 (qualified)' 때문입니다.
+위 예제를 보면, `Suit`, `Rank`, 그리고 `Values` 의 이름은 자신이 정의된 상황에 의해 자연스럽게 '규명되기 (qualified)'[^qualified] 때문에, 이는 이름을 의도적으로 짧게 유지할 수 있도록 해줍니다.
+
+### 다음 장
+
+[Extensions (익스텐션; 확장) > ]({% post_url 2016-01-19-Extensions %})
 
 ### 참고 자료
 
@@ -114,3 +118,5 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optional Binding (옵셔널 연결)](#optional-binding-옵셔널-연결) 항목을 참고하기 바랍니다.
 
 [^case-name-alone]: 이는 `Suit.spades` 같이 타입을 직접 붙이지 않고 `.spades` 같은 사용할 수 있다는 의미입니다. 이것이 가능한 것은 '암시적인 멤버 초기자' 의 매개 변수에 타입이 명시되어 있어서, 초기자를 호출할 때 매개 변수의 타입을 추론할 수 있기 때문입니다.
+
+[^qualified]: 스위프트에서 '규명되다 (qualified)' 라는 말은 '자신이 소속된 곳이 어디인지 안다' 는 의미입니다. '중첩 타입' 은 정의 자체에 의해서 소속을 알 수 있기 때문에 자연스럽게 '규명되는' 것입니다.
