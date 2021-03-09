@@ -18,19 +18,19 @@ redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.htm
 
 ### Nested Types in Action (중첩 타입의 실제 사례)
 
-아래의 예제는 `BlackjackCard` 라는 구조체를 정의하여, '블랙잭 (Blackjack)' 게임에서 사용할 플레이용 카드의 모델을 만듭니다. `BlackjackCard` 구조체는 `Suit` 와 `Rank` 라는 두 개의 '중첩 열거체 타입 (nested enumeration types)' 을 가집니다.
+아래 예제는, '블랙잭 (Blackjack)'[^blackjack] 게임의 참가자가 사용할 카드를 모델링하는, `BlackjackCard` 이라는 구조체를 정의합니다.  `BlackjackCard` 구조체는 `Suit` 와 `Rank` 라는 두 개의 '중첩된 열거체 타입' 을 담고 있습니다.
 
-'블랙잭' 에서, 에이스 카드의 값은 '1' 일 수도 있고 '11' 일 수도 있습니다. 이러한 특징은, `Rank` 열거체 내에 중첩된, `Values` 라는 구조체로 표현됩니다:
+'블랙잭' 에서, '에이스 (Ace) 카드' 는 '1' 이나 '11' 둘 중 하나의 값을 가집니다. 이 특징은, `Rank` 열거체에 중첩된, `Values` 라는 구조체가 표현합니다:
 
 ```swift
 struct BlackjackCard {
 
-  // 중첩 열거체 Suit
+  // 중첩된 Suit 열거체
   enum Suit: Character {
     case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
   }
 
-  // 중첩 열거체 Rank
+  // 중첩된 Rank 열거체
   enum Rank: Int {
     case two = 2, three, four, five, six, seven, eight, nine, ten
     case jack, queen, king, ace
@@ -102,6 +102,8 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 [^Nested-Types]: 이 글에 대한 원문은 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+
+[^blackjack]: '블랙잭 (blackjack)' 은 카드 합이 '21' 을 넘지않는 선에서 최대한 '21' 에 가깝게 만들면 이기는 게임입니다. '블랙잭' 에 대한 더 자세한 정보는 위키피디아의 [Blackjack](https://en.wikipedia.org/wiki/Blackjack) 항목과 [블랙잭](https://ko.wikipedia.org/wiki/블랙잭) 항목을 참고하기 바랍니다.
 
 [^suits]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
