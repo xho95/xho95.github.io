@@ -196,13 +196,17 @@ for thing in things {
 // Hello, Michael
 ```
 
-> `Any` 타입은 어떤 타입의 값이라도 나타낼 수 있는 것으로, 여기에는 '옵셔널 타입' 도 포함됩니다. `Any` 타입의 값이 필요한 곳에서 '옵셔널 값' 을 사용하면 스위프트가 경고를 띄웁니다. 정말로 '옵셔널 값' 을 `Any` 값의 형태로 사용해야하는 경우라면, `as` 연산자를 사용하여, 아래에 보인 것처럼, 그 '옵셔널' 을 명시적으로 `Any` 로 '변환 (cast)' 해야 합니다.
+> `Any` 타입은, '옵셔널' 타입을 포함하여, 어떤 타입의 값이든 표현합니다. 스위프트는 `Any` 타입의 값을 예상한 곳에서 '옵셔널' 값을 사용할 경우 '경고' 를 줍니다. 정말로 '옵셔널' 값을 `Any` 값으로 사용할 필요가 있는 경우, 아래에 보인 것처럼, '옵셔널' 을 `Any` 로 명시적으로 '변환 (cast)' 하기 위해 `as` 연산자를 사용할 수 있습니다.
 
 ```swift
  let optionalNumber: Int? = 3
-things.append(optionalNumber)        // Warning
-things.append(optionalNumber as Any) // No warning
+things.append(optionalNumber)        // 경고
+things.append(optionalNumber as Any) // 경고 없음
 ```
+
+### 다음 장
+
+[Nested Types (중첩 타입) > ]({% post_url 2017-03-03-Nested-Types %})
 
 ### 참고 자료
 
