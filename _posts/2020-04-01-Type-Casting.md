@@ -134,14 +134,14 @@ for item in library {
 
 ### Type Casting for Any and AnyObject ('Any' 와 'AnyObject' 를 위한 타입 변환)
 
-스위프트는 지정하지 않은 타입과의 작업을 위해 두 개의 특수한 타입을 제공합니다:
+스위프트는 불특정한 타입과 작업할 수 있는 두 개의 특수한 타입을 제공합니다:
 
 * `Any` 는 아예, 함수 타입을 포함한, 어떤 타입의 인스턴스든 표현할 수 있습니다.
-* `AnyObject` 는 어떤 클래스 타입의 인스턴스든 표현할 수 있습니다.
+* `AnyObject` 는 어떤 클래스 타입의 인스턴스도 표현할 수 있습니다.
 
-`Any` 와 `AnyObject` 는 이들이 제공하는 작동 방식과 보유 능력이 명시적으로 필요할 때에만 사용합니다. 코드에서 작업할 것으로 예상하는 타입은 이를 지정하는 것이 항상 더 좋습니다.
+`Any` 와 `AnyObject` 는 이들의 작동 방식과 보유 능력이 명시적으로 필요할 때만 사용하기 바랍니다. 코드에서 작업할 것으로 예상하는 타입을 지정하는 것이 항상 더 좋습니다.
 
-다음은, '함수 타입' 과 '비-클래스 타입' 을 포한한, 서로 섞인 다른 타입들과 작업하기 위해 `Any` 를 사용하는 예제입니다. 이 예제는, `Any` 타입의 값을 저장할 수 있는, `things` 라는 배열을 생성합니다:
+다음은, '함수 타입' 과 '비-클래스 타입' 을 포함한, 서로 다른 타입들의 '혼합물 (mix)' 과 작업하기 위해 `Any` 를 사용하는 예제입니다. 이 예제는, `Any` 타입의 값을 저장할 수 있는, `things` 라는 배열을 생성합니다:
 
 ```swift
 var things = [Any]()
@@ -156,9 +156,9 @@ things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
 things.append({ (name: String) -> String in "Hello, \(name)" })
 ```
 
-`things` 배열이 가지고 있는 것들은 두 개의 `Int` 값, 두 개의 `Double` 값, 한 개의 `String` 값, 한 개의 `(Double, Double)` 타입인 튜플, "Ghostbusters" 라는 영화, 그리고 한 개의 클로저로 `String` 값을 받아서 또다른 `String` 값을 반환하는 것이 있습니다.
+`things` 배열은 `Int` 값 두 개, `Double` 값 두 개, `String` 값 한 개, `(Double, Double)` 타입안 튜플 한 개, "고스트 버스터즈 (Ghostbusters)[^ghostbusters]" 라는 영화, 그리고 `String` 값을 취해서 다른 `String` 값을 반환하는 클로저 표현식 한 개를 담고 있습니다.
 
-`Any` 나 `AnyObject` 타입만 알고 있는 상태에서 상수나 변수의 '지정된 타입 (specific type)' 을 찾고 싶으면, `switch` 문의 'case 절' 에 `is` 또는 `as` 'pattern (유형)' 을 사용하면 됩니다. 아래 예제는 `things` 배열에 있는 항목들에 동작을 반복 적용시키는데 이 때 `switch` 문으로 각 항목의 타입을 조회합니다. `switch` 문에 있는 여러 개의 'case 절' 들은 해당하는 값을 지정된 타입의 상수에 '연결시켜 (bind)' 그 값을 출력할 수 있도록 합니다:
+`Any` 나 `AnyObject` 타입이라고만 알고 있는 특정 상수나 변수의 타입을 발견하기 위해, `switch` 문 'case 절' 에서 `is` 나 `as` '유형 (pattern)' 을 사용할 수 있습니다. 아래 예제는 `things` 배열의 항목에 동작을 반복하여 `switch` 문으로 각 항목의 타입을 조회합니다. `switch` 문의 여러 'case 절' 은 일치하는 값을 특정 타입의 상수와 '연결 (bind)' 하여 그 값을 인쇄할 수 있게 합니다:
 
 ```swift
 for thing in things {
@@ -213,3 +213,5 @@ things.append(optionalNumber as Any) // No warning
 [^type-casting-and-type-conversion]: '타입 변환' 은 영어로 'type casting' 과 'type conversion' 둘 다에 적용할 수 있지만, 이 둘은 서로 조금 다릅니다. 'type casting' 과 'type conversion' 의 가장 기본적인 차이점은 'type conversion' 은 컴파일러에 의해 자동으로 이루어지는 반면, 'type casting' 은 개발자가 명시적으로 지정한다는 점입니다. 'type casting' 과 'type conversion' 의 차이점에 대한 정보는, [Difference Between Type Casting and Type Conversion](https://techdifferences.com/difference-between-type-casting-and-type-conversion.html) 라는 글을 참고하기 바랍니다.
 
 [^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 말합니다. '기초 클래스' 에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 참고하기 바랍니다.
+
+[^ghostbusters]: '고스트 버스터즈 (Ghostbusters)' 는 1984년 개봉한 헐리우드 영화로, 한 때 주제곡이 꽤 유행 했었습니다. 우리말로는 "유령 박멸자" 정도로 이해할 수 있습니다.
