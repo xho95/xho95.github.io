@@ -8,15 +8,13 @@ redirect_from: "/swift/language/grammar/nested/2017/03/02/Nested-Types.html"
 redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 부분[^Nested-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 부분[^Nested-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Nested Types (중첩 타입)
 
-열거체는 대체로 지정된 클래스나 구조체의 기능을 보조하기 위해 생성합니다. 이와 비슷하게, '보조용 (utility)' 클래스와 구조체를 정의해서 순전히 좀 더 복잡한 타입 내에서만 사용할 수 있다면 편리할 것입니다. 이를 위해, 스위프트는 _중첩 타입 (nested types)_ 을 정의하도록 해서, '보조용 열거체, 클래스, 및 구조체'[^supporting-types] 를 지원하고자 하는 타입의 정의에서 중첩하도록 해줍니다.
+열거체는 종종 특정 클래스나 구조체의 기능을 지원하는 용도로 생성합니다. 이와 비슷하게, 순수하게 더 복잡한 타입 내에서만 사용하기 위한 보조용 클래스와 구조체를 정의하는 것이 편리할 수 있습니다. 이를 달성하기 위해, 스위프트는, 지원할 타입의 정의 내에 지원용 열거체, 클래스, 그리고 구조체를 중첩하도록 하는, _중첩 타입 (nested types)_ 을 정의할 수 있게 해줍니다.
 
-한 타입을 다른 타입에 중첩하려면, 그 정의를 지원하고자 하는 타입의 '외곽 중괄호 (outer braces)' 안에 작성하면 됩니다. 타입은 필요한 수준만큼 많이 중첩할 수 있습니다:
+다른 타입 내에 타입을 중첩하려면, 지원할 타입의 '외곽 (outer) 중괄호' 안에 그 정의를 작성합니다. 필요한 만큼 많은 수준의 타입을 중첩할 수 있습니다:
 
 ### Nested Types in Action (중첩 타입의 실제 사례)
 
@@ -104,8 +102,6 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 [^Nested-Types]: 이 글에 대한 원문은 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^supporting-types]: 원문은 'supporting enumerations, classes, and structures' 라고 되어 있는데, 우리 말로 옮겼을 때 지원을 받는 것인지 지원을 하는 것인지 모호할 수 있기 때문에 자신이 지원을 하는 쪽이라는 의미에서 '보조용 열거체, 클래스 및 구조체' 라고 옮겼습니다. 이들이 다른 타입의 내부에서 그 대상을 지원하는 '중첩 타입 (nested types)' 입니다.
 
 [^suits]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
