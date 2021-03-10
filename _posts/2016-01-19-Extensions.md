@@ -77,21 +77,21 @@ print("Three feet is \(threeFeet) meters")
 
 다른 단위를 미터 측정 값으로 나타내기 위해서는 약간의 변환이 필수입니다. '1 킬로미터' 는 '1,000 미터' 와 같으므로, '`km` 계산 속성' 을 미터로 변환하려면 `1_000.0` 이라는 값을 곱합니다. 이와 비슷하게, '1 미터' 에는 '3.28084 피트 (feet)' 가 있으므로, '`ft` 계산 속성' 은, 피트를 미터로 변환하기 위해, '실제 `Double` 값' 을 `3.28084` 로 나눕니다.
 
-이 속성들은 '읽기-전용 계산 속성 (read-only computed properties)' 이므로, `get` 키워드 없이 간결하게 작성할 수도 있습니다. 반환 값은 `Double` 타입이며, `Double` 을 쓸 수 있다면 어디서나 수학 계산과 함께 쓸 수 있습니다.
+이 속성들은 '읽기-전용 (read-only) 계산 속성' 이므로, 간결함을 위해, `get` 키워드 없이 나타냅니다. 반환 값은 `Double` 타입이며, `Double` 을 받는 수식 계산 내라면 어디든지 사용할 수 있습니다:
 
 ```swift
 let aMarathon = 42.km + 195.m
 print("A marathon is \(aMarathon) meters long")
-// Prints "A marathon is 42195.0 meters long"
+// "A marathon is 42195.0 meters long" 을 인쇄합니다.
 ```
 
-> 익스텐션은 이미 존재하는 속성들에 계산 속성을 새로 추가할 수는 있지만, 저장 속성 (stored properties)이나 속성 옵져버 (property observers) 를 추가할 수는 없습니다.
+> '익스텐션' 은 기존 속성에 새로운 계산 속성을 추가할 수 있지만, '저장 속성' 이나, '속성 관찰자 (observers)'[^property-observers] 를 추가할 수는 없습니다.
 
 ### Initializers (초기자)
 
-익스텐션은 이미 존재하는 타입에 '초기자 (initializer)' 를 새로 추가할 수 있습니다. 이를 활용하면, 다른 타입을 확장해서 초기자의 매개 변수로 내가 만든 타입도 넘겨줄 수 있으며, 원래 타입의 구현에는 없던 새로운 초기자 옵션을 제공하는 것도 가능해집니다.
+'익스텐션' 은 기존 타입에 새로운 '초기자' 를 추가할 수 있습니다. 이는 초기자 매개 변수로 자신이 만든 사용자 정의 타입을 받도록 하거나, 타입의 원본 구현에 포함되지 않은 추가적인 초기화 옵션을 제공하기 위해 다른 타입을 확장할 수 있게 해줍니다.
 
-익스텐션은 클래스에 편의 초기자 (convenience initializers)를 새로 추가할 수는 있지만, '지명 초기자 (designated initializers)' 나 '정리자 (deinitializers)' 를 추가할 수는 없습니다. '지명 초기자' 나 '정리자' 는 반드시 본래의 클래스 구현에서 제공해야만 합니다.
+'익스텐션' 은 클래스에 새로운 '편의 (convenience) 초기자' 추가할 순 있지만, 클래스에 새로운 '지명 (designated) 초기자' 나 '정리자 (deinitializers)' 를 추가할 순 없습니다. '지명 초기자' 나 '정리자' 는 반드시 항상 원본 클래스 구현에서 제공해야 합니다.
 
 익스텐션을 사용해서 값 타입에 초기자를 추가하는 경우 중에서, 해당 값 타입이 모든 저장 속성에 '기본 값' 을 제공하면서도 초기자가 정의된 것이 하나도 없는 경우, 익스텐션 내의 초기자에서 '기본 설정 초기자 (default initializer)' 와 '멤버 초기자 (memberwise initializer)' 를 호출할 수 있습니다. 값 타입의 원래 구현에 초기자가 하나라도 있는 경우에는 해당하지 않으며, 이는 [Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자의-위임) 에 설명되어 있습니다.
 
@@ -142,7 +142,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 > 익스텐션으로 새 초기자를 제공하는 경우에도, 초기자가 완료되는 시점에 각 인스턴스가 온전히 초기화되도록 하는 것은 여전히 여러분 몫입니다.
 
-### Methods
+### Methods (메소드)
 
 익스텐션으로 기존 타입에 새로운 인스턴스 메소드 (instance methods) 와 타입 메소드 (type methods) 를 추가할 수 있습니다. 아래 예제는 `Int` 타입에 새로 `repetitions` (반복) 이라는 인스턴스 메소드를 추가하고 있습니다:
 
@@ -250,7 +250,7 @@ extension Int {
 
 이 예제는 새로운 '중첩 열거체 (nested enumberations)' 를 `Int` 에 추가합니다. 이 열거체는 `Kind` 라고 하는데 정수가 나타내는 수의 종류를 표시합니다. 특히 이 수가 음수인지, 0 인지, 양수인지를 표시합니다.
 
-이 예제는 또 `Int` 에 `kind` 라는 새로운 '계산 인스턴스 속성'을 추가해서, 이 정수에 맞는 적당한 `Kind` 열거체의 사례 값[^case]을 반환합니다.
+이 예제는 또 `Int` 에 `kind` 라는 새로운 '계산 인스턴스 속성'을 추가해서, 이 정수에 맞는 적당한 `Kind` 열거체의 'case 값' 을 반환합니다.
 
 이제 이 '중첩 열거체' 는 모든 `Int` 값에서 사용할 수 있습니다:
 
@@ -291,4 +291,4 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^literal]: '글자 값 (leteral)' 은 '글자 자체의 의미를 가진 값' 정도로 이해할 수 있습니다. 예를 들어, 코드에서 `0` 을 입력할 때 실제로는 문자 '0' 이지만, `let a = 0` 이라고 하면, 컴파일러가 이 `0` 을 '0' 이라는 정수로 이해합니다. 이런 상황에서의 `0` 을 정수 '글자 값 (literal)' 이라고 합니다.
 
-[^case]: `case` 에 적당한 말을 아직 못 찾았습니다. 임시로 '사례 값'으로 옮깁니다.
+[^property-observers]: '속성 관찰자 (property observers)' 자체가 원래 '저장 속성' 에만 추가할 수 있는 것으로, '계산 속성' 의 경우, 속성을 바꾸는 시점을 직접 알 수 있기 때문에 '속성 관찰자' 가 필요 없습니다. '속성 관찰자' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
