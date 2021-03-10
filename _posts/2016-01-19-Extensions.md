@@ -93,11 +93,11 @@ print("A marathon is \(aMarathon) meters long")
 
 '익스텐션' 은 클래스에 새로운 '편의 (convenience) 초기자' 추가할 순 있지만, 클래스에 새로운 '지명 (designated) 초기자' 나 '정리자 (deinitializers)' 를 추가할 순 없습니다. '지명 초기자' 나 '정리자' 는 반드시 항상 원본 클래스 구현에서 제공해야 합니다.
 
-익스텐션을 사용해서 값 타입에 초기자를 추가하는 경우 중에서, 해당 값 타입이 모든 저장 속성에 '기본 값' 을 제공하면서도 초기자가 정의된 것이 하나도 없는 경우, 익스텐션 내의 초기자에서 '기본 설정 초기자 (default initializer)' 와 '멤버 초기자 (memberwise initializer)' 를 호출할 수 있습니다. 값 타입의 원래 구현에 초기자가 하나라도 있는 경우에는 해당하지 않으며, 이는 [Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자의-위임) 에 설명되어 있습니다.
+모든 저장 속성에 '기본 값' 을 제공하면서 어떤 초기자도 직접 정의하지 않는 값 타입에 '초기자' 추가하기 위해 '익스텐션' 을 사용하는 경우, '익스텐션' 의 초기자 내에서 해당 값 타입을 위한 '기본 (default) 초기자' 와 '멤버 (memberwise) 초기자' 를 호출할 수 있습니다. 이는, [Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자의-위임) 에서 설명한 것처럼, 값 타입의 원본 구현에서 초기자를 작성한 경우에는 해당하지 않습니다.
 
-익스텐션을 사용해서 다른 모듈에서 선언한 구조체에 초기자를 추가할 경우, 이 새 초기자 내에서 `self` 에 접근하려면 모듈에서 정의된 초기자 중 하나를 먼저 호출해야만 합니다.
+다른 모듈에서 선언한 구조체에 초기자를 추가하려고 '익스텐션' 을 사용한 경우, 새로운 초기자는 정의한 모듈에 있는 초기자를 호출하기 전까지 `self` 에 접근할 수 없습니다.[^access-self]
 
-아래는 기하학적인 사각형을 표현하는 `Rect` 구조체를 정의하는 예제입니다. 이 예제는 `Size` 와 `Point` 라는 두 개의 구조체도 정의하는데, 둘 다 모든 속성의 기본 값이 `0.0` 입니다:
+아래 예제는 기하학적 사각형을 표현하는 `Rect` 구조체를 정의합니다. 이 예제는 `Size` 와 `Point` 라는, 둘 다 모든 속성에 `0.0` 이라는 '기본 값' 을 제공하는, 두 '지원용 구조체' 도 정의합니다:
 
 ```swift
 struct Size {
@@ -114,14 +114,14 @@ struct Rect {
 }
 ```
 
-`Rect` 구조체는 모든 속성에 기본 값을 제공하고 있으므로, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에 설명한 것처럼, 자동으로 '기본 설정 초기자'와 '멤버 초기자'를 가지게 됩니다. 이 초기자로 새 `Rect` 인스턴스를 만들 수 있습니다:
+`Rect` 구조체는 모든 속성에 기본 값을 제공하기 때문에, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, '기본 초기자' 와 '멤버 초기자' 를 자동으로 부여 받습니다. 이 초기자를 사용하여 새로운 `Rect` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let defaultRect = Rect()
 let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
 ```
 
-`Rect` 구조체를 확장하여 특정 중심점과 크기를 가지는 초기자를 추가로 제공할 수도 있습니다.
+`Rect` 구조체는 특정 중심점과 크기를 취하는 추가적인 초기자를 제공하도록 확장할 수 있습니다.
 
 ```swift
 extension Rect {
@@ -133,14 +133,14 @@ extension Rect {
 }
 ```
 
-이 새 초기자는 먼저 주어진 `center` (중심점) 과 `size` (크기) 값을 바탕으로 적절한 원점을 계산합니다. 그 다음으로 구조체가 자동으로 가지는 멤버 초기자인 `init(origin:size:)` 를 호출하여, 적절한 속성에 새 원점과 크기 값을 저장하도록 시킵니다.
+이 새로운 초기자는 제공한 `center` 점과 `size` 값을 기초로 적절한 원점을 계산하는 것으로 시작합니다. 그런 다음 초기자는, 적절한 속성으로 새로운 원점과 크기 값을 저장한, `init(origin:size:)` 라는 구조체의 '자동 멤버 초기자'[^automatic-memberwise-initializer] 를 호출합니다.
 
 ```swift
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
 // centerRect 의 원점은 (2.5, 2.5) 이고, 크기는 (3.0, 3.0) 입니다.
 ```
 
-> 익스텐션으로 새 초기자를 제공하는 경우에도, 초기자가 완료되는 시점에 각 인스턴스가 온전히 초기화되도록 하는 것은 여전히 여러분 몫입니다.
+> '익스텐션' 으로 새로운 초기자를 제공하는 경우라도, 일단 한 번 초기자를 완료하면 각 해당 인스턴스를 확실하게 온전히 초기화할 책임이 여전히 있습니다.
 
 ### Methods (메소드)
 
@@ -292,3 +292,7 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 [^literal]: '글자 값 (leteral)' 은 '글자 자체의 의미를 가진 값' 정도로 이해할 수 있습니다. 예를 들어, 코드에서 `0` 을 입력할 때 실제로는 문자 '0' 이지만, `let a = 0` 이라고 하면, 컴파일러가 이 `0` 을 '0' 이라는 정수로 이해합니다. 이런 상황에서의 `0` 을 정수 '글자 값 (literal)' 이라고 합니다.
 
 [^property-observers]: '속성 관찰자 (property observers)' 자체가 원래 '저장 속성' 에만 추가할 수 있는 것으로, '계산 속성' 의 경우, 속성을 바꾸는 시점을 직접 알 수 있기 때문에 '속성 관찰자' 가 필요 없습니다. '속성 관찰자' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
+
+[^access-self]: 이는, `self` 에 접근하기 위해선, 접근하려는 인스턴스의 메모리가 온전하게 초기화되어 있어야 하기 때문입니다. 클래스와 구조체라는 약간의 차이는 있지만, 스위프트는 '2-단계 초기화' 를 하며, `self` 에 대한 접근은 '1-단계 초기화' 가 완료된 시점부터 가능합니다. 본문에 있는 다른 '지명 초기자' 를 호출 완료한 시점이 '1-단계 초기화' 가 완료된 시점에 해당합니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 부분을 참고하기 바랍니다.
+
+[^automatic-memberwise-initializer]: '자동 멤버 초기자 (autumatic memberwise initializer)' 라는 이름은 이 '멤버 초기자' 가 명시적인 구현없이, 스위프트의 컴파일러에 의해 자동으로 제공되기 때문에 붙은 이름입니다.
