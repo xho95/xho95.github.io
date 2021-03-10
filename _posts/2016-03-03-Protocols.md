@@ -414,7 +414,7 @@ game.play()
 // The game lasted for 4 turns / 이 게임은 4턴 동안 지속됐습니다.
 ```
 
-### Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)
+### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
 
 기존 타입을 확장해서 새로운 프로토콜을 채택하고 준수하도록 만들 수 있으며, 이 때 기존 타입에 대한 소스 코드에 접근할 수 없는 경우라도 상관없습니다. '익스텐션 (extensions; 확장)' 은 기존 타입에 새로운 속성, 메소드, 그리고 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구하는 어떤 필수 조건이라도 추가할 수 있습니다. '익스텐션' 에 대한 더 많은 내용은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 

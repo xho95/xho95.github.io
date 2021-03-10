@@ -870,7 +870,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다 (conform to a protocol)' 는 것과는 의미가 조금 다릅니다
 
-[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-확장으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
+[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
 
 [^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로, 스위프트에는 이런 `NSObject` 같은 클래스가 없다는 의미입니다.
 

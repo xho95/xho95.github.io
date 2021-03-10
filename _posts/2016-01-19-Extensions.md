@@ -31,23 +31,23 @@ _익스텐션 (extensions; 확장)_ [^extension] 은 기존의 클래스, 구조
 
 ```swift
 extension SomeType {
-  // 여기서 SomeType 의 새로운 기능을 추가합니다.
+  // SomeType 에 추가할 새로운 기능을 여기에 둡니다.
 }
 ```
 
-익스텐션으로 기존 타입을 확장하여 하나 이상의 프로토콜을 채택 (adopt) 하도록 만들 수 있습니다. '프로토콜 준수성 (protocol conformance)' 을 추가하려면, (상속할 때) 클래스나 구조체의 이름을 작성하는 것과 같은 방법으로 프로토콜 이름을 작성하면 됩니다:
+'익스텐션' 은 기존 타입이 하나 이상의 프로토콜을 '채택 (adopt)' 하게끔 확장할 수 있습니다. 프로토콜 '준수성 (conformance)' 을 추가하려면, 클래스나 구조체에 대해 작성하는 것과 같은 방식으로 프로토콜 이름을 작성합니다:
 
 ```swift
 extension SomeType: SomeProtocol, AnotherProtocol {
-  // 여기서 프로토콜의 '필수 조건 (requirements)' 을 구현합니다.
+  // 프로토콜의 '필수 조건' 을 여기에서 구현합니다.
 }
 ```
 
-이와 같은 방식으로 '프로토콜 준수성 (protocol conformance)' 을 추가하는 것은 [Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-확장으로-프로토콜-준수성-추가하기) 에서 설명합니다.
+이 같은 방식으로 '프로토콜 준수성' 을 추가하는 것은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
 
-'extension (확장)' 으로 이미 존재하는 일반화된 타입 (generic type) 도 확장할 수 있으며, 이는 [Extending a Generic Type (일반화된 (generic) 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화된-generic-타입-확장하기) 에서 설명합니다. 일반화된 타입을 확장할 때 조건부로 기능을 추가할 수도 있는데, 이는 [Extensions with a Generic Where Clause (일반화된 (generic) 'where' 절을 가진 익스텐션 (extensions))]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화된-generic-where-절을-가진-익스텐션-extensions) 에서 설명하도록 합니다.
+'익스텐션' 은, [Extending a Generic Type (일반화된 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화된-타입-확장하기) 에서 설명한 것처럼, 기존 '일반화된 (generic) 타입' 을 확장하기 위해 사용할 수 있습니다. '일반화된 타입' 은, [Extensions with a Generic Where Clause (일반화된 'where' 절을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화된-where-절을-가진-익스텐션) 에서 설명한 것처럼, 조건에 따라 기능을 추가하기 위해 확장할 수도 있습니다.
 
-> 익스텐션을 정의해서 기존 타입에 새 기능을 추가하면, 이 기능은 해당하는 타입의 이미 존재하는 모든 인스턴스에서 사용할수 있으며, 익스텐션이 정의되기 전에 생성된 인스턴스도 예외가 아닙니다.
+> '익스텐션' 을 기존 타입에 새로운 기능을 추가하기 위해 정의한 경우, 새로운 기능은, '익스텐션' 을 정의하기 전에 생성된 경우이더라도, 해당 타입의 모든 기존 인스턴스에서 사용 가능할 것입니다.
 
 ### Computed properties (계산 속성)
 
