@@ -13,7 +13,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### Translator's words (옮긴이의 말)
 
-* 진행 상황: ![5.4](https://img.shields.io/badge/-%205.4-success) 2차 완료, ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow) 2차 수정 진행중, ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive) - 5.3 1차 완료
+* 진행 상황: ![5.4](https://img.shields.io/badge/-%205.4-success) 2차 완료, ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow) 2차 수정 진행중, ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive) - 5.4 1차 완료
 
 ### Welcome to Swift (스위프트 소개)
 
@@ -42,26 +42,26 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
-* [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
-* [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Generics (제네릭; 일반화)]({% post_url 2020-02-29-Generics %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Opaque Types (불투명한 타입)]({% post_url 2020-02-22-Opaque-Types %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
-* [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
-* [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
+* [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
+* [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
+* [Generics (제네릭; 일반화)]({% post_url 2020-02-29-Generics %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Opaque Types (불투명한 타입)]({% post_url 2020-02-22-Opaque-Types %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 
 ### Language Reference (언어의 기준)
 
-* [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
-* [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Types (타입)]({% post_url 2020-02-20-Types %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Statements (구문)]({% post_url 2020-08-20-Statements %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) ![5.3](https://img.shields.io/badge/-%205.3-success)
-* [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}) ![5.3 inactive](https://img.shields.io/badge/-%205.3-inactive)
+* [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Types (타입)]({% post_url 2020-02-20-Types %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Statements (구문)]({% post_url 2020-08-20-Statements %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 * [Summary of the Grammar (문법 총정리)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#) - 직접 링크 (번역 없음)
 
 ### Revision History (개정 이력)
