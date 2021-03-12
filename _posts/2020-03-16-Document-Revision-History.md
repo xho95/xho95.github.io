@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.3: Document Revision History (문서 개정 이력)"
+title:  "Swift 5.4: Document Revision History (문서 개정 이력)"
 date:   2020-03-16 10:00:00 +0900
 categories: Swift Language Grammar Revision History
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 부분[^Revision-History]을 번역하고, 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 부분[^Revision-History]을 번역하고, 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Document Revision History (문서 개정 이력)
 
@@ -105,7 +105,7 @@ categories: Swift Language Grammar Revision History
 #### 2017-03-27
 
 * 스위프트 3.1 에서 갱신한 것.
-* '필수 조건 (requirements)' 을 포함한 '익스텐션 (extensions)' 에 대한 정보가 있는 [Extensions with a Generic Where Clause (일반화된 (generic) 'where' 절을 가진 익스텐션 (extensions))]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화된-generic-where-절을-가진-익스텐션-extensions) 부분을 추가함.
+* '필수 조건 (requirements)' 을 포함한 '익스텐션 (extensions)' 에 대한 정보가 있는 [Extensions with a Generic Where Clause (일반화된 'where' 절을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화된-where-절을-가진-익스텐션) 부분을 추가함.
 * '범위 (range)' 에 동작을 반복시키는 것에 대한 예제를 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분에 추가함.
 * 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 부분에 추가함.
 * `available` 특성을 스위프트 언어 버전에 사용하는 것에 대하여 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 정보를 추가함.
@@ -309,7 +309,7 @@ categories: Swift Language Grammar Revision History
 * [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 의 예제는 이제, 새롭게 배열의 '값 의미 구조 (value semantics)' 을 반영하기 위해, '전역 `sort(_:_:)` 함수' 대신 '전역 `sorted(_:_:)` 함수' 를 사용함.
 * 구조체의 저장 속성이 기본 값을 가지고 있지 않은 경우라도 구조체의 '멤버 초기자 (memberwise initializer)' 가 사용 가능함을 분명히 밝히기 위해 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에 대한 정보를 갱신함.
 * [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 를 `..` 대신 `..<` 로 갱신함.
-* [Extending a Generic Type (일반화된 (generic) 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화된-generic-타입-확장하기) 에 대한 예제를 추가함.
+* [Extending a Generic Type (일반화된 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화된-타입-확장하기) 에 대한 예제를 추가함.
 
 ### 참고 자료
 

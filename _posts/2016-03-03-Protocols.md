@@ -1,36 +1,34 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.3: Protocols (프로토콜; 규약)"
+title:  "Swift 5.4: Protocols (프로토콜; 규약)"
 date:   2016-03-03 23:30:00 +0900
 categories: Swift Language Grammar Protocol
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.3)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols]을 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols]을 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Protocols (프로토콜; 규약)
 
-_프로토콜 (protocol)_[^protocol] 은 특정한 작업 또는 기능 (functionality) 에 적합하도록 메소드 필수 조건, 속성 필수 조건, 및 그 외 기타 '필수 조건 (requirements)' 들의 '설계 도면 (blueprint)'[^blueprint] 을 정의하는 것입니다. 그 다음 이 프로토콜은 해당 필수 조건의 실제 구현을 제공하는 클래스나, 구조체, 또는 열거체에 의해 _채택 (adopt)_ 됩니다. 프로토콜의 필수 조건을 만족하는 타입은 어떤 것이든 그 프로토콜을 _준수한다 (conform)_ 고 합니다.
+_프로토콜 (protocol)_[^protocol] 은 특별한 작업이나 기능 조각에 적합 하도록 메소드, 속성, 그리고 그 외 '필수 조건 (requirements)' 들의 '밑바탕 설계 (blueprint)'[^blueprint] 를 정의합니다. 그런 다음 해당 '필수 조건' 들의 실제 구현을 제공하도록 클래스, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 해당 프로토콜을 _준수한다 (conform)_ 라고 합니다.
 
-'준수하는 타입 (conforming type)' 이 반드시 구현해야 하는 필수 조건을 지정하는 것 외에도, 프로토콜을 확장하면 일부 필수 조건을 구현하거나 아니면 추가적인 기능을 구현해서 해당 준수 타입이 활용하도록 만들 수도 있습니다.
+'준수 타입 (conforming types)' 이 반드시 구현해야 하는 '필수 조건' 을 지정하는 것에 더하여, '필수 조건' 일부를 구현하거나 '준수 타입' 이 장점을 취할 수 있도록 추가적인 기능을 구현하기 위해 '프로토콜' 을 '확장' 할 수도 있습니다.
 
 ### Protocol Syntax (프로토콜 구문 표현)
 
-프로토콜은 클래스, 구조체, 그리고 열거체와 아주 비슷한 방법으로 정의합니다:
+프로토콜은 클래스, 구조체, 그리고 열거체와 아주 비슷한 방식으로 정의합니다:
 
 ```swift
 protocol SomeProtocol {
-  // 여기서 프로토콜을 정의합니다.
+  // 프로토콜 정의는 여기에 둡니다.
 }
 ```
 
-사용자 정의 타입이 특정한 프로토콜을 채택한다고 알리려면 해당 정의 부분에서, 타입 이름 뒤에, 콜론으로 구분한 다음, 프로토콜 이름을 붙이면 됩니다. 여러 개의 프로토콜을 나열 할 수 있으며, 이 때는 쉼표로 구분합니다:
+사용자 정의 타입은, 자신의 정의에서, 프로토콜의 이름을 타입 이름 뒤에, 콜론으로 구분하여, 붙임으로써 특별한 프로토콜을 '채택' 한다고 알립니다. 쉼표로 구분하여, 여러 개의 프로토콜을 나열 할 수 있습니다:
 
 ```swift
 struct SomeStructure: FirstProtocol, AnotherProtocol {
-  // 여기서 구조체를 정의합니다.
+  // 구조체 정의는 여기에 둡니다.
 }
 ```
 
@@ -38,7 +36,7 @@ struct SomeStructure: FirstProtocol, AnotherProtocol {
 
 ```swift
 class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
-  // 여기서 클래스를 정의합니다.
+  // 클래스 정의는 여기에 둡니다.
 }
 ```
 
@@ -414,7 +412,7 @@ game.play()
 // The game lasted for 4 turns / 이 게임은 4턴 동안 지속됐습니다.
 ```
 
-### Adding Protocol Conformance with an Extension (확장으로 프로토콜 준수성 추가하기)
+### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
 
 기존 타입을 확장해서 새로운 프로토콜을 채택하고 준수하도록 만들 수 있으며, 이 때 기존 타입에 대한 소스 코드에 접근할 수 없는 경우라도 상관없습니다. '익스텐션 (extensions; 확장)' 은 기존 타입에 새로운 속성, 메소드, 그리고 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구하는 어떤 필수 조건이라도 추가할 수 있습니다. '익스텐션' 에 대한 더 많은 내용은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 
@@ -979,9 +977,9 @@ print(differentNumbers.allEqual())
 
 [^Protocols]: 원문은 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 에서 확인할 수 있습니다.
 
-[^protocol]: `protocol` 은 '규약' 이라는 뜻을 갖고 있지만, 스위프트 언어에서는 '키워드 (keyword)' 로도 사용되므로, `class` 를 '클래스'라로 하듯이, 앞으로 '프로토콜' 이라고 옮기겠습니다. 다만 필요한 경우에는 '규약' 이라는 의미를 살려서 번역하도록 하겠습니다.
+[^protocol]: '프로토콜 (protocol)' 은 '규약' 이라는 뜻을 가지고 있지만, 스위프트에서는 `protocol` 이라는 '키워드 (keyword)' 로도 사용됩니다. 그러므로, '익스텐션 (extension)' 이나 '클로저 (closure)' 처럼 '키워드' 로 사용될 때는 '프로토콜' 이라고 하고, 의미로 사용될 때는 '규약' 이라고 옮기도록 합니다.
 
-[^blueprint]: blueprint는 '청사진'이라는 뜻을 갖고 있는데, 이는 과거에 제품 '설계 도면' 을 복사하던 방법이 파란색을 띄었기 때문입니다. Xcode 아이콘을 보시면 항상 망치 밑에 파란색 종이가 깔려 있는 것을 볼 수 있는데, 이것이 바로 '청사진 (blueprint)' 입니다. 여기서는 제품을 제작하기 위해 필요한 밑그림의 의미로 '설계 도면' 이라고 옮기도록 하겠습니다.
+[^blueprint]: '밑바탕 설계 (blueprint)' 는 보통 '청사진' 이라고 번역되는데, 제품의 '설계 도면' 을 복사하던 과거의 방식이 파란색을 띄었기 때문입니다. '엑스코드 (Xcode)' 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 것을 볼 수 있는데, 이 파란색 종이가 바로 '청사진 (blueprint)' 입니다. 여기서는 제품 제작의 '밑바탕' 이 되는 '설계' 라는 의미로 '밑바탕 설계' 라고 옮기도록 합니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
 
 [^optional]: 여기서 'optional' 을 '선택적인' 이라고 옮겼는데, 키워드의 의미로 '옵셔널' 로 옮기고 이해해도 상관은 없습니다. 이렇게 값이 있을 수도 있고 없을 수도 있는 '선택적인' 값을 나타내기 위해 '옵셔널' 을 만든 것이라 둘 다 무방한 경우입니다.
 
