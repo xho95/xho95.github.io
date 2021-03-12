@@ -144,7 +144,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 ### Methods (메소드)
 
-익스텐션으로 기존 타입에 새로운 인스턴스 메소드 (instance methods) 와 타입 메소드 (type methods) 를 추가할 수 있습니다. 아래 예제는 `Int` 타입에 새로 `repetitions` (반복) 이라는 인스턴스 메소드를 추가하고 있습니다:
+'익스텐션' 은 기존 타입에 새로운 '인스턴스 메소드' 와 '타입 메소드' 를 추가할 수 있습니다. 다음 예제는 `Int` 타입에 `repetitions` 이라는 새로운 인스턴스 메소드를 추가합니다:
 
 ```swift
 extension Int {
@@ -156,9 +156,9 @@ extension Int {
 }
 ```
 
-`repetitions(task:)` 메소드는 인자로 `() -> Void` 타입의 값 하나만을 가지는데, 이는 매개 변수도 없고 반환 값도 없는 함수를 의미합니다.
+`repetitions(task:)` 메소드는, 매개 변수가 없고 값을 반환하지 않는 함수임을 지시하는, `() -> Void` 타입의 단일 인자를 취합니다.
 
-이 익스텐션 (확장) 을 정의한 후에는 어떤 정수 값에서도 `repetitions(task:)` 메소드를 호출할 수 있어서 여러 번의 임무를 반복 수행할 수 있습니다.
+이 '익스텐션' 을 정의한 후에는, 해당 수만큼 많은 횟수의 작업을 수행하기 위해 어떤 정수에 대해서든 `repetitions(task:)` 메소드를 호출할 수 있습니다:
 
 ```swift
 3.repetitions {
