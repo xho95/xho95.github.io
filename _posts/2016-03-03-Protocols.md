@@ -24,7 +24,7 @@ protocol SomeProtocol {
 }
 ```
 
-사용자 정의 타입은, 자신의 정의에서, 프로토콜의 이름을 타입 이름 뒤에, 콜론으로 구분하여, 붙임으로써 특별한 프로토콜을 '채택' 한다고 알립니다. 쉼표로 구분하여, 여러 개의 프로토콜을 나열 할 수 있습니다:
+사용자 정의 타입은, 정의에서, 타입 이름 뒤에, 콜론으로 구분하여, 프로토콜 이름을 붙임으로써 특별한 프로토콜을 '채택' 한다고 알립니다. 여러 개의 프로토콜은, 쉼표로 구분하여, 나열 할 수 있습니다:
 
 ```swift
 struct SomeStructure: FirstProtocol, AnotherProtocol {
@@ -32,7 +32,7 @@ struct SomeStructure: FirstProtocol, AnotherProtocol {
 }
 ```
 
-클래스가 상위 클래스를 가지고 있는 경우, 상위 클래스를 맨 앞에 나열하며, 프로토콜은 쉼표 이후 채택하도록 합니다:
+클래스가 상위 클래스를 가지고 있으면, 쉼표 뒤에, 상위 클래스 이름을 채택한 프로토콜 어떤 것들보다 앞서 나열합니다:
 
 ```swift
 class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
