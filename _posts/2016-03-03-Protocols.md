@@ -71,7 +71,7 @@ protocol FullyNamed {
 }
 ```
 
-`FullyNamed` 프로토콜은 '준수 타입' 이 온전히 '규명된 (qualified)'[^qualified] 이름을 필수로 제공하도록 요구합니다. 프로토콜은 '준수 타입' 의 본성에 대하여 어떤 다른 것도 지정하지 않습니다-반드시 타입은 스스로 '온전한 전체 이름' 을 제공할 수 있어야 한다는 것만을 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입이든 반드시, `String` 타입인, `fullName` 이라는 '획득 가능한 인스턴스 속성' 을 가져야 함을 알립니다.
+`FullyNamed` 프로토콜은 '준수 타입' 이 온전히 '규명된 (qualified)'[^qualified] 이름을 필수로 제공하도록 요구합니다. 프로토콜은 '준수 타입' 의 본성에 대하여 어떤 다른 것도 지정하지 않습니다-반드시 타입은 스스로 '온전한 전체 이름' 을 제공할 수 있어야 한다는 것만을 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입이든 반드시, `fullName` 이라는, `String` 타입의, '획득 가능한 인스턴스 속성' 을 가져야 함을 알립니다.
 
 다음은 `FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체 예제입니다:
 
@@ -83,11 +83,11 @@ let john = Person(fullName: "John Appleseed")
 // john.fullName 은 "John Appleseed" 입니다.
 ```
 
-이 예제는, 특정한 이름의 사람을 표현하는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫 번째 줄에서 `FullyNamed` 프로토콜을 채택함을 알립니다.
+이 예제는, 특정한 이름의 사람을 표현하는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫 번째 줄에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
 
-`Person` 의 각 인스턴스는, 타입이 `String` 인, `fullName` 이라는 단일한 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일한 필수 조건과 들어 맞으며, `Person` 이 프로토콜을 올바르게 준수하고 있음을 의미하게 됩니다. (스위프트는 프로토콜의 필수 조건이 충족되지 않으면 컴파일-시간 에러를 보고합니다.)
+`Person` 의 각 인스턴스는, `fullName` 이라는, `String` 타입의, 단일 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일 '필수 조건' 과도 일치하며, `Person` 이 프로토콜을 올바르게 준수하고 있음을 의미합니다. (프로토콜 '필수 조건' 을 충족하지 않으면 스위프트가 컴파일 시간에 에러를 보고합니다.)
 
-다음은, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 좀 더 복잡한 클래스입니다:
+다음도, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스입니다:
 
 ```swift
 class Starship: FullyNamed {
@@ -105,7 +105,7 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 // ncc1701.fullName 은 "USS Enterprise" 입니다.
 ```
 
-이 클래스는 `fullName` 속성 필수 조건을 우주선에 대한 읽기-전용 계산 속성으로 구현합니다. 각 `Starship` 클래스 인스턴스는 의무적인 `name` 과 선택적인[^optional] `prefix` 를 저장합니다. `fullName` 속성은 `prefix` 값이 있다면 이것도, `name` 앞에 추가하여 우주선에 대한 전체 이름을 생성합니다.
+이 클래스는 '`fullName` 속성 필수 조건' 을 '우주선 (starship)' 을 위한 '읽기-전용 계산 속성' 으로 구현합니다. 각 `Starship` 클래스 인스턴스는 '의무적인 `name`' 과 '선택 사항인 `prefix`'[^optional] 를 저장합니다. `fullName` 속성은 `prefix` 값이 존재하면, 우주선을 위한 '온전한 전체 이름' 을 생성하기 위해 `name` 의 맨 앞에 붙입니다.
 
 ### Method Requirements (메소드 필수 조건)
 
@@ -985,7 +985,7 @@ print(differentNumbers.allEqual())
 
 [^qualified]: 영어에서의 '규명되다 (qualified)' 는 어떤 심사를 통과할 '자격을 갖췄다' 는 의미입니다. '온전히 규명된 이름' 은, 사람이라면 직급이나 소속까지 포함한 이름을 말합니다. [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)]({% post_url 2017-03-03-Nested-Types %}#referring-to-nested-types-중첩-타입-참조하기) 부분을 보면, 스위프트의 '중첩 타입' 의 경우 자신이 소속된 곳을 알고 있을 때 '규명된다' 는 것을 알 수 있습니다.
 
-[^optional]: 여기서 'optional' 을 '선택적인' 이라고 옮겼는데, 키워드의 의미로 '옵셔널' 로 옮기고 이해해도 상관은 없습니다. 이렇게 값이 있을 수도 있고 없을 수도 있는 '선택적인' 값을 나타내기 위해 '옵셔널' 을 만든 것이라 둘 다 무방한 경우입니다.
+[^optional]: 우주선에 '이름' 은 반드시 있어야 하지만 '경칭 (prefix)' 은 '선택 사항' 이므로, '옵셔널 타입' 으로 구현하고 있습니다.
 
 [^linear-congruential-generator]: '선형 합동 생성기' 는 널리 알려진 '유사난수 생성기' 라고 합니다. 다만 선형 합동 생성기는 인자와 마지막으로 생성된 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 난수 생성기는 아니라고합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
 
