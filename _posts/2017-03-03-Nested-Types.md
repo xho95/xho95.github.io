@@ -95,7 +95,7 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 // heartsSymbol 은 "♡" 입니다.
 ```
 
-위 예제를 보면, `Suit`, `Rank`, 그리고 `Values` 의 이름은 자신이 정의된 상황에 의해 자연스럽게 '규명되기 (qualified)'[^qualified] 때문에, 이는 이름을 의도적으로 짧게 유지할 수 있도록 해줍니다.
+위 예제를 보면, `Suit`, `Rank`, 그리고 `Values` 의 이름은 자신을 정의한 상황에 의해서 자연스럽게 '규명되기 (qualified)'[^qualified] 때문에, 의도적으로 이름을 짧게 유지할 수 있습니다.
 
 ### 다음 장
 
