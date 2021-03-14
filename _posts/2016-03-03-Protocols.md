@@ -109,9 +109,9 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 
 ### Method Requirements (메소드 필수 조건)
 
-프로토콜은 지정한 인스턴스 메소드와 타입 메소드를 준수 타입이 필수로 구현하도록 요구할 수 있습니다. 이러한 메소드를 프로토콜 정의 부분에 작성하는 방법은 일반적인 인스턴스 및 타입 메소드와 정확하게 똑같지만, 중괄호 또는 메소드 본문이 없습니다. 가변 매개 변수도, 일반직인 메소드에서와 같은 규칙을 따른다는 전제하에, 허용합니다. 메소드 매개 변수에 기본 값을 지정하는 것은, 하지만, 프로토콜 정의 내에서 할 수 없습니다.
+프로토콜은 '준수 타입' 이 특정한 '인스턴스 메소드' 와 '타입 메소드' 를 필수로 구현하도록 요구할 수 있습니다. 이 메소드들을 프로토콜 정의에 작성하는 방식은 보통의 인스턴스 및 타입 메소드 에서와 정확하게 똑같지만, 중괄호나 메소드 본문은 없습니다. 보통의 메소드 에서와 똑같은 규칙이라는 전제에 따라, '가변 매개 변수' 를 허용합니다. 하지만, 프로토콜 정의 내에서 메소드 매개 변수에 '기본 값' 을 지정할 수는 없습니다.
 
-타입 속성 필수 조건에서와 같이, 타입 메소드 필수 조건을 프로토콜에서 정의할 때는 `static` 키워드를 항상 접두사로 붙여야 합니다. 이는 타입 메소드 필수 조건을 클래스가 `static` 이나 `class` 를 써서 구현하게 되더라도 마찬가지입니다.
+'타입 속성 필수 조건' 에서 처럼, 프로토콜에서 '타입 메소드 필수 조건' 을 정의할 때는 항상 `static` 키워드로 접두사를 붙여야 합니다. 이는 '타입 메소드 필수 조건' 을 클래스가 구현할 때 `static` 이나 `class` 접두사를 붙이게 될지라도 그렇습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -119,7 +119,7 @@ protocol SomeProtocol {
 }
 ```
 
-다음 예제는 단일한 인스턴스 메소드 필수 조건을 가진 프로토콜을 정의합니다:
+다음 예제는 단일 '인스턴스 메소드 필수 조건' 을 가진 프로토콜을 정의합니다:
 
 ```swift
 protocol RandomNumberGenerator {
@@ -127,7 +127,7 @@ protocol RandomNumberGenerator {
 }
 ```
 
-이 프로토콜인, `RandomNumberGenerator` 는, 어떤 준수 타입이라도, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 인스턴스 메소드를 필수로 가질 것을 요구합니다. 비록 프로토콜 부분에서 지정되지 않았더라도, 이 값은 `0.0` 에서 (포함은 안되지만) `1.0` 에 이르는 수라고 가정합니다.
+이, '`RandomNumberGenerator` 프로토콜' 은, 어떤 준수 타입이라도, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 인스턴스 메소드를 필수로 가질 것을 요구합니다. 비록 프로토콜 부분에서 지정되지 않았더라도, 이 값은 `0.0` 에서 (포함은 안되지만) `1.0` 에 이르는 수라고 가정합니다.
 
 `RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 를 생성하는 방법에 대해서는 어떤 가정도 하지 않습니다-단순히 '생성기 (generator)' 가 새로운 난수를 생성하는 표준적인 방법을 필수로 제공하도록 요구할 뿐입니다.
 
@@ -147,9 +147,9 @@ class LinearCongruentialGenerator: RandomNumberGenerator {
 }
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101" 를 출력합니다.
+// "Here's a random number: 0.3746499199817101" 를 인쇄합니다.
 print("And another one: \(generator.random())")
-// "And another one: 0.729023776863283" 를 출력합니다.
+// "And another one: 0.729023776863283" 를 인쇄합니다.
 ```
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
