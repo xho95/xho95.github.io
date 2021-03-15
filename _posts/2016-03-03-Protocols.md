@@ -129,9 +129,9 @@ protocol RandomNumberGenerator {
 
 이, '`RandomNumberGenerator` 프로토콜' 은, 어떤 '준수 타입' 이든 필수로, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 '인스턴스 메소드' 를 가질 것을 요구합니다. 비록 프로토콜에서 지정하진 않았어도, 이 값은 `0.0` 에서 `1.0` 에 이르는 ('1.0' 을 직접 포함하진 않는) 수라고 가정합니다.[^random]
 
-`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 발생 방법에 대해서는 어떤 가정도 하지 않습니다-이는 단순히 '발생기 (generator)' 가 필수로 새로운 난수를 발생하는 표준 방식을 제공하도록 요구합니다.
+`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 생생 방법에 대해서는 어떤 가정도 하지 않습니다-이는 '생생기 (generator)' 가 새로운 난수를 생생하는 표준 방식을 필수로 제공하도록 단순히 요구할 뿐입니다.
 
-다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스의 구현입니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사 난수 (pseudorandom number) 생성 알고리즘' 을 구현합니다:
+다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스의 구현입니다. 이 클래스는 _선형 합동 생생기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사 난수 (pseudorandom number) 생성 알고리즘' 을 구현합니다:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
@@ -154,15 +154,15 @@ print("And another one: \(generator.random())")
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
 
-때때로 메소드는 자신이 속해 있는 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드에서 `mutating` 키워드를 메소드의 `func` 키워드 앞에 붙이면 이 메소드가 자신이 속한 인스턴스 및 해당 인스턴스의 모든 속성을 수정할 수 있음을 지시하는 것입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 에서 설명했습니다.
+때때로 메소드는 자신이 속한 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드는 자신이 속한 인스턴스와 해당 인스턴스의 어떤 속성이든 메소드가 수정할 수 있음을 지시하고자 메소드의 `func` 키워드 앞에 `mutating` 키워드를 붙입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 에서 설명합니다.
 
-프로토콜을 채택하는 어떤 타입에 대해서든 인스턴스를 변경하려는 의도를 가진 '프로토콜 인스턴스 메소드 필수 조건 (protocol instance method requirements)' 을 정의하는 경우, 프로토콜을 정의할 때 이 메소드에 `mutating` 키워드를 표시하도록 합니다. 이는 구조체와 열거체가 이 프로토콜을 채택하고 해당 메소드 필수 조건을 만족할 수 있게 해줍니다.
+프로토콜을 채택한 어떤 타입의 인스턴스든 변경하려는 의도인 '프로토콜 인스턴스 메소드 필수 조건' 을 정의하는 경우, 프로토콜의 정의에서 메소드를 `mutating` 키워드로 표시합니다. 이는 구조체와 열거체가 프로토콜을 채택해서 해당 '메소드 필수 조건' 을 만족할 수 있게 해줍니다.
 
-> 프로토콜 인스턴스 메소드 필수 조건을 `mutating` 으로 표시한 경우, 해당 메소드의 구현을 클래스에서 작성할 때 `mutating` 키워드를 붙일 필요가 없습니다. `mutating` 키워드는 구조체와 열거체에서만 사용되는 것입니다.
+> '프로토콜 인스턴스 메소드 필수 조건' 을 `mutating` 으로 표시한 경우, 해당 메소드 구현을 클래스에서 작성할 때 `mutating` 키워드를 작성할 필요가 없습니다. `mutating` 키워드는 구조체와 열거체에서만 사용합니다.
 
-아래 예제는, `toggle` 이라는 단일한 인스턴스 메소드 필수 조건을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름으로 알 수 있듯이, `toggle()` 메소드는 어떤 준수 타입이든, 해당 타입의 속성을 수정하는 것으로써, 타입의 상태를 전환하거나 반전합니다.
+아래 예제는, `toggle` 이라는 단일 '인스턴스 메소드 필수 조건' 을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름이 연상하는 것처럼, `toggle()` 메소드는, 전형적으로, 어떤 '준수 타입' 의 상태를, 해당 타입의 속성을 수정함으로써, '전환 (toggle)' 하거나 '반전 (invert)' 하려는 의도입니다.
 
-`toggle()` 메소드는, 이 메소드를 호출할 때 준수 인스턴스의 상태를 변경하기를 지시하고자, `Togglable` 프로토콜 정의 부분에서 `mutating` 키워드로 표시했습니다:
+`toggle()` 메소드는, 메소드를 호출할 때 '준수 인스턴스' 의 상태를 변경할 것이라 예상된다는 것을 지시하고자, `Togglable` 프로토콜 정의 시에 `mutating` 키워드로 표시합니다:
 
 ```swift
 protocol Togglable {
@@ -170,9 +170,9 @@ protocol Togglable {
 }
 ```
 
-`Togglable` 프로토콜을 구조체나 열거체에서 구현하는 경우, `mutating` 으로 표시된 `toggle()` 메소드 구현을 제공하면 해당 구조체나 열거체가 이 프로토콜을 준수할 수 있습니다.
+구조체나 열거체에서 `Togglable` 프로토콜을 구현하는 경우, 해당 구조체나 열거체는 역시 `mutating` 이라고 표시한 `toggle()` 메소드 구현을 제공함으로써 프로토콜을 준수할 수 있습니다.
 
-아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, 열거체의 case 값 `on` 과 `off` 로 나타내는, 두 상태 사이를 왔다갔다 합니다. 이 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 필수 조건에 들어 맞도록, `mutating` 으로 표시합니다:
+아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, `on` 과 `off` 라는 '열거체 case 값' 으로 나타내는, 두 상태 사이를 '전환 (toggle)' 합니다. 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 '필수 조건' 과 일치하도록, `mutating` 이라고 표시합니다:
 
 ```swift
 enum OnOffSwitch: Togglable {
