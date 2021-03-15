@@ -24,7 +24,7 @@ protocol SomeProtocol {
 }
 ```
 
-사용자 정의 타입은, 자신의 정의에서, 프로토콜의 이름을 타입 이름 뒤에, 콜론으로 구분하여, 붙임으로써 특별한 프로토콜을 '채택' 한다고 알립니다. 쉼표로 구분하여, 여러 개의 프로토콜을 나열 할 수 있습니다:
+사용자 정의 타입은, 정의에서, 타입 이름 뒤에, 콜론으로 구분하여, 프로토콜 이름을 붙임으로써 특별한 프로토콜을 '채택' 한다고 알립니다. 여러 개의 프로토콜은, 쉼표로 구분하여, 나열 할 수 있습니다:
 
 ```swift
 struct SomeStructure: FirstProtocol, AnotherProtocol {
@@ -32,7 +32,7 @@ struct SomeStructure: FirstProtocol, AnotherProtocol {
 }
 ```
 
-클래스가 상위 클래스를 가지고 있는 경우, 상위 클래스를 맨 앞에 나열하며, 프로토콜은 쉼표 이후 채택하도록 합니다:
+클래스가 상위 클래스를 가지고 있으면, 쉼표 뒤에, 상위 클래스 이름을 채택한 프로토콜 어떤 것들보다 앞서 나열합니다:
 
 ```swift
 class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
@@ -42,11 +42,11 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 
 ### Property Requirements (속성 필수 조건)
 
-프로토콜은 준수 타입이 특정 이름과 타입을 가진 인스턴스 속성 또는 타입 속성을 제공하도록 하는 필수 조건을 만들 수 있습니다. 프로토콜은 이 속성이 저장 속성인지 계산 속성인지는 지정하지 않습니다-필수적인 속성 이름과 타입만을 지정합니다. 프로토콜은 또 각 속성이 반드시 '획득 가능 (gettable)' 한지 아니면 반드시 '획득 가능 (gettable)' _하면서 (and)_ '설정 가능 (settable)' 하기도 해야 하는 지를 지정합니다.
+'프로토콜' 은 어떤 '준수 타입' 이 특별한 이름과 타입을 가진 인스턴스 속성이나 타입 속성을 필수로 제공하도록 요구할 수 있습니다. 프로토콜은 속성이 '저장 속성' 인지 '계산 속성' 인지는 지정하지 않습니다-필수인 속성 이름과 타입 만을 지정합니다. 프로토콜은 각각의 속성이 반드시 '획득 가능 (gettable)' 해야 하는지 아니면 반드시 '획득 가능 (gettable)' _하면서 (and)_ '설정 가능 (settable)' 해야 하는 지도 지정합니다.
 
-만약 프로토콜의 필수 조건이 속성은 획득 가능하면서 설정도 가능해야 한다는 것이라면, 해당 속성 필수 조건을 상수 저장 속성이나 읽기-전용 계산 속성으로 충족시킬 수 없습니다. 만약 프로토콜의 필수 조건이 속성은 획득 가능하기만 하면 된다는 것이라면, 이 필수 조건은 어떤 종류의 속성으로도 만족시킬 수 있으며, 심지어 코드에서 유용하다면 이 속성을 설정도 가능하게 만들어도 상관 없습니다.
+프로토콜이 획득 가능하면서 설정 가능한 속성을 요구하는 경우, 해당 '속성 필수 조건' 을 '상수 저장 속성' 이나 '읽기-전용 계산 속성' 으로 충족할 수는 없습니다. 프로토콜이 획득 가능한 속성만을 요구하는 경우, 어떤 종류의 속성이든 '필수 조건' 을 만족할 수 있으며, 설정 가능하기도 한 속성이 자신의 코드에 유용하다면 이것 역시 유효합니다.
 
-속성 필수 조건은 항상, `var` 키워드를 사용하여, 변수 속성으로 선언합니다. '획득 가능하면서 설정도 가능한 (gettable and settable)' 속성은 자신의 타입 선언 뒤에 `{ get set}` 을 써서 지시하며, '획득 가능한 (gettable)' 속성은 `{ get }` 을 써서 지시합니다.
+'속성 필수 조건' 은 항상, `var` 키워드를 접두사로 가진, 변수 속성으로 선언합니다. '획득 가능 하면서 설정도 가능한 속성' 은 타입 선언 뒤에 `{ get set }` 을 작성하여 지시하며, '획득 가능한 속성' 은 `{ get }` 을 작성하여 지시합니다.
 
 ```swift
 protocol SomeProtocol {
@@ -55,7 +55,7 @@ protocol SomeProtocol {
 }
 ```
 
-프로토콜 내에서 '타입 속성 필수 조건 (type property requirements)' 을 정의할 때는 `static` 키워드를 접두사로 항상 붙입니다. 이 규칙은 타입 속성 필수 조건을 클래스에서 구현할 때는 `class` 나 `static` 접두사가 붙게되더라도 상관없이 적용되는 것입니다:
+'타입 속성 필수 조건' 을 프로토콜에서 정의할 땐 항상 `static` 키워드를 접두사로 붙입니다. 이 규칙은 '타입 속성 필수 조건' 을 클래스가 구현할 때 `class` 나 `static` 키워드를 접두사로 붙일 수 있을지라도 따라다닙니다[^type-property-requirements]:
 
 ```swift
 protocol AnotherProtocol {
@@ -63,7 +63,7 @@ protocol AnotherProtocol {
 }
 ```
 
-다음 예제의 프로토콜은 단일한 인스턴스 속성 필수 조건을 가지고 있습니다:
+다음은 단일 '인스턴스 속성 필수 조건' 을 가진 '프로토콜' 예제입니다:
 
 ```swift
 protocol FullyNamed {
@@ -71,9 +71,9 @@ protocol FullyNamed {
 }
 ```
 
-`FullyNamed` 프로토콜은 준수 타입이 조건에 맞는 전체 이름을 제공하기를 필수로 요구합니다. 이 프로토콜은 준수 타입의 본질에 대하여 어떤 다른 것도 지정하지 않습니다-오직 타입이 반드시 스스로 전체 이름을 제공할 수 있어야 한다는 것만 지정합니다. 이 프로토콜은 어떤 `FullyNamed` 타입이든, 타입이 `String` 인, `fullName` 이라는 획득 가능한 인스턴스 속성을 반드시 가져야 한다고 알립니다.
+`FullyNamed` 프로토콜은 '준수 타입' 이 온전히 '규명된 (qualified)'[^qualified] 이름을 필수로 제공하도록 요구합니다. 프로토콜은 '준수 타입' 의 본성에 대하여 어떤 다른 것도 지정하지 않습니다-반드시 타입은 스스로 '온전한 전체 이름' 을 제공할 수 있어야 한다는 것만을 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입이든 반드시, `fullName` 이라는, `String` 타입의, '획득 가능한 인스턴스 속성' 을 가져야 함을 알립니다.
 
-다음은 `FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체에 대한 예제입니다:
+다음은 `FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체 예제입니다:
 
 ```swift
 struct Person: FullyNamed {
@@ -83,11 +83,11 @@ let john = Person(fullName: "John Appleseed")
 // john.fullName 은 "John Appleseed" 입니다.
 ```
 
-이 예제는, 이름이 지정된 사람을 나타내는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫 줄에서 자신이 `FullyNamed` 프로토콜을 채택하고 있음을 알립니다.
+이 예제는, 특정한 이름의 사람을 표현하는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫 번째 줄에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
 
-`Person` 의 각 인스턴스는, 타입이 `String` 인, `fullName` 이라는 단일한 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일한 필수 조건과 들어 맞으며, `Person` 이 프로토콜을 올바르게 준수하고 있음을 의미하게 됩니다. (스위프트는 프로토콜의 필수 조건이 충족되지 않으면 컴파일-시간 에러를 보고합니다.)
+`Person` 의 각 인스턴스는, `fullName` 이라는, `String` 타입의, 단일 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일 '필수 조건' 과도 일치하며, `Person` 이 프로토콜을 올바르게 준수하고 있음을 의미합니다. (프로토콜 '필수 조건' 을 충족하지 않으면 스위프트가 컴파일 시간에 에러를 보고합니다.)
 
-다음은, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 좀 더 복잡한 클래스입니다:
+다음도, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스입니다:
 
 ```swift
 class Starship: FullyNamed {
@@ -105,13 +105,13 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 // ncc1701.fullName 은 "USS Enterprise" 입니다.
 ```
 
-이 클래스는 `fullName` 속성 필수 조건을 우주선에 대한 읽기-전용 계산 속성으로 구현합니다. 각 `Starship` 클래스 인스턴스는 의무적인 `name` 과 선택적인[^optional] `prefix` 를 저장합니다. `fullName` 속성은 `prefix` 값이 있다면 이것도, `name` 앞에 추가하여 우주선에 대한 전체 이름을 생성합니다.
+이 클래스는 '`fullName` 속성 필수 조건' 을 '우주선 (starship)' 을 위한 '읽기-전용 계산 속성' 으로 구현합니다. 각 `Starship` 클래스 인스턴스는 '의무적인 `name`' 과 '선택 사항인 `prefix`'[^optional] 를 저장합니다. `fullName` 속성은 `prefix` 값이 존재하면, 우주선을 위한 '온전한 전체 이름' 을 생성하기 위해 `name` 의 맨 앞에 붙입니다.
 
 ### Method Requirements (메소드 필수 조건)
 
-프로토콜은 지정한 인스턴스 메소드와 타입 메소드를 준수 타입이 필수로 구현하도록 요구할 수 있습니다. 이러한 메소드를 프로토콜 정의 부분에 작성하는 방법은 일반적인 인스턴스 및 타입 메소드와 정확하게 똑같지만, 중괄호 또는 메소드 본문이 없습니다. 가변 매개 변수도, 일반직인 메소드에서와 같은 규칙을 따른다는 전제하에, 허용합니다. 메소드 매개 변수에 기본 값을 지정하는 것은, 하지만, 프로토콜 정의 내에서 할 수 없습니다.
+프로토콜은 '준수 타입' 이 특정한 '인스턴스 메소드' 와 '타입 메소드' 를 필수로 구현하도록 요구할 수 있습니다. 이 메소드들을 프로토콜 정의에 작성하는 방식은 보통의 인스턴스 및 타입 메소드 에서와 정확하게 똑같지만, 중괄호나 메소드 본문은 없습니다. 보통의 메소드 에서와 똑같은 규칙이라는 전제에 따라, '가변 매개 변수' 를 허용합니다. 하지만, 프로토콜 정의 내에서 메소드 매개 변수에 '기본 값' 을 지정할 수는 없습니다.
 
-타입 속성 필수 조건에서와 같이, 타입 메소드 필수 조건을 프로토콜에서 정의할 때는 `static` 키워드를 항상 접두사로 붙여야 합니다. 이는 타입 메소드 필수 조건을 클래스가 `static` 이나 `class` 를 써서 구현하게 되더라도 마찬가지입니다.
+'타입 속성 필수 조건' 에서 처럼, 프로토콜에서 '타입 메소드 필수 조건' 을 정의할 때는 항상 `static` 키워드로 접두사를 붙여야 합니다. 이는 '타입 메소드 필수 조건' 을 클래스가 구현할 때 `static` 이나 `class` 접두사를 붙이게 될지라도 그렇습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -119,7 +119,7 @@ protocol SomeProtocol {
 }
 ```
 
-다음 예제는 단일한 인스턴스 메소드 필수 조건을 가진 프로토콜을 정의합니다:
+다음 예제는 단일 '인스턴스 메소드 필수 조건' 을 가진 프로토콜을 정의합니다:
 
 ```swift
 protocol RandomNumberGenerator {
@@ -127,11 +127,11 @@ protocol RandomNumberGenerator {
 }
 ```
 
-이 프로토콜인, `RandomNumberGenerator` 는, 어떤 준수 타입이라도, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 인스턴스 메소드를 필수로 가질 것을 요구합니다. 비록 프로토콜 부분에서 지정되지 않았더라도, 이 값은 `0.0` 에서 (포함은 안되지만) `1.0` 에 이르는 수라고 가정합니다.
+이, '`RandomNumberGenerator` 프로토콜' 은, 어떤 '준수 타입' 이든 필수로, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 '인스턴스 메소드' 를 가질 것을 요구합니다. 비록 프로토콜에서 지정하진 않았어도, 이 값은 `0.0` 에서 `1.0` 에 이르는 ('1.0' 을 직접 포함하진 않는) 수라고 가정합니다.[^random]
 
-`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 를 생성하는 방법에 대해서는 어떤 가정도 하지 않습니다-단순히 '생성기 (generator)' 가 새로운 난수를 생성하는 표준적인 방법을 필수로 제공하도록 요구할 뿐입니다.
+`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 생생 방법에 대해서는 어떤 가정도 하지 않습니다-이는 '생생기 (generator)' 가 새로운 난수를 생생하는 표준 방식을 필수로 제공하도록 단순히 요구할 뿐입니다.
 
-다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스에 대한 구현입니다. 이 클래스는 _선형 합동 생성기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사-난수 생성기 (pseudorandom number)' 알고리즘을 구현합니다.
+다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스의 구현입니다. 이 클래스는 _선형 합동 생생기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사 난수 (pseudorandom number) 생성 알고리즘' 을 구현합니다:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
@@ -147,22 +147,22 @@ class LinearCongruentialGenerator: RandomNumberGenerator {
 }
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101" 를 출력합니다.
+// "Here's a random number: 0.3746499199817101" 를 인쇄합니다.
 print("And another one: \(generator.random())")
-// "And another one: 0.729023776863283" 를 출력합니다.
+// "And another one: 0.729023776863283" 를 인쇄합니다.
 ```
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
 
-때때로 메소드는 자신이 속해 있는 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드에서 `mutating` 키워드를 메소드의 `func` 키워드 앞에 붙이면 이 메소드가 자신이 속한 인스턴스 및 해당 인스턴스의 모든 속성을 수정할 수 있음을 지시하는 것입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 에서 설명했습니다.
+때때로 메소드는 자신이 속한 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드는 자신이 속한 인스턴스와 해당 인스턴스의 어떤 속성이든 메소드가 수정할 수 있음을 지시하고자 메소드의 `func` 키워드 앞에 `mutating` 키워드를 붙입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 에서 설명합니다.
 
-프로토콜을 채택하는 어떤 타입에 대해서든 인스턴스를 변경하려는 의도를 가진 '프로토콜 인스턴스 메소드 필수 조건 (protocol instance method requirements)' 을 정의하는 경우, 프로토콜을 정의할 때 이 메소드에 `mutating` 키워드를 표시하도록 합니다. 이는 구조체와 열거체가 이 프로토콜을 채택하고 해당 메소드 필수 조건을 만족할 수 있게 해줍니다.
+프로토콜을 채택한 어떤 타입의 인스턴스든 변경하려는 의도인 '프로토콜 인스턴스 메소드 필수 조건' 을 정의하는 경우, 프로토콜의 정의에서 메소드를 `mutating` 키워드로 표시합니다. 이는 구조체와 열거체가 프로토콜을 채택해서 해당 '메소드 필수 조건' 을 만족할 수 있게 해줍니다.
 
-> 프로토콜 인스턴스 메소드 필수 조건을 `mutating` 으로 표시한 경우, 해당 메소드의 구현을 클래스에서 작성할 때 `mutating` 키워드를 붙일 필요가 없습니다. `mutating` 키워드는 구조체와 열거체에서만 사용되는 것입니다.
+> '프로토콜 인스턴스 메소드 필수 조건' 을 `mutating` 으로 표시한 경우, 해당 메소드 구현을 클래스에서 작성할 때 `mutating` 키워드를 작성할 필요가 없습니다. `mutating` 키워드는 구조체와 열거체에서만 사용합니다.
 
-아래 예제는, `toggle` 이라는 단일한 인스턴스 메소드 필수 조건을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름으로 알 수 있듯이, `toggle()` 메소드는 어떤 준수 타입이든, 해당 타입의 속성을 수정하는 것으로써, 타입의 상태를 전환하거나 반전합니다.
+아래 예제는, `toggle` 이라는 단일 '인스턴스 메소드 필수 조건' 을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름이 연상하는 것처럼, `toggle()` 메소드는, 전형적으로, 어떤 '준수 타입' 의 상태를, 해당 타입의 속성을 수정함으로써, '전환 (toggle)' 하거나 '반전 (invert)' 하려는 의도입니다.
 
-`toggle()` 메소드는, 이 메소드를 호출할 때 준수 인스턴스의 상태를 변경하기를 지시하고자, `Togglable` 프로토콜 정의 부분에서 `mutating` 키워드로 표시했습니다:
+`toggle()` 메소드는, 메소드를 호출할 때 '준수 인스턴스' 의 상태를 변경할 것이라 예상된다는 것을 지시하고자, `Togglable` 프로토콜 정의 시에 `mutating` 키워드로 표시합니다:
 
 ```swift
 protocol Togglable {
@@ -170,9 +170,9 @@ protocol Togglable {
 }
 ```
 
-`Togglable` 프로토콜을 구조체나 열거체에서 구현하는 경우, `mutating` 으로 표시된 `toggle()` 메소드 구현을 제공하면 해당 구조체나 열거체가 이 프로토콜을 준수할 수 있습니다.
+구조체나 열거체에서 `Togglable` 프로토콜을 구현하는 경우, 해당 구조체나 열거체는 역시 `mutating` 이라고 표시한 `toggle()` 메소드 구현을 제공함으로써 프로토콜을 준수할 수 있습니다.
 
-아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, 열거체의 case 값 `on` 과 `off` 로 나타내는, 두 상태 사이를 왔다갔다 합니다. 이 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 필수 조건에 들어 맞도록, `mutating` 으로 표시합니다:
+아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, `on` 과 `off` 라는 '열거체 case 값' 으로 나타내는, 두 상태 사이를 '전환 (toggle)' 합니다. 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 '필수 조건' 과 일치하도록, `mutating` 이라고 표시합니다:
 
 ```swift
 enum OnOffSwitch: Togglable {
@@ -193,7 +193,7 @@ lightSwitch.toggle()
 
 ### Initializer Requirements (초기자 필수 조건)
 
-프로토콜은 지정한 초기자를 준수 타입이 필수로 구현하도록 요구할 수 있습니다. 이러한 초기자를 프로토콜 정의 부분에 작성하는 방법은 일반적인 초기자와 정확하게 똑같지만, 중괄호 또는 초기자 본문은 없습니다:
+프로토콜은 '준수 타입' 이 특정 초기자를 필수로 구현하도록 요구할 수 있습니다. 이 초기자들을 프로토콜 정의에 작성하는 방식은 보통의 초기자 에서와 정확하게 똑같지만, 중괄호나 초기자 본문은 없습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -981,9 +981,15 @@ print(differentNumbers.allEqual())
 
 [^blueprint]: '밑바탕 설계 (blueprint)' 는 보통 '청사진' 이라고 번역되는데, 제품의 '설계 도면' 을 복사하던 과거의 방식이 파란색을 띄었기 때문입니다. '엑스코드 (Xcode)' 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 것을 볼 수 있는데, 이 파란색 종이가 바로 '청사진 (blueprint)' 입니다. 여기서는 제품 제작의 '밑바탕' 이 되는 '설계' 라는 의미로 '밑바탕 설계' 라고 옮기도록 합니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
 
-[^optional]: 여기서 'optional' 을 '선택적인' 이라고 옮겼는데, 키워드의 의미로 '옵셔널' 로 옮기고 이해해도 상관은 없습니다. 이렇게 값이 있을 수도 있고 없을 수도 있는 '선택적인' 값을 나타내기 위해 '옵셔널' 을 만든 것이라 둘 다 무방한 경우입니다.
+[^type-property-requirements]: 즉, 클래스에 대한 '타입 속성 필수 조건 (type property requirements)' 이라고 해서, `class` 나 `static` 으로 구분할 필요 없이, 무조건 `static` 으로 사용하면 됩니다. `static` 으로 지시한 '타입 속성 필수 조건' 을 `class` 로 구현해도 상관없습니다.
 
-[^linear-congruential-generator]: '선형 합동 생성기' 는 널리 알려진 '유사난수 생성기' 라고 합니다. 다만 선형 합동 생성기는 인자와 마지막으로 생성된 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 난수 생성기는 아니라고합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
+[^qualified]: 영어에서의 '규명되다 (qualified)' 는 어떤 심사를 통과할 '자격을 갖췄다' 는 의미입니다. '온전히 규명된 이름' 은, 사람이라면 직급이나 소속까지 포함한 이름을 말합니다. [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)]({% post_url 2017-03-03-Nested-Types %}#referring-to-nested-types-중첩-타입-참조하기) 부분을 보면, 스위프트의 '중첩 타입' 의 경우 자신이 소속된 곳을 알고 있을 때 '규명된다' 는 것을 알 수 있습니다.
+
+[^optional]: 우주선에 '이름' 은 반드시 있어야 하지만 '경칭 (prefix)' 은 '선택 사항' 이므로, '옵셔널 타입' 으로 구현하고 있습니다.
+
+[^random]: 이는 스위프트에 내장된 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
+
+[^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
 
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
