@@ -129,9 +129,9 @@ protocol RandomNumberGenerator {
 
 이, '`RandomNumberGenerator` 프로토콜' 은, 어떤 '준수 타입' 이든 필수로, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 '인스턴스 메소드' 를 가질 것을 요구합니다. 비록 프로토콜에서 지정하진 않았어도, 이 값은 `0.0` 에서 `1.0` 에 이르는 ('1.0' 을 직접 포함하진 않는) 수라고 가정합니다.[^random]
 
-`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 생생 방법에 대해서는 어떤 가정도 하지 않습니다-이는 '생생기 (generator)' 가 새로운 난수를 생생하는 표준 방식을 필수로 제공하도록 단순히 요구할 뿐입니다.
+`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 발생 방법에 대해서는 어떤 가정도 하지 않습니다-이는 '발생기 (generator)' 가 새로운 난수를 생성하는 표준 방식을 필수로 제공하도록 단순히 요구할 뿐입니다.
 
-다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스의 구현입니다. 이 클래스는 _선형 합동 생생기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사 난수 (pseudorandom number) 생성 알고리즘' 을 구현합니다:
+다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스의 구현입니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사 난수 (pseudorandom number) 발생 알고리즘' 을 구현합니다:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
@@ -274,16 +274,16 @@ class Dice {
 }
 ```
 
-이 예제는, 보드 게임에 사용될 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스는, (주사위) 면이 몇 개인지를 나타내는, `sides` 라는 정수 속성을 가지며, '주사위 굴림 값 (dice roll values)' 을 생성하기 위한 '난수 발생기 (random number generator)' 를 제공하는, `generator` 라는 속성을 가지고 있습니다.
+이 예제는, 보드 게임에서 사용할 'n-면체 주사위' 를 표현하는, `Dice` 라는 새로운 클래스를 정의합니다. `Dice` 인스턴스는, 가진 면의 개수를 표현하는, `sides` 라는 '정수 속성' 과, '주사위 굴림 값' 생성을 위한 '난수 발생기' 를 제공하는, `generator` 라는 속성을 가집니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스라도 설정할 수 있습니다.
-이 속성에 할당하는 인스턴스는, 인스턴스가 `RandomNumberGenerator` 프로토콜을 반드시 채택[^adopt]해야 한다는 것만 빼면, 다른 건 아무 것도 필요하지 않습니다. 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 해당 프로토콜을 준수하는 모든 '생성기 (generator)' 에 적용되는 방식인 `generator` 하고만 상호 작용합니다. 이는 생성기의 실제 타입에서 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 것을 의미합니다. 하지만, [Downcasting (내림 변환하기)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환하기) 에서 설명한 것처럼, 상위 클래스를 하위 클래스로 내림 변환하는 것과 똑같은 방법으로 프로토콜 타입을 실제 타입으로 내림 변환할 수 있습니다.
+`generator` 속성은 `RandomNumberGenerator` 타입입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다.
+이 속성에 할당하는 인스턴스는, 인스턴스가 `RandomNumberGenerator` 프로토콜을 반드시 '채택 (adopt)' 해야[^adopt] 한다는 것만 제외하면, 다른 아무 것도 필요하지 않습니다. 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안에 있는 코드는 이 프로토콜을 준수하는 모든 '발생기 (generator)' 에 적용되는 방식으로만 `generator` 하고 상호 작용할 수 있습니다. 이는 '발생기' 의 실제 타입이 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환하기)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환하기) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 방식으로 '프로토콜 타입' 을 '실제 타입' 으로 내림 변환할 수 있습니다.
 
-`Dice` 는, 초기 상태를 설정하기 위한, 초기자도 가지고 있습니다. 이 초기자, 역시 타입이 `RandomNumberGenerator` 인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때 해당 매개 변수에 어떤 준수 타입의 값이라도 전달 할 수 있습니다.
+`Dice` 는, 초기 상태를 설정하는, 초기자도 가지고 있습니다. 이 초기자, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때, 이 매개 변수에는 어떤 '준수 타입' 의 값이든 전달 할 수 있습니다.
 
-`Dice` 는, '1' 에서 '주사위-면 개수' 사이의 정수 값을 반환하는, `roll` 이라는, 인스턴스 메소드 하나를 제공합니다. 이 메소드는 생성기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수를 사용하여 올바른 범위의 '주사위 굴림 값' 을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택하는 것을 알고 있기 때문에, 호출할 `random()` 메소드가 있음이 보증된 것입니다.
+`Dice` 는, '1' 에서 주사위의 '면 개수' 사이의 정수 값을 반환하는, `roll` 이라는, 인스턴스 메소드를 하나 제공합니다. 이 메소드는 '발생기' 의 `random()` 메소드를 호출하여, `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수로 올바른 범위의 '주사위 굴림 값' 을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택하고 있기 때문에, `random()` 메소드를 가지고 호출할 수 있음이 보증된 것입니다.
 
-다음은 `LinearCongruentialGenerator` 인스턴스를 난수 생성기로 가지는 6-면체 주사위를 어떻게 `Dice` 클래스로 생성하는 지를 보여줍니다:
+다음은 `Dice` 클래스를 사용하여 '난수 발생기' 로 `LinearCongruentialGenerator` 인스턴스를 가지는 '6-면체 주사위' 를 생성하는 방법입니다:
 
 ```swift
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
@@ -300,28 +300,28 @@ for _ in 1...5 {
 
 ### Delegation (위임)
 
-_위임 (delegation)_ 은 클래스나 구조체가 책임의 일부를 다른 타입의 인스턴스에게로 넘기기-또는 _위임 (delegate)_-할 수 있게 해주는 '디자인 패턴 (design pattern)' 입니다. 이 '디자인 패턴' 은 위임된 책임을 '은닉하는 (encapsulates)' 프로토콜의 정의로 구현하여, ('대리자 (delegate)'[^delegate] 라고 하는) 준수 타입이 위임된 기능을 제공할 것을 보증합니다. 위임은 특정한 동작에 응답하기 위해서, 또는 해당 소스의 실제 타입을 알 필요 없이 외부 소스의 데이터를 조회하기 위해서, 사용할 수 있습니다.
+_위임 (delegation)_ 은 클래스나 구조체가 다른 타입의 인스턴스로 책임의 일부를 넘기도록-또는 _위임 (delegate)_ 하도록- 해주는 '디자인 패턴 (design pattern)' 입니다. 이 '디자인 패턴' 은 위임한 책임을 '은닉 (encapsulates)' 하는 프로토콜을 정의해서, ('대리자 (delegate)'[^delegate] 라고 하는) '준수 타입' 이 위임된 기능을 제공하도록 보증합니다. '위임' 은 특별한 행동에 응답하거나, 해당 소스의 실제 타입을 알 필요 없이 외부 소스에서 데이터를 가져오기 위해, 사용할 수 있습니다.
 
-아래 예제는 주사위-기반 보드 게임에서 사용할 두 개의 프로토콜을 정의합니다:
+아래 예제는 '주사위-기반의 보드 게임' 에서 사용할 두 개의 프로토콜을 정의합니다:
 
 ```swift
 protocol DiceGame {
-    var dice: Dice { get }
-    func play()
+  var dice: Dice { get }
+  func play()
 }
 
 protocol DiceGameDelegate: AnyObject {
-    func gameDidStart(_ game: DiceGame)
-    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
-    func gameDidEnd(_ game: DiceGame)
+  func gameDidStart(_ game: DiceGame)
+  func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+  func gameDidEnd(_ game: DiceGame)
 }
 ```
 
-`DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이라도 채택할 수 있는 프로토콜 입니다.
+`DiceGame` 프로토콜은 주사위와 엮여 있는 어떤 게임이든 채택할 수 있는 프로토콜입니다.
 
-`DiceGameDelegate` 프로토콜은 `DiceGame` 의 진행 상황을 추적하기 위해 채택할 수 있습니다. 강한 참조 순환을 막기 위해, 위임은 약한 참조로 선언됩니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 클래스-전용으로 표시하는 것[^class-only]은 이 장의 뒤에 있는 `SnakesAndLadders` 클래스가 이 위임을 반드시 약한 참조로 사용할 것을 선언하도록 합니다. 클래스-전용 프로토콜을 표시하는 방법은, [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 설명한 것처럼, `AnyObject` 를 상속하는 것입니다.
+`DiceGameDelegate` 프로토콜은 `DiceGame` 의 진행 과정을 추적하기 위해 채택할 수 있습니다. '강한 참조 순환' 을 막기 위해, '대리자 (delegates)' 는 '약한 참조' 로 선언합니다. '약한 참조' 에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 '클래스-전용' 이라고 표시하는 것은 이 장 나중에 나오는 `SnakesAndLadders` 클래스가 자신의 '대리자' 을 반드시 '약한 참조' 로 사용해야 한다고 선언하도록 합니다. 클래스-전용 프로토콜은, [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 를 상속하는 것으로 표시합니다.
 
-다음은 원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 소개했었던 _뱀과 사다리 (Snakes and Ladders)_ 게임의 새로운 버전입니다. 이 버전은 주사위-굴림으로 `Dice` 인스턴스를 사용하기 위해; `DiceGame` 프로토콜을 채택하도록; 그리고 진행 상황을 `DiceGameDelegate` 에 알리기 위해; 개조된 것입니다:
+다음은 원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 소개했던 _뱀과 사다리 (Snakes and Ladders)_ 게임의 다른 버전입니다. 이 버전은 '주사위-굴림 값' 으로 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 과정을 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
 
 ```swift
 class SnakesAndLadders: DiceGame {
@@ -989,13 +989,13 @@ print(differentNumbers.allEqual())
 
 [^random]: 이는 스위프트에 내장된 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
-[^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
+[^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
 [^final]: 하위 클래스를 가지지 않는 최종 클래스는 해당 초기자를 하위 클래스가 필수로 구현해야 한다는 표시를 할 이유가 없습니다.
 
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
-[^delegate]: 여기서의 'delegate' 는 명사로써 위임된 기능을 수행하는 '대리자' 라는 의미를 가집니다.
+[^delegate]: 사실 'delegation' 을 '위임' 이라고 한다면, 'delegate' 는 '위임자' 라고 하는 것이 좋겠지만, 일반적으로 'delegation' 은 '위임' 으로 'delegate' 는 '대리자' 라는 번역이 널리 알려져 있습니다. 이것은 원래 'delegation' 자체가 프로그래밍 용어로 사용되기 전부터 일반 용어로 '위임' 이라는 말로 사용되고 있었기 때문으로 추측됩니다. '위임 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
 
 [^instantiator]: 이걸 본문에서 'instantiator' 라는 말로 표현했는데, 적당한 말이 없어서 그냥 '인스턴스를 만드는 부분' 으로 옮겼습니다. 아마도 실제 게임을 구현한다면 일종의 'game manager' 역할을 하는 것으로 게임 인스턴스를 만들 수 있을 것입니다. 그 때, 해당 'game manager' 를 'inistantiator' 라고 부르게 되는 것 같습니다.
 
