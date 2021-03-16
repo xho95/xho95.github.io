@@ -203,23 +203,23 @@ protocol SomeProtocol {
 
 #### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건을 클래스에서 구현하기)
 
-프로토콜 초기자 필수 조건을 준수 클래스에서 구현할 때는 지명 초기자로 해도 되고 편의 초기자로 해도 됩니다. 두 가지 경우 모두, 초기자 구현시 반드시 `required` 수정자를 표시해야 합니다:
+'준수 클래스' 에 대한 '프로토콜 초기자 필수 조건' 은 '지명 초기자' 나 '편의 초기자' 어느 것으로도 구현할 수 있습니다. 두 경우 모두 다, '초기자 구현' 은 반드시 '`required` 수정자 (modifier)' 로 표시해야 합니다:
 
 ```swift
 class SomeClass: SomeProtocol {
   required init(someParameter: Int) {
-    // 여기서 초기자를 구현합니다.
+    // 초기자 구현은 여기에 둡니다.
   }
 }
 ```
 
-`required` 수정자를 사용하면 준수 클래스의 모든 하위 클래스에 대해서 명시적으로든 또는 상속을 받아서든 초기자 필수 조건의 구현을 제공한다는 것을 보장해서, 하위 클래스에서도 이 프로토콜을 준수하도록 합니다.
+'`required` 수정자' 의 사용은 '준수 클래스' 의 모든 하위 클래스에 대한 '초기자 필수 조건' 의 명시적 또는 상속한 구현을 제공해서, 이들 역시 프로토콜을 준수하도록, 보장합니다.
 
-필수 초기자에 대한 더 자세한 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 를 참고하기 바랍니다.
+'필수 (required) 초기자' 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 를 참고하기 바랍니다.
 
-> `final` 수정자로 표시한 클래스에서는 프로토콜 초기자 필수 조건을 `required` 수정자로 표시할 필요가 없는데, '최종 클래스 (final class)' 는 하위 클래스를 가지지 않기 때문입니다. `final` 수정자에 대해서는, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+> `final` 수정자로 표시한 클래스에서는 '프로토콜 초기자 필수 조건' 을 `required` 수정자로 표시할 필요가 없는데, 왜냐면 '최종 (final) 클래스' 는 하위 클래스를 만들 수 없기 때문입니다.[^final] `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
 
-만약 하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 초기자 필수 조건에 해당하는 것도 같이 구현하는 경우라면, 해당 초기자의 구현에는 `required` 와 `override` 수정자 둘 다 표시하도록 합니다:
+하위 클래스가 상위 클래스에 있는 '지명 초기자' 를 '재정의' 하면서, 프로토콜에서 일치하고 있는 '초기자 필수 조건' 도 구현하는 경우, 그 '초기자 구현' 은 `required` 와 `override` 수정자 둘 다 표시합니다:
 
 ```swift
 protocol SomeProtocol {
@@ -228,14 +228,14 @@ protocol SomeProtocol {
 
 class SomeSuperClass {
   init() {
-    // 여기서 초기자를 구현합니다.
+    // 초기자 구현은 여기에 둡니다.
   }
 }
 
 class SomeSubClass: SomeSuperClass, SomeProtocol {
-  // "required" 는 SomeProtocol 을 준수하기 위함이고; "override" 는 SomeSuperClass 를 준수하기 위함입니다.
+  // "required" 는 SomeProtocol 을 준수하기 위함; "override" 는 SomeSuperClass 를 준수하기 위함
   required override init() {
-    // 여기서 초기자를 구현합니다.
+    // 초기자 구현은 여기에 둡니다.
   }
 }
 ```
@@ -990,6 +990,8 @@ print(differentNumbers.allEqual())
 [^random]: 이는 스위프트에 내장된 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다.
+
+[^final]: 하위 클래스를 가지지 않는 최종 클래스는 해당 초기자를 하위 클래스가 필수로 구현해야 한다는 표시를 할 이유가 없습니다.
 
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
