@@ -364,9 +364,9 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임판의 설정은 클래스의 `ini
 
 '대리자 (delegate)' 가 게임 진행에 필수인 건 아니기 때문에, `delegate` 속성은 '_옵셔널 (optional)_ `DiceGameDelegate`' 로 정의함을 기억하기 바랍니다. `delegate` 속성은, 옵셔널 타입이기 때문에, '초기 값' 이 자동으로 `nil` 로 설정됩니다. 그 이후, 게임의 '인스턴스를 만드는 부분'[^instantiator] 이 적합한 '대리자' 를 속성에 설정할 옵션을 가지게 도비니다. `DiceGameDelegate` 프로토콜은 '클래스-전용' 이기 때문에, '참조 순환' 을 막기 위해 '대리자' 를 `weak` 라고 선언할 수 있습니다.
 
-`DiceGameDelegate` 는 게임의 진행 상황을 추적하기 위한 세 개의 메소드를 제공합니다. 이 세 메소드는 위의 `play()` 메소드 속에 있는 게임 로직으로 편입되어, 새로운 게임이 시작할 때, 새로운 차례 (turn) 를 시작할 때, 또는 게임이 끝날 때 호출합니다.
+`DiceGameDelegate` 는 게임의 진행 과정을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위 `play()` 메소드에 있는 게임 논리에 편입되어, 새로운 게임을 시작할 때나, 새로운 '차례 (turn)' 를 시작할 때, 또는 게임이 끝날 때, 호출됩니다.
 
-`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리자 (delegate)' 에 대한 메소드를 호출할 때마다 '옵셔널 연쇄 (optional chaining)' 를 사용합니다. `delegate` 속성이 'nil' 인 경우, 이 '대리자 (delegate)' 호출은 에러 없이 우아하게 실패합니다. `delegate` 속성이 'nil-이 아닌' 경우, '대리자 메소드 (delegate method)' 를 호출하며, `SnakesAndLadders` 인스턴스를 매개 변수로 전달[^snakes-and-ladders-instance]합니다.
+`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리자' 에 대한 메소드를 매 번 호출할 때마다 '옵셔널 연쇄 (chaining)' 를 사용합니다. `delegate` 속성이 'nil' 이면, 이 '대리자 호출' 은 에러 없이 '우아하게 실패'[^gracefully-fail] 합니다. `delegate` 속성이 'nil-이 아니' 라면, '대리자 메소드' 를 호출해서, `SnakesAndLadders` 인스턴스를 매개 변수로 전달합니다.[^snakes-and-ladders-instance]
 
 이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택하는, `DiceGameTracker` 라는 클래스를 보여줍니다:
 
@@ -409,7 +409,7 @@ game.play()
 // Rolled a 5 / 5가 나왔습니다.
 // Rolled a 4 / 4가 나왔습니다.
 // Rolled a 5 / 5가 나왔습니다.
-// The game lasted for 4 turns / 이 게임은 4턴 동안 지속됐습니다.
+// The game lasted for 4 turns / 이 게임은 4 차례 동안 이어졌습니다.
 ```
 
 ### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
@@ -999,7 +999,9 @@ print(differentNumbers.allEqual())
 
 [^instantiator]: 본문에서는 'instantiator' 라는 용어를 사용하고 있는데, 적당한 말이 없어서 '인스턴스를 만드는 부분' 으로 옮겼습니다. 실제 게임을 구현할 경우 일종의 'game manager' 가 '인스턴스' 를 생성할 텐데, 이 'game manager' 를 'inistantiator' 라고 부를 수 있을 것입니다.
 
-[^snakes-and-ladders-instance]: 여기서 `SnakesAndLadders` 인스턴스를 매개 변수로 전달하는 것은 각 메소드이 호출에 있는 `self` 인자를 말합니다.
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. 보다 자세한 정보는 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
+
+[^snakes-and-ladders-instance]: `SnakesAndLadders` 인스턴스를 `self` 라는 키워드를 사용하여 전달하고 있습니다.
 
 [^generic-type]: 여기서 '일반화된 타입 (generic type)' 은 프로그래밍에서 사용하는 그 '제네릭' 이 맞습니다. 영어로 '제네릭 (generic)' 자체가 '일반화되었다' 는 의미를 담고 있습니다.
 
