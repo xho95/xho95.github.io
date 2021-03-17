@@ -390,13 +390,13 @@ class DiceGameTracker: DiceGameDelegate {
 }
 ```
 
-`DiceGameTracker` 는 `DiceGameDelegate` 이 필수로 요구하는 세 개의 메소드 모두를 구현합니다. 이 메소드를 사용하여 게임이 가지고 있는 '턴 (turn)' 수를 추적합니다. 게임이 시작되면 `numberOfTurns` 속성을 '0' 으로 재설정하며, 새 턴을 시작할 때마다 증가하고, 게임이 끝났을 때 총 '턴 (turn)' 수를 출력합니다.
+`DiceGameTracker` 는 `DiceGameDelegate` 에 필수인 세 메소드를 모두 구현합니다. 이 메소드를 사용하여 게임이 취한 '차례 (turn)' 수를 추적합니다. 게임을 시작하면 `numberOfTurns` 속성을 '0' 으로 '재설정' 하고, 매 번 새로운 차례를 시작할 때 증가시키며, 게임이 끝나면 총 '차례' 수를 인쇄합니다.
 
-위에서 본 `gameDidStart(_:)` 구현은 `game` 매개 변수를 사용하여 플레이하게 될 게임에 대한 일종의 소개 정보를 출력합니다. `game` 매개 변수의 타입은, `SnakesAndLadders`  가 아니라, `DiceGame` 이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜 부분에서 구현된 메소드 및 속성에만 접근할 수 있고 사용할 수 있습니다. 하지만, 이 메소드는 '타입 변환 (type casting)' 을 사용하면 여전히 실제 인스턴스의 타입을 조회할 수 있습니다. 이 예제는, 그 이면을 살펴보면 `game` 이 실제로 `SnakesAndLadders` 인스턴스인지 검사해서, 그렇다면 적절한 메시지를 출력합니다.
+위에 보인 `gameDidStart(_:)` 구현은 `game` 매개 변수를 사용하여 진행할 게임에 대한 약간의 소개 정보를 인쇄합니다. `game` 매개 변수는, `SnakesAndLadders` 가 아니라, `DiceGame` 타입이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜로 구현된 메소드와 속성에만 접근하여 사용할 수 있습니다. 하지만, 메소드는 '타입 변환 (type casting)' 을 사용하여 여전히 실제 인스턴스의 타입을 조회할 수 있습니다. 이 예제에서는, `game` 이 실제로 `SnakesAndLadders` 인스턴스인지를 검사해서, 그게 맞다면 적절한 메시지를 인쇄합니다.
 
-`gameDidStart(_:)` 메소드는 전달된 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수하고 있음은 알고 있기 때문에, `dice` 속성을 가지고 있음을 보증하고 있으므로, 어떤 종류의 게임을 플레이하고 있는지 상관없이, `gameDidStart(_:)` 메소드는 주사위의 `sides` 속성에 접근해서 이를 출력할 수 있습니다.
+`gameDidStart(_:)` 메소드는 전달한 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수함을 알기 때문에, `dice` 속성을 가짐이 보증되므로, `gameDidStart(_:)` 메소드는, 어떤 종류의 게임을 진행하는 지에 상관없이, 주사위의 `sides` 속성에 접근하여 인쇄할 수 있습니다.
 
-다음은 `DiceGameTracker` 를 실제로 사용하는 방법입니다:
+다음은 `DiceGameTracker` 의 실제 작동 방법입니다:
 
 ```swift
 let tracker = DiceGameTracker()
