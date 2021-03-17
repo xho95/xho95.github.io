@@ -356,9 +356,9 @@ class SnakesAndLadders: DiceGame {
 }
 ```
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임 플레이에 대한 설명은, [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 을 참고하기 바랍니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임 진행 방식에 대한 설명은, [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 부분을 참고하기 바랍니다.
 
-이 버전의 게임은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 '포장됩니다 (wrapped up)'. 이는 프로토콜을 준수하기 위해 획득 가능한 `dice` 속성과 `play()` 메소드를 제공합니다. (`dice` 속성은 초기화 이후 바뀔 필요가 없기 때문에 상수 속성으로 선언 했으며, 프로토콜은 이것이 반드시 '획득 가능한' 것이기 만을 요구합니다.)
+이 버전은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 게임을 '포장 (wrapped up)' 합니다. 프로토콜을 준수하기 위해 '획득 가능한 `dice` 속성' 과 '`play()` 메소드' 를 제공합니다. (`dice` 속성은, 초기화 후 바뀔 필요가 없으며, 프로토콜은 획득 가능하기만 하면 된다는 것을 요구하고 있기 때문에, 상수 속성으로 선언합니다.)
 
 _뱀과 사다리 (Snakes and Ladders)_ 게임 판 설정은 클래스의 `init()` 초기자 내에서 일어납니다. 모든 게임 로직은 프로토콜의 `play` 메소드 속으로 옮겨지며, 여기서 주사위 굴림 값을 제공하는 `dice` 라는 프로토콜의 필수 속성을 사용합니다.
 
