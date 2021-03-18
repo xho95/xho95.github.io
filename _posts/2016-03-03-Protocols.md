@@ -409,16 +409,16 @@ game.play()
 // Rolled a 5 / 5가 나왔습니다.
 // Rolled a 4 / 4가 나왔습니다.
 // Rolled a 5 / 5가 나왔습니다.
-// The game lasted for 4 turns / 이 게임은 4 차례 동안 이어졌습니다.
+// The game lasted for 4 turns / 이 게임은 4 차례 동안 진행됐습니다.
 ```
 
 ### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
 
-기존 타입을 확장해서 새로운 프로토콜을 채택하고 준수하도록 만들 수 있으며, 이 때 기존 타입에 대한 소스 코드에 접근할 수 없는 경우라도 상관없습니다. '익스텐션 (extensions; 확장)' 은 기존 타입에 새로운 속성, 메소드, 그리고 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구하는 어떤 필수 조건이라도 추가할 수 있습니다. '익스텐션' 에 대한 더 많은 내용은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+기존 타입의 소스 코드에 접근할 수 없는 경우에도, 새로운 프로토콜을 채택하고 준수하도록 기존 타입을 확장할 수 있습니다. '익스텐션 (extension)' 은 기존 타입에 새로운 속성, 메소드, 그리고 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건이든 추가할 수 있습니다. '익스텐션' 에 대한 더 많은 내용은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 
-> 어떤 타입에서 이미 존재하고 있는 인스턴스는 '익스텐션' 에서 인스턴스의 타입에 '준수성 (conformance)' 이 추가되면 자동으로 해당 프로토콜을 채택하고 춘수하게 됩니다.
+> '익스텐션' 에서 해당 '준수성' 을 인스턴스의 타입에 추가할 때 타입의 기존 인스턴스는 프로토콜을 자동으로 채택하고 춘수하게 됩니다.
 
-예를 들어, `TextRepresentable` 이라는, 이 프로토콜은 '문장 (text)' 으로 표현할 방법을 가지고 있는 어떤 타입이라도 구현할 수 있습니다. 이것은 스스로에 대한 설명일 수도 있고, 현재 상태를 문장으로 나타낸 것일 수도 있습니다:
+예를 들어, `TextRepresentable` 이라는, 다음 프로토콜은 '문장' 으로 표현할 방식을 가진 어떤 타입이든 구현하게 할 수 있습니다. 이는 자신에 대한 설명일 수도, 아니면 현재 상태의 문장 버전일 수도 있습니다:
 
 ```swift
 protocol TextRepresentable {
@@ -436,17 +436,17 @@ extension Dice: TextRepresentable {
 }
 ```
 
-이 '익스텐션 (extension)' 은 마치 `Dice` 가 원래 구현에서 부터 이를 제공한 것과 정확하게 같은 방법으로 새로운 프로토콜을 채택합니다. 이 프로토콜 이름은 타입 이름 뒤에, 콜론으로 구분하여 제공하며, '익스텐션' 의 중괄호 내에서 프로토콜의 모든 필수 조건을 구현합니다.
+이 '익스텐션' 은 마치 `Dice` 가 이를 원본 구현에서 제공한 것과 정확하게 똑같은 방식으로 새로운 프로토콜을 채택합니다. 이 프로토콜 이름은, 콜론으로 구분하여, 타입 이름 뒤에 제공하며, 프로토콜의 모든 '필수 조건' 은 '익스텐션' 중괄호 안에서 제공합니다.
 
-이제 어떤 `Dice` 인스턴스라도 `TextRepresentable` 처럼 다룰 수 있습니다:
+이제 '어떤 `Dice` 인스턴스' 든 `TextRepresentable` 처럼 취급할 수 있습니다:
 
 ```swift
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
-// "A 12-sided dice" 를 출력합니다.
+// "A 12-sided dice" 를 인쇄합니다.
 ```
 
-이와 비슷하게, `SnakesAndLadders` 게임 클래스를 확장하여 `TextRepresentable` 프로토콜을 채택하고 준수하도록 만들 수 있습니다:
+이와 비슷하게, `SnakesAndLadders` 게임 클래스도 `TextRepresentable` 프로토콜을 채택하고 준수하도록 확장할 수 있습니다:
 
 ```swift
 extension SnakesAndLadders: TextRepresentable {
@@ -455,14 +455,14 @@ extension SnakesAndLadders: TextRepresentable {
   }
 }
 print(game.textualDescription)
-// "A game of Snakes and Ladders with 25 squares" 를 출력합니다.
+// "A game of Snakes and Ladders with 25 squares" 를 인쇄합니다.
 ```
 
 #### Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)
 
-'일반화된 타입 (generic type; 제네릭 타입)'[^generic-type] 은, 가령 타입의 '일반화된 매개 변수 (generic parameter; 제네릭 매개 변수)'가 그 프로토콜을 준수할 때와 같이, 지정된 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. '일반화된 타입 (generic type)' 이 조건에 따라 프로토콜을 준수하도록 만들려면 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하면 됩니다. 이러한 '구속 조건' 을 채택하려는 프로토콜의 이름 뒤에 나열하는 것은 '일반화된 `where` 절 (generic `where` clause)' 을 사용하여 작성합니다. '일반화된 `where` 절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화된 (generic) 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-generic-where-절) 을 참고하기 바랍니다.
+'일반화된 (generic) 타입' 은, 타입의 '일반화된 (generic) 매개 변수' 가 프로토콜을 준수할 때와 같이, 정해진 조건 하에서만 프로토콜의 '필수 조건' 을 만족할 수도 있습니다. '일반화된 타입' 은 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하는 것으로써 조건에 따라 프로토콜을 준수하도록 만들 수 있습니다. 이 '구속 조건' 들은 채택하려는 프로토콜 이름 뒤에 '일반화된 (generic) `where` 절' 을 작성함으로써 작성합니다. '일반화된 (generic) `where` 절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화된 (generic) 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-generic-where-절) 을 참고하기 바랍니다.
 
-다음의 '익스텐션 (extension)' 은 `TextRepresentable` 을 준수하는 타입의 원소를 저장할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하도록 만듭니다.
+다음 '익스텐션' 은 `Array` 인스턴스가 `TextRepresentable` 을 준수하는 타입의 원소를 저장할 때마다 `TextRepresentable` 프로토콜을 준수하게 만듭니다.[^array-element]
 
 ```swift
 extension Array: TextRepresentable where Element: TextRepresentable {
@@ -473,33 +473,33 @@ extension Array: TextRepresentable where Element: TextRepresentable {
 }
 let myDice = [d6, d12]
 print(myDice.textualDescription)
-// "[A 6-sided dice, A 12-sided dice]" 를 출력합니다.
+// "[A 6-sided dice, A 12-sided dice]" 를 인쇄합니다.
 ```
 
-#### Declaring Protocol Adoption with and Extension (확장으로 프로토콜 채택 선언하기)
+#### Declaring Protocol Adoption with and Extension (확장으로 프로토콜을 채택한다고 선언하기)
 
-만약 타입이 이미 프로토콜의 모든 필수 조건을 준수하고 있지만, 아직 해당 프로토콜을 채택한다고 알리지 않은 경우라면, 비어 있는 '익스텐션 (extension)' 으로 그 프로토콜을 채택하게 만들 수 있습니다:
+타입이 이미 프로토콜의 모든 '필수 조건' 을 준수하고 있지만, 아직 해당 프로토콜을 채택한다고 알리지 않은 경우라면, 빈 '익스텐션' 으로 해당 프로토콜을 채택하도록 만들 수 있습니다:
 
 ```swift
 struct Hamster {
-    var name: String
-    var textualDescription: String {
-        return "A hamster named \(name)"
-    }
+  var name: String
+  var textualDescription: String {
+    return "A hamster named \(name)"
+  }
 }
 extension Hamster: TextRepresentable {}
 ```
 
-이제 `TextRepresentable` 이 필수 타입이라고 요구하는 곳에서도 `Hamster` 의 인스턴드를 사용할 수 있습니다:
+이제 `Hamster` 의 인스턴스는 `TextRepresentable` 타입이 필수인 곳이면 어디서든 사용할 수 있습니다:
 
 ```swift
 let simonTheHamster = Hamster(name: "Simon")
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
-// "A hamster named Simon" 를 출력합니다.
+// "A hamster named Simon" 을 인쇄합니다.
 ```
 
-> 타입은 필수 조건을 만족한다고 해서 자동으로 프로토콜을 채택하는 것이 아닙니다. 그 프로토콜을 채택한다고 반드시 항상 명시적으로 선언해야 합니다.[^adoption]
+> 타입은 '필수 조건' 을 만족한다고 해서 프로토콜을 자동으로 채택하진 않습니다. 프로토콜을 채택한다고 반드시 항상 명시적으로 선언해야 합니다.[^adoption]
 
 ### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
 
@@ -1003,9 +1003,9 @@ print(differentNumbers.allEqual())
 
 [^snakes-and-ladders-instance]: `SnakesAndLadders` 인스턴스를 `self` 라는 키워드를 사용하여 전달하고 있습니다.
 
-[^generic-type]: 여기서 '일반화된 타입 (generic type)' 은 프로그래밍에서 사용하는 그 '제네릭' 이 맞습니다. 영어로 '제네릭 (generic)' 자체가 '일반화되었다' 는 의미를 담고 있습니다.
+[^array-element]: 즉, 본문 예제에서 `Array` 가 `TextRepresentable` 을 준수하는 조건은 `Array` 의 `Element` 가 `TextRepresentable` 을 준수할 때입니다.
 
-[^adoption]: 이것이 스위프트에서 'adoption (채택)' 과 'conformance (준수)' 를 명확하게 구분해서 사용하는 이유일 것입니다.
+[^adoption]: 이것이 스위프트에서 '채택 (adoption)' 이란 말과 '준수 (conformance)' 라는 말을 명확하게 구분해서 사용하는 이유일 것입니다.
 
 [^synthesized]: 본문에서 '통합된 구현 (synthesized implementation)' 이라는 것은 스위프트 내부에 이미 구현되어 있는 것을 의미합니다. 즉 `Equatable` 프로토콜을 준수하는 코드는 우리가 따로 만들 수도 있겠지만, 스위프트가 제공하는 '통합된 구현' 을 사용하면 더 쉽게 작성할 수 있다는 의미입니다.
 
