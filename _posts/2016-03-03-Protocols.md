@@ -503,9 +503,9 @@ print(somethingTextRepresentable.textualDescription)
 
 ### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
 
-스위프트는 많은 단순한 경우에서 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수 있습니다. 이 '통합된 (synthesized)'[^synthesized] 구현을 사용한다는 것은 프로토콜 필수 조건을 직접 구현하기 위해 '획일적인 (bolilerplate)' 코드를 반복해서 작성할 필요가 없다는 의미입니다.
+스위프트는 많은 단순한 경우에 자동으로 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 제공할 수 있습니다. 이 '통합된 (synthesized)[^synthesized] 구현' 을 사용한다는 것은 스스로 '프로토콜 필수 조건' 을 구현하기 위해서 '반복적이고 획일적인 (bolilerplate) 코드' 를 작성할 필요는 없다는 의미입니다.
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 의 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입을 위해 `Equatable` 에 대한 '통합된 구현' 을 제공합니다:
 
 * `Equatable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
 * `Equatable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
