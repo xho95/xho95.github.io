@@ -503,17 +503,17 @@ print(somethingTextRepresentable.textualDescription)
 
 ### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
 
-스위프트는 많은 단순한 경우에 자동으로 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 제공할 수 있습니다. 이 '통합된 (synthesized)[^synthesized] 구현' 을 사용한다는 것은 스스로 '프로토콜 필수 조건' 을 구현하기 위해서 '반복적이고 획일적인 (bolilerplate) 코드' 를 작성할 필요는 없다는 의미입니다.
+스위프트는 많은 단순한 경우에 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수 있습니다. 이 '통합된 (synthesized) 구현'[^synthesized] 을 사용한다는 것은 '프로토콜 필수 조건' 을 직접 구현하기 위해서 '반복적이고 획일적인 (bolilerplate) 코드' 를 작성하지 않아도 된다는 의미입니다.
 
-스위프트는 다음 종류의 사용자 정의 타입을 위해 `Equatable` 에 대한 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 에 대한 '통합된 구현' 을 제공합니다:
 
-* `Equatable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
-* `Equatable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
-* '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
+* `Equatable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
+* `Equatable` 프로토콜을 준수하는 '결합 타입'[^associated-types] 만을 가진 열거체
+* '결합 타입' 을 전혀 가지고 있지 않은 열거체
 
-`==` 의 통합된 구현을 받으려면, `==` 연산자를 직접 구현하지 않고, 원래의 선언을 담고 있는 파일[^original-declaration]에서 `Equatable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다. `Equatable` 프로토콜은 `!=` 에 대한 기본 구현을 제공합니다.
+`==` 에 대한 '통합된 구현' 을 부여 받으려면, `==` 연산자를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Equatable` 을 '준수 (conformance)' 한다고 선언합니다. '`Equatable` 프로토콜' 은 `!=` 에 대한 기본 구현을 제공합니다.
 
-아래 예제는, `Vector2D` 구조체와 비슷하게, 3-차원 위치 벡터 `(x, y, z)` 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 연산자 (equivalence operators)' 에 대한 통합된 구현을 받습니다.
+아래 예제는, `Vector2D` 구조체와 비슷하게, '3-차원 위치 벡터 `(x, y, z)`' 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 그리고 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 (equivalence)[^equivalence] 연산자' 에 대한 '통합된 구현' 을 부여 받습니다.
 
 ```swift
 struct Vector3D: Equatable {
@@ -525,20 +525,20 @@ let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
 if twoThreeFour == anotherTwoThreeFour {
   print("These two vectors are also equivalent.")
 }
-// "These two vectors are also equivalent." 를 출력합니다.
+// "These two vectors are also equivalent." 를 인쇄합니다.
 ```
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 의 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 에 대한 '통합된 구현' 을 제공합니다:
 
-* `Hashable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
-* `Hashable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
-* '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
+* `Hashable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
+* `Hashable` 프로토콜을 준수하는 '결합 타입' 만을 가진 열거체
+* '결합 타입' 을 전혀 가지고 있지 않은 열거체
 
-`hash(into:)` 의 통합된 구현을 받으려면, `hash(into:)` 메소드를 직접 구현하지 않고, 원래의 선언을 담고 있는 파일에서 `Hashable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다.
+`hash(into:)` 에 대한 '통합된 구현' 을 부여 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Hashable` 을 '준수 (conformance)' 한다고 선언합니다.
 
-스위프트는 '원시 값 (raw value)' 을 가지지 않은 열거체에 대해서 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 만약 열거체가 '결합된 타입' 을 가진다면, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합된 구현을 받으려면, `<` 연산자를 직접 구현하지 않고, 원래의 열거체 선언을 담고 있는 파일에서 `Comparable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다. `Comparable` 프로토콜의 `<=`, `>`, 및 `>=` 에 대한 기본 구현은 남은 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
+스위프트는 '원시 값'[^raw-values] 을 가지고 있지 않은 열거체를 위해 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 열거체가 '결합 타입' 을 가지고 있는 경우, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 에 대한 '통합된 구현' 을 부여 받으려면, `<` 연산자를 직접 구현하지 말고, '원본 열거체 선언을 담은 파일' 에서 `Comparable` 을 '준수 (conformance)' 한다고 선언합니다. `<=`, `>`, 그리고 `>=` 에 대한 `Comparable` 프로토콜의 기본 구현은 남아 있는 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
 
-아래 예제는 '초보자', '중급자', 그리고 '전문가' 라는 'case 값' 을 가지는 `SkillLevel` 열거체를 정의합니다. '전문가' 는 자신들이 보유한 별의 개수로 등급이 추가적으로 나뉩니다.
+아래 예제는 '초보자', '중급자', 그리고 '전문가' 라는 'case 값' 을 가진 `SkillLevel` 열거체를 정의합니다. '전문가' 는 자신이 가진 별의 개수로 추가적인 등급을 나눕니다.
 
 ```swift
 enum SkillLevel: Comparable {
@@ -549,23 +549,23 @@ enum SkillLevel: Comparable {
 var levels = [SkillLevel.intermediate, SkillLevel.beginner,
               SkillLevel.expert(stars: 5), SkillLevel.expert(stars: 3)]
 for level in levels.sorted() {
-    print(level)
+  print(level)
 }
-// "beginner" 를 출력합니다.
-// "intermediate" 를 출력합니다.
-// "expert(stars: 3)" 를 출력합니다.
-// "expert(stars: 5)" 를 출력합니다.
+// "beginner" 를 인쇄합니다.
+// "intermediate" 를 인쇄합니다.
+// "expert(stars: 3)" 를 인쇄합니다.
+// "expert(stars: 5)" 를 인쇄합니다.
 ```
 
-### Collections of Protocol Types (프로토콜 타입의 컬렉션)
+### Collections of Protocol Types (프로토콜 타입의 집합체)
 
-프로토콜은, [Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 것처럼, 배열이나 딕셔너리 같은 '컬렉션 (collection; 집합체)' 내에 저장될 타입으로 사용할 수 있습니다. 다음 예제는 `TextRepresentable` (문장으로 표현할 수 있는) 것들에 대한 배열을 생성합니다:
+프로토콜은, [Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 것처럼, 배열이나 딕셔너리 같은 '집합체 (collection)' 에 저장할 타입으로 사용할 수 있습니다. 다음 예제는 '`TextRepresentable` (문장 표현이 가능한) 것' 들의 배열을 생성합니다:
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 ```
 
-이제 배열에 있는 항목들에 동작을 반복 적용시켜서, 각 항목에 대한 문장 형태의 설명을 출력할 수 있습니다:
+이제 배열에 있는 항목에 동작을 반복해서, 각 항목에 대한 문장 설명을 인쇄합니다:
 
 ```swift
 for thing in things {
@@ -576,19 +576,19 @@ for thing in things {
 // A hamster named Simon (Simon 이라는 이름의 햄스터)
 ```
 
-`thing` 상수의 타입은 `TextRepresentable` 임에 주목하기 바랍니다. 타입은 `Dice` 도, `DiceGame` 도, `Hamster` 도 아니며, 비록 그 이면을 살펴보면 실제 인스턴스는 이 타입들 중 하나라더라도 그렇습니다. 그럼에도 불구하고, 타입이 `TextRepresentable` 이기 때문에, 그리고 `TextRepresentable` 이면 어떤 것이든 `textualDescription` 속성을 가지고 있음을 알고 있기 때문에, 반복문을 통해서 매번 `thing.textualDescription` 에 안전하게 접근할 수 있습니다.
+`thing` 상수는 `TextRepresentable` 타입 임을 기억하기 바랍니다. 타입은, 실제 그 속은 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입 일지라도, 이 타입들이 아닙니다. 그럼에도 불구하고, 이는 `TextRepresentable` 타입이며, `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가진다는 것을 알기 때문에, 반복문의 매 회차마다 `thing.textualDescription` 에 접근하는 것은 안전합니다.
 
 ### Protocol Inheritance (프로토콜 상속)
 
-프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 상속받은 필수 조건 위에 필수 조건을 더 추가할 수도 있습니다. 프로토콜 상속을 위한 구문 표현은 클래스 상속을 위한 구문 표현과 비슷하지만, 여러 개의 상속된 프로토콜을, 쉼표로 구분하여, 나열하는 옵션을 가지고 있습니다[^multiple-inherited-protocols]:
+프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 상속한 '필수 조건' 위에 다른 '필수 조건' 을 더 추가할 수 있습니다. '프로토콜 상속' 구문은 '클래스 상속' 구문과 비슷하지만, 쉼표로 구분하여, '다중 상속 프로토콜' 을 나열할 수 있습니다[^multiple-inherited-protocols]:
 
 ```swift
 protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
-  // 여기서 프로토콜을 정의합니다.
+  // 프로토콜 정의는 여기에 둡니다.
 }
 ```
 
-다음은 위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜에 대한 예제입니다:
+다음은 위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜 예제입니다:
 
 ```swift
 protocol PrettyTextRepresentable: TextRepresentable {
@@ -596,7 +596,7 @@ protocol PrettyTextRepresentable: TextRepresentable {
 }
 ```
 
-이 예제는, `TextRepresentable` 을 상속하는, `PrettyTextRepresentable` 이라는, 새 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택하는 어떤 것이든 반드시 `TextRepresentable` 이 강제하는 모든 필수 조건을 만족해야 하며, 거기에 _더해서 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 필수 조건도 만족해야 합니다. 이 예제에서, `PrettyTextRepresentable` 은 단일한 필수 조건을 추가하여 `String` 을 반환하는 `prettyTextualDescription` 이라는 '획득 가능한 (gettable)' 속성을 제공하도록 합니다.
+이 예제는, `TextRepresentable` 을 상속한, `PrettyTextRepresentable` 이라는, 새로운 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택한 어떤 것이든 `TextRepresentable` 이 강제하는 모든 '필수 조건' , 에 _더해서 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 '필수 조건' 도, 반드시 만족해야 합니다. 이 예제의, `PrettyTextRepresentable` 은 `String` 을 반환하는 `prettyTextualDescription` 이라는 '획득 가능한 속성' 을 제공하기 위한 단일 '필수 조건' 을 추가합니다.
 
 `SnakesAndLadders` 클래스는 `PrettyTextRepresentable` 을 채택하고 준수하도록 확장할 수 있습니다:
 
@@ -619,13 +619,13 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 }
 ```
 
-이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하고 `SnakesAndLadders` 타입을 위해 `prettyTextualDescription` 속성에 대한 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 것은 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 의 구현은 먼저 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 접근한 다음 출력 문자열을 만들기 시작합니다. 이는 '콜론' 과 '줄 끊음 (line break)' 을 추가해서, 문장 설명의 시작 부분을 예쁘게 꾸밉니다. 그런 다음 게임판 정사각형에 대한 배열에 동작을 반복 적용시켜서, 각 정사각형의 내용을 표현하는 기하학 도형을 추가합니다:
+이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하여 `SnakesAndLadders` 타입을 위한 `prettyTextualDescription` 속성의 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 구현은 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 먼저 접근하고나서 출력 문자열을 만들기 시작합니다. 이는 '콜론 (`:`)' 과 '줄 끊음 (`\n`)' 을 덧붙여, 문장 표현을 예쁘게 꾸미기 시작합니다. 그런 다음 게임판의 '정사각형 배열' 에 동작을 반복해서, 각 정사각형의 내용물을 표현하는 기하학 도형을 덧붙입니다:
 
-* 정사각형의 값이 `0` 보다 크다면, 사다리의 밑부분인 것이며, `▲` 로 표현합니다.
-* 정사각형의 값이 `0` 보다 작다면, 뱀의 머리인 것이며, `▼` 로 표현합니다.
-* 그 외의 경우, 정사각형의 값은 `0` 이고, "얽매이지 않은 (free)" 정사각형인 것이며, `○` 로 표현됩니다.
+* 정사각형의 값이 `0` 보다 크면, 사다리의 밑부분이므로, `▲` 로 표현합니다.
+* 정사각형의 값이 `0` 보다 작으면, 뱀의 머리이므로, `▼` 로 표현합니다.
+* 그 외의 경우, 정사각형의 값은 `0` 이고, "자유로운 (free)" 정사각형이므로, `○` 로 표현합니다.
 
-이제 `prettyTextualDescription` 속성을 사용하면 어떤 `SnakesAndLadders` 인스턴스에 대해서도 문장 설명을 예쁘게 꾸밀 수 있습니다:
+이제 `prettyTextualDescription` 속성은 어떤 `SnakesAndLadders` 인스턴스의 '예쁘게 꾸민 문장 설명' 이라도 인쇄할 수 있습니다:
 
 ```swift
 print(game.prettyTextualDescription)
@@ -635,25 +635,25 @@ print(game.prettyTextualDescription)
 
 ### Class-Only Protocols (클래스-전용 프로토콜)
 
-프로토콜의 채택을 (구조체나 열거체는 빼고) 클래스 타입에서만 되도록 제한하고 싶으면 프로토콜의 상속 목록에 `AnyObject` 프로토콜을 추가하면 됩니다.
+'프로토콜 상속 목록'[^inheritance] 에 `AnyObject` 프로토콜을 추가함으로써 (구조체나 열거체가 아닌) 클래스 타입만 프로토콜을 '채택 (adoptation)' 하도록 제한할 수 있습니다.
 
 ```swift
 protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
-  // 여기서 클래스-전용 프로토콜을 정의합니다.
+  // 클래스-전용 프로토콜 정의는 여기에 둡니다.
 }
 ```
 
-위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. 구조체나 열거체 정의에서 `SomeClassOnlyProtocol` 을 채택한다고 작성하면 '컴파일-시간 에러' 가 뜹니다.
+위 예제에서, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려고 구조체나 열거체 정의를 작성하는 것은 '컴파일-시간 에러' 입니다.
 
-> 클래스-전용 프로토콜을 사용하는 것은 프로토콜의 필수 조건으로 정의한 작동 방식이 가정하거나 요구하는 준수 타입이 값 의미 구조가 아니라 참조 의미 구조를 가질 때 입니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 와 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하기 바랍니다.
+> 해당 프로토콜의 '필수 조건' 에서 정의한 작동 방식이 '준수 타입' 은 '값 의미 구조' 가 아닌 '참조 의미 구조' 를 가진다고 가정하거나 요구할 때 '클래스-전용 프로토콜' 을 사용합니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
 ### Protocol Composition (프로토콜 합성)
 
-타입이 다중 프로토콜의 준수를 동시에 하도록 요구할 수 있다면 유용할 것입니다. _프로토콜 합성 (protocol composition)_ 을 사용하면 다중 프로토콜을 단일 필수 조건으로 조합할 수 있습니다. '프로토콜 합성' 은 마치 합성에 있는 모든 프로토콜의 필수 조건을 조합한 '임시 지역 프로토콜' 을 정의한 것처럼 동작합니다. '프로토콜 합성' 은 어떤 새 프로토콜 타입을 정의하는 것이 아닙니다.
+타입이 '다중 프로토콜' 을 동시에 준수하도록 요구하는 것이 유용할 수 있습니다. _프로토콜 합성 (protocol composition)_ 으로 다중 프로토콜을 단일 '필수 조건' 속에 조합할 수 있습니다. '프로토콜 합성' 은 마치 모든 프로토콜의 '필수 조건' 들을 '합성' 안에 조합한 '임시 지역 프로토콜' 을 정의한 것처럼 작동합니다. '프로토콜 합성' 은 어떤 새로운 프로토콜 타입도 정의하지 않습니다.
 
-프로토콜 합성은 `SomeProtocol & AnotherProtocol` 같은 양식을 가집니다. 필요한 만큼 많은 수의 프로토콜을, '앤드 기호 (`&`; 앰퍼샌드)' 로 구분하여, 목록에 나열할 수 있습니다. 프로토콜 목록에 더하여, 프로토콜 합성은 클래스 타입도 하나 가질 수 있어서, 이것으로 '필수 상위 클래스 (required superclass)' 를 지정할 수 있습니다.
+'프로토콜 합성' 은 `SomeProtocol & AnotherProtocol` 같은 형식을 가집니다. 필요한 만큼 많은 수의 프로토콜을, '앤드 기호 (ampersands; `&`)' 로 구분하여, 나열할 수 있습니다. 프로토콜 목록에 더하여, '프로토콜 합성' 은, '필수 (required) 상위 클래스' 를 지정하는데 사용할 수 있는, 클래스 타입 하나를 담을 수도 있습니다.
 
-다음은 `Named` 와 `Aged` 라는 두 개의 프로토콜을 함수 매개 변수에 대한 단일 '프로토콜 합성' 필수 조건으로 조합하는 예제입니다:
+다음은 `Named` 와 `Aged` 라는 두 프로토콜을 함수 매개 변수에 대한 '단일 프로토콜 합성 필수 조건' 으로 조합하는 예제입니다:
 
 ```swift
 protocol Named {
@@ -671,7 +671,7 @@ func wishHappyBirthday(to celebrator: Named & Aged) {
 }
 let birthdayPerson = Person(name: "Malcolm", age: 21)
 wishHappyBirthday(to: birthdayPerson)
-// "Happy birthday, Malcolm, you're 21!" 를 출력합니다.
+// "Happy birthday, Malcolm, you're 21!" 를 인쇄합니다.
 ```
 
 이 예제에서, `Named` 프로토콜은 `name` 이라는 획득 가능한 `String` 속성에 대한 단일한 필수 조건을 가집니다. `Aged` 프로토콜은 `age` 라는 획득 가능한 `Int` 속성에 대한 단일 필수 조건을 가지고 있습니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택하고 있습니다.
@@ -1007,16 +1007,22 @@ print(differentNumbers.allEqual())
 
 [^adoption]: 이것이 스위프트에서 '채택 (adoption)' 이란 말과 '준수 (conformance)' 라는 말을 명확하게 구분해서 사용하는 이유일 것입니다.
 
-[^synthesized]: 본문에서 '통합된 구현 (synthesized implementation)' 이라는 것은 스위프트 내부에 이미 구현되어 있는 것을 의미합니다. 즉 `Equatable` 프로토콜을 준수하는 코드는 우리가 따로 만들 수도 있겠지만, 스위프트가 제공하는 '통합된 구현' 을 사용하면 더 쉽게 작성할 수 있다는 의미입니다.
+[^synthesized]: 본문에서 말하는 '통합된 구현 (synthesized implementation)' 은 이미 스위프트 내부에서 구현되어 있다는 의미입니다. 즉, '`Equatable` 프로토콜' 같은 것은 스위프트 내부에 이미 구현되어 있는 것을 사용하기만 하면 됩니다.
 
-[^original-declaration]: 본문에서 '원래의 선언 (original declaration) 을 담고 있는 파일' 이라는 말을 사용하는 것을 볼 때, 다른 파일에서 `Equatable` 에 대한 '준수성 (conformance)' 를 작성한다고 해서 '통합된 구현' 을 사용할 수 있는 것은 아니라는 것을 추측할 수 있습니다.
+[^associated-types]: 여기서 말하는 '결합 타입 (associated types)' 이라는 것은 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. '결합 값' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다.
 
-[^multiple-inherited-protocols]: 스위프트에서 클래스 상속은 한 개만 되지만, 프로토콜 상속은 여러 개가 가능하다는 것을 말하는 것으로 이해하면 될 것 같습니다.
+[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자', '동치 연산자', '같음 연산자' 등으로 옮길 수 있을텐데, 위키피디아에서 'equal to' 를 '같음' 으로 번역하고 있기 때문에, 여기서는 '같음 비교' 라는 말로 옮기도록 합니다. '관계 연산자' 들의 용어에 대해서는 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
+
+[^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
+
+[^remaining-comparison-operators]: 스위프트의 '통합된 구현' 을 사용하면 `<` 연산자 외에도, '기본 구현' 된 `<=`, `>`, `>=` 연산자들을 부여 받는데, 나머지 연산자들은 이 '기본 구현' 을 통해서 구현한다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 부여 받을 수 있다면, 어떤 연산자도 구현할 필요가 없다는 의미입니다.
+
+[^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 준수할 수 있습니다. 스위프트에 있는 '프로토콜의 준수' 라는 개념은 C++ 에 있는 '순수 추상 클래스의 상속' 과 비슷합니다.
+
+[^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
 
 [^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은, '스위프트 프로그래밍 언어' 본문에서 꽤 자주 나오는 말인데, 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 각각에 대해서는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하고 있습니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
 [^specialized]: 추가 설명이나 예제가 있으면 좋겠지만, 원문에 따로 설명된 것이 없는게 아쉽습니다. Apple Forum 의 질문 답변 중 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 이라는 글에 따르면, 여러 개의 '구속 조건 (constraints)' 을 동시에 만족하는 경우는 타입이 계층 관계일 때 발생하는데, '가장 특수화된 구속 조건' 을 따른다는 것은 타입의 계층 관계에서 가장 하위 클래스를 따르는 것으로 추측됩니다.
-
-[^remaining-comparison-operators]: 여기서 남은 비교 연산자들을 제공한다는 것은 `<` 연산자만 있으면, 이를 통해 `<=`, `>`, `>=` 연산자는 자동으로 만들어진다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 받을 수 있다면, 실제로는 아무 것도 구현할 필요가 없습니다.
