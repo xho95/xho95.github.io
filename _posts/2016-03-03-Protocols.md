@@ -635,17 +635,17 @@ print(game.prettyTextualDescription)
 
 ### Class-Only Protocols (클래스-전용 프로토콜)
 
-프로토콜의 채택을 (구조체나 열거체는 빼고) 클래스 타입에서만 되도록 제한하고 싶으면 프로토콜의 상속 목록에 `AnyObject` 프로토콜을 추가하면 됩니다.
+'프로토콜 상속 목록'[^inheritance] 에 `AnyObject` 프로토콜을 추가함으로써 (구조체나 열거체가 아닌) 클래스 타입만 프로토콜을 '채택 (adoptation)' 하도록 제한할 수 있습니다.
 
 ```swift
 protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
-  // 여기서 클래스-전용 프로토콜을 정의합니다.
+  // 클래스-전용 프로토콜 정의는 여기에 둡니다.
 }
 ```
 
-위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. 구조체나 열거체 정의에서 `SomeClassOnlyProtocol` 을 채택한다고 작성하면 '컴파일-시간 에러' 가 뜹니다.
+위 예제에서, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려고 구조체나 열거체 정의를 작성하는 것은 '컴파일-시간 에러' 입니다.
 
-> 클래스-전용 프로토콜을 사용하는 것은 프로토콜의 필수 조건으로 정의한 작동 방식이 가정하거나 요구하는 준수 타입이 값 의미 구조가 아니라 참조 의미 구조를 가질 때 입니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 와 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하기 바랍니다.
+> 해당 프로토콜의 '필수 조건' 에서 정의한 작동 방식이 '준수 타입' 은 '값 의미 구조' 가 아닌 '참조 의미 구조' 를 가진다고 가정하거나 요구할 때 '클래스-전용 프로토콜' 을 사용합니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
 ### Protocol Composition (프로토콜 합성)
 
@@ -1018,6 +1018,8 @@ print(differentNumbers.allEqual())
 [^remaining-comparison-operators]: 스위프트의 '통합된 구현' 을 사용하면 `<` 연산자 외에도, '기본 구현' 된 `<=`, `>`, `>=` 연산자들을 부여 받는데, 나머지 연산자들은 이 '기본 구현' 을 통해서 구현한다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 부여 받을 수 있다면, 어떤 연산자도 구현할 필요가 없다는 의미입니다.
 
 [^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 준수할 수 있습니다. 스위프트에 있는 '프로토콜의 준수' 라는 개념은 C++ 에 있는 '순수 추상 클래스의 상속' 과 비슷합니다.
+
+[^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
 
 [^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은, '스위프트 프로그래밍 언어' 본문에서 꽤 자주 나오는 말인데, 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 각각에 대해서는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하고 있습니다.
 
