@@ -503,17 +503,17 @@ print(somethingTextRepresentable.textualDescription)
 
 ### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
 
-스위프트는 많은 단순한 경우에 자동으로 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 제공할 수 있습니다. 이 '통합된 (synthesized)[^synthesized] 구현' 을 사용한다는 것은 스스로 '프로토콜 필수 조건' 을 구현하기 위해서 '반복적이고 획일적인 (bolilerplate) 코드' 를 작성할 필요는 없다는 의미입니다.
+스위프트는 많은 단순한 경우에 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수 있습니다. 이 '통합된 (synthesized) 구현'[^synthesized] 을 사용한다는 것은 '프로토콜 필수 조건' 을 직접 구현하기 위해서 '반복적이고 획일적인 (bolilerplate) 코드' 를 작성하지 않아도 된다는 의미입니다.
 
-스위프트는 다음 종류의 사용자 정의 타입을 위해 `Equatable` 에 대한 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 에 대한 '통합된 구현' 을 제공합니다:
 
-* `Equatable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
-* `Equatable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
-* '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
+* `Equatable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
+* `Equatable` 프로토콜을 준수하는 '결합 타입'[^associated-types] 만을 가진 열거체
+* '결합 타입' 을 전혀 가지고 있지 않은 열거체
 
-`==` 의 통합된 구현을 받으려면, `==` 연산자를 직접 구현하지 않고, 원래의 선언을 담고 있는 파일[^original-declaration]에서 `Equatable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다. `Equatable` 프로토콜은 `!=` 에 대한 기본 구현을 제공합니다.
+`==` 에 대한 '통합된 구현' 을 부여 받으려면, `==` 연산자를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Equatable` 을 '준수 (conformance)' 한다고 선언합니다. '`Equatable` 프로토콜' 은 `!=` 에 대한 기본 구현을 제공합니다.
 
-아래 예제는, `Vector2D` 구조체와 비슷하게, 3-차원 위치 벡터 `(x, y, z)` 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 연산자 (equivalence operators)' 에 대한 통합된 구현을 받습니다.
+아래 예제는, `Vector2D` 구조체와 비슷하게, '3-차원 위치 벡터 `(x, y, z)`' 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 그리고 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 (equivalence)[^equivalence] 연산자' 에 대한 '통합된 구현' 을 부여 받습니다.
 
 ```swift
 struct Vector3D: Equatable {
@@ -525,20 +525,20 @@ let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
 if twoThreeFour == anotherTwoThreeFour {
   print("These two vectors are also equivalent.")
 }
-// "These two vectors are also equivalent." 를 출력합니다.
+// "These two vectors are also equivalent." 를 인쇄합니다.
 ```
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 의 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 에 대한 '통합된 구현' 을 제공합니다:
 
-* `Hashable` 프로토콜을 준수하는 저장 속성 만을 가지고 있는 구조체
-* `Hashable` 프로토콜을 준수하는 '결합된 타입 (associated types)' 만을 가지고 있는 열거체
-* '결합된 타입 (associated types)' 을 전혀 가지고 있지 않은 열거체
+* `Hashable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
+* `Hashable` 프로토콜을 준수하는 '결합 타입' 만을 가진 열거체
+* '결합 타입' 을 전혀 가지고 있지 않은 열거체
 
-`hash(into:)` 의 통합된 구현을 받으려면, `hash(into:)` 메소드를 직접 구현하지 않고, 원래의 선언을 담고 있는 파일에서 `Hashable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다.
+`hash(into:)` 에 대한 '통합된 구현' 을 부여 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Hashable` 을 '준수 (conformance)' 한다고 선언합니다.
 
-스위프트는 '원시 값 (raw value)' 을 가지지 않은 열거체에 대해서 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 만약 열거체가 '결합된 타입' 을 가진다면, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합된 구현을 받으려면, `<` 연산자를 직접 구현하지 않고, 원래의 열거체 선언을 담고 있는 파일에서 `Comparable` 에 대한 '준수성 (conformance)' 을 선언하도록 합니다. `Comparable` 프로토콜의 `<=`, `>`, 및 `>=` 에 대한 기본 구현은 남은 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
+스위프트는 '원시 값'[^raw-values] 을 가지고 있지 않은 열거체를 위해 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 열거체가 '결합 타입' 을 가지고 있는 경우, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 에 대한 '통합된 구현' 을 부여 받으려면, `<` 연산자를 직접 구현하지 말고, '원본 열거체 선언을 담은 파일' 에서 `Comparable` 을 '준수 (conformance)' 한다고 선언합니다. `<=`, `>`, 그리고 `>=` 에 대한 `Comparable` 프로토콜의 기본 구현은 남아 있는 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
 
-아래 예제는 '초보자', '중급자', 그리고 '전문가' 라는 'case 값' 을 가지는 `SkillLevel` 열거체를 정의합니다. '전문가' 는 자신들이 보유한 별의 개수로 등급이 추가적으로 나뉩니다.
+아래 예제는 '초보자', '중급자', 그리고 '전문가' 라는 'case 값' 을 가진 `SkillLevel` 열거체를 정의합니다. '전문가' 는 자신이 가진 별의 개수로 추가적인 등급을 나눕니다.
 
 ```swift
 enum SkillLevel: Comparable {
@@ -549,12 +549,12 @@ enum SkillLevel: Comparable {
 var levels = [SkillLevel.intermediate, SkillLevel.beginner,
               SkillLevel.expert(stars: 5), SkillLevel.expert(stars: 3)]
 for level in levels.sorted() {
-    print(level)
+  print(level)
 }
-// "beginner" 를 출력합니다.
-// "intermediate" 를 출력합니다.
-// "expert(stars: 3)" 를 출력합니다.
-// "expert(stars: 5)" 를 출력합니다.
+// "beginner" 를 인쇄합니다.
+// "intermediate" 를 인쇄합니다.
+// "expert(stars: 3)" 를 인쇄합니다.
+// "expert(stars: 5)" 를 인쇄합니다.
 ```
 
 ### Collections of Protocol Types (프로토콜 타입의 컬렉션)
@@ -1007,9 +1007,15 @@ print(differentNumbers.allEqual())
 
 [^adoption]: 이것이 스위프트에서 '채택 (adoption)' 이란 말과 '준수 (conformance)' 라는 말을 명확하게 구분해서 사용하는 이유일 것입니다.
 
-[^synthesized]: 본문에서 '통합된 구현 (synthesized implementation)' 이라는 것은 스위프트 내부에 이미 구현되어 있는 것을 의미합니다. 즉 `Equatable` 프로토콜을 준수하는 코드는 우리가 따로 만들 수도 있겠지만, 스위프트가 제공하는 '통합된 구현' 을 사용하면 더 쉽게 작성할 수 있다는 의미입니다.
+[^synthesized]: 본문에서 말하는 '통합된 구현 (synthesized implementation)' 은 이미 스위프트 내부에서 구현되어 있다는 의미입니다. 즉, '`Equatable` 프로토콜' 같은 것은 스위프트 내부에 이미 구현되어 있는 것을 사용하기만 하면 됩니다.
 
-[^original-declaration]: 본문에서 '원래의 선언 (original declaration) 을 담고 있는 파일' 이라는 말을 사용하는 것을 볼 때, 다른 파일에서 `Equatable` 에 대한 '준수성 (conformance)' 를 작성한다고 해서 '통합된 구현' 을 사용할 수 있는 것은 아니라는 것을 추측할 수 있습니다.
+[^associated-types]: 여기서 말하는 '결합 타입 (associated types)' 이라는 것은 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. '결합 값' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다.
+
+[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자', '동치 연산자', '같음 연산자' 등으로 옮길 수 있을텐데, 위키피디아에서 'equal to' 를 '같음' 으로 번역하고 있기 때문에, 여기서는 '같음 비교' 라는 말로 옮기도록 합니다. '관계 연산자' 들의 용어에 대해서는 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
+
+[^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
+
+[^remaining-comparison-operators]: 스위프트의 '통합된 구현' 을 사용하면 `<` 연산자 외에도, '기본 구현' 된 `<=`, `>`, `>=` 연산자들을 부여 받는데, 나머지 연산자들은 이 '기본 구현' 을 통해서 구현한다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 부여 받을 수 있다면, 어떤 연산자도 구현할 필요가 없다는 의미입니다.
 
 [^multiple-inherited-protocols]: 스위프트에서 클래스 상속은 한 개만 되지만, 프로토콜 상속은 여러 개가 가능하다는 것을 말하는 것으로 이해하면 될 것 같습니다.
 
@@ -1018,5 +1024,3 @@ print(differentNumbers.allEqual())
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
 [^specialized]: 추가 설명이나 예제가 있으면 좋겠지만, 원문에 따로 설명된 것이 없는게 아쉽습니다. Apple Forum 의 질문 답변 중 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 이라는 글에 따르면, 여러 개의 '구속 조건 (constraints)' 을 동시에 만족하는 경우는 타입이 계층 관계일 때 발생하는데, '가장 특수화된 구속 조건' 을 따른다는 것은 타입의 계층 관계에서 가장 하위 클래스를 따르는 것으로 추측됩니다.
-
-[^remaining-comparison-operators]: 여기서 남은 비교 연산자들을 제공한다는 것은 `<` 연산자만 있으면, 이를 통해 `<=`, `>`, `>=` 연산자는 자동으로 만들어진다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 받을 수 있다면, 실제로는 아무 것도 구현할 필요가 없습니다.
