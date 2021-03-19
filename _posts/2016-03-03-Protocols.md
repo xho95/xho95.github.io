@@ -580,15 +580,15 @@ for thing in things {
 
 ### Protocol Inheritance (프로토콜 상속)
 
-프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 상속받은 필수 조건 위에 필수 조건을 더 추가할 수도 있습니다. 프로토콜 상속을 위한 구문 표현은 클래스 상속을 위한 구문 표현과 비슷하지만, 여러 개의 상속된 프로토콜을, 쉼표로 구분하여, 나열하는 옵션을 가지고 있습니다[^multiple-inherited-protocols]:
+프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 상속한 '필수 조건' 위에 다른 '필수 조건' 을 더 추가할 수 있습니다. '프로토콜 상속' 구문은 '클래스 상속' 구문과 비슷하지만, 쉼표로 구분하여, '다중 상속 프로토콜' 을 나열할 수 있습니다[^multiple-inherited-protocols]:
 
 ```swift
 protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
-  // 여기서 프로토콜을 정의합니다.
+  // 프로토콜 정의는 여기에 둡니다.
 }
 ```
 
-다음은 위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜에 대한 예제입니다:
+다음은 위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜 예제입니다:
 
 ```swift
 protocol PrettyTextRepresentable: TextRepresentable {
@@ -596,7 +596,7 @@ protocol PrettyTextRepresentable: TextRepresentable {
 }
 ```
 
-이 예제는, `TextRepresentable` 을 상속하는, `PrettyTextRepresentable` 이라는, 새 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택하는 어떤 것이든 반드시 `TextRepresentable` 이 강제하는 모든 필수 조건을 만족해야 하며, 거기에 _더해서 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 필수 조건도 만족해야 합니다. 이 예제에서, `PrettyTextRepresentable` 은 단일한 필수 조건을 추가하여 `String` 을 반환하는 `prettyTextualDescription` 이라는 '획득 가능한 (gettable)' 속성을 제공하도록 합니다.
+이 예제는, `TextRepresentable` 을 상속한, `PrettyTextRepresentable` 이라는, 새로운 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택한 어떤 것이든 `TextRepresentable` 이 강제하는 모든 '필수 조건' , 에 _더해서 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 '필수 조건' 도, 반드시 만족해야 합니다. 이 예제의, `PrettyTextRepresentable` 은 `String` 을 반환하는 `prettyTextualDescription` 이라는 '획득 가능한 속성' 을 제공하기 위한 단일 '필수 조건' 을 추가합니다.
 
 `SnakesAndLadders` 클래스는 `PrettyTextRepresentable` 을 채택하고 준수하도록 확장할 수 있습니다:
 
@@ -619,13 +619,13 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 }
 ```
 
-이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하고 `SnakesAndLadders` 타입을 위해 `prettyTextualDescription` 속성에 대한 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 것은 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 의 구현은 먼저 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 접근한 다음 출력 문자열을 만들기 시작합니다. 이는 '콜론' 과 '줄 끊음 (line break)' 을 추가해서, 문장 설명의 시작 부분을 예쁘게 꾸밉니다. 그런 다음 게임판 정사각형에 대한 배열에 동작을 반복 적용시켜서, 각 정사각형의 내용을 표현하는 기하학 도형을 추가합니다:
+이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하여 `SnakesAndLadders` 타입을 위한 `prettyTextualDescription` 속성의 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 구현은 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 먼저 접근하고나서 출력 문자열을 만들기 시작합니다. 이는 '콜론 (`:`)' 과 '줄 끊음 (`\n`)' 을 덧붙여, 문장 표현을 예쁘게 꾸미기 시작합니다. 그런 다음 게임판의 '정사각형 배열' 에 동작을 반복해서, 각 정사각형의 내용물을 표현하는 기하학 도형을 덧붙입니다:
 
-* 정사각형의 값이 `0` 보다 크다면, 사다리의 밑부분인 것이며, `▲` 로 표현합니다.
-* 정사각형의 값이 `0` 보다 작다면, 뱀의 머리인 것이며, `▼` 로 표현합니다.
-* 그 외의 경우, 정사각형의 값은 `0` 이고, "얽매이지 않은 (free)" 정사각형인 것이며, `○` 로 표현됩니다.
+* 정사각형의 값이 `0` 보다 크면, 사다리의 밑부분이므로, `▲` 로 표현합니다.
+* 정사각형의 값이 `0` 보다 작으면, 뱀의 머리이므로, `▼` 로 표현합니다.
+* 그 외의 경우, 정사각형의 값은 `0` 이고, "자유로운 (free)" 정사각형이므로, `○` 로 표현합니다.
 
-이제 `prettyTextualDescription` 속성을 사용하면 어떤 `SnakesAndLadders` 인스턴스에 대해서도 문장 설명을 예쁘게 꾸밀 수 있습니다:
+이제 `prettyTextualDescription` 속성은 어떤 `SnakesAndLadders` 인스턴스의 '예쁘게 꾸민 문장 설명' 이라도 인쇄할 수 있습니다:
 
 ```swift
 print(game.prettyTextualDescription)
@@ -1017,7 +1017,7 @@ print(differentNumbers.allEqual())
 
 [^remaining-comparison-operators]: 스위프트의 '통합된 구현' 을 사용하면 `<` 연산자 외에도, '기본 구현' 된 `<=`, `>`, `>=` 연산자들을 부여 받는데, 나머지 연산자들은 이 '기본 구현' 을 통해서 구현한다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 부여 받을 수 있다면, 어떤 연산자도 구현할 필요가 없다는 의미입니다.
 
-[^multiple-inherited-protocols]: 스위프트에서 클래스 상속은 한 개만 되지만, 프로토콜 상속은 여러 개가 가능하다는 것을 말하는 것으로 이해하면 될 것 같습니다.
+[^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 준수할 수 있습니다. 스위프트에 있는 '프로토콜의 준수' 라는 개념은 C++ 에 있는 '순수 추상 클래스의 상속' 과 비슷합니다.
 
 [^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은, '스위프트 프로그래밍 언어' 본문에서 꽤 자주 나오는 말인데, 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 각각에 대해서는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하고 있습니다.
 
