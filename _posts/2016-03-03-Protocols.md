@@ -576,7 +576,7 @@ for thing in things {
 // A hamster named Simon (Simon 이라는 이름의 햄스터)
 ```
 
-`thing` 상수는 `TextRepresentable` 타입 임을 기억하기 바랍니다. 타입은, 실제 그 속은 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입 일지라도, 이 타입들이 아닙니다. 그럼에도 불구하고, 이는 `TextRepresentable` 타입이며, `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가진다는 것을 알기 때문에, 반복문의 매 회차마다 `thing.textualDescription` 에 접근하는 것은 안전합니다.
+`thing` 상수는 `TextRepresentable` 타입 임을 기억하기 바랍니다. 타입은, 실제 그 속은 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입 일지라도, 이 타입들이 아닙니다. 그럼에도 불구하고, 이는 `TextRepresentable` 타입이며, `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가짐을 알기 때문에, 반복문의 매 회차마다 `thing.textualDescription` 에 안전하게 접근할 수 있습니다.
 
 ### Protocol Inheritance (프로토콜 상속)
 
@@ -649,11 +649,11 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 ### Protocol Composition (프로토콜 합성)
 
-타입이 '다중 프로토콜' 을 동시에 준수하도록 요구하는 것이 유용할 수 있습니다. _프로토콜 합성 (protocol composition)_ 으로 다중 프로토콜을 단일 '필수 조건' 속에 조합할 수 있습니다. '프로토콜 합성' 은 마치 모든 프로토콜의 '필수 조건' 들을 '합성' 안에 조합한 '임시 지역 프로토콜' 을 정의한 것처럼 작동합니다. '프로토콜 합성' 은 어떤 새로운 프로토콜 타입도 정의하지 않습니다.
+타입이 동시에 여러 개의 프로토콜을 준수하도록 요구하는 것이 유용할 수 있습니다. 여러 개의 프로토콜은 _프로토콜 합성 (protocol composition)_ 을 써서 '단일 필수 조건' 으로 조합할 수 있습니다. '프로토콜 합성' 은 마치 모든 프로토콜의 '조합된 필수 조건' 들을 '합성' 해서 가진 '임시 지역 프로토콜' 을 정의한 것처럼 작동합니다. '프로토콜 합성' 은 어떤 새로운 프로토콜 타입도 정의하지 않습니다.
 
-'프로토콜 합성' 은 `SomeProtocol & AnotherProtocol` 같은 형식을 가집니다. 필요한 만큼 많은 수의 프로토콜을, '앤드 기호 (ampersands; `&`)' 로 구분하여, 나열할 수 있습니다. 프로토콜 목록에 더하여, '프로토콜 합성' 은, '필수 (required) 상위 클래스' 를 지정하는데 사용할 수 있는, 클래스 타입 하나를 담을 수도 있습니다.
+'프로토콜 합성' 은 `SomeProtocol & AnotherProtocol` 과 같은 형식을 가집니다. 필요한 만큼 많은 개수의 프로토콜을, '앤드 기호 (ampersands; `&`)' 로 구분하여, 나열할 수 있습니다. 이 '프로토콜 목록' 에 더하여, '프로토콜 합성' 은, '필수 (required) 상위 클래스' 지정에 사용할 수 있는, 클래스 타입도 하나 담을 수 있습니다.
 
-다음은 `Named` 와 `Aged` 라는 두 프로토콜을 함수 매개 변수에 대한 '단일 프로토콜 합성 필수 조건' 으로 조합하는 예제입니다:
+다음은 `Named` 와 `Aged` 라는 두 프로토콜을 '함수 매개 변수' 에 대한 '단일 프로토콜 합성 필수 조건' 으로 조합하는 예제입니다:
 
 ```swift
 protocol Named {
@@ -674,13 +674,13 @@ wishHappyBirthday(to: birthdayPerson)
 // "Happy birthday, Malcolm, you're 21!" 를 인쇄합니다.
 ```
 
-이 예제에서, `Named` 프로토콜은 `name` 이라는 획득 가능한 `String` 속성에 대한 단일한 필수 조건을 가집니다. `Aged` 프로토콜은 `age` 라는 획득 가능한 `Int` 속성에 대한 단일 필수 조건을 가지고 있습니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택하고 있습니다.
+이 예제에서, `Named` 프로토콜은 `name` 이라는 '획득 가능한 `String` 속성' 에 대한 '단일 필수 조건' 을 가집니다. `Aged` 프로토콜은 `age` 라는 '획득 가능한 `Int` 속성' 에 대한 '단일 필수 조건' 을 가집니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택합니다.
 
-이 예제는 `wishHappyBirthday(to:)` 라는 함수도 정의합니다. `celebrator` 매개 변수의 타입은 `Named & Aged` 인데, 이는 "`Named` 와 `Aged` 프로토콜을 모두 준수하는 어떤 타입" 을 의미합니다. 두 필수 프로토콜을 모두 준수하는 한, 어떤 타입이 함수에 전달되는 지는 별로 중요하지 않습니다.
+이 예제는 `wishHappyBirthday(to:)` 함수도 정의하고 있습니다. '`celebrator` 매개 변수' 의 타입은, "`Named` 와 `Aged` 프로토콜을 둘 다 준수하는 어떤 타입" 을 의미하는, `Named & Aged` 입니다. 두 '필수 프로토콜' 을 다 준수하는 한, 함수에 전달되는 특정 타입이 어느 것인지는 중요하지 않습니다.
 
-그런 다음 이 예제는 `birthdayPerson` 이라는 새 `Person` 인스턴스를 생성하고 이 새 인스턴스를 `wishHappyBirthday(to:)` 함수로 전달합니다. `Person` 은 두 프로토콜을 모두 준수하므로, 이 호출은 유효하며, `wishHappyBirthday(to:)` 함수가 생일 인사말을 출력할 수 있습니다.
+그런 다음 이 예제는 `birthdayPerson` 이라는 새로운 `Person` 인스턴스를 생성하고 이 새로운 인스턴스를 `wishHappyBirthday(to:)` 함수에 전달합니다. `Person` 이 두 프로토콜을 다 준수하기 때문에, 이 호출은 유효해서, `wishHappyBirthday(to:)` 함수가 '생일 인사말' 을 인쇄할 수 있습니다.
 
-다음은 이전 예제에 있는 `Named` 프로토콜과 `Location` 클래스를 병합하는 예제입니다:
+다음은 이전 예제의 '`Named` 프로토콜' 을 '`Location` 클래스' 와 조합하는 예제입니다:
 
 ```swift
 class Location {
@@ -704,12 +704,12 @@ func beginConcert(in location: Location & Named) {
 
 let seattle = City(name: "Seattle", latitude: 47.6, longitude: -122.3)
 beginConcert(in: seattle)
-// "Hello, Seattle!" 를 출력합니다.
+// "Hello, Seattle!" 를 인쇄합니다.
 ```
 
-`beginConcert(in:)` 함수는 `Location & Named` 타입의 매개 변수를 받아 들이는데, 이는 "`Location` 의 하위 클래스이면서 `Named` 프로토콜을 준수하는 어떤 타입" 을 의미합니다. 이 경우, `City` 는 두 필수 조건을 모두 만족합니다.
+`beginConcert(in:)` 함수는, "`Location` 의 하위 클래스이면서 `Named` 프로토콜을 준수하는 어떤 타입" 을 의미하는, `Location & Named` 타입의 매개 변수를 취합니다. 이 경우, `City` 는 두 필수 조건을 다 만족합니다.
 
-`birthdayPerson` 을 `beginConcert(in:)` 함수에 전달하는 것은 무효한데 왜냐면 `Person` 이 `Location` 의 하위 클래스가 아니기 때문입니다. 이와 마찬가지로, `Named` 프로토콜을 준수하지 않는 `Location` 의 하위 클래스를 만든 경우, 이 타입의 인스턴스를 사용하여 `beginConcert(in:)` 를 호출하면 역시 무효할 것입니다.
+`birthdayPerson` 을 `beginConcert(in:)` 함수에 전달하는 것은 '무효 (invalid)' 인데 이는 `Person` 이 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Named` 프로토콜을 준수하지 않는 `Location` 의 하위 클래스를 만들고서, 해당 타입의 인스턴스로 `beginConcert(in:)` 를 호출하는 것 역시 '무효' 입니다.
 
 ### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
