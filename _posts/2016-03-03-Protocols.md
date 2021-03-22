@@ -786,7 +786,7 @@ for object in objects {
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
-프로토콜에 대해서 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이 필수 조건은 프로토콜을 준수하는 타입에서 구현해야만 하는 것은 아닙니다. 옵셔널 필수 조건은 프로토콜을 정의할 때 `optional` 수정자를 접두사로 붙여줍니다. 옵셔널 필수 조건을 사용하여 오브젝티브-C 언어와 상호 호환되는 코드를 작성할 수 있습니다. 프로토콜과 옵셔널 필수 조건 모두 반드시 `@objc` '특성 (attribute)' 으로 표시해야 합니다. `@objc` 프로토콜은 오브젝티브-C 클래스 또는 다른 `@objc` 클래스를 상속하는 클래스에서만 채택할 수 있다는 점에 주목하기 바랍니다. 구조체나 열거체는 채택할 수 없습니다.
+프로토콜을 위한 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이 '필수 조건' 들은 프로토콜을 준수하는 타입이 구현하지 않아도 됩니다. '옵셔널 필수 조건' 은 프로토콜 정의에서 `optional` 이라는 수정자를 접두사로 붙입니다. '옵셔널 필수 조건' 이 사용 가능하므로 오브젝티브-C 와 상호 호환되는 코드를 작성할 수 있습니다. '프로토콜' 과 '옵셔널 필수 조건' 은 둘 다 반드시 '`@objc` 특성 (attribute)'[^attribute] 으로 표시해야 합니다. '오브젝티브-C 클래스' 나 다른 `@objc` 클래스를 상속한 클래스만 '`@objc` 프로토콜' 을 채택할 수 있다는 것을 기억하기 바랍니다. 구조체나 열거체가 이를 채택할 순 없습니다.
 
 메소드와 속성을 옵셔널 필수 조건에서 사용할 때, 이들 타입은 자동으로 옵셔널이 됩니다. 예를 틀어, 타입이 `(Int) -> String` 인 메소드는 `((Int) -> String)?` 이 됩니다. 메소드의 반환 값이 아니라, 전체 함수 타입이 옵셔널로 포장된다는 것에 주목하기 바랍니다.
 
@@ -1024,6 +1024,8 @@ print(differentNumbers.allEqual())
 [^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. '기초 클래스' 에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
 
 [^type-safe]: '타입-안전한 방식 (type-safe way)' 은 스위프트에서 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 의미입니다. '타입 추론' 과 '타입 검사' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
+
+[^attribute]: 스위프트에서 '특성 (attribute)' 은 선언이나 타입에 추가적인 정보를 부여하기 위해 사용되는 기술입니다. '특성' 에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
