@@ -742,9 +742,9 @@ class Country: HasArea {
 }
 ```
 
-`Circle` 클래스는, `radius` 라는 저장 속성을 기반으로, `area` 속성 필수 조건을 계산 속성으로 구현합니다. `Country` 클래스는 `area` 필수 조건을 저장 속성으로 직접 구현합니다. 두 클래스 모두 올바르게 `HasArea` 프로토콜을 준수하고 있습니다.
+`Circle` 클래스는, `radius` 라는 저장 속성을 기초로, `area` 속성 필수 조건을 계산 속성으로 구현합니다. `Country` 클래스는 `area` 필수 조건을 저장 속성으로 직접 구현합니다. 두 클래스 모두 다 올바르게 `HasArea` 프로토콜을 준수합니다.
 
-다음은, `Animal` 이라는 클래스인데, 이는 `HasArea` 프로토콜을 준수하지 않습니다:
+다음은, `HasArea` 프로토콜을 준수하지 않는, `Animal` 이라는 클래스입니다:
 
 ```swift
 class Animal {
@@ -753,7 +753,7 @@ class Animal {
 }
 ```
 
-`Circle`, `Country`, 그리고 `Animal` 클래스에는 서로 공유하는 '기초 클래스 (base class)' 가 없습니다. 그럼에도 불구하고, 이들은 모두 클래스이므로, 이 세 가지 타입의 인스턴스를 모두 사용하여 `AnyObject` 타입의 값을 저장하는 배열을 초기화할 수 있습니다:
+`Circle`, `Country`, 그리고 `Animal` 클래스는 서로 공유하는 '기초 (base) 클래스'[^base-class] 가 없습니다. 그럼에도 불구하고, 모두 클래스이므로, `AnyObject` 타입인 값을 저장하는 배열의 초기화에 세 타입의 인스턴스 모두 사용 가능합니다:
 
 ```swift
 let objects: [AnyObject] = [
@@ -763,26 +763,26 @@ let objects: [AnyObject] = [
 ]
 ```
 
-`objects` 배열은 '배열 글자 값 (array literal)' 로 초기화 되는데 `Circle` 인스턴스는 `2` 인 반지름 단위를 가지고; `Country` 인스턴스는 영국 면적을 제곱 미터로 초기화된 값이며; `Animal` 인스턴스는 네 개의 다리를 가지고 있습니다.
+`objects` 배열은 반지름이 '2' 인 `Circle` 인스턴스와; 제곱 킬로미터 단위의 영국 면적으로 초기화된 `Country` 인스턴스; 그리고 다리가 네 개인 `Animal` 인스턴스, 를 담은 '배열 글자 값 (literal)' 으로 초기화 됩니다.
 
-`objects` 배열은 이제 반복 적용해서, 배열에 있는 각 객체가 `HasArea` 프로토콜을 준수하는 있는 지 확인하는 검사를 할 수 있습니다:
+이제 `objects` 배열을 반복하여, 배열에 있는 각각의 객체가 `HasArea` 프로토콜을 준수하고 있는지 확인하는 검사를 할 수 있습니다:
 
 ```swift
 for object in objects {
-    if let objectWithArea = object as? HasArea {
-        print("Area is \(objectWithArea.area)")
-    } else {
-        print("Something that doesn't have an area")
-    }
+  if let objectWithArea = object as? HasArea {
+    print("Area is \(objectWithArea.area)")
+  } else {
+    print("Something that doesn't have an area")
+  }
 }
 // Area is 12.5663708
 // Area is 243610.0
 // Something that doesn't have an area
 ```
 
-배열에 있는 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자로 반환된 옵셔널 값은 포장이 풀리고 '옵셔널 연결 (optional binding; 옵셔널 바인딩)' 을 통해 `objectWithArea` 라는 상수에 들어가게 됩니다. `objectWithArea` 상수의 타입은 `HasArea` 임을 알고 있으므로, '타입-안전 (type-safe)'[^type-safe] 한 방식으로 `area` 속성에 접근하고 이를 출력할 수 있습니다.
+배열에 있는 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자가 반환하는 옵셔널 값을 '옵셔널 연결' 로 포장을 풀어 `objectWithArea` 라는 상수에 넣습니다. `objectWithArea` 상수의 타입이 `HasArea` 임을 알고 있으므로, `area` 속성에 '타입-안전 (type-safe)'[^type-safe] 한 방식으로 접근해서 인쇄할 수 있습니다.
 
-'변환 과정 (casting process)' 에서 실제 객체는 바뀌지 않는다는 점에 주목하기 바랍니다. 이들은 계속해서 `Circle`, `Country`, 그리고 `Animal` 입니다. 하지만, 이들이 `objectWithArea` 라는 상수에 저장되는 시점에서, 이들이 `HasArea` 라는 것만 알게 되므로, `area` 속성에만 접근할 수 있습니다.
+'변환 (casting) 과정' 에서 실제 객체는 바뀌지 않는다는 것을 기억하기 바랍니다. 이들은 계속해서 `Circle`, `Country`, 그리고 `Animal` 입니다. 하지만, `objectWithArea` 상수에 저장하는 시점에는, `HasArea` 타입이라는 것만 알고 있으므로, `area` 속성에만 접근할 수 있습니다.
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
@@ -1021,7 +1021,9 @@ print(differentNumbers.allEqual())
 
 [^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
 
-[^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은, '스위프트 프로그래밍 언어' 본문에서 꽤 자주 나오는 말인데, 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 각각에 대해서는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하고 있습니다.
+[^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. '기초 클래스' 에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
+
+[^type-safe]: '타입-안전한 방식 (type-safe way)' 은 스위프트에서 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 의미입니다. '타입 추론' 과 '타입 검사' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
