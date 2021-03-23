@@ -742,9 +742,9 @@ class Country: HasArea {
 }
 ```
 
-`Circle` 클래스는, `radius` 라는 저장 속성을 기반으로, `area` 속성 필수 조건을 계산 속성으로 구현합니다. `Country` 클래스는 `area` 필수 조건을 저장 속성으로 직접 구현합니다. 두 클래스 모두 올바르게 `HasArea` 프로토콜을 준수하고 있습니다.
+`Circle` 클래스는, `radius` 라는 저장 속성을 기초로, `area` 속성 필수 조건을 계산 속성으로 구현합니다. `Country` 클래스는 `area` 필수 조건을 저장 속성으로 직접 구현합니다. 두 클래스 모두 다 올바르게 `HasArea` 프로토콜을 준수합니다.
 
-다음은, `Animal` 이라는 클래스인데, 이는 `HasArea` 프로토콜을 준수하지 않습니다:
+다음은, `HasArea` 프로토콜을 준수하지 않는, `Animal` 이라는 클래스입니다:
 
 ```swift
 class Animal {
@@ -753,7 +753,7 @@ class Animal {
 }
 ```
 
-`Circle`, `Country`, 그리고 `Animal` 클래스에는 서로 공유하는 '기초 클래스 (base class)' 가 없습니다. 그럼에도 불구하고, 이들은 모두 클래스이므로, 이 세 가지 타입의 인스턴스를 모두 사용하여 `AnyObject` 타입의 값을 저장하는 배열을 초기화할 수 있습니다:
+`Circle`, `Country`, 그리고 `Animal` 클래스는 서로 공유하는 '기초 (base) 클래스'[^base-class] 가 없습니다. 그럼에도 불구하고, 모두 클래스이므로, `AnyObject` 타입인 값을 저장하는 배열의 초기화에 세 타입의 인스턴스 모두 사용 가능합니다:
 
 ```swift
 let objects: [AnyObject] = [
@@ -763,36 +763,36 @@ let objects: [AnyObject] = [
 ]
 ```
 
-`objects` 배열은 '배열 글자 값 (array literal)' 로 초기화 되는데 `Circle` 인스턴스는 `2` 인 반지름 단위를 가지고; `Country` 인스턴스는 영국 면적을 제곱 미터로 초기화된 값이며; `Animal` 인스턴스는 네 개의 다리를 가지고 있습니다.
+`objects` 배열은 반지름이 '2' 인 `Circle` 인스턴스와; 제곱 킬로미터 단위의 영국 면적으로 초기화된 `Country` 인스턴스; 그리고 다리가 네 개인 `Animal` 인스턴스, 를 담은 '배열 글자 값 (literal)' 으로 초기화 됩니다.
 
-`objects` 배열은 이제 반복 적용해서, 배열에 있는 각 객체가 `HasArea` 프로토콜을 준수하는 있는 지 확인하는 검사를 할 수 있습니다:
+이제 `objects` 배열을 반복하여, 배열에 있는 각각의 객체가 `HasArea` 프로토콜을 준수하고 있는지 확인하는 검사를 할 수 있습니다:
 
 ```swift
 for object in objects {
-    if let objectWithArea = object as? HasArea {
-        print("Area is \(objectWithArea.area)")
-    } else {
-        print("Something that doesn't have an area")
-    }
+  if let objectWithArea = object as? HasArea {
+    print("Area is \(objectWithArea.area)")
+  } else {
+    print("Something that doesn't have an area")
+  }
 }
 // Area is 12.5663708
 // Area is 243610.0
 // Something that doesn't have an area
 ```
 
-배열에 있는 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자로 반환된 옵셔널 값은 포장이 풀리고 '옵셔널 연결 (optional binding; 옵셔널 바인딩)' 을 통해 `objectWithArea` 라는 상수에 들어가게 됩니다. `objectWithArea` 상수의 타입은 `HasArea` 임을 알고 있으므로, '타입-안전 (type-safe)'[^type-safe] 한 방식으로 `area` 속성에 접근하고 이를 출력할 수 있습니다.
+배열에 있는 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자가 반환하는 옵셔널 값을 '옵셔널 연결' 로 포장을 풀어 `objectWithArea` 라는 상수에 넣습니다. `objectWithArea` 상수의 타입이 `HasArea` 임을 알고 있으므로, `area` 속성에 '타입-안전 (type-safe)'[^type-safe] 한 방식으로 접근해서 인쇄할 수 있습니다.
 
-'변환 과정 (casting process)' 에서 실제 객체는 바뀌지 않는다는 점에 주목하기 바랍니다. 이들은 계속해서 `Circle`, `Country`, 그리고 `Animal` 입니다. 하지만, 이들이 `objectWithArea` 라는 상수에 저장되는 시점에서, 이들이 `HasArea` 라는 것만 알게 되므로, `area` 속성에만 접근할 수 있습니다.
+'변환 (casting) 과정' 에서 실제 객체는 바뀌지 않는다는 것을 기억하기 바랍니다. 이들은 계속해서 `Circle`, `Country`, 그리고 `Animal` 입니다. 하지만, `objectWithArea` 상수에 저장하는 시점에는, `HasArea` 타입이라는 것만 알고 있으므로, `area` 속성에만 접근할 수 있습니다.
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
-프로토콜에 대해서 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이 필수 조건은 프로토콜을 준수하는 타입에서 구현해야만 하는 것은 아닙니다. 옵셔널 필수 조건은 프로토콜을 정의할 때 `optional` 수정자를 접두사로 붙여줍니다. 옵셔널 필수 조건을 사용하여 오브젝티브-C 언어와 상호 호환되는 코드를 작성할 수 있습니다. 프로토콜과 옵셔널 필수 조건 모두 반드시 `@objc` '특성 (attribute)' 으로 표시해야 합니다. `@objc` 프로토콜은 오브젝티브-C 클래스 또는 다른 `@objc` 클래스를 상속하는 클래스에서만 채택할 수 있다는 점에 주목하기 바랍니다. 구조체나 열거체는 채택할 수 없습니다.
+프로토콜을 위한 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이 '필수 조건' 들은 프로토콜을 준수하는 타입이 구현하지 않아도 됩니다. '옵셔널 필수 조건' 은 프로토콜 정의에서 접두사로 '`optional` 수정자' 를 붙입니다. '옵셔널 필수 조건' 은 '오브젝티브-C' 와 상호 호환되는 코드를 작성하기 위하여 사용 가능합니다. '프로토콜' 과 '옵셔널 필수 조건' 은 둘 다 반드시 '`@objc` 특성 (attribute)'[^attribute] 으로 표시해야 합니다. 오브젝티브-C 클래스나 다른 `@objc` 클래스를 상속한 클래스 만이 '`@objc` 프로토콜' 을 채택할 수 있다는 것을 기억하기 바랍니다. 구조체나 열거체가 이를 채택할 순 없습니다.
 
-메소드와 속성을 옵셔널 필수 조건에서 사용할 때, 이들 타입은 자동으로 옵셔널이 됩니다. 예를 틀어, 타입이 `(Int) -> String` 인 메소드는 `((Int) -> String)?` 이 됩니다. 메소드의 반환 값이 아니라, 전체 함수 타입이 옵셔널로 포장된다는 것에 주목하기 바랍니다.
+'옵셔널 필수 조건' 에서 메소드나 속성을 사용할 때, 그 타입은 자동으로 '옵셔널' 이 됩니다. 예를 들어, `(Int) -> String` 타입의 메소드는 `((Int) -> String)?` 이 됩니다. 메소드 반환 값이 아니라, '전체 함수 타입' 을 옵셔널로 포장한다는 것을 기억하기 바랍니다.
 
-옵셔널 프로토콜 필수 조건은, 프로토콜을 준수하는 타입이 이 필수 조건을 구현하지 않을 가능성을 기술하기 위하여, '옵셔널 연쇄' 와 같이 사용할 수 있습니다. 옵셔널 메소드의 구현을 검사하려면 호출할 때 메소드의 이름 뒤에, `someOptionalMethod?(someArgument)` 와 같이, 물음표를 붙이면 됩니다. '옵셔널 연쇄 (optional chaining)' 에 대한 정보는, [Optional Chaining (옵셔널 체이닝; 옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 를 참고하기 바랍니다.
+'옵셔널 프로토콜 필수 조건' 은, 프로토콜을 준수하는 타입이 필수 조건을 구현하지 않을 가능성을 밝히기 위해, '옵셔널 연쇄' 를 가지고 호출할 수 있습니다. '옵셔널 메소드' 를 구현했는 지는 호출할 때, `someOptionalMethod?(someArgument)` 같이, 메소드 이름 뒤에 물음표를 작성하여 검사합니다. '옵셔널 연쇄' 에 대한 정보는, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
-다음 예제는 `Counter` 라는 정수를-헤아리는 클래스를 정의하는데, 이는 외부 데이터 소스에서 제공하는 증가량을 사용합니다. 이 데이터 소스는, 두 개의 옵셔널 필수 조건을 가지는, `CounterDataSource` 프로토콜로 정의합니다:
+다음 예제는, 증가량을 제공하고자 외부 데이터 소스를 사용하는, `Counter` 라는 '정수를-세는' 클래스를 정의합니다. 이 데이터 소스는, 두 개의 '옵셔널 필수 조건' 을 가진, '`CounterDataSource` 프로토콜' 에서 정의합니다:
 
 ```swift
 @objc protocol CounterDataSource {
@@ -801,11 +801,11 @@ for object in objects {
 }
 ```
 
-`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 옵셔널 메소드 필수 조건과 `fixedIncrement` 라는 옵셔널 속성 필수 조건을 정의합니다. 이 필수 조건들은 데이터 소스가 `Counter` 인스턴스에게 적절한 증가량을 제공하도록 서로 다른 두 가지 방법을 정의합니다.
+`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 '옵셔널 메소드 필수 조건' 과 `fixedIncrement` 라는 '옵셔널 속성 필수 조건' 을 정의합니다. 이 필수 조건들은 데이터 소스가 `Count` 인스턴스에 적절한 증가량을 제공하기 위한 서로 다른 두 방식을 정의합니다.
 
-> 엄밀하게 말해서, `CounterDataSource` 프로토콜을 준수하는 사용자 정의 클래스를 작성하면서 _어느 (either)_ 프로토콜 필수 조건도 구현하지 않아도 됩니다. 결국, 둘 다 '옵셔널 (optional; 선택 사항)' 인 것입니다. 기술적으로 문제될 건 없지만, 좋은 데이터 소스라고 할 수는 없을 것입니다.
+> 엄밀하게 말해서, `CounterDataSource` 프로토콜을 준수하면서 _어느 (either)_ 프로토콜 필수 조건도 구현하지 않는 '사용자 정의 클래스' 를 작성할 수 있습니다. 결국 어째 됐든, 둘 다 '옵셔널' 입니다. 비록 기술적으론 허용될지라도, 이는 아주 좋은 데이터 소스이진 않을 것입니다.
 
-아래에서 정의된, `Counter` 클래스는, `CounterDataSource?` 타입의 옵셔널 `dataSource` 속성을 가집니다:
+아래에서 정의한, `Counter` 클래스는, `CounterDataSource?` 타입의 '옵셔널 `dataSource` 속성' 을 가집니다:
 
 ```swift
 class Counter {
@@ -821,19 +821,19 @@ class Counter {
 }
 ```
 
-`Counter` 클래스는 현재의 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는, 메소드가 호출될 때마다 `count` 속성을 증가하는, `increment` 라는 메소드도 정의합니다.
+`Counter` 클래스는 현재 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는, 매 번 메소드를 호출할 때마다 `count` 속성을 증가시키는, `increment` 라는 메소드도 정의합니다.
 
-`increment()` 메소드는 먼저 증가량을 가져오기 위해 데이터 소스에서 `incremental(forCount:)` 메소드의 구현을 찾습니다. `increment()` 메소드는 '옵셔널 연쇄 (optional chaining)' 를 사용하여 `increment(forCount:)` 호출을 시도하며, 현재의 `count` 값을 이 메소드의 단일한 인자로 전달합니다.
+`increment()` 메소드는 증가량을 가져오기 위해 먼저 데이터 소스에 대한 `incremental(forCount:)` 메소드가 구현됐는 지를 찾으려 합니다. `increment()` 메소드는 `increment(forCount:)` 호출을 시도하기 위해 '옵셔널 연쇄' 를 사용하며, 메소드의 단일 인자로 현재의 `count` 값을 전달합니다.
 
-여기서 _두 (two)_ 단계 깊이의 옵셔널 연쇄를 사용함에 주목하기 바랍니다. 첫째, `dataSource` 가 `nil` 일 수 있으므로, `dataSource` 이름 뒤에 물음표를 붙여서 `dataSource` 가 `nil` 이 아닌 경우에만 `incremental(forCount:)`  를 호출하도록 지시합니다. 둘째, 설령 `dataSource` 가 존재 _하더라도 (does)_, 이는 옵셔널 필수 조건이기 때문에, `increment(forCount:)` 를 구현했다는 보증을 할 수 없습니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성 또한 '옵셔널 연쇄' 로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재하는 경우에만-즉, `nil` 이 아닌 경우에만-일어납니다. 이것이 `incremental(forCount:)` 이름 뒤에 물음표를 표시한 이유입니다.
+여기서 _두 (two)_ 단계 수준의 '옵셔널 연쇄' 가 진행된 것을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 일 가능성이 있으므로, `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 가 호출돼야 함을 지시하도록 `dataSource` 는 이름 뒤에 물음표를 가집니다. 두 번째로, `dataSource` 가 존재 _할 (does)_ 지라도, 옵셔널 필수 조건이기 때문에, `increment(forCount:)` 를 구현한다는 보증이 없습니다. 여기서는, `increment(forCount:)` 를 구현하지 않았을 가능성도 '옵셔널 연쇄' 로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 이 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 도 이름 뒤에 물음표를 작성한 이유입니다.
 
-`increment(forCount:)` 호출은 이 두 가지 이유로 인해 실패할 수 있기 때문에, 이 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이것은 `increment(forCount:)` 가 `CounterDataSource` 의 정의에서 옵셔널이-아닌 `Int` 값을 반환하도록 정의되어 있더라도 마찬가지입니다. 비록 두 개의 옵셔널 연쇄 작업을, 하나 다음에 또 하나, 이어서 하더라도, 결과는 여전히 단일한 옵셔널로 '포장됩니다 (wrapped)'. 다중 옵셔널 연쇄 작업을 사용하는 것에 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (다중 수준의 연쇄 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-다중-수준의-연쇄-연결하기) 를 참고하기 바랍니다.
+`increment(forCount:)` 호출은 이 두 이유 중 어느 것으로든 실패할 수 있기 때문에, '_옵셔널 (optional)_ `Int` 값' 을 반환합니다. 이는 `increment(forCount:)` 가 `CounterDataSource` 정의에서 '옵셔널-아닌 `Int` 값' 을 반환하는 것으로 정의할 지라도 그렇습니다. 두 '옵셔널 연쇄' 연산이, 차례 차례, 있을지라도, 결과는 여전히 '단일 옵셔널' 로 '포장 (wrapped)' 됩니다. '다중 옵셔널 연쇄 연산' 을 사용하는 것에 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (다중 수준의 연쇄 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-다중-수준의-연쇄-연결하기) 를 참고하기 바랍니다.
 
-`increment(forCount:)` 를 호출 한 후에는, '옵셔널 연결' 을 사용하여, 반환된 옵셔널 `Int` 의 포장을 풀고 `amount` 라는 상수에 넣습니다. 만약 옵셔널 `Int` 가 값을 담고 있으면-다시 말해, '대리자 (delegate)' 와 메소드가 모두 존재하고, 메소드가 값을 반환한 경우-포장 속의 `amount` 가 저장 속성인 `count` 가 추가되어, 증가 연산을 종료합니다.
+`increment(forCount:)` 를 호출 한 후, '옵셔널 연결' 을 사용하여, 반환한 '옵셔널 `Int`' 의 포장을 풀고 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있는 경우-즉, '대리자' 와 메소드가 둘 다 존재하며, 메소드가 값을 반환한 경우-포장을 푼 `amount` 가 `count` 저장 속성에 추가되고, '증가' 를 완료합니다.
 
-만약 `increment(forCount:)` 메소드로부터 값을 가져오는 것이 가능하지 _않은 (not)_ 경우라면-`dataSource` 가 `nil` 이기 때문이거나, 아니면 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인 경우-그러면 `increment()` 메소드는 그 대신 데이터 소스의 `fixedIncrement` 속성으로부터 값을 가져오려고 시도합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이므로, 이 값은 옵셔널 `Int` 값인데, `fixedIncrement` 가 `CounterDataSource` 프로토콜 정의에서 옵셔널이-아닌 `Int` 속성으로 정의되어 있더라도 그렇습니다.
+`increment(forCount:)` 메소드에서 값을 가져오는 것이 가능하지 _않은 (not)_ 경우-`dataSource` 가 `nil` 이기 때문이거나, 또는 데이터 소스가 `increment(forCount:)` 를 구현하지 않은 때문인 경우-라면 그 때는 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 대신 값을 가져오려고 합니다. `fixedIncrement` 속성도 '옵셔널 필수 조건' 이므로, `fixedIncrement` 가 `CounterDataSource` 프로토콜 정의에서 '옵셔널-아닌 `Int` 속성' 으로 정의되어 있을지라도, 값은 '옵셔널 `Int`' 입니다.
 
-다음은 데이터 소스를 조회할 때마다 `3` 이라는 상수 값을 반환하는 간단한 `CounterDataSource` 구현입니다. 이를 위해 옵셔널 `fixedIncrement` 속성 필수 조건을 구현했습니다:
+다음은 조회할 때마다 데이터 소스가 `3` 이라는 상수 값을 반환하는 단순힌 `CounterDataSource` 의 구현입니다. 이는 '옵셔널 `fixedIncrement` 속성 필수 조건' 을 구현함으로써 이를 수행합니다:
 
 ```swift
 class ThreeSource: NSObject, CounterDataSource {
@@ -841,7 +841,7 @@ class ThreeSource: NSObject, CounterDataSource {
 }
 ```
 
-`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스에 대한 데이터 소스로 사용할 수 있습니다:
+`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스를 위한 데이터 소스로 사용할 수 있습니다:
 
 ```swift
 var counter = Counter()
@@ -856,9 +856,9 @@ for _ in 1...4 {
 // 12
 ```
 
-위의 코드는 새로운 `Counter` 인스턴스를 생성하여; 데이터 소스를 새로운 `ThreeSource` 인스턴스로 설정하며; '카운터 (counter)' 의 `increment()` 메소드를 네 번 호출합니다. 예상 대로, 카운터의 `count` 속성은 `increment()` 를 호출할 때마다 '3' 만큼 증가합니다.
+위 코드는 새로운 `Counter` 인스턴스를 생성하여; 데이터 소스로 새로운 `ThreeSource` 인스턴스를 설정하며; '측정기 (counter)' 의 `increment()` 메소드를 네 번 호출합니다. 예상한 것처럼, 측정기의 `count` 속성은 `increment()` 를 호출할 때마다 '3' 만큼 증가합니다.
 
-다음은 좀 더 복잡한 데이터 소스인 `TowardsZeroSource` 인데, 이는 `Counter` 인스턴스를 현재의 `count` 값에서 '0' 으로 '카운트 업 (count up)' 또는 '카운트 다운 (count down)' 하도록 합니다:
+다음은, `Counter` 인스턴스를 현재 `count` 값에서 '0' 으로 '위로 세거나 (count up)' '아래로 세는 (count down)', `TowardsZeroSource` 라는 좀 더 복잡한 데이터 소스입니다:
 
 ```swift
 class TowardsZeroSource: NSObject, CounterDataSource {
@@ -874,9 +874,9 @@ class TowardsZeroSource: NSObject, CounterDataSource {
 }
 ```
 
-`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 옵셔널 `increment(forCount:)` 메소드를 구현하여 `count` 인자 값을 사용하여 어느 방향으로 '카운트' 할 지를 알아냅니다. 만약 `count` 가 이미 '0' 라면, 이 메소드는 `0` 을 반환하여 더 이상 '카운트' 를 하지 않아도 됨을 지시합니다.
+`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 '옵셔널 `increment(forCount:)` 메소드' 를 구현하며 어느 방향으로 '셀 (count in)' 지를 알아내기 위해 `count` 인자 값을 사용합니다. `count` 가 이미 '0' 이면, 더 이상 세지 말아야 함을 지시하기 위해 메소드가 `0` 을 반환합니다.
 
-`TowardsZeroSource` 인스턴스를 기존에 존재하던 `Counter` 인스턴스와 같이 사용하여 `-4` 에서 '0' 까지 '카운트' 할 수 있습니다. 일단 한번 '카운터' 가 '0' 에 도달하면, 더 이상 카운트되지 않습니다.
+`-4` 에서 '0' 까지 세기 위해 기존 `Counter` 인스턴스와 `TowardsZeroSource` 의 인스턴스를 같이 사용할 수 있습니다. '측정기' 가 '0' 에 닿으면, 더 이상 세지 않습니다:
 
 ```swift
 counter.count = -4
@@ -1021,7 +1021,11 @@ print(differentNumbers.allEqual())
 
 [^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
 
-[^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은, '스위프트 프로그래밍 언어' 본문에서 꽤 자주 나오는 말인데, 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 각각에 대해서는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하고 있습니다.
+[^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. '기초 클래스' 에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
+
+[^type-safe]: '타입-안전한 방식 (type-safe way)' 은 스위프트에서 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 의미입니다. '타입 추론' 과 '타입 검사' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
+
+[^attribute]: 스위프트에서 '특성 (attribute)' 은 선언이나 타입에 추가적인 정보를 부여하는 도구입니다. '특성' 에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
