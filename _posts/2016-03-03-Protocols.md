@@ -786,13 +786,13 @@ for object in objects {
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
-프로토콜을 위한 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이 '필수 조건' 들은 프로토콜을 준수하는 타입이 구현하지 않아도 됩니다. '옵셔널 필수 조건' 은 프로토콜 정의에서 `optional` 이라는 수정자를 접두사로 붙입니다. '옵셔널 필수 조건' 이 사용 가능하므로 오브젝티브-C 와 상호 호환되는 코드를 작성할 수 있습니다. '프로토콜' 과 '옵셔널 필수 조건' 은 둘 다 반드시 '`@objc` 특성 (attribute)'[^attribute] 으로 표시해야 합니다. '오브젝티브-C 클래스' 나 다른 `@objc` 클래스를 상속한 클래스만 '`@objc` 프로토콜' 을 채택할 수 있다는 것을 기억하기 바랍니다. 구조체나 열거체가 이를 채택할 순 없습니다.
+프로토콜을 위한 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이 '필수 조건' 들은 프로토콜을 준수하는 타입이 구현하지 않아도 됩니다. '옵셔널 필수 조건' 은 프로토콜 정의에서 접두사로 '`optional` 수정자' 를 붙입니다. '옵셔널 필수 조건' 은 '오브젝티브-C' 와 상호 호환되는 코드를 작성하기 위하여 사용 가능합니다. '프로토콜' 과 '옵셔널 필수 조건' 은 둘 다 반드시 '`@objc` 특성 (attribute)'[^attribute] 으로 표시해야 합니다. 오브젝티브-C 클래스나 다른 `@objc` 클래스를 상속한 클래스 만이 '`@objc` 프로토콜' 을 채택할 수 있다는 것을 기억하기 바랍니다. 구조체나 열거체가 이를 채택할 순 없습니다.
 
-'옵셔널 필수 조건' 에서 메소드나 속성을 사용할 때, 이의 타입은 자동으로 '옵셔널' 이 됩니다. 예를 틀어, `(Int) -> String` 타입인 메소드는 `((Int) -> String)?` 이 됩니다. 메소드의 반환 값이 아닌, 전체 함수 타입을 옵셔널로 포장한다는 것을 기억하기 바랍니다.
+'옵셔널 필수 조건' 에서 메소드나 속성을 사용할 때, 그 타입은 자동으로 '옵셔널' 이 됩니다. 예를 들어, `(Int) -> String` 타입의 메소드는 `((Int) -> String)?` 이 됩니다. 메소드 반환 값이 아니라, '전체 함수 타입' 을 옵셔널로 포장한다는 것을 기억하기 바랍니다.
 
-'옵셔널 프로토콜 필수 조건' 은, 프로토콜을 준수하는 타입이 필수 조건을 구현하지 않았을 가능성을 밝히고자, '옵셔널 연쇄 (optional chaining)' 로 호출할 수 있습니다. '옵셔널 메소드' 의 구현은 호출할 때, `someOptionalMethod?(someArgument)` 같이, 메소드 이름 뒤에 물음표를 작성하여 검사합니다. '옵셔널 연쇄' 에 대한 정보는, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
+'옵셔널 프로토콜 필수 조건' 은, 프로토콜을 준수하는 타입이 필수 조건을 구현하지 않을 가능성을 밝히기 위해, '옵셔널 연쇄' 를 가지고 호출할 수 있습니다. '옵셔널 메소드' 를 구현했는 지는 호출할 때, `someOptionalMethod?(someArgument)` 같이, 메소드 이름 뒤에 물음표를 작성하여 검사합니다. '옵셔널 연쇄' 에 대한 정보는, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
-다음 예제는, `Counter` 라는, 외부 자료 소스에서 제공하는 '증가량' 를 사용하는 '정수-세기 클래스' 를 정의합니다. 이 자료 소스는, 두 개의 '옵셔널 필수 조건' 을 가진, '`CounterDataSource` 프로토콜' 이 정의합니다:
+다음 예제는, 증가량을 제공하고자 외부 데이터 소스를 사용하는, `Counter` 라는 '정수를-세는' 클래스를 정의합니다. 이 데이터 소스는, 두 개의 '옵셔널 필수 조건' 을 가진, '`CounterDataSource` 프로토콜' 에서 정의합니다:
 
 ```swift
 @objc protocol CounterDataSource {
@@ -801,11 +801,11 @@ for object in objects {
 }
 ```
 
-`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 옵셔널 메소드 필수 조건과 `fixedIncrement` 라는 옵셔널 속성 필수 조건을 정의합니다. 이 필수 조건들은 데이터 소스가 `Counter` 인스턴스에게 적절한 증가량을 제공하도록 서로 다른 두 가지 방법을 정의합니다.
+`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 '옵셔널 메소드 필수 조건' 과 `fixedIncrement` 라는 '옵셔널 속성 필수 조건' 을 정의합니다. 이 필수 조건들은 데이터 소스가 `Count` 인스턴스에 적절한 증가량을 제공하기 위한 서로 다른 두 방식을 정의합니다.
 
-> 엄밀하게 말해서, `CounterDataSource` 프로토콜을 준수하는 사용자 정의 클래스를 작성하면서 _어느 (either)_ 프로토콜 필수 조건도 구현하지 않아도 됩니다. 결국, 둘 다 '옵셔널 (optional; 선택 사항)' 인 것입니다. 기술적으로 문제될 건 없지만, 좋은 데이터 소스라고 할 수는 없을 것입니다.
+> 엄밀하게 말해서, `CounterDataSource` 프로토콜을 준수하면서 _어느 (either)_ 프로토콜 필수 조건도 구현하지 않는 '사용자 정의 클래스' 를 작성할 수 있습니다. 결국 어째 됐든, 둘 다 '옵셔널' 입니다. 비록 기술적으론 허용될지라도, 이는 아주 좋은 데이터 소스이진 않을 것입니다.
 
-아래에서 정의된, `Counter` 클래스는, `CounterDataSource?` 타입의 옵셔널 `dataSource` 속성을 가집니다:
+아래에서 정의한, `Counter` 클래스는, `CounterDataSource?` 타입의 '옵셔널 `dataSource` 속성' 을 가집니다:
 
 ```swift
 class Counter {
@@ -1025,7 +1025,7 @@ print(differentNumbers.allEqual())
 
 [^type-safe]: '타입-안전한 방식 (type-safe way)' 은 스위프트에서 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 의미입니다. '타입 추론' 과 '타입 검사' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
-[^attribute]: 스위프트에서 '특성 (attribute)' 은 선언이나 타입에 추가적인 정보를 부여하기 위해 사용되는 기술입니다. '특성' 에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
+[^attribute]: 스위프트에서 '특성 (attribute)' 은 선언이나 타입에 추가적인 정보를 부여하는 도구입니다. '특성' 에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
