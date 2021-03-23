@@ -829,11 +829,11 @@ class Counter {
 
 `increment(forCount:)` 호출은 이 두 이유 중 어느 것으로든 실패할 수 있기 때문에, '_옵셔널 (optional)_ `Int` 값' 을 반환합니다. 이는 `increment(forCount:)` 가 `CounterDataSource` 정의에서 '옵셔널-아닌 `Int` 값' 을 반환하는 것으로 정의할 지라도 그렇습니다. 두 '옵셔널 연쇄' 연산이, 차례 차례, 있을지라도, 결과는 여전히 '단일 옵셔널' 로 '포장 (wrapped)' 됩니다. '다중 옵셔널 연쇄 연산' 을 사용하는 것에 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (다중 수준의 연쇄 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-다중-수준의-연쇄-연결하기) 를 참고하기 바랍니다.
 
-`increment(forCount:)` 를 호출 한 후에는, '옵셔널 연결' 을 사용하여, 반환된 옵셔널 `Int` 의 포장을 풀고 `amount` 라는 상수에 넣습니다. 만약 옵셔널 `Int` 가 값을 담고 있으면-다시 말해, '대리자 (delegate)' 와 메소드가 모두 존재하고, 메소드가 값을 반환한 경우-포장 속의 `amount` 가 저장 속성인 `count` 가 추가되어, 증가 연산을 종료합니다.
+`increment(forCount:)` 를 호출 한 후, '옵셔널 연결' 을 사용하여, 반환한 '옵셔널 `Int`' 의 포장을 풀고 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있는 경우-즉, '대리자' 와 메소드가 둘 다 존재하며, 메소드가 값을 반환한 경우-포장을 푼 `amount` 가 `count` 저장 속성에 추가되고, '증가' 를 완료합니다.
 
-만약 `increment(forCount:)` 메소드로부터 값을 가져오는 것이 가능하지 _않은 (not)_ 경우라면-`dataSource` 가 `nil` 이기 때문이거나, 아니면 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인 경우-그러면 `increment()` 메소드는 그 대신 데이터 소스의 `fixedIncrement` 속성으로부터 값을 가져오려고 시도합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이므로, 이 값은 옵셔널 `Int` 값인데, `fixedIncrement` 가 `CounterDataSource` 프로토콜 정의에서 옵셔널이-아닌 `Int` 속성으로 정의되어 있더라도 그렇습니다.
+`increment(forCount:)` 메소드에서 값을 가져오는 것이 가능하지 _않은 (not)_ 경우-`dataSource` 가 `nil` 이기 때문이거나, 또는 데이터 소스가 `increment(forCount:)` 를 구현하지 않은 때문인 경우-라면 그 때는 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 대신 값을 가져오려고 합니다. `fixedIncrement` 속성도 '옵셔널 필수 조건' 이므로, `fixedIncrement` 가 `CounterDataSource` 프로토콜 정의에서 '옵셔널-아닌 `Int` 속성' 으로 정의되어 있을지라도, 값은 '옵셔널 `Int`' 입니다.
 
-다음은 데이터 소스를 조회할 때마다 `3` 이라는 상수 값을 반환하는 간단한 `CounterDataSource` 구현입니다. 이를 위해 옵셔널 `fixedIncrement` 속성 필수 조건을 구현했습니다:
+다음은 조회할 때마다 데이터 소스가 `3` 이라는 상수 값을 반환하는 단순힌 `CounterDataSource` 의 구현입니다. 이는 '옵셔널 `fixedIncrement` 속성 필수 조건' 을 구현함으로써 이를 수행합니다:
 
 ```swift
 class ThreeSource: NSObject, CounterDataSource {
@@ -841,7 +841,7 @@ class ThreeSource: NSObject, CounterDataSource {
 }
 ```
 
-`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스에 대한 데이터 소스로 사용할 수 있습니다:
+`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스를 위한 데이터 소스로 사용할 수 있습니다:
 
 ```swift
 var counter = Counter()
@@ -856,9 +856,9 @@ for _ in 1...4 {
 // 12
 ```
 
-위의 코드는 새로운 `Counter` 인스턴스를 생성하여; 데이터 소스를 새로운 `ThreeSource` 인스턴스로 설정하며; '카운터 (counter)' 의 `increment()` 메소드를 네 번 호출합니다. 예상 대로, 카운터의 `count` 속성은 `increment()` 를 호출할 때마다 '3' 만큼 증가합니다.
+위 코드는 새로운 `Counter` 인스턴스를 생성하여; 데이터 소스로 새로운 `ThreeSource` 인스턴스를 설정하며; '측정기 (counter)' 의 `increment()` 메소드를 네 번 호출합니다. 예상한 것처럼, 측정기의 `count` 속성은 `increment()` 를 호출할 때마다 '3' 만큼 증가합니다.
 
-다음은 좀 더 복잡한 데이터 소스인 `TowardsZeroSource` 인데, 이는 `Counter` 인스턴스를 현재의 `count` 값에서 '0' 으로 '카운트 업 (count up)' 또는 '카운트 다운 (count down)' 하도록 합니다:
+다음은, `Counter` 인스턴스를 현재 `count` 값에서 '0' 으로 '위로 세거나 (count up)' '아래로 세는 (count down)', `TowardsZeroSource` 라는 좀 더 복잡한 데이터 소스입니다:
 
 ```swift
 class TowardsZeroSource: NSObject, CounterDataSource {
@@ -874,9 +874,9 @@ class TowardsZeroSource: NSObject, CounterDataSource {
 }
 ```
 
-`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 옵셔널 `increment(forCount:)` 메소드를 구현하여 `count` 인자 값을 사용하여 어느 방향으로 '카운트' 할 지를 알아냅니다. 만약 `count` 가 이미 '0' 라면, 이 메소드는 `0` 을 반환하여 더 이상 '카운트' 를 하지 않아도 됨을 지시합니다.
+`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 '옵셔널 `increment(forCount:)` 메소드' 를 구현하며 어느 방향으로 '셀 (count in)' 지를 알아내기 위해 `count` 인자 값을 사용합니다. `count` 가 이미 '0' 이면, 더 이상 세지 말아야 함을 지시하기 위해 메소드가 `0` 을 반환합니다.
 
-`TowardsZeroSource` 인스턴스를 기존에 존재하던 `Counter` 인스턴스와 같이 사용하여 `-4` 에서 '0' 까지 '카운트' 할 수 있습니다. 일단 한번 '카운터' 가 '0' 에 도달하면, 더 이상 카운트되지 않습니다.
+`-4` 에서 '0' 까지 세기 위해 기존 `Counter` 인스턴스와 `TowardsZeroSource` 의 인스턴스를 같이 사용할 수 있습니다. '측정기' 가 '0' 에 닿으면, 더 이상 세지 않습니다:
 
 ```swift
 counter.count = -4
