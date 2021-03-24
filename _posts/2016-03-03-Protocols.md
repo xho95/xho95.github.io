@@ -916,15 +916,15 @@ print("And here's a random Boolean: \(generator.randomBool())")
 // "And here's a random Boolean: true" 를 인쇄합니다.
 ```
 
-'프로토콜 확장' 은 준수 타입에 대한 구현을 추가할 수 있지만 프로토콜을 확장하거나 다른 프로토콜을 상속받도록 만들 수는 없습니다. '프로토콜 상속' 은 항상 해당 프로토콜 선언에서 직접 지정하는 것입니다.
+'프로토콜 익스텐션' 은 준수 타입에 구현을 추가할 순 있지만 프로토콜을 확장하도록 만들거나[^protocol-extend] 다른 프로토콜을 상속하게 할 수는 없습니다. '프로토콜 상속' 은 항상 프로토콜 선언 그 자체에서 지정합니다.
 
 #### Providing Default Implementations (기본 구현 제공하기)
 
-프로토콜 확장을 사용하여 해당 프로토콜의 어떤 '메소드 필수 조건' 이나 '계산 속성 필수 조건' 에 대해서도 '기본 구현 (default implementation)' 을 제공할 수 있습니다. 만약 준수 타입이 '필수 메소드' 나 '필수 속성' 에 대한 자체 구현을 제공하는 경우, 확장에서 제공되는 것 대신 해당 구현을 사용하게 됩니다.
+'프로토콜 익스텐션' 은 해당 프로토콜의 메소드 또는 계산 속성 '필수 조건' 에 '기본 구현' 을 제공하기 위해 사용할 수 있습니다. '준수 타입' 이 '필수 메소드' 나 '필수 속성' 에 대한 자신만의 구현을 제공할 경우, 해당 구현을 '익스텐션' 에서 제공하는 것 대신 사용할 것입니다.
 
-> 확장에서 제공되는 기본 구현을 가진 '프로토콜 필수 조건' 은 '옵셔널 프로토콜 필수 조건' 과는 다릅니다. 어느 쪽도 준수 타입이 직접 구현을 제공할 필요가 없다는 것은 같지만, 기본 구현을 가지는 '필수 조건' 은 '옵셔널 연쇄' 없이 호출할 수 있습니다.
+> '익스텐션' 이 제공하는 '기본 구현' 을 가진 '프로토콜 필수 조건' 은 '옵셔널 프로토콜 필수 조건' 과 서로 별개의 것입니다. 비록 어느 쪽이든 준수 타입이 자신만의 구현을 직접 제공하지 않아도 될지라도, '기본 구현' 을 가진 '필수 조건' 은 '옵셔널 연쇄' 없이도 호출할 수 있습니다.
 
-예를 들어, `TextRepresentable` 프로토콜을 상속하는, `PrettyTextRepresentable` 프로토콜은, 필수 속성인 `prettyTextualDescription` 에 대한 기본 구현을 제공하여 `textualDescription` 속성에 접근한 결과를 단순히 반환하도록 만들 수 있습니다:
+예를 들어, `TextRepresentable` 프로토콜을 상속한, `PrettyTextRepresentable` 프로토콜은, `textualDescription` 속성에 접근한 결과를 단순히 반환하도록 '필수 `prettyTextualDescription` 속성' 의 '기본 구현' 을 제공할 수 있습니다:
 
 ```swift
 extension PrettyTextRepresentable {
@@ -1030,6 +1030,8 @@ print(differentNumbers.allEqual())
 [^type-safe]: '타입-안전한 방식 (type-safe way)' 은 스위프트에서 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 의미입니다. '타입 추론' 과 '타입 검사' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
 [^attribute]: 스위프트에서 '특성 (attribute)' 은 선언이나 타입에 추가적인 정보를 부여하는 도구입니다. '특성' 에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
+
+[^protocol-extend]: '익스텐션 (extension)' 자체가 '확장' 이란 의미인데, '프로토콜 익스텐션' 으로 '프로토콜' 을 '확장' 할 수 없다라는 말이 이해가 안될 수도 있습니다. 여기서 말하는 '프로토콜을 확장할 수 없다' 라는 의미는 '프로토콜에 새로운 필수 조건들을 추가할 수 없다' 라는 의미입니다. '프로토콜 익스텐션' 은 프로토콜에 새로운 '필수 조건' 들을 추가하는 것이 아니라, 기존의 '필수 조건' 들에 '기본 구현' 을 제공하거나 새로운 '기능' 들을 추가하기 위해 사용하는 것입니다.
 
 [^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
 
