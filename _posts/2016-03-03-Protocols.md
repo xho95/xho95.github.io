@@ -894,9 +894,9 @@ for _ in 1...5 {
 
 ### Protocol Extensions (프로토콜 익스텐션; 규약 확장)
 
-프로토콜을 확장하여 준수 타입의 메소드, 초기자, 첨자 연산, 및 계산 속성에 대한 구현을 제공할 수 있습니다. 이것은, 각각의 개별 준수 타입 또는 전역 함수 대신, 프로토콜 자체에서 작동 방식을 정의하도록 해줍니다.
+프로토콜은 메소드, 초기자, 첨자 연산, 그리고 계산 속성 구현을 제공하도록 '준수 타입' 을 확장할 수 있습니다. 이는, 각 타입의 개별적인 준수나 전역 함수에서 보다는, 프로토콜 스스로에 대한 작동 방식을 정의하도록 허용합니다.
 
-예를 들어, `RandomNumberGenerator` 프로토콜을 확장하여, 필수 메소드인 `random()` 의 결과로 `Bool` 타입의 난수 값을 반환하는, `randomBool()` 이라는 메소드를 제공하도록 만들 수 있습니다:
+예를 들어, `RandomNumberGenerator` 프로토콜은, '필수 `random()` 메소드' 의 결과를 사용하여 '`Bool` 난수 값' 을 반환하는, '`randomBool()` 메소드' 를 제공하도록 확장할 수 있습니다:
 
 ```swift
 extension RandomNumberGenerator {
@@ -906,14 +906,14 @@ extension RandomNumberGenerator {
 }
 ```
 
-프로토콜에 대한 '익스텐션 (extension; 확장)' 을 생성하는 것으로, 모든 준수 타입들은 따로 추가적인 수정을 할 필요 없이 자동으로 해당 메소드 구현을 가지게 됩니다:
+프로토콜에 대한 '익스텐션' 을 생성함으로써, 모든 준수 타입은 어떤 추가적인 수정 없이도 이 메소드 구현을 자동으로 가지게 됩니다:
 
 ```swift
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101" 를 출력합니다.
+// "Here's a random number: 0.3746499199817101" 를 인쇄합니다.
 print("And here's a random Boolean: \(generator.randomBool())")
-// "And here's a random Boolean: true" 를 출력합니다.
+// "And here's a random Boolean: true" 를 인쇄합니다.
 ```
 
 '프로토콜 확장' 은 준수 타입에 대한 구현을 추가할 수 있지만 프로토콜을 확장하거나 다른 프로토콜을 상속받도록 만들 수는 없습니다. '프로토콜 상속' 은 항상 해당 프로토콜 선언에서 직접 지정하는 것입니다.
@@ -972,6 +972,10 @@ print(differentNumbers.allEqual())
 ```
 
 > 준수 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 '특수화된 구속 조건 (specialized constraints)' 과 관련된 구현을 사용합니다.
+
+### 다음 장
+
+[Generics (제네릭; 일반화) > ]({% post_url 2020-02-29-Generics %})
 
 ### 참고 자료
 
