@@ -460,7 +460,7 @@ print(game.textualDescription)
 
 #### Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)
 
-'일반화된 (generic) 타입' 은, 타입의 '일반화된 (generic) 매개 변수' 가 프로토콜을 준수할 때와 같이, 정해진 조건 하에서만 프로토콜의 '필수 조건' 을 만족할 수도 있습니다. '일반화된 타입' 은 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하는 것으로써 조건에 따라 프로토콜을 준수하도록 만들 수 있습니다. 이 '구속 조건' 들은 채택하려는 프로토콜 이름 뒤에 '일반화된 (generic) `where` 절' 을 작성함으로써 작성합니다. '일반화된 (generic) `where` 절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화된 (generic) 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-generic-where-절) 을 참고하기 바랍니다.
+'일반화된 (generic) 타입' 은, 타입의 '일반화된 매개 변수' 가 프로토콜을 준수할 때와 같이, 정해진 조건 하에서만 프로토콜의 '필수 조건' 을 만족할 수도 있습니다. '일반화된 타입' 은 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하는 것으로써 조건에 따라 프로토콜을 준수하도록 만들 수 있습니다. 이 '구속 조건' 들은 채택하려는 프로토콜 이름 뒤에 '일반화된 `where` 절' 을 작성함으로써 작성합니다. '일반화된 `where` 절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화된 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화된-where-절) 을 참고하기 바랍니다.
 
 다음 '익스텐션' 은 `Array` 인스턴스가 `TextRepresentable` 을 준수하는 타입의 원소를 저장할 때마다 `TextRepresentable` 프로토콜을 준수하게 만듭니다.[^array-element]
 
@@ -934,11 +934,11 @@ extension PrettyTextRepresentable {
 }
 ```
 
-#### Adding Constraints to Protocol Extensions (프로토콜 확장에 대한 구속 조건 추가하기)
+#### Adding Constraints to Protocol Extensions (프로토콜 익스텐션에 구속 조건 추가하기)
 
-프로토콜 확장을 정의할 때는, 확장에 있는 메소드와 속성이 사용 가능해지기 전에 준수 타입이 반드시 만족해야 할 '구속 조건 (constraints)' 을 지정할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜의 이름 뒤에 일반화된 `where` 절을 붙여서 작성합니다. 일반화된 `where` 절에 대한 더 자세한 내용은 [Generic Where Clauses (일반화된 'Where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화된-generic-where-절) 를 참고하기 바랍니다.[^POP]
+'프로토콜 익스텐션' 을 정의할 때, '준수 타입' 에서 '익스텐션' 의 메소드와 속성이 사용 가능해지기 전에 반드시 만족해야 할 '구속 조건 (constraints)' 을 지정할 수 있습니다. 이 '구속 조건' 들은 확장 중인 프로토콜 이름 뒤에 '일반화된 (generic) `where` 절' 을 작성하는 것으로써 작성합니다. '일반화된 `where` 절' 에 대한 더 많은 내용은, [Generic Where Clauses (일반화된 'where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화된-where-절) 부분을 참고하기 바랍니다.
 
-예를 들어, `Collection` 프로토콜에 대한 확장을 정의하면서 어떤 '컬렉션 (collection)' 의 원소가 `Equatable` 프로토콜을 준수하는 경우에만 적용되도록 할 수 있습니다. '컬렉션' 의 원소를, 표준 라이브러리의 일부인, `Equatable` 프로토콜로만 구속하면, `==` 와 `!=` 연산자를 사용하여 두 원소의 '같음 (equality)' 과 '다름 (inequality)' 을 검사할 수 있습니다.
+예를 들어, 그 원소가 `Equatable` 프로토콜을 준수하는 어떤 '집합체 (collection)' 에 적용할 '`Collection` 프로토콜' 의 '익스텐션' 을 정의할 수 있습니다. '집합체' 의 원소를, 표준 라이브러리의 일부인, `Equatable` 프로토콜로 '구속 (constraining)' 함으로써, 두 원소 사이의 '같음 (equality)' 과 '다름 (inequality)' 을 검사하는데 `==` 와 `!=` 연산자를 사용할 수 있게 됩니다.
 
 ```swift
 extension Collection where Element: Equatable {
@@ -953,29 +953,29 @@ extension Collection where Element: Equatable {
 }
 ```
 
-`allEqual()` 메소드는 컬렉션에 있는 원소가 모두 같은 경우에만 `true` 를 반환합니다.
+`allEqual()` 메소드는 '집합체' 의 모든 원소가 같을 때만 `true` 를 반환합니다.
 
-두 개의 정수 배열이 있는데, 하나는 모든 원소가 같고, 다른 하나는 그렇지 않다고, 가정해 봅시다:
+두 정수 배열에서, 하나는 모든 원소가 같고, 다른 하나는 그렇지 않은 경우를, 고려합니다:
 
 ```swift
 let equalNumbers = [100, 100, 100, 100, 100]
 let differentNumbers = [100, 100, 200, 100, 200]
 ```
 
-'배열 (arrays)' 은 `Collection `을 준수하고 '정수 (integers)' 는 `Equatable` 을 준수하고 있기 때문에, `equalNumbers` 와 `differentNumbers` 는 `allEqual()` 메소드를 사용할 수 있습니다:
+'배열' 은 `Collection ` 을 준수하고 '정수' 는 `Equatable` 을 준수하기 때문에, `equalNumbers` 와 `differentNumbers` 는 `allEqual()` 메소드를 사용할 수 있습니다:
 
 ```swift
 print(equalNumbers.allEqual())
-// "true" 를 출력합니다.
+// "true" 를 인쇄합니다.
 print(differentNumbers.allEqual())
-// "false" 를 출력합니다.
+// "false" 를 인쇄합니다.
 ```
 
-> 준수 타입이 '구속 조건' 이 있는 확장 여러 개의 '필수 조건' 을 동시에 만족해서 하나의 메소드 또는 속성이 여러 개의 구현을 동시에 가지게 될 경우, 스위프트는 가장 '특수화된 구속 조건 (specialized constraints)' 과 관련된 구현을 사용합니다.
+> '준수 타입' 이 '다중 구속된 익스텐션' 의 '필수 조건' 들을 만족하여 똑같은 메소드나 속성에 대한 (여러) 구현을 제공할 경우, 스위프트는 가장 '특수화된 (specialized) 구속 조건'[^specialized] 과 관련된 구현을 사용합니다.
 
 ### 다음 장
 
-[Generics (제네릭; 일반화) > ]({% post_url 2020-02-29-Generics %})
+[Generics (일반화) > ]({% post_url 2020-02-29-Generics %})
 
 ### 참고 자료
 
@@ -1033,6 +1033,4 @@ print(differentNumbers.allEqual())
 
 [^protocol-extend]: '익스텐션 (extension)' 자체가 '확장' 이란 의미인데, '프로토콜 익스텐션' 으로 '프로토콜' 을 '확장' 할 수 없다라는 말이 이해가 안될 수도 있습니다. 여기서 말하는 '프로토콜을 확장할 수 없다' 라는 의미는 '프로토콜에 새로운 필수 조건들을 추가할 수 없다' 라는 의미입니다. '프로토콜 익스텐션' 은 프로토콜에 새로운 '필수 조건' 들을 추가하는 것이 아니라, 기존의 '필수 조건' 들에 '기본 구현' 을 제공하거나 새로운 '기능' 들을 추가하기 위해 사용하는 것입니다.
 
-[^POP]: [Protocol Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)의 핵심이라고 할 수 있습니다. Protocol Oriented Programming 에 대해서는 [Protocol-Oriented Programming Tutorial in Swift 5.1: Getting Started](https://www.raywenderlich.com/6742901-protocol-oriented-programming-tutorial-in-swift-5-1-getting-started) 에서 더 알아볼 수 있습니다.
-
-[^specialized]: 추가 설명이나 예제가 있으면 좋겠지만, 원문에 따로 설명된 것이 없는게 아쉽습니다. Apple Forum 의 질문 답변 중 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 이라는 글에 따르면, 여러 개의 '구속 조건 (constraints)' 을 동시에 만족하는 경우는 타입이 계층 관계일 때 발생하는데, '가장 특수화된 구속 조건' 을 따른다는 것은 타입의 계층 관계에서 가장 하위 클래스를 따르는 것으로 추측됩니다.
+[^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건' 들 중에서 적용되는 범위가 가장 좁은 것을 말합니다. '가장 특수화된 구속 조건' 에 대한 더 자세한 내용은, 애플 'Developer Forums' 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 참고하기 바랍니다.

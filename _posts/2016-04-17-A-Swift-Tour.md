@@ -797,7 +797,7 @@ print(fridgeIsOpen)
 // "false" 를 인쇄합니다.
 ```
 
-### Generics (제네릭; 일반화)
+### Generics (일반화)
 
 '꺽쇠 괄호 (angle brackets)' 안에 이름을 작성하여 '일반화된 (generic) 함수' 나 '일반화된 (generic) 타입' 을 만듭니다.
 
