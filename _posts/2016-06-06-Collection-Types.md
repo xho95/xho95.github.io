@@ -17,7 +17,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 스위프트의 배열, 셋, 그리고 딕셔너리는 이들이 저장할 수 있는 값과 키의 타입을 항상 명확하게 합니다. 이는 실수로 집합체에  잘못된 타입의 값을 집어 넣는 일은 일어나지 않는다는 의미합니다. 이는 또 '집합체 (collection)' 에서 가져올 값의 타입에 대해 확신을 가져도 됨을 의미합니다.
 
-> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화된 집합체 (generic collections)_ 로써 구현되어 있습니다. '일반화된 (generic) 타입' 및 '집합체' 에 대한 더 많은 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 를 참고하기 바랍니다.
+> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화한 집합체 (generic collections)_ 로써 구현되어 있습니다. '일반화한 (generic) 타입' 및 '집합체' 에 대한 더 많은 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 를 참고하기 바랍니다.
 
 ### Mutability of Collections (집합체의 변경 가능성)
 
