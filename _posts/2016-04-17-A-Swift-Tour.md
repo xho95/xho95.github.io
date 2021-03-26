@@ -799,7 +799,7 @@ print(fridgeIsOpen)
 
 ### Generics (일반화)
 
-'꺽쇠 괄호 (angle brackets)' 안에 이름을 작성하여 '일반화된 (generic) 함수' 나 '일반화된 (generic) 타입' 을 만듭니다.
+'꺽쇠 괄호 (angle brackets)' 안에 이름을 작성하여 '일반화한 (generic) 함수' 나 '일반화한 (generic) 타입' 을 만듭니다.
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -812,7 +812,7 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
-클래스, 열거체, 그리고 구조체 뿐만 아니라, 함수와 메소드의 '일반화된 형식 (generic forms)' 도 만들 수 있습니다.
+클래스, 열거체, 그리고 구조체 뿐만 아니라, 함수와 메소드의 '일반화 형식 (generic forms)' 도 만들 수 있습니다.
 
 ```swift
 // 스위프트 표준 라이브러리의 옵셔널 타입을 재구현함

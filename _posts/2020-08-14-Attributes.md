@@ -513,7 +513,7 @@ var manualNumber = ArrayBuilder.buildExpression(10)
 
 * 할당문은 표현식과 같이 변화하지만, `()` 를 평가하는 것으로 이해합니다. 할당을 특별하게 처리하기 위해 `()` 타입의 인자를 취하는 `buildExpression(_:)` 을 '중복 정의 (overload)' 할 수 있습니다.
 
-* 사용 가능성 조건을 검사하는 분기문은 `buildLimitedAvailablility(_:)` 메소드에 대한 호출이 됩니다. 이 변화는 `buildEither(first:)`, `buildEither(second:)`, 및 `buildOptional(_:)` 호출로의 변화 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드는 어느 분기를 취하는 지에 따라 바뀌는 타입 정보를 지우기 위해 사용합니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 두 분기 모두에 대한 타입 정보를 붙잡는 '일반화된 (generic) 타입' 을 사용합니다.
+* 사용 가능성 조건을 검사하는 분기문은 `buildLimitedAvailablility(_:)` 메소드에 대한 호출이 됩니다. 이 변화는 `buildEither(first:)`, `buildEither(second:)`, 및 `buildOptional(_:)` 호출로의 변화 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드는 어느 분기를 취하는 지에 따라 바뀌는 타입 정보를 지우기 위해 사용합니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 두 분기 모두에 대한 타입 정보를 붙잡는 '일반화 (generic) 타입' 을 사용합니다.
 
 ```swift
 protocol Drawable {
@@ -568,7 +568,7 @@ struct FutureText: Drawable {
 // brokenDrawing 의 타입은 Line<DrawEither<Line<FutureText>, Line<Text>>> 입니다.
 ```
 
-위 코드에서는, `brokenDrawing` 타입에 `FutureText` 가 있는데 이것이 `DrawEither` 라는 '일반화된 (generic) 타입' 에 있는 타입이기 때문입니다. 이는 `FutureText` 가 실행 시간에 사용 가능하지 않은 경우, 해당 타입이 명시적으로는 사용하지 않는 상태인 경우이더라도, 프로그램의 충돌을 일으킬 수 있습니다.
+위 코드에서는, `brokenDrawing` 타입에 `FutureText` 가 있는데 이것이 `DrawEither` 라는 '일반화 (generic) 타입' 에 있는 타입이기 때문입니다. 이는 `FutureText` 가 실행 시간에 사용 가능하지 않은 경우, 해당 타입이 명시적으로는 사용하지 않는 상태인 경우이더라도, 프로그램의 충돌을 일으킬 수 있습니다.
 
 이 문제를 풀려면, 타입 정보를 지우는 `buildLimitedAvailability(_:)` 메소드를 구현합니다. 예를 들어, 아래 코드는 사용 가능성 검사에서 `AnyDrawable` 값을 제작합니다.
 
@@ -679,7 +679,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 '변화 과정 (transformation process)' 은, 표현식을 한 조각씩 제작하기 위해 임시 상수와 변수를 사용하도록 하는, 코드 내의 선언을 바꾸지 않습니다. 이는 또 `throw` 문, '컴파일-시간 진단문', 또는 `return` 문을 담고 있는 클로저를 바꾸지 않습니다.
 
-가능할 때마다, 변화는 통합됩니다. 예를 들어, 표현식 `4 + 5 * 6` 은 해당 함수를 여러 번 호출하는 대신 `buildExpression(4 + 5 * 6)` 가 됩니다. 마찬가지로, 중첩된 분기문은 `buildEither` 메소드를 호출하는 단일 이진 트리가 됩니다. 
+가능할 때마다, 변화는 통합됩니다. 예를 들어, 표현식 `4 + 5 * 6` 은 해당 함수를 여러 번 호출하는 대신 `buildExpression(4 + 5 * 6)` 가 됩니다. 마찬가지로, 중첩된 분기문은 `buildEither` 메소드를 호출하는 단일 이진 트리가 됩니다.
 
 **Custom Result-Builder Attributes (사용자 정의 결과-제작자 특성)**
 
