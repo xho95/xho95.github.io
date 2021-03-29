@@ -68,6 +68,24 @@ let sub = NotificationCenter.default
   .assign(to: \MyViewModel.filterString, on: myViewModel)
 ```
 
+### Customize Publishers with Operators (연산자로 발행자 사용자 정의하기)
+
+```swift
+let sub = NotificationCenter.default
+  .publisher(for: NSControl.textDidChangeNotification, object: filterField)
+  .map( { ($0.object as! NSTextField).stringValue } )
+  .filter( { $0.unicodeScalars.allSatisfy({CharacterSet.alphanumerics.contains($0)}) } )
+  .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+  .receive(on: RunLoop.main)
+  .assign(to:\MyViewModel.filterString, on: myViewModel)
+```
+
+### Cancel Publishing when Desired (원할 때 발행 취소하기)
+
+```swift
+sub?.cancel()
+```
+
 ### 참고 자료
 
 [^combine]: `Combine` 은 애플이 [WWDC 2019]() 에서 공개한 프레임웍입니다.
@@ -80,4 +98,4 @@ let sub = NotificationCenter.default
 
 [^associated-type]: '결합 타입 (associated type)' 은 프로토콜에서 사용하는 타입에 '자리 표시용 (placeholder) 이름' 을 부여한 것입니다. '결합 타입' 에 대한 더 자세한 정보는, [스위프트 프로그래밍 언어 (Swift Programming Language)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 책의 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장에 있는 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
 
-[^view-model]: 여기서의 '뷰 모델 객체 (view model object)' 는 'MVVM' 에 있는 '뷰 모델 (View Model)' 을 말하는 것입니다. 스위프트에서 'MVVM' 의 '뷰 모델' 은 항상 '클래스' 로 구현하기 때문에 '뷰 모델 객체' 라는 용어를 사용한 것으로 추측됩니다. 
+[^view-model]: 여기서의 '뷰 모델 객체 (view model object)' 는 'MVVM' 에 있는 '뷰 모델 (View Model)' 을 말하는 것입니다. 스위프트에서 'MVVM' 의 '뷰 모델' 은 항상 '클래스' 로 구현하기 때문에 '뷰 모델 객체' 라는 용어를 사용한 것으로 추측됩니다.
