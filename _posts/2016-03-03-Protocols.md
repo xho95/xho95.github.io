@@ -476,7 +476,7 @@ print(myDice.textualDescription)
 // "[A 6-sided dice, A 12-sided dice]" 를 인쇄합니다.
 ```
 
-#### Declaring Protocol Adoption with and Extension (확장으로 프로토콜을 채택한다고 선언하기)
+#### Declaring Protocol Adoption with an Extension (확장으로 프로토콜 채택 선언하기)
 
 타입이 이미 프로토콜의 모든 '필수 조건' 을 준수하고 있지만, 아직 해당 프로토콜을 채택한다고 알리지 않은 경우라면, 빈 '익스텐션' 으로 해당 프로토콜을 채택하도록 만들 수 있습니다:
 
@@ -1013,7 +1013,7 @@ print(differentNumbers.allEqual())
 
 [^synthesized]: 본문에서 말하는 '통합된 구현 (synthesized implementation)' 은 이미 스위프트 내부에서 구현되어 있다는 의미입니다. 즉, '`Equatable` 프로토콜' 같은 것은 스위프트 내부에 이미 구현되어 있는 것을 사용하기만 하면 됩니다.
 
-[^associated-types]: 여기서 말하는 '결합 타입 (associated types)' 이라는 것은 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. '결합 값' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다.
+[^associated-types]: 여기서 말하는 '결합 타입 (associated types)' 이라는 것은 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 '결합 값' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 '결합 타입' 에 대해서는 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
 
 [^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자', '동치 연산자', '같음 연산자' 등으로 옮길 수 있을텐데, 위키피디아에서 'equal to' 를 '같음' 으로 번역하고 있기 때문에, 여기서는 '같음 비교' 라는 말로 옮기도록 합니다. '관계 연산자' 들의 용어에 대해서는 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
 
