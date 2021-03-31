@@ -45,7 +45,7 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 
 이 같은 방식으로 '프로토콜 준수성' 을 추가하는 것은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
 
-'익스텐션' 은, [Extending a Generic Type (일반화 타입을 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화-타입을-확장하기) 에서 설명한 것처럼, 기존 '일반화 (generic) 타입' 을 확장하기 위해 사용할 수 있습니다. '일반화 타입' 은, [Extensions with a Generic Where Clause (일반화 'where' 절을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절을-가진-익스텐션) 에서 설명한 것처럼, 조건에 따라 기능을 추가하기 위해 확장할 수도 있습니다.
+'익스텐션' 은, [Extending a Generic Type (일반화 타입을 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화-타입을-확장하기) 에서 설명한 것처럼, 기존 '일반화 (generic) 타입' 을 확장하기 위해 사용할 수 있습니다. '일반화 타입' 은, [Extensions with a Generic Where Clause ('일반화 where 절' 을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절을-가진-익스텐션) 에서 설명한 것처럼, 조건에 따라 기능을 추가하기 위해 확장할 수도 있습니다.
 
 > '익스텐션' 을 기존 타입에 새로운 기능을 추가하기 위해 정의한 경우, 새로운 기능은, '익스텐션' 을 정의하기 전에 생성된 경우이더라도, 해당 타입의 모든 기존 인스턴스에서 사용 가능할 것입니다.
 

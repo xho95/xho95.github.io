@@ -6,13 +6,11 @@ date:   2020-02-22 11:30:00 +0900
 categories: Swift Language Grammar Opaque Type
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Opaque Types (불투명한 타입)
 
-함수나 메소드에서 'opaque (불투명한) 반환 타입' 을 쓰면 그 반환 값의 타입 정보를 감추게 됩니다. 함수의 반환 타입으로 '구체적으로 고정된 타입 (concrete type)' 을 제공하는 대신에, 반환 값을 그가 지원하는 프로토콜로써 설명합니다. 타입 정보를 감추는 것은 모듈과 그 모듈을 호출하는 코드의 경계 지점에서 유용하며, 이는 반환 값의 실제 타입을 'private (개인 전용)' 으로 남겨둘 수 있기 때문입니다.[^private] 값을 프로토콜 타입으로 반환하는 것과는 다르게, 'opaque (불투명한) 타입' 은 '타입 정체성 (type identity)' 을 보존합니다-컴파일러는 타입 정보에 접근할 수 있지만, 모듈의 사용자는 그럴 수 없습니다.
+'불투명한 (opaque) 반환 타입' 을 가진 함수나 메소드는 반환 값의 '타입 정보' 를 숨깁니다. 함수의 반환 타입으로 '고정된 (concrete) 타입' 을 제공하는 대신, 자신이 지원하는 프로토콜로써 반환 값을 설명합니다. 타입 정보를 감추는 것은, 반환 값의 실제 타입이 '개인 전용 (private)' 으로 남을 수 있기 때문에[^private], 모듈과 그 모듈을 호출하는 코드 사이의 경계선에서 유용합니다. 프로토콜 타입의 값을 반환하는 것과는 달리, '불투명한 타입' 은 '타입 정체성 (type identity)'[^type-idnetity] 을 보존합니다-컴파일러는 '타입 정보' 에 대한 접근을 가지지만, 모듈의 사용자는 그렇지 않습니다.
 
 ### The Problem That Opaque Types Solve (불투명한 타입이 해결하는 문제)
 
@@ -273,7 +271,9 @@ print(type(of: twelve))
 
 [^Opaque-Types]: 전체 원문은 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html)에서 확인할 수 있습니다.
 
-[^private]: 'private (개인 전용)' 은 스위프트의 '엔티티' 에 대한 '접근 수준 (access level)' 이 'private (개인 전용)' 인 것을 말하는데, 이는 특정 클래스 영역 내에서만 접근 가능하다는 것을 나타냅니다. 다른 프로그래밍 언어의 'private' 과 유사한 의미를 가진다고 이해할 수 있습니다.
+[^private]: '개인 전용 (private)' 은 스위프트의 '개체 (entity)' 에 대한 '접근 수준' 이 `private` 인 것을 말합니다. '개인 전용' 에 대한 더 자세한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 있는 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 부분을 참고하기 바랍니다.
+
+[^type-idnetity]: '타입 정체성 (type identity) 을 보존한다' 는 말은 '불투명한 타입' 을 사용하면 '특정한 하나의 타입이 계속 유지된다' 는 것을 의미합니다. '프로토콜' 은 '해당 프로토콜' 을 준수하는 어떤 타입이든 모두 그 '프로토콜 타입' 이기 때문에 '타입 정체성' 을 보존할 수 없습니다.
 
 [^requirement]: '프로토콜 (protocol)' 의 '요구 사항 (requirement)' 은 스위프트에서 '프로토콜을 준수 (conforming to protocol)' 하는 대상이 반드시 구현해야 할 요소를 말합니다.
 
