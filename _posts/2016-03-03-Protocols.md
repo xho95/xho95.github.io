@@ -396,7 +396,7 @@ class DiceGameTracker: DiceGameDelegate {
 
 `gameDidStart(_:)` 메소드는 전달한 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수함을 알기 때문에, `dice` 속성을 가짐이 보증되므로, `gameDidStart(_:)` 메소드는, 어떤 종류의 게임을 진행하는 지에 상관없이, 주사위의 `sides` 속성에 접근하여 인쇄할 수 있습니다.
 
-다음은 `DiceGameTracker` 의 실제 작동 방법입니다:
+다음은 `DiceGameTracker` 의 실제 사용 방법을 보인 것입니다:
 
 ```swift
 let tracker = DiceGameTracker()
