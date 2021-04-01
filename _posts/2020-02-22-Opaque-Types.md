@@ -59,7 +59,7 @@ print(flippedTriangle.draw())
 // *
 ```
 
-이 접근 방법을 사용하여 두 도형을 수직으로 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하면, 아래에 나타낸 코드와 같이 되는데, 뒤집힌 삼각형을 다른 삼각형과 붙임으로써 타입의 결과는 `JoinedShape<Triangle, FlippedShape<Triangle>>` 와 같은 것이 됩니다.[^joinedTriangle-Type]
+이 접근 방식으로, 아래 보인 코드 같이, 두 도형을 수직으로 갖다 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하는 것은, '뒤집힌 삼각형' 을 다른 삼각형과 갖다 붙임으로써 `JoinedShape<Triangle, FlippedShape<Triangle>>` 같은 타입이 되버립니다.[^joinedTriangle-Type]
 
 ```swift
 struct JoinedShape<T: Shape, U: Shape>: Shape {
@@ -81,7 +81,7 @@ print(joinedTriangle.draw())
 // *
 ```
 
-도형 생성에 대한 세부 정보를 드러내는 것은 'ASCII 예술' 모듈의 '공용 인터페이스 (public interface)' 가 아닌 타입도 유출하게 되는데, 이는 전체 반환 타입을 분명하게 알려야 할 필요가 있기 때문입니다. 모듈 안에 있는 코드는 동일한 도형을 다양한 방식으로 만들 수 있어야 하면서도, 모듈 밖에서 도형을 사용하는 코드는 그 변환들에 대한 세부 구현을 일일이 서술하지 않도록 해야 합니다. `JoinedShape` 과 `FlippedShape` 같은 '감싼 (wrapper)' 타입은 모듈 사용자에게는 아무 의미가 없으므로, 보이지 않도록 해야 합니다. 모듈의 '공용 인터페이스' 는 도형의 '합치기 (joining)' 와 '뒤집기 (flipping)' 같은 '연산 (operation)' 으로 구성되어야 하며, 이 연산은 또 다른 `Shape` 값을 반환하도록 해야 합니다.
+'도형 생성' 에 대한 '세부 정보' 를 노출하는 것은 'ASCII 예술 모듈' 의 '공용 (public) 인터페이스' 로 정하지 않은 타입도 유출하게 되는데 이는 '반환 타입' 을 온전히 알릴 필요가 있기 때문입니다. 모듈 안에 있는 코드는 똑같은 도형을 다양한 방법으로 제작할 수 있을 것이며, 모듈 밖에서 도형을 사용하는 코드는 '변화' 에 대한 세부 구현을 밝히지 않도록 해야 합니다. `JoinedShape` 과 `FlippedShape` 같은 '포장 타입 (wrapper types)'[^wrapper-types] 은 모듈 사용자에게 중요하지 않으므로, 보이지 않아야 합니다. 모듈의 '공용 인터페이스' 는 도형 '붙이기 (joining)' 와 '뒤집기 (flipping)' 같은 '연산' 으로 구성되며, 이 '연산' 들은 또 다른 `Shape` 값을 반환합니다.
 
 ### Returning an Opaque Type (불투명한 타입 반환하기)
 
@@ -279,6 +279,8 @@ print(type(of: twelve))
 
 [^flippedTriangle-Type]: 이 예제에서, `flippedTriangle` 은 `FlippedShape<Triangle>` 타입이 됩니다. 본문 내용은, (모듈 내에 있어야 할) `FlippedShape` 이라는 '구조체 타입' 을 밖으로 노출해버린다는 의미입니다.
 
-[^joinedTriangle-Type]: 원문에는 `joinedTriangle` 의 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 라고 되어 있는데, `JoinedShape<Triangle, FlippedShape<Triangle>>` 이 맞는 것 같습니다.
+[^joinedTriangle-Type]: 원문에서는 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 라고 되어 있는데, `JoinedShape<Triangle, FlippedShape<Triangle>>` 이 맞는 것 같습니다.
+
+[^wrapper-types]: '포장 타입 (wrapper type)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
 
 [^protocol-type-value]: 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 과 같은 에러가 발생합니다. 프로토콜을 반환하는 결과를 다시 프로토콜을 인자로 받는 함수에 전달하는 것은 안된다고 이해하면 될 것 같습니다.
