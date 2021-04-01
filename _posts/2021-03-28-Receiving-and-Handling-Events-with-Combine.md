@@ -6,7 +6,7 @@ date:   2021-03-28 11:30:00 +0900
 categories: Swift Framework Combine Event
 ---
 
-> 이 글은 '애플 개발자 문서' 에 있는 [Receiving and Handling Events with Combine](https://docs.swift.org/swift-book/)[^Swift] 문서를 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다. 'Combine' 프레임웍에 대해서는, [Combine Framework (프레임웍)]({% post_url 2021-03-27-combine %}) 문서를 참고하기 바랍니다.[^combine]
+> 이 글은 '애플 개발자 문서' 에 있는 [Receiving and Handling Events with Combine](https://docs.swift.org/swift-book/)[^Swift] 문서를 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다. 'Combine' 프레임웍에 대해서는, [Combine Framework (프레임웍)]({% post_url 2021-03-27-Combine %}) 문서를 참고하기 바랍니다.[^combine]
 
 ## Receiving and Handling Events with Combine (`Combine` 으로 이벤트 받고 처리하기)
 
