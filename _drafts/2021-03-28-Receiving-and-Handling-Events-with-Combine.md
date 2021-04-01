@@ -18,7 +18,7 @@ categories: Swift Framework Combine Event
 
 ### Connect a Publisher to a Subscriber (발행자를 구독자에 연결하기)
 
-`Combine` 으로 '텍스트 필드' 의 '알림' 을 받으려면, [NotificationCenter](https://developer.apple.com/documentation/foundation/notificationcenter) 의 '`default` 인스턴스'[^default-instance] 에 접근하여 [publisher(for:object:)](https://developer.apple.com/documentation/foundation/notificationcenter/3329353-publisher) 메소드를 호출합니다. 이 호출은 알림을 받고 싶은 '알림 이름' 과 '소스 객체' 를 취하고, '알림 원소' 를 만드는 '발행자' 를 반환합니다.
+`Combine` 으로 '텍스트 필드' 의 '알림' 을 받으려면, [NotificationCenter](https://developer.apple.com/documentation/foundation/notificationcenter) 의 '`default` 인스턴스'[^default-instance] 에 접근하여 `[publisher(for:object:)]`(https://developer.apple.com/documentation/foundation/notificationcenter/3329353-publisher) 메소드를 호출합니다. 이 호출은 알림을 받고 싶은 '알림 이름' 과 '소스 객체' 를 취하고, '알림 원소' 를 만드는 '발행자' 를 반환합니다.
 
 ```swift
 let pub = NotificationCenter.default
@@ -29,8 +29,8 @@ let pub = NotificationCenter.default
 
 `Combine` 은, 첨부한 발행자의 '출력 (outout)' 및 '실패 (failure) 타입' 과 자동으로 일치하는, 두 '내장된 구독자' 를 제공합니다:
 
-* [sink(receiveCompletion:receiveValue:)](https://developer.apple.com/documentation/combine/publisher/sink(receivecompletion:receivevalue:)) 는 클로저를 두 개 취합니다. 첫 번째 클로저는, 발행자가 정상적으로 종료했는지 에러를 가지고 실패했는지를 지시하는 열거체인, [Subscribers.Completion](https://developer.apple.com/documentation/combine/subscribers/completion) 를 받을 때 실행합니다. 두 번째 클로저는 발행자로부터 원소를 받을 때 실행합니다.
-* [assign(to:on:)](https://developer.apple.com/documentation/combine/publisher/assign(to:on:)) 은, 속성을 지시하는 '키 경로 (key path)' 를 사용하여,  받은 모든 원소를 주어진 객체의 속성에 곧바로 할당합니다.
+* `[sink(receiveCompletion:receiveValue:)]`(https://developer.apple.com/documentation/combine/publisher/sink(receivecompletion:receivevalue:)) 는 클로저를 두 개 취합니다. 첫 번째 클로저는, 발행자가 정상적으로 종료했는지 에러를 가지고 실패했는지를 지시하는 열거체인, `[Subscribers.Completion]`(https://developer.apple.com/documentation/combine/subscribers/completion) 를 받을 때 실행합니다. 두 번째 클로저는 발행자로부터 원소를 받을 때 실행합니다.
+* `[assign(to:on:)]`(https://developer.apple.com/documentation/combine/publisher/assign(to:on:)) 은, 속성을 지시하는 '키 경로 (key path)' 를 사용하여,  받은 모든 원소를 주어진 객체의 속성에 곧바로 할당합니다.
 
 예를 들어, 'sink' 구독자를 사용하여 발행자가 완료하고, 매 번 원소를 받을 때마다 기록을 남길 수 있습니다:
 
@@ -47,9 +47,9 @@ let sub = NotificationCenter.default
 
 이전 절에 있는 'sink' 구독자는 `receiveValue` 클로저에서 모든 작업을 수행합니다. 이는 받은 원소로 많은 사용자 정의 작업을 하거나 불러냄 사이에 상태를 상태를 유지할 필요가 있는 경우 짐이 될 수 있습니다. `Combine` 의 장점은 '이벤트 배달' 을 사용자 정의하기 위해 연산자를 조합하는 것에서 비롯합니다.
 
-예를 들어, [NotificationCenter.Publisher.Output](https://developer.apple.com/documentation/foundation/notificationcenter/publisher/output) 는 '텍스트 필드' 의 문자열 값만 필요한 경우에 콜백에서 받기 편리한 타입은 아닙니다. 발행자의 출력은 본질적으로 시간에 따른 일련의 원소들이므로, `Combine` 은 [map(_:)](https://developer.apple.com/documentation/combine/publisher/map(_:)-99evh), [flatMap(maxPublishers:_:)](https://developer.apple.com/documentation/combine/publisher/flatmap(maxpublishers:_:)-3k7z5), 그리고 [reduce(_:_:)](https://developer.apple.com/documentation/combine/publisher/reduce(_:_:)) 같은 '일련 값-수정 연산자' 를 제안합니다. 이 연산자들의 작동 방식은 스위프트 표준 라이브러리에 있는 이들의 '동치 연산자 (equivalents)' 들과 비슷합니다.
+예를 들어, [NotificationCenter.Publisher.Output](https://developer.apple.com/documentation/foundation/notificationcenter/publisher/output) 는 '텍스트 필드' 의 문자열 값만 필요한 경우에 콜백에서 받기 편리한 타입은 아닙니다. 발행자의 출력은 본질적으로 시간에 따른 일련의 원소들이므로, `Combine` 은 `[map(_:)]`(https://developer.apple.com/documentation/combine/publisher/map(_:)-99evh), `[flatMap(maxPublishers:_:)]`(https://developer.apple.com/documentation/combine/publisher/flatmap(maxpublishers:_:)-3k7z5), 그리고 `[reduce(_:_:)]`(https://developer.apple.com/documentation/combine/publisher/reduce(_:_:)) 같은 '일련 값-수정 연산자' 를 제안합니다. 이 연산자들의 작동 방식은 스위프트 표준 라이브러리에 있는 이들의 '동치 연산자 (equivalents)' 들과 비슷합니다.
 
-발행자의 출력 타입을 바꾸려면, 다른 타입을 반환하는 클로저를 담은 [map(_:)](https://developer.apple.com/documentation/combine/publisher/map(_:)-99evh) 연산자를 추가합니다. 이 경우, 알림 객체를 [NSTextField](https://developer.apple.com/documentation/appkit/nstextfield) 로 획득한 다음, '필드' 의 [stringValue](https://developer.apple.com/documentation/appkit/nscontrol/1428950-stringvalue) 을 획득할 수 있습니다.
+발행자의 출력 타입을 바꾸려면, 다른 타입을 반환하는 클로저를 담은 `[map(_:)]`(https://developer.apple.com/documentation/combine/publisher/map(_:)-99evh) 연산자를 추가합니다. 이 경우, 알림 객체를 [NSTextField](https://developer.apple.com/documentation/appkit/nstextfield) 로 획득한 다음, '필드' 의 `[stringValue]`(https://developer.apple.com/documentation/appkit/nscontrol/1428950-stringvalue) 을 획득할 수 있습니다.
 
 ```swift
 let sub = NotificationCenter.default
@@ -68,7 +68,12 @@ let sub = NotificationCenter.default
   .assign(to: \MyViewModel.filterString, on: myViewModel)
 ```
 
-### Customize Publishers with Operators (연산자로 발행자 사용자 정의하기)
+### Customize Publishers with Operators (연산자로 '발행자' 사용자 정의하기)
+
+다른 경우라면 수동으로 코딩할 필요가 있었을 행동을 연산자를 사용하여 수행하도록 [Publisher](https://developer.apple.com/documentation/combine/publisher) 인스턴스를 확장할 수 있습니다. 다음은 연산자를 사용하여 이 '이벤트-가공 망' 을 개선할 수 있는 세 가지 방식입니다:
+
+* '텍스트 필드' 에 타이핑한 어떤 문자열로 '뷰 모델' 을 갱신하기 보다는, 정해진 길이 이하의 입력을 무시하거나 '영숫자가-아닌' 문자를 거부하기 위해 `[filter(_:)]`(https://developer.apple.com/documentation/combine/publisher/filter(_:)) 연산자를 사용할 수 있을 것입니다.
+* '걸러내는 (filtering) 연산' 의 비용이 비싼 경우-예를 들어, 큰 데이터베이스를 조회하는 경우-사용자가 타이핑을 멈출 때까지 기다리길 원할지도 모릅니다. 이를 위해, `[debounce(for:scheduler:options:)]`(https://developer.apple.com/documentation/combine/publisher/debounce(for:scheduler:options:)) 연산자는 
 
 ```swift
 let sub = NotificationCenter.default
