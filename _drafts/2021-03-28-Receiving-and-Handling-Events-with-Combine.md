@@ -73,7 +73,7 @@ let sub = NotificationCenter.default
 다른 경우라면 수동으로 코딩할 필요가 있었을 행동을 연산자를 사용하여 수행하도록 [Publisher](https://developer.apple.com/documentation/combine/publisher) 인스턴스를 확장할 수 있습니다. 다음은 연산자를 사용하여 이 '이벤트-가공 망' 을 개선할 수 있는 세 가지 방식입니다:
 
 * '텍스트 필드' 에 타이핑한 어떤 문자열로 '뷰 모델' 을 갱신하기 보다는, 정해진 길이 이하의 입력을 무시하거나 '영숫자가-아닌' 문자를 거부하기 위해 `[filter(_:)]`(https://developer.apple.com/documentation/combine/publisher/filter(_:)) 연산자를 사용할 수 있을 것입니다.
-* '걸러내는 (filtering) 연산' 의 비용이 비싼 경우-예를 들어, 큰 데이터베이스를 조회하는 경우-사용자가 타이핑을 멈출 때까지 기다리길 원할지도 모릅니다. 이를 위해, `[debounce(for:scheduler:options:)]`(https://developer.apple.com/documentation/combine/publisher/debounce(for:scheduler:options:)) 연산자는 
+* '걸러내는 (filtering) 연산' 의 비용이 비싼 경우-예를 들어, 큰 데이터베이스를 조회하는 경우-사용자가 타이핑을 멈출 때까지 기다리길 원할지도 모릅니다. 이를 위해, [`debounce(for:scheduler:options:)`](https://developer.apple.com/documentation/combine/publisher/debounce(for:scheduler:options:)) 연산자는 
 
 ```swift
 let sub = NotificationCenter.default
