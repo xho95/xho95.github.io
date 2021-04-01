@@ -12,9 +12,9 @@ categories: Swift Language Grammar Opaque Type
 
 '불투명한 (opaque) 반환 타입' 을 가진 함수나 메소드는 반환 값의 '타입 정보' 를 숨깁니다. 함수의 반환 타입으로 '고정된 (concrete) 타입' 을 제공하는 대신, 자신이 지원하는 프로토콜로써 반환 값을 설명합니다. 타입 정보를 감추는 것은, 반환 값의 실제 타입이 '개인 전용 (private)' 으로 남을 수 있기 때문에[^private], 모듈과 그 모듈을 호출하는 코드 사이의 경계선에서 유용합니다. 프로토콜 타입의 값을 반환하는 것과는 달리, '불투명한 타입' 은 '타입 정체성 (type identity)'[^type-idnetity] 을 보존합니다-컴파일러는 '타입 정보' 에 대한 접근을 가지지만, 모듈의 사용자는 그렇지 않습니다.
 
-### The Problem That Opaque Types Solve (불투명한 타입이 해결하는 문제)
+### The Problem That Opaque Types Solve ('불투명한 타입' 으로 풀리는 문제)
 
-예를 들어, ASCII 로 예술적 도형을 그리는 모듈을 제작한다고 가정해 봅시다. 'ASCII 예술 도형' 모듈은 도형을 문자열로 표현해서 반환하는 `draw()` 라는 함수를 기본으로 가지고 있는데, 이 함수를 `Shape` 프로토콜을 위한 '요구 사항 (requirement)'[^requirement] 으로 사용할 수 있습니다:
+예를 들어, ASCII 로 '예술 도형' 을 그리는 모듈을 작성한다고 가정해 봅시다. 'ASCII 예술 도형' 의 기초적인 성질은 해당 도형에 대한 문자열 표현을 반환하는 `draw()` 함수이며, 이를 `Shape` 프로토콜에 대한 '필수 조건 (requirement)'[^requirement] 으로 사용할 수 있습니다:
 
 ```swift
 protocol Shape {
@@ -40,7 +40,7 @@ print(smallTriangle.draw())
 // ***
 ```
 
-아래 코드처럼, '일반화 (generics)' 를 사용하면 도형을 수직으로 뒤집는 연산도 구현할 수 있을 것 같습니다. 하지만, 이 접근 방법에는 아주 중요한 한계가 존재합니다: 뒤집힌 결과를 만드는데 사용한 '일반화된 (generic) 타입' 이 정확하게 드러난다는 점이 그것입니다.[^flippedTriangle-Type]
+도형을 수직으로 뒤집는 연산 같은 것은, 아래 코드에 보인 것처럼, '일반화 (generics)' 를 사용하여 구현할 수 있을 것입니다. 하지만, 이 접근 방식에는 중요한 '한계 (limitation)' 가 있는데: '뒤집힌 결과' 가 이를 생성하는데 사용한 정확한 '일반화 타입' 을 노출한다는 것입니다.[^flippedTriangle-Type]
 
 ```swift
 struct FlippedShape<T: Shape>: Shape {
@@ -59,7 +59,7 @@ print(flippedTriangle.draw())
 // *
 ```
 
-이 접근 방법을 사용하여 두 도형을 수직으로 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하면, 아래에 나타낸 코드와 같이 되는데, 뒤집힌 삼각형을 다른 삼각형과 붙임으로써 타입의 결과는 `JoinedShape<Triangle, FlippedShape<Triangle>>` 와 같은 것이 됩니다.[^joinedTriangle-Type]
+이 접근 방식으로, 아래 보인 코드 같이, 두 도형을 수직으로 갖다 붙이는 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하는 것은, '뒤집힌 삼각형' 을 다른 삼각형과 갖다 붙임으로써 `JoinedShape<Triangle, FlippedShape<Triangle>>` 같은 타입이 되버립니다.[^joinedTriangle-Type]
 
 ```swift
 struct JoinedShape<T: Shape, U: Shape>: Shape {
@@ -81,7 +81,7 @@ print(joinedTriangle.draw())
 // *
 ```
 
-도형 생성에 대한 세부 정보를 드러내는 것은 'ASCII 예술' 모듈의 '공용 인터페이스 (public interface)' 가 아닌 타입도 유출하게 되는데, 이는 전체 반환 타입을 분명하게 알려야 할 필요가 있기 때문입니다. 모듈 안에 있는 코드는 동일한 도형을 다양한 방식으로 만들 수 있어야 하면서도, 모듈 밖에서 도형을 사용하는 코드는 그 변환들에 대한 세부 구현을 일일이 서술하지 않도록 해야 합니다. `JoinedShape` 과 `FlippedShape` 같은 '감싼 (wrapper)' 타입은 모듈 사용자에게는 아무 의미가 없으므로, 보이지 않도록 해야 합니다. 모듈의 '공용 인터페이스' 는 도형의 '합치기 (joining)' 와 '뒤집기 (flipping)' 같은 '연산 (operation)' 으로 구성되어야 하며, 이 연산은 또 다른 `Shape` 값을 반환하도록 해야 합니다.
+'도형 생성' 에 대한 '세부 정보' 를 노출하는 것은 'ASCII 예술 모듈' 의 '공용 (public) 인터페이스' 로 정하지 않은 타입도 유출하게 되는데 이는 '반환 타입' 을 온전히 알릴 필요가 있기 때문입니다. 모듈 안에 있는 코드는 똑같은 도형을 다양한 방법으로 제작할 수 있을 것이며, 모듈 밖에서 도형을 사용하는 코드는 '변화' 에 대한 세부 구현을 밝히지 않도록 해야 합니다. `JoinedShape` 과 `FlippedShape` 같은 '포장 타입 (wrapper types)'[^wrapper-types] 은 모듈 사용자에게 중요하지 않으므로, 보이지 않아야 합니다. 모듈의 '공용 인터페이스' 는 도형 '붙이기 (joining)' 와 '뒤집기 (flipping)' 같은 '연산' 으로 구성되며, 이 '연산' 들은 또 다른 `Shape` 값을 반환합니다.
 
 ### Returning an Opaque Type (불투명한 타입 반환하기)
 
@@ -150,7 +150,7 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-이 예제에 있는 `opaqueJoinedTriangles` 의 값은 이 장 앞에 있는 [The Problem That Opaque Types Solve (불투명한 타입이 해결하는 문제)](#the-problem-that-opaque-types-solve-불투명한-타입이-해결하는-문제) 부분의 'generics 예제' 에 있는 `joinedTriangles` 과 같습니다. 하지만, 그 예제의 값과는 달리, `flip(_:)` 과 `join(_:_:)` 은 '일반화된 (generics) 도형 연산' 이 반환하는 실제 타입을 'opaque 반환 타입' 으로 감싸서, 타입이 드러나는 것을 막아줍니다. 두 함수 모두 'generic' 에 의존하므로 'generic' 타입이며, 함수의 타입 매개 변수를 통해 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
+이 예제에 있는 `opaqueJoinedTriangles` 의 값은 이 장 앞에 있는 [The Problem That Opaque Types Solve ('불투명한 타입' 으로 풀리는 문제)](#the-problem-that-opaque-types-solve-불투명한-타입-으로-풀리는-문제) 부분의 'generics 예제' 에 있는 `joinedTriangles` 과 같습니다. 하지만, 그 예제의 값과는 달리, `flip(_:)` 과 `join(_:_:)` 은 '일반화된 (generics) 도형 연산' 이 반환하는 실제 타입을 'opaque 반환 타입' 으로 감싸서, 타입이 드러나는 것을 막아줍니다. 두 함수 모두 'generic' 에 의존하므로 'generic' 타입이며, 함수의 타입 매개 변수를 통해 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
 
 'opaque (불투명한)' 반환 타입을 가지는 함수가 반환을 여러 곳에서 하는 경우, 모든 반환 가능한 값들은 반드시 타입이 같아야 합니다. '일반화된 함수 (generic function)' 에 대해서, 반환 타입으로 함수의 일반화된 타입 매개 변수를 사용할 수는 있지만, 그래도 여전히 단일한 타입이어야만 합니다. 예를 들어, 다음에 나타낸 도형 뒤집기 함수의 _무효한 (invalid)_ 버전은 특수한 경우인 '정사각형 (square)' 에 대한 내용을 포함하고 있습니다:
 
@@ -275,10 +275,12 @@ print(type(of: twelve))
 
 [^type-idnetity]: '타입 정체성 (type identity) 을 보존한다' 는 말은 '불투명한 타입' 을 사용하면 '특정한 하나의 타입이 계속 유지된다' 는 것을 의미합니다. '프로토콜' 은 '해당 프로토콜' 을 준수하는 어떤 타입이든 모두 그 '프로토콜 타입' 이기 때문에 '타입 정체성' 을 보존할 수 없습니다.
 
-[^requirement]: '프로토콜 (protocol)' 의 '요구 사항 (requirement)' 은 스위프트에서 '프로토콜을 준수 (conforming to protocol)' 하는 대상이 반드시 구현해야 할 요소를 말합니다.
+[^requirement]: '프로토콜' 의 '필수 조건 (requirement)' 은 해당 프로토콜을 준수하는 타입이 반드시 구현해야 합니다. '필수 조건' 에 대한 더 자세한 내용은, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 앞 부분 설명을 참고하기 바랍니다.
 
-[^flippedTriangle-Type]: 이 예제에서 `flippedTriangle` 의 타입은 `FlippedShape<Triangle>` 가 됩니다. 본문 내용에 의하면, 모듈 내에 있는 `FlippedShape` 이라는 구조체 타입이 밖으로 드러나는 것이 문제라는 것입니다.
+[^flippedTriangle-Type]: 이 예제에서, `flippedTriangle` 은 `FlippedShape<Triangle>` 타입이 됩니다. 본문 내용은, (모듈 내에 있어야 할) `FlippedShape` 이라는 '구조체 타입' 을 밖으로 노출해버린다는 의미입니다.
 
-[^joinedTriangle-Type]: 원문에는 `joinedTriangle` 의 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 라고 되어 있는데, `JoinedShape<Triangle, FlippedShape<Triangle>>` 이 맞는 것 같습니다.
+[^joinedTriangle-Type]: 원문에서는 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 라고 되어 있는데, `JoinedShape<Triangle, FlippedShape<Triangle>>` 이 맞는 것 같습니다.
+
+[^wrapper-types]: '포장 타입 (wrapper type)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
 
 [^protocol-type-value]: 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 과 같은 에러가 발생합니다. 프로토콜을 반환하는 결과를 다시 프로토콜을 인자로 받는 함수에 전달하는 것은 안된다고 이해하면 될 것 같습니다.
