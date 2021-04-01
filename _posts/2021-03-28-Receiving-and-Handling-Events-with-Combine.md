@@ -6,9 +6,9 @@ date:   2021-03-28 11:30:00 +0900
 categories: Swift Framework Combine Event
 ---
 
-> 이 글은 '애플 개발자 문서' 에 있는 [Receiving and Handling Events with Combine](https://docs.swift.org/swift-book/)[^Swift] 문서를 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다. 'Combine' 프레임웍에 대해서는, [Combine Framework (프레임웍)]({% post_url 2021-03-27-Combine %}) 문서를 참고하기 바랍니다.[^combine]
+> 이 글은 '애플 개발자 문서' 에 있는 [Receiving and Handling Events with Combine](https://docs.swift.org/swift-book/) 문서를 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다. 'Combine' 프레임웍에 대해서는, [Combine Framework (프레임웍)]({% post_url 2021-03-27-Combine %}) 문서를 참고하기 바랍니다.[^combine]
 
-## Receiving and Handling Events with Combine (`Combine` 으로 이벤트 받고 처리하기)
+## Receiving and Handling Events with Combine ('Combine' 으로 이벤트 받고 처리하기)
 
 '비동기 소스' 에서 온 이벤트를 사용자 정의해서 받기
 
@@ -16,11 +16,11 @@ categories: Swift Framework Combine Event
 
 `Combine` 프레임웍[^combine] 은 앱이 이벤트를 가공할 수 있도록 '선언형 접근 방식'[^declarative] 을 제공합니다. 잠재적으로 여러 개의 '대리자 콜백' 이나 '처리자 클로저' 를 구현하기 보다는, 주어진 이벤트 소스를 위한 '단일 가공 연쇄' 을 생성할 수 있습니다. 연쇄의 각 부분은 이전 단계에서 받은 원소에 서로 별개의 행동을 수행하는 `Combine` 연산자' 입니다.
 
-'텍스트 필드' 의 내용물을 기초로 '표' 나 '집합체 뷰' 를 걸러내야 할 필요가 있는 앱을 고려해 봅니다. `AppKit`[^appkit] 에서, '텍스트 필드' 의 각 '키 입력 (keystroke)' 은 '컴바인' 으로 구독할 수 있는 [`Notification`](https://developer.apple.com/documentation/foundation/notification) 을 만들어 냅니다. '알림 (notification)' 을 받은 후, 연산자를 사용하여 이벤트 배달 간격과 내용을 바꿀 수 있으며, 최종 결과를 사용하여 앱의 사용자 인터페이스를 갱신합니다.
+'텍스트 필드' 의 내용물을 기초로 '표' 나 '집합체 뷰' 를 걸러내야 할 필요가 있는 앱을 고려해 봅니다. `AppKit`[^appkit] 에서, '텍스트 필드' 의 각 '키 입력 (keystroke)' 은 '컴바인' 으로 구독할 수 있는 `Notification`(https://developer.apple.com/documentation/foundation/notification) 을 만들어 냅니다. '알림 (notification)' 을 받은 후, 연산자를 사용하여 이벤트 배달 간격과 내용을 바꿀 수 있으며, 최종 결과를 사용하여 앱의 사용자 인터페이스를 갱신합니다.
 
 ### Connect a Publisher to a Subscriber (발행자를 구독자에 연결하기)
 
-`Combine` 으로 '텍스트 필드' 의 '알림' 을 받으려면, [`NotificationCenter`](https://developer.apple.com/documentation/foundation/notificationcenter) 의 '`default` 인스턴스'[^default-instance] 에 접근하여 [`publisher(for:object:)`](https://developer.apple.com/documentation/foundation/notificationcenter/3329353-publisher) 메소드를 호출합니다. 이 호출은 알림을 받고 싶은 '알림 이름' 과 '소스 객체' 를 취하고, '알림 원소' 를 만드는 '발행자' 를 반환합니다.
+`Combine` 으로 '텍스트 필드' 의 '알림' 을 받으려면, `[NotificationCenter]`(https://developer.apple.com/documentation/foundation/notificationcenter) 의 '`default` 인스턴스'[^default-instance] 에 접근하여 [`publisher(for:object:)`](https://developer.apple.com/documentation/foundation/notificationcenter/3329353-publisher) 메소드를 호출합니다. 이 호출은 알림을 받고 싶은 '알림 이름' 과 '소스 객체' 를 취하고, '알림 원소' 를 만드는 '발행자' 를 반환합니다.
 
 ```swift
 let pub = NotificationCenter.default
