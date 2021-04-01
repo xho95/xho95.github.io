@@ -1,10 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift: Receiving and Handling Events with Combine (컴바인으로 이벤트 받고 처리하기)"
+title:  "Swift: Combine 으로 이벤트 받고 처리하기"
 date:   2021-03-28 11:30:00 +0900
 categories: Swift Framework Combine Event
 ---
+
+> 이 글은 '애플 개발자 문서' 에 있는 [Receiving and Handling Events with Combine](https://docs.swift.org/swift-book/)[^Swift] 문서를 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다. 'Combine' 프레임웍에 대해서는, [Combine Framework (프레임웍)]({% post_url 2021-03-27-combine %}) 문서를 참고하기 바랍니다.[^combine]
 
 ## Receiving and Handling Events with Combine (`Combine` 으로 이벤트 받고 처리하기)
 
@@ -100,7 +102,7 @@ sub?.cancel()
 
 ### 참고 자료
 
-[^combine]: `Combine` 은 애플이 [WWDC 2019]() 에서 공개한 프레임웍입니다.
+[^combine]: `Combine` 은 애플이 [WWDC 2019](https://developer.apple.com/videos/wwdc2019/) 에서 발표한 프레임웍입니다.
 
 [^declarative]: '선언형 (declarative)' 에 대한 더 자세한 정보는, 위키피디아의 [Declarative programming](https://en.wikipedia.org/wiki/Declarative_programming) 항목과 [선언형 프로그래밍](https://ko.wikipedia.org/wiki/선언형_프로그래밍) 항목을 참고하기 바랍니다.
 
