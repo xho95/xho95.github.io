@@ -62,31 +62,31 @@ reference1 = Person(name: "John Appleseed")
 // "John Appleseed is being initialized" 를 인쇄합니다.
 ```
 
-`"John Appleseed is being initialized"` 라는 메시지는 `Person` 클래스의 '초기자' 를 호출하는 시점에 인쇄된다는 점을 기억하기 바랍니다. 이는 초기화가 일어났다는 것을 확정합니다.
+`"John Appleseed is being initialized"` 라는 메시지는 `Person` 클래스의 '초기자' 를 호출하는 시점에 인쇄된다는 점을 기억하기 바랍니다. 이는 초기화가 일어났음을 확정합니다.
 
-새 `Person` 인스턴스를 `reference1` 변수에 할당했기 때문에, 이제 `reference1` 에서 새 `Person` 인스턴스로 향하는 '강한 참조 (strong reference)' 가 생겼습니다. 최소 하나의 '강한 참조' 가 있으므로, ARC 는 이 `Person` 에 대한 메모리를 유지하고 할당을 해제하지 않습니다.
+새 `Person` 인스턴스를 `reference1` 변수에 할당했기 때문에, 이제 `reference1` 에서 새로운 `Person` 인스턴스로 향하는 '강한 참조' 가 생겼습니다. '강한 참조' 가 최소 하나는 있기 때문에, 'ARC' 가 이 `Person` 을 메모리에 유지하고 해제하지 않도록 합니다.
 
-똑같은 `Person` 인스턴스를 두 변수에 더 할당할 경우, 해당 인스턴스에 대한 두 개의 '강한 참조' 가 더 생기게 됩니다:
+똑같은 `Person` 인스턴스를 두 변수들에 더 할당하면, 해당 인스턴스로 향하는 두 개의 '강한 참조' 가 더 확립됩니다:
 
 ```swift
 reference2 = reference1
 reference3 = reference1
 ```
 
-이제 단일한 `Person` 인스턴스에 대한 _세 개의 (three)_ '강한 참조' 가 있습니다.
+이제 단일 `Person` 인스턴스에 대한 _세 개 (three)_ 의 '강한 참조' 가 있습니다.
 
-두 변수에 `nil` 을 할당하여 세 개의 '강한 참조' 중 (원래의 참조를 포함하여) 두 개를 끊더라도, '강한 참조' 한 개는 남아 있으므로, `Person` 인스턴스의 할당은 해제되지 않습니다:
+이 '강한 참조' 들 중에서 두 변수에 `nil` 을 할당하여 (원래의 참조를 포함한) 두 개를 끊은 경우, 하나의 '강한 참조' 는 남아 있으며, `Person` 인스턴스를 해제하지 않습니다:
 
 ```swift
 reference1 = nil
 reference2 = nil
 ```
 
-ARC 는 세 번째이자 마지막인 '강한 참조' 를 끊을 때까지, 즉 `Person` 인스턴스를 더 이상 사용하지 않는 것이 분명할 때까지, `Person` 의 할당을 해제하지 않습니다:
+'ARC' 는 세 번째인 최종 '강한 참조' 를 끊을 때까지, 더 이상 `Person` 인스턴스를 사용하지 않음이 명확한 그 시점까지, `Person` 인스턴스를 해제하지 않습니다:
 
 ```swift
 reference3 = nil
-// "John Appleseed is being deinitialized" 를 출력합니다.
+// "John Appleseed is being deinitialized" 를 인쇄합니다.
 ```
 
 ### Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)
