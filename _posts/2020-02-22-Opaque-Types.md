@@ -211,21 +211,21 @@ func protoFlip<T: Shape>(_ shape: T) -> Shape {
 }
 ```
 
-이 개정된 버전의 코드는 어떤 도형을 전달 받았는 지에 따라, `Square` 인스턴스나 `FlippedShape` 인스턴스를 반환합니다. 이 함수가 반환하는 두 개의 뒤집힌 도형은 완전히 서로 다른 타입일 수도 있습니다. 이 함수의 유효한 버전 중에는 같은 도형의 여러 가지 인스턴스를 뒤집는데도 서로 다른 타입의 값을 반환할 지도 모릅니다. `protoFlip(_:)` 에서 지정한 반환 타입 정보가 더 적다는 것은 타입 정보에 의존하는 많은 연산들을 반환 값에 사용할 수 없다는 것을 의미합니다. 예를 들어, 이 함수가 반환하는 결과를 서로 비교하는 `==` 연산자는 작성할 수 없습니다.
+개정된 버전의 코드는, 전달받은 도형이 무엇인지에 의존하여, `Square` 인스턴스 또는 `FlippedShape` 인스턴스를 반환합니다. 이 함수가 반환하는 두 '뒤집힌 도형' 은 서로 완전히 다른 타입일 수도 있습니다. 이 함수의 유효한 다른 버전은 똑같은 도형의 여러 인스턴스를 뒤집을 때 서로 다른 타입인 값들을 반환할 수도 있습니다. `protoFlip(_:)` 에서 '덜 특정한 반환 타입 정보' 는 '타입 정보' 에 의존하는 많은 연산들을 반환 값에서 사용할 수 없다는 의미입니다.[^less-sepcific] 예를 들어, 이 함수가 반환하는 결과를 비교하는 `==` 연산자를 작성하는 것은 불가능합니다.
 
 ```swift
 let protoFlippedTriangle = protoFlip(smallTriangle)
 let sameThing = protoFlip(smallTriangle)
-protoFlippedTriangle == sameThing     //  Error, 에러
+protoFlippedTriangle == sameThing     //  에러
 ```
 
-예제 마지막 줄에서 에러가 발생하는 데는 몇 가지 이유가 있습니다. 직접적인 문제는 `Shape` 이 프로토콜의 요구 사항인 `==` 연산자를 포함하지 않는다는 것입니다. 그래서 이를 추가하려고 하면, 그 다음 마주치게 되는 문제는 `==` 연산자가 왼쪽 인자와 오른쪽 인자의 타입을 알 필요가 있다는 것입니다. 이런 종류의 연산자는 보통 `Self` 타입의 인자를 받아들여서, 프로토콜을 채택하는 명확한 타입이 무엇인지를 찾는데, 문제는 프로토콜에 추가된 `Self` '요구 사항' 은 프로토콜을 타입으로 사용할 때 타입의 삭제가 일어나는 경우를 고려하지 않는다는 것입니다.
+예제 마지막 줄의 에러는 여러가지 이유로 일어납니다. 직접적인 문제점은 `Shape` 의 '프로토콜 필수 조건' 이 `==` 연산자를 포함하지 않는다는 것입니다. 이를 추가하려 하면, 그 다음 마주치게 될 문제점은 `==` 연산자가 왼-쪽과 오른-쪽 인자의 타입을 알아야 한다는 것입니다. 이런 종류의 연산자는 평소에, 프로토콜을 채택한 '고정 타입' 이 뭐든 간에 일치하도록, `Self` 타입의 인자를 취하지만, 프로토콜에 '`Self` 필수 조건' 을 추가하는 것은 프로토콜을 타입으로 사용할 때 발생하는 '타입 삭제 (type erasure)' 를 허용하지 않습니다.
 
-함수의 반환 타입으로 프로토콜 타입을 사용하는 것은 유연함을 제공해서 그 프로토콜을 준수하는 어떤 타입도 반환할 수 있게 합니다. 하지만, 그 유연함의 대가로 몇몇 연산을 반환 값에서 사용할 수 없게 됩니다. 이 예제는 `==` 연산자가 왜 불가능한지를 보여줍니다-그것이 의존하는 특정한 타입 정보가 프로토콜 타입을 쓸 경우 보존되지 않기 때문입니다.
+'프로토콜 타입' 을 함수의 반환 타입으로 사용하는 것은 프로토콜을 준수하는 어떤 타입이든 반환하도록 하는 '유연함' 부여합니다. 하지만, 해당 유연함의 대가로 일부 연산이 반환 값에서 (사용) 불가능해집니다. 예제는 `==` 연산자가 사용 불가능해지는 방법-프로토콜 타입이 보존하지 않는 특정 타입 정보에 의존하는 것-을 보여줍니다.
 
-이 접근 방법의 또 다른 문제는 도형 변환을 '숨기지 (nest)'[^nest] 않는다는 것입니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 '어떤 (some) 타입' 인 인자를 받습니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않습니다[^protocol-type-value]: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 `protoFlip(protoFlip(smallTriangle))` 과 같이 여러번 반복해서 변환하는 코드는 유효하지 않음을 의미하는 것으로 '뒤집힌 도형 (flipped shape)' 은 `protoFlip(_:)` 의 인자로 유효하지 않기 때문입니다.
+이 접근 방식이 가진 또 다른 문제는 '도형 변화 (규칙)' 을 중첩하지 않는다는 것입니다. '삼각형' 을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 어떤 타입의 인자를 취합니다. 하지만, 프로토콜 타입의 값은 해당 프로토콜을 준수하지 않으며[^protocol-type-value]: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 '다중 변화' 를 적용하는 `protoFlip(protoFlip(smallTriangle))` 같은 코드는 '뒤집은 (flipped) 도형' 이 `protoFlip(_:)` 의 유효한 인자가 아니기 때문에 무효하다는 의미입니다.[^invalid-flipped]
 
-이와는 대조적으로, 'opaque (불투명한) 타입' 은 실제 타입의 정체성을 보존합니다. 스위프트는 '결합된 타입 (associated types)' 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서도 'opaque (불투명한) 타입 값' 은 사용할 수 있습니다. 예를 들어, 다음은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 `Container` 프로토콜의 한 예시입니다:
+이와 대조적으로, '불투명 타입' 은 실제 타입의 '정체성 (identity)' 을 보존합니다. 스위프트는 '결합 타입'[^associated-types] 을 추론할 수 있어서, '프로토콜 타입' 을 반환 값으로 사용할 수 없는 곳에서 '불투명 타입 값' 을 사용할 수 있게 해줍니다. 예를 들어, 다음은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 `Container` 프로토콜의 한 버전입니다:
 
 ```swift
 protocol Container {
@@ -233,25 +233,24 @@ protocol Container {
   var count: Int { get }
   subscript(i: Int) -> Item { get }
 }
-
 extension Array: Container { }
 ```
 
-`Container` 프로토콜은 함수의 반환 타입으로 사용할 수 없는데 이는 이 프로토콜이 '결합된 타입 (associated type)' 을 가지고 있기 때문입니다. 'generic (일반화된) 반환 타입' 의 '구속 조건 (constraint)' 으로도 사용할 수 없는데 이는 함수 본문 외부에 'generic (일반화된) 타입' 이 무엇인지 추론하는데 필요한 충분한 정보가 없기 때문입니다.
+`Container` 는 해당 프로토콜이 '결합 타입' 을 가지고 있기 때문에 함수의 반환 타입으로 사용할 수 없습니다. 이는 '일반화 타입' 이 무엇인지 추론하는데 필요한 충분한 정보가 함수 외부에는 없기 때문에 '일반화 반환 타입' 의 '구속 조건' 으로도 사용할 수 없습니다.
 
 ```swift
-// Error: 에러, 결합된 타입 (associated type) 을 가지는 프로토콜은 반환 타입으로 사용할 수 없습니다.
+// 에러: '결합 타입' 을 가진 프로토콜은 반환 타입으로 사용할 수 없음
 func makeProtocolContainer<T>(item: T) -> Container {
   return [item]
 }
 
-// Error: 에러, C 를 추론하기에 정보가 충분하지 않습니다.
+// 에러: 'C' 를 추론하기 위한 충분한 정보가 없음
 func makeProtocolContainer<T, C: Container>(item: T) -> C {
   return [item]
 }
 ```
 
-반환 타입으로 'opaque (불투명한) 타입' 인 `some Container` 를 사용해야 원하던 'API 계약 (API contract)' 을 표현하게 됩니다-함수가 하나의 '컨테이너 (container)' 를 반환하지만, '컨테이너 (container)' 의 타입은 지정하지는 않겠다는 것 말입니다:  
+반환 타입으로 `some Container` 라는 '불투명 타입' 을 사용하면 '원하던 API 계약'-함수가 '컨테이너' 를 반환하지만, '컨테이너' 타입 지정은 거부한다는 것-을 나타냅니다:
 
 ```swift
 func makeOpaqueContainer<T>(item: T) -> some Container {
@@ -261,11 +260,10 @@ func makeOpaqueContainer<T>(item: T) -> some Container {
 let opaqueContainer = makeOpaqueContainer(item: 12)
 let twelve = opaqueContainer[0]
 print(type(of: twelve))
-
-// "Int" 를 출력합니다.
+// "Int" 를 인쇄합니다.
 ```
 
-`twelve` 의 타입은 `Int` 로 추론되며, 이는 '타입 추론 (type inference)' 이 'opaque (불투명한) 타입' 과도 잘 작동한다는 사실을 명확히 보여줍니다. `makeOpaqueContainer(item:)` 의 구현에서, 'opaque container (불투명한 집합체)' 의 실제 타입은 `[T]` 입니다. 여기서 `T` 는 `Int` 이므로, 반환 값은 정수 배열이며 '결합된 타입 (associated type)' 인 `Item` 은 `Int` 로 추론됩니다. `Container` 의 '첨자 연산 (subscript)' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 로 추론함을 의미합니다.
+`twelve` 의 타입은 `Int` 라고 추론하는데, 이는 '타입 추론' 이 '불투명 타입' 과도 작업한다는 사실을 묘사합니다. `makeOpaqueContainer(item:)` 의 구현에서, '불투명한 컨테이너' 의 (밑에 놓인) 실제 타입은 `[T]` 입니다. 이 경우, `T` 가 `Int` 이므로, 반환 값은 정수 배열이고 `Item` 이라는 '결합 타입' 은 `Int` 라고 추론합니다. `Container` 에 대한 '첨자 연산' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 라고 추론함을 의미합니다.
 
 ### 다음 장
 
@@ -293,4 +291,8 @@ print(type(of: twelve))
 
 [^differ-type-identity]: '타입 정체성 (type identity)' 에 대해서는 이 장 맨 앞부분의 설명과 주석을 참고하기 바랍니다.
 
-[^protocol-type-value]: 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 과 같은 에러가 발생합니다. 프로토콜을 반환하는 결과를 다시 프로토콜을 인자로 받는 함수에 전달하는 것은 안된다고 이해하면 될 것 같습니다.
+[^less-sepcific]: 이는 '프로토콜 타입' 을 사용하면 해당 '프로토콜 필수 조건' 에서 정의한 인터페이스만 사용할 수 있기 때문입니다. 즉 타입 정보가 덜 특정해 질수록 사용할 수 있는 인터페이스가 더 줄어들게 됩니다.
+
+[^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
+
+[^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장에 있는 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
