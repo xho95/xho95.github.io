@@ -6,17 +6,15 @@ date:   2020-06-30 10:00:00 +0900
 categories: Swift Language Grammar ARC Automatic Reference Counting
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Automatic Reference Counting](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 부분[^Automatic-Reference-Counting]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 현재 번역이 진행 중인데, 2020/06/22 에 Swift 5.3 이 발표되어, 이미 번역된 부분과 남은 부분 모두 Swift 5.3 을 기준으로 옮기도록 합니다. 완료된 목록은 [Swift 5.3: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있으며, 일부는 Swift 5.2 기준일 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Automatic Reference Counting (자동 참조 카운팅)
 
-스위프트는 앱의 메모리 사용량을 추적하고 관리하기 위해 _자동 참조 카운팅 (Automatic Reference Counting; ARC)_ 을 사용합니다. 이것은, 대부분의 경우, 스위프트에서 메모리 관리란 "그냥 작동하는 것 (just works)" 이라서, 직접 메모리 관리에 대해서 생각할 필요는 없다는 것을 의미합니다. ARC 는 클래스 인스턴스가 더 이상 필요하지 않을 경우 그 인스턴스가 사용하고 있는 메모리를 해제하고 확보합니다.
+스위프트는 앱의 메모리 사용 방법을 추적하고 관리하기 위해 _자동 참조 카운팅 (Automatic Reference Counting; ARC)_ 을 사용합니다. 대부분의 경우, 이는 메모리 관리가 스위프트에서는 "그냥 작동 (just works)" 하며, 스스로 메모리 관리에 대해서 생각할 필요는 없다는 의미입니다. 'ARC' 는 클래스 인스턴스가 더 이상 필요하지 않을 경우 그 인스턴스가 사용하는 메모리를 자동으로 풀어줍니다.
 
-하지만, ARC 가 메모리 관리를 하려면 코드 간의 관계에 대한 더 많은 정보가 필요한 경우가 몇 가지 정도 있습니다. 이번 장에서는 이러한 상황을 설명하고 어떻게 하면 ARC 가 모든 앱의 메모리를 관리하게 만들 수 있는지를 보여줍니다. 스위프트에서 ARC 를 사용하는 것은 오브젝티브-C 에서 ARC 를 사용하기 위해 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 접근법과 아주 비슷합니다.
+하지만, 메모리 관리를 하기 위해서 몇몇 경우에 'ARC' 는 코드 사이의 관계에 대한 더 많은 정보를 요구합니다. 이번 장은 그 상황들을 설명하며 'ARC' 가 앱의 모든 메모리를 관리하게 해주는 방법을 보입니다. 스위프트에서 ARC 를 사용하는 것은 오브젝티브-C 에서 ARC 를 사용하기 위해 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 접근 방식과 매우 비슷합니다.
 
-'참조 카운팅 (reference counting)' 은 클래스의 인스턴스에만 적용됩니다.[^reference-type] 구조체와 열거체는, 참조 타입이 아니라, 값 타입이라서, 참조의 형태로 저장되거나 전달되지 않습니다.
+'참조 카운팅 (reference counting)' 은 클래스 인스턴스에만 적용됩니다.[^reference-type] 구조체와 열거체는, 참조 타입이 아닌, 값 타입이며, 참조로 저장되거나 전달되지 않습니다.
 
 ### How ARC Works (ARC 의 작동 방식)
 
@@ -609,9 +607,9 @@ paragraph = nil
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^ARC-Objective-C]: 해당 내용은 오브젝티드-C 개발자를 위한 내용을, 원문 자체에서 이미 웹페이지로 연결되도록 링크를 달아 놓은 것입니다. 오브젝티브-C 개발자가 아니라면 다 이해할 필요는 없을 것입니다.
+[^ARC-Objective-C]: 원문 자체가 '애플 개발자 문서' 로 가는 링크입니다. '오브젝티브-C' 개발자가 아니라면 해당 문서를 직접 볼 필요 까지는 없습니다.
 
-[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법으로, 여기서 '메모리 관리' 는 '동적인 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적인 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장소 (free store; 또는 heap)' 라고 하며, '참조 (reference)' 는 '자유 저장소' 에 있는 할당된 메모리 영역을 '참조하는 (또는 가리키는; refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장소' 가 아니라 '스택 (stack)' 이라는 '정적인 메모리' 공간에 생기는 것이라서 메모리 관리의 대상이 아닙니다. 보다 자세한 내용은 위키피디아의 'Memory management' 항목 중 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
+[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법인데, 여기서 '메모리 관리' 란 '동적 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장 공간 (free store; 또는 heap)' 이라고 하며, '참조' 라는 말은 '자유 저장 공간' 에 할당된 메모리 영역을 '참조한다 (refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장 공간' 이 아닌 '정적 메모리 공간' 인 '스택 (stack)' 에 생기므로 메모리 관리 대상이 아닙니다. 이에 대한 더 자세한 정보는, 위키피디아의 'Memory management' 항목에 있는 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
 
 [^stored-constant-property]: 원문은 'stored constant property' 로 직역하면 '저장된 상수 속성' 이라고 해야겠지만, 스위프트의 '저장 속성' 중에서 '상수' 인 것이라는 의미를 살리기 위해 '상수 저장 속성' 이라고 약간 의역해서 옮겼습니다. 우리 말로는 '저장 상수 속성' 보다 '상수 저장 속성' 이라는 말이 좀 더 자연스럽다고 느꼈기 때문입니다.
 
