@@ -267,6 +267,10 @@ print(type(of: twelve))
 
 `twelve` 의 타입은 `Int` 로 추론되며, 이는 '타입 추론 (type inference)' 이 'opaque (불투명한) 타입' 과도 잘 작동한다는 사실을 명확히 보여줍니다. `makeOpaqueContainer(item:)` 의 구현에서, 'opaque container (불투명한 집합체)' 의 실제 타입은 `[T]` 입니다. 여기서 `T` 는 `Int` 이므로, 반환 값은 정수 배열이며 '결합된 타입 (associated type)' 인 `Item` 은 `Int` 로 추론됩니다. `Container` 의 '첨자 연산 (subscript)' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 로 추론함을 의미합니다.
 
+### 다음 장
+
+[Automatic Reference Counting (자동 참조 카운팅) > ]({% post_url 2020-06-30-Automatic-Reference-Counting %})
+
 ### 참고 자료
 
 [^Opaque-Types]: 전체 원문은 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html)에서 확인할 수 있습니다.
