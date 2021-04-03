@@ -97,7 +97,7 @@ reference3 = nil
 
 '강한 참조 순환' 은 클래스들 간의 관계 일부를 '강한 참조' 대신 '약한 (weak)' 또는 '소유하지 않은 참조 (unowned rerference)' 로 정의함으로써 해결합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, '강한 참조 순환' 을 해결하는 방법을 배우기 전에, 그런 순환을 유발하는 원인을 이해하는 것이 유용합니다.
 
-다음은 '강한 참조 순환' 이 우연히 생성될 수 있는 상황에 대한 예제입니다. 이 예제는, '아파트 단지' 와 그 '입주자' 를 모델링하는, `Person` 과 `Apartment` 라는 두 클래스를 정의합니다:
+다음은 '강한 참조 순환' 이 우연히 생성될 수 있는 방법에 대한 예제입니다. 이 예제는, '아파트 단지' 와 '거주자' 를 모델링하는, `Person` 과 `Apartment` 라는 두 클래스를 정의합니다:
 
 ```swift
 class Person {
@@ -115,20 +115,20 @@ class Apartment {
 }
 ```
 
-모든 `Person` 인스턴스는 `String` 타입인 `name` 속성과 `nil` 로 초기화된 옵셔널 `apartment` 속성을 가지고 있습니다. `apartment` 속성이 '옵셔널' 인건, 사람이 아파트를 항상 가지고 있는 건 아니기 때문입니다.
+모든 `Person` 인스턴스는 `String` 타입의 `name` 속성과 초기에는 `nil` 인 '옵셔널 `apartment` 속성' 을 가집니다. `apartment` 속성은, 사람이 항상 아파트를 가지는 건 아니기 때문에, '옵셔널' 입니다.
 
-이와 비슷하게, 모든 `Apartment` 인스턴스는 `String` 타입인 `unit` 속성을 가지며 `nil` 로 초기화된 옵셔널 `tenant` 속성도 가지고 있습니다. '입주자 (tenant)' 속성이 옵셔널인 것은 아파트에 입주자가 항상 있는 것은 아니기 때문입니다.
+이와 비슷하게, 모든 `Apartment` 인스턴스는 `String` 타입의 `unit` 속성을 가지며 초기에는 `nil` 인 '옵셔널 `tenant` 속성' 을 가집니다. '입주자 (tenant)' 속성은 아파트에 입주자가 항상 있는 것은 아니기 때문에 옵셔널입니다.
 
-이 두 클래스 모두 '정리자 (deinitializer)'[^deinitializer] 도 정의하고 있어서, 해당 클래스의 인스턴스가 정리 중이라는 사실을 출력합니다. 이는 `Person` 과 `Apartment` 의 인스턴스가 예상대로 해제되고 있는 지를 확인하도록 해줍니다.
+이 클래스 둘 다, 해당 클래스가 정리 중이라는 사실을 인쇄하는, '정리자' 도 정의합니다. 이는 `Person` 과 `Apartment` 인스턴스가 예상한 것처럼 해제되는 지를 확인할 수 있도록 해줍니다.
 
-다음 코드 조각은 `john` 과 `unit4A` 라는 옵셔널 타입의 값을 두 개 정의하는데, 이는 밑에서 특정 `Apartment` 와 `Person` 인스턴스로 설정할 것입니다. 이 두 변수 모두, 옵셔널이라는 이유로, `nil` 초기 값을 가집니다.
+이 다음 코드 조각은 `john` 과 `unit4A` 라는 옵셔널 타입인 두 변수를 정의하는데, 아래에서 특정 `Apartment` 와 `Person` 인스턴스로 설정될 것입니다. 이 변수 둘 다, 옵셔널인 덕에, `nil` 이라는 초기 값을 가집니다.
 
 ```swift
 var john: Person?
 var unit4A: Apartment?
 ```
 
-이제 특정 `Person` 인스턴스와 `Apartment` 인스턴스를 생성한 후 이 새 인스턴스를 `john` 과 `unit4A` 변수에 할당할 수 있습니다:
+이제 특정한 `Person` 인스턴스와 `Apartment` 인스턴스를 생성하고 이 새 인스턴스를 `john` 과 `unit4A` 변수에 할당할 수 있습니다:
 
 ```swift
 john = Person(name: "John Appleseed")
@@ -605,17 +605,15 @@ paragraph = nil
 
 [^Automatic-Reference-Counting]: 이 글에 대한 원문은 [Automatic-Reference-Counting](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 에서 확인할 수 있습니다.
 
-[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다.
-
 [^ARC-Objective-C]: 원문 자체가 '애플 개발자 문서' 로 가는 링크입니다. '오브젝티브-C' 개발자가 아니라면 해당 문서를 직접 볼 필요 까지는 없습니다.
 
 [^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법인데, 여기서 '메모리 관리' 란 '동적 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장 공간 (free store; 또는 heap)' 이라고 하며, '참조' 라는 말은 '자유 저장 공간' 에 할당된 메모리 영역을 '참조한다 (refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장 공간' 이 아닌 '정적 메모리 공간' 인 '스택 (stack)' 에 생기므로 메모리 관리 대상이 아닙니다. 이에 대한 더 자세한 정보는, 위키피디아의 'Memory management' 항목에 있는 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
 
 [^stored-constant-property]: 원문은 'stored constant property' 라서 직역하면 '저장 상수 속성' 이지만, 첵의 다른 곳에서 'constant stored property' 라는 말을 더 많이 쓰고 있어서, 통일성을 위해 '상수 저장 속성' 이라고 옮깁니다. 사실 '저장 상수 속성' 이나 '상수 저장 속성' 이나 의미는 같은 것인데, 우리 말로 옮겼을 때 '상수 저장 속성' 이 좀 더 자연스럽게 느껴집니다.
 
-[^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
+[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다.
 
-[^deinitializer]: 'deinitializer' 를 '정리자' 라고 옮기는 이유는 스위프트 언어에서 '소멸자' 라는 말은 어울리지 않기 때문입니다. 이에 대해서는 [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %}) 의 '[참고 자료]({% post_url 2017-03-03-Deinitialization %}#참고-자료)' 부분을 참고하기 바랍니다.
+[^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
 
 [^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
