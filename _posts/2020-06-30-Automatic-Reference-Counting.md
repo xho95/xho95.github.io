@@ -91,13 +91,13 @@ reference3 = nil
 
 ### Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)
 
-위에 있는 예제에서, ARC 는 새로 생성한 `Person` 인스턴스에 대한 참조의 개수를 추적하여 더 이상 필요하지 않을 때 해당 `Person` 인스턴스의 할당을 해제할 수 있었습니다.
+위 예제에 있는, 'ARC' 는 새로 생성한 `Person` 인스턴스에 대한 참조 개수를 추적하고 더 이상 필요하지 않을 때 해당 `Person` 인스턴스를 해제할 수 있습니다.
 
-하지만, 코드를 작성하다 보면 클래스 인스턴스에 대한 '강한 참조' 를 없애는 것이 _절대로 (never)_ 안되는 경우도 있습니다. 이는 두 클래스 인스턴스가 서로에 대한 '강한 참조' 를 쥐고 있어서, 그로 인해 각 인스턴스가 서로를 계속 살아있게 될 때 발생합니다. 이를 '_강한 참조 순환 (strong reference cycle)_' 이라고 합니다.
+하지만, 클래스 인스턴스의 '강한 참조' 가 _절대로 (never)_ '0' 개가 되지 않는 코드를 작성할 가능성이 있습니다. 이는 두 클래스 인스턴스가 서로에 대한 '강한 참조' 를 쥐고 있어서, 각각의 인스턴스가 다른 것이 살아있게 유지할 경우, 발생합니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라고 합니다.
 
-강한 참조 순환을 해결하려면 클래스 사이의 일부 관계를 강한 참조가 아니라 '약한 참조 (weak reference)' 나 '소유되지 않은 참조 (unowned rerference)' 로 정의해야 합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환의 해결 방법을 배우기 전에, 어떻게 해서 그런 순환이 발생하는 지 이해하는 것이 좋을 것입니다.
+'강한 참조 순환' 은 클래스들 간의 관계 일부를 '강한 참조' 대신 '약한 (weak)' 또는 '소유하지 않은 참조 (unowned rerference)' 로 정의함으로써 해결합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, '강한 참조 순환' 을 해결하는 방법을 배우기 전에, 그런 순환을 유발하는 원인을 이해하는 것이 유용합니다.
 
-다음 예제는 강한 참조 순환이 우연히 생성될 수 있는 상황을 보여줍니다. 이 예제는, 아파트 단지 및 그 거주자를 모델링하는, `Person` 과 `Apartment` 라는 두 개의 클래스를 정의합니다:
+다음은 '강한 참조 순환' 이 우연히 생성될 수 있는 상황에 대한 예제입니다. 이 예제는, '아파트 단지' 와 그 '입주자' 를 모델링하는, `Person` 과 `Apartment` 라는 두 클래스를 정의합니다:
 
 ```swift
 class Person {
