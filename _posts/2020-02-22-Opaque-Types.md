@@ -263,7 +263,7 @@ print(type(of: twelve))
 // "Int" 를 인쇄합니다.
 ```
 
-`twelve` 의 타입은 `Int` 라고 추론하는데, 이는 '타입 추론' 이 '불투명 타입' 과도 작업한다는 사실을 묘사합니다. `makeOpaqueContainer(item:)` 의 구현에서, '불투명한 컨테이너' 의 (밑에 놓인) 실제 타입은 `[T]` 입니다. 이 경우, `T` 가 `Int` 이므로, 반환 값은 정수 배열이고 `Item` 이라는 '결합 타입' 은 `Int` 라고 추론합니다. `Container` 에 대한 '첨자 연산' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 라고 추론함을 의미합니다.
+`twelve` 의 타입은 `Int` 라고 추론하는데, 이는 '타입 추론'[^type-inference] 이 '불투명 타입' 과도 작업한다는 사실을 묘사합니다. `makeOpaqueContainer(item:)` 의 구현에서, '불투명한 컨테이너' 의 (밑에 놓인) 실제 타입은 `[T]` 입니다. 이 경우, `T` 가 `Int` 이므로, 반환 값은 정수 배열이고 `Item` 이라는 '결합 타입' 은 `Int` 라고 추론합니다. `Container` 에 대한 '첨자 연산' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 라고 추론함을 의미합니다.
 
 ### 다음 장
 
@@ -296,3 +296,5 @@ print(type(of: twelve))
 [^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
 
 [^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장에 있는 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
+
+[^type-inference]: '타입 추론' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
