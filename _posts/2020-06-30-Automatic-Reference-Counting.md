@@ -177,13 +177,13 @@ unit4A = nil
 
 _약한 참조 (weak reference)_ 는 참조하는 인스턴스를 강하게 쥐지 않는 참조이며, 참조한 인스턴스를 'ARC' 가 처분하는 것을 멈추지 않습니다. 이 작동 방식은 참조가 '강한 참조 순환' 이 되는 것을 막습니다. '약한 참조' 는 속성이나 변수 선언 앞에 `weak` 키워드를 붙임으로써 지시합니다.
 
-약한 참조는 참조하고 있는 인스턴스를 강하게 쥐고 있지 않기 때문에, 약한 참조가 아직 참조하고 있는 도중에도 해당 인스턴스의 할당을 해제하는 것이 가능합니다. 그러므로, ARC 는 참조하고 있는 인스턴스의 할당을 해제하면서 자동적으로 약한 참조를 `nil` 로 설정합니다. 그리고, 약한 참조는 '실행 시간 (runtime)' 에 값을 `nil` 로 바꿀 수 있어야 하기 때문에, 항상 옵셔널 타입이어야 하며, 상수가 아닌, 변수로 선언되어야 합니다.
+'약한 참조' 는 참조하는 인스턴스를 강하게 쥐지 않기 때문에, '약한 참조' 가 아직 참조하고 있는 동안에도 해당 인스턴스를 해제하는 것이 가능합니다. 그러므로, 'ARC' 는 참조하는 인스턴스를 해제할 때 자동으로 약한 참조를 `nil` 로 설정합니다. 그리고, '약한 참조' 의 값은 실행 시간에 `nil` 로 바뀌는 것을 허용해야 하기 때문에, 상수 보다는, 항상 옵셔널 타입의, 변수로 선언합니다.
 
-약한 참조는, 다른 모든 옵셔널들 처럼, 값이 존재하는 지를 검사할 수 있으며, 절대로 더 이상 존재하지 않는 무효한 인스턴스를 참조해서는 안됩니다.
+다른 어떤 옵셔널 값과 마찬가지로, 약한 참조에 값이 존재하는지 검사할 수 있으며, 더 이상 존재하지 않는 무효한 인스턴스에 대한 참조로 끝맺을 수가 절대로 없습니다.
 
-> ARC 가 약한 참조를 `nil` 로 설정할 때는 '속성 관찰자 (property observers)' 가 호출되지 않습니다.
+> 'ARC' 가 약한 참조를 `nil` 로 설정할 때는 '속성 관찰자 (property observers)'[^property-observers] 를 호출하지 않습니다.
 
-아래 예제는 위에 있는 `Person` 및 `Apartment` 예제와 모든 점에서 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성이 '약한 참조' 로 선언되었다는 것입니다:
+아래 예제는 위에 있는 `Person` 과 `Apartment` 예제와 모든 점에서 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성을 '약한 참조' 로 선언한다는 것입니다:
 
 ```swift
 class Person {
@@ -614,6 +614,8 @@ paragraph = nil
 [^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다.
 
 [^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
+
+[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
 [^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
