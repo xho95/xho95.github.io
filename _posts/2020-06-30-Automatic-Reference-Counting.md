@@ -135,11 +135,11 @@ john = Person(name: "John Appleseed")
 unit4A = Apartment(unit: "4A")
 ```
 
-다음은 두 인스턴스를 생성하고 할당한 후 '강한 참조' 가 어떻게 보이는 지를 나타냅니다. `john` 변수는 이제 새 `Person` 인스턴스에 대한 '강한 참조' 를 가지고 있고, `unit4A` 변수는 새 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있습니다:
+다음은 이 두 인스턴스를 생성하고 할당한 후의 '강한 참조' 를 보인 것입니다. `john` 변수는 이제 새로운 `Person` 인스턴스에 대한 '강한 참조' 를 가지며, `unit4A` 변수는 새로운 `Apartment` 인스턴스에 대한 '강한 참조' 를 가집니다:
 
 ![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-before.jpg)
 
-이제 두 인스턴스를 서로 연결해서 사람은 아파트를 가지고, 아파트는 입주자를 가지도록 할 수 있습니다. `john` 과 `unit4A` 옵셔널 변수에 저장된 인스턴스를 풀고 이에 접근해서, 해당 인스턴스의 속성을 설정하려고, 느낌표 (`!`) 를 사용한 것에 주목하기 바랍니다:
+이제 두 인스턴스를 서로 이어서 사람은 아파트를 가지고, 아파트는 입주자가 있도록, 할 수 있습니다. `john` 과 `unit4A` 옵셔널 변수에 저장된 인스턴스를 풀고 이에 접근해서, 해당 인스턴스의 속성을 설정하려고, 느낌표 (`!`) 를 사용한 것에 주목하기 바랍니다:
 
 ```swift
 john!.apartment = unit4A
