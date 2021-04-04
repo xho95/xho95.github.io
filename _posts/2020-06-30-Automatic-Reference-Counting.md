@@ -135,55 +135,55 @@ john = Person(name: "John Appleseed")
 unit4A = Apartment(unit: "4A")
 ```
 
-다음은 두 인스턴스를 생성하고 할당한 후 '강한 참조' 가 어떻게 보이는 지를 나타냅니다. `john` 변수는 이제 새 `Person` 인스턴스에 대한 '강한 참조' 를 가지고 있고, `unit4A` 변수는 새 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있습니다:
+다음은 이 두 인스턴스를 생성하고 할당한 후의 '강한 참조' 를 보인 것입니다. `john` 변수는 이제 새로운 `Person` 인스턴스에 대한 '강한 참조' 를 가지며, `unit4A` 변수는 새로운 `Apartment` 인스턴스에 대한 '강한 참조' 를 가집니다:
 
 ![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-before.jpg)
 
-이제 두 인스턴스를 서로 연결해서 사람은 아파트를 가지고, 아파트는 입주자를 가지도록 할 수 있습니다. `john` 과 `unit4A` 옵셔널 변수에 저장된 인스턴스를 풀고 이에 접근해서, 해당 인스턴스의 속성을 설정하려고, 느낌표 (`!`) 를 사용한 것에 주목하기 바랍니다:
+이제 두 인스턴스를 서로 이어서 사람은 아파트를 가지고, 아파트는 입주자를 가지도록, 할 수 있습니다. '느낌표 (`!`)' 로 `john` 과 `unit4A` 옵셔널 변수 안에 저장한 인스턴스의 포장을 풀어서 접근해야, 이 인스턴스들의 속성을 설정할 수 있다는 점을 기억하기 바랍니다:
 
 ```swift
 john!.apartment = unit4A
 unit4A!.tenant = john
 ```
 
-다음은 두 인스턴스를 서로 연결하고 난 후 '강한 참조' 가 어떻게 보이는 지를 나타냅니다:
+다음은 두 인스턴스를 서로 이은 후의 '강한 참조' 를 보인 것입니다:
 
 ![Strong Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-reference.png)
 
-불행하게도, 이 두 인스턴스를 연결하는 것은 이들 사이에 '강한 참조 순환' 을 생성합니다. `Person` 인스턴스는 이제 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지며, `Apartment` 인스턴스는 `Person` 인스턴스에 대한 '강한 참조' 를 가지게 됩니다. 따라서, `john` 과 `unit4A` 변수가 쥐고 있던 '강한 참조' 를 끊더라도, '참조 개수 (reference counts)' 는 0 으로 떨어지지 않으며, 인스턴스는 ARC 에 의해 해제되지 않습니다:
+불행하게도, 이 두 인스턴스를 잇는 것은 이들 사이에 '강한 참조 순환' 을 생성합니다. `Person` 인스턴스는 이제 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지며, `Apartment` 인스턴스는 `Person` 인스턴스에 대한 '강한 참조' 를 가집니다. 그러므로, `john` 과 `unit4A` 변수가 쥐고 있는 '강한 참조' 를 끊을 때, '참조 개수 (counts)' 가 '0' 으로 떨어지지 않으며, 'ARC' 가 인스턴스를 해제하지 않습니다:
 
 ```swift
 john = nil
 unit4A = nil
 ```
 
-이 두 변수를 `nil` 로 설정할 때 어느 '정리자 (deinitializer)' 도 호출되지 않는다는 점에 주목하기 바랍니다. '강한 참조 순환' 는 `Person` 과 `Apartment` 인스턴스가 해제되는 것을 막으므로, 앱에서 '메모리 누수 (memory leak)' 를 발생시킵니다.
+이 두 변수를 `nil` 로 설정할 때 어느 쪽의 '정리자' 도 호출하지 않는다는 것을 기억하기 바랍니다. '강한 참조 순환' 은 `Person` 과 `Apartment` 인스턴스를 해제하는 것을 막아서, 앱에 '메모리 누수 (leak)' 를 유발합니다.
 
-다음은 `john` 과 `unit4A` 변수를 `nil` 로 설정한 후 '강한 참조' 가 어떻게 보이는지를 나타냅니다:
+다음은 `john` 과 `unit4A` 변수를 `nil` 로 설정한 후의 '강한 참조' 를 보인 것입니다:
 
 ![Strong Reference Remaining](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.jpg)
 
-`Person` 인스턴스와 `Apartment` 인스턴스 사이의 '강한 참조' 는 남아 있으며 끊을 수가 없습니다.
+`Person` 인스턴스와 `Apartment` 인스턴스 사이의 '강한 참조' 가 남아 있으며 이를 끊을 수가 없습니다.
 
 ### Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)
 
-스위프트는 클래스 타입의 속성과 작업할 때 (생길 수 있는) '강한 참조 순환 (strong reference cycle)' 을 해결하는 방법으로 두 가지를 제공합니다: '약한 참조 (weak reference)' 와 '소유되지 않은 참조 (unowned reference)' 가 그것입니다.
+스위프트는 클래스 타입인 속성과 작업할 때의 '강한 참조 순환' 을 해결하는 두 가지 방법을 제공하는데: '약한 참조 (weak reference)' 와 '소유하지 않는 참조 (unowned reference)' 입니다.
 
-'약한 참조' 와 '소유되지 않은 참조' 는 '참조 순환 (reference cycle)' 에 있는 인스턴스 하나가 다른 인스턴스를 강하게 쥐고 있지 _않아도 (without)_ 참조하도록 해줍니다. 이 인스턴스들은 이제 '강한 참조 순환' 을 생성하지 않아도 서로를 참조할 수 있습니다.
+'약한 참조' 와 '소유하지 않는 참조' 는 '참조 순환' 에 있는 인스턴스 하나가 다른 인스턴스를 강하게 쥐는 것 _없이 (without)_ 참조할 수 있게 해줍니다. 그러면 인스턴스들이 '강한 참조 순환' 을 생성하지 않으면서 서로를 참조할 수 있습니다.
 
-'약한 참조' 는 다른 인스턴스의 수명이 더 짧을 때 사용합니다-다시 말해서, 다른 인스턴스의 할당이 먼저 해제되는 경우 사용합니다. 위의 `Apartment` 예제에서, 아파트는 자신의 일생 중 어느 시점에 입주자가 없을 수 있음이 적절하므로, 이 경우 '약한 참조' 로 '참조 순환' 을 끊는 것은 적절한 방법입니다. 이와는 대조적으로, '소유되지 않은 참조' 는 다른 인스턴스가 같거나 더 긴 수명을 가질 때 사용합니다.
+'약한 참조' 는 다른 인스턴스의 수명이 더 짧을 때-즉, 다른 인스턴스를 먼저 해제할 수 있을 때-사용합니다. 위 `Apartment` 예제에서, 아파트가 수명 중의 어느 시점에 입주자가 없을 수 있다는 것은 적절하므로, 이 경우의 '참조 순환' 은 '약한 참조' 로 끊는 것이 적절합니다. 이와 대조적으로, '소유하지 않는 참조' 는 다른 인스턴스와 수명이 같거나 더 길 때 사용합니다.
 
 #### Weak References (약한 참조)
 
-_약한 참조 (weak reference)_ 는 참조하는 인스턴스를 강하게 쥐지 않는 참조라서, ARC 가 참조된 인스턴스를 처분하는 것을 중지하지 않습니다. 이런 동작 방식은 참조가 '강한 참조 순환' 의 일부가 되는 것을 막아줍니다. '약한 참조' 는 속성이나 변수 선언의 앞에 `weak` 키워드를 붙여서 지시합니다.
+_약한 참조 (weak reference)_ 는 참조하는 인스턴스를 강하게 쥐지 않는 참조이며, 참조한 인스턴스를 'ARC' 가 처분하는 것을 멈추지 않습니다. 이 작동 방식은 참조가 '강한 참조 순환' 이 되는 것을 막습니다. '약한 참조' 는 속성이나 변수 선언 앞에 `weak` 키워드를 붙임으로써 지시합니다.
 
-약한 참조는 참조하고 있는 인스턴스를 강하게 쥐고 있지 않기 때문에, 약한 참조가 아직 참조하고 있는 도중에도 해당 인스턴스의 할당을 해제하는 것이 가능합니다. 그러므로, ARC 는 참조하고 있는 인스턴스의 할당을 해제하면서 자동적으로 약한 참조를 `nil` 로 설정합니다. 그리고, 약한 참조는 '실행 시간 (runtime)' 에 값을 `nil` 로 바꿀 수 있어야 하기 때문에, 항상 옵셔널 타입이어야 하며, 상수가 아닌, 변수로 선언되어야 합니다.
+'약한 참조' 는 참조하는 인스턴스를 강하게 쥐지 않기 때문에, '약한 참조' 가 아직 참조하고 있는 동안에도 해당 인스턴스를 해제하는 것이 가능합니다. 그러므로, 'ARC' 는 참조하는 인스턴스를 해제할 때 자동으로 약한 참조를 `nil` 로 설정합니다. 그리고, '약한 참조' 의 값은 실행 시간에 `nil` 로 바뀌는 것을 허용해야 하기 때문에, 상수 보다는, 항상 옵셔널 타입의, 변수로 선언합니다.
 
-약한 참조는, 다른 모든 옵셔널들 처럼, 값이 존재하는 지를 검사할 수 있으며, 절대로 더 이상 존재하지 않는 무효한 인스턴스를 참조해서는 안됩니다.
+다른 어떤 옵셔널 값과 마찬가지로, 약한 참조에 값이 존재하는지 검사할 수 있으며, 더 이상 존재하지 않는 무효한 인스턴스에 대한 참조로 끝맺을 수가 절대로 없습니다.
 
-> ARC 가 약한 참조를 `nil` 로 설정할 때는 '속성 관찰자 (property observers)' 가 호출되지 않습니다.
+> 'ARC' 가 약한 참조를 `nil` 로 설정할 때는 '속성 관찰자 (property observers)'[^property-observers] 를 호출하지 않습니다.
 
-아래 예제는 위에 있는 `Person` 및 `Apartment` 예제와 모든 점에서 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성이 '약한 참조' 로 선언되었다는 것입니다:
+아래 예제는 위에 있는 `Person` 과 `Apartment` 예제와 모든 점에서 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성을 '약한 참조' 로 선언한다는 것입니다:
 
 ```swift
 class Person {
@@ -614,6 +614,8 @@ paragraph = nil
 [^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다.
 
 [^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
+
+[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
 [^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
