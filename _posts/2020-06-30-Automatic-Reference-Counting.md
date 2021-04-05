@@ -95,7 +95,7 @@ reference3 = nil
 
 하지만, 클래스 인스턴스의 '강한 참조' 가 _절대로 (never)_ '0' 개가 되지 않는 코드를 작성할 가능성이 있습니다. 이는 두 클래스 인스턴스가 서로에 대한 '강한 참조' 를 쥐고 있어서, 각각의 인스턴스가 다른 것이 살아있게 유지할 경우, 발생합니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라고 합니다.
 
-'강한 참조 순환' 은 클래스들 간의 관계 일부를 '강한 참조' 대신 '약한 (weak)' 또는 '소유하지 않은 참조 (unowned rerference)' 로 정의함으로써 해결합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, '강한 참조 순환' 을 해결하는 방법을 배우기 전에, 그런 순환을 유발하는 원인을 이해하는 것이 유용합니다.
+'강한 참조 순환' 은 클래스들 간의 관계 일부를 '강한 참조' 대신 '약한 (weak)' 또는 '소유하지 않는 참조 (unowned rerference)' 로 정의함으로써 해결합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, '강한 참조 순환' 을 해결하는 방법을 배우기 전에, 그런 순환을 유발하는 원인을 이해하는 것이 유용합니다.
 
 다음은 '강한 참조 순환' 이 우연히 생성될 수 있는 방법에 대한 예제입니다. 이 예제는, '아파트 단지' 와 '거주자' 를 모델링하는, `Person` 과 `Apartment` 라는 두 클래스를 정의합니다:
 
@@ -242,23 +242,23 @@ unit4A = nil
 
 > '쓰레기 수집 (gabage collection)'[^gabage-collection] 을 사용하는 시스템에서는, 단순한 '임시 저장 구조 (caching mechanism)' 을 구현하기 위해 '약한 참조' 를 사용할 때가 있는데 '메모리 압력' 이 '쓰레기 수집' 을 발동할 때만 '강한 참조' 를 가지지 않은 객체를 해제하기 때문입니다. 하지만, 'ARC' 에서는, 마지막 '강한 참조' 를 제거하자 마자 값을 해제하므로, 그런 용도로는 '약한 참조' 가 적합하지 않습니다.
 
-#### Unowned References (소유되지 않은 참조)
+#### Unowned References (소유하지 않는 참조)
 
-약한 참조와 마찬가지로, _소유되지 않은 참조 (unowned reference)_ 는 참조하는 인스턴스를 강하게 쥐지 않습니다. 하지만, 약한 참조와는 다르게, '소유되지 않은 참조' 는 다른 인스턴스가 같은 수명 또는 더 긴 수명을 가지고 있을 때 사용합니다. '소유되지 않은 참조' 는 속성이나 변수 선언의 앞에 `unowned` 키워드를 붙여서 지시합니다.
+'약한 참조' 와 같이, _소유하지 않는 참조 (unowned reference)_ 는 참조하는 인스턴스를 강하게 쥐지 않습니다. 하지만, 약한 참조와는 달리, '소유하지 않는 참조' 는 다른 인스턴스의 수명이 똑같거나 더 길 때 사용합니다. '소유하지 않는 참조' 는 속성이나 변수 선언 앞에 `unowned` 키워드를 붙임으로써 지시합니다.
 
-약한 참조와는 다르게, '소유되지 않은 참조' 는 항상 값을 가지고 있기를 기대합니다. 그 결과, 값을 '소유하지 않는 (unowned)' 다고 표시하면 '옵셔널' 이 될 수 없어서, ARC 는 절대로 '소유되지 않은 참조' 의 값을 `nil` 로 설정할 수 없습니다.
+약한 참조와는 달리, '소유하지 않는 참조' 는 항상 값을 가지고 있다고 예상합니다. 그 결과, '소유하지 않는 (unowned)' 다고 표시한 값은 '옵셔널' 일 수 없으며, 'ARC' 는 '소유하지 않는 참조' 의 값을 절대로 `nil` 로 설정하지 않습니다.
 
-> '소유되지 않은 참조' 는 해당 참조가 해제되지 않은 인스턴스만 _항상 (always)_ 참조한다고 확신할 수 있을 때만 사용하도록 합니다.
+> '소유하지 않는 참조' 는 참조가 _항상 (always)_ 해제 안된 인스턴스를 참조한다고 확신할 때에만 사용합니다.
 >
-> 해당 인스턴스가 해제된 후에 '소유되지 않은 참조' 의 값에 접근하려고 하면, '실행시간 에러 (runtime error)' 가 발생하게 됩니다.
+> 해당 인스턴스를 해제한 후에 '소유하지 않는 참조' 의 값에 접근하려고 하면, '실행시간 에러' 를 가지게 될 것입니다.
 
-다음 예제는, 은행 고객과 해당 고객을 위한 신용 카드를 모델링하는, `Customer` 와 `CreditCard` 라는, 두 개의 클래스를 정의합니다. 이 두 클래스는 각자 서로의 클래스 인스턴스를 속성으로 저장합니다. 이러한 관계는 잠재적으로 '강한 참조 순환' 를 생성하게 됩니다.
+다음 예제는, '은행 고객' 과 해당 고객을 위한 '신용 카드' 를 모델링하는, `Customer` 와 `CreditCard` 라는, 두 클래스를 정의합니다. 이 두 클래스는 각각 다른 클래스의 인스턴스를 속성으로 저장합니다. 이 관계는 '강한 참조 순환' 를 생성할 가능성이 있습니다.
 
-`Customer` 와 `CreditCard` 의 관계는 위의 '약한 참조' 예제에서 봤던 `Apartment` 와 `Person` 의 관계와 조금 다릅니다. 이 데이터 모델에서, 고객은 신용 카드를 가질 수도 있고 가지지 않을 수도 있지만, 신용 카드는 _항상 (always)_ 어떤 고객과 결합되어 있을 겁니다. `CreditCard` 인스턴스는 절대로 자기가 참조하는 `Customer` 보다 오래 살지 못합니다. 이를 표현하기 위해, `Customer` 클래스는 옵셔널 `card` 속성을 가지지만, `CreditCard` 클래스는 '소유되지 않은 (그리고 옵셔널이-아닌)' `customer` 속성을 가집니다.
+`Customer` 와 `CreditCard` 의 관계는 위의 '약한 참조' 예제에서 봤던 `Apartment` 와 `Person` 의 관계와는 좀 다릅니다. 이 '데이터 모델' 에서, 고객은 신용 카드를 가질 수도 가지지 않을 수도 있지만, 신용 카드는 _항상 (always)_ 고객과 결합되어 있을 것입니다. `CreditCard` 인스턴스는 절대로 자신이 참조하는 `Customer` 보다 오래 살지 않습니다. 이를 표현하기 위해, `Customer` 클래스는 '옵셔널 `card` 속성' 을 가지지만, `CreditCard` 클래스는 '소유하지 않는 (그리고 옵셔널-아닌) `customer` 속성' 을 가집니다.
 
-더 나아가서, 새로운 `CreditCard` 인스턴스는 _오직 (only)_ `number` 값과 `custom` 인스턴스를 `CreditCard` 초기자로 전달하는 경우에만 생성됩니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스가 자신과 결합된 `customer` 인스턴스를 항상 가지고 있다는 것을 보장해 줍니다.
+더 나아가, 새로운 `CreditCard` 인스턴스는 `number` 값과 `custom` 인스턴스를 '사용자 정의 `CreditCard` 초기자' 로 전달함으로써 _만 (only)_ 생성할 수 있습니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스가 항상 자신과 결합된 `customer` 인스턴스를 가지도록 보장합니다.
 
-신용 카드는 항상 고객을 가질 것이기 때문에, `customer` 인스턴스를 '소유되지 않은 참조' 로 정의해서, '강한 참조 순환' 을 피할 수 있습니다:
+'신용 카드' 는 고객을 항상 가지고 있을 것이기 때문에, '강한 참조 순환' 을 피하기 위해, `customer` 인스턴스를 '소유하지 않는 참조' 로 정의합니다:
 
 ```swift
 class Customer {
@@ -281,44 +281,44 @@ class CreditCard {
 }
 ```
 
-> `CreditCard` 클래스의 `number` 속성은 `Int` 가 아니라 `UInt64` 타입으로 정의했는데, 이는 `number` 속성의 용량이 32-비트와 64-비트 시스템 모두에서 16-자리 카드 번호를 저장할 만큼 충분히 크도록 보장하기 위함입니다.
+> `CreditCard` 클래스의 `number` 속성은, `number` 속성의 용량이 32-비트와 64-비트 시스템 모두에서 16-자리 카드 번호를 저장하기에 충분히 크도록 보장하기 위해, `Int` 보다 `UInt64` 타입으로 정의합니다.
 
-이 다음 코드 조각은, 지정된 고객에 대한 참조를 저장하는데 사용할, `john` 이라는 옵셔널 `Customer` 변수를 정의합니다. 이 변수는, 옵셔널이라서, 'nil' 초기 값을 가집니다:
+이 다음 코드 조각은, 특정 고객에 대한 참조를 저장할, `john` 이라는 '옵셔널 `Customer` 변수' 를 정의합니다. 이 변수는, 옵셔널인 덕에, 초기 값으로 'nil' 을 가집니다:
 
 ```swift
 var john: Customer?
 ```
 
-이제 `Customer` 인스턴스를 생성하여, 이것으로 새 `CreditCard` 인스턴스를 초기화한 다음 이를 해당 고객의 `card` 속성에 할당할 수 있습니다:
+이제 `Customer` 인스턴스를 생성하고, 새로운 `CreditCard` 인스턴스를 해당 고객의 `card` 속성으로 초기화하고 할당하는데 이를 사용할 수 있습니다:
 
 ```swift
 john = Customer(name: "John Appleseed")
 john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 ```
 
-다음은 두 인스턴스를 서로 연결하고 난 후 이제, '참조' 가 어떻게 보이는 지를 나타냅니다:
+다음은, 이제 두 인스턴스를 연결하고 난 후의, '참조' 를 보인 것입니다:
 
 ![Unowned Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-reference.jpg)
 
-`Customer` 인스턴스는 이제 `CreditCard` 인스턴스에 대한 강한 참조를 가지며, `CreditCard` 인스턴스는 `Customer` 인스턴스에 대한 '소유하지 않은 참조' 를 가집니다.
+`Customer` 인스턴스는 이제 `CreditCard` 인스턴스에 대한 '강한 참조' 를 가지며, `CreditCard` 인스턴스는 `Customer` 인스턴스에 대한 '소유하지 않는 참조'[^unowned-reference] 를 가집니다.
 
-'소유하지 않은' `customer` 인스턴스 때문에, `john` 변수가 쥐고 있던 강한 참조를 끊으면, `Customer` 인스턴스에 대한 강한 참조는 더 이상 없습니다.
+'소유하지 않는 `customer` 참조' 때문에, `john` 변수가 쥐고 있던 '강한 참조' 를 끊을 때, `Customer` 인스턴스에 대한 '강한 참조' 가 더 이상은 없습니다:
 
 ![Unowned Reference Break](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-break.jpg)
 
-이제 `Customer` 인스턴스에 대한 참조가 없기 때문에, 이 할당은 해제됩니다. 이 일이 일어나면, `CreditCard` 인스턴스에 대한 '강한 참조' 도 이제 더 이상 없으므로, 이것 역시 해제됩니다:
+더 이상 `Customer` 인스턴스에 대한 '강한 참조' 가 없기 때문에, 해제됩니다. 이것이 발생한 후, `CreditCard` 인스턴스에 대한 '강한 참조' 도 더 이상 없으므로, 이 역시 해제됩니다:
 
 ```swift
 john = nil
-// "John Appleseed is being deinitialized" 를 출력합니다.
-// "Card #1234567890123456 is being deinitialized" 를 출력합니다.
+// "John Appleseed is being deinitialized" 를 인쇄합니다.
+// "Card #1234567890123456 is being deinitialized" 를 인쇄합니다.
 ```
 
-위에 있는 마지막 코드 조각은 `john` 변수를 `nil` 로 설정하고 나면 `Customer` 인스턴스와 `CreditCard` 인스턴스에 대한 두 '정리자' 모두 자신들의 "정리 (deinitialized)" 메시지를 출력한다는 것을 보여줍니다.
+위에 있는 최종 코드 조각은 `john` 변수가 `nil` 로 설정된 후 `Customer` 인스턴스와 `CreditCard` 인스턴스에 대한 '정리자' 둘 다 자신의 "정리 (deinitialized)" 메시지를 인쇄함을 보여줍니다.
 
-> 위 예제는 _안전한 (safe)_ '소유되지 않은 참조' 를 사용하는 방법을 보여줍니다. 스위프트는 실행 시간 안전성 검사를 비활성화해야 하는 경우-예를 들어, 성능상의 이유-를 위해 _안전하지 않은 (unsafe)_ '소유되지 않은 참조' 도 제공합니다. 모든 안전하지 않은 동작들처럼, 해당 코드가 안전한 지에 대한 검사의 책임은 직접 짊어지게 됩니다.
+> 위 예제는 _안전한 (safe)_ '소유하지 않는 참조' 를 사용하는 방법을 보여줍니다. 스위프트는 '실행 시간 안전성 검사' 를 비활성화해야 할 경우-예를 들어, 성능상의 이유-를 위해 _안전하지 않은 (unsafe)_ '소유하지 않는 참조' 도 제공합니다. 모든 안전하지 않은 연산 처럼, 해당 코드가 안전한지 검사하는 책임은 직접 맡아야 합니다.
 >
-> '안전하지 않은 소유되지 않은 참조' 는 `unowned(unsafe)` 를 써서 지시합니다. '안전하지 않은 소유되지 않은 참조' 가 참조하던 인스턴스를 해제한 다음 이것에 접근하려고 하면, 프로그램은 그 인스턴스가 있던 곳의 메모리 위치에 대한 접근을 시도하며, 이것이 바로 안전하지 않은 동작입니다.
+> '안전하지 않은 소유하지 않는 참조' 는 `unowned(unsafe)` 를 작성함으로써 지시합니다. 참조하던 인스턴스를 해제한 후 '안전하지 않은 소유하지 않는 참조' 에 접근하려고 하면, 프로그램은, 안전하지 않은 연산으로써, 인스턴스가 있던 곳의 메모리에 접근하려고 할 것입니다.
 
 #### Unowned Optional References (소유되지 않은 옵셔널 참조)
 
@@ -543,7 +543,7 @@ lazy var someClosure = {
 }
 ```
 
-#### Weak and Unowned References (약한 참조와 소유되지 않은 참조)
+#### Weak and Unowned References ('약한 참조' 와 '소유하지 않는 참조')
 
 클로저와 자신이 붙잡을 인스턴스가 서로를 항상 참조하면서, 해제도 항상 동시에 되는 것이라면, 클로저에서 '소유되지 않은 참조' 로 붙잡는다고 정의합니다.
 
@@ -618,6 +618,8 @@ paragraph = nil
 [^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
 [^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+
+[^unowned-reference]: 이 그림을 보면 '소유하지 않는 (unowned) 참조' 라는 이름의 의미를 이해할 수 있습니다. 이 두 인스턴스의 관계를 살펴보면, 고객은 신용 카드를 '소유' 하고 있지만, 신용 카드는 고객을 '소유' 하고 있지 않습니다. 다시 말해서, 고객은 신용 카드를 바꿀 수 있지만, 신용 카드는 고객을 바꿀 수 없습니다. 그러므로 외부에서 직접 '신용 카드' 를 참조하는 변수가 없습니다.
 
 [^wraps]: 여기서 '포장하고 있다 (wrap)' 는 것의 의미는 내부 값을 옵셔널로 포장하고 있다는 의미입니다. `let a: Int? = 1` 에서 `a` 는 '`1` 이라는 값을 옵셔널로 포장하고 있다' 고 이해할 수 있습니다.
 
