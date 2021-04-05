@@ -201,7 +201,7 @@ class Apartment {
 }
 ```
 
-두 변수 (`john` 과 `unit4A`) 로부터의 '강한 참조' 와 두 인스턴스 사이의 '연결 고리 (link)' 는 이전 처럼 생성됩니다:
+(`john` 과 `unit4A` 라는) 두 변수에 있는 '강한 참조' 와 두 인스턴스 사이의 '연결 고리 (link)' 를 이전 처럼 생성합니다:
 
 ```swift
 var john: Person?
@@ -214,33 +214,33 @@ john!.apartment = unit4A
 unit4A!.tenant = john
 ```
 
-다음은 두 인스턴스를 서로 연결하고 난 후 이제 '참조' 가 어떻게 보이는지를 나타냅니다:
+다음은 이제 두 인스턴스를 서로 연결한 후의 '참조' 를 보인 것입니다:
 
 ![Weak Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-reference.jpg)
 
-`Person` 인스턴스는 여전히 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있지만, `Apartment` 인스턴스는 이제 `Person` 인스턴스에 대한 '_약한 (weak)_ 참조' 를 가지고 있습니다. 이것의 의미는 `john` 변수를 `nil` 로 설정하여 이 변수가 쥐고 있던 강한 참조를 끊을 경우, 이제 `Person` 인스턴스에 대한 '강한 참조' 는 없다는 것입니다.
+`Person` 인스턴스는 여전히 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지지만, `Apartment` 인스턴스는 이제 `Person` 인스턴스에 대한 _약한 (weak)_ 참조를 가집니다. 이는 `john` 변수가 쥐고 있던 '강한 참조' 를 `nil` 로 설정하여 끊을 때, `Person` 인스턴스에 대한 '강한 참조' 가 더 이상은 없다는 것을 의미합니다.
 
 ```swift
 john = nil
-// "John Appleseed is being deinitializaed" 를 출력합니다.
+// "John Appleseed is being deinitializaed" 를 인쇄합니다.
 ```
 
-이제 `Person` 인스턴스에 대한 강한 참조가 없으므로, 이의 할당은 해제되고 `tenant` 속성은 `nil` 로 설정됩니다:
+더 이상 `Person` 인스턴스에 대한 '강한 참조' 는 없기 때문에, 이는 해제되며 `tenant` 속성이 `nil` 로 설정됩니다:
 
 ![Weak Reference nil](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-nil.jpg)
 
-`Apartment` 인스턴스에 대해 남아있는 유일한 '강한 참조' 는 `unit4A` 변수에 의한 것입니다. 만약 _그 (that)_ 강한 참조를 끊을 경우, 이제 `Apartment` 인스턴스에 대한 '강한 참조' 도 없어집니다:
+`Apartment` 인스턴스에 대해서 유일하게 남은 '강한 참조' 는 `unit4A` 변수에 의한 것입니다. _그 (that)_ 강한 참조를 끊으면, `Apartment` 인스턴스에 대한 '강한 참조' 도 더 이상 없습니다:
 
 ```swift
 unit4A = nil
-// "Apartment 4A is being deinitialized" 를 출력합니다.
+// "Apartment 4A is being deinitialized" 를 인쇄합니다.
 ```
 
-이제 `Apartment` 인스턴스에 대한 강한 참조가 없으므로, 이 역시 해제됩니다:
+더 이상 `Apartment` 인스턴스에 대한 '강한 참조' 가 없기 때문에, 이 역시 해제됩니다:
 
 ![Weak Reference deallocated](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-deallocated.jpg)
 
-> '쓰레기 수집 (gabage collection)'[^gabage-collection] 을 사용하는 시스템에서는, 간단한 '캐싱 메커니즘 (caching mechanism)' 을 구현하기 위해 '약한 참조' 를 사용할 때가 있는데 이는 '강한 참조' 가 없는 객체는 '메모리 압력' 이 '쓰레기 수집' 을 일으킬 때만 해제되기 때문입니다. 하지만, ARC 에서, 값은 마지막 '강한 참조' 가 제거되자 마자 해제되므로, 약한 참조를 그런 용도로 사용하는 것은 적합하지 않습니다.
+> '쓰레기 수집 (gabage collection)'[^gabage-collection] 을 사용하는 시스템에서는, 단순한 '임시 저장 구조 (caching mechanism)' 을 구현하기 위해 '약한 참조' 를 사용할 때가 있는데 '메모리 압력' 이 '쓰레기 수집' 을 발동할 때만 '강한 참조' 를 가지지 않은 객체를 해제하기 때문입니다. 하지만, 'ARC' 에서는, 마지막 '강한 참조' 를 제거하자 마자 값을 해제하므로, 그런 용도로는 '약한 참조' 가 적합하지 않습니다.
 
 #### Unowned References (소유되지 않은 참조)
 
@@ -617,7 +617,7 @@ paragraph = nil
 
 [^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
-[^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+[^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
 [^wraps]: 여기서 '포장하고 있다 (wrap)' 는 것의 의미는 내부 값을 옵셔널로 포장하고 있다는 의미입니다. `let a: Int? = 1` 에서 `a` 는 '`1` 이라는 값을 옵셔널로 포장하고 있다' 고 이해할 수 있습니다.
 
