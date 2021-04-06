@@ -376,19 +376,19 @@ department.courses = [intro, intermediate, advanced]
 >
 > 클래스를 포장한 옵셔널은 '참조 카운팅' 을 사용하지 않으므로, 옵셔널에 대한 '강한 참조' 를 유지할 필요가 없습니다.
 
-#### Unowned References and Implicitly Unwrapped Optional Properties (소유되지 않은 참조와 암시적으로 포장이 풀리는 옵셔널 속성)
+#### Unowned References and Implicitly Unwrapped Optional Properties ('소유하지 않는 참조' 와 '암시적으로 포장이 풀리는 옵셔널 속성')
 
-위에 있는 약한 참조 및 소유되지 않은 참조에 대한 예제는 강한 참조 순환을 끊어야 하는 일반적인 시나리오 중에서 두 가지를 다루고 있습니다.
+위에 있는 '약한' 그리고 '소유하지 않는 참조' 에 대한 예제는 '강한 참조 순환' 을 끊을 필요가 있는 더 일반적인 시나리오 중 두 가지를 다루고 있습니다.
 
-`Person` 과 `Apartment` 예제는, 둘 다 `nil` 이 될 수 있는, 두 개의 속성이 잠재적으로 강한 참조 순환을 발생시킬 수도 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '약한 참조' 입니다.
+`Person` 과 `Apartment` 예제는 두 속성이, 둘 다 `nil` 을 허용하면서, '강한 참조 순환' 을 유발할 수 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '약한 참조' 입니다.
 
-`Customer` 와 `CreditCard` 예제는 `nil` 이 될 수 있는 한 속성과 `nil` 이 될 수 없는 다른 속성이 잠재적으로 강한 참조 순환을 발생시킬 수도 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '소유되지 않은 참조' 입니다.
+`Customer` 와 `CreditCard` 예제는 `nil` 을 허용하는 한 속성과 `nil` 일 수 없는 또 다른 속성이 '강한 참조 순환' 유발할 수 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '소유하지 않는 참조' 입니다.
 
-하지만, 세 번째 시나리오도 있는데, 여기서는 두 속성 _모두 (both)_ 항상 값을 가져야 하며, 한번 초기화가 완료된 다음에는 어떤 속성도 `nil` 이 되어서는 안됩니다. 이 시나리오에서는, '소유되지 않은 속성' 인 클래스 하나와 '암시적으로 포장이 풀리는 옵셔널 속성 (implicitly unwrapped optional property)' 인 다른 속성을 결합하는 방식이 좋습니다.
+하지만, 속성 _둘 다 (both)_ 항상 값을 가져야 하며, 초기화를 한 번 완료하고 나면 어느 속성도 `nil` 이 되면 안되는, 세 번째 시나리오도 있습니다. 이 시나리오에서는, 한 클래스에 대한 '소유하지 않는 속성' 과 다른 클래스에 대한 '암시적으로 포장이 풀리는 옵셔널 속성' 을 조합하는 것이 유용합니다.
 
-이것은 두 속성 모두, 한번 초기화를 하고 나면, (옵셔널 포장을 풀지 않고도) 직접 접근하도록 해주는데, 이 때 참조 순환도 여전히 피하도록 해줍니다. 이번 장은 어떻게 하면 그런 관계를 설정할 수 있는지를 보여줍니다.
+이는 초기화를 한 번 하고 나면, '참조 순환' 을 피하면서도, 두 속성 모두 ('옵셔널 포장 풀기' 없이) 직접 접근할 수 있게 해줍니다. 이번 절은 그런 관계를 설정하는 방법을 보입니다.
 
-아래 예제는, `Country` 와 `City` 라는, 두 클래스를 정의하는데, 각각 서로의 클래스 인스턴스를 속성으로 저장합니다. 이 데이터 모델에서, 모든 국가는 반드시 항상 수도를 가지며, 모든 도시는 반드시 항상 국가에 속해 있어야 합니다. 이를 표현하기 위해, `Country` 클래스는 `capitalCity` 속성을 가지고 있고, `City` 클래스는 `country` 속성을 가지고 있습니다:
+아래 예제는, 각각 서로의 클래스 인스턴스를 저장하는, `Country` 와 `City` 라는, 두 클래스를 정의합니다. 이 '데이터 모델' 에서, 모든 국가는 반드시 항상 수도를 가지고 있으며, 모든 도시는 반드시 항상 국가에 속해 있습니다. 이를 표현하기 위해, `Country` 클래스는 `capitalCity` 속성을 가지며, `City` 클래스는 `country` 속성을 가집니다:
 
 ```swift
 class Country {
@@ -410,23 +410,23 @@ class City {
 }
 ```
 
-두 클래스 사이의 '상호 의존성 (interdependency)' 을 설정하기 위해, `City` 의 초기자는 `Country` 인스턴스를 받아 들여서, 해당 인스턴스를 `country` 속성에 저장합니다.
+두 클래스 사이의 '상호 의존성 (interdependency)' 을 설정하기 위해, `City` 초기자는 `Country` 인스턴스를 취하며, 이 인스턴스를 `country` 속성에 저장합니다.
 
-`City` 의 초기자는 `Country` 의 초기자에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한대로, `Country` 초기자는 새로운 `Country` 인스턴스가 완전히 초기화되지 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
+`City` 초기자는 `Country` 초기자 안에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한 것처럼, `Country` 초기자는 새로운 `Country` 인스턴스를 온전히 초기화하기 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
 
-이러한 '필수 조건 (requirement)' 에 대처하려면, `Country` 의 `capitalCity` 속성을 '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언해야 하며, '타입 보조 설명 (type annotation)' 끝에 느낌표를 붙여서 (`City!`) 지정하면 됩니다. 이것의 의미는 `capitalCity` 속성은, 다른 모든 옵셔널 처럼, `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 그 값의 포장을 풀지 않고도 접근할 수 있다는 것입니다.
+이 '필수 조건' 에 대처하려면, `Country` 의 `capitalCity` 속성을, (`City!` 라고) '타입 보조 설명' 끝에 느낌표를 붙여 지시하는, '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언합니다. 이는 `capitalCity` 속성이, 다른 옵셔널과 똑같이, `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 값의 포장을 풀 필요 없이 접근할 수 있다는 의미입니다.
 
-`capitalCity` 는 기본 값 `nil` 을 가지고 있기 때문에, `Country` 인스턴스가 초기자 내에서 `name` 속성을 설정하자마자 새 `Country` 인스턴스를 완전히 초기화된 것으로 봐도 됩니다. 이것의 의미는 `Country` 초기자가 `name` 속성을 설정하자마자 암시적인 `self` 속성의 참조 및 전달을 시작할 수 있다는 것입니다. `Country` 초기자는 따라서 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자에 대한 매개 변수 중 하나로 `self` 를 전달할 수 있습니다.
+`capitalCity` 가 '기본 `nil` 값' 을 가지기 때문에, 새로운 `Country` 인스턴스는 `Country` 인스턴스가 초기자에서 `name` 속성을 설정하자 마자 온전히 초기화된다고 고려합니다. 이는 `name` 속성을 설정하자 마자 `Country` 초기자가 '암시적인 `self` 속성' 을 참조하고 전달하기 시작할 수 있다는 의미입니다. 그럼으로써 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자를 위한 매개 변수로 `Country` 초기자가 `self` 를 전달할 수 있습니다.
 
-이 모든 것이 의미하는 것은, 강한 참조 순환을 생성하지 않고도, `Country` 와 `City` 인스턴스를 단일 구문으로 생성할 수 있으며, 옵셔널 값의 포장을 풀기 위해 느낌표를 사용하지 않고도, `capitalCity` 속성에 직접 접근하는 것이 가능하다는 것입니다:
+이 모든 것은, '강한 참조 순환' 의 생성 없이, `Country` 와 `City` 인스턴스를 단일 구문으로 생성할 수 있으며, 느낌표를 사용하여 옵셔널 값의 포장을 풀 필요 없이, `capitalCity` 속성에 직접 접근할 수 있다는 것을 의미합니다:
 
 ```swift
 var country = Country(name: "Canada", capitalName: "Ottawa")
 print("\(country.name)'s capital city is called \(country.capitalCity.name)")
-// "Canada's capital city is called Ottawa" 를 출력합니다.
+// "Canada's capital city is called Ottawa" 를 인쇄합니다.
 ```
 
-위 예제에서, '암시적으로 포장이 풀리는 옵셔널' 을 사용한다는 것은 '두-단계 클래스 초기자 (two-phase class initializer)' 에 대한 '필수 조건' 모두를 만족한다는 것을 의미합니다. `capitalCity` 속성은 한번 초기화를 완료하고 나면, 여전히 강한 참조 순환을 피하면서도, 옵셔널이-아닌 값처럼 사용하고 접근할 수 있습니다.
+위 예제에서, '암시적으로 포장이 풀리는 옵셔널' 을 사용하는 것은 '2-단계 클래스 초기자' 의 모든 '필수 조건' 을 만족한다는 의미입니다. `capitalCity` 속성은 초기화를 한 번 완료하고 나면, '강한 참조 순환' 을 피하면서도, '옵셔널이-아닌 값' 처럼 사용하고 접근할 수 있습니다.
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
 
