@@ -372,9 +372,9 @@ department.courses = [intro, intermediate, advanced]
 
 '옵셔널이-아닌 소유되지 않은 참조' 와 마찬가지로, `nextCourse` 가 항상 아직 해제되지 않은 '교과 과정' 을 참조하고 있다는 보장에 대한 책임은 직접 져야 합니다. 이 경우, 예를 들어, `department.courses` 에서 '교과' 를 삭제할 때 다른 '교과' 가 가지고 있을 수 있는 자신에 대한 참조도 제거할 필요가 있습니다.
 
-> 옵셔널 값의 실제 타입은 `Optional` 인데, 이는 스위프트 표준 라이브러리에 있는 열거체입니다. 하지만, 옵셔널은 값 타입은 `unowned` 로 표시할 수 없다는 규칙에 대한 예외입니다.
+> 옵셔널 값의 실제 타입은, 스위프트 표준 라이브러리에 있는, `Optional` 입니다. 하지만, 값 타입을 `unowned` 로 표시할 수 없다는 규칙에서 옵셔널은 예외입니다.[^unowned-exception]
 >
-> 클래스를 포장하는 옵셔널은 '참조 카운팅' 을 사용하지 않으므로, 옵셔널에 대한 '강한 참조' 는 유지할 필요가 없습니다.
+> 클래스를 포장한 옵셔널은 '참조 카운팅' 을 사용하지 않으므로, 옵셔널에 대한 '강한 참조' 를 유지할 필요가 없습니다.
 
 #### Unowned References and Implicitly Unwrapped Optional Properties (소유되지 않은 참조와 암시적으로 포장이 풀리는 옵셔널 속성)
 
@@ -623,6 +623,8 @@ paragraph = nil
 
 [^does-not-own]: 앞서 말한 것처럼, 이것이 '소유하지 않는 (unowned) 참조' 라고 하는 이유입니다.
 
-[^wraps]: 여기서 '포장한다 (wrap)' 는 것은 값을 '옵셔널로 포장한다' 는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `Optional<Int>` 타입인데, `1` 이라는 `Int` 값을 옵셔널로 포장하고 있는 것입니다. '옵셔널' 에 대한 더 자세한 내용은, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 부분을 참고하기 바랍니다.  
+[^wraps]: 여기서 '포장한다 (wrap)' 는 것은 값을 '옵셔널로 포장한다' 는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `Optional<Int>` 타입인데, `1` 이라는 `Int` 값을 옵셔널로 포장하고 있는 것입니다. '옵셔널' 에 대한 더 자세한 내용은, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 부분을 참고하기 바랍니다.
+
+[^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
 [^capture-lists]: 해당 내용은 'Swift Programming Language' 책의 'Language Reference' 부분에 있습니다. 아직 해당 부분의 번역을 진행하지 않아서 일단 원문 링크로 연결해 두었습니다.
