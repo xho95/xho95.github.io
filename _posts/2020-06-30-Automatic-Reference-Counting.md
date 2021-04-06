@@ -95,7 +95,7 @@ reference3 = nil
 
 하지만, 클래스 인스턴스의 '강한 참조' 가 _절대로 (never)_ '0' 개가 되지 않는 코드를 작성할 가능성이 있습니다. 이는 두 클래스 인스턴스가 서로에 대한 '강한 참조' 를 쥐고 있어서, 각각의 인스턴스가 다른 것이 살아있게 유지할 경우, 발생합니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라고 합니다.
 
-'강한 참조 순환' 은 클래스들 간의 관계 일부를 '강한 참조' 대신 '약한 (weak)' 또는 '소유하지 않은 참조 (unowned rerference)' 로 정의함으로써 해결합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, '강한 참조 순환' 을 해결하는 방법을 배우기 전에, 그런 순환을 유발하는 원인을 이해하는 것이 유용합니다.
+'강한 참조 순환' 은 클래스들 간의 관계 일부를 '강한 참조' 대신 '약한 (weak)' 또는 '소유하지 않는 참조 (unowned rerference)' 로 정의함으로써 해결합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, '강한 참조 순환' 을 해결하는 방법을 배우기 전에, 그런 순환을 유발하는 원인을 이해하는 것이 유용합니다.
 
 다음은 '강한 참조 순환' 이 우연히 생성될 수 있는 방법에 대한 예제입니다. 이 예제는, '아파트 단지' 와 '거주자' 를 모델링하는, `Person` 과 `Apartment` 라는 두 클래스를 정의합니다:
 
@@ -201,7 +201,7 @@ class Apartment {
 }
 ```
 
-두 변수 (`john` 과 `unit4A`) 로부터의 '강한 참조' 와 두 인스턴스 사이의 '연결 고리 (link)' 는 이전 처럼 생성됩니다:
+(`john` 과 `unit4A` 라는) 두 변수에 있는 '강한 참조' 와 두 인스턴스 사이의 '연결 고리 (link)' 를 이전 처럼 생성합니다:
 
 ```swift
 var john: Person?
@@ -214,51 +214,51 @@ john!.apartment = unit4A
 unit4A!.tenant = john
 ```
 
-다음은 두 인스턴스를 서로 연결하고 난 후 이제 '참조' 가 어떻게 보이는지를 나타냅니다:
+다음은 이제 두 인스턴스를 서로 연결한 후의 '참조' 를 보인 것입니다:
 
 ![Weak Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-reference.jpg)
 
-`Person` 인스턴스는 여전히 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지고 있지만, `Apartment` 인스턴스는 이제 `Person` 인스턴스에 대한 '_약한 (weak)_ 참조' 를 가지고 있습니다. 이것의 의미는 `john` 변수를 `nil` 로 설정하여 이 변수가 쥐고 있던 강한 참조를 끊을 경우, 이제 `Person` 인스턴스에 대한 '강한 참조' 는 없다는 것입니다.
+`Person` 인스턴스는 여전히 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지지만, `Apartment` 인스턴스는 이제 `Person` 인스턴스에 대한 _약한 (weak)_ 참조를 가집니다. 이는 `john` 변수가 쥐고 있던 '강한 참조' 를 `nil` 로 설정하여 끊을 때, `Person` 인스턴스에 대한 '강한 참조' 가 더 이상은 없다는 것을 의미합니다.
 
 ```swift
 john = nil
-// "John Appleseed is being deinitializaed" 를 출력합니다.
+// "John Appleseed is being deinitializaed" 를 인쇄합니다.
 ```
 
-이제 `Person` 인스턴스에 대한 강한 참조가 없으므로, 이의 할당은 해제되고 `tenant` 속성은 `nil` 로 설정됩니다:
+더 이상 `Person` 인스턴스에 대한 '강한 참조' 는 없기 때문에, 이는 해제되며 `tenant` 속성이 `nil` 로 설정됩니다:
 
 ![Weak Reference nil](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-nil.jpg)
 
-`Apartment` 인스턴스에 대해 남아있는 유일한 '강한 참조' 는 `unit4A` 변수에 의한 것입니다. 만약 _그 (that)_ 강한 참조를 끊을 경우, 이제 `Apartment` 인스턴스에 대한 '강한 참조' 도 없어집니다:
+`Apartment` 인스턴스에 대해서 유일하게 남은 '강한 참조' 는 `unit4A` 변수에 의한 것입니다. _그 (that)_ 강한 참조를 끊으면, `Apartment` 인스턴스에 대한 '강한 참조' 도 더 이상 없습니다:
 
 ```swift
 unit4A = nil
-// "Apartment 4A is being deinitialized" 를 출력합니다.
+// "Apartment 4A is being deinitialized" 를 인쇄합니다.
 ```
 
-이제 `Apartment` 인스턴스에 대한 강한 참조가 없으므로, 이 역시 해제됩니다:
+더 이상 `Apartment` 인스턴스에 대한 '강한 참조' 가 없기 때문에, 이 역시 해제됩니다:
 
 ![Weak Reference deallocated](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-deallocated.jpg)
 
-> '쓰레기 수집 (gabage collection)'[^gabage-collection] 을 사용하는 시스템에서는, 간단한 '캐싱 메커니즘 (caching mechanism)' 을 구현하기 위해 '약한 참조' 를 사용할 때가 있는데 이는 '강한 참조' 가 없는 객체는 '메모리 압력' 이 '쓰레기 수집' 을 일으킬 때만 해제되기 때문입니다. 하지만, ARC 에서, 값은 마지막 '강한 참조' 가 제거되자 마자 해제되므로, 약한 참조를 그런 용도로 사용하는 것은 적합하지 않습니다.
+> '쓰레기 수집 (gabage collection)'[^gabage-collection] 을 사용하는 시스템에서는, 단순한 '임시 저장 구조 (caching mechanism)' 을 구현하기 위해 '약한 참조' 를 사용할 때가 있는데 '메모리 압력' 이 '쓰레기 수집' 을 발동할 때만 '강한 참조' 를 가지지 않은 객체를 해제하기 때문입니다. 하지만, 'ARC' 에서는, 마지막 '강한 참조' 를 제거하자 마자 값을 해제하므로, 그런 용도로는 '약한 참조' 가 적합하지 않습니다.
 
-#### Unowned References (소유되지 않은 참조)
+#### Unowned References (소유하지 않는 참조)
 
-약한 참조와 마찬가지로, _소유되지 않은 참조 (unowned reference)_ 는 참조하는 인스턴스를 강하게 쥐지 않습니다. 하지만, 약한 참조와는 다르게, '소유되지 않은 참조' 는 다른 인스턴스가 같은 수명 또는 더 긴 수명을 가지고 있을 때 사용합니다. '소유되지 않은 참조' 는 속성이나 변수 선언의 앞에 `unowned` 키워드를 붙여서 지시합니다.
+'약한 참조' 와 같이, _소유하지 않는 참조 (unowned reference)_ 는 참조하는 인스턴스를 강하게 쥐지 않습니다. 하지만, 약한 참조와는 달리, '소유하지 않는 참조' 는 다른 인스턴스의 수명이 똑같거나 더 길 때 사용합니다. '소유하지 않는 참조' 는 속성이나 변수 선언 앞에 `unowned` 키워드를 붙임으로써 지시합니다.
 
-약한 참조와는 다르게, '소유되지 않은 참조' 는 항상 값을 가지고 있기를 기대합니다. 그 결과, 값을 '소유하지 않는 (unowned)' 다고 표시하면 '옵셔널' 이 될 수 없어서, ARC 는 절대로 '소유되지 않은 참조' 의 값을 `nil` 로 설정할 수 없습니다.
+약한 참조와는 달리, '소유하지 않는 참조' 는 항상 값을 가지고 있다고 예상합니다. 그 결과, '소유하지 않는 (unowned)' 다고 표시한 값은 '옵셔널' 일 수 없으며, 'ARC' 는 '소유하지 않는 참조' 의 값을 절대로 `nil` 로 설정하지 않습니다.
 
-> '소유되지 않은 참조' 는 해당 참조가 해제되지 않은 인스턴스만 _항상 (always)_ 참조한다고 확신할 수 있을 때만 사용하도록 합니다.
+> '소유하지 않는 참조' 는 참조가 _항상 (always)_ 해제 안된 인스턴스를 참조한다고 확신할 때에만 사용합니다.
 >
-> 해당 인스턴스가 해제된 후에 '소유되지 않은 참조' 의 값에 접근하려고 하면, '실행시간 에러 (runtime error)' 가 발생하게 됩니다.
+> 해당 인스턴스를 해제한 후에 '소유하지 않는 참조' 의 값에 접근하려고 하면, '실행시간 에러' 를 가지게 될 것입니다.
 
-다음 예제는, 은행 고객과 해당 고객을 위한 신용 카드를 모델링하는, `Customer` 와 `CreditCard` 라는, 두 개의 클래스를 정의합니다. 이 두 클래스는 각자 서로의 클래스 인스턴스를 속성으로 저장합니다. 이러한 관계는 잠재적으로 '강한 참조 순환' 를 생성하게 됩니다.
+다음 예제는, '은행 고객' 과 해당 고객을 위한 '신용 카드' 를 모델링하는, `Customer` 와 `CreditCard` 라는, 두 클래스를 정의합니다. 이 두 클래스는 각각 다른 클래스의 인스턴스를 속성으로 저장합니다. 이 관계는 '강한 참조 순환' 를 생성할 가능성이 있습니다.
 
-`Customer` 와 `CreditCard` 의 관계는 위의 '약한 참조' 예제에서 봤던 `Apartment` 와 `Person` 의 관계와 조금 다릅니다. 이 데이터 모델에서, 고객은 신용 카드를 가질 수도 있고 가지지 않을 수도 있지만, 신용 카드는 _항상 (always)_ 어떤 고객과 결합되어 있을 겁니다. `CreditCard` 인스턴스는 절대로 자기가 참조하는 `Customer` 보다 오래 살지 못합니다. 이를 표현하기 위해, `Customer` 클래스는 옵셔널 `card` 속성을 가지지만, `CreditCard` 클래스는 '소유되지 않은 (그리고 옵셔널이-아닌)' `customer` 속성을 가집니다.
+`Customer` 와 `CreditCard` 의 관계는 위의 '약한 참조' 예제에서 봤던 `Apartment` 와 `Person` 의 관계와는 좀 다릅니다. 이 '데이터 모델' 에서, 고객은 신용 카드를 가질 수도 가지지 않을 수도 있지만, 신용 카드는 _항상 (always)_ 고객과 결합되어 있을 것입니다. `CreditCard` 인스턴스는 절대로 자신이 참조하는 `Customer` 보다 오래 살지 않습니다. 이를 표현하기 위해, `Customer` 클래스는 '옵셔널 `card` 속성' 을 가지지만, `CreditCard` 클래스는 '소유하지 않는 (그리고 옵셔널-아닌) `customer` 속성' 을 가집니다.
 
-더 나아가서, 새로운 `CreditCard` 인스턴스는 _오직 (only)_ `number` 값과 `custom` 인스턴스를 `CreditCard` 초기자로 전달하는 경우에만 생성됩니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스가 자신과 결합된 `customer` 인스턴스를 항상 가지고 있다는 것을 보장해 줍니다.
+더 나아가, 새로운 `CreditCard` 인스턴스는 `number` 값과 `custom` 인스턴스를 '사용자 정의 `CreditCard` 초기자' 로 전달함으로써 _만 (only)_ 생성할 수 있습니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스가 항상 자신과 결합된 `customer` 인스턴스를 가지도록 보장합니다.
 
-신용 카드는 항상 고객을 가질 것이기 때문에, `customer` 인스턴스를 '소유되지 않은 참조' 로 정의해서, '강한 참조 순환' 을 피할 수 있습니다:
+'신용 카드' 는 고객을 항상 가지고 있을 것이기 때문에, '강한 참조 순환' 을 피하기 위해, `customer` 인스턴스를 '소유하지 않는 참조' 로 정의합니다:
 
 ```swift
 class Customer {
@@ -281,50 +281,50 @@ class CreditCard {
 }
 ```
 
-> `CreditCard` 클래스의 `number` 속성은 `Int` 가 아니라 `UInt64` 타입으로 정의했는데, 이는 `number` 속성의 용량이 32-비트와 64-비트 시스템 모두에서 16-자리 카드 번호를 저장할 만큼 충분히 크도록 보장하기 위함입니다.
+> `CreditCard` 클래스의 `number` 속성은, `number` 속성의 용량이 32-비트와 64-비트 시스템 모두에서 16-자리 카드 번호를 저장하기에 충분히 크도록 보장하기 위해, `Int` 보다 `UInt64` 타입으로 정의합니다.
 
-이 다음 코드 조각은, 지정된 고객에 대한 참조를 저장하는데 사용할, `john` 이라는 옵셔널 `Customer` 변수를 정의합니다. 이 변수는, 옵셔널이라서, 'nil' 초기 값을 가집니다:
+이 다음 코드 조각은, 특정 고객에 대한 참조를 저장할, `john` 이라는 '옵셔널 `Customer` 변수' 를 정의합니다. 이 변수는, 옵셔널인 덕에, 초기 값으로 'nil' 을 가집니다:
 
 ```swift
 var john: Customer?
 ```
 
-이제 `Customer` 인스턴스를 생성하여, 이것으로 새 `CreditCard` 인스턴스를 초기화한 다음 이를 해당 고객의 `card` 속성에 할당할 수 있습니다:
+이제 `Customer` 인스턴스를 생성하고, 새로운 `CreditCard` 인스턴스를 해당 고객의 `card` 속성으로 초기화하고 할당하는데 이를 사용할 수 있습니다:
 
 ```swift
 john = Customer(name: "John Appleseed")
 john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 ```
 
-다음은 두 인스턴스를 서로 연결하고 난 후 이제, '참조' 가 어떻게 보이는 지를 나타냅니다:
+다음은, 이제 두 인스턴스를 연결하고 난 후의, '참조' 를 보인 것입니다:
 
 ![Unowned Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-reference.jpg)
 
-`Customer` 인스턴스는 이제 `CreditCard` 인스턴스에 대한 강한 참조를 가지며, `CreditCard` 인스턴스는 `Customer` 인스턴스에 대한 '소유하지 않은 참조' 를 가집니다.
+`Customer` 인스턴스는 이제 `CreditCard` 인스턴스에 대한 '강한 참조' 를 가지며, `CreditCard` 인스턴스는 `Customer` 인스턴스에 대한 '소유하지 않는 참조'[^unowned-reference] 를 가집니다.
 
-'소유하지 않은' `customer` 인스턴스 때문에, `john` 변수가 쥐고 있던 강한 참조를 끊으면, `Customer` 인스턴스에 대한 강한 참조는 더 이상 없습니다.
+'소유하지 않는 `customer` 참조' 때문에, `john` 변수가 쥐고 있던 '강한 참조' 를 끊을 때, `Customer` 인스턴스에 대한 '강한 참조' 가 더 이상은 없습니다:
 
 ![Unowned Reference Break](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-break.jpg)
 
-이제 `Customer` 인스턴스에 대한 참조가 없기 때문에, 이 할당은 해제됩니다. 이 일이 일어나면, `CreditCard` 인스턴스에 대한 '강한 참조' 도 이제 더 이상 없으므로, 이것 역시 해제됩니다:
+더 이상 `Customer` 인스턴스에 대한 '강한 참조' 가 없기 때문에, 해제됩니다. 이것이 발생한 후, `CreditCard` 인스턴스에 대한 '강한 참조' 도 더 이상 없으므로, 이 역시 해제됩니다:
 
 ```swift
 john = nil
-// "John Appleseed is being deinitialized" 를 출력합니다.
-// "Card #1234567890123456 is being deinitialized" 를 출력합니다.
+// "John Appleseed is being deinitialized" 를 인쇄합니다.
+// "Card #1234567890123456 is being deinitialized" 를 인쇄합니다.
 ```
 
-위에 있는 마지막 코드 조각은 `john` 변수를 `nil` 로 설정하고 나면 `Customer` 인스턴스와 `CreditCard` 인스턴스에 대한 두 '정리자' 모두 자신들의 "정리 (deinitialized)" 메시지를 출력한다는 것을 보여줍니다.
+위에 있는 최종 코드 조각은 `john` 변수가 `nil` 로 설정된 후 `Customer` 인스턴스와 `CreditCard` 인스턴스에 대한 '정리자' 둘 다 자신의 "정리 (deinitialized)" 메시지를 인쇄함을 보여줍니다.
 
-> 위 예제는 _안전한 (safe)_ '소유되지 않은 참조' 를 사용하는 방법을 보여줍니다. 스위프트는 실행 시간 안전성 검사를 비활성화해야 하는 경우-예를 들어, 성능상의 이유-를 위해 _안전하지 않은 (unsafe)_ '소유되지 않은 참조' 도 제공합니다. 모든 안전하지 않은 동작들처럼, 해당 코드가 안전한 지에 대한 검사의 책임은 직접 짊어지게 됩니다.
+> 위 예제는 _안전한 (safe)_ '소유하지 않는 참조' 를 사용하는 방법을 보여줍니다. 스위프트는 '실행 시간 안전성 검사' 를 비활성화해야 할 경우-예를 들어, 성능상의 이유-를 위해 _안전하지 않은 (unsafe)_ '소유하지 않는 참조' 도 제공합니다. 모든 안전하지 않은 연산 처럼, 해당 코드가 안전한지 검사하는 책임은 직접 맡아야 합니다.
 >
-> '안전하지 않은 소유되지 않은 참조' 는 `unowned(unsafe)` 를 써서 지시합니다. '안전하지 않은 소유되지 않은 참조' 가 참조하던 인스턴스를 해제한 다음 이것에 접근하려고 하면, 프로그램은 그 인스턴스가 있던 곳의 메모리 위치에 대한 접근을 시도하며, 이것이 바로 안전하지 않은 동작입니다.
+> '안전하지 않은 소유하지 않는 참조' 는 `unowned(unsafe)` 를 작성함으로써 지시합니다. 참조하던 인스턴스를 해제한 후 '안전하지 않은 소유하지 않는 참조' 에 접근하려고 하면, 프로그램은, 안전하지 않은 연산으로써, 인스턴스가 있던 곳의 메모리에 접근하려고 할 것입니다.
 
-#### Unowned Optional References (소유되지 않은 옵셔널 참조)
+#### Unowned Optional References (소유하지 않는 옵셔널 참조)
 
-클래스에 대한 '옵셔널 참조 (optional reference)' 를 '소유되지 않은 (unowned)' 것으로 표시할 수 있습니다. 'ARC 소유권 모델 (ARC ownership model)' 의 관점에서, '소유되지 않은 옵셔널 참조 (unowned optional reference)' 와 '약한 참조' 이 둘은 모두 같은 상황에서 사용할 수 있는 것입니다. 차이점이라면 '소유되지 않은 옵셔널 참조' 를 사용할 때는, 이것이 항상 유효한 객체를 참조하는 것인지 아니면 `nil` 로 설정되는 것인지를 확실히 하는 것을 직접 책임져야 한다는 것입니다.
+클래스에 대한 '옵셔널 참조 (optional reference)' 를 '소유하지 않는' 것으로 표시할 수 있습니다. 'ARC 소유권 모델 (ARC ownership model)' 로써, '소유하지 않는 (unowned) 옵셔널 참조' 와 '약한 참조' 는 둘 다 똑같은 상황에서 사용할 수 있습니다. 차이점은 '소유하지 않는 옵셔널 참조' 를 사용할 땐, 유효한 객체를 참조하고 있는지 `nil` 로 설정된 것인지 확실하게 만드는 것을 항상 직접 책임져야 한다는 것입니다.
 
-다음은 학교의 특정 '학부 (department)' 에서 제안한 '교과 과정 (courses)' 을 추적하는 예제입니다:
+다음은 학교에서 특별한 '학과 (department)' 가 제안하는 '교과 (courses)' 을 추적하는 예제입니다:
 
 ```swift
 class Department {
@@ -348,9 +348,9 @@ class Course {
 }
 ```
 
-`Department` 는 그 학과가 제안한 각각의 '교과 과정' 에 대한 '강한 참조' 를 유지합니다. 'ARC 소유권 모델' 의 관점에서는, '학과' 가 '교과 과정' 을 소유합니다. `Course` 는 두 개의 '소유되지 않은 참조' 를 가지는데, 하나는 '학과' 에 대한 것이고 하나는 학생들이 이수해야 하는 그 다음 '교과 과정' 에 대한 것입니다; '교육 과정' 은 이러한 객체들 중 어느 것도 소유하지 않습니다.[^does-not-own] 모든 '교과 과정' 은 어떤 '학과' 의 일부분이므로 `department` 속성은 옵셔널이 아닙니다. 하지만, 어떤 '교과 과정' 은 권장하는 후속 '교과 과정' 을 가지지 않기 때문에, `nextCourse` 속성은 옵셔널입니다.
+`Department` 는 '학과' 가 제안한 각 '교과' 에 대한 '강한 참조' 를 유지합니다. 'ARC 소유권 모델' 에서는, '학과' 가 '교과' 를 소유합니다. `Course` 는 두 개의 '소유하지 않는 참조' 를 가지는데, 하나는 학과에 대한 것이고 다른 하나는 학생들이 그 다음으로 배워야 할 교과에 대한 것입니다; '교과 (course)' 는 이 객체 중 어느 것도 소유하지 않습니다. [^does-not-own] 모든 교과는 학과에 소속되므로 `department` 속성은 '옵셔널' 이 아닙니다. 하지만, 일부 교과는 권장할 만한 후속 교과를 가지지 않기 때문에, `nextCourse` 속성은 '옵셔널' 입니다.
 
-다음은 이러한 클래스를 사용하는 예제입니다:
+다음은 이 클래스들을 사용하는 예제입니다:
 
 ```swift
 let department = Department(name: "Horticulture")
@@ -364,31 +364,31 @@ intermediate.nextCourse = advanced
 department.courses = [intro, intermediate, advanced]
 ```
 
-위 코드는 '학과' 하나와 그에 딸린 세 개의 '교과 과정' 을 생성합니다. '소개 과정' 과 '중급 과정' 은 둘 다 그 다음으로 권장하는 교과 과정을 `nextCourse` 속성에 저장하는데, 이는 학생이 지금 것을 마친 다음에 이수해야 할 교과 과정에 대한 '소유되지 않은 옵셔널 참조' 를 유지합니다.
+위 코드는 '학과' 와 그것의 세 '교과' 를 생성합니다. '입문편 (intro)' 과 '중급편 (intermediate)' 둘 다 `nextCourse` 속성에 그 다음으로 제안할 교과를 저장하는데, 학생이 이걸 완료한 후에 받아야 할 교과에 대한 '소유하지 않는 옵셔널 참조' 를 유지합니다.
 
 ![Unowned Optional Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-optional-reference.png)
 
-'소유되지 않은 옵셔널 참조' 는 자신이 '포장하는 (wraps)'[^wraps] 클래스의 인스턴스를 강하게 쥐지 않으므로, ARC 가 인스턴스를 해제하는 것을 막지 않습니다. 이는, '소유되지 않은 옵셔널 참조' 가 `nil` 이 될 수 있다는 것만 제외하면, ARC 에서 '소유되지 않은 참조 (unowned reference)' 가 하는 것과 똑같은 작동 방식입니다.
+'소유하지 않는 옵셔널 참조' 는 '포장한 (wraps)[^wraps] 클래스' 의 인스턴스를 강하게 쥐지 않아서, 'ARC' 가 인스턴스를 해제하는 것을 막지 않습니다. 이는, '소유되지 않은 옵셔널 참조' 가 `nil` 이 될 수 있다는 것만 제외하면, ARC 에서 '소유되지 않은 참조 (unowned reference)' 가 하는 것과 똑같은 작동 방식입니다.
 
-'옵셔널이-아닌 소유되지 않은 참조' 와 마찬가지로, `nextCourse` 가 항상 아직 해제되지 않은 '교과 과정' 을 참조하고 있다는 보장에 대한 책임은 직접 져야 합니다. 이 경우, 예를 들어, `department.courses` 에서 '교과 과정' 을 삭제할 때 다른 '교과 과정' 이 가지고 있을 수도 있는 이에 대한 참조는 어떤 것이라도 직접 제거할 필요가 있습니다.
+'옵셔널이-아닌 소유되지 않은 참조' 와 마찬가지로, `nextCourse` 가 항상 아직 해제되지 않은 '교과 과정' 을 참조하고 있다는 보장에 대한 책임은 직접 져야 합니다. 이 경우, 예를 들어, `department.courses` 에서 '교과' 를 삭제할 때 다른 '교과' 가 가지고 있을 수 있는 자신에 대한 참조도 제거할 필요가 있습니다.
 
-> 옵셔널 값의 실제 타입은 `Optional` 인데, 이는 스위프트 표준 라이브러리에 있는 열거체입니다. 하지만, 옵셔널은 값 타입은 `unowned` 로 표시할 수 없다는 규칙에 대한 예외입니다.
+> 옵셔널 값의 실제 타입은, 스위프트 표준 라이브러리에 있는, `Optional` 입니다. 하지만, 값 타입을 `unowned` 로 표시할 수 없다는 규칙에서 옵셔널은 예외입니다.[^unowned-exception]
 >
-> 클래스를 포장하는 옵셔널은 '참조 카운팅' 을 사용하지 않으므로, 옵셔널에 대한 '강한 참조' 는 유지할 필요가 없습니다.
+> 클래스를 포장한 옵셔널은 '참조 카운팅' 을 사용하지 않으므로, 옵셔널에 대한 '강한 참조' 를 유지할 필요가 없습니다.
 
-#### Unowned References and Implicitly Unwrapped Optional Properties (소유되지 않은 참조와 암시적으로 포장이 풀리는 옵셔널 속성)
+#### Unowned References and Implicitly Unwrapped Optional Properties ('소유하지 않는 참조' 와 '암시적으로 포장이 풀리는 옵셔널 속성')
 
-위에 있는 약한 참조 및 소유되지 않은 참조에 대한 예제는 강한 참조 순환을 끊어야 하는 일반적인 시나리오 중에서 두 가지를 다루고 있습니다.
+위에 있는 '약한' 그리고 '소유하지 않는 참조' 에 대한 예제는 '강한 참조 순환' 을 끊을 필요가 있는 더 일반적인 시나리오 중 두 가지를 다루고 있습니다.
 
-`Person` 과 `Apartment` 예제는, 둘 다 `nil` 이 될 수 있는, 두 개의 속성이 잠재적으로 강한 참조 순환을 발생시킬 수도 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '약한 참조' 입니다.
+`Person` 과 `Apartment` 예제는 두 속성이, 둘 다 `nil` 을 허용하면서, '강한 참조 순환' 을 유발할 수 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '약한 참조' 입니다.
 
-`Customer` 와 `CreditCard` 예제는 `nil` 이 될 수 있는 한 속성과 `nil` 이 될 수 없는 다른 속성이 잠재적으로 강한 참조 순환을 발생시킬 수도 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '소유되지 않은 참조' 입니다.
+`Customer` 와 `CreditCard` 예제는 `nil` 을 허용하는 한 속성과 `nil` 일 수 없는 또 다른 속성이 '강한 참조 순환' 유발할 수 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '소유하지 않는 참조' 입니다.
 
-하지만, 세 번째 시나리오도 있는데, 여기서는 두 속성 _모두 (both)_ 항상 값을 가져야 하며, 한번 초기화가 완료된 다음에는 어떤 속성도 `nil` 이 되어서는 안됩니다. 이 시나리오에서는, '소유되지 않은 속성' 인 클래스 하나와 '암시적으로 포장이 풀리는 옵셔널 속성 (implicitly unwrapped optional property)' 인 다른 속성을 결합하는 방식이 좋습니다.
+하지만, 속성 _둘 다 (both)_ 항상 값을 가져야 하며, 초기화를 한 번 완료하고 나면 어느 속성도 `nil` 이 되면 안되는, 세 번째 시나리오도 있습니다. 이 시나리오에서는, 한 클래스에 대한 '소유하지 않는 속성' 과 다른 클래스에 대한 '암시적으로 포장이 풀리는 옵셔널 속성' 을 조합하는 것이 유용합니다.
 
-이것은 두 속성 모두, 한번 초기화를 하고 나면, (옵셔널 포장을 풀지 않고도) 직접 접근하도록 해주는데, 이 때 참조 순환도 여전히 피하도록 해줍니다. 이번 장은 어떻게 하면 그런 관계를 설정할 수 있는지를 보여줍니다.
+이는 초기화를 한 번 하고 나면, '참조 순환' 을 피하면서도, 두 속성 모두 ('옵셔널 포장 풀기' 없이) 직접 접근할 수 있게 해줍니다. 이번 절은 그런 관계를 설정하는 방법을 보입니다.
 
-아래 예제는, `Country` 와 `City` 라는, 두 클래스를 정의하는데, 각각 서로의 클래스 인스턴스를 속성으로 저장합니다. 이 데이터 모델에서, 모든 국가는 반드시 항상 수도를 가지며, 모든 도시는 반드시 항상 국가에 속해 있어야 합니다. 이를 표현하기 위해, `Country` 클래스는 `capitalCity` 속성을 가지고 있고, `City` 클래스는 `country` 속성을 가지고 있습니다:
+아래 예제는, 각각 서로의 클래스 인스턴스를 저장하는, `Country` 와 `City` 라는, 두 클래스를 정의합니다. 이 '데이터 모델' 에서, 모든 국가는 반드시 항상 수도를 가지고 있으며, 모든 도시는 반드시 항상 국가에 속해 있습니다. 이를 표현하기 위해, `Country` 클래스는 `capitalCity` 속성을 가지며, `City` 클래스는 `country` 속성을 가집니다:
 
 ```swift
 class Country {
@@ -410,23 +410,23 @@ class City {
 }
 ```
 
-두 클래스 사이의 '상호 의존성 (interdependency)' 을 설정하기 위해, `City` 의 초기자는 `Country` 인스턴스를 받아 들여서, 해당 인스턴스를 `country` 속성에 저장합니다.
+두 클래스 사이의 '상호 의존성 (interdependency)' 을 설정하기 위해, `City` 초기자는 `Country` 인스턴스를 취하며, 이 인스턴스를 `country` 속성에 저장합니다.
 
-`City` 의 초기자는 `Country` 의 초기자에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한대로, `Country` 초기자는 새로운 `Country` 인스턴스가 완전히 초기화되지 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
+`City` 초기자는 `Country` 초기자 안에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한 것처럼, `Country` 초기자는 새로운 `Country` 인스턴스를 온전히 초기화하기 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
 
-이러한 '필수 조건 (requirement)' 에 대처하려면, `Country` 의 `capitalCity` 속성을 '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언해야 하며, '타입 보조 설명 (type annotation)' 끝에 느낌표를 붙여서 (`City!`) 지정하면 됩니다. 이것의 의미는 `capitalCity` 속성은, 다른 모든 옵셔널 처럼, `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 그 값의 포장을 풀지 않고도 접근할 수 있다는 것입니다.
+이 '필수 조건' 에 대처하려면, `Country` 의 `capitalCity` 속성을, (`City!` 라고) '타입 보조 설명' 끝에 느낌표를 붙여 지시하는, '암시적으로 포장이 풀리는 옵셔널 속성' 으로 선언합니다. 이는 `capitalCity` 속성이, 다른 옵셔널과 똑같이, `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 에서 설명한 것처럼 값의 포장을 풀 필요 없이 접근할 수 있다는 의미입니다.
 
-`capitalCity` 는 기본 값 `nil` 을 가지고 있기 때문에, `Country` 인스턴스가 초기자 내에서 `name` 속성을 설정하자마자 새 `Country` 인스턴스를 완전히 초기화된 것으로 봐도 됩니다. 이것의 의미는 `Country` 초기자가 `name` 속성을 설정하자마자 암시적인 `self` 속성의 참조 및 전달을 시작할 수 있다는 것입니다. `Country` 초기자는 따라서 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자에 대한 매개 변수 중 하나로 `self` 를 전달할 수 있습니다.
+`capitalCity` 가 '기본 `nil` 값' 을 가지기 때문에, 새로운 `Country` 인스턴스는 `Country` 인스턴스가 초기자에서 `name` 속성을 설정하자 마자 온전히 초기화된다고 고려합니다. 이는 `name` 속성을 설정하자 마자 `Country` 초기자가 '암시적인 `self` 속성' 을 참조하고 전달하기 시작할 수 있다는 의미입니다. 그럼으로써 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자를 위한 매개 변수로 `Country` 초기자가 `self` 를 전달할 수 있습니다.
 
-이 모든 것이 의미하는 것은, 강한 참조 순환을 생성하지 않고도, `Country` 와 `City` 인스턴스를 단일 구문으로 생성할 수 있으며, 옵셔널 값의 포장을 풀기 위해 느낌표를 사용하지 않고도, `capitalCity` 속성에 직접 접근하는 것이 가능하다는 것입니다:
+이 모든 것은, '강한 참조 순환' 의 생성 없이, `Country` 와 `City` 인스턴스를 단일 구문으로 생성할 수 있으며, 느낌표를 사용하여 옵셔널 값의 포장을 풀 필요 없이, `capitalCity` 속성에 직접 접근할 수 있다는 것을 의미합니다:
 
 ```swift
 var country = Country(name: "Canada", capitalName: "Ottawa")
 print("\(country.name)'s capital city is called \(country.capitalCity.name)")
-// "Canada's capital city is called Ottawa" 를 출력합니다.
+// "Canada's capital city is called Ottawa" 를 인쇄합니다.
 ```
 
-위 예제에서, '암시적으로 포장이 풀리는 옵셔널' 을 사용한다는 것은 '두-단계 클래스 초기자 (two-phase class initializer)' 에 대한 '필수 조건' 모두를 만족한다는 것을 의미합니다. `capitalCity` 속성은 한번 초기화를 완료하고 나면, 여전히 강한 참조 순환을 피하면서도, 옵셔널이-아닌 값처럼 사용하고 접근할 수 있습니다.
+위 예제에서, '암시적으로 포장이 풀리는 옵셔널' 을 사용하는 것은 '2-단계 클래스 초기자' 의 모든 '필수 조건' 을 만족한다는 의미입니다. `capitalCity` 속성은 초기화를 한 번 완료하고 나면, '강한 참조 순환' 을 피하면서도, '옵셔널이-아닌 값' 처럼 사용하고 접근할 수 있습니다.
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
 
@@ -543,7 +543,7 @@ lazy var someClosure = {
 }
 ```
 
-#### Weak and Unowned References (약한 참조와 소유되지 않은 참조)
+#### Weak and Unowned References ('약한 참조' 와 '소유하지 않는 참조')
 
 클로저와 자신이 붙잡을 인스턴스가 서로를 항상 참조하면서, 해제도 항상 동시에 되는 것이라면, 클로저에서 '소유되지 않은 참조' 로 붙잡는다고 정의합니다.
 
@@ -617,10 +617,14 @@ paragraph = nil
 
 [^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
-[^gabage-collection]: '쓰레기 수집' 은 'gabage collection' 을 직역한 말에 가까운데, 제가 지은 말이 아니고 실제로 사용하는 말인 것 같아서 그대로 옮깁니다. 이에 대한 더 자세한 내용은 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+[^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
-[^wraps]: 여기서 '포장하고 있다 (wrap)' 는 것의 의미는 내부 값을 옵셔널로 포장하고 있다는 의미입니다. `let a: Int? = 1` 에서 `a` 는 '`1` 이라는 값을 옵셔널로 포장하고 있다' 고 이해할 수 있습니다.
+[^unowned-reference]: 이 그림을 보면 '소유하지 않는 (unowned) 참조' 라는 이름의 의미를 이해할 수 있습니다. 이 두 인스턴스의 관계를 살펴보면, 고객은 신용 카드를 '소유' 하고 있지만, 신용 카드는 고객을 '소유' 하고 있지 않습니다. 다시 말해서, 고객은 신용 카드를 바꿀 수 있지만, 신용 카드는 고객을 바꿀 수 없습니다. 그러므로 외부에서 직접 '신용 카드' 를 참조하는 변수가 없습니다.
+
+[^does-not-own]: 앞서 말한 것처럼, 이것이 '소유하지 않는 (unowned) 참조' 라고 하는 이유입니다.
+
+[^wraps]: 여기서 '포장한다 (wrap)' 는 것은 값을 '옵셔널로 포장한다' 는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `Optional<Int>` 타입인데, `1` 이라는 `Int` 값을 옵셔널로 포장하고 있는 것입니다. '옵셔널' 에 대한 더 자세한 내용은, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 부분을 참고하기 바랍니다.
+
+[^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
 [^capture-lists]: 해당 내용은 'Swift Programming Language' 책의 'Language Reference' 부분에 있습니다. 아직 해당 부분의 번역을 진행하지 않아서 일단 원문 링크로 연결해 두었습니다.
-
-[^does-not-own]: 그것이 이 참조를 '소유되지 않은 (unowned)' 것이라고 부르는 이유입니다.
