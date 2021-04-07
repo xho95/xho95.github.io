@@ -504,15 +504,15 @@ print(paragraph!.asHTML())
 
 인스턴스의 `asHTML` 속성은 클로저에 대한 '강한 참조' 를 쥐고 있습니다. 하지만, 클로저가 자신의 본문에서 (`self.name` 과 `self.text` 참조 방식으로) `self` 를 참조하기 때문에, 클로저는 'self' 를 _붙잡게 (capture)_ 되며, 이는 다시 `HTMLElement` 인스턴스에 대한 '강한 참조' 를 쥔다는 의미입니다. 둘 사이에 '강한 참조 순환' 을 생성합니다. (클로저의 '값 붙잡기' 에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
 
-> 클로저가 `self` 를 아무리 여러 번 참조하더라도, 이것이 붙잡는 `HTMLElement` 인스턴스에 대한 강한 참조는 단 하나입니다.
+> 클로저가 `self` 를 여러 번 참조할지라도, `HTMLElement` 인스턴스에 대한 '강한 참조' 하나만을 붙잡습니다.
 
-만약 `paragraph` 변수에 `nil` 을 설정하여 `HTMLElement` 인스턴스에 대한 강한 참조를 끊더라도, `HTMLElement` 인스턴스나 클로저나 강한 참조 순환을 이루고 있어서 전혀 해제되지 않습니다:
+`paragraph` 변수를 `nil` 로 설정하여 `HTMLElement` 인스턴스에 대한 '강한 참조' 를 끊는 경우, '강한 참조 순환' 때문에, `HTMLElement` 인스턴스와 클로저 어느 쪽도 해제되지 않습니다:
 
 ```swift
 paragraph = nil
 ```
 
-`HTMLElement` '정리자 (deinitializer)' 에 있는 메시지가 출력되지 않았음에 주목해야 하는데, 이는 `HTMLElement` 인스턴스가 해제되지 않았음을 보여줍니다.
+`HTMLElement` '정리자' 에 있는 메시지가 인쇄되지 않으며, 이는 `HTMLElement` 인스턴스가 해제되지 않음을 보여준다는 것을 기억하기 바랍니다.
 
 ### Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)
 
