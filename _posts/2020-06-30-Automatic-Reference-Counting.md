@@ -464,9 +464,9 @@ class HTMLElement {
 }
 ```
 
-`HTMLElement` 클래스는 `name` 속성을 정의하는데, 이는 원소의 이름을 지시하는 것으로, 가령 제목 원소에 대해서는 `"h1"`, 문단 요소에 대해서는 `"p"`, 줄 끊음 원소에 대해서는 `"br"` 과 같습니다. `HTMLElement` 는 옵셔널 `text` 속성도 정의하는데, 해당 HTML 원소 내에서 그려지는 '문장 (text)' 을 표현하는 문자열을 여기에 설정할 수 있습니다.
+`HTMLElement` 클래스는, '제목 원소' 일 때는 `"h1"`, '문단 원소' 일 때는 `"p"`, '줄 끊음 원소' 일 때는 `"br"` 이라고 하는, 원소 이름을 지시하는, `name` 속성을 정의합니다. `HTMLElement` 는 해당 HTML 원소 안에서 그리는 '문장 (text)' 을 표현할 문자열을 설정하기 위해 '옵셔널 `text` 속성' 도 정의합니다.
 
-이 두 개의 기본 속성 외에도, `HTMLElement` 클래스는 `asHTML` 이라는 '느긋한 속성 (lazy property)' 도 정의합니다. 이 속성은 `name` 과 `text` 를 결합하여 HTML 문자열 부분으로 만드는 클로저를 참조합니다. `asHTML` 속성의 타입은 `() -> String`, 또는 "매개 변수를 받지 않고, `String` 값을 반환하는 함수" 입니다.
+이 단순한 두 속성에 더하여, `HTMLElement` 클래스는 `asHTML` 이라는 '느긋한 (lazy) 속성'[^lazy] 도 정의합니다. 이 속성은 `name` 과 `text` 를 'HTML 문자열 조각' 으로 조합하는 클로저를 참조합니다. `asHTML` 속성은 `() -> String`, 또는 "매개 변수를 취하지 않고, `String` 값을 반환하는 함수" 타입 입니다.
 
 기본적으로, `asHTML` 속성에는 HTML '태그 (tag; 꼬리표)' 에 해당하는 문자열 표현을 반환하는 클로저가 할당됩니다. 이 태그는 값이 존재하면 옵셔널 `text` 값을 담지만, `text` 가 존재하지 않으면 아무런 문장 내용도 가지지 않습니다. 문단 원소에 대해서, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 또는 `<p />` 를 반환할 것입니다.
 
@@ -626,5 +626,7 @@ paragraph = nil
 [^wraps]: 여기서 '포장한다 (wrap)' 는 것은 값을 '옵셔널로 포장한다' 는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `Optional<Int>` 타입인데, `1` 이라는 `Int` 값을 옵셔널로 포장하고 있는 것입니다. '옵셔널' 에 대한 더 자세한 내용은, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 부분을 참고하기 바랍니다.
 
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
+
+[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
 
 [^capture-lists]: 해당 내용은 'Swift Programming Language' 책의 'Language Reference' 부분에 있습니다. 아직 해당 부분의 번역을 진행하지 않아서 일단 원문 링크로 연결해 두었습니다.
