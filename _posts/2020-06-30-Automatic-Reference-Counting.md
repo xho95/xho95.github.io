@@ -468,11 +468,11 @@ class HTMLElement {
 
 이 단순한 두 속성에 더하여, `HTMLElement` 클래스는 `asHTML` 이라는 '느긋한 (lazy) 속성'[^lazy] 도 정의합니다. 이 속성은 `name` 과 `text` 를 'HTML 문자열 조각' 으로 조합하는 클로저를 참조합니다. `asHTML` 속성은 `() -> String`, 또는 "매개 변수를 취하지 않고, `String` 값을 반환하는 함수" 타입 입니다.
 
-기본적으로, `asHTML` 속성에는 HTML '태그 (tag; 꼬리표)' 에 해당하는 문자열 표현을 반환하는 클로저가 할당됩니다. 이 태그는 값이 존재하면 옵셔널 `text` 값을 담지만, `text` 가 존재하지 않으면 아무런 문장 내용도 가지지 않습니다. 문단 원소에 대해서, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 또는 `<p />` 를 반환할 것입니다.
+기본적으로, `asHTML` 속성에는 'HTML 꼬리표 (tag)' 의 '문자열 표현' 을 반환하는 클로저를 할당합니다. 이 '꼬리표' 는 `text` 가 존재하면 '옵셔널 `text` 값' 을 담고, 존재하지 않으면 아무 내용물도 담고 있지 않습니다. '문단 원소' 일 때는, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 나 `<p />` 를 반환할 것입니다.
 
-`asHTML` 속성의 이름과 사용 방법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 인스턴스 메소드가 아닌 클로저 속성이기 때문에, 특정 HTML 원소에 대한 HTML '묘사 (rendering)' 을 바꾸고 싶은 경우, `asHTML` 속성의 기본 값을 자신만의 클로저로 대체할 수 있습니다.
+`asHTML` 속성의 이름과 사용법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 '인스턴스 메소드' 보다는 '클로저 속성' 이기 때문에, 특별한 HTML 원소에 대하여 'HTML 그림 방식 (rendering)' 을 바꾸고 싶으면, `asHTML` 속성 기본 값을 '사용자 정의 클로저' 로 대체할 수 있습니다.
 
-예를 들어, `asHTML` 속성은, '표현 (representation)' 이 '비어있는 HTML 태그' 를 반환하는 것을 막기 위해, `text` 속성이 `nil` 인 경우 어떤 문장을 기본 설정하는 클로저로 설정할 수도 있을 것입니다:
+예를 들어, 비어 있는 'HTML 꼬리표' 를 반환하지 못하도록, `text` 속성이 `nil` 이면 기본 문장을 부여하는 클로저를 `asHTML` 속성에 설정할 수 있을 것입니다:
 
 ```swift
 let heading = HTMLElement(name: "h1")
@@ -481,7 +481,7 @@ heading.asHTML = {
   return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
 }
 print(heading.asHTML())
-// "<h1>some default text</h1>" 를 출력합니다.
+// "<h1>some default text</h1>" 를 인쇄합니다.
 ```
 
 > `asHTML` 속성은 '느긋한 속성 (lazy property)' 으로 선언 되었는데, 이는 이 원소가 실제로 어떤 HTML 출력 대상에 대한 문자열 값으로 그려지는 순간에서야 필요한 것이기 때문입니다. `asHTML` 이 '느긋한 속성' 이라는 사실이 의미하는 것은 기본 설정 클로저 내에서 `self` 를 참조할 수 있다는 것이며, 이는 '느긋한 속성' 이 초기화가 완료돼서 `self` 가 존재함을 알기 전까지 접근하지 않을 것이기 때문입니다.
