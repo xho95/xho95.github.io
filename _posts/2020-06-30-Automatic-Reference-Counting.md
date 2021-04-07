@@ -484,25 +484,25 @@ print(heading.asHTML())
 // "<h1>some default text</h1>" 를 인쇄합니다.
 ```
 
-> `asHTML` 속성은,  원소가 실제로 어떤 HTML 출력 대상에 대한 문자열 값으로 그려야 할 때에만 필요하기 때문에, '느긋한 (lazy) 속성' 이라고 선언합니다. `asHTML` 이 '느긋한 속성' 이라는 사실은, 초기화를 완료하여 `self` 가 존재함을 알기 전까지 '느긋한 속성' 에 접근하지 않을 것이기 때문에, '기본 클로저' 에서 `self` 를 참조할 수 있다는 의미입니다.
+> `asHTML` 속성은,  원소가 실제로 어떤 HTML 출력 대상에 대한 문자열 값으로 그려야 할 때에만 필요하기 때문에, '느긋한 (lazy) 속성' 이라고 선언합니다. `asHTML` 이 '느긋한 속성' 이라는 사실은, 초기화를 완료하여 `self` 가 존재함을 알기 전까지 '느긋한 속성' 에 접근하지 않을 것이기 때문에, '기본 클로저' 에서 `self` 를 참조할 수 있다는 의미입니다.s
 
-`HTMLElement` 클래스는, 새 원소를 초기화하기 위해 `name` 인자와 (원한다면) `text` 인자 까지를 받는, 초기자 하나를 제공합니다. 이 클래스는 '정리자' 도 정의하여, `HTMLElement` 인스턴스가 해제될 때 보여주는 메시지를 출력합니다:
+`HTMLElement` 클래스는, `name` 인자와 (원할 경우) `text` 인자를 취하여 새로운 원소를 초기화하는, '단일 초기자' 를 제공합니다. 클래스는, `HTMLElement` 인스턴스를 해제할 때 보여줄 메시지를 인쇄하는, '정리자' 도 정의합니다:
 
-다음은 `HTMLElement` 클래스를 사용하여 새로운 인스턴스를 생성하고 출력하는 방법을 보여줍니다:
+다음은 `HTMLElement` 클래스를 사용하여 새로운 인스턴스를 생성하고 출력하는 방법입니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>" 를 출력합니다.
+// "<p>hello, world</p>" 를 인쇄합니다.
 ```
 
-> 위에서 `paragraph` 변수는 _옵셔널 (optional)_ `HTMLElement` 로 정의 했으므로, 강한 참조 순환이 존재함을 증명해 보이기 위해 아래에서 `nil` 로 설정할 수 있습니다.
+> 위에 있는 `paragraph` 변수를 _옵셔널 (optional)_ `HTMLElement` 로 정의하여, '강한 참조 순환' 이 있음을 실증하고자 아래에서 `nil` 로 설정할 수 있습니다.
 
-불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 기본 설정 `asHTML` 값에 사용되는 클로저 사이에 강한 참조 순환을 생성합니다. 순환의 모습은 다음과 같습니다:
+불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 '기본 `asHTML` 값' 에 사용할 클로저 사이에 '강한 참조 순환' 을 생성합니다. 다음은 '순환' 을 보인 것입니다:
 
 ![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
 
-인스턴스의 `asHTML` 속성은 자신의 클로저에 대한 강한 참조를 쥐고 있습니다. 하지만, 클로저도 자신의 본문에서 `self` 를 참조하기 때문에 (`self.name` 및 `self.text` 과 같은 방식으로 참조), 이 클로저는 'self' 를 '붙잡게 (capture)' 되며, 이는 다시 `HTMLElement` 인스턴스에 대한 강한 참조를 쥐게 됨을 의미합니다. 즉 이 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 자세한 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
+인스턴스의 `asHTML` 속성은 클로저에 대한 '강한 참조' 를 쥐고 있습니다. 하지만, 클로저가 자신의 본문에서 (`self.name` 과 `self.text` 참조 방식으로) `self` 를 참조하기 때문에, 클로저는 'self' 를 _붙잡게 (capture)_ 되며, 이는 다시 `HTMLElement` 인스턴스에 대한 '강한 참조' 를 쥔다는 의미입니다. 둘 사이에 '강한 참조 순환' 을 생성합니다. (클로저의 '값 붙잡기' 에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
 
 > 클로저가 `self` 를 아무리 여러 번 참조하더라도, 이것이 붙잡는 `HTMLElement` 인스턴스에 대한 강한 참조는 단 하나입니다.
 
@@ -599,7 +599,11 @@ paragraph = nil
 // "p is being deinitialized" 를 출력합니다.
 ```
 
-'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록)[^capture-lists] 를 참고하기 바랍니다.
+'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 를 참고하기 바랍니다.
+
+### 다음 장
+
+[Memory Safety (메모리 안전성) > ]({% post_url 2020-04-07-Memory-Safety %})
 
 ### 참고 자료
 
@@ -628,5 +632,3 @@ paragraph = nil
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
 [^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
-
-[^capture-lists]: 해당 내용은 'Swift Programming Language' 책의 'Language Reference' 부분에 있습니다. 아직 해당 부분의 번역을 진행하지 않아서 일단 원문 링크로 연결해 두었습니다.
