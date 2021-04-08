@@ -551,7 +551,7 @@ lazy var someClosure = {
 
 > '붙잡은 참조' 가 절대로 `nil` 이 되지 않을 거라면, '약한 참조' 보다는, 항상 '소유하지 않는 참조' 로 붙잡는 것이 좋습니다.
 
-위 [Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)](#strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환) 에 있는 `HTMLElement` 예제의 강한 참조 순환을 해결하는 데는 소유되지 않은 참조를 사용하는 것이 붙잡는 방법으로 적절합니다. 다음은 순환을 피하도록 `HTMLElement` 클래스를 작성하는 방법입니다:
+위 [Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)](#strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환) 의 `HTMLElement` 예제에 있는 '강한 참조 순환' 을 해결하는 데 사용하기에는 '소유하지 않는 참조' 가 적절한 방법입니다. 다음은 순환을 피하도록 `HTMLElement` 클래스를 작성하는 방법입니다:
 
 ```swift
 class HTMLElement {
@@ -578,25 +578,25 @@ class HTMLElement {
 }
 ```
 
-이 `HTMLElement` 구현은, `asHTML` 클로저 내에 '붙잡을 목록' 을 추가했다는 것을 빼면, 이전 구현과 모든 점에서 똑같습니다. 이 경우, '붙잡을 목록' 은 `[unowned self]` 이며, 이는 "'self' 를 강한 참조가 아니라 소유되지 않은 참조로 붙잡을 것" 을 의미합니다.
+이 `HTMLElement` 구현은, `asHTML` 클로저에 '붙잡을 목록' 을 추가한 것을 빼면, 이전 구현과 모든 점에서 똑같습니다. 이 경우, '붙잡을 목록' 은, "'강한 참조' 보다는 '소유하지 않는 참조' 로 'self' 를 붙잡을 것" 을 의미하는, `[unowned self]` 입니다.  
 
-이전 처럼 `HTMLElement` 인스턴스를 생성하고 출력할 수 있습니다.
+이전 처럼 `HTMLElement` 인스턴스를 생성하고 출력할 수 있습니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>" 를 출력합니다.
+// "<p>hello, world</p>" 를 인쇄합니다.
 ```
 
-다음은 같은 곳에서 '붙잡을 목록 (capture list)' 를 사용하면 참조 어떻게 보이는 지를 나타낸 것입니다.
+다음은 '붙잡을 목록' 이 제자리에 있을 때의 '참조' 를 보인 것입니다:
 
 ![Resloving of Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-resolved.jpg)
 
-이번에는, 클로저가 `self` 를 소유되지 않은 참조로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 강한 참조를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 출력하는 것에서 볼 수 있듯이, `HTMLElement` 인스턴스가 해제됩니다.
+이번에는, 클로저가 `self` 를 '소유하지 않는 참조' 로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 '강한 참조' 를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 인쇄하는 것으로 볼 수 있는 것처럼, `HTMLElement` 인스턴스를 해제합니다:
 
 ```swift
 paragraph = nil
-// "p is being deinitialized" 를 출력합니다.
+// "p is being deinitialized" 를 인쇄합니다.
 ```
 
 '붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 를 참고하기 바랍니다.
