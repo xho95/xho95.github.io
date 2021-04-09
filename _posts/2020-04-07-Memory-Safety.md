@@ -34,11 +34,11 @@ print("We're number \(one)!")
 
 항목을 비용에 추가함과 동시에, 일시적으로, 무효 상태가 되는데 왜냐면 새로 추가된 항목을 반영하도록 총 금액을 갱신하지 않았기 때문입니다. 항목을 추가하는 동안에 총 금액을 읽으면 잘못된 정보를 줍니다.
 
-이 예제는 또한 메모리 접근이 충돌하는 것을 고칠 때 맞닥뜨리게 되는 도전 과제를 보여주고 있습니다: 충돌을 고치는 여러가지 방법들은 때때로 서로 다른 답을 내놓는데, 어느 답이 올바른 지가 항상 명백한 것은 아니라는 것입니다. 이 예제의 경우, 원하던 것이 원래의 총 금액인지 아니면 갱신된 총 금액인지에 따라, '$5' 나 '$320' 중 어느 것이든 올바른 답이 될 수 있습니다. '접근 충돌' 을 고칠 수 있으려면, 그전에 의도하는 것이 무엇인지를 결정해야 합니다.
+이 예제는 메모리 접근 충돌을 고칠 때 맞닥뜨릴 수도 있는 '도전 과제': 충돌을 고치는 여러가지 방법들이 서로 다른 답을 만들어 낼 때가 있는데, 어느 답이 올바른 지가 항상 명백한 것은 아니라는 것도 실증합니다. 이 예제에서는, 원하는 것이 '원래의 총 금액' 인지 '갱신한 총 금액' 인지에 따라, '$5' 나 '$320' 어느 것도 올바른 답이 될 수 있습니다. '접근 충돌' 을 고칠 수 있으려면, 그전에 의도가 무엇인지를 결정해야 합니다.
 
-> '동시성 (concurrent)' 코드나 '다중 쓰레드 (multithreaded)' 코드를 작성해 본 적이 있다면, 메모리 접근 충돌은 익숙한 문제일 수도 있습니다. 하지만, 여기서 논의하는 '접근 충돌' 은 단일 쓰레드에서 발생할 수 있는 것으로 '동시성 코드' 나 '다중 쓰레드 코드' 와 엮이지 _않은 (doesn't)_ 것입니다.
+> '동시성 (concurrent)' 또는 '다중 쓰레드 (multithreaded)' 코드를 작성해 봤다면, 메모리에 대한 접근 충돌이 익숙한 문제일 수가 있습니다. 하지만, 여기서 논의한 '접근 충돌' 은 '단일 쓰레드' 에서 발생할 수 있으며 '동시성' 또는 '다중 쓰레드' 코드와 엮여 있지 _않은 (doesn't)_ 것입니다.
 >
-> 단일 쓰레드 내에서 메모리 접근에 대한 충돌이 발생하면, '컴파일 시간' 또는 '실행 시간' 중 한 곳에서 에러를 가질 것을 스위프트가 보증합니다. 다중 쓰레드 코드에 대해서는, [Thread Sanitizer (쓰레드 살균제)](https://developer.apple.com/documentation/code_diagnostics/thread_sanitizer)[^Thread-Sanitizer] 를 사용하면 쓰레드를 넘나드는 접근 충돌을 감지하는데 도움을 받을 수 있습니다.
+> '단일 쓰레드' 안에서 메모리에 대한 접근이 충돌하는 경우, 스위프트는 '컴파일 시간' 이나 '실행 시간' 에 에러를 가지도록 보증합니다. '다중 쓰레드' 코드에서는, 쓰레드 간의 '접근 충돌' 을 감지하는데 도움이 되도록 [Thread Sanitizer (쓰레드 살균제)](https://developer.apple.com/documentation/code_diagnostics/thread_sanitizer)[^Thread-Sanitizer] 를 사용합니다.
 
 #### Characteristics of Memory Access (메모리 접근의 성질)
 
@@ -212,7 +212,7 @@ func someFunction() {
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^Thread-Sanitizer]: 'Sanitizer' 는 우리 말로 '소독제, 살균제' 등으로 옮길 수 있는데, 'Thread Sanitizer (쓰레드 살균제)' 는 Xcode 에 포함된 도구 중의 하나로 앱에서 'data race (자료 경쟁)' 가 일어나는 지를 찾아줍니다. 'data race' 에 대해서는 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 이나 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 참고하기 바랍니다.
+[^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 참고하기 바랍니다.
 
 [^original-variable]: 여기서 '원본 변수에 접근할 수 없다' 는 말을 그 밑의 예제로 해석하면 `increment` 함수 내에서 `stepSize` 를 사용할 수 없다는 말이됩니다. 즉, 예제에서 잘못된 것은 `number += stepSize` 구문이며, `number` 와 `stepSize` 가 같은 위치의 메모리에 접근하기 때문에 충돌이 발생합니다.
 
