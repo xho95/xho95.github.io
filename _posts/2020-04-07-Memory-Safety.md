@@ -6,13 +6,11 @@ date:   2020-04-07 10:00:00 +0900
 categories: Swift Language Grammar Memory Safety
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Memory Safety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html) 부분[^Memory-Safety]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Memory Safety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html) 부분[^Memory-Safety]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Memory Safety (메모리 안전성; 메모리 안전 장치)
+## Memory Safety (메모리 안전성)
 
-기본적으로, 스위프트는 코드 내에서 안전하지 않은 동작이 발생하는 것을 막습니다. 예를 들어, 스위프트는 변수가 사용되기 전에 초기화되었다는 것을, 메모리가 해제된 후에는 접근하지 않는다는 것을, 그리고 배열 색인에 대하여 '경계를-벗어난 (out-of-bounds)' 에러를 검사한 것을 보장합니다.
+기본적으로, 스위프트는 코드에서 안전하지 않은 동작이 발생하는 것을 막습니다. 예를 들어, 변수는 사용 전에 초기화하고, 메모리는 해제 후에 접근을 안하며, 배열 색인은 '경계를-벗어난 (out-of-bounds) 에러' 를 검사하도록 스위프트가 보장합니다.
 
 스위프트는 또한 '동일한 메모리 영역' 에 대한 '다중 접근 (multiple accesses)' 의 경우, 특정 위치의 메모리를 수정하는 코드는 해당 메모리에 대한 '독점적인 접근 (exclusive access)' 을 가질 것을 필수로 요구함으로써, 서로 '충돌 (conflict)' 하지 않음을 확실하게 만듭니다. 스위프트는 메모리를 자동으로 관리하기 때문에, 거의 대부분 메모리 접근에 대해 생각을 할 필요가 전혀 없습니다. 하지만, 잠재적인 충돌이 발생할 곳을 이해하는 것은 중요하며, 그래야 작성한 코드에서 메모리 접근이 충돌하는 것을 피할 수 있기 때문입니다. 코드가 충돌을 담고 있으면, '컴파일 시간 에러' 나 '실행 시간 에러' 를 가지게 됩니다.
 
@@ -64,7 +62,7 @@ func oneMore(than number: Int) -> Int {
 var myNumber = 1
 myNumber = oneMore(than: myNumber)
 print(myNumber)
-// "2" 를 출력합니다.
+// "2" 를 인쇄합니다.
 ```
 
 하지만, 다른 코드의 실행까지 걸쳐 있는, _장기적인 (long-term)_ 접근이라는, 여러 가지의 메모리 접근 방법이 있습니다. '단기적인 접근' 과 '장기적인 접근' 의 차이점은 장기적인 접근을 시작한 다음에는 끝나기 전에 다른 코드를 실행하는 것이 가능하다는 것으로, 이를 '_겹친다 (overlap)_' 라고 합니다. 장기적인 접근은 다른 장기적인 접근 및 순간적인 접근과 겹칠 수 있습니다.

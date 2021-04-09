@@ -430,15 +430,15 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
 
-위에서 두 개의 클래스 인스턴스 속성이 서로에 대한 강한 참조를 쥐고 있을 때 어떻게 해서 강한 참조 순환이 생성되는 지를 살펴 봤습니다. 아울러 약한 참조와 소유되지 않은 참조를 사용하여 이러한 강한 참조 순환을 끊는 방법을 살펴 봤습니다.
+위에서 두 클래스 인스턴스 속성이 서로에 대한 '강한 참조' 를 쥐고 있을 때 '강한 참조 순환' 이 생성될 수 있는 방법을 살펴 봤습니다. 이 강한 참조 순환을 끊기 위해 '약한 참조' 와 '소유하지 않는 참조' 를 사용하는 방법도 살펴 봤습니다.
 
-강한 참조 순환은 또, 클래스 인스턴스의 속성에 클로저를 할당한 다음, 해당 클로저의 본문에서 그 인스턴스를 '붙잡는 (captures)' 경우에도 발생합니다. 이 '붙잡기 (capture)' 는 클로저의 본문이, `self.someProperty` 처럼, 인스턴스의 속성에 접근하기 때문에 발생할 수도 있고, 아니면 클로저가, `self.someMethod()` 처럼, 인스턴스의 메소드를 호출하기 때문에 발생할 수도 있습니다. 어떤 경우라도, 이러한 접근은 클로저가 `self` 를 "붙잡게 (capture)" 만들어서, 강한 참조 순환을 생성하게 됩니다.
+'강한 참조 순환' 은 클로저를 클래스 인스턴스의 속성에 할당한 다음, 해당 클로저 본문에서 인스턴스를 '붙잡는 (captures)' 경우에도 일어납니다. 이 '붙잡음' 은, `self.someProperty` 같이, 클로저 본문이 인스턴스의 속성에 접근하기 때문에, 또는 `self.someMethod()` 같이, 클로저가 인스턴스에 대한 메소드를 호출하기 때문에 일어날 수도 있습니다. 어느 경우든, 이 접근은 클로저가 `self` 를 "붙잡도록 (capture)" 하여, '강한 참조 순환' 을 생성합니다.
 
-이러한 강한 참조 순환이 발생하는 건 클로저도, 클래스 처럼, _참조 타입 (reference type)_ 이기 때문입니다. 클로저를 속성에 할당할 땐, 해당 클로저에 대한 _참조 (reference)_ 를 할당하는 것입니다. 본질적으로, 위와 같은 문제인 것입니다-두 개의 강한 참조가 서로를 살아 있도록 유지하고 있다는 것 말입니다. 하지만, 이번에는, 두 클래스 인스턴스가 아니라, 한 클래스 인스턴스와 한 클로저가 서로를 살아 있도록 유지하고 있습니다.
+이 '강한 참조 순환' 은 클로저가, 클래스 처럼, _참조 타입 (reference type)_ 이기 때문에 일어나는 것입니다. 클로저를 속성에 할당할 때는, 해당 클로저에 대한 _참조 (reference)_ 를 할당하고 있는 것입니다. 본질적으로, 위와 똑같은 문제-두 개의 '강한 참조' 가 서로를 살아 있게 유지한다는 것-입니다. 하지만, 이번에는, 두 클래스 인스턴스라기 보다는, 클래스 인스턴스와 클로저가 서로를 살아 있게 유지합니다.
 
-스위프트는 이 문제에 대해서, _클로저가 붙잡을 목록 (closure capture list)_ 이라는, 우아한 해법을 제공합니다. 하지만, '클로저가 붙잡은 목록' 으로 강한 참조 순환을 끊는 방법을 배우기 전에, 어떻게 해서 그런 순환이 일어나는 지를 이해하는 것이 좋을 것입니다.
+스위프트는 이 문제에 대해, _클로저가 붙잡을 목록 (closure capture list)_ 이라는, 우아한 해법을 제공합니다. 하지만, '클로저가 붙잡을 목록' 으로 '강한 참조 순환' 을 끊는 방법을 배우기 전에, 그런 순환을 유발할 수 있는 방법을 이해햐는 것이 유용합니다.
 
-아래 예제는 `self` 를 참조하는 클로저를 사용할 때 어떻게 해서 강한 참조 순환이 생성되는 지를 보여줍니다. 이 예제는, HTML 문서 내의 개별 원소에 대한 간단한 모델을 제공하는, `HTMLElement` 라는 클래스를 정의합니다:
+아래 예제는 `self` 를 참조하는 클로저가 사용될 때 '강한 참조 순환' 을 생성할 수 있는 방법을 보여줍니다. 이 예제는, HTML 문서에 있는 개별 원소에 대한 간단한 모델을 제공하는, `HTMLElement` 라는 클래스를 정의합니다:
 
 ```swift
 class HTMLElement {
@@ -464,15 +464,15 @@ class HTMLElement {
 }
 ```
 
-`HTMLElement` 클래스는 `name` 속성을 정의하는데, 이는 원소의 이름을 지시하는 것으로, 가령 제목 원소에 대해서는 `"h1"`, 문단 요소에 대해서는 `"p"`, 줄 끊음 원소에 대해서는 `"br"` 과 같습니다. `HTMLElement` 는 옵셔널 `text` 속성도 정의하는데, 해당 HTML 원소 내에서 그려지는 '문장 (text)' 을 표현하는 문자열을 여기에 설정할 수 있습니다.
+`HTMLElement` 클래스는, '제목 원소' 일 때는 `"h1"`, '문단 원소' 일 때는 `"p"`, '줄 끊음 원소' 일 때는 `"br"` 이라고 하는, 원소 이름을 지시하는, `name` 속성을 정의합니다. `HTMLElement` 는 해당 HTML 원소 안에서 그리는 '문장 (text)' 을 표현할 문자열을 설정하기 위해 '옵셔널 `text` 속성' 도 정의합니다.
 
-이 두 개의 기본 속성 외에도, `HTMLElement` 클래스는 `asHTML` 이라는 '느긋한 속성 (lazy property)' 도 정의합니다. 이 속성은 `name` 과 `text` 를 결합하여 HTML 문자열 부분으로 만드는 클로저를 참조합니다. `asHTML` 속성의 타입은 `() -> String`, 또는 "매개 변수를 받지 않고, `String` 값을 반환하는 함수" 입니다.
+이 단순한 두 속성에 더하여, `HTMLElement` 클래스는 `asHTML` 이라는 '느긋한 (lazy) 속성'[^lazy] 도 정의합니다. 이 속성은 `name` 과 `text` 를 'HTML 문자열 조각' 으로 조합하는 클로저를 참조합니다. `asHTML` 속성은 `() -> String`, 또는 "매개 변수를 취하지 않고, `String` 값을 반환하는 함수" 타입 입니다.
 
-기본적으로, `asHTML` 속성에는 HTML '태그 (tag; 꼬리표)' 에 해당하는 문자열 표현을 반환하는 클로저가 할당됩니다. 이 태그는 값이 존재하면 옵셔널 `text` 값을 담지만, `text` 가 존재하지 않으면 아무런 문장 내용도 가지지 않습니다. 문단 원소에 대해서, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 또는 `<p />` 를 반환할 것입니다.
+기본적으로, `asHTML` 속성에는 'HTML 꼬리표 (tag)' 의 '문자열 표현' 을 반환하는 클로저를 할당합니다. 이 '꼬리표' 는 `text` 가 존재하면 '옵셔널 `text` 값' 을 담고, 존재하지 않으면 아무 내용물도 담고 있지 않습니다. '문단 원소' 일 때는, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 나 `<p />` 를 반환할 것입니다.
 
-`asHTML` 속성의 이름과 사용 방법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 인스턴스 메소드가 아닌 클로저 속성이기 때문에, 특정 HTML 원소에 대한 HTML '묘사 (rendering)' 을 바꾸고 싶은 경우, `asHTML` 속성의 기본 값을 자신만의 클로저로 대체할 수 있습니다.
+`asHTML` 속성의 이름과 사용법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 '인스턴스 메소드' 보다는 '클로저 속성' 이기 때문에, 특별한 HTML 원소에 대하여 'HTML 그림 방식 (rendering)' 을 바꾸고 싶으면, `asHTML` 속성 기본 값을 '사용자 정의 클로저' 로 대체할 수 있습니다.
 
-예를 들어, `asHTML` 속성은, '표현 (representation)' 이 '비어있는 HTML 태그' 를 반환하는 것을 막기 위해, `text` 속성이 `nil` 인 경우 어떤 문장을 기본 설정하는 클로저로 설정할 수도 있을 것입니다:
+예를 들어, 비어 있는 'HTML 꼬리표' 를 반환하지 못하도록, `text` 속성이 `nil` 이면 기본 문장을 부여하는 클로저를 `asHTML` 속성에 설정할 수 있을 것입니다:
 
 ```swift
 let heading = HTMLElement(name: "h1")
@@ -481,77 +481,77 @@ heading.asHTML = {
   return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
 }
 print(heading.asHTML())
-// "<h1>some default text</h1>" 를 출력합니다.
+// "<h1>some default text</h1>" 를 인쇄합니다.
 ```
 
-> `asHTML` 속성은 '느긋한 속성 (lazy property)' 으로 선언 되었는데, 이는 이 원소가 실제로 어떤 HTML 출력 대상에 대한 문자열 값으로 그려지는 순간에서야 필요한 것이기 때문입니다. `asHTML` 이 '느긋한 속성' 이라는 사실이 의미하는 것은 기본 설정 클로저 내에서 `self` 를 참조할 수 있다는 것이며, 이는 '느긋한 속성' 이 초기화가 완료돼서 `self` 가 존재함을 알기 전까지 접근하지 않을 것이기 때문입니다.
+> `asHTML` 속성은,  원소가 실제로 어떤 HTML 출력 대상에 대한 문자열 값으로 그려야 할 때에만 필요하기 때문에, '느긋한 (lazy) 속성' 이라고 선언합니다. `asHTML` 이 '느긋한 속성' 이라는 사실은, 초기화를 완료하여 `self` 가 존재함을 알기 전까지 '느긋한 속성' 에 접근하지 않을 것이기 때문에, '기본 클로저' 에서 `self` 를 참조할 수 있다는 의미입니다.s
 
-`HTMLElement` 클래스는, 새 원소를 초기화하기 위해 `name` 인자와 (원한다면) `text` 인자 까지를 받는, 초기자 하나를 제공합니다. 이 클래스는 '정리자' 도 정의하여, `HTMLElement` 인스턴스가 해제될 때 보여주는 메시지를 출력합니다:
+`HTMLElement` 클래스는, `name` 인자와 (원할 경우) `text` 인자를 취하여 새로운 원소를 초기화하는, '단일 초기자' 를 제공합니다. 클래스는, `HTMLElement` 인스턴스를 해제할 때 보여줄 메시지를 인쇄하는, '정리자' 도 정의합니다:
 
-다음은 `HTMLElement` 클래스를 사용하여 새로운 인스턴스를 생성하고 출력하는 방법을 보여줍니다:
+다음은 `HTMLElement` 클래스를 사용하여 새로운 인스턴스를 생성하고 출력하는 방법입니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>" 를 출력합니다.
+// "<p>hello, world</p>" 를 인쇄합니다.
 ```
 
-> 위에서 `paragraph` 변수는 _옵셔널 (optional)_ `HTMLElement` 로 정의 했으므로, 강한 참조 순환이 존재함을 증명해 보이기 위해 아래에서 `nil` 로 설정할 수 있습니다.
+> 위에 있는 `paragraph` 변수를 _옵셔널 (optional)_ `HTMLElement` 로 정의하여, '강한 참조 순환' 이 있음을 실증하고자 아래에서 `nil` 로 설정할 수 있습니다.
 
-불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 기본 설정 `asHTML` 값에 사용되는 클로저 사이에 강한 참조 순환을 생성합니다. 순환의 모습은 다음과 같습니다:
+불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 '기본 `asHTML` 값' 에 사용할 클로저 사이에 '강한 참조 순환' 을 생성합니다. 다음은 '순환' 을 보인 것입니다:
 
 ![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
 
-인스턴스의 `asHTML` 속성은 자신의 클로저에 대한 강한 참조를 쥐고 있습니다. 하지만, 클로저도 자신의 본문에서 `self` 를 참조하기 때문에 (`self.name` 및 `self.text` 과 같은 방식으로 참조), 이 클로저는 'self' 를 '붙잡게 (capture)' 되며, 이는 다시 `HTMLElement` 인스턴스에 대한 강한 참조를 쥐게 됨을 의미합니다. 즉 이 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 자세한 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
+인스턴스의 `asHTML` 속성은 클로저에 대한 '강한 참조' 를 쥐고 있습니다. 하지만, 클로저가 자신의 본문에서 (`self.name` 과 `self.text` 참조 방식으로) `self` 를 참조하기 때문에, 클로저는 'self' 를 _붙잡게 (capture)_ 되며, 이는 다시 `HTMLElement` 인스턴스에 대한 '강한 참조' 를 쥔다는 의미입니다. 둘 사이에 '강한 참조 순환' 을 생성합니다. (클로저의 '값 붙잡기' 에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
 
-> 클로저가 `self` 를 아무리 여러 번 참조하더라도, 이것이 붙잡는 `HTMLElement` 인스턴스에 대한 강한 참조는 단 하나입니다.
+> 클로저가 `self` 를 여러 번 참조할지라도, `HTMLElement` 인스턴스에 대한 '강한 참조' 하나만을 붙잡습니다.
 
-만약 `paragraph` 변수에 `nil` 을 설정하여 `HTMLElement` 인스턴스에 대한 강한 참조를 끊더라도, `HTMLElement` 인스턴스나 클로저나 강한 참조 순환을 이루고 있어서 전혀 해제되지 않습니다:
+`paragraph` 변수를 `nil` 로 설정하여 `HTMLElement` 인스턴스에 대한 '강한 참조' 를 끊는 경우, '강한 참조 순환' 때문에, `HTMLElement` 인스턴스와 클로저 어느 쪽도 해제되지 않습니다:
 
 ```swift
 paragraph = nil
 ```
 
-`HTMLElement` '정리자 (deinitializer)' 에 있는 메시지가 출력되지 않았음에 주목해야 하는데, 이는 `HTMLElement` 인스턴스가 해제되지 않았음을 보여줍니다.
+'`HTMLElement` 정리자' 에 있는 메시지는 인쇄되지 않으며, 이는 `HTMLElement` 인스턴스가 해제되지 않음을 보인다는 것을 기억하기 바랍니다.
 
 ### Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)
 
-클로저와 클래스 인스턴스 사이의 강한 참조 순환을 해결하려면 클로저 정의 부분에 _붙잡을 목록 (capture list)_ 을 정의해야 합니다. 붙잡을 목록은 클로저 본문 내에서 하나 이상의 참조 타입을 붙잡을 때 사용할 규칙을 정의합니다. 두 클래스 인스턴스 사이의 강한 참조 순환에서와 마찬가지로, 붙잡을 각각의 참조를 강한 참조가 아닌 '약한 참조 (weak reference)' 나 '소유되지 않은 참조 (unowned reference)' 로 선언하면 됩니다. 약한 참조나 소유되지 않은 참조를 적절하게 선택하는 것은 서로 다른 코드 간의 관계에 달려있습니다.
+클로저와 클래스 인스턴스 사이의 '강한 참조 순환' 은 클로저의 정의에서 _붙잡을 목록 (capture list)_ 을 정의함으로써 해결합니다. '붙잡을 목록' 은 클로저의 본문에서 하나 이상의 '참조 타입' 을 붙잡을 때 사용할 규칙을 정의합니다. 두 클래스 인스턴스 사이의 '강한 참조 순환' 에서 처럼, 각각의 붙잡을 참조를 '강한 참조' 보다는 '약한 참조' 나 '소유하지 않는 참조' 로 선언합니다. '약한' 또는 '소유하지 않는 참조' 를 적절히 선택하는 것은 다른 코드들 사이의 관계에 달려 있습니다.
 
-> 스위프트에서 클로저에 있는 `self` 의 멤버를 참조할 때는 (`someProperty` 나 `someMethod()` 대신) `self.someProperty` 나 `self.someMethod()` 로 작성하는 것이 필수입니다. 이는 실수로 `self` 를 붙잡을 수도 있음을 상기시켜 줍니다.
+> 스위프트는 클로저 내에서 `self` 의 멤버를 참조할 때마다 (`someProperty` 나 `someMethod()` 보다는) `self.someProperty` 나 `self.someMethod()` 라고 작성하도록 요구합니다. 이는 실수로 `self` 를 붙잡을 가능성이 있음을 떠올리도록 도와줍니다.
 
 #### Defining a Capture List (붙잡을 목록 정의하기)
 
-'붙잡을 목록 (capture list)' 에 있는 각 항목은 `weak` 및 `unowned` 키워드와 클래스 인스턴스에 대한 참조 (가령 `self` 같은 것) 또는 어떤 값으로 초기화된 변수 (가령 `delegate = self.delegate` 같은 것) 를 짝지은 것입니다. 이렇게 짝지어 진 것들을 한 쌍의 대괄호 안에, 쉼표로 구분하여, 작성합니다.
+'붙잡을 목록' 에 있는 각각의 항목은 (`self` 같은) 클래스 인스턴스나 (`delegate = self.delegate` 같은) 값으로 초기화된 변수에 대한 참조를 가진 `weak` 또는 `unowned` 키워드 '쌍 (pairing)' 입니다. 이 쌍들은, 쉼표로 구분된, 한 쌍의 대괄호 안에 작성합니다.
 
-붙잡을 목록을 제공하려면 클로저의 매개 변수 목록과 반환 타입 앞에 붙여주면 됩니다:
+클로저가 매개 변수 목록과 반환 타입을 제공하는 경우 '붙잡을 목록' 을 그 앞에 둡니다:
 
 ```swift
 lazy var someClosure = {
   [unowned self, weak delegate = self.delegate]
   (index: Int, stringToProcess: String) -> String in
-  // 여기부터 클로저 본문입니다.
+  // 클로저 본문은 여기에 둡니다.
 }
 ```
 
-클로저가 영역 문맥으로 추론할 수 있어서 매개 변수나 반환 타입을 지정하지 않아도 될 경우, 붙잡을 목록을 클로저가 시작하는 가장 앞에 붙이고, 그 뒤에 `in` 키워드를 작성합니다:
+클로저가 매개 변수 목록이나 반환 타입을 상황으로 추론할 수 있기 때문에 지정하지 않는 경우, '붙잡을 목록' 을 클로저 맨 앞에 두며, 그 뒤로 `in` 키워드가 따라옵니다:[^capture-list-place]
 
 ```swift
 lazy var someClosure = {
   [unowned self, weak delegate = self.delegate] in
-  // 여기부터 클로저 본문입니다.
+  // 클로저 본문은 여기에 둡니다.
 }
 ```
 
 #### Weak and Unowned References ('약한 참조' 와 '소유하지 않는 참조')
 
-클로저와 자신이 붙잡을 인스턴스가 서로를 항상 참조하면서, 해제도 항상 동시에 되는 것이라면, 클로저에서 '소유되지 않은 참조' 로 붙잡는다고 정의합니다.
+클로저와 그것이 붙잡는 인스턴스가 항상 서로를 참조하며, 항상 동시에 해제될 때는, 클로저가 '소유하지 않는 참조' 로 붙잡는다고 정의합니다.
 
-이와는 대조적으로, 미래의 어느 시점에서 붙잡힌 참조가 `nil` 이 될 수도 있는 경우라면, '약한 참조' 로 붙잡는다고 정의합니다. 약한 참조는 항상 옵셔널 타입이며, 자신이 참조하는 인스턴스가 해제될 때 자동으로 `nil` 이 됩니다. 이는 클로저 본문 내에 자신이 존재하는 지 검사할 수 있게 해줍니다.
+이와 대조적으로, '붙잡은 참조' 가 미래의 어느 시점에 `nil` 이 될 수도 있을 때는 '약한 참조' 로 붙잡는다고 정의합니다. '약한 참조' 는 항상 옵셔널 타입이며, 참조하는 인스턴스가 해제될 때 자동으로 `nil` 이 됩니다. 이는 클로저 본문에서 '존재 (existence)' 를 검사할 수 있게 해줍니다.[^weak-capture-nil]
 
-> 붙잡은 참조가 절대로 `nil` 이 될 일이 없는 경우에는, 약한 참조 대신, 항상 소유되지 않은 참조로 붙잡아야 합니다.
+> '붙잡은 참조' 가 절대로 `nil` 이 되지 않을 거라면, '약한 참조' 보다는, 항상 '소유하지 않는 참조' 로 붙잡는 것이 좋습니다.
 
-위 [Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)](#strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환) 에 있는 `HTMLElement` 예제의 강한 참조 순환을 해결하는 데는 소유되지 않은 참조를 사용하는 것이 붙잡는 방법으로 적절합니다. 다음은 순환을 피하도록 `HTMLElement` 클래스를 작성하는 방법입니다:
+위 [Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)](#strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환) 의 `HTMLElement` 예제에 있는 '강한 참조 순환' 을 해결하는 데 사용하기에는 '소유하지 않는 참조' 가 적절한 방법입니다. 다음은 순환을 피하도록 `HTMLElement` 클래스를 작성하는 방법입니다:
 
 ```swift
 class HTMLElement {
@@ -578,28 +578,32 @@ class HTMLElement {
 }
 ```
 
-이 `HTMLElement` 구현은, `asHTML` 클로저 내에 '붙잡을 목록' 을 추가했다는 것을 빼면, 이전 구현과 모든 점에서 똑같습니다. 이 경우, '붙잡을 목록' 은 `[unowned self]` 이며, 이는 "'self' 를 강한 참조가 아니라 소유되지 않은 참조로 붙잡을 것" 을 의미합니다.
+이 `HTMLElement` 구현은, `asHTML` 클로저에 '붙잡을 목록' 을 추가한 것을 빼면, 이전 구현과 모든 점에서 똑같습니다. 이 경우, '붙잡을 목록' 은, "'강한 참조' 보다는 '소유하지 않는 참조' 로 'self' 를 붙잡을 것" 을 의미하는, `[unowned self]` 입니다.  
 
-이전 처럼 `HTMLElement` 인스턴스를 생성하고 출력할 수 있습니다.
+이전 처럼 `HTMLElement` 인스턴스를 생성하고 출력할 수 있습니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>" 를 출력합니다.
+// "<p>hello, world</p>" 를 인쇄합니다.
 ```
 
-다음은 같은 곳에서 '붙잡을 목록 (capture list)' 를 사용하면 참조 어떻게 보이는 지를 나타낸 것입니다.
+다음은 '붙잡을 목록' 이 제자리에 있을 때의 '참조' 를 보인 것입니다:
 
 ![Resloving of Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-resolved.jpg)
 
-이번에는, 클로저가 `self` 를 소유되지 않은 참조로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 강한 참조를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 출력하는 것에서 볼 수 있듯이, `HTMLElement` 인스턴스가 해제됩니다.
+이번에는, 클로저가 `self` 를 '소유하지 않는 참조' 로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 '강한 참조' 를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 인쇄하는 것으로 볼 수 있는 것처럼, `HTMLElement` 인스턴스를 해제합니다:
 
 ```swift
 paragraph = nil
-// "p is being deinitialized" 를 출력합니다.
+// "p is being deinitialized" 를 인쇄합니다.
 ```
 
-'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록)[^capture-lists] 를 참고하기 바랍니다.
+'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 를 참고하기 바랍니다.
+
+### 다음 장
+
+[Memory Safety (메모리 안전성) > ]({% post_url 2020-04-07-Memory-Safety %})
 
 ### 참고 자료
 
@@ -627,4 +631,8 @@ paragraph = nil
 
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
-[^capture-lists]: 해당 내용은 'Swift Programming Language' 책의 'Language Reference' 부분에 있습니다. 아직 해당 부분의 번역을 진행하지 않아서 일단 원문 링크로 연결해 두었습니다.
+[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
+
+[^capture-list-place]: 사실 본문에 있는 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 '붙잡을 목록' 은 클로저 본문 맨 앞에 둔다고 생각하면 됩니다.
+
+[^weak-capture-nil]: '약한 참조' 가 자동으로 `nil` 이 되므로, 해당 참조가 `nil` 인지를 검사하여 인스턴스가 존재하는지를 클로저 안에서도 확인할 수 있다는 의미입니다.
