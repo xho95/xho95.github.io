@@ -69,11 +69,11 @@ print(myNumber)
 
 '접근의 겹침 (overlapping)' 은 주로 함수와 메소드에서 '입-출력 (in-out) 매개 변수' 를 사용하거나 구조체의 '변경 (mutating) 메소드' 를 사용하는 코드에서 나타납니다. '장기적인 접근' 을 사용하는 특정한 종류의 스위프트 코드는 아래 부분에서 논의합니다.
 
-### Conflicting Access to In-Out Parameters (입-출력 매개 변수에 대한 접근 충돌)
+### Conflicting Access to In-Out Parameters (입-출력 매개 변수에서의 접근 충돌)
 
-함수는 모든 '입-출력 매개 변수 (in-out parameters)' 에 대해서 '장기적인 쓰기 접근' 을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 모든 '비-입-출력 매개 변수 (non-in-out parameters)' 를 평가한 후에 시작하며 해당 함수 호출의 전체 기간 동안 지속됩니다. '입-출력 매개 변수' 가 여러 개 있을 경우, 쓰기 접근은 매개 변수가 있는 순서대로 시작합니다.
+모든 '입-출력 (in-out) 매개 변수'[^in-out-parameters] 에 대해서 함수는 '장기적인 쓰기 접근' 을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 '입-출력이 아닌 (non-in-out)' 모든 매개 변수가 평가된 후에 시작하며 해당 함수 호출의 전체 기간 동안 지속됩니다. 입-출력 매개 변수가 여러 개 있을 경우, 매개 변수가 있는 순서대로 쓰기 접근을 시작합니다.
 
-이러한 장기적인 쓰기 접근으로 인한 한 가지 주요 결과는 입-출력으로 전달된 원본 변수에 접근할 수 없다는 것으로, 심지어 '영역 규칙 (scoping rules)' 과 '접근 제어 (access control)' 가 다른 경우라면 이를 허가할 것이라도 그렇습니다-원본에 대한 어떤 접근도 충돌을 생성합니다.[^original-variable] 예를 들면 다음과 같습니다:
+이러한 '장기적인 쓰기 접근' 으로 인한 한 가지 주요한 결론은, '영역 규칙 (scoping rules)' 과 '접근 제어 (access control)' 가 다른 경우라면 허가 했을 그런 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 것입니다-원본에 대한 어떤 접근도 충돌을 생성합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -86,11 +86,11 @@ increment(&stepSize)
 // 에러: stepSize 에 대한 접근 충돌
 ```
 
-위의 코드에서, `stepSize` 는 전역 변수이고, 보통은 `increment(_:)` 내에서 접근 가능합니다. 하지만, `stepSize` 에 대한 읽기 접근이 `number` 에 대한 쓰기 접근과 겹칩니다. 아래 그림에서 보인 것처럼, `number` 와 `stepSize` 둘 모두 같은 위치의 메모리를 참조합니다. 읽기 접근과 쓰기 접근이 같은 메모리를 참조하고 겹치고 있으므로, 충돌을 만듭니다.
+위 코드에서, `stepSize` 는 전역 변수이며, `increment(_:)` 안에서 보통 접근 가능합니다. 하지만, `stepSize` 에 대한 읽기 접근은 `number` 에 대한 쓰기 접근과 겹칩니다. 아래 그림에서 보인 것처럼, `number` 와 `stepSize` 둘 다 똑같은 메모리 위치를 참조합니다. 읽기 접근과 쓰기 접근이 똑같은 메모리를 참조하며 겹치고 있으므로[^three-rules], 충돌을 만듭니다.
 
 ![in-out parameters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
 
-이 충돌을 풀어내는 한 가지 방법은 `stepSize` 의 명시적인 복사본을 만드는 것입니다:
+이 충돌을 푸는 한 가지 방법은 `stepSize` 의 명시적인 복사본을 만드는 것입니다:
 
 ```swift
 // 명시적인 복사본을 만듭니다.
@@ -218,6 +218,8 @@ func someFunction() {
 
 [^man-page]: '매뉴얼 페이지 (man page)' 는 터미널에서 `man` 명령어를 사용하여 각종 명령어들의 메뉴얼을 나타낸 페이지입니다. 'macOS' 의 터미널에서 `$ man stdatomic` 과 같은 명령을 수행하면 됩니다. 해당 메뉴얼을 보면 '원자적인 연산 (atomic operations)' 앞에는 `atomic_` 이라는 접두사가 붙은 것을 볼 수 있습니다.
 
-[^original-variable]: 여기서 '원본 변수에 접근할 수 없다' 는 말을 그 밑의 예제로 해석하면 `increment` 함수 내에서 `stepSize` 를 사용할 수 없다는 말이됩니다. 즉, 예제에서 잘못된 것은 `number += stepSize` 구문이며, `number` 와 `stepSize` 가 같은 위치의 메모리에 접근하기 때문에 충돌이 발생합니다.
+[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장에 있는 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
+
+[^three-rules]: 이 한 문장은, 앞서 설명한, '충돌이 일어나는 세 가지 조건' 에 모두 해당됨을 나타냅니다. 만약 세 가지 조건 중 하나라도 해당이 안된다면 충돌이 일어나지 않을 것입니다.
 
 [^local-variable]: 전역 변수에 저장할 경우 컴파일러가 이 변수에 대한 접근이 언제 다시 이루어지게 될지 장담할 수 없으므로 에러가 발생하지만, 지역 변수에 저장할 경우 이 변수에 대한 접근이 특정 지역 내로 한정됨을 알 수 있기 때문인 것으로 추측됩니다. 본문의 이어지는 내용에서 이에 대해 좀 더 설명하고 있습니다.
