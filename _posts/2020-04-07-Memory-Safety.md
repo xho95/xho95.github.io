@@ -90,7 +90,7 @@ increment(&stepSize)
 
 ![in-out parameters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
 
-이 충돌을 푸는 한 가지 방법은 `stepSize` 의 명시적인 복사본을 만드는 것입니다:
+이 충돌을 풀어내는 한 가지 방법은 `stepSize` 의 명시적인 복사본을 만드는 것입니다:
 
 ```swift
 // 명시적인 복사본을 만듭니다.
@@ -102,7 +102,7 @@ stepSize = copyOfStepSize
 // stepSize 는 이제 2 입니다.
 ```
 
-`increment(_:)` 의 호출 전에 `stepSize` 의 복사본을 만들 때, `copyOfStepSize` 의 값은 현재 '걸음 크기 (step size)' 만큼 증가한다는 것이 명확해 집니다. 쓰기 접근을 시작하기 전에 읽기 접근이 끝나므로, 충돌은 없습니다.
+`increment(_:)` 를 호출하기 전에 `stepSize` 복사본을 만들 땐, `copyOfStepSize` 의 값이 현재 '걸음 크기 (step size)' 만큼 증가함이 명확합니다. 읽기 접근은 쓰기 접근이 시작하기 전에 끝나므로, 충돌이 없습니다.
 
 입-출력 매개 변수에 대한 '장기적인 쓰기 접근' 의 또다른 주요 결과는 단일 변수를 동일 함수의 '다중 입-출력 매개 변수' 로 전달하는 것은 충돌을 만든다는 것입니다. 예를 들면 다음과 같습니다:
 
