@@ -73,7 +73,7 @@ print(myNumber)
 
 모든 '입-출력 (in-out) 매개 변수'[^in-out-parameters] 에 대해서 함수는 '장기적인 쓰기 접근' 을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 '입-출력이 아닌 (non-in-out)' 모든 매개 변수가 평가된 후에 시작하며 해당 함수 호출의 전체 기간 동안 지속됩니다. 입-출력 매개 변수가 여러 개 있을 경우, 매개 변수가 있는 순서대로 쓰기 접근을 시작합니다.
 
-이러한 '장기적인 쓰기 접근' 으로 인한 한 가지 주요한 결론은, '영역 규칙 (scoping rules)' 과 '접근 제어 (access control)' 가 다른 경우라면 허가 했을 그런 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 것입니다-원본에 대한 어떤 접근도 충돌을 생성합니다. 예를 들면 다음과 같습니다:
+이러한 '장기적인 쓰기 접근' 으로 인한 한 가지 결론은, '영역 규칙 (scoping rules)' 과 '접근 제어 (access control)' 가 다른 경우라면 허가 했을 그런 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 것입니다-원본에 대한 어떤 접근도 충돌을 생성합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -104,7 +104,7 @@ stepSize = copyOfStepSize
 
 `increment(_:)` 를 호출하기 전에 `stepSize` 복사본을 만들 땐, `copyOfStepSize` 의 값이 현재 '걸음 크기 (step size)' 만큼 증가함이 명확합니다. 읽기 접근은 쓰기 접근이 시작하기 전에 끝나므로, 충돌이 없습니다.
 
-입-출력 매개 변수에 대한 '장기적인 쓰기 접근' 의 또다른 주요 결과는 단일 변수를 동일 함수의 '다중 입-출력 매개 변수' 로 전달하는 것은 충돌을 만든다는 것입니다. 예를 들면 다음과 같습니다:
+'입-출력 매개 변수' 에 대한 '장기적인 쓰기 접근' 의 또다른 결론은 동일한 함수의 여러 '입-출력 매개 변수' 로 단일 변수를 전달하는 것은 충돌을 만든다는 것입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func balance(_ x: inout Int, _ y: inout Int) {
@@ -114,8 +114,8 @@ func balance(_ x: inout Int, _ y: inout Int) {
 }
 var playerOneScore = 42
 var playerTwoScore = 30
-balance(&playerOneScore, &playerTwoScore)   // OK, 괜찮습니다.
-balance(&playerOneScore, &playerOneScore)   // Error: playerOneScore 에 대한 접근이 충돌합니다.
+balance(&playerOneScore, &playerTwoScore)   // 됩니다.
+balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한 접근이 충돌함
 ```
 
 위에 있는 `balance(_:_:)` 함수는 두 매개 변수의 값을 총합하여 공평하게 나눈 값으로 수정합니다. 인자가 `playerOneScore` 와 `playerTwoScore` 일 때의 호출은 충돌을 만들지 않습니다-시간이 겹치는 쓰기 접근이 두 개 있지만, 서로 다른 위치의 메모리에 접근합니다. 이와 대조적으로, 두 매개 변수 둘 모두에 `playerOneScore` 를 값으로 전달하는 것은 충돌을 만들게 되는데 왜냐면 두 개의 쓰기 접근이 동시에 같은 위치의 메모리에 접근하려고 시도하기 때문입니다.
