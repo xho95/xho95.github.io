@@ -118,7 +118,7 @@ balance(&playerOneScore, &playerTwoScore)   // 됩니다.
 balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한 접근이 충돌함
 ```
 
-위에 있는 `balance(_:_:)` 함수는 두 매개 변수의 값을 총합하여 공평하게 나눈 값으로 수정합니다. 인자가 `playerOneScore` 와 `playerTwoScore` 일 때의 호출은 충돌을 만들지 않습니다-시간이 겹치는 쓰기 접근이 두 개 있지만, 서로 다른 위치의 메모리에 접근합니다. 이와 대조적으로, 두 매개 변수 둘 모두에 `playerOneScore` 를 값으로 전달하는 것은 충돌을 만들게 되는데 왜냐면 두 개의 쓰기 접근이 동시에 같은 위치의 메모리에 접근하려고 시도하기 때문입니다.
+위의 `balance(_:_:)` 함수는 두 매개 변수를 이들의 총합을 공평하게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 를 가지고 호출하는 것은 충돌을 만들지 않습니다-두 쓰기 접근의 시간이 겹치지만, 서로 다른 메모리 위치에 접근합니다. 이와 대조적으로, `playerOneScore` 를 두 매개 변수의 값으로 전달하는 것은 동시에 똑같은 메모리 위치에 두 개의 쓰기 접근을 하려고 하기 때문에 충돌을 만듭니다.
 
 > 연산자도 함수이기 때문에, 이들도 입-출력 매개 변수에 대해서 장기적인 접근을 합니다. 예를 들어, 만약 `balance(_:_:)` 가 `<^>` 라는 이름의 연산자 함수라면, `playerOneScore <^> playerOneScore` 라고 작성하는 것은 `balance(& playerOneScore, & playerOneScore)` 와 똑같은 충돌로 귀결됩니다.
 
