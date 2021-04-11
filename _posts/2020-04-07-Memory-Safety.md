@@ -71,9 +71,9 @@ print(myNumber)
 
 ### Conflicting Access to In-Out Parameters (입-출력 매개 변수에서의 접근 충돌)
 
-모든 '입-출력 (in-out) 매개 변수'[^in-out-parameters] 에 대해서 함수는 '장기적인 쓰기 접근' 을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 '입-출력이 아닌 (non-in-out)' 모든 매개 변수가 평가된 후에 시작하며 해당 함수 호출의 전체 기간 동안 지속됩니다. 입-출력 매개 변수가 여러 개 있을 경우, 매개 변수가 있는 순서대로 쓰기 접근을 시작합니다.
+모든 '입-출력 매개 변수'[^in-out-parameters] 에 대해서 함수는 '장기적인 쓰기 접근' 을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 '입-출력이 아닌 (non-in-out)' 모든 매개 변수가 평가된 후에 시작하며 해당 함수 호출의 전체 기간 동안 지속됩니다. 입-출력 매개 변수가 여러 개 있을 경우, 매개 변수가 있는 순서대로 쓰기 접근을 시작합니다.
 
-이러한 '장기적인 쓰기 접근' 으로 인한 한 가지 주요한 결론은, '영역 규칙 (scoping rules)' 과 '접근 제어 (access control)' 가 다른 경우라면 허가 했을 그런 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 것입니다-원본에 대한 어떤 접근도 충돌을 생성합니다. 예를 들면 다음과 같습니다:
+이러한 '장기적인 쓰기 접근' 으로 인한 한 가지 결론은, '영역 규칙 (scoping rules)' 과 '접근 제어 (access control)' 가 다른 경우라면 허가 했을 그런 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 것입니다-원본에 대한 어떤 접근도 충돌을 생성합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -90,7 +90,7 @@ increment(&stepSize)
 
 ![in-out parameters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
 
-이 충돌을 푸는 한 가지 방법은 `stepSize` 의 명시적인 복사본을 만드는 것입니다:
+이 충돌을 풀어내는 한 가지 방법은 `stepSize` 의 명시적인 복사본을 만드는 것입니다:
 
 ```swift
 // 명시적인 복사본을 만듭니다.
@@ -102,9 +102,9 @@ stepSize = copyOfStepSize
 // stepSize 는 이제 2 입니다.
 ```
 
-`increment(_:)` 의 호출 전에 `stepSize` 의 복사본을 만들 때, `copyOfStepSize` 의 값은 현재 '걸음 크기 (step size)' 만큼 증가한다는 것이 명확해 집니다. 쓰기 접근을 시작하기 전에 읽기 접근이 끝나므로, 충돌은 없습니다.
+`increment(_:)` 를 호출하기 전에 `stepSize` 복사본을 만들 땐, `copyOfStepSize` 의 값이 현재 '걸음 크기 (step size)' 만큼 증가함이 명확합니다. 읽기 접근은 쓰기 접근이 시작하기 전에 끝나므로, 충돌이 없습니다.
 
-입-출력 매개 변수에 대한 '장기적인 쓰기 접근' 의 또다른 주요 결과는 단일 변수를 동일 함수의 '다중 입-출력 매개 변수' 로 전달하는 것은 충돌을 만든다는 것입니다. 예를 들면 다음과 같습니다:
+'입-출력 매개 변수' 에 대한 '장기적인 쓰기 접근' 의 또다른 결론은 동일한 함수의 여러 '입-출력 매개 변수' 로 단일 변수를 전달하는 것은 충돌을 만든다는 것입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func balance(_ x: inout Int, _ y: inout Int) {
@@ -114,17 +114,17 @@ func balance(_ x: inout Int, _ y: inout Int) {
 }
 var playerOneScore = 42
 var playerTwoScore = 30
-balance(&playerOneScore, &playerTwoScore)   // OK, 괜찮습니다.
-balance(&playerOneScore, &playerOneScore)   // Error: playerOneScore 에 대한 접근이 충돌합니다.
+balance(&playerOneScore, &playerTwoScore)   // 됩니다.
+balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한 접근이 충돌함
 ```
 
-위에 있는 `balance(_:_:)` 함수는 두 매개 변수의 값을 총합하여 공평하게 나눈 값으로 수정합니다. 인자가 `playerOneScore` 와 `playerTwoScore` 일 때의 호출은 충돌을 만들지 않습니다-시간이 겹치는 쓰기 접근이 두 개 있지만, 서로 다른 위치의 메모리에 접근합니다. 이와 대조적으로, 두 매개 변수 둘 모두에 `playerOneScore` 를 값으로 전달하는 것은 충돌을 만들게 되는데 왜냐면 두 개의 쓰기 접근이 동시에 같은 위치의 메모리에 접근하려고 시도하기 때문입니다.
+위의 `balance(_:_:)` 함수는 두 매개 변수를 이들의 총합을 공평하게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 를 가지고 호출하는 것은 충돌을 만들지 않습니다-두 쓰기 접근의 시간이 겹치지만, 서로 다른 메모리 위치에 접근합니다. 이와 대조적으로, `playerOneScore` 를 두 매개 변수의 값으로 전달하는 것은 동시에 똑같은 메모리 위치에 두 개의 쓰기 접근을 하려고 하기 때문에 충돌을 만듭니다.
 
-> 연산자도 함수이기 때문에, 이들도 입-출력 매개 변수에 대해서 장기적인 접근을 합니다. 예를 들어, 만약 `balance(_:_:)` 가 `<^>` 라는 이름의 연산자 함수라면, `playerOneScore <^> playerOneScore` 라고 작성하는 것은 `balance(& playerOneScore, & playerOneScore)` 와 똑같은 충돌로 귀결됩니다.
+> 연산자도 함수이기 때문에, 이들도 입-출력 매개 변수에 대해 '장기적인 접근' 을 합니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 이름의 '연산자 함수' 였다면, `playerOneScore <^> playerOneScore` 라고 작성하는 것은 `balance(&playerOneScore, &playerOneScore)` 라는 것과 똑같은 충돌이 되버립니다.
 
-### Conflicting Access to self in Methods (메소드에서 self 에 대한 접근 충돌)
+### Conflicting Access to self in Methods (메소드에서 'self' 에 대한 접근 충돌)
 
-구조체에 대한 '변경 (mutating) 메소드' 는 메소드 호출의 지속 시간 동안에 `self` 에 대하여 쓰기 접근을 합니다. 예를 들어, 각각의 참여자가, 피해를 받을 때 감소하는, '체력 량' 과, 특수한 능력을 사용할 때 감소하는, '에너지 양' 를 가지고 있는 게임을 고려해 봅시다.
+구조체에 대한 '변경 메소드'[^mutating-methods] 는 메소드 호출이 지속되는 시간 동안 `self` 에 대한 '쓰기 접근' 을 합니다. 예를 들어, 각각의 참여자가, 피해를 받을 때 감소하는, '체력 량' 과, 특수한 능력을 사용할 때 감소하는, '에너지 양' 를 가지고 있는 게임을 고려해 봅시다.
 
 ```swift
 struct Player {
@@ -221,5 +221,7 @@ func someFunction() {
 [^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장에 있는 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
 [^three-rules]: 이 한 문장은, 앞서 설명한, '충돌이 일어나는 세 가지 조건' 에 모두 해당됨을 나타냅니다. 만약 세 가지 조건 중 하나라도 해당이 안된다면 충돌이 일어나지 않을 것입니다.
+
+[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장에 있는 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
 
 [^local-variable]: 전역 변수에 저장할 경우 컴파일러가 이 변수에 대한 접근이 언제 다시 이루어지게 될지 장담할 수 없으므로 에러가 발생하지만, 지역 변수에 저장할 경우 이 변수에 대한 접근이 특정 지역 내로 한정됨을 알 수 있기 때문인 것으로 추측됩니다. 본문의 이어지는 내용에서 이에 대해 좀 더 설명하고 있습니다.
