@@ -124,7 +124,7 @@ balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한
 
 ### Conflicting Access to self in Methods (메소드에서 'self' 에 대한 접근 충돌)
 
-구조체에 대한 '변경 메소드'[^mutating-methods] 는 메소드 호출이 지속되는 시간 동안 `self` 에 대한 '쓰기 접근' 을 합니다. 예를 들어, 각각의 참여자가, 피해를 받을 때 감소하는, '체력 량' 과, 특수한 능력을 사용할 때 감소하는, '에너지 양' 를 가지고 있는 게임을 고려해 봅시다.
+구조체에 대한 '변경 메소드'[^mutating-methods] 는 메소드 호출이 지속되는 시간 동안 `self` 에 대한 '쓰기 접근' 을 합니다. 예를 들어, 각각의 참여자가, 피해를 받으면 감소하는, '체력 량' 과, 특수한 능력을 사용하면 감소하는, '에너지 양' 를 가지는 게임을 고려합니다.
 
 ```swift
 struct Player {
@@ -139,7 +139,7 @@ struct Player {
 }
 ```
 
-위의 `restoreHealth()` 메소드에서, `self` 에 대한 쓰기 접근은 메소드 최초부터 시작해서 메소드 반환 때까지 지속됩니다. 이번 경우, `restoreHealth()` 내에 `Player` 인스턴스의 속성과 접근이 겹칠 수도 있는 코드는 아무 것도 없습니다. 아래의 `shareHealth(with:)` 메소드는 다른 `Player` 인스턴스를 입-출력 매개 변수로 받기 때문에, 접근이 겹칠 가능성이 생깁니다.
+위의 `restoreHealth()` 메소드에서, `self` 에 대한 쓰기 접근은 메소드 맨 앞에서 시작하며 메소드를 반환할 때까지 지속됩니다. 이 경우엔, `restoreHealth()` 안에 `Player` 인스턴스의 속성과 접근이 겹칠 수도 있는 코드가 없습니다. 아래의 `shareHealth(with:)` 메소드는 입-출력 매개 변수로 또 다른 `Player` 인스턴스를 취하므로, 접근이 겹칠 가능성이 생깁니다.
 
 ```swift
 extension Player {
