@@ -206,6 +206,10 @@ func someFunction() {
 
 컴파일러가 접근이 안전하다는 것을 증명하지 못하면, 접근을 허용하지 않습니다.
 
+### 다음 장
+
+[Access Control (접근 제어) > ]({% post_url 2020-04-28-Access-Control %})
+
 ### 참고 자료
 
 [^Memory-Safety]: 이 글에 대한 원문은 [Memory Safety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html) 에서 확인할 수 있습니다.
