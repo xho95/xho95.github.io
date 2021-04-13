@@ -170,12 +170,12 @@ oscar.shareHealth(with: &oscar)
 
 ### Conflicting Access to Properties (속성에 대한 접근 충돌)
 
-구조체, 튜플, 그리고 열거체 같은 타입은, 구조체의 속성 또는 튜플의 원소와 같이, 개별 '구성 요소 (constituent)' 값들로 이루어져 있습니다. 이들은 '값 타입' 이기 때문에, 값의 어떤 부분을 변경하는 것이든 전체 값을 변경하는 것으로, 이는 속성 하나에 대한 읽기나 쓰기 접근은 전체 값에 대한 읽기나 쓰기 접근을 필수로 요구한다는 의미입니다. 예를 들어, 튜플의 원소에 대해서 쓰기 접근이 겹치면 충돌이 발생합니다:
+구조체, 튜플, 그리고 열거체 같은 타입은, 구조체의 속성이나 튜플의 원소 같은, '개별 구성 요소 (constituent) 값' 으로 이루어집니다. 이들은 '값 타입' 이기 때문에, 값에서 어떤 부분을 변경하면 전체 값이 변경되며, 하나의 속성에 대한 읽기나 쓰기 접근은 전체 값에 대한 읽기나 쓰기 접근을 요구함을 의미합니다. 예를 들어, 튜플 원소에 대한 쓰기 접근이 겹치면 충돌을 만들어 집니다:
 
 ```swift
 var playerInformation = (health: 10, energy: 20)
 balance(&playerInformation.health, &playerInformation.energy)
-// 에러: playerInformation 에 대한 접근이 충돌합니다.
+// 에러: playerInformation 의 속성에 대한 접근 충돌
 ```
 
 위의 예제에서, 튜플의 원소에 대해서 `balance(_:_:)` 를 호출하는 것은 충돌을 만드는데 이는 `playerInformation` 에 대한 쓰기 접근이 겹치기 때문입니다. `playerInformation.health` 와 `playerInformation.energy` 둘 모두를 입-출력 매개 변수로 전달하는데, 이는 `balance(_:_:)` 가 함수 호출이 지속되는 동안에 이들에 대하여 쓰기 접근을 해야 함을 의미합니다. 두 경우 모두에서, 튜플 원소에 대한 쓰기 접근은 전체 튜플에 대한 쓰기 접근을 필수로 요구합니다. 이는 `playerInformation` 에 대하여 지속 시간이 겹치는, 즉 충돌을 야기하는, 두 개의 쓰기 접근이 있다는 것을 의미합니다.
