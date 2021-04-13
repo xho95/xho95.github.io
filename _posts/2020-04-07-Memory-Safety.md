@@ -157,14 +157,14 @@ oscar.shareHealth(with: &maria)   // 괜찮습니다.
 
 ![access different locations in memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-different-memory.jpg)
 
-하지만, `oscar` 를 `shareHealth(with:)` 의 인자로 전달하면, 충돌입니다:
+하지만, `shareHealth(with:)` 의 인자로 `oscar` 를 전달하면, 이는 충돌입니다:
 
 ```swift
 oscar.shareHealth(with: &oscar)
 // 에러: oscar 에 대한 접근 충돌
 ```
 
-변경 메소드는 메소드의 지속 시간 동안에 `self` 에 대한 쓰기 접근을 할 필요가 있고, 입-출력 매개 변수는 동일한 지속 시간 동안에 `teammate` 에 대한 쓰기 접근을 할 필요가 있습니다. 메소드 내에서, `self` 와 `teammate` 둘 모두는-아래 그림에 보인 것처럼-같은 위치의 메모리를 참조합니다. 두 개의 쓰기 접근이 같은 메모리를 참조하며 겹치고 있으므로, 충돌을 만듭니다.
+'변경 메소드' 는 메소드 지속 시간 동안 '`self` 에 쓰기 접근' 할 필요가 있고, '입-출력 매개 변수' 는 똑같은 지속 시간 동안 '`teammate` 에 쓰기 접근' 할 필요가 있습니다. 메소드 안에서, `self` 와 `teammate` 는-아래 그림에 보인 것처럼-둘 다 똑같은 메모리 위치를 참조합니다. 두 '쓰기 접근' 이 똑같은 메모리를 참조하면서 서로 겹치므로, 충돌을 만듭니다.
 
 ![access the same memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-same-memory.jpg)
 
