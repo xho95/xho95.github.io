@@ -139,7 +139,7 @@ struct Player {
 }
 ```
 
-위의 `restoreHealth()` 메소드에서, `self` 에 대한 쓰기 접근은 메소드 맨 앞에서 시작하며 메소드를 반환할 때까지 지속됩니다. 이 경우엔, `restoreHealth()` 안에 `Player` 인스턴스의 속성과 접근이 겹칠 수도 있는 코드가 없습니다. 아래의 `shareHealth(with:)` 메소드는 입-출력 매개 변수로 또 다른 `Player` 인스턴스를 취하므로, 접근이 겹칠 가능성이 생깁니다.
+위의 `restoreHealth()` 메소드에서, `self` 에 대한 쓰기 접근은 메소드 맨 앞에서 시작하여 메소드 반환 때까지 지속됩니다. 이 경우엔, `Player` 인스턴스의 속성과 접근이 겹칠 수 있는 코드가 `restoreHealth()` 안에는 없습니다. 아래의 `shareHealth(with:)` 메소드는 입-출력 매개 변수로 또 다른 `Player` 인스턴스를 취하므로, 접근이 겹칠 가능성이 생깁니다.
 
 ```swift
 extension Player {
@@ -150,18 +150,18 @@ extension Player {
 
 var oscar = Player(name: "Oscar", health: 10, energy: 10)
 var maria = Player(name: "Maria", health: 5, energy: 10)
-oscar.shareHealth(with: &maria)   // OK. 괜찮습니다.
+oscar.shareHealth(with: &maria)   // 괜찮습니다.
 ```
 
-위의 예제에서, 'Maria' 의 참여자와 체력을 공유하기 위햬 'Oscar' 의 참여자에 대한 `shareHealth(with:)` 메소드를 호출하는 것은 충돌을 야기하지 않습니다. 메소드 호출 동안 `oscar` 에 대한 쓰기 접근을 하는데 이는 `oscar` 가 '변경 메소드' 에 있는 `self` 의 값이기 때문이며, 동일 지속 시간에 `maria` 에 대한 쓰기 접근도 하는데 이는 `maria` 가 입-출력 매개 변수로 전달되었기 때문입니다. 아래 그림에서 보인 것처럼, 이들은 서로 다른 위치의 메모리에 접근합니다. 두 개의 쓰기 접근이 시간이 겹친다고 하더라도, 충돌하지는 않습니다.
+위의 예제에서, 'Maria' 와 체력을 공유하기 위햬 'Oscar' 의 `shareHealth(with:)` 메소드를 호출하는 것은 충돌을 유발하지 않습니다. `oscar` 가 '변경 메소드' 에 있는 `self` 의 값이기 때문에 메소드 호출 동안 '`oscar` 에 대한 쓰기 접근' 을 하며, `maria` 를 '입-출력 매개 변수' 로 전달했기 때문에 똑같은 지속 시간 동안에 '`maria` 에 대한 쓰기 접근' 도 합니다. 아래 그림에 보인 것처럼, 이들은 다른 메모리 위치에 접근합니다. 두 쓰기 접근은 시간이 겹칠지라도, 충돌은 하지 않습니다.
 
 ![access different locations in memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-different-memory.jpg)
 
-하지만, `oscar` 를 `shareHealth(with:)` 의 인자로 전달하면, 이는 충돌입니다:
+하지만, `oscar` 를 `shareHealth(with:)` 의 인자로 전달하면, 충돌입니다:
 
 ```swift
 oscar.shareHealth(with: &oscar)
-// 에러: oscar 에 대한 접근이 충돌합니다.
+// 에러: oscar 에 대한 접근 충돌
 ```
 
 변경 메소드는 메소드의 지속 시간 동안에 `self` 에 대한 쓰기 접근을 할 필요가 있고, 입-출력 매개 변수는 동일한 지속 시간 동안에 `teammate` 에 대한 쓰기 접근을 할 필요가 있습니다. 메소드 내에서, `self` 와 `teammate` 둘 모두는-아래 그림에 보인 것처럼-같은 위치의 메모리를 참조합니다. 두 개의 쓰기 접근이 같은 메모리를 참조하며 겹치고 있으므로, 충돌을 만듭니다.
