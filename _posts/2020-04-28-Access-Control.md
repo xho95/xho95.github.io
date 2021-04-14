@@ -6,13 +6,11 @@ date:   2020-04-28 10:00:00 +0900
 categories: Swift Language Grammar Access Control
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Access Control](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html) 부분[^Access-Control]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Access Control](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html) 부분[^Access-Control]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Access Control (접근 제어)
 
-_접근 제어 (Access Control)_ 는 다른 소스 파일과 모듈에 있는 코드가 자기 코드의 특정 부분에 접근하는 것을 제한합니다. 이러한 특징은 자기 코드의 세부 구현은 숨기면서도, 그 코드에 접근해서 사용할 수 있는 적합한 인터페이스를 지정할 수 있게 해줍니다.
+_접근 제어 (Access Control)_ 는 다른 소스 파일과 모듈에 있는 코드가 이 코드에 접근하는 것을 제약합니다. 이러한 특징은 코드의 세부 구현은 숨기면서, 해당 코드에 접근해서 사용할 수 있는 바람직한 인터페이스를 지정할 수 있도록 해줍니다.
 
 특정 접근 수준을 할당하는 것은 개별 타입 (클래스, 구조체, 및 열거체) 에 대해서 뿐만 아니라, 해당 타입에 속해 있는 속성, 메소드, 초기자, 그리고 '첨자 연산' 에 대해서도 할 수 있습니다. 프토토콜은 전역 상수, 전역 변수, 그리고 전역 함수에서 그럴 수 있듯이, 정해진 영역으로 제한될 수 있습니다.
 
