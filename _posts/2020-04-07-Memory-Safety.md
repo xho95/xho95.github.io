@@ -180,14 +180,14 @@ balance(&playerInformation.health, &playerInformation.energy)
 
 위 예제에서, 튜플 원소에 대해 `balance(_:_:)` 를 호출하면 `playerInformation` 에 대한 쓰기 접근이 겹치기 때문에 충돌을 만듭니다. `playerInformation.health` 와 `playerInformation.energy` 둘 다 '입-출력 매개 변수' 로 전달하는데, 이는 함수 호출의 지속 시간 동안 `balance(_:_:)` 가 이들에 대한 쓰기 접근을 할 필요가 있다는 의미입니다. 두 경우 모두, '튜플 원소에 대한 쓰기 접근' 은 '전체 튜플에 대한 쓰기 접근' 을 요구합니다. 이는 `playerInformation` 에 대한 두 쓰기 접근이 지속 시간 동안 서로 겹쳐서, 충돌을 유발한다는 것을, 의미합니다.
 
-아래 코드는 '전역 (global) 변수' 에 저장된 구조체도 그 속성에 대한 쓰기 접근이 겹치면 똑같은 에러가 나타남을 보여줍니다.
+아래 코드는 '전역 변수' 에 저장한 구조체의 속성에 대한 쓰기 접근이 겹쳐도 똑같은 에러가 나타난다는 것을 보여줍니다.
 
 ```swift
 var holly = Player(name: "Holly", health: 10, energy: 10)
 balance(&holly.health, &holly.energy)   // 에러
 ```
 
-사실, 구조체의 속성에 대한 대부분의 접근은 안전하게 겹칠 수 있습니다. 예를 들어, 만약 위 예제에서 `holly` 변수를 전역 변수 대신 '지역 (local) 변수' 로 바꾸면, 구조체의 '저장 속성' 에 대한 접근이 겹치는 것이 안전함을 컴파일러가 증명할 수 있습니다:[^local-variable]
+실제로, 구조체 속성에 대한 대부분의 접근은 안전하게 겹칠 수 있습니다. 예를 들어, 위 예제에 있는 변수 `holly` 를 전역 변수 대신 '지역 변수' 로 바꾸면, 컴파일러가 구조체 '저장 속성' 에 대한 접근이 안전하게 겹쳐진다는 것을 증명할 수 있습니다:[^local-variable]
 
 ```swift
 func someFunction() {
