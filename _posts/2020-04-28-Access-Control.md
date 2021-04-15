@@ -58,11 +58,11 @@ _소스 파일 (source file)_ 은 모듈 안에 있는 단일한 스위프트 �
 
 #### Access Levels for Single-Target Apps (단일-대상 앱을 위한 접근 수준)
 
-단순한 '단일-대상 앱 (single-target app)' 을 작성할 때는, 앱 코드는 일반적으로 앱 내부로만 한정되므로 앱 모듈 외부에서 사용할 수 있게끔 만들 필요가 없습니다. 기본 접근 수준은 이러한 요구 사항에 이미 해당됩니다. 그러므로, 접근 수준을 따로 지정할 필요가 없는 것입니다. 하지만, 코드 일부를 'file private (파일 전용)' 이나 'private (개인 전용)' 으로 표시하면 앱 모듈 내의 다른 코드로부터 세부 구현 정보를 숨길 수도 있습니다.
+간단한 '단일-대상 (single-target) 앱' 을 작성할 때, 앱의 코드는 앱 안에 '독립된' 것이 전형적이며, 앱 모듈 밖에서 사용 가능하게 할 필요가 없습니다. '내부 (internal)' 라는 '기본 접근 수준' 은 이미 이 필수 조건과 일치합니다. 그러므로, 따로 접근 수준을 지정할 필요가 없습니다. 하지만, 앱 모듈 내의 다른 코드로 부터 세부 구현을 숨기기 위해서 코드 일부를 '파일 전용 (file private)' 이나 '개인 전용 (private)' 으로 표시할 수도 있습니다.
 
 #### Access Levels for Frameworks (프레임웍을 위한 접근 수준)
 
-프레임웍을 개발할 때는, 그 프레임웍의 공용-목적의 인터페이스를 'open (공개)' 나 '공용 (public)' 으로 표시해서 다른 모듈, 가령 그 프레임웍을 불러온 앱 같은 것 등에서 볼 수 있고 접근할 수 있도록 해야합니다. 이러한 공용-목적의 인터페이스를 그 프레임웍에 대한 응용 프로그래밍 인터페이스 (또는 API; Application Programming Interface) 라고 합니다.
+'프레임웍' 을 개발할 때, 해당 프레임웍에서 '공용을-향한 인터페이스' 를 '공개 (open)' 나 '공용 (public)' 으로 표시하여야, 프레임웍을 불러온 앱 같은, 다른 모듈이 보고 접근할 수 있습니다. 이런 '공용을-향한 인터페이스' 가 프레임웍의 '응용 프로그래밍 인터페이스 (또는 API[^API])' 입니다.
 
 > 프레임웍의 어떤 'internal (내부)' 세부 구현이라도 기본 접근 수준인 'internal (내부)' 를 그대로 사용할 수도 있고, 프레임웍의 다른 일부 'internal (내부)' 코드로부터 숨길 목적으로 'private (개인 전용)' 이나 'file private (파일 전용)' 으로 표시할 수도 있습니다. 엔티티를 'open (공개)' 나 'public (공용)' 으로 표시하는 것은 오직 그것이 프레임웍의 'API' 일부가 될 경우에만 하도록 합니다.
 
@@ -361,7 +361,7 @@ extension SomeStruct: SomeProtocol {
 
 [^Access-Control]: 이 글에 대한 원문은 [Access Control](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+[^API]: API 는 'Application Programming Interface' 의 약자입니다.
 
 [^the-most-restrictive]: 본문의 설명에 따르면 '가장 제한된 접근 수준' 은 '가장 낮은 접근' 수준을 의미합니다. 스위프트의 접근 수준을 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
 
