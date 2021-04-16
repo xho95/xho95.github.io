@@ -70,9 +70,9 @@ _소스 파일 (source file)_ 은 모듈 안에 있는 단일한 스위프트 �
 
 '단위 테스트 대상' 을 가진 앱을 작성할 때, 테스트를 위해서는 해당 모듈에서 앱의 코드를 사용 가능하도록 만들 필요가 있습니다. 기본적으로는, '공개 (open)' 나 '공용 (public)' 으로 표시한 '개체' 만 다른 모듈에서 접근 가능합니다. 하지만, '단위 테스트 대상' 은, 제품 모듈에 대한 '불러오기 (import) 선언' 을 '`@testable` 특성 (attribute)' 으로 표시하고 해당 제품을 '테스트 가능 (test enabled)' 하도록 컴파일한 경우라면, 어떤 '내부 (internal) 개체' 든 접근할 수 있습니다.
 
-### Access Control Syntax (접근 제어 구문 표현)
+### Access Control Syntax (접근 제어 구문)
 
-'엔티티' 에 대한 접근 수준을 정의하려면 엔티티 선언의 시작 부분에 `open`, `public`, `internal`, `fileprivate`, 또는 `private` 수정자 중 하나를 붙이면 됩니다.
+'개체' 의 '접근 수준' 은 '개체' 선언의 맨 앞에 `open`, `public`, `internal`, `fileprivate`, 또는 `private` 수정자를 붙임으로써 정의합니다.
 
 ```swift
 public class SomePublicClass {}
@@ -86,11 +86,16 @@ fileprivate func someFilePrivateFunction() {}
 private func somePrivateFunction() {}
 ```
 
-따로 지정하지 않는다면, 기본 접근 수준은 'internal (내부)' 이며, 이는 [Default Access Levels (기본 접근 수준)](#default-access-levels-기본-접근-수준) 에서 설명한 바 있습니다. 이것은 `SomeInternalClass` 와 `someInternalConstant` 에는 명시적인 '접근-수준 수정자 (access-level modifier)' 를 쓰지 않아도 되며, 그래도 여전히 'internal (내부)' 접근 수준을 가진다는 것을 의미합니다.
+따로 지정하지 않으면, [Default Access Levels (기본 접근 수준)](#default-access-levels-기본-접근-수준) 에서 설명한 것처럼, 기본 접근 수준이 '내부 (internal)' 입니다. 이는 `SomeInternalClass` 와 `someInternalConstant` 는 '명시적인 접근-수준 수정자 (modifier)' 없이 작성해도 되며, 그래도 여전히 '내부 (internal)' 라는 접근 수준을 가진다는 의미입니다.
+
+```swift
+class SomeInternalClass {}        // 암시적인 내부
+let someInternalConstant = 0      // 암시적인 내부
+```
 
 ### Custom Types (사용자 정의 타입)
 
-직접 정의한 '사용자 정의 타입' 에 대해서 접근 수준을 명시적으로 지정하고 싶으면, 타입을 정의하는 시점에 이를 하도록 합니다. 그러면 이제 접근 수준이 허용되는 곳에서 이 새로운 타입을 사용할 수 있습니다. 예를 들어, 'file-private (파일-전용)' 클래스를 정의하면, 이 'file-private (파일-전용)' 클래스를 정의한 소스 파일 내에서만, 속성의 타입이나, 함수의 매개 변수 또는 반환 값으로 사용할 수 있습니다.
+'사용자 정의 타입' 에 명시적인 접근 수준을 지정하고 싶으면, 타입을 정의하는 시점에 그렇게 합니다. 그러면 새로운 타입을 접근 수준이 허가하는 어디서나 사용할 수 있습니다. 예를 들어, '파일-전용 (file-private) 클래스' 를 정의하면, 해당 클래스는 '파일-전용 클래스' 를 정의한 소스 파일에 있는, 속성의 타입, 또는 함수 매개 변수나 반환 타입으로만 사용할 수 있습니다.
 
 타입의 접근 제어 수준은 그 타입 _멤버 (members)_ (속성, 메소드, 초기자, 그리고 첨자 연산) 의 기본 접근 수준에도 영향을 줍니다. 타입의 접근 수준을 'private (개인 전용)' 이나 'file private (파일 전용)' 으로 정의하면, 멤버의 기본 접근 수준도 'private (개인 전용)' 이나 'file private (파일 전용)' 이 됩니다. 타입의 접근 수준을 'internal (내부)' 나 'public (공용)' 으로 정의하면 (아니면 접근 수준을 명시적으로 지정하지 않고 기본 접근 수준인 'internal (내부)' 를 사용할 경우), 타입 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
 
