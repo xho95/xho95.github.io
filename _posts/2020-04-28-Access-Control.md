@@ -127,9 +127,9 @@ private class SomePrivateClass {                // 명시적인 개인 전용 �
 
 #### Tuple Types (튜플 타입)
 
-튜플 타입의 접근 수준은 해당 튜플에서 사용하는 모든 타입 중 '가장 제한된 접근 수준 (the most restrictive access level)'[^the-most-restrictive] 이 됩니다. 예를 들어, 두 개의 서로 다른 타입을 가지는 튜플을 구성할 때, 하나는 'internal (내부)' 접근이고 하나는 'private (개인 전용)' 접근이면, 이렇게 구성된 튜플의 접근 수준은 'private (개인 전용)' 이 됩니다.
+튜플 타입의 접근 수준은 해당 튜플에서 사용한 모든 타입 중 '최대로 제약된 (most restrictive) 접근 수준'[^the-most-restrictive] 입니다. 예를 들어, 하나는 '내부 (internal) 접근' 이고 하나는 '개인 전용 (private) 접근' 인, 두 개의 서로 다른 타입을 튜플로 합성하면, 해당 '복합 튜플 타입' 의 접근 수준은 '개인 전용 (private)' 이 될 것입니다.
 
-> 튜플 타입에는 클래스, 구조체, 열거체, 그리고 함수와 같은 방식의 독립된 정의가 없습니다. 튜플 타입의 접근 수준은 튜플 타입을 구성하는 타입들에 의해 자동으로 결정되는 것으로, 따로 명시적으로 지정할 수는 없습니다.
+> 튜플 타입은 클래스, 구조체, 열거체, 그리고 함수가 하는 것 같은 방식의 '독립적인 정의' 를 가지지 않습니다. 튜플 타입의 접근 수준은 튜플 타입을 이루는 타입들에 의해 자동으로 결정되며, 명시적으로 지정할 순 없습니다.
 
 #### Function Types (함수 타입)
 
@@ -368,7 +368,7 @@ extension SomeStruct: SomeProtocol {
 
 [^API]: API 는 'Application Programming Interface' 의 약자입니다.
 
-[^the-most-restrictive]: 본문의 설명에 따르면 '가장 제한된 접근 수준' 은 '가장 낮은 접근' 수준을 의미합니다. 스위프트의 접근 수준을 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
+[^the-most-restrictive]: [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, '최대로 제약한 접근 수준' 은 '가장 낮은 접근 수준' 입니다. 스위프트의 접근 수준을 높은 순서로 나열하면 '공개 (open)' >= '공용 (public)' > '내부 (internal)' > '파일-전용 (file-private)' > '개인 전용 (private)' 입니다.
 
 [^function-access-level]: '함수가 계산한 접근 수준' 과 '해당 영역의 기본적인 의미' 가 같아야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. 즉, 함수의 접근 수준을 계산해보니 'private' 일 때는, 반드시 함수의 정의에 'private' 을 써줘야 한다는 것 입니다. 그렇게 하지 않으면, '함수가 계산한 접근 수준 (private)' 과 '해당 영역의 기본적인 의미 (internal)' 가 다르므로, 컴파일이 안되게 됩니다.
 
