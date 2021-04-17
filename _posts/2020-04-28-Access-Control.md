@@ -172,11 +172,11 @@ public enum CompassPoint {
 
 **Raw Values and Associated Values ('원시 값' 과 '결합 값')**
 
-열거체 정의에 있는 '원시 값 (raw values)' 이나 '결합 값 (associated values)'[^raw-values-and-associated-values] 에서 사용되는 타입은 어떤 것이든 적어도 열거체의 접근 수준보다는 높아야 합니다. 예를 들어, 접근 수준이 'internal (내부)' 인 열거체의 '원시-값 (raw-value)' 타입으로 'private (개인 전용)' 타입을 사용할 수는 없습니다.
+열거체 정의에서 '원시 값 (raw values)' 이나 '결합 값 (associated values)'[^raw-values-and-associated-values] 으로 사용된 어떤 타입이든 적어도 열거체의 접근 수준 만큼은 높아야 합니다. 예를 들어, '내부 (internal) 접근 수준' 을 가진 열거체의 '원시-값 타입' 으로 '개인 전용 (private) 타입' 을 사용할 수 없습니다.
 
 #### Nested Types (중첩 타입)
 
-'중첩 타입 (nested types)' 의 접근 수준은, 그것을 '가지고 있는 타입 (containing type)' 이 'public (공용)' 이 아닌 한, '가지고 있는 타입' 과 같습니다. 'public (공용)' 타입 에서 정의한 '중첩 타입' 은 자동적으로 'internal (내부)' 접근 수준을 가집니다. 'public (공용)' 타입에 있는 '중첩 타입' 을 '공용' 으로 사용하고 싶으면, 반드시 그 '중첩 타입' 을 'public (공용)' 이라고 명시적으로 선언해야 합니다.
+'중첩 타입' 의 접근 수준은, 자신을 '담은 (containing) 타입' 이 '공용 (public)' 이 아니라면, 자신을 '담은 타입' 과 똑같습니다. '공용 타입' 안에서 정의한 '중첩 타입' 은 자동으로 '내부' 라는 접근 수준을 가집니다. '공용 타입' 안의 '중첩 타입' 을 공용으로 사용하고 싶으면, 반드시 명시적으로 '중첩 타입' 이 '공용' 이라고 선언해야 합니다.
 
 ### Subclassing (하위 클래스)
 
