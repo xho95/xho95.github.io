@@ -157,9 +157,9 @@ private func someFunction() -> (SomeInternalClass, SomePrivateClass) {
 
 #### Enumeration Types (열거체 타입)
 
-열거체의 각 'case 값' 들은 자동으로 이들이 속해 있는 열거체와 같은 접근 수준을 가지게 됩니다. 열거체의 각각의 'case 값' 에 대해 서로 다른 접근 수준을 지정할 수는 없습니다.
+열거체의 '개별 case 값' 은 자신이 속한 열거체와 똑같은 접근 수준을 자동으로 부여 받습니다. 개별 '열거체 case 값' 마다 서로 다른 접근 수준을 지정할 수 없습니다.
 
-아래의 예제에서, `CompassPoint` 열거체는 명시적인 접근 수준으로 'public (공용)' 을 가집니다. 그러므로 열거체의 'case 값' 들인 `north`, `south`, `east`, 그리고 `west` 형의 접근 수준도 역시 'public (공용)' 을 가지게 됩니다:
+아래 예제에서, `CompassPoint` 열거체는 '공용 (public)' 이라는 '명시적인 접근 수준' 을 가집니다. '열거체 case 값' 인 `north`, `south`, `east`, 그리고 `west` 도 따라서 '공용 (public)' 이라는 접근 수준을 가집니다:
 
 ```swift
 public enum CompassPoint {
