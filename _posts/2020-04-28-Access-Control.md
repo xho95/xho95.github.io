@@ -258,9 +258,9 @@ print("The number of edits is \(stringToEdit.numberOfEdits)")
 // "The number of edit is 3" 를 인쇄합니다.
 ```
 
-비록 다른 소스 파일에서도 `numberOfEdits` 속성의 현재 값을 조회할 수는 있겠지만, 다른 소스 파일에서 그 속성을 _수정하는 (modify)_ 것은 불가능합니다. 이러한 제한은 `TrackedString` 의 추적-편집 기능에 대한 세부 구현을 보호하면서도, 여전히 그 기능 부분에 대한 편리한 접근 방법을 제공하도록 해줍니다.
+비록 다른 소스 파일에 있는 `numberOfEdits` 속성의 현재 값을 조회할 순 있을지라도, 다른 소스 파일에 있는 속성을 _수정 (modify)_ 할 수는 없습니다. 이 제약은, 여전히 해당 기능에 대한 편리한 접근을 제공하면서도, `TrackedString` 편집-추적 기능의 세부 구현을 보호합니다.
 
-필요하다면 '획득자 (getter)' 와 '설정자 (setter)' 모두에 대해 명시적인 접근 수준을 할당할 수 있음에 주목하기 바랍니다. 아래 예제는 구조체를 명시적으로 'public (공용)' 접근 수준으로 정의한 `TrackedString` 구조체를 보여줍니다. (`numberOfEdits` 속성을 포함한) 구조체의 멤버들은 그러므로 기본적으로 'internal (내부)' 접근 수준을 가지게 됩니다.[^internal-by-default] 구조체의 `numberOfEdits` 속성에서, `public` 과 `private(set)` 수정자 (modifiers) 를 결합하면, '획득자 (getter)' 는 'public (공용)' 으로 하면서 '설정자 (setter)' 는 'private (개인 전용)' 으로 만들 수 있습니다:
+필요하다면 '획득자' 와 '설정자' 둘 다에 대해 '명시적인 접근 수준' 을 할당할 수 있다는 것을 기억하기 바랍니다. 아래 예제는 '공용 (public)' 이라는 명시적인 접근 수준을 가지는 `TrackedString` 구조체 버전을 보여줍니다. 그럼으로써 (`numberOfEdits` 속성을 포함한) 구조체 멤버들은 기본적으로 '내부 (internal) 접근 수준' 을 가집니다.[^internal-by-default] '`public`' 과 '`private(set)` 접근-수준 수정자' 를 조합[^combining-public-private-set]함으로써, 구조체에 있는 `numberOfEdits` 속성의 '획득자' 는 '공용 (public)' 으로, 속성의 '설정자' 는 '개인 전용 (private)' 으로 만들 수 있습니다:
 
 ```swift
 public struct TrackedString {
@@ -382,7 +382,9 @@ extension SomeStruct: SomeProtocol {
 
 [^more-public]: '더 공개 (public) 일 수 없다' 는 것은, '더 높은 접근 수준을 가질 수 없다' 는 의미입니다. 일단 어떤 속성을 '공개 (public)' 하고 싶으면 반드시 해당 속성을 가진 타입도 '공개 (public)' 해야 한다고 이해할 수 있습니다. '더 높은 접근 수준' 이라는 단어 대신 '공개 (public)' 라는 단어를 선택한 것에도 의미가 있다고 생각됩니다.
 
-[^internal-by-default]: 문서의 앞 부분인 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스의 접근 수준을 'public (공용)' 으로 정의하면 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
+[^internal-by-default]: [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스를 '공용 (public) 접근 수준' 으로 정의하면 멤버의 기본 접근 수준은 '내부 (internal)' 가 됩니다.
+
+[^combining-public-private-set]: 본문에서 처럼, `public private(set)` 이라는 수정자도 가능합니다. 이는 '획득자' 와 '설정자' 를 가지는 '속성' 에만 유효한 것으로 추측됩니다.
 
 [^at-most-the-same]: 이 접근 수준은 '함수' 와 같은 규칙에 해당합니다. 즉, '한 프로토콜 (상속하는 프로토콜)' 은 '그 구성 요소 (상속을 해주는 프로토콜)' 보다 더 높은 접근 수준을 가질 수 없다고 이해할 수 있습니다.
 
