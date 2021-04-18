@@ -224,9 +224,9 @@ private var privateInstance = SomePrivateClass()
 
 #### Getters and Setters ('획득자' 와 '설정자')
 
-상수, 변수, 속성, 및 첨자 연산을 위한 '획득자 (getters)' 와 '설정자 (setters)' 는 자동으로 그것이 속해 있는 상수, 변수, 속성, 또는 첨자 연산과 동일한 접근 수준을 부여 받게 됩니다.
+상수, 변수, 속성, 또는 첨자 연산을 위한 '획득자 (getters)' 와 '설정자 (setters)' 는 자신이 속한 상수, 변수, 속성, 또는 첨자 연산과 똑같은 접근 수준을 자동으로 부여 받습니다.
 
-'설정자 (setter)' 에는 연관되어 있는 '획득자 (getter)' 보다 더 _낮은 (lower)_ 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역의 범위를 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
+'설정자' 는, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역 범위를 제약하기 위해, 자신과 연관된 '획득자' 보다 _더 낮은 (lower)_ 접근 수준을 부여할 수 있습니다. '더 낮은 접근 수준' 은 '`var`' 또는 '`subscript` 도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 작성함으로써 할당합니다.
 
 > 이 규칙은 '계산 속성 (computed properties)' 뿐만 아니라 '저장 속성 (stored properties)' 에도 적용됩니다. '저장 속성' 에 대해서 '획득자 (getter) 와 설정자 (setter)' 를 직접 명시적으로 작성하지 않더라도, 여전히 스위프트는 '저장 속성' 의 뒤쪽 저장 공간에 접근하도록 하는 암시적인 '획득자 (getter) 와 설정자 (setter)' 를 만들어서 통합합니다. '계산 속성' 의 명시적 '설정자 (setter)' 와 동일한 방법을 써서 `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '합성된 설정자 (synthesized setter)' 의 접근 수준을 바꿀 수 있습니다.
 
