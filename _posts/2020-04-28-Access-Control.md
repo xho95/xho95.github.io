@@ -228,9 +228,9 @@ private var privateInstance = SomePrivateClass()
 
 '설정자' 는, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역 범위를 제약하기 위해, 자신과 연관된 '획득자' 보다 _더 낮은 (lower)_ 접근 수준을 부여할 수 있습니다. '더 낮은 접근 수준' 은 '`var`' 또는 '`subscript` 도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 작성함으로써 할당합니다.
 
-> 이 규칙은 '계산 속성 (computed properties)' 뿐만 아니라 '저장 속성 (stored properties)' 에도 적용됩니다. '저장 속성' 에 대해서 '획득자 (getter) 와 설정자 (setter)' 를 직접 명시적으로 작성하지 않더라도, 여전히 스위프트는 '저장 속성' 의 뒤쪽 저장 공간에 접근하도록 하는 암시적인 '획득자 (getter) 와 설정자 (setter)' 를 만들어서 통합합니다. '계산 속성' 의 명시적 '설정자 (setter)' 와 동일한 방법을 써서 `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '합성된 설정자 (synthesized setter)' 의 접근 수준을 바꿀 수 있습니다.
+> 이 규칙은 '계산 속성' 뿐만 아니라 '저장 속성' 에도 적용됩니다. '저장 속성' 을 위한 '명시적인 획득자' 와 '설정자' 를 작성하진 않을지라도, 스위프트는 '저장 속성' 의 '백업 저장 공간' 에 대한 접근을 제공하기 위해 여전히 '암시적인 획득자' 와 '설정자' 를 만들고 통합합니다. `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '통합된 설정자' 의 접근 수준을 '계산 속성' 의 '명시적인 설정자' 와 정확하게 똑같은 방식으로 바꾸게 됩니다.
 
-아래 예제는 `TrackedString` 이라는 구조체를 정의해서, 문자열 속성이 수정된 횟수를 계속 추적합니다:
+아래 예제는, 문자열 속성이 수정된 횟수를 추적하는, `TrackedString` 이라는 구조체를 정의합니다:
 
 ```swift
 struct TrackedString {
@@ -243,11 +243,11 @@ struct TrackedString {
 }
 ```
 
-`TrackedString` 구조체는 '문자열 저장 속성' 인 `value` 를 정의하고, 기본 값은 `""` (빈 문자열) 로 둡니다. 이 구조체는 `numberOfEdits` 라는 '정수 저장 속성' 도 정의하여, `value` 가 수정된 횟수를 추적하는데 사용합니다. 이 '수정 추적 기능' 은 `value` 속성의 `didSet` '속성 관찰자 (property observer)' 를 써서 구현했으며, `value` 속성에 새 값을 설정할 때마다 `numberOfEdits` 를 증가하도록 합니다.
+`TrackedString` 구조체는, 초기 값이 `""` (빈 문자열) 인, `value` 라는 '문자열 저장 속성' 을 정의합니다. 구조체는, `value` 를 수정한 횟수를 추적하는데 사용하는, `numberOfEdits` 라는 '정수 저장 속성' 도 정의합니다. 이 '수정 추적' 기능은, `value` 속성에 새 값이 설정될 때마다 `numberOfEdits` 를 증가하는, `value` 속성의 '`didSet` 속성 관찰자 (property observer)'[^property-observer] 로 구현합니다.
 
-`TrackedString` 구조체와 `value` 속성은 명시적인 '접근-수준 수정자 (access-level modifier)' 를 제공하지 않으므로, 둘 다 기본 접근 수준인 `internal` 을 부여 받습니다. 하지만, `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시해서 속성의 '획득자 (getter)' 가 여전히 기본 접근 수준인 'internal (내부)' 임에도 불구하고, `TrackedString` 구조체 코드의 일부에서는 속성을 설정할 수 있도록 했습니다. 이것은 `TrackedString` 이 `numberOfEdits` 속성을 내부에서는 수정할 수 있게 하면서도, 이 속성이 구조체 정의 외부에서 사용될 때는 '읽기-전용' 임을 나타내도록 해 줍니다.
+`TrackedString` 구조체와 `value` 속성은 '명시적인 접근-수준 수정자 (modifier)' 를 제공하지 않으므로, 둘 다 '내부 (internal)' 라는 기본 접근 수준을 부여 받습니다. 하지만, 속성의 '획득자' 는 여전히 '내부 (internal)' 라는 기본 접근 수준을 가지지만, `TrackedString` 구조체 안의 코드만 속성을 설정할 수 있음을 지시하기 위해 `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시합니다. 이는 `TrackedString` 이 내부적으로는 `numberOfEdits` 속성을 수정하도록 하지만, 구조체 정의 밖에서 사용할 때는 속성을 '읽기-전용 속성' 으로 나타날 수 있게 해줍니다.
 
-`TrackedString` 인스턴스를 생성하고나서 그 문자열 값을 몇 번 수정하면, `numberOfEdits` 속성 값이 수정된 횟수 만큼 갱신되는 것을 볼 수 있습니다:
+`TrackedString` 인스턴스를 생성해서 문자열 값을 몇 번 수정하면, `numberOfEdits` 속성 값이 수정 횟수와 일치하도록 갱신되는 것을 볼 수 있습니다:
 
 ```swift
 var stringToEdit = TrackedString()
@@ -255,7 +255,7 @@ stringToEdit.value = "This string will be tracked."
 stringToEdit.value += " This edit will increment numberOfEdits."
 stringToEdit.value += " So will this one."
 print("The number of edits is \(stringToEdit.numberOfEdits)")
-// "The number of edit is 3" 를 출력합니다.
+// "The number of edit is 3" 를 인쇄합니다.
 ```
 
 비록 다른 소스 파일에서도 `numberOfEdits` 속성의 현재 값을 조회할 수는 있겠지만, 다른 소스 파일에서 그 속성을 _수정하는 (modify)_ 것은 불가능합니다. 이러한 제한은 `TrackedString` 의 추적-편집 기능에 대한 세부 구현을 보호하면서도, 여전히 그 기능 부분에 대한 편리한 접근 방법을 제공하도록 해줍니다.
@@ -377,6 +377,8 @@ extension SomeStruct: SomeProtocol {
 [^higher]: [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, 스위프트의 접근 수준은 '공개 (open)' 가 가장 높고, '개인 전용 (private)' 이 가장 낮습니다.
 
 [^subclassing]: 여기서 알 수 있는 것은 '클래스의 접근 수준' 과 '클래스 멤버의 접근 수준' 은 서로 독립적으로 작동한다는 것입니다. 
+
+[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
 
 [^more-public]: '더 공개 (public) 일 수 없다' 는 것은, '더 높은 접근 수준을 가질 수 없다' 는 의미입니다. 일단 어떤 속성을 '공개 (public)' 하고 싶으면 반드시 해당 속성을 가진 타입도 '공개 (public)' 해야 한다고 이해할 수 있습니다. '더 높은 접근 수준' 이라는 단어 대신 '공개 (public)' 라는 단어를 선택한 것에도 의미가 있다고 생각됩니다.
 
