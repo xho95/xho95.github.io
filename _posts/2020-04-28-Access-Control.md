@@ -276,15 +276,15 @@ public struct TrackedString {
 
 ### Initializers (초기자)
 
-직접 만든 초기자에는 초기화하려는 타입보다 같거나 더 낮은 수준의 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 '필수 초기자 (required initializers)' 입니다. ([Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에서 정의한 바와 같습니다.) '필수 초기자' 는 자신이 속해 있는 클래스와 같은 접근 수준을 가져야 합니다.
+'사용자 정의 초기자' 는 초기화하는 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 ([Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에서 정의한) '필수 초기자' 입니다. '필수 초기자' 는 반드시 자신이 속한 클래스와 똑같은 접근 수준을 가져야 합니다.
 
-'함수 매개 변수' 및 '메소드 매개 변수' 처럼, 초기자의 매개 변수 타입도 초기자가 가지고 있는 접근 수준보다 더 '개인적 (private)' 일 수 없습니다.
+함수 매개 변수와 메소드 매개 변수에서 처럼, 초기자의 매개 변수 타입은 초기자 자신의 접근 수준보다 더 '개인 전용 (private)' 일 수 없습니다.
 
 #### Default Initializers (기본 초기자)
 
-[Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 어떤 구조체나 '기초 클래스 (base class)' 가 모든 속성에 대한 '기본 값' 을 제공하면서도 스스로는 단 하나의 초기자도 제공하지 않을 경우 '_기본 초기자 (default initializer)_' 를 제공합니다.
+[Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 모든 속성에 대한 '기본 값' 을 제공하면서 스스로는 단 하나의 초기자도 제공하지 않는 어떤 구조체나 '기초 클래스' 에든 _기본 초기자 (default initializer)_ 를 제공합니다.
 
-'기본 설정 초기자' 는, 해당 타입이 `public` 으로 정의되어 있는 경우를 제외하면, 자기가 초기화하는 타입과 같은 접근 수준을 가집니다. 타입이 `public` 으로 정의된 경우에는, '기본 설정 초기자' 가 'internal (내부)' 인 것으로 여겨집니다. 다른 모듈에서 'public (공용)' 타입을 '인자가 없는 (no-argument)' 초기자로 초기화할 수 있게 만들고 싶으면, 타입을 정의하면서 반드시 'public no-argument initializer (공용의 인자-없는 초기자)' 를 명시적으로 제공해야 합니다.
+'기본 초기자' 는, 해당 타입을 `public` 으로 정의하지 않는 한, 자신이 초기화하는 타입과 똑같은 접근 수준을 가집니다. `public` 으로 정의한 타입은, '기본 초기자' 를 '내부 (internal)' 라고 고려합니다. 다른 모듈에서 사용할 때 '공용 (public) 타입' 을 '인자-없는 초기자' 로 초기화 가능하게 만들고 싶으면, 타입 정의에서 '공용인 인자-없는 초기자' 를 반드시 직접 명시적으로 제공해야 합니다.
 
 #### Default Memberwise Initializers for Structure Types (구조체 타입을 위한 기본 멤버 초기자)
 
