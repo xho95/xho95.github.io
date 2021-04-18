@@ -304,7 +304,7 @@ public struct TrackedString {
 
 기존 프로토콜을 상속하여 새로운 프로토콜을 정의할 경우, 새 프로토콜은 자신이 상속한 프로토콜과 똑같은 접근 수준을 최대로 가질 수 있습니다.[^at-most-the-same] 예를 들어, '내부 (internal) 프로토콜' 을 상속하여 '공용 (public) 프로토콜' 을 작성할 수 없습니다.
 
-#### Protocol Conformance (프로토콜 준수)
+#### Protocol Conformance (프로토콜 준수성)
 
 타입은 타입 그 자체보다 더 낮은 접근 수준으로 프로토콜을 준수[^conform-to-a-protocol]할 수 있습니다. 예를 들어, 다른 모듈에서 사용할 수 있는 'public (공용)' 타입을 정의하면서, 'internal (내부)' 프로토콜을 정의하는 모듈 내에서만 사용할 수 있는 'internal (내부)' 프로토콜을 준수할 수도 있습니다.
 
