@@ -212,11 +212,11 @@ internal class B: A {
 
 상위 클래스 `A` 와 하위 클래스 `B` 를 동일 소스 파일에서 정의하기 때문에, `B` 에서 구현한 `someMethod()` 가 `super.someMethod()` 를 호출하는 것은 유효합니다.
 
-### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 및 첨자 연산)
+### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 그리고 첨자 연산)
 
-상수, 변수, 또는 속성은 그것의 타입보다 더 'public (공개적)' 일 수 없습니다.[^more-public] 예를 들면, 'private (개인 전용)' 타입을 가지고 'public (공용)' 속성을 만드는 것은 유효하지 않습니다. 이와 비슷하게, '첨자 연산 (subscript)' 도 그것의 색인 타입이나 반환 타입 그 어느 것보다 더 'public (공개적)' 일 수 없습니다.
+상수, 변수, 또는 속성은 자신의 타입보다 더 '공개 (public)' 적일 수 없습니다.[^more-public] 예를 들어, '개인 전용 (private) 타입' 을 가진 '공용 (public) 속성' 을 작성하는 것은 유효하지 않습니다. 이와 비슷하게, 첨자 연산은 자신의 '색인 타입' 이나 '반환 타입' 보다 더 '공개 (public)' 적일 수 없습니다.
 
-상수, 변수, 속성, 또는 첨자 연산을 'private (개인 전용)' 타입으로 만들었을 경우, 그 상수, 변수, 속성, 또는 첨자 연산에는 반드시 `private` 을 표시해야 합니다:
+상수, 변수, 속성, 또는 첨자 연산이 '개인 전용 타입' 을 사용할 경우, 그 상수, 변수, 속성, 또는 첨자 연산도 반드시 `private` 이라고 표시해야 합니다:
 
 ```swift
 private var privateInstance = SomePrivateClass()
@@ -378,7 +378,7 @@ extension SomeStruct: SomeProtocol {
 
 [^subclassing]: 여기서 알 수 있는 것은 '클래스의 접근 수준' 과 '클래스 멤버의 접근 수준' 은 서로 독립적으로 작동한다는 것입니다. 
 
-[^more-public]: 여기서 '더 공개적 (more public)' 이라는 말은, '접근 수준 (access level)' 이 더 높은 것을 말합니다. 스위프트의 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. '상수나 변수가 타입보다 더 공개적일 수 없다' 는 말은 `let a: Int = 0` 에서 `a` 의 접근 수준이 `Int` 의 접근 수준보다 더 공개적일 수 없다-더 높은 접근 수준을 가질 수 없다-는 것을 의미합니다.
+[^more-public]: '더 공개 (public) 일 수 없다' 는 것은, '더 높은 접근 수준을 가질 수 없다' 는 의미입니다. 일단 어떤 속성을 '공개 (public)' 하고 싶으면 반드시 해당 속성을 가진 타입도 '공개 (public)' 해야 한다고 이해할 수 있습니다. '더 높은 접근 수준' 이라는 단어 대신 '공개 (public)' 라는 단어를 선택한 것에도 의미가 있다고 생각됩니다.
 
 [^internal-by-default]: 문서의 앞 부분인 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스의 접근 수준을 'public (공용)' 으로 정의하면 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
 
