@@ -184,7 +184,7 @@ public enum CompassPoint {
 
 이에 더하여, 동일 모듈에서 정의한 클래스들은, 정해진 접근 상황에서 보이는 (메소드, 속성, 초기자, 또는 첨자 연산 같은) 어떤 클래스 멤버든 '재정의 (override)' 할 수 있습니다. 또 다른 모듈에서 정의한 클래스는, 어떤 '공개 (open) 클래스 멤버' 든 '재정의' 할 수 있습니다.
 
-'재정의' 를 하면 상속된 클래스 멤버를 상위 클래스 버전에서 보다 더 접근하기 쉽게 만들 수 있습니다. 아래 예제에 있는, 클래스 `A` 는 'public (공용)' 클래스로 `someMethod()` 라는 'file-private (파일-전용)' 메소드를 가지고 있습니다. 클래스 `B` 는 `A` 의 하위 클래스이며, 접근 수준은 감소해서 "internal (내부)" 입니다. 그럼에도 불구하고, 클래스 `B` 는 `someMethod()` 의 접근 수준을 "internal (내부)" 인 것으로 '재정의' 했는데, 이는 `someMethod()` 의 원래 구현보다 _높은 (higher)_[^higher] 것입니다:
+'재정의' 는 상속한 클래스 멤버의 접근 가능성을 상위 클래스 버전에서 보다 더 높일 수있습니다. 아래 예제에서, 클래스 `A` 는 `someMethod()` 라는 '파일-전용 (file-private) 메소드' 를 가진 '공용 (public) 클래스' 입니다. 클래스 `B` 는, "내부 (internal)" 라는 '감소한 접근 수준' 을 가진, `A` 의 하위 클래스입니다. 그럼에도 불구하고, 클래스 `B` 는, `someMethod()` 의 원본 구현보다 _더 높은 (higher)_[^higher], "내부 (internal)" 라는 접근 수준을 가진 `someMethod()` 의 재정의 버전을 제공합니다:[^subclassing]
 
 ```swift
 public class A {
@@ -196,7 +196,7 @@ internal class B: A {
 }
 ```
 
-하위 클래스 멤버가 하위 클래스 멤버보다 더 낮은 접근 권한을 가지는 상위 클래스의 멤버를 호출하는 것도 가능한데, 이는 상위 클래스 멤버에 대한 호출이 허용된 접근 수준 영역 내에서 이루어질 때 가능한 것입니다. (다시 말해서, 동일한 소스 파일 내에서 상위 클래스의 'file-private (파일-전용)' 멤버를 호출하는 것, 또는 동일한 모듈 내에서 상위 클래스의 'internal (내부)' 멤버를 호출하는 것, 등이 가능합니다):
+상위 클래스 멤버에 대한 호출이 (즉, 상위 클래스와 동일한 소스 파일에서 '파일-전용' 멤버를 호출하거나, 상위 클래스와 동일한 모듈에서 '내부' 멤버를 호출하는 것 처럼) 허용된 접근 수준 상황에서 일어나는 한, 하위 클래스 멤버가 심지어 하위 클래스 멤버보다 더 낮은 접근 수준 권한을 가진 상위 클래스 멤버를 호출하는 것도 유효합니다:
 
 ```swift
 public class A {
@@ -210,7 +210,7 @@ internal class B: A {
 }
 ```
 
-상위 클래스인 `A` 와 하위 클래스인 `B` 가 동일한 소스 파일에서 정의되었기 때문에, `someMethod()` 의 `B` 구현부에서 `super.someMethod()` 를 호출하는 것은 유효합니다.
+상위 클래스 `A` 와 하위 클래스 `B` 를 동일 소스 파일에서 정의하기 때문에, `B` 에서 구현한 `someMethod()` 가 `super.someMethod()` 를 호출하는 것은 유효합니다.
 
 ### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 및 첨자 연산)
 
@@ -374,7 +374,9 @@ extension SomeStruct: SomeProtocol {
 
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
 
-[^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
+[^higher]: [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, 스위프트의 접근 수준은 '공개 (open)' 가 가장 높고, '개인 전용 (private)' 이 가장 낮습니다.
+
+[^subclassing]: 여기서 알 수 있는 것은 '클래스의 접근 수준' 과 '클래스 멤버의 접근 수준' 은 서로 독립적으로 작동한다는 것입니다. 
 
 [^more-public]: 여기서 '더 공개적 (more public)' 이라는 말은, '접근 수준 (access level)' 이 더 높은 것을 말합니다. 스위프트의 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. '상수나 변수가 타입보다 더 공개적일 수 없다' 는 말은 `let a: Int = 0` 에서 `a` 의 접근 수준이 `Int` 의 접근 수준보다 더 공개적일 수 없다-더 높은 접근 수준을 가질 수 없다-는 것을 의미합니다.
 
