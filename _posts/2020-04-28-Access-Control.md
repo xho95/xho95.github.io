@@ -129,37 +129,37 @@ private class SomePrivateClass {                // 명시적인 개인 전용 �
 
 튜플 타입의 접근 수준은 해당 튜플에서 사용한 모든 타입 중 '최대로 제약된 (most restrictive) 접근 수준'[^the-most-restrictive] 입니다. 예를 들어, 하나는 '내부 (internal) 접근' 이고 하나는 '개인 전용 (private) 접근' 인, 두 개의 서로 다른 타입을 튜플로 합성하면, 해당 '복합 튜플 타입' 의 접근 수준은 '개인 전용 (private)' 이 될 것입니다.
 
-> 튜플 타입은 클래스, 구조체, 열거체, 그리고 함수가 하는 것 같은 방식의 '독립적인 정의' 를 가지지 않습니다. 튜플 타입의 접근 수준은 튜플 타입을 이루는 타입들에 의해 자동으로 결정되며, 명시적으로 지정할 순 없습니다.
+> 튜플 타입은 클래스, 구조체, 열거체, 그리고 함수가 하는 방식의 '독립적인 정의' 를 가지지 않습니다. 튜플 타입의 접근 수준은 튜플 타입을 이루는 타입들에 의해 자동으로 결정되며, 명시적으로 지정할 순 없습니다.
 
 #### Function Types (함수 타입)
 
-함수 타입의 접근 수준은 함수의 매개 변수 타입과 반환 타입 중 '가장 제한된 접근 수준' 으로 계산됩니다. 함수가 계산한 접근 수준이 해당 영역의 기본적인 의미에 들어맞지 않을 경우 그 접근 수준을 함수의 정의 부분에서 명시적으로 지정해야 합니다.[^function-access-level]
+함수 타입의 접근 수준은 함수의 매개 변수 타입과 반환 타입 중에서 '최대로 제약된 접근 수준' 이라고 계산합니다. 함수가 계산한 접근 수준이 기본적인 상황과 일치하지 않을 경우 함수 정의에서 명시적으로 접근 수준을 지정해야 합니다.[^function-access-level]
 
-아래 예제는 `someFunction()` 이라는 전역 함수를 정의하면서, 함수 자체에 대한 특정한 접근-수준 '수정자 (modifier)' 를 제공하지 않습니다. 이 함수의 기본 접근 수준이 "internal (내부)" 일 것이라고 예상하겠지만, 그렇지 않습니다. 실제로, `someFunction()` 을 아래와 같이 작성하면 컴파일이 되지 않습니다:
+아래 예제는, 함수 스스로 특정 '접근-수준 수정자 (modifier)' 를 제공하지 않으면서, `someFunction()` 이라는 전역 함수를 정의합니다. 이 함수가 "내부 (internal)" 라는 기본 접근 수준을 가진다고 예상했겠지만, 그렇지 않습니다. 사실상, 아래 처럼 작성한 `someFunction()` 은 컴파일이 안 될 것입니다:
 
 ```swift
 func someFunction() -> (SomeInternalClass, SomePrivateClass) {
-  // 여기서 함수를 구현합니다.
+  // 함수 구현은 여기에 둡니다.
 }
 ```
 
-함수의 반환 타입은 앞서 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 정의한 사용자 정의 클래스 중 두 개를 써서 구성한 튜플 타입입니다. 이 클래스 중 하나는 'internal (내부)' 로 정의되었고, 다른 것은 'private (개인 전용)' 으로 정의되었습니다. 그러므로, 복합 튜플 타입의 전체 접근 수준은 'private (개인 전용)' 입니다. (튜플의 구성 요소 타입들 중에서 최소 접근 수준입니다.)
+함수의 반환 타입은 위의 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 정의한 두 사용자 정의 클래스를 합성한 '튜플 타입' 입니다. 이 클래스 중 하나는 '내부 (internal)' 라고 정의하고, 다른 건 '개인 전용 (private)' 이라고 정의합니다. 그러므로, '복합 튜플 타입' 의 '전체적인 접근 수준' 은 (튜플의 구성 요소 타입들 중 '최소 접근 수준' 인) '개인 전용' 입니다.
 
-함수의 반환 타입이 'private (개인 전용)' 이기 때문이, 반드시 함수의 전체 접근 수준을 `private` 수정자로 표시해야 함수 선언이 유효해 집니다:
+함수의 반환 타입이 '개인 전용' 이기 때문에, 함수 선언이 유효하려면 함수의 전체적인 접근 수준을 `private` 수정자로 반드시 표시해야 합니다:
 
 ```swift
 private func someFunction() -> (SomeInternalClass, SomePrivateClass) {
-  // 여기서 함수를 구현합니다.
+  // 함수 구현은 여기에 둡니다.
 }
 ```
 
-`someFunction()` 의 정의에서 `public` (공용) 또는 `internal` (내부) 수정자로 표시하는 것, 또는 기본 설정인 'internal (내부)' 를 사용하는 것은 유효하지 않는데, 이는 이 함수의 '공용 (public)' 또는 '내부 (internal)' 사용자가 함수의 반환 타입에 있는 '개인 전용 (private)' 클래스에 접근하는 것은 적절하지 않을 수 있기 때문입니다.
+`someFunction()` 정의를 `public` 또는 `internal` 수정자로 표시하거나, '내부 (internal)' 라는 기본 설정을 사용하는 것은 유효하지 않은데, 함수의 '공용' 또는 '내부 사용자' 가 함수 반환 타입의 '개인 전용 클래스' 에 접근하는 것이 적절하지 않을 수 있기 때문입니다.
 
 #### Enumeration Types (열거체 타입)
 
-열거체의 각 'case 값' 들은 자동으로 이들이 속해 있는 열거체와 같은 접근 수준을 가지게 됩니다. 열거체의 각각의 'case 값' 에 대해 서로 다른 접근 수준을 지정할 수는 없습니다.
+열거체의 '개별 case 값' 은 자신이 속한 열거체와 똑같은 접근 수준을 자동으로 부여 받습니다. 개별 '열거체 case 값' 마다 서로 다른 접근 수준을 지정할 수 없습니다.
 
-아래의 예제에서, `CompassPoint` 열거체는 명시적인 접근 수준으로 'public (공용)' 을 가집니다. 그러므로 열거체의 'case 값' 들인 `north`, `south`, `east`, 그리고 `west` 형의 접근 수준도 역시 'public (공용)' 을 가지게 됩니다:
+아래 예제에서, `CompassPoint` 열거체는 '공용 (public)' 이라는 '명시적인 접근 수준' 을 가집니다. '열거체 case 값' 인 `north`, `south`, `east`, 그리고 `west` 도 따라서 '공용 (public)' 이라는 접근 수준을 가집니다:
 
 ```swift
 public enum CompassPoint {
@@ -172,19 +172,19 @@ public enum CompassPoint {
 
 **Raw Values and Associated Values ('원시 값' 과 '결합 값')**
 
-열거체 정의에 있는 '원시 값 (raw values)' 이나 '결합 값 (associated values)'[^raw-values-and-associated-values] 에서 사용되는 타입은 어떤 것이든 적어도 열거체의 접근 수준보다는 높아야 합니다. 예를 들어, 접근 수준이 'internal (내부)' 인 열거체의 '원시-값 (raw-value)' 타입으로 'private (개인 전용)' 타입을 사용할 수는 없습니다.
+열거체 정의에서 '원시 값 (raw values)' 이나 '결합 값 (associated values)'[^raw-values-and-associated-values] 으로 사용된 어떤 타입이든 적어도 열거체의 접근 수준 만큼은 높아야 합니다. 예를 들어, '내부 (internal) 접근 수준' 을 가진 열거체의 '원시-값 타입' 으로 '개인 전용 (private) 타입' 을 사용할 수 없습니다.
 
 #### Nested Types (중첩 타입)
 
-'중첩 타입 (nested types)' 의 접근 수준은, 그것을 '가지고 있는 타입 (containing type)' 이 'public (공용)' 이 아닌 한, '가지고 있는 타입' 과 같습니다. 'public (공용)' 타입 에서 정의한 '중첩 타입' 은 자동적으로 'internal (내부)' 접근 수준을 가집니다. 'public (공용)' 타입에 있는 '중첩 타입' 을 '공용' 으로 사용하고 싶으면, 반드시 그 '중첩 타입' 을 'public (공용)' 이라고 명시적으로 선언해야 합니다.
+'중첩 타입' 의 접근 수준은, 자신을 '담은 (containing) 타입' 이 '공용 (public)' 이 아니라면, 자신을 '담은 타입' 과 똑같습니다. '공용 타입' 안에서 정의한 '중첩 타입' 은 자동으로 '내부' 라는 접근 수준을 가집니다. '공용 타입' 안의 '중첩 타입' 을 공용으로 사용하고 싶으면, 반드시 명시적으로 '중첩 타입' 이 '공용' 이라고 선언해야 합니다.
 
 ### Subclassing (하위 클래스)
 
-현재 접근 영역에서 접근할 수 있는 클래스라면 그리고 동일 모듈에서 정의된 하위 클래스라면 어떤 클래스에 대해서도 하위 클래스를 만들 수 있습니다. 또한 다른 모듈에서 정의한 'open (공개)' 클래스에 대해서도 하위 클래스를 만들 수 있습니다. 하위 클래스는 상위 클래스보다 더 높은 접근 수준을 가질 수 없습니다-예를 들어, 'internal (내부)' 인 상위 클래스에 대해서 'public (공용)' 인 하위 클래스를 작성할 수는 없습니다.
+현재 접근 상황에서 접근할 수 있으며 동일 모듈에서 하위 클래스로 정의한 어떤 클래스든 하위 클래스를 만들 수 있습니다. 다른 모듈에서 정의한 어떤 '공개 (open) 클래스' 도 역시 하위 클래스를 만들 수 있습니다. 하위 클래스는 자신의 상위 클래스보다 더 높은 접근 수준을 가질 수 없습니다-예를 들어, '내부 (internal) 상위 클래스' 에 대한 '공용 (public) 하위 클래스' 를 작성할 수 없습니다.
 
-그와 더불어, 동일한 모듈에서 정의한 클래스에 대해서는, 어떤 클래스 멤버 (메소드, 속성, 초기자, 그리고 첨자 연산) 라도 정해진 접근 영역에서 보이기만 한다면 '재정의 (override)' 를 할 수 있습니다. 다른 모듈에서 정의한 클래스에 대해서는, 'open (공개)' 클래스 멤버에 대해 '재정의' 할 수 있습니다.
+이에 더하여, 동일 모듈에서 정의한 클래스들은, 정해진 접근 상황에서 보이는 (메소드, 속성, 초기자, 또는 첨자 연산 같은) 어떤 클래스 멤버든 '재정의 (override)' 할 수 있습니다. 또 다른 모듈에서 정의한 클래스는, 어떤 '공개 (open) 클래스 멤버' 든 '재정의' 할 수 있습니다.
 
-'재정의' 를 하면 상속된 클래스 멤버를 상위 클래스 버전에서 보다 더 접근하기 쉽게 만들 수 있습니다. 아래 예제에 있는, 클래스 `A` 는 'public (공용)' 클래스로 `someMethod()` 라는 'file-private (파일-전용)' 메소드를 가지고 있습니다. 클래스 `B` 는 `A` 의 하위 클래스이며, 접근 수준은 감소해서 "internal (내부)" 입니다. 그럼에도 불구하고, 클래스 `B` 는 `someMethod()` 의 접근 수준을 "internal (내부)" 인 것으로 '재정의' 했는데, 이는 `someMethod()` 의 원래 구현보다 _높은 (higher)_[^higher] 것입니다:
+'재정의' 는 상속한 클래스 멤버의 접근 가능성을 상위 클래스 버전에서 보다 더 높일 수있습니다. 아래 예제에서, 클래스 `A` 는 `someMethod()` 라는 '파일-전용 (file-private) 메소드' 를 가진 '공용 (public) 클래스' 입니다. 클래스 `B` 는, "내부 (internal)" 라는 '감소한 접근 수준' 을 가진, `A` 의 하위 클래스입니다. 그럼에도 불구하고, 클래스 `B` 는, `someMethod()` 의 원본 구현보다 _더 높은 (higher)_[^higher], "내부 (internal)" 라는 접근 수준을 가진 `someMethod()` 의 재정의 버전을 제공합니다:[^subclassing]
 
 ```swift
 public class A {
@@ -196,7 +196,7 @@ internal class B: A {
 }
 ```
 
-하위 클래스 멤버가 하위 클래스 멤버보다 더 낮은 접근 권한을 가지는 상위 클래스의 멤버를 호출하는 것도 가능한데, 이는 상위 클래스 멤버에 대한 호출이 허용된 접근 수준 영역 내에서 이루어질 때 가능한 것입니다. (다시 말해서, 동일한 소스 파일 내에서 상위 클래스의 'file-private (파일-전용)' 멤버를 호출하는 것, 또는 동일한 모듈 내에서 상위 클래스의 'internal (내부)' 멤버를 호출하는 것, 등이 가능합니다):
+상위 클래스 멤버에 대한 호출이 (즉, 상위 클래스와 동일한 소스 파일에서 '파일-전용' 멤버를 호출하거나, 상위 클래스와 동일한 모듈에서 '내부' 멤버를 호출하는 것 처럼) 허용된 접근 수준 상황에서 일어나는 한, 하위 클래스 멤버가 심지어 하위 클래스 멤버보다 더 낮은 접근 수준 권한을 가진 상위 클래스 멤버를 호출하는 것도 유효합니다:
 
 ```swift
 public class A {
@@ -210,13 +210,13 @@ internal class B: A {
 }
 ```
 
-상위 클래스인 `A` 와 하위 클래스인 `B` 가 동일한 소스 파일에서 정의되었기 때문에, `someMethod()` 의 `B` 구현부에서 `super.someMethod()` 를 호출하는 것은 유효합니다.
+상위 클래스 `A` 와 하위 클래스 `B` 를 동일 소스 파일에서 정의하기 때문에, `B` 에서 구현한 `someMethod()` 가 `super.someMethod()` 를 호출하는 것은 유효합니다.
 
-### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 및 첨자 연산)
+### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 그리고 첨자 연산)
 
-상수, 변수, 또는 속성은 그것의 타입보다 더 'public (공개적)' 일 수 없습니다.[^more-public] 예를 들면, 'private (개인 전용)' 타입을 가지고 'public (공용)' 속성을 만드는 것은 유효하지 않습니다. 이와 비슷하게, '첨자 연산 (subscript)' 도 그것의 색인 타입이나 반환 타입 그 어느 것보다 더 'public (공개적)' 일 수 없습니다.
+상수, 변수, 또는 속성은 자신의 타입보다 더 '공개 (public)' 적일 수 없습니다.[^more-public] 예를 들어, '개인 전용 (private) 타입' 을 가진 '공용 (public) 속성' 을 작성하는 것은 유효하지 않습니다. 이와 비슷하게, 첨자 연산은 자신의 '색인 타입' 이나 '반환 타입' 보다 더 '공개 (public)' 적일 수 없습니다.
 
-상수, 변수, 속성, 또는 첨자 연산을 'private (개인 전용)' 타입으로 만들었을 경우, 그 상수, 변수, 속성, 또는 첨자 연산에는 반드시 `private` 을 표시해야 합니다:
+상수, 변수, 속성, 또는 첨자 연산이 '개인 전용 타입' 을 사용할 경우, 그 상수, 변수, 속성, 또는 첨자 연산도 반드시 `private` 이라고 표시해야 합니다:
 
 ```swift
 private var privateInstance = SomePrivateClass()
@@ -224,13 +224,13 @@ private var privateInstance = SomePrivateClass()
 
 #### Getters and Setters ('획득자' 와 '설정자')
 
-상수, 변수, 속성, 및 첨자 연산을 위한 '획득자 (getters)' 와 '설정자 (setters)' 는 자동으로 그것이 속해 있는 상수, 변수, 속성, 또는 첨자 연산과 동일한 접근 수준을 부여 받게 됩니다.
+상수, 변수, 속성, 또는 첨자 연산을 위한 '획득자 (getters)' 와 '설정자 (setters)' 는 자신이 속한 상수, 변수, 속성, 또는 첨자 연산과 똑같은 접근 수준을 자동으로 부여 받습니다.
 
-'설정자 (setter)' 에는 연관되어 있는 '획득자 (getter)' 보다 더 _낮은 (lower)_ 접근 수준을 부여해서, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역의 범위를 제한할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 나 `subscript` '도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 써주면 됩니다.
+'설정자' 는, 해당 변수, 속성, 또는 첨자 연산에 대한 '읽고-쓰기' 영역 범위를 제약하기 위해, 자신과 연관된 '획득자' 보다 _더 낮은 (lower)_ 접근 수준을 부여할 수 있습니다. '더 낮은 접근 수준' 은 '`var`' 또는 '`subscript` 도입자 (introducer)' 앞에 `fileprivate(set)`, `private(set)`, 또는 `internal(set)` 을 작성함으로써 할당합니다.
 
-> 이 규칙은 '계산 속성 (computed properties)' 뿐만 아니라 '저장 속성 (stored properties)' 에도 적용됩니다. '저장 속성' 에 대해서 '획득자 (getter) 와 설정자 (setter)' 를 직접 명시적으로 작성하지 않더라도, 여전히 스위프트는 '저장 속성' 의 뒤쪽 저장 공간에 접근하도록 하는 암시적인 '획득자 (getter) 와 설정자 (setter)' 를 만들어서 통합합니다. '계산 속성' 의 명시적 '설정자 (setter)' 와 동일한 방법을 써서 `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '합성된 설정자 (synthesized setter)' 의 접근 수준을 바꿀 수 있습니다.
+> 이 규칙은 '계산 속성' 뿐만 아니라 '저장 속성' 에도 적용됩니다. '저장 속성' 을 위한 '명시적인 획득자' 와 '설정자' 를 작성하진 않을지라도, 스위프트는 '저장 속성' 의 '백업 저장 공간' 에 대한 접근을 제공하기 위해 여전히 '암시적인 획득자' 와 '설정자' 를 만들고 통합합니다. `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '통합된 설정자' 의 접근 수준을 '계산 속성' 의 '명시적인 설정자' 와 정확하게 똑같은 방식으로 바꾸게 됩니다.
 
-아래 예제는 `TrackedString` 이라는 구조체를 정의해서, 문자열 속성이 수정된 횟수를 계속 추적합니다:
+아래 예제는, 문자열 속성이 수정된 횟수를 추적하는, `TrackedString` 이라는 구조체를 정의합니다:
 
 ```swift
 struct TrackedString {
@@ -243,11 +243,11 @@ struct TrackedString {
 }
 ```
 
-`TrackedString` 구조체는 '문자열 저장 속성' 인 `value` 를 정의하고, 기본 값은 `""` (빈 문자열) 로 둡니다. 이 구조체는 `numberOfEdits` 라는 '정수 저장 속성' 도 정의하여, `value` 가 수정된 횟수를 추적하는데 사용합니다. 이 '수정 추적 기능' 은 `value` 속성의 `didSet` '속성 관찰자 (property observer)' 를 써서 구현했으며, `value` 속성에 새 값을 설정할 때마다 `numberOfEdits` 를 증가하도록 합니다.
+`TrackedString` 구조체는, 초기 값이 `""` (빈 문자열) 인, `value` 라는 '문자열 저장 속성' 을 정의합니다. 구조체는, `value` 를 수정한 횟수를 추적하는데 사용하는, `numberOfEdits` 라는 '정수 저장 속성' 도 정의합니다. 이 '수정 추적' 기능은, `value` 속성에 새 값이 설정될 때마다 `numberOfEdits` 를 증가하는, `value` 속성의 '`didSet` 속성 관찰자 (property observer)'[^property-observer] 로 구현합니다.
 
-`TrackedString` 구조체와 `value` 속성은 명시적인 '접근-수준 수정자 (access-level modifier)' 를 제공하지 않으므로, 둘 다 기본 접근 수준인 `internal` 을 부여 받습니다. 하지만, `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시해서 속성의 '획득자 (getter)' 가 여전히 기본 접근 수준인 'internal (내부)' 임에도 불구하고, `TrackedString` 구조체 코드의 일부에서는 속성을 설정할 수 있도록 했습니다. 이것은 `TrackedString` 이 `numberOfEdits` 속성을 내부에서는 수정할 수 있게 하면서도, 이 속성이 구조체 정의 외부에서 사용될 때는 '읽기-전용' 임을 나타내도록 해 줍니다.
+`TrackedString` 구조체와 `value` 속성은 '명시적인 접근-수준 수정자 (modifier)' 를 제공하지 않으므로, 둘 다 '내부 (internal)' 라는 기본 접근 수준을 부여 받습니다. 하지만, 속성의 '획득자' 는 여전히 '내부 (internal)' 라는 기본 접근 수준을 가지지만, `TrackedString` 구조체 안의 코드만 속성을 설정할 수 있음을 지시하기 위해 `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시합니다. 이는 `TrackedString` 이 내부적으로는 `numberOfEdits` 속성을 수정하도록 하지만, 구조체 정의 밖에서 사용할 때는 속성을 '읽기-전용 속성' 으로 나타날 수 있게 해줍니다.
 
-`TrackedString` 인스턴스를 생성하고나서 그 문자열 값을 몇 번 수정하면, `numberOfEdits` 속성 값이 수정된 횟수 만큼 갱신되는 것을 볼 수 있습니다:
+`TrackedString` 인스턴스를 생성해서 문자열 값을 몇 번 수정하면, `numberOfEdits` 속성 값이 수정 횟수와 일치하도록 갱신되는 것을 볼 수 있습니다:
 
 ```swift
 var stringToEdit = TrackedString()
@@ -255,12 +255,12 @@ stringToEdit.value = "This string will be tracked."
 stringToEdit.value += " This edit will increment numberOfEdits."
 stringToEdit.value += " So will this one."
 print("The number of edits is \(stringToEdit.numberOfEdits)")
-// "The number of edit is 3" 를 출력합니다.
+// "The number of edit is 3" 를 인쇄합니다.
 ```
 
-비록 다른 소스 파일에서도 `numberOfEdits` 속성의 현재 값을 조회할 수는 있겠지만, 다른 소스 파일에서 그 속성을 _수정하는 (modify)_ 것은 불가능합니다. 이러한 제한은 `TrackedString` 의 추적-편집 기능에 대한 세부 구현을 보호하면서도, 여전히 그 기능 부분에 대한 편리한 접근 방법을 제공하도록 해줍니다.
+비록 다른 소스 파일에 있는 `numberOfEdits` 속성의 현재 값을 조회할 순 있을지라도, 다른 소스 파일에 있는 속성을 _수정 (modify)_ 할 수는 없습니다. 이 제약은, 여전히 해당 기능에 대한 편리한 접근을 제공하면서도, `TrackedString` 편집-추적 기능의 세부 구현을 보호합니다.
 
-필요하다면 '획득자 (getter)' 와 '설정자 (setter)' 모두에 대해 명시적인 접근 수준을 할당할 수 있음에 주목하기 바랍니다. 아래 예제는 구조체를 명시적으로 'public (공용)' 접근 수준으로 정의한 `TrackedString` 구조체를 보여줍니다. (`numberOfEdits` 속성을 포함한) 구조체의 멤버들은 그러므로 기본적으로 'internal (내부)' 접근 수준을 가지게 됩니다.[^internal-by-default] 구조체의 `numberOfEdits` 속성에서, `public` 과 `private(set)` 수정자 (modifiers) 를 결합하면, '획득자 (getter)' 는 'public (공용)' 으로 하면서 '설정자 (setter)' 는 'private (개인 전용)' 으로 만들 수 있습니다:
+필요하다면 '획득자' 와 '설정자' 둘 다에 대해 '명시적인 접근 수준' 을 할당할 수 있다는 것을 기억하기 바랍니다. 아래 예제는 '공용 (public)' 이라는 명시적인 접근 수준을 가지는 `TrackedString` 구조체 버전을 보여줍니다. 그럼으로써 (`numberOfEdits` 속성을 포함한) 구조체 멤버들은 기본적으로 '내부 (internal) 접근 수준' 을 가집니다.[^internal-by-default] '`public`' 과 '`private(set)` 접근-수준 수정자' 를 조합[^combining-public-private-set]함으로써, 구조체에 있는 `numberOfEdits` 속성의 '획득자' 는 '공용 (public)' 으로, 속성의 '설정자' 는 '개인 전용 (private)' 으로 만들 수 있습니다:
 
 ```swift
 public struct TrackedString {
@@ -276,33 +276,33 @@ public struct TrackedString {
 
 ### Initializers (초기자)
 
-직접 만든 초기자에는 초기화하려는 타입보다 같거나 더 낮은 수준의 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 '필수 초기자 (required initializers)' 입니다. ([Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에서 정의한 바와 같습니다.) '필수 초기자' 는 자신이 속해 있는 클래스와 같은 접근 수준을 가져야 합니다.
+'사용자 정의 초기자' 는 초기화하는 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 ([Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에서 정의한) '필수 초기자' 입니다. '필수 초기자' 는 반드시 자신이 속한 클래스와 똑같은 접근 수준을 가져야 합니다.
 
-'함수 매개 변수' 및 '메소드 매개 변수' 처럼, 초기자의 매개 변수 타입도 초기자가 가지고 있는 접근 수준보다 더 '개인적 (private)' 일 수 없습니다.
+함수 매개 변수와 메소드 매개 변수에서 처럼, 초기자의 매개 변수 타입은 초기자 자신의 접근 수준보다 더 '개인 전용 (private)' 일 수 없습니다.
 
 #### Default Initializers (기본 초기자)
 
-[Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 어떤 구조체나 '기초 클래스 (base class)' 가 모든 속성에 대한 '기본 값' 을 제공하면서도 스스로는 단 하나의 초기자도 제공하지 않을 경우 '_기본 초기자 (default initializer)_' 를 제공합니다.
+[Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 모든 속성에 대한 '기본 값' 을 제공하면서 스스로는 단 하나의 초기자도 제공하지 않는 어떤 구조체나 '기초 클래스' 에든 _기본 초기자 (default initializer)_ 를 제공합니다.
 
-'기본 설정 초기자' 는, 해당 타입이 `public` 으로 정의되어 있는 경우를 제외하면, 자기가 초기화하는 타입과 같은 접근 수준을 가집니다. 타입이 `public` 으로 정의된 경우에는, '기본 설정 초기자' 가 'internal (내부)' 인 것으로 여겨집니다. 다른 모듈에서 'public (공용)' 타입을 '인자가 없는 (no-argument)' 초기자로 초기화할 수 있게 만들고 싶으면, 타입을 정의하면서 반드시 'public no-argument initializer (공용의 인자-없는 초기자)' 를 명시적으로 제공해야 합니다.
+'기본 초기자' 는, 해당 타입을 `public` 으로 정의하지 않는 한, 자신이 초기화하는 타입과 똑같은 접근 수준을 가집니다. `public` 으로 정의한 타입은, '기본 초기자' 를 '내부 (internal)' 라고 고려합니다. 다른 모듈에서 사용할 때 '공용 (public) 타입' 을 '인자-없는 초기자' 로 초기화 가능하게 만들고 싶으면, 타입 정의에서 '공용인 인자-없는 초기자' 를 반드시 직접 명시적으로 제공해야 합니다.[^public-no-argument]
 
 #### Default Memberwise Initializers for Structure Types (구조체 타입을 위한 기본 멤버 초기자)
 
-구조체의 저장 속성 중 어떤 것이라도 'private (개인 전용)' 이면 구조체 타입에 기본 제공되는 '멤버 초기자' 도 'private (개인 전용)' 으로 여겨집니다. 게다가, 구조체의 '저장 속성' 중 어떤 것이라도 'file private (파일 전용)' 이면, 그 초기자는 'file private (파일 전용)' 이 됩니다. 그 외의 경우에는, 초기자의 접근 수준이 'internal (내부)' 가 됩니다.
+구조체 타입을 위한 '기본 멤버 초기자' 는 구조체의 어떤 저장 속성이든 '개인 전용 (private)' 이면 '개인 전용' 이라고 고려합니다. 마찬가지로, 구조체의 어떤 저장 속성이든 '파일 전용 (file private)' 이면, 초기자는 '파일 전용' 입니다. 그 외의 경우, 초기자는 '내부 (internal)' 라는 접근 수준을 가집니다.
 
-위의 '기본 설정 초기자' 에서와 마찬가지로, 다른 모듈에서 'public (공용)' 타입을 '멤버 초기자' 로 초기화할 수 있게 만들고 싶으면, 타입을 정의하면서 반드시 'public memberwise initializer (공용 멤버 초기자)' 를 직접 제공해야 합니다.
+위의 '기본 초기자' 에서 처럼, 다른 모듈에서 사용할 때 '공용 (public) 구조체 타입' 을 '멤버 초기자' 로 초기화 가능하게 만들고 싶으면, 타입 정의에서 '공용 (public) 멤버 초기자' 를 반드시 직접 제공해야 합니다.
 
 ### Protocols (프로토콜)
 
-프로토콜 타입에 대한 접근 수준을 명시적으로 할당하고 싶으면, 프로토콜을 정의하는 시점에 그렇게 해야 합니다. 이렇게 하면 지정한 접근 영역에서만 '채택 (adopt)' 할 수 있는 프로토콜을 생성할 수 있습니다.
+'프로토콜 타입' 에 '명시적인 접근 수준' 을 할당하고 싶으면, 프로토콜을 정의하는 시점에 하도록 합니다. 이는 정해진 접근 상황일 때만 '채택 (adopted)' 할 수 있는 프로토콜을 생성할 수 있게 해줍니다.
 
-프로토콜 정의에 있는 각 '필수 조건 (requirement)' 은 자동적으로 그 프로토콜과 같은 접근 수준으로 설정됩니다. 프로토콜의 '필수 조건' 에 그것이 지원하는 프로토콜과 다른 접근 수준을 설정할 수는 없습니다. 이렇게 하는 것은 프로토콜을 채택하는 타입이 어떤 것이든 프로토콜의 모든 '필수 조건' 을 볼 수 있도록 하기 위함입니다.
+프로토콜 정의에 있는 각 '필수 조건' 의 접근 수준은 자동으로 프로토콜과 똑같은 접근 수준으로 설정됩니다. 프로토콜의 '필수 조건' 은 자신이 지원하는 프로토콜과 다른 접근 수준으로 설정할 수 없습니다. 이는 프로토콜을 채택하는 어떤 타입에서든 프로토콜의 모든 '필수 조건' 을 볼 수 있도록 보장합니다.
 
-> 'public (공용)' 프로토콜을 정의하게 되면, 프로토콜의 '필수 조건' 은 그 '필수 조건' 을 '공용 (public)' 접근 수준으로 구현할 것을 요구합니다. 이러한 방식은 다른 타입들과는 다른 것이며, 다른 타입들은 'public (공용)' 타입을 정의할 때 그 타입 멤버를 'internal (내부)' 접근 수준으로 구현합니다.
+> '공용 (public) 프로토콜' 을 정의하면, 프로토콜의 '필수 조건' 은 해당 '필수 조건' 을 '공용 접근 수준' 으로 구현할 것을 요구합니다. 이런 작동 방식은, '공용 타입 정의' 가 타입의 멤버에 대한 '내부 (internal) 접근 수준' 을 의미하는, 다른 타입들과는 다릅니다.
 
 #### Protocol Inheritance (프로토콜 상속)
 
-기존 프로토콜을 상속하는 새로운 프로토콜을 정의할 경우, 이 새 프로토콜이 최대로 가질 수 있는 접근 수준은 상속 해주는 프로토콜과 같은 수준입니다.[^at-most-the-same] 예를 들어, 'internal (내부)' 프로토콜을 상속하는 'public (공용)' 프로토콜을 작성할 수는 없습니다.
+기존 프로토콜을 상속하여 새로운 프로토콜을 정의할 경우, 새 프로토콜은 자신이 상속한 프로토콜과 똑같은 접근 수준을 최대로 가질 수 있습니다.[^at-most-the-same] 예를 들어, '내부 (internal) 프로토콜' 을 상속하여 '공용 (public) 프로토콜' 을 작성할 수 없습니다.
 
 #### Protocol Conformance (프로토콜 준수)
 
@@ -362,6 +362,10 @@ extension SomeStruct: SomeProtocol {
 
 > 이 규칙은 '프로토콜 준수성' 을 만족시킬려고 사용하는 '결합된 타입 (associated types)' 를 위한 '타입 별명' 에도 동일하게 적용됩니다.
 
+### 다음 장
+
+[Advanced Operators (고급 연산자) > ]({% post_url 2020-05-11-Advanced-Operators %})
+
 ### 참고 자료
 
 [^Access-Control]: 이 글에 대한 원문은 [Access Control](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html) 에서 확인할 수 있습니다.
@@ -370,17 +374,25 @@ extension SomeStruct: SomeProtocol {
 
 [^the-most-restrictive]: [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, '최대로 제약한 접근 수준' 은 '가장 낮은 접근 수준' 입니다. 스위프트의 접근 수준을 높은 순서로 나열하면 '공개 (open)' >= '공용 (public)' > '내부 (internal)' > '파일-전용 (file-private)' > '개인 전용 (private)' 입니다.
 
-[^function-access-level]: '함수가 계산한 접근 수준' 과 '해당 영역의 기본적인 의미' 가 같아야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. 즉, 함수의 접근 수준을 계산해보니 'private' 일 때는, 반드시 함수의 정의에 'private' 을 써줘야 한다는 것 입니다. 그렇게 하지 않으면, '함수가 계산한 접근 수준 (private)' 과 '해당 영역의 기본적인 의미 (internal)' 가 다르므로, 컴파일이 안되게 됩니다.
+[^function-access-level]: 이 말은, 함수의 접근 수준이 '개인 전용 (private)' 이어야 할 때는, 반드시 함수 정의에 `private` 을 붙여야 한다는 의미입니다. '함수가 (자동으로) 계산한 접근 수준' 과 '기본적인 상황' 이 일치해야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. '함수가 계산한 접근 수준 (`private`)' 과 '기본적인 상황 (`internal`)' 이 일치하지 않으면, 컴파일이 안됩니다.
 
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
 
-[^higher]: 본문의 앞 부분에서도 나오지만, 스위프트에서 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. 높은 순서대로 나열하면 'open (공개)' > 'public (공용)' > 'internal (내부)' > 'file-private (파일-전용)' > 'private (개인 전용)' 과 같습니다.
+[^higher]: [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, 스위프트의 접근 수준은 '공개 (open)' 가 가장 높고, '개인 전용 (private)' 이 가장 낮습니다.
 
-[^more-public]: 여기서 '더 공개적 (more public)' 이라는 말은, '접근 수준 (access level)' 이 더 높은 것을 말합니다. 스위프트의 접근 수준은 'open (공개)' 가 가장 높고, 'private (개인 전용)' 이 가장 낮습니다. '상수나 변수가 타입보다 더 공개적일 수 없다' 는 말은 `let a: Int = 0` 에서 `a` 의 접근 수준이 `Int` 의 접근 수준보다 더 공개적일 수 없다-더 높은 접근 수준을 가질 수 없다-는 것을 의미합니다.
+[^subclassing]: 여기서 알 수 있는 것은 '클래스의 접근 수준' 과 '클래스 멤버의 접근 수준' 은 서로 독립적으로 작동한다는 것입니다. 
 
-[^internal-by-default]: 문서의 앞 부분인 [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스의 접근 수준을 'public (공용)' 으로 정의하면 멤버의 기본 접근 수준은 'internal (내부)' 가 됩니다.
+[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
 
-[^at-most-the-same]: 이 접근 수준은 '함수' 와 같은 규칙에 해당합니다. 즉, '한 프로토콜 (상속하는 프로토콜)' 은 '그 구성 요소 (상속을 해주는 프로토콜)' 보다 더 높은 접근 수준을 가질 수 없다고 이해할 수 있습니다.
+[^more-public]: '더 공개 (public) 일 수 없다' 는 것은, '더 높은 접근 수준을 가질 수 없다' 는 의미입니다. 일단 어떤 속성을 '공개 (public)' 하고 싶으면 반드시 해당 속성을 가진 타입도 '공개 (public)' 해야 한다고 이해할 수 있습니다. '더 높은 접근 수준' 이라는 단어 대신 '공개 (public)' 라는 단어를 선택한 것에도 의미가 있다고 생각됩니다.
+
+[^internal-by-default]: [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스를 '공용 (public) 접근 수준' 으로 정의하면 멤버의 기본 접근 수준은 '내부 (internal)' 가 됩니다.
+
+[^combining-public-private-set]: 본문에서 처럼, `public private(set)` 이라는 수정자도 가능합니다. 이는 '획득자' 와 '설정자' 를 가지는 '속성' 에만 유효한 것으로 추측됩니다.
+
+[^public-no-argument]: 바로 위의 `TrackedString` 예제에 있는 `public init() {}` 이 바로 이에 대한 예입니다. 
+
+[^at-most-the-same]: '하위 프로토콜' 은 '상위 프로토콜' 보다 더 높은 접근 수준을 가질 수 없다는 의미입니다.
 
 [^conform-to-a-protocol]: 스위프트에는 '프로토콜' 이라는 개념이 있는데, C++ 언어 및 Java 언어의 '추상 클래스 (abstract class)' 와 비슷한 개념입니다. 스위프트에는 '어떤 타입이 프로토콜을 상속한다' 라는 말은 없으며, 대신에 '어떤 타입이 프로토콜을 준수한다' 라는 말을 사용합니다. 스위프트에서 '프로토콜 상속' 이라는 것은 두 '프로토콜' 사이에서만 존재하는 개념입니다.
 
