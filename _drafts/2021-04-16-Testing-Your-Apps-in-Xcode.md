@@ -20,6 +20,6 @@ categories: Xcode XCTest Swift Test
 
 ![Aim of the Tests](https://docs-assets.developer.apple.com/published/20b3426c34/93cc7b80-dd57-423d-be85-f937da693ec3.png)
 
-
+'UI 테스트' 가 앱이 사용자와 예상한 방식으로 작동한다는 궁극적인 지표이지만, 다른 종류의 테스트보다 실행이 더 오래 걸립니다. 다양한 앱 변수들이 똑같은 UI 테스트에서 실패를 일으킬 수 있습니다. 
 
 
