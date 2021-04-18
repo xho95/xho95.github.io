@@ -362,6 +362,10 @@ extension SomeStruct: SomeProtocol {
 
 > 이 규칙은 '프로토콜 준수성' 을 만족시킬려고 사용하는 '결합된 타입 (associated types)' 를 위한 '타입 별명' 에도 동일하게 적용됩니다.
 
+### 다음 장
+
+[Advanced Operators (고급 연산자) > ]({% post_url 2020-05-11-Advanced-Operators %})
+
 ### 참고 자료
 
 [^Access-Control]: 이 글에 대한 원문은 [Access Control](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html) 에서 확인할 수 있습니다.
