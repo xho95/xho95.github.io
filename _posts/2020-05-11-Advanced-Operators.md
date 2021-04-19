@@ -26,7 +26,7 @@ _비트 연산자 (bitwise operators)_ 는 자료 구조 안에 있는 '개별 �
 
 #### Bitwise NOT Operator (비트 부정 연산자)
 
-_비트 부정 연산자 (bitwise NOT operator)_ (`~`) 는 수치 값의 모든 비트를 거꾸로 만듭니다:
+_비트 부정 연산자 (bitwise NOT operator;_ `~`_)_ 는 수치 값의 모든 비트를 거꾸로 만듭니다:
 
 ![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
@@ -41,9 +41,9 @@ let invertedBits = ~initialBits   // 11110000 과 같습니다.
 
 그런 다음 '비트 부정 연산자' 를 사용하여, `initialBits` 와 똑같지만, 모든 비트를 거꾸로 만든, `invertedBits` 라는 새로운 상수를 생성합니다. '0' 은 '1' 이 되고, '1' 은 '0' 이 됩니다. `invertedBits` 의 값은, 부호없는 십진수 값으로 `240` 인, `11110000` 입니다.
 
-#### Bitwise AND Operator (비트 논리 곱 연산자)
+#### Bitwise AND Operator (비트 곱 연산자)
 
-_비트 논리 합 연산자 (bitwise AND operator)_ (`&`) 는 두 수치 값의 비트를 결합합니다. 이 연산자는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 해당 비트를 `1` 로 설정한 새 수치 값을 반환합니다.
+_비트 곱 연산자 (bitwise AND operator;_ `&`_)_ 는 두 수치 값의 비트를 조합합니다. 이는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 비트를 `1` 로 설정한 새로운 수치 값을 반환합니다:
 
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
