@@ -6,50 +6,48 @@ date:   2020-05-11 10:00:00 +0900
 categories: Swift Language Grammar Advanced Operator
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 부분[^Advanced-Operators]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 부분[^Advanced-Operators]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Advanced Operators (고급 연산자)
 
-[Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명한 연산자에 더하여, 스위프트는 더 복잡한 값을 조작을 수행할 수 있는 여러가지의 고급 연산자를 제공합니다. 여기에는 C 언어와 오브젝티브-C 언어에서 익숙한 모든 '비트 연산자 (bitwise operators)' 와 '비트 이동 연산자 (bit shifting operators)' 가 포함되어 있습니다.
+[Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명한 연산자에 더하여, 스위프트는 더 복잡한 값을 조작하는 여러 가지의 고급 연산자를 제공합니다. 이는 C 와 오브젝티브-C 에서 익숙할 모든 '비트 (bitwise) 연산자' 와 '비트 이동 (bit shifting) 연산자' 를 포함합니다.
 
-C 언어의 '산술 연산자 (arithmetic operators)' 와는 달리, 스위프트의 산술 연산자는 기본적으로 '값이 넘치지 (overflow)' 않습니다. '값 넘침 동작 (overflow behavior)' 은 '덫에 걸려서 (trapped)' 에러라고 보고됩니다. 값 넘침 동작을 선택하려면, 스위프트의 추가적인 산술 연산자 집합들을 사용하여 기본적으로 '값 넘침 (overflow)' 동작을 하도록 할 수 있는데, 여기에는 가령 '값 넘침 더하기 연산자 (overflow addition operator; `&+`)' 등이 있습니다. 이러한 값 넘침 연산자들은 모두 '앤드 기호 (`&`; 앰퍼센드)' 로 시작합니다.
+C 의 '산술 (arithmetic) 연산자' 와는 달리, 스위프트의 산술 연산자는 기본적으로 '값이 넘치지 (overflow)' 않습니다. '값 넘침 (overflow) 동작' 은 '덫으로 잡아서 (trapped)' 에러로 보고합니다. '값 넘침 동작' 을 직접 선택하려면, '값 넘침 더하기 연산자 (`&+`)' 같은, 기본적으로 '값이 넘치는' 스위프트의 '추가 산술 연산자 집합' 을 사용합니다. 이 모든 '값 넘침 연산자' 들은 '앤드 기호 (ampersand; `&`)' 로 시작합니다.
 
-자신만의 구조체, 클래스, 그리고 열거체를 정의할 때는, 이 사용자 정의 타입에 대한 표준 스위프트 연산자의 자신만의 구현을 제공하는 것이 유용할 것입니다. 스위프는 연산자의 맞춤형 구현을 제공하는 것과 생성할 각 타입의 동작이 정확히 무엇인지 결정하는 것을 쉽게 할 수 있도록 해줍니다.
+자신만의 구조체, 클래스, 그리고 열거체를 정의할 때는, 사용자 정의 타입에 대한 자신만의 표준 스위프트 연산자를 구현하는 것이 유용할 수 있습니다. 스위프트는 이 연산자들의 맞춤형 구현과 각 생성 타입에 대해 이들이 무슨 동작을 해야하는 지를 쉽게 결정할 수 있게 해줍니다.
 
-이는 '이미 정의된 (predefined)' 연산자로 한정되지 않습니다. 스위프트에서는 자유롭게 자신만의 사용자 정의 '중위 (infix)', '접두사 (prefix)', '접미사 (postfix)', 그리고 '할당 연산자' 를 정의할 수 있으며, 사용자 정의 '우선 순위 (precedence)' 와 '결합성 (associativity)' 도 지정할 수 있습니다. 이 연산자는 '이미 정의된' 연산자 처럼 코드에서 채택하여 사용할 수 있고, 심지어 직접 정의한 사용자 정의 연산자를 지원하도록 기존 타입을 확장할 수도 있습니다.
+'미리 정의된 연산자' 로 제한하지 않습니다. 스위프트는, '사용자 정의 우선 순위 (precedence)' 와 '결합성 (associativity)' 을 가진, 자신만의 사용자 정의 '중위 (infix)', '접두사 (prefix)', '접미사 (postfix)', 그리고 '할당 (assignment) 연산자' 를 정의하는 자유를 줍니다. 이 연산자들은 다른 어떤 '미리 정의된 연산자' 와 마찬가지로 코드에서 채택하고 사용할 수 있으며, 심지어 기존 타입을 확장하여 자신이 정의한 사용자 정의 연산자를 지원하게 할 수도 있습니다.
 
 ### Bitwise Operators (비트 연산자)
 
-_비트 연산자 (bitwise operators)_ 는 자료 구조에서 개별 '원시 자료 비트 (raw data bits)' 를 조작할 수 있게 해 줍니다. 이는 주로 저-수준 프로그래밍에서 사용되는데, 이에는 '그래픽 프로그래밍 (graphic programming)' 과 '장치 드라이버 생성 (device driver creation)' 등이 있습니다. '비트 연산자' 는 외부 소스에 있는 원시 자료와 작업할 때도 유용한데, 이에는 사용자 정의 프로토콜을 사용한 통신에서 'data encoding (자료 부호화)' 와 'data decoding (자료 복호화)' 할 때 등이 있습니다.
+_비트 연산자 (bitwise operators)_ 는 자료 구조 안에 있는 '개별 원시 데이터 비트' 를 조작하도록 해줍니다. 이들은 종종, '그래픽 (graphic) 프로그래밍' 과 '장치 드라이버 (device driver) 생성' 같은, 저-수준 프로그래밍에서 사용합니다. '비트 연산자' 는, 사용자 정의 프로토콜을 사용한 통신에서의 '데이터 부호화 (encoding)' 및 '복호화 (decoding)' 같은, 외부 소스의 '원시 데이터' 와 작업할 때도 유용할 수 있습니다.
 
-스위프트는 아래에서 설명하는 것처럼, C 언어에 있는 모든 비트 연산자를 지원합니다.
+스위프트는, 아래에서 설명하는 것처럼, C 에 있는 모든 '비트 연산자' 를 지원합니다.
 
-#### Bitwise NOT Operator (비트 논리 부정 연산자)
+#### Bitwise NOT Operator (비트 부정 연산자)
 
-_비트 논리 부정 연산자 (bitwise NOT operator)_ (`~`) 는 어떤 수치 값에 있는 모든 비트를 반전시킵니다:
+_비트 부정 연산자 (bitwise NOT operator;_ `~`_)_ 는 수치 값의 모든 비트를 거꾸로 만듭니다:
 
 ![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
-'비트 논리 부정 연산자' 는 '접두사 연산자 (prefix operator)' 이며, 연산할 값 바로 앞에, 아무 공백없이 위치합니다:
+'비트 부정 연산자' 는 '접두사 (prefix) 연산자' 이며, 어떤 공백도 없이, 연산할 값 바로 앞에 나타납니다:
 
 ```swift
 let initialBits: UInt8 = 0b00001111
 let invertedBits = ~initialBits   // 11110000 과 같습니다.
 ```
 
-`UInt8` 정수는 8-비트를 가지고 있어서 `0` 과 `255` 사이의 값을 저장할 수 있습니다. 이 예제는 한 `UInt8` 정수를, 처음 '네 자리 (four bits)'[^bits] 는 `0` 이고, 다음 네 자리는 `1` 인, 이진 값 `00001111` 로 초기화합니다. 이는 십진수 값 `15` 와 같습니다.
+`UInt8` 정수는 '8-비트' 이며 `0` 에서 `255` 사이의 어떤 값이든 저장할 수 있습니다. 이 예제는 `UInt8` 정수를, 처음 '네 비트' 는 `0` 으로 설정하고, 다음 '네 비트' 는 `1` 로 설정하는, 이진 값 `00001111` 로 초기화합니다. 이는 십진수 값으로 `15` 와 같습니다.
 
-그런 다음 '비트 논리 부정 연산자' 를 사용하여 `invertedBits` 라는 새로운 상수를 생성하는데, 이는 `initialBits` 와 같으나, 모든 비트를 반전한 것입니다. `0` 은 `1` 이 되고, `1` 은 `0` 이 됩니다. `invertedBits` 의 값은 `11110000` 인데, 부호없는 10-진수 값 `240` 과 같습니다.
+그런 다음 '비트 부정 연산자' 를 사용하여, `initialBits` 와 똑같지만, 모든 비트를 거꾸로 만든, `invertedBits` 라는 새로운 상수를 생성합니다. '0' 은 '1' 이 되고, '1' 은 '0' 이 됩니다. `invertedBits` 의 값은, 부호없는 십진수 값으로 `240` 인, `11110000` 입니다.
 
-#### Bitwise AND Operator (비트 논리 곱 연산자)
+#### Bitwise AND Operator (비트 곱 연산자)
 
-_비트 논리 합 연산자 (bitwise AND operator)_ (`&`) 는 두 수치 값의 비트를 결합합니다. 이 연산자는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 해당 비트를 `1` 로 설정한 새 수치 값을 반환합니다.
+_비트 곱 연산자 (bitwise AND operator;_ `&`_)_ 는 두 수치 값의 비트를 조합합니다. 이는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 비트를 `1` 로 설정한 새로운 수치 값을 반환합니다:
 
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
-아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 중간의 '네 자리 (four bits)' 가 `1` 입니다. '비트 논리 곱 연산자' 는 이를 결합하여 수치 값 `00111100` 을 만드는데, 이는 부호없는 10-진수 값 `60` 과 같습니다:
+아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 `1` 이라는 '네 개의 중간 비트' 를 가집니다. '비트 곱 연산자' 는 이들을 조합하여, 부호없는 십진수 값으로 `60` 인, 수치 값 `00111100` 을 만듭니다:
 
 ```swift
 let firstSixBits: UInt8 = 0b11111100
@@ -57,18 +55,18 @@ let lastSixBits: UInt8  = 0b00111111
 let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같습니다.
 ```
 
-#### Bitwise OR Operator (비트 논리 합 연산자)
+#### Bitwise OR Operator (비트 합 연산자)
 
-_비트 논리 합 연산자 (bitwise OR operator)_ (`|`) 는 두 수치 값을 비트를 비교합니다. 이 연산자는 입력 수치 값의 비트 중 _어느 것이든 (either)_ `1` 이면 해당 비트를 `1` 로 설정한 새 수치 값을 반환합니다.
+_비트 합 연산자 (bitwise OR operator;_ `|`_)_ 는 두 수치 값의 비트를 비교합니다. 연산자는 입력 수치 값의 비트 _어느 것 (either)_ 이든 `1` 이면 비트를 `1` 로 설정한 새로운 수치 값을 반환합니다:
 
 ![bitwise-OR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-OR-operator.jpg)
 
-아래 예제에서, `someBits` 와 `moreBits` 의 값은 서로 다른 '자리들 (bits)' 이 `1` 입니다. '비트 논리 합 연산자' 는 이들을 결합하여 수치 값 `11111110` 을 만드는데, 이는 부호없는 10-진수 `254` 와 같습니다:
+아래 예제에서, `someBits` 와 `moreBits` 의 값은 서로 다른 '비트 집합' 의 `1` 을 가집니다. '비트 합 연산자' 는 이들을 조합하여, 부호없는 십진수 값으로 `254` 인, 수치 값 `11111110` 을 만듭니다:
 
 ```swift
 let someBits: UInt8 = 0b10110010
 let moreBits: UInt8 = 0b01011110
-let combinedBits = someBits | moreBits // 11111110 와 같습니다.
+let combinedBits = someBits | moreBits // 11111110 과 같습니다.
 ```
 
 #### Bitwise XOR Operator (비트 논리 배타 연산자)
@@ -621,10 +619,6 @@ let manyStars = draw {
 ### 참고 자료
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
-
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 프로그래밍 용어에서 이미 '비트' 라는 말을 널리 사용하고 있으므로 '비트' 를 계속 사용하기로 하며, '자리' 라고 하는 것이 자연스러울 때만 '자리' 라고 하겠습니다.
 
 [^factor]: 'factor' 는 수학 용어로 '인수' 라고 하며, '정수 (integer)' 나 '정식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말이라고 합니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. 더 자세한 정보는 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 또는 [인수](https://ko.wikipedia.org/wiki/인수) 를 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
