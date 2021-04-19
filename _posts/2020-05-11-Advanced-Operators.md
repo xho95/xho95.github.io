@@ -24,22 +24,22 @@ _비트 연산자 (bitwise operators)_ 는 자료 구조 안에 있는 '개별 �
 
 스위프트는, 아래에서 설명하는 것처럼, C 에 있는 모든 '비트 연산자' 를 지원합니다.
 
-#### Bitwise NOT Operator (비트 논리 부정 연산자)
+#### Bitwise NOT Operator (비트 부정 연산자)
 
-_비트 논리 부정 연산자 (bitwise NOT operator)_ (`~`) 는 어떤 수치 값에 있는 모든 비트를 반전시킵니다:
+_비트 부정 연산자 (bitwise NOT operator)_ (`~`) 는 수치 값의 모든 비트를 거꾸로 만듭니다:
 
 ![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
-'비트 논리 부정 연산자' 는 '접두사 연산자 (prefix operator)' 이며, 연산할 값 바로 앞에, 아무 공백없이 위치합니다:
+'비트 부정 연산자' 는 '접두사 (prefix) 연산자' 이며, 어떤 공백도 없이, 연산할 값 바로 앞에 나타납니다:
 
 ```swift
 let initialBits: UInt8 = 0b00001111
 let invertedBits = ~initialBits   // 11110000 과 같습니다.
 ```
 
-`UInt8` 정수는 8-비트를 가지고 있어서 `0` 과 `255` 사이의 값을 저장할 수 있습니다. 이 예제는 한 `UInt8` 정수를, 처음 '네 자리 (four bits)'[^bits] 는 `0` 이고, 다음 네 자리는 `1` 인, 이진 값 `00001111` 로 초기화합니다. 이는 십진수 값 `15` 와 같습니다.
+`UInt8` 정수는 '8-비트' 이며 `0` 에서 `255` 사이의 어떤 값이든 저장할 수 있습니다. 이 예제는 `UInt8` 정수를, 처음 '네 비트' 는 `0` 으로 설정하고, 다음 '네 비트' 는 `1` 로 설정하는, 이진 값 `00001111` 로 초기화합니다. 이는 십진수 값으로 `15` 와 같습니다.
 
-그런 다음 '비트 논리 부정 연산자' 를 사용하여 `invertedBits` 라는 새로운 상수를 생성하는데, 이는 `initialBits` 와 같으나, 모든 비트를 반전한 것입니다. `0` 은 `1` 이 되고, `1` 은 `0` 이 됩니다. `invertedBits` 의 값은 `11110000` 인데, 부호없는 10-진수 값 `240` 과 같습니다.
+그런 다음 '비트 부정 연산자' 를 사용하여, `initialBits` 와 똑같지만, 모든 비트를 거꾸로 만든, `invertedBits` 라는 새로운 상수를 생성합니다. '0' 은 '1' 이 되고, '1' 은 '0' 이 됩니다. `invertedBits` 의 값은, 부호없는 십진수 값으로 `240` 인, `11110000` 입니다.
 
 #### Bitwise AND Operator (비트 논리 곱 연산자)
 
@@ -619,10 +619,6 @@ let manyStars = draw {
 ### 참고 자료
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
-
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^bits]: '비트' 를 우리 말로 한다면 수의 '자리 (값)' 정도가 될 것 같습니다. 다만 프로그래밍 용어에서 이미 '비트' 라는 말을 널리 사용하고 있으므로 '비트' 를 계속 사용하기로 하며, '자리' 라고 하는 것이 자연스러울 때만 '자리' 라고 하겠습니다.
 
 [^factor]: 'factor' 는 수학 용어로 '인수' 라고 하며, '정수 (integer)' 나 '정식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말이라고 합니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. 더 자세한 정보는 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 또는 [인수](https://ko.wikipedia.org/wiki/인수) 를 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
