@@ -137,21 +137,21 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 '부호있는 정수' 의 이동 동작은, '부호있는 정수' 를 2-진수로 표현하는 방식 때문에, '부호없는 정수' 보다 더 복잡합니다. (아래 예제는 문제를 단순하게 하려고 '8-비트 부호있는 정수' 에 기초하고 있지만, 어떤 크기의 '부호있는 정수' 에도 똑같은 원리가 적용됩니다.)
 
-부호있는 정수는 첫 번째 비트 (_부호 비트 (sign bit)_) 를 사용하여 그 정수가 양수인지 음수인지를 나타냅니다. 부호 비트가 `0` 이면 양수를 의미하고, 부호 비트가 `1` 이면 음수를 의미합니다.
+'부호있는 정수' 는 정수가 양수인지 음수인지 지시하기 위해 (_부호 비트 (sign bit)_ 라고 하는) 첫 번째 비트를 사용합니다. `0` 이라는 부호 비트는 양수를 의미하고, `1` 이라는 부호 비트는 음수를 의미합니다.
 
-나머지 비트들 (_값 비트들 (value bits)_) 은 실제 값을 저장하고 있습니다. 양수는 부호없는 정수와 정확하게 같은 방식인, `0` 으로 시작하여 저장됩니다. `Int8` 내부 비트로 `4` 라는 수를 나타내는 방법은 다음과 같습니다:
+(_값 비트 (value bits)_ 라고 하는) 나머지 비트들이 실제 값을 저장합니다. 양수는, `0` 부터 위로 세는, '부호없는 정수' 와 정확하게 똑같은 방식으로 저장합니다. 다음은 `Int8` 안의 비트로 `4` 를 저장하는 방법입니다:
 
 ![signed positive 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-positive-4.jpg)
 
-부호 비트는 `0` 이며 ("양수 (positive)" 를 의미), 7 개의 값 비트들은 그냥 `4` 라는 수를, 2-진수 표기법으로 나타낸 것입니다.
+부호 비트는 ("양수 (positive)" 를 의미하는) `0` 이며, 7 개의 값 비트들은 그냥, 2-진 표기법으로 작성된, `4` 라는 수입니다.
 
-하지만, 음수는 다른 방식으로 저장됩니다. 음수는 `2` 의 `n` 거듭 제곱에서 자신의 절대 값을 뺀 형태로 저장되는데, 여기서 `n` 은 값 비트의 개수입니다.[^two-s-complement] 8-비트 수는 7 개의 값 비트를 가지므로, 이는 `2`의 `7` 거듭 제곱, 또는 `128` 을 의미하게 됩니다.
+하지만, 음수는 다르게 저장합니다. 이는 `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 값으로 저장되는데, 여기서 `n` 은 값 비트의 개수입니다.[^two-s-complement] '8-비트 수' 는 '7 개의 값 비트' 를 가지므로, 이는 `2`의 `7` 제곱, 또는 `128` 을, 의미합니다.
 
-`Int8` 내부 비트로 `-4` 라는 수를 나타내는 방법은 다음과 같습니다:
+다음은 `Int8` 안의 비트로 `-4` 를 저장하는 방법입니다:
 
 ![signed negative 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-negative-4.jpg)
 
-이번에는, 부호 비트가 `1` 이며 ("음수 (negative)" 를 의미), 7 개의 값 비트들은 `124` 의 2-진수 값을 가집니다 (이는 `128 - 4` 입니다.):
+이번에는, 부호 비트가 ("음수 (negative)" 를 의미하는) `1` 이며, 7 개의 값 비트들은 (`128 - 4` 인) `124` 의 '2-진 값' 을 가집니다:
 
 ![signed 124](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-124.jpg)
 
@@ -624,7 +624,7 @@ let manyStars = draw {
 
 [^CSS]: 원문에서는 'Cascading Style Sheets' 라고 했지만, 오히려 'CSS' 라는 줄임말이 더 이해하기 편할 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
 
-[^two-s-complement]: 이런 방식으로 음수를 표현하는 것을 컴퓨터 용어로 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면 `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워 지는 등의 장점이 있습니다. 이는 본문에서도 계속해서 언급하고 있습니다. 더 자세한 정보는 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 또는 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 를 참고하기 바랍니다.
+[^two-s-complement]: 컴퓨터 용어로 이런 방식을 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면, 본문에서 계속 언급하는 것처럼, `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워지는 장점을 가집니다. '2의 보수' 에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
 
 [^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 또는 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 를 참고하기 바랍니다.
 
