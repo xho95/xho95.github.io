@@ -155,7 +155,7 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 ![signed 124](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-124.jpg)
 
-음수를 이렇게 '부호화 (encoding)' 하는 것을 _2의 보수 (two's complement)_ 표현법이라고합니다. 음수를 표현하기에 특이한 방법으로 보일 수 있지만, 이렇게 하는데는 몇 가지 장점이 있습니다.
+음수에 대한 이런 '부호화' 를 '_2의 보수 (two's complement)_ 표현' 이라고 합니다. 특이한 방식으로 음수를 표현하는 것 같지만, 이는 여러 장점을 가지고 있습니다.
 
 첫 번째는, `-1` 과 `-4` 를 더할 때, (부호 비트도 포함하여) 8 개의 모든 비트를 단순히 표준 이진 방식으로 더하고, 완료 후 8 비트에 해당되지 않는 것은 버림으로써, 구할 수 있다는 것입니다:
 
