@@ -89,24 +89,24 @@ _비트 왼쪽 이동 연산자 (bitwise left shift operator;_ `<<`_)_ 와 _비�
 
 비트 왼쪽 및 오른쪽 이동은 정수를 '2' 라는 '인수 (factor)'[^factor] 로 곱하거나 나누는 효과를 가집니다. 정수 비트의 위치를 왼쪽으로 하나 이동하는 것은 값을 두 배로 만드는 반면, 위치를 오른쪽으로 하나 이동하는 것은 값을 반으로 만듭니다.
 
-**Shifting Behavior for Unsigned Integers (부호없는 정수에 대한 이동 동작)**
+**Shifting Behavior for Unsigned Integers (부호없는 정수의 이동 동작)**
 
-부호없는 정수에 대한 비트-이동 동작은 다음과 같습니다:
+'부호없는 정수' 의 '비트-이동 동작' 은 다음과 같습니다:
 
-1. 기존 비트를 요청한 위치 값만큼 왼쪽이나 오른쪽으로 이동합니다.
-2. 정수 (integer) 의 수용 범위를 넘어서는 비트는 어떤 것이든 버립니다.
-3. 원래 비트를 왼쪽이나 오른쪽으로 이동하면서 남는 공간에는 `0` 을 삽입합니다.
+1. 기존 비트는 요청한 수의 위치만큼 왼쪽 또는 오른쪽으로 이동합니다.
+2. 정수 저장 공간의 경계 너머로 이동하는 어떤 비트든 버립니다.
+3. 원본 비트를 왼쪽 또는 오른쪽으로 이동한 후 남은 공간은 `0` 을 집어 넣습니다.
 
-이러한 접근 방법을 _논리적 이동 (logical shift)_ 이라고 합니다.
+이 접근 방식을 _논리적 이동 (logical shift)_ 이라고 합니다.
 
-아래 그림은 `11111111 << 1` (`11111111` 이 `1` 위치 만큼 왼쪽으로 이동한 것) 과 `11111111 >> 1` (`11111111` 이 `1` 위치 만큼 오른쪽으로 이동한 것) 의 결과를 보여줍니다. 파란색 숫자가 이동된 것이고, 회색 숫자는 삭제된 것이며, 주황색 `0` 이 삽입되었습니다:
+아래 묘사는 (`11111111` 을 `1` 위치 만큼 왼쪽으로 이동하는) `11111111 << 1` 과, (`11111111` 을 `1` 위치 만큼 오른쪽으로 이동하는) `11111111 >> 1` 의 결과를 보여줍니다. 파란색 숫자는 이동한 것이고, 회색 숫자는 버린 것이며, 주황색 `0` 은 집어 넣은 것입니다:
 
 ![shifting behavior for unsigned integer](/assets/Swift/Swift-Programming-Language/Advanced-Operators-shifting-behavior-for-unsigned.png)
 
-다음은 스위프트 코드에서 비트 이동을 하는 방법을 보여줍니다:
+다음은 '비트 이동' 방법을 스위프트 코드로 보인 것입니다:
 
 ```swift
-let shiftBits: UInt8 = 4    // 00000100 라는 2-진수 와 같습니다.
+let shiftBits: UInt8 = 4    // 00000100 이진수
 shiftBits << 1              // 00001000
 shiftBits << 2              // 00010000
 shiftBits << 5              // 10000000
@@ -114,13 +114,13 @@ shiftBits << 6              // 00000000
 shiftBits >> 2              // 00000001
 ```
 
-'비트 이동 (bit shifting)' 기능을 사용하면 다른 자료 타입 내의 값을 '부호화 (encoding)' 하고 '복호화 (decoding)' 할 수 있습니다:
+'비트 이동' 을 사용하여 다른 데이터 타입의 값을 '부호화 (encoding)' 하고 '복호화 (decoding)' 할 수 있습니다:
 
 ```swift
 let pink: UInt32 = 0xCC6699
-let redComponent = (pink & 0xFF0000) >> 16    // redComponent 는 0xCC, 또는 204 가 됩니다.
-let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 가 됩니다.
-let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 이 됩니다.
+let redComponent = (pink & 0xFF0000) >> 16    // redComponent 는 0xCC, 또는 204 입니다.
+let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 입니다.
+let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 입니다.
 ```
 
 이 예제는 `pink` 라는 `UInt32` 상수를 사용하여 핑크 색상에 대한 'CSS'[^CSS] 값을 저장합니다. CSS 색상 값 `#CC6699` 를 스위프트의 16-진수 수치 표현으로 나타내면 `0xCC6699` 입니다. 그다음 '비트 논리 곱 연산자 (bitwise AND operator)' (`&`) 와 '비트 오른쪽-이동 연산자 (bitwise right shift operator)' (`>>`) 를 사용하여 이 색상을 '빨간색 (`CC`)', '녹색 (`66`)', 그리고 '파란색 (`99`)' 성분으로 분해했습니다.
