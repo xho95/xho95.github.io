@@ -371,7 +371,7 @@ for genre in favoriteGenres {
 스위프트의 `Set` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 지정된 순서로 셋의 값들에 동작을 반복시키려면, '셋' 의 원소를 `<` 연산자로 '정렬된 배열' 로써 반환하는, `sorted()` 메소드를 사용합니다.
 
 ```swift
-for genre in favoriteGenres.sort() {
+for genre in favoriteGenres.sorted() {
   print("\(genre)")
 }
 // Classical
