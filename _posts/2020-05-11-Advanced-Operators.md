@@ -157,17 +157,17 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 음수에 대한 이런 '부호화' 를 '_2의 보수 (two's complement)_ 표현' 이라고 합니다. 특이한 방식으로 음수를 표현하는 것 같지만, 이는 여러 장점을 가지고 있습니다.
 
-첫 번째는, `-1` 과 `-4` 를 더할 때, (부호 비트도 포함하여) 8 개의 모든 비트를 단순히 표준 이진 방식으로 더하고, 완료 후 8 비트에 해당되지 않는 것은 버림으로써, 구할 수 있다는 것입니다:
+첫 번째로, `-1` 과 `-4` 를, 단순히 (부호 비트를 포함한) 모든 8 비트 '표준 이진 더하기' 를 한 후, 8 비트 안에 맞지 않는 어떤 것이든 버림으로써, 더할할 수 있다는 것입니다: 
 
 ![two complement negative addition](/assets/Swift/Swift-Programming-Language/Advanced-Operators-two-complement-negative-addtion.jpg)
 
-두 번째는, 2의 보수 표현법은 음수 비트를 왼쪽이나 오른쪽으로 이동하는 것도 양수처럼 할 수 있게 해주며, 왼쪽으로 이동할 때마다 두 배로 증가하는 것, 오른쪽으로 이동할 때마다 반으로 나누는 것도 여전히 같습니다. 이를 위해, 부호있는 정수가 오른쪽으로 이동될 때는 부가적인 규칙을 사용합니다: 부호있는 정수를 오른쪽으로 이동할 때는, 부호없는 정수와 동일한 규칙을 적용하지만, 왼쪽에 생기는 빈 '자리 (bits)' 는, `0` 이 아니라, _부호 비트 (sign bit)_ 로 채웁니다.
+두 번째로, '2의 보수 표현' 은 음수 비트의 왼쪽 오른쪽 이동을 양수 같이 할 수 있게 해주며, 여전히 왼쪽으로 이동할 때마다 두 배 증가하고, 오른쪽으로 이동할 때마다 반으로 나누는 식으로 끝맺습니다. 이를 달성하기 위해, '부호있는 정수' 를 오른쪽으로 이동할 때는, 부가적인 규칙을 사용합니다: '부호있는 정수' 를 오른쪽으로 이동할 때는, '부호없는 정수' 와 똑같은 규칙을 적용하지만, 왼쪽에 남은 '빈 자리' 를, `0` 보다는, _부호 비트 (sign bit)_ 로 채웁니다.
 
 ![two complement negative shift](/assets/Swift/Swift-Programming-Language/Advanced-Operators-two-complement-negative-shift.jpg)
 
-이런 행동은 부호있는 정수가 오른쪽으로 이동된 다음에도 같은 부호를 가지도록 보장하는 것으로, 이를 _산술 이동 (arithmetic shfit)_ 이라고 합니다.[^arithmetic-shift]
+이 행동은, _산술 이동 (arithmetic shfit)_ 이라고 하는데, '부호있는 정수' 가 오른쪽으로 이동한 후에도 똑같은 부호를 가지도록 보장합니다.[^arithmetic-shift]
 
-양수와 음수가 저장되는 특수한 방식으로 인해, 둘 중 어떤 것도 오른쪽으로 이동하면 점점 더 `0` 에 가까워집니다. 이동 중에 부호 비트를 같게 유지하는 것은 값이 `0` 에 가까워지더라도 음수는 계속 음수로 남는다는 것을 의미합니다.
+양수와 음수를 저장하는 특수한 방식 때문에, 어느 것이든 오른쪽으로 이동하면 점점 더 `0` 에 가까워집니다. 이 이동 중에 부호 비트를 똑같이 유지한다는 것은 음수 값이 `0` 에 가까워지더라도 음의 정수는 음수로 남아 있는다는 의미입니다.
 
 ### Overflow Operators (값 넘침 연산자)
 
@@ -626,7 +626,7 @@ let manyStars = draw {
 
 [^two-s-complement]: 컴퓨터 용어로 이런 방식을 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면, 본문에서 계속 언급하는 것처럼, `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워지는 장점을 가집니다. '2의 보수' 에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
 
-[^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 또는 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 를 참고하기 바랍니다.
+[^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은, 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 항목과 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 항목을 참고하기 바랍니다.
 
 [^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. '결합 법칙' 에 대한 더 자세한 내용은 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 또는 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 을 참고하기 바랍니다.
 
