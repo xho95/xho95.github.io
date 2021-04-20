@@ -123,7 +123,7 @@ let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는
 let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 입니다.
 ```
 
-이 예제는 `pink` 라는 `UInt32` 상수를 사용하여 핑크 색상에 대한 'CSS'[^CSS] 값을 저장합니다. CSS 색상 값 `#CC6699` 를 스위프트의 16-진수 수치 표현으로 나타내면 `0xCC6699` 입니다. 그다음 '비트 논리 곱 연산자 (bitwise AND operator)' (`&`) 와 '비트 오른쪽-이동 연산자 (bitwise right shift operator)' (`>>`) 를 사용하여 이 색상을 '빨간색 (`CC`)', '녹색 (`66`)', 그리고 '파란색 (`99`)' 성분으로 분해했습니다.
+이 예제는 '핑크 색' 에 대한 'CSS 값'[^CSS] 을 저장하는 `pink` 라는 `UInt32` 상수를 사용합니다. 'CSS 색상 값 `#CC6699`' 을 스위프트 '16-진수 표현' 으로 작성하면 `0xCC6699` 입니다. 그런 다음 '비트 곱 연산자 (`&`)' 와 '비트 오른쪽 이동 연산자 (`>>`)' 가 이 색을 '빨간색 (`CC`)', '녹색 (`66`)', 그리고 '파란색 (`99`) 성분' 으로 분해합니다.
 
 빨간색 성분은 수치 값 `0xCC6699` 와 `0xFF0000` 를 '비트 논리 곱' 하여 구합니다. `0xFF0000` 에 있는 `0` 들은 `0xCC6699` 의 두 번째와 세 번째 '바이트 (bytes)' 를 효과적으로 "숨기므로 (mask)", `6699` 는 무시되어 결과적으로 `0xCC0000` 만 남습니다.
 
@@ -620,9 +620,9 @@ let manyStars = draw {
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
-[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer)' 나 '수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말입니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목 또는 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
+[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer)' 나 '수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말입니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
-[^CSS]: 원문에서는 'Cascading Style Sheets' 라고 풀어썼지만, 'CSS' 라는 줄임말이 더 이해하기 쉬울 것입니다. 이에 대한 더 자세한 정보는 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 또는 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 를 참고하기 바랍니다.
+[^CSS]: 원문에서는 'Cascading Style Sheets' 라고 했지만, 오히려 'CSS' 라는 줄임말이 더 이해하기 편할 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
 
 [^two-s-complement]: 이런 방식으로 음수를 표현하는 것을 컴퓨터 용어로 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면 `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워 지는 등의 장점이 있습니다. 이는 본문에서도 계속해서 언급하고 있습니다. 더 자세한 정보는 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 또는 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 를 참고하기 바랍니다.
 
