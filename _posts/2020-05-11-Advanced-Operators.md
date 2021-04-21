@@ -194,7 +194,7 @@ potentialOverflow += 1
 
 수는 양의 방향과 음의 방향 둘 다로 넘칠 수 있습니다.
 
-다음은, '값 넘침 더하기 연산자 (`&+`)' 로, '부호없는 정수' 가 양의 방향의 값 넘침을 허용할 때 발생하는 일에 대한 예제입니다:
+다음은, '값 넘침 더하기 연산자 (`&+`)' 로, '부호없는 정수' 가 양의 방향 값 넘침을 허용할 때 발생하는 일에 대한 예제입니다:
 
 ```swift
 var unsignedOverflow = UInt8.max
@@ -207,13 +207,13 @@ unsignedOverflow = unsignedOverflow &+ 1
 
 ![value overflow 0](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-0.png)
 
-이와 비슷한 일은 부호없는 정수가 음의 방향으로 값이 넘칠 때도 일어납니다. 다음은 '값 넘침 빼기 연산자 (overflow subtraction operator; `&-`)' 를 사용하는 예제입니다:
+이와 비슷한 일이 '부호없는 정수' 가 음의 방향 값 넘침을 허용할 때도 발생합니다. 다음은 '값 넘침 빼기 연산자 (`&-`)' 를 사용하는 예제입니다:
 
 ```swift
 var unsignedOverflow = UInt8.min
-// unsignedOverflow 는 0 과 같으며, 이는 UInt8 이 수용할 수 있는 최소값입니다.
+// unsignedOverflow 는, UInt8 이 쥘 수 있는 최소 값인, 0 입니다.
 unsignedOverflow = unsignedOverflow &- 1
-// unsignedOverflow 는 이제 255 와 같습니다.
+// unsignedOverflow 는 이제 255 입니다.
 ```
 
 `UInt8` 이 수용할 수 있는 최소 값은 `0`, 즉 2-진수 `00000000` 입니다. '값 넘침 빼기 연산자 (`&-`)' 로 `00000000` 에서 `1` 을 빼면, 수치 값이 넘쳐서 `11111111` 또는 10-진수로 `255` 가 되버립니다.
