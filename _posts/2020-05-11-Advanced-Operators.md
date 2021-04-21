@@ -237,9 +237,9 @@ signedOverflow = signedOverflow &- 1
 
 ### Precedence and Associativity (우선 순위와 결합성)
 
-연산자 _우선 순위 (precedence)_ 는 일부 연산자에 다른 것보다 더 높은 우선권을 주는 것입니다; 이 연산자들은 먼저 적용됩니다.
+연산자 _우선 순위 (precedence)_ 는 일부 연산자에 다른 것보다 더 높은 '우선권' 을 줍니다; 이 연산자들이 먼저 적용됩니다.
 
-연산자 _결합성 (associativity)_[^associativity] 은 같은 우선 순위의 연산자들을 서로 그룹짓는 방법을 정의하는 것입니다-왼쪽으로 그룹짓거나, 오른쪽으로 그룹지을 수 있습니다. 이 의미는 “왼쪽의 표현식과 결합되어 있다”, 거나 “오른쪽의 표현식과 결합되어 있다” 로 생각하면 됩니다.
+연산자 _결합성 (associativity)_[^associativity] 은 똑같은 우선 순위의 연산자들을-왼쪽부터든, 아니면 오른쪽부터든-서로 그룹짓는 방법을 정의합니다. 이는 “이들은 왼쪽에 있는 표현식과 결합한다”, 또는 “이들은 오른쪽에 있는 표현식과 결합한다” 라는 의미로 생각하면 됩니다.
 
 각 연산자의 우선 순위와 결합성을 고려해야 복합 표현식의 계산 순서를 알아낼 수 있다는 점에서 중요합니다. 예를 들어, 연산자 우선 순위는 다음의 표현식이 `17` 인 이유를 설명해 줍니다.
 
@@ -630,6 +630,6 @@ let manyStars = draw {
 
 [^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 10, 0, 1 ...` 처럼 일련의 수들이 빙글빙글 돌아가면서 되풀이되는 것을 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 참고하기 바랍니다.
 
-[^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. '결합 법칙' 에 대한 더 자세한 내용은 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 또는 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 을 참고하기 바랍니다.
+[^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. 의미도 '결합 법칙' 과 거의 유사합니다. '결합 법칙' 에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
