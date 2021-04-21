@@ -192,15 +192,15 @@ potentialOverflow += 1
 
 #### Value Overflow (값 넘침)
 
-수치 값은 양의 방향과 음의 방향 양쪽으로 다 넘칠 수 있습니다.
+수는 양의 방향과 음의 방향 둘 다로 넘칠 수 있습니다.
 
-다음 예제는 '값 넘침 더하기 연산자 (overflow addtion operator; `&+`)' 를 사용하여, 값 넘침을 허용한 부호없는 정수에서 어떤 일이 일어나는지를 보여줍니다:
+다음은, '값 넘침 더하기 연산자 (`&+`)' 로, '부호없는 정수' 가 양의 방향의 값 넘침을 허용할 때 발생하는 일에 대한 예제입니다:
 
 ```swift
 var unsignedOverflow = UInt8.max
-// unsignedOverflow 는 255 와 같으며, 이는 UInt8 이 수용할 수 있는 최대 값입니다.
+// unsignedOverflow 는, UInt8 이 쥘 수 있는 최대 값인, 255 입니다.
 unsignedOverflow = unsignedOverflow &+ 1
-// unsignedOverflow 는 이제 0 과 같습니다.
+// unsignedOverflow 는 이제 0 입니다.
 ```
 
 변수 `unsignedOverflow` 는 `UInt8` 이 수용할 수 있는 최대 값 (`255`, 또는 2-진수 `11111111`) 으로 초기화됩니다. 그런 다음 '값 넘침 더하기 연산자' (`&+`) 로 `1` 만큼 증가합니다. 이는 아래 도표에 나타낸 것처럼, 경계 너머로 값을 넘치게 하므로, 2-진 표현법으로는 `UInt8` 이 수용할 수 있는 크기를 넘겨 버립니다. 값 넘침 더하기 후 `UInt8` 경계 내에 남는 값은 `00000000`, 즉 `0` 입니다.
