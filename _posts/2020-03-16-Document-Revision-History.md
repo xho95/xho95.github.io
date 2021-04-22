@@ -281,7 +281,7 @@ categories: Swift Language Grammar Revision History
 * '지명 초기자 (designated initializer)' 의 재정의는 반드시 이제 `override` 수정자로 표시해야 함을 알리기 위해 [Initializer Inheritance and Overriding (초기자 상속과 재정의)]({% post_url 2016-01-23-Initialization %}#initializer-inheritance-and-overriding-초기자-상속과-재정의) 부분을 갱신함.
 * 이제 '필수 초기자' 의 모든 하위 클래스 구현 앞에 `required` 수정자를 붙여야 하며, '필수 초기자' 의 '필수 조건 (requirements)' 은 '자동으로 상속된 초기자' 로 만족시킬 수 있음을 알리기 위해, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 갱신함.
 * '중위 (infix)' [Operator Methods (연산자 메소드)]({% post_url 2020-05-11-Advanced-Operators %}#operator-methods-연산자-메소드) 는 이제 더 이상 `@infix` 특성을 필수로 요구하지 않음.
-* [Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-연산자와-접미사-연산자) 에 대한 `@prefix` 와 `@postfix` 특성은 `prefix` 와 `postfix` 선언 수정자로 대체되었음.
+* [Prefix and Postfix Operators (접두사 및 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-및-접미사-연산자) 에 대한 `@prefix` 와 `@postfix` 특성은 `prefix` 와 `postfix` 선언 수정자로 대체되었음.
 * 동일한 '피연산자 (operand)' 에 '접두사 (prefix) 연산자' 와 '접미사 (postfix) 연산자' 를 둘 다 적용할 때 [Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-연산자와-접미사-연산자) 가 적용되는 순서에 대한 기록을 추가함.
 * [Compound Assignment Operators (복합 할당 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#compound-assignment-operators-복합-할당-연산자) 에 대한 '연산자 함수 (operator functions)' 는 이제 함수를 정의할 때 더 이상 `@assignment` 특성을 사용하지 않습니다.
 * [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 지정하는 수정자의 순서가 바뀌었음. 예를 들어, 이제 `operator prefix` 가 아니라 `prefix operator` 라고 작성함.
