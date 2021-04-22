@@ -278,15 +278,15 @@ signedOverflow = signedOverflow &- 1
 
 '연산자 우선 순위 그룹' 과 '결합성 설정' 의 완전한 목록을 포함하여, '스위프트 표준 라이브러리' 에서 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 을 참고하기 바랍니다.
 
-> 스위프트의 연산자 우선 순위와 결합성 규칙은 C 와 오브젝티브-C 에 있는 것보다 더 간단하고 더 예측 가능합니다. 하지만, 이는 'C-에 기초한 언어' 의 것들과 정확하게 똑같지는 않다는 의미입니다. 기존 코드를 스위프트로 이식할 때는 '연산자 상호 작용' 이 여전히 의도한 방식으로 동작하도록 보장하는 것에 주의하기 바랍니다.
+> 스위프트의 '연산자 우선 순위와 결합성 규칙' 은 C 와 오브젝티브-C 에 있는 것보다 더 간단하며 더 예측 가능합니다. 하지만, 이는 곧 'C-기반 언어' 에 있는 것과 정확하게 똑같지는 않다는 것을 의미힙니다. 기존 코드를 스위프트로 이식할 때는 '연산자 상호 작용' 이 의도대로 여전히 동작하도록 보장하는데 주의하기 바랍니다.
 
 ### Operator Methods (연산자 메소드)
 
 클래스와 구조체는 기존 연산자에 대한 자신만의 구현을 제공할 수 있습니다. 이를 기존 연산자의 _중복 정의 (overloading)_ 라고 합니다.
 
-아래 예제는 사용자 정의 구조체에서 '산술 더하기 연산자 (arithmetic addition operator; `+`)' 를 구현하는 방법을 보여줍니다. '산술 더하기 연산자' 는 두 대상에 대해 작동하므로 _이항 연산자 (binary operator)_ 이며 두 대상 사이에 나타내므로 _중위 (infix)_ 라고도 합니다.
+아래 예제는 '사용자 정의 구조체' 에 대한 '산술 더하기 연산자 (`+`)' 를 구현하는 방법을 보여줍니다. '산술 더하기 연산자' 는 두 개의 대상을 연산하기 때문에 _이항 연산자 (binary operator)_ 이며 이 두 대상 사이에 있기 때문에 _중위 (infix)_[^infix] 라고 말합니다.
 
-이 예제는 2-차원 위치 벡터 `(x, y)` 를 위한 `Vector2D` 구조체를 정의한 다음, 이어서 `Vector2D` 구조체 인스턴스를 서로 더하기 위해 _연산자 메소드 (operator method)_ 를 하나 정의합니다:
+예제는 '2-차원 위치 벡터 `(x, y)`' 를 위한 `Vector2D` 구조체를 정의하고, 이어서 `Vector2D` 구조체 인스턴스를 서로 더하기 위한 _연산자 메소드 (operator method)_ 를 정의합니다:
 
 ```swift
 struct Vector2D {
@@ -300,20 +300,20 @@ extension Vector2D {
 }
 ```
 
-이 연산자 메소드는 `Vector2D` 의 타입 메소드로 정의되며, 중복 정의될 연산자 (`+`) 와 일치하는 메소드 이름을 가집니다. 더하기는 '벡터 (vector)' 의 핵심적인 동작은 아니기 때문에, `Vector2D` 구조체의 주요 선언부 대신 `Vector2D` 의 '확장 (extension)' 에서 타입 메소드를 정의합니다. '산술 더하기 연산자' 는 '이항 연산자' 이므로, 이 연산자 메소드는 `Vector2D` 타입의 입력 매개 변수를 두 개 받아서 역시 `Vector2D` 타입인, 단일 출력 값을 반환합니다.
+연산자 메소드는 `Vector2D` 에 대한 '타입 메소드' 로 정의하며, '메소드 이름' 은 '중복 정의할 연산자 (`+`)' 와 일치합니다. 더하기가 '벡터 (vector)' 의 핵심 동작은 아니기 때문에, 타입 메소드를 `Vector2D` 구조체의 주 선언부 보다는 '`Vector2D` 익스텐션' 에서 정의합니다. '산술 더하기 연산자' 가 '이항 연산자' 이기 때문에, 이 연산자 메소드는 `Vector2D` 타입의 두 입력 매개 변수를 취하며, 역시 `Vector2D` 타입인, 단일 출력 값을 반환합니다.
 
-이 구현에서, 입력 매개 변수의 이름인 `left` 와 `right` 는 `+` 연산자의 왼쪽과 오른쪽에 있는 `Vector2D` 인스턴스를 나타냅니다. 이 메소드는 새 `Vector2D` 인스턴스를 반환하는데, 여기서 `x` 와 `y` 속성은 서로 더해지는 두 `Vector2D` 인스턴스의 속성인 `x` 와 `y` 의 합으로 초기화됩니다.
+이 구현에서, 입력 매개 변수는 `+` 연산자의 왼쪽과 오른쪽에 있는 `Vector2D` 인스턴스를 표현하기 위한 `left` 와 `right` 라는 이름을 붙입니다. 메소드는, 자신의 `x` 와 `y` 을 서로 더한 두 `Vector2D` 인스턴스에 있는 `x` 와 `y` 속성의 합으로 초기화하는, 새로운 `Vector2D` 인스턴스를 반환합니다.
 
-타입 메소드는 기존 `Vector2D` 인스턴스 사이에서 '중위 연산자' 처럼 사용할 수 있습니다:
+타입 메소드는 기존 `Vector2D` 인스턴스 사이의 '중위 연산자' 로 사용할 수 있습니다:
 
 ```swift
 let vector = Vector2D(x: 3.0, y: 1.0)
 let anotherVector = Vector2D(x: 2.0, y: 4.0)
 let combinedVector = vector + anotherVector
-// combinedVector 는 값이 (5.0, 5.0) 인 Vector2D 인스턴스입니다.
+// combinedVector 는 (5.0, 5.0) 라는 값을 가진 Vector2D 인스턴스입니다.
 ```
 
-이 예제는, 아래 도표와 같이, 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 더하여 벡터 `(5.0, 5.0)` 을 만듭니다.
+이 예제는 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 서로 더하여, 아래에 묘사한 것처럼, 벡터 `(5.0, 5.0)` 을 만듭니다.
 
 ![operator method](/assets/Swift/Swift-Programming-Language/Advanced-Operators-operator-method.png)
 
@@ -633,5 +633,7 @@ let manyStars = draw {
 [^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. 의미도 '결합 법칙' 과 거의 유사합니다. '결합 법칙' 에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 '애플 개발자 문서' 로 연결된 링크입니다.
+
+[^infix]: '중위 (infix)' 는 '중간에 위치한다' 라는 말을 줄인 것으로, 수학에서 사용하는 용어입니다. '중위 (infix)' 에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다. 
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
