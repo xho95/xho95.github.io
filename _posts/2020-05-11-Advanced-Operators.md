@@ -345,9 +345,9 @@ let alsoPositive = -negative
 
 #### Compound Assignment Operators (복합 할당 연산자)
 
-_복합 할당 연산자 (compound assignment operators)_ 는 할당 (`=`) 과 또 다른 연산을 결합합니다. 예를 들어, '더하기 할당 연산자 (addtion assigment operator; `+=`)' 는 더하기와 대입을 단일한 작업으로 결합합니다. 복합 할당 연산자의 왼쪽 입력 매개 변수 타입은 `inout` 으로 표시해야 하는데, 매개 변수 값이 연산자 메소드 내에서 직접 수정될 것이기 때문입니다.
+_복합 할당 연산자 (compound assignment operators)_ 는 '할당 (`=`)' 을 다른 연산과 조합합니다. 예를 들어, '더하기 할당 연산자 (`+=`)' 는 '더하기' 와 '할당' 을 단일 연산으로 조합합니다. '복합 할당 연산자' 의 '왼쪽 입력 매개 변수 타입' 은, '연산자 메소드' 안에서 매개 변수의 값을 직접 수정할 것이기 때문에, `inout` 으로 표시합니다.
 
-아래 예제는 `Vector2D` 인스턴스를 위한 '더하기 할당 연산자 메소드' 를 구현합니다:
+아래 예제는 `Vector2D` 인스턴스에 대한 '더하기 할당 연산자 메소드' 를 구현합니다:
 
 ```swift
 extension Vector2D {
@@ -357,16 +357,16 @@ extension Vector2D {
 }
 ```
 
-앞서 '더하기 연산자' 를 정의 했으므로, 여기서 더하는 과정을 다시 구현할 필요가 없습니다. 그대신, '더하기 할당 연산자 메소드' 는 '더하기 연산자 메소드' 가 이미 존재한다는 점을 활용하여, 왼쪽 값과 오른쪽 값을 더한 것을 왼쪽 값에 설정합니다:
+'더하기 연산자' 는 앞에서 정의했기 때문에[^addition-earlier], 더하는 과정을 여기서 재구현할 필요는 없습니다. 그 대신, '더하기 할당 연산자 메소드' 는 '기존 더하기 연산자 메소드' 를 사용하여, 왼쪽 값과 오른쪽 값을 더한 것을 왼쪽 값에 설정합니다:
 
 ```swift
 var original = Vector2D(x: 1.0, y: 2.0)
 let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
 original += vectorToAdd
-// original 의 값은 이제 (4.0, 6.0) 입니다.
+// original 은 이제 (4.0, 6.0) 이라는 값을 가집니다.
 ```
 
-> 기본 제공되는 '할당 연산자 (assignment operator; `=`) 를 '중복정의 (overload)' 하는 것은 불가능합니다. '복합 할당 연산자' 만 '중복정의' 할 수 있습니다. 이와 비슷하게, '삼항 조건 연산자 (ternary conditional operator; `a ? : b : c`)' 도 '중복정의' 할 수 없습니다.
+> '기본 할당 연산자 (`=`)' 를 '중복 정의 (overload)' 하는 것은 불가능합니다. '복합 할당 연산자' 만 '중복 정의' 할 수 있습니다. 이와 비슷하게, '삼항 조건 연산자 (`a ? : b : c`)' 도 '중복 정의' 할 수 없습니다.
 
 #### Equivalence Operators (같음 비교 연산자)
 
@@ -637,5 +637,7 @@ let manyStars = draw {
 [^infix]: '중위 (infix)' 는 '중간에 위치한다' 라는 말을 줄인 것으로, 수학에서 사용하는 용어입니다. '중위 (infix)' 에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다. 
 
 [^qualified]: '규명되어야 (qualifed) 한다' 는 말은 '자신의 소속이 어디인지를 알아야 한다' 는 의미입니다. 스위프트에서 '규명하다' 라는 말의 의미는, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장에 있는 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분의 내용과 그 주석을 참고하기 바랍니다.
+
+[^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. '스위프트 프로그래밍 언어' 책에 있는 예제는 하나의 장 단위로 내용이 이어집니다.
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
