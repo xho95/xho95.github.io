@@ -370,9 +370,9 @@ original += vectorToAdd
 
 #### Equivalence Operators (같음 비교 연산자)
 
-기본적으로, 사용자 정의 클래스와 구조체는, '_같음 (equal to)_ 연산자 (`==`) 와 '_같지 않음 (not equal to)_ 연산자 (`!=`)' 라는, _같음 비교 연산자 euivalence operators)_ 에 대한 구현을 가지지 않습니다. 보통 `==` 연산자는 구현하고, 이 `==` 연산자의 결과를 반대로 만드는 표준 라이브러리의 기본 제공 `!=` 연산자 구현을 사용합니다. `==` 연산자를 구현하는 데는 두 가지 방법이 있습니다: 이를 직접 구현하거나, 아니면 많은 타입에 대해, 스위프트가 구현을 만들어서 통합하도록 요청할 수도 있습니다. 두 가지 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜 준수성을 추가하도록 합니다.
+기본적으로, 사용자 정의 클래스 및 구조체는, '_같음 (equal to)_ 연산자 (`==`)' 와 '_같지 않음 (not equal to)_ 연산자 (`!=`)' 라는, _같음 비교 연산자 euivalence operators)_ 구현을 가지지 않습니다. 대체로 `==` 연산자는 구현하며, `==` 연산자 결과를 반대로 만드는 `!=` 연산자는 표준 라이브러리의 기본 구현을 사용합니다. `==` 연산자 구현에는 두 가지 방식이 있습니다: 자신이 직접 구현할 수도 있고, 아니면 '많은 타입' 들에서, 구현을 만들어 통합하라고 스위프트에게 요청할 수 있습니다. 두 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜에 대한 '준수성' 을 추가합니다.
 
-`==` 연산자의 구현을 제공하는 방법은 다른 '중위 연산자' 를 구현하는 것과 같은 방식하면 됩니다:
+`==` 연산자는 다른 '중위 연산자' 를 구현하는 것과 똑같이 구현합니다:
 
 ```swift
 extension Vector2D: Equatable {
@@ -382,9 +382,9 @@ extension Vector2D: Equatable {
 }
 ```
 
-위의 예제는 `==` 연산자를 구현하여 두 `Vector2D` 인스턴스가 같은 값을 가지고 있는지 검사합니다. `Vector2D` 에서, “같음 (equal)” 의 의미는 “두 인스턴스 모두 같은 `x` 값과 `y` 값을 가진다” 는 것으로 고려해도 말이 되므로, 이 논리를 가지고 연산자를 구현합니다.
+위 예제는 두 `Vector2D` 인스턴스의 값이 같은 지를 검사하는 `==` 연산자를 구현합니다. `Vector2D` 에서, “같음 (equal)” 은 “두 인스턴스 모두 똑같은 `x` 값과 `y` 값을 가진다” 는 의미로 고려하는 것이 합리적이므로, 연산자 구현에서도 이 논리를 사용합니다.
 
-이제 이 연산자로 두 `Vector2D` 인스턴스가 같은지 검사할 수 있습니다:
+이제 두 `Vector2D` 인스턴스가 같은 지를 검사하는데 이 연산자를 사용할 수 있습니다:
 
 ```swift
 let twoThree = Vector2D(x: 2.0, y: 3.0)
@@ -392,31 +392,10 @@ let anotherTwoThree = Vector2D(x: 2.0, y: 3.0)
 if twoThree == anotherTwoThree {
     print("These two vectors are equivalent.")
 }
-// "These two vectors are equivalent." 를 출력합니다.
+// "These two vectors are equivalent." 를 인쇄합니다.
 ```
 
-(구현이) 간단한 많은 경우에, 스위프트가 직접 '같음 비교 연산자' 를 통합해서 구현하도록 요청할 수도 있습니다. 스위프트가 통합된 구현을 제공하는 사용자 정의 타입에는 다음과 같은 것들이 있습니다:
-
-* `Equatable` 프로토콜을 준수하면서 '저장 속성' 만 가지고 있는 구조체
-* `Equatable` 프로토콜을 준수하면서 '결합된 타입 (associated types)' 만 가지고 있는 열거체
-* '결합된 타입 (associated types)' 이 전혀 없는 열거체
-
-통합된 `==` 구현을 가지고 싶으면, `==` 연산자를 직접 구현하지 말고, 원래 선언을 가지고 있는 파일에서 `Equatable` 을 준수한다고 선언하면 됩니다.
-
-아래 예제는 3-차원 위치 벡터 `(x, y, z)` 에 대한 `Vector3D` 구조체를 정의하는데, `Vector2D` 구조체와 비슷합니다. `x`, `y`, 그리고 `z` 속성이 모두 `Equatable` 타입이므로, `Vector3D` 는 '같음 비교 연산자' 의 '통합된 구현' 을 가지게 됩니다.
-
-```swift
-struct Vector3D: Equatable {
-    var x = 0.0, y = 0.0, z = 0.0
-}
-
-let twoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
-let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
-if twoThreeFour == anotherTwoThreeFour {
-    print("These two vectors are also equivalent.")
-}
-// "These two vectors are also equivalent." 를 출력합니다.
-```
+[Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합된-구현을-사용하여-프로토콜-채택하기) 에서 설명한 것처럼, 많은 단순한 경우에, '같음 비교 연산자' 의 '통합된 구현' 을 스위프트가 제공하도록 요청할 수 있습니다.
 
 ### Custom Operators (사용자 정의 연산자)
 
@@ -615,6 +594,9 @@ let manyStars = draw {
 
 스위프트가 '제작자 구문 (builder syntax)' 을 제작자 타입의 메소드 호출로 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 를 참고하기 바랍니다.
 
+### 다음 장
+
+[About the Language Reference (언어의 기준에 대하여) > ]({% post_url 2017-03-13-About-the-Language-Reference %})
 
 ### 참고 자료
 
