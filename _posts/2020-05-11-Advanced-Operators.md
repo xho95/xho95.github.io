@@ -450,9 +450,9 @@ let plusMinusVector = firstVector +- secondVector
 
 ### Result Builders (결과 제작자)
 
-_결과 제작자 (result builder)_ 는, 자연스럽고, 선언적인 방식으로, '리스트 (list)' 나 '트리 (tree)' 같은, '중첩된 자료' 의 생성 구문을 추가하는, 직접 정의하는 타입입니다. '결과 제작자' 를 사용한 코드는, 조건문이나 자료의 반복을 처리하기 위해, `if` 와 `for` 같은, 일상적인 스위프트 구문을 포함할 수 있습니다.
+_결과 제작자 (result builder)_ 는, '리스트 (list)' 나 '트리 (tree)' 같은[^list-or-tree], '중첩 데이터' 를, 자연스럽고, 선언적인 방식으로, 생성하는 구문을 추가하기 위해 정의하는 타입입니다. '결과 제작자' 를 사용하는 코드는, `if` 와 `for` 같이, 조건문 또는 '데이터' 의 반복을 처리하는, 일상적인 스위프트 구문을 포함할 수 있습니다.
 
-아래 코드는 한 줄에 별과 문장을 사용한 그림을 그리기 위한 몇몇 타입을 정의합니다.
+아래 코드는 한 줄 위에 별과 문장으로 그림을 그리기 위한 몇몇 타입을 정의합니다.
 
 ```swift
 protocol Drawable {
@@ -627,5 +627,7 @@ let manyStars = draw {
 [^doubling]: `+++` 는 '단항 접두사 연산자' 이므로, `toBeDoubled` 만 두 배로 만듭니다. 이어서 이 `toBeDoubled` 를 `afterDoubled` 에 할당함으로써 `afterDoubled` 가 `toBeDoubled` 와 같은 값을 가지게 됩니다.
 
 [^operator-declarations-apple]: 원문 자체가 '애플 개발자 문서' 로 가는 링크로 되어 있습니다.
+
+[^list-or-tree]: 여기서의 '리스트 (list)' 와 '트리 (tree)' 는 '자료 구조' 타입 중의 하나를 의미입니다. 
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
