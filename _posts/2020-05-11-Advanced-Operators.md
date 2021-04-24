@@ -419,8 +419,8 @@ extension Vector2D {
 
 var toBeDoubled = Vector2D(x: 1.0, y: 4.0)
 let afterDoubling = +++toBeDoubled
-// toBeDoubled 의 값은 이제 (2.0, 8.0) 입니다.
-// afterDoubling 도 값이 (2.0, 8.0) 입니다.
+// toBeDoubled 은 이제 (2.0, 8.0) 라는 값을 가집니다.[^doubling]
+// afterDoubling 도 (2.0, 8.0) 라는 값을 가집니다.
 ```
 
 #### Precedence for Custom Infix Operators (사용자 정의 중위 연산자에 대한 우선 순위)
@@ -623,5 +623,7 @@ let manyStars = draw {
 [^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. '스위프트 프로그래밍 언어' 책에 있는 예제는 하나의 장 단위로 내용이 이어집니다.
 
 [^global-level]: 실제 '정의' 와는 별도로 '전역 수준' 에서 '선언' 을 따로 해야 한다는 의미입니다.
+
+[^doubling]: `+++` 는 '단항 접두사 연산자' 이므로, `toBeDoubled` 만 두 배로 만듭니다. 이어서 이 `toBeDoubled` 를 `afterDoubled` 에 할당함으로써 `afterDoubled` 가 `toBeDoubled` 와 같은 값을 가지게 됩니다.
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
