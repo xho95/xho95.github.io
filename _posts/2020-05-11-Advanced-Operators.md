@@ -399,7 +399,7 @@ if twoThree == anotherTwoThree {
 
 ### Custom Operators (사용자 정의 연산자)
 
-스위프트가 제공하는 '표준 연산자' 에 더하여 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. '사용자 정의 연산자' 를 정의할 때 사용할 수 있는 문자들의 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 참고하기 바랍니다.
+스위프트가 제공하는 '표준 연산자' 에 더하여 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. '사용자 정의 연산자' 를 정의할 때 사용할 수 있는 문자들의 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 참고하기 바랍니다.
 
 새로운 연산자는 `operator` 키워드를 사용하여 '전역 수준' 에서 선언하며, `prefix`, `infix`, 또는 `postfix` 수정자로 표시합니다:[^global-level]
 
@@ -423,13 +423,13 @@ let afterDoubling = +++toBeDoubled
 // afterDoubling 도 (2.0, 8.0) 라는 값을 가집니다.
 ```
 
-#### Precedence for Custom Infix Operators (사용자 정의 중위 연산자에 대한 우선 순위)
+#### Precedence for Custom Infix Operators (사용자 중위 연산자에 대한 우선 순위)
 
-'사용자 정의 중위 연산자 (custom infix operators)' 는 각각 '우선 순위 그룹 (precedence group)' 에 속해 있습니다. '우선 순위 그룹' 은 다른 중위 연산자와 관계되어 있는 연산자의 '우선 순위 (precedence)', 및 연산자의 '결합성 (associativity)' 을 지정합니다. [Precedence and Associativity (우선 순위와 결합성)](#precedence-and-associativity-우선-순위와-결합성) 의 설명을 보면 이런 성질이 중위 연산자끼리 상호 작용할 때 미치는 영향에 대해 알 수 있습니다.
+각각의 '사용자 중위 연산자' 는 '우선 순위 그룹 (precedence group)' 에 속합니다. '우선 순위 그룹' 은, 연산자의 '결합성 (associativity)' 뿐 아니라, 다른 중위 연산자와 이 연산자의 상대적인 '우선 순위' 를 지정합니다. 이 성질들이 중위 연산자와 다른 중위 연산자와의 상호 작용에 영향을 주는 방법에 대한 설명은 [Precedence and Associativity (우선 순위와 결합성)](#precedence-and-associativity-우선-순위와-결합성) 을 참고하기 바랍니다.
 
-'우선 순위 그룹' 에 명시적으로 배치되지 않은 '사용자 정의 중위 연산자' 은 기본 제공 우선 순위 그룹으로 '삼항 조건 연산자' 의 바로 위의 우선 순위를 가지게 됩니다.
+'우선 순위 그룹' 을 명시하지 않은 '사용자 중위 연산자' 는 '삼항 조건 연산자' 바로 위의 우선 순위를 가진 '기본 우선 순위 그룹' 을 부여합니다.
 
-다음 예제는 `+-` 라는 새로운 '사용자 정의 중위 연산자' 를 정의하는데, 이는 `AdditionPrecedence` 라는 '우선 순위 그룹' 에 속하게 됩니다:
+다음 예제는, `AdditionPrecedence` '우선 순위 그룹' 에 속한, `+-` 라는 새로운 '사용자 중위 연산자' 를 정의합니다:
 
 ```swift
 infix operator +-: AdditionPrecedence
@@ -441,12 +441,12 @@ extension Vector2D {
 let firstVector = Vector2D(x: 1.0, y: 2.0)
 let secondVector = Vector2D(x: 3.0, y: 4.0)
 let plusMinusVector = firstVector +- secondVector
-// plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스입니다.
+// plusMinusVector 는 (4.0, -2.0) 라는 값을 가진 Vector2D 인스턴스입니다.
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터를 뺍니다. 이는 본질적으로 "더하기에 해당하는 (additive)" 연산자이기 때문에, `+` 와 `-` 등의 '더하기 중위 연산자' 와 같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리에서 제공하는 연산자에 대해서, 연산자 우선 순위 및 결합성 설정 값의 전체 목록을 포함한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 을 참고하기 바랍니다. '우선 순위 그룹' 과 연산자 및 우선 순위 그룹을 직접 정의하기 위한 구문 표현에 대한 더 자세한 정보는, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 을 참고하기 바랍니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하며, `y` 값은 첫 번째에서 두 번째 벡터의 값을 뺍니다. 이는 본질적으로 "더하는 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 '더하는 중위 연산자' 와 똑같은 '우선 순위 그룹' 을 부여했습니다. 스위프트 표준 라이브러리가 제공하는, 연산자 '우선 순위 그룹' 과 '결합성 설정' 의 완전한 목록을 포함한, 연산자에 대한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 을 참고하기 바랍니다. '우선 순위 그룹' 에 대한 더 많은 정보와 자신만의 연산자 및 우선 순위 그룹을 정의하기 위한 구문을 보려면, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 을 참고하기 바랍니다.
 
-> '접두사 (prefix) 연산자 '나 '접미사 (postfix) 연산자' 를 정의할 때는 우선 순위를 지정하지 않습니다. 다만, 피연산자에 '접두사 연산자' 와 '접미사 연산자' 를 동시에 사용하면, 접미사 연산자가 먼저 적용됩니다.
+> '접두사' 나 '접미사 연산자' 를 정의할 땐 '우선 순위' 를 지정하지 않습니다. 하지만, 동일한 피연산자에 '접두사' 와 '접미사 연산자' 를 둘 다 적용할 경우, '접미사 연산자' 를 먼저 적용합니다.
 
 ### Result Builders (결과 제작자)
 
@@ -625,5 +625,7 @@ let manyStars = draw {
 [^global-level]: 실제 '정의' 와는 별도로 '전역 수준' 에서 '선언' 을 따로 해야 한다는 의미입니다.
 
 [^doubling]: `+++` 는 '단항 접두사 연산자' 이므로, `toBeDoubled` 만 두 배로 만듭니다. 이어서 이 `toBeDoubled` 를 `afterDoubled` 에 할당함으로써 `afterDoubled` 가 `toBeDoubled` 와 같은 값을 가지게 됩니다.
+
+[^operator-declarations-apple]: 원문 자체가 '애플 개발자 문서' 로 가는 링크로 되어 있습니다.
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
