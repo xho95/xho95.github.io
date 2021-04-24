@@ -399,15 +399,15 @@ if twoThree == anotherTwoThree {
 
 ### Custom Operators (사용자 정의 연산자)
 
-스위프트에서 제공하는 표준 연산자 말고도 직접 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수도 있습니다. '사용자 정의 연산자' 를 정의하는 데 사용할 수 있는 문자 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 참고하기 바랍니다.
+스위프트가 제공하는 '표준 연산자' 에 더하여 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. '사용자 정의 연산자' 를 정의할 때 사용할 수 있는 문자들의 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 참고하기 바랍니다.
 
-새 연산자는 `operator` 키워드를 사용하여 전역 수준에서 선언하고, `prefix`, `infix`, 또는 `postfix` '수정자 (modifiers)' 로 표시합니다:
+새로운 연산자는 `operator` 키워드를 사용하여 '전역 수준' 에서 선언하며, `prefix`, `infix`, 또는 `postfix` 수정자로 표시합니다:[^global-level]
 
 ```swift
 prefix operator +++
 ```
 
-위의 예제는 `+++` 라는 새로운 '접두사 연산자 (prefix operator)' 를 정의합니다. 이 연산자는 기존에는 스위프트에서 아무런 의미가 없던 것으로, 아래와 같이 `Vector2D` 인스턴스와 작업하는 특정 영역에서만 사용자가 정의한 의미를 가지게 됩니다. 이 예제의 목적을 위해, `+++` 는 새로운 “접두 두 배 (prefix doubling)” 연산자인 것처럼 취급됩니다. 이는 `Vector2D` 인스턴스의 `x` 와 `y` 의 값을 두 배로 만들며, 이 때 앞서 정의한 '더하기 할당 연산자' 로 자신을 벡터에 더합니다. `+++` 연산자를 구현하려면, 다음과 같이 `+++` 라는 타입 메소드를 `Vector2D` 에 추가하면 됩니다:
+위 예제는 `+++` 라는 새로운 '접두사 연산자' 를 정의합니다. 이 연산자는 기존 스위프트에서 의미가 없던 것이므로, 아래 처럼 `Vector2D` 인스턴스와 작업하는 특정 상황에서만 자신만의 사용자 정의 의미가 주어집니다. 이 예제 용으로, `+++` 는 “두 배로 만드는 접두사 형식의 (prefix doubling)” 새로운 연산자로 취급합니다. 이는, 앞에서 정의한 '더하기 할당 연산자' 로 벡터에 자신을 더함으로써, `Vector2D` 인스턴스의 `x` 와 `y` 값을 두 배로 만듭니다. `+++` 연산자를 구현하려면, 다음 처럼 `Vector2D` 에 `+++` 라는 타입 메소드를 추가합니다:
 
 ```swift
 extension Vector2D {
@@ -621,5 +621,7 @@ let manyStars = draw {
 [^qualified]: '규명되어야 (qualifed) 한다' 는 말은 '자신의 소속이 어디인지를 알아야 한다' 는 의미입니다. 스위프트에서 '규명하다' 라는 말의 의미는, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장에 있는 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분의 내용과 그 주석을 참고하기 바랍니다.
 
 [^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. '스위프트 프로그래밍 언어' 책에 있는 예제는 하나의 장 단위로 내용이 이어집니다.
+
+[^global-level]: 실제 '정의' 와는 별도로 '전역 수준' 에서 '선언' 을 따로 해야 한다는 의미입니다.
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
