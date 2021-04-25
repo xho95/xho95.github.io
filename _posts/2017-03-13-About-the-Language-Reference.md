@@ -6,13 +6,11 @@ date:   2017-03-13 11:30:00 +0900
 categories: Swift Language Grammar About Reference
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 부분[^Language-Reference]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 부분[^Language-Reference]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## About the Language Reference (언어의 기준에 대하여)
 
-이제부터 책의 나머지 부분은 스위프트 프로그래밍 언어의 공식 문법을 설명합니다. 여기서 문법을 설명하는 것은 언어를 좀 더 자세히 이해하도록 돕기 위한 것이지, 직접 '구문 해석기 (parser)' 나 '컴파일러 (compiler)' 를 만들도록 하기 위함이 아닙니다.
+이제부터 책에서 '스위프트 프로그래밍 언어' 의 공식 문법을 설명합니다. 여기서 설명하는 문법은, '구문 해석기 (parser)' 나 '컴파일러 (compiler)' 를 직접 구현하도록 허용하기 위한 것 보다는, 언어를 좀 더 자세히 이해하도록 돕기 위한 것입니다.
 
 스위프트 언어는 상대적으로 규모가 작은 편인데, 이는 스위프트 코드 어디서나 볼 수 있는 수많은 공통 타입들, 함수들, 그리고 연산자들이 실제로는 스위프트 표준 라이브러리에서 정의되어 있기 때문입니다. 비록 이 타입들, 함수들, 그리고 연산자들이 그 자체로 스위프트 언어의 일부는 아니지만, 이 책의 해설과 코드 예제에서 광범위하게 사용될 것입니다.
 
