@@ -49,11 +49,11 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
-* [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
+* [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 
 ### Language Reference (언어의 기준)
 
-* [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
 * [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 * [Types (타입)]({% post_url 2020-02-20-Types %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 * [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
