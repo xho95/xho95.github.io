@@ -571,9 +571,9 @@ let capsDrawing = caps {
 }
 ```
 
-스위프트는 `if`-`else` 블럭을 `buildEither(first:)` 와 `buildEither(second:)` 메소드에 대한 호출로 변형합니다. 비록 이 메소드들을 자신의 코드에서 호출할 순 없을지라도, 변형의 결과를 보이는 것은 `DrawingBuilder` 구문을 사용할 때 스위프트가 코드를 변형하는 방법을 알아보기 쉽도록 합니다.
+스위프트는 `if`-`else` 블럭을 `buildEither(first:)` 와 `buildEither(second:)` 메소드에 대한 호출로 변형합니다. 비록 자신의 코드에서 이 메소드를 호출하진 않더라도, 변형 결과를 보는 것은 `DrawingBuilder` 구문을 사용할 때 스위프트가 코드를 변형하는 방식을 알기 쉽게 만듭니다.
 
-'특수한 그리기 구문' 에서 `for` 반복문 작성에 대한 지원을 추가하려면, `buildArray(_:)` 메소드를 추가합니다:
+그림을 그리는 '특수 구문' 에서 `for` 반복문 지원을 추가하도록 작성하려면, `buildArray(_:)` 메소드를 추가합니다:
 
 ```swift
 extension DrawingBuilder {
@@ -590,9 +590,9 @@ let manyStars = draw {
 }
 ```
 
-위 코드에서, `for` 반복문은 그림들의 배열을 생성하고, `buildArray(_:)` 메소드는 해당 배열을 `Line` 으로 바꿉니다.
+위 코드에서, `for` 반복문은 그림 배열을 생성하며, `buildArray(_:)` 메소드는 해당 배열을 `Line` 으로 바꿉니다.
 
-스위프트가 '제작자 구문 (builder syntax)' 을 제작자 타입의 메소드 호출로 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 를 참고하기 바랍니다.
+스위프트가 '제작자 구문' 을 '제작자 타입의 메소드에 대한 호출' 로 변형하는 방식에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 를 참고하기 바랍니다.
 
 ### 다음 장
 
