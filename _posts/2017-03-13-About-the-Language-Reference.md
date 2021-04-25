@@ -14,9 +14,9 @@ categories: Swift Language Grammar About Reference
 
 스위프트 언어는, 실제로는 스위프트 표준 라이브러리에서 스위프트 코드 거의 어디에나 있는 많은 공통 타입, 함수, 그리고 연산자들을 정의하기 때문에, 상대적으로 '소규모 (small)' 입니다. 비록 이 타입, 함수, 그리고 연산자들이 그 자체로는 스위프트 언어가 아닐지라도, 이제부터 책의 논의와 코드 예제에서 이를 광범위하게 사용합니다.
 
-### How to Read the Grammar (문법을 읽는 방법)
+### How to Read the Grammar (문법 읽는 방법)
 
-스위프트 프로그래밍 언어의 공식 문법을 설명할 때 사용하는 표기법 (notation) 은 다음과 같은 몇 가지 협약 (convention) 을 따릅니다:
+'스위프트 프로그래밍 언어' 의 공식 문법을 설명하는데 사용하는 '표기법' 은 몇몇 '협약 (convention)' 을 따릅니다:
 
 * '화살표 (→)' 는 '문법 생성 방법 (grammar productions)' 을 표시하는 데 사용하며 “~로 구성될 수 있다” 로 읽을 수 있습니다.
 * '구문 표현의 종류 (syntactic categories)'[^syntactic-categories] 는 _이탤릭체_ 로 표시하며 '문법 생성 규칙 (grammar production rule)' 의 양쪽에 나타납니다.
@@ -37,6 +37,10 @@ categories: Swift Language Grammar About Reference
 >
 > _getter-setter-block_ → **{**­ ­_getter-clause setter-clause <sub>­opt­</sub>_­ **}**­  
 > _getter-setter-block_ → **{**­ _setter-clause ­getter-clause_ **}**­
+
+### 다음 장
+
+[Lexical Structure (어휘 구조) > ]({% post_url 2020-07-28-Lexical-Structure %})
 
 ### 참고 자료
 
