@@ -450,9 +450,9 @@ let plusMinusVector = firstVector +- secondVector
 
 ### Result Builders (결과 제작자)
 
-_결과 제작자 (result builder)_ 는, '리스트 (list)' 나 '트리 (tree)' 같은[^list-or-tree], '중첩 데이터' 를, 자연스럽고, 선언적인 방식으로, 생성하는 구문을 추가하기 위해 정의하는 타입입니다. '결과 제작자' 를 사용하는 코드는, `if` 와 `for` 같이, 조건문 또는 '데이터' 의 반복을 처리하는, 일상적인 스위프트 구문을 포함할 수 있습니다.
+_결과 제작자 (result builder)_ 는, '리스트 (list)' 나 '트리 (tree)' 같은[^list-or-tree], '중첩 데이터' 를, 자연스러운, 선언형 방식으로, 생성하는 구문을 추가하기 위해 정의하는 타입입니다. '결과 제작자' 를 사용하는 코드는, `if` 와 `for` 같이, 조건문 또는 '데이터' 의 반복을 처리하는, 일상적인 스위프트 구문을 포함할 수 있습니다.
 
-아래 코드는 한 줄 위에 별과 문장으로 그림을 그리기 위한 몇몇 타입을 정의합니다.
+아래 코드는 '별' 과 '문장' 으로 한 줄 위에 그림을 그리기 위한 몇몇 타입을 정의합니다.
 
 ```swift
 protocol Drawable {
@@ -482,9 +482,9 @@ struct AllCaps: Drawable {
 }
 ```
 
-`Drawable` 프로토콜은, 선이나 도형 같이, 그릴 수 있는 것을 위한 '필수 조건 (requirement)' 을 정의하는데: 여기서는 '타입이 반드시 `draw()` 함수를 구현해야 한다' 는 것입니다. `Line` 구조체는 '한-줄 그리기' 를 표현하며, 대부분의 그림에 대해 최상단 '컨테이너 (container)'[^container] 의 역할을 담당합니다. `Line` 을 그리기 위해, 구조체는 '줄 (line)' 의 각 성분에 대해 `draw()` 를 호출하며, 그런 다음 결과 문자열을 단일 문자열로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 그림의 일부로 만듭니다. `AllCaps` 구조체는 다른 그림을 포장하며, 그림에 있는 어떤 문장이든 대문자로 변환하는, 수정을 합니다.
+`Drawable` 프로토콜은, 선이나 도형 같이, 그릴 수 있기 위한 '필수 조건' 인: 타입은 반드시 `draw()` 함수를 구현해야 한다는 것을 정의합니다. `Line` 구조체는 '한-줄 그림' 을 표현하며, 대부분의 그림에 대한 '최상단 컨테이너 (container)'[^container] 역할을 합니다. `Line` 을 그리기 위해, 구조체는 각각의 '줄 (line)' 성분에 대한 `draw()` 를 호출하며, 그런 다음 '결과 문자열' 들을 '단일 문자열' 로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 '그림' 으로 만듭니다. `AllCaps` 구조체는 또 다른 그림을 포장하고 수정하여, 그림 안의 어떤 문장이든 대문자로 변환합니다.
 
-이 타입들의 초기자를 호출함으로써 그림을 만드는 것이 가능합니다:
+초기자를 호출함으로써 이 타입들로 그림을 만들 수 있습니다:
 
 ```swift
 let name: String? = "Ravi Patel"
@@ -499,9 +499,9 @@ print(manualDrawing.draw())
 // "***Hello RAVI PATEL!**" 를 인쇄합니다.
 ```
 
-이 코드는 작동하긴 하지만, 조금 어색합니다. `AllCaps` 뒤의 깊이 중첩된 괄호들은 이해하기가 힘듭니다. `name` 이 `nil` 일 때 "World" 를 사용하는 '대체 논리' 는 `??` 연산자를 사용하여 '인라인' 으로 해야하는데, 더 복잡한 것을 해봐야 어렵기만 할 것입니다. 그림 일부를 제작하기 위해 'switch 문' 이나 `for` 반복문을 포함할 필요가 있는 경우에도, 그렇게 할 방법이 없습니다. '결과 제작자' 는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 처럼 보이도록 해줍니다.
+이 코드는 작동은 하지만, 조금 어색합니다. `AllCaps` 뒤에 깊게 중첩된 괄호들은 이해하기가 힘듭니다. `name` 이 `nil` 일 때 "World" 를 사용하는 '대체 논리' 는, 어떤 더 복잡한 것도 어려울 것이므로, `??` 연산자를 사용하여 '인라인' 으로 했어야 합니다. 그림을 제작하기 위해 'switch 문' 이나 `for` 반복문을 포함할 필요가 있어도, 그럴 방법이 없습니다. '결과 제작자' 는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 처럼 보이게 합니다.
 
-'결과 제작자' 를 정의하려면, 타입 선언에 '`@resultBuilder` 특성 (attribute)' 을 작성합니다. 예를 들어, 다음 코드는, 그림을 '선언적인 구문 표현 (declarative syntax)' 으로 설명할 수 있도록 하는, `DrawingBuilder` 라는 '결과 제작자' 를 정의합니다:
+'결과 제작자' 를 정의하려면, '타입 선언' 에 '`@resultBuilder` 특성 (attribute)'[^attribute] 을 작성합니다. 예를 들어, 다음 코드는, '선언형 구문 (declarative)' 으로 그림을 설명하도록 해주는, `DrawingBuilder` 라는 '결과 제작자' 를 정의합니다:
 
 ```swift
 @resultBuilder
@@ -518,9 +518,9 @@ struct DrawingBuilder {
 }
 ```
 
-`DrawingBuilder` 구조체는 '결과 제작자' 구문 표현의 일부분을 구현하는 세 개의 메소드를 정의합니다. `buildBlock(_:)` 메소드는 코드 블럭에 연속된 '줄 (lines)' 들을 작성하는 지원을 추가합니다. 이는 해당 블럭의 성분들을 하나의 `Line` 으로 조합합니다. `buildEither(first:)` 와 `buildEither(second:)` 메소드는 `if`-`else` 문에 대한 지원을 추가합니다.
+`DrawingBuilder` 구조체는 '결과 제작자 구문' 일부를 구현하는 세 개의 메소드를 정의합니다. `buildBlock(_:)` 메소드는 코드 블럭에 '연속된 줄들 ' 을 작성하기 위한 지원을 추가합니다. 이는 해당 블럭에 있는 성분들을 하나의 `Line` 으로 조합합니다. `buildEither(first:)` 와 `buildEither(second:)` 메소드는 `if`-`else` 문에 대한 지원을 추가합니다.
 
-`@DrawingBuilder` 를 함수의 매개 변수에 적용하여, 함수에 전달한 클로저를 해당 클로저로부터엥 결과 제작자가 생성한 값으로 바꿀 수 있습니다. 예를 들어 다음과 같습니다:
+함수의 매개 변수에 `@DrawingBuilder` 를 적용하여, 함수에 전달한 클로저를 해당 클로저로부터 '결과 제작자' 가 생성한 값으로 바꿀 수 있습니다. 예를 들어 다음과 같습니다:
 
 ```swift
 func draw(@DrawingBuilder content: () -> Drawable) -> Drawable {
@@ -555,7 +555,7 @@ print(personalGreeting.draw())
 // "***Hello RAVI PATEL!**" 를 인쇄합니다.
 ```
 
-`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하고 이를 사용해서 개인화한 인사말을 그립니다. `draw(_:)` 와 `caps(_:)` 함수는 둘 다 인자로, `@DrawingBuilder` 특성으로 표시된, 단일 클로저를 취합니다. 이 함수들을 호출할 땐, `DrawingBuilder` 가 정의한 특수한 구문을 사용합니다. 스위프트는 '선언적인 그림 설명' 을 `DrawingBuilder` 에 대한 연속된 메소드 호출로 변형하여 함수 인자로 전달할 값을 제작합니다. 예를 들어, 스위프트는 해당 예제에 있는 `caps(_:)` 에 대한 호출을 다음과 같은 코드로 변형합니다:
+`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하고 이를 사용하여여 '개인별 인사말' 을 그립니다. `draw(_:)` 와 `caps(_:)` 함수 둘 다, `@DrawingBuilder` 특성으로 표시한, 단일 클로저를 인자로 취합니다. 해당 함수를 호출할 땐, `DrawingBuilder` 가 정의한 '특수 구문' 을 사용합니다.[^greeting-draw] 스위프트는 함수 인자로 전달한 값을 제작하기 위해 해당 그림의 '선언형 설명' 을 `DrawingBuilder` 메소드에 대한 연속된 호출로 변형합니다. 예를 들어, 스위프트는 해당 예제의 `caps(_:)` 호출을 다음 같은 코드로 변형합니다:
 
 ```swift
 let capsDrawing = caps {
@@ -629,5 +629,9 @@ let manyStars = draw {
 [^operator-declarations-apple]: 원문 자체가 '애플 개발자 문서' 로 가는 링크로 되어 있습니다.
 
 [^list-or-tree]: 여기서의 '리스트 (list)' 와 '트리 (tree)' 는 '자료 구조' 타입 중의 하나를 의미입니다. 
+
+[^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
+
+[^greeting-draw]: 본문 예제에서는 `makeGreeting` 함수 안에서 `greeting` 상수를 생성할 때 `draw { ... }` 와 `caps { ... }` 부분에서 이 '특수 구문' 을 사용하고 있습니다.
 
 [^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
