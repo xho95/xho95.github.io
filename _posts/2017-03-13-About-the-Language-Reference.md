@@ -20,12 +20,12 @@ categories: Swift Language Grammar About Reference
 
 * '화살표 (→)' 는 '문법 산출물 (grammar productions)' 을 표시하는데 사용하며 “구성할 수 있다” 라고 이해할 수 있습니다
 * '구문 범주 (syntactic categories)' 는 _이탤릭체_ 로 지시하며 '문법 산출 규칙 (grammar production rule)' 양 쪽에 다 나타납니다.[^syntactic-categories]
-* '글자 값 (literal)[^literal] 단어' 와 '구두점 (punctuation)' 은 굵은 글씨의 `constant width (고정 폭)` 글자로 표시하며 '문법 생성 규칙' 의 오른-쪽에서만 나타납니다.
-* '문법 생성 방법' 에 대안이 있는 경우 세로 막대 (\|) 로 구분합니다. 이 대안 방법이 너무 길어서 읽기에 쉽지 않으면, '문법 생성 규칙들' 을 여러 줄로 나눠서 표기합니다.
-* 경우에 따라서는, 문법 생성 규칙의 오른-쪽임을 나타내기 위해 '일반 글꼴 글자 (regular font text)'를 사용합니다.[^regular-font]
-* '구문 표현의 종류' 와 '글자 값' 이 선택 요소인 경우에는 끝에 첨자로 <sub>­opt­</sub> 를 붙여줍니다. [^optional]
+* '글자 값 (literal)[^literal] 단어' 와 '구두점 (punctuation)' 은 굵은 글씨의 '`constant width` 문장' 으로 지시하며 '문법 산출 규칙' 의 오른-쪽에서만 나타납니다.
+* '문법 산출물' 의 대안은 '세로 막대 (`|`)' 로 구분합니다. '대안 산출물' 이 쉽게 이해하기에 너무 길 때는, 이를 여러 '문법 산출 규칙' 으로 끊어서 새로운 줄에 나타냅니다.
+* 몇몇 경우에, '표준적인 글꼴 (regular font) 문장' 을 사용하여 '문법 산출 규칙' 의 오른-쪽을 설명합니다.[^regular-font]
+* 선택 사항인 '구문 범주' 와 '글자 값' 은, _opt_ 라는, '끝자리 첨자 연산 (trailing subscript)' 으로 표시합니다.
 
-예를 들어서 'getter-setter block' 의 문법은 다음과 같습니다:
+예를 들어, '획득자-설정자 블럭 (getter-setter block)' 문법은 다음 처럼 정의합니다:
 
 > GETTER-SETTER 블럭의 문법
 >
@@ -50,8 +50,6 @@ categories: Swift Language Grammar About Reference
 
 [^syntactic-categories]: 아래 예제에서, `getter-setter-block` 같이, '이텔릭체' 로 된 모든 것들이 다 '구문 범주' 입니다.
 
-[^literal]: 여기서 '글자 값' 이란 `let a = 10` 일 때의 `10` 과 같이 실제 글자로 표현된 값을 말하는 것으로, 예를 들어, 이 문장에서 `10` 은 글자 `1` 과 `0` 이 붙어 있는 것이 아니라, 숫자 `10` 으로 인식됩니다.
+[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말하는 것입니다. '글자 값' 에 대한 더 자세한 정보는, [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 부분을 참고하기 바랍니다. 
 
-[^regular-font]: '문법 생성 규칙' 의 오른-쪽에 올 수 있는 것과 왼-쪽에 올 수 있는 것, 양-쪽 다에 올 수 있는 것이 있을 것입니다. 이 중에서 '일반 글꼴 글자 (regular font text)' 는 '문법 생성 규칙' 의 오른-쪽에 올 수 있는 내용을 나타낸다고 볼 수 있습니다.
-
-[^optional]: 여기서의 'optional'은 스위프트의 '옵셔널' 타입과는 상관없는 단어입니다.
+[^regular-font]: '표준적인 글꼴 (regular font)' 은 '문법' 자체가 아니라 그 문법 요소에 대한 '설명' 에 사용된다는 의미입니다.
