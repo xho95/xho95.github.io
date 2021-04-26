@@ -31,7 +31,7 @@ categories: Swift Language Grammar About Reference
 >
 > _getter-setter-block_ → **{**­ _getter-clause ­setter-clause <sub>­opt­</sub>­­_ **}**­ \| **{** _­setter-clause ­getter-clause_ **}**­
 
-이 정의는 getter-setter block (블럭) 은 getter clause (구절) 다음에 선택 사항으로 setter 구절을 붙인 후 중괄호로 감싸서 구성하거나, _아니면_ setter 구절 다음에 getter 구절을 붙인 후 중괄호로 감싸면 구성할 수 있음을 나타냅니다. 위에 있는 '문법 생성 방법' 은 아래에 있는 두 개의 '생성 방법' 과 같은 것으로, 아래에는 대안 방법을 명시적으로 분리하여 나타냈습니다:
+이 정의는 '획득자-설정자 (getter-setter) 블럭' 은, 중괄호 테두리 안의, '획득자 절' 과 그 뒤의 선택적인 '설정자 절', _또는_, 중괄호 테두리 안의, '설정자 절' 과 그 뒤의 '획득자 절' 로 구성할 수 있음을 지시합니다. 위의 '문법 산출물' 은, 명시적으로 상세하게 설명하고 있는, 다음의 두 '산출물' 들과 '동치' 입니다:
 
 > GETTER-SETTER 블럭의 문법
 >
