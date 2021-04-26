@@ -18,9 +18,9 @@ categories: Swift Language Grammar About Reference
 
 '스위프트 프로그래밍 언어' 의 공식 문법을 설명하는데 사용하는 '표기법' 은 몇몇 '협약 (convention)' 을 따릅니다[^notation]:
 
-* '화살표 (→)' 는 '문법 생성 (grammar productions)' 을 표시하는 데 사용하며 “구성할 수 있다” 로 이해할 수 있습니다
-* '구문 범주 (syntactic categories)' 는 _이탤릭체_ 로 지시하며 '문법 생성 규칙 (grammar production rule)' 의 양쪽에 다 나타납니다.[^syntactic-categories]
-* '글자 값 (literal)'[^literal] 을 나타내는 단어와 '구두점 (punctuation)' 은 굵은 글씨의 `constant width (고정 폭)` 글자로 표시하며 '문법 생성 규칙' 의 오른-쪽에서만 나타납니다.
+* '화살표 (→)' 는 '문법 산출물 (grammar productions)' 을 표시하는데 사용하며 “구성할 수 있다” 라고 이해할 수 있습니다
+* '구문 범주 (syntactic categories)' 는 _이탤릭체_ 로 지시하며 '문법 산출 규칙 (grammar production rule)' 양 쪽에 다 나타납니다.[^syntactic-categories]
+* '글자 값 (literal)[^literal] 단어' 와 '구두점 (punctuation)' 은 굵은 글씨의 `constant width (고정 폭)` 글자로 표시하며 '문법 생성 규칙' 의 오른-쪽에서만 나타납니다.
 * '문법 생성 방법' 에 대안이 있는 경우 세로 막대 (\|) 로 구분합니다. 이 대안 방법이 너무 길어서 읽기에 쉽지 않으면, '문법 생성 규칙들' 을 여러 줄로 나눠서 표기합니다.
 * 경우에 따라서는, 문법 생성 규칙의 오른-쪽임을 나타내기 위해 '일반 글꼴 글자 (regular font text)'를 사용합니다.[^regular-font]
 * '구문 표현의 종류' 와 '글자 값' 이 선택 요소인 경우에는 끝에 첨자로 <sub>­opt­</sub> 를 붙여줍니다. [^optional]
@@ -46,12 +46,12 @@ categories: Swift Language Grammar About Reference
 
 [^Language-Reference]: 원문은 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 에서 확인할 수 있습니다.
 
-[^syntactic-categories]: 예를 들어, '`get { return value }` 라는 구문은 범주가 _getter-setter-block_ 이다' 라고 할 수 있습니다.
+[^notation]: '구문 문법' 자체를 번역하는 것은 의미가 없기 때문에, 사실 '구문 표기법' 자체도 큰 의미가 없습니다. 앞으로, 실제 '표기법' 이 나타나는 곳마다, 원문 링크를 달아놓을 것이므로, 해당 '구문 문법' 이 궁금하다면 링크를 통하여 확인하기 바랍니다. 스위프트의 모든 '구문 문법' 을 한 번에 확인하고 싶으면, [Summary of the Grammar (문법 총정리)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#) 내용을 참고하기 바랍니다. 
+
+[^syntactic-categories]: 아래 예제에서, `getter-setter-block` 같이, '이텔릭체' 로 된 모든 것들이 다 '구문 범주' 입니다.
 
 [^literal]: 여기서 '글자 값' 이란 `let a = 10` 일 때의 `10` 과 같이 실제 글자로 표현된 값을 말하는 것으로, 예를 들어, 이 문장에서 `10` 은 글자 `1` 과 `0` 이 붙어 있는 것이 아니라, 숫자 `10` 으로 인식됩니다.
 
 [^regular-font]: '문법 생성 규칙' 의 오른-쪽에 올 수 있는 것과 왼-쪽에 올 수 있는 것, 양-쪽 다에 올 수 있는 것이 있을 것입니다. 이 중에서 '일반 글꼴 글자 (regular font text)' 는 '문법 생성 규칙' 의 오른-쪽에 올 수 있는 내용을 나타낸다고 볼 수 있습니다.
 
 [^optional]: 여기서의 'optional'은 스위프트의 '옵셔널' 타입과는 상관없는 단어입니다.
-
-[^notation]: '표기법 (notation) 협약' 은 원문에서는 중요하지만, 여기서는 크게 중요하지 않습니다. 왜냐면, 번역 문서에서는 표기법이 있는 곳마다 원문 링크로 대체할 것이기 때문인데, 이는 표기법 자체를 번역하는 것은 큰 의미가 없기 때문입니다.
