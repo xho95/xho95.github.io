@@ -14,13 +14,13 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 대부분의 경우, '낱말' 은, 아래 지정한 문법의 '구속 조건' 하에서, 스위프트 소스 파일의 입력 문장에서 '가능한 가장 긴 하위 문자열' 을 고려한 문자들로 발생합니다. 이런 동작을 _longest match (가장 긴 일치)_ 또는 _maximal munch (최대한 잘라먹기)_[^maximal-munch] 라고 합니다.
 
-### Whitespace and Comments (공백 문자와 주석)
+### Whitespace and Comments (공백과 주석)
 
-'공백 문자 (whitespace)' 는 두 가지 용도로 사용합니다: 소스 파일에서 '낱말 (token)' 을 구분하는 것 그리고 연산자가 접두사인지 접미사인지를 결정하도록 돕는 것 ([Operators (연산자)](#operators-연산자) 를 참고할 것) 이 그것으로, 그외의 경우에는 무시됩니다. 다음의 문자들을 '공백 문자' 라고 합니다: 공간 (space; U+0020), 줄 먹임 (line feed; U+000A), 캐리지 반환 (carriage return; U+000D), 가로 탭 (horizontal tab; U+0009), 세로 탭 (vertical tab; U+000B), 양식 먹임 (form feed; U+000C)[^form-feed], 그리고 널 문자 (null; U+0000).
+'공백 (whitespace)' 은 두 가지 용도: 소스 파일에 있는 '낱말' 구분하기 그리고 ([Operators (연산자)](#operators-연산자) 에서 보듯) 접두사, 접미사, 및 이항 연산자 구별하기 를 가지지만, 그 외의 경우 무시합니다. 다음 문자들을 '공백 문자' 로 고려합니다: 공간 (space; U+0020), 줄 먹임 (line feed; U+000A), 캐리지 반환 (carriage return; U+000D), 가로 탭 (horizontal tab; U+0009), 세로 탭 (vertical tab; U+000B), 양식 먹임 (form feed; U+000C)[^form-feed], 그리고 널 문자 (null; U+0000).
 
-'주석 (comments)' 은 컴파일러에 의해 공백처럼 처리됩니다. 한 줄짜리 주석은 `//` 로 시작해서 줄 먹임 (line feed; U+000A) 또는 캐리지 반환 (carriage return; U+000D) 에 이를 때까지 계속됩니다. 여러 줄짜리 주석은 `/*` 로 시작해서 `*/` 로 끝납니다. 여러 줄짜리 주석은 중첩해도 되지만, 주석 표시는 반드시 서로 조화돼야 합니다.
+'주석 (comments)' 은 컴파일러가 '공백' 처럼 취급합니다. '한 줄짜리 주석' 은 `//` 로 시작하며 '줄 먹임 (U+000A)' 이나 '캐리지 반환 (U+000D)' 때까지 계속됩니다. '여러 줄짜리 주석' 은 `/*` 로 시작해서 `*/` 로 끝납니다. 여러 줄짜리 주석은 중첩을 허용하지만, 주석 표시는 반드시 균형이 맞아야 합니다.
 
-주석은 추가적인 양식과 '마크-업 (markup)' 을 가질 수 있는데, 이는 [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html) 에서 설명합니다.
+주석은, [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html) 에서 설명한 것처럼, '추가적인 양식'과 '마크-업 (markup)' 을 담을 수 있습니다.
 
 > GRAMMAR OF WHITESPACE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
 
