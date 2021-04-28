@@ -30,9 +30,9 @@ _식별자 (identifiers)_ 는 'A' 에서 'Z' 까지의 대소문자 , 밑줄 (`_
 
 '예약어 (reserved word)' 를 '식별자' 로 사용하려면, 그 앞뒤에 '역따옴표 (backticks; `` ` ``)'[^backticks] 을 붙입니다. 예를 들어, `class` 는 유효한 식별자가 아니지만, `` `class` `` 는 유효합니다. '역따옴표' 자체는 식별자로 고려하지 않습니다; `` `x` `` 와 `x` 는 똑같은 의미입니다.
 
-명시적인 매개 변수 이름이 없는 클로저 내에서는, 매개 변수가 `$0`, `$1`, `$2`, 등등의 이름을 암시적으로 가지게 됩니다. 이 이름들은 클로저 범위 내에서는 유효한 식별자입니다.
+'명시적인 매개 변수 이름' 을 가지지 않은 클로저 안에서는, `$0`, `$1`, `$2`, 등의 이름을 암시적으로 매개 변수에 붙입니다. 클로저 영역 안에서 이 이름들은 '유효한 식별자' 입니다.
 
-컴파일러는 '속성 포장 돌출부 (property wrapper projection)' 를 가지는 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 식별자를 만들어서 통합합니다. 이런 식별자와 상호 작용하는 코드를 만들 수는 있지만, 이 접두사를 사용해서 식별자를 선언할 수는 없습니다. 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 [propertyWrapper (프로퍼티 래퍼; 속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
+컴파일러는 속성 포장의 '드러낸 값 (projection)' 을 가진 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 '식별자' 를 만들어서 통합합니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 수는 있지만, 해당 접두사를 가진 식별자를 선언할 수는 없습니다. 더 많은 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
@@ -239,7 +239,9 @@ let textB = "Hello world"
 
 [^digits]: 여기서의 'digits' 은 'Numerical digit' 을 의미하는 것으로, 수를 표기하기 위한 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Numerical digit](https://en.wikipedia.org/wiki/Numerical_digit) 항목과 [숫자](https://ko.wikipedia.org/wiki/숫자) 항목을 참고하기 바랍니다.
 
-[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 실제로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
+[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
+
+[^property-wrapper-projection]: '속성 포장의 드러낸 값 (property wrapper projection) 을 가진 속성에 대해서 달러 기호 (`$`) 로 시작하는 식별자를 만들어 통합한다' 는 의미는, 속성이 `projectedValue` 를 가지고 있을 때, `$<projectedValue>` 같은 구문을 지원한다는 의미입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-드러내기) 부분을 참고하기 바랍니다. 
 
 [^escaped]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 보통은 'excape character' 라고 하면 `\` 기호를 붙이는 것을 말하지만, 여기서는 `` ` `` 기호를 사용하여 '키워드' 를 마치 일반 단어처럼 사용할 수 있게 만드는 것을 의미합니다.
 
