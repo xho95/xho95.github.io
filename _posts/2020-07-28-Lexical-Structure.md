@@ -32,24 +32,24 @@ _식별자 (identifiers)_ 는 'A' 에서 'Z' 까지의 대소문자 , 밑줄 (`_
 
 '명시적인 매개 변수 이름' 을 가지지 않은 클로저 안에서는, `$0`, `$1`, `$2`, 등의 이름을 암시적으로 매개 변수에 붙입니다. 클로저 영역 안에서 이 이름들은 '유효한 식별자' 입니다.
 
-컴파일러는 속성 포장의 '드러낸 값 (projection)' 을 가진 속성에 대해서 '달러 기호 (`$`)' 로 시작하는 '식별자' 를 만들어서 통합합니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 수는 있지만, 해당 접두사를 가진 식별자를 선언할 수는 없습니다. 더 많은 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
+컴파일러는 '속성 포장의 드러냄 (projection)'[^property-wrapper-projection] 을 가진 속성에 대하여 '달러 기호 (`$`) 로 시작하는 식별자' 를 만들어 통합합니다. 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 해당 접두사를 가진 식별자를 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
 ### Keywords and Punctuation (키워드와 문장 부호)
 
-다음의 '키워드 (keywords)' 들은 예약되어 있어서, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 대로, '역따옴표 (backticks)' 로 '벗어나지 (escaped)'[^escaped] 않는 한, 식별자로 사용할 수 없습니다. `inout`, `var`, 및 `let` 이외의 키워드들은 '역따옴표' 로 '벗어나지' 않고도 함수 선언 내에서나 함수 호출 내에서 매개 변수의 이름으로 사용할 수 있습니다.
+다음 '키워드 (keywords)' 들은 예약되어 있으며, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 것처럼, '역따옴표 (backticks)' 로 '벗어나지 (escaped)'[^escaped] 않는 한, 식별자로 사용할 수 없습니다. `inout`, `var`, 그리고 `let` 이외의 키워드는 함수 선언이나 함수 호출 안에서 역따옴표로 벗어나지 않고도 '매개 변수 이름' 으로 사용할 수 있습니다.
 
-멤버와 키워드가 같은 이름을 가지고 있다 하더라도, 멤버를 참조하는 것과 키워드를 사용하는 것 사이에 모호함이 없다면, 해당 멤버에 대한 참조를 '역따옴표' 로 '벗어나게' 만들어야 할 필요는 없습니다-예를 들어, `self`, `Type`, 그리고 `Protocol` 은 '명시적인 멤버 표현식 (explicit member expression)' 에서 특수한 의미를 가지고 있으므로, 해당 상황에서는 반드시 '역따옴표' 로 '벗어나게' 만들어야 합니다.
+멤버가 키워드와 똑같은 이름을 가지고 있을 때는, 멤버에 대한 참조와 키워드의 사용 사이에 모호함이 있을 때를 제외하면, 해당 멤버에 대한 참조는 역따옴표로 벗어날 필요가 없습니다-예를 들어, `self`, `Type`, 그리고 `Protocol` 은 '명시적인 멤버 표현식' 에서 특수한 의미를 가지므로, 이들은 해당 상황에서 반드시 역따옴표로 벗어나야 합니다.
 
-* 선언에서 사용되는 키워드: `associatedtype`, `class`, `deinit`, `enum`, `extension`, `fileprivate`, `func`, `import`, `init`, `inout`, `internal`, `let`, `open`, `operator`, `private`, `protocol`, `public`, `rethrows`, `static`, `struct`, `subscript`, `typealias`, 및 `var`.
-* 구문에서 사용되는 키워드: `break`, `case`, `continue`, `default`, `defer`, `do`, `else`, `fallthrough`, `for`, `guard`, `if`, `in`, `repeat`, `return`, `switch`, `where`, 및 `while`.
-* 표현식과 타입에서 사용되는 키워드: `as`, `Any`, `catch`, `false`, `is`, `nil`, `super`, `self`, `Self`, `throw`, `throws`, `true`, 및 `try`.
-* '패턴 (pattern; 유형)' 에서 사용되는 키워드 : `_`.
-* '번호 기호 (number sign; `#`)' 로 시작하는 키워드: `#available`, `#colorLiteral`, `#column`, `#else`, `#elseif`, `#endif`, `#error`, `#file`, `#filePath`, `#fileLiteral`, `#function`, `#if`, `#imageLiteral`, `#line`, `#selector`, `#sourceLocation`, 및 `#warning`.
-* 특정한 상황을 위해 예약되어 있는 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 및 `willSet`. 문법 상에서 나타나야할 상황 이외의 곳에서는, 이들을 식별자로 사용할 수 있습니다.
+* 선언에서 사용하는 키워드: `associatedtype`, `class`, `deinit`, `enum`, `extension`, `fileprivate`, `func`, `import`, `init`, `inout`, `internal`, `let`, `open`, `operator`, `private`, `protocol`, `public`, `rethrows`, `static`, `struct`, `subscript`, `typealias`, 그리고 `var`.
+* '구문 (statements)' 에서 사용하는 키워드: `break`, `case`, `continue`, `default`, `defer`, `do`, `else`, `fallthrough`, `for`, `guard`, `if`, `in`, `repeat`, `return`, `switch`, `where`, 그리고 `while`.
+* 표현식과 타입에서 사용하는 키워드: `as`, `Any`, `catch`, `false`, `is`, `nil`, `super`, `self`, `Self`, `throw`, `throws`, `true`, 그리고 `try`.
+* '유형 (pattern)' 에서 사용하는 키워드 : `_`.
+* '번호 기호 (`#`)' 로 시작하는 키워드: `#available`, `#colorLiteral`, `#column`, `#else`, `#elseif`, `#endif`, `#error`, `#file`, `#filePath`, `#fileLiteral`, `#function`, `#if`, `#imageLiteral`, `#line`, `#selector`, `#sourceLocation`, 그리고 `#warning`.
+* 특별한 상황을 위해 예약한 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 그리고 `willSet`. 문법상 나타나는 상황 밖에서, 이들을 식별자로 사용할 수 있습니다.
 
-다음의 '낱말 (tokens)' 들은 '문장 부호 (punctuation)' 로 예약되어 있어서 사용자 정의 연산자로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, `&` (접두사 연산자), `->`, `` ` ``, `?`, 및 `!` (접미사 연산자).
+다음 '낱말' 들은 '문장 부호 (punctuation)' 로 예약되어 있으며 '사용자 정의 연산자' 로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, ('접두사 연산자' 인) `&`, `->`, `` ` ``, `?`, 및 ('접미사 연산자' 인)`!`.
 
 ### Literals (글자 값; 리터럴)
 
@@ -241,7 +241,7 @@ let textB = "Hello world"
 
 [^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
 
-[^property-wrapper-projection]: '속성 포장의 드러낸 값 (property wrapper projection) 을 가진 속성에 대해서 달러 기호 (`$`) 로 시작하는 식별자를 만들어 통합한다' 는 의미는, 속성이 `projectedValue` 를 가지고 있을 때, `$<projectedValue>` 같은 구문을 지원한다는 의미입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-드러내기) 부분을 참고하기 바랍니다. 
+[^property-wrapper-projection]: '속성 포장의 드러냄 (property wrapper projection) 을 가진 속성' 은 '드러낸 값 (projectedValue) 를 가진 속성' 을 의미합니다. 본문의 내용은, 속성이 `projectedValue` 를 가지고 있을 때, `$<projectedValue>` 같은 구문을 지원한다는 의미입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-드러내기) 부분을 참고하기 바랍니다. 
 
 [^escaped]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 보통은 'excape character' 라고 하면 `\` 기호를 붙이는 것을 말하지만, 여기서는 `` ` `` 기호를 사용하여 '키워드' 를 마치 일반 단어처럼 사용할 수 있게 만드는 것을 의미합니다.
 
