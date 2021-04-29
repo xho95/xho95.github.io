@@ -664,7 +664,7 @@ for scalar in dogString.unicodeScalars {
 
 [^collection]: '컬렉션 (collection)' 은 스위프트에서 특정한 값들의 집합을 묘사하는 '집합체' 타입입니다. 보다 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 참고하기 바랍니다.
 
-[^string-literal-syntax]: '문자열 글자 값 구문 표현 (string literal syntax)' 은 말이 길지만 개념은 아주 간단합니다. `let greeting = "hello"` 와 같은 문장에서 `"hello"` 가 바로 '문자열 글자 값 구문 표현 (string literal syntax)' 입니다. 원문은 이 '문자열 글자 값 구문 표현' 이 C 와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 내용은, 바로 아래에 있는 '글자 값 (literals) 에 대한 주석'[^literals] 또는 [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 항목을 참고하기 바랍니다.
+[^string-literal-syntax]: '문자열 글자 값 구문 표현 (string literal syntax)' 은 말이 길지만 개념은 아주 간단합니다. `let greeting = "hello"` 와 같은 문장에서 `"hello"` 가 바로 '문자열 글자 값 구문 표현 (string literal syntax)' 입니다. 원문은 이 '문자열 글자 값 구문 표현' 이 C 와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 내용은, 바로 아래에 있는 '글자 값 (literals) 에 대한 주석'[^literals] 또는 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 항목을 참고하기 바랍니다.
 
 [^literals]: 여기서 '글자 값 (literals)' 는 '글자로 표현된 실제 값' 을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값이 되고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값이 됩니다. 즉 '글자 값 (literals)' 에서 값의 타입은 그 값이 실제로 표현하는 것이 무엇인지에 따라 달라집니다.
 

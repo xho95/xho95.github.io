@@ -286,7 +286,7 @@ categories: Swift Language Grammar Revision History
 * [Compound Assignment Operators (복합 할당 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#compound-assignment-operators-복합-할당-연산자) 에 대한 '연산자 함수 (operator functions)' 는 이제 함수를 정의할 때 더 이상 `@assignment` 특성을 사용하지 않습니다.
 * [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 지정하는 수정자의 순서가 바뀌었음. 예를 들어, 이제 `operator prefix` 가 아니라 `prefix operator` 라고 작성함.
 * [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 에 있는 `dynamic` 선언 수정자에 대한 정보를 추가함.
-* '타입 추론 (type inference)' 이 [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 과 작업하는 방법에 대한 정보를 추가함.
+* '타입 추론 (type inference)' 이 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 과 작업하는 방법에 대한 정보를 추가함.
 * '커리 함수 (curried functions)' 에 대한 정보를 추가함.[^curried-functions]
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 에 대한 새로운 장을 추가함.
 * 스위프트의 `Character` 타입은 이제 단일한 '유니코드 확장 자소 덩어리 (Unicode extended grapheme cluster)' 를 나타낸다는 사실을 반영하기 위해 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 갱신함. 이는 [Extended Grapheme Clusters (확장된 자소 덩어리)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-grapheme-clusters-확장된-자소-덩어리) 에 대한 새로운 부분과 [Unicode Scalar Values (유니코드 크기 값)]({% post_url 2016-05-29-Strings-and-Characters %}#unicode-scalar-values-유니코드-크기-값) 및 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 에 대한 더 많은 정보를 포함함.
@@ -301,7 +301,7 @@ categories: Swift Language Grammar Revision History
 * `..<` 를 ("반-닫힌 범위 연산자 (half-closed range operator) 대신") [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 로 '언급 (refer)' 하도록 전체 책을 갱신함.
 * `Dictionary` 는 이제 '불리언 (Boolean)' 속성인 `isEmpty` 를 가진다는 것을 알리기 위해 [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 갱신함.
 * [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 사용할 수 있는 전체 문자 목록을 명확히 밝힘.
-* `nil` 과 '불리언 (Boolean)' 인 `true` 및 `false` 는 이제 [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 임.
+* `nil` 과 '불리언 (Boolean)' 인 `true` 및 `false` 는 이제 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 임.
 * 스위프트의 `Array` 타입은 이제 온전하게 '값 의미 구조 (value semantics)' 를 가짐. 새로운 접근 방식을 반영하기 위해 [Mutability of Collections (집합체의 변경 가능성)](#mutability-of-collections-집합체의-변경-가능성) 과 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 에 대한 정보를 갱신함. 또한 '문자열 배열 (strings arrays)' 및 '딕셔너리 (dictionaries)' 에 대한 할당 및 복사 작동 방식도 분명하게 밝힘.
 * [Array Type Shorthand Syntax (배열 타입 약칭 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#array-type-shorthand-syntax-배열-타입-약칭-구문-표현) 은 이제 `SomeType[]` 대신 `[SomeType]` 으로 작성됨.
 * `[KeyType : ValueType]` 로 작성하는, [Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#dictionary-type-shorthand-syntax-딕셔너리-타입의-줄임-구문-표현) 에 대하여 새로운 부분을 추가함.
