@@ -50,6 +50,6 @@ categories: Swift Language Grammar About Reference
 
 [^syntactic-categories]: 아래 예제에서, `getter-setter-block` 같이, '이텔릭체' 로 된 모든 것들이 다 '구문 범주' 입니다.
 
-[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말하는 것입니다. '글자 값' 에 대한 더 자세한 정보는, [Literals (글자 값; 리터럴)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값-리터럴) 부분을 참고하기 바랍니다. 
+[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말하는 것입니다. '글자 값' 에 대한 더 자세한 정보는, [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 부분을 참고하기 바랍니다. 
 
 [^regular-font]: '표준적인 글꼴 (regular font)' 은 '문법' 자체가 아니라 그 문법 요소에 대한 '설명' 에 사용된다는 의미입니다.
