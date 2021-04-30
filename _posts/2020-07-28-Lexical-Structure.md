@@ -70,9 +70,9 @@ true             // 불리언 글자 값
 
 > GRAMMAR OF LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
-#### Integer Literals (정수 글자 값; 정수 리터럴)
+#### Integer Literals (정수 글자 값)
 
-_정수 글자 값 (integer literals)_ 은 정밀도를 지정하지 않은 정수 값을 나타냅니다. 정수 글자 값은, 기본적으로, 10진수로 표현합니다; 밑수 (base) 가 다른 경우 접두사를 사용하여 지정할 수 있습니다. '2진 글자 값 (binary literals)' 은 `0b` 로 시작하고, '8-진 글자 값 (octal literals)' 은 `0o` 로 시작하며, '16진 글자 값 (hexadecimal)' 은 `0x` 로 시작합니다.
+_정수 글자 값 (integer literals)_ 은 정밀도를 지정하지 않은 정수 값을 표현합니다. 기본적으로, 정수 글자 값은 10진수로 나타냅니다; 접두사를 사용하여 '다른 밑수 (alternate base)' 를 지정할 수 있습니다. '2진 (binary) 글자 값' 은 `0b`, '8진 (octal) 글자 값' 은 `0o`, '16진 (hexadecimal) 글자 값' 은 `0x` 로 시작합니다.
 
 '10진 글자 값' 은 `0` 에서 `9` 까지의 숫자를 가지고 있습니다. '2진 글자 값' 은 `0` 과 `1` 을 가지고 있고, '8진 글자 값' 은 `0` 에서 `7` 까지를 가지고 있으며, '16진 글자 값' 은 `0` 에서 `9` 까지에다가 `A` 부터 `F` 까지의 대-소문자를 가지고 있습니다.
 
