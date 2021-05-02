@@ -104,29 +104,29 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 
 #### String Literals (문자열 글자 값)
 
-'문자열 글자 값 (string literal)' 은 따옴표로 둘러싼 일련의 문자들을 말합니다. '한-줄짜리 문자열 글자 값' 은 '큰 따옴표 (double quotation marks)' 로 둘러싸며 다음과 같은 형식을 가집니다:
+'문자열 글자 값' 은 따옴표로 둘러싼 '일련의 문자들' 을 말합니다. '한-줄짜리 문자열 글자 값' 은 '큰 따옴표' 로 둘러싸며 다음 형식을 가집니다:
 
 \"`characters-문자들`\"
 
-문자열 글자 값은 '벗어나지 않은 (unescaped)[^unescaped] 큰 따옴표 (`"`)', '벗어나지 않은 역 빗금 (backslash; `\`)', '캐리지 반환 (carriage return; `\r`)', 또는 '줄 먹임 (line feed; `\n`)' 을 가질 수 없습니다.
+문자열 글자 값은 '벗어나지 않은 (unescaped)[^unescaped] 큰 따옴표 (`"`)', '벗어나지 않은 역 빗금 (backslash; `\`)', '캐리지 반환 (carriage return; `\r`)', 또는 '줄 먹임 (line feed; `\n`)' 을 담을 수 없습니다.
 
-'여러 줄짜리 문자열 글자 값' 은 세 개의 큰 따옴표로 둘러싸며 다음과 같은 양식을 가집니다:
+'여러 줄짜리 문자열 글자 값' 은 세 개의 큰 따옴표로 둘러싸며 다음 형식을 가집니다:
 
 \"\"\"<br />
 `characters-문자들`<br />
 \"\"\"
 
-한 줄짜리 문자열 글자 값과는 달리, 여러 줄짜리 문자열 글자 값은 '벗어나지 않은 큰 따옴표 (`"`)', '캐리지 반환 (`\r`)', 그리고 '줄 먹임 (`\n`)' 을 가질 수 있습니다. 세 개의 벗어나지 않은 큰 따옴표들을 서로 이어진 형태로 가질 수는 없습니다.[^three-unescaped-double-quotation-marks]
+한 줄짜리 문자열 글자 값과는 달리, 여러 줄짜리 문자열 글자 값은 '벗어나지 않은 큰 따옴표 (`"`)', '캐리지 반환 (`\r`)', 그리고 '줄 먹임 (`\n`)' 을 담을 수 있습니다. 세 개의 벗어나지 않은 큰 따옴표들을 서로 나란하게 담을 수는 없습니다.[^three-unescaped-double-quotation-marks]
 
-여러 줄짜리 문자열 글자 값을 시작하는 `"""` 뒤에 있는 '줄 끊음 (line break; `\n`)'[^line-break] 은 문자열의 일부가 아닙니다. 글자 값을 끝내는 `"""` 앞에 있는 '줄 끊음' 도 문자열의 일부가 아닙니다. 여러 줄짜리 문자열 글자 값이 '줄 먹임 (line feed)' 으로 시작하거나 끝나게 하려면, 첫 번째 또는 마지막 줄에 빈 줄을 작성하기 바랍니다.[^begins-or-ends]
+'여러 줄짜리 문자열 글자 값' 을 시작하는 `"""` 뒤의 '줄 끊음 (line break; `\n`)'[^line-break] 은 문자열 일부가 아닙니다. '글자 값' 을 끝내는 `"""` 앞의 '줄 끊음' 도 문자열 일부가 아닙니다. '여러 줄짜리 문자열 글자 값' 을 '줄 먹임 (line feed)' 으로 시작하거나 끝나게 하려면, 첫 번째나 마지막 줄에 '빈 (blacnk) 줄' 을 작성합니다.[^begins-or-ends]
 
-여러 줄짜리 문자열 글자 값은 '공백 (spaces)' 과 '탭 (tabs)' 을 어떤 식으로 조합해서라도 들여쓰기를 할 수 있으며; 이러한 '들여쓰기 (indentation)' 는 문자열에 포함되지 않습니다. 글자 값을 끝내는 `"""` 가 들여쓰기를 결정합니다; 글자 값에 있는 모든 '비어 있지 않은 줄 (nonblank line)' 은 반드시 닫는 `"""` 앞에 있는 것과 똑같은 들여쓰기로 시작해야 합니다; 탭과 공백을 변환하지는 않습니다. 해당 들여쓰기 다음에 추가적인 공백과 탭을 포함할 수도 있습니다; 이러한 공백과 탭이 문자열에서 나타납니다.
+'여러 줄짜리 문자열 글자 값' 은 어떤 '공백 (spaces)' 과 '탭 (tabs)' 조합으로도 들여쓰기를 할 수 있는데; 이 '들여쓰기 (indentation)' 는 문자열에 포함되지 않습니다. 글자 값을 끝내는 `"""` 가 '들여쓰기' 를 결정합니다: 글자 값의 모든 '비어 있지 않은 (nonblank) 줄' 은 반드시 '닫는 `"""` 앞에 있는 것' 과 정확하게 똑같은 들여쓰기로 시작해야 합니다; '탭' 과 '공백' 사이의 변환은 없습니다. 해당 들여쓰기 후에 추가적인 공백과 탭을 포함할 수도 있는데; 이 공백과 탭은 문자열에 나타납니다.
 
-여러 줄짜리 문자열 글자 값에 있는 '줄 끊음 (line breaks)' 은 '줄 바꿈 (line feed)' 문자를 사용하도록 '정규화 (normalized)' 됩니다.[^line-break-to-line-feed] 비록 소스 파일이 '캐리지 반환 (carriage return; `\r`)' 과 '줄 먹임 (line feeds; `\n`)' 을 섞어서 사용하더라도, 문자열에 있는 모든 '줄 끊음' 문자들은 다 같은 것입니다.
+'여러 줄짜리 문자열 글자 값' 에 있는 '줄 끊음 (line breaks)' 은 '줄 바꿈 (line feed) 문자' 를 사용하도록 '정규화 (normalized)' 합니다.[^line-break-to-line-feed] 소스 파일이 '캐리지 반환' 과 '줄 먹임' 을 혼합하여 가지더라도, 문자열에 있는 모든 '줄 끊음' 은 다 똑같을 것입니다.
 
-여러 줄짜리 문자열 글자 값에서, 줄 끝에 '역 빗금 (backslash; `\`)' 을 쓰면 문자열에서 '줄 끊음' 을 생략합니다. '역 빗금' 과 '줄 끊음' 사이의 공백도 어떤 것이든 역시 생략합니다.  이러한 구문 표현을 사용하면, 결과 문자열의 값을 바꾸지 않고도, 소스 코드에 있는 여러 줄짜리 문자열 글자 값을 '줄 바꿈을 써서 표현 (hard wrap)'[^hard-wrap] 할 수 있습니다.
+'여러 줄짜리 문자열 글자 값' 에서, 줄 끝에 '역 빗금 (`\`)' 을 작성하면 문자열에서 해당 '줄 끊음' 을 생략합니다. '역 빗금' 과 '줄 끊음' 사이의 어떤 공백이든 역시 생략합니다. 이 구문을 사용하면, 결과 문자열의 값을 바꾸지 않고도, '여러 줄짜리 문자열 글자 값' 을 소스 코드에서 '직접 줄 바꿈 (hard wrap)'[^hard-wrap] 할 수 있습니다.
 
-'특수 문자 (special characters)' 들은 다음 '벗어나도록 문자를 나열한 것 (escape sequences; 확장열)'[^escape-sequences] 을 사용하여 한 줄짜리 및 여러 줄짜리 문자열 글자 값에 포함될 수 있습니다:
+'특수 (special) 문자' 들은 다음 '일련의 벗어나는 값 (escape sequences; 확장열)'[^escape-sequences] 을 사용하여 '한 줄짜리' 와 '여러 줄짜리' 형식 둘 다의 '문자열 글자 값' 에 포함할 수 있습니다:
 
 * 널 문자 (null character; `\0`)
 * 역 빗금 (backslash; `\\`)
@@ -135,7 +135,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 * 캐리지 반환 (carrige return; `\r`)
 * 큰 따옴표 (double quotation mark; `\"`)
 * 작은 따옴표 (single quotation mark; `\'`)
-* 유니코드 크기 값 (unicode scalar; `\u{n}`), 여기서 _n_ 은 하나에서 여덟 '자리 (digits)' 에 이르는 16진수입니다.
+* 유니코드 크기 값 (unicode scalar; `\u{n}`), 여기서 _n_ 은 '1 ~ 8자리 숫자' 를 가진 16진수입니다.
 
 역 빗금 (`\`) 뒤의 괄호 안에 표현식을 두면 표현식의 값을 문자열 글자 값 안에 집어 넣을 수 있습니다. '보간된 (interpolated)' 표현식은 문자열 글자 값을 가지고 있을 수 있지만, '벗어나지 않은 역 빗금', '캐리지 반환', 또는 '줄 먹임' 을 가지고 있을 수는 없습니다.
 
@@ -245,17 +245,17 @@ let textB = "Hello world"
 
 [^type-annotations]: '타입 보조 설명 (Type Annotations)' 에 대해서는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
 
-[^unescaped]: 여기서 '벗어나지 않은' 이 의미하는 것은, 앞서 'escaped (벗어난)' 에서 설명한 것과 반대로, 문자 자체의 본래 의미로 사용되는 것을 말합니다. 단, 스위프트에서는 따옴표 자체가 이미 특수한 의미를 가지고 있기 때문에, 문자 자체의 본래 의미로 사용하기 위해서 오히려 '벗어나게 (escaped)' 만들어야 함을 설명하고 있습니다. 즉, 따옴표를 문자열 글자 값에 사용하려면 `\` 를 붙여야 합니다.   
+[^unescaped]: 여기서 '벗어나지 않은' 것이란, 앞서 '벗어난 (escaped) 것' 에서 설명한 것과 반대로, 문자의 본래 의미로 사용하는 것을 말합니다. 본문에서는 '문자열 글자 값' 이 '따옴표' 를 직접 담을 수 없으며, 따옴표를 문자열 글자 값에 사용하려면 `\` 를 붙여야 함을 설명하고 있습니다.
 
-[^three-unescaped-double-quotation-marks]: '세 개의 벗어나지 않은 큰 따옴표들이 서로 이어진 형태' 라는 것은 결국 `""""""` 처럼 큰 따옴표 여섯 개를 바로 이어서 사용할 수는 없다는 의미입니다. 이와 같이 하면 `Multi-line string literal content must begin on a new line (여러 줄짜리 문자열 글자 값은 반드시 새로운 줄 문자 (\n) 로 시작해야 합니다.)` 라는 에러가 발생합니다. 본문에서도 이어서 설명하지만 이 '새로운 줄 문자' 자체는 문자열의 일부가 아닙니다.
+[^three-unescaped-double-quotation-marks]: '세 개의 벗어나지 않은 큰 따옴표들이 서로 나란하게 있을 수 없다는 것' 은 결국 `""""""` 처럼 큰 따옴표 여섯 개를 나란하게 사용할 수는 없다는 의미입니다. 이와 같이 하면 `Multi-line string literal content must begin on a new line (여러 줄짜리 문자열 글자 값은 반드시 새로운 줄 문자 (\n) 로 시작해야 합니다.)` 라는 에러가 발생합니다. 본문에서도 이어서 설명하지만 이 '새로운 줄 문자' 자체는 문자열의 일부가 아닙니다.
 
-[^line-break]: 이 책의 본문을 보면 '줄 끊음 (line break)', '줄 먹임 (line feed)' , '새 줄 (new line; 개행 문자)' 같은 용어들을 섞어 쓰고 있는데, 이들의 의미는 `\n` 으로 다 같습니다. 컴퓨터의 역사를 보면 초창기에 운영 체제별로 서로 다른 '개행 문자' 들을 사용하다 보니, 여러가지 용어를 사용하게 된 것이 아닌가 추측됩니다. 스위프트에서는 '개행 문자' 로 '줄 먹임 (line feed; LF; `\n`)' 만 사용하는 것이 표준입니다. 이에 대한 더 자세한 내용은 위키피디아의 [Newline](https://en.wikipedia.org/wiki/Newline) 과 [새줄 문자](https://ko.wikipedia.org/wiki/새줄_문자) 항목을 참고하기 바랍니다.
+[^line-break]: 이 책에서는 '줄 끊음 (line break)', '줄 먹임 (line feed)' , '새 줄 (new line; 개행 문자)' 같은 용어를 섞어 쓰고 있는데, `\n` 라는 다 똑같은 의미를 가집니다. 컴퓨터 역사 초창기에 운영 체제별로 서로 다른 '개행 문자' 를 사용하다 보니, 하나의 의미에 대해 서로 다른 용어를 사용하게 된 것이 아닌가 추측됩니다. 스위프트에서는 '개행 문자' 로 '줄 먹임 (line feed; LF; `\n`)' 만 사용하는 것이 표준입니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Newline](https://en.wikipedia.org/wiki/Newline) 항목과 [새줄 문자](https://ko.wikipedia.org/wiki/새줄_문자) 항목을 참고하기 바랍니다.
 
-[^begins-or-ends]: 이 문장은 직접 예제를 보면 바로 이해할 수 있는데, 예제는 **Strings and Characters (문자열과 문자)** 의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#multiline-string-literals-여러-줄짜리-문자열-글자-값) 에서 확인할 수 있습니다.
+[^begins-or-ends]: 이 설명은 글로 읽는 것보다 예제를 직접 보는 것이 이해하기 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
 
-[^line-break-to-line-feed]: 이 부분에 대한 설명은 앞서의 '줄 끊음 (line break)'[^line-break] 부분을 참고하기 바랍니다. 스위프트에서는 모든 '개행 문자' 들을 '줄 먹임 (line feed)' 문자로 치환한다고 이해할 수 있습니다.
+[^line-break-to-line-feed]: 스위프트에서는 서로 다른 모든 '개행 문자' 를 자동으로 '줄 먹임 (line feed) 문자' 로 자동으로 표준화한다고 이해할 수 있습니다. 예전 프로그래밍에서는 운영체제별로 서로 다른 '개행 문자' 에 대한 처리를 프로그래머가 직접해줘야 했는데, 스위프트에서는 이러한 처리를 할 필요가 없어진 셈입니다.
 
-[^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 '자동 줄 바꿈' 과 관련된 개념으로, 실제 문자열 글자 값이 아니라, '편집기 (editor)' 에서 문자열이 보여지는 것과 관련한 용어입니다. 이 책에서 'hard wrap' 이 가능하다는 것은, 실제 글자 값은 그대로 유지하면서, Xcode 에서 '줄 바꿈을 써서' 문자열을 알아보기 쉽게 코딩할 수 있다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 또는 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다. 참고로 영어의 'wrap' 이라는 용어는 '포장' 이라는 의미인데, 'line wrap' 이라고 하면 편집기에서 '(보기 좋게) 줄을 포장한 것' 이라고 이해할 수 있습니다. '자동 줄 바꿈' 은 적절한 곳에서 문자열을 끊어줘서 (즉, 줄을 바꿔줘서) 가독성을 높이는 기능이라고 할 수 있습니다.
+[^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 '자동 줄 바꿈' 과 관련된 개념으로, 실제 문자열 글자 값이 아니라, '편집기 (editor)' 에서 문자열이 보여지는 것과 관련한 용어입니다. 이 책에서 '직접 줄 바꿈 (hard wrap) 할 수 있다' 는 것은, 실제 글자 값은 그대로 유지하면서, Xcode 에서 줄 바꿈을 써서 문자열을 알아보기 쉽게 코딩할 수 있다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 항목과 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다.
 
 [^escape-sequences]: 'escape sequences' 및 '확장열' 에 대한 정보는 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 및 [확장열](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
 
