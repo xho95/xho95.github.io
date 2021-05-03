@@ -135,11 +135,11 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 * 캐리지 반환 (carrige return; `\r`)
 * 큰 따옴표 (double quotation mark; `\"`)
 * 작은 따옴표 (single quotation mark; `\'`)
-* 유니코드 크기 값 (unicode scalar; `\u{n}`), 여기서 _n_ 은 '1 ~ 8자리 숫자' 를 가진 16진수입니다.
+* 유니코드 크기 값 (unicode scalar; `\u{n}`), 여기서 _n_ 은 '한 자리에서 여덟 자리 숫자' 를 가진 16진수입니다.
 
-역 빗금 (`\`) 뒤의 괄호 안에 표현식을 두면 표현식의 값을 문자열 글자 값 안에 집어 넣을 수 있습니다. '보간된 (interpolated)' 표현식은 문자열 글자 값을 가지고 있을 수 있지만, '벗어나지 않은 역 빗금', '캐리지 반환', 또는 '줄 먹임' 을 가지고 있을 수는 없습니다.
+표현식의 값은 '역 빗금 (`\`)' 뒤의 괄호에 표현식을 둠으로써 '문자열 글자 값' 에 집어 넣을 수 있습니다. '끼워 넣는 (interpolated) 표현식'[^interpolation] 은 문자열 글자 값을 담을 수는 있지만, '벗어나지 않은 역 빗금', '캐리지 반환', 또는 '줄 먹임' 을 담을 수는 없습니다.
 
-예를 들어, 다음의 문자열 글자 값들은 모두 같은 값을 가지고 있습니다:
+예를 들어, 다음의 모든 '문자열 글자 값' 은 똑같은 값을 가집니다:
 
 ```swift
 "1 2 3"
@@ -149,15 +149,15 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 let x = 3; "1 2 \(x)"
 ```
 
-'확장된 구분자 (extended delimiters)' 로 구분된 문자열은 물음표와 하나 이상의 '번호 기호 (number signs; `#`)' 로 양 끝을 '균등하게 (balanced)'[^balanced-set] 둘러싼 일련의 문자들을 말합니다. 확장된 구분자로 구분된 문자열의 형식은 다음과 같습니다:
+'확장된 구분자 (delimiters) 로 구분한 문자열' 은 하나 이상의 '번호 기호 (`#`)' 로 된 '균형 집합 (balanced set)'[^balanced-set] 과 따옴표로 둘러싼 '일련의 문자들' 입니다. '확장된 구분자로 구분한 문자열' 은 다음 형식을 가집니다:
 
-\#\"`characters-문자들`\"\#
+&nbsp;&nbsp;&nbsp;&nbsp;\#\"`characters-문자들`\"\#
 
-\#\"\"\"<br />
-`characters-문자들)`<br />
-\"\"\"\#
+&nbsp;&nbsp;&nbsp;&nbsp;\#\"\"\"<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`characters-문자들)`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\"\"\"\#
 
-'확장된 구분자로 구분된 문자열' 에 있는 특수 문자는 결과 문자열 내에서 특수 문자가 아니라 평범한 문자인 것처럼 나타납니다. '확장된 구분자' 는 일상적으로는 문자열 보간을 자동 생성하거나, 벗어나도록 문자를 나열하기 시작하거나, 아니면 문자열을 끝내는 등의, 특수한 효과를 가가지는 문자로 구성된 문자열을 생성하는데 사용할 수 있습니다.
+'확장된 구분자로 구분한 문자열' 안의 특수 문자는 '결과 문자열' 에서 특수 문자 보다는 '보통 문자' 처럼 나타납니다. '확장된 구분자' 를 사용하면 '문자열 끼워 넣기 (interpolation)'[^interpolation] 발생하기, 일련의 벗어나는 값 시작하기, 또는 문자열 종결하기와 같이, 일상적으로는 '특수한 효과' 를 가지게 될 문자를 가진 문자열을 생성할 수 있습니다.
 
 다음 예제는 '문자열 글자 값' 과 '확장된 구분자로 구분된 문자열' 로 '서로 같은 (equivalent; 동치인)' 문자열 값을 생성하는 것을 보여줍니다:
 
@@ -259,7 +259,9 @@ let textB = "Hello world"
 
 [^escape-sequences]: 'escape sequences' 및 '확장열' 에 대한 정보는 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 및 [확장열](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
 
-[^balanced-set]: 원문에서는 'balanced set (균형 집합)' 이라는 용어를 사용하고 있는데, 이는 수학 용어입니다. 번역된 문장은 적당하게 의역한 것인데, 수학 용어인 'balanced set' 과 본문의 내용이 어떻게 연결되는 지는 잘 모르겠습니다. 'balanced set (균형 집합)' 에 대해서는 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 부분을 참고하기 바립니다.
+[^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 이는 본문에서 말하는 '균형 집합' 이란, 개수 자체는 상관없이 양쪽에 있는 `#` 의 개수가 똑같기만 하면 된다는 의미로 추측됩니다. '균형 집합' 에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
+
+[^interpolation]: 'interpolation' 은 수학 용어로 '보간법' 이라는 의미인데, '보간' 이란 말 자체가 '사이에 끼워 넣는다' 는 의미이므로, 수학 용어로써의 엄밀함이 요구되지 않으면 '끼워 넣기' 라고 하겠습니다. '보간법 (interpolation)' 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
 
 [^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
 
