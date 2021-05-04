@@ -370,9 +370,9 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 
 #### Implicit Member Expression (암시적인 멤버 표현식)
 
-_암시적인 멤버 표현식 (implicit member expression)_ 은, 열거체의 'case 값' 또는 타입 메소드 처럼, '타입 추론 장치 (type inference)' 가 암시된 타입을 결정할 수 있는 상황에서, 타입의 멤버에 접근하기 위한 단축 방법입니다. 형식은 다음과 같습니다:
+_암시적인 멤버 표현식 (implicit member expression)_ 은, '열거체 case 값' 이나 '타입 메소드' 같이, '타입 추론' 이 '암시 타입' 을 결정할 수 있는 상황에서, 타입의 멤버에 접근하는 단축 방식입니다. 이는 다음 형식을 가집니다:
 
-  .`member name-멤버 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;.`member name-멤버 이름`
 
 예를 들면 다음과 같습니다:
 
@@ -380,6 +380,32 @@ _암시적인 멤버 표현식 (implicit member expression)_ 은, 열거체의 '
 var x = MyEnumeration.someValue
 x = .anotherValue
 ```
+
+추론한 타입이 옵셔널인 경우, '암시적인 멤버 표현식' 에서 '옵셔널이-아닌 타입의 멤버' 를 사용할 수도 있습니다.
+
+```swift
+var someOptional: MyEnumeration? = .someValue
+```
+
+'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 비록 모든 '연쇄된 접미사 표현식' 들이 똑같은 타입을 가지는 것이 일반적일지라도, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 상황이 암시하는 타입으로 변환 가능해야 한다는 것 뿐입니다. 특히, '암시 타입'이 옵셔널이면 '옵셔널이-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 그 하위 클래스 타입의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+class SomeClass {
+  static var shared = SomeClass()
+  static var sharedSubclass = SomeSubclass()
+  var a = AnotherClass()
+}
+class SomeSubclass: SomeClass { }
+class AnotherClass {
+  static var s = SomeClass()
+  func f() -> SomeClass { return AnotherClass.s }
+}
+let x: SomeClass = .shared.a.f()
+let y: SomeClass? = .shared
+let z: SomeClass = .sharedSubclass
+```
+
+위 코드에서, `x` 의 타입은 '상황이 암시하는 타입' 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
 
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
