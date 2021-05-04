@@ -405,6 +405,8 @@ let y: SomeClass? = .shared
 let z: SomeClass = .sharedSubclass
 ```
 
+위 코드에서, `x` 의 타입은 '상황이 암시하는 타입' 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
+
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Parenthesized Expression (괄호 표현식)
