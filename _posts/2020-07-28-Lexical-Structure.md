@@ -157,7 +157,7 @@ let x = 3; "1 2 \(x)"
 &nbsp;&nbsp;&nbsp;&nbsp;`characters-문자들)`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\"\"\"\#
 
-'확장된 구분자로 구분한 문자열' 안의 특수 문자는 '결과 문자열' 에서 특수 문자 보다는 '보통 문자' 처럼 나타납니다. '확장된 구분자' 를 사용하면 '문자열 끼워 넣음 (interpolation)'[^interpolation] 의 발생, 일련의 벗어나기 시작, 또는 문자열 종결 같은, 일상적으로 '특수한 효과' 를 가질 문자로 된 문자열을 생성할 수 있습니다.
+'확장된 구분자로 구분한 문자열' 안의 특수 문자는 특수 문자가 아니라 '보통 문자' 로 '결과 문자열' 에 나타납니다. '확장된 구분자' 를 사용하면 '문자열 끼워 넣음 (interpolation)'[^interpolation] 의 발생, 일련의 벗어나기 시작, 또는 문자열 종결 같은, 일상적으로 '특수한 효과' 를 가질 문자들로 문자열을 생성할 수 있습니다.
 
 다음 예제는 서로 '동치 (equivalent)' 인 문자열 값을 생성하는 '문자열 글자 값' 과 '확장된 구분자로 구분한 문자열' 을 보여줍니다:
 
@@ -170,18 +170,18 @@ print(string == escaped)
 // "true" 를 인쇄합니다.
 ```
 
-'확장된 구분자로 구분한 문자열' 을 형성할 때 하나 보다 많은 '번호 기호' 를 사용할 경우, '번호 기호' 사이에 공백을 두지 않습니다:
+'확장된 구분자로 구분한 문자열' 을 만들 때 하나 이상의 '번호 기호' 를 사용할 경우, '번호 기호' 사이에 공백을 두지 않습니다:[^more-than-one-number]
 
 ```swift
 print(###"Line 1\###nLine 2"###) // OK
 print(# # #"Line 1\# # #nLine 2"# # #) // Error
 ```
 
-'확장된 구분자' 를 사용하여 생성한 '여러 줄짜리 문자열 글자 값' 은 '표준적인 여러 줄짜리 문자열 글자 값' 과 똑같은 들여쓰기 필수 조건을 가집니다.
+'확장된 구분자' 를 사용하여 생성한 '여러 줄짜리 문자열 글자 값' 은 표준적인 '여러 줄짜리 문자열 글자 값' 과 똑같은 '들여쓰기 필수 조건' 을 가집니다.
 
-문자열 글자 값의 '기본 추론 타입' 은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 와 [String](https://developer.apple.com/documentation/swift/string) 을 참고하기 바랍니다.
+문자열 글자 값의 '기본 추론 타입' 은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 및 [String](https://developer.apple.com/documentation/swift/string)[^developer-string] 을 참고하기 바랍니다.
 
-`+` 연산자로 이어붙인 '문자열 글자 값' 은 컴파일 시간에 이어붙습니다. 예를 들어, 아래 예제의 `textA` 와 `textB` 값은 모든 점에서 똑같습니다-실행 시간에 이어붙는 건 없습니다.
+`+` 연산자로 이어붙인 '문자열 글자 값' 은 '컴파일 시간' 에 이어붙습니다. 예를 들어, 아래 예제의 `textA` 와 `textB` 값은 완전히 똑같습니다-'실행 시간 이어붙임' 같은 건 없습니다.
 
 ```swift
 let textA = "Hello " + "world"
@@ -262,6 +262,10 @@ let textB = "Hello world"
 [^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 이는 본문에서 말하는 '균형 집합' 이란, 개수 자체는 상관없이 양쪽에 있는 `#` 의 개수가 똑같기만 하면 된다는 의미로 추측됩니다. '균형 집합' 에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
 
 [^interpolation]: 'interpolation' 은 수학 용어로 '보간법' 이라는 의미인데, '보간' 이란 말 자체가 '사이에 끼워 넣는다' 는 의미이므로, 수학 용어로써의 엄밀함이 요구되지 않으면 '끼워 넣기' 라고 하겠습니다. '보간법 (interpolation)' 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
+
+[^more-than-one-number]: 본문 예제에서 첫 번째 코드인 `print(###"Line 1\###nLine 2"###)` 는, 결과를 두 줄로 인쇄합니다. '확장된 구분자로 구분한 문자열' 안에 있는 특수 문자는 보통 문자로 인쇄하지만, 이를 다시 '특수 문자' 로 표현하려면, `\###n` 처럼, '확장된 구분자로 구분한 문자열' 을 특수 문자 사이에 넣으면 된다는 것을 알 수 있습니다.
+
+[^developer-string]: 원문 자체가 '애플 개발자 문서' 에 대한 링크입니다. 
 
 [^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
 
