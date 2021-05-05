@@ -217,6 +217,10 @@ let textB = "Hello world"
 
 새로운, '사용자 정의 연산자' 를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분과 [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 참고하기 바랍니다. 기존 연산자의 '중복 정의 (overload)' 방법을 배우려면, [Operator Methods (연산자 메소드)]({% post_url 2020-03-03-Closures %}#operator-methods-연산자-메소드) 부분을 참고하기 바랍니다.
 
+### 다음 장
+
+[Types (타입) > ]({% post_url 2020-02-20-Types %}) 
+
 ### 참고 자료
 
 [^Lexical-Structure]: 이 글에 대한 원문은 [Lexical Structure](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html) 에서 확인할 수 있습니다.
