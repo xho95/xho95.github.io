@@ -81,7 +81,7 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 4.1 에서 갱신한 것.
 * '같음 비교 연산자 (equivalence operators)' 의 통합된 구현에 대한 정보를 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 부분에 추가함.
-* '조건부 프로토콜 준수성 (conditional protocol conformance)' 에 대한 정보를 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Extension Declaration (익스텐션-확장 선언)]({% post_url 2020-08-15-Declarations %}#extension-declaration-익스텐션-확장-선언) 부분과, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)]({% post_url 2016-03-03-Protocols %}#conditionally-conforming-to-a-protocol-조건에-따라-프로토콜-준수하기) 부분에, 추가함.
+* '조건부 프로토콜 준수성 (conditional protocol conformance)' 에 대한 정보를 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Extension Declaration (익스텐션 선언)]({% post_url 2020-08-15-Declarations %}#extension-declaration-익스텐션-선언) 부분과, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)]({% post_url 2016-03-03-Protocols %}#conditionally-conforming-to-a-protocol-조건에-따라-프로토콜-준수하기) 부분에, 추가함.
 * '재귀적인 프로토콜 구속 조건 (recursive protocol constraints)' 에 대한 정보를 [Using a Protocol in Its Associated Type's Constraints (자신의 '결합 타입' 구속 조건에서 프로토콜 사용하기)]({% post_url 2020-02-29-Generics %}#using-a-protocol-in-its-associated-types-constraints-자신의-결합-타입-구속-조건에서-프로토콜-사용하기) 부분에 추가함.
 * `canImport()` 와 `targetEnvironment()` '플랫폼 조건 (platform conditions)' 에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 에 추가함.
 
@@ -99,7 +99,7 @@ categories: Swift Language Grammar Revision History
 * [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 에 있는 `objc` 특성에 대한 논의를 갱신했으며, 이제 이 특성의 추론은 더 적은 곳에서 이뤄짐.
 * [Generic Subscripts (일반화 첨자 연산)]({% post_url 2020-02-29-Generics %}#generic-subscripts-일반화-첨자-연산) 부분을 추가했으며, 이제 첨자 연산도 '일반화 (generic)' 가 될 수 있음.
 * [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 부분과, [Types (타입)]({% post_url 2020-02-20-Types %}) 장의 [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 부분에 있는 논의를 갱신했으며, 이제 '프로토콜 합성 타입 (protocol composition types)' 은 '상위 클래스 필수 조건 (superclass requirement)' 을 가질 수 있음.
-* [Extension Declaration (익스텐션-확장 선언)]({% post_url 2020-08-15-Declarations %}#extension-declaration-익스텐션-확장-선언) 에 있는 '프로토콜 익스텐션 (protocol extensions)' 에 대한 논의를 갱신했으며, 이제 `final` 은 여기서 허용되지 않음.
+* [Extension Declaration (익스텐션 선언)]({% post_url 2020-08-15-Declarations %}#extension-declaration-익스텐션-선언) 에 있는 '프로토콜 익스텐션 (protocol extensions)' 에 대한 논의를 갱신했으며, 이제 `final` 은 여기서 허용되지 않음.
 * '선행 조건문 (preconditions)' 과 '치명적인 에러 (fatal errors)' 에 대한 정보를 [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 부분에 추가함.
 
 #### 2017-03-27

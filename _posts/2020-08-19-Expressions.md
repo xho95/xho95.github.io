@@ -849,11 +849,11 @@ let s4 = type(of: someValue)(data: 5)       // 에러입니다.
 
 #### Explicit Member Expression (명시적인 멤버 표현식)
 
-_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 있는 타입 (named type)', 튜플, 또는 모듈의 멤버에 접근하게 해줍니다. 이는 항목과 멤버의 식별자 사이에 마침표 (`.`) 를 둬서 구성합니다.
+_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙은 (named) 타입', 튜플, 또는 모듈의 멤버에 접근하게 해줍니다. 이는 항목과 멤버의 식별자 사이에 마침표 (`.`) 를 둬서 구성합니다.
 
 `expression-표현식`.`member name-멤버 이름`
 
-'이름 있는 타입 (named type)' 의 멤버는 타입에 대한 선언 또는 '익스텐션 (extension; 확장)' 에서 이름이 지어집니다. 예를 들면 다음과 같습니다:
+'이름 붙은 (named) 타입' 의 멤버는 타입에 대한 선언 또는 '익스텐션 (extension; 확장)' 에서 이름이 지어집니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {

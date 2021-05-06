@@ -12,7 +12,7 @@ categories: Swift Language Grammar Declaration
 
 ## Declarations (선언)
 
-_선언 (declaration)_ 은 프로그램에 새로운 이름 또는 구조물을 도입합니다. 예를 들어, 선언을 사용하여 함수와 메소드를 도입하고, 변수와 상수를 도입하며, 열거체, 구조체, 클래스, 및 프로토콜 타입을 정의합니다. 또한 선언을 사용하면 기존 '이름 있는 타입 (named type)' 의 작동 방식을 확장할 수도 있고 다른 곳에서 선언한 '기호 (symbols)' 를 프로그램으로 불러 올 수도 있습니다.
+_선언 (declaration)_ 은 프로그램에 새로운 이름 또는 구조물을 도입합니다. 예를 들어, 선언을 사용하여 함수와 메소드를 도입하고, 변수와 상수를 도입하며, 열거체, 구조체, 클래스, 및 프로토콜 타입을 정의합니다. 또한 선언을 사용하면 기존 '이름 붙은 (named) 타입' 의 작동 방식을 확장할 수도 있고 다른 곳에서 선언한 '기호 (symbols)' 를 프로그램으로 불러 올 수도 있습니다.
 
 스위프트에서는, 선언과 동시에 구현 또는 초기화 된다라는 점에서 대부분의 '선언 (declarations)' 은 또한 '정의 (definitions)' 이기도 합니다. 즉, 프로토콜은 그 멤버를 구현하지 않기 때문에, 대부분의 프로토콜 멤버는 선언이기만 합니다. 편의상 그리고 스위프트에서는 그 구별이 그다지 중요하지 않기 때문에, _선언 (declarations)_ 이라는 용어로 선언과 정의를 모두 다룹니다.
 
@@ -213,7 +213,7 @@ newAndOld.x = 200
 
 typealias `name-이름` = `existing type-기존 타입`
 
-타입 별명을 선언한 후에는, 프로그램 어디서나 별명인 _이름 (name)_ 을 _기존 타입 (existing type)_ 대신 사용할 수 있습니다. _기존 타입 (existing type)_ '이름 있는 타입' 또는 '복합 타입 (compound type)' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하는 것이 아닙니다; 이는 단순히 기존 타입을 참조하기 위한 이름을 허용하는 것입니다.
+타입 별명을 선언한 후에는, 프로그램 어디서나 별명인 _이름 (name)_ 을 _기존 타입 (existing type)_ 대신 사용할 수 있습니다. _기존 타입 (existing type)_ '이름 붙은 타입' 또는 '복합 타입 (compound type)' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하는 것이 아닙니다; 이는 단순히 기존 타입을 참조하기 위한 이름을 허용하는 것입니다.
 
 타입 별명 선언은 '제네릭 (일반화된) 매개 변수' 를 사용하여 '기존 제네릭 타입' 에 이름을 부여할 수 있습니다. 이 타입 별명은 기존 타입의 일부 또는 모든 제네릭 매개 변수에 대해서 '구체적으로 고정된 타입 (concrete type)' 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
 
@@ -480,7 +480,7 @@ _열거체 선언 (enumeration declaration)_ 은 '이름 있는 열거체 타입
 
 클래스와는 다르지만 구조체와는 비슷하게, 열거체는 값 타입입니다; 열거체의 인스턴스는 변수나 상수에 할당할 때, 또는 함수 호출에 대한 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
 
-열거체 타입의 작동 방식은, [Extension Declaration (익스텐션-확장 선언)](#extension-declaration-익스텐션-확장-선언) 에서 논의한 것처럼, '익스텐션 선언 (확장 선언)' 으로 확장할 수 있습니다.
+열거체 타입의 작동 방식은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 선언 (확장 선언)' 으로 확장할 수 있습니다.
 
 #### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)
 
@@ -594,7 +594,7 @@ struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토
 
 구조체는 '값 타입' 입니다; 구조체의 인스턴스는 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
 
-구조체 타입의 작동 방식은, [Extension Declaration (익스텐션-확장 선언)](#extension-declaration-익스텐션-확장-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
+구조체 타입의 작동 방식은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
 
 > GRAMMAR OF A STRUCTURE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID367)
 
@@ -627,7 +627,7 @@ _상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 �
 
 클래스는 '참조 타입' 입니다; 클래스의 인스턴스는, 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사되지 않고, 참조를 합니다. 참조 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 를 참고하기 바랍니다.
 
-클래스 타입의 작동 방식은, [Extension Declaration (익스텐션-확장 선언)](#extension-declaration-익스텐션-확장-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
+클래스 타입의 작동 방식은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension; 확장) 선언' 으로 확장할 수 있습니다.
 
 > GRAMMAR OF A CLASS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID368)
 
@@ -674,7 +674,7 @@ protocol SomeProtocol: AnyObject {
 
 > 만약 프로토콜이 `objc` 특성으로 표시되어 있다면, '`AnyObject` 필수 조건' 은 해당 프로토콜에 암시적으로 적용이 되어 있는 것입니다; 이 프로토콜은 명시적으로 `AnyObject` 필수 조건으로 표시할 필요가 없습니다.
 
-프로토콜은 '이름 있는 타입 (named types)' 이며, 그래서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 코드에서 다른 '이름 있는 타입' 이 있을 수 있는 곳과 같은 모든 위치에 있을 수 있습니다. 하지만, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없으며, 이는 프로토콜이 지정하는 필수 조건에 대하여 실제로 구현을 제공하는 것은 아니기 때문입니다.
+프로토콜은 '이름 붙은 (named) 타입' 이며, 그래서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 코드에서 다른 '이름 붙은 타입' 이 있을 수 있는 곳과 같은 모든 위치에 있을 수 있습니다. 하지만, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없으며, 이는 프로토콜이 지정하는 필수 조건에 대하여 실제로 구현을 제공하는 것은 아니기 때문입니다.
 
 프로토콜은, [Delegation (위임)]({% post_url 2016-03-03-Protocols %}#delegation-위임) 에서 설명한 것처럼, 클래스 또는 구조체의 '대리자 (delegate)' 가 구현해야 하는 메소드가 어느 것인지를 선언하는 데 사용할 수 있습니다.
 
@@ -854,7 +854,7 @@ deinit {<br />
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
 
-### Extension Declaration (익스텐션-확장 선언)
+### Extension Declaration (익스텐션 선언)
 
 _익스텐션 (확장) 선언 (extension declaration)_ 은 기존 타입의 작동 방식을 확장하도록 합니다. '익스텐션 선언' 은 `extension` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
 

@@ -527,7 +527,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures (열거체와 구조체)
 
-`enum` 을 사용하여 열거체를 생성합니다. 클래스와 다른 모든 '이름 있는 타입 (named types)' 같이, 열거체는 자신과 결합된 메소드를 가질 수 있습니다.
+`enum` 을 사용하여 열거체를 생성합니다. 클래스와 다른 모든 '이름 붙은 (named) 타입' 같이, 열거체는 자신과 결합된 메소드를 가질 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -700,7 +700,7 @@ print(7.simpleDescription)
 >
 > `Double` 타입에 `absoluteValue` 속성을 추가하는 '익스텐션' 을 작성해 봅시다.
 
-'프로토콜 이름' 은 다른 어떤 '이름 있는 타입 (named type)' 처럼-예를 들어, 타입이 서로 다르지만 모두 단일 프로토콜을 준수하는 객체의 '컬렉션 (collection)' 을 생성하기 위해-사용할 수 있습니다. 타입이 프로토콜 타입인 값과 작업할 때, 프로토콜 정의 밖의 메소드는 사용 불가능합니다.
+'프로토콜 이름' 은 다른 어떤 '이름 붙은 (named) 타입' 처럼-예를 들어, 타입이 서로 다르지만 모두 단일 프로토콜을 준수하는 객체의 '컬렉션 (collection)' 을 생성하기 위해-사용할 수 있습니다. 타입이 프로토콜 타입인 값과 작업할 때, 프로토콜 정의 밖의 메소드는 사용 불가능합니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
