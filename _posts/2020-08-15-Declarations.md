@@ -854,7 +854,7 @@ deinit {<br />
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
 
-### Extension Declaration (익스텐션-확장 선언)
+### Extension Declaration (익스텐션 선언)
 
 _익스텐션 (확장) 선언 (extension declaration)_ 은 기존 타입의 작동 방식을 확장하도록 합니다. '익스텐션 선언' 은 `extension` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
 
