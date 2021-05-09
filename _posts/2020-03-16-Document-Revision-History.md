@@ -145,7 +145,7 @@ categories: Swift Language Grammar Revision History
 * '벗어나지 않는 클로저 (nonescaping closures)' 만 '입-출력 매개 변수 (in-out parameters)' 를 붙잡을 수 있다는 것에 주목하기 위해 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 부분에 있는 논의를 갱신함
 * [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분에 있는 '기본 설정 매개 변수' 에 대한 논의를 갱신했으며, 이제 이들을 함수 호출에서 재정렬할 수 있음.
 * [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에서 콜론을 사용하도록 '특성 인자 (attribute arguments)' 를 갱신함.
-* '다시 던지는 함수 (rethrowing function)' 의 'catch' 블럭 내에서 에러를 던지는 것에 대한 정보를 [Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)]({% post_url 2020-08-15-Declarations %}#rethrowing-functions-and-methods-다시-던지는-함수-및-메소드) 부분에 추가함.
+* '다시 던지는 함수 (rethrowing function)' 의 'catch' 블럭 내에서 에러를 던지는 것에 대한 정보를 [Rethrowing Functions and Methods (다시 던지는 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#rethrowing-functions-and-methods-다시-던지는-함수와-메소드) 부분에 추가함.
 * 오브젝티브-C 에 있는 '획득자 (getter)' 와 '설정자 (setter)' 의 '선택자 (selector)' 에 접근하는 것에 대한 정보를 [Selector Expression (선택자 표현식)]({% post_url 2020-08-19-Expressions %}#selector-expression-선택자-표현식) 부분에 추가함.
 * '일반화된 타입 별명 (generic type aliases)' 과 프로토콜 내에서 '타입 별명 (type aliases)' 을 사용하는 것에 대해서 [Type Alias Declaration (타입 별명 선언)]({% post_url 2020-08-15-Declarations %}#type-alias-declaration-타입-별명-선언) 부분에 정보를 추가함.
 * '매개 변수 타입' 주위에는 괄호가 필수라는 것에 주목하기 위해 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 '함수 타입' 에 대한 논의를 갱신함.
@@ -168,7 +168,7 @@ categories: Swift Language Grammar Revision History
 * 키워드를 외부 매개 변수 이름으로 사용하는 것에 대한 정보를 [Keywords and Punctuation (키워드와 문장 부호)]({% post_url 2020-07-28-Lexical-Structure %}#keywords-and-punctuation-키워드와-문장-부호) 부분에 추가함.
 * 열거체와 열거체 'case 값' 이 `@objc` 특성을 사용할 수 있다는 것에 주목하기 위해 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 있는 논의를 갱신함.
 * '점 (dot)' 을 담고 있는 사용자 정의 연산자에 대한 논의를 가지고 있는 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 갱신함.
-* [Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)]({% post_url 2020-08-15-Declarations %}#rethrowing-functions-and-methods-다시-던지는-함수-및-메소드) 부분에 '다시 던지는 함수 (rethrowing functions)' 는 직접 에러를 던질 수 없다는 기록을 추가함.
+* [Rethrowing Functions and Methods (다시 던지는 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#rethrowing-functions-and-methods-다시-던지는-함수와-메소드) 부분에 '다시 던지는 함수 (rethrowing functions)' 는 직접 에러를 던질 수 없다는 기록을 추가함.
 * [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분에 속성을 '입-출력 (in-out) 매개 변수' 로 전달할 때 호출되는 '속성 관찰자 (property observers)' 에 대한 기록을 추가함.
 * '에러 처리 (error handling)' 에 대한 부분을 [A Swift Tour (스위프트 둘러보기)]({% post_url 2016-04-17-A-Swift-Tour %}) 장에 추가함.
 * 할당 해제 과장을 더 명확하게 보여주기 위해 [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분에 있는 그림을 갱신함.
