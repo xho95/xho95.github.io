@@ -414,7 +414,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 `subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, 멤버를 '수월한 구문 표현' 으로 찾아볼 수 있게 해줍니다.
 
-#### Throwing Functions and Methods (던지는 함수 및 메소드)
+#### Throwing Functions and Methods (던지는 함수와 메소드)
 
 에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _던지는 함수 (throwing functions)_ 와 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
 
@@ -430,7 +430,7 @@ func `function name-함수 이름`(`parameters-매개 변수`) throws -> `return
 
 '던지는 메소드' 는 '던지지 않는 메소드' 를 재정의 할 수 없으며, '던지는 메소드' 는 '던지지 않는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 없습니다. 그건 그렇고, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '던지지 않는 메소드' 는 '던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 있습니다.
 
-#### Rethrowing Functions and Methods (다시 던지는 함수 및 메소드)
+#### Rethrowing Functions and Methods (다시 던지는 함수와 메소드)
 
 함수나 메소드는 함수 매개 변수에서 에러를 던지는 경우에만 에러를 던지는 것을 지시하기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이 함수와 메소드들을 _다시 던지는 함수 (rethrowing functions)_ 와 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. 다시 던지는 함수와 메소드는 최소 하나의 '던지는 함수 매개 변수' 를 반드시 가져야 합니다:
 
