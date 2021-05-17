@@ -460,7 +460,7 @@ print(game.textualDescription)
 
 #### Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)
 
-'일반화한 (generic) 타입' 은, 타입의 '일반화한 매개 변수' 가 프로토콜을 준수할 때와 같이, 정해진 조건 하에서만 프로토콜의 '필수 조건' 을 만족할 수도 있습니다. '일반화한 타입' 은 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하는 것으로써 조건에 따라 프로토콜을 준수하도록 만들 수 있습니다. 이 '구속 조건' 들은 채택하려는 프로토콜 이름 뒤에 '일반화 `where` 절' 을 작성함으로써 작성합니다. '일반화 `where` 절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 을 참고하기 바랍니다.
+'일반화 (generic) 타입' 은, 타입의 '일반화 매개 변수' 가 프로토콜을 준수할 때와 같이, 정해진 조건 하에서만 프로토콜의 '필수 조건' 을 만족할 수도 있습니다. '일반화 타입' 은 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하는 것으로써 조건에 따라 프로토콜을 준수하도록 만들 수 있습니다. 이 '구속 조건' 들은 채택하려는 프로토콜 이름 뒤에 '일반화 `where` 절' 을 작성함으로써 작성합니다. '일반화 `where` 절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 을 참고하기 바랍니다.
 
 다음 '익스텐션' 은 `Array` 인스턴스가 `TextRepresentable` 을 준수하는 타입의 원소를 저장할 때마다 `TextRepresentable` 프로토콜을 준수하게 만듭니다.[^array-element]
 

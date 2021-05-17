@@ -45,7 +45,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Generics (일반화)]({% post_url 2020-02-29-Generics %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
-* [Opaque Types (불투명한 타입)]({% post_url 2020-02-22-Opaque-Types %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
+* [Opaque Types (불투명 타입)]({% post_url 2020-02-22-Opaque-Types %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) ![5.4](https://img.shields.io/badge/-%205.4-success)

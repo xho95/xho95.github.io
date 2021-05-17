@@ -446,7 +446,7 @@ _키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 
 
 \\`type name-타입 이름`.`path-경로`
 
-_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같이, 어떤 '일반화한 (generic)' 매개 변수를 포함한, '구체적으로 고정된 타입 (concrete type)' 의 이름입니다.
+_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같이, 어떤 '일반화 (generic)' 매개 변수를 포함한, '구체적으로 고정된 타입 (concrete type)' 의 이름입니다.
 
 _경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 표현식 (optional-chaining expressions)', 및 '강제로 포장을 푸는 표현식 (foced unwrapping expressions)'[^foced-unwrapping-expressions] 으로 구성됩니다. 이러한 각각의 키-경로 성분을, 어떤 순서로도, 필요한만큼 많이 반복할 수 있습니다.
 

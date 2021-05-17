@@ -799,7 +799,7 @@ print(fridgeIsOpen)
 
 ### Generics (일반화)
 
-'꺽쇠 괄호 (angle brackets)' 안에 이름을 작성하여 '일반화한 (generic) 함수' 나 '일반화한 (generic) 타입' 을 만듭니다.
+'꺽쇠 괄호 (angle brackets)' 안에 이름을 작성하여 '일반화 (generic) 함수' 나 '일반화 타입' 을 만듭니다.
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {

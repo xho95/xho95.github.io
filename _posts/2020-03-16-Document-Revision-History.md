@@ -46,7 +46,7 @@ categories: Swift Language Grammar Revision History
 #### 2019-09-10
 
 * 스위프트 5.1 에서 갱신한 것.
-* 지정한 이름 있는 반환 타입을 제공하는 대신, 그 반환 값이 준수하는 프로토콜을 지정하는 함수에 대한 정보를, [Opaque Types (불투명한 타입)]({% post_url 2020-02-22-Opaque-Types %}) '장 (chapter)' 에 추가함.
+* 지정한 이름 있는 반환 타입을 제공하는 대신, 그 반환 값이 준수하는 프로토콜을 지정하는 함수에 대한 정보를, [Opaque Types (불투명 타입)]({% post_url 2020-02-22-Opaque-Types %}) 장에 추가함.
 * '속성 포장 (property wrappers)' 에 대한 정보를 [Property Wrappers (속성 포장)]({% post_url 2020-05-30-Properties %}#property-wrappers-속성-포장) 부분에 추가함.
 * 라이브러리 진화에서 '동결된 (frozen)' 열거체와 구조체에 대한 정보를 [frozen (동결된)]({% post_url 2020-08-14-Attributes %}#frozen-동결된) 부분에 추가함.
 * `return` 을 생략한 함수에 대한 정보를 가진 [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 와 [Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 부분을 추가함.
