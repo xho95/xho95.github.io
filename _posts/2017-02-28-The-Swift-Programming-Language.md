@@ -55,8 +55,8 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 * [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
-* [Types (타입)]({% post_url 2020-02-20-Types %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
-* [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Types (타입)]({% post_url 2020-02-20-Types %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
+* [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
 * [Statements (구문)]({% post_url 2020-08-20-Statements %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 * [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 * [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
