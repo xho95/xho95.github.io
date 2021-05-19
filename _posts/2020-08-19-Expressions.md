@@ -6,15 +6,13 @@ date:   2020-08-19 11:30:00 +0900
 categories: Swift Language Grammar Expression
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Expressions (표현식)
 
-스위프트에는 네 가지 종류의 표현식이 있습니다: '접두사 표현식 (prefix expressions)', '이항 표현식 (binary expressions)', '제1 표현식 (primary expressions)', 및 '접미사 표현식 (postfix expressions)' 이 그것입니다. 표현식을 평가하는 것은 값을 반환하거나, '부작용 (side effect)'[^side-effect] 을 일으키거나, 아니면 둘 다에 해당합니다.
+스위프트에는, 네 가지 종류의 표현식인: '접두사 (prefix) 표현식', '이항 (binary) 표현식', '제1 (primary) 표현식', 및 '접미사 (postfix) 표현식' 이 있습니다. 표현식을 평가하면 값을 반환하거나, '부작용 (side effect)'[^side-effect] 을 일으키거나, 아니면 둘 다를 합니다.
 
-접두사 표현식 및 이항 표현식은 더 작은 표현식에 연산자를 적용할 수 있도록 해줍니다. '제1 표현식' 은 개념적으로 가장 간단한 종류의 표현식이며, 값에 접근하는 방법을 제공합니다. 접미사 표현식은, 접두사 표현식 및 이항 표현식 처럼, 함수 호출 및 멤버 접근 등의 접미사를 사용하여 더 복잡한 표현식을 제작하도록 해줍니다. 표현식은 각 종류별로 아래 장에서 더 자세히 설명합니다.
+'접두사 표현식' 과 '이항 표현식' 은 더 작은 표현식에 연산자를 적용하게 해줍니다. '제1 표현식' 은 개념상 가장 단순한 종류의 표현식이며, 값에 접근하는 방법을 제공합니다. '접미사 표현식' 은, 접두사 및 이항 표현식 같이, 함수 호출 및 멤버 접근 같은 '접미사' 를 사용하여 더 복잡한 표현식을 제작하게 해줍니다. 각각의 종류에 대한 표현식은 아래 부분에서 더 자세히 설명합니다.
 
 > GRAMMAR OF AN EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html)
 
