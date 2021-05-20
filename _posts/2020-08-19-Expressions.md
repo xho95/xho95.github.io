@@ -26,6 +26,18 @@ _접두사 표현식 (prefix expressions)_ 은 '선택적인 접두사 연산자
 
 > GRAMMAR OF A PREFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
+#### In-Out Expression (입-출력 표현식)
+
+_입-출력 표현식 (in-out expression)_ 은 함수 호출 표현식에 '입-출력 인자' 로 전달된 변수를 표시합니다.
+
+&nbsp;&nbsp;&nbsp;&nbsp;\&`expression-표현식`
+
+입-출력 매개 변수에 대한 더 많은 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
+
+입-출력 표현식은, [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)](#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환) 부분에서 설명하는 것처럼, 포인터가 필요한 상황에서 포인터-아닌 인자를 제공할 때도 사용합니다. 
+
+> GRAMMAR OF AN IN-OUT EXPRESSION 부분 생략
+
 #### Try Operator ('try' 연산자)
 
 _try 표현식 (try expression)_ 은 `try` 연산자와 그 뒤에 있는 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
