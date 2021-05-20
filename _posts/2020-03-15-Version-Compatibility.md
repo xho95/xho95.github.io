@@ -15,7 +15,7 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 
 스위프트 4와 스위프트 4.2 코드를 제작하기 위해 '엑스코드 12' 를 사용할 때, 스위프트 5.3 의 기능도 대부분 사용 가능합니다. 그렇다 하더라도, 아래의 변경 사항은 스위프트 5.3 이후의 코드에서만 사용 가능합니다:
 
-* '불투명한 타입 (opaque type)' 을 반환하는 함수는 '스위프트 5.1 런타임 (runtime)'[^swift-runtime] 이 필수입니다.
+* '불투명 타입 (opaque type)' 을 반환하는 함수는 '스위프트 5.1 런타임 (runtime)'[^swift-runtime] 이 필수입니다.
 * '`try?` 표현식' 은 이미 '옵셔널 (optionals)' 을 반환하는 표현식에 부가적인 수준의 '옵셔널성 (optionality)' 를 도입하지 않습니다.[^level-of-optionality]
 * '아주 큰 정수 글자 값 초기화 표현식 (large integer literal initialization expressions)'[^large-integer-literal] 은 올바른 정수 타입인 것으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 도 '값 넘침 (overflowing)' 이 아닌 올바른 값으로 평가합니다.
 

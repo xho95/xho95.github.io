@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.4: Opaque Types (불투명한 타입)"
+title:  "Swift 5.4: Opaque Types (불투명 타입)"
 date:   2020-02-22 11:30:00 +0900
 categories: Swift Language Grammar Opaque Type
 ---
@@ -12,7 +12,7 @@ categories: Swift Language Grammar Opaque Type
 
 '불투명 (opaque) 반환 타입' 을 가진 함수나 메소드는 반환 값의 '타입 정보' 를 숨깁니다. 함수의 반환 타입으로 '고정 (concrete) 타입' 을 제공하는 대신, 반환 값을 자신이 지원하는 프로토콜로 설명합니다. 타입 정보를 감추는 것은, 반환 값의 실제 타입을 '개인 전용 (private)' 으로 남길 수 있기 때문에[^private], 모듈과 그 모듈을 호출하는 코드의 경계선 상에서 유용합니다. 프로토콜 타입인 값을 반환하는 것과는 달리, '불투명 타입' 은 '타입 정체성 (type identity)' 을 보존합니다[^type-identity]-컴파일러는 '타입 정보' 에 접근할 수 있지만, 모듈 사용자는 그렇지 않습니다.
 
-### The Problem That Opaque Types Solve ('불투명한 타입' 이 푸는 문제)
+### The Problem That Opaque Types Solve (불투명 타입이 푸는 문제)
 
 예를 들어, ASCII 로 '예술 도형' 을 그리는 모듈을 작성한다고 가정해 봅시다. 'ASCII 예술 도형' 의 기초적인 성질은 해당 도형에 대한 문자열 표현을 반환하는 `draw()` 함수이며, 이를 `Shape` 프로토콜에 대한 '필수 조건 (requirement)'[^requirement] 으로 사용할 수 있습니다:
 
@@ -150,7 +150,7 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-이 예제의 `opaqueJoinedTriangles` 값은 이 장 앞의 [The Problem That Opaque Types Solve ('불투명한 타입' 이 푸는 문제)](#the-problem-that-opaque-types-solve-불투명한-타입-이-푸는-문제) 부분에 있는 '일반화 (generics) 예제' 의 `joinedTriangles` 과 똑같습니다. 하지만, 해당 예제에 있는 값과는 달리, `flip(_:)` 과 `join(_:_:)` 은, 이 타입들이 보이는 것을 막도록, '일반화 도형 연산' 이 반환하는 실제 타입을 '불투명 반환 타입' 으로 포장합니다. 두 함수 다 '일반화 (generic)' 에 의지하고 있기 때문에 '일반화 (타입)' 이며, 함수의 '타입 매개 변수' 가 `FlippedShape` 과 `JoinedShape` 에 필요한 '타입 정보' 를 전달합니다.
+이 예제의 `opaqueJoinedTriangles` 값은 이 장 앞의 [The Problem That Opaque Types Solve (불투명 타입이 푸는 문제)](#the-problem-that-opaque-types-solve-불투명-타입이-푸는-문제) 부분에 있는 '일반화 (generics) 예제' 의 `joinedTriangles` 과 똑같습니다. 하지만, 해당 예제에 있는 값과는 달리, `flip(_:)` 과 `join(_:_:)` 은, 이 타입들이 보이는 것을 막도록, '일반화 도형 연산' 이 반환하는 실제 타입을 '불투명 반환 타입' 으로 포장합니다. 두 함수 다 '일반화 (generic)' 에 의지하고 있기 때문에 '일반화 (타입)' 이며, 함수의 '타입 매개 변수' 가 `FlippedShape` 과 `JoinedShape` 에 필요한 '타입 정보' 를 전달합니다.
 
 '불투명 반환 타입' 을 가진 함수가 여러 곳에서 반환하는 경우, 가능한 모든 반환 값들은 반드시 똑같은 타입이어야 합니다. '일반화 함수' 에서는, 해당 반환 타입으로 함수의 '일반화 타입 매개 변수' 를 사용할 순 있지만, 여전히 '단일 타입' 이어야 합니다. 예를 들어, 다음은 '정사각형' 이라는 특수한 경우를 포함한 _무효한 (invalid)_ 버전[^invalid-code] 의 '도형-뒤집기' 함수입니다:
 
@@ -275,7 +275,7 @@ print(type(of: twelve))
 
 [^private]: '개인 전용 (private)' 은 스위프트의 '개체 (entity)' 에 대한 '접근 수준' 이 `private` 인 것을 말합니다. '개인 전용' 에 대한 더 자세한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 있는 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 부분을 참고하기 바랍니다.
 
-[^type-identity]: '타입 정체성 (type identity) 을 보존한다' 는 말은 '불투명한 타입' 을 사용하면 '특정한 하나의 타입이 계속 유지된다' 는 것을 의미합니다. '프로토콜' 은 '해당 프로토콜' 을 준수하는 어떤 타입이든 모두 그 '프로토콜 타입' 이기 때문에 '타입 정체성' 을 보존할 수 없습니다.
+[^type-identity]: '타입 정체성 (type identity) 을 보존한다' 는 말은 '불투명 타입' 을 사용하면 '특정한 하나의 타입이 계속 유지된다' 는 것을 의미합니다. '프로토콜' 은 '해당 프로토콜' 을 준수하는 어떤 타입이든 모두 그 '프로토콜 타입' 이기 때문에 '타입 정체성' 을 보존할 수 없습니다.
 
 [^requirement]: '프로토콜' 의 '필수 조건 (requirement)' 은 해당 프로토콜을 준수하는 타입이 반드시 구현해야 합니다. '필수 조건' 에 대한 더 자세한 내용은, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 앞 부분 설명을 참고하기 바랍니다.
 

@@ -6,29 +6,37 @@ date:   2020-08-19 11:30:00 +0900
 categories: Swift Language Grammar Expression
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Expressions (표현식)
 
-스위프트에는 네 가지 종류의 표현식이 있습니다: '접두사 표현식 (prefix expressions)', '이항 표현식 (binary expressions)', '제1 표현식 (primary expressions)', 및 '접미사 표현식 (postfix expressions)' 이 그것입니다. 표현식을 평가하는 것은 값을 반환하거나, '부작용 (side effect)'[^side-effect] 을 일으키거나, 아니면 둘 다에 해당합니다.
+스위프트에는, 네 가지 종류의 표현식인: '접두사 (prefix) 표현식', '이항 (binary) 표현식', '제1 (primary) 표현식', 및 '접미사 (postfix) 표현식' 이 있습니다. 표현식을 평가하면 값을 반환하거나, '부작용 (side effect)'[^side-effect] 을 일으키거나, 아니면 둘 다를 합니다.
 
-접두사 표현식 및 이항 표현식은 더 작은 표현식에 연산자를 적용할 수 있도록 해줍니다. '제1 표현식' 은 개념적으로 가장 간단한 종류의 표현식이며, 값에 접근하는 방법을 제공합니다. 접미사 표현식은, 접두사 표현식 및 이항 표현식 처럼, 함수 호출 및 멤버 접근 등의 접미사를 사용하여 더 복잡한 표현식을 제작하도록 해줍니다. 표현식은 각 종류별로 아래 장에서 더 자세히 설명합니다.
+'접두사 표현식' 과 '이항 표현식' 은 더 작은 표현식에 연산자를 적용하게 해줍니다. '제1 표현식' 은 개념상 가장 단순한 종류의 표현식이며, 값에 접근하는 방법을 제공합니다. '접미사 표현식' 은, 접두사 및 이항 표현식 같이, 함수 호출 및 멤버 접근 같은 '접미사' 를 사용하여 더 복잡한 표현식을 제작하게 해줍니다. 각각의 종류에 대한 표현식은 아래 부분에서 더 자세히 설명합니다.
 
 > GRAMMAR OF AN EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html)
 
 ### Prefix Expressions (접두사 표현식)
 
-_접두사 표현식 (prefix expressions)_ 은 선택 사항인 접두사 연산자를 표현식과 조합합니다. '접두사 연산자 (prefix operators)' 는 하나의 인자를 취하는데, 뒤에 있는 표현식이 그것입니다.
+_접두사 표현식 (prefix expressions)_ 은 '선택적인 접두사 연산자' 와 '표현식' 을 조합합니다. '접두사 연산자' 는 하나의 인자로, 뒤따라 오는 표현식을, 취합니다.
 
-이런 연산자의 작동 방식에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 발랍니다.
-
-표준 라이브러리의 연산자에 더하여, 함수 호출 표현식에서 입-출력 인자로 전달되는 변수의 이름 바로 앞에는 `&` 를 사용합니다. 더 자세한 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
+'스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
 
 > GRAMMAR OF A PREFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
+
+#### In-Out Expression (입-출력 표현식)
+
+_입-출력 표현식 (in-out expression)_ 은 함수 호출 표현식에 '입-출력 인자' 로 전달된 변수를 표시합니다.
+
+&nbsp;&nbsp;&nbsp;&nbsp;\&`expression-표현식`
+
+입-출력 매개 변수에 대한 더 많은 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
+
+입-출력 표현식은, [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)](#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환) 부분에서 설명하는 것처럼, 포인터가 필요한 상황에서 포인터-아닌 인자를 제공할 때도 사용합니다. 
+
+> GRAMMAR OF AN IN-OUT EXPRESSION 부분 생략
 
 #### Try Operator ('try' 연산자)
 
@@ -446,7 +454,7 @@ _키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 
 
 \\`type name-타입 이름`.`path-경로`
 
-_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같이, 어떤 '일반화한 (generic)' 매개 변수를 포함한, '구체적으로 고정된 타입 (concrete type)' 의 이름입니다.
+_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같이, 어떤 '일반화 (generic)' 매개 변수를 포함한, '구체적으로 고정된 타입 (concrete type)' 의 이름입니다.
 
 _경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 표현식 (optional-chaining expressions)', 및 '강제로 포장을 푸는 표현식 (foced unwrapping expressions)'[^foced-unwrapping-expressions] 으로 구성됩니다. 이러한 각각의 키-경로 성분을, 어떤 순서로도, 필요한만큼 많이 반복할 수 있습니다.
 
