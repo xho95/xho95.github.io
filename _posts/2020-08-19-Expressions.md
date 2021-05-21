@@ -64,9 +64,9 @@ sum = try (someThrowingFunction() + anotherThrowingFunction()) // 두 함수 호
 sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: try 를 첫 번째 함수 호출에만 적용합니다.
 ```
 
-이항 연산자가 할당 연산자이거나 `try` 표현식을 괄호로 감싸지 않은 이상, `try` 표현식이 이항 연산자의 오른-편에 있을 수는 없습니다.
+이항 연산자가 할당 연산자이거나 `try` 표현식을 괄호로 테두리 치지 않는 한, `try` 표현식이 이항 연산자의 오른-쪽에 있을 수는 없습니다.
 
-더 자세한 정보와 `try`, `try?`, 및 `try!` 를 사용하는 방법에 대한 예제를 보려면, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 를 참고하기 바랍니다.
+`try`, `try?`, 그리고 `try!` 를 사용하는 방법에 대한 예제와 더 많은 정보는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장을 참고하기 바랍니다.
 
 > GRAMMAR OF A TRY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
