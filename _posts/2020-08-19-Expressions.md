@@ -80,7 +80,7 @@ _이항 표현식 (binary expressions)_ 은 '이항 중위 연산자'[^infix-bin
 
 '스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목을 참고하기 바랍니다.
 
-> '구문 해석 (parse)' 시간에, 이항 연산자로 이루어진 표현식은 '납작한 리스트 (flat list)'[^flat-list] 로 표현됩니다. 이 '리스트 (list)' 에 '연산자 우선 순위' 를 적용하여 '트리 (tree)' 로 변형합니다. 예를 들어, `2 + 3 * 5` 라는 표현식은 초기에는 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 '납작한 리스트' 라고 이해합니다. 이 가공은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변형합니다.
+> '구문 해석 (parse)' 시간에, 이항 연산자로 이루어진 표현식은 '납작한 리스트 (flat list)'[^flat-list] 로 표현됩니다. 이 '리스트 (list)' 에 '연산자 우선 순위' 를 적용하여 '트리 (tree)' 로 변형합니다. 예를 들어, `2 + 3 * 5` 라는 표현식은 초기에는 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 '납작한 리스트' 라고 이해합니다. 이 가공 과정은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변형합니다.
 
 > GRAMMAR OF A BINARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -88,13 +88,13 @@ _이항 표현식 (binary expressions)_ 은 '이항 중위 연산자'[^infix-bin
 
 _할당 연산자 (assignment operator)_ 는 주어진 표현식에 새로운 값을 설정합니다. 형식은 다음과 같습니다:
 
-`expression-표현식` = `value-값`
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` = `value-값`
 
-_표현식 (expression)_ 의 값은 _값 (value)_ 부분을 평가하여 구한 값으로 설정됩니다. _표현식 (expression)_ 이 튜플이라면, _값 (value)_ 은 반드시 원소 개수가 같은 튜플이어야 합니다. (중첩된 튜플은 허용됩니다.) 할당 작업은 _값 (value)_ 의 각 부분이 이에 연관된 _표현식 (expression)_ 의 부분으로 수행합니다. 예를 들면 다음과 같습니다:
+_표현식 (expression)_ 의 값은 _값 (value)_ 을 평가하여 구한 값으로 설정합니다. _표현식 (expression)_ 이 '튜플' 이면, _값 (value)_ 은 반드시 똑같은 개수의 원소를 가진 튜플이어야 합니다. (중첩 튜플은 허용합니다.) '할당 (assignment)' 은 _값 (value)_ 의 각 부분을 이와 연관된 _표현식 (expression)_ 부분으로 수행합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 (a, _, (b, c)) = ("test", 9.45, (12, 3))
-// a 는 "test", b 는 12, c 는 3 이 되며, 9.45 는 무시됩니다.
+// a 는 "test", b 는 12, c 는 3 이고, 9.45 는 무시합니다.
 ```
 
 할당 연산자는 어떤 값도 반환하지 않습니다.
