@@ -72,15 +72,15 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: try �
 
 ### Binary Expressions (이항 표현식)
 
-_이항 표현식 (binary expressions)_ 은 '이항 중위 연산자 (infix binary operator)'[^infix-binary-operator] 와 이의 왼쪽 인자 및 오른쪽 인자로써 취하는 표현식을 조합합니다. 형식은 다음과 같습니다:
+_이항 표현식 (binary expressions)_ 은 '이항 중위 연산자'[^infix-binary-operator] 와 이것이 자신의 왼쪽과 오른쪽 인자로 취하는 '표현식' 을 조합합니다. 형식은 다음과 같습니다:
 
-`left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
+&nbsp;&nbsp;&nbsp;&nbsp;`left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
 
-이들 연산자의 작동 방식에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 를 참고하기 바랍니다.
+'스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목을 참고하기 바랍니다.
 
-> 구문 해석 시간에, 이항 연산자로 이루어진 표현식은 '단순 리스트 (flat list)'[^list] 로 표현됩니다. 이 '리스트 (list)' 는 연산자 우선 순위를 적용하는 과정을 통해 '트리 (tree)' 로 변환됩니다. 예를 들어, 표현식 `2 + 3 * 5` 는 초기에 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 개의 항목을 가진 '단순 리스트' 라고 이해됩니다. 이 후 과정은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변환합니다.
+> '구문 해석 (parse)' 시간에, 이항 연산자로 이루어진 표현식은 '납작한 리스트 (flat list)'[^flat-list] 로 표현됩니다. 이 '리스트 (list)' 에 '연산자 우선 순위' 를 적용하여 '트리 (tree)' 로 변형합니다. 예를 들어, `2 + 3 * 5` 라는 표현식은 초기에는 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 '납작한 리스트' 라고 이해합니다. 이 가공은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변형합니다.
 
 > GRAMMAR OF A BINARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -1018,9 +1018,9 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
 
-[^infix-binary-operator]: 이 책에서는 '중위 이항 연산자 (infix binary operator)' 와 '이항 중위 연산자 (binary infix operator)' 라는 말을 섞어 쓰고 있는데, 편의를 위해서 '이항 중위 연산자' 로 통일하여 옮기도록 합니다.
+[^infix-binary-operator]: 이 책은 '중위 이항 연산자 (infix binary operator)' 와 '이항 중위 연산자 (binary infix operator)' 라는 말을 같이 사용하고 있는데, 편의를 위해서 '이항 중위 연산자' 로 통일하여 옮깁니다.
 
-[^list]: 여기서의 '리스트 (list)' 는 '목록' 이라기 보다는 자료 구조에서의 '리스트' 이기 때문에 용어 그대로 옮기도록 합니다.
+[^flat-list]: [.map()과 .flatMap()의 차이](https://kchanguk.tistory.com/56) 라는 글을 참고해 볼 때, '납작한 리스트 (flat list)' 는 각각의 항목이 가장 작은 단위의 단일 원소로 이루어진 '리스트' 자료 구조라고 추측할 수 있습니다.
 
 [^foundation]: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
 
