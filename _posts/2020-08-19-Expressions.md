@@ -115,35 +115,35 @@ _조건 (condition)_ 평가가 `true` 면, '조건 연산자' 는 '첫 번째 �
 
 #### Type-Casting Operators (타입-변환 연산자)
 
-타입-변환 연산자는 네 가지가 있습니다: `is` 연산자, `as` 연산자, `as?` 연산자, 그리고 `as!` 연산자가 그것입니다.
+'타입-변환 연산자' 는: `is` 연산자, `as` 연산자, `as?` 연산자, 그리고 `as!` 연산자 이렇게 네 개가 있습니다.
 
 형식은 다음과 같습니다:
 
-`expression-표현식` is `type-타입`
-`expression-표현식` as `type-타입`
-`expression-표현식` as? `type-타입`
-`expression-표현식` as! `type-타입`
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` is `type-타입`
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` as `type-타입`
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` as? `type-타입`
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` as! `type-타입`
 
-`is` 연산자는 실행 시간에 _표현식 (expression)_ 을 지정한 _타입 (type))_ 으로 변환할 수 있는지 검사합니다. _표현식 (expression)_ 을 지정한 타입으로 변환할 수 있는 경우 `true` 를 반환합니다; 다른 경우라면, `false` 를 반환합니다.
+`is` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 변환할 수 있는 지를 실행 시간에 검사합니다. _표현식 (expression)_ 을 특정 타입으로 변환할 수 있으면 `true` 를 반환하고; 그 외의 경우, `false` 를 반환합니다.
 
-`as` 연산자는, '올림 변환 (upcasting)' 또는 '연동 (bridging)' 같이, 항상 변환이 성공함을 컴파일 시간에 알고 있을 때 변환을 수행하는 것입니다. '올림 변환 (upcasting)' 은, 중간 단계의 변수를 사용하지 않고도, 표현식을 그것의 상위 타입의 인스턴스로 사용하게 해줍니다. 다음의 접근 방식은 '동치 (equivalent)' 입니다:
+`as` 연산자는, '올림 변환 (upcasting)' 이나 '연동 (bridging)' 같이, 변환이 항상 성공임을 컴파일 시간에 알고 있을 때 변환을 수행합니다. '올림 변환' 은, 중간 단계 변수의 사용 없이도, 표현식을 그 타입의 '상위 타입' 인스턴스로 사용할 수 있도록 해줍니다. 다음의 접근 방식은 '동치 (equivalent)' 입니다:
 
 ```swift
 func f(_ any: Any) { print("Function for Any") }
 func f(_ int: Int) { print("Function for Int") }
 let x = 10
 f(x)
-// "Function for Int" 를 출력합니다.
+// "Function for Int" 를 인쇄합니다.
 
 let y: Any = x
 f(y)
-// "Function for Any" 를 출력합니다.
+// "Function for Any" 를 인쇄합니다.
 
 f(x as Any)
-// "Function for Any" 를 출력합니다.
+// "Function for Any" 를 인쇄합니다.
 ```
 
-'연동 (bridging)' 은 새로운 인스턴스를 생성할 필요없이 `String` 같은 스위프트 표준 라이브러리 타입을 `NSString` 같은 연관된 'Foundation' 타입[^foundation] 으로 사용하게 해줍니다. '연동 (bridging)' 에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 를 참고하기 바랍니다.
+'연동' 은 새로운 인스턴스를 생성할 필요 없이도 `String` 같은 '스위프트 표준 라이브러리 타입' 의 표현식을 `NSString` 같은 그와 관련된 'Foundation' 타입[^foundation] 으로 사용할 수 있도록 해줍니다. '연동 (bridging)' 에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다.
 
 `as?` 연산자는 _표현식 (expression)_ 을 지정한 _타입 (type)_ 으로 조건부로 변환합니다. `as?` 연산자는 지정한 _타입 (type)_ 에 대한 '옵셔널' 을 반환합니다. 실행 시간에, 변환을 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하여 반환합니다; 다른 경우에는, `nil` 이라는 값을 반환합니다. 지정한 타입으로 변환하는 것이 실패라고 보증된 경우거나 아니면 성공이라고 보증된 경우에는, 컴파일-시간 에러가 발생합니다.
 
