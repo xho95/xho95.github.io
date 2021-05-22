@@ -145,11 +145,11 @@ f(x as Any)
 
 '연동' 은 새로운 인스턴스를 생성할 필요 없이도 `String` 같은 '스위프트 표준 라이브러리 타입' 의 표현식을 `NSString` 같은 그와 관련된 'Foundation' 타입[^foundation] 으로 사용할 수 있도록 해줍니다. '연동 (bridging)' 에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다.
 
-`as?` 연산자는 _표현식 (expression)_ 을 지정한 _타입 (type)_ 으로 조건부로 변환합니다. `as?` 연산자는 지정한 _타입 (type)_ 에 대한 '옵셔널' 을 반환합니다. 실행 시간에, 변환을 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하여 반환합니다; 다른 경우에는, `nil` 이라는 값을 반환합니다. 지정한 타입으로 변환하는 것이 실패라고 보증된 경우거나 아니면 성공이라고 보증된 경우에는, 컴파일-시간 에러가 발생합니다.
+`as?` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 '조건부 변환' 합니다. `as?` 연산자는 특정 _타입 (type)_ 의 '옵셔널' 을 반환합니다. 실행 시간에, 변환이 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하고 반환하며; 그 외의 경우, 반환 값은 `nil` 입니다. 특정 _타입 (type)_ 으로의 변환이 실패라고 보증되거나 성공이라고 보증된다면, 컴파일-시간 에러를 일으킵니다.
 
-`as!` 연산자는 _표현식 (expression)_ 을 지정한 _타입 (type)_ 으로 강제 변환합니다. `as!` 연산자는, 옵셔널 타입이 아닌, 지정한 _타입 (type)_ 의 값을 반환합니다. 변환을 실패하면, 실행 시간 에러가 발생합니다. `x as! T` 의 작동 방식은 `(x as? T)!` 의 작동 방식과 같습니다.
+`as!` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 '강제 변환' 합니다. `as!` 연산자는, 옵셔널 타입이 아니라, 특정 _타입 (type)_ 의 값을 반환합니다. 변환이 실패하면, 실행 시간 에러를 일으킵니다. `x as! T` 의 동작은 `(x as? T)!` 의 동작과 똑같습니다.
 
-타입 변환에 대한 더 많은 정보와 타입-변환 연산자를 사용하는 예제에 대해서는, []() 를 참고하기 바랍니다.
+'타입 변환' 에 대한 더 많은 정보와 '타입-변환 연산자' 를 사용하는 예제는, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) 장을 참고하기 바랍니다.
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
