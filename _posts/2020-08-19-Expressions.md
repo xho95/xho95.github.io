@@ -161,18 +161,17 @@ _으뜸 표현식 (primary expressions)_ 은 가장 기초적인 종류의 표�
 
 #### Literal Expression (글자 값 표현식)
 
-_글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 일상적인 글자 값이나, 배열 및 딕셔너리 글자 값, '플레이그라운드 (playground) 글자 값', 아니면 다음의 '특수 글자 값 (special literals)' 중 하나로 구성됩니다:
+_글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 일상적인 글자 값, 배열 및 딕셔너리 글자 값, '플레이그라운드 (playground) 글자 값', 또는 다음의 '특수 (special) 글자 값' 중 하나로 구성합니다:
 
 글자 값 || 타입 || 값
 ---|---|---|---|---
-`#file` | | `String` | |  이 값이 있는 파일의 경로
-`#fileID` | | `String` | | 이 값이 있는 파일과 모듈의 이름
-`#filePath` | | `String` | | 이 값이 있는 파일의 경로
-`#line` | | `Int` | | 이 값이 있는 줄의 번호
-`#column` | | `Int` | | 이 값이 시작하는 열의 번호
-`#function` | | `String` | | 이 값이 있는 선언의 이름
-`#dsohandle` | | `UnsafeRawPointer` | | 이 값이 있는 곳에서 사용중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
-
+`#file` | | `String` | |  자기가 있는 파일의 경로
+`#fileID` | | `String` | | 자기가 있는 파일과 모듈의 이름
+`#filePath` | | `String` | | 자기가 있은 파일의 경로
+`#line` | | `Int` | | 자기가 있는 줄의 번호
+`#column` | | `Int` | | 자기가 시작한 열의 번호
+`#function` | | `String` | | 자기가 있는 선언의 이름
+`#dsohandle` | | `UnsafeRawPointer` | | 자기가 있는 곳에서 사용 중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
 
 `#file` 의 문자열 값은, 예전의 `#filePath` 작동 방식에서 새로운 `#fileID` 작동 방식으로 '이전 (migration)' 할 수 있도록, 언어 버전에 따라 달라집니다.[^filePath-and-fildID] 현재의, `#file` 은 `#filePath` 와 같은 값을 가집니다. 미래 버전의 스위프트에서는, 그대신 `#file` 이 `#fileID` 와 같은 값을 가질 것입니다. 미래의 작동 방식을 채택하도록, `#file` 을 `#fileID` 또는 `#filePath` 로 적절하게 대체하기 바랍니다.[^file-to-filePath-and-fildID]
 
