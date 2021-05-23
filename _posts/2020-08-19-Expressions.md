@@ -173,9 +173,9 @@ _글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 일
 `#function` | | `String` | | 자기가 있는 선언의 이름
 `#dsohandle` | | `UnsafeRawPointer` | | 자기가 있는 곳에서 사용 중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
 
-`#file` 의 문자열 값은, 예전의 `#filePath` 작동 방식에서 새로운 `#fileID` 작동 방식으로 '이전 (migration)' 할 수 있도록, 언어 버전에 따라 달라집니다.[^filePath-and-fildID] 현재의, `#file` 은 `#filePath` 와 같은 값을 가집니다. 미래 버전의 스위프트에서는, 그대신 `#file` 이 `#fileID` 와 같은 값을 가질 것입니다. 미래의 작동 방식을 채택하도록, `#file` 을 `#fileID` 또는 `#filePath` 로 적절하게 대체하기 바랍니다.[^file-to-filePath-and-fildID]
+`#file` 의 문자열 값은, 예전 `#filePath` 동작을 새로운 `#fileID` 동작으로 '이전 (migration)' 할 수 있도록, 언어 버전에 의존합니다.[^filePath-and-fildID] 현재의, `#file` 은 `#filePath` 와 똑같은 값을 가집니다. 미래 버전의 스위프트는, `#file` 이 대신 `#fileID` 와 똑같은 값을 가질 것입니다. 미래의 동작을 채택하려면, `#file` 을 적절하게 `#fileID` 나 `#filePath` 로 대체하기 바랍니다.[^file-to-filePath-and-fildID]
 
-`#fileID` 표현식의 문자열 값은 _module/file_ 형식을 가지며, 여기서 _file_ 은 표현식이 있는 파일의 이름이고 _module_ 은 이 파일이 속해 있는 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '전체 파일-시스템 경로' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 으로 바꿀 수 있습니다. `#fileID` 는, `#filePath` 와는 다르게, 소스 파일에 대한 '전체 경로' 를 집어 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 '컴파일된 바이너리' 의 크기를 줄여줍니다. '출하용 프로그램' 에 속하지 않는 테스트, 빌드 스크립트, 또는 그 외 다른 코드 외부에는 `#filePath` 의 사용을 피하도록 합니다.
+`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 의 형식을 가지는데, 여기서 _파일 (file)_ 은 표현식이 있는 파일의 이름이고 _모듈 (module)_ 은 이 파일이 속한 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '전체 파일-시스템 경로' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 으로 바꿀 수 있습니다. `#fileID` 는, `#filePath` 와는 달리, 소스 파일에 대한 '전체 경로' 를 집어 넣지 않기 때문에, 더 나은 '개인 정보 보호' 를 제공하며 '컴파일한 바이너리' 의 크기를 줄여줍니다. 테스트, 빌드 스크립트, 또는 그 외 '출하용 (shipping) 프로그램' 이 아닌 다른 코드 외부에서 `#filePath` 의 사용은 피하도록 합니다.
 
 > `#fileID` 표현식을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞을 문장으로 읽고 파일 이름은 마지막 빗금 뒤를 문장으로 읽도록 합니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, '다중 빗금' 을 담고 있을 수도 있습니다.
 
@@ -1037,6 +1037,6 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^filePath-and-fildID]: `#file` 은 예전 버전에서는 '파일 및 모듈의 이름' 이었지만, 지금 버전에서는 '파일의 경로' 입니다. 이는 스위프트 5.3 에서 새로 생긴 `#fileID` 와 관련된 것으로 추측됩니다.
 
-[^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 (privacy)' 보호 정책과도 관련이 있는 것으로 추측됩니다.
+[^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
