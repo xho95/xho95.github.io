@@ -656,7 +656,9 @@ let airportNames = [String](airports.values)
 
 [^disjoint]: 'disjoint' 는 수학에서 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어가 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
-[^ordered-collection]: 여기서 'ordered collections' 을 '순서가 있는 집합체' 라고 옮겼는데, 보통 '정렬된 집합체' 라고 옮기는 경우도 있습니다. 하지만, 수학 용어에는 따로 'sorted collection' 이 있으므로, '정렬' 은 'sort' 라는 단어에 더 적합함을 알 수 있습니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에는 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 도 나오므로, 앞으로 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다.
+[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다.
+
+'순서가 있는 집합 (ordered set)' 은 '정렬된 집합 (sorted set)' 과는 수학적인 의미가 다릅니다. 
 
 [^ordered-list]: 여기서 사용된 'ordered list' 의 'list' 는 '자료 구조' 로써의 '리스트' 를 의미하는 것으로 추측됩니다. 리스트에 대한 더 많은 정보는 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목 또는 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
 

@@ -196,17 +196,17 @@ _배열 글자 값 (array literal)_ 은 값의 '순서가 있는 집합체 (orde
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `...`]
 
-배열의 마지막 표현식 뒤에는 옵션으로 쉼표를 붙여도 됩니다. 배열 글자 값의 타입은 `[T]` 인데, 여기서 `T` 는 그 안에 있는 표현식의 타입입니다. 표현식이 여러 개의 타입으로 되어 있는 경우, `T` 는 '가장 가까운 공통 상위 타입 (closest common supertype)' 입니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 써서 작성하며 지정한 타입의 빈 배열을 생성하기 위해 사용합니다.
+배열의 마지막 표현식 뒤에는 쉼표가 있어도 됩니다. '배열 글자 값' 의 타입은 `[T]` 인데, 여기서 `T` 는 안에 있는 표현식의 타입입니다. 여러 타입의 표현식으로 된 경우, `T` 는 '가장 가까운 공통 상위 타입 (closest common supertype)' 입니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 사용하여 작성하며 특정 타입의 빈 배열을 생성하기 위해 사용할 수 있습니다.
 
 ```swift
 var emptyArray: [Double] = []
 ```
 
-_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 이 '정렬되어 있지 않은 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
+_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 의 '순서가 없는 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `...`]
 
-딕셔너리의 마지막 표현식 뒤에는 옵션으로 쉼표를 붙여도 됩니다. 딕셔너리 글자 값의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 표현식 (key expressions)' 의 타입이고 `Value` 는 '값 표현식 (value expressions)' 의 타입입니다. 표현식이 여러 개의 타입으로 되어 있는 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 가까운 공통 상위 타입' 입니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '콜론이 있는 대괄호 쌍 (`[:]`)' 을 써서 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 지정한 키 타입과 값 타입으로 된 '빈 딕셔너리 글자 값' 을 생성할 수 있습니다.
+딕셔너리의 마지막 표현식 뒤에는 쉼표가 있어도 됩니다. '딕셔너리 글자 값' 의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 (key) 표현식' 의 타입이고 `Value` 는 '값 (value) 표현식' 의 타입입니다. 여러 타입의 표현식으로 된 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 가까운 공통 상위 타입' 입니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '대괄호 쌍 안의 콜론 (`[:]`)' 으로 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 특정 키와 값 타입을 가진 '빈 딕셔너리 글자 값' 을 생성할 수 있습니다.
 
 ```swift
 var emptyDictionary: [String : Double] = [:]
@@ -1041,4 +1041,4 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 
-[^ordered-collection]: '순서가 있는 집합체 (ordered collection)' 에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}#collection-types-집합체 타입) 부분에 있는 주석을 참고하기 바랍니다.  
+[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 
