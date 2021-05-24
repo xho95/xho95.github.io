@@ -165,19 +165,19 @@ _글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 일
 
 글자 값 || 타입 || 값
 ---|---|---|---|---
-`#file` | | `String` | |  자기가 있는 파일의 경로
-`#fileID` | | `String` | | 자기가 있는 파일과 모듈의 이름
-`#filePath` | | `String` | | 자기가 있은 파일의 경로
-`#line` | | `Int` | | 자기가 있는 줄의 번호
-`#column` | | `Int` | | 자기가 시작한 열의 번호
-`#function` | | `String` | | 자기가 있는 선언의 이름
-`#dsohandle` | | `UnsafeRawPointer` | | 자기가 있는 곳에서 사용 중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
+`#file` | | `String` | |  이 파일의 경로
+`#fileID` | | `String` | | 이 파일과 모듈의 이름
+`#filePath` | | `String` | | 이 파일의 경로
+`#line` | | `Int` | | 이 줄의 번호
+`#column` | | `Int` | | 이 시작 열의 번호
+`#function` | | `String` | | 이 선언의 이름
+`#dsohandle` | | `UnsafeRawPointer` | | 이 곳에서 사용 중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
 
 `#file` 의 문자열 값은, 예전 `#filePath` 동작을 새로운 `#fileID` 동작으로 '이전 (migration)' 할 수 있도록, 언어 버전에 의존합니다.[^filePath-and-fildID] 현재의, `#file` 은 `#filePath` 와 똑같은 값을 가집니다. 미래 버전의 스위프트는, `#file` 이 대신 `#fileID` 와 똑같은 값을 가질 것입니다. 미래의 동작을 채택하려면, `#file` 을 적절하게 `#fileID` 나 `#filePath` 로 대체하기 바랍니다.[^file-to-filePath-and-fildID]
 
-`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 의 형식을 가지는데, 여기서 _파일 (file)_ 은 표현식이 있는 파일의 이름이고 _모듈 (module)_ 은 이 파일이 속한 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '전체 파일-시스템 경로' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 으로 바꿀 수 있습니다. `#fileID` 는, `#filePath` 와는 달리, 소스 파일에 대한 '전체 경로' 를 집어 넣지 않기 때문에, 더 나은 '개인 정보 보호' 를 제공하며 '컴파일한 바이너리' 의 크기를 줄여줍니다. 테스트, 빌드 스크립트, 또는 그 외 '출하용 (shipping) 프로그램' 이 아닌 다른 코드 외부에서 `#filePath` 의 사용은 피하도록 합니다.
+`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 의 형식을 가지는데, 여기서 _파일 (file)_ 은 표현식이 있는 파일의 이름이고 _모듈 (module)_ 은 이 파일이 속한 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '전체 파일-시스템 경로' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 으로 바꿀 수 있습니다. `#fileID` 는, `#filePath` 와는 달리, 소스 파일에 대한 '전체 경로' 를 집어 넣지 않기 때문에, 더 나은 '개인 정보 보호' 를 제공하며 '컴파일한 바이너리' 의 크기를 줄여줍니다. 테스트, 빌드 스크립트, 또는 그 외 '출하용 (shipping) 프로그램' 이 아닌 코드 밖에서 `#filePath` 사용을 피하도록 합니다.
 
-> `#fileID` 표현식을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞을 문장으로 읽고 파일 이름은 마지막 빗금 뒤를 문장으로 읽도록 합니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, '다중 빗금' 을 담고 있을 수도 있습니다.
+> `#fileID` 표현식의 구문을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞의 문장을 읽고 파일 이름은 마지막 빗금 뒤의 문장을 읽습니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, 여러 개의 빗금을 담을 수도 있습니다.
 
 `#function` 의 값은, 함수 내부에서는 해당 함수의 이름이 되고, 메소드 내부에서는 해당 메소드의 이름이 되며, 속성의 '획득자' 나 '설정자' 내부에서는 해당 속성의 이름이 되며, `init` 이나 `subscript` 같은 특수 멤버 내부에서는 해당 키워드의 이름이 되며, 파일의 최상위 수준에서는 현재 모듈의 이름이 됩니다.
 
