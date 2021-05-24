@@ -179,22 +179,22 @@ _글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 일
 
 > `#fileID` 표현식의 구문을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞의 문장을 읽고 파일 이름은 마지막 빗금 뒤의 문장을 읽습니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, 여러 개의 빗금을 담을 수도 있습니다.
 
-`#function` 의 값은, 함수 내부에서는 해당 함수의 이름이 되고, 메소드 내부에서는 해당 메소드의 이름이 되며, 속성의 '획득자' 나 '설정자' 내부에서는 해당 속성의 이름이 되며, `init` 이나 `subscript` 같은 특수 멤버 내부에서는 해당 키워드의 이름이 되며, 파일의 최상위 수준에서는 현재 모듈의 이름이 됩니다.
+`#function` 의 값은, 함수 안에서는 해당 함수의 이름, 메소드 안에서는 해당 메소드의 이름, 속성의 '획득자' 나 '설정자' 안에서는 해당 속성의 이름, `init` 이나 `subscript` 같은 '특수한 멤버' 안에서는 해당 키워드의 이름, 그리고 파일의 최상단에서는 현재 모듈의 이름입니다.
 
-'특수 글자 값 (special literals)' 을, 함수 또는 메소드 매개 변수의 '기본 값' 으로 사용할 때는, 호출하는 쪽에서 '기본 값 표현식' 을 평가할 때 그 값이 결정됩니다.
+'특수 글자 값' 을, 함수나 메소드 매개 변수의 '기본 값' 으로 사용할 때는, 호출하는 쪽에서 '기본 값 표현식' 을 평가할 때 값이 결정됩니다.
 
 ```swift
 func logFunctionName(string: String = #function) {
   print(string)
 }
 func myFunction() {
-  logFunctionName() // "myFunction()" 를 출력합니다.
+  logFunctionName() // "myFunction()" 를 인쇄합니다.
 }
 ```
 
-_배열 글자 값 (array literal)_ 은 값이 '정렬되어 있는 집합체 (ordered collection)' 입니다. 형식은 다음과 같습니다:
+_배열 글자 값 (array literal)_ 은 값의 '순서가 있는 집합체 (ordered collection)'[^ordered-collection] 입니다. 형식은 다음과 같습니다:
 
-[`value 1 (값 1)`, `value 2 (값 2)`, `...`]
+&nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `...`]
 
 배열의 마지막 표현식 뒤에는 옵션으로 쉼표를 붙여도 됩니다. 배열 글자 값의 타입은 `[T]` 인데, 여기서 `T` 는 그 안에 있는 표현식의 타입입니다. 표현식이 여러 개의 타입으로 되어 있는 경우, `T` 는 '가장 가까운 공통 상위 타입 (closest common supertype)' 입니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 써서 작성하며 지정한 타입의 빈 배열을 생성하기 위해 사용합니다.
 
@@ -204,7 +204,7 @@ var emptyArray: [Double] = []
 
 _딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs)' 이 '정렬되어 있지 않은 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
 
-[`key 1 (키 1)`: `value 1 (값 1)`, `key 2 (키 2)`: `value 2 (값 2)`, `...`]
+&nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `...`]
 
 딕셔너리의 마지막 표현식 뒤에는 옵션으로 쉼표를 붙여도 됩니다. 딕셔너리 글자 값의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 표현식 (key expressions)' 의 타입이고 `Value` 는 '값 표현식 (value expressions)' 의 타입입니다. 표현식이 여러 개의 타입으로 되어 있는 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 가까운 공통 상위 타입' 입니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '콜론이 있는 대괄호 쌍 (`[:]`)' 을 써서 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 지정한 키 타입과 값 타입으로 된 '빈 딕셔너리 글자 값' 을 생성할 수 있습니다.
 
@@ -1040,3 +1040,5 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
+
+[^ordered-collection]: '순서가 있는 집합체 (ordered collection)' 에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}#collection-types-집합체 타입) 부분에 있는 주석을 참고하기 바랍니다.  
