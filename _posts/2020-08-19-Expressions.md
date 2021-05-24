@@ -212,9 +212,9 @@ _딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs
 var emptyDictionary: [String : Double] = [:]
 ```
 
-_플레이그라운드 글자 값 (playground literal)_ 은 'Xcode (엑스코드)' 가 '프로그램 편집기' 에서 색상, 파일, 또는 이미지에 대한 '상호 작용하는 표현' 을 생성하기 위해 사용합니다. 'Xcode' 외부의 평범한 문장 속에 있는 '플레이그라운드 글자 값' 은 '특수 글자 값 구문 표현' 으로 표현됩니다.[^playground-literal]
+_플레이그라운드 글자 값 (playground literal)_ 은 '프로그램 편집기' 에서 색상, 파일, 또는 이미지에 대한 '상호 작용 가능한 표현' 을 생성하고자 '엑스코드 (Xcode)' 가 사용합니다. '엑스코드' 밖의 '평범한 문장' 에 있는 '플레이그라운드 글자 값' 은 '특수 글자 값 구문' 으로 표현합니다.[^playground-literal]
 
-'Xcode' 에서 '플레이그라운드 글자 값' 을 사용하는 것에 대한 정보는, 'Xcode' 도움말에 있는 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 을 참고하기 바랍니다.
+'엑스코드' 에서 '플레이그라운드 글자 값' 을 사용하는 정보는, '엑스코드 도움말 (Xcode Help)' 에 있는 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1013,7 +1013,9 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^side-effect]: 컴퓨터 용어에서 'side effect' 를 '부작용' 이라고 직역하는 것이 옳은 것인지는 잘 모르겠습니다. 위키피디아에서는 'side effect' 를 다음과 같이 설명하고 있습니다. 컴퓨터 과학에서, 연산, 함수, 또는 표현식이 'side effect' 를 가지고 있다는 것은 이들이 지역 범위 외부에 있는 상태 변수의 값을 수정하는 경우를 말하는 것으로, 즉 해당 연산의 호출 쪽에서 함수 반환이라는 '주요 효과 (main effect)' 외에 별도로 '관찰 가능한 효과' 를 가지는 것을 말합니다. 이러한 정의에 따르면, 'side effect' 를 '부작용' 이라기 보다는 '부수적인 효과' 정도로 이해해도 좋을 것입니다. 다만, 'side effect' 가 '부작용' 이라고 널리 쓰이고 있으므로, 컴퓨터 용어에서의 '부작용' 이란 의미를 앞서와 같이 이해할 수도 있을 것입니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
-[^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문 표현' 이 됩니다.
+[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
+
+[^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문' 이 됩니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
 
@@ -1040,5 +1042,3 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
-
-[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 
