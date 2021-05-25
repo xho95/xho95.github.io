@@ -220,19 +220,15 @@ _플레이그라운드 글자 값 (playground literal)_ 은 '프로그램 편집
 
 #### Self Expression ('self' 표현식)
 
-`self` 표현식은 자기가 속한 곳의 현재 타입 또는 그 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
+`self` 표현식은 자신의 현재 타입 또는 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
 
-self
-<br />
-self.`member name-멤버 이름`
-<br />
-self [`subscript index-첨자 연산 색인`]
-<br />
-self (`initializer arguments-초기자 인자`)
-<br />
-self.init(`initializer arguments-초기자 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;self<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self.init(`initializer arguments-초기자 인자`)
 
-초기자, 첨자 연산, 또는 인스턴스 메소드에 있는, `self` 는 자기가 속한 곳의 타입에 대한 현재의 인스턴스를 참조합니다. 타입 메소드에 있는, `self` 는 자기가 속한 곳의 현재 타입을 참조합니다.
+초기자, 첨자 연산, 또는 인스턴스 메소드에서의, `self` 는 자신의 타입에 대한 '현재 인스턴스' 를 참조합니다. 타입 메소드에서의, `self` 는 자신의 '현재 타입' 을 참조합니다.
 
 `self` 표현식은 멤버에 접근할 때 영역을 지정하기 위해 사용하며, 이는 영역에 함수 매개 변수 같이 같은 이름인 다른 변수가 있을 경우 모호함을 없애줍니다. 예를 들면 다음과 같습니다:
 
