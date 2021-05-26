@@ -258,13 +258,13 @@ struct Point {
 
 _상위 클래스 표현식 (superclass expression)_ 은 클래스가 상위 클래스와 상호 작용하도록 해줍니다. 형식은 다음 중 하나입니다:
 
-super.`memeber name-멤버 이름`
-super[`subscript index-첨자 연산 색인`]
-super.init(`initializer arguments-초기자 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;super.`memeber name-멤버 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;super[`subscript index-첨자 연산 색인`]
+&nbsp;&nbsp;&nbsp;&nbsp;super.init(`initializer arguments-초기자 인자`)
 
-첫 번째 형식은 상위 클래스의 멤버에 접근하기 위해 사용합니다. 두 번째 형식은 상위 클래스의 첨자 연산 구현에 접근하기 위해 사용합니다. 세 번째 형식은 상위 클래스의 초기자에 접근하기 위해 사용합니다.
+첫 번째 형식은 상위 클래스의 멤버에 접근하려고 사용합니다. 두 번째 형식은 상위 클래스의 첨자 연산 구현에 접근하려고 사용합니다. 세 번째 형식은 상위 클래스의 초기자에 접근하려고 사용합니다.
 
-하위 클래스는 상위 클래스에 있는 구현을 사용하기 위해 자신의 멤버, 첨자 연산, 및 초기자의 구현에서 상위 클래스 표현식을 사용할 수 있습니다.
+하위 클래스는 자신의 상위 클래스에 있는 구현을 사용하기 위해 자신의 멤버, 첨자 연산, 그리고 초기자 구현에서 '상위 클래스 표현식' 을 사용할 수 있습니다.
 
 > GRAMMAR OF A SUPERCLASS EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
