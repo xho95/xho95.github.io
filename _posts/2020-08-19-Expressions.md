@@ -222,10 +222,14 @@ _플레이그라운드 글자 값 (playground literal)_ 은 '프로그램 편집
 
 `self` 표현식은 자신의 현재 타입 또는 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;self<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)
+<br />
 &nbsp;&nbsp;&nbsp;&nbsp;self.init(`initializer arguments-초기자 인자`)
 
 초기자, 첨자 연산, 또는 인스턴스 메소드 안에서의, `self` 는 자신의 타입에 대한 '현재 인스턴스' 를 참조합니다. 타입 메소드 안에서의, `self` 는 자신의 '현재 타입' 을 참조합니다.
@@ -270,17 +274,17 @@ _상위 클래스 표현식 (superclass expression)_ 은 클래스가 상위 클
 
 #### Closure Expression (클로저 표현식)
 
-_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에서 _람다 (lambda)_ 또는 _익명 함수 (anonymous function)_ 라고도 하는, 클로저를 생성합니다. 함수 선언과 마찬가지로, 클로저는 구문을 가지고 있으며, 자신을 둘러싼 영역에 있는 상수와 변수를 '붙잡습니다 (capture)'. 형식은 다음과 같습니다:
+_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에서는 _람다 (lambda)_ 또는 _익명 함수 (anonymous function)_ 라고도 하는, '클로저' 를 생성합니다. '함수 선언' 같이, 클로저는 구문을 담으며, 자신을 둘러싼 영역에 있는 상수와 변수를 '붙잡 (capture)' 습니다. 형식은 다음과 같습니다:
 
-{ (`parameter-매개 변수`) -> `return type-반환 타입` in
+&nbsp;&nbsp;&nbsp;&nbsp;{ (`parameter-매개 변수`) -> `return type-반환 타입` in
 <br />
-  `statements-구문`
-  <br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-_매개 변수 (parameter)_ 는, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 같은 형식을 가집니다.
+_매개 변수 (parameter)_ 는, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 형식이 똑같습니다.
 
-클로저를 더 간결하게 작성할 수 있는 여러 가지 특수한 형식들이 있습니다:
+클로저는 더 간결하게 작성하게 하는 여러 특수 형식들이 있습니다:
 
 * 클로저는 매개 변수의 타입이나, 반환 타입, 또는 둘 다를 생략할 수 있습니다. 두 타입 모두와 매개 변수 이름을 생략하는 경우, 구문 앞의 `in` 키워드를 생략합니다. 생략한 타입을 추론할 수 없는 경우, 컴파일 시간 에러가 발생합니다.
 * 클로저는 매개 변수의 이름을 생략할 수 있습니다. 이 매개 변수들은 이제 `$` 와 그 뒤의 위치로 구성된 암시적인 이름을 가집니다: `$1`, `$2`,  등으로 계속됩니다.
