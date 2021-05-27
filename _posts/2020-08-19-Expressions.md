@@ -335,9 +335,9 @@ closure()
 // "0 10" 를 인쇄합니다.
 ```
 
-이름이 `a` 인 변수는, 주위 영역에 있는 변수와 클로저 영역에 있는 상수라는, 서로 다른 두 개로 있지만, 이름이 `b` 인 변수는 하나만 있습니다. 안쪽 영역에 있는 `a` 는 클로저를 생성할 때 바깥 영역에 있는 `a` 의 값으로 초기화 되지만, 이들 값은 어떠한 특수한 방법으로도 연결되어 있지 않습니다. 이것의 의미는 바깥 영역의 `a` 값을 바꾸는 것은 안쪽 영역의 `a` 값에는 영향을 주지 않으며, 클로저 안에 있는 `a` 를 바꾸는 것도 클로저 바깥의 `a` 값에는 영향을 주지 않는다는 것입니다. 이와는 대조적으로, 이름이 `b` 인 변수는-바깥 영역에 있는 `b`-만 단 하나 있으므로 클로저의 안쪽과 바깥에서 바꾸는 것을 양쪽 위치 모두 볼 수 있습니다.
+`a` 라는 이름은, '주위 영역의 변수' 와 '클로저 영역의 상수' 라는, 서로 다른 두 가지가 있지만, `b` 라는 이름의 변수는 하나뿐입니다. 안쪽 영역의 `a` 는 클로저를 생성할 때 바깥 영역에 있는 `a` 값으로 초기화 되지만, 이 값들은 어떤 특수한 방식으로든 연결되지 않습니다. 이는 바깥 영역의 `a` 값을 바꿔도 안쪽 영역의 `a` 값에 영향을 주지 않으며, 클로저 안의 `a` 를 바꿔도 클로저 밖의 `a` 값에 영향을 주지 않는다는 의미입니다. 이와 대조적으로, `b` 라는 이름의 변수는-바깥 영역의 `b` 라는-하나만 있으므로 클로저 안팎에서 바뀌면 양쪽에서 다 볼 수 있습니다.
 
-'붙잡은 변수 (captured variable)' 타입이 '참조 의미 구조 (reference semantics)' 를 가질 때는 이것이 잘 구별되지 않습니다. 예를 들어, 아래 코드에는 이름이 `x` 인 것, 바깥 영역에 있는 변수와 안쪽 영역에 있는 상수, 이렇게 두 개 있지만, '참조 의미 구조' 로 인해서 이 둘은 같은 객체를 참조하고 있습니다.
+이런 구별은 '붙잡은 변수' 의 타입이 '참조 의미 구조 (reference semantics)'[^reference-semantics] 를 가질 때는 보이지 않습니다. 예를 들어, 아래 코드에는 `x` 라는 이름이, '바깥 영역의 변수' 와 '안쪽 영역의 상수' 라는, 두 가지가 있지만, '참조 의미 구조' 이기 때문에 둘 다 똑같은 객체를 참조합니다.
 
 ```swift
 class SimpleClass {
@@ -352,16 +352,16 @@ let closure = { [x] in
 x.value = 10
 y.value = 10
 closure()
-// "10 10" 을 출력합니다.
+// "10 10" 을 인쇄합니다.
 ```
 
-표현식 값의 타입이 클래스인 경우라면, '붙잡을 목록 (capture list)' 에 있는 표현식을 `weak` 또는 `unowned` 로 표시하여 표현식의 값을 약한 참조 또는 소유되지 않은 참조로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
+표현식 값의 타입이 클래스라면, '붙잡을 목록' 에 있는 표현식을 `weak` 나 `unowned` 로 표시하여 표현식의 값을 '약한 참조' 나 '소유하지 않는 참조' 로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
 
 ```swift
 myFunction { print(self.title) }                    // 암시적인 강한 붙잡기 (implicit strong capture)
 myFunction { [self] in print(self.title) }          // 명시적인 강한 붙잡기 (explicit strong capture)
 myFunction { [weak self] in print(self!.title) }    // 약한 붙잡기 (weak capture)
-myFunction { [unowned self] in print(self.title) }  // 소유되지 않게 붙잡기 (unowned capture)
+myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡기 (unowned capture)
 ```
 
 임의의 표현식을 '붙잡을 목록' 에 있는 '이름 있는 변수' 에 연결할 수도 있습니다. 이 표현식은 클로저를 생성할 때 값을 평가하며, 값은 지정된 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
@@ -1027,7 +1027,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
 
-[^weak-and-unowned-capture]: 클로저는 클래스와 같이 '참조 타입' 이기 때문에, 클래스 안에 있는 클로저가 해당 클래스를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유되지 않은 참조' 가 필요합니다.
+[^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
 
 [^strength]: 여기서의 '강하기 (strength)' 는 'string (강한)'-'weak (약한)'-'unowned (소유되지 않은)' 등을 구분하는 말인 것으로 추측됩니다.
 
@@ -1042,3 +1042,5 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
+
+[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
