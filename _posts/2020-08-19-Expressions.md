@@ -358,20 +358,20 @@ closure()
 표현식 값의 타입이 클래스라면, '붙잡을 목록' 에 있는 표현식을 `weak` 나 `unowned` 로 표시하여 표현식의 값을 '약한 참조' 나 '소유하지 않는 참조' 로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
 
 ```swift
-myFunction { print(self.title) }                    // 암시적인 강한 붙잡기 (implicit strong capture)
-myFunction { [self] in print(self.title) }          // 명시적인 강한 붙잡기 (explicit strong capture)
-myFunction { [weak self] in print(self!.title) }    // 약한 붙잡기 (weak capture)
+myFunction { print(self.title) }                    // 암시적으로 강하게 붙잡기 (implicit strong capture)
+myFunction { [self] in print(self.title) }          // 명시적으로 강하게 붙잡기 (explicit strong capture)
+myFunction { [weak self] in print(self!.title) }    // 약하게 붙잡기 (weak capture)
 myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡기 (unowned capture)
 ```
 
-임의의 표현식을 '붙잡을 목록' 에 있는 '이름 있는 변수' 에 연결할 수도 있습니다. 이 표현식은 클로저를 생성할 때 값을 평가하며, 값은 지정된 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
+'붙잡을 목록' 에서는 '임의의 표현식' 을 '이름 붙인 변수' 에 연결할 수도 있습니다. 표현식은 클로저를 생성할 때 평가하며, 값은 지정한 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 // "self.parent" 를 "parent" 로 약하게 붙잡기
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 을 참고하기 바랍니다. '붙잡을 목록 (capture list)' 에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환-해결하기) 를 참고하기 바랍니다.
+클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 참고하기 바랍니다. '붙잡을 목록 (capture list)' 에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환-해결하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1029,7 +1029,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
 
-[^strength]: 여기서의 '강하기 (strength)' 는 'string (강한)'-'weak (약한)'-'unowned (소유되지 않은)' 등을 구분하는 말인 것으로 추측됩니다.
+[^strength]: 여기서 '강하기 (strength)' 는 `strong`, `weak`, `unowned` 중 하나를 의미합니다.
 
 [^foced-unwrapping-expressions]: '강제로 포장을 푸는 표현식 (foced unwrapping expressions)' 의 정식 이름은 뒤에 나오는 [Forced-Value Expression (강제-값 표현식)](#forced-value-expression-강제-값-표현식) 인 것 같습니다.
 
