@@ -377,7 +377,7 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 
 #### Implicit Member Expression (암시적인 멤버 표현식)
 
-_암시적인 멤버 표현식 (implicit member expression)_ 은, '열거체 case 값' 이나 '타입 메소드' 같이, '타입 추론' 이 '암시 타입' 을 결정할 수 있는 상황에서, 타입의 멤버에 접근하는 단축 방식입니다. 이는 다음 형식을 가집니다:
+_암시적인 멤버 표현식 (implicit member expression)_ 은, '열거체 case 값' 이나 '타입 메소드' 같이, 타입 추론이 '암시 (implied) 타입' 을 결정할 수 있는 상황에서, 타입의 멤버에 접근하는 단축 방식입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;.`member name-멤버 이름`
 
@@ -388,13 +388,13 @@ var x = MyEnumeration.someValue
 x = .anotherValue
 ```
 
-추론한 타입이 옵셔널인 경우, '암시적인 멤버 표현식' 에서 '옵셔널이-아닌 타입의 멤버' 를 사용할 수도 있습니다.
+추론한 타입이 옵셔널이면, '암시적인 멤버 표현식' 에서 '옵셔널이-아닌 타입' 의 멤버를 사용할 수도 있습니다.
 
 ```swift
 var someOptional: MyEnumeration? = .someValue
 ```
 
-'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 비록 모든 '연쇄된 접미사 표현식' 들이 똑같은 타입을 가지는 것이 일반적일지라도, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 상황이 암시하는 타입으로 변환 가능해야 한다는 것 뿐입니다. 특히, '암시 타입'이 옵셔널이면 '옵셔널이-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 그 하위 클래스 타입의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 따라 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 비록 '연쇄된 접미사 표현식' 모두가 똑같은 타입을 가지는 것이 일반적일지라도, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 '자신의 상황이 암시하는 타입' 으로 변환 가능할 필요가 있다는 것 뿐입니다. 특히, '암시 타입' 이 옵셔널이면 '옵셔널이-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -412,13 +412,13 @@ let y: SomeClass? = .shared
 let z: SomeClass = .sharedSubclass
 ```
 
-위 코드에서, `x` 의 타입은 '상황이 암시하는 타입' 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
+위 코드에서, `x` 의 타입은 '자신의 상황이 암시하는 타입'[^implied-type] 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
 
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Parenthesized Expression (괄호 표현식)
 
-_괄호 표현식 (parenthesized expression)_ 은 괄호로 감싼 표현식으로 구성됩니다. 표현식을 명시적으로 그룹지어서 연산의 '우선순위 (precedence)' 를 지정하기 위해 괄호를 사용할 수 있습니다. '괄호로 그룹지은 것 (grouping parentheses)' 은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
+_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호는 표현식을 명시적으로 그룹지어서 '연산의 우선순위 (precedence)' 를 지정하기 위해 사용할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
 
 > GRAMMAR OF A PARENTHESIZED MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1030,6 +1030,8 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
 
 [^strength]: 여기서 '강하기 (strength)' 는 `strong`, `weak`, `unowned` 중 하나를 의미합니다.
+
+[^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
 
 [^foced-unwrapping-expressions]: '강제로 포장을 푸는 표현식 (foced unwrapping expressions)' 의 정식 이름은 뒤에 나오는 [Forced-Value Expression (강제-값 표현식)](#forced-value-expression-강제-값-표현식) 인 것 같습니다.
 
