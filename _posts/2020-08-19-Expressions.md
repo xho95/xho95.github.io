@@ -449,17 +449,17 @@ _와일드카드 표현식 (wildcard expression)_ 은 할당 중에 명시적으
 
 #### Key-Path Expression (키-경로 표현식)
 
-_키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (key-value observing)' 같은, 동적 프로그래밍 작업에서 사용합니다. 형식은 다음과 같습니다:
+_키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에서 사용합니다. 형식은 다음과 같습니다:
 
-\\`type name-타입 이름`.`path-경로`
+&nbsp;&nbsp;&nbsp;&nbsp;\\`type name-타입 이름`.`path-경로`
 
-_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같이, 어떤 '일반화 (generic)' 매개 변수를 포함한, '구체적으로 고정된 타입 (concrete type)' 의 이름입니다.
+_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같은, '일반화 (generic) 매개 변수' 를 포함한, '고정 타입' 의 이름입니다.
 
-_경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 표현식 (optional-chaining expressions)', 및 '강제로 포장을 푸는 표현식 (foced unwrapping expressions)'[^foced-unwrapping-expressions] 으로 구성됩니다. 이러한 각각의 키-경로 성분을, 어떤 순서로도, 필요한만큼 많이 반복할 수 있습니다.
+_경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 (optional-chaining) 표현식', 그리고 '강제로 포장을 푸는 (foced unwrapping) 표현식' 으로 구성됩니다. 이 각각의 '키-경로 성분' 은 필요한 만큼 많이, 어떤 순서로든, 반복할 수 있습니다.
 
-컴파일 시간에, 키-경로 표현식은 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체됩니다.
+컴파일 시간에, 키-경로 표현식은 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체합니다.
 
-키-경로를 사용하여 값에 접근하려면, 모든 타입에서 사용 가능한, `subscript(keyPath:)` 첨자 연산에 키 경로를 전달합니다. 예를 들면 다음과 같습니다:
+'키-경로' 를 사용하여 값에 접근하려면, 모든 타입에서 사용 가능한, `subscript(keyPath:)` 첨자 연산에 그 '키 경로' 를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct SomeStructure {
@@ -1032,8 +1032,6 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^strength]: 여기서 '강하기 (strength)' 는 `strong`, `weak`, `unowned` 중 하나를 의미합니다.
 
 [^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
-
-[^foced-unwrapping-expressions]: '강제로 포장을 푸는 표현식 (foced unwrapping expressions)' 의 정식 이름은 뒤에 나오는 [Forced-Value Expression (강제-값 표현식)](#forced-value-expression-강제-값-표현식) 인 것 같습니다.
 
 [^outmost-expression]: 이 말은 옵셔널을 다시 옵셔널로 포장하지는 않는다는 말입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
 
