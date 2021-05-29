@@ -220,21 +220,21 @@ _플레이그라운드 글자 값 (playground literal)_ 은 '프로그램 편집
 
 #### Self Expression ('self' 표현식)
 
-`self` 표현식은 자기가 속한 곳의 현재 타입 또는 그 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
+`self` 표현식은 자신의 현재 타입 또는 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
 
-self
+&nbsp;&nbsp;&nbsp;&nbsp;self
 <br />
-self.`member name-멤버 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`
 <br />
-self [`subscript index-첨자 연산 색인`]
+&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]
 <br />
-self (`initializer arguments-초기자 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)
 <br />
-self.init(`initializer arguments-초기자 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;self.init(`initializer arguments-초기자 인자`)
 
-초기자, 첨자 연산, 또는 인스턴스 메소드에 있는, `self` 는 자기가 속한 곳의 타입에 대한 현재의 인스턴스를 참조합니다. 타입 메소드에 있는, `self` 는 자기가 속한 곳의 현재 타입을 참조합니다.
+초기자, 첨자 연산, 또는 인스턴스 메소드 안에서의, `self` 는 자신의 타입에 대한 '현재 인스턴스' 를 참조합니다. 타입 메소드 안에서의, `self` 는 자신의 '현재 타입' 을 참조합니다.
 
-`self` 표현식은 멤버에 접근할 때 영역을 지정하기 위해 사용하며, 이는 영역에 함수 매개 변수 같이 같은 이름인 다른 변수가 있을 경우 모호함을 없애줍니다. 예를 들면 다음과 같습니다:
+`self` 표현식은, 함수 매개 변수 같이, 영역에 똑같은 이름의 또 다른 변수가 있을 때의 모호함을 없애면서, 멤버에 접근할 때의 영역을 지정하고지 사용합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -245,7 +245,7 @@ class SomeClass {
 }
 ```
 
-값 타입의 변경 메소드에 있는, `self` 에는 해당 값 타입의 새로운 인스턴스를 할당할 수 있습니다.[^mutating-method] 예를 들면 다음과 같습니다:
+'값 타입' 의 변경 메소드 안에서는, 해당 값 타입의 새로운 인스턴스를 `self` 에 할당할 수 있습니다.[^mutating-method] 예를 들면 다음과 같습니다:
 
 ```swift
 struct Point {
@@ -262,35 +262,35 @@ struct Point {
 
 _상위 클래스 표현식 (superclass expression)_ 은 클래스가 상위 클래스와 상호 작용하도록 해줍니다. 형식은 다음 중 하나입니다:
 
-super.`memeber name-멤버 이름`
-super[`subscript index-첨자 연산 색인`]
-super.init(`initializer arguments-초기자 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;super.`memeber name-멤버 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;super[`subscript index-첨자 연산 색인`]
+&nbsp;&nbsp;&nbsp;&nbsp;super.init(`initializer arguments-초기자 인자`)
 
-첫 번째 형식은 상위 클래스의 멤버에 접근하기 위해 사용합니다. 두 번째 형식은 상위 클래스의 첨자 연산 구현에 접근하기 위해 사용합니다. 세 번째 형식은 상위 클래스의 초기자에 접근하기 위해 사용합니다.
+첫 번째 형식은 상위 클래스의 멤버에 접근하려고 사용합니다. 두 번째 형식은 상위 클래스의 첨자 연산 구현에 접근하려고 사용합니다. 세 번째 형식은 상위 클래스의 초기자에 접근하려고 사용합니다.
 
-하위 클래스는 상위 클래스에 있는 구현을 사용하기 위해 자신의 멤버, 첨자 연산, 및 초기자의 구현에서 상위 클래스 표현식을 사용할 수 있습니다.
+하위 클래스는 자신의 상위 클래스에 있는 구현을 사용하기 위해 자신의 멤버, 첨자 연산, 그리고 초기자 구현에서 '상위 클래스 표현식' 을 사용할 수 있습니다.
 
 > GRAMMAR OF A SUPERCLASS EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Closure Expression (클로저 표현식)
 
-_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에서 _람다 (lambda)_ 또는 _익명 함수 (anonymous function)_ 라고도 하는, 클로저를 생성합니다. 함수 선언과 마찬가지로, 클로저는 구문을 가지고 있으며, 자신을 둘러싼 영역에 있는 상수와 변수를 '붙잡습니다 (capture)'. 형식은 다음과 같습니다:
+_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에서는 _람다 (lambda)_ 또는 _익명 함수 (anonymous function)_ 라고도 하는, '클로저' 를 생성합니다. '함수 선언' 같이, 클로저는 구문을 담으며, 자신을 둘러싼 영역에 있는 상수와 변수를 '붙잡습니다 (capture)'. 형식은 다음과 같습니다:
 
-{ (`parameter-매개 변수`) -> `return type-반환 타입` in
+&nbsp;&nbsp;&nbsp;&nbsp;{ (`parameter-매개 변수`) -> `return type-반환 타입` in
 <br />
-  `statements-구문`
-  <br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-_매개 변수 (parameter)_ 는, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 같은 형식을 가집니다.
+_매개 변수 (parameter)_ 는, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 형식이 똑같습니다.
 
-클로저를 더 간결하게 작성할 수 있는 여러 가지 특수한 형식들이 있습니다:
+클로저는 더 간결하게 작성하게 하는 여러 특수 형식들이 있습니다:
 
-* 클로저는 매개 변수의 타입이나, 반환 타입, 또는 둘 다를 생략할 수 있습니다. 두 타입 모두와 매개 변수 이름을 생략하는 경우, 구문 앞의 `in` 키워드를 생략합니다. 생략한 타입을 추론할 수 없는 경우, 컴파일 시간 에러가 발생합니다.
-* 클로저는 매개 변수의 이름을 생략할 수 있습니다. 이 매개 변수들은 이제 `$` 와 그 뒤의 위치로 구성된 암시적인 이름을 가집니다: `$1`, `$2`,  등으로 계속됩니다.
-* '단일 표현식' 으로만 구성된 클로저는 해당 표현식의 값을 반환하는 것이라고 이해합니다. 해당 표현식의 내용은 주변 표현식에 대한 타입 추론을 수행 할 때도 고려됩니다.
+* 클로저는 매개 변수의 타입이나, 반환 타입을, 또는 둘 다를 생략할 수 있습니다. 매개 변수 이름과 타입 둘 다를 생략할 경우, 구문 앞의 `in` 키워드를 생략합니다. 생략한 타입을 추론할 수 없으면, 컴파일-시간 에러를 일으킵니다.
+* 클로저는 매개 변수의 이름을 생략할 수도 있습니다. 그러면 이 매개 변수에 `$` 뒤에 자신의 위치를 붙인: `$1`, `$2`,  등등의 '암시적인 이름' 이 붙습니다.
+* 단일 표현식만으로 구성한 클로저는 해당 표현식의 값을 반환한다고 이해합니다. 주위 표현식에 대한 타입 추론을 할 때 이 표현식의 내용도 고려합니다.
 
-다음의 클로저 표현식들은 '동치 (equivalent)' 입니다:
+다음 클로저 표현식들은 '동치 (equivalent)' 입니다:
 
 ```swift
 myFunction { (x: Int, y: Int) -> Int in
@@ -306,21 +306,21 @@ myFunction { return $0 + $1 }
 myFunction { $0 + $1 }
 ```
 
-함수에 대한 인자로써 클로저를 전달하는 것에 대한 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 을 참고하기 바랍니다.
+클로저를 함수의 인자로 전달하는 것에 대한 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 부분을 참고하기 바랍니다.
 
-클로저 표현식은, 함수 호출에서 클로저를 곧 바로 사용할 때와 같이, 변수나 상수에 저장하지 않고도 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달된 클로저 표현식은 이러한 종류의 '곧바로 사용' 것에 대한 예제입니다. 그 결과로, 클로저 표현식이 '벗어나는 (escaping)' 지 '벗어나지 않는 (nonescaping)' 지는 표현식의 주변 상황에 달려 있는 것입니다. 클로저 표현식은 곧바로 호출되거나 벗어나지 않는 함수 인자로써 전달되는 경우 '벗어나지 않는 (nonescaping)' 것이 됩니다. 다른 경우라면, 클로저 표현식이 '벗어나는 (excaping)' 것입니다.
+클로저 표현식은, 함수 호출에서 클로저를 곧바로 사용할 때 처럼, 변수나 상수에 저장하지 않고도 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달한 클로저 표현식은 이 '곧바로 사용' 하는 한 예입니다. 그 결과, 클로저 표현식이 '벗어나는 (escaping)' 지 '벗어나지 않는 (nonescaping)' 지는 표현식의 주위 상황에 달려 있습니다. 곧바로 호출하거나 '벗어나지 않는 함수 인자' 로 전달한 경우의 클로저 표현식은 '벗어나지 않는' 것입니다. 그 외의 경우, 클로저 표현식은 '벗어나는' 것입니다.
 
-'벗어나는 클로저' 에 대한 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 를 참고하기 바랍니다.
+'벗어나는 클로저' 에 대한 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
 
 <p>
 <strong id="capture-lists-붙잡을-목록">Capture Lists (붙잡을 목록)</strong>
 </p>
 
-기본적으로, 클로저 표현식은 주변 영역에 있는 상수와 변수를 해당 값에 대한 '강한 참조 (strong references)' 를 사용하여 '붙잡습니다 (capture)'. _붙잡을 목록 (capture list)_ 을 사용하면 클로저가 값을 캡처하는 방법을 명시적으로 제어할 수 있습니다.
+기본적으로, 클로저 표현식은 주위 영역에 있는 상수와 변수를 그 값에 대한 '강한 참조 (strong references)' 로 붙잡습니다. 클로저에서 값을 붙잡을 방법을 명시적으로 제어하기 위해서 _붙잡을 목록 (capture list)_ 을 사용할 수 있습니다.
 
-'붙잡을 목록' 은, 매개 변수 목록 앞에, 쉼표로 구분한 표현식의 목록을 대괄호로 감싸는 것으로 작성합니다. 붙잡을 목록을 사용할 경우, 반드시 `in` 키워드도 사용해야 하며, 이는 매개 변수 이름, 매개 변수 타입, 및 반환 타입을 생략하는 경우에도 그렇습니다.
+'붙잡을 목록' 은 쉼표로-구분한 표현식 목록을, 매개 변수 목록 앞에, 대괄호로 둘러싸서 작성합니다. '붙잡을 목록' 을 사용하면, 매개 변수 이름, 매개 변수 타입, 그리고 반환 타입을 생략한 경우에도, 반드시 `in` 키워드를 같이 사용해야 합니다.
 
-붙잡을 목록에 있는 '엔트리 (entries)' 들은 클로저를 생성할 때 초기화 됩니다. 붙잡을 목록에 있는 각각의 엔트리에 대해서, 주변 영역에 있는 같은 이름을 가진 상수 또는 변수의 값에 대한 하나의 상수를 초기화 합니다. 예를 들어 아래 코드에서, `a` 는 붙잡을 목록에 포함되어 있지만 `b` 는 아니므로, 서로 다른 동작 방식을 부여합니다.
+'붙잡을 목록' 에 있는 '요소 (entries)' 들은 클로저를 생성할 때 초기화 됩니다. 붙잡을 목록의 각 요소마다, 주위 영역에서 똑같은 이름을 가진 상수나 변수 값에 대한 상수가 초기화 됩니다. 아래 코드 예제에서, `a` 는 '붙잡을 목록' 에 포함되지만 `b` 는 아니어서, 서로 다른 동작을 합니다.
 
 ```swift
 var a = 0
@@ -332,12 +332,12 @@ let closure = { [a] in
 a = 10
 b = 10
 closure()
-// "0 10" 를 출력합니다.
+// "0 10" 를 인쇄합니다.
 ```
 
-이름이 `a` 인 변수는, 주변 영역에 있는 변수와 클로저 영역에 있는 상수라는, 서로 다른 두 개로 있지만, 이름이 `b` 인 변수는 하나만 있습니다. 안쪽 영역에 있는 `a` 는 클로저를 생성할 때 바깥 영역에 있는 `a` 의 값으로 초기화 되지만, 이들 값은 어떠한 특수한 방법으로도 연결되어 있지 않습니다. 이것의 의미는 바깥 영역의 `a` 값을 바꾸는 것은 안쪽 영역의 `a` 값에는 영향을 주지 않으며, 클로저 안에 있는 `a` 를 바꾸는 것도 클로저 바깥의 `a` 값에는 영향을 주지 않는다는 것입니다. 이와는 대조적으로, 이름이 `b` 인 변수는-바깥 영역에 있는 `b`-만 단 하나 있으므로 클로저의 안쪽과 바깥에서 바꾸는 것을 양쪽 위치 모두 볼 수 있습니다.
+`a` 라는 이름은, '주위 영역의 변수' 와 '클로저 영역의 상수' 라는, 서로 다른 두 가지가 있지만, `b` 라는 이름의 변수는 하나뿐입니다. 안쪽 영역의 `a` 는 클로저를 생성할 때 바깥 영역에 있는 `a` 값으로 초기화 되지만, 이 값들은 어떤 특수한 방식으로든 연결되지 않습니다. 이는 바깥 영역의 `a` 값을 바꿔도 안쪽 영역의 `a` 값에 영향을 주지 않으며, 클로저 안의 `a` 를 바꿔도 클로저 밖의 `a` 값에 영향을 주지 않는다는 의미입니다. 이와 대조적으로, `b` 라는 이름의 변수는-바깥 영역의 `b` 라는-하나만 있으므로 클로저 안팎에서 바뀌면 양쪽에서 다 볼 수 있습니다.
 
-'붙잡은 변수 (captured variable)' 타입이 '참조 의미 구조 (reference semantics)' 를 가질 때는 이것이 잘 구별되지 않습니다. 예를 들어, 아래 코드에는 이름이 `x` 인 것, 바깥 영역에 있는 변수와 안쪽 영역에 있는 상수, 이렇게 두 개 있지만, '참조 의미 구조' 로 인해서 이 둘은 같은 객체를 참조하고 있습니다.
+이런 구별은 '붙잡은 변수' 의 타입이 '참조 의미 구조 (reference semantics)'[^reference-semantics] 를 가질 때는 보이지 않습니다. 예를 들어, 아래 코드에는 `x` 라는 이름이, '바깥 영역의 변수' 와 '안쪽 영역의 상수' 라는, 두 가지가 있지만, '참조 의미 구조' 이기 때문에 둘 다 똑같은 객체를 참조합니다.
 
 ```swift
 class SimpleClass {
@@ -352,32 +352,32 @@ let closure = { [x] in
 x.value = 10
 y.value = 10
 closure()
-// "10 10" 을 출력합니다.
+// "10 10" 을 인쇄합니다.
 ```
 
-표현식 값의 타입이 클래스인 경우라면, '붙잡을 목록 (capture list)' 에 있는 표현식을 `weak` 또는 `unowned` 로 표시하여 표현식의 값을 약한 참조 또는 소유되지 않은 참조로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
+표현식 값의 타입이 클래스라면, '붙잡을 목록' 에 있는 표현식을 `weak` 나 `unowned` 로 표시하여 표현식의 값을 '약한 참조' 나 '소유하지 않는 참조' 로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
 
 ```swift
-myFunction { print(self.title) }                    // 암시적인 강한 붙잡기 (implicit strong capture)
-myFunction { [self] in print(self.title) }          // 명시적인 강한 붙잡기 (explicit strong capture)
-myFunction { [weak self] in print(self!.title) }    // 약한 붙잡기 (weak capture)
-myFunction { [unowned self] in print(self.title) }  // 소유되지 않게 붙잡기 (unowned capture)
+myFunction { print(self.title) }                    // 암시적으로 강하게 붙잡기 (implicit strong capture)
+myFunction { [self] in print(self.title) }          // 명시적으로 강하게 붙잡기 (explicit strong capture)
+myFunction { [weak self] in print(self!.title) }    // 약하게 붙잡기 (weak capture)
+myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡기 (unowned capture)
 ```
 
-임의의 표현식을 '붙잡을 목록' 에 있는 '이름 있는 변수' 에 연결할 수도 있습니다. 이 표현식은 클로저를 생성할 때 값을 평가하며, 값은 지정된 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
+'붙잡을 목록' 에서는 '임의의 표현식' 을 '이름 붙인 변수' 에 연결할 수도 있습니다. 표현식은 클로저를 생성할 때 평가하며, 값은 지정한 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 // "self.parent" 를 "parent" 로 약하게 붙잡기
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 을 참고하기 바랍니다. '붙잡을 목록 (capture list)' 에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환-해결하기) 를 참고하기 바랍니다.
+클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 참고하기 바랍니다. '붙잡을 목록 (capture list)' 에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저에-대한-강한-참조-순환-해결하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Implicit Member Expression (암시적인 멤버 표현식)
 
-_암시적인 멤버 표현식 (implicit member expression)_ 은, '열거체 case 값' 이나 '타입 메소드' 같이, '타입 추론' 이 '암시 타입' 을 결정할 수 있는 상황에서, 타입의 멤버에 접근하는 단축 방식입니다. 이는 다음 형식을 가집니다:
+_암시적인 멤버 표현식 (implicit member expression)_ 은, '열거체 case 값' 이나 '타입 메소드' 같이, 타입 추론이 '암시 (implied) 타입' 을 결정할 수 있는 상황에서, 타입의 멤버에 접근하는 단축 방식입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;.`member name-멤버 이름`
 
@@ -388,13 +388,13 @@ var x = MyEnumeration.someValue
 x = .anotherValue
 ```
 
-추론한 타입이 옵셔널인 경우, '암시적인 멤버 표현식' 에서 '옵셔널이-아닌 타입의 멤버' 를 사용할 수도 있습니다.
+추론한 타입이 옵셔널이면, '암시적인 멤버 표현식' 에서 '옵셔널이-아닌 타입' 의 멤버를 사용할 수도 있습니다.
 
 ```swift
 var someOptional: MyEnumeration? = .someValue
 ```
 
-'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 비록 모든 '연쇄된 접미사 표현식' 들이 똑같은 타입을 가지는 것이 일반적일지라도, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 상황이 암시하는 타입으로 변환 가능해야 한다는 것 뿐입니다. 특히, '암시 타입'이 옵셔널이면 '옵셔널이-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 그 하위 클래스 타입의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 따라 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 비록 '연쇄된 접미사 표현식' 모두가 똑같은 타입을 가지는 것이 일반적일지라도, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 '자신의 상황이 암시하는 타입' 으로 변환 가능할 필요가 있다는 것 뿐입니다. 특히, '암시 타입' 이 옵셔널이면 '옵셔널이-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -412,33 +412,33 @@ let y: SomeClass? = .shared
 let z: SomeClass = .sharedSubclass
 ```
 
-위 코드에서, `x` 의 타입은 '상황이 암시하는 타입' 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
+위 코드에서, `x` 의 타입은 '자신의 상황이 암시하는 타입'[^implied-type] 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
 
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Parenthesized Expression (괄호 표현식)
 
-_괄호 표현식 (parenthesized expression)_ 은 괄호로 감싼 표현식으로 구성됩니다. 표현식을 명시적으로 그룹지어서 연산의 '우선순위 (precedence)' 를 지정하기 위해 괄호를 사용할 수 있습니다. '괄호로 그룹지은 것 (grouping parentheses)' 은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
+_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호는 표현식을 명시적으로 그룹지어서 '연산의 우선순위 (precedence)' 를 지정하기 위해 사용할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
 
 > GRAMMAR OF A PARENTHESIZED MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Tuple Expression (튜플 표현식)
 
-_튜플 표현식 (tuple expression)_ 은 쉼표로 구분된 표현식의 목록을 괄호로 감싸서 구성합니다. 각각의 표현식은 그 앞에, 콜론 (`:`) 으로 구분된, 식별자를 선택적으로 가질 수 있습니다. 형식은 다음과 같습니다:
+_튜플 표현식 (tuple expression)_ 은 쉼표로-구분한 표현식 목록을 괄호로 둘러싸서 구성합니다. 각각의 표현식은 선택 사항으로 자신의 앞에, 콜론 (`:`) 으로 구분한, 식별자를 가질 수 있습니다. 형식은 다음과 같습니다:
 
 (`identifier 1-식별자 1`: `expression 1-표현식 1`, `identifier 2-식별자 2`: `expression 2-표현식 2`, `...`)
 
-튜플 표현식에 있는 각각의 식별자는 튜플 표현식 영역에서 반드시 유일해야 합니다. 중첩된 튜플 표현식에서는, 중첩 수준이 같은 식별자는 반드시 유일해야 합니다. 예를 들어, `(a: 10, a: 20)` 은 같은 수준에서 이름표 `a` 가 두 번 나타나기 때문에 무효입니다. 하지만, `(a: 10, b: (a: 1, x: 2))` 는 유효합니다-비록 `a` 가 두 번 나타나지만, 바깥 튜플에서 한 번 안쪽 튜플에서 한 번 나타나고 있습니다.
+튜플 표현식에 있는 각 식별자는 튜플 표현식 영역에서 반드시 유일해야 합니다. '중첩된 튜플 표현식' 에서는, 중첩 수준이 똑같은 식별자는 반드시 유일해야 합니다. 예를 들어, `(a: 10, a: 20)` 은 똑같은 수준에 `a` 라는 이름표가 두 번 있기 때문에 무효입니다. 하지만, `(a: 10, b: (a: 1, x: 2))` 는-비록 `a` 가 두 번 있을지라도, 바깥 튜플에 한 번 안쪽 튜플에 한 번 있으므로-유효입니다.
 
-튜플 표현식은 '0' 개의 표현식을 가지거나, 두 개 이상의 표현식을 가질 수 있습니다. 괄호 안에 단 하나의 표현식이 있으면 '괄호 표현식 (parenthesized expression)' 입니다.
+튜플 표현식은 '0' 개의 표현식을 담거나, 두 개 이상의 표현식을 담을 수 있습니다. 괄호 안에 단일 표현식이 있으면 '괄호 표현식' 입니다.
 
-> 스위프트에서 '빈 튜플 표현식' 과 '빈 튜플 타입' 은 둘 다 모두 `()` 라고 작성합니다. `Void` 는 `()` 에 대한 타입 별명이기 때문에, 빈 튜플 타입을 작성하기 위해 사용할 수 있습니다. 하지만, 모든 타입 별명들과 마찬가지로, `Void` 는 항상 타입입니다-이를 빈 튜플 표현식을 작성하기 위해 사용할 수는 없습니다.
+> '빈 튜플 표현식' 과 '빈 튜플 타입' 은 스위프트에서 둘 다 `()` 라고 작성합니다. `Void` 는 `()` 에 대한 '타입 별명' 이기 때문에, '빈 튜플 타입' 을 작성하기 위해 이를 사용할 수 있습니다. 하지만, 모든 '타입 별명' 들 처럼, `Void` 는 항상 '타입' 입니다-'빈 튜플 표현식' 을 작성하기 위해 이를 사용할 수는 없습니다.
 
 > GRAMMAR OF A TUPLE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Wildcard Expression (와일드카드 표현식)
 
-_와일드카드 표현식 (wildcard expression)_ 은 할당 중에 값을 명시적으로 무시하기 위해 사용합니다. 예를 들어, 다음 할당은 '10' 은 `x` 에 할당하며 '20' 은 무시합니다:
+_와일드카드 표현식 (wildcard expression)_ 은 할당 중에 명시적으로 값을 무시하고자 사용합니다. 예를 들어, 다음 할당은 '10' 을 `x` 에 할당하며 '20' 은 무시합니다:
 
 ```swift
 (x, _) = (10, 20)
@@ -449,17 +449,17 @@ _와일드카드 표현식 (wildcard expression)_ 은 할당 중에 값을 명�
 
 #### Key-Path Expression (키-경로 표현식)
 
-_키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (key-value observing)' 같은, 동적 프로그래밍 작업에서 사용합니다. 형식은 다음과 같습니다:
+_키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에서 사용합니다. 형식은 다음과 같습니다:
 
-\\`type name-타입 이름`.`path-경로`
+&nbsp;&nbsp;&nbsp;&nbsp;\\`type name-타입 이름`.`path-경로`
 
-_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같이, 어떤 '일반화 (generic)' 매개 변수를 포함한, '구체적으로 고정된 타입 (concrete type)' 의 이름입니다.
+_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같은, '일반화 (generic) 매개 변수' 를 포함한, '고정 타입' 의 이름입니다.
 
-_경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 표현식 (optional-chaining expressions)', 및 '강제로 포장을 푸는 표현식 (foced unwrapping expressions)'[^foced-unwrapping-expressions] 으로 구성됩니다. 이러한 각각의 키-경로 성분을, 어떤 순서로도, 필요한만큼 많이 반복할 수 있습니다.
+_경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 (optional-chaining) 표현식', 그리고 '강제로 포장을 푸는 (foced unwrapping) 표현식' 으로 구성됩니다. 이 각각의 '키-경로 성분' 은 필요한 만큼 많이, 어떤 순서로든, 반복할 수 있습니다.
 
-컴파일 시간에, 키-경로 표현식은 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체됩니다.
+컴파일 시간에, 키-경로 표현식은 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체합니다.
 
-키-경로를 사용하여 값에 접근하려면, 모든 타입에서 사용 가능한, `subscript(keyPath:)` 첨자 연산에 키 경로를 전달합니다. 예를 들면 다음과 같습니다:
+'키-경로' 를 사용하여 값에 접근하려면, 모든 타입에서 사용 가능한, `subscript(keyPath:)` 첨자 연산에 그 '키 경로' 를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct SomeStructure {
@@ -1025,13 +1025,13 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^foundation]: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
 
-[^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이 문장의 의미는 'self' 를 다른 인스턴스를 할당하는 것으로써 변경할 수도 있다는 의미입니다.
+[^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
 
-[^weak-and-unowned-capture]: 클로저는 클래스와 같이 '참조 타입' 이기 때문에, 클래스 안에 있는 클로저가 해당 클래스를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유되지 않은 참조' 가 필요합니다.
+[^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
 
-[^strength]: 여기서의 '강하기 (strength)' 는 'string (강한)'-'weak (약한)'-'unowned (소유되지 않은)' 등을 구분하는 말인 것으로 추측됩니다.
+[^strength]: 여기서 '강하기 (strength)' 는 `strong`, `weak`, `unowned` 중 하나를 의미합니다.
 
-[^foced-unwrapping-expressions]: '강제로 포장을 푸는 표현식 (foced unwrapping expressions)' 의 정식 이름은 뒤에 나오는 [Forced-Value Expression (강제-값 표현식)](#forced-value-expression-강제-값-표현식) 인 것 같습니다.
+[^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
 
 [^outmost-expression]: 이 말은 옵셔널을 다시 옵셔널로 포장하지는 않는다는 말입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
 
@@ -1042,3 +1042,5 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
+
+[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
