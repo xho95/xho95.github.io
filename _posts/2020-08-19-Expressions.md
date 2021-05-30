@@ -514,7 +514,7 @@ let nestedValue = nested[keyPath: nestedKeyPath]
 // nestedValue 는 24 입니다.
 ```
 
-_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하는 한, 대괄호로 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열에 있는 두 번째 원소에 접근하기 위해 '키 경로' 에서 첨자 연산을 사용합니다.
+_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하면, 대괄호를 써서 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열에 있는 두 번째 원소에 접근하기 위해 '키 경로' 에서 첨자 연산을 사용합니다.
 
 ```swift
 let greetings = ["hello", "hola", "bonjour", "안녕"]
@@ -522,7 +522,7 @@ let myGreeting = greetings[keyPath: \[String].[1]]
 // myGreeting 은 'hola' 입니다.
 ```
 
-첨자 연산에서 사용되는 값은 '이름 있는 값 (named value)' 또는 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 값을 '값 의미 구조 (value semantics)' 를 사용하여 붙잡습니다. 다음 코드는 '키 경로 표현식' 과 클로저 둘 다에서 변수인 `index` 를 사용하여 `greetings` 배열의 세 번째 원소에 접근합니다. `index` 를 수정하면, 키 경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
+첨자 연산에서 사용하는 값은 '이름 붙은 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
 
 ```swift
 var index = 2
@@ -530,50 +530,50 @@ let path = \[String].[index]
 let fn: ([String]) -> String = { strings in strings[index] }
 
 print(greetings[keyPath: path])
-// "bonjour" 를 출력합니다.
+// "bonjour" 를 인쇄합니다.
 print(fn(greetings))
-// "bonjour" 를 출력합니다.
+// "bonjour" 를 인쇄합니다.
 
-// 'index' 에 새 값을 설정하는 것은 'path' 에 영향을 주지 않습니다.
+// 'index' 에 새 값을 설정해도 'path' 에는 영향을 주지 않습니다.
 index += 1
 print(greetings[keyPath: path])
-// "bonjour" 를 출력합니다.
+// "bonjour" 를 인쇄합니다.
 
-// 'fn' 이 'index' 를 잡아 가뒀기 때문에, 이는 새 값을 사용합니다.
+// 'fn' 이 'index' 를 잡아 가두기 때문에, 새 값을 사용합니다.
 print(fn(greetings))
-// "안녕" 를 출력합니다.
+// "안녕" 를 인쇄합니다.
 ```
 
-_경로 (path)_ 는 '옵셔널 연쇄 (optional chaining)' 와 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 다음 코드는 '키 경로' 에서 옵셔널 연쇄를 사용하여 옵셔널 문자열의 속성에 접근합니다:
+_경로 (path)_ 는 '옵셔널 연쇄 (optional chaining)' 와 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 다음 코드는 옵셔널 문자열의 속성에 접근하기 위해 '키 경로' 에서 '옵셔널 연쇄' 를 사용합니다:
 
 ```swift
 let firstGreeting: String? = greetings.first
 print(firstGreeting?.count as Any)
-// "Optional(5)" 를 출력합니다.
+// "Optional(5)" 를 인쇄합니다.
 
-// 키 경로를 사용하여 같은 것을 합니다.
+// 키 경로를 써서 똑같이 합니다.
 let count = greetings[keyPath: \[String].first?.count]
 print(count as Any)
-// "Optional(5)" 를 출력합니다.
+// "Optional(5)" 를 인쇄합니다.
 ```
 
-타입 내에 깊숙이 중첩된 값에 접근하기 위해 '키 경로' 의 성분을 혼합하여 일치 여부를 맞춰볼 수 있습니다. 다음 코드는 이런 성분을 조합한 '키-경로 표현식' 을 사용하여 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
+타입 안에 깊숙하게 중첩된 값에 접근하기 위해 '키 경로' 의 성분을 혼합하여 일치시킬 수 있습니다. 다음 코드는 이 성분들을 조합한 '키-경로 표현식' 을 사용함으로써 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
 
 ```swift
 let interestingNumbers = ["prime": [2, 3, 5, 7, 11, 13, 17],
                           "triangular": [1, 3, 6, 10, 15, 21, 28],
                           "hexagonal": [1, 6, 15, 28, 45, 66, 91]]
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]] as Any)
-// "Optional([2, 3, 5, 7, 11, 13, 17])" 을 출력합니다.
+// "Optional([2, 3, 5, 7, 11, 13, 17])" 을 인쇄합니다.
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]![0]])
-// "2" 를 출력합니다.
+// "2" 를 인쇄합니다.
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count])
-// "7" 을 출력합니다.
+// "7" 을 인쇄합니다.
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count.bitWidth])
-// "64" 를 출력합니다.
+// "64" 를 인쇄합니다.
 ```
 
-보통은 함수나 클로저를 제공하게 되는 상황에서 '키 경로 표현식' 을 사용할 수 있습니다. 특히, '근원 (root)' 타입은 `SomeType` 이면서 경로는 `Value` 타입의 값을 만드는 '키 경로 표현식' 을, `(SomeType) -> Value` 타입의 함수나 클로저 대신, 사용할 수 있습니다.
+'키 경로 표현식' 은 보통이라면 함수나 클로저를 제공할만한 상황에서 사용할 수 있습니다. 특히, '근원 (root) 타입' 은 `SomeType` 이고 경로는, `(SomeType) -> Value` 타입의 함수나 클로저 대신, `Value` 타입의 값을 만드는 '키 경로 표현식' 을 사용할 수 있습니다.
 
 ```swift
 struct Task {
@@ -586,7 +586,7 @@ var toDoList = [
   Task(description: "Visit Boston in the Fall.", completed: false),
 ]
 
-// 아래의 두 접근법은 모두 '동치 (equivalent)' 입니다.
+// 아래 접근 방식 둘 다 '동치 (equivalent)' 입니다.
 let descriptions = toDoList.filter(\.completed).map(\.description)
 let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
 ```
