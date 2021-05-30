@@ -449,7 +449,7 @@ _와일드카드 표현식 (wildcard expression)_ 은 할당 중에 명시적으
 
 #### Key-Path Expression (키-경로 표현식)
 
-_키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에서 사용합니다. 형식은 다음과 같습니다:
+_키-경로 표현식 (key-path expression)_ 은 타입의 속성이나 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에 사용합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\\`type name-타입 이름`.`path-경로`
 
@@ -473,7 +473,7 @@ let value = s[keyPath: pathToProperty]
 // value 는 12 입니다.
 ```
 
-_타입 이름 (type name)_ 은 '타입 추론 장치 (type inference)' 가 암시된 타입을 결정할 수 있는 상황에서는 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
+_타입 이름 (type name)_ 은 타입 추론이 암시 타입을 결정할 수 있는 상황이면 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -489,15 +489,15 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-_경로 (path)_ 는 '자기 식별 키 경로 (identity key path; `\.self`)' 를 생성하기 위해 `self` 를 참조할 수 있습니다. '자기 식별 키 경로 (identity key path)' 는 전체 인스턴스를 참조하므로, 변수에 저장된 모든 데이터를 한 번에 접근해서 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
+_경로 (path)_ 는 '자기 식별 (identity) 키 경로 (`\.self`)' 를 생성하는 `self` 를 참조할 수 있습니다. '자기 식별 키 경로' 는 인스턴스 전체를 참조하므로, 변수에 저장한 모든 데이터를 한 번에 접근하고 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
-// compoundValue = (a: 10, b: 20) 와 '동치 (equivalent)' 입니다.
+// compoundValue = (a: 10, b: 20) 와 '동치 (equivalent)' 임
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
-_경로 (path)_ 는 속성 값에 있는 속성을 참조하기 위해, 마침표로 구분된, 다중 속성 이름을 가질 수 있습니다. 다음 코드는 `OuterStructure` 타입인 `outer` 속성에 있는 `someValue` 에 접근하기 위해 '키 경로 표현식' 인 `\OuterStructure.outer.someValue` 를 사용합니다:
+_경로 (path)_ 는, 속성 값의 속성을 참조하기 위해, 마침표로 구분한, 여러 개의 속성 이름을 담을 수 있습니다. 다음 코드는 `OuterStructure` 타입의 `outer` 속성에 있는 `someValue` 속성에 접근하려고 `\OuterStructure.outer.someValue` 라는 '키 경로 표현식' 을 사용합니다:
 
 ```swift
 struct OuterStructure {
@@ -514,7 +514,7 @@ let nestedValue = nested[keyPath: nestedKeyPath]
 // nestedValue 는 24 입니다.
 ```
 
-_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하기만 하면, 대괄호를 사용하여 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열의 두 번째 원소에 접근하기 위해 '키 경로 (key path)' 에서 첨자 연산을 사용합니다.
+_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하는 한, 대괄호로 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열에 있는 두 번째 원소에 접근하기 위해 '키 경로' 에서 첨자 연산을 사용합니다.
 
 ```swift
 let greetings = ["hello", "hola", "bonjour", "안녕"]
