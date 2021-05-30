@@ -591,7 +591,7 @@ let descriptions = toDoList.filter(\.completed).map(\.description)
 let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
 ```
 
-키 경로 식의 부작용은 어떤 것이든 표현식이 평가되는 그 시점에서만 평가됩니다. 예를 들어, 키 경로 표현식에 있는 첨자 연산에서 함수 호출을 하는 경우, 이 함수는, 키 경로를 사용하는 매 순간이 아니라, 표현식을 평가하면서 단 한번만 호출됩니다.
+'키 경로 표현식' 의 부작용이라면 표현식을 평가하는 시점에만 평가된다는 것입니다. 예를 들어, '키 경로 표현식' 의 '첨자 연산' 안에서 함수 호출을 하면, 매번 키 경로를 사용할 때가 아니라, 표현식을 평가할 때 단 한번만 이 함수를 호출합니다.
 
 ```swift
 func makeIndex() -> Int {
@@ -600,13 +600,13 @@ func makeIndex() -> Int {
 }
 // 아래 줄은 makeIndex() 를 호출합니다.
 let taskKeyPath = \[Task][makeIndex()]
-// "Made an index" 를 출력합니다.
+// "Made an index" 를 인쇄합니다.
 
-// taskKeyPath 를 사용하면 makeIndex() 를 다시 호출하지 않습니다.
+// taskKeyPath 를 사용해도 makeIndex() 를 다시 호출하진 않습니다.
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 
-오브젝티브-C API 와 상호 작용하는 코드에서 '키 경로' 를 사용하는 방법에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 및 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 및 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 를 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 코드에서 '키 경로' 를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 과 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
 
 >> GRAMMAR OF A KEY-PATH EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
