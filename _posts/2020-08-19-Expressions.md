@@ -612,15 +612,13 @@ let someTask = toDoList[keyPath: taskKeyPath]
 
 #### Selector Expression (선택자 표현식)
 
-_선택자 표현식 (selector expression)_ 은 오브젝티브-C 의 메소드나 속성의 '획득자 (getter)' 또는 '설정자 (setter)' 를 참조하는데 사용하는 '선택자 (selector)' 에 접근하도록 해줍니다. 형식은 다음과 같습니다:
+_선택자 표현식 (selector expression)_ 은 오브젝티브-C 에 있는 메소드나 속성의 '획득자 (getter)' 또는 '설정자 (setter)' 를 참조하기 위한 '선택자 (selector)' 에 접근하도록 합니다. 형식은 다음과 같습니다:
 
-\#selector(`method name-메소드 이름`)
-<br />
-\#selector(getter: `property name-속성 이름`)
-<br />
-\#selector(setter: `property name-속성 이름`)
+&nbsp;&nbsp;&nbsp;&nbsp;\#selector(`method name-메소드 이름`)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#selector(getter: `property name-속성 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#selector(setter: `property name-속성 이름`)
 
-_메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 반드시 오브젝티드-C 런타임에서 사용 가능한 메소드나 속성에 대한 참조여야 합니다. 선택자 표현식의 값은 `Selector` 타입의 인스턴스입니다. 예를 들면 다음과 같습니다:
+_메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 반드시 '오브젝티드-C 런타임' 에서 사용 가능한 메소드나 속성의 참조여야 합니다. '선택자 표현식' 의 값은 `Selector` 타입의 인스턴스입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -637,9 +635,9 @@ let selectorForMethod = #selector(SomeClass.doSomething(_:))
 let selectorForPropertyGetter = #selector(getter: SomeClass.property)
 ```
 
-속성의 획득자 (getter) 에 대한 선택자를 생성할 때의, _속성 이름 (property name)_ 은 변수 또는 상수 속성에 대한 참조일 수 있습니다. 이와는 대조적으로, 속성의 설정자 (setter)에 대한 선택자를 생성할 때의, _속성 이름 (property name)_ 은 반드시 변수 속성에 대한 참조여야 합니다.
+속성의 획득자를 위해 선택자를 생성할 때는, _속성 이름 (property name)_ 이 변수나 상수 속성의 참조일 수 있습니다. 이와 대조적으로, 속성의 설정자를 위해 선택자를 생성할 때는, _속성 이름 (property name)_ 이 반드시 변수 속성의 참조여야만 합니다.
 
-_메소드 이름 (method name)_ 은 그룹화를 위한 괄호와, 이름은 공유하지만 타입 서명은 서로 다른 메소드의 혼동을 막기 위한 `as` 연산자를 가질 수 있습니다. 예를 들면 다음과 같습니다:
+_메소드 이름 (method name)_ 은, 이름은 공유하지만 '타입 서명' 은 서로 다른 메소드 사이의 모호함을 없애기 위한 `as` 연산자 뿐만 아니라, 그룹짓기를 위한 괄호도 담을 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 extension SomeClass {
@@ -649,11 +647,11 @@ extension SomeClass {
 let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (String) -> Void)
 ```
 
-선택자는, 실행 시간이 아니라, 컴파일 시간에 생성되기 때문에, 컴파일러가 메소드 또는 속성이 존재하는지 그리고 이들이 오브젝티브-C 런타임 쪽으로 노출되었는 지를 검사할 수 있습니다.
+선택자는, 실행 시간이 아니라, 컴파일 시간에 생성하기 때문에, 컴파일러가 메소드나 속성이 존재하며 '오브젝티브-C 런타임' 으로 노출되는 지를 검사할 수 있습니다.
 
-> 메소드 이름 (method name) 과 속성 이름 (property name) 은 표현식이긴 하지만, 값은 절대로 평가되지 않습니다.
+> 비록 _메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 이  '표현식' 일지라도, 절대 이들을 평가하지 않습니다.
 
-오브젝티브-C API 와 상호 작용하는 선택자를 스위프트 코드에서 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 스위프트 코드에서 선택자를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A SELECTOR EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
