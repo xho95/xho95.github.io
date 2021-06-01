@@ -230,7 +230,7 @@ print(anotherGreeting(for: "Dave"))
 
 ### Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)
 
-각각의 함수 매개 변수는 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 둘 다를 가집니다. '인자 이름표' 는 함수를 호출할 때 사용합니다; 함수 호출 시에 각 인자는 그 앞에 '인자 이름표' 를 작성합니다. '매개 변수 이름' 은 함수 구현에서 사용합니다. 기본적으로, 매개 변수는 '매개 변수 이름' 을 '인자 이름표' 로 사용합니다.
+각각의 함수 매개 변수는 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 둘 다 가집니다. '인자 이름표' 는 함수를 호출할 때 사용합니다; 함수 호출 시에 각 인자는 그 앞에 '인자 이름표' 를 작성합니다. '매개 변수 이름' 은 함수 구현에서 사용합니다. 기본적으로, 매개 변수는 '매개 변수 이름' 을 '인자 이름표' 로 사용합니다.
 
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {

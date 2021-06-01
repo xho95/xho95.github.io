@@ -712,24 +712,24 @@ _접미사 표현식 (postfix expressions)_ 은 표현식에 접미사 연산자
 
 #### Function Call Expression (함수 호출 표현식)
 
-_함수 호출 표현식 (function call expression)_ 은 함수 이름과 그 뒤에 함수 인자들을 쉼표로 구분한 목록을 괄호로 감싼 것으로 구성됩니다. '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
+_함수 호출 표현식 (function call expression)_ 은 '괄호 친 쉼표로-구분한 함수 인자 목록' 이 뒤따라 오는 '함수 이름' 으로 구성됩니다. '함수 호출 표현식' 의 형식은 다음과 같습니다:
 
-`function name-함수 이름`(`argument value 1-인자 값 1`, `argument value 2-인자 값 2`)
+&nbsp;&nbsp;&nbsp;&nbsp;`function name-함수 이름`(`argument value 1-인자 값 1`, `argument value 2-인자 값 2`)
 
-_함수 이름 (function name)_ 은 그 값이 함수 타입이라면 어떤 표현식이든 상관 없습니다.
+_함수 이름 (function name)_ 은 함수 타입의 값인 어떤 표현식이든 될 수 있습니다.
 
-함수 정의에서 매개 변수에 대한 이름을 포함하고 있는 경우, 함수 호출은 반드시 인자 값 앞에, 콜론 (`:`) 으로 구분된, 이름을 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
+'함수 정의' 가 매개 변수에 대한 이름[^argument-label] 을 포함하고 있으면, '함수 호출' 도 자신의 인자 값 앞에, 콜론 (`:`) 으로 구분한, 이름을 반드시 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음 형식을 가집니다:
 
-`function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
+&nbsp;&nbsp;&nbsp;&nbsp;`function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
 
-함수 호출 표현식은 닫는 괄호 바로 뒤에 '클로저 표현식' 형식인 '끝자리 클로저 (trailing closures)' 를 포함할 수 있습니다. 끝자리 클로저는 함수의 인자인 것으로 이해되며, 마지막으로 괄호로 묶인 인자 뒤에 추가됩니다. 첫 번째 '클로저 표현식' 은 이름표를 붙이지 않습니다; 추가적인 클로저 표현식은 어떤 것이든 그 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 끝자리 클로저 구문 표현을 사용하는 것과 사용하지 않는 서로 '동치 (version)' 인 함수 호출을 보여줍니다:
+'함수 호출 표현식' 은 닫는 괄호 바로 뒤에 '클로저 표현식' 형식의 '끝자리 클로저 (trailing closures)' 를 포함할 수 있습니다. 끝자리 클로저는, 마지막 괄호 친 인자 뒤에 추가한, 함수의 인자로 이해합니다. '첫 번째 클로저 표현식' 은 이름표를 붙이지 않으며; 어떤 '추가적인 클로저 표현식' 이든 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 서로 '동치 (version)' 인 함수 호출로써 '끝자리 클로저 구문' 을 사용한 것과 사용하지 않는 것을 보여줍니다:
 
 ```swift
-// someFunction 은 인자로 정수 하나와 클로저 하나를 받습니다.
+// someFunction 은 정수와 클로저를 인자로 취합니다.
 someFunction(x: x, f: { $0 == 13 })
 someFunction(x: x) { $0 == 13 }
 
-// anotherFunction 은 인자로 정수 하나와 클로저 두 개를 받습니다.
+// anotherFunction 은 정수와 두 개의 클로저를 인자로 취합니다.
 anotherFunction(x: x, f: { $0 == 13 }, g: { print(99) })
 anotherFunction(x: x) { $0 == 13 } g: { print(99) }
 ```
@@ -737,7 +737,7 @@ anotherFunction(x: x) { $0 == 13 } g: { print(99) }
 끝자리 클로저가 함수의 유일한 인자라면, 괄호를 생략할 수 있습니다.
 
 ```swift
-// someMethod 는 유일한 인자로 클로저 하나를 받습니다.
+// someMethod 는 클로저를 유일한 인자로 취합니다.
 myData.someMethod() { $0 == 13 }
 myData.someMethod { $0 == 13 }
 ```
@@ -1044,3 +1044,5 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
 [^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
+
+[^argument-label]: 여기서 말하는 '매개 변수에 대한 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 참고하기 바랍니다. 
