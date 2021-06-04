@@ -809,45 +809,45 @@ withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 
 > '배열' 을 '안전하지 않은 포인터' 로 암시적으로 변환할 때, 스위프트는 필요에 따라 배열을 변환하거나 복사함으로써 배열의 저장 공간이 딱 붙어있도록 보장합니다. 예를 들어, 자신의 저장 공간에 대한 'API 계약' 을 만들지 않는 `NSArray` 하위 클래스에서 `Array` 로 연동한 배열에 이 구문을 사용할 수 있습니다. 배열의 저장 공간이 이미 딱 붙어 있음을 보증할 필요가 있어서, '암시적인 변환' 이 이 작업을 할 필요가 절대로 없을 경우, `Array` 대신 `ContiguousArray` 를 사용합니다.
 
-`withUnsafePointer(to:)` 같은 명시적인 함수 대신 `&` 를 사용하는 것은, 특히 함수가 여러 개의 포인터 인자를 취할 때, '저-수준 C 함수' 에 대한 호출을 더 이해하기 쉽게 도와줍니다. 하지만, 다른 스위프트 코드에서 함수를 호출할 때는, '안전하지 않은 API' 를 명시적으로 사용하는 대신 `&` 를 사용하는 것을 피하기 바랍니다.
+`withUnsafePointer(to:)` 같은 명시적인 함수 대신 `&` 를 사용하는 것은, 특히 함수가 여러 개의 포인터 인자를 취할 때, '저-수준 C 함수' 에 대한 호출을 더 이해하기 쉽게 도와줍니다. 하지만, 다른 스위프트 코드에서 함수를 호출할 때는, '안전하지 않은 API' 의 명시적 사용 대신 `&` 를 사용하는 것을 피하기 바랍니다.
 
 > GRAMMAR OF A FUNCTION CALL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Initializer Expression (초기자 표현식)
 
-_초기자 표현식 (initializer expression)_ 은 타입의 초기자에 대한 접근을 제공합니다. 형식은 다음과 같습니다:
+_초기자 표현식 (initializer expression)_ 은 타입 초기자에 대한 접근을 제공합니다. 형식은 다음과 같습니다:
 
-`expression-표현식`.init(`initializer arguments-초기자의 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`.init(`initializer arguments-초기자의 인자`)
 
-'초기자 표현식' 을 '함수 호출 표현식' 안에서 사용하여 타입의 새로운 인스턴스를 초기화합니다. 또한 초기자 표현식을 사용하여 상위 클래스의 초기자로 위임합니다.
+'초기자 표현식' 은 새로운 타입 인스턴스를 초기화하기 위해 '함수 호출 표현식' 에서 사용합니다. '초기자 표현식' 은 상위 클래스의 초기자로 '위임 (delegate)' 하기 위해 사용하기도 합니다.
 
 ```swift
 class SomeSubClass: SomeSuperClass {
     override init() {
-        // 여기서 하위 클래스를 초기화 합니다.
+        // 하위 클래스의 초기화는 여기에 둡니다.
         super.init()
     }
 }
 ```
 
-함수와 마찬가지로, 초기자를 값으로 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+함수와 같이, 초기자도 '값' 처럼 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
-// String 이 여러 초기자를 가지고 있기 때문에 타입 보조 설명이 필수입니다.
+// String 에는 여러 초기자가 있기 때문에 '타입 보조 설명 (annotation)' 은 필수입니다.
 let initializer: (Int) -> String = String.init
 let oneTwoThree = [1, 2, 3].map(initializer).reduce("", +)
 print(oneTwoThree)
-// "123" 을 출력합니다.
+// "123" 을 dlstho합니다.
 ```
 
-타입을 이름으로 지정한 경우, 초기자 표현식을 사용하지 않고도 타입의 초기자에 접근할 수 있습니다. 그 외의 다른 모든 경우에는, 반드시 초기자 표현식을 사용해야 합니다.
+타입에 이름을 지정하면, 초기자 표현식을 사용하지 않고도 타입의 초기자에 접근할 수 있습니다. 다른 모든 경우에는, 초기자 표현식을 반드시 사용해야 합니다.
 
 ```swift
-let s1 = SomeType.init(data: 3)  // 유효합니다.
-let s2 = SomeType(data: 1)       // 역시 유효합니다.
+let s1 = SomeType.init(data: 3)  // 유효
+let s2 = SomeType(data: 1)       // 역시 유효
 
-let s3 = type(of: someValue).init(data: 7)  // 유효합니다.
-let s4 = type(of: someValue)(data: 5)       // 에러입니다.
+let s3 = type(of: someValue).init(data: 7)  // 유효
+let s4 = type(of: someValue)(data: 5)       // 에러
 ```
 
 > GRAMMAR OF AN INITIALIZER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
