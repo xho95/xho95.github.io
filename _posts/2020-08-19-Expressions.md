@@ -912,15 +912,15 @@ let x = [10, 3, 20, 15, 4]
 
 #### Postfix Self Expression (접미사 'self' 표현식)
 
-접미사 `self` 표현식은 표현식 또는 타입의 이름, 바로 뒤의 `.self` 로 구성됩니다. 형식은 다음과 같습니다:
+'접미사 `self` 표현식' 은, 바로 뒤에 `.self` 가 있는, 표현식이나 타입 이름으로 구성합니다. 형식은 다음과 같습니다:
 
-`expression`.self
+&nbsp;&nbsp;&nbsp;&nbsp;`expression`.self
 <br />
-`type`.self
+&nbsp;&nbsp;&nbsp;&nbsp;`type`.self
 
-첫 번째 형식은 _표현식 (expression)_ 의 값으로 평가됩니다. 예를 들어, `x.self` 는 `x`  라고 평가됩니다.
+첫 번째 형식은 _표현식 (expression)_ 의 값을 평가합니다. 예를 들어, `x.self` 는 `x` 를 평가합니다.
 
-두 번째 형식은 _타입 (type)_ 의 값으로 평가됩니다. 타입을 값으로 접근하기 위해 이 형식을 사용합니다. 예를 들어, `SomeClass.self` 는 `SomeClass` 라는 타입 자체로 평가되기 때문에, 타입-수준의 인자를 받아 들이는 함수나 메소드에 전달할 수 있습니다.
+두 번째 형식은 _타입 (type)_ 의 값을 평가합니다. 이 형식은 타입을 '값' 처럼 접근하기 위해 사용합니다. 예를 들어, `SomeClass.self` 는 `SomeClass` 타입 자체를 평가하기 때문에, '타입-수준의 인자' 를 받는 함수나 메소드에 전달할 수 있습니다.
 
 > GRAMMAR OF A POSTFIX SELF EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
