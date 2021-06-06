@@ -449,7 +449,7 @@ _와일드카드 표현식 (wildcard expression)_ 은 할당 중에 명시적으
 
 #### Key-Path Expression (키-경로 표현식)
 
-_키-경로 표현식 (key-path expression)_ 은 타입의 속성 또는 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에서 사용합니다. 형식은 다음과 같습니다:
+_키-경로 표현식 (key-path expression)_ 은 타입의 속성이나 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에 사용합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\\`type name-타입 이름`.`path-경로`
 
@@ -473,7 +473,7 @@ let value = s[keyPath: pathToProperty]
 // value 는 12 입니다.
 ```
 
-_타입 이름 (type name)_ 은 '타입 추론 장치 (type inference)' 가 암시된 타입을 결정할 수 있는 상황에서는 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
+_타입 이름 (type name)_ 은 타입 추론이 암시 타입을 결정할 수 있는 상황이면 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -489,15 +489,15 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-_경로 (path)_ 는 '자기 식별 키 경로 (identity key path; `\.self`)' 를 생성하기 위해 `self` 를 참조할 수 있습니다. '자기 식별 키 경로 (identity key path)' 는 전체 인스턴스를 참조하므로, 변수에 저장된 모든 데이터를 한 번에 접근해서 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
+_경로 (path)_ 는 '자기 식별 (identity) 키 경로 (`\.self`)' 를 생성하는 `self` 를 참조할 수 있습니다. '자기 식별 키 경로' 는 인스턴스 전체를 참조하므로, 변수에 저장한 모든 데이터를 한 번에 접근하고 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
-// compoundValue = (a: 10, b: 20) 와 '동치 (equivalent)' 입니다.
+// compoundValue = (a: 10, b: 20) 와 '동치 (equivalent)' 임
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
-_경로 (path)_ 는 속성 값에 있는 속성을 참조하기 위해, 마침표로 구분된, 다중 속성 이름을 가질 수 있습니다. 다음 코드는 `OuterStructure` 타입인 `outer` 속성에 있는 `someValue` 에 접근하기 위해 '키 경로 표현식' 인 `\OuterStructure.outer.someValue` 를 사용합니다:
+_경로 (path)_ 는, 속성 값의 속성을 참조하기 위해, 마침표로 구분한, 여러 개의 속성 이름을 담을 수 있습니다. 다음 코드는 `OuterStructure` 타입의 `outer` 속성에 있는 `someValue` 속성에 접근하려고 `\OuterStructure.outer.someValue` 라는 '키 경로 표현식' 을 사용합니다:
 
 ```swift
 struct OuterStructure {
@@ -514,7 +514,7 @@ let nestedValue = nested[keyPath: nestedKeyPath]
 // nestedValue 는 24 입니다.
 ```
 
-_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하기만 하면, 대괄호를 사용하여 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열의 두 번째 원소에 접근하기 위해 '키 경로 (key path)' 에서 첨자 연산을 사용합니다.
+_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하면, 대괄호를 써서 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열에 있는 두 번째 원소에 접근하기 위해 '키 경로' 에서 첨자 연산을 사용합니다.
 
 ```swift
 let greetings = ["hello", "hola", "bonjour", "안녕"]
@@ -522,7 +522,7 @@ let myGreeting = greetings[keyPath: \[String].[1]]
 // myGreeting 은 'hola' 입니다.
 ```
 
-첨자 연산에서 사용되는 값은 '이름 있는 값 (named value)' 또는 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 값을 '값 의미 구조 (value semantics)' 를 사용하여 붙잡습니다. 다음 코드는 '키 경로 표현식' 과 클로저 둘 다에서 변수인 `index` 를 사용하여 `greetings` 배열의 세 번째 원소에 접근합니다. `index` 를 수정하면, 키 경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
+첨자 연산에서 사용하는 값은 '이름 붙은 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
 
 ```swift
 var index = 2
@@ -530,50 +530,50 @@ let path = \[String].[index]
 let fn: ([String]) -> String = { strings in strings[index] }
 
 print(greetings[keyPath: path])
-// "bonjour" 를 출력합니다.
+// "bonjour" 를 인쇄합니다.
 print(fn(greetings))
-// "bonjour" 를 출력합니다.
+// "bonjour" 를 인쇄합니다.
 
-// 'index' 에 새 값을 설정하는 것은 'path' 에 영향을 주지 않습니다.
+// 'index' 에 새 값을 설정해도 'path' 에는 영향을 주지 않습니다.
 index += 1
 print(greetings[keyPath: path])
-// "bonjour" 를 출력합니다.
+// "bonjour" 를 인쇄합니다.
 
-// 'fn' 이 'index' 를 잡아 가뒀기 때문에, 이는 새 값을 사용합니다.
+// 'fn' 이 'index' 를 잡아 가두기 때문에, 새 값을 사용합니다.
 print(fn(greetings))
-// "안녕" 를 출력합니다.
+// "안녕" 를 인쇄합니다.
 ```
 
-_경로 (path)_ 는 '옵셔널 연쇄 (optional chaining)' 와 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 다음 코드는 '키 경로' 에서 옵셔널 연쇄를 사용하여 옵셔널 문자열의 속성에 접근합니다:
+_경로 (path)_ 는 '옵셔널 연쇄 (optional chaining)' 와 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 다음 코드는 옵셔널 문자열의 속성에 접근하기 위해 '키 경로' 에서 '옵셔널 연쇄' 를 사용합니다:
 
 ```swift
 let firstGreeting: String? = greetings.first
 print(firstGreeting?.count as Any)
-// "Optional(5)" 를 출력합니다.
+// "Optional(5)" 를 인쇄합니다.
 
-// 키 경로를 사용하여 같은 것을 합니다.
+// 키 경로를 써서 똑같이 합니다.
 let count = greetings[keyPath: \[String].first?.count]
 print(count as Any)
-// "Optional(5)" 를 출력합니다.
+// "Optional(5)" 를 인쇄합니다.
 ```
 
-타입 내에 깊숙이 중첩된 값에 접근하기 위해 '키 경로' 의 성분을 혼합하여 일치 여부를 맞춰볼 수 있습니다. 다음 코드는 이런 성분을 조합한 '키-경로 표현식' 을 사용하여 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
+타입 안에 깊숙하게 중첩된 값에 접근하기 위해 '키 경로' 의 성분을 혼합하여 일치시킬 수 있습니다. 다음 코드는 이 성분들을 조합한 '키-경로 표현식' 을 사용함으로써 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
 
 ```swift
 let interestingNumbers = ["prime": [2, 3, 5, 7, 11, 13, 17],
                           "triangular": [1, 3, 6, 10, 15, 21, 28],
                           "hexagonal": [1, 6, 15, 28, 45, 66, 91]]
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]] as Any)
-// "Optional([2, 3, 5, 7, 11, 13, 17])" 을 출력합니다.
+// "Optional([2, 3, 5, 7, 11, 13, 17])" 을 인쇄합니다.
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]![0]])
-// "2" 를 출력합니다.
+// "2" 를 인쇄합니다.
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count])
-// "7" 을 출력합니다.
+// "7" 을 인쇄합니다.
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count.bitWidth])
-// "64" 를 출력합니다.
+// "64" 를 인쇄합니다.
 ```
 
-보통은 함수나 클로저를 제공하게 되는 상황에서 '키 경로 표현식' 을 사용할 수 있습니다. 특히, '근원 (root)' 타입은 `SomeType` 이면서 경로는 `Value` 타입의 값을 만드는 '키 경로 표현식' 을, `(SomeType) -> Value` 타입의 함수나 클로저 대신, 사용할 수 있습니다.
+'키 경로 표현식' 은 보통이라면 함수나 클로저를 제공할만한 상황에서 사용할 수 있습니다. 특히, '근원 (root) 타입' 은 `SomeType` 이고 경로는, `(SomeType) -> Value` 타입의 함수나 클로저 대신, `Value` 타입의 값을 만드는 '키 경로 표현식' 을 사용할 수 있습니다.
 
 ```swift
 struct Task {
@@ -586,12 +586,12 @@ var toDoList = [
   Task(description: "Visit Boston in the Fall.", completed: false),
 ]
 
-// 아래의 두 접근법은 모두 '동치 (equivalent)' 입니다.
+// 아래 접근 방식 둘 다 '동치 (equivalent)' 입니다.
 let descriptions = toDoList.filter(\.completed).map(\.description)
 let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
 ```
 
-키 경로 식의 부작용은 어떤 것이든 표현식이 평가되는 그 시점에서만 평가됩니다. 예를 들어, 키 경로 표현식에 있는 첨자 연산에서 함수 호출을 하는 경우, 이 함수는, 키 경로를 사용하는 매 순간이 아니라, 표현식을 평가하면서 단 한번만 호출됩니다.
+'키 경로 표현식' 의 부작용이라면 표현식을 평가하는 시점에만 평가된다는 것입니다. 예를 들어, '키 경로 표현식' 의 '첨자 연산' 안에서 함수 호출을 하면, 매번 키 경로를 사용할 때가 아니라, 표현식을 평가할 때 단 한번만 이 함수를 호출합니다.
 
 ```swift
 func makeIndex() -> Int {
@@ -600,27 +600,25 @@ func makeIndex() -> Int {
 }
 // 아래 줄은 makeIndex() 를 호출합니다.
 let taskKeyPath = \[Task][makeIndex()]
-// "Made an index" 를 출력합니다.
+// "Made an index" 를 인쇄합니다.
 
-// taskKeyPath 를 사용하면 makeIndex() 를 다시 호출하지 않습니다.
+// taskKeyPath 를 사용해도 makeIndex() 를 다시 호출하진 않습니다.
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 
-오브젝티브-C API 와 상호 작용하는 코드에서 '키 경로' 를 사용하는 방법에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 및 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 및 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 를 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 코드에서 '키 경로' 를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 과 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
 
 >> GRAMMAR OF A KEY-PATH EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Selector Expression (선택자 표현식)
 
-_선택자 표현식 (selector expression)_ 은 오브젝티브-C 의 메소드나 속성의 '획득자 (getter)' 또는 '설정자 (setter)' 를 참조하는데 사용하는 '선택자 (selector)' 에 접근하도록 해줍니다. 형식은 다음과 같습니다:
+_선택자 표현식 (selector expression)_ 은 오브젝티브-C 에 있는 메소드나 속성의 '획득자 (getter)' 또는 '설정자 (setter)' 를 참조하기 위한 '선택자 (selector)' 에 접근하도록 합니다. 형식은 다음과 같습니다:
 
-\#selector(`method name-메소드 이름`)
-<br />
-\#selector(getter: `property name-속성 이름`)
-<br />
-\#selector(setter: `property name-속성 이름`)
+&nbsp;&nbsp;&nbsp;&nbsp;\#selector(`method name-메소드 이름`)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#selector(getter: `property name-속성 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#selector(setter: `property name-속성 이름`)
 
-_메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 반드시 오브젝티드-C 런타임에서 사용 가능한 메소드나 속성에 대한 참조여야 합니다. 선택자 표현식의 값은 `Selector` 타입의 인스턴스입니다. 예를 들면 다음과 같습니다:
+_메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 반드시 '오브젝티드-C 런타임' 에서 사용 가능한 메소드나 속성의 참조여야 합니다. '선택자 표현식' 의 값은 `Selector` 타입의 인스턴스입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -637,9 +635,9 @@ let selectorForMethod = #selector(SomeClass.doSomething(_:))
 let selectorForPropertyGetter = #selector(getter: SomeClass.property)
 ```
 
-속성의 획득자 (getter) 에 대한 선택자를 생성할 때의, _속성 이름 (property name)_ 은 변수 또는 상수 속성에 대한 참조일 수 있습니다. 이와는 대조적으로, 속성의 설정자 (setter)에 대한 선택자를 생성할 때의, _속성 이름 (property name)_ 은 반드시 변수 속성에 대한 참조여야 합니다.
+속성의 획득자를 위해 선택자를 생성할 때는, _속성 이름 (property name)_ 이 변수나 상수 속성의 참조일 수 있습니다. 이와 대조적으로, 속성의 설정자를 위해 선택자를 생성할 때는, _속성 이름 (property name)_ 이 반드시 변수 속성의 참조여야만 합니다.
 
-_메소드 이름 (method name)_ 은 그룹화를 위한 괄호와, 이름은 공유하지만 타입 서명은 서로 다른 메소드의 혼동을 막기 위한 `as` 연산자를 가질 수 있습니다. 예를 들면 다음과 같습니다:
+_메소드 이름 (method name)_ 은, 이름은 공유하지만 '타입 서명' 은 서로 다른 메소드 사이의 모호함을 없애기 위한 `as` 연산자 뿐만 아니라, 그룹짓기를 위한 괄호도 담을 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 extension SomeClass {
@@ -649,21 +647,21 @@ extension SomeClass {
 let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (String) -> Void)
 ```
 
-선택자는, 실행 시간이 아니라, 컴파일 시간에 생성되기 때문에, 컴파일러가 메소드 또는 속성이 존재하는지 그리고 이들이 오브젝티브-C 런타임 쪽으로 노출되었는 지를 검사할 수 있습니다.
+선택자는, 실행 시간이 아니라, 컴파일 시간에 생성하기 때문에, 컴파일러가 메소드나 속성이 존재하며 '오브젝티브-C 런타임' 으로 노출되고 있는 지를 검사할 수 있습니다.
 
-> 메소드 이름 (method name) 과 속성 이름 (property name) 은 표현식이긴 하지만, 값은 절대로 평가되지 않습니다.
+> 비록 _메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 이 '표현식' 일지라도, 이를 절대로 평가하지 않습니다.
 
-오브젝티브-C API 와 상호 작용하는 선택자를 스위프트 코드에서 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 스위프트 코드에서 선택자를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A SELECTOR EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Key-Path String Expression (키 경로 문자열 표현식)
 
-'키-경로 문자열 표현식 (key-path string expression)' 은, '키-값 코딩 (key-value coding)' 과 '키-값 관찰 (key-value observing)' API 를 사용하기 위해, 오브젝티브-C 에 있는 속성을 참조하는데 사용하는 문자열에 접근하도록 해줍니다. 형식은 다음과 같습니다:
+'키-경로 문자열 표현식' 은, '키-값 코딩 (coding)' 과 '키-값 관찰 (observing)' API 에서 사용하기 위해, 오브젝티브-C 의 속성 참조에 사용하는 문자열을 접근하도록 합니다.[^key-path-string-expression] 형식은 다음과 같습니다:
 
-\#keyPath(`property name-속성 이름`)
+&nbsp;&nbsp;&nbsp;&nbsp;\#keyPath(`property name-속성 이름`)
 
-_속성 이름 (property name)_ 은 반드시 오브젝티브-C 런타임에서 사용 가능한 속성에 대한 참조여야 합니다. 컴파일 시간에, '키-경로 문자열 표현식' 은 '문자열 글자 값 (string literal)' 으로 대체됩니다. 예를 들면 다음과 같습니다:
+_속성 이름 (property name)_ 은 반드시 '오브젝티브-C 런타임' 에서 사용 가능한 속성의 참조여야 합니다. 컴파일 시간에, '키-경로 문자열 표현식' 은 '문자열 글자 값 (literal)' 으로 대체됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -679,10 +677,10 @@ let keyPath = #keyPath(SomeClass.someProperty)
 if let value = c.value(forKey: keyPath) {
   print(value)
 }
-// "12" 를 출력합니다.
+// "12" 를 인쇄합니다.
 ```
 
-클래스 내에서 키-경로 문자열 표현식을 사용할 때는, 해당 클래스의 속성을, 클래스 이름없이, 속성 이름만 작성하여 참조할 수 있습니다.
+클래스 안에서 '키-경로 문자열 표현식' 을 사용할 때는, 클래스 이름 없이, 속성 이름을 작성하는 것만으로도 해당 클래스의 속성을 참조할 수 있습니다.
 
 ```swift
 extension SomeClass {
@@ -691,47 +689,47 @@ extension SomeClass {
   }
 }
 print(keyPath == c.getSomeKeyPath())
-// "true" 를 출력합니다.
+// "true" 를 인쇄합니다.
 ```
 
-키 경로 문자열은, 실행 시간이 아니라, 컴파일 시간에 생성되기 때문에, 컴파일러가 속성이 존재하는지 그리고 이 속성이 오브젝티브-C 런타임 쪽으로 노출되었는 지를 검사할 수 있습니다.
+키 경로 문자열은, 실행 시간이 아니라, 컴파일 시간에 생성하기 때문에, 컴파일러가 속성이 존재하며 '오브젝티브-C 런타임' 으로 노출되고 있는 지를 검사할 수 있습니다.
 
-오브젝티브-C API 와 상호 작용하는 '키 경로 (key paths)' 를 스위프트 코드에서 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 를 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 및 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 및 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 를 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 스위프트 코드에서 '키 경로 (key paths)' 를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 과 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
 
-> 속성 이름 (property name) 은 표현식이지만, 절대로 값을 평가하지 않습니다.
+> 비록 _속성 이름 (property name)_ 이 '표현식' 일지라도, 이를 절대로 평가하지 않습니다.
 
 > GRAMMAR OF A KEY-PATH STRING EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 ### Postfix Expressions (접미사 표현식)
 
-_접미사 표현식 (postfix expressions)_ 은 접미사 연산자 또는 다른 접미사 구문 표현을 표현식에 적용하여 형성합니다. 구문 표현으로는, 모든 '제1 표현식' 은 또한 '접미사 표현식' 이기도 합니다.
+_접미사 표현식 (postfix expressions)_ 은 표현식에 접미사 연산자 또는 다른 접미사 구문을 적용함으로써 형성합니다. 구문상으로, 모든 '으뜸 (primary) 표현식' 들은 또한 '접미사 표현식' 입니다.
 
-이 연산자들의 작동 방식에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 및 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 발랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
 
 > GRAMMAR OF A POSTFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Function Call Expression (함수 호출 표현식)
 
-_함수 호출 표현식 (function call expression)_ 은 함수 이름과 그 뒤에 함수 인자들을 쉼표로 구분한 목록을 괄호로 감싼 것으로 구성됩니다. '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
+_함수 호출 표현식 (function call expression)_ 은 '괄호 친 쉼표로-구분한 함수 인자 목록' 이 뒤따라 오는 '함수 이름' 으로 구성됩니다. '함수 호출 표현식' 의 형식은 다음과 같습니다:
 
-`function name-함수 이름`(`argument value 1-인자 값 1`, `argument value 2-인자 값 2`)
+&nbsp;&nbsp;&nbsp;&nbsp;`function name-함수 이름`(`argument value 1-인자 값 1`, `argument value 2-인자 값 2`)
 
-_함수 이름 (function name)_ 은 그 값이 함수 타입이라면 어떤 표현식이든 상관 없습니다.
+_함수 이름 (function name)_ 은 함수 타입의 값인 어떤 표현식이든 될 수 있습니다.
 
-함수 정의에서 매개 변수에 대한 이름을 포함하고 있는 경우, 함수 호출은 반드시 인자 값 앞에, 콜론 (`:`) 으로 구분된, 이름을 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음과 같은 형식을 가집니다:
+'함수 정의' 가 매개 변수에 대한 이름[^argument-label] 을 포함하고 있으면, '함수 호출' 도 자신의 인자 값 앞에, 콜론 (`:`) 으로 구분한, 이름을 반드시 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음 형식을 가집니다:
 
-`function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
+&nbsp;&nbsp;&nbsp;&nbsp;`function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
 
-함수 호출 표현식은 닫는 괄호 바로 뒤에 '클로저 표현식' 형식인 '끝자리 클로저 (trailing closures)' 를 포함할 수 있습니다. 끝자리 클로저는 함수의 인자인 것으로 이해되며, 마지막으로 괄호로 묶인 인자 뒤에 추가됩니다. 첫 번째 '클로저 표현식' 은 이름표를 붙이지 않습니다; 추가적인 클로저 표현식은 어떤 것이든 그 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 끝자리 클로저 구문 표현을 사용하는 것과 사용하지 않는 서로 '동치 (version)' 인 함수 호출을 보여줍니다:
+'함수 호출 표현식' 은 닫는 괄호 바로 뒤에 '클로저 표현식' 형식의 '끝자리 클로저 (trailing closures)' 를 포함할 수 있습니다. 끝자리 클로저는, 마지막 괄호 친 인자 뒤에 추가한, 함수의 인자로 이해합니다. '첫 번째 클로저 표현식' 은 이름표를 붙이지 않으며; 어떤 '추가적인 클로저 표현식' 이든 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 서로 '동치 (version)' 인 함수 호출로써 '끝자리 클로저 구문' 을 사용한 것과 사용하지 않는 것을 보여줍니다:
 
 ```swift
-// someFunction 은 인자로 정수 하나와 클로저 하나를 받습니다.
+// someFunction 은 정수와 클로저를 인자로 취합니다.
 someFunction(x: x, f: { $0 == 13 })
 someFunction(x: x) { $0 == 13 }
 
-// anotherFunction 은 인자로 정수 하나와 클로저 두 개를 받습니다.
+// anotherFunction 은 정수와 두 개의 클로저를 인자로 취합니다.
 anotherFunction(x: x, f: { $0 == 13 }, g: { print(99) })
 anotherFunction(x: x) { $0 == 13 } g: { print(99) }
 ```
@@ -739,32 +737,32 @@ anotherFunction(x: x) { $0 == 13 } g: { print(99) }
 끝자리 클로저가 함수의 유일한 인자라면, 괄호를 생략할 수 있습니다.
 
 ```swift
-// someMethod 는 유일한 인자로 클로저 하나를 받습니다.
+// someMethod 는 클로저를 유일한 인자로 취합니다.
 myData.someMethod() { $0 == 13 }
 myData.someMethod { $0 == 13 }
 ```
 
-끝자리 클로저를 인자에 포함시키기 위해, 컴파일러는 다음과 같이 왼쪽에서 오른쪽으로 함수의 매개 변수를 검토합니다:
+끝자리 클로저를 인자에 포함시키기 위해, 컴파일러는 다음 처럼 왼쪽에서 오른쪽으로 함수 매개 변수를 검토합니다:
 
 끝자리 클로저 || 매개 변수 || 행동
 ---|---|---|---|---
-이름표 있음 | | 이름표 있음 | | 이름표가 같은 경우, 클로저는 매개 변수와 일치합니다; 다른 경우라면, 그 매개 변수는 건너 뜁니다.
-이름표 있음 | | 이름표 없음 | | 그 매개 변수를 건너 뜁니다.
-이름표 없음 | | 이름표 있음 또는 없음 | | 아래에서 정의한 것처럼, 매개 변수가 함수 타입과 '구조적으로 닮은 (structually resembles)' 경우, 클로저는 매개 변수와 일치합니다; 다른 경우라면, 그 매개 변수는 건너 뜁니다.
+이름표 있음 | | 이름표 있음 | | 이름표가 똑같으면, 클로저와 매개 변수가 일치하며; 그 외 경우라면, 매개 변수를 건너 뜁니다.
+이름표 있음 | | 이름표 없음 | | 매개 변수를 건너 뜁니다.
+이름표 없음 | | 이름표 있거나 없음 | | 아래 정의한 것처럼, 매개 변수의 구조가 함수 타입과 닮았으면, 클로저와 매개 변수가 일치하며; 그 외 경우라면, 매개 변수를 건너 뜁니다.
 
-끝자리 클로저는 그와 일치하는 매개 변수에 대한 인자로 전달됩니다. 조사 과정 중에 건너 뛴 매개 변수는 전달된 인자를 가지지 않습니다-예를 들어, '기본 설정 매개 변수 (default parameter)' 를 사용할 수 있습니다. 일치하는 것을 찾은 후, 조사는 그 다음 끝자리 클로저와 그 다음 매개 변수로 계속됩니다. 일치 과정이 끝날 때는, 모든 끝자리 클로저가 반드시 일치하는 것을 가져야 합니다.
+끝자리 클로저는 자신과 일치하는 매개 변수의 인자로 전달됩니다. 조사하는 과정 중에 건너 뛴 매개 변수는 전달된 인자를 가지지 않습니다-예를 들어, '기본 (default) 매개 변수' 를 사용할 수 있습니다. 일치하는 것을 찾은 후에는, 그 다음 끝자리 클로저와 그 다음 매개 변수를 계속 조사합니다. 맞춰보는 과정이 끝날 때는, 모든 끝자리 클로저가 반드시 일치하는 것을 가지고 있어야 합니다.
 
-매개 변수가 입-출력 매개 변수가 아니면서, 다음 중의 하나에 해당하는 경우, 그 매개 변수는 함수 타입과 _구조적으로 닮은 (structually resembles)_ 것입니다:
+매개 변수가 '입-출력 매개 변수' 가 아니면서, 다음 중 하나에 해당하면, 매개 변수의 _구조가 (structually)_ 함수 타입과 _닮은 (resembles)_ 것입니다:
 
-* `(Bool) -> Int` 와 같이, 그 타입이 함수 타입인 매개 변수
-* `@autoclosure ()-> ((Bool)-> Int)` 와 같이, 그 포장된 표현식의 타입이 함수 타입인 '자동 클로저 (autoclosure)' 매개 변수
-* `((Bool) -> Int)...` 와 같이, 그 배열 원소 타입이 함수 타입인 '가변 (variadic)' 매개 변수
-* `Optional<(Bool) -> Int>` 와 같이, 그 타입이 하나 이상의 옵셔널 '층 (layers)' 으로 포장된 매개 변수
-* `(Optional<(Bool) -> Int>) ...` 와 같이, 그 타입이 이렇게 허용된 타입을 조합한 것인 매개 변수
+* `(Bool) -> Int` 같이, 타입이 함수 타입인 '매개 변수'
+* `@autoclosure ()-> ((Bool)-> Int)` 같이, 포장한 표현식의 타입이 함수 타입인 '자동 클로저 (autoclosure) 매개 변수'
+* `((Bool) -> Int)...` 같이, 배열 원소 타입이 함수 타입인 '가변 (variadic) 매개 변수'
+* `Optional<(Bool) -> Int>` 같이, 타입이 하나 이상의 옵셔널 '층 (layers)' 으로 포장된 '매개 변수'
+* `(Optional<(Bool) -> Int>) ...` 같이, 이 허용된 타입들을 조합한 '매개 변수'
 
-끝자리 클로저가, 함수는 하니지만, 함수 타입과 '구조적으로 닮은' 타입인 매개 변수와 일치할 때, 그 클로저는 필요에 따라 '포장 (wrapped)' 됩니다. 예를 들어, 매개 변수의 타입이 옵셔널 타입인 경우, 이 클로저는 자동으로 `Optional` 로 포장됩니다.
+끝자리 클로저가 타입의 구조는 함수 타입과 닮은 매개 변수와 일치하지만, 함수는 아닐 때는, 클로저를 필요에 따라 포장합니다. 예를 들어, 매개 변수의 타입이 '옵셔널 타입' 이면, 클로저는 자동으로 `Optional` 로 포장합니다.
 
-이러한 일치 작업을 오른쪽에서 왼쪽으로 수행한-5.3 이전 스위프트 코드의 '이전 (migration)' 을 쉽게 하기 위해서, 컴파일러는 왼쪽-에서-오른쪽 그리고 오른쪽-에서-왼쪽 순서로 모두 검사합니다. 조사 방향으로 인해 다른 결과가 발생하는 경우, 예전 방식인 오른쪽-에서-왼쪽 순서를 사용하며 컴파일러가 경고를 생성합니다. 미래 버전의 스위프트는 항상 왼쪽-에서-오른쪽 순서를 사용할 것입니다.[^left-to-right]
+이런 맞춰보기 작업을 오른쪽에서 왼쪽으로 수행한-스위프트 5.3 이전 버전의 코드 '이전 (migration)' 이 쉽도록, 컴파일러는 왼쪽-에서-오른쪽 그리고 오른쪽-에서-왼쪽 순서로 둘 다 검사합니다. 조사한 방향에 따라 다른 결과를 만들어 내면, 오른쪽-에서-왼쪽 순서인 예전 방식을 사용하고 컴파일러는 경고를 발생합니다. 미래 버전의 스위프트는 항상 왼쪽-에서-오른쪽 순서를 사용할 것입니다.[^left-to-right]
 
 ```swift
 typealias Callback = (Int) -> Int
@@ -780,22 +778,22 @@ someFunction { return $0 + 100 }  // 모호함 (ambiguous)
 someFunction { return $0 } secondClosure: { return $0 }  // "10 20" 를 인쇄합니다.
 ```
 
-위 예제에서, "모호함 (ambiguous)" 으로 표시한 함수 호출은 "- 120" 을 인쇄하고 스위프트 5.3 에서는 '컴파일러 경고' 를 일으킵니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 것입니다.
+위 예제에서, "모호함 (ambiguous)" 으로 표시한 함수 호출은 "- 120" 을 인쇄하며 스위프트 5.3 에서 '컴파일러 경고' 를 만들어 냅니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 것입니다.
 
-클래스, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 에서 설명한 것처럼, 여러 메소드 중 하나를 선언함으로써 '함수 호출 구문' 에 대한 '수월한 구문 표현 (syntatic sugar)' 을 사용하게 할 수 있습니다.
+클래스나, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 에서 설명한 것처럼, 여러가지 메소드 중 하나를 선언함으로써 '함수 호출 구문' 에 대한 '수월한 구문 (syntatic sugar)' 을 사용하도록 할 수 있습니다.
 
 <p>
 <strong id="implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환">Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)</strong>
 </p>
 
-함수 호출 표현식에서, 인자와 매개 변수가 서로 다른 타입인 경우, 컴파일러는 다음 목록에 있는 암시적인 변환 중 하나를 적용함으로써 이들의 타입을 일치하게 만들려고 합니다:
+'함수 호출 표현식' 에서, 인자와 매개 변수의 타입이 서로 다르면, 컴파일러가 다음 목록에 있는 '암시적인 변환' 중 하나를 적용함으로써 타입을 일치시키려고 합니다:
 
 * `inout SomeType` 은 `UnsafePointer<SomeType>` 이나 `UnsafeMutablePointer<SomeType>` 이 될 수 있습니다.
 * `inout Array<SomeType>` 은 `UnsafePointer<SomeType>` 이나 `UnsafeMutablePointer<SomeType>` 이 될 수 있습니다.
 * `Array<SomeType>` 은 `UnsafePointer<SomeType>` 이 될 수 있습니다.
 * `String` 은 `UnsafePointer<CChar>` 가 될 수 있습니다.
 
-다음 두 '함수 호출' 은 서로 '동치 (equivalent)' 입니다:
+다음의 두 '함수 호출' 은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 func unsafeFunction(pointer: UnsafePointer<Int>) {
@@ -807,60 +805,60 @@ unsafeFunction(pointer: &myNumber)
 withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 ```
 
-이 암시적인 변환들로 생성한 포인터는 함수 호출이 지속될 동안에만 유효합니다. 정의되지 않은 동작을 피하려면, 함수 호출이 끝난 후에는 코드가 절대로 포인터를 물고 있지 않음을 보장하기 바랍니다.
+이 '암시적인 변환' 으로 생성한 포인터는 '함수 호출' 이 지속될 동안에만 유효합니다. '정의되지 않은 동작' 을 피하려면, 함수 호출이 끝난 후에는 코드가 포인터를 절대 물고 있지 않음을 보장하기 바랍니다.
 
-> 배열을 암시적으로 안전하지 않은 포인터로 변환할 때, 스위프트는 필요한 만큼 배열을 변환하거나 복사하여 배열 저장 공간이 딱 붙어있도록 보장해 줍니다. 예를 들어, 저장 공간에 대한 API 계약을 만들지 않은 `NSArray` 하위 클래스에서 `Array` 로 연동한 배열에 이 구문 표현을 사용할 수 있습니다. 배열의 저장 공간이 이미 딱 붙어 있어서, 암시적인 변환이 이 작업을 할 필요가 절대로 없음을 보증할 필요가 있으면, `Array` 대신 `ContiguousArray` 를 사용합니다.
+> '배열' 을 '안전하지 않은 포인터' 로 암시적으로 변환할 때, 스위프트는 필요에 따라 배열을 변환하거나 복사함으로써 배열의 저장 공간이 딱 붙어있도록 보장합니다. 예를 들어, 자신의 저장 공간에 대한 'API 계약' 을 만들지 않는 `NSArray` 하위 클래스에서 `Array` 로 연동한 배열에 이 구문을 사용할 수 있습니다. 배열의 저장 공간이 이미 딱 붙어 있음을 보증할 필요가 있어서, '암시적인 변환' 이 이 작업을 할 필요가 절대로 없을 경우, `Array` 대신 `ContiguousArray` 를 사용합니다.
 
-`withUnsafePointer(to:)` 같은 명시적인 함수 대신 `&` 를 사용하는 것은 저-수준 C 함수 호출을, 특히 함수가 여러 포인터 인자를 취할 때, 더 이해하기 쉽도록 해줍니다. 하지만, 다른 스위프트 코드에서 함수를 호출할 때는, 안전하지 않은 API 를 명시적으로 사용하는 대신 `&` 를 사용하는 것을 피하도록 합니다.[^using-unsafe-API]
+`withUnsafePointer(to:)` 같은 명시적인 함수 대신 `&` 를 사용하는 것은, 특히 함수가 여러 개의 포인터 인자를 취할 때, '저-수준 C 함수' 에 대한 호출을 더 이해하기 쉽게 도와줍니다. 하지만, 다른 스위프트 코드에서 함수를 호출할 때는, '안전하지 않은 API' 의 명시적 사용 대신 `&` 를 사용하는 것을 피하기 바랍니다.
 
 > GRAMMAR OF A FUNCTION CALL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Initializer Expression (초기자 표현식)
 
-_초기자 표현식 (initializer expression)_ 은 타입의 초기자에 대한 접근을 제공합니다. 형식은 다음과 같습니다:
+_초기자 표현식 (initializer expression)_ 은 타입 초기자에 대한 접근을 제공합니다. 형식은 다음과 같습니다:
 
-`expression-표현식`.init(`initializer arguments-초기자의 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`.init(`initializer arguments-초기자의 인자`)
 
-'초기자 표현식' 을 '함수 호출 표현식' 안에서 사용하여 타입의 새로운 인스턴스를 초기화합니다. 또한 초기자 표현식을 사용하여 상위 클래스의 초기자로 위임합니다.
+'초기자 표현식' 은 새로운 타입 인스턴스를 초기화하기 위해 '함수 호출 표현식' 에서 사용합니다. '초기자 표현식' 은 상위 클래스의 초기자로 '위임 (delegate)' 하기 위해 사용하기도 합니다.
 
 ```swift
 class SomeSubClass: SomeSuperClass {
     override init() {
-        // 여기서 하위 클래스를 초기화 합니다.
+        // 하위 클래스의 초기화는 여기에 둡니다.
         super.init()
     }
 }
 ```
 
-함수와 마찬가지로, 초기자를 값으로 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+함수와 같이, 초기자도 '값' 처럼 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
-// String 이 여러 초기자를 가지고 있기 때문에 타입 보조 설명이 필수입니다.
+// String 에는 여러 초기자가 있기 때문에 '타입 보조 설명 (annotation)' 은 필수입니다.
 let initializer: (Int) -> String = String.init
 let oneTwoThree = [1, 2, 3].map(initializer).reduce("", +)
 print(oneTwoThree)
-// "123" 을 출력합니다.
+// "123" 을 dlstho합니다.
 ```
 
-타입을 이름으로 지정한 경우, 초기자 표현식을 사용하지 않고도 타입의 초기자에 접근할 수 있습니다. 그 외의 다른 모든 경우에는, 반드시 초기자 표현식을 사용해야 합니다.
+타입에 이름을 지정하면, 초기자 표현식을 사용하지 않고도 타입의 초기자에 접근할 수 있습니다. 다른 모든 경우에는, 초기자 표현식을 반드시 사용해야 합니다.
 
 ```swift
-let s1 = SomeType.init(data: 3)  // 유효합니다.
-let s2 = SomeType(data: 1)       // 역시 유효합니다.
+let s1 = SomeType.init(data: 3)  // 유효
+let s2 = SomeType(data: 1)       // 역시 유효
 
-let s3 = type(of: someValue).init(data: 7)  // 유효합니다.
-let s4 = type(of: someValue)(data: 5)       // 에러입니다.
+let s3 = type(of: someValue).init(data: 7)  // 유효
+let s4 = type(of: someValue)(data: 5)       // 에러
 ```
 
 > GRAMMAR OF AN INITIALIZER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Explicit Member Expression (명시적인 멤버 표현식)
 
-_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙은 (named) 타입', 튜플, 또는 모듈의 멤버에 접근하게 해줍니다. 이는 항목과 멤버의 식별자 사이에 마침표 (`.`) 를 둬서 구성합니다.
+_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙은 타입 (named type)' 이나, 튜플, 또는 모듈의 멤버에 대한 접근을 허용합니다. 이는 '항목 (item)' 과 그 멤버의 '식별자 (identifier)' 사이에 있는 '마침표 (`.`)' 로 구성됩니다.
 
-`expression-표현식`.`member name-멤버 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`.`member name-멤버 이름`
 
-'이름 붙은 (named) 타입' 의 멤버는 타입에 대한 선언 또는 '익스텐션 (extension; 확장)' 에서 이름이 지어집니다. 예를 들면 다음과 같습니다:
+'이름 붙은 타입' 의 멤버는 타입의 '선언' 이나 '익스텐션 (extension)' 에서 이름이 붙습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -870,7 +868,7 @@ let c = SomeClass()
 let y = c.someProperty  // 멤버 접근
 ```
 
-튜플의 멤버는 정수를 사용하여, '0' 부터 시작해서, 나타나는 순서대로 암시적으로 이름을 짓습니다. 예를 들면 다음과 같습니다:
+튜플의 멤버는 나타나는 순서대로, '0' 부터 시작하는, 정수를 사용하여 암시적인 이름이 붙습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var t = (10, 20, 30)
@@ -878,11 +876,11 @@ t.0 = t.1
 // 이제 t 는 (20, 20, 30) 입니다.
 ```
 
-모듈의 멤버는 해당 모듈의 '최상위 선언 (top-level declarations)' 에 접근합니다.
+모듈의 멤버는 해당 모듈의 '최상단 선언 (top-level declarations)' 들에 접근합니다.
 
-`dynamicMemberLookup` 특성으로 선언된 타입은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 에서 설명한 것처럼, 실행 시간에 조회되는 멤버를 포함합니다.
+`dynamicMemberLookup` 특성을 가지고 선언한 타입은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 에서 설명한 것처럼, 실행 시간에 찾아 보는 멤버를 포함합니다.
 
-이름이 다른 것이라고는 인자 이름 뿐인 메소드들 또는 초기자들끼리 구별하려면, 인자 이름을 포함하고, 각각의 인자 이름 뒤에 콜론 (`:`) 을 붙입니다. 이름이 없는 인자에는 밑줄 (`_`) 을 작성합니다. '중복정의한 메소드 (overloaded methods)' 끼리 구별하려면, '타입 보조 설명 (type annotation)' 을 사용합니다. 예를 들면 다음과 같습니다:
+이름이 다른 거라곤 자신의 인자 이름뿐인 메소드들끼리 또는 초기자들끼리 구별하려면, 괄호 안에 인자 이름을 포함시키고, 각 인자 이름 뒤에 '콜론 (`:`)' 을 붙입니다. 이름 없는 인자는 '밑줄 (`_`)' 을 작성합니다. '중복 정의한 (overloaded) 메소드' 들끼리 구별하려면, '타입 보조 설명 (annotation)' 을 사용합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -901,7 +899,7 @@ let d = instance.overloadedMethod(x:y:)  // 아직 모호함
 let d: (Int, Bool) -> Void  = instance.overloadedMethod(x:y:)  // 모호하지 않음
 ```
 
-마침표가 줄의 시작에 있으면, '암시적인 멤버 표현식' 이 아니라, '명시적인 멤버 표현식' 인 것으로 이해합니다. 예를 들어, 아래에 나열한 것은 연쇄적인 메소드 호출을 여러 줄로 나누어서 하는 것을 보여줍니다:
+줄의 시작이 '마침표' 면, '암시적인 멤버 표현식' 이 아니라, '명시적인 멤버 표현식' 이라고 이해합니다. 예를 들어, 아래에 나열한 것은 여러 줄에 걸쳐 쪼개진 '연쇄적인 메소드 호출' 을 보여줍니다:
 
 ```swift
 let x = [10, 3, 20, 15, 4]
@@ -914,27 +912,27 @@ let x = [10, 3, 20, 15, 4]
 
 #### Postfix Self Expression (접미사 'self' 표현식)
 
-접미사 `self` 표현식은 표현식 또는 타입의 이름, 바로 뒤의 `.self` 로 구성됩니다. 형식은 다음과 같습니다:
+'접미사 `self` 표현식' 은, 바로 뒤에 `.self` 가 있는, 표현식이나 타입 이름으로 구성합니다. 형식은 다음과 같습니다:
 
-`expression`.self
+&nbsp;&nbsp;&nbsp;&nbsp;`expression`.self
 <br />
-`type`.self
+&nbsp;&nbsp;&nbsp;&nbsp;`type`.self
 
-첫 번째 형식은 _표현식 (expression)_ 의 값으로 평가됩니다. 예를 들어, `x.self` 는 `x`  라고 평가됩니다.
+첫 번째 형식은 _표현식 (expression)_ 의 값을 평가합니다. 예를 들어, `x.self` 는 `x` 를 평가합니다.
 
-두 번째 형식은 _타입 (type)_ 의 값으로 평가됩니다. 타입을 값으로 접근하기 위해 이 형식을 사용합니다. 예를 들어, `SomeClass.self` 는 `SomeClass` 라는 타입 자체로 평가되기 때문에, 타입-수준의 인자를 받아 들이는 함수나 메소드에 전달할 수 있습니다.
+두 번째 형식은 _타입 (type)_ 의 값을 평가합니다. 이 형식은 타입을 '값' 처럼 접근하기 위해 사용합니다. 예를 들어, `SomeClass.self` 는 `SomeClass` 타입 자체를 평가하기 때문에, '타입-수준 인자' 를 받는 함수나 메소드에 전달할 수 있습니다.
 
 > GRAMMAR OF A POSTFIX SELF EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
 #### Subscript Expression (첨자 연산 표현식)
 
-_첨자 연산 표현식 (subscript expression)_ 은 연관된 첨자 연산 선언의 획득자 (getter) 와 설정자 (setter) 를 사용하는 첨자 연산 접근을 제공합니다. 형식은 다음과 같습니다:
+_첨자 연산 표현식 (subscript expression)_ 은 '첨자 연산 선언' 과 관련된 '획득자 (getter)' 와 '설정자 (setter)' 를 사용한 '첨자 연산 접근' 을 제공합니다. 형식은 다음과 같습니다:
 
-`expression-표현식`[`index expressions-색인 표현식`]
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`[`index expressions-색인 표현식`]
 
-첨자 연산 표현식의 값을 평가하기 위해서, 첨자 연산 매개 변수로 전달된 _색인 표현식 (index expressions)_ 을 써서  _표현식 (expression)_ 의 타입에 대한 '첨자 연산 획득자 (subscript getter)' 를 호출합니다. 값을 설정하기 위해서는, 같은 방식으로 '첨자 연산 설정자 (subscript setter)' 를 호출합니다.
+'첨자 연산 표현식' 의 값을 평가하기 위해서는, '첨자 연산 매개 변수' 로 전달한 _색인 표현식 (index expressions)_ 을 가지고 _표현식 (expression)_ 타입을 위한 '첨자 연산 획득자' 를 호출합니다. 값을 설정하기 위해서는, 똑같은 방식으로 '첨자 연산 설정자' 를 호출합니다.
 
-첨자 연산 선언에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 를 참고하기 바랍니다.
+'첨자 연산 선언' 에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
@@ -1035,7 +1033,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^outmost-expression]: 이 말은 옵셔널을 다시 옵셔널로 포장하지는 않는다는 말입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
 
-[^left-to-right]: 스위프트 5.3 버전 이전에 '오른쪽-에서-왼쪽' 순서를 사용한 것은 매개 변수에 '끝자리 클로저 (trailing closure)' 가 하나뿐이면서 가장 오른쪽 매개 변수로 존재 했기 때문이라고 생각됩니다. 이제 '끝자리 클로저' 가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 적용한다고 볼 수 있습니다.
+[^left-to-right]: 스위프트 5.3 이전 버전에서 '오른쪽-에서-왼쪽' 순서를 사용한 것은, '끝자리 클로저 (trailing closure)' 가 하나뿐이이서 가장 오른쪽 매개 변수였기 때문으로 추측됩니다. 스위프트 5.3 부터 '끝자리 클로저' 가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 사용한다고 볼 수 있습니다.
 
 [^filePath-and-fildID]: `#file` 은 예전 버전에서는 '파일 및 모듈의 이름' 이었지만, 지금 버전에서는 '파일의 경로' 입니다. 이는 스위프트 5.3 에서 새로 생긴 `#fileID` 와 관련된 것으로 추측됩니다.
 
@@ -1044,3 +1042,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 
 [^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+
+[^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
+
+[^argument-label]: 여기서 말하는 '매개 변수에 대한 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 참고하기 바랍니다. 
