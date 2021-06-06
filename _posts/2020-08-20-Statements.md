@@ -6,17 +6,15 @@ date:   2020-08-20 11:30:00 +0900
 categories: Swift Language Grammar Statement
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Statements]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Statements]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Statements (구문)
 
-스위프트에는, 세 가지 종류의 구문이 있습니다: '단순 구문 (simple statements)', '컴파일러 제어문 (compiler control statements)', 그리고 '제어 흐름문 (control flow statements)' 이 그것입니다. '단순 구문' 은 가장 공통된 것으로 표현식 또는 선언으로 구성됩니다. '컴파일러 제어문' 은 프로그램이 컴파일러의 작동 방식을 바꾸도록 해주며 '조건부 컴파일 블럭 (conditional compilation block)' 및 '라인 제어문 (line control statement)' 을 포함합니다.
+스위프트, 구문에는: '단순 (simple) 문', '컴파일러 제어 (compiler control) 문', 그리고 '제어 흐름 (control flow) 문' 이라는 세 종류가 있습니다. '단순문' 은 가장 일반적인 것으로 표현식이나 선언문으로 구성됩니다. '컴파일러 제어문' 은 프로그램이 컴파일러의 작동을 바꾸도록 허용하며 '조건부 컴파일 블럭 (conditional compilation block)' 과 '라인 제어문 (line control statement)' 을 포함합니다.
 
-'제어 흐름문' 은 프로그램에 있는 실행 흐름을 제어하기 위해 사용합니다. 스위프트에는, '반복문 (loop statements)', '분기문 (branch statements)', 및 '제어 전달문 (control transfer statements)' 을 포함하여, 여러가지 타입의 제어 흐름문이 있습니다. '반복문' 은 코드 블럭을 반복해서 실행하도록 해주며, '분기문' 은 정해진 코드 블럭이 정해진 조건을 만날 때만 실행되도록 해주며, '제어 전달문' 은 코드의 실행 순서를 부분적으로 바꾸는 방법을 제공합니다. 여기에 더하여, 스위프트는 영역을 도입해서, 에러를 잡아내고 처리하는 `do` 구문, 및 현재 영역을 빠져나가기 바로 직전에 정리 작업을 실행하는 `defer` 문을 제공합니다.
+'제어 흐름문' 은 프로그램의 실행 흐름을 제어하기 위해 사용합니다. 스위프트에는, '반복 (loop) 문', '분기 (branch) 문', 그리고 '제어 전달 (control transfer) 문' 을 포함한, 여러가지 타입의 '제어 흐름문' 들이 있습니다. '반복문' 은 코드 블럭이 반복해서 실행되도록 하고, '분기문' 은 정해진 코드 블럭이 지정된 조건을 만날 때만 실행되도록 하며, '제어 전달문' 은 코드가 실행되는 순서를 부분적으로 바꾸는 방법을 제공합니다. 이에 더하여, 스위프트는, 에러를 잡아 내고 처리하는, 영역을 도입하는 '`do` 문' 과, 현재 영역을 탈출하기 바로 직전에 정리 작업을 실행하기 위한 '`defer` 문' 을 제공합니다.
 
-'세미콜론 (semicolon; `;`)' 은 어떤 구문 뒤에든 선택적으로 붙일 수 있으며 다중 구문이 같은 줄에 있는 경우 이를 구분하는 데 사용합니다.
+'세미콜론 (semicolon; `;`)' 은 어떤 구문 뒤든 있을 수 있으며 똑같은 줄에 여러 구문이 있는 경우 이들을 구분하기 위해 사용합니다.
 
 > GRAMMAR OF A STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
