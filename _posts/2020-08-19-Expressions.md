@@ -1003,6 +1003,10 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 > GRAMMAR OF AN OPTIONAL-CHAINING EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
+### 다음 장
+
+[Statements (구문) > ]({% post_url 2020-08-20-Statements %})
+
 ### 참고 자료
 
 [^Expressions]: 원문은 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 에서 확인할 수 있습니다.
