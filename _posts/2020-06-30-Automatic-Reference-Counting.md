@@ -368,9 +368,9 @@ department.courses = [intro, intermediate, advanced]
 
 ![Unowned Optional Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-optional-reference.png)
 
-'소유하지 않는 옵셔널 참조' 는 '포장한 (wraps)[^wraps] 클래스' 의 인스턴스를 강하게 쥐지 않아서, 'ARC' 가 인스턴스를 해제하는 것을 막지 않습니다. 이는, '소유되지 않은 옵셔널 참조' 가 `nil` 이 될 수 있다는 것만 제외하면, ARC 에서 '소유되지 않은 참조 (unowned reference)' 가 하는 것과 똑같은 작동 방식입니다.
+'소유하지 않는 옵셔널 참조' 는 '포장한 (wraps)[^wraps] 클래스' 의 인스턴스를 강하게 쥐지 않아서, 'ARC' 가 인스턴스를 해제하는 것을 막지 않습니다. 이는, '소유하지 않는 옵셔널 참조' 가 `nil` 이 될 수 있다는 것만 제외하면, ARC 하에서 '소유하지 않는 참조' 가 하는 것과 똑같이 동작합니다.
 
-'옵셔널이-아닌 소유되지 않은 참조' 와 마찬가지로, `nextCourse` 가 항상 아직 해제되지 않은 '교과 과정' 을 참조하고 있다는 보장에 대한 책임은 직접 져야 합니다. 이 경우, 예를 들어, `department.courses` 에서 '교과' 를 삭제할 때 다른 '교과' 가 가지고 있을 수 있는 자신에 대한 참조도 제거할 필요가 있습니다.
+'옵셔널-아닌 소유하지 않는 참조' 와 마찬가지로, `nextCourse` 가 항상 아직 해제되지 않은 '교과 과정' 을 참조하고 있다는 보장에 대한 책임은 직접 져야 합니다. 이 경우, 예를 들어, `department.courses` 에서 '교과' 를 삭제할 때 다른 '교과' 가 가지고 있을 수 있는 자신에 대한 참조도 제거할 필요가 있습니다.
 
 > 옵셔널 값의 실제 타입은, 스위프트 표준 라이브러리에 있는, `Optional` 입니다. 하지만, 값 타입을 `unowned` 로 표시할 수 없다는 규칙에서 옵셔널은 예외입니다.[^unowned-exception]
 >
@@ -426,7 +426,7 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 // "Canada's capital city is called Ottawa" 를 인쇄합니다.
 ```
 
-위 예제에서, '암시적으로 포장이 풀리는 옵셔널' 을 사용하는 것은 '2-단계 클래스 초기자' 의 모든 '필수 조건' 을 만족한다는 의미입니다. `capitalCity` 속성은 초기화를 한 번 완료하고 나면, '강한 참조 순환' 을 피하면서도, '옵셔널이-아닌 값' 처럼 사용하고 접근할 수 있습니다.
+위 예제에서, '암시적으로 포장이 풀리는 옵셔널' 을 사용하는 것은 '2-단계 클래스 초기자' 의 모든 '필수 조건' 을 만족한다는 의미입니다. `capitalCity` 속성은 초기화를 한 번 완료하고 나면, '강한 참조 순환' 을 피하면서도, '옵셔널-아닌 값' 처럼 사용하고 접근할 수 있습니다.
 
 ### Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환)
 
