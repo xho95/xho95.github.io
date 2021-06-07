@@ -14,15 +14,15 @@ categories: Swift Language Grammar Statement
 
 '제어 흐름문' 은 프로그램의 실행 흐름을 제어하기 위해 사용합니다. 스위프트에는, '반복 (loop) 문', '분기 (branch) 문', 그리고 '제어 전달 (control transfer) 문' 을 포함한, 여러가지 타입의 '제어 흐름문' 들이 있습니다. '반복문' 은 코드 블럭이 반복해서 실행되도록 하고, '분기문' 은 정해진 코드 블럭이 지정된 조건을 만날 때만 실행되도록 하며, '제어 전달문' 은 코드가 실행되는 순서를 부분적으로 바꾸는 방법을 제공합니다. 이에 더하여, 스위프트는, 에러를 잡아 내고 처리하는, 영역을 도입하는 '`do` 문' 과, 현재 영역을 탈출하기 바로 직전에 정리 작업을 실행하기 위한 '`defer` 문' 을 제공합니다.
 
-'세미콜론 (semicolon; `;`)' 은 어떤 구문 뒤든 있을 수 있으며 똑같은 줄에 여러 구문이 있는 경우 이들을 구분하기 위해 사용합니다.
+'세미콜론 (semicolon; `;`)' 은 어떤 구문 뒤에든 있을 수 있으며 같은 줄에 여러 구문이 있을 때 이를 구분하기 위해 사용합니다.
 
 > GRAMMAR OF A STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
 ### Loop Statements (반복문)
 
-반복문은, 반복문에서 지정한 조건에 따라, 코드 블럭을 반복해서 실행하게 해줍니다. 스위프트는 세 가지의 반복문을 가지고 있습니다; 이는 `for`-`in` 문, `while` 문, `repeat`-`while` 문입니다.
+반복문은, 반복문에서 지정한 조건에 따라, 코드 블럭을 반복해서 실행하도록 합니다. 스위프트에는: `for`-`in` 문, `while` 문, `repeat`-`while` 문 이라는 세 개의 반복문이 있습니다.
 
-반복문의 제어 흐름은 `break` 문과 `continue` 문으로 바꿀 수 있으며 이는 아래의 [Break Statement ('break' 문)](#break-statement-break-문) 및 [Continue Statement ('continue' 문)](#continue-statement-continue-문) 에서 설명합니다.
+반복문의 제어 흐름은 `break` 문과 `continue` 문으로 바꿀 수 있으며 이는 아래에 있는 [Break Statement ('break' 문)](#break-statement-break-문) 과 [Continue Statement ('continue' 문)](#continue-statement-continue-문) 부분에서 논의합니다.
 
 > GRAMMAR OF A LOOP STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID429)
 
