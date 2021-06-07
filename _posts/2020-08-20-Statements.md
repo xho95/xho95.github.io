@@ -28,7 +28,7 @@ categories: Swift Language Grammar Statement
 
 #### For-In Statement ('for-in' 문)
 
-`for`-`in` 문은 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하는 컬렉션 (또는 어떤 타입) 의 각 항목마다 코드 블럭을 한 번씩 실행하도록 해줍니다.
+`for`-`in` 문은 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하는 집합체 (나 어떤 타입) 에 있는 각 항목마다 한 번씩 코드 블럭을 실행하도록 합니다.
 
 `for`-`in` 문의 형식은 다음과 같습니다:
 
