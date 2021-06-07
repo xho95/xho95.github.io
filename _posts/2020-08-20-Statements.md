@@ -28,15 +28,15 @@ categories: Swift Language Grammar Statement
 
 #### For-In Statement ('for-in' 문)
 
-`for`-`in` 문은 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하는 집합체 (나 어떤 타입) 에 있는 각 항목마다 한 번씩 코드 블럭을 실행하도록 합니다.
+`for`-`in` 문은 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하는 집합체 (또는 어떤 타입) 의 각 항목마다 한 번씩 코드 블럭을 실행하도록 합니다.
 
 `for`-`in` 문의 형식은 다음과 같습니다:
 
-for `item-항목` in `collection-컬렉션/집합체` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;for `item-항목` in `collection-집합체` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-`makeIterator()` 메소드를 호출하여 _컬렉션 (collection)_ 표현식에 대한 '반복자 타입 (iterator type)'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-인 값을 구합니다. 프로그램은 반복자에 대해서 `next()` 메소드를 호출하는 것으로 반복문의 실행을 시작합니다. 반환 값이 `nil` 이 아닌 경우, 이를 _항목 (item)_ '유형 (pattern)' 에 할당하고, 프로그램은 _구문 (statements)_ 을 실행한 다음, 반복문의 맨 처음에서 실행을 계속합니다. 다른 경우라면, 프로그램은 할당을 수행하거나 _구문 (statements)_ 을 실행하지 않고, `for`-`in` 문의 실행을 종료합니다.
+'반복자 (iterator) 타입'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-의 값을 구하기 위해 _집합체 (collection)_ 표현식에 대한 `makeIterator()` 메소드를 호출합니다. 프로그램은 '반복자' 에 대한 `next()` 메소드를 호출함으로써 반복문의 실행을 시작합니다. 반환한 값이 `nil` 이 아니면, 이를 _항목 (item)_ '유형 (pattern)' 에 할당하고, 프로그램이 _구문 (statements)_ 을 실행한 다음, 반복문 맨 앞에서 실행을 계속합니다. 그 외의 경우, 프로그램은 할당이나 _구문 (statements)_ 실행을 하지 않고, `for`-`in` 문 실행을 종료합니다.
 
 > GRAMMAR OF A FOR-IN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
