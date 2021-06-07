@@ -173,7 +173,7 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 'case 절' 에서 지정한 '패턴 (patterns; 유형)' 과 비교합니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 내에 열거한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비어 있을 수 없습니다. 그 결과, 각 'case 절' 이름표의 '콜론 (`:`)' 뒤에는 반드시 최소 하나의 구문이 포함되어야 합니다. 일치한 'case 절' 의 본문에서 어떤 코드도 실행하지 않으려면 단일 `break` 문을 사용합니다.
+`switch` 문의 _제어 표현식 (control expression)_ 은 평가한 다음 각 'case 절' 에서 지정한 '유형 (patterns)' 과 비교됩니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 안에 나열한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비어 있을 수 없습니다. 그 결과, 각 'case 이름표' 의 '콜론 (`:`)' 뒤에는 최소 하나의 구문을 반드시 포함시켜야 합니다. 일치한 'case 절' 본문에서 어떤 코드도 실행하지 않을 의도라면 '단일 `break` 문' 을 사용합니다.
 
 코드를 분기시킬 수 있는 표현식의 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, '크기 값 타입 (scalar types)'[^scalar-types] 의 값에 더하여, 부동-소수점 수, 문자열, 튜플, 사용자 정의 클래스의 인스턴스 및, 옵셔널을 포함한, 어떤 타입의 값으로도 코드를 분기시킬 수 있습니다. _제어 표현식 (control expression)_ 의 값은 심지어 열거체의 'case 값' 과도 일치하는지 맞춰볼 수 있으며 지정한 범위의 값에 포함되는지도 검사할 수 있습니다. 이런 다양한 타입의 값들을 `switch` 문에서 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 을 참고하기 바랍니다.
 
