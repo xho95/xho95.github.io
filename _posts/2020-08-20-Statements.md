@@ -66,25 +66,25 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 
 #### Repeat-While Statement ('repeat'-'while' 문)
 
-`repeat`-`while` 문은, 조건이 참으로 남아 있는 한, 한 번 이상 코드 블럭을 실행하도록 해줍니다.
+`repeat`-`while` 문은, 조건이 '참' 인 한, 코드 블럭을 한 번 또는 그 이상 실행하도록 합니다.
 
 `repeat`-`while` 문의 형식은 다음과 같습니다:
 
-repeat {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} while `condition-조건`
+&nbsp;&nbsp;&nbsp;&nbsp;repeat {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} while `condition-조건`
 
-`repeat`-`while` 문은 다음 처럼 실행합니다:
+`repeat`-`while` 문은 다음과 같이 실행합니다:
 
-1. 프로그램은 _구문 (statements)_ 을 실행하고, 실행을 2 단계로 계속합니다.
+1. 프로그램이 _구문 (statements)_ 을 실행하고, 2 단계를 계속 실행합니다.
 
 2. _조건 (condition)_ 을 평가합니다.
 
-  `true` 이면, 실행은 1 단계로 돌아갑니다. `false` 면, 프로그램은 `repeat`-`while` 문의 실행을 종료합니다.
+  `true` 면, 1 단계 실행으로 돌아갑니다. `false` 면, 프로그램이 `repeat`-`while` 문 실행을 종료합니다.
 
-_조건 (condition)_ 의 값은 _구문 (statements)_ 을 실행한 후에 평가하기 때문에, `repeat`-`while` 문에 있는 _구문 (statements)_ 은 최소한 한 번은 실행됩니다.
+_조건 (condition)_ 의 값을 _구문 (statements)_ 실행 후에 평가하기 때문에, `repeat`-`while` 문의 _구문 (statements)_ 은 최소 한 번은 실행됩니다.
 
-_조건 (condition)_ 의 값은 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+_조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언' 일 수도 있습니다.
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
