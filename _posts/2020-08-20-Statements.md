@@ -132,46 +132,46 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 
 #### Guard Statement ('guard' 문)
 
-`guard` 문은 조건이 하나라도 만족하지 않을 경우 프로그램 제어를 영역 밖으로 전달하는데 사용합니다.
+`guard` 문은 하나 이상의 조건과 만나지 않을 경우 프로그램 제어를 영역 밖으로 전달하고자 사용합니다.
 
 `guard` 문의 형식은 다음과 같습니다:
 
-guard `condition-조건` else {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;guard `condition-조건` else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-`guard` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+`guard` 문의 어떤 조건 값이든 반드시 `Bool` 타입 또는 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언' 일 수도 있습니다.
 
-`guard` 문 조건에 있는 '옵셔널 연결 선언 (optional binding declaration)' 으로 값을 할당한 상수나 변수는 어떤 것이든 'guard 문' 을 둘러싼 나머지 영역에서 사용할 수 있습니다.
+`guard` 문 조건의 '옵셔널 연결 선언' 으로 값을 할당한 어떤 상수나 변수든 'guard 문' 을 둘러싼 나머지 영역에서 사용할 수 있습니다.
 
-`guard` 문의 `else` 절은 필수이며, 반드시 반환 타입이 `Never` 인 함수를 호출하거나 아니면 아래의 구문 중 하나를 사용하여 프로그램 제어를 'guard 문' 을 둘러싼 영역 밖으로 옮겨야 합니다:
+`guard` 문에서 '`else` 절' 은 필수이며, 반드시 '`Never` 반환 타입' 을 가진 함수를 호출하거나 아니면 아래 구문 중 하나를 사용하여 프로그램 제어를 'guard 문' 을 둘러싼 영역 밖으로 옮겨야 합니다:
 
 * `return`
 * `break`
 * `continue`
 * `throw`
 
-'제어 전달 구문 (control transfer statements)' 은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 라는 반환 타입을 가지는 함수에 대한 더 많은 정보는, [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 를 참고하기 바랍니다.
+'제어 전달 (control transfer) 문' 은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. '`Never` 반환 타입을 가진 함수' 에 대한 더 많은 정보는, [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
 #### Switch Statement ('switch' 문)
 
-`switch` 문은 제어 표현식의 값에 따라 정해진 코드 블럭을 실행하도록 해줍니다.
+`switch` 문은 제어 표현식의 값에 따라 정해진 코드 블럭을 실행하도록 합니다.
 
 `switch` 문의 형식은 다음과 같습니다:
 
-switch `control expression-제어 표현식` {<br />
-case `pattern 1-유형 1`:<br />
-  `statements-구문`<br />
-case `pattern 2-유형 2` where `condition-조건`:<br />
-  `statements-구문`<br />
-case `pattern 3-유형 3` where `condition-조건`,<br />
-     `pattern 4-유형 4` where `condition-조건`:<br />
-  `statements-구문`<br />
-default:<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;switch `control expression-제어 표현식` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 1-유형 1`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 2-유형 2` where `condition-조건`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 3-유형 3` where `condition-조건`,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pattern 4-유형 4` where `condition-조건`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 `switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 'case 절' 에서 지정한 '패턴 (patterns; 유형)' 과 비교합니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 내에 열거한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비어 있을 수 없습니다. 그 결과, 각 'case 절' 이름표의 '콜론 (`:`)' 뒤에는 반드시 최소 하나의 구문이 포함되어야 합니다. 일치한 'case 절' 의 본문에서 어떤 코드도 실행하지 않으려면 단일 `break` 문을 사용합니다.
 
