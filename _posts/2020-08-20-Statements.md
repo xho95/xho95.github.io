@@ -98,35 +98,35 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 
 #### If Statement ('if' 문)
 
-`if` 문은 하나 이상의 조건을 평가한 것을 기초로 하여 코드를 실행하는 데 사용합니다.
+`if` 문은 하나 이상의 조건 평가에 기초하여 코드를 실행하는데 사용합니다.
 
-`if` 문의 기본 형식에는 두 가지가 있습니다. 각 형식에서, '여는 중괄호' 와 '닫는 중괄호' 는 필수입니다.
+`if` 문에는 두 개의 기본 형식이 있습니다. 각 형식에서, '여는 중괄호' 와 '닫는 중괄호' 는 필수입니다.
 
-첫 번째 형식은 조건이 참일 때만 코드를 실행하도록 해주며 형식은 다음과 같습니다:
+첫 번째 형식은 조건이 참일 때만 코드를 실행하며 형식은 다음과 같습니다:
 
-if `condition-조건` {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;if `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-`if` 문의 두 번째 형식은 (`else` 키워드로 도입하는) 추가적인 _else 절 (else clause)_ 을 제공하여 코드 한 부분은 조건이 참일 때 실행하고 코드의 다른 부분은 같은 조건이 거짓일 때 실행합니다. 단 하나의 `else` 절만 있을 때의, `if` 문의 형식은 다음과 같습니다:
+`if` 문의 두 번째 형식은 (`else` 키워드를 도입하여) 추가적인 _else 절 (else clause)_ 을 제공하며 한 코드는 조건이 참일 때 실행하고 다른 코드는 똑같은 조건이 거짓일 때 실행하고자 사용합니다. '단일 `else` 절' 이 있을 때의, `if` 문의 형식은 다음과 같습니다:
 
-if `condition-조건` {<br />
-  `statements to execute if condition is true-조건이 참인 경우 실행하는 구문`<br />
-} else {<br />
-  `statements to execute if condition is false-조건이 거짓인 경우 실행하는 구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;if `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if condition is true-조건이 참이면 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if condition is false-조건이 거짓이면 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-`if` 문의 'else 절' 은 둘 이상의 조건을 테스트하기 위해 또 다른 `if` 문을 가질 수 있습니다. 이러한 식으로 서로 연쇄된 `if` 문의 형식은 다음과 같습니다:
+`if` 문의 'else 절' 은 하나 이상의 조건을 테스트하기 위한 또 다른 `if` 문을 담을 수 있습니다. 이런 식으로 서로 연쇄된 `if` 문의 형식은 다음과 같습니다:
 
-if `condition 1-조건 1` {<br />
-  `statements to execute if condition 1 is true-조건 1 이 참인 경우 실행하는 구문`<br />
-} else if `condition 2-조건 2` {<br />
-  `statements to execute if condition 2 is true-조건 2 이 참인 경우 실행하는 구문`<br />
-} else {<br />
-  `statements to execute if both conditions are false- 두 조건 모두 거짓인 경우 실행하는 구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;if `condition 1-조건 1` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if condition 1 is true-조건 1 이 참이면 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} else if `condition 2-조건 2` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if condition 2 is true-조건 2 가 참이면 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if both conditions are false- 두 조건 다 거짓이면 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-`if` 문에 있는 조건의 값은 어떤 것이든 반드시 `Bool` 타입이거나 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언 (optional binding declaration)' 일 수 있습니다.
+`if` 문의 어떤 조건 값이든 반드시 `Bool` 타입 또는 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언' 일 수도 있습니다.
 
 > GRAMMAR OF A BRANCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
