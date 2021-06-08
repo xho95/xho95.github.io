@@ -173,11 +173,11 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`switch` 문의 _제어 표현식 (control expression)_ 은 평가한 다음 각 'case 절' 에서 지정한 '유형 (patterns)' 과 비교됩니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 안에 나열한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비어 있을 수 없습니다. 그 결과, 각 'case 이름표' 의 '콜론 (`:`)' 뒤에는 최소 하나의 구문을 반드시 포함시켜야 합니다. 일치한 'case 절' 본문에서 어떤 코드도 실행하지 않을 의도라면 '단일 `break` 문' 을 사용합니다.
+`switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 'case 절' 에서 지정한 '유형 (patterns)' 과 비교합니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 안에 나열한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비워둘 수 없습니다. 그 결과, 반드시 최소 하나의 구문을 각 'case 이름표' 의 '콜론 (`:`)' 뒤에 포함시켜야 합니다. '일치한 case 절' 본문에서 어떤 코드도 실행하지 않으려면 '단일 `break` 문' 을 사용합니다.
 
-코드를 분기시킬 수 있는 표현식의 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, '크기 값 타입 (scalar types)'[^scalar-types] 의 값에 더하여, 부동-소수점 수, 문자열, 튜플, 사용자 정의 클래스의 인스턴스 및, 옵셔널을 포함한, 어떤 타입의 값으로도 코드를 분기시킬 수 있습니다. _제어 표현식 (control expression)_ 의 값은 심지어 열거체의 'case 값' 과도 일치하는지 맞춰볼 수 있으며 지정한 범위의 값에 포함되는지도 검사할 수 있습니다. 이런 다양한 타입의 값들을 `switch` 문에서 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 을 참고하기 바랍니다.
+코드가 분기할 수 있는 표현식의 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, '크기 (scalar) 타입'[^scalar-types] 의 값에 더하여, 부동-소수점 수, 문자열, 튜플, 사용자 정의 클래스의 인스턴스, 그리고 옵셔널을 포함한, 어떤 타입의 값에 대해서든 코드를 분기할 수 있습니다. _제어 표현식 (control expression)_ 의 값은 심지어 열거체의 'case 값' 과도 일치할 수 있고 특정 범위가 값을 포함하는지도 검사할 수 있습니다. `switch` 문에서 이 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 참고하기 바랍니다.
 
-`switch` 문의 'case 절' 은 선택적으로 각각의 '패턴 (pattern)' 뒤에 `where` 절을 가질 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식을 써서 도입하며, 'case 절' 에 있는 패턴이 _제어 표현식 (control expression)_ 과 일치한다고 간주하기 전에 추가적인 조건을 제공하기 위해 사용합니다. `where` 절이 있으면, 관계가 있는 'case 절' 내의 _구문 (statements)_ 은 _제어 표현식 (control expression)_ 의 값이 'case 절' 의 패턴 중 하나와 일치하면서 `where` 절의 표현식이 `true` 로 평가될 때만 실행됩니다. 예를 들어, _제어 표현식 (control expression)_ 은 아래 예제의 'case 절' 과 튜플이면서, `(1, 1)` 처럼, 똑같은 값을 담고 있을 때만 일치합니다.
+'`switch` 문의 case 절' 은 각 '유형 (pattern)' 뒤에 `where` 절을 담고 있을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 'case 절' 의 유형이 _제어 표현식 (control expression)_ 과 일치함을 고려하기 전에 추가적인 조건을 제공하고자 사용합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 'case 절' 유형 중 하나와 일치하면서 `where` 절의 표현식이 `true` 라고 평가할 때만 연관된 'case 절' 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에 있는 'case 절' 은, `(1, 1)` 같이, 똑같은 원소의 두 값을 담은 튜플일 때만 _제어 표현식 (control expression)_ 과 일치합니다.
 
 ```switch
 case let (x, y) where x == y:
@@ -508,7 +508,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^scalar-types]: '크기 타입 (scalar types)' 은 수학에서 사용하는 '스칼라량 (scalar)' 과 비슷하게 크기 값만 가지는 타입이라고 이해할 수 있습니다.
+[^scalar-types]: '크기 타입 (scalar types)' 은 수학에서 사용하는 용어인 '스칼라량 (scalar)' 과 비슷하게, 크기 값만 가지고 있는 타입입니다.
 
 [^Swift-overlays]: 여기에서 '스위프트 오버레이 (Swift overlays)' 는 '뷰 (View)' 위에 다른 '뷰 (View)' 를 덧입힐 수 있는 UI 관련 프레임웍으로 추측됩니다.
 
