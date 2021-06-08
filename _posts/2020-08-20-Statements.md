@@ -191,7 +191,7 @@ case let (x, y) where x == y:
 
 **Switch Statements Must Be Exhaustive (switch 문은 반드시 빠짐없이 철저해야 합니다)**
 
-스위프트에서는, '제어 표현식' 의 타입으로 생성 가능한 모든 값은 최소한 반드시 하나의 'case 절' 패턴과 일치해야 합니다. 이의 실현이 간단한 것이 아닐 때는 (예를 들어, '제어 표현식' 의 타입이 `Int` 일 때) 는, 필수 조건을 만족하기 위해 '기본 case 값 (default case)' 을 포함시킬 수 있습니다.
+스위프트에서, '제어 표현식' 타입의 모든 가능한 값은 최소 하나의 'case 절 유형' 과는 반드시 일치해야 합니다. 이의 실현이 (예를 들어, 제어 표현식의 타입이 `Int` 일 때 처럼) 단순하지가 않을 때는, '필수 조건' 을 만족하기 위한 '기본 case 값' 을 포함할 수 있습니다.
 
 <p>
 <strong id="switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기">Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)</strong>
