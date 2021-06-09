@@ -194,10 +194,10 @@ case let (x, y) where x == y:
 스위프트에서, '제어 표현식' 타입으로 가능한 모든 값은 최소 'case 절' 의 한 유형과는 반드시 일치해야 합니다. 이의 실현이 (예를 들어, 제어 표현식의 타입이 `Int` 일 때 처럼) 단순치 않을 때는, '필수 조건' 을 만족하도록 '기본 case 값' 을 포함할 수 있습니다.
 
 <p>
-<strong id="switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기">Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)</strong>
+<strong id="switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기">Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)</strong>
 </p>
 
-_동결되지 않은 열거체 (nonfrozen enumeration)_ 는 미래-심지어 앱을 컴파일하고 출하한 후-에도 새로운 열거체 case 값을 가질 수 있는 특수한 종류의 열거체입니다. 동결되지 않은 열거체에서 전환 (switching) 을 하려면 '부가적인 고려 (extra consideration)' 가 필수로 요구됩니다. 라이브러리 작성자가 열거체를 '동결되지 않은 (nonfrozen)' 것으로 표시하면, 새로운 열거체 case 절을 추가할 수 있는 권리를 예약한 것으로, 해당 열거체와 상호 작용하는 코드는 어떤 것이든 _반드시 (must)_ 재컴파일 없이 이런 미래의 'case 값' 을 처리할 수 있어야 합니다. '라이브러리 진화 모드 (library evolution mode)' 에서 컴파일된 코드, 표준 라이브러리에 있는 코드, '애플 프레임웍 (Apple frameworks)' 을 위한 '스위프트 오버레이 (Swift overlays)'[^Swift-overlays], 및 C 와 오브젝티브-C 코드는 '동결되지 않은 열거체' 라고 선언할 수 있습니다. 동결 열거체 및 동결되지 않은 열거체에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 를 참고하기 바랍니다.
+_동결되지 않은 열거체 (nonfrozen enumeration)_ 는-심지어 앱을 엮어서 출하한 후인-미래에도 새로운 '열거체 case 값' 을 가질 수도 있는 특수한 종류의 열거체입니다. '동결되지 않은 열거체' 를 전환 (switching) 하려면 '부가적인 주의' 가 필요합니다. 라이브러리 작성자가 '동결되지 않은 (nonfrozen) 열거체' 라고 표시할 때는, 새로운 '열거체 case 값' 을 추가할 권리를 예약한 것이며, 해당 열거체와 상호 작용하는 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이 미래의 'case 값' 들을 처리할 수 있어야 합니다. '라이브러리 진화 모드'[^library-evolution-mode] 로 컴파일된 코드, 표준 라이브러리에 있는 코드, '애플 프레임웍' 을 '스위프트로 덧씌운 것 (Swift overlays)'[^swift-overlays], 그리고 C 와 오브젝티브-C 코드가 '동결되지 않은 열거체' 를 선언할 수 있습니다. '동결된 열거체' 와 '동결되지 않은 열거체' 에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 부분을 참고하기 바랍니다.
 
 동결되지 않은 열거체 값을 전환할 때는, 열거체의 모든 'case 값' 이 그와 관련된 'switch 문의 case 절' 을 가지고 있더라도, 항상 '기본 case 절' 을 포함해야 합니다. '기본 case 절' 에 `@unknown` 속성을 적용할 수 있는데, 이는 기본 case 절이 미래에 추가되는 열거체 case 값과만 일치해야 함을 지시합니다. 스위프트는 '기본 case 절' 이 컴파일 시간에 이미 알고 있는 어떤 열거체 case 값과 일치하면 경고를 일으킵니다. 이 미래의 경고는 라이브러리 작성자가 switch 문에서 관련된 case 절을 가지지 않은 열거체에 새로운 case 값을 추가했음을 알려줍니다.
 
@@ -510,7 +510,9 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^scalar-types]: '크기 타입 (scalar types)' 은 수학에서 사용하는 용어인 '스칼라량 (scalar)' 과 비슷하게, 크기 값만 가지고 있는 타입입니다.
 
-[^Swift-overlays]: 여기에서 '스위프트 오버레이 (Swift overlays)' 는 '뷰 (View)' 위에 다른 '뷰 (View)' 를 덧입힐 수 있는 UI 관련 프레임웍으로 추측됩니다.
+[^library-evolution-mode]: '라이브러리 진화 모드 (library evolution mode)' 는 스위프트로 '바이너리 프레임웍' 을 생성할 때 사용할 수 있는 옵션으로 추측됩니다. '라이브러리 진화 모드' 에 대한 더 자세한 정보는, [Library Evolution in Swift](https://swift.org/blog/library-evolution/) 항목을 참고하기 바랍니다. 
+
+[^swift-overlays]: 여기서 '스위프트로 덧씌운 것 (Swift overlays)' 은, 예를 들어, `Foundation` 같은 애플 프레임웍을 사용할 때, 오브젝티브-C 등으로 작성된 타입을 스위프트로 '연동 (bridge)' 하여 사용할 수 있게 해주는 것을 말합니다. '스위프트로 덧씌운 것 (Swift overlays)' 에 대한 더 자세한 내용은 [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다. 
 
 [^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
 
