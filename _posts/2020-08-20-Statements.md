@@ -220,7 +220,7 @@ case .suppressed:
 
 **Execution Does Not Fall Through Cases Implicitly (실행은 case 절을 암시적으로 뚫고 가지 않습니다)**
 
-프로그램은, 일치한 case 절에 있는 코드의 실행을 종료하면, `switch` 문을 빠져나갑니다. 프로그램 실행은 그 다음 'case 절' 이나 '기본 case 절' 로 계속되거나 "뚫고 가지 (fall through)" 않습니다. 즉, 한 'case 절' 에서 그 다음으로 실행이 계속되길 원한다면, 실행을 계속하길 원하는 'case 절' 안에, 단순히 `fallthrough` 키워드로 구성된, `fallthrough` 문을 명시적으로 포함시키도록 합니다. `fallthrough` 문에 대한 더 많은 정보는, 아래의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 을 참고하기 바랍니다.
+'일치한 case 절' 안의 코드 실행을 종료한 후에는, 프로그램이 `switch` 문을 빠져나갑니다. 프로그램 실행은 '그 다음 case 절' 이나 '기본 case 절' 에서 계속하거나 "뚫고 가지 (fall through)" 않습니다. 그건 그렇고, 실행이 '한 case 절' 에서 그 다음으로 계속되길 원하면, 명시적으로 실행을 계속할 'case 절' 에, 단순히 `fallthrough` 키워드로 구성하는, '`fallthrough` 문' 을 포함시킵니다. `fallthrough` 문에 대한 더 많은 정보는, 아래의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A SWITCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
