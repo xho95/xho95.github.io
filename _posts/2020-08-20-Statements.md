@@ -218,20 +218,20 @@ case .suppressed:
 // "Generate a default mirror for all ancestor classes." 를 인쇄합니다.
 ```
 
-**Execution Does Not Fall Through Cases Implicitly (실행은 case 절을 암시적으로 뚫고 가지 않습니다)**
+**Execution Does Not Fall Through Cases Implicitly ('case 절' 을 암시적으로 뚫고 가서 실행하진 않습니다)**
 
-'일치한 case 절' 안의 코드 실행을 종료한 후에는, 프로그램이 `switch` 문을 빠져나갑니다. 프로그램 실행은 '그 다음 case 절' 이나 '기본 case 절' 에서 계속하거나 "뚫고 가지 (fall through)" 않습니다. 그건 그렇고, 실행이 '한 case 절' 에서 그 다음으로 계속되길 원하면, 명시적으로 실행을 계속할 'case 절' 에, 단순히 `fallthrough` 키워드로 구성하는, '`fallthrough` 문' 을 포함시킵니다. `fallthrough` 문에 대한 더 많은 정보는, 아래의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 부분을 참고하기 바랍니다.
+일치한 'case 절' 안의 코드 실행을 종료하고 난 후, 프로그램은 `switch` 문을 빠져 나갑니다. 프로그램은 '그 다음 case 절' 이나 '기본 case 절' 로 "뚫고 가서 (fall through)" 계속 실행하진 않습니다. 그렇다 하더라도, '한 case 절' 에서 '그 다음' 으로 계속 실행하길 원할 경우, 실행을 계속할 'case 절' 에서, `fallthrough` 키워드로만 구성된, '`fallthrough` 문' 을 명시적으로 포함하면 됩니다. `fallthrough` 문에 대한 더 많은 정보는, 아래의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A SWITCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
-### Labeled Statement (이름표 달린 구문)
+### Labeled Statement (이름표 구문)
 
 반복문, `if` 문, `switch` 문, 또는 `do` 문은, 이름표와 바로 뒤의 콜론 (`:`) 으로 구성된, _구문 이름표 (statement label)_ 를 접두사로 가질 수 있습니다.  
 반복문이나 `switch` 문에서 제어 흐름을 어떻게 바꾸고 싶은 지를 명시하려면, 아래의 [Break Statement ('break' 문)](#break-statement-break-문) 및 [Continue Statement ('continue' 문)](#continue-statement-continue-문) 에서 설명한 것처럼, `break` 문과 `continue` 문에서 '구문 이름표 (statement label)' 를 사용하면 됩니다.
 
-'이름표 달린 구문 (labeled statement)' 의 영역은 '구문 이름표' 뒤의 전체 구문입니다. '이름표 달린 구문' 은 중첩할 수 있지만, 각각의 '구문 이름표' 는 반드시 유일해야 합니다.
+'이름표 구문' 의 영역은 '구문 이름표' 뒤의 전체 구문입니다. '이름표 구문' 은 중첩할 수 있지만, 각각의 '구문 이름표' 는 반드시 유일해야 합니다.
 
-더 자세한 정보와 구문 이름표를 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Labeled Statements (이름표를 단 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표를-단-구문) 을 참고하기 바랍니다.
+더 자세한 정보와 구문 이름표를 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
@@ -255,7 +255,7 @@ break `label name-이름표 이름`
 
 두 경우 모두, 프로그램 제어를 둘러싼 반복문이나 `switch` 문 뒤의 코드, 만약에 있다면, 첫 번째 줄로 전달합니다.
 
-`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표를 단 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표를-단-구문) 을 참고하기 바랍니다.
+`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -275,7 +275,7 @@ continue `label name-이름표 이름`
 
 `for` 문에서, `continue` 문을 실행한 후에도 '증가 표현식 (increment expression)' 은 여전히 평가되는데, 이는 '증가 표현식' 이 반복문의 본문을 실행한 후에 평가되기 때문입니다.
 
-`continue` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표를 단 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표를-단-구문) 을 참고하기 바랍니다.
+`continue` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 을 참고하기 바랍니다.
 
 > GRAMMAR OF A CONTINUE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
