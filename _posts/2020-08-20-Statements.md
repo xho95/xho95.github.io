@@ -230,31 +230,31 @@ case .suppressed:
 
 '이름표 구문' 의 영역은 '구문 이름표' 뒤에 있는 전체 구문입니다. '이름표 구문' 을 중첩할 순 있지만, 각각의 '구문 이름표' 이름은 반드시 유일해야 합니다.
 
-구문 이름표에 대한 더 많은 정보와 이를 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
+구문 이름표에 대한 더 많은 정보와 사용 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
 ### Control Transfer Statements (제어 전달문)
 
-'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 코드 한 곳에서 다른 데로 무조건 전달함으로써 프로그램에 있는 코드의 실행 순서를 바꿀 수 있습니다. 스위프트에는: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문 이라는 다섯 개의 '제어 전달문' 이 있습니다.
+'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 코드 한 곳에서 다른 곳으로 무조건 전달함으로써 프로그램의 코드 실행 순서를 바꿀 수 있습니다. 스위프트에는: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문 이라는 다섯 개의 '제어 전달문' 이 있습니다.
 
 > GRAMMAR OF A CONTROL TRANSFER STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
 #### Break Statement ('break' 문)
 
-`break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 종료합니다. `break` 문은, 아래에서 보는 것처럼, `break` 키워드로만 구성하거나, `break` 키워드와 그 뒤의 '구문 이름표 (statement label)' 이름으로 구성할 수 있습니다.
+`break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. `break` 문은, 아래에 보인 것처럼, `break` 키워드만으로 구성할 수도 있고, `break` 키워드와 그 뒤의 '구문 이름표' 이름으로 구성할 수도 있습니다.
 
-break
+&nbsp;&nbsp;&nbsp;&nbsp;break
 <br />
-break `label name-이름표 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;break `label name-이름표 이름`
 
-`break` 문 뒤에 '구문 이름표' 이름이 있을 때는, 해당 이름표로 이름을 붙인 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 종료합니다.
+`break` 문 뒤에 '구문 이름표' 이름이 있을 때는, 해당 이름표로 이름 붙인 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다.
 
-`break` 문 뒤에 '구문 이름표' 이름이 없을 때는, 자기가 있는 `switch` 문 또는 가장 안쪽에서 둘러싼 반복문의 프로그램 실행을 종료합니다. 이름표가 없는 `break` 문을 사용하여 `if` 문을 끊고 나올 수는 없습니다.
+`break` 문 뒤에 '구문 이름표' 이름이 없을 때는, `switch` 문 또는 자기를 둘러싼 가장 안쪽 반복문의 프로그램 실행을 끝냅니다. `if` 문을 끊고 나오기 위해 '이름표 없는 `break` 문' 을 사용할 순 없습니다.
 
-두 경우 모두, 프로그램 제어를 둘러싼 반복문이나 `switch` 문 뒤의 코드, 만약에 있다면, 첫 번째 줄로 전달합니다.
+두 경우 모두, 반복문이나 `switch` 문 테두리 뒤에 코드가, 있으면, 프로그램 제어를 그 첫 번째 줄로 전달합니다.
 
-`break` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 을 참고하기 바랍니다.
+`break` 문의 사용 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 부분과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
