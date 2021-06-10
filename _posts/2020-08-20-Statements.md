@@ -236,7 +236,7 @@ case .suppressed:
 
 ### Control Transfer Statements (제어 전달문)
 
-'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 코드 한 곳에서 또 다른 곳으로 무조건적으로 전달하여 프로그램에서 코드의 실행 순서를 바꿀 수 있습니다. 스위프트는 다섯 가지의 제어 전달 구문을 가지고 있습니다: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문이 그것입니다.
+'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 코드 한 곳에서 다른 데로 무조건 전달함으로써 프로그램에 있는 코드의 실행 순서를 바꿀 수 있습니다. 스위프트에는: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문 이라는 다섯 개의 '제어 전달문' 이 있습니다.
 
 > GRAMMAR OF A CONTROL TRANSFER STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
