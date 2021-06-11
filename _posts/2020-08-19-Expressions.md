@@ -388,13 +388,13 @@ var x = MyEnumeration.someValue
 x = .anotherValue
 ```
 
-추론한 타입이 옵셔널이면, '암시적인 멤버 표현식' 에서 '옵셔널이-아닌 타입' 의 멤버를 사용할 수도 있습니다.
+추론한 타입이 옵셔널이면, '암시적인 멤버 표현식' 에서 '옵셔널-아닌 타입' 의 멤버를 사용할 수도 있습니다.
 
 ```swift
 var someOptional: MyEnumeration? = .someValue
 ```
 
-'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 따라 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 비록 '연쇄된 접미사 표현식' 모두가 똑같은 타입을 가지는 것이 일반적일지라도, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 '자신의 상황이 암시하는 타입' 으로 변환 가능할 필요가 있다는 것 뿐입니다. 특히, '암시 타입' 이 옵셔널이면 '옵셔널이-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 따라 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 비록 '연쇄된 접미사 표현식' 모두가 똑같은 타입을 가지는 것이 일반적일지라도, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 '자신의 상황이 암시하는 타입' 으로 변환 가능할 필요가 있다는 것 뿐입니다. 특히, '암시 타입' 이 옵셔널이면 '옵셔널-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -938,13 +938,13 @@ _첨자 연산 표현식 (subscript expression)_ 은 '첨자 연산 선언' 과 
 
 #### Forced-Value Expression (강제-값 표현식)
 
-_강제-값 표현식 (forced-value expression)_ 은 `nil` 이 아니라고 확신하는 옵셔널 값의 포장을 풉니다. 형식은 다음과 같습니다:
+_강제-값 표현식 (forced-value expression)_ 은 `nil` 이 아니라고 확신하는 '옵셔널 값' 의 포장을 풉니다. 형식은 다음과 같습니다:
 
-`expression-표현식`!
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`!
 
-_표현식 (expression)_ 의 값이 `nil` 이 아닌 경우라면, 옵셔널 값의 포장을 풀고 이와 관련된 옵셔널-아닌 타입으로 반환합니다. 다른 경우라면, 실행시간 에러가 발생합니다.
+_표현식 (expression)_ 값이 `nil` 이 아니면, '옵셔널 값' 의 포장을 풀고 이와 관련된 '옵셔널-아닌 타입' 으로 반환합니다. 그 외 경우라면, 실행시간 에러를 일으킵니다.
 
-'강제-값 표현식' 으로 '포장이 풀린 값 (unwrapped value)' 은, 값 자체를 변경하거나, 값의 멤버 중 하나에 할당하는 것으로, 수정할 수 있습니다. 예를 들면 다음과 같습니다:
+'강제-값 표현식' 으로 '포장을 푼 값' 은, 값 자체를 변경하거나, 값의 멤버 중 하나에 할당함으로써, 수정할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var x: Int? = 0
@@ -960,22 +960,22 @@ someDictionary["a"]![0] = 100
 
 #### Optional-Chaining Expression (옵셔널-연쇄 표현식)
 
-_옵셔널-연쇄 표현식 (optional-chaining expression)_ 은 '접미사 표현식' 에서 옵셔널 값을 사용하기 위한 '간소화한 구문 표현 (simplified syntax)' 을 제공합니다. 형식은 다음과 같습니다:
+_옵셔널-연쇄 표현식 (optional-chaining expression)_ 은 '접미사 표현식' 에서 옵셔널 값을 사용하기 위한 '단순화한 구문' 을 제공합니다. 형식은 다음과 같습니다:
 
-`expression-표현식`?
+&nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`?
 
-'접미사 `?` 연산자' 는 표현식의 값을 바꾸지 않고도 표현식으로 '옵셔널-연쇄 표현식' 을 만듭니다.
+'접미사 `?` 연산자' 는 표현식의 값을 바꾸지 않고도 '표현식' 을 '옵셔널-연쇄 표현식' 으로 만듭니다.
 
-옵셔널-연쇄 표현식은 반드시 접미사 표현식 내에서 나타내야 하는데, 이로써 접미자 표현식을 특수한 방법으로 평가하도록 합니다. 만약 옵셔널-연쇄 표현식의 값이 `nil` 이면, 접미사 표현식에 있는 다른 모든 연산을 무시하고 전체 접미사 표현식을 `nil` 로 평가합니다. 옵셔널-연쇄 표현식의 값이 `nil` 이 아니면, 옵셔널-연쇄 표현식 값의 포장을 풀어서 나머지 접미사 표현식을 평가할 때 사용합니다. 어느 경우이든, 접미사 표현식의 값은 여전히 옵셔널 타입입니다.
+'옵셔널-연쇄 표현식' 은 반드시 '접미사 표현식' 안에 있어야 하며, 이는 '접미사 표현식' 을 특수한 방식으로 평가하도록 합니다. '옵셔널-연쇄 표현식' 의 값이 `nil` 이면, 접미사 표현식에 있는 모든 다른 연산들을 무시하며 '전체 접미사 표현식' 이 `nil` 이라고 평가합니다. '옵셔널-연쇄 표현식' 의 값이 `nil` 이 아니면, 옵셔널-연쇄 표현식 값의 포장을 풀어서 접미사 표현식의 나머지를 평가하는데 사용합니다. 어느 경우든, 접미사 표현식 값은 여전히 '옵셔널 타입' 입니다.
 
-만약 옵셔널-연쇄 표현식을 가지고 있는 접미사 표현식이 다른 접미사 표현식 안에 중첩되어 있다면, 가장 바깥쪽 표현식만 옵셔널 타입을 반환합니다.[^outmost-expression] 아래 예제에서, `c` 가 `nil` 이 아닐 때는, 그 값의 포장을 풀어서, `.performAction()` 을 평가하는 데 사용하는 값인, `.property` 를 평가하는 데 사용합니다. 전체 표현식인 `c?.property.performAction()` 은 옵셔널 타입의 값을 가집니다.
+'옵셔널-연쇄 표현식' 을 담고 있는 '접미사 표현식' 이 다른 접미사 표현식 안에 중첩되어 있으면, 가장 바깥쪽 표현식만이 '옵셔널 타입' 을 반환합니다.[^outmost-expression] 아래 예제에서, `c` 가 `nil` 이 아닐 때, 값의 포장을 풀고 `.property` 를 평가하며, 이 값을 `.performAction()` 을 평가하는 데 사용합니다. `c?.property.performAction()` 라는 전체 표현식은 '옵셔널 타입' 인 값을 가집니다.
 
 ```swift
 var c: SomeClass?
 var result: Bool? = c?.property.performAction()
 ```
 
-다음 예제는 옵셔널 체인을 사용하지 않고 위 예제와 같은 작동을 하는 것을 보여줍니다.
+다음 예제는 '옵셔널 연쇄' 없이 위 예제가 동작하는 걸 보여줍니다.
 
 ```swift
 var result: Bool?
@@ -984,24 +984,28 @@ if let unwrappedC = c {
 }
 ```
 
-'옵셔널-연쇄 표현식' 으로 '포장이 풀린 값 (unwrapped value)' 은, 값 자체를 변경하거나, 값의 멤버 중 하나에 할당하는 것으로, 수정할 수 있습니다. 만약 옵셔널-연쇄 표현식의 값이 `nil` 이면, 할당 연산자의 오른-쪽에 있는 표현식은 평가하지 않습니다. 예를 들면 다음과 같습니다:
+'옵셔널-연쇄 표현식' 의 '포장을 푼 값' 은, 값 자체를 변경하거나, 값의 멤버 중 하나에 할당함으로써, 수정할 수 있습니다. '옵셔널-연쇄 표현식' 의 값이 `nil` 이면, 할당 연산자의 오른-쪽에 있는 표현식을 평가하지 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func someFunctionWithSideEffects() -> Int {
-    return 42  // No actual side effects.
+    return 42  // 실제 부작용은 없음.
 }
 var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]
 
 someDictionary["not here"]?[0] = someFunctionWithSideEffects()
-// someFunctionWithSideEffects is not evaluated
-// someDictionary is still ["a": [1, 2, 3], "b": [10, 20]]
+// someFunctionWithSideEffects 를 평가하지 않습니다
+// someDictionary 는 여전히 ["a": [1, 2, 3], "b": [10, 20]] 입니다
 
 someDictionary["a"]?[0] = someFunctionWithSideEffects()
-// someFunctionWithSideEffects is evaluated and returns 42
-// someDictionary is now ["a": [42, 2, 3], "b": [10, 20]]
+// someFunctionWithSideEffects 를 평가하여 42 를 반환합니다
+// someDictionary 는 이제 ["a": [42, 2, 3], "b": [10, 20]] 입니다
 ```
 
 > GRAMMAR OF AN OPTIONAL-CHAINING EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
+
+### 다음 장
+
+[Statements (구문) > ]({% post_url 2020-08-20-Statements %})
 
 ### 참고 자료
 
@@ -1031,7 +1035,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
 
-[^outmost-expression]: 이 말은 옵셔널을 다시 옵셔널로 포장하지는 않는다는 말입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
+[^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 '오른쪽-에서-왼쪽' 순서를 사용한 것은, '끝자리 클로저 (trailing closure)' 가 하나뿐이이서 가장 오른쪽 매개 변수였기 때문으로 추측됩니다. 스위프트 5.3 부터 '끝자리 클로저' 가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 사용한다고 볼 수 있습니다.
 

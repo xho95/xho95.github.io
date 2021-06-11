@@ -13,7 +13,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### Translator's words (옮긴이의 말)
 
-* 진행 상황: ![5.4](https://img.shields.io/badge/-%205.4-success) 2차 완료, ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow) 2차 수정 진행중, ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive) - 5.4 1차 완료
+* 진행 상황: ![5.4](https://img.shields.io/badge/-%205.4-success) 2차 완료, ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow) 2차 수정 진행중, ![5.5 inactive](https://img.shields.io/badge/-%205.5-inactive) - 5.4 1차 완료
 
 ### Welcome to Swift (스위프트 소개)
 
@@ -40,6 +40,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
+* [Concurrency (동시성)]() ![5.4](https://img.shields.io/badge/-%205.5-inactive)
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
@@ -56,8 +57,8 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [About the Language Reference (언어의 기준에 대하여)]({% post_url 2017-03-13-About-the-Language-Reference %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Types (타입)]({% post_url 2020-02-20-Types %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
-* [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
-* [Statements (구문)]({% post_url 2020-08-20-Statements %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
+* [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
+* [Statements (구문)]({% post_url 2020-08-20-Statements %}) ![5.4 on-going](https://img.shields.io/badge/-%205.4-yellow)
 * [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 * [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)
 * [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) ![5.4 inactive](https://img.shields.io/badge/-%205.4-inactive)

@@ -254,7 +254,7 @@ print(wrapper.x)
 
 '명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 켜려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 켜려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (Build Libraries for Distribution)" 이라는 빌드 설정인 (`BUILD_LIBRARY_FOR_DISTRIBUTION`) 을 '예 (Yes)' 로 설정합니다.
 
-'동결된 열거체' 에 대한 'switch' 문은, [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 에서 논의한 것처럼, `default` 'case 절' 이 필수가 아닙니다. '동결된 열거체' 를 전환할 때 `default` 또는 `@unknown default` 'case 절' 를 포함하면 '경고' 를 일으키는데 왜냐면 해당 코드는 절대로 실행되지 않기 때문입니다.
+'동결된 열거체' 에 대한 'switch' 문은, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 에서 논의한 것처럼, `default` 'case 절' 이 필수가 아닙니다. '동결된 열거체' 를 전환할 때 `default` 또는 `@unknown default` 'case 절' 를 포함하면 '경고' 를 일으키는데 왜냐면 해당 코드는 절대로 실행되지 않기 때문입니다.
 
 #### GKInspectable (점검 가능한 GameplayKit 성분)
 
@@ -654,7 +654,7 @@ var manualBlock = ArrayBuilder.buildBlock(
 )
 ```
 
-* `for` 반복문은 임시 변수와, `for` 반복문, 그리고 `buildArray(_:)` 메소드에 대한 호출이 됩니다.[^temporary-variable] 새 `for` 반복문은 '일련 값 (sequence)' 에 동작을 반복하여 각 '부분 결과' 를 해당 배열에 덧붙입니다. 임시 배열은 `buildArray(_:)` 호출의 인자로 전달됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+* `for` 반복문은 임시 변수와, `for` 반복문, 그리고 `buildArray(_:)` 메소드에 대한 호출이 됩니다.[^temporary-variable] 새 `for` 반복문은 '시퀀스 (sequence)' 에 동작을 반복하여 각 '부분 결과' 를 해당 배열에 덧붙입니다. 임시 배열은 `buildArray(_:)` 호출의 인자로 전달됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
 
 ```swift
 @ArrayBuilder var builderArray: [Int] {
@@ -759,7 +759,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### unknown (알려지지 않은)
 
-이 특성을 'switch 문의 case 절' 에 적용하면 이것이 코드를 컴파일하는 시점에 알려진 열거체의 어떤 'case 값' 과도 일치하지 않을 것으로 예상된다는 것을 지시합니다. `unknown` 특성을 사용하는 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 값에 대해서도 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해서도-전환-switching-하기) 를 참고하기 바랍니다.
+이 특성을 'switch 문의 case 절' 에 적용하면 이것이 코드를 컴파일하는 시점에 알려진 열거체의 어떤 'case 값' 과도 일치하지 않을 것으로 예상된다는 것을 지시합니다. `unknown` 특성을 사용하는 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 를 참고하기 바랍니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
 

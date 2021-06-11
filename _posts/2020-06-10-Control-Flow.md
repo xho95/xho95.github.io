@@ -12,13 +12,13 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 스위프트는 다양한 제어 흐름 구문을 제공합니다. 이는 작업을 여러 번 수행하는 `while` 반복문; 정해진 조건을 기초로 서로 다른 분기의 코드를 실행하는 `if`, `guard`, 및 `switch` 문; 그리고 실행 흐름을 코드의 또 다른 곳으로 전달하는 `break` 와 `continue` 같은 구문을 포함합니다.
 
-스위프트는 배열, 딕셔너리, 범위, 문자열, 그리고 다른 '일련 값 (sequences)'[^sequences] 들에 동작을 쉽게 반복시키도록 해주는 `for`-`in` 반복문도 제공합니다.
+스위프트는 배열, 딕셔너리, 범위, 문자열, 그리고 다른 '시퀀스 (sequences)'[^sequences] 의 동작을 쉽게 반복하게 해주는 `for`-`in` 반복문도 제공합니다.
 
 스위프트의 `switch` 문은 대다수의 'C-와 비슷한 (C-like) 언어'[^C-like] 에서 보다 더 확연하게 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 그리고 지정된 타입으로의 '타입 변환 (casts)' 을 포함한, 아주 많은 서로 다른 '유형 (patterns)' 과 일치 여부를 맞춰볼 수 있습니다. '`switch` 문의 case 절' 에 일치한 값은 'case 절' 본문에서 사용하도록 임시 상수나 변수로 연결할 수 있으며, '복잡한 맞춤 조건 (complex matching comditions)' 은 각 'case 절' 에 대한 `where` 절로 표현할 수 있습니다.
 
 ### For-In Loops (for-in 반복문)
 
-`for`-`in` 반복문은, 배열, 수치 범위, 또는 문자열에 있는 문자들 같이, '일련 값 (sequences)' 들에 동작을 반복시키기 위해 사용합니다.
+`for`-`in` 반복문은, 배열이나, 수치 범위, 또는 문자열에 있는 문자들 같은, '시퀀스 (sequences)' 에 동작을 반복하기 위해 사용합니다.
 
 다음 예제는 배열에 있는 항목들에 동작을 반복시키기 위해 `for`-`in` 반복문을 사용합니다:
 
@@ -60,11 +60,11 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-동작이 반복되는 '일련 값' 은 `1` 에서 `5` 까지의 수치 범위이며, '끝 값을 포함 (inclusive)' 하도록, '닫힌 범위 연산자 (`...`)' 로 지시합니다. `index` 값은 범위에 있는 첫 번째 수 (`1`) 로 설정되고, 반복문 안의 구문을 실행합니다. 이 경우, 반복문은 단 하나의 구문만 담고 있는데, 이는 현재 `index` 값에 대한 구구단 5-단 '값 (entry)' 을 인쇄합니다. 구문을 실행한 다음, `index` 값이 범위에 있는 두 번째 값 (`2`) 을 담도록 갱신되며, `print(_:separator:terminator:)` 함수가 다시 호출됩니다. 이 과정을 범위 끝에 닿을 때까지 계속합니다.
+동작을 반복하고 있는 '시퀀스' 는 `1` 에서 `5` 까지의 수치 범위이며, '끝 값을 포함 (inclusive)' 하도록, '닫힌 범위 연산자 (`...`)' 로 지시합니다. `index` 값은 범위에 있는 첫 번째 수 (`1`) 로 설정되고, 반복문 안의 구문을 실행합니다. 이 경우, 반복문은 단 하나의 구문만 담고 있는데, 이는 현재 `index` 값에 대한 구구단 5-단 '값 (entry)' 을 인쇄합니다. 구문을 실행한 다음, `index` 값이 범위에 있는 두 번째 값 (`2`) 을 담도록 갱신되며, `print(_:separator:terminator:)` 함수가 다시 호출됩니다. 이 과정을 범위 끝에 닿을 때까지 계속합니다.
 
 위 예제에서, `index` 는 반복문의 각 '회차 (iteration)' 를 시작할 때 자동으로 값이 설정되는 상수입니다. 그로 인해, 사용하기 전에 `index` 를 선언할 필요가 없습니다. `let` 선언 키워드를 사용할 필요 없이, 단순히 반복문 선언에 포함하는 것으로써 암시적으로 선언됩니다.
 
-'일련 값' 에서 각각의 값 필요하진 않는 경우, 변수 이름이 있는 곳에 '밑줄 (underscore; `_`)' 을 사용함으로써 그 값을 무시할 수 있습니다.
+'시퀀스' 에서 각각의 값 필요하진 않는 경우, 변수 이름이 있는 곳에 '밑줄 (underscore; `_`)' 을 사용함으로써 그 값을 무시할 수 있습니다.
 
 ```swift
 let base = 3
@@ -625,19 +625,19 @@ print(description)
 
 > `fallthrough` 키워드는 '빠져 들어 (fall into)' 실행할 '`switch` case 절' 의 조건은 검사하지 않습니다. `fallthrough` 키워드는 단순히, C 의 표준 `swtich` 문 작동 방식에서 처럼, 코드 실행을 그 다음 'case 절' (또는 '`default` case 절') 의 구문으로 직접 이동 시킵니다.
 
-#### Labeled Statements (이름표를 단 구문)
+#### Labeled Statements (이름표 구문)
 
 스위프트는, 복잡한 '제어 흐름 구조' 를 생성하기 위해 반복문과 조건문이 다른 반복문과 조건문을 '중첩 (nest)' 할 수 있습니다. 하지만, 반복문과 조건문은 둘 다 실행을 미리 끝내기 위해 `break` 문을 사용 수 있습니다. 그러므로, `break` 문이 종료하고 싶은 반복문이나 조건문이 어느 것인지 명시하는 것이 유용할 때가 있습니다. 이와 비슷하게, '다중 중첩된 (multiple nested)' 반복문을 가진 경우, `continue` 문이 영향을 미칠 반복문이 어느 것인지 명시하는 것이 유용할 수 있습니다.
 
-이러한 목표를 달성하기 위해, 반복문 또는 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문은, '이름표를 단 구문 (labeled statment)' 의 실행을 끝내기 위해 '구문 이름표' 와 `break` 문을 같이 사용할 수 있습니다. 반복문은, '이름표를 단 구문' 의 실행을 끝내거나 계속하기 위해 '구문 이름표' 와 `break` 또는 `continue` 문을 같이 사용할 수 있습니다.
+이러한 목표를 달성하기 위해, 반복문 또는 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문은, '이름표 구문 (labeled statment)' 의 실행을 끝내기 위해 '구문 이름표' 와 `break` 문을 같이 사용할 수 있습니다. 반복문은, '이름표 구문' 의 실행을 끝내거나 계속하기 위해 '구문 이름표' 와 `break` 또는 `continue` 문을 같이 사용할 수 있습니다.
 
-'이름표를 단 구문' 은 '구문 도입자 (introducer)' 키워드와 같은 줄에 이름표를 달고, 뒤에 콜론을 붙이는 것으로, 지시합니다. 아래는 `while` 반복문에 대한 '구문 표현' 의 한 예제로, 이 원리는 모든 반복문과 `switch` 문에 대해서 동일합니다:
+'이름표 구문' 은 구문의 '도입자 (introducer)' 키워드와 같은 줄에 이름표, 및 그 뒤에 콜론을 붙여서, 지시합니다. 아래는 `while` 반복문에 대한 '구문 표현' 의 한 예제로, 이 원리는 모든 반복문과 `switch` 문에 대해서 동일합니다:
 
 `label name-이름표 이름`: while `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-다음 예제는 `break` 문과 `continue` 문을 '이름표를 단 `while` 반복문' 과 같이 사용하여 이 장 앞에서 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개조한 버전입니다. 단 이번에는, 게임이 부가적인 규칙을 가집니다:
+다음 예제는 `break` 문과 `continue` 문을 '이름표 붙인 `while` 반복문' 과 같이 사용하여 이 장 앞에서 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개조한 버전입니다. 단 이번에는, 게임이 부가적인 규칙을 가집니다:
 
 * 승리하려면, 반드시 _정확하게 (exactly)_ '25 번 정사각형' 위에 도착해야 합니다.
 
@@ -770,7 +770,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^wildcard-pattern]: 와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정하게 고정된 문자열만이 아니라, 조건에 부합하는 모든 문자열을 맞춰보는 '패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목 중에서 'wildcard pattern' 에 해당하는 부분을 참고하기 바랍니다.
 
-[^sequences]: 'sequence' 는 그 자체로 수학에서의 '수열' 을 의미하는 단어이지만, 여기서는 '수열' 과 비슷하게 '같은 타입의 값들이 쭉 나열되어 있는 것' 이라는 의미로 '일련 값' 이라고 옮깁니다. 실제로 수학에서 말하는 '수열' 을 의미할 때는 '수열' 이라고 옮기도록 합니다.
+[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 '자료 구조' 입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
 
 [^C-like]: 'C-와 비슷한 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 사용한 'C-에 기초한 언어 (C-based languages)' 와 사실상 같은 의미입니다. 이는 'C-family' 라고도 표현하며, 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이러한 언어들을 확인할 수 있습니다.
 
