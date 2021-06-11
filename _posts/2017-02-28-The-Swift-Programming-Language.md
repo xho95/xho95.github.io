@@ -40,7 +40,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
-* [Concurrency (동시성)]() ![5.4](https://img.shields.io/badge/-%205.5-inactive)
+* [Concurrency (동시성)] ![5.4](https://img.shields.io/badge/-%205.5-inactive)
 * [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) ![5.4](https://img.shields.io/badge/-%205.4-success)
 * [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) ![5.4](https://img.shields.io/badge/-%205.4-success)

@@ -70,6 +70,37 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: try �
 
 > GRAMMAR OF A TRY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
+#### Await Operator (`await` 연산자)
+
+_await 표현식 (await expression)_ 은 '`await` 연산자' 와 그 뒤에 오는 비동기 연산 결과를 사용한 '표현식' 으로 구성됩니다. 형식은 다음과 같습니다:
+
+&nbsp;&nbsp;&nbsp;&nbsp;await `expression-표현식`
+
+`await` 표현식의 값은 _표현식 (expression)_ 의 값입니다.
+
+`await` 로 표시한 표현식을 _매달릴 가능성 있는 곳 (potential suspension point)_ 이라고 합니다. 비동기 함수의 실행은 `await` 로 표시한 각 표현식마다 매달릴 수 있습니다. 이에 더하여, '동시성 (concurrent) 코드' 의 실행은 절대로 다른 어떤 곳에서도 매달리지 않을 것입니다. 이는 '매달릴 가능성 있는 곳' 사이의 코드는, 그 다음 '매달릴 가능성 있는 곳' 이전에 갱신을 완료하여 생긴, '불변 (invariants)' 을 일시적으로 끊도록 요구하는 '상태 (state)' 를 안전하게 갱신할 수 있다는 의미입니다. 
+
+`await` 표현식은, `async(priority:operation:)` 함수에 전달된 '끝자리 클로저' 같은, '비동기 상황' 에서만 있을 수 있습니다. 이는 `defer` 문의 본문이나, '동기 함수 타입' 인 '자동 클로저' 안에서는 있을 수 없습니다.
+
+이항 연산자 왼-쪽의 표현식을 `await` 연산자로 표시할 때는, 해당 연산자를 이항 표현식 전체에 적용합니다. 그렇다 하더라도, 괄호를 사용하여 연산자의 적용 범위를 명시할 수 있습니다.
+
+```swift
+// await 를 두 함수 호출 모두에 적용합니다.
+sum = await someAsyncFunction() + anotherAsyncFunction()
+
+// await 를 두 함수 호출 모두에 적용합니다.
+sum = await (someAsyncFunction() + anotherAsyncFunction())
+
+// 에러: await 를 첫 번째 함수 호출에만 적용합니다.
+sum = (await someAsyncFunction()) + anotherAsyncFunction()
+```
+
+`await` 표현식은, 이항 연산자가 '할당 연산자' 이거나 `await` 표현식을 괄호로 테두리 친 것이 아닌 한, 이항 연산자의 오른-쪽에 있을 수 없습니다.
+
+표현식에 `await` 와 `try` 연산자가 둘 다 있으면, `try` 연산자가 반드시 먼저 있어야 합니다. 
+
+> GRAMMAR OF A AWAIT EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
+
 ### Binary Expressions (이항 표현식)
 
 _이항 표현식 (binary expressions)_ 은 '이항 중위 연산자'[^infix-binary-operator] 와 이것이 자신의 왼쪽과 오른쪽 인자로 취하는 '표현식' 을 조합합니다. 형식은 다음과 같습니다:
