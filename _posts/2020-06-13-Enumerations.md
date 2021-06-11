@@ -208,7 +208,7 @@ case let .qrCode(productCode):
 
 [Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합 값' 에 대한 대안으로써, '열거체 case 값' 은, (_원시 값 (raw values)_ 이라는),  모두 같은 타입인, '기본 값' 으로 미리 채울 수 있습니다.
 
-다음은 이름 있는 '열거체 case 값' 에 나란하게 '원시 ASCII 값' 을 저장하는 예제입니다:
+다음은 이름 붙인 '열거체 case 값' 에 나란하게 '원시 ASCII 값' 을 저장하는 예제입니다:
 
 ```swift
 enum ASCIIControlCharacter: Character {

@@ -196,7 +196,7 @@ repeatLabels(a: "four") // 에러
 
 이 특성을 클래스, 구조체, 열거체, 또는 프로토콜에 적용하면 실행 시간에 멤버를 이름으로 찾아갈 수 있습니다. 그 타입은 반드시 `subscript(dynamicMemberLookup:)` 첨자 연산을 구현해야 합니다.
 
-명시적인 '멤버 표현식' 에 있는, 이름 있는 멤버와 관련된 선언이 없는 경우, 이 표현식은, 멤버에 대한 정보를 인자로 전달하는, 타입의 `subscript(dynamicMemberLookup:)` 첨자 연산에 대한 호출인 것으로 이해합니다. 첨자 연산은 '키 경로 (key path)' 또는 '멤버 이름' 인 매개 변수를 받을 수 있습니다; 두 첨자 연산 모두들 구현한 경우, 키 경로 인자를 취하는 첨자 연산을 사용합니다.
+명시적인 '멤버 표현식' 에서, '이름 붙인 멤버' 와 관련된 선언이 없는 경우, 표현식은, 멤버에 대한 정보를 인자로 전달하는, 타입의 `subscript(dynamicMemberLookup:)` 첨자 연산에 대한 호출이라고 이해합니다. 첨자 연산은 '키 경로 (key path)' 또는 '멤버 이름' 인 매개 변수를 받을 수 있습니다; 두 첨자 연산 모두들 구현한 경우, 키 경로 인자를 취하는 첨자 연산을 사용합니다.
 
 `subscript(dynamicMemberLookup:)` 의 구현은 키 경로의 경우 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 및 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 인 인자를 받을 수 있습니다. 멤버 이름의 경우 [ExpressibleByStringLiteral] 프로토콜을 준수하는 타입인 인자를 받을 수 있습니다-대부분의 경우, `String` 입니다. 첨자 연산의 반환 타입은 어떤 타입이든 될 수 있습니다.
 

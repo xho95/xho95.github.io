@@ -553,7 +553,7 @@ let myGreeting = greetings[keyPath: \[String].[1]]
 // myGreeting 은 'hola' 입니다.
 ```
 
-첨자 연산에서 사용하는 값은 '이름 붙은 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
+첨자 연산에서 사용하는 값은 '이름 붙인 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
 
 ```swift
 var index = 2
@@ -885,11 +885,11 @@ let s4 = type(of: someValue)(data: 5)       // 에러
 
 #### Explicit Member Expression (명시적인 멤버 표현식)
 
-_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙은 타입 (named type)' 이나, 튜플, 또는 모듈의 멤버에 대한 접근을 허용합니다. 이는 '항목 (item)' 과 그 멤버의 '식별자 (identifier)' 사이에 있는 '마침표 (`.`)' 로 구성됩니다.
+_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙인 타입 (named type)' 이나, 튜플, 또는 모듈의 멤버에 대한 접근을 허용합니다. 이는 '항목 (item)' 과 그 멤버의 '식별자 (identifier)' 사이에 있는 '마침표 (`.`)' 로 구성됩니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`.`member name-멤버 이름`
 
-'이름 붙은 타입' 의 멤버는 타입의 '선언' 이나 '익스텐션 (extension)' 에서 이름이 붙습니다. 예를 들면 다음과 같습니다:
+'이름 붙인 타입' 의 멤버는 타입의 '선언' 이나 '익스텐션 (extension)' 에서 이름이 붙습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {

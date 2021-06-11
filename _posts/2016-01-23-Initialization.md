@@ -118,7 +118,7 @@ struct Color {
 }
 ```
 
-두 초기자 모두, 각각의 초기자 매개 변수에 '이름 있는 값 (named value)' 을 제공함으로써, 새로운 `Color` 인스턴스를 생성하는데 사용할 수 있습니다:
+두 초기자 모두, 각각의 초기자 매개 변수에 '이름 붙인 값 (named value)' 을 제공함으로써, 새로운 `Color` 인스턴스를 생성하는데 사용할 수 있습니다:
 
 ```swift
 let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)

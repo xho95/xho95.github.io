@@ -17,7 +17,7 @@ redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 
 ### Subscript Syntax (첨자 연산 구문 표현)
 
-첨자 연산은 인스턴스 이름 뒤의 대괄호에 하나 이상의 값을 작성함으로써 타입의 인스턴스를 조회하도록 해줍니다. 이러한 구문 표현은 '인스턴스 메소드 구문 표현' 및 '계산 속성 (computed properties) 구문 표현' 과 비슷합니다. 첨자 연산 정의는 `subscript` 키워드로 작성하며, 인스턴스 메소드와 똑같은 방식으로, 하나 이상의 매개 변수와 반환 타입을 지정합니다. 인스턴스 메소드와는 달리, 첨자 연산은 '읽기-쓰기 (read-write)' 일 수도 '읽기-전용 (read-only)' 일 수도 있습니다.[^read-only] 이 작동 방식은 '계산 속성' 과 똑같은 방식인 '획득자 (getter)' 와 '설정자 (setter)' 로 '소통 (communicated)' 합니다.
+첨자 연산은 인스턴스 이름 뒤의 대괄호에 하나 이상의 값을 작성함으로써 타입의 인스턴스를 조회하도록 해줍니다. 이러한 구문 표현은 '인스턴스 메소드 구문' 및 '계산 속성 (computed properties) 구문' 과 비슷합니다. 첨자 연산 정의는 `subscript` 키워드로 작성하며, 인스턴스 메소드와 똑같은 방식으로, 하나 이상의 매개 변수와 반환 타입을 지정합니다. 인스턴스 메소드와는 달리, 첨자 연산은 '읽기-쓰기 (read-write)' 일 수도 '읽기-전용 (read-only)' 일 수도 있습니다.[^read-only] 이 작동 방식은 '계산 속성' 과 똑같은 방식인 '획득자 (getter)' 와 '설정자 (setter)' 로 '소통 (communicated)' 합니다.
 
 ```swift
 subscript(index: Int) -> Int {  
