@@ -6,7 +6,7 @@ date:   2020-06-13 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Enumerations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Enumerations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Enumerations (열거체)
 
@@ -208,7 +208,7 @@ case let .qrCode(productCode):
 
 [Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체의 'case 값' 이 서로 다른 타입의 '결합 값' 을 저장한다고 선언할 수 있는 방법을 보여줍니다. '결합 값' 에 대한 대안으로써, '열거체 case 값' 은, (_원시 값 (raw values)_ 이라는),  모두 같은 타입인, '기본 값' 으로 미리 채울 수 있습니다.
 
-다음은 이름 있는 '열거체 case 값' 에 나란하게 '원시 ASCII 값' 을 저장하는 예제입니다:
+다음은 이름 붙인 '열거체 case 값' 에 나란하게 '원시 ASCII 값' 을 저장하는 예제입니다:
 
 ```swift
 enum ASCIIControlCharacter: Character {

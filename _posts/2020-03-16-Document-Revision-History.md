@@ -6,14 +6,14 @@ date:   2020-03-16 10:00:00 +0900
 categories: Swift Language Grammar Revision History
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 부분[^Revision-History]을 번역하고, 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 부분[^Revision-History]을 번역하고, 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Document Revision History (문서 개정 이력)
 
 ### 2021-06-07
 
 * 스위프트 5.5 에서 갱신한 것. 
-* '비동기 함수 (asynchronous functions)', '임무 (tasks)', 그리고 '행위자 (actors)' 에 대한 정보를 [Concurrency (동시성)]() 장과, [Actor Declaration (행위자 선언)]() 부분, [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드) 부분, 그리고 [Await Operator (대기 연산자)]() 부분에 추가함.
+* '비동기 함수 (asynchronous functions)', '임무 (tasks)', 그리고 '행위자 (actors)' 에 대한 정보를 [Concurrency (동시성)] 장과, [Actor Declaration (행위자 선언)]({% post_url 2020-08-15-Declarations %}#actor-declaration-행위자-선언) 부분, [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드) 부분, 그리고 [Await Operator (`await` 연산자)]({% post_url 2020-08-19-Expressions %}#await-operator-await-연산자) 부분에 추가함.
 
 #### 2021-04-26
 
@@ -52,7 +52,7 @@ categories: Swift Language Grammar Revision History
 #### 2019-09-10
 
 * 스위프트 5.1 에서 갱신한 것.
-* 지정한 이름 있는 반환 타입을 제공하는 대신, 그 반환 값이 준수하는 프로토콜을 지정하는 함수에 대한 정보를, [Opaque Types (불투명 타입)]({% post_url 2020-02-22-Opaque-Types %}) 장에 추가함.
+* 특정한 '이름 붙인 반환 타입' 을 제공하는 대신, 그 반환 값이 준수하는 프로토콜을 지정하는 함수에 대한 정보를, [Opaque Types (불투명 타입)]({% post_url 2020-02-22-Opaque-Types %}) 장에 추가함.
 * '속성 포장 (property wrappers)' 에 대한 정보를 [Property Wrappers (속성 포장)]({% post_url 2020-05-30-Properties %}#property-wrappers-속성-포장) 부분에 추가함.
 * 라이브러리 진화에서 '동결된 (frozen)' 열거체와 구조체에 대한 정보를 [frozen (동결된)]({% post_url 2020-08-14-Attributes %}#frozen-동결된) 부분에 추가함.
 * `return` 을 생략한 함수에 대한 정보를 가진 [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 와 [Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 부분을 추가함.

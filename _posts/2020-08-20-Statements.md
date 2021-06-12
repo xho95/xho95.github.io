@@ -6,7 +6,7 @@ date:   2020-08-20 11:30:00 +0900
 categories: Swift Language Grammar Statement
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Statements]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Statements]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Statements (구문)
 
@@ -266,7 +266,7 @@ continue
 <br />
 continue `label name-이름표 이름`
 
-`continue` 문 뒤에 '구문 이름표' 이름이 있을 때는, 해당 이름표로 이름을 붙인 반복문의 현재 회차에 대한 프로그램 실행을 종료합니다.
+`continue` 문 뒤에 '구문 이름표' 이름이 있을 때는, 해당 이름표를 붙인 반복문의 현재 회차에 대한 프로그램 실행을 종료합니다.
 
 `continue` 문 뒤에 '구문 이름표' 이름이 없을 때는, 자기를 가장 안쪽에서 둘러싼 반복문의 프로그램 실행을 종료합니다.
 

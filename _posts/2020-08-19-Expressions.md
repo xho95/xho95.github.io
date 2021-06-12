@@ -6,7 +6,7 @@ date:   2020-08-19 11:30:00 +0900
 categories: Swift Language Grammar Expression
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.4: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.4)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Expressions (표현식)
 
@@ -69,6 +69,37 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: try �
 `try`, `try?`, 그리고 `try!` 를 사용하는 방법에 대한 예제와 더 많은 정보는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장을 참고하기 바랍니다.
 
 > GRAMMAR OF A TRY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
+
+#### Await Operator (`await` 연산자)
+
+_await 표현식 (await expression)_ 은 '`await` 연산자' 와 그 뒤에 오는 비동기 연산 결과를 사용한 '표현식' 으로 구성됩니다. 형식은 다음과 같습니다:
+
+&nbsp;&nbsp;&nbsp;&nbsp;await `expression-표현식`
+
+`await` 표현식의 값은 _표현식 (expression)_ 의 값입니다.
+
+`await` 로 표시한 표현식을 _잠재적으로 매달아 멈출 지점 (potential suspension point)_ 이라고 합니다. 비동기 함수의 실행은 `await` 로 표시한 각 표현식 마다 매달아 멈출 수 있습니다. 이에 더하여, '동시성 (concurrent) 코드' 의 실행은 다른 어떤 곳에서든 절대로 매달아 멈출 수 없습니다. 이는 '잠재적으로 매달아 멈출 지점' 들 사이의 코드는, 그 다음 '잠재적으로 매달아 멈출 지점' 전에 갱신을 완료하여 생긴, '불변값 (invariants)' 을 일시적으로 끊어야만 하는 '상태 (state)' 를 안전하게 갱신할 수 있다는 의미입니다. 
+
+`await` 표현식은, `async(priority:operation:)` 함수에 전달된 '끝자리 클로저' 같은, '비동기 상황' 에서만 있을 수 있습니다. 이는 `defer` 문의 본문이나, '동기 함수 타입' 인 '자동 클로저' 안에서는 있을 수 없습니다.
+
+이항 연산자 왼-쪽의 표현식을 `await` 연산자로 표시할 때는, 해당 연산자를 이항 표현식 전체에 적용합니다. 그렇다 하더라도, 괄호를 사용하여 연산자의 적용 범위를 명시할 수 있습니다.
+
+```swift
+// await 를 두 함수 호출 모두에 적용합니다.
+sum = await someAsyncFunction() + anotherAsyncFunction()
+
+// await 를 두 함수 호출 모두에 적용합니다.
+sum = await (someAsyncFunction() + anotherAsyncFunction())
+
+// 에러: await 를 첫 번째 함수 호출에만 적용합니다.
+sum = (await someAsyncFunction()) + anotherAsyncFunction()
+```
+
+`await` 표현식은, 이항 연산자가 '할당 연산자' 이거나 `await` 표현식을 괄호로 테두리 친 것이 아닌 한, 이항 연산자의 오른-쪽에 있을 수 없습니다.
+
+표현식에 `await` 와 `try` 연산자가 둘 다 있으면, `try` 연산자가 반드시 먼저 있어야 합니다. 
+
+> GRAMMAR OF A AWAIT EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
 ### Binary Expressions (이항 표현식)
 
@@ -522,7 +553,7 @@ let myGreeting = greetings[keyPath: \[String].[1]]
 // myGreeting 은 'hola' 입니다.
 ```
 
-첨자 연산에서 사용하는 값은 '이름 붙은 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
+첨자 연산에서 사용하는 값은 '이름 붙인 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
 
 ```swift
 var index = 2
@@ -854,11 +885,11 @@ let s4 = type(of: someValue)(data: 5)       // 에러
 
 #### Explicit Member Expression (명시적인 멤버 표현식)
 
-_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙은 타입 (named type)' 이나, 튜플, 또는 모듈의 멤버에 대한 접근을 허용합니다. 이는 '항목 (item)' 과 그 멤버의 '식별자 (identifier)' 사이에 있는 '마침표 (`.`)' 로 구성됩니다.
+_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙인 타입 (named type)' 이나, 튜플, 또는 모듈의 멤버에 대한 접근을 허용합니다. 이는 '항목 (item)' 과 그 멤버의 '식별자 (identifier)' 사이에 있는 '마침표 (`.`)' 로 구성됩니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`.`member name-멤버 이름`
 
-'이름 붙은 타입' 의 멤버는 타입의 '선언' 이나 '익스텐션 (extension)' 에서 이름이 붙습니다. 예를 들면 다음과 같습니다:
+'이름 붙인 타입' 의 멤버는 타입의 '선언' 이나 '익스텐션 (extension)' 에서 이름이 붙습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
