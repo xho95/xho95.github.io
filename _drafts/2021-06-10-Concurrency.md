@@ -45,6 +45,12 @@ func listPhotos(inGallery name: String) async -> [String] {
 }
 ```
 
+'비동기' 면서 '던지기' 도 하는 함수나 메소드면, `throws` 앞에 `async` 를 작성합니다. 
+
+비동기 메소드를 호출할 때는, 해당 메소드가 반환할 때까지 실행을 매달아 멈춥니다. 호출 앞에 `await` 를 작성하여 매달아 멈출 가능성이 있는 지점을 표시합니다. 이는 '던지는 함수' 를 호출할 때, 에러가 있으면 프로그램 흐름이 바뀔 수 있음을 표시하는, `try` 를 작성하는 것과 비슷합니다. 비동기 메소드 안에서는, _오직 (only)_ 또 다른 비동기 메소드를 호출할 때만 실행의 흐름을 매달아 멈춥니다-'매달아 멈추기 (suspension)' 는 절대로 '암시적' 이거나 '선점 (preemptive)'[^preemptive] 하지 않습니다-이는 매달아 멈출 수 있는 모든 지점을 `await` 로 표시한다는 의미입니다.
+
+예를 들어, 아래 코드는 '전시관' 에 있는 모든 사진의 이름을 가져온 다음 첫 번째 사진을 보여줍니다:
+
 ```swift
 let photoNames = await listPhotos(inGallery: "Summer Vacation")
 let sortedNames = photoNames.sorted()
@@ -52,6 +58,23 @@ let name = sortedNames[1]
 let photo = await downloadPhoto(named: name)
 show(photo)
 ```
+
+`listPhotos(inGallery:)` 와 `downloadPhoto(named:)` 함수 둘 다 네트워크 요청이 필요하기 때문에, 완료하려면 상대적으로 긴 시간이 걸릴 수 있습니다. 둘 다 반환 화살표 앞에 `async` 를 작성하여 비동기로 만들면 이 코드가 사진이 준비되길 기다리는 동안 앱의 나머지 코드를 계속 실행하게 해줍니다.
+
+위 예제의 '동시성' 을 이해하는 방법으로, 다음은 한 가지 가능한 실행 순서입니다: 
+
+1. 코드는 첫 번째 줄에서 시작하여 첫 번째 `await` 까지 실행합니다. `listPhotos(inGallery:)` 함수를 호출하고 해당 함수가 반환하길 기다리는 동안 실행을 매달아 멈춥니다. 
+2. 이 코드 실행이 매달려 멈춘 동안, 동일한 프로그램의 다른 동시성 코드를 실행합니다. 예를 들어, 오래-걸리는 배경 작업 임무가 새로운 사진 전시관 목록을 계속 갱신할 수 있습니다. 해당 코드도 `await` 로 표시한, 그 다음 '매달아 멈출 지점' 까지나, 완료할 때까지 실행합니다. 
+3. `listPhotos(inGallery:)` 가 반환한 후에, 이 코드는 해당 지점에서 실행을 계속 시작합니다. 이는 `photoNames` 가 반환한 값을 할당합니다. 
+4. `sortedNames` 와 `name` 을 정의한 줄은 표준적인, 동기 코드입니다. 이 줄에는 `await` 로 표시한 것이 없기 때문에, '매달아 멈출 수 있는 어떤 지점' 도 없습니다.
+5. 그 다음 `await` 는 `downloadPhoto(named:)` 함수에 표시합니다. 이 코드는, 다른 동시성 코드에 실행할 기회를 부여하면서, 해당 함수가 반환할 때까지 실행을 다시 일시 정지합니다. 
+6. `downloadPhoto(named:)` 반환 후에, 반환 값을 `photo` 에 할당한 다음 `show(_:)` 를 호출할 때 인자로 전달합니다.
+
+코드에서 `await` 로 표시하여 매달아 멈출 가능성 있는 지점은 비동기 함수나 메소드가 반환하길 기다리는 동안 현재 코드 조각이 일시 정지할 지도 모른다고 지시합니다. 이를 _쓰레드 양도하기 (yielding the thread)_ 라고도 하는데, 그 이면을 살펴보면, 스위프트가 현재 쓰레드에 대한 코드 실행을 매달아 멈추고 그 대신 해당 쓰레드에서 다른 코드를 실행하기 때문입니다. `await` 를 가진 코드는 실행을 매달아 멈출 수 있어야 하기 때문에, 프로그램의 정해진 자리에서만 비동기 함수나 메소드를 호출할 수 있습니다:
+
+* 비동기 함수, 메소드, 또는 속성 본문 안의 코드
+* `@main` 으로 표시한 구조체, 클래스, 또는 열거체의 정적 `main() 메소드 안의 코드
+* 아래 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보인 것처럼, '떼어 놓은 자식 임무 (detached child task)' 안의 코드
 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
@@ -102,7 +125,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 }
 ```
 
-#### Unstructured Concurrency (구조화되지 않은 동시성)
+#### Unstructured Concurrency (구조화 안된 동시성)
 
 ```swift
 let newPhoto = // ... 약간의 사진 자료 ...
@@ -158,3 +181,5 @@ print(logger.max)  // 에러
 ### 참고 자료
 
 [^Conccurency]: 원문은 [Conccurency](https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html) 에서 확인할 수 있습니다.
+
+[^preemptive]: '선점 (preemptive)' 은 CPU 를 차지한 프로세스의 자원을 운영체제가 우선 순위에 따라 강제로 빼앗을 수 있는 방식을 의미합니다. '선점 (preemptive)' 에 대한 더 자세한 내용은, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다. 
