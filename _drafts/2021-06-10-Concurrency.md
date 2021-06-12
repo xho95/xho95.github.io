@@ -87,7 +87,7 @@ func listPhotos(inGallery name: String) async -> [String] {
 
 ### Asynchronous Sequences (비동기 시퀀스)
 
-이전 부분에 있는 `listPhotos(inGallery:)` 함수는, 배열의 모든 원소가 준비되면, 배열 전체를 한꺼번에 반환합니다. 또 다른 접근법은 _비동기 시퀀스 (asynchronous sequence)_ 를 사용하여 집합체 원소를 한번에 하나씩 기다리는 것입니다. 다음은 비동기 시퀀스에 동작을 반복하는 것을 보인 것입니다:
+이전 부분에 있는 `listPhotos(inGallery:)` 함수는, 배열의 모든 원소가 준비되면, 배열 전체를 한꺼번에 반환합니다. 또 다른 접근 방식은 _비동기 시퀀스 (asynchronous sequence)_ 를 사용하여 집합체 원소를 한번에 하나씩 기다리는 것입니다. 다음은 비동기 시퀀스에 동작을 반복하는 것을 보인 것입니다:
 
 ```swift
 import Foundation
@@ -104,6 +104,8 @@ for try await line in handle.bytes.lines {
 
 ### Calling Asynchronous Functions in Parallel (비동기 함수를 병렬로 호출하기)
 
+`await` 를 가진 비동기 함수 호출은 한번에 한 조각의 코드만 실행합니다. 비동기 코드를 실행하는 동안, 호출하는 쪽은 그 다음 코드 줄을 실행하려고 이동하기 전에 해당 코드가 종료하길 기다립니다. 예를 들어, 전시관에서 처음 세 사진을 가져오기 위해, 다음 처럼 `downloadPhoto(named:)` 함수에 대한 세 개의 호출을 기다릴 수 있습니다:
+
 ```swift
 let firstPhoto = await downloadPhoto(named: photoNames[0])
 let secondPhoto = await downloadPhoto(named: photoNames[1])
@@ -112,6 +114,8 @@ let thirdPhoto = await downloadPhoto(named: photoNames[2])
 let photos = [firstPhoto, secondPhoto, thirdPhoto]
 show(photos)
 ```
+
+이 접근 방식에는 중요한 결점이 있는데: 
 
 ```swift
 async let firstPhoto = downloadPhoto(named: photoNames[0])
