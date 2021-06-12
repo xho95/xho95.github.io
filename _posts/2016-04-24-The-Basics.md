@@ -613,9 +613,7 @@ let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString // 느낌표가 필요 없습니다.
 ```
 
-'암시적으로 포장이 풀리는 옵셔널' 은 옵셔널에 필요하다면 강제로-포장을 푸는 권한을 부여한 것으로 생각할 수 있습니다. '암시적으로 포장이 풀리는 옵셔널' 값을 사용할 때, 스위프트는 처음에 이를 일상적인 옵셔널 값처럼 사용하려고 시도합니다; 옵셔널처럼 사용할 수 없으면, 스위프트가 값의 포장을-강제로 풉니다.
-
-위 코드에서, 옵셔널 값 `assumedString` 은 `implicitString` 에 값을 할당하기 전에 강제로-포장이 풀리는데 이는 `implicitString` 의 타입이 명시적인, 옵셔널-아닌 `String` 이기 때문입니다. 아래 코드의, `optionalString` 은 명시적인 타입을 가지고 있지 않으므로 이는 '일상적인 (ordinary) 옵셔널' 입니다.
+'암시적으로 포장이 풀리는 옵셔널' 은 옵셔널에 필요하다면 강제로-포장을 푸는 권한을 부여한 것으로 생각할 수 있습니다. '암시적으로 포장이 풀리는 옵셔널' 값을 사용할 때, 스위프트는 처음에 이를 평범한 옵셔널 값처럼 사용하려고 시도합니다; 옵셔널처럼 사용할 수 없으면, 스위프트가 값의 포장을-강제로 풉니다. 위 코드에서, 옵셔널 값 `assumedString` 은 `implicitString` 에 값을 할당하기 전에 강제로-포장이 풀리는데 이는 `implicitString` 의 타입이 명시적인, 옵셔널-아닌 `String` 이기 때문입니다. 아래 코드의, `optionalString` 은 명시적인 타입을 가지고 있지 않으므로 이는 평범한 옵셔널입니다.
 
 ```swift
 let optionalString = assumedString

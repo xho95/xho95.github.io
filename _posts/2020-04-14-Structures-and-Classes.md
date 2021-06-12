@@ -39,7 +39,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드의 '�
 
 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 그리고 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 을 참고하기 바랍니다.
 
-클래스가 지원하는 추가적인 보유 능력은 복잡성 증가라는 비용에 직면합니다. 일반적인 '지침 (guideline)' 대로, 이유를 파악하기가 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 실제로, 이는 대부분의 사용자 정의 자료 타입은 구조체나 열거체로 정의된다는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
+클래스가 지원하는 추가적인 보유 능력은 복잡도 증가라는 비용에 직면합니다. 일반적인 '지침 (guideline)' 대로, 이유를 파악하기가 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 실제로, 이는 대부분의 사용자 정의 자료 타입은 구조체나 열거체로 정의된다는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
 
 #### Definition Syntax (정의 구문 표현)
 
