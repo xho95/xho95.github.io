@@ -76,6 +76,8 @@ show(photo)
 * `@main` 으로 표시한 구조체, 클래스, 또는 열거체의 정적 `main() 메소드 안의 코드
 * 아래 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보인 것처럼, '떼어 놓은 자식 임무 (detached child task)' 안의 코드
 
+> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 동시성 작업 방법을 배우기 위한 단순한 코드를 작성할 때 유용합니다. 이 메소드는 아무 것도 안하지만, 반환하기 전에 최소 주어진 나노 초의 시간만큼 기다립니다. 다음은 네트워크 연산의 기다림을 모의 실험하기 위해 `sleep()` 을 사용하는 `listPhotos(inGallery:)` 함수 버전입니다.
+> 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
     await Task.sleep(2 * 1_000_000_000)  // 2 초
@@ -85,6 +87,8 @@ func listPhotos(inGallery name: String) async -> [String] {
 
 ### Asynchronous Sequences (비동기 시퀀스)
 
+이전 부분에 있는 `listPhotos(inGallery:)` 함수는, 배열의 모든 원소가 준비되면, 배열 전체를 한꺼번에 반환합니다. 또 다른 접근법은 _비동기 시퀀스 (asynchronous sequence)_ 를 사용하여 집합체 원소를 한번에 하나씩 기다리는 것입니다. 다음은 비동기 시퀀스에 동작을 반복하는 것을 보인 것입니다:
+
 ```swift
 import Foundation
 
@@ -93,6 +97,10 @@ for try await line in handle.bytes.lines {
     print(line)
 }
 ```
+
+평범한 `for`-`in` 반복문을 사용하는 대신, 위 예제는 `for` 뒤에 `await` 를 작성합니다. 비동기 함수나 메소드를 호출할 때와 같이, `await` 를 작성하는 것은 '매달아 멈출 가능성 있는 지점' 을 지시합니다. `for`-`await`-`in` 반복문은 잠재적으로, 다음 원소가 사용 가능하길 기다릴 때, 각 회차 맨 앞에서 실행을 매달아 멈춥니다.
+
+[Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜 준수성을 추가함으로써 자신만의 타입을 `for`-`in` 반복문에서 사용할 수 있는 것과 똑같이, [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜 준수성을 추가함으로써 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용할 수 있습니다. 
 
 ### Calling Asynchronous Functions in Parallel (비동기 함수를 병렬로 호출하기)
 
