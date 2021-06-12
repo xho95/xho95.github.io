@@ -30,13 +30,17 @@ listPhotos(inGallery: "Summer Vacation") { photoNames in
 }
 ```
 
-
+이런 단순한 경우에서도, 연속된 '완료 처리자 (completion handlers)' 로 코드를 작성해야 하기 때문에, 중첩된 클로저를 작성하는 것으로 끝맺게 됩니다. 이런 스타일에서는, 중첩이 깊어져 복잡해지면 코드를 다루기가 급격히 더 어려워질 수 있습니다. 
 
 ### Defining and Calling Asynchronous Functions (비동기 함수 정의하기와 호출하기)
 
+_비동기 함수 (asynchronous function)_ 또는 _비동기 메소드 (asynchronous method)_ 는 어느 정도 실행한 도중에 매달아서 멈출 수 있는 특수한 종류의 함수 또는 메소드 입니다. 이는 완료까지 실행하거나, 에러를 던지던가, 아니면 절대로 반환하지 않는, 평범한, 동기 함수 및 메소드와는 대조적입니다. 비동기 함수나 메소드도 여전히 이 세 가지 것들을 하지만, 뭔가를 기다리는 중간에 일시 정지할 수도 있습니다. 비동기 함수나 메소드 본문 안에서, 실행을 매달아 멈출 수 있는 이 자리들 각각을 표시합니다.
+
+함수나 메소드가 비동기임을 지시하려면, '던지는 함수' 를 표시하는 `throws` 의 사용 방법과 비슷하게, 선언에서 매개 변수 뒤에 `async` 키워드를 작성합니다. 함수나 메소드가 값을 반환할 경우, `async` 를 '반환 화살표 (`->`)' 앞에 작성합니다. 예를 들어, 다음은 '전시관 (gallery)' 에서 사진의 이름을 가져올 수 있는 방법입니다:
+
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
-    let result = // ... 약간의 비동기 네트워크 작업 코드 ...
+    let result = // ... 약간의 비동기 네트워크 코드 ...
     return result
 }
 ```

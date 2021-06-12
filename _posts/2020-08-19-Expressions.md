@@ -192,7 +192,7 @@ _으뜸 표현식 (primary expressions)_ 은 가장 기초적인 종류의 표�
 
 #### Literal Expression (글자 값 표현식)
 
-_글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 일상적인 글자 값, 배열 및 딕셔너리 글자 값, '플레이그라운드 (playground) 글자 값', 또는 다음의 '특수 (special) 글자 값' 중 하나로 구성합니다:
+_글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 평범한 글자 값, 배열 및 딕셔너리 글자 값, '플레이그라운드 (playground) 글자 값', 또는 다음의 '특수 (special) 글자 값' 중 하나로 구성합니다:
 
 글자 값 || 타입 || 값
 ---|---|---|---|---
