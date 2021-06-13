@@ -13,7 +13,7 @@ categories: Swift Language Grammar Revision History
 ### 2021-06-07
 
 * 스위프트 5.5 에서 갱신한 것. 
-* '비동기 함수 (asynchronous functions)', '임무 (tasks)', 그리고 '행위자 (actors)' 에 대한 정보를 [Concurrency (동시성)] 장과, [Actor Declaration (행위자 선언)]({% post_url 2020-08-15-Declarations %}#actor-declaration-행위자-선언) 부분, [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드) 부분, 그리고 [Await Operator (`await` 연산자)]({% post_url 2020-08-19-Expressions %}#await-operator-await-연산자) 부분에 추가함.
+* '비동기 함수 (asynchronous functions)', '임무 (tasks)', 그리고 '행위자 (actors)' 에 대한 정보를 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장과, [Actor Declaration (행위자 선언)]({% post_url 2020-08-15-Declarations %}#actor-declaration-행위자-선언) 부분, [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드) 부분, 그리고 [Await Operator (`await` 연산자)]({% post_url 2020-08-19-Expressions %}#await-operator-await-연산자) 부분에 추가함.
 
 #### 2021-04-26
 
