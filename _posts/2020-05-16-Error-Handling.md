@@ -281,7 +281,7 @@ func processFile(filename: String) throws {
 
 ### 다음 장
 
-[Type Casting (타입 변환) > ]({% post_url 2020-04-01-Type-Casting %})
+[Concurrency (동시성) > ]({% post_url 2021-06-10-Concurrency %})
 
 ### 참고 자료
 
