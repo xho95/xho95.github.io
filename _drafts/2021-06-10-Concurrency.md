@@ -143,7 +143,7 @@ show(photos)
 
 _임무 (task)_ 는 프로그램에서 비동기로 실행할 수 있는 작업의 단위입니다. 모든 비동기 코드는 어떠한 '임무' 로써 실행됩니다. 이전 부분에서 설명한 `async`-`let` 구문은 '자식 임무 (child task)' 를 생성합니다. '임무 그룹 (task group)' 을 생성하여 '자식 임무' 를 해당 그룹에 추가할 수도 있는데, 이는 '우선권 (priority)' 과 '취소 (cancellation)' 에 대한 더 많은 제어를 부여하며, 동적 개수의 임무를 생성하게 해줍니다.
 
-'임무' 는 계층 구조로 배열됩니다. '임무 그룹' 안의 각 '임무' 는 똑같은 '부모 임무 (parent task)' 를 가지고 있으며, 각각의 '임무' 는 '자식 임무' 를 가질 수 있습니다. 임무와 임무 그룹 사이의 명시적인 관계로 인하여, 이 접근 방식을 _구조화된 동시성 (structured concurrency)_ 이라 합니다. 올바름을 위한 일부 책임을 맡아야 하긴 하지만, 임무 사이의 명시적인 부모-자식 관계는 스위프트가 취소 전파하기 같은 일부 동작을 처리하게 해주며, 스위프트가 컴파일 시간에 일부 에러를 감지하도록 해줍니다. 
+'임무' 는 계층 구조로 배열됩니다. '임무 그룹' 안의 각 '임무' 는 똑같은 '부모 임무 (parent task)' 를 가지고 있으며, 각각의 '임무' 는 '자식 임무' 를 가질 수 있습니다. 임무와 임무 그룹 사이의 명시적인 관계로 인하여, 이 접근 방식을 _구조화된 동시성 (structured concurrency)_ 이라 합니다. 올바름에 대한 일부 책임을 맡아야 하긴 하지만, 임무 사이의 명시적인 부모-자식 관계는 취소 전파하기 같은 일부 동작을 스위프트가 처리하도록 해주며, 스위프트가 컴파일 시간에 일부 에러를 감지하도록 해줍니다. 
 
 ```swift
 await withTaskGroup(of: Data.self) { taskGroup in
@@ -158,6 +158,11 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 #### Unstructured Concurrency (구조화 안된 동시성)
 
+이전 부분에서 설명한 동시성의 '구조화된 (structured) 접근 방식' 에 더하여, 스위프트는 '구조화 안된 (unstructured) 동시성' 도 지원합니다. '임무 그룹' 에 있는 '임무' 와는 달리, _구조화 안된 임무 (unstructured task)_ 는 '부모 임무' 를 가지지 않습니다. '구조화 안된 임무' 관리에는 프로그램이 필요한 것이 뭐든 간에 완전한 유연함을 가지지만, 올바름에 대한 책임도 완전히 책임져야 합니다. 현재 '행위자' 에서 실행할 '구조화 안된 임무' 를 생성하려면, [async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 함수를 호출합니다. 
+
+
+현재 '행위자' 가 아닌 '구조화 안된 임무' 를 생성하려면, 특히 _떼어 놓은 임무_ 라고 더 잘 알려진, [asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 를 호출합니다. 이 함수 둘 다 임무와 상호 작용하게 해주는-예를 들어, 결과를 기다리기 위해 또는 취소하기 위해-'임무 핸들 (task handle)' 을 반환합니다
+
 ```swift
 let newPhoto = // ... 약간의 사진 자료 ...
 let handle = async {
@@ -165,6 +170,8 @@ let handle = async {
 }
 let result = await handle.get()
 ```
+
+'떼어 놓은 임무' 의 관리에 대한 더 많은 정보는, [Task.Handle](https://developer.apple.com/documentation/swift/task/handle) 항목을 참고하기 바랍니다. 
 
 #### Task Cancellation (임무 취소)
 
