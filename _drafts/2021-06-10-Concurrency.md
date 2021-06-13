@@ -178,9 +178,9 @@ let result = await handle.get()
 * `nil` 또는 '빈 집합체 (collection)' 반환하기
 * 부분적으로 완료한 작업 반환하기
 
-취소를 확인하려면 작업이 취소 된 경우 CancellationError를 발생시키는 Task.checkCancellation ()을 호출하거나 Task.isCancelled 값을 확인하고 자체 코드에서 취소를 처리합니다. 예를 들어 갤러리에서 사진을 다운로드하는 작업은 부분 다운로드를 삭제하고 네트워크 연결을 닫아야 할 수 있습니다.
+취소를 검사하려면, '임무' 를 취소하면 `CancellationError` 를 던지는, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하거나, 아니면 [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 의 값을 검사하고 자신의 코드에서 취소를 처리합니다. 예를 들어, '전시관' 에서 사진을 내려받는 임무는 '부분적인 내려받기' 는 취소하고 네트워크 연결을 닫아야 할지도 모릅니다.
 
-취소를 수동으로 전파하려면 Task.Handle.cancel ()을 호출합니다.
+수동으로 취소를 전파하려면, [Task.Handle.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
 
 ### Actors (행위자)
 
