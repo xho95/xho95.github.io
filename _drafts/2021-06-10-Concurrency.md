@@ -158,10 +158,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 #### Unstructured Concurrency (구조화 안된 동시성)
 
-이전 부분에서 설명한 동시성의 '구조화된 (structured) 접근 방식' 에 더하여, 스위프트는 '구조화 안된 (unstructured) 동시성' 도 지원합니다. '임무 그룹' 에 있는 '임무' 와는 달리, _구조화 안된 임무 (unstructured task)_ 는 '부모 임무' 를 가지지 않습니다. '구조화 안된 임무' 관리에는 프로그램이 필요한 것이 뭐든 간에 완전한 유연함을 가지지만, 올바름에 대한 책임도 완전히 책임져야 합니다. 현재 '행위자' 에서 실행할 '구조화 안된 임무' 를 생성하려면, [async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 함수를 호출합니다. 
-
-
-현재 '행위자' 가 아닌 '구조화 안된 임무' 를 생성하려면, 특히 _떼어 놓은 임무_ 라고 더 잘 알려진, [asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 를 호출합니다. 이 함수 둘 다 임무와 상호 작용하게 해주는-예를 들어, 결과를 기다리기 위해 또는 취소하기 위해-'임무 핸들 (task handle)' 을 반환합니다
+이전 부분에서 설명한 동시성의 '구조화된 (structured) 접근 방식' 에 더하여, 스위프트는 '구조화 안된 (unstructured) 동시성' 도 지원합니다. '임무 그룹' 에 있는 '임무' 와는 달리, _구조화 안된 임무 (unstructured task)_ 는 '부모 임무' 를 가지지 않습니다. '구조화 안된 임무' 를 관리하는데는 뭐가 됐든 프로그램이 필요한 방식으로 완전한 유연함을 가지지만, 올바름에 대한 책임도 완전히 책임져야 합니다. 현재 '행위자' 에서 실행할 '구조화 안된 임무' 를 생성하려면, [async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 함수를 호출합니다. 현재 '행위자' 가 아닌 '구조화 안된 임무' 를 생성하려면, 특히 _떼어 놓은 임무_ 라고 더 잘 알려진, [asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 를 호출합니다. 이 함수 둘 다 임무와 상호 작용하게 해주는-예를 들어, 결과를 기다리기 위해 또는 취소하기 위해-'임무 핸들 (task handle)' 을 반환합니다
 
 ```swift
 let newPhoto = // ... 약간의 사진 자료 ...
@@ -174,6 +171,16 @@ let result = await handle.get()
 '떼어 놓은 임무' 의 관리에 대한 더 많은 정보는, [Task.Handle](https://developer.apple.com/documentation/swift/task/handle) 항목을 참고하기 바랍니다. 
 
 #### Task Cancellation (임무 취소)
+
+스위프트 동시성은 '협동 취소 모델 (cooperative cancellation model)' 을 사용합니다. 각각의 임무는 적절한 실행 순간에 취소됐는 지를 검사하고, 뭐가 됐든 적절한 방식으로 취소에 응답합니다. 하고 있는 작업에 따라, 이는 대체로 다음 중 하나를 의미합니다:
+
+* `CancellationError` 같은 에러 던지기
+* `nil` 또는 '빈 집합체 (collection)' 반환하기
+* 부분적으로 완료한 작업 반환하기
+
+취소를 확인하려면 작업이 취소 된 경우 CancellationError를 발생시키는 Task.checkCancellation ()을 호출하거나 Task.isCancelled 값을 확인하고 자체 코드에서 취소를 처리합니다. 예를 들어 갤러리에서 사진을 다운로드하는 작업은 부분 다운로드를 삭제하고 네트워크 연결을 닫아야 할 수 있습니다.
+
+취소를 수동으로 전파하려면 Task.Handle.cancel ()을 호출합니다.
 
 ### Actors (행위자)
 
