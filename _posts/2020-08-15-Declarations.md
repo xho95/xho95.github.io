@@ -386,7 +386,7 @@ f(7)      // 무효, 인자 이름표를 누락함
 
 클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래에서 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성이 사용하는 메소드 둘 다를 정의하는 경우, 어느 메소드를 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 부여합니다.
 
-'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표 있는 또는 이름표 없는 인자를 추가한-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 같은-다른 이름 역시 유효한 '함수-처럼-호출하는 메소드' 이름입니다.
+'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 같은-다른 이름 역시 유효한 '함수-처럼-호출하는 메소드' 이름입니다.
 
 다음 함수 호출은 서로 '동치 (equivalent)' 입니다:
 
