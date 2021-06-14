@@ -252,7 +252,7 @@ case .suppressed:
 
 `break` 문 뒤에 '구문 이름표' 가 따라오지 않을 때는, `switch` 문이나 자기를 둘러싼 가장 안쪽 반복문의 프로그램 실행을 끝냅니다. '이름표가 붙지 않은 `break` 문' 을 사용하여 `if` 문을 끊고 나올 수는 없습니다.
 
-두 경우 모두, 그런 다음 프로그램 제어를, 둘러싼 반복문이나 `switch` 문 뒤에 코드가, 있으면, 그 첫 번째 줄로 전달합니다.
+두 경우 모두, 그런 다음, 둘러싼 반복문이나 `switch` 문 뒤에 어떤 코드든, 있으면, 프로그램 제어를 그 첫 번째 줄로 전달합니다.
 
 `break` 문의 사용 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 부분과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
 
