@@ -282,9 +282,9 @@ case .suppressed:
 
 `fallthrough` 문은 `fallthrough` 키워드로 구성하며 `switch` 문의 'case 블럭' 안에서만 일어납니다. `fallthrough` 문은 프로그램이 `switch` 문의 한 'case 절' 에서 그 다음 'case 절' 로 계속 실행되도록 합니다. 프로그램은 'case 이름표' 의 '유형 (pattern)' 이 `switch` 문의 '제어 표현식' 값과 일치하지 않는 경우에도 그 다음 'case 절' 을 계속 실행합니다.
 
-`fallthrough` 문은 'case 블럭' 의 마지막 구문으로써 만이 아니라, `switch` 문 안의 어떤 곳에서든 나타날 수 있지만, '최종 case 블럭' 에서는 사용할 수 없습니다. 이는 또 프로그램 제어를 '값 연결 패턴 (value binding patterns)' 을 가지고 있는 패턴으로 전달할 수는 없습니다.
+`fallthrough` 문은 'case 블럭' 의 마지막 구문으로써 만이 아니라, `switch` 문 안의 어떤 곳에서든 나타날 수 있지만, '최종 case 블럭' 에서는 사용할 수 없습니다. '값 연결 유형 (value binding pattern)' 을 담고 있는 'case 블럭' 으로 제어를 전달할 수도 없습니다.
 
-`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 을 참고하기 바랍니다.
+`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
