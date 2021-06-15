@@ -387,7 +387,7 @@ f()
 
 ### Compiler Control Statements (컴파일러 제어문)
 
-'컴파일러 제어문 (compiler control statements)' 는 프로그램이 컴파일러의 작동 방식을 바꿀 수 있게 해줍니다. 스위프트는 세 개의 컴파일러 제어문을 가지고 있습니다: '조건부 컴파일 블럭 (conditional compilation block)', '라인 제어문 (line control statement)', 그리고 '컴파일-시간 진단문 (compile-time diagnostic statement)' 가 그것입니다.
+'컴파일러 제어 (compiler control) 문' 은 프로그램이 컴파일러의 동작을 바꾸도록 허용합니다. 스위프트에는: '조건부 컴파일 (conditional compilation) 블럭', '라인 제어 (line control) 문', 그리고 '컴파일-시간 진단 (compile-time diagnostic) 문' 이라는 세 개의 '컴파일러 제어문' 이 있습니다.
 
 > GRAMMAR OF A COMPILER CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
