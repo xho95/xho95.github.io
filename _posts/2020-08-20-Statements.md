@@ -393,17 +393,17 @@ f()
 
 #### Conditional Compilation Block (조건부 컴파일 블럭)
 
-'조건부 컴파일 블럭 (conditional compile block)' 은 하나 이상의 컴파일 조건 값에 따라 코드를 조건부로 컴파일하게 해줍니다.
+'조건부 컴파일 블럭' 은 코드가 하나 이상의 컴파일 조건 값에 따라 조건부로 컴파일되도록 허용합니다.
 
-모든 조건부 컴파일 블럭은 `#if` '컴파일 지시자 (compilation directive)' 로 시작해서 `#endif` 컴파일 지시사로 끝납니다. 단순 조건부 컴파일 블럭의 형식은 다음과 같습니다:
+모든 '조건부 컴파일 블럭' 은 '`#if` 컴파일 지시자 (directive)' 로 시작해서 '`#endif` 컴파일 지시자' 로 끝납니다. 단순한 '조건부 컴파일 블럭' 의 형식은 다음과 같습니다:
 
-\#if `compilation condition-컴파일 조건`<br />
-  `statements-구문`<br />
-\#endif
+&nbsp;&nbsp;&nbsp;&nbsp;\#if `compilation condition-컴파일 조건`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#endif
 
-`if` 문의 조건과는 다르게, _컴파일 조건 (compile condition)_ 은 컴파일 시간에 값을 평가합니다. 그 결과, 컴파일 시간에 _컴파일 조건 (compile condition)_  이 `true` 라고 평가될 때만 _구문 (statements)_ 을 컴파일하고 실행합니다.
+`if` 문의 조건과는 달리, _컴파일 조건 (compile condition)_ 은 컴파일 시간에 평가합니다. 그 결과, _컴파일 조건 (compile condition)_ 이 컴파일 시간에 `true` 로 평가될 때만 _구문 (statements)_ 을 컴파일해서 실행합니다.
 
-_컴파일 조건 (compile condition)_ 은 `true` 및 `false` 불리언 글자 값, `-D` '명령 줄 깃표 (command line flag)'[^flag] 와 함께 사용된 식별자, 또는 아래 표에서 나열한 어떤 '플랫폼 조건 (platform)' 을 포함할 수 있습니다.
+_컴파일 조건 (compile condition)_ 은 `true` 와 `false` 의 '불리언 글자 값', `-D` '명령 줄 깃표 (command line flag)'[^flag] 와 함께 사용하는 식별자, 또는 아래 표에 나열한 어떤 '플랫폼 (platform) 조건' 이든 포함할 수 있습니다.
 
 **Platform condition (플랫폼 조건)** || **Valid arguments (유효한 인자)**
 ---|---|---
@@ -515,6 +515,6 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말합니다. '파일 서술자' 에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
-[^flag]: '명령 줄 깃표 (command line flag)' 는 '비트 필드' 의 한 비트를 `On`/`Off` 하여 프로그램에 약속된 신호를 남기기 위해 사용하는 미리 정의된 비트를 말합니다. 보다 자세한 내용은 위키피디아의 [플래그](https://ko.wikipedia.org/wiki/플래그) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다.
+[^flag]: '명령 줄 깃표 (command line flag)' 는 '비트 필드' 의 한 비트를 `On`/`Off` 하여 프로그램에 약속된 신호를 남기기 위해 사용하는 '미리 정의된 비트' 를 말합니다. '명령 줄 깃표' 에 대한 더 자세한 내용은, 위키피디아의 [플래그](https://ko.wikipedia.org/wiki/플래그) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다.
 
 [^Swift-version-setting]: 이것은 '스위프트 컴파일러 버전' 과 '소스 코드 상의 스위프트 언어 버전' 이 다를 수 있기 때문입니다. 예를 들어, 새로운 컴파일러를 설치한 후에 예전 소스 코드를 컴파일할 경우, '스위프트 버전 설정' 은 예전 버전으로 두면서 컴파일은 최신 버전으로 할 수도 있습니다.
