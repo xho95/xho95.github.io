@@ -414,7 +414,7 @@ _컴파일 조건 (compile condition)_ 은 `true` 와 `false` 의 '불리언 글
 `canImport()` || 모듈 이름
 `targetEnvironment()` || `simulator`, `macCatalyst`
 
-`swift()` 와 `compiler()` 에 대한 버전 번호는, 버전 번호의 각 부분을 구분하는 점 (`.`) 과 함께, '주요 번호 (major number)', 선택 사항인 '부수 번호 (minor number)', 선택 사항인 '덧댐 번호 (patch number)', 등등으로 구성됩니다. '비교 연산자 (comparison operator)' 와 '버전 번호' 사이에는 반드시 공백이 없어야 합니다. `compiler()` 에 대한 버전은, 컴파일러에 전달된 '스위프트 버전 설정' 과 관계없는, 컴파일러 버전입니다.[^Swift-version-setting] `swift()` 에 대한 버전은 현재 컴파일하고 있는 언어 버전입니다. 예를 들어, 스위프트 5 컴파일러를 사용하면서 스위프트 4.2 모드로 컴파일하는 경우, '컴파일러 버전' 은 '5' 이고 '언어 버전' 은 '4.2' 입니다. 이렇게 설정하면, 다음 코드는 세 개의 메시지를 모두 출력합니다:
+`swift()` 와 `compiler()` 플랫폼 조건을 위한 버전 번호는, 각각을 '점 (`.`)' 으로 구분한, '주요 (major) 번호', 선택적인 '보조 (minor) 번호', 선택적인 '땜빵 (patch) 번호', 등등으로, 구성됩니다. '비교 연산자' 와 '버전 번호' 사이에 공백이 반드시 없어야 합니다. `compiler()` 를 위한 버전은, 컴파일러에 전달하는 '스위프트 버전 설정' 과는 관계없는, 컴파일러 버전입니다.[^Swift-version-setting] `swift()` 를 위한 버전은 현재 컴파일하고 있는 언어 버전입니다. 예를 들어, '스위프트 5 컴파일러' 에서 '스위프트 4.2 모드' 로 컴파일하면, '컴파일러 버전' 은 '5' 이고 '언어 버전' 은 '4.2' 입니다. 이 설정들로, 다음 코드는 모든 세 메시지를 인쇄합니다:
 
 ```swift
 #if compiler(>=5)
@@ -426,9 +426,9 @@ print("Compiled in Swift 4.2 mode or later")
 #if compiler(>=5) && swift(<5)
 print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5")
 #endif
-// "Compiled with the Swift 5 compiler or later" 를 출력합니다.
-// "Compiled in Swift 4.2 mode or later" 를 출력합니다.
-// "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5" 를 출력합니다.
+// "Compiled with the Swift 5 compiler or later" 를 인쇄합니다.
+// "Compiled in Swift 4.2 mode or later" 를 인쇄합니다.
+// "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5" 를 인쇄합니다.
 ```
 
 `canImport()` 플랫폼 조건에 대한 인자는 모든 플랫폼에 존재하지는 않을 수도 있는 모듈의 이름입니다. 이 조건은 모듈을 불러오는 것이 가능한지 검사하지만, 실제로 불러오는 것은 아닙니다. 해당 모듈이 있는 경우, 플랫폼 조건은 `true` 를 반환합니다; 다른 경우라면, `false` 를 반환합니다.

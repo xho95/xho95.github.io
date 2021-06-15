@@ -116,7 +116,7 @@ categories: Swift Language Grammar Revision History
 * 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 부분에 추가함.
 * `available` 특성을 스위프트 언어 버전에 사용하는 것에 대하여 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 정보를 추가함.
 * '인자 이름표 (argument labels)' 는 함수 타입을 작성할 때는 허용되지 않는다는 것에 주목하기 위해 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 논의를 갱신함.
-* [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분에 있는 '스위프트 언어의 버전 번호' 에 대한 논의를 갱신했으며, 이제 선택 사항으로 '덧댐 번호 (patch number)' 가 허용됩니다.
+* [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분에 있는 '스위프트 언어의 버전 번호' 에 대한 논의를 갱신했으며, 이제 선택적인 '땜빵 번호 (patch number)' 를 허용합니다.
 * [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 논의를 갱신했으며, 이제 스위프트는 다중 매개 변수를 취하는 함수와 튜플 타입인 단일 매개 변수를 취하는 함수를 서로 구별함.
 * [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장에서 '동적 타입 표현식 (Dynamic Type Expression)' 부분을 제거했으며, 이제 `type(of:)` 는 스위프트 표준 라이브러리 함수임.
 
