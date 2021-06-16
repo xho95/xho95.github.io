@@ -16,13 +16,13 @@ _선언 (declaration)_ 은 프로그램에 새로운 '이름 (name)' 이나 '구
 
 > GRAMMAR OF A DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html)
 
-### Top-Level Code (최상위-수준 코드)
+### Top-Level Code (최상단 코드)
 
-스위프트 소스 파일에 있는 '최상위-수준 코드 (top-level code)' 는 '0' 개 이상의 구문, 선언, 그리고 표현식으로 구성됩니다. 기본적으로, 소스 파일의 최상위-수준에서 선언한 변수, 상수, 및 그 외 '이름 붙인 (named) 선언' 들은 같은 모듈에 있는 모든 소스 파일의 코드에서 접근 가능합니다. 이런 기본 동작을 재정의하려면, [Access Control Levels (접근 제어 수준)](#access-control-levels-접근-제어-수준) 에서 설명한 것처럼, 선언을 '접근-수준 수정자' 로 표시하면 됩니다.
+스위프트 소스 파일에서 '최상단 코드 (top-level code)' 는 '0' 개 이상의 구문과, 선언, 그리고 표현식들로 구성됩니다. 기본적으로, 소스 파일의 '최상단' 에서 선언한 변수, 상수, 그리고 그 외 '이름 붙인 선언' 은 동일한 모듈의 모든 소스 파일 코드에서 접근 가능합니다. 이 기본 동작은, [Access Control Levels (접근 제어 수준)](#access-control-levels-접근-제어-수준) 에서 설명한 것처럼, '접근-수준 수정자' 로 선언을 표시함으로써 '재정의' 할 수 있습니다.
 
-'최상위-수준 코드' 에는 두 가지 종류가 있습니다: '최상위-수준 선언 (top-level declarations)' 과 '실행 가능한 최상위-수준 코드 (excutable top-level code)' 가 그것입니다. '최상위-수준 선언' 은 선언 만으로 구성되며, 모든 스위프트 소스 파일에서 허용됩니다. '실행 가능한 최상위-수준 코드' 는, 선언뿐만 아니라, 구문과 표현식도 가지고 있으며, 프로그램에 대한 최상위-수준 진입점으로만 허용됩니다.
+'최상단 코드' 에는: '최상단 선언 (top-level declarations)' 과 '실행 가능한 최상단 코드 (excutable top-level code)' 라는 두 종류가 있습니다. '최상단 선언' 은 선언만으로 구성하며, 모든 스위프트 소스 파일에서 허용합니다. '실행 가능한 최상단 코드' 는, '선언' 뿐만 아니라, '구문' 과 '표현식' 도 담고 있으며, 프로그램의 '최상단 진입점 (top-level entry point)' 으로만 허용됩니다.
 
-'실행 파일 (executable)' 을 만들기 위해 컴파일하는 스위프트 코드는, 코드가 어떻게 파일과 모듈로 구성되는 지에 상관없이, 최상위-수준 진입점을 표시하는 다음의 접근 방법 중에서 최대 한 개만을 가질 수 있습니다: `main` 특성, `NSApplicationMain` 특성, `UIApplicationMain` 특성, `main.swift` 파일, 아니면 '최상위-수준 실행 가능한 코드' 를 가지고 있는 파일.
+'실행 파일 (executable)' 을 만들고자 컴파일하는 스위프트 코드는, 코드를 파일과 모듈로 정돈하는 방법과는 상관없이, '최상단 진입점' 을 표시하는: `main` 특성, `NSApplicationMain` 특성, `UIApplicationMain` 특성, `main.swift` 파일, 아니면 '실행 가능한 최상단 코드' 를 담은 파일과 같은 접근 방식 중에서 최대 하나만을 담고 있을 수 있습니다.
 
 > GRAMMAR OF A TOP-LEVEL DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID352)
 

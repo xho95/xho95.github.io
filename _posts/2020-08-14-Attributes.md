@@ -270,13 +270,13 @@ print(wrapper.x)
 
 #### main (메인)
 
-이 특성을 구조체, 클래스, 또는 열거체 선언에 적용하면 이것이 프로그램 흐름에 대한 '최상위-수준 진입점 (top-level entry point)' 을 담고 있다는 것을 지시합니다. 이 타입은 반드시 어떤 인자도 취하지 않으며 `Void` 를 반환하는 `main` 이라는 타입 함수를 제공해야 합니다. 예를 들면 다음과 같습니다:
+이 특성을 구조체, 클래스, 또는 열거체 선언에 적용하면 이것이 프로그램 흐름에 대한 '최상단 진입점 (top-level entry point)' 을 담고 있다는 것을 지시합니다. 이 타입은 반드시 어떤 인자도 취하지 않으며 `Void` 를 반환하는 `main` 이라는 타입 함수를 제공해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 @main
 struct MyTopLevel {
   static func main() {
-    // 여기에 최상위-수준 코드를 둡니다.
+    // 여기에 최상단 코드를 둡니다.
   }
 }
 ```
@@ -289,7 +289,7 @@ protocol ProvidesMain {
 }
 ```
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, '최상위-수준 진입점' 을 최대 한 개만 가질 수 있습니다.
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 설명한 것처럼, '최상단 진입점' 을 최대 한 개만 가질 수 있습니다.
 
 #### nonobjc (오브젝티브-C 가 아닌)
 
@@ -305,14 +305,14 @@ protocol ProvidesMain {
 
 이 특성을 클래스에 적용하면 이것이 '응용 프로그램 대리자 (application delegate)' 라는 것을 지시합니다. 이 특성을 사용하는 것은 `NSApplicationMain(_:_:)` 함수를 호출하는 것과 '동치 (equivalent)' 입니다.
 
-이 특성을 사용하지 않을 경우, 다음과 같이 `NSApplicationMain(_:_:)` 함수를 호출하는 '최상위 수준' 코드를 가지는 `main.swift` 파일을 제공하도록 합니다.
+이 특성을 사용하지 않을 경우, 다음과 같이 `NSApplicationMain(_:_:)` 함수를 호출하는 '최상단 코드' 를 가지는 `main.swift` 파일을 제공하도록 합니다.
 
 ```swift
 import AppKit
 NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 ```
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, '최상위-수준 진입점' 을 최대 한 개만 가질 수 있습니다.
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 설명한 것처럼, '최상단 진입점' 을 최대 한 개만 가질 수 있습니다.
 
 #### NSCopying (NS 복사)
 
@@ -703,9 +703,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 이 특성을 클래스에 적용하면 이것이 '응용 프로그램 대리자 (application delegate)' 임을 지시합니다. 이 특성을 사용하는 것은 `UIApplicationMain` 함수를 호출하고 이 클래스 이름을 '대리자 클래스 (delegate)' 이름으로 전달하는 것과 '동치 (equivalent)' 입니다.
 
-이 특성을 사용하지 않는 경우, [UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain) 함수를 호출하는 최상위 수준의 코드를 가진 `main.swift` 파일을 제공하도록 합니다. 예를 들어, 앱에서 사용자가 정의한 `UIApplication` 의 하위 클래스를 '주 클래스 (principal class)' 로 사용할 경우, 이 특성을 사용하는 대신 `UIApplicationMain(_:_:_:_:)` 함수를 호출하도록 합니다.
+이 특성을 사용하지 않는 경우, [UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain) 함수를 호출하는 '최상단 코드' 를 가진 `main.swift` 파일을 제공하도록 합니다. 예를 들어, 앱에서 사용자가 정의한 `UIApplication` 의 하위 클래스를 '주 클래스 (principal class)' 로 사용할 경우, 이 특성을 사용하는 대신 `UIApplicationMain(_:_:_:_:)` 함수를 호출하도록 합니다.
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상위-수준 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상위-수준-코드) 에서 설명한 것처럼, '최상위-수준 진입점' 을 최대 한 개만 가질 수 있습니다.
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 설명한 것처럼, '최상단 진입점' 을 최대 한 개만 가질 수 있습니다.
 
 #### usableFromInline (인라인에서 사용 가능한)
 
@@ -717,9 +717,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### warn_unqualified_access (조건을 갖추치 않은 접근 경고하기)
 
-이 특성을 최상위-수준 함수, 인스턴스 메소드, 또는 클래스 메소드나 정적 메소드에 적용하면 해당 함수나 메소드가 모듈 이름, 타입 이름, 또는 인스턴스 변수나 인스턴스 상수 같은, '선행 자격자 (preceding qualifier)' 없이 사용할 때 경고를 일으킵니다. 이 특성을 사용하면 같은 이름을 가진 함수가 동일한 영역에서 접근 가능할 때의 모호함을 방지할 수 있습니다.
+이 특성을 최상단 함수, 인스턴스 메소드, 또는 클래스 메소드나 정적 메소드에 적용하면 해당 함수나 메소드가 모듈 이름, 타입 이름, 또는 인스턴스 변수나 인스턴스 상수 같은, '선행 자격자 (preceding qualifier)' 없이 사용할 때 경고를 일으킵니다. 이 특성을 사용하면 같은 이름을 가진 함수가 동일한 영역에서 접근 가능할 때의 모호함을 방지할 수 있습니다.
 
-예를 들어, 스위프트 표준 라이브러리는 최상위-수준의 `min(_:_:)` 함수와 비교 가능한 원소를 가지는 '시퀀스 (sequence; 수열)' 에 대한 `min()` 메소드 둘 다를 포함하고 있습니다. 이 '시퀀스' 메소드는 `warn_unqualified_access` 특성으로 선언하여 `Sequence` '익스텐션' 내에서 둘 중 하나를 사용하려고 할 때의 혼동을 줄이도록 해줍니다.
+예를 들어, 스위프트 표준 라이브러리는 최상단의 `min(_:_:)` 함수와 비교 가능한 원소를 가지는 '시퀀스 (sequence; 수열)' 에 대한 `min()` 메소드 둘 다를 포함하고 있습니다. 이 '시퀀스' 메소드는 `warn_unqualified_access` 특성으로 선언하여 `Sequence` '익스텐션' 내에서 둘 중 하나를 사용하려고 할 때의 혼동을 줄이도록 해줍니다.
 
 #### Declaration Attributes Used by Interface Builder (인터페이스 빌더가 사용하는 선언 특성)
 

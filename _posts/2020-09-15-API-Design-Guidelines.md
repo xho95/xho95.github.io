@@ -677,7 +677,7 @@ x.move(from: x, to: y)
   ) -> (reallocated: Bool, capacityChanged: Bool)
   ```
 
-  클로저 매개 변수의 이름은 최상위-수준 함수에 대한 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 인 것처럼 선택해야 합니다. 클로저 인자에 대한 이름표를 호출할 때 나타내는 것은 지원하지 않습니다.
+  클로저 매개 변수의 이름은 최상단 함수에 대한 [매개 변수 이름 (parameter names)](#parameters-매개-변수) 인 것처럼 선택해야 합니다. 클로저 인자에 대한 이름표를 호출할 때 나타내는 것은 지원하지 않습니다.
 
 * **'구속 조건이 없는 다형성 (unconstrained polymorphism)' 은 좀 더 주의해서** (가령 `Any`, `AnyObject`, 및 구속 조건이 없는 제네릭 매개 변수의) 중복정의 집합에서 모호함을 피하도록 합니다.
 

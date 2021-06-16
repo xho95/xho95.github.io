@@ -17,7 +17,7 @@ $ cd /
 $ ls -l
 ```
 
-그러면 아래와 같이 최상위에 위치한 디렉토리들을 볼 수 있습니다.[^tree]
+그러면 아래와 같이 최상단에 위치한 디렉토리들을 볼 수 있습니다.[^tree]
 
 ```sh
 ├── Applications
@@ -39,7 +39,7 @@ $ ls -l
 └── var -> private/var
 ```
 
-위의 결과를 보면 macOS 최상위 디렉토리는 이름이 대문자로 시작하는 것과, 소문자로 시작하는 것으로 구분된다는 것을 알 수 있습니다. macOS 에서 이렇게 대문자로 시작하는 디렉토리들은 '표준 디렉토리 (standard directories)' 라고 하며, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 합니다.
+위의 결과를 보면 macOS 최상단 디렉토리는 이름이 대문자로 시작하는 것과, 소문자로 시작하는 것으로 구분된다는 것을 알 수 있습니다. macOS 에서 이렇게 대문자로 시작하는 디렉토리들은 '표준 디렉토리 (standard directories)' 라고 하며, 소문자로 시작하는 디렉토리들은 '유닉스-고유 디렉토리 (UNIX-specific directories)' 라고 합니다.
 
 ### macOS 의 표준 디렉토리
 
@@ -73,7 +73,7 @@ maxOS 의 '유닉스-고유 디렉토리' 에 대해서는 [macOS: 파일 시스
 
 [^directory-and-folder]: 맥을 사용하다보면 '폴더 (folder)' 와 '디렉토리 (directory)' 를 혼용해서 쓸 때가 많습니다. 실제로 이 둘은 거의 같은 의미를 가지고 있긴 합니다. 다만 [Difference between ‘“folder” and “directory”](https://english.stackexchange.com/questions/113606/difference-between-folder-and-directory) 라는 글을 보면, '폴더 (folder)' 는 'GUI 객체' 를 나타내는 논리적인 개념에서 나온 것이고, '디렉토리 (directory)' 는 '파일 시스템 (file system) 의 객체' 에서 나온 개념입니다. 따라서 [GUI](https://en.wikipedia.org/wiki/Graphical_user_interface) 에서는 '폴더 (folder)' 라는 말을, [CLI](https://en.wikipedia.org/wiki/Command-line_interface) 에서는 디렉토리라는 말을 사용하는 것이 일반적입니다.  
 
-[^move-to-root-directory]: 터미널을 처음 실행하면 '홈 디렉토리 (home directory)' 에 위치하게 됩니다. '홈 디렉토리' 는 macOS 의 최상위 디렉토리가 아닙니다. 그러므로 macOS 의 전체 계층 구조를 확인하려면 '루트 디렉토리' 로 이동해야 합니다.
+[^move-to-root-directory]: 터미널을 처음 실행하면 '홈 디렉토리 (home directory)' 에 위치하게 됩니다. '홈 디렉토리' 는 macOS 의 최상단 디렉토리가 아닙니다. 그러므로 macOS 의 전체 계층 구조를 확인하려면 '루트 디렉토리' 로 이동해야 합니다.
 
 [^tree]: 단 여기서의 결과는 `ls` 이 아니라, `tree` 명령을 설치해서 사용한 것입니다. '디렉토리 구조' 를 잘 보이기 위해서 그렇게 한 것이며, '디렉토리' 내용은 동일합니다.
 
