@@ -40,14 +40,14 @@ _코드 블럭 (code block)_ 은 '구문 (statements)' 을 서로 그룹짓기 �
 
 ### Import Declaration (선언 불러오기)
 
-_선언 불러오기 (import declaration)_ 는 현재 파일 밖에서 선언한 기호에 접근할 수 있도록 해줍니다. 기본 형식은 전체 모듈을 불러옵니다; 이는 `import` 키워드와 그 뒤의 모듈 이름으로 구성됩니다:
+_선언 불러오기 (import declaration)_ 는 현재 파일 밖에서 선언한 '기호 (symbols)' 에 접근하게 해줍니다. '기초 형식' 은 전체 모듈을 불러오며; '`import` 키워드' 와 그 뒤의 '모듈 이름' 으로 구성합니다:
 
-import `module-모듈`
+&nbsp;&nbsp;&nbsp;&nbsp;import `module-모듈`
 
-가져올 심볼에 대한 자세한 제한을 제공하면 특정 하위 모듈이나 모듈 또는 하위 모듈 내에서 특정 선언을 지정할 수 있습니다. 이 세부 양식을 사용하면 가져온 기호 만 (이를 선언하는 모듈이 아닌) 현재 범위에서 사용할 수 있습니다.
+불러올 '기호' 에 대한 더 '세부적인 제한 (detail limits)' 을 제공하면-모듈이나 하위 모듈 안의 '특정 하위 모듈' 이나 '특정 선언' 을 지정할 수 있습니다. 이 '세부 형식' 을 사용할 때는, 현재 영역에서 (이를 선언한 모듈이 아니라) 불러온 기호만 사용 가능하도록 합니다.
 
-import `import kind-불러오는 종류` `module-모듈`.`symbole name-기호 이름`<br />
-import `module-모듈`.`submodule-하위 모듈`
+&nbsp;&nbsp;&nbsp;&nbsp;import `import kind-불러올 종류` `module-모듈`.`symbole name-기호 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;import `module-모듈`.`submodule-하위 모듈`
 
 > GRAMMAR OF AN IMPORT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID354)
 
