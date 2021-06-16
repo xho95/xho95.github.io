@@ -471,12 +471,12 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 #### Compile-Time Diagnostic Statement (컴파일-시간 진단문)
 
-'컴파일-시간 진단문 (compile-time diagnostic statement)' 은 컴파일러가 컴파일 중에 에러나 경고를 내도록 유발합니다. 컴파일-시간 진단문의 형식은 다음과 같습니다:
+'컴파일-시간 진단 (compile-time diagnostic) 문' 은 컴파일하는 동안 컴파일러가 '에러 (error)' 나 '경고 (warning)' 를 내뿜도록 합니다. '컴파일-시간 진단문' 의 형식은 다음과 같습니다:
 
-\#error("`error message-에러 메시지`")<br />
-\#warning("`warning message-경고 메시지`")
+&nbsp;&nbsp;&nbsp;&nbsp;\#error("`error message-에러 메시지`")<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#warning("`warning message-경고 메시지`")
 
-첫 번째 형식은 _에러 메시지 (error message)_ 를 '치명적인 오류 (fatal error)' 로 내보내며 컴파일 과정을 종결합니다. 두 번째 형식은 _경고 메시지 (warning message)_ 를 '치명적이지 않은 경고 (nonfatal warning)' 로 내보내며 컴파일은 계속 진행하도록 허용합니다. '진단 메시지 (diagnostic message)' 는 '정적 문자열 글자 값 (static string literal)' 으로 작성합니다. '정적 문자열 글자 값' 은 문자열 '보간 (interpolation)' 이나 '이음 (concatenation)' 같은 특징을 사용할 수 없지만, '여러 줄짜리 문자열 글자 값 구문 표현 (multiline string literal syntax)' 은 사용할 수 있습니다.
+첫 번째 형식은 _에러 메시지 (error message)_ 를 '치명적인 에러 (fatal error)' 로 내뿜고 '컴파일 과정' 을 종결합니다. 두 번째 형식은 _경고 메시지 (warning message)_ 를 '치명적이진 않은 경고 (nonfatal warning)' 로 내뿜고 컴파일을 계속 진행하도록 허용합니다. '진단 (diagnostic) 메시지' 는 '정적 문자열 (static string) 글자 값' 으로 작성합니다. '정적 문자열 글자 값' 은 '문자열 보간 (interpolation) 이나 이음 (concatenation)' 같은 특징은 사용할 수 없지만, '여러 줄짜리 문자열 글자 값 (multiline string literal) 구문' 은 사용할 수 있습니다.
 
 > GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
