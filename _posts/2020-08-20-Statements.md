@@ -500,6 +500,10 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 > GRAMMAR OF AN AVAILABILITY CONDITION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID522)
 
+### 다음 장 
+
+[Declarations (선언) > ]({% post_url 2020-08-15-Declarations %})
+
 ### 참고 자료
 
 [^Statements]: 원문은 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 에서 확인할 수 있습니다.
