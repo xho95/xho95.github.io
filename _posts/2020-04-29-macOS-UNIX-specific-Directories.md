@@ -17,7 +17,7 @@ macOS 의 파일 시스템은 기본적으로 '표준 디렉토리 (standard dir
 
 macOS 에 '유닉스-고유 디렉토리' 라는 것이 존재하는 이유는 macOS 의 커널 (kernel) 인 [Darwin](https://en.wikipedia.org/wiki/Darwin_(operating_system)) 이 [BSD (Berkeley Software Distribution)](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) 라는 '유닉스 (UNIX)' 계열 운영 체제에서 파생되었기 때문입니다.
 
-다음과 같이 **Terminal** 에서 루트 (root) 디렉토리로 이동한 후 `ls` 명령을 실행하면, macOS 의 최상위 계층에 존재하는 디렉토리들을 볼 수 있습니다.
+다음과 같이 **Terminal** 에서 루트 (root) 디렉토리로 이동한 후 `ls` 명령을 실행하면, macOS 의 최상단 계층에 존재하는 디렉토리들을 볼 수 있습니다.
 
 ```sh
 $ cd /
@@ -57,7 +57,7 @@ $ man hier
 
 #### `/` : 루트 디렉토리
 
-macOS 에서는 '빗금 (slash; `/`)' 기호가 '_루트 디렉토리 (root directory)_' 를 의미합니다. '루트 디렉토리' 는 파일 시스템에서 계층 구조의 첫번째 또는 최상위 디렉토리를 말합니다. **Terminal** 에서 다음과 같은 명령을 사용하면, 어느 위치에 있든 '루트 디렉토리' 로 이동할 수 있습니다.
+macOS 에서는 '빗금 (slash; `/`)' 기호가 '_루트 디렉토리 (root directory)_' 를 의미합니다. '루트 디렉토리' 는 파일 시스템에서 계층 구조의 첫번째 또는 최상단 디렉토리를 말합니다. **Terminal** 에서 다음과 같은 명령을 사용하면, 어느 위치에 있든 '루트 디렉토리' 로 이동할 수 있습니다.
 
 ```sh
 $ cd /

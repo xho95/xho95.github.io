@@ -449,7 +449,7 @@ let z: SomeClass = .sharedSubclass
 
 #### Parenthesized Expression (괄호 표현식)
 
-_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호는 표현식을 명시적으로 그룹지어서 '연산의 우선순위 (precedence)' 를 지정하기 위해 사용할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
+_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호는 표현식을 명시적으로 그룹지어서 '연산의 우선 순위 (precedence)' 를 지정하기 위해 사용할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
 
 > GRAMMAR OF A PARENTHESIZED MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 

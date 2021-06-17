@@ -230,29 +230,29 @@ case .suppressed:
 
 '이름표 구문' 의 영역은 '구문 이름표' 뒤에 있는 전체 구문입니다. '이름표 구문' 을 중첩할 순 있지만, 각각의 '구문 이름표' 이름은 반드시 유일해야 합니다.
 
-구문 이름표에 대한 더 많은 정보와 사용 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
+'구문 이름표' 사용 방법에 대한 예제와 더 많은 정보는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
 ### Control Transfer Statements (제어 전달문)
 
-'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 코드 한 곳에서 다른 곳으로 무조건 전달함으로써 프로그램의 코드 실행 순서를 바꿀 수 있습니다. 스위프트에는: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문 이라는 다섯 개의 '제어 전달문' 이 있습니다.
+'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 무조건 코드 한 곳에서 다른 곳으로 전달함으로써 프로그램에서 코드가 실행되는 순서를 바꿀 수 있습니다. 스위프트에는: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문 이라는 다섯 개의 '제어 전달문' 이 있습니다.
 
 > GRAMMAR OF A CONTROL TRANSFER STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
 #### Break Statement ('break' 문)
 
-`break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. `break` 문은, 아래에 보인 것처럼, `break` 키워드만으로 구성할 수도 있고, `break` 키워드와 그 뒤의 '구문 이름표' 이름으로 구성할 수도 있습니다.
+`break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. `break` 문은, 아래에 보인 것처럼, `break` 키워드만으로 구성할 수, 아니면 `break` 키워드와 그 뒤의 '구문 이름표' 이름으로 구성할 수도 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;break
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;break `label name-이름표 이름`
 
-`break` 문 뒤에 '구문 이름표' 이름이 있을 때는, 해당 이름표로 이름 붙인 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다.
+`break` 문 뒤에 '구문 이름표' 가 있을 때는, 해당 이름표가 붙은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다.
 
-`break` 문 뒤에 '구문 이름표' 이름이 없을 때는, `switch` 문 또는 자기를 둘러싼 가장 안쪽 반복문의 프로그램 실행을 끝냅니다. `if` 문을 끊고 나오기 위해 '이름표 없는 `break` 문' 을 사용할 순 없습니다.
+`break` 문 뒤에 '구문 이름표' 가 있지 않을 때는, `switch` 문이나 자기를 둘러싼 가장 안쪽 반복문의 프로그램 실행을 끝냅니다. '이름표가 붙지 않은 `break` 문' 을 사용하여 `if` 문을 끊고 나올 수는 없습니다.
 
-두 경우 모두, 반복문이나 `switch` 문 테두리 뒤에 코드가, 있으면, 프로그램 제어를 그 첫 번째 줄로 전달합니다.
+두 경우 모두, 그런 다음, 둘러싼 반복문이나 `switch` 문 뒤에 어떤 코드든, 있으면, 프로그램 제어를 그 첫 번째 줄로 전달합니다.
 
 `break` 문의 사용 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 부분과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
 
@@ -260,13 +260,13 @@ case .suppressed:
 
 #### Continue Statement ('continue' 문)
 
-`continue` 문은 반복문의 현재 회차에 대한 프로그램 실행을 종료하지만 반복문의 실행은 종료하지 않습니다. `continue` 문은, 아래에서 보는 것처럼, `continue` 키워드로만 구성하거나, `continue` 키워드와 그 뒤의 '구문 이름표' 이름으로 구성할 수 있습니다.
+`continue` 문은 반복문에 대한 현재 회차의 프로그램 실행을 종료하지만 반복문의 실행을 멈추진 않습니다. `continue` 문은, 아래에 보인 것처럼, `continue` 키워드만으로 구성할 수도, 아니면 `continue` 키워드와 그 뒤의 '구문 이름표' 로 구성할 수도 있습니다.
 
-continue
+&nbsp;&nbsp;&nbsp;&nbsp;continue
 <br />
-continue `label name-이름표 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;continue `label name-이름표 이름`
 
-`continue` 문 뒤에 '구문 이름표' 이름이 있을 때는, 해당 이름표를 붙인 반복문의 현재 회차에 대한 프로그램 실행을 종료합니다.
+`continue` 문 뒤에 '구문 이름표' 가 있을 때는, 해당 이름표를 붙인 반복문의 현재 회차에 대한 프로그램 실행을 종료합니다.
 
 `continue` 문 뒤에 '구문 이름표' 이름이 없을 때는, 자기를 가장 안쪽에서 둘러싼 반복문의 프로그램 실행을 종료합니다.
 
@@ -280,130 +280,130 @@ continue `label name-이름표 이름`
 
 #### Fallthrough Statement ('fallthrough' 문)
 
-`fallthrough` 문은 `fallthrough` 키워드로 구성되며 `switch` 문의 'case 절' 블럭에서만 발생합니다. `fallthrough` 문은 프로그램 실행을 `switch` 문의 한 'case 절' 에서 그 다음 'case 절' 로 계속하도록 합니다. 프로그램 실행은 심지어 'case 절' 이름표의 패턴이 `switch` 문의 제어 표현식에 있는 값과 일치하지 않더라도 그 다음 'case 절' 로 계속됩니다.
+`fallthrough` 문은 `fallthrough` 키워드로 구성하며 `switch` 문의 'case 블럭' 안에서만 일어납니다. `fallthrough` 문은 프로그램이 `switch` 문의 한 'case 절' 에서 그 다음 'case 절' 로 계속 실행되도록 합니다. 프로그램은 'case 이름표' 의 '유형 (pattern)' 이 `switch` 문의 '제어 표현식' 값과 일치하지 않는 경우에도 그 다음 'case 절' 을 계속 실행합니다.
 
-`fallthrough` 문은 'case 절' 블럭의 마지막 구문으로써만이 아니라, `switch` 문 내부의 어디에서나 있을 수 있지만, 최종 'case 절' 블럭에서는 사용할 수 없습니다. 이는 또 프로그램 제어를 '값 연결 패턴 (value binding patterns)' 을 가지고 있는 패턴으로 전달할 수는 없습니다.
+`fallthrough` 문은 'case 블럭' 의 마지막 구문으로써 만이 아니라, `switch` 문 안의 어떤 곳에서든 나타날 수 있지만, '최종 case 블럭' 에서는 사용할 수 없습니다. '값 연결 유형 (value binding pattern)' 을 담고 있는 'case 블럭' 으로 제어를 전달할 수도 없습니다.
 
-`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 을 참고하기 바랍니다.
+`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
 #### Return Statement ('return' 문)
 
-`return` 문은 함수나 메소드 정의의 본문에 둬서 프로그램 실행을 호출한 쪽의 함수나 메소드로 반환하도록 합니다. 프로그램 실행은 함수나 메소드 호출의 바로 그 다음 지점에서 계속됩니다.
+`return` 문은 함수나 메소드 정의의 본문에서 일어나며 프로그램 실행을 호출 함수 또는 메소드로 반환하도록 합니다. 프로그램은 함수나 메소드 호출의 바로 다음 지점에서 계속 실행됩니다.
 
-`return` 문은, 아래에서 보는 것처럼, `return` 키워드로만 구성하거나, `return` 키워드와 그 뒤의 표현식으로 구성할 수 있습니다.
+`return` 문은, 아래 보인 것처럼, `return` 키워드만으로 구성할 수도, 아니면 `return` 키워드와 그 뒤의 표현식으로 구성할 수도 있습니다.
 
-return
+&nbsp;&nbsp;&nbsp;&nbsp;return
 <br />
-return `expression-표현식`
+&nbsp;&nbsp;&nbsp;&nbsp;return `expression-표현식`
 
-`return` 문 뒤에 표현식이 있을 때는, 이 표현식의 값이 호출한 함수 또는 메소드로 반환됩니다. 만약 표현식의 값이 함수나 메소드 선언에서 선언한 반환 타입의 값과 일치하지 않으면, 표현식의 값은 호출한 함수나 메소드로 반환되기 전에 해당 반환 타입으로 변환됩니다.
+`return` 문 뒤에 표현식이 있을 때는, 표현식의 값을 호출 함수 또는 메소드로 반환합니다. 만약 표현식의 값이 함수나 메소드 선언에서 선언한 반환 타입의 값과 일치하지 않으면, 호출 함수나 메소드로 반환하기 전에 표현식의 값을 반환 타입으로 변환합니다.
 
-> [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자) 에서 설명한 것처럼, 초기화의 실패를 지시하기 위해 '실패 가능한 초기자' 에서는  특수한 형식의 `return` 문인 (`return nil`) 을 사용할 수 있습니다.
+> [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자) 에서 설명한 것처럼, '실패 가능한 초기자' 에서 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하면 초기화의 실패를 지시할 수 있습니다.
 
-`return` 문 뒤에 표현식이 없을 때는, 값을 반환하지 않는 함수 또는 메소드의 반환에서만 사용할 수 있습니다 (이는, 함수나 메소드의 반환 타입이 `Void` 또는 `()` 일 때입니다).
+`return` 문 뒤에 표현식이 없을 때는, 값을 반환하지 않는 함수나 메소드의 반환에서 (즉, 함수나 메소드의 반환 타입이 `Void` 나 `()` 일 때) 만 사용할 수 있습니다.
 
 > GRAMMAR OF A RETURN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
 #### Throw Statement ('throw' 문)
 
-`throw` 문은 타입을 `throws` 키워드로 표시한 '던지는 함수 (throwing function)' 이나 '던지는 메소드' 의 본문, 및 클로저 표현식의 본문에 둡니다.
+`throw` 문은, 타입에 `throws` 키워드를 표시한, '던지는 (throwing) 함수나 메소드' 의 본문, 또는 '클로저 표현식' 의 본문에서 일어납니다.
 
-`throw` 문은 프로그램이 현재 영역의 실행을 종료하도록 하고 자신을 둘러싼 영역으로 에러 전파를 시작하도록 합니다. 던져진 에러는 `do` 문의 `catch` 절에서 처리할 때까지 계속 전파됩니다.
+`throw` 문은 프로그램이 현재 영역의 실행을 끝내고 자신을 둘러싼 영역으로 에러 전파를 시작하도록 합니다. '던져진 에러' 는 `do` 문의 `catch` 절이 처리할 때까지 계속 전파됩니다.
 
-`throw`, 아래에서 보는 것처럼, `throw` 키워드와 그 뒤의 표현식으로 구성됩니다.
+`throw` 문은, 아래 보인 것처럼, `throw` 키워드와 그 뒤의 표현식으로 구성합니다.
 
-throw `expression-표현식`
+&nbsp;&nbsp;&nbsp;&nbsp;throw `expression-표현식`
 
 _표현식 (expression)_ 의 값은 반드시 `Error` 프로토콜을 준수하는 타입이어야 합니다.
 
-`throw` 문을 사용하는 방법에 대한 예제는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에 있는 [Propagating Errors Using Throwing Functions ('던지는 함수' 를 사용하여 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-를-사용하여-에러-전파하기) 를 참고하기 바랍니다.
+`throw` 문을 사용하는 방법에 대한 예제는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장의 [Propagating Errors Using Throwing Functions ('던지는 함수' 를 사용하여 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-를-사용하여-에러-전파하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A THROW STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
 ### Defer Statement ('defer' 문)
 
-`defer` 문은 `defer` 문이 있는 영역 밖으로 프로그램 제어를 전달하기 바로 직전에 코드를 실행하기 위해서 사용합니다.
+`defer` 문은 프로그램 제어를 `defer` 문이 있는 영역 밖으로 전달하기 바로 직전에 코드를 실행하고자 사용합니다.
 
 `defer` 문의 형식은 다음과 같습니다:
 
-defer {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;defer {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-`defer` 문 내에 있는 구문들은 프로그램 제어가 전달되는 방식과는 상관없이 실행됩니다. 이것은 , 예를 들어, '파일 서술자 (file descriptors)'[^file-discriptors] 닫기 같은 '수동 자원 관리 (manual resource management)' 를 수행하고, 에러를 던지더라도 해야할 필요가 있는 행동을 수행하기 위해 `defer` 문을 사용할 수 있다는 것을 의미합니다.
+`defer` 문 안의 구문은 프로그램 제어를 전달하는 방법과는 상관없이 실행됩니다. 이는 `defer` 문을, 예를 들어, '파일 서술자 (file descriptors)[^file-discriptors] 닫기' 같은 '수동 자원 관리' 를 위해, 그리고 에러를 던지는 경우에도 발생할 필요가 있는 행동을 위해, 사용할 수 있다는 의미입니다.
 
-같은 영역에 여러 개의 `defer` 문이 있는 경우, 나타난 순서와 실행 순서는 반대입니다. 주어진 영역에서 마지막 `defer` 문이 먼저 실행된다는 것은 마지막 `defer` 문 안에 있는 구문은 다른 `defer` 문에서 정리할 자원도 참조할 수 있다는 것을 의미합니다.
+동일한 영역에 여러 개의 `defer` 문이 있을 경우, 실행 순서는 나타난 순서와는 거꾸로 입니다. 주어진 영역에서 '마지막 `defer` 문' 을 첫 번째로 실행한다는 것은 해당 '마지막 `defer` 문' 안의 구문은 다른 `defer` 문이 정리할 자원에도 참조할 수 있다는 의미입니다.
 
 ```swift
 func f() {
-    defer { print("First defer") }
-    defer { print("Second defer") }
-    print("End of function")
+  defer { print("First defer") }
+  defer { print("Second defer") }
+  print("End of function")
 }
 f()
-// "End of function" 를 출력합니다.
-// "Second defer" 를 출력합니다.
-// "First defer" 를 출력합니다.
+// "End of function" 를 인쇄합니다.
+// "Second defer" 를 인쇄합니다.
+// "First defer" 를 인쇄합니다.
 ```
 
-`defer` 문에 있는 구문이 프로그램 제어를 `defer` 문 밖으로 전달할 수는 없습니다.
+`defer` 문 안의 구문은 프로그램 제어를 `defer` 문 밖으로 전달할 수 없습니다.
 
 > GRAMMAR OF A DEFER STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID532)
 
 ### Do Statement ('do' 문)
 
-'`do` 문' 은 새로운 영역을 도입하기 위해 사용하며, 정의된 에러 조건과 일치 여부를 맞춰보는 '유형 (pattern)' 을 담은, 하나 이상의 `catch` 절을 선택적으로 가질 수 있습니다. `do` 문의 영역에서 선언한 변수와 상수는 해당 영역 내에서만 접근할 수 있습니다.
+'`do` 문' 은 새로운 영역을 도입하려고 사용하며, 정의한 에러 조건과 맞춰보는 '유형 (pattern)' 을 담은, 하나 이상의 `catch` 절을 선택적으로 담고 있을 수 있습니다. `do` 문 영역에서 선언한 변수와 상수는 해당 영역 안에서만 접근할 수 있습니다.
 
-스위프트의 `do` 문은 코드 블럭의 경계를 구분하기 위해 사용하는 C 언어의 '중괄호 (curly; `{}`)' 와 비슷하며, 실행 시간에 성능 비용이 발생하지 않습니다.
+스위프트의 `do` 문은 C 언어에서 코드 블럭의 경계를 구분하는데 사용하는 '중괄호 (`{}`)' 와 비슷하며, 실행 시간에 성능 비용을 초래하지 않습니다.
 
 `do` 문의 형식은 다음과 같습니다:
 
-do {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 1-유형 1` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 2-유형 2` where `condition-조건` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 3-유형 3`, `pattern 4-유형 4` where `condition-조건` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;do {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 1-유형 1` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 2-유형 2` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 3-유형 3`, `pattern 4-유형 4` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-`do` 코드 블럭 내의 어떤 구문이든 에러를 던지면, 프로그램 제어는 '유형 (pattern)' 이 에러와 일치하는 첫 번째 '`catch` 절' 로 전달됩니다. 일치하는 절이 없으면, 에러를 주위 영역으로 전파합니다. 에러가 최상위 수준까지 처리되지 않으면, 실행 시간 에러와 함께 프로그램 실행을 중지합니다.
+`do` 코드 블럭의 어떤 구문이든 에러를 던지면, 에러와 일치하는 '유형' 을 가진 '첫 번째 `catch` 절' 로 프로그램 제어가 전달됩니다. 일치하는 절이 없으면, 에러를 주위 영역으로 전파합니다. 에러가 최상단에서까지 처리되지 않으면, 실행 시간 에러와 함께 프로그램 실행을 멈춥니다.
 
-`switch` 문과 같이, 컴파일러는 `catch` 절이 '빠짐없이 철저한 (exhaustive)' 지를 추론하려고 합니다. 그렇다고 결정할 수 있으면, 에러는 처리된 것으로 여깁니다. 다른 경우라면, 에러는 이를 담고 있는 영역 밖으로 전파할 수 있는 것으로, 이는 이를 둘러싼 '둘러싼 `catch` 절' 에서 에러를 반드시 처리하거나 아니면 이를 담고 있는 함수를 반드시 `throws` 로 선언해야 함을 의미합니다.
+`switch` 문 같이, 컴파일러는 `catch` 절이 '빠짐없이 철저한 (exhaustive)' 지를 추론하려고 합니다. 그런 결정을 내릴 수 있으면, 에러를 처리한다고 고려합니다. 그 외의 경우라면, 담고 있는 영역 밖으로 에러를 전파할 수 있으며, 이는 '둘러싼 `catch` 절' 에서 에러를 반드시 처리하거나 아니면 담은 함수를 반드시 `throws` 로 선언해야 함을 의미합니다.
 
-'다중 유형 (multiple patterns)' 을 가진 `catch` 절은 '유형 (patterns)' 중 어떤 것이라도 에러와 일치하면 에러와 일치합니다. `catch` 절이 '다중 유형 (multipe patterns)' 을 담고 있으면, 모든 '유형 (patterns)' 들이 반드시 똑같은 상수 또는 변수 '연결 (bindings)' 을 담고 있어야 하며, 각각의 연결된 변수 또는 상수는 모든 `catch` 절의 '유형 (patterns)' 에서 반드시 똑같은 타입을 가지고 있어야 합니다.
+여러 개의 '유형 (patterns)' 을 가진 `catch` 절은 자신의 '유형' 중 어떤 것이든 에러와 일치하면 에러와 일치합니다. `catch` 절에 여러 '유형' 들이 있는 경우, 모든 '유형' 들은 반드시 똑같은 '상수나 변수 연결 (bindings)' 을 담아야 하며, 연결된 각각의 변수나 상수는 반드시 모든 '`catch` 절 유형' 에서 똑같은 타입을 가져야 합니다.
 
-에러가 처리된다는 것을 보장하려면, '와일드카드 패턴 (wildcard pattern; `_`)' 같이, 모든 에러와 일치하는 '유형 (patterns)' 을 가진 `catch` 절을 사용하면 됩니다. `catch` 절이 패턴을 지정하지 않으면, 이 `catch` 절은 어떤 에러와도 일치하며 이를 `error` 라는 이름의 지역 상수에 연결합니다. `catch` 절에서 사용할 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
+에러가 처리된다고 보장하려면, '와일드카드 유형 (wildcard pattern; `_`)' 같은, 모든 에러와 일치하는 '유형' 을 가진 `catch` 절을 사용합니다. `catch` 절에서 '유형' 을 지정하지 않을 경우, 그 `catch` 절은 어떤 에러와도 일치하며 `error` 라는 이름의 지역 상수와 연결됩니다. `catch` 절에서 사용할 수 있는 '유형' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
 
-여러 개의 `catch` 절을 가진 `do` 문을 사용하는 방법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 를 참고하기 바랍니다.
+여러 `catch` 절을 가진 `do` 문을 사용하는 방법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A DO STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID533)
 
 ### Compiler Control Statements (컴파일러 제어문)
 
-'컴파일러 제어문 (compiler control statements)' 는 프로그램이 컴파일러의 작동 방식을 바꿀 수 있게 해줍니다. 스위프트는 세 개의 컴파일러 제어문을 가지고 있습니다: '조건부 컴파일 블럭 (conditional compilation block)', '라인 제어문 (line control statement)', 그리고 '컴파일-시간 진단문 (compile-time diagnostic statement)' 가 그것입니다.
+'컴파일러 제어 (compiler control) 문' 은 프로그램이 컴파일러의 동작을 바꾸도록 허용합니다. 스위프트에는: '조건부 컴파일 (conditional compilation) 블럭', '라인 제어 (line control) 문', 그리고 '컴파일-시간 진단 (compile-time diagnostic) 문' 이라는 세 개의 '컴파일러 제어문' 이 있습니다.
 
 > GRAMMAR OF A COMPILER CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 #### Conditional Compilation Block (조건부 컴파일 블럭)
 
-'조건부 컴파일 블럭 (conditional compile block)' 은 하나 이상의 컴파일 조건 값에 따라 코드를 조건부로 컴파일하게 해줍니다.
+'조건부 컴파일 블럭' 은 코드가 하나 이상의 컴파일 조건 값에 따라 조건부로 컴파일되도록 허용합니다.
 
-모든 조건부 컴파일 블럭은 `#if` '컴파일 지시자 (compilation directive)' 로 시작해서 `#endif` 컴파일 지시사로 끝납니다. 단순 조건부 컴파일 블럭의 형식은 다음과 같습니다:
+모든 '조건부 컴파일 블럭' 은 '`#if` 컴파일 지시자 (directive)' 로 시작해서 '`#endif` 컴파일 지시자' 로 끝납니다. 단순한 '조건부 컴파일 블럭' 의 형식은 다음과 같습니다:
 
-\#if `compilation condition-컴파일 조건`<br />
-  `statements-구문`<br />
-\#endif
+&nbsp;&nbsp;&nbsp;&nbsp;\#if `compilation condition-컴파일 조건`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#endif
 
-`if` 문의 조건과는 다르게, _컴파일 조건 (compile condition)_ 은 컴파일 시간에 값을 평가합니다. 그 결과, 컴파일 시간에 _컴파일 조건 (compile condition)_  이 `true` 라고 평가될 때만 _구문 (statements)_ 을 컴파일하고 실행합니다.
+`if` 문의 조건과는 달리, _컴파일 조건 (compile condition)_ 은 컴파일 시간에 평가합니다. 그 결과, _컴파일 조건 (compile condition)_ 이 컴파일 시간에 `true` 로 평가될 때만 _구문 (statements)_ 을 컴파일해서 실행합니다.
 
-_컴파일 조건 (compile condition)_ 은 `true` 및 `false` 불리언 글자 값, `-D` '명령 줄 깃표 (command line flag)'[^flag] 와 함께 사용된 식별자, 또는 아래 표에서 나열한 어떤 '플랫폼 조건 (platform)' 을 포함할 수 있습니다.
+_컴파일 조건 (compile condition)_ 은 `true` 와 `false` 의 '불리언 글자 값', `-D` '명령 줄 깃표 (command line flag)'[^flag] 와 함께 사용하는 식별자, 또는 아래 표에 나열한 어떤 '플랫폼 (platform) 조건' 이든 포함할 수 있습니다.
 
 **Platform condition (플랫폼 조건)** || **Valid arguments (유효한 인자)**
 ---|---|---
@@ -414,7 +414,7 @@ _컴파일 조건 (compile condition)_ 은 `true` 및 `false` 불리언 글자 �
 `canImport()` || 모듈 이름
 `targetEnvironment()` || `simulator`, `macCatalyst`
 
-`swift()` 와 `compiler()` 에 대한 버전 번호는, 버전 번호의 각 부분을 구분하는 점 (`.`) 과 함께, '주요 번호 (major number)', 선택 사항인 '부수 번호 (minor number)', 선택 사항인 '덧댐 번호 (patch number)', 등등으로 구성됩니다. '비교 연산자 (comparison operator)' 와 '버전 번호' 사이에는 반드시 공백이 없어야 합니다. `compiler()` 에 대한 버전은, 컴파일러에 전달된 '스위프트 버전 설정' 과 관계없는, 컴파일러 버전입니다.[^Swift-version-setting] `swift()` 에 대한 버전은 현재 컴파일하고 있는 언어 버전입니다. 예를 들어, 스위프트 5 컴파일러를 사용하면서 스위프트 4.2 모드로 컴파일하는 경우, '컴파일러 버전' 은 '5' 이고 '언어 버전' 은 '4.2' 입니다. 이렇게 설정하면, 다음 코드는 세 개의 메시지를 모두 출력합니다:
+`swift()` 와 `compiler()` 플랫폼 조건에 대한 버전 번호는, 각각을 '점 (`.`)' 으로 구분한, '주요 (major) 번호', 선택적인 '보조 (minor) 번호', 선택적인 '땜빵 (patch) 번호', 등으로, 구성됩니다. '비교 연산자' 와 '버전 번호' 사이에는 반드시 공백이 없어야 합니다. `compiler()` 에 대한 버전은, 컴파일러에 전달하는 '스위프트 버전 설정' 과는 관계없는, 컴파일러 버전입니다.[^Swift-version-setting] `swift()` 에 대한 버전은 현재 컴파일하고 있는 언어 버전입니다. 예를 들어, '스위프트 5 컴파일러' 에서 '스위프트 4.2 모드' 로 컴파일하면, '컴파일러 버전' 은 '5' 이고 '언어 버전' 은 '4.2' 입니다. 이 설정들로, 다음 코드는 모든 세 메시지를 인쇄합니다:
 
 ```swift
 #if compiler(>=5)
@@ -426,80 +426,83 @@ print("Compiled in Swift 4.2 mode or later")
 #if compiler(>=5) && swift(<5)
 print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5")
 #endif
-// "Compiled with the Swift 5 compiler or later" 를 출력합니다.
-// "Compiled in Swift 4.2 mode or later" 를 출력합니다.
-// "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5" 를 출력합니다.
+// "Compiled with the Swift 5 compiler or later" 를 인쇄합니다.
+// "Compiled in Swift 4.2 mode or later" 를 인쇄합니다.
+// "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5" 를 인쇄합니다.
 ```
 
-`canImport()` 플랫폼 조건에 대한 인자는 모든 플랫폼에 존재하지는 않을 수도 있는 모듈의 이름입니다. 이 조건은 모듈을 불러오는 것이 가능한지 검사하지만, 실제로 불러오는 것은 아닙니다. 해당 모듈이 있는 경우, 플랫폼 조건은 `true` 를 반환합니다; 다른 경우라면, `false` 를 반환합니다.
+`canImport()` 플랫폼 조건에 대한 인자는 모든 플랫폼에 있는 건 아닐 수도 있는 모듈의 이름입니다. 이 조건은 모듈을 불러오는 것이 가능한 지를 검사하지만, 실제로 불러오진 않습니다. 모듈이 있으면, 플랫폼 조건은 `true` 를 반환하며; 그 외의 경우, `false` 를 반환합니다.
 
-`targetEnvironment()` 플랫폼 조건은 코드를 시뮬레이터 용으로 컴파일할 때 `true` 를 반환합니다; 다른 경우라면, `false` 를 반환합니다.
+`targetEnvironment()` 플랫폼 조건은 코드를 특정 환경을 위해 컴파일할 때 `true` 를 반환하며; 그 외의 경우, `false` 를 반환합니다.
 
-> `arch(arm)` 플랫폼 조건은 'ARM 64' 기기에 대해서 `true` 를 반환하지는 않습니다. `arch(i386)` 플랫폼 조건은 코드를 '32-비트 iOS 시뮬레이터' 용으로 컴파일할 때 `true` 를 반환합니다.
+> `arch(arm)` 플랫폼 조건은 'ARM 64' 기기에 대해 `true` 를 반환하지 않습니다. `arch(i386)` 플랫폼 조건은 코드를 '32-비트 iOS 시뮬레이터' 에 대해 컴파일할 때 `true` 를 반환합니다.
 
-논리 연산자인 `&&`, `||`, 및 `!` 와 그룹화를 위한 괄호를 사용하여 컴파일 조건을 조합할 수 있습니다. 이 연산자들은 평범한 불리언 표현식을 조합하는데 사용하는 논리 연산자와 같은 '결합성 (associativity)' 과 '우선순위 (precedence)' 를 가지고 있습니다.
+컴파일 조건들은 `&&`, `||`, 그리고 `!` 등의 논리 연산자와 괄호 그룹짓기를 사용하여 조합하거나 무효화할 수 있습니다. 이 연산자들은 '평범한 불리언 (Boolean) 표현식' 을 조합하는데 사용하는 '논리 연산자' 와 똑같은 '결합성 (associativity)' 과 '우선 순위 (precedence)' 를 가집니다.
 
-`if` 문과 비슷하게, 서로 다른 컴파일 조건을 검사하기 위해 '다중 조건 분기 (multiple conditional branches)' 를 추가할 수 있습니다. `#elseif` 절을 사용하면 어떤 개수로든 추가적인 분기를 추가할 수 있습니다. `#else` 절을 ​​사용하면 최종적인 추가 분기를 추가 할 수 있습니다. '다중 분기' 를 가지고 있는 '조건부 컴파일 블럭' 의 형식은 다음과 같습니다:
+`if` 문과 비슷하게, 서로 다른 컴파일 조건을 검사하기 위해 여러 개의 '조건 분기 (conditional branches)' 를 추가할 수 있습니다. '`#elseif` 절' 을 사용하여 어떤 개수의 '추가적인 분기' 든 추가할 수 있습니다. '`#else` 절' 로 '추가적인 최종 분기' 도 추가할 수 있습니다. 여러 개의 '분기' 를 담고 있는 '조건부 컴파일 블럭' 의 형식은 다음과 같습니다:
 
-\#if `compilation condition 1-컴파일 조건 1`<br />
-`statements to compile if compilation condition 1 is true-컴파일 조건 1이 참일 때 컴파일하는 구문`<br />
-\#elseif `compilation condition 2-컴파일 조건 2`<br />
-`statements to compile if compilation condition 2 is true-컴파일 조건 2가 참일 때 컴파일하는 구문`<br />
-\#else<br />
-`statements to compile if both compilation conditions are false-두 컴파일 조건 모두 거짓일 때 컴파일하는 구문`<br />
-\#endif
+&nbsp;&nbsp;&nbsp;&nbsp;\#if `compilation condition 1-컴파일 조건 1`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements to compile if compilation condition 1 is true-컴파일 조건 1이 참일 때 컴파일하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#elseif `compilation condition 2-컴파일 조건 2`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements to compile if compilation condition 2 is true-컴파일 조건 2가 참일 때 컴파일하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#else<br />
+&nbsp;&nbsp;&nbsp;&nbsp;`statements to compile if both compilation conditions are false-컴파일 조건 둘 다 거짓일 때 컴파일하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#endif
 
-> '조건부 컴파일 블럭' 의 본문에 있는 각각의 구문은 컴파일되지 않는 경우에도 해석됩니다. 하지만, 컴파일 조건이 `swift()` 플랫폼 조건을 포함하고 있는 경우는 예외입니다: 이 구문은 컴파일러의 스위프트 버전이 플랫폼 조건서 지정한 것과 일치하는 경우에만 해석됩니다. 이런 예외는 새 버전의 스위프트에서 도입한 '구문 표현 (syntax)' 을 더 예전 컴파일러가 해석하지 않도록 보장합니다.
+> '조건부 컴파일 블럭' 본문의 각 구문은 컴파일되지 않는 경우에도 구문을 해석합니다. 하지만, 컴파일 조건이 `swift()` 나 `compiler()` 플랫폼 조건을 포함하는 경우는 예외인데: 언어나 컴파일러 버전이 플랫폼 조건에서 지정한 것과 일치할 경우에만 구문을 해석합니다. 이 예외는 '더 예전의 컴파일러' 가 '새 버전의 스위프트' 에서 도입한 '구문 (syntax)' 해석을 시도하지 않도록 보장합니다.
 
 > GRAMMAR OF A CONDITIONAL COMPILATION BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 #### Line Control Statement (라인 제어문)
 
-'라인 제어문 (line control statement)' 은 컴파일 되는 소스 코드의 '라인 (line)' 번호 및 파일 이름과 다를 수도 있는 라인 번호 및 파일 이름을 지정하기 위해 사용합니다. 스위프트가 진단 및 디버깅 목적으로 사용하는 소스 코드의 위치를 바꾸려면 '라인 제어문' 을 사용하도록 합니다.
+'라인 제어 (line control) 문' 은 컴파일 중인 소스 코드의 '라인 (line) 번호' 및 '파일 이름' 과 다를 수 있는 '라인 번호' 및 '파일 이름' 을 지정하기 위해 사용합니다. '라인 제어문' 은 스위프트가 사용 중인 소스 코드 위치를 '진단 (diagnostic)' 과 '디버깅 (debugging)' 목적을 위해 바꾸려고 사용합니다.
 
-라인 제어문은 다음의 형식을 가지고 있습니다:
+'라인 제어문' 의 형식은 다음과 같습니다:
 
-```swift
-  #sourceLocation(file: file path, line: line number)
-  #sourceLocation()
-```
+&nbsp;&nbsp;&nbsp;&nbsp;\#sourceLocation(file: `file path-파일 경로`, line: `line number-라인 번호`)
+&nbsp;&nbsp;&nbsp;&nbsp;\#sourceLocation()
 
-첫 번째 형식의 라인 제어문은, 라인 제어문 다음의 코드 라인에서 시작하여, `#line`, `#file`, 그리고 `#filePath` 글자 값 표현식의 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 의 값을 바꾸는 것으로 '0' 보다 큰 어떤 정수 글자 값입니다. _파일 경로 (file path)_ 는 `#file` 과 `#filePath` 의 값을 바꾸는 것으로, 문자열 글자 값입니다. 지정한 문자열이 `#filePath` 의 값이 되고, 문자열의 마지막 경로 성분이 `#file` 의 값이 됩니다.
 
-두 번째 형식의 라인 제어문인, `#sourceLocation()` 은, 소스 코드 위치를 기본 라인 번호와 파일 경로로 재설정 합니다.
+첫 번째 형식의 라인 제어문은, 라인 제어문 다음의 '코드 라인' 에서 시작하는, `#line`, `#file`, `#fileID`, 그리고 `#filePath` 글자 표현식의 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 의 값을 바꾸는, '0' 보다 큰 어떤 '정수 글자 값' 입니다. _파일 경로 (file path)_ 는 `#file`, `#fileID`, 그리고 `#filePath` 의 값을 바꾸는, '문자열 글자 값' 입니다. 지정한 문자열은 `#filePath` 의 값이 되고, 문자열의 '마지막 경로 성분' 은 `#fileID` 값으로 사용합니다. `#file`, `#fileID`, 와 `#filePath` 에 대한 더 많은 정보는, [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분을 참고하기 바랍니다.
+
+두 번째 형식의 라인 제어문인, `#sourceLocation()` 은, 소스 코드 위치를 '기본 라인 번호와 파일 경로' 로 재설정 합니다.
 
 > GRAMMAR OF A LINE CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 #### Compile-Time Diagnostic Statement (컴파일-시간 진단문)
 
-'컴파일-시간 진단문 (compile-time diagnostic statement)' 은 컴파일러가 컴파일 중에 에러나 경고를 내도록 유발합니다. 컴파일-시간 진단문의 형식은 다음과 같습니다:
+'컴파일-시간 진단 (compile-time diagnostic) 문' 은 컴파일하는 동안 컴파일러가 '에러 (error)' 나 '경고 (warning)' 를 내뿜도록 합니다. '컴파일-시간 진단문' 의 형식은 다음과 같습니다:
 
-\#error("`error message-에러 메시지`")<br />
-\#warning("`warning message-경고 메시지`")
+&nbsp;&nbsp;&nbsp;&nbsp;\#error("`error message-에러 메시지`")<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\#warning("`warning message-경고 메시지`")
 
-첫 번째 형식은 _에러 메시지 (error message)_ 를 '치명적인 오류 (fatal error)' 로 내보내며 컴파일 과정을 종결합니다. 두 번째 형식은 _경고 메시지 (warning message)_ 를 '치명적이지 않은 경고 (nonfatal warning)' 로 내보내며 컴파일은 계속 진행하도록 허용합니다. '진단 메시지 (diagnostic message)' 는 '정적 문자열 글자 값 (static string literal)' 으로 작성합니다. '정적 문자열 글자 값' 은 문자열 '보간 (interpolation)' 이나 '이음 (concatenation)' 같은 특징을 사용할 수 없지만, '여러 줄짜리 문자열 글자 값 구문 표현 (multiline string literal syntax)' 은 사용할 수 있습니다.
+첫 번째 형식은 _에러 메시지 (error message)_ 를 '치명적인 에러 (fatal error)' 로 내뿜고 '컴파일 과정' 을 종결합니다. 두 번째 형식은 _경고 메시지 (warning message)_ 를 '치명적이진 않은 경고 (nonfatal warning)' 로 내뿜고 컴파일을 계속 진행하도록 허용합니다. '진단 (diagnostic) 메시지' 는 '정적 문자열 (static string) 글자 값' 으로 작성합니다. '정적 문자열 글자 값' 은 '문자열 보간 (interpolation) 이나 이음 (concatenation)' 같은 특징은 사용할 수 없지만, '여러 줄짜리 문자열 글자 값 (multiline string literal) 구문' 은 사용할 수 있습니다.
 
 > GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 ### Availability Condition (사용 가능성 조건)
 
-_사용 가능성 조건 (availablility condition)_ 은, 지정한 플랫폼 인자를 기반으로, 실행 시간에 API 의 사용 가능성을 조회하기 위해 `if`, `while`, 및 `guard` 문의 조건으로 사용되는 것입니다.
+_사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 인자' 를 기초로, API 의 '사용 가능성' 을 실행 시간에 조회하기 위해 `if` 문, `while` 문, 그리고 `guard` 문의 조건으로 사용하는 것입니다.
 
-사용 가능성 조건의 형식은 다음과 같습니다:
+'사용 가능성 조건' 의 형식은 다음과 같습니다:
 
-if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
-  `statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
-} else {<br />
-  `fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-'사용 가능성 조건' 은, 사용하고 싶은 API 가 실행 시간에 사용 가능한 지에 따라, 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭에 있는 API 가 사용 가능한 지를 증명할 때 사용 가능성 조건의 정보를 사용합니다.
+'사용 가능성 조건' 은, 원하는 API 가 실행 시간에 사용 가능한 지에 따라, 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭의 API 가 사용 가능한지를 증명할 때 '사용 가능성 조건' 정보를 사용합니다.
 
-'사용 가능성 조건' 은 플랫폼 이름과 버전으로 된 것을 쉼표로 구분한 목록을 받아 들입니다. 플랫폼 이름으로는 `iOS`, `macOS`, `watchOS`, 와 `tvOS` 를 사용하며, 연관된 버전 번호를 포함합니다. `*` 인자는 필수인데, '사용 가능성 조건' 이 보호하고 있는 코드 블럭이 최소 배포 대상으로 지정한, 어떤 플랫폼에서라도 실행되도록 지정합니다.
+'사용 가능성 조건' 은 쉼표로-구분한 '플랫폼 이름 및 버전 목록' 을 취합니다. 플랫폼 이름으로 `iOS`, `macOS`, `watchOS`, 및 `tvOS` 를 사용하며, 관련 '버전 번호' 를 포함합니다. `*` 인자는 필수이며, '사용 가능성 조건' 이 보호하는 '코드 블럭 본문' 이 '대상 (target)' 으로 지정한 '최소 배포 (minimum deployment) 대상' 에서 실행되도록 하는, '다른 어떤 플랫폼' 을 지정합니다.
 
-불리언 조건과는 다르게, `&&` 와 `||` 같은 논리 연산자를 사용하여 '사용 가능성 조건' 을 조합할 수는 없습니다.
+'불리언 조건' 과는 달리, '사용 가능성 조건' 은 `&&` 와 `||` 같은 '논리 연산자' 로 조합할 수 없습니다.
 
 > GRAMMAR OF AN AVAILABILITY CONDITION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID522)
+
+### 다음 장 
+
+[Declarations (선언) > ]({% post_url 2020-08-15-Declarations %})
 
 ### 참고 자료
 
@@ -513,8 +516,8 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^swift-overlays]: 여기서 '스위프트로 덧씌운 것 (Swift overlays)' 은, 예를 들어, `Foundation` 같은 애플 프레임웍을 사용할 때, 오브젝티브-C 등으로 작성된 타입을 스위프트로 '연동 (bridge)' 하여 사용할 수 있게 해주는 것을 말합니다. '스위프트로 덧씌운 것 (Swift overlays)' 에 대한 더 자세한 내용은 [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다. 
 
-[^file-discriptors]: 'file descriptors' 는 '파일 서술자' 라고 하는데, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 와 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 를 참고하기 바랍니다.
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말합니다. '파일 서술자' 에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
-[^flag]: '명령 줄 깃표 (command line flag)' 는 '비트 필드' 의 한 비트를 `On`/`Off` 하여 프로그램에 약속된 신호를 남기기 위해 사용하는 미리 정의된 비트를 말합니다. 보다 자세한 내용은 위키피디아의 [플래그](https://ko.wikipedia.org/wiki/플래그) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다.
+[^flag]: '명령 줄 깃표 (command line flag)' 는 '비트 필드' 의 한 비트를 `On`/`Off` 하여 프로그램에 약속된 신호를 남기기 위해 사용하는 '미리 정의된 비트' 를 말합니다. '명령 줄 깃표' 에 대한 더 자세한 내용은, 위키피디아의 [플래그](https://ko.wikipedia.org/wiki/플래그) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다.
 
 [^Swift-version-setting]: 이것은 '스위프트 컴파일러 버전' 과 '소스 코드 상의 스위프트 언어 버전' 이 다를 수 있기 때문입니다. 예를 들어, 새로운 컴파일러를 설치한 후에 예전 소스 코드를 컴파일할 경우, '스위프트 버전 설정' 은 예전 버전으로 두면서 컴파일은 최신 버전으로 할 수도 있습니다.
