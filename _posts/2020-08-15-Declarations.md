@@ -86,13 +86,13 @@ print("The second number is \(secondNumber).")
 
 ### Variable Declaration (변수 선언)
 
-_변수 선언 (variable declaration)_ 은 '이름 붙인 변수 값' 을 프로그램에 도입하며 `var` 키워드로 선언합니다.
+_변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수 값' 을 도입하며 `var` 키워드로 선언합니다.
 
-변수 선언은, '저장 및 계산 변수와 속성', '저장 변수 및 속성 관찰자', 그리고 '정적 변수 속성' 을 포함한, 서로 다른 종류의 '이름 붙인, 변경 가능 값' 들을 선언하는 여러 가지 형식을 가지고 있습니다. 어떤 형식을 사용하는게 적절한가 하는 것은 변수를 선언하는 영역이 어디인지 그리고 선언하고자 하는 변수의 종류가 무엇인지에 달려 있습니다.
+변수 선언에는, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함하여, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언하는 여러 형식이 있습니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
 
-> [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명하는 것처럼, 프로토콜 선언 상황에서도 속성을 선언할 수 있습니다.
+> [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 속성을 선언할 수도 있습니다.
 
-[Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 `override` 선언 수정자로 표시하면 하위 클래스에서 속성을 재정의할 수 있습니다.
+[Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 '`override` 선언 수정자' 로 표시함으로써 속성을 하위 클래스에서 재정의할 수 있습니다.
 
 #### Stored Variables and Stored Variable Properties (저장 변수와 저장 변수 속성)
 
