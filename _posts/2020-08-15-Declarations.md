@@ -80,7 +80,7 @@ print("The second number is \(secondNumber).")
 
 '상수 타입 속성 (constant type property)' 을 선언하려면, '`static` 선언 수정자' 로 선언을 표시합니다. 클래스의 '상수 타입 속성' 은 암시적으로 항상 '최종 (final)' 이며; 하위 클래스의 재정의를 허용 또는 불허하려고 `class` 나 `final` 선언 수정자를 표시할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
 
-상수에 대한 더 많은 정보와 사용 시점에 대한 지침은, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 부분과 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 참고하기 바랍니다.
+상수에 대한 더 많은 정보 및 사용 시점에 대한 안내는, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 부분과 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CONSTANT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID355)
 
@@ -88,48 +88,48 @@ print("The second number is \(secondNumber).")
 
 _변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수 값' 을 도입하며 `var` 키워드로 선언합니다.
 
-변수 선언에는, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함하여, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언하는 여러 형식이 있습니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
+변수 선언은 여러가지 형식으로, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함한, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언합니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
 
-> [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 속성을 선언할 수도 있습니다.
+> 속성은, [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 선언할 수도 있습니다.
 
-[Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 '`override` 선언 수정자' 로 표시함으로써 속성을 하위 클래스에서 재정의할 수 있습니다.
+하위 클래스에 있는 속성은, [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 '`override` 선언 수정자' 로 표시함으로써 재정의할 수 있습니다.
 
 #### Stored Variables and Stored Variable Properties (저장 변수와 저장 변수 속성)
 
-다음의 형식은 '저장 변수 (stored variables)' 또는 '저장 변수 속성 (stored variable properties)'[^stored-variable-property] 을 선언합니다:
+다음 형식은 '저장 변수' 또는 '저장 변수 속성' 을 선언합니다:
 
-var `variable name-변수 이름`: `type-타입` = `expression-표현식`
+&nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` = `expression-표현식`
 
-이런 형식의 변수 선언은 '전역 범위 (global scope)' 나, 함수의 '지역 범위 (local scope)', 또는 클래스 및 구조체 선언인 상황에서 정의하게 됩니다. 이 형식의 변수 선언을 '전역 범위' 나 함수의 '지역 범위' 에서 선언할 때는, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언인 상황에서 선언할 때는, 이를 _저장 변수 속성 (stored variable property)_ 라고 합니다.
+이 형식의 변수 선언은 '전역 (global)' 이나, '함수 지역 (local)' 에서, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수가 '전역' 이나 '함수 지역' 에서 선언될 때, _저장 변수 (stored variable)_ 를 가리킵니다. 클래스나 구조체 선언에서 선언할 때는, _저장 변수 속성 (stored variable property)_ 을 가리킵니다.
 
-'초기자 _표현식 (expression)_' 이 프로토콜 선언에서 있을 수는 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 선택 사항입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 없으면, 변수 선언은 (`:` _타입 (type)_ 이라는) '명시적인 타입 보조 설명' 을 반드시 포함해야 합니다.
+'초기자 _표현식 (expression)_' 은 프로토콜 선언에 있을 순 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 '옵션' 입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 변수 선언이 반드시 '(`:` _타입 (type)_ 형식의) 명시적인 타입 보조 설명' 을 포함해야 합니다.
 
 상수 선언에서와 마찬가지로, _변수 이름 (variable name)_ 이 '튜플 패턴' 이면, 튜플에 있는 각각의 항목 이름이 '초기자 _표현식 (expression)_' 에 있는 연관된 값과 연결됩니다.
 
-이름으로 연상되는 것처럼, 저장 변수 또는 저장 변수 속성의 값은 메모리에 저장됩니다.
+이름이 제시하는 것처럼, '저장 변수' 나 '저장 변수 속성' 의 값은 메모리에 저장됩니다.
 
 #### Computed Variables and Computed Properties (계산 변수와 계산 속성)
 
-다음 형식은 '계산 변수 (computed variables)' 또는 '계산 속성 (computed properties)' 을 선언합니다:
+다음 형식은 '계산 변수' 또는 '계산 속성' 을 선언합니다:
 
-var `variable name-변수 이름`: `type-타입` {<br />
-  get {<br />
-    `statements-구문`<br />
-  }<br />
-  set (`setter name-설정자 이름`) {<br />
-    `statement-구문`<br />
-  }<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set (`setter name-설정자 이름`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statement-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식의 변수 선언은 '전역 범위' 나, 함수의 '지역 범위' 또는, 클래스, 구조체, 열거체 및, '익스텐션 (extension)' 선언인 상황에서 정의합니다. 이 형식의 변수 선언이 '전역 범위' 나 함수의 '지역 범위' 에서 선언될 때, 이를 _계산 변수 (computed variable)_ 라고 합니다. 이를 클래스, 구조체, 또는 '익스텐션' 선언인 상황에서 선언할 때는, _계산 속성 (computed property)_ 라고 합니다.
+이 형식의 변수 선언은 '전역 ' 이나, '함수 지역' 에서, 또는 클래스, 구조체, 열거체, 및 '익스텐션 (extension)' 선언에서 정의합니다. 이 형식의 변수가 '전역' 이나 '함수 지역' 에서 선언될 때, _계산 변수 (computed variable)_ 를 가리킵니다. 클래스나, 구조체, 또는 '익스텐션' 선언에서 선언할 때는, _계산 속성 (computed property)_ 을 가리킵니다.
 
-'획득자 (getter)' 는 값을 읽는 데 사용하고, '설정자 (setter)' 는 값을 쓰는 데 사용합니다. 'setter 절' 은 선택 사항이며, 획득자만 필요할 때는, [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 두 절 모두 생략하고 요청한 값을 직접 간단히 반환할 수 있습니다. 하지만 'setter 절' 을 제공하는 경우라면, 반드시 'getter 절' 도 제공해야 합니다.
+'획득자 (getter)' 는 값을 읽는 데 사용하고, '설정자 (setter)' 는 값을 쓰는 데 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 두 '절' 다 생략하고 단순히 '요청 값' 을 직접 반환할 수 있습니다. 그러나 '설정자 절' 을 제공한다면, 반드시 '획득자 절' 도 제공해야 합니다.
 
-_설정자 이름 (setter name)_ 과 이를 둘러싼 괄호는 선택 사항입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 에 대한 매개 변수의 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (설정자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-설정자-선언의-줄임-표현) 에서 설명한 것처럼, '설정자' 에 대한 '기본 설정 매개 변수 이름' 은 `newValue` 가 됩니다.
+_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (설정자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-설정자-선언의-줄임-표현) 에서 설명한 것처럼, '설정자' 의 '기본 매개 변수 이름' 이 `newValue` 가 됩니다.
 
-'이름 붙인 저장 값'[^stored-named-values] 과 '저장 변수 속성' 과는 달리, '이름 붙인 계산 값' 의 값 또는 '계산 속성' 은 메모리에 저장하지 않습니다.
+'이름 붙인 저장 값'[^stored-named-values] 및 '저장 변수 속성' 과 달리, '이름 붙인 계산 값' 이나 '계산 속성' 의 값은 메모리에 저장하지 않습니다.
 
-더 자세한 정보 및 계산 속성에 대한 예제는, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 를 참고하기 바랍니다.
+계산 속성에 대한 더 자세한 정보와 예제를 보려면, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 부분을 참고하기 바랍니다.
 
 #### Stored Variable Observers and Property Observers (저장 변수 관찰자와 저장 속성 관찰자)
 
@@ -1275,9 +1275,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^final]: 사실상 이미 'final' 인 상태라고 이해할 수 있습니다.
 
-[^stored-variable-property]: 이 책에는 '저장 변수 속성 (stored variable property)' 이라는 말과 '변수 저장 속성 (variable stored property)' 이라는 말을 같이 사용하고 있는데, 사실 이 둘은 같은 말입니다. '저장 변수 속성' 은 '저장 변수' 중에서 '속성' 에 해당하는 것이고, '변수 저장 속성' 은 '저장 속성' 중에서 '변수' 에 해당하는 것으로, 결국 같은 것입니다.
-
-[^stored-named-values]: 원문에서 '이름 붙인 저장 값 (stored named values)' 이라는 하는 것은 '저장 변수 (stored variable)' 를 의미하고 있습니다.
+[^stored-named-values]: 원문에서 말하는 '이름 붙인 저장 값 (stored named values)' 은 '저장 변수 (stored variable)' 를 의미합니다.
 
 [^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 함수 본문 전체를 의미하기 때문에 '함수 정의 (function definition)' 라고 하는 것이 맞습니다.
 
