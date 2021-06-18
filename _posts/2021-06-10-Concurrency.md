@@ -80,31 +80,31 @@ show(photo)
 > 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
-    await Task.sleep(2 * 1_000_000_000)  // 2 초
-    return ["IMG001", "IMG99", "IMG0404"]
+  await Task.sleep(2 * 1_000_000_000)  // 2 초
+  return ["IMG001", "IMG99", "IMG0404"]
 }
 ```
 
 ### Asynchronous Sequences (비동기 시퀀스)
 
-이전 부분에 있는 `listPhotos(inGallery:)` 함수는, 배열의 모든 원소가 준비되면, 배열 전체를 한꺼번에 반환합니다. 또 다른 접근 방식은 _비동기 시퀀스 (asynchronous sequence)_ 를 사용하여 집합체 원소를 한번에 하나씩 기다리는 것입니다. 다음은 비동기 시퀀스에 동작을 반복하는 것을 보인 것입니다:
+이전 부분에 있는 `listPhotos(inGallery:)` 함수는, 모든 배열 원소가 준비되면, 배열 전체를 한꺼번에 반환합니다. 또 다른 접근 방식은 _비동기 시퀀스 (asynchronous sequence)_[^sequence] 를 사용하여 한번에 집합체 한 원소씩 기다리는 것입니다. 다음은 비동기 시퀀스의 반복 동작을 보인 것입니다:
 
 ```swift
 import Foundation
 
 let handle = FileHandle.standardInput
 for try await line in handle.bytes.lines {
-    print(line)
+  print(line)
 }
 ```
 
-평범한 `for`-`in` 반복문을 사용하는 대신, 위 예제는 `for` 뒤에 `await` 를 작성합니다. 비동기 함수나 메소드를 호출할 때와 같이, `await` 를 작성하는 것은 '멈춰달 수 있는 지점' 을 지시합니다. `for`-`await`-`in` 반복문은 잠재적으로, 다음 원소가 사용 가능하길 기다릴 때, 각 회차 맨 앞에서 실행을 매달아 멈춥니다.
+평범한 `for`-`in` 반복문을 사용하는 대신, 위 예제는 `for` 뒤에 `await` 를 작성합니다. 비동기 함수나 메소드를 호출할 때 같이, `await` 의 작성은 '멈춰달 수 있는 지점' 을 지시합니다. `for`-`await`-`in` 반복문은 각 회차 맨 앞에서, 다음 원소가 사용 가능하길 기다릴 때, 잠재적으로 실행을 멈춰답니다.
 
-[Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜 준수성을 추가함으로써 자신만의 타입을 `for`-`in` 반복문에서 사용할 수 있는 것과 똑같이, [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜 준수성을 추가함으로써 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용할 수 있습니다. 
+[Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜에 대한 준수성을 추가함으로써 자신만의 타입을 `for`-`in` 반복문에서 사용할 수 있는 것과 똑같이, [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜에 대한 준수성을 추가함으로써 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용할 수 있습니다. 
 
 ### Calling Asynchronous Functions in Parallel (비동기 함수를 병렬로 호출하기)
 
-`await` 를 가진 비동기 함수 호출은 한번에 한 조각의 코드만 실행합니다. 비동기 코드를 실행하는 동안, 호출하는 쪽은 그 다음 코드 줄을 실행하려고 이동하기 전에 해당 코드가 종료하길 기다립니다. 예를 들어, 전시관에서 처음 세 사진을 가져오기 위해, 다음 처럼 `downloadPhoto(named:)` 함수에 대한 세 개의 호출을 기다릴 수 있습니다:
+`await` 를 가지고 비동기 함수를 호출하는 것은 한번에 한 조각의 코드만 실행합니다. 비동기 코드를 실행하는 동안, 호출하는 쪽은 그 다음 코드 줄을 실행하려 이동하기 전에 해당 코드가 종료하길 기다립니다. 예를 들어, '전시관' 에서 처음 세 사진을 가져오려면, 다음 처럼 세 개의 `downloadPhoto(named:)` 함수 호출을 기다릴 수 있습니다:
 
 ```swift
 let firstPhoto = await downloadPhoto(named: photoNames[0])
@@ -115,7 +115,7 @@ let photos = [firstPhoto, secondPhoto, thirdPhoto]
 show(photos)
 ```
 
-이 접근 방식에는 중요한 결점이 있는데: 내려받기가 비동기고 진행 중에 다른 작업이 발행하도록 하긴 하지만, `downloadPhoto(named:)` 호출을 한번에 하나씩만 실행한다는 것입니다. 각각의 사진은 그 다음 내려받기를 시작하기 전에 내려받기를 완료합니다. 하지만, 이 연산을 기다릴 필요는 없습니다-각각의 사진은 독립적으로, 또는 심지어 동시에, 내려받을 수 있습니다.
+이 접근 방식에는 중요한 결점이 있는데: 내려받기가 비동기라 진행하는 동안 다른 작업이 발생하도록 하긴 하지만, `downloadPhoto(named:)` 에 대한 호출은 한번에 하나씩만 실행한다는 것입니다. 그 다음 내려받기를 시작하기 전에 각각의 사진을 완전히 내려받습니다. 하지만, 이 연산은 기다릴 필요가 없습니다-각각의 사진은 독립적으로, 또는 심지어 동시에, 내려받을 수 있습니다.
 
 비동기 함수를 호출하여 이를 자기 주변 코드와 병렬로 실행하게 하려면, 상수를 정의할 때 `let` 앞에 `async` 를 작성한 다음, 매 번 상수를 사용할 때마다 `await` 를 작성합니다. 
 
@@ -249,4 +249,6 @@ print(logger.max)  // 에러
 
 [^Conccurency]: 원문은 [Conccurency](https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html) 에서 확인할 수 있습니다.
 
-[^preemptive]: '선점 (preemptive)' 은 CPU 를 차지한 프로세스의 자원을 운영체제가 우선 순위에 따라 강제로 빼앗을 수 있는 방식을 의미합니다. '선점 (preemptive)' 에 대한 더 자세한 내용은, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다. 
+[^preemptive]: '선점 (preemptive)' 은 CPU 를 차지한 프로세스의 자원을 운영체제가 우선 순위에 따라 강제로 빼앗을 수 있는 방식을 의미합니다. '선점 (preemptive)' 에 대한 더 자세한 내용은, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
+
+[^sequence]: '시퀀스 (sequence)' 는 '수열' 을 의미하는 수학 용어로, 자료 구조 분야에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
