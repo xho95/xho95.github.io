@@ -188,15 +188,15 @@ let result = await handle.get()
 
 ```swift
 actor TemperatureLogger {
-    let label: String
-    var measurements: [Int]
-    private(set) var max: Int
+  let label: String
+  var measurements: [Int]
+  private(set) var max: Int
 
-    init(label: String, measurement: Int) {
-        self.label = label
-        self.measurements = [measurement]
-        self.max = measurement
-    }
+  init(label: String, measurement: Int) {
+    self.label = label
+    self.measurements = [measurement]
+    self.max = measurement
+  }
 }
 ```
 
@@ -216,12 +216,12 @@ print(await logger.max)
 
 ```swift
 extension TemperatureLogger {
-    func update(with measurement: Int) {
-        measurements.append(measurement)
-        if measurement > max {
-            max = measurement
-        }
+  func update(with measurement: Int) {
+    measurements.append(measurement)
+    if measurement > max {
+      max = measurement
     }
+  }
 }
 ```
 
