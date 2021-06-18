@@ -80,7 +80,7 @@ print("The second number is \(secondNumber).")
 
 '상수 타입 속성 (constant type property)' 을 선언하려면, '`static` 선언 수정자' 로 선언을 표시합니다. 클래스의 '상수 타입 속성' 은 암시적으로 항상 '최종 (final)' 이며; 하위 클래스의 재정의를 허용 또는 불허하려고 `class` 나 `final` 선언 수정자를 표시할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
 
-상수에 대한 더 많은 정보와 사용 시점에 대한 지침은, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 부분과 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 참고하기 바랍니다.
+상수에 대한 더 많은 정보 및 사용 시점에 대한 안내는, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 부분과 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CONSTANT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID355)
 
@@ -88,11 +88,11 @@ print("The second number is \(secondNumber).")
 
 _변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수 값' 을 도입하며 `var` 키워드로 선언합니다.
 
-변수 선언에는, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함하여, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언하는 여러 형식이 있습니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
+변수 선언은 여러가지 형식으로, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함한, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언합니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
 
-> [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 속성을 선언할 수도 있습니다.
+> 속성은, [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 선언할 수도 있습니다.
 
-[Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 '`override` 선언 수정자' 로 표시함으로써 속성을 하위 클래스에서 재정의할 수 있습니다.
+하위 클래스에 있는 속성은, [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 '`override` 선언 수정자' 로 표시함으로써 재정의할 수 있습니다.
 
 #### Stored Variables and Stored Variable Properties (저장 변수와 저장 변수 속성)
 
