@@ -127,7 +127,7 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수
 
 _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (설정자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-설정자-선언의-줄임-표현) 에서 설명한 것처럼, '설정자' 의 '기본 매개 변수 이름' 이 `newValue` 가 됩니다.
 
-'이름 붙인 저장 값'[^stored-named-values] 및 '저장 변수 속성' 과 달리, '이름 붙인 계산 값' 이나 '계산 속성' 의 값은 메모리에 저장되지 않습니다.
+'이름 붙인 저장 값'[^stored-named-values] 및 '저장 변수 속성' 과 달리, '이름 붙인 계산 값' 이나 '계산 속성' 의 값은 메모리에 저장하지 않습니다.
 
 계산 속성에 대한 더 자세한 정보와 예제를 보려면, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 부분을 참고하기 바랍니다.
 
