@@ -184,7 +184,7 @@ let result = await handle.get()
 
 ### Actors (행위자)
 
-클래스와 같이, '행위자' 는 참조 타입이므로, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 에 있는 '값 타입' 과 '참조 타입' 의 비교는 클래스 뿐만 아니라 '행위자' 에도 적용됩니다. 클래스와 달리, '행위자' 는 '변경 가능 상태' 에 한번에 오직 한 '임무' 만 접근을 허용하며, 이는 여러 개의 임무를 가진 코드가 똑같은 행위자 인스턴스와 안전하게 상호 작용하도록 합니다. 예를 들어, 다음은 온도를 기록하는 '행위자' 입니다:
+'클래스' 같이, '행위자' 는 참조 타입이므로, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 에 있는 '값 타입과 참조 타입 비교' 는 클래스 뿐 아니라 '행위자' 에도 적용됩니다. 클래스와 달리, '행위자' 는 자신의 '변경 가능 상태' 에 한번에 오직 한 '임무' 만 접근을 허용하며, 이는 여러 '임무' 에 있는 코드가 행위자의 동일한 인스턴스와 안전하게 상호 작용하도록 해줍니다. 예를 들어, 다음은 온도를 기록하는 '행위자' 입니다:
 
 ```swift
 actor TemperatureLogger {
