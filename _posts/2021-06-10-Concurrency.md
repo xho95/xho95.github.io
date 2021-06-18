@@ -72,11 +72,11 @@ show(photo)
 
 코드에서 `await` 로 표시하여 '멈춰달 수 있는 지점' 은 현재 코드 조각이 비동기 함수나 메소드의 반환을 기다리는 동안 일시 정지할 수 있음을 지시합니다. 이를 _쓰레드 넘겨주기 (yielding the thread)_ 라고도 하는데, 그 이면을 살펴보면, 스위프트가 현재 쓰레드에서의 코드 실행을 멈춰달고 그 대신 해당 쓰레드에서 일부 다른 코드를 실행하기 때문입니다. `await` 를 가진 코드는 실행을 멈춰달 수 있어야 하기 때문에, 프로그램의 정해진 자리에서만 비동기 함수나 메소드를 호출할 수 있습니다:
 
-* 비동기 함수, 메소드, 또는 속성 본문 안의 코드
-* `@main` 으로 표시한 구조체, 클래스, 또는 열거체의 정적 `main() 메소드 안의 코드
-* 아래 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보인 것처럼, '떼어 놓은 자식 임무 (detached child task)' 안의 코드
+* 비동기 함수나, 메소드, 또는 속성의 본문 코드
+* `@main` 으로 표시한 구조체, 클래스, 또는 열거체의 '정적 `main() 메소드' 안에 있는 코드
+* 아래 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에 보인 것 같이, '떼어 놓은 자식 임무 (detached child task)' 안에 있는 코드
 
-> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 동시성 작업 방법을 배우기 위한 단순한 코드를 작성할 때 유용합니다. 이 메소드는 아무 것도 안하지만, 반환하기 전에 최소 주어진 나노 초의 시간만큼 기다립니다. 다음은 네트워크 연산의 기다림을 모의 실험하기 위해 `sleep()` 을 사용하는 `listPhotos(inGallery:)` 함수 버전입니다.
+> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 동시성 작동 방법을 배우기 위한 단순한 코드의 작성 시에 유용합니다. 이 메소드는 아무 것도 안하지만, 반환 전에 최소한 주어진 나노 초 만큼은 기다립니다. 다음은 `sleep()` 을 사용하여 네트워크 연산의 기다림을 모의 실험하는 버전의 `listPhotos(inGallery:)` 함수입니다.
 > 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
