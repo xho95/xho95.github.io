@@ -96,17 +96,17 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수
 
 #### Stored Variables and Stored Variable Properties (저장 변수와 저장 변수 속성)
 
-다음의 형식은 '저장 변수 (stored variables)' 또는 '저장 변수 속성 (stored variable properties)'[^stored-variable-property] 을 선언합니다:
+다음 형식은 '저장 변수' 또는 '저장 변수 속성' 을 선언합니다:
 
-var `variable name-변수 이름`: `type-타입` = `expression-표현식`
+&nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` = `expression-표현식`
 
-이런 형식의 변수 선언은 '전역 범위 (global scope)' 나, 함수의 '지역 범위 (local scope)', 또는 클래스 및 구조체 선언인 상황에서 정의하게 됩니다. 이 형식의 변수 선언을 '전역 범위' 나 함수의 '지역 범위' 에서 선언할 때는, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언인 상황에서 선언할 때는, 이를 _저장 변수 속성 (stored variable property)_ 라고 합니다.
+이 형식의 변수 선언은 '전역 (global)' 이나, '함수 지역 (local)' 에서, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수를 '전역' 이나 '함수 지역' 에서 선언할 때는, _저장 변수 (stored variable)_ 를 가리킵니다. 클래스나 구조체 선언에서 선언할 때는, _저장 변수 속성 (stored variable property)_ 을 가리킵니다.
 
-'초기자 _표현식 (expression)_' 이 프로토콜 선언에서 있을 수는 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 선택 사항입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 없으면, 변수 선언은 (`:` _타입 (type)_ 이라는) '명시적인 타입 보조 설명' 을 반드시 포함해야 합니다.
+'초기자 _표현식 (expression)_' 은 프로토콜 선언에 있을 순 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 '옵션' 입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 변수 선언이 반드시 '(`:` _타입 (type)_ 형식의) 명시적인 타입 보조 설명' 을 포함해야 합니다.
 
 상수 선언에서와 마찬가지로, _변수 이름 (variable name)_ 이 '튜플 패턴' 이면, 튜플에 있는 각각의 항목 이름이 '초기자 _표현식 (expression)_' 에 있는 연관된 값과 연결됩니다.
 
-이름으로 연상되는 것처럼, 저장 변수 또는 저장 변수 속성의 값은 메모리에 저장됩니다.
+이름이 제시하는 것처럼, '저장 변수' 나 '저장 변수 속성' 의 값은 메모리에 저장됩니다.
 
 #### Computed Variables and Computed Properties (계산 변수와 계산 속성)
 
@@ -1274,8 +1274,6 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^immutable]: '상수' 는 값을 바꿀 수 없는 것인데, 'class' 같은 '참조 타입 (reference type)' 은 '참조 대상의 주소' 가 값이기 때문에, '참조 대상의 내용' 은 바꿀 수 있지만, 다른 대상을 참조하도록 '참조 대상의 주소' 를 바꿀 수는 없다는 의미입니다. 
 
 [^final]: 사실상 이미 'final' 인 상태라고 이해할 수 있습니다.
-
-[^stored-variable-property]: 이 책에는 '저장 변수 속성 (stored variable property)' 이라는 말과 '변수 저장 속성 (variable stored property)' 이라는 말을 같이 사용하고 있는데, 사실 이 둘은 같은 말입니다. '저장 변수 속성' 은 '저장 변수' 중에서 '속성' 에 해당하는 것이고, '변수 저장 속성' 은 '저장 속성' 중에서 '변수' 에 해당하는 것으로, 결국 같은 것입니다.
 
 [^stored-named-values]: 원문에서 '이름 붙인 저장 값 (stored named values)' 이라는 하는 것은 '저장 변수 (stored variable)' 를 의미하고 있습니다.
 
