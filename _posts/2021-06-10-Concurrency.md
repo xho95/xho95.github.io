@@ -172,15 +172,15 @@ let result = await handle.get()
 
 #### Task Cancellation (임무 취소)
 
-스위프트 동시성은 '협동 취소 모델 (cooperative cancellation model)' 을 사용합니다. 각각의 임무는 적절한 실행 순간에 취소됐는 지를 검사하고, 뭐가 됐든 적절한 방식으로 취소에 응답합니다. 하고 있는 작업에 따라, 이는 대체로 다음 중 하나를 의미합니다:
+스위프트 동시성은 '협동 취소 모델 (cooperative cancellation model)' 을 사용합니다. 각각의 임무는 적절한 실행 시점에 취소됐는지 검사하고, 적절한 무슨 방식으로든 취소에 응답합니다. 하고 있는 작업에 따라, 대체로 이는 다음 중 하나를 의미합니다:
 
 * `CancellationError` 같은 에러 던지기
-* `nil` 또는 '빈 집합체 (collection)' 반환하기
+* `nil` 이나 '비어 있는 집합체 (collection)' 반환하기
 * 부분적으로 완료한 작업 반환하기
 
-취소를 검사하려면, '임무' 를 취소하면 `CancellationError` 를 던지는, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하거나, 아니면 [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 의 값을 검사하고 자신의 코드에서 취소를 처리합니다. 예를 들어, '전시관' 에서 사진을 내려받는 임무는 '부분적인 내려받기' 는 취소하고 네트워크 연결을 닫아야 할지도 모릅니다.
+취소 검사를 하려면, '임무' 가 취소되면 `CancellationError` 를 던지는, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하든지, 아니면 [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 의 값을 검사하여 자신의 코드에서 취소 처리를 합니다. 예를 들어, '전시관에서 사진 내려받기' 같은 임무는 '부분적으로 내려받은 것' 을 삭제하고 네트워크 연결을 닫아야 할지도 모릅니다.
 
-수동으로 취소를 전파하려면, [Task.Handle.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
+취소를 수동으로 전파하려면, [Task.Handle.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
 
 ### Actors (행위자)
 
