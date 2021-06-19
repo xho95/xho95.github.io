@@ -664,15 +664,15 @@ _행위자 선언 (actor declaration)_ 은 프로그램에 '이름 붙인 행위
 
 행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이의 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는: 행위자의 '어떤 격리 상태' 와도 상호 작용할 수 없으며, 호출하는 쪽에서 사용할 때 `await` 로 표시하지 않는 등 행위자 밖의 코드인 것 처럼 실행합니다.
 
-행위자의 멤버는 '격리 안된 (nonisolated) 것' 이나 '비동기 (asynchronous) 인 것' 만 `@objc` 로 표시할 수 있습니다. 
+행위자의 멤버는 '격리 안된 (nonisolated)' 것이거나 '비동기 (asynchronous)' 인 것만 `@objc` 로 표시할 수 있습니다. 
 
-행위자에서 선언한 속성을 초기화하는 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
+행위자가 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
 행위자 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
 
-행위자는 참조 타입이며; 행위자의 인스턴스는, 변수나 상수에 할당할 때나, 인자로 함수 호출에 전달할 때, 복사라기 보다는, 참조 됩니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+행위자는 참조 타입이며; 행위자의 인스턴스는, 변수나 상수에 할당할 때, 또는 인자로 함수 호출에 전달할 때, 복사 보다는, '참조' 를 합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
-행위자 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
+행위자 타입[^structure-type] 의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
 
 > GRAMMAR OF A ACTOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID648)
 
@@ -1300,3 +1300,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^enumeration-function]: 마찬가지로, 이 말도 아래 예제를 참고하면, 열거체에서 `case someFuntion(x: Int)` 라고 하면 프로토콜에 있는 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족하게 된다는 의미입니다.
 
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
+
+[^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
