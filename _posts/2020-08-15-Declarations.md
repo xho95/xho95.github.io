@@ -458,17 +458,15 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 #### Asynchronous Functions and Methods (비동기 함수와 메소드)
 
-비동기로 돌아가는 함수와 메소드는 반드시 `async` 키워드로 표시해야 합니다. 이런 함수와 메소드를 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 이들의 형식은 다음과 같습니다:
+비동기로 돌아가는 함수와 메소드는 반드시 `async` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 이들의 형식은 다음과 같습니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) async -> `return type-반환 타입` {
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`
-<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) async -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-비동기 함수 또는 메소드 호출은 반드시 `await` 표현식으로 포장해야 합니다-즉, 이들은 반드시 `await` 연산자 영역 안에 있어야 합니다. 
+비동기 함수나 메소드에 대한 호출은 반드시 `await` 표현식으로 포장해야 합니다-즉, 반드시 `await` 연산자 영역 안에 있어야 합니다. 
 
-`async` 키워드는 함수 타입의 일부이며, '동기 (synchronous) 함수' 는 '비동기 함수' 의 하위 타입입니다. 그 결과, '비동기 함수' 를 예상한 곳에서 '동기 함수' 를 사용할 수 있습니다. 예를 들어, 동기 메소드를 가지고 비동기 메소드를 재정의할 수 있으며, 동기 메소드가 비동기 메소드가 요구하는 프로토콜 필수 조건을 만족할 수도 있습니다. 
+`async` 키워드는 함수 타입 내에 있는 것이며, '동기 (synchronous) 함수' 는 '비동기 함수' 의 하위 타입입니다. 그 결과, '비동기 함수' 를 예상하고 있는 곳에서 '동기 함수' 를 사용할 수 있습니다. 예를 들어, '비동기 메소드' 를 '동기 메소드' 로 재정의할 수 있으며, '비동기 메소드' 를 요구하는 '프로토콜 필수 조건' 을 '동기 메소드' 로 만족할 수도 있습니다. 
 
 #### Functions that Never Return (절대 반환하지 않는 함수)
 
@@ -645,36 +643,34 @@ _상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 �
 
 ### Actor Declaration (행위자 선언)
 
-_행위자 선언 (actor declaration)_ 은 '이름 붙인 행위자 타입' 을 프로그램에 도입합니다. '행위자 선언' 은 `actor` 키워드로 선언하며 형식은 다음과 같습니다:
+_행위자 선언 (actor declaration)_ 은 프로그램에 '이름 붙인 행위자 타입' 을 도입합니다. '행위자 선언' 은 `actor` 키워드로 선언하며 형식은 다음과 같습니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;actor `actor name-행위자 이름`: `adopted protocols-채택한 프로토콜` {
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`
-<br />
+&nbsp;&nbsp;&nbsp;&nbsp;actor `actor name-행위자 이름`: `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'행위자' 의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 정리자, 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 그리고 열거체 선언들도 포함할 수 있습니다. 다양한 종류의 선언들을 포함한 '행위자' 에 대한 논의와 여러 예제들은, [Actors (행위자)] 부분을 참고하기 바랍니다. 
+'행위자' 의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담고 있습니다. 이 _선언 (declarations)_ 들은 저장 및 계산 속성 둘 모두와, 인스턴스 메소드, 타입 메소드, 초기자, 단일 정리자, 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 그리고 열거체 선언을 포함하고 있을 수 있습니다. 다양한 종류의 선언을 포함한 '행위자' 에 대한 논의와 여러가지 예제는, [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
 
-'행위자 타입' 은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 열거체, 구조체, 또는 다른 '행위자' 를 상속할 수는 없습니다. 하지만, `@objc` 특성으로 표시한 '행위자' 는 `NSObjectProtocol` 프로토콜을 암시적으로 준수하며 '오브젝티브-C 런타임' 으로는 `NSObject` 의 하위 타입이라고 노출됩니다.
+'행위자 타입' 은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 열거체, 구조체, 또는 다른 '행위자' 를 상속할 수는 없습니다. 하지만, '`@objc` 특성' 으로 표시한 '행위자' 는 암시적으로 `NSObjectProtocol` 프로토콜을 준수하며 '오브젝티브-C 런타임' 에서는 `NSObject` 의 하위 타입으로 노출됩니다.
 
-이전에 선언한 '행위자' 의 인스턴스를 생성하는 방법은 두 가지가 있습니다:
+이전에 선언한 '행위자' 의 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 에서 선언한 초기자 중 하나를 호출합니다
-* 선언한 초기자가 없으며, 행위자 선언의 모든 속성에 초기 값이 주어진 경우라면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 기본 초기자를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 에서 선언한 초기자 중 하나를 호출합니다.
+* 선언한 초기자가 없는데, 행위자 선언의 모든 속성에 초기 값이 주어졌다면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 기본 초기자를 호출합니다.
 
-기본적으로, 행위자의 멤버는 해당 행위자에서 격리됩니다. 메소드 본문이나 속성의 획득자 같은, 코드는 해당 행위자에 대해서 실행됩니다. 행위자 안의 코드는 해당 코드가 똑같은 행위자에서 이미 실행 중이기 때문에 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 이 코드가 다른 행위자에서 '비동기로' 실행하는 코드임을 지시하기 위해 반드시 `await` 로 표시해야 합니다. '키 경로 (key paths)' 는 행위자의 '격리된 멤버' 를 참조할 수 없습니다. '행위자-격리 (actor-isolated) 저장 속성' 은 '입-출력 매개 변수' 로 '동기 함수' 에는 전달할 수 있지만, '비동기 함수' 로는 안됩니다. 
+기본적으로, 행위자의 멤버는 해당 행위자로 격리됩니다.[^isolate] 메소드 본문이나 속성의 획득자 같은, 코드는 해당 행위자 상에서 실행합니다. 행위자 안의 코드는 이미 해당 코드를 동일한 행위자 상에서 실행하고 있기 때문에 이와 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 이 코드를 또 다른 행위자 상에서 '비동기로' 실행하는 코드임을 지시하기 위해 반드시 `await` 를 표시해야 합니다. '키 경로 (key paths)' 는 행위자의 '격리된 멤버' 를 참조할 수 없습니다. '행위자로-격리된 (actor-isolated) 저장 속성' 은 '동기 함수' 로는 '입-출력 매개 변수' 로써 전달할 수 있지만, '비동기 함수' 로는 안됩니다. 
 
-행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이의 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는 행위자 밖의 코드인 것 같이 실행하는데; 행위자의 어떤 '격리 상태 (isolated)' 와도 상호 작용할 수 없으며, 호출하는 쪽에서 이를 사용할 때 `await` 로 표시하지 않습니다. 
+행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이의 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는: 행위자의 '어떤 격리 상태' 와도 상호 작용할 수 없으며, 호출하는 쪽에서 사용할 때 `await` 로 표시하지 않는 등 행위자 밖의 코드인 것 처럼 실행합니다.
 
-행위자의 멤버는 '격리 안된 (nonisolated) 것' 이나 '비동기 (asynchronous) 인 것' 만 `@objc` 로 표시할 수 있습니다. 
+행위자의 멤버는 '격리 안된 (nonisolated)' 것이거나 '비동기 (asynchronous)' 인 것만 `@objc` 로 표시할 수 있습니다. 
 
-행위자에서 선언한 속성을 초기화하는 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
+행위자가 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
 행위자 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
 
-행위자는 참조 타입이며; 행위자의 인스턴스는, 변수나 상수에 할당할 때나, 인자로 함수 호출에 전달할 때, 복사라기 보다는, 참조 됩니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+행위자는 참조 타입이며; 행위자의 인스턴스는, 변수나 상수에 할당할 때, 또는 인자로 함수 호출에 전달할 때, 복사 보다는, '참조' 를 합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
-행위자 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
+행위자 타입[^structure-type] 의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
 
 > GRAMMAR OF A ACTOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID648)
 
@@ -1300,3 +1296,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^enumeration-get-only]: 이 말은 아래 예제를 참고하면 열거체에서 `case someValue` 라고 하면 프로토콜에 있는 `static var someValue: Self { get }` 이라는 필수 조건을 만족하게 된다는 의미입니다.
 
 [^enumeration-function]: 마찬가지로, 이 말도 아래 예제를 참고하면, 열거체에서 `case someFuntion(x: Int)` 라고 하면 프로토콜에 있는 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족하게 된다는 의미입니다.
+
+[^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
+
+[^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
