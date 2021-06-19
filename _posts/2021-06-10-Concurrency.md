@@ -239,7 +239,7 @@ extension TemperatureLogger {
 print(logger.max)  // 에러
 ```
 
-`await` 의 작성 없이 `logger.max` 에 접근하는 것은 실패하는데 이는 '행위자' 의 속성이 행위자의 '격리된 지역 상태 (isolated local state)' 내에 있기 때문입니다. 스위프트는 오직 '행위자' 안의 코드만 행위자의 '지역 상태' 에 접근할 수 있다는 것을 보증합니다. 이 보증을 _행위자 격리 (actor isolation)_ 라고 합니다.
+`await` 의 작성 없이 `logger.max` 에 접근하면 실패하는데 이는 '행위자' 의 속성이 행위자의 '격리된 지역 상태 (isolated local state)' 내에 있기 때문입니다. 스위프트는 오직 '행위자' 안의 코드만 행위자의 '지역 상태' 에 접근할 수 있다는 것을 보증합니다. 이 보증을 _행위자 격리 (actor isolation)_ 라고 합니다.
 
 ### 다음 글
 
