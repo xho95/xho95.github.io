@@ -458,17 +458,15 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 #### Asynchronous Functions and Methods (비동기 함수와 메소드)
 
-비동기로 돌아가는 함수와 메소드는 반드시 `async` 키워드로 표시해야 합니다. 이런 함수와 메소드를 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 이들의 형식은 다음과 같습니다:
+비동기로 돌아가는 함수와 메소드는 반드시 `async` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 이들의 형식은 다음과 같습니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) async -> `return type-반환 타입` {
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`
-<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) async -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-비동기 함수 또는 메소드 호출은 반드시 `await` 표현식으로 포장해야 합니다-즉, 이들은 반드시 `await` 연산자 영역 안에 있어야 합니다. 
+비동기 함수나 메소드에 대한 호출은 반드시 `await` 표현식으로 포장해야 합니다-즉, 반드시 `await` 연산자 영역 안에 있어야 합니다. 
 
-`async` 키워드는 함수 타입의 일부이며, '동기 (synchronous) 함수' 는 '비동기 함수' 의 하위 타입입니다. 그 결과, '비동기 함수' 를 예상한 곳에서 '동기 함수' 를 사용할 수 있습니다. 예를 들어, 동기 메소드를 가지고 비동기 메소드를 재정의할 수 있으며, 동기 메소드가 비동기 메소드가 요구하는 프로토콜 필수 조건을 만족할 수도 있습니다. 
+`async` 키워드는 함수 타입 내에 있는 것이며, '동기 (synchronous) 함수' 는 '비동기 함수' 의 하위 타입입니다. 그 결과, '비동기 함수' 를 예상하고 있는 곳에서 '동기 함수' 를 사용할 수 있습니다. 예를 들어, '비동기 메소드' 를 '동기 메소드' 로 재정의할 수 있으며, '비동기 메소드' 를 요구하는 '프로토콜 필수 조건' 을 '동기 메소드' 로 만족할 수도 있습니다. 
 
 #### Functions that Never Return (절대 반환하지 않는 함수)
 
