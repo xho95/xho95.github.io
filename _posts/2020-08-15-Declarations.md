@@ -100,11 +100,11 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수
 
 &nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` = `expression-표현식`
 
-이 형식의 변수 선언은 '전역 (global)' 이나, '함수 지역 (local)' 에서, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수가 '전역' 이나 '함수 지역' 에서 선언될 때, _저장 변수 (stored variable)_ 를 가리킵니다. 클래스나 구조체 선언에서 선언할 때는, _저장 변수 속성 (stored variable property)_ 을 가리킵니다.
+이 형식의 변수 선언은 '전역 (global)' 이나, '함수 지역 (local)' 에서, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수를 '전역' 이나 '함수 지역' 에서 선언할 때는, _저장 변수 (stored variable)_ 를 가리킵니다. 클래스나 구조체 선언에서 선언할 때는, _저장 변수 속성 (stored variable property)_ 을 가리킵니다.
 
 '초기자 _표현식 (expression)_' 은 프로토콜 선언에 있을 순 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 '옵션' 입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 변수 선언이 반드시 '(`:` _타입 (type)_ 형식의) 명시적인 타입 보조 설명' 을 포함해야 합니다.
 
-상수 선언에서와 마찬가지로, _변수 이름 (variable name)_ 이 '튜플 패턴' 이면, 튜플에 있는 각각의 항목 이름이 '초기자 _표현식 (expression)_' 에 있는 연관된 값과 연결됩니다.
+상수 선언에서와 마찬가지로, _변수 이름 (variable name)_ 이 '튜플 패턴' 이면, 튜플의 각 항목 이름을 '초기자 _표현식 (expression)_' 에 있는 관련 값과 연결합니다.
 
 이름이 제시하는 것처럼, '저장 변수' 나 '저장 변수 속성' 의 값은 메모리에 저장됩니다.
 
@@ -121,7 +121,7 @@ _변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식의 변수 선언은 '전역 ' 이나, '함수 지역' 에서, 또는 클래스, 구조체, 열거체, 및 '익스텐션 (extension)' 선언에서 정의합니다. 이 형식의 변수가 '전역' 이나 '함수 지역' 에서 선언될 때, _계산 변수 (computed variable)_ 를 가리킵니다. 클래스나, 구조체, 또는 '익스텐션' 선언에서 선언할 때는, _계산 속성 (computed property)_ 을 가리킵니다.
+이 형식의 변수 선언은 '전역 ' 이나, '함수 지역' 에서, 또는 클래스, 구조체, 열거체, 및 '익스텐션 (extension)' 선언에서 정의합니다. 이 형식의 변수를 '전역' 이나 '함수 지역' 에서 선언할 때는, _계산 변수 (computed variable)_ 를 가리킵니다. 클래스나, 구조체, 또는 '익스텐션' 선언에서 선언할 때는, _계산 속성 (computed property)_ 을 가리킵니다.
 
 '획득자 (getter)' 는 값을 읽는 데 사용하고, '설정자 (setter)' 는 값을 쓰는 데 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 두 '절' 다 생략하고 단순히 '요청 값' 을 직접 반환할 수 있습니다. 그러나 '설정자 절' 을 제공한다면, 반드시 '획득자 절' 도 제공해야 합니다.
 
@@ -133,32 +133,32 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설�
 
 #### Stored Variable Observers and Property Observers (저장 변수 관찰자와 저장 속성 관찰자)
 
-`willSet` 과 `didSet` 관찰자를 가진 '저장 변수' 나 '저장 속성' 을 선언할 수도 있습니다. 관찰자와 같이 선언된 저장 변수나 저장 속성의 형식은 다음과 같습니다:
+`willSet` 과 `didSet` 관찰자를 가진 '저장 변수나 속성' 을 선언할 수도 있습니다. 관찰자를 가진 저장 변수나 속성의 선언 형식은 다음과 같습니다:
 
-var `variable name-변수 이름`: `type-타입` = `expression-표현식` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;willSet(`setter name-설정자 이름`) {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;}<br />
-&nbsp;&nbsp;&nbsp;&nbsp;didSet(`setter name-설정자 이름`) {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;}<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` = `expression-표현식` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;willSet(`setter name-설정자 이름`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;didSet(`setter name-설정자 이름`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-이런 형식의 변수 선언은 '전역 범위 (global scope)', '함수의 지역 범위 (local scope)', 또는 클래스나 구조체 선언인 상황에서 정의합니다. 이 형식의 변수 선언을 '전역 범위' 또는 '함수의 지역 범위' 에서 선언할 때의, 관찰자를 _저장 변수 관찰자 (stored variable observers)_ 라고 합니다. 클래스 또는 구조체 선언인 상황에서 선언할 때의, 관찰자는 _속성 관찰자 (property observers)_ 라고 합니다.
+이 형식의 변수 선언은 '전역 (global)' 이나, 함수 지역, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수 선언을 '전역' 이나 '함수 지역' 에서 선언할 때의, 관찰자는 _저장 변수 관찰자 (stored variable observers)_ 를 가리킵니다. 클래스나 구조체 선언에서 선언할 때의, 관찰자는 _속성 관찰자 (property observers)_ 를 가리킵니다.
 
-속성 관찰자는 어떤 저장 속성에라도 추가할 수 있습니다. 속성 관찰자는 또한, [Overriding Property Observers (속성 관찰자 재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-property-observers-속성-관찰자-재정의하기) 에서 설명한 것처럼, 하위 클래스에서 속성을 재정의함으로써 상속한 어떤 속성에든 (저장 속성이든 계산 속성이든 상관없이) 추가할 수 있습니다.
+어떤 저장 속성에든 속성 관찰자를 추가할 수 있습니다. 속성 관찰자는, [Overriding Property Observers (속성 관찰자 재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-property-observers-속성-관찰자-재정의하기) 에서 설명한 것처럼, 하위 클래스 안에서 속성을 '재정의' 함으로써 어떤 (저장 또는 계산) 상속 속성에도 추가할 수 있습니다.
 
-초기자 _표현식 (expression)_[^expression] 은 클래스나 구조체 선언인 상황에서는 선택 사항이지만, 그 외 다른 곳에서는 필수입니다. _타입 (type)_ 보조 설명은 초기자 _표현식 (expression)_ 으로부터 타입을 추론할 수 있을 때는 선택 사항입니다. 속성의 값을 맨 처음 읽을 때 이 표현식을 평가합니다. 이를 읽지 않고 속성의 초기 값을 덮어 쓰면, 속성에 맨 처음 쓰기 전에 이 표현식을 평가합니다.
+초기자 _표현식 (expression)_[^expression] 은 클래스나 구조체 선언에서는 옵션이지만, 다른 곳에서는 필수입니다. _타입 (type)_ 보조 설명은 초기자 _표현식 (expression)_ 으로 타입을 추론할 수 있을 때는 옵션입니다. 이 표현식은 최초로 속성 값을 읽을 때 평가합니다. 이를 읽지 않고 속성의 초기 값을 덮어 쓰면, 이 표현식은 최초로 속성에 쓰기 전 평가합니다.
 
-`willSet` 과 `didSet` 관찰자는 변수나 속성의 값을 설정할 때 이를 관찰하고 (적절하게 응답하는) 방법을 제공합니다. 관찰자는 변수나 속성을 최초로 초기화할 때는 호출되지 않습니다. 그 대신, 초기화인 상황 외에서 값을 설정할 때만 호출됩니다.
+`willSet` 과 `didSet` 관찰자는 변수나 속성 값을 설정하고 있을 때 이를 관찰하고 (적절하게 응답하는) 방법을 제공합니다. 관찰자는 변수나 속성이 최초로 초기화될 때는 호출하지 않습니다. 그 대신, 초기화 밖에서 값이 설정될 때만 호출합니다.
 
-`willSet` 관찰자는 변수나 속성의 값을 설정하기 바로 직전에 호출됩니다. 새 값은 `willSet` 관찰자에 상수로 전달되므로, `willSet` 절의 구현부에서 바꿀 수 없습니다. `didSet` 관찰자는 새 값을 설정한 바로 직후에 호출됩니다. `willSet` 관찰자와는 대조적으로, `didSet` 관찰자로 전달되는 변수나 속성의 예전 값은 아직 접근이 필요한 경우에 대비하기 위함입니다. 그렇다 하더라도, 자신의 `didSet` 관찰자 절에서 변수나 속성에 값을 할당하는 경우, 새로 할당한 해당 값이 방금 설정되어서 `willSet` 관찰자로 전달된 것을 대체할 것입니다.
+`willSet` 관찰자는 변수나 속성 값을 설정하기 직전에 호출됩니다. 새 값은 `willSet` 관찰자에 상수로 전달되며, 따라서 `willSet` 절의 구현에서 바꿀 수 없습니다. `didSet` 관찰자는 새 값을 설정한 직후에 호출됩니다. `willSet` 관찰자와는 대조적으로, 여전히 접근이 필요한 경우를 위해 예전 변수나 속성 값을 `didSet` 관찰자에 전달합니다. 그렇다 하더라도, 자신의 '`didSet` 관찰자 절' 안에서 변수나 속성 값을 할당하면, 새로 할당한 값이 방금 설정하여 `willSet` 관찰자로 전달됐던 것을 대체할 것입니다.
 
-`willSet` 과 `didSet` 절에 있는 _설정자 이름 (setter name)_ 과 이를 둘러싼 괄호는 선택 사항입니다. '설정자 이름' 을 제공하는 경우, 이를 `willSet` 과 `didSet` 관찰자의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않는 경우, `willSet` 관찰자의 '기본 매개 변수 이름' 은 `newValue` 이고 `didSet` 관찰자의 '기본 매개 변수 이름' 은 `oldValue` 입니다.
+`willSet` 과 `didSet` 절의 _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, `willSet` 과 `didSet` 관찰자의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, `willSet` 관찰자의 '기본 매개 변수 이름' 은 `newValue` 이고 `didSet` 관찰자의 '기본 매개 변수 이름' 은 `oldValue` 입니다.
 
-`willSet` 절을 제공할 때 `didSet` 절은 선택 사항입니다. 마찬가지로, `didSet` 절을 제공할 때 `willSet` 절은 선택 사항입니다.
+`willSet` 절을 제공할 때는 `didSet` 절이 옵션입니다. 마찬가지로, `didSet` 절을 제공할 때는 `willSet` 절이 옵션입니다.
 
-`didSet` 관찰자의 본문에서 '예전 값' 을 참조하면, 예전 값을 사용 가능하게 만들기 위해, 관찰자 전에 '획득자 (getter)' 를 호출합니다. 그 외 다른 경우라면, 새 값을 저장하면서 상위 클래스의 '획득자' 를 호출하지 않습니다. 아래 예제는 상위 클래스에서 정의한 계산 속성이 관찰자를 추가하기 위하여 하위 클래스에서 재정의되는 것을 보여줍니다:
+`didSet` 관찰자 본문에서 '예전 값' 을 참조하면, '예전 값' 이 사용 가능하도록, 관찰자에 앞서 '획득자' 를 호출합니다. 그 외의 경우, 상위 클래스 '획득자' 의 호출 없이 '새 값' 을 저장합니다. 아래 예제는 상위 클래스에서 정의하고 관찰자 추가를 위해 하위 클래스에서 재정의한 계산 속성을 보여줍니다: 
 
 ```swift
 class Superclass {
@@ -169,8 +169,8 @@ class Superclass {
   }
 }
 
-// 이 하위 클래스는 관찰자에서 oldValue 를 참조하지 않으므로,
-// 상위 클래스의 획득자는 값을 출력할 때 딱 한 번 호출됩니다.
+// 이 하위 클래스는 자신의 관찰자에서 oldValue 를 참조하지 않으므로,
+// 상위 클래스 획득자는 값을 출력할 때 딱 한 번만 호출됩니다.
 class New: Superclass {
   override var x: Int {
     didSet { print("New value \(x)") }
@@ -178,12 +178,12 @@ class New: Superclass {
 }
 let new = New()
 new.x = 100
-// "Setter was called" 를 출력합니다.
-// "Getter was called" 를 출력합니다.
-// "New value 100" 를 출력합니다.
+// "Setter was called" 를 인쇄합니다.
+// "Getter was called" 를 인쇄합니다.
+// "New value 100" 를 인쇄합니다.
 
-// 이 하위 클래스는 관찰자에서 oldValue 를 참조하므로,
-// 상위 클래스의 획득자는 설정자 전에 한 번, 그리고 값을 출력할 때 다시 한 번 호출됩니다.
+// 이 하위 클래스는 자신의 관찰자에서 oldValue 를 참조하므로,
+// 상위 클래스 획득자는 설정자에 앞서 한 번, 값을 출력할 때 다시 한 번 호출됩니다.
 class NewAndOld: Superclass {
   override var x: Int {
     didSet { print("Old value \(oldValue) - new value \(x)") }
@@ -191,17 +191,17 @@ class NewAndOld: Superclass {
 }
 let newAndOld = NewAndOld()
 newAndOld.x = 200
-// "Getter was called" 를 출력합니다.
-// "Setter was called" 를 출력합니다.
-// "Getter was called" 를 출력합니다.
-// "Old value 12 - new value 200" 를 출력합니다.
+// "Getter was called" 를 인쇄합니다.
+// "Setter was called" 를 인쇄합니다.
+// "Getter was called" 를 인쇄합니다.
+// "Old value 12 - new value 200" 를 인쇄합니다.
 ```
 
-속성 관찰자에 대한 더 많은 정보와 이의 사용 방법에 대한 예제를 보려면, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 를 참고하기 바랍니다.
+속성 관찰자에 대한 더 많은 정보와 사용 방법에 대한 예제는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
 #### Type Variable Properties (타입 변수 속성)
 
-'타입 변수 속성 (type variable property)' 을 선언하려면, 선언을 `static` 선언 수정자로 표시합니다. 클래스는 '타입 계산 속성' 을 `class` 선언 수정자로 표시하여 하위 클래스에서 상위 클래스의 구현을 재정의하도록 할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
+'타입 변수 속성' 을 선언하려면, '`static` 선언 수정자' 로 선언을 표시합니다. 클래스는 하위 클래스에 의한 상위 클래스 구현의 재정의를 허용하기 위해 '타입 계산 속성'[^type-computed-properties] 을 '`class` 선언 수정자' 로 대신 표시할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분에서 논의합니다.
 
 > GRAMMAR OF A VARIABLE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID356)
 
@@ -1253,7 +1253,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^expression]: 여기서의 '표현식 (expression)' 은 위 예제 양식에 있는 'expression' 을 말합니다. 클래스 선언이나 구조체 선언에서는 이 'expression' 부분이 없어도 된다는 말입니다.
+[^expression]: 여기서의 '표현식 (expression)' 은 위에 있는 형식의 `expression-표현식` 부분을 말합니다. 클래스나 구조체 선언에서는 이 `expression-표현식` 부분이 없어도 된다는 의미입니다.
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
@@ -1300,3 +1300,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
+
+[^type-computed-properties]: '타입 변수 속성 (type variable property)' 이 아니라, '타입 계산 속성 (type computed property)' 입니다. '타입 저장 속성 (type stored property)' 는 해당하지 않습니다. 
