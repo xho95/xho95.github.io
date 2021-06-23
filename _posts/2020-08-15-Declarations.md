@@ -207,37 +207,37 @@ newAndOld.x = 200
 
 ### Type Alias Declaration (타입 별명 선언)
 
-_타입 별명 선언 (type alias declaration)_ 은 기존 타입에 '이름 붙인 별명' 을 프로그램에 도입합니다. '타입 별명 선언' 은 `typealias` 키워드로 선언하며 형식은 다음과 같습니다:
+_타입 별명 선언 (type alias declaration)_ 은 '기존 타입에 이름 붙인 별명' 을 프로그램에 도입합니다. '타입 별명 선언' 은 `typealias` 키워드로 선언하며 형식은 다음과 같습니다:
 
-typealias `name-이름` = `existing type-기존 타입`
+&nbsp;&nbsp;&nbsp;&nbsp;typealias `name-이름` = `existing type-기존 타입`
 
-타입 별명을 선언한 후에는, 프로그램 어디서나 별명인 _이름 (name)_ 을 _기존 타입 (existing type)_ 대신 사용할 수 있습니다. _기존 타입 (existing type)_ 은 '이름 붙인 타입' 이거나 '복합 타입' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하는 것이 아닙니다; 이는 단순히 기존 타입을 참조하기 위한 이름을 허용하는 것입니다.
+'타입 별명' 을 선언한 후엔, 프로그램 어디서나 _기존 타입 (existing type)_ 대신 '별명 붙인 _이름 (name)_' 을 사용할 수 있습니다. _기존 타입 (existing type)_ 은 '이름 붙인 타입' 이거나 '복합 타입' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하진 않으며; 단순히 기존 타입을 참조하는 이름을 허용하는 것입니다.
 
-타입 별명 선언은 '제네릭 (일반화된) 매개 변수' 를 사용하여 '기존 제네릭 타입' 에 이름을 부여할 수 있습니다. 이 타입 별명은 기존 타입의 일부 또는 모든 제네릭 매개 변수에 대해서 '구체적으로 고정된 타입 (concrete type)' 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
+'타입 별명 선언' 은 '기존 일반화 타입' 에 이름을 부여하기 위해 '일반화 (generic) 매개 변수' 를 사용할 수 있습니다. 타입 별명은 기존 타입의 일부 또는 모든 '일반화 매개 변수' 에 '고정 (concrete) 타입' 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 typealias StringDictionary<Value> = Dictionary<String, Value>
 
-// 다음의 딕셔너리들은 같은 타입입니다.
+// 다음 딕셔너리는 똑같은 타입입니다.
 var dictionary1: StringDictionary<Int> = [:]
 var dictionary2: Dictionary<String, Int> = [:]
 ```
 
-타입 별명이 '제네릭 (일반화된) 매개 변수' 와 같이 선언할 때는, 해당 매개 변수의 구속 조건이 반드시 기존 타입의 제네릭 매개 변수에 대한 구속 조건과 정확하게 일치해야 합니다. 예를 들면 다음과 같습니다:
+'일반화 매개 변수를 가진 타입 별명' 을 선언할 때는, '해당 매개 변수에 대한 구속 조건' 이 '기존 타입의 일반화 매개 변수에 대한 구속 조건' 과 반드시 정확하게 일치해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
 ```
 
-타입 별명과 기존 타입은 서로 바꿔서 사용할 수 있어야 하기 때문에, 타입 별명이 추가적인 '제네릭 구속 조건 (generic constraints)' 을 도입할 수는 없습니다.
+타입 별명과 기존 타입은 상호 교환해서 사용 가능해야 하기 때문에, 타입 별명에 추가적인 '일반화 구속 조건 (generic constraints)' 을 도입할 순 없습니다.
 
-타입 별명은 선언에서 모든 '제네릭 매개 변수' 를 생략하는 것으로써 기존 타입의 '제네릭 매개 변수' 를 전달할 수 있습니다. 예를 들어, 아래에서 선언한 `Diccionario` 타입 별명은 `Dictionary` 와 똑같은 '제네릭 매개 변수' 와 '구속 조건' 을 가집니다.
+타입 별명은 '선언에 있는 모든 일반화 매개 변수를 생략함' 으로써 '기존 타입의 일반화 매개 변수' 를 발송할 수 있습니다. 예를 들어, 다음에 선언한 `Diccionario` 라는 타입 별명은 `Dictionary` 와 똑같은 '일반화 매개 변수 및 구속 조건' 을 가집니다.
 
 ```swift
 typealias Diccionario = Dictionary
 ```
 
-프로토콜 선언 내에서, 타입 별명은 자주 사용하는 타입에 대해 더 짧고 더 편리한 이름을 부여할 수 있습니다. 예를 들면 다음과 같습니다:
+'프로토콜 선언' 안에서는, 자주 사용하는 타입에 타입 별명으로 더 짧고 편리한 이름을 줄 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 protocol Sequence {
@@ -250,9 +250,9 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 }
 ```
 
-이 타입 별명이 없다면, `sum` 함수는 '결합된 타입' 을 `T.Element` 가 아니라 `T.Iterator.Element` 라고 참조해야 할 것입니다.
+이 타입 별명 없이는, `sum` 함수가 '결합 타입' 을 `T.Element` 대신 `T.Iterator.Element` 라고 참조했을 것입니다.
 
-[Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합된-타입-선언) 을 참고하기 바랍니다.
+[Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 도 참고하기 바랍니다.
 
 > GRAMMAR OF A TYPE ALIAS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID361)
 
@@ -775,7 +775,7 @@ subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set 
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
-#### Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)
+#### Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)
 
 프로토콜은 `associatedtype` 키워드를 사용하여 '결합된 타입 (associated types)' 을 선언합니다. '결합된 타입' 은 프로토콜의 선언에서 사용되는 타입을 위한 '별명 (alias)' 을 제공합니다. '결합된 타입' 은 '일반화된 (generic) 매개 변수 절' 의 '타입 매개 변수' 와 비슷하지만, 이를 선언하는 프로토콜의 `Self` 와 '결합되어 (associated)' 있습니다. 해당 상황에서, `Self` 는 프로토콜을 '최종적으로 (eventual) 준수하고 있는 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 을 참고하기 바랍니다.
 
@@ -909,7 +909,7 @@ extension `type name-타입 이름` where `requirements-필수 조건` {<br />
 
 _타입 이름 (type name)_ 이 클래스, 구조체, 또는 열거체 타입인 경우, '익스텐션' 은 해당 타입을 확장합니다. _타입 이름 (type name)_ 이 프로토콜 타입인 경우, '익스텐션' 은 해당 프로토콜을 준수하는 모든 타입을 확장합니다.
 
-결합된 타입을 가지는 '제네릭 타입 (generic type; 일반화된 타입)' 또는 프로토콜을 확장하는 '익스텐션 선언' 은 _필수 조건 (requirements)_ 을 포함할 수 있습니다. 확장된 타입의 인스턴스 또는 확장된 프로토콜을 준수하는 타입의 인스턴스가 _필수 조건 (requirements)_ 을 만족하는 경우, 이 인스턴스는 선언에서 지정한 '작동 방식 (behavior)' 을 가지게 됩니다.
+결합된 타입을 가지는 '일반화 타입' 또는 프로토콜을 확장하는 '익스텐션 선언' 은 _필수 조건 (requirements)_ 을 포함할 수 있습니다. 확장된 타입의 인스턴스 또는 확장된 프로토콜을 준수하는 타입의 인스턴스가 _필수 조건 (requirements)_ 을 만족하는 경우, 이 인스턴스는 선언에서 지정한 '작동 방식 (behavior)' 을 가지게 됩니다.
 
 '익스텐션 선언' 은 초기자 선언을 가질 수 있습니다. 그렇다 하더라도, 확장하려는 타입이 다른 모듈에서 정의된 경우, 초기자 선언은 해당 타입의 멤버가 알맞게 초기화되는 것을 보장하도록 해당 모듈에서 이미 정의한 초기자로 위임을 반드시 해야 합니다.
 

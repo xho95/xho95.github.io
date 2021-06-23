@@ -195,7 +195,7 @@ categories: Swift Language Grammar Revision History
 
   가끔씩, 모호함을 피하기 위해 타입 정보를 반복할 때도 있지만, 일반적으로 타입보다는 매개 변수의 _역할 (role)_ 을 설명하는 단어를 사용하는 것이 더 좋습니다. 자세한 것은 다음 항목을 참고합니다.
 
-* **변수, 매개 변수, 및 결합된 타입은 그 역할에 따라 이름을 지으며,** 타입 구속 조건으로 짓지 않도록 합니다.
+* **변수, 매개 변수, 및 결합 타입은 그 역할에 따라 이름을 지으며,** 타입 구속 조건으로 짓지 않도록 합니다.
 
   ```swift
   // 잘못된 예제
@@ -221,7 +221,7 @@ categories: Swift Language Grammar Revision History
   }
   ```
 
-  '결합된 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어서 프로토콜 이름 _이 (is)_ 역할인 경우라면, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피합니다:
+  '결합 타입 (associated type)' 이 프로토콜 구속 조건에 너무 밀접하게 연결되어서 프로토콜 이름 _이 (is)_ 역할인 경우라면, 프로토콜 이름에 `Protocol` 을 덧붙여서 충돌을 피합니다:
 
   ```swift
   protocol Sequence {
