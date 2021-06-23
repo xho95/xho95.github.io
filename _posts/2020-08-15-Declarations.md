@@ -258,29 +258,29 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 ### Function Declaration (함수 선언)
 
-_함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드를 도입합니다. 클래스, 구조체, 열거체, 및 프로토콜에서 선언한 함수는 _메소드 (method)_ 라고 합니다. '함수 선언' 은 `func` 키워드로 선언하며 다음 형식을 가집니다:
+_함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드를 도입합니다. 클래스, 구조체, 열거체, 또는 프로토콜에서 선언한 함수는 _메소드 (method)_ 를 가리킵니다. '함수 선언' 은 `func` 키워드로 선언하며 형식은 다음과 같습니다:
 
-func `function name-함수 이름`(`parameters-매개 변수`) -> `return type-반환 타입` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-함수가 `Void` 라는 반환 타입을 가진 경우, 다음 처럼 반환 타입을 생략할 수 있습니다:
+함수의 반환 타입이 `Void` 면, 반환 타입을 다음 처럼 생략할 수 있습니다:
 
-func `function name-함수 이름`(`parameters-매개 변수`) {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-각 매개 변수는 타입을 반드시 포함해야 합니다-이는 추론할 수 있는 것이 아닙니다. 매개 변수의 타입 앞에 `inout` 을 작성하면, 함수 영역 안에서 매개 변수를 수정할 수 있습니다. '입-출력 매개 변수' 는, 아래의, [In-Out Parameters (입-출력 매개 변수)](#in-out-parameters-입-출력-매개-변수) 에서 자세하게 논의합니다.
+각 매개 변수의 타입은 반드시 포함해야 합니다-이는 추론할 수 없습니다. 매개 변수 타입 앞에 `inout` 을 작성하면, 매개 변수를 함수 영역 안에서 수정할 수 있습니다. '입-출력 (in-out) 매개 변수' 는, 아래의, [In-Out Parameters (입-출력 매개 변수)](#in-out-parameters-입-출력-매개-변수) 에서 자세하게 논의합니다.
 
-단일 표현식만 포함한 함수 선언 _구문 (statements)_ 은 해당 표현식의 값을 반환하는 것으로 이해합니다. 이 암시적인 '반환 구문 표현' 은 표현식의 타입과 함수의 반환 타입이 `Void` 가 아니며 어떤 'case 값' 도 가지지 않는 `Never` 같은 열거체가 아닐 때에만 고려됩니다.
+'함수 선언' 의 _구문 (statements)_ 이 '단일 표현식' 만 포함하고 있으면 '해당 표현식의 값' 을 반환한다고 이해합니다. 표현식의 타입과 함수의 반환 타입이 `Void` 가 아니며 `Never` 같이 '어떤 case 값도 가지지 않는 열거체' 가 아닐 때만 이 '암시적인 반환 구문' 을 고려합니다.
 
-함수는 튜플 타입을 함수의 반환 타입으로 사용하여 여러 개의 값을 반환할 수 있습니다.
+함수는 반환 타입으로 '튜플 타입' 을 사용하여 여러 개의 값을 반환할 수 있습니다.
 
-'함수 정의 (function definition)'[^function-definition] 는 다른 '함수 선언' 안에 있을 수 있습니다. 이런 종류의 함수를 _중첩 함수 (nested function)_ 라고 합니다.
+'함수 정의 (function definition)'[^function-definition] 가 또 다른 '함수 선언' 안에 있을 수 있습니다. 이런 종류의 함수를 _중첩 함수 (nested function)_ 라고 합니다.
 
-중첩 함수는-'입-출력 매개 변수' 같이-절대로 벗어나지 않음을 보증하거나 또는 '벗어나지 않는 (nonescaping) 함수 인자' 로 전달된 값을 붙잡을 경우 '벗어나지 않는 (nonescaping)' 것입니다. 그 외 경우라면, 중첩 함수는 '벗어나는 (escaping) 함수' 입니다.
+중첩 함수는-'입-출력 매개 변수' 같이-절대 벗어나지 않음을 보증한 또는 '벗어나지 않는 (nonescaping) 함수 인자' 로 전달한 값을 붙잡으면 '벗어나지 않는 (nonescaping) 것' 입니다.[^escaping] 그 외의 경우, 중첩 함수는 '벗어나는 (escaping) 함수' 입니다.
 
-중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 를 참고하기 바랍니다.
+중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 부분을 참고하기 바랍니다.
 
 #### Parameter Names (매개 변수 이름)
 
@@ -682,7 +682,7 @@ protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프
 &nbsp;&nbsp;&nbsp;&nbsp;`protocol member declarations-프로토콜 멤버 선언`<br />
 }
 
-프로토콜의 본문은 '0' 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 담고 있는데, 이는 이 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 하는 '준수 필수 조건 (conformance requirements)' 을 설명합니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 정해진 속성, 메소드, 초기자, 그리고 첨자 연산을 반드시 구현해야 한다고 선언할 수 있습니다. 프로토콜은 또한, 프로토콜의 다양한 선언들 간의 관계를 지정할 수 있는, _결합된 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 수는 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 설명합니다.
+프로토콜의 본문은 '0' 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 담고 있는데, 이는 이 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 하는 '준수 필수 조건 (conformance requirements)' 을 설명합니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 정해진 속성, 메소드, 초기자, 그리고 첨자 연산을 반드시 구현해야 한다고 선언할 수 있습니다. 프로토콜은 또한, 프로토콜의 다양한 선언들 간의 관계를 지정할 수 있는, _결합 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 수는 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 설명합니다.
 
 프로토콜 타입은 어떤 개수의 다른 프로토콜이라도 상속할 수 있습니다. 한 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건' 집합을 한데 '모아서 (aggregated)', 현재 프로토콜을 상속하는 어떤 타입이든 반드시 이 모든 필수 조건들을 다 준수해야 합니다. '프로토콜 상속' 을 사용하는 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 을 참고하기 바랍니다.
 
@@ -1273,7 +1273,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^stored-named-values]: 원문에서 말하는 '이름 붙인 저장 값 (stored named values)' 은 '저장 변수 (stored variable)' 를 의미합니다.
 
-[^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 함수 본문 전체를 의미하기 때문에 '함수 정의 (function definition)' 라고 하는 것이 맞습니다.
+[^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 '함수 본문 전체' 를 의미하기 위해 '함수 정의 (function definition)' 라는 표현을 사용했습니다.
 
 [^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다.
 
@@ -1302,3 +1302,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
 [^type-computed-properties]: '타입 변수 속성 (type variable property)' 이 아니라, '타입 계산 속성 (type computed property)' 입니다. '타입 저장 속성 (type stored property)' 는 해당하지 않습니다. 
+
+[^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 참고하기 바랍니다.
