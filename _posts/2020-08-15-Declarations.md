@@ -337,11 +337,11 @@ func someFunction(a: inout Int) -> () -> Int {
 
 ```swift
 func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
-  // 지역 복사본을 만들고 수동으로 복사하여-되돌립니다.
+  // 지역 복사본을 만들고 수동 복사로-되돌립니다.
   var localX = x
   defer { x = localX }
 
-  // localX 에 대해 비동기로 연산하고, 반환 전까지 기다립니다.
+  // localX 에 대한 비동기 연산을 한 다음, 반환 전에 기다립니다.
   queue.async { someMutatingOperation(&localX) }
   queue.sync {}
 }
@@ -357,17 +357,17 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 &nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입` = `default argument value-기본 설정 인자 값`
 
-'밑줄 (`_`) 매개 변수' 는 명시적으로 무시하며 함수 본문 안에서 접근할 수 없습니다.
+'밑줄 (`_`) 매개 변수' 는 명시적으로 무시하는 것으로 함수 본문 안에서 접근할 수 없습니다.
 
-'기초 타입 이름' 바로 뒤에 세 점 (`...`) 이 붙은 매개 변수는 '가변 매개 변수 (variadic parameter)' 라고 이해합니다. '가변 매개 변수' 바로 뒤에 있는 매개 변수는 반드시 인자 이름표를 가져야 합니다. 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름' 의 원소를 담은 배열이라고 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. 가변 매개 변수를 사용하는 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 를 참고하기 바랍니다.
+'기초 타입 이름' 바로 뒤에 세 점 (`...`) 을 가진 매개 변수는 '가변 (variadic) 매개 변수' 인 것으로 이해합니다. '가변 매개 변수' 바로 뒤의 매개 변수는 '인자 이름표' 를 반드시 가져야 합니다.[^variadic-label] 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름의 원소' 들을 담고 있는 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. '가변 매개 변수' 의 사용 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 참고하기 바랍니다.
 
-타입 뒤에 '등호 (`=`)' 와 표현식을 가진 매개 변수는 주어진 표현식의 '기본 값' 을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 평가합니다. 함수를 호출할 때 매개 변수를 생략하면, 기본 값을 대신 사용합니다.
+자신의 타입 뒤에 '등호 (`=`) 기호와 표현식' 을 가진 매개 변수는 '표현식으로 주어진 기본 값' 을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 평가합니다. 함수 호출 시에 매개 변수를 생략하면, 그 대신 '기본 값' 을 사용합니다.
 
 ```swift
 func f(x: Int = 42) -> Int { return x }
 f()       // 유효, 기본 값 사용
-f(x: 7)   // 유효, 제공한 값을 사용
-f(7)      // 무효, 인자 이름표를 누락함
+f(x: 7)   // 유효, 제공힌 값 사용
+f(7)      // 무효, 인자 이름표 누락
 ```
 
 #### Special Kinds of Methods (특수한 종류의 메소드)
@@ -1304,3 +1304,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^type-computed-properties]: '타입 변수 속성 (type variable property)' 이 아니라, '타입 계산 속성 (type computed property)' 입니다. '타입 저장 속성 (type stored property)' 는 해당하지 않습니다. 
 
 [^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 참고하기 바랍니다.
+
+[^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 
