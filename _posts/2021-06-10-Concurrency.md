@@ -158,7 +158,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 #### Unstructured Concurrency (구조화 안된 동시성)
 
-이전 부분에서 설명한 '동시성에 대한 구조화된 접근 방식' 에 더하여, 스위프트는 '구조화 안된 동시성' 도 지원합니다. '임무 그룹' 을 이루는 '임무' 와는 달리, _구조화 안된 임무 (unstructured task)_ 는 '부모 임무' 를 가지지 않습니다. '구조화 안된 임무' 는 프로그램에 필요하다면 무슨 방식으로든 관리하는 완전한 유연함을 가지지만, 올바르게 하기 위한 책임도 완전히 져야 합니다. 현재의 '행위자' 에서 실행할 '구조화 안된 임무' 를 생성하려면, [async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 함수를 호출합니다. 특히 _떼어 놓은 임무 (detached task)_ 라고 더 잘 알려진, '현재의 행위자를 이루지는 않을 구조화 안된 임무' 를 생성하려면, [asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 를 호출합니다. 이 함수 둘 다-예를 들어, 결과를 기다리거나 취소하기 위해-임무와 상호 작용하게 해주는 '임무 핸들 (task handle)' 을 반환합니다.
+이전 부분에서 설명한 '동시성에 대한 구조화된 접근 방식' 에 더하여, 스위프트는 '구조화 안된 동시성' 도 지원합니다. '임무 그룹' 의 일부분인 '임무' 와는 달리, _구조화 안된 임무 (unstructured task)_ 는 '부모 임무' 를 가지지 않습니다. '구조화 안된 임무' 는 프로그램에 필요하다면 무슨 방식으로든 관리하는 완전한 유연함을 가지지만, 올바르게 하기 위한 책임도 완전히 져야 합니다. 현재의 '행위자' 에서 실행할 '구조화 안된 임무' 를 생성하려면, [async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 함수를 호출합니다. 특히 _떼어 놓은 임무 (detached task)_ 라고 더 잘 알려진, '현재의 행위자를 이루지는 않을 구조화 안된 임무' 를 생성하려면, [asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 를 호출합니다. 이 함수 둘 다-예를 들어, 결과를 기다리거나 취소하기 위해-임무와 상호 작용하게 해주는 '임무 핸들 (task handle)' 을 반환합니다.
 
 ```swift
 let newPhoto = // ... 약간의 사진 자료 ...
@@ -212,7 +212,7 @@ print(await logger.max)
 
 이 예제에서는, `logger.max` 로의 접근이 '멈춰달 수 있는 지점' 입니다. 왜냐면 '행위자' 는 한번에 자신의 '변경 가능 상태' 에 오직 한 '임무' 의 접근만을 허용해서, 또 다른 '임무' 코드가 '기록자 (logger)' 와 이미 상호 작용 중이면, 속성에 접근하길 기다리면서 이 코드를 멈춰달기 때문입니다.
 
-이와 대조적으로, '행위자' 내의 코드는 '행위자' 의 속성에 접근할 때 `await` 를 작성하지 않습니다. 예를 들어, 다음은 `TemperatureLogger` 를 새로운 온도로 갱신하는 메소드입니다:
+이와 대조적으로, '행위자' 의 일부분인 코드는 '행위자' 의 속성에 접근할 때 `await` 를 작성하지 않습니다. 예를 들어, 다음은 `TemperatureLogger` 를 새로운 온도로 갱신하는 메소드입니다:
 
 ```swift
 extension TemperatureLogger {
@@ -239,7 +239,7 @@ extension TemperatureLogger {
 print(logger.max)  // 에러
 ```
 
-`await` 의 작성 없이 `logger.max` 에 접근하면 실패하는데 이는 '행위자' 의 속성이 행위자의 '격리된 지역 상태 (isolated local state)' 내에 있기 때문입니다. 스위프트는 오직 '행위자' 안의 코드만 행위자의 '지역 상태' 에 접근할 수 있다는 것을 보증합니다. 이 보증을 _행위자 격리 (actor isolation)_ 라고 합니다.
+`await` 의 작성 없이 `logger.max` 에 접근하면 실패하는데 이는 '행위자' 의 속성이 해당 행위자의 '격리된 지역 상태 (isolated local state)' 의 일부분이기 때문입니다. 스위프트는 오직 '행위자' 안의 코드만 행위자의 '지역 상태' 에 접근할 수 있다는 것을 보증합니다. 이 보증을 _행위자 격리 (actor isolation)_ 라고 합니다.
 
 ### 다음 글
 
