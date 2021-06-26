@@ -492,16 +492,16 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 
 
 열거체 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 선언' 으로 확장할 수 있습니다.
 
-#### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)
+#### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가진 열거체)
 
-다음 형식은 어떤 타입이어도 되는 열거체 'case 값' 을 가지고 있는 열거체 타입을 선언합니다:[^any-type]
+다음 형식은 어떤 타입이어도 되는 '열거체 case 값' 을 담는 '열거체 타입' 을 선언합니다:[^any-type]
 
-enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
-    case `enumeration case 1-열거체 case 값 1`<br />
-    case `enumeration case 2-열거체 case 값 2`(`associated value types 결합 값의 타입`)<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2`(`associated value types-결합 값 타입`)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-이런 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 때때로 _discriminated unions (차별화된 공용체)_ 라고 합니다.
+이런 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_ 라고 할 때도 있습니다.
 
 이 형식에서, 각각의 'case' 블럭은 `case` 키워드 및 그 뒤의, 쉼표로 구분된, 하나 이상의 열거체 'case 값' 으로 구성됩니다. 각 'case 값' 의 이름은 반드시 유일해야 합니다. 각 'case 값' 은 주어진 타입의 값을 저장하도록 지정할 수도 있습니다. 이런 타입은, 'case 값' 의 이름 바로 뒤에, _결합 값의 타입 (associated value types)_ 튜플에서 지정합니다.
 
@@ -1291,7 +1291,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^class-final]: 즉 클래스 선언에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
 
-[^any-type]: 이 부분에서 사용한 'Any Type' 은 스위프트의 '`Any` 타입' 과는 다른 의미입니다.
+[^any-type]: 여기서의 'Any Type' 은 스위프트에 있는 '`Any` 타입' 과는 다른 의미로 사용한 것입니다.
 
 [^enumeration-get-only]: 이 말은 아래 예제를 참고하면 열거체에서 `case someValue` 라고 하면 프로토콜에 있는 `static var someValue: Self { get }` 이라는 필수 조건을 만족하게 된다는 의미입니다.
 
