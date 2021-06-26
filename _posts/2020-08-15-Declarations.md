@@ -380,7 +380,7 @@ f(7)      // 무효, 인자 이름표 누락
 
 #### Methods with Special Names (특수한 이름을 가진 메소드)
 
-특수한 이름을 가진 여러 메소드는 '함수 호출 구문' 을 위한 '수월한 구문 (syntactic sugar)' 이 가능하게 합니다. 타입에서 이 메소드 중 하나를 정의하면, '함수 호출 구문' 에서 타입의 인스턴스를 사용할 수 있습니다. '함수 호출' 은 해당 인스턴스에 대한 '특수한 이름을 붙인 메소드' 중 하나를 호출하는 것이라고 이해합니다.
+특수한 이름을 가진 여러 메소드는 '함수 호출 구문' 을 '수월한 구문 (syntactic sugar)' 으로 할 수 있게 합니다. 타입에서 이 메소드 중 하나를 정의하면, '함수 호출 구문' 에서 타입의 인스턴스를 사용할 수 있습니다. '함수 호출' 은 해당 인스턴스에 대한 '특수한 이름을 붙인 메소드' 중 하나를 호출하는 것이라고 이해합니다.
 
 클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입에서 '함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성을 사용한 메소드' 둘 다를 정의하면, 어느 메소드든 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 줍니다.
 
@@ -403,14 +403,14 @@ callable.callAsFunction(4, scale: 2)
 
 '함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성의 메소드' 는 '타입 시스템에 부호화 (encode) 해서 넣을 정보량' 과 '실행 시간에 가능한 동적 동작의 크기' 사이에 '서로 다른 절충점 (trade-offs)' 을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 땐, 인자 개수와, 각 인자의 타입과 이름표를 지정합니다. '`dynamicCallable` 특성의 메소드' 는 인자 배열을 쥐는데 사용할 타입만 지정합니다.
 
-'함수-처럼-호출하는 메소드' 나, '`dynamicCallable` 특성인 메소드' 를 정의하는 것은, 해당 타입의 인스턴스를 '함수 호출 표현식' 이 아닌 상황에서 마치 함수인 것처럼 사용하게 해주지는 않습니다. 예를 들면 다음과 같습니다:
+'함수-처럼-호출하는 메소드' 나, '`dynamicCallable` 특성의 메소드' 정의는, 마치 '함수 호출 표현식' 이 아닌 어떤 곳에서는 함수인 것처럼 해당 타입의 인스턴스를 사용하도록 해주진 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someFunction1: (Int, Int) -> Void = callable(_:scale:)  // 에러
 let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 ```
 
-`subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, 멤버를 '수월한 구문 표현' 으로 찾아볼 수 있게 해줍니다.
+'`subscript(dynamicMemberLookup:)` 첨자 연산' 은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, '멤버 찾아보기' 를 '수월한 구문' 으로 할 수 있게 합니다.
 
 #### Throwing Functions and Methods (던지는 함수와 메소드)
 
