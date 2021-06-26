@@ -470,11 +470,11 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 #### Functions that Never Return (절대 반환하지 않는 함수)
 
-스위프트는, 함수나 메소드가 호출하는 쪽으로 반환하지 않음을 지시하는, `Never` 타입을 정의합니다. '`Never` 반환 타입' 을 가진 함수와 메소드를 '_반환하지 않는 (nonreturning)_' 다고 합니다. 반환하지 않는 함수와 메소드는 '복구할 수 없는 에러' 를 유발하거나 '무기한 계속하는 일련의 작업' 을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 후에 즉시 실행할 코드를 절대로 실행하지 않는다는 의미입니다. '던지는 함수' 와 '다시 던지는 함수 ' 는, '반환하지 않을 (nonreturning)' 때에도, 프로그램 제어를 적절한 '`catch` 블럭' 으로 옮길 수 있습니다.
+스위프트는, 호출하는 쪽으로 반환하지 않는 함수나 메소드를 지시하는, `Never` 타입을 정의합니다. `Never` 라는 반환 타입을 가진 함수와 메소드를 _반환하지 않는 (nonreturning)_ 것이라고 합니다. '반환하지 않는 함수와 메소드' 는 '복구할 수 없는 에러' 를 유발하든지 아니면 '무한정 계속되는 일련의 작업'[^indefinitely] 을 시작합니다. 이는 다른 경우라면 호출 후에 바로 실행할 코드가 절대 실행되지 않는다는 의미입니다. '던지고 함수와 다시 던지는 함수' 는, 반환하지 않을 때에도, 적절한 '`catch` 절' 로 프로그램 제어를 옮길 수 있습니다.
 
-반환하지 않는 함수나 메소드는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 설명한 것처럼, 'guard 문' 의 `else` 절을 결말짓기 위해 호출할 수 있습니다.
+'반환하지 않는 함수나 메소드' 는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 논의한 것처럼, 'guard 문의 `else` 절' 을 결론 내리고자 호출할 수 있습니다.
 
-'반환하지 않는 메소드' 를 재정의 할 순 있지만, 새로운 메소드는 자신의 반환 타입과 '반환하지 않는' 다는 작동 방식을 반드시 보존해야 합니다.
+'반환하지 않는 메소드' 를 재정의할 순 있지만, 새로운 메소드는 반드시 '자신의 반환 타입' 과 '반환하지 않는 동작' 을 보존해야 합니다.
 
 > GRAMMAR OF A FUNCTION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362)
 
@@ -1275,7 +1275,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 '함수 본문 전체' 를 의미하기 위해 '함수 정의 (function definition)' 라는 표현을 사용했습니다.
 
-[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다.
+[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다. 즉, 'MVVM' 에서는 의도적으로 `Never` 타입을 사용하는 것입니다. 
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다.
 
