@@ -203,7 +203,7 @@ unsignedOverflow = unsignedOverflow &+ 1
 // unsignedOverflow 는 이제 0 입니다.
 ```
 
-`unsignedOverflow` 변수는 `UInt8` 이 쥘 수 있는 최대 값 (`255`, 또는 2-진수 `11111111`) 으로 초기화됩니다. 그런 다음 '값 넘침 더하기 연산자 (`&+`)' 가 이를 `1` 만큼 증가합니다. 이는 `UInt8` 이 쥘 수 있는 크기를 약간 넘어 '2-진 표현' 을 밀어서, 아래 도표에 보인 것처럼, 경계 너머로 값이 넘치도록 합니다. '값 넘침 더하기' 후에 `UInt8` 경계 안에 남는 값은 `00000000`, 또는 `0` 입니다.
+`unsignedOverflow` 변수는 `UInt8` 이 쥘 수 있는 최대 값 (`255`, 또는 2-진수 `11111111`) 으로 초기화됩니다. 그런 다음 '값 넘침 더하기 연산자 (`&+`)' 가 이를 `1` 만큼 증가합니다. 이는 `UInt8` 이 쥘 수 있는 크기 바로 너머로 '2-진 표현' 을 밀어서, 아래 도표에 보인 것처럼, 경계 너머로 값이 넘치도록 합니다. '값 넘침 더하기' 후에 `UInt8` 경계 안에 남는 값은 `00000000`, 또는 `0` 입니다.
 
 ![value overflow 0](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-0.png)
 
