@@ -492,18 +492,18 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 
 
 열거체 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 선언' 으로 확장할 수 있습니다.
 
-#### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가진 열거체)
+#### Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)
 
-다음 형식은 어떤 타입이어도 되는 '열거체 case 값' 을 담는 '열거체 타입' 을 선언합니다:[^any-type]
+다음 형식은 어떤 타입이든 되는 '열거체 case 값' 을 담은 '열거체 타입' 을 선언합니다:[^any-type]
 
 &nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2`(`associated value types-결합 값 타입`)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-이런 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_ 라고 할 때도 있습니다.
+이 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_ 라고 할 때가 있습니다.
 
-이 형식에서, 각각의 'case' 블럭은 `case` 키워드 및 그 뒤의, 쉼표로 구분된, 하나 이상의 열거체 'case 값' 으로 구성됩니다. 각 'case 값' 의 이름은 반드시 유일해야 합니다. 각 'case 값' 은 주어진 타입의 값을 저장하도록 지정할 수도 있습니다. 이런 타입은, 'case 값' 의 이름 바로 뒤에, _결합 값의 타입 (associated value types)_ 튜플에서 지정합니다.
+이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분된, 하나 이상의 '열거체 case 값' 으로 구성됩니다. 각 'case 값' 이름은 반드시 유일해야 합니다. 각 'case 값' 은 주어진 타입의 값을 저장한다고 지정할 수도 있습니다. 이 타입들은, 'case 값' 이름 바로 다음의, '_결합 값 타입 (associated value types)_ 튜플' 에서 지정합니다.
 
 '결합 값' 을 저장하는 열거체 'case 값' 은 지정된 '결합 값 (associated values)' 으로 열거체의 인스턴스를 생성하는 함수인 것처럼 사용할 수 있습니다. 그리고 함수에서와 같이, 열거체 'case 값' 에 대한 참조를 가지고 이를 이후의 코드에 적용할 수도 있습니다.
 
