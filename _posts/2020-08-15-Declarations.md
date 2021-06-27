@@ -207,37 +207,37 @@ newAndOld.x = 200
 
 ### Type Alias Declaration (타입 별명 선언)
 
-_타입 별명 선언 (type alias declaration)_ 은 기존 타입에 '이름 붙인 별명' 을 프로그램에 도입합니다. '타입 별명 선언' 은 `typealias` 키워드로 선언하며 형식은 다음과 같습니다:
+_타입 별명 선언 (type alias declaration)_ 은 '기존 타입에 이름 붙인 별명' 을 프로그램에 도입합니다. '타입 별명 선언' 은 `typealias` 키워드로 선언하며 형식은 다음과 같습니다:
 
-typealias `name-이름` = `existing type-기존 타입`
+&nbsp;&nbsp;&nbsp;&nbsp;typealias `name-이름` = `existing type-기존 타입`
 
-타입 별명을 선언한 후에는, 프로그램 어디서나 별명인 _이름 (name)_ 을 _기존 타입 (existing type)_ 대신 사용할 수 있습니다. _기존 타입 (existing type)_ 은 '이름 붙인 타입' 이거나 '복합 타입' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하는 것이 아닙니다; 이는 단순히 기존 타입을 참조하기 위한 이름을 허용하는 것입니다.
+'타입 별명' 을 선언한 후엔, 프로그램 어디서나 _기존 타입 (existing type)_ 대신 '별명 붙인 _이름 (name)_' 을 사용할 수 있습니다. _기존 타입 (existing type)_ 은 '이름 붙인 타입' 이거나 '복합 타입' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하진 않으며; 단순히 기존 타입을 참조하는 이름을 허용하는 것입니다.
 
-타입 별명 선언은 '제네릭 (일반화된) 매개 변수' 를 사용하여 '기존 제네릭 타입' 에 이름을 부여할 수 있습니다. 이 타입 별명은 기존 타입의 일부 또는 모든 제네릭 매개 변수에 대해서 '구체적으로 고정된 타입 (concrete type)' 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
+'타입 별명 선언' 은 '기존 일반화 타입' 에 이름을 부여하기 위해 '일반화 (generic) 매개 변수' 를 사용할 수 있습니다. 타입 별명은 기존 타입의 일부 또는 모든 '일반화 매개 변수' 에 '고정 (concrete) 타입' 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 typealias StringDictionary<Value> = Dictionary<String, Value>
 
-// 다음의 딕셔너리들은 같은 타입입니다.
+// 다음 딕셔너리는 똑같은 타입입니다.
 var dictionary1: StringDictionary<Int> = [:]
 var dictionary2: Dictionary<String, Int> = [:]
 ```
 
-타입 별명이 '제네릭 (일반화된) 매개 변수' 와 같이 선언할 때는, 해당 매개 변수의 구속 조건이 반드시 기존 타입의 제네릭 매개 변수에 대한 구속 조건과 정확하게 일치해야 합니다. 예를 들면 다음과 같습니다:
+'일반화 매개 변수를 가진 타입 별명' 을 선언할 때는, '해당 매개 변수에 대한 구속 조건' 이 '기존 타입의 일반화 매개 변수에 대한 구속 조건' 과 반드시 정확하게 일치해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
 ```
 
-타입 별명과 기존 타입은 서로 바꿔서 사용할 수 있어야 하기 때문에, 타입 별명이 추가적인 '제네릭 구속 조건 (generic constraints)' 을 도입할 수는 없습니다.
+타입 별명과 기존 타입은 상호 교환해서 사용 가능해야 하기 때문에, 타입 별명에 추가적인 '일반화 구속 조건 (generic constraints)' 을 도입할 순 없습니다.
 
-타입 별명은 선언에서 모든 '제네릭 매개 변수' 를 생략하는 것으로써 기존 타입의 '제네릭 매개 변수' 를 전달할 수 있습니다. 예를 들어, 아래에서 선언한 `Diccionario` 타입 별명은 `Dictionary` 와 똑같은 '제네릭 매개 변수' 와 '구속 조건' 을 가집니다.
+타입 별명은 '선언에 있는 모든 일반화 매개 변수를 생략함' 으로써 '기존 타입의 일반화 매개 변수' 를 발송할 수 있습니다. 예를 들어, 다음에 선언한 `Diccionario` 라는 타입 별명은 `Dictionary` 와 똑같은 '일반화 매개 변수 및 구속 조건' 을 가집니다.
 
 ```swift
 typealias Diccionario = Dictionary
 ```
 
-프로토콜 선언 내에서, 타입 별명은 자주 사용하는 타입에 대해 더 짧고 더 편리한 이름을 부여할 수 있습니다. 예를 들면 다음과 같습니다:
+'프로토콜 선언' 안에서는, 자주 사용하는 타입에 타입 별명으로 더 짧고 편리한 이름을 줄 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 protocol Sequence {
@@ -250,59 +250,59 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 }
 ```
 
-이 타입 별명이 없다면, `sum` 함수는 '결합된 타입' 을 `T.Element` 가 아니라 `T.Iterator.Element` 라고 참조해야 할 것입니다.
+이 타입 별명 없이는, `sum` 함수가 '결합 타입' 을 `T.Element` 대신 `T.Iterator.Element` 라고 참조했을 것입니다.
 
-[Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합된-타입-선언) 을 참고하기 바랍니다.
+[Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 도 참고하기 바랍니다.
 
 > GRAMMAR OF A TYPE ALIAS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID361)
 
 ### Function Declaration (함수 선언)
 
-_함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드를 도입합니다. 클래스, 구조체, 열거체, 및 프로토콜에서 선언한 함수는 _메소드 (method)_ 라고 합니다. '함수 선언' 은 `func` 키워드로 선언하며 다음 형식을 가집니다:
+_함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드를 도입합니다. 클래스, 구조체, 열거체, 또는 프로토콜에서 선언한 함수는 _메소드 (method)_ 를 가리킵니다. '함수 선언' 은 `func` 키워드로 선언하며 형식은 다음과 같습니다:
 
-func `function name-함수 이름`(`parameters-매개 변수`) -> `return type-반환 타입` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-함수가 `Void` 라는 반환 타입을 가진 경우, 다음 처럼 반환 타입을 생략할 수 있습니다:
+함수의 반환 타입이 `Void` 면, 반환 타입을 다음 처럼 생략할 수 있습니다:
 
-func `function name-함수 이름`(`parameters-매개 변수`) {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-각 매개 변수는 타입을 반드시 포함해야 합니다-이는 추론할 수 있는 것이 아닙니다. 매개 변수의 타입 앞에 `inout` 을 작성하면, 함수 영역 안에서 매개 변수를 수정할 수 있습니다. '입-출력 매개 변수' 는, 아래의, [In-Out Parameters (입-출력 매개 변수)](#in-out-parameters-입-출력-매개-변수) 에서 자세하게 논의합니다.
+각 매개 변수의 타입은 반드시 포함해야 합니다-이는 추론할 수 없습니다. 매개 변수 타입 앞에 `inout` 을 작성하면, 매개 변수를 함수 영역 안에서 수정할 수 있습니다. '입-출력 (in-out) 매개 변수' 는, 아래의, [In-Out Parameters (입-출력 매개 변수)](#in-out-parameters-입-출력-매개-변수) 에서 자세하게 논의합니다.
 
-단일 표현식만 포함한 함수 선언 _구문 (statements)_ 은 해당 표현식의 값을 반환하는 것으로 이해합니다. 이 암시적인 '반환 구문 표현' 은 표현식의 타입과 함수의 반환 타입이 `Void` 가 아니며 어떤 'case 값' 도 가지지 않는 `Never` 같은 열거체가 아닐 때에만 고려됩니다.
+'함수 선언' 의 _구문 (statements)_ 이 '단일 표현식' 만 포함하고 있으면 '해당 표현식의 값' 을 반환한다고 이해합니다. 표현식의 타입과 함수의 반환 타입이 `Void` 가 아니며 `Never` 같이 '어떤 case 값도 가지지 않는 열거체' 가 아닐 때만 이 '암시적인 반환 구문' 을 고려합니다.
 
-함수는 튜플 타입을 함수의 반환 타입으로 사용하여 여러 개의 값을 반환할 수 있습니다.
+함수는 반환 타입으로 '튜플 타입' 을 사용하여 여러 개의 값을 반환할 수 있습니다.
 
-'함수 정의 (function definition)'[^function-definition] 는 다른 '함수 선언' 안에 있을 수 있습니다. 이런 종류의 함수를 _중첩 함수 (nested function)_ 라고 합니다.
+'함수 정의 (function definition)'[^function-definition] 가 또 다른 '함수 선언' 안에 있을 수 있습니다. 이런 종류의 함수를 _중첩 함수 (nested function)_ 라고 합니다.
 
-중첩 함수는-'입-출력 매개 변수' 같이-절대로 벗어나지 않음을 보증하거나 또는 '벗어나지 않는 (nonescaping) 함수 인자' 로 전달된 값을 붙잡을 경우 '벗어나지 않는 (nonescaping)' 것입니다. 그 외 경우라면, 중첩 함수는 '벗어나는 (escaping) 함수' 입니다.
+중첩 함수는-'입-출력 매개 변수' 같이-절대 벗어나지 않음을 보증한 또는 '벗어나지 않는 (nonescaping) 함수 인자' 로 전달한 값을 붙잡으면 '벗어나지 않 (nonescaping)' 습니다.[^escaping] 그 외의 경우, 중첩 함수는 '벗어나는 (escaping) 함수' 입니다.
 
-중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 를 참고하기 바랍니다.
+중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 부분을 참고하기 바랍니다.
 
 #### Parameter Names (매개 변수 이름)
 
-'함수 매개 변수' 는 여러 형식으로 된 각각의 매개 변수를 쉼표로-구분하여 나열한 목록입니다. '함수 호출' 에 있는 인자 순서는 '함수 선언' 에 있는 매개 변수 순서와 반드시 일치해야 합니다. 매개 변수 목록의 가장 단순한 항목은 다음 형식을 가집니다:
+'함수 매개 변수' 는 여러 형식으로 된 각 매개 변수들을 쉼표로-구분한 목록입니다. 함수 호출에서의 인자 순서는 반드시 함수의 선언에 있는 매개 변수 순서와 일치해야 합니다. 매개 변수 목록에 있는 가장 단순한 요소의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
 
-매개 변수는, 함수 본문 내에서 사용하는, 이름 뿐만 아니라, 함수나 메소드를 호출할 때 사용하는, '인자 이름표 (argument label)' 도 가집니다. 기본적으로, 매개 변수 이름은 '인자 이름표' 로도 사용됩니다. 예를 들면 다음과 같습니다:
+매개 변수는, 함수 본문 안에서 사용하는, 이름 뿐 아니라, 함수나 메소드를 호출할 때 사용하는, '인자 이름표 (argument label)' 도 가집니다. 기본적으로, 매개 변수 이름을 '인자 이름표' 로도 사용합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func f(x: Int, y: Int) -> Int { return x + y }
-f(x: 1, y: 2) // x 와 y 둘 다 이름표를 가집니다.
+f(x: 1, y: 2) // x 와 y 둘 다 이름표가 있습니다.
 ```
 
-인자 이름표에 대한 기본 작동 방식은 다음 형식 중 하나로 '재정의 (override)' 할 수 있습니다.
+'인자 이름표' 에 대한 기본 동작을 다음 형식 중 하나로 '재정의 (override)' 할 수 있습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`argument label-인자 이름표` `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\_ `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
 
-'매개 변수 이름' 앞의 이름은 매개 변수에, 매개 변수 이름과 다를 수 있는, '명시적인 인자 이름표' 를 부여합니다. 이와 관련된 인자는 함수나 메소드 호출 시에 주어진 인자 이름표를 반드시 사용해야 합니다.
+매개 변수 이름 앞의 이름은 매개 변수에, 매개 변수 이름과는 다를 수 있는, '명시적인 인자 이름표' 를 부여니다. 함수나 메소드 호출에서 관련 인자는 반드시 '주어진 인자 이름표' 를 사용해야 합니다.
 
-매개 변수 이름 앞의 '밑줄 (`_`)' 은 '인자 이름표' 를 억누릅니다. 이와 관련된 인자는 함수나 메소드 호출 시에 이름표가 반드시 없어야 합니다.
+매개 변수 이름 앞의 '밑줄 (`_`)' 은 '인자 이름표' 를 억제합니다. 함수나 메소드 호출에서 관련 인자는 반드시 이름표가 없어야 합니다.
 
 ```swift
 func repeatGreeting(_ greeting: String, count n: Int) { /* 인사를 n 번 합니다 */ }
@@ -313,19 +313,19 @@ repeatGreeting("Hello, world!", count: 2) //  count 에는 이름표가 있지�
 
 '입-출력 매개 변수' 는 다음 처럼 전달합니다:
 
-1. 함수를 호출할 때, 인자의 값을 복사합니다.
+1. 함수를 호출할 때, 인자 값을 복사합니다.
 2. 함수 본문에서, 복사본을 수정합니다.
 3. 함수를 반환할 때, 복사본의 값을 원본 인자에 할당합니다.
 
-이 작동 방식을 _복사-입력 복사-출력 (copy-in copy-out)_ 또는 _값-결과에 의한 호출 (call by value result)_[^call-by-value-result] 이라고 합니다. 예를 들어, '계산 속성' 또는 '관찰자를 가진 속성' 을 입-출력 매개 변수로 전달할 때, 함수 호출 시에는 '획득자 (getter)' 를 호출하고 함수 반환 시에는 '설정자 (setter)' 를 호출합니다.
+이런 동작을 _복사-입력 복사-출력 (copy-in copy-out)_ 또는 _값-결과에 의한 호출 (call by value result)_[^call-by-value-result] 이라고 합니다. 예를 들어, '계산 속성' 또는 '관찰자를 가진 속성' 을 '입-출력 매개 변수' 로 전달할 때, 그 '획득자 (getter)' 는 함수 호출 시에 호출하고 그 '설정자 (setter)' 는 함수 반환 시에 호출합니다.
 
-최적화로써, 인자가 메모리의 물리 주소에 저장된 값일 때는, 함수 본문 내부와 외부 둘 다에서 똑같은 메모리 위치를 사용합니다. 이 최적화된 작동 방식을 _참조에 의한 호출 (call by reference)_ 이라고 하며; 복사라는 부담도 제거하면서 동시에 '복사-입력 복사-출력' 모델의 모든 필수 조건도 만족합니다.[^call-by-reference] 코드를, '참조에 의한 호출' 최적화에 의존하지 말고, 주어진 '복사-입력 복사-출력' 모델을 사용하여 작성하여, 최적화와 상관 없이 올바르게 동작하도록 합니다.
+'최적화' 로써, 인자가 메모리의 물리 주소에 저장된 값일 때는, 함수 본문 내 외부 둘 다에서 똑같은 메모리 위치를 사용합니다. 이 최적화된 동작을 _참조에 의한 호출 (call by reference)_ 이라고 하는데; 복사라는 부담을 제거하면서 '복사-입력 복사-출력 모델' 의 모든 필수 조건을 만족합니다.[^call-by-reference] '참조에-의한-호출 최적화' 에 의존하지 않고, 최적화 하든 안하든 올바르게 동작하게 하려면, 주어진 '복사-입력 복사-출력' 모델로 코드를 작성합니다.
 
-함수 안에서는, 현재 영역에서 원본 값이 사용 가능한 경우라도, '입-출력 인자' 로 전달된 값에 접근하지 않도록 합니다. 원본에 접근하는 것은, 스위프트의 '메모리 독점권 (exclusivity) 보증' 을 위반하는, 값에의 '동시 (simultaneous) 접근' 입니다. 똑같은 이유로, 동일한 값을 여러 개의 '입-출력 매개 변수' 로 전달할 수 없습니다.
+함수 안에서는, 현재 영역에서 원본 값이 사용 가능한 경우에도, '입-출력 인자' 로 전달한 값에 접근하지 않도록 합니다. 원본에 대한 접근은, 스위프트의 '메모리 독점권 보증 (exclusivity guarantee)' 을 위반하는, '값에 대한 동시 접근 (simultaneous aceess)' 입니다. 똑같은 이유로, 동일 값을 여러 개의 '입-출력 매개 변수' 로 전달할 수 없습니다.
 
-'메모리 안전성' 과 '메모리 독점권' 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 을 참고하기 바랍니다.
+'메모리 안전성' 과 '메모리 독점권' 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장을 참고하기 바랍니다.
 
-입-출력 매개 변수를 붙잡는 클로저나 중첩 함수는 반드시 '벗어나지 않아야 (nonescaping)' 합니다. 입-출력 매개 변수를 변경 없이 붙잡을 필요가 있는 경우, 매개 변수를 명시적으로 변경 불가능하게 붙잡기 위해 '붙잡을 목록 (capture list)' 을 사용합니다.[^closure-with-inout-parameter]
+입-출력 매개 변수를 붙잡는 클로저나 중첩 함수는 반드시 '벗어나지 않아야 (nonescaping)' 합니다. '입-출력 매개 변수' 를 '변경 (mutating)' 없이 붙잡을 필요가 있으면, '붙잡을 목록 (capture list)' 을 사용하여 매개 변수를 명시적으로 변경 불가능하게 붙잡도록 합니다.[^closure-with-inout-parameter]
 
 ```swift
 func someFunction(a: inout Int) -> () -> Int {
@@ -333,21 +333,21 @@ func someFunction(a: inout Int) -> () -> Int {
 }
 ```
 
-입-출력 매개 변수를 붙잡고 변경할 필요가 있는 경우, 가령 함수 반환 전에 모든 변경을 종료했다고 보장하는 다중 쓰레드 코드 같은 경우, 명시적인 '지역 복사본 (local copy)' 을 사용합니다.
+함수 반환 전에 모든 변경이 종료됐음을 보장하는 '다중 쓰레드 코드' 에서와 같이, 입-출력 매개 변수를 붙잡아서 변경할 필요가 있으면, 명시적인 '지역 복사본 (local copy)' 을 사용합니다.
 
 ```swift
 func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
-  // 지역 복사본을 만들고 이를 수동으로 복사하여-되돌립니다.
+  // 지역 복사본을 만들고 수동 복사로-되돌립니다.
   var localX = x
   defer { x = localX }
 
-  // localX 에 대해 비동기로 연산한 다음, 반환하기 전에 기다립니다.
+  // localX 에 대한 비동기 연산을 한 다음, 반환 전에 기다립니다.
   queue.async { someMutatingOperation(&localX) }
   queue.sync {}
 }
 ```
 
-입-출력 매개 변수에 대한 더 많은 논의와 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
+입-출력 매개 변수에 대한 더 많은 논의와 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
 #### Special Kinds of Parameters (특수한 종류의 매개 변수)
 
@@ -357,34 +357,34 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 &nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입` = `default argument value-기본 설정 인자 값`
 
-'밑줄 (`_`) 매개 변수' 는 명시적으로 무시하며 함수 본문 안에서 접근할 수 없습니다.
+'밑줄 (`_`) 매개 변수' 는 명시적으로 무시하는 것으로 함수 본문 안에서 접근할 수 없습니다.
 
-'기초 타입 이름' 바로 뒤에 세 점 (`...`) 이 붙은 매개 변수는 '가변 매개 변수 (variadic parameter)' 라고 이해합니다. '가변 매개 변수' 바로 뒤에 있는 매개 변수는 반드시 인자 이름표를 가져야 합니다. 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름' 의 원소를 담은 배열이라고 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. 가변 매개 변수를 사용하는 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 를 참고하기 바랍니다.
+'기초 타입 이름' 바로 뒤에 세 점 (`...`) 을 가진 매개 변수는 '가변 (variadic) 매개 변수' 인 것으로 이해합니다. '가변 매개 변수' 바로 뒤의 매개 변수는 '인자 이름표' 를 반드시 가져야 합니다.[^variadic-label] 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름의 원소' 들을 담고 있는 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. '가변 매개 변수' 의 사용 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 참고하기 바랍니다.
 
-타입 뒤에 '등호 (`=`)' 와 표현식을 가진 매개 변수는 주어진 표현식의 '기본 값' 을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 평가합니다. 함수를 호출할 때 매개 변수를 생략하면, 기본 값을 대신 사용합니다.
+자신의 타입 뒤에 '등호 (`=`) 기호와 표현식' 을 가진 매개 변수는 '표현식으로 주어진 기본 값' 을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 평가합니다. 함수 호출 시에 매개 변수를 생략하면, 그 대신 '기본 값' 을 사용합니다.
 
 ```swift
 func f(x: Int = 42) -> Int { return x }
 f()       // 유효, 기본 값 사용
-f(x: 7)   // 유효, 제공한 값을 사용
-f(7)      // 무효, 인자 이름표를 누락함
+f(x: 7)   // 유효, 제공힌 값 사용
+f(7)      // 무효, 인자 이름표 누락
 ```
 
 #### Special Kinds of Methods (특수한 종류의 메소드)
 
-`self` 를 수정하는 열거체나 구조체 메소드는 반드 '`mutating` 선언 수정자 (modifier)' 로 반드시 표시해야 합니다.
+`self` 를 수정하는 열거체나 구조체의 메소드는 반드시 '`mutating` 선언 수정자 (modifier)' 로 표시해야 합니다.
 
-상위 클래스 메소드를 재정의하는 메소드는 반드시 '`override` 선언 수정자' 로 표시해야 합니다. `override` 수정자가 없는 메소드를 재정의 하는 것 또는 상위 클래스 메소드를 재정의하지 않는 메소드에 `override` 수정자를 사용하는 것은 '컴파일-시간 에러' 입니다.
+상위 클래스 메소드를 재정의하는 메소드는 반드시 '`override` 선언 수정자' 로 표시해야 합니다. `override` 수정자 없이 메소드를 재정의하거나 또는 상위 클래스 메소드를 재정의하지 않는 메소드에 `override` 수정자를 사용하는 것은 '컴파일-시간 에러' 입니다.
 
-타입의 인스턴스 대신 타입 (자체와) 결합된 메소드는 열거체와 구조체에 대해서는 `static` 선언 수정자로, 클래스에 대해서는 `static` 이나 `class` 선언 수정자 중 하나로, 반드시 표시해야 합니다. '`class` 선언 수정자' 로 표시한 '클래스 타입 메소드' 는 하위 클래스 구현에서 재정의할 수 있으며; `class final` 이나 `static` 으로 표시한 '클래스 타입 메소드' 는 재정의할 수 없습니다.
+타입의 인스턴스 보다는 타입 자체와 결합된 메소드는 열거체와 구조체라면 `static` 선언 수정자로, 클래스라면 `static` 으로나 `class` 선언 수정자로, 반드시 표시해야 합니다. '`class` 선언 수정자' 로 표시한 '클래스 타입 메소드' 는 하위 클래스 구현에서 재정의할 수 있는데; `class final` 이나 `static` 으로 표시한 '클래스 타입 메소드' 는 재정의할 수 없습니다.
 
 #### Methods with Special Names (특수한 이름을 가진 메소드)
 
-특수한 이름을 가진 여러 메소드들은 '함수 호출 구문' 을 위한 '수월한 구문 표현 (syntactic sugar)' 을 할 수 있게 해줍니다.[^method-with-special-anme] 타입에서 이 메소드들을 정의한 경우, 타입의 인스턴스를 '함수 호출 구문' 에서 사용할 수 있습니다. 함수 호출은 해당 인스턴스에서 '특수하게 이름 붙인 메소드' 들을 호출하는 것으로 이해합니다.
+특수한 이름을 가진 여러 메소드는 '함수 호출 구문' 을 '수월한 구문 (syntactic sugar)' 으로 할 수 있게 합니다. 타입에서 이 메소드 중 하나를 정의하면, '함수 호출 구문' 에서 타입의 인스턴스를 사용할 수 있습니다. '함수 호출' 은 해당 인스턴스에 대한 '특수한 이름을 붙인 메소드' 중 하나를 호출하는 것이라고 이해합니다.
 
-클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래에서 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입이 '함수-처럼-호출하는 메소드' 와 `dynamicCallable` 특성이 사용하는 메소드 둘 다를 정의하는 경우, 어느 메소드를 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 부여합니다.
+클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입에서 '함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성을 사용한 메소드' 둘 다를 정의하면, 어느 메소드든 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 줍니다.
 
-'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 같은-다른 이름 역시 유효한 '함수-처럼-호출하는 메소드' 이름입니다.
+'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한 또 다른 이름입니다-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 도 '함수-처럼-호출하는 메소드' 이름으로 유효합니다.
 
 다음 함수 호출은 서로 '동치 (equivalent)' 입니다:
 
@@ -401,36 +401,36 @@ callable.callAsFunction(4, scale: 2)
 // 두 함수 호출 모두 208 을 인쇄합니다.
 ```
 
-'함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성인 메소드' 는 타입 시스템에 '부호화 (encode)' 해서 넣을 정보의 양과 실행 시간에 가능한 동적 작동 방식 사이에 서로 다른 '타협점' 을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 땐, 인자의 개수와, 각 인자의 타입과 이름표를 지정합니다. '`dynamicCallable` 특성인 메소드' 는 인자 배열을 쥐고 있기 위해 사용할 타입만을 지정합니다.
+'함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성의 메소드' 는 '타입 시스템에 부호화 (encode) 해서 넣을 정보량' 과 '실행 시간에 가능한 동적 동작의 크기' 사이에 '서로 다른 절충점 (trade-offs)' 을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 땐, 인자 개수와, 각 인자의 타입과 이름표를 지정합니다. '`dynamicCallable` 특성의 메소드' 는 인자 배열을 쥐는데 사용할 타입만 지정합니다.
 
-'함수-처럼-호출하는 메소드' 나, '`dynamicCallable` 특성인 메소드' 를 정의하는 것은, 해당 타입의 인스턴스를 '함수 호출 표현식' 이 아닌 상황에서 마치 함수인 것처럼 사용하게 해주지는 않습니다. 예를 들면 다음과 같습니다:
+'함수-처럼-호출하는 메소드' 나, '`dynamicCallable` 특성의 메소드' 정의는, 마치 '함수 호출 표현식' 이 아닌 어떤 곳에서는 함수인 것처럼 해당 타입의 인스턴스를 사용하도록 해주진 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someFunction1: (Int, Int) -> Void = callable(_:scale:)  // 에러
 let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 ```
 
-`subscript(dynamicMemberLookup:)` 첨자 연산은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, 멤버를 '수월한 구문 표현' 으로 찾아볼 수 있게 해줍니다.
+'`subscript(dynamicMemberLookup:)` 첨자 연산' 은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, '멤버 찾아보기' 를 '수월한 구문' 으로 할 수 있게 합니다.
 
 #### Throwing Functions and Methods (던지는 함수와 메소드)
 
 에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _던지는 함수 (throwing functions)_ 와 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
 
-func `function name-함수 이름`(`parameters-매개 변수`) throws -> `return type-반환 타입` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) throws -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-던지는 함수나 메소드의 호출은 반드시 `try` 나 `try!` 표현식 (즉, `try` 나 `try!` 연산자 영역 안) 으로 포장해야 합니다.
+던지는 함수나 메소드에 대한 호출은 반드시 `try` 나 `try!` 표현식으로 (즉, `try` 나 `try!` 연산자 영역 안에) 포장해야 합니다.
 
-`throws` 키워드는 함수의 타입 일부분이며, '던지지 않는 (nonthrowing) 함수' 는 '던지는 함수' 의 '하위 타입' 입니다. 그 결과, '던지지 않는 함수' 는 '던지는 것' 과 똑같은 위치에 사용할 수 있습니다.
+`throws` 키워드는 함수 타입의 일부분으로, '던지지 않는 (nonthrowing) 함수' 는 '던지는 함수' 의 하위 타입입니다. 그 결과, '던지는 것' 을 예상하는 곳에서 '던지지 않는 함수' 를 사용할 수 있습니다.
 
-함수는 함수가 에러를 던질 수 있는지 만을 기초로 '중복 정의 (overload)' 할 수 없습니다. 그렇다 하더라도, 함수는 '함수 _매개 변수 (parameter)_' 가 에러를 던질 수 있는지를 기초로 '중복 정의' 할 수 있습니다.
+함수가 에러를 던질 수 있는지 만을 기초로 하여 함수를 '중복 정의 (overload)' 할 수는 없습니다. 그렇다 하더라도, 함수의 _매개 변수 (parameter)_ 가 에러를 던질 수 있는 지를 기초로 함수를 '중복 정의' 할 수는 있습니다.
 
-'던지는 메소드' 는 '던지지 않는 메소드' 를 재정의 할 수 없으며, '던지는 메소드' 는 '던지지 않는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 없습니다. 그렇다 하더라도, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '던지지 않는 메소드' 는 '던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 있습니다.
+'던지는 메소드' 는 '던지지 않는 메소드' 를 '재정의 (override)' 할 수 없으며, '던지는 메소드' 가 '던지지 않는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 없습니다. 그렇다 하더라도, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의할 수 있으며, '던지지 않는 메소드' 가 '던지는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 있습니다.
 
 #### Rethrowing Functions and Methods (다시 던지는 함수와 메소드)
 
-함수나 메소드는 함수 매개 변수에서 에러를 던지는 경우에만 에러를 던지는 것을 지시하기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이 함수와 메소드들을 _다시 던지는 함수 (rethrowing functions)_ 와 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. 다시 던지는 함수와 메소드는 최소 하나의 '던지는 함수 매개 변수' 를 반드시 가져야 합니다:
+함수나 메소드는 자신의 함수 매개 변수가 에러를 던질 때만 에러를 던진다고 지시하기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이 함수와 메소드를 _다시 던지는 함수 (rethrowing functions)_ 와 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. '다시 던지는 함수와 메소드' 는 최소한 하나의 '던지는 함수 매개 변수' 는 반드시 가져야 합니다:
 
 ```swift
 func someFunction(callback: () throws -> Void) rethrows {
@@ -438,7 +438,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 }
 ```
 
-다시 던지는 함수나 메소드는 '`catch` 절' 안에서만 `throw` 문을 담을 수 있습니다. 이는 '던지는 함수' 를 `do`-`catch` 구문 안에서 호출하고 `catch` 절에서 다른 에러를 던짐으로써 에러를 처리하도록 해줍니다. 이에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 에서 던지는 에러만을 처리해야 합니다. 예를 들어, 다음은 `catch` 절이 `alwaysThrows()` 가 던진 에러를 처리할 것이기 때문에 무효입니다.
+'다시 던지는 함수나 메소드' 는 '`catch` 절' 에서만 `throw` 문을 담을 수 있습니다. 이는 `do`-`catch` 문 안에서 '던지는 함수' 를 호출하도록 그리고 다른 에러를 던짐으로써 `catch` 절이 에러를 처리하도록 해줍니다. 이에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 가 던진 에러만 처리해야 합니다. 예를 들어, 다음은 `alwaysThrows()` 가 던진 에러도 `catch` 절이 처리할 것이기 때문에 무효입니다.
 
 ```swift
 func alwaysThrows() throws {
@@ -454,11 +454,11 @@ func someFunction(callback: () throws -> Void) rethrows {
 }
 ```
 
-'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의 할 수 없으며, '던지는 메소드' 는 '다시 던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 없습니다. 그렇다 하더라도, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '다시 던지는 메소드' 는 '던지는 메소드' 를 위한 '프로토콜 필수 조건' 을 만족할 수 있습니다.
+'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 가 '다시 던지는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 없습니다. 그렇다 하더라도, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '다시 던지는 메소드' 가 '던지는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 있습니다.
 
 #### Asynchronous Functions and Methods (비동기 함수와 메소드)
 
-비동기로 돌아가는 함수와 메소드는 반드시 `async` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 이들의 형식은 다음과 같습니다:
+비동기로 실행하는 함수와 메소드는 반드시 `async` 키워드로 표시해야 합니다. 이 함수와 메소드를 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) async -> `return type-반환 타입` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
@@ -466,46 +466,46 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 비동기 함수나 메소드에 대한 호출은 반드시 `await` 표현식으로 포장해야 합니다-즉, 반드시 `await` 연산자 영역 안에 있어야 합니다. 
 
-`async` 키워드는 함수 타입 내에 있는 것이며, '동기 (synchronous) 함수' 는 '비동기 함수' 의 하위 타입입니다. 그 결과, '비동기 함수' 를 예상하고 있는 곳에서 '동기 함수' 를 사용할 수 있습니다. 예를 들어, '비동기 메소드' 를 '동기 메소드' 로 재정의할 수 있으며, '비동기 메소드' 를 요구하는 '프로토콜 필수 조건' 을 '동기 메소드' 로 만족할 수도 있습니다. 
+`async` 키워드는 함수 타입의 일부분으로, '동기 (synchronous) 함수' 는 '비동기 함수' 의 하위 타입입니다. 그 결과, '비동기 함수' 를 예상하는 곳에서 '동기 함수' 를 사용할 수 있습니다. 예를 들어, '비동기 메소드' 를 '동기 메소드' 로 재정의할 수 있으며, '비동기 메소드' 를 요구하는 '프로토콜 필수 조건' 을 '동기 메소드' 가 만족할 수도 있습니다. 
 
 #### Functions that Never Return (절대 반환하지 않는 함수)
 
-스위프트는, 함수나 메소드가 호출하는 쪽으로 반환하지 않음을 지시하는, `Never` 타입을 정의합니다. '`Never` 반환 타입' 을 가진 함수와 메소드를 '_반환하지 않는 (nonreturning)_' 다고 합니다. 반환하지 않는 함수와 메소드는 '복구할 수 없는 에러' 를 유발하거나 '무기한 계속하는 일련의 작업' 을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 후에 즉시 실행할 코드를 절대로 실행하지 않는다는 의미입니다. '던지는 함수' 와 '다시 던지는 함수 ' 는, '반환하지 않을 (nonreturning)' 때에도, 프로그램 제어를 적절한 '`catch` 블럭' 으로 옮길 수 있습니다.
+스위프트는, 호출하는 쪽으로 반환하지 않는 함수나 메소드를 지시하는, `Never` 타입을 정의합니다. `Never` 라는 반환 타입을 가진 함수와 메소드를 _반환하지 않는 (nonreturning)_ 것이라고 합니다. '반환하지 않는 함수와 메소드' 는 '복구할 수 없는 에러' 를 유발하든지 아니면 '무한정 계속되는 일련의 작업'[^indefinitely] 을 시작합니다. 이는 다른 경우라면 호출 후에 바로 실행할 코드가 절대 실행되지 않는다는 의미입니다. '던지고 함수와 다시 던지는 함수' 는, 반환하지 않을 때에도, 적절한 '`catch` 절' 로 프로그램 제어를 옮길 수 있습니다.
 
-반환하지 않는 함수나 메소드는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 설명한 것처럼, 'guard 문' 의 `else` 절을 결말짓기 위해 호출할 수 있습니다.
+'반환하지 않는 함수나 메소드' 는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 논의한 것처럼, 'guard 문의 `else` 절' 을 결론 내리고자 호출할 수 있습니다.
 
-'반환하지 않는 메소드' 를 재정의 할 순 있지만, 새로운 메소드는 자신의 반환 타입과 '반환하지 않는' 다는 작동 방식을 반드시 보존해야 합니다.
+'반환하지 않는 메소드' 를 재정의할 순 있지만, 새로운 메소드는 반드시 '자신의 반환 타입' 과 '반환하지 않는 동작' 을 보존해야 합니다.
 
 > GRAMMAR OF A FUNCTION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362)
 
 ### Enumeration Declaration (열거체 선언)
 
-_열거체 선언 (enumeration declaration)_ 은 '이름 붙인 열거체 타입' 을 프로그램에 도입합니다.
+_열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 열거체 타입' 을 도입합니다.
 
-'열거체 선언' 에는 두 가지의 기본 형식이 있으며 `enum` 키워드를 사용하여 선언합니다. 어느 형식으로든 열거체를 선언하면 그 본문은 '0' 개 이상의-열거체 'case 값' 이라고 하는-값과 더불어, 계산 속성, 인스턴스 메소드, 타입 메소드, 초기자, 타입 별명, 그리고 심지어 다른 열거체, 구조체, 및 클래스 선언을 포함한, 선언들을 개수가 몇 개든 가집니다. 열거체 선언은 '정리자 (deinitializer)' 또는 '프로토콜 선언' 을 가질 수 없습니다.
+'열거체 선언' 은 두 개의 기초 형식을 가지며 `enum` 키워드로 선언합니다. 어느 형식으로 선언한 열거체 본문이든 '0' 개 이상의-_열거체 case 값 (enumeration cases)_ 이라는-값과, 계산 속성, 인스턴스 메소드, 타입 메소드, 초기자, 타입 별명, 그리고 심지어 다른 열거체, 구조체, 클래스, 및 행위자 선언도 포함한, 어떤 개수의 선언도 담을 수 있습니다. 열거체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 순 없습니다.
 
 열거체 타입은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 구조체, 또는 다른 열거체를 상속할 수는 없습니다.
 
-클래스 및 구조체와는 다르게, 열거체 타입은 암시적으로 제공되는 '기본 설정 초기자 (default initializer)' 를 가지지 않습니다; 모든 초기자는 반드시 명시적으로 선언해야 합니다. 초기자가 열거체 내의 다른 초기자로 위임을 할 수 있지만, 초기화 과정은 초기자가 열거체 'case 값' 중 하나를 `self` 에 할당한 후에만 완료돼야 합니다.
+클래스 및 구조체와는 달리, 열거체 타입은 암시적으로 제공되는 '기본 초기자' 를 가지지 않으며; 모든 초기자는 반드시 명시적으로 선언해야 합니다. 초기자는 열거체의 다른 초기자로 '위임 (delegate)' 할 수 있지만, 초기자가 '열거체 case 값' 중 하나를 `self` 에 할당한 후에만 초기화 과정이 완료됩니다.
 
-클래스와는 다르지만 구조체와는 비슷하게, 열거체는 값 타입입니다; 열거체의 인스턴스는 변수나 상수에 할당할 때, 또는 함수 호출에 대한 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
+구조체와는 같지만 클래스와는 달리, 열거체는 '값 타입' 으로; 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 열거체의 인스턴스를 복사합니다. '값 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 참고하기 바랍니다.
 
-열거체 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 선언 (확장 선언)' 으로 확장할 수 있습니다.
+열거체 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 선언' 으로 확장할 수 있습니다.
 
-#### Enumerations with Cases of Any Type (어떤 타입이어도 되는 'case 값' 을 가지는 열거체)
+#### Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)
 
-다음 형식은 어떤 타입이어도 되는 열거체 'case 값' 을 가지고 있는 열거체 타입을 선언합니다:[^any-type]
+다음 형식은 어떤 타입이든 되는 '열거체 case 값' 을 담은 '열거체 타입' 을 선언합니다:[^any-type]
 
-enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
-    case `enumeration case 1-열거체 case 값 1`<br />
-    case `enumeration case 2-열거체 case 값 2`(`associated value types 결합 값의 타입`)<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2`(`associated value types-결합 값 타입`)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-이런 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 때때로 _discriminated unions (차별화된 공용체)_ 라고 합니다.
+이 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_ 라고 하기도 합니다.
 
-이 형식에서, 각각의 'case' 블럭은 `case` 키워드 및 그 뒤의, 쉼표로 구분된, 하나 이상의 열거체 'case 값' 으로 구성됩니다. 각 'case 값' 의 이름은 반드시 유일해야 합니다. 각 'case 값' 은 주어진 타입의 값을 저장하도록 지정할 수도 있습니다. 이런 타입은, 'case 값' 의 이름 바로 뒤에, _결합 값의 타입 (associated value types)_ 튜플에서 지정합니다.
+이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분된, 하나 이상의 '열거체 case 값' 으로 구성됩니다. 각 'case 값' 이름은 반드시 유일해야 합니다. 각 'case 값' 은 '주어진 타입의 값을 저장한다' 고 지정할 수도 있습니다. 이 타입들은, 'case 값' 이름 바로 다음의, _결합 값 타입 (associated value types)_ 튜플에서 지정합니다.
 
-'결합 값' 을 저장하는 열거체 'case 값' 은 지정된 '결합 값 (associated values)' 으로 열거체의 인스턴스를 생성하는 함수인 것처럼 사용할 수 있습니다. 그리고 함수에서와 같이, 열거체 'case 값' 에 대한 참조를 가지고 이를 이후의 코드에 적용할 수도 있습니다.
+'결합 값을 저장한 열거체 case 값' 은 '지정한 결합 값을 가진 열거체 인스턴스를 생성하는 함수' 처럼 사용할 수 있습니다. 그리고 그냥 함수 같이, '열거체 case 값' 에 대한 참조를 가질 수도 코드 나중에 이를 적용할 수도 있습니다.
 
 ```swift
 enum Number {
@@ -513,19 +513,19 @@ enum Number {
   case real(Double)
 }
 let f = Number.integer
-// f 는 타입이 (Int) -> Number 인 함수입니다.
+// f 는 타입이 (Int) -> Number 인 함수입니다
 
-// 정수 값으로 된 Number 인스턴스의 배열을 생성하기 위해 f 를 적용합니다.
+// 정수 값을 가진 Number 인스턴스 배열을 생성하고자 f 를 적용합니다
 let evenInts: [Number] = [0, 2, 4, 6].map(f)
 ```
 
-더 많은 정보 및 결합 값의 타입을 가지는 'case 값' 에 대한 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 를 참고하기 바랍니다.
+'결합 값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다.
 
 **Enumerations with Indirection ('간접 (indirection)' 을 가지는 열거체)**
 
-열거체는 '재귀적인 구조 (recursive structure)' 를 가질 수 있는데, 그 말인즉슨, 열거체 타입 그 자체의 인스턴스이기도 한 '결합 값' 을 가지는 'case 값' 을 가질 수 있다는 것입니다. 하지만, 열거체 타입의 인스턴스는 '값' 의미 구조를 가지며, 이는 메모리 상에서 '고정된 구획 (fixed layout)' 을 가진다는 것을 의미합니다. '재귀 (recursion)' 를 지원하기 위해서는, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
+열거체는 '재귀 구조 (recursive structure)', 즉, '결합 값' 이 열거체 타입 그 자체의 인스턴스일 수 있는 'case 값' 을 가질 수 있습니다. 하지만, 열거체 타입의 인스턴스는 '값 의미 구조' 를 가지며, 이는 메모리에서 '고정된 구획 (fixed layout)' 을 가짐을 의미합니다. '재귀 (recursion)' 를 지원하려면, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
 
-특정 열거체 'case 값' 이 '간접 (indirection)' 할 수 있게 하려면, 이를 `indirect` 선언 수정자로 표시합니다. 간접 'case 값' 은 반드시 '결합 값' 을 가져야 합니다.
+'특별한 열거체 case 값' 이 '간접 (indirection)' 을 할 수 있게 하려면, 이를 '`indirect` 선언 수정자' 로 표시합니다. '간접 case 값' 은 반드시 '결합 값' 을 가져야 합니다.
 
 ```swift
 enum Tree<T> {
@@ -534,9 +534,9 @@ enum Tree<T> {
 }
 ```
 
-'결합 값' 을 가지는 모든 열거체 'case 값' 이 '간접 (indirection)' 할 수 있게 하려면, 열거체 전체를 `indirect` 수정자로 표시합니다-열거체가 `indirect` 수정자로 표시해야 하는 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
+'결합 값을 가진 열거체의 모든 case 값' 이 '간접' 을 할 수 있게 하려면, 전체 열거체를 '`indirect` 수정자' 로 표시합니다-이는 열거체가 `indirect` 수정자로 표시해야 할 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
 
-`indirect` 수정자로 표시한 열거체는 '결합 값' 을 가지는 'case 값' 과 그렇지 않은 'case 값' 이 혼합된 것을 가질 수 있습니다. 그렇다 하더라도, 또한 `indirect` 수정자로 표시한 'case 값' 은 어떤 것이든 가질 수 없습니다.
+'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
@@ -682,7 +682,7 @@ protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프
 &nbsp;&nbsp;&nbsp;&nbsp;`protocol member declarations-프로토콜 멤버 선언`<br />
 }
 
-프로토콜의 본문은 '0' 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 담고 있는데, 이는 이 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 하는 '준수 필수 조건 (conformance requirements)' 을 설명합니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 정해진 속성, 메소드, 초기자, 그리고 첨자 연산을 반드시 구현해야 한다고 선언할 수 있습니다. 프로토콜은 또한, 프로토콜의 다양한 선언들 간의 관계를 지정할 수 있는, _결합된 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 수는 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 설명합니다.
+프로토콜의 본문은 '0' 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 담고 있는데, 이는 이 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 하는 '준수 필수 조건 (conformance requirements)' 을 설명합니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 정해진 속성, 메소드, 초기자, 그리고 첨자 연산을 반드시 구현해야 한다고 선언할 수 있습니다. 프로토콜은 또한, 프로토콜의 다양한 선언들 간의 관계를 지정할 수 있는, _결합 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 수는 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 설명합니다.
 
 프로토콜 타입은 어떤 개수의 다른 프로토콜이라도 상속할 수 있습니다. 한 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건' 집합을 한데 '모아서 (aggregated)', 현재 프로토콜을 상속하는 어떤 타입이든 반드시 이 모든 필수 조건들을 다 준수해야 합니다. '프로토콜 상속' 을 사용하는 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 을 참고하기 바랍니다.
 
@@ -775,7 +775,7 @@ subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set 
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
-#### Protocol Associated Type Declaration (프로토콜의 결합된 타입 선언)
+#### Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)
 
 프로토콜은 `associatedtype` 키워드를 사용하여 '결합된 타입 (associated types)' 을 선언합니다. '결합된 타입' 은 프로토콜의 선언에서 사용되는 타입을 위한 '별명 (alias)' 을 제공합니다. '결합된 타입' 은 '일반화된 (generic) 매개 변수 절' 의 '타입 매개 변수' 와 비슷하지만, 이를 선언하는 프로토콜의 `Self` 와 '결합되어 (associated)' 있습니다. 해당 상황에서, `Self` 는 프로토콜을 '최종적으로 (eventual) 준수하고 있는 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 을 참고하기 바랍니다.
 
@@ -909,7 +909,7 @@ extension `type name-타입 이름` where `requirements-필수 조건` {<br />
 
 _타입 이름 (type name)_ 이 클래스, 구조체, 또는 열거체 타입인 경우, '익스텐션' 은 해당 타입을 확장합니다. _타입 이름 (type name)_ 이 프로토콜 타입인 경우, '익스텐션' 은 해당 프로토콜을 준수하는 모든 타입을 확장합니다.
 
-결합된 타입을 가지는 '제네릭 타입 (generic type; 일반화된 타입)' 또는 프로토콜을 확장하는 '익스텐션 선언' 은 _필수 조건 (requirements)_ 을 포함할 수 있습니다. 확장된 타입의 인스턴스 또는 확장된 프로토콜을 준수하는 타입의 인스턴스가 _필수 조건 (requirements)_ 을 만족하는 경우, 이 인스턴스는 선언에서 지정한 '작동 방식 (behavior)' 을 가지게 됩니다.
+결합된 타입을 가지는 '일반화 타입' 또는 프로토콜을 확장하는 '익스텐션 선언' 은 _필수 조건 (requirements)_ 을 포함할 수 있습니다. 확장된 타입의 인스턴스 또는 확장된 프로토콜을 준수하는 타입의 인스턴스가 _필수 조건 (requirements)_ 을 만족하는 경우, 이 인스턴스는 선언에서 지정한 '작동 방식 (behavior)' 을 가지게 됩니다.
 
 '익스텐션 선언' 은 초기자 선언을 가질 수 있습니다. 그렇다 하더라도, 확장하려는 타입이 다른 모듈에서 정의된 경우, 초기자 선언은 해당 타입의 멤버가 알맞게 초기화되는 것을 보장하도록 해당 모듈에서 이미 정의한 초기자로 위임을 반드시 해야 합니다.
 
@@ -1261,11 +1261,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^call-by-reference]: 즉, 스위프트의 '입-출력 매개 변수' 는, 인자가 메모리의 물리 주소에 저장된 값일 경우, '참조에 의한 호출' 작동 방식으로 동작합니다.
 
-[^closure-with-inout-parameter]: 아래 예제에 있는 `{ [a] in return a + 1 }` 라는 클로저는 `a` 의 값을 변경하지 않습니다.
+[^closure-with-inout-parameter]: 아래 예제에 있는 `{ [a] in return a + 1 }` 라는 클로저는 `a` 의 값을 변경하지 않으므로, `[a]` 라는 '붙잡을 목록' 을 사용하여 `a` 를 변경 불가능하게 붙잡았습니다.
 
 [^optional-member]: 여기서의 '옵셔널 (optional)' 은 '선택 사항' 이라는 말과 '타입이 옵셔널' 이라는 두 가지 의미를 모두 가지고 있습니다. 이는 프로토콜에서 선언한 '필수 조건' 이 구현되어 있는 지의 여부 자체가 '옵셔널' 이라는 것으로 이해할 수 있습니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 그 구현체를 가지는 것이고, 구현이 되어 있지 않으면 `nil` 인 것입니다.
 
-[^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수 매개 변수 (throwing function parameter)' 를 말하는 것으로, 매개 변수 자체가 '던지는 함수 (throwing function)' 입니다.
+[^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수인 매개 변수 (throwing function parameter)' 를 의미합니다.
 
 [^immutable]: '상수' 는 값을 바꿀 수 없는 것인데, 'class' 같은 '참조 타입 (reference type)' 은 '참조 대상의 주소' 가 값이기 때문에, '참조 대상의 내용' 은 바꿀 수 있지만, 다른 대상을 참조하도록 '참조 대상의 주소' 를 바꿀 수는 없다는 의미입니다. 
 
@@ -1273,9 +1273,9 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^stored-named-values]: 원문에서 말하는 '이름 붙인 저장 값 (stored named values)' 은 '저장 변수 (stored variable)' 를 의미합니다.
 
-[^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 함수 본문 전체를 의미하기 때문에 '함수 정의 (function definition)' 라고 하는 것이 맞습니다.
+[^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 '함수 본문 전체' 를 의미하기 위해 '함수 정의 (function definition)' 라는 표현을 사용했습니다.
 
-[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다.
+[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다. 즉, 'MVVM' 에서는 의도적으로 `Never` 타입을 사용하는 것입니다. 
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다.
 
@@ -1291,7 +1291,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^class-final]: 즉 클래스 선언에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
 
-[^any-type]: 이 부분에서 사용한 'Any Type' 은 스위프트의 '`Any` 타입' 과는 다른 의미입니다.
+[^any-type]: 여기서의 'Any Type' 은 스위프트에 있는 '`Any` 타입' 과는 다른 의미로 사용한 것입니다.
 
 [^enumeration-get-only]: 이 말은 아래 예제를 참고하면 열거체에서 `case someValue` 라고 하면 프로토콜에 있는 `static var someValue: Self { get }` 이라는 필수 조건을 만족하게 된다는 의미입니다.
 
@@ -1302,3 +1302,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
 [^type-computed-properties]: '타입 변수 속성 (type variable property)' 이 아니라, '타입 계산 속성 (type computed property)' 입니다. '타입 저장 속성 (type stored property)' 는 해당하지 않습니다. 
+
+[^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 참고하기 바랍니다.
+
+[^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 

@@ -192,7 +192,7 @@ john.residence?.address = someAddress
 
 이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는,`john.residence` 가 현재 `nil` 이기 때문에, 실패할 것입니다.
 
-'할당 (assignment)' 은 옵셔널 연쇄의 일부이며, 이는 `=` 연산자의 오른-쪽에 있는 코드는 아무 것도 평가하지 않는다는 의미입니다. 이전 예제에서, `someAddress` 를 절대로 평가하지 않는다는 것은 알기가 쉽지 않은데, 이는 상수에 접근하는 것이 어떠한 '부작용 (side effect)'[^side-effect] 도 가지지 않기 때문입니다. 아래에 나열한 것은 똑같은 할당을 하지만, 주소를 생성하기 위해 함수를 사용합니다. 함수는 값을 반환하기 전에, `=` 연산자의 오른-쪽 값을 평가했는지 볼 수 있도록, "Function was called" 를 인쇄합니다.[^function-was-called]
+'할당 (assignment)' 은 '옵셔널 연쇄' 의 일부분이며, 이는 `=` 연산자의 오른-쪽에 있는 코드는 아무 것도 평가하지 않는다는 의미입니다. 이전 예제에서, `someAddress` 를 절대로 평가하지 않는다는 것은 알기가 쉽지 않은데, 이는 상수에 접근하는 것이 어떠한 '부작용 (side effect)'[^side-effect] 도 가지지 않기 때문입니다. 아래에 나열한 것은 똑같은 할당을 하지만, 주소를 생성하기 위해 함수를 사용합니다. 함수는 값을 반환하기 전에, `=` 연산자의 오른-쪽 값을 평가했는지 볼 수 있도록, "Function was called" 를 인쇄합니다.[^function-was-called]
 
 ```swift
 func createAddress() -> Address {
