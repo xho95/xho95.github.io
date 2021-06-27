@@ -536,7 +536,7 @@ enum Tree<T> {
 
 '결합 값을 가진 열거체의 모든 case 값' 이 '간접' 을 할 수 있게 하려면, 전체 열거체를 '`indirect` 수정자' 로 표시합니다-이는 열거체가 `indirect` 수정자로 표시해야 할 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
 
-'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자' 로도 표시한 어떤 'case 값' 도 담을 수는 없습니다.
+'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
