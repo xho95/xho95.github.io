@@ -503,7 +503,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 
 
 이 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_ 라고 하기도 합니다.
 
-이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분된, 하나 이상의 '열거체 case 값' 으로 구성됩니다. 각 'case 값' 이름은 반드시 유일해야 합니다. 각 'case 값' 은 '주어진 타입의 값을 저장한다' 고 지정할 수도 있습니다. 이 타입들은, 'case 값' 이름 바로 다음의, _결합 값 타입 (associated value types)_ 튜플에서 지정합니다.
+이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 각 'case 값' 이름은 반드시 유일해야 합니다. 각 'case 값' 은 '주어진 타입의 값을 저장한다' 고 지정할 수도 있습니다. 이 타입들은, 'case 값' 이름 바로 다음의, _결합 값 타입 (associated value types)_ 튜플에서 지정합니다.
 
 '결합 값을 저장한 열거체 case 값' 은 '지정한 결합 값을 가진 열거체 인스턴스를 생성하는 함수' 처럼 사용할 수 있습니다. 그리고 그냥 함수 같이, '열거체 case 값' 에 대한 참조를 가질 수도 코드 나중에 이를 적용할 수도 있습니다.
 
@@ -547,9 +547,9 @@ enum Tree<T> {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식에서, 각각의 'case' 블럭은 `case` 키워드와, 그 뒤에 하나 이상의 열거체 'case 값' 을, 쉼표로 구분한 것으로 구성됩니다. 첫 번째 형식의 'case 값' 과는 다르게, 각각의 'case 값' 은, 기본 타입이 같은, _원시 값 (raw value)_ 라고 하는, 실제의 값을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 으로 지정하는데, 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 `Equatable` 프로토콜과 다음 프로토콜 중 하나를 반드시 준수해야 합니다: '정수 글자 값' 일 때는 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 일 때는 `ExpressibleByFloatLiteral`, 어떤 개수의 문자라도 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByStringLiteral`, 그리고 단 하나의 문자만을 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 입니다. 각각의 'case 값' 은 반드시 유일한 이름을 가져야 하며 유일한 원시 값을 할당해야 합니다.
+이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 첫 번째 형식의 'case 값' 과는 달리, 각 'case 값' 은, 기초 타입이 똑같은, _원시 값 (raw value)_ 이라는, '실제 값' 을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 에서 지정하며 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 반드시 `Equatable` 프로토콜과 다음의 프로토콜들: '정수 글자 값' 이면 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 이면 `ExpressibleByFloatLiteral`, 어떤 개수의 문자든 담은 '문자열 글자 값' 이면 `ExpressibleByStringLiteral`, 단일 문자만 담은 '문자열 글자 값' 이면 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 중 하나를 준수해야 합니다. 각 'case 값' 은 반드시 '유일한 이름' 을 가지고 '유일한 원시 값' 을 할당해야 합니다.
 
-원시-값 타입을 `Int` 로 지정하고서 'case 값' 을 명시적으로 할당하지 않으면, `0`, `1`, `2`, 등의 값이 암시적으로 할당됩니다. 할당되지 않은 각각의 `Int` 타입 'case 값' 은 이전 'case 값' 의 '원시 값' 에서 자동으로 증가된 '원시 값' 을 암시적으로 할당합니다.
+원시-값 타입을 `Int` 로 지정하고 'case 값' 할당을 명시하지 않으면, 암시적으로 `0`, `1`, `2`, 등의 값을 할당합니다. 각각의 '할당 안된 `Int` 타입 case 값' 은 암시적으로 '이전 case 값' 의 원시 값에서 자동 증가한 '원시 값' 을 할당합니다.
 
 ```swift
 enum ExampleEnum: Int {
