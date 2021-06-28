@@ -494,7 +494,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 
 
 #### Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)
 
-다음 형식은 어떤 타입이든 되는 '열거체 case 값' 을 담은 '열거체 타입' 을 선언합니다:[^any-type]
+다음 형식은 어떤 타입이든 되는 '열거체 case 값' 을 담는 '열거체 타입' 을 선언합니다:[^any-type]
 
 &nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1`<br />
@@ -536,16 +536,16 @@ enum Tree<T> {
 
 '결합 값을 가진 열거체의 모든 case 값' 이 '간접' 을 할 수 있게 하려면, 전체 열거체를 '`indirect` 수정자' 로 표시합니다-이는 열거체가 `indirect` 수정자로 표시해야 할 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
 
-'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
+'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어서 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
-다음 형식은 기본 타입이 같은 열거체 'case 값' 을 가지는 열거체 타입을 선언합니다:
+다음 형식은 기초 타입이 똑같은 '열거체 case 값' 을 담는 열거체 타입을 선언합니다:
 
-enum `enumeration name-열거체 이름`: `raw-value type-원시-값 타입`, `adopted protocols-채택한 프로토콜` {<br />
-    case `enumeration case 1-열거체 case 값 1` = `원시 값 1-raw value 1`<br />
-    case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `raw-value type-원시-값 타입`, `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1` = `원시 값 1-raw value 1`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 이 형식에서, 각각의 'case' 블럭은 `case` 키워드와, 그 뒤에 하나 이상의 열거체 'case 값' 을, 쉼표로 구분한 것으로 구성됩니다. 첫 번째 형식의 'case 값' 과는 다르게, 각각의 'case 값' 은, 기본 타입이 같은, _원시 값 (raw value)_ 라고 하는, 실제의 값을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 으로 지정하는데, 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 `Equatable` 프로토콜과 다음 프로토콜 중 하나를 반드시 준수해야 합니다: '정수 글자 값' 일 때는 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 일 때는 `ExpressibleByFloatLiteral`, 어떤 개수의 문자라도 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByStringLiteral`, 그리고 단 하나의 문자만을 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 입니다. 각각의 'case 값' 은 반드시 유일한 이름을 가져야 하며 유일한 원시 값을 할당해야 합니다.
 
