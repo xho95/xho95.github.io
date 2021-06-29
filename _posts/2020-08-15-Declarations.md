@@ -547,9 +547,9 @@ enum Tree<T> {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 첫 번째 형식의 'case 값' 과는 달리, 각 'case 값' 은, 기초 타입이 똑같은, _원시 값 (raw value)_ 이라는, '실제 값' 을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 에서 지정하며 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 반드시 `Equatable` 프로토콜과 다음의 프로토콜들: '정수 글자 값' 이면 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 이면 `ExpressibleByFloatLiteral`, 어떤 개수의 문자든 담은 '문자열 글자 값' 이면 `ExpressibleByStringLiteral`, 단일 문자만 담은 '문자열 글자 값' 이면 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 중 하나를 준수해야 합니다. 각 'case 값' 은 반드시 '유일한 이름' 을 가지고 '유일한 원시 값' 을 할당해야 합니다.
+이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 첫 번째 형식에서의 'case 값' 과는 달리, 각 'case 값' 은, 기초 타입이 똑같은, _원시 값 (raw value)_ 이라는, '실제 값' 을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 에서 지정하며 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 반드시 `Equatable` 프로토콜과 다음의 프로토콜들: '정수 글자 값' 이면 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 이면 `ExpressibleByFloatLiteral`, 어떤 개수의 문자든 담을 '문자열 글자 값' 이면 `ExpressibleByStringLiteral`, 단일 문자만 담을 '문자열 글자 값' 이면 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 중 하나를 준수해야 합니다. 각 'case 값' 은 반드시 '유일한 이름' 을 가지며 '유일한 원시 값' 을 할당해야 합니다.
 
-원시-값 타입을 `Int` 로 지정하고 'case 값' 할당을 명시하지 않으면, 암시적으로 `0`, `1`, `2`, 등의 값을 할당합니다. 각각의 '할당 안된 `Int` 타입 case 값' 은 암시적으로 '이전 case 값' 의 원시 값에서 자동 증가한 '원시 값' 을 할당합니다.
+원시-값 타입을 `Int` 로 지정하고 'case 값' 을 명시적으로 할당하지 않으면, `0`, `1`, `2`, 등의 값을 암시적으로 할당합니다. 각각의 '할당 안된 `Int` 타입 case 값' 은 '이전 case 의 원시 값' 에서 자동 증가한 '원시 값' 을 암시적으로 할당합니다.
 
 ```swift
 enum ExampleEnum: Int {
