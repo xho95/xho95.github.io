@@ -252,7 +252,7 @@ enum CompassPoint: String {
 
 위 예제에서, `CompassPoint.south` 는 암시적인 원시 값 `"south"` 를 가지며, 이렇게 계속됩니다.
 
-'열거체 case 값' 의 원시 값은 `rawValue` 속성으로 접근합니다:
+'열거체 case 의 원시 값' 은 `rawValue` 속성으로 접근합니다:
 
 ```swift
 let earthsOrder = Planet.earth.rawValue

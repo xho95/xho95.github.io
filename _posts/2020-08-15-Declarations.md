@@ -549,7 +549,7 @@ enum Tree<T> {
 
 이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 첫 번째 형식에서의 'case 값' 과는 달리, 각 'case 값' 은, 기초 타입이 똑같은, _원시 값 (raw value)_ 이라는, '실제 값' 을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 에서 지정하며 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 반드시 `Equatable` 프로토콜과 다음의 프로토콜들: '정수 글자 값' 이면 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 이면 `ExpressibleByFloatLiteral`, 어떤 개수의 문자든 담을 '문자열 글자 값' 이면 `ExpressibleByStringLiteral`, 단일 문자만 담을 '문자열 글자 값' 이면 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 중 하나를 준수해야 합니다. 각 'case 값' 은 반드시 '유일한 이름' 을 가지며 '유일한 원시 값' 을 할당해야 합니다.
 
-원시-값 타입을 `Int` 로 지정하고 'case 값' 을 명시적으로 할당하지 않으면, `0`, `1`, `2`, 등의 값을 암시적으로 할당합니다. 각각의 '할당 안된 `Int` 타입 case 값' 은 '이전 case 의 원시 값' 에서 자동 증가한 '원시 값' 을 암시적으로 할당합니다.
+원시-값 타입을 `Int` 로 지정했는데 'case 값' 할당을 명시하지 않으면, `0`, `1`, `2`, 등의 값을 암시적으로 할당합니다. 각각의 '할당 안된 `Int` 타입 case 값' 은 '이전 case 의 원시 값' 에서 자동 증가한 '원시 값' 을 암시적으로 할당합니다.
 
 ```swift
 enum ExampleEnum: Int {
@@ -557,9 +557,9 @@ enum ExampleEnum: Int {
 }
 ```
 
-위 예제에서, `ExampleEnum.a` 의 원시 값은 `0` 이고 `ExampleEnum.b` 의 값은 `1` 입니다. 그리고 `ExampleEnum.c` 의 값을 명시적으로 `5` 로 설정했기 때문에, `ExampleEnum.d` 의 값은 `5` 에서 자동으로 증가한 `6` 가 됩니다.
+위 예제에서, `ExampleEnum.a` 의 원시 값은 `0` 이고 `ExampleEnum.b` 값은 `1` 입니다. 그리고 `ExampleEnum.c` 값은 `5` 라고 명시적으로 설정했기 때문에, `ExampleEnum.d` 의 값은 따라서 `5` 에서 자동으로 증가한 `6` 입니다.
 
-원시-값 타입을 `String` 으로 지정하고서 'case 값' 을 명시적으로 할당하지 않으면, 할당되지 않은 각각의 'case 값' 은 암시적으로 해당 'case 값' 의 이름과 똑같은 문장으로 된 문자열을 할당합니다.
+원시-값 타입을 `String` 으로 지정했는데 'case 값' 할당을 명시하지 않으면, 각각의 '할당 안된 case 값' 은 '해당 case 이름과 똑같은 문장의 문자열' 을 암시적으로 할당합니다.
 
 ```swift
 enum GamePlayMode: String {
@@ -569,8 +569,7 @@ enum GamePlayMode: String {
 
 위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"`, `GamePlayMode.individual` 의 원시 값은 `"individual"`, 그리고 `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
 
-원시-값 타입의 'case 값' 을 가지는 열거체는, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 암시적으로 준수합니다. 그 결과, `rawValue` 속성과 '서명 (signature)' `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다.
-`rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 에서와 같이, 열거체 'case 값' 의 '원시 값' 에 접근할 수 있습니다. 원시 값과 연관되어 있는 'case 값' 이, 하나라도 있는 경우, `ExampleEnum(rawValue: 5)` 에서와 같이, 옵셔널 'case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출하여 찾을 수도 있습니다. 더 많은 정보와 원시-값 타입의 'case 값' 에 대한 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 을 참고하기 바랍니다.
+'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 에서 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
 
 #### Accessing Enumeration Cases (열거체의 'case 값' 에 접근하기)
 
@@ -1306,3 +1305,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 참고하기 바랍니다.
 
 [^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 
+
+[^signature]: 함수나 메소드에서 '서명 (signature)' 과 '이름 (name)' 의 차이점은 '매개 변수' 를 포함하는 지의 여부입니다. 이 예제에 있는 `init(rawValue: RawValue)` 는 '초기자 서명 (signature)' 이며, 매개 변수 부분을 뺀 `init?` 이 '초기자 이름' 입니다. 
