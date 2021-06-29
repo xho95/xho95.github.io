@@ -90,7 +90,7 @@ let someVideoMode = VideoMode()
 
 #### Accessing Properties (속성에 접근하기)
 
-인스턴스의 속성은 _점 구문 표현 (dot syntax)_ 을 사용하여 접근할 수 있습니다. '점 구문 표현' 에서, 속성 이름은 인스턴스 이름 바로 뒤에, 어떤 공백도 없이, '마침표 (period; `.`)' 로 구분하여, 작성합니다:
+인스턴스의 속성은 _점 구문 표현 (dot syntax)_ 을 사용하여 접근할 수 있습니다. '점 구문' 에서, 속성 이름은 인스턴스 이름 바로 뒤에, 어떤 공백도 없이, '마침표 (period; `.`)' 로 구분하여, 작성합니다:
 
 ```swift
 print ( "The width of someResolution is \(someResolution.width)")
@@ -106,7 +106,7 @@ print ( "The width of someVideoMode is \(someVideoMode.resolution.width)")
 // "The width of someVideoMode is 0" 를 인쇄합니다.
 ```
 
-'점 구문 표현' 은 '변수 속성' 에 새로운 값을 할당하기 위해서도 사용할 수 있습니다:
+'점 구문' 은 '변수 속성' 에 새로운 값을 할당하기 위해서도 사용할 수 있습니다:
 
 ```swift
 someVideoMode.resolution.width = 1280

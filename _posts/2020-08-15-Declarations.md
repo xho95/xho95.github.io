@@ -569,13 +569,13 @@ enum GamePlayMode: String {
 
 위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"`, `GamePlayMode.individual` 의 원시 값은 `"individual"`, 그리고 `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
 
-'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 에서 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
+'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
 
 #### Accessing Enumeration Cases (열거체의 'case 값' 에 접근하기)
 
-열거체 타입의 'case 값' 을 참조하려면, `EnumerationType.enumerationCase` 에서와 같이, '점 (`.`) 구문' 을 사용합니다. 열거체 타입을 추론할 수 있는 상황일 때는, [Enumeration Syntax (열거체 구문 표현)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문-표현) 과 [Implicit Member Expression (암시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적인-멤버-표현식) 에서 설명한 것처럼, 이를 생략할 수 있습니다 ('점' 은 그래도 필수입니다).
+'열거체 타입의 case 값' 을 참조하려면, `EnumerationType.enumerationCase` 과 같은, '점 (`.`) 구문' 을 사용합니다. 열거체 타입을 추론할 수 있는 상황일 땐, [Enumeration Syntax (열거체 구문)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문) 과 [Implicit Member Expression (암시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적인-멤버-표현식) 에서 설명한 것처럼, 생략할 수 있습니다. ('점' 은 여전히 필수입니다)
 
-열거체 'case 값' 의 값을 검사하려면, [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 에서 본 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 값 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-값-패턴) 에서 설명한 것처럼, `switch` 문의 'case 절' 블럭에 있는 '열거체 case 값 패턴' 과 유형이 일치하는 지를 맞춰보게 됩니다.
+'열거체 case 의 값' 을 검사하려면, [Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-열거체-값-과-switch-문-맞춰보기) 에 보인 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 유형)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-유형) 에서 설명한 것처럼, '`switch` 문의 case 블럭' 에 있는 '열거체 case 유형' 과 유형을-맞춰봅니다.
 
 > GRAMMAR OF AN ENUMERATION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID364)
 

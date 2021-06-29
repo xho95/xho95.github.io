@@ -20,7 +20,7 @@ C 에 익숙하다면, C 열거체는 관련된 이름에 일련의 정수 값�
 
 이 '보유 능력 (capabilities)' 들에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
-### Enumeration Syntax (열거체 구문 표현)
+### Enumeration Syntax (열거체 구문)
 
 열거체는 `enum` 키워드로 도입하며 그의 전체 정의는 중괄호 쌍 안에 둡니다:
 
@@ -59,7 +59,7 @@ case mercury, venus, earth, mars, jupiter, saturn uranus, neptune
 var directionToHead = CompassPoint.west
 ```
 
-`directionToHead` 의 타입은 이를 가능한 `CompassPoint` 값들 중 하나로 초기화할 때 추론됩니다. `directionToHead` 를 `CompassPoint` 로 한 번 선언하고 나면, '줄인 점 구문 표현 (shorter dot syntax)' 을 사용하여 이를 다른 `CompassPoint` 값으로 설정할 수 있습니다:
+`directionToHead` 의 타입은 이를 가능한 `CompassPoint` 값들 중 하나로 초기화할 때 추론됩니다. `directionToHead` 를 `CompassPoint` 로 한 번 선언하고 나면, '줄인 점 구문 (shorter dot syntax)' 을 사용하여 이를 다른 `CompassPoint` 값으로 설정할 수 있습니다:
 
 ```swift
 directionToHead = .east
@@ -67,7 +67,7 @@ directionToHead = .east
 
 `directionToHead` 의 타입은 이미 알고 있으므로, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 타입을 명시적으로 지정한 열거체의 값과 작업할 때 가독성 높은 코드를 만들어 줍니다.
 
-### Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)
+### Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)
 
 개별 열거체 값은 `switch` 문으로 맞춰볼 수 있습니다:
 
@@ -180,7 +180,7 @@ productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 
 이 순간, 원래의 `Barcode.upc` 와 정수 값들이 새로운 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 이든 `.qrCode` 이든 (결합 값과 같이) 저장할 수 있지만, 주어진 순간에 단 한 가지만을 저장할 수 있습니다.
 
-서로 다른 바코드 타입은, [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 의 예제와 비슷하게, 'switch 문' 으로 검사할 수 있습니다. 하지만, 이번에는 'switch 문' 에서 '결합 값' 을 뽑아냅니다. 각 '결합 값' 은 '`switch` 문의 case 절' 본문에서 사용하려고 (`let` 접두사를 가진) 상수 또는 (`var` 접두사를 가진) 변수로써 뽑아냅니다:
+서로 다른 바코드 타입은, [Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값-과-switch-문-맞춰보기) 의 예제와 비슷하게, 'switch 문' 으로 검사할 수 있습니다. 하지만, 이번에는 'switch 문' 에서 '결합 값' 을 뽑아냅니다. 각 '결합 값' 은 '`switch` 문의 case 절' 본문에서 사용하려고 (`let` 접두사를 가진) 상수 또는 (`var` 접두사를 가진) 변수로써 뽑아냅니다:
 
 ```swift
 switch productBarcode {
