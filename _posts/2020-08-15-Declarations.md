@@ -581,21 +581,21 @@ enum GamePlayMode: String {
 
 ### Structure Declaration (구조체 선언)
 
-_구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 을 프로그램에 도입합니다. 구조체 선언은 `struct` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+_구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 을 프로그램에 도입합니다. '구조체 선언' 은 `struct` 키워드로 선언하며 형식은 다음과 같습니다:
 
-struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토콜` {<br />
-  `declarations-선언`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-구조체의 본문은 '0' 개 이상의 _선언 (declarations)_ 들을 담고 있습니다. 이 _선언 (declarations)_ 들은 저장 및 계산 속성 둘 모두와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 또는 '프로토콜 선언' 을 가질 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 여러 가지 예제와 논의들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
+구조체의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자와, 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
-구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 수는 없습니다.
+구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 순 없습니다.
 
-이전에 선언한 구조체의 인스턴스를 생성하는 방법은 세 가지가 있습니다:
+이전에 선언한 구조체의 인스턴스를 생성하는 데는 세 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 구조체에서 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자가 없으면, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 '멤버 초기자 (memberwise initializer)' 를 호출합니다.
-* 선언한 초기자는 없지만, 구조체 선언의 모든 속성에 초기 값이 주어졌으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 '기본 초기자 (default initializer)' 를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 구조체 안에 선언한 초기자 중 하나를 호출합니다.
+* 선언한 초기자가 없으면, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 '멤버 초기자' 를 호출합니다.
+* 선언한 초기자는 없지만, 구조체 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 '기본 초기자' 를 호출합니다.
 
 구조체에서 선언한 속성을 초기화하는 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
