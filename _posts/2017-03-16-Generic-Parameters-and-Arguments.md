@@ -33,10 +33,10 @@ _구속 조건 (constraint)_ 은 '타입 매개 변수'가 특정한 클래스�
 
 ```swift
 func simpleMax<T: Comparable>(_ x: T, _ y: T) -> T {
-    if x < y {
-        return y
-    }
-    return x
+  if x < y {
+    return y
+  }
+  return x
 }
 ```
 
@@ -117,7 +117,7 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 [^placeholder]: 즉, 특정한 타입의 이름이 아니므로 사용자가 편리한 데로 임의로 정할 수 있는 이름입니다.
 
-[^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 함수의 이름과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
+[^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 '함수 이름' 과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
 
 [^specialized-version]: 이 부분은 C++ 언어의 메타 프로그래밍에서 나오는 일반화 (generalization) 및 특수화 (specialization) 의 개념과 유사한 것 같습니다. Swift 의 일반화 (generic; 제네릭) 이 C++ 의 템플릿 (template) 과 사실상 동등한 개념이므로 당연한 것이라고 할 수 있습니다.
 

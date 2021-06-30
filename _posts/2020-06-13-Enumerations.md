@@ -20,7 +20,7 @@ C 에 익숙하다면, C 열거체는 관련된 이름에 일련의 정수 값�
 
 이 '보유 능력 (capabilities)' 들에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
-### Enumeration Syntax (열거체 구문 표현)
+### Enumeration Syntax (열거체 구문)
 
 열거체는 `enum` 키워드로 도입하며 그의 전체 정의는 중괄호 쌍 안에 둡니다:
 
@@ -59,7 +59,7 @@ case mercury, venus, earth, mars, jupiter, saturn uranus, neptune
 var directionToHead = CompassPoint.west
 ```
 
-`directionToHead` 의 타입은 이를 가능한 `CompassPoint` 값들 중 하나로 초기화할 때 추론됩니다. `directionToHead` 를 `CompassPoint` 로 한 번 선언하고 나면, '줄인 점 구문 표현 (shorter dot syntax)' 을 사용하여 이를 다른 `CompassPoint` 값으로 설정할 수 있습니다:
+`directionToHead` 의 타입은 이를 가능한 `CompassPoint` 값들 중 하나로 초기화할 때 추론됩니다. `directionToHead` 를 `CompassPoint` 로 한 번 선언하고 나면, '줄인 점 구문 (shorter dot syntax)' 을 사용하여 이를 다른 `CompassPoint` 값으로 설정할 수 있습니다:
 
 ```swift
 directionToHead = .east
@@ -67,7 +67,7 @@ directionToHead = .east
 
 `directionToHead` 의 타입은 이미 알고 있으므로, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 타입을 명시적으로 지정한 열거체의 값과 작업할 때 가독성 높은 코드를 만들어 줍니다.
 
-### Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)
+### Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)
 
 개별 열거체 값은 `switch` 문으로 맞춰볼 수 있습니다:
 
@@ -180,7 +180,7 @@ productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 
 이 순간, 원래의 `Barcode.upc` 와 정수 값들이 새로운 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 이든 `.qrCode` 이든 (결합 값과 같이) 저장할 수 있지만, 주어진 순간에 단 한 가지만을 저장할 수 있습니다.
 
-서로 다른 바코드 타입은, [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 의 예제와 비슷하게, 'switch 문' 으로 검사할 수 있습니다. 하지만, 이번에는 'switch 문' 에서 '결합 값' 을 뽑아냅니다. 각 '결합 값' 은 '`switch` 문의 case 절' 본문에서 사용하려고 (`let` 접두사를 가진) 상수 또는 (`var` 접두사를 가진) 변수로써 뽑아냅니다:
+서로 다른 바코드 타입은, [Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값-과-switch-문-맞춰보기) 의 예제와 비슷하게, 'switch 문' 으로 검사할 수 있습니다. 하지만, 이번에는 'switch 문' 에서 '결합 값' 을 뽑아냅니다. 각 '결합 값' 은 '`switch` 문의 case 절' 본문에서 사용하려고 (`let` 접두사를 가진) 상수 또는 (`var` 접두사를 가진) 변수로써 뽑아냅니다:
 
 ```swift
 switch productBarcode {
@@ -252,7 +252,7 @@ enum CompassPoint: String {
 
 위 예제에서, `CompassPoint.south` 는 암시적인 원시 값 `"south"` 를 가지며, 이렇게 계속됩니다.
 
-'열거체 case 값' 의 원시 값은 `rawValue` 속성으로 접근합니다:
+'열거체 case 의 원시 값' 은 `rawValue` 속성으로 접근합니다:
 
 ```swift
 let earthsOrder = Planet.earth.rawValue
@@ -298,7 +298,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 ### Recursive Enumerations (재귀적인 열거체)
 
-_재귀적인 열거체 (recursive enumeration)_ 는 또 다른 열거체의 인스턴스를 하나 이상의 '열거체 case 값' 에 대한 '결합 값' 으로 가지는 열거체입니다. '열거체 case 값' 은 그 앞에 `indirect` [^indirect] 를 작성하여 '재귀적' 임을 지시하는데, 이는 필요한 '간접 계층 (layer of indirection)' 을 집어 넣을 것을 컴파일러에게 알립니다.
+_재귀적인 열거체 (recursive enumeration)_ 는 또 다른 열거체의 인스턴스를 하나 이상의 '열거체 case 값' 에 대한 '결합 값' 으로 가지는 열거체입니다. '열거체 case 값' 은 그 앞에 `indirect`[^indirect] 를 작성하여 '재귀적' 임을 지시하는데, 이는 필요한 '간접 계층 (layer of indirection)' 을 집어 넣을 것을 컴파일러에게 알립니다.
 
 예를 들어, 다음은 간단한 '산술 (arithmetic) 표현식' 을 저장하는 열거체입니다:
 
@@ -369,7 +369,7 @@ print(evaluate(product))
 
 [^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 참고하기 바랍니다.
 
-[^indirection]: 본문을 보면 '재귀적 (recursive)' 이라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하고 있는데, 이는 스위프트 열거체를 '재귀적' 으로 만드는 방식이 내부적으로는 메모리의 '간접 주소' 방식을 써서 구현했기 때문으로 추측됩니다. 물론 스위프트 프로그래밍을 위해 이런 걸 알아야 하는 것은 아니므로 그런게 있다고 넘어가면 될 것 같습니다.
+[^indirection]: 본문을 보면 '재귀 (recursive)' 라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하는데, 이는 스위프트 열거체를 '재귀적' 으로 만드는 방식이 메모리의 '간접 주소' 방식을 써서 구현하기 때문입니다.
 
 [^cases]: 'case' 는 '경우' 라고 옮길 수 있지만, 스위프트의 'case' 는 하나의 '키워드 (keyword)' 이기도 하면서, 때에 따라 'case 값', 'case 절', 그리고 그냥 '경우' 를 의미하기도 하기 때문에, 한글로 '경우' 를 의미할 때만 '경우' 라고 하고, 그 이외의 상황에서는 'case 값' 또는 'case 절' 이라고 옮깁니다.
 

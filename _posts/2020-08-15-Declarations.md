@@ -494,7 +494,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 
 
 #### Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)
 
-다음 형식은 어떤 타입이든 되는 '열거체 case 값' 을 담은 '열거체 타입' 을 선언합니다:[^any-type]
+다음 형식은 어떤 타입이든 되는 '열거체 case 값' 을 담는 '열거체 타입' 을 선언합니다:[^any-type]
 
 &nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1`<br />
@@ -503,7 +503,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 
 
 이 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_ 라고 하기도 합니다.
 
-이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분된, 하나 이상의 '열거체 case 값' 으로 구성됩니다. 각 'case 값' 이름은 반드시 유일해야 합니다. 각 'case 값' 은 '주어진 타입의 값을 저장한다' 고 지정할 수도 있습니다. 이 타입들은, 'case 값' 이름 바로 다음의, _결합 값 타입 (associated value types)_ 튜플에서 지정합니다.
+이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 각 'case 값' 이름은 반드시 유일해야 합니다. 각 'case 값' 은 '주어진 타입의 값을 저장한다' 고 지정할 수도 있습니다. 이 타입들은, 'case 값' 이름 바로 다음의, _결합 값 타입 (associated value types)_ 튜플에서 지정합니다.
 
 '결합 값을 저장한 열거체 case 값' 은 '지정한 결합 값을 가진 열거체 인스턴스를 생성하는 함수' 처럼 사용할 수 있습니다. 그리고 그냥 함수 같이, '열거체 case 값' 에 대한 참조를 가질 수도 코드 나중에 이를 적용할 수도 있습니다.
 
@@ -536,20 +536,20 @@ enum Tree<T> {
 
 '결합 값을 가진 열거체의 모든 case 값' 이 '간접' 을 할 수 있게 하려면, 전체 열거체를 '`indirect` 수정자' 로 표시합니다-이는 열거체가 `indirect` 수정자로 표시해야 할 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
 
-'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
+'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어서 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
-다음 형식은 기본 타입이 같은 열거체 'case 값' 을 가지는 열거체 타입을 선언합니다:
+다음 형식은 기초 타입이 똑같은 '열거체 case 값' 을 담는 열거체 타입을 선언합니다:
 
-enum `enumeration name-열거체 이름`: `raw-value type-원시-값 타입`, `adopted protocols-채택한 프로토콜` {<br />
-    case `enumeration case 1-열거체 case 값 1` = `원시 값 1-raw value 1`<br />
-    case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `raw-value type-원시-값 타입`, `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1` = `원시 값 1-raw value 1`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식에서, 각각의 'case' 블럭은 `case` 키워드와, 그 뒤에 하나 이상의 열거체 'case 값' 을, 쉼표로 구분한 것으로 구성됩니다. 첫 번째 형식의 'case 값' 과는 다르게, 각각의 'case 값' 은, 기본 타입이 같은, _원시 값 (raw value)_ 라고 하는, 실제의 값을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 으로 지정하는데, 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 `Equatable` 프로토콜과 다음 프로토콜 중 하나를 반드시 준수해야 합니다: '정수 글자 값' 일 때는 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 일 때는 `ExpressibleByFloatLiteral`, 어떤 개수의 문자라도 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByStringLiteral`, 그리고 단 하나의 문자만을 가질 수 있는 '문자열 글자 값' 일 때는 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 입니다. 각각의 'case 값' 은 반드시 유일한 이름을 가져야 하며 유일한 원시 값을 할당해야 합니다.
+이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 첫 번째 형식에서의 'case 값' 과는 달리, 각 'case 값' 은, 기초 타입이 똑같은, _원시 값 (raw value)_ 이라는, '실제 값' 을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 에서 지정하며 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 반드시 `Equatable` 프로토콜과 다음의 프로토콜들: '정수 글자 값' 이면 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 이면 `ExpressibleByFloatLiteral`, 어떤 개수의 문자든 담을 '문자열 글자 값' 이면 `ExpressibleByStringLiteral`, 단일 문자만 담을 '문자열 글자 값' 이면 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 중 하나를 준수해야 합니다. 각 'case 값' 은 반드시 '유일한 이름' 을 가지며 '유일한 원시 값' 을 할당해야 합니다.
 
-원시-값 타입을 `Int` 로 지정하고서 'case 값' 을 명시적으로 할당하지 않으면, `0`, `1`, `2`, 등의 값이 암시적으로 할당됩니다. 할당되지 않은 각각의 `Int` 타입 'case 값' 은 이전 'case 값' 의 '원시 값' 에서 자동으로 증가된 '원시 값' 을 암시적으로 할당합니다.
+원시-값 타입을 `Int` 로 지정했는데 'case 값' 할당을 명시하지 않으면, `0`, `1`, `2`, 등의 값을 암시적으로 할당합니다. 각각의 '할당 안된 `Int` 타입 case 값' 은 '이전 case 의 원시 값' 에서 자동 증가한 '원시 값' 을 암시적으로 할당합니다.
 
 ```swift
 enum ExampleEnum: Int {
@@ -557,9 +557,9 @@ enum ExampleEnum: Int {
 }
 ```
 
-위 예제에서, `ExampleEnum.a` 의 원시 값은 `0` 이고 `ExampleEnum.b` 의 값은 `1` 입니다. 그리고 `ExampleEnum.c` 의 값을 명시적으로 `5` 로 설정했기 때문에, `ExampleEnum.d` 의 값은 `5` 에서 자동으로 증가한 `6` 가 됩니다.
+위 예제에서, `ExampleEnum.a` 의 원시 값은 `0` 이고 `ExampleEnum.b` 값은 `1` 입니다. 그리고 `ExampleEnum.c` 값은 `5` 라고 명시적으로 설정했기 때문에, `ExampleEnum.d` 의 값은 따라서 `5` 에서 자동으로 증가한 `6` 입니다.
 
-원시-값 타입을 `String` 으로 지정하고서 'case 값' 을 명시적으로 할당하지 않으면, 할당되지 않은 각각의 'case 값' 은 암시적으로 해당 'case 값' 의 이름과 똑같은 문장으로 된 문자열을 할당합니다.
+원시-값 타입을 `String` 으로 지정했는데 'case 값' 할당을 명시하지 않으면, 각각의 '할당 안된 case 값' 은 '해당 case 이름과 똑같은 문장의 문자열' 을 암시적으로 할당합니다.
 
 ```swift
 enum GamePlayMode: String {
@@ -569,42 +569,41 @@ enum GamePlayMode: String {
 
 위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"`, `GamePlayMode.individual` 의 원시 값은 `"individual"`, 그리고 `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
 
-원시-값 타입의 'case 값' 을 가지는 열거체는, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 암시적으로 준수합니다. 그 결과, `rawValue` 속성과 '서명 (signature)' `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다.
-`rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 에서와 같이, 열거체 'case 값' 의 '원시 값' 에 접근할 수 있습니다. 원시 값과 연관되어 있는 'case 값' 이, 하나라도 있는 경우, `ExampleEnum(rawValue: 5)` 에서와 같이, 옵셔널 'case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출하여 찾을 수도 있습니다. 더 많은 정보와 원시-값 타입의 'case 값' 에 대한 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 을 참고하기 바랍니다.
+'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
 
 #### Accessing Enumeration Cases (열거체의 'case 값' 에 접근하기)
 
-열거체 타입의 'case 값' 을 참조하려면, `EnumerationType.enumerationCase` 에서와 같이, '점 (`.`) 구문' 을 사용합니다. 열거체 타입을 추론할 수 있는 상황일 때는, [Enumeration Syntax (열거체 구문 표현)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문-표현) 과 [Implicit Member Expression (암시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적인-멤버-표현식) 에서 설명한 것처럼, 이를 생략할 수 있습니다 ('점' 은 그래도 필수입니다).
+'열거체 타입의 case 값' 을 참조하려면, `EnumerationType.enumerationCase` 과 같은, '점 (`.`) 구문' 을 사용합니다. 열거체 타입을 추론할 수 있는 상황일 땐, [Enumeration Syntax (열거체 구문)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문) 과 [Implicit Member Expression (암시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적인-멤버-표현식) 에서 설명한 것처럼, 생략할 수 있습니다. ('점' 은 여전히 필수입니다)
 
-열거체 'case 값' 의 값을 검사하려면, [Matching Enumeration Values with a Switch Statement (열거체 값을 'switch' 문으로 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-열거체-값을-switch-문으로-맞춰보기) 에서 본 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 값 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-값-패턴) 에서 설명한 것처럼, `switch` 문의 'case 절' 블럭에 있는 '열거체 case 값 패턴' 과 유형이 일치하는 지를 맞춰보게 됩니다.
+'열거체 case 의 값' 을 검사하려면, [Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-열거체-값-과-switch-문-맞춰보기) 에 보인 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 유형)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-유형) 에서 설명한 것처럼, '`switch` 문의 case 블럭' 에 있는 '열거체 case 유형' 과 유형을-맞춰봅니다.
 
 > GRAMMAR OF AN ENUMERATION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID364)
 
 ### Structure Declaration (구조체 선언)
 
-_구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 을 프로그램에 도입합니다. 구조체 선언은 `struct` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+_구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 을 프로그램에 도입합니다. '구조체 선언' 은 `struct` 키워드로 선언하며 형식은 다음과 같습니다:
 
-struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토콜` {<br />
-  `declarations-선언`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;struct `structure name-구조체 이름`: `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-구조체의 본문은 '0' 개 이상의 _선언 (declarations)_ 들을 담고 있습니다. 이 _선언 (declarations)_ 들은 저장 및 계산 속성 둘 모두와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 또는 '프로토콜 선언' 을 가질 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 여러 가지 예제와 논의들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
+구조체의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자와, 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
-구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 수는 없습니다.
+구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 순 없습니다.
 
-이전에 선언한 구조체의 인스턴스를 생성하는 방법은 세 가지가 있습니다:
+이전에 선언한 구조체의 인스턴스를 생성하는 데는 세 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 구조체에서 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자가 없으면, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 '멤버 초기자 (memberwise initializer)' 를 호출합니다.
-* 선언한 초기자는 없지만, 구조체 선언의 모든 속성에 초기 값이 주어졌으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 '기본 초기자 (default initializer)' 를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 구조체 안에 선언한 초기자 중 하나를 호출합니다.
+* 선언한 초기자가 없으면, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 '멤버 초기자' 를 호출합니다.
+* 선언한 초기자는 없지만, 구조체 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 '기본 초기자' 를 호출합니다.
 
-구조체에서 선언한 속성을 초기화하는 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
+구조체에서 선언한 속성을 초기화하는 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 설명합니다.
 
 구조체 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
 
-구조체는 '값 타입' 입니다; 구조체의 인스턴스는 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하기 바랍니다.
+구조체는 '값 타입' 이며; 구조체 인스턴스는 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 참고하기 바랍니다.
 
-구조체 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
+[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 구조체 타입의 동작을 확장할 수 있습니다.
 
 > GRAMMAR OF A STRUCTURE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID367)
 
@@ -1306,3 +1305,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 참고하기 바랍니다.
 
 [^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 
+
+[^signature]: 함수나 메소드에서 '서명 (signature)' 과 '이름 (name)' 의 차이점은 '매개 변수' 를 포함하는 지의 여부입니다. 이 예제에 있는 `init(rawValue: RawValue)` 는 '초기자 서명 (signature)' 이며, 매개 변수 부분을 뺀 `init?` 이 '초기자 이름' 입니다. 

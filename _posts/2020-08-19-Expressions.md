@@ -991,7 +991,7 @@ someDictionary["a"]![0] = 100
 
 #### Optional-Chaining Expression (옵셔널-연쇄 표현식)
 
-_옵셔널-연쇄 표현식 (optional-chaining expression)_ 은 '접미사 표현식' 에서 옵셔널 값을 사용하기 위한 '단순화한 구문' 을 제공합니다. 형식은 다음과 같습니다:
+_옵셔널-연쇄 표현식 (optional-chaining expression)_ 은 '접미사 표현식' 에서 옵셔널 값을 사용하기 위한 '단순화 구문' 을 제공합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`?
 
