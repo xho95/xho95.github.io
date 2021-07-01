@@ -675,23 +675,23 @@ _행위자 선언 (actor declaration)_ 은 '이름 붙인 행위자 타입' 을 
 
 ### Protocol Declaration (프로토콜 선언)
 
-_프로토콜 선언 (protocol declaration)_ 은 '이름 붙인 프로토콜 타입' 을 프로그램에 도입합니다. '프로토콜 선언' 은 `protocol` 키워드를 사용하여 '전역 범위 (global scope)' 에서 선언하며 형식은 다음과 같습니다:
+_프로토콜 선언 (protocol declaration)_ 은 '이름 붙인 프로토콜 타입' 을 프로그램에 도입합니다. '프로토콜 선언' 은 '전역 (global scope)' 에서 `protocol` 키워드로 선언하며 형식은 다음과 같습니다:
 
-protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프로토콜` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`protocol member declarations-프로토콜 멤버 선언`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`protocol member declarations-프로토콜 멤버 선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-프로토콜의 본문은 '0' 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 담고 있는데, 이는 이 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 하는 '준수 필수 조건 (conformance requirements)' 을 설명합니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 정해진 속성, 메소드, 초기자, 그리고 첨자 연산을 반드시 구현해야 한다고 선언할 수 있습니다. 프로토콜은 또한, 프로토콜의 다양한 선언들 간의 관계를 지정할 수 있는, _결합 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 수는 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 설명합니다.
+프로토콜의 본문은, 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 할 '준수성 필수 조건 (conformance requirements)' 을 설명하는, 0개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 들을 담습니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 반드시 정해진 속성, 메소드, 초기자, 및 첨자 연산을 구현해야 함을 선언할 수 있습니다. 프로토콜은, 다양한 프로토콜 선언들 사이의 관계를 지정할 수 있는, _결합 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 순 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 논의합니다.
 
-프로토콜 타입은 어떤 개수의 다른 프로토콜이라도 상속할 수 있습니다. 한 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건' 집합을 한데 '모아서 (aggregated)', 현재 프로토콜을 상속하는 어떤 타입이든 반드시 이 모든 필수 조건들을 다 준수해야 합니다. '프로토콜 상속' 을 사용하는 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 을 참고하기 바랍니다.
+프로토콜 타입은 어떤 개수의 다른 프로토콜이든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건 집합' 을 '한데 모으며 (aggregated)', 현재 프로토콜을 상속한 어떤 타입이든 반드시 이 모든 필수 조건들을 준수해야 합니다. '프로토콜 상속' 의 사용 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 부분을 참고하기 바랍니다.
 
-> '다중 프로토콜 (multiple protocols)' 의 '준수 필수 조건 (conformance requirements)' 은, [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 과 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 에서 설명한 것처럼, '프로토콜 합성 타입' 을 사용하여 한데 모을 수도 있습니다.
+> [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 과 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 에서 설명한 것처럼, '프로토콜 합성 타입' 으로 '여러 프로토콜의 준수성 필수 조건' 들을 한데 모을 수도 있습니다.
 
-해당 타입의 '익스텐션 (extension) 선언' 에서 프로토콜을 채택하는 것으로써 이전에 선언한 타입에 '프로토콜 준수성' 을 추가할 수 있습니다. '익스텐션' 에서는, 채택한 프로토콜의 모든 필수 조건을 반드시 구현해야 합니다. 만약 이미 모든 필수 조건을 타입이 구현하고 있다면, '익스텐션 선언' 의 본문을 비워둬도 됩니다.
+해당 타입의 '익스텐션 (extension) 선언' 에서 프로토콜을 채택함으로써 이전에 선언한 타입에 '프로토콜 준수성' 을 추가할 수 있습니다. '익스텐션' 에서는, 채택한 프로토콜의 필수 조건들을 반드시 모두 구현해야 합니다. 타입이 이미 모든 필수 조건을 구현하고 있으면, '익스텐션 선언' 의 본문은 비워둘 수도 있습니다.
 
-기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜에서 선언한 속성, 메소드, 그리고 첨자 연산을 모두 구현해야 합니다. 그렇다 하더라도, 이러한 프로토콜 멤버 선언을 '준수 타입' 에서 구현하는 것이 '옵셔널 (optional)' 임을 지정하기 위해 '`optional` 선언 수정자 (declaration modifier)' 로 표시할 수 있습니다.[^optional-member] '`optional` 수정자' 는 '`objc` 특성 (attribute)' 으로 표시한 멤버와, `objc` 특성으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과로, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 가진 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자를 사용하는 방법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버에 접근하는 방법-예를 들어, '준수 타입' 이 이를 구현하는 지가 확실하지 않을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 을 참고하기 바랍니다.
+기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜에서 선언한 모든 속성, 메소드, 및 첨자 연산을 구현해야 합니다. 그렇다 하더라도, 이 프로토콜 멤버 선언들을 '`optional` 선언 수정자' 로 표시하여 '준수 타입의 구현부' 가 '옵셔널 (optional)' 임을 지정할 수 있습니다.[^optional-member] '`optional` 수정자' 는 '`objc` 특성' 으로 표시한 멤버와, '`objc` 특성' 으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 가진 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자의 사용 방법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버로의 접근 방법-예를 들어, '준수 타입' 의 구현 여부를 확신할 수 없을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 참고하기 바랍니다.
 
-열거체의 'case 값' 은 '타입 멤버 (type members)' 에 대한 '프로토콜 필수 조건' 을 만족할 수 있습니다. 특히, 어떤 '결합 값 (associated values)' 도 가지지 않는 '열거체 case 값' 은 `Self` 타입의 '읽기-전용 (get-only) 타입 변수' 에 대한 '프로토콜 필수 조건' 을 만족하며,[^enumeration-get-only] '결합 값' 을 가진 '열거체 case 값' 은 `Self` 를 반환하는 함수에 대한 프로토콜 필수 조건을 만족하는데 여기서 '매개 변수' 와 '인자 이름표' 는 'case 값' 의 결합 값 과 일치합니다.[^enumeration-function] 예를 들면 다음과 같습니다:
+'열거체의 case 값' 은 '타입 멤버' 에 대한 프로토콜 필수 조건을 만족할 수 있습니다. 특히, '어떤 결합 값도 없는 열거체 case 값' 은 '`Self` 타입의 읽기-전용 타입 변수' 에 대한 프로토콜 필수 조건을 만족하며,[^enumeration-get-only] '결합 값을 가진 열거체 case 값' 은 '매개 변수와 인자 이름표가 case 의 결합 값과 일치하는 `Self` 를 반환하는 함수' 에 대한 프로토콜 필수 조건을 만족합니다.[^enumeration-function] 예를 들면 다음과 같습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -704,7 +704,7 @@ enum MyEnum: SomeProtocol {
 }
 ```
 
-프로토콜의 '채택 (adoption)' 을 클래스 타입으로만 제약하려면, 콜론 다음의 _상속받은 프로토콜 (inherited protocols)_ 목록에 `AnyObject` 프로토콜을 포함시킵니다. 예를 들어, 다음 프로토콜은 클래스 타입만이 채택할 수 있습니다:
+'프로토콜 채택 (adoption)' 을 클래스 타입만으로 제약하려면, 콜론 뒤의 '_상속한 프로토콜 (inherited protocols)_ 목록' 에 `AnyObject` 프로토콜을 포함합니다. 예를 들어, 다음 프로토콜은 클래스 타입만 채택할 수 있습니다:
 
 ```swift
 protocol SomeProtocol: AnyObject {
@@ -1262,7 +1262,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^closure-with-inout-parameter]: 아래 예제에 있는 `{ [a] in return a + 1 }` 라는 클로저는 `a` 의 값을 변경하지 않으므로, `[a]` 라는 '붙잡을 목록' 을 사용하여 `a` 를 변경 불가능하게 붙잡았습니다.
 
-[^optional-member]: 여기서의 '옵셔널 (optional)' 은 '선택 사항' 이라는 말과 '타입이 옵셔널' 이라는 두 가지 의미를 모두 가지고 있습니다. 이는 프로토콜에서 선언한 '필수 조건' 이 구현되어 있는 지의 여부 자체가 '옵셔널' 이라는 것으로 이해할 수 있습니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 그 구현체를 가지는 것이고, 구현이 되어 있지 않으면 `nil` 인 것입니다.
+[^optional-member]: 프로토콜에서 선언한 '필수 조건' 의 구현 여부 자체가 '옵셔널' 이라는 의미입니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 구현체가 있는 것이고, 구현을 안했으면 `nil` 입니다.
 
 [^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수인 매개 변수 (throwing function parameter)' 를 의미합니다.
 
@@ -1292,9 +1292,9 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^any-type]: 여기서의 'Any Type' 은 스위프트에 있는 '`Any` 타입' 과는 다른 의미로 사용한 것입니다.
 
-[^enumeration-get-only]: 이 말은 아래 예제를 참고하면 열거체에서 `case someValue` 라고 하면 프로토콜에 있는 `static var someValue: Self { get }` 이라는 필수 조건을 만족하게 된다는 의미입니다.
+[^enumeration-get-only]: 아래 예제의 열거체에서 `case someValue` 가 프로토콜의 `static var someValue: Self { get }` 이라는 필수 조건을 만족한다는 의미입니다.
 
-[^enumeration-function]: 마찬가지로, 이 말도 아래 예제를 참고하면, 열거체에서 `case someFuntion(x: Int)` 라고 하면 프로토콜에 있는 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족하게 된다는 의미입니다.
+[^enumeration-function]: 아래 예제의 열거체에서 `case someFuntion(x: Int)` 가 프로토콜의 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족한다는 의미입니다. [Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)](#enumerations-with-cases-of-any-type-어떤-타입이든-되는-case-값-을-가진-열거체) 에서 설명한 것처럼, '결합 값을 가진 열거체 case 값' 은 함수처럼 사용할 수 있기 때문입니다.
 
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
 
