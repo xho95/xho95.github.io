@@ -53,7 +53,7 @@ _선언 불러오기 (import declaration)_ 는 현재 파일 밖에서 선언한
 
 ### Constant Declaration (상수 선언)
 
-_상수 선언 (constant declaration)_ 은 프로그램에 '이름 붙인 상수 값' 을 도입합니다. 상수 선언은 `let` 키워드로 선언하며 형식은 다음과 같습니다:
+_상수 선언 (constant declaration)_ 은 '이름 붙인 상수 값' 을 프로그램에 도입합니다. 상수 선언은 `let` 키워드로 선언하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;let `constant name-상수 이름`: `type-타입` = `expression-표현식`
 
@@ -86,7 +86,7 @@ print("The second number is \(secondNumber).")
 
 ### Variable Declaration (변수 선언)
 
-_변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수 값' 을 도입하며 `var` 키워드로 선언합니다.
+_변수 선언 (variable declaration)_ 은 '이름 붙인 변수 값' 을 프로그램에 도입하며 `var` 키워드로 선언합니다.
 
 변수 선언은 여러가지 형식으로, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함한, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언합니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
 
@@ -480,7 +480,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 ### Enumeration Declaration (열거체 선언)
 
-_열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 열거체 타입' 을 도입합니다.
+_열거체 선언 (enumeration declaration)_ 은 '이름 붙인 열거체 타입' 을 프로그램에 도입합니다.
 
 '열거체 선언' 은 두 개의 기초 형식을 가지며 `enum` 키워드로 선언합니다. 어느 형식으로 선언한 열거체 본문이든 '0' 개 이상의-_열거체 case 값 (enumeration cases)_ 이라는-값과, 계산 속성, 인스턴스 메소드, 타입 메소드, 초기자, 타입 별명, 그리고 심지어 다른 열거체, 구조체, 클래스, 및 행위자 선언도 포함한, 어떤 개수의 선언도 담을 수 있습니다. 열거체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 순 없습니다.
 
@@ -642,34 +642,34 @@ _상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 �
 
 ### Actor Declaration (행위자 선언)
 
-_행위자 선언 (actor declaration)_ 은 프로그램에 '이름 붙인 행위자 타입' 을 도입합니다. '행위자 선언' 은 `actor` 키워드로 선언하며 형식은 다음과 같습니다:
+_행위자 선언 (actor declaration)_ 은 '이름 붙인 행위자 타입' 을 프로그램에 도입합니다. '행위자 선언' 은 `actor` 키워드로 선언하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;actor `actor name-행위자 이름`: `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'행위자' 의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담고 있습니다. 이 _선언 (declarations)_ 들은 저장 및 계산 속성 둘 모두와, 인스턴스 메소드, 타입 메소드, 초기자, 단일 정리자, 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 그리고 열거체 선언을 포함하고 있을 수 있습니다. 다양한 종류의 선언을 포함한 '행위자' 에 대한 논의와 여러가지 예제는, [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
+'행위자' 의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자', 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. 다양한 종류의 선언을 포함하고 있는 '행위자' 에 대한 논의와 여러 예제들은, [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
 
-'행위자 타입' 은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 열거체, 구조체, 또는 다른 '행위자' 를 상속할 수는 없습니다. 하지만, '`@objc` 특성' 으로 표시한 '행위자' 는 암시적으로 `NSObjectProtocol` 프로토콜을 준수하며 '오브젝티브-C 런타임' 에서는 `NSObject` 의 하위 타입으로 노출됩니다.
+'행위자 타입' 은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 열거체, 구조체나, 다른 '행위자' 를 상속할 순 없습니다. 하지만, '`@objc` 특성' 으로 표시한 '행위자' 는 암시적으로 `NSObjectProtocol` 프로토콜을 준수하며 '오브젝티브-C 런타임' 에서 `NSObject` 의 하위 타입으로 노출됩니다.
 
 이전에 선언한 '행위자' 의 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 에서 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자가 없는데, 행위자 선언의 모든 속성에 초기 값이 주어졌다면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 기본 초기자를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 안에 선언한 초기자 중 하나를 호출합니다.
+* 선언한 초기자는 없지만, 행위자 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 '기본 초기자' 를 호출합니다.
 
-기본적으로, 행위자의 멤버는 해당 행위자로 격리됩니다.[^isolate] 메소드 본문이나 속성의 획득자 같은, 코드는 해당 행위자 상에서 실행합니다. 행위자 안의 코드는 이미 해당 코드를 동일한 행위자 상에서 실행하고 있기 때문에 이와 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 이 코드를 또 다른 행위자 상에서 '비동기로' 실행하는 코드임을 지시하기 위해 반드시 `await` 를 표시해야 합니다. '키 경로 (key paths)' 는 행위자의 '격리된 멤버' 를 참조할 수 없습니다. '행위자로-격리된 (actor-isolated) 저장 속성' 은 '동기 함수' 로는 '입-출력 매개 변수' 로써 전달할 수 있지만, '비동기 함수' 로는 안됩니다. 
+기본적으로, 행위자의 멤버는 해당 행위자로 격리됩니다.[^isolate] 메소드의 본문이나 속성의 획득자 같은, 코드는 해당 행위자 상에서 실행합니다. 행위자 안의 코드는 해당 코드가 이미 동일한 행위자 상에서 실행 중이기 때문에 이와 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 '이 코드가 또 다른 행위자 상에서 비동기로 실행 중인 코드' 임을 지시하기 위해 반드시 `await` 로 표시해야 합니다. '키 경로 (key paths)' 는 '행위자의 격리 멤버' 를 참조할 수 없습니다. '행위자로-격리한 (actor-isolated) 저장 속성' 은 '동기 함수' 의 '입-출력 매개 변수' 로 전달할 순 있지만, '비동기 함수' 로는 안됩니다. 
 
-행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이의 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는: 행위자의 '어떤 격리 상태' 와도 상호 작용할 수 없으며, 호출하는 쪽에서 사용할 때 `await` 로 표시하지 않는 등 행위자 밖의 코드인 것 처럼 실행합니다.
+행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는 행위자 밖의 코드 처럼 실행하는데: 행위자의 어떤 '격리 상태' 와도 상호 작용할 수 없고, 호출하는 쪽에서 사용할 때 `await` 를 표시하지 않습니다.
 
-행위자의 멤버는 '격리 안된 (nonisolated)' 것이거나 '비동기 (asynchronous)' 인 것만 `@objc` 로 표시할 수 있습니다. 
+행위자 멤버는 '격리 안된 (nonisolated)' 것이나 '비동기 (asynchronous)' 인 경우에만 `@objc` 특성으로 표시할 수 있습니다. 
 
 행위자가 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
 행위자 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
 
-행위자는 참조 타입이며; 행위자의 인스턴스는, 변수나 상수에 할당할 때, 또는 인자로 함수 호출에 전달할 때, 복사 보다는, '참조' 를 합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+행위자는 참조 타입이며; 행위자 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
-행위자 타입[^structure-type] 의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
+[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 행위자 타입의 동작을 확장할 수 있습니다.
 
 > GRAMMAR OF A ACTOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID648)
 
