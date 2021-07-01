@@ -716,9 +716,9 @@ protocol SomeProtocol: AnyObject {
 
 > 프로토콜을 `objc` 특성으로 표시하면, 해당 프로토콜에 '`AnyObject` 필수 조건' 을 암시적으로 적용하므로; 프로토콜을 `AnyObject` 필수 조건으로 명시적으로 표시할 필요가 없습니다.
 
-프로토콜은 '이름 붙인 (named) 타입' 이며, 그래서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 코드에서 다른 '이름 붙인 타입' 이 있을 수 있는 곳과 같은 모든 위치에 있을 수 있습니다. 하지만, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없으며, 이는 프로토콜이 지정하는 필수 조건에 대하여 실제로 구현을 제공하는 것은 아니기 때문입니다.
+프로토콜은 '이름 붙인 타입 (named types)' 이며, 따라서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 다른 '이름 붙인 타입' 이 있을 수 있는 것과 똑같은 모든 코드 위치에 있을 수 있습니다. 하지만, 프로토콜이 지정한 필수 조건에 대한 구현을 실제로 제공하는 것은 아니기 때문에, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없습니다.
 
-프로토콜은, [Delegation (위임)]({% post_url 2016-03-03-Protocols %}#delegation-위임) 에서 설명한 것처럼, 클래스 또는 구조체의 '대리자 (delegate)' 가 구현해야 하는 메소드가 어느 것인지를 선언하는 데 사용할 수 있습니다.
+프로토콜은, [Delegation (위임)]({% post_url 2016-03-03-Protocols %}#delegation-위임) 에서 설명한 것처럼, 클래스나 구조체의 '대리자 (delegate)' 가 구현해야 할 메소드를 선언하기 위해 사용할 수 있습니다.
 
 > GRAMMAR OF A PROTOCOL DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
