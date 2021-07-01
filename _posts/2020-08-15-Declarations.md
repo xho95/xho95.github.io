@@ -617,26 +617,26 @@ _클래스 선언 (class declaration)_ 은 '이름 붙인 클래스 타입' 을 
 
 클래스의 본문은 0개 이상의 _선언 (declaration)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 '프로토콜 선언' 을 담을 순 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
-클래스 타입은, _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만 상속할 수 있지만, 프로토콜은 어떤 개수라도 채택할 수 있습니다. _상위 클래스 (superclass)_ 를 _클래스 이름 (class anme)_ 및 콜론 뒤에 먼저 나타내고, 이어서 _채택한 프로토콜 (adopted protocols)_ 을 뒤에 둡니다. '제네릭 (일반화된) 클래스' 는 다른 '제네릭 클래스' 및 '제네릭이 아닌 클래스' 를 상속할 수 있지만, '제네릭이 아닌 클래스' 는 다른 '제네릭이 아닌 클래스' 만 상속할 수 있습니다. 제네릭 상위 클래스의 이름을 콜론 뒤에 작성할 때는, '제네릭 매개 변수 절' 을 포함하여, 해당 제네릭 클래스의 온전한 이름을 반드시 포함해야 합니다.
+클래스 타입은, _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만을 상속할 수 있지만, 프로토콜은 어떤 개수든 채택할 수 있습니다. _클래스 이름 (class anme)_ 과 콜론 뒤에 _상위 클래스 (superclass)_ 를 최초로 나타내고, _채택한 프로토콜 (adopted protocols)_ 을 뒤에 둡니다. '일반화 (generic) 클래스' 는 다른 '일반화 및 일반화 아닌 클래스' 를 상속할 수 있지만, '일반화 아닌 (nongeneric) 클래스' 는 다른 '일반화 아닌 클래스' 만 상속할 수 있습니다. '일반화 상위 클래스' 클래스의 이름을 콜론 뒤에 작성할 때는, 반드시 '해당 일반화 클래스' 의, '일반화 매개 변수 절' 을 포함한, 전체 이름을 포함시켜야 합니다.
 
-[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 에서 논의한 것처럼, 클래스는 '지명 초기자' 와 '편의 초기자' 를 가질 수 있습니다. 클래스의 '지명 초기자' 는 클래스에서 선언한 모든 속성을 반드시 초기화해야 함과 동시에 이를 반드시 상위 클래스의 지명 초기자를 호출하기 전에 해야 합니다.
+[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 에서 논의한 것처럼, 클래스는 '지명 (designated) 초기자' 와 '편의 (convenience) 초기자' 를 가질 수 있습니다. 클래스의 '지명 초기자' 는 클래스가 선언한 모든 속성을 반드시 초기화해야 하므로 이를 반드시 상위 클래스의 '지명 초기자' 를 호출하기 전에 해야 합니다.
 
-클래스는 상위 클래스의 속성, 메소드, 첨자 연산, 및 초기자를 '재정의 (override)' 할 수 있습니다. 재정의한 속성, 메소드, 첨자 연산, 및 지명 초기자[^designated-initializers]는 반드시 `override` 선언 수정자로 표시해야 합니다.
+클래스는 상위 클래스의 속성, 메소드, 첨자 연산, 및 초기자를 '재정의 (override)' 할 수 있습니다. 재정의한 속성, 메소드, 첨자 연산, 및 지명 초기자[^designated-initializers] 는 반드시 '`override` 선언 수정자' 로 표시해야 합니다.
 
-하위 클래스가 상위 클래스의 초기자를 필수로 구현하게 만들려면, 상위 클래스의 초기자를 `required` 선언 수정자로 표시합니다. 해당 초기자에 대한 하위 클래스의 구현 또한 반드시 `required` 선언 수정자로 표시해야 합니다.
+하위 클래스가 상위 클래스의 초기자를 필수로 구현하도록 요구하려면, 상위 클래스의 초기자를 '`required` 선언 수정자' 로 표시합니다. '해당 초기자의 하위 클래스 구현' 도 반드시 `required` 선언 수정자로 표시해야 합니다.
 
-_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스에서 상속한다고 하더라도, 상위 클래스에서 선언한 '지명 초기자' 는 하위 클래스가 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명한 조건을 만족할 때만 상속됩니다. 스위프트의 클래스는 '범용 기초 클래스 (universal base class)'[^universal-base-class] 에서 상속된 것이 아닙니다.
+_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스에서 상속하긴 하지만, _상위 클래스 (superclass)_ 에서 선언한 '지명 초기자' 는 하위 클래스가 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명한 조건과 부합할 때만 상속합니다. 스위프트 클래스는 '범용 기초 클래스 (universal base class)'[^universal-base-class] 를 상속하지 않습니다.
 
-이전에 선언한 클래스의 인스턴스를 생성하는 방법은 두 가지가 있습니다:
+이전에 선언한 클래스의 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 클래스에서 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자가 없지만, 클래스 선언의 모든 속성에 초기 값이 주어진 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 '기본 초기자 (default initializer)' 를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 클래스 안에 선언한 초기자 중 하나를 호출합니다.
+* 선언한 초기자는 없지만, 클래스 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 '기본 초기자' 를 호출합니다.
 
-클래스 인스턴스의 속성에 접근하려면, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 을 사용합니다.
+클래스 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근합니다.
 
-클래스는 '참조 타입' 입니다; 클래스의 인스턴스는, 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사되지 않고, 참조를 합니다. 참조 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 를 참고하기 바랍니다.
+클래스는 '참조 타입' 이며; 클래스 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 부분을 참고하기 바랍니다.
 
-클래스 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
+[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 클래스 타입의 동작을 확장할 수 있습니다.
 
 > GRAMMAR OF A CLASS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID368)
 
@@ -1280,7 +1280,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^designated-initializers]: 여기서 '초기자' 가 아니라 '지명 초기자' 라고 한 것은, 재정의한 초기자가 상위 클래스에서 '지명 초기자' 이든 '편의 초기자' 이든, 재정의하고 나면 무조건 '지명 초기자' 가 되기 때문입니다.
 
-[^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로 추측됩니다.
+[^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말합니다.
 
 [^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 
