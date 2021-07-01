@@ -587,7 +587,7 @@ _구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-구조체의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자와, 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
+구조체의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
 구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 순 없습니다.
 
@@ -609,13 +609,13 @@ _구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 
 
 ### Class Declaration (클래스 선언)
 
-_클래스 선언 (class declaration)_ 은 '이름 붙인 클래스 타입' 을 프로그램에 도입합니다. '클래스 선언' 은 `class` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+_클래스 선언 (class declaration)_ 은 '이름 붙인 클래스 타입' 을 프로그램에 도입합니다. '클래스 선언' 은 `class` 키워드로 선언하며 형식은 다음과 같습니다:
 
-class `class name-클래스 이름`: `superclass-상위 클래스`, `adopted protocols-채택한 프로토콜` {
-&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`
-}
+&nbsp;&nbsp;&nbsp;&nbsp;class `class name-클래스 이름`: `superclass-상위 클래스`, `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-클래스 본문은 '0' 개 이상의 _선언 (declaration)_ 들을 가지고 있습니다. 이 _선언 (declarations)_ 들은 저장 및 계산 속성 둘 모두와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 단 하나의 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 프로토콜 선언을 가질 수 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 여러 가지 예제와 논의들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
+클래스의 본문은 0개 이상의 _선언 (declaration)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 '프로토콜 선언' 을 담을 순 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
 클래스 타입은, _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만 상속할 수 있지만, 프로토콜은 어떤 개수라도 채택할 수 있습니다. _상위 클래스 (superclass)_ 를 _클래스 이름 (class anme)_ 및 콜론 뒤에 먼저 나타내고, 이어서 _채택한 프로토콜 (adopted protocols)_ 을 뒤에 둡니다. '제네릭 (일반화된) 클래스' 는 다른 '제네릭 클래스' 및 '제네릭이 아닌 클래스' 를 상속할 수 있지만, '제네릭이 아닌 클래스' 는 다른 '제네릭이 아닌 클래스' 만 상속할 수 있습니다. 제네릭 상위 클래스의 이름을 콜론 뒤에 작성할 때는, '제네릭 매개 변수 절' 을 포함하여, 해당 제네릭 클래스의 온전한 이름을 반드시 포함해야 합니다.
 
