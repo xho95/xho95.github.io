@@ -800,15 +800,15 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 
 ### Initializer Declaration (초기자 선언)
 
-_초기자 선언 (initializer declaration)_ 은 클래스, 구조체, 또는 열거체에 대한 초기자를 프로그램에 도입합니다. '초기자 선언' 은 `init` 키워드를 사용하여 선언하며 두 가지의 기본 형식이 있습니다.
+_초기자 선언 (initializer declaration)_ 은 프로그램에 클래스, 구조체, 및 열거체를 위한 초기자를 도입합니다. '초기자 선언' 은 `init` 키워드로 선언하며 두 개의 기초 형식이 있습니다.
 
-구조체, 열거체, 그리고 클래스 타입은 어떤 개수의 초기자라도 가질 수 있지만, 클래스 초기자의 경우 '규칙' 및 '결합 작동 방식' 이 다릅니다. 구조체 및 열거체와는 다르게, 클래스는 두 가지 종류의 초기자를 가집니다: '지명 초기자 (designated initializers)' 와 '편의 초기자 (convenience itnitialziers)' 가 그것으로, 이는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명했습니다.
+구조체, 열거체, 및 클래스 타입은 어떤 개수의 초기자든 가질 수 있지만, '클래스 초기자' 에 대한 '규칙과 결합 동작' 은 다릅니다. [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명한 것처럼, 구조체 및 열거체와는 달리, 클래스에는: '지명 (designated) 초기자' 와 '편의 (convenience) 초기자' 라는 두 종류의 초기자가 있습니다.
 
-다음 형식은 구조체 및, 열거체에 대한 초기자와, 클래스에 대한 '지명 초기자' 를 선언합니다:
+다음 형식은 '구조체와, 열거체의 초기자', 그리고 '클래스의 지명 초기자' 를 선언합니다:
 
-init (`parameters-매개 변수`) {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;init (`parameters-매개 변수`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 클래스의 '지명 초기자' 는 직접 클래스의 모든 속성을 초기화합니다. 이는 같은 클래스에 있는 다른 어떤 초기자도 호출할 수 없으며, 클래스가 상위 클래스를 가질 경우, 상위 클래스의 '지명 초기자' 중 하나를 반드시 호출해야 합니다. 클래스가 상위 클래스에서 어떤 속성을 상속받은 경우, 이 속성들 어떤 것이든 현재 클래스에서 설정하거나 수정하기 전에 반드시 상위 클래스의 지명 초기자 중 하나를 호출해야 합니다.
 
@@ -818,9 +818,9 @@ init (`parameters-매개 변수`) {<br />
 
 클래스를 위한 '편의 초기자' 를 선언하려면, 초기자 선언을 `convenience` 선언 수정자로 표시합니다.
 
-convenience init (`parameters-매개 변수`) {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;convenience init (`parameters-매개 변수`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 편의 초기자는 초기화 과정을 또 다른 편의 초기자 또는 클래스의 지명 초기자 중 하나로 위임할 수 있습니다. 그렇다 하더라도, 초기화 과정은 궁극적으로 클래스의 속성을 초기화하는 지명 초기자를 호출하는 것으로 반드시 끝나야 합니다. 편의 초기자는 상위 클래스의 초기자를 호출할 수 없습니다.
 
