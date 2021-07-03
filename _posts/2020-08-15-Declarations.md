@@ -776,9 +776,9 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)
 
-프로토콜은 `associatedtype` 키워드를 사용하여 '결합된 타입 (associated types)' 을 선언합니다. '결합된 타입' 은 프로토콜의 선언에서 사용되는 타입을 위한 '별명 (alias)' 을 제공합니다. '결합된 타입' 은 '일반화된 (generic) 매개 변수 절' 의 '타입 매개 변수' 와 비슷하지만, 이를 선언하는 프로토콜의 `Self` 와 '결합되어 (associated)' 있습니다. 해당 상황에서, `Self` 는 프로토콜을 '최종적으로 (eventual) 준수하고 있는 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 을 참고하기 바랍니다.
+프로토콜은 `associatedtype` 키워드로 '결합 타입 (associated types)' 을 선언합니다. '결합 타입' 은 프로토콜 선언에서 사용하는 타입에 대한 '별명 (alias)' 을 제공합니다. '결합 타입' 은 '일반화 (generic) 매개 변수 절' 에 있는 '타입 매개 변수' 와 비슷하지만, 자신을 선언한 프로토콜의 `Self` 와 결합되어 있습니다. 해당 상황에서는, `Self` 가 '프로토콜을 준수하는 최종 결과 (eventual) 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
 
-또 다른 프로토콜에서 상속받은 '결합된 타입' 에, '결합된 타입' 의 '재선언 (redeclaring)' 없이, '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화된 (generic) `where` 절' 을 사용하면 됩니다. 예를 들어, 아래에 있는 `SubProtocol` 선언들은 서로 '동치 (equivalent)' 입니다:
+'결합 타입' 을 '재선언 (redeclaring)' 하지 않고도, 다른 프로토콜에서 상속한 '결합 타입' 에 '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화 (generic) `where` 절' 을 사용합니다. 예를 들어, 아래의 `SubProtocol` 선언들은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 protocol SomeProtocol {
@@ -786,11 +786,11 @@ protocol SomeProtocol {
 }
 
 protocol SubProtocolA: SomeProtocol {
-  // 다음 구문 표현은 경고 (warning) 를 일으킵니다.
+  // 이 구문은 경고를 만듭니다.
   associatedtype SomeType: Equatable
 }
 
-// 다음 구문 표현이 더 좋습니다.
+// 이 구문이 더 좋습니다.
 protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 ```
 
