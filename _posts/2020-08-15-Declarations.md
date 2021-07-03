@@ -53,7 +53,7 @@ _선언 불러오기 (import declaration)_ 는 현재 파일 밖에서 선언한
 
 ### Constant Declaration (상수 선언)
 
-_상수 선언 (constant declaration)_ 은 프로그램에 '이름 붙인 상수 값' 을 도입합니다. 상수 선언은 `let` 키워드로 선언하며 형식은 다음과 같습니다:
+_상수 선언 (constant declaration)_ 은 '이름 붙인 상수 값' 을 프로그램에 도입합니다. 상수 선언은 `let` 키워드로 선언하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;let `constant name-상수 이름`: `type-타입` = `expression-표현식`
 
@@ -86,7 +86,7 @@ print("The second number is \(secondNumber).")
 
 ### Variable Declaration (변수 선언)
 
-_변수 선언 (variable declaration)_ 은 프로그램에 '이름 붙인 변수 값' 을 도입하며 `var` 키워드로 선언합니다.
+_변수 선언 (variable declaration)_ 은 '이름 붙인 변수 값' 을 프로그램에 도입하며 `var` 키워드로 선언합니다.
 
 변수 선언은 여러가지 형식으로, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함한, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언합니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
 
@@ -480,7 +480,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 ### Enumeration Declaration (열거체 선언)
 
-_열거체 선언 (enumeration declaration)_ 은 프로그램에 '이름 붙인 열거체 타입' 을 도입합니다.
+_열거체 선언 (enumeration declaration)_ 은 '이름 붙인 열거체 타입' 을 프로그램에 도입합니다.
 
 '열거체 선언' 은 두 개의 기초 형식을 가지며 `enum` 키워드로 선언합니다. 어느 형식으로 선언한 열거체 본문이든 '0' 개 이상의-_열거체 case 값 (enumeration cases)_ 이라는-값과, 계산 속성, 인스턴스 메소드, 타입 메소드, 초기자, 타입 별명, 그리고 심지어 다른 열거체, 구조체, 클래스, 및 행위자 선언도 포함한, 어떤 개수의 선언도 담을 수 있습니다. 열거체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 순 없습니다.
 
@@ -587,7 +587,7 @@ _구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-구조체의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자와, 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
+구조체의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
 구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 순 없습니다.
 
@@ -609,89 +609,89 @@ _구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 
 
 ### Class Declaration (클래스 선언)
 
-_클래스 선언 (class declaration)_ 은 '이름 붙인 클래스 타입' 을 프로그램에 도입합니다. '클래스 선언' 은 `class` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+_클래스 선언 (class declaration)_ 은 '이름 붙인 클래스 타입' 을 프로그램에 도입합니다. '클래스 선언' 은 `class` 키워드로 선언하며 형식은 다음과 같습니다:
 
-class `class name-클래스 이름`: `superclass-상위 클래스`, `adopted protocols-채택한 프로토콜` {
-&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`
-}
+&nbsp;&nbsp;&nbsp;&nbsp;class `class name-클래스 이름`: `superclass-상위 클래스`, `adopted protocols-채택한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-클래스 본문은 '0' 개 이상의 _선언 (declaration)_ 들을 가지고 있습니다. 이 _선언 (declarations)_ 들은 저장 및 계산 속성 둘 모두와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 단 하나의 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 프로토콜 선언을 가질 수 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 여러 가지 예제와 논의들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
+클래스의 본문은 0개 이상의 _선언 (declaration)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 '프로토콜 선언' 을 담을 순 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
-클래스 타입은, _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만 상속할 수 있지만, 프로토콜은 어떤 개수라도 채택할 수 있습니다. _상위 클래스 (superclass)_ 를 _클래스 이름 (class anme)_ 및 콜론 뒤에 먼저 나타내고, 이어서 _채택한 프로토콜 (adopted protocols)_ 을 뒤에 둡니다. '제네릭 (일반화된) 클래스' 는 다른 '제네릭 클래스' 및 '제네릭이 아닌 클래스' 를 상속할 수 있지만, '제네릭이 아닌 클래스' 는 다른 '제네릭이 아닌 클래스' 만 상속할 수 있습니다. 제네릭 상위 클래스의 이름을 콜론 뒤에 작성할 때는, '제네릭 매개 변수 절' 을 포함하여, 해당 제네릭 클래스의 온전한 이름을 반드시 포함해야 합니다.
+클래스 타입은, _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만을 상속할 수 있지만, 프로토콜은 어떤 개수든 채택할 수 있습니다. _클래스 이름 (class anme)_ 과 콜론 뒤에 _상위 클래스 (superclass)_ 를 최초로 나타내고, _채택한 프로토콜 (adopted protocols)_ 을 뒤에 둡니다. '일반화 (generic) 클래스' 는 다른 '일반화 및 일반화 아닌 클래스' 를 상속할 수 있지만, '일반화 아닌 (nongeneric) 클래스' 는 다른 '일반화 아닌 클래스' 만 상속할 수 있습니다. '일반화 상위 클래스' 클래스의 이름을 콜론 뒤에 작성할 때는, 반드시 '해당 일반화 클래스' 의, '일반화 매개 변수 절' 을 포함한, 전체 이름을 포함시켜야 합니다.
 
-[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 에서 논의한 것처럼, 클래스는 '지명 초기자' 와 '편의 초기자' 를 가질 수 있습니다. 클래스의 '지명 초기자' 는 클래스에서 선언한 모든 속성을 반드시 초기화해야 함과 동시에 이를 반드시 상위 클래스의 지명 초기자를 호출하기 전에 해야 합니다.
+[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 에서 논의한 것처럼, 클래스는 '지명 (designated) 초기자' 와 '편의 (convenience) 초기자' 를 가질 수 있습니다. 클래스의 '지명 초기자' 는 클래스가 선언한 모든 속성을 반드시 초기화해야 하므로 이를 반드시 상위 클래스의 '지명 초기자' 를 호출하기 전에 해야 합니다.
 
-클래스는 상위 클래스의 속성, 메소드, 첨자 연산, 및 초기자를 '재정의 (override)' 할 수 있습니다. 재정의한 속성, 메소드, 첨자 연산, 및 지명 초기자[^designated-initializers]는 반드시 `override` 선언 수정자로 표시해야 합니다.
+클래스는 상위 클래스의 속성, 메소드, 첨자 연산, 및 초기자를 '재정의 (override)' 할 수 있습니다. 재정의한 속성, 메소드, 첨자 연산, 및 지명 초기자[^designated-initializers] 는 반드시 '`override` 선언 수정자' 로 표시해야 합니다.
 
-하위 클래스가 상위 클래스의 초기자를 필수로 구현하게 만들려면, 상위 클래스의 초기자를 `required` 선언 수정자로 표시합니다. 해당 초기자에 대한 하위 클래스의 구현 또한 반드시 `required` 선언 수정자로 표시해야 합니다.
+하위 클래스가 상위 클래스의 초기자를 필수로 구현하도록 요구하려면, 상위 클래스의 초기자를 '`required` 선언 수정자' 로 표시합니다. '해당 초기자의 하위 클래스 구현' 도 반드시 `required` 선언 수정자로 표시해야 합니다.
 
-_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스에서 상속한다고 하더라도, 상위 클래스에서 선언한 '지명 초기자' 는 하위 클래스가 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명한 조건을 만족할 때만 상속됩니다. 스위프트의 클래스는 '범용 기초 클래스 (universal base class)'[^universal-base-class] 에서 상속된 것이 아닙니다.
+_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스에서 상속하긴 하지만, _상위 클래스 (superclass)_ 에서 선언한 '지명 초기자' 는 하위 클래스가 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명한 조건과 부합할 때만 상속합니다. 스위프트 클래스는 '범용 기초 클래스 (universal base class)'[^universal-base-class] 를 상속하지 않습니다.
 
-이전에 선언한 클래스의 인스턴스를 생성하는 방법은 두 가지가 있습니다:
+이전에 선언한 클래스의 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 클래스에서 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자가 없지만, 클래스 선언의 모든 속성에 초기 값이 주어진 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 '기본 초기자 (default initializer)' 를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 클래스 안에 선언한 초기자 중 하나를 호출합니다.
+* 선언한 초기자는 없지만, 클래스 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 '기본 초기자' 를 호출합니다.
 
-클래스 인스턴스의 속성에 접근하려면, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 을 사용합니다.
+클래스 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근합니다.
 
-클래스는 '참조 타입' 입니다; 클래스의 인스턴스는, 변수나 상수에 할당될 때, 또는 함수 호출 시에 인자로 전달될 때, 복사되지 않고, 참조를 합니다. 참조 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 를 참고하기 바랍니다.
+클래스는 '참조 타입' 이며; 클래스 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 부분을 참고하기 바랍니다.
 
-클래스 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
+[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 클래스 타입의 동작을 확장할 수 있습니다.
 
 > GRAMMAR OF A CLASS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID368)
 
 ### Actor Declaration (행위자 선언)
 
-_행위자 선언 (actor declaration)_ 은 프로그램에 '이름 붙인 행위자 타입' 을 도입합니다. '행위자 선언' 은 `actor` 키워드로 선언하며 형식은 다음과 같습니다:
+_행위자 선언 (actor declaration)_ 은 '이름 붙인 행위자 타입' 을 프로그램에 도입합니다. '행위자 선언' 은 `actor` 키워드로 선언하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;actor `actor name-행위자 이름`: `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'행위자' 의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 담고 있습니다. 이 _선언 (declarations)_ 들은 저장 및 계산 속성 둘 모두와, 인스턴스 메소드, 타입 메소드, 초기자, 단일 정리자, 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 그리고 열거체 선언을 포함하고 있을 수 있습니다. 다양한 종류의 선언을 포함한 '행위자' 에 대한 논의와 여러가지 예제는, [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
+'행위자' 의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자', 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. 다양한 종류의 선언을 포함하고 있는 '행위자' 에 대한 논의와 여러 예제들은, [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
 
-'행위자 타입' 은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 열거체, 구조체, 또는 다른 '행위자' 를 상속할 수는 없습니다. 하지만, '`@objc` 특성' 으로 표시한 '행위자' 는 암시적으로 `NSObjectProtocol` 프로토콜을 준수하며 '오브젝티브-C 런타임' 에서는 `NSObject` 의 하위 타입으로 노출됩니다.
+'행위자 타입' 은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 열거체, 구조체나, 다른 '행위자' 를 상속할 순 없습니다. 하지만, '`@objc` 특성' 으로 표시한 '행위자' 는 암시적으로 `NSObjectProtocol` 프로토콜을 준수하며 '오브젝티브-C 런타임' 에서 `NSObject` 의 하위 타입으로 노출됩니다.
 
 이전에 선언한 '행위자' 의 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 에서 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자가 없는데, 행위자 선언의 모든 속성에 초기 값이 주어졌다면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 기본 초기자를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 안에 선언한 초기자 중 하나를 호출합니다.
+* 선언한 초기자는 없지만, 행위자 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 '기본 초기자' 를 호출합니다.
 
-기본적으로, 행위자의 멤버는 해당 행위자로 격리됩니다.[^isolate] 메소드 본문이나 속성의 획득자 같은, 코드는 해당 행위자 상에서 실행합니다. 행위자 안의 코드는 이미 해당 코드를 동일한 행위자 상에서 실행하고 있기 때문에 이와 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 이 코드를 또 다른 행위자 상에서 '비동기로' 실행하는 코드임을 지시하기 위해 반드시 `await` 를 표시해야 합니다. '키 경로 (key paths)' 는 행위자의 '격리된 멤버' 를 참조할 수 없습니다. '행위자로-격리된 (actor-isolated) 저장 속성' 은 '동기 함수' 로는 '입-출력 매개 변수' 로써 전달할 수 있지만, '비동기 함수' 로는 안됩니다. 
+기본적으로, 행위자의 멤버는 해당 행위자로 격리됩니다.[^isolate] 메소드의 본문이나 속성의 획득자 같은, 코드는 해당 행위자 상에서 실행합니다. 행위자 안의 코드는 해당 코드가 이미 동일한 행위자 상에서 실행 중이기 때문에 이와 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 '이 코드가 또 다른 행위자 상에서 비동기로 실행 중인 코드' 임을 지시하기 위해 반드시 `await` 로 표시해야 합니다. '키 경로 (key paths)' 는 '행위자의 격리 멤버' 를 참조할 수 없습니다. '행위자로-격리한 (actor-isolated) 저장 속성' 은 '동기 함수' 의 '입-출력 매개 변수' 로 전달할 순 있지만, '비동기 함수' 로는 안됩니다. 
 
-행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이의 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는: 행위자의 '어떤 격리 상태' 와도 상호 작용할 수 없으며, 호출하는 쪽에서 사용할 때 `await` 로 표시하지 않는 등 행위자 밖의 코드인 것 처럼 실행합니다.
+행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는 행위자 밖의 코드 처럼 실행하는데: 행위자의 어떤 '격리 상태' 와도 상호 작용할 수 없고, 호출하는 쪽에서 사용할 때 `await` 를 표시하지 않습니다.
 
-행위자의 멤버는 '격리 안된 (nonisolated)' 것이거나 '비동기 (asynchronous)' 인 것만 `@objc` 로 표시할 수 있습니다. 
+행위자 멤버는 '격리 안된 (nonisolated)' 것이나 '비동기 (asynchronous)' 인 경우에만 `@objc` 특성으로 표시할 수 있습니다. 
 
 행위자가 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
 행위자 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
 
-행위자는 참조 타입이며; 행위자의 인스턴스는, 변수나 상수에 할당할 때, 또는 인자로 함수 호출에 전달할 때, 복사 보다는, '참조' 를 합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+행위자는 참조 타입이며; 행위자 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
-행위자 타입[^structure-type] 의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의하는 것처럼, '익스텐션 (extension) 선언' 으로 확장할 수 있습니다.
+[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 행위자 타입의 동작을 확장할 수 있습니다.
 
 > GRAMMAR OF A ACTOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID648)
 
 ### Protocol Declaration (프로토콜 선언)
 
-_프로토콜 선언 (protocol declaration)_ 은 '이름 붙인 프로토콜 타입' 을 프로그램에 도입합니다. '프로토콜 선언' 은 `protocol` 키워드를 사용하여 '전역 범위 (global scope)' 에서 선언하며 형식은 다음과 같습니다:
+_프로토콜 선언 (protocol declaration)_ 은 '이름 붙인 프로토콜 타입' 을 프로그램에 도입합니다. '프로토콜 선언' 은 '전역 (global scope)' 에서 `protocol` 키워드로 선언하며 형식은 다음과 같습니다:
 
-protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프로토콜` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`protocol member declarations-프로토콜 멤버 선언`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프로토콜` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`protocol member declarations-프로토콜 멤버 선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-프로토콜의 본문은 '0' 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 담고 있는데, 이는 이 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 하는 '준수 필수 조건 (conformance requirements)' 을 설명합니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 정해진 속성, 메소드, 초기자, 그리고 첨자 연산을 반드시 구현해야 한다고 선언할 수 있습니다. 프로토콜은 또한, 프로토콜의 다양한 선언들 간의 관계를 지정할 수 있는, _결합 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 수는 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 설명합니다.
+프로토콜의 본문은, 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 할 '준수성 필수 조건 (conformance requirements)' 을 설명하는, 0개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 들을 담습니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 반드시 정해진 속성, 메소드, 초기자, 및 첨자 연산을 구현해야 함을 선언할 수 있습니다. 프로토콜은, 다양한 프로토콜 선언들 사이의 관계를 지정할 수 있는, _결합 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 순 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 논의합니다.
 
-프로토콜 타입은 어떤 개수의 다른 프로토콜이라도 상속할 수 있습니다. 한 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건' 집합을 한데 '모아서 (aggregated)', 현재 프로토콜을 상속하는 어떤 타입이든 반드시 이 모든 필수 조건들을 다 준수해야 합니다. '프로토콜 상속' 을 사용하는 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 을 참고하기 바랍니다.
+프로토콜 타입은 어떤 개수의 다른 프로토콜이든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건 집합' 을 '한데 모으며 (aggregated)', 현재 프로토콜을 상속한 어떤 타입이든 반드시 이 모든 필수 조건들을 준수해야 합니다. '프로토콜 상속' 의 사용 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 부분을 참고하기 바랍니다.
 
-> '다중 프로토콜 (multiple protocols)' 의 '준수 필수 조건 (conformance requirements)' 은, [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 과 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 에서 설명한 것처럼, '프로토콜 합성 타입' 을 사용하여 한데 모을 수도 있습니다.
+> [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 과 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 에서 설명한 것처럼, '프로토콜 합성 타입' 으로 '여러 프로토콜의 준수성 필수 조건' 들을 한데 모을 수도 있습니다.
 
-해당 타입의 '익스텐션 (extension) 선언' 에서 프로토콜을 채택하는 것으로써 이전에 선언한 타입에 '프로토콜 준수성' 을 추가할 수 있습니다. '익스텐션' 에서는, 채택한 프로토콜의 모든 필수 조건을 반드시 구현해야 합니다. 만약 이미 모든 필수 조건을 타입이 구현하고 있다면, '익스텐션 선언' 의 본문을 비워둬도 됩니다.
+해당 타입의 '익스텐션 (extension) 선언' 에서 프로토콜을 채택함으로써 이전에 선언한 타입에 '프로토콜 준수성' 을 추가할 수 있습니다. '익스텐션' 에서는, 채택한 프로토콜의 필수 조건들을 반드시 모두 구현해야 합니다. 타입이 이미 모든 필수 조건을 구현하고 있으면, '익스텐션 선언' 의 본문은 비워둘 수도 있습니다.
 
-기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜에서 선언한 속성, 메소드, 그리고 첨자 연산을 모두 구현해야 합니다. 그렇다 하더라도, 이러한 프로토콜 멤버 선언을 '준수 타입' 에서 구현하는 것이 '옵셔널 (optional)' 임을 지정하기 위해 '`optional` 선언 수정자 (declaration modifier)' 로 표시할 수 있습니다.[^optional-member] '`optional` 수정자' 는 '`objc` 특성 (attribute)' 으로 표시한 멤버와, `objc` 특성으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과로, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 가진 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자를 사용하는 방법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버에 접근하는 방법-예를 들어, '준수 타입' 이 이를 구현하는 지가 확실하지 않을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 을 참고하기 바랍니다.
+기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜에서 선언한 모든 속성, 메소드, 및 첨자 연산을 구현해야 합니다. 그렇다 하더라도, 이 프로토콜 멤버 선언들을 '`optional` 선언 수정자' 로 표시하여 '준수 타입의 구현부' 가 '옵셔널 (optional)' 임을 지정할 수 있습니다.[^optional-member] '`optional` 수정자' 는 '`objc` 특성' 으로 표시한 멤버와, '`objc` 특성' 으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 가진 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자의 사용 방법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버로의 접근 방법-예를 들어, '준수 타입' 의 구현 여부를 확신할 수 없을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 참고하기 바랍니다.
 
-열거체의 'case 값' 은 '타입 멤버 (type members)' 에 대한 '프로토콜 필수 조건' 을 만족할 수 있습니다. 특히, 어떤 '결합 값 (associated values)' 도 가지지 않는 '열거체 case 값' 은 `Self` 타입의 '읽기-전용 (get-only) 타입 변수' 에 대한 '프로토콜 필수 조건' 을 만족하며,[^enumeration-get-only] '결합 값' 을 가진 '열거체 case 값' 은 `Self` 를 반환하는 함수에 대한 프로토콜 필수 조건을 만족하는데 여기서 '매개 변수' 와 '인자 이름표' 는 'case 값' 의 결합 값 과 일치합니다.[^enumeration-function] 예를 들면 다음과 같습니다:
+'열거체의 case 값' 은 '타입 멤버' 에 대한 프로토콜 필수 조건을 만족할 수 있습니다. 특히, '어떤 결합 값도 없는 열거체 case 값' 은 '`Self` 타입의 읽기-전용 타입 변수' 에 대한 프로토콜 필수 조건을 만족하며,[^enumeration-get-only] '결합 값을 가진 열거체 case 값' 은 '매개 변수와 인자 이름표가 case 의 결합 값과 일치하는 `Self` 를 반환하는 함수' 에 대한 프로토콜 필수 조건을 만족합니다.[^enumeration-function] 예를 들면 다음과 같습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -704,35 +704,35 @@ enum MyEnum: SomeProtocol {
 }
 ```
 
-프로토콜의 '채택 (adoption)' 을 클래스 타입으로만 제약하려면, 콜론 다음의 _상속받은 프로토콜 (inherited protocols)_ 목록에 `AnyObject` 프로토콜을 포함시킵니다. 예를 들어, 다음 프로토콜은 클래스 타입만이 채택할 수 있습니다:
+'프로토콜 채택 (adoption)' 을 클래스 타입만으로 제약하려면, 콜론 뒤의 '_상속한 프로토콜 (inherited protocols)_ 목록' 에 `AnyObject` 프로토콜을 포함합니다. 예를 들어, 다음 프로토콜은 클래스 타입만 채택할 수 있습니다:
 
 ```swift
 protocol SomeProtocol: AnyObject {
-  /* 여기에 프로토콜 멤버를 둡니다 */
+  /* 프로토콜 멤버는 여기에 둡니다 */
 }
 ```
 
-`AnyObject` 라는 '필수 조건' 으로 표시한 프로토콜을 상속한 프로토콜은 어떤 것이든 그 역시 마찬가지로 클래스 타입만이 채택할 수 있습니다.
+'`AnyObject` 필수 조건으로 표시한 프로토콜' 을 상속한 어떤 프로토콜이든 마찬가지로 클래스 타입만 채택할 수 있습니다.
 
-> 만약 프로토콜이 `objc` 특성으로 표시되어 있다면, '`AnyObject` 필수 조건' 은 해당 프로토콜에 암시적으로 적용이 되어 있는 것입니다; 이 프로토콜은 명시적으로 `AnyObject` 필수 조건으로 표시할 필요가 없습니다.
+> 프로토콜을 `objc` 특성으로 표시하면, 해당 프로토콜에 '`AnyObject` 필수 조건' 을 암시적으로 적용하므로; 프로토콜을 `AnyObject` 필수 조건으로 명시적으로 표시할 필요가 없습니다.
 
-프로토콜은 '이름 붙인 (named) 타입' 이며, 그래서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 코드에서 다른 '이름 붙인 타입' 이 있을 수 있는 곳과 같은 모든 위치에 있을 수 있습니다. 하지만, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없으며, 이는 프로토콜이 지정하는 필수 조건에 대하여 실제로 구현을 제공하는 것은 아니기 때문입니다.
+프로토콜은 '이름 붙인 타입 (named types)' 이며, 따라서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 다른 '이름 붙인 타입' 이 있을 수 있는 것과 똑같은 모든 코드 위치에 있을 수 있습니다. 하지만, 프로토콜이 지정한 필수 조건에 대한 구현을 실제로 제공하는 것은 아니기 때문에, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없습니다.
 
-프로토콜은, [Delegation (위임)]({% post_url 2016-03-03-Protocols %}#delegation-위임) 에서 설명한 것처럼, 클래스 또는 구조체의 '대리자 (delegate)' 가 구현해야 하는 메소드가 어느 것인지를 선언하는 데 사용할 수 있습니다.
+프로토콜은, [Delegation (위임)]({% post_url 2016-03-03-Protocols %}#delegation-위임) 에서 설명한 것처럼, 클래스나 구조체의 '대리자 (delegate)' 가 구현해야 할 메소드를 선언하기 위해 사용할 수 있습니다.
 
 > GRAMMAR OF A PROTOCOL DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Property Declaration (프로토콜 속성 선언)
 
-프로토콜을 준수하는 타입이 어떤 속성을 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 _프로토콜 속성 선언 (protocol property declaration)_ 을 포함하면 됩니다. '프로토콜 속성 선언' 은 특수한 형식의 변수 선언입니다:
+프로토콜은 프로토콜 선언 본문에 _프로토콜 속성 선언 (protocol property declaration)_ 을 포함함으로써 '준수 타입' 이 속성을 반드시 구현해야 한다고 선언합니다. '프로토콜 속성 선언' 은 특수한 형식의 변수 선언입니다:
 
-var `property name-속성 이름`: `type-타입` { get set }
+&nbsp;&nbsp;&nbsp;&nbsp;var `property name-속성 이름`: `type-타입` { get set }
 
-다른 프로토콜 멤버 선언에서와 같이, 이 속성 선언들은 프로토콜을 준수하는 타입에 대한 '획득자 (getter)' 와 '설정자 (setter)' '필수 조건 (requirements)' 만을 선언합니다. 그 결과, 이를 선언한 프로토콜에서 획득자와 설정자를 직접 구현하지는 않습니다.
+다른 프로토콜 멤버 선언이 그런 것처럼, 이 속성 선언은 프로토콜이 준수하는 타입에 대한 '획득자와 설정자 필수 조건 (requirements)' 만 선언합니다. 그 결과, 자신을 선언한 프로토콜에서 획득자와 설정자를 직접 구현하진 않습니다.
 
-획득자 및 설정자 필수 조건은 '준수 타입' 에서 다양한 방식으로 만족시킬 수 있습니다. 속성 선언이 `get` 과 `set` 키워드 둘 다를 포함하고 있는 경우, '준수 타입' 은 이를 읽기와 쓰기가 모두 가능한 (즉, 획득자와 설정자 둘 모두를 구현한) 저장 변수 속성 또는 계산 속성으로 구현할 수 있습니다. 하지만, 해당 속성 선언을 상수 속성 또는 읽기-전용 계산 속성으로 구현할 수는 없습니다. 속성 선언이 `get` 키워드만을 포함하고 있는 경우, 이를 모든 종류의 속성으로 구현할 수 있습니다. 프로토콜의 속성 필수 조건을 구현하는 준수 타입에 대한 예제는, [Property Requirements (속성 필수 조건)]({% post_url 2016-03-03-Protocols %}#property-requirements-속성-필수-조건) 를 참고하기 바랍니다.
+'준수 타입' 은 다양한 방식으로 '획득자와 설정자 필수 조건' 을 만족시킬 수 있습니다. 속성 선언이 `get` 과 `set` 키워드 둘 다를 포함하면, '준수 타입' 은 읽기 쓰기 둘 다 가능한 (즉, 획득자와 설정자 둘 다를 구현한) '저장 변수 속성' 이나 '계산 속성' 으로 구현할 수 있습니다. 하지만, 해당 속성 선언을 '상수 속성' 이나 '읽기-전용 계산 속성' 으로 구현할 순 없습니다. 속성 선언이 `get` 키워드만 포함하면, 어떤 종류의 속성으로도 구현할 수 있습니다. 프로토콜의 속성 필수 조건을 구현하는 '준수 타입' 에 대한 예제는, [Property Requirements (속성 필수 조건)]({% post_url 2016-03-03-Protocols %}#property-requirements-속성-필수-조건) 부분을 참고하기 바랍니다.
 
-프로토콜 선언에서 '타입 속성 필수 조건' 을 선언하려면, 이 속성 선언을 `static` 키워드로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 속성을 `static` 키워드로 선언하고, 이 프로토콜을 준수하는 것이 클래스라면 속성을 `static` 이나 `class` 키워드 중 하나로 선언합니다. '익스텐션 (extension)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 속성 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
+프로토콜 선언에서 '타입 속성 필수 조건' 을 선언하려면, 속성 선언을 `static` 키워드로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 속성을 `static` 키워드로 선언하며, 프로토콜을 클래스가 준수하면 속성을 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션 (extension)' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '타입 속성 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
 [Variable Declaration (변수 선언)](#variable-declaration-변수-선언) 부분도 참고하기 바랍니다.
 
@@ -740,9 +740,9 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 #### Protocol Method Declaration (프로토콜 메소드 선언)
 
-프로토콜을 준수하는 타입이 어떤 메소드를 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 메소드 선언' 을 포함하면 됩니다. 프로토콜 메소드 선언은 함수 선언과 형식이 똑같지만, 두 가지 예외가 있습니다: 일단 함수 본문을 포함하지 않으며, 함수 선언에서 어떤 '기본 매개 변수 값' 도 제공할 수 없습니다.  프로토콜의 '메소드 필수 조건 (method requirements)' 을 구현하는 준수 타입에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 을 참고하기 바랍니다.
+프로토콜은 프로토콜 선언 본문에 '프로토콜 메소드 선언' 을 포함함으로써 '준수 타입' 이 메소드를 반드시 구현해야 한다고 선언합니다. '프로토콜 메소드 선언' 은: 함수 본문을 포함하지 않고, 함수 선언에서 '어떤 기본 매개 변수 값' 도 제공할 수 없다는 두 가지를 제외하면 함수 선언과 형식이 똑같습니다. 프로토콜 메소드 필수 조건을 구현하는 '준수 타입' 에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 부분을 참고하기 바랍니다.
 
-프로토콜 선언에서 '클래스 메소드 (class method)' 나 '정적 메소드 (static method)' 필수 조건을 선언하려면, 해당 메소드 선언을 `static` 선언 수정자로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 메소드를 선언하면서 `static` 키워드를 사용하고, 이 프로토콜을 준수하는 것이 클래스라면 메소드를 선언하면서 `static` 이나 `class` 키워드 중 하나를 사용합니다. '익스텐션 (extension)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 메소드 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
+프로토콜 선언에서 '클래스 또는 정적 메소드 필수 조건' 을 선언하려면, 메소드 선언을 '`static` 선언 수정자' 로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 메소드를 `static` 키워드로 선언하고, 프로토콜을 클래스가 준수하면 메소드를 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '타입 메소드 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
 [Function Declaration (함수 선언)](#function-declaration-함수-선언) 부분도 참고하기 바랍니다.
 
@@ -750,11 +750,11 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 #### Protocol Initializer Declaration (프로토콜 초기자 선언)
 
-프로토콜을 준수하는 타입이 어떤 초기자를 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 초기자 선언' 을 포함하면 됩니다. '프로토콜 초기자 선언' 은, 초기자의 본문을 포함하지 않는다는 것만 제외하면, 초기자 선언과 형식이 같습니다.
+프로토콜은 프로토콜 선언 본문에 '프로토콜 초기자 선언' 을 포함함으로써 '준수 타입' 이 초기자를 반드시 구현해야 한다고 선언합니다. '프로토콜 초기자 선언' 은, 초기자 본문을 포함하지 않는다는 것만 제외하면, 초기자 선언과 형식이 똑같습니다.
 
-준수 타입이 '실패하지 않는 프로토콜 초기자 필수 조건' 을 만족하게 하려면 '실패하지 않는 초기자 (nonfailable initializer)' 또는 `init!` 라는 '실패 가능한 초기자 (failable initializer)' 를 구현하면 됩니다. 준수 타입이 '실패 가능한 프로토콜 초기자 필수 조건' 을 만족하게 하려면 어떤 종류의 초기자라도 구현하면 됩니다.
+준수 타입은 '실패하지 않는 (nonfailable) 초기자' 또는 `init!` 형식의 '실패 가능한 (failable) 초기자' 를 구현함으로써 '실패하지 않는 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다. 준수 타입이 어떤 종류의 초기자든 구현하기만 하면 '실패 가능한 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다.
 
-클래스에서 프로토콜의 '초기자 필수 조건' 을 만족하기 위해 초기자를 구현할 때는, 해당 클래스를 이미 `final` 선언 수정자로 표시하지 않은 이상 그 초기자를 반드시 `required` 선언 수정자로 표시해야 합니다.
+이미 '`final` 선언 수정자' 로 표시한 클래스가 아니라면, 프로토콜의 '초기자 필수 조건' 을 만족하는 초기자를 클래스가 구현할 때는, 초기자를   반드시 '`required` 선언 수정자' 로 표시해야 합니다.
 
 [Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 부분도 참고하기 바랍니다.
 
@@ -762,13 +762,13 @@ var `property name-속성 이름`: `type-타입` { get set }
 
 #### Protocol Subscript Declaration (프로토콜 첨자 연산 선언)
 
-프로토콜을 준수하는 타입이 어떤 '첨자 연산 (subcript)' 을 반드시 구현하도록 선언하려면 프로토콜 선언의 본문에서 '프로토콜 첨자 연산 선언' 을 포함하면 됩니다. 프로토콜 첨자 연산 선언은 은 특수한 형식의 변수 선언입니다:
+프로토콜은 프로토콜 선언 본문에 '프로토콜 첨자 연산 선언' 을 포함함으로써 '준수 타입' 이 '첨자 연산' 을 반드시 구현해야 한다고 선언합니다. '프로토콜 첨자 연산 선언' 은 특수한 형식의 첨자 연산 선언입니다:
 
-subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set }
+&nbsp;&nbsp;&nbsp;&nbsp;subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set }
 
-'첨자 연산 선언' 은 프로토콜을 준수하는 타입에 대한 '획득자 및 설정자의 최소 구현 필수 조건' 만 선언합니다. 만약 '첨자 연산 선언' 이 `get` 과 `set` 키워드를 둘 다 포함할 경우, 준수 타입은 '획득자 (getter) 및 설정자 (setter) 절' 둘 다를 반드시 구현해야 합니다. 첨자 연산 선언이 `get` 키워드 만을 포함할 경우, 준수 타입은 _최소한 (at least)_ '획득자 (getter) 절' 은 반드시 구현해야 하며 '설정자 (setter) 절' 은 선택해서 구현할 수 있습니다.
+'첨자 연산 선언' 이 프로토콜의 준수 타입을 위한 '최소한의 획득자와 설정자 구현 필수 조건' 만 선언합니다. 첨자 연산 선언에 `get` 과 `set` 키워드 둘 다 포함하면, 준수 타입이 '획득자와 설정자 절' 둘 다를 반드시 구현해야 합니다. 첨자 연산 선언에 `get` 키워드만 포함하면, 준수 타입은 반드시 _적어도 (at least)_ '획득자 절' 을 구현해야 하며 '설정자 절' 구현은 옵션입니다.
 
-프로토콜 선언에서 '정적 첨자 연산 (static subscript)' 필수 조건을 선언하려면, 해당 첨자 연산 선언을 `static` 선언 수정자로 표시합니다. 이 프로토콜을 준수하는 것이 구조체와 열거체라면 첨자 연산을 선언하면서 `static` 키워드를 사용하고, 프로토콜을 준수하는 것이 클래스라면 첨자 연산을 선언하면서 `static` 이나 `class` 키워드 중 하나를 사용합니다. '익스텐션 (extension)' 으로 구조체, 열거체, 또는 클래스에 '프로토콜 준수성 (protocol conformance)' 을 추가하는 경우 확장하는데 사용하는 타입과 같은 키워드를 사용합니다. '타입 첨자 연산 필수 조건' 에 대한 '기본 구현' 을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
+프로토콜 선언에서 '정적 (static) 첨자 연산 필수 조건' 을 선언하려면, 첨자 연산 선언을 '`static` 선언 수정자' 로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 '첨자 연산' 을 `static` 키워드로 선언하며, 프로토콜을 클래스가 준수하면 '첨자 연산' 을 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션 (extension)' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '정적 첨자 연산 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
 [Subscipt Declaration (첨자 연산 선언)](#subscipt-declaration-첨자-연산-선언) 부분도 참고하기 바랍니다.
 
@@ -776,9 +776,9 @@ subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set 
 
 #### Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)
 
-프로토콜은 `associatedtype` 키워드를 사용하여 '결합된 타입 (associated types)' 을 선언합니다. '결합된 타입' 은 프로토콜의 선언에서 사용되는 타입을 위한 '별명 (alias)' 을 제공합니다. '결합된 타입' 은 '일반화된 (generic) 매개 변수 절' 의 '타입 매개 변수' 와 비슷하지만, 이를 선언하는 프로토콜의 `Self` 와 '결합되어 (associated)' 있습니다. 해당 상황에서, `Self` 는 프로토콜을 '최종적으로 (eventual) 준수하고 있는 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 을 참고하기 바랍니다.
+프로토콜은 `associatedtype` 키워드로 '결합 타입 (associated types)' 을 선언합니다. '결합 타입' 은 프로토콜 선언에서 사용하는 타입에 대한 '별명 (alias)' 을 제공합니다. '결합 타입' 은 '일반화 (generic) 매개 변수 절' 에 있는 '타입 매개 변수' 와 비슷하지만, 자신을 선언한 프로토콜의 `Self` 와 결합되어 있습니다. 해당 상황에서는, `Self` 가 '프로토콜을 준수하는 최종 결과 (eventual) 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
 
-또 다른 프로토콜에서 상속받은 '결합된 타입' 에, '결합된 타입' 의 '재선언 (redeclaring)' 없이, '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화된 (generic) `where` 절' 을 사용하면 됩니다. 예를 들어, 아래에 있는 `SubProtocol` 선언들은 서로 '동치 (equivalent)' 입니다:
+'결합 타입' 을 '재선언 (redeclaring)' 하지 않고도, 다른 프로토콜에서 상속한 '결합 타입' 에 '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화 (generic) `where` 절' 을 사용합니다. 예를 들어, 아래의 `SubProtocol` 선언들은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 protocol SomeProtocol {
@@ -786,11 +786,11 @@ protocol SomeProtocol {
 }
 
 protocol SubProtocolA: SomeProtocol {
-  // 다음 구문 표현은 경고 (warning) 를 일으킵니다.
+  // 이 구문은 경고를 만듭니다.
   associatedtype SomeType: Equatable
 }
 
-// 다음 구문 표현이 더 좋습니다.
+// 이 구문이 더 좋습니다.
 protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 ```
 
@@ -800,27 +800,27 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 
 ### Initializer Declaration (초기자 선언)
 
-_초기자 선언 (initializer declaration)_ 은 클래스, 구조체, 또는 열거체에 대한 초기자를 프로그램에 도입합니다. '초기자 선언' 은 `init` 키워드를 사용하여 선언하며 두 가지의 기본 형식이 있습니다.
+_초기자 선언 (initializer declaration)_ 은 프로그램에 클래스, 구조체, 및 열거체를 위한 초기자를 도입합니다. '초기자 선언' 은 `init` 키워드로 선언하며 두 개의 기초 형식이 있습니다.
 
-구조체, 열거체, 그리고 클래스 타입은 어떤 개수의 초기자라도 가질 수 있지만, 클래스 초기자의 경우 '규칙' 및 '결합 작동 방식' 이 다릅니다. 구조체 및 열거체와는 다르게, 클래스는 두 가지 종류의 초기자를 가집니다: '지명 초기자 (designated initializers)' 와 '편의 초기자 (convenience itnitialziers)' 가 그것으로, 이는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명했습니다.
+구조체, 열거체, 및 클래스 타입은 어떤 개수의 초기자든 가질 수 있지만, '클래스 초기자' 에 대한 '규칙과 결합 동작' 은 다릅니다. [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명한 것처럼, 구조체 및 열거체와는 달리, 클래스에는: '지명 (designated) 초기자' 와 '편의 (convenience) 초기자' 라는 두 가지 종류의 초기자가 있습니다.
 
-다음 형식은 구조체 및, 열거체에 대한 초기자와, 클래스에 대한 '지명 초기자' 를 선언합니다:
+다음 형식은 '구조체와, 열거체의 초기자', 그리고 '클래스의 지명 초기자' 를 선언합니다:
 
-init (`parameters-매개 변수`) {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;init (`parameters-매개 변수`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-클래스의 '지명 초기자' 는 직접 클래스의 모든 속성을 초기화합니다. 이는 같은 클래스에 있는 다른 어떤 초기자도 호출할 수 없으며, 클래스가 상위 클래스를 가질 경우, 상위 클래스의 '지명 초기자' 중 하나를 반드시 호출해야 합니다. 클래스가 상위 클래스에서 어떤 속성을 상속받은 경우, 이 속성들 어떤 것이든 현재 클래스에서 설정하거나 수정하기 전에 반드시 상위 클래스의 지명 초기자 중 하나를 호출해야 합니다.
+'클래스의 지명 초기자' 는 클래스의 모든 속성을 직접 초기화합니다. 이는 동일한 클래스의 다른 어떤 초기자도 호출할 수 없으며, 클래스에 상위 클래스가 있으면, 반드시 '상위 클래스의 지명 초기자' 를 호출해야 합니다. 클래스가 어떤 속성을 상위 클래스에서 상속했으면, 반드시 상위 클래스의 지명 초기자를 호출해야 이 속성을 현재 클래스에서 설정할 수 있습니다.
 
-지명 초기자는 클래스 선언인 상황에서만 선언할 수 있으므로 '확장 (extension) 선언' 을 사용하여 클래스에 추가될 수 없습니다.
+'지명 초기자' 는 '클래스 선언' 만 선언할 수 있으며 따라서 '익스텐션 선언' 으로 클래스에 추가할 순 없습니다.
 
-구조체와 열거체에 있는 초기자는 선언된 다른 초기자를 호출하여 초기화 과정의 일부 또는 전체를 위임할 수 있습니다.
+'구조체와 열거체 초기자' 는 선언해둔 '다른 초기자' 를 호출하여 초기화 과정의 일부 또는 전체를 '위임' 할 수 있습니다.
 
-클래스를 위한 '편의 초기자' 를 선언하려면, 초기자 선언을 `convenience` 선언 수정자로 표시합니다.
+'클래스의 편의 초기자' 를 선언하려면, 초기자 선언을 '`convenience` 선언 수정자' 로 표시합니다.
 
-convenience init (`parameters-매개 변수`) {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;convenience init (`parameters-매개 변수`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 편의 초기자는 초기화 과정을 또 다른 편의 초기자 또는 클래스의 지명 초기자 중 하나로 위임할 수 있습니다. 그렇다 하더라도, 초기화 과정은 궁극적으로 클래스의 속성을 초기화하는 지명 초기자를 호출하는 것으로 반드시 끝나야 합니다. 편의 초기자는 상위 클래스의 초기자를 호출할 수 없습니다.
 
@@ -1262,7 +1262,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^closure-with-inout-parameter]: 아래 예제에 있는 `{ [a] in return a + 1 }` 라는 클로저는 `a` 의 값을 변경하지 않으므로, `[a]` 라는 '붙잡을 목록' 을 사용하여 `a` 를 변경 불가능하게 붙잡았습니다.
 
-[^optional-member]: 여기서의 '옵셔널 (optional)' 은 '선택 사항' 이라는 말과 '타입이 옵셔널' 이라는 두 가지 의미를 모두 가지고 있습니다. 이는 프로토콜에서 선언한 '필수 조건' 이 구현되어 있는 지의 여부 자체가 '옵셔널' 이라는 것으로 이해할 수 있습니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 그 구현체를 가지는 것이고, 구현이 되어 있지 않으면 `nil` 인 것입니다.
+[^optional-member]: 프로토콜에서 선언한 '필수 조건' 의 구현 여부 자체가 '옵셔널' 이라는 의미입니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 구현체가 있는 것이고, 구현을 안했으면 `nil` 입니다.
 
 [^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수인 매개 변수 (throwing function parameter)' 를 의미합니다.
 
@@ -1280,7 +1280,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^designated-initializers]: 여기서 '초기자' 가 아니라 '지명 초기자' 라고 한 것은, 재정의한 초기자가 상위 클래스에서 '지명 초기자' 이든 '편의 초기자' 이든, 재정의하고 나면 무조건 '지명 초기자' 가 되기 때문입니다.
 
-[^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로 추측됩니다.
+[^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말합니다.
 
 [^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 
@@ -1292,9 +1292,9 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^any-type]: 여기서의 'Any Type' 은 스위프트에 있는 '`Any` 타입' 과는 다른 의미로 사용한 것입니다.
 
-[^enumeration-get-only]: 이 말은 아래 예제를 참고하면 열거체에서 `case someValue` 라고 하면 프로토콜에 있는 `static var someValue: Self { get }` 이라는 필수 조건을 만족하게 된다는 의미입니다.
+[^enumeration-get-only]: 아래 예제의 열거체에서 `case someValue` 가 프로토콜의 `static var someValue: Self { get }` 이라는 필수 조건을 만족한다는 의미입니다.
 
-[^enumeration-function]: 마찬가지로, 이 말도 아래 예제를 참고하면, 열거체에서 `case someFuntion(x: Int)` 라고 하면 프로토콜에 있는 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족하게 된다는 의미입니다.
+[^enumeration-function]: 아래 예제의 열거체에서 `case someFuntion(x: Int)` 가 프로토콜의 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족한다는 의미입니다. [Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)](#enumerations-with-cases-of-any-type-어떤-타입이든-되는-case-값-을-가진-열거체) 에서 설명한 것처럼, '결합 값을 가진 열거체 case 값' 은 함수처럼 사용할 수 있기 때문입니다.
 
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
 
