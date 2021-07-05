@@ -840,15 +840,15 @@ _초기자 선언 (initializer declaration)_ 은 프로그램에 클래스, 구�
 
 _실패 가능 초기자 (failable initializer)_ 는 초기자를 선언한 타입의 '옵셔널 인스턴스' 나 '암시적으로 포장을 푸는 (implicitly unwrapped) 옵셔널 인스턴스' 를 만드는 초기자입니다. 그 결과, '실패 가능 초기자' 는 초기화의 실패를 지시하는 `nil` 을 반환할 수 있습니다.
 
-'옵셔널 인스턴스' 를 생산하는 '실패 가능 초기자' 를 선언하려면, 초기자 선언에 있는 `init` 키워드에 물음표를 추가합니다 (`init?`). '암시적으로 포장을 푸는 옵셔널 인스턴스' 를 생산하는 '실패 가능 초기자' 를 선언하려면, 느낌표를 대신 추가합니다 (`init!`). 아래 예제는 구조체에 대한 옵셔널 인스턴스를 생산하는 '`init?` 실패 가능 초기자' 를 보여줍니다.
+'옵셔널 인스턴스' 를 만드는 '실패 가능 초기자' 를 선언하려면, 초기자 선언에 있는 `init` 키워드에 물음표를 (`init?` 처럼) 덧붙입니다. '암시적으로 포장을 푸는 옵셔널 인스턴스' 를 만드는 '실패 가능 초기자' 를 선언하려면, 그 대신 느낌표를 (`init!` 처럼) 덧붙입니다. 아래 예제는 '구조체의 옵셔널 인스턴스' 를 만드는 `init?` 이라는 실패 가능 초기자를 보여줍니다.
 
 ```swift
 struct SomeStruct {
   let property: String
-  // 'SomeStruct' 의 옵셔널 인스턴스를 생산합니다.
+  // 'SomeStruct' 의 옵셔널 인스턴스를 만듦
   init?(input: String) {
     if input.isEmpty {
-      // 'self' 를 버리고 'nil' 을 반환합니다.
+      // 'self' 를 버리고 'nil' 을 반환함
       return nil
     }
     property = input
@@ -856,13 +856,13 @@ struct SomeStruct {
 }
 ```
 
-`init?` 실패 가능 초기자는, 반드시 결과의 '옵셔널 성질 (optionality)' 을 다뤄야 한다는 것만 빼면, '실패하지 않는 초기자' 의 호출과 똑같은 방식으로 호출할 수 있숩나다.
+`init?` 이라는 실패 가능 초기자는, 반드시 결과의 '옵셔널성 (optionality)' 을 다룬다는 것만 제외하면, '실패하지 않는 초기자' 의 호출과 똑같은 방식으로 호출할 수 있습니다.
 
 ```swift
 if let actualInstance = SomeStruct(input: "Hello") {
-  // 'SomeStruct' 의 인스턴스로 뭔가를 합니다.
+  // 'SomeStruct' 인스턴스로 뭔가를 합니다.
 } else {
-  // 'SomeStruct' 의 초기화를 실패했으며 초기자가 'nil' 을 반환했습니다.
+  // 'SomeStruct' 초기화를 실패하여 초기자가 'nil' 을 반환했습니다.
 }
 ```
 
