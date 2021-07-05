@@ -569,7 +569,7 @@ enum GamePlayMode: String {
 
 위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"`, `GamePlayMode.individual` 의 원시 값은 `"individual"`, 그리고 `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
 
-'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능한 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능한 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
+'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
 
 #### Accessing Enumeration Cases (열거체의 'case 값' 에 접근하기)
 
@@ -752,7 +752,7 @@ protocol SomeProtocol: AnyObject {
 
 프로토콜은 프로토콜 선언 본문에 '프로토콜 초기자 선언' 을 포함함으로써 '준수 타입' 이 초기자를 반드시 구현해야 한다고 선언합니다. '프로토콜 초기자 선언' 은, 초기자 본문을 포함하지 않는다는 것만 제외하면, 초기자 선언과 형식이 똑같습니다.
 
-준수 타입은 '실패하지 않는 (nonfailable) 초기자' 또는 `init!` 형식의 '실패 가능한 (failable) 초기자' 를 구현함으로써 '실패하지 않는 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다. 준수 타입이 어떤 종류의 초기자든 구현하기만 하면 '실패 가능한 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다.
+준수 타입은 '실패하지 않는 (nonfailable) 초기자' 또는 `init!` 형식의 '실패 가능 (failable) 초기자' 를 구현함으로써 '실패하지 않는 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다. 준수 타입이 어떤 종류의 초기자든 구현하기만 하면 '실패 가능 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다.
 
 이미 '`final` 선언 수정자' 로 표시한 클래스가 아니라면, 프로토콜의 '초기자 필수 조건' 을 만족하는 초기자를 클래스가 구현할 때는, 초기자를   반드시 '`required` 선언 수정자' 로 표시해야 합니다.
 
@@ -856,7 +856,7 @@ struct SomeStruct {
 }
 ```
 
-`init?` 실패 가능한 초기자는, 반드시 결과의 '옵셔널 성질 (optionality)' 을 다뤄야 한다는 것만 빼면, '실패하지 않는 초기자' 의 호출과 똑같은 방식으로 호출할 수 있숩나다.
+`init?` 실패 가능 초기자는, 반드시 결과의 '옵셔널 성질 (optionality)' 을 다뤄야 한다는 것만 빼면, '실패하지 않는 초기자' 의 호출과 똑같은 방식으로 호출할 수 있숩나다.
 
 ```swift
 if let actualInstance = SomeStruct(input: "Hello") {
@@ -866,15 +866,15 @@ if let actualInstance = SomeStruct(input: "Hello") {
 }
 ```
 
-실패 가능한 초기자는 초기자를 구현하는 본문의 어느 시점에서도 `nil` 을 반환할 수 있습니다.
+실패 가능 초기자는 초기자를 구현하는 본문의 어느 시점에서도 `nil` 을 반환할 수 있습니다.
 
-실패 가능한 초기자는 어떤 종류의 초기자로도 위임할 수 있습니다. '실패하지 않는 초기자' 는 또 다른 실패하지 않는 초기자 또는 `init!` 실패 가능한 초기자로 위임할 수 있습니다. 실패하지 않는 초기자는 상위 클래스 초기자의 결과를 '강제-포장풀기 (force-unwrapping)' 하는 것으로써 `init?` 실패 가능한 초기자로 위임할 수 있습니다-예를 들어, `super.init()!` 처럼 작성합니다.
+실패 가능 초기자는 어떤 종류의 초기자로도 위임할 수 있습니다. '실패하지 않는 초기자' 는 또 다른 실패하지 않는 초기자 또는 `init!` 실패 가능 초기자로 위임할 수 있습니다. 실패하지 않는 초기자는 상위 클래스 초기자의 결과를 '강제-포장풀기 (force-unwrapping)' 하는 것으로써 `init?` 실패 가능 초기자로 위임할 수 있습니다-예를 들어, `super.init()!` 처럼 작성합니다.
 
-'초기화 실패 (initialization failure)' 는 초기자 위임을 통하여 전파됩니다. 특히, '실패 가능한 초기자' 가 위임한 초기자가 실패하고 `nil` 을 반환한 경우, 이 때는 위임을 맡긴 초기자 역시 실패하고 암시적으로 `nil` 을 반환합니다. 실패하지 않는 초기자가 위임한 '`init!` 실패 가능한 초기자' 가 실패하고 `nil` 을 반환한 경우, 이 때는 실행 시간 에러가 발생합니다 (이는 `nil` 값을 가진 옵셔널의 포장을 풀려고 `!` 연산자를 사용한 것과 같습니다).
+'초기화 실패 (initialization failure)' 는 초기자 위임을 통하여 전파됩니다. 특히, '실패 가능 초기자' 가 위임한 초기자가 실패하고 `nil` 을 반환한 경우, 이 때는 위임을 맡긴 초기자 역시 실패하고 암시적으로 `nil` 을 반환합니다. 실패하지 않는 초기자가 위임한 '`init!` 실패 가능 초기자' 가 실패하고 `nil` 을 반환한 경우, 이 때는 실행 시간 에러가 발생합니다 (이는 `nil` 값을 가진 옵셔널의 포장을 풀려고 `!` 연산자를 사용한 것과 같습니다).
 
-'실패 가능한 지명 초기자' 는 하위 클래스에 있는 모든 종류의 지명 초기자로 '재정의 (overridden)' 될 수 있습니다. '실패하지 않는 지명 초기자' 는 하위 클래스에 있는 '실패하지 않는 지명 초기자' 로만 재정의될 수 있습니다.
+'실패 가능 지명 초기자' 는 하위 클래스에 있는 모든 종류의 지명 초기자로 '재정의 (overridden)' 될 수 있습니다. '실패하지 않는 지명 초기자' 는 하위 클래스에 있는 '실패하지 않는 지명 초기자' 로만 재정의될 수 있습니다.
 
-더 자세한 정보 및 실패 가능한 초기자에 대한 예제는, [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 를 참고하기 바랍니다.
+더 자세한 정보 및 실패 가능 초기자에 대한 예제는, [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 를 참고하기 바랍니다.
 
 > GRAMMAR OF AN INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID375)
 
