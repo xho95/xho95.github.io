@@ -113,7 +113,7 @@ categories: Swift Language Grammar Revision History
 * 스위프트 3.1 에서 갱신한 것.
 * '필수 조건 (requirements)' 을 포함한 '익스텐션 (extensions)' 에 대한 정보가 있는 [Extensions with a Generic Where Clause ('일반화 where 절' 을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절을-가진-익스텐션) 부분을 추가함.
 * '범위 (range)' 에 동작을 반복시키는 것에 대한 예제를 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분에 추가함.
-* 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 부분에 추가함.
+* 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 부분에 추가함.
 * `available` 특성을 스위프트 언어 버전에 사용하는 것에 대하여 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 정보를 추가함.
 * '인자 이름표 (argument labels)' 는 함수 타입을 작성할 때는 허용되지 않는다는 것에 주목하기 위해 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분에 있는 논의를 갱신함.
 * [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분에 있는 '스위프트 언어의 버전 번호' 에 대한 논의를 갱신했으며, 이제 선택적인 '땜빵 번호 (patch number)' 를 허용합니다.
@@ -169,7 +169,7 @@ categories: Swift Language Grammar Revision History
 * 이름이 다른 것이라곤 인자 이름뿐인 메소드와 초기자를 구별하는 방법에 대한 정보를 [Explicit Member Expression (명시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적인-멤버-표현식) 부분에 추가함.
 * 오브젝티브-C '선택자 (selectors)' 를 위한 `#selector` 구문 표현에 대한 정보를 [Selector Expression (선택자 표현식)]({% post_url 2020-08-19-Expressions %}#selector-expression-선택자-표현식) 부분에 추가함.
 * [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 과 [Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)]({% post_url 2020-08-15-Declarations %}#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 부분에서 `associatedtype` 키워드를 사용하기 위한 '결합 타입 (associated types)' 에 대한 논의를 갱신함.
-* [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 부분에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 갱신함.
+* [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 부분에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 갱신함.
 * '튜플 (tuples)' 을 비교하는 것에 대한 정보를 [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 부분에 추가함.
 * 키워드를 외부 매개 변수 이름으로 사용하는 것에 대한 정보를 [Keywords and Punctuation (키워드와 문장 부호)]({% post_url 2020-07-28-Lexical-Structure %}#keywords-and-punctuation-키워드와-문장-부호) 부분에 추가함.
 * 열거체와 열거체 'case 값' 이 `@objc` 특성을 사용할 수 있다는 것에 주목하기 위해 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 있는 논의를 갱신함.
@@ -262,11 +262,11 @@ categories: Swift Language Grammar Revision History
 #### 2014-10-16
 
 * 스위프트 1.1 에서 갱신한 것.
-* [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에 온전한 전체 지침을 추가함.
-* 프로토콜의 [Failable Initializer Requirements (실패 가능한 초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#failable-initializer-requirements-실패-가능한-초기자-필수-조건) 에 대한 설명을 추가함.
+* [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 에 온전한 전체 지침을 추가함.
+* 프로토콜의 [Failable Initializer Requirements (실패 가능 초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#failable-initializer-requirements-실패-가능-초기자-필수-조건) 에 대한 설명을 추가함.
 * `Any` 타입인 상수와 변수는 이제 함수 인스턴스를 가질 수 있음. `switch` 문 내에서 함수 타입을 검사하고 변환하는 방법을 보여주기 위해 [Type Casting for Any and AnyObject ('Any' 와 'AnyObject' 를 위한 타입 변환)]({% post_url 2020-04-01-Type-Casting %}#type-casting-for-any-and-anyobject-any-와-anyobject-를-위한-타입-변환) 에 있는 예제를 갱신함.
 * '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능한 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-값-을-가지는-열거체) 를 참고하기 바랍니다.
-* 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자) 에 대하여 새로운 기준 부분을 추가함.
+* 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자) 에 대하여 새로운 기준 부분을 추가함.
 * 사용자 정의 연산자는 이제 `?` 문자를 가질 수 있음. 개정된 규칙을 설명하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 의 기준을 갱신함. [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 에서 유효한 연산자 문자 집합에 대한 중복된 설명을 제거함.
 
 #### 2014-08-18

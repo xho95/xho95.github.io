@@ -300,7 +300,7 @@ case .suppressed:
 
 `return` 문 뒤에 표현식이 있을 때는, 표현식의 값을 호출 함수 또는 메소드로 반환합니다. 만약 표현식의 값이 함수나 메소드 선언에서 선언한 반환 타입의 값과 일치하지 않으면, 호출 함수나 메소드로 반환하기 전에 표현식의 값을 반환 타입으로 변환합니다.
 
-> [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자) 에서 설명한 것처럼, '실패 가능한 초기자' 에서 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하면 초기화의 실패를 지시할 수 있습니다.
+> [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자) 에서 설명한 것처럼, '실패 가능 초기자' 에서 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하면 초기화의 실패를 지시할 수 있습니다.
 
 `return` 문 뒤에 표현식이 없을 때는, 값을 반환하지 않는 함수나 메소드의 반환에서 (즉, 함수나 메소드의 반환 타입이 `Void` 나 `()` 일 때) 만 사용할 수 있습니다.
 

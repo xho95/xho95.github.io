@@ -275,7 +275,7 @@ let possiblePlanet = Planet(rawValue: 7)
 
 하지만, 가능한 모든 `Int` 값마다 일치하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '원시 값 초기자 (raw value initializer)' 는 항상 _옵셔널 (optional)_ '열거체 case 값' 을 반환합니다. 위 예제에서, `possiblePlanet` 는 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
 
-> '원시 값 초기자' 는 '실패 가능한 (failable) 초기자' 인데, 모든 '원시 값' 마다 '열거체 case 값' 을 반환하는 것은 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능한 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능한-초기자)[^failable-initializer] 를 참고하기 바랍니다.
+> '원시 값 초기자' 는 '실패 가능 (failable) 초기자' 인데, 모든 '원시 값' 마다 '열거체 case 값' 을 반환하는 것은 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 참고하기 바랍니다.
 
 `11` 번 째 위치의 행성을 찾으려고 하면, '원시 값 초기자' 가 반환하는 '옵셔널 `Planet`' 값은 `nil` 일 것입니다:
 
@@ -365,7 +365,7 @@ print(evaluate(product))
 
 [^variants]: 사실상, 이 세가지 용어는 같은 것입니다. 각각에 대한 더 자세한 정보는 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 을 의미하기 때문에 이 둘은 서로 항목이 나뉘지도 않았습니다.
 
-[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값을 가진 열거체를 위한 실패 가능한 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값을-가진-열거체를-위한-실패-가능한-초기자) 에서도 설명하고 있습니다.
+[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값을 가진 열거체를 위한 실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값을-가진-열거체를-위한-실패-가능한-초기자) 에서도 설명하고 있습니다.
 
 [^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 참고하기 바랍니다.
 
