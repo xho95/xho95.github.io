@@ -47,7 +47,7 @@ categories: Swift Language Grammar Revision History
 * 클래스, 구조체, 및 열거체의 인스턴스를 '함수 호출 구문 표현' 에서 사용할 수 있게 하는 '수월한 구문 표현 (syntatic sugar)' 에 대한 정보를 가지고 있는 [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 부분을 추가함.
 * [Subscript Options (첨자 연산의 옵션들)]({% post_url 2020-03-30-Subscripts %}#subscript-options-첨자-연산의-옵션들) 부분을 갱신했으며, 이제 '첨자 연산'이 '기본 값' 을 가지는 매개 변수를 지원함.
 * [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-self-타입) 부분을 갱신했으며, 이제 `Self` 를 더 많은 상황에서 사용할 수 있음.
-* '암시적으로 포장이 풀리는 옵셔널 값' 은 '옵셔널 값' 으로든 '옵셔널-아닌 값' 으로든 사용할 수 있다는 것을 확실히 하기 위해 [Implicitly Unwrapped Optionals (암시적으로 포장이 풀리는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장이-풀리는-옵셔널) 부분을 갱신함.
+* '암시적으로 포장을 푸는 옵셔널 값' 은 '옵셔널 값' 으로든 '옵셔널-아닌 값' 으로든 사용할 수 있다는 것을 확실히 하기 위해 [Implicitly Unwrapped Optionals (암시적으로 포장을 푸는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장을-푸는-옵셔널) 부분을 갱신함.
 
 #### 2019-09-10
 
