@@ -882,17 +882,17 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 _정리자 선언 (deinitializer declaration)_ 은 클래스 타입에 대한 '정리자' 를 선언합니다. '정리자' 는 매개 변수를 취하지 않으며 형식은 다음과 같습니다:
 
-deinit {<br />
-  `statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;deinit {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-정리자는 더 이상 클래스 객체에 대한 어떤 참조도 존재하지 않을 때, 클래스 객체가 할당 해제되기 바로 직전에, 자동으로 호출됩니다. 정리자는 클래스 선언의 본문-그러나 클래스의 '익스텐션 (extension)' 은 아닌 곳-에서만 선언할 수 있으며 각 클래스마다 최대 하나만 가질 수 있습니다.
+정리자는, 클래스 객체를 해제하기 직전에, 더 이상 클래스 객체에 대한 어떤 참조도 없을 때 자동으로 호출합니다. 정리자는-클래스 익스텐션이 아닌-클래스 선언 본문에서만 선언할 수 있으며 클래스마다 최대 하나만 가질 수 있습니다.
 
-하위 클래스는 상위 클래스의 정리자를 상속받는데, 이는 하위 클래스 객체가 할당 해제되기 바로 직전에 암시적으로 호출됩니다. 하위 클래스 객체는 '상속 연쇄망 (inheritance chain)' 에 있는 모든 정리자가 실행을 마치기 전까지 할당이 해제되지 않습니다.
+하위 클래스는 상위 클래스의 정리자를 상속하는데, 이는 하위 클래스 객체를 해제하기 직전에 암시적으로 호출합니다. '하위 클래스 객체' 는 자신의 '상속 사슬 (inheritance chain)' 에 있는 모든 정리자의 실행을 종료할 때까지 해제되지 않습니다.
 
-정리자는 직접 호출하는 것이 아닙니다.
+정리자는 직접 호출하지 않습니다.
 
-클래스 선언에서 정리자를 사용하는 방법에 대한 예제는, [Deinitialization (객체 정리)]({% post_url 2017-03-03-Deinitialization %}) 를 참고하기 바랍니다.
+클래스 선언에서 정리자를 사용하는 방법에 대한 예제는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다.
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
 
@@ -900,9 +900,9 @@ deinit {<br />
 
 _익스텐션 (확장) 선언 (extension declaration)_ 은 기존 타입의 작동 방식을 확장하도록 합니다. '익스텐션 선언' 은 `extension` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
 
-extension `type name-타입 이름` where `requirements-필수 조건` {<br />
-  `declarations-선언`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;extension `type name-타입 이름` where `requirements-필수 조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 익스텐션 선언의 본문은 '0' 개 이상의 _선언 (declarations)_ 을 가집니다. 이 _선언 (declarations)_ 들은 계산 속성, 계산 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산 선언, 그리고 심지어 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. '익스텐션 (extension) 선언' 은 정리자 또는 프로토콜 선언, 저장 속성, 속성 관찰자, 및 다른 '익스텐션 선언' 을 가질 수 없습니다. '프로토콜 익스텐션' 에 있는 선언들은 `final` 이라고 표시할 수 없습니다. 다양한 종류의 선언을 포함하고 있는 '익스텐션' 에 대한 논의 및 예제에 대해서는, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 
@@ -916,9 +916,9 @@ _타입 이름 (type name)_ 이 클래스, 구조체, 또는 열거체 타입인
 
 '익스텐션 선언' 은 _채택한 프로토콜 (adopted protocols)_ 들을 지정하여 기존 클래스, 구조체, 또는 열거체에 '프로토콜 준수성 (protocol conformance)' 을 추가할 수 있습니다:
 
-extension `type name-타입 이름`: `adopted protocols-채택한 프로토콜` where `requirements-필수 조건` {<br />
-  `declarations-선언`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;extension `type name-타입 이름`: `adopted protocols-채택한 프로토콜` where `requirements-필수 조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 '익스텐션 선언' 은 기존 클래스에 '클래스 상속' 을 추가할 수는 없으며, 따라서 _타입 이름 (type name)_ 과 콜론 뒤에 프로토콜 목록만을 지정할 수 있습니다.
 
