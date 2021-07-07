@@ -991,13 +991,13 @@ doSomething(with: oneAndTwo)
 
 `doSomething(_:)` 으로 전달한 인스턴스의 `log()` 를 호출할 때는, '기록 (logged) 문자열' 에서 '사용자가 정한 제목 (customized title)' 을 생략합니다.
 
-#### Protocol Conformance Must Not Be Redundant (프로토콜 준수성은 반드시 과잉하지 않아야 합니다)
+#### Protocol Conformance Must Not Be Redundant (프로토콜 준수성은 반드시 과잉이지 않아야 합니다)
 
-'고정 (concrete) 타입' 은 특별한 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 '과잉인 프로토콜 준수성' 을 에러라고 표시합니다. 이런 종류의 에러는 두 가지 상황에서 마주칠 것 같습니다. 첫 번째 상황은, 서로 다른 '필수 조건' 을 가진, 동일한 프로토콜을 명시적으로 여러 번 준수할 때 입니다. 두 번째 상황은 동일한 프로토콜을 암시적으로 여러 번 상속할 때 입니다. 이 상황을 아래 부분에서 논의합니다.
+'고정 (concrete) 타입' 은 특별한 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 '과잉인 프로토콜 준수성' 을 에러라고 표시합니다. 이런 종류의 에러는 두 가지 상황에서 마주치게 됩니다. 첫 번째 상황은, 서로 다른 '필수 조건' 을 가진, 동일한 프로토콜을 명시적으로 여러 번 준수할 때 입니다. 두 번째 상황은 동일한 프로토콜을 암시적으로 여러 번 상속할 때 입니다. 아래 부분에서 이 상황들을 논의합니다.
 
-**Resolving Explicit Redundancy (명시적인 과잉 문제 해결하기)**
+**Resolving Explicit Redundancy (명시적인 과잉 해결하기)**
 
-구체적으로 고정된 타입에 대한 '다중 확장 (extension)' 은, 그 '확장 (extension)' 의 필수 조건이 서로 배타적이더라도, 똑같은 프로토콜에 대한 준수성을 추가할 수 없습니다. 이런 제약 조건은 아래 예제에서 증명해 보입니다. 두 '확장 (extension) 선언' 은 `Serializable` 프로토콜에 조건부 준수성을 추가하려고 시도하는데, 하나는 `Int` 원소를 가지는 배열에 대한 것이고, 다른 하나는 `String` 원소를 가지는 배열에 대한 것입니다.
+'고정 타입' 에 대한 여러 개의 '익스텐션' 은, '익스텐션의 필수 조건' 이 '상호 배타적 (mutually exclusive)' 인 경우에도, 동일한 프로토콜에 '준수성' 을 추가할 순 없습니다. 이 '제약 사항' 은 아래 예제에서 실증합니다. 두 '익스텐션 선언' 이 `Serializable` 프로토콜에 '조건부 준수성' 을 추가하려고 하는데, 하나는 `Int` 원소를 가진 배열을 위한 것이고, 다른 하나는 `String` 원소를 가진 배열을 위한 것입니다.
 
 ```swift
 protocol Serializable {
@@ -1017,7 +1017,7 @@ extension Array: Serializable where Element == String {
 // 에러: 'Array<Element>' 가 'Serializable' 프로토콜을 과잉 준수함
 ```
 
-여러 개의 고정 타입을 기초로 하여 '조건부 준수성' 을 추가할 필요가 있는 경우, 각각의 타입이 준수할 수 있는 새로운 프로토콜을 생성하고 '조건부 준수성' 을 선언할 때 해당 프로토콜을 '필수 조건' 처럼 사용하면 됩니다.
+여러 개의 '고정 타입' 을 기초로 '조건부 준수성' 을 추가할 필요가 있으면, 각각의 타입이 준수할 수 있는 새로운 프로토콜을 생성한 다음 '조건부 준수성' 을 선언할 때 '해당 프로토콜' 을 '필수 조건' 으로 사용합니다.
 
 ```swift
 protocol SerializableInArray { }
@@ -1031,13 +1031,13 @@ extension Array: Serializable where Element: SerializableInArray {
 }
 ```
 
-**Resolving Implicit Redundancy (암시적인 과잉 문제 해결하기)**
+**Resolving Implicit Redundancy (암시적인 과잉 해결하기)**
 
-구체적으로 고정된 타입이 프로토콜을 조건부로 준수할 때, 해당 타입은 같은 필수 조건을 가지는 부모 프로토콜은 어떤 것이든 암시적으로 준수합니다.
+'고정 타입' 이 프로토콜을 조건부로 준수할 때는, 해당 타입이 '동일한 필수 조건을 가진 어떤 부모 프로토콜' 이든 암시적으로 준수합니다.
 
-단일 부모를 상속하는 두 프로토콜을 조건부로 준수하는 타입이 필요한 경우, 부모 프로토콜에 대한 준수를 명시적으로 선언합니다. 이렇게 하면 서로 다른 필수 조건을 가지는 부모 프로토콜을 암시적으로 두 번 준수하는 것을 피하게 됩니다.
+'단일 부모를 상속하는 두 프로토콜' 을 조건부로 준수하는 타입이 필요한 경우, '부모 프로토콜에 대한 준수성' 을 명시적으로 선언합니다. 이는 '서로 다른 필수 조건을 가지는 부모 프로토콜' 을 암시적으로 두 번 준수하는 걸 피하게 합니다.
 
-다음 예제는 `TitledLoggable` 및 새로운 `MarkedLoggable` 프로토콜 둘 모두에 대한 조건부 준수성를 선언할 때의 충돌을 피하기 위해 `Loggable` 에 대한 '조건부 준수성' 을 `Array` 에 명시적으로 선언한 것입니다.
+다음 예제는 '`TitledLoggable` 과 새로운 `MarkedLoggable` 프로토콜에 대한 조건부 준수성 둘 다를 선언' 할 때의 충돌을 피하고자 '`Loggable` 에 대한 조건부 준수성' 을 명시적으로 `Array` 에 선언합니다.
 
 ```swift
 protocol MarkedLoggable: Loggable {
@@ -1060,7 +1060,7 @@ extension Array: TitledLoggable where Element: TitledLoggable {
 extension Array: MarkedLoggable where Element: MarkedLoggable { }
 ```
 
-`Loggable` 에 대한 '조건부 준수' 를 명시적으로 선언하는 '확장 (extension)' 이 없다면, 다른 `Array` '확장 (extension)' 이 이 선언들을 암시적으로 생성하하게 될 것이고, 에러로 귀결될 것입니다:
+'`Loggable` 에 대한 조건부 준수성' 을 명시적으로 선언하는 '익스텐션' 없이는, 다른 `Array` 익스텐션들이 이 선언을 암시적으로 생성할 것이고, 에러가 되버립니다:
 
 ```swift
 extension Array: Loggable where Element: TitledLoggable { }
