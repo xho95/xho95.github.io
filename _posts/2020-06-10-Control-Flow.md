@@ -191,7 +191,7 @@ repeat {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } while `condition-조건`<br />
 
-다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문과 정확하게 똑같은 방법으로 초기화합니다.
+다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문에서와 정확하게 똑같은 방식으로 초기화합니다.
 
 ```swift
 let finalSquare = 25

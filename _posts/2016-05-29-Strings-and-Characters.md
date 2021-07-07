@@ -639,7 +639,7 @@ print("")
 
 다섯 번째이자 최종인 `UnicodeScalar` 의 `value` 속성, `128054`, 는 16-진 값 `1F436` 와 동치인 10-진 값으로, `DOG FACE` 문자에 대한 '유니코드 크기 값' `U+1F436` 을 표현합니다.
 
-이 `value` 속성의 조회를 대신하여, 각 `UnicodeScalar` 값 자체도 새로운 `String` 값을 생성하기 위해, '문자열 보간법' 에서 처럼, 사용할 수 있습니다:
+`value` 속성을 조회하는 것의 대안으로, 새로운 `String` 값을 생성하기 위해, '문자열 보간법' 에서 처럼, 각각의 `UnicodeScalar` 값을 사용할 수도 있습니다:
 
 ```swift
 for scalar in dogString.unicodeScalars {

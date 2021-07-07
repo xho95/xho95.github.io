@@ -452,7 +452,7 @@ _딕셔너리 (dictionary)_ 는 똑같은 타입인 키들과 똑같은 타입�
 
 #### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
 
-배열에서 처럼, 빈 `Dictionary`  '초기자 구문 표현 (initializer syntax)' 을 사용하여 생성할 수 있습니다:
+배열에서 처럼, '초기자 구문 (initializer syntax)' 을 사용함으로써 정해진 타입의 빈 `Dictionary` 를 생성할 수 있습니다:
 
 ```swift
 var namesOfIntegers = [Int: String]()
