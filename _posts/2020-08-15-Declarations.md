@@ -1072,20 +1072,20 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 ### Subscipt Declaration (첨자 연산 선언)
 
-_첨자 연산 선언 (subscript declaration)_ 은 특정 타입의 객체에 대한 '첨자 연산 보조 기능' 을 추가하도록 하며 이는 전통적으로 '집합체 (collection)', '리스트 (list)', 및 '수열 (sequence)' 에 있는 원소의 접근에 대한 '편의 구문 표현 (convenient syntax)' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+_첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가 '첨자 연산 기능' 을 지원하도록 하며 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 원소의 접근을 위한 '편의 (convenient) 구문' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드로 선언하며 형식은 다음과 같습니다:
 
-subscript (`parameters-매개 변수`) -> `return type-반환 타입` {<br />
-  get {<br />
-    `statements-구문`<br />
-  }<br />
-  set(`setter name-설정자 이름`) {<br />
-    `statements-구문`<br />
-  }<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;subscript (`parameters-매개 변수`) -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set(`setter name-설정자 이름`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-'첨자 연산 선언' 은 클래스, 구조체 선언, 열거체, '확장 (extension)', 또는 '프로토콜 선언' 인 상황에서만 쓸 수 있습니다.
+'첨자 연산 선언' 은 클래스, 구조체, 열거체, 익스텐션, 또는 프로토콜 선언 안에서만 있을 수 있습니다.
 
-_'paramter-매개 변수'_ 는 '첨자 연산 표현식' 에 관련된 타입의 원소에 접근하는 색인을 하나 이상의 지정하는데 사용됩니다 (예를 들어, `object[i]` 표현식의 `i` 같은 것입니다). 원소 접근에 필요한 색인은 어떤 타입이어도 상관없지만, 각 매개 변수는 각각의 색인 타입을 지정하기 위한 '타입 보조 설명' 을 반드시 포함해야 합니다. _'return type-반환 타입'_ 은 접근하고 있는 원소의 타입을 지정합니다.
+_매개 변수 (paramter)_ 는 '첨자 연산 표현식' 에 있는 관련 타입의 (예를 들어, `object[i]` 라는 표현식의 `i` 같은) 원소에 접근하기 위한 1개 이상의 색인을 지정합니다. 원소 접근에 사용하는 색인은 어떤 타입이든 되긴 하지만, 각각의 매개 변수는 반드시 각 색인 타입을 지정하는 '타입 보조 설명' 을 포함해야 합니다. _반환 타입 (return type)_ 은 접근하는 원소의 타입을 지정합니다.
 
 '계산 속성' 이 그런 것처럼, 첨자 연산 선언은 접근한 원소의 값에 대한 읽기와 쓰기 기능을 지원합니다. '획득자 (getter)' 는 값을 읽는 데 사용되며, '설정자 (setter)' 는 값을 쓰는 데 사용됩니다. '설정자 (setter) 절' 은 선택 사항이며, '획득자 (getter)' 만 필요할 때, 두 구절을 모두 생략하여 요청받은 값을 직접 반환 할 수도 있습니다. 그렇다 하더라도, '획득자 (setter) 절' 을 제공할 경우, 반드시 '획득자 (getter) 절' 도 제공해야 합니다.
 
@@ -1245,6 +1245,10 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 '접근 제어' 라는 용도를 위해서, 같은 파일에 있는 같은 타입에 대한 '익스텐션 (extensions)' 은 접근-제어 영역을 공유합니다. 확장하는 타입 역시 같은 파일에 있다면, 타입의 접근-제어 영역을 공유합니다. 타입의 선언에서 선언한 '개인 전용 (private)' 멤버는 '익스텐션' 에서 접근할 수 있으며, 한 '익스텐션' 에서 선언한 '개인 전용' 멤버는 다른 '익스텐션' 및 타입의 선언에서 접근할 수 있습니다.
 
 위에 있는 각각의 접근-수준 수정자는, `set` 키워드를 괄호로 감싸서 구성한 (예를 들어, `private(set)` 같은), 단일 인자를 선택적으로 받을 수 있습니다. 이 형태의 접근-제어 수정자는, [Getters and Setters ('획득자' 와 '설정자')]({% post_url 2020-04-28-Access-Control %}#getters-and-setters-획득자-와-설정자) 에서 설명한 것처럼, 변수나 첨자 연산의 '설정자 (setter)' 에 대한 접근 수준을 변수나 첨자 연산 그 자체의 접근 수준보다 낮거나 같도록 지정하고 싶을 때 사용합니다.
+
+### 다음 장
+
+[Attributes (특성) > ]({% post_url 2020-08-14-Attributes %})
 
 ### 참고 자료
 
