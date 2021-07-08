@@ -1143,20 +1143,20 @@ _접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 �
 
 ### Precedence Group Declaration (우선 순위 그룹 선언)
 
-_우선 순위 그룹 선언 (precedence group declaration)_ 은 '중위 연산자' 의 우선 순위에 대한 새로운 '그룹 방식 (grouping)' 을 프로그램에 도입합니다. 연산자의 우선 순위는, '괄호로 그룹지은 것 (grouping parentheses)' 이 없을 때, 연산자가 피연산자에 얼마나 꽉 연결되는 지를 지정합니다.
+_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. 연산자 우선 순위는, 그룹짓는 괄호가 없을 때, 연산자와 피연산자의 밀접 연결 정도를 지정합니다.
 
 '우선 순위 그룹 선언' 의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;precedencegroup `precedence group name-우선 순위 그룹 이름` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;higherThan: `lower group names-낮아야 하는 그룹 이름`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowerThan: `higher group names-높아야 하는 그룹 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;higherThan: `lower group names-더 낮은 그룹 이름들`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowerThan: `higher group names-더 높은 그룹 이름들`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;associativity: `associativity-결합성`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assignment: `assignment-할당`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-_lower group names-낮아야 하는 그룹 이름_ 과 _higher group names-높아야 하는 그룹 이름_ 목록은 기존 '우선 순위 그룹' 에 새로운 '우선 순위 그룹' 관계를 지정합니다. `lowerThan` 우선 순위 그룹 특성은 현재 모듈의 외부에서 선언한 우선 순위 그룹을 참조할 때만 사용할 수도 있습니다. `2 + 3 * 5` 라는 표현식에서 처럼, 두 연산자가 피연산자를 두고 서로 경쟁할 때, 상대적으로 더 높은 우선 순위를 가지는 연산자가 피연산자와 더 꽉 연결됩니다.
+_더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 목록은 '새로운 우선 순위 그룹' 과 '기존 우선 순위 그룹' 의 관계를 지정합니다. '`lowerThan` 우선 순위 그룹 특성' 은 현재 모듈 밖에서 선언한 '우선 순위 그룹' 을 참조할 때만 사용할 수도 있습니다. 두 연산자가, `2 + 3 * 5` 라는 표현식과 같이, 자신의 피연산자를 두고 서로 경쟁할 때, '상대적으로 더 높은 우선 순위를 가진 연산자' 가 피연산자와 더 밀접하게 연결됩니다.
 
-> `lower group names` 과 `higher group names` 의 사용으로 서로 관련된 우선 순위 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 에 들어맞아야 하지만, '선형 계층 (linear hierarchy)' 을 형성해야하는 것은 아닙니다. 이는 상대적인 우선 순위가 정의되지 않은 '우선 순위 그룹' 을 가지는 것이 가능함을 의미합니다. 이러한 우선 순위 그룹에 있는 연산자들은 '괄호로 그룹지은 것' 없이 서로 나란히 사용할 수 없습니다.
+> _더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 을 사용하여 서로 관계 맺은 우선 순위 그룹은 반드시 '단일 관계 계층 (relational hierarchy)' 에 들어 맞아야 하지만, '선형 계층 (linear hierarchy) 형태' 는 아니어도 됩니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹' 을 가지는 것이 가능하다는 의미입니다. 이 우선 순위 그룹의 연산자들은 괄호로 그룹짓지 않고는 서로 나란히 사용할 수 없습니다.
 
 스위프트는 표준 라이브러리가 제공하는 연산자와 함께 사용할 수 있는 수많은 '우선 순위 그룹' 을 정의하고 있습니다. 예를 들어, '더하기 (`+`)' 및 '빼기 (`-`)' 연산자는 `AdditionPrecedence` 그룹에 속하고, '곱하기 (`*`)' 및 '나누기 (`/`)' 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리에서 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 바랍니다.
 
