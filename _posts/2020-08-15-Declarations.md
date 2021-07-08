@@ -1115,29 +1115,29 @@ _연산자 선언 (operator declaration)_ 은 프로그램에 새로운 '중위 
 
 다음 형식은 새로운 '중위 연산자' 를 선언합니다:
 
-infix operator `operator name-연산자 이름`: `precedence group-우선 순위 그룹`
+&nbsp;&nbsp;&nbsp;&nbsp;infix operator `operator name-연산자 이름`: `precedence group-우선 순위 그룹`
 
-_중위 연산자 (infix operator)_ 는, 표현식 `1 + 2` 에 있는 친숙한 더하기 연산자 (`+`) 처럼, 두 피연산자 사이에 작성하는 '이항 연산자 (binary operator)' 입니다.
+_중위 연산자 (infix operator)_ 는, 익숙한 `1 + 2` 표현식의 '더하기 연산자 (`+`)' 같이, 두 피연산자 사이에 작성하는 '이항 (binary) 연산자' 입니다.
 
-중위 연산자는 선택적으로 '우선 순위 그룹 (precedence group)' 을 지정할 수 있습니다. 만약 연산자에 대한 우선 순위 그룹을 생략할 경우, 스위프트는 '기본 우선 순위 그룹' 인, `DefaultPrecedence` 를, 사용하는데, 이는 `TernaryPrecedence` 보다 바로 한 단계 높은 우선 순위를 지정합니다. 더 자세한 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 을 참고하기 바랍니다.
+중위 연산자는 옵션으로 '우선 순위 그룹' 을 지정할 수 있습니다. 연산자에서 우선 순위 그룹을 생략하면, 스위프트는, `DefaultPrecedence` 라는, '기본 우선 순위 그룹' 을, 사용하는데, 이는 `TernaryPrecedence` 바로 위의 우선 순위를 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 참고하기 바랍니다.
 
 다음 형식은 새로운 '접두사 연산자' 를 선언합니다:
 
-prefix operator `operator name-연산자 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;prefix operator `operator name-연산자 이름`
 
-_접두사 연산자 (prefix operator)_ 는, 표현식 `!a` 에 있는 '접두사 논리 부정 연산자 (`!`)' 처럼, 피연산자 바로 앞에 작성하는 '단항 연산자 (unary operator)' 입니다.
+_접두사 연산자 (prefix operator)_ 는, `!a` 표현식의 '접두사 논리 부정 (NOT) 연산자 (`!`)' 같이, 자신의 피연산자 바로 앞에 작성하는 '단항 (unary) 연산자' 입니다.
 
-'접두사 연산자 선언' 은 '우선 순위 수준 (predecence level)' 를 지정하지 않습니다. '접두사 연산자' 는 '비결합적 (nonassociative)'[^nonassociative] 입니다.
+'접두사 연산자 선언' 은 '우선 순위 수준 (predecence level)' 를 지정하지 않습니다. '접두사 연산자' 는 '비-결합적 (nonassociative)'[^nonassociative] 입니다.
 
 다음 형식은 새로운 '접미사 연산자' 를 선언합니다:
 
-postfix operator `operator name-연산자 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;postfix operator `operator name-연산자 이름`
 
-_접미사 연산자 (postfix operator)_ 는, 표현식 `a!` 에 있는 '강제-포장 풀기 연산자 (`!`)' 처럼, 피연산자 바로 뒤에 작성하는 '단항 연산자 (unary operator)' 입니다.
+_접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 풀기 연산자 (`!`)' 같이, 자신의 피연산자 바로 뒤에 작성하는 '단항 (unary) 연산자' 입니다.
 
-접두사 연산자에서와 같이, '접미사 연산자 선언' 은 '우선 순위 수준' 을 지정하지 않습니다. '접미사 연산자' 는 '비결합적 (nonassociative)'[^nonassociative] 입니다.
+접두사 연산자에서 처럼, '접미사 연산자 선언' 은 '우선 순위 수준' 을 지정하지 않습니다. '접미사 연산자' 도 '비-결합적 (nonassociative)'[^nonassociative] 입니다.
 
-새로운 연산자를 선언한 후, 이 연산자와 같은 이름을 가지는 '정적 메소드' 를 선언하는 것으로써 이를 구현합니다. '정적 메소드' 는 연산자가 인자로 취하는 그 값의 타입 중 하나에 대한 멤버입니다-예를 들어, `Double` 에 `Int` 를 곱하는 연산자는 `Double` 또는 `Int` 구조체 중 하나에 대한 '정적 메소드' 로 구현됩니다. 접두사 연산자나 접미사 연산자를 구현하고 있는 경우, 해당 메소드 선언 역시 반드시 그와 연관된 `prefix` 또는 `postfix` 선언 수정자로 표시해야 합니다. 새로운 연산자를 생성하고 구현하는 방법에 대한 예제는, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 참고하기 바랍니다.
+새로운 연산자를 선언한 후에는, 연산자와 똑같은 이름을 가진 '정적 메소드' 를 선언함으로써 이를 구현합니다. '정적 메소드' 는 연산자가 취하는 한 인자 값의 타입에 대한 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체에 대한 '정적 메소드' 로 구현합니다. 접두사나 접미사 연산자를 구현하는 중이면, '해당 메소드 선언' 도 반드시 '관련 `prefix` 나 `postfix` 선언 수정자; 로 표시해야 합니다. 새로운 연산자의 생성과 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF AN OPERATOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380)
 
@@ -1288,7 +1288,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 
-[^nonassociative]: '비결합적 (nonassociative)' 이라는 것은 '결합성 (associativity)' 이 `none` 인 것을 말하는 것으로 추측됩니다. 보다 자세한 내용은 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 을 참고하기 바랍니다.
+[^nonassociative]: '비-결합적 (nonassociative)' 이라는 것은 '결합성 (associativity)' 이 `none` 인 것을 말하는 것으로 추측됩니다. 보다 자세한 내용은 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
 
