@@ -1107,11 +1107,11 @@ _매개 변수 (paramter)_ 나 _반환 타입 (return type)_ 이 '중복 정의 
 
 ### Operator Declaration (연산자 선언)
 
-_연산자 선언 (operator declaration)_ 은 새로운 '중위 (infix) 연산자', '접두사 (prefix) 연산자', 또는 '접미사 (postfix) 연산자' 를 프로그램에 도입하며 `operator` 키워드를 사용하여 선언합니다.
+_연산자 선언 (operator declaration)_ 은 프로그램에 새로운 '중위 (infix), 접두사 (prefix), 및 접미사 (postfix) 연산자' 를 도입하며 `operator` 키워드로 선언합니다.
 
-세 가지의 서로 다른 '고정성 (fixity)' 에 따라 연산자를 선언할 수 있는데: '중위 (infix)', '접두사 (prefix)', 그리고 '접미사 (postfix)' 가 그것입니다. 연산자의 _고정성 (fixity)_ 은 '피연산자 (operands)' 에 대한 연산자의 '상대 위치 (relative position)' 를 지정합니다.
+세 가지 서로 다른 '고정 위치 (fixity)' 인: '중위', '접두사', 및 '접미사' 로 연산자를 선언할 수 있습니다. 연산자의 _고정 위치 (fixity)_ 는 자신의 '피연산자 (operands)' 에 대한 연산자의 '상대 위치 (relative position)' 를 지정합니다.
 
-연산자 선언에는, 각각의 '고정성' 마다 하나씩, 총 세 개의 기본 형식이 있습니다. 연산자의 고정성을 지정하려면 연산자 선언에서 `operator` 키워드 앞을 `infix`, `prefix`, 또는 `postfix` 선언 수정자로 표시합니다. 각각의 형식에서, 연산자의 이름은 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 에서 정의한 '연산자 문자 (operator characters)' 만을 가질 수 있습니다.
+연산자 선언은, 각각의 '고정 위치' 마다 하나씩, 총 세 개의 기초 형식이 있습니다. 연산자의 고정 위치는 연산자 선언의 `operator` 키워드 앞을 `infix`, `prefix`, 또는 `postfix` 선언 수정자로 표시함으로써 지정합니다. 각각의 형식에서, 연산자 이름은 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 에서 정의한 '연산자 문자 (operator characters)' 만을 담을 수 있습니다.
 
 다음 형식은 새로운 '중위 연산자' 를 선언합니다:
 
@@ -1147,12 +1147,12 @@ _우선 순위 그룹 선언 (precedence group declaration)_ 은 '중위 연산�
 
 '우선 순위 그룹 선언' 의 형식은 다음과 같습니다:
 
-precedencegroup `precedence group name-우선 순위 그룹 이름` {
-    higherThan: `lower group names-낮아야 하는 그룹 이름`
-    lowerThan: `higher group names-높아야 하는 그룹 이름`
-    associativity: `associativity-결합성`
-    assignment: `assignment-할당`
-}
+&nbsp;&nbsp;&nbsp;&nbsp;precedencegroup `precedence group name-우선 순위 그룹 이름` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;higherThan: `lower group names-낮아야 하는 그룹 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowerThan: `higher group names-높아야 하는 그룹 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;associativity: `associativity-결합성`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assignment: `assignment-할당`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 _lower group names-낮아야 하는 그룹 이름_ 과 _higher group names-높아야 하는 그룹 이름_ 목록은 기존 '우선 순위 그룹' 에 새로운 '우선 순위 그룹' 관계를 지정합니다. `lowerThan` 우선 순위 그룹 특성은 현재 모듈의 외부에서 선언한 우선 순위 그룹을 참조할 때만 사용할 수도 있습니다. `2 + 3 * 5` 라는 표현식에서 처럼, 두 연산자가 피연산자를 두고 서로 경쟁할 때, 상대적으로 더 높은 우선 순위를 가지는 연산자가 피연산자와 더 꽉 연결됩니다.
 
