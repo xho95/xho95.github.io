@@ -1143,7 +1143,7 @@ _접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 �
 
 ### Precedence Group Declaration (우선 순위 그룹 선언)
 
-_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. 연산자 우선 순위는, 그룹짓는 괄호가 없을 때, 연산자와 피연산자의 '밀접 연결 정도' 를 지정합니다.
+_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. '연산자 우선 순위' 는, 그룹짓는 괄호가 없을 때, 연산자와 피연산자의 '밀접 연결 정도' 를 지정합니다.
 
 '우선 순위 그룹 선언' 의 형식은 다음과 같습니다:
 
@@ -1158,7 +1158,7 @@ _더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (hi
 
 > _더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 을 사용하여 서로 관계 맺은 우선 순위 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 이루진 않아도 됩니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹' 을 가지는 것도 가능하다는 의미입니다. 이 우선 순위 그룹 연산자들은 괄호로 그룹짓지 않으면 서로 나란히 사용할 수 없습니다.
 
-스위프트는 표준 라이브러리가 제공하는 연산자와 함께 사용할 수 있는 수많은 '우선 순위 그룹' 을 정의하고 있습니다. 예를 들어, '더하기 (`+`)' 및 '빼기 (`-`)' 연산자는 `AdditionPrecedence` 그룹에 속하고, '곱하기 (`*`)' 및 '나누기 (`/`)' 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리에서 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 바랍니다.
+스위프트는 표준 라이브러리가 제공하는 연산자와 함께 할 수 있는 수많은 '우선 순위 그룹' 을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
 연산자의 _associativity-결합성_ 은 '괄호로 그룹지은 것' 이 없을 때 똑같은 우선 순위 수준을 가진 일련의 연산자들이 어떻게 서로 그룹지어져야 하는 지를 지정합니다. 연산자의 결합성은 '상황에-따른 (context-sensitive)' 키워드인 `left`, `right`, 또는 `none` 중 하나를 작성하여 지정합니다-만약 '결합성' 을 생략할 경우, 기본 값은 `none` 입니다. '왼쪽-결합 (left-associative)' 인 연산자는 '왼쪽에서 오른쪽으로 (left-to-right)' 로 그룹짓습니다. 예를 들어, 빼기 연산자 (`-`) 는 '왼쪽-결합' 이므로, 표현식 `4 - 5 - 6` 은 `(4 - 5) - 6` 으로 그룹지어 지고 값은 `-7` 이라고 평가됩니다. '오른쪽-결합' 인 연산자는 '오른쪽에서 왼쪽으로 (right-to-left)' 그룹지으며, 결합성을 `none` 으로 지정한 연산자는 어떤 것도 결합하지 않습니다. 우선 순위 수준이 같은 '비결합적 연산자 (nonassociative operators)' 는 서로 인접하여 있을 수 없습니다. 예를 들어, `<` 연산자는 `none` 이라는 '결합성' 을 가지는데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아님을 의미합니다.
 
