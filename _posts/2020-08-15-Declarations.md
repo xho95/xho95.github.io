@@ -1143,7 +1143,7 @@ _접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 �
 
 ### Precedence Group Declaration (우선 순위 그룹 선언)
 
-_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. '연산자 우선 순위' 는, 그룹짓는 괄호가 없을 때, 연산자와 피연산자의 '밀접 연결 정도' 를 지정합니다.
+_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. '연산자 우선 순위' 는, 괄호 그룹이 없을 때의, '연산자와 피연산자의 밀접 연결 정도' 를 지정합니다.
 
 '우선 순위 그룹 선언' 의 형식은 다음과 같습니다:
 
@@ -1154,15 +1154,15 @@ _우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assignment: `assignment-할당`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-_더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 목록은 '새로운 우선 순위 그룹' 과 '기존 우선 순위 그룹' 간의 관계를 지정합니다. '`lowerThan` 우선 순위 그룹 특성' 은 '현재 모듈 밖에서 선언한 우선 순위 그룹' 을 참조할 때만 사용할 수도 있습니다. 두 연산자가, `2 + 3 * 5` 표현식과 같이, 자신의 피연산자를 두고 서로 경쟁할 때, '상대적으로 더 높은 우선 순위를 가진 연산자' 를 피연산자와 더 밀접하게 연결합니다.
+_더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 목록은 '새로운 우선 순위 그룹' 과 '기존 우선 순위 그룹' 간의 관계를 지정합니다. '`lowerThan` 우선 순위 그룹 특성' 은 '현재 모듈 밖에서 선언한 우선 순위 그룹' 을 참조하기 위해서만 사용할 수도 있습니다. 두 연산자가, `2 + 3 * 5` 같은 표현식에서 처럼, 자신의 피연산자를 두고 서로 경쟁할 때는, '상대적으로 더 높은 우선 순위를 가진 연산자' 가 피연산자와 더 밀접하게 연결됩니다.
 
-> _더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 을 사용하여 서로 관계 맺은 우선 순위 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 이루진 않아도 됩니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹' 을 가지는 것도 가능하다는 의미입니다. 이 우선 순위 그룹 연산자들은 괄호로 그룹짓지 않으면 서로 나란히 사용할 수 없습니다.
+> _더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관계 맺은 우선 순위 그룹들은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 이룰 필요까진 없습니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹을 가지는 것' 도 가능하다는 의미입니다. 이 우선 순위 그룹 연산자들은 괄호 그룹 없이는 서로 나란히 사용할 수 없습니다.
 
-스위프트는 표준 라이브러리가 제공하는 연산자와 함께 할 수 있는 수많은 '우선 순위 그룹' 을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
+표준 라이브러리가 제공하는 연산자와 함께 하기 위해서 스위프트는 '수많은 우선 순위 그룹' 을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
-연산자의 _associativity-결합성_ 은 '괄호로 그룹지은 것' 이 없을 때 똑같은 우선 순위 수준을 가진 일련의 연산자들이 어떻게 서로 그룹지어져야 하는 지를 지정합니다. 연산자의 결합성은 '상황에-따른 (context-sensitive)' 키워드인 `left`, `right`, 또는 `none` 중 하나를 작성하여 지정합니다-만약 '결합성' 을 생략할 경우, 기본 값은 `none` 입니다. '왼쪽-결합 (left-associative)' 인 연산자는 '왼쪽에서 오른쪽으로 (left-to-right)' 로 그룹짓습니다. 예를 들어, 빼기 연산자 (`-`) 는 '왼쪽-결합' 이므로, 표현식 `4 - 5 - 6` 은 `(4 - 5) - 6` 으로 그룹지어 지고 값은 `-7` 이라고 평가됩니다. '오른쪽-결합' 인 연산자는 '오른쪽에서 왼쪽으로 (right-to-left)' 그룹지으며, 결합성을 `none` 으로 지정한 연산자는 어떤 것도 결합하지 않습니다. 우선 순위 수준이 같은 '비결합적 연산자 (nonassociative operators)' 는 서로 인접하여 있을 수 없습니다. 예를 들어, `<` 연산자는 `none` 이라는 '결합성' 을 가지는데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아님을 의미합니다.
+연산자 _결합성 (associativity)_ 은 괄호 그룹이 없을 때 똑같은 우선 순위 수준을 가지는 일련의 연산자들끼리 그룹짓는 방법을 지정합니다. 연산자 결합성은 `left`, `right`, 또는 `none` 이라는 '상황에-민감한 (context-sensitive) 키워드' 하나를 작성함으로써 지정합니다-'결합성' 을 생략하면, 기본 값이 `none` 입니다. '왼쪽-결합 (left-associative) 연산자' 는 왼쪽에서 오른쪽으로 그룹 짓습니다. 예를 들어, '빼기 연산자 (`-`)' 는 왼쪽-결합이므로, `4 - 5 - 6` 라는 표현식은 `(4 - 5) - 6` 으로 그룹지으며 `-7` 이라고 평가합니다. '오른쪽-결합 연산자' 는 오른쪽에서 왼쪽으로 그룹지으며, `none` 이라는 결합성으로 지정한 연산자는 결합을 아예 하지 않습니다. '똑같은 우선 순위 수준의 비-결합 (nonassociative) 연산자' 는 서로 인접해 있을 수 없습니다. 예를 들어, `<` 연산자의 '결합성' 은 `none` 인데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아니라는 의미입니다.
 
-'우선 순위 그룹' 의 _assignment-할당_ 은 연산자가 '옵셔널 연쇄 (optional chaining)' 를 포함한 연산에서 사용될 때의 우선 순위를 지정합니다. `true` 로 설정하면, 관련 우선 순위 그룹에 있는 연산자는 '옵셔널 연쇄' 중에 표준 라이브러리의 '할당 연산자' 와 똑같은 '그룹화 규칙 (grouping rules)' 을 사용합니다. 다른 경우, 즉 `false` 로 설정하거나 생략한 경우라면, 우선 순위 그룹에 있는 연산자는 할당을 수행하지 않는 연산자와 똑같은 '옵셔널 연쇄' 규칙을 따릅니다.
+'우선 순위 그룹의 _할당 (assignment)_' 은 '옵셔널 연쇄 (optional chaining) 를 포함한 연산에서 사용할 때의 연산자 우선 순위' 를 지정합니다. `true` 로 설정할 땐, 옵셔널 연쇄 중에 '관련 우선 순위 그룹의 연산자' 가 '표준 라이브러리의 할당 연산자' 와 똑같은 그룹 규칙을 사용합니다. 그 외의 경우, `false` 로 설정하거나 생략할 땐, '우선 순위 그룹의 연산자' 가 '할당을 하지 않는 연산자' 와 똑같은 옵셔널 연쇄 규칙을 따릅니다.
 
 > GRAMMAR OF A PRECEDENCE GROUP DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID550)
 

@@ -686,7 +686,7 @@ for scalar in dogString.unicodeScalars {
 
 [^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
 
-[^locale-sensitive]: '지역에-민감 (locale-sensitive)' 하다는 말은, [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, 비교 연산을 수행하기 위해 '지역 정보 (locale) 객체' 를 요구하는 것을 말한다고 합니다. 보다 자세한 내용은 해당 링크의 내용을 참고하기 바랍니다.
+[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive)' 하다는 말은, 비교 연산을 수행하기 위해 '지역 정보 (locale) 객체' 를 요구하는 것을 말한다고 합니다. 스위프트의 문자 비교 연산은 '지역에-민감' 하지 않으므로, 이 '지역 정보 객체' 를 요구하지 않습니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 의 내용을 참고하기 바랍니다.
 
 [^line-feed]: 스위프트 (라기 보다는 애플 운영체제) 에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자는 셋 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
 
