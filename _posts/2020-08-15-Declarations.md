@@ -1143,7 +1143,7 @@ _접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 �
 
 ### Precedence Group Declaration (우선 순위 그룹 선언)
 
-_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. 연산자 우선 순위는, 그룹짓는 괄호가 없을 때, 연산자와 피연산자의 밀접 연결 정도를 지정합니다.
+_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. 연산자 우선 순위는, 그룹짓는 괄호가 없을 때, 연산자와 피연산자의 '밀접 연결 정도' 를 지정합니다.
 
 '우선 순위 그룹 선언' 의 형식은 다음과 같습니다:
 
@@ -1154,9 +1154,9 @@ _우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assignment: `assignment-할당`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-_더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 목록은 '새로운 우선 순위 그룹' 과 '기존 우선 순위 그룹' 의 관계를 지정합니다. '`lowerThan` 우선 순위 그룹 특성' 은 현재 모듈 밖에서 선언한 '우선 순위 그룹' 을 참조할 때만 사용할 수도 있습니다. 두 연산자가, `2 + 3 * 5` 라는 표현식과 같이, 자신의 피연산자를 두고 서로 경쟁할 때, '상대적으로 더 높은 우선 순위를 가진 연산자' 가 피연산자와 더 밀접하게 연결됩니다.
+_더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 목록은 '새로운 우선 순위 그룹' 과 '기존 우선 순위 그룹' 간의 관계를 지정합니다. '`lowerThan` 우선 순위 그룹 특성' 은 '현재 모듈 밖에서 선언한 우선 순위 그룹' 을 참조할 때만 사용할 수도 있습니다. 두 연산자가, `2 + 3 * 5` 표현식과 같이, 자신의 피연산자를 두고 서로 경쟁할 때, '상대적으로 더 높은 우선 순위를 가진 연산자' 를 피연산자와 더 밀접하게 연결합니다.
 
-> _더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 을 사용하여 서로 관계 맺은 우선 순위 그룹은 반드시 '단일 관계 계층 (relational hierarchy)' 에 들어 맞아야 하지만, '선형 계층 (linear hierarchy) 형태' 는 아니어도 됩니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹' 을 가지는 것이 가능하다는 의미입니다. 이 우선 순위 그룹의 연산자들은 괄호로 그룹짓지 않고는 서로 나란히 사용할 수 없습니다.
+> _더 낮은 그룹 이름 (lower group names)_ 과 _더 높은 그룹 이름 (higher group names)_ 을 사용하여 서로 관계 맺은 우선 순위 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 이루진 않아도 됩니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹' 을 가지는 것도 가능하다는 의미입니다. 이 우선 순위 그룹 연산자들은 괄호로 그룹짓지 않으면 서로 나란히 사용할 수 없습니다.
 
 스위프트는 표준 라이브러리가 제공하는 연산자와 함께 사용할 수 있는 수많은 '우선 순위 그룹' 을 정의하고 있습니다. 예를 들어, '더하기 (`+`)' 및 '빼기 (`-`)' 연산자는 `AdditionPrecedence` 그룹에 속하고, '곱하기 (`*`)' 및 '나누기 (`/`)' 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리에서 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 바랍니다.
 
