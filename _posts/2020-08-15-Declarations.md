@@ -1172,27 +1172,27 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `class`
 
-&nbsp;&nbsp;&nbsp;&nbsp;클래스의 멤버가, 클래스 인스턴스의 멤버라기 보다는, 클래스 자신의 멤버임을 지시하려면 멤버에 이 수정자를 적용합니다. 이 수정자가 있고 `final` 수정자는 없는 상위 클래스 멤버는 하위 클래스에서 재정의할 수 있습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 해당 멤버가, 클래스 인스턴스의 멤버라기 보다는, 클래스 자신의 멤버임을 지시하기 위해 클래스의 멤버에 적용합니다. 이 수정자를 가지나 `final` 수정자는 가지지 않는 상위 클래스 멤버는 하위 클래스에서 재정의할 수 있습니다.
 
 `dynamic`
 
-&nbsp;&nbsp;&nbsp;&nbsp;오브젝티브-C 가 표현할 수 있는 어떤 클래스 멤버든 이 수정자를 적용합니다. 멤버 선언을 `dynamic` 수정자로 표시할 때, 해당 멤버에 대한 접근은 항상 '오브젝티브-C 런타임' 을 사용하여 '동적으로 급파 (dispatched)' 합니다. '해당 멤버에 대한 접근' 은 절대로 컴파일러가 '인라인 (inline; 코드 줄로 넣음)' 하거나 '탈-가상화 (devirtualized)' 하지 않습니다.[^dynamically-dispatched]
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 오브젝티브-C 로 표현할 수 있는 어떤 클래스 멤버에든 적용합니다. 멤버 선언을 `dynamic` 수정자로 표시할 때, 해당 멤버에 대한 접근은 항상 '오브젝티브-C 런타임' 을 사용하여 '동적으로 급파 (dispatched)' 합니다. '해당 멤버에 대한 접근' 은 절대로 컴파일러가 '인라인 (inline; 코드 줄로 넣음)' 하거나 '탈-가상화 (devirtualized)' 하지 않습니다.[^dynamically-dispatched]
 
 &nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 '오브젝티브-C 런타임' 을 사용하여 '급파 (dispatched)' 하기 때문에, 반드시 '`objc` 특성 (attribute)' 으로도 표시해야 합니다.
 
 `final`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '클래스' 또는 '클래스의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 클래스에 적용하면 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 어떤 하위 클래스에서도 재정의할 수 없다는 것을 지시합니다. `final` 특성의 사용 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '클래스' 또는 '클래스의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 클래스에 적용하면 클래스가 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 것을 지시합니다. `final` 특성의 사용 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
 
 `lazy`
 
-  이 수정자를 클래스나 구조체의 저장 변수 속성에 적용하면 그 속성의 초기 값은, 속성에 처음 접근할 때, 최대 한 번만 계산하고 저장한다는 것을 지시합니다. `lazy` 수정자를 사용하는 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 속성의 초기 값을, 속성에 최초로 접근할 때, 최대 한 번만 계산하고 저장함을 지시하기 위해 클래스나 구조체의 저장 변수 속성에 적용합니다. `lazy` 수정자의 사용 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
 
 `optional`
 
-  이 수정자를 프로토콜의 속성, 메소드, 또는 첨자 연산 멤버에 적용하면 준수하는 타입이 해당 멤버를 구현하는 것이 필수가 아님을 지시합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '준수 타입' 이 해당 멤버를 구현하는 것이 필수가 아님을 지시하기 위해 '프로토콜의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 
 
-  `optional` 수정자는 `objc` 특성으로 표시한 프로토콜에만 적용할 수 있습니다. 그 결과, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 담고 있는 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자를 사용하는 방법에 대한 더 많은 정보와 '옵셔널 프로토콜 멤버' 의 접근 방법에 대한 길잡이-예를 들어, 준수 타입이 이들을 구현하는 것이 맞는지 확실하지 않을 때 등-은 [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 '`objc` 특성으로 표시한 프로토콜' 에만 적용할 수 있습니다. 그 결과, '클래스 타입' 만이 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자의 사용 방법에 대한 더 많은 정보와-예를 들어, 준수 타입이 이를 구현하는지 확실하지 않을 때-옵셔널 프로토콜 멤버로 접근하는 방법에 대한 길잡이는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 참고하기 바랍니다.
 
 `required`
 
