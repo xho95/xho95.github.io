@@ -1176,9 +1176,9 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `dynamic`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스의 어떤 멤버에 적용하면 오브젝티드-C 에서 표현할 수 있게 됩니다. 멤버 선언을 `dynamic` 수정자로 표시할 때, 해당 멤버에 대한 접근은 오브젝티브-C 런타임을 사용하여 항상 동적으로 '급파 (dispatched)' 됩니다. 해당 멤버에 대한 접근은 컴파일러에 의해 절대로 '인라인 (inline; 줄 내에 삽입)' 되거나 '탈가상화 (devirtualized)' 되지 않습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;오브젝티브-C 가 표현할 수 있는 어떤 클래스 멤버든 이 수정자를 적용합니다. 멤버 선언을 `dynamic` 수정자로 표시할 때, 해당 멤버에 대한 접근은 항상 '오브젝티브-C 런타임' 을 사용하여 '동적으로 급파 (dispatched)' 합니다. '해당 멤버에 대한 접근' 은 절대로 컴파일러가 '인라인 (inline; 코드 줄로 넣음)' 하거나 '탈-가상화 (devirtualized)' 하지 않습니다.[^dynamically-dispatched]
 
-&nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 오브젝티브-C 런타임을 사용하여 급파되기 때문에, 반드시 `objc` 특성으로 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 '오브젝티브-C 런타임' 을 사용하여 '급파 (dispatched)' 하기 때문에, 반드시 '`objc` 특성 (attribute)' 으로도 표시해야 합니다.
 
 `final`
 
@@ -1313,3 +1313,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^signature]: 함수나 메소드에서 '서명 (signature)' 과 '이름 (name)' 의 차이점은 '매개 변수' 를 포함하는 지의 여부입니다. 이 예제에 있는 `init(rawValue: RawValue)` 는 '초기자 서명 (signature)' 이며, 매개 변수 부분을 뺀 `init?` 이 '초기자 이름' 입니다. 
 
 [^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 참고하기 바랍니다. 
+
+[^dynamically-dispatched]: '동적으로 급파 (dynamically dispatched) 한다' 는 개념은 'C++ 과 같은 언어' 에서 많이 사용하는 '가상 함수 테이블 (virtual function table) 을 사용한다' 는 의미입니다. '가상 함수 테이블' 을 사용하기 때문에, '인라인' 이나 '탈-가상화' 를 할 수 없습니다. '가상 함수 테이블' 에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 참고하기 바랍니다.  
