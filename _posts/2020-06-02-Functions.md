@@ -423,7 +423,7 @@ let anotherMathFunction = addTwoInts
 // anotherMathFunction 은 (Int, Int) -> Int 타입으로 추론됩니다.
 ```
 
-#### Function Type as Parameter Types (매개 변수 타입으로써의 함수 타입)
+#### Function Types as Parameter Types (매개 변수 타입으로써의 함수 타입)
 
 `(Int, Int) -> Int` 와 같은 함수 타입을 다른 함수에 대한 매개 변수 타입으로 사용할 수 있습니다. 이는 함수를 호출할 때 함수를 호출하는 쪽에서 함수 구현의 일부분을 제공할 수 있게 해줍니다.
 

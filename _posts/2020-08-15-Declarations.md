@@ -201,7 +201,7 @@ newAndOld.x = 200
 
 #### Type Variable Properties (타입 변수 속성)
 
-'타입 변수 속성' 을 선언하려면, '`static` 선언 수정자' 로 선언을 표시합니다. 클래스는 하위 클래스에 의한 상위 클래스 구현의 재정의를 허용하기 위해 '타입 계산 속성'[^type-computed-properties] 을 '`class` 선언 수정자' 로 대신 표시할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분에서 논의합니다.
+'타입 변수 속성' 을 선언하려면, 선언을 '`static` 선언 수정자' 로 표시합니다. 클래스는 상위 클래스 구현의 하위 클래스 재정의를 허용하기 위해 '타입 계산 속성'[^type-computed-properties] 을 '`class` 선언 수정자' 로 대신 표시할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분에서 논의합니다.
 
 > GRAMMAR OF A VARIABLE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID356)
 
@@ -728,7 +728,7 @@ protocol SomeProtocol: AnyObject {
 
 &nbsp;&nbsp;&nbsp;&nbsp;var `property name-속성 이름`: `type-타입` { get set }
 
-다른 프로토콜 멤버 선언이 그런 것처럼, 이 속성 선언은 프로토콜이 준수하는 타입에 대한 '획득자와 설정자 필수 조건 (requirements)' 만 선언합니다. 그 결과, 자신을 선언한 프로토콜에서 획득자와 설정자를 직접 구현하진 않습니다.
+다른 프로토콜 멤버 선언에서 처럼, 이 속성 선언은 프로토콜이 준수하는 타입에 대한 '획득자와 설정자 필수 조건 (requirements)' 만 선언합니다. 그 결과, 자신을 선언한 프로토콜에서 획득자와 설정자를 직접 구현하진 않습니다.
 
 '준수 타입' 은 다양한 방식으로 '획득자와 설정자 필수 조건' 을 만족시킬 수 있습니다. 속성 선언이 `get` 과 `set` 키워드 둘 다를 포함하면, '준수 타입' 은 읽기 쓰기 둘 다 가능한 (즉, 획득자와 설정자 둘 다를 구현한) '저장 변수 속성' 이나 '계산 속성' 으로 구현할 수 있습니다. 하지만, 해당 속성 선언을 '상수 속성' 이나 '읽기-전용 계산 속성' 으로 구현할 순 없습니다. 속성 선언이 `get` 키워드만 포함하면, 어떤 종류의 속성으로도 구현할 수 있습니다. 프로토콜의 속성 필수 조건을 구현하는 '준수 타입' 에 대한 예제는, [Property Requirements (속성 필수 조건)]({% post_url 2016-03-03-Protocols %}#property-requirements-속성-필수-조건) 부분을 참고하기 바랍니다.
 
@@ -754,7 +754,7 @@ protocol SomeProtocol: AnyObject {
 
 준수 타입은 '실패하지 않는 (nonfailable) 초기자' 또는 `init!` 형식의 '실패 가능 (failable) 초기자' 를 구현함으로써 '실패하지 않는 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다. 준수 타입이 어떤 종류의 초기자든 구현하기만 하면 '실패 가능 프로토콜 초기자 필수 조건' 을 만족할 수 있습니다.
 
-이미 '`final` 선언 수정자' 로 표시한 클래스가 아니라면, 프로토콜의 '초기자 필수 조건' 을 만족하는 초기자를 클래스가 구현할 때는, 초기자를   반드시 '`required` 선언 수정자' 로 표시해야 합니다.
+이미 '`final` 선언 수정자' 로 표시한 클래스가 아니라면, 프로토콜의 '초기자 필수 조건' 을 만족하는 초기자를 클래스가 구현할 때는, 초기자를 반드시 '`required` 선언 수정자' 로 표시해야 합니다.
 
 [Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 부분도 참고하기 바랍니다.
 
@@ -828,7 +828,7 @@ _초기자 선언 (initializer declaration)_ 은 프로그램에 클래스, 구�
 
 기본적으로, 상위 클래스에서 선언한 초기자를 하위 클래스가 상속하진 않습니다. 그렇다 하더라도, 하위 클래스가 '기본 값' 으로 자신의 모든 저장 속성을 초기화하면서 자기 자신은 어떤 초기자도 정의하지 않으면, 상위 클래스의 '모든 초기자' 를 상속합니다. 하위 클래스가 상위 클래스의 '모든 지명 초기자' 를 재정의하면, 상위 클래스의 '편의 초기자' 들을 상속합니다.
 
-메소드, 속성, 및 '첨자 연산' 이 그런 것처럼, '재정의한 지명 초기자' 는 '`override` 선언 수정자' 로 표시할 필요가 있습니다.
+메소드, 속성, 및 '첨자 연산' 에서 처럼, '재정의한 지명 초기자' 는 '`override` 선언 수정자' 로 표시할 필요가 있습니다.
 
 > `required` 선언 수정자로 표시한 초기자는, 하위 클래스에서 '필수 초기자' 를 재정의할 때 '`override` 수정자' 로 초기자를 표시하지 않아도 됩니다.
 
@@ -991,13 +991,13 @@ doSomething(with: oneAndTwo)
 
 `doSomething(_:)` 으로 전달한 인스턴스의 `log()` 를 호출할 때는, '기록 (logged) 문자열' 에서 '사용자가 정한 제목 (customized title)' 을 생략합니다.
 
-#### Protocol Conformance Must Not Be Redundant (프로토콜 준수성은 반드시 과잉하지 않아야 합니다)
+#### Protocol Conformance Must Not Be Redundant (프로토콜 준수성은 반드시 과잉이지 않아야 합니다)
 
-'고정 (concrete) 타입' 은 특별한 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 '과잉인 프로토콜 준수성' 을 에러라고 표시합니다. 이런 종류의 에러는 두 가지 상황에서 마주칠 것 같습니다. 첫 번째 상황은, 서로 다른 '필수 조건' 을 가진, 동일한 프로토콜을 명시적으로 여러 번 준수할 때 입니다. 두 번째 상황은 동일한 프로토콜을 암시적으로 여러 번 상속할 때 입니다. 이 상황을 아래 부분에서 논의합니다.
+'고정 (concrete) 타입' 은 특별한 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 '과잉인 프로토콜 준수성' 을 에러라고 표시합니다. 이런 종류의 에러는 두 가지 상황에서 마주치게 됩니다. 첫 번째 상황은, 서로 다른 '필수 조건' 을 가진, 동일한 프로토콜을 명시적으로 여러 번 준수할 때 입니다. 두 번째 상황은 동일한 프로토콜을 암시적으로 여러 번 상속할 때 입니다. 아래 부분에서 이 상황들을 논의합니다.
 
-**Resolving Explicit Redundancy (명시적인 과잉 문제 해결하기)**
+**Resolving Explicit Redundancy (명시적인 과잉 해결하기)**
 
-구체적으로 고정된 타입에 대한 '다중 확장 (extension)' 은, 그 '확장 (extension)' 의 필수 조건이 서로 배타적이더라도, 똑같은 프로토콜에 대한 준수성을 추가할 수 없습니다. 이런 제약 조건은 아래 예제에서 증명해 보입니다. 두 '확장 (extension) 선언' 은 `Serializable` 프로토콜에 조건부 준수성을 추가하려고 시도하는데, 하나는 `Int` 원소를 가지는 배열에 대한 것이고, 다른 하나는 `String` 원소를 가지는 배열에 대한 것입니다.
+'고정 타입' 에 대한 여러 개의 '익스텐션' 은, '익스텐션의 필수 조건' 이 '상호 배타적 (mutually exclusive)' 인 경우에도, 동일한 프로토콜에 '준수성' 을 추가할 순 없습니다. 이 '제약 사항' 은 아래 예제에서 실증합니다. 두 '익스텐션 선언' 이 `Serializable` 프로토콜에 '조건부 준수성' 을 추가하려고 하는데, 하나는 `Int` 원소를 가진 배열을 위한 것이고, 다른 하나는 `String` 원소를 가진 배열을 위한 것입니다.
 
 ```swift
 protocol Serializable {
@@ -1017,7 +1017,7 @@ extension Array: Serializable where Element == String {
 // 에러: 'Array<Element>' 가 'Serializable' 프로토콜을 과잉 준수함
 ```
 
-여러 개의 고정 타입을 기초로 하여 '조건부 준수성' 을 추가할 필요가 있는 경우, 각각의 타입이 준수할 수 있는 새로운 프로토콜을 생성하고 '조건부 준수성' 을 선언할 때 해당 프로토콜을 '필수 조건' 처럼 사용하면 됩니다.
+여러 개의 '고정 타입' 을 기초로 '조건부 준수성' 을 추가할 필요가 있으면, 각각의 타입이 준수할 수 있는 새로운 프로토콜을 생성한 다음 '조건부 준수성' 을 선언할 때 '해당 프로토콜' 을 '필수 조건' 으로 사용합니다.
 
 ```swift
 protocol SerializableInArray { }
@@ -1031,13 +1031,13 @@ extension Array: Serializable where Element: SerializableInArray {
 }
 ```
 
-**Resolving Implicit Redundancy (암시적인 과잉 문제 해결하기)**
+**Resolving Implicit Redundancy (암시적인 과잉 해결하기)**
 
-구체적으로 고정된 타입이 프로토콜을 조건부로 준수할 때, 해당 타입은 같은 필수 조건을 가지는 부모 프로토콜은 어떤 것이든 암시적으로 준수합니다.
+'고정 타입' 이 프로토콜을 조건부로 준수할 때는, 해당 타입이 '동일한 필수 조건을 가진 어떤 부모 프로토콜' 이든 암시적으로 준수합니다.
 
-단일 부모를 상속하는 두 프로토콜을 조건부로 준수하는 타입이 필요한 경우, 부모 프로토콜에 대한 준수를 명시적으로 선언합니다. 이렇게 하면 서로 다른 필수 조건을 가지는 부모 프로토콜을 암시적으로 두 번 준수하는 것을 피하게 됩니다.
+'단일 부모를 상속하는 두 프로토콜' 을 조건부로 준수하는 타입이 필요한 경우, '부모 프로토콜에 대한 준수성' 을 명시적으로 선언합니다. 이는 '서로 다른 필수 조건을 가지는 부모 프로토콜' 을 암시적으로 두 번 준수하는 걸 피하게 합니다.
 
-다음 예제는 `TitledLoggable` 및 새로운 `MarkedLoggable` 프로토콜 둘 모두에 대한 조건부 준수성를 선언할 때의 충돌을 피하기 위해 `Loggable` 에 대한 '조건부 준수성' 을 `Array` 에 명시적으로 선언한 것입니다.
+다음 예제는 '`TitledLoggable` 과 새로운 `MarkedLoggable` 프로토콜에 대한 조건부 준수성 둘 다를 선언' 할 때의 충돌을 피하고자 '`Loggable` 에 대한 조건부 준수성' 을 명시적으로 `Array` 에 선언합니다.
 
 ```swift
 protocol MarkedLoggable: Loggable {
@@ -1060,7 +1060,7 @@ extension Array: TitledLoggable where Element: TitledLoggable {
 extension Array: MarkedLoggable where Element: MarkedLoggable { }
 ```
 
-`Loggable` 에 대한 '조건부 준수' 를 명시적으로 선언하는 '확장 (extension)' 이 없다면, 다른 `Array` '확장 (extension)' 이 이 선언들을 암시적으로 생성하하게 될 것이고, 에러로 귀결될 것입니다:
+'`Loggable` 에 대한 조건부 준수성' 을 명시적으로 선언하는 '익스텐션' 없이는, 다른 `Array` 익스텐션들이 이 선언을 암시적으로 생성할 것이고, 에러가 되버립니다:
 
 ```swift
 extension Array: Loggable where Element: TitledLoggable { }
@@ -1072,179 +1072,183 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 ### Subscipt Declaration (첨자 연산 선언)
 
-_첨자 연산 선언 (subscript declaration)_ 은 특정 타입의 객체에 대한 '첨자 연산 보조 기능' 을 추가하도록 하며 이는 전통적으로 '집합체 (collection)', '리스트 (list)', 및 '수열 (sequence)' 에 있는 원소의 접근에 대한 '편의 구문 표현 (convenient syntax)' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드를 사용하여 선언하며 형식은 다음과 같습니다:
+_첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가 '첨자 연산 기능' 을 지원하도록 하며 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 원소의 접근을 위한 '편의 (convenient) 구문' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드로 선언하며 형식은 다음과 같습니다:
 
-subscript (`parameters-매개 변수`) -> `return type-반환 타입` {<br />
-  get {<br />
-    `statements-구문`<br />
-  }<br />
-  set(`setter name-설정자 이름`) {<br />
-    `statements-구문`<br />
-  }<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;subscript (`parameters-매개 변수`) -> `return type-반환 타입` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set(`setter name-설정자 이름`) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-'첨자 연산 선언' 은 클래스, 구조체 선언, 열거체, '확장 (extension)', 또는 '프로토콜 선언' 인 상황에서만 쓸 수 있습니다.
+'첨자 연산 선언' 은 '클래스, 구조체, 열거체, 익스텐션, 또는 프로토콜 선언' 에만 있을 수 있습니다.
 
-_'paramter-매개 변수'_ 는 '첨자 연산 표현식' 에 관련된 타입의 원소에 접근하는 색인을 하나 이상의 지정하는데 사용됩니다 (예를 들어, `object[i]` 표현식의 `i` 같은 것입니다). 원소 접근에 필요한 색인은 어떤 타입이어도 상관없지만, 각 매개 변수는 각각의 색인 타입을 지정하기 위한 '타입 보조 설명' 을 반드시 포함해야 합니다. _'return type-반환 타입'_ 은 접근하고 있는 원소의 타입을 지정합니다.
+_매개 변수 (paramter)_ 는 '첨자 연산 표현식' 에 있는 관련 타입의 (예를 들어, `object[i]` 라는 표현식의 `i` 같은) 원소에 접근하기 위한 1개 이상의 색인을 지정합니다. 원소 접근에 사용하는 색인은 어떤 타입이든 되긴 하지만, 각각의 매개 변수는 반드시 각 색인 타입을 지정하는 '타입 보조 설명' 을 포함해야 합니다. _반환 타입 (return type)_ 은 접근하는 원소의 타입을 지정합니다.
 
-'계산 속성' 이 그런 것처럼, 첨자 연산 선언은 접근한 원소의 값에 대한 읽기와 쓰기 기능을 지원합니다. '획득자 (getter)' 는 값을 읽는 데 사용되며, '설정자 (setter)' 는 값을 쓰는 데 사용됩니다. '설정자 (setter) 절' 은 선택 사항이며, '획득자 (getter)' 만 필요할 때, 두 구절을 모두 생략하여 요청받은 값을 직접 반환 할 수도 있습니다. 그렇다 하더라도, '획득자 (setter) 절' 을 제공할 경우, 반드시 '획득자 (getter) 절' 도 제공해야 합니다.
+'계산 속성' 에서 처럼, 첨자 연산 선언은 접근한 원소 값에 대한 읽기와 쓰기를 지원합니다. 값을 읽는 데는 '획득자 (getter)' 를 사용하며, 값을 쓰는 데는 '설정자 (setter)' 를 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, 두 절 모두 생략하고 단순히 요청 값을 직접 반환 할 수가 있습니다. 그렇다 하더라도, '설정자 절' 을 제공할 경우, '획득자 절' 도 반드시 제공해야 합니다.
 
-_'setter name-설정자 이름'_ 과 이를 둘러싼 괄호는 선택 사항입니다. '설정자 이름' 을 제공하면, 이는 설정자에 대한 매개 변수 이름으로 사용됩니다 '설정자 이름' 을 제공하지 않는 경우, 설정자에 대한 '기본 설정 매개 변수 이름' 은 `value` 가 됩니다. 설정자에 대한 매개 변수의 타입은 _'return type-반환 타입'_ 과 같습니다.
+_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, 설정자의 매개 변수 이름으로 이를 사용합니다. '설정자 이름' 을 제공하지 않으면, 설정자의 '기본 매개 변수 이름' 은 `value` 입니다. 설정자의 매개 변수 타입은 _반환 타입 (return type)_ 과 똑같습니다.
 
-첨자 연산 선언은, _'paramter-매개 변수'_ 또는 _'return type-반환 타입'_ 이 '중복 정의 (overloading)' 하려는 것과 다르기만 하다면, 자신이 선언되어 있는 타입 내에서 '중복 정의' 할 수 있습니다. 상위 클래스에서 상속받은 첨자 연산 선언을 '재정의 (override)' 할 수도 있습니다. 이렇게 할 때는, 재정의한 첨자 연산 선언을 반드시 `override` 선언 수정자로 표시해야 합니다.
+_매개 변수 (paramter)_ 나 _반환 타입 (return type)_ 이 '중복 정의 (overloading)' 하려는 것과 다르기만 하다면, 자신을 선언한 타입에서 첨자 연산 선언을 '중복 정의' 할 수 있습니다. 상위 클래스에서 상속한 '첨자 연산 선언' 을 '재정의 (override)' 할 수도 있습니다. 그렇게 할 때는, 반드시 '재정의한 첨자 연산 선언' 을 '`override` 선언 수정자' 로 표시해야 합니다.
 
-'첨자 연산 매개 변수' 는 '함수 매개 변수' 와 같은 규칙을 따르지만, 두 가지 예외가 있습니다. 기본적으로, 첨자 연산에 사용되는 매개 변수는, 함수, 메소드, 및 초기자와는 다르게 '인자 이름표' 를 가지지 않습니다. 하지만, 함수, 메소드, 및 초기자가 사용하는 것과 똑같은 '구문 표현' 을 사용하여 인자 이름표를 명시적으로 제공할 수도 있습니다. 이에 더하여, 첨자 연산은 입-출력 매개 변수를 가질 수 없습니다. 첨자 연산 매개 변수는, [Special Kinds of Parameters (특수한 종류의 매개 변수)](#special-kinds-of-parameters-특수한-종류의-매개-변수) 에서 설명한 구문 표현을 사용하여, 기본 값을 가질 수 있습니다.
+'첨자 연산 매개 변수' 는 '함수 매개 변수' 와 똑같은 규칙을 따르지만, 두 가지 예외가 있습니다. 기본적으로, 첨자 연산에서 사용하는 매개 변수는, 함수, 메소드, 및 초기자와는 달리, '인자 이름표' 를 가지지 않습니다. 하지만, 함수, 메소드, 및 초기자가 사용하는 것과 똑같은 구문을 써서 명시적인 '인자 이름표' 를 제공할 순 있습니다. 이에 더하여, 첨자 연산은 '입-출력 매개 변수' 를 가질 수 없습니다. 첨자 연산 매개 변수는, [Special Kinds of Parameters (특수한 종류의 매개 변수)](#special-kinds-of-parameters-특수한-종류의-매개-변수) 에서 설명한 구문으로 된, '기본 값' 을 가질 수 있습니다.
 
-[Protocol Subscript Declaration (프로토콜 첨자 연산 선언)](#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 에서 설명한 것처럼, 프로토콜 선언인 상황에서 첨자 연산을 선언할 수도 있습니다.
+첨자 연산은, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)](#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 선언할 수도 있습니다.
 
-첨자 연산에 대한 더 자세한 정보 및 첨자 연산 선언에 대한 예제를 보려면, [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}) 을 참고하기 바랍니다.
+'첨자 연산' 에 대한 더 많은 정보와 '첨자 연산 선언' 에 대한 예제를 보려면, [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}) 장을 참고하기 바랍니다.
 
 #### Type Subscript Declarations (타입 첨자 연산 선언)
 
-타입의 인스턴스가 아닌, 타입 자체가 노출하는 첨자 연산을 선언하려면, 첨자 연산 선언을 `static` 선언 수정자로 표시합니다. 클래스의 경우 하위 클래스가 상위 클래스의 구현을 재정의 할 수 있도록 하기 위하여 '타입 계산 속성' 을 `class` 선언 수정자로 대신 표시할 수 있습니다. 클래스 선언에서, `static` 키워드는 선언을 `class` 와 `final` 선언 수정자 둘 모두를 써서 표시한 것과 똑같은 효과를 가집니다.
+타입 인스턴스가 아닌, 타입이 노출하도록 첨자 연산을 선언하려면, 첨자 연산 선언을 '`static` 선언 수정자' 로 표시합니다. 클래스의 '타입 계산 속성' 을 '`class` 선언 수정자' 로 대신 표시하면 하위 클래스가 상위 클래스 구현을 재정의할 수 있습니다. 클래스 선언에서의, `static` 키워드는 선언에 '`class` 와 `final` 선언 수정자' 둘 다를 표시한 것과 똑같은 효과입니다.
 
 > GRAMMAR OF A SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID379)
 
 ### Operator Declaration (연산자 선언)
 
-_연산자 선언 (operator declaration)_ 은 새로운 '중위 (infix) 연산자', '접두사 (prefix) 연산자', 또는 '접미사 (postfix) 연산자' 를 프로그램에 도입하며 `operator` 키워드를 사용하여 선언합니다.
+_연산자 선언 (operator declaration)_ 은 프로그램에 새로운 '중위 (infix), 접두사 (prefix), 및 접미사 (postfix) 연산자' 를 도입하며 `operator` 키워드로 선언합니다.
 
-세 가지의 서로 다른 '고정성 (fixity)' 에 따라 연산자를 선언할 수 있는데: '중위 (infix)', '접두사 (prefix)', 그리고 '접미사 (postfix)' 가 그것입니다. 연산자의 _고정성 (fixity)_ 은 '피연산자 (operands)' 에 대한 연산자의 '상대 위치 (relative position)' 를 지정합니다.
+세 가지 서로 다른 '고정 위치 (fixity)' 인: '중위', '접두사', 및 '접미사' 로 연산자를 선언할 수 있습니다. 연산자의 _고정 위치 (fixity)_ 는 자신의 '피연산자 (operands)' 에 대한 연산자의 '상대 위치 (relative position)' 를 지정합니다.
 
-연산자 선언에는, 각각의 '고정성' 마다 하나씩, 총 세 개의 기본 형식이 있습니다. 연산자의 고정성을 지정하려면 연산자 선언에서 `operator` 키워드 앞을 `infix`, `prefix`, 또는 `postfix` 선언 수정자로 표시합니다. 각각의 형식에서, 연산자의 이름은 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 에서 정의한 '연산자 문자 (operator characters)' 만을 가질 수 있습니다.
+연산자 선언은, 각각의 '고정 위치' 마다 하나씩, 총 세 개의 기초 형식이 있습니다. 연산자의 고정 위치는 연산자 선언의 `operator` 키워드 앞을 `infix`, `prefix`, 또는 `postfix` 선언 수정자로 표시함으로써 지정합니다. 각각의 형식에서, 연산자 이름은 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 에서 정의한 '연산자 문자 (operator characters)' 만을 담을 수 있습니다.
 
 다음 형식은 새로운 '중위 연산자' 를 선언합니다:
 
-infix operator `operator name-연산자 이름`: `precedence group-우선 순위 그룹`
+&nbsp;&nbsp;&nbsp;&nbsp;infix operator `operator name-연산자 이름`: `precedence group-우선 순위 그룹`
 
-_중위 연산자 (infix operator)_ 는, 표현식 `1 + 2` 에 있는 친숙한 더하기 연산자 (`+`) 처럼, 두 피연산자 사이에 작성하는 '이항 연산자 (binary operator)' 입니다.
+_중위 연산자 (infix operator)_ 는, 익숙한 `1 + 2` 표현식의 '더하기 연산자 (`+`)' 같이, 두 피연산자 사이에 작성하는 '이항 (binary) 연산자' 입니다.
 
-중위 연산자는 선택적으로 '우선 순위 그룹 (precedence group)' 을 지정할 수 있습니다. 만약 연산자에 대한 우선 순위 그룹을 생략할 경우, 스위프트는 '기본 우선 순위 그룹' 인, `DefaultPrecedence` 를, 사용하는데, 이는 `TernaryPrecedence` 보다 바로 한 단계 높은 우선 순위를 지정합니다. 더 자세한 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 을 참고하기 바랍니다.
+중위 연산자는 옵션으로 '우선 순위 그룹' 을 지정할 수 있습니다. 연산자에서 우선 순위 그룹을 생략하면, 스위프트는, `DefaultPrecedence` 라는, '기본 우선 순위 그룹' 을, 사용하는데, 이는 `TernaryPrecedence` 바로 위의 우선 순위를 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 참고하기 바랍니다.
 
 다음 형식은 새로운 '접두사 연산자' 를 선언합니다:
 
-prefix operator `operator name-연산자 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;prefix operator `operator name-연산자 이름`
 
-_접두사 연산자 (prefix operator)_ 는, 표현식 `!a` 에 있는 '접두사 논리 부정 연산자 (`!`)' 처럼, 피연산자 바로 앞에 작성하는 '단항 연산자 (unary operator)' 입니다.
+_접두사 연산자 (prefix operator)_ 는, `!a` 표현식의 '접두사 논리 부정 (NOT) 연산자 (`!`)' 같이, 자신의 피연산자 바로 앞에 작성하는 '단항 (unary) 연산자' 입니다.
 
-'접두사 연산자 선언' 은 '우선 순위 수준 (predecence level)' 를 지정하지 않습니다. '접두사 연산자' 는 '비결합적 (nonassociative)'[^nonassociative] 입니다.
+'접두사 연산자 선언' 은 '우선 순위 수준 (predecence level)' 를 지정하지 않습니다. '접두사 연산자' 는 '비-결합적 (nonassociative)'[^nonassociative] 입니다.
 
 다음 형식은 새로운 '접미사 연산자' 를 선언합니다:
 
-postfix operator `operator name-연산자 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;postfix operator `operator name-연산자 이름`
 
-_접미사 연산자 (postfix operator)_ 는, 표현식 `a!` 에 있는 '강제-포장 풀기 연산자 (`!`)' 처럼, 피연산자 바로 뒤에 작성하는 '단항 연산자 (unary operator)' 입니다.
+_접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 풀기 연산자 (`!`)' 같이, 자신의 피연산자 바로 뒤에 작성하는 '단항 (unary) 연산자' 입니다.
 
-접두사 연산자에서와 같이, '접미사 연산자 선언' 은 '우선 순위 수준' 을 지정하지 않습니다. '접미사 연산자' 는 '비결합적 (nonassociative)'[^nonassociative] 입니다.
+접두사 연산자에서 처럼, '접미사 연산자 선언' 은 '우선 순위 수준' 을 지정하지 않습니다. '접미사 연산자' 도 '비-결합적 (nonassociative)'[^nonassociative] 입니다.
 
-새로운 연산자를 선언한 후, 이 연산자와 같은 이름을 가지는 '정적 메소드' 를 선언하는 것으로써 이를 구현합니다. '정적 메소드' 는 연산자가 인자로 취하는 그 값의 타입 중 하나에 대한 멤버입니다-예를 들어, `Double` 에 `Int` 를 곱하는 연산자는 `Double` 또는 `Int` 구조체 중 하나에 대한 '정적 메소드' 로 구현됩니다. 접두사 연산자나 접미사 연산자를 구현하고 있는 경우, 해당 메소드 선언 역시 반드시 그와 연관된 `prefix` 또는 `postfix` 선언 수정자로 표시해야 합니다. 새로운 연산자를 생성하고 구현하는 방법에 대한 예제는, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 참고하기 바랍니다.
+새로운 연산자를 선언한 후엔, '연산자와 똑같은 이름의 정적 메소드' 를 선언함으로써 이를 구현합니다. '정적 메소드' 는 연산자가 취하는 한 인자 값 타입의 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체의 '정적 메소드' 로 구현합니다. 접두사나 접미사 연산자를 구현 중이면, '해당 메소드 선언' 도 반드시 '관련 `prefix` 나 `postfix` 선언 수정자; 로 표시해야 합니다. 새로운 연산자의 생성과 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF AN OPERATOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380)
 
 ### Precedence Group Declaration (우선 순위 그룹 선언)
 
-_우선 순위 그룹 선언 (precedence group declaration)_ 은 '중위 연산자' 의 우선 순위에 대한 새로운 '그룹 방식 (grouping)' 을 프로그램에 도입합니다. 연산자의 우선 순위는, '괄호로 그룹지은 것 (grouping parentheses)' 이 없을 때, 연산자가 피연산자에 얼마나 꽉 연결되는 지를 지정합니다.
+_우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중위 연산자 우선 순위 그룹' 을 프로그램에 도입합니다. '연산자 우선 순위' 는, 괄호 그룹이 없을 때의, '연산자와 피연산자의 밀접 연결 정도' 를 지정합니다.
 
 '우선 순위 그룹 선언' 의 형식은 다음과 같습니다:
 
-precedencegroup `precedence group name-우선 순위 그룹 이름` {
-    higherThan: `lower group names-낮아야 하는 그룹 이름`
-    lowerThan: `higher group names-높아야 하는 그룹 이름`
-    associativity: `associativity-결합성`
-    assignment: `assignment-할당`
-}
+&nbsp;&nbsp;&nbsp;&nbsp;precedencegroup `precedence group name-우선 순위 그룹 이름` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;higherThan: `lower group names-더 낮은 그룹 이름들`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowerThan: `higher group names-더 높은 그룹 이름들`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;associativity: `associativity-결합성`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assignment: `assignment-할당`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-_lower group names-낮아야 하는 그룹 이름_ 과 _higher group names-높아야 하는 그룹 이름_ 목록은 기존 '우선 순위 그룹' 에 새로운 '우선 순위 그룹' 관계를 지정합니다. `lowerThan` 우선 순위 그룹 특성은 현재 모듈의 외부에서 선언한 우선 순위 그룹을 참조할 때만 사용할 수도 있습니다. `2 + 3 * 5` 라는 표현식에서 처럼, 두 연산자가 피연산자를 두고 서로 경쟁할 때, 상대적으로 더 높은 우선 순위를 가지는 연산자가 피연산자와 더 꽉 연결됩니다.
+_더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 목록은 '새로운 우선 순위 그룹' 과 '기존 우선 순위 그룹' 간의 관계를 지정합니다. '`lowerThan` 우선 순위 그룹 특성' 은 '현재 모듈 밖에서 선언한 우선 순위 그룹' 을 참조하기 위해서만 사용할 수도 있습니다. 두 연산자가, `2 + 3 * 5` 같은 표현식에서 처럼, 자신의 피연산자를 두고 서로 경쟁할 때는, '상대적으로 더 높은 우선 순위를 가진 연산자' 가 피연산자와 더 밀접하게 연결됩니다.
 
-> `lower group names` 과 `higher group names` 의 사용으로 서로 관련된 우선 순위 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 에 들어맞아야 하지만, '선형 계층 (linear hierarchy)' 을 형성해야하는 것은 아닙니다. 이는 상대적인 우선 순위가 정의되지 않은 '우선 순위 그룹' 을 가지는 것이 가능함을 의미합니다. 이러한 우선 순위 그룹에 있는 연산자들은 '괄호로 그룹지은 것' 없이 서로 나란히 사용할 수 없습니다.
+> _더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관계 맺은 우선 순위 그룹들은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 이룰 필요까진 없습니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹을 가지는 것' 도 가능하다는 의미입니다. 이 우선 순위 그룹 연산자들은 괄호 그룹 없이는 서로 나란히 사용할 수 없습니다.
 
-스위프트는 표준 라이브러리가 제공하는 연산자와 함께 사용할 수 있는 수많은 '우선 순위 그룹' 을 정의하고 있습니다. 예를 들어, '더하기 (`+`)' 및 '빼기 (`-`)' 연산자는 `AdditionPrecedence` 그룹에 속하고, '곱하기 (`*`)' 및 '나누기 (`/`)' 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리에서 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 를 참고하기 바랍니다.
+표준 라이브러리가 제공하는 연산자와 함께 하기 위해서 스위프트는 '수많은 우선 순위 그룹' 을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
-연산자의 _associativity-결합성_ 은 '괄호로 그룹지은 것' 이 없을 때 똑같은 우선 순위 수준을 가진 일련의 연산자들이 어떻게 서로 그룹지어져야 하는 지를 지정합니다. 연산자의 결합성은 '상황에-따른 (context-sensitive)' 키워드인 `left`, `right`, 또는 `none` 중 하나를 작성하여 지정합니다-만약 '결합성' 을 생략할 경우, 기본 값은 `none` 입니다. '왼쪽-결합 (left-associative)' 인 연산자는 '왼쪽에서 오른쪽으로 (left-to-right)' 로 그룹짓습니다. 예를 들어, 빼기 연산자 (`-`) 는 '왼쪽-결합' 이므로, 표현식 `4 - 5 - 6` 은 `(4 - 5) - 6` 으로 그룹지어 지고 값은 `-7` 이라고 평가됩니다. '오른쪽-결합' 인 연산자는 '오른쪽에서 왼쪽으로 (right-to-left)' 그룹지으며, 결합성을 `none` 으로 지정한 연산자는 어떤 것도 결합하지 않습니다. 우선 순위 수준이 같은 '비결합적 연산자 (nonassociative operators)' 는 서로 인접하여 있을 수 없습니다. 예를 들어, `<` 연산자는 `none` 이라는 '결합성' 을 가지는데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아님을 의미합니다.
+연산자 _결합성 (associativity)_ 은 괄호 그룹이 없을 때 똑같은 우선 순위 수준을 가지는 일련의 연산자들끼리 그룹짓는 방법을 지정합니다. 연산자 결합성은 `left`, `right`, 또는 `none` 이라는 '상황에-민감한 (context-sensitive) 키워드'[^context-sensitive] 하나를 작성함으로써 지정합니다-'결합성' 을 생략하면, 기본 값이 `none` 입니다. '왼쪽-결합 (left-associative) 연산자' 는 왼쪽에서 오른쪽으로 그룹 짓습니다. 예를 들어, '빼기 연산자 (`-`)' 는 왼쪽-결합이므로, `4 - 5 - 6` 라는 표현식은 `(4 - 5) - 6` 으로 그룹지으며 `-7` 이라고 평가합니다. '오른쪽-결합 연산자' 는 오른쪽에서 왼쪽으로 그룹지으며, `none` 이라는 결합성으로 지정한 연산자는 결합을 아예 하지 않습니다. '똑같은 우선 순위 수준의 비-결합 (nonassociative) 연산자' 는 서로 인접해 있을 수 없습니다. 예를 들어, `<` 연산자의 '결합성' 은 `none` 인데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아니라는 의미입니다.
 
-'우선 순위 그룹' 의 _assignment-할당_ 은 연산자가 '옵셔널 연쇄 (optional chaining)' 를 포함한 연산에서 사용될 때의 우선 순위를 지정합니다. `true` 로 설정하면, 관련 우선 순위 그룹에 있는 연산자는 '옵셔널 연쇄' 중에 표준 라이브러리의 '할당 연산자' 와 똑같은 '그룹화 규칙 (grouping rules)' 을 사용합니다. 다른 경우, 즉 `false` 로 설정하거나 생략한 경우라면, 우선 순위 그룹에 있는 연산자는 할당을 수행하지 않는 연산자와 똑같은 '옵셔널 연쇄' 규칙을 따릅니다.
+'우선 순위 그룹의 _할당 (assignment)_' 은 '옵셔널 연쇄 (optional chaining) 를 포함한 연산에서 사용할 때의 연산자 우선 순위' 를 지정합니다. `true` 로 설정할 땐, 옵셔널 연쇄 중에 '관련 우선 순위 그룹의 연산자' 가 '표준 라이브러리의 할당 연산자' 와 똑같은 그룹 규칙을 사용합니다. 그 외의 경우, `false` 로 설정하거나 생략할 땐, '우선 순위 그룹의 연산자' 가 '할당을 하지 않는 연산자' 와 똑같은 옵셔널 연쇄 규칙을 따릅니다.
 
 > GRAMMAR OF A PRECEDENCE GROUP DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID550)
 
 ### Declaration Modifiers (선언 수정자)
 
-_선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의미를 수정하는 키워드 또는 '상황에 따른 (context-sensitive)' 키워드입니다. 선언 수정자를 지정하려면 적절한 키워드 또는 '상황에 따른' 키워드를 선언의 (만약 있다면) '특성 (attribute)' 과 선언을 도입하는 키워드 사이에 작성합니다.
+_선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 수정하는 '키워드' 나 '상황에-민감한 (context-sensitive) 키워드'[^context-sensitive] 입니다. '선언 수정자' 는 '선언의 특성 (이 있으면 이들) 과 선언을 도입한 키워드' 사이에 적절한 '키워드' 또는 '상황에-민감한 키워드' 를 작성함으로써 지정합니다.
 
 `class`
 
-  이 수정자를 클래스의 멤버에 적용하면 그 멤버는, 클래스 인스턴스의 멤버가 아니라, 클래스 자체의 멤버라는 것을 지시합니다. 상위 클래스의 멤버가 이 수정자를 가지고 있으면서 `final` 수정자를 가지고 있지 않으면 하위 클래스에서 재정의할 수 있습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 해당 멤버가, 클래스 인스턴스의 멤버라기 보다는, 클래스 자신의 멤버임을 지시하기 위해 클래스의 멤버에 적용합니다. 이 수정자를 가지나 `final` 수정자는 가지지 않는 상위 클래스 멤버는 하위 클래스에서 재정의할 수 있습니다.
 
 `dynamic`
 
-  이 수정자를 클래스의 어떤 멤버에 적용하면 오브젝티드-C 에서 표현할 수 있게 됩니다. 멤버 선언을 `dynamic` 수정자로 표시할 때, 해당 멤버에 대한 접근은 오브젝티브-C 런타임을 사용하여 항상 동적으로 '급파 (dispatched)' 됩니다. 해당 멤버에 대한 접근은 컴파일러에 의해 절대로 '인라인 (inline; 줄 내에 삽입)' 되거나 '탈가상화 (devirtualized)' 되지 않습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 오브젝티브-C 로 표현할 수 있는 어떤 클래스 멤버에든 적용합니다. 멤버 선언을 `dynamic` 수정자로 표시할 때, 해당 멤버에 대한 접근은 항상 '오브젝티브-C 런타임' 을 사용하여 '동적으로 급파 (dispatched)' 합니다. '해당 멤버에 대한 접근' 은 절대로 컴파일러가 '인라인 (inline; 코드 줄로 넣음)' 하거나 '탈-가상화 (devirtualized)' 하지 않습니다.[^dynamically-dispatched]
 
-  `dynamic` 수정자로 표시한 선언은 오브젝티브-C 런타임을 사용하여 급파되기 때문에, 반드시 `objc` 특성으로 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 '오브젝티브-C 런타임' 을 사용하여 '급파 (dispatched)' 하기 때문에, 반드시 '`objc` 특성 (attribute)' 으로도 표시해야 합니다.
 
 `final`
 
-  이 수정자는 클래스 또는 클래스의 속성, 메소드, 및 첨자 연산 멤버에 적용합니다. 클래스에 적용하면 그 클래스로 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버가 어떤 하위 클래스에서도 재정의할 수 없음을 나타냅니다. `final` 특성을 사용하는 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '클래스' 또는 '클래스의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 클래스에 적용하면 클래스가 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 것을 지시합니다. `final` 특성의 사용 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
 
 `lazy`
 
-  이 수정자를 클래스나 구조체의 저장 변수 속성에 적용하면 그 속성의 초기 값은, 속성에 처음 접근할 때, 최대 한 번만 계산하고 저장한다는 것을 지시합니다. `lazy` 수정자를 사용하는 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 속성의 초기 값을, 속성에 최초로 접근할 때, 최대 한 번만 계산하고 저장함을 지시하기 위해 클래스나 구조체의 저장 변수 속성에 적용합니다. `lazy` 수정자의 사용 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
 
 `optional`
 
-  이 수정자를 프로토콜의 속성, 메소드, 또는 첨자 연산 멤버에 적용하면 준수하는 타입이 해당 멤버를 구현하는 것이 필수가 아님을 지시합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '준수 타입' 이 해당 멤버를 구현하는 것이 필수가 아님을 지시하기 위해 '프로토콜의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 
 
-  `optional` 수정자는 `objc` 특성으로 표시한 프로토콜에만 적용할 수 있습니다. 그 결과, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 담고 있는 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자를 사용하는 방법에 대한 더 많은 정보와 '옵셔널 프로토콜 멤버' 의 접근 방법에 대한 길잡이-예를 들어, 준수 타입이 이들을 구현하는 것이 맞는지 확실하지 않을 때 등-은 [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 '`objc` 특성으로 표시한 프로토콜' 에만 적용할 수 있습니다. 그 결과, '클래스 타입' 만이 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자의 사용 방법에 대한 더 많은 정보와-예를 들어, 준수 타입이 이를 구현하는지 확실하지 않을 때-옵셔널 프로토콜 멤버로 접근하는 방법에 대한 길잡이는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 참고하기 바랍니다.
 
 `required`
 
-  이 수정자를 클래스의 '지명 초기자' 및 '편의 초기자' 에 적용하면 모든 하위 클래스가 반드시 해당 초기자를 구현해야 한다는 것을 지시합니다. 해당 초기자의 하위 클래스 구현도 반드시 `required` 수정자로 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 모든 하위 클래스가 반드시 해당 초기자를 구현해야 함을 지시하기 위해 '지명 또는 편의 초기자' 에 적용합니다. 해당 초기자의 하위 클래스 구현도 반드시 `required` 수정자로 표시해야 합니다.
 
 `static`
 
-  이 수정자를 구조체, 클래스, 열거체, 또는 프로토콜의 멤버에 적용하면 그 멤버는, 해당 타입의 인스턴스 멤버가 아니라, 타입 자체의 멤버라는 것을 지시합니다. 클래스 선언 영역에서, 멤버 선언에 `static` 수정자를 작성하면 해당 멤버 선언에 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과를 가집니다.[^class-final] 하지만, 클래스의 '상수 타입 속성' 은 예외입니다: 여기서의 `static` 은 클래스가 아닐 때의, 보통의 의미를 가지는데 왜냐면 이 선언에서는 `class` 나 `final` 을 쓸 수 없기 때문입니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 멤버가, 해당 타입 인스턴스의 멤버라기 보다는, 해당 타입의 멤버임을 지시하기 위해 '구조체, 클래스, 열거체, 또는 프로토콜의 멤버' 에 적용합니다. 클래스 선언 영역에서, 멤버 선언에 `static` 수정자를 작성하면 해당 멤버 선언에 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과를 가집니다.[^class-final] 하지만, 클래스의 '상수 타입 속성' 은 예외인데: 이 선언에는 `class` 나 `final` 을 작성할 수 없기 때문에 여기서는 `static` 이 보통의, 클래스 아닌 의미를 가집니다. 
 
 `unowned`
 
-  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '소유하지 않는 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 실행 시간 에러가 발생합니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 실행 시간 에러를 일으킵니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 참고하기 바랍니다.
 
 `unowned(safe)`
 
-  `unowned` 의 (전체) 철자를 명시한 것.
+&nbsp;&nbsp;&nbsp;&nbsp;`unowned` 의 (전체) 철자를 명시한 것입니다.[^unowned-safe]
 
 `unowned(unsafe)`
 
-  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '소유하지 않는 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 객체가 있던 위치의 메모리에 접근하게 되는 데, 이것이 '메모리가-안전하지 않은 (memory-unsafe)' 연산입니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 객체였던 위치의 메모리에 접근하는데, 이는 '메모리-안전하지 않은 (memory-unsafe) 연산' 입니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다.`unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 참고하기 바랍니다.
 
 `weak`
 
-  이 수정자를 저장 변수 또는 '저장 변수 속성' 에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '약한 참조 (weak reference)' 라는 것을 지시합니다. 변수 또는 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체가 해제된 후에 변수 또는 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제 및 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 약한 (weak) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 변수나 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제와 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 참고하기 바랍니다.
 
 #### Access Control Levels (접근 제어 수준)
 
-스위프트는 다섯 가지 수준의 접근 제어를 제공합니다: '공개 (open)', '공용 (public)', '내부 (internal)', '파일 전용 (file private)', 그리고 '개인 전용 (private)' 이 그것입니다. 아래의 접근-수준 수정자 중 하나를 선언에 표시하여 그 선언의 접근 수준을 지정할 수 있습니다. 접근 제어는 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 에서 더 자세하게 설명합니다.
+스위프트는: '공개 (open)', '공용 (public)', '내부 (internal)', '파일 전용 (file private)', 및 '개인 전용 (private)' 이라는 '다섯 가지 수준의 접근 제어' 를 제공합니다. 선언의 '접근 수준' 을 지정하기 위해 아래의 '접근-수준 수정자' 중 하나를 선언에 표시할 수 있습니다. '접근 제어' 는 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에서 자세하게 논의합니다.
 
 `open`
 
-  선언에 이 수정자를 적용하면 해당 선언이 선언과 같은 모듈에 있는 코드에서 접근할 수도 있고 하위 클래스를 만들 수도 있다고 나타냅니다. `open` 접근-수준 수정자로 표시한 선언은 해당 선언을 가지고 있는 모듈을 불러온 모듈 내의 코드에서도 접근할 수 있고 하위 클래스를 만들 수 있습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드가 선언에 접근하고 하위 클래스를 만들 수 있다' 는 것을 지시하기 위해 선언에 적용합니다. '`open` 접근-수준 수정자로 표시한 선언' 은 '해당 선언을 담은 모듈을 불러온 모듈 코드' 도 접근하고 하위 클래스를 만들 수 있습니다.
 
 `public`
 
-  선언에 이 수정자를 적용하면 해당 선언이 선언과 같은 모듈에 있는 코드에서 접근할 수도 있고 하위 클래스를 만들 수도 있다고 나타냅니다. `public` 접근-수준 수정자로 표시한 선언은 해당 선언을 가지고 있는 모듈을 불러온 모듈 내의 코드에서도 접근할 수 있습니다. (하위 클래스를 만들 수는 없습니다.)
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드가 선언에 접근하고 하위 클래스를 만들 수 있다' 는 것을 지시하기 위해 선언에 적용합니다. '`public` 접근-수준 수정자로 표시한 선언' 은 '해당 선언을 담은 모듈을 불러온 모듈 코드' 가 (하위 클래스를 만들 순 없지만) 접근할 수는 있습니다.
 
 `internal`
 
-  선언에 이 수정자를 적용하면 해당 선언이 선언과 같은 모듈에 있는 코드에서만 접근할 수 있다고 나타냅니다. 기본적으로, 대부분의 선언은 암시적으로 `internal` 접근-수준 수정자로 표시됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드만 선언에 접근할 수 있다' 는 것을 지시하기 위해 선언에 적용합니다. 기본적으로, 대부분의 선언은 암시적으로 '`internal` 접근-수준 수정자' 로 표시합니다.
 
 `fileprivate`
 
-  선언에 이 수정자를 적용하면 해당 선언이 선언과 같은 소스 파일에 있는 코드에서만 접근할 수 있다고 나타냅니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드만 선언에 접근할 수 있다' 는 것을 지시하기 위해 선언에 적용합니다.
 
 `private`
 
-  선언에 이 수정자를 적용하면 해당 선언이 바로 그 선언을 둘러싼 영역 내에 있는 코드에서만 접근할 수 있다고 나타냅니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언을 직접 둘러싼 영역 안의 코드만 선언에 접근할 수 있다' 는 것을 지시하기 위해 선언에 적용합니다.
 
-'접근 제어' 라는 용도를 위해서, 같은 파일에 있는 같은 타입에 대한 '익스텐션 (extensions)' 은 접근-제어 영역을 공유합니다. 확장하는 타입 역시 같은 파일에 있다면, 타입의 접근-제어 영역을 공유합니다. 타입의 선언에서 선언한 '개인 전용 (private)' 멤버는 '익스텐션' 에서 접근할 수 있으며, 한 '익스텐션' 에서 선언한 '개인 전용' 멤버는 다른 '익스텐션' 및 타입의 선언에서 접근할 수 있습니다.
+'접근 제어' 용으로, 동일 파일에 있는 동일 타입에 대한 '익스텐션' 들은 '접근-제어 영역' 을 서로 공유합니다. '익스텐션' 이 확장하는 타입도 동일 파일에 있으면, '타입의 접근-제어 영역' 을 서로 공유합니다. 타입 선언에서 선언한 '개인 전용 (private) 멤버' 를 '익스텐션' 이 접근할 수 있으며, '한 익스텐션에서 선언한 개인 전용 멤버' 를 '다른 익스텐션' 과 '타입의 선언' 이 접근할 수 있습니다.
 
-위에 있는 각각의 접근-수준 수정자는, `set` 키워드를 괄호로 감싸서 구성한 (예를 들어, `private(set)` 같은), 단일 인자를 선택적으로 받을 수 있습니다. 이 형태의 접근-제어 수정자는, [Getters and Setters ('획득자' 와 '설정자')]({% post_url 2020-04-28-Access-Control %}#getters-and-setters-획득자-와-설정자) 에서 설명한 것처럼, 변수나 첨자 연산의 '설정자 (setter)' 에 대한 접근 수준을 변수나 첨자 연산 그 자체의 접근 수준보다 낮거나 같도록 지정하고 싶을 때 사용합니다.
+위의 각 '접근-수준 수정자' 는, 괄호로 테두리 친 `set` 키워드로 (예를 들어, `private(set)` 같이) 구성한, 단일 인자를 옵션으로 받습니다. 이 형식의 접근-제어 수정자는, [Getters and Setters ('획득자' 와 '설정자')]({% post_url 2020-04-28-Access-Control %}#getters-and-setters-획득자-와-설정자) 에서 논의한 것처럼, '변수나 첨자 연산의 설정자에 대한 접근 수준' 을 '변수나 첨자 연산 자신의 접근 수준' 보다 낮거나 같게 지정하고 싶을 때 사용합니다.
+
+### 다음 장
+
+[Attributes (특성) > ]({% post_url 2020-08-14-Attributes %})
 
 ### 참고 자료
 
@@ -1284,11 +1288,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 
 [^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 
-[^nonassociative]: '비결합적 (nonassociative)' 이라는 것은 '결합성 (associativity)' 이 `none` 인 것을 말하는 것으로 추측됩니다. 보다 자세한 내용은 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 을 참고하기 바랍니다.
+[^nonassociative]: '비-결합적 (nonassociative)' 이라는 것은 '결합성 (associativity)' 이 `none` 인 것을 말하는 것으로 추측됩니다. 보다 자세한 내용은 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
 
-[^class-final]: 즉 클래스 선언에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
+[^class-final]: 즉, 클래스 선언 안에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
 
 [^any-type]: 여기서의 'Any Type' 은 스위프트에 있는 '`Any` 타입' 과는 다른 의미로 사용한 것입니다.
 
@@ -1307,3 +1311,9 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 작동 방식이나 의
 [^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 
 
 [^signature]: 함수나 메소드에서 '서명 (signature)' 과 '이름 (name)' 의 차이점은 '매개 변수' 를 포함하는 지의 여부입니다. 이 예제에 있는 `init(rawValue: RawValue)` 는 '초기자 서명 (signature)' 이며, 매개 변수 부분을 뺀 `init?` 이 '초기자 이름' 입니다. 
+
+[^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 참고하기 바랍니다. 
+
+[^dynamically-dispatched]: '동적으로 급파 (dynamically dispatched) 한다' 는 개념은 'C++ 과 같은 언어' 에서 많이 사용하는 '가상 함수 테이블 (virtual function table) 을 사용한다' 는 의미입니다. '가상 함수 테이블' 을 사용하기 때문에, '인라인' 이나 '탈-가상화' 를 할 수 없습니다. '가상 함수 테이블' 에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 참고하기 바랍니다.  
+
+[^unowned-safe]: 즉, 스위프트에서 `unowned` 라고 사용하는 것은 `unowned(safe)` 를 사용하는 것이며, `unowned(unsafe)` 를 명시하지 않은 이상, 항상 `unowned(safe)` 를 사용하게 됩니다.
