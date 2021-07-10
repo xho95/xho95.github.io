@@ -1182,7 +1182,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `final`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 클래스 또는 클래스의 속성, 메소드, 및 첨자 연산 멤버에 적용합니다. 클래스에 적용하면 그 클래스로 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버가 어떤 하위 클래스에서도 재정의할 수 없음을 나타냅니다. `final` 특성을 사용하는 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '클래스' 또는 '클래스의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 클래스에 적용하면 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 어떤 하위 클래스에서도 재정의할 수 없다는 것을 지시합니다. `final` 특성의 사용 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
 
 `lazy`
 
