@@ -6,18 +6,16 @@ date:   2020-08-14 11:30:00 +0900
 categories: Swift Language Grammar Attribute
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 부분[^Attributes]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다.
->
-> 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 부분[^Attributes]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Attributes (특성)
 
-스위프트에는 두 가지 종류의 '특성 (attributes)' 이 있습니다: 선언에 적용되는 것과 타입에 적용되는 것이 그것입니다. 특성은 선언 또는 타입에 대한 추가적인 정보를 제공합니다. 예를 들어, 함수 선언에 대한 `discardableResult` 특성은, 함수가 값을 반환하더라도, 컴파일러가 반환 값을 사용하지 않는다는 이유로 경고를 생성하지는 않아야 한다는 것을 나타냅니다.
+스위프트는-선언에 적용되는 것과 타입에 적용되는 것-두 가지 종류의 '특성 (attributes)' 이 있습니다. '특성' 은 선언이나 타입에 대한 추가적인 정보를 제공합니다. 예를 들어, 함수 선언에 대한 `discardableResult` 특성은, 함수가 값을 반환하긴 하지만, 반환 값을 사용하지 않는다는 이유로 컴파일러가 경고를 생성하지는 않도록 지시합니다.
 
-특성을 지정하려면 `@` 기호 뒤에 특성의 이름과 그 특성이 받는 어떤 인자를 작성합니다:
+'특성' 은 '`@` 기호' 뒤예 '특성 이름과 특성이 받는 어떤 인자' 들을 작성함으로써 지정합니다:
 
-@`attribute name-특성 이름`<br />
-@`attribute name-특성 이름`(`attribute argument-특성 인자`)
+&nbsp;&nbsp;&nbsp;&nbsp;@`attribute name-특성 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;@`attribute name-특성 이름`(`attribute argument-특성 인자`)
 
 몇몇 '선언 특성 (declaration attributes)' 은 특성에 대한 추가 정보를 지정하는 인자와 특정 선언에 적용하는 방법을 지정하는 인자를 받습니다. 이 _특성 인자 (attribute arguments)_ 들은 괄호로 닫혀 있으며, 양식은 그들이 속한 특성에서 정의합니다.
 
