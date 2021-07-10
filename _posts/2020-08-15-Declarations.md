@@ -1196,27 +1196,31 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `required`
 
-  이 수정자를 클래스의 '지명 초기자' 및 '편의 초기자' 에 적용하면 모든 하위 클래스가 반드시 해당 초기자를 구현해야 한다는 것을 지시합니다. 해당 초기자의 하위 클래스 구현도 반드시 `required` 수정자로 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 모든 하위 클래스가 반드시 해당 초기자를 구현해야 함을 지시하기 위해 '지명 또는 편의 초기자' 에 적용합니다. 해당 초기자의 하위 클래스 구현도 반드시 `required` 수정자로 표시해야 합니다.
 
 `static`
 
-  이 수정자를 구조체, 클래스, 열거체, 또는 프로토콜의 멤버에 적용하면 그 멤버는, 해당 타입의 인스턴스 멤버가 아니라, 타입 자체의 멤버라는 것을 지시합니다. 클래스 선언 영역에서, 멤버 선언에 `static` 수정자를 작성하면 해당 멤버 선언에 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과를 가집니다.[^class-final] 하지만, 클래스의 '상수 타입 속성' 은 예외입니다: 여기서의 `static` 은 클래스가 아닐 때의, 보통의 의미를 가지는데 왜냐면 이 선언에서는 `class` 나 `final` 을 쓸 수 없기 때문입니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 멤버가, 해당 타입 인스턴스의 멤버라기 보다는, 해당 타입의 멤버임을 지시하기 위해 '구조체, 클래스, 열거체, 또는 프로토콜의 멤버' 에 적용합니다. 클래스 선언 영역에서, 멤버 선언에 `static` 수정자를 작성하면 해당 멤버 선언에 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과를 가집니다.[^class-final] 하지만, 클래스의 '상수 타입 속성' 은 예외인데: 이 선언에는 `class` 나 `final` 을 작성할 수 없기 때문에 여기서는 `static` 이 보통의, 클래스 아닌 의미를 가집니다. 
 
 `unowned`
 
-  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '소유하지 않는 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 실행 시간 에러가 발생합니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 실행 시간 에러를 일으킵니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 참고하기 바랍니다.
 
 `unowned(safe)`
 
-  `unowned` 의 (전체) 철자를 명시한 것.
+&nbsp;&nbsp;&nbsp;&nbsp;`unowned` 의 (전체) 철자를 명시한 것입니다.[^unowned-safe]
 
 `unowned(unsafe)`
 
-  이 수정자를 저장 변수, 상수 속성, 또는 저장 속성에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '소유하지 않는 참조 (unowned reference)' 라는 것을 지시합니다. 객체가 해제된 후에 변수 또는 속성에 접근하려고 하면, 객체가 있던 위치의 메모리에 접근하게 되는 데, 이것이 '메모리가-안전하지 않은 (memory-unsafe)' 연산입니다. '약한 참조 (weak reference)' 와 같이, 속성 또는 값의 타입은 반드시 클래스 타입이어야 합니다: '약한 참조' 와는 달리, 타입은 '옵셔널이-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 객체였던 위치의 메모리에 접근하는데, 이는 '메모리-안전하지 않은 (memory-unsafe) 연산' 입니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다.`unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 참고하기 바랍니다.
 
 `weak`
 
-  이 수정자를 저장 변수 또는 '저장 변수 속성' 에 적용하면 그 변수 또는 속성이 값으로 저장하고 있는 것이 객체에 대한 '약한 참조 (weak reference)' 라는 것을 지시합니다. 변수 또는 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체가 해제된 후에 변수 또는 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제 및 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 를 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+이 수정자는 
+
+이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 약한 (weak) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 변수나 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제와 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 참고하기 바랍니다.
 
 #### Access Control Levels (접근 제어 수준)
 
@@ -1292,7 +1296,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
 
-[^class-final]: 즉 클래스 선언에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
+[^class-final]: 즉, 클래스 선언 안에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
 
 [^any-type]: 여기서의 'Any Type' 은 스위프트에 있는 '`Any` 타입' 과는 다른 의미로 사용한 것입니다.
 
@@ -1315,3 +1319,5 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 참고하기 바랍니다. 
 
 [^dynamically-dispatched]: '동적으로 급파 (dynamically dispatched) 한다' 는 개념은 'C++ 과 같은 언어' 에서 많이 사용하는 '가상 함수 테이블 (virtual function table) 을 사용한다' 는 의미입니다. '가상 함수 테이블' 을 사용하기 때문에, '인라인' 이나 '탈-가상화' 를 할 수 없습니다. '가상 함수 테이블' 에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 참고하기 바랍니다.  
+
+[^unowned-safe]: 즉, 스위프트에서 `unowned` 라고 사용하는 것은 `unowned(safe)` 를 사용하는 것이며, `unowned(unsafe)` 를 명시하지 않은 이상, 항상 `unowned(safe)` 를 사용하게 됩니다.
