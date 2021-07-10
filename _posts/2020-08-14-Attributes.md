@@ -17,7 +17,7 @@ categories: Swift Language Grammar Attribute
 &nbsp;&nbsp;&nbsp;&nbsp;@`attribute name-특성 이름`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;@`attribute name-특성 이름`(`attribute argument-특성 인자`)
 
-몇몇 '선언 특성 (declaration attributes)' 은 특성에 대한 추가 정보를 지정하는 인자와 특정 선언에 적용하는 방법을 지정하는 인자를 받습니다. 이 _특성 인자 (attribute arguments)_ 들은 괄호로 닫혀 있으며, 양식은 그들이 속한 특성에서 정의합니다.
+일부 '선언 특성' 들은 특성에 대한 추가 정보와 특별한 선언에 적용하는 방법을 지정하는 인자를 받습니다. 이 _특성 인자 (attribute arguments)_ 들은 괄호로 테두리 치며, 그 양식은 자신이 속한 특성에서 정의합니다.
 
 ### Declaration Attributes (선언 특성)
 
