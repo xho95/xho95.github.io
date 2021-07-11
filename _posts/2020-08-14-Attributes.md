@@ -51,13 +51,13 @@ categories: Swift Language Grammar Attribute
 
 &nbsp;&nbsp;&nbsp;&nbsp;introduce: `version number-버전 번호`
 
-&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1에서 3개 까지의 양수' 로 구성합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다.
 
-* `deprecated` 인자는 이 선언을 '폐기 예정 (deprecated)' 하기로 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 형식은 다음과 같습니다:
+* `deprecated` 인자는 선언을 '폐기 (deprecated)' 하기로 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 형식은 다음과 같습니다:
 
-  deprecated: `version number-버전 번호`
+&nbsp;&nbsp;&nbsp;&nbsp;deprecated: `version number-버전 번호`
 
-  선택 사항인 _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다. '버전 번호' 를 생략하면, 폐지 시점에 대한 어떤 정보도 없이, 이 선언이 현재 폐지 예정이라는 것을 지시합니다. 버전 번호를 생략할 경우, '콜론 (`:`)' 도 생략합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;옵션인 _버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다. '버전 번호' 를 생략하면, 폐기 시점에 대한 어떤 정보도 주지 않고, 현재 선언이 폐기 예정임을 지시합니다. 버전 번호를 생략하면, '콜론 (`:`)' 마저 생략합니다.
 
 * `obsoleted` 인자는 이 선언을 '폐기 (obsoleted)' 하기로 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 선언을 폐기하면, 지정한 플랫폼 또는 언어에서 제거되며 더 이상 사용할 수 없게 됩니다. 형식은 다음과 같습니다:
 
