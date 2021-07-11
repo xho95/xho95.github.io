@@ -65,19 +65,19 @@ categories: Swift Language Grammar Attribute
 
 &nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다.
 
-* `message` 인자는 '폐기 예정 (deprecated) 이거나 폐기한 (obsoleted) 선언' 의 사용에 대해 '경고 (warning) 나 에러 (error)' 를 내보낼 때 컴파일러가 보여줄 문장 메시지를 제공합니다. 형식은 다음과 같습니다:
+* `message` 인자는 '폐기 예정 (deprecated) 이거나 폐기한 (obsoleted) 선언' 의 사용 시에 '경고 (warning) 나 에러 (error)' 를 내보낼 때 컴파일러가 보여줄 문장 메시지를 제공합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;message: `message-메시지`
 
 &nbsp;&nbsp;&nbsp;&nbsp;_메시지 (message)_ 는 '문자열 글자 값 (literal)' 으로 구성합니다.
 
-* `rename` 인자는 이름이 바뀐 선언에 대한 새 이름을 지시하는 문장 형태의 메시지를 제공합니다. 컴파일러는 이름이 바뀐 선언에 대한 에러를 내보낼 때 이 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
+* `rename` 인자는 '이름을 바꾼 선언에 대한 새로운 이름' 을 지시하는 문장 메시지를 제공합니다. 이름을 바꾼 선언의 사용 시에 에러를 내보낼 때 컴파일러가 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
 
-  renamed: `new name-새 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;renamed: `new name-새로운 이름`
 
-  _new name-새 이름_ 은 '문자열 글자 값' 으로 구성됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_새로운 이름 (new name)_ 은 '문자열 글자 값' 으로 구성합니다.
 
-  아래에 보인 것처럼, `rename` 인자와 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 선언 (type alias declaration)' 에 적용하면, 선언의 이름이 프레임웍 또는 라이브러리의 발매 중에 바뀌었다는 것을 지시할 수 있습니다. 이렇게 조합하면 이 선언의 이름이 바뀌었다는 컴파일 시간 에러로 끝나게 됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;아래에 보인 것처럼, `rename` 인자와 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 선언 (type alias declaration)' 에 적용하면, 선언의 이름이 프레임웍 또는 라이브러리의 발매 중에 바뀌었다는 것을 지시할 수 있습니다. 이렇게 조합하면 이 선언의 이름이 바뀌었다는 컴파일 시간 에러로 끝나게 됩니다.
 
   ```swift
   // 첫 번재 발매
