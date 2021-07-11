@@ -65,11 +65,11 @@ categories: Swift Language Grammar Attribute
 
 &nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다.
 
-* `message` 인자는 '폐기 예정 (deprecated)' 이거나 '폐기한 (obsoleted)' 선언의 사용에 대한 '경고 (warning)' 또는 '에러 (error)' 를 내보낼 때 컴파일러가 보여주는 문장 형태의 메시지를 제공합니다. 형식은 다음과 같습니다:
+* `message` 인자는 '폐기 예정 (deprecated) 이거나 폐기한 (obsoleted) 선언' 의 사용에 대해 '경고 (warning) 나 에러 (error)' 를 내보낼 때 컴파일러가 보여줄 문장 메시지를 제공합니다. 형식은 다음과 같습니다:
 
-  message: `message-메시지`
+&nbsp;&nbsp;&nbsp;&nbsp;message: `message-메시지`
 
-  _message-메시지_ 는 '문자열 글자 값 (string literal)' 으로 구성됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_메시지 (message)_ 는 '문자열 글자 값 (literal)' 으로 구성합니다.
 
 * `rename` 인자는 이름이 바뀐 선언에 대한 새 이름을 지시하는 문장 형태의 메시지를 제공합니다. 컴파일러는 이름이 바뀐 선언에 대한 에러를 내보낼 때 이 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
 
