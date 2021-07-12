@@ -213,7 +213,7 @@ let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
 ```
 
-클래스가 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 둘 다 실제로는 _똑같은 (same)_ `VideoMode` 인스턴스를 참조합니다. 실제적으로, 이들은, 아래 그림에 보인 것처럼, 똑같은 단일 인스턴스에 대한 서로 다른 두 이름일 뿐입니다:
+클래스가 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 둘 다 실제로는 _똑같은 (same)_ `VideoMode` 인스턴스를 참조합니다. 실제로, 이들은, 아래 그림에 보인 것처럼, 똑같은 단일 인스턴스에 대한 서로 다른 두 이름일 뿐입니다:
 
 ![before and after of an reference type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-reference-type-before-after.jpg)
 

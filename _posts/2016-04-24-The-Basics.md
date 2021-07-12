@@ -531,7 +531,7 @@ if convertedNumber != nil {
 // "convertedNumber contains some integer value." 를 인쇄합니다.
 ```
 
-옵셔널이 값을 담고 있음을 한 번 확신 _하고 (does)_ 나면, 옵셔널 이름 끝에 느낌표 (`!`) 를 붙여서 '실제 값 (underlying value)' 에 접근할 수 있습니다. 느낌표는 사실상, "옵셔널이 값을 가짐을 확실히 알고 있으니; 사용하기 바랍니다." 라고 말하는 것입니다. 이것이 옵셔널 값의 '강제 포장 풀기 (forced unwrapping)' 라는 것입니다:
+옵셔널이 값을 담고 있음을 한 번 확신 _하고 (does)_ 나면, 옵셔널 이름 끝에 느낌표 (`!`) 를 붙여서 '실제 값 (underlying value)' 에 접근할 수 있습니다. 느낌표는 실제로, "이 옵셔널이 값을 가짐은 확실하니; 사용하기 바랍니다." 라고 말하는 것입니다. 이것이 옵셔널 값의 '강제 포장 풀기 (forced unwrapping)' 라는 것입니다:
 
 ```swift
 if convertedNumber != nil {
