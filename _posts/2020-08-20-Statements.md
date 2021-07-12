@@ -242,7 +242,7 @@ case .suppressed:
 
 #### Break Statement ('break' 문)
 
-`break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. `break` 문은, 아래에 보인 것처럼, `break` 키워드만으로 구성할 수, 아니면 `break` 키워드와 그 뒤의 '구문 이름표' 이름으로 구성할 수도 있습니다.
+`break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. `break` 문은, 아래 보인 것처럼, `break` 키워드만으로 구성할 수, 아니면 `break` 키워드와 그 뒤의 '구문 이름표' 이름으로 구성할 수도 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;break
 <br />
@@ -260,7 +260,7 @@ case .suppressed:
 
 #### Continue Statement ('continue' 문)
 
-`continue` 문은 반복문에 대한 현재 회차의 프로그램 실행을 종료하지만 반복문의 실행을 멈추진 않습니다. `continue` 문은, 아래에 보인 것처럼, `continue` 키워드만으로 구성할 수도, 아니면 `continue` 키워드와 그 뒤의 '구문 이름표' 로 구성할 수도 있습니다.
+`continue` 문은 반복문에 대한 현재 회차의 프로그램 실행을 종료하지만 반복문의 실행을 멈추진 않습니다. `continue` 문은, 아래 보인 것처럼, `continue` 키워드만으로 구성할 수도, 아니면 `continue` 키워드와 그 뒤의 '구문 이름표' 로 구성할 수도 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;continue
 <br />

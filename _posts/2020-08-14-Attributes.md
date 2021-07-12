@@ -71,13 +71,13 @@ categories: Swift Language Grammar Attribute
 
 &nbsp;&nbsp;&nbsp;&nbsp;_메시지 (message)_ 는 '문자열 글자 값 (literal)' 으로 구성합니다.
 
-* `renamed` 인자는 '이름이 바뀐 선언에 새로운 이름을 지시하는 문장 메시지' 를 제공합니다. 컴파일러는 '이름이 바뀐 선언의 사용에 대한 에러' 를 내보낼 때 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
+* `renamed` 인자는 '이름이 바뀐 선언에 새로운 이름을 지시하는 문장 메시지' 를 제공합니다. 컴파일러는 '이름 바뀐 선언의 사용에 대한 에러' 를 내보낼 때 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;renamed: `new name-새로운 이름`
 
 &nbsp;&nbsp;&nbsp;&nbsp;_새로운 이름 (new name)_ 은 '문자열 글자 값' 으로 구성합니다.
 
-&nbsp;&nbsp;&nbsp;&nbsp;아래에 보인 것처럼, `rename` 인자와 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 선언 (type alias declaration)' 에 적용하면, 선언의 이름이 프레임웍 또는 라이브러리의 발매 중에 바뀌었다는 것을 지시할 수 있습니다. 이렇게 조합하면 이 선언의 이름이 바뀌었다는 컴파일 시간 에러로 끝나게 됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;프레임웍이나 라이브러리를 발매한 사이에 선언 이름이 바뀌었음을 지시하기 위해, 아래 보인 것처럼, `rename` 과 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 (type alias) 선언' 에 적용할 수 있습니다. 이 조합은 '선언 이름이 바뀌었다' 는 컴파일 시간 에러가 됩니다.
 
   ```swift
   // 첫 번재 발매
@@ -85,7 +85,7 @@ categories: Swift Language Grammar Attribute
     // 프로토콜 정의
   }
 
-  // 뒤이은 발매에서는 MyProtocol 의 이름을 바꿉니다.
+  // 후속 발매에서 MyProtocol 이름을 바꿉니다.
   protocol MyRenamedProtocol {
     // 프로토콜 정의
   }
