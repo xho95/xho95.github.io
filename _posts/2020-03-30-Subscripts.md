@@ -120,7 +120,7 @@ struct Matrix {
 var matrix = Matrix(rows: 2, columns: 2)
 ```
 
-위 예제는 두 개의 행과 두 개의 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 행렬을, 맨 왼쪽 위에서부터 오른쪽 아래로, 효과적으로 '납작하게 한 (flattened) 버전' 입니다[^flattend-version]:
+위 예제는 두 개의 행과 두 개의 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 실제로, 맨 왼쪽 위부터 오른쪽 아래로, '행렬을 납작하게 한 (flattened) 버전' 입니다[^flattend-version]:
 
 ![flattened-version-of-the-matrix](/assets/Swift/Swift-Programming-Language/Subscripts-flattened-version-matrix.jpg)
 
@@ -183,4 +183,4 @@ print(mars)
 
 [^initializer]: 여기서 사용한 '초기자 (initializer)' 는 구조체 타입에 대해서 자동으로 생기는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 부여되므로 코드에 나타나지는 않습니다. 멤버 초기자에 대한 더 자세한 정보는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
 
-[^flattend-version]: '납작하게 한 (flattened) 버전' 이란 '2-차원' 배열을 '1-차원' 배열의 형태로 만든 버전이라는 의미입니다.
+[^flattend-version]: '납작하게 한 (flattened) 버전' 이란 '2-차원' 배열을 '1-차원' 배열 형태로 만들었다는 의미입니다.

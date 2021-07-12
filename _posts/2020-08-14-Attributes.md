@@ -23,11 +23,11 @@ categories: Swift Language Grammar Attribute
 
 '선언 특성' 은 선언에만 적용할 수 있습니다.
 
-#### available (사용 가능한)
+#### available (사용 가능성)
 
-이 특성을 적용하면 선언의 '생명 주기 (life cycle)' 가 정해진 스위프트 언어 버전 또는 정해진 플랫폼 및 운영 체제 버전과 관계되어 있다는 것을 지시합니다.
+이 특성은 '정해진 스위프트 언어 버전' 또는 '정해진 플랫폼과 운영 체제 버전' 과 관계 있는 선언의 '생애 주기 (life cycle)' 를 지시하기 위해 적용합니다.
 
-`available` 특성은 항상 두 개 이상의 쉼표로 구분된 특성 인자들의 목록과 같이 사용합니다. 이 인자들은 다음의 플랫폼 또는 언어 이름 중 하나로 시작합니다:
+'`available` 특성' 은 항상 쉼표로 구분한 둘 이상의 '특성 인자 목록' 들과 같이 있습니다. 이 인자들은 다음의 플랫폼 또는 언어 이름으로 시작합니다:
 
 * `iOS`
 * `iOSApplicationExtension`
@@ -41,43 +41,43 @@ categories: Swift Language Grammar Attribute
 * `tvOSApplicationExtension`
 * `swift`
 
-'별표 (asterisk; `*`)' 를 사용하면 위에 나열한 모든 플랫폼 이름에 대한 선언의 '사용 가능성 (availability)' 을 지시할 수도 있습니다. '스위프트 버전 번호' 를 사용하여 '사용 가능성' 을 지시하는 `available` 특성은 '별표' 를 사용할 수 없습니다.
+'별표 (asterisk; `*`)' 로 '위에 나열한 모든 플랫폼 이름' 에 대한 '선언의 사용 가능성 (availability)' 을 지시할 수도 있습니다. '스위프트 버전 번호로 사용 가능성을 지시한 `available` 특성' 은 '별표' 를 사용할 수 없습니다.
 
-나머지 인자들은 어떤 순서로 나타내도 상관 없으며, 중요한 '이정표 (milestones)' 를 포함한, 선언의 생명 주기에 대한 추가적인 정보를 지정할 수 있습니다.
+나머지 인자들은 어떤 순서로든 있을 수 있으며, 중요한 '이정표 (milestones)' 를 포함하여, '선언의 생애 주기에 대한 추가적인 정보' 를 지정할 수 있습니다.
 
-* `unavailable` 인자는 이 선언이 지정한 플랫폼에서는 사용 가능하지 않음을 지시합니다. 이 인자는 '스위프트 버전 사용 가능성' 을 지정할 때는 사용할 수 없습니다.
+* `unavailable` 인자는 '특정 플랫폼에서는 사용 불가능한 선언' 을 지시합니다. '스위프트 버전 사용 가능성' 을 지정할 땐 이 인자를 사용할 수 없습니다.
 
-* `introduced` 인자는 이 선언을 도입하도록 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 형식은 다음과 같습니다:
+* `introduced` 인자는 '선언을 도입한 첫 번째 특정 플랫폼 또는 언어 버전' 을 지시합니다. 형식은 다음과 같습니다:
 
-  introduce: `version number-버전 번호`
+&nbsp;&nbsp;&nbsp;&nbsp;introduce: `version number-버전 번호`
 
-  _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다.
 
-* `deprecated` 인자는 이 선언을 '폐기 예정 (deprecated)' 하기로 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 형식은 다음과 같습니다:
+* `deprecated` 인자는 '선언을 폐기할 (deprecated) 첫 번째 특정 플랫폼 또는 언어 버전' 을 지시합니다. 형식은 다음과 같습니다:
 
-  deprecated: `version number-버전 번호`
+&nbsp;&nbsp;&nbsp;&nbsp;deprecated: `version number-버전 번호`
 
-  선택 사항인 _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다. '버전 번호' 를 생략하면, 폐지 시점에 대한 어떤 정보도 없이, 이 선언이 현재 폐지 예정이라는 것을 지시합니다. 버전 번호를 생략할 경우, '콜론 (`:`)' 도 생략합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;옵션인 _버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다. '버전 번호' 를 생략하면, 폐기 시점에 대한 어떤 정보도 없이, 현재 해당 선언이 폐기 예정임을 지시합니다. 버전 번호를 생략하면, '콜론 (`:`)' 마저 생략합니다.
 
-* `obsoleted` 인자는 이 선언을 '폐기 (obsoleted)' 하기로 지정한 플랫폼 또는 언어의 첫 번째 버전을 지시합니다. 선언을 폐기하면, 지정한 플랫폼 또는 언어에서 제거되며 더 이상 사용할 수 없게 됩니다. 형식은 다음과 같습니다:
+* `obsoleted` 인자는 '선언을 폐기한 (obsoleted) 첫 번째 특정 플랫폼 또는 언어 버전' 을 지시합니다. 폐기한 선언일 땐, 특정 플랫폼이나 언어에서 이를 제거하며 더 이상 사용할 수 없습니다. 형식은 다음과 같습니다:
 
-  obsoleted: `version number-버전 번호`
+&nbsp;&nbsp;&nbsp;&nbsp;obsoleted: `version number-버전 번호`
 
-  _version number-버전 번호_ 는, 마침표로 구분된, '1' 개에서 '3' 개 사이의 양의 정수로 구성됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다.
 
-* `message` 인자는 '폐기 예정 (deprecated)' 이거나 '폐기한 (obsoleted)' 선언의 사용에 대한 '경고 (warning)' 또는 '에러 (error)' 를 내보낼 때 컴파일러가 보여주는 문장 형태의 메시지를 제공합니다. 형식은 다음과 같습니다:
+* `message` 인자는 '폐기 예정 (deprecated) 이거나 폐기한 (obsoleted) 선언' 의 사용에 대한 '경고 (warning) 나 에러 (error)' 를 내보낼 때 컴파일러가 보여줄 문장 메시지를 제공합니다. 형식은 다음과 같습니다:
 
-  message: `message-메시지`
+&nbsp;&nbsp;&nbsp;&nbsp;message: `message-메시지`
 
-  _message-메시지_ 는 '문자열 글자 값 (string literal)' 으로 구성됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_메시지 (message)_ 는 '문자열 글자 값 (literal)' 으로 구성합니다.
 
-* `rename` 인자는 이름이 바뀐 선언에 대한 새 이름을 지시하는 문장 형태의 메시지를 제공합니다. 컴파일러는 이름이 바뀐 선언에 대한 에러를 내보낼 때 이 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
+* `renamed` 인자는 '이름이 바뀐 선언에 새로운 이름을 지시하는 문장 메시지' 를 제공합니다. 컴파일러는 '이름 바뀐 선언의 사용에 대한 에러' 를 내보낼 때 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
 
-  renamed: `new name-새 이름`
+&nbsp;&nbsp;&nbsp;&nbsp;renamed: `new name-새로운 이름`
 
-  _new name-새 이름_ 은 '문자열 글자 값' 으로 구성됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_새로운 이름 (new name)_ 은 '문자열 글자 값' 으로 구성합니다.
 
-  아래에 보인 것처럼, `rename` 인자와 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 선언 (type alias declaration)' 에 적용하면, 선언의 이름이 프레임웍 또는 라이브러리의 발매 중에 바뀌었다는 것을 지시할 수 있습니다. 이렇게 조합하면 이 선언의 이름이 바뀌었다는 컴파일 시간 에러로 끝나게 됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;프레임웍이나 라이브러리를 발매한 사이에 선언 이름이 바뀌었음을 지시하기 위해, 아래 보인 것처럼, `rename` 과 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 (type alias) 선언' 에 적용할 수 있습니다. 이 조합은 '선언 이름이 바뀌었다' 는 컴파일 시간 에러가 됩니다.
 
   ```swift
   // 첫 번재 발매
@@ -85,7 +85,7 @@ categories: Swift Language Grammar Attribute
     // 프로토콜 정의
   }
 
-  // 뒤이은 발매에서는 MyProtocol 의 이름을 바꿉니다.
+  // 후속 발매에서 MyProtocol 이름을 바꿉니다.
   protocol MyRenamedProtocol {
     // 프로토콜 정의
   }
@@ -94,7 +94,7 @@ categories: Swift Language Grammar Attribute
   typealias MyProtocol = MyRenamedProtocol
   ```
 
-'다중 `available` 특성' 을 단일 선언에 적용하면 서로 다른 플랫폼 및 서로 다른 버전의 스위프트에 대한 선언의 사용 가능성을 지정할 수 있습니다. 만약 특성에서 지정한 플랫폼 또는 언어 버전이 현재 대상과 일치하지 않는 경우 그 `available` 특성을 적용한 선언은 무시됩니다. 다중 `available` 특성을 사용할 경우, 플랫폼 사용 가능성과 스위프트 사용 가능성을 조합하는 것이 효과적입니다.
+서로 다른 플랫폼과 서로 다른 스위프트 버전에 대한 '선언의 사용 가능성' 을 지정하기 위해 '단일 선언' 에 '여러 개의 `available` 특성' 을 적용할 수 있습니다. '특성에서 지정한 플랫폼이나 언어 버전' 이 '현재 대상' 과 일치하지 않으면 '`available` 특성을 적용한 선언' 을 무시합니다. '여러 개의 `available` 특성' 을 사용할 경우, '실제 (effective) 사용 가능성' 은 '플랫폼과 스위프트 사용 가능성의 조합' 입니다.
 
 `available` 특성이 플랫폼 또는 언어 이름 인자과 더불어 `introdued` 인자 만을 지정하는 경우, 다음의 '약칭 구문 표현 (shorhand syntax)' 를 대신 사용할 수 있습니다:
 
