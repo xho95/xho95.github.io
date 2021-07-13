@@ -85,7 +85,7 @@ categories: Swift Language Grammar Attribute
     // 프로토콜 정의
   }
 
-  // 후속 발매에서 MyProtocol 이름을 바꿉니다.
+  // 후속 발매 시 MyProtocol 이름을 바꿉니다.
   protocol MyRenamedProtocol {
     // 프로토콜 정의
   }
@@ -94,14 +94,14 @@ categories: Swift Language Grammar Attribute
   typealias MyProtocol = MyRenamedProtocol
   ```
 
-서로 다른 플랫폼과 서로 다른 스위프트 버전에 대한 '선언의 사용 가능성' 을 지정하기 위해 '단일 선언' 에 '여러 개의 `available` 특성' 을 적용할 수 있습니다. '특성에서 지정한 플랫폼이나 언어 버전' 이 '현재 대상' 과 일치하지 않으면 '`available` 특성을 적용한 선언' 을 무시합니다. '여러 개의 `available` 특성' 을 사용할 경우, '실제 (effective) 사용 가능성' 은 '플랫폼과 스위프트 사용 가능성의 조합' 입니다.
+서로 다른 플랫폼 및 서로 다른 스위프트 버전에 대해서 '선언의 사용 가능성' 을 지정하기 위해 '단일 선언' 에 '여러 개의 `available` 특성' 을 적용할 수 있습니다. '특성에서 지정한 플랫폼이나 언어 버전' 이 '현재 대상' 과 일치하지 않으면 '`available` 특성을 적용한 선언' 을 무시합니다. '여러 개의 `available` 특성' 을 사용할 경우, '실제 (effective) 사용 가능성' 은 '플랫폼과 스위프트 사용 가능성을 조합' 한 것입니다.
 
-`available` 특성이 플랫폼 또는 언어 이름 인자과 더불어 `introdued` 인자 만을 지정하는 경우, 다음의 '약칭 구문 표현 (shorhand syntax)' 를 대신 사용할 수 있습니다:
+`available` 특성이 플랫폼 및 언어 이름 인자에 더하여 `introduced` 인자만 지정할 경우, 다음 '줄임 구문 (shorhand syntax)' 을 대신 사용할 수 있습니다:
 
-\@available(`platform name-플랫폼 이름` `version number-버전 번호`, *)<br />
-\@available(swift `version number-버전 번호`)
+&nbsp;&nbsp;&nbsp;&nbsp;\@available(`platform name-플랫폼 이름` `version number-버전 번호`, *)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;\@available(swift `version number-버전 번호`)
 
-`available` 특성에 대한 '약칭 구문 표현' 은 다중 플랫폼에 대한 사용 가능성을 간결하게 표현해줍니다. 두 형식이 기능적으로 '동치 (equivalent)' 이더라도, 가능할 때마다 '약칭' 형식을 사용하는 것이 좋습니다.
+`available` 특성의 줄임 구문은 여러 플랫폼에 대한 사용 가능성을 간결하게 나타냅니다. 두 형식의 기능이 '동치 (equivalent)' 이긴 하지만, 가능할 때마다 줄임 형식을 사용하는 것이 좋습니다.
 
 ```swift
 @available(iOS 10.0, macOS 10.12, *)
