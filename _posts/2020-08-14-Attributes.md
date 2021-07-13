@@ -122,13 +122,13 @@ struct MyStruct {
 
 #### discardableResult (버릴 수 있는 결과)
 
-값을 반환하는 함수나 메소드를 호출하면서 그 결과를 사용하지 않을 때 컴파일러 경고를 억제하려면 이 특성을 함수나 메소드 선언에 적용합니다.
+이 특성은 '결과를 사용하지 않고 값을 반환하는 함수나 메소드를 호출할 때의 컴파일러 경고' 를 억제하기 위해 함수나 메소드 선언에 적용합니다.
 
 #### dynamicCallable (동적으로 호출 가능한)
 
-이 특성을 클래스, 구조체, 열거체, 또는 프로토콜에 적용하면 그 타입의 인스턴스를 호출 가능한 함수처럼 취급합니다. 해당 타입은 반드시 `dynamicCall(withArguments:)` 메소드나, `dynamicCall(withKeywordArguments:)` 메소드 중 하나, 또는 둘 다를 구현해야 합니다.
+이 특성은 '타입의 인스턴스를 호출 가능한 함수처럼 취급' 하기 위해 클래스, 구조체, 열거체, 또는 프로토콜에 적용합니다.[^dynamic-callable] 타입은 반드시 `dynamicallyCall(withArguments:)` 메소드나, `dynamicallyCall(withKeywordArguments:)` 메소드, 또는 둘 다를 구현해야 합니다.
 
-동적으로 호출 가능한 타입의 인스턴스는 마치 어떤 개수의 인자도 받을 수 있는 함수인 것처럼 호출할 수 있습니다.
+'동적으로 호출 가능한 타입의 인스턴스' 는 마치 '어떤 개수의 인자든 취할 수 있는 함수' 인 것처럼 호출할 수 있습니다.
 
 ```swift
 @dynamicCallable
@@ -146,18 +146,18 @@ let dial = TelephoneExchange()
 
 // 동적 메소드 호출을 사용합니다.
 dial(4, 1, 1)
-// "Get Swift help on forums.swift.org" 를 출력합니다.
+// "Get Swift help on forums.swift.org" 를 인쇄합니다.
 
 dial(8, 6, 7, 5, 3, 0, 9)
-// "Unrecognized number" 를 출력합니다.
+// "Unrecognized number" 를 인쇄합니다.
 
 // 실제 메소드를 직접 호출합니다.
 dial.dynamicallyCall(withArguments: [4, 1, 1])
 ```
 
-`dynamicCall(withArguments:)` 메소드의 선언은-위 예제에 있는 `[Int]` 와 같이-반드시 [ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral) 프로토콜을 준수하는 단일 매개 변수를 가져야 합니다. 반환 타입은 어떤 타입든 될 수 있습니다.
+`dynamicallyCall(withArguments:)` 메소드 선언은 반드시-위 예제의 `[Int]` 같이-[ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral) 프로토콜을 준수하는 단일 매개 변수를 가져야 합니다. 반환 타입은 어떤 타입이어도 됩니다.
 
-`dynamicCall(withKeywordArguments:)` 메소드를 구현하는 경우에는 '동적 메소드 호출' 에서 이름표를 포함시킬 수 있습니다.
+`dynamicallyCall(withKeywordArguments:)` 메소드를 구현하면 '동적 메소드 호출' 에 '이름표' 를 포함할 수 있습니다.
 
 ```swift
 @dynamicCallable
@@ -776,3 +776,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^calling-convention]: 스위프트의 '호출 협약 (calling conventions)' 에 대한 더 자세한 정보는 '깃허브 (GitHub)' 의 '애플 (Apple)' 저장소에 있는 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 문서를 참고하기 바랍니다.
 
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
+
+[^dynamic-callable]: '동적으로 호출 가능한 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
