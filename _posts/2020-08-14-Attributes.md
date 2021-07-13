@@ -184,7 +184,7 @@ print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
 
 `dynamicallyCall` 메소드를 둘 다 구현하면, 메소드 호출 시 키워드 인자를 포함하면 `dynamicallyCall(withKeywordArguments:)` 을 호출합니다. 다른 모든 경우에는, `dynamicallyCall(withArguments:)` 를 호출합니다.
 
-동적으로 호출 가능한 인스턴스는 `dynamicallyCall` 메소드 구현에서 지정한 타입과 일치하는 인자와 반환 값을 가질 때만 호출할 수 있습니다. 다음 예제에 있는 호출은 컴파일 되지 않는데 왜냐면 `KeyValuePairs<String, String>` 을 받는 `dynamicCall(withArguments:)` 구현은 없기 때문입니다.
+`dynamicallyCall` 메소드 구현에서 지정한 타입과 일치하는 인자와 반환 값을 가진 '동적으로 호출 가능한 인스턴스' 만 호출할 수 있습니다. 다음 예제의 호출은 `KeyValuePairs<String, String>` 을 취하는 `dynamicallyCall(withArguments:)` 구현이 없기 때문에 컴파일되지 않습니다.
 
 ```swift
 repeatLabels(a: "four") // 에러
