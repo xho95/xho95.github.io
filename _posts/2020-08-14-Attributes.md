@@ -198,7 +198,7 @@ repeatLabels(a: "four") // 에러
 
 `subscript(dynamicMemberLookup:)` 구현은 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 또는 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 타입의 인자를 사용하는 '키 경로' 를 취할 수 있습니다. [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 프로토콜을 준수하는 타입-대부분의 경우, `String`-인 인자를 사용하는 '멤버 이름' 을 취할 수도 있습니다. 첨자 연산의 반환 타입은 어떤 타입이어도 됩니다.
 
-'멤버 이름으로써 동적으로 멤버 찾아보기' 는, 다른 언어로 된 자료를 스위프트 안으로 연동할 때 처럼, 컴파일 시간에 타입 검사를 할 수 없는 자료의 '포장 타입 (wrapper type)' 을 생성하기 위해 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'멤버 이름을 써서 동적으로 멤버 찾아보기' 는, 다른 언어로 된 자료를 스위프트 안으로 연동할 때 처럼, 컴파일 시간에 타입 검사를 할 수 없는 자료의 '포장 타입 (wrapper type)' 을 생성하기 위해 사용할 수 있습니다.[^dynamic-member-lookup] 예를 들면 다음과 같습니다:
 
 ```swift
 @dynamicMemberLookup
@@ -222,7 +222,7 @@ print(dynamic == equivalent)
 // "true" 를 출력합니다.
 ```
 
-'동적으로 멤버 찾아보기' 를 '키 경로' 로 하는 것은 컴파일-시간 타입 검사를 지원하는 방식으로 '포장 타입' 을 구현하는 용도로 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'키 경로를 써서 동적으로 멤버 찾아보기' 는 '컴파일-시간 타입 검사를 지원하는 식으로 포장 타입' 을 구현하기 위해 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct Point { var x, y: Int }
@@ -778,3 +778,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
 
 [^dynamic-callable]: '동적으로 호출 가능한 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
+
+[^dynamic-member-lookup]: '동적으로 멤버 찾아보기 (dynamicMemberLookup)' 은 스위프트에서 'Core Data' 나 'JSON' 을 다룰 때 사용하게 되는 것 같습니다.
