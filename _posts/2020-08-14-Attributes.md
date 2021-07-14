@@ -192,13 +192,13 @@ repeatLabels(a: "four") // 에러
 
 #### dynamicMemberLookup (동적으로 멤버 찾아보기)
 
-이 특성은 실행 시간에 멤버를 이름으로 찾아볼 수 있게 클래스, 구조체, 열거체, 또는 프로토콜에 적용합니다. 타입은 반드시 `subscript(dynamicMemberLookup:)` 첨자 연산을 구현해야 합니다.
+이 특성은 실행 시간에 멤버를 이름으로 찾아볼 수 있게 클래스, 구조체, 열거체, 또는 프로토콜에 적용합니다. 타입은 반드시 '`subscript(dynamicMemberLookup:)` 첨자 연산' 을 구현해야 합니다.
 
-'명시적인 멤버 표현식' 에서, '이름 붙인 멤버와 관련한 선언' 이 없으면, 표현식이, 멤버 정보를 인자로써 전달하는, '타입의 `subscript(dynamicMemberLookup:)` 첨자 연산 호출' 인 것으로 이해합니다. 첨자 연산은 '키 경로 (key path)' 나 '멤버 이름' 인 매개 변수를 취할 수 있는데; 두 첨자 연산 모두를 구현하면, '키 경로 인자를 취하는 첨자 연산' 을 사용합니다.
+'명시적인 멤버 표현식' 에서, '이름 붙인 멤버와 관련한 선언' 이 없을 경우, 표현식은, 멤버 정보를 인자로써 전달하는, '타입의 `subscript(dynamicMemberLookup:)` 첨자 연산 호출' 인 것으로 이해합니다. 첨자 연산은 '키 경로 (key path)' 나 '멤버 이름' 인 매개 변수를 취할 수 있는데; 두 첨자 연산 모두를 구현하면, '키 경로 인자를 취하는 첨자 연산' 을 사용합니다.
 
-`subscript(dynamicMemberLookup:)` 의 구현은 키 경로의 경우 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 및 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 인 인자를 받을 수 있습니다. 멤버 이름의 경우 [ExpressibleByStringLiteral] 프로토콜을 준수하는 타입인 인자를 받을 수 있습니다-대부분의 경우, `String` 입니다. 첨자 연산의 반환 타입은 어떤 타입이든 될 수 있습니다.
+`subscript(dynamicMemberLookup:)` 구현은 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 또는 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 타입의 인자를 사용하는 '키 경로' 를 취할 수 있습니다. [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 프로토콜을 준수하는 타입-대부분의 경우, `String`-인 인자를 사용하는 '멤버 이름' 을 취할 수도 있습니다. 첨자 연산의 반환 타입은 어떤 타입이어도 됩니다.
 
-'동적으로 멤버 찾아보기' 를 '멤버 이름' 으로 하는 것은, 다른 언어로 된 자료를 스위프트로 연동할 때 처럼, 컴파일 시간에 타입 검사를 할 수 없는 자료에 대한 '포장 타입 (wrapper type; 래퍼 타입)' 을 생성하는 용도로 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'멤버 이름으로써 동적으로 멤버 찾아보기' 는, 다른 언어로 된 자료를 스위프트 안으로 연동할 때 처럼, 컴파일 시간에 타입 검사를 할 수 없는 자료의 '포장 타입 (wrapper type)' 을 생성하기 위해 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 @dynamicMemberLookup
