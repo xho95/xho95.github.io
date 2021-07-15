@@ -256,7 +256,7 @@ print(wrapper.x)
 
 #### GKInspectable (점검 가능한 GameplayKit 성분)
 
-이 특성을 적용하면 사용자 지정 'GameplayKit' '성분 (component) 속성' 을 'SpriteKit' 편집기의 'UI' 로 내보입니다. 이 특성을 적용하는 것은 또한 `objc` 특성이기도 함을 의미합니다.
+이 특성은 '사용자 정의 GameplayKit 성분 속성' 을 'SpriteKit 편집기 UI' 로 노출하기 위해 적용합니다. 이 특성을 적용하면 `objc` 특성임을 암시하는 것이기도 합니다.
 
 #### inlinable (인라인 가능한)
 
