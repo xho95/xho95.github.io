@@ -248,11 +248,11 @@ print(wrapper.x)
 
 '라이브러리 진화 모드' 에서, '동결 아닌 구조체 및 열거체 멤버' 와 상호 작용하는 코드는 라이브러리의 '미래 버전' 이 해당 타입의 일부 멤버를 추가, 삭제, 또는 재배치하는 경우에도 재-컴파일 없이 계속 작업을 허용하는 식으로 컴파일합니다. 컴파일러는 '실행 시간 정보 찾아보기' 와 '간접 계층 추가하기' 같은 기술로 이를 가능하게 합니다. 구조체나 열거체를 '동결' 로 만드는 건 성능을 얻고자 이 유연함을 포기하는 것으로: 미래 버전의 라이브러리는 타입에 대해 제한된 변화만 가할 수 있지만, 타입의 멤버와 상호 작용하는 코드에는 컴파일러가 추가적인 최적화를 가할 수 있습니다.
 
-'동결한 타입', '동결한 구조체' 에 있는 저장 속성의 타입, 그리고 동결한 열거체 'case 값' 의 '결합 값 (associated values)' 은 반드시 '공용 (public)' 이거나 또는 `usableFromInline` 특성으로 표시해야 합니다. '동결한 구조체' 의 속성은 '속성 관찰자' 를 가질 수 없으며, 저장 인스턴스 속성에 초기 값을 제공하는 표현식은, [inlinable (인라인 가능한)](#inlinable-인라인-가능한) 에서 논의한 것처럼, 반드시 '인라인 가능한 함수 (inlinable functions)' 와 같은 '제약 조건 (restrictions)' 을 따라야 합니다.
+동결 타입, 동결 구조체의 저장 속성 타입, 그리고 '동결 열거체 case 값의 결합 값' 은 반드시 '공용 (public)' 이거나 '`usableFromInline` 특성으로 표시한 것' 이어야 합니다. '동결 구조체의 속성' 은 '속성 관찰자' 와, [inlinable (인라인 가능한)](#inlinable-인라인-가능한) 에서 논의한 것처럼, '반드시 인라인 가능한 함수 (inlinable functions) 와 똑같은 제약 사항을 따라야 하는 저장 인스턴스 속성에 초기 값을 제공하는 표현식' 을 가질 수 없습니다.
 
-'명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 켜려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 켜려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (Build Libraries for Distribution)" 이라는 빌드 설정인 (`BUILD_LIBRARY_FOR_DISTRIBUTION`) 을 '예 (Yes)' 로 설정합니다.
+'명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 쓰려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 쓰려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (`BUILD_LIBRARY_FOR_DISTRIBUTION`)" 이라는 '배포 설정 (build setting)' 을 '예 (Yes)' 로 설정합니다.
 
-'동결한 열거체' 에 대한 'switch' 문은, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 에서 논의한 것처럼, `default` 'case 절' 이 필수가 아닙니다. '동결한 열거체' 를 전환할 때 `default` 또는 `@unknown default` 'case 절' 를 포함하면 '경고' 를 일으키는데 왜냐면 해당 코드는 절대로 실행되지 않기 때문입니다.
+'동결 열거체' 에 대한 'switch 문' 은, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 에서 논의한 것처럼, '`default` case 절' 을 요구하지 않습니다. 동결 열거체를 전환할 때 '`default` 나 `@unknown default` case 절' 를 포함하면 해당 코드가 절대 실행되지 않기 때문에 '경고' 를 만듭니다.
 
 #### GKInspectable (점검 가능한 GameplayKit 성분)
 
