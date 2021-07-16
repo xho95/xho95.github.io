@@ -314,13 +314,13 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 #### NSCopying (NS 복사)
 
-이 특성은 클래스의 '저장 변수 속성' 에 적용합니다. 이 특성은 속성의 '설정자 (setter)' 가-속성 자체의 값 대신-`copyWithZone(_:)` 메소드가 반환하는-속성 값의 _복사본 (copy)_ 을 만들어서 통합되도록 합니다. 속성의 타입은 반드시 `NSCopying` 프로토콜을 준수해야 합니다.
+이 특성은 '클래스의 저장 변수 속성' 에 적용합니다. 이 특성은 '속성의 설정자 (setter)' 가 속성 자신의 값 대신-`copyWithZone(_:)` 메소드가 반환한-속성 값의 _복사본 (copy)_ 과 통합하도록 합니다. 속성의 타입은 반드시 `NSCopying` 프로토콜을 준수해야 합니다.
 
-`NSCopying` 특성은 오브젝티브-C 의 `copy` 속성 특성과 비슷한 방식으로 동작합니다.
+`NSCopying` 특성은 '오브젝티브-C 의 `copy` 속성 특성' 과 비슷한 식으로 동작합니다.
 
 #### NSManaged (NS 관리)
 
-이 특성을 `NSManagedObject` 를 상속받은 클래스의 인스턴스 메소드 또는 저장 변수 속성에 적용하면, '코어 데이터 (Core Data)' 가, '결합된 개체 설명 (associated entity description)'[^associated-entity-description] 을 기초로 하여, 실행 시간에 동적으로 그 구현을 제공한다는 것을 지시합니다. `NSManaged` 특성으로 표시한 속성에 대해서, '코어 데이터 (Core Data)' 는 실행 시간에 '저장 공간 (storage)' 도 제공합니다. 이 특성을 적용하는 것은 또한 `objc` 특성이기도 함을 의미합니다.
+이 특성은, '결합 개체 설명 (associated entity description)[^associated-entity-description] 을 기초로, 코어 데이터 (Core Data) 가 자신의 구현을 실행 시간에 동적으로 제공함' 을 지시하기 위해 `NSManagedObject` 를 상속한 클래스의 인스턴스 메소드나 저장 변수 속성에 적용합니다. `NSManaged` 특성으로 표시한 속성은, 실행 시간에 '코어 데이터' 가 '저장 공간 (storage)' 도 제공합니다. 이 특성을 적용하면 `objc` 특성임을 암시하는 것이기도 합니다.
 
 #### objc (오브젝티브-C)
 
@@ -767,7 +767,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^associated-entity-description]: '결합된 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 스키마 (database schema)' 를 의미합니다. 여기서 '개체 (entity; 엔티티)' 는 다른 '데이터베이스 언어' 의 '테이블 (table)' 에 해당합니다.
+[^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 개요 (database schema)' 를 의미합니다. 여기서의 '개체 (entity)' 는 '다른 데이터베이스 언어의 테이블 (table)' 에 해당합니다.
 
 [^objc]: 원문 자체에서 `objc` 라고 되어 있는데, `objcMembers` 를 잘못 적은 것이 아닐까 추측됩니다.
 
