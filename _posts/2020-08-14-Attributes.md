@@ -23,7 +23,7 @@ categories: Swift Language Grammar Attribute
 
 '선언 특성' 은 선언에만 적용할 수 있습니다.
 
-#### available (사용 가능성)
+#### available (사용 가능)
 
 이 특성은 '정해진 스위프트 언어 버전' 또는 '정해진 플랫폼과 운영 체제 버전' 과 관계 있는 선언의 '생애 주기 (life cycle)' 를 지시하기 위해 적용합니다.
 
@@ -124,7 +124,7 @@ struct MyStruct {
 
 이 특성은 '결과를 사용하지 않고 값을 반환하는 함수나 메소드를 호출할 때의 컴파일러 경고' 를 억제하기 위해 함수나 메소드 선언에 적용합니다.
 
-#### dynamicCallable (동적으로 호출 가능한)
+#### dynamicCallable (동적으로 호출 가능)
 
 이 특성은 '타입의 인스턴스를 호출 가능한 함수처럼 취급' 하기 위해 클래스, 구조체, 열거체, 또는 프로토콜에 적용합니다.[^dynamic-callable] 타입은 반드시 `dynamicallyCall(withArguments:)` 메소드나, `dynamicallyCall(withKeywordArguments:)` 메소드, 또는 둘 다를 구현해야 합니다.
 
@@ -248,23 +248,23 @@ print(wrapper.x)
 
 '라이브러리 진화 모드' 에서, '동결 아닌 구조체 및 열거체 멤버' 와 상호 작용하는 코드는 라이브러리의 '미래 버전' 이 해당 타입의 일부 멤버를 추가, 삭제, 또는 재배치하는 경우에도 재-컴파일 없이 계속 작업을 허용하는 식으로 컴파일합니다. 컴파일러는 '실행 시간 정보 찾아보기' 와 '간접 계층 추가하기' 같은 기술로 이를 가능하게 합니다. 구조체나 열거체를 '동결' 로 만드는 건 성능을 얻고자 이 유연함을 포기하는 것으로: 미래 버전의 라이브러리는 타입에 대해 제한된 변화만 가할 수 있지만, 타입의 멤버와 상호 작용하는 코드에는 컴파일러가 추가적인 최적화를 가할 수 있습니다.
 
-동결 타입, 동결 구조체의 저장 속성 타입, 그리고 '동결 열거체 case 값의 결합 값' 은 반드시 '공용 (public)' 이거나 '`usableFromInline` 특성으로 표시한 것' 이어야 합니다. '동결 구조체의 속성' 은 '속성 관찰자' 와, [inlinable (인라인 가능한)](#inlinable-인라인-가능한) 에서 논의한 것처럼, '반드시 인라인 가능한 함수 (inlinable functions) 와 똑같은 제약 사항을 따라야 하는 저장 인스턴스 속성에 초기 값을 제공하는 표현식' 을 가질 수 없습니다.
+동결 타입, 동결 구조체의 저장 속성 타입, 그리고 '동결 열거체 case 값의 결합 값' 은 반드시 '공용 (public)' 이거나 '`usableFromInline` 특성으로 표시한 것' 이어야 합니다. '동결 구조체의 속성' 은 '속성 관찰자' 와, [inlinable (인라인 가능)](#inlinable-인라인-가능) 에서 논의한 것처럼, '반드시 인라인 가능 함수 (inlinable functions) 와 똑같은 제약 사항을 따라야 하는 저장 인스턴스 속성에 초기 값을 제공하는 표현식' 을 가질 수 없습니다.
 
 '명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 쓰려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 쓰려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (`BUILD_LIBRARY_FOR_DISTRIBUTION`)" 이라는 '배포 설정 (build setting)' 을 '예 (Yes)' 로 설정합니다.
 
-'동결 열거체' 에 대한 'switch 문' 은, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 에서 논의한 것처럼, '`default` case 절' 을 요구하지 않습니다. 동결 열거체를 전환할 때 '`default` 나 `@unknown default` case 절' 를 포함하면 해당 코드가 절대 실행되지 않기 때문에 '경고' 를 만듭니다.
+'동결 열거체' 에 대한 'switch 문' 은, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 에서 논의한 것처럼, '`default` case 절' 을 요구하지 않습니다. 동결 열거체를 전환할 때 '`default` 나 `@unknown default` case 절' 를 포함하면 해당 코드를 절대로 실행하지 않기 때문에 '경고' 를 만들어 냅니다.
 
-#### GKInspectable (점검 가능한 GameplayKit 성분)
+#### GKInspectable (점검 가능한 GameplayKit)
 
 이 특성은 '사용자 정의 GameplayKit 성분 속성' 을 'SpriteKit 편집기 UI' 로 노출하기 위해 적용합니다. 이 특성을 적용하면 `objc` 특성임을 암시하는 것이기도 합니다.
 
-#### inlinable (인라인 가능한)
+#### inlinable (인라인 가능)
 
-이 특성을 함수, 메소드, 계산 속성, 첨자 연산, 편의 초기자, 또는 정리자 (deinitializer) 선언에 적용하면 해당 선언의 구현을 모듈의 공용 인터페이스 부분으로 내보입니다. 컴파일러는 '인라인 가능한 기호 (inlinable symbol)' 에 대한 호출을 호출하는 쪽에서 기호 구현의 복사본으로 대체하도록 허용됩니다.
+이 특성은 '구현한 선언을 모듈의 공용 인터페이스로 노출' 하기 위해 함수, 메소드, 계산 속성, 첨자 연산, 편의 초기자, 또는 정리자 선언에 적용합니다. 컴파일러는 호출한 쪽에서 '인라인 가능 (inlinable) 기호에 대한 호출' 을 '기호의 구현에 대한 복사본' 으로 대체하는 걸 허용합니다.
 
-'인라인 가능한 코드' 는 어떤 모듈에서 선언한 `public` 기호와도 상호 작용할 수 있으며, `usableFromInline` 특성으로 표시한 경우 같은 모듈에서 선언한 `internal` 기호와도 상호 작용할 수 있습니다. '인라인 가능한 코드' 는 `private` 또는 `fileprivate` 기호와 상호 작용할 수 없습니다.
+'인라인 가능 코드' 는 어떤 모듈에서 선언한 '`public` 기호' 와도 상호 작용할 수 있고, 동일한 모듈에서 '`usableFromInline` 특성을 표시하여 선언한 `internal` 기호' 와도 상호 작용할 수 있습니다. '인라인 가능 코드' 는 '`private` 이나 `fileprivate` 기호' 와는 상호 작용할 수 없습니다.
 
-이 특성을 함수 내부에 중첩된 선언이나 `fileprivate` 또는 `private` 선언에는 적용할 수 없습니다. '인라인 가능한 함수' 내부에서 정의한 함수와 클로저는, 이 특성으로 표시할 수 없음에도 불구하고, 암시적으로 '인라인 가능한' 것이 됩니다.
+이 특성은 '함수 안에 중첩한 선언' 또는 '`fileprivate` 이나 `private` 선언' 에 적용할 수 없습니다. '인라인 가능 함수' 안에 정의한 함수와 클로저는, 이 특성을 표시할 수 없을 지라도, '암시적으로 인라인 가능' 합니다.
 
 #### main (메인)
 
@@ -777,6 +777,6 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
 
-[^dynamic-callable]: '동적으로 호출 가능한 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
+[^dynamic-callable]: '동적으로 호출 가능 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
 
 [^dynamic-member-lookup]: '동적으로 멤버 찾아보기 (dynamicMemberLookup)' 은 스위프트에서 'Core Data' 나 'JSON' 을 다룰 때 사용하게 되는 것 같습니다.

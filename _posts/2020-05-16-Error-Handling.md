@@ -197,7 +197,7 @@ do {
 // "Invalid selection, out of stock, or not enough money." 를 인쇄합니다.
 ```
 
-`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 인쇄하는 것으로써 에러를 처리합니다. 그 외의 경우, `nourish(with:)` 는 호출한 쪽으로 에러를 전파합니다. 그런 다음 '일반적인 `catch` 절' 이 에러를 잡아냅니다.
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 인쇄하는 것으로써 에러를 처리합니다. 그 외의 경우, `nourish(with:)` 는 자신을 호출한 쪽으로 에러를 전파합니다. 그런 다음 '일반적인 `catch` 절' 이 에러를 잡아냅니다.
 
 서로 관련된 여러 에러를 잡아내는 또 다른 방법은 `catch` 뒤에, 쉼표로 구분하여, 이들을 나열하는 것입니다. 예를 들면 다음과 같습니다:
 

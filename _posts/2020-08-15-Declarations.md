@@ -382,7 +382,7 @@ f(7)      // 무효, 인자 이름표 누락
 
 특수한 이름을 가진 여러 메소드는 '함수 호출 구문' 을 '수월한 구문 (syntactic sugar)' 으로 할 수 있게 합니다. 타입에서 이 메소드 중 하나를 정의하면, '함수 호출 구문' 에서 타입의 인스턴스를 사용할 수 있습니다. '함수 호출' 은 해당 인스턴스에 대한 '특수한 이름을 붙인 메소드' 중 하나를 호출하는 것이라고 이해합니다.
 
-클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능한)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능한) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입에서 '함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성을 사용한 메소드' 둘 다를 정의하면, 어느 메소드든 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 줍니다.
+클래스, 구조체, 및 열거체 타입은, [dynamicCallable (동적으로 호출 가능)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명하는 것처럼, '함수-처럼-호출하는 (call-as-function) 메소드' 를 정의함으로써, '함수 호출 구문' 을 지원할 수 있습니다. 타입에서 '함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성을 사용한 메소드' 둘 다를 정의하면, 어느 메소드든 사용해도 되는 상황에서 컴파일러는 '함수-처럼-호출하는 메소드' 에 우선권을 줍니다.
 
 '함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한 또 다른 이름입니다-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 도 '함수-처럼-호출하는 메소드' 이름으로 유효합니다.
 
