@@ -287,7 +287,7 @@ protocol ProvidesMain {
 }
 ```
 
-'실행 파일을 만들기 위해 컴파일하는 스위프트 코드' 는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논의한 것처럼, 최대 한 개의 '최상단 진입점' 을 담을 수 있습니다.
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논의한 것처럼, 최대 한 개의 '최상단 진입점' 을 담을 수 있습니다.
 
 #### nonobjc (오브젝티브-C 아님)
 
@@ -301,16 +301,16 @@ protocol ProvidesMain {
 
 #### NSApplicationMain (NS 앱 메인)
 
-이 특성을 클래스에 적용하면 이것이 '응용 프로그램 대리자 (application delegate)' 라는 것을 지시합니다. 이 특성을 사용하는 것은 `NSApplicationMain(_:_:)` 함수를 호출하는 것과 '동치 (equivalent)' 입니다.
+이 특성은 '자신이 앱 대리자 (delegate) 임' 을 지시하기 위해 클래스에 적용합니다. 이 특성의 사용은 `NSApplicationMain(_:_:)` 함수의 호출과 '동치 (equivalent)' 입니다.
 
-이 특성을 사용하지 않을 경우, 다음과 같이 `NSApplicationMain(_:_:)` 함수를 호출하는 '최상단 코드' 를 가지는 `main.swift` 파일을 제공하도록 합니다.
+이 특성을 사용하지 않으면, 다음 처럼 최상단에서 `NSApplicationMain(_:_:)` 함수를 호출하는 코드를 가진 `main.swift` 파일을 공급합니다:[^NSApplicationMain]
 
 ```swift
 import AppKit
 NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 ```
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 설명한 것처럼, '최상단 진입점' 을 최대 한 개만 가질 수 있습니다.
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논의한 것처럼, 최대 한 개의 '최상단 진입점' 을 담을 수 있습니다.
 
 #### NSCopying (NS 복사)
 
@@ -780,3 +780,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^dynamic-callable]: '동적으로 호출 가능 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
 
 [^dynamic-member-lookup]: '동적으로 멤버 찾아보기 (dynamicMemberLookup)' 은 스위프트에서 'Core Data' 나 'JSON' 을 다룰 때 사용하게 되는 것 같습니다.
+
+[^NSApplicationMain]: `NSApplicationMain` 을 사용하는 방식들은 다 예전 방식입니다. 최신 'SwiftUI' 를 사용할 경우 `@main` 을 기본으로 사용하기 때문에, `NSApplicationMain` 특성이나 `main.swift` 파일을 사용할 일이 없습니다.
