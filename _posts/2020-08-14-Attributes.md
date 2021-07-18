@@ -366,9 +366,9 @@ class ExampleClass: NSObject {
 
 '포장 (wrapper)' 은 반드시 '`wrappedValue` 인스턴스 속성' 을 정의해야 합니다. 속성의 _포장 값 (wrapped value)_ 은 '이 속성의 획득자 (getter) 와 설정자 (setter) 가 노출하는 값' 입니다. 대부분의 경우, `wrappedValue` 는 '계산 값 (computed value)' 이지만, 대신 '저장 값 (stored value)' 일 수도 있습니다. '포장' 은 '자신의 포장 값에 필요한 어떤 실제 저장 공간' 도 정의하고 관리합니다. 컴파일러는 '포장 타입의 인스턴스에 대한 저장 공간' 을 '포장 속성의 이름 앞에 밑줄 (`_`) 접두사를 붙임' 으로써 통합합니다-예를 들어, `someProperty` 의 포장은 `_someProperty` 로 저장합니다. '포장을 위한 통합 저장 공간' 의 접근 제어 수준은 `private` 입니다.
 
-속성 포장을 가지고 있는 속성은 `willSet` 과 `didSet` 블럭을 포함할 수 있지만, 컴파일러가-통합한 `get` 또는 `set` 블럭을 '재정의 (override)' 할 수는 없습니다.
+속성 포장을 가진 속성은 `willSet` 과 `didSet` 블럭을 포함할 수 있지만, '컴파일러가-통합한 `get` 이나 `set` 블럭' 을 '재정의 (override)' 할 순 없습니다.
 
-스위프트는 '속성 포장' 의 초기화를 위해 두 가지 형식의 '수월한 구문 표현 (syntactic sugar)' 을 제공합니다. '포장된 값 (wrapped value)' 의 정의에서 '할당 구문 표현 (assignment syntax)' 을 사용하면 할당의 오른-쪽에 있는 표현식을 '속성 포장' 초기자의 `wrappedValue` 매개 변수에 인자로 전달할 수 있습니다. 특성을 속성에 적용할 때 인자를 제공할 수도 있으며, 이 인자들은 '속성 포장' 의 초기자로 전달됩니다. 예를 들어, 아래 코드에서, `SomeStruct` 는 `SomeWrapper` 가 정의하고 있는 각각의 초기자를 호출합니다.
+스위프트는 '속성 포장' 의 초기화를 위해 두 가지 형식의 '수월한 구문 (syntactic sugar)' 을 제공합니다. '포장 값' 정의에서 '할당 (assignment) 구문' 을 사용하면 할당의 오른-쪽 표현식을 '속성 포장' 초기자의 `wrappedValue` 매개 변수에 대한 인자로 전달할 수 있습니다. 특성을 속성에 적용할 때 인자를 제공할 수도 있으며, 이 인자들은 '속성 포장의 초기자' 로 전달됩니다. 예를 들어, 아래 코드에서, `SomeStruct` 는 `SomeWrapper` 가 정의한 각각의 초기자를 호출합니다.
 
 ```swift
 @propertyWrapper
