@@ -334,7 +334,7 @@ print(rectangle.height)
 
 `height` 와 `width` 속성은, `TwelveOrLess.number` 를 '0' 으로 설정gks, `TwelveOrLess` 정의에서 초기 값을 획득합니다. 수 '10' 을 `rectangle.height` 에 저장하는 것은 작은 수이기 때문에 성공합니다. 수 '24' 를 저장하려고 하면 그 대신 '12' 라는 값이 저장되는데, 속성 설정자의 규칙에 따르면 수 '24' 는 너무 크기 때문입니다.
 
-'포장' 을 속성에 적용할 때는, 포장을 위해 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 컴파일러가 통합해 줍니다. ('속성 포장' 은 포장된 값을 저장하는 책임을 지므로, 그에 대한 통합 코드는 없습니다.) 특수한 '특성 구문 표현 (attribute syntax)' 의 장점을 취하지 않고, '속성 포장' 과 같은 작동을 하는 코드를 작성할 수도 있을 것입니다. 예를 들어, 다음은 이전에 나열한 코드에서, `@TwelveOrLess` '특성' 을 작성하는 대신, `TwelveOrLess` 구조체의 속성을 명시적으로 포장한 `SmallRectangle` 버전입니다[^explicitly-wrap]:
+'포장' 을 속성에 적용할 때는, 포장을 위해 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 컴파일러가 통합해 줍니다. ('속성 포장' 은 포장 값을 저장할 책임을 지므로, 그에 대한 통합 코드는 없습니다.) 특수한 '특성 구문 표현 (attribute syntax)' 의 장점을 취하지 않고, '속성 포장' 과 같은 작동을 하는 코드를 작성할 수도 있을 것입니다. 예를 들어, 다음은 이전에 나열한 코드에서, `@TwelveOrLess` '특성' 을 작성하는 대신, `TwelveOrLess` 구조체의 속성을 명시적으로 포장한 `SmallRectangle` 버전입니다[^explicitly-wrap]:
 
 ```swift
 struct SmallRectangle {
@@ -355,7 +355,7 @@ struct SmallRectangle {
 
 #### Setting Initial Values for Wrapped Properties (포장된 속성에 초기 값 설정하기)
 
-위 예제 코드는 '포장된 속성' 에 대한 초기 값을 `TwelveOrLess` 정의에 있는 초기 값인 `number` 를 부여하는 것으로 설정합니다. 이 '속성 포장' 을 사용하는 코드는, `TwelveOrLess` 로 포장된 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 의 정의는 `height` 나 `width` 에 초기 값을 부여할 수 없습니다. 초기 값 설정 또는 다른 '사용자화 (customization)' 를 지원하기 위해서는, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 '포장된 값'과 '최대 값' 을 설정하는 초기자를 정의한 `SmallNumber` 라는 `TwelveOrless` 을 확대한 버전입니다:
+위 예제 코드는 '포장된 속성' 에 대한 초기 값을 `TwelveOrLess` 정의에 있는 초기 값인 `number` 를 부여하는 것으로 설정합니다. 이 '속성 포장' 을 사용하는 코드는, `TwelveOrLess` 로 포장된 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 의 정의는 `height` 나 `width` 에 초기 값을 부여할 수 없습니다. 초기 값 설정 또는 다른 '사용자화 (customization)' 를 지원하기 위해서는, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 '포장 값'과 '최대 값' 을 설정하는 초기자를 정의한 `SmallNumber` 라는 `TwelveOrless` 을 확대한 버전입니다:
 
 ```swift
 @propertyWrapper
@@ -382,7 +382,7 @@ struct SmallNumber {
 }
 ```
 
-`SmallNumber` 정의는-`init()`, `init(wrappedValue:)`, 그리고 `init(wrappedValue:maximum:)` 라는-세 개의 초기자를 포함하고 있는데 이는 아래 예제에서 포장된 값과 최대 값을 설정할 때 사용합니다. '초기자' 와 '초기자 구문 표현 (initializer syntax)' 에 대한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 를 참고하기 바랍니다.
+`SmallNumber` 정의는-`init()`, `init(wrappedValue:)`, 그리고 `init(wrappedValue:maximum:)` 라는-세 개의 초기자를 포함하고 있는데 이는 아래 예제에서 포장 값과 최대 값을 설정할 때 사용합니다. '초기자' 와 '초기자 구문 표현 (initializer syntax)' 에 대한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 를 참고하기 바랍니다.
 
 속성에 포장을 적용할 때 초기 값을 지정하지 않으면, 스위프트가 `init()` 초기자를 사용하여 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
@@ -457,7 +457,7 @@ print(mixedRectangle.height)
 
 #### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)
 
-'포장된 값' 에 더하여, 속성 포장은 _드러낸 값 (projected value)_ 을 정의함으로써 추가적인 기능을 노출할 수 있습니다-예를 들어, 데이터베이스 접근을 관리하는 속성 포장은 '드러낸 값' 에 대한 `flushDatabaseConnection()` 메소드를 노출할 수 있습니다. '드러낸 값' 의 이름은, '달러 기호 (`$`)' 로 시작한다는 것만 빼면, '포장된 값' 과 똑같습니다. `$` 로 시작하는 속성을 직접 코드에서 정의할 수는 없기 때문에 '드러낸 값' 이 자신이 정의한 속성을 방해할 일은 절대로 없습니다.
+'포장 값' 에 더하여, 속성 포장은 _드러낸 값 (projected value)_ 을 정의함으로써 추가적인 기능을 노출할 수 있습니다-예를 들어, 데이터베이스 접근을 관리하는 속성 포장은 '드러낸 값' 에 대한 `flushDatabaseConnection()` 메소드를 노출할 수 있습니다. '드러낸 값' 의 이름은, '달러 기호 (`$`)' 로 시작한다는 것만 빼면, '포장 값' 과 똑같습니다. `$` 로 시작하는 속성을 직접 코드에서 정의할 수는 없기 때문에 '드러낸 값' 이 자신이 정의한 속성을 방해할 일은 절대로 없습니다.
 
 위 `SmallNumber` 예제에서, 속성에 너무 큰 수를 설정하려고 하면, 저장하기 전에 속성 포장이 수를 조정합니다. 아래 코드는 `SmallNumber` 구조체에 `projectedValue` 속성을 추가하여 속성에 새로운 값을 저장하기 전에 속성 포장이 새로운 값을 조정했는 지를 추적합니다.
 
