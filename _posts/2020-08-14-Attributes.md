@@ -433,25 +433,25 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 '결과 제작자' 는 아래 설명할 '정적 (static) 메소드' 를 구현합니다. 결과 제작자의 모든 기능은 정적 메소드를 통해 노출하기 때문에, 해당 타입의 인스턴스는 초기화를 항상 안합니다. `buildBlock(_:)` 메소드는 필수이며; 'DSL' 에 추가 기능을 부여하는-다른 메소드들은 옵션입니다. '결과 제작자 타입의 선언' 은 실제로 어떤 프로토콜 준수성도 포함하지 않아도 됩니다.
 
-정적 메소드 설명은 세 개의 타입을 '자리 표시자 (placeholder)' 로 사용합니다. `Expression` 타입은 '결과 제작자의 입력 타입' 에 대한 자리 표시자이고, `Component` 는 '부분적인 결과 타입' 에 대한 자리 표시자이며, `FinalResult` 는 '결과 제작자가 만드는 결과의 타입' 에 대한 자리 표시자입니다. 이 타입들을 결과 제작자가 사용할 실제 타입으로 대체합니다. '결과-제작 메소드' 가 `Expression` 이나 `FinalResult` 타입을 지정하지 않으면, `Component` 와 똑같아 지는 것이 기본입니다.
+정적 메소드 설명은 세 개의 타입을 '자리 표시자 (placeholder)' 로 사용합니다. `Expression` 타입은 '결과 제작자의 입력 타입' 에 대한 자리 표시자이고, `Component` 는 '부분 결과 타입' 에 대한 자리 표시자이며, `FinalResult` 는 '결과 제작자가 만드는 결과의 타입' 에 대한 자리 표시자입니다. 이 타입들을 결과 제작자가 사용할 실제 타입으로 대체합니다. '결과-제작 메소드' 가 `Expression` 이나 `FinalResult` 타입을 지정하지 않으면, `Component` 와 똑같아 지는 것이 기본입니다.
 
 '결과-제작 메소드' 는 다음과 같습니다:
 
 `static func buildBlock(_ components: Compnent...) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;부분적인 결과들의 배열을 단일 '부분 결과' 로 조합함. '결과 제작자' 는 이 메소드를 반드시 구현해야 함.
+&nbsp;&nbsp;&nbsp;&nbsp;'부분 결과들의 배열' 을 '단일 부분 결과' 로 조합. '결과 제작자' 는 반드시 이 메소드를 구현해야 함.
 
 `static func buildOptional(_ component: Compnent?) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;`nil` 일 수 있는 부분적인 결과로부터 '부분 결과' 를 제작함. 이 메소드는 `else` 절을 포함하지 않은 `if` 문을 지원하기 위해 구현함.
+&nbsp;&nbsp;&nbsp;&nbsp;'`nil` 일 수 있는 부분 결과' 로 '부분 결과' 를 제작. `else` 절을 포함하지 않은 `if` 문을 지원하기 위해 이 메소드를 구현함.
 
 `static func buildEither(first: Compnent) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;어떤 조건에 따라 값이 달라지는 '부분 결과' 를 제작함. 이 메소드와 `buildEither(second:)` 는 `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 함께 구현함.
+&nbsp;&nbsp;&nbsp;&nbsp;일부 조건에 따라 값이 변하는 '부분 결과' 를 제작. `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 이 메소드와 `buildEither(second:)` 둘 다를 구현함.
 
 `static func buildEither(second: Compnent) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;어떤 조건에 따라 값이 달라지는 '부분 결과' 를 제작함. 이 메소드와 `buildEither(first:)` 는 `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 함께 구현함.
+&nbsp;&nbsp;&nbsp;&nbsp;일부 조건에 따라 값이 변하는 '부분 결과' 를 제작. `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 이 메소드와 `buildEither(first:)` 둘 다를 구현함.
 
 `static func buildArray(_ components: [Compnent]) -> Component`
 
