@@ -463,13 +463,13 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 `static func buildFinalResult(_ component: Compnent) -> FinalResult`
 
-&nbsp;&nbsp;&nbsp;&nbsp;'부분 결과' 로 '최총 결과' 를 제작. 부분 결과와 최종 결과에서 서로 다른 타입을 사용하는 '결과 제작자' 에서, 또는 반환하기 전에 결과에 다른 후처리 과정을 수행하기 위해, 이 메소드를 구현할 수 있음.
+&nbsp;&nbsp;&nbsp;&nbsp;'부분 결과' 로 '최총 결과' 를 제작. '부분과 최종 결과에 대해 서로 다른 타입을 사용하는 결과 제작자' 로, 또는 '반환 전의 결과에 또 다른 후처리 과정' 을 하기 위해, 이 메소드를 구현할 수 있음.
 
 `static func buildLimitedAvailablility(_ component: Compnent) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;사용 가능성 검사를 수행하는 컴파일러-제어문 이외의 타입 정보를 전파하거나 지운 '부분 결과' 를 제작함. 이는 조건 분기 마다 달라지는 타입 정보를 지우기 위해 사용할 수 있음.
+&nbsp;&nbsp;&nbsp;&nbsp;'사용 가능성을 검사하는 컴파일러-제어문 밖으로 타입 정보를 전파하거나 지우는 부분 결과' 를 제작. 조건 분기마다 변하는 타입 정보를 지우기 위해 이를 사용할 수 있음.
 
-예를 들어, 아래 코드는 정수 배열을 제작하는 단순한 '결과 제작자' 를 정의합니다. 이 코드는, 아래 예제와 위 메소드 목록을 더 쉽게 일치하도록 하려고, `Component` 와 `Expression` 을 '타입 별명 (type aliases)' 으로 정의합니다.
+예를 들어, 아래 코드는 정수 배열을 제작하는 단순한 '결과 제작자' 를 정의합니다. 이 코드는, 위의 메소드 목록과 아래 예제가 일치하도록, `Component` 와 `Expression` 을 '타입 별명 (type aliases)' 으로 정의하여, 더 보기 쉽게 합니다.
 
 ```swift
 @resultBuilder
