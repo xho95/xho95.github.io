@@ -427,7 +427,7 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### resultBuilder (결과 제작자)
 
-클래스, 구조체, 열거체를 '결과 제작자' 로 사용하려면 해당 타입에 이 특성을 적용합니다. _결과 제작자 (result builder)_ 는 '중첩된 자료 구조' 를 한걸음씩 단계별로 제작하는 타입니다. '결과 제작자' 는 '중첩된 자료 구조' 를 자연스럽고, 선언적인 방식으로, 생성하기 위해 '분야에-특화된 언어 (domain-specific language; DSL)' 을 구현하고자 사용합니다. `resultBuilder` 특성을 사용하는 방법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 를 참고하기 바랍니다.
+이 특성은 '해당 타입을 결과 제작자 (result builder) 로 사용' 하기 위해 클래스, 구조체, 열거체에 적용합니다. _결과 제작자 (result builder)_ 는 '중첩 자료 구조를 단계별로 제작하는 타입' 니다. '결과 제작자' 는 '중첩 자료 구조를 자연스러운, 선언 방식으로, 생성' 하기 위한 '특정-분야 언어 (domain-specific language; DSL) 을 구현' 하기 위해 사용합니다. `resultBuilder` 특성의 사용 방법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 부분을 참고하기 바랍니다.
 
 **Result-Building Methods (결과-제작 메소드)**
 
