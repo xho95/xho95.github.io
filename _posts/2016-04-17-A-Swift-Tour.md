@@ -165,7 +165,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-'switch 문' 은 어떤 종류의 '자료형 (data)' 도 지원하며 폭넓고 다양한 비교 연산도 지원합니다-정수만 되고 '같음 (equality)' 비교만 테스트하도록 제한되지 않았습니다.
+'switch 문' 은 '어떤 종류의 자료' 든 지원하며 '광범위한 비교 연산' 도 지원합니다-정수만으로 그리고 '같음 (equality) 비교의 테스트' 만으로 제한하지 않습니다.
 
 ```swift
 let vegetable = "red pepper"
