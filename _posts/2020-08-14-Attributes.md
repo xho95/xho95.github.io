@@ -511,7 +511,7 @@ var manualNumber = ArrayBuilder.buildExpression(10)
 
 * 할당문은 표현식인 것처럼 변형하지만, `()` 를 평가한다고 이해합니다.[^evaluate] 할당을 특수하게 처리하기 위해 `()` 타입의 인자를 취하는 `buildExpression(_:)` 을 '중복 정의 (overload)' 할 수 있습니다.
 
-* '사용 가능성 조건을 검사하는 분기문' 은 `buildLimitedAvailablility(_:)` 메소드의 호출이 됩니다. 이런 변형은 `buildEither(first:)`, `buildEither(second:)`, 및 `buildOptional(_:)` 호출로의 변화 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드는 어느 분기를 취하는 지에 따라 바뀌는 타입 정보를 지우기 위해 사용합니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 두 분기 모두에 대한 타입 정보를 붙잡는 '일반화 (generic) 타입' 을 사용합니다.
+* '사용 가능성 조건을 검사하는 분기문' 은 `buildLimitedAvailablility(_:)` 메소드 호출이 됩니다. 이런 변형은 `buildEither(first:)`, `buildEither(second:)`, 및 `buildOptional(_:)` 호출로의 변화 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드는 어느 분기를 취하는 지에 따라 바뀌는 타입 정보를 지우기 위해 사용합니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 두 분기 모두에 대한 타입 정보를 붙잡는 '일반화 (generic) 타입' 을 사용합니다.
 
 ```swift
 protocol Drawable {
