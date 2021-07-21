@@ -500,16 +500,16 @@ struct ArrayBuilder {
 
 **Result Transformations (결과 변형)**
 
-'결과-제작자 구문을 사용한 코드' 를 '결과 제작자 타입의 정적 메소드를 호출하는 코드' 로 바꾸기 위해 다음 구문 변형을 재귀적으로 적용합니다:
+'결과-제작자 구문을 사용한 코드' 를 '결과 제작자 타입의 정적 메소드를 호출하는 코드' 로 바꾸기 위해 다음의 구문 변형을 재귀적으로 적용합니다:
 
-* 결과 제작자가 `buildExpression(_:)` 메소드를 가지고 있으면, 각각의 표현식이 해당 메소드 호출로 바뀝니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 서로 '동치 (equivalent)' 입니다:
+* 결과 제작자에 `buildExpression(_:)` 메소드가 있으면, 각각의 표현식은 해당 메소드 호출이 됩니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 서로 '동치 (equivalent)' 입니다:
 
 ```swift
 @ArrayBuilder var builderNumber: [Int] { 10 }
 var manualNumber = ArrayBuilder.buildExpression(10)
 ```
 
-* 할당문은 표현식인 것처럼 변형하지만, `()` 를 평가하는 것으로 이해합니다. 할당을 특수하게 처리하기 위해 `()` 타입의 인자를 취하는 `buildExpression(_:)` 을 '중복 정의 (overload)' 할 수 있습니다.
+* 할당문은 표현식인 것처럼 변형하지만, `()` 를 평가한다고 이해합니다.[^evaluate] 할당을 특수하게 처리하기 위해 `()` 타입의 인자를 취하는 `buildExpression(_:)` 을 '중복 정의 (overload)' 할 수 있습니다.
 
 * '사용 가능성 조건을 검사하는 분기문' 은 `buildLimitedAvailablility(_:)` 메소드의 호출이 됩니다. 이런 변형은 `buildEither(first:)`, `buildEither(second:)`, 및 `buildOptional(_:)` 호출로의 변화 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드는 어느 분기를 취하는 지에 따라 바뀌는 타입 정보를 지우기 위해 사용합니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 두 분기 모두에 대한 타입 정보를 붙잡는 '일반화 (generic) 타입' 을 사용합니다.
 
@@ -782,3 +782,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^dynamic-member-lookup]: '동적으로 멤버 찾아보기 (dynamicMemberLookup)' 은 스위프트에서 'Core Data' 나 'JSON' 을 다룰 때 사용하게 되는 것 같습니다.
 
 [^NSApplicationMain]: `NSApplicationMain` 을 사용하는 방식들은 다 예전 방식입니다. 최신 'SwiftUI' 를 사용할 경우 `@main` 을 기본으로 사용하기 때문에, `NSApplicationMain` 특성이나 `main.swift` 파일을 사용할 일이 없습니다.
+
+[^evaluate]: 할당문의 경우 `buildExpression(_:)` 의 `()` 를 평가한 결과를 사용한다는 의미입니다.
