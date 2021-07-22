@@ -675,9 +675,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 결과 제작자가 변형하는 코드에 `break`, `continue`, `defer`, `guard`, 나 `return` 문, `while` 문, 또는 `do`-`catch` 문을 사용할 수 없습니다.
 
-변형 과정은, 표현식을 한 조각씩 제작할 수 있게 임시 상수와 변수를 사용하게 해주는, 코드의 선언을 바꾸지 않습니다. 이는 `throw` 문, 컴파일-시간 진단 (diagnostic) 문, 또는 '`return` 문을 담은 클로저' 도 바꾸지 않습니다.
+변형 과정은 코드에서, 표현식을 조각 조각 제작하는 임시 상수와 변수를 사용하게 해주는, 선언을 바꾸지 않습니다. 이는 `throw` 문, 컴파일-시간 진단 (diagnostic) 문, 또는 '`return` 문을 담은 클로저' 도 바꾸지 않습니다.
 
-가능할 때마다, 변화는 통합됩니다. 예를 들어, 표현식 `4 + 5 * 6` 은 해당 함수를 여러 번 호출하는 대신 `buildExpression(4 + 5 * 6)` 가 됩니다. 마찬가지로, 중첩된 분기문은 `buildEither` 메소드를 호출하는 단일 이진 트리가 됩니다.
+가능할 때마다, 변형을 합체합니다. 예를 들어, `4 + 5 * 6` 라는 표현식은 '해당 함수를 여러 번 호출' 하기 보다는 `buildExpression(4 + 5 * 6)` 가 됩니다. 마찬가지로, 중첩 분기문은 `buildEither` 메소드를 호출하는 '단일 이진 트리' 가 됩니다.
 
 **Custom Result-Builder Attributes (사용자 정의 결과-제작자 특성)**
 
