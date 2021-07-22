@@ -591,7 +591,7 @@ extension DrawingBuilder {
 // typeErasedDrawing 의 타입은 Line<DrawEither<AnyDrawable, Line<Text>>> 입니다.
 ```
 
-* 분기문은 `buildEither(first:)` 와 `buildEither(second:)` 메소드에 대한 '연속된 중첩 호출' 이 됩니다. 구문의 조건과 'case 값' 은 '이진 (binary) 트리' 의 '잎 (leaf) 노드' 에 대응되며, 구문은 '근원 (root) 노드' 에서 해당 '잎 노드' 로의 경로를 따르는 `buildEither` 메소드의 '중첩 호출' 이 됩니다.
+* 분기문은 `buildEither(first:)` 와 `buildEither(second:)` 를 '연속으로 중첩한 호출' 들이 됩니다. '구문 조건과 case 값' 들은 '이진 트리 (binary tree)' 의 '잎 노드 (leaf nodes)' 에 대응하며, '구문' 은 '뿌리 노드 (root node) 에서 해당 잎 노드로의 경로' 를 따라가는 `buildEither` 메소드의 '중첩 호출' 이 됩니다.
 
 예를 들어, 세 개의 'case 절' 을 가진 'switch 문' 을 작성한 경우, 컴파일러는 '잎 노드' 가 세 개인 '이진 트리' 를 사용합니다. 마찬가지로, '근원 노드' 에서 '두 번째 case 절' 로의 경로가 "두 번째 자식" 다음에 "첫 번째 자식" 이기 때문에, 해당 'case 절' 은 `buildEither(first: buildEither(second: ...))` 같은 '중첩 호출' 이 됩니다. 다음 선언은 서로 '동치' 입니다:  
 
