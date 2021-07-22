@@ -593,7 +593,7 @@ extension DrawingBuilder {
 
 * 분기문은 `buildEither(first:)` 와 `buildEither(second:)` 를 '연속으로 중첩한 호출' 들이 됩니다. '구문 조건과 case 값' 들은 '이진 트리 (binary tree)' 의 '잎 노드 (leaf nodes)' 에 대응하며, '구문' 은 '뿌리 노드 (root node) 에서 해당 잎 노드로의 경로' 를 따라가는 `buildEither` 메소드의 '중첩 호출' 이 됩니다.
 
-예를 들어, 세 개의 'case 절' 을 가진 'switch 문' 을 작성한 경우, 컴파일러는 '잎 노드' 가 세 개인 '이진 트리' 를 사용합니다. 마찬가지로, '근원 노드' 에서 '두 번째 case 절' 로의 경로가 "두 번째 자식" 다음에 "첫 번째 자식" 이기 때문에, 해당 'case 절' 은 `buildEither(first: buildEither(second: ...))` 같은 '중첩 호출' 이 됩니다. 다음 선언은 서로 '동치' 입니다:  
+예를 들어, '세 개의 case 절을 가진 switch 문' 을 작성하면, 컴파일러가 '세 개의 잎 노드를 가진 이진 트리' 를 사용합니다. 마찬가지로, '뿌리 노드에서 두 번째 case 절로의 경로' 는 "두 번째 자식" 인 다음 "첫 번째 자식" 이기 때문에, '해당 case 절' 은 `buildEither(first: buildEither(second: ...))` 와 같은 '중첩 호출' 이 됩니다. 다음 선언은 서로 '동치 (equivalent)' 입니다:  
 
 ```swift
 let someNumber = 19
@@ -622,7 +622,7 @@ if someNumber < 12 {
 }
 ```
 
-* '`else` 절' 이 없는 `if` 문 같이, 값을 만들지 않을 수도 있는 분기문은, `buildOptional(_:)` 에 대한 호출이 됩니다. `if` 문의 조건을 만족하면, 코드 블럭을 변화하여 인자로 전달하며; 그 외 경우, `nil` 인 인자를 가지고 `buildOptional(_:)` 을 호출합니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+* `else` 절 없는 `if` 문 같이, 값을 만들지 않을 지도 모를 분기문은, `buildOptional(_:)` 호출이 됩니다. `if` 문 조건을 만족하면, 자신의 코드 블럭을 변형하여 인자로 전달하며; 그 외 경우, `nil` 인자로 `buildOptional(_:)` 을 호출합니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
 
 ```swift
 @ArrayBuilder var builderOptional: [Int] {
@@ -636,7 +636,7 @@ if (someNumber % 2) == 1 {
 var manualOptional = ArrayBuilder.buildOptional(partialResult)
 ```
 
-* 코드 블럭이나 `do` 문은 `buildBlock(_:)` 메소드에 대한 호출이 됩니다. 블럭 안에 있는 각 구문들은, 한번에 하나씩, 변하여 `buildBlock(_:)` 메소드의 인자가 됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+* 코드 블럭이나 `do` 문은 `buildBlock(_:)` 메소드 호출이 됩니다. 블럭 안의 각 구문이, 한번에 하나씩, 변형되어, `buildBlock(_:)` 메소드의 인자가 됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
 
 ```swift
 @ArrayBuilder var builderBlock: [Int] {
