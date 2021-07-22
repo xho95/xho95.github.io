@@ -652,7 +652,7 @@ var manualBlock = ArrayBuilder.buildBlock(
 )
 ```
 
-* `for` 반복문은 임시 변수와, `for` 반복문, 그리고 `buildArray(_:)` 메소드에 대한 호출이 됩니다.[^temporary-variable] 새 `for` 반복문은 '시퀀스 (sequence)' 에 동작을 반복하여 각 '부분 결과' 를 해당 배열에 덧붙입니다. 임시 배열은 `buildArray(_:)` 호출의 인자로 전달됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+* `for` 반복문은 '임시 변수[^temporary-variable] 와, `for` 반복문, 그리고 `buildArray(_:)` 메소드 호출' 이 됩니다. 새로운 `for` 반복문이 '시퀀스 (sequence)' 를 반복하며 '각각의 부분 결과' 를 해당 배열에 덧붙입니다. 이 임시 배열을 `buildArray(_:)` 호출에 대한 인자로 전달합니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
 
 ```swift
 @ArrayBuilder var builderArray: [Int] {
