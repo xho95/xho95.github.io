@@ -689,11 +689,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 결과 제작자 특성의 적용은 'ABI 호환성' 에 충격을 주지 않습니다. 결과 제작자 특성을 매개 변수에 적용하면 해당 특성이 함수 인터페이스 일부가 되어, '소스 호환성' 에 영향을 줄 수 있습니다.
 
-#### requires_stored_property_inits (저장 속성의 초기화를 필수로 요구함)
+#### requires_stored_property_inits (저장 속성 초기화가 필수임)
 
 이 특성은 '클래스 안의 모든 저장 속성이 자신의 정의에서 '기본 값' 을 제공할 것을 요구' 하기 위해 클래스 선언에 적용합니다. `NSManagedObject` 를 상속한 어떤 클래스든 이 특성이 (있다고) 추론합니다.
 
-#### testable (테스트 가능한)
+#### testable (테스트 가능)
 
 이 특성은 '모듈 코드 테스트의 단순화를 위해 해당 모듈의 접근 제어를 바꿔서 불러오도록 `import` 선언' 에 적용합니다. 모듈에서 '`internal` 접근-수준 수정자로 표시한 개체' 들을 불러오면 '마치 `public` 접근-수준 수정자로 선언한 것' 처럼 불러옵니다. '`internal` 이나 `public` 접근-수준 수정자로 표시한 클래스와 클래스 멤버' 는 '마치 `open` 접근-수준 수정자로 선언한 것' 처럼 불러옵니다. 불러온 모듈은 반드시 테스트 할 수 있는 상태[^test-enabled] 에서 컴파일해야 합니다.
 
@@ -713,7 +713,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 `inlinable` 특성으로 표시한 선언은 '인라인 가능 (inlinable) 코드' 에서 암시적으로 사용 가능합니다. `inlinable` 이든 `usableFromInline` 이든 `internal` 선언에 적용할 수 있긴 하지만, 두 특성 다 적용하는 건 에러입니다.
 
-#### warn_unqualified_access (조건을 갖추치 않은 접근 경고하기)
+#### warn_unqualified_access (규명 안된 접근 경고하기)
 
 이 특성을 최상단 함수, 인스턴스 메소드, 또는 클래스 메소드나 정적 메소드에 적용하면 해당 함수나 메소드가 모듈 이름, 타입 이름, 또는 인스턴스 변수나 인스턴스 상수 같은, '선행 자격자 (preceding qualifier)' 없이 사용할 때 경고를 일으킵니다. 이 특성을 사용하면 같은 이름을 가진 함수가 동일한 영역에서 접근 가능할 때의 모호함을 방지할 수 있습니다.
 
