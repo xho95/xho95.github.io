@@ -695,7 +695,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### testable (테스트 가능한)
 
-이 특성을 `import` 선언에 적용하면 해당 모듈을 불러올 때 이 모듈 코드의 테스트를 단순화하도록 접근 제어를 바꿉니다. 불러오는 모듈에서 `internal` 접근-수준 수정자로 표시된 '개체 (entities)' 들은 마치 `public` 접근-수준 수정자로 선언한 것처럼 불러옵니다. `internal` 또는 `public` 접근-수준 수정자로 표시한 클래스와 클래스 멤버는 마치 `open` 접근-수준 수정자로 선언한 것처럼 불러옵니다. 불러온 모듈은 반드시 테스트를 할 수 있게한 상태에서 컴파일해야 합니다.
+이 특성은 '모듈 코드 테스트의 단순화를 위해 해당 모듈의 접근 제어를 바꿔서 불러오도록 `import` 선언' 에 적용합니다. 모듈에서 '`internal` 접근-수준 수정자로 표시한 개체' 들을 불러오면 '마치 `public` 접근-수준 수정자로 선언한 것' 처럼 불러옵니다. '`internal` 이나 `public` 접근-수준 수정자로 표시한 클래스와 클래스 멤버' 는 '마치 `open` 접근-수준 수정자로 선언한 것' 처럼 불러옵니다. 불러온 모듈은 반드시 테스트 할 수 있는 상태[^test-enabled] 에서 컴파일해야 합니다.
 
 #### UIApplicationMain (UI 앱 메인)
 
@@ -782,3 +782,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^NSApplicationMain]: `NSApplicationMain` 을 사용하는 방식들은 다 예전 방식입니다. 최신 'SwiftUI' 를 사용할 경우 `@main` 을 기본으로 사용하기 때문에, `NSApplicationMain` 특성이나 `main.swift` 파일을 사용할 일이 없습니다.
 
 [^evaluate]: 할당문의 경우 `buildExpression(_:)` 의 `()` 를 평가한 결과를 사용한다는 의미입니다.
+
+[^test-enabled]: '엑스코드 (Xcode)' 에서 '스킴 (Scheme) 화면' 의 '테스트 (Test) 옵션' 에 있는 'Debug executable' 이 켜져 있어야 합니다. 
