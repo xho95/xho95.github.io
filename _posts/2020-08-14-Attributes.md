@@ -691,7 +691,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### requires_stored_property_inits (저장 속성의 초기화를 필수로 요구함)
 
-이 특성을 클래스 선언에 적용하면 클래스 내에 있는 모든 저장 속성이 정의 시에 필수로 '기본 값 (default value)' 을 제공할 것을 요구합니다. 이 특성은 `NSManagedObject` 로부터 상속받은 클래스는 어떤 것에든 적용됩니다.[^infer]
+이 특성은 '클래스 안의 모든 저장 속성이 자신의 정의에서 '기본 값' 을 제공할 것을 요구' 하기 위해 클래스 선언에 적용합니다. `NSManagedObject` 를 상속한 어떤 클래스든 이 특성이 (있다고) 추론합니다.
 
 #### testable (테스트 가능한)
 
@@ -770,8 +770,6 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 개요 (database schema)' 를 의미합니다. 여기서의 '개체 (entity)' 는 '다른 데이터베이스 언어의 테이블 (table)' 에 해당합니다.
 
 [^objc]: '오브젝티브-C' 의 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
-
-[^infer]: 원문에서는 '추론된다 (inferred)' 고 되어 있는데, '암시적으로 적용된다 (imply)' 는 의미로 사용된 것으로 추측됩니다.
 
 [^calling-convention]: 스위프트의 '호출 협약 (calling conventions)' 에 대한 더 자세한 정보는 '깃허브 (GitHub)' 의 '애플 (Apple)' 저장소에 있는 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 문서를 참고하기 바랍니다.
 
