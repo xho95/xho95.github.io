@@ -707,7 +707,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### usableFromInline (인라인에서 사용 가능한)
 
-이 특성을 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 '정리자 (deinitilaizer)' 선언에 적용하면 그 선언과 같은 모듈에서 정의한 인라인 가능한 코드에서 해당 기호를 사용하는 것을 허용합니다. 그 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 그 속성들이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 그 'case 의 원시 값' 과 '결합 값' 이 '공용 (public)' 또는 `usableFromInline` 인 타입만 사용할 수 있습니다.
+이 특성은 '선언과 동일한 모듈에서 정의한 인라인 가능 코드에서 해당 기호를 사용할 것을 허용' 하기 위해 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 정리자  선언에 적용합니다. 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 '자신의 속성들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 '자신의 case 원시 값과 결합 값들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다.
 
 `public` 접근 수준 수정자와 마찬가지로, 이 특성은 선언을 모듈의 '공개 인터페이스 (public interface)' 로 노출합니다. `public` 과는 달리, 컴파일러는 `usableFromInline` 으로 표시한 선언이, 그 선언의 기호를 밖으로 내보내더라도, 모듈 외부의 코드에서 이름으로 참조하는 것을 허용하지 않습니다. 하지만, 모듈 외부의 코드는 '실행 시간 동작 (runtime behavior)' 를 사용함으로써 여전히 그 선언의 기호와 상호 작용할 수도 있습니다.
 
