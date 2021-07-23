@@ -705,13 +705,13 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논의한 것처럼, 최대 한 개의 '최상단 진입점' 을 담을 수 있습니다.
 
-#### usableFromInline (인라인에서 사용 가능한)
+#### usableFromInline (인라인에서 사용 가능)
 
 이 특성은 '선언과 동일한 모듈에서 정의한 인라인 가능 코드에서 해당 기호를 사용할 것을 허용' 하기 위해 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 정리자  선언에 적용합니다. 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 '자신의 속성들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 '자신의 case 원시 값과 결합 값들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다.
 
-`public` 접근 수준 수정자와 마찬가지로, 이 특성은 선언을 모듈의 '공개 인터페이스 (public interface)' 로 노출합니다. `public` 과는 달리, 컴파일러는 `usableFromInline` 으로 표시한 선언이, 그 선언의 기호를 밖으로 내보내더라도, 모듈 외부의 코드에서 이름으로 참조하는 것을 허용하지 않습니다. 하지만, 모듈 외부의 코드는 '실행 시간 동작 (runtime behavior)' 를 사용함으로써 여전히 그 선언의 기호와 상호 작용할 수도 있습니다.
+`public` 접근 수준 수정자 같이, 이 특성은 '모듈의 공개 인터페이스로 선언을 노출' 합니다. `public` 과는 달리, 컴파일러는 '`usableFromInline` 으로 표시한 선언' 이, 선언 기호를 밖으로 내보낼지라도, 모듈 밖의 코드에서 이름으로 참조하는 걸 허용하지 않습니다. 하지만,  모듈 밖의 코드는 '실행 시간 동작' 으로 선언 기호와 여전히 상호 작용할지도 모릅니다.
 
-`inlinable` 특성으로 표시한 선언은 암시적으로 '인라인 가능한 코드 (inlinable code)' 에서 사용 가능합니다. `inlinable` 또는 `usableFromInline` 은 각각 `internal` 선언에 적용할 수 있다하더라도, 두 특성을 모두 적용하는 것은 에러입니다.
+`inlinable` 특성으로 표시한 선언은 '인라인 가능 (inlinable) 코드' 에서 암시적으로 사용 가능합니다. `inlinable` 이든 `usableFromInline` 이든 `internal` 선언에 적용할 수 있긴 하지만, 두 특성 다 적용하는 건 에러입니다.
 
 #### warn_unqualified_access (조건을 갖추치 않은 접근 경고하기)
 
