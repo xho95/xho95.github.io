@@ -699,11 +699,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### UIApplicationMain (UI 앱 메인)
 
-이 특성을 클래스에 적용하면 이것이 '응용 프로그램 대리자 (application delegate)' 임을 지시합니다. 이 특성을 사용하는 것은 `UIApplicationMain` 함수를 호출하고 이 클래스 이름을 '대리자 클래스 (delegate)' 이름으로 전달하는 것과 '동치 (equivalent)' 입니다.
+이 특성은 '자신이 앱 대리자 (delegate) 임' 을 지시하기 위해 클래스에 적용합니다. 이 특성의 사용은 `UIApplicationMain` 함수를 호출하면서 이 클래스 이름을 '대리자 (delegate) 클래스 이름' 으로 전달하는 것과 '동치 (equivalent)' 입니다.
 
-이 특성을 사용하지 않는 경우, [UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain) 함수를 호출하는 '최상단 코드' 를 가진 `main.swift` 파일을 제공하도록 합니다. 예를 들어, 앱에서 사용자가 정의한 `UIApplication` 의 하위 클래스를 '주 클래스 (principal class)' 로 사용할 경우, 이 특성을 사용하는 대신 `UIApplicationMain(_:_:_:_:)` 함수를 호출하도록 합니다.
+이 특성을 사용하지 않으면, 최상단에서 [UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain) 함수를 호출하는 코드를 가진 `main.swift` 파일을 공급합니다. 예를 들어, 앱이 `UIApplication` 의 사용자 정의 하위 클래스를 '자신의 주 (principal) 클래스' 로 사용하면, 이 특성을 사용하는 대신 `UIApplicationMain(_:_:_:_:)` 함수를 호출합니다.
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 설명한 것처럼, '최상단 진입점' 을 최대 한 개만 가질 수 있습니다.
+실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논의한 것처럼, 최대 한 개의 '최상단 진입점' 을 담을 수 있습니다.
 
 #### usableFromInline (인라인에서 사용 가능한)
 
