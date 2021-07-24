@@ -142,7 +142,7 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 
 `guard` 문의 어떤 조건 값이든 반드시 `Bool` 타입 또는 `Bool` 과 '연동된 (bridged)' 타입이어야 합니다. '조건' 은, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, '옵셔널 연결 선언' 일 수도 있습니다.
 
-`guard` 문 조건의 '옵셔널 연결 선언' 으로 값을 할당한 어떤 상수나 변수든 'guard 문' 을 둘러싼 나머지 영역에서 사용할 수 있습니다.
+`guard` 문 조건의 '옵셔널 연결 선언' 으로 값을 할당한 어떤 상수나 변수든 'guard 문' 을 둘러싼 잔여 영역에서 사용할 수 있습니다.
 
 `guard` 문에서 '`else` 절' 은 필수이며, 반드시 '`Never` 반환 타입' 을 가진 함수를 호출하거나 아니면 아래 구문 중 하나를 사용하여 프로그램 제어를 'guard 문' 을 둘러싼 영역 밖으로 옮겨야 합니다:
 
@@ -197,9 +197,9 @@ case let (x, y) where x == y:
 <strong id="switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기">Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)</strong>
 </p>
 
-_동결되지 않은 열거체 (nonfrozen enumeration)_ 는-심지어 앱을 엮어서 출하한 후인-미래에도 새로운 '열거체 case 값' 을 가질 수도 있는 특수한 종류의 열거체입니다. '동결되지 않은 열거체' 를 전환 (switching) 하려면 '부가적인 주의' 가 필요합니다. 라이브러리 작성자가 '동결되지 않은 (nonfrozen) 열거체' 라고 표시할 때는, 새로운 '열거체 case 값' 을 추가할 권리를 예약한 것이며, 해당 열거체와 상호 작용하는 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이 미래의 'case 값' 들을 처리할 수 있어야 합니다. '라이브러리 진화 모드'[^library-evolution-mode] 로 컴파일된 코드, 표준 라이브러리에 있는 코드, '애플 프레임웍' 을 '스위프트로 덧씌운 것 (Swift overlays)'[^swift-overlays], 그리고 C 와 오브젝티브-C 코드가 '동결되지 않은 열거체' 를 선언할 수 있습니다. '동결된 열거체' 와 '동결되지 않은 열거체' 에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 부분을 참고하기 바랍니다.
+_동결 아닌 열거체 (nonfrozen enumeration)_ 는-심지어 앱을 엮어서 출하한 후인-미래에도 새로운 '열거체 case 값' 을 가질 수도 있는 특수한 종류의 열거체입니다. '동결 아닌 열거체' 를 전환 (switching) 하려면 '부가적인 주의' 가 필요합니다. 라이브러리 작성자가 '동결 아닌 (nonfrozen) 열거체' 라고 표시할 때는, 새로운 '열거체 case 값' 을 추가할 권리를 예약한 것이며, 해당 열거체와 상호 작용하는 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이 미래의 'case 값' 들을 처리할 수 있어야 합니다. '라이브러리 진화 모드'[^library-evolution-mode] 로 컴파일된 코드, 표준 라이브러리에 있는 코드, '애플 프레임웍' 을 '스위프트로 덧씌운 것 (Swift overlays)'[^swift-overlays], 그리고 C 와 오브젝티브-C 코드가 '동결 아닌 열거체' 를 선언할 수 있습니다. '동결인 열거체' 와 '동결 아닌 열거체' 에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 부분을 참고하기 바랍니다.
 
-'동결되지 않은 열거체' 의 값을 전환할 때는, 열거체의 모든 'case 값' 이 이미 관련 'switch 문 case 절' 을 가지고 있는 경우에도, 항상 '기본 case 절' 을 포함할 필요가 있습니다. '기본 case 절' 은, 이미래에 추가되는 '열거체 case 값' 과만 일치해야 함을 지시하도록, '기본 case 절' 에 `@unknown` 속성을 적용할 수 있습니다. 스위프트는 '기본 case 절' 이 컴파일 시간에 알고 있는 '어떤 열거체 case 값' 과 일치할 경우 경고를 만들어 냅니다. 이런 '미래 경고' 는 라이브러리 작성자가 열거체에 '관련 switch 문 case 절' 을 가지지 않은 새로운 'case 값' 을 추가했음을 알려줍니다.
+'동결 아닌 열거체' 의 값을 전환할 때는, 열거체의 모든 'case 값' 이 이미 관련 'switch 문 case 절' 을 가지고 있는 경우에도, 항상 '기본 case 절' 을 포함할 필요가 있습니다. '기본 case 절' 은, 이미래에 추가되는 '열거체 case 값' 과만 일치해야 함을 지시하도록, '기본 case 절' 에 `@unknown` 속성을 적용할 수 있습니다. 스위프트는 '기본 case 절' 이 컴파일 시간에 알고 있는 '어떤 열거체 case 값' 과 일치할 경우 경고를 만들어 냅니다. 이런 '미래 경고' 는 라이브러리 작성자가 열거체에 '관련 switch 문 case 절' 을 가지지 않은 새로운 'case 값' 을 추가했음을 알려줍니다.
 
 다음 예제는 표준 라이브러리에 있는 [Mirror.AncestorRepresentation](https://developer.apple.com/documentation/swift/mirror/ancestorrepresentation) 열거체의 모든 세 '기존 case 값' 에 대해 전환합니다. 미래에 '추가적인 case 값' 을 추가하면, '새로운 case 값' 을 고려하도록 'switch 문' 을 갱신할 필요가 있다고 지시하는 경고를 컴파일러가 발생합니다.
 

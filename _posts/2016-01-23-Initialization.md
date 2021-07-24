@@ -433,7 +433,7 @@ convenience init(`parameters-매개 변수`) {<br />
 * 연쇄망의 최상단에서 밑으로 거꾸로 내려가면서, 연쇄망의 각 지명 초기자는 인스턴스를 한번 더 사용자 정의할 수 있는 '옵션'[^option] 을 가집니다. 초기자는 이제 `self` 에 접근할 수 있으며, 자신의 속성을 수정하고, 자신의 인스턴스 메소드를 호출하는 것, 등을 할 수 있습니다.
 * 최종적으로, 연쇄망의 어떤 편의 초기자라도 인스턴스를 사용자 정의하고 `self` 와 작업할 '옵션' 을 가집니다.
 
-다음은 가상의 하위 클래스와 상위 클래스가 있을 때 '1-단계' 가 '초기화 호출' 을 찾아가는 방식입니다:
+다음은 '1-단계' 가 '가상의 하위 클래스와 상위 클래스' 에 대한 '초기화 호출' 을 찾는 방법입니다:
 
 ![Phase 1](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-1.jpg)
 
@@ -445,7 +445,7 @@ convenience init(`parameters-매개 변수`) {<br />
 
 상위 클래스의 모든 속성이 초기 값을 가지자 마자, 메모리가 온전히 초기화된 것으로 고려하며, '1-단계' 를 완료합니다.
 
-다음은 '2-단계' 가 같은 '초기화 호출' 을 찾아가는 방식입니다:
+다음은 '2-단계' 가 '동일한 초기화 호출' 을 찾는 방법입니다:
 
 ![Phase 2](/assets/Swift/Swift-Programming-Language/Initialization-delegation-phase-2.png)
 

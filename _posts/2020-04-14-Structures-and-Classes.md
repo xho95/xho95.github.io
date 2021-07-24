@@ -248,7 +248,7 @@ if tenEighty === alsoTenEighty {
 
 (세 개의 등호 기호, 또는 `===` 로 표시한) _식별됨 (identical to)_ 은 (두 개의 등호 기호, 또는 `==` 로 표시한) _같음 (equal to)_ 과 똑같은 의미가 아닙니다. _식별됨 (identical to)_ 은 클래스 타입의 두 상수나 변수가 정확하게 똑같은 클래스 인스턴스를 참조한다는 것을 의미합니다. _같음 (equal to)_ 은, 타입 설계자가 정의한, 어떤 적절한 _같음 (equal)_ 의 의미에 따라서, 두 인스턴스의 값이 같거나 '동치 (equivalent)' 라고 고려한다는 의미입니다.
 
-자신만의 구조체와 클래스를 정의할 때는, 두 인스턴스의 같음을 규명하는 것이 무엇인지 결정하는 것은 본인 책임입니다. 자신만의 `==` 연산자와 `!=` 연산자 구현을 정의하는 과정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
+자신만의 구조체와 클래스를 정의할 땐, 두 인스턴스의 같음을 규명하는 것이 본인 책임입니다. 자신만의 `==` 연산자와 `!=` 연산자 구현을 정의하는 과정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
 
 #### Pointers (포인터)
 

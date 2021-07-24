@@ -272,7 +272,7 @@ _nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` �
 a != nil ? a! : b
 ```
 
-위 코드는 '삼항 조건 연산자' 와 '강제 포장 풀기 (forced unwrapping; `a!`)' 를 사용하여 `a` 가 `nil` 이 아닐 땐 `a` 안에 포장된 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-통합 연산자' 는 이러한 조건 검사와 포장 풀기를 간결하고 이해가 쉬운 형식 속에 은닉하는 방식의 더 우아한 방법을 제공합니다.
+위 코드는 '삼항 조건 연산자' 와 '강제 포장 풀기 (forced unwrapping; `a!`)' 를 사용하여 `a` 가 `nil` 이 아닐 땐 `a` 안의 포장 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-통합 연산자' 는 이러한 조건 검사와 포장 풀기를 간결하고 이해가 쉬운 형식 속에 은닉하는 방식의 더 우아한 방법을 제공합니다.
 
 > `a` 의 값이 `nil` 이 아니면, `b` 의 값은 평가하지 않습니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
 
@@ -288,7 +288,7 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 
 `userDefinedColorName` 변수를, 기본 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
 
-만약 `userDefinedColorName` 에 `nil` 아닌 값을 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 값 대신 `userDefinedColorName` 안에 포장된 값을 사용합니다:
+만약 `userDefinedColorName` 에 `nil` 아닌 값을 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 값 대신 `userDefinedColorName` 안의 포장 값을 사용합니다:
 
 ```swift
 userDefinedColorName = "green"
