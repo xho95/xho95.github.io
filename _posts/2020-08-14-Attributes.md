@@ -721,11 +721,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### Declaration Attributes Used by Interface Builder (인터페이스 빌더가 사용하는 선언 특성)
 
-'인터페이스 빌더 (interface builder)' 특성은 '엑스코드 (Xcode)' 와 동기화하기 위해 '인터페이스 빌더' 에서 사용하는 '선언 특성' 입니다. 스위프트는 다음의 '인터페이스 빌더' 특성을 제공합니다: `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 그리고 `IBInspectable`. 이 특성들의 개념은 오브젝티브-C 에서의 대응되는 것들과 같습니다.
+'인터페이스 빌더 특성' 은 '엑스코드 (Xcode)' 와 동기화하기 위해 '인터페이스 빌더 (interface builder)'[^interface-builder] 가 사용하는 '선언 특성' 입니다. 스위프트는: `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 그리고 `IBInspectable` 과 같은 '인터페이스 빌더 특성' 을 제공합니다. 이 특성은 '오브젝티브-C 에 있는 것' 과 개념이 똑같습니다.
 
-`IBOutlet` 과 `IBInspectable` 특성은 클래스의 속성 선언에 적용합니다. `IBAction` 과 `IBSegueAction` 특성은 클래스의 메소드 선언에 적용하고 `IBDesignable` 특성은 클래스 선언에 적용합니다.
+`IBOutlet` 과 `IBInspectable` 특성은 '클래스의 속성 선언' 에 적용합니다. `IBAction` 과 `IBSegueAction` 특성은 '클래스의 메소드 선언' 에 그리고 `IBDesignable` 특성은 '클래스 선언' 에 적용합니다.
 
-`IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 및 `IBInspectable` 특성을 적용하는 것은 또한 `objc` 특성이기도 함을 의미합니다.
+`IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 또는 `IBInspectable` 특성을 적용하면 `objc` 특성임을 암시하는 것이기도 합니다.
 
 ### Type Attributes (타입 특성)
 
@@ -786,3 +786,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^test-enabled]: '엑스코드 (Xcode)' 에서 '스킴 (Scheme) 화면' 의 '테스트 (Test) 옵션' 에 있는 'Debug executable' 이 켜져 있어야 합니다. 
 
 [^preceding-qualifier]: '선행 규명자 (preceding qualifier)' 는 본문 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 '해당 기호의 앞에 **선행**하여 해당 기호를 **규명**해주는 지시**자**' 를 말합니다.
+
+[^interface-builder]: '인터페이스 빌더 (Interface Builder)' 는 '엑스코드 (Xcode)' 에서 사용하는 'UI 제작 도구' 입니다. 2019년에 'SwiftUI' 라는 '새로운 UI 제작용 프레임웍' 을 발표함에 따라 차차 사용이 줄어들 것으로 예상합니다.
