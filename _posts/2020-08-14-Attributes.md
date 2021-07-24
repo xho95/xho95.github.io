@@ -733,7 +733,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### autoclosure (자동 클로저)
 
-이 특성을 적용하면 해당 표현식을 인자가 없는 클로저 안에 자동으로 포장함으로써 표현식의 평가를 늦춥니다. 이는 메소드 선언 또는 함수 선언에 있는 매개 변수 타입 중에서, 그 매개 변수의 타입이 인자를 받지 않고 표현식 타입의 값을 반환하는 함수 타입에 대하여, 적용합니다. `autoclosure` 특성을 사용하는 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 을 참고하기 바랍니다.
+이 특성은 '표현식을 인자 없는 클로저로 자동으로 포장함으로써 해당 표현식의 평가를 늦추기 위해' 적용합니다. 이는 메소드 선언 또는 함수 선언에 있는 매개 변수 타입 중에서, 그 매개 변수의 타입이 인자를 받지 않고 표현식 타입의 값을 반환하는 함수 타입에 대하여, 적용합니다. `autoclosure` 특성을 사용하는 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 을 참고하기 바랍니다.
 
 #### convention (협약)
 
