@@ -715,9 +715,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### warn_unqualified_access (규명 안된 접근 경고하기)
 
-이 특성을 최상단 함수, 인스턴스 메소드, 또는 클래스 메소드나 정적 메소드에 적용하면 해당 함수나 메소드가 모듈 이름, 타입 이름, 또는 인스턴스 변수나 인스턴스 상수 같은, '선행 자격자 (preceding qualifier)' 없이 사용할 때 경고를 일으킵니다. 이 특성을 사용하면 같은 이름을 가진 함수가 동일한 영역에서 접근 가능할 때의 모호함을 방지할 수 있습니다.
+이 특성은 '모듈 이름, 타입 이름, 또는 인스턴스 변수나 인스턴스 상수 같은, '선행 규명자 (preceding qualifier)'[^preceding-qualifier] 없이 함수나 메소드를 사용할 때 경고를 발동' 하기 위해 '최상단 함수, 인스턴스 메소드, 또는 클래스나 정적 메소드' 에 적용합니다. 이 특성을 사용하면 동일 영역에서 접근 가능한 똑같은 이름을 가진 함수 사이의 모호함이 없도록 합니다.
 
-예를 들어, 스위프트 표준 라이브러리는 최상단의 `min(_:_:)` 함수와 비교 가능한 원소를 가지는 '시퀀스 (sequence; 수열)' 에 대한 `min()` 메소드 둘 다를 포함하고 있습니다. 이 '시퀀스' 메소드는 `warn_unqualified_access` 특성으로 선언하여 `Sequence` '익스텐션' 내에서 둘 중 하나를 사용하려고 할 때의 혼동을 줄이도록 해줍니다.
+예를 들어, 스위프트 표준 라이브러리는 '최상단 `min(_:_:)` 함수' 와 '비교 가능 원소를 가진 시퀀스 (sequence) 에 대한 `min()` 메소드' 둘 다 포함합니다. '시퀀스 메소드' 는 '`Sequence` 익스텐션' 안에서 둘 중 하나를 사용할 때 혼동을 감소하고자 `warn_unqualified_access` 특성으로 선언되어 있습니다.
 
 #### Declaration Attributes Used by Interface Builder (인터페이스 빌더가 사용하는 선언 특성)
 
@@ -784,3 +784,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^evaluate]: 할당문의 경우 `buildExpression(_:)` 의 `()` 를 평가한 결과를 사용한다는 의미입니다.
 
 [^test-enabled]: '엑스코드 (Xcode)' 에서 '스킴 (Scheme) 화면' 의 '테스트 (Test) 옵션' 에 있는 'Debug executable' 이 켜져 있어야 합니다. 
+
+[^preceding-qualifier]: '선행 규명자 (preceding qualifier)' 는 본문 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 '해당 기호의 앞에 **선행**하여 해당 기호를 **규명**해주는 지시**자**' 를 말합니다.
