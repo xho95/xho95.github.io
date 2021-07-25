@@ -737,7 +737,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### convention (협약)
 
-이 특성을 함수의 타입에 적용하면 그것의 '호출 협약 (calling conventions)' 을 지시합니다.[^calling-convention]
+이 특성은 '호출 협약 (calling conventions)[^calling-convention] 을 지시' 하기 위해 함수의 타입에 적용합니다.
 
 `convention` 특성은 항상 다음의 인자 중 하나와 함께 나타냅니다:
 
