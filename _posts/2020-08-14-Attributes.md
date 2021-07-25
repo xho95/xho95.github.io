@@ -749,7 +749,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### escaping (벗어남)
 
-이 특성을 메소드 선언 또는 함수 선언에 있는 매개 변수의 타입에 적용하면 더 나중에 실행하기 위해 그 매개 변수의 값을 저장할 수 있음을 지시합니다. 이는 그 값이 호출의 수명보다 더 오래 살도록 허용한다는 것을 의미합니다. `escaping` 타입 특성을 가지는 함수 타입 매개 변수는 속성 또는 메소드에 대해 `self.` 를 명시적으로 사용하는 것이 필수입니다. `escaping` 특성을 사용하는 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 를 참고하기 바랍니다.
+이 특성은 '나중의 실행을 위해 매개 변수의 값을 저장할 수 있음' 을 지시하기 위해 메소드나 함수 선언의 매개 변수 타입에 적용합니다. 이는 호출 수명보다 값이 오래 사는 걸 허용한다는 의미입니다. '`escaping` 타입 특성을 가진 함수 타입 매개 변수' 는 속성이나 메소드가 `self.` 를 명시적으로 사용할 것을 요구합니다. `escaping` 특성의 사용 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
 
 ### Switch Case Attributes (switch 문 case 절 특성)
 
@@ -757,9 +757,13 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### unknown (알려지지 않음)
 
-이 특성을 'switch 문의 case 절' 에 적용하면 이것이 코드를 컴파일하는 시점에 알려진 열거체의 어떤 'case 값' 과도 일치하지 않을 것으로 예상된다는 것을 지시합니다. `unknown` 특성을 사용하는 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 를 참고하기 바랍니다.
+이 특성은 '코드 컴파일 시점에 알려진 어떤 열거체 case 값과도 일치하지 않을 것으로 예상함' 을 지시하기 위해 'switch 문의 case 절' 에 적용합니다. `unknown` 특성의 사용 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
+
+### 다음 장
+
+[Patterns (패턴; 유형) > ]({% post_url 2020-08-25-Patterns %})
 
 ### 참고 자료
 
