@@ -719,7 +719,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 예를 들어, 스위프트 표준 라이브러리는 '최상단 `min(_:_:)` 함수' 와 '비교 가능 원소를 가진 시퀀스 (sequence) 에 대한 `min()` 메소드' 둘 다 포함합니다. '시퀀스 메소드' 는 '`Sequence` 익스텐션' 안에서 둘 중 하나를 사용할 때 혼동을 감소하고자 `warn_unqualified_access` 특성으로 선언되어 있습니다.
 
-#### Declaration Attributes Used by Interface Builder (인터페이스 빌더가 사용하는 선언 특성)
+#### Declaration Attributes Used by Interface Builder (인터페이스 빌더에서 사용하는 선언 특성)
 
 '인터페이스 빌더 특성' 은 '엑스코드 (Xcode)' 와 동기화하기 위해 '인터페이스 빌더 (interface builder)'[^interface-builder] 가 사용하는 '선언 특성' 입니다. 스위프트는: `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 그리고 `IBInspectable` 과 같은 '인터페이스 빌더 특성' 을 제공합니다. 이 특성은 '오브젝티브-C 에 있는 것' 과 개념이 똑같습니다.
 
@@ -733,7 +733,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### autoclosure (자동 클로저)
 
-이 특성은 '표현식을 인자 없는 클로저로 자동으로 포장함으로써 해당 표현식의 평가를 늦추기 위해' 적용합니다. 이는 메소드 선언 또는 함수 선언에 있는 매개 변수 타입 중에서, 그 매개 변수의 타입이 인자를 받지 않고 표현식 타입의 값을 반환하는 함수 타입에 대하여, 적용합니다. `autoclosure` 특성을 사용하는 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 을 참고하기 바랍니다.
+이 특성은 '표현식을 인자 없는 클로저로 자동 포장함으로써 해당 표현식의 평가를 늦추기' 위해 적용합니다. 이는, 함수나 메소드 선언에 있는 매개 변수 타입이, 인자를 취하지 않고 표현식 타입의 값을 반환하는 함수 타입일 때, 매개 변수 타입에 적용합니다. `autoclosure` 특성의 사용 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분을 참고하기 바랍니다.
 
 #### convention (협약)
 
