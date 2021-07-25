@@ -739,7 +739,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 이 특성은 '호출 협약 (calling conventions)[^calling-convention] 을 지시' 하기 위해 함수의 타입에 적용합니다.
 
-`convention` 특성은 항상 다음의 인자 중 하나와 함께 나타냅니다:
+`convention` 특성은 항상 다음 인자와 함께 나타납니다:
 
 * '스위프트 함수 참조 (swift function reference)' 를 지시하는 `swift` 인자. 이는 스위프트에 있는 함수 값에 대한 '표준 호출 협약 (standard calling convention)' 입니다.
 * '오브젝티브-C 와 호환 가능한 블럭 참조' 를 지시하는 `block` 인자. 함수 값은, 그 안에 '발동 함수 (invocation function)' 를 갖고 있는 객체이자 '`id`-호환 가능한' 오브젝티브-C 객체인, 블럭 객체에 대한 참조로써 표현됩니다. '발동 함수' 는 'C 호출 협약 (C calling convention)' 을 사용합니다.
