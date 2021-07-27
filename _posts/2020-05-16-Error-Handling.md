@@ -141,17 +141,17 @@ struct PurchasedSnack {
 do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 1-유형 1` {<br />
+} catch `pattern 1-패턴 1` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 2-유형 2` where `condition-조건` {<br />
+} catch `pattern 2-패턴 2` where `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 3-유형 3`, `pattern 4--유형 4` where `condition-조건` {<br />
+} catch `pattern 3-패턴 3`, `pattern 4-패턴 4` where `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 } catch {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 표시하려면 `catch` 뒤에 '패턴 (pattern; 유형)' 을 작성합니다. `catch` 절에 '패턴' 이 없으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '패턴 맞춤 (pattern matching)' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
+해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 표시하려면 `catch` 뒤에 '패턴 (pattern)' 을 작성합니다. `catch` 절에 '패턴' 이 없으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '패턴 맞춤 (pattern matching)' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
 
 예를 들어, 다음 코드는 `VendingMachineError` 열거체의 모든 세 'case 값' 들과 맞춰봅니다.
 

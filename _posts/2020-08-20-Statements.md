@@ -162,12 +162,12 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 `switch` 문의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;switch `control expression-제어 표현식` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 1-유형 1`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 1-패턴 1`:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 2-유형 2` where `condition-조건`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 2-패턴 2` where `condition-조건`:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 3-유형 3` where `condition-조건`,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pattern 4-유형 4` where `condition-조건`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 3-패턴 3` where `condition-조건`,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pattern 4-패턴 4` where `condition-조건`:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;default:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
@@ -177,21 +177,21 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 
 코드가 분기할 수 있는 표현식의 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, '크기 (scalar) 타입'[^scalar-types] 의 값에 더하여, 부동-소수점 수, 문자열, 튜플, 사용자 정의 클래스의 인스턴스, 그리고 옵셔널을 포함한, 어떤 타입의 값에 대해서든 코드를 분기할 수 있습니다. _제어 표현식 (control expression)_ 의 값은 심지어 열거체의 'case 값' 과도 일치할 수 있고 특정 범위가 값을 포함하는지도 검사할 수 있습니다. `switch` 문에서 이 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 참고하기 바랍니다.
 
-'`switch` 문의 case 절' 은 각 '패턴 (pattern)' 뒤에 `where` 절을 담고 있을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 'case 절' 의 유형이 _제어 표현식 (control expression)_ 과 일치함을 고려하기 전에 추가적인 조건을 제공하고자 사용합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 'case 절' 유형 중 하나와 일치하면서 `where` 절의 표현식이 `true` 라고 평가할 때만 연관된 'case 절' 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에 있는 'case 절' 은, `(1, 1)` 같이, 똑같은 값의 두 원소를 담은 튜플일 때만 _제어 표현식 (control expression)_ 과 일치합니다.
+'`switch` 문의 case 절' 은 각 '패턴 (pattern)' 뒤에 `where` 절을 담고 있을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 'case 절' 의 패턴이 _제어 표현식 (control expression)_ 과 일치함을 고려하기 전에 추가적인 조건을 제공하고자 사용합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 'case 절' 패턴 중 하나와 일치하면서 `where` 절의 표현식이 `true` 라고 평가할 때만 연관된 'case 절' 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에 있는 'case 절' 은, `(1, 1)` 같이, 똑같은 값의 두 원소를 담은 튜플일 때만 _제어 표현식 (control expression)_ 과 일치합니다.
 
 ```switch
 case let (x, y) where x == y:
 ```
 
-위 예제에서 보는 것처럼, 'case 절' 의 유형은 `let` 키워드로 상수와 연결할 수도 있습니다 (`var` 키워드로 변수와 연결할 수도 있습니다). 그러면 이 상수 (나 변수) 들이 관련된 `where` 절 및 'case 절' 영역 안의 나머지 코드 전반에 걸쳐 참조될 수 있습니다. 'case 절' 이 '제어 표현식과 일치하는 여러 개의 패턴' 을 담은 경우, 모든 패턴이 반드시 '똑같은 상수나 변수 연결' 을 담아야 하며, 각각의 연결된 변수나 상수는 모든 'case 절' 유형에서 반드시 똑같은 타입을 가져야 합니다.
+위 예제에서 보는 것처럼, 'case 절' 의 패턴은 `let` 키워드로 상수와 연결할 수도 있습니다 (`var` 키워드로 변수와 연결할 수도 있습니다). 그러면 이 상수 (나 변수) 들이 관련된 `where` 절 및 'case 절' 영역 안의 나머지 코드 전반에 걸쳐 참조될 수 있습니다. 'case 절' 이 '제어 표현식과 일치하는 여러 개의 패턴' 을 담은 경우, 모든 패턴이 반드시 '똑같은 상수나 변수 연결' 을 담아야 하며, 각각의 연결된 변수나 상수는 모든 'case 절' 패턴에서 반드시 똑같은 타입을 가져야 합니다.
 
 `switch` 문은, `default` 키워드로 도입하는, '기본 (default) case 절' 을 포함할 수도 있습니다. '기본 case 절' 안의 코드는 제어 표현식과 일치하는 다른 'case 절' 이 없는 경우에만 실행합니다. `switch` 문은 단 하나의 '기본 case 절' 을 포함할 수 있으며, 이는 반드시 `switch` 문의 끝에 있어야 합니다.
 
-'패턴-맞춤 (pattern-matching) 연산의 실제 실행 순서' 와, 'case 절 패턴의 평가 순서' 는 특별히, 지정 안하지만, '`switch` 문의 패턴 맞춤' 은 마치 소스 순서-즉, 소스 코드에 있는 순서-대로 평가하는 것처럼 동작합니다. 그 결과, 똑같은 값으로 평가되는, 따라서 제어 표현식 값과 일치하는, 유형을 담은 'case 절' 이 여러 개인 경우, 프로그램은 소스 순서대로 맨 처음 일치하는 'case 절' 의 코드만 실행합니다.
+'패턴-맞춤 (pattern-matching) 연산의 실제 실행 순서' 와, 'case 절 패턴의 평가 순서' 는 특별히, 지정 안하지만, '`switch` 문의 패턴 맞춤' 은 마치 소스 순서-즉, 소스 코드에 있는 순서-대로 평가하는 것처럼 동작합니다. 그 결과, 똑같은 값으로 평가되는, 따라서 제어 표현식 값과 일치하는, 패턴을 담은 'case 절' 이 여러 개인 경우, 프로그램은 소스 순서대로 맨 처음 일치하는 'case 절' 의 코드만 실행합니다.
 
 **Switch Statements Must Be Exhaustive (switch 문은 반드시 빠짐없이 철저해야 합니다)**
 
-스위프트에서, '제어 표현식' 타입으로 가능한 모든 값은 최소 'case 절' 의 한 유형과는 반드시 일치해야 합니다. 이의 실현이 (예를 들어, 제어 표현식의 타입이 `Int` 일 때 처럼) 단순치 않을 때는, '필수 조건' 을 만족하도록 '기본 case 값' 을 포함할 수 있습니다.
+스위프트에서, '제어 표현식' 타입으로 가능한 모든 값은 최소 'case 절' 의 한 패턴과는 반드시 일치해야 합니다. 이의 실현이 (예를 들어, 제어 표현식의 타입이 `Int` 일 때 처럼) 단순치 않을 때는, '필수 조건' 을 만족하도록 '기본 case 값' 을 포함할 수 있습니다.
 
 <p>
 <strong id="switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기">Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)</strong>
@@ -363,11 +363,11 @@ f()
 &nbsp;&nbsp;&nbsp;&nbsp;do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 1-유형 1` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 1-패턴 1` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 2-유형 2` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 2-패턴 2` where `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 3-유형 3`, `pattern 4-유형 4` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 3-패턴 3`, `pattern 4-패턴 4` where `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;} catch {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
