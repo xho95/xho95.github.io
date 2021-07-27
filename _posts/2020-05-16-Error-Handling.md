@@ -151,7 +151,7 @@ do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 표시하려면 `catch` 뒤에 '유형 (pattern)' 을 작성합니다. `catch` 절에 '유형' 이 없으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '유형 맞춤 (pattern matching; 패턴 매칭)' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 을 참고하기 바랍니다.
+해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 표시하려면 `catch` 뒤에 '패턴 (pattern; 유형)' 을 작성합니다. `catch` 절에 '패턴' 이 없으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '패턴 맞춤 (pattern matching)' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
 
 예를 들어, 다음 코드는 `VendingMachineError` 열거체의 모든 세 'case 값' 들과 맞춰봅니다.
 
@@ -174,7 +174,7 @@ do {
 // "Insufficient funds. Please insert an additional 2 coins." 를 인쇄합니다.
 ```
 
-위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수 있기 때문에, '`try` 표현식'[^try-expression] 안에서 호출합니다. 에러를 던지면, 실행은 곧바로, 전파를 계속 허용할 지를 결정하는, `catch` 절로 옮깁니다. 아무 '유형' 과도 일치하지 않으면, 에러는 '최종 `catch` 절' 이 잡아내며 `error` 라는 지역 상수와 연결됩니다. 아무 에러도 던지지 않으면, `do` 문에 있는 나머지 구문들을 실행합니다.
+위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수 있기 때문에, '`try` 표현식'[^try-expression] 안에서 호출합니다. 에러를 던지면, 실행은 곧바로, 전파를 계속 허용할 지를 결정하는, `catch` 절로 옮깁니다. 아무 '패턴' 과도 일치하지 않으면, 에러는 '최종 `catch` 절' 이 잡아내며 `error` 라는 지역 상수와 연결됩니다. 아무 에러도 던지지 않으면, `do` 문에 있는 나머지 구문들을 실행합니다.
 
 `catch` 절은 `do` 절의 코드가 던질 가능성이 있는 모든 에러를 처리하지 않아도 됩니다. 아무런 `catch` 절도 에러를 처리하지 않으면, 에러를 주위 영역으로 전파합니다. 하지만, _어떤 (some)_ 주위 영역에서 반드시 이 전파한 에러를 처리해야 합니다. '던지지 않는 (nonthrowing) 함수' 는, '테두리를 친 `do`-`catch` 문' 이 에러를 반드시 처리해야 합니다. '던지는 함수' 는, '테두리를 친 `do-catch` 문' 이든 '호출한 쪽 (caller)' 이든 어느 한 곳에서 에러를 반드시 처리해야 합니다. 에러가 처리되지 않은 채로 '최상단 (top-level) 영역' 으로 전파되면, 실행시간 에러를 가질 것입니다.
 

@@ -690,7 +690,7 @@ do {
 
 이 예제에서, `makeASandwich()` 함수는 사용할 수 있는 깨끗한 접시가 없거나 어떤 재료가 빠진 경우 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 함수 호출을 `try` 표현식으로 '포장됩니다 (wrapped).' 함수 호출을 `do` 구문으로 포장함으로써, 던져진 에러가 어떤 것이든 제공된 `catch` 절로 전파될 것입니다.
 
-던져진 에러가 없으면, `eatASandwich()` 함수를 호출합니다. 던져진 에러가 `SandwichError.outOfCleanDishes` 'case 절' 과 일치하면, 그 땐 `washDishes()` 함수를 호출할 것입니다. 던져진 에러가 `SandwichError.missingIngredients` 'case 절' 과 일치하면, 그 땐 `catch` '유형 (pattern)' 이 붙잡은 '결합된 `[String]` 값' 을 가지고 `buyGroceries(_:)` 함수를 호출합니다.
+던져진 에러가 없으면, `eatASandwich()` 함수를 호출합니다. 던져진 에러가 `SandwichError.outOfCleanDishes` 'case 절' 과 일치하면, 그 땐 `washDishes()` 함수를 호출할 것입니다. 던져진 에러가 `SandwichError.missingIngredients` 'case 절' 과 일치하면, 그 땐 `catch` '패턴 (pattern)' 이 붙잡은 '결합된 `[String]` 값' 을 가지고 `buyGroceries(_:)` 함수를 호출합니다.
 
 에러를 던지고, 붙잡고, 전파하는 것은 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 아주 자세하게 다룹니다.
 

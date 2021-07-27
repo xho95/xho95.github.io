@@ -158,7 +158,7 @@ things.append({ (name: String) -> String in "Hello, \(name)" })
 
 `things` 배열은 `Int` 값 두 개, `Double` 값 두 개, `String` 값 한 개, `(Double, Double)` 타입안 튜플 한 개, "고스트 버스터즈 (Ghostbusters)[^ghostbusters]" 라는 영화, 그리고 `String` 값을 취해서 다른 `String` 값을 반환하는 클로저 표현식 한 개를 담고 있습니다.
 
-`Any` 나 `AnyObject` 타입이라고만 알고 있는 특정 상수나 변수의 타입을 발견하기 위해, `switch` 문 'case 절' 에서 `is` 나 `as` '유형 (pattern)' 을 사용할 수 있습니다. 아래 예제는 `things` 배열의 항목에 동작을 반복하여 `switch` 문으로 각 항목의 타입을 조회합니다. `switch` 문의 여러 'case 절' 은 일치하는 값을 특정 타입의 상수와 '연결 (bind)' 하여 그 값을 인쇄할 수 있게 합니다:
+`Any` 나 `AnyObject` 타입이라고만 알고 있는 특정 상수나 변수의 타입을 발견하기 위해, `switch` 문 'case 절' 에서 '`is` 나 `as` 패턴 (pattern)' 을 사용할 수 있습니다. 아래 예제는 `things` 배열의 항목에 동작을 반복하여 `switch` 문으로 각 항목의 타입을 조회합니다. `switch` 문의 여러 'case 절' 은 일치하는 값을 특정 타입의 상수와 '연결 (bind)' 하여 그 값을 인쇄할 수 있게 합니다:
 
 ```swift
 for thing in things {
