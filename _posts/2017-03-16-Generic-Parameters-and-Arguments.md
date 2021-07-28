@@ -89,11 +89,13 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 > GRAMMAR OF A GENERIC ARGUMENT CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID409)
 
+### 전체 목록 
+
+[Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %})
+
 ### 참고 자료
 
 [^GPandA]: 원문은 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 에서 확인할 수 있습니다.
-
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 '함수 이름' 과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
 
