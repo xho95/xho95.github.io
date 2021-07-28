@@ -15,19 +15,19 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 스위프트 '일반화' 의 개요는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 참고하기 바랍니다.
 
-### Generic Parameter Clause (일반화된 매개 변수 구절; 제네릭 매개 변수 구절)
+### Generic Parameter Clause (일반화 매개 변수 절)
 
-_일반화된 매개 변수 구절 (generic parameter clause)_ 은 일반화된 타입이나 일반화된 함수의 '타입 매개 변수' 를 지정하면서, 이 매개 변수와 관련된 모든 '구속 조건 (constraints)' 과 '필수 조건 (requirements)' 도 다같이 지정합니다. '일반화된 매개 변수 구절' 은 꺾쇠 괄호 (`<>`) 로 감싸여 있으며 다음과 같은 양식을 가집니다:
+_일반화 매개 변수 절 (generic parameter clause)_ 은 '일반화 타입 또는 함수의 타입 매개 변수' 와, '해당 매개 변수에 대한 어떤 결합 구속 조건 및 필수 조건' 을 나란히 지정합니다. '일반화 매개 변수 절' 은 '꺾쇠 괄호 (`<>`)' 로 테두리 치며 형식은 다음과 같습니다:
 
-<`generic parameter list (일반화된 매개 변수 목록)`>
+&nbsp;&nbsp;&nbsp;&nbsp;<`generic parameter list-일반화 매개 변수 목록`>
 
-_일반화된 매개 변수 목록 (generic parameter list)_ 은 쉼표로-구분된 '일반화된 매개 변수' 들의 목록으로, 각각의 '일반화된 매개 변수' 는 다음의 양식을 가집니다:
+_일반화 매개 변수 목록 (generic parameter list)_ 은 '일반화 매개 변수들을 쉼표로-구분한 목록' 으로, 각각의 형식은 다음과 같습니다:
 
-`type parameter (타입 매개 변수)`: `constraint (구속 조건)`
+`type parameter-타입 매개 변수`: `constraint-구속 조건`
 
-위에서 보듯 일반화된 매개 변수는 _타입 매개 변수_ 와 _구속 조건_ 으로 구성되며, 여기서 '구속 조건'은 선택 사항 (option) 입니다. _타입 매개 변수_ 는 단순히 해당 자리를 표시하는 용도로 사용하는 타입 이름입니다.[^placeholder] (예를 들면 `T`, `U`, `V`, `Key`, `Value` 등이 이에 해당합니다.) 타입 매개 변수 (및 이와 결합된 타입 어떤 것이든), 함수 또는 초기자의 '서명 (signature)'[^signature] 부분을 포함하여, 타입, 함수, 또는 초기자 선언의 나머지 부분에서 접근 할 수 있습니다.
+'일반화 매개 변수' 는 _타입 매개 변수 (type parameter)_ 와 그 뒤에 옵션인 _구속 조건 (constraint)_ 으로 구성합니다. _타입 매개 변수 (type parameter)_ 는 단순히 '자리 표시자 타입' 인 (예를 들어, `T`, `U`, `V`, `Key`, `Value`, 등과 같은) 이름입니다. '함수나 초기자의 서명 (signature)'[^signature] 을 포함한, 타입, 함수, 또는 초기자 선언의 나머지 부분에서 '타입 매개 변수 (및 그 어떤 결합 타입) 에 접근할 수 있습니다.
 
-_구속 조건 (constraint)_ 은 '타입 매개 변수'가 특정한 클래스를 상속 받아야 하는지 또는 프로토콜이나 '프로토콜 합성' 을 준수해야 하는지를 지정합니다. 예를 들어 아래의 일반화된 함수에서, 일반화된 매개 변수인 `T: Comparable` 은 타입 매개 변수 `T` 를 대체하는 타입 인자라면 어떤 것이든 반드시 `Comparable` 프로토콜을 따라야함을 나타내고 있습니다.
+_구속 조건 (constraint)_ 은 '타입 매개 변수가 특정 클래스 상속하는지' 또는 '프로토콜이나 프로토콜 합성을 준수하는지' 를 지정합니다. 예를 들어, 아래 '일반화 함수' 에 있는, `T: Comparable` 이라는 일반화 매개 변수는 '타입 매개 변수 `T` 를 대체하는 어떤 타입 인자' 든 반드시 `Comparable` 프로토콜을 준수해야 함을 지시합니다.
 
 ```swift
 func simpleMax<T: Comparable>(_ x: T, _ y: T) -> T {
@@ -41,8 +41,8 @@ func simpleMax<T: Comparable>(_ x: T, _ y: T) -> T {
 `Int` 와 `Double` 은 둘 다 `Comparable` 프로토콜을 따르고 있기 때문에 이 함수의 인자로 넘길 수 있습니다. 일반회된 타입에서와는 다르게, 일반화된 함수나 초기자에서는 '일반화된 인자 구절 (generic argument clause)'을 지정할 필요가 없습니다. 함수나 초기자로 전달되는 인자의 타입으로부터 타입 인자를 추론할 수 있기 때문입니다.
 
 ```swift
-simpleMax(17, 42) // T 를 Int 로 추론합니다.
-simpleMax(3.14159, 2.71828) // T 를 Double 로 추론합니다.
+simpleMax(17, 42) // T 는 Int 라고 추론합니다.
+simpleMax(3.14159, 2.71828) // T 는 Double 이라고 추론합니다.
 ```
 
 #### Generic Where Clauses (일반화 'where' 절)
@@ -99,7 +99,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-[Generic Parameter Clause (일반화된 매개 변수 구절; 제네릭 매개 변수 구절)](#generic-parameter-clause-일반화된-매개-변수-구절-제네릭-매개-변수-구절) 에서 언급한 것처럼, '일반화된 인자 구절' 을 사용해서 일반화된 함수나 초기자의 '타입 매개 변수' 를 지정하는 것은 아닙니다.
+[Generic Parameter Clause (일반화 매개 변수 절)](#generic-parameter-clause-일반화된-매개-변수-구절-제네릭-매개-변수-구절) 에서 언급한 것처럼, '일반화된 인자 구절' 을 사용해서 일반화된 함수나 초기자의 '타입 매개 변수' 를 지정하는 것은 아닙니다.
 
 > 일반화된 인자 구절의 문법
 >
@@ -112,8 +112,6 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 [^GPandA]: 원문은 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 에서 확인할 수 있습니다.
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^placeholder]: 즉, 특정한 타입의 이름이 아니므로 사용자가 편리한 데로 임의로 정할 수 있는 이름입니다.
 
 [^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 '함수 이름' 과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
 
