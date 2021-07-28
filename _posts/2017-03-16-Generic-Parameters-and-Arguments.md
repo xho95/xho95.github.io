@@ -49,7 +49,7 @@ simpleMax(3.14159, 2.71828) // T 는 Double 이라고 추론합니다.
 
 '타입 매개 변수 (type parameters)' 및 그와 '결합된 타입 (associated types)' 에 추가적인 '필수 조건 (requirements)' 을 지정하려면 타입 또는 함수 본문의 '여는 중괄호' 바로 앞에 '일반화된 `where` 절 (generic where clause)' 을 집어 넣으면 됩니다. '일반화된 `where` 절' 은 `where` 키워드 다음에, 쉼표로-구분되는 하나 이상의 '_필수 조건 (requirements)_' 목록을 이어 붙여서 만듭니다.
 
-where `requirements`
+&nbsp;&nbsp;&nbsp;&nbsp;where `requirements-필수 조건`
 
 '일반화된 `where` 절' 의 '_필수 조건 (requirements)_' 은 '타입 매개 변수' 가 어떤 클래스를 상속받도록 지정하거나 프로토콜 또는 '프로토콜 합성' 을 준수하도록 지정합니다. '일반화된 `where` 절' 은 '타입 매개 변수' 의 간단한 구속 조건 표현을 표현하도록 쉽게 해주는 꿀팁같은 것을 (예를 들어 `<T: Comparable>` 를 `<T> where T: Comparable` 로 동등하게 표현하는 것 등) 제공해 주지만, 이를 잘 사용하면 타입 매개 변수와 그와 '결합된 타입' 들에 더 복잡한 구속 조건도 부여할 수 있습니다. 가령 타입 매개 변수의 연관 타입이 프로토콜을 따르도록 제약할 수 있습니다. 예를 들어 `<S: Sequence> where S.Iterator.Element: Equatable` 은 이 `S` 가 `Sequence` 프로토콜을 따르면서 그 연관 타입인 `S.Iterator.Element` 가 `Equatable` 프로토콜을 따르도록 지정합니다. 이 구속 조건은 수열의 각 요소가 동등 비교를 수행할 수 있어야 함을 보장합니다.
 
@@ -61,27 +61,13 @@ where `requirements`
 
 일반화된 `where` 절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 보면 됩니다.
 
-> 일반화된 매개 변수 구절의 문법
->
-> generic-parameter-clause → **<­** generic-parameter-list ­**>**  
-> generic-parameter-list → generic-parameter­ \| generic-parameter **,** ­generic-parameter-list­  
-> generic-parameter → type-name­
-> generic-parameter → type-name­ **:** ­type-identifier­  
-> generic-parameter → type-name­ **:** ­protocol-composition-type
->
-> generic-where-clause → **where** ­requirement-list­  
-> requirement-list → requirement­  requirement­ **,** ­requirement-list  
-> requirement → conformance-requirement­  same-type-requirement  
->
-> conformance-requirement → type-identifier­ **:** ­type-identifier  
-> conformance-requirement → type-identifier­ **:** ­protocol-composition-type  
-> same-type-requirement → type-identifier­ **==­** type­
+> GRAMMAR OF A GENERIC PARAMETER CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID407)
 
 ### Generic Argument Clause (일반화된 인자 구절)
 
 _일반화된 인자 구절 (generic argument clause)_ 은 '일반화된 타입' 의 '타입 인자' 를 지정합니다. '일반화된 인자 구절' 은 꺾쇠 괄호 (`<>`) 로 감싸여 있으며 다음과 같은 양식을 가집니다:
 
-<`generic argument list (일반화된 인자 목록)`>
+&nbsp;&nbsp;&nbsp;&nbsp;<`generic argument list-일반화 인자 목록`>
 
 _일반화된 인자 목록 (generic argument list)_ 은 쉼표로-구분된 '타입 인자' 들의 목록을 말합니다. _타입 인자 (type argument)_ 는 실제 '구체적으로 고정된 타입 (concrete type)' 이름이며 이것이 '일반화된 타입' 의 '일반화된 매개 변수 구절' 에 있는 연관되어 있는 '타입 매개 변수' 를 대체합니다. 그 결과는 '일반화된 타입' 의 '특수한 버전 (specialized version)' 입니다.[^specialized-version] 아래 예제는 스위프트 표준 라이브러리에 있는 '일반화된 딕셔터리 타입 (generic dictionary type)' 을 간추려서 보여줍니다.
 
@@ -101,11 +87,7 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 [Generic Parameter Clause (일반화 매개 변수 절)](#generic-parameter-clause-일반화된-매개-변수-구절-제네릭-매개-변수-구절) 에서 언급한 것처럼, '일반화된 인자 구절' 을 사용해서 일반화된 함수나 초기자의 '타입 매개 변수' 를 지정하는 것은 아닙니다.
 
-> 일반화된 인자 구절의 문법
->
-> generic-argument-clause → **<­** generic-argument-list ­**>­**  
-> generic-argument-list → generic-argument­ \| generic-argument **,** generic-argument-list­  
-> generic-argument → type­
+> GRAMMAR OF A GENERIC ARGUMENT CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID409)
 
 ### 참고 자료
 
