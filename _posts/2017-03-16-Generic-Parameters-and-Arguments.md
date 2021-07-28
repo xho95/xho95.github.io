@@ -13,7 +13,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 이 장은 '일반화 (generic) 타입, 함수, 그리고 초기자에 대한 매개 변수와 인자' 를 설명합니다. '일반화 (generic) 타입, 함수, 첨자 연산, 또는 초기자' 를 선언할 때는, '일반화 타입, 함수, 또는 초기자' 와 작업할 수 있는 '타입 매개 변수' 를 지정합니다. 이 '타입 매개 변수' 들은 자리를 지키고 있다가 일반화된 타입의 인스턴스가 만들어지거나 일반화된 함수나 초기자가 호출될 때 전달되는 인자로 대체되어, 실제 '구체적으로 고정된 타입 (concrete type)' 으로 바뀝니다.
 
-스위프트에서의 일반화 (generic) 에 대해서는 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 부분을 참고 바랍니다.
+스위프트 '일반화' 의 개요는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 참고하기 바랍니다.
 
 ### Generic Parameter Clause (일반화된 매개 변수 구절; 제네릭 매개 변수 구절)
 
