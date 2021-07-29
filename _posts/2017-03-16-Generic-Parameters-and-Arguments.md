@@ -38,7 +38,7 @@ func simpleMax<T: Comparable>(_ x: T, _ y: T) -> T {
 }
 ```
 
-예를 들어, `Int` 와 `Double` 은 둘 다 `Comparable` 프로토콜을 준수하기 때문에, 이 함수는 어느 타입의 인자든 받습니다. '일반화 타입' 과는 대조적으로, '일반화 함수나 초기자' 를 사용할 때는 '일반화 인자 절 (generic argument clause)' 을 지정하지 않습니다. 타입 인자는 그 대신 '함수나 초기자로 전달된 인자 타입' 으로 추론합니다.
+예를 들어, `Int` 와 `Double` 은 둘 다 `Comparable` 프로토콜을 준수하기 때문에, 이 함수는 어느 타입의 인자든 받습니다. '일반화 타입' 과는 대조적으로, '일반화 함수나 초기자' 를 사용할 때는 '일반화 인자 절 (generic argument clause)' 을 지정하지 않습니다. 그 대신 '함수나 초기자로 전달한 인자 타입' 으로부터 '타입 인자' 를 추론합니다.
 
 ```swift
 simpleMax(17, 42) // T 는 Int 라고 추론합니다.
@@ -51,7 +51,7 @@ simpleMax(3.14159, 2.71828) // T 는 Double 이라고 추론합니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;where `requirements-필수 조건`
 
-'일반화된 `where` 절' 의 '_필수 조건 (requirements)_' 은 '타입 매개 변수' 가 어떤 클래스를 상속받도록 지정하거나 프로토콜 또는 '프로토콜 합성' 을 준수하도록 지정합니다. '일반화된 `where` 절' 은 '타입 매개 변수' 의 간단한 구속 조건 표현을 표현하도록 쉽게 해주는 꿀팁같은 것을 (예를 들어 `<T: Comparable>` 를 `<T> where T: Comparable` 로 동등하게 표현하는 것 등) 제공해 주지만, 이를 잘 사용하면 타입 매개 변수와 그와 '결합된 타입' 들에 더 복잡한 구속 조건도 부여할 수 있습니다. 가령 타입 매개 변수의 연관 타입이 프로토콜을 따르도록 제약할 수 있습니다. 예를 들어 `<S: Sequence> where S.Iterator.Element: Equatable` 은 이 `S` 가 `Sequence` 프로토콜을 따르면서 그 연관 타입인 `S.Iterator.Element` 가 `Equatable` 프로토콜을 따르도록 지정합니다. 이 구속 조건은 수열의 각 요소가 동등 비교를 수행할 수 있어야 함을 보장합니다.
+'일반화 `where` 절의 _필수 조건 (requirements)_' 은 '클래스를 상속하거나 프로토콜 또는 프로토콜 합성을 준수하는 타입 매개 변수' 를 지정합니다. '일반화 `where` 절' 이 '타입 매개 변수에 대한 단순 구속 조건' 을 표현하는 수월한 구문 (syntactic sugar) 을 (예를 들어, `<T: Comparable>` 와 동치인 `<T> where T: Comparable` 등을) 제공하긴 하지만, 타입 매개 변수와 그 결합 타입에 대한 더 복잡한 구속 조건을 제공하기 위해 이를 사용할 수도 있습니다. 가령 타입 매개 변수의 연관 타입이 프로토콜을 따르도록 제약할 수 있습니다. 예를 들어 `<S: Sequence> where S.Iterator.Element: Equatable` 은 이 `S` 가 `Sequence` 프로토콜을 따르면서 그 연관 타입인 `S.Iterator.Element` 가 `Equatable` 프로토콜을 따르도록 지정합니다. 이 구속 조건은 수열의 각 요소가 동등 비교를 수행할 수 있어야 함을 보장합니다.
 
 두 타입이 동일해야 함을 요구 조건으로 지정할 수도 있는데 이 때는 `==` 연산자를 사용합니다. 예를 들면 `<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` 는 `S1` 과 `S2` 가 `Sequence` 프로토콜을 따르도록 제약하면서 각 수열의 요소들이 반드시 같은 타입으로 되어 있어야 함을 표현합니다.
 
