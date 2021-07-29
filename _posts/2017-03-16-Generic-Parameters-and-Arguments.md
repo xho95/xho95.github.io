@@ -71,27 +71,27 @@ extension Collection where Element: SomeProtocol {
 
 타입 매개 변수에 대해 '서로 다른 구속 조건, 필수 조건, 또는 둘 다' 를 제공함으로써 '일반화 함수나 초기자' 를 '중복 정의 (overload)' 할 수 있습니다. '중복 정의한 일반화 함수나 초기자' 를 호출할 땐, 중복 정의한 함수나 초기자 중에서 부를 것을 해결하고자 컴파일러가 이 구속 조건들을 사용합니다.
 
-일반화 `where` 절에 대한 더 많은 정보와 일반화 함수 선언에서의 이 예들을 보려면, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
+'일반화 `where` 절' 에 대한 더 많은 정보와 '일반화 함수 선언' 에서의 사용 예제를 보려면, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID407)
 
-### Generic Argument Clause (일반화된 인자 구절)
+### Generic Argument Clause (일반화 인자 절)
 
-_일반화된 인자 구절 (generic argument clause)_ 은 '일반화된 타입' 의 '타입 인자' 를 지정합니다. '일반화된 인자 구절' 은 꺾쇠 괄호 (`<>`) 로 감싸여 있으며 다음과 같은 양식을 가집니다:
+_일반화 인자 절 (generic argument clause)_ 은 '일반화 타입의 타입 인자' 를 지정합니다. '일반화 인자 절' 은 '꺾쇠 괄호 (`<>`)' 로 테두리 치며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;<`generic argument list-일반화 인자 목록`>
 
-_일반화된 인자 목록 (generic argument list)_ 은 쉼표로-구분된 '타입 인자' 들의 목록을 말합니다. _타입 인자 (type argument)_ 는 실제 '구체적으로 고정된 타입 (concrete type)' 이름이며 이것이 '일반화된 타입' 의 '일반화된 매개 변수 구절' 에 있는 연관되어 있는 '타입 매개 변수' 를 대체합니다. 그 결과는 '일반화된 타입' 의 '특수한 버전 (specialized version)' 입니다.[^specialized-version] 아래 예제는 스위프트 표준 라이브러리에 있는 '일반화된 딕셔터리 타입 (generic dictionary type)' 을 간추려서 보여줍니다.
+_일반화 인자 목록 (generic argument list)_ 은 '타입 인자들을 쉼표로-구분한 목록' 입니다. _타입 인자 (type argument)_ 는 '일반화 타입의 일반화 매개 변수 절에 있는 관련 타입 매개 변수' 를 대체하는 '실제 고정 타입의 이름' 입니다. 결과는 '해당 일반화 타입의 특수화 버전 (specialized version)'[^specialized-version] 입니다. 아래 예제는 '스위프트 표준 라이브러리에 있는 일반화 딕셔너리 타입' 의 '단순화 버전' 입니다.
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
-    /* ... */
+  /* ... */
 }
 ```
 
-일반화된 `Dictionary` 타입의 특수한 버전인 `Dictionary<String, Int>` 은 일반화된 매개 변수 `Key: Hashable` 과 `Value` 를 굳혀진 타입 인자인 `String` 과 `Int` 로 대체합니다. 각 타입 인자들은 일반화된 매개 변수를 대체할 때 반드시 모든 '구속 조건' 들을 만족해야하며 이 때 일반화된 `where` 절에서 지정한 모든 추가 요구 사항들도 예외 없이 만족해야 합니다. 위의 예제에서 보면 `Key` 타입 매개 변수는 `Hashable` 프로토콜을 따르도록 제약하고 있으므로 `String` 은 반드시 `Hashable` 프로토콜을 따라야 합니다.
+일반화 `Dictionary` 타입의 특수화 버전인, `Dictionary<String, Int>` 는 '일반화 매개 변수인 `Key: Hashable` 과 `Value`' 를 '고정 타입 인자인 `String` 과 `Int`' 로 대체함으로써 형성합니다. 각각의 타입 인자는 반드시 자신이 대체할 일반화 매개 변수에 대하여, 일반화 `where` 절에서 지정한 어떤 추가적인 필수 조건까지 포함한, 모든 구속 조건을 만족해야 합니다. 위 예제는, `Key` 라는 타입 매개 변수가 `Hashable` 프로토콜을 준수하도록 구속하며 따라서 `String` 도 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-타입 매개 변수를 스스로가 일반화된 타입의 특수화 버전인 타입 인자로 대체할 수도 있습니다. (물론 이 타입 인자도 '구속 조건' 과 '필수 조건' 을 적절하게 만족하도록 주어져야 합니다.) 예를 들어 `Array<Element>` 의 타입 매개 변수인 `Element` 를 행렬의 특수화 버전인 `Array<Int>` 로 대체하여 그 요소들이 스스로 정수 배열인 배열을 만들 수 있습니다. [^specialized-form]
+타입 매개 변수를 스스로가 일반화된 타입의 특수화 버전인 타입 인자로 대체할 수도 있습니다. (물론 이 타입 인자도 '구속 조건' 과 '필수 조건' 을 적절하게 만족하도록 주어져야 합니다.) 예를 들어 `Array<Element>` 의 타입 매개 변수인 `Element` 를 행렬의 특수화 버전인 `Array<Int>` 로 대체하여 그 요소들이 스스로 정수 배열인 배열을 만들 수 있습니다.
 
 ```swift
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -115,8 +115,6 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 [^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 '함수 이름' 과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
 
-[^specialized-version]: 이 부분은 C++ 언어의 메타 프로그래밍에서 나오는 일반화 (generalization) 및 특수화 (specialization) 의 개념과 유사한 것 같습니다. Swift 의 일반화 (generic; 제네릭) 이 C++ 의 템플릿 (template) 과 사실상 동등한 개념이므로 당연한 것이라고 할 수 있습니다.
-
-[^specialized-form]: 이 부분은 아직 잘은 모르겠지만 C++ 의 template template parameter 와 유사한 개념인 것 같습니다.
+[^specialized-version]: '특수화 버전 (specialized version)' 은 '일반화 타입 (generic type) 의 타입 매개 변수를 고정하여 특수한 타입으로 정한 것' 을 말합니다.
 
 [^identical]: '완전히 똑같다 (identical)' 는 것은 프로그래밍에서 '값이 똑같다 (equal)' 보다 더 강한 개념입니다. 두 개의 인스턴스가 있을 때, 두 인스턴스가 똑같은 값을 가지고 있으면 '값이 똑같은 (equal)' 것이지만, 인스턴스가 두 개라는 것은 메모리 상에서 서로 다른 주소를 가지고 있기 때문에 '완전히 똑같은 (identical)' 것은 아닙니다. 본문에서는 '타입' 자체에 대해서 설명하고 있으므로, '완전히 똑같다 (identical)' 라는 표현을 쓰고 있습니다.
