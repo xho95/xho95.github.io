@@ -57,6 +57,18 @@ simpleMax(3.14159, 2.71828) // T 는 Double 이라고 추론합니다.
 
 '타입 매개 변수를 대체하는 어떤 타입 인자' 든 반드시 '타입 매개 변수에 대한 모든 구속 조건 및 필수 조건' 과 부합해야 합니다.
 
+'일반화 `where` 절' 은 '타입 매개 변수를 포함한 선언' 이나 '타입 매개변수를 포함한 선언 안에 중첩된 선언' 으로써 나타날 수 있습니다. '중첩 선언을 위한 일반화 `where` 절' 은 여전히 (자신을) 둘러싼 선언의 타입 매개 변수를 참조할 수 있으나; 하지만, '해당 where 절의 필수 조건' 은 이를 작성한 선언에만 적용합니다.
+
+둘러싸는 선언에도 where 절이 있는 경우 두 절의 요구 사항이 결합됩니다. 아래 예에서 startsWithZero()는 요소가 SomeProtocol과 Numeric을 모두 준수하는 경우에만 사용할 수 있습니다.
+
+```swift
+extension Collection where Element: SomeProtocol {
+  func startsWithZero() -> Bool where Element: Numeric {
+    return first == .zero
+  }
+}
+```
+
 일반화된 함수나 초기자는 타입 매개 변수에 다른 구속 조건, 필수 조건, 또는 둘 다를 제공해서 추가 정의 (overload) 할 수 있습니다. 일반화된 함수나 초기자의 추가 정의 버전을 호출하면 컴파일러는 이들 구속 조건을 사용하여 어떤 추가 정의 함수나 초기자를 실행해야할지를 결정하게 됩니다.
 
 일반화된 `where` 절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 보면 됩니다.
