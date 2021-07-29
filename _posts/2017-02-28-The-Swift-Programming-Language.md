@@ -61,8 +61,8 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Statements (구문)]({% post_url 2020-08-20-Statements %}) ![5.5](https://img.shields.io/badge/-%205.5-success)
 * [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) ![5.5](https://img.shields.io/badge/-%205.5-success)
 * [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) ![5.5](https://img.shields.io/badge/-%205.5-success)
-* [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) ![5.5](https://img.shields.io/badge/-%205.5-yellow)
-* [Generic Parameters and Arguments (일반화 매개 변수와 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}) ![5.4 inactive](https://img.shields.io/badge/-%205.5-inactive)
+* [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) ![5.5](https://img.shields.io/badge/-%205.5-success)
+* [Generic Parameters and Arguments (일반화 매개 변수와 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}) ![5.5](https://img.shields.io/badge/-%205.5-success)
 * [Summary of the Grammar (문법 총정리)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#) - 직접 링크 (번역 없음)
 
 ### Revision History (개정 이력)
