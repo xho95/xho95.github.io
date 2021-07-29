@@ -36,7 +36,7 @@ categories: Swift Language Grammar Statement
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'반복자 (iterator) 타입'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-의 값을 구하기 위해 _집합체 (collection)_ 표현식에 대한 `makeIterator()` 메소드를 호출합니다. 프로그램은 '반복자' 에 대한 `next()` 메소드를 호출함으로써 반복문의 실행을 시작합니다. 반환한 값이 `nil` 이 아니면, 이를 _항목 (item)_ '유형 (pattern)' 에 할당하고, 프로그램이 _구문 (statements)_ 을 실행한 다음, 반복문 맨 앞에서 실행을 계속합니다. 그 외의 경우, 프로그램은 할당이나 _구문 (statements)_ 실행을 하지 않고, `for`-`in` 문 실행을 종료합니다.
+'반복자 (iterator) 타입'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-의 값을 구하기 위해 _집합체 (collection)_ 표현식에 대한 `makeIterator()` 메소드를 호출합니다. 프로그램은 '반복자' 에 대한 `next()` 메소드를 호출함으로써 반복문의 실행을 시작합니다. 반환한 값이 `nil` 이 아니면, 이를 _항목 (item)_ '패턴 (pattern)' 에 할당하고, 프로그램이 _구문 (statements)_ 을 실행한 다음, 반복문 맨 앞에서 실행을 계속합니다. 그 외의 경우, 프로그램은 할당이나 _구문 (statements)_ 실행을 하지 않고, `for`-`in` 문 실행을 종료합니다.
 
 > GRAMMAR OF A FOR-IN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
@@ -162,36 +162,36 @@ _조건 (condition)_ 의 값은 반드시 `Bool` 타입 또는 `Bool` 과 '연�
 `switch` 문의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;switch `control expression-제어 표현식` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 1-유형 1`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 1-패턴 1`:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 2-유형 2` where `condition-조건`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 2-패턴 2` where `condition-조건`:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 3-유형 3` where `condition-조건`,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pattern 4-유형 4` where `condition-조건`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `pattern 3-패턴 3` where `condition-조건`,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pattern 4-패턴 4` where `condition-조건`:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;default:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 'case 절' 에서 지정한 '유형 (patterns)' 과 비교합니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 안에 나열한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비워둘 수 없습니다. 그 결과, 반드시 최소 하나의 구문을 각 'case 이름표' 의 '콜론 (`:`)' 뒤에 포함시켜야 합니다. '일치한 case 절' 본문에서 어떤 코드도 실행하지 않으려면 '단일 `break` 문' 을 사용합니다.
+`switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 'case 절' 에서 지정한 '패턴 (patterns)' 과 비교합니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 안에 나열한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비워둘 수 없습니다. 그 결과, 반드시 최소 하나의 구문을 각 'case 이름표' 의 '콜론 (`:`)' 뒤에 포함시켜야 합니다. '일치한 case 절' 본문에서 어떤 코드도 실행하지 않으려면 '단일 `break` 문' 을 사용합니다.
 
 코드가 분기할 수 있는 표현식의 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, '크기 (scalar) 타입'[^scalar-types] 의 값에 더하여, 부동-소수점 수, 문자열, 튜플, 사용자 정의 클래스의 인스턴스, 그리고 옵셔널을 포함한, 어떤 타입의 값에 대해서든 코드를 분기할 수 있습니다. _제어 표현식 (control expression)_ 의 값은 심지어 열거체의 'case 값' 과도 일치할 수 있고 특정 범위가 값을 포함하는지도 검사할 수 있습니다. `switch` 문에서 이 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 참고하기 바랍니다.
 
-'`switch` 문의 case 절' 은 각 '유형 (pattern)' 뒤에 `where` 절을 담고 있을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 'case 절' 의 유형이 _제어 표현식 (control expression)_ 과 일치함을 고려하기 전에 추가적인 조건을 제공하고자 사용합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 'case 절' 유형 중 하나와 일치하면서 `where` 절의 표현식이 `true` 라고 평가할 때만 연관된 'case 절' 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에 있는 'case 절' 은, `(1, 1)` 같이, 똑같은 값의 두 원소를 담은 튜플일 때만 _제어 표현식 (control expression)_ 과 일치합니다.
+'`switch` 문의 case 절' 은 각 '패턴 (pattern)' 뒤에 `where` 절을 담고 있을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 'case 절' 의 패턴이 _제어 표현식 (control expression)_ 과 일치함을 고려하기 전에 추가적인 조건을 제공하고자 사용합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 'case 절' 패턴 중 하나와 일치하면서 `where` 절의 표현식이 `true` 라고 평가할 때만 연관된 'case 절' 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에 있는 'case 절' 은, `(1, 1)` 같이, 똑같은 값의 두 원소를 담은 튜플일 때만 _제어 표현식 (control expression)_ 과 일치합니다.
 
 ```switch
 case let (x, y) where x == y:
 ```
 
-위 예제에서 보는 것처럼, 'case 절' 의 유형은 `let` 키워드로 상수와 연결할 수도 있습니다 (`var` 키워드로 변수와 연결할 수도 있습니다). 그러면 이 상수 (나 변수) 들이 관련된 `where` 절 및 'case 절' 영역 안의 나머지 코드 전반에 걸쳐 참조될 수 있습니다. 제어 표현식과 일치하는 여러 개의 유형을 'case 절' 이 담고 있는 경우, 모든 패턴이 반드시 똑같은 상수나 '변수 연결' 을 담고 있어야 하며, 각각의 연결된 변수나 상수는 모든 'case 절' 유형에서 반드시 똑같은 타입을 가져야 합니다.
+위 예제에서 보는 것처럼, 'case 절' 의 패턴은 `let` 키워드로 상수와 연결할 수도 있습니다 (`var` 키워드로 변수와 연결할 수도 있습니다). 그러면 이 상수 (나 변수) 들이 관련된 `where` 절 및 'case 절' 영역 안의 나머지 코드 전반에 걸쳐 참조될 수 있습니다. 'case 절' 이 '제어 표현식과 일치하는 여러 개의 패턴' 을 담은 경우, 모든 패턴이 반드시 '똑같은 상수나 변수 연결' 을 담아야 하며, 각각의 연결된 변수나 상수는 모든 'case 절' 패턴에서 반드시 똑같은 타입을 가져야 합니다.
 
 `switch` 문은, `default` 키워드로 도입하는, '기본 (default) case 절' 을 포함할 수도 있습니다. '기본 case 절' 안의 코드는 제어 표현식과 일치하는 다른 'case 절' 이 없는 경우에만 실행합니다. `switch` 문은 단 하나의 '기본 case 절' 을 포함할 수 있으며, 이는 반드시 `switch` 문의 끝에 있어야 합니다.
 
-비록 '유형-맞춤 (pattern-matching)' 연산의 실제 실행 순서와, 'case 절' 유형의 평가 순서는 특별히, 지정되어 있지 않을지라도, `switch` 문의 '유형 맞춤 (pattern matching)' 은 마치 평가를 소스 순서대로-즉, 소스 코드에 나타나는 순서대로-수행하는 것 같이 동작합니다. 그 결과, 똑같은 값으로 평가되는, 따라서 제어 표현식 값과 일치하는, 유형을 담은 'case 절' 이 여러 개인 경우, 프로그램은 소스 순서대로 맨 처음 일치하는 'case 절' 의 코드만 실행합니다.
+'패턴-맞춤 (pattern-matching) 연산의 실제 실행 순서' 와, 'case 절 패턴의 평가 순서' 는 특별히, 지정 안하지만, '`switch` 문의 패턴 맞춤' 은 마치 소스 순서-즉, 소스 코드에 있는 순서-대로 평가하는 것처럼 동작합니다. 그 결과, 똑같은 값으로 평가되는, 따라서 제어 표현식 값과 일치하는, 패턴을 담은 'case 절' 이 여러 개인 경우, 프로그램은 소스 순서대로 맨 처음 일치하는 'case 절' 의 코드만 실행합니다.
 
 **Switch Statements Must Be Exhaustive (switch 문은 반드시 빠짐없이 철저해야 합니다)**
 
-스위프트에서, '제어 표현식' 타입으로 가능한 모든 값은 최소 'case 절' 의 한 유형과는 반드시 일치해야 합니다. 이의 실현이 (예를 들어, 제어 표현식의 타입이 `Int` 일 때 처럼) 단순치 않을 때는, '필수 조건' 을 만족하도록 '기본 case 값' 을 포함할 수 있습니다.
+스위프트에서, '제어 표현식' 타입으로 가능한 모든 값은 최소 'case 절' 의 한 패턴과는 반드시 일치해야 합니다. 이의 실현이 (예를 들어, 제어 표현식의 타입이 `Int` 일 때 처럼) 단순치 않을 때는, '필수 조건' 을 만족하도록 '기본 case 값' 을 포함할 수 있습니다.
 
 <p>
 <strong id="switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기">Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)</strong>
@@ -280,9 +280,9 @@ case .suppressed:
 
 #### Fallthrough Statement ('fallthrough' 문)
 
-`fallthrough` 문은 `fallthrough` 키워드로 구성하며 `switch` 문의 'case 블럭' 안에서만 일어납니다. `fallthrough` 문은 프로그램이 `switch` 문의 한 'case 절' 에서 그 다음 'case 절' 로 계속 실행되도록 합니다. 프로그램은 'case 이름표' 의 '유형 (pattern)' 이 `switch` 문의 '제어 표현식' 값과 일치하지 않는 경우에도 그 다음 'case 절' 을 계속 실행합니다.
+`fallthrough` 문은 `fallthrough` 키워드로 구성하며 `switch` 문의 'case 블럭' 안에서만 일어납니다. `fallthrough` 문은 프로그램이 `switch` 문의 한 'case 절' 에서 그 다음 'case 절' 로 계속 실행되도록 합니다. 프로그램은 'case 이름표' 의 '패턴 (pattern)' 이 `switch` 문의 '제어 표현식' 값과 일치하지 않는 경우에도 그 다음 'case 절' 을 계속 실행합니다.
 
-`fallthrough` 문은 'case 블럭' 의 마지막 구문만이 아니라, `switch` 문 안의 어떤 곳에서든 나타날 수 있지만, '최종 case 블럭' 에서는 사용할 수 없습니다. '값 연결 유형 (value binding pattern)' 을 담고 있는 'case 블럭' 으로 제어를 전달할 수도 없습니다.
+`fallthrough` 문은 'case 블럭' 의 마지막 구문만이 아니라, `switch` 문 안의 어떤 곳에서든 나타날 수 있지만, '최종 case 블럭' 에서는 사용할 수 없습니다. '값 연결 (value binding) 패턴' 을 담고 있는 'case 블럭' 으로 제어를 전달할 수도 없습니다.
 
 `switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 부분을 참고하기 바랍니다.
 
@@ -354,7 +354,7 @@ f()
 
 ### Do Statement ('do' 문)
 
-'`do` 문' 은 새로운 영역을 도입하려고 사용하며, 정의한 에러 조건과 맞춰보는 '유형 (pattern)' 을 담은, 하나 이상의 `catch` 절을 선택적으로 담고 있을 수 있습니다. `do` 문 영역에서 선언한 변수와 상수는 해당 영역 안에서만 접근할 수 있습니다.
+'`do` 문' 은 새로운 영역을 도입하기 위해 사용하며, '정의한 에러 조건과 맞춰볼 패턴 (pattern)' 을 담은, 하나 이상의 `catch` 절을 옵션으로 담을 수 있습니다. `do` 문 영역에서 선언한 변수와 상수는 해당 영역 안에서만 접근할 수 있습니다.
 
 스위프트의 `do` 문은 C 언어에서 코드 블럭의 경계를 구분하는데 사용하는 '중괄호 (`{}`)' 와 비슷하며, 실행 시간에 성능 비용을 초래하지 않습니다.
 
@@ -363,23 +363,23 @@ f()
 &nbsp;&nbsp;&nbsp;&nbsp;do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 1-유형 1` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 1-패턴 1` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 2-유형 2` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 2-패턴 2` where `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 3-유형 3`, `pattern 4-유형 4` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 3-패턴 3`, `pattern 4-패턴 4` where `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;} catch {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`do` 코드 블럭의 어떤 구문이든 에러를 던지면, 에러와 일치하는 '유형' 을 가진 '첫 번째 `catch` 절' 로 프로그램 제어가 전달됩니다. 일치하는 절이 없으면, 에러를 주위 영역으로 전파합니다. 에러가 최상단에서까지 처리되지 않으면, 실행 시간 에러와 함께 프로그램 실행을 멈춥니다.
+`do` 코드 블럭의 어떤 구문이든 에러를 던지면, 에러와 일치하는 '패턴' 을 가진 '첫 번째 `catch` 절' 로 프로그램 제어가 전달됩니다. 일치하는 절이 없으면, 에러를 주위 영역으로 전파합니다. 에러가 최상단에서까지 처리되지 않으면, 실행 시간 에러와 함께 프로그램 실행을 멈춥니다.
 
 `switch` 문 같이, 컴파일러는 `catch` 절이 '빠짐없이 철저한 (exhaustive)' 지를 추론하려고 합니다. 그런 결정을 내릴 수 있으면, 에러를 처리한다고 고려합니다. 그 외의 경우라면, 담고 있는 영역 밖으로 에러를 전파할 수 있으며, 이는 '둘러싼 `catch` 절' 에서 에러를 반드시 처리하거나 아니면 담은 함수를 반드시 `throws` 로 선언해야 함을 의미합니다.
 
-여러 개의 '유형 (patterns)' 을 가진 `catch` 절은 자신의 '유형' 중 어떤 것이든 에러와 일치하면 에러와 일치합니다. `catch` 절에 여러 '유형' 들이 있는 경우, 모든 '유형' 들은 반드시 똑같은 '상수나 변수 연결 (bindings)' 을 담아야 하며, 연결된 각각의 변수나 상수는 반드시 모든 '`catch` 절 유형' 에서 똑같은 타입을 가져야 합니다.
+'여러 개의 패턴' 을 가진 `catch` 절은 자신의 '패턴' 중 어떤 것이든 에러와 일치하면 에러와 일치합니다. `catch` 절이 '여러 개의 패턴' 을 담은 경우, 모든 '패턴' 이 반드시 '똑같은 상수나 변수 연결 (bindings)' 을 담아야 하며, 연결된 각각의 변수나 상수는 반드시 모든 '`catch` 절 패턴' 에서 똑같은 타입을 가져야 합니다.
 
-에러가 처리된다고 보장하려면, '와일드카드 유형 (wildcard pattern; `_`)' 같은, 모든 에러와 일치하는 '유형' 을 가진 `catch` 절을 사용합니다. `catch` 절에서 '유형' 을 지정하지 않을 경우, 그 `catch` 절은 어떤 에러와도 일치하며 `error` 라는 이름의 지역 상수와 연결됩니다. `catch` 절에서 사용할 수 있는 '유형' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
+에러가 처리된다고 보장하려면, '와일드카드 패턴 (wildcard pattern; `_`)' 같은, 모든 에러와 일치하는 '패턴' 을 가진 `catch` 절을 사용합니다. `catch` 절에서 '패턴' 을 지정하지 않을 경우, 그 `catch` 절은 어떤 에러와도 일치하며 `error` 라는 이름의 지역 상수와 연결됩니다. `catch` 절에서 사용할 수 있는 '패턴' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
 
 여러 `catch` 절을 가진 `do` 문을 사용하는 방법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 부분을 참고하기 바랍니다.
 

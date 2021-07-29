@@ -719,7 +719,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 예를 들어, 스위프트 표준 라이브러리는 '최상단 `min(_:_:)` 함수' 와 '비교 가능 원소를 가진 시퀀스 (sequence) 에 대한 `min()` 메소드' 둘 다 포함합니다. '시퀀스 메소드' 는 '`Sequence` 익스텐션' 안에서 둘 중 하나를 사용할 때 혼동을 감소하고자 `warn_unqualified_access` 특성으로 선언되어 있습니다.
 
-#### Declaration Attributes Used by Interface Builder (인터페이스 빌더가 사용하는 선언 특성)
+#### Declaration Attributes Used by Interface Builder (인터페이스 빌더에서 사용하는 선언 특성)
 
 '인터페이스 빌더 특성' 은 '엑스코드 (Xcode)' 와 동기화하기 위해 '인터페이스 빌더 (interface builder)'[^interface-builder] 가 사용하는 '선언 특성' 입니다. 스위프트는: `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 그리고 `IBInspectable` 과 같은 '인터페이스 빌더 특성' 을 제공합니다. 이 특성은 '오브젝티브-C 에 있는 것' 과 개념이 똑같습니다.
 
@@ -733,33 +733,37 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### autoclosure (자동 클로저)
 
-이 특성은 '표현식을 인자 없는 클로저로 자동으로 포장함으로써 해당 표현식의 평가를 늦추기 위해' 적용합니다. 이는 메소드 선언 또는 함수 선언에 있는 매개 변수 타입 중에서, 그 매개 변수의 타입이 인자를 받지 않고 표현식 타입의 값을 반환하는 함수 타입에 대하여, 적용합니다. `autoclosure` 특성을 사용하는 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 을 참고하기 바랍니다.
+이 특성은 '표현식을 인자 없는 클로저로 자동 포장함으로써 해당 표현식의 평가를 늦추기' 위해 적용합니다. 이는, 함수나 메소드 선언에 있는 매개 변수 타입이, 인자를 취하지 않고 표현식 타입의 값을 반환하는 함수 타입일 때, 매개 변수 타입에 적용합니다. `autoclosure` 특성의 사용 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분을 참고하기 바랍니다.
 
 #### convention (협약)
 
-이 특성을 함수의 타입에 적용하면 그것의 '호출 협약 (calling conventions)' 을 지시합니다.[^calling-convention]
+이 특성은 '호출 협약 (calling conventions)[^calling-convention] 을 지시' 하기 위해 함수의 타입에 적용합니다.
 
-`convention` 특성은 항상 다음의 인자 중 하나와 함께 나타냅니다:
+`convention` 특성은 항상 다음 인자들 중 하나와 함께 나타납니다:
 
-* '스위프트 함수 참조 (swift function reference)' 를 지시하는 `swift` 인자. 이는 스위프트에 있는 함수 값에 대한 '표준 호출 협약 (standard calling convention)' 입니다.
-* '오브젝티브-C 와 호환 가능한 블럭 참조' 를 지시하는 `block` 인자. 함수 값은, 그 안에 '발동 함수 (invocation function)' 를 갖고 있는 객체이자 '`id`-호환 가능한' 오브젝티브-C 객체인, 블럭 객체에 대한 참조로써 표현됩니다. '발동 함수' 는 'C 호출 협약 (C calling convention)' 을 사용합니다.
-* 'C 함수 참조' 를 지시하는 `c` 인자. 함수 값은 아무런 '컨텍스트 (context)' 도 옮기지 않으며 'C 호출 협약' 을 사용합니다.
+* `swift` 인자는 '스위프트 함수 참조' 를 지시합니다. 이는 '스위프트 함수 값' 에 대한 '표준 호출 협약' 입니다.
+* `block` 인자는 '오브젝티브-C 호환 가능한 블럭 참조' 를 지시합니다. 함수 값은, '객체 안에 자신의 소환 함수 (invocation function) 를 박은 `id`-호환 가능 오브젝티브-C 객체' 인, '블럭 객체' 의 참조로써 표현합니다. '소환 함수' 는 'C 호출 협약' 을 사용합니다.
+* `c` 인자는 'C 함수 참조' 를 지시합니다. 함수 값은 '문맥 상황 (context)' 을 옮기지 않으며 'C 호출 협약' 을 사용합니다.
 
-몇 가지 예외를 제외한다면, 어떤 '호출 협약' 의 함수든 다른 '호출 협약' 이 필요한 곳에서 사용할 수도 있습니다. '제네릭이 아닌 전역 함수 (nongeneric global function)', 어떤 지역 변수도 '붙잡지 (capture)' 않는 지역 함수 및 어떤 지역 변수도 '붙잡지' 않는 클로저는 'C 호출 협약' 으로 '변환 (converted)' 할 수 있습니다. 다른 스위프트 함수는 'C 호출 협약' 으로 변환할 수 없습니다. '오브젝티브-C 블럭 호출 협약' 을 가지는 함수는 'C 호출 협약' 으로 변환 할 수 없습니다.
+몇 가지를 제외하면, '어떤 호출 협약인 함수' 든 '어떤 다른 호출 협약인 함수' 가 필요할 때 사용할 수 있습니다. '일반화 아닌 (nongeneric) 전역 함수', '어떤 지역 변수도 붙잡지 (capture) 않는 지역 함수', 또는 '어떤 지역 변수도 붙잡지 않는 클로저' 는 'C 호출 협약' 으로 '변환 (converted)' 할 수 있습니다. 다른 스위프트 함수들은 'C 호출 협약' 으로 변환할 수 없습니다. '오브젝티브-C 블럭 호출 협약을 가진 함수' 는 'C 호출 협약' 으로 변환 할 수 없습니다.
 
-#### escaping (벗어나는)
+#### escaping (벗어남)
 
-이 특성을 메소드 선언 또는 함수 선언에 있는 매개 변수의 타입에 적용하면 더 나중에 실행하기 위해 그 매개 변수의 값을 저장할 수 있음을 지시합니다. 이는 그 값이 호출의 수명보다 더 오래 살도록 허용한다는 것을 의미합니다. `escaping` 타입 특성을 가지는 함수 타입 매개 변수는 속성 또는 메소드에 대해 `self.` 를 명시적으로 사용하는 것이 필수입니다. `escaping` 특성을 사용하는 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 를 참고하기 바랍니다.
+이 특성은 '나중의 실행을 위해 매개 변수의 값을 저장할 수 있음' 을 지시하기 위해 메소드나 함수 선언의 매개 변수 타입에 적용합니다. 이는 호출 수명보다 값이 오래 사는 걸 허용한다는 의미입니다. '`escaping` 타입 특성을 가진 함수 타입 매개 변수' 는 속성이나 메소드가 `self.` 를 명시적으로 사용할 것을 요구합니다. `escaping` 특성의 사용 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
 
-### Switch Case Attributes ('switch 문의 case 절' 특성)
+### Switch Case Attributes (switch 문 case 절 특성)
 
-'switch 문 case 절' 특성은 'switch 문의 case 절' 에만 적용할 수 있습니다.
+'switch 문 case 절 특성' 은 'switch 문의 case 절' 에만 적용할 수 있습니다.
 
-#### unknown (알려지지 않은)
+#### unknown (알려지지 않음)
 
-이 특성을 'switch 문의 case 절' 에 적용하면 이것이 코드를 컴파일하는 시점에 알려진 열거체의 어떤 'case 값' 과도 일치하지 않을 것으로 예상된다는 것을 지시합니다. `unknown` 특성을 사용하는 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 를 참고하기 바랍니다.
+이 특성은 '코드 컴파일 시점에 알려진 어떤 열거체 case 값과도 일치하지 않을 것으로 예상함' 을 지시하기 위해 'switch 문의 case 절' 에 적용합니다. `unknown` 특성의 사용 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
+
+### 다음 장
+
+[Patterns (패턴; 유형) > ]({% post_url 2020-08-25-Patterns %})
 
 ### 참고 자료
 
@@ -771,7 +775,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^objc]: '오브젝티브-C' 의 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
 
-[^calling-convention]: 스위프트의 '호출 협약 (calling conventions)' 에 대한 더 자세한 정보는 '깃허브 (GitHub)' 의 '애플 (Apple)' 저장소에 있는 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 문서를 참고하기 바랍니다.
+[^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 참고하기 바랍니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 참고하기 바랍니다.
 
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
 
