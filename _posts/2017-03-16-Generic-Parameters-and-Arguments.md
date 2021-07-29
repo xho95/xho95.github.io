@@ -53,9 +53,9 @@ simpleMax(3.14159, 2.71828) // T 는 Double 이라고 추론합니다.
 
 '일반화 `where` 절의 _필수 조건 (requirements)_' 은 '클래스를 상속하거나 프로토콜 또는 프로토콜 합성을 준수하는 타입 매개 변수' 를 지정합니다. '일반화 `where` 절' 이 '타입 매개 변수에 대한 단순 구속 조건' 을 표현하는 수월한 구문 (syntactic sugar) 을 (예를 들어, `<T: Comparable>` 과 동치인 `<T> where T: Comparable` 등을) 제공하긴 하지만, 타입 매개 변수와 그 결합 타입에 대한 더 복잡한 구속 조건을 제공하고자 이를 사용할 수도 있습니다. 예를 들어, 타입 매개 변수의 결합 타입이 프로토콜을 준수하도록 구속할 수 있습니다. 예를 들어, `<S: Sequence> where S.Iterator.Element: Equatable` 은 `S` 가 `Sequence` 프로토콜을 준수하고 결합 타입인 `S.Iterator.Element` 가 `Equatable` 프로토콜을 준수하도록 지정합니다. 이 구속 조건은 '시퀀스 (sequence)' 의 각 원소가 '같음 비교 가능 (equatable)' 함을 보장합니다.
 
-두 타입이 동일해야 함을 요구 조건으로 지정할 수도 있는데 이 때는 `==` 연산자를 사용합니다. 예를 들면 `<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` 는 `S1` 과 `S2` 가 `Sequence` 프로토콜을 따르도록 제약하면서 각 수열의 요소들이 반드시 같은 타입으로 되어 있어야 함을 표현합니다.
+`==` 연산자로, 두 타입이 '완전히 똑같다 (identical)[^identical] 는 필수 조건' 도 지정할 수 있습니다. 예를 들어, `<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` 는 '`S1` 과 `S2` 가 `Sequence` 프로토콜을 준수하며 두 '시퀀스 (sequence)' 는 반드시 똑같은 타입이라는 구속 조건' 을 표현합니다.
 
-타입 매개 변수를 대체할 어떤 타입 인자라도 반드시 타입 매개 변수에 대한 모든 '구속 조건' 과 '필수 조건' 을 만족해야만 합니다.
+'타입 매개 변수를 대체하는 어떤 타입 인자' 든 반드시 '타입 매개 변수에 대한 모든 구속 조건 및 필수 조건' 과 부합해야 합니다.
 
 일반화된 함수나 초기자는 타입 매개 변수에 다른 구속 조건, 필수 조건, 또는 둘 다를 제공해서 추가 정의 (overload) 할 수 있습니다. 일반화된 함수나 초기자의 추가 정의 버전을 호출하면 컴파일러는 이들 구속 조건을 사용하여 어떤 추가 정의 함수나 초기자를 실행해야할지를 결정하게 됩니다.
 
@@ -89,6 +89,10 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 > GRAMMAR OF A GENERIC ARGUMENT CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID409)
 
+### 다음 장 
+
+* 'Summary of the Grammar (문법 총정리) 장' 은 번역 의미가 없으므로 생략함, 해당 장의 링크는 아래 '전체 목록' 참고 바람
+
 ### 전체 목록 
 
 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %})
@@ -102,3 +106,5 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 [^specialized-version]: 이 부분은 C++ 언어의 메타 프로그래밍에서 나오는 일반화 (generalization) 및 특수화 (specialization) 의 개념과 유사한 것 같습니다. Swift 의 일반화 (generic; 제네릭) 이 C++ 의 템플릿 (template) 과 사실상 동등한 개념이므로 당연한 것이라고 할 수 있습니다.
 
 [^specialized-form]: 이 부분은 아직 잘은 모르겠지만 C++ 의 template template parameter 와 유사한 개념인 것 같습니다.
+
+[^identical]: '완전히 똑같다 (identical)' 는 것은 프로그래밍에서 '값이 똑같다 (equal)' 보다 더 강한 개념입니다. 두 개의 인스턴스가 있을 때, 두 인스턴스가 똑같은 값을 가지고 있으면 '값이 똑같은 (equal)' 것이지만, 인스턴스가 두 개라는 것은 메모리 상에서 서로 다른 주소를 가지고 있기 때문에 '완전히 똑같은 (identical)' 것은 아닙니다. 본문에서는 '타입' 자체에 대해서 설명하고 있으므로, '완전히 똑같다 (identical)' 라는 표현을 쓰고 있습니다.
