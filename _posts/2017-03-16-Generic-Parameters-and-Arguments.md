@@ -71,7 +71,7 @@ extension Collection where Element: SomeProtocol {
 
 타입 매개 변수에 대해 '서로 다른 구속 조건, 필수 조건, 또는 둘 다' 를 제공함으로써 '일반화 함수나 초기자' 를 '중복 정의 (overload)' 할 수 있습니다. '중복 정의한 일반화 함수나 초기자' 를 호출할 땐, 중복 정의한 함수나 초기자 중에서 부를 것을 해결하고자 컴파일러가 이 구속 조건들을 사용합니다.
 
-일반화된 `where` 절에 대한 보다 많은 정보와 일반화된 함수 선언의 예를 보고 싶으면 [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 보면 됩니다.
+일반화 `where` 절에 대한 더 많은 정보와 일반화 함수 선언에서의 이 예들을 보려면, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID407)
 
