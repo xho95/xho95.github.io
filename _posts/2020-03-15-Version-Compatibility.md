@@ -16,8 +16,8 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 스위프트 4 와 스위프트 4.2 코드 제작에 '엑스코드 13' 를 사용할 때는, 스위프트 5.5 기능 대부분도 사용 가능합니다. 그렇다 하더라도, 아래 변경 사항들은 스위프트 5.5 이후 코드에서만 사용 가능합니다:
 
 * '불투명 타입 (opaque type) 을 반환하는 함수' 는 '스위프트 5.1 런타임 (runtime)'[^swift-runtime] 이 필수입니다.
-* '`try?` 표현식' 은 이미 '옵셔널 (optionals)' 을 반환하는 표현식에 부가적인 수준의 '옵셔널성 (optionality)' 를 도입하지 않습니다.[^level-of-optionality]
-* '아주 큰 정수 글자 값 초기화 표현식 (large integer literal initialization expressions)'[^large-integer-literal] 은 올바른 정수 타입인 것으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 도 '값 넘침 (overflowing)' 이 아닌 올바른 값으로 평가합니다.
+* '`try?` 표현식' 은 '이미 옵셔널 (optionals) 을 반환하는 표현식' 에 '부가적인 수준의 옵셔널성 (optionality)' 를 도입하지 않습니다.[^level-of-optionality]
+* '아주 큰 정수 글자 값 초기화 표현식 (large integer literal initialization expressions)'[^large-integer-literal] 을 올바른 정수 타입으로 추론합니다. 예를 들어, `UInt64(0xffff_ffff_ffff_ffff)` 을 '값 넘침 (overflowing)' 이 아닌 올바른 값으로 평가합니다.
 
 스위프트 5.3 으로 작성된 대상은 스위프트 4.2 나 스위프트 4 로 작성된 대상에 의존할 수 있으며, 그 반대도 가능합니다.[^depend-on] 이것의 의미는, 프로젝트가 아주 커서 프레임웍이 여러 개로 분할된 경우, 코드를 스위프트 4 에서 스위프트 5.3 으로 한 번에 한 프레임웍씩 이전할 수 있다는 것입니다.
 
@@ -37,7 +37,7 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 
 [^ABI-Stability]: 스위프트의 ABI 안정성에 대해서는 [Evolving Swift On Apple Platforms After ABI Stability](https://swift.org/blog/abi-stability-and-apple/) 항목을 참고하기 바랍니다. 한글 자료로는 **Zedd02028** 님이 [ABI stability](https://zeddios.tistory.com/654) 라는 글에 정리를 잘 해두신 것 같습니다.
 
-[^level-of-optionality]: 부가적인 수준의 '옵셔널성' 를 도입하지 않는다는 말은, '옵셔널 연쇄 (optional chaining)' 에서 처럼, 여러 단계로 포장되어 있어도 전체 '옵셔널 값 (optional value)' 을 구하려면 한 번만 포장을 풀면 된다는 의미입니다. 좀 더 자세한 내용은 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
+[^level-of-optionality]: '부가적인 수준의 옵셔널성을 도입하지 않는다' 는 것은, 옵셔널을 한 번 더 옵셔널로 포장하더라도 이 옵셔널의 포장을 풀 때 두 번 풀 필요는 없다는 의미입니다. 좀 더 자세한 내용은, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
 
 [^large-integer-literal]: '아주 큰 정수 글자 값' 이란 바로 뒤 예제에 나오는 것처럼, 정수가 아주 클 때, `0xffff_ffff_ffff_ffff` 처럼, 일정 자리마다 구분자를 표시한 '글자 값' 을 말합니다. 여기서 '글자 값 (literal)' 이란 '글자로 표현된 그 자체로서의 값' 을 의미하며, `let x = 1` 과 같은 구문이 있을 때, `1` 을 문자가 아니라 그 글자가 표현하는 값인 하나의 수 `1` 로 인식한다는 것을 의미합니다.
 
