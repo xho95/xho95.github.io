@@ -74,7 +74,7 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 >
 > `\()` 로 문자열에 부동-소수점 계산 값을 포함시켜 보고 인사말에 누군가의 이름을 포함시켜 봅니다.
 
-'여러 줄 (multiple lines)' 을 차지하는 문자열은 '세 따옴표 (three double quotation marks; `"""`)' 를 사용합니다. 각 줄의 시작시마다, '닫는 따옴표' 의 들여쓰기와 일치하는 만큼의, 들여쓰기를 제거합니다.[^indentation] 예를 들면 다음과 같습니다:
+'여러 줄 (lines) 을 차지하는 문자열' 에는 '세 따옴표 (`"""`)' 를 사용합니다. 각 줄 시작마다, '닫는 따옴표의 들여쓰기' 와 일치하는 만큼의, 들여쓰기를 제거합니다.[^indentation] 예를 들면 다음과 같습니다:
 
 ```swift
 let quotation = """
@@ -83,7 +83,7 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 """
 ```
 
-대괄호 (brackets, `[]`) 를 사용하여 '배열 (arrays)' 과 '딕셔너리 (dictionary)' 를 생성하며, 대괄호 안에 '색인 (index)' 또는 '키 (key)' 를 작성하여 이들의 원소에 접근합니다. 마지막 원소 뒤에 '쉼표 (comma)' 를 두는 것도 허용합니다.
+'배열 (arrays) 과 딕셔너리 (dictionary)' 는 '대괄호 (`[]`)' 로 생성하며, '대괄호 안에 색인 (index) 이나 키 (key) 를 작성' 함으로써 그 원소에 접근합니다. 마지막 원소 뒤에 '쉼표 (comma)' 가 있어도 됩니다.
 
 ```swift
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
@@ -96,14 +96,14 @@ var occupations = [
 occupations["Jayne"] = "Public Relations"
 ```
 
-배열은 원소를 추가하면 자동으로 커집니다.
+원소를 추가하면 배열이 자동으로 커집니다.
 
 ```swift
 shoppingList.append("blue paint")
 print(shoppingList)
 ```
 
-빈 배열 또는 딕셔너리를 생성하려면, '초기자 구문 표현 (initializer syntax)' 을 사용합니다.
+빈 배열이나 딕셔너리를 생성하려면, '초기자 구문 (initializer syntax)' 을 사용합니다.
 
 ```swift
 let emptyArray = [String]()
@@ -860,7 +860,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^a-swift-tour]: 'Swift' 는 '재빠른' 이라는 의미도 가지고 있기 때문에, 이 장의 제목인 'A Swift Tour' 는 '재빨리 둘러보기' 라는 중의적인 의미도 가지고 있습니다.
 
-[^indentation]: 이 부분은 설명보다는 예제를 보는 것이 이해하기 좋은데, 예제는 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
+[^indentation]: 이 부분은 말로 하는 설명보다는 예제를 보는 것이 이해하기 더 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분을 참고하기 바랍니다.
 
 [^break-out]: 이 말은 스위프트의 'switch 문' 에서는 각 'case 절' 끝마다 'break' 를 쓸 필요가 없다는 것을 의미입니다.
 
