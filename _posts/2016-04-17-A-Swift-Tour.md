@@ -119,7 +119,7 @@ occupations = [:]
 
 ### Control Flow (제어 흐름)
 
-`if` 와 `switch` 를 사용해서 조건문을 만들고, `for`-`in`, `while`, 그리고 `repeat`-`while` 을 사용해서 반복문을 만듭니다. 조건문이나 반복문 변수 주위의 괄호는 선택 사항입니다. 본문 주위의 '중괄호 (braces)' 는 필수입니다.
+조건문을 만들려면 `if` 와 `switch` 를 사용하고, 반복문을 만들려면 `for`-`in`, `while`, 그리고 `repeat`-`while` 을 사용합니다. 조건이나 반복 변수를 두르는 괄호는 옵션입니다. 본문을 두르는 '중괄호' 는 필수입니다.
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
