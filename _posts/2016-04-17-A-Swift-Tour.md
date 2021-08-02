@@ -155,9 +155,9 @@ if let name = optionalName {
 >
 > `optionalName` 을 `nil` 로 바꿔 봅니다. 어떤 인사말을 가지게 됩니까? `else` 절을 추가하여 `optionalName` 이 `nil` 이면 다른 인사말을 설정해 봅니다.
 
-옵셔널 값이 `nil` 이면, 조건절은 `false` 이고 중괄호 안의 코드를 건너뜁니다. 다른 경우라면, 옵셔널 값의 포장을 풀어서 `let` 뒤의 상수에 할당하는데, 이는 코드 블럭 안에서 '포장을 푼 값 (unwrapped value)' 을 사용 가능하게 만듭니다.
+옵셔널 값이 `nil` 이면, 조건절은 `false` 이고 중괄호 안의 코드는 건너뜁니다. 그 외 경우, 옵셔널 값의 포장을 풀고 `let` 뒤의 상수에 할당하여, 코드 블럭 안에서 '포장 푼 값 (unwrapped value)' 을 사용 가능하게 합니다.
 
-옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자를 사용하여 '기본 값 (default value)' 을 제공하는 것입니다. 옵셔널 값이 없으면, '기본 값' 을 대신 사용합니다.
+옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자로 '기본 (default) 값' 을 제공하는 것입니다. 옵셔널 값이 없으면, 그 대신 '기본 값' 을 사용합니다.
 
 ```swift
 let nickName: String? = nil
@@ -165,7 +165,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-'switch 문' 은 '어떤 종류의 자료' 든 지원하며 '광범위한 비교 연산' 도 지원합니다-정수만으로 그리고 '같음 (equality) 비교의 테스트' 만으로 제한하지 않습니다.
+'switch 문' 은 '어떤 종류의 자료 (data) 에 대한 광범위한 비교 연산' 도 지원합니다-'정수' 만으로 '같음 (equality) 비교 테스트' 만으로 제한하지 않습니다.
 
 ```swift
 let vegetable = "red pepper"
@@ -184,7 +184,7 @@ default:
 
 > 실험
 >
-> '기본 (default) case 절' 을 제거해 봅니다. 어떤 에러를 갖게 됩니까?
+> '기본 (default) case 절' 을 제거해 봅니다. 무슨 에러를 가지게 됩니까?
 
 '패턴 (pattern; 유형)' 과 일치하는 값을 상수에 할당하기 위해 '패턴' 안에서 `let` 을 사용할 수 있는 방법이 있음에 주목하도록 합니다.
 
