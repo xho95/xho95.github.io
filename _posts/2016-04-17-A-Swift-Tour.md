@@ -247,7 +247,7 @@ print(total)
 
 ### Functions and Closures (함수와 클로져)
 
-`func` 을 사용하여 함수를 선언합니다. 함수 호출은 이름 뒤에 인자 목록이 있는 괄호를 붙여서 합니다. `->` 로 매개 변수의 이름과 타입을 함수의 반환 타입과 구분합니다.
+`func` 으로 함수를 선언합니다. 이름 뒤에 인자 목록을 담은 괄호를 붙여 함수를 호출합니다. `->` 로 '매개 변수 이름과 타입' 을 '함수 반환 타입' 과 구분합니다.
 
 ```swift
 func greet(person: String, day: String) -> String {
@@ -258,9 +258,9 @@ greet(person: "Bob", day: "Tuesday")
 
 > 실험
 >
-> `day` 매개 변수를 제거해 봅시다. 오늘의 점심 특선을 인사말에 포함하는 매개 변수를 추가해 봅시다.
+> `day` 매개 변수를 제거해 봅니다. '인사말에 오늘의 점심 특선을 포함하는 매개 변수' 를 추가해 봅니다.
 
-기본적으로, 함수는 매개 변수 이름을 인자의 '이름표 (labels)' 로 사용합니다. 매개 변수 이름 앞에 '사용자 정의 인자 이름표 (custom argument label)' 를 작성하거나, 또는 인자 이름표를 사용하지 않기 위한 `_` 를 작성합니다.
+기본적으로, 함수는 '자신의 매개 변수 이름' 을 '인자 이름표 (labels)' 로 사용합니다. 매개 변수 이름 앞에 '사용자 정의 인자 이름표' 를 작성하거나, 아무런 인자 이름표를 사용하지 않기 위한 `_` 를 작성합니다.
 
 ```swift
 func greet(_ person: String, on day: String) -> String {
@@ -269,7 +269,7 @@ func greet(_ person: String, on day: String) -> String {
 greet("John", on: "Wednesday")
 ```
 
-'튜플 (tuple)' 을 사용하여 '복합 값 (compound value)'-예를 들어, 함수에서 '여러 개의 값 (multiple values)' 을 반환하는-것을 만듭니다. 튜플의 원소는 이름이나 번호로 참조할 수 있습니다.
+'튜플 (tuple)' 로는-예를 들어, '여러 값' 을 함수에서 반환하기 위한-'복합 값 (compound value)' 을 만듭니다. 튜플 원소는 '이름' 이나 '번호' 로 참조할 수 있습니다.
 
 ```swift
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
@@ -295,7 +295,7 @@ print(statistics.2)
 // "120" 을 인쇄합니다.
 ```
 
-함수는 중첩될 수 있습니다. '중첩된 함수 (nested functions)' 는 외부 함수에서 선언한 변수에 접근할 수 있습니다. 중첩된 함수를 사용하면 길고 복잡한 함수 코드를 정돈할 수 있습니다.
+함수는 중첩할 수 있습니다. '중첩 함수 (nested functions)' 는 바깥 함수에서 선언한 변수에 접근할 수 있습니다. 중첩 함수로 길고 복잡한 함수 코드를 정돈할 수 있습니다.
 
 ```swift
 func returnFifteen() -> Int {
@@ -309,7 +309,7 @@ func returnFifteen() -> Int {
 returnFifteen()
 ```
 
-함수는 '일급 타입 (first-class type)' 입니다.[^first-class] 이는 함수가 또 다른 함수를 값처럼 반환할 수 있다는 의미입니다.
+함수는 '일급 타입 (first-class type)' 입니다.[^first-class] 이는 함수가 또 다른 함수를 자신의 값으로 반환할 수 있다는 의미입니다.
 
 ```swift
 func makeIncrementer() -> ((Int) -> Int) {
@@ -322,7 +322,7 @@ var increment = makeIncrementer()
 increment(7)
 ```
 
-함수는 또 다른 함수를 하나의 인자처럼 받을 수 있습니다.
+함수는 또 다른 함수를 자신의 인자로 취할 수 있습니다.
 
 ```swift
 func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
@@ -864,7 +864,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^break-out]: ''switch 문을 명시적으로 깨고 (break) 나올 필요는 없다' 는 것은 'switch 문의 각 case 절마다 `break` 를 쓸 필요는 없다' 는 의미입니다.
 
-[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 할 수 있습니다. 본문 내용은 스위프트에서는 '함수' 도 '객체' 처럼 'first-class' 라서 앞의 동작들을 모두 다 수행할 수 있다는 것을 의미합니다. 보다 자세한 내용은 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
+[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어, '일급 (first-class) 인 대상' 은 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수 등에 할당할 수도 있습니다. 스위프트에서는 '함수' 도 '일급 (first-class) 타입' 이기 때문에, 인자 전달, 함수 반환, 변수 할당 등에 사용할 수 있다는 의미입니다. '일급 객체' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
 [^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
