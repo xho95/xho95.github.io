@@ -186,11 +186,11 @@ default:
 >
 > '기본 (default) case 절' 을 제거해 봅니다. 무슨 에러를 가지게 됩니까?
 
-'패턴 (pattern; 유형)' 과 일치하는 값을 상수에 할당하기 위해 '패턴' 안에서 `let` 을 사용할 수 있는 방법이 있음에 주목하도록 합니다.
+'패턴 (pattern) 과 일치하는 값을 상수에 할당' 하기 위해 '패턴에서 `let` 을 사용하는 방법' 을 알기 바랍니다.
 
-일치한 'switch 문의 case 절' 내의 코드를 실행한 후에는, 프로그램이 'switch 문' 을 빠져 나옵니다. 실행은 그 다음 'case 절' 로 계속되는 않으므로, 각 'case 절' 의 코드 끝에서 'switch 문' 을 명시적으로 '끊고 (break)' 나올 필요가 없습니다.[^break-out]
+'일치한 switch 문 case 절 안의 코드를 실행' 한 후, 프로그램은 'switch 문' 을 빠져 나갑니다. 그 다음 'case 절' 을 계속 실행하진 않으므로, 각 'case 절 코드' 끝에서 'switch 문을 명시적으로 깨고 (break) 나올 필요' 는 없습니다.[^break-out]
 
-`for`-`in` 을 사용하여 '딕셔너리' 에 있는 항목 전체에 동작을 반복시키려면 각각의 '키-값 쌍 (key-value pair)' 에 사용할 '이름 쌍' 을 제공하도록 합니다. 딕셔너리는 '정렬되지 않은 컬렉션 (unordered collection)' 이므로, 전체 키와 값은 임의 순서로 동작합니다.
+'딕셔너리 (dictionary) 항목' 에 '각각의 키-값 쌍 (key-value pair) 에서 사용할 이름 쌍' 을 제공함으로써 동작을 반복하려면 `for`-`in` 을 사용합니다. 딕셔너리는 '순서 없는 집합체 (unordered collection)'[^unordered-collection] 이므로, 임의의 순서로 키와 값을 반복합니다.
 
 ```swift
 let interestingNumbers = [
@@ -199,7 +199,7 @@ let interestingNumbers = [
   "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
-for (kind, numbers) in interestingNumbers {
+for (_, numbers) in interestingNumbers {
   for number in numbers {
     if number > largest {
       largest = number
@@ -212,9 +212,9 @@ print(largest)
 
 > 실험
 >
-> 가장 큰 수에 대해 한 것처럼, 가장 큰 수의 종류가 무엇인지 추적하는 또 다른 변수를 추가해 봅시다.
+> `_` 를 변수 이름으로 대체하여, 가장 큰 수의 종류가 무엇인지를 추적해 봅니다.
 
-조건이 바뀔 때까지 '코드 블럭' 을 반복하려면 `while` 문을 사용합니다. 반복문이 최소 한 번은 실행됨을 보장하기 위해, 반복 조건을 끝에 대신 둘 수 있습니다.
+조건이 바뀔 때까지 '코드 블럭' 을 반복하려면 `while` 문을 사용합니다. 반복문을 적어도 한 번은 실행하도록, 반복문 조건이 끝에 있을 수도 있습니다.
 
 ```swift
 var n = 2
@@ -222,17 +222,17 @@ while n < 100 {
   n = n * 2
 }
 print(n)
-// "128" 을 출력합니다.
+// "128" 을 인쇄합니다.
 
 var m = 2
 repeat {
   m = m * 2
 } while m < 100
 print(m)
-// "128" 을 출력합니다.
+// "128" 을 인쇄합니다.
 ```
 
-`..<` 를 사용하여 '색인의 범위 (range of indexes)' 를 만들면 반복 시에 '색인' 을 유지할 수 있습니다.
+`..<` 로 '색인 범위 (range of indexes)' 를 만들면 반복 회차에서 '색인' 을 유지할 수 있습니다.
 
 ```swift
 var total = 0
@@ -243,7 +243,7 @@ print(total)
 // "6" 을 인쇄합니다.
 ```
 
-'최상단 값 (upper value)' 을 생략한 범위를 만들려면 `..<` 을 사용하고, 양 끝단 값을 모두 포함하는 범위를 만들려면 `...` 를 사용합니다.
+'최상단 값 (upper value) 을 생략한 범위' 를 만들려면 `..<` 을 사용하며, '양 끝단 값 둘 다 포함한 범위' 를 만들려면 `...` 를 사용합니다.
 
 ### Functions and Closures (함수와 클로져)
 
@@ -862,7 +862,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^indentation]: 이 부분은 말로 하는 설명보다는 예제를 보는 것이 이해하기 더 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분을 참고하기 바랍니다.
 
-[^break-out]: 이 말은 스위프트의 'switch 문' 에서는 각 'case 절' 끝마다 'break' 를 쓸 필요가 없다는 것을 의미입니다.
+[^break-out]: ''switch 문을 명시적으로 깨고 (break) 나올 필요는 없다' 는 것은 'switch 문의 각 case 절마다 `break` 를 쓸 필요는 없다' 는 의미입니다.
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 할 수 있습니다. 본문 내용은 스위프트에서는 '함수' 도 '객체' 처럼 'first-class' 라서 앞의 동작들을 모두 다 수행할 수 있다는 것을 의미합니다. 보다 자세한 내용은 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
@@ -875,3 +875,5 @@ anyCommonElements([1, 2, 3], [3])
 [^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로, 스위프트에는 이런 `NSObject` 같은 클래스가 없다는 의미입니다.
 
 [^getter-and-setter]: 사실 여기서 말하는 '간단한 속성' 과 '획득자 및 설정자를 가지는 속성' 은 서로 다른 것입니다. 전자를 '저장 속성 (stored properties)' 라고 하고 후자를 '계산 속성 (computed properties)' 라고 합니다. 책의 다른 부분에서 많이 설명하고 있기 때문인지, 여기서는 이 둘을 딱히 구분하지 않고 설명하고 있습니다. 보다 자세한 내용은 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 참고하기 바랍니다.
+
+[^unordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 수학적으로 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 향후 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다. 
