@@ -413,13 +413,13 @@ class NamedShape {
 }
 ```
 
-`self` 를 사용하여 `name` 속성과 '초기자' 의 `name` 인자를 구별하는 방법에 주목합니다. 초기자의 인자는 클래스의 인스턴스를 생성할 때 함수 호출인 것처럼 전달됩니다. 모든 속성은-(`numberOfSides` 처럼) 선언에서든 (`name` 처럼) 초기자에서든-할당한 값이 필요합니다.
+`name` 속성과 초기자의 `name` 인자를 구별하기 위해 `self` 를 사용하는 방법을 알기 바랍니다. 클래스의 인스턴스를 생성할 때 함수 호출 처럼 초기자 인자를 전달합니다. 모든 속성은-(`numberOfSides` 과 같이) 자신의 선언에서든 (`name` 과 같은) 초기자에서든-할당 값이 필요합니다.
 
-객체를 해제하기 전에 어떤 정리 작업을 수행할 필요가 있다면 `deinit` 으로 '정리자 (deinitializer)' 를 생성합니다.
+객체 해제 전에 어떠한 정리를 할 필요가 있으면 `deinit` 으로 '정리자 (deinitializer)' 를 생성합니다.
 
-'하위 클래스 (subclasses)' 는 '상위 클래스 (superclass)' 이름을 클래스 이름 뒤에, 콜론으로 구분하여, 포함합니다. 클래스가 어떤 '표준 근원 클래스 (standard root class)'[^standard-root-class] 의 하위 클래스여야 한다는 '필수 조건 (requirement)' 은 없으므로, 필요에 따라 상위 클래스를 포함하거나 생략할 수 있습니다.
+'하위 클래스 (subclasses)' 는 자신의 클래스 이름 뒤에, 콜론으로 구분한, '상위 클래스 (superclass) 이름' 을 포함합니다. 클래스가 '어떤 표준 근원 클래스 (standard root class)[^standard-root-class] 의 하위 클래스' 라는 '필수 조건 (requirement)' 은 없으므로, 필요에 따라 상위 클래스를 포함하거나 생략할 수 있습니다.
 
-상위 클래스의 구현을 '재정의 (override)' 하는 하위 클래스의 메소드는 `override` 로 표시합니다—`override` 없이, 우연히 메소드를 재정의하는 것은, 컴파일러가 에러라고 감지합니다. 컴파일러는 실제로는 상위 클래스의 어떤 메소드도 재정의하지 않는 `override` 메소드도 감지합니다.
+'상위 클래스 구현을 재정의 (override) 한 하위 클래스 메소드' 는 `override` 로 표시합니다—`override` 없이, 우연히 재정의한 메소드는, 컴파일러가 에러라고 감지합니다. 실제로는 상위 클래스의 어떤 메소드도 재정의하지 않으면서 `override` 를 가진 메소드도 컴파일러가 감지합니다.
 
 ```swift
 class Square: NamedShape {
@@ -446,7 +446,7 @@ test.simpleDescription()
 
 > 실험
 >
-> `NamedShape` 의 또 다른 하위 클래스로 반지름과 이름을 초기자의 인자로 받는 `Circle` 을 만들어 봅시다. `Circle` 클래스에 대한 `area()` 와 `simpleDescription()` 메소드를 구현해 봅시다.
+> 초기자 인자로 반지름과 이름을 취하는 `Circle` 이라는 `NamedShape` 의 또 다른 하위 클래스를 만들어 봅니다. `Circle` 클래스에 대해 `area()` 와 `simpleDescription()` 메소드를 구현해 봅니다.
 
 저장된다는 단순한 속성에 더하여, 속성은 '획득자 (getter)' 와 '설정자 (setter)' 를 가질 수 있습니다.[^getter-and-setter]
 
@@ -872,7 +872,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
 
-[^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말하는 것으로, 스위프트에는 이런 `NSObject` 같은 클래스가 없다는 의미입니다.
+[^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 의 `NSObject` 와 같은 클래스를 말하며, 스위프트에는 이런 식의 클래스가 없습니다.
 
 [^getter-and-setter]: 사실 여기서 말하는 '간단한 속성' 과 '획득자 및 설정자를 가지는 속성' 은 서로 다른 것입니다. 전자를 '저장 속성 (stored properties)' 라고 하고 후자를 '계산 속성 (computed properties)' 라고 합니다. 책의 다른 부분에서 많이 설명하고 있기 때문인지, 여기서는 이 둘을 딱히 구분하지 않고 설명하고 있습니다. 보다 자세한 내용은 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 참고하기 바랍니다.
 
