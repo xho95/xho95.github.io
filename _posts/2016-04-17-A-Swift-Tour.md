@@ -373,7 +373,7 @@ print(sortedNumbers)
 
 ### Objects and Classes (객체와 클래스)
 
-`class` 뒤에 '클래스 이름' 을 붙여 클래스를 생성합니다. 클래스의 속성 선언은, 클래스 안이라는 것만 제외하면, 상수나 변수 선언과 똑같은 방식으로 작성합니다. 마찬가지로, 메소드와 함수 선언도 똑같은 방식으로 작성합니다.
+클래스는 `class` 뒤에 '클래스 이름' 을 붙여서 생성합니다. 클래스의 속성 선언은, 클래스 안이라는 것만 제외하면, 상수나 변수 선언과 똑같은 방식으로 작성합니다. 마찬가지로, 메소드와 함수 선언도 똑같은 방식으로 작성합니다.
 
 ```swift
 class Shape {
@@ -527,7 +527,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures (열거체와 구조체)
 
-`enum` 으로 열거체를 생성합니다. 클래스 및 '그 외 모든 이름 붙인 (named) 타입' 같이, 열거체는 자신과 결합된 메소드[^methods-associated] 를 가질 수 있습니다.
+열거체는 `enum` 으로 생성합니다. 클래스 및 '그 외 모든 이름 붙인 (named) 타입' 같이, 열거체는 자신과 결합된 메소드[^methods-associated] 를 가질 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -593,9 +593,9 @@ let heartsDescription = hearts.simpleDescription()
 >
 > `Suit` 에, '스페이드 (spades) 와 클럽 (clubs)' 이면 "검정색 (black)" 을 반환하고, '하트 (hearts) 와 다이아몬드 (diamonds)' 면 "빨간색 (red)" 을 반환하는 `color()` 메소드를 추가해 봅니다.
 
-위에서 두 가지 방식으로 '열거체 `hearts` case 값' 을 참조함을 주목하기 바랍니다: `hearts` 상수에 값을 할당할 때는, 상수에 명시적인 타입을 지정하지 않았기 때문에 `Suit.hearts` 라는 전체 이름으로 열거체 case 값을 참조합니다. 'switch 문' 에서는, `self` 값이 '패 (suit)' 임을 이미 알고 있기 때문에 `.hearts` 라는 단축 형식으로 열거체 case 값을 참조합니다. 값의 타입을 이미 알 때는 언제든 단축 형식을 사용할 수 있습니다.
+위에서 두 가지 방식으로 '열거체 `hearts` case 값' 을 참조함을 주목하기 바랍니다: `hearts` 상수에 값을 할당할 때는, 상수에 명시적인 타입을 지정하지 않았기 때문에 `Suit.hearts` 라는 전체 이름으로 열거체 case 값을 참조합니다. 'switch 문' 에서는, `self` 값이 '패 (suit)'[^suit] 임을 이미 알고 있기 때문에 `.hearts` 라는 단축 형식으로 열거체 case 값을 참조합니다. 값의 타입을 이미 알 때는 언제든 단축 형식을 사용할 수 있습니다.
 
-열거체가 원시 값을 가지고 있으면, 그 값은 선언 시에 결정되는데, 이는 특정 '열거체 case 값' 의 모든 인스턴스는 항상 똑같은 원시 값을 가진다는 의미입니다. '열거체 case 값' 에 대한 또 다른 선택은 'case 값' 과 '결합된 (associated)' 값을 가지게 하는 겁니다-이 값은 인스턴스를 만들 때 결정되며, '열거체 case 값' 의 각 인스턴스마다 서로 다를 수 있습니다. '결합 값 (associated values)' 은 '열거체 case 값 인스턴스' 의 '저장 속성 (stored properties)' 처럼 작동한다고 생각해도 됩니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버는 요청받은 정보를 가지고 응답하거나, 뭔가 잘못된 것의 설명을 가지고 응답합니다.
+열거체가 원시 값을 가진 경우, 해당 값은 선언 시에 결정하는데, 이는 '특별한 열거체 case 의 모든 인스턴스는 항상 똑같은 원시 값을 가진다' 는 의미입니다. '열거체 case 를 위한 또 다른 선택' 은 'case 값과 결합된 (associated) 값을 가지는 것' 입니다-이 값들은 인스턴스를 만들 때 결정하며, '열거체 case 의 각 인스턴스' 마다 서로 다를 수 있습니다. '결합 값 (associated values)' 은 '열거체 case 인스턴스의 저장 (stored) 속성 같이 작동한다' 고 생각할 수 있습니다. 예를 들어, 서버에 일출과 일몰 시간을 요청하는 경우를 고려합니다. 서버는 요청받은 정보를 가지고 응답하든지, 아니면 뭔가 잘못됐다는 설명을 가지고 응답힙니다.
 
 ```swift
 enum ServerResponse {
@@ -617,11 +617,11 @@ case let .failure(message):
 
 > 실험
 >
-> `ServerResponse` 와 'switch 문' 에 세 번째 'case 값' 을 추가해 봅시다.
+> `ServerResponse` 와 'switch 문' 에 '세 번째 case 값' 을 추가해 봅니다.
 
-'switch 문의 case 절' 과 값이 일치하는지 맞춰보는 부분에서 `ServerResponse` 값의 일출 시간과 일몰 시간이 추출되는 방법에 주목합니다.
+'switch 문 case 절' 과 값을 맞춰볼 때 `ServerResponse` 값에서 일출과 일몰 시간을 추출하는 방법에 주목하기 바랍니다.
 
-`struct` 를 사용하여 구조체를 생성합니다. 구조체는, 메소드와 초기자를 포함하여, 클래스와 똑같은 작동 방식을 많이 지원합니다. 구조체와 클래스 사이의 가장 중요한 차이점 하나는, 클래스는 참조로써 전달되지만, 구조체는 코드에서 전달될 때 항상 복사된다는 것입니다.
+구조체는 `struct` 로 생성합니다. 구조체는 클래스와 똑같이, 메소드와 초기자를 포함한, 많은 동작을 지원합니다. 구조체와 클래스의 가장 중요한 차이점은 주변 코드로 전달할 때 구조체는 항상 복사하지만, 클래스는 참조로 전달한다는 것입니다.
 
 ```swift
 struct Card {
@@ -637,11 +637,11 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 > 실험
 >
-> 각각의 카드가 '계급 (rank)' 과 '패 (suit)'[^suit] 의 조합인, 온전한 한 벌의 카드 배열을 반환하는 함수를 작성해 봅시다.  
+> 각각의 카드가 '계급 (rank) 과 패 (suit)[^suit] 의 조합' 인, '카드 한 벌 (full deck) 을 담은 배열' 을 반환하는 함수를 작성해 봅니다.
 
-### Protocols and Extensions (프로토콜과 익스텐션; 규약과 확장)
+### Protocols and Extensions (프로토콜과 익스텐션)
 
-`protocol` 를 사용하여 '프로토콜 (protocol; 규약)' 을 선언합니다.
+'프로토콜 (규약)' 은 `protocol` 로 선언합니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -650,7 +650,7 @@ protocol ExampleProtocol {
 }
 ```
 
-클래스, 열거체, 그리고 구조체는 모두 프로토콜을 '채택 (adopt)'[^adopt] 할 수 있습니다.
+클래스, 열거체, 그리고 구조체 모두 프로토콜을 '채택 (adopt)'[^adopt] 할 수 있습니다.
 
 ```swift
 class SimpleClass: ExampleProtocol {
