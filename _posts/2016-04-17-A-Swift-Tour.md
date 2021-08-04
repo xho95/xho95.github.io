@@ -518,7 +518,7 @@ print(triangleAndSquare.triangle.sideLength)
 // "50.0" 을 인쇄합니다.
 ```
 
-'옵셔널 값' 과 작업할 때는, 메소드, 속성, 그리고 '첨자 연산 (subscripting)' 같은 연산 앞에 `?` 를 작성할 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 뒤의 모든 것을 무시하며 전체 표현식 값은 `nil` 입니다. 그 외 경우, 옵셔널 값의 포장을 풀며, `?` 뒤의 모든 것을 '포장 푼 값' 에 작용합니다. 두 경우 모두, 표현식 전체의 값이 옵셔널 값입니다.
+'옵셔널 값' 과 작업할 때는, '메소드, 속성, 및 첨자 연산 (subscripting)' 같은 연산 앞에 `?` 를 작성할 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 뒤의 모든 것을 무시하며 전체 표현식 값은 `nil` 입니다. 그 외 경우, 옵셔널 값의 포장을 풀며, `?` 뒤의 모든 것을 '포장 푼 값' 에 작용합니다. 두 경우 모두, 전체 표현식 값이 옵셔널 값입니다.
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -527,7 +527,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures (열거체와 구조체)
 
-`enum` 을 사용하여 열거체를 생성합니다. 클래스와 다른 모든 '이름 붙인 (named) 타입' 같이, 열거체는 자신과 결합된 메소드를 가질 수 있습니다.
+`enum` 으로 열거체를 생성합니다. 클래스 및 '그 외 모든 이름 붙인 (named) 타입' 같이, 열거체는 자신과 결합된 메소드[^methods-associated] 를 가질 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -555,11 +555,11 @@ let aceRawValue = ace.rawValue
 
 > 실험
 >
-> '원시 값 (raw value)' 을 비교해서 두 `Rank` 값을 비교하는 함수를 작성해 봅시다.
+> '서로의 원시 값 (raw value) 을 비교함' 으로써 '두 `Rank` 값을 비교하는 함수' 를 작성해 봅니다.
 
-기본적으로, 스위프트는 '0' 에서 시작해서 매번 '1' 씩 증가하는 '원시 값 (raw value)' 을 할당하지만, 이 작동 방식은 값을 명시적으로 지정함으로써 바꿀 수 있습니다. 위 예제에서, `Ace` 는 `1` 이라는 원시 값을 명시적으로 부여받으며, 나머지 원시 값은 순서대로 할당됩니다. 열거체의 원시 타입으로 문자열이나 부동-소수점 수도 사용할 수 있습니다. '열거체 case 값 (enumeration case)' 의 원시 값에 접근하려면 `rawValue` 속성을 사용합니다.
+기본적으로, 스위프트는 '0에서 시작해서 매번 1씩 증가하는 원시 값 (raw value)' 을 할당하지만, 값을 명시적으로 지정함으로써 이 동작을 바꿀 수 있습니다. 위 예제에선, `Ace` 에 `1` 이라는 원시 값을 명시적으로 부여하며, 나머지 원시 값은 순서대로 할당합니다. 문자열이나 부동-소수점 수를 열거체의 원시 타입으로 사용할 수도 있습니다. '열거체 case 값 (enumeration case) 의 원시 값' 에 접근하려면 `rawValue` 속성을 사용합니다.
 
-원시 값을 가지고 열거체의 인스턴스를 만들려면`init?(rawValue:)` 초기자를 사용합니다. 이는 원시 값과 일치하는 '열거체 case 값' 을 반환하거나 일치하는 `Rank` 가 없을 경우 `nil` 을 반환합니다.
+원시 값으로 열거체의 인스턴스를 만들려면 `init?(rawValue:)` 초기자를 사용합니다. 이는 '원시 값과 일치하는 열거체 case 값을 반환' 하거나 아니면 '일치하는 `Rank` 가 없을 경우 `nil` 을 반환' 합니다.
 
 ```swift
 if let convertedRank = Rank(rawValue: 3) {
@@ -567,7 +567,7 @@ if let convertedRank = Rank(rawValue: 3) {
 }
 ```
 
-열거체의 'case 값' 은, 원시 값을 작성하는 또 다른 방법이 아니라, 실제 값입니다. 사실상, 원시 값이 의미가 없는 경우, 이를 제공할 필요가 없습니다.
+'열거체 case 값' 은, 자신의 원시 값을 작성하는 또 다른 방식인 것이 아니라, '실제 값' 입니다. 사실상, 원시 값이 의미가 없을 경우, 이를 제공하지 않아도 됩니다.
 
 ```swift
 enum Suit {
@@ -591,9 +591,9 @@ let heartsDescription = hearts.simpleDescription()
 
 > 실험
 >
-> `'스페이드 (spades)' 와 '클럽 (clubs)' 이면 "검정색 (black)" 을 반환하고, '하트 (hearts)' 와 '다이아몬드 (diamonds)' 면 "빨간색 (red)" 을 반환하는 `color()` 라는 메소드를 `Suit` 에 추가해 봅시다.
+> `Suit` 에, '스페이드 (spades) 와 클럽 (clubs)' 이면 "검정색 (black)" 을 반환하고, '하트 (hearts) 와 다이아몬드 (diamonds)' 면 "빨간색 (red)" 을 반환하는 `color()` 메소드를 추가해 봅니다.
 
-위에서 두 가지 방식으로 열거체의 `hearts` 'case 값' 을 참조한 것에 주목합니다: `hearts` 상수에 값을 할당할 때는, 열거체 case 값인 `Suit.hearts` 를 전체 이름으로 참조하는데 이는 상수에 지정된 명시적인 타입이 없기 때문입니다. 'switch 문' 안에서는, 열거체 case 값을 단축 형식인 `.hearts` 로 참조하는데 이는 `self` 값이 'suit' 임을 이미 알고 있기 때문입니다. 값의 타입을 이미 알고 있을 때는 언제든지 단축 형식을 사용할 수 있습니다.
+위에서 두 가지 방식으로 '열거체 `hearts` case 값' 을 참조함을 주목하기 바랍니다: `hearts` 상수에 값을 할당할 때는, 상수에 명시적인 타입을 지정하지 않았기 때문에 `Suit.hearts` 라는 전체 이름으로 열거체 case 값을 참조합니다. 'switch 문' 에서는, `self` 값이 '패 (suit)' 임을 이미 알고 있기 때문에 `.hearts` 라는 단축 형식으로 열거체 case 값을 참조합니다. 값의 타입을 이미 알 때는 언제든 단축 형식을 사용할 수 있습니다.
 
 열거체가 원시 값을 가지고 있으면, 그 값은 선언 시에 결정되는데, 이는 특정 '열거체 case 값' 의 모든 인스턴스는 항상 똑같은 원시 값을 가진다는 의미입니다. '열거체 case 값' 에 대한 또 다른 선택은 'case 값' 과 '결합된 (associated)' 값을 가지게 하는 겁니다-이 값은 인스턴스를 만들 때 결정되며, '열거체 case 값' 의 각 인스턴스마다 서로 다를 수 있습니다. '결합 값 (associated values)' 은 '열거체 case 값 인스턴스' 의 '저장 속성 (stored properties)' 처럼 작동한다고 생각해도 됩니다. 예를 들어, 서버에서 일출 시간과 일몰 시간을 요청하는 경우를 고려해 봅시다. 서버는 요청받은 정보를 가지고 응답하거나, 뭔가 잘못된 것의 설명을 가지고 응답합니다.
 
@@ -877,3 +877,5 @@ anyCommonElements([1, 2, 3], [3])
 [^getter-and-setter]: 사실 여기서 말하는 '간단한 속성' 과 '획득자 및 설정자를 가지는 속성' 은 서로 다른 것입니다. 전자를 '저장 속성 (stored properties)' 라고 하고 후자를 '계산 속성 (computed properties)' 라고 합니다. 책의 다른 부분에서 많이 설명하고 있기 때문인지, 여기서는 이 둘을 딱히 구분하지 않고 설명하고 있습니다. 보다 자세한 내용은 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 참고하기 바랍니다.
 
 [^unordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 수학적으로 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 향후 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다. 
+
+[^methods-associated]: '열거체가 자신과 결합된 메소드 (methods associated with them) 를 가질 수 있다' 는 말은 '열거체가 멤버 함수를 가질 수 있다' 는 의미입니다.
