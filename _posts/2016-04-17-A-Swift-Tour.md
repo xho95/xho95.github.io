@@ -748,9 +748,9 @@ do {
 
 > 실험
 >
-> 인쇄기 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지게 해봅니다.
+> '인쇄기 (printer) 이름' 을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지게 해봅니다.
 
-특정 에러를 처리하는 '여러 개의 `catch` 블럭' 을 제공할 수 있습니다. 'switch 문' 의 `case` 절 뒤에 하는 것처럼 `catch` 절 뒤에 '패턴 (pattern; 유형)' 을 작성합니다.
+특정 에러를 처리하는 '여러 개의 `catch` 블럭' 을 제공할 수 있습니다. 그냥 'switch 문' 의 `case` 뒤에 하듯이 `catch` 뒤에 '패턴 (pattern)' 을 작성하면 됩니다.
 
 ```swift
 do {
