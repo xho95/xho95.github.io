@@ -709,7 +709,7 @@ print(protocolValue.simpleDescription)
 // print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 나타납니다.
 ```
 
-`protocolValue` 변수의 '실행 시간 타입 (runtime type)' 이 `SimpleClass` 이더라도, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것처럼 취급합니다. 이는 프로토콜 준수와 별개로 클래스가 구현한 메소드나 속성에 예기치 않게 접근하는 일은 안생긴다는 의미입니다.
+`protocolValue` 변수의 '실행 시간 (runtime) 타입' 이 `SimpleClass` 일지라도, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것처럼 취급합니다. 이는 자신의 프로토콜 준수성과는 별개로 클래스가 구현한 메소드나 속성에 접근하는 사고가 일어날 순 없다는 의미입니다.
 
 ### Error Handling (에러 처리)
 
