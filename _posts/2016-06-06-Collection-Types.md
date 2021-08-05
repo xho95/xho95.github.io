@@ -11,7 +11,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는, 값의 집합체를 저장하기 위해, '배열 (arrays)', '셋 (sets)[^sets-type]', 그리고 '딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 개의 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 값의 '순서가 있는 집합체 (ordered collections)'[^ordered-collection] 이고, 셋은 유일한 값들이 '순서없이 있는 (unordered) 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations)' 들이 '순서없이 있는 집합체' 입니다.
+스위프트는, 값의 집합체를 저장하기 위해, '배열 (arrays)', '셋 (sets)[^sets-type]', 그리고 '딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 개의 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 값의 '순서가 있는 집합체 (ordered collections)'[^ordered-collection] 이고, 셋은 유일한 값들이 '순서 없는 (unordered) 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations)' 들의 '순서 없는 집합체' 입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
