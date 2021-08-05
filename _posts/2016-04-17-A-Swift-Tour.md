@@ -799,7 +799,7 @@ print(fridgeIsOpen)
 
 ### Generics (일반화)
 
-'꺽쇠 괄호 (angle brackets)' 안에 이름을 작성하여 '일반화 (generic) 함수' 나 '일반화 타입' 을 만듭니다.
+'꺽쇠 괄호 (angle brackets) 안에 이름을 작성' 하여 '일반화 (generic) 함수나 타입' 을 만듭니다.
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -812,10 +812,10 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
-클래스, 열거체, 그리고 구조체 뿐만 아니라, 함수와 메소드의 '일반화 형식 (generic forms)' 도 만들 수 있습니다.
+클래스, 열거체, 및 구조체 뿐만 아니라, '함수와 메소드에 대한 일반화 형식 (generic forms)' 도 만들 수 있습니다.
 
 ```swift
-// 스위프트 표준 라이브러리의 옵셔널 타입을 재구현함
+// 스위프트 표준 라이브러리에 있는 옵셔널 타입을 재구현한 것
 enum OptionalValue<Wrapped> {
   case none
   case some(Wrapped)
@@ -824,7 +824,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-본문 바로 앞에 `where` 를 사용하여 '필수 조건 (requirements)' 목록-예를 들어, 타입이 프로토콜을 필수로 구현할 것, 두 개의 타입이 필수로 같을 것, 또는 클래스가 특정 상위 클래스를 필수로 가질 것 등-을 지정합니다.
+`where` 를 본문 바로 앞에 사용하여 '필수 조건 (requirements) 목록'-예를 들어, 타입이 프로토콜을 구현하도록 요구하거나, 두 타입이 똑같을 것을 요구, 또는 클래스가 특별한 상위 클래스를 가질 것을 요구하는 등-을 지정합니다.
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
@@ -843,10 +843,10 @@ anyCommonElements([1, 2, 3], [3])
 
 > 실험
 >
-> `anyCommonElements(_:_:)` 함수를 수정하여 두 '수열 (sequence)' 에 공통인 원소의 배열을 반환하는 함수를 만들어 봅시다.
+> `anyCommonElements(_:_:)` 함수를 수정하여 '두 시퀀스 (sequence)[^sequence] 에 공통인 원소 배열을 반환하는 함수' 를 만들어 봅니다.
 
 
-`<T: Equatable>` 로 작성하는 것은 `<T> ... where T: Equatable` 로 작성하는 것과 똑같습니다.
+`<T: Equatable>` 이라고 작성하는 것은 `<T> ... where T: Equatable` 이라고 작성하는 것과 똑같습니다.
 
 ### 다음 장
 
@@ -879,3 +879,5 @@ anyCommonElements([1, 2, 3], [3])
 [^unordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 수학적으로 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 향후 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다. 
 
 [^methods-associated]: '열거체가 자신과 결합된 메소드 (methods associated with them) 를 가질 수 있다' 는 말은 '열거체가 멤버 함수를 가질 수 있다' 는 의미입니다.
+
+[^sequence]: 컴퓨터 자료 구조의 하나인 '시퀀스 (sequence)' 는 원래 수학 용어인 '수열' 에서 온 개념입니다. 그러므로 해당 문장은 '두 수열에 공통인 원소 배열을 반환하는 함수' 라고 이해할 수도 있습니다.
