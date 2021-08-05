@@ -681,7 +681,7 @@ let bDescription = b.simpleDescription
 
 구조체를 수정하는 메소드를 표시하고자 `SimpleStructure` 선언에 `mutating` 키워드를 사용함에 주목하기 바랍니다. `SimpleClass` 선언은 자신의 어떤 메소드도 '변경 (mutating)' 으로 표시할 필요가 없는데 클래스 메소드는 항상 클래스를 수정할 수 있기 때문입니다.
 
-`extension` 을 사용하여 기존 타입에, 새로운 메소드나 새로운 '계산 속성 (computed properties)' 같은, 기능성을 추가합니다. '익스텐션 (extension; 확장)' 은 다른 곳에서 선언한 타입, 또는 심지어 라이브러리나 프레임웍에서 불러온 타입에도, '프로토콜 준수성 (protocol conformance)'[^protocol-conformance] 을 추가할 수 있습니다.
+`extension` 으로 기존 타입에, 새로운 '메소드나 계산 (computed) 속성' 같은, 기능을 추가합니다. 다른 곳에서 선언한 타입, 또는 심지어 라이브러리나 프레임웍에서 불러온 타입에, '프로토콜 준수성 (protocol conformance)'[^protocol-conformance] 을 추가하기 위해 '익스텐션 (extension)' 을 사용할 수 있습니다.
 
 ```swift
 extension Int: ExampleProtocol {
