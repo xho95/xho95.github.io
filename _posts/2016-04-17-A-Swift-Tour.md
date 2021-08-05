@@ -641,7 +641,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 ### Protocols and Extensions (프로토콜과 익스텐션)
 
-'프로토콜 (규약)' 은 `protocol` 로 선언합니다.
+'프로토콜 (protocol)' 은 `protocol` 로 선언합니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -677,7 +677,7 @@ let bDescription = b.simpleDescription
 
 > 실험
 >
-> `ExampleProtocol` 에 또 다른 '필수 조건 (requirement)' 을 추가해 봅시다. 무엇을 바꿔야 `SimpleClass` 와 `SimpleStructure` 가 여전히 프로토콜을 '준수 (conform)' 하게 만들 수 있습니까?
+> 또 다른 '필수 조건 (requirement)' 을 `ExampleProtocol` 에 추가해 봅니다. `SimpleClass` 와 `SimpleStructure` 가 프로토콜을 여전히 '준수 (conform)' 하도록 하려면 무엇을 바꿔야 합니까?
 
 `SimpleStructure` 선언에서는 구조체를 수정하는 메소드를 `mutating` 키워드로 표시함에 주목합니다. `SimpleClass` 의 선언에서는 어떤 메소드도 '변경 (mutating)' 이라고 표시할 필요가 없는데 클래스의 메소드는 클래스를 항상 수정할 수 있기 때문입니다.
 
