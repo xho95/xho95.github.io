@@ -713,7 +713,7 @@ print(protocolValue.simpleDescription)
 
 ### Error Handling (에러 처리)
 
-에러는 `Error` 프로토콜을 '채택한 (adopts)' 어떤 타입으로 표현합니다.
+`Error` 프로토콜을 채택한 어떤 타입으로 에러를 표현합니다.
 
 ```swift
 enum PrinterError: Error {
@@ -723,7 +723,7 @@ enum PrinterError: Error {
 }
 ```
 
-`throw` 를 사용하여 에러를 던지고 `throws` 로 에러를 던질 수 있는 함수를 표시합니다. 함수에서 에러를 던지면, 함수는 즉시 반환하며 함수를 호출한 코드가 에러를 처리합니다.
+`throw` 로 에러를 던지고 `throws` 로 에러를 던질 수 있는 함수를 표시합니다. 함수에서 에러를 던지면, 함수는 곧바로 반환하며 함수를 호출한 코드가 에러를 처리합니다.
 
 ```swift
 func send(job: Int, toPrinter printerName: String) throws -> String {
@@ -734,7 +734,7 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 }
 ```
 
-에러 처리에는 여러 가지 방법이 있습니다. 한 가지는 `do`-`catch` 문을 사용하는 것입니다. `do` 블럭 내에서, 에러를 던질 수 있는 코드는 그 앞에 `try` 를 써서 표시합니다. `catch` 블럭 내에서, 에러는 다른 이름을 부여하지 않는 이상 자동으로 `error` 라는 이름을 부여합니다.
+에러 처리에는 여러 가지 방법이 있습니다. 한 가지는 `do`-`catch` 문을 사용하는 것입니다. `do` 블럭 안에서, 앞에 `try` 를 작성함으로써 에러를 던질 수 있는 코드를 표시합니다. `catch` 블럭 안에서, 에러는 다른 이름을 주지 않은 한 `error` 라는 이름을 자동으로 가집니다.
 
 ```swift
 do {
@@ -748,9 +748,9 @@ do {
 
 > 실험
 >
-> 프린터 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지게 해봅시다.
+> 인쇄기 이름을 `"Never Has Toner"` 로 바꿔서, `send(job:toPrinter:)` 함수가 에러를 던지게 해봅니다.
 
-'다중 `catch` 블럭' 을 제공하여 지정된 에러를 처리하게 할 수 있습니다. 'switch 문' 의 `case` 절 뒤에 하는 것처럼 `catch` 절 뒤에 '패턴 (pattern; 유형)' 을 작성합니다.
+특정 에러를 처리하는 '여러 개의 `catch` 블럭' 을 제공할 수 있습니다. 'switch 문' 의 `case` 절 뒤에 하는 것처럼 `catch` 절 뒤에 '패턴 (pattern; 유형)' 을 작성합니다.
 
 ```swift
 do {
