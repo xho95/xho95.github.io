@@ -10,11 +10,11 @@ categories: Swift Language Grammar Basics
 
 ## The Basics (기초)
 
-스위프트는 iOS, macOS, watchOS, 그리고 tvOS 용 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, 스위프트의 많은 부분들은 C 와 오브젝티브-C 개발 경험으로 인해 익숙할 것입니다.
+스위프트는 'iOS, macOS, watchOS, 및 tvOS 앱 개발' 을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, C 와 오브젝티브-C 개발 경험으로 인하여 스위프트의 많은 부분들이 익숙할 것입니다.
 
-스위프트는 C 와 오브젝티브-C 의 모든 기본 타입들에 대해 자신만의 버전을 제공하며, 이는 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불리언 (Boolean)' 값을 위한 `Bool`, 그리고 문장 형태의 자료를 위한 `String` 을 포함합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, 강력한 세 개의 주요 '집합체 (collection) 타입' 인, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리) 도 제공합니다.[^set-dictionary]
+스위프트는, 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불리언 (Boolean) 값' 을 위한 `Bool`, 그리고 문장 자료를 위한 `String` 을 포함한, 모든 C 와 오브젝티브-C 기본 타입에 대한 자신만의 버전을 제공합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리)[^set-dictionary] 라는, 강력한 '주요 집합체 (collection) 타입' 세 개도 제공합니다.
 
-C 와 같이, 스위프트도 '변수 (variables)' 라는 '식별 가능한 이름 (identifying name)' 으로 값을 저장하고 참조합니다. 스위프트는 값을 바꿀 수 없는 변수 역시 광범위하게 사용합니다. 이를 '상수 (constants)' 라고 하는데, C 언어의 상수보다 훨씬 더 강력합니다. 상수는 바꿀 필요가 없는 값과 작업할 때 코드를 더 안전하고 명확하게 만들기 위한 의도로 스위프트 전반에 걸쳐 사용됩니다.
+C 같이, 스위프트도 '변수 (variables)' 라는 '식별 가능한 이름 (identifying name)' 으로 값을 저장하고 참조합니다. 스위프트는 값을 바꿀 수 없는 변수 역시 광범위하게 사용합니다. 이를 '상수 (constants)' 라고 하는데, C 언어의 상수보다 훨씬 더 강력합니다. 상수는 바꿀 필요가 없는 값과 작업할 때 코드를 더 안전하고 명확하게 만들기 위한 의도로 스위프트 전반에 걸쳐 사용됩니다.
 
 익숙한 타입에 더하여, 스위프트는, '튜플 (tuple)' 같이, 오브젝티드-C 에는 없는 '고급 타입' 도 도입합니다. 튜플은 '값의 그룹 (group)' 을 생성하고 전달할 수 있게 해줍니다. 함수에서 여러 개의 값을 '단일 복합 값 (single compound value)' 으로 반환하기 위해 튜플을 사용할 수 있습니다.
 
@@ -763,7 +763,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^set-dictionary]: 'Set (셋)' 은 수학 용어로 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 '사전' 을 의미합니다. 이들의 역할은 용어의 의미와 일치하지만, 이름 자체로 '자료 타입' 임을 확실히 나타내기 위해 여기서는 각각 '셋' 과 '딕셔너리' 라는 발음대로 옮깁니다. 'Array (배열)' 의 경우 이미 '배열' 이라는 용어가 '자료 타입' 으로 널리 사용되고 있으므로 계속 '배열' 이라고 옮깁니다.
+[^set-dictionary]: 'Set (셋)' 은 수학 용어로 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 '사전' 을 의미합니다. 이들의 역할은 용어의 의미와 일치하지만, 각자 '자료 타입' 임을 확실히 나타내기 위해, '셋' 과 '딕셔너리' 라고 발음대로 옮깁니다. 'Array (배열)' 의 경우에는, 이미 '배열' 이라는 용어를 '자료 타입' 으로 널리 사용하고 있으므로 계속 '배열' 이라고 옮깁니다.
 
 [^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면 (Unicode planes)' 에서 '사용자 영역 (private-use areas)' 에 있는 값을 말합니다. 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)', 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
