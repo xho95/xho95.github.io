@@ -26,7 +26,7 @@ C 같이, 스위프트도 '식별 가능한 이름 (identifying name) 으로 값
 
 상수와 변수는 (`maximumNumberOfLoginAttempts` 나 `welcomeMessage` 같은) 이름을 (`10` 이라는 수나 `"Hello"` 라는 문자열 같은) 특별한 타입의 값과 결합합니다. _상수 (constant)_ 값은 한 번 설정하면 바꿀 수 없는 반면, _변수 (variable)_ 는 미래에 다른 값을 설정할 수 있습니다.
 
-#### Declaring Constants and Variables (상수와 변수의 선언)
+#### Declaring Constants and Variables (상수와 변수 선언하기)
 
 상수와 변수는 반드시 사용 전에 선언해야 합니다. 상수는 `let` 키워드로 변수는 `var` 키워드로 선언합니다. 다음은 상수와 변수로 사용자 로그인 시도 횟수를 추적하는 방법에 대한 예제입니다:
 
@@ -81,7 +81,7 @@ var red, green, blue: Double
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
-상수와 변수의 이름은, '유니코드 문자 (Unicode characters)' 를 포함한, 거의 어떤 문자라도 가질 수 있습니다:
+상수와 변수 이름은, '유니코드 문자 (Unicode characters)' 를 포함한, 거의 어떤 문자든 담을 수 있습니다:
 
 ```swift
 let π = 3.14159
@@ -89,11 +89,11 @@ let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
 ```
 
-상수와 변수의 이름은 '공백 (whitespace) 문자', '수학 기호 (mathematical symbols)', '화살표 (arrows)', '사용자 영역 유니코드 크기 값 (private-use Unicode scalar values)'[^private-use-Unicode-scalar-values], 또는 '선-그리기 (line-drawing)' 및 '상자-그리기 문자 (box-drawing characters)' 를 가질 수 없습니다. 숫자로 시작하는 것도 안되지만, 이름 내의 다른 곳에 숫자가 있는 건 괜찮습니다.
+상수와 변수 이름은 '공백 (whitespace) 문자', '수학 기호 (mathematical symbols)', '화살표 (arrows)', '사용자 영역 유니코드 크기 값 (private-use Unicode scalar values)'[^private-use-Unicode-scalar-values], 또는 '선- 및 상자-그리기 (line-drawing and box-drawing) 문자' 를 담을 순 없습니다. 숫자로 시작하는 것도 안되긴 하지만, 이름 안의 다른 곳에 숫자를 포함할 순 있습니다.
 
-상수나 변수를 정해진 타입으로 한 번 선언하면, 똑같은 이름으로 다시 선언하거나, 다른 타입의 값을 저장하도록 바꿀 수 없습니다. 상수를 변수로 또는 변수를 상수로 바꿀 수도 없습니다.
+정해진 타입의 상수나 변수를 한 번 선언하고 나면, 똑같은 이름을 가지고 다시 선언하거나, 다른 타입의 값을 저장하도록 바꿀 수 없습니다. 상수를 변수로 변수를 상수로 바꿀 수도 없습니다.
 
-> '스위프트에서 예약된 키워드 (reserved Swift keyword)' 와 똑같은 이름을 상수나 변수에 부여하려면, 이름으로 사용할 때 키워드를 '역따옴표 (backticks; `` ` ``)'[^backticks] 로 감쌉니다. 하지만, 선택의 여지가 없을 때가 아니라면 키워드를 이름으로 사용하는 것을 피하기 바랍니다.
+> 상수나 변수에 '스위프트의 예약 키워드 (reserved Swift keyword) 와 똑같은 이름' 을 줄 필요가 있으면, 이를 이름으로 사용할 때 '역따옴표 (backticks; `` ` ``)'[^backticks] 로 키워드를 감쌉니다. 하지만, 절대적으로 선택의 여지가 없는 것이 아닌 한 키워드를 이름으로 사용하는 걸 피하기 바랍니다.
 
 기존 변수의 값은 호환 가능한 타입의 또 다른 값으로 바꿀 수 있습니다. 다음 예제는, `friendlyWelcome` 의 값을 `"Hello!"` 에서 `"Bonjour!"` 로 바꿉니다:
 
@@ -765,7 +765,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^set-dictionary]: 'Set (셋)' 은 수학 용어로 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 '사전' 을 의미합니다. 이들의 역할은 용어의 의미와 일치하지만, 각자 '자료 타입' 임을 확실히 나타내기 위해, '셋' 과 '딕셔너리' 라고 발음대로 옮깁니다. 'Array (배열)' 의 경우에는, 이미 '배열' 이라는 용어를 '자료 타입' 으로 널리 사용하고 있으므로 계속 '배열' 이라고 옮깁니다.
 
-[^private-use-Unicode-scalar-values]: '사용자 영역 유니코드 크기 값' 이란 '유니코드 평면 (Unicode planes)' 에서 '사용자 영역 (private-use areas)' 에 있는 값을 말합니다. 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)', 이렇게 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. 더 자세한 내용은 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
+[^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
 [^annotation]: 'annotation' 는 사실 '주석' 이라고 옮기는 것이 가장 적당하지만, 프로그래밍 분야에서는 'comments' 가 '주석' 이라고 이미 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라고 옮깁니다. 실제로 스위프트에서는 'annotation' 을 쓸 일이 거의 없기 때문에 이 용어에는 비중을 크게 두지 않아도 됩니다.
 
