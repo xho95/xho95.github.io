@@ -65,19 +65,19 @@ var welcomeMessage: String
 
 "`String` 타입인" 이라는 구절은 "어떤 `String` 값이든 저장할 수 있다" 는 의미입니다. 저장할 수 있는 "어떤 것의 타입" (또는 "어떤 것의 종류") 를 의미한다고 생각하기 바랍니다.
 
-`welcomeMessage` 변수는 이제 어떤 문자열 값도 에러 없이 설정할 수 있습니다:
+이제 `welcomeMessage` 변수에는 에러 없이 어떤 문자열 값이든 설정할 수 있습니다:
 
 ```swift
 welcomeMessage = "Hello"
 ```
 
-서로 관련된 동일 타입의 '다중 (multiple)' 변수들은, 쉼표로 구분한 다음, 마지막 변수 이름 뒤에 '단일 타입 보조 설명' 을 붙이는 것으로써, 한 줄에 정의할 수 있습니다:
+서로 관계 있는 동일 타입의 여러 변수들은, 쉼표로 구분하고, 최종 변수 이름 뒤에 '단일 타입 보조 설명' 을 둬서, 한 줄로 정의할 수 있습니다:
 
 ```swift
 var red, green, blue: Double
 ```
 
-> 실제로 '타입 보조 설명 (type annotations)' 을 작성할 필요는 거의 없습니다. 상수나 변수를 정의하는 순간에 초기 값을 제공하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 스위프트가 거의 항상 해당 상수나 변수가 사용할 타입을 추론할 수 있습니다. 위의 `welcomeMessage` 예제는, 초기 값을 제공하지 않으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하지 않고 '타입 보조 설명' 으로 지정한 것입니다.
+> 실제로 '타입 보조 설명' 을 작성할 필요는 거의 없습니다. 상수나 변수를 정의하는 시점에 초기 값을 제공하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 해당 상수나 변수가 사용할 타입을 거의 항상 스위프트가 추론할 수 있습니다. 위 `welcomeMessage` 예제는, 초기 값을 제공하지 않으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하기 보다 '타입 보조 설명' 으로 지정한 것입니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
