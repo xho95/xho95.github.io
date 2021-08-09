@@ -122,14 +122,14 @@ print(friendlyWelcome)
 
 `print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 출력 결과로 인쇄하는 전역 함수입니다. '엑스코드 (Xcode)' 에선, 예를 들어, `print(_:separator:terminator:)` 함수가 출력 결과를 '엑스코드의 "콘솔 (console)" 구역' 에 인쇄합니다. `separator` 와 `terminator` 매개 변수에는 '기본 (default) 값' 이 있으므로, 함수 호출 시 이를 생략할 수 있습니다. 기본적으로, 함수는 자신이 인쇄하는 줄에 '줄 끊음 (line break)' 을 추가하여 종결합니다. '줄 끊음' 없이 값을 인쇄하려면,-예를 들어, `print(someValue, terminator : "")` 처럼-빈 문자열을 '종결자 (terminator)' 로 전달합니다. '기본 값을 가진 매개 변수' 에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분을 참고하기 바랍니다.
 
-스위프트는 상수나 변수의 이름을 더 긴 문자열 내의 '자리 표시자 (placeholder)' 로 포함시키기 위해, 그리고 이를 해당 상수나 변수의 현재 값으로 대체하도록 스위프트에게 알리기 위해 '_문자열 보간법 (string interpolation)_'[^string-interpolation] 을 사용합니다. 이름을 괄호로 포장한 다음 시작 괄호 앞에 '역 빗금 (backslash)' 을 써서 '벗어나게 (escape)'[^escape] 합니다:
+스위프트는 '상수나 변수 이름을 더 긴 문자열 안의 자리 표시자 (placeholder) 로 포함시켜, 이를 해당 상수나 변수의 현재 값으로 대체' 하도록 스위프트에게 알리기 위한 _문자열 보간법 (string interpolation)_[^string-interpolation] 을 사용합니다. 이는 '이름을 괄호로 포장' 하고 '시작 괄호 앞에서 역 빗금 (backslash) 으로 벗어나게 (escape)'[^escape] 하면 됩니다:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // "The current value of friendlyWelcome is Bonjour!" 를 인쇄합니다.
 ```
 
-> 문자열 보간법과 같이 쓸 수 있는 모든 '옵션 (options)' 들은 [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 에서 설명합니다.
+> '문자열 보간법과 같이 사용할 수 있는 모든 옵션들' 은 [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 부분에서 설명합니다.
 
 ### Comments (주석)
 
