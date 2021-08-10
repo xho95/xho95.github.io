@@ -200,7 +200,7 @@ let maxValue = UInt8.max  // maxValue 는 255 이고, 타입은 UInt8 입니다.
 * 32-비트 플랫폼에 대한, `UInt` 는 `UInt32` 와 똑같은 크기입니다.
 * 64-비트 플랫폼에 대한, `UInt` 는 `UInt64` 와 똑같은 크기입니다.
 
-> `UInt` 는 특별히 플랫폼의 고유 워드 크기와 같은 크기의 부호 없는 정수가 꼭 필요할 때만 사용합니다. 이 경우가 아니면, 저장 값이 음수가 아는 것을 알아도, `Int` 가 더 좋습니다. 정수 값으로 `Int` 를 일관되게 사용하는 것은, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 코드의 '상호 호환성 (interoperability)' 을 높이고, 서로 다른 수치 타입간의 변환을 피하게 해주며, 정수로 타입 추론한 것과도 일치합니다.
+> `UInt` 는 특히 '플랫폼 고유의 워드 크기와 똑같은 크기의 부호 없는 정수가 필요할 때' 에만 사용합니다. 이 경우가 아니면, 저장 값이 음수가 아님을 알 때에도, `Int` 가 더 좋습니다. 정수 값에 `Int` 를 일관성 있게 사용하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, '코드 상호 호환성 (interoperability)' 을 높이고, 서로 다른 수치 타입 사이의 변환을 피하며, '정수 타입 추론' 과도 일치합니다.
 
 ### Floating-Point Numbers (부동-소수점 수)
 
