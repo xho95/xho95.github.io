@@ -252,7 +252,7 @@ let anotherPi = 3 + 0.14159
 
 ### Numeric Literals (수치 글자 값)
 
-'정수 글자 값 (integer literals)' 은 다음처럼 작성합니다:
+'정수 글자 값' 은 다음 같이 작성합니다:
 
 * _10진 (decimal)_ 수는, 접두사 없음
 * _2진 (binary)_ 수는, `0b` 접두사 사용
