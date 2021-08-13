@@ -354,22 +354,22 @@ let integerPi = Int(pi)
 
 ### Type Aliases (타입 별명)
 
-_타입 별명 (type aliases)_ 은 기존 타입에 대한 '또 다른 이름 (alternative name)' 을 정의합니다. '타입 별명' 은 `typealias` 키워드로 정의합니다.
+_타입 별명 (type aliases)_ 은 '기존 타입의 대안 (alternative) 이름' 을 정의합니다. 타입 별명은 `typealias` 라는 키워드로 정의합니다.
 
-타입 별명은, 크기가 외부 소스에서 정해진 자료와 작업할 때 처럼, 상황에 더 적절한 이름으로 기존 타입을 참조하고 싶을 때 유용합니다:
+타입 별명은, 외부 소스에서 크기를 정한 자료와 작업할 때와 같이, 기존 타입을 상황에 더 적절하게 맞는 이름으로 참조하고 싶을 때 유용합니다:
 
 ```swift
 typealias AudioSample = UInt16
 ```
 
-타입 별명을 한 번 정의하면, 원래 이름을 사용할 수 있는 곳이면 어디에서든 이 별명을 사용할 수 있습니다:
+한 번 타입 별명을 정의하고 나면, 원본 이름을 사용할 지도 모를 어떤 곳에서든 별명을 사용할 수 있습니다:
 
 ```swift
 var maxAmplitudeFound = AudioSample.min
 // maxAmplitudeFound 는 이제 0 입니다.
 ```
 
-여기서는, `UInt16` 에 대한 별명으로 `AudioSample` 을 정의합니다. 이는 별명이므로, `AudioSample.min` 라는 호출은 실제로 `UInt16.min` 를 호출하는데, 이는 `maxAmplitudeFound` 변수에 초기 값 `0` 을 제공합니다.
+여기서는, `AudioSample` 을 `UInt16` 의 별명으로 정의합니다. 이는 별명일 뿐이기 때문에, `AudioSample.min` 호출은 실제로 `UInt16.min` 을 호출하는데, 이는 `maxAmplitudeFound` 변수에 `0` 이라는 초기 값을 제공합니다.
 
 ### Booleans (불리언; 논리 값)
 
