@@ -326,7 +326,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 더하기 양 쪽 모두가 `UInt16` 타입이기 때문에, 덧셈이 가능합니다. (`twoThousandAndOne` 이라는) 출력 상수는, 두 `UInt16` 값의 합이기 때문에, `UInt16` 타입이라고 추론합니다.
 
-`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 그 이면을 살펴보면, `UInt16` 이 `UInt8` 값을 받는 초기자를 가지고 있어서, 이 초기자를 사용하여 기존 `UInt8` 로 새로운 `UInt16` 를 만듭니다. 하지만, 여기서 _어떤 (any)_ 타입이든 전달할 수는 없으며-`UInt16` 가 초기자를 제공하는 타입이어야만 합니다. 새로운 (자기가 정의한 타입도 포함한) 타입을 받는 초기자를 제공하기 위해 기존 타입을 확장하는 것은 [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 에서 다룹니다.
+`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 그 뒤를 살펴보면, `UInt16` 이 `UInt8` 값을 받는 초기자를 가지고 있어서, 이 초기자를 사용하여 기존 `UInt8` 로 새로운 `UInt16` 를 만듭니다. 여기서, 하지만, _어떤 (any)_ 타입이든 전달할 수 있는 것은 아니며-`UInt16` 이 초기자를 제공하는 타입이어야만 합니다. (자신이 정의한 타입도 포함하여) 새로운 타입을 받는 초기자를 제공하기 위해 기존 타입을 확장하는 것은 [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 에서 다룹니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
