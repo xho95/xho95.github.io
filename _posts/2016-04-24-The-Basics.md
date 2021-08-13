@@ -373,7 +373,7 @@ var maxAmplitudeFound = AudioSample.min
 
 ### Booleans (불리언; 논리 값)
 
-스위프트는, `Bool` 이라는, 기본적인 _불리언 (Boolean)_ 타입을 가지고 있습니다. '불리언' 값은 _논리 값 (logical)_ 이라고도 하는데, 늘`true` 또는 `false` 만 될 수 있기 때문입니다. 스위프트는, `true` 와 `false` 라는, 두 개의 불리언 상수 값을 제공합니다:
+스위프트는, `Bool` 이라는, 기초적인 _불리언 (Boolean)_ 타입을 가집니다. '불리언 값' 은, 늘 `true` 나 `false` 만 될 수 있기 때문에, _논리 값 (logical)_ 이라고 합니다. 스위프트는, `true` 와 `false` 라는, 두 개의 불리언 상수 값을 제공합니다:
 
 ```swift
 let orangesAreOrange = true
