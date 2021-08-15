@@ -450,7 +450,7 @@ print("The status code is \(justTheStatusCode)")
 // "The status code is 404" 를 인쇄합니다.
 ```
 
-대안으로, 0 으로 시작하는 '색인 번호 (index numbers)' 을 사용하여 튜플의 개별 원소 값에 접근합니다:
+대안으로는, '0에서 시작하는 색인 (index) 번호' 로 튜플의 개별 원소 값에 접근합니다:
 
 ```swift
 print("The status code is \(http404Error.0)")
@@ -459,13 +459,13 @@ print("The status message is \(http404Error.1)")
 // "The status message is Not Found" 를 인쇄합니다.
 ```
 
-튜플을 정의할 때 튜플의 개별 원소에 이름을 붙일 수 있습니다:
+튜플을 정의할 때 튜플 개별 원소에 이름을 붙일 수 있습니다:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
 ```
 
-튜플 원소에 이름을 붙이면, 해당 원소의 값에 접근하기 위해 원소 이름을 사용할 수 있습니다:
+튜플 원소에 이름을 붙이면, 원소 이름으로 해당 원소 값에 접근할 수 있습니다:
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
