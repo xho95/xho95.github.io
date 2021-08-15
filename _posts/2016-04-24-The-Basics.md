@@ -430,9 +430,9 @@ let http404Error = (404, "Not Found")
 
 `(404, "Not Found")` 라는 튜플은 HTTP 상태 코드에: '하나의 수' 와 '사람이-이해할 수 있는 설명' 이라는 별도의 두 값을 주기 위해 `Int` 와 `String` 을 함께 그룹 짓습니다. 이는 "`(Int, String)` 타입의 튜플" 이라고 설명할 수 있습니다.
 
-튜플은 어떤 '순서 조합 (permutation)'[^permutation] 의 타입으로든 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 나, `(String, Bool)` , 또는 진짜 순서를 필요한 대로 아무렇게나 섞은 타입인 튜플도 만들 수 있습니다.
+어떤 '순서로 조합 (permutation)[^permutation] 한 타입' 으로든 튜플을 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 나, `(String, Bool)` , 또는 '진짜 그 외 요구한 어떤 순서 조합의 타입' 이든 가질 수 있습니다.
 
-튜플의 내용은 별도의 상수나 변수로 _분해 (decompose)_ 한 다음, 평소 처럼 접근할 수 있습니다:
+튜플의 내용물은 별도의 상수나 변수로 _분해 (decompose)_ 한 다음, 평소 처럼 접근할 수 있습니다:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
@@ -442,7 +442,7 @@ print("The status message is \(statusMessage)")
 // "The status message is Not Found" 를 인쇄합니다.
 ```
 
-튜플 값에서 일부만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore; `_`) 을 써서 튜플 일부를 무시합니다:
+튜플에서 일부 값만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore; `_`) 로 튜플의 일부분을 무시합니다:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
