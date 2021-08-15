@@ -382,7 +382,7 @@ let turnipsAreDelicious = false
 
 `orangesAreOrange` 와 `turnipsAreDelicious` 의 타입은 '불리언 글자 값으로 초기화한다' 는 사실에 의해서 `Bool` 이라고 추론합니다. 위의 `Int` 와 `Double` 에서 처럼, 상수나 변수를 생성하자 마자 `true` 나 `false` 로 설정하면 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 (장치)' 는 이미 타입을 알고 있는 값으로 상수나 변수를 초기화할 때 더 간결하고 이해하기 쉬운 스위프트 코드를 만들도록 도와줍니다.
 
-불리언 값은 `if` 문 같은 조건문과 작업할 때 특별히 더 유용합니다:
+불리언 값은 특히 `if` 문 같은 조건문과 작업할 때 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
@@ -474,9 +474,9 @@ print("The status message is \(http200Status.description)")
 // "The status message is OK" 를 인쇄합니다.
 ```
 
-튜플은 특히 함수의 반환 값으로 아주 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지 가져오기의 성공 또는 실패를 설명하고자 `(Int, String)` 튜플 타입을 반환할 수도 있습니다. 함수는, 각 타입이 서로 다른, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입인 단일 값만 반환하는 경우보다 결과물에 대한 더 유용한 정보를 제공합니다. 더 많은 정보는 [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 참고하기 바랍니다.
+튜플은 특히 함수 반환 값으로 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지 가져오기의 성공 또는 실패를 설명하는 `(Int, String)` 튜플 타입을 반환할 지도 모릅니다. 함수는, 각각이 서로 다른 타입인, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입의 단일 값을 반환하는 경우보다 더 자신의 결과물에 대한 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 참고하기 바랍니다.
 
-> 튜플은 관련 값들의 간단한 그룹에서 유용한 것입니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡하게 되면, 튜플이 아니라, 클래스나 구조체로 모델을 만듭니다. 더 많은 정보는 [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 를 참고하기 바랍니다.
+> 튜플은 서로 관계 있는 값의 단순한 그룹에 유용합니다. 복잡한 자료 구조를 생성하는 데는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
 ### Optionals (옵셔널)
 
