@@ -498,25 +498,25 @@ let convertedNumber = Int(possibleNumber)
 
 #### nil
 
-옵셔널 변수에 특수한 값인 `nil` 을 할당함으로써 '값이 없는 상태 (valueless state)' 를 설정합니다:
+옵셔널 변수는 `nil` 이라는 특수 값을 할당함으로써 '값이 없는 (valueless) 상태' 를 설정합니다:
 
 ```swift
 var serverResponseCode: Int? = 404
-// serverResponseCode 는 404 라는 실제 Int 값을 담고 있습니다.
+// serverResponseCode 는 404 라는 실제 Int 값을 담습니다.
 serverResponseCode = nil
 // serverResponseCode 는 이제 아무 값도 담고 있지 않습니다.
 ```
 
-> `nil` 은 '옵셔널-아닌 (non-optional)' 상수와 변수와는 사용할 수 없습니다. 정해진 조건 아래에서 코드의 상수나 변수가 값의 없음을 다뤄야 한다면, 이를 항상 적절한 타입의 옵셔널 값으로 선언합니다.
+> '옵셔널-아닌 상수와 변수' 에 `nil` 을 사용할 순 없습니다. 코드의 상수나 변수가 정해진 조건 하에서 값의 없음을 다뤄야 한다면, 항상 적절한 타입의 옵셔널 값으로 선언합니다.
 
-옵셔널 변수를 정의하면서 '기본 값 (default value)' 을 제공하지 않으면, 이 변수는 `nil` 로 자동 설정합니다:
+옵셔널 변수를 정의하면서 '기본 값' 을 제공하지 않으면, 자동으로 변수를 `nil` 로 설정합니다:
 
 ```swift
 var surveyAnswer: String?
-// surveyAnswer 는 nil 로 자동 설정됩니다.
+// surveyAnswer 는 자동으로 nil 로 설정합니다.
 ```
 
-> 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 같지 않습니다. 오브젝티브-C 의, `nil` 은 존재하지 않는 객체에 대한 '포인터 (pointer)' 입니다. 스위프트의, `nil` 은 포인터가 아닙니다-이는 정해진 타입의 '값이 없는 것' 입니다. 객체 타입뿐만 아니라, _어떤 (any)_ 타입의 옵셔널에도 `nil` 을 설정할 수 있습니다.
+> 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 똑같지 않습니다. 오브젝티브-C 의, `nil` 은 존재하지 않는 객체에 대한 '포인터 (pointer)' 입니다. 스위프트의, `nil` 은 포인터가 아닙니다-이는 정해진 타입 '값의 없음' 입니다. 객체 타입만이 아니라, _어떤 (any)_ 타입의 옵셔널이든 `nil` 로 설정할 수 있습니다.
 
 #### If Statements and Forced Unwrapping (If 문과 강제 포장 풀기)
 
