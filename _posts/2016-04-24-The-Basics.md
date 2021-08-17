@@ -546,15 +546,15 @@ if convertedNumber != nil {
 
 #### Optional Binding (옵셔널 연결)
 
-_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 담고 있는지 알아내서, 그 경우, 해당 값을 임시 상수나 변수로 사용 가능하게 만들어 줍니다. '옵셔널 연결' 을 `if` 와 `while` 문과 같이 사용하면, 단일 작업으로, 옵셔널 안의 값을 검사하고, 해당 값을 상수나 변수로 추출할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 더 자세하게 설명합니다.
+옵셔널이 값을 담고 있는 지 알아내고, 그럴 경우, 해당 값을 임시 상수나 변수로 사용 가능하도록, _옵셔널 연결 (optional binding)_ 을 사용합니다. 옵셔널 연결은, 단일 작업으로, 옵셔널 안의 값을 검사하고, 상수나 변수로 해당 값을 추출하기 위해, `if` 와 `while` 문과 사용할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 설명합니다.
 
-`if` 문의 '옵셔널 연결' 은 다음 처럼 작성합니다:
+`if` 문을 위한 옵셔널 연결은 다음 처럼 작성합니다:
 
-if let `constantName-상수 이름` = `someOptional-어떤 옵셔널` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;if let `constantName-상수 이름` = `someOptional-어떤 옵셔널` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-[Optionals (옵셔널)](#optionals-옵셔널) 에 있는 `possibleNumber` 예제는 '강제 포장 풀기 (forced unwrapping)' 대신 '옵셔널 연결 (optional binding)' 을 사용하도록 재작성할 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널) 부분의 `possibleNumber` 예제는 '강제 포장 풀기' 보단 '옵셔널 연결' 을 사용하도록 재작성할 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -567,11 +567,11 @@ if let actualNumber = Int(possibleNumber) {
 
 이 코드는 다음처럼 이해할 수 있습니다:
 
-"`Int(possibleNumber)` 에서 반환된 옵셔널 `Int` 가 값을 담고 있으면, `actualNumber` 라는 새로운 상수를 옵셔널에 담긴 값에 설정합니다."
+"`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 가 값을 담고 있다면, 옵셔널이 담은 값을 `actualNumber` 라는 새로운 상수에 설정합니다."
 
-변환이 성공하면, `actualNumber` 상수가 `if` 문의 첫 번째 분기에서 사용 가능해 집니다. 이는 이미 옵셔널 _내에 (within)_ 담긴 값으로 초기화되었으므로, 값에 접근하려고 `!` 접미사를 사용할 필요가 없습니다. 이 예제의, `actualNumber` 는 단순히 변환 결과를 인쇄하는데 사용됩니다.
+변환을 성공하면, `actualNumber` 라는 상수가 `if` 문의 첫 번째 분기 안에서 사용 가능해 집니다. 이미 옵셔널 _안에 (within)_ 담긴 값으로 초기화 했으므로, 값에 접근할 때 `!` 접미사를 사용하지 않습니다. 이 예제의, `actualNumber` 는 변환 결과를 단순히 인쇄하는데 사용합니다.
 
-'옵셔널 연결' 은 상수와 변수 둘 모두와 사용할 수 있습니다. `if` 문의 첫 번째 분기 내에서 `actualNumber` 값을 조작하고 싶으면, 대신 `if var actualNumber` 라고 작성하여, 옵셔널 내에 담긴 값을 상수가 아니라 변수로 사용 가능하도록 만들 수도 있습니다.
+상수와 변수 둘 다 옵셔널 연결과 사용할 수 있습니다. `actualNumber` 의 값을 `if` 문 첫 번째 분기 안에서 조작하고 싶으면, `if var actualNumber` 라고 대신 작성하면, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용 가능하게 할 수 있을 것입니다.
 
 단일 `if` 문에는 필요한 만큼 많은 '옵셔널 연결' 과 '불리언 조건' 을, 쉽표로 구분하여, 포함시킬 수 있습니다. 옵셔널 연결에 있는 어떤 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 로 평가된다면, 전체 `if` 문의 조건이 `false` 인 것으로 간주됩니다. 다음의 `if` 문들은 서로 '동치 (equivalent)' 입니다:
 
