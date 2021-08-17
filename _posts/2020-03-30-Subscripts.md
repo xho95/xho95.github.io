@@ -143,7 +143,7 @@ func indexIsValid(row: Int, column: Int) -> Bool {
 }
 ```
 
-행렬 경계 외부의 첨자 연산에 접근하려고 하면 '단언문' 문이 발동됩니다:
+행렬 경계 외부의 첨자 연산에 접근하려고 하면 '단언문' 문을 발동합니다:
 
 ```swift
 let someValue = matrix[2, 2]
