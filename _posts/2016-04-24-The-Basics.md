@@ -520,29 +520,29 @@ var surveyAnswer: String?
 
 #### If Statements and Forced Unwrapping (If 문과 강제 포장 풀기)
 
-`if` 문을 사용하면 옵셔널을 `nil` 과 비교함으로써 옵셔널이 값을 담고 있는지 알아낼 수 있습니다. 이 비교 연산은 "같음 (equal to)" 연산자 (`==`) 나 "같지 않음 (not equal to)" 연산자 (`!=`) 로 수행합니다:
+`if` 문으로 옵셔널을 `nil` 과 비교함으로써 옵셔널이 값을 담고 있는 지를 알아낼 수 있습니다. 이 비교 연산은 "같음 (equal to)" 연산자 (`==`) 나 "같지 않음 (not equal to)" 연산자 (`!=`) 로 수행합니다:
 
-만약 옵셔널이 값을 가지고 있으면, `nil` 과 "같지 않은" 것으로 간주합니다:
+옵셔널이 값을 가지고 있으면, `nil` 과 "같지 않은" 것으로 고려합니다:
 
 ```swift
 if convertedNumber != nil {
-    print("convertedNumber contains some integer value.")
+  print("convertedNumber contains some integer value.")
 }
 // "convertedNumber contains some integer value." 를 인쇄합니다.
 ```
 
-옵셔널이 값을 담고 있음을 한 번 확신 _하고 (does)_ 나면, 옵셔널 이름 끝에 느낌표 (`!`) 를 붙여서 '실제 값 (underlying value)' 에 접근할 수 있습니다. 느낌표는 실제로, "이 옵셔널이 값을 가짐은 확실하니; 사용하기 바랍니다." 라고 말하는 것입니다. 이것이 옵셔널 값의 '강제 포장 풀기 (forced unwrapping)' 라는 것입니다:
+옵셔널이 값을 담고 _있다고 (does)_ 한 번 확신하고 나면, '옵셔널 이름 끝에 느낌표 (`!`) 를 추가함' 으로써 이 실제 값에 접근할 수 있습니다. 느낌표는 실제로, "이 옵셔널은 확실히 값을 가지고 있다고 알고 있으니; 사용하기 바랍니다." 라고 말하는 것입니다. 이를 '옵셔널 값의 _강제 포장 풀기 (forced unwrapping)_' 라고 합니다:
 
 ```swift
 if convertedNumber != nil {
-    print("convertedNumber has an integer value of \(convertedNumber!).")
+  print("convertedNumber has an integer value of \(convertedNumber!).")
 }
 // "convertedNumber has an integer value of 123." 을 인쇄합니다.
 ```
 
-`if` 문에 대한 더 많은 것들은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 을 참고하기 바랍니다.
+`if` 문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 부분을 참고하기 바랍니다.
 
-> `!` 를 '존재하지 않는 옵셔널 값 (nonexistent optional value)' 에 접근하려고 사용하면 '실행 시간 에러 (runtime error)' 를 발생합니다. 값의 포장을-강제로 풀려고 `!` 를 사용하려면 항상 그전에 옵셔널이 '`nil` 아닌 값을 담고 있는지를 먼저 확인합니다.
+> 존재하지 않는 옵셔널 값에 접근하려고 `!` 를 사용하면 실행 시간 에러를 발동합니다. 값의 포장을-강제로 풀려고 `!` 를 사용하기 전에 항상 옵셔널이 '`nil`-아닌 값을 담고 있음을 확실히 합니다.
 
 #### Optional Binding (옵셔널 연결)
 
