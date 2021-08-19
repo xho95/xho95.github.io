@@ -326,7 +326,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 더하기 양 쪽 모두가 `UInt16` 타입이기 때문에, 덧셈이 가능합니다. (`twoThousandAndOne` 이라는) 출력 상수는, 두 `UInt16` 값의 합이기 때문에, `UInt16` 타입이라고 추론합니다.
 
-`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 그 뒤를 살펴보면, `UInt16` 이 `UInt8` 값을 받는 초기자를 가지고 있어서, 이 초기자를 사용하여 기존 `UInt8` 로 새로운 `UInt16` 를 만듭니다. 여기서, 하지만, _어떤 (any)_ 타입이든 전달할 수 있는 것은 아니며-`UInt16` 이 초기자를 제공하는 타입이어야만 합니다. (자신이 정의한 타입도 포함하여) 새로운 타입을 받는 초기자를 제공하기 위해 기존 타입을 확장하는 것은 [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 에서 다룹니다.
+`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 속을 들여다보면, `UInt16` 에는 `UInt8` 값을 받는 초기자가 있어서, 기존 `UInt8` 로 새로운 `UInt16` 를 만드는데 이 초기자를 사용합니다. 하지만, 여기서 _어떤 (any)_ 타입이든 전달할 수 있는 것은 아니며-`UInt16` 이 초기자를 제공하는 타입이어야만 합니다. (자신이 정의한 타입도 포함하여) 새로운 타입을 받는 초기자를 제공하기 위해 기존 타입을 확장하는 것은 [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 에서 다룹니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
@@ -603,14 +603,14 @@ if let firstNumber = Int("4") {
 
 '암시적으로 포장 푸는 옵셔널' 은 옵셔널 값이 최초로 옵셔널을 정의한 바로 뒤 존재를 확정하고 그 후의 모든 시점에 존재를 확실히 가정할 수 있을 때 유용합니다. 스위프트에서 '암시적으로 포장 푸는 옵셔널' 은, [Unowned References and Implicitly Unwrapped Optional Properties ('소유하지 않는 참조' 와 '암시적으로 포장 푸는 옵셔널 속성')]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-and-implicitly-unwrapped-optional-properties-소유하지-않는-참조와-암시적으로-포장-푸는-옵셔널-속성) 에서 설명한 것처럼, 클래스를 초기화하는 동안에 주로 사용합니다.
 
-'암시적으로 포장을 푸는 옵셔널' 도 그 이면을 살펴보면 보통의 옵셔널이지만, 접근할 때마다 옵셔널 값의 포장을 풀 필요 없이, '옵셔널-아닌 값 (non-optional value)' 처럼 사용할 수 있습니다. 다음 예제는 자신의 '포장 값' 을 '명시적인 `String`' 으로 접근할 때 '옵셔널 문자열' 과 '암시적으로 포장을 푸는 옵셔널 문자열' 작동 방식의 차이점을 보여줍니다:
+속을 들여다보면 '암시적으로 포장 푸는 옵셔널' 도 보통의 옵셔널이지만, 매 번 접근할 때마다 옵셔널 값의 포장을 풀 필요 없는, '옵셔널-아닌 값' 처럼 사용할 수도 있습니다. 다음 예제는 '자신의 포장 값을 명시적인 `String` 으로 접근' 할 때 '옵셔널 문자열' 과 '암시적으로 포장 푸는 옵셔널 문자열' 의 동작의 차이를 보여줍니다:
 
 ```swift
 let possibleString: String? = "An optional string."
-let forcedString: String = possibleString! // 느낌표는 필수입니다.
+let forcedString: String = possibleString! // 느낌표를 요구함
 
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // 느낌표가 필요 없습니다.
+let implicitString: String = assumedString // 느낌표가 필요 없음
 ```
 
 '암시적으로 포장을 푸는 옵셔널' 은 옵셔널에 필요하다면 강제로-포장을 푸는 권한을 부여한 것으로 생각할 수 있습니다. '암시적으로 포장을 푸는 옵셔널' 값을 사용할 때, 스위프트는 처음에 이를 평범한 옵셔널 값처럼 사용하려고 시도합니다; 옵셔널처럼 사용할 수 없으면, 스위프트가 값의 포장을-강제로 풉니다. 위 코드에서, 옵셔널 값 `assumedString` 은 `implicitString` 에 값을 할당하기 전에 강제로-포장을 푸는데 이는 `implicitString` 의 타입이 명시적인, 옵셔널-아닌 `String` 이기 때문입니다. 아래 코드의, `optionalString` 은 명시적인 타입을 가지고 있지 않으므로 이는 평범한 옵셔널입니다.
