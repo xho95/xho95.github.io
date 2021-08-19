@@ -613,16 +613,16 @@ let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString // 느낌표가 필요 없음
 ```
 
-'암시적으로 포장을 푸는 옵셔널' 은 옵셔널에 필요하다면 강제로-포장을 푸는 권한을 부여한 것으로 생각할 수 있습니다. '암시적으로 포장을 푸는 옵셔널' 값을 사용할 때, 스위프트는 처음에 이를 평범한 옵셔널 값처럼 사용하려고 시도합니다; 옵셔널처럼 사용할 수 없으면, 스위프트가 값의 포장을-강제로 풉니다. 위 코드에서, 옵셔널 값 `assumedString` 은 `implicitString` 에 값을 할당하기 전에 강제로-포장을 푸는데 이는 `implicitString` 의 타입이 명시적인, 옵셔널-아닌 `String` 이기 때문입니다. 아래 코드의, `optionalString` 은 명시적인 타입을 가지고 있지 않으므로 이는 평범한 옵셔널입니다.
+'암시적으로 포장 푸는 옵셔널' 은 '필요하다면 포장을-강제로 푸는 권한을 옵셔널에 준 것' 으로 생각할 수 있습니다. '암시적으로 포장 푸는 옵셔널 값' 을 사용할 때, 스위프트는 처음에 이를 평범한 옵셔널 값으로 사용하려고 하며; 옵셔널로 사용할 수 없으면, 스위프트가 값의 포장을-강제로 풉니다. 위 코드에서는, `implicitString` 이 명시적으로, 옵셔널-아닌 `String` 타입이기 때문에 `assumedString` 이라는 옵셔널 값을 `implicitString` 에 할당하기 전에 포장을-강제로 풉니다. 아래 코드의, `optionalString` 은 명시적인 타입이 없으므로 평범한 옵셔널입니다.
 
 ```swift
 let optionalString = assumedString
-// optionalString 의 타입은 "String?" 이며 assumedString 은 강제로-풀리지 않습니다.
+// optionalString 의 타입은 "String?" 이며 assumedString 의 포장은-강제로 풀지 않습니다.
 ```
 
-'암시적으로 포장을 푸는 옵셔널' 이 `nil` 일 때 이 '포장 값' 에 접근하려고 하면, '실행 시간 에러 (runtime error)' 가 발생할 것입니다. 이 결과는 마치 값을 담지 않은 보통의 옵셔널 뒤에 느낌표를 붙인 경우에서와 정확히 똑같습니다.
+'암시적으로 포장 푸는 옵셔널이 `nil` 인데 이 포장 값에 접근' 하려고 하면, 실행 시간 에러를 발동할 것입니다. 이 결과는 마치 값을 담지 않은 보통의 옵셔널 뒤에 느낌표를 둔 것과 정확히 똑같습니다.
 
-'암시적으로 포장을 푸는 옵셔널' 이 `nil` 인지 검사하는 방식은 보통의 옵셔널 검사와 똑같습니다:
+'암시적으로 포장 푸는 옵셔널이 `nil` 인 지' 는 보통의 옵셔널 검사와 똑같은 방식으로 검사할 수 있습니다:
 
 ```swift
 if assumedString != nil {
@@ -631,7 +631,7 @@ if assumedString != nil {
 // "An implicitly unwrapped optional string." 를 인쇄합니다.
 ```
 
-'암시적으로 포장을 푸는 옵셔널' 과 '옵셔널 연결' 을 같이 사용하여, 단일 구문에서 값을 검사하고 포장을 풀 수도 있습니다:
+'암시적으로 포장 푸는 옵셔널' 을 '옵셔널 연결' 과 같이 사용하면, 단일 구문으로 자신의 값 검사와 포장 풀기를 할 수 있습니다:
 
 ```swift
 if let definiteString = assumedString {
@@ -640,7 +640,7 @@ if let definiteString = assumedString {
 // "An implicitly unwrapped optional string." 를 인쇄합니다.
 ```
 
-> 변수가 나중에 `nil` 이 될 가능성이 있을 때는 '암시적으로 포장을 푸는 옵셔널' 을 사용하지 않도록 합니다. 변수가 살아 있는 동안 `nil` 값을 검사할 필요가 있을 경우 항상 보통의 옵셔널 타입을 사용하기 바랍니다.
+> 더 나중에 변수가 `nil` 이 될 가능성이 있을 때는 '암시적으로 포장 푸는 옵셔널' 을 사용하지 않도록 합니다. 변수 수명 동안에 `nil` 값 검사가 필요할 경우 항상 보통의 옵셔널 타입을 사용합니다.
 
 ### Error Handling (에러 처리)
 
