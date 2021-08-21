@@ -419,7 +419,7 @@ class NamedShape {
 
 '하위 클래스 (subclasses)' 는 자신의 클래스 이름 뒤에, 콜론으로 구분한, '상위 클래스 (superclass) 이름' 을 포함합니다. 클래스가 '어떤 표준 근원 클래스 (standard root class)[^standard-root-class] 의 하위 클래스' 라는 '필수 조건 (requirement)' 은 없으므로, 필요에 따라 상위 클래스를 포함하거나 생략할 수 있습니다.
 
-'상위 클래스 구현을 재정의 (override) 한 하위 클래스 메소드' 는 `override` 로 표시합니다—`override` 없이, 우연히 재정의한 메소드는, 컴파일러가 에러라고 감지합니다. 실제로는 상위 클래스의 어떤 메소드도 재정의하지 않으면서 `override` 를 가진 메소드도 컴파일러가 감지합니다.
+'상위 클래스 구현을 재정의 (override) 한 하위 클래스 메소드' 는 `override` 로 표시합니다—`override` 없이, 우연히 재정의한 메소드는, 컴파일러가 에러라고 탐지합니다. 실제로는 상위 클래스의 어떤 메소드도 재정의하지 않으면서 `override` 를 가진 메소드도 컴파일러가 탐지합니다.
 
 ```swift
 class Square: NamedShape {
