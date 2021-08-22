@@ -749,7 +749,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 실패가 일어났다는 것-예를 들어, '모든 유효한 입력 자료는 switch 문의 다른 case 절에서 처리했어야 함' 에도, 'switch 문의 기본 case 절' 을 취한 경우 등-을 지시하기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다.
 
-> '검사하지 않는 모드 (unchecked mode; `-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 해당 선행 조건문이 항상 참이라고 가정하며, 이에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과는 상관없이, 항상 실행을 중단합니다.
+> '검사 안하는 (unchecked) 모드 (`-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건문을 항상 참으로 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과 상관없이, 실행을 항상 중단합니다.
 >
 > `fatalError(_:file:line:)` 함수는 프로토타입 및 초기 개발 동안에, 땜빵 구현처럼 `fatalError("Unimplemented")` 을 작성함으로써, 아직 구현하지 않는 기능에 대한 땜빵을 생성하기 위해 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 절대 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 땜빵 구현과 마주치면 실행이 항상 중단될 거라고 확신할 수 있습니다.
 
