@@ -708,7 +708,7 @@ _단언문 (assertions)_ 과 _선행 조건문 (Preconditions)_ 은 '실행 시�
 
 #### Debugging with Assertions (단언문으로 디버깅하기)
 
-단언문은 스위프트 표준 라이브러리에 있는 [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert) 함수를 호출함으로써 작성합니다. 이 함수에 '`true` 또는 `false` 로 평가할 표현식' 과 '조건 결과가 `false` 면 보여줄 메시지' 를 전달합니다. 예를 들면 다음과 같습니다:
+단언문은 스위프트 표준 라이브러리의 [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert) 함수 호출로 작성합니다. 이 함수에 '`true` 또는 `false` 로 평가할 표현식' 과 '조건 결과가 `false` 면 보여줄 메시지' 를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let age = -3
@@ -738,9 +738,9 @@ if age > 10 {
 
 #### Enforcing Preconditions (선행 조건 강제하기)
 
-선행 조건문은, 코드를 계속 실행하려면 반드시 _확실하게 (definitely)_ 참이어야 하는, 조건이 거짓이 될 잠재성을 가질 때마다 사용합니다. 예를 들어, 첨자 연산이 범위를 벗어나지 않았는지 검사하거나, 함수에 유효한 값이 전달 됐는지 검사하기 위해 선행 조건문을 사용하기 바랍니다.
+선행 조건문은, 잠재적으로 거짓일 수 있는 조건이, 코드를 계속 실행하려면 반드시 _확실히 (definitely)_ 참이어야 할 때마다, 사용합니다. 예를 들어, 경계를 벗어난 첨자 연산인 지 검사하거나, 유효한 값을 함수에 전달했는 지 검사하려면 선행 조건문을 사용합니다.
 
-선행 조건문은 [precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition) 함수를 호출하여 작성합니다. 이 함수에 `true` 나 `false` 로 평가할 표현식과 조건 결과가 `false` 이면 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
+선행 조건문은 [precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition) 함수 호출로 작성합니다. 이 함수에 '`true` 또는 `false` 로 평가할 표현식' 과 '조건 결과가 `false` 면 보여줄 메시지' 를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 // 첨자 연산 (subscript) 의 구현부에서  ...
