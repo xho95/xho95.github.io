@@ -708,7 +708,7 @@ _단언문 (assertions)_ 과 _선행 조건문 (Preconditions)_ 은 '실행 시�
 
 #### Debugging with Assertions (단언문으로 디버깅하기)
 
-단언문은 스위프트 표준 라이브러리의 [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert) 함수를 호출하여 작성합니다. 이 함수에 `true` 나 `false` 로 평가할 표현식과 조건 결과가 `false` 이면 표시할 메시지를 전달합니다. 예를 들면 다음과 같습니다:
+단언문은 스위프트 표준 라이브러리에 있는 [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert) 함수를 호출함으로써 작성합니다. 이 함수에 '`true` 또는 `false` 로 평가할 표현식' 과 '조건 결과가 `false` 면 보여줄 메시지' 를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let age = -3
