@@ -743,11 +743,11 @@ if age > 10 {
 선행 조건문은 [precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition) 함수 호출로 작성합니다. 이 함수에 '`true` 또는 `false` 로 평가할 표현식' 과 '조건 결과가 `false` 면 보여줄 메시지' 를 전달합니다. 예를 들면 다음과 같습니다:
 
 ```swift
-// 첨자 연산 (subscript) 의 구현부에서  ...
+// 첨자 연산 구현에서...
 precondition(index > 0, "Index must be greater than zero.")
 ```
 
-실패가 발생했다는 것-예를 들어, 모든 유효한 입력 자료는 'switch 문' 의 다른 'case 절' 에서 처리됐어야 함에도, 'switch 문의 기본 (default) case 절' 이 선택된 경우 등-을 나타내기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다.
+실패가 일어났다는 것-예를 들어, '모든 유효한 입력 자료는 switch 문의 다른 case 절에서 처리했어야 함' 에도, 'switch 문의 기본 case 절' 을 취한 경우 등-을 지시하기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다.
 
 > '검사하지 않는 모드 (unchecked mode; `-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 해당 선행 조건문이 항상 참이라고 가정하며, 이에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과는 상관없이, 항상 실행을 중단합니다.
 >
