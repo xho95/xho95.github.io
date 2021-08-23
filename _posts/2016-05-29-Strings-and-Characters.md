@@ -201,7 +201,7 @@ print(catString)
 
 ### Concatenating Strings and Characters (문자열과 문자 이어붙이기)
 
-`String` 값은 새로운 `String` 값을 생성하기 위해 '더하기 연산자 (`+`)' 로 서로 더하거나- _이어붙일 (concatenated)_-수 있습니다:
+`String` 값은 새로운 `String` 값을 생성하기 위해 '덧셈 연산자 (`+`)' 로 서로 더하거나- _이어붙일 (concatenated)_-수 있습니다:
 
 ```swift
 let string1 = "hello"

@@ -1117,7 +1117,7 @@ _연산자 선언 (operator declaration)_ 은 프로그램에 새로운 '중위 
 
 &nbsp;&nbsp;&nbsp;&nbsp;infix operator `operator name-연산자 이름`: `precedence group-우선 순위 그룹`
 
-_중위 연산자 (infix operator)_ 는, 익숙한 `1 + 2` 표현식의 '더하기 연산자 (`+`)' 같이, 두 피연산자 사이에 작성하는 '이항 (binary) 연산자' 입니다.
+_중위 연산자 (infix operator)_ 는, 익숙한 `1 + 2` 표현식의 '덧셈 연산자 (`+`)' 같이, 두 피연산자 사이에 작성하는 '이항 (binary) 연산자' 입니다.
 
 중위 연산자는 옵션으로 '우선 순위 그룹' 을 지정할 수 있습니다. 연산자에서 우선 순위 그룹을 생략하면, 스위프트는, `DefaultPrecedence` 라는, '기본 우선 순위 그룹' 을, 사용하는데, 이는 `TernaryPrecedence` 바로 위의 우선 순위를 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 참고하기 바랍니다.
 
