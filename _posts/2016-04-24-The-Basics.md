@@ -751,7 +751,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 > '검사 안하는 (unchecked) 모드 (`-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건문을 항상 참으로 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과 상관없이, 실행을 항상 중단합니다.
 >
-> `fatalError(_:file:line:)` 함수는 프로토 타입 및 이른 시기의 개발 중에 아직 구현 안된 기능에 대해, `fatalError("Unimplemented")` 를 작성함으로써, 자투리 구현을 생성하고자, 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 최적화로 절대 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, 자투리 구현과 마주치면 항상 실행이 중단된다고 확신할 수 있습니다.
+> `fatalError(_:file:line:)` 함수는 프로토 타입 및 이른 시기의 개발 중에 아직 구현 안된 기능에 대해, `fatalError("Unimplemented")` 를 작성함으로써, '토막 (stub) 구현'[^stub] 을 생성하고자, 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 최적화로 절대 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, '토막 구현' 과 마주치면 항상 실행이 중단된다고 확신할 수 있습니다.
 
 ### 다음 장
 
@@ -782,3 +782,5 @@ precondition(index > 0, "Index must be greater than zero.")
 [^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n 개의 원소에서 r 개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉, 스위프트에서 'n 개의 원소를 가진 튜플' 이 가질 수 있는 경우의 수는 이 '순열 (permetation) 개수 만큼 많다' 는 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서 조합' 라는 말로 옮겼습니다. '순열 (permutation)' 에 대한 더 자세한 정보는, 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목과 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
 [^documents]: '사용하는 자료의 본질을 암시적으로 문서화한다' 는 것은, 예를 들어, `Int` 라고 할 것을 `UInt8` 이라고 하면, 코드만으로 자료가 `0 ~ 255` 범위라는 것을 알려준다는 의미입니다. '암시적인 문서화 (implicitly documents)' 는 별도의 주석이나 문서 작성 없이 '코드 자체가 문서화 효과를 가지는 것' 을 말합니다. '문서화' 에 대한 더 자세한 정보는, [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 '문서화 주석' 부분의 설명을 참고하기 바랍니다.
+
+[^stub]: '토막 구현 (stub implementation)' 은 소프트웨어 개발 과정에서 다른 기능을 위해 (잠시) 세워 놓은 코드입니다. '토막 구현' 에 대한 더 자세한 정보는, 위키피디아의 [Method stub](https://en.wikipedia.org/wiki/Method_stub) 항목과 [메소드 스텁](https://ko.wikipedia.org/wiki/메소드_스텁) 항목을 참고하기 바랍니다.  
