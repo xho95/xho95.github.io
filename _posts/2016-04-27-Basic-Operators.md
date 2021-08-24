@@ -82,9 +82,9 @@ C 및 오브젝티브-C 의 산술 연산자와 달리, 스위프트 산술 연�
 
 #### Remainder Operator (나머지 연산자)
 
-_나머지 연산자 (remainder operator)_ (`a % b`) 는 `a` 를 `b` 배수 몇 개로 채울지 알아낸 다음 (_나머지 (remainder)_ 라고 하는) 남아 있는 값을 반환합니다.
+_나머지 연산자 (remainder operator_; `a % b`_)_ 는 `b` 몇 배수가 `a` 안을 채우는 지 알아내고 남은 (_나머지 (remainder)_ 라는) 값을 반환합니다.
 
-> '나머지 연산자 (remainder operator; `%`)' 를 다른 언어에서는 '_모듈러 연산자 (modulo operator)_' 라고도 합니다. 하지만, 스위프트에서 음수에 대한 작동 방식은, 엄밀히 말해서, '모듈러 연산 (modulo operation)'[^modulo-opartion] 이 아니라 나머지가 맞습니다.
+> 나머지 연산자 (`%`) 를 다른 언어에서는 '_모듈러 연산자 (modulo operator)_' 라고도 합니다. 하지만, 스위프트에서 음수에 대한 작동 방식은, 엄밀히 말해서, '모듈러 연산 (modulo operation)'[^modulo-opartion] 이 아니라 나머지가 맞습니다.
 
 다음은 '나머지 연산자' 가 작동하는 방식입니다. `9 % 4` 를 계산하기 위해, 먼저 `9` 를 몇 개의 `4` 로 채울지 알아냅니다:
 
