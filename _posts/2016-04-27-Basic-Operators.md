@@ -58,23 +58,23 @@ if x = y {
 
 ### Arithmetic Operators (산술 연산자)
 
-스위프트는 모든 수치 타입에 대해서 네 개의 표준 _산술 연산자 (arithmetic operators)_ 를 지원합니다:
+스위프트는 모든 수치 타입에 대한 네 개의 표준 _산술 연산자 (arithmetic operators)_ 를 지원합니다:
 
-* 더하기 (`+`)
-* 빼기 (`-`)
-* 곱하기 (`*`)
-* 나누기 (`/`)
+* 덧셈 (`+`)
+* 뺄셈 (`-`)
+* 곱셈 (`*`)
+* 나눗셈 (`/`)
 
 ```swift
 1 + 2       // 3 과 같습니다.
 5 - 3       // 2 와 같습니다.
-2 * 3       // 6 과 같습니다.
+2 * 3       // 6 가 같습니다.
 10.0 / 2.5  // 4.0 과 같습니다.
 ```
 
-C 와 오브젝티브-C 의 산술 연산자와는 달리, 스위프트의 산술 연산자는 기본적으로 '값 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침 작동 방식은 (`a &+ b` 같은) 스위프트의 '값 넘침 연산자 (overflow operators)' 를 사용하여 직접 선택할 수 있습니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 를 참고하기 바랍니다.
+C 및 오브젝티브-C 의 산술 연산자와 달리, 스위프트 산술 연산자는 기본적으로 '값의 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침 동작은 '(`a &+ b` 같은) 스위프트의 값 넘침 연산자를 사용함으로써 직접 선택할 수 있습니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 부분도 참고하기 바랍니다.
 
-'더하기 (addition) 연산자' 는 '`String` 이어붙이기 (concatenation)' 도 지원합니다:
+덧셈 연산자는 '`String` 이어붙이기 (concatenation)' 도 지원합니다:
 
 ```swift
 "hello, " + "world"  // "hello, world" 와 같습니다.
