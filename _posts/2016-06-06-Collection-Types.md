@@ -69,7 +69,7 @@ var threeDoubles = Array(repeating: 0.0, count: 3)
 
 #### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 배열 생성하기)
 
-더하기 연산자 (`+`) 에 '호환 가능한 (compatible)'[^compatible] 타입인 두 개의 기존 배열을 더함으로써 새로운 배열을 생성할 수 있습니다. 새로운 배열의 타입은 서로 더한 두 배열의 타입을 통해 추론합니다:
+덧셈 연산자 (`+`) 에 '호환 가능한 (compatible)'[^compatible] 타입인 두 개의 기존 배열을 더함으로써 새로운 배열을 생성할 수 있습니다. 새로운 배열의 타입은 서로 더한 두 배열의 타입을 통해 추론합니다:
 
 ```swift
 var anotherThreeDoubles = Array(repeating: 2.5, count: 3)

@@ -47,7 +47,7 @@ categories: Swift Language Grammar Revision History
 * 클래스, 구조체, 및 열거체의 인스턴스를 '함수 호출 구문 표현' 에서 사용할 수 있게 하는 '수월한 구문 표현 (syntatic sugar)' 에 대한 정보를 가지고 있는 [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 부분을 추가함.
 * [Subscript Options (첨자 연산의 옵션들)]({% post_url 2020-03-30-Subscripts %}#subscript-options-첨자-연산의-옵션들) 부분을 갱신했으며, 이제 '첨자 연산'이 '기본 값' 을 가지는 매개 변수를 지원함.
 * [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-self-타입) 부분을 갱신했으며, 이제 `Self` 를 더 많은 상황에서 사용할 수 있음.
-* '암시적으로 포장을 푸는 옵셔널 값' 은 '옵셔널 값' 으로든 '옵셔널-아닌 값' 으로든 사용할 수 있다는 것을 확실히 하기 위해 [Implicitly Unwrapped Optionals (암시적으로 포장을 푸는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장을-푸는-옵셔널) 부분을 갱신함.
+* '암시적으로 포장 푸는 옵셔널 값' 은 '옵셔널 값' 으로든 '옵셔널-아닌 값' 으로든 사용할 수 있다는 것을 확실히 하기 위해 [Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장-푸는-옵셔널) 부분을 갱신함.
 
 #### 2019-09-10
 
@@ -274,7 +274,7 @@ categories: Swift Language Grammar Revision History
 * 프로토콜에 있는 [Initializer Requirements (초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#initializer-requirements-초기자-필수-조건) 에 대하여 새로운 부분을 추가함.
 * [Class-Only Protocols (클래스-전용 프로토콜)]({% post_url 2016-03-03-Protocols %}#class-only-protocols-클래스-전용-프로토콜) 에 대하여 새로운 부분을 추가함.
 * [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 는 이제 '문자열 보간법 (string interpolation)' 을 사용할 수 있음. 그와 반대인 기록을 제거함.
-* 이제 더 이상 `String` 과 `Character` 값을 '더하기 연산자 (`+`)' 나 '더하기 할당 연산자 (`+=`)' 로 조합할 수 없다는 사실을 반영하기 위해 [Concatenating Strings and Characters (문자열과 문자 이어붙이기)](% post_url 2016-05-29-Strings-and-Characters %}#concatenating-strings-and-characters-문자열과-문자-이어붙이기) 부분을 갱신함. 이러한 연산자들은 이제 `String` 값에만 사용됨. 단일 `Character` 값을 문자열 끝에 덧붙이려면 `String` 타입의 `append(_:)` 메소드를 사용할 것.
+* 이제 더 이상 `String` 과 `Character` 값을 '덧셈 연산자 (`+`)' 나 '더하기 할당 연산자 (`+=`)' 로 조합할 수 없다는 사실을 반영하기 위해 [Concatenating Strings and Characters (문자열과 문자 이어붙이기)](% post_url 2016-05-29-Strings-and-Characters %}#concatenating-strings-and-characters-문자열과-문자-이어붙이기) 부분을 갱신함. 이러한 연산자들은 이제 `String` 값에만 사용됨. 단일 `Character` 값을 문자열 끝에 덧붙이려면 `String` 타입의 `append(_:)` 메소드를 사용할 것.
 * `availability` 특성에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 추가함.
 * [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 은 이제, '옵셔널 `Bool` 값' 과 작업할 때의 혼동을 피하기 위해, 값을 가지고 있을 때는 `true` 로 그렇지 않을 때는 `false` 라는 식의 암시적인 평가를 더 이상 하지 않음. 옵셔널이 값을 담고 있는지 알아내려면, 그 대신, `nil` 인지를 `==` 및 `!=` 연산자로 명시적으로 검사하기 바람.
 * 스위프트는 이제, 옵셔널의 값이 존재하면 포장을 풀고, 옵셔널이 `nil` 이면 '기본 값' 을 반환하는, [Nil-Coalescing Operator (Nil-통합 연산자)]({% post_url 2016-04-27-Basic-Operators %}#nil-coalescing-operator-nil-통합-연산자) (`a ?? b`) 를 가짐.

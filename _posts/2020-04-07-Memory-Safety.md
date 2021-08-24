@@ -38,7 +38,7 @@ print("We're number \(one)!")
 
 > '동시성 (concurrent)' 또는 '다중 쓰레드 (multithreaded)' 코드를 작성해 봤다면, 메모리에 대한 접근 충돌이 익숙한 문제일 수가 있습니다. 하지만, 여기서 논의한 '접근 충돌' 은 '단일 쓰레드' 에서 발생할 수 있으며 '동시성' 또는 '다중 쓰레드' 코드와 엮여 있지 _않은 (doesn't)_ 것입니다.
 >
-> '단일 쓰레드' 안에서 메모리에 대한 접근이 충돌하는 경우, 스위프트는 '컴파일 시간' 이나 '실행 시간' 에 에러를 가지도록 보증합니다. '다중 쓰레드' 코드에서는, 쓰레드 간의 '접근 충돌' 을 감지하는데 도움이 되도록 [Thread Sanitizer (쓰레드 살균제)](https://developer.apple.com/documentation/code_diagnostics/thread_sanitizer)[^Thread-Sanitizer] 를 사용합니다.
+> '단일 쓰레드' 안에서 메모리에 대한 접근이 충돌하는 경우, 스위프트는 '컴파일 시간' 이나 '실행 시간' 에 에러를 가지도록 보증합니다. '다중 쓰레드' 코드에서는, 쓰레드 간의 '접근 충돌' 을 탐지하는데 도움이 되도록 [Thread Sanitizer (쓰레드 살균제)](https://developer.apple.com/documentation/code_diagnostics/thread_sanitizer)[^Thread-Sanitizer] 를 사용합니다.
 
 #### Characteristics of Memory Access (메모리 접근의 성질)
 

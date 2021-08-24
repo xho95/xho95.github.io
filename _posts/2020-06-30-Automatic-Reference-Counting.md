@@ -376,7 +376,7 @@ department.courses = [intro, intermediate, advanced]
 >
 > 클래스를 포장한 옵셔널은 '참조 카운팅' 을 사용하지 않으므로, 옵셔널에 대한 '강한 참조' 를 유지할 필요가 없습니다.
 
-#### Unowned References and Implicitly Unwrapped Optional Properties ('소유하지 않는 참조' 와 '암시적으로 포장을 푸는 옵셔널 속성')
+#### Unowned References and Implicitly Unwrapped Optional Properties ('소유하지 않는 참조' 와 '암시적으로 포장 푸는 옵셔널 속성')
 
 위에 있는 '약한' 그리고 '소유하지 않는 참조' 에 대한 예제는 '강한 참조 순환' 을 끊을 필요가 있는 더 일반적인 시나리오 중 두 가지를 다루고 있습니다.
 
@@ -384,7 +384,7 @@ department.courses = [intro, intermediate, advanced]
 
 `Customer` 와 `CreditCard` 예제는 `nil` 을 허용하는 한 속성과 `nil` 일 수 없는 또 다른 속성이 '강한 참조 순환' 유발할 수 있는 상황을 보여줍니다. 이 시나리오에 대한 최상의 해법은 '소유하지 않는 참조' 입니다.
 
-하지만, 속성 _둘 다 (both)_ 항상 값을 가져야 하며, 초기화를 한 번 완료하고 나면 어느 속성도 `nil` 이 되면 안되는, 세 번째 시나리오도 있습니다. 이 시나리오에서는, 한 클래스에 대한 '소유하지 않는 속성' 과 다른 클래스에 대한 '암시적으로 포장을 푸는 옵셔널 속성' 을 조합하는 것이 유용합니다.
+하지만, 속성 _둘 다 (both)_ 항상 값을 가져야 하며, 초기화를 한 번 완료하고 나면 어느 속성도 `nil` 이 되면 안되는, 세 번째 시나리오도 있습니다. 이 시나리오에서는, 한 클래스에 대한 '소유하지 않는 속성' 과 다른 클래스에 대한 '암시적으로 포장 푸는 옵셔널 속성' 을 조합하는 것이 유용합니다.
 
 이는 초기화를 한 번 하고 나면, '참조 순환' 을 피하면서도, 두 속성 모두 ('옵셔널 포장 풀기' 없이) 직접 접근할 수 있게 해줍니다. 이번 절은 그런 관계를 설정하는 방법을 보입니다.
 
@@ -414,7 +414,7 @@ class City {
 
 `City` 초기자는 `Country` 초기자 안에서 호출됩니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한 것처럼, `Country` 초기자는 새로운 `Country` 인스턴스를 온전히 초기화하기 전까지 `self` 를 `City` 초기자에 전달할 수 없습니다.
 
-이 '필수 조건' 에 대처하려면, `Country` 의 `capitalCity` 속성을, (`City!` 라고) '타입 보조 설명' 끝에 느낌표를 붙여 지시하는, '암시적으로 포장을 푸는 옵셔널 속성' 으로 선언합니다. 이는 `capitalCity` 속성이, 다른 옵셔널과 똑같이, `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장을 푸는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장을-푸는-옵셔널) 에서 설명한 것처럼 값의 포장을 풀 필요 없이 접근할 수 있다는 의미입니다.
+이 '필수 조건' 에 대처하려면, `Country` 의 `capitalCity` 속성을, (`City!` 라고) '타입 보조 설명' 끝에 느낌표를 붙여 지시하는, '암시적으로 포장을 푸는 옵셔널 속성' 으로 선언합니다. 이는 `capitalCity` 속성이, 다른 옵셔널과 똑같이, `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장-푸는-옵셔널) 에서 설명한 것처럼 값의 포장을 풀 필요 없이 접근할 수 있다는 의미입니다.
 
 `capitalCity` 가 '기본 `nil` 값' 을 가지기 때문에, 새로운 `Country` 인스턴스는 `Country` 인스턴스가 초기자에서 `name` 속성을 설정하자 마자 온전히 초기화된다고 고려합니다. 이는 `name` 속성을 설정하자 마자 `Country` 초기자가 '암시적인 `self` 속성' 을 참조하고 전달하기 시작할 수 있다는 의미입니다. 그럼으로써 `Country` 초기자가 자신의 `capitalCity` 속성을 설정할 때 `City` 초기자를 위한 매개 변수로 `Country` 초기자가 `self` 를 전달할 수 있습니다.
 
