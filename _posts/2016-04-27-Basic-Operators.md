@@ -136,11 +136,11 @@ let plusThree = -minusThree   // plusThree 는 3 또는, "minus minus three" 와
 
 #### Unary Plus Operator (단항 양수 연산자)
 
-_단항 양수 연산자_ (_unary plus operator;_ `+`) 는, 어떤 바뀜도 없이, 작용하는 값을 단순히 반환합니다:
+_단항 양수 연산자 (unary plus operator_; `+`_)_ 는, 어떤 것도 바꾸지 않고, 단순히 자신의 연산 값을 반환합니다:
 
 ```swift
 let minusSix = -6
-let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같습니다.
+let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같음
 ```
 
 비록 '단항 양수 연산자' 는 실제로 아무 것도 하지 않지만, 음수에 '단항 음수 연산자' 를 사용하고 있을 때 양수에 이를 사용하면 코드에 '대칭성 (symmetry)' 을 제공할 수 있습니다.
