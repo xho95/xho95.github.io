@@ -143,7 +143,7 @@ let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같음
 ```
 
-비록 '단항 양수 연산자' 는 실제로 아무 것도 하지 않지만, 음수에 '단항 음수 연산자' 를 사용하고 있을 때 양수에 이를 사용하면 코드에 '대칭성 (symmetry)' 을 제공할 수 있습니다.
+단항 양수 연산자는 실제로 아무 것도 안하긴 하지만, 단항 음수 연산자를 음수에 사용할 때 코드의 대칭성을 제공하기 위해 양수에 이를 사용할 수 있습니다.
 
 ### Compound Assignment Operators (복합 할당 연산자)
 
