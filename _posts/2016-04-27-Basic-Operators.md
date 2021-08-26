@@ -143,11 +143,11 @@ let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix 는 -6 과 같음
 ```
 
-단항 양수 연산자는 실제로 아무 것도 안하긴 하지만, 단항 음수 연산자를 음수에 사용할 때 코드의 대칭성을 제공하기 위해 양수에 이를 사용할 수 있습니다.
+단항 양수 연산자는 실제로 어떤 것도 안하긴 하지만, 음수에 단항 음수 연산자를 사용할 때의 코드 대칭성을 제공하기 위해 양수에 이를 사용할 수 있습니다.
 
 ### Compound Assignment Operators (복합 할당 연산자)
 
-C 와 같이, 스위프트는 '할당 연산 (`=`)' 을 다른 연산과 조합한 _복합 할당 연산자 (compound assignment operators)_ 를 제공합니다. 한 가지 예는 '더하기 할당 연산자 (addition assignment operator; `+=`)' 입니다:
+C 같이, 스위프트도 할당 연산 (`=`) 을 또 다른 연산과 조합한 _복합 할당 연산자 (compound assignment operators)_ 를 제공합니다. 한 가지 예는 _덧셈 할당 연산자 (addition assignment operator_; `+=`_)_ 입니다:
 
 ```swift
 var a = 1
@@ -155,12 +155,12 @@ a += 2
 // a 는 이제 3 입니다
 ```
 
-표현식 `a += 2` 는 `a = a + 2` 의 '줄임 표현 (shorthand)' 입니다. 사실상, 더하기와 할당을 한 연산자로 조합하여 두 작업을 동시에 수행합니다.
+`a += 2` 라는 표현식은 `a = a + 2` 를 '줄인 것 (shorthand)' 입니다. 사실상, 덧셈과 할당을 한 연산자로 조합하여 동시에 두 임무 모두 수행합니다.
 
-> '복합 할당 연산자' 는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 처럼 작성할 수 없습니다.
+> 복합 할당 연산자는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 라고 작성할 수 없습니다.
 
 
-스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 을 참고하기 바랍니다.
+스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
 ### Comparison Operators (비교 연산자)
 
