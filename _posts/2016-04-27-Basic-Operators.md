@@ -286,9 +286,9 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName 이 nil 이므로, colorNameToUse 를 "red" 라는 기본 값으로 설정함
 ```
 
-`userDefinedColorName` 변수를, 기본 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
+`userDefinedColorName` 변수는, `nil` 이라는 기본 값을 가진, 옵셔널 `String` 이라고 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려할 때 `nil-합체 연산자` 를 사용할 수 있습니다. 위 예제에서는, 연산자는 `colorNameToUse` 라는 `String` 변수의 초기 값을 결정하는데 사용합니다.`userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
 
-만약 `userDefinedColorName` 에 `nil` 아닌 값을 할당한 다음 'nil-통합 연산자' 검사를 다시 수행하면, 기본 값 대신 `userDefinedColorName` 안의 포장 값을 사용합니다:
+`nil`-아닌 값을 `userDefinedColorName` 에 할당하고 nil-합체 연산자 검사를 다시 하면, `userDefinedColorName` 안의 포장 값을 기본 값 대신 사용합니다:
 
 ```swift
 userDefinedColorName = "green"
