@@ -262,28 +262,28 @@ if hasHeader {
 
 삼항 조건 연산자는 '두 표현식 중 고려할 것을 정하는 효율적인 줄임 표현' 을 제공합니다. 하지만, 삼항 조건 연산자를 주의해서 사용합니다. 간결하다고 막 쓰다보면 이해하기-어려운 코드를 만들 수 있습니다. 여러 개의 삼항 조건 연산자를 하나의 복합 구문으로 조합하는 걸 피하기 바랍니다.
 
-### Nil-Coalescing Operator (Nil-통합 연산자)
+### Nil-Coalescing Operator (Nil-합체 연산자)
 
-_nil-통합 연산자_ (_nil-coalescing operator;_ `a ?? b`) 는 옵셔널 `a` 가 값을 담고 있으면 포장을 풀고, `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 에 저장된 값과 타입이 일치해야 합니다.
+_nil-합체 연산자 (nil-coalescing operator_; `a ?? b`_)_ 는 옵셔널 `a` 가 값을 담고 있으면 포장을 풀고, `a` 가 `nil` 이면 기본 값인 `b` 를 반환합니다. 표현식 `a` 는 항상 옵셔널 타입입니다. 표현식 `b` 는 반드시 `a` 안에 저장한 타입과 일치해야 합니다.
 
-'nil-통합 연산자' 는 아래 코드의 '줄임 표현 (shorthand)' 입니다:
+'nil-합체 연산자' 는 아래 코드를 줄인 것입니다:
 
 ```swift
 a != nil ? a! : b
 ```
 
-위 코드는 '삼항 조건 연산자' 와 '강제 포장 풀기 (forced unwrapping; `a!`)' 를 사용하여 `a` 가 `nil` 이 아닐 땐 `a` 안의 포장 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-통합 연산자' 는 이러한 조건 검사와 포장 풀기를 간결하고 이해가 쉬운 형식 속에 은닉하는 방식의 더 우아한 방법을 제공합니다.
+위 코드는 '삼항 조건 연산자와 강제 포장 풀기 (`a!`) 를 사용' 하여 `a` 가 `nil` 이 아닐 땐 `a` 안의 포장 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-합체 연산자' 는 '이런 조건 검사와 포장 풀기를 간결하고 이해 가능한 형식으로 은닉' 하는 더 우아한 방식을 제공합니다.
 
-> `a` 의 값이 `nil` 이 아니면, `b` 의 값은 평가하지 않습니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_' 이라고 합니다. [^short-circuit]
+> `a` 가 `nil`-아닌 값이면, `b` 값을 평가하지 않습니다. 이를 _단락-회로 계산 (short-circuit evaluation)_ 이라고 합니다.[^short-circuit]
 
-아래 예제는 '기본 색상 이름' 과 '사용자가-정의한 옵셔널 색상 이름' 중 하나를 선택하기 위해 'nil-통합 연산자' 를 사용합니다:
+아래 예제는 'nil-합체 연산자' 로 '기본 색상 이름' 과 '사용자가 옵션으로-정의한 색상 이름' 중 하나를 선택합니다:
 
 ```swift
 let defaultColorName = "red"
-var userDefinedColorName: String?   // 기본 값은 nil 입니다.
+var userDefinedColorName: String?   // 기본은 nil 임
 
 var colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이므로, colorNameToUse 는 기본 값인 "red" 로 설정됩니다.
+// userDefinedColorName 이 nil 이므로, colorNameToUse 를 "red" 라는 기본 값으로 설정함
 ```
 
 `userDefinedColorName` 변수를, 기본 값이 `nil` 인, 옵셔널 `String` 으로 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려하는데 `nil-통합 연산자` 를 사용할 수 있습니다. 위 예제에서는, `colorNameToUse` 라는 `String` 변수에 대한 초기 값을 결정하기 위해 이 연산자를 사용됩니다. `userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
@@ -293,7 +293,7 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 ```swift
 userDefinedColorName = "green"
 colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이 아니므로, colorNameToUse 를 "green" 으로 설정합니다.
+// userDefinedColorName 이 nil 이 아니므로, colorNameToUse 를 "green" 으로 설정함
 ```
 
 ### Range Operators (범위 연산자)
@@ -489,7 +489,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 '수학적으로 엄밀하게 정의한 나머지 연산' 을 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 참고하기 바랍니다. 이에 대한 한글 자료는 거의 없는데, [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 항목이 연관이 있는 것 같습니다.
 
-[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념인 듯 합니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, 컴퓨터 공학에서는 계산량을 줄이기 위해 불필요한 식의 계산을 하지 않는 것을 말합니다. 컴퓨터 용어로 '최소 계산 (minimal evaluation)' 이라는 말도 사용하는 것 같은데, 이에 대한 더 자세한 정보는 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 을 참고하기 바랍니다. (위키피디아에서 이 항목에 대한 번역은 아직 없는 것 같습니다.)
+[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념입니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, '단락-회로 계산' 은 '컴퓨터 공학에서 계산량을 줄일 목적으로 불필요한 표현식 계산을 하지 않는 방식' 이라고 할 수 있습니다. 컴퓨터 용어로는 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 참고하기 바랍니다. (아직 한글 번역은 없는 것 같습니다.)
 
 [^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다. (위키피디아에 이 항목에 대한 번역은 아직 없는 것 같습니다.)
 
