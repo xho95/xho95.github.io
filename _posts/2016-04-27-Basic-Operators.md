@@ -321,9 +321,9 @@ for index in 1...5 {
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 
-_반-열린 범위 연산자 (half-open range operator;_ `a..<b`_)_ 는 `a` 에서 `b` 에 이르는 범위를 정의하지만, `b` 는 포함하지 않습니다. _반-열린 (half-open)_ 이라고 하는 것은 첫 번째 값은 담고 있지만, 최종 값은 담지 않기 때문입니다. '닫힌 범위 연산자' 에서 처럼, `a` 의 값은 반드시 `b` 보다 크지 않아야 합니다. `a` 의 값이 `b` 와 같으면, 이 때의 결과는 '빈 (empty) 범위' 가 될 것입니다.
+_반-열린 범위 연산자 (half-open range operator;_ `a..<b`_)_ 는 `a` 에서 `b` 에 이르는 범위를 정의하지만, `b` 를 포함하진 않습니다. _반-열린 (half-open)_ 이라는 건 '첫 번째 값은 담지만, 최종 값은 아니기 때문' 입니다. 닫힌 범위 연산자에서 처럼, `a` 값은 반드시 `b` 보다 크지 않아야 합니다. `a` 값이 `b` 와 같으면, 결과 범위가 '빌 (empty)' 것입니다.
 
-'반-열린 범위' 는 배열 같이 '0-에 기초한 (zero-based)[^zero-based] 목록' 과 작업할 때 특히 더 유용하며, 이 때 목록의 길이를 (포함하지는 않으면서) 셀 때 유용합니다:
+반-열린 범위는 배열 같이, 목록 길이를 (포함하지 않고) 세는 것이 유용한 곳에서, '기초가-0인 (zero-based)[^zero-based] 목록' 과 작업할 때 특히 더 유용합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -337,7 +337,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-배열이 네 개의 항목을 담고 있지만, `0..<count` 는, '반-열린 연산자' 이기 때문에, (배열에 있는 마지막 항목의 색인인) `3` 까지만 셉니다. 배열에 대해서는, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 을 참고하기 바랍니다.
+배열에 네 개의 항목이 담겨 있지만, `0..<count` 이, 반-열린 연산자이기 때문에, (배열의 마지막 항목 색인인) `3` 까지만 셉니다. 배열에 대한 더 많은 것은, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 부분을 참고하기 바랍니다.
 
 #### One-Sided Ranges (한-쪽 범위)
 
@@ -497,6 +497,6 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
 
-[^zero-based]: '0-에 기초한 (zero-based) 목록' 이란 '색인 (index)' 가 '0 부터 시작하는 목록' 이라고 이해할 수 있습니다. 이에 대한 더 많은 정보는 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 참고하기 바랍니다.
+[^zero-based]: '기초가-0인 목록 (zero-based lists)' 은 '0으로 시작하는 색인 (index) 을 가진 목록' 입니다. 이에 대한 더 많은 정보는, 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 참고하기 바랍니다.
 
 [^c-based-languages]: 'C-에 기초한 언어 (C-based languages)' 는 'C-family' 라고도 하며, 여기에 속한 언어들의 목록은 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 확인할 수 있습니다. 애플에서 만든 '오브젝티브-C (Objective-C)' 와 '스위프트 (Swift)' 는 모두 'C-family' 임을 알 수 있습니다.
