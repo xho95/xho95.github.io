@@ -379,17 +379,17 @@ range.contains(-1)  // 참
 
 ### Logical Operators (논리 연산자)
 
-_논리 연산자 (logical operators)_ 는 '불리언 논리 (Boolean logic) 값' `true` 와 `false` 를 수정하거나 조합합니다. 스위프트는 'C-에 기초한 언어'[^c-based-languages] 에 있는 세 개의 표준 논리 연산자를 지원합니다:
+_논리 연산자 (logical operators)_ 는 '`true` 와 `false` 라는 불리언 (Boolean) 논리 값' 을 수정 또는 조합합니다. 스위프트는 'C-에 기초한 언어[^c-based-languages] 의 표준 논리 연산자 세 개' 를 지원합니다:
 
 * 논리 부정 (Logical NOT; `!a`)
-* 논리 곲 (Logical AND; `a && b`)
+* 논리 곱 (Logical AND; `a && b`)
 * 논리 합 (Logical OR; `a || b`)
 
 #### Logical NOT Operator (논리 부정 연산자)
 
-'_논리 부정 연산자_ (_logical NOT operator;_ `!a`)' 는 '불리언 (Boolean)' 값을 거꾸로 만들어서 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
+_논리 부정 연산자 (logical NOT operator;_ `!a`_)_ 는 '불리언 값' 을 거꾸로 만들어서 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
 
-'논리 부정 (logical NOT) 연산자' 는, 어떠한 공백도 없이, 작용할 값 바로 앞에 붙이는, '접두사 (prefix) 연산자' 입니다. 이는, 다음 예제에서 보인 것처럼, “`a` 가 아닌 것 (not `a`)” 으로 이해할 수 있습니다:
+논리 부정 연산자는 '접두사 (prefix) 연산자' 이며, 어떤 공백도 없이, 자신의 연산 값 바로 앞에 나타냅니다. 이는, 다음 예제에서 보는 것처럼, “`a` 아닌 것 (not `a`)” 으로 이해할 수 있습니다:
 
 ```swift
 let allowedEntry = false
@@ -399,9 +399,9 @@ if !allowedEntry {
 // "ACCESS DENIED" 를 인쇄합니다.
 ```
 
-`if !allowedEntry` 라는 구절은 "허가된 입장이 아닌 것이면 (if not allowed entry)" 으로 이해할 수 있습니다. 그 뒤에 이어지는 줄은 "허가된 입장이 아닌 것" 이 참일 때만 실행됩니다; 즉, `allowedEntry` 가 `false` 인 경우입니다.
+`if !allowedEntry` 라는 절은 "허용된 진입이 아니면 (if not allowed entry)" 으로 이해할 수 있습니다. 뒤이은 줄은 "허용된 진입이 아닌 것" 이 참일 경우에만; 즉, `allowedEntry` 가 `false` 인 경우에만, 실행합니다.
 
-이 예제에 있는 것처럼, '불리언 (Boolean)' 상수와 변수의 이름은 조심해서 선택해야, 이중 부정이나 논리 구문의 혼동을 피하면서, 코드를 이해하기 쉽고 간결하게 유지할 수 있습니다.
+이 예제 처럼, '불리언 상수와 변수 이름' 을 신경써서 선택해야, 이중 부정 또는 논리문의 혼동을 피하면서, 코드를 이해 가능하고 간단하게 유지할 수 있습니다.
 
 #### Logical AND Operator (논리 곱 연산자)
 
