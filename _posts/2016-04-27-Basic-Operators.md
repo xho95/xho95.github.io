@@ -401,11 +401,11 @@ if !allowedEntry {
 
 `if !allowedEntry` 라는 절은 "허용된 진입이 아니면 (if not allowed entry)" 으로 이해할 수 있습니다. 뒤이은 줄은 "허용된 진입이 아닌 것" 이 참일 경우에만; 즉, `allowedEntry` 가 `false` 인 경우에만, 실행합니다.
 
-이 예제에서 처럼, '불리언 상수와 변수 이름' 은 신경써서 선택해야, 이중 부정 또는 논리문의 혼동을 피하면서, 코드를 이해 가능하고 간단하게 유지할 수 있습니다.
+이 예제에서 처럼, '불리언 상수와 변수 이름' 은 신경써서 선택해야, 이중 부정 또는 논리 문의 혼동을 피하면서, 코드를 이해 가능하고 간단하게 유지할 수 있습니다.
 
 #### Logical AND Operator (논리 곱 연산자)
 
-'_논리 곱 연산자_ (_logical AND operator;_ `a && b`)' 는 두 값 모두 반드시 `true` 여야만 전체적인 표현식도 `true` 가 되는 '논리 표현식 (logical expressions)' 을 생성합니다.
+_논리 곱 연산자 (logical AND operator;_ `a && b`_)_ 는 '두 값 모두 반드시 `true` 여야만 전체적인 표현식도 `true` 가 되는 논리 표현식 (logical expressions)' 을 생성합니다.
 
 어느 값이든 `false` 면, 전체적인 표현식도 `false` 가 될 것입니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 두 번째 값은 평가조차 하지 않을 것인데, 이는 아무리 해봐야 전체적인 표현식을 `true` 로 만들 수 없기 때문입니다. 이를 '_단락-회로 계산 (short-circuit evaluation)_'[^short-circuit] 이라고 합니다.
 
