@@ -424,11 +424,11 @@ if enteredDoorCode && passedRetinaScan {
 
 #### Logical OR Operator (논리 합 연산자)
 
-'_논리 합 연산자_ (_logical OR operator;_ `a || b`)' 는 두 개의 인접한 '파이프 문자 (`|`)' 로 만든 '중위 (infix) 연산자' 입니다. 이를 사용하여 두 값 중 _하나 (one)_ 만 `true` 면 전체적인 표현식이 `true` 가 되는 '논리 표현식' 를 생성합니다.
+_논리 합 연산자 (logical OR operator;_ `a || b`_)_ 는 '인접한 두 개의 파이프 문자 (`|`) 로 만드는 중위 (infix) 연산자' 입니다. 이는 '두 값 중 _하나 (one)_ 만 `true` 면 전체적인 표현식이 `true` 가 되는 논리 표현식' 를 생성하는데 사용합니다.
 
-위의 '논리 곱 연산자' 와 같이, '논리 합 (Logical OR) 연산자' 는 표현식을 고려할 때 '단락-회로 계산'[^short-circuit] 을 사용합니다. '논리 합 표현식' 의 왼쪽이 `true` 면, 오른쪽은 평가하지 않는데, 이것이 전체적인 표현식의 결과물을 바꿀 순 없기 때문입니다.
+위 '논리 곱 연산자' 와 같이, '논리 합 연산자' 도 '단락-회로 계산' 을 써서 자신의 표현식을 고려합니다. 논리 합 표현식 왼쪽이 `true` 면, 전체 표현식의 결과를 바꿀 수 없기 때문에, 오른쪽을 평가하지 않습니다.
 
-아래 예제에서, 첫 번째 `Bool` 값인 (`hasDoorKey`) 는 `false` 지만, 두 번째 값인 (`knowsOverridePassword`) 는 `true` 입니다. 한 값이 `true` 이기 때문에, 전체적인 표현식 역시 `true` 로 평가하여, 접근을 허용합니다:
+아래 예제에서, 첫 번째 `Bool` 값 (`hasDoorKey`) 는 `false` 지만, 두 번째 값 (`knowsOverridePassword`) 는 `true` 입니다. 하나의 값이 `true` 이기 때문에, 전체 표현식도 `true` 라고 평가하며, 접근을 허용합니다:
 
 ```swift
 let hasDoorKey = false
