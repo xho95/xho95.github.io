@@ -460,11 +460,11 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 
 `enterDoorCode`, `passedRetinaScan`, 및 `hasDoorKey` 값에 기초하면, 처음 두 하위 표현식은 `false` 입니다. 하지만, '긴급 해제 비밀번호' 를 알고 있으므로, 전체 복합 표현식은 여전히 `true` 로 평가합니다.
 
-> 스위프트 논리 연산자인 `&&` 와 `||` 는 '왼쪽-결합'[^left-associative] 인데, 이는 '여러 개의 논리 연산자가 있는 복합 표현식의 경우 가장 왼쪽의 하위 표현식을 가장 먼저 평가한다' 는 의미입니다.
+> 스위프트 논리 연산자인 `&&` 와 `||` 는 '왼쪽-결합'[^left-associative] 인데, 이는 '여러 개의 논리 연산자가 있는 복합 표현식의 경우 가장 왼쪽의 하위 표현식을 먼저 평가한다' 는 의미입니다.
 
 #### Explicit Parentheses (명시적인 괄호)
 
-꼭 필요하진 않을 때라도, 복잡한 표현식의 의도를 이해하기 더 쉽도록, '괄호 (parentheses)' 를 포함시키는 것이 유용할 때가 있습니다. 위 '출입문 접근' 예제에서, 의도를 명시적으로 만들려면 복합 표현식의 첫 번째 부분에 괄호를 추가하는 것이 좋습니다:
+꼭 필요하진 않더라도, 복잡한 표현식을 더 쉽게 이해하도록, 괄호를 포함하는 것이 유용할 때가 있습니다. 위 '출입문 접근 예제' 에서는, 복합 표현식의 첫 번째 부분에 괄호를 추가하는 것이 의도를 명시적으로 만들기에 좋습니다:
 
 ```swift
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
@@ -475,7 +475,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 // "Welcome!" 를 인쇄합니다.
 ```
 
-괄호는 처음 두 값이 전체적인 논리에서 '별도로 가능한 상태' 로 고려된다는 것을 명확하게 만듭니다. 복합 표현식의 출력은 바뀌지 않지만, 전체적인 의도는 더 명확해 집니다. '가독성 (readability)' 은 항상 '간결함 (brevity)' 보다 좋습니다; 의도를 명확하게 만드는데 도움이 될 때는 괄호를 사용하기 바랍니다.
+괄호는 처음의 두 값을 '전체 논리에서 가능한 별도의 상태로 고려함' 을 명확하게 합니다. 복합 표현식의 출력 결과는 바뀌지 않지만, 전체적인 의도는 더 명확해 집니다. '가독성 (readability)' 은 항상 '간결함 (brevity)' 보다 더 좋으므로; 의도를 명확하게 하는데 도움이 될 때는 괄호를 사용합니다.
 
 ### 다음 장
 
