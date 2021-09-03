@@ -443,7 +443,7 @@ if hasDoorKey || knowsOverridePassword {
 
 #### Combining Logical Operators (논리 연산자 조합하기)
 
-여러 논리 연산자를 조합하여 더 긴 '복합 표현식 (compound expressions)' 을 생성할 수 있습니다:
+여러 개의 논리 연산자를 조합하여 더 긴 '복합 (compound) 표현식' 을 생성할 수 있습니다:
 
 ```swift
 if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
@@ -454,13 +454,13 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 // "Welcome!" 을 인쇄합니다.
 ```
 
-이 예제는 더 긴 '복합 표현식' 을 생성하기 위해 여러 개의 `&&` 와 `||` 연산자를 사용합니다. 하지만, `&&` 와 `||` 연산자는 여전히 두 값에만 작용하므로, 이는 실제로 세 개의 작은 표현식이 서로 '연쇄되어 있는 (chained)' 것입니다. 이 예제는 다음 처럼 이해할 수 있습니다:
+이 예제는 여러 개의 `&&` 와 `||` 연산자를 써서 '더 긴 복합 표현식' 을 생성합니다. 하지만, `&&` 와 `||` 연산자는 여전히 두 값에 대해서만 연산하므로, 이는 실제로는 서로 '연쇄된 (chained)' 세 개의 작은 표현식입니다. 예제는 다음 처럼 이해할 수 있습니다:
 
-올바른 출입문 코드를 입력했고 망막 스캔도 통과한 경우, 또는 유효한 출입문 키를 가진 경우, 아니면 '비상용 수동해제 비밀번호 (emergency override password)' 를 알고 있는 경우라면, 접근을 허용하기 바랍니다.
+출입문 코드를 올바르게 입력하고 망막 조사도 통과한 경우, 또는 유효한 출입문 열쇠를 가진 경우, 아니면 '긴급 해제 비밀번호 (emergency override password)' 를 알고 있는 경우, 접근을 허용합니다.
 
-`enterDoorCode`, `passedRetinaScan`, 그리고 `hasDoorKey` 의 값에 기초하면, 처음 두 '하위표현식 (subexpressions)' 은 `false` 입니다. 하지만, '비상용 수동해제 비밀번호' 를 알고 있으므로, 전체적인 복합 표현식은 여전히 `true` 로 평가됩니다.
+`enterDoorCode`, `passedRetinaScan`, 및 `hasDoorKey` 값에 기초하면, 처음 두 하위 표현식은 `false` 입니다. 하지만, '긴급 해제 비밀번호' 를 알고 있으므로, 전체 복합 표현식은 여전히 `true` 로 평가합니다.
 
-> 스위프트 논리 연산자 `&&` 와 `||` 는 '왼쪽-결합 (left-associative)'[^left-associative] 인데, 이는 '다중 (multiple) 논리 연산자' 를 가진 '복합 표현식' 이 가장 왼쪽 '하위 표현식' 을 먼저 계산한다는 의미입니다.
+> 스위프트 논리 연산자인 `&&` 와 `||` 는 '왼쪽-결합'[^left-associative] 인데, 이는 '여러 개의 논리 연산자가 있는 복합 표현식의 경우 가장 왼쪽의 하위 표현식을 가장 먼저 평가한다' 는 의미입니다.
 
 #### Explicit Parentheses (명시적인 괄호)
 
