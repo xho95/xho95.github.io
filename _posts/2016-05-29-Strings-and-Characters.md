@@ -10,15 +10,15 @@ categories: Swift Grammar Strings Characters
 
 ## Strings and Characters (문자열과 문자)
 
-_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같은, 연속된 문자들 입니다. 스위프트 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 은, '`Character` 값의 집합체 (collection)'[^collection] 로써 접근하는 것' 을 포함한, 다양한 방식으로 접근할 수 있습니다.
+_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같은, 연속된 문자들 입니다. 스위프트 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 은, '`Character` 값의 집합체 (collection)'[^collection] 로써 접근하는 것' 을 포함하여, 다양한 방식으로 접근할 수 있습니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드에서 '문장 (text)' 작업을 위한 빠르고, '유니코드를-따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 써서, 가볍고 이해하기 쉽습니다. '문자열 이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, '문자열 변경 가능성 (mutability)' 은, 그냥 스위프트에 있는 다른 어떤 값인 것처럼, 상수인지 변수인지를 선택함으로써 관리합니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 및 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣기 위해서도 사용할 수 있는데, 이 과정을 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이는 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성하도록 해줍니다.
+스위프트의 `String` 과 `Character` 타입은 코드에서의 텍스트 작업을 위한 '빠르면서, 유니코드를-따르는 (Unicode-compliant) 방식' 을 제공합니다. '문자열 생성 및 조작 구문' 은, 'C 와 비슷한 문자열 글자 값 (string literal) 구문'[^string-literal-syntax] 로, 가볍고 이해하기 쉽습니다. '문자열 이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, '문자열 변경 가능성 (mutability)' 은, 스위프트에 있는 그냥 다른 어떤 값인 것처럼, 상수인지 변수인지 선택하기만 함으로써 관리합니다. 문자열을 사용하여 '상수, 변수, 글자 값 (literals)'[^literals], 과 표현식 (expressions)' 을 더 긴 문자열에 집어 넣을 수도 있는데, 이 과정을 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이는 '표시, 저장, 및 인쇄를 위한 사용자 정의 문자열 값의 생성' 을 하기 쉽게 만듭니다.
 
-구문 표현이 간단함에도 불구하고, 스위프트의 `String` 타입은 빠르고, 최신인 문자열 구현입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 구성되며, 다양한 유니코드 표현법으로 해당 문자들에 접근하는 것을 지원합니다.
+이런 구문의 단순함에도 불구하고, 스위프트 `String` 타입은 '빠른, 현대적인 문자열 구현' 입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 합성하며, '다양한 유니코드 표현으로 해당 문자에 접근하는 것' 을 지원합니다.
 
-> 스위프트의 `String` 타입은 'Foundation'[^Foundation] 의 `NSString` 클래스와 '연동되어 (bridged)' 있습니다. 'Foundation' 은 `NSString` 에서 정의한 메소드를 드러내기 위해 `String` 도 확장합니다. 이는, 'Foundation' 을 '불러 오는 (import)' 경우, 해당 `NSString` 메소드를 `String` 에서 '타입 변환 (casting)' 없이 접근할 수 있다는 의미입니다.
+> 스위프트 `String` 타입은 'Foundation[^Foundation] 의 `NSString` 클래스와 연동' 되어 있습니다. 'Foundation' 은 `NSString` 이 정의한 메소드를 노출하기 위해 `String` 도 확장합니다. 이는, 'Foundation' 을 불러 오면, `String` 에 대한 이 `NSString` 메소드에 '타입 변환 (casting)' 없이 접근할 수 있다는 의미입니다.
 >
-> `String` 을 'Foundation' 과 'Cocoa'[^Cocoa] 와 같이 사용하기 위한 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 을 참고하기 바랍니다.
+> 'Foundation 과 Cocoa'[^Cocoa] 를 가지고 `String` 을 사용하는 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 참고하기 바랍니다.
 
 ### String Literals (문자열 글자 값)
 
@@ -664,7 +664,7 @@ for scalar in dogString.unicodeScalars {
 
 [^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 참고하기 바랍니다.
 
-[^string-literal-syntax]: '문자열 글자 값 구문 표현 (string literal syntax)' 은 말이 길지만 개념은 아주 간단합니다. `let greeting = "hello"` 와 같은 문장에서 `"hello"` 가 바로 '문자열 글자 값 구문 표현 (string literal syntax)' 입니다. 원문은 이 '문자열 글자 값 구문 표현' 이 C 와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 내용은, 바로 아래에 있는 '글자 값 (literals) 에 대한 주석'[^literals] 또는 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 항목을 참고하기 바랍니다.
+[^string-literal-syntax]: '문자열 글자 값 구문 (string literal syntax)' 은, `let greeting = "hello"` 같은 문장에서의, `"hello"` 를 의미합니다. 이런 '문자열 글자 값 구문' 이 C 언어와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 정보는, 바로 아래의 '글자 값 (literals) 에 대한 주석'[^literals] 이나 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 항목을 참고하기 바랍니다.
 
 [^literals]: 여기서 '글자 값 (literals)' 는 '글자로 표현된 실제 값' 을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값이 되고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값이 됩니다. 즉 '글자 값 (literals)' 에서 값의 타입은 그 값이 실제로 표현하는 것이 무엇인지에 따라 달라집니다.
 
