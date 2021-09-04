@@ -10,7 +10,7 @@ categories: Swift Grammar Strings Characters
 
 ## Strings and Characters (문자열과 문자)
 
-_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같은, 연속된 문자들을 말합니다. 스위프트 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 에는, `Character` 값의 '컬렉션 (collection)'[^collection] 을 포함한, 다양한 방법으로 접근할 수 있습니다.
+_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같은, 연속된 문자들 입니다. 스위프트 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 은, '`Character` 값의 집합체 (collection)'[^collection] 로써 접근하는 것' 을 포함한, 다양한 방식으로 접근할 수 있습니다.
 
 스위프트의 `String` 과 `Character` 타입은 코드에서 '문장 (text)' 작업을 위한 빠르고, '유니코드를-따르는 (Unicode-compliant)' 방법을 제공합니다. 문자열 생성과 '조작 (manipulation)' 을 위한 '구문 표현 (syntax)' 은, C 와 비슷한 '문자열 글자 값 구문 표현 (string literal syntax)'[^string-literal-syntax] 을 써서, 가볍고 이해하기 쉽습니다. '문자열 이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, '문자열 변경 가능성 (mutability)' 은, 그냥 스위프트에 있는 다른 어떤 값인 것처럼, 상수인지 변수인지를 선택함으로써 관리합니다. 문자열은 상수, 변수, '글자 값 (literals)'[^literals], 및 '표현식 (expressions)' 을 더 긴 문자열에 집어 넣기 위해서도 사용할 수 있는데, 이 과정을 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이는 표시, 저장, 인쇄를 위한 사용자 정의 문자열 값을 쉽게 생성하도록 해줍니다.
 
@@ -662,7 +662,7 @@ for scalar in dogString.unicodeScalars {
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^collection]: '컬렉션 (collection)' 은 스위프트에서 특정한 값들의 집합을 묘사하는 '집합체' 타입입니다. 보다 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 참고하기 바랍니다.
+[^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 참고하기 바랍니다.
 
 [^string-literal-syntax]: '문자열 글자 값 구문 표현 (string literal syntax)' 은 말이 길지만 개념은 아주 간단합니다. `let greeting = "hello"` 와 같은 문장에서 `"hello"` 가 바로 '문자열 글자 값 구문 표현 (string literal syntax)' 입니다. 원문은 이 '문자열 글자 값 구문 표현' 이 C 와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 내용은, 바로 아래에 있는 '글자 값 (literals) 에 대한 주석'[^literals] 또는 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 항목을 참고하기 바랍니다.
 
