@@ -22,15 +22,15 @@ _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같은, 연속된 �
 
 ### String Literals (문자열 글자 값)
 
-미리 정의된 `String` 값을 코드 내에 '_문자열 글자 값 (string literals)_' 으로 포함할 수 있습니다. '문자열 글자 값' 은 '큰 따옴표 (`"`)' 로 둘러싼 연속된 문자들를 말합니다.
+미리 정의한 `String` 값을 _문자열 글자 값 (string literals)_ 으로써 코드 안에 포함할 수 있습니다. 문자열 글자 값은 '큰 따옴표 (`"`) 로 둘러싼 일련의 문자들' 입니다.
 
-문자열 글자 값은 상수나 변수의 '초기 값 (initial value)' 으로 사용합니다:
+문자열 글자 값은 '상수나 변수의 초기 값 (initial value)' 으로 사용합니다:
 
 ```swift
 let someString = "Some string literal value"
 ```
 
-'문자열 글자 값' 으로 초기화했기 때문에 스위프트가 `someString` 상수를 `String` 타입이라고 추론함을 기억하기 바랍니다.
+`someString` 상수를 문자열 글자 값으로 초기화하기 때문에 스위프트가 `String` 타입으로 추론함을 기억하기 바랍니다.
 
 #### Multiline String Literals (여러 줄짜리 문자열 글자 값)
 
