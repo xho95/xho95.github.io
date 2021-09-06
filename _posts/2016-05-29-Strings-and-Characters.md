@@ -46,7 +46,7 @@ till you come to the end; then stop."
 """
 ```
 
-'여러 줄짜리 문자열 글자 값' 은 여는 따옴표와 닫는 따옴표 사이의 모든 줄을 포함합니다. 문자열은 '여는 따옴표 (`"""`)' 뒤의 첫 번째 줄에서 시작해서 '닫는 따옴표' 앞의 줄에서 끝나는데, 이는 아래 문자열 중 그 어느 것도 '줄 끊음 (line break)' 으로 시작하거나 끝나지 않음을 의미합니다:[^single-and-multiline]
+'여러 줄짜리 문자열 글자 값' 은 '열고 닫는 따옴표 사이의 모든 줄' 을 포함합니다. 문자열은 '여는 따옴표 (`"""`) 뒤의 첫째 줄' 에서 시작해서 '닫는 따옴표 앞 줄' 에서 끝나는데, 이는 '아래에 있는 어느 쪽 문자열도 줄 끊음 (line break) 으로 시작하거나 끝나지 않는다' 는 의미입니다:[^single-and-multiline]
 
 ```swift
 let singleLineString = "These are the same."
@@ -55,7 +55,7 @@ These are the same.
 """
 ```
 
-소스 코드가 '여러 줄짜리 문자열 글자 값' 안에 '줄 끊음' 을 포함할 땐, 해당 '줄 끊음' 이 문자열 값에도 나타납니다. '줄 끊음' 을 써서 소스 코드를 더 이해하기 쉽게 만들고 싶지만, '줄 끊음' 이 문자열 값 일부가 되진 않길 원하는 경우, 해당 줄 끝에 '역 빅금 (backslash; `\`)' 을 작성합니다:
+소스 코드에 있는 '여러 줄짜리 문자열 글자 값이 줄 끊음을 포함' 하고 있을 때, 줄 끊음은 문자열 값에서도 나타납니다. 소스 코드를 쉽게 이해하도록 '줄 끊음' 은 사용하고 싶지만, '줄 끊음' 이 문자열 값의 일부분이 되길 원하지는 않을 경우엔, 그 줄 끝에 '역 빅금 (backslash; `\`)' 을 작성합니다:
 
 ```swift
 let softWrappedQuotation = """
@@ -696,7 +696,7 @@ for scalar in dogString.unicodeScalars {
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
 
-[^single-and-multiline]: 이 말은 예제에 있는 `singleLineString` 과 `multilineString` 이 사실상 같은 것이라는 의미입니다. `multilineString` 은 큰 따옴표 세 개를 사용했지만, 한-줄짜리 문자열만 담고 있으므로, 여기서는 두 문자열이 똑같은 상태입니다.
+[^single-and-multiline]: 즉, 예제에 있는 `singleLineString` 과 `multilineString` 은 사실상 같은 문자열이비다. `multilineString` 은 '세 개의 큰 따옴표' 를 사용하고 있지만, '한-줄짜리 문자열' 만 담고 있습니다.
 
 [^letter]: 이 책에서는 '문자' 를 'character' 와 'letter' 두 개의 단어로 사용하고 있는데, 엄밀하게 말해서 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 하지만, 여기서는 둘 다 같은 '문자' 라고 옮기도록 합니다.
 
