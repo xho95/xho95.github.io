@@ -34,7 +34,7 @@ let someString = "Some string literal value"
 
 #### Multiline String Literals (여러 줄짜리 문자열 글자 값)
 
-여러 줄에 걸쳐진 문자열이 필요한 경우, 큰 따옴표 세 개로 둘러싼 연속된 문자열인-'여러 줄짜리 문자열 글자 값 (multiline string literal)' 을 사용합니다:
+여러 줄에 걸쳐진 문자열이 필요한 경우, 세 개의 큰 따옴표로 둘러싼 일련의 문자열인-'여러 줄짜리 문자열 글자 값 (multiline string literal)' 을 사용합니다:
 
 ```swift
 let quotation = """
