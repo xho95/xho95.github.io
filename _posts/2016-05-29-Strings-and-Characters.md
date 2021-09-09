@@ -86,12 +86,12 @@ It also ends with a line break.
 
 #### Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)
 
-'문자열 글자 값' 은 다음의 특수 문자를 포함할 수 있습니다:
+문자열 글자 값은 '다음의 특수 문자' 을 포함할 수 있습니다:
 
-* (본래의 의미를) '벗어난 (escaped)[^escaped] 특수 문자' 들, `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed)[^line-feed], `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
-* `\u{`_n_`}` 라고 작성하는, 임의의 '유니코드 크기 값 (Unicode scalar[^scalar] value)', 여기서 _n_ 은 1-8 자리 16진수입니다. (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 에서 논의합니다.)
+* '(본래의 의미를) 벗어난 (escaped)[^escaped] 특수 문자' 인 `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed)[^line-feed], `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
+* _n_ 이 1-8자리 16진수일 때, `\u{`_n_`}` 라고 작성한, '임의의 유니코드 크기 (Unicode scalar) 값'[^scalar] (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 부분에서 논의함)
 
-아래 코드는 이러한 특수 문자의 네 가지 예를 보여줍니다. `wiseWords` 상수는 두 개의 '벗어난 (escaped)' 큰 따옴표를 담고 있습니다. `dollarSign`, `blackHeart`, 그리고 `sparklingHeart` 상수는 '유니코드 크기 값 양식 (Unicode scalar format)' 을 실증해 보입니다:
+아래 코드는 이 특수 문자들의 네 가지 예를 보여줍니다. `wiseWords` 상수는 '두 개의 벗어난 (escaped) 큰 따옴표' 를 담고 있습니다. `dollarSign`, `blackHeart`, 및  `sparklingHeart` 상수는 '유니코드 크기 값 양식' 을 실증합니다:
 
 ```swift
 let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
@@ -101,7 +101,7 @@ let blackHeart = "\u{2665}"       // ♥, 유니코드 크기 값 U+2665
 let sparklingHeart = "\u{1F496}"  // 💖, 유니코드 크기 값 U+1F496
 ```
 
-'여러 줄짜리 문자열 글자 값' 은 하나가 아니라 세 개의 큰 따옴표를 사용하기 때문에, '벗어나게 (escaping)'[^escaping] 하지 않고도 '여러 줄짜리 문자열 글자 값' 안에 '큰 따옴표 (`"`)' 를 포함할 수 있습니다. '여러 줄짜리 문자열' 이 `"""` 을 '글자 (text)' 로써 포함하려면, 최소 하나 이상의 따옴표는 '벗어나야 (escape)' 합니다. 예를 들면 다음과 같습니다:
+'여러 줄짜리 문자열 글자 값' 은 하나가 아닌 세 개의 큰 따옴표를 사용하기 때문에, '벗어나게 (escaping)'[^escaping] 하지 않고도 '여러 줄짜리 문자열 글자 값' 안에 '큰 따옴표 (`"`)' 를 포함할 수 있습니다. '여러 줄짜리 문자열' 안에 `"""` 를 문장으로 포함하려면, 적어도 하나의 따옴표는 '벗어나도록 (escape)' 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let threeDoubleQuotationMarks = """
@@ -670,7 +670,7 @@ for scalar in dogString.unicodeScalars {
 
 [^interpolation]: '보간법 (interpolation)' 은 원래 수학 용어로 그래프 상에서 두 점 사이의 값을 근사적으로 구해서 채워넣는 방법을 말합니다. 'string interpolation' 은 굳이 직역하면 '문자열 삽입법' 등으로 옮길 수 있겠지만, 'interpolation' 은 원래부터 '보간법' 이라는 말로 많이 사용하고 있으므로 그대로 '보간법' 을 사용하도록 합니다. '문자열 보간법' 은 한 문자열 중간에 다른 값을 문자열의 형태로 집어넣는 것으로 이해할 수 있습니다.
 
-[^escaped]: 'escaped' 는 우리 말로 '벗어난' 을 의미하는 단어인데, 프로그래밍에서 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나서 다른 의미를 가지게된 특수 문자' 라는 의미가 됩니다. 예를 들어 `n` 이라고 하면, 그냥 하나의 영어 문자가 되지만, `\n` 이라고 하면 본래의 영어 단어의 의미를 벗어나서, `new line (feed)` 이라는 새로운 의미를 가지게 됩니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 '본래 의미를 벗어난 다른 의미를 가지는 문자' 를 일컬어 'escaped characters' 라고 합니다.
+[^escaped]: 'escape' 은 우리 말로 '벗어나다' 라는 의미인데, 프로그래밍 용어로 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나 다른 의미를 가지는 특수 문자' 입니다. 예를 들어, `n` 은 그냥 하나의 영어 문자이지만, `\n` 은 본래의 영어 의미를 벗어난 `새로운 줄 (new line)` 이라는 의미를 가지게 됩니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 '본래 의미를 벗어난 다른 의미를 가지도록 한 문자' 를 'escaped characters' 라고 합니다.
 
 [^scalar]: 'scalar' 는 원래 수학 용어로 '크기만을 가지는 값' 입니다. 여기서 'Unicode scalar value' 은 각각의 문자에 일대일 대응되는 '유니코드 크기 값' 을 의미합니다. 예를 들어, 문자는 `$` 는 유니코드 크기 값이 `U+0024` 에 해당합니다.
 
@@ -688,7 +688,7 @@ for scalar in dogString.unicodeScalars {
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive)' 하다는 말은, 비교 연산을 수행하기 위해 '지역 정보 (locale) 객체' 를 요구하는 것을 말한다고 합니다. 스위프트의 문자 비교 연산은 '지역에-민감' 하지 않으므로, 이 '지역 정보 객체' 를 요구하지 않습니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 의 내용을 참고하기 바랍니다.
 
-[^line-feed]: 스위프트 (라기 보다는 애플 운영체제) 에서 '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행)' 문자는 셋 다 똑같은 의미를 가지고 있습니다. 이에 대해서는 [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에서 좀 더 자세히 다루고 있습니다.
+[^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 참고하기 바랍니다.
 
 [^line-feed-escape-sequence]: '줄 먹임으로 벗어나도록 나열한 것 (line feed escape sequence)' 은 말 그대로 `\n` 문자열 자체를 의미합니다. `\n` 을 '줄 먹임' 문자로 인식하는 것이 아니라 `\` 과 `n` 문자가 나열된 것으로 인식한다는 의미입니다.
 
