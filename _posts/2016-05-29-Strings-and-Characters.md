@@ -126,15 +126,15 @@ Here are three more double quotes: """
 
 ### Initializing an Empty String (빈 문자열 초기화하기)
 
-긴 문자열 제작을 시작하기 위해 먼저 빈 `String` 값을 생성하려면, 변수에 '빈 문자열 글자 값 (empty string literal)' 을 할당하거나, 아니면 '초기화 구문 표현 (initializer syntax)' 으로 새로운 `String` 인스턴스를 초기화합니다:
+더 긴 문자열 제작의 시작점으로써 '빈 `String` 값' 을 생성하려면, '변수에 빈 문자열 글자 값 (literal) 을 할당' 하든지, 아니면 '초기화 구문으로 새 `String` 인스턴스를 초기화' 합니다:
 
 ```swift
-var emptyString = ""                // 빈 문자열 글자 값 (empty string literal)
-var anotherEmptyString = String()   // 초기화 구문 표현 (initializer syntax)
-// 이 두 문자열은 모두 빈 것이며, 서로 '동치 (equivalent)' 입니다.
+var emptyString = ""                // 빈 문자열 글자 값
+var anotherEmptyString = String()   // 초기화 구문
+// 이 두 문자열들은 모두 빈 것으로, 서로 '동치 (equivalent)' 입니다.
 ```
 
-`String` 값이 비어 있는 지는 '불리언 (Boolean)' 속성인 `isEmpty` 를 검사하여 알아냅니다:
+`String` 값이 비었는 지는 '`isEmpty` 라는 자신의 불리언 속성을 검사함' 으로써 알아냅니다:
 
 ```swift
 if emptyString.isEmpty {
