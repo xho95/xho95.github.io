@@ -126,7 +126,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 
 '여러 줄짜리 문자열 글자 값' 에서, 줄 끝에 '역 빗금 (`\`)' 을 작성하면 문자열에서 해당 '줄 끊음' 을 생략합니다. '역 빗금' 과 '줄 끊음' 사이의 어떤 공백이든 역시 생략합니다. 이 구문을 사용하면, 결과 문자열의 값을 바꾸지 않고도, '여러 줄짜리 문자열 글자 값' 을 소스 코드에서 '직접 줄 바꿈 (hard wrap)'[^hard-wrap] 할 수 있습니다.
 
-'특수 (special) 문자' 들은 다음 '일련의 벗어나는 값 (escape sequences; 확장열)'[^escape-sequences] 을 사용하여 '한 줄짜리' 와 '여러 줄짜리' 형식 둘 다의 '문자열 글자 값' 에 포함할 수 있습니다:
+특수 문자는 다음의 '벗어난 문자열[^escape-sequences] 을 사용하여 '한 줄짜리와 여러 줄짜리 형식인 문자열 글자 값' 둘 다에 포함할 수 있습니다:
 
 * 널 문자 (null character; `\0`)
 * 역 빗금 (backslash; `\\`)
@@ -157,7 +157,7 @@ let x = 3; "1 2 \(x)"
 &nbsp;&nbsp;&nbsp;&nbsp;`characters-문자들)`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\"\"\"\#
 
-'확장된 구분자로 구분한 문자열' 안의 특수 문자는 특수 문자가 아니라 '보통 문자' 로 '결과 문자열' 에 나타납니다. '확장된 구분자' 를 사용하면 평범하게 '문자열 끼워 넣음 (interpolation)'[^interpolation] 의 발생, 일련의 벗어나기 시작, 또는 문자열 종결 같은, '특수 효과' 를 가질 문자들로 문자열을 생성할 수 있습니다.
+'확장된 구분자로 구분한 문자열' 안의 특수 문자는 특수 문자가 아니라 '보통 문자' 로 '결과 문자열' 에 나타납니다. '확장된 구분자' 를 사용하면 평범하게 '문자열 끼워 넣기 (interpolation)[^interpolation] 생성', '벗어난 문자열 시작', 또는 '문자열 종결' 같은, 특수 효과를 가진 문자로 문자열을 생성할 수 있습니다.
 
 다음 예제는 서로 '동치 (equivalent)' 인 문자열 값을 생성하는 '문자열 글자 값' 과 '확장된 구분자로 구분한 문자열' 을 보여줍니다:
 
@@ -261,7 +261,7 @@ let textB = "Hello world"
 
 [^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 '자동 줄 바꿈' 과 관련된 개념으로, 실제 문자열 글자 값이 아니라, '편집기 (editor)' 에서 문자열이 보여지는 것과 관련한 용어입니다. 이 책에서 '직접 줄 바꿈 (hard wrap) 할 수 있다' 는 것은, 실제 글자 값은 그대로 유지하면서, Xcode 에서 줄 바꿈을 써서 문자열을 알아보기 쉽게 코딩할 수 있다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 항목과 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다.
 
-[^escape-sequences]: 'escape sequences' 및 '확장열' 에 대한 정보는 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 및 [확장열](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
+[^escape-sequences]: '벗어난 문자열 (escape sequences)' 에 대한 더 자세한 정보는, 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 항목과 [이스케이프 시퀀스 (확장열)](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
 
 [^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 이는 본문에서 말하는 '균형 집합' 이란, 개수 자체는 상관없이 양쪽에 있는 `#` 의 개수가 똑같기만 하면 된다는 의미로 추측됩니다. '균형 집합' 에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
 
