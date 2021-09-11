@@ -161,11 +161,11 @@ constantString += " and another Highlander"
 
 ### Strings Are Value Types (문자열은 값 타입입니다)
 
-스위프트의 `String` 타입은 '_값 타입 (value type)_'[^value-type] 입니다. 새로운 `String` 값을 생성하면, 해당 `String` 값은, 함수나 메소드에 전달될 때나 상수나 변수에 할당될 때, _복사 (copied)_ 됩니다. 각 경우마다, 기존 `String` 값의 새로운 복사본이 생성되며, 원래 버전이 아니라, 이 새로운 복사본을 전달하거나 할당합니다. 값 타입은 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 에서 설명합니다.
+스위프트의 `String` 타입은 _값 타입 (value type)_[^value-type] 입니다. 새 `String` 값을 생성하면, 함수나 메소드에 전달할 때, 또는 상수나 변수에 할당할 때, 해당 `String` 값을 _복사 (copied)_ 합니다. 각 경우마다, 기존 `String` 값에 대한 새로운 복사본을 생성하며, 원본 버전이 아닌, 새로운 복사본을 전달하거나 할당합니다. 값 타입은 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분에서 설명합니다.
 
-스위프트 `String` 의 '기본적으로-복사하는 (copy-by-default)' 작동 방식은 함수나 메소드가 `String` 값을 전달할 때, 이것이 어디서 왔든 상관없이, 정확한 `String` 값을 명확하게 가지도록 보장합니다. 전달받은 문자열은 직접 수정하지 않는한 수정되지 않을 것임을 확신할 수 있습니다.
+스위프트의 '복사가-기본인 (copy-by-default) `String` 동작' 은 함수나 메소드가 `String` 값을 전달할 때, 어디서 왔는 지 상관없이, 정확한 `String` 값을 소유함이 명확하도록 보장합니다. 전달받은 문자열은 자신이 직접 수정하지 않는 한 수정될 일이 없다고 자신할 수 있습니다.
 
-그 이면을 살펴보면, 스위프트 컴파일러는 문자열 사용법을 최적화해서 실제 복사는 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 값 타입인 문자열과 작업할 때도 항상 뛰어난 성능을 얻는다는 의미입니다.
+속을 들여다보면, 스위프트 컴파일러는 문자열 사용을 최적화 하므로 실제 복사는 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 값 타입인 문자열과 작업할 때는 항상 훌륭한 성능을 얻게 된다는 의미입니다.
 
 ### Working with Characters (문자 다루기)
 
@@ -680,7 +680,7 @@ for scalar in dogString.unicodeScalars {
 
 [^value-type]: '값 타입 (value type)' 이라는 말은, 프로그래밍 용어에서 '깊은 복사' 와 '옅은 복사' 라는 말이 있는데, 이 중에서 복사 시의 기본 동작이 '깊은 복사' 인 타입이라고 이해할 수 있습니다.
 
-[^optimize-string]: 이 말은 기본적으로 `String` 은 '깊은 복사' 를 하지만, 만약 전달받은 `String` 이 상수라면, 어차피 값이 바뀌지 않으므로 최적화에 의해, 실제 복사를 안할 수도 있다는 말입니다. 하지만 이런 경우에라도 밖에서 보는 작동 방식은 동일하므로, 개발자는 `String` 이 마치 계속 '복사 (copy)' 된다고 이해하고 사용해도 문제가 없습니다.
+[^optimize-string]: 이 말은 `String` 이 기본적으로는 '깊은 복사' 를 하지만, 만약 전달받은 `String` 이 상수라면, 어차피 값이 바뀌지 않으므로 최적화에 의해, 실제 복사를 안할 수도 있다는 말입니다. 하지만 이런 경우에라도 밖에서 보는 작동 방식은 동일하므로, 개발자는 `String` 이 마치 계속 '복사 (copy)' 된다고 이해하고 사용해도 문제가 없습니다.
 
 [^annotation]: '주석' 은 프로그래밍 분야에서 'comment' 를 의미하므로, 'annotation' 을 '보조 설명' 이라고 옮깁니다. 스위프트의 '타입 보조 설명 (type annotation)' 은 `let a: Int = 10` 에서 타입을 지정하는 `Int` 를 말하는 것입니다.
 
