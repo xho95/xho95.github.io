@@ -167,13 +167,13 @@ constantString += " and another Highlander"
 
 속을 들여다보면, 스위프트 컴파일러는 문자열 사용을 최적화 하므로 실제 복사는 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 값 타입인 문자열과 작업할 때는 항상 훌륭한 성능을 얻게 된다는 의미입니다.
 
-### Working with Characters (문자 다루기)
+### Working with Characters (문자와 작업하기)
 
-`String` 의 개별 `Character` 값은 `for-in` 반복문으로 문자열에 '동작을 반복하는 것 (interating over)' 으로 접근할 수 있습니다:
+`for-in` 반복문으로 문자열에 동작을 반복함으로써 `String` 의 개별 `Character` 값에 접근할 수 있습니다:
 
 ```swift
 for character in "Dog!🐶" {
-    print(character)
+  print(character)
 }
 // D
 // o
@@ -184,13 +184,13 @@ for character in "Dog!🐶" {
 
 `for-in` 반복문은 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 에서 설명합니다.
 
-또 다른 방법으로, `Character` '타입 보조 설명 (type annotation)'[^annotation] 을 제공하는 것으로 '단일-문자 문자열 글자 값 (single-character string literal)' 으로부터 독립된 `Character` 상수나 변수를 생성할 수 있습니다:
+대안으로, '`Character` 타입 보조 설명 (annotation)'[^annotation] 을 제공하면 '단일-문자 글자 값으로 독립적인 `Character` 상수나 변수를 생성' 할 수 있습니다:
 
 ```swift
 let exclamationMark: Character = "!"
 ```
 
-`String` 값은 `Character` 값의 배열을 초기자의 인자로 전달하는 것으로써 생성할 수 있습니다:
+`Character` 값 배열을 자신의 초기자 인자로 전달함으로써 `String` 값을 생성할 수 있습니다:
 
 ```swift
 let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
@@ -567,7 +567,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 유니코드 문자열이 문서 파일이나 다른 저장 공간에 작성되어 있을 때, 해당 문자열에 있는 '유니코드 크기 값' 은 유니코드에서-정의한 여러 가지 '_인코딩 형식 (encording forms)_' 중 하나로 '인코딩 (encoding; 복호화)' 되어 있습니다. 각 형식은 문자열을 '_코드 단위 (code units)_' 라는 작은 조각으로 '인코딩' 합니다. 이는 (문자열을 8-비트 '코드 단위' 로 인코딩하는) 'UTF-8' 인코딩 형식 , (문자열을 16-비트 '코드 단위' 로 인코딩하는) 'UTF-16' 인코딩 형식 , 그리고 (문자열을 32-비트 '코드 단위' 로 인코딩하는) 'UTF-32' 인코딩 형식을 포함합니다.
 
-스위프트는 문자열의 '유니코드 표현법' 에 접근하는 여러 가지 방법을 제공합니다. 문자열은, 개별 `Character` 값을 '유니코드 방식의 '확장된 자소 덩어리' 로 접근하기 위해, `for`-`in` 구문으로 동작을 반복할 수 있습니다. 이 과정은 [Working with Characters (문자 다루기)](#working-with-characters-문자-다루기) 에서 설명했습니다.
+스위프트는 문자열의 '유니코드 표현법' 에 접근하는 여러 가지 방법을 제공합니다. 문자열은, 개별 `Character` 값을 '유니코드 방식의 '확장된 자소 덩어리' 로 접근하기 위해, `for`-`in` 구문으로 동작을 반복할 수 있습니다. 이 과정은 [Working with Characters (문자와 작업하기)](#working-with-characters-문자와-작업하기) 에서 설명했습니다.
 
 또 다른 방법으로, 세 가지 다른 '유니코드를-따르는 표현법 (Unicode-compliant representations)' 으로 `String` 값에 접근합니다:
 
@@ -682,7 +682,7 @@ for scalar in dogString.unicodeScalars {
 
 [^optimize-string]: 이 말은 `String` 이 기본적으로는 '깊은 복사' 를 하지만, 만약 전달받은 `String` 이 상수라면, 어차피 값이 바뀌지 않으므로 최적화에 의해, 실제 복사를 안할 수도 있다는 말입니다. 하지만 이런 경우에라도 밖에서 보는 작동 방식은 동일하므로, 개발자는 `String` 이 마치 계속 '복사 (copy)' 된다고 이해하고 사용해도 문제가 없습니다.
 
-[^annotation]: '주석' 은 프로그래밍 분야에서 'comment' 를 의미하므로, 'annotation' 을 '보조 설명' 이라고 옮깁니다. 스위프트의 '타입 보조 설명 (type annotation)' 은 `let a: Int = 10` 에서 타입을 지정하는 `Int` 를 말하는 것입니다.
+[^annotation]: 프로그래밍 용어로 '주석 (comment)' 이란 단어를 이미 사용하고 있으므로, 타입 주석이라고 하지 않고 '타입 보조 설명 (type annotation)' 이라고 옮깁니다. 타입 보조 설명에 대한 더 자세한 정보는, [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다. 
 
 [^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
 
