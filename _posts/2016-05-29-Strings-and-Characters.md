@@ -55,7 +55,7 @@ These are the same.
 """
 ```
 
-소스 코드에 있는 '여러 줄짜리 문자열 글자 값이 줄 끊음을 포함' 하고 있을 때, 줄 끊음은 문자열 값에서도 나타납니다. 소스 코드를 쉽게 이해하도록 '줄 끊음' 은 사용하고 싶지만, '줄 끊음' 이 문자열 값의 일부분이 되길 원하지는 않을 경우엔, 그 줄 끝에 '역 빅금 (backslash; `\`)' 을 작성합니다:
+소스 코드에 있는 '여러 줄짜리 문자열 글자 값이 줄 끊음을 포함' 하고 있을 때, 줄 끊음은 문자열 글자 값에서도 나타납니다. 소스 코드를 쉽게 이해하도록 '줄 끊음' 은 사용하고 싶지만, '줄 끊음' 이 문자열 글자 값의 일부분이 되길 원하지는 않을 경우엔, 그 줄 끝에 '역 빅금 (backslash; `\`)' 을 작성합니다:
 
 ```swift
 let softWrappedQuotation = """
@@ -228,7 +228,7 @@ welcome.append(exclamationMark)
 
 > `Character` 값은 반드시 단일 문자만 담아야 하기 때문에, 기존 `Character` 변수에 `String` 이나 `Character` 를 덧붙일 수는 없습니다.
 
-더 긴 문자열을 제작하기 위해 '여러 줄짜리 문자열 값' 을 사용한다면, 문자열, 마지막 줄을 포함한, 모든 줄을 '줄 끊음 (line break)' 으로 끝내고 싶을 겁니다. 예를 들면 다음과 같습니다:
+더 긴 문자열을 제작하기 위해 '여러 줄짜리 문자열 글자 값' 을 사용한다면, 문자열, 마지막 줄을 포함한, 모든 줄을 '줄 끊음 (line break)' 으로 끝내고 싶을 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let basStart = """
@@ -262,7 +262,7 @@ print(goodStart + end)
 
 ### String Interpolation (문자열 보간법)
 
-_문자열 보간법 (string interpolation)_ 은 '문자열 값 안에 상수, 변수, 글자 값, 및 표현식의 값을 포함하여 섞은 것으로 새로운 `String` 값을 생성하는 방법' 입니다. '한-줄짜리 와 여러 줄짜리 문자열 값' 둘 다에 문자열 보간법을 사용할 수 있습니다. 문자열 값 안에 집어 넣는 각각의 항목은 '괄호 쌍으로 포장한 후, 역 빗금 (backslash; `\`) 접두사' 를 붙입니다:
+_문자열 보간법 (string interpolation)_ 은 '문자열 글자 값 안에 상수, 변수, 글자 값, 및 표현식의 값을 포함하여 섞은 것으로 새로운 `String` 값을 생성하는 방법' 입니다. '한-줄짜리 와 여러 줄짜리 문자열 글자 값' 둘 다에 문자열 보간법을 사용할 수 있습니다. 문자열 글자 값 안에 집어 넣는 각각의 항목은 '괄호 쌍으로 포장한 후, 역 빗금 (backslash; `\`) 접두사' 를 붙입니다:
 
 ```swift
 let multiplier = 3
@@ -270,18 +270,18 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 // message 는 "3 times 2.5 is 7.5" 입니다.
 ```
 
-위 예제에서는, `\(multiplier)` 라고 하여 `multiplier` 값을 문자열 값에 집어 넣습니다. 이 '자리 표시자 (placeholder)' 는 '문자열 보간법을 평가해서 실제 문자열을 생성할 때 실제 `multiplier` 값으로 대체' 됩니다.
+위 예제에서는, `\(multiplier)` 라고 하여 `multiplier` 값을 문자열 글자 값에 집어 넣습니다. 이 '자리 표시자 (placeholder)' 는 '문자열 보간법을 평가해서 실제 문자열을 생성할 때 실제 `multiplier` 값으로 대체' 됩니다.
 
-`multiplier` 의 값은 문자열 뒤에 있는 '더 큰 표현식' 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 의 값을 계산하고 결과인 (`7.5`) 를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함될 때의 표현식은 `\(Double(multiplier) * 2.5)` 라고 작성합니다.
+`multiplier` 값은 '문자열 나중에 있는 더 큰 표현식의 일부분' 이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 값을 계산하며 (`7.5` 라는) 결과를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함할 때 `\(Double(multiplier) * 2.5)` 라고 표현식을 작성합니다.
 
-다른 경우라면 문자열 보간법으로 취급될 문자를 담고 있는 문자열을 생성하기 위해 '확장된 문자열 구분자 (extended string delimiters)' 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+다른 경우라면 문자열 보간법으로 취급할 문자를 담은 문자열을 생성하기 위해 '확장된 문자열 구분자'[^extended-string-delimiters] 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
 // "Write an interpolated string in Swift using \(multiplier)." 를 인쇄합니다.
 ```
 
-'확장된 구분자' 를 사용하는 문자열에서 '문자열 보간법' 을 사용하려면, '역 빗금 (backslash)' 뒤의 '번호 기호' 개수를 문자열 시작과 끝에 있는 '번호 기호' 개수와 일치시키면 됩니다. 예를 들면 다음과 같습니다:
+'확장된 구분자를 사용한 문자열 안에서 문자열 보간법을 사용' 하려면, '역 빗금 (backslash) 뒤의 번호 기호 개수' 를 '문자열 시작과 끝의 번호 기호 개수' 와 일치시킵니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
@@ -713,3 +713,5 @@ for scalar in dogString.unicodeScalars {
 [^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는 아래의 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
 
 [^surrogate-pair]: '대용 쌍 (surrogate pair)' 는 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. 보다 자세한 내용은 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 참고하기 바랍니다.
+
+[^extended-string-delimiters]: '확장된 문자열 구분자 (Extended String Delimiters)' 에 대한 더 자세한 정보는, 바로 위의 [Extended String Delimiters (확장된 문자열 구분자)](#extended-string-delimiters-확장된-문자열-구분자) 부분을 참고하기 바랍니다. 
