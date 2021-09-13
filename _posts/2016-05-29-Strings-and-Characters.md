@@ -262,7 +262,7 @@ print(goodStart + end)
 
 ### String Interpolation (문자열 보간법)
 
-_문자열 보간법 (string interpolation)_ 은 '문자열 값 안에 상수, 변수, 글자 값, 및 표현식의 값을 포함하여 섞은 것으로 새로운 `String` 값을 생성하는 방법' 입니다. '한-줄짜리 와 여러 줄짜리 문자열 값' 둘 다에 문자열 보간법을 사용할 수 있습니다. 문자열 값 안에 집어 넣는 각각의 항목은 '괄호 쌍으로 포장한 다음, 역 빗금 (backslash; `\`) 접두사' 를 붙입니다:
+_문자열 보간법 (string interpolation)_ 은 '문자열 값 안에 상수, 변수, 글자 값, 및 표현식의 값을 포함하여 섞은 것으로 새로운 `String` 값을 생성하는 방법' 입니다. '한-줄짜리 와 여러 줄짜리 문자열 값' 둘 다에 문자열 보간법을 사용할 수 있습니다. 문자열 값 안에 집어 넣는 각각의 항목은 '괄호 쌍으로 포장한 후, 역 빗금 (backslash; `\`) 접두사' 를 붙입니다:
 
 ```swift
 let multiplier = 3
@@ -270,7 +270,7 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 // message 는 "3 times 2.5 is 7.5" 입니다.
 ```
 
-위 예제에서, `multiplier` 의 값은 문자열 글자 값 안에 `\(multiplier)` 라고 집어 넣습니다. 이 '자리 표시자 (placeholder)' 는 실제 문자열을 생성하기 위해 문자열 보간법을 평가할 때 `multiplier` 의 실제 값으로 대체됩니다.
+위 예제에서는, `\(multiplier)` 라고 하여 `multiplier` 값을 문자열 값에 집어 넣습니다. 이 '자리 표시자 (placeholder)' 는 '문자열 보간법을 평가해서 실제 문자열을 생성할 때 실제 `multiplier` 값으로 대체' 됩니다.
 
 `multiplier` 의 값은 문자열 뒤에 있는 '더 큰 표현식' 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 의 값을 계산하고 결과인 (`7.5`) 를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함될 때의 표현식은 `\(Double(multiplier) * 2.5)` 라고 작성합니다.
 
