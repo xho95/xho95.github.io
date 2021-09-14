@@ -296,9 +296,9 @@ _유니코드 (Unicode)_ 는 '서로 다른 문자 체계에서 문장을 부호
 
 #### Unicode Scalar Values (유니코드 크기 값)
 
-속을 들여다보면, 스위프트 고유의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 제작합니다. '유니코드 크기 값' 이란, `LATIN SMALL LETTER A` (`"a"`) 면 `U+0061`, `FRONT-FACING BABY CHICK` (`"🐥"`) 이라면 `U+1F425` 같이, '한 문자나 수정자 (modifier) 를 위한 유일한 21-비트 수' 입니다.
+속을 들여다보면, 스위프트 고유의 `String` 타입은 _유니코드 크기 값 (Unicode scalar values)_ 으로 제작합니다. '유니코드 크기 값' 이란, `LATIN SMALL LETTER A` (`"a"`) 면 `U+0061`, `FRONT-FACING BABY CHICK` (`"🐥"`) 이라면 `U+1F425` 같이, '한 문자나 수정자 (modifier) 를 위한 유일한 21-비트 수치 값' 입니다.
 
-모든 21-비트 '유니코드 크기 값' 이 문자에 할당된 것은 아님을 기억하기 바랍니다-어떤 크기 값은 미래의 할당을 위해서 또는 'UTF-16 부호화 (encoding)' 에서 사용하기 위해서 예약되어 있습니다. 문자에 할당되어 있는 '크기 값' 은 전형적으로, 위 예제의 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 같이, 이름도 가지고 있습니다.
+모든 21-비트 유니코드 크기 값에 문자를 할당한 건 아니라는 걸 기억하기 바랍니다-일부 크기 값은 '미래의 할당 또는 UTF-16 부호화 시의 사용을 위해 예약' 되어 있습니다. 전형적으로 '문자를 할당한 크기 값' 은, 위 예제의 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 같은, 이름도 가지고 있습니다.
 
 #### Extended Grapheme Clusters (확장된 자소 덩어리)
 
