@@ -314,7 +314,7 @@ let combinedEAcute: Character = "\u{65}\u{301}" // e 와 그 뒤의  ́
 // eAcute 는 é 이고, combinedEAcute 도 é 입니다.
 ```
 
-'확장된 자소 덩어리' 는 '쓰기 복잡한 많은 문자를 단일 `Character` 값으로써 나타내는 유연한 방식' 입니다. 예를 들어, '한글' 에서 '한국어 음절' 은 '완성형 (precomposed)' 또는 '조합형 (decomposed)' 어느 것으로도 표현할 수 있습니다. 이 두 표현법 모두 스위프트에서 '단일 `Character` 값' 으로 인정합니다:
+'확장된 자소 덩어리' 는 수많은 '쓰기 복잡한 문자들을 단일 `Character` 값으로 나타내는 유연한 방식' 입니다. 예를 들어, 한국의 '한글 음절' 은 '완성형 (precomposed)' 으로 또는 '조합형 (decomposed)' 으로 나타낼 수 있습니다. 스위프트에서는 이 두 표현법 모두 '단일 `Character` 값' 으로 '인정 (qualify)' 합니다:
 
 ```swift
 let precomposed: Character = "\u{D55C}"                 // 한
@@ -322,14 +322,14 @@ let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"  // ᄒ, ᅡ, ᆫ
 // precomposed 는 '한' 이고, decomposed 도 '한' 입니다.
 ```
 
-'확장된 자소 덩어리' 는 (`COMBINING ENCLOSING CIRCLE` 및, `U+20DD` 같은) 테두리 표시를 위한 크기 값으로 다른 유니코드 크기 값에 테두리를 쳐서 단일 `Character` 값을 만들게 해줍니다.
+'확장된 자소 덩어리' 는 '(`COMBINING ENCLOSING CIRCLE` 또는, `U+20DD` 같은) 테두리 표시로 다른 유니코드 크기 값에 테두리를 쳐서 단일 `Character` 값' 을 만들 수 있게 합니다:
 
 ```swift
 let enclosedEAcute: Character = "\u{E9}\u{20DD}"
 // enclosedEAcute 은 é⃝ 입니다.
 ```
 
-'지역 지시 기호 (regional indicator symbols)' 에 대한 유니코드 크기 값은 서로 쌍으로 조합하여 단일 `Character` 값을 만들 수 있는데, 가령 `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 의 조합은 다음과 같습니다:
+'지역 지시 기호 (regional indicator symbols) 유니코드 크기 값' 은, 다음의 `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 조합 같이, '단일 `Character` 값을 만들기 위해 쌍으로 조합' 할 수 있습니다:
 
 ```swift
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
