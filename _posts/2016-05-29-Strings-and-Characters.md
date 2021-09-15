@@ -304,9 +304,9 @@ _유니코드 (Unicode)_ 는 '서로 다른 문자 체계에서 문장을 부호
 
 스위프트의 모든 `Character` 타입 인스턴스는 '단일한 _확장된 자소 덩어리 (extended grapheme cluster)_ 를 나타냅니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 '(조합하면) 사람이-이해할 수 있는 단일 문자를 만드는 하나 이상의 일련의 유니코드 크기 값' 입니다. 
 
-예를 들어 보겠습니다. `é` 라는 '글자 (letter)'[^letter] 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 또는, `U+00E9`) 로 나타낼 수 있습니다. 하지만, 똑같은 글자를-표준 글자 `e` (`LATIN SMALL LETTER E` 또는, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` (`U+0301`) 라는-'한 _쌍 (pair)_ 의 크기 값' 으로 나타낼 수도 있습니다. `COMBINING ACUTE ACCENT` 라는 크기 값은 '자기 앞의 크기 값에 시각적으로 적용' 하여, '유니코드-인식 문장-표현 시스템' 이 `e` 를 그릴 때 `é` 로 바꾸도록 합니다.
+예를 들어 보겠습니다. `é` 라는 '글자 (letter)'[^letter] 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 또는, `U+00E9`) 로 나타낼 수 있습니다. 하지만, 똑같은 글자를-표준 글자 `e` (`LATIN SMALL LETTER E` 또는, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` (`U+0301`) 라는-'한 _쌍 (pair)_ 의 크기 값' 으로 나타낼 수도 있습니다. `COMBINING ACUTE ACCENT` 라는 크기 값은 '자기 앞의 크기 값에 시각적으로 적용' 하여, '유니코드-인식 문장-표현 시스템' 이 `e` 를 `é` 로 바꿔서 그리도록 합니다.
 
-두 경우 모두, 문자 `é` 는 하나의 '확장된 자소 덩어리' 를 표현하는 '단일 스위프트 `Character` 값' 으로 표현됩니다. 첫 번째 경우엔, '덩어리 (cluster)' 가 단일 크기 값을 담고 있으며; 두 번째 경우, 이는 두 크기 값의 '덩어리' 입니다:
+두 경우 모두, 하나의 '확장된 자소 덩어리' 를 나타내는 '단일 스위프트 `Character` 값' 으로 `é` 라는 글자를 나타냅니다. 첫 번째 경우는, 덩어리가 단일 크기 값을 담고 있으며; 두 번째 경우는, 두 크기 값의 덩어리 입니다:
 
 ```swift
 let eAcute: Character = "\u{E9}"                // é
