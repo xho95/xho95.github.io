@@ -314,7 +314,7 @@ let combinedEAcute: Character = "\u{65}\u{301}" // e 와 그 뒤의  ́
 // eAcute 는 é 이고, combinedEAcute 도 é 입니다.
 ```
 
-'확장된 자소 덩어리' 는 '쓰는 방법이 많고 복잡한 문자 (many complex script characters)' 를 단일 `Character` 값으로 표현하는 유연한 방법입니다. 예를 들어, '한글' 에서 '한국어 음절' 은 '완성형 (precomposed)' 또는 '조합형 (decomposed)' 어느 것으로도 표현할 수 있습니다. 이 두 표현법 모두 스위프트에서 '단일 `Character` 값' 으로 인정합니다:
+'확장된 자소 덩어리' 는 '쓰기 복잡한 많은 문자를 단일 `Character` 값으로써 나타내는 유연한 방식' 입니다. 예를 들어, '한글' 에서 '한국어 음절' 은 '완성형 (precomposed)' 또는 '조합형 (decomposed)' 어느 것으로도 표현할 수 있습니다. 이 두 표현법 모두 스위프트에서 '단일 `Character` 값' 으로 인정합니다:
 
 ```swift
 let precomposed: Character = "\u{D55C}"                 // 한
