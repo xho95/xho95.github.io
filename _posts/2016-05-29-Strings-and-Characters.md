@@ -302,9 +302,9 @@ _유니코드 (Unicode)_ 는 '서로 다른 문자 체계에서 문장을 부호
 
 #### Extended Grapheme Clusters (확장된 자소 덩어리)
 
-스위프트의 모든 `Character` 타입 인스턴스는 단 하나의 '_확장된 자소 덩어리 (extended grapheme cluster)_' 를 표현합니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 하나 이상의 유니코드 크기 값이 나열된 것으로 (조합하면) 사람이-이해할 수 있는 단일한 문자를 만들어 냅니다.
+스위프트의 모든 `Character` 타입 인스턴스는 '단일한 _확장된 자소 덩어리 (extended grapheme cluster)_ 를 나타냅니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 '(조합하면) 사람이-이해할 수 있는 단일 문자를 만드는 하나 이상의 일련의 유니코드 크기 값' 입니다. 
 
-예를 들어 보겠습니다. '문자 (letter)'[^letter] `é` 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 및, `U+00E9`) 로 표현할 수 있습니다. 하지만, 똑같은 문자를 한 _쌍 (pair)_ 의 '크기 값'-표준 문자 `e` (`LATIN SMALL LETTER E` 및, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` 크기 값 (`U+0301`)-으로 표현할 수도 있습니다. `COMBINING ACUTE ACCENT` 크기 값은, '유니코드를-인식하는 글자-그리기 시스템' 이 이를 그릴 때 `e` 를 `é` 로 바꾸도록, 자기 앞의 크기 값에 시각적으로 적용됩니다.
+예를 들어 보겠습니다. `é` 라는 '글자 (letter)'[^letter] 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 또는, `U+00E9`) 로 나타낼 수 있습니다. 하지만, 똑같은 글자를-표준 글자 `e` (`LATIN SMALL LETTER E` 또는, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` (`U+0301`) 라는-'한 _쌍 (pair)_ 의 크기 값' 으로 나타낼 수도 있습니다. `COMBINING ACUTE ACCENT` 라는 크기 값은 '자기 앞의 크기 값에 시각적으로 적용' 하여, '유니코드-인식 문장-표현 시스템' 이 `e` 를 그릴 때 `é` 로 바꾸도록 합니다.
 
 두 경우 모두, 문자 `é` 는 하나의 '확장된 자소 덩어리' 를 표현하는 '단일 스위프트 `Character` 값' 으로 표현됩니다. 첫 번째 경우엔, '덩어리 (cluster)' 가 단일 크기 값을 담고 있으며; 두 번째 경우, 이는 두 크기 값의 '덩어리' 입니다:
 
@@ -684,7 +684,7 @@ for scalar in dogString.unicodeScalars {
 
 [^annotation]: 프로그래밍 용어로 '주석 (comment)' 이란 단어를 이미 사용하고 있으므로, 타입 주석이라고 하지 않고 '타입 보조 설명 (type annotation)' 이라고 옮깁니다. 타입 보조 설명에 대한 더 자세한 정보는, [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다. 
 
-[^extended-grapheme-cluster]: 하나의 문자가 '자소 덩어리' 라는 말은, `가` 라는 하나의 문자가 `ㄱ` 과 `ㅏ` 라는 자소들의 덩어리로 이루어졌다는 것을 의미합니다. '확장된 자소 덩어리' 에 대한 개념은 좀 더 아래의 본문에 `한` 이라는 글자로 설명되어 있습니다.
+[^extended-grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자는 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 덩어리로 되어 있다는 의미입니다. '확장된 자소 덩어리' 자체는 본문 뒤에서 좀 더 자세히 설명합니다.
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive)' 하다는 말은, 비교 연산을 수행하기 위해 '지역 정보 (locale) 객체' 를 요구하는 것을 말한다고 합니다. 스위프트의 문자 비교 연산은 '지역에-민감' 하지 않으므로, 이 '지역 정보 객체' 를 요구하지 않습니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 의 내용을 참고하기 바랍니다.
 
@@ -698,7 +698,7 @@ for scalar in dogString.unicodeScalars {
 
 [^single-and-multiline]: 즉, 예제에 있는 `singleLineString` 과 `multilineString` 은 사실상 같은 문자열이비다. `multilineString` 은 '세 개의 큰 따옴표' 를 사용하고 있지만, '한-줄짜리 문자열' 만 담고 있습니다.
 
-[^letter]: 이 책에서는 '문자' 를 'character' 와 'letter' 두 개의 단어로 사용하고 있는데, 엄밀하게 말해서 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 하지만, 여기서는 둘 다 같은 '문자' 라고 옮기도록 합니다.
+[^letter]: 엄밀하게 말하면, 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 
 
 [^indexed-by-integer-values]: '정수 값으로 색인될 수 없다' 는 말은 `var myString: String` 이라는 값이 있을 때, `myString[3]` 처럼 정수 색인으로 '임의 접근 (random access)' 할 수 없다는 의미로 추측됩니다. 이어지는 설명을 볼 때, 스위프트의 `String` 은 '배열 (스위프트의 `Array` 컬렉션이 아닌 자료구조로써의 배열)' 이 아니라 '리스트 (역시 'SwiftUI' 의 리스트뷰가 아닌 자료구조로써의 리스트)' 로 구현되었음을 알 수 있습니다.
 
