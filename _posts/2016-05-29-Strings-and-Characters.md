@@ -338,7 +338,7 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 
 ### Counting Characters (문자 개수 세기)
 
-문자열에서 `Character` 값의 개수를 가져오려면, 문자열의 `count` 속성을 사용합니다:
+문자열의 `Character` 값 개수를 가져오려면, 문자열의 `count` 속성을 사용합니다:
 
 ```swift
 let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
