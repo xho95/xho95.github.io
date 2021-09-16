@@ -10,6 +10,10 @@ categories: Swift Language Grammar Revision History
 
 ## Document Revision History (문서 개정 이력)
 
+#### 2021-07-14
+
+* [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장 예제를 현재의 동시성 API 를 사용하도록 갱신함.
+
 #### 2021-06-07
 
 * 스위프트 5.5 에서 갱신한 것. 

@@ -343,7 +343,7 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 ```swift
 let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
 print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
-// "unusualMenagerie has 40 characters" 를 인쇄합니다.
+// "unusualMenagerie has 40 characters" 를 인쇄함
 ```
 
 스위프트에서 `Character` 값으로 확장된 자소 덩어리를 사용함' 은 '문자열 이어붙이기와 수정이 항상 문자열 문자 개수에 영향을 주는 것은 아니라는 의미' 임을 기억하기 바랍니다.
@@ -353,17 +353,17 @@ print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
 ```swift
 var word = "cafe"
 print("the number of characters in \(word) is \(word.characters.count)")
-// "the number of characters in cafe is 4" 를 인쇄합니다.
+// "the number of characters in cafe is 4" 를 인쇄함
 
 word += "\u{301}"       // COMBINING ACUTE ACCENT, U+0301
 
 print("the number of characters in \(word) is \(word.characters.count)")
-// "the number of characters in café is 4" 를 인쇄합니다.
+// "the number of characters in café is 4" 를 인쇄함
 ```
 
-> '확장된 자소 덩어리' 는 '다중 유니코드 크기 값' 으로 구성될 수 있습니다. 이는 서로 다른 문자들-및 같은 문자에 대한 서로 다른 표현법들-은 저장을 위해 서로 다른 크기의 메모리가 필수일 수 있다는 것을 의미합니다. 이 때문에, 스위프트의 문자는 문자열 표현 내에서 각각이 같은 크기의 메모리를 차지하지 않습니다. 그 결과, 문자열의 글자 개수는 '확장된 자소 덩어리' 의 경계를 결정하기 위해 문자열 전체에 동작을 반복해야만 계산할 수 있습니다. 특별히 긴 문자열과 작업할 경우, `count` 속성이 해당 문자열의 글자를 결정하기 위해서는 반드시 전체 문자열의 유니코드 크기 값에 동작을 반복해야 함을 깨달아야 합니다.
+> '확장된 자소 덩어리' 는 '여러 개의 유니코드 크기 값' 으로 합성될 수 있습니다. 이는 '서로 다른 문자-와 똑같은 문자에 대한 서로 다른 표현-을 저장하는 데는 서로 다른 메모리 양을 요구할 수 있다' 는 의미입니다. 이 때문에, 스위프트에서 각각의 문자는 문자열 표현법 안에서 똑같은 메모리 크기를 차지하지 않습니다. 그 결과, 문자열의 문자 개수는 '문자열 전체를 반복하여 자신의 확장된 자소 덩어리 경계를 결정' 하지 않고는 계산할 수 없습니다. 특별히 긴 문자열 작업을 한다면, 해당 문자열의 문자를 결정하기 위해선 `count` 속성이 전체 문자열의 유니코드 크기 값을 반드시 반복해야 함을 인식하고 있어야 합니다.
 >
-> `count` 속성이 반환하는 글자 개수는 똑같은 문자를 담은 `NSString` 의 `length` 속성과 항상 같지는 않습니다. `NSString` 의 '길이' 는 문자열 내의 유니코드 식의 '확장된 자소 덩어리' 개수가 아니라 문자열의 UTF-16 표현법 내의 '16-비트 코드 단위'[^16-bit-code-units] 의 개수에 기초한 것입니다.
+> `count` 속성이 반환한 문자 개수는 똑같은 문자를 담은 `NSString` 의 `length` 속성과 항상 똑같지는 않습니다. `NSString` 의 '길이' 는 '문자열의 UTF-16 표현법 안에 있는 16-비트 코드 단위[^16-bit-code-units] 개수에 기초한 것' 이지 '문자열 안의 확장된 유니코드 자소 덩어리 개수' 가 아닙니다.
 
 ### Accessing and Modifying a String (문자열에 접근하고 수정하기)
 
@@ -710,7 +710,7 @@ for scalar in dogString.unicodeScalars {
 
 [^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 잠시동안 죽는 듯한 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 라는 의미로 '수도사' 중에서 수도원에 머무르지 않는 이들을 의미한다고 합니다.
 
-[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는 아래의 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
+[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는, 본문 뒤에 나오는 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
 
 [^surrogate-pair]: '대용 쌍 (surrogate pair)' 는 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. 보다 자세한 내용은 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 참고하기 바랍니다.
 
