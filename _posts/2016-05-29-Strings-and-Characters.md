@@ -346,9 +346,9 @@ print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
 // "unusualMenagerie has 40 characters" 를 인쇄합니다.
 ```
 
-스위프트의 `Character` 값에 '확장된 자소 덩어리' 를 사용함으로 인해 문자열 이어붙이기와 수정이 문자열의 글자 개수에 항상 영향을 주지는 않는다는 점을 기억하기 바랍니다.
+스위프트에서 `Character` 값으로 확장된 자소 덩어리를 사용함' 은 '문자열 이어붙이기와 수정이 항상 문자열 문자 개수에 영향을 주는 것은 아니라는 의미' 임을 기억하기 바랍니다.
 
-예를 들어, 새로운 문자열을 네-글자 단어인 `cafe` 로 초기화하고 나서, 문자열 끝에 `COMBINING ACUTE ACCENT` (`U+0301`) 를 덧붙인 경우, 네 번째 문자로, `e` 대신, `é` 를 가진, 결과 문자열은 여전히 `4` 라는 글자 개수를 가질 것입니다:
+예를 들어, `cafe` 라는 네-글자 단어로 새 문자열을 초기화한 다음, 문자열 끝에 `COMBINING ACUTE ACCENT` (`U+0301`) 를 덧붙이면, 네 번재 문자는, `e` 가 아닌, `é` 가 되며, 결과 문자열은 여전히 `4` 개의 문자를 가질 것입니다:
 
 ```swift
 var word = "cafe"
