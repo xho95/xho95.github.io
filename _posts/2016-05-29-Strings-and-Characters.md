@@ -394,7 +394,7 @@ greeting[index]
 // a
 ```
 
-문자열 범위 밖의 색인 또는 문자열 범위 밖의 색인에 있는 `Character` 에 접근하려는 것은 '실행 시간 에러' 를 일으킬 것입니다.
+문자열 범위 밖 색인이나 문자열 범위 밖 색인에 있는 `Character` 에 접근하려고 하면 '실행 시간 에러' 가 발생할 것입니다.
 
 ```swift
 // greeting[greeting.endIndex]  // 에러
@@ -407,7 +407,7 @@ greeting[index]
 for index in greeting.indices {
   print("\(greeting[index]) ", terminator: "")
 }
-// "G u t e n   T a g ! " 를 인쇄합니다.
+// "G u t e n   T a g ! " 을 인쇄함
 ```
 
 > `startIndex` 와 `endIndex` 속성들 그리고 `index(before:)`, `index(after:)`, 및 `index(_:offsetBy:)` 메소드는 `Collection` 프로토콜을 준수하는 어떤 타입에서도 사용할 수 있습니다. 이는, 여기서 보인, `String` 뿐만 아니라 `Array`, `Dictionary`, 및 `Set` 같은 컬렉션 타입을 포함합니다.
