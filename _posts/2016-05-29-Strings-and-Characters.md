@@ -410,9 +410,9 @@ for index in greeting.indices {
 // "G u t e n   T a g ! " 을 인쇄함
 ```
 
-> `startIndex` 와 `endIndex` 속성들 그리고 `index(before:)`, `index(after:)`, 및 `index(_:offsetBy:)` 메소드는 `Collection` 프로토콜을 준수하는 어떤 타입에서도 사용할 수 있습니다. 이는, 여기서 보인, `String` 뿐만 아니라 `Array`, `Dictionary`, 및 `Set` 같은 컬렉션 타입을 포함합니다.
+> `startIndex` 와 `endIndex` 속성 및 `index(before:)`, `index(after:)`, `index(_:offsetBy:)` 메소드는 `Collection` 프로토콜을 준수하는 어떤 타입에서든 사용할 수 있습니다. 이는 여기서 본, `String` 뿐만 아니라, `Array`, `Dictionary`, 그리고 `Set` 같은 컬렉션 타입도 포함합니다.
 
-#### Inserting and Removing (집어 넣기와 제거하기)
+#### Inserting and Removing (집어넣기와 제거하기)
 
 단일 문자를 문자열의 지정된 색인에 집어 넣으려면, `insert(_:at:)` 메소드를 사용하고, 다른 문자열의 '내용물 (contents)' 을 지정된 색인에 집어 넣으려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
 
