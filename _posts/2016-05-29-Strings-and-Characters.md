@@ -365,9 +365,9 @@ print("the number of characters in \(word) is \(word.characters.count)")
 >
 > `count` 속성이 반환한 문자 개수는 똑같은 문자를 담은 `NSString` 의 `length` 속성과 항상 똑같지는 않습니다. `NSString` 의 '길이' 는 '문자열의 UTF-16 표현법 안에 있는 16-비트 코드 단위[^16-bit-code-units] 개수에 기초한 것' 이지 '문자열 안의 확장된 유니코드 자소 덩어리 개수' 가 아닙니다.
 
-### Accessing and Modifying a String (문자열에 접근하고 수정하기)
+### Accessing and Modifying a String (문자열 접근하기와 수정하기)
 
-문자열은 메소드와 속성, 또는 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여 접근하고 수정합니다.
+문자열은 자신의 메소드와 속성을 통하여, 또는 '첨자 연산 (subscript) 구문' 을 사용하여, 접근하고 수정합니다.
 
 #### String Indices (문자열 색인)
 
