@@ -375,11 +375,11 @@ print("the number of characters in \(word) is \(word.characters.count)")
 
 위에서 언급한 것처럼, 서로 다른 문자를 저장하기 위해 서로 다른 메모리 양을 요구할 수 있으므로, 특별한 위치에 있는 `Character` 를 결정하기 위해선, '해당 `String` 각각의 유니코드 크기 값' 을 반드시 처음부터 끝까지 반복해야 합니다. 이런 이유로, 스위프트 문자열에는 정수 값 색인을 쓸 수 없습니다.[^indexed-by-integer-values]
 
-`startIndex` 속성으로 `String` 의 첫 번째 `Character` 위치에 접근합니다. `endIndex` 속성은 `String` 마지막 문자 그 다음 위치입니다. 그 결과, `endIndex` 속성은 문자열의 첨자 연산으로 유효한 인자가 아닙니다. `String` 이 비었으면, `startIndex` 와 `endIndex` 가 같습니다.
+`startIndex` 속성으로 `String` 의 첫 번째 `Character` 위치에 접근합니다. `endIndex` 속성은 `String` 마지막 문자 그 뒤의 위치입니다. 그 결과, `endIndex` 속성은 문자열의 첨자 연산으로 유효한 인자가 아닙니다. `String` 이 비었으면, `startIndex` 와 `endIndex` 가 같습니다.
 
-`String` 의 `index(before:)` 와 `index(after:)` 메소드를 사용하여 주어진 색인 전후의 색인에 접근합니다. 주어진 색인에서 멀리 떨어진 색인에 접근하려면, 이러한 메소드를 여러 번 호출하는 대신 `index(_:offsetBy:)` 메소드를 사용할 수 있습니다.
+주어진 색인의 이전 및 이후 색인에는 `String` 의 `index(before:)` 와 `index(after:)` 메소드로 접근합니다. 주어진 색인에서 더 멀리 떨어진 색인에 접근하려면, 이 메소드를 여러 번 호출하는 대신 `index(_:offsetBy:)` 메소드를 사용할 수 있습니다.
 
-특정 `String` 색인에 있는 `Character` 에 접근하기 위해 '첨자 연산 구문 표현' 을 사용할 수 있습니다.[^particular-index]
+'첨자 연산 구문' 을 사용하면 '`String` 에서 특별한 색인의 `Character` 에 접근' 할 수 있습니다.[^subscript-syntax]
 
 ```swift
 let greeting = "Guten Tag!"
@@ -702,7 +702,7 @@ for scalar in dogString.unicodeScalars {
 
 [^indexed-by-integer-values]: 이는, 예를 들어 `var myString: String` 이라고 할 때, `myString[3]` 처럼 '정수 색인으로 특정 문자에 임의 접근 (random access) 할 순 없다' 는 의미입니다.
 
-[^particular-index]: 여기서 사용하는 '첨자 연산 구문 표현' 은 '배열' 자료구조에서 사용하는 '임의 접근 (random access)' 과는 다른 것입니다. 항상 처음과 끝에서 시작해서 순차적으로 탐색해 가는 '리스트' 자료구조 처럼 동작하는 것입니다.
+[^subscript-syntax]: 여기서 사용하는 '첨자 연산 구문' 은, '배열에서 사용하는 임의 접근 (random access) 방식' 이 아니라, '처음과 끝에서 시작해서 순차적으로 탐색하는 '리스트 방식' 으로 동작합니다.
 
 [^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 는 '표준적으로' 라고 옮길 수도 있는데, 이 역시 '교회 법' 이 하나의 '표준' 이기 때문에 유래한 의미입니다.
 
