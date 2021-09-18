@@ -410,33 +410,33 @@ for index in greeting.indices {
 // "G u t e n   T a g ! " 을 인쇄함
 ```
 
-> `startIndex` 와 `endIndex` 속성 및 `index(before:)`, `index(after:)`, `index(_:offsetBy:)` 메소드는 `Collection` 프로토콜을 준수하는 어떤 타입에서든 사용할 수 있습니다. 이는 여기서 본, `String` 뿐만 아니라, `Array`, `Dictionary`, 그리고 `Set` 같은 컬렉션 타입도 포함합니다.
+> `startIndex` 와 `endIndex` 속성 및 `index(before:)`, `index(after:)`, `index(_:offsetBy:)` 메소드는 `Collection` 프로토콜을 준수하는 어떤 타입에서든 사용할 수 있습니다. 이는 여기서 본, `String` 뿐만 아니라, `Array`, `Dictionary`, 그리고 `Set` 같은 '집합체 (collection) 타입' 을 포함합니다.
 
 #### Inserting and Removing (집어넣기와 제거하기)
 
-단일 문자를 문자열의 지정된 색인에 집어 넣으려면, `insert(_:at:)` 메소드를 사용하고, 다른 문자열의 '내용물 (contents)' 을 지정된 색인에 집어 넣으려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
+문자열의 특정 색인 위치에 단일 문자를 집어 넣으려면, `insert(_:at:)` 메소드를 사용하며, 특정 색인 위치에 '또 다른 문자열' 을 집어 넣으려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
 
 ```swift
 var welcome = "hello"
 welcome.insert("!", at: welcome.endIndex)
-// welcome 은 이제 "hello!" 입니다.
+// welcome 은 이제 "hello!" 임
 
 welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
-// welcome 은 이제 "hello there!" 입니다.
+// welcome 은 이제 "hello there!" 임
 ```
 
-단일 문자를 문자열의 지정된 색인에서 제거하려면, `remove(at:)` 메소드를 사용하고, 지정된 범위의 '하위 문자열 (substring)' 을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
+문자열의 특정 색인 위체에서 단일 문자를 제거하려면, `remove(at:)` 메소드를 사용하며, 특정 범위의 '하위 문자열' 을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
 
 ```swift
 welcome.remove(at: welcome.index(before: welcome.endIndex))
-// welcome 은 이제 "hello there" 입니다.
+// welcome 은 이제 "hello there" 임
 
 let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
 welcome.removeSubrange(range)
-// welcome 은 이제 "hello" 입니다.
+// welcome 은 이제 "hello" 임
 ```
 
-> `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 그리고 `removeSubrange(_:)` 메소드는 `RangeReplaceableCollection` 프로토콜을 준수하는 어떤 타입에서도 사용할 수 있습니다. 이는, 여기서 보인, `String` 뿐만 아니라 `Array`, `Dictionary`, 및 `Set` 같은 컬렉션 타입을 포함합니다.
+> `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 및 `removeSubrange(_:)` 메소드는 `RangeReplaceableCollection` 프로토콜을 준수하는 어떤 타입에서든 사용할 수 있습니다. 이는, 여기서 본, `String` 뿐만 아니라, `Array`, `Dictionary`, 그리고 `Set` 같은 '집합체 (collection) 타입' 을 포함합니다.
 
 ### Substrings (하위 문자열)
 
