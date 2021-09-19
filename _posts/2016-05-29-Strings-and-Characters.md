@@ -458,7 +458,7 @@ let newString = String(beginning)
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-substrings.jpg)
 
-> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 '문자열 조작 (string-manipulation) 함수' 의 경우 `StringProtocol` 값을 받는 것이 대체로 편리하다는 것을 의미합니다. 그런 함수는 `String` 이나 `Substring` 값 어느 것으로도 호출할 수 있습니다.
+> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 '문자열 조작 (manipulation) 함수가 `StringProtocol` 값을 받을 경우 편리하다' 는 의미입니다. 그런 함수는 `String` 이든 `Substring` 값이든 호출할 수 있습니다.
 
 ### Comparing Strings (문자열 비교하기)
 
