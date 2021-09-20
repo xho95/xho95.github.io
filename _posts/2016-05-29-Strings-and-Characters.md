@@ -462,11 +462,11 @@ let newString = String(beginning)
 
 ### Comparing Strings (문자열 비교하기)
 
-스위프트는 '문장 (textual) 값 비교' 로: '문자열 및 문자 같음 (equality)', '접두사 같음', '접미사 같음' 이라는 세 가지 방식을 제공합니다.
+스위프트는 '문장 (textual) 값 비교' 로: '문자열 및 문자 같음 (equality), 접두사 같음, 접미사 같음' 이라는 세 가지 방식을 제공합니다.
 
-#### String and Character Equality (문자열과 문자의 같음 비교)
+#### String and Character Equality (문자열 및 문자 같음)
 
-'문자열과 문자의 같음 비교' 는, [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 에서 설명한 것처럼, "같음 (equal to)" 연산자 (`==`) 와 "같지 않음 (not equal to)" 연산자 (`!=`) 로 검사합니다:
+'문자열 및 문자의 같음' 은, [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 에서 설명한 것처럼, "같음 (equal to)" 연산자 (`==`) 와 "같지 않음 (not equal to)" 연산자 (`!=`) 로 검사합니다:
 
 ```swift
 let quotation = "We're a lot alike, you and I."
@@ -474,7 +474,7 @@ let sameQuotation = "We're a lot alike, you and I."
 if quotation == sameQuotation {
   print("These two strings are considered equal")
 }
-// "These two strings are considered equal." 을 인쇄합니다.
+// "These two strings are considered equal." 을 인쇄함
 ```
 
 두 `String` 값들 (또는 두 `Character` 값들) 은 그들의 '확장된 자소 덩어리' 가 '_법적으로 동치 (canonically equivalent)_'[^canonically] 이면 같다고 간주합니다. 확장된 자소 덩어리는 그들이, 심지어 그 이면에서는 서로 다른 '유니코드 크기 값' 으로 구성되었다 할지라도, '언어적으로 (linguistic)' 같은 의미와 형태를 가지면 '법적으로 동치' 입니다.
@@ -561,7 +561,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 // "6 mansion scenes; 2 cell scenes" 를 인쇄합니다.
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 있는 '확장된 자소 덩어리' 사이를, [String and Character Equality (문자열과 문자의 같음 비교)](#string-and-character-equality-문자열과-문자의-같음-비교) 에서 설명한 것처럼, 문자와 문자끼리 법적 동치인지를 비교하여 수행합니다.
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 있는 '확장된 자소 덩어리' 사이를, [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명한 것처럼, 문자와 문자끼리 법적 동치인지를 비교하여 수행합니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현법)
 
