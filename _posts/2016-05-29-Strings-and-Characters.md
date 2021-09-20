@@ -462,7 +462,7 @@ let newString = String(beginning)
 
 ### Comparing Strings (문자열 비교하기)
 
-스위프트는 '문장 형태의 (textual) 값' 을 비교하는 세 가지 방법을 제공합니다: '문자열과 문자의 같음 비교 (string and character equality)', '접두사 같음 비교 (prefix equality)', '접미사 같음 비교 (suffix equality)' 이 그것입니다.
+스위프트는 '문장 (textual) 값 비교' 로: '문자열 및 문자 같음 (equality)', '접두사 같음', '접미사 같음' 이라는 세 가지 방식을 제공합니다.
 
 #### String and Character Equality (문자열과 문자의 같음 비교)
 
