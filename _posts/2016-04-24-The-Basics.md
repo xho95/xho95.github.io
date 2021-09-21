@@ -573,7 +573,7 @@ if let actualNumber = Int(possibleNumber) {
 
 상수와 변수 둘 다 옵셔널 연결과 사용할 수 있습니다. `actualNumber` 의 값을 `if` 문 첫 번째 분기 안에서 조작하고 싶으면, `if var actualNumber` 라고 대신 작성하면, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용 가능하게 할 수 있을 것입니다.
 
-쉼표로 구분하여, 필요한 만큼 '많은 옵셔널 연결과 불리언 조건' 을, 단일 `if` 문 안에 포함할 수 있습니다. 옵셔널 연결의 어떤 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 라고 평가한다면, `if` 문 조건 전체가 `false` 인 것으로 고려합니다. 다음 `if` 문들은 서로 '동치 (equivalent)' 입니다:
+쉼표로 구분하여, 필요한 만큼 '많은 옵셔널 연결과 불리언 조건' 을, 단일 `if` 문 안에 포함할 수 있습니다. 옵셔널 연결의 어떤 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 라고 평가한다면, `if` 문 조건 전체가 `false` 인 것으로 고려합니다. 다음 `if` 문들은 서로 '같은 값' 입니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
