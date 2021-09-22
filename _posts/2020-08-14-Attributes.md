@@ -94,7 +94,7 @@ categories: Swift Language Grammar Attribute
   typealias MyProtocol = MyRenamedProtocol
   ```
 
-서로 다른 플랫폼 및 서로 다른 스위프트 버전에 대해서 '선언의 사용 가능성' 을 지정하기 위해 '단일 선언' 에 '여러 개의 `available` 특성' 을 적용할 수 있습니다. '특성에서 지정한 플랫폼이나 언어 버전' 이 '현재 대상' 과 일치하지 않으면 '`available` 특성을 적용한 선언' 을 무시합니다. '여러 개의 `available` 특성' 을 사용할 경우, '실제 (effective) 사용 가능성' 은 '플랫폼과 스위프트 사용 가능성을 조합' 한 것입니다.
+서로 다른 플랫폼 및 서로 다른 스위프트 버전에 대해서 '선언의 사용 가능성' 을 지정하기 위해 '단일 선언' 에 '여러 개의 `available` 특성' 을 적용할 수 있습니다. '특성에서 지정한 플랫폼이나 언어 버전' 이 '현재 대상' 과 일치하지 않으면 '`available` 특성을 적용한 선언' 을 무시합니다. 여러 개의 `available` 특성을 사용할 경우의, 사용 가능성은 사실상 '플랫폼 및 스위프트 사용 가능성을 조합한 것' 입니다.
 
 `available` 특성이 플랫폼 및 언어 이름 인자에 더하여 `introduced` 인자만 지정할 경우, 다음 '줄임 구문 (shorhand syntax)' 을 대신 사용할 수 있습니다:
 
@@ -502,7 +502,7 @@ struct ArrayBuilder {
 
 '결과-제작자 구문을 사용한 코드' 를 '결과 제작자 타입의 정적 메소드를 호출하는 코드' 로 바꾸기 위해 다음의 구문 변형을 재귀적으로 적용합니다:
 
-* 결과 제작자가 `buildExpression(_:)` 메소드를 가지고 있으면, 각각의 표현식은 해당 메소드 호출이 됩니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 서로 '동치 (equivalent)' 입니다:
+* 결과 제작자가 `buildExpression(_:)` 메소드를 가지고 있으면, 각각의 표현식은 해당 메소드 호출이 됩니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 서로 '같은 값' 입니다:
 
 ```swift
 @ArrayBuilder var builderNumber: [Int] { 10 }
@@ -593,7 +593,7 @@ extension DrawingBuilder {
 
 * 분기문은 `buildEither(first:)` 와 `buildEither(second:)` 를 '연속으로 중첩한 호출' 들이 됩니다. '구문 조건과 case 값' 들은 '이진 트리 (binary tree)' 의 '잎 노드 (leaf nodes)' 에 대응하며, '구문' 은 '뿌리 노드 (root node) 에서 해당 잎 노드로의 경로' 를 따라가는 `buildEither` 메소드의 '중첩 호출' 이 됩니다.
 
-예를 들어, '세 개의 case 절을 가진 switch 문' 을 작성하면, 컴파일러가 '세 개의 잎 노드를 가진 이진 트리' 를 사용합니다. 마찬가지로, '뿌리 노드에서 두 번째 case 절로의 경로' 는 "두 번째 자식" 인 다음 "첫 번째 자식" 이기 때문에, '해당 case 절' 은 `buildEither(first: buildEither(second: ...))` 와 같은 '중첩 호출' 이 됩니다. 다음 선언은 서로 '동치 (equivalent)' 입니다:  
+예를 들어, '세 개의 case 절을 가진 switch 문' 을 작성하면, 컴파일러가 '세 개의 잎 노드를 가진 이진 트리' 를 사용합니다. 마찬가지로, '뿌리 노드에서 두 번째 case 절로의 경로' 는 "두 번째 자식" 인 다음 "첫 번째 자식" 이기 때문에, '해당 case 절' 은 `buildEither(first: buildEither(second: ...))` 와 같은 '중첩 호출' 이 됩니다. 다음 선언은 서로 '같은 값' 입니다:  
 
 ```swift
 let someNumber = 19

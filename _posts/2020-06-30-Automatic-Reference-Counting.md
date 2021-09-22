@@ -47,7 +47,7 @@ class Person {
 
 `Person` 클래스는 인스턴스의 `name` 속성을 설정하고 초기화가 진행 중임을 메시지로 인쇄하는 초기자를 가지고 있습니다. `Person` 클래스는 클래스 인스턴스를 해제할 때 메시지를 인쇄하는 '정리자 (deinitializer)'[^deinitializer] 도 가지고 있습니다.
 
-그 다음 코드 조각은, 이어지는 코드에서 새로운 `Person` 인스턴스에 대한 '다중 참조'[^multiple-references] 를 설정하게 될, `Person?` 타입의 변수 세 개를 정의합니다. 이 변수들은 (`Person` 이 아니라, `Person?` 이라는) 옵셔널 타입이기 때문에, 값이 자동으로 `nil` 로 초기화되어, 현재는 `Person` 인스턴스를 참조하지 않습니다.
+그 다음 코드 조각은, 뒤이은 코드 조각에서 새로운 `Person` 인스턴스에 대한 '다중 참조'[^multiple-references] 를 설정하게 될, `Person?` 타입의 변수 세 개를 정의합니다. 이 변수들은 (`Person` 이 아니라, `Person?` 이라는) 옵셔널 타입이기 때문에, 값이 자동으로 `nil` 로 초기화되어, 현재는 `Person` 인스턴스를 참조하지 않습니다.
 
 ```swift
 var reference1: Person?

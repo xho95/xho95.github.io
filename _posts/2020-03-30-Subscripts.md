@@ -120,7 +120,7 @@ struct Matrix {
 var matrix = Matrix(rows: 2, columns: 2)
 ```
 
-위 예제는 두 개의 행과 두 개의 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 실제로, 맨 왼쪽 위부터 오른쪽 아래로, '행렬을 납작하게 한 (flattened) 버전' 입니다[^flattend-version]:
+위 예제는 두 개의 행과 두 개의 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 사실상, 맨 왼쪽 위부터 오른쪽 아래로, '행렬을 납작하게 한 (flattened) 버전' 입니다[^flattend-version]:
 
 ![flattened-version-of-the-matrix](/assets/Swift/Swift-Programming-Language/Subscripts-flattened-version-matrix.jpg)
 

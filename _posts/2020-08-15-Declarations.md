@@ -386,7 +386,7 @@ f(7)      // 무효, 인자 이름표 누락
 
 '함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한 또 다른 이름입니다-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 도 '함수-처럼-호출하는 메소드' 이름으로 유효합니다.
 
-다음 함수 호출은 서로 '동치 (equivalent)' 입니다:
+다음 함수 호출은 서로 '같은 값' 입니다:
 
 ```swift
 struct CallableStruct {
@@ -778,7 +778,7 @@ protocol SomeProtocol: AnyObject {
 
 프로토콜은 `associatedtype` 키워드로 '결합 타입 (associated types)' 을 선언합니다. '결합 타입' 은 프로토콜 선언에서 사용하는 타입에 대한 '별명 (alias)' 을 제공합니다. '결합 타입' 은 '일반화 (generic) 매개 변수 절' 에 있는 '타입 매개 변수' 와 비슷하지만, 자신을 선언한 프로토콜의 `Self` 와 결합되어 있습니다. 해당 상황에서는, `Self` 가 '프로토콜을 준수하는 최종 결과 (eventual) 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
 
-'결합 타입' 을 '재선언 (redeclaring)' 하지 않고도, 다른 프로토콜에서 상속한 '결합 타입' 에 '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화 (generic) `where` 절' 을 사용합니다. 예를 들어, 아래의 `SubProtocol` 선언들은 서로 '동치 (equivalent)' 입니다:
+'결합 타입' 을 '재선언 (redeclaring)' 하지 않고도, 다른 프로토콜에서 상속한 '결합 타입' 에 '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화 (generic) `where` 절' 을 사용합니다. 예를 들어, 아래의 `SubProtocol` 선언들은 서로 '같은 값' 입니다:
 
 ```swift
 protocol SomeProtocol {

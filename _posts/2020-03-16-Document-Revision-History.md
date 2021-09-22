@@ -10,6 +10,10 @@ categories: Swift Language Grammar Revision History
 
 ## Document Revision History (문서 개정 이력)
 
+#### 2021-07-14
+
+* [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장 예제를 현재의 동시성 API 를 사용하도록 갱신함.
+
 #### 2021-06-07
 
 * 스위프트 5.5 에서 갱신한 것. 
@@ -277,7 +281,7 @@ categories: Swift Language Grammar Revision History
 * 이제 더 이상 `String` 과 `Character` 값을 '덧셈 연산자 (`+`)' 나 '더하기 할당 연산자 (`+=`)' 로 조합할 수 없다는 사실을 반영하기 위해 [Concatenating Strings and Characters (문자열과 문자 이어붙이기)](% post_url 2016-05-29-Strings-and-Characters %}#concatenating-strings-and-characters-문자열과-문자-이어붙이기) 부분을 갱신함. 이러한 연산자들은 이제 `String` 값에만 사용됨. 단일 `Character` 값을 문자열 끝에 덧붙이려면 `String` 타입의 `append(_:)` 메소드를 사용할 것.
 * `availability` 특성에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 추가함.
 * [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 은 이제, '옵셔널 `Bool` 값' 과 작업할 때의 혼동을 피하기 위해, 값을 가지고 있을 때는 `true` 로 그렇지 않을 때는 `false` 라는 식의 암시적인 평가를 더 이상 하지 않음. 옵셔널이 값을 담고 있는지 알아내려면, 그 대신, `nil` 인지를 `==` 및 `!=` 연산자로 명시적으로 검사하기 바람.
-* 스위프트는 이제, 옵셔널의 값이 존재하면 포장을 풀고, 옵셔널이 `nil` 이면 '기본 값' 을 반환하는, [Nil-Coalescing Operator (Nil-통합 연산자)]({% post_url 2016-04-27-Basic-Operators %}#nil-coalescing-operator-nil-통합-연산자) (`a ?? b`) 를 가짐.
+* 스위프트는 이제, 옵셔널의 값이 존재하면 포장을 풀고, 옵셔널이 `nil` 이면 '기본 값' 을 반환하는, [Nil-Coalescing Operator (Nil-합체 연산자)]({% post_url 2016-04-27-Basic-Operators %}#nil-coalescing-operator-nil-합체-연산자) (`a ?? b`) 를 가짐.
 * '문자열과 문자 비교' 및 '접두사 / 접미사 비교' 는 이제 '확장된 자소 덩어리 (extended grapheme clusters)' 의 '유니코드 값이 법적으로 동등함 (Unicode canonical equivalence)'[^canonical] 에 기초한다는 것을 반영하고 또 증명해 보이기 위해 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 갱신하고 확장함.
 * 이제 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 를 통하여 속성에 값을 설정하는 것을 시도하거나, 또는 첨자 연산에 할당하거나, 아니면 '변경 (mutating) 메소드' 나 '변경 연산자' 호출할 수 있음. 그에 따라 [Accessing Properties Through Optional Chaining (옵셔널 연쇄를 통해 속성에 접근하기)]({% post_url 2020-06-17-Optional-Chaining %}#accessing-properties-through-optional-chaining-옵셔널-연쇄를-통해-속성에-접근하기) 에 대한 정보를 갱신했으며, 속성의 설정을 성공했음을 검사하는 방법을 보여주기 위해 [Calling Methods Through Optional Chaining (옵셔널 연쇄를 통해 메소드 호출하기)]({% post_url 2020-06-17-Optional-Chaining %}#calling-methods-through-optional-chaining-옵셔널-연쇄를-통해-메소드-호출하기) 에 있는 메소드 호출 성공을 검사하는 예제를 확장함.
 * '옵셔널 연쇄 (optional chaining)' 을 통하여 [Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산에 접근하기)]({% post_url 2020-06-17-Optional-Chaining %}#accessing-subscripts-of-optional-type-옵셔널-타입의-첨자-연산에-접근하기) 에 대하여 새로운 부분을 추가함.
