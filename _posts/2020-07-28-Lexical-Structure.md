@@ -24,7 +24,7 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 > GRAMMAR OF WHITESPACE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
 
-### Idenfifiers (식별자)
+### Identifiers (식별자)
 
 _식별자 (identifiers)_ 는 'A' 에서 'Z' 까지의 대소문자 , 밑줄 (`_`), '다국어 기본 평면 (Basic Multilingual Plane)'[^BMP] 에 있는 '조합하지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)'[^noncombining-alphanumeric], 또는 '다국어 기본 평면' 밖에 있으면서 '사용자 영역 (Private Use Area)'[^PUA] 안에 있지 않은 문자로 시작합니다. 첫 번째 문자 뒤로는, '숫자 (digits)'[^digits] 와 '조합한 (combining) 유니코드 문자' 도 올 수 있습니다.
 

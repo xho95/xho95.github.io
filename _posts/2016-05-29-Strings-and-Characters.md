@@ -462,7 +462,7 @@ let newString = String(beginning)
 
 ### Comparing Strings (문자열 비교하기)
 
-스위프트는: '문자열 및 문자 같음 (equality), 접두사 같음, 접미사 같음' 이라는 세 가지 '문장 (textual) 값' 비교 방식을 제공합니다.
+스위프트는 '문장 값 비교' 를 위해: '문자열 및 문자 같음 (equality), 접두사 같음, 접미사 같음' 이라는 세 가지 방식을 제공합니다.
 
 #### String and Character Equality (문자열 및 문자 같음)
 
@@ -477,7 +477,7 @@ if quotation == sameQuotation {
 // "These two strings are considered equal." 을 인쇄함
 ```
 
-두 `String` 값 (또는 두 `Character` 값) 은 자신들의 '확장된 자소 덩어리' 가 _법적으로 같은 값 (canonically equivalent)_[^canonically] 이면 서로 같다고 고려합니다. 확장된 자소 덩어리는, 실제로는 서로 다른 유니코드 크기 값으로 합성한 경우에도, 언어 (linguistic) 의미와 형태가 똑같으면 '법적으로 같은 값' 입니다.
+두 `String` 값 (또는 두 `Character` 값) 은 '자신들의 확장된 자소 덩어리가 _법적으로 같은 값 (canonically equivalent)_[^canonically] 이면 같다' 고 고려합니다. 실제로는, 확장된 자소 덩어리를, 서로 다른 유니코드 크기 값으로 합성한 경우라도, '언어의 (linguistic) 의미와 형태가 똑같으면 법적으로 같은 값' 입니다.
 
 예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 `LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 붙은 것과 '법적으로 동치' 입니다. 이 두 '확장된 자소 덩어리' 모두 문자 `é` 를 표현하는 방식으로 유효하므로, 이들은 '법적으로 동치' 라고 간주할 수 있습니다:
 
