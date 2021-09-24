@@ -477,24 +477,24 @@ if quotation == sameQuotation {
 // "These two strings are considered equal." 을 인쇄함
 ```
 
-두 `String` 값 (또는 두 `Character` 값) 은 '자신들의 확장된 자소 덩어리가 _법적으로 같은 값 (canonically equivalent)_[^canonically] 이면 같다' 고 고려합니다. 실제로는, 확장된 자소 덩어리를, 서로 다른 유니코드 크기 값으로 합성한 경우라도, '언어의 (linguistic) 의미와 형태가 똑같으면 법적으로 같은 값' 입니다.
+두 `String` 값 (또는 두 `Character` 값) 은 '자신들의 확장된 자소 덩어리가 _법적으로 같은 값 (canonically equivalent)_[^canonically] 이면 같다' 고 고려합니다. 확장된 자소 덩어리가, 실제로는 서로 다른 유니코드 크기 값으로 합성한 경우에도, '언어의 (linguistic) 의미와 형태가 똑같으면 법적으로 같은 값' 입니다.
 
-예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 `LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 붙은 것과 '법적으로 동치' 입니다. 이 두 '확장된 자소 덩어리' 모두 문자 `é` 를 표현하는 방식으로 유효하므로, 이들은 '법적으로 동치' 라고 간주할 수 있습니다:
+예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 '`LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 있는 것' 과 법적으로 같습니다. 이 '확장된 자소 덩어리' 둘 다 `é` 라는 문자를 나타내는 유효한 방식이므로, 법적으로 같은 값이라고 고려합니다:
 
 ```swift
-// "Voulez-vous un café?" 가 LATIN SMALL LETTER E WITH ACUTE 를 사용한 경우
+// LATIN SMALL LETTER E WITH ACUTE 를 사용한 "Voulez-vous un café?"
 let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
 
-// "Voulez-vous un café?" 가 LATIN SMALL LETTER E 와 COMBINING ACUTE ACCENT 를 사용한 경우
+// LATIN SMALL LETTER E 와 COMBINING ACUTE ACCENT 를 사용한 "Voulez-vous un café?"
 let combinedEAccuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
 
 if eAcuteQuestion == combinedEAccuteQuestion {
     print("These two strings are considered equal")
 }
-// "These two strings are considered equal" 를 인쇄합니다.
+// "These two strings are considered equal" 를 인쇄함
 ```
 
-거꾸로 말해서, 영어에서 사용된, `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는, 러시아어에서 사용된, `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 동치가 _아닙니다 (not)_. 이 문자들은 보기에는 비슷하지만, 언어적으로 같은 의미를 가지지 않습니다:
+반대로 말해서, 영어에 있는, `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는, 러시아어에 있는, `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 같은 값이 _아닙니다 (not)_. 문자가 보기에는 비슷하지만, 언어의 의미가 똑같지는 않습니다:
 
 ```swift
 let latinCapitalLetterA: Character = "\u{41}"
@@ -504,10 +504,10 @@ let cyrillicCapitalLetterA: Character = "\u{0410}"
 if latinCapitalLetterA != cyrillicCapitalLetterA {
   print("These two characters are not equivalent")
 }
-// "These two characters are not equivalent" 를 인쇄합니다.
+// "These two characters are not equivalent" 를 인쇄함
 ```
 
-> 스위프트의 문자열과 문자 비교 연산은 '지역에-민감 (locale-sensitive)'[^locale-sensitive] 하지 않습니다.
+> 스위프트의 문자열 및 문자 비교는 '지역에-민감 (locale-sensitive)'[^locale-sensitive] 하지 않습니다.
 
 #### Prefix and Suffix Equality (접두사와 접미사의 같음 비교)
 
@@ -686,7 +686,7 @@ for scalar in dogString.unicodeScalars {
 
 [^extended-grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자는 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 덩어리로 되어 있다는 의미입니다. '확장된 자소 덩어리' 자체는 본문 뒤에서 좀 더 자세히 설명합니다.
 
-[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive)' 하다는 말은, 비교 연산을 수행하기 위해 '지역 정보 (locale) 객체' 를 요구하는 것을 말한다고 합니다. 스위프트의 문자 비교 연산은 '지역에-민감' 하지 않으므로, 이 '지역 정보 객체' 를 요구하지 않습니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 의 내용을 참고하기 바랍니다.
+[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 참고하기 바랍니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
 [^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 참고하기 바랍니다.
 
