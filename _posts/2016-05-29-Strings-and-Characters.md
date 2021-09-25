@@ -167,7 +167,7 @@ constantString += " and another Highlander"
 
 속을 들여다보면, 스위프트 컴파일러는 문자열 사용을 최적화 하므로 실제 복사는 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 값 타입인 문자열과 작업할 때는 항상 훌륭한 성능을 얻게 된다는 의미입니다.
 
-### Working with Characters (문자와 작업하기)
+### Working with Characters (문자 작업하기)
 
 `for-in` 반복문으로 문자열에 동작을 반복함으로써 `String` 의 개별 `Character` 값에 접근할 수 있습니다:
 
@@ -567,7 +567,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 문서 파일이나 그 외 어떤 저장 공간에서 작성한 유니코드 문자열은, 해당 문자열의 유니코드 크기 값이 '유니코드에서-정의한 여러 _인코딩 형식 (encording forms)_ 중 하나로 부호화 (encoding)' 됩니다. 각 형식은 문자열을 _코드 단위 (code units)_ 라는 작은 조각으로 부호화 합니다. 이는 (문자열을 8-비트 코드 단위로 부호화 하는) 'UTF-8 인코딩 형식, (문자열을 16-비트 코드 단위로 부호화 하는) UTF-16 인코딩 형식 , 그리고 (문자열을 32-비트 코드 단위로 부호화 하는) UTF-32 인코딩 형식' 을 포함합니다.
 
-스위프트는 문자열의 '유니코드 표현법' 에 접근하는 여러 가지 방법을 제공합니다. 문자열은, 개별 `Character` 값을 '유니코드 방식의 '확장된 자소 덩어리' 로 접근하기 위해, `for`-`in` 구문으로 동작을 반복할 수 있습니다. 이 과정은 [Working with Characters (문자와 작업하기)](#working-with-characters-문자와-작업하기) 에서 설명했습니다.
+스위프트는 서로 다른 여러 가지의 '문자열 유니코드 표현법' 접근 방식을 제공합니다. 문자열을 `for`-`in` 문으로 반복하면, 개별 `Character` 값을 '확장된 유니코드 자소 덩어리' 로 접근할 수 있습니다. 이 과정은 [Working with Characters (문자 작업하기)](#working-with-characters-문자-작업하기) 에서 설명합니다.
 
 또 다른 방법으로, 세 가지 다른 '유니코드를-따르는 표현법 (Unicode-compliant representations)' 으로 `String` 값에 접근합니다:
 
