@@ -509,11 +509,11 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 
 > 스위프트의 문자열 및 문자 비교는 '지역에-민감 (locale-sensitive)'[^locale-sensitive] 하지 않습니다.
 
-#### Prefix and Suffix Equality (접두사와 접미사의 같음 비교)
+#### Prefix and Suffix Equality (접두사 및 접미사 같음)
 
-문자열이 특정 문자열의 접두사나 접미사를 가지고 있는지 검사하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하는데, 이 둘 모두 `String` 타입의 단일 인자를 취하고 '불리언 (Boolean)' 값을 반환합니다.
+문자열이 특별한 문자열 접두사 또는 접미사를 가지는 지 검사하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하는 데, 이 둘 모두 `String` 타입인 단일 인자를 취하며 '불리언 값' 을 반환합니다.
 
-아래 예제는 셰익스피어의 _로미오와 줄리엣 (Romeo and Juliet)_ 에 있는 첫 두 '막 (acts)' 의 각 '장(면; scene)' 을 표현하는 문자열 배열을 고려합니다:
+아래 예제는 셰익스피어의 _로미오와 줄리엣 (Romeo and Juliet)_ '첫 두 막 (acts) 에 있는 장 (scene) 들의 위치' 를 나타내는 문자열 배열을 고려합니다:
 
 ```swift
 let romeoAndJuliet = [
@@ -531,7 +531,7 @@ let romeoAndJuliet = [
 ]
 ```
 
-`hasPrefix(_:)` 메소드를 `romeoAndJuliet` 배열에 사용하면 '희곡 (play)' 의 '제 1막' 에 있는 '장(면)' 의 수를 셀 수 있습니다:
+`romeoAndJuliet` 배열과 `hasPrefix(_:)` 메소드를 사용하면 '희곡 (play) 제 1막의 장(면) 개수' 를 셀 수 있습니다:
 
 ```swift
 var act1SceneCount = 0
@@ -542,10 +542,10 @@ for scene in romeoAndJuliet {
   }
 }
 print("There are \(act1SceneCount) scenes in Act 1")
-// "There are 5 scenes in Act 1" 를 인쇄합니다.
+// "There are 5 scenes in Act 1" 를 인쇄함
 ```
 
-이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하면 '캐퓰렛 저택 (Capulet's mansion)'[^capulet] 과 '로렌스 수사의 작은 방 (Friar Lawrence's cell)'[^friar] 인 곳 또는 이 곳 주변에서 일어나는 '장(면)' 의 수를 셀 수 있습니다.:
+이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하면 '캐퓰렛 저택 (Capulet's mansion)[^capulet] 과 로렌스 수사의 작은 방 (Friar Lawrence's cell)[^friar] 안 및 그 주변에서 일어나는 장(면) 의 개수' 를 셀 수 있습니다:
 
 ```swift
 var mansionCount = 0
@@ -558,10 +558,10 @@ for scene in romeoAndJuliet {
   }
 }
 print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
-// "6 mansion scenes; 2 cell scenes" 를 인쇄합니다.
+// "6 mansion scenes; 2 cell scenes" 를 인쇄함
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 있는 '확장된 자소 덩어리' 사이를, [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명한 것처럼, 문자와 문자끼리 법적 동치인지를 비교하여 수행합니다.
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는, [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명한 것처럼, '각각의 문자열에 있는 확장된 자소 덩어리 사이에 문자-끼리 법적으로 같은 지의 비교' 를 수행합니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현법)
 
@@ -706,7 +706,7 @@ for scalar in dogString.unicodeScalars {
 
 [^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 는 '표준적으로' 라고 옮길 수도 있는데, 이 역시 '교회 법' 이 하나의 '표준' 이기 때문에 유래한 의미입니다.
 
-[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 성 (가문 이름) 입니다. 즉, 줄리엣의 본명이 '줄리엣 캐퓰렛' 입니다.
+[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 '성 (가문 이름)' 입니다. 즉, 줄리엣의 본명이 '줄리엣 캐퓰렛' 입니다.
 
 [^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 잠시동안 죽는 듯한 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 라는 의미로 '수도사' 중에서 수도원에 머무르지 않는 이들을 의미한다고 합니다.
 
