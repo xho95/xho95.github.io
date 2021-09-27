@@ -583,7 +583,7 @@ let dogString = "Dog!!🐶"
 
 #### UTF-8 Representation (UTF-8 표현법)
 
-`String` 을 UTF-8 표현법으로 접근하려면 자신의 `utf8` 속성에 동작을 반복합니다. 이 속성은 `String.UTF8View` 타입으로, '문자열에 대한 UTF-8 표현법의 각 바이트 하나가, 부호없는 8-비트 (`UInt8`) 값인 집합체 (collection)' 입니다:
+`String` 을 UTF-8 표현법으로 접근하려면 `utf8` 속성에 동작을 반복합니다. 이 속성은 `String.UTF8View` 타입으로, '문자열에 대한 UTF-8 표현법의 각 바이트 하나가, 부호없는 8-비트 (`UInt8`) 값인 집합체 (collection)' 입니다:
 
 ![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
@@ -595,11 +595,11 @@ print("")
 // "68 111 103 226 128 188 240 159 144 182 " 를 인쇄함
 ```
 
-위 예제에서, (`68`, `111`, `103` 라는) 처음 세 개의 10진 `codeUnit` 값은, UTF-8 표현법이 ASCII 표현법과 똑같은, 문자인 `D`, `o`, 및 `g` 를 나타냅니다. (`226`, `128`, `188` 라는) 그 다음 세 개의 10진 `codeUnit` 값은 '`DOUBLE EXCLAMATION MARK` 문자의 세-바이트짜리 UTF-8 표현법' 입니다. (`240`, `159`, `144`, `182` 라는) 마지막 네 `codeUnit` 값은 '`DOG FACE` 문자의 네-바이트 짜리 UTF-8 표현법' 입니다.
+위 예제에서, (`68`, `111`, `103` 라는) 처음 세 개의 10진 `codeUnit` 값은, UTF-8 표현법이 ASCII 표현법과 똑같은, 문자인 `D`, `o`, 및 `g` 를 나타냅니다. (`226`, `128`, `188` 라는) 그 다음 세 개의 10진 `codeUnit` 값은 '`DOUBLE EXCLAMATION MARK` 문자의 세-바이트 짜리 UTF-8 표현법' 입니다. (`240`, `159`, `144`, `182` 라는) 마지막 네 `codeUnit` 값은 '`DOG FACE` 문자의 네-바이트 짜리 UTF-8 표현법' 입니다.
 
 #### UTF-16 Representation (UTF-16 표현법)
 
-`String` 의 'UTF-16 표현법' 에는 `utf16` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `String.UTF16View` 이며, 이는, 문자열의 UTF-16 표현법에 있는 각 16-비트 코드 유닛 하나가, 부호없는 16-비트 (`UInt16`) 인 값들의 '집합체 (collection)' 입니다:
+`String` 을 UTF-16 표현법으로 접근하려면 `utf16` 속성에 동작을 반복합니다. 이 속성은 `String.UTF16View` 타입으로, '문자열에 대한 UTF-16 표현법의 각 16-비트 코드 단위 하나가, 부호없는 16-비트 (`UInt16`) 값인 집합체' 입니다:
 
 ![UTF-16 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-16-representation.jpg)
 
@@ -608,7 +608,7 @@ for codeUnit in dogString.utf16 {
   print("\(codeUnit) ", terminator: "")
 }
 print("")
-// "68 111 103 8252 55357 56374 " 를 인쇄합니다.
+// "68 111 103 8252 55357 56374 " 를 인쇄함
 ```
 
 또다시, 처음 세 `codeUnit` 값 (`68`, `111`, `103`) 들은 문자 `D`, `o`, 그리고 `g` 를 표현하는데, 이 'UTF-16 코드 단위' 들은 문자열의 'UTF-8 표현법' 에 있는 것과 똑같은 값을 가집니다 ('유니코드 크기 값' 들이 'ASCII 문자' 를 표현하기 때문입니다).
