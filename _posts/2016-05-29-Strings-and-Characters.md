@@ -619,9 +619,9 @@ print("")
 
 #### Unicode Scalar Representation ('유니코드 크기 값' 표현법)
 
-`String` 값의 '유니코드 크기 값 표현법' 에는 `unicodeScalars` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `UnicodeScalarView` 이며, 이는 타입이 `UnicodeScalar` 인 값들의 '집합체 (collection)' 입니다.
+`String` 값을 유니코드 크기 값 표현법으로 접근하려면 `unicodeScalars` 속성에 동작을 반복합니다. 이 속성은 `UnicodeScalarView` 타입으로, '`UnicodeScalar` 타입인 값들의 집합체' 입니다.
 
-각 `UnicodeScalar` 는 '크기 값 (scalar)' 의, `UInt32` 값 내에 표현된, 21-비트 값을 반환하는 `value` 속성을 가집니다:
+각각의 `UnicodeScalar` 에는 '크기 값 (scalar) 의 21-비트 값을, `UInt32` 값으로, 반환하는 `value` 속성' 이 있습니다:
 
 ![Unicode Scalar representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-Unicode-scalar-representation.jpg)
 
@@ -630,7 +630,7 @@ for scalar in dogString.unicodeScalars {
   print("\(scalar.value) ", terminator: "")
 }
 print("")
-// "68 111 103 8252 128054 " 를 인쇄합니다.
+// "68 111 103 8252 128054 " 를 인쇄함
 ```
 
 처음 세 `UnicodeScalar` 값 (`68`, `111`, `103`) 들에 대한 `value` 속성은 다시 한번 문자 `D`, `o`, 그리고 `g` 를 표현합니다.
