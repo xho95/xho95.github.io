@@ -633,13 +633,13 @@ print("")
 // "68 111 103 8252 128054 " 를 인쇄함
 ```
 
-처음 세 `UnicodeScalar` 값 (`68`, `111`, `103`) 들에 대한 `value` 속성은 다시 한번 문자 `D`, `o`, 그리고 `g` 를 표현합니다.
+(`68`, `111`, `103` 이라는) 처음 세 `UnicodeScalar` 값의 `value` 속성은 다시 한번 `D`, `o`, 및 `g` 라는 문자를 나타냅니다.
 
-네 번째 `codeUnit` 값 (`8252`) 은 또다시 16-진 값 `203C` 와 동치인 10-진 값이며, 이는 `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 표현합니다.
+(`8252` 라는) 네 번째 `codeUnit` 값은 다시, '`DOUBLE EXCLAMATION MARK` 문자에 대한 유니코드 크기 값 `U+203C` 를 나타내는, 16진수 `203C` 와 서로 같은 10진 값' 입니다.
 
-다섯 번째이자 최종인 `UnicodeScalar` 의 `value` 속성, `128054`, 는 16-진 값 `1F436` 와 동치인 10-진 값으로, `DOG FACE` 문자에 대한 '유니코드 크기 값' `U+1F436` 을 표현합니다.
+다섯 번째이자 최종 `UnicodeScalar` 의 `value` 속성인, `128054` 는, '`DOG FACE` 문자에 대한 유니코드 크기 값 `U+1F436` 을 나타내는, 16진수 `1F436` 와 서로 같은 10진 값' 입니다.
 
-`value` 속성을 조회하는 것의 대안으로, 새로운 `String` 값을 생성하기 위해, '문자열 보간법' 에서 처럼, 각각의 `UnicodeScalar` 값을 사용할 수도 있습니다:
+`value` 속성 조회의 대안으로써, 문자열 보간법에서 처럼, 각각의 `UnicodeScalar` 값을 사용하여 새로운 `String` 값을 생성할 수도 있습니다:
 
 ```swift
 for scalar in dogString.unicodeScalars {
