@@ -11,13 +11,13 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는, 값의 집합체를 저장하는, '배열 (arrays), 셋 (sets)[^sets-type], 및 딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 가지 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 '값의 순서가 있는 (ordered) 집합체'[^ordered-collection] 입니다. 셋은 '유일한 값이 순서 없이(unordered) 있는 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations) 이 순서 없이 있는 집합체' 입니다.
+스위프트는, 값의 집합체를 저장하는, '배열 (arrays), 셋 (sets)[^sets-type], 및 딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 가지 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 '값들의 순서가 있는 (ordered) 집합체'[^ordered-collection] 입니다. 셋은 '유일한 값들이 순서 없이 (unordered) 있는 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations) 들이 순서 없이 있는 집합체' 입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
-스위프트의 배열, 셋, 그리고 딕셔너리는 이들이 저장할 수 있는 값과 키의 타입을 항상 명확하게 합니다. 이는 실수로 집합체에  잘못된 타입의 값을 집어 넣는 일은 일어나지 않는다는 의미합니다. 이는 또 '집합체 (collection)' 에서 가져올 값의 타입에 대해 확신을 가져도 됨을 의미합니다.
+스위프트에서 배열, 셋, 그리고 딕셔너리는 자신이 저장할 값과 키의 타입을 항상 명확히 합니다. 이는 집합체에 잘못된 타입의 값을 실수로 집어 넣을 수는 없다는 의미입니다. 집합체로부터 가져올 값의 타입을 자신해도 된다는 의미이기도 합니다.
 
-> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로써 구현되어 있습니다. '일반화 (generic) 타입' 및 '집합체' 에 대한 더 많은 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 를 참고하기 바랍니다.
+> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. '일반화 (generic) 타입과 집합체' 에 대한 더 많은 것은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 참고하기 바랍니다.
 
 ### Mutability of Collections (집합체의 변경 가능성)
 
