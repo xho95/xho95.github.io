@@ -11,7 +11,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는, 값의 집합체를 저장하기 위해, '배열 (arrays)', '셋 (sets)[^sets-type]', 그리고 '딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 개의 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 값의 '순서가 있는 집합체 (ordered collections)'[^ordered-collection] 이고, 셋은 유일한 값들이 '순서 없는 (unordered) 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations)' 들의 '순서 없는 집합체' 입니다.
+스위프트는, 값의 집합체를 저장하는, '배열 (arrays), 셋 (sets)[^sets-type], 및 딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 가지 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 '값의 순서가 있는 (ordered) 집합체'[^ordered-collection] 입니다. 셋은 '유일한 값이 순서 없이(unordered) 있는 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations) 이 순서 없이 있는 집합체' 입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
@@ -656,7 +656,7 @@ let airportNames = [String](airports.values)
 
 [^disjoint]: 'disjoint' 는 수학에서 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어가 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
-[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다.
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order 는 순서' 로, 'sort 는 정렬' 로 옮깁니다.
 
 '순서가 있는 집합 (ordered set)' 은 '정렬된 집합 (sorted set)' 과는 수학적인 의미가 다릅니다. 
 
