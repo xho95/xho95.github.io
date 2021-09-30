@@ -31,7 +31,7 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 
 > 스위프트의 `Array` 타입은 'Foundation[^Foundation] 의 `NSArray` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> 'Foundation 및 Cocoa'[^Cocoa] 를 가지고 `Array` 를 사용하는 데 대한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 을 참고하기 바랍니다.
+> `Array` 와 'Foundation 및 Cocoa'[^Cocoa] 를 함께 사용하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 참고하기 바랍니다.
 
 #### Array Type Shorthand Syntax (배열 타입의 줄임 구문 표현)
 
@@ -664,7 +664,7 @@ let airportNames = [String](airports.values)
 
 [^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍의 기반이 되는 프레임웍으로 `import Foundation` 으로 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
-[^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
+[^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 
 [^iterate-over]: 여기서 '동작을 반복시킨다 (iterate over)' 시킨다는 말은 배열에 있는 모든 항목들마다 한 번씩 동작을 시킨다는 의미입니다.
 
