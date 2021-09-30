@@ -310,7 +310,7 @@ categories: Swift Language Grammar Revision History
 * [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 사용할 수 있는 전체 문자 목록을 명확히 밝힘.
 * `nil` 과 '불리언 (Boolean)' 인 `true` 및 `false` 는 이제 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 임.
 * 스위프트의 `Array` 타입은 이제 온전하게 '값 의미 구조 (value semantics)' 를 가짐. 새로운 접근 방식을 반영하기 위해 [Mutability of Collections (집합체의 변경 가능성)](#mutability-of-collections-집합체의-변경-가능성) 과 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 에 대한 정보를 갱신함. 또한 '문자열 배열 (strings arrays)' 및 '딕셔너리 (dictionaries)' 에 대한 할당 및 복사 작동 방식도 분명하게 밝힘.
-* [Array Type Shorthand Syntax (배열 타입 약칭 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#array-type-shorthand-syntax-배열-타입-약칭-구문-표현) 은 이제 `SomeType[]` 대신 `[SomeType]` 으로 작성됨.
+* [Array Type Shorthand Syntax (배열 타입의 줄임 구문)]({% post_url 2016-06-06-Collection-Types %}#array-type-shorthand-syntax-배열-타입의-줄임-구문) 은 이제 `SomeType[]` 대신 `[SomeType]` 으로 작성함.
 * `[KeyType : ValueType]` 로 작성하는, [Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문 표현)]({% post_url 2016-06-06-Collection-Types %}#dictionary-type-shorthand-syntax-딕셔너리-타입의-줄임-구문-표현) 에 대하여 새로운 부분을 추가함.
 * [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 에 대한 새로운 부분을 추가함.
 * [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 의 예제는 이제, 새롭게 배열의 '값 의미 구조 (value semantics)' 을 반영하기 위해, '전역 `sort(_:_:)` 함수' 대신 '전역 `sorted(_:_:)` 함수' 를 사용함.

@@ -33,9 +33,9 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 >
 > `Array` 와 'Foundation 및 Cocoa'[^Cocoa] 를 함께 사용하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 참고하기 바랍니다.
 
-#### Array Type Shorthand Syntax (배열 타입의 줄임 구문 표현)
+#### Array Type Shorthand Syntax (배열 타입의 줄임 구문)
 
-스위프트의 배열 타입을 온전하게 작성하려면 `Array<Element>` 라고 하는데, 여기서 `Element` 는 배열이 저장할 수 있는 값의 타입니다. 배열의 타입은 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 비록 두 형식이 기능적으로는 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전체에서 배열 타입을 참조할 때는 이를 사용합니다.
+스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. 배열 타입을 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 두 형식의 기능이 완전히 똑같긴 하지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입이라고 할 때는 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
