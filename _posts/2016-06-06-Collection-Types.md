@@ -69,14 +69,14 @@ var threeDoubles = Array(repeating: 0.0, count: 3)
 
 #### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 배열 생성하기)
 
-덧셈 연산자 (`+`) 에 '호환 가능한 (compatible)'[^compatible] 타입인 두 개의 기존 배열을 더함으로써 새로운 배열을 생성할 수 있습니다. 새로운 배열의 타입은 서로 더한 두 배열의 타입을 통해 추론합니다:
+새로운 배열은 '덧셈 연산자 (`+`) 와 호환 가능한[^compatible] 타입인 두 기존 배열을 더함' 으로써 생성할 수 있습니다. 새 배열의 타입은 서로 더한 두 배열의 타입으로 추론합니다:
 
 ```swift
 var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
-// anotherThreeDoubles 의 타입은 [Double] 이고, 값은 [2.5, 2.5, 2.5] 입니다.
+// anotherThreeDoubles 은 [Double] 타입이고, [2.5, 2.5, 2.5] 와 같음
 
 var sixDoubles = threeDoubles + anotherThreeDoubles
-// sixDoubles 의 타입은 [Double] 로 추론하며, 값은 [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 입니다.
+// sixDoubles 은 [Double] 타입이라고 추론하며, [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같음
 ```
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
@@ -636,7 +636,7 @@ let airportNames = [String](airports.values)
 
 [^dictionaries-type]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
 
-[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 것은, 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환 가능 (compatible)' 해서, 두 값을 서로 같이 연산할 수 있습니다. 이처럼, 본문에서 '호환 가능 (compatible)' 하다는 표현을 사용한 것은 두 타입이 꼭 같을 필요는 없고 호환 가능하기만 하면 되기 때문으로 추측됩니다.  
+[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible) 하다' 는 것은 '서로 같이 사용하거나 교체가 가능하다' 는 의미입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 '덧셈 연산자와 호환 가능' 하기 때문에, 두 값을 덧셈 연산자로 더할 수 있습니다. 본문에서 '호환 가능 (compatible) 하다' 는 표현을 사용한 것은, 두 값을 더할 때는 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
