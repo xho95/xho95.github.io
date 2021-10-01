@@ -11,51 +11,51 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는, 값의 집합체를 저장하기 위해, '배열 (arrays)', '셋 (sets)[^sets-type]', 그리고 '딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 개의 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 값의 '순서가 있는 집합체 (ordered collections)'[^ordered-collection] 이고, 셋은 유일한 값들이 '순서 없는 (unordered) 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations)' 들의 '순서 없는 집합체' 입니다.
+스위프트는, 값의 집합체를 저장하는, '배열 (arrays), 셋 (sets)[^sets-type], 및 딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 가지 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 '값들의 순서가 있는 (ordered) 집합체'[^ordered-collection] 입니다. 셋은 '유일한 값들이 순서 없이 (unordered) 있는 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations) 들이 순서 없이 있는 집합체' 입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
-스위프트의 배열, 셋, 그리고 딕셔너리는 이들이 저장할 수 있는 값과 키의 타입을 항상 명확하게 합니다. 이는 실수로 집합체에  잘못된 타입의 값을 집어 넣는 일은 일어나지 않는다는 의미합니다. 이는 또 '집합체 (collection)' 에서 가져올 값의 타입에 대해 확신을 가져도 됨을 의미합니다.
+스위프트에서 배열, 셋, 그리고 딕셔너리는 자신이 저장할 값과 키의 타입을 항상 명확히 합니다. 이는 집합체에 잘못된 타입의 값을 실수로 집어 넣을 수는 없다는 의미입니다. 집합체로부터 가져올 값의 타입을 자신해도 된다는 의미이기도 합니다.
 
-> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로써 구현되어 있습니다. '일반화 (generic) 타입' 및 '집합체' 에 대한 더 많은 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 를 참고하기 바랍니다.
+> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. '일반화 (generic) 타입과 집합체' 에 대한 더 많은 것은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 참고하기 바랍니다.
 
 ### Mutability of Collections (집합체의 변경 가능성)
 
-배열, 셋, 또는 딕셔너리를 생성하고, 이를 변수에 할당하면, 생성된 '집합체 (collection)' 는 _변경 가능 (mutable)_ 할 것입니다. 이는 생성 후에 이 집합체에 항목을 추가, 삭제, 또는 바꿈으로써 집합체를 바꿀-또는 _변경할 (mutate)_-수 있다는 의미입니다. 배열, 셋, 또는 딕셔너리를 상수에 할당하면, 해당 집합체는 _변경 불가능 (immutable)_ 이며, 그 크기와 내용을 바꿀 수 수 없습니다.
+배열이나, 셋, 또는 딕셔너리를 생성한 후, 이를 변수에 할당하면, 생성한 집합체가 _변경 가능 (mutable)_ 할 것입니다. 이는 집합체를 생성한 후 집합체의 항목을 추가, 삭제, 또는 바꿈으로써 이를 바꾸거나-_변경 (mutate)_-할 수 있다는 의미입니다. 배열, 셋, 또는 딕셔너리를 상수에 할당하면, 그 집합체는 _변경 불가능 (immutable)_ 하며, 크기와 내용물을 바꿀 수 없습니다.
 
-> 집합체를 바꿀 필요가 없는 모든 곳에서는 '변경 불가능한 (immutable) 집합체' 를 생성하는 것이 좋은 습관입니다. 그렇게 하는 것은 코드를 파악하기 쉽도록 만들며 스위프트 컴파일러가 생성한 집합체의 성능을 최적화할 수 있게 해줍니다.
+> 바꿀 필요가 없는 모든 집합체는 '변경 불가능한 집합체로 생성' 하는 것이 좋은 습관입니다. 그럼으로써 코드 파악이 쉬워지며 생성한 집합체를 스위프트 컴파일러가 성능 최적화 하도록 합니다.
 
 ### Arrays (배열)
 
-_배열 (array)_ 은 같은 타입의 값을 '순서가 있는 리스트 (ordered list)'[^ordered-list] 에 저장합니다. 배열에서는 똑같은 값이 서로 다른 위치에 여러 번 나타날 수 있습니다.
+_배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordered-list] 에 저장' 합니다. 배열에서는 똑같은 값이 서로 다른 위치에 여러 번 있을 수 있습니다.
 
-> 스위프트의 `Array` 타입은 'Foundation'[^Foundation] 의 `NSArray` 클래스와 '연동되어 (bridged)' 있습니다.
+> 스위프트의 `Array` 타입은 'Foundation[^Foundation] 의 `NSArray` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> `Array` 를 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 을 참고하기 바랍니다.
+> `Array` 와 'Foundation 및 Cocoa'[^Cocoa] 를 함께 사용하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 참고하기 바랍니다.
 
-#### Array Type Shorthand Syntax (배열 타입의 줄임 구문 표현)
+#### Array Type Shorthand Syntax (배열 타입의 줄임 구문)
 
-스위프트의 배열 타입을 온전하게 작성하려면 `Array<Element>` 라고 하는데, 여기서 `Element` 는 배열이 저장할 수 있는 값의 타입니다. 배열의 타입은 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 비록 두 형식이 기능적으로는 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전체에서 배열 타입을 참조할 때는 이를 사용합니다.
+스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. 배열 타입을 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 두 형식은 기능이 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입을 참조할 때 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
-정해진 타입의 빈 배열은 '초기자 구문 표현 (initializer syntax)' 을 사용하여 생성할 수 있습니다:
+정해진 타입에 대한 빈 배열은 '초기자 구문 (initializer syntax)' 으로 생성할 수 있습니다:
 
 ```swift
 var someInts = [Int]()
 print(("someInts is of type [Int] with \(someInts.count) items.")
-// "someInts is of type [Int] with 0 items." 를 인쇄합니다.
+// "someInts is of type [Int] with 0 items." 를 인쇄함
 ```
 
-`someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론됨을 기억하기 바랍니다.
+`someInts` 라는 변수 타입은 초기자의 타입에 의해 `[Int]` 라고 추론함을 기억하기 바랍니다.
 
-또 다른 방법으로, 이미 타입 정보를 제공한 상황, 가령 함수 인자에서 또는 이미 타입을 정한 변수나 상수 같은 상황인 경우, 빈 배열은, `[]` (빈 대괄호 쌍) 으로 작성하는, '빈 배열 글자 값 (empty array literal)' 으로 생성할 수 있습니다:
+대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '(빈 대괄호 쌍인) `[]` 를 쓴, 빈 배열 글자 값 (empty array literal)' 으로 빈 배열을 생성할 수 있습니다:
 
 ```swift
 someInts.append(3)
-// someInts 는 이제 Int 타입 값 한 개를 갖습니다.
+// someInts 는 이제 Int 타입의 값 1 개를 담고 있습니다.
 someInts = []
-// someInts 는 이제 빈 배열이지만, 타입은 아직 [Int] 입니다.
+// someInts 는 이제 빈 배열이지만, 여전히 [Int] 타입입니다.
 ```
 
 #### Creating an Array with a Default Value (기본 값으로 배열 생성하기)
@@ -656,15 +656,15 @@ let airportNames = [String](airports.values)
 
 [^disjoint]: 'disjoint' 는 수학에서 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어가 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
-[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다.
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order 는 순서' 로, 'sort 는 정렬' 로 옮깁니다.
 
 '순서가 있는 집합 (ordered set)' 은 '정렬된 집합 (sorted set)' 과는 수학적인 의미가 다릅니다. 
 
-[^ordered-list]: 여기서 사용된 'ordered list' 의 'list' 는 '자료 구조' 로써의 '리스트' 를 의미하는 것으로 추측됩니다. 리스트에 대한 더 많은 정보는 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목 또는 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
+[^ordered-list]: '순서 있는 리스트 (ordered list)' 에서의 리스트는 자료 구조의 하나입니다. '리스트 (list) 자료 구조' 에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
 
-[^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+[^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍의 기반이 되는 프레임웍으로 `import Foundation` 으로 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
-[^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
+[^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 
 [^iterate-over]: 여기서 '동작을 반복시킨다 (iterate over)' 시킨다는 말은 배열에 있는 모든 항목들마다 한 번씩 동작을 시킨다는 의미입니다.
 

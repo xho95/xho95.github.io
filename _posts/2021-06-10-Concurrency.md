@@ -10,7 +10,7 @@ categories: Swift Language Grammar Concurrency
 
 ## Concurrency (동시성)
 
-스위프트는 비동기 및 병렬 코드를 구조적인 방식으로 작성하는 기능을 내장하고 있습니다. _비동기 코드 (asynchronous code)_ 는, 한번에 한 조각의 프로그램만 실행하긴 하지만, 이를 멈춰달았다가 나중에 다시 시작할 수 있습니다. 프로그램 코드를 멈춰달고 다시 시작하는 것은 네트워크 너머로 자료를 가져오거나 파일 구문을 해석하는 '장기 연산' 을 계속하는 동시에 'UI 갱신' 같은 '단기 연산' 도 계속 진행하도록 해줍니다. _병렬 코드 (parallel code)_ 는 여러 코드 조각을 동시에 실행한다는-예를 들어, 4-개의 코어 프로세서를 가진 컴퓨터는, 각 코어마다 하나의 임무를 실시하여, 동시에 코드 조각 네 개를 실행할 수 있다는-의미입니다. 병렬 및 비동기 코드를 사용하는 프로그램은 한번에 여러 개의 연산을 실시하며; 외부 시스템을 기다리는 연산은 멈춰달고, 이 코드를 더 쉽게 메모리-안전한 방식으로 작성하도록 해줍니다.
+스위프트는 비동기와 병렬 코드를 구조적으로 작성하기 위한 내장 지원 기능을 가지고 있습니다. _비동기 코드 (asynchronous code)_ 는, 한번에 한 조각의 프로그램만 실행하긴 하지만, 이를 멈춰달았다가 나중에 다시 시작할 수 있습니다. 프로그램 코드를 멈춰달고 다시 시작하는 것은 네트워크 너머로 자료를 가져오거나 파일 구문을 해석하는 '장기 연산' 을 계속하는 동시에 'UI 갱신' 같은 '단기 연산' 도 계속 진행하도록 해줍니다. _병렬 코드 (parallel code)_ 는 여러 코드 조각을 동시에 실행한다는-예를 들어, 4-개의 코어 프로세서를 가진 컴퓨터는, 각 코어마다 하나의 임무를 실시하여, 동시에 코드 조각 네 개를 실행할 수 있다는-의미입니다. 병렬 및 비동기 코드를 사용하는 프로그램은 한번에 여러 개의 연산을 실시하며; 외부 시스템을 기다리는 연산은 멈춰달고, 이 코드를 더 쉽게 메모리-안전한 방식으로 작성하도록 해줍니다.
 
 병렬 및 비동기 코드로 인한 추가적인 일정 작업의 유연함에는 복잡도 증가라는 대가가 따라 옵니다. 스위프트는 약간의 컴파일-시간 검사를 하여 의도를 나타내도록 해줍니다-예를 들어, '행위자 (actors)' 를 사용하면 '변경 가능 상태 (mutable state)' 에 안전하게 접근할 수 있습니다. 하지만, 느리고 버그 있는 코드에 '동시성' 을 추가한다고 빨라지거나 올바르게 됨을 보장하진 않습니다. 사실, 동시성을 추가하는 것은 코드를 심지어 더 디버그하기 어렵게 만들지도 모릅니다. 하지만, 동시적일 필요가 있는 코드에 스위프트 언어-수준에서 지원하는 동시성을 사용하면 스위프트가 컴파일 시간에 문제를 잡아내는 것을 도울 수 있습니다.
 
@@ -23,14 +23,14 @@ categories: Swift Language Grammar Concurrency
 ```swift
 listPhotos(inGallery: "Summer Vacation") { photoNames in
   let sortedNames = photoNames.sorted()
-  let name = sortedNames[1]
+  let name = sortedNames[0]
   downloadPhoto(named: name) { photo in
     show(photo)
   }
 }
 ```
 
-이 단순한 경우에서도, '연속된 완료 처리자 (completion handlers)' 들로 코드를 작성해야 하기 때문에, 중첩 클로저를 작성하는 것으로 끝맺습니다. 이런 스타일에서, 중첩이 깊어져 코드가 복잡해지면 다루기가 급격히 어려워질 수 있습니다. 
+이 단순한 경우에서도, 연속된 '완료 처리자 (completion handlers)' 로 코드를 작성해야 하기 때문에, 중첩 클로저를 작성하는 것으로 끝맺습니다. 이런 스타일에서, 중첩이 깊어져 코드가 복잡해지면 다루기가 급격히 어려워질 수 있습니다. 
 
 ### Defining and Calling Asynchronous Functions (비동기 함수 정의하기와 호출하기)
 
@@ -54,7 +54,7 @@ func listPhotos(inGallery name: String) async -> [String] {
 ```swift
 let photoNames = await listPhotos(inGallery: "Summer Vacation")
 let sortedNames = photoNames.sorted()
-let name = sortedNames[1]
+let name = sortedNames[0]
 let photo = await downloadPhoto(named: name)
 show(photo)
 ```
@@ -80,7 +80,7 @@ show(photo)
 > 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
-  await Task.sleep(2 * 1_000_000_000)  // 2 초
+  await Task.sleep(2 * 1_000_000_000)  // 2초
   return ["IMG001", "IMG99", "IMG0404"]
 }
 ```
@@ -168,7 +168,7 @@ let handle = async {
 let result = await handle.get()
 ```
 
-'떼어 놓은 임무' 의 관리에 대한 더 많은 정보는, [Task.Handle](https://developer.apple.com/documentation/swift/task/handle) 항목을 참고하기 바랍니다. 
+'떼어 놓은 임무' 의 관리에 대한 더 많은 정보는, [Task](https://developer.apple.com/documentation/swift/task/) 항목을 참고하기 바랍니다. 
 
 #### Task Cancellation (임무 취소)
 
@@ -180,7 +180,7 @@ let result = await handle.get()
 
 취소 검사를 하려면, '임무' 가 취소되면 `CancellationError` 를 던지는, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하든지, 아니면 [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 의 값을 검사하여 자신의 코드에서 취소 처리를 합니다. 예를 들어, '전시관에서 사진 내려받기' 같은 임무는 '부분적으로 내려받은 것' 을 삭제하고 네트워크 연결을 닫아야 할지도 모릅니다.
 
-취소를 수동으로 전파하려면, [Task.Handle.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
+취소를 수동으로 전파하려면, [Task.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
 
 ### Actors (행위자)
 
@@ -207,7 +207,7 @@ actor TemperatureLogger {
 ```swift
 let logger = TemperatureLogger(label: "Outdoors", measurement: 25)
 print(await logger.max)
-// "25" 를 인쇄합니다
+// "25" 를 인쇄함
 ```
 
 이 예제에서는, `logger.max` 로의 접근이 '멈춰달 수 있는 지점' 입니다. 왜냐면 '행위자' 는 한번에 자신의 '변경 가능 상태' 에 오직 한 '임무' 의 접근만을 허용해서, 또 다른 '임무' 코드가 '기록자 (logger)' 와 이미 상호 작용 중이면, 속성에 접근하길 기다리면서 이 코드를 멈춰달기 때문입니다.

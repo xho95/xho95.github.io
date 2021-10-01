@@ -167,7 +167,7 @@ constantString += " and another Highlander"
 
 속을 들여다보면, 스위프트 컴파일러는 문자열 사용을 최적화 하므로 실제 복사는 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 값 타입인 문자열과 작업할 때는 항상 훌륭한 성능을 얻게 된다는 의미입니다.
 
-### Working with Characters (문자와 작업하기)
+### Working with Characters (문자 작업하기)
 
 `for-in` 반복문으로 문자열에 동작을 반복함으로써 `String` 의 개별 `Character` 값에 접근할 수 있습니다:
 
@@ -462,7 +462,7 @@ let newString = String(beginning)
 
 ### Comparing Strings (문자열 비교하기)
 
-스위프트는: '문자열 및 문자 같음 (equality), 접두사 같음, 접미사 같음' 이라는 세 가지 '문장 (textual) 값' 비교 방식을 제공합니다.
+스위프트는 '문장 값 비교' 를 위해: '문자열 및 문자 같음 (equality), 접두사 같음, 접미사 같음' 이라는 세 가지 방식을 제공합니다.
 
 #### String and Character Equality (문자열 및 문자 같음)
 
@@ -477,24 +477,24 @@ if quotation == sameQuotation {
 // "These two strings are considered equal." 을 인쇄함
 ```
 
-두 `String` 값 (또는 두 `Character` 값) 은 자신들의 '확장된 자소 덩어리' 가 _법적으로 같은 값 (canonically equivalent)_[^canonically] 이면 같다고 고려합니다. 확장된 자소 덩어리는, 실제로는 서로 다른 유니코드 크기 값으로 합성한 경우에도, 언어 (linguistic) 의미와 형태가 똑같으면 '법적으로 같은 값' 입니다.
+두 `String` 값 (또는 두 `Character` 값) 은 '자신들의 확장된 자소 덩어리가 _법적으로 같은 값 (canonically equivalent)_[^canonically] 이면 같다' 고 고려합니다. 확장된 자소 덩어리가, 실제로는 서로 다른 유니코드 크기 값으로 합성한 경우에도, '언어의 (linguistic) 의미와 형태가 똑같으면 법적으로 같은 값' 입니다.
 
-예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 `LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 붙은 것과 '법적으로 동치' 입니다. 이 두 '확장된 자소 덩어리' 모두 문자 `é` 를 표현하는 방식으로 유효하므로, 이들은 '법적으로 동치' 라고 간주할 수 있습니다:
+예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 '`LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 있는 것' 과 법적으로 같습니다. 이 '확장된 자소 덩어리' 둘 다 `é` 라는 문자를 나타내는 유효한 방식이므로, 법적으로 같은 값이라고 고려합니다:
 
 ```swift
-// "Voulez-vous un café?" 가 LATIN SMALL LETTER E WITH ACUTE 를 사용한 경우
+// LATIN SMALL LETTER E WITH ACUTE 를 사용한 "Voulez-vous un café?"
 let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
 
-// "Voulez-vous un café?" 가 LATIN SMALL LETTER E 와 COMBINING ACUTE ACCENT 를 사용한 경우
+// LATIN SMALL LETTER E 와 COMBINING ACUTE ACCENT 를 사용한 "Voulez-vous un café?"
 let combinedEAccuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
 
 if eAcuteQuestion == combinedEAccuteQuestion {
     print("These two strings are considered equal")
 }
-// "These two strings are considered equal" 를 인쇄합니다.
+// "These two strings are considered equal" 를 인쇄함
 ```
 
-거꾸로 말해서, 영어에서 사용된, `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는, 러시아어에서 사용된, `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 동치가 _아닙니다 (not)_. 이 문자들은 보기에는 비슷하지만, 언어적으로 같은 의미를 가지지 않습니다:
+반대로 말해서, 영어에 있는, `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는, 러시아어에 있는, `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 같은 값이 _아닙니다 (not)_. 문자가 보기에는 비슷하지만, 언어의 의미가 똑같지는 않습니다:
 
 ```swift
 let latinCapitalLetterA: Character = "\u{41}"
@@ -504,16 +504,16 @@ let cyrillicCapitalLetterA: Character = "\u{0410}"
 if latinCapitalLetterA != cyrillicCapitalLetterA {
   print("These two characters are not equivalent")
 }
-// "These two characters are not equivalent" 를 인쇄합니다.
+// "These two characters are not equivalent" 를 인쇄함
 ```
 
-> 스위프트의 문자열과 문자 비교 연산은 '지역에-민감 (locale-sensitive)'[^locale-sensitive] 하지 않습니다.
+> 스위프트의 문자열 및 문자 비교는 '지역에-민감 (locale-sensitive)'[^locale-sensitive] 하지 않습니다.
 
-#### Prefix and Suffix Equality (접두사와 접미사의 같음 비교)
+#### Prefix and Suffix Equality (접두사 및 접미사 같음)
 
-문자열이 특정 문자열의 접두사나 접미사를 가지고 있는지 검사하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하는데, 이 둘 모두 `String` 타입의 단일 인자를 취하고 '불리언 (Boolean)' 값을 반환합니다.
+문자열이 특별한 문자열 접두사 또는 접미사를 가지는 지 검사하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하는 데, 이 둘 모두 `String` 타입인 단일 인자를 취하며 '불리언 값' 을 반환합니다.
 
-아래 예제는 셰익스피어의 _로미오와 줄리엣 (Romeo and Juliet)_ 에 있는 첫 두 '막 (acts)' 의 각 '장(면; scene)' 을 표현하는 문자열 배열을 고려합니다:
+아래 예제는 셰익스피어의 _로미오와 줄리엣 (Romeo and Juliet)_ '첫 두 막 (acts) 에 있는 장 (scene) 들의 위치' 를 나타내는 문자열 배열을 고려합니다:
 
 ```swift
 let romeoAndJuliet = [
@@ -531,7 +531,7 @@ let romeoAndJuliet = [
 ]
 ```
 
-`hasPrefix(_:)` 메소드를 `romeoAndJuliet` 배열에 사용하면 '희곡 (play)' 의 '제 1막' 에 있는 '장(면)' 의 수를 셀 수 있습니다:
+`romeoAndJuliet` 배열과 `hasPrefix(_:)` 메소드를 사용하면 '희곡 (play) 제 1막의 장(면) 개수' 를 셀 수 있습니다:
 
 ```swift
 var act1SceneCount = 0
@@ -542,10 +542,10 @@ for scene in romeoAndJuliet {
   }
 }
 print("There are \(act1SceneCount) scenes in Act 1")
-// "There are 5 scenes in Act 1" 를 인쇄합니다.
+// "There are 5 scenes in Act 1" 를 인쇄함
 ```
 
-이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하면 '캐퓰렛 저택 (Capulet's mansion)'[^capulet] 과 '로렌스 수사의 작은 방 (Friar Lawrence's cell)'[^friar] 인 곳 또는 이 곳 주변에서 일어나는 '장(면)' 의 수를 셀 수 있습니다.:
+이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하면 '캐퓰렛 저택 (Capulet's mansion)[^capulet] 과 로렌스 수사의 작은 방 (Friar Lawrence's cell)[^friar] 안 및 그 주변에서 일어나는 장(면) 의 개수' 를 셀 수 있습니다:
 
 ```swift
 var mansionCount = 0
@@ -558,24 +558,24 @@ for scene in romeoAndJuliet {
   }
 }
 print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
-// "6 mansion scenes; 2 cell scenes" 를 인쇄합니다.
+// "6 mansion scenes; 2 cell scenes" 를 인쇄함
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열에 있는 '확장된 자소 덩어리' 사이를, [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명한 것처럼, 문자와 문자끼리 법적 동치인지를 비교하여 수행합니다.
+> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는, [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명한 것처럼, '각각의 문자열에 있는 확장된 자소 덩어리 사이에 문자-끼리 법적으로 같은 지의 비교' 를 수행합니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현법)
 
-유니코드 문자열이 문서 파일이나 다른 저장 공간에 작성되어 있을 때, 해당 문자열에 있는 '유니코드 크기 값' 은 유니코드에서-정의한 여러 가지 '_인코딩 형식 (encording forms)_' 중 하나로 '인코딩 (encoding; 복호화)' 되어 있습니다. 각 형식은 문자열을 '_코드 단위 (code units)_' 라는 작은 조각으로 '인코딩' 합니다. 이는 (문자열을 8-비트 '코드 단위' 로 인코딩하는) 'UTF-8' 인코딩 형식 , (문자열을 16-비트 '코드 단위' 로 인코딩하는) 'UTF-16' 인코딩 형식 , 그리고 (문자열을 32-비트 '코드 단위' 로 인코딩하는) 'UTF-32' 인코딩 형식을 포함합니다.
+문서 파일이나 그 외 어떤 저장 공간에서 작성한 유니코드 문자열은, 해당 문자열의 유니코드 크기 값이 '유니코드에서-정의한 여러 _인코딩 형식 (encording forms)_ 중 하나로 부호화 (encoding)' 됩니다. 각 형식은 문자열을 _코드 단위 (code units)_ 라는 작은 조각으로 부호화 합니다. 이는 (문자열을 8-비트 코드 단위로 부호화 하는) 'UTF-8 인코딩 형식, (문자열을 16-비트 코드 단위로 부호화 하는) UTF-16 인코딩 형식 , 그리고 (문자열을 32-비트 코드 단위로 부호화 하는) UTF-32 인코딩 형식' 을 포함합니다.
 
-스위프트는 문자열의 '유니코드 표현법' 에 접근하는 여러 가지 방법을 제공합니다. 문자열은, 개별 `Character` 값을 '유니코드 방식의 '확장된 자소 덩어리' 로 접근하기 위해, `for`-`in` 구문으로 동작을 반복할 수 있습니다. 이 과정은 [Working with Characters (문자와 작업하기)](#working-with-characters-문자와-작업하기) 에서 설명했습니다.
+스위프트는 서로 다른 여러 가지의 '문자열 유니코드 표현법' 접근 방식을 제공합니다. 문자열을 `for`-`in` 문으로 반복하면, 개별 `Character` 값을 '확장된 유니코드 자소 덩어리' 로 접근할 수 있습니다. 이 과정은 [Working with Characters (문자 작업하기)](#working-with-characters-문자-작업하기) 에서 설명합니다.
 
-또 다른 방법으로, 세 가지 다른 '유니코드를-따르는 표현법 (Unicode-compliant representations)' 으로 `String` 값에 접근합니다:
+대안으로, '유니코드를-따르는 표현법 세 가지 중 하나' 로 `String` 값에 접근합니다:
 
-* UTF-8 코드 단위의 '집합체 (collection)' (문자열의 `utf8` 속성으로 접근함)
-* UTF-16 코드 단위의 집합체 (문자열의 `utf16` 속성으로 접근함)
-* 문자열의 UTF-32 인코딩 형식과 동치인, 21-비트 유니코드 크기 값의 집합체 (문자열의 `unicodeScalars` 속성으로 접근함)
+* UTF-8 코드 단위 집합체 (문자열의 `utf8` 속성으로 접근)
+* UTF-16 코드 단위 집합체 (문자열의 `utf16` 속성으로 접근)
+* 문자열의 UTF-32 인코딩 형식과 같은 값인, 21-비트 유니코드 크기 값 집합체 (문자열의 `unicodeScalars` 속성으로 접근)
 
-아래의 각 예제는, 문자 `D`, `o`, `g`, `‼` (`DOUBLE EXCLAMATION MARK`, 또는 유니코드 크기 값 `U+203C`), 그리고 `🐶` 문자 (`DOG FACE`, 또는 유니코드 크기 값 `U+1F436`) 로 이루어진, 다음 문자열의 서로 다른 표현법을 보여줍니다:
+아래의 각 예제는, 문자 `D`, `o`, `g`, (`DOUBLE EXCLAMATION MARK`, 또는 유니코드 크기 값 `U+203C` 인) `‼`, 그리고 (`DOG FACE`, 또는 유니코드 크기 값 `U+1F436` 인) `🐶` 문자로 이루어진, 다음 문자열을 서로 다른 표현법으로 보여줍니다:
 
 ```swift
 let dogString = "Dog!!🐶"
@@ -583,7 +583,7 @@ let dogString = "Dog!!🐶"
 
 #### UTF-8 Representation (UTF-8 표현법)
 
-`String` 의 'UTF-8 표현법' 에는 `utf8` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `String.UTF8View` 이며, 이는, 문자열의 UTF-8 표현법에 있는 각 바이트 하나가, 부호없는 8-비트 (`UInt8`) 인 값들의 '집합체 (collection)' 입니다:
+`String` 을 UTF-8 표현법으로 접근하려면 `utf8` 속성에 동작을 반복합니다. 이 속성은 `String.UTF8View` 타입으로, '문자열에 대한 UTF-8 표현법의 각 바이트 하나가, 부호없는 8-비트 (`UInt8`) 값인 집합체 (collection)' 입니다:
 
 ![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
@@ -592,14 +592,14 @@ for codeUnit in dogString.utf8 {
   print("\(codeUnit) ", terminator: "")
 }
 print("")
-// "68 111 103 226 128 188 240 159 144 182 " 를 인쇄합니다.
+// "68 111 103 226 128 188 240 159 144 182 " 를 인쇄함
 ```
 
-위 예제에서, 처음 세 10-진 `codeUnit` 값 (`68`, `111`, `103`) 들은, 'UTF-8 표현법' 이 'ASCII 표현법' 과 똑같이, 문자 `D`, `o`, 그리고 `g` 를 표현합니다. 그 다음 세 10-진 `codeUnit` 값 (`226`, `128`, `188`) 들은 `DOUBLE EXCLAMATION MARK` 문자의 3-바이트 짜리 'UTF-8 표현법' 입니다. 마지막 네 `codeUnit` 값 (`240`, `159`, `144`, `182`) 들은 `DOG FACE` 문자의 4-바이트 짜리 'UTF-8 표현법' 입니다.
+위 예제에서, (`68`, `111`, `103` 이라는) 처음 세 개의 10진 `codeUnit` 값은, UTF-8 표현법이 ASCII 표현법과 똑같은, 문자인 `D`, `o`, 및 `g` 를 나타냅니다. (`226`, `128`, `188` 라는) 그 다음 세 개의 10진 `codeUnit` 값은 '`DOUBLE EXCLAMATION MARK` 문자에 대한 세-바이트 짜리 UTF-8 표현법' 입니다. (`240`, `159`, `144`, `182` 라는) 마지막 네 `codeUnit` 값은 '`DOG FACE` 문자에 대한 네-바이트 짜리 UTF-8 표현법' 입니다.
 
 #### UTF-16 Representation (UTF-16 표현법)
 
-`String` 의 'UTF-16 표현법' 에는 `utf16` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `String.UTF16View` 이며, 이는, 문자열의 UTF-16 표현법에 있는 각 16-비트 코드 유닛 하나가, 부호없는 16-비트 (`UInt16`) 인 값들의 '집합체 (collection)' 입니다:
+`String` 을 UTF-16 표현법으로 접근하려면 `utf16` 속성에 동작을 반복합니다. 이 속성은 `String.UTF16View` 타입으로, '문자열에 대한 UTF-16 표현법의 각 16-비트 코드 단위 하나가, 부호없는 16-비트 (`UInt16`) 값인 집합체' 입니다:
 
 ![UTF-16 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-16-representation.jpg)
 
@@ -608,20 +608,20 @@ for codeUnit in dogString.utf16 {
   print("\(codeUnit) ", terminator: "")
 }
 print("")
-// "68 111 103 8252 55357 56374 " 를 인쇄합니다.
+// "68 111 103 8252 55357 56374 " 를 인쇄함
 ```
 
-또다시, 처음 세 `codeUnit` 값 (`68`, `111`, `103`) 들은 문자 `D`, `o`, 그리고 `g` 를 표현하는데, 이 'UTF-16 코드 단위' 들은 문자열의 'UTF-8 표현법' 에 있는 것과 똑같은 값을 가집니다 ('유니코드 크기 값' 들이 'ASCII 문자' 를 표현하기 때문입니다).
+다시, (`68`, `111`, `103` 이라는) 처음 세 개의 `codeUnit` 값은, (이 유니코드 크기 값들이 ASCII 문자를 나타내기 때문에) UTF-16 코드 단위가 문자열의 UTF-8 표현법과 똑같은, 문자인 `D`, `o`, 및 `g` 를 나타냅니다.
 
-네 번째 `codeUnit` 값 (`8252`) 은 16-진 값 `203C` 와 동치인 10-진 값으로, 이는 `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 표현합니다. 이 문자는 'UTF-16' 에서는 단일 '코드 단위' 로 표현할 수 있습니다.
+(`8252` 라는) 네 번째 `codeUnit` 값은, '`DOUBLE EXCLAMATION MARK` 문자에 대한 유니코드 크기 값 `U+203C` 를 나타내는, 16진수 `203C` 와 서로 같은 10진 값' 입니다. UTF-16 은 이 문자를 '단일 코드 단위' 로 나타낼 수 있습니다.
 
-다섯 번째와 여섯 번째 `codeUnit` 값 (`55357` 와 `56374`) 들은 `DOG FACE` 문자에 대한 'UTF-16 대용 쌍 (surrogate pair)[^surrogate-pair] 표현법' 입니다. 이 값들은 (10-진 값이 `55357` 인) '높은자리-대용 값' `U+D83D` 와 (10-진 값이 `56374` 인) '낮은자리-대용 값' `U+DC36` 입니다.
+(`55357` 와 `56374` 라는) 다섯 째와 여섯 째 `codeUnit` 값은 '`DOG FACE` 문자에 대한 UTF-16 대용 쌍 (surrogate pair)[^surrogate-pair] 표현법' 입니다. 이 값들은 '(10진수로는 `55357` 인) `U+D83D` 라는 높은자리-대용 값' 과 '(10진수로는 `56374` 인) `U+DC36` 라는 낮은자리-대용 값' 입니다.
 
 #### Unicode Scalar Representation ('유니코드 크기 값' 표현법)
 
-`String` 값의 '유니코드 크기 값 표현법' 에는 `unicodeScalars` 속성에 동작을 반복함으로써 접근할 수 있습니다. 이 속성의 타입은 `UnicodeScalarView` 이며, 이는 타입이 `UnicodeScalar` 인 값들의 '집합체 (collection)' 입니다.
+`String` 값을 유니코드 크기 값 표현법으로 접근하려면 `unicodeScalars` 속성에 동작을 반복합니다. 이 속성은 `UnicodeScalarView` 타입으로, '`UnicodeScalar` 타입인 값들의 집합체' 입니다.
 
-각 `UnicodeScalar` 는 '크기 값 (scalar)' 의, `UInt32` 값 내에 표현된, 21-비트 값을 반환하는 `value` 속성을 가집니다:
+각각의 `UnicodeScalar` 에는 '크기 값 (scalar) 의 21-비트 값을, `UInt32` 값으로, 반환하는 `value` 속성' 이 있습니다:
 
 ![Unicode Scalar representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-Unicode-scalar-representation.jpg)
 
@@ -630,16 +630,16 @@ for scalar in dogString.unicodeScalars {
   print("\(scalar.value) ", terminator: "")
 }
 print("")
-// "68 111 103 8252 128054 " 를 인쇄합니다.
+// "68 111 103 8252 128054 " 를 인쇄함
 ```
 
-처음 세 `UnicodeScalar` 값 (`68`, `111`, `103`) 들에 대한 `value` 속성은 다시 한번 문자 `D`, `o`, 그리고 `g` 를 표현합니다.
+(`68`, `111`, `103` 이라는) 처음 세 `UnicodeScalar` 값의 `value` 속성은 다시 한번 `D`, `o`, 및 `g` 라는 문자를 나타냅니다.
 
-네 번째 `codeUnit` 값 (`8252`) 은 또다시 16-진 값 `203C` 와 동치인 10-진 값이며, 이는 `DOUBLE EXCLAMATION MARK` 문자에 대한 '유니코드 크기 값' `U+203C` 를 표현합니다.
+(`8252` 라는) 네 번째 `codeUnit` 값은 다시, '`DOUBLE EXCLAMATION MARK` 문자에 대한 유니코드 크기 값 `U+203C` 를 나타내는, 16진수 `203C` 와 서로 같은 10진 값' 입니다.
 
-다섯 번째이자 최종인 `UnicodeScalar` 의 `value` 속성, `128054`, 는 16-진 값 `1F436` 와 동치인 10-진 값으로, `DOG FACE` 문자에 대한 '유니코드 크기 값' `U+1F436` 을 표현합니다.
+다섯 번째이자 최종 `UnicodeScalar` 의 `value` 속성인, `128054` 는, '`DOG FACE` 문자에 대한 유니코드 크기 값 `U+1F436` 을 나타내는, 16진수 `1F436` 와 서로 같은 10진 값' 입니다.
 
-`value` 속성을 조회하는 것의 대안으로, 새로운 `String` 값을 생성하기 위해, '문자열 보간법' 에서 처럼, 각각의 `UnicodeScalar` 값을 사용할 수도 있습니다:
+`value` 속성 조회의 대안으로써, 문자열 보간법에서 처럼, 각각의 `UnicodeScalar` 값을 사용하여 새로운 `String` 값을 생성할 수도 있습니다:
 
 ```swift
 for scalar in dogString.unicodeScalars {
@@ -686,7 +686,7 @@ for scalar in dogString.unicodeScalars {
 
 [^extended-grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자는 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 덩어리로 되어 있다는 의미입니다. '확장된 자소 덩어리' 자체는 본문 뒤에서 좀 더 자세히 설명합니다.
 
-[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive)' 하다는 말은, 비교 연산을 수행하기 위해 '지역 정보 (locale) 객체' 를 요구하는 것을 말한다고 합니다. 스위프트의 문자 비교 연산은 '지역에-민감' 하지 않으므로, 이 '지역 정보 객체' 를 요구하지 않습니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 의 내용을 참고하기 바랍니다.
+[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 참고하기 바랍니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
 [^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 참고하기 바랍니다.
 
@@ -706,12 +706,12 @@ for scalar in dogString.unicodeScalars {
 
 [^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 는 '표준적으로' 라고 옮길 수도 있는데, 이 역시 '교회 법' 이 하나의 '표준' 이기 때문에 유래한 의미입니다.
 
-[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 성 (가문 이름) 입니다. 즉, 줄리엣의 본명이 '줄리엣 캐퓰렛' 입니다.
+[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 '성 (가문 이름)' 입니다. 즉, 줄리엣의 본명이 '줄리엣 캐퓰렛' 입니다.
 
 [^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 잠시동안 죽는 듯한 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 라는 의미로 '수도사' 중에서 수도원에 머무르지 않는 이들을 의미한다고 합니다.
 
 [^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는, 본문 뒤에 나오는 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
 
-[^surrogate-pair]: '대용 쌍 (surrogate pair)' 는 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. 보다 자세한 내용은 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 참고하기 바랍니다.
+[^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 참고하기 바랍니다.
 
 [^extended-string-delimiters]: '확장된 문자열 구분자 (Extended String Delimiters)' 에 대한 더 자세한 정보는, 바로 위의 [Extended String Delimiters (확장된 문자열 구분자)](#extended-string-delimiters-확장된-문자열-구분자) 부분을 참고하기 바랍니다. 

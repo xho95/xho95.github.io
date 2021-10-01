@@ -24,9 +24,11 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 > GRAMMAR OF WHITESPACE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
 
-### Idenfifiers (식별자)
+### Identifiers (식별자)
 
-_식별자 (identifiers)_ 는 'A' 에서 'Z' 까지의 대소문자 , 밑줄 (`_`), '다국어 기본 평면 (Basic Multilingual Plane)'[^BMP] 에 있는 '조합하지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)'[^noncombining-alphanumeric], 또는 '다국어 기본 평면' 밖에 있으면서 '사용자 영역 (Private Use Area)'[^PUA] 안에 있지 않은 문자로 시작합니다. 첫 번째 문자 뒤로는, '숫자 (digits)'[^digits] 와 '조합한 (combining) 유니코드 문자' 도 올 수 있습니다.
+_식별자 (identifiers)_ 는 'A' 에서 'Z' 까지의 대소문자 , 밑줄 (`_`), '다국어 기본 평면 (Basic Multilingual Plane)'[^BMP] 에 있는 조합하지 않은 유니코드 영숫자 문자'[^noncombining-alphanumeric], 또는 '다국어 기본 평면 밖에 있으면서 사용자 영역 (Private Use Area)[^PUA] 안에 있지 않은 문자' 로 시작합니다. 첫 번째 문자 뒤로는, '숫자 (digits)[^digits] 와 조합한 유니코드 문자' 도 올 수 있습니다.
+
+'밑줄로 시작하는 식별자' 는, `public` 접근-수준 수정자로 선언한 경우에도, '내부 (internal)' 로 취급합니다. 이 협약은, '선언이 공용 (public) 이길 요구하는 어떠한 제한' 이 있을지라도, '반드시 클라이언트와 상호 작용이나 의존을 안해야 하는 API' 를 표시하게 해줍니다. 이에 더하여, '두 밑줄로 시작하는 식별자' 는 스위프트 컴파일러 및 표준 라이브러리 용으로 예약되어 있습니다.
 
 '예약어 (reserved word)' 를 '식별자' 로 사용하려면, 그 앞뒤에 '역따옴표 (backticks; `` ` ``)'[^backticks] 을 붙입니다. 예를 들어, `class` 는 유효한 식별자가 아니지만, `` `class` `` 는 유효합니다. '역따옴표' 자체는 식별자로 고려하지 않습니다; `` `x` `` 와 `x` 는 똑같은 의미입니다.
 
