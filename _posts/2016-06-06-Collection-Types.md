@@ -35,27 +35,27 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 
 #### Array Type Shorthand Syntax (배열 타입의 줄임 구문)
 
-스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. 배열 타입을 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 두 형식의 기능이 완전히 똑같긴 하지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입이라고 할 때는 이를 사용합니다.
+스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. 배열 타입을 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 두 형식은 기능이 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입을 참조할 때 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
-정해진 타입의 빈 배열은 '초기자 구문 표현 (initializer syntax)' 을 사용하여 생성할 수 있습니다:
+정해진 타입에 대한 빈 배열은 '초기자 구문 (initializer syntax)' 으로 생성할 수 있습니다:
 
 ```swift
 var someInts = [Int]()
 print(("someInts is of type [Int] with \(someInts.count) items.")
-// "someInts is of type [Int] with 0 items." 를 인쇄합니다.
+// "someInts is of type [Int] with 0 items." 를 인쇄함
 ```
 
-`someInts` 변수의 타입은 초기자의 타입으로부터 `[Int]` 로 추론됨을 기억하기 바랍니다.
+`someInts` 라는 변수 타입은 초기자의 타입에 의해 `[Int]` 라고 추론함을 기억하기 바랍니다.
 
-또 다른 방법으로, 이미 타입 정보를 제공한 상황, 가령 함수 인자에서 또는 이미 타입을 정한 변수나 상수 같은 상황인 경우, 빈 배열은, `[]` (빈 대괄호 쌍) 으로 작성하는, '빈 배열 글자 값 (empty array literal)' 으로 생성할 수 있습니다:
+대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '(빈 대괄호 쌍인) `[]` 를 쓴, 빈 배열 글자 값 (empty array literal)' 으로 빈 배열을 생성할 수 있습니다:
 
 ```swift
 someInts.append(3)
-// someInts 는 이제 Int 타입 값 한 개를 갖습니다.
+// someInts 는 이제 Int 타입의 값 1 개를 담고 있습니다.
 someInts = []
-// someInts 는 이제 빈 배열이지만, 타입은 아직 [Int] 입니다.
+// someInts 는 이제 빈 배열이지만, 여전히 [Int] 타입입니다.
 ```
 
 #### Creating an Array with a Default Value (기본 값으로 배열 생성하기)
