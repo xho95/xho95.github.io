@@ -108,16 +108,16 @@ var shoppingList = ["Eggs", "Milk"]
 
 #### Accessing and Modifying an Array (배열 접근하기와 수정하기)
 
-배열은 메소드와 속성을 통하여, 아니면 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여, 접근하고 수정합니다.
+배열은 '메소드와 속성을 통하거나, 첨자 연산 구문 (subscript syntax)' 을 써서, 접근하고 수정합니다.
 
-배열의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
+배열에 있는 항목의 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
-// "The shopping list contains 2 items." 를 인쇄합니다.
+// "The shopping list contains 2 items." 를 인쇄함
 ```
 
-'불리언 (Boolean)' 속성 `isEmpty` 는 `count` 속성이 `0` 인지 검사하는 것의 '줄임말 (shortcut)' 로써 사용합니다[^isEmpty-count]:
+`count` 속성이 `0` 과 같은 지 검사하는 '줄임말 (shortcut)' 로 '불리언 속성인 `isEmpty`' 를 사용합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -125,7 +125,7 @@ if shoppingList.isEmpty {
 } else {
   print("The shopping list is not empty.")
 }
-// "The shopping list is not empty." 를 인쇄합니다.
+// "The shopping list is not empty." 를 인쇄함
 ```
 
 배열의 `append(_:)` 메소드를 호출함으로써 배열 끝에 새로운 항목을 덧붙일 수 있습니다:
@@ -640,7 +640,7 @@ let airportNames = [String](airports.values)
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
-[^isEmpty-count]: 실제로, 스위프트는 배열, 셋, 또는 딕셔너리에 값이 비어 있는지 검사할 때는 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수를 셀 때 사용하는 것입니다. 둘은 서로 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것은 아닙니다. 이는 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 에서 설명한 것처럼, `count` 를 사용할 경우 배열에 있는 전체 항목에 동작을 반복하는 과정이 필요할 수도 있기 때문입니다. 이에 대해서는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 라는 글도 참고할만 합니다.
+[^isEmpty-count]: 스위프트는 '배열, 셋, 딕셔너리가 비었는 지 검사할 때 `isEmpty` 를 사용하라' 고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것이 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 부분에서 설명한 것처럼, 배열, 셋, 딕셔너리가 비었는 지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야할 수도 있습니다. 이러한 유형의 최적화에 대해서는, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
 
 [^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 즉 `shippingList.count` 는 유효한 색인이 아닙니다.
 
