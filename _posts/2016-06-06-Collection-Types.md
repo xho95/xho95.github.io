@@ -128,20 +128,20 @@ if shoppingList.isEmpty {
 // "The shopping list is not empty." 를 인쇄함
 ```
 
-배열의 `append(_:)` 메소드를 호출함으로써 배열 끝에 새로운 항목을 덧붙일 수 있습니다:
+배열의 `append(_:)` 메소드를 호출하면 배열 끝에 새로운 항목을 덧붙일 수 있습니다:
 
 ```swift
 shoppingList.append("Flour")
-// shoppingList 는 이제 3 개의 항목을 담고 있으며, 누군가 팬케이크를 만들고 있습니다.
+// shoppingList 는 이제 3 개의 항목을 담고 있으며, 누군가 팬케이크를 만드는가 봅니다.
 ```
 
-또 다른 방법으로, '더하기 할당 연산자 (`+=`)' 로 하나 이상의 호환 가능한 항목들의 배열을 덧붙입니다:
+대안으로, 호환 가능한 하나 이상의 항목들로 된 배열은 '더하기 할당 연산자 (`+=`)' 로 덧붙입니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 는 이제 4 개의 항목을 담고 있습니다.
+// shoppingList 는 이제 4 개의 항목을 담고 있음
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 는 이제 7 개의 항목을 담고 있습니다.
+// shoppingList 는 이제 7 개의 항목을 담고 있음
 ```
 
 배열의 값은, 배열 이름 바로 뒤의 대괄호에 가져오고자 하는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 표현 (subscript syntax)_ 을 사용하여 가져옵니다.:
