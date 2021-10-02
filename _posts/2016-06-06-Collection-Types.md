@@ -81,9 +81,9 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
 
-배열은, 하나 이상의 값을 배열 집합체로 작성하여 줄인, _배열 글자 값 (array literal)_[^literal] 으로 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분된, 값을 나열한 다음, 주위를 대괄호 쌍으로 감싸서 작성합니다:
+배열은, 하나 이상의 값을 배열 집합체로 작성하여 줄인, _배열 글자 값 (array literal)_[^literal] 으로 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸서 작성합니다:
 
-[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
+&nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
 
 아래 예제는 `String` 값들을 저장하기 위해 `shoppingList` 라는 배열을 생성합니다:
 
