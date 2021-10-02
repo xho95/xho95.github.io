@@ -94,7 +94,7 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 
 `shoppingList` 변수는, `[String]` 을 쓴, "문자열 값 배열" 이라고 선언합니다. 이 특별한 배열에 `String` 타입인 값을 지정했기 때문에, `String` 값의 저장만 허용합니다. 여기서, `shoppingList` 배열은, '배열 글자 값' 안에 작성한, (`"Eggs"` 와 `"Milk"` 라는) 두 `String` 값으로 초기화 합니다.
 
-> `shoppingList` 배열은 (`let` '도입자-introducer-' 를 쓰는) 상수가 아니라 (`var` '도입자' 를 써서) 변수로 선언되었는데 이는 아래 예제에서 이 '구매 목록 (shopping list)' 에 더 많은 항목이 추가되기 때문입니다.
+> `shoppingList` 배열을 (`let` '도입자 (introducer)' 를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 '구매 목록 (shopping list)' 에 더 많은 항목을 추가하기 때문입니다.
 
 이 경우, '배열 글자 값' 은 두 개의 `String` 값 외에 다른 것은 아무 것도 담고 있지 않습니다. 이는 `shoppingList` 변수의 선언 타입 (`String` 값만 담을 수 있는 배열) 과 일치하므로, '배열 글자 값' 의 할당이 두 초기 항목으로 `shoppingList` 를 초기화하는 방법으로써 허가됩니다.
 
