@@ -144,23 +144,23 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList 는 이제 7개의 항목을 담음
 ```
 
-배열에 있는 값은, 배열 이름 바로 뒤의 대괄호 안에 가져오고 싶은 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 (subscript syntax)_ 으로 가져옵니다:
+배열에 있는 값은, 배열 이름 바로 뒤 대괄호 안에 가져오려는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 (subscript syntax)_ 으로 가져옵니다:
 
 ```swift
 var firstItem = shoppingList[0]
-// firstItem 은 "Eggs" 입니다.
+// firstItem 은 "Eggs" 와 같음
 ```
 
-> 배열에 있는 첫 번째 항목은, `1` 이 아닌, `0` 이라는 색인을 가집니다. 스위프트의 배열은 항상 '0 으로-색인 (zero-indexed)' 됩니다.
+> 배열의 첫 번째 항목은, `1` 이 아닌, `0` 이라는 색인을 가집니다. 스위프트 배열은 항상 '0 기준-색인 (zero-indexed)' 입니다.
 
-주어진 색인의 기존 값을 바꾸기 위해 '첨자 연산 구문 표현' 을 사용할 수 있습니다:
+첨자 연산 구문을 사용하면 주어진 색인에 있는 기존 값을 바꿀 수 있습니다:
 
 ```swift
 shoppingList[0] = "Six eggs"
-// 목록의 첫 번째 항목은 이제 "Eggs" 가 아니라 "Six eggs" 입니다.
+// 목록의 첫 번째 항목은 이제 "Eggs" 가 아닌 "Six eggs" 와 같음
 ```
 
-'첨자 연산 구문 표현' 을 사용할 때는, 유효한 색인을 지정할 필요가 있습니다. 예를 들어, 배열 끝에 항목을 추가하려고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하면 '실행 시간 에러' 가 되버립니다.[^count-concurrent]
+첨자 연산 구문을 사용할 때, 지정한 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 실행 시간 에러가 되버립니다.[^count-concurrent]
 
 일정 범위의 값들을 한 번에 바꾸기 위해 '첨자 연산 구문 표현' 을 사용할 수도 있는데, 이 때 대체할 값의 집합이 대체될 범위와는 다른 길이를 가지더라도 무방합니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 와 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
 
@@ -642,7 +642,7 @@ let airportNames = [String](airports.values)
 
 [^isEmpty-count]: 스위프트는 '배열, 셋, 딕셔너리가 비었는 지 검사할 때 `isEmpty` 를 사용하라' 고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것이 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 부분에서 설명한 것처럼, 배열, 셋, 딕셔너리가 비었는 지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야할 수도 있습니다. 이러한 유형의 최적화에 대해서는, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
 
-[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 즉 `shippingList.count` 는 유효한 색인이 아닙니다.
+[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 이는 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
 
 [^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 옮길 수 있겠지만, 컴퓨터 용어임을 의미하도록 '해시' 라고 발음대로 옮기도록 합니다.
 
