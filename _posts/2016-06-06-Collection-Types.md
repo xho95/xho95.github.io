@@ -117,7 +117,7 @@ print("The shopping list contains \(shoppingList.count) items.")
 // "The shopping list contains 2 items." 를 인쇄함
 ```
 
-`count` 속성이 `0` 과 같은 지 검사하는 '줄임말 (shortcut)' 로 '불리언 속성인 `isEmpty`' 를 사용합니다[^isEmpty-count]:
+`count` 속성이 `0` 과 같은 지를 검사하는 줄임말로 '불리언 속성인 `isEmpty`' 를 사용합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -135,16 +135,16 @@ shoppingList.append("Flour")
 // shoppingList 는 이제 3 개의 항목을 담고 있으며, 누군가 팬케이크를 만드는가 봅니다.
 ```
 
-대안으로, 호환 가능한 하나 이상의 항목들로 된 배열은 '더하기 할당 연산자 (`+=`)' 로 덧붙입니다:
+대안으로, '더하기 할당 연산자 (`+=`)' 로 '호환 가능한 하나 이상의 항목으로 된 배열' 을 덧붙입니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 는 이제 4 개의 항목을 담고 있음
+// shoppingList 는 이제 4개의 항목을 담음
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 는 이제 7 개의 항목을 담고 있음
+// shoppingList 는 이제 7개의 항목을 담음
 ```
 
-배열의 값은, 배열 이름 바로 뒤의 대괄호에 가져오고자 하는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 표현 (subscript syntax)_ 을 사용하여 가져옵니다.:
+배열에 있는 값은, 배열 이름 바로 뒤의 대괄호 안에 가져오고 싶은 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 (subscript syntax)_ 으로 가져옵니다:
 
 ```swift
 var firstItem = shoppingList[0]
