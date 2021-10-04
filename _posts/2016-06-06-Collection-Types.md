@@ -160,21 +160,21 @@ shoppingList[0] = "Six eggs"
 // 목록의 첫 번째 항목은 이제 "Eggs" 가 아닌 "Six eggs" 와 같음
 ```
 
-첨자 연산 구문을 사용할 때, 지정한 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 실행 시간 에러가 되버립니다.[^count-concurrent]
+첨자 연산 구문을 사용할 때, 지정한 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 실행 시간 에러가 됩니다.[^count-concurrent]
 
-일정 범위의 값들을 한 번에 바꾸기 위해 '첨자 연산 구문 표현' 을 사용할 수도 있는데, 이 때 대체할 값의 집합이 대체될 범위와는 다른 길이를 가지더라도 무방합니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 와 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
+첨자 연산 구문을 사용하면, 대체할 값 집합과 대체 대상의 범위의 길이가 서로 다른 경우에도, 일정 범위의 값을 한 번에 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 항목을 담고 있습니다.
+// shoppingList 는 이제 6 개의 항목을 담음
 ```
 
-배열에서 지정된 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
+배열의 특정 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 항목을 담고 있습니다.
-// "Maple Syrup" 이 이제 목록에 있는 첫 번째 항목입니다.
+// shoppingList 는 이제 7 개의 항목을 담음
+// "Maple Syrup" 이 이제 목록의 첫 번째 항목임
 ```
 
 이 `insert(_:at:)` 메소드 호출은, 색인 `0` 으로 지시한, '구매 목록' 의 맨 앞에, 값이 `"Maple Syrup"` 인 새로운 항목을 집어 넣습니다.
