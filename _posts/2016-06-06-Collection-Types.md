@@ -60,64 +60,64 @@ someInts = []
 
 #### Creating an Array with a Default Value (기본 값으로 배열 생성하기)
 
-스위프트의 `Array` 타입은 정해진 크기의 배열을 생성하면서 모든 값을 똑같은 기본 값으로 설정하는 초기자도 제공합니다. 이 초기자에는 (`repeating:` 이라는) 적절한 타입의 기본 값과: (`count` 라는) 해당 값이 배열에서 반복되는 횟수를 전달합니다:
+스위프트 `Array` 타입은 '정해진 크기의 배열을 생성할 때 자신의 모든 값을 똑같은 기본 값으로 설정하는 초기자' 도 제공합니다. 이 초기자에 '(`repeating` 이라는) 적절한 타입의 기본 값' 과 '(`count` 라는) 새로운 배열에서 해당 값을 반복할 횟수' 를 전달합니다:
 
 ```swift
 var threeDoubles = Array(repeating: 0.0, count: 3)
-// threeDoubles 의 타입은 [Double] 이고, 값은 [0.0, 0.0, 0.0] 입니다.
+// threeDoubles 은 [Double] 타입이고, [0.0, 0.0, 0.0] 와 같음
 ```
 
 #### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 배열 생성하기)
 
-덧셈 연산자 (`+`) 에 '호환 가능한 (compatible)'[^compatible] 타입인 두 개의 기존 배열을 더함으로써 새로운 배열을 생성할 수 있습니다. 새로운 배열의 타입은 서로 더한 두 배열의 타입을 통해 추론합니다:
+새로운 배열은 '덧셈 연산자 (`+`) 와 호환 가능한[^compatible] 타입인 두 기존 배열을 더함' 으로써 생성할 수 있습니다. 새 배열의 타입은 서로 더한 두 배열의 타입으로 추론합니다:
 
 ```swift
 var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
-// anotherThreeDoubles 의 타입은 [Double] 이고, 값은 [2.5, 2.5, 2.5] 입니다.
+// anotherThreeDoubles 은 [Double] 타입이고, [2.5, 2.5, 2.5] 와 같음
 
 var sixDoubles = threeDoubles + anotherThreeDoubles
-// sixDoubles 의 타입은 [Double] 로 추론하며, 값은 [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 입니다.
+// sixDoubles 은 [Double] 타입이라고 추론하며, [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같음
 ```
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
 
-배열은 _배열 글자 값 (array literal)_[^literal] 으로 초기화할 수도 있는데, 이는 하나 이상의 값을 '배열 집합체 (array collection)' 로 작성하는 '줄임 표현법' 입니다. '배열 글자 값' 은, 쉼표로 구분된, 값을 나열한 다음, 주위를 대괄호 쌍으로 감싸서 작성합니다:
+배열은, 하나 이상의 값을 배열 집합체로 작성하여 줄인, _배열 글자 값 (array literal)_[^literal] 으로 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸서 작성합니다:
 
-[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
+&nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
 
-아래 예제는 `String` 값들을 저장하기 위해 `shoppingList` 라는 배열을 생성합니다:
+아래 예제는 `String` 값을 저장하는 `shoppingList` 라는 배열을 생성합니다:
 
 ```swift
 var shoppingList: [String] = ["Eggs", "Milk"]
-// shoppingList 가 두 개의 초기 항목으로 초기화되었습니다.
+// shoppingList 를 두 개의 초기 항목으로 초기화함
 ```
 
-`shoppingList` 변수는, `[String]` 을 써서, "문자열 값의 배열" 이라고 선언합니다. 특정 배열이 `String` 타입의 값을 갖도록 지정했기 때문에, `String` 값만 저장을 허용합니다. 여기 있는, `shoppingList` 배열은 '배열 글자 값' 내에 작성된, 두 개의 `String` 값 (`"Eggs"` 와 `"Milk"`) 로 초기화됩니다.
+`shoppingList` 변수는, `[String]` 을 쓴, "문자열 값 배열" 이라고 선언합니다. 이 특별한 배열에 `String` 타입인 값을 지정했기 때문에, `String` 값의 저장만 허용합니다. 여기서, `shoppingList` 배열은, '배열 글자 값' 안에 작성한, (`"Eggs"` 와 `"Milk"` 라는) 두 `String` 값으로 초기화 합니다.
 
-> `shoppingList` 배열은 (`let` '도입자-introducer-' 를 쓰는) 상수가 아니라 (`var` '도입자' 를 써서) 변수로 선언되었는데 이는 아래 예제에서 이 '구매 목록 (shopping list)' 에 더 많은 항목이 추가되기 때문입니다.
+> `shoppingList` 배열을 (`let` '도입자 (introducer)' 를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 '구매 목록 (shopping list)' 에 더 많은 항목을 추가하기 때문입니다.
 
-이 경우, '배열 글자 값' 은 두 개의 `String` 값 외에 다른 것은 아무 것도 담고 있지 않습니다. 이는 `shoppingList` 변수의 선언 타입 (`String` 값만 담을 수 있는 배열) 과 일치하므로, '배열 글자 값' 의 할당이 두 초기 항목으로 `shoppingList` 를 초기화하는 방법으로써 허가됩니다.
+이 경우, 배열 글자 값은 두 `String` 값 외엔 아무 것도 담지 않습니다. 이는 `shoppingList` 변수 선언의 타입 (인 `String` 값만 담을 수 있는 배열) 과 일치하므로, 두 초기 항목으로 `shoppingList` 를 초기화하는 '배열 글자 값 할당 방식' 을 허가합니다.
 
-스위프트의 '타입 추론 (type inference)' 에 감사하게도, 같은 타입의 값을 담은 '배열 글자 값' 으로 초기화할 경우 배열의 타입은 작성하지 않아도 됩니다. `shoppingList` 의 초기화는 '줄임 형식' 으로 대신 작성할 수도 있습니다:
+스위프트의 타입 추론에 감사하게도, '똑같은 타입 값을 담은 배열 글자 값으로 초기화' 할 경우 배열 타입을 작성하지 않아도 됩니다. `shoppingList` 초기화를 '줄임 형식' 으로 대신 작성할 수도 있습니다:
 
 ```swift
 var shoppingList = ["Eggs", "Milk"]
 ```
 
-'배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트가 `shoppingList` 변수에 대한 올바른 타입이 `[String]` 이라고 추론할 수 있습니다.
+배열 글자 값의 모든 값이 똑같은 타입이기 때문에, `shoppingList` 변수에 사용할 올바른 타입이 `[String]` 임을 스위프트가 추론할 수 있습니다.
 
 #### Accessing and Modifying an Array (배열 접근하기와 수정하기)
 
-배열은 메소드와 속성을 통하여, 아니면 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여, 접근하고 수정합니다.
+배열은 '메소드와 속성을 통하거나, 첨자 연산 구문 (subscript syntax)' 을 써서, 접근하고 수정합니다.
 
-배열의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
+배열에 있는 항목의 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
-// "The shopping list contains 2 items." 를 인쇄합니다.
+// "The shopping list contains 2 items." 를 인쇄함
 ```
 
-'불리언 (Boolean)' 속성 `isEmpty` 는 `count` 속성이 `0` 인지 검사하는 것의 '줄임말 (shortcut)' 로써 사용합니다[^isEmpty-count]:
+`count` 속성이 `0` 과 같은 지를 검사하는 줄임말로 '불리언 속성인 `isEmpty`' 를 사용합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -125,56 +125,56 @@ if shoppingList.isEmpty {
 } else {
   print("The shopping list is not empty.")
 }
-// "The shopping list is not empty." 를 인쇄합니다.
+// "The shopping list is not empty." 를 인쇄함
 ```
 
-배열의 `append(_:)` 메소드를 호출함으로써 배열 끝에 새로운 항목을 덧붙일 수 있습니다:
+배열의 `append(_:)` 메소드를 호출하면 배열 끝에 새로운 항목을 덧붙일 수 있습니다:
 
 ```swift
 shoppingList.append("Flour")
-// shoppingList 는 이제 3 개의 항목을 담고 있으며, 누군가 팬케이크를 만들고 있습니다.
+// shoppingList 는 이제 3 개의 항목을 담고 있으며, 누군가 팬케이크를 만드는가 봅니다.
 ```
 
-또 다른 방법으로, '더하기 할당 연산자 (`+=`)' 로 하나 이상의 호환 가능한 항목들의 배열을 덧붙입니다:
+대안으로, '더하기 할당 연산자 (`+=`)' 로 '호환 가능한 하나 이상의 항목으로 된 배열' 을 덧붙입니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 는 이제 4 개의 항목을 담고 있습니다.
+// shoppingList 는 이제 4개의 항목을 담음
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 는 이제 7 개의 항목을 담고 있습니다.
+// shoppingList 는 이제 7개의 항목을 담음
 ```
 
-배열의 값은, 배열 이름 바로 뒤의 대괄호에 가져오고자 하는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 표현 (subscript syntax)_ 을 사용하여 가져옵니다.:
+배열에 있는 값은, 배열 이름 바로 뒤 대괄호 안에 가져오려는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 (subscript syntax)_ 으로 가져옵니다:
 
 ```swift
 var firstItem = shoppingList[0]
-// firstItem 은 "Eggs" 입니다.
+// firstItem 은 "Eggs" 와 같음
 ```
 
-> 배열에 있는 첫 번째 항목은, `1` 이 아닌, `0` 이라는 색인을 가집니다. 스위프트의 배열은 항상 '0 으로-색인 (zero-indexed)' 됩니다.
+> 배열의 첫 번째 항목은, `1` 이 아닌, `0` 이라는 색인을 가집니다. 스위프트 배열은 항상 '0 기준-색인 (zero-indexed)' 입니다.
 
-주어진 색인의 기존 값을 바꾸기 위해 '첨자 연산 구문 표현' 을 사용할 수 있습니다:
+첨자 연산 구문을 사용하면 주어진 색인에 있는 기존 값을 바꿀 수 있습니다:
 
 ```swift
 shoppingList[0] = "Six eggs"
-// 목록의 첫 번째 항목은 이제 "Eggs" 가 아니라 "Six eggs" 입니다.
+// 목록의 첫 번째 항목은 이제 "Eggs" 가 아닌 "Six eggs" 와 같음
 ```
 
-'첨자 연산 구문 표현' 을 사용할 때는, 유효한 색인을 지정할 필요가 있습니다. 예를 들어, 배열 끝에 항목을 추가하려고 `shoppingList[shoppingList.count] = "Salt"` 라고 작성하면 '실행 시간 에러' 가 되버립니다.[^count-concurrent]
+첨자 연산 구문을 사용할 때, 지정한 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 실행 시간 에러가 됩니다.[^count-concurrent]
 
-일정 범위의 값들을 한 번에 바꾸기 위해 '첨자 연산 구문 표현' 을 사용할 수도 있는데, 이 때 대체할 값의 집합이 대체될 범위와는 다른 길이를 가지더라도 무방합니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 와 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
+첨자 연산 구문을 사용하면, 대체할 값 집합과 대체 대상의 범위의 길이가 서로 다른 경우에도, 일정 범위의 값을 한 번에 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 항목을 담고 있습니다.
+// shoppingList 는 이제 6 개의 항목을 담음
 ```
 
-배열에서 지정된 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
+배열의 특정 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 항목을 담고 있습니다.
-// "Maple Syrup" 이 이제 목록에 있는 첫 번째 항목입니다.
+// shoppingList 는 이제 7 개의 항목을 담음
+// "Maple Syrup" 이 이제 목록의 첫 번째 항목임
 ```
 
 이 `insert(_:at:)` 메소드 호출은, 색인 `0` 으로 지시한, '구매 목록' 의 맨 앞에, 값이 `"Maple Syrup"` 인 새로운 항목을 집어 넣습니다.
@@ -636,13 +636,13 @@ let airportNames = [String](airports.values)
 
 [^dictionaries-type]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
 
-[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 것은, 서로 같이 사용하거나 교체가 가능한 것을 말합니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 서로 '호환 가능 (compatible)' 해서, 두 값을 서로 같이 연산할 수 있습니다. 이처럼, 본문에서 '호환 가능 (compatible)' 하다는 표현을 사용한 것은 두 타입이 꼭 같을 필요는 없고 호환 가능하기만 하면 되기 때문으로 추측됩니다.  
+[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible) 하다' 는 것은 '서로 같이 사용하거나 교체가 가능하다' 는 의미입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 '덧셈 연산자와 호환 가능' 하기 때문에, 두 값을 덧셈 연산자로 더할 수 있습니다. 본문에서 '호환 가능 (compatible) 하다' 는 표현을 사용한 것은, 두 값을 더할 때는 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
-[^isEmpty-count]: 실제로, 스위프트는 배열, 셋, 또는 딕셔너리에 값이 비어 있는지 검사할 때는 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수를 셀 때 사용하는 것입니다. 둘은 서로 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것은 아닙니다. 이는 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 에서 설명한 것처럼, `count` 를 사용할 경우 배열에 있는 전체 항목에 동작을 반복하는 과정이 필요할 수도 있기 때문입니다. 이에 대해서는 [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 라는 글도 참고할만 합니다.
+[^isEmpty-count]: 스위프트는 '배열, 셋, 딕셔너리가 비었는 지 검사할 때 `isEmpty` 를 사용하라' 고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것이 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 부분에서 설명한 것처럼, 배열, 셋, 딕셔너리가 비었는 지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야할 수도 있습니다. 이러한 유형의 최적화에 대해서는, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
 
-[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 즉 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 즉 `shippingList.count` 는 유효한 색인이 아닙니다.
+[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 이는 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
 
 [^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 옮길 수 있겠지만, 컴퓨터 용어임을 의미하도록 '해시' 라고 발음대로 옮기도록 합니다.
 
