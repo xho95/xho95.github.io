@@ -222,7 +222,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-값 뿐만 아니라 각 항목의 정수 색인도 필요한 경우, 배열에 동작을 반복시키기 위해 대신 `enumerated()` 메소드를 사용합니다. 배열의 각 항목마다, `enumerated()` 메소드는 정수와 항목으로 구성된 '튜플 (tuple)' 을 반환합니다. 이 정수는 '0' 에서 시작하며 각 항목마다 하나씩 세어 갑니다; 전체 배열을 '열거하는 (enumerate over)' 경우엔, 이 정수들이 항목들의 색인과 일치합니다. 튜플은 '반복 회차 (iteration)' 마다 임시 상수나 변수로 분해할 수 있습니다:
+자신의 값 뿐 아니라 각 항목에 대한 정수 색인이 필요하다면, 배열에 동작을 반복하기 위해 `enumerated()` 메소드를 대신 사용합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. 튜플은 '반복 회차 (iteration)' 마다 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -236,7 +236,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 참고하기 바랍니다.
 
 ### Sets (셋)
 
