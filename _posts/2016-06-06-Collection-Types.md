@@ -206,9 +206,9 @@ let apples = shoppingList.removeLast()
 // apples 상수는 이제 삭제한 문자열인 "Apples" 와 같음
 ```
 
-#### Iterating Over an Array (배열에 동작을 반복시키기)
+#### Iterating Over an Array (배열에 동작을 반복하기)
 
-배열에 있는 전체 값들은 `for`-`in` 반복문으로 '동작을 반복시킬 (iterate over)'[^iterate-over] 수 있습니다:
+`for`-`in` 반복문으로 '배열의 전체 값 집합에 동작을 반복'[^iterate-over] 할 수 있습니다:
 
 ```swift
 for item in shoppingList {
@@ -666,7 +666,7 @@ let airportNames = [String](airports.values)
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 
-[^iterate-over]: 여기서 '동작을 반복시킨다 (iterate over)' 시킨다는 말은 배열에 있는 모든 항목들마다 한 번씩 동작을 시킨다는 의미입니다.
+[^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
 
 [^no-defined-ordering]: '정의된 순서없이 (no defined ordering)' 라는 말도 '정렬되지 않은 채로' 라고 옮길 수도 있지만, 'ordered collections'[^ordered-collection] 과 같이, 'sorted' 와의 구별을 위해 '순서가 없이' 라고 옮깁니다.
 
