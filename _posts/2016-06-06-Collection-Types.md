@@ -197,13 +197,13 @@ firstItem = shoppingList[0]
 // firstItem 은 이제 "Six eggs" 임
 ```
 
-배열에서 최종 항목을 삭제하고 싶으면, 배열의 `count` 속성 조회를 피하도록 `remove(at:)` 메소드 보다는 `removeLast()` 메소드를 사용합니다. `remove(at:)` 메소드와 같이, `removeLast()` 메소드도 삭제한 항목을 반환합니다:
+배열의 최종 항목을 삭제하고 싶으면, 배열의 `count` 속성을 조회할 필요를 피하도록 `remove(at:)` 메소드 보다는 `removeLast()` 메소드를 사용합니다. `remove(at:)` 메소드 같이, `removeLast()` 메소드도 삭제한 항목을 반환합니다:
 
 ```swift
 let apples = shoppingList.removeLast()
-// 배열의 마지막 항목을 방금 삭제했습니다.
-// shoppingList 는 이제 5 개의 항목을 담고 있으며, apple 은 없습니다.
-// apples 상수는 이제 삭제한 문자열인 "Apples" 입니다.
+// 방금 배열의 마지막 항목을 삭제함
+// shoppingList 는 이제 5 개의 항목을 담으며, apple 은 없음
+// apples 상수는 이제 삭제한 문자열인 "Apples" 와 같음
 ```
 
 #### Iterating Over an Array (배열에 동작을 반복시키기)
