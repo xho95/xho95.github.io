@@ -31,7 +31,7 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 
 > 스위프트의 `Array` 타입은 'Foundation[^Foundation] 의 `NSArray` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> `Array` 와 'Foundation 및 Cocoa'[^Cocoa] 를 함께 사용하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 참고하기 바랍니다.
+> `Array` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 참고하기 바랍니다.
 
 #### Array Type Shorthand Syntax (배열 타입의 줄임 구문)
 
@@ -248,7 +248,7 @@ _셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서
 
 #### Hash Values for Set Types (셋 타입을 위한 해시 값)
 
-'셋' 에 저장하는 타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 합니다-즉, 타입 스스로 반드시 _해시 값 (hash value)_[^hash-value] 을 계산하는 방식을 제공해야 합니다. '해시 값' 은 비교해서 같은 모든 객체끼리는 똑같은 하나의 `Int` 값으로, 가령 `a == b` 라면, `a` 의 해시 값은 `b` 의 해시 값과 같습니다.
+셋에 저장할 타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 합니다-즉, 타입은 반드시 '스스로 _해시 값 (hash value)_[^hash-value] 계산 방식을 제공' 해야 합니다. 해시 값은 '비교해서 같은 모든 객체끼리는 똑같은 하나의 `Int` 값' 이어서, `a == b` 이면, `a` 의 해시 값과 `b` 의 해시 값이 같습니다.
 
 스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해시 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해시 가능합니다.   
 
@@ -662,7 +662,7 @@ let airportNames = [String](airports.values)
 
 [^ordered-list]: '순서 있는 리스트 (ordered list)' 에서의 리스트는 자료 구조의 하나입니다. '리스트 (list) 자료 구조' 에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
 
-[^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍의 기반이 되는 프레임웍으로 `import Foundation` 으로 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+[^Foundation]: 'Foundation' 은 '모든 스위프트 프로그래밍의 기반이 되는 프레임웍' 이며, `import Foundation` 이라고 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 
