@@ -222,7 +222,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-자신의 값 뿐 아니라 각 항목에 대한 정수 색인이 필요하다면, 배열에 동작을 반복하기 위해 `enumerated()` 메소드를 대신 사용합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. 튜플은 '반복 회차 (iteration) 에서의 임시 상수나 변수' 로 분해할 수 있습니다:
+자신의 값 뿐 아니라 각 항목에 대한 정수 색인이 필요하다면, 배열에 동작을 반복하기 위해 `enumerated()` 메소드를 대신 사용합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. 튜플은 '반복 회차 (iteration)' 에서 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -240,7 +240,7 @@ for (index, value) in shoppingList.enumerated() {
 
 ### Sets (셋)
 
-_셋 (set)_ 은 '집합체 (collection)' 에 같은 타입의 서로 별개인 값들을 '정의된 순서없이 (no defined ordering)'[^no-defined-ordering] 저장합니다. '셋' 은 항목의 순서가 중요하지 않을 때나, 항목이 한 번만 나타나도록 보장해야 할 때에, 배열 대신 사용할 수 있습니다.
+_셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서없이[^no-defined-ordering] 집합체에 저장' 합니다. '셋' 은 '항목의 순서가 중요하지 않거나, 한 항목이 한 번만 나타난다고 보장해야 할 때, 배열 대신 사용' 할 수 있습니다.
 
 > 스위프트의 `Set` 타입은 'Foundation'[^Foundation] 의 `NSSet` 클래스와 '연동되어 (bridged)' 있습니다.
 >
@@ -668,7 +668,7 @@ let airportNames = [String](airports.values)
 
 [^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
 
-[^no-defined-ordering]: '정의된 순서없이 (no defined ordering)' 라는 말도 '정렬되지 않은 채로' 라고 옮길 수도 있지만, 'ordered collections'[^ordered-collection] 과 같이, 'sorted' 와의 구별을 위해 '순서가 없이' 라고 옮깁니다.
+[^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 참고하기 바랍니다.
 
 [^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 이 아니라 '빈 배열 글자 값 (empty array literal)' 입니다. '빈 셋 글자 값' 같은 건 따로 없고, '빈 배열 글자 값' 을 그대로 사용합니다.
 
