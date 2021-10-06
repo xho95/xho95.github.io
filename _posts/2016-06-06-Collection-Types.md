@@ -242,9 +242,9 @@ for (index, value) in shoppingList.enumerated() {
 
 _셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서없이[^no-defined-ordering] 집합체에 저장' 합니다. '셋' 은 '항목의 순서가 중요하지 않거나, 한 항목이 한 번만 나타난다고 보장해야 할 때, 배열 대신 사용' 할 수 있습니다.
 
-> 스위프트의 `Set` 타입은 'Foundation'[^Foundation] 의 `NSSet` 클래스와 '연동되어 (bridged)' 있습니다.
+> 스위프트의 `Set` 타입은 'Foundation[^Foundation] 의 `NSSet` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> `Set` 을 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 참고하기 바랍니다.
+> `Set` 과 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 참고하기 바랍니다.
 
 #### Hash Values for Set Types (셋 타입을 위한 해시 값)
 
