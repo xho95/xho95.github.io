@@ -39,7 +39,7 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
-정해진 타입에 대한 빈 배열은 '초기자 구문 (initializer syntax)' 으로 생성할 수 있습니다:
+'초기자 구문 (initializer syntax)' 으로 '정해진 타입의 빈 배열' 을 생성할 수 있습니다:
 
 ```swift
 var someInts = [Int]()
@@ -53,9 +53,9 @@ print(("someInts is of type [Int] with \(someInts.count) items.")
 
 ```swift
 someInts.append(3)
-// someInts 는 이제 Int 타입의 값 1 개를 담고 있습니다.
+// someInts 는 이제 Int 타입의 값 1개를 담고 있음
 someInts = []
-// someInts 는 이제 빈 배열이지만, 여전히 [Int] 타입입니다.
+// someInts 는 이제 빈 배열이지만, 여전히 [Int] 타입임
 ```
 
 #### Creating an Array with a Default Value (기본 값으로 배열 생성하기)
@@ -254,29 +254,31 @@ _셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서
 
 > 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수함으로써 '셋' 의 값 타입 또는 '딕셔너리' 의 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 참고하기 바랍니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
 
-#### Set Type Syntax (셋 타입 구문 표현)
+#### Set Type Syntax (셋 타입 구문)
 
-스위프트의 '셋' 타입은 `Set<Element>` 라고 작성하는데, 여기서 `Element` 는 셋에 저장하도록 허용한 타입입니다. '배열' 과는 달리, '셋' 은 동치인 '줄임 표현' 이 없습니다.
+스위프트 셋 타입은 `Set<Element>` 라고 작성하는데, 여기서 `Element` 는 셋에 저장이 허용된 타입입니다. 배열과 달리, 셋은 줄임 형식 같은 것이 없습니다.
 
 #### Creating and Initializing an Empty Set (빈 셋 생성하고 초기화하기)
 
-정해진 타입의 빈 '셋' 은 '초기자 구문 표현 (initializer syntax)' 을 사용하여 생성할 수 있습니다:
+초기자 구문으로 '정해진 타입의 빈 셋' 을 생성할 수 있습니다:
 
 ```swift
 var letters = Set<Character>()
 print("letters is of type Set<Character> with \(letters.count) items.")
-// "letters is of type Set<Character> with 0 items." 을 인쇄합니다.
+// "letters is of type Set<Character> with 0 items." 을 인쇄함
 ```
 
-> `letters` 변수의 타입을, 초기자의 타입으로부터, `Set<Character>` 라고 추론합니다.
+> `letters` 변수의 타입은, 초기자 타입에 의해, `Set<Character>` 로 추론합니다.
 
-또 다른 방법으로, 이미 타입 정보를 제공한 상황, 가령 함수 인자에서 또는 이미 타입을 정한 변수나 상수 같은 상황인 경우, 빈 '셋' 을 '빈 배열 글자 값 (empty array literal)'[^empty-array-literal] 으로 생성할 수 있습니다:
+대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '(빈 대괄호 쌍인) `[]` 를 쓴, 빈 배열 글자 값 (empty array literal)' 으로 빈 배열을 생성할 수 있습니다:
+
+대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '빈 배열 글자 값'[^empty-array-literal] 으로 빈 셋을 생성할 수 있습니다:
 
 ```swift
 letters.insert("a")
-// letters 는 이제 Character 타입의 값 1 개를 담고 있습니다.
+// letters 는 이제 Character 타입의 값 1개를 담고 있음
 letters = []
-// letters 는 이제 빈 셋이지만, 타입은 여전히 Set<Character> 입니다.
+// letters 는 이제 빈 셋이지만, 여전히 Set<Character> 타입임
 ```
 
 #### Creating a Set with an Array Literal (배열 글자 값으로 셋 생성하기)
@@ -670,7 +672,7 @@ let airportNames = [String](airports.values)
 
 [^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 참고하기 바랍니다.
 
-[^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 이 아니라 '빈 배열 글자 값 (empty array literal)' 입니다. '빈 셋 글자 값' 같은 건 따로 없고, '빈 배열 글자 값' 을 그대로 사용합니다.
+[^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 같은 건 따로 없기 때문에, '빈 배열 글자 값 (empty array literal)' 을 그대로 사용합니다.
 
 [^set]: 여기서의 '셋 (set)' 은 수학에서 말하는 '집합 (set)' 과 같은 의미로 사용되었다고 볼 수 있습니다. 실제 자료 구조로써의 '셋 (set)' 은 수학에서의 '집합 (set)' 을 구현하고 있는 것입니다.
 
