@@ -268,9 +268,7 @@ print("letters is of type Set<Character> with \(letters.count) items.")
 // "letters is of type Set<Character> with 0 items." 을 인쇄함
 ```
 
-> `letters` 변수의 타입은, 초기자 타입에 의해, `Set<Character>` 로 추론합니다.
-
-대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '(빈 대괄호 쌍인) `[]` 를 쓴, 빈 배열 글자 값 (empty array literal)' 으로 빈 배열을 생성할 수 있습니다:
+> `letters` 변수의 타입은, 초기자 타입에 의해, `Set<Character>` 이라고 추론합니다.
 
 대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '빈 배열 글자 값'[^empty-array-literal] 으로 빈 셋을 생성할 수 있습니다:
 
@@ -294,15 +292,15 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
 
 `favoriteGenres` 변수는, `Set<String>` 이라고 써서, "`String` 값의 셋” 으로 선언합니다. 이 특별한 셋의 값 타입을 `String` 으로 지정했기 때문에, `String` 값 _만 (only)_ 저장을 허용합니다. 여기서는, 배열 글자 값 안에 작성한, (`"Rock"`, `"Classical"`, 및 `"Hip hop"` 이라는) 세 `String`  값으로 `favoriteGenres` 셋을 초기화 합니다.
 
-> `favoriteGenres` 셋은 (`let` '도입자' 를 쓰는) 상수가 아니라 (`var` '도입자' 를 써서) 변수로 선언되었는데 이는 아래 예제에서 항목이 추가되거나 삭제되기 때문입니다.
+> `favoriteGenres` 셋을 (`let` 도입자를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 항목을 추가하거나 삭제하기 때문입니다.
 
-'셋' 타입은 '배열 글자 값' 홀로 있으면 추론할 수 없으므로[^set-array-literal], `Set` 타입은 반드시 명시적으로 선언해야 합니다. 하지만, 스위프트의 타입 추론으로 인하여, 단 한 가지 타입의 값을 담은 '배열 글자 값' 으로 초기화하는 경우 '셋' 의 '원소 (elements)' 타입은 작성하지 않아도 됩니다. `favoriteGenres` 의 초기화는 '줄임 형식' 으로 대신 작성할 수도 있습니다:
+배열 글자 값 홀로 있으면 셋 타입이라고 추론할 수 없으므로[^set-array-literal], `Set` 타입은 반드시 명시적으로 선언해야 합니다. 하지만, 스위프트의 타입 추론 때문에, '단 한 가지 타입의 값만 담은 배열 글자 값' 으로 초기화하면 '셋의 원소 타입' 을 작성하지 않아도 됩니다. `favoriteGenres` 초기화를 (다음) 줄임 형식으로 대신 작성할 수도 있을 것입니다:
 
 ```swift
 var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 ```
 
-'배열 글자 값' 에 있는 모든 값이 같은 타입이기 때문에, 스위프트가 `favoriteGenres` 변수에 대한 올바른 타입이 `Set<String>` 이라고 추론할 수 있습니다.
+배열 글자 값의 모든 값이 똑같은 타입이기 때문에, `favoriteGenres` 변수에 사용할 올바른 타입이 `Set<String>` 임을 스위프트가 추론할 수 있습니다.
 
 #### Accessing and Modifying a Set (셋 접근하기와 수정하기)
 
@@ -650,7 +648,11 @@ let airportNames = [String](airports.values)
 
 [^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개고 뒤섞어서 다진 값' 정도로 이해할 수 있습니다. 역시 컴퓨터 용어임을 의미하도록 '해시 값' 이라고 발음대로 옮기도록 합니다.
 
-[^set-array-literal]: '셋 글자 값 (set literal)' 이란 것이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값 (array literal)' 만 사용하면 타입을 `Array` 로 추론하게 됩니다.
+[^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 같은 건 따로 없기 때문에, '빈 배열 글자 값 (empty array literal)' 을 그대로 사용합니다.
+
+[^set-array-collection]: 앞에서 설명한 것처럼, '셋 글자 값' 이란 것은 따로 없고, 셋에서도 '배열 글자 값' 을 사용합니다.
+
+[^set-array-literal]: '셋 글자 값' 이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값' 만 사용하면 `Array` 타입이라고 추론할 것입니다.
 
 [^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set)' 타입 자체가 수학에서의 '집합 (set)' 을표현하는 타입이기도 해서, 수학에서 다루는 '집합 연산' 을 하고자 할 때는 스위프트의 '셋 (set)' 타입을 사용하면 효율적으로 할 수 있다 정도로 이해하면 좋을 것 같습니다.
 
@@ -672,8 +674,6 @@ let airportNames = [String](airports.values)
 
 [^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 참고하기 바랍니다.
 
-[^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 같은 건 따로 없기 때문에, '빈 배열 글자 값 (empty array literal)' 을 그대로 사용합니다.
-
 [^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
 [^symmetric-difference]: 원래는 메소드의 이름이 `exclusiveOr` 였는데, `symmetricDifference` 로 바뀌었습니다. 앞서와 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
@@ -683,5 +683,3 @@ let airportNames = [String](airports.values)
 [^subset]: '하위 집합 (subset)' 은 수학에서 말하는 '부분 집합' 입니다. 다만, 'subset' 에 대응되는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위 집합 (subset)' 이라고 옮깁니다. 영어로 '부분집합' 은 'subset' 이라고 하고, 그 반대는 'superset' 이라고 한다고 이해하면 될 것입니다.
 
 [^IATA]: 본문에 있는 '국제 항공 운송 협회 (International Air Transport Association)' 는 예제를 위한 것이 아니라 실제로 존재하는 협회입니다. 이 협회의 홈페이지는 [https://www.iata.org](https://www.iata.org) 입니다.
-
-[^set-array-collection]: 앞에서 설명한 것처럼, '셋 글자 값' 이란 것은 따로 없고, 셋에서도 '배열 글자 값' 을 사용합니다.
