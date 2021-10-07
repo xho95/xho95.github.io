@@ -92,7 +92,7 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 // shoppingList 를 두 개의 초기 항목으로 초기화함
 ```
 
-`shoppingList` 변수는, `[String]` 을 쓴, "문자열 값 배열" 이라고 선언합니다. 이 특별한 배열에 `String` 타입인 값을 지정했기 때문에, `String` 값의 저장만 허용합니다. 여기서, `shoppingList` 배열은, '배열 글자 값' 안에 작성한, (`"Eggs"` 와 `"Milk"` 라는) 두 `String` 값으로 초기화 합니다.
+`shoppingList` 변수는, `[String]` 이라고 써서, "문자열 값 배열" 로 선언합니다. 이 특별한 배열에 `String` 타입인 값을 지정했기 때문에, `String` 값의 저장만 허용합니다. 여기서, `shoppingList` 배열은, '배열 글자 값' 안에 작성한, (`"Eggs"` 와 `"Milk"` 라는) 두 `String` 값으로 초기화 합니다.
 
 > `shoppingList` 배열을 (`let` '도입자 (introducer)' 를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 '구매 목록 (shopping list)' 에 더 많은 항목을 추가하기 때문입니다.
 
@@ -292,7 +292,7 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
 // favoriteGenres 를 세 개의 초기 항목으로 초기화함
 ```
 
-`favoriteGenres` 변수는, `Set<String>` 을 써서, "`String` 값의 '셋 (set)'[^set]” 으로 선언합니다. 이 특정 셋은 값 타입이 `String` 이라고 지정했기 때문에, `String` 값 _만 (only)_ 저장하도록 허용합니다. 여기서의, `favoriteGenres` 셋은, '배열 글자 값' 에서 작성된, 세 개의 `String` (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 값으로 초기화 됩니다.
+`favoriteGenres` 변수는, `Set<String>` 이라고 써서, "`String` 값의 셋” 으로 선언합니다. 이 특별한 셋의 값 타입을 `String` 으로 지정했기 때문에, `String` 값 _만 (only)_ 저장을 허용합니다. 여기서는, 배열 글자 값 안에 작성한, (`"Rock"`, `"Classical"`, 및 `"Hip hop"` 이라는) 세 `String`  값으로 `favoriteGenres` 셋을 초기화 합니다.
 
 > `favoriteGenres` 셋은 (`let` '도입자' 를 쓰는) 상수가 아니라 (`var` '도입자' 를 써서) 변수로 선언되었는데 이는 아래 예제에서 항목이 추가되거나 삭제되기 때문입니다.
 
@@ -634,7 +634,7 @@ let airportNames = [String](airports.values)
 
 [^collections]: 'collection' 은 '집합', '묶음' 등 여러 가지 말로 옮길 수 있지만 여기서는 '집합체' 라는 말을 사용합니다. 이는 프로그래밍 용어에서 '객체', '구조체', '열거체' 등이 하나의 '타입' 을 의미하는 것에서 착안한 것입니다. '집합체' 는 어떤 성분들의 집합으로 이루어진 '타입' 이라고 이해하면 좋을 것 같습니다.
 
-[^sets-type]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있으며, 스위프트의 '셋 (sets)' 역시 수학에 있는 '집합 (sets)' 에서 유래한 개념입니다. 하지만, '집합' 이라고 하면 수학 용어인지 자료 타입인지 모호할 수 있으므로, 스위프트의 자료 타입임을 의미할 때는 '셋' 이라는 발음대로 옮기도록 합니다.
+[^sets-type]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있으며, 스위프트의 '셋 (sets)' 역시 수학에 있는 '집합 (sets)' 에서 유래한 개념입니다. 실제로 '셋이라는 자료 구조' 는 '수학에서의 집합을 구현한 것' 입니다. 하지만, '집합' 이라고 하면 수학 용어인지 자료 타입인지 모호할 수 있으므로, 스위프트의 자료 타입임을 의미할 때는 '셋' 이라는 발음대로 옮기도록 합니다.
 
 [^dictionaries-type]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
 
@@ -673,8 +673,6 @@ let airportNames = [String](airports.values)
 [^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 참고하기 바랍니다.
 
 [^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 같은 건 따로 없기 때문에, '빈 배열 글자 값 (empty array literal)' 을 그대로 사용합니다.
-
-[^set]: 여기서의 '셋 (set)' 은 수학에서 말하는 '집합 (set)' 과 같은 의미로 사용되었다고 볼 수 있습니다. 실제 자료 구조로써의 '셋 (set)' 은 수학에서의 '집합 (set)' 을 구현하고 있는 것입니다.
 
 [^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
