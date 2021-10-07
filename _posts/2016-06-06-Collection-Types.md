@@ -179,31 +179,31 @@ shoppingList.insert("Maple Syrup", at: 0)
 
 이 `insert(_:at:)` 메소드 호출은 `"Maple Syrup"` 이라는 값을 가진 새로운 항목을, 색인 `0` 으로 지시한, '구매 목록' 맨 앞에, 집어 넣습니다.
 
-이와 비슷하게, 배열에 있는 항목은 `remove(at:)` 메소드로 삭제합니다. 이 메소드는 특정 색인에 있는 항목을 삭제하고 삭제한 항목을 반환합니다. (물론 필요 없다면 반환 값을 무시할 수 있습니다):
+이와 비슷하게, 배열에 있는 항목은 `remove(at:)` 메소드로 제거합니다. 이 메소드는 특정 색인에 있는 항목을 제거하고 제거한 항목을 반환합니다. (물론 필요 없다면 반환 값을 무시할 수 있습니다):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
-// 방금 색인 0 에 있는 값을 삭제함
+// 방금 색인 0 에 있는 값을 제거함
 // shoppingList 는 이제 6 개의 항목을 담으며, Maple Syrup 은 없음
-// mapleSyrup 상수는 이제 삭제한 문자열인 "Maple Syrup" 과 같음
+// mapleSyrup 상수는 이제 제거한 문자열인 "Maple Syrup" 과 같음
 ```
 
 > 배열에 존재하는 경계 밖의 색인으로 값에 접근하거나 수정하려고 하면, 실행 시간 에러를 발동할 것입니다. 색인을 사용하기 전에 이를 배열의 `count` 속성과 비교함으로써 유효한 지 검사할 수 있습니다. 배열 색인은 '0-에서 시작' 하기 때문에 '배열에서 가장 큰 유효 색인은 `count - 1`' 입니다-하지만, `count` 가 (빈 배열을 의미하는) `0` 일 땐, 유효 색인이 아무 것도 없습니다.
 
-항목을 삭제할 때는 배열의 어떤 빈틈이든 메우므로, 색인 `0` 에서의 값은 다시 한 번 `"Six eggs"` 가 됩니다:
+항목을 제거할 때는 배열의 어떤 빈틈이든 메우므로, 색인 `0` 에서의 값은 다시 한 번 `"Six eggs"` 가 됩니다:
 
 ```swift
 firstItem = shoppingList[0]
 // firstItem 은 이제 "Six eggs" 임
 ```
 
-배열의 최종 항목을 삭제하고 싶으면, 배열의 `count` 속성을 조회할 필요를 피하도록 `remove(at:)` 메소드 보다는 `removeLast()` 메소드를 사용합니다. `remove(at:)` 메소드 같이, `removeLast()` 메소드도 삭제한 항목을 반환합니다:
+배열의 최종 항목을 제거하고 싶으면, 배열의 `count` 속성을 조회할 필요를 피하도록 `remove(at:)` 메소드 보다는 `removeLast()` 메소드를 사용합니다. `remove(at:)` 메소드 같이, `removeLast()` 메소드도 제거한 항목을 반환합니다:
 
 ```swift
 let apples = shoppingList.removeLast()
-// 방금 배열의 마지막 항목을 삭제함
+// 방금 배열의 마지막 항목을 제거함
 // shoppingList 는 이제 5 개의 항목을 담으며, apple 은 없음
-// apples 상수는 이제 삭제한 문자열인 "Apples" 와 같음
+// apples 상수는 이제 제거한 문자열인 "Apples" 와 같음
 ```
 
 #### Iterating Over an Array (배열에 동작을 반복하기)
@@ -292,7 +292,7 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
 
 `favoriteGenres` 변수는, `Set<String>` 이라고 써서, "`String` 값의 셋” 으로 선언합니다. 이 특별한 셋의 값 타입을 `String` 으로 지정했기 때문에, `String` 값 _만 (only)_ 저장을 허용합니다. 여기서는, 배열 글자 값 안에 작성한, (`"Rock"`, `"Classical"`, 및 `"Hip hop"` 이라는) 세 `String`  값으로 `favoriteGenres` 셋을 초기화 합니다.
 
-> `favoriteGenres` 셋을 (`let` 도입자를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 항목을 추가하거나 삭제하기 때문입니다.
+> `favoriteGenres` 셋을 (`let` 도입자를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 항목을 추가하거나 제거하기 때문입니다.
 
 배열 글자 값 홀로 있으면 셋 타입이라고 추론할 수 없으므로[^set-array-literal], `Set` 타입은 반드시 명시적으로 선언해야 합니다. 하지만, 스위프트의 타입 추론 때문에, '단 한 가지 타입의 값만 담은 배열 글자 값' 으로 초기화하면 '셋의 원소 타입' 을 작성하지 않아도 됩니다. `favoriteGenres` 초기화를 (다음) 줄임 형식으로 대신 작성할 수도 있을 것입니다:
 
@@ -304,16 +304,16 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 
 #### Accessing and Modifying a Set (셋 접근하기와 수정하기)
 
-'셋' 은 메소드와 속성을 통하여 접근하고 수정합니다.
+셋은 메소드와 속성을 통하여 접근하고 수정합니다.
 
-'셋' 의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
+셋에 있는 항목의 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("I have \(favoriteGenres.count) favorite music genres.")
-// "I have 3 favorite music genres." 를 인쇄합니다.
+// "I have 3 favorite music genres." 를 인쇄함
 ```
 
-'불리언' 속성 `isEmpty` 는 `count` 속성이 `0` 인지 검사하는 것의 '줄임말' 로써 사용합니다[[^isEmpty-count]]:
+`count` 속성이 `0` 과 같은 지를 검사하는 줄임말로 '불리언 속성인 `isEmpty`' 를 사용합니다:
 
 ```swift
 if favoriteGenres.isEmpty {
@@ -321,17 +321,17 @@ if favoriteGenres.isEmpty {
 } else {
   print("I have particular music preferences.")
 }
-// "I have particular music preferences." 를 인쇄합니다.
+// "I have particular music preferences." 를 인쇄함
 ```
 
-`insert(_:)` 메소드를 호출하여 '셋' 에 새로운 항목을 추가할 수 있습니다:
+셋의 `insert(_:)` 메소드를 호출하면 셋에 새로운 항목을 추가할 수 있습니다:
 
 ```swift
 favoriteGenres.insert("Jazz")
-// favoriteGenres 는 이제 4 개의 항목을 담고 있습니다.
+// favoriteGenres 는 이제 4 개의 항목을 담고 있음
 ```
 
-'셋' 의 `remove(_:)` 메소드를 호출하여 셋에 있는 항목을 삭제할 수 있는데, 이는 그 항목이 셋의 멤버라면 이를 삭제하고, 삭제한 값을 반환하지만, '셋' 이 이를 담고 있지 않은 경우 `nil` 을 반환합니다. 또 다른 방법으로는, `removeAll()` 메소드로 '셋' 에 있는 모든 항목을 삭제할 수 있습니다.
+셋의 `remove(_:)` 메소드를 호출하면 셋에서 항목을 제거할 수 있는데, 이는 항목이 셋의 멤버면 이를 제거하고, 제거한 값을 반환하지만, 셋이 이를 담고 있지 않으면 `nil` 을 반환합니다. 대안으로, `removeAll()` 메소드로 셋의 모든 항목을 제거할 수 있습니다.
 
 ```swift
 if let removeGenres = favoriteGenres.remove("Rock") {
@@ -339,10 +339,10 @@ if let removeGenres = favoriteGenres.remove("Rock") {
 } else {
   print("I never much cared for that.")
 }
-// "Rock? I'm over it." 를 인쇄합니다.
+// "Rock? I'm over it." 를 인쇄함
 ```
 
-셋이 특정 항목을 담고 있는 지를 검사하려면, `contains(_:)` 메소드를 사용합니다.
+셋이 특별한 항목을 담고 있는 지 검사하려면, `contains(_:)` 메소드를 사용합니다.
 
 ```swift
 if favoriteGenres.contains("Funk") {
@@ -350,7 +350,7 @@ if favoriteGenres.contains("Funk") {
 } else {
   print("It's too funky in here.")
 }
-// "It's too funky in here." 를 인쇄합니다.
+// "It's too funky in here." 를 인쇄함
 ```
 
 #### Iterating Over a Set (셋에 동작을 반복시키기)
