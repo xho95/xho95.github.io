@@ -81,7 +81,7 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
 
-배열은, 하나 이상의 값을 배열 집합체로 작성하여 줄인, _배열 글자 값 (array literal)_[^literal] 으로 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸서 작성합니다:
+하나 이상의 값을 배열 집합체로 작성하여 줄인, _배열 글자 값 (array literal)_[^literal] 으로 배열을 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸서 작성합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
 
@@ -283,13 +283,13 @@ letters = []
 
 #### Creating a Set with an Array Literal (배열 글자 값으로 셋 생성하기)
 
-'셋' 은, 하나 이상의 값을 '셋 집합체 (set collection)' 에 작성하는 '줄임 표현법' 인, '배열 글자 값' 으로 초기화할 수도 있습니다.
+하나 이상의 값을 '셋 집합체 (set collection)' 로 작성하여 줄인, _배열 글자 값 (array literal)_[^set-array-collection] 으로 '셋' 을 초기화할 수도 있습니다.
 
 아래 예제는 `String` 값을 저장하는 `favoriteGenres` 라는 '셋' 을 생성합니다:
 
 ```swift
 var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
-// favoriteGenres 는 세 개의 초기 항목들로 초기화되었습니다.
+// favoriteGenres 를 세 개의 초기 항목으로 초기화함
 ```
 
 `favoriteGenres` 변수는, `Set<String>` 을 써서, "`String` 값의 '셋 (set)'[^set]” 으로 선언합니다. 이 특정 셋은 값 타입이 `String` 이라고 지정했기 때문에, `String` 값 _만 (only)_ 저장하도록 허용합니다. 여기서의, `favoriteGenres` 셋은, '배열 글자 값' 에서 작성된, 세 개의 `String` (`"Rock"`, `"Classical"`, 그리고 `"Hip hop"`) 값으로 초기화 됩니다.
@@ -685,3 +685,5 @@ let airportNames = [String](airports.values)
 [^subset]: '하위 집합 (subset)' 은 수학에서 말하는 '부분 집합' 입니다. 다만, 'subset' 에 대응되는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위 집합 (subset)' 이라고 옮깁니다. 영어로 '부분집합' 은 'subset' 이라고 하고, 그 반대는 'superset' 이라고 한다고 이해하면 될 것입니다.
 
 [^IATA]: 본문에 있는 '국제 항공 운송 협회 (International Air Transport Association)' 는 예제를 위한 것이 아니라 실제로 존재하는 협회입니다. 이 협회의 홈페이지는 [https://www.iata.org](https://www.iata.org) 입니다.
+
+[^set-array-collection]: 앞에서 설명한 것처럼, '셋 글자 값' 이란 것은 따로 없고, 셋에서도 '배열 글자 값' 을 사용합니다.
