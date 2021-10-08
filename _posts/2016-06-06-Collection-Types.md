@@ -409,7 +409,7 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sort()
 // [1, 2, 9]
 ```
 
-### Set Membership and Equality (집합의 포함관계 및 같음 비교)
+### Set Membership and Equality (집합의 포함 관계와 같음 비교)
 
 아래 그림은 세 '집합 (sets)'[^sets]-`a`, `b`, 와 `c`-에서 서로 공유하는 원소를 '겹침 영역' 으로 표현하여 보입니다. 집합 `a` 는 집합 `b` 의 _상위 집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 원소를 담고 있기 때문입니다. 거꾸로, 집합 `b` 는 집합 `a` 의 _하위 집합 (subset)_[^subset] 이며, 이는 `b` 의 모든 원소가 `a` 에도 담겨 있기 때문입니다. 집합 `b`와 집합 `c`는 서로 _분리 (disjoint)_[^disjoint] 라고 하며, 이는 서로 공통인 원소를 공유하고 있지 않기 때문입니다.
 
