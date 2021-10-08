@@ -35,7 +35,7 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 
 #### Array Type Shorthand Syntax (배열 타입의 줄임 구문)
 
-스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. 배열 타입을 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 두 형식은 기능이 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입을 참조할 때 이를 사용합니다.
+스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. 배열 타입을 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 두 형식은 기능이 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입을 참조할 때는 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
@@ -442,13 +442,13 @@ _딕셔너리 (dictionary)_ 는 '똑같은 타입의 키와 똑같은 타입의 
 >
 > `Dictionary` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 항목을 참고하기 바랍니다.
 
-#### Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문 표현)
+#### Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문)
 
-스위프트의 딕셔너리 타입을 온전하게 작성하려면 `Dictionary<Key, Value>` 라고 하는데, 여기서 `Key` 는 딕셔너리의 키로 사용될 수 있는 값의 타입이며, `Value` 는 딕셔너리가 해당 키로 저장하는 값의 타입입니다.
+스위프트 딕셔너리 타입의 온전한 작성법은 `Dictionary<Key, Value>` 인데, 여기서 `Key` 는 딕셔너리 키로 사용할 수 있는 값의 타입이고, `Value` 는 딕셔너리가 해당 키로 저장하는 값의 타입입니다.
 
-> 딕셔너리의 `Key` 타입은, '셋' 의 값 타입과 같이, 반드시 `Hashable` 프로토콜을 준수해야 합니다.
+> 딕셔너리 `Key` 타입은, 셋의 값 타입 처럼, 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-딕셔너리 타입은 `[Key: Value]` 라는 '줄임 형식' 으로 작성할 수도 있습니다. 비록 두 형식이 기능적으로는 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전체에서 딕셔너리 타입을 참조할 때는 이를 사용합니다.
+딕셔너리 타입을 `[Key: Value]` 라는 줄임 형식으로도 작성할 수 있습니다. 두 형식은 기능이 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 딕셔너리 타입을 참조할 때는 이를 사용합니다.
 
 #### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
 
