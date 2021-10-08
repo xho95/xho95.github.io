@@ -419,7 +419,7 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sort()
 * `isSubset(of:)` 메소드는 '집합의 모든 값이 특정 집합에 담겨 있는 지 결정' 하고자 사용함
 * `isSuperset(of:)` 메소드는 '집합이 특정 집합의 모든 값을 담고 있는 지 결정' 하고자 사용함
 * `isStrictSubset(of:)` 또는 `isStrictSuperset(of:)` 메소드는 '집합이, 특정 집합과 같지는 않은, 진 부분 (하위) 집합 또는 진 상위 집합인 지 결정' 하고자 사용함
-* `isDisjoint(with:)` 메소드는 '두 집합의 공통 값이 없는 지 결정' 하고자 사용함
+* `isDisjoint(with:)` 메소드는 '두 집합의 공통 값은 없는 지 결정' 하고자 사용함
 
 ```swift
 let houseAnimals: Set = ["🐶", "🐱"]
