@@ -411,7 +411,7 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sort()
 
 ### Set Membership and Equality (집합의 포함 관계와 같음 비교)
 
-아래 삽화는-`a`, `b`, 및 `c` 라는-세 집합[^sets] 사이의 공유 원소를 나타낸 영역을 겹쳐 보입니다. 집합 `a` 는 집합 `b` 의 _상위 집합 (superset)_ 이며, 이는 `a` 가 `b` 의 모든 원소를 담고 있기 때문입니다. 거꾸로, 집합 `b` 는 집합 `a` 의 _하위 집합 (subset)_[^subset] 이며, 이는 `b` 의 모든 원소가 `a` 에도 담겨 있기 때문입니다. 집합 `b`와 집합 `c`는 서로 _분리 (disjoint)_[^disjoint] 라고 하며, 이는 서로 공통인 원소를 공유하고 있지 않기 때문입니다.
+아래 삽화는-`a`, `b`, 및 `c` 라는-세 집합[^sets] 사이의 공유 원소를 나타낸 영역을 겹쳐 보입니다. 집합 `a` 는, `a` 가 `b` 의 모든 원소를 담고 있기 때문에, 집합 `b` 의 _상위 집합 (superset)_ 입니다. 반대로 말해서, 집합 `b` 는, `b` 의 모든 원소가 `a` 에도 담겨 있기 때문에, 집합 `a` 의 _하위 집합 (subset)_[^subset] 입니다. 집합 `b`와 집합 `c`는, 공통으로 공유한 원소가 없기 때문에, 서로 _분리 (disjoint)_[^disjoint] 라고 합니다.
 
 ![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-membership-and-equality.jpg)
 
@@ -658,7 +658,7 @@ let airportNames = [String](airports.values)
 
 [^sets]: 여기서도 위와 마찬가지 이유로 'set' 을 '집합' 이라고 옮깁니다.
 
-[^disjoint]: 'disjoint' 는 수학에서 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어가 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
+[^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
 [^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order 는 순서' 로, 'sort 는 정렬' 로 옮깁니다.
 
@@ -680,6 +680,6 @@ let airportNames = [String](airports.values)
 
 [^subtracting]: 원래는 메소드의 이름이 `subtract` 였는데, `subtracting` 으로 바뀌었습니다. 역시 마찬가지로 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
-[^subset]: '하위 집합 (subset)' 은 수학에서 말하는 '부분 집합' 입니다. 다만, 'subset' 에 대응되는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위 집합 (subset)' 이라고 옮깁니다. 영어로 '부분집합' 은 'subset' 이라고 하고, 그 반대는 'superset' 이라고 한다고 이해하면 될 것입니다.
+[^subset]: '하위 집합 (subset)' 은 '수학에서 말하는 부분 집합' 입니다. 다만, 'subset' 에 대응하는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위 집합 (subset)' 이라고 합니다.
 
 [^IATA]: 본문에 있는 '국제 항공 운송 협회 (International Air Transport Association)' 는 예제를 위한 것이 아니라 실제로 존재하는 협회입니다. 이 협회의 홈페이지는 [https://www.iata.org](https://www.iata.org) 입니다.
