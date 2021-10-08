@@ -353,9 +353,9 @@ if favoriteGenres.contains("Funk") {
 // "It's too funky in here." 를 인쇄함
 ```
 
-#### Iterating Over a Set (셋에 동작을 반복시키기)
+#### Iterating Over a Set (셋에 동작을 반복하기)
 
-셋에 있는 값들은 `for`-`in` 반복문으로 '동작을 반복시킬' 수 있습니다.
+`for`-`in` 반복문으로 '셋의 값들에 동작을 반복' 할 수 있습니다.
 
 ```swift
 for genre in favoriteGenres {
@@ -366,9 +366,9 @@ for genre in favoriteGenres {
 // Hip Hop
 ```
 
-`for`-`in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 참고하기 바랍니다.
 
-스위프트의 `Set` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 지정된 순서로 셋의 값들에 동작을 반복시키려면, '셋' 의 원소를 `<` 연산자로 '정렬된 배열' 로써 반환하는, `sorted()` 메소드를 사용합니다.
+스위프트의 `Set` 타입은 순서를 정의하지 않습니다. 특정 순서로 셋의 값을 반복하려면, `<` 연산자로 정렬한 배열로써 셋 원소를 반환하는, `sorted()` 메소드를 사용합니다.
 
 ```swift
 for genre in favoriteGenres.sorted() {
