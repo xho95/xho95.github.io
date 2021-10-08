@@ -436,11 +436,11 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 ### Dictionaries (딕셔너리)
 
-_딕셔너리 (dictionary)_ 는 똑같은 타입인 키들과 똑같은 타입인 값들 사이의 '결합 (associations)' 을 '정의된 순서' 없이 '집합체 (collection)' 에 저장합니다. 각 값은 유일한 _키 (key)_ 와 결합되며, 이는 딕셔너리 내에서 해당 값을 위한 '식별자 (identifier)' 로 작동합니다. 배열의 항목과는 달리, 딕셔너리의 항목은 '지정된 순서 (specified order)' 를 가지지 않습니다. 딕셔너리는, 실제-세계의 '사전 (dictionary)' 이 특정 단어에 대한 정의를 찾아 보는 것과 거의 같은 방식으로, 식별자를 기초로 하여 값을 찾아 볼 때 사용합니다.
+_딕셔너리 (dictionary)_ 는 '똑같은 타입의 키와 똑같은 타입의 값 사이의 결합 (associations) 들을 정의한 순서없이 집합체에 저장' 합니다. 각각의 값은, '딕셔너리 안에서 해당 값을 위한 식별자 (identifier) 로 행동하는, 유일 _키 (key)_ 와 결합' 합니다. 배열 항목과 달리, 딕셔너리 항목은 특정한 순서가 없습니다. 실-세계의 '사전 (dictionary)' 이 특별한 단어의 정의를 찾아 보는 데 사용하는 것과 거의 같은 방식으로, '식별자를 기초로 값을 찾아 볼 때 딕셔너리를 사용' 합니다.
 
-> 스위프트의 `Dictionary` 타입은 'Foundation'[^Foundation] 의 `NSDictionary` 클래스와 '연동되어 (bridged)' 있습니다.
+> 스위프트의 `Dictionary` 타입은 'Foundation[^Foundation] 의 `NSDictionary` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> `Dictionary` 를 'Foundation' 및 'Cocoa'[^Cocoa] 와 같이 사용하는 것에 대한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 를 참고하기 바랍니다.
+> `Dictionary` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 항목을 참고하기 바랍니다.
 
 #### Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문 표현)
 
