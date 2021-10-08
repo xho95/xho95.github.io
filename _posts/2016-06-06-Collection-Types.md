@@ -381,18 +381,18 @@ for genre in favoriteGenres.sorted() {
 
 ### Performing Set Operations (집합 연산 수행하기)
 
-('셋' 으로) 기본적인 '집합 연산 (set operations)'[^set-operations] 들, 가령 두 집합을 서로 '조합하는 것 (combining)', 두 집합이 공통적으로 가지고 있는 값을 결정하는 것, 또는 두 집합이 모두 같은, 일부만 같은, 아니면 아무 것도 같지 않은 값들을 담고 있는 지를 결정하는 것 등, 을 효율적으로 수행할 수 있습니다.  
+두 집합을 서로 조합하거나, 두 집합에 공통인 값 결정하기, 또는 두 집합에 똑같은 값이 모두, 일부, 아니면 아무 것도 아닌 지 결정하는 것 같은, '기본적인 집합 연산 (set operations)'[^set-operations] 을 ('셋' 으로) 효율적으로 수행할 수 있습니다.  
 
 ### Fundamental Set Operations (기본적인 집합 연산)
 
-아래 그림은 두 집합-`a` 와 `b`-에 다양한 집합 연산을 수행한 결과를 '음영 영역' 으로 보입니다.
+아래 삽화는-`a` 와 `b` 라는-두 집합에 다양한 집합 연산을 한 결과를 음영으로 보입니다.
 
 ![Fundamental-Set-Operations](/assets/Swift/Swift-Programming-Language/Collection-Types-fundamental-set-operations.jpg)
 
-* `intersect(_:)`[^intersection] 메소드는 두 집합에 공통인 값만으로 새 집합을 생성하기 위해 사용합니다.
-* `symmetricDifference(_:)`[^symmetric-difference] 메소드는 각 집합에는 있지만, 동시에 있지는 않은 값으로 새 집합을 생성하기 위해 사용합니다.
-* `union(_:)` : 메소드는 두 집합에 있는 모든 값으로 새 집합을 생성하기 위해 사용합니다.
-* `subtracting(_:)`[^subtracting] 메소드는 지정한 집합에는 없는 값으로 새 집합을 생성하기 위해 사용합니다.
+* `intersect(_:)`[^intersection] 메소드는 '두 집합에 공통인 값만으로 새 집합을 생성' 하는데 사용함
+* `symmetricDifference(_:)`[^symmetric-difference] 메소드는 '각 집합에 있지만, 동시에 있지는 않은 값으로 새 집합을 생성' 하는데 사용함
+* `union(_:)` : 메소드는 '두 집합의 모든 값으로 새 집합을 생성' 하는데 사용함
+* `subtracting(_:)`[^subtracting] 메소드는 '특정 집합에는 없는 값으로 새 집합을 생성' 하는데 사용함
 
 ```swift
 let oddDigits: Set = [1, 3, 5, 7, 9]
@@ -654,7 +654,7 @@ let airportNames = [String](airports.values)
 
 [^set-array-literal]: '셋 글자 값' 이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값' 만 사용하면 `Array` 타입이라고 추론할 것입니다.
 
-[^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set)' 타입 자체가 수학에서의 '집합 (set)' 을표현하는 타입이기도 해서, 수학에서 다루는 '집합 연산' 을 하고자 할 때는 스위프트의 '셋 (set)' 타입을 사용하면 효율적으로 할 수 있다 정도로 이해하면 좋을 것 같습니다.
+[^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set) 타입' 자체가 '수학에서 말하는 집합 (set) 을 나타내는 타입' 이기 때문에, 셋 타입으로 수학에서 말하는 집합 연산을 할 수 있습니다.
 
 [^sets]: 여기서도 앞 부분과 마찬가지 이유로 'set' 을 '집합' 으로 옮깁니다.
 
