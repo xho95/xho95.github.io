@@ -415,11 +415,11 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sort()
 
 ![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-membership-and-equality.jpg)
 
-* “같음 (is equal)” 연산자 (`==`) 는 두 집합이 모두 같은 값을 담고 있는지 결정하기 위해 사용합니다.
-* `isSubset(of:)` 메소드는 집합의 모든 값이 지정된 집합에 담겨 있는지 결정하기 위해 사용합니다.
-* `isSuperset(of:)` 메소드는 집합이 지정한 집합에 있는 값을 모두 담고 있는지 결정하기 위해 사용합니다.
-* `isStrictSubset(of:)` 또는 `isStrictSuperset(of:)` 메소드는 집합이, 지정된 집합의, '진 하위 집합 (진 부분 집합)' 또는 '진 상위 집합' 인지 결정하기 위해 사용합니다.
-* `isDisjoint(with:)` 메소드는 두 집합에 공통인 값이 없는지 결정하기 위해 사용합니다.
+* “같음 (is equal; `==`)” 연산자는 '두 집합이 모두 똑같은 값을 담고 있는 지 결정' 하고자 사용함
+* `isSubset(of:)` 메소드는 '집합의 모든 값이 특정 집합에 담겨 있는 지 결정' 하고자 사용함
+* `isSuperset(of:)` 메소드는 '집합이 특정 집합의 모든 값을 담고 있는 지 결정' 하고자 사용함
+* `isStrictSubset(of:)` 또는 `isStrictSuperset(of:)` 메소드는 '집합이, 특정 집합과 같지는 않은, 진 부분 (하위) 집합 또는 진 상위 집합인 지 결정' 하고자 사용함
+* `isDisjoint(with:)` 메소드는 '두 집합의 공통 값이 없는 지 결정' 하고자 사용함
 
 ```swift
 let houseAnimals: Set = ["🐶", "🐱"]
