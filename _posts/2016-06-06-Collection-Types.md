@@ -139,9 +139,9 @@ shoppingList.append("Flour")
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 는 이제 4개의 항목을 담음
+// shoppingList 는 이제 4개의 항목을 담고 있음
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 는 이제 7개의 항목을 담음
+// shoppingList 는 이제 7개의 항목을 담고 있음
 ```
 
 배열에 있는 값은, 배열 이름 바로 뒤 대괄호 안에 가져오려는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 (subscript syntax)_ 으로 가져옵니다:
@@ -166,14 +166,14 @@ shoppingList[0] = "Six eggs"
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 항목을 담음
+// shoppingList 는 이제 6 개의 항목을 담고 있음
 ```
 
 배열의 특정 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 항목을 담음
+// shoppingList 는 이제 7 개의 항목을 담고 있음
 // "Maple Syrup" 이 이제 목록의 첫 번째 항목임
 ```
 
@@ -456,18 +456,18 @@ _딕셔너리 (dictionary)_ 는 '똑같은 타입의 키와 똑같은 타입의 
 
 ```swift
 var namesOfIntegers = [Int: String]()
-// namesOfIntegers 는 [Int: String] 타입의 빈 딕셔너리입니다.
+// namesOfIntegers 는 [Int: String] 타입의 빈 딕셔너리임
 ```
 
-다음 예제는 정수 값을 '사람이-읽을 수 있는 이름' 으로 저장하기 위해 `[Int: String]` 타입의 빈 딕셔너리를 생성합니다. 이것의 키는 `Int` 타입이고, 값은 `String` 타입입니다.
+이 예제는 '사람이-읽을 수 있는 정수 값의 이름' 을 저장하고자 `[Int: String]` 타입의 빈 딕셔너리를 생성합니다. 이의 키는 `Int` 타입이고, 값은 `String` 타입입니다.
 
-이미 타입 정보를 제공한 상황인 경우, 빈 딕셔너리는, `[:]` (대괄호 쌍 안의 콜론) 으로 작성하는, '빈 딕셔너리 글자 값 (empty dictionary literal)' 으로 생성할 수 있습니다:
+이미 타입 정보를 제공한 상황이라면, '(대괄호 쌍 안의 콜론인) `[:]` 라고 쓴, 빈 딕셔너리 글자 값 (empty dictionary literal)' 으로 빈 딕셔너리를 생성할 수 있습니다:
 
 ```swift
 namesOfIntegers[16] = "sixteen"
-// namesOfIntegers 는 이제 1 개의 '키-값 쌍' 을 담고 있습니다.
+// namesOfIntegers 는 이제 1 개의 '키-값 쌍' 을 담고 있음
 namesOfIntegers = [:]
-// namesOfIntegers 는 다시 한 번 타입이 [Int: String] 인 빈 딕셔너리 입니다.
+// namesOfIntegers 는 다시 한 번 [Int: String] 타입의 빈 딕셔너리임
 ```
 
 #### Creating a Dictionary with a Dictionary Literal (딕셔너리 글자 값으로 딕셔너리 생성하기)
