@@ -444,7 +444,7 @@ _딕셔너리 (dictionary)_ 는 '똑같은 타입의 키와 똑같은 타입의 
 
 #### Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문)
 
-스위프트 딕셔너리 타입의 온전한 작성법은 `Dictionary<Key, Value>` 인데, 여기서 `Key` 는 딕셔너리 키로 사용할 수 있는 값의 타입이고, `Value` 는 딕셔너리가 해당 키로 저장하는 값의 타입입니다.
+스위프트 딕셔너리 타입의 온전한 작성법은 `Dictionary<Key, Value>` 인데, 여기서 `Key` 는 딕셔너리 키로 사용할 수 있는 값의 타입이고, `Value` 는 해당 키로 딕셔너리가 저장할 값의 타입입니다.
 
 > 딕셔너리 `Key` 타입은, 셋의 값 타입 처럼, 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
@@ -452,7 +452,7 @@ _딕셔너리 (dictionary)_ 는 '똑같은 타입의 키와 똑같은 타입의 
 
 #### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
 
-배열에서 처럼, '초기자 구문 (initializer syntax)' 을 사용함으로써 정해진 타입의 빈 `Dictionary` 를 생성할 수 있습니다:
+배열과 같이, 초기자 구문을 사용하여 정해진 타입의 빈 `Dictionary` 를 생성할 수 있습니다:
 
 ```swift
 var namesOfIntegers = [Int: String]()
