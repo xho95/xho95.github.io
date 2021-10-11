@@ -476,29 +476,30 @@ namesOfIntegers = [:]
 
 _키-값 쌍 (key-value pair)_ 은 '키와 값의 조합' 입니다. 딕셔너리 글자 값에서, 각각의 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분합니다. 키-값 쌍은, 쉼표로 구분한, 목록을, 한 쌍의 대괄호로 둘러싸서 작성합니다:
 
-[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `key 3-키 3`: `value 3-값 3`]
+&nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `key 3-키 3`: `value 3-값 3`]
 
-아래 예제는 국제 공항의 이름을 저장하는 '딕셔너리' 를 생성합니다. 이 딕셔너리에서, '키' 는 세-글자의 '국제 항공 운송 협회 (International Air Transport Association)'[^IATA] 코드 이며, '값' 은 공항 이름입니다:
+아래 예제는 국제 공항의 이름을 저장한 딕셔너리를 생성합니다. 이 딕셔너리의, '키' 는 '세-글자짜리 국제 항공 운송 협회 (International Air Transport Association)'[^IATA] 코드' 이고, '값' 은 공항 이름입니다:
 
 ```swift
 var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-`airport` 딕셔너리는 `[String: String]` 타입을 가지는 것으로 선언했는데, 이는 "키는 `String` 타입이며, 값도 `String` 타입인 `Dictionary`" 를 의미합니다.
+`airport` 딕셔너리는, "키가 `String` 타입이며, 값도 `String` 타입인 `Dictionary`" 를 의미하는, `[String: String]` 타입으로 선언합니다.
+ 제거하기 때문입니다.
 
-> `airport` 딕셔너리는, (`let` '도입자' 를 쓰는) 상수가 아니라, (`var` '도입자' 를 써서) 변수로 선언했는데, 이는 아래 예제에서 이 '딕셔너리' 에 공항을 더 추가하기 때문입니다.
+> `airport` 딕셔너리를, (`let` 도입자를 가진) 상수가 아닌, (`var` 도입자를 가진) 변수로 선언하는데, 이는 아래 예제에서 더 많은 공항을 딕셔너리에 추가하기 때문입니다.
 
-`airports` 딕셔너리는 두 개의 '키-값 쌍' 을 담은 '딕셔너리 글자 값' 으로 초기화됩니다. 첫 번째 쌍은 `"YYZ"` 라는 '키' 와 `"Toronto Pearson"` 라는 '값' 을 가집니다. 두 번째 쌍은 `"DUB"` 이라는 '키' 와 `"Dublin"` 이라는 '값' 을 가집니다.
+`airports` 딕셔너리는 '두 개의 키-값 쌍을 담은 딕셔너리 글자 값' 으로 초기화합니다. 첫 번째 쌍은 키가 `"YYZ"` 이고 값은 `"Toronto Pearson"` 입니다. 두 번째 쌍은 키가 `"DUB"` 이고 값은 `"Dublin"` 입니다.
 
-이 '딕셔너리 글자 값' 은 두 개의 `String: String` 쌍을 담고 있습니다. 이 '키-값 타입' 은  `airports` 변수의 선언 타입 (`String` 키와, `String` 값만을 가지는 딕셔너리) 와 일치하므로, '딕셔너리 글자 값' 의 할당이 두 초기 항목으로 `airports` 딕셔너리를 초기화하는 방법으로써 허가됩니다.
+이 딕셔너리 글자 값은 두 개의 `String: String` 쌍을 담고 있습니다. 이 키-값 타입은 (오직 `String` 키와, `String` 값만을 가지는 딕셔너리라는) `airports` 변수 선언 타입과 일치하므로, 두 초기 항목으로 `airports` 딕셔너리를 초기화하는 '배열 글자 값 할당 방식' 을 허가합니다.
 
-배열에서 처럼, 일관성 있는 타입의 키와 값을 가진 딕셔너리로 초기화하는 경우 디셔너리의 타입을 작성하지 않아도 됩니다. `airports` 의 초기화는 '줄임 형식' 으로 대신 작성할 수도 있습니다:
+배열과 같이, 키와 값의 타입이 일관성이 있는 딕셔너리 글자 값으로 초기화할 경우 디셔너리 타입은 작성하지 않아도 됩니다. `airports` 초기화를 줄임 형식으로 대신 작성할 수도 있습니다:
 
 ```swift
 var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-'글자 값' 에 있는 모든 키가 서로 같은 타입이고, 마찬가지로 모든 값도 서로 같은 타입이기 때문에, 스위프트가 `airports` 딕셔너리에 대한 올바른 타입이 `[String: String]` 이라고 추론할 수 있습니다.
+글자 값의 모든 키가 서로 같은 타입이며, 마찬가지로 모든 값이 서로 같은 타입이기 때문에, `airports` 딕셔너리에 사용할 올바른 타입이 `[String: String]` 임을 스위프트가 추론할 수 있습니다.
 
 #### Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)
 
