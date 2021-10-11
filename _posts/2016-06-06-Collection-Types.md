@@ -476,17 +476,18 @@ namesOfIntegers = [:]
 
 _키-값 쌍 (key-value pair)_ 은 '키와 값의 조합' 입니다. 딕셔너리 글자 값에서, 각각의 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분합니다. 키-값 쌍은, 쉼표로 구분한, 목록을, 한 쌍의 대괄호로 둘러싸서 작성합니다:
 
-[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `key 3-키 3`: `value 3-값 3`]
+&nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `key 3-키 3`: `value 3-값 3`]
 
-아래 예제는 국제 공항의 이름을 저장하는 '딕셔너리' 를 생성합니다. 이 딕셔너리에서, '키' 는 세-글자의 '국제 항공 운송 협회 (International Air Transport Association)'[^IATA] 코드 이며, '값' 은 공항 이름입니다:
+아래 예제는 국제 공항의 이름을 저장한 딕셔너리를 생성합니다. 이 딕셔너리의, '키' 는 '세-글자짜리 국제 항공 운송 협회 (International Air Transport Association)'[^IATA] 코드' 이고, '값' 은 공항 이름입니다:
 
 ```swift
 var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-`airport` 딕셔너리는 `[String: String]` 타입을 가지는 것으로 선언했는데, 이는 "키는 `String` 타입이며, 값도 `String` 타입인 `Dictionary`" 를 의미합니다.
+`airport` 딕셔너리는, "키가 `String` 타입이며, 값도 `String` 타입인 `Dictionary`" 를 의미하는, `[String: String]` 타입으로 선언합니다.
+ 제거하기 때문입니다.
 
-> `airport` 딕셔너리는, (`let` '도입자' 를 쓰는) 상수가 아니라, (`var` '도입자' 를 써서) 변수로 선언했는데, 이는 아래 예제에서 이 '딕셔너리' 에 공항을 더 추가하기 때문입니다.
+> `airport` 딕셔너리를, (`let` 도입자를 가진) 상수가 아닌, (`var` 도입자를 가진) 변수로 선언하는데, 이는 아래 예제에서 더 많은 공항을 딕셔너리에 추가하기 때문입니다.
 
 `airports` 딕셔너리는 두 개의 '키-값 쌍' 을 담은 '딕셔너리 글자 값' 으로 초기화됩니다. 첫 번째 쌍은 `"YYZ"` 라는 '키' 와 `"Toronto Pearson"` 라는 '값' 을 가집니다. 두 번째 쌍은 `"DUB"` 이라는 '키' 와 `"Dublin"` 이라는 '값' 을 가집니다.
 
