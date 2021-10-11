@@ -499,7 +499,7 @@ var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
-'글자 값' 에 있는 모든 키가 서로 같은 타입이고, 마찬가지로 모든 값도 서로 같은 타입이기 때문에, 스위프트가 `airports` 딕셔너리에 대한 올바른 타입이 `[String: String]` 이라고 추론할 수 있습니다.
+글자 값의 모든 키가 서로 같은 타입이며, 마찬가지로 모든 값이 서로 같은 타입이기 때문에, `airports` 딕셔너리에 사용할 올바른 타입이 `[String: String]` 임을 스위프트가 추론할 수 있습니다.
 
 #### Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)
 
