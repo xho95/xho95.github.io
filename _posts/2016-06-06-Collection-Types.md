@@ -503,16 +503,16 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 #### Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)
 
-딕셔너리는 메소드와 속성을 통하여, 아니면 '첨자 연산 구문 표현 (subscript syntax)' 을 사용하여, 접근하고 수정합니다.
+딕셔너리는 '메소드와 속성을 통하거나, 첨자 연산 구문' 을 써서, 접근하고 수정합니다.
 
-배열에서 처럼, 읽기-전용 속성인 `count` 를 검사하여 `Dictionary` 의 항목 개수를 알아냅니다:
+배열 처럼, 딕셔너리에 있는 항목의 개수는 읽기-전용 속성인 `count` 를 검사하여 알아냅니다:
 
 ```swift
 print("The airports dictionary contains \(airports.count) items.")
-// "The airports_2 dictionary contains 2 items." 를 인쇄합니다.
+// "The airports_2 dictionary contains 2 items." 를 인쇄함
 ```
 
-'불리언' 속성 `isEmpty` 는 `count` 속성이 `0` 인지 검사하는 것의 '줄임말' 로써 사용합니다[^isEmpty-count]:
+`count` 속성이 `0` 과 같은 지를 검사하는 줄임말로 '불리언 속성인 `isEmpty`' 를 사용합니다:
 
 ```swift
 if airports.isEmpty {
@@ -520,21 +520,21 @@ if airports.isEmpty {
 } else {
   print("The airports dictionary is not empty.")
 }
-// "The airports dictionary is not empty." 를 인쇄합니다.
+// "The airports dictionary is not empty." 를 인쇄함
 ```
 
-'첨자 연산 구문 표현' 으로 딕셔너리에 새 항목을 추가할 수 있습니다. '첨자 연산의 색인 (subscript index)' 으로 적절한 타입의 새로운 키를 사용해서, 적절한 타입의 새로운 값을 할당합니다:  
+첨자 연산 구문으로 딕셔너리에 새 항목을 추가할 수 있습니다. 적절한 타입의 새로운 키를 '첨자 연산 색인' 으로 사용하여, 적절한 타입의 새로운 값을 할당합니다:  
 
 ```swift
 airports["LHR"] = "London"
-// airports 딕셔너리는 이제 3 개의 항목을 담고 있습니다.
+// airports 딕셔너리는 이제 3 개의 항목을 담고 있음
 ```
 
-'첨자 연산 구문 표현' 은 특정 키와 결합되어 있는 값을 바꾸는데도 사용합니다:
+첨자 연산 구문은 특별한 키와 결합된 값을 바꿀 때에도 사용할 수 있습니다:
 
 ```swift
 airports["LHR"] = "London Heathrow"
-// "LHR" 에 대한 값을 "London Heathrow" 로 바꿨습니다.
+// "LHR" 에 대한 값을 "London Heathrow" 로 바꿈
 ```
 
 첨자 연산의 대안으로, 특정 키에 대한 값을 설정하거나 갱신하려면 딕셔너리의 `updateValue(_:forKey:)` 메소드를 사용합니다. 위의 첨자 연산 예제에서와 같이, `updateValue(_:forKey:)` 메소드는 아무 것도 존재하지 않으면 키에 대한 값을 설정하고, 해당 키가 이미 존재하면 값을 갱신합니다. 하지만, 첨자 연산과는 달리, `updateValue(_:forKey:)` 메소드는 갱신을 한 후에 _예전 (old)_ 값을 반환합니다. 이는 갱신이 일어났는지 아닌지를 검사할 수 있게 해줍니다.
