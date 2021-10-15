@@ -568,7 +568,7 @@ airports["APL"] = nil
 // APL 을 이제 딕셔너리에서 제거함
 ```
 
-또 다른 방법으로, `removeValue(_:forKey)` 메소드로 딕셔너리에서 '키-값 쌍' 을 삭제합니다. 이 메소드는 '키-값 쌍' 이 존재하면 이를 삭제하고 삭제한 값을 반환하며, 값이 존재하지 않았으면 `nil` 을 반환합니다:
+대안으로, 딕셔너리의 키-값 쌍을 `removeValue(_:forKey)` 메소드로도 제거합니다. 이 메소드는 키-값 쌍이 존재하면 제거한 후 제거한 값을 반환하지만, 값이 존재하지 않으면 `nil` 을 반환합니다:
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
@@ -576,7 +576,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 } else {
   print("The airports dictionary does not contain a value for DUB.")
 }
-// "The removed airport's name is Dublin Airport." 를 인쇄합니다.
+// "The removed airport's name is Dublin Airport." 를 인쇄함
 ```
 
 #### Iterating Over a Dictionary (딕셔너리에 동작을 반복시키기)
