@@ -548,7 +548,7 @@ if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
 // "The old value for DUB was Dublin." 를 인쇄함
 ```
 
-'첨자 연산 구문 표현' 은 딕셔너리에서 특정 키에 대한 값을 가져오기 위해 사용할 수도 있습니다. 값이 존재하지 않는 키로 요청할 수도 있기 때문에, 딕셔너리의 첨자 연산은 딕셔너리의 '값 타입' 에 대한 '옵셔널 값' 을 반환합니다. 딕셔너리가 요청한 키에 대한 값을 담고 있으면, 첨자 연산이 해당 키에 존재하고 있는 값을 담은 '옵셔널 값' 을 반환합니다. 다른 경우라면, 첨자 연산이 `nil` 을 반환합니다:
+딕셔너리에서 특별한 키에 해당하는 값을 가져오려고 첨자 연산 구문을 사용할 수도 있습니다. 값이 존재하지 않는 키로도 요청할 수 있기 때문에, 딕셔너리의 첨자 연산은 딕셔너리 값을 옵셔널 타입의 값으로 반환합니다. 요청한 키의 값을 딕셔너리가 담고 있으면, 첨자 연산이 '해당 키에 존재하는 값을 담은 옵셔널 값' 을 반환합니다. 그 외의 경우, 첨자 연산이 `nil` 을 반환합니다:
 
 ```swift
 if let airportName = airports["DUB"] {
@@ -556,7 +556,7 @@ if let airportName = airports["DUB"] {
 } else {
   print("That airport is not in the airports dictionary.")
 }
-// "The name of the airport is Dublin Airport." 를 인쇄합니다.
+// "The name of the airport is Dublin Airport." 를 인쇄함
 ```
 
 '첨자 연산 구문 표현' 은 해당 키에 `nil` 값을 할당함으로써 딕셔너리에서 '키-값 쌍' 을 삭제하기 위해 사용할 수 있습니다:
