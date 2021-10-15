@@ -559,13 +559,13 @@ if let airportName = airports["DUB"] {
 // "The name of the airport is Dublin Airport." 를 인쇄함
 ```
 
-'첨자 연산 구문 표현' 은 해당 키에 `nil` 값을 할당함으로써 딕셔너리에서 '키-값 쌍' 을 삭제하기 위해 사용할 수 있습니다:
+첨자 연산 구문을 사용하면 '해당 키에 `nil` 값을 할당하여 딕셔너리의 키-값 쌍을 제거' 할 수 있습니다:
 
 ```swift
 airports["APL"] = "Apple International"
-// "Apple International" 은 APL 에 대한 실제 공항이 아니므로, 이를 지웁니다.
+// "Apple International" 은 APL 의 실제 공항이 아니므로, 이를 삭제함
 airports["APL"] = nil
-// APL 이 이제 딕셔너리에서 삭제되었습니다.
+// APL 을 이제 딕셔너리에서 제거함
 ```
 
 또 다른 방법으로, `removeValue(_:forKey)` 메소드로 딕셔너리에서 '키-값 쌍' 을 삭제합니다. 이 메소드는 '키-값 쌍' 이 존재하면 이를 삭제하고 삭제한 값을 반환하며, 값이 존재하지 않았으면 `nil` 을 반환합니다:
