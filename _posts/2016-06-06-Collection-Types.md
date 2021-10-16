@@ -591,9 +591,9 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for`-`in` 반복문에 대한 더 자세한 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 참고하기 바랍니다.
 
-딕셔너리의 키와 값들은 `keys` 와 `values` 속성에 접근함으로써 '반복 가능한 집합체 (iterable collection)' 로 가져올 수도 있습니다:
+`keys` 와 `values` 속성에 접근함으로써 딕셔너리의 키와 값을 '반복 가능한 집합체 (iterable collection)' 로 가져올 수도 있습니다:
 
 ```swift
 for airportCode in airports.keys {
@@ -609,17 +609,17 @@ for airportName in airports.values {
 // Airport name: Toronto Pearson
 ```
 
-딕셔너리의 키와 값들을 `Array` 인스턴스를 취하는 API 와 같이 사용할 필요가 있는 경우, `keys` 또는 `values` 속성으로 새로운 배열을 초기화 합니다:
+`Array` 인스턴스를 취하는 API 에서 딕셔너리의 키와 값을 사용해야 하면, `keys` 나 `values` 속성을 가지고 새로운 배열을 초기화 합니다:
 
 ```swift
 let airportCodes = [String](airports.keys)
-// airportCodes 는 ["LHR", "YYZ"] 입니다.
+// airportCodes 는 ["LHR", "YYZ"] 임
 
 let airportNames = [String](airports.values)
-// airportNames 은 ["London Heathrow", "Toronto Pearson"] 입니다.
+// airportNames 은 ["London Heathrow", "Toronto Pearson"] 임
 ```
 
-스위프트의 `Dictionary` 타입은 '정의된 순서 (defined ordering)' 를 가지고 있지 않습니다. 지정된 순서로 딕셔너리의 키 또는 값들에 동작을 반복시키려면, `keys` 또는 `values` 속성에 `sorted()` 메소드를 사용합니다.
+스위프트의 `Dictionary` 타입은 순서를 정의하지 않습니다. 특정 순서로 딕셔너리의 키나 값을 반복하려면, `keys` 나 `values` 속성에 대한 `sorted()` 메소드를 사용합니다.
 
 ### 다음 장
 
