@@ -10,7 +10,7 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 ## Control Flow (제어 흐름)
 
-스위프트는 다양한 제어 흐름 구문을 제공합니다. 이는 작업을 여러 번 수행하는 `while` 반복문; 정해진 조건을 기초로 서로 다른 분기의 코드를 실행하는 `if`, `guard`, 및 `switch` 문; 그리고 실행 흐름을 코드의 또 다른 곳으로 전달하는 `break` 와 `continue` 같은 구문을 포함합니다.
+스위프트는 다양한 제어 흐름문을 제공합니다. 이는 작업을 여러 번 수행하는 `while` 반복문; 정해진 조건을 기초로 서로 다른 분기의 코드를 실행하는 `if`, `guard`, 및 `switch` 문; 그리고 실행 흐름을 코드의 또 다른 곳으로 전달하는 `break` 와 `continue` 같은 구문을 포함합니다.
 
 스위프트는 배열, 딕셔너리, 범위, 문자열, 그리고 다른 '시퀀스 (sequences)'[^sequences] 의 동작을 쉽게 반복하게 해주는 `for`-`in` 반복문도 제공합니다.
 
