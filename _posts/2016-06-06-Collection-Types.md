@@ -222,7 +222,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-자신의 값 뿐 아니라 각 항목에 대한 정수 색인이 필요하다면, 배열에 동작을 반복하기 위해 `enumerated()` 메소드를 대신 사용합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. 튜플은 '반복 회차 (iteration)' 에서 임시 상수나 변수로 분해할 수 있습니다:
+자신의 값 뿐 아니라 각 항목에 대한 정수 색인이 필요하다면, 배열에 동작을 반복하기 위해 `enumerated()` 메소드를 대신 사용합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. '반복 회차 (iteration)' 마다 튜플을 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -579,9 +579,9 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 // "The removed airport's name is Dublin Airport." 를 인쇄함
 ```
 
-#### Iterating Over a Dictionary (딕셔너리에 동작을 반복시키기)
+#### Iterating Over a Dictionary (딕셔너리에 동작을 반복하기)
 
-딕셔너리에 있는 '키-값 쌍' 들은 `for`-`in` 반복문으로 '동작을 반복시킬 (iterate over)' 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플로써 반환되며, 튜플의 '멤버 (member)' 는 '반복 회차 (iteration)' 마다 임시 상수나 변수로 분해할 수 있습니다:
+`for`-`in` 반복문으로 '딕셔너리에 있는 키-값 쌍들에 동작을 반복' 할 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플로 반환하며, '반복 회차 (iteration)' 마다 튜플의 멤버를 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (airportCode, airportName) in airports {
