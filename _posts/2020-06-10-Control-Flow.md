@@ -12,9 +12,9 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 스위프트는 다양한 제어 흐름문을 제공합니다. 이는 '임무를 여러 번 수행하는 `while` 반복문; 정해진 조건을 기초로 하여 서로 다른 코드 분기를 실행하는 `if`, `guard`, 및 `switch` 문; 그리고 실행 흐름을 코드 다른 곳으로 전달하는 `break` 와 `continue` 같은 구문' 을 포함합니다.
 
-스위프트는 '배열, 딕셔너리, 범위, 문자열, 및 다른 시퀀스 (sequences)[^sequences] 들을 쉽게 반복하도록 하는 `for`-`in` 반복문' 도 제공합니다.
+스위프트는 '배열, 딕셔너리, 범위, 문자열, 및 그 외 다른 시퀀스 (sequences)[^sequences] 들을 쉽게 반복하도록 하는 `for`-`in` 반복문' 도 제공합니다.
 
-스위프트의 `switch` 문은 수많은 'C-같은 (C-like) 언어[^C-like] 에 있는 것' 보다 상당히 더 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 그리고 지정된 타입으로의 '타입 변환 (casts)' 을 포함한, 아주 많은 서로 다른 '패턴 (patterns)' 과 일치 여부를 맞춰볼 수 있습니다. '`switch` 문의 case 절' 에 일치한 값은 'case 절' 본문에서 사용하도록 임시 상수나 변수로 연결할 수 있으며, '복잡한 맞춤 조건 (complex matching comditions)' 은 각 'case 절' 에 대한 `where` 절로 표현할 수 있습니다.
+스위프트의 `switch` 문은 많은 수의 'C-같은 (C-like) 언어[^C-like] 에 있는 것' 보다 더 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 및  '특정 타입으로의 타입 변환 (casts)' 을 포함한, 서로 다른 수많은 '패턴 (patterns)' 과 맞춰볼 수 있습니다. `switch` 문의 case 절과 일치한 값은 'case 절 본문 안에서 사용하도록 임시 상수나 변수로 연결' 할 수도 있고, '복잡한 맞춤 (matching) 조건' 은 '각 case 절마다 `where` 절' 로 표현할 수 있습니다.
 
 ### For-In Loops (for-in 반복문)
 
