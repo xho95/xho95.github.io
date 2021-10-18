@@ -18,9 +18,9 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 ### For-In Loops (for-in 반복문)
 
-`for`-`in` 반복문은, 배열이나, 수치 범위, 또는 문자열에 있는 문자들 같은, '시퀀스 (sequences)' 에 동작을 반복하기 위해 사용합니다.
+`for`-`in` 반복문은, '배열의 항목, 수치 범위, 또는 문자열의 문자들 같은, 시퀀스 (sequences) 를 반복' 하려고 사용합니다.
 
-다음 예제는 배열에 있는 항목들에 동작을 반복시키기 위해 `for`-`in` 반복문을 사용합니다:
+이 예제는 배열 항목에 동작을 반복하려고 `for`-`in` 반복문을 사용합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
