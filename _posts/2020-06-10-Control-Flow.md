@@ -20,7 +20,7 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 `for`-`in` 반복문은, '배열의 항목, 수치 범위, 또는 문자열의 문자들 같은, 시퀀스 (sequences) 를 반복' 하려고 사용합니다.
 
-이 예제는 배열 항목에 동작을 반복하려고 `for`-`in` 반복문을 사용합니다:
+다음 예제는 배열 항목에 동작을 반복하려고 `for`-`in` 반복문을 사용합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -33,7 +33,7 @@ for name in names {
 // Hello, Jack!
 ```
 
-'키-값 쌍 (key-value pairs)' 에 접근하기 위해 '딕셔너리' 에 동작을 반복시킬 수도 있습니다. 딕셔너리에 있는 각 항목은 딕셔너리를 반복할 때 `(key, value)` 튜플로 반환되며, `(key, value` 튜플의 멤버는 `for`-`in` 반복문의 본문에서 사용하기 위해 명시적인 이름을 가진 상수로 분해할 수 있습니다. 아래 예제 코드에서는, 딕셔너리의 키들이 `animalName` 이라는 상수로 분해되며, 딕셔너리의 값들은 `legCount` 라는 상수로 분해됩니다.
+딕셔너리의 '키-값 쌍 (key-value pairs)' 에 접근하려고 이를 반복할 수도 있습니다. 딕셔너리를 반복할 때는 딕셔너리의 각 항목을 `(key, value)` 튜플로 반환하며, `for`-`in` 반복문 본문 안에서 사용하도록 `(key, value)` 튜플 멤버를 '명시적인 이름의 상수로 분해' 할 수 있습니다. 아래 예제 코드에서, 딕셔너리 키는 `animalName` 이라는 상수로 분해하고, 딕셔너리 값은 `legCount` 라는 상수로 분해합니다.
 
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
