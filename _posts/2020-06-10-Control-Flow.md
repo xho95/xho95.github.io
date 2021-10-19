@@ -45,9 +45,9 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` 의 '내용물 (contents)' 은 태생적으로 순서가 없으며[^dictionary-contents], 이에 동작을 반복시키는 것은 가져올 순서라는 보장이 없습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 이들이 반복되는 순서를 정의하는 것도 아닙니다. '배열' 과 '딕셔너리' 에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 참고하기 바랍니다.
+`Dictionary` 의 내용물은 태생적으로 순서가 없으며[^dictionary-contents], 반복 시에 이를 가져오는 순서는 보장하지 않습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복 순서를 정의하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 참고하기 바랍니다.
 
-`for`-`in` 반복문은 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 '값들 (entries)' 을 인쇄합니다:
+`for`-`in` 반복문을 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 요소를 인쇄합니다:
 
 ```swift
 for index in 1...5 {
@@ -774,7 +774,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^C-like]: 'C-같은 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장에서 언급한 'C-에 기초한 언어 (C-based languages)' 와 같은 개념으로, 보통 'C-계열 (C-family) 언어' 라고도 합니다. 이는 역사적으로 C 언어의 영향을 받았거나 C 언어에서 파생한 언어들을 이르는 말입니다. 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목을 보면 이런 'C-계열 언어' 들을 확인할 수 있습니다.
 
-[^dictionary-contents]: 이는 딕셔너리의 '내용물 (contents)' 을 저장할 때 '해시 함수 (hash function)' 를 사용하기 때문에, 태생적으로 내용물의 순서를 알 방법이 없기 때문입니다. 이에 대한 더 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에 있는 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 및 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+[^dictionary-contents]: 딕셔너리는 '내용물 (contents) 을 저장할 때 해시 함수 (hash function) 를 사용' 하기 때문에, 태생적으로 내용물의 순서를 알 수가 없습니다. 이에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장의 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 부분 또는 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
 
 [^stride-to-through]: 예제를 보면 `stride(from:to:by:)` 는 '반-열린 범위' 를 대신하고, `stride(from:through:by:)` 는 '닫힌 범위' 를 대신하는 것임을 알 수 있습니다.
 
