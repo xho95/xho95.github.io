@@ -10,17 +10,17 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 ## Control Flow (제어 흐름)
 
-스위프트는 다양한 제어 흐름 구문을 제공합니다. 이는 작업을 여러 번 수행하는 `while` 반복문; 정해진 조건을 기초로 서로 다른 분기의 코드를 실행하는 `if`, `guard`, 및 `switch` 문; 그리고 실행 흐름을 코드의 또 다른 곳으로 전달하는 `break` 와 `continue` 같은 구문을 포함합니다.
+스위프트는 다양한 제어 흐름문을 제공합니다. 이는 '임무를 여러 번 수행하는 `while` 반복문; 정해진 조건을 기초로 하여 서로 다른 코드 분기를 실행하는 `if`, `guard`, 및 `switch` 문; 그리고 실행 흐름을 코드 다른 곳으로 전달하는 `break` 와 `continue` 같은 구문' 을 포함합니다.
 
-스위프트는 배열, 딕셔너리, 범위, 문자열, 그리고 다른 '시퀀스 (sequences)'[^sequences] 의 동작을 쉽게 반복하게 해주는 `for`-`in` 반복문도 제공합니다.
+스위프트는 '배열, 딕셔너리, 범위, 문자열, 및 그 외 다른 시퀀스 (sequences)[^sequences] 들을 쉽게 반복하도록 하는 `for`-`in` 반복문' 도 제공합니다.
 
-스위프트의 `switch` 문은 '여러 C-같은 (C-like) 언어[^C-like] 들에 있는 것' 보다 상당히 더 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 그리고 지정된 타입으로의 '타입 변환 (casts)' 을 포함한, 아주 많은 서로 다른 '패턴 (patterns)' 과 일치 여부를 맞춰볼 수 있습니다. '`switch` 문의 case 절' 에 일치한 값은 'case 절' 본문에서 사용하도록 임시 상수나 변수로 연결할 수 있으며, '복잡한 맞춤 조건 (complex matching comditions)' 은 각 'case 절' 에 대한 `where` 절로 표현할 수 있습니다.
+스위프트의 `switch` 문은 많은 수의 'C-같은 (C-like) 언어[^C-like] 에 있는 것' 보다 더 강력합니다. 'case 절' 은, '구간 맞춤 (interval matches)', 튜플, 및  '특정 타입으로의 타입 변환 (casts)' 을 포함한, 서로 다른 수많은 '패턴 (patterns)' 과 맞춰볼 수 있습니다. `switch` 문의 case 절과 일치한 값은 'case 절 본문 안에서 사용하도록 임시 상수나 변수로 연결' 할 수도 있고, '복잡한 맞춤 (matching) 조건' 은 '각 case 절마다 `where` 절' 로 표현할 수 있습니다.
 
 ### For-In Loops (for-in 반복문)
 
-`for`-`in` 반복문은, 배열이나, 수치 범위, 또는 문자열에 있는 문자들 같은, '시퀀스 (sequences)' 에 동작을 반복하기 위해 사용합니다.
+`for`-`in` 반복문은, '배열의 항목, 수치 범위, 또는 문자열의 문자들 같은, 시퀀스 (sequences) 를 반복' 하려고 사용합니다.
 
-다음 예제는 배열에 있는 항목들에 동작을 반복시키기 위해 `for`-`in` 반복문을 사용합니다:
+다음 예제는 배열 항목에 동작을 반복하려고 `for`-`in` 반복문을 사용합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -33,7 +33,7 @@ for name in names {
 // Hello, Jack!
 ```
 
-'키-값 쌍 (key-value pairs)' 에 접근하기 위해 '딕셔너리' 에 동작을 반복시킬 수도 있습니다. 딕셔너리에 있는 각 항목은 딕셔너리를 반복할 때 `(key, value)` 튜플로 반환되며, `(key, value` 튜플의 멤버는 `for`-`in` 반복문의 본문에서 사용하기 위해 명시적인 이름을 가진 상수로 분해할 수 있습니다. 아래 예제 코드에서는, 딕셔너리의 키들이 `animalName` 이라는 상수로 분해되며, 딕셔너리의 값들은 `legCount` 라는 상수로 분해됩니다.
+딕셔너리의 '키-값 쌍 (key-value pairs)' 에 접근하려고 이를 반복할 수도 있습니다. 딕셔너리를 반복할 때는 딕셔너리의 각 항목을 `(key, value)` 튜플로 반환하며, `for`-`in` 반복문 본문 안에서 사용하도록 `(key, value)` 튜플 멤버를 '명시적인 이름의 상수로 분해' 할 수 있습니다. 아래 예제 코드에서, 딕셔너리 키는 `animalName` 이라는 상수로 분해하고, 딕셔너리 값은 `legCount` 라는 상수로 분해합니다.
 
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
@@ -45,9 +45,9 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` 의 '내용물 (contents)' 은 태생적으로 순서가 없으며[^dictionary-contents], 이에 동작을 반복시키는 것은 가져올 순서라는 보장이 없습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 이들이 반복되는 순서를 정의하는 것도 아닙니다. '배열' 과 '딕셔너리' 에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 참고하기 바랍니다.
+`Dictionary` 의 내용물은 태생적으로 순서가 없으며[^dictionary-contents], 반복 시에 이를 가져오는 순서는 보장하지 않습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복 순서를 정의하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 참고하기 바랍니다.
 
-`for`-`in` 반복문은 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 '값들 (entries)' 을 인쇄합니다:
+`for`-`in` 반복문을 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 요소를 인쇄합니다:
 
 ```swift
 for index in 1...5 {
@@ -774,7 +774,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^C-like]: 'C-같은 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장에서 언급한 'C-에 기초한 언어 (C-based languages)' 와 같은 개념으로, 보통 'C-계열 (C-family) 언어' 라고도 합니다. 이는 역사적으로 C 언어의 영향을 받았거나 C 언어에서 파생한 언어들을 이르는 말입니다. 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목을 보면 이런 'C-계열 언어' 들을 확인할 수 있습니다.
 
-[^dictionary-contents]: 이는 딕셔너리의 '내용물 (contents)' 을 저장할 때 '해시 함수 (hash function)' 를 사용하기 때문에, 태생적으로 내용물의 순서를 알 방법이 없기 때문입니다. 이에 대한 더 자세한 내용은 [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에 있는 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 및 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+[^dictionary-contents]: 딕셔너리는 '내용물 (contents) 을 저장할 때 해시 함수 (hash function) 를 사용' 하기 때문에, 태생적으로 내용물의 순서를 알 수가 없습니다. 이에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장의 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 부분 또는 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
 
 [^stride-to-through]: 예제를 보면 `stride(from:to:by:)` 는 '반-열린 범위' 를 대신하고, `stride(from:through:by:)` 는 '닫힌 범위' 를 대신하는 것임을 알 수 있습니다.
 
