@@ -77,33 +77,33 @@ print("\(base) to the power of \(power) is \(answer)")
 // "3 to the power of 10 is 59049" 를 인쇄함
 ```
 
-위 예제는 수치 값 하나를 다른 수로 거듭 제곱 (이 경우는, `3` 을 `10` 제곱) 합니다. 이는, `1` 에서 시작해서 `10` 으로 끝나는 닫힌 범위를 써서, `1` 이라는 시작 값 (즉, `3` 의 `0` 제곱) 에 `3` 을, 열 번, 곱합니다. 이 계산에서는, 매 반복문 통과 시의 개별 횟수 값은 불필요합니다-코드는 단순히 올바른 횟수만큼 반복문을 실행합니다. 반복 변수 자리에 밑줄 문자 (`_`) 를 사용하면 개별 값을 무시하도록 하며 각 반복 회차 동안 현재 값의 접근을 제공하지 않습니다.
+위 예제는 수치 값 하나를 다른 수로 거듭 제곱 (이 경우는, `3` 을 `10` 제곱) 합니다. 이는, `1` 에서 시작해서 `10` 으로 끝나는 닫힌 범위를 써서, `1` 이라는 시작 값 (즉, `3` 의 `0` 제곱) 에 `3` 을, 열 번, 곱합니다. 이 계산에서는, 매 반복문 통과 시의 개별 횟수 값은 불필요합니다-단순히 올바른 횟수만큼 반복문을 실행하는 코드입니다. 반복 변수 자리에 밑줄 문자 (`_`) 를 사용하면 개별 값을 무시하도록 하며 각 반복 회차 동안 현재 값의 접근을 제공하지 않습니다.
 
-어떤 상황에서는, 두 끝 값을 포함하는, '닫힌 범위' 를 사용하고 싶지 않을 수도 있습니다. 매 분마다 '눈금 (tick marks)' 을 그리는 시계를 고려해 봅시다. `60` 눈금을, `0` 분에서 시작하도록, 그리고 싶습니다. '낮은 경계 값 (lower bound)' 은 포함하지만 '높은 경계 값 (upper bound)' 은 빼고 싶으면 '반-열린 범위 연산자 (half-open operator; `..<`)' 를 사용합니다. '범위' 에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 참고하기 바랍니다.
+일부 상황에서는, 두 끝점을 포함한, 닫힌 범위를 사용하지 않길 원할 지 모릅니다. 시계 면의 모든 분마다 눈금을 그리는 걸 고려해 봅시다. `0` 분에서 시작해서, `60` 개의 눈금을 그리고자 합니다. '낮은 경계 (lower bound) 값은 포함하지만 높은 경계 (upper bound) 값은 빼기' 위해 반-열린 범위 연산자 (`..<`) 를 사용합니다. '범위 (ranges)' 에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 부분을 참고하기 바랍니다.
 
 ```swift
 let minutes = 60
 for tickMark in 0..<minutes {
-  // 매 분마다 눈금을 그립니다. (60 번)
+  // 매 분마다 눈금을 그림 (60 번) 
 }
 ```
 
-어떤 사용자는 UI 에 눈금이 더 적은 것을 원할 수도 있습니다. 눈금이 `5` 분마다 하나씩 있는 걸 좋아할 수도 있을 것입니다. 원하지 않는 눈금을 건너뛰려면 `stride(from:to:by:)` 함수를 사용합니다.
+일부 사용자는 자신의 UI 에 눈금이 더 적은 걸 원할 지 모릅니다. `5` 분마다 눈금 하나가 있는 걸 더 좋아할 수도 있을 겁니다. 원하지 않는 눈금을 건너뛰려면 `stride(from:to:by:)` 함수를 사용합니다.
 
 ```swift
 let minuteInterval = 5
 for tickMark in stride(from: 0, to: minutes, by: minuteInterval) {
-  // 5 분마다 눈금을 그립니다. (0, 5, 10, 15, ... 45, 50, 55)
+  // 5 분마다 눈금을 그림 (0, 5, 10, 15, ... 45, 50, 55)
 }
 ```
 
-'닫힌 범위' 역시, `stride(from:through:by:)` 로 대신 사용하는 것이, 가능합니다:[^stride-to-through]
+`stride(from:through:by:)` 를 대신 사용하면, 닫힌 범위도 가능합니다:[^stride-to-through]
 
 ```swift
 let hours = 12
 let hourInterval = 3
 for tickMark in stride(from: 3, through: hours, by: hourInterval) {
-  // 3 시간마다 눈금을 (3, 6, 9, 12) 그립니다.
+  // 3 시간마다 눈금을 그림 (3, 6, 9, 12)
 }
 ```
 
@@ -776,7 +776,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^dictionary-contents]: 딕셔너리는 '내용물 (contents) 을 저장할 때 해시 함수 (hash function) 를 사용' 하기 때문에, 태생적으로 내용물의 순서를 알 수가 없습니다. 이에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장의 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 부분 또는 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
 
-[^stride-to-through]: 예제를 보면 `stride(from:to:by:)` 는 '반-열린 범위' 를 대신하고, `stride(from:through:by:)` 는 '닫힌 범위' 를 대신하는 것임을 알 수 있습니다.
+[^stride-to-through]: `stride(from:to:by:)` 는 '반-열린 범위' 를 만들고, `stride(from:through:by:)` 는 '닫힌 범위' 를 만듭니다.
 
 [^square-zero]: 게임을 시작할 때 참가자가 '0 번 정사각형' 에 있다는 말은 `square` 가 '0' 이라는 말입니다. 즉, 게임을 시작할 때는 `square < finalSquare` 조건이 항상 참이기 때문에, 이 비교를 하지 않아도 아무런 영향이 없다는 의미입니다.
 
