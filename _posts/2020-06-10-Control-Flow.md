@@ -107,6 +107,8 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 }
 ```
 
+위 예제는 범위, 배열, 딕셔너리, 및 문자열 반복을 위해 `for`-`in` 반복문을 사용합니다. 하지만, 타입이 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하는 한, 자신만의 클래스와 집합체 타입을 포함한, _어떤 (any)_ 집합체든 이 구문으로 반복할 수 있습니다.
+
 ### While Loops (while 반복문)
 
 `while` 반복문은 조건이 `false` 가 될 때까지 '일련의 구문 집합' 을 수행합니다. 이런 종류의 반복문은 첫 번째 '회차' 의 시작 전에 '반복 횟수' 를 알 수 없을 때 사용하는 것이 가장 좋습니다. 스위프트는 두 가지 종류의 `while` 반복문을 제공합니다:
