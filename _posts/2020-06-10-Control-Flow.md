@@ -113,32 +113,32 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 
 `while` 반복문은 '조건이 `false` 가 될 때까지 일련의 구문 집합을 수행합니다. 이런 종류의 반복문은 '첫 번째 회차의 시작 전에 반복 횟수를 알 수 없을 때 사용하는 것' 이 최고입니다. 스위프트는 두 종류의 `while` 반복문을 제공합니다:
 
-* `whle` 문은 매 반복문 통과를 시작할 때 조건을 평가합니다.
-* `repeat`-`while` 문은 매 반복문 통과가 끝날 때 조건을 평가합니다.
+* `whle` 문은 반복문 통과를 시작할 때마다 조건을 평가합니다.
+* `repeat`-`while` 문은 반복문 통과가 끝날 때마다 조건을 평가합니다.
 
 #### While (while 문)
 
-`while` 반복문은 단일 조건을 평가하는 것으로써 시작합니다. 조건이 `true` 이면, 조건이 `false` 가 될 때까지 '일련의 구문 집합' 들이 반복됩니다.
+`while` 반복문은 단일 조건을 평가함으로써 시작합니다. 조건이 `true` 면, 조건이 `false` 가 될 때까지 일련의 구문 집합을 반복합니다.
 
-다음은 `while` 반복문의 일반적인 형식입니다:
+다음은 `while` 반복문의 일반 형식입니다:
 
-while `condition-조건` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;while `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-다음 예제는 _뱀과 사다리 (Snakes and Ladders)_[^snakes-and-ladders] 라는 (혹은 _미끄럼틀과 사다리 (Chutes and Ladders)_ 라고도 하는) 간단한 게임을 합니다.
+다음 예제는 (_미끄럼틀과 사다리 (Chutes and Ladders)_ 라고도 하는) _뱀과 사다리 (Snakes and Ladders)_[^snakes-and-ladders] 라는 간단한 게임을 합니다.
 
 ![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
 
 게임 규칙은 다음과 같습니다:
 
-* '게임판 (board)' 은 25 개의 정사각형을 가지며, 최종 목표는 '25 번 정사각형' 위에 착륙하거나 이를 넘어서는 것입니다.
-* '참가자 (player)' 의 시작 사각형 위치는, 게임판의 가장 왼쪽-밑 모서리 바로 밖의, “0 번 정사각형 (square zero)” 입니다.
-* 매 '차례 (turn)' 마다, 6-면 주사위를 굴리고 해당 수만큼의 사각형을, 위에 점선 화살표로 나타낸 수평 경로를 따라서, 이동합니다.
-* 자기 차례인데 사다리 바닥에서 끝나면, 해당 사다리를 올라갑니다.
-* 자기 차례인데 뱀의 머리에서 끝나면, 해당 뱀을 내려옵니다.
+* '게임판 (board)' 에는 25 개의 정사각형이 있으며, 최종 목표는 '25 번 정사각형 위에 착륙하거나 넘어서는 것' 입니다.
+* '참가자 (player)' 의 시작 사각형은, 게임판 가장 왼쪽-밑 모서리 바로 밖에 있는, “0 번 정사각형 (square zero)”[^square-zero] 입니다.
+* 매 '차례 (turn)' 마다, 6-면 주사위를 굴리고, 위의 점선 화살표로 표시한 수평 경로를 따라서, 해당 수만큼 사각형을 이동합니다.
+* 자기 차례인데 사다리 밑에서 끝나면, 사다리를 타고 올라갑니다.
+* 자기 차례인데 뱀 머리에서 끝나면, 뱀을 따라 내려옵니다.
 
-게임 판은 `Int` 값의 배열로 표현됩니다. 크기는 `finalSquare` 라는 상수에 기초하는데, 이는 배열을 초기화할 때도 그리고 예제 나중에 '승리 조건' 을 검사할 때도 사용합니다. 참가자가, "0 번 정사각형" 이라는, 게임판 밖에서 시작하기 때문에, 게임판은, `25` 가 아닌, `26` 개의 `Int` '0' 으로 초기화됩니다.
+게임판은 `Int` 값 배열로 나타냅니다. 크기는 `finalSquare` 라는 상수에 기초하는데, 이는 배열을 초기화할 때도 그리고 예제 나중에 '승리 조건' 을 검사할 때도 사용합니다. 참가자가, "0 번 정사각형" 이라는, 게임판 밖에서 시작하기 때문에, 게임판은, `25` 가 아닌, `26` 개의 `Int` '0' 으로 초기화됩니다.
 
 ```swift
 let finalSquare = 25
@@ -799,3 +799,5 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 [^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, '스위프트 4.0 용 SDK' 로 '스위프트 5.0' 에 있는 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
 
 [^availability-condition]: '사용 가능성 조건 (avaailability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, '컴파일러 제어문' 은 컴파일 시간에 동작하는 반면, '사용 가능성 조건' 은 '실행 시간' 에 동작한다는 점에서, 이 둘은 서로 완전히 다른 것입니다.
+
+[^square-zero]: 즉, 게임 보드 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
