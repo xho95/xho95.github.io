@@ -215,7 +215,7 @@ repeat {
   // 주사위를 굴립니다.
   diceRoll += 1
   if diceRoll == 7 { diceRoll = 1 }
-  // 굴림 양에 따라 이동합니다.
+  // 굴림 양에 따라 이동함
   square += diceRoll
 } while square < finalSquare
 print("Game over!")
