@@ -183,15 +183,15 @@ print("Game over!")
 
 #### Repeat-While (repeat-while 문)
 
-'`repeat`-`while` 반복문' 이라는, `while` 반복문의 변화 버전은, 반복문 조건을 고려하기 _전에 (before)_, 먼저 '반복문 블럭' 을 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 되풀이합니다.
+`while` 반복문의 다른 변화 버전인, `repeat`-`while` 반복문은, 반복문 조건을 고려하기 _전에 (before)_, 반복문 블럭을 처음에 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 계속 반복문을 되풀이합니다.
 
-> 스위프트의 `repeat`-`while` 반복문은 다른 언어의 `do`-`while` 반복문과 유사한 것입니다.[^do-while]
+> 스위프트의 `repeat`-`while` 반복문은 다른 언어에 있는 `do`-`while` 반복문과 유사한 것입니다.[^do-while]
 
-다음은 `repeat`-`while` 반복문의 일반적인 형식입니다:
+다음은 `repeat`-`while` 반복문의 일반 형식입니다:
 
-repeat {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} while `condition-조건`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;repeat {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} while `condition-조건`<br />
 
 다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문에서와 정확하게 똑같은 방식으로 초기화합니다.
 
