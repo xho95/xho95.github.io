@@ -183,7 +183,7 @@ print("Game over!")
 
 #### Repeat-While (repeat-while 문)
 
-`while` 반복문의 다른 변화 버전인, `repeat`-`while` 반복문은, 반복문 조건을 고려하기 _전에 (before)_, 반복문 블럭을 처음에 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 계속 반복문을 되풀이합니다.
+`while` 반복문이 다르게 변화한, `repeat`-`while` 반복문은, 반복 조건을 고려하기 _전에 (before)_, 처음에 반복문 블럭을 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 되풀이합니다.
 
 > 스위프트의 `repeat`-`while` 반복문은 다른 언어에 있는 `do`-`while` 반복문과 유사한 것입니다.[^do-while]
 
@@ -193,7 +193,7 @@ print("Game over!")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;} while `condition-조건`<br />
 
-다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문에서와 정확하게 똑같은 방식으로 초기화합니다.
+다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문과 정확히 똑같은 방식으로 초기화합니다.
 
 ```swift
 let finalSquare = 25
@@ -204,15 +204,15 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임에서, 반복문의 _처음 (first)_ 행동은 사다리인지 뱀인지 검사하는 것입니다. 게임판의 사다리 중 참가자를 곧바로 '25 번 정사각형' 으로 보내는 것은 없으므로, 사다리를 올라가는 것으로써 게임을 이길 수는 없습니다. 그러므로, 반복문의 처음 행동으로 뱀인지 사다리인지 검사하는 것은 안전합니다.
+이 버전의 게임에서, 반복문의 _첫 번째 (first)_ 행동은 사다리인지 뱀인지를 검사하는 것입니다. 참가자를 곧바로 25번 정사각형으로 가져오는 게임판 사다리는 없으므로, 사다리를 올라간다고 해서 게임을 이기는 건 불가능합니다. 따라서, 뱀인지 사다리인지 검사하는 걸 반복문의 첫 번째 행동으로 해도 안전합니다.
 
-게임을 시작할 떄, 참가자는 “0 번 정사각형” 에 있습니다. `board[0]` 는 항상 `0` 이며 아무 영향이 없습니다.[^square-zero]
+게임 시작 시에, 참가자는 “0번 정사각형” 에 있습니다. `board[0]` 는 항상 `0` 이며 아무 효과도 없습니다.[^no-effect]
 
 ```swift
 repeat {
-  // 뱀인지 사다리인지에 따라 위 아래로 이동합니다.
+  // 뱀이나 사다리를 따라 오르내림
   square += board[square]
-  // 주사위를 굴립니다.
+  // 주사위를 굴림
   diceRoll += 1
   if diceRoll == 7 { diceRoll = 1 }
   // 굴림 양에 따라 이동함
@@ -780,7 +780,9 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^stride-to-through]: `stride(from:to:by:)` 는 '반-열린 범위' 를 만들고, `stride(from:through:by:)` 는 '닫힌 범위' 를 만듭니다.
 
-[^square-zero]: 게임을 시작할 때 참가자가 '0 번 정사각형' 에 있다는 말은 `square` 가 '0' 이라는 말입니다. 즉, 게임을 시작할 때는 `square < finalSquare` 조건이 항상 참이기 때문에, 이 비교를 하지 않아도 아무런 영향이 없다는 의미입니다.
+[^square-zero]: 즉, 게임 보드 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
+
+[^no-effect]: 이는, 게임을 시작할 때는 `square` 가 0 이라서, `square < finalSquare` 가 항상 참이라서, (효과가 없는) 비교를 안해도 문제가 없다는 의미입니다.
 
 [^Fahrenheit-32]: '화씨 (Fahrenheit)' 32 도는 '섭씨 (Celsius)' 0 도와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
 
@@ -799,5 +801,3 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 [^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, '스위프트 4.0 용 SDK' 로 '스위프트 5.0' 에 있는 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
 
 [^availability-condition]: '사용 가능성 조건 (avaailability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, '컴파일러 제어문' 은 컴파일 시간에 동작하는 반면, '사용 가능성 조건' 은 '실행 시간' 에 동작한다는 점에서, 이 둘은 서로 완전히 다른 것입니다.
-
-[^square-zero]: 즉, 게임 보드 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
