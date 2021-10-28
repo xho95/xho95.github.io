@@ -233,14 +233,14 @@ print("Game over!")
 
 #### If (if 문)
 
-가장 간단한 형식의, `if` 문은 단일 `if` 조건을 가집니다. 이는 해당 조건이 `true` 일 때만 '일련의 구문 집합' 을 실행합니다.
+가장 단순한 형식의, `if` 문은 단일 `if` 조건을 가집니다. 이는 '해당 조건이 `true` 일 때만 구문 집합을 실행' 합니다.
 
 ```swift
 var temperatureInFahrenheit = 30
 if temperatureInFahrenheit <= 32 {
   print("It's very cold. Consider wearing a scarf.")
 }
-// "It's very cold. Consider wearing a scarf." 를 인쇄합니다.
+// "It's very cold. Consider wearing a scarf." 를 인쇄함
 ```
 
 위 예제는 온도가 '화씨 (Fahrenheit)' 로 (물의 어는 점인) 32 도[^Fahrenheit-32] 이하인지 검사합니다. 그렇다면, 메시지를 인쇄합니다. 다른 경우라면, 메시지는 인쇄하지 않고, `if` 문의 '닫는 중괄호 (closing brace)' 뒤에서 코드 실행을 계속합니다.
