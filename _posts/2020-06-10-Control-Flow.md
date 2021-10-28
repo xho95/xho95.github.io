@@ -221,9 +221,9 @@ repeat {
 print("Game over!")
 ```
 
-뱀인지 사다리인지를 검사한 후, 주사위를 굴리고 `diceRoll` 정사각형 만큼 참가자를 앞으로 이동합니다. 그러면 현재 반복문 실행이 끝납니다.
+뱀인지 사다리인지 검사한 후에, 주사위를 굴리고 `diceRoll` 정사각형 만큼 참가자를 앞으로 이동합니다. 그런 다음 현재 회차 실행을 끝냅니다.
 
-반복문의 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번에는 반복문을 통과한 최초 실행이 _끝 (end)_ 나기 전에는 이를 평가하지 않습니다. `repeat`-`while` 반복문 구조는 이전 예제의 `while` 반복문 보다 이 게임에 더 적합합니다. 위의 `repeat`-`while` 반복문에서는, `square += board[square]` 이 항상 반복문의 `while` 조건이 `square` 가 아직 게임판 위임을 확정한 _후 그 즉시 (immediately after)_ 실행됩니다. 이런 작동 방식은 앞서 설명한 `while` 반복문 버전 게임에서 본 '배열 경계 값 검사' 의 필요성을 없앱니다.
+반복 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번에는 첫 번째 실행의 반복문 통과가 _끝 (end)_ 나기 전까지 평가하지 않습니다. 이 게임에는 `repeat`-`while` 반복문 구조가 이전 예제의 `while` 반복문보다 더 적합합니다. 위 `repeat`-`while` 반복문에서, `square += board[square]` 는 항상 반복문 `while` 조건이 `square` 가 여전히 게임판에 있음을 확정한 _바로 뒤에 (immediately after)_ 실행합니다. 이런 동작은 '앞서 설명한 `while` 반복문 버전 게임의 배열 경계 값 검사' 를 할 필요가 없게 합니다.
 
 ### Conditional Statements (조건문)
 
