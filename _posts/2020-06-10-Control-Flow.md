@@ -273,9 +273,9 @@ if temperatureInFahrenheit <= 32 {
 // "It's really warm. Don't forget to wear sunscreen." 를 인쇄함
 ```
 
-여기서는, 특별히 따뜻한 온도일 때 응답하기 위해 '추가적인 `if` 문' 을 더합니다. '최종 `else` 절' 은 남아서, 너무 덥지도 춥지도 않는 어떤 온도에 대해서든 응답을 인쇄합니다.
+여기선, 특별히 따뜻한 온도에 대한 응답으로 '추가적인 `if` 문' 을 더합니다. '최종 `else` 절' 은 남아 있으며, 너무 덥지도 춥지도 않은 어떤 온도에 대한 응답이든 인쇄합니다.
 
-하지만, '최종 `else` 절' 은 '선택 사항 (optional)'[^optional] 으로, 조건 집합이 '완전할 (to be complete)' 필요가 없으면 이를 배제할 수 있습니다.
+하지만, 최종 `else` 절은 옵션[^optional] 이며, 조건 집합을 완료할 필요가 없으면 배제할 수 있습니다.
 
 ```swift
 temperatureInFahrenheit = 72
@@ -286,7 +286,7 @@ if temperatureInFahrenheit <= 32 {
 }
 ```
 
-온도가 `if` 나 `else if` 조건을 발동시킬 만큼 너무 춥지도 덥지도 않기 때문에, 아무 메시지도 인쇄하지 않습니다.
+`if` 나 `else if` 조건을 발동할 만큼 온도가 너무 춥지도 덥지도 않기 때문에, 아무런 메시지도 인쇄하지 않습니다.
 
 #### Switch (switch 문)
 
@@ -768,7 +768,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 이력을 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
 
-[^optional]: 여기서의 '선택 사항 (optional)' 은 스위프트의 '옵셔널 (optional)' 타입 과는 상관이 없습니다. 스위프트는 (사실 그 보다는 '애플' 이라는 회사 자체가) 일상 생활에서 쓰는 영어 단어를 키워드로 많이 사용하기 때문에 이런 경우가 종종 있습니다. 사실 거꾸로 말해서 '옵셔널 (optional)' 타입 자체가 '값을 가지는 것이 선택 사항' 이기 때문에 붙은 이름입니다.
+[^optional]: 여기서의 '옵션 (optional)' 은 '옵셔널 타입' 과는 상관이 없습니다.
 
 [^wildcard-pattern]: 와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정하게 고정된 문자열만이 아니라, 조건에 부합하는 모든 문자열을 맞춰보는 '패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목 중에서 'wildcard pattern' 에 해당하는 부분을 참고하기 바랍니다.
 
