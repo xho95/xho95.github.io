@@ -257,9 +257,9 @@ if temperatureInFahrenheit <= 32 {
 // "It's not that cold. Wear a t-shirt." 를 인쇄함
 ```
 
-이 두 분기 중 하나는 항상 실행됩니다. 온도가 '화씨 40 도' 까지 증가해서, 스카프를 두르라고 조언할 정도로 춥진 않으므로 `else` 분기가 대신 실행됩니다.
+두 분기 중 하나는 항상 실행합니다. 온도가 화씨 40도 까지 증가했기 때문에, 더 이상 스카프를 하라고 조언할 정도로 춥진 않으므로 대신 `else` 분기를 발동합니다.
 
-추가적인 절을 고려하기 위해 '다중 `if` 문' 을 서로 '연쇄 (chain)' 할 수 있습니다.
+추가적인 절을 고려하기 위해 '여러 `if` 문을 연쇄 (chain)' 할 수 있습니다.
 
 ```swift
 temperatureInFahrenheit = 90
@@ -270,7 +270,7 @@ if temperatureInFahrenheit <= 32 {
 } else {
   print("It's not that cold. Wear a t-shirt.")
 }
-// "It's really warm. Don't forget to wear sunscreen." 를 인쇄합니다.
+// "It's really warm. Don't forget to wear sunscreen." 를 인쇄함
 ```
 
 여기서는, 특별히 따뜻한 온도일 때 응답하기 위해 '추가적인 `if` 문' 을 더합니다. '최종 `else` 절' 은 남아서, 너무 덥지도 춥지도 않는 어떤 온도에 대해서든 응답을 인쇄합니다.
