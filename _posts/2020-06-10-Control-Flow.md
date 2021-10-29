@@ -233,7 +233,7 @@ print("Game over!")
 
 #### If (if 문)
 
-가장 단순한 형식의, `if` 문은 단일 `if` 조건을 가집니다. 이는 '해당 조건이 `true` 일 때만 구문 집합을 실행' 합니다.
+가장 단순한 형식의, `if` 문은 '단일한 `if` 조건' 을 가집니다. 이는 해당 조건이 `true` 일 때만 구문 집합을 실행합니다.
 
 ```swift
 var temperatureInFahrenheit = 30
@@ -243,9 +243,9 @@ if temperatureInFahrenheit <= 32 {
 // "It's very cold. Consider wearing a scarf." 를 인쇄함
 ```
 
-위 예제는 온도가 '화씨 (Fahrenheit)' 로 (물의 어는 점인) 32 도[^Fahrenheit-32] 이하인지 검사합니다. 그렇다면, 메시지를 인쇄합니다. 다른 경우라면, 메시지는 인쇄하지 않고, `if` 문의 '닫는 중괄호 (closing brace)' 뒤에서 코드 실행을 계속합니다.
+위 예제는 '온도가 (물이 어는 점인) 화씨 32도[^Fahrenheit-32] 이하인 지 검사' 합니다. 그렇다면, 메시지를 인쇄합니다. 그 외의 경우, 메시지를 인쇄하지 않고, '`if` 문 닫는 중괄호 (closing brace) 뒤의 코드를 계속 실행' 합니다.
 
-`if` 문은, `if` 조건이 `false` 인 상황을 위해, `else clause` (else 절) 이라는, 또 다른 구문 집합을 제공할 수 있습니다. 이 구문은 `else` 키워드로 지시합니다.
+`if` 문은, `if` 조건이 `false` 인 상황을 위해, 'else 절 (else clause) 이라는, 대안 구문 집합' 을 제공할 수 있습니다. 이 구문은 `else` 키워드로 지시합니다.
 
 ```swift
 temperatureInFahrenheit = 40
@@ -254,7 +254,7 @@ if temperatureInFahrenheit <= 32 {
 } else {
   print("It's not that cold. Wear a t-shirt.")
 }
-// "It's not that cold. Wear a t-shirt." 를 인쇄합니다.
+// "It's not that cold. Wear a t-shirt." 를 인쇄함
 ```
 
 이 두 분기 중 하나는 항상 실행됩니다. 온도가 '화씨 40 도' 까지 증가해서, 스카프를 두르라고 조언할 정도로 춥진 않으므로 `else` 분기가 대신 실행됩니다.
@@ -784,7 +784,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^no-effect]: 이는, 게임을 시작할 때는 `square` 가 0 이라서, `square < finalSquare` 가 항상 참이라서, (효과가 없는) 비교를 안해도 문제가 없다는 의미입니다.
 
-[^Fahrenheit-32]: '화씨 (Fahrenheit)' 32 도는 '섭씨 (Celsius)' 0 도와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
+[^Fahrenheit-32]: '화씨 (Fahrenheit) 32도' 는 '섭씨 (Celsius) 0도' 와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
 
 [^exhaustive]: '빠짐없이 철저 (exhaustive)' 하다는 말은 바로 이어지는 문장에서도 설명하고 있듯이, `switch` 문으로 전달된 변수나 상수가 반드시 해당 `switch` 문에 있는 `case` 절에서 다뤄져야 한다는 것을 의미합니다. 스위프트 컴파일러는 `switch` 문이 '빠짐없이 철저' 하지 않으면 컴파일 시간 에러를 띄웁니다.
 
