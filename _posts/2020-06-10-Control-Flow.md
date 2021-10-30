@@ -290,21 +290,21 @@ if temperatureInFahrenheit <= 32 {
 
 #### Switch (switch 문)
 
-`switch` 문은 값을 고려하여 이를 '일치 가능한 여러 패턴 (patterns)' 들과 비교합니다. 그런 다음 성공적으로 일치한 첫 번째 '패턴 (pattern)' 에 기초하여 적절한 코드 블럭을 실행합니다. `switch` 문은 '잠재적인 다중 상태' 에 응답함에 있어서 `if` 문의 대안을 제공합니다.
+`switch` 문은 '일치 가능한 여러 패턴과 값을 비교' 하고 고려합니다. 그런 다음, 일치 성공한 첫 번째 패턴에 기초하여, 적절한 코드 블럭을 실행합니다. `switch` 문은 `if` 문의 대안으로 '여러 개의 잠재적인 상태에 대한 응답' 을 제공합니다.
 
-가장 간단한 형식의, `switch` 문은 하나의 값을 같은 타입의 하나 이상의 값과 비교합니다.
+가장 단순한 형식의, `switch` 문은 '하나의 값을 똑같은 타입의 하나 이상의 값들과 비교' 합니다.
 
-switch `some value to consider-고려할 어떤 값` {<br />
-case `value 1-값 1`:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 1-값 1 에 대한 응답`<br />
-case `value 2-값 2`,<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`value 3-값 3`:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 2 or 3-값 2 또는 3 에 대한 응답`<br />
-default:<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-다른 경우라면, 그 외의 어떤 것을 합니다`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;switch `some value to consider-고려할 값` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `value 1-값 1`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 1-값 1 의 응답`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;case `value 2-값 2`,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`value 3-값 3`:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`respond to value 2 or 3-값 2 또는 3 의 응답`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;default:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-그 외 경우, 다른 걸 합니다`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-모든 `switch` 문은 '여러 가능한 _case 절 (cases)_' 로 구성되는데, 이들 각각은 `case` 키워드로 시작합니다. 특정 값을 비교하는 것에 더하여, 스위프트는 '각 case 절이 더 복잡한 맞춤 패턴 (matching patterns) 을 지정하도록 하는 여러가지 방법을 제공합니다. 이 옵션들은 이 장 나중에 설명합니다.
+모든 `switch` 문은, '각각이 `case` 키워드로 시작하는, 여러 개의 가능한 _case 절 (cases)_ 로 구성' 합니다. 특정 값과 비교하는 것에 더하여, 스위프트는 각각의 case 절이 더 복잡한 패턴을 지정하도록 하는 여러가지 방법을 제공합니다. 이런 옵션은 이 장 나중에 설명합니다.
 
 `if` 문의 본문과 같이, 각 `case` 절은 별도의 코드 실행 분기입니다. `switch` 문은 어느 분기를 선택해야할 지 결정합니다. 이런 절차를 고려 중인 값에 대한 _switching (스위칭; 전환)_ 이라고 합니다.
 
