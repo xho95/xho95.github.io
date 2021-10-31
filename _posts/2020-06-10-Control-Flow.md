@@ -304,11 +304,11 @@ if temperatureInFahrenheit <= 32 {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-그 외 경우, 다른 걸 합니다`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-모든 `switch` 문은, '각각이 `case` 키워드로 시작하는, 여러 개의 가능한 _case 절 (cases)_ 로 구성' 합니다. 특정 값과 비교하는 것에 더하여, 스위프트는 각각의 case 절이 더 복잡한 패턴을 지정하도록 하는 여러가지 방법을 제공합니다. 이런 옵션은 이 장 나중에 설명합니다.
+모든 `switch` 문은, '각각이 `case` 키워드로 시작하는, 가능한 여러 개의 _case 절 (cases)_ 로 구성' 합니다. 특정 값과 비교하는 것에 더하여, 스위프트는 각 case 절마다 더 복잡한 패턴을 지정하는 여러 방법을 제공합니다. 이 옵션은 이 장 나중에 설명합니다.
 
-`if` 문의 본문과 같이, 각 `case` 절은 별도의 코드 실행 분기입니다. `switch` 문은 어느 분기를 선택해야할 지 결정합니다. 이런 절차를 고려 중인 값에 대한 _switching (스위칭; 전환)_ 이라고 합니다.
+`if` 문 본문 같이, 각각의 `case` 절은 '별도의 코드 실행 분기' 입니다. `switch` 문은 어느 분기를 선택할 지 결정합니다. 이 절차를 '고려 중인 값의 _전환 (switching)_' 이라고 합니다.
 
-모든 `switch` 문은 반드시 _빠짐없이 철저 (exhaustive)_[^exhaustive] 해야 합니다. 즉, 고려중인 타입의 모든 가능한 값은 '`switch` 문의 case 절' 중 하나와는 반드시 일치해야 합니다. 모든 가능한 값에 대해 'case 절' 을 제공하는 것이 적절하지 않은 경우, 명시적으로 말하지 않은 어떤 값이든 다루도록 '기본 (default) case 절' 을 정의할 수 있습니다. 이 '기본 case 절' 은 `default` 키워드로 지시하며, 반드시 항상 마지막에 있어야 합니다.
+모든 `switch` 문은 반드시 _빠짐없이 철저 (exhaustive)_[^exhaustive] 해야 합니다. 즉, 고려 중인 타입의 모든 가능한 값은 '`switch` 문의 case 절' 중 하나와는 반드시 일치해야 합니다. 모든 가능한 값에 대해 'case 절' 을 제공하는 것이 적절하지 않은 경우, 명시적으로 말하지 않은 어떤 값이든 다루도록 '기본 (default) case 절' 을 정의할 수 있습니다. 이 '기본 case 절' 은 `default` 키워드로 지시하며, 반드시 항상 마지막에 있어야 합니다.
 
 다음 예제는 `someCharacter` 라는 '단일 소문자' 를 고려하기 위해 `switch` 문을 사용합니다:
 
@@ -322,7 +322,7 @@ case "z":
 default:
   print("Some other character")
 }
-// "The last letter of the alphabet" 를 인쇄합니다.
+// "The last letter of the alphabet" 를 인쇄함
 ```
 
 `switch` 문의 첫 번째 'case 절' 은 영어 알파벳의 첫 번째 '글자 (letter)'[^letter] 인, `a`, 와 일치하고, 두 번째 'case 절' 은 마지막 글자인, `z`, 와 일치합니다. `switch` 는 반드시, 모든 알파벳 글자에 대해서 만이 아니라, 모든 가능한 글자에 대한 'case 절' 을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 가 아닌 다른 모든 '문자' 와 일치 여부를 맞춰보기 위해 '`default` case 절' 를 사용합니다. 이런 식의 '대비 (provision)' 는 `switch` 문이 '빠짐없이 철저 (exhaustive)' 하도록 보장합니다.
