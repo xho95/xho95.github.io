@@ -325,7 +325,7 @@ default:
 // "The last letter of the alphabet" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 절은 영어 알파벳의 첫 번째 글자[^letter] 인, `a`, 와 일치하고, 두 번째 case 절은 마지막 글자인, `z`, 와 일치합니다. `switch` 는 반드시, 모든 알파벳 글자에 대해서 만이 아니라, 모든 가능한 글자에 대한 'case 절' 을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 가 아닌 다른 모든 '문자' 와 일치 여부를 맞춰보기 위해 '`default` case 절' 를 사용합니다. 이런 식의 '대비 (provision)' 는 `switch` 문이 '빠짐없이 철저 (exhaustive)' 하도록 보장합니다.
+`switch` 문의 첫 번째 case 절은 영어 알파벳 첫 글자[^letter] 인, `a`, 와 일치하며, 두 번째 case 절은 마지막 글자인, `z`, 와 일치합니다. `switch` 는, 모든 알파벳 글자만이 아니라, 가능한 모든 글자마다 반드시 case 절을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 이외의 모든 문자와 일치하는 `default` case 절을 사용합니다. 이걸 제공하면 '`switch` 문이 빠짐없이 철저함 (exhaustive) 을 보장' 합니다.
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
