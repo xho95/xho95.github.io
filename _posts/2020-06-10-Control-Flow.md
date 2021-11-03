@@ -329,22 +329,22 @@ default:
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
-C 와 오브젝티브-C 의 `switch` 문과 대조적으로, 스위프트의 `switch` 문은 기본적으로 각 case 절 밑을 빠져나가 다음 걸로 들어가지 않습니다. 그 대신, 첫 번째로 일치한 `switch` case 절을 완료하자마자 곧, 명시적인 `break` 문을 요구하지도 않고, 전체 `switch` 문 실행을 종료합니다. 이는 `switch` 문을 C 보다 더 안전하고 쉽게 사용하도록 해주며 실수로 하나 이상의 `switch` case 절을 실행하는 걸 피하게 해줍니다.
+C 및 오브젝티브-C 의 `switch` 문과 대조적으로, 스위프트의 `switch` 문은 기본적으로 각각의 case 절을 빠져나가 다음으로 들어가지 않습니다. 그 대신, 명시적인 `break` 문 없이도, 첫 번째로 일치한 `switch` case 절을 완료하자마자 곧, 전체 `switch` 문을 종료합니다. 이는 C 에서보다 `switch` 문을 더 안전하고 쉽게 사용하게 해주며 실수로 `switch` case 절을 하나 이상 실행하는 걸 피하게 해줍니다.
 
-> 스위프트에서 `break` 가 필수는 아니더라도, 특정 'case 절' 과 일치시키거나 무시하기 위해 또는 해당 'case 절' 의 실행을 완료하기 전에 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 자세한 내용은, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 참고하기 바랍니다.
+> 스위프트에서 `break` 는 필수가 아니긴 하지만, 특별한 case 절과 일치시키거나 무시하기 위해 또는 일치한 case 절의 실행 완료 전에 해당 case 절을 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 세부적인 건, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 참고하기 바랍니다.
 
-각 'case 절' 의 본문은 _반드시 (must)_ 최소 하나 이상의 실행문을 담고 있어야 합니다. 코드를 다음 처럼 작성하면 유효하지 않은데, 이는 첫 번째 'case 절' 이 비어있기 때문입니다:
+각 case 절 본문은 _반드시 (must)_ 적어도 하나의 실행문은 담고 있어야 합니다. 코드를 다음 처럼 작성하면, 첫 번째 case 절이 비었기 때문에, 무효입니다:
 
 ```swift
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
-case "a": // 무효, case 절이 빈 본문을 가지고 있습니다.
+case "a": // 무효, case 절 본문이 비었슴
 case "A":
   print("The letter A")
 default:
   print("Not the letter A")
 }
-// 이는 '컴파일-시간 에러' 를 보고할 것입니다.
+// 이는 컴파일-시간 에러라고 보고합니다.
 ```
 
 C 의 `switch` 문과는 달리, 이 `switch` 문은 `"a"` 와 `"A"` 둘 모두와 일치하지 않습니다. 그 보다, `case "a":` 가 어떤 실행 가능한 구문도 담고 있지 않다는 실행-시간 에러를 보고합니다. 이런 접근 방식은 한 'case 절' 에서 다른 곳으로 예기치 않게 빠져 나가는 것을 피하며 의도가 명확한 더 안전한 코드를 만들어 줍니다.
