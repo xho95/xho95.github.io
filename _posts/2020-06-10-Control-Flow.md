@@ -349,7 +349,7 @@ default:
 
 C `switch` 문과는 달리, 이 `switch` 문은 `"a"` 및 `"A"` 둘 다 일치하지 않습니다. 그 보다, '`case "a":` 가 어떤 실행문도 담고 있지 않다' 는 실행-시간 에러를 띄웁니다. 이런 접근법은 '한 case 절에서 다른 곳으로 빠져나가는 사고' 를 피하게 하고 '코드의 의도를 더 명확하고 안전' 하게 합니다.
 
-`"a"` 와 `"A"` 둘 모두와 일치하는 단일 'case 절' 을 가진 `switch` 문을 만들려면, 두 값을, 쉼표로 구분하여, '복합 (compound) case 절' 로 조합합니다.
+`switch` 문의 단일 case 절로 `"a"` 와 `"A"` 둘 다 일치하게 하려면, 두 값을, 쉼표로 구분하여, '복합 case 절' 로 만듭니다.
 
 ```swift
 let anotherCharacter: Character = "a"
@@ -359,16 +359,16 @@ case "a", "A":
 default:
   print("Not the letter A")
 }
-// "The letter A" 를 인쇄합니다.
+// "The letter A" 를 인쇄함
 ```
 
-가독성을 위해, '복합 case 절' 도 여러 줄에 걸쳐 작성할 수 있습니다. '복합 case 절' 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
+가독성을 위해, 복합 case 절을 여러 줄에 걸쳐 작성할 수도 있습니다. 복합 case 절에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
 
-> 특정 '`switch` case 절' 의 끝을 명시적으로 빠져 나가려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한 것처럼, `fallthrough` 키워드를 사용합니다.
+> 특별한 `switch` case 절 끝을 명시적으로 빠져 나가려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한, `fallthrough` 키워드를 사용합니다.
 
 **Interval Matching (구간 맞춤)**
 
-'`switch` case 절' 의 값은 일정 '구간 (interval)' 안에 포함된 것인지 검사할 수 있습니다. 다음 예제는 어떤 크기의 수도 자연-어로 세는 기능을 제공하기 위해 '수치 구간 (number intervals)' 을 사용합니다:
+`switch` case 절의 값이 '일정 구간 (interval) 안에 포함되는 지' 를 검사할 수 있습니다. 다음 예제는 '수치 구간 (number intervals)' 을 사용하여 어떤 크기의 수든 자연-어로 세는 기능을 제공합니다:
 
 ```swift
 let approximateCount = 62
@@ -389,7 +389,7 @@ default:
   naturalCount = "many"
 }
 print("There are \(naturalCount) \(countedThings).")
-// "There are dozens of moons orbiting Saturn." 를 인쇄합니다.
+// "There are dozens of moons orbiting Saturn." 를 인쇄함
 ```
 
 위 예제는, `approximateCount` 가 `switch` 문에서 평가됩니다. 각 '`case` 절' 은 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값이 `12` 와 `100` 사이에 놓이기 때문에, `naturalCount` 의 값이 `"dozens of"` 로 할당된 다음, 실행이 `switch` 문 외부로 옮겨집니다.
