@@ -392,7 +392,7 @@ print("There are \(naturalCount) \(countedThings).")
 // "There are dozens of moons orbiting Saturn." 를 인쇄함
 ```
 
-위 예제는, `approximateCount` 가 `switch` 문에서 평가됩니다. 각 '`case` 절' 은 값을 하나의 수 또는 구간과 비교합니다. `approximateCount` 의 값이 `12` 와 `100` 사이에 놓이기 때문에, `naturalCount` 의 값이 `"dozens of"` 로 할당된 다음, 실행이 `switch` 문 외부로 옮겨집니다.
+위 예제의, `switch` 문은 `approximateCount` 를 평가합니다. 각각의 `case` 절은 해당 값을 하나의 수나 구간과 비교합니다. `approximateCount` 값은 `12` 와 `100` 사이에 있기 때문에, `naturalCount` 에 `"dozens of"` 라는 값을 할당하고, 실행을 `switch` 문 밖으로 옮깁니다.
 
 **Tuples (튜플)**
 
