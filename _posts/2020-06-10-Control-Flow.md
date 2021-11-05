@@ -396,9 +396,9 @@ print("There are \(naturalCount) \(countedThings).")
 
 **Tuples (튜플)**
 
-동일한 `switch` 문에서 여러 값을 테스트하기 위해 '튜플' 을 사용할 수 있습니다. 튜플의 각 원소는 서로 다른 값 또는 서로 다른 값인 구간과 테스트할 수 있습니다. 또 다른 방법으로, 가능한 어떤 값과도 일치 여부를 맞춰보려면, '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고도 하는, '밑줄 문자 (`_`)' 를 사용합니다.
+튜플을 사용하면 동일한 `switch` 문에서 여러 개의 값을 테스트할 수 있습니다. 각각의 튜플 원소를 서로 다른 값 또는 구간과 테스트할 수 있습니다. 대안으로, '밑줄 문자 (`_`) 를 쓰면, 가능한 어떤 값과도 일치' 하게 되는데, 이를 '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고 합니다.
 
-아래 예제는, `(Int, Int)` 타입의 간단한 튜플로 표현된, (x, y) 점 하나를 받아서, 이를 예제 뒤의 그래프 상에서 분류합니다.
+아래 예제는, `(Int, Int)` 라는 단순한 튜플 타입으로 표현한, (x, y) 점을 취하고, 이를 예제 뒤의 그래프에 분류합니다.
 
 ```swift
 let somePoint = (1, 1)
@@ -414,14 +414,14 @@ case (-2...2, -2...2):
 default:
   print("\(somePoint) is outside of the box")
 }
-// "(1, 1) is inside the box" 를 인쇄합니다.
+// "(1, 1) is inside the box" 를 인쇄함
 ```
 
 ![a (x, y) point with tuples](/assets/Swift/Swift-Programming-Language/Control-Flow-tuples.png)
 
-`switch` 문은 이 점이 '원점 (0, 0)' 위 인지, 빨간색 x-축 위인지, 주황색 y-축 위인지, 중심이 원점인 파란색 4x4 상자 내부인지, 아니면 상자 외부 인지를 결정합니다.
+`switch` 문은 '해당 점이 원점 (0, 0) 인지, 빨간색 x-축 위인 지, 주황색 y-축 위인 지, 중심이 원점인 파란색 4x4 상자 안인 지, 아니면 상자 밖인 지' 를 결정합니다.
 
-C 와는 달리, 스위프트는 똑같은 값이나 값들을 고려하는 '다중 `switch` case 절' 을 허용합니다. 사실상, '점 (0, 0)' 은 이 예제의 _네 (four)_ 'case 절' 모두와 일치할 수 있을 것입니다. 하지만, 여러 개가 일치 가능한 경우, 항상 맨 처음 일치한 'case 절' 을 사용합니다. '점 (0, 0)' 은 처음에 `case (0, 0)` 과 일치할 것이므로, 다른 모든 일치하는 'case 절' 을 무시할 것입니다.
+C 와 달리, 스위프트는 '똑같은 값 또는 값들을 고려하는 여러 개의 `switch` case 절' 을 허용합니다. 사실, 점 (0, 0) 은 이 예제의 '모든 _네 (four)_ case 절' 과 일치할 수 있습니다. 하지만, 여러 개가 일치 가능하면, 항상 첫 번째로 일치한 case 절을 사용합니다. 점 (0, 0) 은 `case (0, 0)` 과 첫 번째로 일치할 것이므로, 일치하는 다른 모든 case 절을 무시할 것입니다.
 
 **Value Bindings (값 연결)**
 
@@ -770,7 +770,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^optional]: 여기서의 '옵션 (optional)' 은 '옵셔널 타입' 과는 상관이 없습니다.
 
-[^wildcard-pattern]: 와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정하게 고정된 문자열만이 아니라, 조건에 부합하는 모든 문자열을 맞춰보는 '패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목 중에서 'wildcard pattern' 에 해당하는 부분을 참고하기 바랍니다.
+[^wildcard-pattern]: '와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정한 문자열 뿐만 아니라, '조건에 부합하는 모든 문자열을 맞춰보는 패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은, 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목에 있는 'wildcard pattern' 부분을 참고하기 바랍니다.
 
 [^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 '자료 구조' 입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
 
