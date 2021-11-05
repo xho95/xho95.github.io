@@ -444,9 +444,9 @@ case let (x, y):
 
 ![a (x, y) point with value bindings](/assets/Swift/Swift-Programming-Language/Control-Flow-value-bindings.png)
 
-`switch` 문은 이 점이 빨간색 x-축 위인지, 주황색 y-축 위인지, 아니면 (어느 축 위도 아닌) 다른 곳인지를 결정합니다.
+`switch` 문은 '해당 점이 빨간색 x-축 위인지, 주황색 y-축 위인지, 아니면 (어느 축도 아닌) 다른 곳인지' 결정합니다.
 
-세 '`switch` case 절' 은, 임시로 `anotherPoint` 로 부터 하나 또는 두 값 모두의 튜플 값을 취하는, '자리 표시자 (placeholder)' 상수인 `x` 와 `y` 를 선언합니다. 첫 번째 'case 절'[^the-first-case] 인, `case (let x, 0)` 는, `y` 값이 `0` 인 어떤 점과도 일치하며 그 점의 `x` 값을 임시 상수인 `x` 에 할당합니다. 비슷하게, 두 번째 'case 절' 인, `case (0, let y)` 는, `x` 값이 `0` 인 어떤 점과도 일치하며 그 점의 `y` 값을 임시 상수인 `y` 에 할당합니다.
+세 `switch` case 절은, `anotherPoint` 에서 튜플 값 하나 또는 둘 다를 임시로 취하는, 자리 표시용 상수 `x` 와 `y` 를 선언합니다. 첫 번째 case 절인, `case (let x, 0)` 는, `y` 값이 `0` 인 어떤 점이든 일치하며 그 점의 `x` 값을 임시 상수 `x` 에 할당합니다. 이와 비슷하게, 두 번째 case 절인, `case (0, let y)` 는, `x` 값이 `0` 인 어떤 점이든 일치하며 그 점의 `y` 값을 임시 상수 `y` 에 할당합니다.
 
 임시 상수를 선언한 후, 이를 'case 절' 의 코드 블럭 내에서 사용할 수 있습니다. 여기서는, 점을 '분류한 것 (categorization)' 을 인쇄하는데 사용합니다.
 
@@ -789,8 +789,6 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 [^exhaustive]: '빠짐없이 철저 (exhaustive)' 하다는 말은 바로 이어지는 문장에서도 설명하고 있듯이, `switch` 문으로 전달된 변수나 상수가 반드시 해당 `switch` 문에 있는 `case` 절에서 다뤄져야 한다는 것을 의미합니다. 스위프트 컴파일러는 `switch` 문이 '빠짐없이 철저' 하지 않으면 컴파일 시간 에러를 띄웁니다.
 
 [^letter]: 원문에서는 'letter' 라는 단어를 사용하는데, 영어에서 'character' 는 표의 문자, 'letter' 는 표음 문자를 의미한다고 합니다. 원문에도 영어 알파벳은 항상 'letter' 를 사용합니다.
-
-[^the-first-case]: 이것도 앞서 설명한 것처럼, 영어의 'case' 가 '경우' 라는 의미이기 때문에, 영어식으로 말하면 '첫 번째 경우' 라는 자연스러운 문장이 됩니다. 프로그래밍 언어들은 대부분 예전부터 영어 문장과 유사했지만 최근의 프로그래밍 언어들은 특히 영어 문장으로써 더 자연스러워지는 추세입니다.
 
 [^default-case-character]: 이 예제는 '`default` case 절' 을 가지고 있어야, '빠짐없이 철저 (exhaustive)' 하게 됩니다. 왜냐면, `Character` 값이 '엉어 문자' 가 아닌 다른 '유니코드 문자' 를 가질 수도 있기 때문입니다.
 
