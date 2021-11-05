@@ -444,19 +444,19 @@ case let (x, y):
 
 ![a (x, y) point with value bindings](/assets/Swift/Swift-Programming-Language/Control-Flow-value-bindings.png)
 
-`switch` 문은 '해당 점이 빨간색 x-축 위인지, 주황색 y-축 위인지, 아니면 (어느 축도 아닌) 다른 곳인지' 결정합니다.
+`switch` 문은 해당 점이 빨간색 x-축 위인지, 주황색 y-축 위인지, 아니면 (어느 축도 아닌) 다른 곳인지 결정합니다.
 
 세 `switch` case 절은, `anotherPoint` 에서 튜플 값 하나 또는 둘 다를 임시로 취하는, 자리 표시용 상수 `x` 와 `y` 를 선언합니다. 첫 번째 case 절인, `case (let x, 0)` 는, `y` 값이 `0` 인 어떤 점이든 일치하며 그 점의 `x` 값을 임시 상수 `x` 에 할당합니다. 이와 비슷하게, 두 번째 case 절인, `case (0, let y)` 는, `x` 값이 `0` 인 어떤 점이든 일치하며 그 점의 `y` 값을 임시 상수 `y` 에 할당합니다.
 
 임시 상수의 선언 후엔, 이를 case 절 코드 블럭 안에서 사용할 수 있습니다. 여기선, '점의 범주' 를 인쇄하는데 사용합니다.
 
-이 `switch` 문엔 '`default` case 절' 이 없습니다. 최종 case 절인, `case let (x, y)` 는, '어떤 값이든 일치 가능한 두 개의 자리 표시용 상수를 가진 튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가진 튜플이기 때문에, 이 case 절은 남아 있는 가능한 모든 값과 일치하며, `switch` 문을 빠짐없이 철저하게 (exhaustive) 만드는 `default` case 절이 필요 없습니다.
+이 `switch` 문엔 '`default` case 절' 이 없습니다. 최종 case 절인, `case let (x, y)` 는, '어떤 값이든 일치 가능한 두 개의 자리 표시용 상수를 가진 튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가진 튜플이기 때문에, 이 case 절은 남아 있는 가능한 모든 값과 일치하며, `switch` 문을 빠짐없이 철저하게 (exhaustive) 만드는 `default` case 절은 필요 없습니다.
 
 **Where (where 절)**
 
-'`switch` case 절' 은 추가적인 조건을 검사하기 위해 '`where` 절' 을 사용할 수 있습니다.
+`switch` case 절에 `where` 절을 사용하면 추가 조건을 검사할 수 있습니다.
 
-아래 예제는 (x, y) 점을 그 뒤의 그래프 상에서 분류합니다:
+아래 예제는 뒤의 그래프에 (x, y) 점을 분류합니다:
 
 ```swift
 let yetAnotherPoint = (1, -1)
@@ -468,12 +468,12 @@ case let (x, y) where x == -y:
 case let (x, y):
   print("(\(x), \(y)) is just some arbitrary point")
 }
-// "(1, -1) is on the line x == -y" 를 인쇄합니다.
+// "(1, -1) is on the line x == -y" 를 인쇄함
 ```
 
 ![a (x, y) point with where](/assets/Swift/Swift-Programming-Language/Control-Flow-where.png)
 
-`switch` 문은 이 점이 `x == y` 인 녹색 대각선 위인지, `x == -y` 인 보라색 대각선 위인지, 아니면 어느 쪽도 아닌지를 결정합니다.
+`switch` 문은 해당 점이 `x == y` 인 녹색 대각선 위인지, `x == -y` 인 보라색 대각선 위인지, 아니면 어느 쪽도 아닌지 결정합니다.
 
 세 '`switch` case 절' 은, 임시로 `yetAnotherPoint` 로 부터 두 개의 튜플 값을 취하는, '자리 표시자 (placeholder)' 상수인 `x` 와 `y` 를 선언합니다. 이 상수들은, '동적 필터 (dynamic filter)' 를 생성하기 위해, `where` 절에서 사용됩니다. '`switch` case 절' 은 `where` 절의 조건이 해당 값에 대해 `true` 로 평가되는 경우에만 현재의 `point` 값과 일치합니다.
 
