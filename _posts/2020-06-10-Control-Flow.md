@@ -398,7 +398,7 @@ print("There are \(naturalCount) \(countedThings).")
 
 튜플을 사용하면 동일한 `switch` 문에서 여러 개의 값을 테스트할 수 있습니다. 각각의 튜플 원소를 서로 다른 값 또는 구간과 테스트할 수 있습니다. 대안으로, '밑줄 문자 (`_`) 를 쓰면, 가능한 어떤 값과도 일치' 하게 되는데, 이를 '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고 합니다.
 
-아래 예제는, `(Int, Int)` 라는 단순한 튜플 타입으로 표현한, (x, y) 점을 취하고, 이를 예제 뒤의 그래프에 분류합니다.
+아래 예제는, `(Int, Int)` 라는 단순한 튜플 타입으로 표현한, (x, y) 점을 취하여, 이를 예제 뒤의 그래프에 분류합니다.
 
 ```swift
 let somePoint = (1, 1)
@@ -425,9 +425,9 @@ C 와 달리, 스위프트는 '똑같은 값 또는 값들을 고려하는 여�
 
 **Value Bindings (값 연결)**
 
-'`switch` case 절' 은 일치하는 값 또는 값들을, 'case 절' 의 본문에서 사용하기 위해, 임시 상수나 변수로 이름을 붙일 수 있습니다. 이 작동 방식을 _값 연결 (value binding)_ 이라고 하는데, 값이 'case 절' 본문 내의 임시 상수나 변수로 연결되기 때문입니다.
+`switch` case 절은 '일치하는 값 또는 값들에, case 절 본문에서 사용할, 임시 상수나 변수로 이름' 지을 수 있습니다. 이런 동작을 _값 연결 (value binding)_ 이라고 하는데, 이는 case 절 본문 안의 임시 상수나 변수에 값을 연결하기 때문입니다.
 
-아래 예제는, `(Int, Int)` 타입의 튜플로 표현된, (x, y) 점 하나를 받아서, 뒤에 있는 그래프 상에서 분류합니다:
+아래 예제는, `(Int, Int)` 라는 튜플 타입으로 표현한, (x, y) 점을 취하여, 이를 뒤의 그래프에 분류합니다:
 
 ```swift
 let anotherPoint = (2, 0)
@@ -439,7 +439,7 @@ case (0, let y):
 case let (x, y):
   print("somewhere else at (\(x), \(y))")
 }
-// "on the x-axis with an x value of 2" 를 인쇄합니다.
+// "on the x-axis with an x value of 2" 를 인쇄함
 ```
 
 ![a (x, y) point with value bindings](/assets/Swift/Swift-Programming-Language/Control-Flow-value-bindings.png)
