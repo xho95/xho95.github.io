@@ -483,7 +483,7 @@ case let (x, y):
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
 </p>
 
-'switch 문에서 동일한 본문을 공유하는 여러 개의 case 절' 은 `case` 뒤에 , 각 패턴 사이에 쉼표를 둔, 여러가지 패턴을 작성함으로써 조합할 수 있습니다. 패턴 중 어떤 것이든 일치하면, 그 case 절은 일치한다고 고려합니다. 목록이 길면 패턴을 여러 줄로 작성할 수 있습니다. 예를 들면 다음과 같습니다:
+'switch 문에서 동일한 본문을 공유하는 여러 개의 case 절' 은 `case` 뒤에 , 각 패턴 사이에 쉼표를 둔, 여러가지 패턴을 작성함으로써 조합할 수 있습니다. 패턴 중 어떤 것이든 일치하면, 그 case 절은 일치하는 것으로 고려합니다. 목록이 길면 패턴을 여러 줄로 작성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someCharacter: Character = "e"
@@ -499,9 +499,9 @@ default:
 // "e is a vowel" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 'case 절' 은 영어에 있는 모든 다섯 개의 소문자 '모음 (vowels)' 과 일치합니다. 이와 비슷하게, 두 번째 'case 절' 은 영어의 모든 소문자 '자음 (consonants)' 과 일치합니다. 최종적으로, '`default` case 절' 은 어떤 다른 문자와도 일치합니다.[^default-case-character]
+`switch` 문의 첫 번째 case 절은 '영어의 모든 모음 (vowels) 소문자 다섯 개와 일치' 합니다. 이와 비슷하게, 두 번째 case 절은 '영어의 모든 자음 (consonants)소문자와 일치' 합니다. 최종적으로, `default` case 절은 다른 어떤 문자와도 일치합니다.[^default-case-character]
 
-'복합 case 절' 은 '값 연결 (value bindings)' 를 포함할 수도 있습니다. '복합 case 절' 의 모든 '패턴 (patterns)' 은 똑같은 집합의 '값 연결' 을 포함해야 하며, 각 '연결 (binding)' 은 '복합 case 절' 의 모든 '패턴' 에서 같은 타입의 값만 가져야 합니다. 이는, '복합 case 절' 의 어느 부분이 일치한 것이든 상관없이, 'case 절' 의 본문 코드는 항상 '연결' 한 값에 접근할 수 있으며 그 값은 항상 똑같은 타입을 가짐을 보장합니다.
+복합 case 절은 '값 연결 (value bindings) 을 포함' 할 수도 있습니다. 복합 case 절의 모든 패턴은 동일한 값 연결 집합을 포함해야 하며, 각각의 연결 (binding) 은 복합 case 절의 모든 패턴에서 똑같은 타입의 값을 가져야 합니다. 이는, 복합 case 절에서 어느 부분이 일치했는지 상관없이, case 절 본문 코드가 항상 연결 값에 접근할 수 있으며 값이 항상 동일한 타입을 가지도록, 보장합니다.
 
 ```swift
 let stillAnotherPoint = (9, 0)
@@ -790,7 +790,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^letter]: 원문에서는 'letter' 라는 단어를 사용하는데, 영어에서 'character' 는 표의 문자, 'letter' 는 표음 문자를 의미한다고 합니다. 원문에도 영어 알파벳은 항상 'letter' 를 사용합니다.
 
-[^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진하게 (exhaustive) 됩니다. 왜냐면, `Character` 값이 '영어 문자 말고 다른 유니코드 문자를 가질 수도 있기 때문' 입니다.
+[^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진 (exhaustive) 합니다. 왜냐면, `Character` 가 영어 문자가 아닌 다른 유니코드 문자를 가질 수도 있기 때문입니다.
 
 [^requirements]: 여기서의 '필수 조건 (requirements)' 는 `Protocol` 의 '필수 조건 (requirements)' 과 개념은 비슷하지만 용어 자체로는 다른 것입니다. 이 역시 스위프트가 일상 영어를 많이 사용하면서 일어나는 현상입니다.
 
