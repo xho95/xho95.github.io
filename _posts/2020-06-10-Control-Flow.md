@@ -325,7 +325,7 @@ default:
 // "The last letter of the alphabet" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 절은 영어 알파벳 첫 글자[^letter] 인, `a`, 와 일치하며, 두 번째 case 절은 마지막 글자인, `z`, 와 일치합니다. `switch` 는, 모든 알파벳 글자만이 아니라, 가능한 모든 글자마다 반드시 case 절을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 이외의 모든 문자와 일치하는 `default` case 절을 사용합니다. 이걸 제공하면 `switch` 문의 완전 소진 (exhaustive) 을 보장합니다.
+`switch` 문의 첫 번째 case 절은 영어 알파벳 첫 글자[^letter] 인, `a`, 와 일치하며, 두 번째 case 절은 마지막 글자인, `z`, 와 일치합니다. `switch` 는, 모든 알파벳 글자만이 아니라, 가능한 모든 글자마다 반드시 case 절을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 이외의 모든 문자와 일치하는 `default` case 절을 사용합니다. 이걸 제공하면 `switch` 문이 완전 소진하게 (exhaustive) 보장합니다.
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
@@ -368,7 +368,7 @@ default:
 
 **Interval Matching (구간 맞춤)**
 
-`switch` case 절의 값이 '일정 구간 (interval) 안에 포함되는 지' 를 검사할 수 있습니다. 다음 예제는 '수치 구간 (number intervals)' 을 사용하여 어떤 크기의 수든 자연-어로 세는 기능을 제공합니다:
+`switch` case 절에서 '값이 일정 구간 (interval) 에 포함되는 지를 검사' 할 수 있습니다. 다음 예제는 '수치 구간 (number intervals)' 을 사용하여 어떤 크기의 수든 자연-어로 세는 기능을 제공합니다:
 
 ```swift
 let approximateCount = 62
@@ -450,7 +450,7 @@ case let (x, y):
 
 임시 상수의 선언 후엔, 이를 case 절 코드 블럭 안에서 사용할 수 있습니다. 여기선, '점의 범주' 를 인쇄하는데 사용합니다.
 
-이 `switch` 문엔 '`default` case 절' 이 없습니다. 최종 case 절인, `case let (x, y)` 는, '어떤 값이든 일치 가능한 두 개의 자리 표시용 상수를 가진 튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가진 튜플이기 때문에, 이 case 절은 남아 있는 가능한 모든 값과 일치하며, `switch` 문을 완전 소진하게 (exhaustive) 만드는 `default` case 절은 필요 없습니다.
+이 `switch` 문엔 `default` case 절이 없습니다. 최종 case 절인, `case let (x, y)` 는, '어떤 값이든 일치 가능한 두 개의 자리 표시용 상수를 가진 튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가진 튜플이기 때문에, 이 case 절은 남아 있는 가능한 모든 값과 일치하며, `switch` 문을 완전 소진하게 만드는 `default` case 절이 필요 없습니다.
 
 **Where (where 절)**
 
@@ -475,9 +475,9 @@ case let (x, y):
 
 `switch` 문은 해당 점이 `x == y` 인 녹색 대각선 위인지, `x == -y` 인 보라색 대각선 위인지, 아니면 어느 쪽도 아닌지 결정합니다.
 
-세 '`switch` case 절' 은, `yetAnotherPoint` 에서 튜플 값 두 개를 임시로 취하는, 자리 표시용 상수 `x` 와 `y` 를 선언합니다. 이 상수는, 동적 필터를 생성하는, `where` 절에서 사용합니다. `switch` case 절은 해당 값의 `where` 절 조건 평가가 `true` 인 경우에만 현재 `point` 값과 일치합니다.
+세 `switch` case 절은, `yetAnotherPoint` 에서 튜플 값 두 개를 임시로 취하는, 자리 표시용 상수 `x` 와 `y` 를 선언합니다. 이 상수는, 동적 필터를 생성하는, `where` 절에서 사용합니다. `switch` case 절은 해당 값의 `where` 절 조건 평가가 `true` 인 경우에만 현재 `point` 값과 일치합니다.
 
-이전 예제 처럼, 최종 case 절은 남아 있는 모든 가능한 값과 일치하므로, `switch` 문을 완전 소진하게 만드는 '`default` case 절' 이 필요하진 않습니다.
+이전 예제 처럼, 최종 case 절은 남아 있는 가능한 모든 값과 일치하므로, `switch` 문을 완전 소진하게 만드는 `default` case 절이 필요 없습니다.
 
 <p>
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
