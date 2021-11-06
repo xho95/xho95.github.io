@@ -483,7 +483,7 @@ case let (x, y):
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
 </p>
 
-switch 문에서 똑같은 본문을 공유하는 '다중 case 절' 은 `case` 뒤에, 각 '패턴 (patterns)' 은 쉼표로 구분하여, 여러 개의 '패턴' 을 작성함으로써 조합할 수 있습니다. '패턴' 중 어떤 것이든 일치하면, 그 'case 절' 이 일치하는 것으로 간주됩니다. '패턴' 들은 목록이 길 경우 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
+'switch 문에서 동일한 본문을 공유하는 여러 개의 case 절' 은 `case` 뒤에 , 각 패턴 사이에 쉼표를 둔, 여러가지 패턴을 작성함으로써 조합할 수 있습니다. 패턴 중 어떤 것이든 일치하면, 그 case 절은 일치한다고 고려합니다. 목록이 길면 패턴을 여러 줄로 작성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someCharacter: Character = "e"
@@ -496,7 +496,7 @@ case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
 default:
   print("\(someCharacter) is not a vowel or a consonant")
 }
-// "e is a vowel" 를 인쇄합니다.
+// "e is a vowel" 를 인쇄함
 ```
 
 `switch` 문의 첫 번째 'case 절' 은 영어에 있는 모든 다섯 개의 소문자 '모음 (vowels)' 과 일치합니다. 이와 비슷하게, 두 번째 'case 절' 은 영어의 모든 소문자 '자음 (consonants)' 과 일치합니다. 최종적으로, '`default` case 절' 은 어떤 다른 문자와도 일치합니다.[^default-case-character]
