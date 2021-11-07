@@ -499,9 +499,9 @@ default:
 // "e is a vowel" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 절은 '영어의 모든 모음 (vowels) 소문자 다섯 개와 일치' 합니다. 이와 비슷하게, 두 번째 case 절은 '영어의 모든 자음 (consonants)소문자와 일치' 합니다. 최종적으로, `default` case 절은 다른 어떤 문자와도 일치합니다.[^default-case-character]
+`switch` 문의 첫 번째 case 절은 영어의 모든 '모음 (vowels) 소문자' 다섯 개와 일치합니다. 이와 비슷하게, 두 번째 case 절은 영어의 '모든 자음 (consonants) 소문자' 와 일치합니다. 최종적으로, `default` case 절은 다른 어떤 문자든 일치합니다.[^default-case-character]
 
-복합 case 절은 '값 연결 (value bindings) 을 포함' 할 수도 있습니다. 복합 case 절의 모든 패턴은 동일한 값 연결 집합을 포함해야 하며, 각각의 연결 (binding) 은 복합 case 절의 모든 패턴에서 똑같은 타입의 값을 가져야 합니다. 이는, 복합 case 절에서 어느 부분이 일치했는지 상관없이, case 절 본문 코드가 항상 연결 값에 접근할 수 있으며 값이 항상 동일한 타입을 가지도록, 보장합니다.
+복합 case 절은 '값 연결 (value bindings) 을 포함' 할 수도 있습니다. 복합 case 절의 모든 패턴은 동일한 값 연결 집합을 포함해야 하며, 각각의 연결 (binding) 은 모든 복합 case 절 패턴에서 똑같은 타입의 값을 가져야 합니다. 이는, 복합 case 절의 어느 부분이 일치하든 간에, case 절 본문 코드가 연결 값에 항상 접근할 수 있고 값의 타입이 항상 똑같도록, 보장합니다.
 
 ```swift
 let stillAnotherPoint = (9, 0)
@@ -511,10 +511,10 @@ case (let distance, 0), (0, let distance):
 default:
   print("Not on an axis")
 }
-// "On an axis, 9 from the origin" 를 인쇄합니다.
+// "On an axis, 9 from the origin" 를 인쇄함
 ```
 
-위의 '`case` 절' 은 두 개의 '패턴' 을 가지고 있습니다: `(let distance, 0)` 은 x-축 위의 점과 일치하며, `(0, let distance)` 는 y-축 위의 점과 일치합니다. 두 '패턴' 모두 `distance` 에 대한 '연결' 을 포함하며 `distance` 는 두 '패턴' 모두에서 '정수' 입니다-이는 '`case` 절' 의 본문 코드가 항상 `distance` 에 대한 값에 접근할 수 있음을 의미합니다.
+위 `case` 절은: x-축 상의 점과 일치하는 `(let distance, 0)` 와 y-축 상의 점과 일치하는 `(0, let distance)` 라는 두 개의 패턴을 가집니다. 두 패턴 모두 `distance` 와의 연결을 포함하며 두 패턴 모두에서 `distance` 는 정수입니다-이는 `case` 절 본문 코드가 `distance` 값에 항상 접근할 수 있음을 의미합니다.
 
 ### Control Transfer Statements (제어 전달문)
 
