@@ -518,7 +518,7 @@ default:
 
 ### Control Transfer Statements (제어 전달문)
 
-_제어 전달문 (control transfer statements)_ 은, 제어를 한 코드에서 다른 곳으로 전달함으로써, 코드를 실행하는 순서를 바꿉니다. 스위프트는 다섯 개의 '제어 전달문' 을 가집니다:
+_제어 전달문 (control transfer statements)_ 은, 제어를 코드 한 곳에서 다른 곳으로 전달하여, 코드 실행 순서를 바꿉니다. 스위프트에는 다섯 개의 제어 전달문이 있습니다:
 
 * `continue`
 * `break`
@@ -526,7 +526,7 @@ _제어 전달문 (control transfer statements)_ 은, 제어를 한 코드에서
 * `return`
 * `thorw`
 
-`continue`, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
+`continue`, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
 
 #### Continue (continue 문)
 
