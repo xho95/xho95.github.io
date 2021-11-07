@@ -526,7 +526,7 @@ _제어 전달문 (control transfer statements)_ 은, 제어를 코드 한 곳�
 * `return`
 * `thorw`
 
-`continue`, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-로-에러-전파하기) 에서 설명합니다.
+`continue`, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서, `throw` 문은 [Propagating Errors Using Throwing Functions ('던지는 함수' 를 써서 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-를-써서-에러-전파하기) 에서 설명합니다.
 
 #### Continue (continue 문)
 
