@@ -530,9 +530,9 @@ _제어 전달문 (control transfer statements)_ 은, 제어를 코드 한 곳�
 
 #### Continue (continue 문)
 
-`continue` 문은 반복문이 하고 있는 것을 멈추고 반복문을 통과하여 다음 '회차 (iteration)' 의 맨 앞에서 다시 시작하라고 말합니다. 이는 반복문을 완전히 떠나지 않은 채 "현재 '반복 회차' 에서 할 건 다했다" 라고 말하는 것입니다.
+`continue` 문은 반복문에게 '지금 하고 있는 것을 멈추고 반복문을 통과하여 다음 회차 맨 앞에서 다시 시작하라' 고 말합니다. 이는 반복문을 완전히 떠나지 않고도 "현재 반복 회차에서 할 건 다했다" 고 말합니다.
 
-다음의 예제는 '수수께끼 문장 (cryptic puzzle phrase)' 을 생성하기 위해 소문자 문자열에서 모든 '모음 (vowels)' 과 '공백 (spaces)' 을 삭제합니다.
+다음 예제는 '수수께끼 구절 (cryptic puzzle phrase) 생성을 위해 소문자 문자열에서 모든 모음과 공백을 제거' 합니다:
 
 ```swift
 let puzzleInput = "great minds think alike"
@@ -545,10 +545,10 @@ for character in puzzleInput {
   puzzleOutput.append(character)
 }
 print(puzzleOutput)
-// "grtmndsthnklk" 를 인쇄합니다.
+// "grtmndsthnklk" 를 인쇄함
 ```
 
-위 코드는 '모음' 이나 '공백' 과 일치할 때마다 `continue` 키워드를 호출하여, 반복문의 현재 '회차' 를 즉시 끝내고 다음 '회차' 시작으로 곧장 넘어 가도록 합니다.
+위 코드는 모음이나 공백과 일치할 때마다 `continue` 키워드를 호출하여, 반복문 현재 회차를 곧바로 끝내고 다음 회차 시작으로 곧장 뛰어 넘도록 합니다.
 
 #### Break (break 문)
 
