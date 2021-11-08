@@ -92,7 +92,7 @@ case .west:
 
 ...이를 계속합니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, `switch` 문은 '열거체 case 값' 을 검토할 때 반드시 '빠짐없이 철저 (exhaustive)' 해야 합니다. 만약 `.west` 에 대한 '`case` 절' 을 생략하면, '`CompassPoint` case 값' 의 완료된 목록을 검토하지 않기 때문에, 코드를 컴파일하지 않습니다. '빠짐없이 철처함' 을 요구하는 것은 예기치 않게 '열거체 case 값' 을 생략하지 않도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, `switch` 문은 '열거체 case 값' 을 검토할 때 반드시 '완전 소진해야 (exhaustive)' 합니다. 만약 `.west` 에 대한 '`case` 절' 을 생략하면, '`CompassPoint` case 값' 의 완료된 목록을 검토하지 않기 때문에, 코드를 컴파일하지 않습니다. '완전 소진' 을 요구하는 것은 예기치 않게 '열거체 case 값' 을 생략하지 않도록 보장합니다.
 
 모든 '열거채 case 값' 에 '`case` 절' 를 제공하는 것이 적절하지 않을 때는, 명시적으로 알리지 않은 어떤 'case 값' 도 다룰 수 있는 '`default` case 절' 을 제공할 수 있습니다:
 
