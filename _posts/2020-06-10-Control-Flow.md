@@ -552,7 +552,7 @@ print(puzzleOutput)
 
 #### Break (break 문)
 
-`break` 문은 전체 '제어 흐름문' 의 실행을 즉시 끝냅니다. `break` 문은 `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때 `switch` 문이나 반복문 안에서 사용합니다.
+`break` 문은 전체 제어 흐름문의 실행을 곧바로 끝냅니다. `switch` 문이나 반복문 실행을 다른 경우보다 더 일찍 종결하고 싶을 때 `switch` 문이나 반복문 안에 `break` 문을 사용할 수 있습니다.
 
 **Break in a Loop Statement (반복문 안의 break 문)**
 
