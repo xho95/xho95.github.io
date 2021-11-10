@@ -566,7 +566,7 @@ print(puzzleOutput)
 
 이런 동작을 사용하면 `switch` 문에 있는 하나 이상의 case 절을 일치시켜서 무시할 수 있습니다. 스위프트의 `switch` 문은 완전히 소진해야 (exhaustive) 하며 빈 case 절을 허용하지 않기 때문에, 의도를 명시하기 위해선 일부러 case 절을 일치시키고 무시하는 게 필요할 때가 있습니다. 이를 하려면 무시하려는 case 절 전체 본문을 `break` 문으로 작성하면 됩니다. `switch` 문이 해당 case 절과 일치할 때, case 절 안의 `break` 문이 `switch` 문 실행을 곧바로 끝냅니다.
 
-> '주석 (comment)' 만 담고 있는 '`switch` case 절' 은 '컴파일 시간 에러' 라고 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 '`switch` case 절' 이 무시되도록 만들지 않습니다. '`switch` case 절' 를 무시하기 위해서는 항상 `break` 문을 사용합니다.
+> 주석만 담은 `switch` case 절은 컴파일-시간 에러를 보고합니다. 주석은 구문이 아니며 `switch` case 절을 무시하도록 유발하지 않습니다. `switch` case 절을 무시하려면 `break` 문을 항상 사용합니다.
 
 다음 예제는 `Character` 값을 '전환 (switch)' 하여 네 언어 중 하나의 '수치 기호' 로 표현된 것인지를 결정합니다. 간결함을 위해, '다중 값 (multiple values)' 을 '단일 `switch` case 절' 에서 다룹니다.
 
