@@ -593,11 +593,11 @@ if let integerValue = possibleIntegerValue {
 // "The integer value of 三 is 3." 를 인쇄함
 ```
 
-이 예제는 `numberSymbol` 을 검사하여 `1` 에서 `4` 까지의 라틴어, 아랍어, 중국어, 또는 태국어 기호인지 결정합니다. 일치한 것을 찾으면, `switch` 문의 'case 절' 증 하나가 `possibleIntegerValue` 라는 '옵셔널 `Int?`' 변수에 적절한 정수 값을 설정합니다.
+이 예제는 `numberSymbol` 이 라틴어, 아랍어, 중국어, 또는 태국어 기호로 된 `1` 에서 `4` 까지의 숫자인지 결정하기 위해 검사합니다. 일치한 걸 찾으면, `switch` 문 case 절 하나가 `possibleIntegerValue` 라는 옵셔널 `Int?` 변수에 적절한 정수 값을 설정합니다.
 
-`switch` 문이 실행을 완료한 후, 이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 값을 찾았는지 결정합니다. `possibleIntegerValue` 변수는 '옵셔널 타입' 인 덕에 `nil` 이라는 '암시적인 초기 값' 을 가지므로, '옵셔널 연결' 은 `switch` 문의 처음 네 'case 절' 중 하나가 `possibleIntegerValue` 에 실제 값을 설정한 경우에만 성공할 것입니다.
+`switch` 문 실행을 완료한 후, 예제는 옵셔널 연결 (optional binding) 을 사용하여 값을 찾았는지 결정합니다. `possibleIntegerValue` 변수는 옵셔널 타입인 덕에 `nil` 이라는 암시적인 초기 값을 가지므로, `switch` 문의 처음 네 case 절 중 하나가 `possibleIntegerValue` 에 실제 값을 설정한 경우에만 옵셔널 연결이 성공할 것입니다.
 
-위 예제에서 가능한 모든 `Character` 값의 목록은 실용적이지 않기 때문에, 일치하지 않는 문자는 어떤 것이든 '`default` case 절' 이 처리합니다. 이 '`default` case 절' 은 어떤 행동도 할 필요 없으므로, 본문을 '단일 `break` 문' 으로 작성합니다. '`default` case 절' 은 일치하자 마자, `break` 문이 `switch` 문의 실행을 끝내며, 코드 실행은 `if let` 문부터 계속됩니다.
+위 예제에서 가능한 모든 `Character` 값을 나열하는 건 현실적이지 않기 때문에, `default` case 절로 일치하지 않은 어떤 문자든 처리합니다. 이 `default` case 절은 어떤 행동도 할 필요가 없으므로, 단일 `break` 문으로 본문을 작성합니다. `default` case 절과 일치하자마자 곧, `break` 문이 `switch` 문 실행을 끝내며, `if let` 문부터 코드 실행을 계속합니다.
 
 #### Fallthrough (fallthrough 문)
 
