@@ -619,7 +619,7 @@ print(description)
 // "The number 5 is a prime number, and also an integer." 를 인쇄함
 ```
 
-이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 그런 다음 이 함수는 `switch` 문을 사용하여 `integerToDescribe` 의 값을 고려합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는, 이 수가 '소수' 임을 기록하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 '`default` case 절' 에 까지 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. '`default` case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 다음, `switch` 문을 완료합니다.
+이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 여기에 초기 값을 할당합니다. 그런 다음 `switch` 문을 사용하여 `integerToDescribe` 값을 고려합니다. `integerToDescribe` 값이 목록에 있는 소수 (prime number) 중 하나면, 수치 값이 소수임을 표기하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 `default` case 절 까지 마저 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. `default` case 절은 설명 끝에 일부 부가 문장을 추가하여, `switch` 문을 완료합니다.
 
 `integerToDescribe` 의 값이 알고 있는 소수 목록에 있지 않으면, 첫 번째 '`switch` case 절' 과는 전혀 일치하지 않습니다. 지정한 다른 'case 절' 이 없기 때문에, `integerToDescribe` 는 '`default` case 절' 과 일치합니다.
 
