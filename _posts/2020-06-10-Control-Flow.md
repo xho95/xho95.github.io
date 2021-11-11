@@ -619,13 +619,13 @@ print(description)
 // "The number 5 is a prime number, and also an integer." 를 인쇄함
 ```
 
-이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 여기에 초기 값을 할당합니다. 그런 다음 `switch` 문을 사용하여 `integerToDescribe` 값을 고려합니다. `integerToDescribe` 값이 목록에 있는 소수 (prime number) 중 하나면, 수치 값이 소수임을 표기하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 `default` case 절 까지 마저 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. `default` case 절은 설명 끝에 일부 부가 문장을 추가하여, `switch` 문을 완료합니다.
+이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 여기에 초기 값을 할당합니다. 그런 다음 `switch` 문을 사용하여 `integerToDescribe` 값을 고려합니다. `integerToDescribe` 값이 목록에 있는 소수 (prime number) 중 하나면, 수치 값이 소수임을 표기하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 `default` case 절 까지 마저 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. `default` case 절은 설명 끝에 부가적인 문장을 추가하고, `switch` 문을 완료합니다.
 
-`integerToDescribe` 의 값이 알고 있는 소수 목록에 있지 않으면, 첫 번째 '`switch` case 절' 과는 전혀 일치하지 않습니다. 지정한 다른 'case 절' 이 없기 때문에, `integerToDescribe` 는 '`default` case 절' 과 일치합니다.
+`integerToDescribe` 값이 목록에 있는 소수가 아닌 한, 첫 번째 `switch` case 절과는 아예 일치하지 않습니다. 지정한 다른 case 절이 없기 때문에, `integerToDescribe` 는 `default` case 절과 일치합니다.
 
-`switch` 문의 실행을 종료한 후, `print(_:separator:terminator:)` 함수가 수의 설명을 인쇄합니다. 이 예제에서, 수 `5` 는 '소수' 라고 올바르게 식별됩니다.
+`switch` 문 실행을 종료한 후, `print(_:separator:terminator:)` 함수를 사용하여 수치 값 설명을 인쇄합니다. 이 예제는, 수 `5` 가 소수라고 올바로 식별합니다.
 
-> `fallthrough` 키워드는 '빠져 들어 (fall into)' 실행할 '`switch` case 절' 의 조건은 검사하지 않습니다. `fallthrough` 키워드는 단순히, C 의 표준 `swtich` 문 작동 방식에서 처럼, 코드 실행을 그 다음 'case 절' (또는 '`default` case 절') 의 구문으로 직접 이동 시킵니다.
+> `fallthrough` 키워드는 빠져 들어 실행할 `switch` case 절 조건을 검사하진 않습니다. `fallthrough` 키워드는, C 표준 `swtich` 문 동작 처럼, 단순히 코드 실행이 그 다음 case 절 (또는 `default` case 절) 블럭으로 직접 이동하도록 합니다.
 
 #### Labeled Statements (이름표 구문)
 
