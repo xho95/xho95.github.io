@@ -601,9 +601,9 @@ if let integerValue = possibleIntegerValue {
 
 #### Fallthrough (fallthrough 문)
 
-스위프트에서, `switch` 문은 각 'case 절' 의 끝을 빠져 나가서 그 다음으로 넘어가지 않습니다. 즉, 전체 `switch` 문은 첫 째로 일치한 'case 절' 을 완료하자 마자 실행을 완료합니다. 이와는 대조적으로, C 는 빠져 나가는 것을 막기 위해 모든 '`switch` case 절' 끝에 명시적인 `break` 문을 필수로 집어 넣어야 합니다. 기본적인 빠져 나감을 피하는 것은 스위프트의 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 '다중 `switch` case 절' 을 실수로 실행하는 것을 피하게 해준다는 것을 의미합니다.
+스위프트의, `switch` 문은 각각의 case 절 밑을 빠져나가 다음으로 들어가지 않습니다. 즉, 첫 번째로 일치한 case 절을 완료하자마자 전체 `switch` 문 실행을 완료합니다. 이와 대조적으로, C 는 모든 `switch` case 절 끝에 빠져 나가는 걸 막기 위한 명시적인 `break` 문을 집어 넣을 걸 요구합니다. 기본적인 빠져 나감을 피한다는 건 스위프트 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 여러 개의 `switch` case 절을 실수로 실행하는 걸 피하게 해준다는 의미입니다.
 
-C-스타일의 '빠져 나감 (fallthrough)' 작동 방식이 필요한 경우, 이 작동 방식은 각 경우마다 `fallthrough` 키워드를 작성함으로써 직접 선택할 수 있습니다. 아래 예제는 수를 설명하는 문장의 생성을 위해 `fallthrough` 를 사용합니다.
+C-스타일의 빠져 나감 (fallthrough) 동작이 필요하면, 각각의 경우마다 `fallthrough` 키워드로 이 동작을 직접 선택할 수 있습니다. 아래 예제는 수치 값을 설명하는 문장을 생성하기 위해 `fallthrough` 를 사용합니다.
 
 ```swift
 let integerToDescribe = 5
@@ -616,7 +616,7 @@ default:
   description += " an integer."
 }
 print(description)
-// "The number 5 is a prime number, and also an integer." 를 인쇄합니다.
+// "The number 5 is a prime number, and also an integer." 를 인쇄함
 ```
 
 이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 그런 다음 이 함수는 `switch` 문을 사용하여 `integerToDescribe` 의 값을 고려합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는, 이 수가 '소수' 임을 기록하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 '`default` case 절' 에 까지 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. '`default` case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 다음, `switch` 문을 완료합니다.
