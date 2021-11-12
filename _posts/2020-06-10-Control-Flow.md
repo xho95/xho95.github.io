@@ -639,9 +639,9 @@ print(description)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-다음 예제는 `break` 문과 `continue` 문을 '이름표 붙인 `while` 반복문' 과 같이 사용하여 이 장 앞에서 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개조한 버전입니다. 단 이번에는, 게임이 부가적인 규칙을 가집니다:
+다음 예제는 이 장 앞에 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 '이름표 붙인 `while` 반복문을 가진 `break` 문과 `continue` 문을 사용' 하여 개조한 버전입니다. 단 이번에는, 게임에 부가적인 규칙이 있습니다:
 
-* 승리하려면, 반드시 _정확하게 (exactly)_ '25 번 정사각형' 위에 도착해야 합니다.
+* 승리하려면, 반드시 _정확히 (exactly)_ 25 번 정사각형에 착륙해야 합니다.
 
 만약 특정 '주사위 굴림' 이 '25 번 정사각형' 을 넘어서도록 만든다면, 반드시 정확하게 '25 번 정사각형' 위에 도착하기 위한 수를 굴릴 때까지 다시 굴려야 합니다.
 
