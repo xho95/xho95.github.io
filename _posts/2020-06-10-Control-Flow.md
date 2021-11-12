@@ -629,7 +629,7 @@ print(description)
 
 #### Labeled Statements (이름표 구문)
 
-스위프트에서, 반복문과 조건문을 다른 반복문과 조건문 안에 중첩하면 복잡한 제어 흐름 구조를 생성할 수 있습니다. 하지만, 반복문과 조건문 둘 다 `break` 문을 사용하면 실행이 때 이르게 끝날 수 있습니다. 그러므로, `break` 문이 어느 반복문 또는 조건문을 종료할 지를 명시하는 게 유용할 때가 있습니다. 이와 비슷하게, 여러 번 중첩한 반복문이 있다면, `continue` 문이 어느 반복문에 영향을 줄 지를 명시하는 게 유용할 수 있습니다.
+스위프트에서, 반복문과 조건문을 다른 반복문과 조건문 안에 중첩하면 복잡한 제어 흐름 구조를 생성할 수 있습니다. 하지만, 반복문과 조건문 둘 다 `break` 문을 사용하면 실행이 성급하게 끝날 수 있습니다. 그러므로, `break` 문이 어느 반복문 또는 조건문을 종료할 지 명시하는 게 유용할 때가 있습니다. 이와 비슷하게, 여러 번 중첩된 반복문이 있다면, `continue` 문이 어느 반복문에 영향을 줄 지 명시하는 게 유용할 수 있습니다.
 
 이 목표를 달성하고자, 반복문이나 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문에선, 이름표 구문의 실행을 끝내기 위해 '`break` 문을 가진 구문 이름표' 를 사용할 수 있습니다. 반복문에선, 이름표 구문의 실행을 끝내거나 계속하기 위해 '`break` 또는 `continue` 문을 가진 구문 이름표' 를 사용할 수 있습니다.
 
@@ -641,15 +641,15 @@ print(description)
 
 다음 예제는 이 장 앞에 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 '이름표 붙인 `while` 반복문을 가진 `break` 문과 `continue` 문을 사용' 하여 개조한 버전입니다. 단 이번에는, 게임에 부가적인 규칙이 있습니다:
 
-* 승리하려면, 반드시 _정확히 (exactly)_ 25 번 정사각형에 착륙해야 합니다.
+* 승리하려면, 반드시 25번 정사각형에 _정확하게 (exactly)_ 착륙해야 합니다.
 
-만약 특정 '주사위 굴림' 이 '25 번 정사각형' 을 넘어서도록 만든다면, 반드시 정확하게 '25 번 정사각형' 위에 도착하기 위한 수를 굴릴 때까지 다시 굴려야 합니다.
+특정 주사위 굴림 값이 25번 정사각형을 넘어가게 하면, 반드시 25번 정사각형에 착륙할 정확한 수를 굴릴 때까지 다시 굴려야 합니다.
 
 게임판은 이전과 똑같습니다.
 
 ![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
 
-`finalSquare`, `board`,  `square`, 및 `diceRoll` 의 값도 이전과 똑같은 방법으로 초기화합니다:
+`finalSquare`, `board`, `square`, 및 `diceRoll` 값도 이전과 똑같이 초기화합니다:
 
 ```swift
 let finalSquare = 25
@@ -660,9 +660,9 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임은 '게임 로직' 을 구현하기 위해 `while` 반복문과 `switch` 문을 사용합니다. `while` 반복문은 자신이 '뱀과 사다리' 게임의 '주요 게임 반복문' 임을 나타내기 위해 `gameLoop` 라는 '구문 이름표' 를 가지고 있습니다.
+이 버전의 게임은 게임 로직을 구현하기 위해 `while` 반복문과 `switch` 문을 사용합니다. `while` 반복문은 자신이 뱀과 사다리 게임의 주요 게임 반복문임을 지시하도록 `gameLoop` 라는 구문 이름표를 가집니다.
 
-`while` 반복문의 조건은, 반드시 정확하게 '25 번 정사각형' 위에 도착해야 함을 반영하는, `while square != finalSquare` 입니다.
+`while` 반복문 조건은, 반드시 정확하게 25번 정사각형에 착륙해야 함을 반영한, `while square != finalSquare` 입니다.
 
 ```swift
 gameLoop: while square != finalSquare {
@@ -670,13 +670,13 @@ gameLoop: while square != finalSquare {
   if diceRoll == 7 { diceRoll = 1 }
   switch square + diceRoll {
   case finalSquare:
-    // diceRoll 이 최종 정사각형으로 이동시킬 것이므로, 게임이 끝나게 됩니다.
+    // diceRoll 이 최종 정사각형으로 이동시킬 것이므로, 게임이 끝남
     break gameLoop
   case let newSquare where newSquare > finalSquare:
-    // diceRoll 이 최종 정사각형 너머로 이동시킬 것이므로, 다시 굴려야 합니다.
+    // diceRoll 이 최종 정사각형 너머로 이동시킬 것이므로, 다시 굴림
     continue gameLoop
   default:
-    // 이는 유효한 이동이므로, 그 영향을 알아 냅니다.
+    // 이는 유효한 이동이므로, 자신의 효과를 찾아냄
     square += diceRoll
     square += board[square]
   }
@@ -780,7 +780,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^stride-to-through]: `stride(from:to:by:)` 는 '반-열린 범위' 를 만들고, `stride(from:through:by:)` 는 '닫힌 범위' 를 만듭니다.
 
-[^square-zero]: 즉, 게임 보드 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
+[^square-zero]: 즉, 게임판 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
 
 [^no-effect]: 이는, 게임을 시작할 때는 `square` 가 0 이라서, `square < finalSquare` 가 항상 참이라서, (효과가 없는) 비교를 안해도 문제가 없다는 의미입니다.
 
