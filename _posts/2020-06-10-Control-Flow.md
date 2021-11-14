@@ -694,9 +694,9 @@ print("Game over!")
 >
 > 엄밀하게 말해서 그 다음 반복 회차로 넘어 가려고 `continue gameLoop` 를 호출할 때는 `gameLoop` 이름표를 사용하는 게 반드시 필요한 건 아닙니다. 게임에 반복문은 한 개만 있으며, 따라서 `continue` 문이 어느 반복문에 영향을 줄 지가 모호하지 않습니다. 하지만, `gameLoop` 이름표를 가지고 `continue` 문을 사용하는 건 해가 없습니다. 그럼으로써 `break` 문과 나란히 사용하는 이름표와 일관성이 있으며 게임 로직을 더 명확하게 읽고 이해하도록 돕습니다.
 
-### Early Exit (이른 탈출문)
+### Early Exit (때 이른 탈출문)
 
-`guard` 문은, `if` 문 같이, 표현식의 '불리언 (Boolean) 값' 에 따라 구문을 실행합니다. `guard` 문은 `guard` 문 이후의 코드를 실행하기 위해서는 반드시 조건이 '참 (true)' 이기를 요구하기 위해 사용합니다. `if` 문과는 다르게, `guard` 문은 항상 `else` 절을 가집니다-`else` 절 안의 코드는 조건이 '참' 이 아닐 경우 실행됩니다.
+`guard` 문은, `if` 문 같이, 표현식의 불리언 값에 의존하여 구문을 실행합니다. `guard` 문은 `guard` 문 뒤의 코드를 실행하기 위해선 조건이 반드시 참이길 요구하고자 사용합니다. `if` 문과 달리, `guard` 문에는 항상 `else` 절이 있습니다-조건이 참이 아니면 `else` 절 안의 코드를 실행합니다.
 
 ```swift
 func greet(person: [String: String]) {
@@ -715,18 +715,18 @@ func greet(person: [String: String]) {
 }
 
 greet(person: ["name": "John"])
-// "Hello John!" 을 인쇄합니다.
-// "I hope the weather is nice near you." 를 인쇄합니다.
+// "Hello John!" 을 인쇄함
+// "I hope the weather is nice near you." 를 인쇄함
 greet(person: ["name": "Jane", "location": "Cupertino"])
-// "Hello Jane!" 을 인쇄합니다.
-// "I hope the weather is nice in Cupertino." 를 인쇄합니다.
+// "Hello Jane!" 을 인쇄함
+// "I hope the weather is nice in Cupertino." 를 인쇄함
 ```
 
-`guard` 문의 조건에 부합하면, `guard` 문의 '닫는 중괄호' 뒤에서 코드 실행을 계속합니다. 조건 절에서 '옵셔널 연결 (optional binding)' 을 사용하여 값을 할당한 어떤 변수나 상수라도 `guard` 문이 있는 코드 블럭의 나머지에서 사용 가능합니다.
+`guard` 문 조건에 부합하면, `guard` 문 닫는 중괄호 뒤의 코드를 계속 실행합니다. 조건 절에서 옵셔널 연결로 값을 할당한 어떤 변수 또는 상수든 `guard` 문이 있는 코드 블럭 나머지에서 사용 가능합니다.
 
-해당 조건에 부합하지 않으면, `else` 분기 안의 코드를 실행합니다. 해당 분기는 반드시 `guard` 문이 있는 코드 블럭을 탈출하도록 '제어 (control)' 를 옯겨야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 같은 '제어 전달문' 으로 할 수도 있고, 아니면 `fatalError(_:file:line:)` 같은, 반환하지 않는 함수나 메소드를 호출할 수도 있습니다.
+해당 조건에 부합하지 않으면, `else` 분기 안의 코드를 실행합니다. 해당 분기는 `guard` 문이 있는 코드 블럭을 탈출하기 위해 반드시 제어를 옯겨야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 같은 제어 전달문으로 할 수도, 아니면 `fatalError(_:file:line:)` 같은, 반환 안하는 함수나 메소드 호출로 할 수 있습니다.
 
-'필수 조건 (requirements)'[^requirements] 에 `guard` 문을 사용하는 것은, 같은 검사를 `if` 문으로 하는 것과 비교하여, 코드의 가독성을 향상시킵니다. 이는 전형적인 실행 코드를 '`else` 블럭' 으로 포장하지 않고도 작성하도록 해주며, 필수 조건을 위반했을 때 처리하는 코드를 필수 조건과 나란히 배치할 수 있게 해줍니다.
+요구 조건으로 `guard` 문을 사용하는 건, 동일한 검사를 `if` 문으로 하는 것과 비교하여, 코드 가독성을 개선합니다. 이는 실행 코드를 `else` 블럭으로 포장하지 않고도 작성하게 해주며, 위반 조건을 처리하는 코드를 요구 조건과 나란히 유지하도록 해줍니다.
 
 ### Checking API Availability (API 사용 가능성 검사하기)
 
@@ -791,8 +791,6 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 [^letter]: 원문에서는 'letter' 라는 단어를 사용하는데, 영어에서 'character' 는 표의 문자, 'letter' 는 표음 문자를 의미한다고 합니다. 원문에도 영어 알파벳은 항상 'letter' 를 사용합니다.
 
 [^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진 (exhaustive) 합니다. 왜냐면, `Character` 가 영어 문자가 아닌 다른 유니코드 문자를 가질 수도 있기 때문입니다.
-
-[^requirements]: 여기서의 '필수 조건 (requirements)' 는 `Protocol` 의 '필수 조건 (requirements)' 과 개념은 비슷하지만 용어 자체로는 다른 것입니다. 이 역시 스위프트가 일상 영어를 많이 사용하면서 일어나는 현상입니다.
 
 [^SDK]: 'SDK' 는 '소프트웨어 개발 키트 (Software development kit)' 의 약자입니다. '엑스코드 (Xcode)' 같은 '통합 개발 환경 (IDE; Integrated Development Environment)' 과는 의미가 조금 다릅니다. '통합 개발 환경' 이 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이라면, '소프트웨어 개발 키트' 는 개발에 필요한, 컴파일러와 패키지 등을 포함한, 실제 '도구' 들을 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
