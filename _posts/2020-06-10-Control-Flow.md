@@ -728,11 +728,11 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 요구 조건으로 `guard` 문을 사용하는 건, 동일한 검사를 `if` 문으로 하는 것과 비교하여, 코드 가독성을 개선합니다. 이는 실행 코드를 `else` 블럭으로 포장하지 않고도 작성하게 해주며, 위반 조건을 처리하는 코드를 요구 조건과 나란히 유지하도록 해줍니다.
 
-### Checking API Availability (API 사용 가능성 검사하기)
+### Checking API Availability (API 사용 가능성 검사)
 
-스위프트는 API 의 사용 가능성을 검사하는 '내장 지원 기능 (built-in support)' 을 가지고 있어서, 예기치 않게 주어진 '배포 대상 (deployment target)' 에서는 사용 불가능한 API 를 사용하진 않도록 보장합니다.
+주어진 '배포 대상 (development target) 에서는 사용 불가능한 API 를 사용하는 사고' 가 없도록, 스위프트는 'API 사용 가능성 검사를 내장 지원 (built-in support)' 합니다.
 
-컴파일러는 코드에서 사용한 모든 API 가 프로젝트에서 지정한 '배포 대상' 에서 사용 가능한지 검증하기 위해 SDK[^SDK] 에 있는 '사용 가능성 정보' 를 사용합니다.[^availability-information] 사용 불가능한 API 를 사용하려고 하면 스위프트가 컴파일 시간에 에러를 보고합니다.
+컴파일러는 '코드에서 사용한 모든 API 가 프로젝트에서 지정한 배포 대상에서 사용 가능한 지 검증' 하기 위해 'SDK[^SDK] 에 있는 사용 가능성 정보' 를 사용합니다.[^availability-information] 사용 불가능한 API 를 사용하려고 하면 스위프트는 컴파일 시간에 에러를 보고합니다.
 
 _사용 가능성 조건 (availability condition)_[^availability-condition] 은 `if` 문이나 `guard` 문 안에서, 사용하고 싶은 API 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭에 있는 API 가 사용 가능한지 검증할 때 '사용 가능성 조건' 의 정보를 사용합니다.
 
@@ -794,6 +794,6 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^SDK]: 'SDK' 는 '소프트웨어 개발 키트 (Software development kit)' 의 약자입니다. '엑스코드 (Xcode)' 같은 '통합 개발 환경 (IDE; Integrated Development Environment)' 과는 의미가 조금 다릅니다. '통합 개발 환경' 이 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이라면, '소프트웨어 개발 키트' 는 개발에 필요한, 컴파일러와 패키지 등을 포함한, 실제 '도구' 들을 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
-[^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, '스위프트 4.0 용 SDK' 로 '스위프트 5.0' 에 있는 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
+[^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, 스위프트 4.0 용 SDK 로 스위프트 5.0 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
 
 [^availability-condition]: '사용 가능성 조건 (avaailability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, '컴파일러 제어문' 은 컴파일 시간에 동작하는 반면, '사용 가능성 조건' 은 '실행 시간' 에 동작한다는 점에서, 이 둘은 서로 완전히 다른 것입니다.
