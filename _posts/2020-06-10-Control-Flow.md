@@ -726,7 +726,7 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 해당 조건에 부합하지 않으면, `else` 분기 안의 코드를 실행합니다. 해당 분기는 `guard` 문이 있는 코드 블럭을 탈출하기 위해 반드시 제어를 옯겨야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 같은 제어 전달문으로 할 수도, 아니면 `fatalError(_:file:line:)` 같은, 반환 안하는 함수나 메소드 호출로 할 수 있습니다.
 
-요구 조건으로 `guard` 문을 사용하는 건, 동일한 검사를 `if` 문으로 하는 것과 비교하여, 코드 가독성을 개선합니다. 이는 실행 코드를 `else` 블럭으로 포장하지 않고도 작성하게 해주며, 위반 조건을 처리하는 코드를 요구 조건과 나란히 유지하도록 해줍니다.
+필수 조건으로 `guard` 문을 사용하는 건, 동일한 검사를 `if` 문으로 하는 것과 비교하여, 코드 가독성을 개선합니다. 이는 실행 코드를 `else` 블럭으로 포장하지 않고도 작성하게 해주며, 위반 조건을 처리하는 코드를 필수 조건과 나란히 유지하도록 해줍니다.
 
 ### Checking API Availability (API 사용 가능성 검사)
 
@@ -734,25 +734,25 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 컴파일러는 '코드에서 사용한 모든 API 가 프로젝트에서 지정한 배포 대상에서 사용 가능한 지 검증' 하기 위해 'SDK[^SDK] 에 있는 사용 가능성 정보' 를 사용합니다.[^availability-information] 사용 불가능한 API 를 사용하려고 하면 스위프트는 컴파일 시간에 에러를 보고합니다.
 
-_사용 가능성 조건 (availability condition)_[^availability-condition] 은 `if` 문이나 `guard` 문 안에서, 사용하고 싶은 API 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭에 있는 API 가 사용 가능한지 검증할 때 '사용 가능성 조건' 의 정보를 사용합니다.
+실행 시간에 사용 가능한 지에 따라 사용하려는 API, 코드 블럭을 조건부로 실행하려면 _사용 가능성 조건 (availability condition)_[^availability-condition] 을 `if` 문이나 `guard` 문 안에 사용합니다. 컴파일러는 해당 코드 블럭 API 가 사용 가능한 지 검증할 때 사용 가능성 조건에 있는 정보를 사용합니다.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
-  // iOS 에서는 'iOS 10' API 를 사용하고, macOS 에서는 'macOS 10.12' API 를 사용합니다.
+  // iOS 에서는 iOS 10 API 를 사용하고, macOS 에서는 macOS 10.12 API 를 사용함
 } else {
-  // 뒤로 물러나서 이전 iOS 와 macOS API 를 사용합니다.
+  // 물러나서 더 이전 iOS 와 macOS API 를 사용함
 }
 ```
 
-위 '사용 가능성 조건' 은 iOS 라면, 'iOS 10' 이후 버전에서만; macOS 라면, 'macOS 10.12' 이후 버전에서만; `if` 문의 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수로 대상에서 지정한 것은 '최소 배포 대상' 이며 그 외 어떤 '플랫폼 (platform)' 에서든 `if` 문의 본문을 실행하라고 지정하는 것입니다.
+위 사용 가능성 조건은 'iOS 라면, iOS 10 이후 버전에서만; macOS 라면, macOS 10.12 이후 버전에서만 `if` 문 본문을 실행하라' 고 지정합니다. 마지막 인자인, `*` 는, 필수이며, '대상에서 지정한 최소 배포 대상 이외의 다른 어떤 플랫폼 (platform) 에서든, `if` 본문을 실행하라' 지정합니다.
 
-일반적인 형식의, '사용 가능성 조건' 은 '플랫폼 이름과 버전' 목록을 받아 들입니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 그리고 `tvOS` 같은 것을 사용합니다-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. 'iOS 8' 이나 'macOS 10.10' 같이 '주요 (major) 버전 번호' 를 지정하는 것에 더하여, 'iOS 11.2.6' 및 'macOS 10.13.3' 같은 '보조 (minor) 버전 번호' 도 지정할 수 있습니다.
+일반 형식의, 사용 가능성 조건은 '플랫폼 이름과 버전의 목록' 을 취합니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 및 `tvOS` 같은 것을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. 'iOS 8 이나 macOS 10.10 같은 주 (major) 버전 번호' 지정에다가, 'iOS 11.2.6 및 macOS 10.13.3 같은 부 (minor) 버전 번호' 도 지정할 수 있습니다.
 
-if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능할 때 실행하는 구문`<br />
-} else {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능할 때 실행하는 구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능할 때 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능할 때 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 ### 다음 장
 
