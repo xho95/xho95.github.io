@@ -18,7 +18,7 @@ _함수 (functions)_ 는 '특정 임무를 수행하는 독립된 (self-containe
 
 ### Defining and Calling Functions (함수 정의하기와 호출하기)
 
-함수를 정의할 땐, _매개 변수 (parameters)_ 라고 하는, 이름과, 타입을 지정한 값을 옵션으로 하나 이상 정의할 수 있습니다. 함수를 마칠 땐, _반환 타입 (return type)_ 이라고 하는, 출력으로 되돌려 줄 값 타입을 옵션으로 정의할 수도 있습니다.
+함수를 정의할 때, _매개 변수 (parameters)_ 라고 하는, 이름과, 타입을 지정한 값을 옵션으로 하나 이상 정의할 수 있습니다. 함수를 마칠 때, _반환 타입 (return type)_ 이라고 하는, 출력으로 되돌려 줄 값 타입을 옵션으로 정의할 수도 있습니다.
 
 모든 함수에는, 함수가 수행할 임무를 설명하는, _함수 이름 (function name)_ 이 있습니다. 함수를 사용하려면, 이름을 가지고 함수를 "호출" 하며 함수 매개 변수 타입과 일치하는 (_인자 (arguments)_ 라고 하는) 입력 값을 전달합니다. 함수 인자는 반드시 항상 함수 매개 변수 목록과 똑같은 순서로 제공해야 합니다.
 
@@ -31,18 +31,18 @@ func greet(person: String) -> String {
 }
 ```
 
-이 모든 정보가, 접두사 `func` 키워드가 붙은, 함수의 _정의 (definition)_ 로 모이게 됩니다. 함수의 반환 타입은 _반환 화살표 (return arrow)_ `->` (대쉬 기호와 그 뒤의 오른쪽 꺽쇠 괄호) 로 지시하며, 이 뒤에 반환할 타입의 이름을 붙입니다.
+이 모든 정보를, `func` 키워드로 접두사를 붙인, 함수 _정의 (definition)_ 로 끌어 모읍니다. 함수 반환 타입은 (대쉬 기호 다음에 오른쪽 꺽쇠 괄호 기호를 붙인) _반환 화살표 (return arrow)_ `->` 와, 그 다음의 반환할 타입의 이름으로 지시합니다.
 
-정의는 함수가 하는 것이 무엇인지, 받으려는 것이 무엇인지, 그리고 하고 나서 반환하는 것이 무엇인지를 설명합니다. 정의는 함수를 코드 다른 곳에서 모호하지 않게 호출하도록 만들어 줍니다.
+정의는 함수가 뭘 하는 지, 뭘 받길 예상하는 지, 그리고 마칠 때 뭘 반환할 지 설명합니다. 정의는 코드 다른 곳에서의 함수 호출이 모호하지 않게 해줍니다:
 
 ```swift
 print(greet(person: "Anna"))
-// "Hello, Anna!" 를 인쇄합니다.
+// "Hello, Anna!" 를 인쇄함
 print(greet(person: "Brian"))
-// "Hello, Brian!" 를 인쇄합니다.
+// "Hello, Brian!" 를 인쇄함
 ```
 
-`greet(person:)` 함수는, `greet(person: "Anna")` 처럼, `person` '인자 이름표' 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, `greet(person:)` 함수는, 위에 보인 것처럼, 해당 문자열을 인쇄하고 그 반환 값을 보기 위해 `print(_:separator:terminator:)` 함수 호출로 포장할 수 있습니다.
+`greet(person:)` 함수는, `greet(person: "Anna")` 같이, `person` 인자 이름표 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, 위에 보는 것처럼, 해당 문자열을 인쇄하고 그 반환 값을 보기 위해 `greet(person:)` 함수를 `print(_:separator:terminator:)` 함수 호출로 포장할 수 있습니다. 
 
 > `print(_:separator:terminator:)` 함수는 첫 번째 인자에 대한 이름표는 가지지 않으며, 다른 인자들은 '기본 값' 을 가지고 있기 때문에 '선택 사항' 입니다. 이러한 '함수 구문의 변화 버전' 들은 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 과 [Default Parameter Values (기본 매개 변수 값)](#default-parameter-values-기본-매개-변수-값) 에서 논의합니다.
 
