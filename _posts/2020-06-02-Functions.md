@@ -42,7 +42,7 @@ print(greet(person: "Brian"))
 // "Hello, Brian!" 를 인쇄함
 ```
 
-`greet(person:)` 함수는, `greet(person: "Anna")` 같이, `person` 인자 이름표 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, 위에 보는 것처럼, 해당 문자열을 인쇄하고 그 반환 값을 보기 위해 `greet(person:)` 함수를 `print(_:separator:terminator:)` 함수 호출로 포장할 수 있습니다. 
+`greet(person:)` 함수는, `greet(person: "Anna")` 같이, `person` 인자 이름표 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, 위에 보는 것처럼, 해당 문자열을 인쇄하고 그 반환 값을 보기 위해 `print(_:separator:terminator:)` 함수가 `greet(person:)` 함수를 포장하여 호출할 수 있습니다. 
 
 > `print(_:separator:terminator:)` 함수는 첫 번째 인자에 대한 이름표는 가지지 않으며, 다른 인자들은 '기본 값' 을 가지고 있기 때문에 '선택 사항' 입니다. 이러한 '함수 구문의 변화 버전' 들은 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 과 [Default Parameter Values (기본 매개 변수 값)](#default-parameter-values-기본-매개-변수-값) 에서 논의합니다.
 
