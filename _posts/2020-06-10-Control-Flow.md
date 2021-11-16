@@ -552,26 +552,26 @@ print(puzzleOutput)
 
 #### Break (break 문)
 
-`break` 문은 전체 '제어 흐름문' 의 실행을 즉시 끝냅니다. `break` 문은 `switch` 문이나 반복문의 실행을 다른 경우보다 더 일찍 끝내고 싶을 때 `switch` 문이나 반복문 안에서 사용합니다.
+`break` 문은 전체 제어 흐름문의 실행을 곧바로 끝냅니다. `switch` 문이나 반복문 실행을 다른 경우보다 더 일찍 종결하고 싶을 때 `switch` 문이나 반복문 안에 `break` 문을 사용할 수 있습니다.
 
 **Break in a Loop Statement (반복문 안의 break 문)**
 
-반복문 안에서 사용할 때, `break` 는 반복문의 실행을 즉시 끝내며 '제어 (control)' 를 반복문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달합니다. 반복문의 현재 '회차' 에 있는 코드를 더 이상 실행하지도 않고, 반복문의 '회차' 도 더 이상 시작하지 않습니다.
+반복문 안에서 사용할 땐, `break` 가 반복문 실행을 곧바로 끝내고 제어를 반복문 닫는 중괄호 (`}`) 뒤의 코드로 옮깁니다. 더 이상 반복문의 현재 회차 코드를 실행하지도, 반복문 회차를 시작하지도 않습니다.
 
 <p>
 <strong id="break-in-a-switch-statement-switch-문-안의-break-문">Break in a Switch Statement (switch 문 안의 break 문)</strong>
 </p>
 
-`switch` 문 안에서 사용할 때, `break` 는 `switch` 문이 실행을 즉시 끝도록 하며 '제어' 을 `switch` 문의 '닫는 중괄호 (`}`)' 뒤의 코드로 전달하도록 합니다.
+`switch` 문 안에서 사용할 땐, `break` 가 `switch` 문 실행을 곧바로 끝내고 제어를 `switch` 문 닫는 중괄호 (`}`) 뒤의 코드로 옮기도록 합니다.
 
-이 작동 방식은 `switch` 문의 하나 이상의 'case 절' 과 일치시켜서 무시하기 위해 사용할 수 있습니다. 스위프트의 `switch` 문은 완전 소진 (exhaustive) 해서 빈 'case 절' 을 허용하지 않기 때문에, 의도를 명시적으로 만들기 위해서는 일부러 'case 절' 을 일치시켜서 무시하는 것이 필요할 때가 있습니다. 이를 하려면 무시하고 싶은 'case 절' 의 전체 본문을 `break` 문으로 작성하면 됩니다. 해당 'case 절' 이 `switch` 문과 일치할 때, 'case 절' 안의 `break` 문이 `switch` 문의 실행을 즉시 끝냅니다.
+이런 동작을 사용하면 `switch` 문에 있는 하나 이상의 case 절을 일치시켜서 무시할 수 있습니다. 스위프트의 `switch` 문은 완전히 소진해야 (exhaustive) 하며 빈 case 절을 허용하지 않기 때문에, 의도를 명시하기 위해선 일부러 case 절을 일치시키고 무시하는 게 필요할 때가 있습니다. 이를 하려면 무시하려는 case 절 전체 본문을 `break` 문으로 작성하면 됩니다. `switch` 문이 해당 case 절과 일치할 때, case 절 안의 `break` 문이 `switch` 문 실행을 곧바로 끝냅니다.
 
-> '주석 (comment)' 만 담고 있는 '`switch` case 절' 은 '컴파일 시간 에러' 라고 보고합니다. '주석' 은 '구문 (statements)' 이 아니며 '`switch` case 절' 이 무시되도록 만들지 않습니다. '`switch` case 절' 를 무시하기 위해서는 항상 `break` 문을 사용합니다.
+> 주석만 담은 `switch` case 절은 컴파일-시간 에러를 보고합니다. 주석은 구문이 아니며 `switch` case 절을 무시하도록 유발하지 않습니다. `switch` case 절을 무시하려면 항상 `break` 문을 사용합니다.
 
-다음 예제는 `Character` 값을 '전환 (switch)' 하여 네 언어 중 하나의 '수치 기호' 로 표현된 것인지를 결정합니다. 간결함을 위해, '다중 값 (multiple values)' 을 '단일 `switch` case 절' 에서 다룹니다.
+다음 예제는 `Character` 값에 대한 '전환 (switch)' 으로 네 개 중 어느 언어로 나타낸 숫자인지를 결정합니다. 간결함을 위해, 단일 `switch` case 절에서 여러 개의 값을 다룹니다.
 
 ```swift
-let numberSymbol: Character = "三"  // '3' 이라는 수의 중국어 기호
+let numberSymbol: Character = "三"  // 숫자 3 의 중국어 기호
 var possibleIntegerValue: Int?
 switch numberSymbol {
 case "1", "١", "一", "๑":
@@ -590,20 +590,20 @@ if let integerValue = possibleIntegerValue {
 } else {
   print("An integer value could not be found for \(numberSymbol).")
 }
-// "The integer value of 三 is 3." 를 인쇄합니다.
+// "The integer value of 三 is 3." 를 인쇄함
 ```
 
-이 예제는 `numberSymbol` 을 검사하여 `1` 에서 `4` 까지의 라틴어, 아랍어, 중국어, 또는 태국어 기호인지 결정합니다. 일치한 것을 찾으면, `switch` 문의 'case 절' 증 하나가 `possibleIntegerValue` 라는 '옵셔널 `Int?`' 변수에 적절한 정수 값을 설정합니다.
+이 예제는 `numberSymbol` 이 라틴어, 아랍어, 중국어, 또는 태국어 기호로 된 `1` 에서 `4` 까지의 숫자인지 결정하기 위해 검사합니다. 일치한 걸 찾으면, `switch` 문 case 절 하나가 `possibleIntegerValue` 라는 옵셔널 `Int?` 변수에 적절한 정수 값을 설정합니다.
 
-`switch` 문이 실행을 완료한 후, 이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 값을 찾았는지 결정합니다. `possibleIntegerValue` 변수는 '옵셔널 타입' 인 덕에 `nil` 이라는 '암시적인 초기 값' 을 가지므로, '옵셔널 연결' 은 `switch` 문의 처음 네 'case 절' 중 하나가 `possibleIntegerValue` 에 실제 값을 설정한 경우에만 성공할 것입니다.
+`switch` 문 실행을 완료한 후, 예제는 옵셔널 연결 (optional binding) 을 사용하여 값을 찾았는지 결정합니다. `possibleIntegerValue` 변수는 옵셔널 타입인 덕에 `nil` 이라는 암시적인 초기 값을 가지므로, `switch` 문의 처음 네 case 절 중 하나가 `possibleIntegerValue` 에 실제 값을 설정한 경우에만 옵셔널 연결이 성공할 것입니다.
 
-위 예제에서 가능한 모든 `Character` 값의 목록은 실용적이지 않기 때문에, 일치하지 않는 문자는 어떤 것이든 '`default` case 절' 이 처리합니다. 이 '`default` case 절' 은 어떤 행동도 할 필요 없으므로, 본문을 '단일 `break` 문' 으로 작성합니다. '`default` case 절' 은 일치하자 마자, `break` 문이 `switch` 문의 실행을 끝내며, 코드 실행은 `if let` 문부터 계속됩니다.
+위 예제에서 가능한 모든 `Character` 값을 나열하는 건 현실적이지 않기 때문에, `default` case 절로 일치하지 않은 어떤 문자든 처리합니다. 이 `default` case 절은 어떤 행동도 할 필요가 없으므로, 단일 `break` 문으로 본문을 작성합니다. `default` case 절과 일치하자마자 곧, `break` 문이 `switch` 문 실행을 끝내며, `if let` 문부터 코드 실행을 계속합니다.
 
 #### Fallthrough (fallthrough 문)
 
-스위프트에서, `switch` 문은 각 'case 절' 의 끝을 빠져 나가서 그 다음으로 넘어가지 않습니다. 즉, 전체 `switch` 문은 첫 째로 일치한 'case 절' 을 완료하자 마자 실행을 완료합니다. 이와는 대조적으로, C 는 빠져 나가는 것을 막기 위해 모든 '`switch` case 절' 끝에 명시적인 `break` 문을 필수로 집어 넣어야 합니다. 기본적인 빠져 나감을 피하는 것은 스위프트의 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 '다중 `switch` case 절' 을 실수로 실행하는 것을 피하게 해준다는 것을 의미합니다.
+스위프트의, `switch` 문은 각각의 case 절 밑을 빠져나가 다음으로 들어가지 않습니다. 즉, 첫 번째로 일치한 case 절을 완료하자마자 전체 `switch` 문 실행을 완료합니다. 이와 대조적으로, C 는 모든 `switch` case 절 끝에 빠져 나가는 걸 막기 위한 명시적인 `break` 문을 집어 넣을 걸 요구합니다. 기본적인 빠져 나감을 피한다는 건 스위프트 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 여러 개의 `switch` case 절을 실수로 실행하는 걸 피하게 해준다는 의미입니다.
 
-C-스타일의 '빠져 나감 (fallthrough)' 작동 방식이 필요한 경우, 이 작동 방식은 각 경우마다 `fallthrough` 키워드를 작성함으로써 직접 선택할 수 있습니다. 아래 예제는 수를 설명하는 문장의 생성을 위해 `fallthrough` 를 사용합니다.
+C-스타일의 빠져 나감 (fallthrough) 동작이 필요하면, 각각의 경우마다 `fallthrough` 키워드로 이 동작을 직접 선택할 수 있습니다. 아래 예제는 수치 값을 설명하는 문장을 생성하기 위해 `fallthrough` 를 사용합니다.
 
 ```swift
 let integerToDescribe = 5
@@ -616,40 +616,40 @@ default:
   description += " an integer."
 }
 print(description)
-// "The number 5 is a prime number, and also an integer." 를 인쇄합니다.
+// "The number 5 is a prime number, and also an integer." 를 인쇄함
 ```
 
-이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 초기 값을 할당합니다. 그런 다음 이 함수는 `switch` 문을 사용하여 `integerToDescribe` 의 값을 고려합니다. `integerToDescribe` 의 값이 목록에 있는 '소수 (prime number)' 중 하나라면, 함수는, 이 수가 '소수' 임을 기록하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 '`default` case 절' 에 까지 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. '`default` case 절' 은 설명 끝에 약간의 부가적인 문장을 추가한 다음, `switch` 문을 완료합니다.
+이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 여기에 초기 값을 할당합니다. 그런 다음 `switch` 문을 사용하여 `integerToDescribe` 값을 고려합니다. `integerToDescribe` 값이 목록에 있는 소수 (prime number) 중 하나면, 수치 값이 소수임을 표기하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 `default` case 절 까지 마저 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. `default` case 절은 설명 끝에 부가적인 문장을 추가하고, `switch` 문을 완료합니다.
 
-`integerToDescribe` 의 값이 알고 있는 소수 목록에 있지 않으면, 첫 번째 '`switch` case 절' 과는 전혀 일치하지 않습니다. 지정한 다른 'case 절' 이 없기 때문에, `integerToDescribe` 는 '`default` case 절' 과 일치합니다.
+`integerToDescribe` 값이 목록에 있는 소수가 아닌 한, 첫 번째 `switch` case 절과는 아예 일치하지 않습니다. 지정한 다른 case 절이 없기 때문에, `integerToDescribe` 는 `default` case 절과 일치합니다.
 
-`switch` 문의 실행을 종료한 후, `print(_:separator:terminator:)` 함수가 수의 설명을 인쇄합니다. 이 예제에서, 수 `5` 는 '소수' 라고 올바르게 식별됩니다.
+`switch` 문 실행을 종료한 후, `print(_:separator:terminator:)` 함수를 사용하여 수치 값 설명을 인쇄합니다. 이 예제는, 수 `5` 가 소수라고 올바로 식별합니다.
 
-> `fallthrough` 키워드는 '빠져 들어 (fall into)' 실행할 '`switch` case 절' 의 조건은 검사하지 않습니다. `fallthrough` 키워드는 단순히, C 의 표준 `swtich` 문 작동 방식에서 처럼, 코드 실행을 그 다음 'case 절' (또는 '`default` case 절') 의 구문으로 직접 이동 시킵니다.
+> `fallthrough` 키워드는 빠져 들어 실행할 `switch` case 절 조건을 검사하진 않습니다. `fallthrough` 키워드는, C 표준 `swtich` 문 동작 처럼, 단순히 코드 실행이 그 다음 case 절 (또는 `default` case 절) 블럭으로 직접 이동하도록 합니다.
 
 #### Labeled Statements (이름표 구문)
 
-스위프트는, 복잡한 '제어 흐름 구조' 를 생성하기 위해 반복문과 조건문이 다른 반복문과 조건문을 '중첩 (nest)' 할 수 있습니다. 하지만, 반복문과 조건문은 둘 다 실행을 미리 끝내기 위해 `break` 문을 사용 수 있습니다. 그러므로, `break` 문이 종료하고 싶은 반복문이나 조건문이 어느 것인지 명시하는 것이 유용할 때가 있습니다. 이와 비슷하게, '다중 중첩된 (multiple nested)' 반복문을 가진 경우, `continue` 문이 영향을 미칠 반복문이 어느 것인지 명시하는 것이 유용할 수 있습니다.
+스위프트에서, 반복문과 조건문을 다른 반복문과 조건문 안에 중첩하면 복잡한 제어 흐름 구조를 생성할 수 있습니다. 하지만, 반복문과 조건문 둘 다 `break` 문을 사용하면 실행이 성급하게 끝날 수 있습니다. 그러므로, `break` 문이 어느 반복문 또는 조건문을 종료할 지 명시하는 게 유용할 때가 있습니다. 이와 비슷하게, 여러 번 중첩된 반복문이 있다면, `continue` 문이 어느 반복문에 영향을 줄 지 명시하는 게 유용할 수 있습니다.
 
-이러한 목표를 달성하기 위해, 반복문 또는 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문은, '이름표 구문 (labeled statment)' 의 실행을 끝내기 위해 '구문 이름표' 와 `break` 문을 같이 사용할 수 있습니다. 반복문은, '이름표 구문' 의 실행을 끝내거나 계속하기 위해 '구문 이름표' 와 `break` 또는 `continue` 문을 같이 사용할 수 있습니다.
+이 목표를 달성하고자, 반복문이나 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문에선, 이름표 구문의 실행을 끝내기 위해 '`break` 문을 가진 구문 이름표' 를 사용할 수 있습니다. 반복문에선, 이름표 구문의 실행을 끝내거나 계속하기 위해 '`break` 또는 `continue` 문을 가진 구문 이름표' 를 사용할 수 있습니다.
 
-'이름표 구문' 은 구문의 '도입자 (introducer)' 키워드와 같은 줄에 이름표, 및 그 뒤에 콜론을 붙여서, 지시합니다. 아래는 `while` 반복문에 대한 '구문 표현' 의 한 예제로, 이 원리는 모든 반복문과 `switch` 문에 대해서 동일합니다:
+이름표 구문은 '구문 도입자 (introducer) 키워드와 동일한 줄에 이름표를 두고, 뒤에 콜론을 붙임' 으로써, 지시합니다. 다음은 `while` 반복문을 위한 이 구문 예제이지만, 원리는 모든 반복문과 `switch` 문에서 똑같습니다:
 
-`label name-이름표 이름`: while `condition-조건` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;`label name-이름표 이름`: while `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-다음 예제는 `break` 문과 `continue` 문을 '이름표 붙인 `while` 반복문' 과 같이 사용하여 이 장 앞에서 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개조한 버전입니다. 단 이번에는, 게임이 부가적인 규칙을 가집니다:
+다음 예제는 이 장 앞에 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 '이름표 붙인 `while` 반복문을 가진 `break` 문과 `continue` 문을 사용' 하여 개조한 버전입니다. 단 이번에는, 게임에 부가적인 규칙이 있습니다:
 
-* 승리하려면, 반드시 _정확하게 (exactly)_ '25 번 정사각형' 위에 도착해야 합니다.
+* 승리하려면, 반드시 25번 정사각형에 _정확하게 (exactly)_ 착륙해야 합니다.
 
-만약 특정 '주사위 굴림' 이 '25 번 정사각형' 을 넘어서도록 만든다면, 반드시 정확하게 '25 번 정사각형' 위에 도착하기 위한 수를 굴릴 때까지 다시 굴려야 합니다.
+특정 주사위 굴림 값이 25번 정사각형을 넘어가게 하면, 반드시 25번 정사각형에 착륙할 정확한 수를 굴릴 때까지 다시 굴려야 합니다.
 
 게임판은 이전과 똑같습니다.
 
 ![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
 
-`finalSquare`, `board`,  `square`, 및 `diceRoll` 의 값도 이전과 똑같은 방법으로 초기화합니다:
+`finalSquare`, `board`, `square`, 및 `diceRoll` 값도 이전과 똑같이 초기화합니다:
 
 ```swift
 let finalSquare = 25
@@ -660,9 +660,9 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임은 '게임 로직' 을 구현하기 위해 `while` 반복문과 `switch` 문을 사용합니다. `while` 반복문은 자신이 '뱀과 사다리' 게임의 '주요 게임 반복문' 임을 나타내기 위해 `gameLoop` 라는 '구문 이름표' 를 가지고 있습니다.
+이 버전의 게임은 게임 로직을 구현하기 위해 `while` 반복문과 `switch` 문을 사용합니다. `while` 반복문은 자신이 뱀과 사다리 게임의 주요 게임 반복문임을 지시하도록 `gameLoop` 라는 구문 이름표를 가집니다.
 
-`while` 반복문의 조건은, 반드시 정확하게 '25 번 정사각형' 위에 도착해야 함을 반영하는, `while square != finalSquare` 입니다.
+`while` 반복문 조건은, 반드시 정확하게 25번 정사각형에 착륙해야 함을 반영한, `while square != finalSquare` 입니다.
 
 ```swift
 gameLoop: while square != finalSquare {
@@ -670,13 +670,13 @@ gameLoop: while square != finalSquare {
   if diceRoll == 7 { diceRoll = 1 }
   switch square + diceRoll {
   case finalSquare:
-    // diceRoll 이 최종 정사각형으로 이동시킬 것이므로, 게임이 끝나게 됩니다.
+    // diceRoll 이 최종 정사각형으로 이동시킬 것이므로, 게임이 끝남
     break gameLoop
   case let newSquare where newSquare > finalSquare:
-    // diceRoll 이 최종 정사각형 너머로 이동시킬 것이므로, 다시 굴려야 합니다.
+    // diceRoll 이 최종 정사각형 너머로 이동시킬 것이므로, 다시 굴림
     continue gameLoop
   default:
-    // 이는 유효한 이동이므로, 그 영향을 알아 냅니다.
+    // 이는 유효한 이동이므로, 자신의 효과를 찾아냄
     square += diceRoll
     square += board[square]
   }
@@ -684,19 +684,19 @@ gameLoop: while square != finalSquare {
 print("Game over!")
 ```
 
-각각의 반복을 시작할 때마다 주사위를 굴립니다. 반복문은, 참가자를 곧바로 이동하는 대신, 이동 결과를 고려해서 이동을 허용해도 되는지 결정하기 위해 `switch` 문을 사용합니다.
+주사위는 각각의 반복을 시작할 때 굴립니다. 참가자를 곧바로 이동하기 보단, 이동 결과를 고려하여 이동해도 되는지 결정하고자 반복문이 `switch` 문을 사용합니다:
 
-* 만약 '주사위 굴림 값' 이 참가자를 '최종 정사각형' 위로 이동시킨다면, 게임이 끝납니다. `break gameLoop` 문은 '제어' 를 `while` 반복문 밖의 첫 번째 코드 줄로 옮기며, 여기서 게임을 끝냅니다.
-* 만약 '주사위 굴림 값' 이 참가자를 '최종 정사각형' 너머로 이동시킨다면, 이 이동은 무효이며 참가자는 주사위를 다시 굴려야 합니다. `continue gameLoop` 문은 `while` 반복문의 현재 '회차 (iteration)' 을 끝내고 그 다음 반복 '회차' 를 시작합니다.
-* 그 외 다른 모든 경우의, '주사위 굴림 값' 은 유효한 이동입니다. 참가자는 `diceRoll` 개의 정사각형 만큼 앞으로 이동하고, '게임 로직' 은 뱀이든 사다리든 어떤 것이 있는지 검사합니다. 그런 다음 반복을 끝내고, 또 다른 '차례 (turn)' 가 필요한지를 결정하기 위해 '제어 (control)' 가 `while` 조건으로 반환됩니다.
+* 주사위 굴림 값이 참가자를 최종 정사각형으로 이동시킬거면, 게임이 끝납니다. `break gameLoop` 문은 `while` 반복문 밖의 첫째 줄 코드로 제어를 옮겨서, 게임을 끝냅니다.
+* 주사위 굴림 값이 참가자를 최종 정사각형 _너머로 (beyond)_ 이동시킬거면, 이동은 무효이며 참가자가 주사위를 다시 굴려야 합니다. `continue gameLoop` 문은 현재 `while` 반복 회차를 끝내고 그 다음 반복 회차를 시작합니다.
+* 다른 모든 경우의, 주사위 굴림 값은 유효한 이동입니다. 참가자는 `diceRoll` 개의 정사각형만큼 앞으로 이동하며, 게임 로직이 어떤 뱀이든 사다리든 검사합니다. 그러면 반복을 끝내고, 또 다른 차례 (turn) 가 필요한지 정하고자 제어를 `while` 조건으로 반환합니다.
 
-> 만약 위의 `break` 문에서 `gameLoop` 라는 이름표를 사용하지 않으면, `while` 문이 아닌, `switch` 문을 끊고 나올 것입니다. `gameLoop` 라는 이름표를 사용하는 것은 종료해야 하는 제어문이 어느 것인지를 명확하게 만듭니다.
+> 위의 `break` 문이 `gameLoop` 이름표를 사용하지 않았으면, `while` 문이 아닌, `switch` 문을 끊고 나왔을 것입니다. `gameLoop` 이름표를 사용하면 어느 제어문을 종료할 지 명확해집니다.
 >
-> 다음 반복문 '회차' 로 넘어 가려고 `continue gameLoop` 를 호출할 때 엄밀히 말해서 `gameLoop` 라는 이름표를 꼭 사용해야 하는 건 아닙니다. 이 게임에는 한 개의 반복문만 있으므로, `continue` 문이 어느 반복문에 영향을 미치는 지가 모호하지 않습니다. 하지만, `continue` 문과 `gameLoop` 이름표를 같이 사용하는 것은 문제가 전혀 없습니다. 이렇게 하는 것은 `break` 문이 이름표를 사용하는 것과 나란하여 일관성이 있으며 게임 로직을 읽고 이해하기 더 명확하게 만들도록 도와둡니다.
+> 엄밀하게 말해서 그 다음 반복 회차로 넘어 가려고 `continue gameLoop` 를 호출할 때는 `gameLoop` 이름표를 사용하는 게 반드시 필요한 건 아닙니다. 게임에 반복문은 한 개만 있으며, 따라서 `continue` 문이 어느 반복문에 영향을 줄 지가 모호하지 않습니다. 하지만, `gameLoop` 이름표를 가지고 `continue` 문을 사용하는 건 해가 없습니다. 그럼으로써 `break` 문과 나란히 사용하는 이름표와 일관성이 있으며 게임 로직을 더 명확하게 읽고 이해하도록 돕습니다.
 
-### Early Exit (이른 탈출문)
+### Early Exit (때 이른 탈출문)
 
-`guard` 문은, `if` 문 같이, 표현식의 '불리언 (Boolean) 값' 에 따라 구문을 실행합니다. `guard` 문은 `guard` 문 이후의 코드를 실행하기 위해서는 반드시 조건이 '참 (true)' 이기를 요구하기 위해 사용합니다. `if` 문과는 다르게, `guard` 문은 항상 `else` 절을 가집니다-`else` 절 안의 코드는 조건이 '참' 이 아닐 경우 실행됩니다.
+`guard` 문은, `if` 문 같이, 표현식의 불리언 값에 의존하여 구문을 실행합니다. `guard` 문은 `guard` 문 뒤의 코드를 실행하기 위해선 조건이 반드시 참이길 요구하고자 사용합니다. `if` 문과 달리, `guard` 문에는 항상 `else` 절이 있습니다-조건이 참이 아니면 `else` 절 안의 코드를 실행합니다.
 
 ```swift
 func greet(person: [String: String]) {
@@ -715,44 +715,44 @@ func greet(person: [String: String]) {
 }
 
 greet(person: ["name": "John"])
-// "Hello John!" 을 인쇄합니다.
-// "I hope the weather is nice near you." 를 인쇄합니다.
+// "Hello John!" 을 인쇄함
+// "I hope the weather is nice near you." 를 인쇄함
 greet(person: ["name": "Jane", "location": "Cupertino"])
-// "Hello Jane!" 을 인쇄합니다.
-// "I hope the weather is nice in Cupertino." 를 인쇄합니다.
+// "Hello Jane!" 을 인쇄함
+// "I hope the weather is nice in Cupertino." 를 인쇄함
 ```
 
-`guard` 문의 조건에 부합하면, `guard` 문의 '닫는 중괄호' 뒤에서 코드 실행을 계속합니다. 조건 절에서 '옵셔널 연결 (optional binding)' 을 사용하여 값을 할당한 어떤 변수나 상수라도 `guard` 문이 있는 코드 블럭의 나머지에서 사용 가능합니다.
+`guard` 문 조건에 부합하면, `guard` 문 닫는 중괄호 뒤의 코드를 계속 실행합니다. 조건 절에서 옵셔널 연결로 값을 할당한 어떤 변수 또는 상수든 `guard` 문이 있는 코드 블럭 나머지에서 사용 가능합니다.
 
-해당 조건에 부합하지 않으면, `else` 분기 안의 코드를 실행합니다. 해당 분기는 반드시 `guard` 문이 있는 코드 블럭을 탈출하도록 '제어 (control)' 를 옯겨야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 같은 '제어 전달문' 으로 할 수도 있고, 아니면 `fatalError(_:file:line:)` 같은, 반환하지 않는 함수나 메소드를 호출할 수도 있습니다.
+해당 조건에 부합하지 않으면, `else` 분기 안의 코드를 실행합니다. 해당 분기는 `guard` 문이 있는 코드 블럭을 탈출하기 위해 반드시 제어를 옯겨야 합니다. 이는 `return`, `break`, `continue`,  또는 `throw` 같은 제어 전달문으로 할 수도, 아니면 `fatalError(_:file:line:)` 같은, 반환 안하는 함수나 메소드 호출로 할 수 있습니다.
 
-'필수 조건 (requirements)'[^requirements] 에 `guard` 문을 사용하는 것은, 같은 검사를 `if` 문으로 하는 것과 비교하여, 코드의 가독성을 향상시킵니다. 이는 전형적인 실행 코드를 '`else` 블럭' 으로 포장하지 않고도 작성하도록 해주며, 필수 조건을 위반했을 때 처리하는 코드를 필수 조건과 나란히 배치할 수 있게 해줍니다.
+필수 조건으로 `guard` 문을 사용하는 건, 동일한 검사를 `if` 문으로 하는 것과 비교하여, 코드 가독성을 개선합니다. 이는 실행 코드를 `else` 블럭으로 포장하지 않고도 작성하게 해주며, 위반 조건을 처리하는 코드를 필수 조건과 나란히 유지하도록 해줍니다.
 
-### Checking API Availability (API 사용 가능성 검사하기)
+### Checking API Availability (API 사용 가능성 검사)
 
-스위프트는 API 의 사용 가능성을 검사하는 '내장 지원 기능 (built-in support)' 을 가지고 있어서, 예기치 않게 주어진 '배포 대상 (deployment target)' 에서는 사용 불가능한 API 를 사용하진 않도록 보장합니다.
+주어진 '배포 대상 (development target) 에서는 사용 불가능한 API 를 사용하는 사고' 가 없도록, 스위프트는 'API 사용 가능성 검사를 내장 지원 (built-in support)' 합니다.
 
-컴파일러는 코드에서 사용한 모든 API 가 프로젝트에서 지정한 '배포 대상' 에서 사용 가능한지 검증하기 위해 SDK[^SDK] 에 있는 '사용 가능성 정보' 를 사용합니다.[^availability-information] 사용 불가능한 API 를 사용하려고 하면 스위프트가 컴파일 시간에 에러를 보고합니다.
+컴파일러는 '코드에서 사용한 모든 API 가 프로젝트에서 지정한 배포 대상에서 사용 가능한 지 검증' 하기 위해 'SDK[^SDK] 에 있는 사용 가능성 정보' 를 사용합니다.[^availability-information] 사용 불가능한 API 를 사용하려고 하면 스위프트는 컴파일 시간에 에러를 보고합니다.
 
-_사용 가능성 조건 (availability condition)_[^availability-condition] 은 `if` 문이나 `guard` 문 안에서, 사용하고 싶은 API 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭에 있는 API 가 사용 가능한지 검증할 때 '사용 가능성 조건' 의 정보를 사용합니다.
+실행 시간에 사용 가능한 지에 따라 사용하려는 API, 코드 블럭을 조건부로 실행하려면 _사용 가능성 조건 (availability condition)_[^availability-condition] 을 `if` 문이나 `guard` 문 안에 사용합니다. 컴파일러는 해당 코드 블럭 API 가 사용 가능한 지 검증할 때 사용 가능성 조건에 있는 정보를 사용합니다.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
-  // iOS 에서는 'iOS 10' API 를 사용하고, macOS 에서는 'macOS 10.12' API 를 사용합니다.
+  // iOS 에서는 iOS 10 API 를 사용하고, macOS 에서는 macOS 10.12 API 를 사용함
 } else {
-  // 뒤로 물러나서 이전 iOS 와 macOS API 를 사용합니다.
+  // 물러나서 더 이전 iOS 와 macOS API 를 사용함
 }
 ```
 
-위 '사용 가능성 조건' 은 iOS 라면, 'iOS 10' 이후 버전에서만; macOS 라면, 'macOS 10.12' 이후 버전에서만; `if` 문의 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수로 대상에서 지정한 것은 '최소 배포 대상' 이며 그 외 어떤 '플랫폼 (platform)' 에서든 `if` 문의 본문을 실행하라고 지정하는 것입니다.
+위 사용 가능성 조건은 'iOS 라면, iOS 10 이후 버전에서만; macOS 라면, macOS 10.12 이후 버전에서만 `if` 문 본문을 실행하라' 고 지정합니다. 마지막 인자인, `*` 는, 필수이며, '대상에서 지정한 최소 배포 대상 이외의 다른 어떤 플랫폼 (platform) 에서든, `if` 본문을 실행하라' 지정합니다.
 
-일반적인 형식의, '사용 가능성 조건' 은 '플랫폼 이름과 버전' 목록을 받아 들입니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 그리고 `tvOS` 같은 것을 사용합니다-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. 'iOS 8' 이나 'macOS 10.10' 같이 '주요 (major) 버전 번호' 를 지정하는 것에 더하여, 'iOS 11.2.6' 및 'macOS 10.13.3' 같은 '보조 (minor) 버전 번호' 도 지정할 수 있습니다.
+일반 형식의, 사용 가능성 조건은 '플랫폼 이름과 버전의 목록' 을 취합니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 및 `tvOS` 같은 것을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. 'iOS 8 이나 macOS 10.10 같은 주 (major) 버전 번호' 지정에다가, 'iOS 11.2.6 및 macOS 10.13.3 같은 부 (minor) 버전 번호' 도 지정할 수 있습니다.
 
-if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능할 때 실행하는 구문`<br />
-} else {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능할 때 실행하는 구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능할 때 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능할 때 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
 ### 다음 장
 
@@ -780,7 +780,7 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^stride-to-through]: `stride(from:to:by:)` 는 '반-열린 범위' 를 만들고, `stride(from:through:by:)` 는 '닫힌 범위' 를 만듭니다.
 
-[^square-zero]: 즉, 게임 보드 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
+[^square-zero]: 즉, 게임판 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
 
 [^no-effect]: 이는, 게임을 시작할 때는 `square` 가 0 이라서, `square < finalSquare` 가 항상 참이라서, (효과가 없는) 비교를 안해도 문제가 없다는 의미입니다.
 
@@ -792,10 +792,8 @@ if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br 
 
 [^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진 (exhaustive) 합니다. 왜냐면, `Character` 가 영어 문자가 아닌 다른 유니코드 문자를 가질 수도 있기 때문입니다.
 
-[^requirements]: 여기서의 '필수 조건 (requirements)' 는 `Protocol` 의 '필수 조건 (requirements)' 과 개념은 비슷하지만 용어 자체로는 다른 것입니다. 이 역시 스위프트가 일상 영어를 많이 사용하면서 일어나는 현상입니다.
-
 [^SDK]: 'SDK' 는 '소프트웨어 개발 키트 (Software development kit)' 의 약자입니다. '엑스코드 (Xcode)' 같은 '통합 개발 환경 (IDE; Integrated Development Environment)' 과는 의미가 조금 다릅니다. '통합 개발 환경' 이 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이라면, '소프트웨어 개발 키트' 는 개발에 필요한, 컴파일러와 패키지 등을 포함한, 실제 '도구' 들을 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
-[^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, '스위프트 4.0 용 SDK' 로 '스위프트 5.0' 에 있는 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
+[^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, 스위프트 4.0 용 SDK 로 스위프트 5.0 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
 
 [^availability-condition]: '사용 가능성 조건 (avaailability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, '컴파일러 제어문' 은 컴파일 시간에 동작하는 반면, '사용 가능성 조건' 은 '실행 시간' 에 동작한다는 점에서, 이 둘은 서로 완전히 다른 것입니다.
