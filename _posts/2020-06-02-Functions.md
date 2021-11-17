@@ -42,9 +42,9 @@ print(greet(person: "Brian"))
 // "Hello, Brian!" 를 인쇄함
 ```
 
-`greet(person:)` 함수는, `greet(person: "Anna")` 같이, `person` 인자 이름표 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, 위에 보는 것처럼, 해당 문자열을 인쇄하고 그 반환 값을 보기 위해 `print(_:separator:terminator:)` 함수가 `greet(person:)` 함수를 포장하여 호출할 수 있습니다. 
+`greet(person:)` 함수는, `greet(person: "Anna")` 같이, `person` 인자 이름표 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, 위에 보는 것처럼, `print(_:separator:terminator:)` 함수 안에 `greet(person:)` 함수를 포장한 채로 호출하여 해당 문자열을 인쇄하고 반환 값을 볼 수 있습니다.
 
-> `print(_:separator:terminator:)` 함수는 첫 번째 인자에 대한 이름표는 가지지 않으며, 다른 인자들은 '기본 값' 을 가지고 있기 때문에 '선택 사항' 입니다. 이러한 '함수 구문의 변화 버전' 들은 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 과 [Default Parameter Values (기본 매개 변수 값)](#default-parameter-values-기본-매개-변수-값) 에서 논의합니다.
+> `print(_:separator:terminator:)` 함수는 자신의 첫 번째 인자에 대한 이름표를 가지지 않으며, 다른 인자들은 기본 값을 가지고 있기 때문에 옵션입니다. 이런 함수 구문의 변화는 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분과 [Default Parameter Values (기본 매개 변수 값)](#default-parameter-values-기본-매개-변수-값) 부분에서 논의합니다.
 
 `greet(person:)` 함수의 본문은 `greeting` 이라는 새로운 `String` 상수를 정의하고 간단한 인사말 메시지를 설정하는 것으로 시작합니다. 그런 다음 이 인사말은 `return` 키워드를 사용하여 함수 밖으로 다시 되돌려집니다. `return greeting` 라고 하는 코드 줄에서, 함수는 실행을 종료하며 `greeting` 의 현재 값을 반환합니다.
 
