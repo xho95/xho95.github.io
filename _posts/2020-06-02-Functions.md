@@ -66,17 +66,17 @@ print(greetAgain(person: "Anna"))
 
 #### Functions Without Parameters (매개 변수가 없는 함수)
 
-함수에서 입력 매개 변수를 정의하는 것은 필수가 아닙니다. 다음은, 호출할 때마다 항상 똑같은 `String` 메시지를 반환하는, 입력 매개 변수가 없는 함수입니다:
+함수가 입력 매개 변수를 정의하는 건 필수가 아닙니다. 다음은 입력 매개 변수가 없는 함수로, 호출할 때마다 항상 동일한 `String` 메시지를 반환합니다:
 
 ```swift
 func sayHelloWorld() -> String {
   return "hello, world"
 }
 print(sayHelloWorld())
-// "hello, world" 를 인쇄합니다.
+// "hello, world" 를 인쇄함
 ```
 
-어떤 매개 변수도 받지 않을지라도, 함수 정의에는 함수 이름 뒤의 괄호가 여전히 필요합니다. 함수를 호출할 때는 함수 이름 뒤에 빈 괄호 쌍도 붙여줘야 합니다.
+함수 정의는, 어떤 매개 변수도 취하지 않을지라도, 여전히 함수 이름 뒤에 괄호가 필요합니다. 함수를 호출할 때도 함수 이름 뒤에 빈 괄호 쌍이 있어야 합니다.
 
 #### Functions with Multiple Parameters (매개 변수가 여러 개인 함수)
 
