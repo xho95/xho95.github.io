@@ -48,16 +48,16 @@ print(greet(person: "Brian"))
 
 `greet(person:)` 함수 본문은 `greeting` 이라는 새로운 `String` 상수를 정의하고 단순한 인사말 메시지를 설정하는 것으로 시작합니다. 그런 다음 `return` 키워드로 이 인사말을 함수 밖으로 되돌려 줍니다. `return greeting` 이라는 코드 줄에서, 함수 실행을 종료하고 현재 `greeting` 값을 반환합니다.
 
-`greet(person:)` 함수는 서로 다른 입력 값으로 여러 번 호출할 수 있습니다. 위 예제는 `"Anna"` 라는 입력 값과, `"Brian"` 이라는 입력 값으로 호출할 경우에 무슨 일이 일어나는 지 보여줍니다. 함수는 각 경우에 맞춰진 인사말을 반환합니다.
+서로 다른 입력 값을 가지고 `greet(person:)` 함수를 여러 번 호출할 수 있습니다. 위 예제는 `"Anna"` 라는 입력 값과, `"Brian"` 이라는 입력 값을 가지고 호출하면 무슨 일이 발생하는 지를 보여줍니다. 함수는 각 경우마다 맞춤형 인사말을 반환합니다.
 
-이 함수의 본문을 더 짧게 만들도록, 메시지 생성과 반환문을 한 줄로 조합할 수 있습니다:
+메시지 생성문과 반환문을 한 줄로 조합하면, 이 함수 본문을 더 짧게 만들 수 있습니다:
 
 ```swift
 func greetAgain(person: String) -> String {
   return "Hello again, " + person + "!"
 }
 print(greetAgain(person: "Anna"))
-// "Hello again, Anna!" 를 인쇄합니다.
+// "Hello again, Anna!" 를 인쇄함
 ```
 
 ### Function Parameters and Return Values (함수의 매개 변수와 반환 값)
