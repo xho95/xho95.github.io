@@ -66,7 +66,7 @@ print(greetAgain(person: "Anna"))
 
 #### Functions Without Parameters (매개 변수가 없는 함수)
 
-입력 매개 변수를 정의하는 건 함수에서 필수가 아닙니다. 다음은, 호출할 때마다 항상 똑같은 `String` 메시지를 반환하는, 입력 매개 변수 없는 함수입니다:
+함수에서 입력 매개 변수를 정의하는 건 필수가 아닙니다. 다음은, 호출할 때마다 항상 똑같은 `String` 메시지를 반환하는, 입력 매개 변수 없는 함수입니다:
 
 ```swift
 func sayHelloWorld() -> String {
@@ -100,21 +100,21 @@ print(greet(person: "Tim", alreadyGreeted: true))
 
 #### Functions Without Return Values (반환 값이 없는 함수)
 
-반환 타입을 정의하는 건 함수에서 필수가 아닙니다. 다음은, 자신의 `String` 값을 반환하지 않고 직접 인쇄하는, 버전의  `greet(person:)` 함수입니다.:
+함수에서 반환 타입을 정의하는 건 필수가 아닙니다. 다음은, 자신의 `String` 값을 반환하기 보단 인쇄하는, 버전의 `greet(person:)` 함수입니다:
 
 ```swift
 func greet(person: String) {
   print("Hello, \(person)!")
 }
 greet(person: "Dave")
-// "Hello, Dave!" 를 인쇄합니다.
+// "Hello, Dave!" 를 인쇄함
 ```
 
-값을 반환할 필요가 없기 때문에, 함수 정의가 '반환 화살표 (`->`)' 나 반환 타입을 포함하지 않습니다.
+값을 반환할 필요가 없기 때문에, 함수 정의가 반환 화살표 (`->`) 나 반환 타입을 포함하지 않습니다.
 
-> 엄밀하게 말해서, 이 버전의 `greet(person:)` 함수는, 반환 값을 정의하지 않았음에도 불구하고, 여전히 값을 반환 _합니다 (does)_. 반환 타입을 정의하지 않은 함수는 `Void` 타입이라는 특수한 값을 반환합니다. 이는 단순히, `()` 라고 작성된, '빈 튜플 (tuple)' 입니다.
+> 엄밀히 말해서, 이 버전의 `greet(person:)` 함수가, 반환 값을 정의하지 않았을지라도, 여전히 값을 반환 _합니다 (does)_. 정의한 반환 타입이 없는 함수는 `Void` 타입의 특수한 값을 반환합니다. 이는 단순히 '빈 튜플 (tuple)' 이며, `()` 라고 작성합니다.
 
-함수를 호출할 때는 반환 값을 무시할 수 있습니다:
+함수를 호출할 땐 반환 값을 무시할 수 있습니다:
 
 ```swift
 func printAndCount(string: String) -> Int {
@@ -125,9 +125,9 @@ func printWithoutCounting(string: String) {
   let _ = printAndCount(string: string)
 }
 printAndCount(string: "hello, world")
-// "hello, world" 를 인쇄하고 12 라는 값을 반환합니다.
+// "hello, world" 를 인쇄하고 12 라는 값을 반환함
 printWithoutCounting(string: "hello, world")
-// "hello, world" 를 인쇄하지만 값을 반환하진 않습니다.
+// "hello, world" 를 인쇄하지만 값을 반환하지 않음
 ```
 
 첫 번째 함수인, `printAndCount(string:)` 은, 문자열을 인쇄한 다음, 문자 개수를 `Int` 로 반환합니다. 두 번째 함수인, `printWithoutCounting(string:)` 은, 첫 번째 함수를 호출하지만, 반환 값은 무시합니다. 두 번째 함수를 호출할 때, 메시지는 첫 번째 함수로 여전히 인쇄하지만, 반환된 값은 사용하지 않습니다.
