@@ -66,7 +66,7 @@ print(greetAgain(person: "Anna"))
 
 #### Functions Without Parameters (매개 변수가 없는 함수)
 
-함수가 입력 매개 변수를 정의하는 건 필수가 아닙니다. 다음은 입력 매개 변수가 없는 함수로, 호출할 때마다 항상 동일한 `String` 메시지를 반환합니다:
+입력 매개 변수를 정의하는 건 함수에서 필수가 아닙니다. 다음은, 호출할 때마다 항상 똑같은 `String` 메시지를 반환하는, 입력 매개 변수 없는 함수입니다:
 
 ```swift
 func sayHelloWorld() -> String {
@@ -76,7 +76,7 @@ print(sayHelloWorld())
 // "hello, world" 를 인쇄함
 ```
 
-어떤 매개 변수도 취하지 않을지라도, 함수 정의에는 여전히 함수 이름 뒤에 괄호가 필요합니다. 함수를 호출할 때도 함수 이름 뒤에 빈 괄호 쌍이 있어야 합니다.
+어떤 매개 변수도 취하지 않더라도, 함수 정의에서 함수 이름 뒤에 여전히 괄호가 필요합니다. 함수를 호출할 때도 함수 이름 뒤에 빈 괄호 쌍이 있어야 합니다.
 
 #### Functions with Multiple Parameters (매개 변수가 여러 개인 함수)
 
@@ -96,11 +96,11 @@ print(greet(person: "Tim", alreadyGreeted: true))
 // "Hello again, Tim!" 를 인쇄함
 ```
 
-`greet(person:alreadyGreeted:)` 함수는 괄호 안에, 쉼표로 구분하여, 이름표가 `person` 인 `String` 인자 값과 이름표가 `alreadyGreeted` 인 `Bool` 인자 값 둘 모두를 전달함으로써 호출합니다. 이 함수는 앞 부분에서 본  `greet(person:)` 함수와는 명확히 구별된다는 점을 알기 바랍니다. 두 함수 모두 이름이 `greet` 으로 시작하더라도, `greet(person:alreadyGreeted:)` 함수는 두 개의 인자를 받지만 `greet(person:)` 함수는 하나만 받습니다.
+`greet(person:alreadyGreeted:)` 함수는 괄호 안에 `person` 이름표의 `String` 인자 값과 `alreadyGreeted` 이름표의 `Bool` 인자 값 둘 다를, 쉼표로 구분하여, 전달함으로써 호출합니다. 이 함수는 앞 부분에서 본 `greet(person:)` 함수와 서로 별개라는 걸 기억하기 바랍니다. 두 함수 다 `greet` 으로 시작하는 이름을 가지긴 하지만, `greet(person:alreadyGreeted:)` 함수는 두 인자를 취하지만 `greet(person:)` 함수는 하나만 취합니다.
 
 #### Functions Without Return Values (반환 값이 없는 함수)
 
-함수에서 반환 타입을 정의하는 것은 필수가 아닙니다. 다음은, 자신의 `String` 값을 반환하지 않고 직접 인쇄하는, 버전의  `greet(person:)` 함수입니다.:
+반환 타입을 정의하는 건 함수에서 필수가 아닙니다. 다음은, 자신의 `String` 값을 반환하지 않고 직접 인쇄하는, 버전의  `greet(person:)` 함수입니다.:
 
 ```swift
 func greet(person: String) {
