@@ -136,9 +136,9 @@ printWithoutCounting(string: "hello, world")
 
 #### Functions with Multiple Return Values (반환 값이 여러 개인 함수)
 
-여러 값을 하나의 '복합 (compound) 반환 값' 으로 반환하기 위해 '튜플' 타입을 함수의 반환 타입으로 사용할 수 있습니다.
+튜플 타입을 함수의 반환 타입으로 사용하면 하나의 복합 반환 값으로 여러 개의 값을 반환할 수 있습니다.
 
-아래 예제는, `Int` 값의 배열에서 최소 값과 최대 값을 찾는, `minMax(array:)` 라는 함수를 정의합니다:
+아래 예제는 `minMax(array:)` 라는, `Int` 값 배열에서 가장 작은 수와 가장 큰 수를 찾는, 함수를 정의합니다:
 
 ```swift
 func minMax(array: [Int]) -> (min: Int, max: Int) {
@@ -155,19 +155,19 @@ func minMax(array: [Int]) -> (min: Int, max: Int) {
 }
 ```
 
-`minMax(array:)` 함수는 두 `Int` 값을 담은 '튜플' 을 반환합니다. 이 값들은 `min` 과 `max` 라는 이름표가 달려 있어서 함수의 반환 값을 조회할 때 이름으로 접근할 수 있습니다.
+`minMax(array:)` 함수는 두 `Int` 값을 담은 튜플을 반환합니다. 이 값에는 `min` 과 `max` 라는 이름표가 붙어 있어서 함수 반환 값을 조회할 때 이름으로 접근할 수 있습니다.
 
-`minMax(array:)` 함수의 본문은 `currentMin` 과 `currentMax` 라는 두 작업 변수에 배열의 첫 번째 정수 값을 설정하는 것으로 시작합니다. 그런 다음 함수는 배열에 남아 있는 각 값에 동작을 반복해서 각 값이 `currentMin` 과 `currentMax` 값보다 큰지 작은지를 검사합니다. 최종적으로, 전체적인 최소 값과 최대 값을 두 `Int` 값을 가진 '튜플' 로써 반환합니다.
+`minMax(array:)` 함수 본문은 `currentMin` 과 `currentMax` 라는 두 작업 변수에 배열의 첫 번째 정수 값을 설정하는 것으로 시작합니다. 그런 다음 함수가 배열의 나머지 값들을 반복하며 각각의 값이 각자 `currentMin` 과 `currentMax` 값보다 더 큰 지 작은 지를 검사합니다. 최종적으로, 전체 최소 및 최대 값을 두 `Int` 값의 튜플로써 반환합니다.
 
-함수의 반환 타입에서 '튜플' 의 멤버 값에 이름을 붙였기 때문에, 최소 값과 최대 값으로 찾은 값을 가져올 때 '점 구문 (dot syntax)' 으로 이에 접근할 수 있습니다:
+튜플의 멤버 값은 함수 반환 타입에서 이름을 붙였기 때문에, 점 구문 (dot syntax) 으로 접근해서 최소 및 최대 값을 가져올 수 있습니다:
 
 ```swift
 let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
 print("min is \(bounds.min) and max is \(bounds.max)")
-// "min is -6 and max is 109" 를 인쇄합니다.
+// "min is -6 and max is 109" 를 인쇄함
 ```
 
-튜플 멤버의, 이름은 함수의 반환 타입에서 이미 지정했기 때문에, 함수에서 튜플을 반환하는 순간에는 이름을 붙일 필요가 없다는 점을 기억하기 바랍니다.
+튜플 멤버 이름을 함수 반환 타입에서 이미 지정했기 때문에, 함수가 튜플을 반환하는 시점에는 이름을 붙일 필요가 없다는 것을 기억하기 바랍니다.
 
 <p>
 <strong id="optional-tuple-return-types-옵셔널-튜플-반환-타입">Optional Tuple Return Types (옵셔널 튜플 반환 타입)</strong>
