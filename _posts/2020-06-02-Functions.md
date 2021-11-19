@@ -224,9 +224,9 @@ print(anotherGreeting(for: "Dave"))
 // "Hello, Dave!" 를 인쇄함
 ```
 
-`greeting(for:)` 함수의 전체 정의가 반환하는 인사말 메시지인데, 이는 이런 '줄인 형식 (shorter form)' 을 사용할 수 있다는 의미입니다. `anotherGreeting(for:)` 함수는, 더 긴 함수 같이 `return` 키워드를 사용하여, 똑같은 인사말 메시지를 반환합니다. `return` 줄 하나로만 작성된 함수는 어떤 것이든 `return` 을 생략할 수 있습니다.
+전체 `greeting(for:)` 함수 정의가 자신이 반환할 인사말 메시지인데, 이는 이런 더 짧은 형식을 사용할 수 있다는 걸 의미합니다. `anotherGreeting(for:)` 함수는, 더 긴 함수 처럼 `return` 키워드를 써서, 동일한 인사말 메시지를 반환합니다. 단 하나의 `return` 줄만으로 작성한 어떤 함수든 `return` 을 생략할 수 있습니다.
 
-[Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 보게 될 것처럼, '속성 획득자 (property getter)' 에서도 암시적인 반환을 사용할 수 있습니다.
+[Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 볼 것처럼, '속성 획득자 (property getter)' 도 암시적인 반환을 사용할 수 있습니다.
 
 ### Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)
 
