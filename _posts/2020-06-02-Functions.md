@@ -208,20 +208,20 @@ if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
 
 #### Functions With an Implicit Return (암시적으로 반환하는 함수)
 
-함수의 전체 본문이 '단일 표현식' 인 경우, 함수는 해당 표현식을 암시적으로 반환합니다. 예를 들어, 아래의 두 함수는 작동 방식이 같습니다:
+전체 함수 본문이 단일 표현식인 경우, 함수가 해당 표현식을 암시적으로 반환합니다. 예를 들어, 아래의 두 함수는 똑같이 동작합니다:
 
 ```swift
 func greeting(for person: String) -> String {
   "Hello, " + person + "!"
 }
 print(greeting(for: "Dave"))
-// "Hello, Dave!" 를 인쇄합니다.
+// "Hello, Dave!" 를 인쇄함
 
 func anotherGreeting(for person: String) -> String {
   return "Hello, " + person + "!"
 }
 print(anotherGreeting(for: "Dave"))
-// "Hello, Dave!" 를 인쇄합니다.
+// "Hello, Dave!" 를 인쇄함
 ```
 
 `greeting(for:)` 함수의 전체 정의가 반환하는 인사말 메시지인데, 이는 이런 '줄인 형식 (shorter form)' 을 사용할 수 있다는 의미입니다. `anotherGreeting(for:)` 함수는, 더 긴 함수 같이 `return` 키워드를 사용하여, 똑같은 인사말 메시지를 반환합니다. `return` 줄 하나로만 작성된 함수는 어떤 것이든 `return` 을 생략할 수 있습니다.
