@@ -177,9 +177,9 @@ print("min is \(bounds.min) and max is \(bounds.max)")
 
 > `(Int, Int)?` 같은 '옵셔널 튜플 타입' 은 `(Int?, Int?)` 같이 '옵셔널 타입을 담은 튜플' 과는 다릅니다.[^optional-tuple-type] 옵셔널 튜플 타입에선, 튜플 안의 각 개별 값만이 아니라, 전체 튜플이 옵셔널입니다.
 
-위의 `minMax(array:)` 함수는 두 `Int` 값을 담은 튜플을 반환합니다. 하지만, 이 함수는 전달받은 배열에 대한 어떤 안전성 검사도 하지 않고 있습니다. 만약 `array` 인자가 빈 배열을 담고 있다면, 위에서 정의한, `minMax(array:)` 함수는, `array[0]` 에 접근하려고 할 때 '실행시간 에러' 를 발생시킬 것입니다.
+위 `minMax(array:)` 함수는 두 `Int` 값을 담은 튜플을 반환합니다. 하지만, 전달한 배열에 대한 어떤 안전성 검사도 함수가 하지 않습니다. `array` 인자가 빈 배열을 담고 있다면, 위에 정의한, `minMax(array:)` 함수가, `array[0]` 에 접근하려고 할 때 실행시간 에러를 발동할 것입니다.
 
-빈 배열을 안전하게 처리하려면, `minMax(array:)` 함수를 '옵셔널 튜플 반환 타입' 으로 작성하며 배열이 비었을 때는 `nil` 값을 반환합니다:
+빈 배열을 안전하게 처리하려면, 옵셔널 튜플 반환 타입을 가진 `minMax(array:)` 함수를 작성하여 배열이 비었을 땐 `nil` 값을 반환합니다:
 
 ```swift
 func minMax(array: [Int]) -> (min: Int, max: Int)? {
@@ -197,13 +197,13 @@ func minMax(array: [Int]) -> (min: Int, max: Int)? {
 }
 ```
 
-이 버전의 `minMax(array:)` 함수가 실제 튜플 값을 반환하는 지 `nil` 을 반환하는 지 검사하기 위해 '옵셔널 연결 (optional binding)' 을 사용할 수 있습니다:
+옵셔널 연결 (optional binding) 을 사용하면 이 버전의 `minMax(array:)` 함수가 실제 튜플 값을 반환하는 지 `nil` 을 반환하는 지 검사할 수 있습니다:
 
 ```swift
 if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
   print("min is \(bounds.min) and max is \(bounds.max)")
 }
-// "min is -6 and max is 109" 를 인쇄합니다.
+// "min is -6 and max is 109" 를 인쇄함
 ```
 
 #### Functions With an Implicit Return (암시적으로 반환하는 함수)
