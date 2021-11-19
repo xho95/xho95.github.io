@@ -228,6 +228,8 @@ print(anotherGreeting(for: "Dave"))
 
 [Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 볼 것처럼, '속성 획득자 (property getter)' 도 암시적인 반환을 사용할 수 있습니다.
 
+> 암시적인 반환 값이라고 작성한 코드는 어떠한 값을 반환할 필요가 있습니다. 예를 들어, `fatalError("Oh no!")` 나 `print(13)` 을 암시적인 반환 값으로 사용할 순 없습니다.
+
 ### Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)
 
 각각의 함수 매개 변수는 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 둘 다 가집니다. '인자 이름표' 는 함수를 호출할 때 사용합니다; 함수 호출 시에 각 인자는 그 앞에 '인자 이름표' 를 작성합니다. '매개 변수 이름' 은 함수 구현에서 사용합니다. 기본적으로, 매개 변수는 '매개 변수 이름' 을 '인자 이름표' 로 사용합니다.
