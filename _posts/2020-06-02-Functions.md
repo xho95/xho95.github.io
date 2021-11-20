@@ -237,7 +237,7 @@ print(anotherGreeting(for: "Dave"))
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수에 대한 인자 값을 참조합니다.
+  // 첫 번째 및 두 번째 매개 변수의 인자 값을 가리킵니다.
 }
 someFunction(firstParameterName: 1, secondParameterName: 2)
 ```
@@ -246,26 +246,26 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
-'인자 이름표' 는 '매개 변수 이름' 앞에, 공백으로 구분하여, 작성합니다:
+인자 이름표는, 매개 변수 이름 앞에, 공백으로 구분하여, 작성합니다:
 
 ```swift
 func someFunction(argumentLabel parameterName: Int) {
   // 함수 본문에서, parameterName 은
-  // 해당 매개 변수에 대한 인자 값을 참조합니다.
+  // 해당 매개 변수의 인자 값을 가리킵니다.
 }
 ```
 
-다음은 사람 이름과 출신지를 취해서 인사말을 반환하도록 한 `greet(person:)` 함수의 변화 버전입니다:
+다음은 `greet(person:)` 함수가 변하여 사람 이름과 출신지를 취하고 인사말을 반환하도록 한 것입니다:
 
 ```swift
 func greet(person: String, from hometown: String) -> String {
   return "Hello \(person)! Glad you could visit from \(hometown)."
 }
 print (greet(person: "Bill", from: "Cupertino"))
-// "Hello Bill! Glad you could visit from Cupertino." 를 인쇄합니다.
+// "Hello Bill! Glad you could visit from Cupertino." 를 인쇄함
 ```
 
-인자 이름표를 사용하면, 여전히 이해하기 쉽고 의도가 명확한 함수 본문을 제공하면서도, 함수를 의미 전달력이 좋고, '일반 문장-같은 (sentence-like)' 방식으로 호출하도록 해줍니다.
+인자 이름표를 사용하면, 이해가 쉽고 의도가 명확한 함수 본문을 제공하면서도, 풍부한 표현력을 가진, 일반 문장-같은 관례에 따라 함수를 호출하도록 허용합니다.
 
 #### Omitting Argument Labels (인자 이름표 생략하기)
 
