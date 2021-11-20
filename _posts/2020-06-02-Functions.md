@@ -269,17 +269,17 @@ print (greet(person: "Bill", from: "Cupertino"))
 
 #### Omitting Argument Labels (인자 이름표 생략하기)
 
-매개 변수에 인자 이름표를 붙이고 싶지 않으면, 해당 매개 변수에 명시적인 인자 이름표 대신 _밑줄 (underscore;_ `_` _)_ 을 작성합니다.
+매개 변수의 인자 이름표를 원하지 않으면, 해당 매개 변수에 대한 명시적인 인자 이름표 대신 _밑줄 (underscore;_ `_` _)_ 을 작성합니다.
 
 ```swift
 func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째와 두 번째 매개 변수에 대한 인자 값을 참조합니다.
+  // 첫 번째 및 두 번째 매개 변수의 인자 값을 가리킵니다.
 }
 someFunction (1, secondParameterName: 2)
 ```
 
-매개 변수에 인자 이름표가 있는 경우, 함수를 호출할 때 그 인자에 _반드시 (must)_ 이름표를 붙여야 합니다.
+매개 변수에 인자 이름표가 있으면, 함수를 호출할 때 _반드시 (must)_ 인자에 이름표를 붙여야 합니다.
 
 #### Default Parameter Values (기본 매개 변수 값)
 
