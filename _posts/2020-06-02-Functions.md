@@ -237,12 +237,12 @@ print(anotherGreeting(for: "Dave"))
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째와 두 번째 매개 변수에 대한 인자 값을 참조합니다.
+  // 첫 번째 및 두 번째 매개 변수에 대한 인자 값을 참조합니다.
 }
 someFunction(firstParameterName: 1, secondParameterName: 2)
 ```
 
-모든 매개 변수는 반드시 유일한 이름을 가져야 합니다. 여러 매개 변수가 똑같은 '인자 이름표' 가지는 것이 가능은 할지라도, 유일한 인자 이름표는 코드를 더 이해하기 쉽게 만들어 줍니다.
+모든 매개 변수는 반드시 유일한 이름을 가져야 합니다. 여러 개의 매개 변수가 동일한 인자 이름표를 가지는 게 가능은 하지만, 유일한 인자 이름표는 코드를 더 쉽게 이해하도록 도와줍니다.
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
