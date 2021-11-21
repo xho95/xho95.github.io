@@ -279,22 +279,22 @@ func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
 someFunction (1, secondParameterName: 2)
 ```
 
-매개 변수에 인자 이름표가 있으면, 함수를 호출할 때 _반드시 (must)_ 인자에 이름표를 붙여야 합니다.
+매개 변수에 인자 이름표가 있으면, 함수를 호출할 때 인자에 _반드시 (must)_ 이름표를 붙여야 합니다.
 
 #### Default Parameter Values (기본 매개 변수 값)
 
-함수에 있는 매개 변수는 어떤 것이든 값을 해당 매개 변수의 타입 뒤에 할당함으로써 _기본 값 (default value)_ 을 정의할 수 있습니다. '기본 값' 을 정의한 경우, 함수를 호출할 때 해당 매개 변수를 생략할 수 있습니다.
+해당 매개 변수 타입 뒤에 값을 할당함으로써 어떤 함수 매개 변수에든 _기본 값 (default value)_ 을 정의할 수 있습니다. 기본 값을 정의하면, 함수를 호출할 때 해당 매개 변수를 생략할 수 있습니다.
 
 ```swift
 func someFunction (parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
   // 이 함수를 호출할 때 두 번째 인자를 생략하면,
-  // 함수 본문에서 parameterWithDefault 의 값은 12 가 됩니다.
+  // parameterWithDefault 값이 함수 본문 안에서 12 가 됩니다.
 }
-someFunction (parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault 는 6 입니다.
-someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 입니다.
+someFunction (parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault 는 6 임
+someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 임
 ```
 
-'기본 값' 을 가지지 않는 매개 변수를, '기본 값' 을 가지는 매개 변수 보다 앞인, 함수 매개 변수 목록의 맨 앞에 위치시킵니다. 기본 값을 가지지 않는 매개 변수는 대체로 함수에서 더 중요한 의미를 가집니다-이를 먼저 작성하는 것은, 어떤 기본 값이 생략되든 간에, 똑같은 함수를 호출하고 있다는 것을 인식할 수 있게 만들어 줍니다.
+기본 값 없는 매개 변수는, 기본 값 있는 매개 변수 앞인, 함수 매개 변수 목록 맨 앞에 둡니다. 기본 값 없는 매개 변수가 함수 의미상 대체로 더 중요합니다-이를 먼저 작성하면, 어떤 기본 매개 변수를 생략하든 상관없이, 동일 함수를 호출하고 있음을 더 인식하기 쉽게 해줍니다.
 
 #### Variadic Parameters (가변 매개 변수)
 
