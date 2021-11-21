@@ -298,7 +298,7 @@ someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 임
 
 #### Variadic Parameters (가변 매개 변수)
 
-_가변 매개 변수 (variadic parameter)_ 는 지정한 타입의 값을 '0' 개 이상 받아 들입니다. '가변 매개 변수' 는 함수를 호출할 때 매개 변수에 다양한 개수의 입력 값을 전달할 수 있음을 지정하고자 사용합니다. 가변 매개 변수는 매개 변수의 타입 이름 뒤에 '마침표 (period characters; `...`)' 세 개를 집어 넣어 작성합니다.
+_가변 매개 변수 (variadic parameter)_ 는 특정 타입의 값을 0개 이상 받아 들입니다. '가변 매개 변수' 는 함수를 호출할 때 매개 변수에 다양한 개수의 입력 값을 전달할 수 있음을 지정하고자 사용합니다. 가변 매개 변수는 매개 변수의 타입 이름 뒤에 '마침표 (period characters; `...`)' 세 개를 집어 넣어 작성합니다.
 
 가변 매개 변수에 전달한 값들은 함수 본문에서 적절한 타입의 배열로 사용 가능합니다. 예를 들어, 이름이 `numbers` 고 타입이 `Double...` 인 가변 매개 변수는 함수 본문에서 `[Double]` 타입인 `numbers` 라는 상수 배열로 사용 가능합니다.
 
