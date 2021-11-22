@@ -358,7 +358,7 @@ print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 
 ### Function Types (함수 타입)
 
-모든 함수는, 함수의 매개 변수 타입들과 반환 타입으로 이루어진, 지정된 _함수 타입 (function type)_ 을 가집니다.
+모든 함수는, 함수의 매개 변수 타입과 반환 타입으로 이루어지는, 특정한 _함수 타입 (function type)_ 을 가집니다.
 
 예를 들면 다음과 같습니다:
 
@@ -371,13 +371,13 @@ func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
 }
 ```
 
-이 예제는 `addTwoInts` 와 `multiplyTwoInts` 라는 간단한 수학 함수 두 개를 정의합니다. 이 함수들은 저마다 두 개의 `Int` 값을 받아서, 적절한 수학 연산을 한 결과를, 한 개의 `Int` 값으로 반환합니다.
+이 예제는 `addTwoInts` 와 `multiplyTwoInts` 라는 단순한 수학 함수 두 개를 정의합니다. 이 함수는 각각 두 개의 `Int` 값을 취하여, 적절한 수학 연산의 결과인, `Int` 값을 반환합니다.
 
-이 두 함수 모두의 타입은 `(Int, Int) -> Int` 입니다. 이는 다음 처럼 이해할 수 있습니다:
+이 함수 둘 다 타입이 `(Int, Int) -> Int` 입니다. 이는 다음 처럼 이해할 수 있습니다:
 
-"둘 다 `Int` 타입인, 매개 변수 두 개를 가지며, `Int` 타입의 값을 반환하는 함수."
+"둘 다 `Int` 타입인, 매개 변수 두 개를 가지고, `Int` 타입의 값을 반환하는 함수"
 
-다음은, 매개 변수 또는 반환 값이 없는 함수에 대한, 또 다른 예제입니다:
+다음은, 매개 변수나 반환 값이 없는 함수를 위한, 또 다른 예제입니다:
 
 ```swift
 func printHelloWorld() {
