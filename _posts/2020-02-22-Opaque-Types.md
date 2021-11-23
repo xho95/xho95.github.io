@@ -200,7 +200,7 @@ func protoFlip<T: Shape>(_ shape: T) -> Shape {
 }
 ```
 
-이 버전의 `protoFlip(_:)` 은 `flip(_:)` 과 똑같은 본문을 가지며, 항상 똑같은 타입의 값을 반환합니다. `flip(_:)` 과는 달리, `protoFlip(_:)` 이 반환하는 값은 항상 똑같은 타입일 필요가 없습니다-단지 `Shape` 프로토콜을 준수하면 됩니다. 다른 식으로 말하면, `protoFlip(_:)` 이 호출하는 쪽과 맺는 'API 계약 (contract)' 은 `flip(_:)` 이 맺는 것보다 훨씬 더 느슨합니다. 이는 여러 타입의 값을 반환할 '유연함' 을 남겨 둡니다:
+이 버전의 `protoFlip(_:)` 은 `flip(_:)` 과 똑같은 본문을 가지며, 항상 똑같은 타입의 값을 반환합니다. `flip(_:)` 과는 달리, `protoFlip(_:)` 반환 값이 항상 똑같은 타입이라는 건 필수가 아닙니다-단지 `Shape` 프로토콜을 준수하기만 하면 됩니다. 다른 식으로 말하면, `protoFlip(_:)` 이 호출하는 쪽과 맺는 'API 계약 (contract)' 은 `flip(_:)` 이 맺는 것보다 훨씬 더 느슨합니다. 이는 여러 타입의 값을 반환할 '유연함' 을 남겨 둡니다:
 
 ```swift
 func protoFlip<T: Shape>(_ shape: T) -> Shape {

@@ -98,7 +98,7 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 
 이 경우, 배열 글자 값은 두 `String` 값 외엔 아무 것도 담지 않습니다. 이는 `shoppingList` 변수 선언의 타입 (인 `String` 값만 담을 수 있는 배열) 과 일치하므로, 두 초기 항목으로 `shoppingList` 를 초기화하는 '배열 글자 값 할당 방식' 을 허가합니다.
 
-스위프트의 타입 추론에 감사하게도, '똑같은 타입 값을 담은 배열 글자 값으로 초기화' 할 경우 배열 타입을 작성하지 않아도 됩니다. `shoppingList` 초기화를 '줄임 형식' 으로 대신 작성할 수도 있습니다:
+스위프트의 타입 추론에 감사하게도, 동일한 타입의 값을 담은 배열 글자 값으로 초기화할 경우 배열 타입은 작성하지 않아도 됩니다. `shoppingList` 초기화를 더 짧은 형식으로 대신 작성할 수도 있습니다:
 
 ```swift
 var shoppingList = ["Eggs", "Milk"]
@@ -294,7 +294,7 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
 
 > `favoriteGenres` 셋을 (`let` 도입자를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 항목을 추가하거나 제거하기 때문입니다.
 
-배열 글자 값 홀로 있으면 셋 타입이라고 추론할 수 없으므로[^set-array-literal], `Set` 타입은 반드시 명시적으로 선언해야 합니다. 하지만, 스위프트의 타입 추론 때문에, '단 한 가지 타입의 값만 담은 배열 글자 값' 으로 초기화하면 '셋의 원소 타입' 을 작성하지 않아도 됩니다. `favoriteGenres` 초기화를 (다음) 줄임 형식으로 대신 작성할 수도 있을 것입니다:
+배열 글자 값 홀로 있으면 셋 타입이라고 추론할 수 없으므로[^set-array-literal], `Set` 타입은 반드시 명시적으로 선언해야 합니다. 하지만, 스위프트의 타입 추론 때문에, 단 한 가지 타입의 값만 담은 배열 글자 값으로 초기화할 경우 '셋' 의 원소 타입은 작성하지 않아도 됩니다. `favoriteGenres` 초기화를 더 짧은 형식으로 대신 작성할 수도 있습니다:
 
 ```swift
 var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
@@ -493,7 +493,7 @@ var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 이 딕셔너리 글자 값은 두 개의 `String: String` 쌍을 담고 있습니다. 이 키-값 타입은 (오직 `String` 키와, `String` 값만을 가지는 딕셔너리라는) `airports` 변수 선언 타입과 일치하므로, 두 초기 항목으로 `airports` 딕셔너리를 초기화하는 '배열 글자 값 할당 방식' 을 허가합니다.
 
-배열과 같이, 키와 값의 타입이 일관성이 있는 딕셔너리 글자 값으로 초기화할 경우 디셔너리 타입은 작성하지 않아도 됩니다. `airports` 초기화를 줄임 형식으로 대신 작성할 수도 있습니다:
+배열 같이, 일관성 있는 타입의 키와 값을 가진 딕셔너리 글자 값으로 초기화할 경우 디셔너리 타입은 작성하지 않아도 됩니다. `airports` 초기화를 더 짧은 형식으로 대신 작성할 수도 있습니다:
 
 ```swift
 var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]

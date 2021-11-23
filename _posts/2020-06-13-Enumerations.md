@@ -59,7 +59,7 @@ case mercury, venus, earth, mars, jupiter, saturn uranus, neptune
 var directionToHead = CompassPoint.west
 ```
 
-`directionToHead` 의 타입은 이를 가능한 `CompassPoint` 값들 중 하나로 초기화할 때 추론됩니다. `directionToHead` 를 `CompassPoint` 로 한 번 선언하고 나면, '줄인 점 구문 (shorter dot syntax)' 을 사용하여 이를 다른 `CompassPoint` 값으로 설정할 수 있습니다:
+`directionToHead` 의 타입은 이를 가능한 `CompassPoint` 값들 중 하나로 초기화할 때 추론됩니다. 한 번 `directionToHead` 를 `CompassPoint` 로 선언하고 나면, 더 짧은 점 구문으로 다른 `CompassPoint` 값을 설정할 수 있습니다:
 
 ```swift
 directionToHead = .east
