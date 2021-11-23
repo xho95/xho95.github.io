@@ -425,16 +425,16 @@ let anotherMathFunction = addTwoInts
 
 #### Function Types as Parameter Types (매개 변수 타입으로써의 함수 타입)
 
-`(Int, Int) -> Int` 와 같은 함수 타입을 다른 함수에 대한 매개 변수 타입으로 사용할 수 있습니다. 이는 함수를 호출할 때 함수를 호출하는 쪽에서 함수 구현의 일부분을 제공할 수 있게 해줍니다.
+`(Int, Int) -> Int` 와 같은 함수 타입은 또 다른 함수의 매개 변수 타입으로 사용할 수 있습니다. 이는 함수를 호출할 때 함수 구현 일부를 함수 호출한 쪽이 제공하게 내버려 두게 합니다.
 
-다음은 위에 있는 수학 함수의 결과를 인쇄하는 예제입니다:
+다음 예제는 위에 있는 수학 함수의 결과를 인쇄합니다:
 
 ```swift
 func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
   print("Result: \(mathFunction(a, b))")
 }
 printMathResult(addTwoInts, 3, 5)
-// "Result: 8" 를 인쇄합니다.
+// "Result: 8" 를 인쇄함
 ```
 
 이 예제는, 세 개의 매개 변수를 가지는, `printMathResult(_:_:_:)` 라는 함수를 정의합니다. 첫 번째 매개 변수는 `mathFunction` 이라고 하며, `(Int, Int) -> Int` 타입입니다. 해당 타입인 어떤 함수라도 이 첫 번째 매개 변수의 인자로 전달할 수 있습니다. 두 번째와 세 번째 매개 변수는 `a` 와 `b` 라고 하며, 둘 다 `Int` 타입입니다. 이들은 제공된 수학 함수의 두 입력 값으로 사용됩니다.
