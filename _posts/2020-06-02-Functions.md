@@ -389,7 +389,7 @@ func printHelloWorld() {
 
 #### Using Function Types (함수 타입 사용하기)
 
-함수 타입은 그냥 스위프트에 있는 다른 어떤 타입인 것처럼 사용할 수 있습니다. 예를 들어, 상수나 변수를 함수 타입으로 정의하고 해당 변수에 적절한 함수를 할당할 수 있습니다:
+함수 타입은 스위프트의 다른 어떤 타입인 것 같이 사용할 수 있습니다. 예를 들어, 상수나 변수를 함수 타입으로 정의하고 해당 변수에 적절한 함수를 할당할 수 있습니다:
 
 ```swift
 var mathFunction: (Int, Int) -> Int = addTwoInts
@@ -397,30 +397,30 @@ var mathFunction: (Int, Int) -> Int = addTwoInts
 
 이는 다음 처럼 이해할 수 있습니다:
 
-"`mathFunction` 이라는 변수를 정의하는데, 이는 '두 `Int` 값을 취해서, `Int` 값을 반환하는 함수' 타입 입니다. 이 새로운 변수가 `addTwoInts` 라는 함수를 참조하도록 설정합니다."
+"'두 `Int` 값을 취하고, `Int` 값을 반환하는 함수' 타입인, `mathFunction` 이라는 변수를 정의합니다. 이 새 변수가 `addTwoInts` 라는 함수를 참조하도록 설정합니다."
 
-`addTwoInts(_:_:)` 함수는 `mathFunction` 변수와 같은 타입을 가지고 있으므로, 스위프트의 '타입-검사기' 가 이 할당을 허용합니다.
+`addTwoInts(_:_:)` 함수는 `mathFunction` 변수와 똑같은 타입이므로, 스위프트 타입-검사기가 이 할당을 허용합니다.
 
-이제 할당한 함수를 `mathFunction` 이라는 이름으로 호출할 수 있습니다:
+이제 할당한 함수를 `mathFunction` 이란 이름으로 호출할 수 있습니다:
 
 ```swift
 print("Result: \(mathFunction(2, 3))")
-// "Result: 5" 를 인쇄합니다.
+// "Result: 5" 를 인쇄함
 ```
 
-함수 아닌 타입과 똑같은 방식으로, 일치하는 타입을 가진 서로 다른 함수를 같은 변수에 할당할 수 있습니다.
+타입이 동일하게 일치하는 서로 다른 함수는, 함수아닌 타입과 똑같이, 동일한 변수에 할당할 수 있습니다.   
 
 ```swift
 mathFunction = multiplyTwoInts
 print("Result: \(mathFunction(2, 3))")
-// "Result: 6" 을 인쇄합니다.
+// "Result: 6" 을 인쇄함
 ```
 
-다른 타입에서 처럼, 함수를 상수나 변수에 할당할 때 함수의 타입을 스위프트가 추론하게 내버려둘 수 있습니다.
+다른 어떤 타입 처럼, 상수나 변수에 함수를 할당할 때 스위프트가 함수 타입을 추론하게 내버려둘 수 있습니다.
 
 ```swift
 let anotherMathFunction = addTwoInts
-// anotherMathFunction 은 (Int, Int) -> Int 타입으로 추론됩니다.
+// anotherMathFunction 은 (Int, Int) -> Int 타입이라고 추론함
 ```
 
 #### Function Types as Parameter Types (매개 변수 타입으로써의 함수 타입)
