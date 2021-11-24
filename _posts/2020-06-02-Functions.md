@@ -445,9 +445,9 @@ printMathResult(addTwoInts, 3, 5)
 
 #### Function Types as Return Types (반환 타입으로써의 함수 타입)
 
-함수 타입은 또 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환하는 함수의 '반환 화살표 (`->`)' 바로 뒤에 '완전한 함수 타입' 을 작성하면 됩니다.
+함수 타입을 또 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환할 함수의 반환 화살표 (`->`) 바로 뒤에 완전한 함수 타입을 작성하면 됩니다.
 
-다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 두 개의 간단한 함수를 정의합니다. `stepForward(_:)` 함수는 입력 값보다 하나 큰 값을 반환하고, `stepBackward(_:)` 함수는 입력 값보다 하나 작은 값을 반환합니다. 두 함수 다 `(Int) -> Int` 타입입니다:
+다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 단순한 두 함수를 정의합니다. `stepForward(_:)` 함수는 자신의 입력 값보다 하나 큰 값을 반환하고, `stepBackward(_:)` 함수는 자신의 입력 값보다 하나 작은 값을 반환합니다. 두 함수 모두 `(Int) -> Int` 타입입니다:
 
 ```swift
 func stepForward(_ input: Int) -> Int {
