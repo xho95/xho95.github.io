@@ -494,11 +494,11 @@ print("zero!")
 
 ### Nested Functions (중첩 함수)
 
-이 장에서 지금까지 마주친 모든 함수는, 전역에서 정의한, _전역 함수 (global functions)_ 에 대한 예제 였습니다. 함수를 다른 함수 본문 안에서 정의할 수도 있는데, 이를 _중첩 함수 (nested functions)_ 라고 합니다.
+이 장에서 지금까지 마주친 모든 함수는, 전역 범위에서 정의한, _전역 함수 (global functions)_ 예제였습니다. 다른 함수 본문 안에서 함수를 정의할 수도 있는데, 이를 _중첩 함수 (nested functions)_ 라고 합니다.
 
-'중첩 함수' 는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 '둘러싼 함수' 에 의해 여전히 호출되고 사용될 수 있습니다. '둘러싼 함수' 는 다른 영역에서 '중첩 함수' 를 사용하도록 허용하고자 자신의 '중첩 합수' 중 하나를 반환할 수도 있습니다.
+중첩 함수는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 둘러싼 함수에선 여전히 호출하고 사용할 수 있습니다. 중첩 함수를 둘러싼 함수는 또 다른 영역에서 사용할 수 있도록 자신의 중첩 함수 하나를 반환할 수도 있습니다.
 
-위의 `chooseStepFunction(backward:)` 예제는 중첩 함수를 사용하고 반환하도록 재작성할 수 있습니다:
+중첩 함수를 사용하고 반환하도록 위의 `chooseStepFunction(backward:)` 예제를 재작성할 수 있습니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -508,7 +508,7 @@ func chooseStepFunction(backward: Bool) -> (Int) -> Int {
 }
 var currentValue = -4
 let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
-// moveNearerToZero 는 이제 중첩 함수인 stepForward() 를 참조합니다.
+// moveNearerToZero 는 이제 중첩 함수인 stepForward() 를 참조함
 while currentValue != 0 {
   print("\(currentValue)... ")
   currentValue = moveNearerToZero(currentValue)
@@ -518,7 +518,7 @@ print("zero!")
 // -3...
 // -2...
 // -1...
-// zero!
+// 영!
 ```
 
 ### 다음 장
