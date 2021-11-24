@@ -458,7 +458,7 @@ func stepBackward(_ input: Int) -> Int {
 }
 ```
 
-다음은, 반환 타입이 `(Int) -> Int` 인, `chooseStepFunction(backward:)` 라는 함수입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 '불리언 (Boolean)' 매개 변수에 기초하여 `stepForward(_:)` 함수 또는 `stepBackward(_:)` 함수를 반환합니다:
+다음은, 반환 타입이 `(Int) -> Int` 인, `chooseStepFunction(backward:)` 라는 함수입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불리언 (Boolean) 매개 변수를 기초로 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -466,21 +466,21 @@ func chooseStepFunction(backward: Bool) -> (Int) -> Int {
 }
 ```
 
-이제 `chooseStepFunction(backward:)` 를 사용하여 한 쪽 또는 다른 쪽 방향으로 한 단계 이동하는 함수를 구할 수 있습니다:
+이제 `chooseStepFunction(backward:)` 를 사용하면 이 쪽 또는 저 쪽 방향으로 걸음을 옮기는 함수를 구할 수 있습니다:
 
 ```swift
 var currentValue = 3
 let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
-// moveNearerToZero 는 이제 stepBackward() 함수를 참조합니다.
+// moveNearerToZero 는 이제 stepBackward() 함수를 참조함
 ```
 
-위 예제는 `currentValue` 라는 변수가 `0` 에 점점 더 가깝게 이동하려면 필요한 방향이 양인지 음인지 결정합니다. `currentValue` 는 초기 값으로 `3` 을 가지고 있는데, 이는 `currentValue > 0` 이 `true` 를 반환하여, `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환하도록 함을 의미합니다. 반환한 함수에 대한 참조는 `moveNearerToZero` 라는 상수에 저장됩니다.
+위 예제는 `currentValue` 라는 변수가 점점 더 0에 가까워지려면 양으로 걸어야 하는지 음으로 걸어야 하는 지 결정합니다. `currentValue` 의 초기 값은 `3` 인데, 이는 `currentValue > 0` 가 `true` 를 반환하여, `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환하도록 한다는 의미합니다. 반환한 함수의 참조는 `moveNearerToZero` 라는 상수에 저장합니다.
 
-이제 `moveNearerToZero` 가 올바른 함수를 참조하므로, `0` 까지 세는데 사용할 수 있습니다:
+이제 `moveNearerToZero` 가 올바른 함수를 참조하므로, 영까지 세는 데 사용할 수 있습니다:
 
 ```swift
 print("Counting to zero:")
-// 'zero (영)' 까지 셉니다:
+// 영까지 셈:
 while currentValue != 0 {
   print("\(currentValue)... ")
   currentValue = moveNearerToZero(currentValue)
@@ -489,7 +489,7 @@ print("zero!")
 // 3...
 // 2...
 // 1...
-// zero!
+// 영!
 ```
 
 ### Nested Functions (중첩 함수)
