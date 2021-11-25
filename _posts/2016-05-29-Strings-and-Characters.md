@@ -274,7 +274,7 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 
 `multiplier` 값은 '문자열 나중에 있는 더 큰 표현식의 일부분' 이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 값을 계산하며 (`7.5` 라는) 결과를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함할 때 `\(Double(multiplier) * 2.5)` 라고 표현식을 작성합니다.
 
-다른 경우라면 문자열 보간법으로 취급할 문자를 담은 문자열을 생성하기 위해 '확장된 문자열 구분자'[^extended-string-delimiters] 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'확장된 문자열 구분자'[^extended-string-delimiters] 를 사용하면 그 외 경우라면 문자열 보간법으로 취급될 문자를 담은 문자열을 생성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
