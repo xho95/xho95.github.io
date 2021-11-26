@@ -223,7 +223,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // "the volume of fourByFiveByTwo is 40.0" 를 인쇄합니다.
 ```
 
-이 예제는, `width`, `height`, 그리고 `depth` 속성을 가진 '3차원 직사각형 상자' 를 표현하는, `Cuboid` 라는 새로운 구조체를 정의합니다.[^cuboid] 이 구조체는, '직육면체 (cuboid)' 의 현재 부피를 계산하고 반환하는, `volume` 이라는 읽기-전용 계산 속성도 가집니다. 특정 `volume` 값을 만들기 위해 `width`, `height`, 그리고 `depth` 값이 어떻게 돼야 할지 모호하기 때문에, `volume` 이 '설정 가능 (settable)' 하다는 것은 이치에 맞지 않습니다. 그럼에도 불구하고, 외부 사용자가 현재 계산된 부피를 알 수 있도록 `Cuboid` 에서 읽기-전용 계산 속성을 제공하는 것은 유용합니다.
+이 예제는, `width`, `height`, 그리고 `depth` 속성을 가진 '3차원 직사각형 상자' 를 표현하는, `Cuboid` 라는 새로운 구조체를 정의합니다.[^cuboid] 이 구조체는, '직육면체 (cuboid)' 의 현재 부피를 계산하고 반환하는, `volume` 이라는 읽기-전용 계산 속성도 가집니다. 특별한 `volume` 값에 사용할 `width`, `height`, 및 `depth` 값이 어떤 것일지가 헷갈리기 때문에, `volume` 이 '설정 가능 (settable)' 하다는 것은 이치에 맞지 않습니다. 그럼에도 불구하고, 외부 사용자가 현재 계산된 부피를 알 수 있도록 `Cuboid` 에서 읽기-전용 계산 속성을 제공하는 것은 유용합니다.
 
 ### Property Observers (속성 관찰자)
 

@@ -803,11 +803,11 @@ func someFunction(firstClosure: Callback? = nil,
 }
 
 someFunction()  // "- -" 를 인쇄합니다.
-someFunction { return $0 + 100 }  // 모호함 (ambiguous)
-someFunction { return $0 } secondClosure: { return $0 }  // "10 20" 를 인쇄합니다.
+someFunction { return $0 + 100 }  // 헷갈림
+someFunction { return $0 } secondClosure: { return $0 }  // "10 20" 를 인쇄함
 ```
 
-위 예제에서, "모호함 (ambiguous)" 으로 표시한 함수 호출은 "- 120" 을 인쇄하며 스위프트 5.3 에서 '컴파일러 경고' 를 만들어 냅니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 것입니다.
+위 예제에서, "헷갈림 (ambiguous)" 으로 표시한 함수 호출은 "- 120" 을 인쇄하며 스위프트 5.3 에서 '컴파일러 경고' 를 만들어 냅니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 것입니다.
 
 클래스나, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 에서 설명한 것처럼, 여러가지 메소드 중 하나를 선언함으로써 '함수 호출 구문' 에 대한 '수월한 구문 (syntatic sugar)' 을 사용하도록 할 수 있습니다.
 
