@@ -135,7 +135,7 @@ matrix[1, 0] = 3.2
 
 ![matrix](/assets/Swift/Swift-Programming-Language/Subscripts-matrix.jpg)
 
-`Matrix` 첨자 연산의 '획득자' 와 '설정자' 는 첨자 연산의 `row` 와 `column` 값이 유효한 지를 검사하기 위해 둘 다 '단언문 (assertion)' 을 가지고 있습니다. 이 '단언문' 들을 보조하기 위해, `Matrix` 는, 요청한 `row` 와 `column` 이 행렬의 경계 내에 있는지를 검사하는, `indexIsValid(row:column:)` 라는 '편의 메소드' 를 포함하고 있습니다:
+`Matrix` 첨자 연산의 '획득자' 와 '설정자' 는 첨자 연산의 `row` 와 `column` 값이 유효한 지를 검사하기 위해 둘 다 '단언문 (assertion)' 을 가지고 있습니다. 이러한 단언문을 거들기 위해, `Matrix` 는, 요청한 `row` 와 `column` 이 행렬의 경계 내에 있는지를 검사하는, `indexIsValid(row:column:)` 라는 '편의 메소드' 를 포함하고 있습니다:
 
 ```swift
 func indexIsValid(row: Int, column: Int) -> Bool {
