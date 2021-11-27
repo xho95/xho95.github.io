@@ -807,7 +807,7 @@ someFunction { return $0 + 100 }  // 헷갈림
 someFunction { return $0 } secondClosure: { return $0 }  // "10 20" 를 인쇄함
 ```
 
-위 예제에서, "헷갈림 (ambiguous)" 으로 표시한 함수 호출은 "- 120" 을 인쇄하며 스위프트 5.3 에서 '컴파일러 경고' 를 만들어 냅니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 것입니다.
+위 예제에서, "헷갈림 (ambiguous)" 이라고 표시한 함수 호출은 "- 120" 을 인쇄하며 스위프트 5.3 에선 컴파일러 경고를 만듭니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 것입니다.
 
 클래스나, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 에서 설명한 것처럼, 여러가지 메소드 중 하나를 선언함으로써 '함수 호출 구문' 에 대한 '수월한 구문 (syntatic sugar)' 을 사용하도록 할 수 있습니다.
 
@@ -920,12 +920,12 @@ class SomeClass {
 }
 let instance = SomeClass()
 
-let a = instance.someMethod              // 모호함
-let b = instance.someMethod(x:y:)        // 모호하지 않음
+let a = instance.someMethod              // 헷갈림
+let b = instance.someMethod(x:y:)        // 헷갈리지 않음
 
-let d = instance.overloadedMethod        // 모호함
-let d = instance.overloadedMethod(x:y:)  // 아직 모호함
-let d: (Int, Bool) -> Void  = instance.overloadedMethod(x:y:)  // 모호하지 않음
+let d = instance.overloadedMethod        // 헷갈림
+let d = instance.overloadedMethod(x:y:)  // 여전히 헷갈림
+let d: (Int, Bool) -> Void  = instance.overloadedMethod(x:y:)  // 헷갈리지 않음
 ```
 
 줄의 시작이 '마침표' 면, '암시적인 멤버 표현식' 이 아니라, '명시적인 멤버 표현식' 이라고 이해합니다. 예를 들어, 아래에 나열한 것은 여러 줄에 걸쳐 쪼개진 '연쇄적인 메소드 호출' 을 보여줍니다:
