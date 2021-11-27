@@ -237,7 +237,7 @@ print(anotherGreeting(for: "Dave"))
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수의 인자 값을 가리킵니다.
+  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
 }
 someFunction(firstParameterName: 1, secondParameterName: 2)
 ```
@@ -251,7 +251,7 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 ```swift
 func someFunction(argumentLabel parameterName: Int) {
   // 함수 본문에서, parameterName 은
-  // 해당 매개 변수의 인자 값을 가리킵니다.
+  // 해당 매개 변수의 인자 값을 참조합니다.
 }
 ```
 
@@ -274,7 +274,7 @@ print (greet(person: "Bill", from: "Cupertino"))
 ```swift
 func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수의 인자 값을 가리킵니다.
+  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
 }
 someFunction (1, secondParameterName: 2)
 ```
