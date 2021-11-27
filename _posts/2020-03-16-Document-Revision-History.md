@@ -56,7 +56,7 @@ categories: Swift Language Grammar Revision History
 * 특정한 '이름 붙인 반환 타입' 을 제공하는 대신, 그 반환 값이 준수하는 프로토콜을 지정하는 함수에 대한 정보를, [Opaque Types (불투명 타입)]({% post_url 2020-02-22-Opaque-Types %}) 장에 추가함.
 * '속성 포장 (property wrappers)' 에 대한 정보를 [Property Wrappers (속성 포장)]({% post_url 2020-05-30-Properties %}#property-wrappers-속성-포장) 부분에 추가함.
 * 라이브러리 진화에서 '동결한 (frozen)' 열거체와 구조체에 대한 정보를 [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 부분에 추가함.
-* `return` 을 생략한 함수에 대한 정보를 가진 [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 와 [Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 부분을 추가함.
+* `return` 을 생략한 함수에 대한 정보를 가진 [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% post_url 2020-06-02-Functions %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 와 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-짧게-줄인-획득자-선언) 부분을 추가함.
 * 타입에서 첨자 연산을 사용하는 것에 대한 정보를 [Type Subscripts (타입 첨자 연산)]({% post_url 2020-03-30-Subscripts %}#type-subscripts-타입-첨자-연산) 부분에 추가함.
 * [Enumeration Case Pattern (열거체 case 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-패턴) 부분을 갱신했으며, 이제 '열거체 case 패턴' 도 옵셔널 값과 일치할 수 있음.
 * [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 갱신했으며, 이제 기본 값을 가진 매개 변수에 대해서 '멤버 초기자 (memberwise initializers)' 도 매개 변수의 생략을 지원함.
@@ -310,8 +310,8 @@ categories: Swift Language Grammar Revision History
 * [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 사용할 수 있는 전체 문자 목록을 명확히 밝힘.
 * `nil` 과 '불리언 (Boolean)' 인 `true` 및 `false` 는 이제 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 임.
 * 스위프트의 `Array` 타입은 이제 온전하게 '값 의미 구조 (value semantics)' 를 가짐. 새로운 접근 방식을 반영하기 위해 [Mutability of Collections (집합체의 변경 가능성)](#mutability-of-collections-집합체의-변경-가능성) 과 [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 에 대한 정보를 갱신함. 또한 '문자열 배열 (strings arrays)' 및 '딕셔너리 (dictionaries)' 에 대한 할당 및 복사 작동 방식도 분명하게 밝힘.
-* [Array Type Shorthand Syntax (배열 타입의 줄임 구문)]({% post_url 2016-06-06-Collection-Types %}#array-type-shorthand-syntax-배열-타입의-줄임-구문) 은 이제 `SomeType[]` 대신 `[SomeType]` 으로 작성함.
-* `[KeyType : ValueType]` 로 작성하는, [Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문)]({% post_url 2016-06-06-Collection-Types %}#dictionary-type-shorthand-syntax-딕셔너리-타입의-줄임-구문) 에 대하여 새로운 부분을 추가함.
+* [Array Type Shorthand Syntax (짧게 줄인 배열 타입 구문)]({% post_url 2016-06-06-Collection-Types %}#array-type-shorthand-syntax-짧게-줄인-배열-타입-구문) 은 이제 `SomeType[]` 대신 `[SomeType]` 으로 작성함.
+* `[KeyType : ValueType]` 로 작성하는, [Dictionary Type Shorthand Syntax (짧게 줄인 딕셔너리 타입 구문)]({% post_url 2016-06-06-Collection-Types %}#dictionary-type-shorthand-syntax-짧게-줄인-딕셔너리-타입-구문) 에 대하여 새로운 부분을 추가함.
 * [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 에 대한 새로운 부분을 추가함.
 * [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 의 예제는 이제, 새롭게 배열의 '값 의미 구조 (value semantics)' 을 반영하기 위해, '전역 `sort(_:_:)` 함수' 대신 '전역 `sorted(_:_:)` 함수' 를 사용함.
 * 구조체의 저장 속성이 기본 값을 가지고 있지 않은 경우라도 구조체의 '멤버 초기자 (memberwise initializer)' 가 사용 가능함을 분명히 밝히기 위해 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에 대한 정보를 갱신함.

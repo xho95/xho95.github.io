@@ -125,7 +125,7 @@ _변수 선언 (variable declaration)_ 은 '이름 붙인 변수 값' 을 프로
 
 '획득자 (getter)' 는 값을 읽는 데 사용하고, '설정자 (setter)' 는 값을 쓰는 데 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 두 '절' 다 생략하고 단순히 '요청 값' 을 직접 반환할 수 있습니다. 그러나 '설정자 절' 을 제공한다면, 반드시 '획득자 절' 도 제공해야 합니다.
 
-_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (설정자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-설정자-선언의-줄임-표현) 에서 설명한 것처럼, '설정자' 의 '기본 매개 변수 이름' 이 `newValue` 가 됩니다.
+_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (짧게 줄인 설정자 선언)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-짧게-줄인-설정자-선언) 에서 설명한 것처럼, '설정자' 의 '기본 매개 변수 이름' 이 `newValue` 가 됩니다.
 
 '이름 붙인 저장 값'[^stored-named-values] 및 '저장 변수 속성' 과 달리, '이름 붙인 계산 값' 이나 '계산 속성' 의 값은 메모리에 저장하지 않습니다.
 

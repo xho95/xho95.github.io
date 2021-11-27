@@ -33,9 +33,9 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 >
 > `Array` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 참고하기 바랍니다.
 
-#### Array Type Shorthand Syntax (배열 타입의 줄임 구문)
+#### Array Type Shorthand Syntax (짧게 줄인 배열 타입 구문)
 
-스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. 배열 타입을 `[Element]` 라는 줄임 형식으로 작성할 수도 있습니다. 두 형식은 기능이 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입을 참조할 때는 이를 사용합니다.
+스위프트 배열 타입의 온전한 작성법은 `Array<Element>` 인데, 여기서 `Element` 는 배열에 저장이 허용된 값의 타입입니다. `[Element]` 라는 짧게 줄인 형식으로 배열 타입을 작성할 수도 있습니다. 두 형식의 기능이 완전히 똑같긴 하지만, 짧게 줄인 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입을 참조할 때는 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
@@ -81,7 +81,7 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
 
-하나 이상의 값을 배열 집합체로 작성하여 줄인, _배열 글자 값 (array literal)_[^literal] 으로 배열을 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸서 작성합니다:
+하나 이상의 값을 배열 집합체로 짧게 줄여 작성하는 방식의, _배열 글자 값 (array literal)_[^literal] 으로 배열을 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸서 작성합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
 
@@ -442,13 +442,13 @@ _딕셔너리 (dictionary)_ 는 '똑같은 타입의 키와 똑같은 타입의 
 >
 > `Dictionary` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 항목을 참고하기 바랍니다.
 
-#### Dictionary Type Shorthand Syntax (딕셔너리 타입의 줄임 구문)
+#### Dictionary Type Shorthand Syntax (짧게 줄인 딕셔너리 타입 구문)
 
 스위프트 딕셔너리 타입의 온전한 작성법은 `Dictionary<Key, Value>` 인데, 여기서 `Key` 는 딕셔너리 키로 사용할 수 있는 값의 타입이고, `Value` 는 해당 키로 딕셔너리가 저장할 값의 타입입니다.
 
 > 딕셔너리 `Key` 타입은, 셋의 값 타입 처럼, 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-딕셔너리 타입을 `[Key: Value]` 라는 줄임 형식으로도 작성할 수 있습니다. 두 형식은 기능이 완전히 똑같지만, 줄임 형식이 더 좋으며 이 설명서 전반에 걸쳐 딕셔너리 타입을 참조할 때는 이를 사용합니다.
+`[Key: Value]` 라고 짧게 줄인 형식으로 딕셔너리 타입을 작성할 수도 있습니다. 두 형식의 기능이 완전히 똑같긴 하지만, 짧게 줄인 형식이 더 좋으며 이 설명서 전반에 걸쳐 딕셔너리 타입을 참조할 때는 이를 사용합니다.
 
 #### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
 
@@ -472,9 +472,9 @@ namesOfIntegers = [:]
 
 #### Creating a Dictionary with a Dictionary Literal (딕셔너리 글자 값으로 딕셔너리 생성하기)
 
-딕셔너리는, 앞에서 본 '배열 글자 값' 과 비슷한 구문인, _딕셔너리 글자 값 (dictionary literal)_ 으로 초기화할 수도 있습니다. '딕셔너리 글자 값' 은 '하나 이상의 키-값 쌍을 `Dictionary` 집합체로 작성하기 위한 줄임 표현' 입니다.
+앞에서 본 배열 글자 값과 비슷한 구문인, _딕셔너리 글자 값 (dictionary literal)_ 으로 딕셔너리를 초기화할 수도 있습니다. 딕셔너리 글자 값은 '하나 이상의 키-값 쌍을 `Dictionary` 집합체로 짧게 줄여 작성하는 방식' 입니다.
 
-_키-값 쌍 (key-value pair)_ 은 '키와 값의 조합' 입니다. 딕셔너리 글자 값에서, 각각의 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분합니다. 키-값 쌍은, 쉼표로 구분한, 목록을, 한 쌍의 대괄호로 둘러싸서 작성합니다:
+_키-값 쌍 (key-value pair)_ 은 키와 값의 조합입니다. 딕셔너리 글자 값에서, 각각의 '키-값 쌍' 에 있는 키와 값은 콜론으로 구분합니다. 키-값 쌍은, 쉼표로 구분한, 목록을, 한 쌍의 대괄호로 둘러싸서 작성합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `key 3-키 3`: `value 3-값 3`]
 
