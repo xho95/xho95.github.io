@@ -620,7 +620,7 @@ let descriptions = toDoList.filter(\.completed).map(\.description)
 let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
 ```
 
-'키 경로 표현식' 의 부작용이라면 표현식을 평가하는 시점에만 평가된다는 것입니다. 예를 들어, '키 경로 표현식' 의 '첨자 연산' 안에서 함수 호출을 하면, 매번 키 경로를 사용할 때가 아니라, 표현식을 평가할 때 단 한번만 이 함수를 호출합니다.
+키 경로 표현식의 부작용이라면 표현식을 평가하는 그 시점에만 평가한다는 것입니다. 예를 들어, 키 경로 표현식에 있는 첨자 연산 안에서 함수 호출을 하면, 키 경로를 사용할 때마다가 아닌, 표현식 평가 때 단 한번만 함수를 호출합니다.
 
 ```swift
 func makeIndex() -> Int {
