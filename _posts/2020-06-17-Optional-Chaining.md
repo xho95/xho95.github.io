@@ -192,7 +192,7 @@ john.residence?.address = someAddress
 
 이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는,`john.residence` 가 현재 `nil` 이기 때문에, 실패할 것입니다.
 
-'할당 (assignment)' 은 '옵셔널 연쇄' 의 일부분이며, 이는 `=` 연산자의 오른-쪽에 있는 코드는 아무 것도 평가하지 않는다는 의미입니다. 이전 예제에서, `someAddress` 를 절대로 평가하지 않는다는 것은 알기가 쉽지 않은데, 이는 상수에 접근하는 것이 어떠한 '부작용 (side effect)'[^side-effect] 도 가지지 않기 때문입니다. 아래에 나열한 것은 똑같은 할당을 하지만, 주소를 생성하기 위해 함수를 사용합니다. 함수는 값을 반환하기 전에, `=` 연산자의 오른-쪽 값을 평가했는지 볼 수 있도록, "Function was called" 를 인쇄합니다.[^function-was-called]
+'할당 (assignment)' 은 '옵셔널 연쇄' 의 일부분이며, 이는 `=` 연산자의 오른-쪽에 있는 코드는 아무 것도 평가하지 않는다는 의미입니다. 이전 예제에서, `someAddress` 평가를 절대하지 않는다는 걸 알긴 쉽지 않은데, 상수에 접근하는 건 어떤 부작용[^side-effect] 도 없기 때문입니다. 아래에 나열한 것은 똑같은 할당을 하지만, 주소를 생성하기 위해 함수를 사용합니다. 함수는 값을 반환하기 전에, `=` 연산자의 오른-쪽 값을 평가했는지 볼 수 있도록, "Function was called" 를 인쇄합니다.[^function-was-called]
 
 ```swift
 func createAddress() -> Address {
@@ -391,7 +391,7 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
 
-[^side-effect]: 프로그래밍에서의 '부작용 (side effects)' 는 '부수적인 효과' 정도의 의미로 이해하는 것이 좋습니다. 본문의 내용은 상수에 대한 접근이 '부수적인 효과' 를 가지지 않기 때문에, `someAddress` 를 평가했는지 아닌지를 우리가 알 방법이 없다는 의미입니다. 프로그래밍 분야에서의 '부작용' 에 대한 더 자세한 내용은, [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 참고하기 바랍니다.
+[^side-effect]: 프로그래밍에서의 '부작용 (side effects)' 는 '부수적인 효과' 정도의 의미로 이해하는 것이 좋습니다. 본문의 내용은 상수에 대한 접근은 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는 지 아닌 지 우리가 알 방법이 없다는 의미입니다. 프로그래밍 분야의 '부작용' 에 대한 더 자세한 내용은, [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 맨 앞에 있는 '부작용 (side effect)' 과 관련한 주석을 참고하기 바랍니다.
 
 [^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것이 프로그래밍에서 말하는 '부수적인 효과', 즉, '부작용 (side effects)' 입니다. 이 함수의 본 목적은 주소를 생성하는 것인데, `print` 문은 주소를 생성하는 것과 직접적으로 관련이 없습니다.
 

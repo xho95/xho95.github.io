@@ -155,10 +155,9 @@ a += 2
 // a 는 이제 3 입니다
 ```
 
-표현식 `a += 2` 는 `a = a + 2` 를 짧게 줄인 겁니다. 사실상, 덧셈과 할당을 한 연산자로 조합하여 동시에 두 임무 모두 수행합니다.
+표현식 `a += 2` 는 `a = a + 2` 를 짧게 줄인 겁니다. 사실상, 덧셈과 할당 연산을 한 연산자로 조합하여 두 임무를 동시에 수행합니다.
 
 > 복합 할당 연산자는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 라고 작성할 수 없습니다.
-
 
 스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
