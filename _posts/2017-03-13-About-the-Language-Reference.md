@@ -23,7 +23,7 @@ categories: Swift Language Grammar About Reference
 * '글자 값 (literal)[^literal] 단어' 와 '구두점 (punctuation)' 은 굵은 글씨의 '`constant width` 문장' 으로 지시하며 '문법 산출 규칙' 의 오른-쪽에서만 나타납니다.
 * '문법 산출물' 의 대안은 '세로 막대 (`|`)' 로 구분합니다. '대안 산출물' 이 쉽게 이해하기에 너무 길 때는, 이를 여러 '문법 산출 규칙' 으로 끊어서 새로운 줄에 나타냅니다.
 * 몇몇 경우에, '표준적인 글꼴 (regular font) 문장' 을 사용하여 '문법 산출 규칙' 의 오른-쪽을 설명합니다.[^regular-font]
-* 선택 사항인 '구문 범주' 와 '글자 값' 은, _opt_ 라는, '끝자리 첨자 연산 (trailing subscript)' 으로 표시합니다.
+* 선택 사항인 '구문 범주' 와 '글자 값' 은, _opt_ 라는, '뒤에 딸린 첨자 연산 (trailing subscript)' 으로 표시합니다.
 
 예를 들어, '획득자-설정자 블럭 (getter-setter block)' 문법은 다음 처럼 정의합니다:
 

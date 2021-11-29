@@ -27,7 +27,7 @@ categories: Swift Language Grammar Revision History
 #### 2020-09-16
 
 * 스위프트 5.3 에서 갱신함.
-* '뒤에 딸린 여러 개의 클로저 (multiple trailing closures)' 에 대한 정보를 [Trailing Closures (뒤에 딸린 클로저)]({% post_url 2020-03-03-Closures %}#trailing-closures-뒤에-딸린-클로저) 부분에 추가했으며, 끝자리 클로저를 매개 변수와 일치시키는 방법에 대한 정보는 [Function Call Expression (함수 호출 표현식)]({% post_url 2020-08-19-Expressions %}#function-call-expression-함수-호출-표현식) 부분에 추가함.
+* '뒤에 딸린 여러 개의 클로저 (multiple trailing closures)' 에 대한 정보를 [Trailing Closures (뒤에 딸린 클로저)]({% post_url 2020-03-03-Closures %}#trailing-closures-뒤에-딸린-클로저) 부분에 추가했으며, 뒤에 딸린 클로저를 매개 변수와 일치시키는 방법에 대한 정보는 [Function Call Expression (함수 호출 표현식)]({% post_url 2020-08-19-Expressions %}#function-call-expression-함수-호출-표현식) 부분에 추가함.
 * 열거체에 대한 `Comparable` 의 통합된 구현에 대한 정보를 [Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합된-구현을-사용하여-프로토콜-채택하기) 부분에 추가함.
 * [Contextual Where Clauses (상황별 where 절)]({% post_url 2020-02-29-Generics %}#contextual-where-clauses-상황별-where-절) 부분을 추가했으며 이제 더 많은 곳에서 '일반화된 (generic) `where` 절' 을 작성할 수 있음.
 * 옵셔널 값에 대한 '소유하지 않는 참조 (undowned reference)' 의 사용에 대한 정보를 [Unowned Optional References (소유하지 않는 옵셔널 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-optional-references-소유하지-않는-옵셔널-참조) 부분에 추가함.
