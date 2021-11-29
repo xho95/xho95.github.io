@@ -32,11 +32,11 @@ _식별자 (identifiers)_ 는 'A' 에서 'Z' 까지의 대소문자 , 밑줄 (`_
 
 '예약어 (reserved word)' 를 '식별자' 로 사용하려면, 그 앞뒤에 '역따옴표 (backticks; `` ` ``)'[^backticks] 을 붙입니다. 예를 들어, `class` 는 유효한 식별자가 아니지만, `` `class` `` 는 유효합니다. '역따옴표' 자체는 식별자로 고려하지 않습니다; `` `x` `` 와 `x` 는 똑같은 의미입니다.
 
-'명시적인 매개 변수 이름' 을 가지지 않은 클로저 안에서는, `$0`, `$1`, `$2`, 등의 이름을 암시적으로 매개 변수에 붙입니다. 클로저 영역 안에서 이 이름들은 '유효한 식별자' 입니다.
+명시적인 매개 변수 이름이 없는 클로저 안에선, 암시적으로 매개 변수에 `$0`, `$1`, `$2`, 등의 이름을 붙입니다. 클로저 영역 안에서 이 이름들은 '유효한 식별자' 입니다.
 
 컴파일러는 '속성 포장의 드러냄 (projection)'[^property-wrapper-projection] 을 가진 속성에 대하여 '달러 기호 (`$`) 로 시작하는 식별자' 를 만들어 통합합니다. 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 해당 접두사를 가진 식별자를 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
 
-> GRAMMAR OF IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
+> GRAMMAR OF AN IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
 ### Keywords and Punctuation (키워드와 문장 부호)
 

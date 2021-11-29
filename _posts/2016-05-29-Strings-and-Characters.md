@@ -274,7 +274,7 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 
 `multiplier` 값은 '문자열 나중에 있는 더 큰 표현식의 일부분' 이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 값을 계산하며 (`7.5` 라는) 결과를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함할 때 `\(Double(multiplier) * 2.5)` 라고 표현식을 작성합니다.
 
-다른 경우라면 문자열 보간법으로 취급할 문자를 담은 문자열을 생성하기 위해 '확장된 문자열 구분자'[^extended-string-delimiters] 를 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+'확장된 문자열 구분자'[^extended-string-delimiters] 를 사용하면 그 외 경우라면 문자열 보간법으로 취급될 문자를 담은 문자열을 생성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
@@ -440,7 +440,7 @@ welcome.removeSubrange(range)
 
 ### Substrings (하위 문자열)
 
-문자열에서 하위 문자열을-예를 들어, '첨자 연산이나 `prefix(_:)` 같은 메소드' 로-구할 때의 결과는, 또 다른 문자열이 아닌, '[Substring](https://developer.apple.com/documentation/swift/substring) 인스턴스' 입니다. 스위프트의 하위 문자열은 문자열과 거의 똑같은 메소드를 가지고 있는데, 이는 하위 문자열 작업을 문자열 작업과 똑같은 식으로 할 수 있다는 의미입니다. 하지만, 문자열과 달리, 하위 문자열은 문자열에 '행동 (actions)' 을 수행하는 짧은 시간 동안만 사용합니다. 결과를 더 오래 저장할 준비가 됐을 땐, 하위 문자열을 `String` 인스턴스로 변환합니다. 예를 들면 다음과 같습니다:
+문자열에서 하위 문자열을-예를 들어, '첨자 연산이나 `prefix(_:)` 같은 메소드' 로-구할 때의 결과는, 또 다른 문자열이 아닌, '[Substring](https://developer.apple.com/documentation/swift/substring) 인스턴스' 입니다. 스위프트의 하위 문자열은 문자열과 거의 똑같은 메소드를 가지고 있는데, 이는 하위 문자열 작업을 문자열 작업과 똑같은 식으로 할 수 있다는 의미입니다. 하지만, 문자열과 달리, 하위 문자열은 문자열에 대한 행동을 수행하는 짧은 시간 동안만 사용합니다. 결과를 더 오래 저장할 준비가 됐을 땐, 하위 문자열을 `String` 인스턴스로 변환합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let greeting = "Hello, world!"

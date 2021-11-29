@@ -159,9 +159,9 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 ![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
 
-#### Shorthand Setter Declaration (설정자 선언의 줄임 표현)
+#### Shorthand Setter Declaration (짧게 줄인 설정자 선언)
 
-계산 속성의 설정자가 설정할 새 값에 대한 이름을 정의하지 않은 경우, '기본 이름' 인 `newValue` 를 사용합니다. 다음은 이런 '줄임 표기법 (shorthand notation)' 의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
+계산 속성의 설정자가 설정할 새 값에 대한 이름을 정의하지 않은 경우, '기본 이름' 인 `newValue` 를 사용합니다. 다음은 이런 짧게 줄인 표기법의 장점을 취한 `Rect` 구조체의 대안 버전입니다:
 
 ```swift
 struct AlternativeRect {
@@ -181,9 +181,9 @@ struct AlternativeRect {
 }
 ```
 
-#### Shorthand Getter Declaration (획득자 선언의 줄임 표현)
+#### Shorthand Getter Declaration (짧게 줄인 획득자 선언)
 
-획득자의 전체 본문이 '단일 표현식 (single expression)' 인 경우, 획득자는 해당 표현식을 암시적으로 반환합니다. 다음은 이런 '줄임 표기법' 과 설정자에 대한 '줄임 표기법' 의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
+획득자의 전체 본문이 '단일 표현식 (single expression)' 인 경우, 획득자는 해당 표현식을 암시적으로 반환합니다. 다음은 이의 짧게 줄인 표기법과 설정자의 짧게 줄인 표기법의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
 
 ```swift
 struct CompactRect {
@@ -223,7 +223,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // "the volume of fourByFiveByTwo is 40.0" 를 인쇄합니다.
 ```
 
-이 예제는, `width`, `height`, 그리고 `depth` 속성을 가진 '3차원 직사각형 상자' 를 표현하는, `Cuboid` 라는 새로운 구조체를 정의합니다.[^cuboid] 이 구조체는, '직육면체 (cuboid)' 의 현재 부피를 계산하고 반환하는, `volume` 이라는 읽기-전용 계산 속성도 가집니다. 특정 `volume` 값을 만들기 위해 `width`, `height`, 그리고 `depth` 값이 어떻게 돼야 할지 모호하기 때문에, `volume` 이 '설정 가능 (settable)' 하다는 것은 이치에 맞지 않습니다. 그럼에도 불구하고, 외부 사용자가 현재 계산된 부피를 알 수 있도록 `Cuboid` 에서 읽기-전용 계산 속성을 제공하는 것은 유용합니다.
+이 예제는, `width`, `height`, 그리고 `depth` 속성을 가진 '3차원 직사각형 상자' 를 표현하는, `Cuboid` 라는 새로운 구조체를 정의합니다.[^cuboid] 이 구조체는, '직육면체 (cuboid)' 의 현재 부피를 계산하고 반환하는, `volume` 이라는 읽기-전용 계산 속성도 가집니다. 특별한 `volume` 값에 대해 어느 `width`, `height`, 및 `depth` 값을 사용해야할 지 헷갈리기 때문에, `volume` 이 설정 가능 (settable) 한 건 말이 안됩니다. 그럼에도 불구하고, 외부 사용자가 현재 계산된 부피를 알 수 있도록 `Cuboid` 에서 읽기-전용 계산 속성을 제공하는 것은 유용합니다.
 
 ### Property Observers (속성 관찰자)
 
@@ -683,7 +683,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^optional-setter]: 원문은 'optional setter' 라고 되어 있는데 여기서의 'optional' 은 스위프트의 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 아닐 수도 있기 때문에 '선택 사항' 이라는 의미에서 'optional setter' 라고 한 것입니다.
 
-[^simplify]: 이 예제의 '계산 속성' 은 '단일 표현식' 이기도 하기 때문에 `return` 키워드도 생략 가능합니다. 앞서 [Shorthand Getter Declaration (획득자 선언의 줄임 표현)](#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 '획득자' 가 '단일 표현식' 이면 `return` 을 생략할 수 있다고 했는데, 이는 전체 '계산 속성' 에도 그대로 적용됩니다.
+[^simplify]: 이 예제의 '계산 속성' 은 '단일 표현식' 이기도 하기 때문에 `return` 키워드도 생략 가능합니다. 앞서 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)](#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 '획득자' 가 '단일 표현식' 이면 `return` 을 생략할 수 있다고 했는데, 이는 전체 '계산 속성' 에도 그대로 적용됩니다.
 
 [^cuboid]: 사실 'cuboid' 자체가 수학 용어로 '직육면체' 를 의미합니다. '직육면체' 는 모든 면이 직사각형으로 이루어진 기하학적 도형을 말하느데, 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 참고하기 바랍니다.
 

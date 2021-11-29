@@ -12,7 +12,7 @@ categories: Swift Language Grammar Function
 
 _함수 (functions)_ 는 '특정 임무를 수행하는 독립된 (self-contained) 코드 조각' 입니다. 함수엔 뭘하는 지 식별할 이름을 부여하며, 필요할 때 이 이름을 사용하여 임무를 수행할 함수를 "호출 (call)" 합니다.
 
-스위프트의 통일된 함수 구문은 '매개 변수 이름이 없는 단순한 C-스타일 함수부터 각각의 매개 변수마다 이름과 인자 이름표 (argument labels) 가 있는 복잡한 오브젝티브-C-스타일 메소드' 까지 어떤 것이든 표현할 만큼 충분히 유연합니다. 매개 변수는 '함수 호출이 단순해지도록 기본 (default) 값을 제공할 수도 있고, 함수를 한 번 실행 완료하면 전달한 변수를 수정하는, 입-출력 (in-out) 매개 변수로 전달' 할 수도 있습니다.
+스위프트의 통일된 함수 구문은 '매개 변수 이름이 없는 단순한 C-스타일 함수부터 각각의 매개 변수마다 이름과 인자 이름표 (argument labels) 가 있는 복잡한 오브젝티브-C-스타일 메소드' 까지 어떤 것이든 표현할 만큼 충분히 유연합니다. 매개 변수는 함수 호출이 단순해지도록 기본 (default) 값을 제공할 수도 있고, 함수 실행을 한 번 완료하고 나면 전달한 변수를 수정하는, 입-출력 (in-out) 매개 변수로 전달할 수도 있습니다.
 
 스위프트의 모든 함수는, 함수의 매개 변수 타입과 반환 타입으로 구성된, 타입을 가집니다. 스위프트의 다른 어떤 타입 같이 이 타입을 사용할 수 있는데, 이는 다른 함수의 매개 변수로 함수를 전달하고, 함수가 함수를 반환하는 걸, 하기 쉽게 해줍니다. 함수를 다른 함수 안에 작성하면 유용한 기능을 중첩 함수 영역 안에 은닉할 수도 있습니다.
 
@@ -33,7 +33,7 @@ func greet(person: String) -> String {
 
 이 모든 정보를, `func` 키워드로 접두사를 붙인, 함수 _정의 (definition)_ 로 끌어 모읍니다. 함수 반환 타입은 (대쉬 기호 다음에 오른쪽 꺽쇠 괄호 기호를 붙인) _반환 화살표 (return arrow)_ `->` 와, 그 다음의 반환할 타입의 이름으로 지시합니다.
 
-정의는 함수가 뭘 하는 지, 뭘 받길 예상하는 지, 그리고 마칠 때 뭘 반환할 지 설명합니다. 정의는 코드 다른 곳에서의 함수 호출이 모호하지 않게 해줍니다:
+정의는 함수가 뭘 하는 지, 뭘 받길 예상하는 지, 그리고 마칠 때 뭘 반환할 지 설명합니다. 정의는 코드 어디서든 함수 호출을 헷갈리지 않고 쉽게 하도록 합니다:
 
 ```swift
 print(greet(person: "Anna"))
@@ -226,7 +226,7 @@ print(anotherGreeting(for: "Dave"))
 
 전체 `greeting(for:)` 함수 정의가 자신이 반환할 인사말 메시지인데, 이는 이런 더 짧은 형식을 사용할 수 있다는 걸 의미합니다. `anotherGreeting(for:)` 함수는, 더 긴 함수 처럼 `return` 키워드를 써서, 동일한 인사말 메시지를 반환합니다. 단 하나의 `return` 줄만으로 작성한 어떤 함수든 `return` 을 생략할 수 있습니다.
 
-[Shorthand Getter Declaration (획득자 선언의 줄임 표현)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-획득자-선언의-줄임-표현) 에서 볼 것처럼, '속성 획득자 (property getter)' 도 암시적인 반환을 사용할 수 있습니다.
+[Shorthand Getter Declaration (짧게 줄인 획득자 선언)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 볼 것처럼, '속성 획득자 (property getter)' 도 암시적인 반환을 사용할 수 있습니다.
 
 > 암시적인 반환 값이라고 작성한 코드는 어떠한 값을 반환할 필요가 있습니다. 예를 들어, `fatalError("Oh no!")` 나 `print(13)` 을 암시적인 반환 값으로 사용할 순 없습니다.
 
@@ -237,7 +237,7 @@ print(anotherGreeting(for: "Dave"))
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수의 인자 값을 가리킵니다.
+  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
 }
 someFunction(firstParameterName: 1, secondParameterName: 2)
 ```
@@ -251,7 +251,7 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 ```swift
 func someFunction(argumentLabel parameterName: Int) {
   // 함수 본문에서, parameterName 은
-  // 해당 매개 변수의 인자 값을 가리킵니다.
+  // 해당 매개 변수의 인자 값을 참조합니다.
 }
 ```
 
@@ -274,7 +274,7 @@ print (greet(person: "Bill", from: "Cupertino"))
 ```swift
 func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
   // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수의 인자 값을 가리킵니다.
+  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
 }
 someFunction (1, secondParameterName: 2)
 ```
@@ -318,7 +318,7 @@ arithmeticMean(3, 8.25, 18.75)
 // 이 세 수들의 산술 평균인, 10.0 을 반환함
 ```
 
-함수에는 여러 개의 가변 매개 변수가 있을 수 있습니다. 가변 매개 변수 뒤에 오는 첫 번째 매개 변수에는 반드시 인자 이름표가 있어야 합니다. 인자 이름표는 인자가 가변 매개 변수로 전달됐는지 가변 매개 변수 뒤에 오는 매개 변수로 전달됐는지 모호하지 않게 해줍니다.
+함수에는 여러 개의 가변 매개 변수가 있을 수 있습니다. 가변 매개 변수 뒤에 오는 첫 번째 매개 변수에는 반드시 인자 이름표가 있어야 합니다. 인자 이름표는 인자가 가변 매개 변수로 전달됐는 지 가변 매개 변수 뒤에 오는 매개 변수로 전달됐는 지 헷갈리지 않도록 합니다.
 
 #### In-Out Parameters (입-출력 매개 변수)
 

@@ -85,7 +85,7 @@ numberOfLegs["bird"] = 2
 
 클래스나 구조체는 필요한 만큼 많은 첨자 연산 구현을 제공할 수 있으며, 사용하기에 적절한 첨자 연산은 첨자 연산이 사용되는 시점에 첨자 연산 대괄호 안에 담긴 값 또는 값들의 타입에 기초하여 추론될 것입니다. 이런 '다중 첨자 연산' 의 정의를 _첨자 연산 중복 정의 (subscript overloading)_ 라고 합니다.
 
-첨자 연산은 단일 매개 변수를 취하는 것이 가장 일반적인 동시에, 자신의 타입에 적절하다면 '다중 매개 변수' 를 가진 첨자 연산을 정의할 수도 있습니다. 다음 예제는, `Double` 값의 '이-차원' 배열을 표현하는, `Matrix` 구조체를 정의합니다. `Matrix` 구조체의 첨자 연산은 두 개의 정수 매개 변수를 취합니다:
+첨자 연산이 단일 매개 변수를 취하는 것이 가장 흔한 한편, 자신의 타입에 적절하다면 여러 개의 매개 변수를 가진 첨자 연산을 정의할 수도 있습니다. 다음 예제는, `Double` 값의 '이-차원' 배열을 표현하는, `Matrix` 구조체를 정의합니다. `Matrix` 구조체의 첨자 연산은 두 개의 정수 매개 변수를 취합니다:
 
 ```swift
 struct Matrix {
@@ -135,7 +135,7 @@ matrix[1, 0] = 3.2
 
 ![matrix](/assets/Swift/Swift-Programming-Language/Subscripts-matrix.jpg)
 
-`Matrix` 첨자 연산의 '획득자' 와 '설정자' 는 첨자 연산의 `row` 와 `column` 값이 유효한 지를 검사하기 위해 둘 다 '단언문 (assertion)' 을 가지고 있습니다. 이 '단언문' 들을 보조하기 위해, `Matrix` 는, 요청한 `row` 와 `column` 이 행렬의 경계 내에 있는지를 검사하는, `indexIsValid(row:column:)` 라는 '편의 메소드' 를 포함하고 있습니다:
+`Matrix` 첨자 연산의 '획득자' 와 '설정자' 는 첨자 연산의 `row` 와 `column` 값이 유효한 지를 검사하기 위해 둘 다 '단언문 (assertion)' 을 가지고 있습니다. 이러한 단언문을 거들기 위해, `Matrix` 는, 요청한 `row` 와 `column` 이 행렬의 경계 내에 있는지를 검사하는, `indexIsValid(row:column:)` 라는 '편의 메소드' 를 포함하고 있습니다:
 
 ```swift
 func indexIsValid(row: Int, column: Int) -> Bool {
