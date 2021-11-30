@@ -20,7 +20,7 @@ _속성 (properties)_ 은 값을 특정 클래스, 구조체, 또는 열거체�
 
 ### Stored Properties (저장 속성)
 
-가장 간단한 형식의, '저장 속성' 은, 특정 클래스나 구조체 인스턴스에 저장되는 상수 또는 변수입니다. 저장 속성은 (`var` 키워드로 도입하는) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입하는) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
+가장 단순한 형식의, '저장 속성' 은, 특정 클래스나 구조체 인스턴스에 저장되는 상수 또는 변수입니다. 저장 속성은 (`var` 키워드로 도입하는) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입하는) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
 
 [Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명하는 것처럼, 저장 속성을 정의하면서 '기본 값 (default value)' 을 제공할 수 있습니다. 초기화 동안에 저장 속성에 대한 초기 값을 설정하고 수정할 수도 있습니다. 이는, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 에서 설명하는 것처럼, '상수 저장 속성' 이더라도 그렇습니다.
 
@@ -556,7 +556,7 @@ struct SizedRectangle {
 
 #### Type Property Syntax (타입 속성 구문 표현)
 
-C 와 오브젝티브-C 에서는, 타입과 결합된 정적 상수와 정적 변수를 '_전역 (global)_ 정적 변수' 로써 정의합니다. 하지만, 스위프트의, 타입 속성은, 타입 외곽 중괄호 내의, 타입 정의 부분에서 작성하며, 각 타입 속성은 자신이 지원하는 타입으로 영역이 정해집니다.
+C 와 오브젝티브-C 에서는, 타입과 결합한 정적 상수와 정적 변수를 _전역 (global)_ 정적 변수로 정의합니다. 하지만, 스위프트에선 타입 속성을 타입 정의의 일부분으로써, 타입의 바깥 중괄호 안에 작성하며, 각각의 타입 속성 영역은 명시적으로 자신이 지원하는 타입으로 정해집니다.
 
 타입 속성은 `static` 키워드로 정의합니다. 클래스 타입에 대한 '계산 타입 속성' 에서는, 하위 클래스가 사위 클래스의 구현을 '재정의 (override)' 하는 것을 허용하기 위해 `class` 키워드를 대신 사용할 수 있습니다. 아래 예제는 '저장 타입 속성' 과 '계산 타입 속성' 에 대한 구문 표현을 보여줍니다:
 

@@ -86,7 +86,7 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 둘 다 새로운 인스턴스를 위해 '초기자 구문 표현 (initializer syntax)' 을 사용합니다. 가장 간단한 형식의 초기자 구문 표현은, `Resolution()` 이나 `VideoMode()` 처럼, 클래스나 구조체의 타입 이름 뒤에 빈 괄호를 사용합니다. 이는 클래스나 구조체의, 어떤 속성이든 '기본 값' 으로 초기화 된, 새로운 인스턴스를 생성합니다. 클래스와 구조체의 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세하게 설명합니다.
+구조체와 클래스 둘 다 새로운 인스턴스를 위해 '초기자 구문 표현 (initializer syntax)' 을 사용합니다. 가장 단순한 형식의 초기자 구문 표현은, `Resolution()` 이나 `VideoMode()` 처럼, 클래스나 구조체의 타입 이름 뒤에 빈 괄호를 사용합니다. 이는 클래스나 구조체의, 어떤 속성이든 '기본 값' 으로 초기화 된, 새로운 인스턴스를 생성합니다. 클래스와 구조체의 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세하게 설명합니다.
 
 #### Accessing Properties (속성에 접근하기)
 
