@@ -133,7 +133,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 
 ### Comments (주석)
 
-스스로의 기록이나 기억을 위해, 코드에 '실행 불가능한 문장' 을 포함하려면 '주석 (comments)' 을 사용합니다. 코드를 컴파일할 때 스위프트 컴파일러는 주석을 무시합니다.
+스스로의 기록이나 암시를 위해, '주석 (comments)' 을 사용하여 실행 불가능한 문장을 코드에 포함합니다. 스위프트 컴파일러는 코드를 컴파일할 때 주석을 무시합니다.
 
 스위프트의 주석은 C 의 주석과 매우 비슷합니다. '한-줄 (single-line) 주석' 은 '두 빗금 (two forward-slashes; `//`)' 으로 시작합니다:
 
