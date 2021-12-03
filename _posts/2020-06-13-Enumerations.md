@@ -10,7 +10,7 @@ categories: Swift Language Grammar Error Handling
 
 ## Enumerations (열거체)
 
-_열거체 (enumerations)_ 는 서로 관계 있는 값 그룹에 공통 타입을 정의하여 코드에서 이 값을 타입-안전한[^type-safe] 방식으로 작업하게 해줍니다.
+_열거체 (enumerations)_ 는 서로 관계 있는 값 그룹에 공통 타입을 정의하여 코드에서 이 값을 타입-안전하게[^type-safe] 작업하도록 해줍니다.
 
 C 에 익숙하다면, C 열거체는 관련된 이름에 일련의 정수 값을 할당한다는 것을 알고 있을 겁니다. 스위프트의 열거체는 훨씬 더 유연하며, 열거체의 각 'case 값' 에 값을 제공할 필요가 없습니다. 만약 열거체의 각 'case 값' 에 (_원시 값 (raw value)_ 이라는) 값을 제공할 경우, 이 값은 '문자열 (string)' 이나, '문자 (character)', 또는 '정수 (integer)' 나 '부동-소수점 (float-point)' 등 어떤 타입의 값이든 될 수 있습니다.
 
