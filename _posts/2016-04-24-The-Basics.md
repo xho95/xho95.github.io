@@ -71,7 +71,7 @@ var welcomeMessage: String
 welcomeMessage = "Hello"
 ```
 
-동일한 타입의 관련 변수 여러 개를, 쉼표로 구분하면, 최종 변수 이름 뒤의 단일 '타입 보조 설명' 을 가지고, 한 줄로 정의할 수 있습니다:
+동일한 타입의 관련있는 변수 여러 개를, 쉼표로 구분하면, 최종 변수 이름 뒤의 단일 '타입 보조 설명' 을 가지고, 한 줄로 정의할 수 있습니다:
 
 ```swift
 var red, green, blue: Double
