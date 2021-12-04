@@ -194,7 +194,7 @@ repeatLabels(a: "four") // 에러
 
 이 특성은 실행 시간에 멤버를 이름으로 찾아볼 수 있게 클래스, 구조체, 열거체, 또는 프로토콜에 적용합니다. 타입은 반드시 '`subscript(dynamicMemberLookup:)` 첨자 연산' 을 구현해야 합니다.
 
-'명시적인 멤버 표현식' 에서, '이름 붙인 멤버와 관련한 선언' 이 없을 경우, 표현식은, 멤버 정보를 인자로써 전달하는, '타입의 `subscript(dynamicMemberLookup:)` 첨자 연산 호출' 인 것으로 이해합니다. 첨자 연산은 '키 경로 (key path)' 나 '멤버 이름' 인 매개 변수를 취할 수 있는데; 두 첨자 연산 모두를 구현하면, '키 경로 인자를 취하는 첨자 연산' 을 사용합니다.
+명시적인 멤버 표현식에서, 이름 붙인 멤버에 해당하는 선언이 없는 경우, 멤버에 대한 정보를 인자로 전달하는, 타입의 `subscript(dynamicMemberLookup:)` 첨자 연산을 호출하는 표현식인 것으로 이해합니다. 첨자 연산은 '키 경로 (key path)' 나 '멤버 이름' 인 매개 변수를 취할 수 있는데; 두 첨자 연산 모두를 구현하면, '키 경로 인자를 취하는 첨자 연산' 을 사용합니다.
 
 `subscript(dynamicMemberLookup:)` 구현은 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 또는 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 타입의 인자를 사용하는 '키 경로' 를 취할 수 있습니다. [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 프로토콜을 준수하는 타입-대부분의 경우, `String`-인 인자를 사용하는 '멤버 이름' 을 취할 수도 있습니다. 첨자 연산의 반환 타입은 어떤 타입이어도 됩니다.
 
@@ -681,13 +681,13 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 **Custom Result-Builder Attributes (사용자 정의 결과-제작자 특성)**
 
-'결과 제작자 타입' 의 생성은 똑같은 이름의 '사용자 정의 특성' 을 생성합니다. 해당 특성은 다음 장소에 적용할 수 있습니다:
+결과 제작자 타입을 생성하는 건 '동일한 이름을 가진 사용자 정의 특성' 을 생성합니다. 그러한 특성을 다음 장소에 적용할 수 있습니다:
 
 * 함수 선언에서, 결과 제작자는 함수 본문을 제작합니다.
-* 획득자를 포함하는 변수나 첨자 연산에서, 결과 제작자는 획득자 본문을 제작합니다.
-* 함수 선언의 매개 변수에서, 결과 제작자는 관련 인자로 전달한 클로저 본문을 제작합니다.
+* 획득자를 포함한 변수나 첨자 연산 선언에서, 결과 제작자는 획득자 본문을 제작합니다.
+* 함수 선언에 있는 매개 변수에서, 결과 제작자는 해당 인자로 전달한 클로저 본문을 제작합니다.
 
-결과 제작자 특성의 적용은 'ABI 호환성' 에 충격을 주지 않습니다. 결과 제작자 특성을 매개 변수에 적용하면 해당 특성이 함수 인터페이스 일부분이 되어, 소스 호환성에 실제 효과를 줄 수 있습니다.
+결과 제작자 특성을 적용하는 건 'ABI 호환성' 에 큰 충격을 주지 않습니다. 결과 제작자 특성을 매개 변수에 적용하는 건 그 특성을 함수 인터페이스의 일부분이 되도록 하여, 소스 호환성에 효과를 줄 수 있습니다.
 
 #### requires_stored_property_inits (저장 속성 초기화가 필수임)
 

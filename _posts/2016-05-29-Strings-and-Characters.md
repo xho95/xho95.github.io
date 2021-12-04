@@ -371,7 +371,7 @@ print("the number of characters in \(word) is \(word.characters.count)")
 
 #### String Indices (문자열 색인)
 
-각각의 `String` 값은, 문자열의 각 `Character` 위치와 관련 있는, `String.Index` 라는, 결합된 '_색인 타입 (index type)_' 을 가집니다.
+각각의 `String` 값에는, 문자열의 각 `Character` 위치에 해당하는, `String.Index` 라는, 결합된 _색인 타입 (index type)_ 이 있습니다.
 
 위에서 언급한 것처럼, 서로 다른 문자를 저장하기 위해 서로 다른 메모리 양을 요구할 수 있으므로, 특별한 위치에 있는 `Character` 를 결정하기 위해선, '해당 `String` 각각의 유니코드 크기 값' 을 반드시 처음부터 끝까지 반복해야 합니다. 이런 이유로, 스위프트 문자열에는 정수 값 색인을 쓸 수 없습니다.[^indexed-by-integer-values]
 

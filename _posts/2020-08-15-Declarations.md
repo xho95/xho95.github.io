@@ -61,7 +61,7 @@ _상수 선언 (constant declaration)_ 은 '이름 붙인 상수 값' 을 프로
 
 상수를 '전역 (global scope)' 에서 선언할 때는, 반드시 '값' 으로 초기화해야 합니다. 상수 선언이 함수나 메소드 안에 있을 때는, 맨 처음 값을 읽기 전에 값을  설정한다는 보증을 하는 한, 나중에 초기화할 수 있습니다. 컴파일러가 상수 값을 절대로 읽지 않는다고 증명할 수 있다면, 상수에 값을 설정하는 건 아예 필수도 아닙니다. 상수 선언이 클래스나 구조체 선언에 있을 때는, _상수 속성 (constant property)_ 이라고 고려합니다. 상수 선언은 '계산 속성 (computed properties)' 이 아니며 따라서 '획득자 (getter)' 나 '설정자 (setter)' 를 가지지 않습니다.
 
-상수 선언에서 _상수 이름 (constant name)_ 이 '튜플 패턴' 이면, 튜플의 각 항목 이름이 '초기자 _표현식 (expression)_' 에 있는 '관련 값' 과 연결됩니다.
+상수 선언에서 _상수 이름 (constant name)_ 이 튜플 패턴이면, 튜플에 있는 각 항목 이름을 초기자 _표현식 (expression)_ 의 해당 값과 연결합니다.
 
 ```swift
 let (firstNumber, secondNumber) = (10, 42)
@@ -104,7 +104,7 @@ _변수 선언 (variable declaration)_ 은 '이름 붙인 변수 값' 을 프로
 
 '초기자 _표현식 (expression)_' 은 프로토콜 선언에 있을 순 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 '옵션' 입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 변수 선언이 반드시 '(`:` _타입 (type)_ 형식의) 명시적인 타입 보조 설명' 을 포함해야 합니다.
 
-상수 선언에서와 마찬가지로, _변수 이름 (variable name)_ 이 '튜플 패턴' 이면, 튜플의 각 항목 이름을 '초기자 _표현식 (expression)_' 에 있는 관련 값과 연결합니다.
+상수 선언에서 처럼, _변수 이름 (variable name)_ 이 튜플 패턴이면, 튜플에 있는 각 항목 이름을 초기자 _표현식 (expression)_ 에 있는 해당 값과 연결합니다.
 
 이름이 제시하는 것처럼, '저장 변수' 나 '저장 변수 속성' 의 값은 메모리에 저장됩니다.
 
@@ -300,9 +300,9 @@ f(x: 1, y: 2) // x 와 y 둘 다 이름표가 있습니다.
 &nbsp;&nbsp;&nbsp;&nbsp;`argument label-인자 이름표` `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\_ `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
 
-매개 변수 이름 앞의 이름은 매개 변수에, 매개 변수 이름과는 다를 수 있는, '명시적인 인자 이름표' 를 부여니다. 함수나 메소드 호출에서 관련 인자는 반드시 '주어진 인자 이름표' 를 사용해야 합니다.
+매개 변수 이름 앞에 있는 이름은, 매개 변수 이름과는 다를 수도 있는, 명시적인 인자 이름표를 매개 변수에 부여합니다. 함수나 메소드 호출에서 해당 인자는 반드시 주어진 인자 이름표를 사용해야 합니다.
 
-매개 변수 이름 앞의 '밑줄 (`_`)' 은 '인자 이름표' 를 억제합니다. 함수나 메소드 호출에서 관련 인자는 반드시 이름표가 없어야 합니다.
+매개 변수 이름 앞의 '밑줄 (`_`)' 은 '인자 이름표' 를 억제합니다. 함수나 메소드 호출에서 해당 인자는 반드시 이름표가 없어야 합니다.
 
 ```swift
 func repeatGreeting(_ greeting: String, count n: Int) { /* 인사를 n 번 합니다 */ }
@@ -770,7 +770,7 @@ protocol SomeProtocol: AnyObject {
 
 프로토콜 선언에서 '정적 (static) 첨자 연산 필수 조건' 을 선언하려면, 첨자 연산 선언을 '`static` 선언 수정자' 로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 '첨자 연산' 을 `static` 키워드로 선언하며, 프로토콜을 클래스가 준수하면 '첨자 연산' 을 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션 (extension)' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '정적 첨자 연산 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
-[Subscipt Declaration (첨자 연산 선언)](#subscipt-declaration-첨자-연산-선언) 부분도 참고하기 바랍니다.
+[Subscript Declaration (첨자 연산 선언)](#subscript-declaration-첨자-연산-선언) 부분도 참고하기 바랍니다.
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
@@ -1070,7 +1070,7 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 > GRAMMAR OF AN EXTENSION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID378)
 
-### Subscipt Declaration (첨자 연산 선언)
+### Subscript Declaration (첨자 연산 선언)
 
 _첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가 '첨자 연산 기능' 을 지원하도록 하며 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 원소의 접근을 위한 '편의 (convenient) 구문' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드로 선언하며 형식은 다음과 같습니다:
 
@@ -1085,7 +1085,7 @@ _첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가
 
 '첨자 연산 선언' 은 '클래스, 구조체, 열거체, 익스텐션, 또는 프로토콜 선언' 에만 있을 수 있습니다.
 
-_매개 변수 (paramter)_ 는 '첨자 연산 표현식' 에 있는 관련 타입의 (예를 들어, `object[i]` 라는 표현식의 `i` 같은) 원소에 접근하기 위한 1개 이상의 색인을 지정합니다. 원소 접근에 사용하는 색인은 어떤 타입이든 되긴 하지만, 각각의 매개 변수는 반드시 각 색인 타입을 지정하는 '타입 보조 설명' 을 포함해야 합니다. _반환 타입 (return type)_ 은 접근하는 원소의 타입을 지정합니다.
+_매개 변수 (paramter)_ 는 첨자 연산 표현식에 있는 해당 타입의 원소에 접근하는데 사용하는 하나 이상의 색인 (예를 들어, `object[i]` 표현식에 있는 `i`) 을 지정합니다. 원소 접근에 사용하는 색인은 어떤 타입이든 되긴 하지만, 각각의 매개 변수는 반드시 각 색인 타입을 지정하는 '타입 보조 설명' 을 포함해야 합니다. _반환 타입 (return type)_ 은 접근하는 원소의 타입을 지정합니다.
 
 '계산 속성' 에서 처럼, 첨자 연산 선언은 접근한 원소 값에 대한 읽기와 쓰기를 지원합니다. 값을 읽는 데는 '획득자 (getter)' 를 사용하며, 값을 쓰는 데는 '설정자 (setter)' 를 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, 두 절 모두 생략하고 단순히 요청 값을 직접 반환 할 수가 있습니다. 그렇다 하더라도, '설정자 절' 을 제공할 경우, '획득자 절' 도 반드시 제공해야 합니다.
 

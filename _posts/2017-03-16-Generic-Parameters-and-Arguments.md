@@ -81,7 +81,7 @@ _일반화 인자 절 (generic argument clause)_ 은 '일반화 타입의 타입
 
 &nbsp;&nbsp;&nbsp;&nbsp;<`generic argument list-일반화 인자 목록`>
 
-_일반화 인자 목록 (generic argument list)_ 은 '타입 인자들을 쉼표로-구분한 목록' 입니다. _타입 인자 (type argument)_ 는 '일반화 타입의 일반화 매개 변수 절에 있는 관련 타입 매개 변수' 를 대체하는 '실제 고정 타입의 이름' 입니다. 결과는 '해당 일반화 타입의 특수화 버전 (specialized version)'[^specialized-version] 입니다. 아래 예제는 '스위프트 표준 라이브러리에 있는 일반화 딕셔너리 타입' 의 '단순화 버전' 입니다.
+_일반화 인자 목록 (generic argument list)_ 은 '타입 인자들을 쉼표로-구분한 목록' 입니다. _타입 인자 (type argument)_ 는 일반화 타입의 일반화 매개 변수 절에 있는 해당 타입 매개 변수를 대체하는 '실제 고정 타입 이름' 입니다. 결과는 '해당 일반화 타입의 특수화 버전 (specialized version)'[^specialized-version] 입니다. 아래 예제는 '스위프트 표준 라이브러리에 있는 일반화 딕셔너리 타입' 의 '단순화 버전' 입니다.
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
