@@ -71,7 +71,7 @@ var welcomeMessage: String
 welcomeMessage = "Hello"
 ```
 
-서로 관계 있는 동일 타입의 여러 변수들은, 쉼표로 구분하고, 최종 변수 이름 뒤에 '단일 타입 보조 설명' 을 둬서, 한 줄로 정의할 수 있습니다:
+동일한 타입의 관련 변수 여러 개를, 쉼표로 구분하면, 최종 변수 이름 뒤의 단일 '타입 보조 설명' 을 가지고, 한 줄로 정의할 수 있습니다:
 
 ```swift
 var red, green, blue: Double
@@ -476,7 +476,7 @@ print("The status message is \(http200Status.description)")
 
 튜플은 특히 함수 반환 값으로 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지 가져오기의 성공 또는 실패를 설명하는 `(Int, String)` 튜플 타입을 반환할 지도 모릅니다. 함수는, 각각이 서로 다른 타입인, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입의 단일 값을 반환하는 경우보다 더 자신의 결과물에 대한 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 참고하기 바랍니다.
 
-> 튜플은 서로 관계 있는 값의 단순한 그룹에 유용합니다. 복잡한 자료 구조를 생성하는 데는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
+> 튜플은 단순한 관련 값 그룹에 유용합니다. 복잡한 자료 구조를 생성하는 데는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
 
 ### Optionals (옵셔널)
 
