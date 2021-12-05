@@ -303,7 +303,7 @@ categories: Swift Language Grammar Revision History
 * [Initializer Parameters Without Argument Labels (인자 이름표가 없는 초기자 매개 변수)]({% post_url 2016-01-23-Initialization %}#initializer-parameters-without-argument-labels-인자-이름표가-없는-초기자-매개-변수) 에 대하여 새로운 부분을 추가함.
 * [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에 대하여 새로운 부분을 추가함.
 * [Optional Tuple Return Types (옵셔널 튜플 반환 타입)]({% post_url 2020-06-02-Functions %}#optional-tuple-return-types-옵셔널-튜플-반환-타입) 에 대하여 새로운 부분을 추가함.
-* 관련 변수 여러 개를 '하나의 타입 보조 설명 (type annotation)' 을 가지고 한 줄로 정의할 수 있음을 알리기 위해 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 갱신함.
+* 관련된 변수 여러 개를 '하나의 타입 보조 설명 (type annotation)' 을 가지고 한 줄로 정의할 수 있음을 알리기 위해 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 갱신함.
 * `@optional`, `@lazy`, `@final`, 그리고 `@required` 특성은 이제 `optional`, `lazy`, `final`, 그리고 `required` [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 임.
 * `..<` 를 ("반-닫힌 범위 연산자 (half-closed range operator) 대신") [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 로 '언급 (refer)' 하도록 전체 책을 갱신함.
 * `Dictionary` 는 이제 '불리언 (Boolean)' 속성인 `isEmpty` 를 가진다는 것을 알리기 위해 [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 갱신함.
