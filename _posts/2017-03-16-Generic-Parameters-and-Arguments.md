@@ -17,7 +17,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 ### Generic Parameter Clause (일반화 매개 변수 절)
 
-_일반화 매개 변수 절 (generic parameter clause)_ 은 '일반화 타입 또는 함수의 타입 매개 변수' 와, '해당 매개 변수에 대한 어떤 결합 구속 조건 및 필수 조건' 을 나란히 지정합니다. '일반화 매개 변수 절' 은 '꺾쇠 괄호 (`<>`)' 로 테두리 치며 형식은 다음과 같습니다:
+_일반화 매개 변수 절 (generic parameter clause)_ 은 일반화 타입이나 함수의 타입 매개 변수와, 그 매개 변수와 결합된 어떤 구속 조건 및 필수 조건을 나란히 지정합니다. '일반화 매개 변수 절' 은 '꺾쇠 괄호 (`<>`)' 로 테두리 치며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;<`generic parameter list-일반화 매개 변수 목록`>
 
