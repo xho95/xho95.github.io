@@ -14,11 +14,11 @@ _열거체 (enumerations)_ 는 서로 관련된 값 그룹에 공통 타입을 �
 
 C 와 익숙하다면, C 열거체가 서로 관련된 이름을 정수 값 집합에 할당한다는 걸 알고 있을 겁니다. 스위프트 열거체는 훨씬 더 유연해서, 열거체의 각 case 마다 값을 제공하지 않아도 됩니다. 각 열거체 case 마다 (_원시 (raw)_ 값이라는) 값을 제공하는 경우, 이 값은 문자열이나, 문자, 아니면 어떤 정수 또는 부동-소수점 타입의 값이든 다 될 수 있습니다.
 
-대안으로, 다른 언어에서 '공용체 (unions) 나 가변체 (variants)' 가 많이 하는 것처럼, 열거체 case 는 각각의 서로 다른 case 값과 나란히 저장되는 _어떤 (any)_ 타입의 '결합 (associated) 값' 이든 지정할 수 있습니다. 관련된 case 들의 공통 집합을, 제각각 자신과 결합된 적절한 타입의 서로 다른 값 집합을 가진, 한 열거체의 일부분로 정의할 수 있습니다.
+대안으로, 다른 언어에서 '공용체 (unions) 나 가변체 (variants)' 가 많이 하는 것처럼, 열거체 case 는 _어떤 (any)_ 타입의 결합 (associated) 값이든 서로 다른 각 case 값과 나란히 저장하도록 지정할 수 있습니다. 한 열거체에서 서로 관련된 case 들의 공통 집합을 정의할 수 있는데, 제각각 자신과 결합된 적절한 타입의 서로 다른 값 집합을 가집니다.
 
-스위프트의 열거체는 그 자체로 '일급 (first-class) 타입'[^first-class] 입니다. 이는, 열거체의 현재 값에 대한 추가적인 정보를 제공하는 '계산 속성 (computed properties)' 과, 열거체가 표현하는 값과 관련된 기능을 제공하는 '인스턴스 메소드' 같이, 전통적으로 클래스에서만 지원하던 많은 특징들을 채택하고 있습니다. 열거체는 '초기 case 값' 을 제공하기 위해 '초기자 (initializers)' 도 정의할 수 있고; 원래의 구현 너머로 기능을 확대하기 위해 확장될 수도 있으며; 표준 기능을 제공하기 위해 프로토콜을 준수할 수도 있습니다.
+스위프트 열거체는 그 자체로 '일급 (first-class) 타입'[^first-class] 입니다. 이는, 열거체 현재 값에 대한 추가 정보를 제공하는 계산 속성과, 열거체가 표현하는 값과 관련한 기능을 제공하는 인스턴스 메소드 같이, 전통적으로 클래스만 지원하던 수많은 특징을 채택합니다. 열거체는 초기 case 값을 제공하는 초기자 (initializers) 도 정의할 수 있고; 원본 구현 너머로 자신의 기능을 늘리도록 확장 (extend) 할 수도; 표준 기능을 제공하도록 프로토콜을 준수할 수도 있습니다.
 
-이 '보유 능력 (capabilities)' 들에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
+이러한 보유 능력 (capabilities) 에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
 
 ### Enumeration Syntax (열거체 구문)
 
@@ -361,7 +361,7 @@ print(evaluate(product))
 
 [^type-safe]: 여기서 '타입-안전한 (type-safe) 방식' 은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있음을 의미합니다. 이에 대한 더 자세한 정보는 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
-[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수 있으며, 다른 변수 등에 할당할 수도 있는 대상이 있다면 이 대상을 '일급 (first-class)' 이라고 합니다. 이에 대한 더 자세한 정보는 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
+[^first-class]: 프로그래밍에서 '일급 (first-class) 이다' 라는 말은 '객체 (class) 와 동-급으로 사용할 수 있다' 는 의미입니다. 예를 들어, 어떠한 것이 객체 처럼 인자로 전달할 수 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있다면, '이는 일급이다' 라고 합니다. '일급' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
 [^variants]: 사실상, 이 세가지 용어는 같은 것입니다. 각각에 대한 더 자세한 정보는 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 을 의미하기 때문에 이 둘은 서로 항목이 나뉘지도 않았습니다.
 
