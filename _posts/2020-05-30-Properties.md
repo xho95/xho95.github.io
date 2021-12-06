@@ -355,7 +355,7 @@ struct SmallRectangle {
 
 #### Setting Initial Values for Wrapped Properties (포장된 속성에 초기 값 설정하기)
 
-위 예제 코드는 '포장된 속성' 에 대한 초기 값을 `TwelveOrLess` 정의에 있는 초기 값인 `number` 를 부여하는 것으로 설정합니다. 이 '속성 포장' 을 사용하는 코드는, `TwelveOrLess` 로 포장된 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 의 정의는 `height` 나 `width` 에 초기 값을 부여할 수 없습니다. 초기 값 설정 또는 다른 '사용자화 (customization)' 를 지원하기 위해서는, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 '포장 값'과 '최대 값' 을 설정하는 초기자를 정의한 `SmallNumber` 라는 `TwelveOrless` 을 확대한 버전입니다:
+위 예제 코드는 '포장된 속성' 에 대한 초기 값을 `TwelveOrLess` 정의에 있는 초기 값인 `number` 를 부여하는 것으로 설정합니다. 이 '속성 포장' 을 사용하는 코드는, `TwelveOrLess` 로 포장된 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 의 정의는 `height` 나 `width` 에 초기 값을 부여할 수 없습니다. 초기 값 설정 또는 다른 '사용자화 (customization)' 를 지원하기 위해서는, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 `TwelveOrless` 를 늘린 버전으로 '포장된 최대 값을 설정하는 초기자를 정의하는 `SmallNumber` 입니다:
 
 ```swift
 @propertyWrapper

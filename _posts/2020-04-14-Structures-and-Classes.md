@@ -25,7 +25,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드의 '�
 * 기능을 제공하는 메소드를 정의함
 * 값에 대한 접근을 첨자 연산 구문으로 제공하는 첨자 연산을 정의함
 * 초기 상태를 설정하는 초기자를 정의함
-* 기본 구현 너머로 기능을 확대하도록 확장됨
+* 기본 구현 너머로 기능을 늘리도록 확장됨
 * 정해진 종류의 표준 기능을 제공하기 위해 프로토콜을 준수함
 
 더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 그리고 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
