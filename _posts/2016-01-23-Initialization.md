@@ -136,7 +136,7 @@ let veryGreen = Color(0.0, 1.0, 0.0)
 
 초기자 매개 변수에 인자 이름표를 사용하고 싶지 않으면, 해당 매개 변수에 '명시적인 인자 이름표' 대신 '밑줄 (underscore; `_`)' 를 작성하여 기본 작동 방식을 '재정의 (override)' 합니다.
 
-다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를, 이미 '섭씨' 척도인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가지도록, 확장한 버전입니다:
+다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를, 이미 '섭씨' 척도인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가지도록, 늘린 버전입니다:
 
 ```swift
 struct Celsius {
