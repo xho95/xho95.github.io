@@ -67,9 +67,9 @@ directionToHead = .east
 
 `directionToHead` 타입을 이미 알고 있으므로, 값 설정 때 타입을 빼먹을 수 있습니다. 이는 명시적으로 타입을 지정한 열거체 값과 작업할 때 아주 이해하기 쉬운 코드를 만듭니다.
 
-### Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)
+### Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)
 
-개별 열거체 값은 `switch` 문으로 맞춰볼 수 있습니다:
+`switch` 문을 가지고 개별 열거체 값을 맞춰볼 수 있습니다:
 
 ```swift
 directionToHead = .south
@@ -83,18 +83,18 @@ case .east:
 case .west:
   print("Where the skies are blue")
 }
-// "Watch out for penguins" 를 인쇄합니다.
+// "Watch out for penguins" 를 인쇄함
 ```
 
-이 코드는 다음 처럼 이해할 수 있습니다:
+이 코드는 다음처럼 이해할 수 있습니다:
 
-“`directionToHead` 의 값을 검토합니다. `.north` 와 같은 경우, `"Lots of planets have a north"` 를 인쇄합니다. `.south` 와 같은 경우, `"Watch out for penguins"` 을 인쇄합니다."
+“`directionToHead` 값을 검토합니다. `.north` 와 같은 경우, `"Lots of planets have a north"` 를 인쇄합니다. `.south` 와 같은 경우, `"Watch out for penguins"` 을 인쇄합니다."
 
-...이를 계속합니다.
+...등을 계속합니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, `switch` 문은 '열거체 case 값' 을 검토할 때 반드시 '완전 소진해야 (exhaustive)' 합니다. 만약 `.west` 에 대한 '`case` 절' 을 생략하면, '`CompassPoint` case 값' 의 완료된 목록을 검토하지 않기 때문에, 코드를 컴파일하지 않습니다. '완전 소진' 을 요구하는 것은 예기치 않게 '열거체 case 값' 을 생략하지 않도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, 열거체의 case 를 검토할 땐 반드시 `switch` 문을 '완전 소진 (exhaustive)' 해야 합니다. `.west` 이라는  `case` 를 생략하면, `CompassPoint` 의 완전한 case 목록을 검토한 게 아니기 때문에, 코드를 컴파일하지 않습니다. 완전 소진을 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
 
-모든 '열거채 case 값' 에 '`case` 절' 를 제공하는 것이 적절하지 않을 때는, 명시적으로 알리지 않은 어떤 'case 값' 도 다룰 수 있는 '`default` case 절' 을 제공할 수 있습니다:
+모든 열거채 case 마다 `case` 절을 제공하는 게 적절하지 않을 때, `default` case 절을 제공하면 명시적으로 알리지 않은 어떤 case 도 다룰 수 있습니다:
 
 ```swift
 let somePlanet = Planet.earth
@@ -104,23 +104,23 @@ case .earth:
 default:
   print("Not a safe place for humans")
 }
-// "Mostly harmless" 를 인쇄합니다.
+// "Mostly harmless" 를 인쇄함
 ```
 
-### Iterating over Enumeration Cases (열거체 case 값들에 동작 반복시키기)
+### Iterating over Enumeration Cases (열거체 case 들에 동작 반복하기)
 
-어떤 열거체에서는, 해당 열거체의 모든 'case 값' 에 대한 '집합체 (collection)' 를 가지는 것이 유용합니다. 이렇게 하려면 열거체 이름 뒤에 `: CaseIterable` 을 작성합니다. 스위프트는 열거체 타입의 `allCases` 속성으로 모든 'case 값' 집합체를 드러냅니다. 다음은 예제입니다:
+일부 열거체에선, 그 열거체의 '모든 case 를 집합체 (collection)' 로 가지는 게 유용합니다. 열거체 이름 뒤에 `: CaseIterable` 을 작성하면 이렇게 할 수 있습니다. 스위프트는 모든 case 의 집합체를 '열거체 타입의 `allCases` 속성' 으로 노출합니다. 다음은 예제입니다:
 
 ```swift
 enum Beverage: CaseIterable {
-case coffee, tea, juice
+  case coffee, tea, juice
 }
 let numberOfChoices = Beverage.allCases.count
 print("\(numberOfChoices) beverages available")
-// "3 beverages available" 를 인쇄합니다.
+// "3 beverages available" 를 인쇄함
 ```
 
-위 예제는, `Beverage` 열거체의 모든 'case 값' 을 담은 '집합체' 에 접근하기 위해 `Beverage.allCases` 를 작성합니다. `allCase` 는 다른 집합체 처럼 똑같이 사용할 수 있습니다-집합체의 원소는 열거체 타입의 인스턴스이므로, 이 경우는 `Beverage` 값입니다. 위 예제는 'case 값' 이 얼마나 있는지를 세며, 아래 예제는 모든 'case 값' 에 동작을 반복시키기 위해 `for` 반복문을 사용합니다.
+위 예제에선, `Beverage.allCases` 라고 작성하여 `Beverage` 열거체의 모든 case 를 담은 집합체에 접근합니다. `allCase` 는 다른 어떤 집합체인 것 같이 사용할 수 있습니다-집합체 원소가 열거체 타입의 인스턴스이므로, 이 경우엔 `Beverage` 값입니다. 위 예제는 case 가 얼마나 많은 지를 세며, 아래 예제는 `for` 반복문을 사용하여 모든 case 에 동작을 반복합니다.
 
 ```swift
 for beverage in Beverage.allCases {
@@ -131,7 +131,7 @@ for beverage in Beverage.allCases {
 // juice
 ```
 
-위 예제에서 사용한 구문 표현은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수하는 것으로 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
+위 예제에서 사용한 구문은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수한다고 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
 
 ### Associated Values (결합 값)
 
@@ -180,7 +180,7 @@ productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 
 이 순간, 원래의 `Barcode.upc` 와 정수 값들이 새로운 `Barcode.qrCode` 와 문자열 값으로 대체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 이든 `.qrCode` 이든 (결합 값과 같이) 저장할 수 있지만, 주어진 순간에 단 한 가지만을 저장할 수 있습니다.
 
-서로 다른 바코드 타입은, [Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-열거체-값-과-switch-문-맞춰보기) 의 예제와 비슷하게, 'switch 문' 으로 검사할 수 있습니다. 하지만, 이번에는 'switch 문' 에서 '결합 값' 을 뽑아냅니다. 각 '결합 값' 은 '`switch` 문의 case 절' 본문에서 사용하려고 (`let` 접두사를 가진) 상수 또는 (`var` 접두사를 가진) 변수로써 뽑아냅니다:
+서로 다른 바코드 타입은, [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 의 예제와 비슷하게, 'switch 문' 으로 검사할 수 있습니다. 하지만, 이번에는 'switch 문' 에서 '결합 값' 을 뽑아냅니다. 각 '결합 값' 은 '`switch` 문의 case 절' 본문에서 사용하려고 (`let` 접두사를 가진) 상수 또는 (`var` 접두사를 가진) 변수로써 뽑아냅니다:
 
 ```swift
 switch productBarcode {
