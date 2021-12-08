@@ -135,15 +135,15 @@ for beverage in Beverage.allCases {
 
 ### Associated Values (결합 값)
 
-이전 부분에 있는 예제는 열거체의 'case 값' 이 그 자체로 (타입을 가지고) 정의된 값이 되는 방법을 보여줍니다. 상수나 변수를 `Planet.earth` 로 설정하고, 나중에 이 값을 검사할 수 있습니다. 하지만, 이 'case 값' 들과 나란히 다른 타입의 값을 저장할 수 있다면 유용할 때가 있습니다. 이런 추가적인 정보를 _결합 값 (associated value)_ 이라고 하며, 이는 매 번 해당 'case 값' 을 코드에서 값으로 사용할 때마다 달라집니다.
+이전 부분에 있는 예제는 열거체 case 가 그 자체로 (타입을 지정한) 정의 값이라는 걸 보여줍니다. 상수나 변수에 `Planet.earth` 를 설정할 수도, 이 값을 나중에 검사할 수도 있습니다. 하지만, 이 case 값과 나란하게 다른 타입의 값을 저장할 수 있는 게 유용할 때가 있습니다. 이런 추가 정보를 _결합 값 (associated value)_ 이라고 하며, 이는 코드에서 그 case 를 값으로 사용할 때마다 변합니다.
 
-스위프트 열거체는 어떤 타입의 '결합 값' 이든 저장하라고 정의할 수 있으며, 필요하다면 값 타입이 열거체의 각 'case 값' 마다 서로 달라도 됩니다. 이와 유사한 열거체를 다른 프로그래밍 언어에서는 _차별화된 공용체 (discriminated unions)_, _꼬리표 단 공용체 (tagged unions)_, 또는 _가변체 (variants)_ 라고 합니다.[^variants]
+스위프트 열거체는 주어진 어떤 타입의 결합 값이든 저장할 수 있으며, 필요하다면 각각의 열거체의 case 마다 값 타입이 서로 다를 수도 있습니다. 이와 비슷한 열거체를 다른 프로그래밍 언어에서는 _차별화된 공용체 (discriminated unions)_, _꼬리표 단 공용체 (tagged unions)_, 또는 _가변체 (variants)_ 라고 합니다.[^variants]
 
-예를 들어, '재고 추적 시스템' 이 서로 다른 두 타입의 바코드로 물품을 추적할 필요가 있다고 가정합니다. 어떤 물품은, `0` 에서 `9` 까지의 숫자를 사용하는, UPC 양식의 1-차원 바코드로 이름표를 붙입니다. 각 바코드는 한 자리 수의 '시스템 코드' 뒤에, 다섯 자리의 '제조회사 코드' 와 다섯 자리의 '물품 코드' 를 가집니다. 그 뒤에는 코드를 올바르게 '스캔 (scan)' 했는지를 증명하기 위한 '검사 자리' 가 있습니다:
+예를 들어, 재고 추적 시스템이 서로 다른 두 가지 타입의 바코드로 제품을 추적할 필요가 있다고 가정해 봅시다. 일부 제품은, `0` 부터 `9` 까지의 숫자를 쓴, UPC 양식의 1-차원 바코드를 가지고 이름표를 답니다. 각각의 바코드에는 '한 자리 시스템 코드' 와, 그 뒤의 '다섯 자리 제조 회사 코드' 및 '다섯 자리 물품 코드' 가 있습니다. 그 뒤엔 코드를 올바로 스캔했는 지 증명하는 '한 자리 검사 코드' 를 붙입니다:
 
 ![1-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-1d-barcode.png)
 
-다른 제품은, 어떤 'ISO 8859-1' 문자도 사용할 수 있고 최대 '2,953' 개 길이의 문자열을 '부호화 (encoding)' 할 수 있는, QR 코드 양식의 2-차원 바코드로 이름표를 붙입니다:
+다른 제품은, 어떤 ISO 8859-1 문자든 사용할 수 있고 문자열을 2,953 개의 문자만큼 부호화 (encode) 할 수 있는, QR 코드 양식의 2-차원 바코드를 가지고 이름표를 답니다:
 
 ![2-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-2d-barcode.png)
 
@@ -367,7 +367,7 @@ print(evaluate(product))
 
 [^plural-vs-singular]: 열거체 이름을 복수형으로 만들면 본문 예제는 `CompassPoints` 가 되는데, 이 경우, 그 아래 예제는 `CompassPoints.west` 가 됩니다. 이러면, 코드를 이해할 때 나침판 방향이 여러 개 있다고 오해할 수 있습니다.
 
-[^variants]: 사실상, 이 세가지 용어는 같은 것입니다. 각각에 대한 더 자세한 정보는 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 참고로 컴퓨터 공학에서는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 을 의미하기 때문에 이 둘은 서로 항목이 나뉘지도 않았습니다.
+[^variants]: 여기 있는 세 가지 용어는 사실상 똑같은 개념입니다. 각각에 대한 더 자세한 정보는, 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 컴퓨터 공학 용어로는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 이기 때문에, 이 둘은 항목 자체가 같습니다. 어쨌든, 본문 내용에 따르면 '스위프트 열거체의 결합 값' 은 'C 언어의 공용체 (union)' 와 유사한 개념이라고 이해할 수 있습니다.
 
 [^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값을 가진 열거체를 위한 실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값을-가진-열거체를-위한-실패-가능-초기자) 에서도 설명하고 있습니다.
 
