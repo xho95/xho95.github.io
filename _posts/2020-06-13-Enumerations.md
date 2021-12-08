@@ -147,9 +147,9 @@ for beverage in Beverage.allCases {
 
 ![2-d barcode](/assets/Swift/Swift-Programming-Language/Enumerations-2d-barcode.png)
 
-UPC 바코드는 네 정수의 '튜플' 로 저장하고, QR 코드 바코드는 임의 길이 문자열로 저장하는 것이 '재고 추적 시스템' 에게 편리합니다.
+재고 추적 시스템이 'UPC 바코드는 네 정수를 가진 튜플로 저장' 하고, 'QR 코드 바코드는 임의 길이의 문자열로 저장' 하는 게 편리합니다.
 
-스위프트에서, 어느 타입이든 다 되는 '물품 바코드' 를 정의한 열거체는 다음 같이 보일 수도 있습니다:
+스위프트에서, 어느 타입이든 다 되는 제품 바코드 열거체는 다음 같이 보일 지도 모릅니다:
 
 ```swift
 enum Barcode {
@@ -164,7 +164,7 @@ enum Barcode {
 
 이 정의는 실제로 어떤 `Int` 나 `String` 값을 제공하지 않습니다-단지 `Barcode.upc` 나 `Barcode.qrCode` 일 때 `Barcode` 상수와 변수가 저장할 수 있는 '결합 값' 의 _타입 (type)_ 만을 정의합니다.
 
-그러면 어느 타입을 사용해도 새로운 바코드를 생성할 수 있습니다:
+그러면 어느 타입을 사용하든 새로운 바코드를 생성할 수 있습니다:
 
 ```swift
 var productBarcode = Barcode.upc(8, 85909, 51226, 3)
