@@ -160,7 +160,7 @@ enum Barcode {
 
 이는 다음처럼 이해할 수 있습니다:
 
-"결합 값이 (`Int`, `Int`, `Int`, `Int`) 타입인 `upc` 값, 또는 결합 값이 `String` 타입인 `qrCode` 값을 취할 수 있는 `Barcode` 라는 열거체 타입을 정의합니다."
+"(`Int`, `Int`, `Int`, `Int`) 타입 결합 값을 가진 `upc` 값, 또는 `String` 타입 결합 값을 가진 `qrCode` 값 중 어느 하나를 취할 수 있는, `Barcode` 라는 열거체 타입을 정의합니다."
 
 이 정의는 실제로 어떤 `Int` 나 `String` 값을 제공하지 않습니다-단지 `Barcode.upc` 나 `Barcode.qrCode` 일 때 `Barcode` 상수와 변수가 저장할 수 있는 '결합 값' 의 _타입 (type)_ 만을 정의합니다.
 
