@@ -162,17 +162,17 @@ enum Barcode {
 
 "(`Int`, `Int`, `Int`, `Int`) 타입 결합 값을 가진 `upc` 값, 또는 `String` 타입 결합 값을 가진 `qrCode` 값 중 어느 하나를 취할 수 있는, `Barcode` 라는 열거체 타입을 정의합니다."
 
-이 정의는 실제로 어떤 `Int` 나 `String` 값을 제공하지 않습니다-단지 `Barcode.upc` 나 `Barcode.qrCode` 일 때 `Barcode` 상수와 변수가 저장할 수 있는 '결합 값' 의 _타입 (type)_ 만을 정의합니다.
+이 정의는 어떤 `Int` 나 `String` 값도 실제로 제공하지 않습니다-그냥 `Barcode` 상수 및 변수가 `Barcode.upc` 나 `Barcode.qrCode` 와 같을 때 저장할 수 있는 결합 값의 _타입 (type)_ 만 정의합니다.
 
-그러면 어느 타입을 사용하든 새로운 바코드를 생성할 수 있습니다:
+그러면 어느 타입을 사용하는 바코드든 새로 생성할 수 있습니다:
 
 ```swift
 var productBarcode = Barcode.upc(8, 85909, 51226, 3)
 ```
 
-이 예제는 `productBarcode` 라는 새로운 변수를 생성한 다음 `(8, 85909, 51226, 3)` 라는 튜플 '결합 값' 을 가진 `Barcode.upc` 값을 할당합니다.
+이 예제는 `productBarcode` 라는 새로운 변수를 생성하고 결합 값으로 `(8, 85909, 51226, 3)` 라는 튜플 값을 가진 `Barcode.upc` 을 할당합니다.
 
-똑같은 물품에 다른 타입의 바코드를 할당할 수 있습니다:
+동일한 제품에 다른 타입의 바코드를 할당할 수 있습니다:
 
 ```swift
 productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
