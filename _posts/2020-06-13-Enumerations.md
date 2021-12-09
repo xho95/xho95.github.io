@@ -226,11 +226,11 @@ enum ASCIIControlCharacter: Character {
 
 #### Implicitly Assigned Raw Values (암시적으로 할당하는 원시 값)
 
-정수나 문자열 원시 값을 저장하는 열거체와 작업할 때, 각 'case 값' 에 대한 '원시 값' 을 명시적으로 할당할 필요는 없습니다. 안할 때는, 스위프트가 값을 자동으로 할당합니다.
+정수나 문자열 원시 값을 저장한 열거체와 작업할 때는, 각 case 의 원시 값을 명시적으로 할당하지 않아도 됩니다. 안 할 땐, 스위프트가 자동으로 값을 할당합니다.
 
-예를 들어, 정수를 원시 값으로 사용할 때, 각 'case 값' 에 대한 암시적인 값은 '이전 case 값' 보다 하나 큰 값입니다. 첫 번째 'case 값' 에 설정된 값이 없는 경우, 값은 `0` 이 됩니다.
+예를 들어, 원시 값으로 정수를 사용할 땐, 각 case 값이 이전 case 보다 암시적으로 하나 커집니다. 첫 번째 case 에 값을 설정하지 않으면, 그 값은 `0` 입니다.
 
-아래의 열거체는, 각 행성을 태양 순으로 표현하는 정수 원시 값을 갖도록, 앞에 있던 `Planet` 열거체를 개량한 것입니다:
+아래 열거체는, 태양으로부터 각 행성의 순서를 나타내는 정수 원시 값을 갖도록, 앞선 `Planet` 열거체를 개량한 것입니다:
 
 ```swift
 enum Planet: Int {
@@ -238,11 +238,11 @@ enum Planet: Int {
 }
 ```
 
-위 예제에서, `Planet.mercury` 는 `1` 이라는 명시적인 원시 값을 가지고, `Planet.venus` 는 `2` 라는 암시적인 원시 값을 가지며, 이렇게 계속됩니다.
+위 예제에서, `Planet.mercury` 는 `1` 이라는 명시적인 원시 값을 가지고, `Planet.venus` 는 `2` 라는 암시적인 원시 값을 가지며, 등등 그렇게 계속됩니다.
 
-문자열을 원시 값으로 사용할 때, 각 'case 값' 에 대한 암시적인 값은 해당 'case 값' 의 이름에 쓰인 글자입니다.
+원시 값으로 문자열을 사용할 땐, 그 case 이름에 있는 문장이 각 case 의 암시적인 값입니다.
 
-아래의 열거체는, 각 방향의 이름을 표현하는 문자열 원시 값을 갖도록, 앞에 있던 `CompassPoint` 열거체를 개량한 것입니다:
+아래 열거체는, 각 방향의 이름을 나타내는 문자열 원시 값을 갖도록, 앞선 `CompassPoint` 열거체를 개량한 것입니다:
 
 ```swift
 enum CompassPoint: String {
@@ -250,16 +250,16 @@ enum CompassPoint: String {
 }
 ```
 
-위 예제에서, `CompassPoint.south` 는 암시적인 원시 값 `"south"` 를 가지며, 이렇게 계속됩니다.
+위 예제에서, `CompassPoint.south` 는 `"south"` 라는 암시적인 원시 값을 가지며, 등등 그렇게 계속됩니다.
 
-'열거체 case 의 원시 값' 은 `rawValue` 속성으로 접근합니다:
+열거체 case 의 원시 값엔 `rawValue` 속성으로 접근합니다:
 
 ```swift
 let earthsOrder = Planet.earth.rawValue
-// earthsOrder (지구 순서) 는 3 입니다.
+// earthsOrder (지구의 순서) 는 3 임
 
 let sunsetDirection = CompassPoint.west.rawValue
-// sunsetDirection (해지는 방향) 은 "west (서쪽)" 입니다.
+// sunsetDirection (해지는 방향) 은 "west (서쪽)" 임
 ```
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
