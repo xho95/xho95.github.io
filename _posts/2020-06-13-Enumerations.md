@@ -329,7 +329,7 @@ let sum = ArithmeticExpression.addition(five, four)
 let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
 ```
 
-'재귀 함수 (recursive function)' 는 재귀 구조를 가진 자료와 작업하기 위한 직접적인 방법입니다. 예를 들어, 다음은 '산술 표현식' 을 평가하는 함수입니다:
+재귀 함수는 재귀 구조를 가진 자료와 직접적인 방식으로 작업합니다. 예를 들어, 다음은 산술 표현식을 평가하는 함수입니다:
 
 ```swift
 func evaluate(_ expression: ArithmeticExpression) -> Int {
@@ -344,10 +344,10 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
 }
 
 print(evaluate(product))
-// "18" 를 인쇄합니다.
+// "18" 를 인쇄함
 ```
 
-이 함수는 '평범한 수' 는 단순히 그 '결합 값' 을 반환함으로써 평가합니다. 덧셈과 곱셈은 왼-쪽의 표현식을 평가하고, 오른-쪽의 표현식을 평가한 다음, 이를 더하거나 곱함으로써 평가합니다.
+이 함수가 평범한 수를 평가하는 방식은 단순히 결합 값을 반환하는 것입니다. 덧셈이나 곱셈의 평가 방식은 '왼-쪽의 표현식을 평가하고, 오른-쪽의 표현식을 평가한 다음, 이를 더하거나 곱하는 것' 입니다.
 
 ### 다음 장
 
@@ -373,4 +373,4 @@ print(evaluate(product))
 
 [^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 참고하기 바랍니다.
 
-[^indirection]: 본문을 보면 '재귀 (recursive)' 라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하는데, 이는 스위프트 열거체를 '재귀적' 으로 만드는 방식이 메모리의 '간접 주소' 방식을 써서 구현하기 때문입니다.
+[^indirection]: 본문을 보면 '재귀 (recursive)' 라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하는데, 이는 스위프트 열거체를 '재귀적으로 만드는 방식' 이 '메모리의 간접 주소 방식' 을 써서 구현하기 때문입니다.
