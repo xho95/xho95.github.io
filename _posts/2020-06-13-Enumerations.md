@@ -264,16 +264,16 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
 
-원시-값 타입을 가진 열거체를 정의할 경우, 열거체는 (`rawValue` 라는 매개 변수로써) 원시 값 타입의 값을 취해서 '열거체 case 값' 또는 `nil` 을 반환하는 '초기자 (initializers)' 를 자동으로 받습니다. 이 '초기자' 는 열거체의 새로운 인스턴스를 생성할 때 사용할 수 있습니다.
+원시-값 타입을 가진 열거체를 정의하면, 열거체가 '원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 취하고 열거체 case 나 `nil` 을 반환하는 초기자 (initializer)' 를 자동으로 받습니다. 이 초기자를 사용하면 새로운 열거체 인스턴스를 생성할 수 있습니다.
 
-다음 예제는 `7` 이라는 '원시 값' 으로 '천왕성 (Uranus)' 임을 식별합니다:
+이 예제는 `7` 이라는 원시 값으부터 '천왕성 (Uranus) 을 식별' 합니다:
 
 ```swift
 let possiblePlanet = Planet(rawValue: 7)
-// possiblePlanet 은 타입이 Planet? 이고 값은 Planet.uranus 입니다.
+// possiblePlanet 은 Planet? 타입이고 Planet.uranus 와 같음
 ```
 
-하지만, 가능한 모든 `Int` 값마다 일치하는 행성을 찾을 수 있는 것은 아닙니다. 이 때문에, '원시 값 초기자 (raw value initializer)' 는 항상 _옵셔널 (optional)_ '열거체 case 값' 을 반환합니다. 위 예제에서, `possiblePlanet` 는 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
+하지만, 모든 `Int` 값이 일치하는 행성을 찾을 수 있는 건 아닙니다. 이 때문에, 원시 값 초기자는 항상 '_옵셔널 (optional)_ 인 열거체 case' 를 반환합니다. 위 예제에서, `possiblePlanet` 은 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
 
 > '원시 값 초기자' 는 '실패 가능 (failable) 초기자' 인데, 모든 '원시 값' 마다 '열거체 case 값' 을 반환하는 것은 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 참고하기 바랍니다.
 
