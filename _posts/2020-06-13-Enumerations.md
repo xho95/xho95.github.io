@@ -266,18 +266,18 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 원시-값 타입을 가진 열거체를 정의하면, 열거체가 '원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 취하고 열거체 case 나 `nil` 을 반환하는 초기자 (initializer)' 를 자동으로 받습니다. 이 초기자를 사용하면 새로운 열거체 인스턴스를 생성할 수 있습니다.
 
-이 예제는 `7` 이라는 원시 값으부터 '천왕성 (Uranus) 을 식별' 합니다:
+이 예제는 `7` 이라는 원시 값으부터 '천왕성 (Uranus)' 을 식별합니다:
 
 ```swift
 let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet 은 Planet? 타입이고 Planet.uranus 와 같음
 ```
 
-하지만, 모든 `Int` 값이 일치하는 행성을 찾을 수 있는 건 아닙니다. 이 때문에, 원시 값 초기자는 항상 '_옵셔널 (optional)_ 인 열거체 case' 를 반환합니다. 위 예제에서, `possiblePlanet` 은 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
+하지만, 모든 `Int` 값이 일치하는 행성을 찾을 수 있는 건 아닙니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 은 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
 
-> '원시 값 초기자' 는 '실패 가능 (failable) 초기자' 인데, 모든 '원시 값' 마다 '열거체 case 값' 을 반환하는 것은 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 참고하기 바랍니다.
+> 원시 값 초기자는, 모든 원시 값이 열거체 case 를 반환하는 건 아니기 때문에, '실패 가능 (failable) 초기자' 입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 부분을 참고하기 바랍니다.
 
-`11` 번 째 위치의 행성을 찾으려고 하면, '원시 값 초기자' 가 반환하는 '옵셔널 `Planet`' 값은 `nil` 일 것입니다:
+`11` 번 째 위치의 행성을 찾으려고 하면, 원시 값 초기자가 반환할 옵셔널 `Planet` 값이 `nil` 일 겁니다:
 
 ```swift
 let positionToFind = 11
@@ -291,16 +291,16 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 } else {
   print("There isn't a planet at position \(positionToFind)")
 }
-// "There isn't a planet at position 11" 를 인쇄합니다.
+// "There isn't a planet at position 11" 를 인쇄함
 ```
 
-이 예제는 원시 값이 `11` 인 행성에 접근하기 위해 '옵셔널 연결 (optional binding)' 을 사용합니다. `if let somePlanet = Planet(rawValue : 11)` 은 '옵셔널 `Planet`' 을 생성하고, 가져올 수 있었다면 이 `somePlanet` 에 해당 '옵셔널 `Planet`' 의 값을 설정합니다. 이 경우, `11` 번 째 위치의 행성을 가져오는 것이 불가능하므로, 그 대신 `else` 분기를 실행합니다.
+이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 원시 값 `11` 을 가진 행성에 접근하려고 합니다. 구문 `if let somePlanet = Planet(rawValue : 11)` 은 옵셔널 `Planet` 을 생성하고, 옵셔널 `Planet` 값을 가져올 수 있다면 `somePlanet` 에 그 값을 설정합니다. 이 경우, `11` 번 째 위치의 행성을 가져오는 건 불가능하므로, 대신 `else` 분기를 실행합니다.
 
-### Recursive Enumerations (재귀적인 열거체)
+### Recursive Enumerations (재귀 열거체)
 
-_재귀적인 열거체 (recursive enumeration)_ 는 또 다른 열거체의 인스턴스를 하나 이상의 '열거체 case 값' 에 대한 '결합 값' 으로 가지는 열거체입니다. '열거체 case 값' 은 그 앞에 `indirect`[^indirect] 를 작성하여 '재귀적' 임을 지시하는데, 이는 필요한 '간접 계층 (layer of indirection)' 을 집어 넣을 것을 컴파일러에게 알립니다.
+_재귀 열거체 (recursive enumeration)_ 는 '하나 이상의 열거체 case 가 결합 값으로 또 다른 열거체 인스턴스를 가지는 열거체' 입니다. 열거체 case 가 재귀적이라고 지시하려면, 필요한 '간접 계층 (layer of indirection)' 을 집어 넣어야 함을 컴파일러에게 알리고자, 그 앞에 `indirect`[^indirect] 를 작성합니다.
 
-예를 들어, 다음은 간단한 '산술 (arithmetic) 표현식' 을 저장하는 열거체입니다:
+예를 들어, 다음은 단순한 산술 표현식을 저장하는 열거체입니다:
 
 ```swift
 enum ArithmeticExpression {
@@ -310,7 +310,7 @@ enum ArithmeticExpression {
 }
 ```
 
-'결합 값' 을 가진 모든 '열거체 case 값' 이 '간접 (indirection)'[^indirection] 일 수 있도록 열거체 맨 앞에 `indirect` 를 작성할 수도 있습니다:
+열거체 맨 앞에 `indirect` 를 작성하면 '결합 값을 가진 모든 열거체 case 가 간접 (indirection)'[^indirection] 이 되게 할 수 있습니다:
 
 ```swift
 indirect enum ArithmeticExpression {
@@ -320,7 +320,7 @@ indirect enum ArithmeticExpression {
 }
 ```
 
-이 열거체는 세 가지 종류의 '산술 표현식' 을 저장할 수 있는데: 평범한 수, 두 표현식의 덧셈, 그리고 두 표현식의 곱셈입니다. `addition` 과 `multiplication` 'case 값' 은 또 다시 '산술 표현식' 을 '결합 값' 으로 가집니다-이 '결합 값' 들은 표현식을 '중첩' 가능하게 만듭니다. 예를 들어, 표현식 `(5 + 4) * 2` 는 곱셈 오른-쪽엔 수를 가지고 곱셈 왼-쪽엔 또 다른 표현식을 가집니다. '자료 (data)' 가 중첩되어 있기 때문에, 자료를 저장하기 위해 사용되는 열거체도 중첩을 지원할 필요가 있습니다-이는 열거체가 '재귀적 (recursive)' 일 필요가 있다는 의미입니다. 아래 코드는 `(5 + 4) * 2` 를 위해 생성되는 재귀적인 열거체인 `ArithmeticExpression` 을 보여줍니다:
+이 열거체는: 평범한 수, 두 표현식의 덧셈, 그리고 두 표현식의 곱셈이라는 세 가지 종류의 산술 표현식을 저장할 수 있습니다. `addition` 과 `multiplication` case 는 또 다시 산술 표현식인 결합 값을 가집니다-이러한 결합 값은 표현식을 중첩 가능하게 합니다. 예를 들어, 표현식 `(5 + 4) * 2` 는 곱셈 오른-쪽엔 수가 있고 곱셈 왼-쪽엔 또 다른 표현식이 있습니다. 자료를 중첩하기 때문에, 자료를 저장하는데 사용하는 열거체도 중첩을 지원할 필요가 있습니다-이는 열거체가 재귀적일 (recursive) 필요가 있다는 의미입니다. 아래 코드는 `(5 + 4) * 2` 를 생성하고 있는 재귀 열거체인 `ArithmeticExpression` 을 보여줍니다:
 
 ```swift
 let five = ArithmeticExpression.number(5)
