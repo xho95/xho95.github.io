@@ -218,11 +218,11 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-여기서, `ASCIIControlCharacter` 라는 열거체에 대한 '원시 값' 은 `Character` 타입으로 정의되었으며, 좀 더 공통적인 ASCII 제어 문자로 설정됩니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명합니다.
+여기선, `ASCIIControlCharacter` 라는 열거체의 원시 값을 `Character` 타입으로 정의하며, 좀 더 흔한 일부의 ASCII 제어 문자들로 설정합니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명합니다.
 
-'원시 값' 은 '문자열 (strings)', '문자 (characters)', 또는 어떤 '정수 (integer)' 나 '부동-소수점(floating-point) 수' 타입이든 될 수 있습니다. 각각의 원시 값은 '열거체 선언' 내에서 반드시 유일해야 합니다.
+원시 값은 문자열이나, 문자, 아니면 어떤 정수 또는 부동-소수점 수 타입일 수 있습니다. 각각의 원시 값은 자신의 열거체 선언 안에서 반드시 유일해야 합니다.
 
-> '원시 값' 은 '결합 값' 과 같은 것이 _아닙니다 (not)_. '원시 값' 은, 위의 세 ASCII 코드와 같이, 코드에서 열거체를 맨 처음 선언할 때 미리 채워지는 값으로 설정됩니다. 특정 '열거체 case 값' 에 대한 '원시 값' 은 항상 같습니다. '결합 값' 은 열거체의 'case 값' 중 하나에 기초하여 새로운 상수나 변수를 생성할 때 설정되먀, 그럴 때마다 서로 다를 수 있습니다.
+> 원시 값은 결합 값과 똑같지 _않습니다 (not)_. 원시 값은, 위의 세 ASCII 코드와 같이, 코드에서 열거체를 맨 처음 선언할 때 미리 채워지는 값으로 설정됩니다. 특정 '열거체 case 값' 에 대한 '원시 값' 은 항상 같습니다. '결합 값' 은 열거체의 'case 값' 중 하나에 기초하여 새로운 상수나 변수를 생성할 때 설정되먀, 그럴 때마다 서로 다를 수 있습니다.
 
 #### Implicitly Assigned Raw Values (암시적으로 할당되는 원시 값)
 
