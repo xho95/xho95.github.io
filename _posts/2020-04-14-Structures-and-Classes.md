@@ -37,9 +37,9 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 * 정리자 (deinitializer) 는 클래스 인스턴스에 할당한 어떤 자원이든 풀 수 있게 합니다.
 * 참조 카운팅 (reference counting) 은 클래스 인스턴스에 대한 하나 이상의 참조를 허용합니다.
 
-더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 그리고 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 을 참고하기 바랍니다.
+더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 참고하기 바랍니다.
 
-클래스가 지원하는 추가적인 보유 능력은 복잡도 증가라는 비용에 직면합니다. 일반적인 '지침 (guideline)' 대로, 이유를 파악하기가 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 실제로, 이는 대부분의 사용자 정의 자료 타입은 구조체나 열거체로 정의된다는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
+클래스가 지원하는 추가적인 보유 능력은 복잡도 증가라는 비용에 직면합니다. 일반적인 지침으로는, 구조체가 이유를 파악하기 쉽기 때문에 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 이는, 실상, 대부분의 사용자 정의 자료 타입이 구조체와 열거체일 것이라는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
 
 #### Definition Syntax (정의 구문 표현)
 
@@ -270,6 +270,6 @@ C, C++ 또는 오브젝티브-C 에 대한 경험이 있다면, 이 언어들은
 
 [^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 참고하기 바랍니다.
 
-[^choosing-between-structures-and-classes]: 원문 자체가 애플 '개발자 (developer)' 문서에 대한 링크입니다.
+[^choosing-between-structures-and-classes]: 원문 자체가 '애플 개발자 (developer) 문서 링크' 입니다.
 
 [^manual-memory-management]: 이것 역시 원문 자체가 애플 '개발자' 문서에 대한 링크입니다. 초창기에는 `UnsagePointer` 에 대한 설명이 본문에도 있었으나, 스위프트를 갱신하면서 관련 설명이 없어졌습니다.
