@@ -41,22 +41,22 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 
 클래스가 지원하는 추가적인 보유 능력은 복잡도 증가라는 비용에 직면합니다. 일반적인 지침으로는, 구조체가 이유를 파악하기 쉽기 때문에 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 이는, 실상, 대부분의 사용자 정의 자료 타입이 구조체와 열거체일 것이라는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
 
-#### Definition Syntax (정의 구문 표현)
+#### Definition Syntax (정의 구문)
 
-구조체와 클래스를 정의하는 구문 표현은 비슷합니다. 구조체는 `struct` 키워드로 도입하고 클래스는 `class` 키워드로 도입합니다. 둘 다 한 쌍의 중괄호 안에 전체 정의를 둡니다:
+구조체와 클래스의 정의 구문은 비슷합니다. `struct` 키워드로 구조체를 도입하며 `class` 키워드로 클래스를 도입합니다. 둘 다 한 쌍의 중괄호 안에 자신의 전체 정의를 둡니다:
 
 ```swift
 struct SomeStructure {
-  // 구조체 정의는 여기에 둡니다.
+  // 구조체 정의는 여기에 둠
 }
 class SomeClass {
-  // 클래스 정의는 여기에 둡니다.
+  // 클래스 정의는 여기에 둠
 }
 ```
 
-> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 것입니다. 타입은 (`String`, `Int`, 그리고 `Bool` 같은) 표준 스위프트 타입의 대문자 방식과 일치하도록 (여기 있는 `SomeStructure` 와 `SomeClass` 같이) `UpperCamelCase`[^uppser-camel-case] (낙타 모양 대문자) 이름을 부여합니다. 속성과 메소드는 타입 이름과 구별하기 위해 (`frameRate` 와 `incrementCount` 같이) `lowerCamelCase` (낙타 모양 소문자) 이름을 부여합니다.
+> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 겁니다. (여기 있는 `SomeStructure` 와 `SomeClass` 같이) 타입에 `UpperCamelCase`[^uppser-camel-case] (낙타 모양 대문자) 이름을 부여하여 (`String`, `Int`, 및 `Bool` 같은) 표준 스위프트 타입의 대문자 방식과 일치하도록 합니다. (`frameRate` 와 `incrementCount` 같이) 속성과 메소드엔 `lowerCamelCase` (낙타 모양 소문자) 이름을 부여하여 타입 이름과 구별합니다.
 
-다음은 구조체 정의와 클래스 정의에 대한 예제입니다:
+다음 예제는 구조체 정의 및 클래스 정의입니다:
 
 ```swift
 struct Resolution {
@@ -266,7 +266,7 @@ C, C++ 또는 오브젝티브-C 에 대한 경험이 있다면, 이 언어들은
 
 [^object-instance]: 스위프트 구조체와 클래스를 같이 설명하는데, 객체라는 용어는 클래스에만 해당하므로, 인스턴스라는 용어를 사용해서 클래스와 구조체 모두에 해당하는 부분을 설명한다는 의미입니다.
 
-[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 `UpperCamelCase` 와 `lowerCamelCase` 로 또다시 구분을 하기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮깁니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
+[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 보이기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 `UpperCamelCase` 와 `lowerCamelCase` 로 또다시 나누기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮깁니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은, 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 항목과 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
 
 [^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 참고하기 바랍니다.
 
