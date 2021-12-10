@@ -77,16 +77,16 @@ class VideoMode {
 
 #### Structure and Class Instances (구조체와 클래스 인스턴스)
 
-`Resolution` 구조체 정의와 `VideoMode` 클래스 정의는 `Resolution` 또는 `VideoMode` 가 무엇으로 보일 지만을 설명합니다. 그 자체로는 지정된 해상도나 영상 모드를 설명하지 않습니다. 그렇게 하기 위해서는, 구조체나 클래스의 인스턴스를 생성할 필요가 있습니다.
+`Resolution` 구조체 정의와 `VideoMode` 클래스 정의는 `Resolution` 이나 `VideoMode` 가 어떻게 보일지만 설명합니다. 스스로는 특정 해상도나 영상 모드를 설명하지 않습니다. 그럴려면, 구조체나 클래스 인스턴스를 생성할 필요가 있습니다.
 
-인스턴스를 생성하는 구문 표현은 구조체와 클래스 둘 다 매우 비슷합니다:
+인스턴스 생성 구문은 구조체와 클래스 둘 다 아주 비슷합니다:
 
 ```swift
 let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 둘 다 새로운 인스턴스를 위해 '초기자 구문 표현 (initializer syntax)' 을 사용합니다. 가장 단순한 형식의 초기자 구문 표현은, `Resolution()` 이나 `VideoMode()` 처럼, 클래스나 구조체의 타입 이름 뒤에 빈 괄호를 사용합니다. 이는 클래스나 구조체의, 어떤 속성이든 '기본 값' 으로 초기화 된, 새로운 인스턴스를 생성합니다. 클래스와 구조체의 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세하게 설명합니다.
+구조체와 클래스 둘 다 새로운 인스턴스에 '초기자 구문 (initializer syntax) 을 사용' 합니다. 가장 단순한 형식의 초기자 구문은, `Resolution()` 이나 `VideoMode()` 처럼, 클래스 또는 구조체 타입 이름 뒤에 빈 괄호를 사용하는 겁니다. 이는 클래스나 구조체의, 어떤 속성이든 자신의 기본 값으로 초기화한, 새 인스턴스를 생성합니다. 클래스와 구조체 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세히 설명합니다.
 
 #### Accessing Properties (속성에 접근하기)
 
