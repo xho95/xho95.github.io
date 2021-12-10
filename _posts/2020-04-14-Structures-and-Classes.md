@@ -90,39 +90,39 @@ let someVideoMode = VideoMode()
 
 #### Accessing Properties (속성에 접근하기)
 
-인스턴스의 속성은 _점 구문 표현 (dot syntax)_ 을 사용하여 접근할 수 있습니다. '점 구문' 에서, 속성 이름은 인스턴스 이름 바로 뒤에, 어떤 공백도 없이, '마침표 (period; `.`)' 로 구분하여, 작성합니다:
+_점 구문 (dot syntax)_ 을 사용하여 인스턴스의 속성에 접근할 수 있습니다. 점 구문은, 인스턴스 이름 바로 뒤에, 어떤 공백도 없이, 마침표 (`.`) 로 구분하여, 속성 이름을 작성합니다:
 
 ```swift
 print ( "The width of someResolution is \(someResolution.width)")
-// "The width of someResolution is 0" 를 인쇄합니다.
+// "The width of someResolution is 0" 를 인쇄함
 ```
 
-이 예제에서, `someResolution.width` 는 `someResolution` 의 `width` 속성을 참조하며, `0` 이라는 '기본 초기 값' 을 반환합니다.
+이 예제에서, `someResolution.width` 는 `someResolution` 의 `width` 속성을 참조하여, `0` 이라는 자신의 기본 초기 값을 반환합니다.
 
-`VideoMode` 의 `resolution` 속성에 있는 `width` 속성 처럼, '하위 속성' 으로 파고 들어 갈 수 있습니다:
+`VideoMode` 의 `resolution` 속성에 있는 `width` 속성 같이, 하위 속성으로 파고 들어 갈 수 있습니다:
 
 ```swift
 print ( "The width of someVideoMode is \(someVideoMode.resolution.width)")
-// "The width of someVideoMode is 0" 를 인쇄합니다.
+// "The width of someVideoMode is 0" 를 인쇄함
 ```
 
-'점 구문' 은 '변수 속성' 에 새로운 값을 할당하기 위해서도 사용할 수 있습니다:
+변수 속성에 새로운 값을 할당하기 위해 점 구문을 사용할 수도 있습니다:
 
 ```swift
 someVideoMode.resolution.width = 1280
 print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
-// "The width of someVideoMode is now 1280" 를 인쇄합니다.
+// "The width of someVideoMode is now 1280" 를 인쇄함
 ```
 
 #### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
-모든 구조체는 자동으로 생기는 _멤버 초기자 (memberwise initializer)_ 를 가지는데, 이는 새로운 구조체 인스턴스의 멤버 속성을 초기화하는데 사용할 수 있습니다. 새로운 인스턴스의 속성 기본 값은 멤버 초기자에 이름으로써 전달할 수 있습니다:
+모든 구조체엔 _멤버 초기자 (memberwise initializer)_ 가 자동으로 생기며, 이것으로 새로운 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다. 새 인스턴스 속성을 위한 기본 값은 멤버 초기자에 이름을 써서 전달할 수 있습니다:
 
 ```swift
 let vga = Resolution(width: 640, height: 480)
 ```
 
-구조체와는 달리, 클래스 인스턴스는 '기본 멤버 초기자' 를 받지 않습니다. 초기자는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 더 자세하게 설명합니다.
+구조체와는 달리, 클래스 인스턴스는 기본 멤버 초기자를 받지 않습니다. 초기자는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세히 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 
