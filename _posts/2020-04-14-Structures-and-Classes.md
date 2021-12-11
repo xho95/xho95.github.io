@@ -143,33 +143,33 @@ var cinema = hd
 
 이 예제는 `hd` 라는 상수를 선언하고 여기에 Full HD 영상 너비와 높이 (1920 픽셀 너비와 1080 픽셀 높이) 로 초기화한 `Resolution` 인스턴스를 설정합니다.
 
-그런 다음 `cinema` 라는 변수를 선언하고 이에 `hd` 의 현재 값을 설정합니다. `Resolution` 은 구조체이기 때문에, 기존 인스턴스의 _복사본 (copy)_ 을 만들며, 이 새 복사본을  `cinema` 에 할당합니다. `hd` 와 `cinema` 는 이제 너비와 높이가 똑같지만, 이면을 살펴보면 서로 완전히 다른 두 인스턴스입니다.
+그런 다음 `cinema` 라는 변수를 선언하고 여기에 현재 `hd` 값을 설정합니다. `Resolution` 은 구조체이기 때문에, 기존 인스턴스의 _복사본 (copy)_ 을 만들며, 이 새 복사본을  `cinema` 에 할당합니다. 이제 `hd` 와 `cinema` 의 너비와 높이가 똑같을지라도, 이들의 이면은 서로 완전히 다른 두 개의 인스턴스입니다.
 
-다음으로, `cinema` 의 `width` 속성을 '디지털 영화 송출' 에 사용되는 것보다 약간 더 넓은 (2048 픽셀 너비와 1080 픽셀 높이인)'2K 표준' 너비로 수정합니다.
+그 다음, 디지털 영화 송출에 사용하는 살짝 더 넓은 2K 표준 너비 (2048 픽셀 너비와 1080 픽셀 높이) 로 `cinema` 의 `width` 속성을 정정합니다:
 
 ```swift
 cinema.width = 2048
 ```
 
-`cinema` 의 `width` 속성을 검사하여 진짜 `2048` 로 바뀌었는지 봅니다:
+`cinema` 의 `width` 속성을 검사하면 진짜 `2048` 로 바뀐 걸 보여줍니다:
 
 ```swift
 print("cinema is now \(cinema.width) pixels wide")
-// "cinema is now 2048 pixels wide" 를 인쇄합니다.
+// "cinema is now 2048 pixels wide" 를 인쇄함
 ```
 
-하지만, 원본인 `hd` 인스턴스의 `width` 속성은 여전히 예전 값인 `1920` 을 가집니다:
+하지만, 원본 `hd` 인스턴스의 `width` 속성은 여전히 `1920` 이라는 예전 값을 가집니다:
 
 ```swift
 print("hd is still \(hd.width) pixels wide")
-// "hd is still 1920 pixels wide" 를 인쇄합니다.
+// "hd is still 1920 pixels wide" 를 인쇄함
 ```
 
-`cinema` 에 `hd` 의 현재 값을 부여할 때는, `hd` 에 저장된 _값 (values)_ 이 새로운 `cinema` 인스턴스로 복사됩니다. 최종 결과는 똑같은 수치 값을 담은 완전히 분리된 두 인스턴스입니다. 하지만, 분리된 인스턴스이기 때문에,  `cinema` 의 너비를 `2048` 로 설정하는 것은, 아래 그럼에 있는 것처럼, `hd` 에 저장된 너비에 영향을 주지 않습니다:
+`cinema` 에 현재 `hd` 값을 줄 땐, `hd` 에 저장한 _값 (values)_ 을 새로운 `cinema` 인스턴스로 복사합니다. 끝 결과는 동일한 수치 값을 담은 완전히 분리된 두 인스턴스입니다. 하지만, 분리된 인스턴스이기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비를 `2048` 로 설정하는 건 `hd` 에 저장한 너비에 영향을 주지 않습니다:
 
 ![an copy of the value type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
 
-열거체에도 똑같은 작동 방식이 적용됩니다:
+열거체 동작도 똑같이 적용됩니다:
 
 ```swift
 enum CompassPoint {
@@ -184,11 +184,11 @@ currentDirection.turnNorth()
 
 print("The current direction is \(currentDirection)")
 print("The remembered direction is \(rememberedDirection)")
-// "The current direction is north" 를 인쇄합니다.
-// "The remembered direction is west" 를 인쇄합니다.
+// "The current direction is north" 를 인쇄함
+// "The remembered direction is west" 를 인쇄함
 ```
 
-`rememberedDirection` 에 `currentDirection` 의 값을 할당할 때, 실제로는 해당 값의 복사본을 설정하는 것입니다. 그러므로 `currentDirection` 값을 바꾸는 것은 `rememberedDirection` 에 저장된 원래 값의 복사본에는 영향을 주지 않습니다.
+`rememberedDirection` 에 `currentDirection` 값을 할당할 땐, 실제로는 그 값의 복사본을 설정합니다. 그 후에 `currentDirection` 값을 바꾸는 건 `rememberedDirection` 에 저장된 원본 값의 복사본에 영향을 주지 않습니다.
 
 ### Classes Are Reference Types (클래스는 참조 타입입니다)
 
