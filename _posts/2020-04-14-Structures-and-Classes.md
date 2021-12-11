@@ -192,9 +192,9 @@ print("The remembered direction is \(rememberedDirection)")
 
 ### Classes Are Reference Types (클래스는 참조 타입입니다)
 
-값 타입과는 달리, _참조 타입 (reference types)_ 은 변수나 상수에 할당할 때, 또는 함수에 전달할 때, 복사하지 _않 (not)_ 습니다. 복사하는 대신, 기존과 똑같은 인스턴스에 대한 참조를 사용합니다.
+값 타입과 달리, _참조 타입 (reference types)_ 은 변수나 상수에 할당할 때나, 함수에 전달할 때, 복사하지 _않습니다 (not)_. 복사하기 보단, 기존과 동일한 인스턴스의 참조를 사용합니다.
 
-다음은, 위에서 정의한 `VideoMode` 클래스를 사용하는, 예제입니다:
+다음 예제는, 위에서 정의한 `VideoMode` 클래스를 사용합니다:
 
 ```swift
 let tenEighty = VideoMode()
@@ -204,24 +204,24 @@ tenEighty.name = "1080i"
 tenEighty.frameRate = 25.0
 ```
 
-이 예제는 `tenEighty` 라는 새로운 상수를 선언하고 `VideoMode` 클래스의 새로운 인스턴스에 대한 참조를 설정합니다. '영상 (video) 모드' 는 이전에 있던 `1920` 너비 `1080` 폭 'HD 해상도' 의 복사본으로 할당됩니다. '비월 주사 방식' 으로 설정하고, 이름은 "`1080i`" 로 설정하며, '프레임 재생 속도' 는 초당 `25.0` 프레임으로 설정합니다.
+이 예제는 `tenEighty` 라는 새로운 상수를 선언하고 여기에 새로운 `VideoMode` 클래스 인스턴스의 참조를 설정합니다. 영상 모드에는 전에 있던 `1920` 너비 `1080` 높이의 HD 해상도 복사본을 할당합니다. 비월 주사 방식 (interlaced) 과, "`1080i`" 라는 이름, 및 초당 `25.0` 프레임이라는 프레임 재생 속도를 설정합니다.
 
-다음으로, `tenEighty` 를, `alsoTenEighty` 라는, 새로운 상수로 할당하며, `alsoTenEighty` 의 '프레임 재생 속도' 를 수정합니다:
+그 다음, `tenEighty` 에, `alsoTenEighty` 라는, 새로운 상수를 할당하고, `alsoTenEighty` 의 프레임 재생 속도를 수정합니다:
 
 ```swift
 let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
 ```
 
-클래스가 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 둘 다 실제로는 _똑같은 (same)_ `VideoMode` 인스턴스를 참조합니다. 사실상, 이들은, 아래 그림에 보인 것처럼, 똑같은 단일 인스턴스에 대한 서로 다른 두 이름일 뿐입니다:
+클래스가 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 둘 다 실제로 _동일한 (same)_ `VideoMode` 인스턴스를 참조합니다. 사실상, 아래 그림에서 보는 것처럼, 이들은 그냥 동일한 단일 인스턴스에 대한 서로 다른 두 이름일 뿐입니다:
 
 ![before and after of an reference type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-reference-type-before-after.jpg)
 
-`tenEighty` 의 `frameRate` 속성을 검사하면 실제 `VideoMode` 인스턴스에 있는 새로운 '프레임 재생 속도' 인 `30.0` 을 올바르게 보고합니다:
+`tenEighty` 의 `frameRate` 속성을 검사하면 실제 `VideoMode` 인스턴스에 있는 `30.0` 이라는 새로운 프레임 재생 속도를 올바로 보고합니다:
 
 ```swift
 print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
-// "The frameRate property of tenEighty is now 30.0" 를 인쇄합니다.
+// "The frameRate property of tenEighty is now 30.0" 를 인쇄함
 ```
 
 이 예제는 참조 타입이 얼마나 더 파악하기 힘든 지도 보여줍니다. `tenEighty` 와 `alsoTenEighty` 가 프로그램 코드에서 꽤 멀리 떨어져 있다면, '영상 모드' 를 바꾸는 방법 모두를 찾기가 여러울 수 있습니다. `tenEighty` 를 사용하는 곳마다, `alsoTenEighty` 를 사용하는 코드에 대해서도 생각해야 하며, 그 반대도 마찬가지 입니다. 이와 대조적으로, 값 타입은 파악하기가 더 쉬운데 왜냐면 똑같은 값과 상호 작용하는 모든 코드가 소스 파일에서 서로 가깝게 있기 때문입니다.
