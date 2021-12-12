@@ -224,9 +224,9 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 // "The frameRate property of tenEighty is now 30.0" 를 인쇄함
 ```
 
-이 예제는 참조 타입이 얼마나 더 파악하기 힘든 지도 보여줍니다. `tenEighty` 와 `alsoTenEighty` 가 프로그램 코드에서 꽤 멀리 떨어져 있다면, '영상 모드' 를 바꾸는 방법 모두를 찾기가 여러울 수 있습니다. `tenEighty` 를 사용하는 곳마다, `alsoTenEighty` 를 사용하는 코드에 대해서도 생각해야 하며, 그 반대도 마찬가지 입니다. 이와 대조적으로, 값 타입은 파악하기가 더 쉬운데 왜냐면 똑같은 값과 상호 작용하는 모든 코드가 소스 파일에서 서로 가깝게 있기 때문입니다.
+이 예제는 참조 타입을 파악하는 게 얼마나 힘들어질 수 있는 지도 보여줍니다. 프로그램 코드에서 `tenEighty` 와 `alsoTenEighty` 가 멀리 떨어져 있으면, 바뀐 모든 영상 모드 방식을 찾는 게 여러울 수도 있습니다. `tenEighty` 를 사용하는 곳마다, `alsoTenEighty` 를 사용하는 코드에 대해 생각해야 하며, 그 반대도 마찬가집니다. 이와 대조하여, 값 타입은 소스 파일에서 동일 값과 상호 작용하는 모든 코드가 서로 가까이 있기 때문에 더 파악하기 쉽습니다.
 
-`tenEighty` 와 `alsoTenEighty` 를, 변수가 아닌, _상수 (constants)_ 로 선언한다는 점을 기억하기 바랍니다. 하지만, 여전히 `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 를 바꿀 수 있는데 `tenEighty` 와 `alsoTenEighty` 상수 자체의 값은 실제로 바뀌지 않기 때문입니다. `tenEighty` 와 `alsoTenEighty` 자체는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-그 대신, 이면을 살펴보면 이 둘 다 `VideoMode` 인스턴스를 _참조하고 (refer)_ 있습니다. 해당 `VideoMode` 에 대한 상수 참조의 값이 아니라, `VideoMode` 인 것의 `frameRate` 속성이 바뀌는 것입니다.
+`tenEighty` 와 `alsoTenEighty` 를, 변수 보단, _상수 (constants)_ 로 선언한다는 걸 기억하기 바랍니다. 하지만, `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 를 여전히 바꿀 수 있는데 실제로는 `tenEighty` 와 `alsoTenEighty` 상수 자체의 값이 바뀌지 않기 때문입니다. `tenEighty` 와 `alsoTenEighty` 자체로는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-그 대신, 이면에서 이 둘 다 `VideoMode` 인스턴스를 _참조 (refer)_ 합니다. 바뀌는 건, 그 `VideoMode` 를 참조하는 상수 값이 아니라, 실제 `VideoMode` 에 있는 `frameRate` 속성입니다.
 
 #### Identity Operators (식별 연산자)
 
