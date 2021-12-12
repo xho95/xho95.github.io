@@ -230,25 +230,25 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 #### Identity Operators (식별 연산자)
 
-클래스가 참조 타입이기 때문에, 이면을 살펴보면 다중 상수와 변수가 똑같은 단일 클래스의 인스턴스를 참조하는 것이 가능합니다. (똑같은 일은 구조체와 열거체에서는 일어나지 않는데, 이들은 상수나 변수에 할당하거나, 함수에 전달할 때, 항상 복사되기 때문입니다.)
+클래스가 참조 타입이기 때문에, 그 이면에서 여러 개의 상수와 변수가 동일한 단일 클래스 인스턴스를 참조하는 게 가능합니다. (구조체와 열거체는, 상수나 변수에 할당하거나, 함수에 전달할 때, 항상 복사되기 때문에, 이와 똑같지 않습니다.)
 
-두 개의 상수나 변수가 정확하게 똑같은 클래스의 인스턴스를 참조하고 있는지를 알아내는 것이 유용할 때가 있습니다. 이를 위해, 스위프트는 두 개의 '식별 연산자' 를 제공합니다:
+두 상수 또는 변수가 정확하게 동일한 클래스 인스턴스를 참조하는 지 찾아내는 게 유용할 때가 있습니다. 이것이 가능하도록, 스위프트는 두 개의 식별 연산자를 제공합니다:
 
-* '식별됨 (identical to; `===`)'
-* '식별되지 않음 (not identical to; `!==`)'
+* 식별됨 (identical to; `===`)'
+* 식별되지 않음 (not identical to; `!==`)'
 
-두 개의 상수나 변수가 똑같은 단일 인스턴스를 참조하는 지를 검사하려면 이 연산자들을 사용합니다:
+이 연산자들을 사용하여 두 상수 또는 변수가 동일한 단일 인스턴스를 참조하는 지 검사합니다:
 
 ```swift
 if tenEighty === alsoTenEighty {
   print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
 }
-// "tenEighty and alsoTenEighty refer to the same VideoMode instance." 를 인쇄합니다.
+// "tenEighty and alsoTenEighty refer to the same VideoMode instance." 를 인쇄함
 ```
 
-(세 개의 등호 기호, 또는 `===` 로 표시한) _식별됨 (identical to)_ 은 (두 개의 등호 기호, 또는 `==` 로 표시한) _같음 (equal to)_ 과 똑같은 의미가 아닙니다. _식별됨 (identical to)_ 은 클래스 타입의 두 상수나 변수가 정확하게 똑같은 클래스 인스턴스를 참조한다는 것을 의미합니다. _같음 (equal to)_ 은, 타입 설계자가 정의한, 어떤 적절한 _같음 (equal)_ 의 의미에 따라서, 두 인스턴스의 값이 같거나 '동치 (equivalent)' 라고 고려한다는 의미입니다.
+(세 개의 같음 기호, 또는 `===` 로 나타낸) _식별됨 (identical to)_ 은 (두 개의 같음 기호, 또는 `==` 로 나타낸) _같음 (equal to)_ 과 똑같은 의미가 아니라는 걸 기억하기 바랍니다. _식별됨 (identical to)_ 은 클래스 타입인 두 상수 또는 변수가 정확하게 동일한 클래스 인스턴스를 참조한다는 의미입니다. _같음 (equal to)_ 은, 타입 설계자가 정의한, 어떠한 적절한 _같음 (equal)_ 이라는 의미에 따라서, 두 인스턴스의 값이 같거나 같다고 할 수 있는 것으로 고려한다는 의미입니다.
 
-자신만의 구조체와 클래스를 정의할 땐, 두 인스턴스의 같음을 규명하는 것이 본인 책임입니다. 자신만의 `==` 연산자와 `!=` 연산자 구현을 정의하는 과정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
+자신만의 구조체와 클래스를 정의할 때는, 두 인스턴스가 같다고 규명하는 게 본인 책임입니다. 자신만의 `==` 와 `!=` 연산자 구현을 정의하는 공정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
 
 #### Pointers (포인터)
 
