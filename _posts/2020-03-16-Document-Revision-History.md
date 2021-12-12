@@ -254,7 +254,7 @@ categories: Swift Language Grammar Revision History
 * '클로저가 붙잡을 목록 (closure capture lists)' 에 있는 '약한 참조 (weak references)' 와 '소유하지 않는 참조 (unowned references)' 에 대한 구문 표현을 분명히 밝히기 위해 [Defining a Capture List (붙잡을 목록 정의하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#defining-a-capture-list-붙잡을-목록-정의하기) 을 갱신함.
 * 사용자 정의 연산자를 위해 지원되는 문자들, 가령 수학 연산자들, 잡다한 기호들, 그리고 '딩뱃 (dingbats)[^dingbats] 유니코드 블럭들', 에 대한 예제를 명시적으로 언급하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 갱신함.
 * 이제 지역 함수 영역에서는 상수를 초기화하지 않고도 선언할 수 있습니다. 맨 처음 사용하기 전에 설정 값을 반드시 가져야 합니다. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고하기 바랍니다.
-* '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화하는-동안-상수-속성-할당하기) 를 참고하기 바랍니다.
+* '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 를 참고하기 바랍니다.
 * '다중 옵셔널 연결 (multiple optional bindings)' 은 이제 쉼표로-구분된 할당 표현식 목록으로써 단일 `if` 문에 나타낼 수 있습니다. 더 많은 정보는, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 을 참고하기 바랍니다.
 * [Optional-Chaining Expression (옵셔널-연쇄 표현식)]({% post_url 2020-08-19-Expressions %}#optional-chaining-expression-옵셔널-연쇄-표현식) 은 반드시 '접미사 표현식 (postfix expression)' 내에 있어야 합니다.
 * '프로토콜 변환 (protocol casts)' 은 더 이상 `@objc` 프로토콜로 제한되지 않습니다.

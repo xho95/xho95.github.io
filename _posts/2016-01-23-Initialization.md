@@ -182,7 +182,7 @@ cheeseQuestion.response = "Yes, I do like cheese."
 
 '설문 조사 (survey question)' 에 대한 응답은 질문하기 전까지는 알 수 없으므로, `response` 속성을 `String?`, 또는 “옵셔널 `String`” 타입으로 선언합니다. 이는, 새로운 `SurveyQuestion` 인스턴스를 초기화할 때, "값이 아직 없음" 을 의미하는, `nil` 기본 값으로 자동 할당됩니다.
 
-#### Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)
+#### Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)
 
 상수 속성의 값은, 초기화를 종료할 때까지 확실한 값이 설정되기만 한다면, 초기화 동안의 어떤 시점에도 할당할 수 있습니다. 상수 속성에 값을 한 번 설정하고 나면, 더 이상 수정할 수 없습니다.
 
