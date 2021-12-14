@@ -155,7 +155,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 그런 다음 점 구문 (`square.center`) 을 통해 `square` 변수의 `center` 속성에 접근하는데, 이는 `center` 의 획득자를 호출하도록 하여, 현재 속성 값을 가져옵니다. 기존 값을 반환하기 보단, 실제로 획득자는 정사각형 중심을 나타내는 새 `Point` 를 계산하여 반환합니다. 위에서 볼 수 있는 것처럼, 획득자는 `(5, 5)` 라는 올바른 중심점을 반환합니다.
 
-그런 다음 `center` 속성에 `(15, 15)` 라는 새로운 값을 설정하는데, 이는, 아래 도표의 오렌지 정사각형으로 보인, 새 위치까지 정사각형을 오른쪽 위로 이동합니다. `center` 속성을 설정하면 `center` 의 설정자를 호출하는데, 이는 `origin` 이라는 저장 속성의 `x` 와 `y` 값을 수정하여, 정사각형을 새 위치로 이동합니다.
+그런 다음 `center` 속성에 `(15, 15)` 라는 새로운 값을 설정하는데, 이는 정사각형을 오른쪽 위의, 아래 도표에서 오렌지 정사각형이 보여준 새 위치로, 이동시킵니다. `center` 속성을 설정하면 `center` 의 설정자를 호출하는데, 이는 `origin` 이라는 저장 속성의 `x` 와 `y` 값을 수정하여, 정사각형을 새 위치로 이동시킵니다.
 
 ![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
 
