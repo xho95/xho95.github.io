@@ -112,7 +112,7 @@ print(manager.importer.filename)
 
 ### Computed Properties (계산 속성)
 
-'저장 속성' 에 더하여, 클래스, 구조체, 그리고 열거체는, 실제로는 값을 저장하지 않는, _계산 속성 (computed properties)_ 을 정의할 수 있습니다. 그 대신, 이는 다른 속성과 값을 간접적으로 가져오고 설정하기 위한 '획득자 (getter)' 와 선택 사항인 '설정자 (setter)'[^optional-setter] 를 제공합니다.
+저장 속성에 더해, 클래스, 구조체, 및 열거체는, 실제론 값을 저장하지 않는, _계산 속성 (computed properties)_ 도 정의할 수 있습니다. 이는, 그 대신, 간접적으로 다른 속성과 값을 가져오고 설정하는 '획득자 (getter) 와 옵션인 설정자 (setter)'[^optional-setter] 를 제공합니다.
 
 ```swift
 struct Point {
@@ -140,18 +140,18 @@ var square = Rect(origin: Point(x: 0.0, y: 0.0), size: Size(width: 10.0, height:
 let initialSquareCenter = square.center
 square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
-// "square.origin is now at (10.0, 10.0)" 를 출력합니다.
+// "square.origin is now at (10.0, 10.0)" 를 인쇄함
 ```
 
-이 예제는 기하학적 도형과 작업하기 위한 세 개의 구조체를 정의합니다:
+이 예제는 기하학 도형과 작업하기 위한 구조체 세 개를 정의합니다:
 
-* 한 점의 x- 와 y-좌표를 은닉하는 `Point`
-* `width` 와 `height` 를 은닉하는 `Size`
-* '원점' 과 '크기' 로 직사각형을 정의하는 `Rect`
+* `Point` 는 한 점의 x- 및 y-좌표를 은닉합니다.
+* `Size` 는 `width` 와 `height` 를 은닉합니다.
+* `Rect` 는 원점과 크기로 직사각형을 정의합니다.
 
-`Rect` 구조체는 `center` 라는 '계산 속성' 도 제공합니다. `Rect` 의 현재 중심 위치는 항상 `origin` 과 `size` 로 결정할 수 있으므로, 중심점을 명시적인 `Point` 값으로 저장할 필요가 없습니다. 그 대신, `Rect` 는, 직사각형의 `center` 가 마치 실제 저장 속성인 것처럼 작업할 수 있게 하기 위해, `center` 라는 '계산 변수' 에 대한 사용자 정의 '획득자' 와 '설정자' 를 정의합니다.
+`Rect` 구조체는 `center` 라는 계산 속성도 제공합니다. `Rect` 의 현재 중심은 자신의 `origin` 과 `size` 로 항상 결정할 수 있으므로, 명시적인 `Point` 값으로 중심점을 저장할 필요가 없습니다. 그 대신, `Rect` 는 `center` 라는 계산 변수를 위한 사용자 정의 획득자 및 설정자를 정의하여, 직사각형의 `center` 가 마치 실제 저장 속성인 것처럼 작업할 수 있게 합니다.
 
-위 예제에서는 `square` 라는 새로운 `Rect` 변수를 생성합니다. `square` 변수는 원점이 `(0, 0)` 이고, 폭과 높이는 `10` 인 것으로 초기화됩니다. 이 '정사각형'[^square] 은 아래 그림에 있는 파란색 정사각형을 나타냅니다.
+위 예제에선 `square` 라는 새로운 `Rect` 변수를 생성합니다. `square` 변수는 `(0, 0)` 이라는 원점과, `10` 이라는 폭과 높이로, 초기화됩니다. 아래 그림의 파란색 정사각형이 이 정사각형을 나타냅니다.
 
 그런 다음 `square` 변수의 `center` 속성은 '점 구문 (`square.center`)' 을 통해 접근하는데, 이는 현재 속성 값을 가져오기 위해, `center` 에 대한 '획득자' 를 호출하도록 합니다. 기존 값을 반환하는 대신, '획득자' 는 실제로 정사각형의 중심을 표현하는 새로운 `Point` 를 계산한 다음 반환합니다. 위에서 볼 수 있는 것처럼, '획득자' 는 중심점이 `(5, 5)` 라고 올바르게 반환합니다.
 
@@ -681,7 +681,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^instance-variables]: 이 부분은 오브젝티브-C 나 C++ 같은 객체 지향 언어에 대한 설명이므로, 객체 지향 언어에 익숙하지 않으면 넘어가도 됩니다. 객체 지향 언어에서는 '객체 안에서만 접근 가능한 내부 변수' 와 '객체 외부와의 인터페이스를 담당하는 속성' 이란 두 가지 방식으로 값을 저장합니다. 속성에서 인터페이스를 담당하는 부분이 '설정자 (setter) 와 획득자 (getter)' 입니다. 스위프트에서는 이 두 가지를 '속성' 하나로 통합했다는 의미입니다.
 
-[^optional-setter]: 원문은 'optional setter' 라고 되어 있는데 여기서의 'optional' 은 스위프트의 '옵셔널 타입' 과는 상관이 없습니다. '계산 속성' 은 '설정자 (setter)' 를 가질 수도 있고 아닐 수도 있기 때문에 '선택 사항' 이라는 의미에서 'optional setter' 라고 한 것입니다.
+[^optional-setter]: '옵션인 설정자 (optional setter)' 는 설정자는 가질 수도 있고 안가질 수도 있기 때문입니다. 참고로, 여기서의 'optional' 은 스위프트의 옵셔널 타입과는 (직접적으로) 상관 없습니다.
 
 [^simplify]: 이 예제의 '계산 속성' 은 '단일 표현식' 이기도 하기 때문에 `return` 키워드도 생략 가능합니다. 앞서 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)](#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 '획득자' 가 '단일 표현식' 이면 `return` 을 생략할 수 있다고 했는데, 이는 전체 '계산 속성' 에도 그대로 적용됩니다.
 
