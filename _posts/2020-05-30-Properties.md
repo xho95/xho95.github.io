@@ -70,27 +70,27 @@ _느긋한 저장 속성 (lazy stored property)_ 은 최초로 사용하기 전�
 class DataImporter {
   /*
   DataImporter 는 외부 파일에서 자료를 불러오는 클래스입니다.
-  이 클래스는 초기화하는데 유의미한 양의 시간이 걸린다고 가정합니다.
+  이 클래스의 초기화에는 유의미한 양의 시간이 걸린다고 가정합니다.
   */
   var filename = "data.txt"
-  // DataImporter 클래스는 여기서 자료를 불러오는 기능을 제공할 것입니다.
+  // DataImporter 클래스는 여기서 자료 불러오는 기능을 제공할 것임
 }
 
 class DataManager {
   lazy var importer = DataImporter()
   var data = [String]()
-  // DataManager 클래스는 여기서 자료를 관리하는 기능을 제공할 것입니다.
+  // DataManager 클래스는 여기서 자료 관리 기능을 제공할 것임
 }
 
 let manager = DataManager()
 manager.data.append("Some data")
 manager.data.append("Some more data")
-// importer 속성을 위한 DataImporter 인스턴스는 아직 생성하지 않습니다.
+// importer 속성의 DataImporter 인스턴스는 아직 생성하지 않음
 ```
 
-`DataManager` 클래스는, 새로운, 빈 `String` 값 배열로 초기화되는, `data` 라는 저장 속성을 가집니다. 나머지 기능을 보이진 않았지만, 이 `DataManager` 클래스의 목적은 이 `String` 자료인 이 배열에 대한 접근을 제공하고 관리하는 것입니다.
+`DataManager` 클래스에는 `data` 라는 저장 속성이 있는데, 이는 새로운, 빈 `String` 값 배열로 초기화됩니다. 나머지 기능을 보여주진 않지만, `DataManager` 클래스의 목적은 이 `String` 자료 배열의 접근을 제공하고 이를 관리하는 것입니다.
 
-`DataManager` 클래스의 일부 기능은 파일에서 자료를 불러오는 능력입니다. 이 기능은 `DataImporter` 클래스에서 제공하는데, 이를 초기화하는데 유의미한 양의 시간이 걸린다고 가정합니다. 이 (가정) 은 `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열고 그 내용을 메모리로 읽어올 필요가 있을 수 있기 때문입니다.
+`DataManager` 클래스의 일부 기능은 파일에서 자료를 불러오는 능력입니다. 이 기능은, 초기화에 유의미한 양의 시간이 걸린다고 가정한, `DataImporter` 클래스가 제공합니다. 이는 `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열고 그 내용을 메모리로 읽어들일 필요가 있을 지도 모르기 때문입니다.
 
 `DataManager` 인스턴스는 파일에서 불러오지 않은 자료도 관리하는 것이 가능하므로, `DataManager` 자체를 생성할 때 새로운 `DataImporter` 인스턴스를 생성할 필요는 없습니다. 그 대신, `DataImporter` 인스턴스를 맨 처음 사용할 때, 그 때 생성하는 것이 더 합리적입니다.
 
