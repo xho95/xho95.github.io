@@ -205,11 +205,11 @@ struct CompactRect {
 
 #### Read-Only Computed Properties (읽기-전용 계산 속성)
 
-'획득자' 는 가지지만 '설정자' 는 가지지 않은 '계산 속성' 을 _읽기-전용 계산 속성 (read-only computed property)_ 이라고 합니다. '읽기-전용 계산 속성' 은 값을 항상 반환하며, '점 구문' 을 통해 접근할 수 있지만, 다른 값을 설정할 수는 없습니다.
+획득자는 있지만 설정자가 없는 계산 속성을 _읽기-전용 계산 속성 (read-only computed property)_ 이라고 합니다. 읽기-전용 계산 속성은 항상 값을 반환하며, 점 구문을 통해 접근할 수 있지만, 다른 값을 설정할 순 없습니다.
 
-> 읽기-전용 계산 속성을 포함한-계산 속성은 반드시 `var` 키워드를 가진 변수 속성으로 선언해야 하는데, 이 값은 고정된 것이 아니기 때문입니다. `let` 키워드는, 인스턴스 초기화에서 한 번 설정한 값은 바꿀 수 없음을 지시하기 위해, 상수 속성에서만 사용합니다.
+> 읽기-전용 계산 속성을 포함한-계산 속성은, 값이 고정된게 아니기 때문에, 반드시 `var` 키워드를 써서 변수 속성으로 선언해야 합니다. 인스턴스 초기화의 일부분으로 한 번 설정하고 나면 자신의 값을 바꿀 수 없다고 지시하는, 상수 속성에만 `let` 키워드를 사용합니다.
 
-읽기-전용 계산 속성은 `get` 키워드와 중괄호를 제거하여 선언을 단순화할 수 있습니다[^simplify]:
+`get` 키워드와 중괄호를 제거함으로써 읽기-전용 계산 속성의 선언을 단순화할 수 있습니다:[^simplify]
 
 ```swift
 struct Cuboid {
@@ -220,10 +220,10 @@ struct Cuboid {
 }
 let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
-// "the volume of fourByFiveByTwo is 40.0" 를 인쇄합니다.
+// "the volume of fourByFiveByTwo is 40.0" 를 인쇄함
 ```
 
-이 예제는, `width`, `height`, 그리고 `depth` 속성을 가진 '3차원 직사각형 상자' 를 표현하는, `Cuboid` 라는 새로운 구조체를 정의합니다.[^cuboid] 이 구조체는, '직육면체 (cuboid)' 의 현재 부피를 계산하고 반환하는, `volume` 이라는 읽기-전용 계산 속성도 가집니다. 특별한 `volume` 값에 대해 어느 `width`, `height`, 및 `depth` 값을 사용해야할 지 헷갈리기 때문에, `volume` 이 설정 가능 (settable) 한 건 말이 안됩니다. 그럼에도 불구하고, 외부 사용자가 현재 계산된 부피를 알 수 있도록 `Cuboid` 에서 읽기-전용 계산 속성을 제공하는 것은 유용합니다.
+이 예제는, `width`, `height`, 및 `depth` 속성으로 3-차원 직사각형 상자를 나타내는, `Cuboid` 라는 새로운 구조체를 정의합니다. 이 구조체에는, 직육면체[^cuboid] 의 현재 부피를 계산하여 반환하는, `volume` 이라는 읽기-전용 계산 속성이 있습니다. 특별한 한 `volume` 값에 대해 어떤 `width`, `height`, 및 `depth` 값을 사용해야할 지 헷갈리기 때문에, `volume` 이 설정 가능하다는 건 말이 안됩니다.[^be-settable] 그럼에도 불구하고, 현재 계산한 부피를 외부 사용자가 발견할 수 있도록 `Cuboid` 가 읽기-전용 계산 속성을 제공하는 게 유용합니다.
 
 ### Property Observers (속성 관찰자)
 
@@ -683,9 +683,9 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^optional-setter]: '옵션인 설정자 (optional setter)' 는 설정자는 가질 수도 있고 안가질 수도 있기 때문입니다. 참고로, 여기서의 'optional' 은 스위프트의 옵셔널 타입과는 (직접적으로) 상관 없습니다.
 
-[^simplify]: 이 예제의 '계산 속성' 은 '단일 표현식' 이기도 하기 때문에 `return` 키워드도 생략 가능합니다. 앞서 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)](#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 '획득자' 가 '단일 표현식' 이면 `return` 을 생략할 수 있다고 했는데, 이는 전체 '계산 속성' 에도 그대로 적용됩니다.
+[^simplify]: 이 예제에 있는 읽기-전용 계산 속성은 단일 표현식이기도 해서 `return` 키워드도 생략할 수 있습니다. 앞서 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)](#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 전체 획득자 본문이 단일 표현식이면 `return` 을 생략할 수 있다고 했는데, 전체 계산 속성 본문도 마찬가지입니다.
 
-[^cuboid]: 사실 'cuboid' 자체가 수학 용어로 '직육면체' 를 의미합니다. '직육면체' 는 모든 면이 직사각형으로 이루어진 기하학적 도형을 말하느데, 이름이 'cuboid' 인 것은 'polyhedral graph (다면체 그래프; 일종의 기하학적인 구조)' 가 'cube (정육면체)' 와 같기 때문이라고 합니다. 보다 자세한 내용은 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목 또는 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 참고하기 바랍니다.
+[^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미합니다. 직육면체는 모든 면이 직사각형인 기하학 도형을 말하며, 이름이 'cuboid' 인 건 기하학 구조의 일종인 '다면체 그래프 (polyhedral graph)' 가 '정육면체 (cube)' 와 같기 때문입니다. 보다 자세한 내용은, 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목과 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 참고하기 바랍니다.
 
 [^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
 
@@ -696,3 +696,5 @@ print(AudioChannel.maxInputLevelForAllChannels)
 [^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 참고하기 바랍니다.
 
 [^explicitly-wrap]: 이 예제를 보면 '속성 포장' 이란 것은 '사용자 정의 획득자' 와 '사용자 정의 설정자' 를 제공하는 코드를 재활용하기 위한 것임을 알 수 있습니다.
+
+[^be-settable]: 즉, `volumn` 은 획득자만 있는 읽기-전용 계산 속성이어야 말이 된다는 의미입니다.
