@@ -92,17 +92,17 @@ manager.data.append("Some more data")
 
 `DataManager` 클래스의 일부 기능은 파일에서 자료를 불러오는 능력입니다. 이 기능은, 초기화에 유의미한 양의 시간이 걸린다고 가정한, `DataImporter` 클래스가 제공합니다. 이는 `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열고 그 내용을 메모리로 읽어들일 필요가 있을 지도 모르기 때문입니다.
 
-`DataManager` 인스턴스는 파일에서 불러오지 않은 자료도 관리하는 것이 가능하므로, `DataManager` 자체를 생성할 때 새로운 `DataImporter` 인스턴스를 생성할 필요는 없습니다. 그 대신, `DataImporter` 인스턴스를 맨 처음 사용할 때, 그 때 생성하는 것이 더 합리적입니다.
+`DataManager` 인스턴스가 파일에서 불러오지 않은 자료를 관리할 가능성도 있기 때문에, `DataManager` 는 `DataManager` 스스로를 생성할 때 새 `DataImporter` 인스턴스를 생성하지 않습니다. 그 대신, `DataImporter` 인스턴스를 최초로 사용할 경우 그 때 생성하는 게 더 말이 됩니다.
 
-`lazy` 수정자로 표시했기 때문에, `importer` 속성을 위한 `DataImporter` 인스턴스는, `filename` 속성을 조회할 때 같이, `importer` 속성을 맨 처음 접근할 때에만 생성됩니다:
+`lazy` 수정자로 표시하기 때문에, `filename` 속성을 조회할 때 같이, `importer` 속성에 최초로 접근할 때에만 `importer` 속성의 `DataImporter` 인스턴스를 생성합니다:
 
 ```swift
 print(manager.importer.filename)
-// importer 속성을 위한 DataImporter 인스턴스가 이제 막 생성 되었습니다.
-// "data.txt" 를 인쇄합니다.
+// importer 속성의 DataImporter 인스턴스가 이제 막 생성됨
+// "data.txt" 를 인쇄함
 ```
 
-> `lazy` 수정자로 표시한 속성에서 이 속성이 아직 초기화되지 않았는데 다중 쓰레드로 동시에 접근하는 경우, 속성이 한 번만 초기화될 것이라고 보장할 수 없습니다.
+> `lazy` 수정자로 표시한 속성이 아직 초기화가 안됐는데 여러 개의 쓰레드가 동시에 접근할 경우, 속성이 한 번만 초기화될 거라고 보증할 수 없습니다.
 
 #### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)
 
