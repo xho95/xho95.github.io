@@ -231,9 +231,9 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 속성 관찰자는 다음 위치에 추가할 수 있습니다:
 
-* 직접 정의한 '저장 속성 (stored properties)'
-* 직접 상속 받은 '저장 속성 (stored properties)'
-* 직접 상속 받은 '계산 속성 (computed properties)'
+* 직접 정의한 저장 속성
+* 직접 상속한 저장 속성
+* 직접 상속한 계산 속성
 
 상속 받은 속성은, 하위 클래스에서 해당 속성을 '재정의 (overriding)' 하여 속성 관찰자를 추가합니다. 직접 정의한 '계산 속성' 은, 관찰자를 생성하려는 대신, 값이 바뀌는 것을 관찰하고 응답하기 위해 속성의 '설정자' 를 사용합니다. 속성의 '재정의 (overriding)' 는 [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명합니다.
 
