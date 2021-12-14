@@ -521,11 +521,11 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 '결합 값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다.
 
-**Enumerations with Indirection ('간접 (indirection)' 을 가지는 열거체)**
+**Enumerations with Indirection (간접을 가진 열거체)**
 
-열거체는 '재귀 구조 (recursive structure)', 즉, '결합 값' 이 열거체 타입 그 자체의 인스턴스일 수 있는 'case 값' 을 가질 수 있습니다. 하지만, 열거체 타입의 인스턴스는 '값 의미 구조' 를 가지며, 이는 메모리에서 '고정된 구획 (fixed layout)' 을 가짐을 의미합니다. '재귀 (recursion)' 를 지원하려면, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
+열거체는 재귀 구조 (recursive structure) 를, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case 를 가질 수 있습니다. 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지는데, 이는 메모리에서 '고정 구획 (fixed layout)' 을 가진다는 의미입니다. 재귀를 지원하려면, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
 
-특별한 한 열거체 case 가 간접 (indirection) 할 수 있게 하려면, `indirect` 선언 수정자로 표시합니다. '간접 case 값' 은 반드시 '결합 값' 을 가져야 합니다.
+특별한 한 열거체 case 가 간접할 수 있게 하려면, 이를 `indirect` 선언 수정자로 표시합니다. 간접 case 는 반드시 결합 값을 가져야 합니다.
 
 ```swift
 enum Tree<T> {
@@ -534,9 +534,9 @@ enum Tree<T> {
 }
 ```
 
-'결합 값을 가진 열거체의 모든 case 값' 이 '간접' 을 할 수 있게 하려면, 전체 열거체를 '`indirect` 수정자' 로 표시합니다-이는 열거체가 `indirect` 수정자로 표시해야 할 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
+결합 값을 가진 모든 열거체 case 가 간접할 수 있게 하려면, 전체 열거체를 `indirect` 수정자로 표시합니다-이는 각각을 `indirect` 수정자로 표시해야 하는 case 를 열거체가 많이 담고 있을 때 편리합니다.
 
-'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어서 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
+`indirect` 수정자로 표시한 열거체는 결합 값을 가진 case 와 그렇지 않은 case 가 섞인 걸 담을 수 있습니다. 그렇다 하더라도, 다시 `indirect` 수정자로 표시한 어떤 case 를 담을 순 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
