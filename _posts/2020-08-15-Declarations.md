@@ -525,7 +525,7 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 열거체는 '재귀 구조 (recursive structure)', 즉, '결합 값' 이 열거체 타입 그 자체의 인스턴스일 수 있는 'case 값' 을 가질 수 있습니다. 하지만, 열거체 타입의 인스턴스는 '값 의미 구조' 를 가지며, 이는 메모리에서 '고정된 구획 (fixed layout)' 을 가짐을 의미합니다. '재귀 (recursion)' 를 지원하려면, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
 
-'특별한 열거체 case 값' 이 '간접 (indirection)' 을 할 수 있게 하려면, 이를 '`indirect` 선언 수정자' 로 표시합니다. '간접 case 값' 은 반드시 '결합 값' 을 가져야 합니다.
+특별한 한 열거체 case 가 간접 (indirection) 할 수 있게 하려면, `indirect` 선언 수정자로 표시합니다. '간접 case 값' 은 반드시 '결합 값' 을 가져야 합니다.
 
 ```swift
 enum Tree<T> {
