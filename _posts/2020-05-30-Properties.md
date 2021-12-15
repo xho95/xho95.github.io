@@ -227,30 +227,30 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 ### Property Observers (속성 관찰자)
 
-'속성 관찰자 (property observers)' 는 속성 값이 바뀌는 것을 관찰하고 이에 응답합니다. 속성 관찰자는 속성 값을 설정할 때마다 호출되는데, 새로운 값이 현재 속성 값과 똑같은 경우이더라도 호출됩니다.
+속성 관찰자는 속성 값이 바뀌는 걸 관찰하여 응답합니다. 속성 관찰자는 속성 값을 설정할 때마다, 새 값이 현재 속성 값과 똑같은 경우에도, 호출됩니다.
 
-속성 관찰자는 다음 위치에 추가할 수 있습니다:
+다음 장소에 속성 관찰자를 추가할 수 있습니다:
 
-* 직접 정의한 저장 속성
-* 직접 상속한 저장 속성
-* 직접 상속한 계산 속성
+* 자신이 정의한 저장 속성
+* 자신이 상속한 저장 속성
+* 자신이 상속한 계산 속성
 
-상속 받은 속성은, 하위 클래스에서 해당 속성을 '재정의 (overriding)' 하여 속성 관찰자를 추가합니다. 직접 정의한 '계산 속성' 은, 관찰자를 생성하려는 대신, 값이 바뀌는 것을 관찰하고 응답하기 위해 속성의 '설정자' 를 사용합니다. 속성의 '재정의 (overriding)' 는 [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명합니다.
+상속한 속성이면, 하위 클래스에서 그 속성을 재정의 (overriding) 함으로써 속성 관찰자를 추가합니다. 자신이 정의한 계산 속성이면, 관찰자를 생성하는 대신, 속성의 설정자로 값의 바뀜을 관찰하여 응답합니다. 속성을 재정의하는 건 [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 부분에서 설명합니다.
 
-속성은 다음 관찰자 중 하나만 정의할지 둘 다 정의할지 선택할 수 있습니다:
+속성에 대해 다음 관찰자 중 하나만 정의할지 둘 다 정의할지 선택할 수 있습니다:
 
-* `willSet` 은 값이 저장되기 바로 직전에 호출됩니다.
-* `didSet` 은 새로운 값이 저장된 바로 직후에 호출됩니다.
+* `willSet` 은 값을 저장하기 직전에 호출합니다.
+* `didSet` 은 새 값을 저장한 바로 뒤에 호출합니다.
 
-`willSet` 관찰자를 구현한 경우, 새로운 속성 값은 '상수 매개 변수' 로써 전달됩니다. 이 매개 변수의 이름은 `willSet` 구현부에서 지정할 수 있습니다. 매개 변수 이름과 괄호를 구현부에서 작성하지 않은 경우, 매개 변수를 '기본 매개 변수 이름' 인 `newValue` 로 사용 가능합니다.
+`willSet` 관찰자를 구현하면, 새로운 속성 값을 상수 매개 변수로 전달합니다. `willSet` 구현부에서 이 매개 변수에 이름을 지정할 수 있습니다. 구현부에서 매개 변수 이름과 괄호를 작성하지 않으면, `newValue` 라는 기본 매개 변수 이름으로 매개 변수를 사용할 수 있습니다.
 
-이와 비슷하게, `didSet` 관찰자를 구현한 경우, 예전 속성 값을 담고 있는 '상수 매개 변수' 가 전달됩니다. 매개 변수의 이름을 지을 수도 있고 '기본 매개 변수 이름' 인 `oldValue` 를 사용할 수도 있습니다. 자신의 `didSet` 관찰자에서 속성에 값을 할당한 경우, 새로운 할당 값이 직전에 설정한 것을 대체합니다.
+이와 비슷하게, `didSet` 관찰자를 구현하면, 예전 속성 값을 담은 상수 매개 변수를 전달합니다. 매개 변수에 이름을 붙이거나 `oldValue` 라는 기본 매개 변수 이름을 사용할 수도 있습니다. 자신의 `didSet` 관찰자 안에서 속성에 값을 할당하면, 새로운 할당 값이 그전에 설정한 것을 대체합니다.
 
-> 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스의 초기자를 호출한 다음, 하위 클래스의 초기자에서 속성을 설정할 때 호출됩니다. 이들은, 상위 클래스의 초기자를 호출하기 전, 클래스가 자신의 속성을 설정하는 동안에는 호출되지 않습니다.[^obervers-and-superclass]
+> 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출한 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 이를 호출하지 않습니다.[^obervers-and-superclass]
 >
-> '초기자의 위임 (initializer delegation)' 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자의-위임) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자의-위임) 을 참고하기 바랍니다.
+> 초기자 위임 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입의 초기자 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입의-초기자-위임) 과 [Initializer Delegation for Class Types (클래스 타입의 초기자 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-class-types-클래스-타입의-초기자-위임) 부분을 참고하기 바랍니다.
 
-다음은 `willSet` 과 `didSet` 에 대한 실제 사례입니다. 아래 예제는 `StepCounter` 라는 새로운 클래스를 정의하는데, 이는 사람이 걷는 동안의 총 걸음 수를 추적합니다. 이 클래스는 사람의 운동 습관을 추적하기 위해 '만보계 (pedometer)' 또는 다른 '걸음 측정기 (step counter)' 의 입력 자료를 사용할 수도 있을 것입니다.
+다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는, 사람이 산책하는 동안의 총 걸음 수를 추적하는, `StepCounter` 라는 새로운 클래스를 정의합니다. 이 클래스는 일과 중에 사람의 운동을 추적하기 위해 만보계 (pedometer) 나 다른 걸음 측정기 (step counter) 에 있는 입력 자료를 사용할 지 모릅니다.
 
 ```swift
 class StepCounter {
@@ -267,25 +267,25 @@ class StepCounter {
 }
 let stepCounter = StepCounter()
 stepCounter.totalSteps = 200
-// About to set totalSteps to 200
-// Added 200 steps
+// About to set totalSteps to 200     // totalSteps 를 200 으로 설정하려고 함
+// Added 200 steps                    // 200 걸음을 추가함
 stepCounter.totalSteps = 360
-// About to set totalSteps to 360
-// Added 160 steps
+// About to set totalSteps to 360     // totalSteps 를 360 으로 설정하려고 함
+// Added 160 steps                    // 160 걸음을 추가함
 stepCounter.totalSteps = 896
-// About to set totalSteps to 896
-// Added 536 steps
+// About to set totalSteps to 896     // totalSteps 를 896 으로 설정하려고 함
+// Added 536 steps                    // 536 걸음을 추가함
 ```
 
-`StepCounter` 클래스는 `Int` 타입의 `totalSteps` 속성을 선언합니다. 이는 `willSet` 과 `didSet` 관찰자를 가진 저장 속성입니다.
+`StepCounter` 클래스는 `Int` 타입인 `totalSteps` 속성을 선언합니다. 이는 `willSet` 과 `didSet` 관찰자가 있는 저장 속성입니다.
 
-`totalSteps` 에 대한 `willSet` 과 `didSet` 관찰자는 속성에 새로운 값을 할당할 때마다 호출됩니다. 이는 새로운 값이 현재 값과 똑같은 경우에도 그렇습니다.
+`totalSteps` 의 `willSet` 과 `didSet` 관찰자는 새 값을 속성에 할당할 때마다 호출됩니다. 이는 새 값이 현재 값과 똑같은 경우에도 참입니다.
 
-이 예제의 `willSet` 관찰자는 다가올 새 값에 `newTotalSteps` 라는 '사용자 정의 매개 변수 이름' 을 사용합니다. 이 예제는, 이제 막 설정할 값을 단순히 인쇄합니다.
+이 예제의 `willSet` 관찰자는 새로 다가올 값으로 `newTotalSteps` 라는 사용자 정의 매개 변수 이름을 사용합니다. 이 예제에선, 설정하려는 값을 단순히 인쇄합니다.
 
-`didSet` 관찰자는 `totalSteps` 의 값을 갱신한 다음 호출됩니다. 이는 `totalSteps` 의 새 값을 예전 값과 비교합니다. '총 걸음 수' 가 증가한 경우, 새로운 걸음 수가 얼마인지를 표시하기 위해 메시지를 인쇄합니다. `didSet` 관찰자는 예전 값에 대한 '사용자 정의 매개 변수 이름' 을 제공하지 않으며, 그 대신 `oldValue` 라는 기본 이름을 사용합니다.
+`totalSteps` 값을 갱신한 후 `didSet` 관찰자를 호출합니다. 이는 새 `totalSteps` 값과 예전 값을 비교합니다. 총 걸음 수가 증가했으면, 새 걸음 수가 얼마인지 표시하고자 메시지를 인쇄합니다. `didSet` 관찰자는 예전 값에 사용자 정의 매개 변수 이름을 제공하지 않고, `oldValue` 라는 기본 이름을 대신 사용합니다.
 
-> 관찰자를 가진 속성을 함수에 '입-출력 매개 변수 (in-out parameter)' 로써 전달하는 경우, `willSet` 과 `didSet` 관찰자는 항상 호출됩니다. 이는 '입-출력 매개 변수' 의 '복사-입력 복사-출력 (copy-in copy-out)' 메모리 모델 방식 때문입니다: 이는 값이 항상 함수 끝에서 속성으로 되돌려서 작성되는 방식입니다. '입-출력 매개 변수' 의 작동 방식에 대한 더 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 를 참고하기 바랍니다.
+> 관찰자를 가진 속성을 '입-출력 (in-out) 매개 변수' 로 함수에 전달하면, `willSet` 과 `didSet` 관찰자를 항상 호출합니다. 이는: 함수 끝에서 값을 속성으로 항상 다시 작성하는 '입-출력 매개 변수의 복사-입력 복사-출력 (copy-in copy-out) 메모리 모델' (방식) 때문입니다. 입-출력 매개 변수 동작에 대한 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
 ### Property Wrappers (속성 포장)
 

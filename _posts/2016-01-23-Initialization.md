@@ -253,7 +253,7 @@ print(zeroByZero.width, zeroByZero.height)
 // "0.0 0.0" 를 인쇄합니다.
 ```
 
-### Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)
+### Initializer Delegation for Value Types (값 타입의 초기자 위임)
 
 초기자는 인스턴스 초기화의 일부를 다른 초기자를 호출하여 수행할 수 있습니다. _초기자 위임 (initializer delegation)_ 이라고 하는, 이 과정은, 여러 초기자들 간에 코드가 중복되는 것을 피하도록 합니다.
 
@@ -352,7 +352,7 @@ convenience init(`parameters-매개 변수`) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-#### Initializer Delegation for Class Types (클래스 타입을 위한 초기자의 위임)
+#### Initializer Delegation for Class Types (클래스 타입의 초기자 위임)
 
 지명과 편의 초기자 사이의 관계를 단순화하기 위해, 스위프트는 초기자 사이의 '위임 호출 (delegation calls)'[^delegation-calls] 에 대해 다음과 같은 세 가지 규칙을 적용합니다:
 

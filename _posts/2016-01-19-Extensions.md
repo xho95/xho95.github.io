@@ -93,7 +93,7 @@ print("A marathon is \(aMarathon) meters long")
 
 '익스텐션' 은 클래스에 새로운 '편의 (convenience) 초기자' 추가할 순 있지만, 클래스에 새로운 '지명 (designated) 초기자' 나 '정리자 (deinitializers)' 를 추가할 순 없습니다. '지명 초기자' 나 '정리자' 는 반드시 항상 원본 클래스 구현에서 제공해야 합니다.
 
-모든 저장 속성에 '기본 값' 을 제공하면서 어떤 초기자도 직접 정의하지 않는 값 타입에 '초기자' 추가하기 위해 '익스텐션' 을 사용하는 경우, '익스텐션' 의 초기자 내에서 해당 값 타입을 위한 '기본 (default) 초기자' 와 '멤버 (memberwise) 초기자' 를 호출할 수 있습니다. [Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자의-위임) 에서 설명한 것처럼, 값 타입의 원본 구현에서 초기자를 작성한 경우라면 이렇지 않을 것입니다.
+모든 저장 속성에 '기본 값' 을 제공하면서 어떤 초기자도 직접 정의하지 않는 값 타입에 '초기자' 추가하기 위해 '익스텐션' 을 사용하는 경우, '익스텐션' 의 초기자 내에서 해당 값 타입을 위한 '기본 (default) 초기자' 와 '멤버 (memberwise) 초기자' 를 호출할 수 있습니다. [Initializer Delegation for Value Types (값 타입의 초기자 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입의-초기자-위임) 에서 설명한 것처럼, 값 타입의 원본 구현에서 초기자를 작성한 경우라면 이렇지 않을 것입니다.
 
 다른 모듈에서 선언한 구조체에 초기자를 추가하려고 '익스텐션' 을 사용한 경우, 새로운 초기자는 정의한 모듈에 있는 초기자를 호출하기 전까지 `self` 에 접근할 수 없습니다.[^access-self]
 
