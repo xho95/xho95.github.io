@@ -289,9 +289,9 @@ stepCounter.totalSteps = 896
 
 ### Property Wrappers (속성 포장)
 
-'속성 포장 (property wrapper)' 은 속성 저장 방법을 관리하는 코드와 속성을 정의하는 코드 사이에 '구분 계층 (layer of seperation)' 을 추가합니다. 예를 들어, '쓰레드-안전성 검사' 를 제공하거나 실제 자료를 데이터베이스에 저장하는 속성을 가진 경우, 해당 코드를 모든 속성마다 작성해야 합니다. 속성 포장을 사용할 때는, 포장을 정의할 때 관리 코드를 한 번 작성한 다음, 해당 관리 코드를 여러 속성에 적용함으로써 재사용합니다.[^property-wrapper]
+속성 포장은 속성 저장 방법을 관리하는 코드와 속성을 정의하는 코드 사이에 구분 계층 (layer of seperation) 을 추가합니다. 예를 들어, 쓰레드-안전성 검사를 제공하거나 자신의 실제 자료를 데이터베이스에 저장하는 속성이 있다면, 모든 속성에 대해 그 코드를 작성해야 합니다. 속성 포장을 사용할 땐, 관리 코드를 포장 정의할 때 한 번 작성하면, 여러 속성에 적용함으로써 그 관리 코드를 재사용합니다.[^property-wrapper]
 
-속성 포장을 정의하려면, `wrappedValue` 속성을 정의하는 구조체, 열거체, 또는 클래스를 만듭니다. 아래 코드에서, `TwelveOrLess` 구조체는 자신이 포장한 값이 '12' 이하의 수를 항상 담음을 보장합니다. 더 큰 수를 저장하라고 요청하면, 대신 12 를 저장합니다.
+속성 포장을 정의하려면, `wrappedValue` 속성을 정의한 구조체나, 열거체, 또는 클래스를 만듭니다. 아래 코드의, `TwelveOrLess` 구조체는 자기의 포장 값이 항상 12 보다 작거나 같은 수를 담는다는 걸 보장합니다. 더 큰 수를 저장하도록 요청하면, 12 를 대신 저장합니다.
 
 ```swift
 @propertyWrapper
@@ -305,13 +305,11 @@ struct TwelveOrLess {
 }
 ```
 
-설정자는 새로운 값이 '12' 보다 작음을 보장하고, 획득자는 저장된 값을 반환합니다.
+설정자는 새 값이 12 보다 작다는 걸 보장하며, 획득자는 저장한 값을 반환합니다.
 
-> 위 예제에서 `number` 선언은 `private` 인 변수라고 표시하는데, 이는 `number` 가 `TwelveOrLess` 의 구현부에서만 사용됨을 보장합니다. 그 밖의 어떤 다른 곳에서 작성된 코드도, `number` 를 직접적으로 사용할 수 없으며, `wrappedValue` 에 대한 획득자와 설정자를 사용하여 값에 접근합니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 를 참고하기 바랍니다.
+> 위 예제의 `number` 선언은 변수를 `private` 이라고 표시하는데, 이는 `TwelveOrLess` 의 구현부 안에서만 `number` 를 사용하도록 보장합니다. 그 외 어떤 곳에서 작성한 코드든 `wrappedValue` 의 획득자와 설정자로 값에 접근(해야) 하며, 직접 `number` 를 사용할 순 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장을 참고하기 바랍니다.
 
-'포장 (wrapper)' 은 속성 앞에 '포장' 의 이름을 '특성 (attribute)' 으로 작성함으로써 속성에 적용합니다. 다음은 작은 직사각형을 저장하는 구조체로,
-
-'속성 (property)' 에 '포장 (wrapper)' 을 적용하려면 속성 앞에 '특성 (attribute)' 처럼 포장의 이름을 작성하면 됩니다. 다음은, `TwelveOrLess` '속성 포장' 에서 구현한 (다소 임의적인) "작은 (small)" 과 같은 정의를 사용하여, 작은 직사각형을 저장하는 구조체입니다:
+속성 앞에 포장 이름을 '특성 (attribute)'[^attribute] 으로 작성함으로써 속성에 포장을 적용합니다. 다음은, 직사각형의 차원이 항상 12 이하가 되도록 보장하고자 `TwelveOrLess` 속성 포장을 사용하여 저장하는 구조체입니다:
 
 ```swift
 struct SmallRectangle {
@@ -321,20 +319,20 @@ struct SmallRectangle {
 
 var rectangle = SmallRectangle()
 print(rectangle.height)
-// "0" 을 인쇄합니다.
+// "0" 을 인쇄함
 
 rectangle.height = 10
 print(rectangle.height)
-// "10" 을 인쇄합니다.
+// "10" 을 인쇄함
 
 rectangle.height = 24
 print(rectangle.height)
-// "12" 를 인쇄합니다.
+// "12" 를 인쇄함
 ```
 
-`height` 와 `width` 속성은, `TwelveOrLess.number` 를 '0' 으로 설정gks, `TwelveOrLess` 정의에서 초기 값을 획득합니다. 수 '10' 을 `rectangle.height` 에 저장하는 것은 작은 수이기 때문에 성공합니다. 수 '24' 를 저장하려고 하면 그 대신 '12' 라는 값이 저장되는데, 속성 설정자의 규칙에 따르면 수 '24' 는 너무 크기 때문입니다.
+`height` 와 `width` 속성은, `TwelveOrLess.number` 를 0 으로 설정한, `TwelveOrLess` 정의로부터 초기 값을 획득합니다. `TwelveOrLess` 의 설정자는 10 을 유효한 값으로 취급해서 `rectangle.height` 에 수 10 을 저장하는 건 작성한 대로 진행합니다. 하지만, 24 는 `TwelveOrLess` 가 허용한 것보다 커서, 24 를 저장하려는 건 `rectangle.height` 에, 허용한 가장 큰 값인, 12 를 대신 설정하는 것으로 끝납니다.
 
-'포장' 을 속성에 적용할 때는, 포장을 위해 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 컴파일러가 통합해 줍니다. ('속성 포장' 은 포장 값을 저장할 책임을 지므로, 그에 대한 통합 코드는 없습니다.) 특수한 '특성 구문 표현 (attribute syntax)' 의 장점을 취하지 않고, '속성 포장' 과 같은 작동을 하는 코드를 작성할 수도 있을 것입니다. 예를 들어, 다음은 이전에 나열한 코드에서, `@TwelveOrLess` '특성' 을 작성하는 대신, `TwelveOrLess` 구조체의 속성을 명시적으로 포장한 `SmallRectangle` 버전입니다[^explicitly-wrap]:
+속성에 포장을 적용할 때, 컴파일러는 포장의 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 통합합니다. (속성 포장은 포장 값의 저장을 책임지므로, 그에 대한 통합 코드는 없습니다.) 특수한 '특성 구문 (attribute syntax)' 의 장점을 취하지 않고, 속성 포장 동작을 하는 코드를 작성할 수도 있습니다. 예를 들어, 다음은 이전에 나열한 코드에서, `@TwelveOrLess` 특성을 작성하는 대신, `TwelveOrLess` 구조체에서 명시적으로 자신의 속성을 포장하는 `SmallRectangle` 버전입니다. [^explicitly-wrap]:
 
 ```swift
 struct SmallRectangle {
@@ -351,7 +349,7 @@ struct SmallRectangle {
 }
 ```
 
-`_height` 와 `_width` 속성은 '속성 포장' 인, `TwelveOrLess` 의 인스턴스를 저장합니다. `height` 와 `width` 에 대한 획득자와 설정자는 `wrappedValue` 속성에 대한 접근을 포장합니다.
+`_height` 와 `_width` 속성은, `TwelveOrLess` 라는, 속성 포장의 인스턴스를 저장합니다. `height` 와 `width` 의 획득자와 설정자는 `wrappedValue` 속성에 대한 접근을 포장합니다.
 
 #### Setting Initial Values for Wrapped Properties (포장된 속성에 초기 값 설정하기)
 
@@ -689,12 +687,14 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
 
-[^property-wrapper]: 본문에서 '관리 코드' 를 재사용할 수 있다고 했는데, 보통 이러한 '관리 코드' 는 스위프트 언어 외부의 프레임웍 등에서 이미 제공되는 경우가 많습니다. 본문에서 예를 들고 있는 '쓰레드-안전성 검사' 와 '데이터베이스 저장' 기능의 경우, 애플에서는 각각 [Dispatch](https://developer.apple.com/documentation/dispatch)[^dispatch] 와 [Core Data](https://developer.apple.com/documentation/coredata) 프레임웍을 제공하고 있습니다. '속성 포장 (property wrapper)' 은 자신이 직접 새로 만들 수도 있지만, 이렇게 스위프트 언어 외부에서 제공하는 부가 기능을 사용하는 용도로 사용한다고도 볼 수 있습니다.
+[^property-wrapper]: 스위프트에서, 본문에서 예를 든 관리 코드 등은 언어 외부의 프레임웍에서 이미 제공하는 경우가 많습니다. 본문에 있는 쓰레드-안전성 검사와 데이터베이스 저장의 경우, 각각 [Dispatch](https://developer.apple.com/documentation/dispatch)[^dispatch] 와 [Core Data](https://developer.apple.com/documentation/coredata) 라는 프레임웍으로 제공하는 기능입니다. (쓰레드-안전성 검사는 최근에 생긴 'Concurrency' 를 통해 언어 차원에서 기능을 제공하고 있기도 합니다.)속성 포장은 자신이 직접 만들 수도 있지만, 보통은 이렇게 스위프트 언어 외부에서 제공하는 부가 기능을 사용할 때 많이 사용하게 됩니다.
 
 [^dispatch]: 예전에는 [Grand Central Dispatch (GCD)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 라는 용어를 많이 사용하였는데, 최근에는 'Dispatch' 라고만 하고 있으며, [Dispatch](https://developer.apple.com/documentation/dispatch) 프레임웍 문서에서 'Dispatch' 를 'Grand Central Dispatch (GCD)' 라고도 한다고 설명하고 있습니다.
 
 [^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 참고하기 바랍니다.
 
-[^explicitly-wrap]: 이 예제를 보면 '속성 포장' 이란 것은 '사용자 정의 획득자' 와 '사용자 정의 설정자' 를 제공하는 코드를 재활용하기 위한 것임을 알 수 있습니다.
+[^explicitly-wrap]: 속성 포장을 사용하는 대신, 구조체가 자신의 속성을 명시적으로 포장하는 방식이, 이 장 맨 앞에서 설명한 예전 '객체 지향 프로그래밍 언어' 방식입니다.
 
 [^be-settable]: 즉, `volumn` 은 획득자만 있는 읽기-전용 계산 속성이어야 말이 된다는 의미입니다.
+
+[^attribute]: '특성 (attribute)' 는 스위프트 언어에서 지원하는 문법 양식입니다. 보다 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
