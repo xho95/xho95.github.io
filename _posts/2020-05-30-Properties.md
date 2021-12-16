@@ -524,7 +524,7 @@ struct SizedRectangle {
 }
 ```
 
-'속성 포장 구문 표현' 은 획득자와 설정자를 가진 속성에 대한 '수월한 구문 표현 (syntactic sugar)' 일 뿐이기 때문에, `height` 와 `width` 에 접근하는 것은 다른 어떤 속성에 접근하는 것과 작동 방식이 똑같습니다. 예를 들어, `resize(to:)` 에 있는 코드는 속성 포장을 사용하여 `height` 와 `width` 에 접근합니다. `resize(to: .large)` 를 호출하는 경우, `.large` 에 대한 'switch 문 case 절' 이 직사각형의 높이와 폭을 '100' 으로 설정합니다. '포장 (wrapper)' 은 해당 속성의 값이 '12' 보다 커지는 것을 막고, 값을 조정했다는 사실을 기록하기 위해, '드러낸 값' 을 `true` 로 설정합니다. `resize(to:)` 의 끝에서, 속성 포장이 `height` 나 `width`를 조정했는 지 결정하기 위해 반환문이 `$heigh` 와 `$width` 를 검사합니다.
+속성 포장 구문은 그냥 획득자와 설정자가 있는 속성을 위한 수월한 구문일 뿐이기 때문에, `height` 와 `width` 로의 접근은 다른 어떤 속성으로의 접근과 똑같이 동작합니다. 예를 들어, `resize(to:)` 코드는 자신의 속성 포장을 써서 `height` 와 `width` 에 접근합니다. `resize(to: .large)` 를 호출하면, `.large` 라는 switch 문 case 절이 직사각형의 높이와 폭을 100 으로 설정합니다. 포장 (wrapper) 은 그 속성 값이 12 보다 커지는 걸 막고, 자신이 값을 적당히 조정한 사실을 기록하고자, 내민 값을 `true` 로 설정합니다. `resize(to:)` 끝에서, 반환문이 `$heigh` 와 `$width` 를 검사하여 속성 포장이 `height` 나 `width` 중 어느 하나를 적당히 조정했는 지 결정합니다. 
 
 ### Global and Local Variables (전역 변수와 지역 변수)
 
