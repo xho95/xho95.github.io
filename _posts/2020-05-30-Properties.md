@@ -353,7 +353,7 @@ struct SmallRectangle {
 
 #### Setting Initial Values for Wrapped Properties (포장 속성에 초기 값 설정하기)
 
-위 예제 코드는 `TwelveOrLess` 정의에서 `number` 에 초기 값을 주는 것으로써 포장 속성에 초기 값을 설정합니다. 이 속성 포장을 사용하는 코드는, `TwelveOrLess` 가 포장한 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 정의에서 `height` 나 `width` 에 초기 값을 줄 순 없습니다. 초기 값 설정 및 다른 사용자 정의를 지원하려면, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 `TwelveOrless` 의 (기능을) 늘려서 포장 값인 최대 값을 설정하도록 초기자를 정의한 `SmallNumber` 라는 버전입니다:
+위 예제 코드는 `TwelveOrLess` 정의 안에서 `number` 에 초기 값을 주는 것으로 포장 속성의 초기 값을 설정합니다. 이 속성 포장을 사용하는 코드는, `TwelveOrLess` 가 포장한 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 정의에서 `height` 나 `width` 에 초기 값을 줄 순 없습니다. 초기 값 설정 및 다른 사용자 정의를 지원하려면, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 `SmallNumber` 라고 `TwelveOrless` (의 기능을) 늘린 버전인데 초기자를 정의하여 포장 값과 최대 값을 설정합니다:
 
 ```swift
 @propertyWrapper
@@ -380,9 +380,9 @@ struct SmallNumber {
 }
 ```
 
-`SmallNumber` 정의는-`init()`, `init(wrappedValue:)`, 그리고 `init(wrappedValue:maximum:)` 라는-세 개의 초기자를 포함하고 있는데 이는 아래 예제에서 포장 값과 최대 값을 설정할 때 사용합니다. '초기자' 와 '초기자 구문 표현 (initializer syntax)' 에 대한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 를 참고하기 바랍니다.
+`SmallNumber` 정의는-`init()`, `init(wrappedValue:)`, 및 `init(wrappedValue:maximum:)` 이라는-세 개의 초기자를 포함하며 아래 예제에서 포장 값과 최대 값을 설정할 때 이를 사용합니다. 초기자와 초기자 구문에 대한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장을 참고하기 바랍니다.
 
-속성에 포장을 적용할 때 초기 값을 지정하지 않으면, 스위프트가 `init()` 초기자를 사용하여 포장을 설정합니다. 예를 들면 다음과 같습니다:
+속성에 포장을 적용하면서 초기 값을 지정하지 않을 땐, 스위프트가 `init()` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct ZeroRectangle {
@@ -392,12 +392,12 @@ struct ZeroRectangle {
 
 var zeroRectangle = ZeroRectangle()
 print(zeroRectangle.height, zeroRectangle.width)
-// "0 0" 를 인쇄합니다.
+// "0 0" 를 인쇄함
 ```
 
-`height` 와 `width` 를 포장한 `SmallNumber` 의 인스턴스는 `SmallNumber()` 를 호출하여 생성합니다. 해당 초기자 내의 코드는, '0' 과 '12' 라는 '기본 값' 을 사용하여, '초기 포장 값' 과 '초기 최대 값' 을 설정합니다. 속성 포장은 여전히, 앞서 `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 예제 같이, 모든 초기 값을 제공합니다. 그 예제와는 달리, `SmallNumber` 는 속성 선언에서 그 초기 값들을 작성하는 것 또한 지원합니다.
+`height` 와 `width` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber()` 호출로 생성합니다. 그 초기자 안의 코드는, 0 과 12 라는 기본 값을 사용하여, 초기 포장 값과 초기 최대 값을 설정합니다. 속성 포장은, 앞서 `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 예제 같이, 여전히 모든 초기 값을 제공합니다. 그 예제완 달리, `SmallNumber` 는 속성을 선언하는 부분에서 그 초기 값을 작성하는 것도 지원합니다.
 
-속성에 대한 초기 값을 지정할 때는, 스위프트가 `init(wrappedValue:)` 초기자를 사용하여 포장을 설정합니다. 예를 들면 다음과 같습니다:
+속성의 초기 값을 지정할 땐, 스위프트가 `init(wrappedValue:)` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct UnitRectangle {
@@ -407,12 +407,12 @@ struct UnitRectangle {
 
 var unitRectangle = UnitRectangle()
 print(unitRectangle.height, unitRectangle.width)
-// "1 1" 를 인쇄합니다.
+// "1 1" 를 인쇄함
 ```
 
-포장을 가진 속성에 `= 1` 를 작성할 때는, 이를 `init(wrappedValue:)` 초기자에 대한 호출인 것으로 번역합니다. `height` 와 `width` 를 포장한 `SmallNumber` 의 인스턴스는 `SmallNumber(wrappedValue: 1)` 을 호출하여 생성합니다. 초기자는 여기서 지정한 '포장 값' 을 사용하며, '12' 라는 '기본 최대 값' 을 사용합니다.
+포장을 가진 속성에 `= 1` 를 작성할 땐, `init(wrappedValue:)` 초기자의 호출이라고 번역합니다. `height` 와 `width` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 1)` 호출로 생성합니다. 초기자는 여기서 지정한 포장 값을 사용하며, 12 라는 기본 최대 값을 사용합니다.
 
-사용자 정의 '특성 (attribute)' 뒤의 괄호에 인자를 작성할 때는, 스위프트가 해당 인자를 받아 들이는 초기자를 사용하여 포장을 설정합니다. 예를 들어, 초기 값과 최대 값을 제공하는 경우에는, 스위프트가 `init(wrappedValue:maximum:)` 초기자를 사용합니다:
+사용자 정의 특성 (attribute) 뒤의 괄호 안에 인자를 작성할 땐, 스위프트가 그 인자를 받는 초기자로 포장을 설정합니다. 예를 들어, 초기 값과 최대 값을 제공하는 경우, 스위프트가 `init(wrappedValue:maximum:)` 초기자를 사용합니다:
 
 ```swift
 struct NarrowRectangle {
@@ -422,19 +422,19 @@ struct NarrowRectangle {
 
 var narrowRectangle = NarrowRectangle()
 print(narrowRectangle.height, narrowRectangle.width)
-// "2 3" 를 인쇄합니다.
+// "2 3" 를 인쇄함
 
 narrowRectangle.height = 100
 narrowRectangle.width = 100
 print(narrowRectangle.height, narrowRectangle.width)
-// "5 4" 를 인쇄합니다.
+// "5 4" 를 인쇄함
 ```
 
-`height` 를 포장한 `SmallNumber` 의 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 5)` 를 호출하여 생성하며, `width` 를 포장힌 인스턴스는 `SmallNumber(wrappedValue: 3, maximum: 4)` 를 호출하여 생성합니다.
+`height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 5)` 호출로 생성하며, `width` 를 포장힌 인스턴스는 `SmallNumber(wrappedValue: 3, maximum: 4)` 호출로 생성합니다.
 
-속성 포장에 인자를 포함시키는 것으로써, 포장의 초기 상태를 설정할 수 있으며 생성할 때 포장에 다른 옵션을 전달할 수도 있습니다. 이 구문 표현이 '속성 포장' 을 사용하는 가장 일반적인 방식입니다. '특성' 에 필요한 인자는 뭐든지 제공할 수 있으며, 이는 초기자로 전달됩니다.
+속성 포장에 인자를 포함시켜서, 포장의 초기 상태를 설정하거나 포장을 생성할 때 다른 옵션을 전달할 수 있습니다. 이 구문이 속성 포장을 사용하는 가장 일반적인 방식입니다. 필요한 무슨 인자든 특성에 제공할 수 있으며, 이를 초기자로 전달합니다.
 
-'속성 포장 인자' 를 포함시킬 때는, '할당 (assignment)' 를 사용하여 초기 값을 지정할 수도 있습니다. 스위프트는 '할당' 을 `wrappedValue` 인자 처럼 취급하며 포함시킨 인자를 받는 초기자를 사용합니다. 예를 들면 다음과 같습니다:
+속성 포장 인자를 포함할 땐, 할당을 사용하여 초기 값을 지정할 수도 있습니다. 스위프트는 할당을 `wrappedValue` 인자인 것처럼 취급하여 초기자를 써서 포함한 인자를 받습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct MixedRectangle {
@@ -444,14 +444,14 @@ struct MixedRectangle {
 
 var mixedRectangle = MixedRectangle()
 print(mixedRectangle.height)
-// "1" 를 인쇄합니다.
+// "1" 를 인쇄함
 
 mixedRectangle.height = 20
 print(mixedRectangle.height)
-// "12" 를 인쇄합니다.
+// "12" 를 인쇄함
 ```
 
-`height` 를 포장한 `SmallNumber` 의 인스턴스는 `SmallNumber(wrappedValue : 1)` 를 호출하여 생성하며, 이는 '기본 최대 값' 인 '12' 를 사용합니다. `width` 를 포장한 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 를 호출하여 생성합니다.
+`height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 호출로 생성하는데, 이는 12 라는 기본 최대 값을 사용합니다. `width` 를 포장한 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 호출로 생성합니다.
 
 #### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)
 
