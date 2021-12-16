@@ -538,6 +538,22 @@ struct SizedRectangle {
 >
 > 지역 상수와 변수는 절대로 느긋하게 계산하지 않습니다.
 
+속성 포장은, 전역 변수나 계산 변수가 아닌, 지역 저장 변수에 적용할 수 있습니다. 예를 들어, 아래 코드의, `myNumber` 는 `SmallNumber` 를 속성 포장으로 사용합니다. 
+
+```swift
+func someFunction() {
+  @SmallNumber var myNumber: Int = 0
+
+  myNumber = 10 
+  // 이제 myNumber 는 10 임
+
+  myNumber = 24
+  // 이제 myNumber 는 12 임 
+}
+```
+
+`SmallNumber` 를 속성에 적용할 때 같이, `myNumber` 값에 10 을 설정하는 건 유효합니다. 12 보다 높은 값은 속성 포장이 허용하지 않기 때문에, 24 대신 12 를 `myNumber` 에 설정합니다.
+
 ### Type Properties (타입 속성)
 
 '인스턴스 속성' 은 특정 타입의 인스턴스에 속해 있는 속성입니다. 해당 타입의 새로운 인스턴스를 생성할 때마다, 다른 인스턴스와는 구분된, 자신만의 속성 값 집합을 가집니다.
