@@ -453,11 +453,11 @@ print(mixedRectangle.height)
 
 `height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 호출로 생성하는데, 이는 12 라는 기본 최대 값을 사용합니다. `width` 를 포장한 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 호출로 생성합니다.
 
-#### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)
+#### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)
 
-'포장 값' 에 더하여, 속성 포장은 _드러낸 값 (projected value)_ 을 정의함으로써 추가적인 기능을 노출할 수 있습니다-예를 들어, 데이터베이스 접근을 관리하는 속성 포장은 '드러낸 값' 에 대한 `flushDatabaseConnection()` 메소드를 노출할 수 있습니다. '드러낸 값' 의 이름은, '달러 기호 (`$`)' 로 시작한다는 것만 빼면, '포장 값' 과 똑같습니다. `$` 로 시작하는 속성을 직접 코드에서 정의할 수는 없기 때문에 '드러낸 값' 이 자신이 정의한 속성을 방해할 일은 절대로 없습니다.
+포장 값에 더하여, 속성 포장은 _내민 값 (projected value)_ 을 정의함으로써 추가 기능을 드러낼 수 있습니다-예를 들어, 데이터베이스 접근을 관리하는 속성 포장은 자신의 내민 값에 대하여 `flushDatabaseConnection()` 메소드를 드러낼 수 있습니다. 내민 값의 이름은, 달러 기호 (`$`) 로 시작한다는 것만 제외하면, 포장 값과 똑같습니다. 코드에서 `$` 로 시작하는 속성을 정의할 순 없기 때문에 내민 값이 자신이 정의한 속성을 간섭할 일은 절대로 없습니다.
 
-위 `SmallNumber` 예제에서, 속성에 너무 큰 수를 설정하려고 하면, 저장하기 전에 속성 포장이 수를 조정합니다. 아래 코드는 `SmallNumber` 구조체에 `projectedValue` 속성을 추가하여 속성에 새로운 값을 저장하기 전에 속성 포장이 새로운 값을 조정했는 지를 추적합니다.
+위의 `SmallNumber` 예제에서, 너무 큰 수를 속성에 설정하려고 하면, 속성 포장이 저장 전에 수치 값을 적당히 조정합니다. 아래 코드는 `SmallNumber` 구조체에 `projectedValue` 속성을 추가하여 새 값을 속성에 저장하기 전에 속성 포장이 새 값을 적당히 조정했는지 추적합니다.
 
 ```swift
 @propertyWrapper
@@ -488,18 +488,18 @@ var someStructure = SomeStructure()
 
 someStructure.someNumber = 4
 print(someStructure.$someNumber)
-// "false" 를 인쇄합니다.
+// "false" 를 인쇄함
 
 someStructure.someNumber = 55
 print(someStructure.$someNumber)
-// "true" 를 인쇄합니다.
+// "true" 를 인쇄함
 ```
 
-`someStructure.$someNumber` 를 작성하는 것으로 포장이 '드러낸 값' 에 접근합니다. '4' 같이 작은 수를 저장한 후라면, `someStructure.$someNumber` 의 값은 `false` 입니다. 하지만, '55' 같이, 아주 큰 수를 저장하려고 한 후라면 '드러낸 값' 은 `true` 입니다.
+`someStructure.$someNumber` 라고 작성하면 포장이 내민 값에 접근합니다. 4 와 같이 작은 수를 저장한 후엔, `someStructure.$someNumber` 값이 `false` 입니다. 하지만, 55 같이, 너무 큰 수를 저장하려고 한 후엔 내민 값이 `true` 입니다.
 
-속성 포장은 어떤 타입의 값이든 '드러낸 값' 으로 반환할 수 있습니다. 이 예제에 있는, 속성 포장은 단 한 조각의 정보-수를 조정했는지-만을 노출하므로 '불리언 (Boolean) 값' 을 '드러낸 값' 으로 노출합니다. 더 많은 정보를 노출할 필요가 있는 포장은 어떤 다른 자료 타입의 인스턴스를 반환할 수도 있고, 아니면 '드러낸 값' 으로 포장의 인스턴스를 노출하기 위해 `self` 를 반환할 수도 있습니다.
+속성 포장은 어떤 타입의 값이든 자신이 내민 값으로 반환할 수 있습니다. 이 예제에선, 속성 포장이-수치 값을 적당히 조정했는지 라는-단 한 조각의 정보만을 드러내므로 불리언 (Boolean) 값을 자신의 내민 값으로 드러냅니다. 더 많은 정보를 드러낼 필요가 있는 포장은 어떠한 다른 자료 타입 인스턴스를 반환하거나, 포장의 인스턴스를 자신의 내민 값으로 드러내기 위해 `self` 를 반환할 수도 있습니다.
 
-속성 획득자나 인스턴스 메소드 같이, 타입 일부인 코드에서 '드러낸 값' 에 접근할 때는, 다른 속성에 접근할 때 같이, 속성 이름 앞의 `self.` 를 생략할 수 있습니다. 다음 예제 코드는 포장의 '드러낸 값' 인 `height` 와 `width` 를 `$height` 와 `$width` 로써 참조합니다:
+속성 획득자나 인스턴스 메소드 같이, 타입의 일부분인 코드에서 내민 값에 접근할 땐, 다른 속성에 접근할 때 같이, 속성 이름 앞의 `self.` 를 생략할 수 있습니다. 다음 예제에 있는 코드는 포장의 '드러낸 값' 인 `height` 와 `width` 를 `$height` 와 `$width` 로써 참조합니다:
 
 ```swift
 enum Size {
