@@ -124,7 +124,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 정밀도를 지정�
 
 '여러 줄짜리 문자열 글자 값' 은 어떤 '공백 (spaces)' 과 '탭 (tabs)' 조합으로도 들여쓰기를 할 수 있는데; 이 '들여쓰기 (indentation)' 는 문자열에 포함되지 않습니다. 글자 값을 끝내는 `"""` 가 '들여쓰기' 를 결정합니다: 글자 값의 모든 '비어 있지 않은 (nonblank) 줄' 은 반드시 '닫는 `"""` 앞에 있는 것' 과 정확하게 똑같은 들여쓰기로 시작해야 합니다; '탭' 과 '공백' 사이의 변환은 없습니다. 해당 들여쓰기 후에 추가적인 공백과 탭을 포함할 수도 있는데; 이 공백과 탭은 문자열에 나타납니다.
 
-'여러 줄짜리 문자열 글자 값' 에 있는 '줄 끊음 (line breaks)' 은 '줄 바꿈 (line feed) 문자' 를 사용하도록 '정규화 (normalized)' 합니다.[^line-break-to-line-feed] 소스 파일이 '캐리지 반환' 과 '줄 먹임' 을 섞어서 가지더라도, 문자열에 있는 모든 '줄 끊음' 은 다 똑같을 것입니다.
+여러 줄짜리 문자열 글자 값에 있는 줄 끊음 (line breaks) 은 줄 바꿈 (line feed) 문자를 사용하도록 정규화 (normalized) 합니다.[^line-break-to-line-feed] 소스 파일에 캐리지 반환과 줄 먹임이 섞여 있을지라도, 모든 문자열의 줄 끊음이 똑같을 겁니다.
 
 '여러 줄짜리 문자열 글자 값' 에서, 줄 끝에 '역 빗금 (`\`)' 을 작성하면 문자열에서 해당 '줄 끊음' 을 생략합니다. '역 빗금' 과 '줄 끊음' 사이의 어떤 공백이든 역시 생략합니다. 이 구문을 사용하면, 결과 문자열의 값을 바꾸지 않고도, '여러 줄짜리 문자열 글자 값' 을 소스 코드에서 '직접 줄 바꿈 (hard wrap)'[^hard-wrap] 할 수 있습니다.
 
@@ -245,7 +245,7 @@ let textB = "Hello world"
 
 [^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
 
-[^property-wrapper-projection]: '속성 포장의 드러냄 (property wrapper projection) 을 가진 속성' 은 '드러낸 값 (projectedValue) 를 가진 속성' 을 의미합니다. 본문의 내용은, 속성이 `projectedValue` 를 가지고 있을 때, `$<projectedValue>` 같은 구문을 지원한다는 의미입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 드러내기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-드러내기) 부분을 참고하기 바랍니다. 
+[^property-wrapper-projection]: '속성 포장의 드러냄 (property wrapper projection) 을 가진 속성' 은 '드러낸 값 (projectedValue) 를 가진 속성' 을 의미합니다. 본문의 내용은, 속성이 `projectedValue` 를 가지고 있을 때, `$<projectedValue>` 같은 구문을 지원한다는 의미입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-내밀기) 부분을 참고하기 바랍니다. 
 
 [^escaped]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 보통은 'excape character' 라고 하면 `\` 기호를 붙이는 것을 말하지만, 여기서는 `` ` `` 기호를 사용하여 '키워드' 를 마치 일반 단어처럼 사용할 수 있게 만드는 것을 의미합니다.
 
@@ -259,7 +259,7 @@ let textB = "Hello world"
 
 [^begins-or-ends]: 이 설명은 글로 읽는 것보다 예제를 직접 보는 것이 이해하기 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
 
-[^line-break-to-line-feed]: 스위프트에서는 서로 다른 모든 '개행 문자' 를 자동으로 '줄 먹임 (line feed) 문자' 로 자동으로 표준화한다고 이해할 수 있습니다. 예전 프로그래밍에서는 운영체제별로 서로 다른 '개행 문자' 에 대한 처리를 프로그래머가 직접해줘야 했는데, 스위프트에서는 이러한 처리를 할 필요가 없어진 셈입니다.
+[^line-break-to-line-feed]: 스위프트는 '서로 다른 종류의 개행 문자들을 자동으로 줄 먹임 (line feed) 문자로 표준화한다' 고 이해할 수 있습니다. 예전에는 운영체제마다 서로 다른 개행 문자의 처리를 프로그래머가 직접해줘야 했는데, 이럴 필요가 없어진 셈입니다.
 
 [^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 '자동 줄 바꿈' 과 관련된 개념으로, 실제 문자열 글자 값이 아니라, '편집기 (editor)' 에서 문자열이 보여지는 것과 관련한 용어입니다. 이 책에서 '직접 줄 바꿈 (hard wrap) 할 수 있다' 는 것은, 실제 글자 값은 그대로 유지하면서, Xcode 에서 줄 바꿈을 써서 문자열을 알아보기 쉽게 코딩할 수 있다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 항목과 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다.
 

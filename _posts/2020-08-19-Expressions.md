@@ -955,7 +955,7 @@ let x = [10, 3, 20, 15, 4]
 
 #### Subscript Expression (첨자 연산 표현식)
 
-_첨자 연산 표현식 (subscript expression)_ 은 '첨자 연산 선언' 과 관련된 '획득자 (getter)' 와 '설정자 (setter)' 를 사용한 '첨자 연산 접근' 을 제공합니다. 형식은 다음과 같습니다:
+_첨자 연산 표현식 (subscript expression)_ 은 해당 첨자 연산 선언의 획득자 (getter) 와 설정자 (setter) 를 사용한 '첨자 연산 접근' 을 제공합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`[`index expressions-색인 표현식`]
 

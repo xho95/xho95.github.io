@@ -54,7 +54,7 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 
 위에서 본 것처럼, 저장 속성의 초기 값은 '초기자' 에서 설정할 수 있습니다. 대안으로, 속성의 선언[^property-declaration]에서 _기본 속성 값 (default property value)_ 을 지정합니다. '기본 속성 값' 은 정의할 때 속성에 초기 값을 할당함으로써 지정합니다.
 
-> 속성이 항상 똑같은 초기 값을 취한다면, 초기자에서 값을 설정하는 대신 '기본 값' 을 제공하도록 합니다. 최종 결과는 똑같지만, 기본 값은 속성의 초기화를 선언과 더 가깝게 묶어줍니다. 이는 초기자를 더 짧고, 더 명확하게 해주며 기본 값으로 속성의 타입을 추론할 수 있게 해줍니다. 기본 값은, 이 장 나중에 설명하는 것처럼, '기본 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 장점도 더 쉽게 취하도록 해줍니다.
+> 속성이 항상 똑같은 초기 값을 취한다면, 초기자에서 값을 설정하는 대신 '기본 값' 을 제공하도록 합니다. 최종 결과는 똑같지만, 기본 값은 속성 초기화를 선언과 더 가깝게 묶어줍니다. 이는 초기자를 더 짧고, 더 명확하게 해주며 기본 값으로 속성의 타입을 추론할 수 있게 해줍니다. 기본 값은, 이 장 나중에 설명하는 것처럼, '기본 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 장점도 더 쉽게 취하도록 해줍니다.
 
 위에 있는 `Fahrenheit` 구조체는 속성을 선언하는 시점에 `temperature` 속성에 기본 값을 제공함으로써 더 간단한 형식으로 작성할 수 있습니다:
 
@@ -136,7 +136,7 @@ let veryGreen = Color(0.0, 1.0, 0.0)
 
 초기자 매개 변수에 인자 이름표를 사용하고 싶지 않으면, 해당 매개 변수에 '명시적인 인자 이름표' 대신 '밑줄 (underscore; `_`)' 를 작성하여 기본 작동 방식을 '재정의 (override)' 합니다.
 
-다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를, 이미 '섭씨' 척도인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가지도록, 확장한 버전입니다:
+다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를, 이미 '섭씨' 척도인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가지도록, 늘린 버전입니다:
 
 ```swift
 struct Celsius {
@@ -182,7 +182,7 @@ cheeseQuestion.response = "Yes, I do like cheese."
 
 '설문 조사 (survey question)' 에 대한 응답은 질문하기 전까지는 알 수 없으므로, `response` 속성을 `String?`, 또는 “옵셔널 `String`” 타입으로 선언합니다. 이는, 새로운 `SurveyQuestion` 인스턴스를 초기화할 때, "값이 아직 없음" 을 의미하는, `nil` 기본 값으로 자동 할당됩니다.
 
-#### Assigning Constant Properties During Initialization (초기화하는 동안 상수 속성 할당하기)
+#### Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)
 
 상수 속성의 값은, 초기화를 종료할 때까지 확실한 값이 설정되기만 한다면, 초기화 동안의 어떤 시점에도 할당할 수 있습니다. 상수 속성에 값을 한 번 설정하고 나면, 더 이상 수정할 수 없습니다.
 
@@ -253,7 +253,7 @@ print(zeroByZero.width, zeroByZero.height)
 // "0.0 0.0" 를 인쇄합니다.
 ```
 
-### Initializer Delegation for Value Types (값 타입을 위한 초기자의 위임)
+### Initializer Delegation for Value Types (값 타입의 초기자 위임)
 
 초기자는 인스턴스 초기화의 일부를 다른 초기자를 호출하여 수행할 수 있습니다. _초기자 위임 (initializer delegation)_ 이라고 하는, 이 과정은, 여러 초기자들 간에 코드가 중복되는 것을 피하도록 합니다.
 
@@ -352,7 +352,7 @@ convenience init(`parameters-매개 변수`) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 }
 
-#### Initializer Delegation for Class Types (클래스 타입을 위한 초기자의 위임)
+#### Initializer Delegation for Class Types (클래스 타입의 초기자 위임)
 
 지명과 편의 초기자 사이의 관계를 단순화하기 위해, 스위프트는 초기자 사이의 '위임 호출 (delegation calls)'[^delegation-calls] 에 대해 다음과 같은 세 가지 규칙을 적용합니다:
 
@@ -932,7 +932,7 @@ class UntitledDocument: Document {
 
 적절한 타입의 옵셔널 인스턴스를 생성하는 '실패 가능 초기자' 는 전형적으로 `init` 키워드 뒤에 물음표를 붙여 (`init?` 처럼) 정의합니다. 대안으로, 적절한 타입의 '암시적으로 포장 푸는 옵셔널 인스턴스' 를 생성하는 '실패 가능 초기자' 를 정의할 수 있습니다. 이는 `init` 키워드 뒤에 물음표 대신 느낌표를 붙여서 (`init!` 처럼) 합니다.
 
-`init?` 에서 `init!` 로 또 그 반대로도 위임할 수 있으며, `init?` 를 `init!` 로 또 그 반대로도 재정의할 수 있습니다. `init` 에서 `init!` 으로 위임할 수도 있지만, 그렇게 하면 `init!` 초기자가 초기화를 실패하도록 할 경우 '단언문 (asssertion)' 을 발동할 것입니다.
+`init?` 에서 `init!` 로 그리고 그 반대로도 위임할 수 있으며, `init?` 를 `init!` 로 그리고 그 반대로도 재정의할 수 있습니다. `init` 에서 `init!` 으로 위임할 수도 있지만, 그렇게 하면 `init!` 초기자가 초기화를 실패하도록 할 경우 '단언문 (asssertion)' 을 발동할 것입니다.
 
 ### Required Initializers (필수 초기자)
 

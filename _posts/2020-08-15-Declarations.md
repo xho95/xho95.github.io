@@ -61,7 +61,7 @@ _상수 선언 (constant declaration)_ 은 '이름 붙인 상수 값' 을 프로
 
 상수를 '전역 (global scope)' 에서 선언할 때는, 반드시 '값' 으로 초기화해야 합니다. 상수 선언이 함수나 메소드 안에 있을 때는, 맨 처음 값을 읽기 전에 값을  설정한다는 보증을 하는 한, 나중에 초기화할 수 있습니다. 컴파일러가 상수 값을 절대로 읽지 않는다고 증명할 수 있다면, 상수에 값을 설정하는 건 아예 필수도 아닙니다. 상수 선언이 클래스나 구조체 선언에 있을 때는, _상수 속성 (constant property)_ 이라고 고려합니다. 상수 선언은 '계산 속성 (computed properties)' 이 아니며 따라서 '획득자 (getter)' 나 '설정자 (setter)' 를 가지지 않습니다.
 
-상수 선언에서 _상수 이름 (constant name)_ 이 '튜플 패턴' 이면, 튜플의 각 항목 이름이 '초기자 _표현식 (expression)_' 에 있는 '관련 값' 과 연결됩니다.
+상수 선언에서 _상수 이름 (constant name)_ 이 튜플 패턴이면, 튜플에 있는 각 항목 이름을 초기자 _표현식 (expression)_ 의 해당 값과 연결합니다.
 
 ```swift
 let (firstNumber, secondNumber) = (10, 42)
@@ -104,7 +104,7 @@ _변수 선언 (variable declaration)_ 은 '이름 붙인 변수 값' 을 프로
 
 '초기자 _표현식 (expression)_' 은 프로토콜 선언에 있을 순 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 '옵션' 입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 변수 선언이 반드시 '(`:` _타입 (type)_ 형식의) 명시적인 타입 보조 설명' 을 포함해야 합니다.
 
-상수 선언에서와 마찬가지로, _변수 이름 (variable name)_ 이 '튜플 패턴' 이면, 튜플의 각 항목 이름을 '초기자 _표현식 (expression)_' 에 있는 관련 값과 연결합니다.
+상수 선언에서 처럼, _변수 이름 (variable name)_ 이 튜플 패턴이면, 튜플에 있는 각 항목 이름을 초기자 _표현식 (expression)_ 에 있는 해당 값과 연결합니다.
 
 이름이 제시하는 것처럼, '저장 변수' 나 '저장 변수 속성' 의 값은 메모리에 저장됩니다.
 
@@ -300,9 +300,9 @@ f(x: 1, y: 2) // x 와 y 둘 다 이름표가 있습니다.
 &nbsp;&nbsp;&nbsp;&nbsp;`argument label-인자 이름표` `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\_ `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
 
-매개 변수 이름 앞의 이름은 매개 변수에, 매개 변수 이름과는 다를 수 있는, '명시적인 인자 이름표' 를 부여니다. 함수나 메소드 호출에서 관련 인자는 반드시 '주어진 인자 이름표' 를 사용해야 합니다.
+매개 변수 이름 앞에 있는 이름은, 매개 변수 이름과는 다를 수도 있는, 명시적인 인자 이름표를 매개 변수에 부여합니다. 함수나 메소드 호출에서 해당 인자는 반드시 주어진 인자 이름표를 사용해야 합니다.
 
-매개 변수 이름 앞의 '밑줄 (`_`)' 은 '인자 이름표' 를 억제합니다. 함수나 메소드 호출에서 관련 인자는 반드시 이름표가 없어야 합니다.
+매개 변수 이름 앞의 '밑줄 (`_`)' 은 '인자 이름표' 를 억제합니다. 함수나 메소드 호출에서 해당 인자는 반드시 이름표가 없어야 합니다.
 
 ```swift
 func repeatGreeting(_ greeting: String, count n: Int) { /* 인사를 n 번 합니다 */ }
@@ -521,11 +521,11 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 '결합 값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다.
 
-**Enumerations with Indirection ('간접 (indirection)' 을 가지는 열거체)**
+**Enumerations with Indirection (간접을 가진 열거체)**
 
-열거체는 '재귀 구조 (recursive structure)', 즉, '결합 값' 이 열거체 타입 그 자체의 인스턴스일 수 있는 'case 값' 을 가질 수 있습니다. 하지만, 열거체 타입의 인스턴스는 '값 의미 구조' 를 가지며, 이는 메모리에서 '고정된 구획 (fixed layout)' 을 가짐을 의미합니다. '재귀 (recursion)' 를 지원하려면, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
+열거체는 재귀 구조 (recursive structure) 를, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case 를 가질 수 있습니다. 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지는데, 이는 메모리에서 '고정 구획 (fixed layout)' 을 가진다는 의미입니다. 재귀를 지원하려면, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
 
-'특별한 열거체 case 값' 이 '간접 (indirection)' 을 할 수 있게 하려면, 이를 '`indirect` 선언 수정자' 로 표시합니다. '간접 case 값' 은 반드시 '결합 값' 을 가져야 합니다.
+특별한 한 열거체 case 가 간접할 수 있게 하려면, 이를 `indirect` 선언 수정자로 표시합니다. 간접 case 는 반드시 결합 값을 가져야 합니다.
 
 ```swift
 enum Tree<T> {
@@ -534,9 +534,9 @@ enum Tree<T> {
 }
 ```
 
-'결합 값을 가진 열거체의 모든 case 값' 이 '간접' 을 할 수 있게 하려면, 전체 열거체를 '`indirect` 수정자' 로 표시합니다-이는 열거체가 `indirect` 수정자로 표시해야 할 'case 값' 을 아주 많이 가지고 있을 때 편리합니다.
+결합 값을 가진 모든 열거체 case 가 간접할 수 있게 하려면, 전체 열거체를 `indirect` 수정자로 표시합니다-이는 각각을 `indirect` 수정자로 표시해야 하는 case 를 열거체가 많이 담고 있을 때 편리합니다.
 
-'`indirect` 수정자로 표시한 열거체' 는 '결합 값을 가진 case 값' 과 '그렇지 않은 case 값' 을 섞어서 담을 수 있습니다. 그렇다 하더라도, '`indirect` 수정자로도 표시한 case 값' 은 어떤 것도 담을 수 없습니다.
+`indirect` 수정자로 표시한 열거체는 결합 값을 가진 case 와 그렇지 않은 case 가 섞인 걸 담을 수 있습니다. 그렇다 하더라도, `indirect` 수정자로 표시한 어떤 case 를 다시 담을 순 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
@@ -575,7 +575,7 @@ enum GamePlayMode: String {
 
 '열거체 타입의 case 값' 을 참조하려면, `EnumerationType.enumerationCase` 과 같은, '점 (`.`) 구문' 을 사용합니다. 열거체 타입을 추론할 수 있는 상황일 땐, [Enumeration Syntax (열거체 구문)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문) 과 [Implicit Member Expression (암시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적인-멤버-표현식) 에서 설명한 것처럼, 생략할 수 있습니다. ('점' 은 여전히 필수입니다)
 
-'열거체 case 의 값' 을 검사하려면, [Matching Enumeration Values with a Switch Statement ('열거체 값' 과 'switch 문' 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-열거체-값-과-switch-문-맞춰보기) 에 보인 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-패턴) 에서 설명한 것처럼, '`switch` 문의 case 블럭' 에 있는 '열거체 case 패턴' 과 패턴을-맞춰봅니다.
+'열거체 case 의 값' 을 검사하려면, [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 보인 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-패턴) 에서 설명한 것처럼, '`switch` 문의 case 블럭' 에 있는 '열거체 case 패턴' 과 패턴을-맞춰봅니다.
 
 > GRAMMAR OF AN ENUMERATION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID364)
 
@@ -770,7 +770,7 @@ protocol SomeProtocol: AnyObject {
 
 프로토콜 선언에서 '정적 (static) 첨자 연산 필수 조건' 을 선언하려면, 첨자 연산 선언을 '`static` 선언 수정자' 로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 '첨자 연산' 을 `static` 키워드로 선언하며, 프로토콜을 클래스가 준수하면 '첨자 연산' 을 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션 (extension)' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '정적 첨자 연산 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
-[Subscipt Declaration (첨자 연산 선언)](#subscipt-declaration-첨자-연산-선언) 부분도 참고하기 바랍니다.
+[Subscript Declaration (첨자 연산 선언)](#subscript-declaration-첨자-연산-선언) 부분도 참고하기 바랍니다.
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
@@ -1070,7 +1070,7 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 > GRAMMAR OF AN EXTENSION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID378)
 
-### Subscipt Declaration (첨자 연산 선언)
+### Subscript Declaration (첨자 연산 선언)
 
 _첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가 '첨자 연산 기능' 을 지원하도록 하며 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 원소의 접근을 위한 '편의 (convenient) 구문' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드로 선언하며 형식은 다음과 같습니다:
 
@@ -1085,7 +1085,7 @@ _첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가
 
 '첨자 연산 선언' 은 '클래스, 구조체, 열거체, 익스텐션, 또는 프로토콜 선언' 에만 있을 수 있습니다.
 
-_매개 변수 (paramter)_ 는 '첨자 연산 표현식' 에 있는 관련 타입의 (예를 들어, `object[i]` 라는 표현식의 `i` 같은) 원소에 접근하기 위한 1개 이상의 색인을 지정합니다. 원소 접근에 사용하는 색인은 어떤 타입이든 되긴 하지만, 각각의 매개 변수는 반드시 각 색인 타입을 지정하는 '타입 보조 설명' 을 포함해야 합니다. _반환 타입 (return type)_ 은 접근하는 원소의 타입을 지정합니다.
+_매개 변수 (paramter)_ 는 첨자 연산 표현식에 있는 해당 타입의 원소에 접근하는데 사용하는 하나 이상의 색인 (예를 들어, `object[i]` 표현식에 있는 `i`) 을 지정합니다. 원소 접근에 사용하는 색인은 어떤 타입이든 되긴 하지만, 각각의 매개 변수는 반드시 각 색인 타입을 지정하는 '타입 보조 설명' 을 포함해야 합니다. _반환 타입 (return type)_ 은 접근하는 원소의 타입을 지정합니다.
 
 '계산 속성' 에서 처럼, 첨자 연산 선언은 접근한 원소 값에 대한 읽기와 쓰기를 지원합니다. 값을 읽는 데는 '획득자 (getter)' 를 사용하며, 값을 쓰는 데는 '설정자 (setter)' 를 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, 두 절 모두 생략하고 단순히 요청 값을 직접 반환 할 수가 있습니다. 그렇다 하더라도, '설정자 절' 을 제공할 경우, '획득자 절' 도 반드시 제공해야 합니다.
 
@@ -1156,9 +1156,9 @@ _우선 순위 그룹 선언 (precedence group declaration)_ 은 '새로운 중�
 
 _더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 목록은 '새로운 우선 순위 그룹' 과 '기존 우선 순위 그룹' 간의 관계를 지정합니다. '`lowerThan` 우선 순위 그룹 특성' 은 '현재 모듈 밖에서 선언한 우선 순위 그룹' 을 참조하기 위해서만 사용할 수도 있습니다. 두 연산자가, `2 + 3 * 5` 같은 표현식에서 처럼, 자신의 피연산자를 두고 서로 경쟁할 때는, '상대적으로 더 높은 우선 순위를 가진 연산자' 가 피연산자와 더 밀접하게 연결됩니다.
 
-> _더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관계 맺은 우선 순위 그룹들은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 이룰 필요까진 없습니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹을 가지는 것' 도 가능하다는 의미입니다. 이 우선 순위 그룹 연산자들은 괄호 그룹 없이는 서로 나란히 사용할 수 없습니다.
+> _더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관련된 우선 순위 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 형성하진 않아도 됩니다. 이는 '상대적인 우선 순위를 정의하지 않은 우선 순위 그룹을 가지는 것' 도 가능하다는 의미입니다. 이 우선 순위 그룹 연산자들은 괄호 그룹 없이는 서로 나란히 사용할 수 없습니다.
 
-표준 라이브러리가 제공하는 연산자와 함께 하기 위해서 스위프트는 '수많은 우선 순위 그룹' 을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
+스위프트는 표준 라이브러리가 제공하는 연산자와 같이 나아가는 수 없이 많은 우선 순위 그룹을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
 연산자 _결합성 (associativity)_ 은 괄호 그룹이 없을 때 똑같은 우선 순위 수준을 가지는 일련의 연산자들끼리 그룹짓는 방법을 지정합니다. 연산자 결합성은 `left`, `right`, 또는 `none` 이라는 '상황에-민감한 (context-sensitive) 키워드'[^context-sensitive] 하나를 작성함으로써 지정합니다-'결합성' 을 생략하면, 기본 값이 `none` 입니다. '왼쪽-결합 (left-associative) 연산자' 는 왼쪽에서 오른쪽으로 그룹 짓습니다. 예를 들어, '빼기 연산자 (`-`)' 는 왼쪽-결합이므로, `4 - 5 - 6` 라는 표현식은 `(4 - 5) - 6` 으로 그룹지으며 `-7` 이라고 평가합니다. '오른쪽-결합 연산자' 는 오른쪽에서 왼쪽으로 그룹지으며, `none` 이라는 결합성으로 지정한 연산자는 결합을 아예 하지 않습니다. '똑같은 우선 순위 수준의 비-결합 (nonassociative) 연산자' 는 서로 인접해 있을 수 없습니다. 예를 들어, `<` 연산자의 '결합성' 은 `none` 인데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아니라는 의미입니다.
 

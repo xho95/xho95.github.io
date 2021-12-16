@@ -17,7 +17,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 ### Generic Parameter Clause (일반화 매개 변수 절)
 
-_일반화 매개 변수 절 (generic parameter clause)_ 은 '일반화 타입 또는 함수의 타입 매개 변수' 와, '해당 매개 변수에 대한 어떤 결합 구속 조건 및 필수 조건' 을 나란히 지정합니다. '일반화 매개 변수 절' 은 '꺾쇠 괄호 (`<>`)' 로 테두리 치며 형식은 다음과 같습니다:
+_일반화 매개 변수 절 (generic parameter clause)_ 은 일반화 타입이나 함수의 타입 매개 변수와, 그 매개 변수와 결합된 어떤 구속 조건 및 필수 조건을 나란히 지정합니다. '일반화 매개 변수 절' 은 '꺾쇠 괄호 (`<>`)' 로 테두리 치며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;<`generic parameter list-일반화 매개 변수 목록`>
 
@@ -81,7 +81,7 @@ _일반화 인자 절 (generic argument clause)_ 은 '일반화 타입의 타입
 
 &nbsp;&nbsp;&nbsp;&nbsp;<`generic argument list-일반화 인자 목록`>
 
-_일반화 인자 목록 (generic argument list)_ 은 '타입 인자들을 쉼표로-구분한 목록' 입니다. _타입 인자 (type argument)_ 는 '일반화 타입의 일반화 매개 변수 절에 있는 관련 타입 매개 변수' 를 대체하는 '실제 고정 타입의 이름' 입니다. 결과는 '해당 일반화 타입의 특수화 버전 (specialized version)'[^specialized-version] 입니다. 아래 예제는 '스위프트 표준 라이브러리에 있는 일반화 딕셔너리 타입' 의 '단순화 버전' 입니다.
+_일반화 인자 목록 (generic argument list)_ 은 '타입 인자들을 쉼표로-구분한 목록' 입니다. _타입 인자 (type argument)_ 는 일반화 타입의 일반화 매개 변수 절에 있는 해당 타입 매개 변수를 대체하는 '실제 고정 타입 이름' 입니다. 결과는 '해당 일반화 타입의 특수화 버전 (specialized version)'[^specialized-version] 입니다. 아래 예제는 '스위프트 표준 라이브러리에 있는 일반화 딕셔너리 타입' 의 '단순화 버전' 입니다.
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {

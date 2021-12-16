@@ -490,7 +490,7 @@ struct Hamster {
 extension Hamster: TextRepresentable {}
 ```
 
-이제 `Hamster` 의 인스턴스는 `TextRepresentable` 타입이 필수인 곳이면 어디서든 사용할 수 있습니다:
+이제 `TextRepresentable` 이 필수 요구 타입인 곳마다 `Hamster` 인스턴스를 사용할 수 있습니다:
 
 ```swift
 let simonTheHamster = Hamster(name: "Simon")

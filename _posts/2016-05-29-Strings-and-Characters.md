@@ -262,7 +262,7 @@ print(goodStart + end)
 
 ### String Interpolation (문자열 보간법)
 
-_문자열 보간법 (string interpolation)_ 은 '문자열 글자 값 안에 상수, 변수, 글자 값, 및 표현식의 값을 포함하여 섞은 것으로 새로운 `String` 값을 생성하는 방법' 입니다. '한-줄짜리 와 여러 줄짜리 문자열 글자 값' 둘 다에 문자열 보간법을 사용할 수 있습니다. 문자열 글자 값 안에 집어 넣는 각각의 항목은 '괄호 쌍으로 포장한 후, 역 빗금 (backslash; `\`) 접두사' 를 붙입니다:
+_문자열 보간법 (string interpolation)_ 은 '상수, 변수, 글자 값, 및 표현식을 섞은 걸 문자열 글자 값 안에 포함함으로써 새로운 `String` 값을 생성하는 방법' 입니다. 한-줄짜리 및 여러 줄짜리 문자열 글자 값 둘 다 문자열 보간법을 사용할 수 있습니다. 문자열 글자 값 안에 집어 넣는 각각의 항목은 '괄호 쌍으로 포장한 후, 역 빗금 (backslash; `\`) 접두사' 를 붙입니다:
 
 ```swift
 let multiplier = 3
@@ -371,7 +371,7 @@ print("the number of characters in \(word) is \(word.characters.count)")
 
 #### String Indices (문자열 색인)
 
-각각의 `String` 값은, 문자열의 각 `Character` 위치와 관련 있는, `String.Index` 라는, 결합된 '_색인 타입 (index type)_' 을 가집니다.
+각각의 `String` 값에는, 문자열의 각 `Character` 위치에 해당하는, `String.Index` 라는, 결합된 _색인 타입 (index type)_ 이 있습니다.
 
 위에서 언급한 것처럼, 서로 다른 문자를 저장하기 위해 서로 다른 메모리 양을 요구할 수 있으므로, 특별한 위치에 있는 `Character` 를 결정하기 위해선, '해당 `String` 각각의 유니코드 크기 값' 을 반드시 처음부터 끝까지 반복해야 합니다. 이런 이유로, 스위프트 문자열에는 정수 값 색인을 쓸 수 없습니다.[^indexed-by-integer-values]
 
