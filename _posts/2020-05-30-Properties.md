@@ -649,12 +649,12 @@ struct AudioChannel {
 
 `AudioChannel` 구조체는 `currentLevel` 이라는 저장 인스턴스 속성도 정의하는데, 이는 채널의 현재 음량을 `0` 부터 `10` 까지 정도로 나타냅니다.
 
-`currentLevel` 속성은 `currentLevel` 값을 설정할 때마다 검사하는 `didSet` 속성 관찰자를 가집니다. 이 관찰자는 두 개를 검사합니다:
+`currentLevel` 속성은 `currentLevel` 값을 설정할 때마다 검사하는 `didSet` 속성 관찰자를 가집니다. 이 관찰자는 두 가지를 검사합니다:
 
-* `currentLevel` 의 새 값이 `thresholdLevel` 가 허용하는 것보다 크면, '속성 관찰자' 가 `currentLevel` 의 상한을 `thresholdLevel` 까지로 정합니다.
-* (상한을 정한 후에) `currentLevel` 의 새 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 어떤 값보다도 높으면, '속성 관찰자' 가 새로운 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
+* 새 `currentLevel` 값이 허용한 `thresholdLevel` 보다 크면, 속성 관찰자가 `currentLevel` 상한을 `thresholdLevel` 까지로 제한합니다.
+* (상한을 제한한 후의) 새 `currentLevel` 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스가 받은 값보다 높으면, 속성 관찰자가 새 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
 
-> 이 두 검사 중 첫 번째에서, `didSet` 관찰자는 `currentLevel` 을 다른 값으로 설정합니다. 하지만, 이는 '관찰자' 를 다시 호출하도록 하지는 않습니다.
+> 이 두 검사 중 첫 번째에서, `didSet` 관찰자가 `currentLevel` 을 다른 값으로 설정합니다. 이는, 하지만, 관찰자를 다시 호출하지 않습니다.
 
 `AudioChannel` 구조체는, '스테레오 음향 시스템' 의 음량을 표현하는, `leftChannel` 과 `rightChennel` 이라는 두 '음향 채널' 을 생성하기 위해 사용할 수 있습니다:
 
