@@ -600,29 +600,29 @@ class SomeClass {
 
 > 위의 계산 타입 속성 예제는 읽기-전용 (read-only) 계산 타입 속성을 위한 거지만, 계산 인스턴스 속성을 위한 것과 동일한 구문으로 읽고-쓰기 (read-write) 계산 타입 속성을 정의할 수도 있습니다.
 
-#### Querying and Setting Type Properties (타입 속성 조회하기와 설정하기)
+#### Querying and Setting Type Properties (타입 속성 조회하기 및 설정하기)
 
-타입 속성은, 인스턴스 속성에서와 같이, '점 구문 (dot syntax)' 으로 조회하고 설정합니다. 하지만, 타입 속성은, 해당 타입의 인스턴스에 대해서가 아니라, _타입 (type)_ 에 대해서 조회하고 설정합니다. 예를 들면 다음과 같습니다:
+타입 속성은, 그냥 인스턴스 속성인 것 같이, 점 구문으로 조회하고 설정합니다. 하지만, 타입 속성은, 그 타입의 인스턴스에서가 아니라, _타입 (type)_ 에 대해서 조회하고 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(SomeStructure.storedTypeProperty)
-// "Some value." 를 인쇄합니다.
+// "Some value." 를 인쇄함
 SomeStructure.storedTypeProperty = "Another value."
 print(SomeStructure.storedTypeProperty)
-// "Another value." 를 인쇄합니다.
+// "Another value." 를 인쇄함
 print(SomeEnumeration.computedTypeProperty)
-// "6" 를 인쇄합니다.
+// "6" 을 인쇄함
 print(SomeClass.computedTypeProperty)
-// "27" 를 인쇄합니다.
+// "27" 을 인쇄함
 ```
 
-이어지는 예제는 다수 음향 채널에 대한 '음향 측정기 (audio level meter)' 를 모델링하는 구조체로 두 개의 '저장 타입 속성' 사용합니다. 각 채널은 `0` 에서 `10` 에 이르는 정수 '음량 (audio level)' 를 가집니다.
+뒤따르는 예제는 구조체의 일부분으로 두 개의 저장 타입을 사용하여 '다수의 음향 채널을 위한 음량 측정기 (audio level meter) 를 모델링합니다. 각각의 채널은 `0` 부터 `10` 까지를 포함한 정수 음량 (audio level)' 을 가집니다.
 
-아래 그림은 두 음향 채널을 조합하여 '스테레오 (stereo) 음향 측정기' 를 모델링하는 방법을 묘사합니다. 채널의 '음량' 이 `0` 일 때는, 해당 채널의 '불 (lights)' 은 전혀 켜지지 않습니다. '음량' 이 `10` 일 때는, 해당 채널에 대한 모든 '불' 이 켜집니다. 이 그림에서, 왼쪽 채널은 현재 양이 `9` 이고, 오른쪽 채널은 현재 양이 `7` 입니다:
+아래 그림은 이 두 음향 채널을 조합하여 스테레오 음량 측정기를 모델링할 수 있는 방법을 묘사합니다. 채널 음량이 `0` 일 땐, 그 채널에 아무런 불도 들어오지 않습니다. 음량이 `10` 일 땐, 그 채널의 모든 불이 들어옵니다. 이 그림에서, 왼쪽 채널의 현재 량은 `9` 이고, 오른쪽 채널은 현재 량은 `7` 입니다:
 
 ![audio level meter](/assets/Swift/Swift-Programming-Language/Properties-audio-level-meter.jpg)
 
-위에서 설명한 음향 채널은 `AudioChannel` 구조체의 인스턴스로써 표현됩니다:
+위에서 설명한 음향 채널을 `AudioChannel` 구조체 인스턴스로 나타냅니다:
 
 ```swift
 struct AudioChannel {
@@ -631,11 +631,11 @@ struct AudioChannel {
   var currentLevel: Int = 0 {
     didSet {
       if currentLevel > AudioChannel.thresholdLevel {
-        // 새로운 음량의 상한을 임계 값까지로 정합니다.
+        // 새로운 음량의 상한을 임계치까지로 제한함
         currentLevel = AudioChannel.thresholdLevel
       }
       if currentLevel > AudioChannel.maxInputLevelForAllChannels {
-        // 이를 전체에 대한 새로운 최대 입력량으로 저장합니다.
+        // 이를 새로운 전체 최대 입력량으로 저장함
         AudioChannel.maxInputLevelForAllChannels = currentLevel
       }
     }
