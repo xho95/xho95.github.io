@@ -643,13 +643,13 @@ struct AudioChannel {
 }
 ```
 
-`AudioChannel` 구조체는 기능을 지원하는 두 '저장 타입 속성' 을 정의합니다. 첫 번째인, `thresholdLevel` 은, '음량' 이 취할 수 있는 최대 임계 값을 정의합니다. 이는 모든 `AudioChannel` 인스턴스에서 `10` 이라는 상수 값입니다. `10` 보다 높은 값의 음향 신호가 들어 오면, (아래에서 설명하는 것처럼) 상한이 이 임계 값까지로 정해질 것입니다.
+`AudioChannel` 구조체는 자신의 기능을 지원하는 두 개의 저장 타입 속성을 정의합니다. 첫 번째인, `thresholdLevel` 은, 음량이 가질 수 있는 최대 임계 값을 정의합니다. 모든 `AudioChannel` 인스턴스에서 이 값은 `10` 이라는 상수입니다. `10` 보다 높은 값을 가진 음향 신호가 들어 오면, (아래 설명처럼) 이 임계 값까지로 상한을 제한할 것입니다.
 
-두 번째 타입 속성은 `maxInputLevelForAllChannels` 라는 '변수 저장 속성' 입니다. 이는 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 것이든 지금까지의 최대 입력 값을 추적합니다. 초기 값은 `0` 으로 시작합니다.
+두 번째 타입 속성은 `maxInputLevelForAllChannels` 라는 변수 저장 속성입니다. 이는 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 최대 입력 값이든 계속 추적합니다. 초기 값은 `0` 으로 시작합니다.
 
-`AudioChannel` 구조체는 `currentLevel` 이라는 '저장 인스턴스 속성' 도 정의하고 있는데, 이는 채널의 현재 음량을 `0` 에서 `10` 까지의 '척도 (scale)' 로 표현합니다.
+`AudioChannel` 구조체는 `currentLevel` 이라는 저장 인스턴스 속성도 정의하는데, 이는 채널의 현재 음량을 `0` 부터 `10` 까지 정도로 나타냅니다.
 
-`currentLevel` 속성은 `currentLevel` 의 값을 설정할 때마다 그 값을 검사하는 '`didSet` 속성 관찰자' 를 가지고 있습니다. 이 관찰자는 두 가지를 검사합니다:
+`currentLevel` 속성은 `currentLevel` 값을 설정할 때마다 검사하는 `didSet` 속성 관찰자를 가집니다. 이 관찰자는 두 개를 검사합니다:
 
 * `currentLevel` 의 새 값이 `thresholdLevel` 가 허용하는 것보다 크면, '속성 관찰자' 가 `currentLevel` 의 상한을 `thresholdLevel` 까지로 정합니다.
 * (상한을 정한 후에) `currentLevel` 의 새 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 어떤 값보다도 높으면, '속성 관찰자' 가 새로운 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
