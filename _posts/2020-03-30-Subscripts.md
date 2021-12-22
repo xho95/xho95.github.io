@@ -22,10 +22,10 @@ redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 ```swift
 subscript(index: Int) -> Int {  
   get {
-    // 여기에서 적절한 첨자 연산 값을 반환함.
+    // 여기서 적절한 첨자 값을 반환함
   }
   set(newValue) {
-    // 여기에서 적합한 설정 행동을 수행함.
+    // 여기서 적합한 설정 행동을 함
   }
 }
 ```
