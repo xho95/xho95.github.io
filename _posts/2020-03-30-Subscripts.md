@@ -112,19 +112,19 @@ struct Matrix {
 }
 ```
 
-`Matrix` 는 `rows` 와 `columns` 이라는 두 매개 변수를 취하는 초기자를 제공하여, `rows * columns` 개의 `Double` 타입 값들을 저장하기에 충분한 크기의 배열을 생성합니다. '행렬 (matrix)' 의 각 위치는 초기 값이 `0.0` 으로 주어집니다. 이를 달성하기 위해, 배열의 크기와, `0.0` 이라는 초기 '단위 격자 (cell)' 값이, 정확한 크기의 새로운 배열을 생성하고 초기화하는 '배열 초기자 (array initializer)' 로 전달됩니다. 이 '초기자' 는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
+`Matrix` 는 `rows` 와 `columns` 이라는 두 매개 변수를 취하는 초기자를 제공하며, `rows * columns` 개의 `Double` 타입 값을 저장할만큼 충분히 큰 배열을 생성합니다. 행렬 (matrix) 안의 각 위치엔 `0.0` 이라는 초기 값을 줍니다. 이를 달성하기 위해, 배열 초기자에 배열 크기와, `0.0` 이라는 초기 단위 조직 값을 전달하여, 올바른 크기의 새 배열을 생성하고 초기화합니다. 이 초기자는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
 
-새로운 `Matrix` 인스턴스는 적절한 행과 열 개수를 초기자에 전달함으로써 생성할 수 있습니다:
+자신의 초기자에 적절한 행과 열 개수를 전달함으로써 새로운 `Matrix` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 var matrix = Matrix(rows: 2, columns: 2)
 ```
 
-위 예제는 두 개의 행과 두 개의 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 사실상, 맨 왼쪽 위부터 오른쪽 아래로, '행렬을 납작하게 한 (flattened) 버전' 입니다[^flattend-version]:
+위 예제는 두 행과 두 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 사실상, 맨 왼쪽 위에서 오른쪽 아래로 읽어가는, 납작한 버전의 행렬입니다[^flattend-version]:
 
 ![flattened-version-of-the-matrix](/assets/Swift/Swift-Programming-Language/Subscripts-flattened-version-matrix.jpg)
 
-행렬의 값은 행과 열의 값을, 쉼표로 구분하여, 첨자 연산에 전달함으로써 설정할 수 있습니다:
+행과 열 값을, 쉼표로 구분하여, 첨자에 전달함으로써 행렬 안의 값을 설정할 수 있습니다:
 
 ```swift
 matrix[0, 1] = 1.5
@@ -183,4 +183,4 @@ print(mars)
 
 [^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
 
-[^flattend-version]: '납작하게 한 (flattened) 버전' 이란 '2-차원' 배열을 '1-차원' 배열 형태로 만들었다는 의미입니다.
+[^flattend-version]: '납작한 (flattened) 버전의 행렬' 이란 2-차원 배열의 형상을 바꿔서 1-차원 배열로 만들었다는 의미입니다.
