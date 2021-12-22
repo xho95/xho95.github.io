@@ -15,9 +15,9 @@ redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 
 단일한 타입에 여러 개의 첨자를 정의할 수 있으며, 첨자에 전달한 색인 값 타입을 기초로 중복 정의한 첨자 중 사용하기 적절한 걸 선택합니다. 첨자는 일-차원민으로 제한하지 않으며,자신이 정의한 타입에 적합하도록 여러 개의 입력 매개 변수를 가진 첨자를 정의할 수도 있습니다.
 
-### Subscript Syntax (첨자 연산 구문 표현)
+### Subscript Syntax (첨자 구문)
 
-첨자 연산은 인스턴스 이름 뒤의 대괄호에 하나 이상의 값을 작성함으로써 타입의 인스턴스를 조회하도록 해줍니다. 이러한 구문 표현은 '인스턴스 메소드 구문' 및 '계산 속성 (computed properties) 구문' 과 비슷합니다. 첨자 연산 정의는 `subscript` 키워드로 작성하며, 인스턴스 메소드와 똑같은 방식으로, 하나 이상의 매개 변수와 반환 타입을 지정합니다. 인스턴스 메소드와는 달리, 첨자 연산은 '읽기-쓰기 (read-write)' 일 수도 '읽기-전용 (read-only)' 일 수도 있습니다.[^read-only] 이 작동 방식은 '계산 속성' 과 똑같은 방식인 '획득자 (getter)' 와 '설정자 (setter)' 로 '소통 (communicated)' 합니다.
+첨자는 인스턴스 이름 뒤 대괄호 안에 하나 이상의 값을 작성함으로써 타입의 인스턴스를 조회할 수 있게 합니다. 이러한 구문은 인스턴스 메소드 구문 및 계산 속성 구문 둘 다와 비슷합니다. 첨자 정의는 `subscript` 키워드로 작성하며, 인스턴스 메소드와 똑같이, 하나 이상의 입력 매개 변수와 반환 타입을 지정합니다. 인스턴스 메소드와 달리, 첨자는 읽기-쓰기 (read-write) 나 읽기-전용 (read-only) 일 수 있습니다.[^read-only] 이런 동작은 계산 속성에서와 똑같이 획득자 (getter) 와 설정자 (setter) 로 통신합니다.
 
 ```swift
 subscript(index: Int) -> Int {  
@@ -179,7 +179,7 @@ print(mars)
 
 [^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection), 리스트 (list), 시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 자료 구조입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
 
-[^read-only]: 이러한 작동 방식은 바로 뒤에 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보자면 '계산 속성' 과 '첨자 연산' 은 '인스턴스 메소드' 의 특수한 한 형태라고 볼 수 있습니다.
+[^read-only]: 이런 동작은 바로 뒤에서 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보면 계산 속성과 첨자는 인스턴스 메소드의 특수한 한 형태라고 볼 수 있습니다.
 
 [^initializer]: 여기서 사용한 '초기자 (initializer)' 는 구조체 타입에 대해서 자동으로 생기는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 부여되므로 코드에 나타나지는 않습니다. 멤버 초기자에 대한 더 자세한 정보는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
 
