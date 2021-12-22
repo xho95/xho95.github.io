@@ -760,9 +760,9 @@ protocol SomeProtocol: AnyObject {
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
-#### Protocol Subscript Declaration (프로토콜 첨자 연산 선언)
+#### Protocol Subscript Declaration (프로토콜 첨자 선언)
 
-프로토콜은 프로토콜 선언 본문에 '프로토콜 첨자 연산 선언' 을 포함함으로써 '준수 타입' 이 '첨자 연산' 을 반드시 구현해야 한다고 선언합니다. '프로토콜 첨자 연산 선언' 은 특수한 형식의 첨자 연산 선언입니다:
+프로토콜은 프로토콜 선언 본문에 '프로토콜 첨자 연산 선언' 을 포함함으로써 '준수 타입' 이 '첨자' 를 반드시 구현해야 한다고 선언합니다. '프로토콜 첨자 선언' 은 특수한 형식의 첨자 연산 선언입니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set }
 
@@ -1095,11 +1095,11 @@ _매개 변수 (paramter)_ 나 _반환 타입 (return type)_ 이 '중복 정의 
 
 '첨자 연산 매개 변수' 는 '함수 매개 변수' 와 똑같은 규칙을 따르지만, 두 가지 예외가 있습니다. 기본적으로, 첨자 연산에서 사용하는 매개 변수는, 함수, 메소드, 및 초기자와는 달리, '인자 이름표' 를 가지지 않습니다. 하지만, 함수, 메소드, 및 초기자가 사용하는 것과 똑같은 구문을 써서 명시적인 '인자 이름표' 를 제공할 순 있습니다. 이에 더하여, 첨자 연산은 '입-출력 매개 변수' 를 가질 수 없습니다. 첨자 연산 매개 변수는, [Special Kinds of Parameters (특수한 종류의 매개 변수)](#special-kinds-of-parameters-특수한-종류의-매개-변수) 에서 설명한 구문으로 된, '기본 값' 을 가질 수 있습니다.
 
-첨자 연산은, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)](#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 선언할 수도 있습니다.
+첨자 연산은, [Protocol Subscript Declaration (프로토콜 첨자 선언)](#protocol-subscript-declaration-프로토콜-첨자-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 선언할 수도 있습니다.
 
-'첨자 연산' 에 대한 더 많은 정보와 '첨자 연산 선언' 에 대한 예제를 보려면, [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}) 장을 참고하기 바랍니다.
+첨자에 대한 더 많은 정보 및 첨자 선언에 대한 예제를 보려면, [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}) 장을 참고하기 바랍니다.
 
-#### Type Subscript Declarations (타입 첨자 연산 선언)
+#### Type Subscript Declarations (타입 첨자 선언)
 
 타입 인스턴스가 아닌, 타입이 노출하도록 첨자 연산을 선언하려면, 첨자 연산 선언을 '`static` 선언 수정자' 로 표시합니다. 클래스의 '타입 계산 속성' 을 '`class` 선언 수정자' 로 대신 표시하면 하위 클래스가 상위 클래스 구현을 재정의할 수 있습니다. 클래스 선언에서, `static` 키워드는 `class` 와 `final` 선언 수정자 둘 다를 선언에  표시한 것과 똑같은 효과를 가집니다.
 

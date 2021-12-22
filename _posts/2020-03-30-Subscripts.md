@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Subscripts (첨자 연산)"
+title:  "Swift 5.5: Subscripts (첨자)"
 date:   2020-03-30 10:00:00 +0900
 categories: Swift Language Grammar Subscripts
 redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
@@ -9,11 +9,11 @@ redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 부분[^Subscripts]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Subscripts (첨자 연산)
+## Subscripts (첨자)
 
-클래스, 구조체, 그리고 열거체는, '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)'[^sequences] 의 멤버 원소에 접근하는 '줄임말 (shorcuts)' 인, _첨자 연산 (subscripts)_ 을 정의할 수 있습니다. '첨자 연산' 은 별도의 메소드가 필요없이 '색인 (index)' 으로 값을 설정하고 가져오기 위해 사용합니다. 예를 들어, `Array` 인스턴스에 있는 원소는 `someArray[index]` 로 `Dictionary` 인스턴스에 있는 원소는 `someDictionary[key]` 로 접근합니다.
+클래스, 구조체, 및 열거체는, 집합체 (collection), 리스트 (list), 또는 시퀀스 (sequence)[^sequences] 멤버 원소에 접근하는 줄임말인, _첨자 (subscripts)_ 을 정의할 수 있습니다. 설정하고 가져오는데 별도의 메소드 없이 색인 (index) 으로 값을 설정하고 가져오기 위해 첨자를 사용합니다. 예를 들어, `Array` 인스턴스 원소는 `someArray[index]` 로 `Dictionary` 인스턴스 원소는 `someDictionary[key]` 로 접근합니다.
 
-단일 타입에 대해 여러 개의 '첨자 연산' 을 정의할 수 있으며, 사용하기에 적절한 첨자 연산은 첨자 연산에 전달한 색인 값의 타입에 기초하여 선택됩니다. 첨자 연산은 단일 차원으로만 제한되어 있지 않으며, 사용자 정의 타입의 필요에 적합하도록 '다중 입력 매개 변수' 를 가진 첨자 연산을 정의할 수도 있습니다.
+단일한 타입에 여러 개의 첨자를 정의할 수 있으며, 첨자에 전달한 색인 값 타입을 기초로 중복 정의한 첨자 중 사용하기 적절한 걸 선택합니다. 첨자는 일-차원민으로 제한하지 않으며,자신이 정의한 타입에 적합하도록 여러 개의 입력 매개 변수를 가진 첨자를 정의할 수도 있습니다.
 
 ### Subscript Syntax (첨자 연산 구문 표현)
 
@@ -177,7 +177,7 @@ print(mars)
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 '자료 구조' 입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
+[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection), 리스트 (list), 시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 자료 구조입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
 
 [^read-only]: 이러한 작동 방식은 바로 뒤에 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보자면 '계산 속성' 과 '첨자 연산' 은 '인스턴스 메소드' 의 특수한 한 형태라고 볼 수 있습니다.
 

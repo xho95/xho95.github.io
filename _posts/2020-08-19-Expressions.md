@@ -961,7 +961,7 @@ _첨자 연산 표현식 (subscript expression)_ 은 해당 첨자 연산 선언
 
 '첨자 연산 표현식' 의 값을 평가하기 위해서는, '첨자 연산 매개 변수' 로 전달한 _색인 표현식 (index expressions)_ 을 가지고 _표현식 (expression)_ 타입을 위한 '첨자 연산 획득자' 를 호출합니다. 값을 설정하기 위해서는, 똑같은 방식으로 '첨자 연산 설정자' 를 호출합니다.
 
-'첨자 연산 선언' 에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 부분을 참고하기 바랍니다.
+'첨자 선언' 에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-선언) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
