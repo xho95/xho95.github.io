@@ -54,11 +54,11 @@ print("six times three is \(threeTimesTable[6])")
 // "six times three is 18" 을 인쇄함
 ```
 
-이 예제에선, 구구단 3-단을 나타내는 새 `TimesTable` 인스턴스를 생성합니다. 이는 인스턴스의 `multiplier` 속성에 사용할 값으로 구조체의 `initializer`[^initializer] 에 `3` 을 전달함으로써 지시합니다.
+이 예제에선, 구구단 3-단을 나타내는 새 `TimesTable` 인스턴스를 생성합니다. 이는 인스턴스의 `multiplier` 속성이 사용할 `3` 이라는 값을 구조체의 `initializer`[^initializer] 에 전달함으로써 지시합니다.
 
-`threeTimesTable` 인스턴스는, `threeTimesTable[6]` 라고 나타낸 것처럼, 첨자 연산을 호출함으로써 조회할 수 있습니다. 이는 구구단 '3-단' 의 '6' 번째 항목을 요청하는데, `18`, 또는 `3` 곱하기 `6` 의 값을 반환합니다.
+`threeTimesTable[6]` 이라는 호출로 보는 것처럼, 자신의 첨자를 호출함으로써 `threeTimesTable` 인스턴스를 조회할 수 있습니다. 이는 구구단 3-단의 6번째 요소를 요청하여, `18`, 또는 `3` 곱하기 `6` 의 값을 반환합니다.
 
-> 구구단 'n-단' 은 고정된 수학 규칙에 기초합니다. `threeTimesTable[someIndex]` 에 새로운 값을 설정하는 것은 적절하지 않으므로, `TimesTable` 에 대한 첨자 연산은 '읽기-전용 첨자 연산' 으로 정의합니다.
+> 구구단 n-단은 고정된 수학 규칙에 기초합니다. `threeTimesTable[someIndex]` 에 새 값을 설정하는 건 적절치 않으므로, `TimesTable` 의 첨자는 읽기-전용 첨자로 정의합니다.
 
 ### Subscript Usage (첨자 연산의 사용법)
 
@@ -181,6 +181,6 @@ print(mars)
 
 [^read-only]: 이런 동작은 바로 뒤에서 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보면 계산 속성과 첨자는 인스턴스 메소드의 특수한 한 형태라고 볼 수 있습니다.
 
-[^initializer]: 여기서 사용한 '초기자 (initializer)' 는 구조체 타입에 대해서 자동으로 생기는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 부여되므로 코드에 나타나지는 않습니다. 멤버 초기자에 대한 더 자세한 정보는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
+[^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
 
 [^flattend-version]: '납작하게 한 (flattened) 버전' 이란 '2-차원' 배열을 '1-차원' 배열 형태로 만들었다는 의미입니다.
