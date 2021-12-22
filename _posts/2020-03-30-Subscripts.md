@@ -60,20 +60,20 @@ print("six times three is \(threeTimesTable[6])")
 
 > 구구단 n-단은 고정된 수학 규칙에 기초합니다. `threeTimesTable[someIndex]` 에 새 값을 설정하는 건 적절치 않으므로, `TimesTable` 의 첨자는 읽기-전용 첨자로 정의합니다.
 
-### Subscript Usage (첨자 연산의 사용법)
+### Subscript Usage (첨자 사용법)
 
-"첨자 연산 (subscript)" 의 정확한 의미는 사용하는 상황에 달려 있습니다. 첨자 연산은 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 에 있는 멤버 원소에 접근하기 위한 '줄임말 (shortcut)' 로써 사용됩니다. 첨자 연산은 특정 클래스나 구조체의 기능에 가장 적절한 방식으로 자유롭게 구현할 수 있습니다.
+"첨자 (subscript)" 의 정확한 의미는 자신을 사용한 곳의 상황에 의존합니다. 첨자는 전형적으로 집합체나, 리스트, 또는 시퀀스 멤버 원소의 접근에 대한 줄임말로 사용합니다. 자신의 한 특별한 클래스나 구조체 기능에 가장 적절한 방식으로 자유롭게 첨자를 구현할 수 있습니다.
 
-예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장되어 있는 값을 설정하고 가져오기 위해 첨자 연산을 구현합니다. 딕셔너리는 첨자 연산 대괄호 안에 딕셔너리 키 타입의 키를 제공하고, 첨자 연산에 딕셔너리 값 타입의 값을 할당함으로써, 값을 설정할 수 있습니다:
+예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장한 값을 설정하고 가져오고자 첨자를 구현합니다. 첨자 대괄호 안에 딕셔너리의 키 타입인 키를 제공하고, 첨자에 딕셔너리의 값 타입인 값을 할당함으로써, 딕셔너리에 값을 설정할 수 있습니다:
 
 ```swift
 var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 numberOfLegs["bird"] = 2
 ```
 
-위 예제는 `numberOfLegs` 라는 변수를 정의하고 이를 세 개의 '키-값 쌍' 을 담고 있는 '딕셔너리 글자 값' 으로 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론됩니다. 딕셔너리를 생성한 후, 이 예제는 딕셔너리에 `String` 키 타입 `"bird"` 와 `Int` 값이 `2` 를 추가하기 위해 '첨자 연산 할당' 을 사용합니다.
+위 예제는 `numberOfLegs` 라는 변수를 정의하고 세 키-값 쌍을 담은 딕셔너리 글자 값으로 이를 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론합니다. 딕셔너리를 생성한 후, 이 예제는 첨자 할당을 사용하여 딕셔너리에 `"bird"` 라는 `String` 키와 `2` 라는 `Int` 값을 추가합니다.
 
-`Dictionary` 의 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 를 참고하기 바랍니다.
+`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 참고하기 바랍니다.
 
 > 스위프트의 `Dictionary` 타입은 '키-값 첨자 연산' 을 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자 연산으로 구현합니다. 위의 `numberOfLegs` 딕셔너리는, '키-값 첨자 연산' 이 `Int?`, 또는 "옵셔널 정수 (optional int)" 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 모든 키가 값을 가지진 않는다는 사실을 모델링하고, 해당 키에 `nil` 값을 할당함으로써 키의 값을 지우는 방법을 부여하기 위해, '옵셔널 첨자 연산 타입' 을 사용합니다.
 
