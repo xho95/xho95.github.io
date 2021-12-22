@@ -30,17 +30,17 @@ subscript(index: Int) -> Int {
 }
 ```
 
-`newValue` 의 타입은 첨자 연산의 반환 값과 같습니다. '계산 속성' 에서 처럼, '설정자' 의 `(newValue)` 매개 변수를 지정하지 않도록 선택할 수 있습니다. 직접 제공하지 않을 경우 설정자에는 `newValue` 라는 '기본 매개 변수' 가 제공됩니다.
+`newValue` 타입은 첨자의 반환 값과 똑같습니다. 계산 속성처럼, 설정자의 `(newValue)` 매개 변수를 지정하지 않게 선택할 수 있습니다. 스스로 제공하지 않으면 `newValue` 라는 기본 매개 변수를 설정자에 제공합니다.
 
-'읽기-전용 계산 속성' 에서 처럼, '읽기-전용 첨자 연산' 의 선언은 `get` 키워드와 괄호를 제거하여 단순화할 수 있습니다:
+읽기-전용 계산 속성처럼, `get` 키워드와 괄호를 제거함으로써 읽기-전용 첨자 정의를 단순하게 할 수 있습니다:
 
 ```swift
 subscript(index: Int) -> Int {
-  // 여기에서 적절한 첨자 연산 값을 반환함.
+  // 여기서 적절한 첨자 값을 반환함
 }
 ```
 
-다음은, 정수 구구단 'n-단' 를 표현하는 `TimesTable` 구조체를 정의하는, '읽기-전용 첨자 연산 구현' 에 대한 예제입니다:
+다음 예제는, 정수 구구단 n-단을 나타내는 `TimesTable` 구조체를 정의한, 읽기-전용 첨자 구현입니다:
 
 ```swift
 struct TimesTable {
@@ -51,10 +51,10 @@ struct TimesTable {
 }
 let threeTimesTable = TimesTable(multiplier: 3)
 print("six times three is \(threeTimesTable[6])")
-// "six times three is 18" 을 인쇄합니다.
+// "six times three is 18" 을 인쇄함
 ```
 
-이 예제는, 구구단 '3-단' 을 표현하기 위해 새로운 `TimesTable` 인스턴스를 생성합니다. 이는 인스턴스의 `multiplier` 속성에 사용할 값으로 구조체의 `initializer`[^initializer] 에 `3` 을 전달함으로써 지시합니다.
+이 예제에선, 구구단 3-단을 나타내는 새 `TimesTable` 인스턴스를 생성합니다. 이는 인스턴스의 `multiplier` 속성에 사용할 값으로 구조체의 `initializer`[^initializer] 에 `3` 을 전달함으로써 지시합니다.
 
 `threeTimesTable` 인스턴스는, `threeTimesTable[6]` 라고 나타낸 것처럼, 첨자 연산을 호출함으로써 조회할 수 있습니다. 이는 구구단 '3-단' 의 '6' 번째 항목을 요청하는데, `18`, 또는 `3` 곱하기 `6` 의 값을 반환합니다.
 
