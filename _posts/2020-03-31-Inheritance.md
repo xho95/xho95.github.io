@@ -33,7 +33,7 @@ class Vehicle {
     return "traveling at \(currentSpeed) miles per hour"
   }
   func makeNoise() {
-    // 아무 것도 안합니다 - 임의의 차량은 소음을 만들 필요가 없습니다
+    // 아무 것도 안함 - 임의의 차량은 소음을 만들 필요 없음
   }
 }
 ```
