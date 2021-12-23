@@ -124,18 +124,18 @@ var matrix = Matrix(rows: 2, columns: 2)
 
 ![flattened-version-of-the-matrix](/assets/Swift/Swift-Programming-Language/Subscripts-flattened-version-matrix.jpg)
 
-행과 열 값을, 쉼표로 구분하여, 첨자에 전달함으로써 행렬 안의 값을 설정할 수 있습니다:
+행과 열 값을, 쉼표로 구분하여, 첨자에 전달함으로써 행렬에 있는 값을 설정할 수 있습니다:
 
 ```swift
 matrix[0, 1] = 1.5
 matrix[1, 0] = 3.2
 ```
 
-이 두 구문은 행렬의 맨 오른쪽 위인 (`row` 가 `0` 이고 `column` 이 `1` 인 위치) 에 `1.5`, 그리고 맨 왼쪽 아래인 (`row` 가 `1` 이고 `column` 이 `0` 인 위치) 에 `3.2` 라는 값을 설정하기 위해 첨자 연산의 '설정자' 를 호출합니다:
+이 두 구문은 첨자의 설정자를 호출하여 (`row` 가 `0` 이고 `column` 이 `1` 인) 행렬 맨 오른쪽 위를 `1.5` 로, (`row` 가 `1` 이고 `column` 이 `0` 인) 맨 왼쪽 아래를 `3.2` 라는 값으로 설정합니다:
 
 ![matrix](/assets/Swift/Swift-Programming-Language/Subscripts-matrix.jpg)
 
-`Matrix` 첨자 연산의 '획득자' 와 '설정자' 는 첨자 연산의 `row` 와 `column` 값이 유효한 지를 검사하기 위해 둘 다 '단언문 (assertion)' 을 가지고 있습니다. 이러한 단언문을 거들기 위해, `Matrix` 는, 요청한 `row` 와 `column` 이 행렬의 경계 내에 있는지를 검사하는, `indexIsValid(row:column:)` 라는 '편의 메소드' 를 포함하고 있습니다:
+`Matrix` 첨자의 획득자와 설정자 둘 다 첨자의 `row` 와 `column` 값이 유효한지 검사하는 단언문 (assertion) 을 담고 있습니다. 이 단언문을 거들려고, 요청한 `row` 와 `column` 이 행렬 경계 안에 있는지 검사하는, `indexIsValid(row:column:)` 라는 편의(를 위한) 메소드를 `Matrix` 가 포함합니다:
 
 ```swift
 func indexIsValid(row: Int, column: Int) -> Bool {
@@ -143,17 +143,17 @@ func indexIsValid(row: Int, column: Int) -> Bool {
 }
 ```
 
-행렬 경계 외부의 첨자 연산에 접근하려고 하면 '단언문' 문을 발동합니다:
+행렬 경계 밖에 있는 첨자에 접근하려 하면 단언문을 발동합니다:
 
 ```swift
 let someValue = matrix[2, 2]
-// 이는, [2, 2] 가 행렬 경계의 외부이기 때문에, 단언문을 발동합니다.
+// [2, 2] 가 행렬 경계 밖이기 때문에, 단언문을 발동합니다.
 }
 ```
 
-### Type Subscripts (타입 첨자 연산)
+### Type Subscripts (타입 첨자)
 
-'인스턴스 첨자 연산' 은, 위에서 설명한 것처럼, 특정 타입의 인스턴스에서 호출하는 '첨자 연산' 입니다. 타입 자체에서 호출하는 '첨자 연산' 도 정의할 수 있습니다. 이러한 종류의 첨자 연산을 _타입 첨자 연산 (type subscript)_ 이라고 합니다. 타입 첨자 연산은 `subscript` 키워드 앞에 `static` 키워드를 작성함으로써 표시합니다. 클래스는, 해당 첨자 연산의 '상위 클래스' 구현을 '하위 클래스' 에서 재정의하는 것을 허용하도록, `class` 키워드를 대신 사용할 수 있습니다. 아래 예제는 타입 첨자 연산을 정의하고 호출하는 방법을 보여줍니다:
+인스턴스 첨자는, 위에서 설명한 것처럼, 한 특별한 타입의 인스턴스에서 호출하는 첨자입니다. 타입 그 자체에서 호출하는 첨자도 정의할 수 있습니다. 이러한 종류의 첨자를 _타입 첨자 (type subscript)_ 라고 합니다. `subscript` 키워드 앞에 `static` 키워드를 작성함으로써 타입 첨자를 표시합니다. 클래스는 `class` 키워드를 대신 사용하여, 그 첨자의 상위 클래스 구현을 하위 클래스가 재정의하도록 허용할 수 있습니다. 아래 예제는 타입 첨자의 정의와 호출 방법을 보여줍니다:
 
 ```swift
 enum Planet: Int {
