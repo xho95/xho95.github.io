@@ -55,17 +55,17 @@ print("Vehicle: \(someVehicle.description)")
 
 ### Subclassing (하위 클래스 만들기)
 
-_하위 클래스 만들기 (subclassing)_ 는 기존 클래스를 기초로 하여 새로운 클래스를 만드는 행위입니다. '하위 클래스 (subclass)' 는 기존 클래스의 '성질 (characteristics)' 들, 나중에 개량할 수 있는 것들, 을 상속합니다. 하위 클래스에서 새로운 성질을 추가할 수도 있습니다.
+_하위 클래스 만들기 (subclassing)_ 는 기존 클래스를 기초로 새로운 클래스를 만드는 행동입니다. 하위 클래스 (subclass) 는 기존 클래스의 성질을 상속한 다음, 나중에 개량할 수 있습니다. 하위 클래스에서 새로운 성질을 추가할 수도 있습니다.
 
-하위 클래스가 상위 클래스를 가진다고 지시하려면, 하위 클래스의 이름을 상위 클래스 앞에 작성하고, '콜론 (colon)' 으로 구분합니다:
+하위 클래스에 상위 클래스가 있다고 지시하려면, 상위 클래스 이름 앞에, 콜론으로 구분된, 하위 클래스 이름을 작성합니다:
 
 ```swift
 class SomeSubclass: SomeSuperclass {
-  // 하위 클래스의 정의는 여기에 둡니다.
+  // 하위 클래스 정의를 여기에 둠
 }
 ```
 
-다음 예제는, 상위 클래스가 `Vehicle` 인, `Bicycle` 이라는 하위 클래스를 정의합니다:
+다음 예제는, `Vehicle` 이라는 상위 클래스를 가진, `Bicycle` 이라는 하위 클래스를 정의합니다:
 
 ```swift
 class Bicycle: Vehicle {
@@ -73,11 +73,11 @@ class Bicycle: Vehicle {
 }
 ```
 
-새로운 `Bicycle` 클래스는, `currentSpeed` 와 `description` 속성 그리고 `makeNoise()` 메소드 같은, `Vehicle` 의 모든 성질들을 자동으로 가지게 됩니다.
+새 `Bicycle` 클래스는, `currentSpeed` 와 `description` 속성 및 `makeNoise()` 메소드 같은, `Vehicle` 의 모든 성질을 자동으로 얻습니다.
 
-상속한 성질들에 더하여, `Bicycle` 클래스는, 기본 값이 `false` 인 (속성이 `Bool` 타입으로 추론되는), `hasBasket` 이라는, 새로운 저장 속성을 정의합니다.
+상속한 성질에 더해, `Bicycle` 클래스는, `hasBasket` 이라는, 새로운 저장 속성을 정의하는데, (속성은 `Bool` 타입으로 추론하고) `false` 라는 기본 값을 가집니다.
 
-기본적으로, 새로 생성한 어떤 `Bicycle` 인스턴스도 '바구니 (basket)' 를 가지지 않을 것입니다. 해당 인스턴스가 생성된 뒤에 특정 `Bicycle` 인스턴스에 대한 `hasBasket` 속성을 `true` 로 설정할 수 있습니다.
+기본적으로, 새로 생성한 어떤 `Bicycle` 인스턴스도 바구니 (basket) 를 가지지 않을 겁니다. `Bicycle` 인스턴스를 생성한 후에 한 특별한 인스턴스의 `hasBasket` 속성을 `true` 로 설정할 수 있습니다:
 
 ```swift
 let bicycle = Bicycle()
