@@ -77,22 +77,22 @@ class Bicycle: Vehicle {
 
 상속한 성질에 더해, `Bicycle` 클래스는, `hasBasket` 이라는, 새로운 저장 속성을 정의하는데, (속성은 `Bool` 타입으로 추론하고) `false` 라는 기본 값을 가집니다.
 
-기본적으로, 새로 생성한 어떤 `Bicycle` 인스턴스도 바구니 (basket) 를 가지지 않을 겁니다. `Bicycle` 인스턴스를 생성한 후에 한 특별한 인스턴스의 `hasBasket` 속성을 `true` 로 설정할 수 있습니다:
+기본적으로, 새로 생성한 어떤 `Bicycle` 인스턴스에도 바구니 (basket) 가 없을 겁니다. 한 특별한 `Bicycle` 인스턴스의 `hasBasket` 속성은 그 인스턴스를 생성한 후 `true` 라고 설정할 수 있습니다:
 
 ```swift
 let bicycle = Bicycle()
 bicycle.hasBasket = true
 ```
 
-`Bicycle` 인스턴스가 상속한 속성인 `currentSpeed` 를 수정할 수도 있으며, 인스턴스의 상속 속성인 `description` 을 조회할 수도 있습니다:
+`Bicycle` 인스턴스의 `currentSpeed` 상속 속성을 수정하고, 인스턴스의 `description` 상속 속성을 조회할 수도 있습니다:
 
 ```swift
 bicycle.currentSpeed = 15.0
 print("Bicycle: \(bicycle.description)")
-// "Bicycle: traveling at 15.0 miles per hour" 를 인쇄합니다.
+// "Bicycle: traveling at 15.0 miles per hour" 를 인쇄함
 ```
 
-'하위 클래스' 자체도 하위 클래스를 만들 수 있습니다. 다음 예제는 "탠덤 (tandem)" 이라는 2-인승 자전거를 만들기 위해 `Bicycle` 의 하위 클래스를 생성합니다:
+하위 클래스 그 자체도 하위 클래스를 만들 수 있습니다. 다음 예제는 "탠덤 (tandem)" 이라는 2-인승 자전거를 위해 `Bicycle` 의 하위 클래스를 생성합니다:
 
 ```swift
 class Tandem: Bicycle {
@@ -100,9 +100,9 @@ class Tandem: Bicycle {
 }
 ```
 
-`Tandem` 은 `Bicycle` 의 모든 속성과 메소드를 상속하는데, 차례대로 `Vehicle` 의 모든 속성과 메소드도 상속합니다. `Tandem` 하위 클래스는, 기본 값이 `0` 인, `currentNumberOfPassengers` 라는 새로운 저장 속성도 추가합니다.
+`Tandem` 은 `Bicycle` 의 모든 속성과 메소드를 상속하고, (`Bicycle` 은) 차례대로 `Vehicle` 의 모든 속성과 메소드를 상속합니다. `Tandem` 하위 클래스는, `0` 이라는 기본 값을 가지고, `currentNumberOfPassengers` 라는 새로운 저장 속성도 추가합니다.
 
-`Tandem` 의 인스턴스를 생성한 경우, 새로운 속성과 상속한 속성 어떤 것과도 작업할 수 있으며, `Vehicle` 에서 상속한 '읽기-전용' `description` 속성을 조회할 수도 있습니다:
+`Tandem` 의 인스턴스를 생성하면, 어떤 새 속성이든 상속 속성이든 작업할 수 있고, `Vehicle` 에서 상속한 읽기-전용 `description` 속성도 조회할 수 있습니다:
 
 ```swift
 let tandem = Tandem()
@@ -110,7 +110,7 @@ tandem.hasBasket = true
 tandem.currentNumberOfPassengers = 2
 tandem.currentSpeed = 22.0
 print("Tandem: \(tandem.description)")
-// "Tandem: traveling at 22.0 miles per hour" 를 인쇄합니다.
+// "Tandem: traveling at 22.0 miles per hour" 를 인쇄함
 ```
 
 ### Overriding (재정의하기)
