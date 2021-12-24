@@ -18,13 +18,13 @@ categories: Swift Language Grammar Inheritance
 
 ### Defining a Base Class (기초 클래스 정의하기)
 
-또 다른 클래스를 상속하지 않는 클래스는 어떤 것이든 _기초 클래스 (base class)_[^base-class] 라고 합니다.
+또 다른 클래스를 상속하지 않는 어떤 클래스든 _기초 클래스 (base class)_[^base-class] 라고 합니다.
 
-> 스위프트의 클래스는 '보편적인 기초 클래스 (universal base class)'[^universal-base-class] 를 상속하지 않습니다.[^inherit-from-a-universal-base-class] 상위 클래스를 지정하지 않고 정의한 클래스는 제작할 때 자동으로 '기초 클래스' 가 됩니다.
+> 스위프트 클래스는 '보편 기초 클래스 (universal base class)' 를 상속하지 않습니다.[^universal-base-class] 상위 클래스를 지정하지 않고 정의한 클래스는 자동으로 기초 클래스가 됩니다.
 
-아래 예제는 `Vehicle` 이라는 '기초 클래스' 를 정의합니다. 이 기초 클래스는, 기본 값이 `0.0` 인 (속성 타입은 `Double` 로 추론되는), `currentSpeed` 라는 '저장 속성' 을 정의합니다. `currentSpeed` 속성의 값은 '차량 (vehicle)' 의 설명을 생성하기 위해 `description` 이라는 `String` 타입의 '읽기-전용 계산 속성' 에서 사용합니다.
+아래 예제는 `Vehicle` 이라는 기초 클래스를 정의합니다. 이 기초 클래스는 `currentSpeed` 라는 저장 속성을 정의하는데, (속성 타입은 `Double` 로 추론하고) `0.0` 이라는 기본 값을 가집니다. `currentSpeed` 속성 값은 차량 (vehicle) 설명을 생성하는 `description` 이라는 `String` (타입) 읽기-전용 계산 속성이 사용합니다.
 
-`Vehicle` 기초 클래스는 `makeNoise` 라는 메소드도 정의합니다. 이 메소드는 실제로 '기초 `Vehicle` 인스턴스' 를 위해서는 어떤 것도 하지 않지만, 나중에 `Vehicle` 의 '하위 클래스' 에서 사용자화 될 것입니다:
+`Vehicle` 기초 클래스는 `makeNoise` 라는 메소드도 정의합니다. 이 메소드는 실제로 기초 `Vehicle` 인스턴스에선 아무 것도 안하지만, 나중에 `Vehicle` 의 하위 클래스에서 사용자 정의할 겁니다:
 
 ```swift
 class Vehicle {
@@ -33,25 +33,25 @@ class Vehicle {
     return "traveling at \(currentSpeed) miles per hour"
   }
   func makeNoise() {
-    // 아무 것도 안함 - 임의의 차량은 소음을 만들 필요 없음
+    // 아무 것도 안함 - 임의의 차량은 소음을 만들 필요가 없음
   }
 }
 ```
 
-`Vehicle` 의 새로운 인스턴스는, 타입 이름 뒤에 빈 괄호를 붙여서 작성하는, _초기자 구문 표현 (initializer syntax)_ 으로 생성합니다:
+타입 이름 뒤에 빈 괄호를 작성하는, _초기자 구문 (initializer syntax)_ 을 가지고 `Vehicle` 의 새 인스턴스를 생성합니다:
 
 ```swift
 let someVehicle = Vehicle()
 ```
 
-새 `Vehicle` 인스턴스를 생성했으면, 차량의 현재 속도를 사람이-이해 가능한 설명으로 인쇄하기 위해 `description` 속성에 접근할 수 있습니다:
+새 `Vehicle` 인스턴스를 생성했으면, `description` 속성에 접근하여 현재 차량 속도를 사람이-이해할 수 있게 인쇄할 수 있습니다:
 
 ```swift
 print("Vehicle: \(someVehicle.description)")
-// "Vehicle: traveling at 0.0 miles per hour" 를 인쇄합니다.
+// "Vehicle: traveling at 0.0 miles per hour" 를 인쇄함
 ```
 
-`Vehicle` 클래스는 임의의 차량에 '공통인 성질' 을 정의하지만, 그 자체로는 많이 사용되지 않습니다. 더 유용하게 만들려면, 특정하게 지정된 종류의 차량을 설명하도록 이를 개량할 필요가 있습니다.
+`Vehicle` 클래스는 임의의 차량에 공통인 성질을 정의하지만, 그 자체론 별 쓸모가 없습니다. 더 유용해지려면, 더 특정한 종류의 차량을 설명하도록 개량할 필요가 있습니다.
 
 ### Subclassing (하위 클래스 만들기)
 
@@ -239,8 +239,6 @@ print("AutomaticCar: \(automatic.description)")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^base-class]: 'base class' 라는 용어는 프로그래밍 언어마다 의미가 조금씩 다른데, 'base class' 를 '상위 클래스 (superclass)' 의 의미로 사용하는 언어도 있습니다. 하지만, 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass)' 와는 의미가 조금 다릅니다. 스위프트의 '기초 클래스' 는 '상위 클래스' 인지 아닌지의 여부와는 상관없이, 아무 클래스도 상속하지 않는 클래스, 즉, '상속 계층' 이 있다면 자신이 상속의 출발점이 되는 클래스를 말합니다.
+[^base-class]: 프로그래밍 언어마다 'base class' 라는 용어의 의미가 조금씩 다른데, 'base class' 를 '상위 클래스 (superclass)' 의 의미로 사용하는 언어도 있습니다. 하지만, 스위프트의 기초 클래스 (base class) 는 상위 클래스 (superclass) 와 의미가 조금 다릅니다. 스위프트의 기초 클래스는 상위 클래스 여부와는 상관없이, 아무 클래스도 상속하지 않는 클래스, 즉, 상속 계층이 있다면 최상단에 위치하게 되는 클래스를 의미합니다.
 
-[^universal-base-class]: '보편적인 기초 클래스 (universal base class)' 라는 것은 많은 프로그래밍 언어들에서 `Object` 라는 이름을 가진 '상속 계층' 의 최상단에 있는 클래스를 말합니다. 오브젝티브-C 언어만 하더라도 `NSObject` 라는 '보편적인 기초 클래스' 를 가지고 있습니다. 초창기 'OOP' 언어의 프레임웍은 이런 '보편적인 기초 클래스' 를 가진 경우가 많았습니다.
-
-[^inherit-from-a-universal-base-class]: 기본적으로, 스위프트 클래스는 '보편적인 기초 클래스' 를 상속하지 않지만, 해당 클래스를 오브젝티브-C 와 호환되게 하려면, `NSObject` 라는 '보편적인 기초 클래스' 를 상속받아야 합니다. 클래스 앞에 `@objc` 라는 '특성 (attribute)' 을 붙이는 것도 내부적으로는 `NSObject` 를 상속하도록 만드는 것입니다.
+[^universal-base-class]: '보편 기초 클래스 (universal base class)' 는 객체 지향 프로그래밍 언어에서 모든 객체가 상속을 받아햐 하는 클래스를 말합니다. 보통 상속 계층 최상단에 위치하며 `Object` 라는 이름이 붙는 경우가 많습니다. 오브젝티브-C 언어도 `NSObject` 라는 보편 기초 클래스를 가지고 있습니다. 객체 지향 프로그래밍 언어는 이런 보편 기초 클래스를 가진 경우가 많습니다. 스위프트 클래스는 기본적으로 보편 기초 클래스를 상속하진 않지만, 오브젝티브-C 와 호환되도록 하려면, `NSObject` 라는 보편 기초 클래스를 상속해야 합니다. 클래스 앞에 `@objc` 를 붙이는 것도 `NSObject` 를 상속하게 만드는 겁니다.
