@@ -167,7 +167,7 @@ train.makeNoise()
 
 > 속성 재정의 부분에서 설정자를 제공할 경우, 반드시 항상 재정의에서 획득자도 제공해야 합니다. 재정의 획득자 안에서 상속한 속성 값을 수정하고 싶지 않으면, 획득자에서 `super.someProperty` 를 반환함으로써 상속 값을 단순히 통과시킬 수 있으며, 여기서 `someProperty` 는 재정의할 속성의 이름입니다.
 
-다음 예제는, `Vehicle` 의 하위 클래스로, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는, 기본 값이 `1` 인, `gear` 라는 새로운 저장 속성을 도입합니다. `Car` 클래스는 `Vehicle` 에서 상속한 `description` 속성도 재정의하여, 현재 기어 (gear) 상태를 포함한 자신만의 설명을 제공합니다:
+다음 예제는, `Vehicle` 의 하위 클래스인, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는, 기본 값이 `1` 인, `gear` 라는 새로운 저장 속성을 도입합니다. `Car` 클래스는 `Vehicle` 에서 상속한 `description` 속성도 재정의하여, 현재 기어 (gear) 상태를 포함한 자신만의 설명을 제공합니다:
 
 ```swift
 class Car: Vehicle {
@@ -191,16 +191,16 @@ print("Car: \(car.description)")
 ```
 
 <p>
-<strong id="overriding-property-observers-속성-관찰자-재정의하기">Overriding Property Observers (속성 관찰자 재정의하기)</strong>
+<strong id="overriding-proper92ty-observers-속성-관찰자-재정의하기">Overriding Property Observers (속성 관찰자 재정의하기)</strong>
 </p>
 
 속성 재정의를 사용하면 상속한 속성에 속성 관찰자를 추가할 수 있습니다. 이는, 그 속성의 원본 구현 방법과는 상관없이, 상속한 속성 값이 바뀔 때 알림을 받을 수 있게 합니다. 속성 관찰자에 대한 더 많은 정보는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
-> 속성 관찰자는 상속한 '상수 저장 속성' 이나 상속한 '읽기-전용 계산 속성' 에는 추가할 수 없습니다. 이 속성들의 값은 설정할 수 없으므로, '재정의' 에서 `willSet` 또는 `didSet` 구현을 제공하는 것은 적절하지 않습니다.
+> 상속한 상수 저장 속성이나 상속한 읽기-전용 계산 속성엔 속성 관찰자를 추가할 수 없습니다. 이 속성은 값을 설정할 수 없으므로, 재정의 부분에서 `willSet` 이나 `didSet` 구현을 제공하는 게 적절하지 않습니다.
 >
-> 똑같은 속성에 대해 '재정의 설정자' 와 '재정의 속성 관찰자' 를 둘 다 제공할 수 없다는 것도 기억하기 바랍니다. 속성의 값이 바뀌는 것을 관찰하고 싶은데, 해당 속성에서 이미 '사용자 정의 설정자' 를 제공하고 있는 경우, 단순히 '사용자 정의 설정자' 내에서 어떤 값의 바뀜이라도 관찰할 수 있습니다.
+> 동일한 속성에 재정의 설정자 및 재정의 속성 관찰자 둘 다를 제공할 순 없다는 것도 기억하기 바랍니다. 속성 값이 바뀌는 걸 관찰하고 싶은데, 사용자 정의 설정자를 속성에 이미 제공했다면, 어떤 값 바뀜이든 사용자 정의 설정자 안에서 단순히 관찰할 수 있습니다.
 
-다음 예제는, `Car` 의 하위 클래스인, `AutomaticCar` 라는 새로운 클래스를 정의합니다. `AutomaticCar` 클래스는, 현재 속도를 기초로 적절한 기어를 자동으로 선택하는, '자동 변속기 (gearbox)' 를 가진 자동차를 표현합니다:
+다음 예제는, `Car` 의 하위 클래스인, `AutomaticCar` 라는 새로운 클래스를 정의합니다. `AutomaticCar` 클래스는, 현재 속도를 기초로 자동으로 적절한 기어를 선택하는, 자동 변속기 (gearbox) 를 가진 자동차를 나타냅니다:
 
 ```swift
 class AutomaticCar: Car {
@@ -212,13 +212,13 @@ class AutomaticCar: Car {
 }
 ```
 
-`AutomaticCar` 인스턴스의 `currentSpeed` 속성을 설정할 때마다, 속성의 '`didSet` 관찰자' 가 새로운 속도에 적절한 기어를 선택하도록 인스턴스의 `gear` 속성을 설정합니다. 특별히, 속성 관찰자는 새 `currentSpeed` 값을 `10` 으로 나눠서, 소수점 이하는 버린 다음, `1` 을 더한 '기어' 를 선택합니다. 속도가 `35.0` 이면 `4` 라는 기어를 `4` 내놓습니다:
+`AutomaticCar` 인스턴스의 `currentSpeed` 속성을 설정할 때마다, 속성의 `didSet` 관찰자가 인스턴스의 `gear` 속성을 새 속도에 맞게 적절히 선택한 기어로 설정합니다. 특별히, 새 `currentSpeed` 값을 `10` 으로 나누고, 가장 가까운 정수로 내림한 후, `1` 을 더한 기어를 속성 관찰자가 선택합니다. 속도가 `35.0` 이면 기어를 `4` 로 만듭니다:
 
 ```swift
 let automatic = AutomaticCar()
 automatic.currentSpeed = 35.0
 print("AutomaticCar: \(automatic.description)")
-// "AutomaticCar: traveling at 35.0 miles per hour in gear 4" 를 인쇄합니다.
+// "AutomaticCar: traveling at 35.0 miles per hour in gear 4" 를 인쇄함
 ```
 
 ### Preventing Overrides (재정의 막기)
