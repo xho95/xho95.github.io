@@ -223,7 +223,7 @@ print("AutomaticCar: \(automatic.description)")
 
 ### Preventing Overrides (재정의 막기)
 
-메소드, 속성, 또는 첨자 연산은 _최종 (final)_ 이라고 표시함으로써 '재정의' 되는 것을 막을 수 있습니다. 이렇게 하려면 (`final var`, `final func`, `final class func`, 및 `final subscript` 처럼) 메소드, 속성, 또는 첨자 연산의 '도입자 (introducer)' 키워드 앞에 '`final` 수정자 (modifier)' 를 작성하면 됩니다.
+_최종 (final)_ 으로 표시함으로써 메소드나, 속성, 및 첨자의 재정의를 막을 수 있습니다. 이렇게 하려면 메소드나, 속성, 및 첨자의 도입자 키워드 앞에 `final` 수정자를 (`final var`, `final func`, `final class func`, 및 `final subscript` 같이) 작성하면 됩니다.
 
 '최종' 메소드, 속성, 또는 첨자 연산을 재정의하려는 어떤 시도도 컴파일-시간 에러라고 보고합니다. 클래스의 '익스텐션 (extension)' 에서 추가한 메소드, 속성, 또는 첨자 연산도 '익스텐션 (extension)' 정의 내에서 '최종' 이라고 표시할 수 있습니다.
 
