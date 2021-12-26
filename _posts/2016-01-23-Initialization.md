@@ -52,7 +52,7 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 
 #### Default Property Values (기본 속성 값)
 
-위에서 본 것처럼, 저장 속성의 초기 값은 '초기자' 에서 설정할 수 있습니다. 대안으로, 속성의 선언[^property-declaration]에서 _기본 속성 값 (default property value)_ 을 지정합니다. '기본 속성 값' 은 정의할 때 속성에 초기 값을 할당함으로써 지정합니다.
+위에서 본 것처럼, 초기자 안에서 저장 속성의 초기 값을 설정할 수 있습니다. 대안으로는, 속성 선언 부분에서 _기본 속성 값 (default property value)_ 을 지정합니다.[^property-declaration] 정의할 때 속성에 초기 값을 할당함으로써 기본 속성 값을 지정합니다.
 
 > 속성이 항상 똑같은 초기 값을 취한다면, 초기자에서 값을 설정하는 대신 '기본 값' 을 제공하도록 합니다. 최종 결과는 똑같지만, 기본 값은 속성 초기화를 선언과 더 가깝게 묶어줍니다. 이는 초기자를 더 짧고, 더 명확하게 해주며 기본 값으로 속성의 타입을 추론할 수 있게 해줍니다. 기본 값은, 이 장 나중에 설명하는 것처럼, '기본 초기자 (default initializer)' 와 '초기자 상속 (initializer inheritance)' 이라는 장점도 더 쉽게 취하도록 해줍니다.
 
@@ -1028,7 +1028,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^property-declaration]: 본문의 앞 부분인 [Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-초기-값-설정하기) 를 보면, '기본 값' 을 속성의 '정의 (definition)' 에서 할 수 있다고 했다가, 여기서는 속성의 '선언 (declaration)' 에서 지정한다고 말하고 있는데, 이는 잘못된 것이 아닙니다. [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 맨 처음을 읽어 보면, 스위프트에서는 대부분의 '선언' 이 '정의' 이기도 하기 때문에, 이 둘의 구분은 중요하지 않으며, 이 두 용어를 대부분 같은 의미로 사용한다고 설명하고 있습니다.
+[^property-declaration]: 앞서 [Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-초기-값-설정하기) 부분에선, 기본 값 설정을 속성 정의 (definition) 에서 한다고 했다가, 여기선 속성 선언 (declaration) 에서 지정한다고 말합니다. 이것은, [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장 맨 앞에서 설명한 것처럼, 스위프트에선 이 둘의 구분이 중요하지 않아서, 두 용어를 거의 같은 의미로 사용하기 때문입니다.
 
 [^funnel]: 지명 초기자를 '깔대기' 에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연쇄되는 모습이 깔대기와 흡사하기 때문입니다.
 
