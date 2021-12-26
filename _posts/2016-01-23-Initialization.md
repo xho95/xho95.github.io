@@ -64,9 +64,9 @@ struct Fahrenheit {
 }
 ```
 
-### Customizing Initialization (초기화를 사용자 정의하기)
+### Customizing Initialization (초기화 사용자 정의하기)
 
-초기화 과정은, 다음 부분에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입으로, 또는 초기화하는 동안 상수 속성을 할당함으로써, 사용자 정의할 수 있습니다.
+다음 부분에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입을 가지고, 또는 초기화 중에 상수 속성을 할당함으로써, 자신만의 초기화 과정을 만들 수 있습니다.
 
 #### Initialization Parameters (초기화 매개 변수)
 
