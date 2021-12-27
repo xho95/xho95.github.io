@@ -34,7 +34,7 @@ init() {
 }
 ```
 
-아래 예제는 표현한 온도를 화씨 (Fahrenheit) 눈금으로 저장하는 `Fahrenheit` 라는 새 구조체를 정의합니다. `Fahrenheit` 구조체에는, `Double` 타입인, `temperature` 라는, 저장 속성이 하나 있습니다:
+아래 예제는 화씨 (Fahrenheit) 척도로 표현한 온도를 저장하는 `Fahrenheit` 라는 새 구조체를 정의합니다. `Fahrenheit` 구조체에는, `Double` 타입인, `temperature` 라는, 저장 속성이 하나 있습니다:
 
 ```swift
 struct Fahrenheit {
@@ -64,15 +64,15 @@ struct Fahrenheit {
 }
 ```
 
-### Customizing Initialization (초기화 사용자 정의하기)
+### Customizing Initialization (초기화 과정 사용자 정의하기)
 
-다음 부분에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입을 가지고, 또는 초기화 중에 상수 속성을 할당함으로써, 자신만의 초기화 과정을 만들 수 있습니다.
+다음 부분에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입으로, 또는 초기화 중에 상수 속성을 할당함으로써, 초기화 과정을 사용자 정의할 수 있습니다.
 
 #### Initialization Parameters (초기화 매개 변수)
 
-초기자의 정의는, 초기화 과정을 사용자 정의하는 값의 타입과 이름을 정의하도록, _초기화 매개 변수 (initialization parameters)_ 를 제공할 수 있습니다. '초기화 매개 변수' 는 함수 및 메소드 매개 변수와 똑같은 '보유 능력' 과 '구문 표현' 을 가집니다.
+초기자 정의 부분에서 _초기화 매개 변수 (initialization parameters)_ 를 제공하여, 값의 타입과 이름을 정하면 초기화 과정을 사용자 정의할 수 있습니다. 초기화 매개 변수의 보유 능력과 구문은 함수 및 메소드 매개 변수와 똑같습니다.
 
-다음 예제는, '섭씨 (Celsius)' 눈금으로 표현된 온도를 저장하는, `Celsius` 라는 구조체를 정의합니다. `Celsius` 구조체는, 다른 '척도 (scale)' 의 온도 값을 가지고 새 구조체 인스턴스를 초기화하는, `init(fromFahrenheit:)` 와 `init(fromKelvin:)` 이라는 두 개의 '사용자 정의 초기자' 를 구현합니다:
+다음 예제는, 섭씨 (Celsius) 로 표현한 온도를 저장하는, `Celsius` 라는 구조체를 정의합니다. `Celsius` 구조체는 `init(fromFahrenheit:)` 와 `init(fromKelvin:)` 이라는 두 개의 사용자 정의 초기자를 구현하는데, 이는 다른 척도의 온도 값을 가지고 새 구조체 인스턴스를 초기화합니다:
 
 ```swift
 struct Celsius {
@@ -85,9 +85,9 @@ struct Celsius {
   }
 }
 let boilingPointOfWater = Celsius(fromFahrenheit: 212.0)
-// boilingPointOfWater.temperatureInCelsius 는 100.0 입니다.
+// boilingPointOfWater.temperatureInCelsius 는 100.0 임
 let freezingPointOfWater = Celsius(fromKelvin: 273.15)
-// freezingPointOfWater.temperatureInCelsius 는 0.0 입니다.
+// freezingPointOfWater.temperatureInCelsius 는 0.0 임
 ```
 
 첫 번째 초기자는 `fromFahrenheit` 라는 '인자 이름표' 와 `fahrenheit` 라는 '매개 변수 이름' 을 가진 '단일 초기화 매개 변수' 를 가지고 있습니다. 두 번째 초기자는 `fromKelvin` 이라는 '인자 이름표' 와 `kelvin` 이라는 '매개 변수 이름' 을 가진 '단일 초기화 매개 변수' 를 가집니다. 두 초기자 모두 자신의 단일 인자를 관련된 섭씨 값으로 변환하며 `temperatureInCelsius` 라는 속성에 이 값을 저장합니다.
