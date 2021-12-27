@@ -90,7 +90,7 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 // freezingPointOfWater.temperatureInCelsius 는 0.0 임
 ```
 
-첫 번째 초기자는 `fromFahrenheit` 라는 '인자 이름표' 와 `fahrenheit` 라는 '매개 변수 이름' 을 가진 '단일 초기화 매개 변수' 를 가지고 있습니다. 두 번째 초기자는 `fromKelvin` 이라는 '인자 이름표' 와 `kelvin` 이라는 '매개 변수 이름' 을 가진 '단일 초기화 매개 변수' 를 가집니다. 두 초기자 모두 자신의 단일 인자를 관련된 섭씨 값으로 변환하며 `temperatureInCelsius` 라는 속성에 이 값을 저장합니다.
+첫 번째 초기자에는 `fromFahrenheit` 라는 인자 이름표와 `fahrenheit` 라는 매개 변수 이름을 가진 단일 초기화 매개 변수가 있습니다. 두 번째 초기자에는 `fromKelvin` 이라는 인자 이름표와 `kelvin` 이라는 매개 변수 이름을 가진 단일 초기화 매개 변수가 있습니다. 두 초기자 모두 자신의 단일 인자를 해당하는 섭씨 값으로 변환한 다음 이 값을 `temperatureInCelsius` 라는 속성에 저장합니다.
 
 #### Parameter Names and Argument Labels (매개 변수 이름과 인자 이름표)
 
