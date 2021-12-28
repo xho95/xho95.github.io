@@ -222,7 +222,7 @@ class ShoppingListItem {
 var item = ShoppingListItem()
 ```
 
-`ShoppingListItem` 클래스는 모든 속성에 기본 값이 있기 때문에, 그리고 상위 클래스가 없는 기초 클래스[^base-class] 이기 때문에, 자신의 모든 속성에 기본 값을 설정하여 새로운 인스턴스를 생성하는 기본 초기자 구현을 (`ShoppingListItem` 이) 자동으로 얻습니다. (`name` 속성은 옵셔널 `String` 속성이므로, 코드에 값을 쓰지 않더라도, 자동으로 `nil` 이라는 기본 값을 받습니다.) 위 예제는 `ShoppingListItem` 클래스의 기본 초기자로, `ShoppingListItem()` 이라고 쓴, 초기자 구문을 사용하여 클래스의 새 인스턴스를 생성하고, `item` 이라는 변수에 이 새 인스턴스를 할당합니다.
+`ShoppingListItem` 클래스는 모든 속성에 기본 값이 있기 때문에, 그리고 상위 클래스가 없는 기초 클래스[^base-class] 이기 때문에, 자신의 모든 속성에 기본 값을 설정하여 새로운 인스턴스를 생성하는 기본 초기자 구현을 (`ShoppingListItem` 이) 자동으로 얻습니다. (`name` 속성은 옵셔널 `String` 속성이므로, 코드에 값을 쓰지 않더라도, 자동으로 `nil` 이라는 기본 값을 받습니다.) 위 예제는 `ShoppingListItem` 클래스의 기본 초기자로, `ShoppingListItem()` 이라고 쓴, 초기자 구문을 사용하여 클래스의 새 인스턴스를 생성하고, `item` 이라는 변수에 이를 할당합니다.
 
 #### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
