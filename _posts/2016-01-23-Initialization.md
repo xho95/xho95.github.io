@@ -134,9 +134,9 @@ let veryGreen = Color(0.0, 1.0, 0.0)
 
 #### Initializer Parameters Without Argument Labels (인자 이름표가 없는 초기자 매개 변수)
 
-초기자 매개 변수에 인자 이름표를 사용하고 싶지 않으면, 해당 매개 변수에 '명시적인 인자 이름표' 대신 '밑줄 (underscore; `_`)' 를 작성하여 기본 작동 방식을 '재정의 (override)' 합니다.
+초기자 매개 변수에 인자 이름표를 사용하고 싶지 않으면, 그 매개 변수에 명시적인 인자 이름표 대신 밑줄 (`_`) 을 작성하여 기본 동작을 재정의 합니다.
 
-다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를, 이미 '섭씨' 척도인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가지도록, 늘린 버전입니다:
+다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를 늘려서, 이미 섭씨 척도인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가지도록 한, 버전입니다:
 
 ```swift
 struct Celsius {
@@ -152,10 +152,10 @@ struct Celsius {
   }
 }
 let bodyTemperature = Celsius(37.0)
-// bodyTemperature.temperatureInCelsius 는 37.0 입니다.
+// bodyTemperature.temperatureInCelsius 는 37.0 임
 ```
 
-`Celsius(37.0)` 라는 초기자 호출은 인자 이름표가 필요 없이 의도가 명확합니다. 그러므로 이 초기자를 `init(_ celsius: Double)` 로 작성하여 '이름 없는 `Double` 값' 으로 호출할 수 있게 하는 것이 적절합니다.
+`Celsius(37.0)` 라는 초기자 호출은 의도가 명확하여 인자 이름표가 필요 없습니다. 그러므로 이름 없는 `Double` 값을 제공해서 호출할 수 있도록 이 초기자를 `init(_ celsius: Double)` 로 작성하는 게 적절합니다.
 
 #### Optional Property Types (옵셔널 속성 타입)
 
