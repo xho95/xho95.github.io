@@ -184,11 +184,11 @@ cheeseQuestion.response = "Yes, I do like cheese."
 
 #### Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)
 
-상수 속성의 값은, 초기화를 종료할 때까지 확실한 값이 설정되기만 한다면, 초기화 동안의 어떤 시점에도 할당할 수 있습니다. 상수 속성에 값을 한 번 설정하고 나면, 더 이상 수정할 수 없습니다.
+초기화 종료 시점까지 확실한 값을 설정하는 한, 초기화 중의 어떤 시점에든 상수 속성에 값을 할당할 수 있습니다. 값을 상수 속성에 한 번 설정하고 나면, 더 이상 수정할 수 없습니다.
 
-> 클래스 인스턴스에서의, 상수 속성은 이를 도입한 클래스의 초기화 동안에만 수정할 수 있습니다. 하위 클래스에서 수정할 수는 없습니다.
+> 클래스 인스턴스에선, (상수 속성을) 도입한 클래스의 초기화 중에만 상수 속성을 수정할 수 있습니다. 하위 클래스는 이를 수정할 수 없습니다.
 
-위에 있는 `SurveyQuestion` 예제는, `SurveyQuestion` 인스턴스를 한 번 생성하고 나면 질문은 바뀔 수 없음을 지시하기 위해, 질문에 대한 `text` 속성을 '변수 속성' 대신 '상수 속성' 을 사용하도록 개정할 수 있습니다. `text` 속성은 이제 상수일지라도, 여전히 클래스의 초기자에서 설정할 수 있습니다:
+위 `SurveyQuestion` 예제의 `text` 질문 속성을 변수 속성 보단 상수 속성을 사용하도록 개정하면, `SurveyQuestion` 인스턴스를 한 번 생성하고 나면 질문을 바꿀 수 없다는 걸 지시할 수 있습니다. `text` 속성이 이제 상수일지라도, 클래스 초기자 안에선 여전히 설정할 수 있습니다:
 
 ```swift
 class SurveyQuestion {
@@ -203,15 +203,15 @@ class SurveyQuestion {
 }
 let beetsQuestion = SurveyQuestion(text: "How about beets?")
 beetsQuestion.ask()
-// "How about beets?" 를 인쇄합니다.
+// "How about beets?" 를 인쇄함
 beetsQuestion.response = "I also like beets. (But not with cheese.)"
 ```
 
 ### Default Initializers (기본 초기자)
 
-스위프트는 모든 속성에 '기본 값' 을 제공면서 자체로는 단 하나의 초기자도 제공하지 않는 어떤 구조체나 클래스든 '_기본 초기자 (default initializer)_' 를 제공합니다. '기본 초기자' 는 단순히 모든 속성을 기본 값으로 설정하는 것으로 새로운 인스턴스를 생성합니다.
+자신의 모든 속성에 기본 값을 제공하곤 스스론 단 하나의 초기자도 제공하지 않는 어떤 구조체나 클래스에든 _기본 초기자 (default initializer)_ 를 스위프트가 제공합니다. 기본 초기자는 단순히 자신의 모든 속성에 기본 값을 설정하여 새로운 인스턴스를 생성합니다.
 
-이 예제는, '구매 목록 (shopping list)' 의 각 항목에 대한 이름, 수량, 그리고 '구매 상태' 를 '은닉 (encapsulate)' 하는, `ShoppingListItem` 이라는 클래스를 정의합니다:
+이 예제는 `ShoppingListItem` 이라는 클래스를 정의하는데, 이는 구매 목록 (shopping list) 에 있는 항목의 이름, 수량, 및 구매 상태를 은닉합니다:
 
 ```swift
 class ShoppingListItem {
@@ -222,7 +222,7 @@ class ShoppingListItem {
 var item = ShoppingListItem()
 ```
 
-`ShoppingListItem` 클래스는 모든 속성이 기본 값을 가지고 있기 때문에, 그리고 '상위 클래스' 를 가지지 않는 '기초 클래스'[^base-class] 이기 때문에, `ShoppingListItem` 은 모든 속성을 기본 값으로 설정하는 것으로 새로운 인스턴스를 생성하는 '기본 초기자' 구현을 자동으로 가지게 됩니다. (`name` 속성은 '옵셔널 `String` 속성' 이므로, 코드에 값을 작성하지 않더라도, `nil` 이라는 기본 값을 자동으로 받습니다.) 위 예제는 `ShoppingListItem` 클래스가, `ShoppingListItem()` 라고 작성한, '초기자 구문 표현' 으로 클래스의 새로운 인스턴스를 생성하는데 '기본 초기자' 를 사용하며, 이 새 인스턴스를 `item` 이라는 변수에 할당합니다.
+`ShoppingListItem` 클래스는 모든 속성에 기본 값이 있기 때문에, 그리고 상위 클래스가 없는 기초 클래스[^base-class] 이기 때문에, 자신의 모든 속성에 기본 값을 설정하여 새로운 인스턴스를 생성하는 기본 초기자 구현을 (`ShoppingListItem` 이) 자동으로 얻습니다. (`name` 속성은 옵셔널 `String` 속성이므로, 코드에 값을 쓰지 않더라도, 자동으로 `nil` 이라는 기본 값을 받습니다.) 위 예제는 `ShoppingListItem` 클래스의 기본 초기자로, `ShoppingListItem()` 이라고 쓴, 초기자 구문을 사용하여 클래스의 새 인스턴스를 생성하고, `item` 이라는 변수에 이 새 인스턴스를 할당합니다.
 
 #### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
@@ -1036,7 +1036,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^option]: 여기서 '옵션 (option)' 이라고 한 것은 인스턴스를 한 번 더 사용자 정의하는 것은 반드시 해야하는 것이 아니라 해도 되고 안해도 되는 '선택 사항 (option)' 이기 때문입니다.
 
-[^base-class]: 스위프트에서 '기초 클래스 (base class)' 란 어떤 클래스로부터도 상속을 받지 않는 클래스를 말합니다. 보통 계층 구조에서 최상단에 위치하는 클래스는 다 기초 클래스라고 할 수 있지만, 계층 구조 없이 홀로 존재하는 클래스 역시 기초 클래스가 될 수 있습니다. 물론 여기서 프로토콜은 예외에 해당하며, 아무리 프로토콜을 많이 '준수 (conforming)' 하더라도 다른 클래스로부터 직접 상속을 받지 않으면 '기초 클래스' 에 해당합니다.  
+[^base-class]: '기초 클래스 (base class)' 는 어떤 클래스로부터도 상속받지 않는 클래스입니다. 보통 계층 구조의 최상단에 있을 수 있는 모든 클래스가 다 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스 역시 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다. 
 
 [^base-class-in-hierachy]: 앞에서 '기초 클래스 (base class)' 란 어떤 클래스도 상속하지 않는 클래스라고 했는데, 계층 구조에서 이런 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 '기초 클래스' 란 '최상단 클래스' 입니다.
 
