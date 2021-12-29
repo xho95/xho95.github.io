@@ -295,30 +295,30 @@ struct Rect {
 }
 ```
 
-첫 번째 `Rect` 초기자인, `init()` 은, 구조체가 자신만의 사용자 정의 초기자를 가지지 않았다면 부여 받았을 '기본 초기자' 와 기능이 똑같습니다. 이 초기자는, `{}` 라는 빈 중괄호 쌍으로 표현된, 빈 본문을 가지고 있습니다. 이 초기자를 호출하면 `origin` 과 `size` 속성이 둘 다 `Point(x: 0.0, y: 0.0)` 과 `Size(width: 0.0, height: 0.0)` 라고 자신의 속성 정의에 있는 기본 값으로 초기화된 `Rect` 인스턴스를 반환합니다:
+첫 번째 `Rect` 초기자인, `init()` 은, 구조체에 자신만의 초기자가 없을 경우 받을 기본 초기자와 기능이 똑같습니다. 이 초기자는 빈 본문을 가지며, 빈 중괄호 쌍 `{}` 으로 이를 나타냅니다. 이 초기자 호출이 반환하는 `Rect` 인스턴스는 `origin` 과 `size` 속성 정의로부터 둘 다를 `Point(x: 0.0, y: 0.0)` 과 `Size(width: 0.0, height: 0.0)` 라는 기본 값으로 초기화합니다: 
 
 ```swift
 let basicRect = Rect()
-// basicRect 의 원점은 (0.0, 0.0) 이고 크기는 (0.0, 0.0) 입니다.
+// basicRect 은 원점이 (0.0, 0.0) 이고 크기는 (0.0, 0.0) 임
 ```
 
-두 번째 `Rect` 초기자인, `init(origin:size:)` 는, 구조체가 자신만의 사용자 정의 초기자를 가지지 않았다면 부여 받았을 '멤버 초기자' 와 기능이 똑같습니다. 이 초기자는 단순히 `origin` 과 `size` 인자 값을 적절한 저장 속성에 할당합니다:
+두 번째 `Rect` 초기자인, `init(origin:size:)` 는, 구조체에 자신만의 초기자가 없을 경우 받을 멤버 초기자와 기능이 똑같습니다. 이 초기자는 단순히 적절한 저장 속성에 `origin` 과 `size` 인자 값을 할당합니다:
 
 ```swift
 let originRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
-// originRect 의 원점은 (2.0, 2.0) 이고 크기는 (5.0, 5.0) 입니다.
+// originRect 는 원점이 (2.0, 2.0) 이고 크기는 (5.0, 5.0) 임
 ```
 
-세 번째 `Rect` 초기자인, `init(center:size:)` 는, 좀 더 복잡합니다. 이는 `center` 점과 `size` 값을 기초로 적절한 원점을 계산하는 것으로써 시작합니다. 그런 다음, 새 원점과 크기 값을 적절한 속성에 저장하는,  `init(origin:size:)` 초기자를 호출합니다 (또는 그리로 _위임 (delegates)_ 합니다):
+세 번째 `Rect` 초기자인, `init(center:size:)` 는, 살짝 더 복잡합니다. 이는 `center` 점과 `size` 값에 기초한 적절한 원점 계산으로 시작합니다. 그런 다음, 적절한 속성에 새 원점 및 크기 값을 저장하는, `init(origin:size:)` 초기자를 호출 (또는 일을 _맡긴다 (delegates)_ 고) 합니다:
 
 ```swift
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
-// centerRect 의 원점은 (2.5, 2.5) 이고 크기는 (3.0, 3.0) 입니다.
+// centerRect 은 원점이 (2.5, 2.5) 이고 크기는 (3.0, 3.0) 임
 ```
 
-`init(center:size:)` 초기자가 새 `origin` 과 `size` 값을 적절한 속성에 직접 할당할 수도 있을 것입니다. 하지만, `init(center:size:)` 초기자가 해당 기능을 이미 정확하게 제공하는 기존 초기자의 장점을 취하도록 하는 것이 더 편리 (하고 의도도 더 명확) 합니다.
+`init(center:size:)` 초기자 스스로 적절한 속성에 새 `origin` 과 `size` 값을 할당할 수도 있을 겁니다. 하지만, 이미 정확하게 그 기능을 제공하는 기존 초기자라는 장점을 `init(center:size:)` 초기자가 취하는게 더 편리 (하며 의도도 더 명확) 합니다.
 
-> `init()` 과 `init(origin:size:)` 초기자를 직접 정의하지 않고도 이 예제를 작성하는 대안 방식은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+> `init()` 과 `init(origin:size:)` 초기자 그 자체의 정의 없이 이 예제를 작성하는 대안은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 
 ### Class Inheritance and Initialization (클래스 상속 및 초기화)
 
