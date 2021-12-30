@@ -354,26 +354,26 @@ _편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지
 
 #### Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)
 
-지명과 편의 초기자 사이의 관계를 단순화하기 위해, 스위프트는 초기자 사이의 '위임 호출 (delegation calls)'[^delegation-calls] 에 대해 다음과 같은 세 가지 규칙을 적용합니다:
+지명 및 편의 초기자 사이의 관계가 단순해지도록, 스위프트는 초기자 사이의 '맡기는 호출 (delegation calls)'[^delegation-calls] 에 다음의 세 규칙을 적용합니다:
 
 **Rule 1 (규칙 1)**
 
-&nbsp;&nbsp;&nbsp;&nbsp;지명 초기자는 자신의 직속 상위 클래스에 있는 지명 초기자를 반드시 호출해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;지명 초기자는 반드시 자신의 바로 위 상위 클래스의 지명 초기자를 호출해야 합니다.
 
 **Rule 2 (규칙 2)**
 
-&nbsp;&nbsp;&nbsp;&nbsp;편의 초기자는 _같은 (same)_ 클래스에 있는 또 다른 초기자를 반드시 호출해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;편의 초기자는 반드시 _동일한 (same)_ 클래스의 다른 초기자를 호출해야 합니다.
 
 **Rule 3 (규칙 3)**
 
-&nbsp;&nbsp;&nbsp;&nbsp;편의 초기자는 궁극적으로 지명 초기자를 반드시 호출해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;편의 초기자는 궁극적으로 반드시 지명 초기자를 호출해야 합니다.
 
-이를 기억하는 간단한 방법은 다음과 같습니다:
+이를 기억하는 단순한 방법은 다음과 같습니다:
 
-* 지명 초기자는 반드시 항상 _위로 (up)_ 위임합니다.
-* 편의 초기자는 반드시 항상 _옆으로 (across)_ 위임합니다.
+* 지명 초기자는 반드시 항상 _위로 (up)_ 맡깁니다.
+* 편의 초기자는 반드시 항상 _옆으로 (across)_ 맡깁니다.
 
-이 규칙들을 묘사하면 아래 그림처럼 됩니다:
+이 규칙을 묘사한게 아래 그림입니다:
 
 ![delegation rules](/assets/Swift/Swift-Programming-Language/Initialization-delegation-rules.jpg)
 
@@ -1055,3 +1055,5 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 [^exactly]: `init(exactly:)` 초기자를 사용하면 값이 정확하게 유지될 때만 타입을 변환합니다. 본문의 예제를 보면 `3.14159` 는 값을 유지하면서 `Int` 타입으로 변환할 수 없기 때문에 변환이 실패합니다.  
 
 [^by-name]: 속성 이름이 자동으로 멤버 초기자의 인자 이름표가 되기 때문에 가능합니다.
+
+[^delegation-calls]: '맡기는 호출 (delegation calls)' 이라고 하는 건 자신이 해야할 일 일부를 맡기는 방식이 다른 초기자를 호출하는 것이기 때문입니다.
