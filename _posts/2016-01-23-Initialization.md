@@ -322,7 +322,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 ### Class Inheritance and Initialization (클래스 상속 및 초기화)
 
-클래스의 모든 저장 속성은-상위 클래스에서 상속한 어떤 속성이든 포함하여-초기화 동안 _반드시 (must)_ 초기 값을 할당해야 합니다.
+초기화 중엔-상위 클래스로부터 상속한 어떤 속성도 포함한-클래스의 모든 저장 속성에 _반드시 (must)_ 초기 값을 할당해야 합니다.
 
 스위프트는 클래스 타입이 모든 저장 속성에 초기 값을 부여했음을 보장하는 것을 돕기 위해 두 가지 종류의 초기자를 정의합니다. 이들을 '지명 (designated) 초기자' 와 '편의 (convenience) 초기자' 라고 합니다.
 
