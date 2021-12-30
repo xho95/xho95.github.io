@@ -352,7 +352,7 @@ _편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-#### Initializer Delegation for Class Types (클래스 타입의 초기자 위임)
+#### Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)
 
 지명과 편의 초기자 사이의 관계를 단순화하기 위해, 스위프트는 초기자 사이의 '위임 호출 (delegation calls)'[^delegation-calls] 에 대해 다음과 같은 세 가지 규칙을 적용합니다:
 
@@ -469,7 +469,7 @@ _편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지
 
 > 상위 클래스의 지명 초기자를 재정의할 때는, 하위 클래스에서 구현하는 초기자가 편의 초기자인 경우이더라도, 항상 `override` 수정자를 작성합니다.
 
-거꾸로 말해서, 상위 클래스의 _편의 (convenience)_ 초기자와 일치하는 하위 클래스 초기자를 작성하는 경우, 해당 상위 클래스의 편의 초기자는, 위의 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자의 위임)](#initializer-delegation-for-class-types-클래스-타입을-위한-초기자의-위임) 에서 설명한 규칙에 따라, 하위 클래스가 절대로 직접 호출할 수 없습니다. 그러므로, 이 하위 클래스는 (엄밀하게 말해서) 상위 클래스 초기자의 '재정의' 를 제공하는 것이 아닙니다. 그 결과, 상위 클래스의 편의 초기자와 일치하는 구현을 제공할 때는 `override` 수정자를 작성하지 않습니다.
+거꾸로 말해서, 상위 클래스의 _편의 (convenience)_ 초기자와 일치하는 하위 클래스 초기자를 작성하는 경우, 해당 상위 클래스의 편의 초기자는, 위의 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)](#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 에서 설명한 규칙에 따라, 하위 클래스가 절대로 직접 호출할 수 없습니다. 그러므로, 이 하위 클래스는 (엄밀하게 말해서) 상위 클래스 초기자의 '재정의' 를 제공하는 것이 아닙니다. 그 결과, 상위 클래스의 편의 초기자와 일치하는 구현을 제공할 때는 `override` 수정자를 작성하지 않습니다.
 
 아래 예제는 `Vehicle` 이라는 '기초 클래스'[^base-class] 를 정의합니다. 이 기초 클래스는, 기본 `Int` 값이 `0` 인, `numberOfWheels` 라는 저장 속성을 선언합니다. `numberOfWheels` 속성은 `description` 이라는 계산 속성이 차량의 성질에 대한 `String` 설명을 생성하는데 사용합니다:
 
