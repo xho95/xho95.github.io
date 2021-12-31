@@ -471,7 +471,7 @@ _편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지
 
 거꾸로 말해서, 상위 클래스 _편의 (convenience)_ 초기자와 일치하는 하위 클래스 초기자를 작성하면, 위의 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)](#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 에서 설명한 규칙에 따라, 하위 클래스는 절대로 직접 상위 클래스 편의 초기자를 호출할 수 없습니다. 그러므로, (엄밀하게 말해서) 하위 클래스가 상위 클래스 초기자를 재정의하는 게 아닙니다. 그 결과, 상위 클래스 편의 초기자와 일치하는 구현을 제공할 땐 `override` 수정자를 작성하지 않습니다.
 
-아래 예제는 `Vehicle` 이라는 기초 클래스를 정의합니다. 이 기초 클래스는, `0` 이라는 기본 `Int` 값을 가진, `numberOfWheels` 라는 저장 속성을 선언합니다. `numberOfWheels` 속성은 `description` 이라는 계산 속성이 차량의 성질을 `String` 으로 설명하는데 사용합니다:
+아래 예제는 `Vehicle` 이라는 기초 클래스를 정의합니다. 이 기초 클래스는, `0` 이라는 기본 `Int` 값을 가진, `numberOfWheels` 라는 저장 속성을 선언합니다. `numberOfWheels` 속성은 `description` 이라는 계산 속성이 차량 성질의 `String` 설명을 생성하는데 사용합니다:
 
 ```swift
 class Vehicle {
@@ -482,7 +482,7 @@ class Vehicle {
 }
 ```
 
-`Vehicle` 클래스는 단 하나의 저장 속성에 기본 값을 제공하며, 어떤 사용자 정의 초기자도 직접 제공하지 않습니다. 그 결과, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한 것처럼, 기본 초기자를 자동으로 받습니다. 기본 초기자는 (사용 가능할 땐) 항상 클래스의 '지명 초기자' 이며, `numberOfWheels` 가 `0` 인 새로운 `Vehicle` 인스턴스를 생성하는데 사용할 수 있습니다:
+`Vehicle` 클래스는 자신의 유일한 저장 속성에 기본 값을 제공하며, 그 자체론 어떤 초기자도 제공하지 않습니다. 그 결과, [Default Initializers (기본 초기자)](#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 기본 초기자를 받습니다. (사용 가능할 때의) 기본 초기자는 항상 클래스의 지명 초기자이며, 이를 사용하여 `0` 이라는 `numberOfWheels` 을 가진 새 `Vehicle` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let vehicle = Vehicle()
@@ -490,7 +490,7 @@ print("Vehicle: \(vehicle.description)")
 // Vehicle: 0 wheel(s)
 ```
 
-그 다음 예제는 `Bicycle` 이라는 `Vehicle` 의 하위 클래스를 정의합니다:
+다음 예제는 `Bicycle` 이라는 `Vehicle` 의 하위 클래스를 정의합니다:
 
 ```swift
 class Bicycle: Vehicle {
@@ -501,11 +501,11 @@ class Bicycle: Vehicle {
 }
 ```
 
-`Bicycle` 하위 클래스는 사용자 정의 지명 초기자인, `init()` 을, 정의합니다. 이 지명 초기자는 `Bicycle` 의 상위 클래스에 있는 지명 초기자와 일치하므로, 이 `Bicycle` 초기자 버전을 `override` 수정자로 표시합니다.
+`Bicycle` 하위 클래스는, `init()` 라는, 자신만의 지명 초기자를 정의합니다. 이 지명 초기자는 `Bicycle` 의 상위 클래스에 있는 지명 초기자와 일치하므로, 이 초기자의 `Bicycle` 버전을 `override` 수정자로 표시합니다.
 
-`Bicycle` 의 `init()` 초기자는, `Bicycle` 의 상위 클래스에 대한 기본 초기자를 호출하는, `super.init()` 의 호출로 시작합니다. 이는 `Bicycle` 이 속성을 수정할 기회를 가지기 전에 `Vehicle` 이 상속한 속성인 `numberOfWheels` 를 초기화하도록 보장합니다. `super.init()` 를 호출한 후에, `numberOfWheels` 의 원본 값을 `2` 라는 새 값으로 대체합니다.
+`Bicycle` 의 `init()` 초기자는 `super.init()` 을 호출함으로써 시작하는데, 이는 `Bicycle` 의 상위 클래스에 있는 기본 초기자를 호출합니다. 이는 `Bicycle` 이 속성을 수정할 기회를 가지기 전에 `numberOfWheels` 라는 상속 속성을 `Vehicle` 이 (먼저) 초기화하도록 보장합니다. `super.init()` 호출 후에, `numberOfWheels` 원본 값을 `2` 라는 새 값으로 대체합니다.
 
-`Bicycle` 의 인스턴스를 생성한 경우, `numberOfWheels` 속성이 갱신된 것을 보기 위해 상속한 계산 속성인 `description` 을 호출할 수 있습니다:
+`Bicycle` 인스턴스를 생성하면, 상속한 `description` 계산 속성을 호출하여 `numberOfWheels` 속성을 어떻게 갱신했는지 볼 수 있습니다:
 
 ```swift
 let bicycle = Bicycle()
@@ -513,16 +513,16 @@ print("Bicycle: \(bicycle.description)")
 // Bicycle: 2 wheel(s)
 ```
 
-하위 클래스의 초기자가 초기화 과정 '2-단계' 에서 아무런 사용자 정의를 하지 않으면서, 상위 클래스가 '인자가-0개인' 지명 초기자를 가진 경우, 하위 클래스의 모든 저장 속성에 값을 할당한 후에 `super.init()` 호출을 생략할 수 있습니다.
+하위 클래스 초기자는 초기화 과정 단계 2 에서 아무런 사용자 정의도 하지 않고, 상위 클래스는 인자가-0개인 지명 초기자를 가진다면, 하위 클래스의 모든 저장 속성에 값을 할당한 후에 `super.init()` 호출을 생략할 수 있습니다.[^no-customization]
 
-이 예제는, `Hoverboard` 라는, `Vehicle` 의 또 다른 하위 클래스를 정의합니다. `Hoverboard` 클래스는, 초기자에서, 자신의 `color` 속성만을 설정합니다. `super.init()` 을 명시적으로 호출하는 대신, 이 초기자는 상위 클래스의 초기자에 대한 암시적인 호출에 의지하여 과정을 완료합니다.
+이 예제는, `Hoverboard` 라는, 또 다른 `Vehicle` 하위 클래스를 정의합니다. 자신의 초기자에서, `Hoverboard` 클래스는 `color` 속성만 설정합니다. `super.init()` 호출을 명시하는 대신, 이 초기자는 상위 클래스 초기자의 암시적 호출로 과정을 완료합니다.
 
 ```swift
 class Hoverboard: Vehicle {
   var color: String
   init(color: String) {
     self.color = color
-    // 여기에서 super.init() 을 암시적으로 호출합니다.
+    // 여기서 super.init() 을 암시적으로 호출함
   }
   override var description: String {
     return "\(super.description) in a beautiful \(color)"
@@ -530,7 +530,7 @@ class Hoverboard: Vehicle {
 }
 ```
 
-`Hoverboard` 인스턴스는 `Vehicle` 초기자에서 지원하는 기본 설정 바퀴 개수를 사용합니다
+`Hoverboard` 인스턴스는 `Vehicle` 초기자가 공급한 기본 바퀴 개수를 사용합니다.
 
 ```swift
 let hoverboard = Hoverboard(color: "silver")
@@ -538,7 +538,7 @@ print("Hoverboard: \(hoverboard.description)")
 // Hoverboard: 0 wheel(s) in a beautiful silver
 ```
 
-> 하위 클래스는 초기화 동안 '상속한 변수 속성' 을 수정할 수 있지만, '상속한 상수 속성' 을 수정할 수는 없습니다.
+> 하위 클래스는 초기화 중에 상속한 변수 속성을 수정할 순 있지만, 상속한 상수 속성을 수정할 순 없습니다.
 
 #### Automatic Initializer Inheritance (자동적인 초기자 상속)
 
@@ -1055,3 +1055,5 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 [^by-name]: 속성 이름이 자동으로 멤버 초기자의 인자 이름표가 되기 때문에 가능합니다.
 
 [^delegation-calls]: '맡기는 호출 (delegation calls)' 이라고 하는 건 자신이 해야할 일 일부를 맡기는 방식이 다른 초기자를 호출하는 것이기 때문입니다.
+
+[^no-customization]: 반대로 말해서, 하위 클래스 초기자가 단 하나의 사용자 정의라도 하는 순간, 반드시 `super.init()` 호출을 작성해야 합니다.
