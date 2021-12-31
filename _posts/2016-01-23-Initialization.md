@@ -455,9 +455,9 @@ _편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지
 
 최종적으로, 하위 클래스 지명 초기자가 종료하고 나면, 원래 호출한 편의 초기자가 추가적인 사용자 정의를 할 수 있습니다.
 
-#### Initializer Inheritance and Overriding (초기자 상속과 재정의)
+#### Initializer Inheritance and Overriding (초기자 상속 및 재정의)
 
-오브젝티브-C 의 하위 클래스와는 달리, 스위프트 하위 클래스는 자신의 상위 클래스 초기자를 기본적으로 상속하지 않습니다. 스위프트의 접근 방식은 상위 클래스의 단순한 초기자를 더 특수화된 하위 클래스가 상속해서 온전히 또는 올바르게 초기화되지 않은 하위 클래스의 인스턴스를 생성하는 상황을 막아줍니다.
+오브젝티브-C 의 하위 클래스와 달리, 스위프트의 하위 클래스는 기본적으로 자신의 상위 클래스 초기자를 상속하지 않습니다. 스위프트 접근법은 더 특수화된 하위 클래스가 단순한 상위 클래스 초기자를 상속하여 완전하지 않거나 올바르지 않게 초기화된 새 하위 클래스 인스턴스를 생성하는 상황을 막아줍니다.
 
 > 상위 클래스 초기자 _는 (are)_ 정해진 상황에서는 상속되는데, 그렇게 하는 것이 안전하고 적절할 때만 그렇습니다. 더 많은 정보는, 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 을 참고하기 바랍니다.  
 
@@ -619,7 +619,7 @@ class RecipeIngredient: Food {
 
 `RecipeIngredient` 는, 이름 만으로 `RecipeIngredient` 인스턴스를 생성하고자 사용하는, `init(name: String)` 이라는, 편의 초기자도 정의합니다. 이 편의 초기자는 명시적인 수량 없이 생성된 `RecipeIngredient` 인스턴스는 어떤 것이든 수량이 `1` 이라고 가정합니다. 이런 편의 초기자 정의는 `RecipeIngredient` 인스턴스의 생성을 더 빠르고 편리하게 해주며, 여러 개의 단일-수량 `RecipeIngredient` 인스턴스를 생성할 때 코드 중복을 피하게 해줍니다. 이 편의 초기자는 단순히 클래스 지명 초기자에, `1` 이라는 `quantity` 값을 전달하여, '옆으로 위임' 합니다.
 
-`RecipeIngredient` 가 제공한 `init(name: String)` 편의 초기자는 `Food` 의 _지명 (designated)_ 초기자인 `init(name: String)` 과 똑같은 매개 변수를 취합니다. 이 편의 초기자는 상위 클래스의 지명 초기자를 '재정의' 하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속과 재정의)](#initializer-inheritance-and-overriding-초기자-상속과-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+`RecipeIngredient` 가 제공한 `init(name: String)` 편의 초기자는 `Food` 의 _지명 (designated)_ 초기자인 `init(name: String)` 과 똑같은 매개 변수를 취합니다. 이 편의 초기자는 상위 클래스의 지명 초기자를 '재정의' 하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
 
 `RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하고 있을지라도, 그럼에도 불구하고 `RecipeIngredient` 는 상위 클래스에 대한 모든 지명 초기자의 구현을 제공하고 있는 것입니다. 그러므로, `RecipeIngredient` 또한 상위 클래스의 모든 편의 초기자를 자동으로 상속합니다.
 
