@@ -467,11 +467,11 @@ _편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지
 
 재정의한 속성, 메소드, 및 첨자 처럼, `override` 수정자가 있으면 스위프트가 즉시 재정의와 일치하는 지명 초기자를 상위 클래스가 가지는지 검사하도록 하며, 재정의한 초기자의 매개 변수가 의도대로 지정됐는지 검증합니다.
 
-> 상위 클래스의 지명 초기자를 재정의할 때는, 하위 클래스에서 구현하는 초기자가 편의 초기자인 경우이더라도, 항상 `override` 수정자를 작성합니다.
+> 상위 클래스 지명 초기자를 재정의할 땐, 초기자의 하위 클래스 구현이 편의 초기자인 경우에도, 항상 `override` 수정자를 작성합니다.
 
-거꾸로 말해서, 상위 클래스의 _편의 (convenience)_ 초기자와 일치하는 하위 클래스 초기자를 작성하는 경우, 해당 상위 클래스의 편의 초기자는, 위의 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)](#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 에서 설명한 규칙에 따라, 하위 클래스가 절대로 직접 호출할 수 없습니다. 그러므로, 이 하위 클래스는 (엄밀하게 말해서) 상위 클래스 초기자의 '재정의' 를 제공하는 것이 아닙니다. 그 결과, 상위 클래스의 편의 초기자와 일치하는 구현을 제공할 때는 `override` 수정자를 작성하지 않습니다.
+거꾸로 말해서, 상위 클래스 _편의 (convenience)_ 초기자와 일치하는 하위 클래스 초기자를 작성하면, 위의 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)](#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 에서 설명한 규칙에 따라, 하위 클래스는 절대로 직접 상위 클래스 편의 초기자를 호출할 수 없습니다. 그러므로, (엄밀하게 말해서) 하위 클래스가 상위 클래스 초기자를 재정의하는 게 아닙니다. 그 결과, 상위 클래스 편의 초기자와 일치하는 구현을 제공할 땐 `override` 수정자를 작성하지 않습니다.
 
-아래 예제는 `Vehicle` 이라는 '기초 클래스'[^base-class] 를 정의합니다. 이 기초 클래스는, 기본 `Int` 값이 `0` 인, `numberOfWheels` 라는 저장 속성을 선언합니다. `numberOfWheels` 속성은 `description` 이라는 계산 속성이 차량의 성질에 대한 `String` 설명을 생성하는데 사용합니다:
+아래 예제는 `Vehicle` 이라는 기초 클래스를 정의합니다. 이 기초 클래스는, `0` 이라는 기본 `Int` 값을 가진, `numberOfWheels` 라는 저장 속성을 선언합니다. `numberOfWheels` 속성은 `description` 이라는 계산 속성이 차량의 성질을 `String` 으로 설명하는데 사용합니다:
 
 ```swift
 class Vehicle {
@@ -1034,7 +1034,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^convenience]: 이 부분은 원문 자체가 장황하게 설명되어 있는데, 결국 의미 자체는 번역한 문장과 대동소이 하므로, 짧게 줄여서 변역했습니다.
 
-[^base-class]: '기초 클래스 (base class)' 는 어떤 클래스로부터도 상속받지 않는 클래스입니다. 보통 계층 구조의 최상단에 있을 수 있는 모든 클래스가 다 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스 역시 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다. 
+[^base-class]: 기초 클래스 (base class) 는 어떤 클래스로부터도 상속받지 않은 클래스입니다. 계층 구조 맨 위에 있을 수 있는 모든 클래스는 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스도 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다. 
 
 [^base-class-in-hierachy]: 앞에서 '기초 클래스 (base class)' 란 어떤 클래스도 상속하지 않는 클래스라고 했는데, 계층 구조에서 이런 클래스는 최상단 클래스일 수 밖에 없습니다. 즉, 계층 구조의 '기초 클래스' 란 '최상단 클래스' 입니다.
 
