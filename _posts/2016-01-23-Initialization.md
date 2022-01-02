@@ -619,7 +619,7 @@ class RecipeIngredient: Food {
 
 `RecipeIngredient` 는, `init(name: String)` 이라는, 편의 초기자도 정의하는데, 이를 사용하면 이름 단독으로 `RecipeIngredient` 인스턴스를 생성합니다. 이 편의 초기자는 수량을 명시하지 않고 생성한 어떤 `RecipeIngredient` 인스턴스든 수량이 `1` 이라 가정합니다. 이 편의 초기자의 정의는 `RecipeIngredient` 인스턴스 생성을 더 빠르고 편리하게 하며, 여러 가지로 단일-수량 `RecipeIngredient` 인스턴스를 생성할 때 코드 중복을 피하게 합니다. 이 편의 초기자는 단순하게 클래스의 지명 초기자로 옆으로 맡기며, `1` 이라는 `quantity` 값을 전달합니다.
 
-`RecipeIngredient` 가 제공한 `init(name: String)` 편의 초기자는 `Food` 의 _지명 (designated)_ 초기자인 `init(name: String)` 과 똑같은 매개 변수를 취합니다. 이 편의 초기자는 상위 클래스의 지명 초기자를 '재정의' 하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+`RecipeIngredient` 에서 제공한 `init(name: String)` 편의 초기자는 `Food` 의 `init(name: String)` _지명 (designated)_ 초기자와 똑같은 매개 변수를 취합니다. 이 편의 초기자는 자신의 상위 클래스 지명 초기자를 재정의하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
 
 `RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하고 있을지라도, 그럼에도 불구하고 `RecipeIngredient` 는 상위 클래스에 대한 모든 지명 초기자의 구현을 제공하고 있는 것입니다. 그러므로, `RecipeIngredient` 또한 상위 클래스의 모든 편의 초기자를 자동으로 상속합니다.
 
