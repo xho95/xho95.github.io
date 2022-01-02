@@ -615,7 +615,7 @@ class RecipeIngredient: Food {
 
 ![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
 
-`RecipeIngredient` 클래스는, 새 `RecipeIngredient` 인스턴스의 모든 속성을 정착시키는데 사용할 수 있는, `init(name: String, amount: Int)` 라는, 단일 지명 초기자를 가집니다. 이 초기자는 전달받은 `quantity` 인자를, `RecipeIngredient` 가 도입한 유일한 새 속성인, `quantity` 속성에 할당하는 것으로 시작합니다. 그런 후에, 초기자는 `Food` 클래스의 `init(name: String)` 초기자로 '위로 위임' 합니다. 이 과정은 위의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 에 있는 '안전성 검사 2' 를 만족합니다.
+`RecipeIngredient` 클래스는, `init(name: String, amount: Int)` 라는, 단일한 지명 초기자를 가지는데, 이를 사용하면 새 `RecipeIngredient` 인스턴스의 모든 속성을 채울 수 있습니다. 이 초기자는 전달받은 `quantity` 인자를, `RecipeIngredient` 가 도입한 유일한 새 속성인, `quantity` 속성에 할당하는 것으로 시작합니다. 그런 후에, 초기자는 `Food` 클래스의 `init(name: String)` 초기자로 위로 맡깁니다. 이 과정은 위 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 의 안전성 검사 2 를 만족합니다.
 
 `RecipeIngredient` 는, 이름 만으로 `RecipeIngredient` 인스턴스를 생성하고자 사용하는, `init(name: String)` 이라는, 편의 초기자도 정의합니다. 이 편의 초기자는 명시적인 수량 없이 생성된 `RecipeIngredient` 인스턴스는 어떤 것이든 수량이 `1` 이라고 가정합니다. 이런 편의 초기자 정의는 `RecipeIngredient` 인스턴스의 생성을 더 빠르고 편리하게 해주며, 여러 개의 단일-수량 `RecipeIngredient` 인스턴스를 생성할 때 코드 중복을 피하게 해줍니다. 이 편의 초기자는 단순히 클래스 지명 초기자에, `1` 이라는 `quantity` 값을 전달하여, '옆으로 위임' 합니다.
 
