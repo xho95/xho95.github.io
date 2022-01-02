@@ -621,11 +621,11 @@ class RecipeIngredient: Food {
 
 `RecipeIngredient` 에서 제공한 `init(name: String)` 편의 초기자는 `Food` 의 `init(name: String)` _지명 (designated)_ 초기자와 똑같은 매개 변수를 취합니다. 이 편의 초기자는 자신의 상위 클래스 지명 초기자를 재정의하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
 
-`RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하고 있을지라도, 그럼에도 불구하고 `RecipeIngredient` 는 상위 클래스에 대한 모든 지명 초기자의 구현을 제공하고 있는 것입니다. 그러므로, `RecipeIngredient` 또한 상위 클래스의 모든 편의 초기자를 자동으로 상속합니다.
+`RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공할지라도, `RecipeIngredient` 는 그럼에도 불구하고 자신의 모든 상위 클래스 지명 초기자를 구현하고 있습니다. 그러므로, `RecipeIngredient` 는 자동으로 자신의 모든 상위 클래스 편의 초기자도 상속합니다.
 
-이 예제에서, `RecipeIngredient` 의 상위 클래스는, `init()` 이라는 단일 편의 초기자를 가진, `Food` 입니다. 그러므로 이 초기자를 `RecipeIngredient` 가 상속합니다. 상속한 버전의 `init()` 은, `Food` 버전 대신 `RecipeIngredient` 버전의 `init(name: String)` 으로 위임한다는 것만 제외하면, `Food` 버전과 정확히 똑같은 방식으로 기능합니다.
+이 예제에서, `RecipeIngredient` 의 상위 클래스는 `Food` 인데, `init()` 이라는 편의 초기자가 하나 있습니다. 그러므로 이 초기자를 `RecipeIngredient` 가 상속합니다. `Food` 버전 보단 `RecipeIngredient` 버전의 `init(name: String)` 으로 맡긴다는 걸 제외하면, 상속 버전 `init()` 의 기능은 `Food` 버전과 정확히 똑같습니다.
 
-이 세 초기자 모두 새 `RecipeIngredient` 인스턴스를 생성하는데 사용할 수 있습니다:
+이 세 초기자 모두를 사용하여 새로운 `RecipeIngredient` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let oneMysteryItem = RecipeIngredient()
@@ -633,9 +633,9 @@ let oneBacon = RecipeIngredient(name: "Bacon")
 let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
 ```
 
-계층 구조의 세 번째이자 최종 클래스는 `ShoppingListItem` 라는 `RecipeIngredient` 의 하위 클래스입니다. `ShoppingListItem` 클래스는 구매 목록에 있는 '조리 재료 (recipe ingredient)' 를 모델링합니다.
+계층 구조의 세 번째이자 최종인 클래스는 `ShoppingListItem` 이라는 `RecipeIngredient` 의 하위 클래스입니다. `ShoppingListItem` 클래스는 쇼핑 목록에 나타난 요리 재료 (recipe ingredient) 를 모델링합니다.
 
-구매 목록의 모든 항목은 "미구매 (unpurchased)" 로 시작합니다. 이 사실을 표현하기 위해, `ShoppingListItem` 은, 기본 값이 `false` 인, `purchased` 라는 '불리언 (Boolean)' 속성을 도입합니다. `ShoppingListItem` 은, `ShoppingListItem` 인스턴스를 설명하는 문장을 제공하는, `description` 계산 속성도 추가합니다:
+쇼핑 목록의 모든 항목은 "미구매 (unpurchased)" 로 시작합니다. 이 사실을 나타내고자, `false` 라는 기본 값을 가진, `purchased` 라는 불리언 속성을 `ShoppingListItem` 이 도입합니다. `ShoppingListItem` 은 `description` 계산 속성도 추가하여, `ShoppingListItem` 인스턴스의 설명문을 제공합니다:
 
 ```swift
 class ShoppingListItem: RecipeIngredient {
