@@ -746,11 +746,11 @@ if anonymousCreature == nil {
 
 > (`"Giraffe"` 라기 보단 `""` 같은) 빈 문자열 값의 검사는 _옵셔널 (optional)_ `String` 값의 없음을 지시하는 `nil` 검사와 똑같지 않습니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한, 옵셔널-아닌 `String` 입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열인 건 적절하지 않습니다. 이런 제약 사항을 모델링하고자, 빈 문자열이면 실패 가능 초기자가 초기화 실패를 발동합니다.
 
-#### Failable Initializers for Enumerations (열거체를 위한 실패 가능 초기자)
+#### Failable Initializers for Enumerations (열거체의 실패 가능 초기자)
 
-실패 가능 초기자는 하나 이상의 매개 변수를 기초로 적절한 '열거체 case 값' 을 선택하기 위해 사용할 수 있습니다. 그런 다음 제공한 매개 변수가 적절한 '열거체 case 값' 과 일치하지 않을 경우 초기자가 실패할 수 있습니다.
+실패 가능 초기자를 사용하면 매개 변수를 기초로 하여 적절한 열거체 case 를 선택할 수 있습니다. 그러면 제공한 매개 변수와 적절한 열거체 case 가 일치하지 않은 경우에 초기화가 실패할 수 있습니다.
 
-아래 예제는, (`kelvin`, `celsius`, 그리고 `fahrenheit` 라는) 세 개의 가능한 상태를 가진, `TemperatureUnit` 이라는 열거체를 정의합니다. '실패 가능 초기자' 는 '온도 (temperature) 기호' 를 표현하는 `Character` 값에 대한 적절한 '열거체 case 값' 을 찾기 위해 사용합니다:
+아래 예제는, (`kelvin`, `celsius`, 및 `fahrenheit` 라는) 세 개의 상태가 가능한, `TemperatureUnit` 이라는 열거체를 정의합니다. 실패 가능 초기자를 사용하여 온도 (temperature) 기호를 나타내는 `Character` 값에 적절한 열거체 case 를 찾습니다:
 
 ```swift
 enum TemperatureUnit {
@@ -770,27 +770,27 @@ enum TemperatureUnit {
 }
 ```
 
-이 '실패 가능 초기자' 는 세 가능한 상태에 대한 적절한 '열거체 case 값' 을 선택하고 매개 변수가 이 세 상태 중 어느 것도 일치하지 않는 경우 초기화가 실패하도록 하고자 사용할 수 있습니다:
+이 실패 가능 초기자를 사용하면 가능한 세 상태에 대한 적절한 열거체 case 를 선택하고 매개 변수가 이 세 상태 중 하나와 일치하지 않으면 초기화를 실패하게 할 수 있습니다:
 
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
   print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded." 를 인쇄합니다.
+// "This is a defined temperature unit, so initialization succeeded." 를 인쇄함
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
   print("This is not a defined temperature unit, so initialization failed.")
 }
-// "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
+// "This is not a defined temperature unit, so initialization failed." 를 인쇄함
 ```
 
-#### Failable Initializers for Enumerations with Raw Values (원시 값을 가진 열거체를 위한 실패 가능 초기자)
+#### Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)
 
-원시 값을 가진 열거체는, 적절한 원시-값 타입의 `rawValue` 라는 매개 변수를 취해서 일치하는 '열거체 case 값' 을 찾으면 이를 선택하고, 일치하는 값이 존재하지 않으면 '초기화 실패' 를 발생시키는, `init?(rawValue:)` 라는, '실패 가능 초기자' 를 자동으로 부여 받습니다.   
+원시 값이 있는 열거체는 자동으로, `init?(rawValue:)` 라는, 실패 가능 초기자를 받는데, 이는 `rawValue` 라는 적절한 원시-값 타입의 매개 변수를 취하여 일치한 열거체 case 를 찾으면 이를 선택하고, 일치 값이 없으면 초기화 실패를 발동합니다.
 
-위에 있는 `TemperatureUnit` 예제는 `Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 장점을 취하여 재작성할 수 있습니다:
+위의 `TemperatureUnit` 예제를 재작성하면 `Character` 타입의 원시 값을 사용해서 `init?(rawValue:)` 초기자의 장점을 취할 수 있습니다:
 
 ```swift
 enum TemperatureUnit: Character {
@@ -801,24 +801,24 @@ let fahrenheitUnit = TemperatureUnit(rawValue: "F")
 if fahrenheitUnit != nil {
   print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded." 를 인쇄합니다.
+// "This is a defined temperature unit, so initialization succeeded." 를 인쇄함
 
 let unknownUnit = TemperatureUnit(rawValue: "X")
 if unknownUnit == nil {
   print("This is not a defined temperature unit, so initialization failed.")
 }
-// "This is not a defined temperature unit, so initialization failed." 를 인쇄합니다.
+// "This is not a defined temperature unit, so initialization failed." 를 인쇄함
 ```
 
 #### Propagation of Initialization Failure (초기화 실패의 전파)
 
-클래스, 구조체, 또는 열거체의 '실패 가능 초기자' 는 동일한 클래스, 구조체, 또는 열거체에 있는 또 다른 '실패 가능 초기자' 에 '옆으로 위임' 할 수 있습니다. 이와 비슷하게, 하위 클래스의 '실패 가능 초기자' 는 상위 클래스의 '실패 가능 초기자' 에 '위로 위임' 할 수 있습니다.
+클래스, 구조체, 및 열거체의 실패 가능 초기자는 동일한 클래스, 구조체, 및 열거체에 있는 다른 실패 가능 초기자로 옆으로 맡길 수 있습니다. 이와 비슷하게, 하위 클래스 실패 가능 초기자는 상위 클래스 실패 가능 초기자로 위로 맡길 수 있습니다.
 
-어느 경우든, 초기화 실패를 유발하는 또 다른 초기자로 위임한 경우, 전체 초기화 과정은 곧바로 실패하며, 더 이상 초기화 코드를 실행하지 않습니다.
+어느 경우든, 다른 초기자에 맡긴 초기화가 실패하면, 전체 초기화 과정이 곧바로 실패하며, 초기화 코드는 더 이상 실행하지 않습니다.
 
-> '실패 가능 초기자' 는 '실패하지 않는 초기자' 로도 위임할 수 있습니다. 다른 경우라면 실패하지 않을 기존의 '실패하지 않는 초기자' 에 잠재적인 실패 상태를 추가할 필요가 있을 경우 이 접근 방식을 사용합니다.
+> 실패 가능 초기자는 실패하지 않는 초기자로도 맡길 수 있습니다. 실패하지 않을 기존 초기화 과정에 실패할 수도 있는 상태를 추가해야 할 경우 이 접근법을 사용합니다.
 
-아래 예제는 `CartItem` 라는 `Product` 의 하위 클래스를 정의합니다. `CartItem` 클래스는 온라인 '장바구니 (shopping cart)' 에 있는 항목을 모델링 합니다. `CartItem` 은 `quantity` 라는 상수 저장 속성을 도입하며 이 속성이 항상 최소 `1` 이상의 값을 가지도록 보장합니다:
+아래 예제는 `CartItem` 이라는 `Product` 의 하위 클래스를 정의합니다. `CartItem` 클래스는 온라인 장바구니에 있는 항목을 모델링합니다. `CartItem` 은 `quantity` 라는 상수 저장 속성을 도입하여 이 속성이 항상 적어도 `1` 이라는 값을 갖도록 보장합니다:
 
 ```swift
 class Product {
@@ -839,18 +839,18 @@ class CartItem: Product {
 }
 ```
 
-`CartItem` 의 '실패 가능 초기자' 는 `1` 이상의 `quantity` 값을 받았는지 검증하는 것으로 시작합니다. `quantity` 가 무효하면, 전체 초기화 과정이 곧바로 실패하며 더 이상 초기화 코드를 실행하지 않습니다. 마찬가지로, `Product` 의 '실패 가능 초기자' 는 `name` 값을 검사하며, `name` 이 빈 문자열이면 초기화 과정이 곧바로 실패합니다.
+`CartItem` 의 실패 가능 초기자는 받은 `quantity` 값이 `1` 이상인지 검증하는 걸로 시작합니다. `quantity` 가 무효면, 곧바로 전체 초기화 과정을 실패하며 초기화 코드는 더 이상 실행하지 않습니다. 마찬가지로, `Product` 의 실패 가능 초기자는 `name` 값을 검사하여, `name` 이 빈 문자열이면 곧바로 초기화 과정을 실패합니다.
 
-이름이 비어있지 않고 수량이 `1` 이상인 `CartItem` 인스턴스를 생성하면, 초기화가 성공합니다:
+비어있지 않은 이름과 `1` 이상의 수량으로 `CartItem` 인스턴스를 생성하면, 초기화가 성공입니다:
 
 ```swift
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
   print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
 }
-// "Item: sock, quantity: 2" 를 인쇄합니다.
+// "Item: sock, quantity: 2" 를 인쇄함
 ```
 
-`quantity` 값이 `0` 인 `CartItem` 인스턴스를 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하게 합니다:
+`0` 이라는 `quantity` 값으로 `CartItem` 인스턴스를 생성하려 하면, `CartItem` 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
@@ -858,10 +858,10 @@ if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
 } else {
   print("Unable to initialize zero shirts")
 }
-// "Unable to initialize zero shirts" 를 인쇄합니다.
+// "Unable to initialize zero shirts" 를 인쇄함
 ```
 
-이와 비슷하게, 빈 `name` 값을 가진 `CartItem` 인스턴스를 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하게 합니다:
+이와 비슷하게, 빈 `name` 값으로 `CartItem` 인스턴스를 생성하려 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
@@ -869,7 +869,7 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 } else {
   print("Unable to initialize one unnamed product")
 }
-// "Unable to initialize one unnamed product" 를 인쇄합니다.
+// "Unable to initialize one unnamed product" 를 인쇄함
 ```
 
 #### Overriding a Failable Initializer (실패 가능 초기자 재정의하기)
