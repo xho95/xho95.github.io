@@ -936,12 +936,12 @@ class UntitledDocument: Document {
 
 ### Required Initializers (필수 초기자)
 
-클래스의 모든 하위 클래스가 해당 초기자를 반드시 구현하도록 지시하려면 클래스 초기자의 정의 앞에 `required` 수정자를 작성합니다:
+클래스의 모든 하위 클래스가 반드시 그 초기자를 구현하도록 지시하려면 클래스 초기자 정의 앞에 `required` 수정자를 작성합니다:
 
 ```swift
 class SomeClass {
   required init () {
-    // 초기자 구현은 여기에 둡니다.
+    // 초기자 구현은 여기에 둠
   }
 }
 ```
@@ -951,7 +951,7 @@ class SomeClass {
 ```swift
 class SomeSubClass: SomeClass {
   required init () {
-    // 필수 초기자의 하위 클래스 구현을 여기에 둡니다.
+    // 하위 클래스의 필수 초기자 구현은 여기에 둠
   }
 }
 ```
