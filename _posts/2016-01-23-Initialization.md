@@ -878,7 +878,7 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 
 실패 가능한 상위 클래스 초기자를 실패하지 않는 하위 클래스 초기자로 재정의하면, 위의 상위 클래스로 맡기는 유일한 방법이 실패 가능한 상위 클래스 초기자 결과의 포장을 강제로-푸는 거라는 걸 기억하기 바랍니다.
 
-> 실패하지 않는 초기자로 실패 가능 초기자를 재정의할 순 있지만 그 반대는 아닙니다.
+> 실패 가능 초기자를 실패하지 않는 초기자로 재정의할 순 있지만 그 반대는 아닙니다.
 
 아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스는 비어있지 않은 문자열 값 또는 `nil` 일 순 있지만, 빈 문자열일 순 없는, `name` 속성으로 초기화할 수 있는 문서 (document) 를 모델링합니다:
 
@@ -895,7 +895,7 @@ class Document {
 }
 ```
 
-이 다음 예제는 `AutomaticNamedDocument` 라는 `Document` 의 하위 클래스를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 두 개의 지명 초기자 모두 재정의합니다. 이 재정의들은, 인스턴스를 이름 없이 초기화할 경우, 또는 `init(name:)` 초기자에 빈 문자열을 전달하는 경우, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 '초기 `name` 값' 을 가지도록 보장합니다:
+그 다음 예제는 `AutomaticNamedDocument` 라는 `Document` 의 하위 클래스를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 지명 초기자 둘 다 재정의합니다. 이러한 재정의는, 이름 없이 인스턴스를 초기화하거나, `init(name:)` 초기자에 빈 문자열을 전달하는 경우에, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 초기 `name` 값을 갖도록 보장합니다:
 
 ```swift
 class AutomaticallyNamedDocument: Document {
@@ -914,9 +914,9 @@ class AutomaticallyNamedDocument: Document {
 }
 ```
 
-`AutomaticNamedDocument` 는 상위 클래스의 '실패 가능 `init?(name:)` 초기자' 를 '실패하지 않는 `init(name:)`  초기자' 로 재정의합니다. `AutomaticNamedDocument` 는 상위 클래스와 다른 방식으로 빈 문자열을 처리하기 때문에, 초기자가 실패할 필요가 없으므로, 실패하지 않는 초기자 버전을 대신 제공합니다.
+`AutomaticNamedDocument` 는 상위 클래스의 실패 가능 `init?(name:)` 초기자를 실패하지 않는 `init(name:)` 초기자로 재정의합니다. `AutomaticNamedDocument` 는 상위 클래스와는 다른 식으로 빈 문자열인 경우에 대처하기 때문에, 자신의 초기자가 실패할 필요가 없어서, 실패하지 않는 버전의 초기자를 대신 제공합니다.
 
-하위 클래스의 '실패하지 않는 초기자' 에서 상위 클래스에 있는 '실패 가능 초기자' 를 호출하기 위해 초기자에서 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 예를 들어, 아래의 `UntitledDocument` 하위 클래스는 항상 `"[Untitled]"` 라는 이름을 붙이며, 초기화 동안 상위 클래스의 '실패 가능 `init(name:)` 초기자' 를 사용합니다.
+초기자의 포장을 강제로 풀면 하위 클래스의 실패하지 않는 초기자 구현부에서 상위 클래스의 실패 가능 초기자를 호출할 수 있습니다. 예를 들어, 아래의 `UntitledDocument` 하위 클래스는 항상 `"[Untitled]"` 라는 이름을 붙이며, 초기화 중에 자신의 상위 클래스에 있는 실패 가능 `init(name:)` 초기자를 사용합니다.
 
 ```swift
 class UntitledDocument: Document {
@@ -926,7 +926,7 @@ class UntitledDocument: Document {
 }
 ```
 
-이 경우, 상위 클래스의 `init(name:)` 초기자를 빈 문자열의 이름을 가지고 호출했다면, '강제 포장 풀기' 연산이 '실행시간 에러' 로 끝났을 것입니다. 하지만, 문자열 상수를 가지고 호출했기 때문에, 초기자가 실패하지 않을 거라는 것을, 그래서 이 경우 아무런 실행시간 에러도 일어날 수 없음을, 알 수 있습니다.
+이 경우, 빈 문자열 이름으로 상위 클래스의 `init(name:)` 초기자를 호출한 거였으면, 포장을 강제로 푸는 연산이 실행시간 에러로 끝났을 겁니다. 하지만, 문자열 상수로 호출했기 때문에, 초기자는 실패하지 않을 거라서, 이 경우 아무런 실행시간 에러도 일어날 수 없다는 걸, 알 수 있습니다.
 
 #### The `init!` Failable Initializer (`init!` 실패 가능 초기자)
 
