@@ -986,7 +986,7 @@ class SomeClass {
 
 이 게임판을 나타내기 위해, `Chessboard` 구조체에는, 64개의 `Bool` 값 배열인, `boardColors` 라는 단일한 속성이 있습니다. 배열에서 `true` 값은 검은색 정사각형을 나타내고 `false` 값은 흰색 정사각형을 나타냅니다. 배열의 첫 번째 항목은 게임판의 맨 왼쪽 위 정사각형을 나타내며 배열의 마지막 항목은 게임판의 맨 오른쪽 아래 정사각형을 나타냅니다.
 
-`boardColors` 배열은 자신의 색상 값을 설정하는 클로저를 가지고 초기화합니다.
+자신의 색상 값을 설정하는 클로저로 `boardColors` 배열을 초기화합니다:
 
 ```swift
 struct Chessboard {
@@ -1008,14 +1008,14 @@ struct Chessboard {
 }
 ```
 
-새 `Chessboard` 인스턴스를 생성할 때마다, 클로저를 실행하여, `boardColors` 의 기본 값을 계산하고 반환합니다. 위 예제에 있는 클로저는 `temporaryBoard` 라는 임시 배열에 있는 게임판의 각 정사각형에 대해서 적절한 색상을 계산하고 설정하며, 설정을 한 번완료하고 나면 클로저의 반환 값으로 이 임시 배열을 반환합니다. 반환한 배열 값은 `boardColors` 에 저장하며 `squareIsBlackAt(row:column:)` 라는 '보조 함수' 로 조회할 수 있습니다:
+새 `Chessboard` 인스턴스를 생성할 때마다, 클로저를 실행하고, `boardColors` 의 기본 값을 계산하여 반환합니다. 위 예제에 있는 클로저는 `temporaryBoard` 라는 임시 배열 판 위의 각 정사각형마다 적절한 색을 계산하여 설정하며, 설정을 완료하고 나면 이 임시 배열을 클로저의 반환 값으로 반환합니다. 반환한 배열 값은 `boardColors` 에 저장되며 `squareIsBlackAt(row:column:)` 라는 보조용 함수로 조회할 수 있습니다:
 
 ```swift
 let board = Chessboard()
 print(board.squareIsBlackAt(row: 0, column: 1))
-// "true" 를 인쇄합니다.
+// "true" 를 인쇄힘
 print(board.squareIsBlackAt(row: 7, column: 7))
-// "false" 를 인쇄합니다.
+// "false" 를 인쇄함
 ```
 
 ### 다음 장
