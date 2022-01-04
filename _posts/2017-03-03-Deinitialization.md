@@ -31,7 +31,7 @@ deinit {
 
 ### Deinitializers in Action (정리자의 실제 사례)
 
-다음은 정리자의 실제 사례입니다. 이 예제는, 단순한 게임을 위해, `Bank` 와 `Player` 라는, 두 개의 새로운 타입을 정의합니다. `Bank` 클래스는, 유통 과정에서 동전이 절대로 10,000 개를 넘지 않는, '가상 통화' 를 관리합니다. 게임에는 늘 하나의 `Bank` 만 있을 수 있으므로, 현재 상태를 저장하고 관리하기 위해 `Bank` 를 타입 속성과 메소드를 가진 클래스로 구현합니다[^singleton]:
+다음은 정리자의 실제 사례입니다. 이 예제는, 단순한 게임을 위해, `Bank` 와 `Player` 라는, 새로운 두 타입을 정의합니다. `Bank` 클래스는 가상 통화를 관리하며, 유통 과정에서 절대로 동전이 10,000 개를 넘지 않게 할 수 있습니다. 게임에선 늘 하나의 `Bank` 만 있을 수 있으므로, 타입 속성 및 메소드를 가진 클래스로 `Bank` 를 구현하여 현재 상태를 저장하고 관리합니다[^singleton]:
 
 ```swift
 class Bank {
@@ -120,4 +120,4 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^deallocated]: 여기서 'deallocated' 는 메모리 해제를 말하는데, 스위프트가 앞서 말한 'ARC (Auto Reference Counting)' 로 자동으로 합니다.
 
-[^singleton]: `Bank` 클래스는, 참조 타입인 클래스라서 복사가 일어나지 않으며, 타입 속성과 메소드로 구현되어 개별 인스턴스를 따로 생성하지 않으므로, '싱글턴 (singleton) 패턴' 에 해당합니다. 사실 `Bank` 클래스는 스위프트에서 '싱글턴 패턴' 을 구현하는 방법을 보여주는 것입니다. '싱글턴 패턴' 에 대한 더 자세한 정보는 위키피디아의 [Singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 과 [싱글턴 패턴](https://ko.wikipedia.org/wiki/싱글턴_패턴) 항목을 참고하기 바랍니다.
+[^singleton]: `Bank` 클래스는, 참조 타입이라서 복사되지 않으며, 타입 속성 및 메소드로 구현하여 개별 인스턴스를 따로 생성하지 않으므로, 싱글턴 (singleton) 에 해다합니다. 이 예제는 스위프트로 싱글턴을 구현하는 방법을 보여줍니다. 싱글턴 패턴에 대한 더 자세한 정보는 위키피디아의 [Singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 항목과 [싱글턴 패턴](https://ko.wikipedia.org/wiki/싱글턴_패턴) 항목을 참고하기 바랍니다.
