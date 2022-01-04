@@ -11,7 +11,7 @@ redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitializa
 
 ## Deinitialization (뒷정리)
 
-_정리자 (deinitializer)_[^deinitializer] 는 클래스 인스턴스를 '해제하기 (deallocated)'[^deallocated] 바로 전에 호출됩니다. '정리자' 는, '초기자' 를 `init` 키워드로 작성하는 것과 비슷하게, `deinit` 키워드로 작성합니다. 정리자는 '클래스 타입' 에서만 사용 가능합니다.
+_정리자 (deinitializer)_[^deinitializer] 는 클래스 인스턴스를 해제하기 (deallocated)[^deallocated] 바로 전 호출합니다. 정리자는 `deinit` 키워드로 작성하는데, 초기자를 `init` 키워드로 작성하는 것과 비슷합니다. 정리자는 클래스 타입에서만 사용 가능합니다.
 
 ### How Deinitialization Works (정리자의 작동 방식)
 
@@ -116,8 +116,8 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^deinitializer]: 'deinitializer' 를 '정리자' 라고 옮긴 것은 'initializer' 를 '초기자' 라고 옮긴 것과 짝을 맞추기 위함입니다. 이는 C++ 에서 'constructor' 를 '생성자', 'destructor' 를 '소멸자' 라고 부르는 것에서 착안한 것입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 을 사용하여 메모리 관리를 자동으로 하기 때문에, 사실상 메모리 '생성' 이나 '소멸' 이라는 개념이 거의 없습니다. 그러므로 '생성' 이나 '소멸' 같이 메모리 할당, 해제를 연상시키는 용어 대신 '초기자' 와 '정리자' 같은 말은 선택했습니다.
+[^deinitializer]: '정리자 (deinitializer)' 라고 옮긴 것은 '초기자 (initializer)' 와 짝을 맞추기 위함입니다. 이는 C++ 의 '생성자 (constructor) 와 소멸자 (destructor)' 에서 착안한 것입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 으로 자동으로 메모리를 관리하기 때문에, 메모리의 생성이나 소멸이라는 개념이 (사실상) 거의 없습니다. 그러므로 생성자나 소멸자 같은 용어보다 초기자 및 정리자 같은 용어가 더 적합합니다.
 
-[^deallocated]: 여기서 'deallocated' 는 메모리에서 해제되는 것을 말하며, 스위프트가 'Auto Reference Counting' 을 사용하여 자동으로 해줍니다.
+[^deallocated]: 여기서 'deallocated' 는 메모리 해제를 말하는데, 스위프트가 앞서 말한 'ARC (Auto Reference Counting)' 로 자동으로 합니다.
 
 [^singleton]: `Bank` 클래스는, 참조 타입인 클래스라서 복사가 일어나지 않으며, 타입 속성과 메소드로 구현되어 개별 인스턴스를 따로 생성하지 않으므로, '싱글턴 (singleton) 패턴' 에 해당합니다. 사실 `Bank` 클래스는 스위프트에서 '싱글턴 패턴' 을 구현하는 방법을 보여주는 것입니다. '싱글턴 패턴' 에 대한 더 자세한 정보는 위키피디아의 [Singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 과 [싱글턴 패턴](https://ko.wikipedia.org/wiki/싱글턴_패턴) 항목을 참고하기 바랍니다.
