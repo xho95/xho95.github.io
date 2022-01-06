@@ -36,24 +36,24 @@ class Residence {
 }
 ```
 
-`Residence` 인스턴스는, 기본 값이 `1` 인, `numberOfRooms` 라는 단일 `Int` 속성을 가집니다. `Person` 인스턴스는 타입이 `Residence?` 인 옵셔널 `residence` 속성을 가집니다.
+`Residence` 인스턴스에는 `numberOfRooms` 라는 단일 `Int` 속성이 있는데, 기본 값은 `1` 입니다. `Person` 인스턴스에는 `Residence?` 타입의 옵셔널 `residence` 속성이 있습니다.
 
-새로운 `Person` 인스턴스를 생성하면, `residence` 속성은, 옵셔널인 덕에, 기본적으로 `nil` 로 초기화됩니다. 아래 코드에서, `john` 은 `residence` 속성 값으로 `nil` 을 가집니다:
+새 `Person` 인스턴스를 생성하면, `residence` 속성은, 옵셔널인 덕에, `nil` 로 기본 초기화합니다. 아래 코드의, `john` 은 `nil` 이라는 `residence` 속성 값을 가집니다:
 
 ```swift
 let john = Person()
 ```
 
-이 사람의 `residence` 에 있는 `numberOfRooms` 속성에, 강제로 값의 포장을 푸는 느낌표를 `residence` 뒤에 붙여서, 접근하려고 하면, 포장을 풀 `residence` 값이 없기 때문에, 실행시간 에러가 발생합니다:
+이 사람의 `residence` 에 있는 `numberOfRooms` 속성에 접근하려고, `residence` 뒤에 느낌표를 둬서 값의 포장을 강제로 풀면, 포장을 풀 `residence` 값이 없기 때문에, 실행시간 에러를 발동합니다:
 
 ```swift
 let roomCount = john.residence!.numberOfRooms
-// 이는 실행시간 에러를 발생시킵니다.
+// 이는 실행시간 에러를 발동합니다.
 ```
 
-위 코드는 `john.residence` 가 `nil` 이 아닌 값일 때 성공하여 적절한 방 개수를 담은 `Int` 값으로 `roomCount` 를 설정할 것입니다. 하지만, 이 코드는, 위에서 묘사한 것처럼, `residence` 가 `nil` 일 때는, 항상 실행시간 에러를 발생시킵니다.
+`john.residence` 값이 `nil`-이 아닐 땐 위 코드를 성공하여 적절한 방의 수를 담은 `Int` 값을 `roomCount` 에 설정할 겁니다. 하지만, 위에서 묘사한 것처럼, `residence` 가 `nil` 일 땐, 이 코드는 항상 실행시간 에러를 발동합니다.
 
-옵셔널 연쇄는 `numberOfRooms` 값에 접근하는 대안을 제공합니다. 옵셔널 연쇄를 사용하려면, 느낌표 자리에 물음표를 사용합니다:
+옵셔널 사슬은 `numberOfRooms` 값의 접근에 대안을 제공합니다. 옵셔널 사슬을 사용하려면, 느낌표 자리에 물음표를 사용합니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -61,10 +61,10 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "Unable to retrieve the number of rooms." 를 인쇄합니다.
+// "Unable to retrieve the number of rooms." 를 인쇄함
 ```
 
-이는 '옵셔널 `residence` 속성' 을 "연쇄 (chain)" 해서 `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 스위프트에게 말하는 것입니다.
+이는 옵셔널 `residence` 속성을 "사슬처럼 이어 (chain)" 서 `residence` 가 존재하면 `numberOfRooms` 값을 가져오라고 스위프트에게 말하는 겁니다.
 
 `numberOfRooms` 에 접근하려는 시도는 실패할 가능성이 있기 때문에, 옵셔널 연쇄 시도는 `Int?`, 또는 "옵셔널 `Int`" 타입의 값을 반환합니다. `residence` 가 `nil` 일 땐, 위 예제에 있는 것처럼, `numberOfRooms` 에 접근하는 것이 가능하지 않다는 사실을 반영하기 위해, 이 옵셔널 `Int` 도 `nil` 일 것입니다. 옵셔널 `Int` 는 '옵셔널 연결 (optional binding)'[^optional-binding] 을 통해 정수 포장을 풀고 옵셔널-아닌 값을 `roomCount` 상수에 할당합니다.
 
