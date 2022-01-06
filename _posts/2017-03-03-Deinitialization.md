@@ -47,13 +47,13 @@ class Bank {
 }
 ```
 
-`Bank` 는 현재 쥐고 있는 동전 수를 자신의 `coinsInBank` 속성으로 추적합니다. 이는 동전의 배포와 수집을 처리하기 위해-`distribute(coins:)` 와 `receive(coins:)` 라는-두 개의 메소드도 제안합니다.
+`Bank` 는 자신이 현재 쥐고 있는 동전 수를 `coinsInBank` 속성으로 추적합니다. 동전의 배포와 수집을 처리하는-`distribute(coins:)` 와 `receive(coins:)` 라는-메소드 두 개도 제안합니다.
 
-`distribute(coins:)` 메소드는 배포 전에 은행에 동전이 충분히 있는지 검사합니다. 동전이 충분하지 않으면, `Bank` 는 요청한 개수보다 적은 수를 반환 (하고 은행에 남은 동전이 없으면 '0' 을 반환) 합니다. 실제 제공된 동전 수를 표시하고자 '정수 값' 을 반환합니다.
+`distribute(coins:)` 메소드는 배포하기 전에 은행에 충분한 동전이 있는 지를 검사합니다. 동전이 충분치 않으면, 요청한 것보다 적은 개수를 `Bank` 가 반환 (하며 은행에 남은 동전이 없으면 0 을 반환) 합니다. 정수 값을 반환하여 실제 제공한 동전 수를 표시합니다.
 
-`receive(coins:)` 메소드는 받은 동전 수를 은행의 '동전 창고' 에 다시 단순히 더합니다.
+`receive(coins:)` 메소드는 되돌려 받은 동전 수를 단순히 은행의 동전 창고에 더합니다.
 
-`Player` 클래스는 게임의 '참여자' 를 설명합니다. 각 참여자는 지갑에 언제든지 정해진 수의 동전을 저장합니다. 이는 참여자의 `coinsInPurse` 속성으로 표현합니다:
+`Player` 클래스는 게임 참가자를 설명합니다. 각각의 참가자는 언제든지 정해진 수의 동전을 지갑에 저장합니다. 참가자의 `coinsInPurse` 속성이 이를 나타냅니다:
 
 ```swift
 class Player {
@@ -70,16 +70,16 @@ class Player {
 }
 ```
 
-각 `Player` 인스턴스는 초기화 동안 은행으로부터 '최초 할당량' 이라는 지정한 동전 수로 초기화되는데, 동전이 충분하지 않으면 `Player` 인스턴스가 해당 수보다 적게 받을 수도 있습니다.
+초기화 중에 은행에서 지정한 초기 허용량 만큼의 동전 수로 각각의 `Player` 인스턴스를 초기화 하지만, 동전이 충분치 않으면 `Player` 인스턴스가 그 보다 적게 받을 수도 있긴 합니다.
 
-`Player` 클래스는, 은행으로부터 정해진 수의 동전을 받고 이를 참여자의 지갑에 더하는, `win(coins:)` 메소드를 정의합니다. `Player` 클래스는, `Player` 클래스를 해제하기 직전에 호출되는, '정리자' 도 구현합니다. 여기서, 정리자는 단순히 참여자의 모든 동전을 은행에 반환합니다:
+`Player` 클래스는 `win(coins:)` 메소드를 정의하여, 정해진 수의 동전을 은행으로부터 받아서 참가자의 지갑에 더합니다. `Player` 클래스는 정리자도 구현하고 있는데, 이는 `Player` 클래스 해제 직전에 호출됩니다. 여기선, 정리자가 참가자의 모든 동전을 단순히 은행에 반환합니다:
 
 ```swift
 var playerOne: Player? = Player(coins: 100)
 print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
-// "A new player has joined the game with 100 coins" 를 인쇄합니다.
+// "A new player has joined the game with 100 coins" 를 인쇄함
 print("There are now \(Bank.coinsInBank) coins left in the bank")
-// "There are now 9900 coins left in the bank" 를 인쇄합니다.
+// "There are now 9900 coins left in the bank" 를 인쇄함
 ```
 
 새로운 `Player` 인스턴스를 생성하면서, 동전 '100' 개가 가능한지 요청합니다. 이 `Player` 인스턴스를 `playerOne` 이라는 '옵셔널 `Player` 변수' 에 저장합니다. 여기서 옵셔널 변수를 사용한 것은, 참여자가 언제든지 게임을 떠날 수 있기 때문입니다. 옵셔널은 게임에 현재 참여자가 있는지를 추적하게 해줍니다.
