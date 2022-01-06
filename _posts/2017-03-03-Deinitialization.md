@@ -70,9 +70,9 @@ class Player {
 }
 ```
 
-초기화 중에 은행에서 지정한 초기 허용량 만큼의 동전 수로 각각의 `Player` 인스턴스를 초기화 하지만, 동전이 충분치 않으면 `Player` 인스턴스가 그 보다 적게 받을 수도 있긴 합니다.
+초기화 중에 은행이 지정한 초기 허용량 만큼의 동전 수로 각 `Player` 인스턴스를 초기화하지만, 동전이 충분하지 않으면 `Player` 인스턴스가 그 보다 더 적게 받을 수도 있습니다.
 
-`Player` 클래스는 `win(coins:)` 메소드를 정의하여, 정해진 수의 동전을 은행으로부터 받아서 참가자의 지갑에 더합니다. `Player` 클래스는 정리자도 구현하고 있는데, 이는 `Player` 클래스 해제 직전에 호출됩니다. 여기선, 정리자가 참가자의 모든 동전을 단순히 은행에 반환합니다:
+`Player` 클래스는 `win(coins:)` 메소드를 정의하여, 정해진 수의 동전을 은행에서 받아서 참가자의 지갑에 더합니다. `Player` 클래스는, `Player` 클래스 해제 직전에 호출하는, 정리자도 구현합니다. 여기서, 정리자는 단순히 참가자의 모든 동전을 은행에 반환합니다:
 
 ```swift
 var playerOne: Player? = Player(coins: 100)
@@ -82,29 +82,29 @@ print("There are now \(Bank.coinsInBank) coins left in the bank")
 // "There are now 9900 coins left in the bank" 를 인쇄함
 ```
 
-새로운 `Player` 인스턴스를 생성하면서, 동전 '100' 개가 가능한지 요청합니다. 이 `Player` 인스턴스를 `playerOne` 이라는 '옵셔널 `Player` 변수' 에 저장합니다. 여기서 옵셔널 변수를 사용한 것은, 참여자가 언제든지 게임을 떠날 수 있기 때문입니다. 옵셔널은 게임에 현재 참여자가 있는지를 추적하게 해줍니다.
+새로운 `Player` 인스턴스를 생성하면서, 동전 100 개가 가능한지 요청합니다. 이 `Player` 인스턴스는 `playerOne` 이라는 옵셔널 `Player` 변수에 저장합니다. 여기서 옵셔널 변수를 사용하는 건, 언제든지 참가자가 게임을 떠날 수 있기 때문입니다. 옵셔널은 게임에 참가자가 현재 있는지 추적하게 해줍니다.
 
-`playerOne` 이 옵셔널이기 때문에, `coinsInPurse` 속성에 접근하여 기본 동전 수를 출력할 때, 그리고 `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 로 '규명 (qualified)' 합니다.:
+`playerOne` 은 옵셔널이기 때문에, `coinsInPurse` 속성에 접근하여 자신의 기본 동전 수를 인쇄할 때, 및 `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 로 규명합니다:
 
 ```swift
 playerOne!.win(coins: 2_000)
 print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
-// "PlayerOne won 2000 coins & now has 2100 coins" 를 인쇄합니다.
+// "PlayerOne won 2000 coins & now has 2100 coins" 를 인쇄함
 print("The bank now only has \(Bank.coinsInBank) coins left")
-// "The bank now only has 7900 coins left" 를 인쇄합니다.
+// "The bank now only has 7900 coins left" 를 인쇄함
 ```
 
-여기서, 참여자가 이겨서 동전 '2,000' 개를 손에 넣었습니다. 참여자의 지갑에는 이제 동전 '2,100' 개가 담겨 있고, 은행에는 '7,900' 개의 동전만이 남아 있습니다.
+여기선, 참가자가 이겨서 동전 2,000 개를 가졌습니다. 이제 참가자의 지갑엔 동전 2,100 개가 담겨 있고, 은행엔 7,900 개의 동전만 남았습니다.
 
 ```swift
 playerOne = nil
 print("PlayerOne has left the game")
-// "PlayerOne has left the game" 을 인쇄합니다.
+// "PlayerOne has left the game" 을 인쇄함
 print("The bank now has \(Bank.coinsInBank) coins")
-// "The bank now has 10000 coins" 를 인쇄합니다.
+// "The bank now has 10000 coins" 를 인쇄함
 ```
 
-참여자가 이제 게임을 떠났습니다. 이는 '옵셔널 `Player` 변수에, "`Player` 인스턴스가 없음" 을 의미하는, `nil` 을 설정함으로써 지시합니다. 이것이 일어나는 시점에, `Player` 인스턴스에 대한 `playerOne` 변수의 참조가 끊어집니다. 다른 어느 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 메모리 확보를 위해 해제됩니다. 이것이 일어나기 직전에, 정리자를 자동으로 호출하여, 동전을 은행으로 반환합니다.
+이제 참가자가 게임을 떠났습니다. 이는, "`Player` 인스턴스의 없음" 을 의미하는, `nil` 을 옵셔널 `Player` 변수에 설정함으로써 지시합니다. 이게 발생하는 시점에, `playerOne` 변수가 `Player` 인스턴스를 참조하는 걸 끊습니다. 다른 어느 속성이나 변수도 `Player` 인스턴스를 참조하지 않으므로, 이를 해제하여 메모리를 풀어줍니다. 이게 발생하기 직전에, 자동으로 정리자를 호출하고, 동전을 은행에 반환합니다.
 
 ### 다음 장
 
