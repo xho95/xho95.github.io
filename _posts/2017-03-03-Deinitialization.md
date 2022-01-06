@@ -108,7 +108,7 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 ### 다음 장
 
-[Optional Chaining (옵셔널 연쇄) > ]({% post_url 2020-06-17-Optional-Chaining %})
+[Optional Chaining (옵셔널 사슬) > ]({% post_url 2020-06-17-Optional-Chaining %})
 
 ### 참고 자료
 

@@ -790,7 +790,7 @@ for object in objects {
 
 '옵셔널 필수 조건' 에서 메소드나 속성을 사용할 때, 그 타입은 자동으로 '옵셔널' 이 됩니다. 예를 들어, `(Int) -> String` 타입의 메소드는 `((Int) -> String)?` 이 됩니다. 메소드 반환 값이 아니라, '전체 함수 타입' 을 옵셔널로 포장한다는 것을 기억하기 바랍니다.
 
-'옵셔널 프로토콜 필수 조건' 은, 프로토콜을 준수하는 타입이 필수 조건을 구현하지 않을 가능성을 밝히기 위해, '옵셔널 연쇄' 를 가지고 호출할 수 있습니다. '옵셔널 메소드' 를 구현했는 지는 호출할 때, `someOptionalMethod?(someArgument)` 같이, 메소드 이름 뒤에 물음표를 작성하여 검사합니다. '옵셔널 연쇄' 에 대한 정보는, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
+'옵셔널 프로토콜 필수 조건' 은, 프로토콜을 준수하는 타입이 필수 조건을 구현하지 않을 가능성을 밝히기 위해, '옵셔널 연쇄' 를 가지고 호출할 수 있습니다. '옵셔널 메소드' 를 구현했는 지는 호출할 때, `someOptionalMethod?(someArgument)` 같이, 메소드 이름 뒤에 물음표를 작성하여 검사합니다. '옵셔널 연쇄' 에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 다음 예제는, 증가량을 제공하고자 외부 데이터 소스를 사용하는, `Counter` 라는 '정수를-세는' 클래스를 정의합니다. 이 데이터 소스는, 두 개의 '옵셔널 필수 조건' 을 가진, '`CounterDataSource` 프로토콜' 에서 정의합니다:
 
@@ -1003,7 +1003,7 @@ print(differentNumbers.allEqual())
 
 [^instantiator]: 본문에서는 'instantiator' 라는 용어를 사용하고 있는데, 적당한 말이 없어서 '인스턴스를 만드는 부분' 으로 옮겼습니다. 실제 게임을 구현할 경우 일종의 'game manager' 가 '인스턴스' 를 생성할 텐데, 이 'game manager' 를 'inistantiator' 라고 부를 수 있을 것입니다.
 
-[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. 보다 자세한 정보는 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. 보다 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
 
 [^snakes-and-ladders-instance]: `SnakesAndLadders` 인스턴스를 `self` 라는 키워드를 사용하여 전달하고 있습니다.
 

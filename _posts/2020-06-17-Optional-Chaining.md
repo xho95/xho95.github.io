@@ -1,18 +1,18 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Optional Chaining (옵셔널 연쇄)"
+title:  "Swift 5.5: Optional Chaining (옵셔널 사슬)"
 date:   2020-06-17 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Optional Chaining](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Optional-Chaining]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Optional Chaining (옵셔널 연쇄)
+## Optional Chaining (옵셔널 사슬)
 
-_옵셔널 연쇄 (optional chaining)_ 는 현재 `nil` 일 수도 있는 '옵셔널' 에 대한 속성, 메소드, 그리고 첨자 연산을 조회하고 호출하는 과정입니다. '옵셔널' 이 값을 담고 있으면, 속성, 메소드, 또는 첨자 연산 호출이 성공하며; '옵셔널' 이 `nil` 이면, 속성, 메소드, 또는 첨자 연산 호출이 `nil` 을 반환합니다. 여러 개의 조회는 '연쇄망 (chain)' 으로 서로 이을 수 있으며, 연쇄망에 있는 어떤 고리가 `nil` 이이라도 '전체 연쇄망' 이 '우아하게 (gracefully)[^gracefully-fail] 실패' 합니다.
+_옵셔널 사슬 (optional chaining)_ 는 현재는 `nil` 일지도 모를 옵셔널에서 속성, 메소드, 및 첨자를 조회하고 호출하는 과정입니다. 값을 담은 옵셔널이면, 속성이나, 메소드, 또는 첨자 호출이 성공하고; 옵셔널이 `nil` 이면, 속성이나, 메소드, 또는 첨자 호출이 `nil` 을 반환합니다. 여러 개의 조회를 사슬처럼 서로 이을 수 있으며, 사슬의 어떤 고리든 `nil` 이면 전체 사슬이 우아하게 (gracefully) 실패합니다.[^gracefully-fail]
 
-> 스위프트의 '옵셔널 연쇄' 는 오브젝티브-C 의 `nil` 메시징과 비슷하지만, 어떤 타입과도 작업할 수 있으며, 성공 또는 실패 여부를 검사할 수 있습니다.
+> 스위프트의 옵셔널 사슬은 오브젝티브-C 의 `nil` 메시지 보내기와 비슷하지만, 어떤 타입과도 작업하며, 성공이나 실패를 검사할 수 있는 방식입니다.
 
 ### Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안으로써의 옵셔널 연쇄)
 
@@ -387,7 +387,7 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. '연쇄망' 의 어떤 '고리' 라도 `nil` 이면, 실행시간 에러가 발생하는 대신, 전체 연쇄망이 `nil` 이 된다는 의미입니다.
+[^gracefully-fail]: '우아하게 (gracefully) 실패한다' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 사슬의 어떤 고리든 `nil` 이면, 실행시간 에러가 발생하는 게 아니라, 전체 사슬이 `nil` 이 됩니다.
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
 
