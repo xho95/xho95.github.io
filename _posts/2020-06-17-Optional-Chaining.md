@@ -66,18 +66,18 @@ if let roomCount = john.residence?.numberOfRooms {
 
 이는 옵셔널 `residence` 속성을 "사슬처럼 이어 (chain)" 서 `residence` 가 존재하면 `numberOfRooms` 값을 가져오라고 스위프트에게 말하는 겁니다.
 
-`numberOfRooms` 에 접근하려는 시도는 실패할 가능성이 있기 때문에, 옵셔널 연쇄 시도는 `Int?`, 또는 "옵셔널 `Int`" 타입의 값을 반환합니다. `residence` 가 `nil` 일 땐, 위 예제에 있는 것처럼, `numberOfRooms` 에 접근하는 것이 가능하지 않다는 사실을 반영하기 위해, 이 옵셔널 `Int` 도 `nil` 일 것입니다. 옵셔널 `Int` 는 '옵셔널 연결 (optional binding)'[^optional-binding] 을 통해 정수 포장을 풀고 옵셔널-아닌 값을 `roomCount` 상수에 할당합니다.
+`numberOfRooms` 로의 접근 시도는 실패할 수도 있기 때문에, 옵셔널 사슬 시도는 `Int?`, 또는 "옵셔널 `Int`" 타입 값을 반환합니다. 위 예제에서 처럼, `residence` 가 `nil` 일 땐, 이 옵셔널 `Int` 도 `nil` 이어서, `numberOfRooms` 로의 접근이 불가능하다는 사실을 반영할 것입니다. 옵셔널 연결 (optional binding)[^optional-binding] 을 통해 옵셔널 `Int` 에 접근하면 정수의 포장을 풀고 옵셔널-아닌 값을 `roomCount` 상수에 할당합니다.
 
-이는 `numberOfRooms` 가 옵셔널이 아닌 `Int` 일지라도 그렇다는 것을 기억하기 바랍니다. 옵셔널 연쇄를 통해 조회한다는 사실은 `numberOfRooms` 에 대한 호출이 `Int` 대신 항상 `Int?` 를 반환할 것이라는 의미입니다.
+이는 `numberOfRooms` 가 옵셔널-아닌 `Int` 일지라도 참이라는 걸 기억하기 바랍니다.[^non-optional-int] 옵셔널 사슬을 통하여 조회한다는 사실은 `numberOfRooms` 호출이 항상 `Int` 대신 `Int?` 를 반환할 거라는 의미입니다.
 
-`Residence` 인스턴스를 `john.residence` 에 할당하여, 더 이상 `nil` 값을 가지지 않도록, 할 수 있습니다:
+`john.residence` 에 `Residence` 인스턴스를 할당해서, 더 이상 `nil` 값을 갖지 않도록, 할 수 있습니다:
 
 ```swift
 john.residence = Residence()
 ```
 
-`john.residence` 는 이제, `nil` 이 아닌, 실제 `Residence` 인스턴스를 담고 있습니다. 이전과 똑같은 옵셔널 연쇄로 `numberOfRooms` 에 접근하려고 하면, 이제 `1` 이라는
-기본 `numberOfRooms` 값' 을 담은 `Int?` 를 반환할 것입니다:
+이제 `john.residence` 는, `nil` 보단, 실제 `Residence` 인스턴스를 담고 있습니다. 전과 동일한 옵셔널 사슬로 `numberOfRooms` 에 접근하려 하면, 이제 `1` 이라는
+기본 `numberOfRooms` 값을 담은 `Int?` 를 반환할 것입니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -85,7 +85,7 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "John's residence has 1 room(s)." 를 인쇄합니다.
+// "John's residence has 1 room(s)." 를 인쇄함
 ```
 
 ### Defining Model Classes for Optional Chaining (옵셔널 연쇄를 위한 모델 클래스 정의하기)
@@ -396,3 +396,5 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 [^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것이 프로그래밍에서 말하는 '부수적인 효과', 즉, '부작용 (side effects)' 입니다. 이 함수의 본 목적은 주소를 생성하는 것인데, `print` 문은 주소를 생성하는 것과 직접적으로 관련이 없습니다.
 
 [^more-optional]: '더 옵셔널이 되지는 않는다' 는 것은 '옵셔널의 옵셔널' 같은 것은 없다는 의미입니다.
+
+[^non-optional-int]: `numberOfRooms` 가 옵셔널이 아니더라도 `john.residence?.numberOfRooms` 는 무조건 옵셔널이 된다는 의미입니다.
