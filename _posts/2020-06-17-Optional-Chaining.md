@@ -90,11 +90,11 @@ if let roomCount = john.residence?.numberOfRooms {
 
 ### Defining Model Classes for Optional Chaining (옵셔널 사슬을 모델링하는 클래스 정의하기)
 
-옵셔널 사슬을 사용하여 한 단계 이상의 깊이인 속성, 메소드, 및 첨자를 호출할 수 있습니다. 이는 서로 복잡하게 관련된 타입 모델 안의 하위 속성으로 파고 들어 가서, 그 하위 속성의 속성, 메소드, 및 첨자 접근이 가능한 지 검사하도록 합니다.
+옵셔널 사슬을 사용하여 한 단계 깊이 이상의 속성, 메소드, 및 첨자를 호출할 수 있습니다. 이는 서로 복잡하게 관련된 타입 모델 안의 하위 속성으로 파고 들어 가서, 그 하위 속성의 속성, 메소드, 및 첨자 접근이 가능한 지 검사하도록 합니다.
 
-아래 코드 조각들은, 다중 단계 옵셔널 연쇄에 대한 예제를 포함한, 뒤이은 여러 예제에서 사용하기 위한 네 개의 '모델 클래스' 를 정의합니다. 이 클래스들은 위에 있는 `Person` 과 `Residence` 모델을, `Room` 과 `Address` 클래스, 및 이와 결합된 속성, 메소드, 그리고 첨자 연산를 추가함으로써, 늘립니다.
+아래 코드 조각은, 여러 단계인 옵셔널 사슬 예제를 포함하여, 뒤이은 여러 예제에서 사용할 모델 클래스를 네 개 정의합니다. 이 클래스들은, 결합된 속성, 메소드, 및 첨자를 가진, `Room` 과 `Address` 클래스를 추가함으로써, 위에 있는 `Person` 과 `Residence` 모델을 늘립니다.
 
-`Person` 클래스는 이전과 똑같은 방식으로 정의합니다:
+`Person` 클래스는 이전과 똑같이 정의합니다:
 
 ```swift
 class Person {
@@ -102,7 +102,7 @@ class Person {
 }
 ```
 
-`Residence` 클래스는 이전보다 더 복잡합니다. 이번에는, `Residence` 클래스가, `[Room]` 타입의 빈 배열로 초기화하는, `rooms` 라는 변수 속성을 정의합니다:
+`Residence` 클래스는 이전보다 더 복잡합니다. 이번엔, `Residence` 클래스가 `rooms` 라는 변수 속성을 정의하고, 이를 `[Room]` 타입의 빈 배열로 초기화합니다:
 
 ```swift
 class Residence {
@@ -125,9 +125,9 @@ class Residence {
 }
 ```
 
-이 버전의 `Residence` 는 `Room` 인스턴스 배열을 저장하고 있기 때문에, `numberOfRooms` 속성을, 저장 속성이 아닌, 계산 속성으로 구현합니다. `numberOfRooms` 계산 속성은 단순히 `rooms` 배열에 있는 `count` 속성의 값을 반환합니다.
+이 버전의 `Residence` 는 `Room` 인스턴스 배열을 저장하기 때문에, 저장 속성이 아니라, 계산 속성으로 `numberOfRooms` 속성을 구현합니다. `numberOfRooms` 계산 속성은 단순히 `rooms` 배열의 `count` 속성 값을 반환합니다.
 
-`rooms` 배열에 접근하기 위한 '줄임말' 로써, 이 버전의 `Residence` 는 `rooms` 배열 중에서 요청한 색인의 '객실 (room)' 에 대한 접근을 제공하는 '읽고-쓰기 (read-write) 첨자 연산' 을 제공합니다.
+자신의 `rooms` 배열에 접근하는 줄임말로써, 이 버전의 `Residence` 는 `rooms` 배열에서 요청한 색인의 객실 (room) 에 대한 접근을 제공하는 '읽고-쓰기 (read-write) 첨자' 을 제공합니다.
 
 이 버전의 `Residence` 는, 단순히 '거주지 (residence)' 의 객실 수를 인쇄하는, `printNumberOfRooms` 라는 메소드도 제공합니다.
 
