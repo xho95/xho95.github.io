@@ -163,11 +163,11 @@ class Address {
 
 `Address` 클래스는 `buildingIdentifier()` 라는, `String?` 반환 타입을 가진, 메소드도 제공합니다. 이 메소드는 주소의 속성을 검사하여 `buildingName` 에 값이 있으면 이를, 또는 `buildingNumber` 와 `street` 둘 다에 값이 있으면 이들을 이어붙인 걸, 또는 그 외의 경우 `nil` 을 반환합니다.
 
-### Accessing Properties Through Optional Chaining (옵셔널 연쇄를 통해 속성에 접근하기)
+### Accessing Properties Through Optional Chaining (옵셔널 사슬을 통하여 속성에 접근하기)
 
-[Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안인 옵셔널 사슬)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-포장-풀기의-대안인-옵셔널-사슬) 에서 실증한 것처럼, 옵셔널 값에 대한 속성에 접근해서, 해당 속성 접근이 성공했는지 검사하기 위해 옵셔널 연쇄를 사용할 수 있습니다.
+[Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안인 옵셔널 사슬)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-포장-풀기의-대안인-옵셔널-사슬) 에서 실증한 것처럼, 옵셔널 사슬을 사용하면 옵셔널 값의 속성에 접근하는 것, 및 그 속성의 접근이 성공인 지 검사하는 것을 할 수 있습니다.
 
-위에서 정의한 클래스를 사용하여 새로운 `Person` 인스턴스를 생성하고, 이전 처럼 `numberOfRooms` 속성에 접근해 봅니다:
+위에서 정의한 클래스를 사용하여 새 `Person` 인스턴스를 생성하고, 이전 처럼 `numberOfRooms` 속성에 접근해 봅니다:
 
 ```swift
 let john = Person()
@@ -176,12 +176,12 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
   print("Unable to retrieve the number of rooms.")
 }
-// "Unable to retrieve the number of rooms." 를 인쇄합니다.
+// "Unable to retrieve the number of rooms." 를 인쇄함
 ```
 
-`john.residence` 가 `nil` 이기 때문에, 이 옵셔널 연쇄 호출은 이전과 똑같이 실패합니다.
+`john.residence` 가 `nil` 이기 때문에, 이 옵셔널 사슬 호출은 이전과 똑같이 실패합니다.
 
-옵셔널 연쇄를 통해 속성의 값을 설정하는 시도를 할 수도 있습니다:
+옵셔널 사슬을 통하여 속성 값을 설정하려고 시도할 수도 있습니다:
 
 ```swift
 let someAddress = Address()
@@ -234,7 +234,7 @@ if john.residence?.printNumberOfRooms() != nil {
 // "It was not possible to print the number of rooms." 를 인쇄합니다.
 ```
 
-옵셔널 연쇄를 통해 속성을 설정하려고 하는 경우도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 연쇄를 통해 속성에 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-연쇄를-통해-속성에-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 일지라도, `john.residence` 를 위한 `address` 값을 설정하려고 시도합니다. 옵셔널 연쇄를 통해 속성을 설정하려는 어떤 시도도 `Void?` 타입의 값을 반환하는데, 이는 속성이 성공적으로 설정됐는지 보기 위해 `nil` 과 비교할 수 있도록 해줍니다:
+옵셔널 연쇄를 통해 속성을 설정하려고 하는 경우도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통하여 속성에 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통하여-속성에-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 일지라도, `john.residence` 를 위한 `address` 값을 설정하려고 시도합니다. 옵셔널 연쇄를 통해 속성을 설정하려는 어떤 시도도 `Void?` 타입의 값을 반환하는데, 이는 속성이 성공적으로 설정됐는지 보기 위해 `nil` 과 비교할 수 있도록 해줍니다:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {
