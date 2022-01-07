@@ -245,7 +245,7 @@ if (john.residence?.address = someAddress) != nil {
 // "It was not possible to set the address." 를 인쇄함
 ```
 
-### Accessing Subscripts Through Optional Chaining (옵셔널 연쇄를 통해 첨자 연산에 접근하기)
+### Accessing Subscripts Through Optional Chaining (옵셔널 사슬을 통하여 첨자 접근하기)
 
 옵셔널 값에 대한 첨자 연산으로 값을 가져오려고 하거나 설정하려고 한 다음, 해당 첨자 연산의 호출이 성공했는지 검사하기 위해, 옵셔널 연쇄를 사용할 수 있습니다.
 
@@ -288,7 +288,7 @@ if let firstRoomName = john.residence?[0].name {
 // "The first room name is Living Room." 를 인쇄합니다.
 ```
 
-#### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자 연산에 접근하기)
+#### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자에 접근하기)
 
 만약 첨자 연산이-스위프트의 `Dictionary` 타입에 있는 '키 (key) 첨자 연산' 처럼-옵셔널 타입의 값을 반환한다면, 옵셔널 반환 값에 대한 연쇄를 하기 위해 첨자 연산의 닫는 대괄호 _뒤에 (after)_ 물음표를 붙입니다:
 
