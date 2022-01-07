@@ -223,7 +223,7 @@ func printNumberOfRooms() {
 
 이 메소드는 반환 타입을 지정하지 않습니다. 하지만, [Functions Without Return Values (반환 값이 없는 함수)]({% post_url 2020-06-02-Functions %}#functions-without-return-values-반환-값이-없는-함수) 에서 설명한 것처럼, 반환 타입이 없는 함수와 메소드는 `Void` 라는 암시적인 반환 타입을 가집니다. 이는 이들이 `()` 라는 반환 값, 또는 빈 튜플을 반환한다는 의미입니다.
 
-옵셔널 연쇄로 옵셔널 값에 대해서 이 메소드를 호출하면, 메소드의 반환 타입이, 옵셔널 연쇄를 통해 호출할 때는 항상 옴셔널 타입이기 때문에, `Void` 가 아닌, `Void?` 가 될 것입니다. 이는, 메소드가 자체가 반환 값을 정의하고 있지 않을지라도, `printNumberOfRooms()` 메소드 호출이 가능한지 `if` 문으로 검사할 수 있게 해줍니다. 메소드 호출이 성공인지 보려면 `printNumberOfRooms` 호출의 반환 값을 `nil` 과 비교합니다.
+옵셔널 값에서 옵셔널 사슬로 이 메소드를 호출하면, 메소드 반환 타입이, `Void` 가 아니라, `Void?` 일 건데, 옵셔널 사슬을 통하여 호출할 땐 반환 값이 항상 옵셔널 타입이기 때문입니다. 이는, 메소드가 그 자체론 반환 값을 정의하지 않을지라도, `if` 문을 사용하여 `printNumberOfRooms()` 메소드 호출이 가능한지 검사할 수 있게 합니다. 메소드 호출이 성공했는지 알아보려면 `printNumberOfRooms` 호출의 반환 값을 `nil` 과 비교하기 바랍니다.
 
 ```swift
 if john.residence?.printNumberOfRooms() != nil {
@@ -231,10 +231,10 @@ if john.residence?.printNumberOfRooms() != nil {
 } else {
   print("It was not possible to print the number of rooms.")
 }
-// "It was not possible to print the number of rooms." 를 인쇄합니다.
+// "It was not possible to print the number of rooms." 를 인쇄함
 ```
 
-옵셔널 연쇄를 통해 속성을 설정하려고 하는 경우도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통하여 속성 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통하여-속성-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 일지라도, `john.residence` 를 위한 `address` 값을 설정하려고 시도합니다. 옵셔널 연쇄를 통해 속성을 설정하려는 어떤 시도도 `Void?` 타입의 값을 반환하는데, 이는 속성이 성공적으로 설정됐는지 보기 위해 `nil` 과 비교할 수 있도록 해줍니다:
+옵셔널 사슬을 통하여 속성을 설정하려고 시도하는 경우도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통하여 속성 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통하여-속성-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 인데도, `john.residence` 의 `address` 값을 설정하려고 시도합니다. 옵셔널 사슬을 통하여 속성을 설정하려는 어떤 시도든 `Void?` 타입의 값을 반환하는데, 이는 `nil` 과 비교하여 속성 설정이 성공했는지 알아볼 수 있게 합니다:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {
@@ -242,7 +242,7 @@ if (john.residence?.address = someAddress) != nil {
 } else {
   print("It was not possible to set the address.")
 }
-// "It was not possible to set the address." 를 인쇄합니다.
+// "It was not possible to set the address." 를 인쇄함
 ```
 
 ### Accessing Subscripts Through Optional Chaining (옵셔널 연쇄를 통해 첨자 연산에 접근하기)
