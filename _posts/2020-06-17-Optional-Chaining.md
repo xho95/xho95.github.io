@@ -262,17 +262,17 @@ if let firstRoomName = john.residence?[0].name {
 // "Unable to retrieve the first room name." 를 인쇄함
 ```
 
-이 첨자 연산의 옵셔널 연쇄 물음표는, 옵셔널 연쇄를 시도하고 있는 옵셔널 값이 `john.residence` 이기 때문에, `john.residence` 바로 뒤인, 첨자 연산 대괄호 바로 앞에, 위치합니다.
+이 첨자 호출에선, `john.residence` 바로 뒤, 첨자 대괄호 앞에, 옵셔널 사슬 물음표를 두는데, 이는 옵셔널 사슬이 시도하고 있는 옵셔널 값이 `john.residence` 이기 때문입니다.
 
-이와 비슷하게, 옵셔널 연쇄로 첨자 연산을 통해 새로운 값을 설정하려고 할 수 있습니다:
+이와 비슷하게, 옵셔널 사슬을 가진 첨자를 통하여 새 값을 설정해 볼 수 있습니다:
 
 ```swift
 john.residence?[0] = Room(name: "Bathroom")
 ```
 
-이 첨자 연산의 설정 시도도, `residence` 가 현재 `nil` 이기 때문에, 실패합니다.
+현재는 `residence` 가 `nil` 이기 때문에, 이 첨자 설정 시도도 실패합니다.
 
-실제 `Residence` 인스턴스를 생성하고 `john.residence` 에 할당하여, `rooms` 배열이 하나 이상의 `Room` 인스턴스를 가진 경우, 옵셔널 연쇄를 통해 `rooms` 배열의 실제 항목에 접근하기 위해 `Residence` 의 첨자 연산을 사용할 수 있습니다:
+자신의 `rooms` 배열에 하나 이상의 `Room` 인스턴스가 있는, 실제 `Residence` 인스턴스를 생성하여 `john.residence` 에 할당하면, `Residence` 첨자를 써서 옵셔널 사슬을 통하여 `rooms` 배열의 실제 항목에 접근할 수 있습니다:
 
 ```swift
 let johnsHouse = Residence()
@@ -285,7 +285,7 @@ if let firstRoomName = john.residence?[0].name {
 } else {
   print("Unable to retrieve the first room name.")
 }
-// "The first room name is Living Room." 를 인쇄합니다.
+// "The first room name is Living Room." 를 인쇄함
 ```
 
 #### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자에 접근하기)
