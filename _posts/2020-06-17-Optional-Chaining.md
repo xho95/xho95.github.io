@@ -127,13 +127,13 @@ class Residence {
 
 이 버전의 `Residence` 는 `Room` 인스턴스 배열을 저장하기 때문에, 저장 속성이 아니라, 계산 속성으로 `numberOfRooms` 속성을 구현합니다. `numberOfRooms` 계산 속성은 단순히 `rooms` 배열의 `count` 속성 값을 반환합니다.
 
-자신의 `rooms` 배열 접근의 줄임말로, 이 버전의 `Residence` 는 요청한 `rooms` 배열 색인의 객실에 접근하는 읽고-쓰기 (read-write) 첨자를 제공합니다.
+자신의 `rooms` 배열 접근의 줄임말로, 이 버전의 `Residence` 는 요청한 `rooms` 배열 색인의 방에 접근하는 읽고-쓰기 (read-write) 첨자를 제공합니다.
 
-이 버전의 `Residence` 는 `printNumberOfRooms` 라는 메소드도 제공하며, 이는 단순히 거주 공간의 객실 수를 인쇄합니다.
+이 버전의 `Residence` 는 `printNumberOfRooms` 라는 메소드도 제공하며, 이는 단순히 거주 공간의 방 개수를 인쇄합니다.
 
 최종적으로, `Residence` 는 `address` 라는, `Address?` 타입의, 옵셔널 속성을 정의합니다. 이 속성의 `Address` 클래스 타입은 아래에 정의합니다.
 
-`rooms` 배열에 사용된 `Room` 클래스는 `name` 이라는 하나의 속성 및, 그 속성에 적합한 객실 이름을 설정하는 초기자를 가진, 단순한 클래스입니다:
+`rooms` 배열에 사용된 `Room` 클래스는 `name` 이라는 하나의 속성 및, 그 속성에 적합한 방 이름을 설정하는 초기자를 가진, 단순한 클래스입니다:
 
 ```swift
 class Room {
@@ -247,11 +247,11 @@ if (john.residence?.address = someAddress) != nil {
 
 ### Accessing Subscripts Through Optional Chaining (옵셔널 사슬을 통하여 첨자 접근하기)
 
-옵셔널 값에 대한 첨자 연산으로 값을 가져오려고 하거나 설정하려고 한 다음, 해당 첨자 연산의 호출이 성공했는지 검사하기 위해, 옵셔널 연쇄를 사용할 수 있습니다.
+옵셔널 사슬을 사용하여 옵셔널 값의 첨자로 값을 가져오고 설정하며, 그 첨자 호출이 성공인지 검사할 수 있습니다.
 
-> 옵셔널 값에 대한 첨자 연산을 옵셔널 연쇄로 접근할 때는, 물음표를 첨자 연산의 대괄호, 뒤가 아니라, _앞에 (before)_ 붙입니다. 옵셔널 연쇄의 물음표는 항상 옵셔널인 표현식의 바로 뒤에 따라옵니다.
+> 옵셔널 사슬을 통하여 옵셔널 값의 첨자에 접근할 땐, 첨자 대괄호, 뒤가 아닌, _앞에 (before)_ 물음표를 둡니다. 옵셔널 사슬의 물음표는 항상 표현식의 옵셔널 부분 바로 뒤에 붙습니다.
 
-아래 예제는 `Residence` 클래스에서 정의한 첨자 연산을 사용하여 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방 이름을 가져오려고 시도합니다. `john.residence` 는 현재 `nil` 이기 때문에, 첨자 연산 호출이 실패합니다:
+아래 예제는 `Residence` 클래스에서 정의한 첨자를 써서 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방 이름을 가져오려고 합니다. 현재는 `john.residence` 가 `nil` 이기 때문에, 첨자 호출이 실패합니다:
 
 ```swift
 if let firstRoomName = john.residence?[0].name {
@@ -259,7 +259,7 @@ if let firstRoomName = john.residence?[0].name {
 } else {
   print("Unable to retrieve the first room name.")
 }
-// "Unable to retrieve the first room name." 를 인쇄합니다.
+// "Unable to retrieve the first room name." 를 인쇄함
 ```
 
 이 첨자 연산의 옵셔널 연쇄 물음표는, 옵셔널 연쇄를 시도하고 있는 옵셔널 값이 `john.residence` 이기 때문에, `john.residence` 바로 뒤인, 첨자 연산 대괄호 바로 앞에, 위치합니다.
