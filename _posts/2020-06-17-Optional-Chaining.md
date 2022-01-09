@@ -302,9 +302,9 @@ testScores["Brian"]?[0] = 72
 
 위 예제는 `testScores` 라는 딕셔너리를 정의하는데, 이는 `String` 키를 `Int` 값 배열로 대응시키는 두 개의 키-값 쌍을 담고 있습니다. 예제는 옵셔널 사슬로 `"Dave"` 배열의 첫 번째 항목을 `91` 로 설정하고; `"Bev"` 배열의 첫 번째 항목은 `1` 만큼 증가시키며; 키가 `"Brian"` 인 배열의 첫 번째 항목을 설정합니다. 첫 두 호출은 성공인데, 이는 `testScores` 딕셔너리가 `"Dave"` 와 `"Bev"` 라는 키를 담고 있기 때문입니다. 세 번째 호출은 실패하며, 이는 `testScores` 딕셔너리가 `"Brian"` 이라는 키를 담고 있지 않기 때문입니다.
 
-### Linking Multiple Levels of Chaining (여러 단의 사슬 연결하기)
+### Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)
 
-여러 단의 옵셔널 사슬을 서로 연결하면 모델 더 깊은 곳의 속성, 메소드, 및 첨자로 파고 들 수 있습니다. 하지만, 여러 단의 옵셔널 사슬이 반환 값에 옵셔널 수준을 더 추가하는 건 아닙니다.
+여러 수준의 옵셔널 사슬을 서로 연결하면 모델 더 깊은 곳의 속성, 메소드, 및 첨자로 파고 들 수 있습니다. 하지만, 여러 수준의 옵셔널 사슬이 반환 값에 옵셔널 수준을 더 추가하진 않습니다.
 
 다른 식으로 말해:
 
@@ -316,7 +316,7 @@ testScores["Brian"]?[0] = 72
 * 옵셔널 사슬을 통하여 `Int` 값을 가져오려 하면, 얼마나 많은 수준의 사슬을 사용하든, 항상 `Int?` 를 반환합니다.
 * 이와 비슷하게, 옵셔널 사슬을 통하여 `Int?` 값을 가져오려 하면, 얼마나 많은 수준의 사슬을 사용하든, 항상 `Int?` 를 반환합니다.
 
-아래 예제는 `john` 의 `residence` 속성에 있는 `address` 속성의 `street` 속성에 접근하려 합니다. 여기선 _이 (two)_ 단 수준의 옵셔널 사슬로, 둘 다 옵셔널 타입인, `residence` 와 `address` 속성을 사슬로 잇습니다:
+아래 예제는 `john` 의 `residence` 속성에 있는 `address` 속성의 `street` 속성에 접근하려 합니다. 여기선 _2 (two)_ 단 수준의 옵셔널 사슬로, 둘 다 옵셔널 타입인, `residence` 와 `address` 속성을 사슬로 잇습니다:
 
 ```swift
 if let johnsStreet = john.residence?.address?.street {
@@ -329,9 +329,9 @@ if let johnsStreet = john.residence?.address?.street {
 
 `john.residence` 값은 현재 유효한 `Residence` 인스턴스를 담고 있습니다. 하지만, `john.residence.address` 의 값은 현재 `nil` 입니다. 이 때문에, `john.residence?.address?.street` 호출이 실패합니다.
 
-위 예제에서, `street` 속성의 값을 가져오려고 하는 중임을 기억하기 바랍니다. 이 속성의 타입은 `String?` 입니다. 그러므로 `john.residence?.address?.street` 의 반환 값은, 속성의 실제 옵셔널 타입에 더하여 두 단계 수준의 옵셔널 연쇄를 적용할지라도, 역시 `String?` 입니다.
+위 예제에선, `street` 속성의 값을 가져오려는 중임을 기억하기 바랍니다. 이 속성의 타입은 `String?` 입니다. 그러므로, 실제 옵셔널 타입인 속성에다 2 단 수준의 옵셔널 사슬을 더할지라도, `john.residence?.address?.street` 의 반환 값 역시 `String?` 입니다.
 
-`john.residence.address` 의 값에 실제 `Address` 인스턴스를 설정하고, '주소 (address)' 의 `street` 속성에 실제 값을 설정한 경우, '다중 수준 (multilevel) 옵셔널 연쇄' 를 통해 `street` 속성의 값에 접근할 수 있습니다:
+`john.residence.address` 의 값에 실제 `Address` 인스턴스를 설정하고, 주소 (address) 의 `street` 속성에 실제 값을 설정하면, 여러 수준 (multilevel) 옵셔널 사슬을 통하여 `street` 속성의 값에 접근할 수 있습니다:
 
 ```swift
 let johnsAddress = Address()
@@ -344,10 +344,10 @@ if let johnsStreet = john.residence?.address?.street {
 } else {
   print("Unable to retrieve the address.")
 }
-// "John's street name is Laurel Street." 를 인쇄합니다.
+// "John's street name is Laurel Street." 를 인쇄함
 ```
 
-이 예제에서, `john.residence` 의 `address` 속성을 설정하려는 시도는 성공하는데, 이는 `john.residence` 가 현재 유효한 `Residence` 인스턴스 값을 담고 있기 때문입니다.
+이 예제선, `john.residence` 값이 현재 유효한 `Residence` 인스턴스를 담고 있기 때문에, `john.residence` 의 `address` 속성 설정 시도가 성공합니다.
 
 ### Chaining on Methods with Optional Return Values (옵셔널 반환 값을 가진 메소드 연쇄하기)
 
