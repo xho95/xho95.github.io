@@ -264,7 +264,7 @@ if let firstRoomName = john.residence?[0].name {
 
 이 첨자 호출에선, `john.residence` 바로 뒤, 첨자 대괄호 앞에, 옵셔널 사슬 물음표를 두는데, 이는 옵셔널 사슬이 시도하고 있는 옵셔널 값이 `john.residence` 이기 때문입니다.
 
-이와 비슷하게, 옵셔널 사슬을 가진 첨자를 통하여 새 값을 설정해 볼 수 있습니다:
+이와 비슷하게, 옵셔널 사슬로 첨자를 통하여 새 값을 설정해 볼 수 있습니다:
 
 ```swift
 john.residence?[0] = Room(name: "Bathroom")
@@ -272,7 +272,7 @@ john.residence?[0] = Room(name: "Bathroom")
 
 현재는 `residence` 가 `nil` 이기 때문에, 이 첨자 설정 시도도 실패합니다.
 
-자신의 `rooms` 배열에 하나 이상의 `Room` 인스턴스가 있는, 실제 `Residence` 인스턴스를 생성하여 `john.residence` 에 할당하면, `Residence` 첨자를 써서 옵셔널 사슬을 통하여 `rooms` 배열의 실제 항목에 접근할 수 있습니다:
+`Residence` 의 `rooms` 배열에 `Room` 인스턴스가 있는, 실제 인스턴스를 생성하여 `john.residence` 에 할당하면, `Residence` 첨자로 옵셔널 사슬을 통하여 `rooms` 배열의 실제 항목에 접근할 수 있습니다:
 
 ```swift
 let johnsHouse = Residence()
@@ -290,17 +290,17 @@ if let firstRoomName = john.residence?[0].name {
 
 #### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자에 접근하기)
 
-만약 첨자 연산이-스위프트의 `Dictionary` 타입에 있는 '키 (key) 첨자 연산' 처럼-옵셔널 타입의 값을 반환한다면, 옵셔널 반환 값에 대한 연쇄를 하기 위해 첨자 연산의 닫는 대괄호 _뒤에 (after)_ 물음표를 붙입니다:
+스위프트 `Dictionary` 타입의 키 (key) 첨자 같이-첨자가 옵셔널 타입의 값을 반환하면, 첨자의 닫는 대괄호 _뒤에 (after)_ 물음표를 둬서 자신의 옵셔널 반환 값을 사슬처럼 잇습니다:
 
 ```swift
 var testScores = ["Dave": [86, 82, 84], "Bev": [79, 94, 81]]
 testScores["Dave"]?[0] = 91
 testScores["Bev"]?[0] += 1
 testScores["Brian"]?[0] = 72
-// "Dave" 배열은 이제 [91, 82, 84] 이고 "Bev" 배열은 이제 [80, 94, 81] 입니다.
+// 이제 "Dave" 배열은 [91, 82, 84] 이고 "Bev" 배열은 [80, 94, 81] 임
 ```
 
-위 예제는, `String` 키를 `Int` 값 배열에 '대응 (map)' 시키는 '키-값 쌍' 두 개를 담은, `testScores` 라는 딕셔너리를 정의합니다. 예제는 `"Dave"` 배열의 첫 번째 항목을 `91` 로 설정하기 위해; `"Bev"` 배열의 첫 번째 항목을 `1` 만큼 증가시키기 위해; 그리고 '키 (key)' 가 `"Brian"` 인 배열의 첫 번째 항목을 설정하기 위해 옵셔널 연쇄를 사용합니다. 처음 두 호출은 성공하는데, `testScores` 딕셔너리가 `"Dave"` 와 `"Bev"` 라는 키를 담고 있기 때문입니다. 세 번째 호출은 실패하는데, `testScores` 딕셔너리가 `"Brian"` 이라는 키를 담고 있지 않기 때문입니다.
+위 예제는 `testScores` 라는 딕셔너리를 정의하는데, 이는 `String` 키를 `Int` 값 배열로 대응시키는 두 개의 키-값 쌍을 담고 있습니다. 예제는 옵셔널 사슬로 `"Dave"` 배열의 첫 번째 항목을 `91` 로 설정하고; `"Bev"` 배열의 첫 번째 항목은 `1` 만큼 증가시키며; 키가 `"Brian"` 인 배열의 첫 번째 항목을 설정합니다. 첫 두 호출은 성공인데, 이는 `testScores` 딕셔너리가 `"Dave"` 와 `"Bev"` 라는 키를 담고 있기 때문입니다. 세 번째 호출은 실패하며, 이는 `testScores` 딕셔너리가 `"Brian"` 이라는 키를 담고 있지 않기 때문입니다.
 
 ### Linking Multiple Levels of Chaining (다중 수준의 연쇄 연결하기)
 
