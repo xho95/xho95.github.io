@@ -351,9 +351,9 @@ if let johnsStreet = john.residence?.address?.street {
 
 ### Chaining on Methods with Optional Return Values (옵셔널 반환 값을 가진 메소드 연쇄하기)
 
-이전 예제는 옵셔널 연쇄를 통해서 옵셔널 타입의 속성 값을 가져오는 방법을 보여줍니다. 옵셔널 연쇄는, 옵셔널 타입인 값을 반환하는 메소드를 호출하기 위해서도, 그리고 필요하다면 해당 메소드의 반환 값에 대해서 연쇄하기 위해서도, 사용할 수 있습니다.
+이전 예제는 옵셔널 사슬로 옵셔널 타입의 속성 값을 가져오는 방법을 보여줍니다. 옵셔널 사슬을 사용하면 옵셔널 타입의 값을 반환하는 메소드도 호출하고, 필요하다면 그 메소드의 반환 값을 사슬로 이을 수도 있습니다.
 
-아래 예제는 옵셔널 연쇄를 통하여 `Address` 클래스의 `buildingIdentifier()` 메소드를 호출합니다. 이 메소드는 `String?` 타입의 값을 반환합니다. 위에서 설명한 것처럼, 옵셔널 연쇄 다음에 하는 이 메소드 호출 역시 궁극적인 반환 타입은 `String?` 입니다:
+아래 예제는 옵셔널 사슬을 통하여 `Address` 클래스의 `buildingIdentifier()` 메소드를 호출합니다. 이 메소드는 `String?` 타입의 값을 반환합니다. 위에 설명한 것처럼, 옵셔널 사슬 후에 호출한 이 메소드의 궁극적인 반환 타입은 `String?` 입니다:
 
 ```swift
 if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
