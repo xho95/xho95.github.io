@@ -10,11 +10,11 @@ categories: Swift Language Grammar Error Handling
 
 ## Error Handling (에러 처리)
 
-_에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하고 이로부터 복구하는 과정입니다. 스위프트는 실행 시간에 '복구 가능한 에러' 를 던지고, 잡아내며, 전파하고, 조작하기 위한 '일급 지원'[^first-class-support] 을 제공합니다.
+_에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하고 이로부터 복구하는 과정입니다. 스위프트는 실행 시간에 복구 가능한 에러를 던지고, 잡아내며, 전파하고, 조작하는 일-급 지원[^first-class-support] 을 제공합니다.
 
-연산들이 실행을 완료하거나 유용한 결과를 만드는 것을 항상 보장하는 것은 아닙니다. '옵셔널' 을 사용하여 '값의 없음' 을 표현하긴 하지만, 작업이 실패했을 때, 무엇이 실패를 유발한 것인지를 이해해서, 코드가 적당하게 응답할 수 있도록 하는게, 유용할 때가 있습니다.
+일부 연산은 실행을 완료한다는 또는 유용한 출력을 만든다는 보장을 항상 하진 않습니다. 옵셔널을 사용하여 값 없음을 나타내긴 하지만, 연산이 실패할 때, 실패를 유발한 걸 이해해서, 그에 따라 코드가 응답할 수 있는게, 유용할 때가 있습니다.
 
-예를 들어, '디스크 (disk)' 의 파일에서 자료를 읽고 처리하는 작업을 고려해 봅시다. 이 작업은, 지정한 경로에 파일이 존재하지 않거나, 파일에 대한 읽기 권한이 없는 것, 또는 파일이 호환 가능한 양식으로 인코딩되지 않은 것을 포함한, 여러 가지 이유로 실패할 수 있습니다. 이런 서로 다른 상황들 사이를 구별하는 것은 프로그램이 일부 에러를 해결하도록 그리고 해결할 수 없는 에러는 어떤 것이라도 사용자와 소통하도록 허용합니다.
+예를 들어, 디스크 (disk) 에 있는 파일에서 자료를 읽고 가공하는 임무를 고려합니다. 이 작업은, 지정한 경로에 파일이 존재하지 않거나, 파일에 대한 읽기 권한이 없는 것, 또는 파일이 호환 가능한 양식으로 인코딩되지 않은 것을 포함한, 다수의 이유로 실패할 수 있습니다. 이런 서로 다른 상황들 사이를 구별하는 것은 프로그램이 일부 에러를 해결하도록 그리고 해결할 수 없는 에러는 어떤 것이라도 사용자와 소통하도록 허용합니다.
 
 > 스위프트의 에러 처리는 'Cocoa' 와 오브젝티브-C 에서 `NSError` 클래스를 사용한 '에러 처리 패턴' 과 상호 호환됩니다. 이 클래스에 대한 더 많은 정보는, [Handling Cocoa Errors in Swift (스위프트에서 Cocoa 에러 처리하기)](https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift) 를 참고하기 바랍니다.
 
@@ -287,9 +287,7 @@ func processFile(filename: String) throws {
 
 [^Error-Handling]: 이 글에 대한 원문은 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^first-class-support]: 여기서 말하는 '일급 지원 (first-class support)' 이란, '복구 가능한 에러 (recoverable errors)' 를 하나의 객체로써 취급할 수 있다는 의미로 추측됩니다.
+[^first-class-support]: 스위프트가 에러 처리를 일-급 지원 (first-class support) 한다는 건 언어 수준에서 에러 처리를 지원한다는 의미입니다. 이에 대한 더 자세한 정보는 [Error Handling with Try and Catch in Swift](https://www.appypie.com/error-handling-swift-do-try-catch) 항목을 참고하기 바랍니다. 
 
 [^empty-protocol]: 실제로 스위프트에서 `Error` 프로토콜은 아무 내용이 없는 '빈 (empty) 프로토콜' 입니다. 즉, `Error` 라는 타입만을 정의하고 있습니다.
 
