@@ -134,26 +134,26 @@ struct PurchasedSnack {
 
 #### Handling Errors Using Do-Catch ('Do-Catch' 문으로 에러 처리하기)
 
-`do`-`catch` 문은 코드 블럭을 실행하는 것으로 에러를 처리하고자 사용합니다. `do` 절의 코드가 에러를 던지면, 에러를 처리할 수 있는 것을 결정하기 위해 `catch` 절과 맞춰봅니다.
+`do`-`catch` 문을 사용하면 코드 블럭을 실행함으로써 에러를 처리합니다. `do` 절 코드에서 에러를 던지면, `catch` 절과 맞춰봐서 에러를 처리할 수 있는 걸 하나 결정합니다.
 
-다음은 `do`-`catch` 문의 일반적인 형식입니다:
+다음은 `do`-`catch` 문의 일반 형식입니다:
 
-do {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 1-패턴 1` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 2-패턴 2` where `condition-조건` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch `pattern 3-패턴 3`, `pattern 4-패턴 4` where `condition-조건` {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-} catch {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
-}
+&nbsp;&nbsp;&nbsp;&nbsp;do {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 1-패턴 1` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 2-패턴 2` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch `pattern 3-패턴 3`, `pattern 4-패턴 4` where `condition-조건` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} catch {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-해당 '절 (clause)' 이 처리할 수 있는 에러가 무엇인지 표시하려면 `catch` 뒤에 '패턴 (pattern)' 을 작성합니다. `catch` 절에 '패턴' 이 없으면, 이 절은 어떤 에러와도 일치하며 에러를 `error` 라는 이름의 '지역 상수' 로 '연결 (bind)' 합니다. '패턴 맞춤 (pattern matching)' 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
+`catch` 뒤에 패턴 (pattern) 을 작성하여 그 절이 처리할 수 있는 에러를 지시합니다. `catch` 절에 패턴이 없으면, 그 절은 어떤 에러와도 일치하며 `error` 라는 이름의 지역 상수와 에러를 연결 (bind) 합니다. 패턴 맞춤 (pattern matching) 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 모든 세 'case 값' 들과 맞춰봅니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 모든 case 들과 맞춰봅니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -171,10 +171,10 @@ do {
 } catch {
   print("Unexpected error: \(error).")
 }
-// "Insufficient funds. Please insert an additional 2 coins." 를 인쇄합니다.
+// "Insufficient funds. Please insert an additional 2 coins." 를 인쇄함
 ```
 
-위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는, 에러를 던질 수 있기 때문에, '`try` 표현식'[^try-expression] 안에서 호출합니다. 에러를 던지면, 실행은 곧바로, 전파를 계속 허용할 지를 결정하는, `catch` 절로 옮깁니다. 아무 '패턴' 과도 일치하지 않으면, 에러는 '최종 `catch` 절' 이 잡아내며 `error` 라는 지역 상수와 연결됩니다. 아무 에러도 던지지 않으면, `do` 문에 있는 나머지 구문들을 실행합니다.
+위 예제에선, `buyFavoriteSnack(person:vendingMachine:)` 함수가 에러를 던질 수 있기 때문에, `try` 표현식[^try-expression] 안에서 호출합니다. 에러를 던지면, `catch` 절로 실행을 곧바로 옮기며, 여기서 전파를 계속 허용할 지를 결정합니다. 일치하는 패턴이 없으면, 최종 `catch` 절이 에러를 잡아내며 `error` 라는 지역 상수와 연결합니다. 던진 에러가 없으면, 나머지 `do` 문 나머지 구문을 실행합니다.
 
 `catch` 절은 `do` 절의 코드가 던질 가능성이 있는 모든 에러를 처리하지 않아도 됩니다. 아무런 `catch` 절도 에러를 처리하지 않으면, 에러를 주위 영역으로 전파합니다. 하지만, _어떤 (some)_ 주위 영역에서 반드시 이 전파한 에러를 처리해야 합니다. '던지지 않는 (nonthrowing) 함수' 는, '테두리를 친 `do`-`catch` 문' 이 에러를 반드시 처리해야 합니다. '던지는 함수' 는, '테두리를 친 `do-catch` 문' 이든 '호출한 쪽 (caller)' 이든 어느 한 곳에서 에러를 반드시 처리해야 합니다. 에러가 처리되지 않은 채로 '최상단 (top-level) 영역' 으로 전파되면, 실행시간 에러를 가질 것입니다.
 
