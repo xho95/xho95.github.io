@@ -118,9 +118,9 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
 }
 ```
 
-이 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 간식거리를 찾아 보고 `vend(itemNamed:)` 메소드를 호출하여 이를 사려고 합니다. `vend(itemNamed:)` 메소드는 에러를 던질 수 있기 때문에, 앞에다 `try` 키워드 붙여서 호출합니다.
+이 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 간식을 찾아 보고 `vend(itemNamed:)` 메소드 호출로 이를 사려고 합니다. `vend(itemNamed:)` 메소드가 에러를 던질 수 있기 때문에, `try` 키워드를 앞에 붙여서 호출합니다.
 
-'던지는 초기자 (throwing initializers)' 는 '던지는 함수' 와 같은 방식으로 에러를 전파할 수 있습니다. 예를 들어, 아래에 나열한 `PurchasedSnack` 구조체의 초기자는 초기화 과정에서 '던지는 함수' 를 호출하며, 마주치는 어떤 에러든 호출하는 쪽으로 전파하는 것으로써 이를 처리합니다.
+던지는 초기자 (throwing initializers) 는 던지는 함수와 똑같은 식으로 에러를 전파할 수 있습니다. 예를 들어, 아래 나열한 `PurchasedSnack` 구조체의 초기자는 초기화 과정에서 던지는 함수를 호출하며, 마주친 어떤 에러든 자신을 호출한 쪽으로 전파함으로써 이를 처리합니다.
 
 ```swift
 struct PurchasedSnack {
