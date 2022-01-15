@@ -50,7 +50,7 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 #### Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)
 
-함수, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, 함수 선언의 매개 변수 뒤에 `throws` 키워드를 작성합니다. `throws` 로 표시한 함수를 _던지는 함수 (throwing function)_ 라고 합니다. 반환 타입을 지정한 함수면, 반환 화살표 (`->`) 앞에 `throws` 키워드를 작성합니다.
+함수, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, 함수 선언의 매개 변수 뒤에 `throws` 키워드를 작성합니다. `throws` 로 표시한 함수를 _던지는 함수 (throwing function)_ 라고 합니다. 반환 타입을 지정한 함수면, 반환 화살표 (`->`) 앞에 `throws` 키워드를 씁니다.
 
 ```swift
 func canThrowErrors() throws -> String
@@ -62,7 +62,7 @@ func cannotThrowErrors() -> String
 
 > 던지는 함수만 에러를 전파할 수 있습니다. 던지지 않는 (nonthrowing) 함수 안에서 던진 어떤 에러든 함수 안에서 반드시 처리해야 합니다.
 
-아래 예제에서, `VendingMachine` 클래스는, 요청한 항목이 사용 가능하지 않거나, 재고가 없거나, 아니면 비용이 현재 보관중인 양을 초과할 경우, 적절한 `VendingMachineError` 를 던지는 `vend(itemNamed:)` 메소드를 가집니다:
+아래 예제의, `VendingMachine` 클래스에는 `vend(itemNamed:)` 메소드가 있는데, 요청 항목이 가능하지 않거나, 재고가 없거나, 또는 현재 보관량보다 비용이 초과할 경우, 적절한 `VendingMachineError` 를 던집니다:
 
 ```swift
 struct Item {
