@@ -62,7 +62,7 @@ func cannotThrowErrors() -> String
 
 > 던지는 함수만 에러를 전파할 수 있습니다. 던지지 않는 (nonthrowing) 함수 안에서 던진 어떤 에러든 함수 안에서 반드시 처리해야 합니다.
 
-아래 예제의, `VendingMachine` 클래스에는 `vend(itemNamed:)` 메소드가 있는데, 요청 항목이 가능하지 않거나, 재고가 없거나, 또는 현재 보관량보다 비용이 초과할 경우, 적절한 `VendingMachineError` 를 던집니다:
+아래 예제의, `VendingMachine` 클래스엔 `vend(itemNamed:)` 메소드가 있는데, 요청 불가능한 항목이거나, 재고가 없거나, 또는 비용이 현재 보관량을 초과할 경우, 적절한 `VendingMachineError` 를 던집니다:
 
 ```swift
 struct Item {
@@ -102,9 +102,9 @@ class VendingMachine {
 }
 ```
 
-`vend(itemNamed:)` 메소드의 구현은 간식 구매를 위한 어떤 '필수 조건' 도 만족하지 않을 경우 메소드를 조기에 종료하고 적절한 에러를 던지기 위해 `guard` 문을 사용합니다. `throw` 문은 프로그램 제어를 곧바로 전달하기 때문에, 모든 '필수 조건' 을 만족할 경우에만 항목을 판매할 것입니다.
+`vend(itemNamed:)` 메소드 구현은 `guard` 문을 사용하여 간식 구매를 위한 어떤 필수 조건이든 만족하지 않으면 메소드를 때 이르게 빠져나와서 적절한 에러를 던집니다. `throw` 문이 곧바로 프로그램 제어를 옮기기 때문에, 이 모든 필수 조건에 부합할 경우에만 항목을 팔 것입니다.
 
-`vend(itemNamed:)` 메소드는 어떤 에러를 던져도 다 전파하기 때문에, 이 메소드를 호출하는 코드는 어떤 것이든 반드시-`do-catch` 문, `try?`, 또는 `try!` 을 사용하여-에러를 처리하던가, 아니면 전파를 계속하던가 해야 합니다. 예를 들어, 아래 예제에 있는 `buyFavoriteSnack(person:vendingMachine:)` 도 '던지는 함수' 이며, `vend(itemNamed:)` 메소드가 던지는 어떤 에러든 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출하는 곳으로 '위로 전파 (propagate up)' 할 것입니다.
+`vend(itemNamed:)` 메소드는 자신이 던진 어떤 에러든 전파하기 때문에, 이 메소드를 호출하는 어떤 코드든 반드시-`do-catch` 문이나, `try?`, 또는 `try!` 를 써서-에러를 처리하든지, 아니면 이를 계속 전파해야 합니다. 예를 들어, 아래 예제의 `buyFavoriteSnack(person:vendingMachine:)` 도 던지는 함수이며, `vend(itemNamed:)` 메소드가 던진 어떤 에러든 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출한 곳으로 위로 전파 (propagate up) 할 것입니다.
 
 ```swift
 let favoriteSnaks = [
