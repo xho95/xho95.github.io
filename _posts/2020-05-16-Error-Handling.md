@@ -215,7 +215,7 @@ func eat(item: String) throws {
 
 #### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
 
-`try?` 는 옵셔널 값으로 변환함으로써 에러를 처리하기 위해 사용합니다. `try?` 표현식을 평가하는 동안 에러를 던지면, 표현식의 값이 `nil` 입니다. 예를 들어, 다음의 `x` 와 `y` 코드는 똑같은 값과 작동 방식을 가집니다:
+`try?` 를 사용하면 옵셔널 값으로 변환하는 것으로 에러를 처리합니다. `try?` 표현식을 평가하는 동안 에러를 던지면, 표현식 값은 `nil` 입니다. 예를 들어, 다음 코드의 `x` 와 `y` 는 값과 동작이 똑같습니다:
 
 ```swift
 func someThrowingFunction() throws -> Int {
