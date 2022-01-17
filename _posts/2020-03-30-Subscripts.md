@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Subscripts (첨자 연산)"
+title:  "Swift 5.5: Subscripts (첨자)"
 date:   2020-03-30 10:00:00 +0900
 categories: Swift Language Grammar Subscripts
 redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
@@ -9,38 +9,38 @@ redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 부분[^Subscripts]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Subscripts (첨자 연산)
+## Subscripts (첨자)
 
-클래스, 구조체, 그리고 열거체는, '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)'[^sequences] 의 멤버 원소에 접근하는 '줄임말 (shorcuts)' 인, _첨자 연산 (subscripts)_ 을 정의할 수 있습니다. '첨자 연산' 은 별도의 메소드가 필요없이 '색인 (index)' 으로 값을 설정하고 가져오기 위해 사용합니다. 예를 들어, `Array` 인스턴스에 있는 원소는 `someArray[index]` 로 `Dictionary` 인스턴스에 있는 원소는 `someDictionary[key]` 로 접근합니다.
+클래스, 구조체, 및 열거체는, 집합체 (collection), 리스트 (list), 또는 시퀀스 (sequence)[^sequences] 멤버 원소에 접근하는 줄임말인, _첨자 (subscripts)_ 을 정의할 수 있습니다. 설정하고 가져오는데 별도의 메소드 없이 색인 (index) 으로 값을 설정하고 가져오기 위해 첨자를 사용합니다. 예를 들어, `Array` 인스턴스 원소는 `someArray[index]` 로 `Dictionary` 인스턴스 원소는 `someDictionary[key]` 로 접근합니다.
 
-단일 타입에 대해 여러 개의 '첨자 연산' 을 정의할 수 있으며, 사용하기에 적절한 첨자 연산은 첨자 연산에 전달한 색인 값의 타입에 기초하여 선택됩니다. 첨자 연산은 단일 차원으로만 제한되어 있지 않으며, 사용자 정의 타입의 필요에 적합하도록 '다중 입력 매개 변수' 를 가진 첨자 연산을 정의할 수도 있습니다.
+단일한 타입에 여러 개의 첨자를 정의할 수 있으며, 첨자에 전달한 색인 값 타입을 기초로 중복 정의한 첨자 중 사용하기 적절한 걸 선택합니다. 첨자는 일-차원민으로 제한하지 않으며,자신이 정의한 타입에 적합하도록 여러 개의 입력 매개 변수를 가진 첨자를 정의할 수도 있습니다.
 
-### Subscript Syntax (첨자 연산 구문 표현)
+### Subscript Syntax (첨자 구문)
 
-첨자 연산은 인스턴스 이름 뒤의 대괄호에 하나 이상의 값을 작성함으로써 타입의 인스턴스를 조회하도록 해줍니다. 이러한 구문 표현은 '인스턴스 메소드 구문' 및 '계산 속성 (computed properties) 구문' 과 비슷합니다. 첨자 연산 정의는 `subscript` 키워드로 작성하며, 인스턴스 메소드와 똑같은 방식으로, 하나 이상의 매개 변수와 반환 타입을 지정합니다. 인스턴스 메소드와는 달리, 첨자 연산은 '읽기-쓰기 (read-write)' 일 수도 '읽기-전용 (read-only)' 일 수도 있습니다.[^read-only] 이 작동 방식은 '계산 속성' 과 똑같은 방식인 '획득자 (getter)' 와 '설정자 (setter)' 로 '소통 (communicated)' 합니다.
+첨자는 인스턴스 이름 뒤 대괄호 안에 하나 이상의 값을 작성함으로써 타입의 인스턴스를 조회할 수 있게 합니다. 이러한 구문은 인스턴스 메소드 구문 및 계산 속성 구문 둘 다와 비슷합니다. 첨자 정의는 `subscript` 키워드로 작성하며, 인스턴스 메소드와 똑같이, 하나 이상의 입력 매개 변수와 반환 타입을 지정합니다. 인스턴스 메소드와 달리, 첨자는 읽기-쓰기 (read-write) 나 읽기-전용 (read-only) 일 수 있습니다.[^read-only] 이런 동작은 계산 속성에서와 똑같이 획득자 (getter) 와 설정자 (setter) 로 통신합니다.
 
 ```swift
 subscript(index: Int) -> Int {  
   get {
-    // 여기에서 적절한 첨자 연산 값을 반환함.
+    // 여기서 적절한 첨자 값을 반환함
   }
   set(newValue) {
-    // 여기에서 적합한 설정 행동을 수행함.
+    // 여기서 적합한 설정 행동을 함
   }
 }
 ```
 
-`newValue` 의 타입은 첨자 연산의 반환 값과 같습니다. '계산 속성' 에서 처럼, '설정자' 의 `(newValue)` 매개 변수를 지정하지 않도록 선택할 수 있습니다. 직접 제공하지 않을 경우 설정자에는 `newValue` 라는 '기본 매개 변수' 가 제공됩니다.
+`newValue` 타입은 첨자의 반환 값과 똑같습니다. 계산 속성처럼, 설정자의 `(newValue)` 매개 변수를 지정하지 않게 선택할 수 있습니다. 스스로 제공하지 않으면 `newValue` 라는 기본 매개 변수를 설정자에 제공합니다.
 
-'읽기-전용 계산 속성' 에서 처럼, '읽기-전용 첨자 연산' 의 선언은 `get` 키워드와 괄호를 제거하여 단순화할 수 있습니다:
+읽기-전용 계산 속성처럼, `get` 키워드와 괄호를 제거함으로써 읽기-전용 첨자 정의를 단순하게 할 수 있습니다:
 
 ```swift
 subscript(index: Int) -> Int {
-  // 여기에서 적절한 첨자 연산 값을 반환함.
+  // 여기서 적절한 첨자 값을 반환함
 }
 ```
 
-다음은, 정수 구구단 'n-단' 를 표현하는 `TimesTable` 구조체를 정의하는, '읽기-전용 첨자 연산 구현' 에 대한 예제입니다:
+다음 예제는, 정수 구구단 n-단을 나타내는 `TimesTable` 구조체를 정의한, 읽기-전용 첨자 구현입니다:
 
 ```swift
 struct TimesTable {
@@ -51,41 +51,41 @@ struct TimesTable {
 }
 let threeTimesTable = TimesTable(multiplier: 3)
 print("six times three is \(threeTimesTable[6])")
-// "six times three is 18" 을 인쇄합니다.
+// "six times three is 18" 을 인쇄함
 ```
 
-이 예제는, 구구단 '3-단' 을 표현하기 위해 새로운 `TimesTable` 인스턴스를 생성합니다. 이는 인스턴스의 `multiplier` 속성에 사용할 값으로 구조체의 `initializer`[^initializer] 에 `3` 을 전달함으로써 지시합니다.
+이 예제에선, 구구단 3-단을 나타내는 새 `TimesTable` 인스턴스를 생성합니다. 이는 인스턴스의 `multiplier` 속성이 사용할 `3` 이라는 값을 구조체의 `initializer`[^initializer] 에 전달함으로써 지시합니다.
 
-`threeTimesTable` 인스턴스는, `threeTimesTable[6]` 라고 나타낸 것처럼, 첨자 연산을 호출함으로써 조회할 수 있습니다. 이는 구구단 '3-단' 의 '6' 번째 항목을 요청하는데, `18`, 또는 `3` 곱하기 `6` 의 값을 반환합니다.
+`threeTimesTable[6]` 이라는 호출로 보는 것처럼, 자신의 첨자를 호출함으로써 `threeTimesTable` 인스턴스를 조회할 수 있습니다. 이는 구구단 3-단의 6번째 요소를 요청하여, `18`, 또는 `3` 곱하기 `6` 의 값을 반환합니다.
 
-> 구구단 'n-단' 은 고정된 수학 규칙에 기초합니다. `threeTimesTable[someIndex]` 에 새로운 값을 설정하는 것은 적절하지 않으므로, `TimesTable` 에 대한 첨자 연산은 '읽기-전용 첨자 연산' 으로 정의합니다.
+> 구구단 n-단은 고정된 수학 규칙에 기초합니다. `threeTimesTable[someIndex]` 에 새 값을 설정하는 건 적절치 않으므로, `TimesTable` 의 첨자는 읽기-전용 첨자로 정의합니다.
 
-### Subscript Usage (첨자 연산의 사용법)
+### Subscript Usage (첨자 사용법)
 
-"첨자 연산 (subscript)" 의 정확한 의미는 사용하는 상황에 달려 있습니다. 첨자 연산은 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 에 있는 멤버 원소에 접근하기 위한 '줄임말 (shortcut)' 로써 사용됩니다. 첨자 연산은 특정 클래스나 구조체의 기능에 가장 적절한 방식으로 자유롭게 구현할 수 있습니다.
+"첨자 (subscript)" 의 정확한 의미는 자신을 사용한 곳의 상황에 의존합니다. 첨자는 전형적으로 집합체나, 리스트, 또는 시퀀스 멤버 원소의 접근에 대한 줄임말로 사용합니다. 자신의 한 특별한 클래스나 구조체 기능에 가장 적절한 방식으로 자유롭게 첨자를 구현할 수 있습니다.
 
-예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장되어 있는 값을 설정하고 가져오기 위해 첨자 연산을 구현합니다. 딕셔너리는 첨자 연산 대괄호 안에 딕셔너리 키 타입의 키를 제공하고, 첨자 연산에 딕셔너리 값 타입의 값을 할당함으로써, 값을 설정할 수 있습니다:
+예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장한 값을 설정하고 가져오고자 첨자를 구현합니다. 첨자 대괄호 안에 딕셔너리의 키 타입인 키를 제공하고, 첨자에 딕셔너리의 값 타입인 값을 할당함으로써, 딕셔너리에 값을 설정할 수 있습니다:
 
 ```swift
 var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 numberOfLegs["bird"] = 2
 ```
 
-위 예제는 `numberOfLegs` 라는 변수를 정의하고 이를 세 개의 '키-값 쌍' 을 담고 있는 '딕셔너리 글자 값' 으로 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론됩니다. 딕셔너리를 생성한 후, 이 예제는 딕셔너리에 `String` 키 타입 `"bird"` 와 `Int` 값이 `2` 를 추가하기 위해 '첨자 연산 할당' 을 사용합니다.
+위 예제는 `numberOfLegs` 라는 변수를 정의하고 세 키-값 쌍을 담은 딕셔너리 글자 값으로 이를 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론합니다. 딕셔너리를 생성한 후, 이 예제는 첨자 할당을 사용하여 딕셔너리에 `"bird"` 라는 `String` 키와 `2` 라는 `Int` 값을 추가합니다.
 
-`Dictionary` 의 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 를 참고하기 바랍니다.
+`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 참고하기 바랍니다.
 
-> 스위프트의 `Dictionary` 타입은 '키-값 첨자 연산' 을 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자 연산으로 구현합니다. 위의 `numberOfLegs` 딕셔너리는, '키-값 첨자 연산' 이 `Int?`, 또는 "옵셔널 정수 (optional int)" 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 모든 키가 값을 가지진 않는다는 사실을 모델링하고, 해당 키에 `nil` 값을 할당함으로써 키의 값을 지우는 방법을 부여하기 위해, '옵셔널 첨자 연산 타입' 을 사용합니다.
+> 스위프트의 `Dictionary` 타입은 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자로 자신의 키-값 첨자 연산을 구현합니다. 위의 `numberOfLegs` 딕셔너리에선, 키-값 첨자가 `Int?`, 또는 "옵셔널 정수 (optional int)", 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 옵셔널 첨자 타입을 사용하여 모든 키가 값을 가지진 않을 거라는 사실을 모델링하고, 그 키에 `nil` 값을 할당함으로써 키의 값을 삭제할 방법을 제공합니다.
 
-### Subscript Options (첨자 연산의 옵션들)
+### Subscript Options (첨자의 옵션)
 
-첨자 연산은 어떤 개수의 입력 매개 변수도 취할 수 있으며, 이 입력 매개 변수들은 어떤 타입이든 될 수 있습니다. 첨자 연산은 어떤 타입의 값도 반환할 수 있습니다.
+첨자는 어떤 개수의 입력 매개 변수든 취할 수 있으며, 이 입력 매개 변수는 어떤 타입이든 될 수 있습니다. 첨자는 어떤 타입의 값이든 반환할 수도 있습니다.
 
-함수와 같이, 첨자 연산도, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 와 [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 에서 설명한 것처럼, 가변 개수의 매개 변수를 취할 수 있으며 매개 변수에 기본 값을 제공할 수 있습니다. 하지만, 함수와는 달리, 첨자 연산은 '입-출력 (in-out) 매개 변수' 를 사용할 수 없습니다.
+[Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 와 [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 에서 설명한 것처럼, 함수와 같이, 첨자도 가변 개수의 매개 변수를 취할 수 있으며 이 매개 변수에 기본 값을 제공할 수도 있습니다. 하지만, 함수와 달리, 첨자 연산은 입-출력 (in-out) 매개 변수를 사용할 수 없습니다.
 
-클래스나 구조체는 필요한 만큼 많은 첨자 연산 구현을 제공할 수 있으며, 사용하기에 적절한 첨자 연산은 첨자 연산이 사용되는 시점에 첨자 연산 대괄호 안에 담긴 값 또는 값들의 타입에 기초하여 추론될 것입니다. 이런 '다중 첨자 연산' 의 정의를 _첨자 연산 중복 정의 (subscript overloading)_ 라고 합니다.
+클래스나 구조체는 필요한 만큼 많은 첨자 구현을 제공할 수 있으며, 사용하가 적절한 첨자는 첨자를 사용할 시점에 첨자 대괄호 안에 담은 값이나 값들의 타입을 기초로 추론할 겁니다. 이런 여러 개의 첨자 정의를 _첨자 중복 정의 (subscript overloading)_ 라고 합니다.
 
-첨자 연산이 단일 매개 변수를 취하는 것이 가장 흔한 한편, 자신의 타입에 적절하다면 여러 개의 매개 변수를 가진 첨자 연산을 정의할 수도 있습니다. 다음 예제는, `Double` 값의 '이-차원' 배열을 표현하는, `Matrix` 구조체를 정의합니다. `Matrix` 구조체의 첨자 연산은 두 개의 정수 매개 변수를 취합니다:
+단일 매개 변수를 취하는 첨자 연산이 가장 흔한 반면에, 자신의 타입에 적절하다면 여러 개의 매개 변수를 가진 첨자를 정의할 수도 있습니다. 다음 예제는, 이-차원 `Double` 값 배열을 나타내는, `Matrix` 구조체를 정의합니다. `Matrix` 구조체의 첨자는 두 정수 매개 변수를 취합니다:
 
 ```swift
 struct Matrix {
@@ -112,30 +112,30 @@ struct Matrix {
 }
 ```
 
-`Matrix` 는 `rows` 와 `columns` 이라는 두 매개 변수를 취하는 초기자를 제공하여, `rows * columns` 개의 `Double` 타입 값들을 저장하기에 충분한 크기의 배열을 생성합니다. '행렬 (matrix)' 의 각 위치는 초기 값이 `0.0` 으로 주어집니다. 이를 달성하기 위해, 배열의 크기와, `0.0` 이라는 초기 '단위 격자 (cell)' 값이, 정확한 크기의 새로운 배열을 생성하고 초기화하는 '배열 초기자 (array initializer)' 로 전달됩니다. 이 '초기자' 는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
+`Matrix` 는 `rows` 와 `columns` 이라는 두 매개 변수를 취하는 초기자를 제공하며, `rows * columns` 개의 `Double` 타입 값을 저장할만큼 충분히 큰 배열을 생성합니다. 행렬 (matrix) 안의 각 위치엔 `0.0` 이라는 초기 값을 줍니다. 이를 달성하기 위해, 배열 초기자에 배열 크기와, `0.0` 이라는 초기 단위 조직 값을 전달하여, 올바른 크기의 새 배열을 생성하고 초기화합니다. 이 초기자는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
 
-새로운 `Matrix` 인스턴스는 적절한 행과 열 개수를 초기자에 전달함으로써 생성할 수 있습니다:
+자신의 초기자에 적절한 행과 열 개수를 전달함으로써 새로운 `Matrix` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 var matrix = Matrix(rows: 2, columns: 2)
 ```
 
-위 예제는 두 개의 행과 두 개의 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 사실상, 맨 왼쪽 위부터 오른쪽 아래로, '행렬을 납작하게 한 (flattened) 버전' 입니다[^flattend-version]:
+위 예제는 두 행과 두 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 사실상, 맨 왼쪽 위에서 오른쪽 아래로 읽어가는, 납작한 버전의 행렬입니다[^flattend-version]:
 
 ![flattened-version-of-the-matrix](/assets/Swift/Swift-Programming-Language/Subscripts-flattened-version-matrix.jpg)
 
-행렬의 값은 행과 열의 값을, 쉼표로 구분하여, 첨자 연산에 전달함으로써 설정할 수 있습니다:
+행과 열 값을, 쉼표로 구분하여, 첨자에 전달함으로써 행렬에 있는 값을 설정할 수 있습니다:
 
 ```swift
 matrix[0, 1] = 1.5
 matrix[1, 0] = 3.2
 ```
 
-이 두 구문은 행렬의 맨 오른쪽 위인 (`row` 가 `0` 이고 `column` 이 `1` 인 위치) 에 `1.5`, 그리고 맨 왼쪽 아래인 (`row` 가 `1` 이고 `column` 이 `0` 인 위치) 에 `3.2` 라는 값을 설정하기 위해 첨자 연산의 '설정자' 를 호출합니다:
+이 두 구문은 첨자의 설정자를 호출하여 (`row` 가 `0` 이고 `column` 이 `1` 인) 행렬 맨 오른쪽 위를 `1.5` 로, (`row` 가 `1` 이고 `column` 이 `0` 인) 맨 왼쪽 아래를 `3.2` 라는 값으로 설정합니다:
 
 ![matrix](/assets/Swift/Swift-Programming-Language/Subscripts-matrix.jpg)
 
-`Matrix` 첨자 연산의 '획득자' 와 '설정자' 는 첨자 연산의 `row` 와 `column` 값이 유효한 지를 검사하기 위해 둘 다 '단언문 (assertion)' 을 가지고 있습니다. 이러한 단언문을 거들기 위해, `Matrix` 는, 요청한 `row` 와 `column` 이 행렬의 경계 내에 있는지를 검사하는, `indexIsValid(row:column:)` 라는 '편의 메소드' 를 포함하고 있습니다:
+`Matrix` 첨자의 획득자와 설정자 둘 다 첨자의 `row` 와 `column` 값이 유효한지 검사하는 단언문 (assertion) 을 담고 있습니다. 이 단언문을 거들려고, 요청한 `row` 와 `column` 이 행렬 경계 안에 있는지 검사하는, `indexIsValid(row:column:)` 라는 편의(를 위한) 메소드를 `Matrix` 가 포함합니다:
 
 ```swift
 func indexIsValid(row: Int, column: Int) -> Bool {
@@ -143,17 +143,17 @@ func indexIsValid(row: Int, column: Int) -> Bool {
 }
 ```
 
-행렬 경계 외부의 첨자 연산에 접근하려고 하면 '단언문' 문을 발동합니다:
+행렬 경계 밖에 있는 첨자에 접근하려 하면 단언문을 발동합니다:
 
 ```swift
 let someValue = matrix[2, 2]
-// 이는, [2, 2] 가 행렬 경계의 외부이기 때문에, 단언문을 발동합니다.
+// [2, 2] 가 행렬 경계 밖이기 때문에, 단언문을 발동합니다.
 }
 ```
 
-### Type Subscripts (타입 첨자 연산)
+### Type Subscripts (타입 첨자)
 
-'인스턴스 첨자 연산' 은, 위에서 설명한 것처럼, 특정 타입의 인스턴스에서 호출하는 '첨자 연산' 입니다. 타입 자체에서 호출하는 '첨자 연산' 도 정의할 수 있습니다. 이러한 종류의 첨자 연산을 _타입 첨자 연산 (type subscript)_ 이라고 합니다. 타입 첨자 연산은 `subscript` 키워드 앞에 `static` 키워드를 작성함으로써 표시합니다. 클래스는, 해당 첨자 연산의 '상위 클래스' 구현을 '하위 클래스' 에서 재정의하는 것을 허용하도록, `class` 키워드를 대신 사용할 수 있습니다. 아래 예제는 타입 첨자 연산을 정의하고 호출하는 방법을 보여줍니다:
+인스턴스 첨자는, 위에서 설명한 것처럼, 한 특별한 타입의 인스턴스에서 호출하는 첨자입니다. 타입 그 자체에서 호출하는 첨자도 정의할 수 있습니다. 이러한 종류의 첨자를 _타입 첨자 (type subscript)_ 라고 합니다. `subscript` 키워드 앞에 `static` 키워드를 작성함으로써 타입 첨자를 표시합니다. 클래스는 `class` 키워드를 대신 사용하여, 그 첨자의 상위 클래스 구현을 하위 클래스가 재정의하도록 허용할 수 있습니다. 아래 예제는 타입 첨자의 정의와 호출 방법을 보여줍니다:
 
 ```swift
 enum Planet: Int {
@@ -177,10 +177,10 @@ print(mars)
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 '자료 구조' 입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
+[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection), 리스트 (list), 시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 자료 구조입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
 
-[^read-only]: 이러한 작동 방식은 바로 뒤에 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보자면 '계산 속성' 과 '첨자 연산' 은 '인스턴스 메소드' 의 특수한 한 형태라고 볼 수 있습니다.
+[^read-only]: 이런 동작은 바로 뒤에서 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보면 계산 속성과 첨자는 인스턴스 메소드의 특수한 한 형태라고 볼 수 있습니다.
 
-[^initializer]: 여기서 사용한 '초기자 (initializer)' 는 구조체 타입에 대해서 자동으로 생기는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 부여되므로 코드에 나타나지는 않습니다. 멤버 초기자에 대한 더 자세한 정보는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
+[^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
 
-[^flattend-version]: '납작하게 한 (flattened) 버전' 이란 '2-차원' 배열을 '1-차원' 배열 형태로 만들었다는 의미입니다.
+[^flattend-version]: '납작한 (flattened) 버전의 행렬' 이란 2-차원 배열의 형상을 바꿔서 1-차원 배열로 만들었다는 의미입니다.

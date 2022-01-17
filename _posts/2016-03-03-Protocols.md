@@ -154,7 +154,7 @@ print("And another one: \(generator.random())")
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
 
-때때로 메소드는 자신이 속한 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드는 자신이 속한 인스턴스와 해당 인스턴스의 어떤 속성이든 메소드가 수정할 수 있음을 지시하고자 메소드의 `func` 키워드 앞에 `mutating` 키워드를 붙입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 에서 설명합니다.
+때때로 메소드는 자신이 속한 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드는 자신이 속한 인스턴스와 해당 인스턴스의 어떤 속성이든 메소드가 수정할 수 있음을 지시하고자 메소드의 `func` 키워드 앞에 `mutating` 키워드를 붙입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
 
 프로토콜을 채택한 어떤 타입의 인스턴스든 변경하려는 의도인 '프로토콜 인스턴스 메소드 필수 조건' 을 정의하는 경우, 프로토콜의 정의에서 메소드를 `mutating` 키워드로 표시합니다. 이는 구조체와 열거체가 프로토콜을 채택해서 해당 '메소드 필수 조건' 을 만족할 수 있게 해줍니다.
 
@@ -790,7 +790,7 @@ for object in objects {
 
 '옵셔널 필수 조건' 에서 메소드나 속성을 사용할 때, 그 타입은 자동으로 '옵셔널' 이 됩니다. 예를 들어, `(Int) -> String` 타입의 메소드는 `((Int) -> String)?` 이 됩니다. 메소드 반환 값이 아니라, '전체 함수 타입' 을 옵셔널로 포장한다는 것을 기억하기 바랍니다.
 
-'옵셔널 프로토콜 필수 조건' 은, 프로토콜을 준수하는 타입이 필수 조건을 구현하지 않을 가능성을 밝히기 위해, '옵셔널 연쇄' 를 가지고 호출할 수 있습니다. '옵셔널 메소드' 를 구현했는 지는 호출할 때, `someOptionalMethod?(someArgument)` 같이, 메소드 이름 뒤에 물음표를 작성하여 검사합니다. '옵셔널 연쇄' 에 대한 정보는, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
+'옵셔널 프로토콜 필수 조건' 은, 프로토콜을 준수하는 타입이 필수 조건을 구현하지 않을 가능성을 밝히기 위해, '옵셔널 연쇄' 를 가지고 호출할 수 있습니다. '옵셔널 메소드' 를 구현했는 지는 호출할 때, `someOptionalMethod?(someArgument)` 같이, 메소드 이름 뒤에 물음표를 작성하여 검사합니다. '옵셔널 연쇄' 에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 다음 예제는, 증가량을 제공하고자 외부 데이터 소스를 사용하는, `Counter` 라는 '정수를-세는' 클래스를 정의합니다. 이 데이터 소스는, 두 개의 '옵셔널 필수 조건' 을 가진, '`CounterDataSource` 프로토콜' 에서 정의합니다:
 
@@ -827,7 +827,7 @@ class Counter {
 
 여기서 _두 (two)_ 단계 수준의 '옵셔널 연쇄' 가 진행된 것을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 일 가능성이 있으므로, `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 가 호출돼야 함을 지시하도록 `dataSource` 는 이름 뒤에 물음표를 가집니다. 두 번째로, `dataSource` 가 존재 _할 (does)_ 지라도, 옵셔널 필수 조건이기 때문에, `increment(forCount:)` 를 구현한다는 보증이 없습니다. 여기서는, `increment(forCount:)` 를 구현하지 않았을 가능성도 '옵셔널 연쇄' 로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 이 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 도 이름 뒤에 물음표를 작성한 이유입니다.
 
-`increment(forCount:)` 호출은 이 두 이유 중 어느 것으로든 실패할 수 있기 때문에, '_옵셔널 (optional)_ `Int` 값' 을 반환합니다. 이는 `increment(forCount:)` 가 `CounterDataSource` 정의에서 '옵셔널-아닌 `Int` 값' 을 반환하는 것으로 정의할 지라도 그렇습니다. 두 '옵셔널 연쇄' 연산이, 차례 차례, 있을지라도, 결과는 여전히 '단일 옵셔널' 로 '포장 (wrapped)' 됩니다. '다중 옵셔널 연쇄 연산' 을 사용하는 것에 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (다중 수준의 연쇄 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-다중-수준의-연쇄-연결하기) 를 참고하기 바랍니다.
+`increment(forCount:)` 호출은 이 두 이유 중 어느 것으로든 실패할 수 있기 때문에, '_옵셔널 (optional)_ `Int` 값' 을 반환합니다. 이는 `increment(forCount:)` 가 `CounterDataSource` 정의에서 '옵셔널-아닌 `Int` 값' 을 반환하는 것으로 정의할 지라도 그렇습니다. 두 '옵셔널 사슬' 연산이, 차례 차례, 있을지라도, 결과는 여전히 '단일 옵셔널' 로 '포장 (wrapped)' 됩니다. '여러 옵셔널 사슬 연산' 의 사용에 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-연결하기) 를 참고하기 바랍니다.
 
 `increment(forCount:)` 를 호출 한 후, '옵셔널 연결' 을 사용하여, 반환한 '옵셔널 `Int`' 의 포장을 풀고 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있는 경우-즉, '대리자' 와 메소드가 둘 다 존재하며, 메소드가 값을 반환한 경우-포장을 푼 `amount` 가 `count` 저장 속성에 추가되고, '증가' 를 완료합니다.
 
@@ -1003,7 +1003,7 @@ print(differentNumbers.allEqual())
 
 [^instantiator]: 본문에서는 'instantiator' 라는 용어를 사용하고 있는데, 적당한 말이 없어서 '인스턴스를 만드는 부분' 으로 옮겼습니다. 실제 게임을 구현할 경우 일종의 'game manager' 가 '인스턴스' 를 생성할 텐데, 이 'game manager' 를 'inistantiator' 라고 부를 수 있을 것입니다.
 
-[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. 보다 자세한 정보는 [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. 보다 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
 
 [^snakes-and-ladders-instance]: `SnakesAndLadders` 인스턴스를 `self` 라는 키워드를 사용하여 전달하고 있습니다.
 
@@ -1025,7 +1025,7 @@ print(differentNumbers.allEqual())
 
 [^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
 
-[^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. '기초 클래스' 에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
+[^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
 
 [^type-safe]: '타입-안전한 방식 (type-safe way)' 은 스위프트에서 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 의미입니다. '타입 추론' 과 '타입 검사' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 

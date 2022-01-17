@@ -961,7 +961,7 @@ _첨자 연산 표현식 (subscript expression)_ 은 해당 첨자 연산 선언
 
 '첨자 연산 표현식' 의 값을 평가하기 위해서는, '첨자 연산 매개 변수' 로 전달한 _색인 표현식 (index expressions)_ 을 가지고 _표현식 (expression)_ 타입을 위한 '첨자 연산 획득자' 를 호출합니다. 값을 설정하기 위해서는, 똑같은 방식으로 '첨자 연산 설정자' 를 호출합니다.
 
-'첨자 연산 선언' 에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 연산 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-연산-선언) 부분을 참고하기 바랍니다.
+'첨자 선언' 에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-선언) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
@@ -1064,7 +1064,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
 
-[^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 연쇄)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
+[^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 '오른쪽-에서-왼쪽' 순서를 사용하는 건, 예전에는 뒤에 딸린 (trailing) 클로저가 하나뿐이이라 가장 오른쪽 매개 변수였기 때문으로 추측됩니다. 스위프트 5.3 부터 뒤에 딸린 클로저가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 사용한다고 볼 수 있습니다.
 

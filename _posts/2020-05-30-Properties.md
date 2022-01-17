@@ -102,7 +102,7 @@ print(manager.importer.filename)
 // "data.txt" 를 인쇄함
 ```
 
-> `lazy` 수정자로 표시한 속성이 아직 초기화가 안됐는데 여러 개의 쓰레드로 동시에 접근할 경우, 속성이 한 번만 초기화될 거라는 보증은 없습니다.
+> `lazy` 수정자로 표시한 속성이 아직 초기화가 안됐는데 동시에 여러 개의 쓰레드가 접근할 경우, 속성이 한 번만 초기화될 거라는 보증은 없습니다.
 
 #### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)
 
@@ -248,7 +248,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출한 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 이를 호출하지 않습니다.[^obervers-and-superclass]
 >
-> 초기자 위임 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입의 초기자 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입의-초기자-위임) 과 [Initializer Delegation for Class Types (클래스 타입의 초기자 위임)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-class-types-클래스-타입의-초기자-위임) 부분을 참고하기 바랍니다.
+> 초기자 위임 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 부분을 참고하기 바랍니다.
 
 다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는, 사람이 산책하는 동안의 총 걸음 수를 추적하는, `StepCounter` 라는 새로운 클래스를 정의합니다. 이 클래스는 일과 중에 사람의 운동을 추적하기 위해 만보계 (pedometer) 나 다른 걸음 측정기 (step counter) 에 있는 입력 자료를 사용할 지 모릅니다.
 
@@ -538,7 +538,7 @@ struct SizedRectangle {
 >
 > 지역 상수와 변수는 절대로 느긋하게 계산하지 않습니다.
 
-속성 포장은, 전역 변수나 계산 변수가 아닌, 지역 저장 변수에 적용할 수 있습니다. 예를 들어, 아래 코드의, `myNumber` 는 `SmallNumber` 를 속성 포장으로 사용합니다. 
+전역 변수나 계산 변수가 아닌, 지역 저장 변수에 속성 포장을 적용할 수 있습니다. 예를 들어, 아래 코드의, `myNumber` 는 `SmallNumber` 를 속성 포장으로 사용합니다. 
 
 ```swift
 func someFunction() {
@@ -556,23 +556,23 @@ func someFunction() {
 
 ### Type Properties (타입 속성)
 
-'인스턴스 속성' 은 특정 타입의 인스턴스에 속해 있는 속성입니다. 해당 타입의 새로운 인스턴스를 생성할 때마다, 다른 인스턴스와는 구분된, 자신만의 속성 값 집합을 가집니다.
+인스턴스 속성은 한 특별한 타입의 인스턴스에 속하는 속성입니다. 그 타입의 인스턴스를 새로 생성할 때마다, 다른 어떤 인스턴스와도 구분된, 자신만의 속성 값 집합을 가지게 됩니다.
 
-해당 타입의 어떤 한 인스턴스가 아닌, 타입 자체에 속해 있는 속성을 정의할 수도 있습니다. 해당 타입의 인스턴스를 얼마나 많이 만들던, 이 속성의 복사본은 단 한 개만 있을 것입니다. 이러한 종류의 속성을 _타입 속성 (type properties)_ 이라고 합니다.
+그 타입의 어떤 한 인스턴스가 아니라, 타입 그 자체에 속하는 속성을 정의할 수도 있습니다. 그 타입의 인스턴스를 얼마나 많이 만들던 간에, 이 속성의 복사본은 늘 단 하나만 있을 것입니다. 이러한 종류의 속성을 _타입 속성 (type properties)_ 이라고 합니다.
 
-타입 속성은, (C 에 있는 '정적 (static) 상수' 같이) 모든 인스턴스가 사용할 수 있는 '상수 속성' 이나, (C 에 있는 '정적 변수' 같이) 해당 타입의 모든 인스턴스에 전역인 값을 저장하는 '변수 속성' 처럼, 특정 타입의 _모든 (all)_ 인스턴스에 '보편적인 (universal)' 값을 정의하는데 유용합니다.
+타입 속성은, (C 의 정적 상수 같이) 모든 인스턴스가 사용할 수 있는 상수 속성, 또는 (C 의 정적 변수 같이) 그 타입의 모든 인스턴스에 값을 전역으로 저장하는 변수 속성 같이, 한 특정한 타입의 _모든 (all)_ 인스턴스에 보편적인 (universal) 값을 정의하기에 유용합니다.
 
-'저장 타입 속성 (stored type properties)' 은 변수나 상수일 수 있습니다. '계산 타입 속성 (computed type properties)' 은, '계산 인스턴스 속성' 과 같은 방식으로, 항상 '변수 속성' 으로 선언합니다.
+저장 타입 속성은 변수 또는 상수일 수 있습니다. 계산 타입 속성은, 계산 인스턴스 속성과 똑같이, 항상 변수 속성으로 선언합니다.
 
-> '저장 인스턴스 속성' 과는 달리, '저장 타입 속성' 은 반드시 항상 '기본 값' 을 부여해야 합니다. 이는 초기화 시에 '저장 타입 속성' 에 값을 할당할 수 있는 초기자를 타입 자체가 가지고 있지는 않기 때문입니다.
+> 저장 인스턴스 속성과 달리, 저장 타입 속성엔 반드시 기본 값을 항상 줘야 합니다. 이는 타입 그 자체엔 초기화 시간에 저장 타입 속성에 값을 할당할 수 있는 초기자가 없기 때문입니다.
 >
-> '저장 타입 속성' 은 맨 처음 접근할 때에 맞춰 '느긋하게 (lazily)' 초기화됩니다. 이는, 다중 쓰레드가 동시에 접근할 때도, 단 한 번 초기화됨을 보증하며, `lazy` 수정자로 표시할 필요가 없습니다.
+> 저장 타입 속성은 최초로 접근할 때에 느긋하게 (lazily) 초기화됩니다. 동시에 여러 쓰레드가 접근할 때도, 단 한 번만 초기화하는 걸 보증하며, `lazy` 수정자로 표시할 필요도 없습니다.
 
-#### Type Property Syntax (타입 속성 구문 표현)
+#### Type Property Syntax (타입 속성 구문)
 
-C 와 오브젝티브-C 에서는, 타입과 결합한 정적 상수와 정적 변수를 _전역 (global)_ 정적 변수로 정의합니다. 하지만, 스위프트에선 타입 속성을 타입 정의의 일부분으로써, 타입의 바깥 중괄호 안에 작성하며, 각각의 타입 속성 영역은 명시적으로 자신이 지원하는 타입으로 정해집니다.
+C 와 오브젝티브-C 에선, 타입과 결합한 정적 상수와 변수를 _전역 (global)_ 정적 변수로 정의합니다. 스위프트에선, 하지만, 타입 속성을 타입 정의의 일부분인, 타입의 바깥 중괄호 안에서, 작성하며, 각각의 타입 속성 영역은 자신이 지원하는 타입 영역으로 명시됩니다.
 
-타입 속성은 `static` 키워드로 정의합니다. 클래스 타입에 대한 '계산 타입 속성' 에서는, 하위 클래스가 사위 클래스의 구현을 '재정의 (override)' 하는 것을 허용하기 위해 `class` 키워드를 대신 사용할 수 있습니다. 아래 예제는 '저장 타입 속성' 과 '계산 타입 속성' 에 대한 구문 표현을 보여줍니다:
+타입 속성은 `static` 키워드로 정의합니다. 클래스 타입의 계산 타입 속성이면, `class` 키워드를 대신 사용하여 상위 클래스 구현을 하위 클래스가 재정의하도록 허용할 수 있습니다. 아래 예제는 저장 및 계산 타입 속성의 구문을 보여줍니다:
 
 ```swift
 struct SomeStructure {
@@ -598,31 +598,31 @@ class SomeClass {
 }
 ```
 
-> 위 '계산 타입 속성' 예제는 '읽기-전용 (read-only) 계산 타입 속성' 에 대한 것이지만, '읽고-쓰기 (read-write) 계산 타입 속성' 도 '계산 인스턴스 속성' 에 대한 것과 똑같은 구문 표현으로 정의할 수 있습니다.
+> 위의 계산 타입 속성 예제는 읽기-전용 (read-only) 계산 타입 속성을 위한 거지만, 계산 인스턴스 속성을 위한 것과 동일한 구문으로 읽고-쓰기 (read-write) 계산 타입 속성을 정의할 수도 있습니다.
 
-#### Querying and Setting Type Properties (타입 속성 조회하기와 설정하기)
+#### Querying and Setting Type Properties (타입 속성 조회하기 및 설정하기)
 
-타입 속성은, 인스턴스 속성에서와 같이, '점 구문 (dot syntax)' 으로 조회하고 설정합니다. 하지만, 타입 속성은, 해당 타입의 인스턴스에 대해서가 아니라, _타입 (type)_ 에 대해서 조회하고 설정합니다. 예를 들면 다음과 같습니다:
+타입 속성은, 그냥 인스턴스 속성인 것 같이, 점 구문으로 조회하고 설정합니다. 하지만, 타입 속성은, 그 타입의 인스턴스에서가 아니라, _타입 (type)_ 에 대해서 조회하고 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(SomeStructure.storedTypeProperty)
-// "Some value." 를 인쇄합니다.
+// "Some value." 를 인쇄함
 SomeStructure.storedTypeProperty = "Another value."
 print(SomeStructure.storedTypeProperty)
-// "Another value." 를 인쇄합니다.
+// "Another value." 를 인쇄함
 print(SomeEnumeration.computedTypeProperty)
-// "6" 를 인쇄합니다.
+// "6" 을 인쇄함
 print(SomeClass.computedTypeProperty)
-// "27" 를 인쇄합니다.
+// "27" 을 인쇄함
 ```
 
-이어지는 예제는 다수 음향 채널에 대한 '음향 측정기 (audio level meter)' 를 모델링하는 구조체로 두 개의 '저장 타입 속성' 사용합니다. 각 채널은 `0` 에서 `10` 에 이르는 정수 '음량 (audio level)' 를 가집니다.
+뒤따르는 예제는 구조체의 일부분으로 두 개의 저장 타입을 사용하여 '다수의 음향 채널을 위한 음량 측정기 (audio level meter) 를 모델링합니다. 각각의 채널은 `0` 부터 `10` 까지를 포함한 정수 음량 (audio level)' 을 가집니다.
 
-아래 그림은 두 음향 채널을 조합하여 '스테레오 (stereo) 음향 측정기' 를 모델링하는 방법을 묘사합니다. 채널의 '음량' 이 `0` 일 때는, 해당 채널의 '불 (lights)' 은 전혀 켜지지 않습니다. '음량' 이 `10` 일 때는, 해당 채널에 대한 모든 '불' 이 켜집니다. 이 그림에서, 왼쪽 채널은 현재 양이 `9` 이고, 오른쪽 채널은 현재 양이 `7` 입니다:
+아래 그림은 이 두 음향 채널을 조합하여 스테레오 음량 측정기를 모델링할 수 있는 방법을 묘사합니다. 채널 음량이 `0` 일 땐, 그 채널에 아무런 불도 들어오지 않습니다. 음량이 `10` 일 땐, 그 채널의 모든 불이 들어옵니다. 이 그림에서, 왼쪽 채널의 현재 량은 `9` 이고, 오른쪽 채널은 현재 량은 `7` 입니다:
 
 ![audio level meter](/assets/Swift/Swift-Programming-Language/Properties-audio-level-meter.jpg)
 
-위에서 설명한 음향 채널은 `AudioChannel` 구조체의 인스턴스로써 표현됩니다:
+위에서 설명한 음향 채널을 `AudioChannel` 구조체 인스턴스로 나타냅니다:
 
 ```swift
 struct AudioChannel {
@@ -631,11 +631,11 @@ struct AudioChannel {
   var currentLevel: Int = 0 {
     didSet {
       if currentLevel > AudioChannel.thresholdLevel {
-        // 새로운 음량의 상한을 임계 값까지로 정합니다.
+        // 새로운 음량의 상한을 임계치까지로 제한함
         currentLevel = AudioChannel.thresholdLevel
       }
       if currentLevel > AudioChannel.maxInputLevelForAllChannels {
-        // 이를 전체에 대한 새로운 최대 입력량으로 저장합니다.
+        // 이를 새로운 전체 최대 입력량으로 저장함
         AudioChannel.maxInputLevelForAllChannels = currentLevel
       }
     }
@@ -643,44 +643,44 @@ struct AudioChannel {
 }
 ```
 
-`AudioChannel` 구조체는 기능을 지원하는 두 '저장 타입 속성' 을 정의합니다. 첫 번째인, `thresholdLevel` 은, '음량' 이 취할 수 있는 최대 임계 값을 정의합니다. 이는 모든 `AudioChannel` 인스턴스에서 `10` 이라는 상수 값입니다. `10` 보다 높은 값의 음향 신호가 들어 오면, (아래에서 설명하는 것처럼) 상한이 이 임계 값까지로 정해질 것입니다.
+`AudioChannel` 구조체는 자신의 기능을 지원하는 두 개의 저장 타입 속성을 정의합니다. 첫 번째인, `thresholdLevel` 은, 음량이 가질 수 있는 최대 임계 값을 정의합니다. 모든 `AudioChannel` 인스턴스에서 이 값은 `10` 이라는 상수입니다. `10` 보다 높은 값을 가진 음향 신호가 들어 오면, (아래 설명처럼) 이 임계 값까지로 상한을 제한할 것입니다.
 
-두 번째 타입 속성은 `maxInputLevelForAllChannels` 라는 '변수 저장 속성' 입니다. 이는 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 것이든 지금까지의 최대 입력 값을 추적합니다. 초기 값은 `0` 으로 시작합니다.
+두 번째 타입 속성은 `maxInputLevelForAllChannels` 라는 변수 저장 속성입니다. 이는 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 최대 입력 값이든 계속 추적합니다. 초기 값은 `0` 으로 시작합니다.
 
-`AudioChannel` 구조체는 `currentLevel` 이라는 '저장 인스턴스 속성' 도 정의하고 있는데, 이는 채널의 현재 음량을 `0` 에서 `10` 까지의 '척도 (scale)' 로 표현합니다.
+`AudioChannel` 구조체는 `currentLevel` 이라는 저장 인스턴스 속성도 정의하는데, 이는 채널의 현재 음량을 `0` 부터 `10` 까지 정도로 나타냅니다.
 
-`currentLevel` 속성은 `currentLevel` 의 값을 설정할 때마다 그 값을 검사하는 '`didSet` 속성 관찰자' 를 가지고 있습니다. 이 관찰자는 두 가지를 검사합니다:
+`currentLevel` 속성은 `currentLevel` 값을 설정할 때마다 검사하는 `didSet` 속성 관찰자를 가집니다. 이 관찰자는 두 가지를 검사합니다:
 
-* `currentLevel` 의 새 값이 `thresholdLevel` 가 허용하는 것보다 크면, '속성 관찰자' 가 `currentLevel` 의 상한을 `thresholdLevel` 까지로 정합니다.
-* (상한을 정한 후에) `currentLevel` 의 새 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스에서 받은 어떤 값보다도 높으면, '속성 관찰자' 가 새로운 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
+* 새 `currentLevel` 값이 허용한 `thresholdLevel` 보다 크면, 속성 관찰자가 `currentLevel` 상한을 `thresholdLevel` 까지로 제한합니다.
+* (상한을 제한한 후의) 새 `currentLevel` 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스가 받은 값보다도 높으면, 속성 관찰자가 새 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
 
-> 이 두 검사 중 첫 번째에서, `didSet` 관찰자는 `currentLevel` 을 다른 값으로 설정합니다. 하지만, 이는 '관찰자' 를 다시 호출하도록 하지는 않습니다.
+> 이 두 검사 중 첫 번째에서, `didSet` 관찰자가 `currentLevel` 을 다른 값으로 설정합니다. 하지만, 이것이 관찰자를 다시 호출하도록 하진 않습니다.
 
-`AudioChannel` 구조체는, '스테레오 음향 시스템' 의 음량을 표현하는, `leftChannel` 과 `rightChennel` 이라는 두 '음향 채널' 을 생성하기 위해 사용할 수 있습니다:
+`AudioChannel` 구조체를 사용하여, 스테레오 음향 시스템의 음량을 나타내는, `leftChannel` 과 `rightChennel` 이라는 두 음향 채널을 생성할 수 있습니다:
 
 ```swift
 var leftChannel = AudioChannel()
 var rightChannel = AudioChannel()
 ```
 
-_왼쪽 (left)_ 채널의 `currentLevel` 을 `7` 로 설정하면, '`maxInputLevelForAllChannels` 타입 속성' 이 `7` 로 갱신되는 것을 볼 수 있습니다:
+_왼쪽 (left)_ 채널의 `currentLevel` 을 `7` 로 설정하면, `maxInputLevelForAllChannels` 타입 속성을 `7` 로 갱신하는 걸 볼 수 있습니다:
 
 ```swift
 leftChannel.currentLevel = 7
 print(leftChannel.currentLevel)
-// "7" 을 인쇄합니다.
+// "7" 을 인쇄함
 print(AudioChannel.maxInputLevelForAllChannels)
-// "7" 을 인쇄합니다.
+// "7" 을 인쇄함
 ```
 
-_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려고 하면, 오른쪽 채널의 `currentLevel` 속성이 `10` 이라는 최대 값으로 상한이 정해지고, '`maxInputLevelForAllChannels` 타입 속성' 이 `10` 으로 갱신되는 것을 볼 수 있습니다:
+_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려 하면, 오른쪽 채널의 `currentLevel` 속성 상한을 `10` 이라는 최대 값으로 제한하고, `maxInputLevelForAllChannels` 타입 속성을 `10` 으로 갱신하는 걸 볼 수 있습니다:
 
 ```swift
 rightChannel.currentLevel = 11
 print(rightChannel.currentLevel)
-// "10" 을 인쇄합니다.
+// "10" 을 인쇄함
 print(AudioChannel.maxInputLevelForAllChannels)
-// "10" 을 인쇄합니다.
+// "10" 을 인쇄함
 ```
 
 ### 다음 장

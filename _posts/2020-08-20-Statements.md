@@ -318,7 +318,7 @@ case .suppressed:
 
 _표현식 (expression)_ 의 값은 반드시 `Error` 프로토콜을 준수하는 타입이어야 합니다.
 
-`throw` 문을 사용하는 방법에 대한 예제는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장의 [Propagating Errors Using Throwing Functions ('던지는 함수' 를 써서 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수-를-써서-에러-전파하기) 부분을 참고하기 바랍니다.
+`throw` 문을 사용하는 방법에 대한 예제는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장의 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A THROW STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 

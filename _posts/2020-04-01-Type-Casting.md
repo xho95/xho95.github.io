@@ -216,6 +216,6 @@ things.append(optionalNumber as Any) // 경고 없음
 
 [^type-casting-and-type-conversion]: '타입 변환' 은 영어로 'type casting' 과 'type conversion' 둘 다에 적용할 수 있지만, 이 둘은 서로 조금 다릅니다. 'type casting' 과 'type conversion' 의 가장 기본적인 차이점은 'type conversion' 은 컴파일러에 의해 자동으로 이루어지는 반면, 'type casting' 은 개발자가 명시적으로 지정한다는 점입니다. 'type casting' 과 'type conversion' 의 차이점에 대한 정보는, [Difference Between Type Casting and Type Conversion](https://techdifferences.com/difference-between-type-casting-and-type-conversion.html) 항목을 참고하기 바랍니다.
 
-[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 말합니다. '기초 클래스' 에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 참고하기 바랍니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분과 해당 주석을 참고하기 바랍니다.
 
 [^ghostbusters]: '고스트 버스터즈 (Ghostbusters)' 는 1984년 개봉한 헐리우드 영화로, 한 때 주제곡이 꽤 유행 했었습니다. 우리말로는 "유령 박멸자" 정도로 이해할 수 있습니다.

@@ -226,7 +226,7 @@ func someFunction() {
 
 [^three-rules]: 이 한 문장은, 앞서 설명한, '충돌이 일어나는 세 가지 조건' 에 모두 해당됨을 나타냅니다. 만약 세 가지 조건 중 하나라도 해당이 안된다면 충돌이 일어나지 않을 것입니다.
 
-[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장에 있는 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 내에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-내에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
+[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장에 있는 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
 
 [^safe-overlap]: 이어지는 내용에서 설명하는 것처럼, 구조체를 '지역 변수' 에 저장한 경우, 해당 속성에 대한 접근이 겹쳐도 컴파일러가 안전함을 증명할 수 있다면 충돌이 발생하지 않습니다.
 

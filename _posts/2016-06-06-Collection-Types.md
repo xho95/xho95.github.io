@@ -108,7 +108,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 #### Accessing and Modifying an Array (배열 접근하기와 수정하기)
 
-배열은 '메소드와 속성을 통하거나, 첨자 연산 구문 (subscript syntax)' 을 써서, 접근하고 수정합니다.
+배열은 '메소드와 속성을 통하거나, 첨자 구문 (subscript syntax)' 을 써서, 접근하고 수정합니다.
 
 배열에 있는 항목의 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
@@ -144,7 +144,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList 는 이제 7개의 항목을 담고 있음
 ```
 
-배열에 있는 값은, 배열 이름 바로 뒤 대괄호 안에 가져오려는 값의 '색인 (index)' 을 전달하는, _첨자 연산 구문 (subscript syntax)_ 으로 가져옵니다:
+배열에 있는 값은, 배열 이름 바로 뒤 대괄호 안에 가져오려는 값의 '색인 (index)' 을 전달하는, _첨자 구문 (subscript syntax)_ 으로 가져옵니다:
 
 ```swift
 var firstItem = shoppingList[0]

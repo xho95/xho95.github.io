@@ -28,7 +28,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 * 확장을 하여 기본 구현을 넘어 자신의 기능을 늘림
 * 프로토콜을 준수하여 정해진 종류의 표준 기능을 제공함
 
-더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자 연산)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
+더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
 
 클래스에는 구조체는 없는 추가적인 보유 능력이 있습니다:
 
@@ -165,7 +165,7 @@ print("hd is still \(hd.width) pixels wide")
 // "hd is still 1920 pixels wide" 를 인쇄함
 ```
 
-`cinema` 에 현재 `hd` 값을 줄 땐, `hd` 에 저장한 _값 (values)_ 을 새로운 `cinema` 인스턴스로 복사합니다. 끝 결과는 동일한 수치 값을 담은 완전히 분리된 두 인스턴스입니다. 하지만, 분리된 인스턴스이기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비를 `2048` 로 설정하는 건 `hd` 에 저장한 너비에 영향을 주지 않습니다:
+`cinema` 에 현재 `hd` 값을 줄 땐, `hd` 에 저장한 _값 (values)_ 을 새로운 `cinema` 인스턴스로 복사합니다. 끝단의 결과는 동일한 수치 값을 담은 완전히 분리된 두 인스턴스입니다. 하지만, 분리된 인스턴스이기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비를 `2048` 로 설정하는 건 `hd` 에 저장한 너비에 영향을 주지 않습니다:
 
 ![an copy of the value type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
 
