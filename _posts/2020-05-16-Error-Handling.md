@@ -178,7 +178,7 @@ do {
 
 `do` 절 코드가 던질 가능성이 있는 모든 에러를 `catch` 절이 처리하지 않아도 됩니다. 아무 `catch` 절도 에러를 처리하지 않으면, 에러를 주위 영역으로 전파합니다. 하지만, 전파한 에러는 _어떠한 (some)_ 주위 영역이 됐든 반드시 처리해야 합니다. 던지지 않는 함수에선, 둘러싼 `do`-`catch` 문이 반드시 에러를 처리해야 합니다. 던지는 함수에선, 둘러싼 `do-catch` 문이든 호출한 쪽이든 반드시 에러를 처리해야 합니다. 처리되지 않은 에러를 최상단 영역으로 전파하면, 실행시간 에러를 가지게 됩니다.
 
-예를 들어, 위 예제는 `VendingMachineError` 가 아닌 에러는 어떤 것이든 호출 함수가 대신 잡아내도록 작성할 수 있습니다:
+예를 들어, 위 예제를 `VendingMachineError` 가 아닌 어떤 에러든 호출하는 함수가 대신 잡아내도록 작성할 수 있습니다:
 
 ```swift
 func nourish(with item: String) throws {
@@ -194,12 +194,12 @@ do {
 } catch {
   print("Unexpected non-vending-machine-related error: \(error)")
 }
-// "Invalid selection, out of stock, or not enough money." 를 인쇄합니다.
+// "Invalid selection, out of stock, or not enough money." 를 인쇄함
 ```
 
-`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 인쇄하는 것으로써 에러를 처리합니다. 그 외의 경우, `nourish(with:)` 는 자신을 호출한 쪽으로 에러를 전파합니다. 그런 다음 '일반적인 `catch` 절' 이 에러를 잡아냅니다.
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체 case 중 하나를 던지면, 메시지를 인쇄함으로써 `nourish(with:)` 가 에러를 처리합니다. 그 외 경우, `nourish(with:)` 가 자신을 호출한 쪽으로 에러를 전파합니다. 그러면 일반적인 `catch` 절이 에러를 잡아냅니다.
 
-여러 관련 에러를 잡아내는 또 다른 방법은 `catch` 뒤에, 쉼표로 구분하여, 이들을 나열하는 것입니다. 예를 들면 다음과 같습니다:
+서로 관련된 여러 에러를 잡아내는 또 다른 방법은 `catch` 뒤에, 쉼표로 구분하여, 나열하는 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func eat(item: String) throws {
