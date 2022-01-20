@@ -415,7 +415,7 @@ class NamedShape {
 
 `name` 속성과 초기자의 `name` 인자를 구별하기 위해 `self` 를 사용하는 방법에 주목하기 바랍니다. 클래스의 인스턴스를 생성할 때 함수 호출 처럼 초기자 인자를 전달합니다. 모든 속성은-(`numberOfSides` 과 같이) 자신의 선언에서든 (`name` 과 같은) 초기자에서든-할당 값이 필요합니다.
 
-객체 해제 전에 어떠한 정리를 할 필요가 있으면 `deinit` 으로 '정리자 (deinitializer)' 를 생성합니다.
+객체 해제 전에 어떠한 청소가 필요하면 `deinit` 을 써서 정리자 (deinitializer) 를 생성합니다.
 
 '하위 클래스 (subclasses)' 는 자신의 클래스 이름 뒤에, 콜론으로 구분한, '상위 클래스 (superclass) 이름' 을 포함합니다. 클래스가 '어떤 표준 근원 클래스 (standard root class)[^standard-root-class] 의 하위 클래스' 라는 '필수 조건 (requirement)' 은 없으므로, 필요에 따라 상위 클래스를 포함하거나 생략할 수 있습니다.
 
@@ -777,7 +777,7 @@ let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-`defer` 로 '함수 반환 직전에, 함수의 다른 모든 코드 뒤에 실행할 코드 블럭' 을 작성합니다. 코드는 함수가 에러를 던지는 지와는 상관없이 실행합니다. `defer` 를 사용하면, 서로 다른 시간에 실행할 필요가 있는, '설정 (setup) 과 정리 (cleanup) 코드' 도, 서로 나란하게 작성할 수 있습니다.
+`defer` 로 '함수 반환 직전에, 함수의 다른 모든 코드 뒤에 실행할 코드 블럭' 을 작성합니다. 코드는 함수가 에러를 던지는 지와는 상관없이 실행합니다. `defer` 를 사용하면, 서로 다른 시간에 실행할, 설정 (setup) 및 정리 (cleanup) 코드일지라도, 나란히 작성할 수 있습니다.
 
 ```swift
 var fridgeIsOpen = false
@@ -794,7 +794,7 @@ func fridgeContains(_ food: String) -> Bool {
 }
 fridgeContains("banana")
 print(fridgeIsOpen)
-// "false" 를 인쇄합니다.
+// "false" 를 인쇄함
 ```
 
 ### Generics (일반화)
