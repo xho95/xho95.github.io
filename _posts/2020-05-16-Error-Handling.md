@@ -256,7 +256,7 @@ let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 
 ### Specifying Cleanup Actions (정리 행동 지정하기)
 
-`defer` 문을 사용하면 현재 코드 블럭을 떠나기 직전에 일정 구문 집합을 실행할 수 있습니다. 이 구문은 현재 코드 블럭을 떠나는 _방법 (how)_ 엔 상관없이-에러를 던지기 때문에 떠나든 `return` 이나 `break` 같은 구문 때문에 떠나든-하는게 필요한 어떤 정리를 하게 해줍니다. 예를 들어, '파일 서술자 (file descriptors)'[^file-discriptors] 를 닫고 수동으로 할당한 메모리를 풀어서 확보한다는 것을 보장하기 위해 `defer` 문을 사용할 수 있습니다.
+`defer` 문을 사용하면 현재 코드 블럭을 떠나기 직전에 일정 구문 집합을 실행할 수 있습니다. 이 구문은 현재 코드 블럭을 떠나는 _방법 (how)_ 엔 상관없이-에러를 던지기 때문에 떠나든 `return` 이나 `break` 같은 구문 때문에 떠나든-하는게 필요한 어떤 정리를 하게 해줍니다. 예를 들어, `defer` 문을 사용하면 파일 서술자 (file descriptors)[^file-discriptors] 를 닫고 수동으로 할당한 메모리를 풀어준다는 걸 보장할 수 있습니다.
 
 `defer` 문은 현재 영역을 빠져나갈 때까지 실행을 지연합니다. 이 구문은 `defer` 키워드와 나중에 실행할 구문들로 이루어져 있습니다. '지연된 (deferred) 구문' 들은, `break` 나 `return` 문, 또는 에러를 던지는 것과 같이, 제어를 구문 외부로 옮기는 어떤 코드를 담고 있지 않을 수도 있습니다. '지연된 행동' 들은 소스 코드에서 작성한 것과 반대 순서로 실행됩니다. 즉, 첫 번째 `defer` 문 코드를 마지막에 실행하고, 두 번째 `defer` 문 코드를 마지막에서 두 번째로 실행하며, 이렇게 계속됩니다. 소스 코드 순서로 마지막인 `defer` 문을 맨 처음 실행합니다.
 
@@ -299,6 +299,6 @@ func processFile(filename: String) throws {
 
 [^runtime-error]: 실행 시간에 에러를 던지지 않을 거라는 사실을 안다는 건, 결국 그 때가 '실행 시간에 에러가 나면 안될 때' 이기 때문입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 걸, 개발 과정에서 미리 파악하여 조치하고자 사용하는 겁니다.
 
-[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
 [^runtime-assertion]: '실행시간 단언문 (runtime assertion)' 에 대한 더 자세한 정보는 [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 부분을 참고하기 바랍니다. 
