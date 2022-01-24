@@ -176,9 +176,9 @@ do {
 
 위 예제의, `buyFavoriteSnack(person:vendingMachine:)` 함수는 에러를 던질 수 있기 때문에, `try` 표현식[^try-expression] 안에서 호출합니다. 에러를 던지면, 곧바로`catch` 절로 실행을 옮기며, 여기서 전파를 계속 허용할 지 결정합니다. 일치하는 패턴이 없으면, 최종 `catch` 절이 에러를 잡아내어 `error` 라는 지역 상수에 연결합니다. 던진 에러가 없으면, `do` 문의 나머지 구문을 실행합니다.
 
-`do` 절 코드에서 던질 가능성이 있는 모든 에러를 `catch` 절이 처리하지 않아도 됩니다. 아무런 `catch` 절도 에러를 처리하지 않으면, 주위 영역으로 에러를 전파합니다. 하지만, _어떤 (some)_ 주위 영역에서 반드시 이 전파한 에러를 처리해야 합니다. '던지지 않는 (nonthrowing) 함수' 는, '테두리를 친 `do`-`catch` 문' 이 에러를 반드시 처리해야 합니다. '던지는 함수' 는, '테두리를 친 `do-catch` 문' 이든 '호출한 쪽 (caller)' 이든 어느 한 곳에서 에러를 반드시 처리해야 합니다. 에러가 처리되지 않은 채로 '최상단 (top-level) 영역' 으로 전파되면, 실행시간 에러를 가질 것입니다.
+`do` 절 코드가 던질 가능성이 있는 모든 에러를 `catch` 절이 처리하지 않아도 됩니다. 아무 `catch` 절도 에러를 처리하지 않으면, 에러를 주위 영역으로 전파합니다. 하지만, 전파한 에러는 _어떠한 (some)_ 주위 영역이 됐든 반드시 처리해야 합니다. 던지지 않는 함수에선, 둘러싼 `do`-`catch` 문이 반드시 에러를 처리해야 합니다. 던지는 함수에선, 둘러싼 `do-catch` 문이든 호출한 쪽이든 반드시 에러를 처리해야 합니다. 처리되지 않은 에러를 최상단 영역으로 전파하면, 실행시간 에러를 가지게 됩니다.
 
-예를 들어, 위 예제는 `VendingMachineError` 가 아닌 에러는 어떤 것이든 호출 함수가 대신 잡아내도록 작성할 수 있습니다:
+예를 들어, 위 예제를 `VendingMachineError` 가 아닌 어떤 에러든 호출하는 함수가 대신 잡아내도록 작성할 수 있습니다:
 
 ```swift
 func nourish(with item: String) throws {
@@ -194,12 +194,12 @@ do {
 } catch {
   print("Unexpected non-vending-machine-related error: \(error)")
 }
-// "Invalid selection, out of stock, or not enough money." 를 인쇄합니다.
+// "Invalid selection, out of stock, or not enough money." 를 인쇄함
 ```
 
-`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체의 'case 값' 에 해당하는 에러를 던지면, `nourish(with:)` 는 메시지를 인쇄하는 것으로써 에러를 처리합니다. 그 외의 경우, `nourish(with:)` 는 자신을 호출한 쪽으로 에러를 전파합니다. 그런 다음 '일반적인 `catch` 절' 이 에러를 잡아냅니다.
+`nourish(with:)` 함수에서, `vend(itemNamed:)` 가 `VendingMachineError` 열거체 case 중 하나를 던지면, 메시지를 인쇄함으로써 `nourish(with:)` 가 에러를 처리합니다. 그 외 경우, `nourish(with:)` 가 자신을 호출한 쪽으로 에러를 전파합니다. 그러면 일반적인 `catch` 절이 에러를 잡아냅니다.
 
-여러 관련 에러를 잡아내는 또 다른 방법은 `catch` 뒤에, 쉼표로 구분하여, 이들을 나열하는 것입니다. 예를 들면 다음과 같습니다:
+서로 관련된 여러 에러를 잡아내는 또 다른 방법은 `catch` 뒤에, 쉼표로 구분하여, 나열하는 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func eat(item: String) throws {
@@ -211,11 +211,11 @@ func eat(item: String) throws {
 }
 ```
 
-`eat(item:)` 함수는 잡아낼 '자판기 (vending machine) 에러' 를 나열하며, 에러 문장은 그 목록의 항목에 해당합니다. 나열한 세 에러 중 어떤 것이든 던지면, 이 `catch` 절은 메시지를 인쇄함으로써 이를 처리합니다. 나중에 추가할 지도 모를 어떤 자판기 에러를 포함한, 다른 어떤 에러든 주위 영역으로 전파합니다.
+`eat(item:)` 함수는 잡아낼 자판기 에러를 나열하는데, 에러 문장은 그 목록의 항목입니다. 나열한 세 에러 중 어떤 것이든 던지면, 이 `catch` 절이 메시지 인쇄로 이를 처리합니다. 다른 어떤 에러는, 나중에 추가할 지도 모를 자판기 에러도 포함하여, 주위 영역으로 전파합니다.
 
-#### Converting Errors to Optional Values (에러를 '옵셔널 값' 으로 변환하기)
+#### Converting Errors to Optional Values (에러를 옵셔널 값 변환하기)
 
-`try?` 는 옵셔널 값으로 변환함으로써 에러를 처리하기 위해 사용합니다. `try?` 표현식을 평가하는 동안 에러를 던지면, 표현식의 값이 `nil` 입니다. 예를 들어, 다음의 `x` 와 `y` 코드는 똑같은 값과 작동 방식을 가집니다:
+`try?` 를 사용하면 옵셔널 값 변환으로 에러를 처리합니다. `try?` 표현식 평가 동안 에러를 던지면, 표현식 값이 `nil` 입니다. 예를 들어, 다음 코드에서 `x` 와 `y` 의 값과 동작은 똑같습니다:
 
 ```swift
 func someThrowingFunction() throws -> Int {
@@ -232,9 +232,9 @@ do {
 }
 ```
 
-`someThrowingFunction()` 이 에러를 던지면, `x` 와 `y` 의 값은 `nil` 입니다. 그 외의 경우, `x` 와 `y` 의 값은 함수가 반환한 값입니다. `x` 와 `y` 는 `someThrowingFunction()` 이 무슨 타입을 반환하던 '옵셔널' 임을 기억하기 바랍니다. 여기선 함수가 '정수 (integer)' 를 반환하므로, `x` 와 `y` 는 '옵셔널 정수' 들입니다.
+`someThrowingFunction()` 이 에러를 던지면, `x` 와 `y` 값이 `nil` 입니다. 그 외 경우, `x` 와 `y` 값은 함수의 반환 값입니다. `someThrowingFunction()` 이 무슨 타입을 반환하든 `x` 와 `y` 가 옵셔널임을 기억하기 바랍니다. 여기선 함수가 정수를 반환하므로, `x` 와 `y` 는 옵셔널 정수입니다.
 
-`try?` 를 사용하는 것은 모든 에러를 똑같은 방식으로 처리하고 싶을 때 '에러 처리 코드' 를 간결하게 작성하도록 해줍니다.[^error-to-optional] 예를 들어, 다음 코드는 자료를 가져오기 위해 여러 접근 방식을 사용하며, 모든 접근 방식이 실패하면 `nil` 을 반환합니다.
+`try?` 의 사용은 모든 에러를 똑같이 처리하고 싶을 때의 에러 처리 코드가 간결해지게 합니다.[^error-to-optional] 예를 들어, 다음 코드는 여러 접근법으로 자료를 가져오거나, 아니면 모든 접근법이 실패할 경우 `nil` 을 반환합니다.
 
 ```swift
 func fetchData() -> Data? {
@@ -246,19 +246,19 @@ func fetchData() -> Data? {
 
 #### Disabling Error Propagation (에러 전파 못하게 하기)
 
-'던지는' 함수나 메소드가, 사실상, 실행 시간에 에러를 던지지 않을 것임을 알고 있을 때가 있습니다. 그럴 때는, 에러 전파를 못하게 하고 아무런 에러도 던지지 않을 거라는 '실행시간 단언문 (runtime assertion)' 으로 호출을 포장하기 위해 표현식 앞에 `try!` 를 작성할 수 있습니다. 에러를 실제로 던지게 되면, 실행시간 에러를 가질 것입니다.[^runtime-error]
+던지는 함수나 메소드가 실행 시간에 에러를 던지지 않을 거라는, 사실을, 알 때가 있습니다. 그럴 때, 표현식 앞에 `try!` 를 작성하면 에러 전파를 못하게 하고 실행시간 단언문[^runtime-assertion] 으로 호출을 포장하여 아무 에러도 던지지 않을거라고 (단언) 할 수 있습니다. 에러를 실제로 던지면, 실행시간 에러를 가지게 됩니다.[^runtime-error]
 
-예를 들어, 다음 코드는, 주어진 경로의 이미지 자원을 불러오거나 이미지를 불러올 수 없다면 에러를 던지는, `loadImage(atPath:)` 함수를 사용합니다. 이 경우, 이미지는 응용 프로그램과 같이 출하하기 때문에, 실행 시간에 에러를 던지지 않을 것이므로, 에러 전파를 못하게 하는 것이 적절합니다.
+예를 들어, 다음 코드는 `loadImage(atPath:)` 함수로, 주어진 경로의 이미지를 불러오거나 아니면 이미지를 불러올 수 없을 경우 에러를 던집니다. 이 경우, 응용 프로그램과 같이 이미지를 출하하기 때문에, 실행 시간에 에러를 던지진 않을 것이므로, 에러를 전파 못하게 하는 게 적절합니다.
 
 ```swift
 let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 ```
 
-### Specifying Cleanup Actions (정리 작업 지정하기)
+### Specifying Cleanup Actions (정리 행동 지정하기)
 
-`defer` 문은 실행이 현재 코드 블럭을 떠나기 직전에 일정 구문 집합을 실행하기 위해 사용합니다. 이 구문은 실행이 현재 코드 블럭을-에러를 던지기 때문에 아니면 `return` 이나 `break` 같은 구문 때문에 떠나는 것이든-떠나는 _방법 (how)_ 에는 관계 없이 수행할 필요가 있는 정리는 어떤 것이든 하도록 해줍니다. 예를 들어, '파일 서술자 (file descriptors)'[^file-discriptors] 를 닫고 수동으로 할당한 메모리를 풀어서 확보한다는 것을 보장하기 위해 `defer` 문을 사용할 수 있습니다.
+`defer` 문을 사용하면 현재 코드 블럭을 떠나기 직전에 일정 구문 집합을 실행할 수 있습니다. 이 구문은 현재 코드 블럭을 떠나는 _방법 (how)_ 엔 상관없이-에러를 던지기 때문에 떠나든 `return` 이나 `break` 같은 구문 때문에 떠나든-하는게 필요한 어떤 정리를 하게 해줍니다. 예를 들어, `defer` 문을 사용하면 파일 서술자 (file descriptors)[^file-discriptors] 를 닫고 수동으로 할당한 메모리를 풀어준다는 걸 보장할 수 있습니다.
 
-`defer` 문은 현재 영역을 빠져나갈 때까지 실행을 지연합니다. 이 구문은 `defer` 키워드와 나중에 실행할 구문들로 이루어져 있습니다. '지연된 (deferred) 구문' 들은, `break` 나 `return` 문, 또는 에러를 던지는 것과 같이, 제어를 구문 외부로 옮기는 어떤 코드를 담고 있지 않을 수도 있습니다. '지연된 행동' 들은 소스 코드에서 작성한 것과 반대 순서로 실행됩니다. 즉, 첫 번째 `defer` 문 코드를 마지막에 실행하고, 두 번째 `defer` 문 코드를 마지막에서 두 번째로 실행하며, 이렇게 계속됩니다. 소스 코드 순서로 마지막인 `defer` 문을 맨 처음 실행합니다.
+`defer` 문은 현재 영역을 빠져나갈 때까지 실행을 미룹니다. 이 구문은 `defer` 키워드 및 나중에 실행할 구문으로 이루어집니다. 미룬 구문 (deferred statements) 은 구문 밖으로 제어를 옮기는, `break` 나 `return` 문, 또는 에러 던짐 같은, 어떤 코드를 담고 있지 않을 수 있습니다. 미룬 행동은 소스 코드에 작성한 반대 순서로 실행합니다. 즉, 첫 번째 `defer` 문 코드를 마지막에 실행하고, 두 번째 `defer` 문 코드를 마지막에서 두 번째로 실행하며, 기타 등등 그렇게 계속됩니다. 소스 코드의 마지막 `defer` 문을 첫 번째로 실행합니다.
 
 ```swift
 func processFile(filename: String) throws {
@@ -268,16 +268,16 @@ func processFile(filename: String) throws {
       close(file)
     }
     while let line = try file.readline() {
-      // 파일 작업을 함.
+      // 파일 작업함.
     }
-    // close(file) 은, 영역의 끝인, 여기서 호출합니다.
+    // close(file) 은, 영역의 끝인, 여기서 호출함.
   }
 }
 ```
 
-위 예제는 `open(_:)` 함수가 `close(_:)` 라는 연관된 호출을 가진다는 것을 보장하기 위해 `defer` 문을 사용합니다.
+위 예제는 `defer` 문을 사용하여 `open(_:)` 함수에 해당하는 `close(_:)` 를 호출함을 보장합니다.
 
-> `defer` 문은 에러 처리 코드와 엮여 있지 않은 때에도 사용할 수 있습니다.
+> 에러 처리 코드와 엮이지 않은 때에도 `defer` 문을 사용할 수 있습니다.
 
 ### 다음 장
 
@@ -295,8 +295,10 @@ func processFile(filename: String) throws {
 
 [^try-expression]: '`try` 표현식' 에 대한 더 자세한 정보는 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장의 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분을 참고하기 바랍니다.
 
-[^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 따라서 `try?` 는 사실상 에러를 무시해도 상관없을 때 사용합니다. 예제에서 사용한 `someThrowingFunction()` 함수의 경우 모든 에러는 결국 '정수 (integer)' 를 반환할 수 없을 경우에만 발생합니다. 즉, 정수를 반환할 수 없는 모든 경우에 대해 발생하는 모든 에러를 `nil` 로 변환해서 무시하고자 한다면, `try?` 를 사용할 수 있습니다.
+[^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 즉, `try?` 는 사실상 모든 에러를 똑같은 방식으로만 처리할 수 있습니다.
 
-[^runtime-error]: 실행시간 에러가 발생할 수도 있는데 `try!` 를 왜 사용하는지 의문이 들 수도 있습니다. 본문에서 표현한 '실행 시간에 에러를 던지지 않을 것임을 알고 있을 때' 라는 건, 결국 '실행 시간에 에러가 나면 안되는 상황' 을 말하는 것입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 상황을 개발 과정에서 미리 파악하고 해결하기 위해서 사용하는 것입니다. 실행 시간에 에러가 절대로 나면 안되는 코드라면, 개발 과정에서 `try!` 를 사용한다고 이해하면 됩니다.
+[^runtime-error]: 실행 시간에 에러를 던지지 않을 거라는 사실을 안다는 건, 결국 그 때가 '실행 시간에 에러가 나면 안될 때' 이기 때문입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 걸, 개발 과정에서 미리 파악하여 조치하고자 사용하는 겁니다.
 
-[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말하는 컴퓨터 용어라고 합니다. 보다 자세한 내용은 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
+
+[^runtime-assertion]: '실행시간 단언문 (runtime assertion)' 에 대한 더 자세한 정보는 [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 부분을 참고하기 바랍니다. 

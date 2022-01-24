@@ -14,7 +14,7 @@ _초기화 (initialization)_ 는 사용할 클래스나, 구조체, 또는 열�
 
 한 특별한 타입의 새 인스턴스를 생성하고자 호출할 수 있는 특수한 함수 같은, _초기자 (initializers)_ 를 정의함으로써 이 초기화 과정을 구현합니다. 오브젝티브-C 초기자와 달리, 스위프트 초기자는 값을 반환하지 않습니다. 이들의 으뜸 역할은 최초로 사용하기 전에 새 타입 인스턴스를 올바로 초기화하도록 보장하는 겁니다.
 
-클래스 타입 인스턴스는, 그 클래스 인스턴스의 해제 직전에 어떤 자신만의 청소를 하는, _정리자 (deinitializers)_ 도 구현할 수 있습니다. 정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 부분을 참고하기 바랍니다.
+클래스 타입 인스턴스는, 그 클래스의 인스턴스 해제 직전에 어떤 자신만의 정리를 하는, _정리자 (deinitializers)_ 도 구현할 수 있습니다. 정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 부분을 참고하기 바랍니다.
 
 ### Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)
 
