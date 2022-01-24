@@ -59,7 +59,7 @@ let photo = await downloadPhoto(named: name)
 show(photo)
 ```
 
-`listPhotos(inGallery:)` 와 `downloadPhoto(named:)` 함수는 둘 다 네트워크 요청이 필요하기 때문에, 완료하기까지 상대적으로 긴 시간이 걸릴 수 있습니다. 반환 화살표 앞에 `async` 를 작성하여 둘 다 비동기로 만들면 이 코드가 사진이 준비되길 기다리는 동안 나머지 앱 코드가 계속 실행하도로 해줍니다.
+`listPhotos(inGallery:)` 와 `downloadPhoto(named:)` 함수 둘 다 네트웍 요청이 필요하기 때문에, 완료까지 상대적으로 긴 시간이 걸릴 수 있습니다. 반환 화살표 앞의 `async` 작성으로 둘 다 비동기로 만들면 이 코드가 사진이 준비되길 기다리는 동안 앱 나머지 코드가 실행을 유지하게 해줍니다.
 
 위 예제의 '동시적인 본성' 을 이해하기 위한, 가능한 한 가지 실행 순서는 다음과 같습니다: 
 
