@@ -45,11 +45,11 @@ func listPhotos(inGallery name: String) async -> [String] {
 }
 ```
 
-함수나 메소드가 '비동기' 면서 '던지기' 까지 하면, `throws` 앞에 `async` 를 작성합니다. 
+비동기면서 던지기까지 하는 함수나 메소드면, `throws` 앞에 `async` 를 작성합니다. 
 
-비동기 메소드를 호출할 때는, 해당 메소드의 반환까지 실행을 멈춰답니다. 호출 앞에 `await` 를 작성하여 '멈춰달 수 있는 지점' 을 표시합니다. 이는 '던지는 함수' 를 호출할 때, '에러' 면 프로그램 흐름이 바뀔 수 있음을 표시하기 위해, `try` 를 작성하는 것과 비슷합니다. 비동기 메소드 안에서의, 실행 흐름은 _오직 (only)_ 또 다른 비동기 메소드를 호출할 때만 멈춰 달립니다-'멈춰달기 (suspension)' 는 절대 '암시적' 이거나 '선점 (preemptive)'[^preemptive] 이지 않습니다-이는 '멈춰달 수 있는 모든 지점' 을 `await` 로 표시한다는 의미입니다.
+비동기 메소드를 호출할 땐, 그 메소드가 반환할 때까지 실행을 잠시 멈춥니다. 호출 앞에 `await` 를 작성하여 잠시 멈춤 가능 지점[^possible-suspension-point] 을 표시합니다. 이는, 에러면 프로그램 흐름이 바뀔 가능성이 있다고 표시하고자, 던지는 함수 호출 때 `try` 를 작성하는 것과 비슷합니다. 비동기 메소드 안에선, 또 다른 비동기 메소드를 호출할 때 _만 (only)_ 실행 흐름이 잠시 멈춥니다-잠시 멈춤 (suspension) 은 절대로 암시적 또는 선점 (preemptive)[^preemptive] 이 아닙니다-이는 `await` 로 잠시 멈춤 가능한 모든 지점을 표시한다는 의미입니다.
 
-예를 들어, 아래 코드는 '전시관' 의 모든 '사진 (pictures)' 이름을 가져온 다음 첫 번째 사진을 보여줍니다:
+예를 들어, 아래 코드는 전시관의 모든 사진 이름을 가져온 다음 첫 번째 사진을 보여줍니다:
 
 ```swift
 let photoNames = await listPhotos(inGallery: "Summer Vacation")
@@ -255,6 +255,8 @@ print(logger.max)  // 에러
 
 [^threads]: '쓰레드 (thread)' 는 스위프트 내부에서 사용하는 것이고, 우리는 쓰레드를 사용하여 제작된 '동시성 (concurrency)' 을 사용하게 됩니다.
 
-[^preemptive]: '선점 (preemptive)' 은 CPU 를 차지한 프로세스의 자원을 운영체제가 우선 순위에 따라 강제로 빼앗을 수 있는 방식을 의미합니다. '선점 (preemptive)' 에 대한 더 자세한 내용은, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
+[^possible-suspension-point]: '잠시 멈춤 가능 지점 (the possible suspension point)' 는 스위프트에서 새로운 쓰레드의 시작 지점이라고 생각할 수 있습니다.
+
+[^preemptive]: '선점 (preemptive)' 이란 '운영체제가 우선 순위에 따라 프로세스의 CPU 자원을 강제로 빼앗을 수 있는 방식' 을 의미합니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
 
 [^sequence]: '시퀀스 (sequence)' 는 '수열' 을 의미하는 수학 용어로, 자료 구조 분야에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
