@@ -76,7 +76,7 @@ show(photo)
 * `@main` 으로 표시한 구조체나, 클래스, 또는 열거체의 정적 `main() 메소드 안에 있는 코드
 * 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보는 것처럼, 떼어낸 하위 임무 (detached child task) 안에 있는 코드
 
-> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 동시성 작동 방법을 배우기 위한 단순한 코드의 작성 시에 유용합니다. 이 메소드는 아무 것도 안하지만, 반환 전에 최소한 주어진 나노 초 만큼은 기다립니다. 다음은 `sleep()` 을 사용하여 네트워크 연산의 기다림을 모의 실험하는 버전의 `listPhotos(inGallery:)` 함수입니다.
+> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 단순한 코드를 작성하여 동시성 작업 방식을 익히고자 할 때 유용합니다. 이 메소드는, 반환 전에 적어도 주어진 나노 초 만큼을 기다리는 외엔, 아무 것도 하지 않습니다. 다음은 `sleep()` 을 써서 네트웍 연산의 기다림을 모의 실험하는 `listPhotos(inGallery:)` 함수 버전입니다.
 > 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
