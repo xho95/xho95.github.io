@@ -102,9 +102,9 @@ for try await line in handle.bytes.lines {
 
 자신만의 타입을 `for`-`in` 반복문에서 사용하려면 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하면 되는 것과 똑같이, 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용하려면 [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜을 준수하면 됩니다. 
 
-### Calling Asynchronous Functions in Parallel (비동기 함수를 병렬로 호출하기)
+### Calling Asynchronous Functions in Parallel (병렬로 비동기 함수 호출하기)
 
-`await` 를 가지고 비동기 함수를 호출하는 것은 한번에 한 조각의 코드만 실행합니다. 비동기 코드를 실행하는 동안, 호출하는 쪽은 그 다음 코드 줄을 실행하려 이동하기 전에 해당 코드가 종료하길 기다립니다. 예를 들어, '전시관' 에서 처음 세 사진을 가져오려면, 다음 처럼 세 개의 `downloadPhoto(named:)` 함수 호출을 기다릴 수 있습니다:
+`await` 로 비동기 함수를 호출하면 한번에 한 조각의 코드만 실행합니다. 비동기 코드를 실행하는 동안, 호출한 쪽이 그 코드가 종료하길 기다린 후에 그 다음 코드를 실행하려 이동합니다. 예를 들어, 전시관의 첫 사진 세 개를 가져오려고, 다음 처럼 세 개의 `downloadPhoto(named:)` 함수 호출을 기다릴 수도 있을 겁니다:
 
 ```swift
 let firstPhoto = await downloadPhoto(named: photoNames[0])
@@ -115,7 +115,7 @@ let photos = [firstPhoto, secondPhoto, thirdPhoto]
 show(photos)
 ```
 
-이 접근 방식에는 중요한 결점이 있는데: 내려받기가 비동기라 진행하는 동안 다른 작업이 발생하도록 하긴 하지만, `downloadPhoto(named:)` 에 대한 호출은 한번에 하나씩만 실행한다는 것입니다. 그 다음 내려받기를 시작하기 전에 각각의 사진을 완전히 내려받습니다. 하지만, 이 연산은 기다릴 필요가 없습니다-각각의 사진은 독립적으로, 또는 심지어 동시에, 내려받을 수 있습니다.
+이 접근법에는 중요한 결점이 있는데: 내려받기가 비동기라 진행 동안 다른 작업이 발생하게 하긴 하지만, `downloadPhoto(named:)` 의 호출은 한번에 하나씩만 실행한다는 겁니다. 그 다음 걸 내려받기 전에 각각의 사진을 완전히 내려받습니다. 하지만, 이러한 연산은 기다릴 필요가 없습니다-각각의 사진을 독립하여, 또는 심지어 동시에, 내려받을 수 있습니다.
 
 비동기 함수를 자기 주변 코드와 병렬로 실행하도록 호출하려면, 상수를 정의할 때 `let` 앞에 `async` 를 작성한 다음, 상수를 사용할 때마다 `await` 를 작성합니다. 
 
