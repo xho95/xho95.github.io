@@ -70,11 +70,11 @@ show(photo)
 5. 그 다음 `await` 표시는 `downloadPhoto(named:)` 함수 호출에 있습니다. 이 코드는 그 함수가 반환할 때까지 실행을 다시 일시 정지하여, 다른 동시성 코드에 실행 기회를 줍니다.
 6. `downloadPhoto(named:)` 의 반환 후, 반환 값을 `photo` 에 할당한 다음 `show(_:)` 를 호출할 때 인자로 전달합니다.
 
-코드에서 `await` 로 표시하여 '멈춰달 수 있는 지점' 은 현재 코드 조각이 비동기 함수나 메소드의 반환을 기다리는 동안 일시 정지할 수 있음을 지시합니다. 이를 _쓰레드 넘겨주기 (yielding the thread)_ 라고도 하는데, 그 이면을 살펴보면, 스위프트가 현재 쓰레드에서의 코드 실행을 멈춰달고 그 대신 해당 쓰레드에서 일부 다른 코드를 실행하기 때문입니다. `await` 를 가진 코드는 실행을 멈춰달 수 있어야 하기 때문에, 프로그램의 정해진 자리에서만 비동기 함수나 메소드를 호출할 수 있습니다:
+코드에서 `await` 로 표시한 잠시 멈춤 가능 지점은 비동기 함수나 메소드의 반환을 기다리는 동안 현재 코드 조각을 일시 정지할지도 모른다고 지시합니다. 이를 _쓰레드 넘겨주기 (yielding the thread)_ 라고도 하는데, 스위프트가, 그 이면에서, 현재 쓰레드에서의 코드 실행을 잠시 멈추고 그 대신 그 쓰레드에서 어떠한 다른 코드를 실행하기 때문입니다. `await` 가 있는 코드는 실행을 잠시 멈출 수 있어야 하기 때문에, 비동기 함수나 메소드는 프로그램의 정해진 곳에서만 호출할 수 있습니다:
 
-* 비동기 함수나, 메소드, 또는 속성의 본문 코드
-* `@main` 으로 표시한 구조체, 클래스, 또는 열거체의 '정적 `main() 메소드' 안에 있는 코드
-* 아래 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에 보인 것 같이, '떼어 놓은 자식 임무 (detached child task)' 안에 있는 코드
+* 비동기 함수나, 메소드, 또는 속성의 본문 안에 있는 코드
+* `@main` 으로 표시한 구조체나, 클래스, 또는 열거체의 정적 `main() 메소드 안에 있는 코드
+* 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보는 것처럼, 떼어낸 하위 임무 (detached child task) 안에 있는 코드
 
 > [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 동시성 작동 방법을 배우기 위한 단순한 코드의 작성 시에 유용합니다. 이 메소드는 아무 것도 안하지만, 반환 전에 최소한 주어진 나노 초 만큼은 기다립니다. 다음은 `sleep()` 을 사용하여 네트워크 연산의 기다림을 모의 실험하는 버전의 `listPhotos(inGallery:)` 함수입니다.
 > 
@@ -255,7 +255,7 @@ print(logger.max)  // 에러
 
 [^threads]: '쓰레드 (thread)' 는 스위프트 내부에서 사용하는 것이고, 우리는 쓰레드를 사용하여 제작된 '동시성 (concurrency)' 을 사용하게 됩니다.
 
-[^possible-suspension-point]: '잠시 멈춤 가능 지점 (the possible suspension point)' 는 스위프트에서 새로운 쓰레드의 시작 지점이라고 생각할 수 있습니다.
+[^possible-suspension-point]: '잠시 멈춤 가능 지점 (the possible suspension point)' 는 스위프트가 '쓰레드 넘겨주기 (yielding the thread)' 를 하는 지점입니다. 이에 대한 내용은 본문 바로 밑에서 설명합니다.
 
 [^preemptive]: '선점 (preemptive)' 이란 '운영체제가 우선 순위에 따라 프로세스의 CPU 자원을 강제로 빼앗을 수 있는 방식' 을 의미합니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
 
