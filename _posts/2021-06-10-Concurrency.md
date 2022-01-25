@@ -76,7 +76,7 @@ show(photo)
 * `@main` 으로 표시한 구조체나, 클래스, 또는 열거체의 정적 `main() 메소드 안에 있는 코드
 * 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보는 것처럼, 떼어낸 하위 임무 (detached child task) 안에 있는 코드
 
-> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 단순한 코드를 작성하여 동시성 작업 방식을 익히고자 할 때 유용합니다. 이 메소드는, 반환 전에 적어도 주어진 나노 초 만큼을 기다리는 외엔, 아무 것도 하지 않습니다. 다음은 `sleep()` 을 써서 네트웍 연산의 기다림을 모의 실험하는 `listPhotos(inGallery:)` 함수 버전입니다.
+> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 단순한 코드를 작성하여 동시성 작업 방식을 익히고자 할 때 유용합니다. 이 메소드는, 반환 전에 적어도 주어진 나노 초 만큼을 기다리는 외엔, 아무 것도 하지 않습니다. 다음은 `sleep()` 을 사용하여 네트웍 연산의 기다림을 모의 실험하는 `listPhotos(inGallery:)` 함수 버전입니다.
 > 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
@@ -87,7 +87,7 @@ func listPhotos(inGallery name: String) async -> [String] {
 
 ### Asynchronous Sequences (비동기 시퀀스)
 
-이전 부분에 있는 `listPhotos(inGallery:)` 함수는, 모든 배열 원소가 준비되면, 배열 전체를 한꺼번에 반환합니다. 또 다른 접근 방식은 _비동기 시퀀스 (asynchronous sequence)_[^sequence] 를 사용하여 한번에 집합체 한 원소씩 기다리는 것입니다. 다음은 비동기 시퀀스의 반복 동작을 보인 것입니다:
+이전 부분의 `listPhotos(inGallery:)` 함수는, 모든 배열 원소를 준비한 후, 배열 전체를 한꺼번에 비동기로 반환합니다. 또 다른 접근법은 _비동기 시퀀스 (asynchronous sequence)_[^sequence] 를 사용하여 한번에 한 집합체 원소를 기다리는 겁니다. 비동기 시퀀스의 반복 동작을 보면 이렇습니다:
 
 ```swift
 import Foundation
@@ -98,9 +98,9 @@ for try await line in handle.bytes.lines {
 }
 ```
 
-평범한 `for`-`in` 반복문을 사용하는 대신, 위 예제는 `for` 뒤에 `await` 를 작성합니다. 비동기 함수나 메소드를 호출할 때 같이, `await` 의 작성은 '멈춰달 수 있는 지점' 을 지시합니다. `for`-`await`-`in` 반복문은 각 회차 맨 앞에서, 다음 원소가 사용 가능하길 기다릴 때, 잠재적으로 실행을 멈춰답니다.
+평범한 `for`-`in` 반복문을 사용하는 대신, 위 예제에선 `for` 뒤에 `await` 를 작성합니다. 비동기 함수나 메소드 호출 때와 같이, `await` 를 작성하는 건 잠시 멈춤 가능 지점을 지시합니다. `for`-`await`-`in` 반복문은, 다음 원소의 사용을 기다릴 때, 각 회차의 맨 앞에서 실행을 잠시 멈출 가능성이 있습니다.
 
-[Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜에 대한 준수성을 추가함으로써 자신만의 타입을 `for`-`in` 반복문에서 사용할 수 있는 것과 똑같이, [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜에 대한 준수성을 추가함으로써 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용할 수 있습니다. 
+자신만의 타입을 `for`-`in` 반복문에서 사용하려면 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하면 되는 것과 똑같이, 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용하려면 [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜을 준수하면 됩니다. 
 
 ### Calling Asynchronous Functions in Parallel (비동기 함수를 병렬로 호출하기)
 
@@ -259,4 +259,4 @@ print(logger.max)  // 에러
 
 [^preemptive]: '선점 (preemptive)' 이란 '운영체제가 우선 순위에 따라 프로세스의 CPU 자원을 강제로 빼앗을 수 있는 방식' 을 의미합니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
 
-[^sequence]: '시퀀스 (sequence)' 는 '수열' 을 의미하는 수학 용어로, 자료 구조 분야에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
+[^sequence]: '시퀀스 (sequence)' 는 수학에서의 '수열' 을 의미하며, 자료 구조에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 시퀀스에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
