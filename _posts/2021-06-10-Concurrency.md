@@ -102,7 +102,7 @@ for try await line in handle.bytes.lines {
 
 자신만의 타입을 `for`-`in` 반복문에서 사용하려면 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하면 되는 것과 똑같이, 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용하려면 [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜을 준수하면 됩니다. 
 
-### Calling Asynchronous Functions in Parallel (병렬로 비동기 함수 호출하기)
+### Calling Asynchronous Functions in Parallel (비동기 함수를 병렬로 호출하기)
 
 `await` 로 비동기 함수를 호출하면 한번에 한 조각의 코드만 실행합니다. 비동기 코드를 실행하는 동안, 호출한 쪽이 그 코드가 종료하길 기다린 후에 그 다음 코드를 실행하려 이동합니다. 예를 들어, 전시관의 첫 사진 세 개를 가져오려고, 다음 처럼 세 개의 `downloadPhoto(named:)` 함수 호출을 기다릴 수도 있을 겁니다:
 
@@ -141,7 +141,7 @@ show(photos)
 
 ### Tasks and Task Groups (임무와 임무 그룹)
 
-_임무 (task)_ 는 프로그램에서 비동기로 실행할 수 있는 작업의 단위입니다. 모든 비동기 코드는 어떠한 임무의 일부로써 실행합니다. 이전 부분에서 설명한 `async`-`let` 구문은 자식 임무를 생성합니다. 임무 그룹 (task group) 을 생성하고 그 그룹에 자식 임무를 추가할 수도 있는데, 이는 우선 순위와 취소를 더 잘 제어하게 하며, 임무 개수를 동적으로 생성할 수 있게 합니다.
+_임무 (task)_ 는 프로그램에서 비동기로 실행할 수 있는 작업의 단위입니다. 모든 비동기 코드는 어떠한 임무의 일부로써 실행합니다. 이전 부분에서 설명한 `async`-`let` 구문은 자식 임무를 생성합니다. 임무 그룹 (task group) 을 생성하고 그 그룹에 자식 임무를 추가할 수도 있는데, 이는 우선 순위와 취소를 더 잘 제어하도록 하며, 임무 개수를 동적으로 생성할 수 있게 합니다.
 
 '임무' 는 계층 구조로 배열합니다. '임무 그룹' 에서 각각의 '임무' 는 똑같은 '부모 (parent) 임무' 를 가지며, 각각의 '임무' 가 '자식 임무' 를 가질 수도 있습니다. '임무'와 '임무 그룹' 간의 명시적인 관계 때문에, 이 접근 방식을 _구조화된 동시성 (structured concurrency)_ 이라고 합니다. 올바르게 하기 위한 약간의 책임을 맡긴 해야 하지만, 임무 간의 명시적인 부모-자식 관계는 '취소 (cancellation) 전파하기' 같은 일부 동작을 스위프트가 처리하게 해주며, 일부 에러를 스위프트가 컴파일 시간에 탐지하도록 해줍니다. 
 
