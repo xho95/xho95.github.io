@@ -139,22 +139,22 @@ show(photos)
 
 동일한 코드에서 이 접근법 둘 다를 섞을 수도 있습니다.
 
-### Tasks and Task Groups (임무와 임무 그룹)
+### Tasks and Task Groups (임무 및 임무 그룹)
 
-_임무 (task)_ 는 프로그램에서 비동기로 실행할 수 있는 작업의 단위입니다. 모든 비동기 코드는 어떠한 임무의 일부로써 실행합니다. 이전 부분에서 설명한 `async`-`let` 구문은 자식 임무를 생성합니다. 임무 그룹 (task group) 을 생성하고 그 그룹에 자식 임무를 추가할 수도 있는데, 이는 우선 순위와 취소를 더 잘 제어하도록 하며, 동적 개수의 임무를 생성하게 해줍니다.
+_임무 (task)_ 는 프로그램에서 비동기로 실행할 수 있는 작업 단위입니다. 모든 비동기 코드는 어떠한 임무의 일부분으로써 실행합니다. 이전 절에서 설명한 `async`-`let` 구문은 자식 임무를 생성합니다. 임무 그룹을 생성하여 그 그룹에 자식 임무를 추가할 수도 있는데, 이러면 우선 순위와 취소 작업을 더 잘 제어할 수 있으며, 동적 개수의 임무도 생성하게 해줍니다.
 
-임무는 계층 구조로 배열합니다. 임무 그룹에 있는 각 임무의 부모 임무는 똑같으며, 각 임무가 자식 임무를 가질 수 있습니다. 임무와 임무 그룹 사이의 명시적인 관계 때문에, 이런 접근법을 _구조화된 동시성 (structured concurrency)_ 이라고 합니다. 올바르게 할 책임 일부를 지긴 하지만, 임무 사이의 명시적인 부모-자식 관계는 스위프트가 취소 전파와 같은 일부 동작을 직접 처리하도록 해주며, 컴파일 시간에 스위프트가 일부 에러를 탐지하도록 해줍니다.
+임무는 계층 구조로 배열합니다. 임무 그룹에 있는 각각의 임무는 동일한 부모 임무를 가지며, 각각의 임무도 자식 임무를 가질 수 있습니다. 임무와 임무 그룹 사이의 명시적인 관계 때문에, 이런 접근법을 _구조화된 동시성 (structured concurrency)_ 이라고 합니다. 올바로 할 책임은 자신이 져야 하지만, 임무 사이의 명시적인 부모-자식 관계는 취소 전파와 같은 일부 동작을 스위프트가 처리하게 하며, 컴파일 시간에 일부 에러도 스위프트가 탐지하게 해줍니다.
 
 ```swift
 await withTaskGroup(of: Data.self) { taskGroup in
-    let photoNames = await listPhotos(inGallery: "Summer Vacation")
-    for name in photoNames {
-        taskGroup.async { await downloadPhoto(named: name) }
+  let photoNames = await listPhotos(inGallery: "Summer Vacation")
+  for name in photoNames {
+    taskGroup.async { await downloadPhoto(named: name) }
     }
 }
 ```
 
-'임무 그룹' 에 대한 더 많은 정보는, [TaskGroup](https://developer.apple.com/documentation/swift/taskgroup) 항목을 참고하기 바랍니다. 
+임무 그룹에 대한 더 많은 정보는, [TaskGroup](https://developer.apple.com/documentation/swift/taskgroup) 항목을 참고하기 바랍니다. 
 
 #### Unstructured Concurrency (구조화 안된 동시성)
 
