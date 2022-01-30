@@ -158,12 +158,12 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 #### Unstructured Concurrency (구조화 안된 동시성)
 
-이전 부분에서 설명한 '동시성에 대한 구조화된 접근 방식' 에 더하여, 스위프트는 '구조화 안된 동시성' 도 지원합니다. '임무 그룹' 의 일부분인 '임무' 와는 달리, _구조화 안된 임무 (unstructured task)_ 는 '부모 임무' 를 가지지 않습니다. '구조화 안된 임무' 는 프로그램에 필요하다면 무슨 방식으로든 관리하는 완전한 유연함을 가지지만, 올바르게 하기 위한 책임도 완전히 져야 합니다. 현재의 '행위자' 에서 실행할 '구조화 안된 임무' 를 생성하려면, [async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 함수를 호출합니다. 특히 _떼어 놓은 임무 (detached task)_ 라고 더 잘 알려진, '현재의 행위자를 이루지는 않을 구조화 안된 임무' 를 생성하려면, [asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 를 호출합니다. 이 함수 둘 다-예를 들어, 결과를 기다리거나 취소하기 위해-임무와 상호 작용하게 해주는 '임무 핸들 (task handle)' 을 반환합니다.
+이전 절에서 설명한 구조화된 동시성 접근법에 더해, 스위프트는 구조화 안된 동시성도 지원합니다. 임무 그룹의 일부인 임무들과는 달리, _구조화 안된 임무 (unstructured task)_ 에는 부모 임무가 없습니다. 구조화 안된 임무는 프로그램에 필요하다면 무슨 방식으로든 완전히 유연하게 관리할 수 있지만, 그게 올바른 지도 완전히 책임져야 합니다. 현재의 '행위자' 에서 실행할 '구조화 안된 임무' 를 생성하려면, [async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 함수를 호출합니다. 특히 _떼어 놓은 임무 (detached task)_ 라고 더 잘 알려진, '현재의 행위자를 이루지는 않을 구조화 안된 임무' 를 생성하려면, [asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 를 호출합니다. 이 함수 둘 다-예를 들어, 결과를 기다리거나 취소하기 위해-임무와 상호 작용하게 해주는 '임무 핸들 (task handle)' 을 반환합니다.
 
 ```swift
 let newPhoto = // ... 약간의 사진 자료 ...
 let handle = async {
-    return await add(newPhoto, toGalleryNamed: "Spring Adventures")
+  return await add(newPhoto, toGalleryNamed: "Spring Adventures")
 }
 let result = await handle.get()
 ```
