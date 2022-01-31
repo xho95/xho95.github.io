@@ -170,17 +170,17 @@ let result = await handle.get()
 
 떼어낸 임무의 관리에 대한 더 많은 정보는, [Task](https://developer.apple.com/documentation/swift/task/) 항목을 참고하기 바랍니다.
 
-#### Task Cancellation (임무 취소 작업)
+#### Task Cancellation (임무 취소)
 
-스위프트 동시성은 협동 취소 모델을 사용합니다. 각각의 임무는 적절한 실행 시점에 자신이 취소됐는지를 검사하여, 적절한 무슨 방식으로든 그 취소에 응답합니다. 하고 있던 작업에 따라, 대체로 이는 다음 중 하나를 의미합니다:
+스위프트 동시성은 협동 취소 모델[^cooperative-cancellation-model] 을 사용합니다. 각각의 임무는 적절한 실행 시점에 자신의 취소 여부를 검사하고, 무슨 방식으로든 적절하게 취소에 응답합니다. 하던 작업에 따라, 이는 대체로 다음 중 하나를 의미합니다:
 
-* `CancellationError` 와 같은 에러를 던짐
+* `CancellationError` 같은 에러를 던짐
 * `nil` 또는 빈 집합체 (collection) 를 반환함
 * 부분적으로 완료한 작업을 반환함
 
-취소 검사를 하려면, '임무' 가 취소되면 `CancellationError` 를 던지는, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하든지, 아니면 [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 의 값을 검사하여 자신의 코드에서 취소 처리를 합니다. 예를 들어, '전시관에서 사진 내려받기' 같은 임무는 '부분적으로 내려받은 것' 을 삭제하고 네트워크 연결을 닫아야 할지도 모릅니다.
+취소를 검사하려면, 임무가 취소됐으면 `CancellationError` 를 던지는, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하든지, 아니면 [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 값을 검사하여 자신의 코드에서 취소를 처리합니다. 예를 들어, 전시관에서 사진을 내려받는 임무는 부분적으로 내려받은 건 삭제하고 네트웍 연결은 닫아야 할지도 모릅니다.
 
-취소 작업을 수동으로 전파하려면, [Task.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
+취소를 수동으로 전파하려면, [Task.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
 
 ### Actors (행위자)
 
@@ -260,3 +260,5 @@ print(logger.max)  // 에러
 [^preemptive]: '선점 (preemptive)' 이란 '운영체제가 우선 순위에 따라 프로세스의 CPU 자원을 강제로 빼앗을 수 있는 방식' 을 의미합니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
 
 [^sequence]: '시퀀스 (sequence)' 는 수학에서의 '수열' 을 의미하며, 자료 구조에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 시퀀스에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
+
+[^cooperative-cancellation-model]: '협동 취소 모델 (cooperative cancellation model)' 은 부모 임무를 취소할 경우 자신의 모든 자식 임무에게 자신이 취소됐음을 알리는 방식을 의미합니다. 이에 대한 더 자세한 내용은, [Alexito's World](https://alejandromp.com) 님의 [The importance of cooperative cancellation](https://alejandromp.com/blog/the-importance-of-cooperative-cancellation/) 항목을 참고하기 바랍니다. 
