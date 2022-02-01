@@ -225,7 +225,7 @@ extension TemperatureLogger {
 }
 ```
 
-`update(with:)` 메소드는 이미 행위자에서 실행 중이므로, `max` 같은 속성의 접근을 `await` 로 표시하지 않습니다. 이 메소드는 행위자가 한번에 자신의 '변경 가능 상태' 에 오직 한 '임무' 와의 상호 작용만을 허용하는 이유도 보여주는데: '행위자' 의 상태를 일부 갱신하는 것은 일시적으로 '불변 (invariants)' 을 깨뜨리기 때문입니다. `TemperatureLogger` 행위자는 온도 목록과 최대 온도를 계속 추적하고, 새 측정 값을 기록할 때 최대 온도를 갱신합니다. 갱신 중간, 새 측정 값을 덧붙인 후 `max` 를 갱신하기 전의, '온도 기록자' 는 일시적으로 '일관성 없는 (inconsistent) 상태' 입니다. 여러 '임무' 가 동시에 똑같은 인스턴스와 상호 작용하는 것을 막는 것은 다음의 일련의 이벤트와 같은 문제들을 막아줍니다:
+`update(with:)` 메소드는 이미 행위자에서 실행[^on-the-actor] 중이므로, `max` 같이 자신의 속성에 접근하는데 `await` 를 표시하진 않습니다. 이 메소드는 행위자가 자신의 변경 가능 상태에 한번에 한 임무와의 상호 작용만 허용하는 이유도 보여주는데: 행위자의 일부 상태를 갱신하는 건 일시적으로 불변 상태 (invariants) 를 깨뜨리기 때문입니다. `TemperatureLogger` 행위자는 온도 목록 및 최대 온도를 계속 추적하며, 새로운 측정 값을 기록할 땐 최대 온도를 갱신합니다. 갱신 중간에, 새로운 측정 값은 덧붙였지만 `max` 는 갱신하기 전인, 온도 기록자 (TemperatureLogger) 는 일시적으로 일관성이 없는 (inconsistent) 상태입니다. 여러 '임무' 가 동시에 똑같은 인스턴스와 상호 작용하는 것을 막는 것은 다음의 일련의 이벤트와 같은 문제들을 막아줍니다:
 
 1. 코드가 `update(with:)` 메소드를 호출합니다. 이는 먼저 `measurement` 배열을 갱신합니다.
 2. 코드가 `max` 를 갱신할 수 있기 전에, 다른 곳의 코드가 '최대 값' 과 '온도 배열' 을 읽습니다.
@@ -262,3 +262,5 @@ print(logger.max)  // 에러
 [^sequence]: '시퀀스 (sequence)' 는 수학에서의 '수열' 을 의미하며, 자료 구조에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 시퀀스에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
 
 [^cooperative-cancellation-model]: '협동 취소 모델 (cooperative cancellation model)' 은 부모 임무를 취소할 경우 자신의 모든 자식 임무에게 자신이 취소됐음을 알리는 방식을 의미합니다. 이에 대한 더 자세한 내용은, [Alexito's World](https://alejandromp.com) 님의 [The importance of cooperative cancellation](https://alejandromp.com/blog/the-importance-of-cooperative-cancellation/) 항목을 참고하기 바랍니다. 
+
+[^on-the-actor]: `update(with:)` 메소드는 행위자의 멤버이므로, 특정한 행위자에 대해서 실행하고 있는 중입니다.
