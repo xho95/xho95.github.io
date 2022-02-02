@@ -111,7 +111,7 @@ _이항 표현식 (binary expressions)_ 은 '이항 중위 연산자'[^infix-bin
 
 '스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목을 참고하기 바랍니다.
 
-> '구문 해석 (parse)' 시간에, 이항 연산자로 이루어진 표현식은 '납작한 리스트 (flat list)'[^flat-list] 로 표현됩니다. 이 '리스트 (list)' 에 '연산자 우선 순위' 를 적용하여 '트리 (tree)' 로 변형합니다. 예를 들어, `2 + 3 * 5` 라는 표현식은 초기에는 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 '납작한 리스트' 라고 이해합니다. 이 가공 과정은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변형합니다.
+> '구문 해석 (parse)' 시간에, 이항 연산자로 이루어진 표현식은 '납작한 리스트 (flat list)'[^flat-list] 로 표현됩니다. 이 '리스트 (list)' 에 '연산자 우선권' 을 적용하여 '트리 (tree)' 로 변형합니다. 예를 들어, `2 + 3 * 5` 라는 표현식은 초기에는 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 '납작한 리스트' 라고 이해합니다. 이 가공 과정은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변형합니다.
 
 > GRAMMAR OF A BINARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -447,7 +447,7 @@ let z: SomeClass = .sharedSubclass
 
 #### Parenthesized Expression (괄호 표현식)
 
-_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호는 표현식을 명시적으로 그룹지어서 '연산의 우선 순위 (precedence)' 를 지정하기 위해 사용할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
+_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호를 사용하면 표현식 그룹을 명시함으로써 연산의 우선권을 지정할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
 
 > GRAMMAR OF A PARENTHESIZED MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
