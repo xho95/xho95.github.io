@@ -10,7 +10,7 @@ categories: Swift Language Grammar Type Casting
 
 ## Type Casting (타입 변환)
 
-_타입 변환 (Type Casting)_ 은 인스턴스의 타입을 검사하거나, 해당 인스턴스를 자신의 '클래스 계층 (class hierarchy)' 어딘가의 다른 '상위 클래스' 또는 '하위 클래스' 로 취급하기 위한 방법입니다.
+_타입 변환 (Type Casting)_ 은 인스턴스의 타입을 검사하거나, 그 인스턴스를 자신의 클래스 계층 (class hierarchy) 어딘가에 있는 상위 클래스 또는 하위 클래스로 취급하는 방법입니다.
 
 스위프트의 '타입 변환' 은 `is` 와 `as` 연산자로 구현합니다. 이 두 연산자는 값의 타입을 검사하거나 값을 다른 타입으로 변환하는 간단하면서도 이해하기 쉬운 방법을 제공합니다.
 
