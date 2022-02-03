@@ -10,15 +10,15 @@ categories: Swift Language Grammar Type Casting
 
 ## Type Casting (타입 변환)
 
-_타입 변환 (Type Casting)_ 은 인스턴스의 타입을 검사하거나, 그 인스턴스를 자신의 클래스 계층 (class hierarchy) 어딘가에 있는 상위 클래스 또는 하위 클래스로 취급하는 방법입니다.
+_타입 변환 (Type Casting)_[^type-casting-and-type-conversion] 은 인스턴스의 타입을 검사하거나, 그 인스턴스를 클래스 계층 구조 어딘가의 상위 클래스 및 하위 클래스로 취급하는 방법입니다.
 
-스위프트의 '타입 변환' 은 `is` 와 `as` 연산자로 구현합니다. 이 두 연산자는 값의 타입을 검사하거나 값을 다른 타입으로 변환하는 간단하면서도 이해하기 쉬운 방법을 제공합니다.
+스위프트의 타입 변환은 `is` 와 `as` 연산자로 구현합니다. 이 두 연산자는 단순하고 좋은 표현력으로[^expressive] 값의 타입을 검사하거나 값을 다른 타입으로 변환하는 방식을 제공합니다.
 
-타입 변환은, [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명한 것처럼, 타입이 프로토콜을 준수하는지 검사하기 위해 사용할 수도 있습니다.
+[Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명한 것처럼, 타입 변환을 사용하여 타입이 프로토콜을 준수하는지 검사할 수 있습니다.
 
 ### Defining a Class Hierarchy for Type Casting (타입 변환을 위한 클래스 계층 정의하기)
 
-'타입 변환 (type casting)'[^type-casting-and-type-conversion] 을 '클래스와 하위 클래스의 계층 (hierarchy)' 과 함께 사용하여 특정 클래스 인스턴스의 타입을 검사하고 해당 인스턴스를 같은 '계층' 내의 다른 클래스로 변환할 수 있습니다. 아래의 세 코드 조각들은, '타입 변환' 예제에서 사용하기 위한, '클래스들의 계층' 과 이 클래스들의 인스턴스를 담은 배열을 정의합니다.
+'타입 변환 (type casting)' 을 '클래스와 하위 클래스의 계층 (hierarchy)' 과 함께 사용하여 특정 클래스 인스턴스의 타입을 검사하고 해당 인스턴스를 같은 '계층' 내의 다른 클래스로 변환할 수 있습니다. 아래의 세 코드 조각들은, '타입 변환' 예제에서 사용하기 위한, '클래스들의 계층' 과 이 클래스들의 인스턴스를 담은 배열을 정의합니다.
 
 첫 번째 조각은 `MediaItem` 이라는 새로운 '기초 (base) 클래스'[^base-class] 를 정의합니다. 이 클래스는 '디지털 미디어 라이브러리' 의 어떤 항목에든 기초가 되는 기능을 제공합니다. 특별히, 이는 `String` 타입의 `name` 속성과, `init name` 초기자를 선언합니다. (모든 영화와 노래를 포함한, 모든 미디어 항목들은 이름을 가질 것으로 가정합니다.)
 
@@ -214,7 +214,9 @@ things.append(optionalNumber as Any) // 경고 없음
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^type-casting-and-type-conversion]: '타입 변환' 은 영어로 'type casting' 과 'type conversion' 둘 다에 적용할 수 있지만, 이 둘은 서로 조금 다릅니다. 'type casting' 과 'type conversion' 의 가장 기본적인 차이점은 'type conversion' 은 컴파일러에 의해 자동으로 이루어지는 반면, 'type casting' 은 개발자가 명시적으로 지정한다는 점입니다. 'type casting' 과 'type conversion' 의 차이점에 대한 정보는, [Difference Between Type Casting and Type Conversion](https://techdifferences.com/difference-between-type-casting-and-type-conversion.html) 항목을 참고하기 바랍니다.
+[^type-casting-and-type-conversion]: 타입 변환은 영어로 'type casting' 과 'type conversion' 둘 다에 적용할 수 있지만, 이 둘은 서로 조금 다릅니다. 'type casting' 과 'type conversion' 의 가장 기본적인 차이점은 'type conversion' 은 컴파일러에 의해 자동으로 이루어지는 반면, 'type casting' 은 개발자가 명시적으로 지정한다는 점입니다. 'type casting' 과 'type conversion' 의 차이점에 대한 정보는, [Difference Between Type Casting and Type Conversion](https://techdifferences.com/difference-between-type-casting-and-type-conversion.html) 항목을 참고하기 바랍니다.
+
+[^expressive]: '표현력이 좋다 (expressive)' 는 건 '컴파일러와 개발자 모두가 이해하기 쉬운 코드를 쉽게 작성할 수 있다' 는 의미입니다. 이에 대한 더 자세한 내용은, **stackoverflow** 의 [What does "expressive" mean when referring to programming languages?](https://stackoverflow.com/questions/638881/what-does-expressive-mean-when-referring-to-programming-languages) 항목을 참고하기 바랍니다. 
 
 [^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분과 해당 주석을 참고하기 바랍니다.
 
