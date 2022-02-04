@@ -64,7 +64,7 @@ let library = [
 // "library" 의 타입은 [MediaItem] 이라고 추론함
 ```
 
-그 이면을 살펴보면 `library` 에 저장된 항목은 여전히 `Movie` 와 `Song` 인스턴스 입니다. 하지만, 이 배열의 내용에 동작을 반복하면, 되돌려 받는 항목은, `Movie` 나 `Song` 이 아니라, `MediaItem` 타입입니다. 이를 본래 타입으로 작업하기 위해선, 아래 설명한 것처럼, 타입을 _검사 (check)_ 하거나, 다른 타입으로 '_내림 변환 (downcast)_' 할 필요가 있습니다.
+`library` 에 저장한 항목의 이면은 여전히 `Movie` 와 `Song` 인스턴스입니다. 하지만, 이 배열 내용물을 반복하면, 되돌려 받는 항목은 `MediaItem` 타입이지, `Movie` 나 `Song` 이 아닙니다. 본래 자신의 타입으로 작업하기 위해선, 아래 설명한 것처럼, 타입을 _검사 (check)_ 하거나, 다른 타입으로 _내림 변환 (downcast)_[^downcast] 할 필요가 있습니다.
 
 ### Checking Type (타입 검사하기)
 
@@ -92,7 +92,7 @@ print("Media library contains \(movieCount) movies and \(songCount) songs")
 
 `item is Movie` 는 현재의 `MediaItem` 이 `Movie` 인스턴스면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다. 이와 비슷하게, `item is Song` 은 항목이 `Song` 인스턴스인지 검사합니다. `for-in` 반복문의 끝에서, `movieCount` 와 `songCount` 의 값은 각 타입 별로 찾은 `MediaItem` 인스턴스 개수를 담고 있습니다.
 
-### Downcasting (내림 변환하기)
+### Downcasting (내림 변환)
 
 정해진 클래스 타입의 상수나 변수는 그 이면을 살펴보면 실제로는 하위 클래스의 인스턴스를 참조할 수도 있습니다. 이 경우라고 믿을 경우, _타입 변환 연산자 (type cast operator;_ `as?` 또는 `as!`_)_ 로 하위 클래스 타입으로 _내림 변환 (downcast)_ 을 해 볼 수 있습니다.
 
@@ -219,5 +219,7 @@ things.append(optionalNumber as Any) // 경고 없음
 [^expressive]: '표현력이 좋다 (expressive)' 는 건 '컴파일러와 개발자 모두가 이해하기 쉬운 코드를 쉽게 작성할 수 있다' 는 의미입니다. 이에 대한 더 자세한 내용은, **stackoverflow** 의 [What does "expressive" mean when referring to programming languages?](https://stackoverflow.com/questions/638881/what-does-expressive-mean-when-referring-to-programming-languages) 항목을 참고하기 바랍니다. 
 
 [^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass) 가 없는 클래스' 를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 참고하기 바랍니다.
+
+[^downcast]: '내림 변환 (downcast)' 은 클래스 계층 구조에서 하위 클래스의 하나로 변환하는 것을 말합니다. 내림 변환에 대한 자세한 내용은, 바로 뒤의 [Downcasting (내림 변환)](#downcasting-내림-변환) 부분에서 설명하고 있습니다.
 
 [^ghostbusters]: '고스트 버스터즈 (Ghostbusters)' 는 1984년 개봉한 헐리우드 영화로, 한 때 주제곡이 꽤 유행 했었습니다. 우리말로는 "유령 박멸자" 정도로 이해할 수 있습니다.
