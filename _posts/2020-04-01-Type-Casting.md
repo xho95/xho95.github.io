@@ -18,9 +18,9 @@ _타입 변환 (Type Casting)_[^type-casting-and-type-conversion] 은 인스턴�
 
 ### Defining a Class Hierarchy for Type Casting (타입 변환을 위한 클래스 계층 정의하기)
 
-타입 변환을 클래스 및 하위 클래스 계층 구조와 함께 사용하면 한 특별한 클래스 인스턴스의 타입을 검사하여 그 인스턴스를 동일한 계층 구조 안의 다른 클래스로 변환할 수 있습니다. 아래의 세 코드 조각은, 타입 변환 예제에서 사용할, 클래스 계층 구조 및 이러한 클래스 인스턴스를 담은 배열을 정의합니다.
+타입 변환을 클래스 및 하위 클래스 계층 구조와 함께 사용하면 한 특별한 클래스 인스턴스의 타입을 검사하여 그 인스턴스를 동일한 계층 구조 안의 다른 클래스로 변환할 수 있습니다. 아래의 세 코드 조각은, 타입 변환 예제에서 사용할, 클래스 계층 구조 및 이 클래스 인스턴스들을 담은 배열을 정의합니다.
 
-첫 번째 조각은 `MediaItem` 이라는 새로운 '기초 (base) 클래스'[^base-class] 를 정의합니다. 이 클래스는 '디지털 미디어 라이브러리' 의 어떤 항목에든 기초가 되는 기능을 제공합니다. 특별히, 이는 `String` 타입의 `name` 속성과, `init name` 초기자를 선언합니다. (모든 영화와 노래를 포함한, 모든 미디어 항목들은 이름을 가질 것으로 가정합니다.)
+첫 번째 조각은 `MediaItem` 이라는 새로운 기초 클래스[^base-class] 를 정의합니다. 이 클래스는 디지털 미디어 라이브러리에 있는 어떤 종류의 항목에든 기초 기능을 제공합니다. 특히, `String` 타입인 `name` 속성과, `init name` 초기자를 선언합니다. (모든 미디어 항목은, 모든 영화와 노래를 포함하여, 이름이 있을거라고 가정합니다.)
 
 ```swift
 class MediaItem {
@@ -218,6 +218,6 @@ things.append(optionalNumber as Any) // 경고 없음
 
 [^expressive]: '표현력이 좋다 (expressive)' 는 건 '컴파일러와 개발자 모두가 이해하기 쉬운 코드를 쉽게 작성할 수 있다' 는 의미입니다. 이에 대한 더 자세한 내용은, **stackoverflow** 의 [What does "expressive" mean when referring to programming languages?](https://stackoverflow.com/questions/638881/what-does-expressive-mean-when-referring-to-programming-languages) 항목을 참고하기 바랍니다. 
 
-[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass)' 를 가지지 않는 클래스를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분과 해당 주석을 참고하기 바랍니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass) 가 없는 클래스' 를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 참고하기 바랍니다.
 
 [^ghostbusters]: '고스트 버스터즈 (Ghostbusters)' 는 1984년 개봉한 헐리우드 영화로, 한 때 주제곡이 꽤 유행 했었습니다. 우리말로는 "유령 박멸자" 정도로 이해할 수 있습니다.
