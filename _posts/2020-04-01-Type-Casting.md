@@ -66,11 +66,11 @@ let library = [
 
 `library` 에 저장한 항목의 이면은 여전히 `Movie` 와 `Song` 인스턴스입니다. 하지만, 이 배열 내용물을 반복하면, 되돌려 받는 항목은 `MediaItem` 타입이지, `Movie` 나 `Song` 이 아닙니다. 본래 자신의 타입으로 작업하기 위해선, 아래 설명한 것처럼, 타입을 _검사 (check)_ 하거나, 다른 타입으로 _내림 변환 (downcast)_[^downcast] 할 필요가 있습니다.
 
-### Checking Type (타입 검사하기)
+### Checking Type (타입 검사)
 
-_타입 검사 연산자 (type check operator;_ `is`_)_ 는  인스턴스가 정해진 '하위 클래스' 타입인지를 검사하기 위해 사용합니다. '타입 검사 연산자' 는 인스턴스가 해당 하위 클래스 타입이면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다.
+_타입 검사 연산자 (type check operator;_ `is`_)_ 를 사용하면 인스턴스가 정해진 하위 클래스 타입인지를 검사합니다. 타입 검사 연산자는 인스턴스가 그 하위 클래스 타입이면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다.
 
-아래 예제는, `library` 배열 내의 `Movie` 와 `Song` 인스턴스 개수를 세는, `movieCount` 와 `songCount` 라는, 두 변수를 정의합니다:
+아래 예제는,`movieCount` 와 `songCount` 라는, 두 변수를 정의하는데, 이는 `library` 배열 안에 있는 `Movie` 와 `Song` 인스턴스의 개수를 셉니다:
 
 ```swift
 var movieCount = 0
@@ -85,12 +85,12 @@ for item in library {
 }
 
 print("Media library contains \(movieCount) movies and \(songCount) songs")
-// "Media library contains 2 movies and 3 songs" 를 인쇄합니다.
+// "Media library contains 2 movies and 3 songs" 를 인쇄함
 ```
 
-이 예제는 `library` 배열에 있는 모든 항목 전체에 걸쳐 동작을 반복합니다. 메 번 지나갈 때마다, `for-in` 반복문은 `item` 상수를 배열의 그 다음 `MediaItem` 으로 설정합니다.
+이 예제는 `library` 배열의 모든 항목 전체를 반복합니다. 매 통과마다, `for-in` 반복문이 `item` 상수를 배열의 그 다음 `MediaItem` 으로 설정합니다.
 
-`item is Movie` 는 현재의 `MediaItem` 이 `Movie` 인스턴스면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다. 이와 비슷하게, `item is Song` 은 항목이 `Song` 인스턴스인지 검사합니다. `for-in` 반복문의 끝에서, `movieCount` 와 `songCount` 의 값은 각 타입 별로 찾은 `MediaItem` 인스턴스 개수를 담고 있습니다.
+`item is Movie` 는 현재의 `MediaItem` 이 `Movie` 인스턴스면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다. 이와 비슷하게, `item is Song` 은 항목이 `Song` 인스턴스인지 검사합니다. `for-in` 반복문 끝에서, `movieCount` 와 `songCount` 값에는 각각의 타입에서 찾은 `MediaItem` 인스턴스 개수가 담깁니다.
 
 ### Downcasting (내림 변환)
 
