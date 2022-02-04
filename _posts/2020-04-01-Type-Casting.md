@@ -51,7 +51,7 @@ class Song: MediaItem {
 }
 ```
 
-마지막 조각은, 두 개의 `Movie` 인스턴스와 세 개의 `Song` 인스턴스를 담은, `library` 라는 상수 배열을 생성합니다. `library` 배열의 타입은 배열 '글자 값 (literal)' 내용으로 초기화하는 것으로써 추론합니다. 스위프트의 '타입 검사기 (type checker)' 는 `Movie` 와 `Song` 이 `MediaItem` 이라는 '공통 상위 클래스' 를 가짐을 이끌어 낼 수 있으므로, `library` 배열의 타입을 `[MediaItem]` 이라고 추론합니다:
+마지막 조각은, `Movie` 인스턴스 두 개와 `Song` 인스턴스 세 개를 담은, `library` 라는 상수 배열을 생성합니다. `library` 배열의 타입은 이를 초기화하는 배열 글자 값의 내용물로 추론합니다. 스위프트 타입 검사기는 `Movie` 와 `Song` 의 공통 상위 클래스가 `MediaItem` 임을 이끌어 낼 수 있으므로, `library` 배열은 `[MediaItem]` 타입이라고 추론합니다:
 
 ```swift
 let library = [
@@ -61,7 +61,7 @@ let library = [
   Song(name: "The One And Only", artist: "Chesney Hawkes"),
   Song(name: "Never Gonna Give You Up", artist: "Rick Astley"),  
 ]
-// "library" 의 타입은 [MediaItem] 이라고 추론합니다.
+// "library" 의 타입은 [MediaItem] 이라고 추론함
 ```
 
 그 이면을 살펴보면 `library` 에 저장된 항목은 여전히 `Movie` 와 `Song` 인스턴스 입니다. 하지만, 이 배열의 내용에 동작을 반복하면, 되돌려 받는 항목은, `Movie` 나 `Song` 이 아니라, `MediaItem` 타입입니다. 이를 본래 타입으로 작업하기 위해선, 아래 설명한 것처럼, 타입을 _검사 (check)_ 하거나, 다른 타입으로 '_내림 변환 (downcast)_' 할 필요가 있습니다.
