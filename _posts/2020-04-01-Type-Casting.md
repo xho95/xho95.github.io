@@ -122,7 +122,7 @@ for item in library {
 // Song: Never Gonna Give You Up, by Rick Astley
 ```
 
-이 예제는 현재의 `item` 을 `Movie` 로 내림 변환 시도하는 것으로 시작합니다. `item` 이 `MediaItem` 인스턴스이기 때문에, 이는 `Movie` _일 수도 (might)_ 있고; 그와 같이, `Song` 이거나, 심지어 '기초 `MediaItem`' 일 수도 있습니다. 이 불확실성 때문에, `as?` 형식의 타입 변환 연산자는 하위 클래스 타입으로 내림 변환을 시도할 때 _옵셔널 (optional)_ 값을 반환합니다. `item as? Movie` 의 결과는 `Movie?`, 또는 "옵셔널 `Movie`" 타입입니다.
+이 예제는 현재 `item` 을 `Movie` 로 내림 변환하려는 걸로 시작합니다. `item` 이 `MediaItem` 인스턴스이기 때문에, `Movie` _일 수도 있는 (might)_ 게 가능하며; 그와 같이, `Song` 이거나, 또는 심지어 기초 `MediaItem` 일 수도 있습니다. 이런 불확실성 때문에, `as?` 형식의 타입 변환 연산자는 하위 클래스 타입으로 내림 변환을 시도할 때 _옵셔널 (optional)_ 값을 반환합니다. `item as? Movie` 의 결과는 `Movie?`, 또는 "옵셔널 `Movie`" 타입입니다.
 
 `Movie` 로의 내림 변환은 라이브러리 배열의 `Song` 인스턴스에 적용할 때는 실패합니다. 이를 대처하기 위해, 위 예제는 옵셔널 `Movie` 가 실제로 값을 담고 있는지 검사하기 위해 (즉, 내림 변환이 성공했는지 알아내기 위해) '옵셔널 연결 (optional binding)' 을 사용합니다. 이 '옵셔널 연결' 은 "`if let movie = item as? Movie`" 라고 작성하며, 다음 처럼 이해할 수 있습니다:
 
