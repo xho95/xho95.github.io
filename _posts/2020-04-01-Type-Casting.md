@@ -132,7 +132,7 @@ for item in library {
 
 > 변환 (casting) 이 실제로 인스턴스를 수정하거나 값을 바꾸는 건 아닙니다. 실제 인스턴스는 똑같이 남아 있으며; 단순히 변환된 타입의 인스턴스라고 취급하고 접근하는 것 뿐입니다.
 
-### Type Casting for Any and AnyObject ('Any' 와 'AnyObject' 를 위한 타입 변환)
+### Type Casting for Any and AnyObject (Any 및 AnyObject 의 타입 변환)
 
 스위프트는 불특정한 타입과 작업할 수 있는 두 개의 특수한 타입을 제공합니다:
 
