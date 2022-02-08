@@ -84,18 +84,18 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 // "theAceOfSpades: suit is ♠, value is 1 or 11" 를 인쇄함
 ```
 
-`Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있을지라도, 상황으로부터 타입을 추론할 수 있으므로, 이 인스턴스를 초기화할 때 (`.ace` 와 `.spades` 라는) 'case 값' 이름 만으로도 '열거체 case 값' 을 참조하는 게 가능합니다.[^case-name-alone] 위 예제에서, `description` 속성은 '스페이드 (Spades)' 의 '에이스 (Ace)' 가 `1` 또는 `11` 이라는 값을 가짐을 올바르게 보고합니다.
+`Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있을지라도, 이 타입들은 상황으로 추론할 수 있어서, (`.ace` 와 `.spades` 라는) 자신의 case 이름 만으로도 이 인스턴스의 초기화가 열거체 case 를 참조할 수 있습니다.[^case-name-alone] 위 예제에선, 스페이드 에이스엔 `1` 또는 `11` 의 값이 있음을 `description` 속성이 올바로 보고합니다.
 
 ### Referring to Nested Types (중첩 타입 참조하기)
 
-자신을 정의한 상황 밖에서 '중첩 타입' 을 사용하려면, 자기 이름 앞에 자신이 중첩되어 있는 타입의 이름을 접두사로 붙입니다:
+자신을 정의한 곳 밖에서 중첩 타입을 사용하려면, 그 이름에 자신을 중첩한 타입의 이름을 접두사로 붙입니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
-// heartsSymbol 은 "♡" 입니다.
+// heartsSymbol 은 "♡" 임
 ```
 
-위 예제를 보면, `Suit`, `Rank`, 그리고 `Values` 의 이름은 자신을 정의한 상황에 의해서 자연스럽게 '규명되기 (qualified)'[^qualified] 때문에, 의도적으로 이름을 짧게 유지할 수 있습니다.
+위 예제에서, 이는 `Suit`, `Rank`, 및 `Values` 의 이름을 의도적으로 짧게 유지할 수 있게 하는데, 자신을 정의한 곳이 자신의 이름을 자연스럽게 규명하기[^qualified] 때문입니다.
 
 ### 다음 장
 
@@ -119,6 +119,6 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optional Binding (옵셔널 연결)](#optional-binding-옵셔널-연결) 항목을 참고하기 바랍니다.
 
-[^case-name-alone]: 이는 `Suit.spades` 같이 타입을 직접 붙이지 않고 `.spades` 같은 사용할 수 있다는 의미입니다. 이것이 가능한 것은 '암시적인 멤버 초기자' 의 매개 변수에 타입이 명시되어 있어서, 초기자를 호출할 때 매개 변수의 타입을 추론할 수 있기 때문입니다.
+[^case-name-alone]: `Suit.spades` 처럼 타입을 붙이지 않고, `.spades` 같이 사용할 수 있다는 의미입니다. 이는 (암시적인) 초기자의 매개 변수에서 타입을 명시하기 때문에, 초기자 호출 시에 매개 변수 타입을 추론할 수 있기 때문입니다.
 
-[^qualified]: 스위프트에서 '규명되다 (qualified)' 라는 말은 '자신이 소속된 곳이 어디인지 안다' 는 의미입니다. '중첩 타입' 은 정의 자체에 의해서 소속을 알 수 있기 때문에 자연스럽게 '규명되는' 것입니다.
+[^qualified]: 스위프트에서 '규명한다 (qualified)' 는 건 자신의 소속이 어디인지 알게 한다는 의미입니다. 중첩 타입은 정의한 곳 자체가 소속이므로 자연스럽게 규명됩니다.
