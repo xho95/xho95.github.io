@@ -18,19 +18,19 @@ redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.htm
 
 ### Nested Types in Action (중첩 타입의 실제 사례)
 
-아래 예제는, '블랙잭 (Blackjack)'[^blackjack] 게임에서 사용할 '서양 카드(playing card)'[^playing-card] 를 모델링하는, `BlackjackCard` 이라는 구조체를 정의합니다.  `BlackjackCard` 구조체는 `Suit` 와 `Rank` 라는 두 개의 '중첩된 열거체 타입' 을 담고 있습니다.
+아래 예제는, 블랙잭 게임[^blackjack] 에서 사용할 놀이용 카드[^playing-card] 를 모델링하는, `BlackjackCard` 이라는 구조체를 정의합니다. `BlackjackCard` 구조체는 `Suit` 와 `Rank` 라는 두 개의 중첩 열거체 타입을 담고 있습니다.
 
-'블랙잭' 에서, '에이스 (Ace) 카드' 는 '1' 이나 '11' 둘 중 하나의 값을 가집니다. 이 특징은, `Rank` 열거체에 중첩된, `Values` 라는 구조체가 표현합니다:
+블랙잭의, 에이스 카드는 1 이나 11 중 어느 하나의 값을 가집니다. `Rank` 열거체 안에 중첩한, `Values` 라는 구조체로 이런 특징을 나타냅니다:
 
 ```swift
 struct BlackjackCard {
 
-  // 중첩된 Suit 열거체
+  // 중첩 Suit 열거체
   enum Suit: Character {
     case spades = "♠", hearts = "♡", diamonds = "♢", clubs = "♣"
   }
 
-  // 중첩된 Rank 열거체
+  // 중첩 Rank 열거체
   enum Rank: Int {
     case two = 2, three, four, five, six, seven, eight, nine, ten
     case jack, queen, king, ace
@@ -50,7 +50,7 @@ struct BlackjackCard {
     }
   }
 
-  // BlackjackCard 의 속성과 메소드
+  // BlackjackCard 의 속성 및 메소드
   let rank: Rank, suit: Suit
   var description: String {
     var output = "suit is \(suit.rawValue),"
@@ -107,9 +107,9 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^blackjack]: '블랙잭 (blackjack)' 은 카드 합이 '21' 을 넘지않는 선에서 최대한 '21' 에 가깝게 만들면 이기는 게임입니다. '블랙잭' 에 대한 더 자세한 정보는 위키피디아의 [Blackjack](https://en.wikipedia.org/wiki/Blackjack) 항목과 [블랙잭](https://ko.wikipedia.org/wiki/블랙잭) 항목을 참고하기 바랍니다.
+[^blackjack]: '블랙잭 (blackjack)' 은 카드 합이 21 을 넘지않는 선에서 최대한 21 에 가깝게 만들면 이기는 게임입니다. 블랙잭 게임에 대한 더 자세한 정보는, 위키피디아의 [Blackjack](https://en.wikipedia.org/wiki/Blackjack) 항목과 [블랙잭](https://ko.wikipedia.org/wiki/블랙잭) 항목을 참고하기 바랍니다.
 
-[^playing-card]: 영어로 'playing card' 는 직역하면 '놀이용 카드' 라고 할 수 있는데, 우리가 보통 '트럼프 (trump)' 라고도 하는 놀이에서 사용되는 '서양 카드' 자체를 의미합니다. 이후로는 그냥 '서양 카드' 라고 옮기도록 합니다.
+[^playing-card]: '놀이용 카드 (playing card)' 는 서양 카드 놀이에 사용되는 종이나 플라스틱으로 만든 카드를 말합니다. 우리나라에서는 보통 트럼프라고 부르는 경우가 많습니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Playing card](https://en.wikipedia.org/wiki/Playing_card) 항목과 [플레잉 카드](https://ko.wikipedia.org/wiki/플레잉_카드) 항목을 참고하기 바랍니다. 
 
 [^raw-value]: '원시 값 (raw value)' 는 스위프트에 있는 '열거체 case 값' 이 가질 수 있는 일종의 '기본 값' 입니다. '원시 값' 에 대한 더 자세한 정보는 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 항목을 참고하기 바랍니다.
 
