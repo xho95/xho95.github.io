@@ -74,14 +74,14 @@ struct BlackjackCard {
 
 `Rank` 는 `Values` 구조체 인스턴스를 반환하는, `values` 라는, 계산 속성도 정의합니다. 이 계산 속성은 카드의 끗수를 고려하여 자신의 끗수에 기초한 적절한 값으로 새로운 `Values` 인스턴스를 초기화합니다. `jack`, `queen`, `king`, 및 `ace` 면 특수한 값을 사용합니다. 숫자 카드면, 끗수의 `Int` 원시 값을 사용합니다.
 
-`BlackjackCard` 구조체는 자신도 `rank` 와 `suit`라는-두 속성을 가집니다. 이는, 카드의 이름과 값에 대한 설명을 제작하기 위해 `rank` 와 `suit` 에 저장된 값을 사용하는, `description` 이라는 '계산 속성' 도 정의합니다. `description` 속성은 표시할 두 번째 값이 있는지 검사하기 위해 '옵셔널 연결'[^optional-binding] 을 사용하며, 그런 경우, 두 번째 값을 위한 추가적인 세부 설명을 집어 넣습니다.
+`BlackjackCard` 구조체 그 자체도-`rank` 와 `suit` 라는-두 속성을 가집니다. `description` 이라는 계산 속성도 정의하는데, 이는 `rank` 와 `suit` 에 저장한 값을 사용하여 카드 이름과 값의 설명을 제작합니다. `description` 속성은 옵셔널 연결[^optional-binding] 을 사용하여 보여줄 두 번째 값이 있는 지 검사하고, 그럴 경우, 그 두 번째 값의 세부적인 추가 설명을 집어 넣습니다.
 
-`BlackjackCard` 는 사용자 정의 초기자가 없는 구조체이기 때문에, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 암시적인 멤버 초기자를 가집니다. 이 초기자를 사용하여 `theAceOfSpades` 라는 새로운 상수를 초기화할 수 있습니다:
+`BlackjackCard` 는 자신만의 초기자가 없는 구조체이기 때문에, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 암시적인 멤버 초기자를 가집니다. 이 초기자를 사용하여 `theAceOfSpades` 라는 새로운 상수를 초기화할 수 있습니다:
 
 ```swift
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)
 print("theAceOfSpades: \(theAceOfSpades.description)")
-// "theAceOfSpades: suit is ♠, value is 1 or 11" 를 인쇄합니다.
+// "theAceOfSpades: suit is ♠, value is 1 or 11" 를 인쇄함
 ```
 
 `Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있을지라도, 상황으로부터 타입을 추론할 수 있으므로, 이 인스턴스를 초기화할 때 (`.ace` 와 `.spades` 라는) 'case 값' 이름 만으로도 '열거체 case 값' 을 참조하는 게 가능합니다.[^case-name-alone] 위 예제에서, `description` 속성은 '스페이드 (Spades)' 의 '에이스 (Ace)' 가 `1` 또는 `11` 이라는 값을 가짐을 올바르게 보고합니다.
