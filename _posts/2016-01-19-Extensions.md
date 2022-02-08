@@ -10,7 +10,7 @@ categories: Xcode Swift Grammar Extensions
 
 ## Extensions (익스텐션; 확장)
 
-_익스텐션 (extensions; 확장)_ [^extension] 은 기존의 클래스, 구조체, 열거체, 또는 프로토콜 타입에 새로운 기능 (functionality)[^functionality] 을 추가합니다. 이는 원본 소스 코드에 접근하지 못하는 타입을 확장하는 (_소급 적용 모델링 (retroactive modeling)_[^retroactive-modeling] 이라는) 능력을 포함합니다. '익스텐션' 은 오브젝티브-C 에 있는 '카테고리 (categories; 범주)' 와 비슷합니다. (오브젝티브-C 의 '카테고리' 와는 달리, 스위프트의 '익스텐션' 은 이름이 없습니다.)
+_익스텐션 (extensions; 확장)_[^extension] 은 기존의 클래스나, 구조체, 열거체, 또는 프로토콜 타입에 새로운 기능[^functionality] 을 추가합니다. 이는 원본 소스 코드에 접근할 수 없는 타입을 확장하는 (_소급 적용 모델링 (retroactive modeling)_[^retroactive-modeling] 이라는) 능력도 포함합니다. 익스텐션은 오브젝티브-C 의 카테고리 (categories; 범주) 와 비슷합니다. (오브젝티브-C 의 카테고리와는 달리, 스위프트의 익스텐션엔 이름이 없습니다.)
 
 스위프트의 '익스텐션' 은 다음을 할 수 있습니다:
 
@@ -287,9 +287,9 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^extension]: 스위프트에서 `extension` 은 '확장' 이라는 의미를 가진 키워드입니다. 보통 키워드 자체로 사용할 때는 '익스텐션' 이라고 발음대로 사용하지만, 키워드가 아니라 '확장' 이라는 의미가 강조될 때는 '확장' 이라고 옮기도록 합니다.
+[^extension]: 스위프트의 `extension` 은 확장이라는 의미를 가진 하나의 키워드입니다. 키워드 자체로 사용할 때는 '익스텐션' 이라는 발음 그대로 사용합니다.
 
-[^functionality]: 여기서 '기능 (functionality)' 을 추가한다는 말은, 기존 타입의 구조를 바꾸는 '저장 속성' 등은 추가하지 않는다는 의미를 내포하고 있습니다. 사실 '기능' 만을 추가하기 때문에, 기존 타입을 '확장 (extension)' 하는 것이 가능한 것입니다.
+[^functionality]: '기능 (functionality) 을 추가한다' 는 건, 타입의 구조를 바꾸는 저장 속성은 추가하지 않는다는 의미를 이미 내포하고 있습니다. 사실 기능만 추가하기 때문에, 기존 타입의 확장 (extension) 이 가능한 것입니다.
 
 [^retroactive-modeling]: 스위프트는, '소급 적용 모델링 (retroactive modeling)' 을 통하여, 스위프트 표준 라이브러리의 타입과 패키지의 타입도 '확장' 할 수 있습니다. '소급 적용 모델링' 에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 참고하기 바랍니다.
 
