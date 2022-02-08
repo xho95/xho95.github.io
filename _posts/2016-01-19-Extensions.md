@@ -25,17 +25,17 @@ _익스텐션 (extensions; 확장)_[^extension] 은 기존의 클래스나, 구�
 
 > 익스텐션은 타입에 새로운 기능을 추가할 순 있지만, 기존 기능을 재정의할 순 없습니다.
 
-### Extension Syntax (익스텐션 구문 표현)
+### Extension Syntax (익스텐션 구문)
 
-'익스텐션' 은 `extension` 키워드로 선언합니다:
+익스텐션은 `extension` 키워드로 선언합니다:
 
 ```swift
 extension SomeType {
-  // SomeType 에 추가할 새로운 기능을 여기에 둡니다.
+  // SomeType 에 추가할 새로운 기능은 여기에 둡니다.
 }
 ```
 
-'익스텐션' 은 기존 타입이 하나 이상의 프로토콜을 '채택 (adopt)' 하게끔 확장할 수 있습니다. 프로토콜 '준수성 (conformance)' 을 추가하려면, 클래스나 구조체에 대해 작성하는 것과 같은 방식으로 프로토콜 이름을 작성합니다:
+익스텐션은 기존 타입을 확장하여 하나 이상의 프로토콜을 채택[^adopt] 하도록 할 수 있습니다. 프로토콜 '준수성 (conformance)' 을 추가하려면, 클래스나 구조체에 대해 작성하는 것과 같은 방식으로 프로토콜 이름을 작성합니다:
 
 ```swift
 extension SomeType: SomeProtocol, AnotherProtocol {
@@ -292,6 +292,8 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 [^functionality]: '기능 (functionality) 을 추가한다' 는 건, 타입의 구조를 바꾸는 저장 속성은 추가하지 않는다는 의미를 이미 내포하고 있습니다. 사실 기능만 추가하기 때문에, 기존 타입의 확장 (extension) 이 가능한 것입니다.
 
 [^retroactive-modeling]: 스위프트는, '소급 적용 모델링 (retroactive modeling)' 을 통하여, 스위프트 표준 라이브러리의 타입과 패키지의 타입도 '확장' 할 수 있습니다. '소급 적용 모델링' 에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 참고하기 바랍니다.
+
+[^adopt]: '채택 (adopt)' 와 '준수 (conform)' 은 의미가 조금 다릅니다. 
 
 [^literal]: '글자 값 (leteral)' 은 '글자 자체의 의미를 가진 값' 정도로 이해할 수 있습니다. 예를 들어, 코드에서 `0` 을 입력할 때 실제로는 문자 '0' 이지만, `let a = 0` 이라고 하면, 컴파일러가 이 `0` 을 '0' 이라는 정수로 이해합니다. 이런 상황에서의 `0` 을 정수 '글자 값 (literal)' 이라고 합니다.
 
