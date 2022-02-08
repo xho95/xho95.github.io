@@ -63,14 +63,14 @@ struct BlackjackCard {
 }
 ```
 
-`Suit` 열거체는, 자신의 기호를 표현하는 '원시 `Character` 값'[^raw-value] 과 함께, 서양 카드에 공통적인 네가지 '패 (suits)'[^suits] 를 묘사합니다.
+`Suit` 열거체는, 자신의 기호를 나타내는 `Character` 원시 값[^raw-value] 과, 일반 놀이용 카드의 네 가지 패[^suits] 를 함께 설명합니다.
 
-`Rank` 열거체는, 자신의 카드 면에 있는 값을 표현하는 '원시 `Int` 값' 과 함께, 서양 카드에서 가능한 13 가지의 '등급 (ranks)' 을 묘사합니다. (이 '원시 `Int` 값' 은 '잭 (Jack)', '퀸 (Queen)', '킹 (King)' 그리고 '에이스 (Ace)' 카드에는 사용하지 않습니다.)
+`Rank` 열거체는, 자신의 카드(면) 값을 나타내는 `Int` 원시 값과, 놀이용 카드에서 가능한 13 개의 끗수[^ranks] 를 함께 설명합니다. (잭 (Jack), 퀸 (Queen), 킹 (King), 및 에이스 (Ace) 카드에선 이 `Int` 원시 값을 사용하지 않습니다.)
 
-위에서 언급한 것처럼, `Rank` 열거체는, `Values` 라는, 자신보다 더 한층 중첩된 구조체를 정의합니다. 이 구조체는 대부분의 카드가 하나의 값을 갖지만, '에이스 카드' 는 두 값을 가진다는 사실을 '은닉 (encapsulates)' 합니다. `Values` 구조체는 이를 표현하기 위해 두 속성을 정의합니다:
+위에서 언급한 것처럼, `Rank` 열거체는 자신만의, `Values` 라는, 더 중첩된 구조체를 정의합니다. 이 구조체는 대부분의 카드엔 하나의 값만 있지만, 에이스 카드엔 두 개의 값이 있다는 사실을 은닉합니다. `Values` 구조체는 두 개의 속성을 정의하여 이를 나타냅니다:
 
-* `first`, `Int` 타입임
-* `second`, `Int?`, 또는 “옵셔널 `Int`” 타입임
+* `first`, 타입은 `Int`
+* `second`, 타입은 `Int?`, 또는 “옵셔널 `Int`”
 
 `Rank` 는, `Values` 구조체 인스턴스를 반환하는, `values` 라는, '계산 속성' 도 정의합니다. 이 계산 속성은 카드의 등급을 고려하여 새로운 `Values` 인스턴스를 등급에 기초한 적절한 값으로 초기화 합니다. `jack`, `queen`, `king`, 그리고 `ace` 에는 특수한 값을 사용합니다. '숫자 카드' 에는, 등급의 '원시 `Int` 값' 을 사용합니다.
 
@@ -111,9 +111,11 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^playing-card]: '놀이용 카드 (playing card)' 는 서양 카드 놀이에 사용되는 종이나 플라스틱으로 만든 카드를 말합니다. 우리나라에서는 보통 트럼프라고 부르는 경우가 많습니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Playing card](https://en.wikipedia.org/wiki/Playing_card) 항목과 [플레잉 카드](https://ko.wikipedia.org/wiki/플레잉_카드) 항목을 참고하기 바랍니다. 
 
-[^raw-value]: '원시 값 (raw value)' 는 스위프트에 있는 '열거체 case 값' 이 가질 수 있는 일종의 '기본 값' 입니다. '원시 값' 에 대한 더 자세한 정보는 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 항목을 참고하기 바랍니다.
+[^raw-value]: '원시 값 (raw value)' 은 스위프트의 열거체 case 가 가질 수 있는 일종의 기본 값입니다. 원시 값에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
 
-[^suits]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드 (diamonds)', '하트 (hearts)' 등이 이 '패 (suit)' 에 해당합니다. 서양 카드에는 4 종류의 '패 (suits)' 가 있습니다.
+[^suits]: '패 (suits)' 는 스페이드 (spades), 다이아몬드 (diamonds), 하트 (hearts), 클로버 (clovers) 라는 서양 카드의 네 가지 범주를 말합니다.
+
+[^ranks]: '끗수 (ranks)' 는 각각의 카드마다 숫자 또는 알파펫으로 나타내는 등급을 말합니다. 서양 카드에는 13 가지 끗수가 있습니다.
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optional Binding (옵셔널 연결)](#optional-binding-옵셔널-연결) 항목을 참고하기 바랍니다.
 
