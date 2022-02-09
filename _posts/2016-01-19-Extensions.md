@@ -14,11 +14,11 @@ _익스텐션 (extensions; 확장)_[^extension] 은 기존의 클래스나, 구�
 
 스위프트의 익스텐션은 다음을 할 수 있습니다:
 
-* 계산 인스턴스 속성 및 계산 타입 속성 추가
-* 인스턴스 메소드 및 타입 메소드 정의
-* 새로운 초기자 제공
-* 첨자 연산 정의
-* 새로운 중첩 타입 정의 및 사용
+* 계산 인스턴스 속성 및 계산 타입 속성을 추가함
+* 인스턴스 메소드 및 타입 메소드를 정의함
+* 새로운 초기자를 제공함
+* 첨자 연산을 정의함
+* 새로운 중첩 타입을 정의하여 사용함
 * 기존 타입이 프로토콜을 준수하게 함
 
 스위프트에선, 심지어 프로토콜을 확장하여 준수 타입이 장점을 취할 수 있도록 자신의 필수 조건에 구현을 제공하거나 추가 기능을 더할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 참고하기 바랍니다.
@@ -35,19 +35,19 @@ extension SomeType {
 }
 ```
 
-익스텐션은 기존 타입을 확장하여 하나 이상의 프로토콜을 채택[^adopt] 하도록 할 수 있습니다. 프로토콜 '준수성 (conformance)' 을 추가하려면, 클래스나 구조체에 대해 작성하는 것과 같은 방식으로 프로토콜 이름을 작성합니다:
+익스텐션은 기존 타입을 확장하여 하나 이상의 프로토콜을 채택[^adopt] 하게 할 수 있습니다. 프로토콜 준수성[^conformance] 을 추가하려면, 클래스나 구조체에 작성하는 것과 똑같이 프로토콜 이름을 작성합니다:
 
 ```swift
 extension SomeType: SomeProtocol, AnotherProtocol {
-  // 프로토콜의 '필수 조건' 을 여기에서 구현합니다.
+  // 프로토콜의 필수 조건 구현은 여기에 둡니다.
 }
 ```
 
-이 같은 방식으로 '프로토콜 준수성' 을 추가하는 것은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
+이런 식으로 프로토콜 준수성을 추가하는 건 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
 
-'익스텐션' 은, [Extending a Generic Type (일반화 타입을 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화-타입을-확장하기) 에서 설명한 것처럼, 기존 '일반화 (generic) 타입' 을 확장하기 위해 사용할 수 있습니다. '일반화 타입' 은, [Extensions with a Generic Where Clause ('일반화 where 절' 을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절을-가진-익스텐션) 에서 설명한 것처럼, 조건에 따라 기능을 추가하기 위해 확장할 수도 있습니다.
+[Extending a Generic Type (일반화 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화-타입-확장하기) 에서 설명한 것처럼, 기존 일반화 타입을 확장하는데 익스텐션을 사용할 수 있습니다. [Extensions with a Generic Where Clause (일반화 where 절을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절을-가진-익스텐션) 에서 설명한 것처럼, 일반화 타입을 확장하여 조건부로 기능을 추가할 수도 있습니다.
 
-> '익스텐션' 을 기존 타입에 새로운 기능을 추가하기 위해 정의한 경우, 새로운 기능은, '익스텐션' 을 정의하기 전에 생성된 경우이더라도, 해당 타입의 모든 기존 인스턴스에서 사용 가능할 것입니다.
+> 기존 타입에 새로운 기능을 추가하기 위해 익스텐션을 정의하면, 익스텐션 정의 전에 생성한 그 타입의 모든 기존 인스턴스에서도, 새로운 기능을 사용할 수 있습니다.
 
 ### Computed properties (계산 속성)
 
@@ -293,7 +293,9 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^retroactive-modeling]: 스위프트는, '소급 적용 모델링 (retroactive modeling)' 을 통하여, 스위프트 표준 라이브러리의 타입과 패키지의 타입도 '확장' 할 수 있습니다. '소급 적용 모델링' 에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 참고하기 바랍니다.
 
-[^adopt]: '채택 (adopt)' 와 '준수 (conform)' 은 의미가 조금 다릅니다. 
+[^adopt]: '프로토콜을 채택한다 (adopt)' 는 건 특정 객체를 정의할 때 프로토콜 이름도 붙여서 그 프로토콜을 따르도록 한다는 의미입니다. 한편, 프로토콜을 '준수한다 (conform)' 는 건 모든 프로토콜 필수 조건을 구현하여 이를 만족한다는 의미입니다.
+
+[^conformance]: 바로 앞 주석에서 설명한 것처럼, '프로토콜 준수성 (conformance) 을 추가한다' 는 건 모든 프로토콜 필수 조건에 대한 구현을 제공한다는 의미입니다. 이렇게 필수 조건에 대한 구현을 제공하려면, 먼저 프로토콜을 채택 (adopt) 해야 합니다. 
 
 [^literal]: '글자 값 (leteral)' 은 '글자 자체의 의미를 가진 값' 정도로 이해할 수 있습니다. 예를 들어, 코드에서 `0` 을 입력할 때 실제로는 문자 '0' 이지만, `let a = 0` 이라고 하면, 컴파일러가 이 `0` 을 '0' 이라는 정수로 이해합니다. 이런 상황에서의 `0` 을 정수 '글자 값 (literal)' 이라고 합니다.
 
