@@ -51,7 +51,7 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 
 ### Computed properties (계산 속성)
 
-'익스텐션' 은 기존 타입에 '계산 인스턴스 속성' 과 '계산 타입 속성' 을 추가할 수 있습니다. 다음 예제는 스위프트에 내장된 `Double` 타입에, '거리 단위' 와의 작업을 위한 기초적인 지원을 제공하는, 다섯 개의 계산 인스턴스 속성을 추가합니다:
+익스텐션은 기존 타입에 계산 인스턴스 속성 및 계산 타입 속성을 추가할 수 있습니다. 다음 예제는 스위프트의 내장 `Double` 타입에 다섯 개의 계산 인스턴스 속성을 더하여, 거리 단위 작업에 대한 기초적인 지원을 제공합니다:
 
 ```swift
 extension Double {
@@ -64,11 +64,11 @@ extension Double {
 
 let oneInch = 25.4.mm
 print("One inch is \(oneInch) meters")
-// "One inch is 0.0254 meters" 를 인쇄합니다.
+// "One inch is 0.0254 meters" 를 인쇄함
 
 let threeFeet = 3.ft
 print("Three feet is \(threeFeet) meters")
-// "Three feet is 0.914399970739201 meters" 를 인쇄합니다.
+// "Three feet is 0.914399970739201 meters" 를 인쇄함
 ```
 
 이 '계산 속성' 들은 `Double` 값을 정해진 길이 단위로 고려해야 함을 나타냅니다. 비록 계산 속성으로 구현되어 있을지라도, 이 속성의 이름은, 해당 글자 값으로 거리 변환을 하도록, '점 구문 (dot syntax)' 으로 부동-소수점 '글자 값 (literal)'[^literal] 에 덧붙일 수 있습니다.
