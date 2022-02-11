@@ -85,7 +85,7 @@ print("A marathon is \(aMarathon) meters long")
 // "A marathon is 42195.0 meters long" 을 인쇄함
 ```
 
-> '익스텐션' 은 기존 속성에 새로운 계산 속성을 추가할 수 있지만, '저장 속성' 이나, '속성 관찰자 (observers)'[^property-observers] 를 추가할 수는 없습니다.
+> 익스텐션이 기존 속성에 새로운 계산 속성을 추가할 순 있지만, 저장 속성이나, 속성 관찰자[^property-observers] 를 추가할 순 없습니다.
 
 ### Initializers (초기자)
 
@@ -301,7 +301,7 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^read-only]: 설정자 (setter) 없이 획득자 (getter) 만 있으므로 읽기-전용 계산 속성입니다.
 
-[^property-observers]: '속성 관찰자 (property observers)' 자체가 원래 '저장 속성' 에만 추가할 수 있는 것으로, '계산 속성' 의 경우, 속성을 바꾸는 시점을 직접 알 수 있기 때문에 '속성 관찰자' 가 필요 없습니다. '속성 관찰자' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
+[^property-observers]: '속성 관찰자 (property observers)' 는 원래 저장 속성에만 추가할 수 있는 것으로, 계산 속성의 경우 속성이 바뀌는 시점을 자신이 알 수 있어서 속성 관찰자가 필요 없습니다. 속성 관찰자에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
 [^access-self]: 이는, `self` 에 접근하기 위해선, 접근하려는 인스턴스의 메모리가 온전하게 초기화되어 있어야 하기 때문입니다. 클래스와 구조체라는 약간의 차이는 있지만, 스위프트는 '2-단계 초기화' 를 하며, `self` 에 대한 접근은 '1-단계 초기화' 가 완료된 시점부터 가능합니다. 본문에 있는 다른 '지명 초기자' 를 호출 완료한 시점이 '1-단계 초기화' 가 완료된 시점에 해당합니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 부분을 참고하기 바랍니다.
 
