@@ -114,14 +114,14 @@ struct Rect {
 }
 ```
 
-`Rect` 구조체는 모든 속성에 기본 값을 제공하기 때문에, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, '기본 초기자' 와 '멤버 초기자' 를 자동으로 부여 받습니다. 이 초기자를 사용하여 새로운 `Rect` 인스턴스를 생성할 수 있습니다:
+`Rect` 구조체는 자신의 모든 속성에 기본 값을 제공하기 때문에, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 기본 초기자와 멤버 초기자를 받습니다. 이 초기자들을 사용하여 새로운 `Rect` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let defaultRect = Rect()
 let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
 ```
 
-`Rect` 구조체는 특정 중심점과 크기를 취하는 추가적인 초기자를 제공하도록 확장할 수 있습니다.
+`Rect` 구조체를 확장하여 특정한 중심점과 크기를 취하는 추가적인 초기자를 제공할 수 있습니다.
 
 ```swift
 extension Rect {
@@ -133,7 +133,7 @@ extension Rect {
 }
 ```
 
-이 새로운 초기자는 제공한 `center` 점과 `size` 값을 기초로 적절한 원점을 계산하는 것으로 시작합니다. 그런 다음 초기자는, 적절한 속성으로 새로운 원점과 크기 값을 저장한, `init(origin:size:)` 라는 구조체의 '자동 멤버 초기자'[^automatic-memberwise-initializer] 를 호출합니다.
+이 새로운 초기자는 제공된 `center` 점과 `size` 값을 기초로 적절한 원점을 계산하는 것으로 시작합니다. 그런 다음 초기자는, 적절한 속성으로 새로운 원점과 크기 값을 저장한, `init(origin:size:)` 라는 구조체의 '자동 멤버 초기자'[^automatic-memberwise-initializer] 를 호출합니다.
 
 ```swift
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
