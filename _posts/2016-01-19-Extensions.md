@@ -133,11 +133,11 @@ extension Rect {
 }
 ```
 
-이 새로운 초기자는 제공된 `center` 점과 `size` 값을 기초로 적절한 원점을 계산하는 것으로 시작합니다. 그런 다음 초기자는, 적절한 속성으로 새로운 원점과 크기 값을 저장한, `init(origin:size:)` 라는 구조체의 '자동 멤버 초기자'[^automatic-memberwise-initializer] 를 호출합니다.
+이 새로운 초기자의 시작은 제공한 `center` 점 및 `size` 값에 기초한 적절한 원점을 계산하는 겁니다. 그런 다음, 적절한 속성에 새로운 원점 및 크기 값을 저장하는, 구조체의 자동 멤버 초기자[^automatic-memberwise-initializer] 인 `init(origin:size:)` 를 초기자가 호출합니다.
 
 ```swift
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
-// centerRect 의 원점은 (2.5, 2.5) 이고, 크기는 (3.0, 3.0) 입니다.
+// centerRect 의 원점은 (2.5, 2.5) 이고, 크기는 (3.0, 3.0) 임
 ```
 
 > '익스텐션' 으로 새로운 초기자를 제공하는 경우에도, 여전히 초기자를 완료할 때 각 해당 인스턴스가 온전히 초기화됐다는 것을 확실히 할 책임이 있습니다.
