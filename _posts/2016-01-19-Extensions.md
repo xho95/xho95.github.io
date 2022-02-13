@@ -273,9 +273,9 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 // "+ + - 0 - 0 + " 를 인쇄함
 ```
 
-이, `printIntegerKinds(_:)` 라는, 함수는 `Int` 값 배열을 입력 받아서 그 값들에 차례대로 동작을 반복합니다. 배열에 있는 각각의 정수마다, 함수가 해당 정수의 `kind` 계산 속성을 고려하여, 적절한 설명을 인쇄합니다.
+`printIntegerKinds(_:)` 라는, 이 함수는 `Int` 값의 입력 배열을 취해서 차례대로 그 값들을 반복합니다. 배열의 각 정수마다, 함수가 그 정수의 `kind` 계산 속성을 고려하여, 적절한 설명을 인쇄합니다.
 
-> `number.kind` 는 이미 `Int.Kind` 타입임을 알고 있습니다. 이 때문에, `switch` 문 안에서 모든 `Int.Kind` case 값을, `Int.Kind.negative` 가 아닌 `.negative` 같은, 짧게 줄인 형식으로 작성할 수 있습니다.
+> `number.kind` 가 `Int.Kind` 타입인 건 이미 알고 있습니다. 이 때문에, `Int.Kind.negative` 보단 `.negative` 와 같이, `switch` 문 안에서 짧게 줄인 형식으로 모든 `Int.Kind` case 값을 작성할 수 있습니다.
 
 ### 다음 장
 
