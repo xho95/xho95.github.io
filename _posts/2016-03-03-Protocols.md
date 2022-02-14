@@ -6,13 +6,13 @@ date:   2016-03-03 23:30:00 +0900
 categories: Swift Language Grammar Protocol
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols]을 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols] 을 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Protocols (프로토콜; 규약)
 
-_프로토콜 (protocol)_[^protocol] 은 한 특별한 작업 또는 기능 조각에 적합한 메소드와, 속성, 및 다른 필수 조건 (requirements) 들의 청사진 (blueprint)[^blueprint] 를 정의합니다. 그런 다음 해당 '필수 조건' 들의 실제 구현을 제공하도록 클래스, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 해당 프로토콜을 _준수한다 (conform)_ 라고 합니다.
+_프로토콜 (protocol)_[^protocol] 은 한 특별한 작업 또는 기능 조각에 적합한 메소드와, 속성, 및 다른 필수 요구 조건[^requirements] 들의 청사진[^blueprint] 을 정의합니다. 그러면 클래스나, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 하여 그 필수 조건의 실제 구현을 제공할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 그 프로토콜을 _준수한다 (conform)_ 고 말합니다.
 
-'준수 타입 (conforming types)' 이 반드시 구현해야 하는 '필수 조건' 을 지정하는 것에 더하여, '필수 조건' 일부를 구현하거나 '준수 타입' 이 장점을 취할 수 있도록 추가적인 기능을 구현하기 위해 '프로토콜' 을 '확장' 할 수도 있습니다.
+준수 타입[^conforming-types] 이 반드시 구현해야 할 필수 요구 조건을 지정하는 것에다가, 프로토콜을 확장하여 이러한 필수 요구 조건 일부의 구현 또는 추가 기능의 제공이라는 장점을 준수 타입이 취할 수도 있습니다.
 
 ### Protocol Syntax (프로토콜 구문 표현)
 
@@ -983,7 +983,11 @@ print(differentNumbers.allEqual())
 
 [^protocol]: '프로토콜 (protocol)' 은 '규약' 이라는 뜻을 가지고 있지만, 스위프트에서는 `protocol` 이라는 '키워드 (keyword)' 로도 사용됩니다. 그러므로, '익스텐션 (extension)' 이나 '클로저 (closure)' 처럼 '키워드' 로 사용될 때는 '프로토콜' 이라고 하고, 의미로 사용될 때는 '규약' 이라고 옮기도록 합니다.
 
+[^requirements]: '필수 요구 조건 (requirements)' 은 프로토콜을 준수하려는 타입이 반드시 구현해야 하는 것들을 말합니다. 이에 대한 더 자세한 내용은 이어지는 설명에서 하고 있습니다. 
+
 [^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
+
+ [^conforming-types]: '준수 타입 (conforming types)' 은 특정 프로토콜의 모든 필수 요구 조건을 만족하는 타입을 말합니다. 모든 필수 요구 조건을 만족한다는 건 모든 필수 요구 조건의 구현을 제공한다는 의미입니다.
 
 [^type-property-requirements]: 즉, 클래스에 대한 '타입 속성 필수 조건 (type property requirements)' 이라고 해서, `class` 나 `static` 으로 구분할 필요 없이, 무조건 `static` 으로 사용하면 됩니다. `static` 으로 지시한 '타입 속성 필수 조건' 을 `class` 로 구현해도 상관없습니다.
 
