@@ -63,7 +63,7 @@ protocol AnotherProtocol {
 }
 ```
 
-다음은 단일 '인스턴스 속성 필수 조건' 을 가진 '프로토콜' 예제입니다:
+다음 예제는 단일한 인스턴스 속성 요구 조건을 가진 프로토콜입니다:
 
 ```swift
 protocol FullyNamed {
