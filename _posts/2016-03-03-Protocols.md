@@ -80,12 +80,12 @@ struct Person: FullyNamed {
   var fullName: String
 }
 let john = Person(fullName: "John Appleseed")
-// john.fullName 은 "John Appleseed" 입니다.
+// john.fullName 은 "John Appleseed" 임
 ```
 
-이 예제는, 특정한 이름의 사람을 표현하는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫 번째 줄에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
+이 예제는 `Person` 이라는 구조체를 정의하여, 특정한 이름의 사람을 나타냅니다. 이는 자신의 정의 첫 번째 줄에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
 
-`Person` 의 각 인스턴스는, `fullName` 이라는, `String` 타입의, 단일 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일 '필수 조건' 과도 일치하며, `Person` 이 프로토콜을 올바르게 준수하고 있음을 의미합니다. (프로토콜 '필수 조건' 을 충족하지 않으면 스위프트가 컴파일 시간에 에러를 보고합니다.)
+각각의 `Person` 인스턴스에는, `fullName` 이라는, `String` 타입의, 단일 저장 속성이 있습니다. 이는 `FullyNamed` 프로토콜에 있는 단일한 요구 조건과 일치하며, `Person` 이 프로토콜을 올바로 준수하고 있다는 걸 의미합니다. (프로토콜 요구 조건을 충족하지 않으면 컴파일 시간에 스위프트가 에러를 보고합니다.)
 
 다음도, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스입니다:
 
