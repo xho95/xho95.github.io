@@ -73,7 +73,7 @@ protocol FullyNamed {
 
 `FullyNamed` 프로토콜은 준수 타입이 완전히 규명된 이름[^qualified] 을 제공하길 요구합니다. 프로토콜은 준수 타입의 본질에 대한 어떤 다른 것도 지정하지 않습니다-타입 자체가 반드시 전체 이름 제공할 수 있어야 한다는 것만 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입에든, `fullName` 이라는, `String` 타입의, 획득 가능 인스턴스 속성이 있어야 함을 알립니다.
 
-다음 예제는 `FullyNamed` 프로토콜을 채택하여 준수하는 단순한 구조체입니다:
+다음 예제는 `FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체입니다:
 
 ```swift
 struct Person: FullyNamed {
@@ -87,7 +87,7 @@ let john = Person(fullName: "John Appleseed")
 
 각각의 `Person` 인스턴스에는, `fullName` 이라는, `String` 타입의, 단일 저장 속성이 있습니다. 이는 `FullyNamed` 프로토콜에 있는 단일한 요구 조건과 일치하며, `Person` 이 프로토콜을 올바로 준수하고 있다는 걸 의미합니다. (프로토콜 요구 조건을 충족하지 않으면 컴파일 시간에 스위프트가 에러를 보고합니다.)
 
-다음도, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스입니다:
+다음은 더 복잡한 클래스로, 이것도 `FullyNamed` 프로토콜을 채택하고 준수합니다:
 
 ```swift
 class Starship: FullyNamed {
@@ -102,10 +102,10 @@ class Starship: FullyNamed {
   }
 }
 var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
-// ncc1701.fullName 은 "USS Enterprise" 입니다.
+// ncc1701.fullName 은 "USS Enterprise" 임
 ```
 
-이 클래스는 '`fullName` 속성 필수 조건' 을 '우주선 (starship)' 을 위한 '읽기-전용 계산 속성' 으로 구현합니다. 각 `Starship` 클래스 인스턴스는 '의무적인 `name`' 과 '선택 사항인 `prefix`'[^optional] 를 저장합니다. `fullName` 속성은 `prefix` 값이 존재하면, 우주선을 위한 '온전한 전체 이름' 을 생성하기 위해 `name` 의 맨 앞에 붙입니다.
+이 클래스는 `fullName` 속성 요구 조건을 우주선[^starship] 의 읽기-전용 계산 속성으로 구현합니다. 각 `Starship` 클래스 인스턴스는 '의무적인 `name`' 과 '선택 사항인 `prefix`'[^optional] 를 저장합니다. `fullName` 속성은 `prefix` 값이 존재하면, 우주선을 위한 '온전한 전체 이름' 을 생성하기 위해 `name` 의 맨 앞에 붙입니다.
 
 ### Method Requirements (메소드 필수 조건)
 
@@ -992,6 +992,8 @@ print(differentNumbers.allEqual())
 [^type-property-requirements]: 즉, 클래스의 '타입 속성 요구 조건 (type property requirements)' 은, `class` 나 `static` 으로 구분할 필요 없이,  무조건 `static` 을 사용하면 됩니다.
 
 [^qualified]: 스위프트에서 '규명하다 (qualify)' 는 자신의 소속을 알린다는 의미입니다. 예를 들어, 사람인 경우 '완전히 규명된 이름' 이란 직급 및 소속까지를 다 포함한 이름을 의미합니다.
+
+[^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 '스타 트랙 (Star Trek)' 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 'USS 엔터프라이즈 (USS Enterprise)' 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 참고하기 바랍니다. 
 
 [^optional]: 우주선에 '이름' 은 반드시 있어야 하지만 '경칭 (prefix)' 은 '선택 사항' 이므로, '옵셔널 타입' 으로 구현하고 있습니다.
 
