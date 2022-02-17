@@ -119,7 +119,7 @@ protocol SomeProtocol {
 }
 ```
 
-다음 예제는 단일 '인스턴스 메소드 필수 조건' 을 가진 프로토콜을 정의합니다:
+다음 예제는 단일한 인스턴스 메소드 요구 조건을 가진 프로토콜을 정의합니다:
 
 ```swift
 protocol RandomNumberGenerator {
