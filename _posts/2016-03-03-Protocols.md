@@ -127,11 +127,11 @@ protocol RandomNumberGenerator {
 }
 ```
 
-이, '`RandomNumberGenerator` 프로토콜' 은, 어떤 '준수 타입' 이든 필수로, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 '인스턴스 메소드' 를 가질 것을 요구합니다. 비록 프로토콜에서 지정하진 않았어도, 이 값은 `0.0` 에서 `1.0` 에 이르는 ('1.0' 을 직접 포함하진 않는) 수라고 가정합니다.[^random]
+`RandomNumberGenerator` 라는, 이 프로토콜은 어떤 준수 타입이든 `random` 이라는 인스턴스 메소드를 가지길 요구하는데, 이는 호출할 때마다 `Double` 값을 반환합니다. 프로토콜 부분에서 지정하진 않지만, 이 값은 `0.0` 에서 (1.0 을 포함하진 않지만) `1.0` 까지의 값이라고 가정합니다.[^random]
 
-`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 발생 방법에 대해서는 어떤 가정도 하지 않습니다-이는 '발생기 (generator)' 가 새로운 난수를 생성하는 표준 방식을 필수로 제공하도록 단순히 요구할 뿐입니다.
+`RandomNumberGenerator` 프로토콜은 각각의 난수 발생 방법에 대해선 어떤 가정도 하지 않습니다-단순히 발생기[^generator] 가 새로운 난수를 발생하는 표준 방식을 제공하길 요구할 뿐입니다.
 
-다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스의 구현입니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사 난수 (pseudorandom number) 발생 알고리즘' 을 구현합니다:
+`RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스 구현은 이렇습니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 의사 (pseudorandom) 난수 발생 알고리즘을 구현합니다:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
@@ -997,7 +997,7 @@ print(differentNumbers.allEqual())
 
 [^optional]: 우주선에 이름은 반드시 있어야 하지만, '경칭 (prefix)' 같은 건 옵션이므로, 옵셔널 타입으로 구현하고 있습니다.
 
-[^random]: 이는 스위프트에 내장된 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
+[^random]: 이는 스위프트 내장 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
