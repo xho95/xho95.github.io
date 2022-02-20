@@ -201,19 +201,19 @@ protocol SomeProtocol {
 }
 ```
 
-#### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건을 클래스에서 구현하기)
+#### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 요구 조건의 클래스 구현)
 
-'준수 클래스' 에 대한 '프로토콜 초기자 필수 조건' 은 '지명 초기자' 나 '편의 초기자' 어느 것으로도 구현할 수 있습니다. 두 경우 모두 다, '초기자 구현' 은 반드시 '`required` 수정자 (modifier)' 로 표시해야 합니다:
+준수 클래스에선 프로토콜 초기자 요구 조건을 지명 초기자나 편의 초기자 어느 거로든 구현할 수 있습니다. 두 경우 모두, 초기자 구현에 반드시 `required` 수정자[^required] 를 표시해야 합니다:
 
 ```swift
 class SomeClass: SomeProtocol {
   required init(someParameter: Int) {
-    // 초기자 구현은 여기에 둡니다.
+    // 초기자 구현은 여기에 둠
   }
 }
 ```
 
-'`required` 수정자' 의 사용은 '준수 클래스' 의 모든 하위 클래스에 대한 '초기자 필수 조건' 의 명시적 또는 상속한 구현을 제공해서, 이들 역시 프로토콜을 준수하도록, 보장합니다.
+`required` 수정자를 사용하면 '준수 클래스' 의 모든 하위 클래스에 대한 '초기자 필수 조건' 의 명시적 또는 상속한 구현을 제공해서, 이들 역시 프로토콜을 준수하도록, 보장합니다.
 
 '필수 (required) 초기자' 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 를 참고하기 바랍니다.
 
@@ -1000,6 +1000,8 @@ print(differentNumbers.allEqual())
 [^random]: 이는 스위프트 내장 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
+
+[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다. 
 
 [^final]: 하위 클래스를 가지지 않는 최종 클래스는 해당 초기자를 하위 클래스가 필수로 구현해야 한다는 표시를 할 이유가 없습니다.
 
