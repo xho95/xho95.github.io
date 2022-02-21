@@ -10,7 +10,7 @@ categories: Swift Language Grammar Protocol
 
 ## Protocols (프로토콜; 규약)
 
-_프로토콜 (protocol)_[^protocol] 은 특별한 임무 또는 기능 조각에 적합한 메소드와, 속성, 및 다른 요구 조건[^requirements] 들의 청사진[^blueprint] 을 정의합니다. 그러면 클래스나, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 하여 그 요구 조건을 실제로 구현할 수 있습니다. 프로토콜의 요구 조건을 만족하는 어떤 타입이든 그 프로토콜을 _준수한다 (conform)_ 고 말합니다.
+_프로토콜 (protocol)_[^protocol] 은 특별한 임무 또는 기능 조각에 적합한 메소드와, 속성, 및 다른 필수 조건[^requirements] 들의 청사진[^blueprint] 을 정의합니다. 그러면 클래스나, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 하여 그 필수 조건들의 실제 구현을 제공할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 그 프로토콜을 _준수한다 (conform)_ 고 말합니다.
 
 준수 타입[^conforming-types] 이 반드시 구현해야 할 요구 조건을 지정하는 것에 더하여, 프로토콜을 확장하면 이러한 요구 조건 일부의 구현 또는 추가 기능의 제공이라는 장점을 준수 타입이 취할 수 있습니다.
 
@@ -983,7 +983,7 @@ print(differentNumbers.allEqual())
 
 [^protocol]: '프로토콜 (protocol)' 은 '규약' 이라는 뜻을 가지고 있지만, 스위프트에서는 `protocol` 이라는 '키워드 (keyword)' 로도 사용됩니다. 그러므로, '익스텐션 (extension)' 이나 '클로저 (closure)' 처럼 '키워드' 로 사용될 때는 '프로토콜' 이라고 하고, 의미로 사용될 때는 '규약' 이라고 옮기도록 합니다.
 
-[^requirements]: '필수 요구 조건 (requirements)' 은 프로토콜을 준수하려는 타입이 반드시 구현해야 하는 것들을 말합니다. 이에 대한 더 자세한 내용은 이어지는 설명에서 하고 있습니다. 
+[^requirements]: '필수 조건 (requirements)' 은 어떠한 타입이 프로토콜을 준수하려면 반드시 구현해야 하는 조건들을 말합니다.
 
 [^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
 
