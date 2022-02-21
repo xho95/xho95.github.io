@@ -215,7 +215,7 @@ class SomeClass: SomeProtocol {
 
 `required` 수정자의 사용은 준수 클래스의 모든 하위 클래스가 초기자 요구 조건의 명시적 또는 상속 구현을 제공해서, 이들도 프로토콜을 준수하도록, 보장합니다.
 
-'필수 (required) 초기자' 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 를 참고하기 바랍니다.
+필수 (required) 초기자에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 참고하기 바랍니다.
 
 > `final` 수정자로 표시한 클래스에서는 '프로토콜 초기자 필수 조건' 을 `required` 수정자로 표시할 필요가 없는데, 왜냐면 '최종 (final) 클래스' 는 하위 클래스를 만들 수 없기 때문입니다.[^final] `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
 
