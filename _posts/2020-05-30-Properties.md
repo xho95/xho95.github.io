@@ -161,7 +161,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 #### Shorthand Setter Declaration (짧게 줄인 설정자 선언)
 
-계산 속성 설정자가 설정할 새 값에 이름을 정의하지 않으면, `newValue` 라는 기본 이름을 사용합니다. 다음은 이런 짧게 줄인 표기법의 장점을 취한 `Rect` 구조체의 대안 버전입니다:
+설정할 새 값의 이름을 계산 속성 설정자가 정의하지 않으면, `newValue` 라는 기본 이름을 사용합니다. 이 짧게 줄인 표기법의 이점을 취한 대안 버전의 `Rect` 구조체는 이렇습니다:
 
 ```swift
 struct AlternativeRect {
@@ -183,7 +183,7 @@ struct AlternativeRect {
 
 #### Shorthand Getter Declaration (짧게 줄인 획득자 선언)
 
-전체 획득자 본문이 단일 표현식이면, 획득자는 암시적으로 그 표현식을 반환합니다. 다음은 이런 짧게 줄인 표기법과 짧게 줄인 설정자 표기법의 장점을 취한 `Rect` 구조체의 또 다른 버전입니다:
+획득자의 전체 본문이 단일 표현식이면, 획득자가 그 표현식을 암시적으로 반환합니다. 이 짧게 줄인 표기법과 짧게 줄인 설정자 표기법의 이점을 취한 또 다른 버전의 `Rect` 구조체는 이렇습니다:
 
 ```swift
 struct CompactRect {
@@ -332,7 +332,7 @@ print(rectangle.height)
 
 `height` 와 `width` 속성은, `TwelveOrLess.number` 를 0 으로 설정한, `TwelveOrLess` 정의로부터 초기 값을 획득합니다. `TwelveOrLess` 의 설정자는 10 을 유효한 값으로 취급해서 `rectangle.height` 에 수 10 을 저장하는 건 작성한 대로 진행합니다. 하지만, 24 는 `TwelveOrLess` 가 허용한 것보다 커서, 24 를 저장하려는 건 `rectangle.height` 에, 허용한 가장 큰 값인, 12 를 대신 설정하는 것으로 끝납니다.
 
-속성에 포장을 적용할 때, 컴파일러는 포장의 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 통합합니다. (속성 포장은 포장 값의 저장을 책임지므로, 그에 대한 통합 코드는 없습니다.) 특수한 '특성 구문 (attribute syntax)' 의 장점을 취하지 않고, 속성 포장 동작을 하는 코드를 작성할 수도 있습니다. 예를 들어, 다음은 이전에 나열한 코드에서, `@TwelveOrLess` 특성을 작성하는 대신, `TwelveOrLess` 구조체에서 명시적으로 자신의 속성을 포장하는 `SmallRectangle` 버전입니다. [^explicitly-wrap]:
+속성에 포장을 적용할 때, 컴파일러는 포장의 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 통합합니다. (속성 포장은 포장 값의 저장을 책임지므로, 그에 대한 통합 코드는 없습니다.) 특수한 특성 구문[^attribute-syntax] 의 이점을 취하지 않고, 속성 포장 동작을 사용하는 코드를 작성할 수도 있습니다. 예를 들어, 이전에 나열한 코드에서, `@TwelveOrLess` 를 특성으로 작성하는 대신, `TwelveOrLess` 구조체 안에 명시적으로 자신의 속성을 포장한 `SmallRectangle` 버전은 이렇습니다:[^explicitly-wrap]
 
 ```swift
 struct SmallRectangle {
@@ -709,8 +709,10 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 참고하기 바랍니다.
 
-[^explicitly-wrap]: 속성 포장을 사용하는 대신, 구조체가 자신의 속성을 명시적으로 포장하는 방식이, 이 장 맨 앞에서 설명한 예전 '객체 지향 프로그래밍 언어' 방식입니다.
-
 [^be-settable]: 즉, `volumn` 은 획득자만 있는 읽기-전용 계산 속성이어야 말이 된다는 의미입니다.
 
 [^attribute]: '특성 (attribute)' 는 스위프트 언어에서 지원하는 문법 양식입니다. 보다 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
+
+[^attribute-syntax]: '특수한 특성 구문 (special attribute syntax)' 을 사용하지 않는다는 건 위 예제에 있는 `@TwelveOrLess` 같은 걸 사용하지 않는다는 의미입니다.
+
+[^explicitly-wrap]: 속성 포장을 사용하는 대신, 구조체가 자신의 속성을 명시적으로 포장하는 방식이, 이 장 맨 앞에서 설명한 예전 '객체 지향 프로그래밍 언어' 방식입니다.
