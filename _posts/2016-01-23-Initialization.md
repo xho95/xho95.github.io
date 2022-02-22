@@ -790,7 +790,7 @@ if unknownUnit == nil {
 
 원시 값이 있는 열거체는 자동으로, `init?(rawValue:)` 라는, 실패 가능 초기자를 받는데, 이는 `rawValue` 라는 적절한 원시-값 타입의 매개 변수를 취하여 일치한 열거체 case 를 찾으면 이를 선택하고, 일치 값이 없으면 초기화 실패를 발동합니다.
 
-위의 `TemperatureUnit` 예제를 재작성하면 `Character` 타입의 원시 값을 사용해서 `init?(rawValue:)` 초기자의 장점을 취할 수 있습니다:
+`Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 이점을 취하도록 위의 `TemperatureUnit` 예제를 재작성할 수 있습니다:
 
 ```swift
 enum TemperatureUnit: Character {
