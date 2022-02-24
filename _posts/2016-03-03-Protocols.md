@@ -55,7 +55,7 @@ protocol SomeProtocol {
 }
 ```
 
-타입 속성 필수 조건을 프로토콜에서 정의할 땐 항상 `static` 키워드 접두사를 붙입니다. 이 규칙은 타입 속성 요구 조건을 클래스가 구현할 때 `class` 나 `static` 키워드 접두사가 붙을 수 있을지라도 이 규칙은 그대로 적용됩니다[^type-property-requirements]:
+타입 속성 필수 조건을 프로토콜에서 정의할 땐 항상 `static` 키워드 접두사를 붙입니다. 이 규칙은 클래스가 구현할 때 타입 속성 필수 조건에 `class` 나 `static` 키워드 접두사를 붙일지라도 그대로 적용됩니다[^type-property-requirements]:
 
 ```swift
 protocol AnotherProtocol {
@@ -63,7 +63,7 @@ protocol AnotherProtocol {
 }
 ```
 
-다음 예제는 단일한 인스턴스 속성 요구 조건을 가진 프로토콜입니다:
+단일한 인스턴스 속성 필수 조건을 가진 프로토콜은 이렇습니다:
 
 ```swift
 protocol FullyNamed {
@@ -989,7 +989,7 @@ print(differentNumbers.allEqual())
 
  [^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
 
-[^type-property-requirements]: 즉, 클래스의 '타입 속성 요구 조건 (type property requirements)' 은, `class` 나 `static` 으로 구분할 필요 없이,  무조건 `static` 을 사용하면 됩니다.
+[^type-property-requirements]: 즉, 클래스의 '타입 속성 필수 조건 (type property requirements)' 은, `class` 나 `static` 으로 구분할 필요 없이,  무조건 `static` 을 사용하면 됩니다.
 
 [^qualified]: 스위프트에서 '규명하다 (qualify)' 는 자신의 소속을 알린다는 의미입니다. 예를 들어, 사람인 경우 '완전히 규명된 이름' 이란 직급 및 소속까지를 다 포함한 이름을 의미합니다.
 
