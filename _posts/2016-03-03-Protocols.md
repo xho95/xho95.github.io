@@ -85,9 +85,9 @@ let john = Person(fullName: "John Appleseed")
 
 이 예제는, 특정 이름의 사람을 나타내는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫째 줄 부분에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
 
-각각의 `Person` 인스턴스에는, `fullName` 이라는, `String` 타입의, 단일 저장 속성이 있습니다. 이는 `FullyNamed` 프로토콜에 있는 단일한 요구 조건과 일치하며, `Person` 이 프로토콜을 올바로 준수하고 있다는 걸 의미합니다. (프로토콜 요구 조건을 충족하지 않으면 컴파일 시간에 스위프트가 에러를 보고합니다.)
+각각의 `Person` 인스턴스는, `String` 타입의, `fullName` 이라는 단일 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일 필수 조건과 일치하며, `Person` 이 프로토콜을 올바로 준수한다는 의미입니다. (프로토콜 필수 조건을 충족하지 않으면 컴파일 시간에 스위프트가 에러를 보고합니다.)
 
-다음은 더 복잡한 클래스로, 이것도 `FullyNamed` 프로토콜을 채택하고 준수합니다:
+역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스는 이렇습니다:
 
 ```swift
 class Starship: FullyNamed {
@@ -105,7 +105,7 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 // ncc1701.fullName 은 "USS Enterprise" 임
 ```
 
-이 클래스는 `fullName` 속성 요구 조건을 우주선[^starship] 의 읽기-전용 계산 속성으로 구현합니다. 각각의 `Starship` 클래스 인스턴스는 의무적인 `name` 과 옵션인 `prefix`[^optional] 를 저장합니다. `fullName` 속성은 `prefix` 값이 존재하면, `name` 맨 앞에 이를 붙여 우주선의 전체 이름을 생성합니다.
+이 클래스는 `fullName` 속성 필수 조건을 우주선[^starship] 의 읽기-전용 계산 속성으로 구현합니다. 각각의 `Starship` 클래스 인스턴스는 의무적인 `name` 과 옵션인 `prefix`[^optional] 를 저장합니다. `prefix` 값이 존재하면 `fullName` 속성이, `name` 맨 앞에 이를 붙여 우주선 전체 이름을 생성합니다.
 
 ### Method Requirements (메소드 요구 조건)
 
