@@ -131,7 +131,7 @@ protocol RandomNumberGenerator {
 
 `RandomNumberGenerator` 프로토콜은 각각의 난수 발생 방법에 대해선 어떤 가정도 하지 않습니다-단순히 새 난수 발생을 위한 표준 방식을 발생기[^generator] 가 제공하길 요구할 뿐입니다.
 
-`RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스 구현은 이렇습니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 의사 (pseudorandom) 난수 발생 알고리즘을 구현합니다:
+다음 구현은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스입니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 의사 (pseudorandom) 난수 발생 알고리즘을 구현합니다:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
