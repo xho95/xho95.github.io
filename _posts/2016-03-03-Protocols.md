@@ -119,7 +119,7 @@ protocol SomeProtocol {
 }
 ```
 
-다음 예제는 단일한 인스턴스 메소드 요구 조건을 가진 프로토콜을 정의합니다:
+다음 예제는 단일 인스턴스 메소드 필수 조건을 가진 프로토콜을 정의합니다:
 
 ```swift
 protocol RandomNumberGenerator {
@@ -127,9 +127,9 @@ protocol RandomNumberGenerator {
 }
 ```
 
-`RandomNumberGenerator` 라는, 이 프로토콜은 어떤 준수 타입이든 `random` 이라는 인스턴스 메소드를 가지길 요구하는데, 이는 호출할 때마다 `Double` 값을 반환합니다. 프로토콜 부분에서 지정하진 않지만, 이 값은 `0.0` 에서 (1.0 을 포함하진 않지만) `1.0` 까지의 값이라고 가정합니다.[^random]
+`RandomNumberGenerator` 라는, 이 프로토콜은 어떤 준수 타입이든 `random` 이라는 인스턴스 메소드를 가지길 요구하는데, 이는 호출할 때마다 `Double` 값을 반환합니다. 프로토콜에서 지정하지 않긴 않지만, 이 값은 `0.0` 에서 `1.0` 까지의 (1.0 을 포함하진 않는) 값이라 가정합니다.[^random]
 
-`RandomNumberGenerator` 프로토콜은 각각의 난수 발생 방법에 대해선 어떤 가정도 하지 않습니다-단순히 발생기[^generator] 가 새로운 난수를 발생하는 표준 방식을 제공하길 요구할 뿐입니다.
+`RandomNumberGenerator` 프로토콜은 각각의 난수 발생 방법에 대해선 어떤 가정도 하지 않습니다-단순히 새 난수 발생을 위한 표준 방식을 발생기[^generator] 가 제공하길 요구할 뿐입니다.
 
 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스 구현은 이렇습니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 의사 (pseudorandom) 난수 발생 알고리즘을 구현합니다:
 
