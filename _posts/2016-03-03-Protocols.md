@@ -152,9 +152,9 @@ print("And another one: \(generator.random())")
 // "And another one: 0.729023776863283" 를 인쇄함
 ```
 
-### Mutating Method Requirements (변경 메소드 요구 조건)
+### Mutating Method Requirements (변경 메소드 필수 조건)
 
-메소드가 자신이 속한 인스턴스를 수정-또는 _변경 (mutate)_-하는게 필요할 때가 있습니다. 값 타입 (즉, 구조체 및 열거체) 의 인스턴스 메소드는 메소드 `func` 키워드 앞에 `mutating` 키워드를 붙여서 메소드가 자신이 속한 인스턴스 및 그 인스턴스의 어떤 속성도 수정하도록 허용함을 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
+메소드가 자신이 속한 인스턴스를 수정 (또는 _변경 (mutate)_ 하는) 것이 필요할 때가 있습니다. 값 타입 (즉, 구조체 및 열거체) 의 인스턴스 메소드는 메소드 `func` 키워드 앞에 `mutating` 키워드를 붙여서 메소드가 자신이 속한 인스턴스 및 그 인스턴스의 어떤 속성도 수정하도록 허용함을 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
 
 프로토콜을 채택한 어떤 타입의 인스턴스든 변경할 의도로 프로토콜 인스턴스 메소드 요구 조건을 정의한다면, 프로토콜 정의 부분에서 메소드에 `mutating` 키워드를 표시합니다. 이는 구조체와 열거체가 프로토콜을 채택하고 그 메소드 요구 조건을 만족할 수 있게 합니다.
 
