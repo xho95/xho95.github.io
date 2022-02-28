@@ -172,7 +172,7 @@ protocol Togglable {
 
 구조체나 열거체가 `Togglable` 프로토콜을 구현하면, `mutating` 으로도 표시한 `toggle()` 메소드를 구현함으로써 그 구조체나 열거체가 프로토콜을 준수할 수 있습니다.
 
-아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, `on` 및 `off` 라는 열거체 case 로 지시한, 두 상태 사이를 전환합니다. `Togglable` 프로토콜의 요구 조건과 일치하도록, 열거체의 `toggle` 구현에 `mutating` 을 표시합니다:
+아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, `on` 과 `off` 열거체 case 로 표시한, 두 상태 사이를 전환합니다. `Togglable` 프로토콜의 필수 조건과 일치하도록, 열거체의 `toggle` 구현에 `mutating` 을 표시합니다:
 
 ```swift
 enum OnOffSwitch: Togglable {
