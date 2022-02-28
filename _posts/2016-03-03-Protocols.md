@@ -191,7 +191,7 @@ lightSwitch.toggle()
 // lightSwitch 는 이제 .on 과 같음
 ```
 
-### Initializer Requirements (초기자 요구 조건)
+### Initializer Requirements (초기자 필수 조건)
 
 프로토콜은 준수 타입이 특정 초기자를 구현하길 요구할 수 있습니다. 이 초기자들을 프로토콜 정의 부분에 작성하는 방식은 보통의 초기자와 정확히 똑같지만, 중괄호나 메소드 본문은 없습니다:
 
