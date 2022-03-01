@@ -201,9 +201,9 @@ protocol SomeProtocol {
 }
 ```
 
-#### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 요구 조건의 클래스 구현)
+#### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건의 클래스 구현)
 
-준수 클래스에선 프로토콜 초기자 요구 조건을 지명 초기자나 편의 초기자 어느 거로든 구현할 수 있습니다. 두 경우 모두, 초기자 구현에 반드시 `required` 수정자[^required] 를 표시해야 합니다:
+준수 클래스에서 프로토콜 초기자 필수 조건은 지명 초기자나 편의 초기자 어느 거로든 구현할 수 있습니다. 두 경우 모두, 초기자 구현에 반드시 `required` 수정자[^required] 를 표시해야 합니다:
 
 ```swift
 class SomeClass: SomeProtocol {
