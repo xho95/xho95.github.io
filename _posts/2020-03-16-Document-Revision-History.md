@@ -272,7 +272,7 @@ categories: Swift Language Grammar Revision History
 
 #### 2014-08-18
 * 'iOS' 와 'OS X' 앱을 제작하기 위한 '애플 (Apple)' 의 새로운 프로그래밍 언어인, '스위프트 (Swift) 1.0' 을 설명하는 새로운 문서.[^introducing-swift]
-* 프로토콜에 있는 [Initializer Requirements (초기자 요구 조건)]({% post_url 2016-03-03-Protocols %}#initializer-requirements-초기자-필수-조건) 에 대하여 새로운 부분을 추가함.
+* 프로토콜에 있는 [Initializer Requirements (초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#initializer-requirements-초기자-필수-조건) 에 대하여 새로운 부분을 추가함.
 * [Class-Only Protocols (클래스-전용 프로토콜)]({% post_url 2016-03-03-Protocols %}#class-only-protocols-클래스-전용-프로토콜) 에 대하여 새로운 부분을 추가함.
 * [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 는 이제 '문자열 보간법 (string interpolation)' 을 사용할 수 있음. 그와 반대인 기록을 제거함.
 * 이제 더 이상 `String` 과 `Character` 값을 '덧셈 연산자 (`+`)' 나 '더하기 할당 연산자 (`+=`)' 로 조합할 수 없다는 사실을 반영하기 위해 [Concatenating Strings and Characters (문자열과 문자 이어붙이기)](% post_url 2016-05-29-Strings-and-Characters %}#concatenating-strings-and-characters-문자열과-문자-이어붙이기) 부분을 갱신함. 이러한 연산자들은 이제 `String` 값에만 사용됨. 단일 `Character` 값을 문자열 끝에 덧붙이려면 `String` 타입의 `append(_:)` 메소드를 사용할 것.

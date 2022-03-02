@@ -203,7 +203,7 @@ protocol SomeProtocol {
 
 #### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건의 클래스 구현)
 
-준수 클래스에서 프로토콜 초기자 필수 조건은 지명 초기자나 편의 초기자 어느 거로든 구현할 수 있습니다. 두 경우 모두, 초기자 구현에 반드시 `required` 수정자[^required] 를 표시해야 합니다:
+프로토콜 초기자 필수 조건은 준수 클래스에서 지명 초기자나 편의 초기자 어느 거로든 구현할 수 있습니다. 두 경우 모두, 반드시 `required` 수정자[^required] 로 초기자 구현을 표시해야 합니다:
 
 ```swift
 class SomeClass: SomeProtocol {
@@ -213,11 +213,11 @@ class SomeClass: SomeProtocol {
 }
 ```
 
-`required` 수정자의 사용은 준수 클래스의 모든 하위 클래스가 초기자 요구 조건의 명시적 또는 상속 구현을 제공해서, 이들도 프로토콜을 준수하도록, 보장합니다.
+`required` 수정자를 사용하면 준수 클래스의 모든 하위 클래스도 초기자 필수 조건의 명시적 또는 상속 구현을 제공하도록 하여, 이들의 프로토콜 준수도, 보장합니다.
 
-필수 (required) 초기자에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 참고하기 바랍니다.
+필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 참고하기 바랍니다.
 
-> `final` 수정자로 표시한 클래스에서는 '프로토콜 초기자 필수 조건' 을 `required` 수정자로 표시할 필요가 없는데, 왜냐면 '최종 (final) 클래스' 는 하위 클래스를 만들 수 없기 때문입니다.[^final] `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
 
 하위 클래스가 상위 클래스에 있는 '지명 초기자' 를 '재정의' 하면서, 프로토콜에서 일치하고 있는 '초기자 필수 조건' 도 구현하는 경우, 그 '초기자 구현' 은 `required` 와 `override` 수정자 둘 다 표시합니다:
 
@@ -1003,7 +1003,7 @@ print(differentNumbers.allEqual())
 
 [^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다. 
 
-[^final]: 하위 클래스를 가지지 않는 최종 클래스는 해당 초기자를 하위 클래스가 필수로 구현해야 한다는 표시를 할 이유가 없습니다.
+[^required-initializer]: `required` 수정자로 표시한 초기자를 '필수 초기자 (required initializer)' 라고 한 건 준수 타입이 반드시 구현해야 하기 때문입니다.
 
 [^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
