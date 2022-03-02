@@ -219,7 +219,7 @@ class SomeClass: SomeProtocol {
 
 > `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
 
-하위 클래스가 상위 클래스에 있는 '지명 초기자' 를 '재정의' 하면서, 프로토콜에서 일치하고 있는 '초기자 필수 조건' 도 구현하는 경우, 그 '초기자 구현' 은 `required` 와 `override` 수정자 둘 다 표시합니다:
+하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 일치하는 초기자 필수 조건도 구현한다면, 초기자 구현에 `required` 와 `override` 수정자를 둘 다 표시합니다:
 
 ```swift
 protocol SomeProtocol {
@@ -228,14 +228,14 @@ protocol SomeProtocol {
 
 class SomeSuperClass {
   init() {
-    // 초기자 구현은 여기에 둡니다.
+    // 초기자 구현은 여기에 둠
   }
 }
 
 class SomeSubClass: SomeSuperClass, SomeProtocol {
-  // "required" 는 SomeProtocol 을 준수하기 위함; "override" 는 SomeSuperClass 를 준수하기 위함
+  // "required" 는 SomeProtocol 준수에서; "override" 는 SomeSuperClass 에서 온 것임
   required override init() {
-    // 초기자 구현은 여기에 둡니다.
+    // 초기자 구현은 여기에 둠
   }
 }
 ```
