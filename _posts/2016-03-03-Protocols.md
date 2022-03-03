@@ -242,9 +242,9 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 #### Failable Initializer Requirements (실패 가능 초기자 필수 조건)
 
-프로토콜은, [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에서 정의한 것처럼, 준수 타입을 위한 '실패 가능 초기자 필수 조건' 을 정의할 수 있습니다.
+[Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
 
-'실패 가능 초기자 필수 조건' 은 '준수 타입' 에서 '실패 가능' 또는 '실패하지 않는 초기자' 로 만족시킬 수 있습니다. '실패하지 않는 (nonfailable) 초기자 필수 조건' 은 '실패하지 않는 초기자' 또는 '암시적으로 포장 푸는 실패 가능 초기자' 로 만족시킬 수 있습니다.
+실패 가능 초기자 필수 조건은 준수 타입에서 실패 가능 또는 실패하지 않는 초기자로 만족할 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 포장을 암시적으로 푸는 실패 가능 초기자로 만족할 수 있습니다.
 
 ### Protocols as Types (타입으로써의 프로토콜)
 
