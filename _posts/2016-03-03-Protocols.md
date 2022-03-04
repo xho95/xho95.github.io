@@ -276,7 +276,7 @@ class Dice {
 
 이 예제는, 보드 게임에 사용할 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스에는, 면의 개수를 나타내는, `sides` 라는 정수 속성과, 주사위 굴림 값 생성을 위한 난수 발생기를 제공하는, `generator` 라는 속성이 있습니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 이 속성에 할당하는 인스턴스는, 인스턴스가 `RandomNumberGenerator` 프로토콜을 반드시 '채택 (adopt)' 해야[^adopt] 한다는 것만 제외하면, 다른 아무 것도 필요하지 않습니다. 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안에 있는 코드는 이 프로토콜을 준수하는 모든 '발생기 (generator)' 에 적용되는 방식으로만 `generator` 하고 상호 작용할 수 있습니다. 이는 '발생기' 의 실제 타입이 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 방식으로 '프로토콜 타입' 을 '실제 타입' 으로 내림 변환할 수 있습니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드와 `generator` 는 이 프로토콜을 준수하는 모든 발생기에 적용될 방식으로만 상호 작용할 수 있습니다. 이는 '발생기' 의 실제 타입이 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 방식으로 '프로토콜 타입' 을 '실제 타입' 으로 내림 변환할 수 있습니다.
 
 `Dice` 는, 초기 상태를 설정하는, 초기자도 가지고 있습니다. 이 초기자, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때, 이 매개 변수에는 어떤 '준수 타입' 의 값이든 전달 할 수 있습니다.
 
@@ -1004,7 +1004,7 @@ print(differentNumbers.allEqual())
 
 [^required-initializer]: `required` 수정자로 표시한 초기자를 '필수 초기자 (required initializer)' 라고 한 건 준수 타입이 반드시 구현해야 하기 때문입니다.
 
-[^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
+[^adopt]: 원문에서 준수 (conforming) 대신 채택 (adopt) 을 사용했습니다. 스위프트 문서에선 항상 준수와 채택이란 말을 분명히 구분하여 사용합니다. 이 둘의 차이점은 이 문서 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
 [^delegate]: 사실 'delegation' 을 '위임' 이라고 한다면, 'delegate' 는 '위임자' 라고 하는 것이 좋겠지만, 일반적으로 'delegation' 은 '위임' 으로 'delegate' 는 '대리자' 라는 번역이 널리 알려져 있습니다. 이것은 원래 'delegation' 자체가 프로그래밍 용어로 사용되기 전부터 일반 용어로 '위임' 이라는 말로 사용되고 있었기 때문으로 추측됩니다. '위임 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
 
