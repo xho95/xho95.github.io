@@ -54,7 +54,7 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 
 위에서 본 것처럼, 초기자 안에서 저장 속성의 초기 값을 설정할 수 있습니다. 대안으로는, 속성 선언 부분에서 _기본 속성 값 (default property value)_ 을 지정합니다.[^property-declaration] 정의할 때 속성에 초기 값을 할당함으로써 기본 속성 값을 지정합니다.
 
-> 속성이 취하는 초기 값이 항상 똑같다면, 초기자 안에서 값을 설정하기 보단 기본 값을 제공합니다. 끝단의 결과는 똑같지만, 기본 값이 속성 초기화를 자신의 선언과 더 가깝게 묶습니다. 이는 초기자를 더 짧고, 명확하게 하며 자신의 기본 값으로 속성의 타입을 추론할 수 있게 합니다. 이 장 나중에 설명하는 것처럼, 기본 값은 '기본 초기자 (default initializer) 와 초기자 상속 (initializer inheritance)' 이라는 장점도 더 쉽게 취하도록 합니다.
+> 속성이 항상 동일한 초기 값을 취하면, 초기자 안에서 값을 설정하기 보단 기본 값을 제공합니다. 끝의 결과는 똑같지만, 기본 값이 속성 초기화와 그것의 선언을 더 가깝게 묶습니다. 이는 초기자를 더 짧고, 명확하게 하며 자신의 기본 값으로 속성의 타입을 추론할 수 있게 합니다. 기본 값은, 이 장 나중에 설명하는 것처럼, 기본 초기자 (default initializer) 와 초기자 상속 (initializer inheritance) 이라는 이점도 더 쉽게 취하게 합니다.
 
 속성을 선언하는 시점에 자신의 `temperature` 속성에 기본 값을 제공함으로써 위의 `Fahrenheit` 구조체를 더 단순한 형식으로 작성할 수 있습니다:
 
@@ -316,7 +316,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 // centerRect 은 원점이 (2.5, 2.5) 이고 크기는 (3.0, 3.0) 임
 ```
 
-`init(center:size:)` 초기자 스스로 적절한 속성에 새 `origin` 과 `size` 값을 할당할 수도 있을 겁니다. 하지만, 이미 정확하게 그 기능을 제공하는 기존 초기자라는 장점을 `init(center:size:)` 초기자가 취하는게 더 편리 (하며 의도도 더 명확) 합니다.
+`init(center:size:)` 초기자 스스로 적절한 속성에 새 `origin` 과 `size` 값을 할당할 수도 있을 겁니다. 하지만, `init(center:size:)` 초기자가 이미 정확히 그 기능을 하는 기존 초기자라는 이점을 취하는게 더 편리 (하며 의도도 더 명확) 합니다.
 
 > `init()` 과 `init(origin:size:)` 초기자 그 자체의 정의 없이 이 예제를 작성하는 대안은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
 
@@ -790,7 +790,7 @@ if unknownUnit == nil {
 
 원시 값이 있는 열거체는 자동으로, `init?(rawValue:)` 라는, 실패 가능 초기자를 받는데, 이는 `rawValue` 라는 적절한 원시-값 타입의 매개 변수를 취하여 일치한 열거체 case 를 찾으면 이를 선택하고, 일치 값이 없으면 초기화 실패를 발동합니다.
 
-위의 `TemperatureUnit` 예제를 재작성하면 `Character` 타입의 원시 값을 사용해서 `init?(rawValue:)` 초기자의 장점을 취할 수 있습니다:
+`Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 이점을 취하도록 위의 `TemperatureUnit` 예제를 재작성할 수 있습니다:
 
 ```swift
 enum TemperatureUnit: Character {

@@ -6,47 +6,47 @@ date:   2016-03-03 23:30:00 +0900
 categories: Swift Language Grammar Protocol
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols]을 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Protocols](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#) 부분[^Protocols] 을 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Protocols (프로토콜; 규약)
 
-_프로토콜 (protocol)_[^protocol] 은 특별한 작업이나 기능 조각에 적합 하도록 메소드, 속성, 그리고 그 외 '필수 조건 (requirements)' 들의 '밑바탕 설계 (blueprint)'[^blueprint] 를 정의합니다. 그런 다음 해당 '필수 조건' 들의 실제 구현을 제공하도록 클래스, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 해당 프로토콜을 _준수한다 (conform)_ 라고 합니다.
+_프로토콜 (protocol)_[^protocol] 은 특별한 임무 또는 기능 조각에 적합한 메소드와, 속성, 및 다른 필수 조건[^requirements] 들의 청사진[^blueprint] 을 정의합니다. 그러면 클래스나, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 하여 그 필수 조건들의 실제 구현을 제공할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 그 프로토콜을 _준수한다 (conform)_ 고 말합니다.
 
-'준수 타입 (conforming types)' 이 반드시 구현해야 하는 '필수 조건' 을 지정하는 것에 더하여, '필수 조건' 일부를 구현하거나 '준수 타입' 이 장점을 취할 수 있도록 추가적인 기능을 구현하기 위해 '프로토콜' 을 '확장' 할 수도 있습니다.
+준수 타입[^conforming-types] 이 반드시 구현해야 할 필수 조건의 지정에 더하여, 프로토콜을 확장하면 준수 타입이 이러한 필수 조건의 일부 또는 추가 기능의 구현이라는 이점을 취할 수 있습니다.
 
-### Protocol Syntax (프로토콜 구문 표현)
+### Protocol Syntax (프로토콜 구문)
 
-프로토콜은 클래스, 구조체, 그리고 열거체와 아주 비슷한 방식으로 정의합니다:
+프로토콜은 클래스, 구조체, 및 열거체와 아주 비슷한 방식으로 정의합니다:
 
 ```swift
 protocol SomeProtocol {
-  // 프로토콜 정의는 여기에 둡니다.
+  // 프로토콜 정의는 여기에 둠
 }
 ```
 
-사용자 정의 타입은, 정의에서, 타입 이름 뒤에, 콜론으로 구분하여, 프로토콜 이름을 붙임으로써 특별한 프로토콜을 '채택' 한다고 알립니다. 여러 개의 프로토콜은, 쉼표로 구분하여, 나열 할 수 있습니다:
+사용자 정의 타입은, 자신의 정의 부분에서, 타입 이름 뒤에 프로토콜 이름을, 콜론으로 구분하여, 둠으로써 한 특별한 프로토콜을 채택한다고 알립니다. 여러 개의 프로토콜을, 쉼표로 구분하여, 나열할 수도 있습니다:
 
 ```swift
 struct SomeStructure: FirstProtocol, AnotherProtocol {
-  // 구조체 정의는 여기에 둡니다.
+  // 구조체 정의는 여기에 둠
 }
 ```
 
-클래스가 상위 클래스를 가지고 있으면, 쉼표 뒤에, 상위 클래스 이름을 채택한 프로토콜 어떤 것들보다 앞서 나열합니다:
+클래스에 상위 클래스가 있으면, 채택한 어떤 프로토콜들 보다 앞에 상위 클래스 이름을 나열하고, 그 뒤에 쉼표를 둡니다:
 
 ```swift
 class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
-  // 클래스 정의는 여기에 둡니다.
+  // 클래스 정의는 여기에 둠
 }
 ```
 
 ### Property Requirements (속성 필수 조건)
 
-'프로토콜' 은 어떤 '준수 타입' 이 특별한 이름과 타입을 가진 인스턴스 속성이나 타입 속성을 필수로 제공하도록 요구할 수 있습니다. 프로토콜은 속성이 '저장 속성' 인지 '계산 속성' 인지는 지정하지 않습니다-필수인 속성 이름과 타입 만을 지정합니다. 프로토콜은 각각의 속성이 반드시 '획득 가능 (gettable)' 해야 하는지 아니면 반드시 '획득 가능 (gettable)' _하면서 (and)_ '설정 가능 (settable)' 해야 하는 지도 지정합니다.
+프로토콜은 어떤 준수 타입이든 특별한 이름과 타입의 인스턴스 속성 및 타입 속성을 제공하도록 요구할 수 있습니다. 프로토콜은 속성이 저장 속성인지 계산 속성인지는 지정하지 않습니다-필수인 속성 이름과 타입만 지정합니다. 프로토콜은 각각의 속성이 반드시 획득 가능해야 하는지 아니면 획득 가능 _하면서 (and)_ 설정 가능해야 하는지도 지정합니다.
 
-프로토콜이 획득 가능하면서 설정 가능한 속성을 요구하는 경우, 해당 '속성 필수 조건' 을 '상수 저장 속성' 이나 '읽기-전용 계산 속성' 으로 충족할 수는 없습니다. 프로토콜이 획득 가능한 속성만을 요구하는 경우, 어떤 종류의 속성이든 '필수 조건' 을 만족할 수 있으며, 설정 가능하기도 한 속성이 자신의 코드에 유용하다면 이것 역시 유효합니다.
+프로토콜이 획득 가능하면서 설정 가능한 속성을 요구하는 경우, 상수 저장 속성이나 읽기-전용 계산 속성으론 그 속성 필수 조건을 충족할 수 없습니다. 프로토콜이 획득 가능한 속성만을 요구하는 경우, 어떤 종류의 속성으로도 필수 조건을 만족할 수 있으며, 속성을 설정도 가능하게 하는게 자신의 코드에 유용하면 이러는 것도 유효합니다.
 
-'속성 필수 조건' 은 항상, `var` 키워드를 접두사로 가진, 변수 속성으로 선언합니다. '획득 가능 하면서 설정도 가능한 속성' 은 타입 선언 뒤에 `{ get set }` 을 작성하여 지시하며, '획득 가능한 속성' 은 `{ get }` 을 작성하여 지시합니다.
+속성 필수 조건은 항상, `var` 키워드 접두사를 가진, 변수 속성으로 선언합니다. 획득 가능하면서 설정 가능한 속성은 자신의 타입 선언 뒤에 `{ get set }` 을 써서 지시하며, 획득 가능한 속성은 `{ get }` 을 써서 지시합니다.
 
 ```swift
 protocol SomeProtocol {
@@ -55,7 +55,7 @@ protocol SomeProtocol {
 }
 ```
 
-'타입 속성 필수 조건' 을 프로토콜에서 정의할 땐 항상 `static` 키워드를 접두사로 붙입니다. 이 규칙은 '타입 속성 필수 조건' 을 클래스가 구현할 때 `class` 나 `static` 키워드를 접두사로 붙일 수 있을지라도 따라다닙니다[^type-property-requirements]:
+타입 속성 필수 조건을 프로토콜에서 정의할 땐 항상 `static` 키워드 접두사를 붙입니다. 이 규칙은 클래스가 구현할 때 타입 속성 필수 조건에 `class` 나 `static` 키워드 접두사를 붙일지라도 그대로 적용됩니다[^type-property-requirements]:
 
 ```swift
 protocol AnotherProtocol {
@@ -63,7 +63,7 @@ protocol AnotherProtocol {
 }
 ```
 
-다음은 단일 '인스턴스 속성 필수 조건' 을 가진 '프로토콜' 예제입니다:
+단일한 인스턴스 속성 필수 조건을 가진 프로토콜은 이렇습니다:
 
 ```swift
 protocol FullyNamed {
@@ -71,23 +71,23 @@ protocol FullyNamed {
 }
 ```
 
-`FullyNamed` 프로토콜은 '준수 타입' 이 온전히 '규명된 (qualified)'[^qualified] 이름을 필수로 제공하도록 요구합니다. 프로토콜은 '준수 타입' 의 본성에 대하여 어떤 다른 것도 지정하지 않습니다-반드시 타입은 스스로 '온전한 전체 이름' 을 제공할 수 있어야 한다는 것만을 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입이든 반드시, `fullName` 이라는, `String` 타입의, '획득 가능한 인스턴스 속성' 을 가져야 함을 알립니다.
+`FullyNamed` 프로토콜은 준수 타입이 완전히 규명된 이름[^qualified] 을 제공하길 요구합니다. 프로토콜은 준수 타입에 대한 어떤 다른 본성도 지정하지 않습니다-타입 그 자체가 반드시 전체 이름을 제공할 수 있어야 한다는 것만 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입이든, `fullName` 이라는, `String` 타입의, 획득 가능 인스턴스 속성을 가져야 한다고 알립니다.
 
-다음은 `FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체 예제입니다:
+`FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체 예제는 이렇습니다:
 
 ```swift
 struct Person: FullyNamed {
   var fullName: String
 }
 let john = Person(fullName: "John Appleseed")
-// john.fullName 은 "John Appleseed" 입니다.
+// john.fullName 은 "John Appleseed" 임
 ```
 
-이 예제는, 특정한 이름의 사람을 표현하는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫 번째 줄에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
+이 예제는, 특정 이름의 사람을 나타내는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫째 줄 부분에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
 
-`Person` 의 각 인스턴스는, `fullName` 이라는, `String` 타입의, 단일 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일 '필수 조건' 과도 일치하며, `Person` 이 프로토콜을 올바르게 준수하고 있음을 의미합니다. (프로토콜 '필수 조건' 을 충족하지 않으면 스위프트가 컴파일 시간에 에러를 보고합니다.)
+각각의 `Person` 인스턴스는, `String` 타입의, `fullName` 이라는 단일 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일 필수 조건과 일치하며, `Person` 이 프로토콜을 올바로 준수한다는 의미입니다. (프로토콜 필수 조건을 충족하지 않으면 컴파일 시간에 스위프트가 에러를 보고합니다.)
 
-다음도, 역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스입니다:
+역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스는 이렇습니다:
 
 ```swift
 class Starship: FullyNamed {
@@ -102,16 +102,16 @@ class Starship: FullyNamed {
   }
 }
 var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
-// ncc1701.fullName 은 "USS Enterprise" 입니다.
+// ncc1701.fullName 은 "USS Enterprise" 임
 ```
 
-이 클래스는 '`fullName` 속성 필수 조건' 을 '우주선 (starship)' 을 위한 '읽기-전용 계산 속성' 으로 구현합니다. 각 `Starship` 클래스 인스턴스는 '의무적인 `name`' 과 '선택 사항인 `prefix`'[^optional] 를 저장합니다. `fullName` 속성은 `prefix` 값이 존재하면, 우주선을 위한 '온전한 전체 이름' 을 생성하기 위해 `name` 의 맨 앞에 붙입니다.
+이 클래스는 `fullName` 속성 필수 조건을 우주선[^starship] 의 읽기-전용 계산 속성으로 구현합니다. 각각의 `Starship` 클래스 인스턴스는 의무적인 `name` 과 옵션인 `prefix`[^optional] 를 저장합니다. `prefix` 값이 존재하면 `fullName` 속성이, `name` 맨 앞에 이를 붙여 우주선 전체 이름을 생성합니다.
 
 ### Method Requirements (메소드 필수 조건)
 
-프로토콜은 '준수 타입' 이 특정한 '인스턴스 메소드' 와 '타입 메소드' 를 필수로 구현하도록 요구할 수 있습니다. 이 메소드들을 프로토콜 정의에 작성하는 방식은 보통의 인스턴스 및 타입 메소드 에서와 정확하게 똑같지만, 중괄호나 메소드 본문은 없습니다. 보통의 메소드 에서와 똑같은 규칙이라는 전제에 따라, '가변 매개 변수' 를 허용합니다. 하지만, 프로토콜 정의 내에서 메소드 매개 변수에 '기본 값' 을 지정할 수는 없습니다.
+프로토콜은 준수 타입이 특정 인스턴스 메소드 및 타입 메소드를 구현하도록 요구할 수 있습니다. 이 메소드들은 보통의 인스턴스 및 타입 메소드와 정확히 똑같은 방식으로 프로토콜 정의 부분에 작성하지만, 중괄호나 메소드 본문이 없습니다. 보통의 메소드에서와 규칙이 동일하다는 전제로, 가변 매개 변수를 허용합니다. 하지만, 프로토콜 정의 안의 메소드 매개 변수에서 기본 값을 지정할 순 없습니다.
 
-'타입 속성 필수 조건' 에서 처럼, 프로토콜에서 '타입 메소드 필수 조건' 을 정의할 때는 항상 `static` 키워드로 접두사를 붙여야 합니다. 이는 '타입 메소드 필수 조건' 을 클래스가 구현할 때 `static` 이나 `class` 접두사를 붙이게 될지라도 그렇습니다:
+타입 속성 필수 조건 처럼, 프로토콜에서 타입 메소드 필수 조건을 정의할 땐 항상 `static` 키워드 접두사를 붙입니다. 타입 메소드 필수 조건을 클래스가 구현할 때 `class` 나 `static` 키워드 접두사를 붙일지라도 그렇습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -119,7 +119,7 @@ protocol SomeProtocol {
 }
 ```
 
-다음 예제는 단일 '인스턴스 메소드 필수 조건' 을 가진 프로토콜을 정의합니다:
+다음 예제는 단일 인스턴스 메소드 필수 조건을 가진 프로토콜을 정의합니다:
 
 ```swift
 protocol RandomNumberGenerator {
@@ -127,11 +127,11 @@ protocol RandomNumberGenerator {
 }
 ```
 
-이, '`RandomNumberGenerator` 프로토콜' 은, 어떤 '준수 타입' 이든 필수로, 호출할 때마다 `Double` 값을 반환하는, `random` 이라는 '인스턴스 메소드' 를 가질 것을 요구합니다. 비록 프로토콜에서 지정하진 않았어도, 이 값은 `0.0` 에서 `1.0` 에 이르는 ('1.0' 을 직접 포함하진 않는) 수라고 가정합니다.[^random]
+`RandomNumberGenerator` 라는, 이 프로토콜은 어떤 준수 타입이든 `random` 이라는 인스턴스 메소드를 가지길 요구하는데, 이는 호출할 때마다 `Double` 값을 반환합니다. 프로토콜에서 지정하지 않긴 않지만, 이 값은 `0.0` 에서 `1.0` 까지의 (1.0 을 포함하진 않는) 값이라 가정합니다.[^random]
 
-`RandomNumberGenerator` 프로토콜은 각각의 '난수 (random number)' 발생 방법에 대해서는 어떤 가정도 하지 않습니다-이는 '발생기 (generator)' 가 새로운 난수를 생성하는 표준 방식을 필수로 제공하도록 단순히 요구할 뿐입니다.
+`RandomNumberGenerator` 프로토콜은 각각의 난수 발생 방법에 대해선 어떤 가정도 하지 않습니다-단순히 새 난수 발생을 위한 표준 방식을 발생기[^generator] 가 제공하길 요구할 뿐입니다.
 
-다음은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스의 구현입니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 '의사 난수 (pseudorandom number) 발생 알고리즘' 을 구현합니다:
+다음 구현은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스입니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 의사 (pseudorandom) 난수 발생 알고리즘을 구현합니다:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
@@ -147,22 +147,22 @@ class LinearCongruentialGenerator: RandomNumberGenerator {
 }
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101" 를 인쇄합니다.
+// "Here's a random number: 0.3746499199817101" 를 인쇄함
 print("And another one: \(generator.random())")
-// "And another one: 0.729023776863283" 를 인쇄합니다.
+// "And another one: 0.729023776863283" 를 인쇄함
 ```
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
 
-때때로 메소드는 자신이 속한 인스턴스를 수정-또는 _변경 (mutate)_-할 필요가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드는 자신이 속한 인스턴스와 해당 인스턴스의 어떤 속성이든 메소드가 수정할 수 있음을 지시하고자 메소드의 `func` 키워드 앞에 `mutating` 키워드를 붙입니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
+메소드가 자신이 속한 인스턴스를 수정 (또는 _변경 (mutate)_ 하는) 것이 필요할 때가 있습니다. 값 타입의 (즉, 구조체 및 열거체의) 인스턴스 메소드면 메소드의 `func` 키워드 앞에 `mutating` 키워드를 둬서 메소드가 자신이 속한 인스턴스 및 그 인스턴스에 있는 어떤 속성의 수정이든 허용한다고 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
 
-프로토콜을 채택한 어떤 타입의 인스턴스든 변경하려는 의도인 '프로토콜 인스턴스 메소드 필수 조건' 을 정의하는 경우, 프로토콜의 정의에서 메소드를 `mutating` 키워드로 표시합니다. 이는 구조체와 열거체가 프로토콜을 채택해서 해당 '메소드 필수 조건' 을 만족할 수 있게 해줍니다.
+프로토콜을 채택한 어떤 타입의 인스턴스든 변경할 의도로 프로토콜 인스턴스 메소드 필수 조건을 정의하는 거라면, 프로토콜 정의 부분에서 `mutating` 키워드로 메소드를 표시합니다. 이는 구조체 및 열거체가 프로토콜을 채택해서 그 메소드 필수 조건을 만족할 수 있게 합니다.
 
-> '프로토콜 인스턴스 메소드 필수 조건' 을 `mutating` 으로 표시한 경우, 해당 메소드 구현을 클래스에서 작성할 때 `mutating` 키워드를 작성할 필요가 없습니다. `mutating` 키워드는 구조체와 열거체에서만 사용합니다.
+> 프로토콜 인스턴스 메소드 필수 조건을 `mutating` 으로 표시한 경우, 그 메소드를 클래스가 구현할 땐 `mutating` 키워드를 작성할 필요가 없습니다. `mutating` 키워드는 구조체와 열거체만 사용합니다.
 
-아래 예제는, `toggle` 이라는 단일 '인스턴스 메소드 필수 조건' 을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름이 연상하는 것처럼, `toggle()` 메소드는, 전형적으로, 어떤 '준수 타입' 의 상태를, 해당 타입의 속성을 수정함으로써, '전환 (toggle)' 하거나 '반전 (invert)' 하려는 의도입니다.
+아래 예제는, `toggle` 이라는 단일 인스턴스 메소드 필수 조건을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름이 제시하듯, `toggle()` 메소드의 의도는, 전형적으로 그 타입의 속성을 변경함으로써, 어떤 준수 타입의 상태를 전환 (toggle) 또는 반전 (invert) 하는 겁니다.
 
-`toggle()` 메소드는, 메소드를 호출할 때 '준수 인스턴스' 의 상태를 변경할 것이라 예상된다는 것을 지시하고자, `Togglable` 프로토콜 정의 시에 `mutating` 키워드로 표시합니다:
+`Togglable` 프로토콜 정의 부분에서 `toggle()` 메소드를 `mutating` 키워드로 표시하여, 메소드를 호출할 때 준수 인스턴스[^conforming-instance] 의 상태를 변경하길 예상한다고 지시합니다:
 
 ```swift
 protocol Togglable {
@@ -170,9 +170,9 @@ protocol Togglable {
 }
 ```
 
-구조체나 열거체에서 `Togglable` 프로토콜을 구현하는 경우, 해당 구조체나 열거체는 역시 `mutating` 이라고 표시한 `toggle()` 메소드 구현을 제공함으로써 프로토콜을 준수할 수 있습니다.
+구조체나 열거체가 `Togglable` 프로토콜을 구현하면, `mutating` 으로도 표시한 `toggle()` 메소드를 구현함으로써 그 구조체나 열거체가 프로토콜을 준수할 수 있습니다.
 
-아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, `on` 과 `off` 라는 '열거체 case 값' 으로 나타내는, 두 상태 사이를 '전환 (toggle)' 합니다. 열거체의 `toggle` 구현은, `Togglable` 프로토콜의 '필수 조건' 과 일치하도록, `mutating` 이라고 표시합니다:
+아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, `on` 과 `off` 열거체 case 로 표시한, 두 상태 사이를 전환합니다. `Togglable` 프로토콜의 필수 조건과 일치하도록, 열거체의 `toggle` 구현에 `mutating` 을 표시합니다:
 
 ```swift
 enum OnOffSwitch: Togglable {
@@ -188,12 +188,12 @@ enum OnOffSwitch: Togglable {
 }
 var lightSwitch = OnOffSwitch.off
 lightSwitch.toggle()
-// lightSwitch 는 이제 .on 입니다.
+// lightSwitch 는 이제 .on 과 같음
 ```
 
 ### Initializer Requirements (초기자 필수 조건)
 
-프로토콜은 '준수 타입' 이 특정 초기자를 필수로 구현하도록 요구할 수 있습니다. 이 초기자들을 프로토콜 정의에 작성하는 방식은 보통의 초기자 에서와 정확하게 똑같지만, 중괄호나 초기자 본문은 없습니다:
+프로토콜은 준수 타입에게 특정 초기자의 구현을 요구할 수 있습니다. 이 초기자들은 보통의 초기자와 정확히 똑같은 방식으로 프로토콜 정의 부분에 작성하지만, 중괄호나 메소드 본문이 없습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -201,25 +201,25 @@ protocol SomeProtocol {
 }
 ```
 
-#### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건을 클래스에서 구현하기)
+#### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건의 클래스 구현)
 
-'준수 클래스' 에 대한 '프로토콜 초기자 필수 조건' 은 '지명 초기자' 나 '편의 초기자' 어느 것으로도 구현할 수 있습니다. 두 경우 모두 다, '초기자 구현' 은 반드시 '`required` 수정자 (modifier)' 로 표시해야 합니다:
+프로토콜 초기자 필수 조건은 준수 클래스에서 지명 초기자나 편의 초기자 어느 거로든 구현할 수 있습니다. 두 경우 모두, 반드시 `required` 수정자[^required] 로 초기자 구현을 표시해야 합니다:
 
 ```swift
 class SomeClass: SomeProtocol {
   required init(someParameter: Int) {
-    // 초기자 구현은 여기에 둡니다.
+    // 초기자 구현은 여기에 둠
   }
 }
 ```
 
-'`required` 수정자' 의 사용은 '준수 클래스' 의 모든 하위 클래스에 대한 '초기자 필수 조건' 의 명시적 또는 상속한 구현을 제공해서, 이들 역시 프로토콜을 준수하도록, 보장합니다.
+`required` 수정자를 사용하면 준수 클래스의 모든 하위 클래스도 초기자 필수 조건의 명시적 또는 상속 구현을 제공하도록 하여, 이들의 프로토콜 준수도, 보장합니다.
 
-'필수 (required) 초기자' 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 를 참고하기 바랍니다.
+필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 참고하기 바랍니다.
 
-> `final` 수정자로 표시한 클래스에서는 '프로토콜 초기자 필수 조건' 을 `required` 수정자로 표시할 필요가 없는데, 왜냐면 '최종 (final) 클래스' 는 하위 클래스를 만들 수 없기 때문입니다.[^final] `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 를 참고하기 바랍니다.
+> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
 
-하위 클래스가 상위 클래스에 있는 '지명 초기자' 를 '재정의' 하면서, 프로토콜에서 일치하고 있는 '초기자 필수 조건' 도 구현하는 경우, 그 '초기자 구현' 은 `required` 와 `override` 수정자 둘 다 표시합니다:
+하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 일치하는 초기자 필수 조건도 구현한다면, 초기자 구현에 `required` 와 `override` 수정자를 둘 다 표시합니다:
 
 ```swift
 protocol SomeProtocol {
@@ -228,37 +228,37 @@ protocol SomeProtocol {
 
 class SomeSuperClass {
   init() {
-    // 초기자 구현은 여기에 둡니다.
+    // 초기자 구현은 여기에 둠
   }
 }
 
 class SomeSubClass: SomeSuperClass, SomeProtocol {
-  // "required" 는 SomeProtocol 을 준수하기 위함; "override" 는 SomeSuperClass 를 준수하기 위함
+  // "required" 는 SomeProtocol 준수에서; "override" 는 SomeSuperClass 에서 온 것임
   required override init() {
-    // 초기자 구현은 여기에 둡니다.
+    // 초기자 구현은 여기에 둠
   }
 }
 ```
 
 #### Failable Initializer Requirements (실패 가능 초기자 필수 조건)
 
-프로토콜은, [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에서 정의한 것처럼, 준수 타입을 위한 '실패 가능 초기자 필수 조건' 을 정의할 수 있습니다.
+[Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
 
-'실패 가능 초기자 필수 조건' 은 '준수 타입' 에서 '실패 가능' 또는 '실패하지 않는 초기자' 로 만족시킬 수 있습니다. '실패하지 않는 (nonfailable) 초기자 필수 조건' 은 '실패하지 않는 초기자' 또는 '암시적으로 포장 푸는 실패 가능 초기자' 로 만족시킬 수 있습니다.
+실패 가능 초기자 필수 조건은 준수 타입에서 실패 가능 또는 실패하지 않는 초기자로 만족할 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 포장을 암시적으로 푸는 실패 가능 초기자로 만족할 수 있습니다.
 
 ### Protocols as Types (타입으로써의 프로토콜)
 
-프로토콜 스스로는 실제로 어떤 기능도 구현하지 않습니다. 그럼에도 불구하고, 프로토콜은 온전히 독립 가능한 타입인 것처럼 코드에서 사용할 수 있습니다. 프로토콜을 타입으로 사용하는 것을 _실존 타입 (existential type)_ 이라 부를 때가 있는데, 이는 "프로토콜을 준수하는 그러한 T 가 실제로 존재한다 (exists)" 라는 구절에서 비롯한 것입니다.
+프로토콜은 실제로 그 자체론 어떤 기능도 구현하지 않습니다. 그럼에도 불구하고, 코드에서 완전히 독립된 타입인 것처럼 프로토콜을 사용할 수 있습니다. 프로토콜을 타입으로 사용하는 걸 _실존 타입 (existential type)_ 이라고 할 때가 있는데, 이는 "프로토콜을 준수하는 타입 T 가 **실**제로 **존**재한다" 라는 문장에서 비롯한 겁니다.
 
-다음을 포함하여, 그 외 타입들이 허용된 많은 곳에서 프로토콜을 사용할 수 있습니다:
+다른 타입은 되는, 다음을 포함한, 많은 곳에서 프로토콜을 사용할 수 있습니다:
 
-* 함수, 메소드, 또는 초기자에 있는 '매개 변수 타입' 이나 '반환 타입' 으로써
-* 상수, 변수, 또는 속성의 '타입' 으로써
-* 배열, 딕셔너리, 또는 그 외 '컨테이너 (container)' 에 있는 '항목의 타입' 으로써
+* 함수나, 메소드, 또는 초기자의 매개 변수 타입 및 반환 타입으로
+* 상수나, 변수, 또는 속성의 타입으로
+* 배열이나, 딕셔너리, 또는 다른 컨테이너의 항목 타입으로
 
-> 프로토콜은 타입이기 때문에, 스위프트에 있는 (`Int`, `String`, 그리고 `Double` 같은) 다른 타입의 이름과 일치하도록 (`FullyNamed` 와 `RandomNumberGenerator` 같이) 이름을 대문자로 시작합니다.
+> 프로토콜은 타입이기 때문에, (`FullyNamed` 및 `RandomNumberGenerator` 같이) 이름을 대문자로 시작하여 (`Int`, `String`, 및 `Double` 같은) 스위프트의 다른 타입 이름과 일치하도록 합니다.
 
-다음은 프로토콜을 타입으로 사용하는 예제입니다:
+프로토콜을 타입으로 사용하는 예제는 이렇습니다:
 
 ```swift
 class Dice {
@@ -274,10 +274,9 @@ class Dice {
 }
 ```
 
-이 예제는, 보드 게임에서 사용할 'n-면체 주사위' 를 표현하는, `Dice` 라는 새로운 클래스를 정의합니다. `Dice` 인스턴스는, 가진 면의 개수를 표현하는, `sides` 라는 '정수 속성' 과, '주사위 굴림 값' 생성을 위한 '난수 발생기' 를 제공하는, `generator` 라는 속성을 가집니다.
+이 예제는, 보드 게임에 사용할 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스에는, 면의 개수를 나타내는, `sides` 라는 정수 속성과, 주사위 굴림 값 생성을 위한 난수 발생기를 제공하는, `generator` 라는 속성이 있습니다.
 
-`generator` 속성은 `RandomNumberGenerator` 타입입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다.
-이 속성에 할당하는 인스턴스는, 인스턴스가 `RandomNumberGenerator` 프로토콜을 반드시 '채택 (adopt)' 해야[^adopt] 한다는 것만 제외하면, 다른 아무 것도 필요하지 않습니다. 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안에 있는 코드는 이 프로토콜을 준수하는 모든 '발생기 (generator)' 에 적용되는 방식으로만 `generator` 하고 상호 작용할 수 있습니다. 이는 '발생기' 의 실제 타입이 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환하기)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환하기) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 방식으로 '프로토콜 타입' 을 '실제 타입' 으로 내림 변환할 수 있습니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드와 `generator` 는 이 프로토콜을 준수하는 모든 발생기에 적용될 방식으로만 상호 작용할 수 있습니다. 이는 '발생기' 의 실제 타입이 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 방식으로 '프로토콜 타입' 을 '실제 타입' 으로 내림 변환할 수 있습니다.
 
 `Dice` 는, 초기 상태를 설정하는, 초기자도 가지고 있습니다. 이 초기자, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때, 이 매개 변수에는 어떤 '준수 타입' 의 값이든 전달 할 수 있습니다.
 
@@ -983,21 +982,29 @@ print(differentNumbers.allEqual())
 
 [^protocol]: '프로토콜 (protocol)' 은 '규약' 이라는 뜻을 가지고 있지만, 스위프트에서는 `protocol` 이라는 '키워드 (keyword)' 로도 사용됩니다. 그러므로, '익스텐션 (extension)' 이나 '클로저 (closure)' 처럼 '키워드' 로 사용될 때는 '프로토콜' 이라고 하고, 의미로 사용될 때는 '규약' 이라고 옮기도록 합니다.
 
-[^blueprint]: '밑바탕 설계 (blueprint)' 는 보통 '청사진' 이라고 번역되는데, 제품의 '설계 도면' 을 복사하던 과거의 방식이 파란색을 띄었기 때문입니다. '엑스코드 (Xcode)' 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 것을 볼 수 있는데, 이 파란색 종이가 바로 '청사진 (blueprint)' 입니다. 여기서는 제품 제작의 '밑바탕' 이 되는 '설계' 라는 의미로 '밑바탕 설계' 라고 옮기도록 합니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
+[^requirements]: '필수 조건 (requirements)' 은 어떠한 타입이 프로토콜을 준수하려면 반드시 구현해야 하는 조건들을 말합니다.
 
-[^type-property-requirements]: 즉, 클래스에 대한 '타입 속성 필수 조건 (type property requirements)' 이라고 해서, `class` 나 `static` 으로 구분할 필요 없이, 무조건 `static` 으로 사용하면 됩니다. `static` 으로 지시한 '타입 속성 필수 조건' 을 `class` 로 구현해도 상관없습니다.
+[^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
 
-[^qualified]: 영어에서의 '규명되다 (qualified)' 는 어떤 심사를 통과할 '자격을 갖췄다' 는 의미입니다. '온전히 규명된 이름' 은, 사람이라면 직급이나 소속까지 포함한 이름을 말합니다. [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)]({% post_url 2017-03-03-Nested-Types %}#referring-to-nested-types-중첩-타입-참조하기) 부분을 보면, 스위프트의 '중첩 타입' 의 경우 자신이 소속된 곳을 알고 있을 때 '규명된다' 는 것을 알 수 있습니다.
+ [^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
 
-[^optional]: 우주선에 '이름' 은 반드시 있어야 하지만 '경칭 (prefix)' 은 '선택 사항' 이므로, '옵셔널 타입' 으로 구현하고 있습니다.
+[^type-property-requirements]: 즉, 클래스의 '타입 속성 필수 조건 (type property requirements)' 은, `class` 나 `static` 으로 구분할 필요 없이,  무조건 `static` 을 사용하면 됩니다.
 
-[^random]: 이는 스위프트에 내장된 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
+[^qualified]: 스위프트에서 '규명하다 (qualify)' 는 자신의 소속을 알린다는 의미입니다.
+
+[^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 '스타 트랙 (Star Trek)' 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 'USS 엔터프라이즈 (USS Enterprise)' 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 참고하기 바랍니다. 
+
+[^optional]: 우주선에 이름은 반드시 있어야 하지만, '경칭 (prefix)' 같은 건 옵션이므로, 옵셔널 타입으로 구현하고 있습니다.
+
+[^random]: 이는 스위프트 내장 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
-[^final]: 하위 클래스를 가지지 않는 최종 클래스는 해당 초기자를 하위 클래스가 필수로 구현해야 한다는 표시를 할 이유가 없습니다.
+[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다. 
 
-[^adopt]: 여기서 원문을 보면 '준수 (conforming)' 가 아니라 '채택 (adopt)' 이라는 단어를 사용했습니다. 스위프트 문서를 보면 '준수' 와 '채택' 은 항상 분명하게 구분하여 사용하는 것을 알 수 있습니다. 이 둘의 차이점은 이 문서의 맨 앞에 있는 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
+[^required-initializer]: `required` 수정자로 표시한 초기자를 '필수 초기자 (required initializer)' 라고 한 건 준수 타입이 반드시 구현해야 하기 때문입니다.
+
+[^adopt]: 원문에서 준수 (conforming) 대신 채택 (adopt) 을 사용했습니다. 스위프트 문서에선 항상 준수와 채택이란 말을 분명히 구분하여 사용합니다. 이 둘의 차이점은 이 문서 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
 [^delegate]: 사실 'delegation' 을 '위임' 이라고 한다면, 'delegate' 는 '위임자' 라고 하는 것이 좋겠지만, 일반적으로 'delegation' 은 '위임' 으로 'delegate' 는 '대리자' 라는 번역이 널리 알려져 있습니다. 이것은 원래 'delegation' 자체가 프로그래밍 용어로 사용되기 전부터 일반 용어로 '위임' 이라는 말로 사용되고 있었기 때문으로 추측됩니다. '위임 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
 
