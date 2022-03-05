@@ -276,13 +276,13 @@ class Dice {
 
 이 예제는, 보드 게임에 사용할 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스에는, 면의 개수를 나타내는, `sides` 라는 정수 속성과, 주사위 굴림 값 생성을 위한 난수 발생기를 제공하는, `generator` 라는 속성이 있습니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 이 프로토콜을 준수하는 모든 발생기에 적용되는 방식으로만 `generator` 와 상호 작용할 수 있습니다. 이는 발생기의 실제 타입이 정의한 어떤 메소드나 속성도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 같이 프로토콜 타입에서 실제 타입으로 내림 변환할 수 있습니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 이 프로토콜을 준수하는 모든 발생기에 적용되는 방식으로만 `generator` 와 상호 작용할 수 있습니다. 이는 발생기의 실제 타입이 정의한 어떤 메소드나 속성도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 식으로 프로토콜 타입에서 실제 타입으로 내림 변환할 순 있습니다.
 
-`Dice` 는, 초기 상태를 설정하는, 초기자도 가지고 있습니다. 이 초기자, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때, 이 매개 변수에는 어떤 '준수 타입' 의 값이든 전달 할 수 있습니다.
+`Dice` 에는, 자신의 초기 상태를 설정하는, 초기자도 있습니다. 이 초기자엔, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수가 있습니다. 새로운 `Dice` 인스턴스를 초기화할 땐 어떤 준수 타입의 값이든 이 매개 변수에 전달할 수 있습니다.
 
-`Dice` 는, '1' 에서 주사위의 '면 개수' 사이의 정수 값을 반환하는, `roll` 이라는, 인스턴스 메소드를 하나 제공합니다. 이 메소드는 '발생기' 의 `random()` 메소드를 호출하여, `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수로 올바른 범위의 '주사위 굴림 값' 을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택하고 있기 때문에, `random()` 메소드를 가지고 호출할 수 있음이 보증된 것입니다.
+`Dice` 는, 1 과 주사위면 수 사이의 정수 값을 반환하는, `roll` 이라는, 한 인스턴스 메소드를 제공합니다. 이 메소드는 발생기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새 난수를 생성하며, 이 난수를 써서 올바른 범위 안에 있는 주사위 굴림 값을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택한다는 걸 알기 때문에, 호출할 `random()` 메소드가 있음이 보증됩니다.
 
-다음은 `Dice` 클래스를 사용하여 '난수 발생기' 로 `LinearCongruentialGenerator` 인스턴스를 가지는 '6-면체 주사위' 를 생성하는 방법입니다:
+`Dice` 클래스를 사용하여 `LinearCongruentialGenerator` 인스턴스를 자신의 난수 발생기로 가지는 6-면체 주사위의 생성 방법은 이렇습니다:
 
 ```swift
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
