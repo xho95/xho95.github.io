@@ -316,9 +316,9 @@ protocol DiceGameDelegate: AnyObject {
 }
 ```
 
-`DiceGame` 프로토콜은 주사위와 엮여 있는 어떤 게임이든 채택할 수 있는 프로토콜입니다.
+`DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이든 채택할 수 있는 프로토콜입니다.
 
-`DiceGameDelegate` 프로토콜은 `DiceGame` 의 진행 과정을 추적하기 위해 채택할 수 있습니다. '강한 참조 순환' 을 막기 위해, '대리자 (delegates)' 는 '약한 참조' 로 선언합니다. '약한 참조' 에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 '클래스-전용' 이라고 표시하는 것은 이 장 나중에 나오는 `SnakesAndLadders` 클래스가 자신의 '대리자' 을 반드시 '약한 참조' 로 사용해야 한다고 선언하도록 합니다. 클래스-전용 프로토콜은, [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 를 상속하는 것으로 표시합니다.
+`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일을 맡은자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일을 맡은자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
 
 다음은 원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 소개했던 _뱀과 사다리 (Snakes and Ladders)_ 게임의 다른 버전입니다. 이 버전은 '주사위-굴림 값' 으로 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 과정을 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
 
@@ -986,7 +986,7 @@ print(differentNumbers.allEqual())
 
 [^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
 
- [^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
+[^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
 
 [^type-property-requirements]: 즉, 클래스의 '타입 속성 필수 조건 (type property requirements)' 은, `class` 나 `static` 으로 구분할 필요 없이,  무조건 `static` 을 사용하면 됩니다.
 
@@ -1009,6 +1009,8 @@ print(differentNumbers.allEqual())
 [^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에서 공통으로 발생하는 소프트웨어 디자인 문제에 대한 일반적이며, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 항목과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 참고하기 바랍니다.   
 
 [^delegate]: '(일을) 맡은자 (delegate)' 는 보통 '대리자' 라는 용어로 번역됩니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
+
+[^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 참고하기 바랍니다. 
 
 [^instantiator]: 본문에서는 'instantiator' 라는 용어를 사용하고 있는데, 적당한 말이 없어서 '인스턴스를 만드는 부분' 으로 옮겼습니다. 실제 게임을 구현할 경우 일종의 'game manager' 가 '인스턴스' 를 생성할 텐데, 이 'game manager' 를 'inistantiator' 라고 부를 수 있을 것입니다.
 
