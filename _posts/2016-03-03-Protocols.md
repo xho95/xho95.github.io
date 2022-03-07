@@ -299,7 +299,7 @@ for _ in 1...5 {
 
 ### Delegation (맡김)
 
-_맡김 (delegation)_ 은 클래스나 구조체가 자신의 책임 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴은 맡길 책임을 은닉한 프로토콜 정의로 구현해서, (일을 맡은자[^delegate] 라는) 준수 타입이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김은 특별한 한 행동에 응답하거나, 외부 소스의 실제 타입을 모르고도 그 소스에서 자료를 가져오는데 사용할 수 있습니다.
+_맡김 (delegation)_ 은 클래스나 구조체가 자신의 책임 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴은 맡길 책임을 은닉한 프로토콜 정의로 구현해서, 준수 타입 (일-맡길자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김은 특별한 한 행동에 응답하거나, 외부 소스의 실제 타입을 모르고도 그 소스에서 자료를 가져오는데 사용할 수 있습니다.
 
 아래 예제는 주사위-기반 보드 게임에 사용할 두 개의 프로토콜을 정의합니다:
 
@@ -318,7 +318,7 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이든 채택할 수 있는 프로토콜입니다.
 
-`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일을 맡은자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일을 맡은자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
+`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡길자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡길자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
 
 원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 소개한 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전은 주사위-굴림 값으론 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
 
@@ -359,11 +359,11 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임의 플레이 설명은, [Break (b
 
 이 버전의 게임은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 포장되어 있습니다. 이는 프로토콜의 준수를 위해서 획득 가능한 `dice` 속성과 `play()` 메소드를 제공합니다. (`dice` 속성은 초기화 후엔 바뀔 필요가 없고, 프로토콜은 획득 가능할 것만을 요구하기 때문에, 상수 속성으로 선언합니다.)
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임판의 설정은 클래스의 `init()` 초기자 안에서 일어납니다. 모든 게임 '논리 (logic)' 는 프로토콜의 `play` 메소드 속으로 옮겨지며, 여기서 '주사위 굴림 값' 을 제공하는 프로토콜의 '필수 `dice` 속성' 을 사용합니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임판 설정은 클래스의 `init()` 초기자 안에서 일어납니다. 모든 게임 논리는, 프로토콜의 필수 `dice` 속성으로 자신의 주사위 굴림 값을 제공하는, 프로토콜의 `play` 메소드 안으로 이동합니다.
 
-'대리자 (delegate)' 가 게임 진행에 필수인 건 아니기 때문에, `delegate` 속성은 '_옵셔널 (optional)_ `DiceGameDelegate`' 로 정의함을 기억하기 바랍니다. `delegate` 속성은, 옵셔널 타입이기 때문에, '초기 값' 이 자동으로 `nil` 로 설정됩니다. 그 이후, 게임의 '인스턴스를 만드는 부분'[^instantiator] 이 적합한 '대리자' 를 속성에 설정할 옵션을 가지게 도비니다. `DiceGameDelegate` 프로토콜은 '클래스-전용' 이기 때문에, '참조 순환' 을 막기 위해 '대리자' 를 `weak` 라고 선언할 수 있습니다.
+게임을 플레이하는데 일-맡길자 (delegate) 가 필수는 아니기 때문에, `delegate` 속성을 _옵셔널 (optional)_ `DiceGameDelegate`' 로 정의한다는 걸 기억하기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 초기 값을 `nil` 로 자동 설정합니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 속성에 적합한 일-맡길자를 설정할 옵션을 가집니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일-맡길자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
 
-`DiceGameDelegate` 는 게임의 진행 과정을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위 `play()` 메소드에 있는 게임 논리에 편입되어, 새로운 게임을 시작할 때나, 새로운 '차례 (turn)' 를 시작할 때, 또는 게임이 끝날 때, 호출됩니다.
+`DiceGameDelegate` 는 게임의 진행 상황을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위의 `play()` 메소드 안에 있는 게임 논리에 편입되어 있어, 새 게임을 시작할 때나, 새 차례의 시작, 또는 게임이 끝날 때, 호출됩니다.
 
 `delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리자' 에 대한 메소드를 매 번 호출할 때마다 '옵셔널 연쇄 (chaining)' 를 사용합니다. `delegate` 속성이 'nil' 이면, 이 '대리자 호출' 은 에러 없이 '우아하게 실패'[^gracefully-fail] 합니다. `delegate` 속성이 'nil-이 아니' 라면, '대리자 메소드' 를 호출해서, `SnakesAndLadders` 인스턴스를 매개 변수로 전달합니다.[^snakes-and-ladders-instance]
 
@@ -1008,11 +1008,13 @@ print(differentNumbers.allEqual())
 
 [^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에서 공통으로 발생하는 소프트웨어 디자인 문제에 대한 일반적이며, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 항목과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 참고하기 바랍니다.   
 
-[^delegate]: '(일을) 맡은자 (delegate)' 는 보통 '대리자' 라는 용어로 번역됩니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
+[^delegate]: 보통 '일-맡길자 (delegate)' 를 '대리자' 라고도 합니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
 
 [^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 참고하기 바랍니다. 
 
-[^instantiator]: 본문에서는 'instantiator' 라는 용어를 사용하고 있는데, 적당한 말이 없어서 '인스턴스를 만드는 부분' 으로 옮겼습니다. 실제 게임을 구현할 경우 일종의 'game manager' 가 '인스턴스' 를 생성할 텐데, 이 'game manager' 를 'inistantiator' 라고 부를 수 있을 것입니다.
+[^instantiator]: '인스턴스를 만드는 자 (instantiator)' 는 코드 상에서 인스턴스를 생성하는 곳 또는 그 주체를 의미합니다. 실제 게임을 구현한다면, 일종의 `game manager` 같은 객체가 인스턴스를 생성할 텐데, 이 때 `game manager` 를 인스턴스를 만드는 자라고 할 수 있습니다.
+
+[^weak-reference-cycles]: `DiceGameDelegate` 프로토콜을 클래스-전용으로 만들지 않았다면, 일-맡길자를 `weak` 로 선언할 수 없어서 참조 순환이 발생할 수도 있었을 것입니다.
 
 [^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. 보다 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
 
