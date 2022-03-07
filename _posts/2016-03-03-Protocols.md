@@ -367,7 +367,7 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임판 설정은 클래스의 `init()
 
 `delegate` 속성은 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드가 일-맡길자의 메소드를 호출할 때마다 옵셔널 사슬[^optional-chaining] 을 사용합니다. `delegate` 속성이 'nil' 이면, 이 일-맡길자의 호출은 에러 없이 우아하게 실패합니다.[^gracefully-fail] `delegate` 속성이 'nil' 이 아니면, 일-맡길자의 메소드를 호출하며, 매개 변수로는 `SnakesAndLadders` 인스턴스를 전달합니다.[^snakes-and-ladders-instance]
 
-이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택한, `DiceGameTracker` 라는 클래스를 보입니다:
+이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택한, `DiceGameTracker` 라는 클래스를 보여줍니다:
 
 ```swift
 class DiceGameTracker: DiceGameDelegate {
