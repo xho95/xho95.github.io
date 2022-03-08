@@ -393,22 +393,22 @@ class DiceGameTracker: DiceGameDelegate {
 
 위에 보인 `gameDidStart(_:)` 구현부는 `game` 매개 변수를 사용하여 플레이할 게임에 대한 소개 정보를 인쇄합니다. `game` 매개 변수는, `SnakesAndLadders` 타입이 아닌, `DiceGame` 타입이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜 부분에서 구현한 메소드와 속성에만 접근해서 사용할 수 있습니다. 하지만, 메소드가 타입 변환을 사용하면 실제 인스턴스의 타입을 조회하는게 여전히 가능합니다. 이 예제에선, `game` 의 이면이 실제로 `SnakesAndLadders` 인스턴스인지 검사하여, 그럴 경우 적절한 메시지를 인쇄합니다.
 
-`gameDidStart(_:)` 메소드는 전달한 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수함을 알기 때문에, `dice` 속성을 가짐이 보증되므로, `gameDidStart(_:)` 메소드는, 어떤 종류의 게임을 진행하는 지에 상관없이, 주사위의 `sides` 속성에 접근하여 인쇄할 수 있습니다.
+`gameDidStart(_:)` 메소드는 전달된 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수한다는 걸 알고, 이는 `dice` 속성이 있음을 보증하기 때문에, 무슨 종류의 게임을 플레이하는 지에 상관없이, `gameDidStart(_:)` 메소드가 주사위의 `sides` 속성에 접근하고 인쇄하는게 가능합니다.
 
-다음은 `DiceGameTracker` 의 실제 사용 방법을 보인 것입니다:
+`DiceGameTracker` 의 실제 사례를 보면 이렇습니다:
 
 ```swift
 let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
 game.delegate = tracker
 game.play()
-// Started a new game of Snakes and Ladders / 새로운 뱀과 사다리 게임을 시작합니다.
-// The game is using a 6-sided dice / 이 게임은 6-면체 주사위를 사용합니다.
-// Rolled a 3 / 3이 나왔습니다.
-// Rolled a 5 / 5가 나왔습니다.
-// Rolled a 4 / 4가 나왔습니다.
-// Rolled a 5 / 5가 나왔습니다.
-// The game lasted for 4 turns / 이 게임은 4 차례 동안 진행됐습니다.
+// Started a new game of Snakes and Ladders (새로운 뱀과 사다리 게임을 시작함)
+// The game is using a 6-sided dice (6-면체 주사위를 사용하는 게임임)
+// Rolled a 3 (3이 나옴)
+// Rolled a 5 (5가 나옴)
+// Rolled a 4 (4가 나옴)
+// Rolled a 5 (5가 나옴)
+// The game lasted for 4 turns (게임을 4턴 동안 지속함)
 ```
 
 ### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
