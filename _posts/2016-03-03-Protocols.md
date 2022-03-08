@@ -367,7 +367,7 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임판 설정은 클래스의 `init()
 
 `delegate` 속성은 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드가 일-맡길자의 메소드를 호출할 때마다 옵셔널 사슬[^optional-chaining] 을 사용합니다. `delegate` 속성이 'nil' 이면, 이 일-맡길자의 호출은 에러 없이 우아하게 실패합니다.[^gracefully-fail] `delegate` 속성이 'nil' 이 아니면, 일-맡길자의 메소드를 호출하며, 매개 변수로는 `SnakesAndLadders` 인스턴스를 전달합니다.[^snakes-and-ladders-instance]
 
-이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택한, `DiceGameTracker` 라는 클래스를 보여줍니다:
+이 다음 예제가 보여주는 건, `DiceGameDelegate` 프로토콜을 채택한, `DiceGameTracker` 라는 클래스입니다:
 
 ```swift
 class DiceGameTracker: DiceGameDelegate {
@@ -389,7 +389,7 @@ class DiceGameTracker: DiceGameDelegate {
 }
 ```
 
-`DiceGameTracker` 는 `DiceGameDelegate` 에 필수인 세 메소드를 모두 구현합니다. 이 메소드를 사용하여 게임이 취한 '차례 (turn)' 수를 추적합니다. 게임을 시작하면 `numberOfTurns` 속성을 '0' 으로 '재설정' 하고, 매 번 새로운 차례를 시작할 때 증가시키며, 게임이 끝나면 총 '차례' 수를 인쇄합니다.
+`DiceGameTracker` 는 `DiceGameDelegate` 가 요구하는 세 개의 메소드를 모두 구현합니다. 이 메소드들을 사용하여 게임 진행 턴 수를 추적합니다. 게임을 시작 땐 `numberOfTurns` 속성을 0 으로 재설정하며, 새 턴을 시작할 때마다 증가하고, 게임이 끝나고 나면 총 턴 수를 인쇄합니다.
 
 위에 보인 `gameDidStart(_:)` 구현은 `game` 매개 변수를 사용하여 진행할 게임에 대한 약간의 소개 정보를 인쇄합니다. `game` 매개 변수는, `SnakesAndLadders` 가 아니라, `DiceGame` 타입이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜로 구현된 메소드와 속성에만 접근하여 사용할 수 있습니다. 하지만, 메소드는 '타입 변환 (type casting)' 을 사용하여 여전히 실제 인스턴스의 타입을 조회할 수 있습니다. 이 예제에서는, `game` 이 실제로 `SnakesAndLadders` 인스턴스인지를 검사해서, 그게 맞다면 적절한 메시지를 인쇄합니다.
 
@@ -1020,7 +1020,7 @@ print(differentNumbers.allEqual())
 
 [^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 이에 대한 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
 
-[^snakes-and-ladders-instance]: 예제 코드에선 `self` 를 써서 `SnakesAndLadders` 인스턴스를 전달하고 있습니다.
+[^snakes-and-ladders-instance]: 예제 코드에 있는 `self` 가 `SnakesAndLadders` 인스턴스입니다.
 
 [^array-element]: 즉, 본문 예제에서 `Array` 가 `TextRepresentable` 을 준수하는 조건은 `Array` 의 `Element` 가 `TextRepresentable` 을 준수할 때입니다.
 
