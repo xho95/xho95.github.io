@@ -391,7 +391,7 @@ class DiceGameTracker: DiceGameDelegate {
 
 `DiceGameTracker` 는 `DiceGameDelegate` 가 요구하는 세 개의 메소드를 모두 구현합니다. 이 메소드들을 사용하여 게임 진행 턴 수를 추적합니다. 게임을 시작 땐 `numberOfTurns` 속성을 0 으로 재설정하며, 새 턴을 시작할 때마다 증가하고, 게임이 끝나고 나면 총 턴 수를 인쇄합니다.
 
-위에 보인 `gameDidStart(_:)` 구현은 `game` 매개 변수를 사용하여 진행할 게임에 대한 약간의 소개 정보를 인쇄합니다. `game` 매개 변수는, `SnakesAndLadders` 가 아니라, `DiceGame` 타입이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜로 구현된 메소드와 속성에만 접근하여 사용할 수 있습니다. 하지만, 메소드는 '타입 변환 (type casting)' 을 사용하여 여전히 실제 인스턴스의 타입을 조회할 수 있습니다. 이 예제에서는, `game` 이 실제로 `SnakesAndLadders` 인스턴스인지를 검사해서, 그게 맞다면 적절한 메시지를 인쇄합니다.
+위에 보인 `gameDidStart(_:)` 구현부는 `game` 매개 변수를 사용하여 플레이할 게임에 대한 소개 정보를 인쇄합니다. `game` 매개 변수는, `SnakesAndLadders` 타입이 아닌, `DiceGame` 타입이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜 부분에서 구현한 메소드와 속성에만 접근해서 사용할 수 있습니다. 하지만, 메소드가 타입 변환을 사용하면 실제 인스턴스의 타입을 조회하는게 여전히 가능합니다. 이 예제에선, `game` 의 이면이 실제로 `SnakesAndLadders` 인스턴스인지 검사하여, 그럴 경우 적절한 메시지를 인쇄합니다.
 
 `gameDidStart(_:)` 메소드는 전달한 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수함을 알기 때문에, `dice` 속성을 가짐이 보증되므로, `gameDidStart(_:)` 메소드는, 어떤 종류의 게임을 진행하는 지에 상관없이, 주사위의 `sides` 속성에 접근하여 인쇄할 수 있습니다.
 
