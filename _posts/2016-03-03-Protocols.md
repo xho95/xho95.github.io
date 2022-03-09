@@ -442,10 +442,10 @@ extension Dice: TextRepresentable {
 ```swift
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
-// "A 12-sided dice" 를 인쇄합니다.
+// "A 12-sided dice" 를 인쇄함
 ```
 
-이와 비슷하게, `SnakesAndLadders` 게임 클래스도 `TextRepresentable` 프로토콜을 채택하고 준수하도록 확장할 수 있습니다:
+이와 비슷하게, `SnakesAndLadders` 게임 클래스가 `TextRepresentable` 프로토콜을 채택하고 준수하게 확장할 수도 있습니다:
 
 ```swift
 extension SnakesAndLadders: TextRepresentable {
@@ -454,7 +454,7 @@ extension SnakesAndLadders: TextRepresentable {
   }
 }
 print(game.textualDescription)
-// "A game of Snakes and Ladders with 25 squares" 를 인쇄합니다.
+// "A game of Snakes and Ladders with 25 squares" 를 인쇄함
 ```
 
 #### Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)
