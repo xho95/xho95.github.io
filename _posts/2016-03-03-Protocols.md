@@ -475,7 +475,7 @@ print(myDice.textualDescription)
 // "[A 6-sided dice, A 12-sided dice]" 를 인쇄함
 ```
 
-#### Declaring Protocol Adoption with an Extension (확장으로 프로토콜 채택 선언하기)
+#### Declaring Protocol Adoption with an Extension (익스텐션으로 프로토콜 채택 선언하기)
 
 타입이 이미 프로토콜의 모든 '필수 조건' 을 준수하고 있지만, 아직 해당 프로토콜을 채택한다고 알리지 않은 경우라면, 빈 '익스텐션' 으로 해당 프로토콜을 채택하도록 만들 수 있습니다:
 
