@@ -477,7 +477,7 @@ print(myDice.textualDescription)
 
 #### Declaring Protocol Adoption with an Extension (익스텐션으로 프로토콜 채택 선언하기)
 
-타입이 이미 프로토콜의 모든 '필수 조건' 을 준수하고 있지만, 아직 해당 프로토콜을 채택한다고 알리지 않은 경우라면, 빈 '익스텐션' 으로 해당 프로토콜을 채택하도록 만들 수 있습니다:
+타입이 프로토콜의 모든 필수 조건을 이미 준수하고 있지만, 그 프로토콜을 채택한다고 아직 알리지 않은 경우라면, 빈 익스텐션으로 프로토콜을 채택하게 할 수 있습니다:
 
 ```swift
 struct Hamster {
@@ -489,16 +489,16 @@ struct Hamster {
 extension Hamster: TextRepresentable {}
 ```
 
-이제 `TextRepresentable` 이 필수 요구 타입인 곳마다 `Hamster` 인스턴스를 사용할 수 있습니다:
+이제 `TextRepresentable` 이 필수 타입인 곳마다 `Hamster` 인스턴스를 사용할 수 있습니다:
 
 ```swift
 let simonTheHamster = Hamster(name: "Simon")
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
-// "A hamster named Simon" 을 인쇄합니다.
+// "A hamster named Simon" 을 인쇄함
 ```
 
-> 타입은 '필수 조건' 을 만족한다고 해서 프로토콜을 자동으로 채택하진 않습니다. 프로토콜을 채택한다고 반드시 항상 명시적으로 선언해야 합니다.[^adoption]
+> 프로토콜의 필수 조건을 만족한다고 해서 타입이 이를 자동으로 채택하진 않습니다. 자신이 프로토콜을 채택한다는 건 반드시 명시적으로 선언해야 합니다.[^adoption]
 
 ### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
 
@@ -1024,7 +1024,7 @@ print(differentNumbers.allEqual())
 
 [^array-element]: 즉, 본문 예제에서 `Array` 가 `TextRepresentable` 을 준수하는 조건은 `Array` 의 `Element` 가 `TextRepresentable` 을 준수할 때입니다.
 
-[^adoption]: 이것이 스위프트에서 '채택 (adoption)' 이란 말과 '준수 (conformance)' 라는 말을 명확하게 구분해서 사용하는 이유일 것입니다.
+[^adoption]: 이것이 스위프트에서 채택 (adoption) 과 준수 (conformance) 를 명확히 구분하여 사용하는 이유입니다.
 
 [^synthesized]: 본문에서 말하는 '통합된 구현 (synthesized implementation)' 은 이미 스위프트 내부에서 구현되어 있다는 의미입니다. 즉, '`Equatable` 프로토콜' 같은 것은 스위프트 내부에 이미 구현되어 있는 것을 사용하기만 하면 됩니다.
 
