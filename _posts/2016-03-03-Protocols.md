@@ -461,7 +461,7 @@ print(game.textualDescription)
 
 일반화 타입[^generic-type] 은, 타입의 일반화 매개 변수가 프로토콜을 준수할 때와 같은, 특정 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. 일반화 타입이 조건부로 프로토콜을 준수하게 하려면 타입을 확장할 때 구속 조건을 나열하면 됩니다. 이러한 구속 조건을 채택할 프로토콜 이름 뒤에 작성하는 건 일반화 `where` 절의 작성으로 합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 을 참고하기 바랍니다.
 
-다음 익스텐션은 저장한 원소의 타입이 `TextRepresentable` 을 준수할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하도록 합니다.[^array-element]
+다음 익스텐션은 저장한 원소의 타입이 `TextRepresentable` 을 준수할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하게 합니다.[^array-element]
 
 ```swift
 extension Array: TextRepresentable where Element: TextRepresentable {
