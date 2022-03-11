@@ -498,19 +498,19 @@ print(somethingTextRepresentable.textualDescription)
 // "A hamster named Simon" 을 인쇄함
 ```
 
-> 프로토콜의 필수 조건을 만족한다고 해서 타입이 이를 자동으로 채택하진 않습니다. 자신이 프로토콜을 채택한다는 건 반드시 명시적으로 선언해야 합니다.[^adoption]
+> 프로토콜의 필수 조건을 만족한다고 해서 타입이 이를 자동으로 채택하진 않습니다. 반드시 자신이 프로토콜을 채택한다는 걸 명시적으로 선언해야 합니다.[^adoption]
 
-### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
+### Adopting a Protocol Using a Synthesized Implementation (통합 구현을 써서 프로토콜 채택하기)
 
-스위프트는 많은 단순한 경우에 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수 있습니다. 이 '통합된 (synthesized) 구현'[^synthesized] 을 사용한다는 것은 '프로토콜 필수 조건' 을 직접 구현하기 위해서 '반복적이고 획일적인 (bolilerplate) 코드' 를 작성하지 않아도 된다는 의미입니다.
+스위프트는 수많은 단순한 경우에 `Equatable`, `Hashable`, 및 `Comparable` 에 대한 프로토콜 준수성을 자동으로 제공할 수 있습니다. 이런 통합 구현[^synthesized] 을 사용하면 스스로 프로토콜 필수 조건을 구현하고자 획일된 코드를 반복 작성하지 않아도 된다는 걸 의미합니다.
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 에 대한 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 의 통합 구현을 제공합니다:
 
-* `Equatable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
-* `Equatable` 프로토콜을 준수하는 '결합 타입'[^associated-types] 만을 가진 열거체
-* '결합 타입' 을 전혀 가지고 있지 않은 열거체
+* `Equatable` 프로토콜을 준수한 저장 속성만 있는 구조체
+* `Equatable` 프로토콜을 준수한 결합 타입[^associated-types] 만 있는 열거체
+* 아무런 결합 타입도 없는 열거체
 
-`==` 에 대한 '통합된 구현' 을 부여 받으려면, `==` 연산자를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Equatable` 을 '준수 (conformance)' 한다고 선언합니다. '`Equatable` 프로토콜' 은 `!=` 에 대한 기본 구현을 제공합니다.
+`==` 에 대한 통합 구현을 받으려면, 스스로 `==` 연산자를 구현하지 않고, 원본 선언을 담은 파일에서 `Equatable` 준수성을 선언합니다. `Equatable` 프로토콜은 `!=` 의 기본 구현을 제공합니다.
 
 아래 예제는, `Vector2D` 구조체와 비슷하게, '3-차원 위치 벡터 `(x, y, z)`' 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 그리고 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 (equivalence)[^equivalence] 연산자' 에 대한 '통합된 구현' 을 부여 받습니다.
 
@@ -1028,9 +1028,9 @@ print(differentNumbers.allEqual())
 
 [^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 참고하기 바랍니다. 
 
-[^synthesized]: 본문에서 말하는 '통합된 구현 (synthesized implementation)' 은 이미 스위프트 내부에서 구현되어 있다는 의미입니다. 즉, '`Equatable` 프로토콜' 같은 것은 스위프트 내부에 이미 구현되어 있는 것을 사용하기만 하면 됩니다.
+[^synthesized]: 본문에서 말하는 '통합 구현 (synthesized implementation)' 은 스위프트 내부에 이미 구현되어 있다는 의미입니다. 즉, `Equatable` 프로토콜 같은 건 이미 스위프트에 있는 걸 그냥 사용하면 됩니다.
 
-[^associated-types]: 여기서 말하는 '결합 타입 (associated types)' 이라는 것은 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 '결합 값' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 '결합 타입' 에 대해서는 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
+[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
 
 [^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자', '동치 연산자', '같음 연산자' 등으로 옮길 수 있을텐데, 위키피디아에서 'equal to' 를 '같음' 으로 번역하고 있기 때문에, 여기서는 '같음 비교' 라는 말로 옮기도록 합니다. '관계 연산자' 들의 용어에 대해서는 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
 
