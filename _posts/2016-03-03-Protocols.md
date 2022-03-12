@@ -510,9 +510,9 @@ print(somethingTextRepresentable.textualDescription)
 * `Equatable` 프로토콜을 준수한 결합 타입[^associated-types] 만 있는 열거체
 * 아무런 결합 타입도 없는 열거체
 
-`==` 에 대한 통합 구현을 받으려면, 스스로 `==` 연산자를 구현하지 않고, 원본 선언을 담은 파일에서 `Equatable` 준수성을 선언합니다. `Equatable` 프로토콜은 `!=` 의 기본 구현을 제공합니다.
+`==` 의 통합 구현을 받으려면, `==` 연산자를 직접 구현하지 말고, 원본 선언을 담은 파일에서 `Equatable` 준수성을 선언합니다. `Equatable` 프로토콜은 `!=` 의 기본 구현을 제공합니다.
 
-아래 예제는, `Vector2D` 구조체와 비슷하게, '3-차원 위치 벡터 `(x, y, z)`' 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 그리고 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 (equivalence)[^equivalence] 연산자' 에 대한 '통합된 구현' 을 부여 받습니다.
+아래 예제는 3-차원 위치 벡터 `(x, y, z)` 를 위해, `Vector2D` 구조체와 비슷한, `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 같음 비교 연산자[^equivalence] 의 통합 구현을 받습니다.
 
 ```swift
 struct Vector3D: Equatable {
@@ -524,18 +524,18 @@ let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
 if twoThreeFour == anotherTwoThreeFour {
   print("These two vectors are also equivalent.")
 }
-// "These two vectors are also equivalent." 를 인쇄합니다.
+// "These two vectors are also equivalent." 를 인쇄함
 ```
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 에 대한 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 의 통합 구현을 제공합니다:
 
-* `Hashable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
-* `Hashable` 프로토콜을 준수하는 '결합 타입' 만을 가진 열거체
-* '결합 타입' 을 전혀 가지고 있지 않은 열거체
+* `Hashable` 프로토콜을 준수한 저장 속성만 있는 구조체
+* `Hashable` 프로토콜을 준수한 결합 타입만 있는 열거체
+* 아무런 결합 타입도 없는 열거체
 
-`hash(into:)` 에 대한 '통합된 구현' 을 부여 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Hashable` 을 '준수 (conformance)' 한다고 선언합니다.
+`hash(into:)` 의 통합 구현을 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, 원본 선언을 담은 파일에서 `Hashable` 준수성을 선언합니다.
 
-스위프트는 '원시 값'[^raw-values] 을 가지고 있지 않은 열거체를 위해 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 열거체가 '결합 타입' 을 가지고 있는 경우, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 에 대한 '통합된 구현' 을 부여 받으려면, `<` 연산자를 직접 구현하지 말고, '원본 열거체 선언을 담은 파일' 에서 `Comparable` 을 '준수 (conformance)' 한다고 선언합니다. `<=`, `>`, 그리고 `>=` 에 대한 `Comparable` 프로토콜의 기본 구현은 남아 있는 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
+스위프트는 원시 값[^raw-values] 이 없는 열거체에 `Comparable` 의 통합 구현을 제공합니다. 열거체에 결합 타입이 있으면, 이들 모두 반드시 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합 구현을 받으려면, `<` 연산자를 직접 구현하지 말고, 원본 열거체 선언을 담은 파일에서 `Comparable` 준수성을 선언합니다. `<=`, `>`, 및 `>=` 의 `Comparable` 프로토콜 기본 구현은 남은 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
 
 아래 예제는 '초보자', '중급자', 그리고 '전문가' 라는 'case 값' 을 가진 `SkillLevel` 열거체를 정의합니다. '전문가' 는 자신이 가진 별의 개수로 추가적인 등급을 나눕니다.
 
@@ -1032,11 +1032,11 @@ print(differentNumbers.allEqual())
 
 [^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
 
-[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자', '동치 연산자', '같음 연산자' 등으로 옮길 수 있을텐데, 위키피디아에서 'equal to' 를 '같음' 으로 번역하고 있기 때문에, 여기서는 '같음 비교' 라는 말로 옮기도록 합니다. '관계 연산자' 들의 용어에 대해서는 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
+[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자, 동치 연산자,같음 연산자' 등으로 옮길 수 있는데, 위키피디아에서 '같음 (equal to)' 을 사용하고 있어서, 같음 비교라는 말을 사용합니다. 관계 연산자에 대한 더 자세한 내용은, 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
 
 [^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
 
-[^remaining-comparison-operators]: 스위프트의 '통합된 구현' 을 사용하면 `<` 연산자 외에도, '기본 구현' 된 `<=`, `>`, `>=` 연산자들을 부여 받는데, 나머지 연산자들은 이 '기본 구현' 을 통해서 구현한다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 부여 받을 수 있다면, 어떤 연산자도 구현할 필요가 없다는 의미입니다.
+[^remaining-comparison-operators]: 스위프트의 통합 구현을 사용하면 `<` 연산자 외에도, '기본 구현' 된 `<=`, `>`, `>=` 연산자들을 부여 받는데, 나머지 연산자들은 이 '기본 구현' 을 통해서 구현한다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 부여 받을 수 있다면, 어떤 연산자도 구현할 필요가 없다는 의미입니다.
 
 [^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 준수할 수 있습니다. 스위프트에 있는 '프로토콜의 준수' 라는 개념은 C++ 에 있는 '순수 추상 클래스의 상속' 과 비슷합니다.
 
