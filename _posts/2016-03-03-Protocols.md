@@ -575,7 +575,7 @@ for thing in things {
 // A hamster named Simon (이름이 Simon 인 햄스터)
 ```
 
-`thing` 상수는 `TextRepresentable` 타입 임을 기억하기 바랍니다. 타입은, 실제 그 속은 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입 일지라도, 이 타입들이 아닙니다. 그럼에도 불구하고, 이는 `TextRepresentable` 타입이며, `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가짐을 알기 때문에, 반복문의 매 회차마다 `thing.textualDescription` 에 안전하게 접근할 수 있습니다.
+`thing` 상수의 타입은 `TextRepresentable` 임을 기억하기 바랍니다. 실제 인스턴스의 이면이 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입인 경우에도, 이 타입들인 건 아닙니다. 그럼에도 불구하고, `TextRepresentable` 티입이기 때문에, 그리고 `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가진다는 걸 알기 때문에, 매 반복문을 통과할 때마다 `thing.textualDescription` 에 접근해도 안전합니다.
 
 ### Protocol Inheritance (프로토콜 상속)
 
