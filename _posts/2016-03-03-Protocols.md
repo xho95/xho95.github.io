@@ -558,21 +558,21 @@ for level in levels.sorted() {
 
 ### Collections of Protocol Types (프로토콜 타입의 집합체)
 
-프로토콜은, [Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 것처럼, 배열이나 딕셔너리 같은 '집합체 (collection)' 에 저장할 타입으로 사용할 수 있습니다. 다음 예제는 '`TextRepresentable` (문장 표현이 가능한) 것' 들의 배열을 생성합니다:
+[Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 것처럼, 배열이나 딕셔너리 같은 집합체에 저장할 타입으로 프로토콜을 사용할 수 있습니다. 다음 예제는 `TextRepresentable` (문장으로 나타낼 수 있는) 것들의 배열을 생성합니다:
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 ```
 
-이제 배열에 있는 항목에 동작을 반복해서, 각 항목에 대한 문장 설명을 인쇄합니다:
+이제 배열의 항목을 반복하고, 각 항목의 설명 문장을 인쇄하는게 가능합니다:
 
 ```swift
 for thing in things {
   print(thing.textualDescription)
 }
-// A game of Snakes and Ladders with 25 squares (25개의 정사각형을 가지는 뱀과 사다리 게임)
+// A game of Snakes and Ladders with 25 squares (정사각형이 25칸 있는 뱀과 사다리 게임)
 // A 12-sided dice (12-면체 주사위)
-// A hamster named Simon (Simon 이라는 이름의 햄스터)
+// A hamster named Simon (이름이 Simon 인 햄스터)
 ```
 
 `thing` 상수는 `TextRepresentable` 타입 임을 기억하기 바랍니다. 타입은, 실제 그 속은 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입 일지라도, 이 타입들이 아닙니다. 그럼에도 불구하고, 이는 `TextRepresentable` 타입이며, `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가짐을 알기 때문에, 반복문의 매 회차마다 `thing.textualDescription` 에 안전하게 접근할 수 있습니다.
