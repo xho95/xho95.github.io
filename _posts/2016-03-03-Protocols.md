@@ -579,15 +579,15 @@ for thing in things {
 
 ### Protocol Inheritance (프로토콜 상속)
 
-프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 상속한 '필수 조건' 위에 다른 '필수 조건' 을 더 추가할 수 있습니다. '프로토콜 상속' 구문은 '클래스 상속' 구문과 비슷하지만, 쉼표로 구분하여, '다중 상속 프로토콜' 을 나열할 수 있습니다[^multiple-inherited-protocols]:
+프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 자신이 상속한 필수 조건 위에 필수 조건을 더 추가할 수도 있습니다. 프로토콜 상속 구문은 클래스 상속 구문과 비슷하지만, 옵션으로 상속할 프로토콜 여러 개를, 쉼표로 구분하여, 나열할 수 있습니다[^multiple-inherited-protocols]:
 
 ```swift
 protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
-  // 프로토콜 정의는 여기에 둡니다.
+  // 프로토콜 정의는 여기에 둠
 }
 ```
 
-다음은 위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜 예제입니다:
+위의 `TextRepresentable` 프로토콜을 상속하는 프로토콜 예제는 이렇습니다:
 
 ```swift
 protocol PrettyTextRepresentable: TextRepresentable {
@@ -1038,7 +1038,7 @@ print(differentNumbers.allEqual())
 
 [^remaining-comparison-operators]: 스위프트는 `<` 연산자의 통합 구현 외에도, `<=`, `>`, `>=` 연산자들의 기본 구현을 제공하는데, 이러한 기본 구현들이 나머지 연산자들의 구현을 제공한다는 의미입니다. 즉, `<` 연산자의 통합 구현을 받으면, 그 외 나머지 연산자들은 구현하지 않아도 됩니다.
 
-[^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 준수할 수 있습니다. 스위프트에 있는 '프로토콜의 준수' 라는 개념은 C++ 에 있는 '순수 추상 클래스의 상속' 과 비슷합니다.
+[^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
 [^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
 
