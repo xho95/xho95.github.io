@@ -634,15 +634,15 @@ print(game.prettyTextualDescription)
 
 ### Class-Only Protocols (클래스-전용 프로토콜)
 
-'프로토콜 상속 목록'[^inheritance] 에 `AnyObject` 프로토콜을 추가함으로써 (구조체나 열거체가 아닌) 클래스 타입만 프로토콜을 '채택 (adoptation)' 하도록 제한할 수 있습니다.
+프로토콜 상속 목록에 `AnyObject` 프로토콜을 추가함으로써 프로토콜 채택을 (구조체나 열거체가 아닌) 클래스 타입으로만 제한할 수 있습니다.
 
 ```swift
 protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
-  // 클래스-전용 프로토콜 정의는 여기에 둡니다.
+  // 클래스-전용 프로토콜 정의는 여기에 둠
 }
 ```
 
-위 예제에서, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려고 구조체나 열거체 정의를 작성하는 것은 '컴파일-시간 에러' 입니다.
+위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려는 구조체 또는 열거체 정의를 작성하면 컴파일-시간 에러입니다.
 
 > 해당 프로토콜의 '필수 조건' 에서 정의한 작동 방식이 '준수 타입' 은 '값 의미 구조' 가 아닌 '참조 의미 구조' 를 가진다고 가정하거나 요구할 때 '클래스-전용 프로토콜' 을 사용합니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
@@ -1039,8 +1039,6 @@ print(differentNumbers.allEqual())
 [^remaining-comparison-operators]: 스위프트는 `<` 연산자의 통합 구현 외에도, `<=`, `>`, `>=` 연산자들의 기본 구현을 제공하는데, 이러한 기본 구현들이 나머지 연산자들의 구현을 제공한다는 의미입니다. 즉, `<` 연산자의 통합 구현을 받으면, 그 외 나머지 연산자들은 구현하지 않아도 됩니다.
 
 [^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
-
-[^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
 
 [^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
 
