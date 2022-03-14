@@ -644,7 +644,7 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려는 구조체 또는 열거체 정의를 작성하면 컴파일-시간 에러입니다.
 
-> 해당 프로토콜의 '필수 조건' 에서 정의한 작동 방식이 '준수 타입' 은 '값 의미 구조' 가 아닌 '참조 의미 구조' 를 가진다고 가정하거나 요구할 때 '클래스-전용 프로토콜' 을 사용합니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+> 그 프로토콜의 필수 조건이 정의한 동작이 준수 타입은 값 의미 구조 보단 참조 의미 구조를 가진다고 가정 또는 요구할 때 클래스-전용 프로토콜을 사용합니다. 참조 및 값 의미 구조에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
 ### Protocol Composition (프로토콜 합성)
 
