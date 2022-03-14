@@ -624,7 +624,7 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 * 정사각형 값이 `0` 보다 작으면, 뱀의 머리이므로, `▼` 로 나타냅니다.
 * 그 외의 경우, 정사각형 값은 `0` 이고, "자유 (free)" 정사각형이라, `○` 로 나타냅니다.
 
-이제 `prettyTextualDescription` 속성은 어떤 `SnakesAndLadders` 인스턴스의 '예쁘게 꾸민 문장 설명' 이라도 인쇄할 수 있습니다:
+이제 `prettyTextualDescription` 속성을 사용하면 어떤 `SnakesAndLadders` 인스턴스의 꾸밈 문장 설명도 인쇄할 수 있습니다:
 
 ```swift
 print(game.prettyTextualDescription)
