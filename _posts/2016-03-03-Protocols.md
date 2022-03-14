@@ -587,7 +587,7 @@ protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
 }
 ```
 
-위의 `TextRepresentable` 프로토콜을 상속하는 프로토콜 예제는 이렇습니다:
+위에 있는 `TextRepresentable` 프로토콜을 상속한 프로토콜 예제는 이렇습니다:
 
 ```swift
 protocol PrettyTextRepresentable: TextRepresentable {
@@ -595,9 +595,9 @@ protocol PrettyTextRepresentable: TextRepresentable {
 }
 ```
 
-이 예제는, `TextRepresentable` 을 상속한, `PrettyTextRepresentable` 이라는, 새로운 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택한 어떤 것이든 `TextRepresentable` 이 강제하는 모든 '필수 조건' , 에 _더해서 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 '필수 조건' 도, 반드시 만족해야 합니다. 이 예제의, `PrettyTextRepresentable` 은 `String` 을 반환하는 `prettyTextualDescription` 이라는 '획득 가능한 속성' 을 제공하기 위한 단일 '필수 조건' 을 추가합니다.
+이 예제는, `PrettyTextRepresentable` 이라는, `TextRepresentable` 을 상속한, 새 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택한 어떤 것이든 반드시 `TextRepresentable` 이 강제한 모든 필수 조건에, _더해서 (plus)_ `PrettyTextRepresentable` 이 강제한 추가 필수 조건도, 만족해야 합니다. 이 예제의, `PrettyTextRepresentable` 은 `String` 을 반환하는 `prettyTextualDescription` 이라는 획득 가능 속성을 제공하라는 단일 필수 조건을 추가합니다.
 
-`SnakesAndLadders` 클래스는 `PrettyTextRepresentable` 을 채택하고 준수하도록 확장할 수 있습니다:
+`SnakesAndLadders` 클래스를 확장하여 `PrettyTextRepresentable` 을 채택하고 준수하도록 할 수 있습니다:
 
 ```swift
 extension SnakesAndLadders: PrettyTextRepresentable {
