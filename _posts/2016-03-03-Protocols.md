@@ -648,11 +648,11 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 ### Protocol Composition (프로토콜 합성)
 
-타입이 동시에 여러 개의 프로토콜을 준수하도록 요구하는 것이 유용할 수 있습니다. 여러 개의 프로토콜은 _프로토콜 합성 (protocol composition)_ 을 써서 '단일 필수 조건' 으로 조합할 수 있습니다. '프로토콜 합성' 은 마치 모든 프로토콜의 '조합된 필수 조건' 들을 '합성' 해서 가진 '임시 지역 프로토콜' 을 정의한 것처럼 작동합니다. '프로토콜 합성' 은 어떤 새로운 프로토콜 타입도 정의하지 않습니다.
+동시에 여러 개의 프로토콜을 준수하라고 타입에게 요구하는 게 유용할 수 있습니다. 여러 개의 프로토콜을 단일 필수 조건으로 조합하는 건 _프로토콜 합성 (protocol composition)_ 으로 할 수 있습니다. 프로토콜 합성은 마치 조합된 모든 프로토콜 필수 조건들을 합성하여 가진 임시 프로토콜을 정의한 것처럼 동작합니다. 프로토콜 합성은 어떤 새로운 프로토콜 타입도 정의하지 않습니다.
 
-'프로토콜 합성' 은 `SomeProtocol & AnotherProtocol` 과 같은 형식을 가집니다. 필요한 만큼 많은 개수의 프로토콜을, '앤드 기호 (ampersands; `&`)' 로 구분하여, 나열할 수 있습니다. 이 '프로토콜 목록' 에 더하여, '프로토콜 합성' 은, '필수 (required) 상위 클래스' 지정에 사용할 수 있는, 클래스 타입도 하나 담을 수 있습니다.
+프로토콜 합성의 형식은 `SomeProtocol & AnotherProtocol` 입니다. 앤드 기호 (ampersands; `&`) 로 구분하여, 필요한 만큼 많은 프로토콜을 나열할 수 있습니다. 자신의 프로토콜 목록에 더하여, 프로토콜 합성은 클래스 타입도 하나 담을 수 있는데, 이를 사용하여 필수 상위 클래스를 지정할 수 있습니다.
 
-다음은 `Named` 와 `Aged` 라는 두 프로토콜을 '함수 매개 변수' 에 대한 '단일 프로토콜 합성 필수 조건' 으로 조합하는 예제입니다:
+`Named` 와 `Aged` 라는 두 프로토콜을 함수 매개 변수에 대한 단일 프로토콜 합성 필수 조건으로 조합한 예제는 이렇습니다:
 
 ```swift
 protocol Named {
@@ -670,7 +670,7 @@ func wishHappyBirthday(to celebrator: Named & Aged) {
 }
 let birthdayPerson = Person(name: "Malcolm", age: 21)
 wishHappyBirthday(to: birthdayPerson)
-// "Happy birthday, Malcolm, you're 21!" 를 인쇄합니다.
+// "Happy birthday, Malcolm, you're 21!" 를 인쇄함
 ```
 
 이 예제에서, `Named` 프로토콜은 `name` 이라는 '획득 가능한 `String` 속성' 에 대한 '단일 필수 조건' 을 가집니다. `Aged` 프로토콜은 `age` 라는 '획득 가능한 `Int` 속성' 에 대한 '단일 필수 조건' 을 가집니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택합니다.
