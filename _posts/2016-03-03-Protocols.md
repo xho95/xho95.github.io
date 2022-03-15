@@ -673,9 +673,9 @@ wishHappyBirthday(to: birthdayPerson)
 // "Happy birthday, Malcolm, you're 21!" 를 인쇄함
 ```
 
-이 예제에서, `Named` 프로토콜은 `name` 이라는 '획득 가능한 `String` 속성' 에 대한 '단일 필수 조건' 을 가집니다. `Aged` 프로토콜은 `age` 라는 '획득 가능한 `Int` 속성' 에 대한 '단일 필수 조건' 을 가집니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택합니다.
+이 예제의, `Named` 프로토콜에는 단일 필수 조건으로 `name` 이라는 획득 가능한 `String` 속성이 있습니다. `Aged` 프로토콜에는 단일 필수 조건으로 `age` 라는 획득 가능한 `Int` 속성이 있습니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택합니다.
 
-이 예제는 `wishHappyBirthday(to:)` 함수도 정의하고 있습니다. '`celebrator` 매개 변수' 의 타입은, "`Named` 와 `Aged` 프로토콜을 둘 다 준수하는 어떤 타입" 을 의미하는, `Named & Aged` 입니다. 두 '필수 프로토콜' 을 다 준수하는 한, 함수에 전달되는 특정 타입이 어느 것인지는 중요하지 않습니다.
+이 예제는 `wishHappyBirthday(to:)` 라는 함수도 정의합니다. `celebrator` 매개 변수는 `Named & Aged` 타입인데, 이는 "`Named` 와 `Aged` 프로토콜을 둘 다 준수하는 어떤 타입" 이라는 의미입니다. 필수인 프로토콜 둘 다를 준수하는 한, 함수에 전달하는 특정 타입이 무엇인지는 중요하지 않습니다.
 
 그런 다음 이 예제는 `birthdayPerson` 이라는 새로운 `Person` 인스턴스를 생성하고 이 새로운 인스턴스를 `wishHappyBirthday(to:)` 함수에 전달합니다. `Person` 이 두 프로토콜을 다 준수하기 때문에, 이 호출은 유효해서, `wishHappyBirthday(to:)` 함수가 '생일 인사말' 을 인쇄할 수 있습니다.
 
