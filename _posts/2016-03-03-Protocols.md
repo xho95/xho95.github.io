@@ -675,11 +675,11 @@ wishHappyBirthday(to: birthdayPerson)
 
 이 예제의, `Named` 프로토콜에는 단일 필수 조건으로 `name` 이라는 획득 가능한 `String` 속성이 있습니다. `Aged` 프로토콜에는 단일 필수 조건으로 `age` 라는 획득 가능한 `Int` 속성이 있습니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택합니다.
 
-이 예제는 `wishHappyBirthday(to:)` 라는 함수도 정의합니다. `celebrator` 매개 변수는 `Named & Aged` 타입인데, 이는 "`Named` 와 `Aged` 프로토콜을 둘 다 준수하는 어떤 타입" 이라는 의미입니다. 필수인 프로토콜 둘 다를 준수하는 한, 함수에 전달하는 특정 타입이 무엇인지는 중요하지 않습니다.
+예제는 `wishHappyBirthday(to:)` 라는 함수도 정의합니다. `celebrator` 매개 변수는 `Named & Aged` 타입인데, 이는 "`Named` 와 `Aged` 프로토콜을 둘 다 준수하는 어떤 타입" 이라는 의미입니다. 두 개의 필수 프로토콜을 모두 준수하는 한, 함수에 전달한 특정 타입이 어느 것인지는 중요하지 않습니다.
 
-그런 다음 이 예제는 `birthdayPerson` 이라는 새로운 `Person` 인스턴스를 생성하고 이 새로운 인스턴스를 `wishHappyBirthday(to:)` 함수에 전달합니다. `Person` 이 두 프로토콜을 다 준수하기 때문에, 이 호출은 유효해서, `wishHappyBirthday(to:)` 함수가 '생일 인사말' 을 인쇄할 수 있습니다.
+그런 다음 예제에서 `birthdayPerson` 이라는 새로운 `Person` 인스턴스를 생성하고 `wishHappyBirthday(to:)` 함수에 이 새 인스턴스를 전달합니다. `Person` 이 두 프로토콜 모두를 준수하기 때문에, 이 호출이 유효하여, `wishHappyBirthday(to:)` 함수가 자신의 생일 인사말을 인쇄할 수 있습니다.
 
-다음은 이전 예제의 '`Named` 프로토콜' 을 '`Location` 클래스' 와 조합하는 예제입니다:
+이전 예제의 `Named` 프로토콜과 `Location` 클래스를 조합한 예제는 이렇습니다:
 
 ```swift
 class Location {
@@ -703,7 +703,7 @@ func beginConcert(in location: Location & Named) {
 
 let seattle = City(name: "Seattle", latitude: 47.6, longitude: -122.3)
 beginConcert(in: seattle)
-// "Hello, Seattle!" 를 인쇄합니다.
+// "Hello, Seattle!" 를 인쇄함
 ```
 
 `beginConcert(in:)` 함수는, "`Location` 의 하위 클래스이면서 `Named` 프로토콜을 준수하는 어떤 타입" 을 의미하는, `Location & Named` 타입의 매개 변수를 취합니다. 이 경우, `City` 는 두 필수 조건을 다 만족합니다.
