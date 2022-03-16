@@ -706,9 +706,9 @@ beginConcert(in: seattle)
 // "Hello, Seattle!" 를 인쇄함
 ```
 
-`beginConcert(in:)` 함수는, "`Location` 의 하위 클래스이면서 `Named` 프로토콜을 준수하는 어떤 타입" 을 의미하는, `Location & Named` 타입의 매개 변수를 취합니다. 이 경우, `City` 는 두 필수 조건을 다 만족합니다.
+`beginConcert(in:)` 함수가 취하는 매개 변수의 타입은 `Location & Named` 인데, 이는 "`Location` 의 하위 클래스면서 `Named` 프로토콜을 준수하는 어떤 타입" 이라는 의미입니다. 이 경우, `City` 는 필수 조건 둘 다를 만족합니다.
 
-`birthdayPerson` 을 `beginConcert(in:)` 함수에 전달하는 것은 '무효 (invalid)' 인데 이는 `Person` 이 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Named` 프로토콜을 준수하지 않는 `Location` 의 하위 클래스를 만들고서, 해당 타입의 인스턴스로 `beginConcert(in:)` 를 호출하는 것 역시 '무효' 입니다.
+`beginConcert(in:)` 함수에 `birthdayPerson` 을 전달하는 건 무효인데 `Person` 은 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Location` 의 하위 클래스를 만들었는데 `Named` 프로토콜을 준수하지 않으면, 그 타입의 인스턴스를 가지고 `beginConcert(in:)` 을 호출하는 것도 무효입니다.
 
 ### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
