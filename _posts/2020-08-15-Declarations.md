@@ -718,7 +718,7 @@ protocol SomeProtocol: AnyObject {
 
 프로토콜은 '이름 붙인 타입 (named types)' 이며, 따라서 [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 다른 '이름 붙인 타입' 이 있을 수 있는 것과 똑같은 모든 코드 위치에 있을 수 있습니다. 하지만, 프로토콜이 지정한 필수 조건에 대한 구현을 실제로 제공하는 것은 아니기 때문에, 프로토콜의 인스턴스를 '생성 (construct)' 할 수는 없습니다.
 
-프로토콜은, [Delegation (위임)]({% post_url 2016-03-03-Protocols %}#delegation-위임) 에서 설명한 것처럼, 클래스나 구조체의 '대리자 (delegate)' 가 구현해야 할 메소드를 선언하기 위해 사용할 수 있습니다.
+프로토콜을 사용하면, [Delegation (맡김)]({% post_url 2016-03-03-Protocols %}#delegation-맡김) 에서 설명한 것처럼, 클래스나 구조체의 일-맡길자 (delegate) 가 어떤 메소드를 구현해야 하는지 선언할 수 있습니다.
 
 > GRAMMAR OF A PROTOCOL DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 

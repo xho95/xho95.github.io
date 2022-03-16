@@ -276,13 +276,13 @@ class Dice {
 
 이 예제는, 보드 게임에 사용할 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스에는, 면의 개수를 나타내는, `sides` 라는 정수 속성과, 주사위 굴림 값 생성을 위한 난수 발생기를 제공하는, `generator` 라는 속성이 있습니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드와 `generator` 는 이 프로토콜을 준수하는 모든 발생기에 적용될 방식으로만 상호 작용할 수 있습니다. 이는 '발생기' 의 실제 타입이 정의한 메소드나 속성은 어떤 것도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 방식으로 '프로토콜 타입' 을 '실제 타입' 으로 내림 변환할 수 있습니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 이 프로토콜을 준수하는 모든 발생기에 적용되는 방식으로만 `generator` 와 상호 작용할 수 있습니다. 이는 발생기의 실제 타입이 정의한 어떤 메소드나 속성도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% post_url 2020-04-01-Type-Casting %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 식으로 프로토콜 타입에서 실제 타입으로 내림 변환할 순 있습니다.
 
-`Dice` 는, 초기 상태를 설정하는, 초기자도 가지고 있습니다. 이 초기자, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수를 가집니다. 새로운 `Dice` 인스턴스를 초기화할 때, 이 매개 변수에는 어떤 '준수 타입' 의 값이든 전달 할 수 있습니다.
+`Dice` 에는, 자신의 초기 상태를 설정하는, 초기자도 있습니다. 이 초기자엔, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수가 있습니다. 새로운 `Dice` 인스턴스를 초기화할 땐 어떤 준수 타입의 값이든 이 매개 변수에 전달할 수 있습니다.
 
-`Dice` 는, '1' 에서 주사위의 '면 개수' 사이의 정수 값을 반환하는, `roll` 이라는, 인스턴스 메소드를 하나 제공합니다. 이 메소드는 '발생기' 의 `random()` 메소드를 호출하여, `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수로 올바른 범위의 '주사위 굴림 값' 을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택하고 있기 때문에, `random()` 메소드를 가지고 호출할 수 있음이 보증된 것입니다.
+`Dice` 는, 1 과 주사위면 수 사이의 정수 값을 반환하는, `roll` 이라는, 한 인스턴스 메소드를 제공합니다. 이 메소드는 발생기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새 난수를 생성하며, 이 난수를 써서 올바른 범위 안에 있는 주사위 굴림 값을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택한다는 걸 알기 때문에, 호출할 `random()` 메소드가 있음이 보증됩니다.
 
-다음은 `Dice` 클래스를 사용하여 '난수 발생기' 로 `LinearCongruentialGenerator` 인스턴스를 가지는 '6-면체 주사위' 를 생성하는 방법입니다:
+`Dice` 클래스를 사용하여 `LinearCongruentialGenerator` 인스턴스를 자신의 난수 발생기로 가지는 6-면체 주사위의 생성 방법은 이렇습니다:
 
 ```swift
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
@@ -297,11 +297,11 @@ for _ in 1...5 {
 // Random dice roll is 4
 ```
 
-### Delegation (위임)
+### Delegation (맡김)
 
-_위임 (delegation)_ 은 클래스나 구조체가 다른 타입의 인스턴스로 책임의 일부를 넘기도록-또는 _위임 (delegate)_ 하도록- 해주는 '디자인 패턴 (design pattern)' 입니다. 이 '디자인 패턴' 은 위임한 책임을 '은닉 (encapsulates)' 하는 프로토콜을 정의해서, ('대리자 (delegate)'[^delegate] 라고 하는) '준수 타입' 이 위임된 기능을 제공하도록 보증합니다. '위임' 은 특별한 행동에 응답하거나, 해당 소스의 실제 타입을 알 필요 없이 외부 소스에서 데이터를 가져오기 위해, 사용할 수 있습니다.
+_맡김 (delegation)_ 은 클래스나 구조체가 자신의 책임 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴은 맡길 책임을 은닉한 프로토콜 정의로 구현해서, 준수 타입 (일-맡길자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김은 특별한 한 행동에 응답하거나, 외부 소스의 실제 타입을 모르고도 그 소스에서 자료를 가져오는데 사용할 수 있습니다.
 
-아래 예제는 '주사위-기반의 보드 게임' 에서 사용할 두 개의 프로토콜을 정의합니다:
+아래 예제는 주사위-기반 보드 게임에 사용할 두 개의 프로토콜을 정의합니다:
 
 ```swift
 protocol DiceGame {
@@ -316,11 +316,11 @@ protocol DiceGameDelegate: AnyObject {
 }
 ```
 
-`DiceGame` 프로토콜은 주사위와 엮여 있는 어떤 게임이든 채택할 수 있는 프로토콜입니다.
+`DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이든 채택할 수 있는 프로토콜입니다.
 
-`DiceGameDelegate` 프로토콜은 `DiceGame` 의 진행 과정을 추적하기 위해 채택할 수 있습니다. '강한 참조 순환' 을 막기 위해, '대리자 (delegates)' 는 '약한 참조' 로 선언합니다. '약한 참조' 에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 '클래스-전용' 이라고 표시하는 것은 이 장 나중에 나오는 `SnakesAndLadders` 클래스가 자신의 '대리자' 을 반드시 '약한 참조' 로 사용해야 한다고 선언하도록 합니다. 클래스-전용 프로토콜은, [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 를 상속하는 것으로 표시합니다.
+`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡길자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡길자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
 
-다음은 원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 소개했던 _뱀과 사다리 (Snakes and Ladders)_ 게임의 다른 버전입니다. 이 버전은 '주사위-굴림 값' 으로 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 과정을 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
+원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 소개한 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전은 주사위-굴림 값으론 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
 
 ```swift
 class SnakesAndLadders: DiceGame {
@@ -355,19 +355,19 @@ class SnakesAndLadders: DiceGame {
 }
 ```
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임 진행 방식에 대한 설명은, [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 부분을 참고하기 바랍니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임의 플레이 설명은, [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 을 참고합니다.
 
-이 버전은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 게임을 '포장 (wrapped up)' 합니다. 이는 프로토콜을 준수하기 위해 '획득 가능한 `dice` 속성' 과 '`play()` 메소드' 를 제공합니다. (`dice` 속성은, 초기화 후 바뀔 필요가 없으며, 프로토콜은 획득 가능하기만 하면 된다는 것을 요구하고 있기 때문에, 상수 속성으로 선언합니다.)
+이 버전의 게임은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 포장되어 있습니다. 이는 프로토콜의 준수를 위해서 획득 가능한 `dice` 속성과 `play()` 메소드를 제공합니다. (`dice` 속성은 초기화 후엔 바뀔 필요가 없고, 프로토콜은 획득 가능할 것만을 요구하기 때문에, 상수 속성으로 선언합니다.)
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임판의 설정은 클래스의 `init()` 초기자 안에서 일어납니다. 모든 게임 '논리 (logic)' 는 프로토콜의 `play` 메소드 속으로 옮겨지며, 여기서 '주사위 굴림 값' 을 제공하는 프로토콜의 '필수 `dice` 속성' 을 사용합니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임판 설정은 클래스의 `init()` 초기자 안에서 일어납니다. 모든 게임 논리는, 프로토콜의 필수 `dice` 속성으로 자신의 주사위 굴림 값을 제공하는, 프로토콜의 `play` 메소드 안으로 이동합니다.
 
-'대리자 (delegate)' 가 게임 진행에 필수인 건 아니기 때문에, `delegate` 속성은 '_옵셔널 (optional)_ `DiceGameDelegate`' 로 정의함을 기억하기 바랍니다. `delegate` 속성은, 옵셔널 타입이기 때문에, '초기 값' 이 자동으로 `nil` 로 설정됩니다. 그 이후, 게임의 '인스턴스를 만드는 부분'[^instantiator] 이 적합한 '대리자' 를 속성에 설정할 옵션을 가지게 도비니다. `DiceGameDelegate` 프로토콜은 '클래스-전용' 이기 때문에, '참조 순환' 을 막기 위해 '대리자' 를 `weak` 라고 선언할 수 있습니다.
+게임을 플레이하는데 일-맡길자 (delegate) 가 필수는 아니기 때문에, `delegate` 속성을 _옵셔널 (optional)_ `DiceGameDelegate`' 로 정의한다는 걸 기억하기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 초기 값을 `nil` 로 자동 설정합니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 속성에 적합한 일-맡길자를 설정할 옵션을 가집니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일-맡길자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
 
-`DiceGameDelegate` 는 게임의 진행 과정을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위 `play()` 메소드에 있는 게임 논리에 편입되어, 새로운 게임을 시작할 때나, 새로운 '차례 (turn)' 를 시작할 때, 또는 게임이 끝날 때, 호출됩니다.
+`DiceGameDelegate` 는 게임의 진행 상황을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위의 `play()` 메소드 안에 있는 게임 논리에 편입되어 있어, 새 게임을 시작할 때나, 새 차례의 시작, 또는 게임이 끝날 때, 호출됩니다.
 
-`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 '대리자' 에 대한 메소드를 매 번 호출할 때마다 '옵셔널 연쇄 (chaining)' 를 사용합니다. `delegate` 속성이 'nil' 이면, 이 '대리자 호출' 은 에러 없이 '우아하게 실패'[^gracefully-fail] 합니다. `delegate` 속성이 'nil-이 아니' 라면, '대리자 메소드' 를 호출해서, `SnakesAndLadders` 인스턴스를 매개 변수로 전달합니다.[^snakes-and-ladders-instance]
+`delegate` 속성은 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드가 일-맡길자의 메소드를 호출할 때마다 옵셔널 사슬[^optional-chaining] 을 사용합니다. `delegate` 속성이 'nil' 이면, 이 일-맡길자의 호출은 에러 없이 우아하게 실패합니다.[^gracefully-fail] `delegate` 속성이 'nil' 이 아니면, 일-맡길자의 메소드를 호출하며, 매개 변수로는 `SnakesAndLadders` 인스턴스를 전달합니다.[^snakes-and-ladders-instance]
 
-이 다음 예제는, `DiceGameDelegate` 프로토콜을 채택하는, `DiceGameTracker` 라는 클래스를 보여줍니다:
+이 다음 예제가 보여주는 건, `DiceGameDelegate` 프로토콜을 채택한, `DiceGameTracker` 라는 클래스입니다:
 
 ```swift
 class DiceGameTracker: DiceGameDelegate {
@@ -389,35 +389,35 @@ class DiceGameTracker: DiceGameDelegate {
 }
 ```
 
-`DiceGameTracker` 는 `DiceGameDelegate` 에 필수인 세 메소드를 모두 구현합니다. 이 메소드를 사용하여 게임이 취한 '차례 (turn)' 수를 추적합니다. 게임을 시작하면 `numberOfTurns` 속성을 '0' 으로 '재설정' 하고, 매 번 새로운 차례를 시작할 때 증가시키며, 게임이 끝나면 총 '차례' 수를 인쇄합니다.
+`DiceGameTracker` 는 `DiceGameDelegate` 가 요구하는 세 개의 메소드를 모두 구현합니다. 이 메소드들을 사용하여 게임 진행 턴 수를 추적합니다. 게임을 시작 땐 `numberOfTurns` 속성을 0 으로 재설정하며, 새 턴을 시작할 때마다 증가하고, 게임이 끝나고 나면 총 턴 수를 인쇄합니다.
 
-위에 보인 `gameDidStart(_:)` 구현은 `game` 매개 변수를 사용하여 진행할 게임에 대한 약간의 소개 정보를 인쇄합니다. `game` 매개 변수는, `SnakesAndLadders` 가 아니라, `DiceGame` 타입이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜로 구현된 메소드와 속성에만 접근하여 사용할 수 있습니다. 하지만, 메소드는 '타입 변환 (type casting)' 을 사용하여 여전히 실제 인스턴스의 타입을 조회할 수 있습니다. 이 예제에서는, `game` 이 실제로 `SnakesAndLadders` 인스턴스인지를 검사해서, 그게 맞다면 적절한 메시지를 인쇄합니다.
+위에 보인 `gameDidStart(_:)` 구현부는 `game` 매개 변수를 사용하여 플레이할 게임에 대한 소개 정보를 인쇄합니다. `game` 매개 변수는, `SnakesAndLadders` 타입이 아닌, `DiceGame` 타입이므로, `gameDidStart(_:)` 는 `DiceGame` 프로토콜 부분에서 구현한 메소드와 속성에만 접근해서 사용할 수 있습니다. 하지만, 메소드가 타입 변환을 사용하면 실제 인스턴스의 타입을 조회하는게 여전히 가능합니다. 이 예제에선, `game` 의 이면이 실제로 `SnakesAndLadders` 인스턴스인지 검사하여, 그럴 경우 적절한 메시지를 인쇄합니다.
 
-`gameDidStart(_:)` 메소드는 전달한 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수함을 알기 때문에, `dice` 속성을 가짐이 보증되므로, `gameDidStart(_:)` 메소드는, 어떤 종류의 게임을 진행하는 지에 상관없이, 주사위의 `sides` 속성에 접근하여 인쇄할 수 있습니다.
+`gameDidStart(_:)` 메소드는 전달된 `game` 매개 변수의 `dice` 속성에도 접근합니다. `game` 이 `DiceGame` 프로토콜을 준수한다는 걸 알고, 이는 `dice` 속성이 있음을 보증하기 때문에, 무슨 종류의 게임을 플레이하는 지에 상관없이, `gameDidStart(_:)` 메소드가 주사위의 `sides` 속성에 접근하고 인쇄하는게 가능합니다.
 
-다음은 `DiceGameTracker` 의 실제 사용 방법을 보인 것입니다:
+`DiceGameTracker` 의 실제 사례를 보면 이렇습니다:
 
 ```swift
 let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
 game.delegate = tracker
 game.play()
-// Started a new game of Snakes and Ladders / 새로운 뱀과 사다리 게임을 시작합니다.
-// The game is using a 6-sided dice / 이 게임은 6-면체 주사위를 사용합니다.
-// Rolled a 3 / 3이 나왔습니다.
-// Rolled a 5 / 5가 나왔습니다.
-// Rolled a 4 / 4가 나왔습니다.
-// Rolled a 5 / 5가 나왔습니다.
-// The game lasted for 4 turns / 이 게임은 4 차례 동안 진행됐습니다.
+// Started a new game of Snakes and Ladders (새로운 뱀과 사다리 게임을 시작함)
+// The game is using a 6-sided dice (6-면체 주사위를 사용하는 게임임)
+// Rolled a 3 (3이 나옴)
+// Rolled a 5 (5가 나옴)
+// Rolled a 4 (4가 나옴)
+// Rolled a 5 (5가 나옴)
+// The game lasted for 4 turns (게임을 4턴 동안 지속함)
 ```
 
 ### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
 
-기존 타입의 소스 코드에 접근할 수 없는 경우에도, 새로운 프로토콜을 채택하고 준수하도록 기존 타입을 확장할 수 있습니다. '익스텐션 (extension)' 은 기존 타입에 새로운 속성, 메소드, 그리고 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건이든 추가할 수 있습니다. '익스텐션' 에 대한 더 많은 내용은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+기존 타입의 소스 코드에 접근할 수 없는 경우에도, 기존 타입을 확장하면 새로운 프로토콜을 채택하고 준수할 수 있습니다. 익스텐션 (extensions) 은 기존 타입에 새로운 속성, 메소드, 및 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건을 추가하는 것도 가능합니다. 익스텐션에 대한 더 많은 것은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 장을 참고하기 바랍니다.
 
-> '익스텐션' 에서 해당 '준수성' 을 인스턴스의 타입에 추가할 때 타입의 기존 인스턴스는 프로토콜을 자동으로 채택하고 춘수하게 됩니다.
+> 익스텐션에서 인스턴스의 타입에 프로토콜 준수성을 추가할 때 타입의 기존 인스턴스는 자동으로 그 프로토콜을 채택하고 준수합니다.
 
-예를 들어, `TextRepresentable` 이라는, 다음 프로토콜은 '문장' 으로 표현할 방식을 가진 어떤 타입이든 구현하게 할 수 있습니다. 이는 자신에 대한 설명일 수도, 아니면 현재 상태의 문장 버전일 수도 있습니다:
+예를 들어, 어떤 타입이든, `TextRepresentable` 이라는, 다음 프로토콜을 구현하면 텍스트로 나타낼 방법을 가질 수 있습니다. 이는 그 자신에 대한 설명이거나, 현재 상태에 대한 텍스트 버전일 수 있습니다:
 
 ```swift
 protocol TextRepresentable {
@@ -425,7 +425,7 @@ protocol TextRepresentable {
 }
 ```
 
-위에 있는 `Dice` 클래스는 `TextRepresentable` 을 채택하고 준수하도록 확장할 수 있습니다:
+위에 있는 `Dice` 클래스를 확장하여 `TextRepresentable` 을 채택하고 준수하게 할 수 있습니다:
 
 ```swift
 extension Dice: TextRepresentable {
@@ -435,17 +435,17 @@ extension Dice: TextRepresentable {
 }
 ```
 
-이 '익스텐션' 은 마치 `Dice` 가 이를 원본 구현에서 제공한 것과 정확하게 똑같은 방식으로 새로운 프로토콜을 채택합니다. 이 프로토콜 이름은, 콜론으로 구분하여, 타입 이름 뒤에 제공하며, 프로토콜의 모든 '필수 조건' 은 '익스텐션' 중괄호 안에서 제공합니다.
+이 익스텐션은 마치 `Dice` 가 자신의 원본 구현에서 새로운 프로토콜을 제공한 것과 정확히 똑같은 방식으로 이를 채택합니다. 프로토콜 이름은 타입 이름 뒤에, 콜론으로 구분하여, 제공하며, 프로토콜의 모든 필수 조건은 익스텐션 중괄호 안에 구현합니다.
 
-이제 '어떤 `Dice` 인스턴스' 든 `TextRepresentable` 처럼 취급할 수 있습니다:
+어떤 `Dice` 인스턴스든 이제 `TextRepresentable` 로 취급할 수 있습니다:
 
 ```swift
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
-// "A 12-sided dice" 를 인쇄합니다.
+// "A 12-sided dice" 를 인쇄함
 ```
 
-이와 비슷하게, `SnakesAndLadders` 게임 클래스도 `TextRepresentable` 프로토콜을 채택하고 준수하도록 확장할 수 있습니다:
+이와 비슷하게, `SnakesAndLadders` 게임 클래스가 `TextRepresentable` 프로토콜을 채택하고 준수하게 확장할 수도 있습니다:
 
 ```swift
 extension SnakesAndLadders: TextRepresentable {
@@ -454,14 +454,14 @@ extension SnakesAndLadders: TextRepresentable {
   }
 }
 print(game.textualDescription)
-// "A game of Snakes and Ladders with 25 squares" 를 인쇄합니다.
+// "A game of Snakes and Ladders with 25 squares" 를 인쇄함
 ```
 
-#### Conditionally Conforming to a Protocol (조건에 따라 프로토콜 준수하기)
+#### Conditionally Conforming to a Protocol (조건부로 프로토콜 준수하기)
 
-'일반화 (generic) 타입' 은, 타입의 '일반화 매개 변수' 가 프로토콜을 준수할 때와 같이, 정해진 조건 하에서만 프로토콜의 '필수 조건' 을 만족할 수도 있습니다. '일반화 타입' 은 타입을 확장할 때 '구속 조건 (constraints)' 을 나열하는 것으로써 조건에 따라 프로토콜을 준수하도록 만들 수 있습니다. 이 '구속 조건' 들은 채택하려는 프로토콜 이름 뒤에 '일반화 `where` 절' 을 작성함으로써 작성합니다. '일반화 `where` 절' 에 대한 더 자세한 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 을 참고하기 바랍니다.
+일반화 타입[^generic-type] 은, 타입의 일반화 매개 변수가 프로토콜을 준수할 때와 같은, 특정 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. 일반화 타입이 조건부로 프로토콜을 준수하게 하려면 타입을 확장할 때 구속 조건을 나열하면 됩니다. 이러한 구속 조건을 채택할 프로토콜 이름 뒤에 작성하는 건 일반화 `where` 절의 작성으로 합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 을 참고하기 바랍니다.
 
-다음 '익스텐션' 은 `Array` 인스턴스가 `TextRepresentable` 을 준수하는 타입의 원소를 저장할 때마다 `TextRepresentable` 프로토콜을 준수하게 만듭니다.[^array-element]
+다음 익스텐션은 저장한 원소의 타입이 `TextRepresentable` 을 준수할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하게 합니다.[^array-element]
 
 ```swift
 extension Array: TextRepresentable where Element: TextRepresentable {
@@ -472,12 +472,12 @@ extension Array: TextRepresentable where Element: TextRepresentable {
 }
 let myDice = [d6, d12]
 print(myDice.textualDescription)
-// "[A 6-sided dice, A 12-sided dice]" 를 인쇄합니다.
+// "[A 6-sided dice, A 12-sided dice]" 를 인쇄함
 ```
 
-#### Declaring Protocol Adoption with an Extension (확장으로 프로토콜 채택 선언하기)
+#### Declaring Protocol Adoption with an Extension (익스텐션으로 프로토콜 채택 선언하기)
 
-타입이 이미 프로토콜의 모든 '필수 조건' 을 준수하고 있지만, 아직 해당 프로토콜을 채택한다고 알리지 않은 경우라면, 빈 '익스텐션' 으로 해당 프로토콜을 채택하도록 만들 수 있습니다:
+타입이 프로토콜의 모든 필수 조건을 이미 준수하고 있지만, 그 프로토콜을 채택한다고 아직 알리지 않은 경우라면, 빈 익스텐션으로 프로토콜을 채택하게 할 수 있습니다:
 
 ```swift
 struct Hamster {
@@ -489,30 +489,30 @@ struct Hamster {
 extension Hamster: TextRepresentable {}
 ```
 
-이제 `TextRepresentable` 이 필수 요구 타입인 곳마다 `Hamster` 인스턴스를 사용할 수 있습니다:
+이제 `TextRepresentable` 이 필수 타입인 곳마다 `Hamster` 인스턴스를 사용할 수 있습니다:
 
 ```swift
 let simonTheHamster = Hamster(name: "Simon")
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
-// "A hamster named Simon" 을 인쇄합니다.
+// "A hamster named Simon" 을 인쇄함
 ```
 
-> 타입은 '필수 조건' 을 만족한다고 해서 프로토콜을 자동으로 채택하진 않습니다. 프로토콜을 채택한다고 반드시 항상 명시적으로 선언해야 합니다.[^adoption]
+> 프로토콜의 필수 조건을 만족한다고 해서 타입이 이를 자동으로 채택하진 않습니다. 반드시 자신이 프로토콜을 채택한다는 걸 명시적으로 선언해야 합니다.[^adoption]
 
-### Adopting a Protocol Using a Synthesized Implementation (통합된 구현을 사용하여 프로토콜 채택하기)
+### Adopting a Protocol Using a Synthesized Implementation (통합 구현을 써서 프로토콜 채택하기)
 
-스위프트는 많은 단순한 경우에 `Equatable`, `Hashable`, 그리고 `Comparable` 에 대한 '프로토콜 준수성 (protocol conformance)' 을 자동으로 제공할 수 있습니다. 이 '통합된 (synthesized) 구현'[^synthesized] 을 사용한다는 것은 '프로토콜 필수 조건' 을 직접 구현하기 위해서 '반복적이고 획일적인 (bolilerplate) 코드' 를 작성하지 않아도 된다는 의미입니다.
+스위프트는 수많은 단순한 경우에 `Equatable`, `Hashable`, 및 `Comparable` 에 대한 프로토콜 준수성을 자동으로 제공할 수 있습니다. 이런 통합 구현[^synthesized] 을 사용하면 스스로 프로토콜 필수 조건을 구현하고자 획일된 코드를 반복 작성하지 않아도 된다는 걸 의미합니다.
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 에 대한 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 의 통합 구현을 제공합니다:
 
-* `Equatable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
-* `Equatable` 프로토콜을 준수하는 '결합 타입'[^associated-types] 만을 가진 열거체
-* '결합 타입' 을 전혀 가지고 있지 않은 열거체
+* `Equatable` 프로토콜을 준수한 저장 속성만 있는 구조체
+* `Equatable` 프로토콜을 준수한 결합 타입[^associated-types] 만 있는 열거체
+* 아무런 결합 타입도 없는 열거체
 
-`==` 에 대한 '통합된 구현' 을 부여 받으려면, `==` 연산자를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Equatable` 을 '준수 (conformance)' 한다고 선언합니다. '`Equatable` 프로토콜' 은 `!=` 에 대한 기본 구현을 제공합니다.
+`==` 의 통합 구현을 받으려면, `==` 연산자를 직접 구현하지 말고, 원본 선언을 담은 파일에서 `Equatable` 준수성을 선언합니다. `Equatable` 프로토콜은 `!=` 의 기본 구현을 제공합니다.
 
-아래 예제는, `Vector2D` 구조체와 비슷하게, '3-차원 위치 벡터 `(x, y, z)`' 를 위한 `Vector3D` 구조체를 정의합니다. `x`, `y`, 그리고 `z` 속성은 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 '같음 비교 (equivalence)[^equivalence] 연산자' 에 대한 '통합된 구현' 을 부여 받습니다.
+아래 예제는 3-차원 위치 벡터 `(x, y, z)` 를 위해, `Vector2D` 구조체와 비슷한, `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 같음 비교 연산자[^equivalence] 의 통합 구현을 받습니다.
 
 ```swift
 struct Vector3D: Equatable {
@@ -524,20 +524,20 @@ let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
 if twoThreeFour == anotherTwoThreeFour {
   print("These two vectors are also equivalent.")
 }
-// "These two vectors are also equivalent." 를 인쇄합니다.
+// "These two vectors are also equivalent." 를 인쇄함
 ```
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 에 대한 '통합된 구현' 을 제공합니다:
+스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 의 통합 구현을 제공합니다:
 
-* `Hashable` 프로토콜을 준수하는 '저장 속성' 만을 가진 구조체
-* `Hashable` 프로토콜을 준수하는 '결합 타입' 만을 가진 열거체
-* '결합 타입' 을 전혀 가지고 있지 않은 열거체
+* `Hashable` 프로토콜을 준수한 저장 속성만 있는 구조체
+* `Hashable` 프로토콜을 준수한 결합 타입만 있는 열거체
+* 아무런 결합 타입도 없는 열거체
 
-`hash(into:)` 에 대한 '통합된 구현' 을 부여 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, '원본 선언을 담고 있는 파일' 에서 `Hashable` 을 '준수 (conformance)' 한다고 선언합니다.
+`hash(into:)` 의 통합 구현을 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, 원본 선언을 담은 파일에서 `Hashable` 준수성을 선언합니다.
 
-스위프트는 '원시 값'[^raw-values] 을 가지고 있지 않은 열거체를 위해 `Comparable` 에 대한 '통합된 구현' 을 제공합니다. 열거체가 '결합 타입' 을 가지고 있는 경우, 이들은 반드시 모두 `Comparable` 프로토콜을 준수해야 합니다. `<` 에 대한 '통합된 구현' 을 부여 받으려면, `<` 연산자를 직접 구현하지 말고, '원본 열거체 선언을 담은 파일' 에서 `Comparable` 을 '준수 (conformance)' 한다고 선언합니다. `<=`, `>`, 그리고 `>=` 에 대한 `Comparable` 프로토콜의 기본 구현은 남아 있는 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
+스위프트는 원시 값[^raw-values] 이 없는 열거체에 `Comparable` 의 통합 구현을 제공합니다. 열거체에 결합 타입이 있으면, 이들 모두 반드시 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합 구현을 받으려면, `<` 연산자를 직접 구현하지 말고, 원본 열거체 선언을 담은 파일에서 `Comparable` 준수성을 선언합니다. `<=`, `>`, 및 `>=` 의 `Comparable` 프로토콜 기본 구현은 그 외 나머지 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
 
-아래 예제는 '초보자', '중급자', 그리고 '전문가' 라는 'case 값' 을 가진 `SkillLevel` 열거체를 정의합니다. '전문가' 는 자신이 가진 별의 개수로 추가적인 등급을 나눕니다.
+아래 예제는 초급자, 중급자, 및 전문가라는 case 를 가진 `SkillLevel` 열거체를 정의합니다. 전문가는 자신이 가진 별의 개수에 따라 추가로 등급을 나눕니다.
 
 ```swift
 enum SkillLevel: Comparable {
@@ -550,44 +550,44 @@ var levels = [SkillLevel.intermediate, SkillLevel.beginner,
 for level in levels.sorted() {
   print(level)
 }
-// "beginner" 를 인쇄합니다.
-// "intermediate" 를 인쇄합니다.
-// "expert(stars: 3)" 를 인쇄합니다.
-// "expert(stars: 5)" 를 인쇄합니다.
+// "beginner" 를 인쇄함
+// "intermediate" 를 인쇄함
+// "expert(stars: 3)" 를 인쇄함
+// "expert(stars: 5)" 를 인쇄함
 ```
 
 ### Collections of Protocol Types (프로토콜 타입의 집합체)
 
-프로토콜은, [Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 것처럼, 배열이나 딕셔너리 같은 '집합체 (collection)' 에 저장할 타입으로 사용할 수 있습니다. 다음 예제는 '`TextRepresentable` (문장 표현이 가능한) 것' 들의 배열을 생성합니다:
+[Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 것처럼, 배열이나 딕셔너리 같은 집합체에 저장할 타입으로 프로토콜을 사용할 수 있습니다. 다음 예제는 `TextRepresentable` (문장으로 나타낼 수 있는) 것들의 배열을 생성합니다:
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 ```
 
-이제 배열에 있는 항목에 동작을 반복해서, 각 항목에 대한 문장 설명을 인쇄합니다:
+이제 배열의 항목을 반복하고, 각 항목의 설명 문장을 인쇄하는게 가능합니다:
 
 ```swift
 for thing in things {
   print(thing.textualDescription)
 }
-// A game of Snakes and Ladders with 25 squares (25개의 정사각형을 가지는 뱀과 사다리 게임)
+// A game of Snakes and Ladders with 25 squares (정사각형이 25칸 있는 뱀과 사다리 게임)
 // A 12-sided dice (12-면체 주사위)
-// A hamster named Simon (Simon 이라는 이름의 햄스터)
+// A hamster named Simon (이름이 Simon 인 햄스터)
 ```
 
-`thing` 상수는 `TextRepresentable` 타입 임을 기억하기 바랍니다. 타입은, 실제 그 속은 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입 일지라도, 이 타입들이 아닙니다. 그럼에도 불구하고, 이는 `TextRepresentable` 타입이며, `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가짐을 알기 때문에, 반복문의 매 회차마다 `thing.textualDescription` 에 안전하게 접근할 수 있습니다.
+`thing` 상수의 타입은 `TextRepresentable` 임을 기억하기 바랍니다. 실제 인스턴스의 이면이 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입인 경우에도, 이 타입들인 건 아닙니다. 그럼에도 불구하고, `TextRepresentable` 티입이기 때문에, 그리고 `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가진다는 걸 알기 때문에, 매 반복문을 통과할 때마다 `thing.textualDescription` 에 접근해도 안전합니다.
 
 ### Protocol Inheritance (프로토콜 상속)
 
-프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 상속한 '필수 조건' 위에 다른 '필수 조건' 을 더 추가할 수 있습니다. '프로토콜 상속' 구문은 '클래스 상속' 구문과 비슷하지만, 쉼표로 구분하여, '다중 상속 프로토콜' 을 나열할 수 있습니다[^multiple-inherited-protocols]:
+프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 자신이 상속한 필수 조건 위에 필수 조건을 더 추가할 수도 있습니다. 프로토콜 상속 구문은 클래스 상속 구문과 비슷하지만, 옵션으로 상속할 프로토콜 여러 개를, 쉼표로 구분하여, 나열할 수 있습니다[^multiple-inherited-protocols]:
 
 ```swift
 protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
-  // 프로토콜 정의는 여기에 둡니다.
+  // 프로토콜 정의는 여기에 둠
 }
 ```
 
-다음은 위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜 예제입니다:
+위에 있는 `TextRepresentable` 프로토콜을 상속한 프로토콜 예제는 이렇습니다:
 
 ```swift
 protocol PrettyTextRepresentable: TextRepresentable {
@@ -595,9 +595,9 @@ protocol PrettyTextRepresentable: TextRepresentable {
 }
 ```
 
-이 예제는, `TextRepresentable` 을 상속한, `PrettyTextRepresentable` 이라는, 새로운 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택한 어떤 것이든 `TextRepresentable` 이 강제하는 모든 '필수 조건' , 에 _더해서 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 '필수 조건' 도, 반드시 만족해야 합니다. 이 예제의, `PrettyTextRepresentable` 은 `String` 을 반환하는 `prettyTextualDescription` 이라는 '획득 가능한 속성' 을 제공하기 위한 단일 '필수 조건' 을 추가합니다.
+이 예제는, `PrettyTextRepresentable` 이라는, `TextRepresentable` 을 상속한, 새 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택한 어떤 것이든 반드시 `TextRepresentable` 이 강제한 모든 필수 조건에, _더해서 (plus)_ `PrettyTextRepresentable` 이 강제한 추가 필수 조건도, 만족해야 합니다. 이 예제의, `PrettyTextRepresentable` 은 `String` 을 반환하는 `prettyTextualDescription` 이라는 획득 가능 속성을 제공하라는 단일 필수 조건을 추가합니다.
 
-`SnakesAndLadders` 클래스는 `PrettyTextRepresentable` 을 채택하고 준수하도록 확장할 수 있습니다:
+`SnakesAndLadders` 클래스를 확장하여 `PrettyTextRepresentable` 을 채택하고 준수하도록 할 수 있습니다:
 
 ```swift
 extension SnakesAndLadders: PrettyTextRepresentable {
@@ -618,13 +618,13 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 }
 ```
 
-이 '익스텐션' 은 `PrettyTextRepresentable` 프로토콜을 채택하여 `SnakesAndLadders` 타입을 위한 `prettyTextualDescription` 속성의 구현을 제공한다고 알립니다. `PrettyTextRepresentable` 인 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 구현은 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 먼저 접근하고나서 출력 문자열을 만들기 시작합니다. 이는 '콜론 (`:`)' 과 '줄 끊음 (`\n`)' 을 덧붙여, 문장 표현을 예쁘게 꾸미기 시작합니다. 그런 다음 게임판의 '정사각형 배열' 에 동작을 반복해서, 각 정사각형의 내용물을 표현하는 기하학 도형을 덧붙입니다:
+이 익스텐션은 `SnakesAndLadders` 타입이 `PrettyTextRepresentable` 프로토콜을 채택한다는 걸 알리며 이를 위해 `prettyTextualDescription` 속성의 구현부를 제공합니다. `PrettyTextRepresentable` 인 어떤 것도 반드시 `TextRepresentable` 이므로, `prettyTextualDescription` 구현은 출력 문자열의 시작을 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성 접근으로 시작합니다. 콜론 (`:`) 과 줄 끊음 (`\n`) 을 덧붙이고, 자신의 꾸밈 문장을 시작합니다. 그런 다음 정사각형 판의 배열을 반복하고, 각각의 정사각형 내용물을 나타내는 기하 도형을 덧붙입니다:
 
-* 정사각형의 값이 `0` 보다 크면, 사다리의 밑부분이므로, `▲` 로 표현합니다.
-* 정사각형의 값이 `0` 보다 작으면, 뱀의 머리이므로, `▼` 로 표현합니다.
-* 그 외의 경우, 정사각형의 값은 `0` 이고, "자유로운 (free)" 정사각형이므로, `○` 로 표현합니다.
+* 정사각형 값이 `0` 보다 크면, 사다리의 기초이므로, `▲` 로 나타냅니다.
+* 정사각형 값이 `0` 보다 작으면, 뱀의 머리이므로, `▼` 로 나타냅니다.
+* 그 외의 경우, 정사각형 값은 `0` 이고, "자유 (free)" 정사각형이라, `○` 로 나타냅니다.
 
-이제 `prettyTextualDescription` 속성은 어떤 `SnakesAndLadders` 인스턴스의 '예쁘게 꾸민 문장 설명' 이라도 인쇄할 수 있습니다:
+이제 `prettyTextualDescription` 속성을 사용하면 어떤 `SnakesAndLadders` 인스턴스의 꾸밈 문장 설명도 인쇄할 수 있습니다:
 
 ```swift
 print(game.prettyTextualDescription)
@@ -634,25 +634,25 @@ print(game.prettyTextualDescription)
 
 ### Class-Only Protocols (클래스-전용 프로토콜)
 
-'프로토콜 상속 목록'[^inheritance] 에 `AnyObject` 프로토콜을 추가함으로써 (구조체나 열거체가 아닌) 클래스 타입만 프로토콜을 '채택 (adoptation)' 하도록 제한할 수 있습니다.
+프로토콜 상속 목록에 `AnyObject` 프로토콜을 추가함으로써 프로토콜 채택을 (구조체나 열거체가 아닌) 클래스 타입으로만 제한할 수 있습니다.
 
 ```swift
 protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
-  // 클래스-전용 프로토콜 정의는 여기에 둡니다.
+  // 클래스-전용 프로토콜 정의는 여기에 둠
 }
 ```
 
-위 예제에서, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려고 구조체나 열거체 정의를 작성하는 것은 '컴파일-시간 에러' 입니다.
+위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려는 구조체 또는 열거체 정의를 작성하면 컴파일-시간 에러입니다.
 
-> 해당 프로토콜의 '필수 조건' 에서 정의한 작동 방식이 '준수 타입' 은 '값 의미 구조' 가 아닌 '참조 의미 구조' 를 가진다고 가정하거나 요구할 때 '클래스-전용 프로토콜' 을 사용합니다. 참조와 값 '의미 구조 (semantics)' 에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+> 그 프로토콜의 필수 조건이 정의한 동작이 준수 타입은 값 의미 구조 보단 참조 의미 구조를 가진다고 가정 또는 요구할 때 클래스-전용 프로토콜을 사용합니다. 참조 및 값 의미 구조에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
 ### Protocol Composition (프로토콜 합성)
 
-타입이 동시에 여러 개의 프로토콜을 준수하도록 요구하는 것이 유용할 수 있습니다. 여러 개의 프로토콜은 _프로토콜 합성 (protocol composition)_ 을 써서 '단일 필수 조건' 으로 조합할 수 있습니다. '프로토콜 합성' 은 마치 모든 프로토콜의 '조합된 필수 조건' 들을 '합성' 해서 가진 '임시 지역 프로토콜' 을 정의한 것처럼 작동합니다. '프로토콜 합성' 은 어떤 새로운 프로토콜 타입도 정의하지 않습니다.
+동시에 여러 개의 프로토콜을 준수하라고 타입에게 요구하는 게 유용할 수 있습니다. 여러 개의 프로토콜을 단일 필수 조건으로 조합하는 건 _프로토콜 합성 (protocol composition)_ 으로 할 수 있습니다. 프로토콜 합성은 마치 조합된 모든 프로토콜 필수 조건들을 합성하여 가진 임시 프로토콜을 정의한 것처럼 동작합니다. 프로토콜 합성은 어떤 새로운 프로토콜 타입도 정의하지 않습니다.
 
-'프로토콜 합성' 은 `SomeProtocol & AnotherProtocol` 과 같은 형식을 가집니다. 필요한 만큼 많은 개수의 프로토콜을, '앤드 기호 (ampersands; `&`)' 로 구분하여, 나열할 수 있습니다. 이 '프로토콜 목록' 에 더하여, '프로토콜 합성' 은, '필수 (required) 상위 클래스' 지정에 사용할 수 있는, 클래스 타입도 하나 담을 수 있습니다.
+프로토콜 합성의 형식은 `SomeProtocol & AnotherProtocol` 입니다. 앤드 기호 (ampersands; `&`) 로 구분하여, 필요한 만큼 많은 프로토콜을 나열할 수 있습니다. 자신의 프로토콜 목록에 더하여, 프로토콜 합성은 클래스 타입도 하나 담을 수 있는데, 이를 사용하여 필수 상위 클래스를 지정할 수 있습니다.
 
-다음은 `Named` 와 `Aged` 라는 두 프로토콜을 '함수 매개 변수' 에 대한 '단일 프로토콜 합성 필수 조건' 으로 조합하는 예제입니다:
+`Named` 와 `Aged` 라는 두 프로토콜을 함수 매개 변수에 대한 단일 프로토콜 합성 필수 조건으로 조합한 예제는 이렇습니다:
 
 ```swift
 protocol Named {
@@ -670,16 +670,16 @@ func wishHappyBirthday(to celebrator: Named & Aged) {
 }
 let birthdayPerson = Person(name: "Malcolm", age: 21)
 wishHappyBirthday(to: birthdayPerson)
-// "Happy birthday, Malcolm, you're 21!" 를 인쇄합니다.
+// "Happy birthday, Malcolm, you're 21!" 를 인쇄함
 ```
 
-이 예제에서, `Named` 프로토콜은 `name` 이라는 '획득 가능한 `String` 속성' 에 대한 '단일 필수 조건' 을 가집니다. `Aged` 프로토콜은 `age` 라는 '획득 가능한 `Int` 속성' 에 대한 '단일 필수 조건' 을 가집니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택합니다.
+이 예제의, `Named` 프로토콜에는 단일 필수 조건으로 `name` 이라는 획득 가능한 `String` 속성이 있습니다. `Aged` 프로토콜에는 단일 필수 조건으로 `age` 라는 획득 가능한 `Int` 속성이 있습니다. 두 프로토콜 모두 `Person` 이라는 구조체가 채택합니다.
 
-이 예제는 `wishHappyBirthday(to:)` 함수도 정의하고 있습니다. '`celebrator` 매개 변수' 의 타입은, "`Named` 와 `Aged` 프로토콜을 둘 다 준수하는 어떤 타입" 을 의미하는, `Named & Aged` 입니다. 두 '필수 프로토콜' 을 다 준수하는 한, 함수에 전달되는 특정 타입이 어느 것인지는 중요하지 않습니다.
+예제는 `wishHappyBirthday(to:)` 라는 함수도 정의합니다. `celebrator` 매개 변수는 `Named & Aged` 타입인데, 이는 "`Named` 와 `Aged` 프로토콜을 둘 다 준수하는 어떤 타입" 이라는 의미입니다. 두 개의 필수 프로토콜을 모두 준수하는 한, 함수에 전달한 특정 타입이 어느 것인지는 중요하지 않습니다.
 
-그런 다음 이 예제는 `birthdayPerson` 이라는 새로운 `Person` 인스턴스를 생성하고 이 새로운 인스턴스를 `wishHappyBirthday(to:)` 함수에 전달합니다. `Person` 이 두 프로토콜을 다 준수하기 때문에, 이 호출은 유효해서, `wishHappyBirthday(to:)` 함수가 '생일 인사말' 을 인쇄할 수 있습니다.
+그런 다음 예제에서 `birthdayPerson` 이라는 새로운 `Person` 인스턴스를 생성하고 `wishHappyBirthday(to:)` 함수에 이 새 인스턴스를 전달합니다. `Person` 이 두 프로토콜 모두를 준수하기 때문에, 이 호출이 유효하여, `wishHappyBirthday(to:)` 함수가 자신의 생일 인사말을 인쇄할 수 있습니다.
 
-다음은 이전 예제의 '`Named` 프로토콜' 을 '`Location` 클래스' 와 조합하는 예제입니다:
+이전 예제의 `Named` 프로토콜과 `Location` 클래스를 조합한 예제는 이렇습니다:
 
 ```swift
 class Location {
@@ -703,12 +703,12 @@ func beginConcert(in location: Location & Named) {
 
 let seattle = City(name: "Seattle", latitude: 47.6, longitude: -122.3)
 beginConcert(in: seattle)
-// "Hello, Seattle!" 를 인쇄합니다.
+// "Hello, Seattle!" 를 인쇄함
 ```
 
-`beginConcert(in:)` 함수는, "`Location` 의 하위 클래스이면서 `Named` 프로토콜을 준수하는 어떤 타입" 을 의미하는, `Location & Named` 타입의 매개 변수를 취합니다. 이 경우, `City` 는 두 필수 조건을 다 만족합니다.
+`beginConcert(in:)` 함수가 취하는 매개 변수의 타입은 `Location & Named` 인데, 이는 "`Location` 의 하위 클래스면서 `Named` 프로토콜을 준수하는 어떤 타입" 이라는 의미입니다. 이 경우, `City` 는 필수 조건 둘 다를 만족합니다.
 
-`birthdayPerson` 을 `beginConcert(in:)` 함수에 전달하는 것은 '무효 (invalid)' 인데 이는 `Person` 이 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Named` 프로토콜을 준수하지 않는 `Location` 의 하위 클래스를 만들고서, 해당 타입의 인스턴스로 `beginConcert(in:)` 를 호출하는 것 역시 '무효' 입니다.
+`beginConcert(in:)` 함수에 `birthdayPerson` 을 전달하는 건 무효인데 `Person` 은 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Location` 의 하위 클래스를 만들었는데 `Named` 프로토콜을 준수하지 않으면, 그 타입의 인스턴스를 가지고 `beginConcert(in:)` 을 호출하는 것도 무효입니다.
 
 ### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
@@ -986,7 +986,7 @@ print(differentNumbers.allEqual())
 
 [^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
 
- [^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
+[^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
 
 [^type-property-requirements]: 즉, 클래스의 '타입 속성 필수 조건 (type property requirements)' 은, `class` 나 `static` 으로 구분할 필요 없이,  무조건 `static` 을 사용하면 됩니다.
 
@@ -1006,31 +1006,39 @@ print(differentNumbers.allEqual())
 
 [^adopt]: 원문에서 준수 (conforming) 대신 채택 (adopt) 을 사용했습니다. 스위프트 문서에선 항상 준수와 채택이란 말을 분명히 구분하여 사용합니다. 이 둘의 차이점은 이 문서 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
-[^delegate]: 사실 'delegation' 을 '위임' 이라고 한다면, 'delegate' 는 '위임자' 라고 하는 것이 좋겠지만, 일반적으로 'delegation' 은 '위임' 으로 'delegate' 는 '대리자' 라는 번역이 널리 알려져 있습니다. 이것은 원래 'delegation' 자체가 프로그래밍 용어로 사용되기 전부터 일반 용어로 '위임' 이라는 말로 사용되고 있었기 때문으로 추측됩니다. '위임 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
+[^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에서 공통으로 발생하는 소프트웨어 디자인 문제에 대한 일반적이며, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 항목과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 참고하기 바랍니다.   
 
-[^instantiator]: 본문에서는 'instantiator' 라는 용어를 사용하고 있는데, 적당한 말이 없어서 '인스턴스를 만드는 부분' 으로 옮겼습니다. 실제 게임을 구현할 경우 일종의 'game manager' 가 '인스턴스' 를 생성할 텐데, 이 'game manager' 를 'inistantiator' 라고 부를 수 있을 것입니다.
+[^delegate]: 보통 '일-맡길자 (delegate)' 를 '대리자' 라고도 합니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
 
-[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 말은 '실행-시간 에러' 가 발생하지 않는다는 것을 의미합니다. 보다 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
+[^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 참고하기 바랍니다. 
 
-[^snakes-and-ladders-instance]: `SnakesAndLadders` 인스턴스를 `self` 라는 키워드를 사용하여 전달하고 있습니다.
+[^instantiator]: '인스턴스를 만드는 자 (instantiator)' 는 코드 상에서 인스턴스를 생성하는 곳 또는 그 주체를 의미합니다. 실제 게임을 구현한다면, 일종의 `game manager` 같은 객체가 인스턴스를 생성할 텐데, 이 때 `game manager` 를 인스턴스를 만드는 자라고 할 수 있습니다.
+
+[^weak-reference-cycles]: `DiceGameDelegate` 프로토콜을 클래스-전용으로 만들지 않았다면, 일-맡길자를 `weak` 로 선언할 수 없어서 참조 순환이 발생할 수도 있었을 것입니다.
+
+[^optional-chaining]: '옵셔널 사슬 (optional chaining)' 에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다. 
+
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 이에 대한 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
+
+[^snakes-and-ladders-instance]: 예제 코드에 있는 `self` 가 `SnakesAndLadders` 인스턴스입니다.
 
 [^array-element]: 즉, 본문 예제에서 `Array` 가 `TextRepresentable` 을 준수하는 조건은 `Array` 의 `Element` 가 `TextRepresentable` 을 준수할 때입니다.
 
-[^adoption]: 이것이 스위프트에서 '채택 (adoption)' 이란 말과 '준수 (conformance)' 라는 말을 명확하게 구분해서 사용하는 이유일 것입니다.
+[^adoption]: 이것이 스위프트에서 채택 (adoption) 과 준수 (conformance) 를 명확히 구분하여 사용하는 이유입니다.
 
-[^synthesized]: 본문에서 말하는 '통합된 구현 (synthesized implementation)' 은 이미 스위프트 내부에서 구현되어 있다는 의미입니다. 즉, '`Equatable` 프로토콜' 같은 것은 스위프트 내부에 이미 구현되어 있는 것을 사용하기만 하면 됩니다.
+[^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 참고하기 바랍니다. 
 
-[^associated-types]: 여기서 말하는 '결합 타입 (associated types)' 이라는 것은 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 '결합 값' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 '결합 타입' 에 대해서는 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
+[^synthesized]: 본문에서 말하는 '통합 구현 (synthesized implementation)' 은 스위프트 내부에 이미 구현되어 있다는 의미입니다. 즉, `Equatable` 프로토콜 같은 건 이미 스위프트에 있는 걸 그냥 사용하면 됩니다.
 
-[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자', '동치 연산자', '같음 연산자' 등으로 옮길 수 있을텐데, 위키피디아에서 'equal to' 를 '같음' 으로 번역하고 있기 때문에, 여기서는 '같음 비교' 라는 말로 옮기도록 합니다. '관계 연산자' 들의 용어에 대해서는 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
+[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
+
+[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자, 동치 연산자,같음 연산자' 등으로 옮길 수 있는데, 위키피디아에서 '같음 (equal to)' 을 사용하고 있어서, 같음 비교라는 말을 사용합니다. 관계 연산자에 대한 더 자세한 내용은, 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
 
 [^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
 
-[^remaining-comparison-operators]: 스위프트의 '통합된 구현' 을 사용하면 `<` 연산자 외에도, '기본 구현' 된 `<=`, `>`, `>=` 연산자들을 부여 받는데, 나머지 연산자들은 이 '기본 구현' 을 통해서 구현한다는 의미입니다. 즉, `<` 연산자에 대한 '통합된 구현' 만 부여 받을 수 있다면, 어떤 연산자도 구현할 필요가 없다는 의미입니다.
+[^remaining-comparison-operators]: 스위프트는 `<` 연산자의 통합 구현 외에도, `<=`, `>`, `>=` 연산자들의 기본 구현을 제공하는데, 이러한 기본 구현들이 나머지 연산자들의 구현을 제공한다는 의미입니다. 즉, `<` 연산자의 통합 구현을 받으면, 그 외 나머지 연산자들은 구현하지 않아도 됩니다.
 
-[^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 준수할 수 있습니다. 스위프트에 있는 '프로토콜의 준수' 라는 개념은 C++ 에 있는 '순수 추상 클래스의 상속' 과 비슷합니다.
-
-[^inheritance]: 여기서 '프로토콜 상속 목록 (protocol's inheritance list)' 이라는 용어를 사용한 것은 프로토콜의 '준수 (conformance)' 라는 개념이 사실상 상속과도 같은 개념이기 때문입니다.
+[^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
 [^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
 
