@@ -718,7 +718,7 @@ beginConcert(in: seattle)
 * `as?` 버전의 내림 변환 연산자는 프로토콜 타입의 옵셔널 값을 반환하며, 인스턴스가 그 프로토콜을 준수하지 않으면 이 값이 `nil` 입니다.
 * `as!` 버전의 내림 변환 연산자는 프로토콜 타입으로 강제로 내림 변환하며 내림 변환이 성공하지 않으면 실행 시간 에러를 발동합니다.
 
-다음 예제는 `HasArea` 라는 프로토콜을 정의하는데, 이는 단일 속성 필수 조건으로 `area` 라는 획득 가능한 `Double` 속성이 있습니다:
+이 예제는, 단일 속성 필수 조건으로 `area` 라는 획득 가능한 `Double` 속성을 가진, `HasArea` 라는 프로토콜을 정의합니다:
 
 ```swift
 protocol HasArea {
@@ -726,7 +726,7 @@ protocol HasArea {
 }
 ```
 
-둘 다 `HasArea` 프로토콜을 준수하는, `Circle` 과 `Country` 라는, 두 클래스는 이렇습니다:
+`Circle` 과 `Country` 라는, 두 클래스, 모두 `HasArea` 프로토콜을 준수하면 이렇습니다:
 
 ```swift
 class Circle: HasArea {
@@ -741,9 +741,9 @@ class Country: HasArea {
 }
 ```
 
-`Circle` 클래스는 `radius` 저장 속성을 기초로, `area` 속성 필수 조건을 계산 속성으로 구현합니다. `Country` 클래스는 `area` 필수 조건을 직접 저장 속성으로 구현합니다. 두 클래스 모두 `HasArea` 프로토콜을 올바로 준수합니다.
+`Circle` 클래스는, `radius` 저장 속성에 기초한, 계산 속성으로 `area` 속성 필수 조건을 구현합니다. `Country` 클래스는 저장 속성으로 직접 `area` 필수 조건을 구현합니다. 두 클래스 모두 `HasArea` 프로토콜을 올바르게 준수합니다.
 
-`HasArea` 프로토콜을 준수 안하는, `Animal` 이라는 클래스는 이렇습니다:
+`Animal` 이라는, `HasArea` 프로토콜을 준수하지 않는, 클래스는 이렇습니다:
 
 ```swift
 class Animal {
@@ -752,7 +752,7 @@ class Animal {
 }
 ```
 
-`Circle`, `Country`, 그리고 `Animal` 클래스는 서로 공유하는 '기초 (base) 클래스'[^base-class] 가 없습니다. 그럼에도 불구하고, 모두 클래스이므로, `AnyObject` 타입인 값을 저장하는 배열의 초기화에 세 타입의 인스턴스 모두 사용 가능합니다:
+`Circle`, `Country`, 및 `Animal` 클래스는 기초 클래스[^base-class] 를 공유하지 않습니다. 그럼에도 불구하고, 모두 클래스라서, 저장 값 타입이 `AnyObject` 인 배열을 초기화하는데 세 타입의 인스턴스 모두를 사용할 수 있습니다:
 
 ```swift
 let objects: [AnyObject] = [
@@ -1040,7 +1040,7 @@ print(differentNumbers.allEqual())
 
 [^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
-[^base-class]: 스위프트에서 '기초 클래스 (base class)' 는 '클래스 계층 구조' 에서 최상단에 위치하는, 혹은 위치할 수 있는, 클래스를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
 
 [^type-safe]: '타입-안전한 방식 (type-safe way)' 은 스위프트에서 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 의미입니다. '타입 추론' 과 '타입 검사' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
