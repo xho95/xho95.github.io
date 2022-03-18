@@ -762,9 +762,9 @@ let objects: [AnyObject] = [
 ]
 ```
 
-`objects` 배열은 반지름이 '2' 인 `Circle` 인스턴스와; 제곱 킬로미터 단위의 영국 면적으로 초기화된 `Country` 인스턴스; 그리고 다리가 네 개인 `Animal` 인스턴스, 를 담은 '배열 글자 값 (literal)' 으로 초기화 됩니다.
+`objects` 배열을 초기화하는 배열 글자 값은 반지름이 2인 `Circle` 인스턴스; 제곱 킬로미터 단위의 영국 국토 면적으로 초기화한 `Country` 인스턴스; 및 네 발 달린 `Animal` 인스턴스를 담고 있습니다.
 
-이제 `objects` 배열을 반복하여, 배열에 있는 각각의 객체가 `HasArea` 프로토콜을 준수하고 있는지 확인하는 검사를 할 수 있습니다:
+이제 `objects` 배열을 반복하고, 배열에 있는 각 객체를 검사하여 `HasArea` 프로토콜을 준수하는지 확인할 수 있습니다:
 
 ```swift
 for object in objects {
