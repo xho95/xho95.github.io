@@ -779,9 +779,9 @@ for object in objects {
 // Something that doesn't have an area
 ```
 
-배열 안의 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자가 반환한 옵셔널 값을 옵셔널 연결로 풀고 `objectWithArea` 라는 상수에 넣습니다. `objectWithArea` 상수의 타입은 `HasArea` 임을 알고 있어서, 자신의 `area` 속성에 타입-안전하게[^type-safe] 접근하고 인쇄할 수 있습니다.
+배열 안의 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자가 반환한 옵셔널 값을 옵셔널 연결로 풀고 `objectWithArea` 라는 상수에 넣습니다. `objectWithArea` 상수의 타입이 `HasArea` 라는 걸 알아서, 타입-안전하게[^type-safe] 자신의 `area` 속성에 접근하고 인쇄할 수 있습니다.
 
-변환 (casting) 과정에서 실제 객체가 바뀌는 건 아님을 기억하기 바랍니다. 이들은 계속 `Circle`, `Country`, 및 `Animal` 입니다. 하지만, `objectWithArea` 상수에 저장한 시점에는, 타입이 `HasArea` 라는 것만 알아서, 자신의 `area` 속성에만 접근할 수 있습니다.
+변환 과정에서 실제 객체를 바꾸진 않는다는 걸 기억하기 바랍니다. 이들은 계속 `Circle`, `Country`, 및 `Animal` 입니다. 하지만, `objectWithArea` 상수에 저장한 시점에는, 타입이 `HasArea` 라는 것만 알아서, `area` 속성에만 접근할 수 있습니다.
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
