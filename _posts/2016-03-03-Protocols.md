@@ -800,11 +800,11 @@ for object in objects {
 }
 ```
 
-`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 옵셔널 메소드 필수 조건 및 `fixedIncrement` 라는 옵셔널 속성 필수 조건을 정의합니다. 이 필수 조건들은 데이터 소스가 `Count` 인스턴스에 적절한 증가량을 제공하게 하는 서로 다른 두 가지 방식을 정의합니다.
+`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 옵셔널 메소드 필수 조건 및 `fixedIncrement` 라는 옵셔널 속성 필수 조건을 정의합니다. 이 필수 조건들은 `Count` 인스턴스에 적절한 증가량을 제공하는 서로 다른 두 가지 방식을 데이터 소스에 정의합니다.
 
-> 엄밀하게 말해서, `CounterDataSource` 프로토콜을 준수하면서 _어느 (either)_ 프로토콜 필수 조건도 구현하지 않는 '사용자 정의 클래스' 를 작성할 수 있습니다. 결국 어째 됐든, 둘 다 '옵셔널' 입니다. 비록 기술적으론 허용될지라도, 이는 아주 좋은 데이터 소스이진 않을 것입니다.
+> 엄밀하게 말해서, _어느 (either)_ 프로토콜 필수 조건을 구현하지 않고도 `CounterDataSource` 프로토콜을 준수한 클래스를 작성할 수 있습니다. 이들은, 결국 어째 됐든, 둘 다 옵셔널입니다. 기술적으로 허용하긴 하지만, 아주 좋은 데이터 소스는 아닐겁니다.
 
-아래에서 정의한, `Counter` 클래스는, `CounterDataSource?` 타입의 '옵셔널 `dataSource` 속성' 을 가집니다:
+아래에 정의한, `Counter` 클래스에는 `CounterDataSource?` 타입인 옵셔널 `dataSource` 속성이 있습니다:
 
 ```swift
 class Counter {
@@ -820,7 +820,7 @@ class Counter {
 }
 ```
 
-`Counter` 클래스는 현재 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는, 매 번 메소드를 호출할 때마다 `count` 속성을 증가시키는, `increment` 라는 메소드도 정의합니다.
+`Counter` 클래스는 자신의 현재 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는 `increment` 라는 메소드도 정의하는데, 이는 메소드를 호출할 때마다 `count` 속성을 증가합니다.
 
 `increment()` 메소드는 증가량을 가져오기 위해 먼저 데이터 소스에 대한 `incremental(forCount:)` 메소드가 구현됐는 지를 찾으려 합니다. `increment()` 메소드는 `increment(forCount:)` 호출을 시도하기 위해 '옵셔널 연쇄' 를 사용하며, 메소드의 단일 인자로 현재의 `count` 값을 전달합니다.
 
