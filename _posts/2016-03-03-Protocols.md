@@ -822,7 +822,7 @@ class Counter {
 
 `Counter` 클래스는 자신의 현재 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는 `increment` 라는 메소드도 정의하는데, 이는 메소드를 호출할 때마다 `count` 속성을 증가합니다.
 
-`increment()` 메소드는 증가량을 가져오기 위해 먼저 데이터 소스에 대한 `incremental(forCount:)` 메소드가 구현됐는 지를 찾으려 합니다. `increment()` 메소드는 `increment(forCount:)` 호출을 시도하기 위해 '옵셔널 연쇄' 를 사용하며, 메소드의 단일 인자로 현재의 `count` 값을 전달합니다.
+`increment()` 메소드는 첫 번째로 자신의 데이터 소스에 대한 `incremental(forCount:)` 메소드 구현을 찾아서 증가량을 가져오려고 합니다. `increment()` 메소드는 옵셔널 사슬을 사용하여 `increment(forCount:)` 를 호출하려 하며, 메소드의 단일 인자로는 현재의 `count` 값을 전달합니다.
 
 여기서 _두 (two)_ 단계 수준의 '옵셔널 연쇄' 가 진행된 것을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 일 가능성이 있으므로, `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 가 호출돼야 함을 지시하도록 `dataSource` 는 이름 뒤에 물음표를 가집니다. 두 번째로, `dataSource` 가 존재 _할 (does)_ 지라도, 옵셔널 필수 조건이기 때문에, `increment(forCount:)` 를 구현한다는 보증이 없습니다. 여기서는, `increment(forCount:)` 를 구현하지 않았을 가능성도 '옵셔널 연쇄' 로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 이 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 도 이름 뒤에 물음표를 작성한 이유입니다.
 
