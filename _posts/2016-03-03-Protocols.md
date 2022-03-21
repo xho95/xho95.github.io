@@ -824,7 +824,7 @@ class Counter {
 
 `increment()` 메소드는 첫 번째로 자신의 데이터 소스에 대한 `incremental(forCount:)` 메소드 구현을 찾아서 증가량을 가져오려고 합니다. `increment()` 메소드는 옵셔널 사슬을 사용하여 `increment(forCount:)` 를 호출하려 하며, 메소드의 단일 인자로는 현재의 `count` 값을 전달합니다.
 
-여기서 _두 (two)_ 단계 수준의 '옵셔널 연쇄' 가 진행된 것을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 일 가능성이 있으므로, `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 가 호출돼야 함을 지시하도록 `dataSource` 는 이름 뒤에 물음표를 가집니다. 두 번째로, `dataSource` 가 존재 _할 (does)_ 지라도, 옵셔널 필수 조건이기 때문에, `increment(forCount:)` 를 구현한다는 보증이 없습니다. 여기서는, `increment(forCount:)` 를 구현하지 않았을 가능성도 '옵셔널 연쇄' 로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 이 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 도 이름 뒤에 물음표를 작성한 이유입니다.
+여기서 _두 (two)_ 단계의 옵셔널 사슬로 동작함을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 인게 가능하므로, `dataSource` 이름 뒤에 물음표를 둬서 `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 를 호출해야함을 지시합니다. 두 번째로, `dataSource` 가 존재 _하 (does)_ 더라도, `increment(forCount:)` 가 옵셔널 필수 조건이기 때문에, 이를 구현한다는 보증이 없습니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성도 옵셔널 사슬로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 이름 뒤에도 물음표를 작성한 이유입니다.
 
 `increment(forCount:)` 호출은 이 두 이유 중 어느 것으로든 실패할 수 있기 때문에, '_옵셔널 (optional)_ `Int` 값' 을 반환합니다. 이는 `increment(forCount:)` 가 `CounterDataSource` 정의에서 '옵셔널-아닌 `Int` 값' 을 반환하는 것으로 정의할 지라도 그렇습니다. 두 '옵셔널 사슬' 연산이, 차례 차례, 있을지라도, 결과는 여전히 '단일 옵셔널' 로 '포장 (wrapped)' 됩니다. '여러 옵셔널 사슬 연산' 의 사용에 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-연결하기) 를 참고하기 바랍니다.
 
