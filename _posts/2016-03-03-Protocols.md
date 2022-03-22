@@ -828,7 +828,7 @@ class Counter {
 
 이 두 이유 중 어느 것으로도 `increment(forCount:)` 호출이 실패할 수 있기 때문에, 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-연결하기) 를 참고하기 바랍니다.
 
-`increment(forCount:)` 를 호출 한 후, '옵셔널 연결' 을 사용하여, 반환한 '옵셔널 `Int`' 의 포장을 풀고 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있는 경우-즉, '대리자' 와 메소드가 둘 다 존재하며, 메소드가 값을 반환한 경우-포장을 푼 `amount` 가 `count` 저장 속성에 추가되고, '증가' 를 완료합니다.
+`increment(forCount:)` 호출 후에, 옵셔널 연결로, 반환한 옵셔널 `Int` 를 풀어서 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있으면-즉, 일-맡길자[^delegate] 와 메소드 둘 다 존재하고, 메소드가 값을 반환한 경우면-포장 푼 `amount` 를 `count` 저장 속성에 추가하고, 증가를 완료합니다.
 
 `increment(forCount:)` 메소드에서 값을 가져오는 것이 가능하지 _않은 (not)_ 경우-`dataSource` 가 `nil` 이기 때문이거나, 또는 데이터 소스가 `increment(forCount:)` 를 구현하지 않은 때문인 경우-라면 그 때는 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 대신 값을 가져오려고 합니다. `fixedIncrement` 속성도 '옵셔널 필수 조건' 이므로, `fixedIncrement` 가 `CounterDataSource` 프로토콜 정의에서 '옵셔널-아닌 `Int` 속성' 으로 정의되어 있을지라도, 값은 '옵셔널 `Int`' 입니다.
 
