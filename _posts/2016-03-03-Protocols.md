@@ -832,7 +832,7 @@ class Counter {
 
 `increment(forCount:)` 메소드에서 값을 가져오는 게 _불 (not)_ 가능하면-`dataSource` 가 `nil` 이거나, 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인데-그 땐 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 값을 대신 가져오려고 합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이라서, `CounterDataSource` 프로토콜 정의 부분에서 `fixedIncrement` 를 옵셔널-아닌 `Int` 속성으로 정의할지라도, 그 값은 옵셔널 `Int` 입니다.
 
-다음은 조회할 때마다 데이터 소스가 `3` 이라는 상수 값을 반환하는 단순힌 `CounterDataSource` 의 구현입니다. 이는 '옵셔널 `fixedIncrement` 속성 필수 조건' 을 구현함으로써 이를 수행합니다:
+매 조회마다 데이터 소스가 상수 값 `3` 을 반환하는 단순힌 `CounterDataSource` 를 구현하면 이렇습니다. 옵셔널 `fixedIncrement` 속성 필수 조건을 구현해서 이렇게 했습니다:
 
 ```swift
 class ThreeSource: NSObject, CounterDataSource {
@@ -840,7 +840,7 @@ class ThreeSource: NSObject, CounterDataSource {
 }
 ```
 
-`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스를 위한 데이터 소스로 사용할 수 있습니다:
+`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스의 데이터 소스로 사용할 수 있습니다:
 
 ```swift
 var counter = Counter()
