@@ -830,7 +830,7 @@ class Counter {
 
 `increment(forCount:)` 호출 후에, 옵셔널 연결로, 반환한 옵셔널 `Int` 를 풀어서 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있으면-즉, 일-맡길자[^delegate] 와 메소드 둘 다 존재하고, 메소드가 값을 반환한 경우면-포장 푼 `amount` 를 `count` 저장 속성에 추가하고, 증가를 완료합니다.
 
-`increment(forCount:)` 메소드에서 값을 가져오는 것이 가능하지 _않은 (not)_ 경우-`dataSource` 가 `nil` 이기 때문이거나, 또는 데이터 소스가 `increment(forCount:)` 를 구현하지 않은 때문인 경우-라면 그 때는 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 대신 값을 가져오려고 합니다. `fixedIncrement` 속성도 '옵셔널 필수 조건' 이므로, `fixedIncrement` 가 `CounterDataSource` 프로토콜 정의에서 '옵셔널-아닌 `Int` 속성' 으로 정의되어 있을지라도, 값은 '옵셔널 `Int`' 입니다.
+`increment(forCount:)` 메소드에서 값을 가져오는 게 _불 (not)_ 가능하면-`dataSource` 가 `nil` 이거나, 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인데-그 땐 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 값을 대신 가져오려고 합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이라서, `CounterDataSource` 프로토콜 정의 부분에서 `fixedIncrement` 를 옵셔널-아닌 `Int` 속성으로 정의할지라도, 그 값은 옵셔널 `Int` 입니다.
 
 다음은 조회할 때마다 데이터 소스가 `3` 이라는 상수 값을 반환하는 단순힌 `CounterDataSource` 의 구현입니다. 이는 '옵셔널 `fixedIncrement` 속성 필수 조건' 을 구현함으로써 이를 수행합니다:
 
