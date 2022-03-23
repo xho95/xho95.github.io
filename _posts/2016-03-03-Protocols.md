@@ -840,7 +840,7 @@ class ThreeSource: NSObject, CounterDataSource {
 }
 ```
 
-`ThreeSource` 인스턴스를 새로운 `Counter` 인스턴스의 데이터 소스로 사용할 수 있습니다:
+새로운 `Counter` 인스턴스의 데이터 소스로 `ThreeSource` 인스턴스를 사용할 수 있습니다:
 
 ```swift
 var counter = Counter()
@@ -855,9 +855,9 @@ for _ in 1...4 {
 // 12
 ```
 
-위 코드는 새로운 `Counter` 인스턴스를 생성하여; 데이터 소스로 새로운 `ThreeSource` 인스턴스를 설정하며; '측정기 (counter)' 의 `increment()` 메소드를 네 번 호출합니다. 예상한 것처럼, 측정기의 `count` 속성은 `increment()` 를 호출할 때마다 '3' 만큼 증가합니다.
+위 코드는 새로운 `Counter` 인스턴스를 생성하고; 새로운 `ThreeSource` 인스턴스를 자신의 데이터 소스로 설정하며; 카운터의 `increment()` 메소드를 네 번 호출합니다. 예상대로, `increment()` 의 호출마다 카운터의 `count` 속성이 3 만큼 증가합니다.
 
-다음은, `Counter` 인스턴스를 현재 `count` 값에서 '0' 으로 '위로 세거나 (count up)' '아래로 세는 (count down)', `TowardsZeroSource` 라는 좀 더 복잡한 데이터 소스입니다:
+`Counter` 인스턴스가 자신의 현재 `count` 값에서 0 을 향해 위나 아래로 세는, `TowardsZeroSource` 라는 좀 더 복잡한 데이터 소스는 이렇습니다:
 
 ```swift
 class TowardsZeroSource: NSObject, CounterDataSource {
@@ -873,9 +873,9 @@ class TowardsZeroSource: NSObject, CounterDataSource {
 }
 ```
 
-`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 '옵셔널 `increment(forCount:)` 메소드' 를 구현하며 어느 방향으로 '셀 (count in)' 지를 알아내기 위해 `count` 인자 값을 사용합니다. `count` 가 이미 '0' 이면, 더 이상 세지 말아야 함을 지시하기 위해 메소드가 `0` 을 반환합니다.
+`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 옵셔널 `increment(forCount:)` 메소드를 구현하며 `count` 인자 값을 써서 어느 방향으로 세는지 알아냅니다. `count` 가 이미 0 이면, 메소드는 `0` 을 반환하여 더 이상 세지 말 것을 지시합니다.
 
-`-4` 에서 '0' 까지 세기 위해 기존 `Counter` 인스턴스와 `TowardsZeroSource` 의 인스턴스를 같이 사용할 수 있습니다. '측정기' 가 '0' 에 닿으면, 더 이상 세지 않습니다:
+기존 `Counter` 인스턴스와 `TowardsZeroSource` 인스턴스를 사용하면 `-4` 에서 0 으로 셀 수 있습니다. 카운터가 0 에 한 번 도달하고 나면, 더 이상 세지 않습니다:
 
 ```swift
 counter.count = -4
