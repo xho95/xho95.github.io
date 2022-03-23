@@ -893,9 +893,9 @@ for _ in 1...5 {
 
 ### Protocol Extensions (프로토콜 익스텐션; 규약 확장)
 
-프로토콜은 메소드, 초기자, 첨자 연산, 그리고 계산 속성 구현을 제공하도록 '준수 타입' 을 확장할 수 있습니다. 이는, 각 타입의 개별적인 준수나 전역 함수에서 보다는, 프로토콜 스스로에 대한 작동 방식을 정의하도록 허용합니다.
+프로토콜을 확장하면 준수 타입에 메소드, 초기자, 첨자 연산, 및 계산 속성 구현을 제공할 수 있습니다. 이는, 각 타입의 개별 준수에서 전역 함수에서 보단, 프로토콜 그 자체에서 동작을 정의하는 걸 허용합니다.
 
-예를 들어, `RandomNumberGenerator` 프로토콜은, '필수 `random()` 메소드' 의 결과를 사용하여 '`Bool` 난수 값' 을 반환하는, '`randomBool()` 메소드' 를 제공하도록 확장할 수 있습니다:
+예를 들어, `RandomNumberGenerator` 프로토콜을 확장하여, `random()` 필수 메소드의 결과로 `Bool` 난수 값을 반환하는, `randomBool()` 메소드를 제공할 수 있습니다: 
 
 ```swift
 extension RandomNumberGenerator {
@@ -905,17 +905,17 @@ extension RandomNumberGenerator {
 }
 ```
 
-프로토콜에 대한 '익스텐션' 을 생성함으로써, 모든 준수 타입은 어떤 추가적인 수정 없이도 이 메소드 구현을 자동으로 가지게 됩니다:
+프로토콜에 대한 익스텐션을 생성함으로써, 어떤 추가 수정 없이 자동으로 모든 준수 타입이 이 메소드 구현을 얻습니다:
 
 ```swift
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101" 를 인쇄합니다.
+// "Here's a random number: 0.3746499199817101" 를 인쇄함
 print("And here's a random Boolean: \(generator.randomBool())")
-// "And here's a random Boolean: true" 를 인쇄합니다.
+// "And here's a random Boolean: true" 를 인쇄함
 ```
 
-'프로토콜 익스텐션' 은 준수 타입에 구현을 추가할 순 있지만 프로토콜을 확장하도록 만들거나[^protocol-extend] 다른 프로토콜을 상속하게 할 수는 없습니다. '프로토콜 상속' 은 항상 프로토콜 선언 그 자체에서 지정합니다.
+프로토콜 익스텐션은 준수 타입에 구현을 추가할 순 있지만 프로토콜을 확장하게 하거나[^protocol-extend] 또 다른 프로토콜을 상속하게 할 순 없습니다. 프로토콜 상속은 항상 프로토콜 선언 그 자체로 지정합니다.
 
 #### Providing Default Implementations (기본 구현 제공하기)
 
@@ -1046,6 +1046,6 @@ print(differentNumbers.allEqual())
 
 [^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
-[^protocol-extend]: '익스텐션 (extension)' 자체가 '확장' 이란 의미인데, '프로토콜 익스텐션' 으로 '프로토콜' 을 '확장' 할 수 없다라는 말이 이해가 안될 수도 있습니다. 여기서 말하는 '프로토콜을 확장할 수 없다' 라는 의미는 '프로토콜에 새로운 필수 조건들을 추가할 수 없다' 라는 의미입니다. '프로토콜 익스텐션' 은 프로토콜에 새로운 '필수 조건' 들을 추가하는 것이 아니라, 기존의 '필수 조건' 들에 '기본 구현' 을 제공하거나 새로운 '기능' 들을 추가하기 위해 사용하는 것입니다.
+[^protocol-extend]: '프로토콜 익스텐션으로 프로토콜을 확장할 수 없다' 는 건 '프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다' 는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기존의 필수 조건에 기본 구현을 제공하거나 새로운 기능을 추가하기 위해, 사용하는 것입니다.
 
 [^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건' 들 중에서 적용되는 범위가 가장 좁은 것을 말합니다. '가장 특수화된 구속 조건' 에 대한 더 자세한 내용은, 애플 'Developer Forums' 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 참고하기 바랍니다.
