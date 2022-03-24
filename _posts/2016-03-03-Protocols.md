@@ -923,7 +923,7 @@ print("And here's a random Boolean: \(generator.randomBool())")
 
 > 익스텐션이 기본 구현을 제공하는 프로토콜 필수 조건은 옵셔널 프로토콜 필수 조건과 서로 별개입니다. 어느 쪽도 준수 타입이 자신만의 구현을 제공하지 않아도 되지만, 기본 구현을 가진 필수 조건은 옵셔널 사슬 없이도 호출할 수 있습니다.
 
-예를 들어, `TextRepresentable` 프로토콜을 상속한, `PrettyTextRepresentable` 프로토콜은, `textualDescription` 속성에 접근한 결과를 단순히 반환하도록 '필수 `prettyTextualDescription` 속성' 의 '기본 구현' 을 제공할 수 있습니다:
+예를 들어, `TextRepresentable` 프로토콜을 상속한, `PrettyTextRepresentable` 프로토콜은, 단순히 `textualDescription` 속성에 접근한 결과를 반환한 걸 자신의 `prettyTextualDescription` 필수 속성 구현으로 제공할 수 있습니다:
 
 ```swift
 extension PrettyTextRepresentable {
