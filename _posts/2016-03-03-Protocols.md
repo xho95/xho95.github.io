@@ -935,7 +935,7 @@ extension PrettyTextRepresentable {
 
 #### Adding Constraints to Protocol Extensions (프로토콜 익스텐션에 구속 조건 추가하기)
 
-프로토콜 익스텐션을 정의할 때, 익스텐션의 메소드와 속성을 사용하기 전에 준수 타입이 반드시 만족해야 할 구속 조건을 지정할 수 있습니다. 이 '구속 조건' 들은 확장 중인 프로토콜 이름 뒤에 '일반화된 (generic) `where` 절' 을 작성하는 것으로써 작성합니다. '일반화된 `where` 절' 에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
+프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 준수 타입이 이를 만족해야 익스텐션의 메소드와 속성이 사용 가능하게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
 
 예를 들어, 그 원소가 `Equatable` 프로토콜을 준수하는 어떤 '집합체 (collection)' 에 적용할 '`Collection` 프로토콜' 의 '익스텐션' 을 정의할 수 있습니다. '집합체' 의 원소를, 표준 라이브러리의 일부인, `Equatable` 프로토콜로 '구속 (constraining)' 함으로써, 두 원소 사이의 '같음 (equality)' 과 '다름 (inequality)' 을 검사하는데 `==` 와 `!=` 연산자를 사용할 수 있게 됩니다.
 
