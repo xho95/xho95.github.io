@@ -952,22 +952,22 @@ extension Collection where Element: Equatable {
 }
 ```
 
-`allEqual()` 메소드는 '집합체' 의 모든 원소가 같을 때만 `true` 를 반환합니다.
+`allEqual()` 메소드는 모든 집합체 원소가 같아야만 `true` 를 반환합니다.
 
-두 정수 배열에서, 하나는 모든 원소가 같고, 다른 하나는 그렇지 않은 경우를, 고려합니다:
+하나는 모든 원소가 똑같고, 다른 하나는 그렇지 않은, 두 정수 배열을 고려합니다:
 
 ```swift
 let equalNumbers = [100, 100, 100, 100, 100]
 let differentNumbers = [100, 100, 200, 100, 200]
 ```
 
-'배열' 은 `Collection ` 을 준수하고 '정수' 는 `Equatable` 을 준수하기 때문에, `equalNumbers` 와 `differentNumbers` 는 `allEqual()` 메소드를 사용할 수 있습니다:
+배열은 `Collection ` 을 준수하고 정수는 `Equatable` 을 준수하기 때문에[^array-and-integer], `equalNumbers` 와 `differentNumbers` 가 `allEqual()` 메소드를 사용할 수 있습니다:
 
 ```swift
 print(equalNumbers.allEqual())
-// "true" 를 인쇄합니다.
+// "true" 를 인쇄함
 print(differentNumbers.allEqual())
-// "false" 를 인쇄합니다.
+// "false" 를 인쇄함
 ```
 
 > '준수 타입' 이 '다중 구속된 익스텐션' 의 '필수 조건' 들을 만족하여 똑같은 메소드나 속성에 대한 (여러) 구현을 제공할 경우, 스위프트는 가장 '특수화된 (specialized) 구속 조건'[^specialized] 과 관련된 구현을 사용합니다.
@@ -1049,3 +1049,5 @@ print(differentNumbers.allEqual())
 [^protocol-extend]: '프로토콜 익스텐션으로 프로토콜을 확장할 수 없다' 는 건 '프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다' 는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기존의 필수 조건에 기본 구현을 제공하거나 새로운 기능을 추가하기 위해, 사용하는 것입니다.
 
 [^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건' 들 중에서 적용되는 범위가 가장 좁은 것을 말합니다. '가장 특수화된 구속 조건' 에 대한 더 자세한 내용은, 애플 'Developer Forums' 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 참고하기 바랍니다.
+
+[^array-and-integer]: 스위프트의 `Array` 타입은 `Collection` 프로토콜을 준수하고 `Int` 타입은 `Equatable` 을 준수하고 있다는 의미입니다.
