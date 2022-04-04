@@ -832,7 +832,7 @@ class Counter {
 
 `increment(forCount:)` 메소드에서 값을 가져오는 게 _불 (not)_ 가능하면-`dataSource` 가 `nil` 이거나, 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인데-그 땐 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 값을 대신 가져오려고 합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이라서, `CounterDataSource` 프로토콜 정의 부분에서 `fixedIncrement` 를 옵셔널-아닌 `Int` 속성으로 정의할지라도, 그 값은 옵셔널 `Int` 입니다.
 
-매 조회마다 데이터 소스가 상수 값 `3` 을 반환하는 단순힌 `CounterDataSource` 를 구현하면 이렇습니다. 옵셔널 `fixedIncrement` 속성 필수 조건을 구현해서 이렇게 했습니다:
+데이터 소스 조회 때마다 상수 값 `3` 을 반환하는 단순한 `CounterDataSource` 구현은 이렇습니다. 옵셔널 `fixedIncrement` 속성 필수 조건의 구현으로 이렇게 합니다:
 
 ```swift
 class ThreeSource: NSObject, CounterDataSource {
@@ -840,7 +840,7 @@ class ThreeSource: NSObject, CounterDataSource {
 }
 ```
 
-`ThreeSource` 의 인스턴스를 새로운 `Counter` 인스턴스의 데이터 소스로 사용할 수 있습니다:
+새로운 `Counter` 인스턴스의 데이터 소스로 `ThreeSource` 인스턴스를 사용할 수 있습니다:
 
 ```swift
 var counter = Counter()
@@ -855,9 +855,9 @@ for _ in 1...4 {
 // 12
 ```
 
-위 코드는 새로운 `Counter` 인스턴스를 생성하여; 데이터 소스로 새로운 `ThreeSource` 인스턴스를 설정하며; '측정기 (counter)' 의 `increment()` 메소드를 네 번 호출합니다. 예상한 것처럼, 측정기의 `count` 속성은 `increment()` 를 호출할 때마다 '3' 만큼 증가합니다.
+위 코드는 새로운 `Counter` 인스턴스를 생성하고; 새로운 `ThreeSource` 인스턴스를 자신의 데이터 소스로 설정하며; 카운터의 `increment()` 메소드를 네 번 호출합니다. 예상대로, `increment()` 의 호출마다 카운터의 `count` 속성이 3 만큼 증가합니다.
 
-다음은, `Counter` 인스턴스를 현재 `count` 값에서 '0' 으로 '위로 세거나 (count up)' '아래로 세는 (count down)', `TowardsZeroSource` 라는 좀 더 복잡한 데이터 소스입니다:
+`Counter` 인스턴스가 자신의 현재 `count` 값에서 0 을 향해 위나 아래로 세는, `TowardsZeroSource` 라는 좀 더 복잡한 데이터 소스는 이렇습니다:
 
 ```swift
 class TowardsZeroSource: NSObject, CounterDataSource {
@@ -873,9 +873,9 @@ class TowardsZeroSource: NSObject, CounterDataSource {
 }
 ```
 
-`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 '옵셔널 `increment(forCount:)` 메소드' 를 구현하며 어느 방향으로 '셀 (count in)' 지를 알아내기 위해 `count` 인자 값을 사용합니다. `count` 가 이미 '0' 이면, 더 이상 세지 말아야 함을 지시하기 위해 메소드가 `0` 을 반환합니다.
+`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 옵셔널 `increment(forCount:)` 메소드를 구현하며 `count` 인자 값을 써서 어느 방향으로 세는지 알아냅니다. `count` 가 이미 0 이면, 메소드는 `0` 을 반환하여 더 이상 세지 말 것을 지시합니다.
 
-`-4` 에서 '0' 까지 세기 위해 기존 `Counter` 인스턴스와 `TowardsZeroSource` 의 인스턴스를 같이 사용할 수 있습니다. '측정기' 가 '0' 에 닿으면, 더 이상 세지 않습니다:
+기존 `Counter` 인스턴스와 `TowardsZeroSource` 인스턴스를 사용하면 `-4` 에서 0 으로 셀 수 있습니다. 카운터가 0 에 한 번 도달하고 나면, 더 이상 세지 않습니다:
 
 ```swift
 counter.count = -4
@@ -893,9 +893,9 @@ for _ in 1...5 {
 
 ### Protocol Extensions (프로토콜 익스텐션; 규약 확장)
 
-프로토콜은 메소드, 초기자, 첨자 연산, 그리고 계산 속성 구현을 제공하도록 '준수 타입' 을 확장할 수 있습니다. 이는, 각 타입의 개별적인 준수나 전역 함수에서 보다는, 프로토콜 스스로에 대한 작동 방식을 정의하도록 허용합니다.
+프로토콜을 확장하면 준수 타입에 메소드, 초기자, 첨자 연산, 및 계산 속성 구현을 제공할 수 있습니다. 이는, 각 타입의 개별 준수에서 전역 함수에서 보단, 프로토콜 그 자체에서 동작을 정의하는 걸 허용합니다.
 
-예를 들어, `RandomNumberGenerator` 프로토콜은, '필수 `random()` 메소드' 의 결과를 사용하여 '`Bool` 난수 값' 을 반환하는, '`randomBool()` 메소드' 를 제공하도록 확장할 수 있습니다:
+예를 들어, `RandomNumberGenerator` 프로토콜을 확장하여, `random()` 필수 메소드의 결과로 `Bool` 난수 값을 반환하는, `randomBool()` 메소드를 제공할 수 있습니다: 
 
 ```swift
 extension RandomNumberGenerator {
@@ -905,25 +905,25 @@ extension RandomNumberGenerator {
 }
 ```
 
-프로토콜에 대한 '익스텐션' 을 생성함으로써, 모든 준수 타입은 어떤 추가적인 수정 없이도 이 메소드 구현을 자동으로 가지게 됩니다:
+프로토콜에 대한 익스텐션을 생성함으로써, 어떤 추가 수정 없이 자동으로 모든 준수 타입이 이 메소드 구현을 얻습니다:
 
 ```swift
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101" 를 인쇄합니다.
+// "Here's a random number: 0.3746499199817101" 를 인쇄함
 print("And here's a random Boolean: \(generator.randomBool())")
-// "And here's a random Boolean: true" 를 인쇄합니다.
+// "And here's a random Boolean: true" 를 인쇄함
 ```
 
-'프로토콜 익스텐션' 은 준수 타입에 구현을 추가할 순 있지만 프로토콜을 확장하도록 만들거나[^protocol-extend] 다른 프로토콜을 상속하게 할 수는 없습니다. '프로토콜 상속' 은 항상 프로토콜 선언 그 자체에서 지정합니다.
+프로토콜 익스텐션은 준수 타입에 구현을 추가할 순 있지만 프로토콜을 확장하게 하거나[^protocol-extend] 또 다른 프로토콜을 상속하게 할 순 없습니다. 프로토콜 상속은 항상 프로토콜 선언 그 자체로 지정합니다.
 
 #### Providing Default Implementations (기본 구현 제공하기)
 
-'프로토콜 익스텐션' 은 해당 프로토콜의 메소드 또는 계산 속성 '필수 조건' 에 '기본 구현' 을 제공하기 위해 사용할 수 있습니다. '준수 타입' 이 '필수 메소드' 나 '필수 속성' 에 대한 자신만의 구현을 제공할 경우, 해당 구현을 '익스텐션' 에서 제공하는 것 대신 사용할 것입니다.
+프로토콜 익스텐션을 사용하면 그 프로토콜의 어떤 메소드나 계산 속성 필수 조건에도 기본 구현을 제공할 수 있습니다. 준수 타입이 필수 메소드나 속성에 자신만의 구현을 제공한다면, 익스텐션이 제공하는 것 대신 그 구현을 사용할 것입니다.
 
-> '익스텐션' 이 제공하는 '기본 구현' 을 가진 '프로토콜 필수 조건' 은 '옵셔널 프로토콜 필수 조건' 과 서로 별개의 것입니다. 비록 어느 쪽이든 준수 타입이 자신만의 구현을 직접 제공하지 않아도 될지라도, '기본 구현' 을 가진 '필수 조건' 은 '옵셔널 연쇄' 없이도 호출할 수 있습니다.
+> 익스텐션이 기본 구현을 제공하는 프로토콜 필수 조건은 옵셔널 프로토콜 필수 조건과 서로 별개입니다. 어느 쪽도 준수 타입이 자신만의 구현을 제공하지 않아도 되지만, 기본 구현을 가진 필수 조건은 옵셔널 사슬 없이도 호출할 수 있습니다.
 
-예를 들어, `TextRepresentable` 프로토콜을 상속한, `PrettyTextRepresentable` 프로토콜은, `textualDescription` 속성에 접근한 결과를 단순히 반환하도록 '필수 `prettyTextualDescription` 속성' 의 '기본 구현' 을 제공할 수 있습니다:
+예를 들어, `TextRepresentable` 프로토콜을 상속한, `PrettyTextRepresentable` 프로토콜은, 단순히 `textualDescription` 속성에 접근한 결과를 반환한 걸 자신의 `prettyTextualDescription` 필수 속성 구현으로 제공할 수 있습니다:
 
 ```swift
 extension PrettyTextRepresentable {
@@ -935,9 +935,9 @@ extension PrettyTextRepresentable {
 
 #### Adding Constraints to Protocol Extensions (프로토콜 익스텐션에 구속 조건 추가하기)
 
-'프로토콜 익스텐션' 을 정의할 때, '준수 타입' 에서 '익스텐션' 의 메소드와 속성이 사용 가능해지기 전에 반드시 만족해야 할 '구속 조건 (constraints)' 을 지정할 수 있습니다. 이 '구속 조건' 들은 확장 중인 프로토콜 이름 뒤에 '일반화된 (generic) `where` 절' 을 작성하는 것으로써 작성합니다. '일반화된 `where` 절' 에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
+프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 준수 타입이 이를 만족해야 익스텐션의 메소드와 속성을 쓸 수 있게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
 
-예를 들어, 그 원소가 `Equatable` 프로토콜을 준수하는 어떤 '집합체 (collection)' 에 적용할 '`Collection` 프로토콜' 의 '익스텐션' 을 정의할 수 있습니다. '집합체' 의 원소를, 표준 라이브러리의 일부인, `Equatable` 프로토콜로 '구속 (constraining)' 함으로써, 두 원소 사이의 '같음 (equality)' 과 '다름 (inequality)' 을 검사하는데 `==` 와 `!=` 연산자를 사용할 수 있게 됩니다.
+예를 들어, `Collection` 프로토콜에 익스텐션을 정의하면서 그 원소가 `Equatable` 프로토콜을 준수하는 어떤 집합체에 적용되게 할 수 있습니다. 표준 라이브러리의 일부인, `Equatable` 프로토콜로 집합체 원소를 구속함으로써, `==` 와 `!=` 연산자로 두 원소의 같음 (equality) 과 다름 (inequality) 을 검사할 수 있습니다.
 
 ```swift
 extension Collection where Element: Equatable {
@@ -952,25 +952,25 @@ extension Collection where Element: Equatable {
 }
 ```
 
-`allEqual()` 메소드는 '집합체' 의 모든 원소가 같을 때만 `true` 를 반환합니다.
+`allEqual()` 메소드는 모든 집합체 원소가 같아야만 `true` 를 반환합니다.
 
-두 정수 배열에서, 하나는 모든 원소가 같고, 다른 하나는 그렇지 않은 경우를, 고려합니다:
+하나는 모든 원소가 똑같고, 다른 하나는 그렇지 않은, 두 정수 배열을 고려합니다:
 
 ```swift
 let equalNumbers = [100, 100, 100, 100, 100]
 let differentNumbers = [100, 100, 200, 100, 200]
 ```
 
-'배열' 은 `Collection ` 을 준수하고 '정수' 는 `Equatable` 을 준수하기 때문에, `equalNumbers` 와 `differentNumbers` 는 `allEqual()` 메소드를 사용할 수 있습니다:
+배열은 `Collection ` 을 준수하고 정수는 `Equatable` 을 준수하기 때문에[^array-and-integer], `equalNumbers` 와 `differentNumbers` 가 `allEqual()` 메소드를 사용할 수 있습니다:
 
 ```swift
 print(equalNumbers.allEqual())
-// "true" 를 인쇄합니다.
+// "true" 를 인쇄함
 print(differentNumbers.allEqual())
-// "false" 를 인쇄합니다.
+// "false" 를 인쇄함
 ```
 
-> '준수 타입' 이 '다중 구속된 익스텐션' 의 '필수 조건' 들을 만족하여 똑같은 메소드나 속성에 대한 (여러) 구현을 제공할 경우, 스위프트는 가장 '특수화된 (specialized) 구속 조건'[^specialized] 과 관련된 구현을 사용합니다.
+> 준수 타입이 만족한 필수 조건이 여러 번 구속한 익스텐션꺼라서 동일한 메소드나 속성에 여러 개의 구현이 있다면, 스위프트는 가장 특수화된 구속 조건[^specialized] 에 해당하는 구현을 사용합니다.
 
 ### 다음 장
 
@@ -1046,6 +1046,8 @@ print(differentNumbers.allEqual())
 
 [^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
-[^protocol-extend]: '익스텐션 (extension)' 자체가 '확장' 이란 의미인데, '프로토콜 익스텐션' 으로 '프로토콜' 을 '확장' 할 수 없다라는 말이 이해가 안될 수도 있습니다. 여기서 말하는 '프로토콜을 확장할 수 없다' 라는 의미는 '프로토콜에 새로운 필수 조건들을 추가할 수 없다' 라는 의미입니다. '프로토콜 익스텐션' 은 프로토콜에 새로운 '필수 조건' 들을 추가하는 것이 아니라, 기존의 '필수 조건' 들에 '기본 구현' 을 제공하거나 새로운 '기능' 들을 추가하기 위해 사용하는 것입니다.
+[^protocol-extend]: '프로토콜 익스텐션으로 프로토콜을 확장할 수 없다' 는 건 '프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다' 는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기존의 필수 조건에 기본 구현을 제공하거나 새로운 기능을 추가하기 위해, 사용하는 것입니다.
 
-[^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건' 들 중에서 적용되는 범위가 가장 좁은 것을 말합니다. '가장 특수화된 구속 조건' 에 대한 더 자세한 내용은, 애플 'Developer Forums' 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 참고하기 바랍니다.
+[^array-and-integer]: 스위프트의 `Array` 타입은 `Collection` 프로토콜을 준수하고 `Int` 타입은 `Equatable` 을 준수하고 있다는 의미입니다.
+
+[^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건 중에서 적용 범위가 가장 좁은 것' 을 말합니다. 가장 특수화된 구속 조건에 대한 더 자세한 내용은, 애플 [Developer Forums](https://developer.apple.com/forums/) 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 참고하기 바랍니다.

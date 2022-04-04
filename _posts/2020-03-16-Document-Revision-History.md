@@ -89,7 +89,7 @@ categories: Swift Language Grammar Revision History
 * 스위프트 4.1 에서 갱신함.
 * '같음 비교 연산자 (equivalence operators)' 의 통합된 구현에 대한 정보를 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 부분에 추가함.
 * '조건부 프로토콜 준수성 (conditional protocol conformance)' 에 대한 정보를 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Extension Declaration (익스텐션 선언)]({% post_url 2020-08-15-Declarations %}#extension-declaration-익스텐션-선언) 부분과, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Conditionally Conforming to a Protocol (조건부로 프로토콜 준수하기)]({% post_url 2016-03-03-Protocols %}#conditionally-conforming-to-a-protocol-조건부로-프로토콜-준수하기) 부분에, 추가함.
-* '재귀적인 프로토콜 구속 조건 (recursive protocol constraints)' 에 대한 정보를 [Using a Protocol in Its Associated Type's Constraints (자신의 '결합 타입' 구속 조건에서 프로토콜 사용하기)]({% post_url 2020-02-29-Generics %}#using-a-protocol-in-its-associated-types-constraints-자신의-결합-타입-구속-조건에서-프로토콜-사용하기) 부분에 추가함.
+* '재귀적인 프로토콜 구속 조건 (recursive protocol constraints)' 에 대한 정보를 [Using a Protocol in Its Associated Type's Constraints (자신의 결합 타입 구속 조건에서 프로토콜 사용하기)]({% post_url 2020-02-29-Generics %}#using-a-protocol-in-its-associated-types-constraints-자신의-결합-타입-구속-조건에서-프로토콜-사용하기) 부분에 추가함.
 * `canImport()` 와 `targetEnvironment()` '플랫폼 조건 (platform conditions)' 에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 에 추가함.
 
 #### 2017-12-04
@@ -101,7 +101,7 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 4.0 에서 갱신함.
 * 메모리에 대한 '독점적인 접근 (exclusive access)' 에 대한 정보를 [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장에 추가함.
-* [Associated Types with a Generic Where Clause ('일반화 where 절' 을 가진 결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-with-a-generic-where-clause-일반화-where-절-을-가진-결합-타입) 부분을 추가했으며, 이제 '일반화 (generic) `where` 절' 을 사용하여 '결합 타입' 을 구속할 수 있음.
+* [Associated Types with a Generic Where Clause (일반화 where 절이 있는 결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-with-a-generic-where-clause-일반화-where-절이-있는-결합-타입) 부분을 추가했으며, 이제 '일반화 (generic) `where` 절' 을 사용하여 '결합 타입' 을 구속할 수 있음.
 * '여러 줄짜리 문자열 글자 값 (multiline string literal)' 에 대한 정보를 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#string-literals-문자열-글자-값) 부분과, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분에, 추가함.
 * [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 에 있는 `objc` 특성에 대한 논의를 갱신했으며, 이제 이 특성의 추론은 더 적은 곳에서 이뤄짐.
 * [Generic Subscripts (일반화 첨자 연산)]({% post_url 2020-02-29-Generics %}#generic-subscripts-일반화-첨자-연산) 부분을 추가했으며, 이제 첨자 연산도 '일반화 (generic)' 가 될 수 있음.
@@ -112,7 +112,7 @@ categories: Swift Language Grammar Revision History
 #### 2017-03-27
 
 * 스위프트 3.1 에서 갱신함.
-* '필수 조건 (requirements)' 을 포함한 '익스텐션 (extensions)' 에 대한 정보가 있는 [Extensions with a Generic Where Clause (일반화 where 절을 가진 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절을-가진-익스텐션) 부분을 추가함.
+* '필수 조건 (requirements)' 을 포함한 '익스텐션 (extensions)' 에 대한 정보가 있는 [Extensions with a Generic Where Clause (일반화 where 절이 있는 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절이-있는-익스텐션) 부분을 추가함.
 * '범위 (range)' 에 동작을 반복시키는 것에 대한 예제를 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분에 추가함.
 * 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 부분에 추가함.
 * `available` 특성을 스위프트 언어 버전에 사용하는 것에 대하여 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 정보를 추가함.
