@@ -152,7 +152,7 @@ print(opaqueJoinedTriangles.draw())
 
 이 예제의 `opaqueJoinedTriangles` 값은 이 장 앞의 [The Problem That Opaque Types Solve (불투명 타입이 풀어내는 문제)](#the-problem-that-opaque-types-solve-불투명-타입이-풀어내는-문제) 절의 일반화 예제에 있는 `joinedTriangles` 과 똑같습니다. 하지만, 그 예제의 값과 달리, `flip(_:)` 과 `join(_:_:)` 은 일반화 도형 연산이 반환할 실제 타입을 불투명 반환 타입 안에 포장하여, 그 타입들이 보이는 걸 막습니다. 함수가 일반화 타입에 의지하기 때문에 둘 다 일반화이고, 함수의 타입 매개 변수가 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
 
-불투명 반환 타입을 가진 함수가 여러 곳에서 반환을 한다면, 가능한 모든 반환 값의 타입은 반드시 똑같아야 합니다. 일반화 함수에선, 그 반환 타입으로 함수의 일반화 타입 매개 변수를 사용할 순 있지만, 반드시 여전히 단일 타입이어야 합니다. 예를 들어, 정사각형이라는 특수한 경우를 포함한 도형-뒤집기 함수의 _무효 (invalid)_ 버전[^invalid-code] 은 이렇습니다:
+불투명 반환 타입을 가진 함수가 여러 곳에서 반환을 한다면, 가능한 모든 반환 값의 타입은 반드시 똑같아야 합니다. 일반화 함수에선, 그 반환 타입으로 함수의 일반화 타입 매개 변수를 사용할 순 있지만, 반드시 여전히 단일 타입이어야 합니다. 예를 들어, 정사각형이라는 특수한 경우를 포함한 도형-뒤집기 함수의 _무효한 (invalid)_ 버전[^invalid-code] 은 이렇습니다:
 
 ```swift
 func invalidFlip<T: Shape>(_ shape: T) -> some Shape {
@@ -163,7 +163,7 @@ func invalidFlip<T: Shape>(_ shape: T) -> some Shape {
 }
 ```
 
-`Square` 를 가지고 이 함수를 호출하면, `Square` 를 반환하며; 그 외 경우라면, `FlippedShape` 을 반환합니다. 이는 '한 가지 값만 반환해야 한다' 는 '필수 조건' 을 위반하며 `invalidFlip(_:)` 을 '무효한 코드' 로 만듭니다. `invalidFlip(_:)` 을 고치는 한 방법은, 이 함수가 항상 `FlippedShape` 값을 반환하도록, '정사각형' 이라는 특수한 경우를 `FlippedShape` 구현 속으로 이동하는 것입니다:
+`Square` 를 가지고 이 함수를 호출하면, `Square` 를 반환하며; 그 외 경우, `FlippedShape` 을 반환합니다. 이는 한 가지 타입의 값만 반환한다는 필수 조건을 위반하여 `invalidFlip(_:)` 을 무효한 코드로 만듭니다. `invalidFlip(_:)` 을 고치는 한 방법은, 정사각형이라는 특수한 경우를 `FlippedShape` 구현 안으로 이동하여, 이 함수가 항상 `FlippedShape` 값을 반환하게 하는 겁니다:
 
 ```swift
 struct FlippedShape<T: Shape>: Shape {
@@ -178,7 +178,7 @@ struct FlippedShape<T: Shape>: Shape {
 }
 ```
 
-'항상 단일 타입을 반환하라' 는 '필수 조건' 이 '일반화' 를 '불투명 반환 타입' 에 사용하는 것을 막는 것은 아닙니다. 다음은 자신의 '타입 매개 변수' 를 반환 값의 '실제 타입' 속에 편입하는 함수에 대한 예제입니다:
+항상 단일한 타입을 반환하라는 필수 조건이 불투명 반환 타입에 일반화를 사용하는 걸 막는 건 아닙니다. 함수의 타입 매개 변수를 반환 값의 실제 타입 안에 편입하는 예제는 이렇습니다:
 
 ```swift
 func `repeat`<T: Shape>(shape: T, count: Int) -> some Collection {
@@ -186,7 +186,7 @@ func `repeat`<T: Shape>(shape: T, count: Int) -> some Collection {
 }
 ```
 
-이 경우, 반환 값의 실제 타입은 `T` 에 의존하는데: 전달한 도형이 뭐든 간에, `repeat(shape:count:)` 는 해당 도형에 대한 배열을 생성하여 반환합니다. 그럼에도 불구하고, 반환 값의 실제 타입은 항상 `[T]` 로 똑같으므로, '불투명한 반환 타입' 을 가진 함수는 '단일 타입' 의 반환 값만을 가져야 한다는 '필수 조건' 을 따릅니다.
+이 경우, 반환 값의 실제 타입은 `T` 에 의존하는데: 무슨 도형을 전달하든, `repeat(shape:count:)` 는 그 도형의 배열을 생성하고 반환합니다. 그럼에도 불구하고, 반환 값의 실제 타입이 항상 `[T]` 로 똑같아서, 불투명 반환 타입을 가진 함수는 반드시 단일 타입의 값만 반환해야 한다는 필수 조건도 따릅니다.
 
 ### Differences Between Opaque Types and Protocol Types ('불투명 타입' 과 '프로토콜 타입' 의 차이)
 
