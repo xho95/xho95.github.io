@@ -221,11 +221,11 @@ protoFlippedTriangle == sameThing     //  에러
 
 예제 마지막 줄 에러는 여러가지 이유로 일어납니다. 직접적인 문제점은 `Shape` 의 프로토콜 필수 조건엔 `==` 연산자가 포함되지 않는다는 겁니다. 이를 추가하려고 하면, 그 다음 마주칠 문제점은 `==` 연산자가 자신의 왼-쪽 및 오른-쪽 인자 타입을 알 필요가 있다는 겁니다. 이런 종류의 연산자는 평소에 `Self` 타입의 인자를 취하여, 무슨 타입이 프로토콜을 채택하든 일치하도록 하지만, 프로토콜에 `Self` 필수 조건을 추가하면 프로토콜을 타입으로 사용할 때 발생하는 타입 삭제 (type erasure) 를 허용하지 않습니다.
 
-'프로토콜 타입' 을 함수의 반환 타입으로 사용하는 것은 프로토콜을 준수하는 어떤 타입이든 반환하도록 하는 '유연함' 부여합니다. 하지만, 해당 유연함의 대가로 일부 연산이 반환 값에서 (사용) 불가능해집니다. 예제는 `==` 연산자가 사용 불가능해지는 방법-프로토콜 타입이 보존하지 않는 특정 타입 정보에 의존하는 것-을 보여줍니다.
+프로토콜 타입을 함수의 반환 타입으로 사용하면 프로토콜을 준수하는 어떤 타입도 반환할 수 있는 유연함을 줍니다. 하지만, 그 유연함의 대가는 반환 값에 대해서 일부 연산이 불가능하다는 겁니다. 예제는 `==` 연산자가 가능하지 않은 이유-프로토콜 타입의 사용으론 보존되지 않는 특정 타입 정보에 의존한다는 것-을 보여줍니다.
 
-이 접근 방식이 가진 또 다른 문제는 '도형 변화 (규칙)' 을 중첩하지 않는다는 것입니다. '삼각형' 을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수하는 어떤 타입의 인자를 취합니다. 하지만, 프로토콜 타입의 값은 해당 프로토콜을 준수하지 않으며[^protocol-type-value]: `protoFlip(_:)` 이 반환하는 값은 `Shape` 을 준수하지 않습니다. 이는 '다중 변화' 를 적용하는 `protoFlip(protoFlip(smallTriangle))` 같은 코드는 '뒤집은 (flipped) 도형' 이 `protoFlip(_:)` 의 유효한 인자가 아니기 때문에 무효하다는 의미입니다.[^invalid-flipped]
+이 접근법이 가진 또 다른 문제는 도형의 변형을 중첩하지 않는다는 겁니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수한 어떠한 타입인 인자를 취합니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않으며[^protocol-type-value]; `protoFlip(_:)` 이 반환한 값은 `Shape` 을 준수하지 않습니다. 이는 여러 번 변형하는 `protoFlip(protoFlip(smallTriangle))` 같은 코드는 무효라는 의미인데 뒤집은 도형은 `protoFlip(_:)` 의 유효 인자가 아니기 때문입니다.[^invalid-flipped]
 
-이와 대조적으로, '불투명 타입' 은 실제 타입의 '정체성 (identity)' 을 보존합니다. 스위프트는 '결합 타입'[^associated-types] 을 추론할 수 있어서, '프로토콜 타입' 을 반환 값으로 사용할 수 없는 곳에서 '불투명 타입 값' 을 사용할 수 있게 해줍니다. 예를 들어, 다음은 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 `Container` 프로토콜의 한 버전입니다:
+이와 대조하여, 불투명 타입은 실제 타입의 정체성을 보존합니다. 스위프트가 결합 타입[^associated-types] 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서 불투명 타입 값 을 사용하도록 해줍니다. 예를 들어, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 한 `Container` 프로토콜 버전입니다:
 
 ```swift
 protocol Container {
@@ -236,21 +236,21 @@ protocol Container {
 extension Array: Container { }
 ```
 
-`Container` 는 해당 프로토콜이 '결합 타입' 을 가지고 있기 때문에 함수의 반환 타입으로 사용할 수 없습니다. 이는 '일반화 타입' 이 무엇인지 추론하는데 필요한 충분한 정보가 함수 외부에는 없기 때문에 '일반화 반환 타입' 의 '구속 조건' 으로도 사용할 수 없습니다.
+`Container` 프로토콜엔 결합 타입이 있기 때문에 함수의 반환 타입으로 이를 사용할 순 없습니다. 일반화 타입의 구속 조건으로도 사용할 수 없는데 이는 함수 외부에 일반화 타입을 추론하는데 필요한 충분한 정보가 없기 때문입니다.
 
 ```swift
-// 에러: '결합 타입' 을 가진 프로토콜은 반환 타입으로 사용할 수 없음
+// 에러: 결합 타입이 있는 프로토콜은 반환 타입으로 사용할 수 없음
 func makeProtocolContainer<T>(item: T) -> Container {
   return [item]
 }
 
-// 에러: 'C' 를 추론하기 위한 충분한 정보가 없음
+// 에러: C 를 추론할 충분한 정보가 없음
 func makeProtocolContainer<T, C: Container>(item: T) -> C {
   return [item]
 }
 ```
 
-반환 타입으로 `some Container` 라는 '불투명 타입' 을 사용하면 '원하던 API 계약'-함수가 '컨테이너' 를 반환하지만, '컨테이너' 타입 지정은 거부한다는 것-을 나타냅니다:
+반환 타입으로 불투명 타입인 `some Container` 를 사용하면-함수가 컨테이너를 반환하지만, 컨테이너의 타입을 지정하는 건 거절한다는-원하는 API 계약을 표현합니다:
 
 ```swift
 func makeOpaqueContainer<T>(item: T) -> some Container {
@@ -260,10 +260,10 @@ func makeOpaqueContainer<T>(item: T) -> some Container {
 let opaqueContainer = makeOpaqueContainer(item: 12)
 let twelve = opaqueContainer[0]
 print(type(of: twelve))
-// "Int" 를 인쇄합니다.
+// "Int" 를 인쇄함
 ```
 
-`twelve` 의 타입은 `Int` 라고 추론하는데, 이는 '타입 추론'[^type-inference] 이 '불투명 타입' 과도 작업한다는 사실을 묘사합니다. `makeOpaqueContainer(item:)` 의 구현에서, '불투명한 컨테이너' 의 (밑에 놓인) 실제 타입은 `[T]` 입니다. 이 경우, `T` 가 `Int` 이므로, 반환 값은 정수 배열이고 `Item` 이라는 '결합 타입' 은 `Int` 라고 추론합니다. `Container` 에 대한 '첨자 연산' 은 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 라고 추론함을 의미합니다.
+`twelve` 의 타입은 `Int` 로 추론하는데, 이는 타입 추론[^type-inference] 이 불투명 타입에도 작동한다는 사실을 묘사합니다. `makeOpaqueContainer(item:)` 구현에선, 불투명 컨테이너의 실제 타입은 `[T]` 입니다. 이 경우, `T` 는 `Int` 이므로, 반환 값은 정수 배열이며 결합 타입인 `Item` 은 `Int` 라고 추론합니다. `Container` 의 첨자는 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 라고 추론한다는 의미합니다.
 
 ### 다음 장
 
@@ -293,6 +293,6 @@ print(type(of: twelve))
 
 [^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
 
-[^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장에 있는 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
+[^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
 
 [^type-inference]: '타입 추론' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
