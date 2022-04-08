@@ -12,15 +12,15 @@ categories: Swift Language Grammar ARC Automatic Reference Counting
 
 스위프트는 _자동 참조 카운팅 (Automatic Reference Counting; ARC)_ 을 사용하여 앱의 메모리 사용을 추적하고 관리합니다. 대부분의 경우, 이는 스위프트에서 메모리 관리는 "그냥 작동하는 (just works)" 것이며, 메모리 관리를 직접 생각할 필요가 없다는 의미입니다. ARC 는 클래스 인스턴스가 더 이상 필요하지 않을 때 그 인스턴스가 사용한 메모리를 자동으로 풀어줍니다.
 
-하지만, 몇몇 경우에 ARC 는 메모리 관리를 위해 코드 간의 관계에 대한 더 많은 정보를 요구합니다. 이번 장은 그 상황들을 설명하며 ARC 가 앱의 모든 메모리를 관리하게 해주는 방법을 보입니다. 스위프트에서 ARC 를 사용하는 것은 오브젝티브-C 에서 ARC 를 사용하기 위해 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 접근 방식과 매우 비슷합니다.
+하지만, 몇몇 경우에 ARC 는 메모리 관리를 위해 코드 간의 관계에 대한 더 많은 정보를 요구합니다. 이번 장은 그 상황들을 설명하며 ARC 가 앱의 모든 메모리를 관리하게 해주는 방법을 보입니다. 스위프트에서 ARC 를 사용하는 건 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 오브젝티브-C 에서 ARC 를 사용하는 접근법과 아주 비슷합니다.
 
-'참조 카운팅 (reference counting)' 은 클래스 인스턴스에만 적용됩니다.[^reference-type] 구조체와 열거체는, 참조 타입이 아닌, 값 타입이며, 참조로 저장되거나 전달되지 않습니다.
+참조 카운팅은 클래스 인스턴스에만 적용합니다.[^reference-type] 구조체와 열거체는 값 타입이지, 참조 타입이 아라서, 참조로 저장하고 전달하지 않습니다.
 
-### How ARC Works ('ARC' 의 작동 방식)
+### How ARC Works (ARC 의 작동 방식)
 
-새로운 클래스 인스턴스를 생성할 때마다, 'ARC' 는 해당 인스턴스에 대한 정보를 저장하는 '메모리 덩어리' 를 할당합니다. 이 메모리는, 해당 인스턴스와 결합된 어떤 저장 속성의 값과 함께, 인스턴스의 타입에 대한 정보를 쥐고 있습니다.
+새로운 클래스 인스턴스를 생성할 때마다, ARC 가 메모리 덩어리를 할당하여 그 인스턴스에 대한 정보를 저장합니다. 이 메모리는 인스턴스의 타입에 대한 정보와, 그 인스턴스와 결합된 어떤 저장 속성의 값을 함께, 쥐고 있습니다.
 
-추가적으로, 인스턴스가 더 이상 필요없을 땐, 'ARC' 는 해당 인스턴스가 사용하는 메모리를 풀어줘서 메모리를 대신 다른 용도로 사용할 수 있도록 합니다. 이는 클래스 인스턴스가 더 이상 필요없을 땐 메모리 공간을 차지하지 않도록 보장합니다.
+추가적으로, 더 이상 인스턴스가 필요없을 때, 그 인스턴스가 사용한 메모리를 ARC 가 풀어주어 메모리를 대신 다른 용도로 사용할 수 있도록 합니다. 이는 클래스 인스턴스가 더 이상 필요없을 땐 메모리 공간을 차지하지 않도록 보장합니다.
 
 하지만, 아직 사용중인 인스턴스를 'ARC' 가 해제한다면, 해당 인스턴스의 속성에 접근하거나, 해당 인스턴스의 메소드를 호출하는 것은, 더 이상 가능하지 않을 것입니다. 진짜로, 그 인스턴스에 접근하려고 하면, 거의 십중팔구 앱이 충돌할 것입니다.
 
