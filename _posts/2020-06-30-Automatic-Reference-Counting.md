@@ -10,9 +10,9 @@ categories: Swift Language Grammar ARC Automatic Reference Counting
 
 ## Automatic Reference Counting (자동 참조 카운팅)
 
-스위프트는 앱의 메모리 사용 방법을 추적하고 관리하기 위해 _자동 참조 카운팅 (Automatic Reference Counting; ARC)_ 을 사용합니다. 대부분의 경우, 이는 메모리 관리가 스위프트에서는 "그냥 작동 (just works)" 하며, 스스로 메모리 관리에 대해서 생각할 필요는 없다는 의미입니다. 'ARC' 는 클래스 인스턴스가 더 이상 필요하지 않을 경우 그 인스턴스가 사용하는 메모리를 자동으로 풀어줍니다.
+스위프트는 _자동 참조 카운팅 (Automatic Reference Counting; ARC)_ 을 사용하여 앱의 메모리 사용을 추적하고 관리합니다. 대부분의 경우, 이는 스위프트에서 메모리 관리는 "그냥 작동하는 (just works)" 것이며, 메모리 관리를 직접 생각할 필요가 없다는 의미입니다. ARC 는 클래스 인스턴스가 더 이상 필요하지 않을 때 그 인스턴스가 사용한 메모리를 자동으로 풀어줍니다.
 
-하지만, 메모리 관리를 하기 위해서 몇몇 경우에 'ARC' 는 코드 사이의 관계에 대한 더 많은 정보를 요구합니다. 이번 장은 그 상황들을 설명하며 'ARC' 가 앱의 모든 메모리를 관리하게 해주는 방법을 보입니다. 스위프트에서 ARC 를 사용하는 것은 오브젝티브-C 에서 ARC 를 사용하기 위해 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 접근 방식과 매우 비슷합니다.
+하지만, 몇몇 경우에 ARC 는 메모리 관리를 위해 코드 간의 관계에 대한 더 많은 정보를 요구합니다. 이번 장은 그 상황들을 설명하며 ARC 가 앱의 모든 메모리를 관리하게 해주는 방법을 보입니다. 스위프트에서 ARC 를 사용하는 것은 오브젝티브-C 에서 ARC 를 사용하기 위해 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 접근 방식과 매우 비슷합니다.
 
 '참조 카운팅 (reference counting)' 은 클래스 인스턴스에만 적용됩니다.[^reference-type] 구조체와 열거체는, 참조 타입이 아닌, 값 타입이며, 참조로 저장되거나 전달되지 않습니다.
 
