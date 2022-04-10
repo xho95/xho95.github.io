@@ -45,9 +45,9 @@ class Person {
 }
 ```
 
-`Person` 클래스는 인스턴스의 `name` 속성을 설정하고 초기화가 진행 중임을 메시지로 인쇄하는 초기자를 가지고 있습니다. `Person` 클래스는 클래스 인스턴스를 해제할 때 메시지를 인쇄하는 '정리자 (deinitializer)'[^deinitializer] 도 가지고 있습니다.
+`Person` 클래스에 있는 초기자는 인스턴스의 `name` 속성을 설정하고 초기화가 진행중이라는 메시지를 인쇄합니다. `Person` 클래스에는 정리자 (deinitializer)[^deinitializer] 도 있는데 클래스 인스턴스의 해제 때 메시지를 인쇄합니다.
 
-그 다음 코드 조각은, 뒤이은 코드 조각에서 새로운 `Person` 인스턴스에 대한 '다중 참조'[^multiple-references] 를 설정하게 될, `Person?` 타입의 변수 세 개를 정의합니다. 이 변수들은 (`Person` 이 아니라, `Person?` 이라는) 옵셔널 타입이기 때문에, 값이 자동으로 `nil` 로 초기화되어, 현재는 `Person` 인스턴스를 참조하지 않습니다.
+그 다음 코드 조각에서 정의하는 세 개의 `Person?` 타입 변수는, 뒤이은 코드 조각에 있는 새로운 `Person` 인스턴스에 대한 다중 참조[^multiple-references] 를 설정하는데 사용합니다. 이 변수들은 (`Person` 이 아닌, `Person?` 이라는) 옵셔널 타입이기 때문에, 자동으로 `nil` 값으로 초기화하며, `Person` 인스턴스를 현재는 참조하지 않습니다.
 
 ```swift
 var reference1: Person?
@@ -55,11 +55,11 @@ var reference2: Person?
 var reference3: Person?
 ```
 
-이제 새로운 `Person` 인스턴스를 생성하고 이 세 변수들 중 하나에 할당할 수 있습니다:
+이제 새로운 `Person` 인스턴스를 생성하여 이 세 변수 중 하나에 할당할 수 있습니다:
 
 ```swift
 reference1 = Person(name: "John Appleseed")
-// "John Appleseed is being initialized" 를 인쇄합니다.
+// "John Appleseed is being initialized" 를 인쇄함
 ```
 
 `"John Appleseed is being initialized"` 라는 메시지는 `Person` 클래스의 '초기자' 를 호출하는 시점에 인쇄된다는 점을 기억하기 바랍니다. 이는 초기화가 일어났음을 확정합니다.
