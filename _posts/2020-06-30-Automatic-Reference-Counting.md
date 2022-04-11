@@ -82,7 +82,7 @@ reference1 = nil
 reference2 = nil
 ```
 
-ARC는 세 번째이자 마지막 강한 참조를 끊기 전까진 `Person` 인스턴스를 해제하지 않는데, 그 시점에는 더 이상 `Person` 인스턴스를 사용하지 않을게 명확합니다:
+ARC는 세 번째인 최종 강한 참조를 끊기 전까지 `Person` 인스턴스를 해제하지 않는데, 그 시점에는 더 이상 `Person` 인스턴스를 사용하지 않는다는게 명확합니다:
 
 ```swift
 reference3 = nil
@@ -91,13 +91,13 @@ reference3 = nil
 
 ### Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)
 
-위 예제에 있는, 'ARC' 는 새로 생성한 `Person` 인스턴스에 대한 참조 개수를 추적하고 더 이상 필요하지 않을 때 해당 `Person` 인스턴스를 해제할 수 있습니다.
+위 예제에서, ARC 는 새로 생성한 `Person` 인스턴스의 참조 개수를 추적하고 더 이상 필요하지 않을 땐 그 `Person` 인스턴스를 해제하는게 가능합니다.
 
-하지만, 클래스 인스턴스의 '강한 참조' 가 _절대로 (never)_ '0' 개가 되지 않는 코드를 작성할 가능성이 있습니다. 이는 두 클래스 인스턴스가 서로에 대한 '강한 참조' 를 쥐고 있어서, 각각의 인스턴스가 다른 것이 살아있게 유지할 경우, 발생합니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라고 합니다.
+하지만, 작성한 코드에서 클래스 인스턴스의 강한 참조가 _절대로 (never)_ 0개가 되지 않을 가능성이 있습니다. 이는 클래스 인스턴스 두 개가 서로의 강한 참조를 쥐고 있어, 각각의 인스턴스가 다른 걸 살아있게 하면, 발생할 수 있습니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라 합니다.
 
-'강한 참조 순환' 은 클래스들 간의 관계 일부를 '강한 참조' 대신 '약한 (weak)' 또는 '소유하지 않는 참조 (unowned rerference)' 로 정의함으로써 해결합니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, '강한 참조 순환' 을 해결하는 방법을 배우기 전에, 그런 순환을 유발하는 원인을 이해하는 것이 유용합니다.
+강한 참조 순환을 해결하려면 클래스 사이의 일부 관계를 강한 참조 대신 약한 (weak) 또는 소유하지 않는 (unowned) 참조로 정의하면 됩니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환의 해결 방법을 배우기 전에, 그런 순환을 유발하는 방법을 이해하는게 유용합니다.
 
-다음은 '강한 참조 순환' 이 우연히 생성될 수 있는 방법에 대한 예제입니다. 이 예제는, '아파트 단지' 와 '거주자' 를 모델링하는, `Person` 과 `Apartment` 라는 두 클래스를 정의합니다:
+우연히 강한 참조 순환을 생성할 수 있는 예제는 이렇습니다. 이 예제는 `Person` 과 `Apartment` 라는 두 개의 클래스를 정의하는데, 이들은 아파트 및 거주자를 모델링 합니다:
 
 ```swift
 class Person {
@@ -115,27 +115,27 @@ class Apartment {
 }
 ```
 
-모든 `Person` 인스턴스는 `String` 타입의 `name` 속성과 초기에는 `nil` 인 '옵셔널 `apartment` 속성' 을 가집니다. `apartment` 속성은, 사람이 항상 아파트를 가지는 건 아니기 때문에, '옵셔널' 입니다.
+모든 `Person` 인스턴스에는 `String` 타입의 `name` 속성과 `nil` 로 초기화한 옵셔널 `apartment` 속성이 있습니다. `apartment` 속성이 옵셔널인 건, 사람이 항상 아파트를 가지진 않기 때문입니다.
 
-이와 비슷하게, 모든 `Apartment` 인스턴스는 `String` 타입의 `unit` 속성을 가지며 초기에는 `nil` 인 '옵셔널 `tenant` 속성' 을 가집니다. '입주자 (tenant)' 속성은 아파트에 입주자가 항상 있는 것은 아니기 때문에 옵셔널입니다.
+이와 비슷하게, 모든 `Apartment` 인스턴스에는 `String` 타입의 `unit` 속성과 `nil` 로 초기화한 옵셔널 `tenant` 속성이 있습니다. 입주자 (tenant) 속성이 옵셔널인 건 아파트에 입주자가 항상 있는 건 아니기 때문입니다.
 
-이 클래스 둘 다, 해당 클래스가 정리 중이라는 사실을 인쇄하는, '정리자' 도 정의합니다. 이는 `Person` 과 `Apartment` 인스턴스가 예상한 것처럼 해제되는 지를 확인할 수 있도록 해줍니다.
+이 두 클래스 모두 정리자를 정의하여, 그 클래스 인스턴스가 정리 중이라는 사실도 인쇄합니다. 이는 `Person` 과 `Apartment` 인스턴스가 예상대로 해제되는지 확인할 수 있게 합니다.
 
-이 다음 코드 조각은 `john` 과 `unit4A` 라는 옵셔널 타입인 두 변수를 정의하는데, 아래에서 특정 `Apartment` 와 `Person` 인스턴스로 설정될 것입니다. 이 변수 둘 다, 옵셔널인 덕에, `nil` 이라는 초기 값을 가집니다.
+이 다음 코드 조각은 `john` 과 `unit4A` 라는 옵셔널 타입 변수를 두 개 정의하는데, 이는 밑에서 특정 `Apartment` 및 `Person` 인스턴스로 설정할 겁니다. 이 두 변수 모두, 옵셔널인 덕에, `nil` 이라는 초기 값을 가집니다:
 
 ```swift
 var john: Person?
 var unit4A: Apartment?
 ```
 
-이제 특정한 `Person` 인스턴스와 `Apartment` 인스턴스를 생성하고 이 새 인스턴스를 `john` 과 `unit4A` 변수에 할당할 수 있습니다:
+이제 특정한 `Person` 인스턴스 및 `Apartment` 인스턴스를 생성하고 이 새 인스턴스를 `john` 및 `unit4A` 변수에 할당할 수 있습니다:
 
 ```swift
 john = Person(name: "John Appleseed")
 unit4A = Apartment(unit: "4A")
 ```
 
-다음은 이 두 인스턴스를 생성하고 할당한 후의 '강한 참조' 를 보인 것입니다. `john` 변수는 이제 새로운 `Person` 인스턴스에 대한 '강한 참조' 를 가지며, `unit4A` 변수는 새로운 `Apartment` 인스턴스에 대한 '강한 참조' 를 가집니다:
+이 두 인스턴스를 생성하고 할당한 후의 강한 참조는 이렇게 보입니다. 이제 `john` 변수에는 새로운 `Person` 인스턴스의 강한 참조가 있고, `unit4A` 변수에는 새로운 `Apartment` 인스턴스의 강한 참조가 있습니다:
 
 ![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-before.jpg)
 
