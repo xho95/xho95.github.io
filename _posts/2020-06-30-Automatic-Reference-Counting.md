@@ -97,7 +97,7 @@ reference3 = nil
 
 강한 참조 순환을 해결하려면 클래스 사이의 일부 관계를 강한 참조 대신 약한 (weak) 또는 소유하지 않는 (unowned) 참조로 정의하면 됩니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환의 해결 방법을 배우기 전에, 그런 순환을 유발하는 방법을 이해하는게 유용합니다.
 
-우연히 강한 참조 순환을 생성할 수 있는 예제는 이렇습니다. 이 예제는 `Person` 과 `Apartment` 라는 두 개의 클래스를 정의하는데, 이들은 아파트 및 거주자를 모델링 합니다:
+우연히 강한 참조 순환을 생성할 수 있는 예제는 이렇습니다. 이 예제는 `Person` 과 `Apartment` 라는 두 클래스를 정의하는데, 이들은 아파트 및 거주자를 모델링합니다:
 
 ```swift
 class Person {
@@ -139,39 +139,39 @@ unit4A = Apartment(unit: "4A")
 
 ![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-before.jpg)
 
-이제 두 인스턴스를 서로 이어서 사람은 아파트를 가지고, 아파트는 입주자를 가지도록, 할 수 있습니다. '느낌표 (`!`)' 로 `john` 과 `unit4A` 옵셔널 변수 안에 저장한 인스턴스의 포장을 풀어서 접근해야, 이 인스턴스들의 속성을 설정할 수 있다는 점을 기억하기 바랍니다:
+이제 두 인스턴스를 서로 이어서 사람은 아파트를 가지고, 아파트는 입주자를 가지게 할 수 있습니다. 느낌표 (`!`) 를 써서 `john` 과 `unit4A` 옵셔널 변수 안에 저장된 인스턴스의 포장을 풀어서 접근해야, 이 인스턴스의 속성을 설정할 수 있다는 걸 기억하기 바랍니다:
 
 ```swift
 john!.apartment = unit4A
 unit4A!.tenant = john
 ```
 
-다음은 두 인스턴스를 서로 이은 후의 '강한 참조' 를 보인 것입니다:
+두 인스턴스를 서로 이은 후의 강한 참조는 이렇게 보입니다:
 
 ![Strong Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-reference.png)
 
-불행하게도, 이 두 인스턴스를 잇는 것은 이들 사이에 '강한 참조 순환' 을 생성합니다. `Person` 인스턴스는 이제 `Apartment` 인스턴스에 대한 '강한 참조' 를 가지며, `Apartment` 인스턴스는 `Person` 인스턴스에 대한 '강한 참조' 를 가집니다. 그러므로, `john` 과 `unit4A` 변수가 쥐고 있는 '강한 참조' 를 끊을 때, '참조 개수 (counts)' 가 '0' 으로 떨어지지 않으며, 'ARC' 가 인스턴스를 해제하지 않습니다:
+불행하게도, 이 두 인스턴스를 잇는 건 이들 사이에 강한 참조 순환을 생성합니다. 이제 `Person` 인스턴스에는 `Apartment` 인스턴스로의 강한 참조가 있고, `Apartment` 인스턴스에는 `Person` 인스턴스로의 강한 참조가 있습니다. 그러므로, `john` 과 `unit4A` 변수가 쥐고 있는 강한 참조를 끊을 때, 참조 개수는 0 으로 떨어지지 않으며, ARC 는 인스턴스를 해제하지 않습니다:
 
 ```swift
 john = nil
 unit4A = nil
 ```
 
-이 두 변수를 `nil` 로 설정할 때 어느 쪽의 '정리자' 도 호출하지 않는다는 것을 기억하기 바랍니다. '강한 참조 순환' 은 `Person` 과 `Apartment` 인스턴스를 해제하는 것을 막아서, 앱에 '메모리 누수 (leak)' 를 유발합니다.
+이 두 변수에 `nil` 을 설정할 땐 어느 정리자도 호출하지 않는다는 걸 기억하기 바랍니다. 강한 참조 순환은 `Person` 과 `Apartment` 인스턴스의 해제를 늘 막아서, 앱의 메모리가 새어 나가게 합니다.
 
-다음은 `john` 과 `unit4A` 변수를 `nil` 로 설정한 후의 '강한 참조' 를 보인 것입니다:
+`john` 과 `unit4A` 변수를 `nil` 로 설정한 후의 강한 참조는 이렇게 보입니다:
 
 ![Strong Reference Remaining](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.jpg)
 
-`Person` 인스턴스와 `Apartment` 인스턴스 사이의 '강한 참조' 가 남아 있으며 이를 끊을 수가 없습니다.
+`Person` 인스턴스와 `Apartment` 인스턴스 사이엔 강한 참조가 남아 있으며 끊을 수 없습니다.
 
 ### Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)
 
-스위프트는 클래스 타입인 속성과 작업할 때의 '강한 참조 순환' 을 해결하는 두 가지 방법을 제공하는데: '약한 참조 (weak reference)' 와 '소유하지 않는 참조 (unowned reference)' 입니다.
+클래스 타입의 속성과 작업할 때 스위프트는 두 가지 방법을 제공하여 강한 참조 순환을 해결하는데: 약한 참조와 소유하지 않는 참조가 그것입니다.
 
-'약한 참조' 와 '소유하지 않는 참조' 는 '참조 순환' 에 있는 인스턴스 하나가 다른 인스턴스를 강하게 쥐는 것 _없이 (without)_ 참조할 수 있게 해줍니다. 그러면 인스턴스들이 '강한 참조 순환' 을 생성하지 않으면서 서로를 참조할 수 있습니다.
+약한 및 소유하지 않는 참조는 참조 순환의 한 인스턴스가 다른 인스턴스를 강하게 쥐지 _않고 (without)_ 참조할 수 있게 합니다. 그러면 강한 참조 순환의 생성 없이 인스턴스가 서로를 참조할 수 있습니다.
 
-'약한 참조' 는 다른 인스턴스의 수명이 더 짧을 때-즉, 다른 인스턴스를 먼저 해제할 수 있을 때-사용합니다. 위 `Apartment` 예제에서, 아파트가 수명 중의 어느 시점에 입주자가 없을 수 있다는 것은 적절하므로, 이 경우의 '참조 순환' 은 '약한 참조' 로 끊는 것이 적절합니다. 이와 대조적으로, '소유하지 않는 참조' 는 다른 인스턴스와 수명이 같거나 더 길 때 사용합니다.
+다른 인스턴스의 수명이 더 짧을 때-즉, 다른 인스턴스를 먼저 해제할 수 있을 때-약한 참조를 사용합니다. 위의 `Apartment` 예제에서, 아파트 수명 중 어떠한 시점에 입주자가 없는게 가능한 건 적절하므로, 이 경우 약한 참조로 참조 순환을 끊는 게 적절합니다. 이와 대조적으로, 다른 인스턴스의 수명이 똑같거나 더 길 땐 소유하지 않는 참조를 사용합니다.
 
 #### Weak References (약한 참조)
 
