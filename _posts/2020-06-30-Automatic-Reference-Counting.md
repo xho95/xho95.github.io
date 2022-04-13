@@ -240,7 +240,7 @@ unit4A = nil
 
 ![Weak Reference deallocated](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-deallocated.jpg)
 
-> '쓰레기 수집 (gabage collection)'[^gabage-collection] 을 사용하는 시스템에서는, 단순한 '임시 저장 구조 (caching mechanism)' 을 구현하기 위해 '약한 참조' 를 사용할 때가 있는데 '메모리 압력' 이 '쓰레기 수집' 을 발동할 때만 '강한 참조' 를 가지지 않은 객체를 해제하기 때문입니다. 하지만, 'ARC' 에서는, 마지막 '강한 참조' 를 제거하자 마자 값을 해제하므로, 그런 용도로는 '약한 참조' 가 적합하지 않습니다.
+> 쓰레기 수집 (gabage collection)[^gabage-collection] 을 사용하는 시스템에선, 약한 포인터 (weak pointers) 를 사용하여 단순 임시 저장 구조 (simple caching mechanism) 을 구현할 때가 있는데 이는 강한 참조가 없는 객체는 메모리 압력 (memory pressure) 이 쓰레기 수집을 발동할 때만 해제되기 때문입니다. 하지만, ARC 에선, 마지막 강한 참조를 제거하자마자 곧바로 값을 해제하므로, 그런 용도론 약한 참조가 적합하지 않습니다.[^ARC-unsuitable-caching-mechanism]
 
 #### Unowned References (소유하지 않는 참조)
 
@@ -622,6 +622,8 @@ paragraph = nil
 [^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
 [^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+
+[^ARC-unsuitable-caching-mechanism]: ARC 에선 약한 참조를 '단순 임시 저장 구조 (simple caching mechanism)' 를 만드는 용도로는 사용하지 않는다는 의미입니다.
 
 [^unowned-reference]: 이 그림을 보면 '소유하지 않는 (unowned) 참조' 라는 이름의 의미를 이해할 수 있습니다. 이 두 인스턴스의 관계를 살펴보면, 고객은 신용 카드를 '소유' 하고 있지만, 신용 카드는 고객을 '소유' 하고 있지 않습니다. 다시 말해서, 고객은 신용 카드를 바꿀 수 있지만, 신용 카드는 고객을 바꿀 수 없습니다. 그러므로 외부에서 직접 '신용 카드' 를 참조하는 변수가 없습니다.
 
