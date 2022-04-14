@@ -256,9 +256,9 @@ unit4A = nil
 
 `Customer` 와 `CreditCard` 사이의 관계는 위에 있는 약한 참조 예제의 `Apartment` 와 `Person` 사이의 관계와 살짝 다릅니다. 이 데이터 모델에서, 고객에겐 신용 카드가 있을 수도 없을 수도 있지만, 신용 카드는 고객과 _항상 (always)_ 결합되어 있을 겁니다. `CreditCard` 인스턴스는 절대 자신이 참조한 `Customer` 보다 오래 살지 않습니다. 이를 나타내기 위해, `Customer` 클래스엔 옵셔널 `card` 속성이 있지만, `CreditCard` 클래스엔 소유하지 않는 (그리고 옵셔널-아닌) `customer` 속성이 있습니다.
 
-더 나아가, 새로운 `CreditCard` 인스턴스는 `number` 값과 `custom` 인스턴스를 '사용자 정의 `CreditCard` 초기자' 로 전달함으로써 _만 (only)_ 생성할 수 있습니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스가 항상 자신과 결합된 `customer` 인스턴스를 가지도록 보장합니다.
+더 나아가, `number` 값과 `custom` 인스턴스를 자신의 `CreditCard` 초기자에 전달해야 _만 (only)_ 새로운 `CreditCard` 인스턴스를 생성할 수 있습니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스와 `customer` 인스턴스가 항상 결합된다는 걸 보장합니다.
 
-'신용 카드' 는 고객을 항상 가지고 있을 것이기 때문에, '강한 참조 순환' 을 피하기 위해, `customer` 인스턴스를 '소유하지 않는 참조' 로 정의합니다:
+신용 카드엔 고객이 항상 있을거기 때문에, 자신의 `customer` 인스턴스를 소유하지 않는 참조로 정의하여, 강한 참조 순환을 피합니다:
 
 ```swift
 class Customer {
@@ -281,40 +281,40 @@ class CreditCard {
 }
 ```
 
-> `CreditCard` 클래스의 `number` 속성은, `number` 속성의 용량이 32-비트와 64-비트 시스템 모두에서 16-자리 카드 번호를 저장하기에 충분히 크도록 보장하기 위해, `Int` 보다 `UInt64` 타입으로 정의합니다.
+> `CreditCard` 클래스의 `number` 속성은 `Int` 보단 `UInt64` 타입으로 정의하여, `number` 속성의 용량이 32-비트 및 64-비트 시스템 양 쪽에서 16-자리 카드 번호를 저장하기에 충분히 크도록 보장합니다.
 
-이 다음 코드 조각은, 특정 고객에 대한 참조를 저장할, `john` 이라는 '옵셔널 `Customer` 변수' 를 정의합니다. 이 변수는, 옵셔널인 덕에, 초기 값으로 'nil' 을 가집니다:
+이 다음 코드 조각은 `john` 이라는 옵셔널 `Customer` 변수를 정의하는데, 이를 사용하여 특정 고객으로의 참조를 저장할 겁니다. 이 변수는, 옵셔널인 덕에, 'nil' 이라는 초기 값을 가집니다:
 
 ```swift
 var john: Customer?
 ```
 
-이제 `Customer` 인스턴스를 생성하고, 새로운 `CreditCard` 인스턴스를 해당 고객의 `card` 속성으로 초기화하고 할당하는데 이를 사용할 수 있습니다:
+이제 `Customer` 인스턴스를 생성하고, 이를 사용하여 새로운 `CreditCard` 인스턴스를 그 고객의 `card` 속성으로 초기화하고 할당할 수 있습니다:
 
 ```swift
 john = Customer(name: "John Appleseed")
 john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 ```
 
-다음은, 이제 두 인스턴스를 연결하고 난 후의, '참조' 를 보인 것입니다:
+이제 두 인스턴스를 이은 후의, 참조는 이렇게 보입니다:[^unowned-reference]
 
 ![Unowned Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-reference.jpg)
 
-`Customer` 인스턴스는 이제 `CreditCard` 인스턴스에 대한 '강한 참조' 를 가지며, `CreditCard` 인스턴스는 `Customer` 인스턴스에 대한 '소유하지 않는 참조'[^unowned-reference] 를 가집니다.
+이제 `Customer` 인스턴스엔 `CreditCard` 인스턴스로의 강한 참조가 있고, `CreditCard` 인스턴스엔 `Customer` 인스턴스로의 소유하지 않는 참조가 있습니다.
 
-'소유하지 않는 `customer` 참조' 때문에, `john` 변수가 쥐고 있던 '강한 참조' 를 끊을 때, `Customer` 인스턴스에 대한 '강한 참조' 가 더 이상은 없습니다:
+소유하지 않는 `customer` 참조 때문에, `john` 변수가 쥔 강한 참조를 끊을 때, `Customer` 인스턴스로의 강한 참조는 더 이상 없습니다:
 
 ![Unowned Reference Break](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-break.jpg)
 
-더 이상 `Customer` 인스턴스에 대한 '강한 참조' 가 없기 때문에, 해제됩니다. 이것이 발생한 후, `CreditCard` 인스턴스에 대한 '강한 참조' 도 더 이상 없으므로, 이 역시 해제됩니다:
+`Customer` 인스턴스로의 강한 참조가 더 이상 없기 때문에, 이를 해제합니다. 이게 발생한 후엔, `CreditCard` 인스턴스로의 강한 참조도 더 이상 없으므로, 이것도 해제합니다:
 
 ```swift
 john = nil
-// "John Appleseed is being deinitialized" 를 인쇄합니다.
-// "Card #1234567890123456 is being deinitialized" 를 인쇄합니다.
+// "John Appleseed is being deinitialized" 를 인쇄함
+// "Card #1234567890123456 is being deinitialized" 를 인쇄함
 ```
 
-위에 있는 최종 코드 조각은 `john` 변수가 `nil` 로 설정된 후 `Customer` 인스턴스와 `CreditCard` 인스턴스에 대한 '정리자' 둘 다 자신의 "정리 (deinitialized)" 메시지를 인쇄함을 보여줍니다.
+위 최종 코드 조각은 `john` 변수를 `nil` 로 설정한 후엔 `Customer` 인스턴스와 `CreditCard` 인스턴스 정리자 둘 다 자신의 "정리 (deinitialized)" 메시지를 인쇄한다는 걸 보여줍니다. 
 
 > 위 예제는 _안전한 (safe)_ '소유하지 않는 참조' 를 사용하는 방법을 보여줍니다. 스위프트는 '실행 시간 안전성 검사' 를 비활성화해야 할 경우-예를 들어, 성능상의 이유-를 위해 _안전하지 않은 (unsafe)_ '소유하지 않는 참조' 도 제공합니다. 모든 안전하지 않은 연산 처럼, 해당 코드가 안전한지 검사하는 책임은 직접 맡아야 합니다.
 >
@@ -625,7 +625,7 @@ paragraph = nil
 
 [^ARC-unsuitable-caching-mechanism]: ARC 에선 약한 참조를 '단순 임시 저장 구조 (simple caching mechanism)' 를 만드는 용도로는 사용하지 않는다는 의미입니다.
 
-[^unowned-reference]: 이 그림을 보면 '소유하지 않는 (unowned) 참조' 라는 이름의 의미를 이해할 수 있습니다. 이 두 인스턴스의 관계를 살펴보면, 고객은 신용 카드를 '소유' 하고 있지만, 신용 카드는 고객을 '소유' 하고 있지 않습니다. 다시 말해서, 고객은 신용 카드를 바꿀 수 있지만, 신용 카드는 고객을 바꿀 수 없습니다. 그러므로 외부에서 직접 '신용 카드' 를 참조하는 변수가 없습니다.
+[^unowned-reference]: 이 그림을 보면 '소유하지 않는 참조 (unowned reference)' 라는 이름의 의미를 알 수 있습니다. 고객은 신용 카드를 소유하지만, 신용 카드는 고객을 소유하지 않습니다. 실제 세계에 빗대어 보면, 고객은 신용 카드를 바꿀 수 있지만, 신용 카드는 고객을 바꿀 수 없습니다. 그러므로, 외부에서 신용 카드를 직접 참조하는 변수도 없습니다.
 
 [^does-not-own]: 앞서 말한 것처럼, 이것이 '소유하지 않는 (unowned) 참조' 라고 하는 이유입니다.
 
