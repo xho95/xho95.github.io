@@ -324,7 +324,7 @@ john = nil
 
 클래스로의 옵셔널 참조를 소유하지 않는 걸로 표시할 수 있습니다. ARC 소유권 모델 (ARC ownership model) 관점에선, 동일한 상황에서 소유하지 않는 옵셔널 참조와 약한 참조 둘 다 사용할 수 있습니다. 차이점은 소유하지 않는 옵셔널 참조를 사용할 땐, 항상 유효한 객체를 참조하고 있는지 또는 `nil` 로 설정한게 확실한지 직접 책임진다는 점입니다.
 
-학교에서 한 특별한 학과 (department) 가 제안할 교과목 (courses) 을 추적하는 예제는 이렇습니다:
+학교에서 한 특별한 학과 (department) 가 제안한 교육 과정 (courses) 을 추적하는 예제는 이렇습니다:
 
 ```swift
 class Department {
@@ -348,9 +348,9 @@ class Course {
 }
 ```
 
-`Department` 는 '학과' 가 제안한 각 '교과' 에 대한 '강한 참조' 를 유지합니다. 'ARC 소유권 모델' 에서는, '학과' 가 '교과' 를 소유합니다. `Course` 는 두 개의 '소유하지 않는 참조' 를 가지는데, 하나는 학과에 대한 것이고 다른 하나는 학생들이 그 다음으로 배워야 할 교과에 대한 것입니다; '교과 (course)' 는 이 객체 중 어느 것도 소유하지 않습니다. [^does-not-own] 모든 교과는 어떠한 학과의 일부분이므로 `department` 속성은 '옵셔널' 이 아닙니다. 하지만, 일부 교과는 권장할 만한 후속 교과를 가지지 않기 때문에, `nextCourse` 속성은 '옵셔널' 입니다.
+`Department` 는 학과가 제안한 각각의 교육 과정으로의 강한 참조를 유지합니다. ARC 소유권 모델에선, 학과가 자신의 교육 과정을 소유합니다. `Course` 엔 두 개의 소유하지 않는 참조가 있으며, 하나는 학과로 향하고 다른 하나는 학생이 그 다음 들어야 할 교육 과정으로 향하는데; 교육 과정은 이 두 객체 중 어느 것도 소유하지 않습니다. 모든 교육 과정은 어떠한 학과의 일부라서 `department` 속성은 옵셔널이 아닙니다. 하지만, 일부 교육 과정엔 뒤따라서 추천할 교육 과정이 없기 때문에, `nextCourse` 속성은 옵셔널입니다.
 
-다음은 이 클래스들을 사용하는 예제입니다:
+이 클래스들을 사용한 예제는 이렇습니다:
 
 ```swift
 let department = Department(name: "Horticulture")
@@ -364,7 +364,7 @@ intermediate.nextCourse = advanced
 department.courses = [intro, intermediate, advanced]
 ```
 
-위 코드는 '학과' 와 그것의 세 '교과' 를 생성합니다. '입문편 (intro)' 과 '중급편 (intermediate)' 둘 다 `nextCourse` 속성에 그 다음으로 제안할 교과를 저장하는데, 학생이 이걸 완료한 후에 받아야 할 교과에 대한 '소유하지 않는 옵셔널 참조' 를 유지합니다.
+위 코드는 한 학과 및 그의 세 교육 과정을 생성합니다. 입문 (intro) 및 중급 (intermediate) 둘 다 그 다음으로 제안할 교육 과정을 자신의 `nextCourse` 속성에 저장하는데, 학생이 이걸 완료한 후에 들어야 할 교육 과정에 대한 소유하지 않는 옵셔널 참조를 유지합니다.
 
 ![Unowned Optional Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-optional-reference.png)
 
@@ -626,8 +626,6 @@ paragraph = nil
 [^ARC-unsuitable-caching-mechanism]: ARC 에선 약한 참조를 '단순 임시 저장 구조 (simple caching mechanism)' 를 만드는 용도로는 사용하지 않는다는 의미입니다.
 
 [^unowned-reference]: 이 그림을 보면 '소유하지 않는 참조 (unowned reference)' 라는 이름의 의미를 알 수 있습니다. 고객은 신용 카드를 소유하지만, 신용 카드는 고객을 소유하지 않습니다. 실제 세계에 빗대어 보면, 고객은 신용 카드를 바꿀 수 있지만, 신용 카드는 고객을 바꿀 수 없습니다. 그러므로, 외부에서 신용 카드를 직접 참조하는 변수도 없습니다.
-
-[^does-not-own]: 앞서 말한 것처럼, 이것이 '소유하지 않는 (unowned) 참조' 라고 하는 이유입니다.
 
 [^wraps]: 여기서 '포장한다 (wrap)' 는 것은 값을 '옵셔널로 포장한다' 는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `Optional<Int>` 타입인데, `1` 이라는 `Int` 값을 옵셔널로 포장하고 있는 것입니다. '옵셔널' 에 대한 더 자세한 내용은, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 부분을 참고하기 바랍니다.
 
