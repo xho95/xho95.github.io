@@ -438,7 +438,7 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 스위프트는 이 문제의 우아한 풀이법으로, _클로저가 붙잡을 목록 (closure capture list)_ 이라는 걸, 제공합니다. 하지만, 클로저가 붙잡을 목록으로 강한 참조 순환을 끊는 방법을 배우기 전에,  그런 순환을 일으킬 수 있는 방법을 이해햐는 게 유용합니다.
 
-아래 예제는 `self` 를 참조하는 클로저가 사용될 때 '강한 참조 순환' 을 생성할 수 있는 방법을 보여줍니다. 이 예제는, HTML 문서에 있는 개별 원소에 대한 간단한 모델을 제공하는, `HTMLElement` 라는 클래스를 정의합니다:
+아래 예제는 `self` 를 참조한 클로저를 사용할 때 강한 참조 순환을 생성할 수 있는 방법을 보여줍니다. 이 예제는 `HTMLElement` 라는 클래스를 정의하여, HTML 문서 안의 개별 원소를 단순하게 모델링합니다:
 
 ```swift
 class HTMLElement {
@@ -464,15 +464,15 @@ class HTMLElement {
 }
 ```
 
-`HTMLElement` 클래스는, '제목 원소' 일 때는 `"h1"`, '문단 원소' 일 때는 `"p"`, '줄 끊음 원소' 일 때는 `"br"` 이라고 하는, 원소 이름을 지시하는, `name` 속성을 정의합니다. `HTMLElement` 는 해당 HTML 원소 안에서 그리는 '문장 (text)' 을 표현할 문자열을 설정하기 위해 '옵셔널 `text` 속성' 도 정의합니다.
+`HTMLElement` 클래스는 `name` 속성을 정의하여, 제목 원소면 `"h1"`, 문단 원소면 `"p"`, 줄 끊음 원소면 `"br"` 같은, 원소 이름을 지시합니다. `HTMLElement` 는 옵셔널 `text` 속성도 정의하는데, 여기에 문자열을 설정하면 그 HTML 원소 안에 그릴 텍스트를 나타낼 수 있습니다.
 
-이 단순한 두 속성에 더하여, `HTMLElement` 클래스는 `asHTML` 이라는 '느긋한 (lazy) 속성'[^lazy] 도 정의합니다. 이 속성은 `name` 과 `text` 를 'HTML 문자열 조각' 으로 조합하는 클로저를 참조합니다. `asHTML` 속성은 `() -> String`, 또는 "매개 변수를 취하지 않고, `String` 값을 반환하는 함수" 타입 입니다.
+이 단순한 두 속성에 더해, `HTMLElement` 클래스는 `asHTML` 이라는 느긋한 속성[^lazy] 도 정의합니다. 이 속성은 `name` 과 `text` 를 HTML 문자열 조각으로 조합하는 클로저를 참조합니다. `asHTML` 속성의 타입은 `() -> String`, 또는 "매개 변수가 없고, `String` 값을 반환하는 함수" 입니다.
 
-기본적으로, `asHTML` 속성에는 'HTML 꼬리표 (tag)' 의 '문자열 표현' 을 반환하는 클로저를 할당합니다. 이 '꼬리표' 는 `text` 가 존재하면 '옵셔널 `text` 값' 을 담고, 존재하지 않으면 아무 내용물도 담고 있지 않습니다. '문단 원소' 일 때는, `text` 속성이 `"some text"` 인지 `nil` 인지에 따라, 클로저가 `"<p>some text</p>"` 나 `<p />` 를 반환할 것입니다.
+기본적으로, `asHTML` 속성에 할당한 클로저는 HTML 꼬리표를 문자열로 나타낸 걸 반환합니다. 이 꼬리표는 `text` 가 존재하면 그 옵셔널 값을, 존재하지 않으면 아무런 텍스트 내용물도 담지 않습니다. 문단 원소면, `text` 속성이 `"some text"` 또는 `nil` 과 같은지에 따라, 클로저가 `"<p>some text</p>"` 나 `<p />` 를 반환할 것입니다.
 
-`asHTML` 속성의 이름과 사용법은 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 은 '인스턴스 메소드' 보다는 '클로저 속성' 이기 때문에, 특별한 HTML 원소에 대하여 'HTML 그림 방식 (rendering)' 을 바꾸고 싶으면, `asHTML` 속성 기본 값을 '사용자 정의 클로저' 로 대체할 수 있습니다.
+`asHTML` 속성의 이름과 사용법은 어느 정도 인스턴스 메소드와 비슷합니다. 하지만, `asHTML` 은 인스턴스 메소드라기 보단 클로저 속성이기 때문에, 한 특별한 HTML 원소의 그림 방식을 바꾸고 싶으면, `asHTML` 속성의 기본 값을 자신만의 클로저로 대체할 수 있습니다.
 
-예를 들어, 비어 있는 'HTML 꼬리표' 를 반환하지 못하도록, `text` 속성이 `nil` 이면 기본 문장을 부여하는 클로저를 `asHTML` 속성에 설정할 수 있을 것입니다:
+예를 들어, 빈 HTML 꼬리표를 반환하지 못하게, `text` 속성이 `nil` 이면 어떠한 텍스트가 기본이 되는 클로저를 `asHTML` 속성에 설정할 수 있을 겁니다:
 
 ```swift
 let heading = HTMLElement(name: "h1")
@@ -481,38 +481,38 @@ heading.asHTML = {
   return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
 }
 print(heading.asHTML())
-// "<h1>some default text</h1>" 를 인쇄합니다.
+// "<h1>some default text</h1>" 를 인쇄함
 ```
 
-> `asHTML` 속성은,  원소가 실제로 어떤 HTML 출력 대상에 대한 문자열 값으로 그려야 할 때에만 필요하기 때문에, '느긋한 (lazy) 속성' 이라고 선언합니다. `asHTML` 이 '느긋한 속성' 이라는 사실은, 초기화를 완료하여 `self` 가 존재함을 알기 전까지 '느긋한 속성' 에 접근하지 않을 것이기 때문에, '기본 클로저' 에서 `self` 를 참조할 수 있다는 의미입니다.s
+> `asHTML` 속성을 느긋한 속성으로 선언한 건, 실제로 어떠한 HTML 출력 대상에 문자열 값을 그릴 필요가 있을 때만 원소가 필요하기 때문입니다. `asHTML` 이 느긋한 속성이란 사실은 기본 클로저 안에서 `self` 를 참조할 수 있다는 의미인데, 초기화를 완료하여 `self` 의 존재를 알기 전까진 느긋한 속성에 접근하지 않을 것이기 때문입니다.
 
-`HTMLElement` 클래스는, `name` 인자와 (원할 경우) `text` 인자를 취하여 새로운 원소를 초기화하는, '단일 초기자' 를 제공합니다. 클래스는, `HTMLElement` 인스턴스를 해제할 때 보여줄 메시지를 인쇄하는, '정리자' 도 정의합니다:
+`HTMLElement` 클래스가 제공한 단일 초기자는, `name` 인자와 (원할 경우) 새 원소를 초기화하는 `text` 인자를 취합니다. 클래스는 정리자도 정의하는데, 이는 `HTMLElement` 인스턴스가 해제할 때를 보여주는 메시지를 인쇄합니다:
 
-다음은 `HTMLElement` 클래스를 사용하여 새로운 인스턴스를 생성하고 출력하는 방법입니다:
+`HTMLElement` 클래스로 새로운 인스턴스를 생성하고 출력하는 방법은 이렇습니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>" 를 인쇄합니다.
+// "<p>hello, world</p>" 를 인쇄함
 ```
 
-> 위에 있는 `paragraph` 변수를 _옵셔널 (optional)_ `HTMLElement` 로 정의하여, '강한 참조 순환' 이 있음을 실증하고자 아래에서 `nil` 로 설정할 수 있습니다.
+> 위의 `paragraph` 변수를 _옵셔널 (optional)_ `HTMLElement` 로 정의하여, 아래에서 `nil` 로 설정할 수 있어서 강한 참조 순환이 있다는 걸 실증할 수 있습니다.
 
-불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 '기본 `asHTML` 값' 에 사용할 클로저 사이에 '강한 참조 순환' 을 생성합니다. 다음은 '순환' 을 보인 것입니다:
+불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 기본 `asHTML` 값이 사용한 클로저 사이에 강한 참조 순환을 생성합니다. 순환은 이렇게 보입니다:
 
 ![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
 
-인스턴스의 `asHTML` 속성은 클로저에 대한 '강한 참조' 를 쥐고 있습니다. 하지만, 클로저가 자신의 본문에서 (`self.name` 과 `self.text` 참조 방식으로) `self` 를 참조하기 때문에, 클로저는 'self' 를 _붙잡게 (capture)_ 되며, 이는 다시 `HTMLElement` 인스턴스에 대한 '강한 참조' 를 쥔다는 의미입니다. 둘 사이에 '강한 참조 순환' 을 생성합니다. (클로저의 '값 붙잡기' 에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
+인스턴스의 `asHTML` 속성은 자신의 클로저로의 강한 참조를 쥡니다. 하지만, 클로저가 (`self.name` 과 `self.text` 를 참조하는 식으로) 자신의 본문 안에서 `self` 를 참조하기 때문에, 클로저가 'self' 를 _붙잡으며 (capture)_, 이는 `HTMLElement` 인스턴스로의 강한 참조를 되돌려 쥔다는 걸 의미합니다. 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
 
-> 클로저가 `self` 를 여러 번 참조할지라도, `HTMLElement` 인스턴스에 대한 '강한 참조' 하나만을 붙잡습니다.
+> 클로저가 `self` 를 여러 번 참조할지라도, `HTMLElement` 인스턴스로의 강한 참조는 하나만 붙잡습니다.
 
-`paragraph` 변수를 `nil` 로 설정하여 `HTMLElement` 인스턴스에 대한 '강한 참조' 를 끊는 경우, '강한 참조 순환' 때문에, `HTMLElement` 인스턴스와 클로저 어느 쪽도 해제되지 않습니다:
+`paragraph` 변수에 `nil` 을 설정하여 `HTMLElement` 인스턴스로의 강한 참조를 끊으면, 강한 참조 순환 때문에, `HTMLElement` 인스턴스나 자신의 클로저 어느 것도 해제하지 않습니다:
 
 ```swift
 paragraph = nil
 ```
 
-'`HTMLElement` 정리자' 에 있는 메시지는 인쇄되지 않으며, 이는 `HTMLElement` 인스턴스가 해제되지 않음을 보인다는 것을 기억하기 바랍니다.
+`HTMLElement` 정리자 안의 메시지를 인쇄하지 않아서, `HTMLElement` 인스턴스를 해제하지 않음을 보여주는 걸 기억하기 바랍니다.
 
 ### Resolving Strong Reference Cycles for Closures (클로저에 대한 강한 참조 순환 해결하기)
 
@@ -631,7 +631,7 @@ paragraph = nil
 
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
-[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
+[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
 
 [^capture-list-place]: 사실 본문에 있는 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 '붙잡을 목록' 은 클로저 본문 맨 앞에 둔다고 생각하면 됩니다.
 
