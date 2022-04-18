@@ -518,28 +518,28 @@ paragraph = nil
 
 클로저와 클래스 인스턴스 사이의 강한 참조 순환을 해결하려면 클로저 정의 부분에 _붙잡을 목록 (capture list)_ 을 정의하면 됩니다. 붙잡을 목록은 클로저 본문 안에서 하나 이상의 참조 타입을 붙잡을 때 사용할 규칙을 정의합니다. 두 클래스 인스턴스 사이의 강한 참조 순환 처럼, 각각의 붙잡을 참조를 강한 참조 보단 약한 또는 소유하지 않는 참조로 선언합니다. 약한 또는 소유하지 않음을 적절하게 선택하는 건 다른 코드와의 관계에 달려 있습니다.
 
-> 스위프트는 클로저 안에서 `self` 의 멤버를 참조할 때마다 (그냥 `someProperty` 나 `someMethod()` 라고 하기 보단) `self.someProperty` 나 `self.someMethod()` 라고 작성하길 요구합니다. 이는 우연히 `self` 를 붙잡는 사고가 가능하다는 걸 떠올리도록 돕습니다.
+> 스위프트는 클로저 안에서 `self` 의 멤버를 참조할 때마다 (그냥 `someProperty` 나 `someMethod()` 라고 하기 보단) `self.someProperty` 나 `self.someMethod()` 라고 작성하길 요구합니다. 이는 우연히 `self` 를 붙잡을 가능성이 있음을 떠올리게 합니다.
 
 #### Defining a Capture List (붙잡을 목록 정의하기)
 
-'붙잡을 목록' 에 있는 각각의 항목은 (`self` 같은) 클래스 인스턴스나 (`delegate = self.delegate` 같은) 값으로 초기화된 변수에 대한 참조를 가진 `weak` 또는 `unowned` 키워드 '쌍 (pairing)' 입니다. 이 쌍들은, 쉼표로 구분된, 한 쌍의 대괄호 안에 작성합니다.
+붙잡을 목록의 각 항목은 `weak` 또는 `unowned` 키워드와 (`self` 같은) 클래스 인스턴스 또는 (`delegate = self.delegate` 같이) 어떠한 값으로 초기화한 변수로의 참조가 쌍을 이룬 것입니다. 이 쌍들은 한 쌍의 대괄호 안에, 쉼표로 구분하여, 작성합니다.
 
-클로저가 매개 변수 목록과 반환 타입을 제공하는 경우 '붙잡을 목록' 을 그 앞에 둡니다:
+클로저가 매개 변수 목록과 반환 타입을 제공하면 그 앞에 붙잡을 목록을 둡니다:
 
 ```swift
 lazy var someClosure = {
   [unowned self, weak delegate = self.delegate]
   (index: Int, stringToProcess: String) -> String in
-  // 클로저 본문은 여기에 둡니다.
+  // 클로저 본문은 여기에 둠
 }
 ```
 
-클로저가 매개 변수 목록이나 반환 타입을 상황으로 추론할 수 있기 때문에 지정하지 않는 경우, '붙잡을 목록' 을 클로저 맨 앞에 두며, 그 뒤로 `in` 키워드가 따라옵니다:[^capture-list-place]
+클로저가 상황으로 추론할 수 있기 때문에 매개 변수 목록이나 반환 타입을 지정하지 않으면, 붙잡을 목록을 클로저 시작 부분에 두고, 그 뒤에 `in` 키워드가 따라옵니다:[^capture-list-place]
 
 ```swift
 lazy var someClosure = {
   [unowned self, weak delegate = self.delegate] in
-  // 클로저 본문은 여기에 둡니다.
+  // 클로저 본문은 여기에 둠
 }
 ```
 
@@ -633,6 +633,6 @@ paragraph = nil
 
 [^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
 
-[^capture-list-place]: 사실 본문에 있는 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 '붙잡을 목록' 은 클로저 본문 맨 앞에 둔다고 생각하면 됩니다.
+[^capture-list-place]: 사실, 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 붙잡을 목록은 클로저 본문 맨 앞에 둔다라고 생각하면 됩니다.
 
 [^weak-capture-nil]: '약한 참조' 가 자동으로 `nil` 이 되므로, 해당 참조가 `nil` 인지를 검사하여 인스턴스가 존재하는지를 클로저 안에서도 확인할 수 있다는 의미입니다.
