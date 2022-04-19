@@ -578,9 +578,9 @@ class HTMLElement {
 }
 ```
 
-이 `HTMLElement` 구현은, `asHTML` 클로저에 '붙잡을 목록' 을 추가한 것을 빼면, 이전 구현과 모든 점에서 똑같습니다. 이 경우, '붙잡을 목록' 은, "'강한 참조' 보다는 '소유하지 않는 참조' 로 'self' 를 붙잡을 것" 을 의미하는, `[unowned self]` 입니다.  
+이 `HTMLElement` 구현은, `asHTML` 클로저 안에서 붙잡을 목록의 추가만 제쳐 놓으면, 이전 구현과 완전히 똑같습니다. 이 경우, 붙잡을 목록은 `[unowned self]` 인데, 이는 "'self' 를 강한 참조 보단 소유하지 않는 참조로 붙잡아라" 는 의미입니다.
 
-이전 처럼 `HTMLElement` 인스턴스를 생성하고 출력할 수 있습니다:
+`HTMLElement` 인스턴스의 생성과 인쇄는 이전 처럼 할 수 있습니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
@@ -588,11 +588,11 @@ print(paragraph!.asHTML())
 // "<p>hello, world</p>" 를 인쇄합니다.
 ```
 
-다음은 '붙잡을 목록' 이 제자리에 있을 때의 '참조' 를 보인 것입니다:
+붙잡을 목록이 제자리에 있는 참조는 이렇게 보입니다:
 
 ![Resloving of Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-resolved.jpg)
 
-이번에는, 클로저가 `self` 를 '소유하지 않는 참조' 로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 '강한 참조' 를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 인쇄하는 것으로 볼 수 있는 것처럼, `HTMLElement` 인스턴스를 해제합니다:
+이번엔, 클로저가 `self` 를 '소유하지 않는 참조' 로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 '강한 참조' 를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 인쇄하는 것으로 볼 수 있는 것처럼, `HTMLElement` 인스턴스를 해제합니다:
 
 ```swift
 paragraph = nil
