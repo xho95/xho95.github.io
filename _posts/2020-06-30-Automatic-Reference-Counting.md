@@ -592,14 +592,14 @@ print(paragraph!.asHTML())
 
 ![Resloving of Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-resolved.jpg)
 
-이번엔, 클로저가 `self` 를 '소유하지 않는 참조' 로 붙잡으며, 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수에 있는 '강한 참조' 를 `nil` 로 설정하면, 아래 예제에서 정리자 메시지를 인쇄하는 것으로 볼 수 있는 것처럼, `HTMLElement` 인스턴스를 해제합니다:
+이번에, 클로저가 붙잡은 `self` 는 소유하지 않는 참조라, 자신이 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수로부터의 강한 참조에 `nil` 을 설정하면, 아래 예제에서 정리자 메시지를 인쇄하는 걸로 볼 수 있듯이, `HTMLElement` 인스턴스를 해제합니다:
 
 ```swift
 paragraph = nil
-// "p is being deinitialized" 를 인쇄합니다.
+// "p is being deinitialized" 를 인쇄함
 ```
 
-'붙잡을 목록' 에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 를 참고하기 바랍니다.
+붙잡을 목록에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 을 참고하기 바랍니다.
 
 ### 다음 장
 
