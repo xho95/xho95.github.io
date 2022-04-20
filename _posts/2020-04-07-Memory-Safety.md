@@ -40,17 +40,17 @@ print("We're number \(one)!")
 >
 > 단일 쓰레드 안에서 메모리 접근이 충돌하면, 컴파일 시간 또는 실행 시간에 에러를 가지는 걸 스위프트가 보증합니다. 다중 쓰레드 코드에선, [Thread Sanitizer (쓰레드 살균제)](https://developer.apple.com/documentation/code_diagnostics/thread_sanitizer)[^Thread-Sanitizer] 를 사용하면 쓰레드 간의 접근 충돌 탐지를 도와줍니다.
 
-#### Characteristics of Memory Access (메모리 접근의 성질)
+#### Characteristics of Memory Access (메모리 접근 고유의 성질)
 
-접근이 충돌하는 상황에서 고려해야 할 '메모리 접근의 성질' 은 세 가지가 있습니다: 접근이 읽기인지 쓰기인지, 접근의 지속 시간, 그리고 접근 중인 메모리의 위치가 그것입니다. 특히, 두 접근이 다음의 모든 조건에 부합할 경우 충돌이 일어납니다:
+접근 충돌 상황에서 고려할 메모리 접근의 고유 성질엔 세 가지가 있는데: 읽기 또는 쓰기 접근인지, 접근 지속 시간, 및 접근할 메모리의 장소가 그것입니다. 특히, 모든 다음 조건에 부합하는 두 접근이 있으면 충돌이 일어납니다:
 
-* 최소한 하나는 '쓰기 접근' 또는 '원자적이 아닌 (nonatomic) 접근'[^nonatomic] 입니다.
-* 똑같은 위치의 메모리에 접근합니다.
+* 적어도 하나는 쓰기 접근 또는 원자적이 아닌 접근[^nonatomic] 입니다.
+* 동일한 메모리 장소에 접근합니다.
 * 지속 시간이 겹칩니다.
 
-읽기 접근과 쓰기 접근의 차이점은 대체로 명백합니다: 쓰기 접근은 그 위치의 메모리를 바꾸지만, 읽기 접근은 아닙니다. 메모리 위치라는 건 접근하고 있는 것이 무엇-예를 틀어, 변수, 상수, 또는 속성-인진를 말하는 것입니다. 메모리 접근의 '지속 시간' 은 '순간적 (instantaneous)' 이거나 '장기적 (long-term)' 입니다.
+읽기 및 쓰기 접근의 차이는 대체로 명백한데: 쓰기 접근은 그 장소의 메모리를 바꾸지만, 읽기 접근은 아니라는 겁니다. 메모리 장소란 접근하는게 뭔지-예를 틀어, 변수나, 상수, 또는 속성-인지를 말합니다. 메모리 접근의 지속 시간은 순식간 (instantaneous) 이거나 장-기간 (long-term) 입니다.
 
-연산이 _원자적 (atomic)_ 이라는 것은 C-언어의 '원자적인 (atomic) 연산' 만을 사용하는 경우입니다; 그 외 경우라면 '원자적이 아닌 (nonatomic)' 것입니다. 이 함수들의 목록은, `stdatomic(3)` 의 '매뉴얼 페이지 (man page)'[^man-page] 를 참고하기 바랍니다.
+C-언어의 원자적 (atomic) 연산만 사용하면 연산이 _원자적 (atomic)_ 이며; 그 외 경우라면 원자적이 아닌 (nonatomic) 겁니다. 이 함수들의 목록은, `stdatomic(3)` 매뉴얼 페이지 (man page)[^man-page] 를 참고하기 바랍니다.
 
 접근이 _순간적 (instantaneous)_ 이라는 것은 해당 접근을 시작한 후에는 끝나기 전까지 다른 코드를 실행하는 것이 불가능한 경우입니다. 태생적으로, 두 개의 '순간적인 접근' 이 동시에 발생할 수는 없습니다. 대부분의 메모리 접근은 '순간적' 입니다. 예를 들어, 아래 나열한 코드에 있는 모든 읽기 접근과 쓰기 접근은 '순간적' 입니다:
 
@@ -218,9 +218,9 @@ func someFunction() {
 
 [^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 참고하기 바랍니다.
 
-[^nonatomic]: '원자적이 아닌 접근 (nonatomic access)' 은 본문 뒤에 이어서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이외의 함수를 사용하여 접근하는 것을 말합니다. '원자적 접근' 과 관련해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 문서를 참고하면 좋을 것입니다.
+[^nonatomic]: '원자적이 아닌 접근 (nonatomic access)' 은 뒤의 본문에서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이 아닌 함수로 접근하는 것을 의미합니다. '원자적 접근' 에 대해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 항목을 참고하기 바랍니다.
 
-[^man-page]: '매뉴얼 페이지 (man page)' 는 터미널에서 `man` 명령어를 사용하여 각종 명령어들의 메뉴얼을 나타낸 페이지입니다. 'macOS' 의 터미널에서 `$ man stdatomic` 과 같은 명령을 수행하면 됩니다. 해당 메뉴얼을 보면 '원자적인 연산 (atomic operations)' 앞에는 `atomic_` 이라는 접두사가 붙은 것을 볼 수 있습니다.
+[^man-page]: '매뉴얼 페이지 (man page)' 란 터미널에서 `man` 명령어로 해당 명령어의 매뉴얼을 출력한 페이지를 말합니다. 본문에 있는 `stdatomic(3)` 의 매뉴얼 페이지를 보려면 macOS 의 터미널에서 `$ man stdatomic` 라고 명령하면 됩니다. 해당 매뉴얼을 보면 원자적 연산은 앞에 `atomic_` 이라는 접두사가 붙는다는 걸 알 수 있습니다.
 
 [^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장에 있는 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
