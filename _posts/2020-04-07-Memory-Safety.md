@@ -86,7 +86,7 @@ increment(&stepSize)
 // 에러: stepSize 로의 접근 충돌
 ```
 
-위 코드에서, `stepSize` 는 전역 변수이며, `increment(_:)` 안에서 보통 접근 가능합니다. 하지만, `stepSize` 에 대한 읽기 접근은 `number` 에 대한 쓰기 접근과 겹칩니다. 아래 그림에서 보인 것처럼, `number` 와 `stepSize` 둘 다 똑같은 메모리 위치를 참조합니다. 읽기 접근과 쓰기 접근이 똑같은 메모리를 참조하며 겹치고 있으므로[^three-rules], 충돌을 만듭니다.
+위 코드에서, `stepSize` 는 전역 변수며, 보통은 `increment(_:)` 안에서 접근 가능합니다. 하지만, `stepSize` 로의 읽기 접근은 `number` 로의 쓰기 접근과 겹칩니다. 아래 그림에서 보는 것처럼, `number` 와 `stepSize` 는 둘 다 동일한 장소의 메모리를 참조합니다. 읽기 접근과 쓰기 접근이 똑같은 메모리를 참조하며 겹치고 있으므로[^three-rules], 충돌을 만듭니다.
 
 ![in-out parameters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
 
