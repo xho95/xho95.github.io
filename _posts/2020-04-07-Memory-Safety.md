@@ -118,11 +118,11 @@ balance(&playerOneScore, &playerTwoScore)   // 괜찮음
 balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 로의 접근 충돌
 ```
 
-위의 `balance(_:_:)` 함수는 두 매개 변수를 이들의 총합을 공평하게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 를 가지고 호출하는 것은 충돌을 만들지 않습니다-두 쓰기 접근의 시간이 겹치지만, 서로 다른 메모리 위치에 접근합니다. 이와 대조적으로, `playerOneScore` 를 두 매개 변수의 값으로 전달하는 것은 동시에 똑같은 메모리 위치에 두 개의 쓰기 접근을 하려고 하기 때문에 충돌을 만듭니다.
+위의 `balance(_:_:)` 함수는 자신의 두 매개 변수를 이들의 총합으로 공평하게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 로 호출하면 충돌을 만들지 않는데-쓰기 접근 두 개가 시간은 겹치지만, 서로 다른 위치의 메모리에 접근해서 입니다. 이와 대조적으로, `playerOneScore` 를 두 매개 변수의 값으로 전달하면 충돌을 만드는데 이는 동시에 동일한 장소의 메모리에 두 개의 쓰기 접근을 하려고 하기 때문입니다.
 
-> 연산자도 함수이기 때문에, 이들도 입-출력 매개 변수에 대해 '장기적인 접근' 을 합니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 이름의 '연산자 함수' 였다면, `playerOneScore <^> playerOneScore` 라고 작성하는 것은 `balance(&playerOneScore, &playerOneScore)` 라는 것과 똑같은 충돌이 되버립니다.
+> 연산자도 함수기 때문에, 이들도 자신의 입-출력 매개 변수로의 장기적 접근을 합니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 이름의 연산자 함수였다면, `playerOneScore <^> playerOneScore` 라고 작성해도 `balance(&playerOneScore, &playerOneScore)` 와 동일하게 충돌이 될 것입니다.
 
-### Conflicting Access to self in Methods (메소드에서 'self' 에 대한 접근 충돌)
+### Conflicting Access to self in Methods (메소드에서 self 로의 접근 충돌)
 
 구조체에 대한 '변경 메소드'[^mutating-methods] 는 메소드 호출이 지속되는 시간 동안 `self` 에 대한 '쓰기 접근' 을 합니다. 예를 들어, 각각의 참여자가, 피해를 받으면 감소하는, '체력 량' 과, 특수한 능력을 사용하면 감소하는, '에너지 양' 를 가지는 게임을 고려합니다.
 
