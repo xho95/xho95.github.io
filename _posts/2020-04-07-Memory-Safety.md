@@ -122,9 +122,9 @@ balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 로의 접
 
 > 연산자도 함수기 때문에, 이들도 자신의 입-출력 매개 변수로의 장기적 접근을 합니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 이름의 연산자 함수였다면, `playerOneScore <^> playerOneScore` 라고 작성해도 `balance(&playerOneScore, &playerOneScore)` 와 동일하게 충돌이 될 것입니다.
 
-### Conflicting Access to self in Methods (메소드에서 self 로의 접근 충돌)
+### Conflicting Access to self in Methods (메소드 안의 self 로의 접근 충돌)
 
-구조체에 대한 '변경 메소드'[^mutating-methods] 는 메소드 호출이 지속되는 시간 동안 `self` 에 대한 '쓰기 접근' 을 합니다. 예를 들어, 각각의 참여자가, 피해를 받으면 감소하는, '체력 량' 과, 특수한 능력을 사용하면 감소하는, '에너지 양' 를 가지는 게임을 고려합니다.
+구조체의 변경 메소드[^mutating-methods] 는 메소드 호출의 지속 시간 동안 `self` 로의 쓰기 접근을 합니다. 예를 들어, 게임의 각 참가자가, 피해를 받으면 감소하는, 체력 량과, 특수 능력을 쓰면 감소하는, 에너지 양을, 가진다고 고려합니다.
 
 ```swift
 struct Player {
@@ -226,7 +226,7 @@ func someFunction() {
 
 [^three-rules]: 즉, 앞에서 말한 충돌이 일어나는 세 가지 조건 모두에 부합합니다. 세 가지 조건 중 하나라도 해당이 안되면, 충돌은 일어나지 않습니다.
 
-[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장에 있는 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
+[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
 
 [^safe-overlap]: 이어지는 내용에서 설명하는 것처럼, 구조체를 '지역 변수' 에 저장한 경우, 해당 속성에 대한 접근이 겹쳐도 컴파일러가 안전함을 증명할 수 있다면 충돌이 발생하지 않습니다.
 
