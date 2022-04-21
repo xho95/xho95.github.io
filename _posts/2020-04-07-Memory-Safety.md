@@ -164,21 +164,21 @@ oscar.shareHealth(with: &oscar)
 // 에러: oscar 로의 접근 충돌
 ```
 
-변경 메소드는 메소드 지속 시간 동안 `self` 로의 쓰기 접근을 할 필요가 있고, 입-출력 매개 변수는 동일 지속 시간 동안 `teammate` 로의 쓰기 접근을 할 필요가 있습니다. 아래 그림에 보는 것처럼-메소드 안에서, `self` 와 `teammate` 둘 다 동일한 장소의 메모리를 참조합니다. 두 쓰기 접근이 동일한 메모리를 참조하며 서로 겹치므로, 충돌을 만들어 냅니다.
+변경 메소드는 메소드 지속 시간 동안 `self` 로의 쓰기 접근을 할 필요가 있고, 입-출력 매개 변수는 동일 지속 시간 동안 `teammate` 로의 쓰기 접근을 할 필요가 있습니다. 아래 그림에 보는 것처럼-메소드 안에서, `self` 와 `teammate` 둘 다 동일한 장소의 메모리를 참조합니다. 두 쓰기 접근이 동일한 메모리를 참조하며 서로 겹치므로, 충돌을 만듭니다.
 
 ![access the same memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-same-memory.jpg)
 
-### Conflicting Access to Properties (속성에 대한 접근 충돌)
+### Conflicting Access to Properties (속성으로의 접근 충돌)
 
-구조체, 튜플, 그리고 열거체 같은 타입은, 구조체의 속성이나 튜플의 원소 같은, '개별 구성 요소 값들' 로 이루어집니다. 이들은 '값 타입' 이기 때문에, 값의 일부를 변경하면 전체 값이 변경되며, 이는 '속성 하나에 대한 읽기나 쓰기 접근' 이 '전체 값에 대한 읽기나 쓰기 접근' 을 요구한다는 의미입니다. 예를 들어, 튜플 원소들에 대한 쓰기 접근이 겹치면 충돌을 만듭니다:
+구조체와, 튜플, 및 열거체 같은 타입은, 구조체의 속성 또는 튜플의 원소 같이, 개별 구성 요소 값으로 이루어집니다. 이들은 값 타입이기 때문에, 어떤 조각의 값을 변경하든 값 전체를 변경하며, 이는 속성 하나로의 읽기 또는 쓰기 접근도 값 전체로의 읽기 또는 쓰기 접근을 요구한다는 걸 의미합니다. 예를 들어, 튜플 원소로의 쓰기 접근이 겹치면 충돌을 만듭니다:
 
 ```swift
 var playerInformation = (health: 10, energy: 20)
 balance(&playerInformation.health, &playerInformation.energy)
-// 에러: playerInformation 의 속성에 대한 접근 충돌
+// 에러: playerInformation 의 속성으로의 접근 충돌
 ```
 
-위 예제에서, 튜플 원소에 대해 `balance(_:_:)` 를 호출하면 `playerInformation` 에 대한 쓰기 접근이 겹치기 때문에 충돌을 만듭니다. `playerInformation.health` 와 `playerInformation.energy` 둘 다 '입-출력 매개 변수' 로 전달하는데, 이는 함수 호출의 지속 시간 동안 `balance(_:_:)` 가 이들에 대한 쓰기 접근을 할 필요가 있다는 의미입니다. 두 경우 모두, '튜플 원소에 대한 쓰기 접근' 은 '전체 튜플에 대한 쓰기 접근' 을 요구합니다. 이는 `playerInformation` 에 대한 두 쓰기 접근이 지속 시간 동안 서로 겹쳐서, 충돌을 유발한다는 것을, 의미합니다.
+위 예제에서, 튜플 원소에 대해 `balance(_:_:)` 를 호출하면 충돌을 만드는데 이는 `playerInformation` 으로의 쓰기 접근이 겹치기 때문입니다. `playerInformation.health` 와 `playerInformation.energy` 둘 다를 입-출력 매개 변수로 전달하는데, 이것의 의미는 함수 호출의 지속 시간 동안 `balance(_:_:)` 가 이에 쓰기 접근을 할 필요가 있다는 겁니다. 두 경우 모두, 튜플 원소로의 쓰기 접근은 전체 튜플로의 쓰기 접근을 요구합니다. 이는 `playerInformation` 으로의 두 쓰기 접근은 지속 시간이 겹치고, 충돌을 일으킨다는 걸, 의미합니다.
 
 아래 코드는 '전역 변수' 에 저장한 구조체의 속성에 대한 쓰기 접근이 겹쳐도 똑같은 에러가 나타난다는 것을 보여줍니다.
 
@@ -192,7 +192,7 @@ balance(&holly.health, &holly.energy)   // 에러
 ```swift
 func someFunction() {
   var oscar = Player(name: "Oscar", health: 10, energy: 10)
-  balance(&oscar.health, &oscar.energy)   // 괜찮습니다
+  balance(&oscar.health, &oscar.energy)   // 괜찮음
 }
 ```
 
