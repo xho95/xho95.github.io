@@ -48,7 +48,7 @@ print("We're number \(one)!")
 * 동일한 장소의 메모리에 접근합니다.
 * 지속 시간이 겹칩니다.
 
-읽기 및 쓰기 접근의 차이는 대체로 명백한데: 쓰기 접근은 그 장소의 메모리를 바꾸지만, 읽기 접근은 아니라는 겁니다. 메모리 장소란 접근하는게 뭔지-예를 틀어, 변수나, 상수, 또는 속성인지-를 말합니다. 메모리 접근의 지속 시간은 순간적 (instantaneous) 이거나 장기적 (long-term) 입니다.
+읽기 및 쓰기 접근의 차이는 대체로 명백한데: 쓰기 접근은 그 장소의 메모리를 바꾸지만, 읽기 접근은 아니라는 겁니다. 메모리 장소는 접근하고 있는 걸 참조하는데-예를 틀어, 변수나, 상수, 또는 속성 등입니다. 메모리 접근의 지속 시간은 순간적 (instantaneous) 이거나 장기적 (long-term) 입니다.
 
 C-언어의 원자적 연산 (atomic operations) 만 사용하면 연산이 _원자적 (atomic)_ 이며; 그 외의 경우 원자적이 아닙니다 (nonatomic). 이 함수들의 목록은, `stdatomic(3)` 매뉴얼 페이지 (man page)[^man-page] 를 참고하기 바랍니다.
 
@@ -86,25 +86,25 @@ increment(&stepSize)
 // 에러: stepSize 로의 접근 충돌
 ```
 
-위 코드에서, `stepSize` 는 전역 변수며, 보통은 `increment(_:)` 안에서 접근 가능합니다. 하지만, `stepSize` 로의 읽기 접근은 `number` 로의 쓰기 접근과 겹칩니다. 아래 그림에서 보는 것처럼, `number` 와 `stepSize` 는 둘 다 동일한 장소의 메모리를 참조합니다. 읽기 접근과 쓰기 접근이 똑같은 메모리를 참조하며 겹치고 있으므로[^three-rules], 충돌을 만듭니다.
+위 코드에서, `stepSize` 는 전역 변수며, 보통은 `increment(_:)` 안에서 접근 가능합니다. 하지만, `stepSize` 로의 읽기 접근은 `number` 로의 쓰기 접근과 겹칩니다. 아래 그림에서 보는 것처럼, `number` 와 `stepSize` 는 둘 다 동일한 장소의 메모리를 참조합니다. 읽기 및 쓰기 접근이 동일 메모리를 참조하면서 겹치므로,[^three-rules] 충돌을 만듭니다.
 
 ![in-out parameters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
 
-이 충돌을 풀어내는 한 가지 방법은 `stepSize` 의 명시적인 복사본을 만드는 것입니다:
+이 충돌을 푸는 한 가지 방법은 명시적으로 `stepSize` 의 복사본을 만드는 겁니다:
 
 ```swift
-// 명시적인 복사본을 만듭니다.
+// 명시적인 복사본을 만듦.
 var copyOfStepSize = stepSize
 increment(&copyOfStepSize)
 
-// 원본을 갱신합니다.
+// 원본을 업데이트함.
 stepSize = copyOfStepSize
-// stepSize 는 이제 2 입니다.
+// stepSize 는 이제 2 임
 ```
 
-`increment(_:)` 를 호출하기 전에 `stepSize` 복사본을 만들 땐, `copyOfStepSize` 의 값이 현재 '걸음 크기 (step size)' 만큼 증가함이 명확합니다. 읽기 접근은 쓰기 접근이 시작하기 전에 끝나므로, 충돌이 없습니다.
+`increment(_:)` 의 호출 전에 `stepSize` 복사본을 만들 땐, `copyOfStepSize` 값이 현재 걸음 (step size) 만큼 증가하는게 명확합니다. 읽기 접근이 쓰기 접근 시작 전에 끝나므로, 충돌은 없습니다.
 
-'입-출력 매개 변수' 에 대한 '장기적인 쓰기 접근' 의 또다른 결론은 동일한 함수의 여러 '입-출력 매개 변수' 로 단일 변수를 전달하는 것은 충돌을 만든다는 것입니다. 예를 들면 다음과 같습니다:
+입-출력 매개 변수로의 장기적 쓰기 접근의 또 다른 결론은 동일 함수에 있는 여러 입-출력 매개 변수의 인자로 단일한 변수를 전달하면 충돌을 만든다는 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func balance(_ x: inout Int, _ y: inout Int) {
@@ -114,8 +114,8 @@ func balance(_ x: inout Int, _ y: inout Int) {
 }
 var playerOneScore = 42
 var playerTwoScore = 30
-balance(&playerOneScore, &playerTwoScore)   // 됩니다.
-balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 에 대한 접근이 충돌함
+balance(&playerOneScore, &playerTwoScore)   // 괜찮음
+balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 로의 접근 충돌
 ```
 
 위의 `balance(_:_:)` 함수는 두 매개 변수를 이들의 총합을 공평하게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 를 가지고 호출하는 것은 충돌을 만들지 않습니다-두 쓰기 접근의 시간이 겹치지만, 서로 다른 메모리 위치에 접근합니다. 이와 대조적으로, `playerOneScore` 를 두 매개 변수의 값으로 전달하는 것은 동시에 똑같은 메모리 위치에 두 개의 쓰기 접근을 하려고 하기 때문에 충돌을 만듭니다.
@@ -224,7 +224,7 @@ func someFunction() {
 
 [^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
-[^three-rules]: 이 한 문장은, 앞서 설명한, '충돌이 일어나는 세 가지 조건' 에 모두 해당됨을 나타냅니다. 만약 세 가지 조건 중 하나라도 해당이 안된다면 충돌이 일어나지 않을 것입니다.
+[^three-rules]: 즉, 앞에서 말한 충돌이 일어나는 세 가지 조건 모두에 부합합니다. 세 가지 조건 중 하나라도 해당이 안되면, 충돌은 일어나지 않습니다.
 
 [^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장에 있는 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
 
