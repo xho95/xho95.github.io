@@ -67,7 +67,7 @@ print(myNumber)
 
 하지만, _장기적 (long-term)_ 접근이라는, 여러 가지 방식의 메모리 접근법이 있는데, 이는 다른 코드의 실행까지 걸쳐져 있습니다. 순간적 접근과 장기적 접근의 차이는 장기적 접근을 시작한 후엔 이게 끝나기 전에 다른 코드의 실행이 가능하다는 것으로, 이를 _겹친다 (overlap)_ 고 합니다. 한 장기적 접근은 다른 장기적인 접근 및 순간적 접근과 겹쳐질 수 있습니다.
 
-접근 겹침은 함수와 메소드에서 입-출력 매개 변수를 사용하거나 구조체의 변경 메소드를 사용하는 코드에서 주로 나타납니다. 장기적 접근을 사용한 특정 종류의 스위프트 코드는 밑의 절에서 논의합니다.
+접근 겹침은 주로 함수와 메소드 또는 구조체의 변경 메소드에서 입-출력 매개 변수를 사용한 코드에서 나타납니다. 장기적 접근을 사용한 특정 종류의 스위프트 코드는 밑의 절에서 논의합니다.
 
 ### Conflicting Access to In-Out Parameters (입-출력 매개 변수로의 접근 충돌)
 
@@ -122,7 +122,7 @@ balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 로의 접
 
 > 연산자도 함수기 때문에, 이들도 자신의 입-출력 매개 변수로의 장기적 접근을 합니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 이름의 연산자 함수였다면, `playerOneScore <^> playerOneScore` 라고 작성해도 `balance(&playerOneScore, &playerOneScore)` 와 동일하게 충돌이 될 것입니다.
 
-### Conflicting Access to self in Methods (메소드 안의 self 로의 접근 충돌)
+### Conflicting Access to self in Methods (메소드에서 self 로의 접근 충돌)
 
 구조체의 변경 메소드[^mutating-methods] 는 메소드 호출의 지속 시간 동안 `self` 로의 쓰기 접근을 합니다. 예를 들어, 게임의 각 참가자가, 피해를 받으면 감소하는, 체력 량과, 특수 능력을 쓰면 감소하는, 에너지 양을, 가진다고 고려합니다.
 
@@ -139,7 +139,7 @@ struct Player {
 }
 ```
 
-위의 `restoreHealth()` 메소드에서, `self` 에 대한 쓰기 접근은 메소드 맨 앞에서 시작하여 메소드 반환 때까지 지속됩니다. 이 경우엔, `Player` 인스턴스의 속성과 접근이 겹칠 수 있는 코드가 `restoreHealth()` 안에는 없습니다. 아래의 `shareHealth(with:)` 메소드는 입-출력 매개 변수로 또 다른 `Player` 인스턴스를 취하므로, 접근이 겹칠 가능성이 생깁니다.
+위의 `restoreHealth()` 메소드에서, `self` 로의 쓰기 접근은 메소드 맨 앞에서 시작해서 메소드 반환 전까지 계속 이어집니다. 이 경우, `restoreHealth()` 안에는 `Player` 인스턴스의 속성으로 접근 겹침이 있을만한 다른 코드가 없습니다. 아래의 `shareHealth(with:)` 메소드는 또 다른 `Player` 인스턴스를 입-출력 매개 변수로 취해서, 접근 겹침이 발생할 가능성이 생깁니다.
 
 ```swift
 extension Player {
@@ -150,18 +150,18 @@ extension Player {
 
 var oscar = Player(name: "Oscar", health: 10, energy: 10)
 var maria = Player(name: "Maria", health: 5, energy: 10)
-oscar.shareHealth(with: &maria)   // 괜찮습니다.
+oscar.shareHealth(with: &maria)   // 괜찮음
 ```
 
-위의 예제에서, 'Maria' 와 체력을 공유하기 위햬 'Oscar' 의 `shareHealth(with:)` 메소드를 호출하는 것은 충돌을 유발하지 않습니다. `oscar` 가 '변경 메소드' 에 있는 `self` 의 값이기 때문에 메소드 호출 동안 '`oscar` 에 대한 쓰기 접근' 을 하며, `maria` 를 '입-출력 매개 변수' 로 전달했기 때문에 똑같은 지속 시간 동안에 '`maria` 에 대한 쓰기 접근' 도 합니다. 아래 그림에 보인 것처럼, 이들은 다른 메모리 위치에 접근합니다. 두 쓰기 접근은 시간이 겹칠지라도, 충돌은 하지 않습니다.
+위 예제에서, Oscar 의 `shareHealth(with:)` 메소드를 호출하여 Maria 와 체력을 공유하는 건 충돌을 일으키지 않습니다. 메소드 호출 중에 `oscar` 로의 쓰기 접근을 하는데 변경 메소드 안의 `self` 값이 `oscar` 이기 때문이며, 동일 지속 시간 동안 `maria` 로의 쓰기 접근도 하는데 `maria` 를 입-출력 매개 변수로 전달했기 때문입니다. 아래 그림에 보는 것처럼, 이들은 다른 장소의 메모리에 접근합니다. 두 쓰기 접근의 시간이 겹칠지라도, 충돌하진 않습니다.
 
 ![access different locations in memory](/assets/Swift/Swift-Programming-Language/Memory-Safety-self-different-memory.jpg)
 
-하지만, `shareHealth(with:)` 의 인자로 `oscar` 를 전달하면, 이는 충돌입니다:
+하지만, `shareHealth(with:)` 에 `oscar` 를 인자로 전달하면, 충돌합니다:
 
 ```swift
 oscar.shareHealth(with: &oscar)
-// 에러: oscar 에 대한 접근 충돌
+// 에러: oscar 로의 접근 충돌
 ```
 
 '변경 메소드' 는 메소드 지속 시간 동안 '`self` 에 쓰기 접근' 할 필요가 있고, '입-출력 매개 변수' 는 똑같은 지속 시간 동안 '`teammate` 에 쓰기 접근' 할 필요가 있습니다. 메소드 안에서, `self` 와 `teammate` 는-아래 그림에 보인 것처럼-둘 다 똑같은 메모리 위치를 참조합니다. 두 '쓰기 접근' 이 똑같은 메모리를 참조하면서 서로 겹치므로, 충돌을 만듭니다.
