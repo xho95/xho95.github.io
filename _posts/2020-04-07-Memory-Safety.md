@@ -69,11 +69,11 @@ print(myNumber)
 
 접근 겹침은 함수와 메소드에서 입-출력 매개 변수를 사용하거나 구조체의 변경 메소드를 사용하는 코드에서 주로 나타납니다. 장기적 접근을 사용한 특정 종류의 스위프트 코드는 밑의 절에서 논의합니다.
 
-### Conflicting Access to In-Out Parameters (입-출력 매개 변수에서의 접근 충돌)
+### Conflicting Access to In-Out Parameters (입-출력 매개 변수로의 접근 충돌)
 
-모든 '입-출력 매개 변수'[^in-out-parameters] 에 대해서 함수는 '장기적인 쓰기 접근' 을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 '입-출력이 아닌 (non-in-out)' 모든 매개 변수가 평가된 후에 시작하며 해당 함수 호출의 전체 기간 동안 지속됩니다. 입-출력 매개 변수가 여러 개 있을 경우, 매개 변수가 있는 순서대로 쓰기 접근을 시작합니다.
+함수는 자신의 모든 입-출력 매개 변수[^in-out-parameters] 에 장기적인 쓰기 접근을 합니다. 입-출력 매개 변수로의 쓰기 접근은 모든 입-출력-아닌 매개 변수를 평가한 후 시작해서 그 함수 호출의 전체 지속 시간 동안 계속 이어집니다. 입-출력 매개 변수가 여러 개 있으면, 매개 변수가 나타난 순서대로 쓰기 접근을 시작합니다.
 
-이러한 '장기적인 쓰기 접근' 으로 인한 한 가지 결론은, '영역 규칙 (scoping rules)' 과 '접근 제어 (access control)' 가 다른 경우라면 허가 했을 그런 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 것입니다-원본에 대한 어떤 접근도 충돌을 생성합니다. 예를 들면 다음과 같습니다:
+이 장기적 쓰기 접근의 한 가지 결론은, 다른 경우라면 영역 규칙 (scoping rules) 과 접근 제어 (access control) 가 허가했을 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 겁니다-원본으로의 어떤 접근이든 충돌을 생성합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -83,7 +83,7 @@ func increment(_ number: inout Int) {
 }
 
 increment(&stepSize)
-// 에러: stepSize 에 대한 접근 충돌
+// 에러: stepSize 로의 접근 충돌
 ```
 
 위 코드에서, `stepSize` 는 전역 변수이며, `increment(_:)` 안에서 보통 접근 가능합니다. 하지만, `stepSize` 에 대한 읽기 접근은 `number` 에 대한 쓰기 접근과 겹칩니다. 아래 그림에서 보인 것처럼, `number` 와 `stepSize` 둘 다 똑같은 메모리 위치를 참조합니다. 읽기 접근과 쓰기 접근이 똑같은 메모리를 참조하며 겹치고 있으므로[^three-rules], 충돌을 만듭니다.
@@ -222,7 +222,7 @@ func someFunction() {
 
 [^man-page]: '매뉴얼 페이지 (man page)' 란 터미널에서 `man` 명령어로 해당 명령어의 매뉴얼을 출력한 페이지를 말합니다. 본문에 있는 `stdatomic(3)` 의 매뉴얼 페이지를 보려면 macOS 의 터미널에서 `$ man stdatomic` 라고 명령하면 됩니다. 해당 매뉴얼을 보면 원자적 연산은 앞에 `atomic_` 이라는 접두사가 붙는다는 걸 알 수 있습니다.
 
-[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장에 있는 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
+[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
 [^three-rules]: 이 한 문장은, 앞서 설명한, '충돌이 일어나는 세 가지 조건' 에 모두 해당됨을 나타냅니다. 만약 세 가지 조건 중 하나라도 해당이 안된다면 충돌이 일어나지 않을 것입니다.
 
