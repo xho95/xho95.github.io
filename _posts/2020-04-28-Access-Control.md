@@ -72,7 +72,7 @@ _소스 파일 (source file)_ 은 모듈 안에 있는 단일한 스위프트 �
 
 ### Access Control Syntax (접근 제어 구문)
 
-'개체' 의 '접근 수준' 은 '개체' 선언의 맨 앞에 `open`, `public`, `internal`, `fileprivate`, 또는 `private` 수정자를 붙임으로써 정의합니다.
+개체에 접근 수준을 정의하려면 개체 선언 맨 앞에 `open` 이나, `public`, `internal`, `fileprivate`, 또는 `private` 수정자를 두면 됩니다.
 
 ```swift
 public class SomePublicClass {}
@@ -86,7 +86,7 @@ fileprivate func someFilePrivateFunction() {}
 private func somePrivateFunction() {}
 ```
 
-따로 지정하지 않으면, [Default Access Levels (기본 접근 수준)](#default-access-levels-기본-접근-수준) 에서 설명한 것처럼, 기본 접근 수준이 '내부 (internal)' 입니다. 이는 `SomeInternalClass` 와 `someInternalConstant` 는 '명시적인 접근-수준 수정자 (modifier)' 없이 작성해도 되며, 그래도 여전히 '내부 (internal)' 라는 접근 수준을 가진다는 의미입니다.
+따로 정하지 않으면, [Default Access Levels (기본 접근 수준)](#default-access-levels-기본-접근-수준) 에서 설명한 것처럼, 기본 접근 수준인 내부 (internal) 가 됩니다. 이는 `SomeInternalClass` 와 `someInternalConstant` 는 접근-수준 수정자 (modifier) 를 명시하지 않고 작성할 수 있으며, 그래도 여전히 내부 (internal) 라는 접근 수준을 가진다는 걸 의미합니다.
 
 ```swift
 class SomeInternalClass {}        // 암시적인 내부
