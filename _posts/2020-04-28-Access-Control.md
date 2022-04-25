@@ -170,9 +170,9 @@ public enum CompassPoint {
 }
 ```
 
-**Raw Values and Associated Values ('원시 값' 과 '결합 값')**
+**Raw Values and Associated Values (원시 값과 결합 값)**
 
-열거체 정의에서 '원시 값 (raw values)' 이나 '결합 값 (associated values)'[^raw-values-and-associated-values] 으로 사용된 어떤 타입이든 적어도 열거체의 접근 수준 만큼은 높아야 합니다. 예를 들어, '내부 (internal) 접근 수준' 을 가진 열거체의 '원시-값 타입' 으로 '개인 전용 (private) 타입' 을 사용할 수 없습니다.
+열거체 정의의 원시 값이나 결합 값[^raw-values-and-associated-values] 으로 사용한 어떤 타입이든 반드시 적어도 열거체 접근 수준만큼 높은 접근 수준을 가져야 합니다. 예를 들어, 내부 (internal) 라는 접근 수준을 가진 열거체의 원시-값 타입이 개인 전용 (private) 타입일 수 없습니다.
 
 #### Nested Types (중첩 타입)
 
