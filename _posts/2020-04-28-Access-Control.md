@@ -133,13 +133,13 @@ private class SomePrivateClass {                // 명시적인 개인 전용 �
 
 #### Function Types (함수 타입)
 
-함수 타입의 접근 수준은 함수의 매개 변수 타입과 반환 타입 중에서 '가장 제약한 접근 수준' 이라고 계산합니다. 함수가 계산한 접근 수준이 기본적인 상황과 일치하지 않을 경우 함수 정의에서 명시적으로 접근 수준을 지정해야 합니다.[^function-access-level]
+함수 타입의 접근 수준은 함수의 매개 변수 타입 및 반환 타입 중에서 가장 많이 제약한 접근 수준으로 계산합니다. 계산한 함수 접근 수준이 상황별 기본 값과 일치하지 않으면 반드시 함수 정의 부분에 접근 수준을 명시해야 합니다.[^function-access-level]
 
-아래 예제는, 함수 스스로 특정 '접근-수준 수정자 (modifier)' 를 제공하지 않으면서, `someFunction()` 이라는 전역 함수를 정의합니다. 이 함수가 "내부 (internal)" 라는 기본 접근 수준을 가진다고 예상했겠지만, 그렇지 않습니다. 사실상, 아래 처럼 작성한 `someFunction()` 은 컴파일이 안 될 것입니다:
+아래 예제는 `someFunction()` 이라는 전역 함수를 정의하면서, 함수 자체론 특정한 접근-수준 수정자를 제공하지 않습니다. 이 함수의 기본 접근 수준은 "내부 (internal)" 라고 예상할지 모르지만, 이 경우엔 아닙니다. 사실, `someFunction()` 을 아래 처럼 작성하면 컴파일이 안 될 겁니다:
 
 ```swift
 func someFunction() -> (SomeInternalClass, SomePrivateClass) {
-  // 함수 구현은 여기에 둡니다.
+  // 함수 구현은 여기에 둠
 }
 ```
 
@@ -380,7 +380,7 @@ extension SomeStruct: SomeProtocol {
 
 [^the-most-restrictive]: 앞서 [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, 가장 (많이) 제약한 접근 수준은 가장 낮은 접근 수준입니다. 스위프트의 접근 수준을 높은 순서로 나열하면 공개 (open) `>=` 공용 (public) `>` 내부 (internal) `>` 파일-전용 (file-private) `>` 개인 전용 (private) 입니다.
 
-[^function-access-level]: 이 말은, 함수의 접근 수준이 '개인 전용 (private)' 이어야 할 때는, 반드시 함수 정의에 `private` 을 붙여야 한다는 의미입니다. '함수가 (자동으로) 계산한 접근 수준' 과 '기본적인 상황' 이 일치해야 한다는 것은, 이어지는 예제에서 설명하고 있습니다. '함수가 계산한 접근 수준 (`private`)' 과 '기본적인 상황 (`internal`)' 이 일치하지 않으면, 컴파일이 안됩니다.
+[^function-access-level]: 이는 함수의 접근 수준이 개인 전용 (private) 일 때는, 반드시 함수 정의에서 `private` 을 붙여야 한다는 의미입니다. 함수가 계산한 접근 수준이 상황별 기본 값과 일치해야 하는 건, 이어지는 예제에서 설명합니다. 함수가 계산한 접근 수준 (`private`) 이 상황별 기본 값 (`internal`) 과 일치하지 않으면, 컴파일이 안됩니다.
 
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
 
