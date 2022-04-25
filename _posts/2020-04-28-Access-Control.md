@@ -153,13 +153,13 @@ private func someFunction() -> (SomeInternalClass, SomePrivateClass) {
 }
 ```
 
-`someFunction()` 정의를 `public` 이나 `internal` 수정자로 표시하는 것, 또는 내부 (internal) 라는 기본 설정을 사용하는 건 유효하지 않은데, 함수의 공용이나 내부 (요소) 사용자가 함수 반환 타입이 사용한 개인 전용 클래스에 접근하는 게 적절하지 않을지 모르기 때문입니다.
+`someFunction()` 정의를 `public` 이나 `internal` 수정자로 표시하는 것, 또는 내부 (internal) 라는 기본 설정을 사용하는 건 유효하지 않은데, 함수의 공용이나 내부 사용자가 함수 반환 타입에 사용된 개인 전용 클래스에 접근하는 게 적절하지 않을지도 모르기 때문입니다.
 
 #### Enumeration Types (열거체 타입)
 
-열거체의 '개별 case 값' 은 자신이 속한 열거체와 똑같은 접근 수준을 자동으로 부여 받습니다. 개별 '열거체 case 값' 마다 서로 다른 접근 수준을 지정할 수 없습니다.
+열거체의 개별 case 는 자동으로 자신이 속한 열거체와 동일한 접근 수준을 받습니다. 서로 다른 접근 수준을 개별 열거체 case 에 지정할 순 없습니다.
 
-아래 예제에서, `CompassPoint` 열거체는 '공용 (public)' 이라는 '명시적인 접근 수준' 을 가집니다. '열거체 case 값' 인 `north`, `south`, `east`, 그리고 `west` 도 따라서 '공용 (public)' 이라는 접근 수준을 가집니다:
+아래 예제에서, `CompassPoint` 열거체의 명시적인 접근 수준은 공용 (public) 입니다. 따라서 열거체 case 인 `north` 와, `south`, `east`, 및 `west` 의 접근 수준도 공용 (public) 입니다:
 
 ```swift
 public enum CompassPoint {
