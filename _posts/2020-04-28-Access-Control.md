@@ -184,7 +184,7 @@ public enum CompassPoint {
 
 여기다, 동일한 모듈 안에서 정의한 클래스면, 특정 접근 상황에서 보이는 (메소드, 속성, 초기자, 또는 첨자 같은) 어떤 클래스 멤버든 재정의할 수 있습니다. 다른 모듈에서 정의한 클래스면, 어떤 공개 클래스 멤버든 재정의할 수 있습니다.
 
-'재정의' 는 상속한 클래스 멤버의 접근 가능성을 상위 클래스 버전에서 보다 더 높일 수있습니다. 아래 예제에서, 클래스 `A` 는 `someMethod()` 라는 '파일-전용 (file-private) 메소드' 를 가진 '공용 (public) 클래스' 입니다. 클래스 `B` 는, "내부 (internal)" 라는 '감소한 접근 수준' 을 가진, `A` 의 하위 클래스입니다. 그럼에도 불구하고, 클래스 `B` 는, `someMethod()` 의 원본 구현보다 _더 높은 (higher)_[^higher], "내부 (internal)" 라는 접근 수준을 가진 `someMethod()` 의 재정의 버전을 제공합니다:[^subclassing]
+재정의는 상속한 클래스 멤버의 접근 가능성을 상위 클래스 버전보다 더 높일 수 있습니다. 아래 예제에서, 클래스 `A` 는 `someMethod()` 라는 파일-전용 (file-private) 메소드를 가진 공용 (public) 클래스입니다. 클래스 `B` 는 `A` 의 하위 클래스로, "내부 (internal)" 라는 감소한 접근 수준을 가집니다. 그럼에도 불구하고, 클래스 `B` 는 `someMethod()` 를 "내부 (internal)" 라는 접근 수준으로 재정의하는 데, 이는 원본 `someMethod()` 구현보다 _더 높습니다 (higher)_:
 
 ```swift
 public class A {
@@ -196,7 +196,7 @@ internal class B: A {
 }
 ```
 
-상위 클래스 멤버에 대한 호출이 (즉, 상위 클래스와 동일한 소스 파일에서 '파일-전용' 멤버를 호출하거나, 상위 클래스와 동일한 모듈에서 '내부' 멤버를 호출하는 것 처럼) 허용된 접근 수준 상황에서 일어나는 한, 하위 클래스 멤버가 심지어 하위 클래스 멤버보다 더 낮은 접근 수준 권한을 가진 상위 클래스 멤버를 호출하는 것도 유효합니다:
+이는 심지어 하위 클래스가 하위 클래스 멤버보다 더 낮은 접근을 허가하는 상위 클래스 멤버를 호출하는 것도, 상위 클래스 멤버로의 호출이 허용된 접근 수준 안에서 일어나는 한 (즉, 상위 클래스와 동일한 소스 파일 안에서 파일-전용 멤버를 호출하거나, 상위 클래스와 동일한 모듈 안에서 내부 멤버를 호출하는 한), 유효입니다:
 
 ```swift
 public class A {
@@ -210,7 +210,7 @@ internal class B: A {
 }
 ```
 
-상위 클래스 `A` 와 하위 클래스 `B` 를 동일 소스 파일에서 정의하기 때문에, `B` 에서 구현한 `someMethod()` 가 `super.someMethod()` 를 호출하는 것은 유효합니다.
+동일한 소스 파일에서 상위 클래스 `A` 와 하위 클래스 `B` 를 정의하기 때문에, `B` 가 구현한 `someMethod()` 가 `super.someMethod()` 를 호출해도 유효입니다.
 
 ### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 그리고 첨자 연산)
 
@@ -385,8 +385,6 @@ extension SomeStruct: SomeProtocol {
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
 
 [^higher]: [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, 스위프트의 접근 수준은 '공개 (open)' 가 가장 높고, '개인 전용 (private)' 이 가장 낮습니다.
-
-[^subclassing]: 여기서 알 수 있는 것은 '클래스의 접근 수준' 과 '클래스 멤버의 접근 수준' 은 서로 독립적으로 작동한다는 것입니다. 
 
 [^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
 
