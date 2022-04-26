@@ -212,11 +212,11 @@ internal class B: A {
 
 동일한 소스 파일에서 상위 클래스 `A` 와 하위 클래스 `B` 를 정의하기 때문에, `B` 가 구현한 `someMethod()` 가 `super.someMethod()` 를 호출해도 유효입니다.
 
-### Constants, Variables, Properties, and Subscripts (상수, 변수, 속성, 그리고 첨자 연산)
+### Constants, Variables, Properties, and Subscripts (상수와, 변수, 속성, 및 첨자)
 
-상수, 변수, 또는 속성은 자신의 타입보다 더 '공개 (public)' 적일 수 없습니다.[^more-public] 예를 들어, '개인 전용 (private) 타입' 을 가진 '공용 (public) 속성' 을 작성하는 것은 유효하지 않습니다. 이와 비슷하게, 첨자 연산은 자신의 '색인 타입' 이나 '반환 타입' 보다 더 '공개 (public)' 적일 수 없습니다.
+상수나, 변수, 및 속성은 자신의 타입보다 더 공개적 (public) 일 수 없습니다.[^more-public] 예를 들어, 개인 전용 (private) 타입으로 공용 (public) 속성을 작성하는 건 유효하지 않습니다. 이와 비슷하게, 첨자는 자신의 색인 타입 또는 반환 타입보다 더 공개적 (public) 일 수 없습니다.
 
-상수, 변수, 속성, 또는 첨자 연산이 '개인 전용 타입' 을 사용할 경우, 그 상수, 변수, 속성, 또는 첨자 연산도 반드시 `private` 이라고 표시해야 합니다:
+상수나, 변수, 속성, 및 첨자가 개인 전용 타입을 사용하면, 상수나, 변수, 속성, 및 첨자도 반드시 `private` 으로 표시해야 합니다:
 
 ```swift
 private var privateInstance = SomePrivateClass()
@@ -388,7 +388,7 @@ extension SomeStruct: SomeProtocol {
 
 [^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
 
-[^more-public]: '더 공개 (public) 일 수 없다' 는 것은, '더 높은 접근 수준을 가질 수 없다' 는 의미입니다. 일단 어떤 속성을 '공개 (public)' 하고 싶으면 반드시 해당 속성을 가진 타입도 '공개 (public)' 해야 한다고 이해할 수 있습니다. '더 높은 접근 수준' 이라는 단어 대신 '공개 (public)' 라는 단어를 선택한 것에도 의미가 있다고 생각됩니다.
+[^more-public]: 더 공개 (public) 일 수 없다는 건 더 높은 접근 수준을 가질 수 없다는 의미입니다. 어떤 속성을 '공개 (public)' 하고 싶으면 그 속성을 가진 타입도 반드시 공개 (public) 해야 합니다.
 
 [^internal-by-default]: [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스를 '공용 (public) 접근 수준' 으로 정의하면 멤버의 기본 접근 수준은 '내부 (internal)' 가 됩니다.
 
