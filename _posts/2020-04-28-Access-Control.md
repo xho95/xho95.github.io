@@ -243,9 +243,9 @@ struct TrackedString {
 }
 ```
 
-`TrackedString` 구조체는, 초기 값이 `""` (빈 문자열) 인, `value` 라는 '문자열 저장 속성' 을 정의합니다. 구조체는, `value` 를 수정한 횟수를 추적하는데 사용하는, `numberOfEdits` 라는 '정수 저장 속성' 도 정의합니다. 이 '수정 추적' 기능은, `value` 속성에 새 값이 설정될 때마다 `numberOfEdits` 를 증가하는, `value` 속성의 '`didSet` 속성 관찰자 (property observer)'[^property-observer] 로 구현합니다.
+`TrackedString` 구조체는 `value` 라는 문자열 저장 속성을 정의하며, 초기 값은 `""` (빈 문자열) 입니다. 구조체는 `numberOfEdits` 라는 정수 저장 속성도 정의하는데, 이를 사용하여 `value` 의 수정 횟수를 추적합니다. 이런 수정 추적 기능은 `value` 속성의 `didSet` 속성 관찰자[^property-observer] 로 구현하는데, 이는 `value` 속성에 새 값을 설정할 때마다 `numberOfEdits` 를 증가합니다.
 
-`TrackedString` 구조체와 `value` 속성은 '명시적인 접근-수준 수정자 (modifier)' 를 제공하지 않으므로, 둘 다 '내부 (internal)' 라는 기본 접근 수준을 부여 받습니다. 하지만, 속성의 '획득자' 는 여전히 '내부 (internal)' 라는 기본 접근 수준을 가지지만, `TrackedString` 구조체 안의 코드만 속성을 설정할 수 있음을 지시하기 위해 `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시합니다. 이는 `TrackedString` 이 내부적으로는 `numberOfEdits` 속성을 수정하도록 하지만, 구조체 정의 밖에서 사용할 때는 속성을 '읽기-전용 속성' 으로 나타날 수 있게 해줍니다.
+`TrackedString` 구조체 및 `value` 속성은 접근-수준 수정자를 명시하지 않아서, 둘 다 내부 (internal) 라는 기본 접근 수준을 받습니다. 하지만, `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시하면 속성의 획득자는 여전히 내부라는 기본 접근 수준이지만, 속성은 `TrackedString` 구조체 안의 코드만 설정 가능하다는 걸 지시합니다. 이는 `TrackedString` 내부에선 `numberOfEdits` 속성을 수정하지만, 구조체 정의 밖에서 사용할 땐 읽기-전용 속성이 되게 합니다.
 
 `TrackedString` 인스턴스를 생성해서 문자열 값을 몇 번 수정하면, `numberOfEdits` 속성 값이 수정 횟수와 일치하도록 갱신되는 것을 볼 수 있습니다:
 
@@ -255,7 +255,7 @@ stringToEdit.value = "This string will be tracked."
 stringToEdit.value += " This edit will increment numberOfEdits."
 stringToEdit.value += " So will this one."
 print("The number of edits is \(stringToEdit.numberOfEdits)")
-// "The number of edit is 3" 를 인쇄합니다.
+// "The number of edit is 3" 를 인쇄함
 ```
 
 비록 다른 소스 파일에 있는 `numberOfEdits` 속성의 현재 값을 조회할 순 있을지라도, 다른 소스 파일에 있는 속성을 _수정 (modify)_ 할 수는 없습니다. 이 제약은, 여전히 해당 기능에 대한 편리한 접근을 제공하면서도, `TrackedString` 편집-추적 기능의 세부 구현을 보호합니다.
@@ -388,7 +388,7 @@ extension SomeStruct: SomeProtocol {
 
 [^stored-properties]: 저장 속성의 획득자와 설정자는 스위프트가 자동으로 만들어 주지만, 이들의 접근 수준은 개발자가 조절할 수 있다는 의미입니다.
 
-[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
+[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
 
 [^more-public]: 더 공개 (public) 일 수 없다는 건 더 높은 접근 수준을 가질 수 없다는 의미입니다. 어떤 속성을 '공개 (public)' 하고 싶으면 그 속성을 가진 타입도 반드시 공개 (public) 해야 합니다.
 
