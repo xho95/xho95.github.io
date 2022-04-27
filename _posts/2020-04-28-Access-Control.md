@@ -228,9 +228,9 @@ private var privateInstance = SomePrivateClass()
 
 설정자엔 그에 해당하는 획득자보다 _더 낮은 (lower)_ 접근 수준을 줘서, 그 변수나, 속성, 및 첨자가 읽고-쓰는 영역을 제약할 수 있습니다. 더 낮은 접근 수준을 할당하려면 `var` 또는 `subscript` 도입자 (introducer) 앞에 `fileprivate(set)` 이나, `private(set)`, 또는 `internal(set)` 을 작성하면 됩니다.
 
-> 이 규칙은 '계산 속성' 뿐만 아니라 '저장 속성' 에도 적용됩니다. '저장 속성' 을 위한 '명시적인 획득자' 와 '설정자' 를 작성하진 않을지라도, 스위프트는 '저장 속성' 의 '백업 저장 공간' 에 대한 접근을 제공하기 위해 여전히 '암시적인 획득자' 와 '설정자' 를 만들고 통합합니다. `fileprivate(set)`, `private(set)`, 그리고 `internal(set)` 을 사용하면 이 '통합된 설정자' 의 접근 수준을 '계산 속성' 의 '명시적인 설정자' 와 정확하게 똑같은 방식으로 바꾸게 됩니다.
+> 이 규칙은 계산 속성뿐 아니라 저장 속성에도 적용됩니다. 저장 속성엔 명시적인 획득자와 설정자를 작성하지 않을지라도, 여전히 스위프트가 암시적인 획득자와 설정자를 통합하여 저장 속성의 백업용 저장 공간으로의 접근을 제공합니다.[^stored-properties] `fileprivate(set)` 과, `private(set)`, 및 `internal(set)` 을 사용하여 이 통합 설정자의 접근 수준을 바꾸는 건 계산 속성의 명시적인 설정자와 정확히 똑같은 방식입니다.
 
-아래 예제는, 문자열 속성이 수정된 횟수를 추적하는, `TrackedString` 이라는 구조체를 정의합니다:
+아래 예제는 `TrackedString` 이라는 구조체를 정의하는데, 이는 문자열 속성의 수정 횟수를 추적합니다:
 
 ```swift
 struct TrackedString {
@@ -385,6 +385,8 @@ extension SomeStruct: SomeProtocol {
 [^raw-values-and-associated-values]: 스위프트의 열거체는 각 'case 값' 마다 '원시 값 (raw value)' 과 '결합 값 (associated value)' 이라는 별도의 값을 가집니다. `enum Direction: Int { case east = 0, west }` 라고 하면 `east` 는 'case 값' 이고,  `east` 의 '원시 값' 은 `0` 입니다. '결합 값' 은 'case 값' 의 각 인스턴스마다 할당하는 값을 말하는데, `enum Direction { case east(String), west(String) }; let east = Direction.east("Sun rise")` 라고 하면, `east` 의 'case 값' 은 `"Sun rise"` 가 됩니다.
 
 [^higher]: [Access Levels (접근 수준)](#access-levels-접근-수준) 에서 설명한 것처럼, 스위프트의 접근 수준은 '공개 (open)' 가 가장 높고, '개인 전용 (private)' 이 가장 낮습니다.
+
+[^stored-properties]: 저장 속성의 획득자와 설정자는 스위프트가 자동으로 만들어 주지만, 이들의 접근 수준은 개발자가 조절할 수 있다는 의미입니다.
 
 [^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
 
