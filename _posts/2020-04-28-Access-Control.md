@@ -276,9 +276,9 @@ public struct TrackedString {
 
 ### Initializers (초기자)
 
-'사용자 정의 초기자' 는 초기화하는 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 ([Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에서 정의한) '필수 초기자' 입니다. '필수 초기자' 는 반드시 자신이 속한 클래스와 똑같은 접근 수준을 가져야 합니다.
+사용자 정의 초기자에는 자신을 초기화할 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 ([Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 에서 정의한) 필수 초기자입니다. 필수 초기자의 접근 수준은 반드시 자신이 속한 클래스와 똑같아야 합니다.
 
-함수 매개 변수와 메소드 매개 변수에서 처럼, 초기자의 매개 변수 타입은 초기자 자신의 접근 수준보다 더 '개인 전용 (private)' 일 수 없습니다.
+함수 및 메소드 매개 변수 처럼, 초기자 매개 변수의 타입은 초기자 자신의 접근 수준보다 더 개인적 (private) 일 수 없습니다.[^more-private]
 
 #### Default Initializers (기본 초기자)
 
@@ -393,6 +393,8 @@ extension SomeStruct: SomeProtocol {
 [^more-public]: 더 공개 (public) 일 수 없다는 건 더 높은 접근 수준을 가질 수 없다는 의미입니다. 어떤 속성을 '공개 (public)' 하고 싶으면 그 속성을 가진 타입도 반드시 공개 (public) 해야 합니다.
 
 [^internal-by-default]: [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스를 공용 (public) 으로 정의하면 멤버의 기본 접근 수준은 내부 (internal) 가 됩니다.
+
+[^more-private]: 초기자 매개 변수의 접근 수준이 초기자 자신보다 더 개인적이면 초기자를 호출할 때 매개 변수를 사용할 수 없게 됩니다.
 
 [^public-no-argument]: 바로 위의 `TrackedString` 예제에 있는 `public init() {}` 이 바로 이에 대한 예입니다. 
 
