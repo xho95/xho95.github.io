@@ -247,7 +247,7 @@ struct TrackedString {
 
 `TrackedString` 구조체 및 `value` 속성은 접근-수준 수정자를 명시하지 않아서, 둘 다 내부 (internal) 라는 기본 접근 수준을 받습니다. 하지만, `numberOfEdits` 속성의 접근 수준을 `private(set)` 수정자로 표시하면 속성의 획득자는 여전히 내부라는 기본 접근 수준이지만, 속성은 `TrackedString` 구조체 안의 코드만 설정 가능하다는 걸 지시합니다. 이는 `TrackedString` 내부에선 `numberOfEdits` 속성을 수정하지만, 구조체 정의 밖에서 사용할 땐 읽기-전용 속성이 되게 합니다.
 
-`TrackedString` 인스턴스를 생성해서 문자열 값을 몇 번 수정하면, `numberOfEdits` 속성 값이 수정 횟수와 일치하도록 갱신되는 것을 볼 수 있습니다:
+`TrackedString` 인스턴스를 생성해서 문자열 값을 몇 번 수정하면, 수정 횟수와 일치하도록 `numberOfEdits` 속성 값을 업데이트하는 걸 볼 수 있습니다:
 
 ```swift
 var stringToEdit = TrackedString()
@@ -258,9 +258,9 @@ print("The number of edits is \(stringToEdit.numberOfEdits)")
 // "The number of edit is 3" 를 인쇄함
 ```
 
-비록 다른 소스 파일에 있는 `numberOfEdits` 속성의 현재 값을 조회할 순 있을지라도, 다른 소스 파일에 있는 속성을 _수정 (modify)_ 할 수는 없습니다. 이 제약은, 여전히 해당 기능에 대한 편리한 접근을 제공하면서도, `TrackedString` 편집-추적 기능의 세부 구현을 보호합니다.
+다른 소스 파일에서 `numberOfEdits` 속성의 현재 값을 조회하는 건 할 수 있지만, 다른 소스 파일의 속성을 _수정 (modify)_ 할 순 없습니다. 이런 제약은 `TrackedString` 편집-추적 기능의 세부 구현은 보호하면서도, 그 기능으로의 편리한 접근을 제공합니다.
 
-필요하다면 '획득자' 와 '설정자' 둘 다에 대해 '명시적인 접근 수준' 을 할당할 수 있다는 것을 기억하기 바랍니다. 아래 예제는 '공용 (public)' 이라는 명시적인 접근 수준을 가지는 `TrackedString` 구조체 버전을 보여줍니다. 그럼으로써 (`numberOfEdits` 속성을 포함한) 구조체 멤버들은 기본적으로 '내부 (internal) 접근 수준' 을 가집니다.[^internal-by-default] '`public`' 과 '`private(set)` 접근-수준 수정자' 를 조합[^combining-public-private-set]함으로써, 구조체에 있는 `numberOfEdits` 속성의 '획득자' 는 '공용 (public)' 으로, 속성의 '설정자' 는 '개인 전용 (private)' 으로 만들 수 있습니다:
+필요하다면 획득자와 설정자 둘 다에 명시적 접근 수준을 할당할 수 있음을 기억하기 바랍니다. 아래 예제는 공용 (public) 이라는 명시적 접근 수준을 가진 `TrackedString` 구조체 버전을 보여줍니다. 그리하여 (`numberOfEdits` 속성을 포함한) 구조체 멤버는 기본적으로 내부 (internal) 라는 접근 수준을 가집니다.[^internal-by-default] 구조체에 있는 `numberOfEdits` 속성의 획득자는 공용 (public) 으로, 그 속성의 설정자는 개인 전용 (private) 으로 만들려면, `public` 과 `private(set)` 접근-수준 수정자를 조합하면 됩니다:
 
 ```swift
 public struct TrackedString {
@@ -392,9 +392,7 @@ extension SomeStruct: SomeProtocol {
 
 [^more-public]: 더 공개 (public) 일 수 없다는 건 더 높은 접근 수준을 가질 수 없다는 의미입니다. 어떤 속성을 '공개 (public)' 하고 싶으면 그 속성을 가진 타입도 반드시 공개 (public) 해야 합니다.
 
-[^internal-by-default]: [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스를 '공용 (public) 접근 수준' 으로 정의하면 멤버의 기본 접근 수준은 '내부 (internal)' 가 됩니다.
-
-[^combining-public-private-set]: 본문에서 처럼, `public private(set)` 이라는 수정자도 가능합니다. 이는 '획득자' 와 '설정자' 를 가지는 '속성' 에만 유효한 것으로 추측됩니다.
+[^internal-by-default]: [Custom Types (사용자 정의 타입)](#custom-types-사용자-정의-타입) 에서 설명한 것처럼, 사용자 정의 클래스를 공용 (public) 으로 정의하면 멤버의 기본 접근 수준은 내부 (internal) 가 됩니다.
 
 [^public-no-argument]: 바로 위의 `TrackedString` 예제에 있는 `public init() {}` 이 바로 이에 대한 예입니다. 
 
