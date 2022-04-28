@@ -282,15 +282,16 @@ public struct TrackedString {
 
 #### Default Initializers (기본 초기자)
 
-[Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 모든 속성에 대한 '기본 값' 을 제공하면서 스스로는 단 하나의 초기자도 제공하지 않는 어떤 구조체나 '기초 클래스' 에든 _기본 초기자 (default initializer)_ 를 제공합니다.
 
-'기본 초기자' 는, 해당 타입을 `public` 으로 정의하지 않는 한, 자신이 초기화하는 타입과 똑같은 접근 수준을 가집니다. `public` 으로 정의한 타입은, '기본 초기자' 를 '내부 (internal)' 라고 고려합니다. 다른 모듈에서 사용할 때 '공용 (public) 타입' 을 '인자-없는 초기자' 로 초기화 가능하게 만들고 싶으면, 타입 정의에서 '공용인 인자-없는 초기자' 를 반드시 직접 명시적으로 제공해야 합니다.[^public-no-argument]
+[Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 자신의 모든 속성에 기본 값을 제공하면서 그 자체론 단 하나의 초기자도 제공하지 않는 어떤 구조체나 기초 클래스에든 _기본 초기자 (default initializer)_ 를 제공합니다.
 
-#### Default Memberwise Initializers for Structure Types (구조체 타입을 위한 기본 멤버 초기자)
+기본 초기자는, 자신을 초기화하는 타입의 정의가 `public` 이 아닌 한, 그 타입과 동일한 접근 수준을 가집니다. `public` 으로 정의한 타입은, 기본 초기자가 내부 (internal) 라고 고려합니다. 공용 (public) 타입이 다른 모듈에서 사용될 때 인자-없는 초기자로 초기화 가능하게 하고 싶으면, 타입 정의 부분에서 반드시 직접 인자-없는 공용 초기자를 명시해야 합니다.[^public-no-argument]
 
-구조체 타입을 위한 '기본 멤버 초기자' 는 구조체의 어떤 저장 속성이든 '개인 전용 (private)' 이면 '개인 전용' 이라고 고려합니다. 마찬가지로, 구조체의 어떤 저장 속성이든 '파일 전용 (file private)' 이면, 초기자는 '파일 전용' 입니다. 그 외의 경우, 초기자는 '내부 (internal)' 라는 접근 수준을 가집니다.
+#### Default Memberwise Initializers for Structure Types (구조체 타입의 기본 멤버 초기자)
 
-위의 '기본 초기자' 에서 처럼, 다른 모듈에서 사용할 때 '공용 (public) 구조체 타입' 을 '멤버 초기자' 로 초기화 가능하게 만들고 싶으면, 타입 정의에서 '공용 (public) 멤버 초기자' 를 반드시 직접 제공해야 합니다.
+구조체의 어떤 저장 속성이든 개인 전용 (private) 이면 구조체 타입의 기본 멤버 초기자도 개인 전용으로 고려합니다. 마찬가지로, 구조체의 어떤 저장 속성이든 파일 전용 (file private) 이면, 초기자도 파일 전용입니다. 그 외의 경우, 초기자의 접근 수준은 내부 (internal) 입니다.
+
+위의 기본 초기자에서 처럼, 공용 (public) 구조체 타입이 다른 모듈에서 사용될 때 멤버 초기자로 초기화 가능하게 하고 싶으면, 타입 정의 부분에서 반드시 직접 공용 멤버 초기자 제공해야 합니다.
 
 ### Protocols (프로토콜)
 
@@ -396,7 +397,7 @@ extension SomeStruct: SomeProtocol {
 
 [^more-private]: 초기자 매개 변수의 접근 수준이 초기자 자신보다 더 개인적이면 초기자를 호출할 때 매개 변수를 사용할 수 없게 됩니다.
 
-[^public-no-argument]: 바로 위의 `TrackedString` 예제에 있는 `public init() {}` 이 바로 이에 대한 예입니다. 
+[^public-no-argument]: 바로 위의 `TrackedString` 예제에 있는 `public init() {}` 이  이 예입니다. 
 
 [^at-most-the-same]: '하위 프로토콜' 은 '상위 프로토콜' 보다 더 높은 접근 수준을 가질 수 없다는 의미입니다.
 
