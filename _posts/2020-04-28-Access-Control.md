@@ -303,7 +303,7 @@ public struct TrackedString {
 
 #### Protocol Inheritance (프로토콜 상속)
 
-기존 프로토콜을 상속하여 새로운 프로토콜을 정의할 경우, 새 프로토콜은 자신이 상속한 프로토콜과 똑같은 접근 수준을 최대로 가질 수 있습니다.[^at-most-the-same] 예를 들어, '내부 (internal) 프로토콜' 을 상속하여 '공용 (public) 프로토콜' 을 작성할 수 없습니다.
+기존 프로토콜을 상속하여 새 프로토콜을 정의하면, 새 프로토콜이 가질 수 있는 최대한의 접근 수준은 자신이 상속한 프로토콜과 동일한 수준입니다.[^at-most-the-same] 예를 들어, 내부 (internal) 프로토콜을 상속하여 공용 (public) 프로토콜을 작성할 순 없습니다.
 
 #### Protocol Conformance (프로토콜 준수성)
 
@@ -399,7 +399,7 @@ extension SomeStruct: SomeProtocol {
 
 [^public-no-argument]: 바로 위의 `TrackedString` 예제에 있는 `public init() {}` 이  이 예입니다. 
 
-[^at-most-the-same]: '하위 프로토콜' 은 '상위 프로토콜' 보다 더 높은 접근 수준을 가질 수 없다는 의미입니다.
+[^at-most-the-same]: 하위 프로토콜이 상위 프로토콜보다 더 높은 접근 수준을 가질 순 없다는 의미입니다.
 
 [^the-minimum]: 이 접근 수준이 서로 다를 경우에는 '가장 낮은 접근 수준' 을 가진다는 의미입니다.
 
