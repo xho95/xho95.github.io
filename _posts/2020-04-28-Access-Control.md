@@ -331,7 +331,7 @@ public struct TrackedString {
 * 한 익스텐션 안에 개인 전용 멤버를 선언하고, 동일한 파일 안의 또 다른 익스텐션에서 그 멤버에 접근합니다.
 * 익스텐션 안에 개인 전용 멤버를 선언하고, 동일한 파일 안의 원본 선언에서 그 멤버에 접근합니다.
 
-이런 작동 방식은, 타입이 '개인 전용 (private) 개체' 를 가지는 것과 상관없이, 코드를 정돈하기 위한 방법으로 '익스텐션' 을 사용할 수 있다는 의미입니다. 예를 들어, 다음 같이 간단한 프로토콜이 주어졌습니다:
+이런 동작은, 타입에 개인 전용 개체가 있든 없든, 익스텐션을 사용하여 코드를 정돈할 수 있다는 의미입니다. 예를 들어, 다음의 단순한 프로토콜이 주어지면:
 
 ```swift
 protocol SomeProtocol {
@@ -339,7 +339,7 @@ protocol SomeProtocol {
 }
 ```
 
-'프로토콜 준수성' 을 추가히기 위해, 다음 같이, '익스텐션' 을 사용할 수 있습니다[^protocol-conformance-extension]:
+이와 같이, 익스텐션을 사용하여 프로토콜 준수성을 추가할 수 있습니다[^protocol-conformance-extension]:
 
 ```swift
 struct SomeStruct {
@@ -403,4 +403,4 @@ extension SomeStruct: SomeProtocol {
 
 [^the-minimum]: 타입 접근 수준과 타입이 준수한 프로토콜 접근 수준이 겹치는 곳은 서로의 최소 접근 수준을 가진다는 의미입니다.
 
-[^protocol-conformance-extension]: 예제처럼 하면, `SomeStruct` 를 '원본 구현' 부분과 `SomeProtocol` 을 준수하는 구현 부분으로 정돈할 수 있습니다. 
+[^protocol-conformance-extension]: 예제처럼 하면, `SomeStruct` 를 원본 구현 부분과 `SomeProtocol` 준수 부분으로 구분하여 가독성을 높일 수 있습니다.
