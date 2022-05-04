@@ -12,7 +12,7 @@ categories: Swift Language Grammar Advanced Operator
 
 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명한 연산자에 더해, 스위프트는 더 복잡하게 값을 조작하는 여러 가지 고급 연산자를 제공합니다. 이는 모든 종류의 비트 (bitwise) 및 비트 이동 (bit shifting) 연산자를 포함하는데 C 와 오브젝티브-C 에서부터 익숙할 겁니다.
 
-C 의 산술 (arithmetic) 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값이 넘치지 않습니다. 값 넘침 (overflow) 동작은 '덫으로 잡아서 (trapped)' 에러로 보고합니다. '값 넘침 동작' 을 직접 선택하려면, '값 넘침 덧셈 연산자 (`&+`)' 같은, 기본적으로 '값이 넘치는' 스위프트의 '추가 산술 연산자 집합' 을 사용합니다. 이 모든 '값 넘침 연산자' 들은 '앤드 기호 (ampersand; `&`)' 로 시작합니다.
+C 의 산술 (arithmetic) 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값이 넘치지 않습니다. 값 넘침 (overflow) 동작은 잡아서 에러라고 보고합니다. 값 넘침 동작을 직접 선택하려면, 값 넘침 덧셈 연산자 (`&+`) 같이, 기본적으로 값이 넘치는 스위프트의 두 번째 산술 연산자 집합을 사용합니다. 이러한 모든 값 넘침 연산자는 앰퍼샌드 (`&`)[^ampersand] 로 시작합니다.
 
 자신만의 구조체, 클래스, 그리고 열거체를 정의할 때는, 사용자 정의 타입에 대한 자신만의 표준 스위프트 연산자를 구현하는 것이 유용할 수 있습니다. 스위프트는 이 연산자들의 맞춤식 구현과 각 생성 타입에 대해 이들이 무슨 동작을 해야하는 지를 쉽게 결정할 수 있게 해줍니다.
 
@@ -601,6 +601,8 @@ let manyStars = draw {
 ### 참고 자료
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
+
+[^ampersand]: '앰퍼샌드 (ampersand; `&`)' 는 영어로 `and` 를 의미하는 라틴어의 `et` 에서 유래한 단어로 '앤드 기호' 라고도 합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Ampersand](https://en.wikipedia.org/wiki/Ampersand) 항목과 [앰퍼샌드](https://ko.wikipedia.org/wiki/앰퍼샌드) 항목을 참고하기 바랍니다.
 
 [^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer)' 나 '수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말입니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
