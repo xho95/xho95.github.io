@@ -26,18 +26,18 @@ _비트 연산자 (bitwise operators)_ 는 자료 구조 안의 개별 원시 �
 
 #### Bitwise NOT Operator (비트 부정 연산자)
 
-_비트 부정 연산자 (bitwise NOT operator;_ `~`_)_ 는 수치 값의 모든 비트를 거꾸로 만듭니다:
+_비트 부정 연산자 (bitwise NOT operator;_ `~`_)_ 는 모든 수치 값 비트를 거꾸로 합니다:
 
 ![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
-'비트 부정 연산자' 는 '접두사 (prefix) 연산자' 이며, 어떤 공백도 없이, 연산할 값 바로 앞에 나타납니다:
+비트 부정 연산자는 접두사 연산자로, 어떤 공백도 없이, 연산 값 바로 앞에 나타납니다:
 
 ```swift
 let initialBits: UInt8 = 0b00001111
-let invertedBits = ~initialBits   // 11110000 과 같습니다.
+let invertedBits = ~initialBits   // 11110000 과 같음
 ```
 
-`UInt8` 정수는 '8-비트' 이며 `0` 에서 `255` 사이의 어떤 값이든 저장할 수 있습니다. 이 예제는 `UInt8` 정수를, 처음 '네 비트' 는 `0` 으로 설정하고, 다음 '네 비트' 는 `1` 로 설정하는, 이진 값 `00001111` 로 초기화합니다. 이는 10-진수 값으로 `15` 와 같습니다.
+`UInt8` 정수는 8-비트로 `0` 과 `255` 사이의 어떤 값이든 저장할 수 있습니다. 이 예제는 `UInt8` 정수를, 처음 '네 비트' 는 `0` 으로 설정하고, 다음 '네 비트' 는 `1` 로 설정하는, 이진 값 `00001111` 로 초기화합니다. 이는 10-진수 값으로 `15` 와 같습니다.
 
 그런 다음 '비트 부정 연산자' 를 사용하여, `initialBits` 와 똑같지만, 모든 비트를 거꾸로 만든, `invertedBits` 라는 새로운 상수를 생성합니다. '0' 은 '1' 이 되고, '1' 은 '0' 이 됩니다. `invertedBits` 의 값은, 부호없는 10-진수 값으로 `240` 인, `11110000` 입니다.
 
