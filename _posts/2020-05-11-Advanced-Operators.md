@@ -43,7 +43,7 @@ let invertedBits = ~initialBits   // 11110000 과 같음
 
 #### Bitwise AND Operator (비트 곱 연산자)
 
-_비트 곱 연산자 (bitwise AND operator;_ `&`_)_ 는 두 수치 값의 비트를 조합합니다. 이는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 비트를 `1` 로 설정한 새로운 수치 값을 반환합니다:
+_비트 곱 연산자 (bitwise AND operator;_ `&`_)_ 는 두 수치 값 비트를 조합합니다. 입력 수치 값 비트가 _둘 다 (both)_ `1` 일 때만 비트 설정이 `1` 인 새로운 수치 값을 반환합니다:
 
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
