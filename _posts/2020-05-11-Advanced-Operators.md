@@ -47,12 +47,12 @@ _비트 곱 연산자 (bitwise AND operator;_ `&`_)_ 는 두 수치 값 비트�
 
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
-아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 `1` 이라는 '네 개의 중간 비트' 를 가집니다. '비트 곱 연산자' 는 이들을 조합하여, 부호없는 십진수 값으로 `60` 인, 수치 값 `00111100` 을 만듭니다:
+아래 예제의, `firstSixBits` 와 `lastSixBits` 값은 둘 다 네 중간 비트가 `1` 입니다. 비트 곱 연산자로 조합하면 `00111100` 인데, 이는 부호없는 십진수 값 `60` 과 같습니다:
 
 ```swift
 let firstSixBits: UInt8 = 0b11111100
 let lastSixBits: UInt8  = 0b00111111
-let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같습니다.
+let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같음
 ```
 
 #### Bitwise OR Operator (비트 합 연산자)
