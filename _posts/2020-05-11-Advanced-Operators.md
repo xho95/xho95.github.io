@@ -57,16 +57,16 @@ let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같음
 
 #### Bitwise OR Operator (비트 합 연산자)
 
-_비트 합 연산자 (bitwise OR operator;_ `|`_)_ 는 두 수치 값의 비트를 비교합니다. 연산자는 입력 수치 값 비트가 _어느 것 (either)_ 이든 `1` 이면 비트를 `1` 로 설정한 새로운 수치 값을 반환합니다:
+_비트 합 연산자 (bitwise OR operator;_ `|`_)_ 는 두 수치 값 비트를 비교합니다. 연산자는 _어느 (either)_ 입력 수치 값 비트가 `1` 이든 비트 설정이 `1` 인 새로운 수치 값을 반환합니다:
 
 ![bitwise-OR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-OR-operator.jpg)
 
-아래 예제에서, `someBits` 와 `moreBits` 의 값은 서로 다른 '비트 집합' 의 `1` 을 가집니다. '비트 합 연산자' 는 이들을 조합하여, 부호없는 10-진수 값으로 `254` 인, 수치 값 `11111110` 을 만듭니다:
+아래 예제의, `someBits` 와 `moreBits` 값은 서로 다른 비트가 `1` 인 집합입니다. 비트 합 연산자로 조합하면 수치 값 `11111110` 인데, 이는 부호없는 10-진수 `254` 와 같습니다:
 
 ```swift
 let someBits: UInt8 = 0b10110010
 let moreBits: UInt8 = 0b01011110
-let combinedBits = someBits | moreBits // 11111110 과 같습니다.
+let combinedBits = someBits | moreBits // 11111110 과 같음
 ```
 
 #### Bitwise XOR Operator (비트 배타 연산자)
