@@ -61,7 +61,7 @@ _비트 합 연산자 (bitwise OR operator;_ `|`_)_ 는 두 수치 값 비트를
 
 ![bitwise-OR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-OR-operator.jpg)
 
-아래 예제의, `someBits` 와 `moreBits` 값은 서로 다른 비트가 `1` 인 집합입니다. 비트 합 연산자로 조합하면 수치 값 `11111110` 인데, 이는 부호없는 10-진수 `254` 와 같습니다:
+아래 예제에서, `someBits` 와 `moreBits` 값은 서로 다른 비트 집합이 `1` 입니다. 비트 합 연산자로 조합한 수치 값은 `11111110` 인데, 이는 부호없는 10-진수 `254` 와 같습니다:
 
 ```swift
 let someBits: UInt8 = 0b10110010
@@ -69,13 +69,13 @@ let moreBits: UInt8 = 0b01011110
 let combinedBits = someBits | moreBits // 11111110 과 같음
 ```
 
-#### Bitwise XOR Operator (비트 배타 연산자)
+#### Bitwise XOR Operator (배타적 비트 합 연산자)
 
-_비트 배타 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (exclusive OR operator; `^`)" 는, 두 수치 값의 비트를 비교합니다. 연산자는 입력 비트들이 다르면 비트를 `1` 로 설정하고 입력 비트들이 같으면 `0` 으로 설정한 새로운 수치 값을 반환합니다:
+_배타적 비트 합 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (`^`)"[^exclusive-or] 는, 두 수치 값 비트를 비교합니다. 연산자는 입력 비트가 서로 다르면 비트를 `1` 로 설정하고 입력 비트가 똑같으면 `0` 으로 설정한 새 수치 값을 반환합니다:
 
 ![bitwise-XOR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-XOR-operator.jpg)
 
-아래 예제에서, `firstBits` 와 `otherBits` 값은 각각 서로 다른 위치에서 `1` 로 설정된 비트를 가집니다. '비트 배타 연산자' 는 '출력 값' 에서  이 이 비트를 둘 다 `1` 로 설정합니다. `firstBits` 와 `otherBits` 에서 일치하는 모든 다른 비트들은 '출력 값' 에서 `0` 으로 설정합니다:
+아래 예제의, `firstBits` 와 `otherBits` 값은 각각 서로 다른 위치에 `1` 을 설정한 비트 집합입니다. 배타적 비트 합 연산자는 '출력 값' 에서  이 이 비트를 둘 다 `1` 로 설정합니다. `firstBits` 와 `otherBits` 에서 일치하는 모든 다른 비트들은 '출력 값' 에서 `0` 으로 설정합니다:
 
 ```swift
 let firstBits: UInt8 = 0b00010100
@@ -603,6 +603,8 @@ let manyStars = draw {
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
 [^ampersand]: '앰퍼샌드 (ampersand; `&`)' 는 영어로 `and` 를 의미하는 라틴어의 `et` 에서 유래한 단어로 '앤드 기호' 라고도 합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Ampersand](https://en.wikipedia.org/wiki/Ampersand) 항목과 [앰퍼샌드](https://ko.wikipedia.org/wiki/앰퍼샌드) 항목을 참고하기 바랍니다.
+
+[^exclusive-or]: '배타적 논리 합 (exclusive OR)' 에 대한 더 자세한 내용은, 위키피디아의 [Exclusive or](https://en.wikipedia.org/wiki/Exclusive_or) 항목과 [배타적 논리합](https://ko.wikipedia.org/wiki/배타적_논리합) 항목을 참고하기 바랍니다. 
 
 [^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer)' 나 '수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말입니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
