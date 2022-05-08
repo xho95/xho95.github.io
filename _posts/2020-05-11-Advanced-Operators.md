@@ -61,7 +61,7 @@ _비트 합 연산자 (bitwise OR operator;_ `|`_)_ 는 두 수치 값 비트를
 
 ![bitwise-OR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-OR-operator.jpg)
 
-아래 예제에서, `someBits` 와 `moreBits` 값은 서로 다른 비트 집합이 `1` 입니다. 비트 합 연산자로 조합한 수치 값은 `11111110` 인데, 이는 부호없는 10-진수 `254` 와 같습니다:
+아래 예제의, `someBits` 와 `moreBits` 값은 서로 다른 비트에 `1` 이 설정되어 있습니다. 비트 합 연산자로 이를 조합한 수치 값은 `11111110` 으로, 부호없는 10-진수 `254` 와 같습니다:
 
 ```swift
 let someBits: UInt8 = 0b10110010
@@ -71,16 +71,16 @@ let combinedBits = someBits | moreBits // 11111110 과 같음
 
 #### Bitwise XOR Operator (배타적 비트 합 연산자)
 
-_배타적 비트 합 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (`^`)"[^exclusive-or] 는, 두 수치 값 비트를 비교합니다. 연산자는 입력 비트가 서로 다르면 비트를 `1` 로 설정하고 입력 비트가 똑같으면 `0` 으로 설정한 새 수치 값을 반환합니다:
+_배타적 비트 합 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (`^`)"[^exclusive-or] 는, 두 수치 값 비트를 비교합니다. 연산자가 반환한 새 수치 값 비트는 입력 비트들이 서로 다르면 `1` 로 설정하고 입력 비트가 같으면 `0` 으로 설정합니다:
 
 ![bitwise-XOR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-XOR-operator.jpg)
 
-아래 예제의, `firstBits` 와 `otherBits` 값은 각각 서로 다른 위치에 `1` 을 설정한 비트 집합입니다. 배타적 비트 합 연산자는 '출력 값' 에서  이 이 비트를 둘 다 `1` 로 설정합니다. `firstBits` 와 `otherBits` 에서 일치하는 모든 다른 비트들은 '출력 값' 에서 `0` 으로 설정합니다:
+아래 예제의, `firstBits` 와 `otherBits` 값은 상대는 그렇지 않은 장소에 `1` 이 설정된 비트가 있습니다. 배타적 비트 합 연산자는 이 비트 모두의 출력 값을 `1` 로 설정합니다. `firstBits` 와 `otherBits` 안의 다른 모든 비트는 일치하며 출력 값은 `0` 으로 설정합니다:
 
 ```swift
 let firstBits: UInt8 = 0b00010100
 let otherBits: UInt8 = 0b00000101
-let outputBits = firstBits ^ otherBits // 00010001 과 같습니다.
+let outputBits = firstBits ^ otherBits // 00010001 과 같음
 ```
 
 #### Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)
