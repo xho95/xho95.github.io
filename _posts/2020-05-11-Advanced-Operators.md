@@ -85,11 +85,11 @@ let outputBits = firstBits ^ otherBits // 00010001 과 같음
 
 #### Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)
 
-_비트 왼쪽 이동 연산자 (bitwise left shift operator;_ `<<`_)_ 와 _비트 오른쪽-이동 연산자 (bitwise right shift operator;_ `>>`_)_ 는, 아래 정의한 규칙에 따라, 수치 값의 모든 비트를 정해진 수의 자리만큼 왼쪽 또는 오른쪽으로 이동합니다.
+_비트 왼쪽 이동 연산자 (bitwise left shift operator;_ `<<`_)_ 와 _비트 오른쪽 이동 연산자 (bitwise right shift operator;_ `>>`_)_ 는 모든 수치 값 비트를, 아래 정의한 규칙에 따라, 특정 수의 자리만큼 왼쪽 또는 오른쪽으로 이동합니다.
 
-비트 왼쪽 및 오른쪽 이동은 정수를 '2' 라는 '인수 (factor)'[^factor] 로 곱하거나 나누는 효과를 가집니다. 정수 비트의 위치를 왼쪽으로 하나 이동하는 것은 값을 두 배로 만드는 반면, 위치를 오른쪽으로 하나 이동하는 것은 값을 반으로 만듭니다.
+비트를 왼쪽과 오른쪽으로 이동하는 건 정수를 2 라는 인수 (factor)[^factor] 로 곱하거나 나누는 효과가 있습니다. 정수 비트를 왼쪽으로 한 위치 이동하면 자신의 값이 두 배가 되는 반면, 오른쪽으로 한 위치 이동하면 자신의 값이 반이 됩니다.
 
-**Shifting Behavior for Unsigned Integers ('부호없는 정수' 의 이동 동작)**
+**Shifting Behavior for Unsigned Integers (부호없는 정수의 이동 동작)**
 
 '부호없는 정수' 의 '비트-이동 동작' 은 다음과 같습니다:
 
@@ -606,7 +606,7 @@ let manyStars = draw {
 
 [^exclusive-or]: '배타적 논리 합 (exclusive OR)' 에 대한 더 자세한 내용은, 위키피디아의 [Exclusive or](https://en.wikipedia.org/wiki/Exclusive_or) 항목과 [배타적 논리합](https://ko.wikipedia.org/wiki/배타적_논리합) 항목을 참고하기 바랍니다. 
 
-[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer)' 나 '수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말입니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
+[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer) 나 수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각각의 구성 요소를 말합니다. '인수 분해 (factorization)' 에서의 인수가 이것입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
 [^CSS]: 원문에서는 'Cascading Style Sheets' 라고 했지만, 오히려 'CSS' 라는 줄임말이 더 이해하기 편할 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
 
