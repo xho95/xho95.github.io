@@ -99,14 +99,14 @@ _비트 왼쪽 이동 연산자 (bitwise left shift operator;_ `<<`_)_ 와 _비�
 
 이 접근법을 _논리적 이동 (logical shift)_ 이라 합니다.
 
-아래 묘사는 (`11111111` 을 `1` 위치 만큼 왼쪽으로 이동하는) `11111111 << 1` 과, (`11111111` 을 `1` 위치 만큼 오른쪽으로 이동하는) `11111111 >> 1` 의 결과를 보여줍니다. 파란색 숫자는 이동한 것이고, 회색 숫자는 버린 것이며, 주황색 `0` 은 집어 넣은 것입니다:
+아래의 묘사는 (`11111111` 을 `1` 위치만큼 왼쪽 이동하는) `11111111 << 1` 과, (`11111111` 을 `1` 위치만큼 오른쪽 이동하는) `11111111 >> 1` 의 결과를 보여줍니다. 파란 숫자는 이동한 것이고, 회색 숫자는 버린 것이며, 주황색 `0` 은 집어 넣은 것입니다:
 
 ![shifting behavior for unsigned integer](/assets/Swift/Swift-Programming-Language/Advanced-Operators-shifting-behavior-for-unsigned.png)
 
-다음은 '비트 이동' 방법을 스위프트 코드로 보인 것입니다:
+스위프트 코드의 비트 이동은 이렇게 보입니다:
 
 ```swift
-let shiftBits: UInt8 = 4    // 00000100 (2-진수 표현)
+let shiftBits: UInt8 = 4    // 00000100 (2-진수)
 shiftBits << 1              // 00001000
 shiftBits << 2              // 00010000
 shiftBits << 5              // 10000000
@@ -114,18 +114,18 @@ shiftBits << 6              // 00000000
 shiftBits >> 2              // 00000001
 ```
 
-'비트 이동' 을 사용하여 다른 데이터 타입의 값을 '부호화 (encoding)' 하고 '복호화 (decoding)' 할 수 있습니다:
+비트 이동을 사용하면 다른 데이터 타입 안의 값을 부호화 (encoding) 및 복호화 (decoding) 할 수 있습니다:
 
 ```swift
 let pink: UInt32 = 0xCC6699
-let redComponent = (pink & 0xFF0000) >> 16    // redComponent 는 0xCC, 또는 204 입니다.
-let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 입니다.
-let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 입니다.
+let redComponent = (pink & 0xFF0000) >> 16    // redComponent 는 0xCC, 또는 204 임
+let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 임
+let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 임
 ```
 
-이 예제는 '핑크 색' 에 대한 'CSS 값'[^CSS] 을 저장하는 `pink` 라는 `UInt32` 상수를 사용합니다. 'CSS 색상 값 `#CC6699`' 을 스위프트 '16-진수 표현' 으로 작성하면 `0xCC6699` 입니다. 그런 다음 '비트 곱 연산자 (`&`)' 와 '비트 오른쪽 이동 연산자 (`>>`)' 가 이 색을 '빨간색 (`CC`)', '녹색 (`66`)', 그리고 '파란색 (`99`) 성분' 으로 분해합니다.
+이 예제는 `pink` 라는 `UInt32` 상수를 사용하여 분홍색의 CSS 값[^CSS] 을 저장합니다. CSS 색상 값 `#CC6699` 은 스위프트 16-진수 표현법으론 `0xCC6699` 라고 작성합니다. 그런 다음 비트 곱 연산자 (`&`) 와 비트 오른쪽 이동 연산자 (`>>`) 로 이 색의 빨간색 (`CC`), 녹색 (`66`), 및 파란색 (`99`) 성분을 분해합니다.
 
-'빨간색 성분' 은 `0xCC6699` 와 `0xFF0000` 라는 수를 '비트 곱' 하여 구합니다. `0xFF0000` 에 있는 `0` 의 실제 효과는 `0xCC6699` 의 두 번째와 세 번째 '바이트 (bytes)' 를 "숨겨서 (mask)", `6699` 는 무시하고 결과적으로 `0xCC0000` 만 남도록 합니다.
+빨간색 성분은 수치 값 `0xCC6699` 와 `0xFF0000` 를 비트 곱하여 구합니다. `0xFF0000` 에 있는 `0` 의 실제 효과는 `0xCC6699` 의 두 번째와 세 번째 '바이트 (bytes)' 를 "숨겨서 (mask)", `6699` 는 무시하고 결과적으로 `0xCC0000` 만 남도록 합니다.
 
 그런 다음 이 수를 '16 자리' 만큼 오른쪽으로 이동 (`>> 16`) 합니다. 16-진수에서 각각의 문자 쌍은 '8 비트' 를 사용하므로, 오른쪽으로 '16 자리' 이동하는 것은 `0xCC0000` 을 `0x0000CC` 로 변환할 것입니다. 이는, 10-진수 값이 `204` 인, `0xCC` 와 똑같습니다.
 
@@ -608,7 +608,7 @@ let manyStars = draw {
 
 [^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer) 나 수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각각의 구성 요소를 말합니다. '인수 분해 (factorization)' 에서의 인수가 이것입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
-[^CSS]: 원문에서는 'Cascading Style Sheets' 라고 했지만, 오히려 'CSS' 라는 줄임말이 더 이해하기 편할 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
+[^CSS]: 원문은 'Cascading Style Sheets' 라고 되어 있는데, CSS 라는 줄임말이 더 유명하며 이해하기 쉬울 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
 
 [^two-s-complement]: 컴퓨터 용어로 이런 방식을 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면, 본문에서 계속 언급하는 것처럼, `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워지는 장점을 가집니다. '2의 보수' 에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
 
