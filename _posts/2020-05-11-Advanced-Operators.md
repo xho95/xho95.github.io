@@ -143,15 +143,15 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 ![signed positive 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-positive-4.jpg)
 
-부호 비트는 ("양수 (positive)" 의 의미인) `0` 이고, 일곱 개의 값 비트는 그냥 수치 값 `4` 를, 2진 표기법으로 쓴겁니다.
+부호 비트는 `0` 이고 ("양수 (positive)" 를 의미하며), 일곱 개의 값 비트는 그냥 수치 값 `4` 를, 2진 표기법으로 쓴겁니다.
 
-음수는, 하지만, 다르게 저장합니다. 이는 `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 값으로 저장되는데, 여기서 `n` 은 값 비트의 개수입니다.[^two-s-complement] '8-비트 수' 는 '7 개의 값 비트' 를 가지므로, 이는 `2`의 `7` 제곱, 또는 `128` 을, 의미합니다.
+음수는, 하지만, 다르게 저장합니다. `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 걸[^two-s-complement] 로 저장하는데, 여기서 `n` 은 값 비트 개수입니다. 여덟-비트 수엔 값 비트가 일곱 개 있으므로, 이는 `2`의 `7` 제곱, 또는 `128` 을, 의미합니다.
 
-다음은 `Int8` 안의 비트로 `-4` 를 저장하는 방법입니다:
+`Int8` 안에 수치 값 `-4` 가 있으면 비트가 이렇게 보입니다:
 
 ![signed negative 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-negative-4.jpg)
 
-이번에는, 부호 비트가 ("음수 (negative)" 를 의미하는) `1` 이며, 7 개의 값 비트들은 (`128 - 4` 인) `124` 의 '2-진 값' 을 가집니다:
+이번엔, 부호 비트가 `1` 이고 ("음수 (negative)" 를 의미하며), 일곱 개의 값 비트엔 2진 값 `124` (`128 - 4`) 가 있습니다:
 
 ![signed 124](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-124.jpg)
 
@@ -610,7 +610,7 @@ let manyStars = draw {
 
 [^CSS]: 원문은 'Cascading Style Sheets' 라고 되어 있는데, CSS 라는 줄임말이 더 유명하며 이해하기 쉬울 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
 
-[^two-s-complement]: 컴퓨터 용어로 이런 방식을 '2의 보수 표현법' 이라고 합니다. 2의 보수 표현법을 사용하면, 본문에서 설명하는 것처럼, 한 가지 방식으로 `0` 을 표현할 수 있고, 사칙 연산이 자연스러워 집니다. '2의 보수' 에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
+[^two-s-complement]: `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 걸 '2의 보수 (two's complement)' 라고 합니다. 2의 보수를 사용하면, `0` 의 표현 방식을 한 가지로 통일할 수 있으며, 사칙 연산도 자연스러워집니다. 2의 보수에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
 
 [^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은, 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 항목과 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 항목을 참고하기 바랍니다.
 
