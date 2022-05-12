@@ -194,7 +194,7 @@ potentialOverflow += 1
 
 수치 값은 양의 방향과 음의 방향 양쪽으로 넘칠 수 있습니다.
 
-값 넘침 덧셈 연산자 (`&+`) 로, 양의 방향 값 넘침을 허용한 부호없는 정수에 발생하는 일에 대한 예제는 이렇습니다:
+부호없는 정수가, 값 넘침 덧셈 연산자 (`&+`) 로, 양의 방향 값 넘침을 허용할 때 발생하는 일에 대한 예제는 이렇습니다:
 
 ```swift
 var unsignedOverflow = UInt8.max
@@ -203,17 +203,17 @@ unsignedOverflow = unsignedOverflow &+ 1
 // unsignedOverflow 는 이제 0 과 같음
 ```
 
-`unsignedOverflow` 변수는 `UInt8` 이 쥘 수 있는 최대 값 (`255`, 또는 2-진수 `11111111`) 으로 초기화됩니다. 그런 다음 '값 넘침 덧셈 연산자 (`&+`)' 가 이를 `1` 만큼 증가합니다. 이는 `UInt8` 이 쥘 수 있는 크기 바로 너머로 '2-진 표현' 을 밀어서, 아래 도표에 보인 것처럼, 경계 너머로 값이 넘치도록 합니다. '값 넘침 더하기' 후에 `UInt8` 경계 안에 남는 값은 `00000000`, 또는 `0` 입니다.
+`unsignedOverflow` 변수를 `UInt8` 가 가질 수 있는 최대 값으로 (`255`, 또는 2-진수 `11111111` 로) 초기화합니다. 그런 다음 값 넘침 덧셈 연산자 (`&+`) 로 `1` 만큼 증가시킵니다. 이는 자신의 2진수 값을 `UInt8` 이 가질 수 있는 크기 위로 밀어내서, 아래 도표에 보는 것처럼, 경계 너머로 값이 넘치게 합니다. 값 넘침 덧셈 후 `UInt8` 경계 안에 남는 값은 `00000000`, 또는 `0` 입니다.
 
 ![value overflow 0](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-0.png)
 
-이와 비슷한 일이 '부호없는 정수' 가 음의 방향 값 넘침을 허용할 때도 발생합니다. 다음은 '값 넘침 빼기 연산자 (`&-`)' 를 사용하는 예제입니다:
+부호없는 정수가 음의 방향 값 넘침을 허용할 때도 이와 비슷한 게 발생합니다. 값 넘침 뺄셈 연산자 (`&-`) 를 사용한 예제는 이렇습니다:
 
 ```swift
 var unsignedOverflow = UInt8.min
-// unsignedOverflow 는, UInt8 이 쥘 수 있는 최소 값인, 0 입니다.
+// unsignedOverflow 는, UInt8 이 가질 수 있는 최소 값인, 0 과 같음
 unsignedOverflow = unsignedOverflow &- 1
-// unsignedOverflow 는 이제 255 입니다.
+// unsignedOverflow 는 이제 255 임
 ```
 
 `UInt8` 이 쥘 수 있는 최소 값은 '0', 또는 2-진수로 `00000000` 입니다. '값 넘침 빼기 연산자 (`&-`)' 로 `00000000` 에서 `1` 을 빼면, 수는 값이 넘쳐서 `11111111`, 또는 10-진수 `255` 로 '되돌아 갈 (wrap around)'[^wrap-around] 것입니다.
