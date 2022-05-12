@@ -216,7 +216,7 @@ unsignedOverflow = unsignedOverflow &- 1
 // unsignedOverflow 는 이제 255 임
 ```
 
-`UInt8` 이 가질 수 있는 최소 값은 0, 또는 2-진수 `00000000` 입니다. 값 넘침 뺄셈 연산자 (`&-`) 로 `00000000` 에서 `1` 을 빼면, 수치 값이 넘쳐서 `11111111`, 또는 10-진수 `255` 로 넘어갈 (wrap around)[^wrap-around] 겁니다.
+`UInt8` 이 가질 수 있는 최소 값은 0, 또는 2-진수 `00000000` 입니다. 값 넘침 뺄셈 연산자 (`&-`) 로 `00000000` 에서 `1` 을 빼면, 수치 값이 넘쳐서 `11111111`, 또는 10-진수 `255` 로 넘어가게 (wrap around)[^wrap-around] 됩니다.
 
 ![value overflow 255](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-255.png)
 
@@ -229,11 +229,11 @@ signedOverflow = signedOverflow &- 1
 // signedOverflow 는 이제 127 과 같음
 ```
 
-`Int8` 이 쥘 수 있는 최소 값은 `-128`, 또는 2-진수로 `10000000` 입니다. '값 넘침 연산자' 로 이 2-진수에서 `1` 을 빼면, 부호 비트는 전환하고, `Int8` 이 쥘 수 있는 최대 양수 값인, 양수 `127` 을 부여하여, `01111111` 이라는 2-진수 값을 줍니다.
+`Int8` 이 가질 수 있는 최소 값은 `-128`, 또는 2-진수 `10000000` 입니다. 이 2-진수에 값 넘침 연산자로 `1` 을 빼면 `01111111` 이라는 2-진수 값을 주는데, 이는 부호 비트를 반전하고, `Int8` 이 가질 수 있는 최대 양수 값인, 양의 `127` 입니다.
 
 ![value overflow 255](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-127.png)
 
-'부호있는 정수' 와 '부호없는 정수' 둘 다에서, '양의 방향 값 넘침' 은 '최대 유효 정수 값' 이 '최소 값' 으로 되돌아 가며, '음의 방향 값 넘침' 은 '최소 값' 이 '최대 값' 으로 되돌아 갑니다.
+부호있는 정수 및 부호없는 정수 둘 다, 양의 방향 값 넘침은 최대 유효 정수 값에서 최소 값으로 넘어가며, 음의 방향 값 넘침은 최소 값에서 최대 값으로 넘어갑니다.
 
 ### Precedence and Associativity (우선권 및 결합성)
 
