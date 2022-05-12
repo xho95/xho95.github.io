@@ -207,7 +207,7 @@ unsignedOverflow = unsignedOverflow &+ 1
 
 ![value overflow 0](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-0.png)
 
-부호없는 정수가 음의 방향 값 넘침을 허용할 때도 이와 비슷한 게 발생합니다. 값 넘침 뺄셈 연산자 (`&-`) 를 사용한 예제는 이렇습니다:
+부호없는 정수가 음의 방향 값 넘침을 허용할 때도 이와 비슷한 뭔가가 발생합니다. 값 넘침 뺄셈 연산자 (`&-`) 를 사용한 예제는 이렇습니다:
 
 ```swift
 var unsignedOverflow = UInt8.min
@@ -216,17 +216,17 @@ unsignedOverflow = unsignedOverflow &- 1
 // unsignedOverflow 는 이제 255 임
 ```
 
-`UInt8` 이 쥘 수 있는 최소 값은 '0', 또는 2-진수로 `00000000` 입니다. '값 넘침 빼기 연산자 (`&-`)' 로 `00000000` 에서 `1` 을 빼면, 수는 값이 넘쳐서 `11111111`, 또는 10-진수 `255` 로 '되돌아 갈 (wrap around)'[^wrap-around] 것입니다.
+`UInt8` 이 가질 수 있는 최소 값은 0, 또는 2-진수 `00000000` 입니다. 값 넘침 뺄셈 연산자 (`&-`) 로 `00000000` 에서 `1` 을 빼면, 수치 값이 넘쳐서 `11111111`, 또는 10-진수 `255` 로 넘어갈 (wrap around)[^wrap-around] 겁니다.
 
 ![value overflow 255](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-255.png)
 
-'값 넘침' 은 '부호있는 정수' 에서도 일어납니다. 모든 부호있는 정수의 더하기와 빼기는, [Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)](#bitwise-left-and-right-shift-operators-비트-왼쪽-이동-및-오른쪽-이동-연산자) 에서 설명한 것처럼, 부호 비트도 더하거나 빼는 수인 것처럼 포함하는, '비트 방식' 으로 수행합니다.
+부호있는 정수도 값 넘침이 일어납니다. 모든 부호있는 정수의 덧셈과 뺄셈은, [Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)](#bitwise-left-and-right-shift-operators-비트-왼쪽-이동-및-오른쪽-이동-연산자) 에서 설명한 것처럼, 부호 비트도 덧셈 또는 뺄셈하는 수의 일부로 포함한, 비트 방식으로 합니다.
 
 ```swift
 var signedOverflow = Int8.min
-// signedOverflow 는, Int8 이 쥘 수 있는 최소 값인, -128 입니다.
+// signedOverflow 는, Int8 이 가질 수 있는 최소 값인, -128 과 같음
 signedOverflow = signedOverflow &- 1
-// signedOverflow 는 이제 127 입니다.
+// signedOverflow 는 이제 127 과 같음
 ```
 
 `Int8` 이 쥘 수 있는 최소 값은 `-128`, 또는 2-진수로 `10000000` 입니다. '값 넘침 연산자' 로 이 2-진수에서 `1` 을 빼면, 부호 비트는 전환하고, `Int8` 이 쥘 수 있는 최대 양수 값인, 양수 `127` 을 부여하여, `01111111` 이라는 2-진수 값을 줍니다.
@@ -614,7 +614,7 @@ let manyStars = draw {
 
 [^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은, 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 항목과 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 항목을 참고하기 바랍니다.
 
-[^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 10, 0, 1 ...` 처럼 일련의 수들이 빙글빙글 돌아가면서 되풀이되는 것을 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 참고하기 바랍니다.
+[^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 9, 0, 1 ... 9, 0, ...` 처럼 최대 값을 넘어선 수들이 다시 처음부터 되풀이되는 걸 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 참고하기 바랍니다.
 
 [^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. 의미도 '결합 법칙' 과 거의 유사합니다. '결합 법칙' 에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
 
