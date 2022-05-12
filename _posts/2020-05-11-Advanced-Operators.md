@@ -177,7 +177,7 @@ let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 
 
 ```swift
 var potentialOverflow = Int16.max
-// potentialOverflow 는 32767 과 같은데, 이는 Int16 이 쥘 수 있는 최대 값임
+// potentialOverflow 는, Int16 이 가질 수 있는 최대 값인, 32767 과 같음
 potentialOverflow += 1
 // 이는 에러를 일으킴
 ```
@@ -186,21 +186,21 @@ potentialOverflow += 1
 
 하지만, 특히 사용할 수치 비트만 값 넘침 조건으로 잘라내고 싶을 때, 에러 발동 보단 이 동작을 직접 선택할 수 있습니다. 스위프트가 제공하는 세 개의 산술 _값 넘침 연산자 (overflow operators)_ 로 정수 계산에 대한 값 넘침 동작을 직접 선택합니다. 이 연산자는 모두 앰퍼샌드 (`&`) 로 시작합니다:
 
-* 값 넘침 더하기 (overflow addition; `&+`)
-* 값 넘침 빼기 (overflow subtraction; `&-`)
-* 값 넘침 곱하기 (overflow multiplication; `&*`)
+* 값 넘침 덧셈 (overflow addition; `&+`)
+* 값 넘침 뺄셈 (overflow subtraction; `&-`)
+* 값 넘침 곱셈 (overflow multiplication; `&*`)
 
 #### Value Overflow (값 넘침)
 
-수는 양의 방향과 음의 방향 둘 다로 넘칠 수 있습니다.
+수치 값은 양의 방향과 음의 방향 양쪽으로 넘칠 수 있습니다.
 
-다음은, '값 넘침 덧셈 연산자 (`&+`)' 로, '부호없는 정수' 가 양의 방향 값 넘침을 허용할 때 발생하는 일에 대한 예제입니다:
+값 넘침 덧셈 연산자 (`&+`) 로, 양의 방향 값 넘침을 허용한 부호없는 정수에 발생하는 일에 대한 예제는 이렇습니다:
 
 ```swift
 var unsignedOverflow = UInt8.max
-// unsignedOverflow 는, UInt8 이 쥘 수 있는 최대 값인, 255 입니다.
+// unsignedOverflow 는, UInt8 이 가질 수 있는 최대 값인, 255 와 같음
 unsignedOverflow = unsignedOverflow &+ 1
-// unsignedOverflow 는 이제 0 입니다.
+// unsignedOverflow 는 이제 0 과 같음
 ```
 
 `unsignedOverflow` 변수는 `UInt8` 이 쥘 수 있는 최대 값 (`255`, 또는 2-진수 `11111111`) 으로 초기화됩니다. 그런 다음 '값 넘침 덧셈 연산자 (`&+`)' 가 이를 `1` 만큼 증가합니다. 이는 `UInt8` 이 쥘 수 있는 크기 바로 너머로 '2-진 표현' 을 밀어서, 아래 도표에 보인 것처럼, 경계 너머로 값이 넘치도록 합니다. '값 넘침 더하기' 후에 `UInt8` 경계 안에 남는 값은 `00000000`, 또는 `0` 입니다.
