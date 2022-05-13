@@ -276,9 +276,9 @@ signedOverflow = signedOverflow &- 1
 
 이 계산이 내는 최종 답은 `17` 입니다.
 
-연산자 우선권 그룹 및 결합성 설정의 완전한 목록을 포함하여, 스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 을 참고하기 바랍니다.
+스위프트 표준 라이브러리가 제공한 연산자에 대한, 연산자 우선권 그룹과 결합성 설정의 완전한 목록을 포함한, 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
-> 스위프트의 연산자 우선권 및 결합성 규칙은 C 와 오브젝티브-C 에 있는 것보다 더 간단하며 더 예측 가능합니다. 하지만, 이는 곧 'C-기반 언어' 에 있는 것과 정확하게 똑같지는 않다는 것을 의미힙니다. 기존 코드를 스위프트로 이식할 때는 '연산자 상호 작용' 이 의도대로 여전히 동작하도록 보장하는데 주의하기 바랍니다.
+> 스위프트의 연산자 우선권과 결합성 규칙은 C 및 오브젝티브-C 의 것보다 단순하여 더 예측하기 쉽습니다. 하지만, 이는 C-기반 언어의 것과 정확히 똑같지는 않다는 의미이기도 합니다. 기존 코드를 스위프트로 이식할 땐 연산자가 여전히 의도대로 상호 작용하도록 보장하는데 주의하기 바랍니다.
 
 ### Operator Methods (연산자 메소드)
 
