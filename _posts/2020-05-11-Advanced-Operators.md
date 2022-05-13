@@ -235,11 +235,11 @@ signedOverflow = signedOverflow &- 1
 
 부호있는 정수 및 부호없는 정수 둘 다, 양의 방향 값 넘침은 최대 유효 정수 값에서 최소 값으로 넘어가며, 음의 방향 값 넘침은 최소 값에서 최대 값으로 넘어갑니다.
 
-### Precedence and Associativity (우선권 및 결합성)
+### Precedence and Associativity (우선권과 결합성)
 
-연산자 _우선권 (precedence)_ 은 일부 연산자에 다른 것보다 더 높은 우선 순위를 주며; 이러한 연산자를 먼저 적용합니다.
+연산자 _우선권 (precedence)_ 은 일부 연산자에 다른 것보다 더 높은 우선 순위를 주며; 이 연산자를 먼저 적용합니다.
 
-연산자 _결합성 (associativity)_[^associativity] 은-왼쪽부터 그룹짓든, 오른쪽부터 그룹짓든-동일한 우선권의 연산자를 서로 그룹짓는 방법을 정의합니다. “자신의 왼쪽 표현식과 결합한다”, 또는 “자신의 오른쪽 표현식과 결합한다” 를 의미한다고 생각하면 됩니다.
+연산자 _결합성 (associativity)_[^associativity] 은 동일 우선권의 연산자를 서로-왼쪽부터 그룹짓거나, 오른쪽부터 그룹지어-묶는 방법을 정의합니다. 이는 “자신의 왼쪽 표현식과 결합한다”, 거나 “자신의 오른쪽 표현식과 결합한다” 는 의미로 생각하면 됩니다.
 
 복합 표현식의 계산 순서를 알아낼 땐 각 연산자의 우선권과 결합성을 고려하는 게 중요합니다. 예를 들어, 연산자 우선권은 왜 다음 표현식이 `17` 인지를 설명합니다.
 
@@ -425,7 +425,7 @@ let afterDoubling = +++toBeDoubled
 
 #### Precedence for Custom Infix Operators (사용자 중위 연산자의 우선권)
 
-각각의 사용자 중위 연산자는 우선권 그룹에 속합니다. 우선권 그룹은, 연산자의 결합성 (associativity) 뿐 아니라, 다른 중위 연산자에 상대적인 연산자 우선권을 지정합니다. 이 성질이 중위 연산자와 다른 중위 연산자와의 상호 작용에 영향을 주는 방법에 대한 설명은 [Precedence and Associativity (우선권 및 결합성)](#precedence-and-associativity-우선-순위와-결합성) 을 참고하기 바랍니다.
+각각의 사용자 중위 연산자는 우선권 그룹에 속합니다. 우선권 그룹은, 연산자의 결합성 (associativity) 뿐 아니라, 다른 중위 연산자에 상대적인 연산자 우선권을 지정합니다. 이 성질이 중위 연산자와 다른 중위 연산자와의 상호 작용에 영향을 주는 방법에 대한 설명은 [Precedence and Associativity (우선권과 결합성)](#precedence-and-associativity-우선권과-결합성) 을 참고하기 바랍니다.
 
 우선권 그룹을 명시하지 않은 사용자 중위 연산자에는 삼항 조건 연산자 바로 위의 우선권을 가진 기본 우선권 그룹을 줍니다.
 
@@ -616,7 +616,7 @@ let manyStars = draw {
 
 [^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 9, 0, 1 ... 9, 0, ...` 처럼 최대 값을 넘어선 수들이 다시 처음부터 되풀이되는 걸 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 참고하기 바랍니다.
 
-[^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. 의미도 '결합 법칙' 과 거의 유사합니다. '결합 법칙' 에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
+[^associativity]: 스위프트의 '결합성 (associativity)' 은 수학 분야에 있는 '결합 법칙 (associative law)' 과 관련이 있습니다. 결합 법칙에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 '애플 개발자 문서' 로 연결된 링크입니다.
 
