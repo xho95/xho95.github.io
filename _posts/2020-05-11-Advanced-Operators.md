@@ -10,103 +10,103 @@ categories: Swift Language Grammar Advanced Operator
 
 ## Advanced Operators (고급 연산자)
 
-[Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명한 연산자에 더하여, 스위프트는 더 복잡한 값을 조작하는 여러 가지의 고급 연산자를 제공합니다. 이는 C 와 오브젝티브-C 에서 익숙할 모든 '비트 (bitwise) 연산자' 와 '비트 이동 (bit shifting) 연산자' 를 포함합니다.
+[Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 설명한 연산자에 더해, 스위프트는 더 복잡하게 값을 조작하는 여러 가지 고급 연산자를 제공합니다. 이는 모든 종류의 비트 (bitwise) 및 비트 이동 (bit shifting) 연산자를 포함하는데 C 와 오브젝티브-C 에서부터 익숙할 겁니다.
 
-C 의 '산술 (arithmetic) 연산자' 와는 달리, 스위프트의 산술 연산자는 기본적으로 '값이 넘치지 (overflow)' 않습니다. '값 넘침 (overflow) 동작' 은 '덫으로 잡아서 (trapped)' 에러로 보고합니다. '값 넘침 동작' 을 직접 선택하려면, '값 넘침 덧셈 연산자 (`&+`)' 같은, 기본적으로 '값이 넘치는' 스위프트의 '추가 산술 연산자 집합' 을 사용합니다. 이 모든 '값 넘침 연산자' 들은 '앤드 기호 (ampersand; `&`)' 로 시작합니다.
+C 의 산술 (arithmetic) 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값이 넘치지 않습니다. 값 넘침 (overflow) 동작은 잡아서 에러라고 보고합니다. 값 넘침 동작을 직접 선택하려면, 값 넘침 덧셈 연산자 (`&+`) 같이, 기본적으로 값이 넘치는 스위프트의 두 번째 산술 연산자 집합을 사용합니다. 이러한 모든 값 넘침 연산자는 앰퍼샌드 (`&`)[^ampersand] 로 시작합니다.
 
-자신만의 구조체, 클래스, 그리고 열거체를 정의할 때는, 사용자 정의 타입에 대한 자신만의 표준 스위프트 연산자를 구현하는 것이 유용할 수 있습니다. 스위프트는 이 연산자들의 맞춤식 구현과 각 생성 타입에 대해 이들이 무슨 동작을 해야하는 지를 쉽게 결정할 수 있게 해줍니다.
+자신만의 구조체와, 클래스, 및 열거체를 정의할 땐, 이 사용자 정의 타입에 자신만의 표준 스위프트 연산자를 구현하는 게 유용할 수 있습니다. 스위프트는 이 연산자들의 맞춤식 구현을 쉽게 제공하도록 그리고 생성한 각 타입마다 이들의 정확한 동작이 무엇인지도 쉽게 결정하게 해줍니다.
 
-미리 정의된 연산자로 제한된 게 아닙니다. 스위프트는, 자신만의 우선권과 결합성 값이 있는, 사용자 정의 '중위 (infix), 접두사 (prefix), 접미사 (postfix), 및 할당 (assignment) 연산자' 를 정의할 자유를 줍니다. 이 연산자들은 다른 어떤 '미리 정의된 연산자' 와 마찬가지로 코드에서 채택하고 사용할 수 있으며, 심지어 기존 타입을 확장하여 자신이 정의한 사용자 정의 연산자를 지원하게 할 수도 있습니다.
+이미 정의된 연산자로 제한된 것도 아닙니다. 스위프트가 준 자유를 통해, 자신만의 우선 순위 및 결합 법칙 값을 가진, 사용자 정의 중위 (infix) 와, 접두사 (prefix), 접미사 (postfix), 및 할당 (assignment) 연산자를 정의할 수 있습니다. 이미 정의된 어떤 연산자 같이 이 연산자를 코드에서 사용하고 채택할 수 있으며, 심지어 기존 타입을 확장하면 직접 정의한 자신만의 연산자도 지원할 수 있습니다.
 
 ### Bitwise Operators (비트 연산자)
 
-_비트 연산자 (bitwise operators)_ 는 자료 구조 안에 있는 '개별 원시 데이터 비트' 를 조작하도록 해줍니다. 이들은 종종, '그래픽 (graphic) 프로그래밍' 과 '장치 드라이버 (device driver) 생성' 같은, 저-수준 프로그래밍에서 사용합니다. '비트 연산자' 는, 사용자 정의 프로토콜을 사용한 통신에서의 '데이터 부호화 (encoding)' 및 '복호화 (decoding)' 같은, 외부 소스의 '원시 데이터' 와 작업할 때도 유용할 수 있습니다.
+_비트 연산자 (bitwise operators)_ 는 자료 구조 안의 개별 원시 데이터 비트를 조작할 수 있게 합니다. 그래픽 프로그래밍과 장치 드라이버 생성 같은, 저-수준 프로그래밍에 주로 사용합니다. 사용자 정의 프로토콜로 통신하는 데이터의 부호화 (encoding) 및 복호화 (decoding) 같이, 외부 소스의 원시 데이터와 작업할 때도 비트 연산자가 유용할 수 있습니다.
 
-스위프트는, 아래에서 설명하는 것처럼, C 에 있는 모든 '비트 연산자' 를 지원합니다.
+아래 설명 처럼, 스위프트는 C 에 있는 모든 비트 연산자를 지원합니다.
 
 #### Bitwise NOT Operator (비트 부정 연산자)
 
-_비트 부정 연산자 (bitwise NOT operator;_ `~`_)_ 는 수치 값의 모든 비트를 거꾸로 만듭니다:
+_비트 부정 연산자 (bitwise NOT operator;_ `~`_)_ 는 모든 수치 값 비트를 거꾸로 합니다:
 
 ![bitwise-NOT-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-NOT-operator.jpg)
 
-'비트 부정 연산자' 는 '접두사 (prefix) 연산자' 이며, 어떤 공백도 없이, 연산할 값 바로 앞에 나타납니다:
+비트 부정 연산자는 접두사 연산자로, 어떤 공백도 없이, 연산 값 바로 앞에 둡니다:
 
 ```swift
 let initialBits: UInt8 = 0b00001111
-let invertedBits = ~initialBits   // 11110000 과 같습니다.
+let invertedBits = ~initialBits   // 11110000 과 같음
 ```
 
-`UInt8` 정수는 '8-비트' 이며 `0` 에서 `255` 사이의 어떤 값이든 저장할 수 있습니다. 이 예제는 `UInt8` 정수를, 처음 '네 비트' 는 `0` 으로 설정하고, 다음 '네 비트' 는 `1` 로 설정하는, 이진 값 `00001111` 로 초기화합니다. 이는 10-진수 값으로 `15` 와 같습니다.
+`UInt8` 정수는 8-비트로 `0` 과 `255` 사이의 어떤 값이든 저장할 수 있습니다. 이 예제는 이진 값 `00001111` 로 `UInt8` 정수를 초기화하여, 첫 네 비트는 `0` 으로 설정하고, 그 다음 네 비트는 `1` 로 설정합니다. 이는 10-진수 값 `15` 와 같습니다.
 
-그런 다음 '비트 부정 연산자' 를 사용하여, `initialBits` 와 똑같지만, 모든 비트를 거꾸로 만든, `invertedBits` 라는 새로운 상수를 생성합니다. '0' 은 '1' 이 되고, '1' 은 '0' 이 됩니다. `invertedBits` 의 값은, 부호없는 10-진수 값으로 `240` 인, `11110000` 입니다.
+그런 다음 비트 부정 연산자로 `invertedBits` 라는 새로운 상수를 생성하는데, 이는 `initialBits` 와 같지만, 모든 비트가 거꾸로입니다. 0 은 1 이 되고, 1 은 0 이 됩니다. `invertedBits` 의 값은 `11110000` 인데, 부호없는 10-진수 값 `240` 과 같습니다.
 
 #### Bitwise AND Operator (비트 곱 연산자)
 
-_비트 곱 연산자 (bitwise AND operator;_ `&`_)_ 는 두 수치 값의 비트를 조합합니다. 이는 입력 수치 값의 비트가 _둘 다 (both)_ `1` 일 때만 비트를 `1` 로 설정한 새로운 수치 값을 반환합니다:
+_비트 곱 연산자 (bitwise AND operator;_ `&`_)_ 는 두 수치 값 비트를 조합합니다. 입력 수치 값 비트가 _둘 다 (both)_ `1` 일 때만 비트 설정이 `1` 인 새로운 수치 값을 반환합니다:
 
 ![bitwise-AND-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-AND-operator.jpg)
 
-아래 예제에서, `firstSixBits` 와 `lastSixBits` 의 값은 둘 다 `1` 이라는 '네 개의 중간 비트' 를 가집니다. '비트 곱 연산자' 는 이들을 조합하여, 부호없는 십진수 값으로 `60` 인, 수치 값 `00111100` 을 만듭니다:
+아래 예제의, `firstSixBits` 와 `lastSixBits` 값은 둘 다 네 중간 비트가 `1` 입니다. 비트 곱 연산자로 조합하면 `00111100` 인데, 이는 부호없는 십진수 값 `60` 과 같습니다:
 
 ```swift
 let firstSixBits: UInt8 = 0b11111100
 let lastSixBits: UInt8  = 0b00111111
-let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같습니다.
+let middleFourBits = firstSixBits & lastSixBits // 00111100 과 같음
 ```
 
 #### Bitwise OR Operator (비트 합 연산자)
 
-_비트 합 연산자 (bitwise OR operator;_ `|`_)_ 는 두 수치 값의 비트를 비교합니다. 연산자는 입력 수치 값 비트가 _어느 것 (either)_ 이든 `1` 이면 비트를 `1` 로 설정한 새로운 수치 값을 반환합니다:
+_비트 합 연산자 (bitwise OR operator;_ `|`_)_ 는 두 수치 값 비트를 비교합니다. 연산자는 _어느 (either)_ 입력 수치 값 비트가 `1` 이든 비트 설정이 `1` 인 새로운 수치 값을 반환합니다:
 
 ![bitwise-OR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-OR-operator.jpg)
 
-아래 예제에서, `someBits` 와 `moreBits` 의 값은 서로 다른 '비트 집합' 의 `1` 을 가집니다. '비트 합 연산자' 는 이들을 조합하여, 부호없는 10-진수 값으로 `254` 인, 수치 값 `11111110` 을 만듭니다:
+아래 예제의, `someBits` 와 `moreBits` 값은 서로 다른 비트에 `1` 이 설정되어 있습니다. 비트 합 연산자로 이를 조합한 수치 값은 `11111110` 으로, 부호없는 10-진수 `254` 와 같습니다:
 
 ```swift
 let someBits: UInt8 = 0b10110010
 let moreBits: UInt8 = 0b01011110
-let combinedBits = someBits | moreBits // 11111110 과 같습니다.
+let combinedBits = someBits | moreBits // 11111110 과 같음
 ```
 
-#### Bitwise XOR Operator (비트 배타 연산자)
+#### Bitwise XOR Operator (배타적 비트 합 연산자)
 
-_비트 배타 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (exclusive OR operator; `^`)" 는, 두 수치 값의 비트를 비교합니다. 연산자는 입력 비트들이 다르면 비트를 `1` 로 설정하고 입력 비트들이 같으면 `0` 으로 설정한 새로운 수치 값을 반환합니다:
+_배타적 비트 합 연산자 (bitwise XOR operator)_, 또는 "배타적 논리 합 연산자 (`^`)"[^exclusive-or] 는, 두 수치 값 비트를 비교합니다. 연산자가 반환한 새 수치 값 비트는 입력 비트들이 서로 다르면 `1` 로 설정하고 입력 비트가 같으면 `0` 으로 설정합니다:
 
 ![bitwise-XOR-operator](/assets/Swift/Swift-Programming-Language/Advanced-Operators-bitwise-XOR-operator.jpg)
 
-아래 예제에서, `firstBits` 와 `otherBits` 값은 각각 서로 다른 위치에서 `1` 로 설정된 비트를 가집니다. '비트 배타 연산자' 는 '출력 값' 에서  이 이 비트를 둘 다 `1` 로 설정합니다. `firstBits` 와 `otherBits` 에서 일치하는 모든 다른 비트들은 '출력 값' 에서 `0` 으로 설정합니다:
+아래 예제의, `firstBits` 와 `otherBits` 값은 상대는 그렇지 않은 장소에 `1` 이 설정된 비트가 있습니다. 배타적 비트 합 연산자는 이 비트 모두의 출력 값을 `1` 로 설정합니다. `firstBits` 와 `otherBits` 안의 다른 모든 비트는 일치하며 출력 값은 `0` 으로 설정합니다:
 
 ```swift
 let firstBits: UInt8 = 0b00010100
 let otherBits: UInt8 = 0b00000101
-let outputBits = firstBits ^ otherBits // 00010001 과 같습니다.
+let outputBits = firstBits ^ otherBits // 00010001 과 같음
 ```
 
 #### Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)
 
-_비트 왼쪽 이동 연산자 (bitwise left shift operator;_ `<<`_)_ 와 _비트 오른쪽-이동 연산자 (bitwise right shift operator;_ `>>`_)_ 는, 아래 정의한 규칙에 따라, 수치 값의 모든 비트를 정해진 수의 자리만큼 왼쪽 또는 오른쪽으로 이동합니다.
+_비트 왼쪽 이동 연산자 (bitwise left shift operator;_ `<<`_)_ 와 _비트 오른쪽 이동 연산자 (bitwise right shift operator;_ `>>`_)_ 는 모든 수치 값 비트를, 아래 정의한 규칙에 따라, 특정 수의 자리만큼 왼쪽 또는 오른쪽으로 이동합니다.
 
-비트 왼쪽 및 오른쪽 이동은 정수를 '2' 라는 '인수 (factor)'[^factor] 로 곱하거나 나누는 효과를 가집니다. 정수 비트의 위치를 왼쪽으로 하나 이동하는 것은 값을 두 배로 만드는 반면, 위치를 오른쪽으로 하나 이동하는 것은 값을 반으로 만듭니다.
+비트를 왼쪽과 오른쪽으로 이동하는 건 정수를 2 라는 인수 (factor)[^factor] 로 곱하거나 나누는 효과가 있습니다. 정수 비트를 왼쪽으로 한 위치 이동하면 자신의 값이 두 배가 되는 반면, 오른쪽으로 한 위치 이동하면 자신의 값이 반이 됩니다.
 
-**Shifting Behavior for Unsigned Integers ('부호없는 정수' 의 이동 동작)**
+**Shifting Behavior for Unsigned Integers (부호없는 정수의 이동 동작)**
 
-'부호없는 정수' 의 '비트-이동 동작' 은 다음과 같습니다:
+부호없는 정수의 비트-이동 동작은 다음과 같습니다:
 
-1. 기존 비트는 요청한 수의 위치만큼 왼쪽 또는 오른쪽으로 이동합니다.
-2. 정수 저장 공간의 경계 너머로 이동하는 어떤 비트든 버립니다.
-3. 원본 비트를 왼쪽 또는 오른쪽으로 이동한 후 남은 공간은 `0` 을 집어 넣습니다.
+1. 기존 비트를 요청한 수의 위치만큼 왼쪽이나 오른쪽으로 이동합니다.
+2. 어떤 비트든 정수 저장 공간 경계를 넘으면 버립니다.
+3. 원본 비트가 왼쪽이나 오른쪽으로 이동한 후 남은 공간엔 0 을 집어 넣습니다.
 
-이 접근 방식을 _논리적 이동 (logical shift)_ 이라고 합니다.
+이 접근법을 _논리적 이동 (logical shift)_ 이라 합니다.
 
-아래 묘사는 (`11111111` 을 `1` 위치 만큼 왼쪽으로 이동하는) `11111111 << 1` 과, (`11111111` 을 `1` 위치 만큼 오른쪽으로 이동하는) `11111111 >> 1` 의 결과를 보여줍니다. 파란색 숫자는 이동한 것이고, 회색 숫자는 버린 것이며, 주황색 `0` 은 집어 넣은 것입니다:
+아래의 묘사는 (`11111111` 을 `1` 위치만큼 왼쪽 이동하는) `11111111 << 1` 과, (`11111111` 을 `1` 위치만큼 오른쪽 이동하는) `11111111 >> 1` 의 결과를 보여줍니다. 파란 숫자는 이동한 것이고, 회색 숫자는 버린 것이며, 주황색 `0` 은 집어 넣은 것입니다:
 
 ![shifting behavior for unsigned integer](/assets/Swift/Swift-Programming-Language/Advanced-Operators-shifting-behavior-for-unsigned.png)
 
-다음은 '비트 이동' 방법을 스위프트 코드로 보인 것입니다:
+스위프트 코드의 비트 이동은 이렇게 보입니다:
 
 ```swift
-let shiftBits: UInt8 = 4    // 00000100 (2-진수 표현)
+let shiftBits: UInt8 = 4    // 00000100 (2-진수)
 shiftBits << 1              // 00001000
 shiftBits << 2              // 00010000
 shiftBits << 5              // 10000000
@@ -114,155 +114,155 @@ shiftBits << 6              // 00000000
 shiftBits >> 2              // 00000001
 ```
 
-'비트 이동' 을 사용하여 다른 데이터 타입의 값을 '부호화 (encoding)' 하고 '복호화 (decoding)' 할 수 있습니다:
+비트 이동을 사용하면 다른 데이터 타입 안의 값을 부호화 (encoding) 및 복호화 (decoding) 할 수 있습니다:
 
 ```swift
 let pink: UInt32 = 0xCC6699
-let redComponent = (pink & 0xFF0000) >> 16    // redComponent 는 0xCC, 또는 204 입니다.
-let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 입니다.
-let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 입니다.
+let redComponent = (pink & 0xFF0000) >> 16    // redComponent 는 0xCC, 또는 204 임
+let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 는 0x66, 또는 102 임
+let blueComponent = pink & 0x0000FF           // blueComponent 는 0x99, 또는 153 임
 ```
 
-이 예제는 '핑크 색' 에 대한 'CSS 값'[^CSS] 을 저장하는 `pink` 라는 `UInt32` 상수를 사용합니다. 'CSS 색상 값 `#CC6699`' 을 스위프트 '16-진수 표현' 으로 작성하면 `0xCC6699` 입니다. 그런 다음 '비트 곱 연산자 (`&`)' 와 '비트 오른쪽 이동 연산자 (`>>`)' 가 이 색을 '빨간색 (`CC`)', '녹색 (`66`)', 그리고 '파란색 (`99`) 성분' 으로 분해합니다.
+이 예제는 `pink` 라는 `UInt32` 상수를 사용하여 분홍색의 CSS 값[^CSS] 을 저장합니다. CSS 색상 값 `#CC6699` 은 스위프트 16-진수 표현법으론 `0xCC6699` 라고 작성합니다. 그런 다음 비트 곱 연산자 (`&`) 와 비트 오른쪽 이동 연산자 (`>>`) 로 이 색의 빨간색 (`CC`), 녹색 (`66`), 및 파란색 (`99`) 성분을 분해합니다.
 
-'빨간색 성분' 은 `0xCC6699` 와 `0xFF0000` 라는 수를 '비트 곱' 하여 구합니다. `0xFF0000` 에 있는 `0` 의 실제 효과는 `0xCC6699` 의 두 번째와 세 번째 '바이트 (bytes)' 를 "숨겨서 (mask)", `6699` 는 무시하고 결과적으로 `0xCC0000` 만 남도록 합니다.
+빨간색 성분은 수치 값 `0xCC6699` 와 `0xFF0000` 를 비트 곱하여 구합니다. `0xFF0000` 안의 0 이 `0xCC6699` 의 두 번째와 세 번째 바이트를 "가린 (mask)" 효과로, `6699` 는 무시하고 그 결과 `0xCC0000` 만 남도록 합니다.
 
-그런 다음 이 수를 '16 자리' 만큼 오른쪽으로 이동 (`>> 16`) 합니다. 16-진수에서 각각의 문자 쌍은 '8 비트' 를 사용하므로, 오른쪽으로 '16 자리' 이동하는 것은 `0xCC0000` 을 `0x0000CC` 로 변환할 것입니다. 이는, 10-진수 값이 `204` 인, `0xCC` 와 똑같습니다.
+그런 다음 이 수를 16 자리만큼 오른쪽 이동 (`>> 16`) 합니다. 16-진수 안의 각 문자 쌍은 8 비트를 사용해서, 오른쪽 16 자리 이동은 `0xCC0000` 을 `0x0000CC` 로 변환하게 됩니다. 이는 `0xCC` 와 똑같은 것으로, 10-진수 값은 `204` 입니다.
 
-이와 비슷하게, '녹색 성분' 은 `0xCC6699` 와 `0x00FF00` 라는 수를 '비트 곱' 하여 구하는데, 결과 값은 `0x006600` 입니다. 그런 다음 이 결과 값을 '8 자리' 만큼 오른쪽으로 이동하면, 10-진수 값이 `102` 인, `0x66` 이라는 값을 줍니다.
+이와 비슷하게, 녹색 성분은 수치 값 `0xCC6699` 와 `0x00FF00` 를 비트 곱하여 구하며, 결과 값은 `0x006600` 입니다. 그런 다음 이 결과 값을 8 자리만큼 오른쪽 이동하면, `0x66` 이라는 값을 주는데, 10-진수 값은 `102` 입니다.
 
-최종적으로, '파란색 성분' 은 `0xCC6699` 와 `0x0000FF` 라는 수를 '비트 곱' 하여 구하는데, 결과 값은 `0x000099` 입니다. `0x000099` 는, 10-진수 값이 `153` 인, `0x99` 와 이미 같기 때문에, 오른쪽 이동 없이 이 값을 사용합니다.
+최종적으로, 파란색 성분은 수치 값 `0xCC6699` 와 `0x0000FF` 를 비트 곱하여 구하며, 결과 값은 `0x000099` 입니다. `0x000099` 는 이미 `0x99` 와 같은, 10-진수 값 `153` 를 갖기 때문에, 이 값은 오른쪽 이동 없이 사용합니다.
 
-**Shifting Behavior for Signed Integers ('부호있는 정수' 의 이동 동작)**
+**Shifting Behavior for Signed Integers (부호있는 정수의 이동 동작)**
 
-'부호있는 정수' 의 이동 동작은, '부호있는 정수' 를 2-진수로 표현하는 방식 때문에, '부호없는 정수' 보다 더 복잡합니다. (아래 예제는 문제를 단순하게 하려고 '8-비트 부호있는 정수' 에 기초하고 있지만, 어떤 크기의 '부호있는 정수' 에도 똑같은 원리가 적용됩니다.)
+부호있는 정수의 이동 동작은, 부호있는 정수를 2-진수로 나타내는 방식 때문에, 부호없는 정수보다 더 복잡합니다. (아래 예제는 단순함을 위해 8-비트 부호있는 정수로 하고 있지만, 어떤 크기의 부호있는 정수든 작용 원리는 동일합니다.)
 
-'부호있는 정수' 는 정수가 양수인지 음수인지 지시하기 위해 (_부호 비트 (sign bit)_ 라고 하는) 첫 번째 비트를 사용합니다. `0` 이라는 부호 비트는 양수를 의미하고, `1` 이라는 부호 비트는 음수를 의미합니다.
+부호있는 정수는 (_부호 비트 (sign bit)_ 라는) 첫 번째 비트를 사용하여 정수가 양수인지 음수인지 지시합니다. 부호 비트가 `0` 이면 양수를 의미하고, 부호 비트가 `1` 이면 음수를 의미합니다.
 
-(_값 비트 (value bits)_ 라고 하는) 나머지 비트들이 실제 값을 저장합니다. 양수는, `0` 부터 위로 세는, '부호없는 정수' 와 정확하게 똑같은 방식으로 저장합니다. 다음은 `Int8` 안의 비트로 `4` 를 저장하는 방법입니다:
+(_값 비트 (value bits)_ 라는) 남은 비트가 실제 값을 저장합니다. 양수의 저장 방식은 부호없는 정수와 정확히 똑같아서, `0` 부터 위로 셉니다. `Int8` 안에 수치 값 `4` 가 있으면 비트가 이렇게 보입니다:
 
 ![signed positive 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-positive-4.jpg)
 
-부호 비트는 ("양수 (positive)" 를 의미하는) `0` 이며, 7 개의 값 비트들은 그냥, 2-진 표기법으로 작성된, `4` 라는 수입니다.
+부호 비트는 `0` 이고 ("양수 (positive)" 를 의미하며), 일곱 개의 값 비트는 그냥 수치 값 `4` 를, 2진 표기법으로 쓴겁니다.
 
-하지만, 음수는 다르게 저장합니다. 이는 `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 값으로 저장되는데, 여기서 `n` 은 값 비트의 개수입니다.[^two-s-complement] '8-비트 수' 는 '7 개의 값 비트' 를 가지므로, 이는 `2`의 `7` 제곱, 또는 `128` 을, 의미합니다.
+음수는, 하지만, 다르게 저장합니다. `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 걸[^two-s-complement] 로 저장하는데, 여기서 `n` 은 값 비트 개수입니다. 여덟-비트 수엔 값 비트가 일곱 개 있으므로, 이는 `2`의 `7` 제곱, 또는 `128` 을, 의미합니다.
 
-다음은 `Int8` 안의 비트로 `-4` 를 저장하는 방법입니다:
+`Int8` 안에 수치 값 `-4` 가 있으면 비트가 이렇게 보입니다:
 
 ![signed negative 4](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-negative-4.jpg)
 
-이번에는, 부호 비트가 ("음수 (negative)" 를 의미하는) `1` 이며, 7 개의 값 비트들은 (`128 - 4` 인) `124` 의 '2-진 값' 을 가집니다:
+이번엔, 부호 비트가 `1` 이고 ("음수 (negative)" 를 의미하며), 일곱 개의 값 비트엔 2진 값 `124` (`128 - 4`) 가 있습니다:
 
 ![signed 124](/assets/Swift/Swift-Programming-Language/Advanced-Operators-signed-124.jpg)
 
-음수에 대한 이런 '부호화' 를 '_2의 보수 (two's complement)_ 표현' 이라고 합니다. 특이한 방식으로 음수를 표현하는 것 같지만, 이는 여러 장점을 가지고 있습니다.
+음수를 이렇게 부호화 (encoding) 하는 걸 _2의 보수 (two's complement)_ 표현법이라 합니다. 이 방식은 음수를 특이하게 나타내는 것 같지만, 여러가지 장점이 있습니다.
 
-첫 번째로, `-1` 과 `-4` 를, 단순히 (부호 비트를 포함한) 모든 8 비트 '표준 이진 더하기' 를 한 후, 8 비트 안에 맞지 않는 어떤 것이든 버림으로써, 더할할 수 있다는 것입니다: 
+첫 번째로, `-1` 과 `-4` 를 더하는 걸, 단순히 모든 (부호 비트를 포함한) 여덟 비트의 표준 이진 덧셈을 하고, 나서 여덟 비트에 들지 않는 어떤 것이든 버림으로써, 할 수 있다는 겁니다: 
 
 ![two complement negative addition](/assets/Swift/Swift-Programming-Language/Advanced-Operators-two-complement-negative-addtion.jpg)
 
-두 번째로, '2의 보수 표현' 은 음수 비트의 왼쪽 오른쪽 이동을 양수 같이 할 수 있게 해주며, 여전히 왼쪽으로 이동할 때마다 두 배 증가하고, 오른쪽으로 이동할 때마다 반으로 나누는 식으로 끝맺습니다. 이를 달성하기 위해, '부호있는 정수' 를 오른쪽으로 이동할 때는, 부가적인 규칙을 사용합니다: '부호있는 정수' 를 오른쪽으로 이동할 때는, '부호없는 정수' 와 똑같은 규칙을 적용하지만, 왼쪽에 남은 '빈 자리' 를, `0` 보다는, _부호 비트 (sign bit)_ 로 채웁니다.
+두 번째로, 2의 보수 표현법은 음수 비트의 왼쪽 오른쪽 이동을 양수 같이 하게 해주며, 여전히 왼쪽 이동마다 두 배가 되고, 오른쪽 이동마다 반이 됩니다. 이를 달성하기 위해, 부호있는 정수의 오른쪽 이동 땐 부가 규칙을 사용하는데: 부호있는 정수를 오른쪽으로 이동할 땐, 부호없는 정수와 동일한 규칙을 적용하되, 왼쪽의 빈 자리를, `0` 보단, _부호 비트 (sign bit)_ 로 채운다는 겁니다.
 
 ![two complement negative shift](/assets/Swift/Swift-Programming-Language/Advanced-Operators-two-complement-negative-shift.jpg)
 
-이 행동은, _산술 이동 (arithmetic shfit)_ 이라고 하는데, '부호있는 정수' 가 오른쪽으로 이동한 후에도 똑같은 부호를 가지도록 보장합니다.[^arithmetic-shift]
+이런 행동은 부호있는 정수의 오른쪽 이동 후에도 부호가 동일하도록 보장하여, _산술 이동 (arithmetic shfit)_ 이라고 합니다.[^arithmetic-shift]
 
-양수와 음수를 저장하는 특수한 방식 때문에, 어느 것이든 오른쪽으로 이동하면 점점 더 `0` 에 가까워집니다. 이 이동 중에 부호 비트를 똑같이 유지한다는 것은 음수 값이 `0` 에 가까워지더라도 음의 정수는 음수로 남는다는 의미입니다.
+특수한 방식으로 양수와 음수를 저장하기 때문에, 오른쪽으로 이동하면 어느 것이든 더 `0` 에 가까워집니다. 이런 이동 중에 부호 비트를 동일하게 유지한다는 건 자신의 값이 `0` 에 가까워져도 음수는 음으로 남는다는 의미입니다.
 
 ### Overflow Operators (값 넘침 연산자)
 
-해당 값을 쥘 수 없는 정수 상수나 변수에 수를 집어 넣으려고 하면, 기본적으로 스위프트는 무효한 값을 생성하기 보다는 에러를 보고합니다. 이런 동작은 너무 크거나 작은 수와 작업할 때 부가적인 안전성을 부여합니다.
+수를 집어 넣으려는데 정수 상수나 변수가 그 값을 가질 수 없다면, 스위프트는 기본적으로 무효한 값을 생성하기 보단 에러를 보고합니다. 이 동작은 너무 크거나 작은 수를 다룰 때 부가적인 안전성을 줍니다.
 
-예를 들어, `Int16` 정수 타입은 `-32768` 과 `32767` 사이의 어떤 '부호있는 정수' 든 쥘 수 있습니다. `Int16` 상수나 변수에 이 범위를 밖의 수를 설정하려고 하면 에러를 일으킵니다:
+예를 들어, `Int16` 정수 타입은 `-32768` 과 `32767` 사이의 어떤 부호있는 정수든 가질 수 있습니다. `Int16` 상수 또는 변수에 이 범위 밖의 수를 설정하려 하면 에러를 일으킵니다:
 
 ```swift
 var potentialOverflow = Int16.max
-// potentialOverflow 는, Int16 이 쥘 수 있는 최대 값인, 32767 입니다.
+// potentialOverflow 는, Int16 이 가질 수 있는 최대 값인, 32767 과 같음
 potentialOverflow += 1
-// 이는 에러를 일으킵니다.
+// 이는 에러를 일으킴
 ```
 
-값이 너무 커지거나 작아질 때 에러 처리를 제공하는 건 경계 값 조건을 코딩할 때에 훨씬 더 많은 유연함을 부여합니다.
+값이 너무 커지거나 작아질 때 에러 처리를 제공하면 경계 값 조건의 코딩 때 훨씬 더 많은 유연함을 줍니다.
 
-하지만, 특히 '값 넘침 조건' 으로 수에서 사용 가능한 비트만 잘라내고 싶을 때는, 에러를 발동하기 보다는 직접 이런 동작을 선택할 수도 있습니다. 스위프트는 정수 계산을 위한 '값 넘침 동작' 을 직접 선택하는 세 개의 산술 _값 넘침 연산자 (overflow operators)_ 를 제공합니다. 이 연산자들은 모두 '앤드 기호 (ampersand; `&`)' 로 시작합니다:
+하지만, 특히 사용할 수치 비트만 값 넘침 조건으로 잘라내고 싶을 때, 에러 발동 보단 이 동작을 직접 선택할 수 있습니다. 스위프트가 제공하는 세 개의 산술 _값 넘침 연산자 (overflow operators)_ 로 정수 계산에 대한 값 넘침 동작을 직접 선택합니다. 이 연산자는 모두 앰퍼샌드 (`&`) 로 시작합니다:
 
-* 값 넘침 더하기 (overflow addition; `&+`)
-* 값 넘침 빼기 (overflow subtraction; `&-`)
-* 값 넘침 곱하기 (overflow multiplication; `&*`)
+* 값 넘침 덧셈 (overflow addition; `&+`)
+* 값 넘침 뺄셈 (overflow subtraction; `&-`)
+* 값 넘침 곱셈 (overflow multiplication; `&*`)
 
 #### Value Overflow (값 넘침)
 
-수는 양의 방향과 음의 방향 둘 다로 넘칠 수 있습니다.
+수치 값은 양의 방향과 음의 방향 양쪽으로 넘칠 수 있습니다.
 
-다음은, '값 넘침 덧셈 연산자 (`&+`)' 로, '부호없는 정수' 가 양의 방향 값 넘침을 허용할 때 발생하는 일에 대한 예제입니다:
+부호없는 정수가, 값 넘침 덧셈 연산자 (`&+`) 로, 양의 방향 값 넘침을 허용할 때 발생하는 일에 대한 예제는 이렇습니다:
 
 ```swift
 var unsignedOverflow = UInt8.max
-// unsignedOverflow 는, UInt8 이 쥘 수 있는 최대 값인, 255 입니다.
+// unsignedOverflow 는, UInt8 이 가질 수 있는 최대 값인, 255 와 같음
 unsignedOverflow = unsignedOverflow &+ 1
-// unsignedOverflow 는 이제 0 입니다.
+// unsignedOverflow 는 이제 0 과 같음
 ```
 
-`unsignedOverflow` 변수는 `UInt8` 이 쥘 수 있는 최대 값 (`255`, 또는 2-진수 `11111111`) 으로 초기화됩니다. 그런 다음 '값 넘침 덧셈 연산자 (`&+`)' 가 이를 `1` 만큼 증가합니다. 이는 `UInt8` 이 쥘 수 있는 크기 바로 너머로 '2-진 표현' 을 밀어서, 아래 도표에 보인 것처럼, 경계 너머로 값이 넘치도록 합니다. '값 넘침 더하기' 후에 `UInt8` 경계 안에 남는 값은 `00000000`, 또는 `0` 입니다.
+`unsignedOverflow` 변수를 `UInt8` 가 가질 수 있는 최대 값으로 (`255`, 또는 2-진수 `11111111` 로) 초기화합니다. 그런 다음 값 넘침 덧셈 연산자 (`&+`) 로 `1` 만큼 증가시킵니다. 이는 자신의 2진수 값을 `UInt8` 이 가질 수 있는 크기 위로 밀어내서, 아래 도표에 보는 것처럼, 경계 너머로 값이 넘치게 합니다. 값 넘침 덧셈 후 `UInt8` 경계 안에 남는 값은 `00000000`, 또는 `0` 입니다.
 
 ![value overflow 0](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-0.png)
 
-이와 비슷한 일이 '부호없는 정수' 가 음의 방향 값 넘침을 허용할 때도 발생합니다. 다음은 '값 넘침 빼기 연산자 (`&-`)' 를 사용하는 예제입니다:
+부호없는 정수가 음의 방향 값 넘침을 허용할 때도 이와 비슷한 뭔가가 발생합니다. 값 넘침 뺄셈 연산자 (`&-`) 를 사용한 예제는 이렇습니다:
 
 ```swift
 var unsignedOverflow = UInt8.min
-// unsignedOverflow 는, UInt8 이 쥘 수 있는 최소 값인, 0 입니다.
+// unsignedOverflow 는, UInt8 이 가질 수 있는 최소 값인, 0 과 같음
 unsignedOverflow = unsignedOverflow &- 1
-// unsignedOverflow 는 이제 255 입니다.
+// unsignedOverflow 는 이제 255 임
 ```
 
-`UInt8` 이 쥘 수 있는 최소 값은 '0', 또는 2-진수로 `00000000` 입니다. '값 넘침 빼기 연산자 (`&-`)' 로 `00000000` 에서 `1` 을 빼면, 수는 값이 넘쳐서 `11111111`, 또는 10-진수 `255` 로 '되돌아 갈 (wrap around)'[^wrap-around] 것입니다.
+`UInt8` 이 가질 수 있는 최소 값은 0, 또는 2-진수 `00000000` 입니다. 값 넘침 뺄셈 연산자 (`&-`) 로 `00000000` 에서 `1` 을 빼면, 수치 값이 넘쳐서 `11111111`, 또는 10-진수 `255` 로 넘어가게 (wrap around)[^wrap-around] 됩니다.
 
 ![value overflow 255](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-255.png)
 
-'값 넘침' 은 '부호있는 정수' 에서도 일어납니다. 모든 부호있는 정수의 더하기와 빼기는, [Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)](#bitwise-left-and-right-shift-operators-비트-왼쪽-이동-및-오른쪽-이동-연산자) 에서 설명한 것처럼, 부호 비트도 더하거나 빼는 수인 것처럼 포함하는, '비트 방식' 으로 수행합니다.
+부호있는 정수도 값 넘침이 일어납니다. 모든 부호있는 정수의 덧셈과 뺄셈은, [Bitwise Left and Right Shift Operators (비트 왼쪽-이동 및 오른쪽-이동 연산자)](#bitwise-left-and-right-shift-operators-비트-왼쪽-이동-및-오른쪽-이동-연산자) 에서 설명한 것처럼, 부호 비트도 덧셈 또는 뺄셈하는 수의 일부로 포함한, 비트 방식으로 합니다.
 
 ```swift
 var signedOverflow = Int8.min
-// signedOverflow 는, Int8 이 쥘 수 있는 최소 값인, -128 입니다.
+// signedOverflow 는, Int8 이 가질 수 있는 최소 값인, -128 과 같음
 signedOverflow = signedOverflow &- 1
-// signedOverflow 는 이제 127 입니다.
+// signedOverflow 는 이제 127 과 같음
 ```
 
-`Int8` 이 쥘 수 있는 최소 값은 `-128`, 또는 2-진수로 `10000000` 입니다. '값 넘침 연산자' 로 이 2-진수에서 `1` 을 빼면, 부호 비트는 전환하고, `Int8` 이 쥘 수 있는 최대 양수 값인, 양수 `127` 을 부여하여, `01111111` 이라는 2-진수 값을 줍니다.
+`Int8` 이 가질 수 있는 최소 값은 `-128`, 또는 2-진수 `10000000` 입니다. 이 2-진수에 값 넘침 연산자로 `1` 을 빼면 `01111111` 이라는 2-진수 값을 주는데, 이는 부호 비트를 반전하고, `Int8` 이 가질 수 있는 최대 양수 값인, 양의 `127` 입니다.
 
 ![value overflow 255](/assets/Swift/Swift-Programming-Language/Advanced-Operators-value-overflow-127.png)
 
-'부호있는 정수' 와 '부호없는 정수' 둘 다에서, '양의 방향 값 넘침' 은 '최대 유효 정수 값' 이 '최소 값' 으로 되돌아 가며, '음의 방향 값 넘침' 은 '최소 값' 이 '최대 값' 으로 되돌아 갑니다.
+부호있는 정수 및 부호없는 정수 둘 다, 양의 방향 값 넘침은 최대 유효 정수 값에서 최소 값으로 넘어가며, 음의 방향 값 넘침은 최소 값에서 최대 값으로 넘어갑니다.
 
-### Precedence and Associativity (우선권 및 결합성)
+### Precedence and Associativity (우선권과 결합성)
 
-연산자 _우선권 (precedence)_ 은 일부 연산자에 다른 것보다 더 높은 우선 순위를 주며; 이러한 연산자를 먼저 적용합니다.
+연산자 _우선권 (precedence)_ 은 일부 연산자에 다른 것보다 더 높은 우선 순위를 주며; 이 연산자를 먼저 적용합니다.
 
-연산자 _결합성 (associativity)_[^associativity] 은-왼쪽부터 그룹짓든, 오른쪽부터 그룹짓든-동일한 우선권의 연산자를 서로 그룹짓는 방법을 정의합니다. “자신의 왼쪽 표현식과 결합한다”, 또는 “자신의 오른쪽 표현식과 결합한다” 를 의미한다고 생각하면 됩니다.
+연산자 _결합성 (associativity)_[^associativity] 은 동일 우선권의 연산자를 서로-왼쪽부터 그룹짓거나, 오른쪽부터 그룹지어-묶는 방법을 정의합니다. 이는 “자신의 왼쪽 표현식과 결합한다”, 거나 “자신의 오른쪽 표현식과 결합한다” 는 의미로 생각하면 됩니다.
 
-복합 표현식의 계산 순서를 알아낼 땐 각 연산자의 우선권과 결합성을 고려하는 게 중요합니다. 예를 들어, 연산자 우선권은 왜 다음 표현식이 `17` 인지를 설명합니다.
+각 연산자의 우선권과 결합성을 고려하는 건 복합 표현식의 계산 순서를 알아낼 때 중요합니다. 예를 들어, 연산자 우선권은 왜 다음 표현식이 `17` 인지 설명합니다.
 
 ```swift
 2 + 3 % 4 * 5
-// 이는 17 입니다.
+// 이는 17 과 같음
 ```
 
-왼쪽에서 오른쪽으로 곧이곧대로 읽으면, 표현식을 다음 처럼 계산한다고 예상할 수도 있습니다:
+왼쪽에서 오른쪽으로 곧이곧대로 읽으면, 표현식 계산이 다음과 같다고 예상할 지 모릅니다:
 
 * `2` 더하기 `3` 은 `5`
 * `5` 를 `4` 로 나눈 나머지는 `1`
 * `1` 곱하기 `5` 는 `5`
 
-하지만, 실제 답은, `5` 가 아닌, `17` 입니다. 더 높은-우선권 연산자를 더 낮은-우선권 전에 평가합니다. 스위프트에서는, C 처럼, 나머지 연산자 (`%`) 와 곱하기 연산자 (`*`) 가 덧셈 연산자 (`+`) 보다 더 높은 우선권을 가집니다. 그 결과, 더하기를 하기 전에 이 둘을 먼저 평가합니다.
+하지만, 실제 답은 `17` 이지, `5` 가 아닙니다. 더 높은-우선권인 연산자를 더 낮은-우선권인 것 앞에 평가합니다. 스위프트에선, C 처럼, 나머지 연산자 (`%`) 와 곱하기 연산자 (`*`) 의 우선 순위가 덧셈 연산자 (`+`) 보다 더 높습니다. 그 결과, 덧셈 전에 이 둘을 평가합니다.
 
-하지만, 나머지와 곱하기는 서로 _동일한 (same)_ 우선권을 가집니다. 정확한 평가 순서를 알아 내려면, 이들의 '결합성' 도 고려해야 합니다. '나머지' 와 '곱하기' 둘 다 왼쪽에 있는 표현식과 결합합니다. 이는 표현식 주위에, 왼쪽에서 시작하는, '암시적인 괄호' 를 추가하는 것처럼 생각하면 됩니다:
+하지만, 나머지와 곱셈의 우선권은 서로 _동일 (same)_ 합니다. 정확한 평가 순서를 알아 내려면, 그들의 결합성도 고려할 필요가 있습니다. 나머지와 곱셈 둘 다 자신의 왼쪽 표현식과 결합합니다. 이는 표현식 주위에, 왼쪽에서 시작하는, 암시적 괄호를 추가한다고 생각하면 됩니다:
 
 ```swift
 2 + ((3 % 4) * 5)
 ```
 
-`(3 % 4)` 는 `3` 이므로, 다음과 '동치 (equivalent)' 입니다:
+`(3 % 4)` 는 `3` 이므로, 다음과 동치 (equivalent) 입니다:
 
 ```swift
 2 + (3 * 5)
@@ -274,19 +274,19 @@ signedOverflow = signedOverflow &- 1
 2 + 15
 ```
 
-이 계산은 최종 답으로 `17` 을 산출합니다.
+이 계산이 내는 최종 답은 `17` 입니다.
 
-연산자 우선권 그룹 및 결합성 설정의 완전한 목록을 포함하여, 스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 을 참고하기 바랍니다.
+스위프트 표준 라이브러리가 제공한 연산자에 대한, 연산자 우선권 그룹과 결합성 설정의 완전한 목록을 포함한, 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
-> 스위프트의 연산자 우선권 및 결합성 규칙은 C 와 오브젝티브-C 에 있는 것보다 더 간단하며 더 예측 가능합니다. 하지만, 이는 곧 'C-기반 언어' 에 있는 것과 정확하게 똑같지는 않다는 것을 의미힙니다. 기존 코드를 스위프트로 이식할 때는 '연산자 상호 작용' 이 의도대로 여전히 동작하도록 보장하는데 주의하기 바랍니다.
+> 스위프트의 연산자 우선권과 결합성 규칙은 C 및 오브젝티브-C 의 것보다 단순하여 더 예측하기 쉽습니다. 하지만, 이는 C-기반 언어의 것과 정확히 똑같지는 않다는 의미이기도 합니다. 기존 코드를 스위프트로 이식할 땐 연산자가 여전히 의도대로 상호 작용하도록 보장하는데 주의하기 바랍니다.
 
 ### Operator Methods (연산자 메소드)
 
-클래스와 구조체는 기존 연산자에 대한 자신만의 구현을 제공할 수 있습니다. 이를 기존 연산자의 _중복 정의 (overloading)_ 라고 합니다.
+클래스와 구조체는 기존 연산자에 자신만의 구현을 제공할 수 있습니다. 이를 기존 연산자의 _중복 정의 (overloading)_ 라고 합니다.
 
-아래 예제는 '사용자 정의 구조체' 에 대한 '산술 덧셈 연산자 (`+`)' 를 구현하는 방법을 보여줍니다. '산술 덧셈 연산자' 는 두 개의 대상을 연산하기 때문에 _이항 연산자 (binary operator)_ 이며 이 두 대상 사이에 있기 때문에 _중위 (infix)_[^infix] 라고 말합니다.
+아래 예제는 자신의 구조체에 산술 덧셈 연산자 (`+`) 를 구현하는 방법을 보여줍니다. 산술 덧셈 연산자는 연산 대상이 두 개이기 때문에 _이항 연산자 (binary operator)_ 이며 두 대상 사이에 있기 때문에 _중위 (infix)_[^infix] 연산자입니다.
 
-예제는 '2-차원 위치 벡터 `(x, y)`' 를 위한 `Vector2D` 구조체를 정의하고, 이어서 `Vector2D` 구조체 인스턴스를 서로 더하기 위한 _연산자 메소드 (operator method)_ 를 정의합니다:
+예제는 2-차원 위치 벡터 `(x, y)` 를 위한 `Vector2D` 구조체를 정의하고, 뒤이어 `Vector2D` 구조체의 인스턴스를 서로 더하는 _연산자 메소드 (operator method)_ 를 정의합니다:
 
 ```swift
 struct Vector2D {
@@ -300,47 +300,47 @@ extension Vector2D {
 }
 ```
 
-연산자 메소드는 `Vector2D` 에 대한 '타입 메소드' 로 정의하며, '메소드 이름' 은 '중복 정의할 연산자 (`+`)' 와 일치합니다. 더하기가 '벡터 (vector)' 의 핵심 동작은 아니기 때문에, 타입 메소드를 `Vector2D` 구조체의 주 선언부 보다는 '`Vector2D` 익스텐션' 에서 정의합니다. '산술 덧셈 연산자' 가 '이항 연산자' 이기 때문에, 이 연산자 메소드는 `Vector2D` 타입의 두 입력 매개 변수를 취하며, 역시 `Vector2D` 타입인, 단일 출력 값을 반환합니다.
+연산자 메소드는 `Vector2D` 에 대한 타입 메소드로 정의하며, 메소드 이름은 중복 정의한 연산자 (`+`) 와 일치합니다. 덧셈은 벡터의 핵심 동작이 아니기 때문에, 타입 메소드를 `Vector2D` 구조체의 주 선언부 보다는 `Vector2D` 의 익스텐션에서 정의합니다. 산술 덧셈 연산자가 이항 연산자이기 때문에, 이 연산자 메소드는 `Vector2D` 타입의 입력 매개 변수는 두 개 취하고, 역시 `Vector2D` 타입인, 단일 출력 값을 반환합니다.
 
-이 구현에서, 입력 매개 변수는 `+` 연산자의 왼쪽과 오른쪽에 있는 `Vector2D` 인스턴스를 표현하기 위한 `left` 와 `right` 라는 이름을 붙입니다. 메소드는, 자신의 `x` 와 `y` 을 서로 더한 두 `Vector2D` 인스턴스에 있는 `x` 와 `y` 속성의 합으로 초기화하는, 새로운 `Vector2D` 인스턴스를 반환합니다.
+이 구현 안의, 입력 매개 변수엔 `left` 와 `right` 라는 이름을 붙여서 `+` 연산자의 왼쪽과 오른쪽에 있을 `Vector2D` 인스턴스를 나타냅니다. 메소드가 반환한 새로운 `Vector2D` 인스턴스의, `x` 와 `y` 속성은 두 `Vector2D` 인스턴스에 있는 `x` 와 `y` 속성을 서로 더한 합계로 초기화됩니다.
 
-타입 메소드는 기존 `Vector2D` 인스턴스 사이의 '중위 연산자' 로 사용할 수 있습니다:
+타입 메소드를 기존 `Vector2D` 인스턴스 사이의 중위 연산자인 것처럼 사용할 수 있습니다:
 
 ```swift
 let vector = Vector2D(x: 3.0, y: 1.0)
 let anotherVector = Vector2D(x: 2.0, y: 4.0)
 let combinedVector = vector + anotherVector
-// combinedVector 는 (5.0, 5.0) 라는 값을 가진 Vector2D 인스턴스입니다.
+// combinedVector 는 값이 (5.0, 5.0) 인 Vector2D 인스턴스임
 ```
 
-이 예제는 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 서로 더하여, 아래에 묘사한 것처럼, 벡터 `(5.0, 5.0)` 을 만듭니다.
+이 예제는, 아래 묘사 처럼, 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 서로 더하여 벡터 `(5.0, 5.0)` 을 만듭니다.
 
 ![operator method](/assets/Swift/Swift-Programming-Language/Advanced-Operators-operator-method.png)
 
-#### Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)
+#### Prefix and Postfix Operators (접두사 및 접미사 연산자)
 
-위에 보인 예제는 사용자 정의 구현한 '이항 중위 (binary infix) 연산자' 를 실증합니다. 클래스와 구조체는 표준 _단항 연산자 (unary operators)_ 의 구현도 제공할 수 있습니다. '단항 연산자' 는 단일 대상에 대해 연산합니다. (`-a` 처럼) 대상 앞에 있으면 _접두사 (prefix)_ 연산자이고 (`b!` 처럼) 대상 뒤에 있으면 _접미사 (postfix)_ 연산자입니다.
+위에서 본 예제는 자신만의 이항 중위 연산자를 실제로 구현합니다. 클래스와 구조체는 표준 _단항 연산자 (unary operators)_ 도 구현할 수 있습니다. 단항 연산자는 단일 대상을 연산합니다. 자신의 대상 앞에 (`-a` 처럼) 있으면 _접두사 (prefix)_ 연산자이고 자신의 대상 뒤에 (`b!` 처럼) 있으면 _접미사 (postfix)_ 연산자입니다.
 
-'단항 접두사 연산자' 또는 '단항 접미사 연산자' 는 '연산자 메소드' 를 선언할 때 `func` 키워드 앞에 `prefix` 나 `postfix` 수정자를 작성하여 구현합니다:
+단항 접두사나 단항 접미사 연산자를 구현할 때는 연산자 메소드 선언의 `func` 키워드 앞에 `prefix` 나 `postfix` 수정자를 작성합니다:
 
 ```swift
 extension Vector2D {
-    static prefix func - (vector: Vector2D) -> Vector2D {
-        return Vector2D(x: -vector.x, y: -vector.y)
-    }
+  static prefix func - (vector: Vector2D) -> Vector2D {
+    return Vector2D(x: -vector.x, y: -vector.y)
+  }
 }
 ```
 
-위 예제는 `Vector2D` 인스턴스를 위한 '단항 음수 연산자 (`-a`)' 를 구현합니다. '단항 음수 연산자' 는 '접두사 연산자' 이므로, 이 메소드는 `prefix` 수정자로 '규명되어야 (qualified)' 합니다.[^qualified]
+위 예제는 `Vector2D` 인스턴스의 단항 음수 연산자 (`-a`) 를 구현합니다. 단항 음수 연산자는 접두사 연산자라서, 이 메소드를 `prefix` 수정자로 규명 (qualified) 해야 합니다.[^qualified]
 
-단순한 '수치 값' 에 대하여, '단항 음수 연산자' 는 양수를 '등가의 음수' 로 변환하며 그 반대도 마찬가지입니다. `Vector2D` 인스턴스와 관련된 구현에서는 `x` 와 `y` 속성 둘 다에 대해 이 연산을 수행합니다:
+단순 수치 값에선, 단항 음수 연산자가 양수는 등가의 음수로 변환하고 그 반대도 마찬가지입니다. `Vector2D` 인스턴스에 해당하는 구현은 `x` 와 `y` 속성 둘 다에 이 연산을 수행합니다:
 
 ```swift
 let positive = Vector2D(x: 3.0, y: 4.0)
 let negative = -positive
-// negative 는 (-3.0, -4.0) 라는 값을 가진 Vector2D 인스턴스 입니다.
+// negative 는 값이 (-3.0, -4.0) 인 Vector2D 인스턴스임
 let alsoPositive = -negative
-// alsoPositive (3.0, 4.0) 라는 값을 가진 Vector2D 인스턴스 입니다.
+// alsoPositive 는 값이 (3.0, 4.0) 인 Vector2D 인스턴스임
 ```
 
 #### Compound Assignment Operators (복합 할당 연산자)
@@ -425,7 +425,7 @@ let afterDoubling = +++toBeDoubled
 
 #### Precedence for Custom Infix Operators (사용자 중위 연산자의 우선권)
 
-각각의 사용자 중위 연산자는 우선권 그룹에 속합니다. 우선권 그룹은, 연산자의 결합성 (associativity) 뿐 아니라, 다른 중위 연산자에 상대적인 연산자 우선권을 지정합니다. 이 성질이 중위 연산자와 다른 중위 연산자와의 상호 작용에 영향을 주는 방법에 대한 설명은 [Precedence and Associativity (우선권 및 결합성)](#precedence-and-associativity-우선-순위와-결합성) 을 참고하기 바랍니다.
+각각의 사용자 중위 연산자는 우선권 그룹에 속합니다. 우선권 그룹은, 연산자의 결합성 (associativity) 뿐 아니라, 다른 중위 연산자에 상대적인 연산자 우선권을 지정합니다. 이 성질이 중위 연산자와 다른 중위 연산자와의 상호 작용에 영향을 주는 방법에 대한 설명은 [Precedence and Associativity (우선권과 결합성)](#precedence-and-associativity-우선권과-결합성) 을 참고하기 바랍니다.
 
 우선권 그룹을 명시하지 않은 사용자 중위 연산자에는 삼항 조건 연산자 바로 위의 우선권을 가진 기본 우선권 그룹을 줍니다.
 
@@ -602,23 +602,27 @@ let manyStars = draw {
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
-[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer)' 나 '수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각 구성 요소를 일컫는 말입니다. 보통 '인수 분해 (factorization)' 라고 할 때의 '인수' 가 바로 이 'factor' 입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
+[^ampersand]: '앰퍼샌드 (ampersand; `&`)' 는 영어로 `and` 를 의미하는 라틴어의 `et` 에서 유래한 단어로 '앤드 기호' 라고도 합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Ampersand](https://en.wikipedia.org/wiki/Ampersand) 항목과 [앰퍼샌드](https://ko.wikipedia.org/wiki/앰퍼샌드) 항목을 참고하기 바랍니다.
 
-[^CSS]: 원문에서는 'Cascading Style Sheets' 라고 했지만, 오히려 'CSS' 라는 줄임말이 더 이해하기 편할 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
+[^exclusive-or]: '배타적 논리 합 (exclusive OR)' 에 대한 더 자세한 내용은, 위키피디아의 [Exclusive or](https://en.wikipedia.org/wiki/Exclusive_or) 항목과 [배타적 논리합](https://ko.wikipedia.org/wiki/배타적_논리합) 항목을 참고하기 바랍니다. 
 
-[^two-s-complement]: 컴퓨터 용어로 이런 방식을 '2의 보수 표현법' 이라고 합니다. '2의 보수 표현법' 을 사용하면, 본문에서 계속 언급하는 것처럼, `0` 을 한 가지 방식으로 표현할 수 있고, 사칙 연산이 자연스러워지는 장점을 가집니다. '2의 보수' 에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
+[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer) 나 수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각각의 구성 요소를 말합니다. '인수 분해 (factorization)' 에서의 인수가 이것입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
+
+[^CSS]: 원문은 'Cascading Style Sheets' 라고 되어 있는데, CSS 라는 줄임말이 더 유명하며 이해하기 쉬울 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
+
+[^two-s-complement]: `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 걸 '2의 보수 (two's complement)' 라고 합니다. 2의 보수를 사용하면, `0` 의 표현 방식을 한 가지로 통일할 수 있으며, 사칙 연산도 자연스러워집니다. 2의 보수에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
 
 [^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은, 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 항목과 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 항목을 참고하기 바랍니다.
 
-[^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 10, 0, 1 ...` 처럼 일련의 수들이 빙글빙글 돌아가면서 되풀이되는 것을 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 참고하기 바랍니다.
+[^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 9, 0, 1 ... 9, 0, ...` 처럼 최대 값을 넘어선 수들이 다시 처음부터 되풀이되는 걸 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 참고하기 바랍니다.
 
-[^associativity]: 'associativity' 는 수학 용어인 '결합 법칙 (associative law)' 과의 연관성을 위해 '결합성' 이라고 옮깁니다. 의미도 '결합 법칙' 과 거의 유사합니다. '결합 법칙' 에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
+[^associativity]: 스위프트의 '결합성 (associativity)' 은 수학 분야에 있는 '결합 법칙 (associative law)' 과 관련이 있습니다. 결합 법칙에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 '애플 개발자 문서' 로 연결된 링크입니다.
 
 [^infix]: '중위 (infix)' 는 '중간에 위치한다' 라는 말을 줄인 것으로, 수학에서 사용하는 용어입니다. '중위 (infix)' 에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다. 
 
-[^qualified]: '규명되어야 (qualifed) 한다' 는 말은 '자신의 소속이 어디인지를 알아야 한다' 는 의미입니다. 스위프트에서 '규명하다' 라는 말의 의미는, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장에 있는 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분의 내용과 그 주석을 참고하기 바랍니다.
+[^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 참고하기 바랍니다.
 
 [^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. '스위프트 프로그래밍 언어' 책에 있는 예제는 하나의 장 단위로 내용이 이어집니다.
 
