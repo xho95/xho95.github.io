@@ -317,30 +317,30 @@ let combinedVector = vector + anotherVector
 
 ![operator method](/assets/Swift/Swift-Programming-Language/Advanced-Operators-operator-method.png)
 
-#### Prefix and Postfix Operators (접두사 연산자와 접미사 연산자)
+#### Prefix and Postfix Operators (접두사 및 접미사 연산자)
 
-위에 보인 예제는 사용자 정의 구현한 '이항 중위 (binary infix) 연산자' 를 실증합니다. 클래스와 구조체는 표준 _단항 연산자 (unary operators)_ 의 구현도 제공할 수 있습니다. '단항 연산자' 는 단일 대상에 대해 연산합니다. (`-a` 처럼) 대상 앞에 있으면 _접두사 (prefix)_ 연산자이고 (`b!` 처럼) 대상 뒤에 있으면 _접미사 (postfix)_ 연산자입니다.
+위에서 본 예제는 자신만의 이항 중위 연산자를 실제로 구현합니다. 클래스와 구조체는 표준 _단항 연산자 (unary operators)_ 도 구현할 수 있습니다. 단항 연산자는 단일 대상을 연산합니다. 자신의 대상 앞에 (`-a` 처럼) 있으면 _접두사 (prefix)_ 연산자이고 자신의 대상 뒤에 (`b!` 처럼) 있으면 _접미사 (postfix)_ 연산자입니다.
 
-'단항 접두사 연산자' 또는 '단항 접미사 연산자' 는 '연산자 메소드' 를 선언할 때 `func` 키워드 앞에 `prefix` 나 `postfix` 수정자를 작성하여 구현합니다:
+단항 접두사나 단항 접미사 연산자를 구현할 때는 연산자 메소드 선언의 `func` 키워드 앞에 `prefix` 나 `postfix` 수정자를 작성합니다:
 
 ```swift
 extension Vector2D {
-    static prefix func - (vector: Vector2D) -> Vector2D {
-        return Vector2D(x: -vector.x, y: -vector.y)
-    }
+  static prefix func - (vector: Vector2D) -> Vector2D {
+    return Vector2D(x: -vector.x, y: -vector.y)
+  }
 }
 ```
 
-위 예제는 `Vector2D` 인스턴스를 위한 '단항 음수 연산자 (`-a`)' 를 구현합니다. '단항 음수 연산자' 는 '접두사 연산자' 이므로, 이 메소드는 `prefix` 수정자로 '규명되어야 (qualified)' 합니다.[^qualified]
+위 예제는 `Vector2D` 인스턴스의 단항 음수 연산자 (`-a`) 를 구현합니다. 단항 음수 연산자는 접두사 연산자라서, 이 메소드를 `prefix` 수정자로 규명 (qualified) 해야 합니다.[^qualified]
 
-단순한 '수치 값' 에 대하여, '단항 음수 연산자' 는 양수를 '등가의 음수' 로 변환하며 그 반대도 마찬가지입니다. `Vector2D` 인스턴스와 관련된 구현에서는 `x` 와 `y` 속성 둘 다에 대해 이 연산을 수행합니다:
+단순 수치 값에선, 단항 음수 연산자가 양수는 등가의 음수로 변환하고 그 반대도 마찬가지입니다. `Vector2D` 인스턴스에 해당하는 구현은 `x` 와 `y` 속성 둘 다에 이 연산을 수행합니다:
 
 ```swift
 let positive = Vector2D(x: 3.0, y: 4.0)
 let negative = -positive
-// negative 는 (-3.0, -4.0) 라는 값을 가진 Vector2D 인스턴스 입니다.
+// negative 는 값이 (-3.0, -4.0) 인 Vector2D 인스턴스임
 let alsoPositive = -negative
-// alsoPositive (3.0, 4.0) 라는 값을 가진 Vector2D 인스턴스 입니다.
+// alsoPositive 는 값이 (3.0, 4.0) 인 Vector2D 인스턴스임
 ```
 
 #### Compound Assignment Operators (복합 할당 연산자)
@@ -622,7 +622,7 @@ let manyStars = draw {
 
 [^infix]: '중위 (infix)' 는 '중간에 위치한다' 라는 말을 줄인 것으로, 수학에서 사용하는 용어입니다. '중위 (infix)' 에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다. 
 
-[^qualified]: '규명되어야 (qualifed) 한다' 는 말은 '자신의 소속이 어디인지를 알아야 한다' 는 의미입니다. 스위프트에서 '규명하다' 라는 말의 의미는, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장에 있는 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분의 내용과 그 주석을 참고하기 바랍니다.
+[^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 참고하기 바랍니다.
 
 [^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. '스위프트 프로그래밍 언어' 책에 있는 예제는 하나의 장 단위로 내용이 이어집니다.
 
