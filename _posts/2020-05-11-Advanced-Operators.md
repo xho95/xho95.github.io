@@ -302,18 +302,18 @@ extension Vector2D {
 
 연산자 메소드는 `Vector2D` 에 대한 타입 메소드로 정의하며, 메소드 이름은 중복 정의한 연산자 (`+`) 와 일치합니다. 덧셈은 벡터의 핵심 동작이 아니기 때문에, 타입 메소드를 `Vector2D` 구조체의 주 선언부 보다는 `Vector2D` 의 익스텐션에서 정의합니다. 산술 덧셈 연산자가 이항 연산자이기 때문에, 이 연산자 메소드는 `Vector2D` 타입의 입력 매개 변수는 두 개 취하고, 역시 `Vector2D` 타입인, 단일 출력 값을 반환합니다.
 
-이 구현 안의, 입력 매개 변수엔 `left` 와 `right` 라는 이름을 붙여서 `+` 연산자의 왼쪽과 오른쪽에 있을 `Vector2D` 인스턴스를 나타냅니다. 메소드는, 자신의 `x` 와 `y` 을 서로 더한 두 `Vector2D` 인스턴스에 있는 `x` 와 `y` 속성의 합으로 초기화하는, 새로운 `Vector2D` 인스턴스를 반환합니다.
+이 구현 안의, 입력 매개 변수엔 `left` 와 `right` 라는 이름을 붙여서 `+` 연산자의 왼쪽과 오른쪽에 있을 `Vector2D` 인스턴스를 나타냅니다. 메소드가 반환한 새로운 `Vector2D` 인스턴스의, `x` 와 `y` 속성은 두 `Vector2D` 인스턴스에 있는 `x` 와 `y` 속성을 서로 더한 합계로 초기화됩니다.
 
-타입 메소드는 기존 `Vector2D` 인스턴스 사이의 '중위 연산자' 로 사용할 수 있습니다:
+타입 메소드를 기존 `Vector2D` 인스턴스 사이의 중위 연산자인 것처럼 사용할 수 있습니다:
 
 ```swift
 let vector = Vector2D(x: 3.0, y: 1.0)
 let anotherVector = Vector2D(x: 2.0, y: 4.0)
 let combinedVector = vector + anotherVector
-// combinedVector 는 (5.0, 5.0) 라는 값을 가진 Vector2D 인스턴스입니다.
+// combinedVector 는 값이 (5.0, 5.0) 인 Vector2D 인스턴스임
 ```
 
-이 예제는 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 서로 더하여, 아래에 묘사한 것처럼, 벡터 `(5.0, 5.0)` 을 만듭니다.
+이 예제는, 아래 묘사 처럼, 벡터 `(3.0, 1.0)` 과 `(2.0, 4.0)` 을 서로 더하여 벡터 `(5.0, 5.0)` 을 만듭니다.
 
 ![operator method](/assets/Swift/Swift-Programming-Language/Advanced-Operators-operator-method.png)
 
