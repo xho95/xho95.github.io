@@ -370,21 +370,21 @@ original += vectorToAdd
 
 #### Equivalence Operators (같음 비교 연산자)
 
-기본적으로, 사용자 정의 클래스 및 구조체는, '_같음 (equal to)_ 연산자 (`==`)' 와 '_같지 않음 (not equal to)_ 연산자 (`!=`)' 라는, _같음 비교 연산자 euivalence operators)_ 구현을 가지지 않습니다. 대체로 `==` 연산자는 구현하며, `==` 연산자 결과를 반대로 만드는 `!=` 연산자는 표준 라이브러리의 기본 구현을 사용합니다. `==` 연산자 구현에는 두 가지 방식이 있습니다: 자신이 직접 구현할 수도 있고, 아니면 '많은 타입' 들에서, 구현을 만들어 통합하라고 스위프트에게 요청할 수 있습니다. 두 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜에 대한 '준수성' 을 추가합니다.
+기본적으로, 사용자가 정의한 클래스와 구조체는, _같음 (equal to)_ 연산자 (`==`) 와 _같지 않음 (not equal to)_ 연산자 (`!=`) 라는, _같음 비교 연산자 euivalence operators)_ 를 구현하지 않습니다. 대체로 `==` 연산자는 구현하고, `!=` 연산자는 표준 라이브러리의 기본 구현을 써서 `==` 연산자의 결과를 반대로 뒤집습니다. `==` 연산자 구현에는 두 가지 방법이 있는데: 스스로 구현할 수도, 또는 많은 타입들에서, 스위프트에 통합 구현을 요청할 수도 있습니다. 두 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜을 준수하도록 추가합니다.
 
-`==` 연산자는 다른 '중위 연산자' 를 구현하는 것과 똑같이 구현합니다:
+`==` 연산자의 구현 방식은 다른 중위 연산자의 구현과 똑같습니다:
 
 ```swift
-extension Vector2D: Equatable {
-    static func == (left: Vector2D, right: Vector2D) -> Bool {
-        return (left.x == right.x) && (left.y == right.y)
-    }
+extension Vector2D: Equatable { 
+  static func == (left: Vector2D, right: Vector2D) -> Bool {
+    return (left.x == right.x) && (left.y == right.y)
+  }
 }
 ```
 
-위 예제는 두 `Vector2D` 인스턴스의 값이 같은 지를 검사하는 `==` 연산자를 구현합니다. `Vector2D` 에서, “같음 (equal)” 은 “두 인스턴스 모두 똑같은 `x` 값과 `y` 값을 가진다” 는 의미로 고려하는 것이 합리적이므로, 연산자 구현에서도 이 논리를 사용합니다.
+위 예제는 `==` 연산자를 구현하여 두 `Vector2D` 인스턴스가 가진 값이 같은 것인 지를 검사합니다. `Vector2D` 상황에선, “같음 (equal)” 의 의미가 “인스턴스 둘 다 동일한 `x` 값과 `y` 값을 가진다” 고 고려하는 게 말이 되므로, 이 논리를 연산자 구현에서도 사용합니다.
 
-이제 두 `Vector2D` 인스턴스가 같은 지를 검사하는데 이 연산자를 사용할 수 있습니다:
+이제 이 연산자를 사용하여 두 `Vector2D` 인스턴스가 같은 건지를 검사할 수 있습니다:
 
 ```swift
 let twoThree = Vector2D(x: 2.0, y: 3.0)
@@ -392,10 +392,10 @@ let anotherTwoThree = Vector2D(x: 2.0, y: 3.0)
 if twoThree == anotherTwoThree {
     print("These two vectors are equivalent.")
 }
-// "These two vectors are equivalent." 를 인쇄합니다.
+// "These two vectors are equivalent." 를 인쇄함
 ```
 
-[Adopting a Protocol Using a Synthesized Implementation (통합 구현을 써서 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-써서-프로토콜-채택하기) 에서 설명한 것처럼, 많은 단순한 경우에, '같음 비교 연산자' 의 '통합된 구현' 을 스위프트가 제공하도록 요청할 수 있습니다.
+[Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-사용하여-프로토콜-채택하기) 에서 설명한 것처럼, 수많은 단순한 경우에, 스위프트가 같음 비교 연산자의 통합 구현을 제공하도록 요청할 수 있습니다.
 
 ### Custom Operators (사용자 정의 연산자)
 

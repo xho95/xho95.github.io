@@ -500,7 +500,7 @@ print(somethingTextRepresentable.textualDescription)
 
 > 프로토콜의 필수 조건을 만족한다고 해서 타입이 이를 자동으로 채택하진 않습니다. 반드시 자신이 프로토콜을 채택한다는 걸 명시적으로 선언해야 합니다.[^adoption]
 
-### Adopting a Protocol Using a Synthesized Implementation (통합 구현을 써서 프로토콜 채택하기)
+### Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)
 
 스위프트는 수많은 단순한 경우에 `Equatable`, `Hashable`, 및 `Comparable` 에 대한 프로토콜 준수성을 자동으로 제공할 수 있습니다. 이런 통합 구현[^synthesized] 을 사용하면 스스로 프로토콜 필수 조건을 구현하고자 획일된 코드를 반복 작성하지 않아도 된다는 걸 의미합니다.
 
