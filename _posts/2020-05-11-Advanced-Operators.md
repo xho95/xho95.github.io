@@ -345,28 +345,28 @@ let alsoPositive = -negative
 
 #### Compound Assignment Operators (복합 할당 연산자)
 
-_복합 할당 연산자 (compound assignment operators)_ 는 할당 (`=`) 을 다른 연산과 조합합니다. 예를 들어, 덧셈 할당 연산자 (`+=`) 는 덧셈과 할당을 단일 연산으로 조합합니다. '복합 할당 연산자' 의 '왼쪽 입력 매개 변수 타입' 은, '연산자 메소드' 안에서 매개 변수의 값을 직접 수정할 것이기 때문에, `inout` 으로 표시합니다.
+_복합 할당 연산자 (compound assignment operators)_ 는 할당 (`=`) 을 다른 연산과 조합합니다. 예를 들어, 덧셈 할당 연산자 (`+=`) 는 덧셈과 할당을 단일 연산으로 조합합니다. 복합 할당 연산자의 왼쪽 입력 매개 변수 타입은 `inout` 으로 표시하는데, 매개 변수 값을 연산자 메소드 안에서 직접 수정하기 때문입니다.
 
-아래 예제는 `Vector2D` 인스턴스에 대한 '더하기 할당 연산자 메소드' 를 구현합니다:
+아래 예제는 `Vector2D` 인스턴스의 덧셈 할당 연산자 메소드를 구현합니다:
 
 ```swift
 extension Vector2D {
-    static func += (left: inout Vector2D, right: Vector2D) {
-        left = left + right
+  static func += (left: inout Vector2D, right: Vector2D) {
+    left = left + right
     }
 }
 ```
 
-'덧셈 연산자' 는 앞에서 정의했기 때문에[^addition-earlier], 더하는 과정을 여기서 재구현할 필요는 없습니다. 그 대신, '더하기 할당 연산자 메소드' 는 '기존 덧셈 연산자 메소드' 를 사용하여, 왼쪽 값과 오른쪽 값을 더한 것을 왼쪽 값에 설정합니다:
+덧셈 연산자는 앞서 정의했기 때문에[^addition-earlier], 덧셈 과정을 여기서 다시 구현할 필요는 없습니다. 그 대신, 덧셈 할당 연산자 메소드는 기존 덧셈 연산자 메소드를 사용하여, 왼쪽 값과 오른쪽 값을 더한 걸 왼쪽 값으로 설정합니다:
 
 ```swift
 var original = Vector2D(x: 1.0, y: 2.0)
 let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
 original += vectorToAdd
-// original 은 이제 (4.0, 6.0) 이라는 값을 가집니다.
+// original 의 값은 이제 (4.0, 6.0) 임
 ```
 
-> '기본 할당 연산자 (`=`)' 를 '중복 정의 (overload)' 하는 것은 불가능합니다. '복합 할당 연산자' 만 '중복 정의' 할 수 있습니다. 이와 비슷하게, '삼항 조건 연산자 (`a ? : b : c`)' 도 '중복 정의' 할 수 없습니다.
+> 기본 할당 연산자 (`=`) 를 중복 정의하는 건 불가능합니다. 복합 할당 연산자만 중복 정의할 수 있습니다. 이와 비슷하게, 삼항 조건 연산자 (`a ? : b : c`) 도 중복 정의할 수 없습니다.
 
 #### Equivalence Operators (같음 비교 연산자)
 
@@ -624,7 +624,7 @@ let manyStars = draw {
 
 [^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 참고하기 바랍니다.
 
-[^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. '스위프트 프로그래밍 언어' 책에 있는 예제는 하나의 장 단위로 내용이 이어집니다.
+[^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. 스위프트 프로그래밍 언어 책의 예제는 각각의 장별로 내용이 이어집니다.
 
 [^global-level]: 실제 '정의' 와는 별도로 '전역 수준' 에서 '선언' 을 따로 해야 한다는 의미입니다.
 
