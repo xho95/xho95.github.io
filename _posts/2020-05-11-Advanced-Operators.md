@@ -399,15 +399,15 @@ if twoThree == anotherTwoThree {
 
 ### Custom Operators (사용자 정의 연산자)
 
-스위프트가 제공하는 '표준 연산자' 에 더하여 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. '사용자 정의 연산자' 를 정의할 때 사용할 수 있는 문자들의 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 참고하기 바랍니다.
+스위프트가 제공하는 표준 연산자에 더해 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. 자신만의 연산자 정의에 사용할 수 있는 문자 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 참고하기 바랍니다.
 
-새로운 연산자는 `operator` 키워드를 사용하여 '전역 수준' 에서 선언하며, `prefix`, `infix`, 또는 `postfix` 수정자로 표시합니다:[^global-level]
+새로운 연산자는 전역 수준에서 `operator` 키워드로 선언하며[^global-level], `prefix` 나, `infix`, 또는 `postfix` 수정자를 표시합니다:
 
 ```swift
 prefix operator +++
 ```
 
-위 예제는 `+++` 라는 새로운 '접두사 연산자' 를 정의합니다. 이 연산자는 기존 스위프트에서 의미가 없던 것이므로, 아래 처럼 `Vector2D` 인스턴스와 작업하는 특정 상황에서만 자신만의 사용자 정의 의미가 주어집니다. 이 예제 용으로, `+++` 는 “두 배로 만드는 접두사 형식의 (prefix doubling)” 새로운 연산자로 취급합니다. 이는, 앞에서 정의한 '더하기 할당 연산자' 로 벡터에 자신을 더함으로써, `Vector2D` 인스턴스의 `x` 와 `y` 값을 두 배로 만듭니다. `+++` 연산자를 구현하려면, 다음 처럼 `Vector2D` 에 `+++` 라는 타입 메소드를 추가합니다:
+위 예제는 `+++` 라는 새로운 접두사 연산자를 정의합니다. 이 연산자는 기존의 스위프트에선 없던 것이라서, `Vector2D` 인스턴스와 작업하는 특정 상황 하에서만 자신만의 의미를 가집니다. 이 예제 용으론, `+++` 를 새로 “두 배로 만드는 접두사 (prefix doubling)” 연산자로 취급합니다. 이는, 앞서 정의한 덧셈 할당 연산자로 벡터에 자신을 더하여, `Vector2D` 인스턴스의 `x` 와 `y` 값을 두 배로 만듭니다. `+++` 연산자를 구현하려면, `Vector2D` 에 `+++` 라는 타입 메소드를 다음 처럼 추가합니다:
 
 ```swift
 extension Vector2D {
@@ -419,8 +419,8 @@ extension Vector2D {
 
 var toBeDoubled = Vector2D(x: 1.0, y: 4.0)
 let afterDoubling = +++toBeDoubled
-// toBeDoubled 은 이제 (2.0, 8.0) 라는 값을 가집니다.[^doubling]
-// afterDoubling 도 (2.0, 8.0) 라는 값을 가집니다.
+// toBeDoubled 의 값은 이제 (2.0, 8.0) 임[^doubling]
+// afterDoubling 의 값도 (2.0, 8.0) 임
 ```
 
 #### Precedence for Custom Infix Operators (사용자 중위 연산자의 우선권)
@@ -626,7 +626,7 @@ let manyStars = draw {
 
 [^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. 스위프트 프로그래밍 언어 책의 예제는 각각의 장별로 내용이 이어집니다.
 
-[^global-level]: 실제 '정의' 와는 별도로 '전역 수준' 에서 '선언' 을 따로 해야 한다는 의미입니다.
+[^global-level]: 실제 정의와는 별도로 전역 수준에서 따로 선언도 해야 한다는 의미입니다.
 
 [^doubling]: `+++` 는 '단항 접두사 연산자' 이므로, `toBeDoubled` 만 두 배로 만듭니다. 이어서 이 `toBeDoubled` 를 `afterDoubled` 에 할당함으로써 `afterDoubled` 가 `toBeDoubled` 와 같은 값을 가지게 됩니다.
 
