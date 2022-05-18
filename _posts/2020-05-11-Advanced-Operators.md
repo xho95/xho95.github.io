@@ -434,19 +434,19 @@ let afterDoubling = +++toBeDoubled
 ```swift
 infix operator +-: AdditionPrecedence
 extension Vector2D {
-    static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
-        return Vector2D(x: left.x + right.x, y: left.y - right.y)
-    }
+  static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
+    return Vector2D(x: left.x + right.x, y: left.y - right.y)
+  }
 }
 let firstVector = Vector2D(x: 1.0, y: 2.0)
 let secondVector = Vector2D(x: 3.0, y: 4.0)
 let plusMinusVector = firstVector +- secondVector
-// plusMinusVector 는 (4.0, -2.0) 라는 값을 가진 Vector2D 인스턴스입니다.
+// plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스임
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하며, `y` 값은 첫 번째에서 두 번째 벡터의 값을 뺍니다. 이는 본질적으로 "더하는 (additive)" 연산자이기 때문에, `+` 및 `-` 같은 더하기 중위 연산자와 동일한 우선권 그룹이 주어졌습니다. 연산자 우선권 그룹과 결합성 설정의 완전한 목록을 포함하여, 스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 을 참고하기 바랍니다. 우선권 그룹에 대한 더 많은 정보 및자신만의 연산자와 우선권 그룹을 정의하는 구문을 보려면, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 을 참고하기 바랍니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 동일한 우선권 그룹을 줬습니다. 스위프트 표준 라이브러리가 제공한, 연산자 우선권 그룹 및 결합성 설정에 대한 완전한 목록을 포함하는, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 참고하기 바랍니다. 우선권 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선권 그룹 정의 구문을 보려면, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 참고하기 바랍니다.
 
-> 접두사 또는 접미사 연산자를 정의할 땐 우선권을 지정하지 않습니다. 하지만, 동일한 피연산자에 접두사와 접미사 연산자를 둘 다를 적용하면, 접미사 연산자를 먼저 적용합니다.
+> 접두사나 접미사 연산자를 정의할 땐 우선권을 지정하지 않습니다. 하지만, 동일한 피연산자에 접두사와 접미사 연산자를 둘 다 적용하면, 접미사 연산자가 먼저 적용됩니다.
 
 ### Result Builders (결과 제작자)
 
