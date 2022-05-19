@@ -450,9 +450,9 @@ let plusMinusVector = firstVector +- secondVector
 
 ### Result Builders (결과 제작자)
 
-_결과 제작자 (result builder)_ 는, '리스트 (list)' 나 '트리 (tree)' 같은[^list-or-tree], '중첩 데이터' 를, 자연스러운, 선언형 방식으로, 생성하는 구문을 추가하기 위해 정의하는 타입입니다. '결과 제작자' 를 사용하는 코드는, `if` 와 `for` 같이, 조건문 또는 '데이터' 의 반복을 처리하는, 평범한 스위프트 구문을 포함할 수 있습니다.
+_결과 제작자 (result builder)_ 는 직접 정의하는 타입으로, 리스트나 트리 같이[^list-or-tree], 중첩된 데이터를, 자연스러운, 선언형 방식으로, 생성하게 하는 구문을 추가합니다. 결과 제작자를 사용한 코드는, `if` 와 `for` 같은, 평범한 스위프트 구문을 포함하여, 데이터의 조건이나 반복을 처리할 수 있습니다.
 
-아래 코드는 '별' 과 '문장' 으로 한 줄 위에 그림을 그리기 위한 몇몇 타입을 정의합니다.
+아래 코드는 별(문자) 와 텍스트를 한 줄 위에 그리기 위한 몇 가지 타입을 정의합니다.
 
 ```swift
 protocol Drawable {
@@ -482,9 +482,9 @@ struct AllCaps: Drawable {
 }
 ```
 
-`Drawable` 프로토콜은, 선이나 도형 같이, 그릴 수 있기 위한 '필수 조건' 인: 타입은 반드시 `draw()` 함수를 구현해야 한다는 것을 정의합니다. `Line` 구조체는 '한-줄 그림' 을 표현하며, 대부분의 그림에 대한 '최상단 컨테이너 (container)'[^container] 역할을 합니다. `Line` 을 그리기 위해, 구조체는 각각의 '줄 (line)' 성분에 대한 `draw()` 를 호출하며, 그런 다음 '결과 문자열' 들을 '단일 문자열' 로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 '그림' 으로 만듭니다. `AllCaps` 구조체는 또 다른 그림을 포장하고 수정하여, 그림 안의 어떤 문장이든 대문자로 변환합니다.
+`Drawable` 프로토콜은, 선이나 도형 같이, 그릴 것에 대한 필수 조건을 정의하는데: 타입은 반드시 `draw()` 함수를 구현해야 합니다. `Line` 구조체는 단 한-줄짜리 그림을 나타내며, 대부분의 그림에서 최-상단 컨테이너[^container] 역할을 합니다. `Line` 을 그리고자, 구조체는 각 줄 (line) 성분의 `draw()` 를 호출한 다음, 결과 문자열을 단일 문자열로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 그림으로 만듭니다. `AllCaps` 구조체는 또 다른 그림을 포장 및 수정하는데, 그림 안의 어떤 문장이든 대문자로 변환합니다.
 
-초기자를 호출함으로써 이 타입들로 그림을 만들 수 있습니다:
+이 타입들의 초기자를 호출함으로써 그림을 만드는 게 가능합니다:
 
 ```swift
 let name: String? = "Ravi Patel"
@@ -496,7 +496,7 @@ let manualDrawing = Line(elements: [
   Stars(length: 2),
   ])
 print(manualDrawing.draw())
-// "***Hello RAVI PATEL!**" 를 인쇄합니다.
+// "***Hello RAVI PATEL!**" 를 인쇄함
 ```
 
 이 코드는 작동은 하지만, 조금 어색합니다. `AllCaps` 뒤에 깊게 중첩된 괄호들은 이해하기가 힘듭니다. `name` 이 `nil` 일 때 "World" 를 사용하는 '대체 논리' 는, 어떤 더 복잡한 것도 어려울 것이므로, `??` 연산자를 사용하여 '인라인' 으로 했어야 합니다. 그림을 제작하기 위해 'switch 문' 이나 `for` 반복문을 포함할 필요가 있어도, 그럴 방법이 없습니다. '결과 제작자' 는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 처럼 보이게 합니다.
@@ -632,10 +632,10 @@ let manyStars = draw {
 
 [^operator-declarations-apple]: 원문 자체가 '애플 개발자 문서' 로 가는 링크로 되어 있습니다.
 
-[^list-or-tree]: 여기서의 '리스트 (list)' 와 '트리 (tree)' 는 '자료 구조' 타입 중의 하나를 의미입니다. 
+[^list-or-tree]: '리스트 (list) 와 트리 (tree)' 자료 구조에 대한 더 자세한 정보는, 위키피디아의 [Linked list](https://en.wikipedia.org/wiki/Linked_list) 항목 및 [연결 리스트](https://ko.wikipedia.org/wiki/연결_리스트) 그리고 [Tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) 항목 및 [트리 구조](https://ko.wikipedia.org/wiki/트리_구조) 항목을 참고하기 바랍니다.
 
 [^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
 [^greeting-draw]: 본문 예제에서는 `makeGreeting` 함수 안에서 `greeting` 상수를 생성할 때 `draw { ... }` 와 `caps { ... }` 부분에서 이 '특수 구문' 을 사용하고 있습니다.
 
-[^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
+[^container]: 여기서의 '컨테이너 (container)' 는 자료 구조 타입을 의미합니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. 컨테이너에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
