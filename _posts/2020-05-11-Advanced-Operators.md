@@ -555,7 +555,8 @@ print(personalGreeting.draw())
 // "***Hello RAVI PATEL!**" 를 인쇄함
 ```
 
-`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하고 이를 사용하여여 '개인별 인사말' 을 그립니다. `draw(_:)` 와 `caps(_:)` 함수 둘 다, `@DrawingBuilder` 특성으로 표시한, 단일 클로저를 인자로 취합니다. 해당 함수를 호출할 땐, `DrawingBuilder` 가 정의한 '특수 구문' 을 사용합니다.[^greeting-draw] 스위프트는 함수 인자로 전달한 값을 제작하기 위해 해당 그림의 '선언형 설명' 을 `DrawingBuilder` 메소드에 대한 연속된 호출로 변형합니다. 예를 들어, 스위프트는 해당 예제의 `caps(_:)` 호출을 다음 같은 코드로 변형합니다:
+`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하여 이로써 개인별 인사말을 그립니다. `draw(_:)` 와 `caps(_:)` 함수는 둘 다 자신의 인자로 단일 클로저를 취하며, 이를 `@DrawingBuilder` 특성으로 표시합니다. 이 함수들을 호출할 땐, `DrawingBuilder` 가 정의한 특수 구문을 사용합니다.[^greeting-draw] 스위프트는 선언형 그림 설명을 `DrawingBuilder` 의 메소드로의 연속 호출로 변형하여 함수 인자로 전달한 값(꾸밈)을 제작합니다. 예를 들어, 스위프트는 위 예제 안의 `caps(_:)` 호출 코드를 다음 같이 변형합니다:[^greeting-caps]
+
 
 ```swift
 let capsDrawing = caps {
@@ -636,6 +637,8 @@ let manyStars = draw {
 
 [^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
-[^greeting-draw]: 본문 예제에서는 `makeGreeting` 함수 안에서 `greeting` 상수를 생성할 때 `draw { ... }` 와 `caps { ... }` 부분에서 이 '특수 구문' 을 사용하고 있습니다.
+[^greeting-draw]: `makeGreeting` 함수 안에서 `draw { ... }` 부분과 `caps { ... }` 부분이 이 함수들을 호출하는 부분이며, 이 때 `DrawingBuilder` 가 정의한 특수 구문을 사용하게 됩니다.
+
+[^greeting-caps]: `makeGreeting` 함수 안에서 `caps { ... }` 부분을 본문 아래 처럼 변형한다는 의미입니다.
 
 [^container]: 여기서의 '컨테이너 (container)' 는 자료 구조 타입을 의미합니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. 컨테이너에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
