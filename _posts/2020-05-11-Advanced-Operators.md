@@ -555,8 +555,7 @@ print(personalGreeting.draw())
 // "***Hello RAVI PATEL!**" 를 인쇄함
 ```
 
-`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하여 이로써 개인별 인사말을 그립니다. `draw(_:)` 와 `caps(_:)` 함수는 둘 다 자신의 인자로 단일 클로저를 취하며, 이를 `@DrawingBuilder` 특성으로 표시합니다. 이 함수들을 호출할 땐, `DrawingBuilder` 가 정의한 특수 구문을 사용합니다.[^greeting-draw] 스위프트는 선언형 그림 설명을 `DrawingBuilder` 의 메소드로의 연속 호출로 변형하여 함수 인자로 전달한 값(꾸밈)을 제작합니다. 예를 들어, 스위프트는 위 예제 안의 `caps(_:)` 호출 코드를 다음 같이 변형합니다:[^greeting-caps]
-
+`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하여 이로써 개인별 인사말을 그립니다. `draw(_:)` 와 `caps(_:)` 함수는 둘 다 자신의 인자로 단일 클로저를 취하며, 이를 `@DrawingBuilder` 특성으로 표시합니다. 이 함수들을 호출할 땐, `DrawingBuilder` 가 정의한 특수 구문을 사용합니다.[^greeting-draw] 스위프트는 선언형 그림 설명을 `DrawingBuilder` 에 있는 메소드로의 연속 호출로 변형하여 함수 인자로 전달한 값을 제작합니다. 예를 들어, 스위프트는 위 예제 안의 `caps(_:)` 호출 코드를 다음 같이 변형합니다:[^greeting-caps]
 
 ```swift
 let capsDrawing = caps {
@@ -572,9 +571,9 @@ let capsDrawing = caps {
 }
 ```
 
-스위프트는 `if`-`else` 블럭을 `buildEither(first:)` 와 `buildEither(second:)` 메소드에 대한 호출로 변형합니다. 비록 자신의 코드에서 이 메소드를 호출하진 않더라도, 변형 결과를 보는 것은 `DrawingBuilder` 구문을 사용할 때 스위프트가 코드를 변형하는 방식을 알기 쉽게 만듭니다.
+스위프트는 `if`-`else` 블럭을 `buildEither(first:)` 와 `buildEither(second:)` 메소드 호출로 변형합니다. 자신의 코드에서 이 메소드들을 호출하지 않긴 하지만, 변형 결과를 보는 건 `DrawingBuilder` 구문을 사용할 때의 스위프트 코드 변형 방법을 더 알아보기 쉽게 합니다.
 
-그림을 그리는 '특수 구문' 에서 `for` 반복문 지원을 추가하도록 작성하려면, `buildArray(_:)` 메소드를 추가합니다:
+특수 그림 구문이 `for` 반복문 작성을 지원하게 하려면, `buildArray(_:)` 메소드를 추가합니다:
 
 ```swift
 extension DrawingBuilder {
@@ -591,9 +590,9 @@ let manyStars = draw {
 }
 ```
 
-위 코드에서, `for` 반복문은 그림 배열을 생성하며, `buildArray(_:)` 메소드는 해당 배열을 `Line` 으로 바꿉니다.
+위 코드에서, `for` 반복문은 그림 배열을 생성하며, `buildArray(_:)` 메소드가 그 배열을 `Line` 으로 바꿉니다.
 
-스위프트가 '제작자 구문' 을 '제작자 타입의 메소드에 대한 호출' 로 변형하는 방식에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 를 참고하기 바랍니다.
+제작자 구문을 제작자 타입의 메소드 호출로 스위프트가 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 부분을 참고하기 바랍니다.
 
 ### 다음 장
 
