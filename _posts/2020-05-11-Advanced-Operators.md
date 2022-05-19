@@ -499,9 +499,9 @@ print(manualDrawing.draw())
 // "***Hello RAVI PATEL!**" 를 인쇄함
 ```
 
-이 코드는 작동하지만, 조금 어색합니다. `AllCaps` 뒤에 깊게 중첩된 괄호는 이해하기 힘듭니다. `name` 이 `nil` 일 때 "World" 를 사용하는 '대체 논리' 는, 어떤 더 복잡한 것도 어려울 것이므로, `??` 연산자를 사용하여 '인라인' 으로 했어야 합니다. 그림을 제작하기 위해 'switch 문' 이나 `for` 반복문을 포함할 필요가 있어도, 그럴 방법이 없습니다. '결과 제작자' 는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 처럼 보이게 합니다.
+이 코드는 작동하지만, 조금 어색합니다. `AllCaps` 뒤에 깊게 중첩된 괄호는 이해하기 힘듭니다. `name` 이 `nil` 일 땐 "World" 를 사용하라는 대체 논리는 `??` 연산자를 써서 인라인으로 해야 하는데, 어떤 더 복잡한 걸 쓰든 어려울 겁니다. switch 나 `for` 반복문을 포함하여 그림을 제작할 필요가 있어도, 그럴 방법이 없습니다. 결과 제작자는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 같이 보이게 해줍니다.
 
-'결과 제작자' 를 정의하려면, '타입 선언' 에 '`@resultBuilder` 특성 (attribute)'[^attribute] 을 작성합니다. 예를 들어, 다음 코드는, '선언형 구문 (declarative)' 으로 그림을 설명하도록 해주는, `DrawingBuilder` 라는 '결과 제작자' 를 정의합니다:
+결과 제작자를 정의하려면, 타입 선언에 `@resultBuilder` 특성[^attribute] 을 씁니다. 예를 들어, 다음 코드는 `DrawingBuilder` 라는 결과 제작자를 정의하여, 선언형 구문으로 그림을 설명하게 해줍니다:
 
 ```swift
 @resultBuilder
@@ -518,9 +518,9 @@ struct DrawingBuilder {
 }
 ```
 
-`DrawingBuilder` 구조체는 '결과 제작자 구문' 일부를 구현하는 세 개의 메소드를 정의합니다. `buildBlock(_:)` 메소드는 코드 블럭에 '연속된 줄들 ' 을 작성하기 위한 지원을 추가합니다. 이는 해당 블럭에 있는 성분들을 하나의 `Line` 으로 조합합니다. `buildEither(first:)` 와 `buildEither(second:)` 메소드는 `if`-`else` 문에 대한 지원을 추가합니다.
+`DrawingBuilder` 구조체는 결과 제작자 구문의 (각) 부분들을 구현하는 세 메소드를 정의합니다. `buildBlock(_:)` 메소드는 코드 블럭에 연속된 줄의 작성을 지원합니다. 이는 그 블럭 안의 성분들을 하나의 `Line` 으로 조합합니다. `buildEither(first:)` 와 `buildEither(second:)` 메소드는 `if`-`else` 문을 지원합니다.
 
-함수의 매개 변수에 `@DrawingBuilder` 를 적용하여, 함수에 전달한 클로저를 해당 클로저로부터 '결과 제작자' 가 생성한 값으로 바꿀 수 있습니다. 예를 들어 다음과 같습니다:
+함수 매개 변수에 `@DrawingBuilder` 특성을 적용하면, 함수에 전달한 클로저를 그 클로저를 써서 결과 제작자가 생성한 값으로 바꿀 수 있습니다. 예를 들어 다음과 같습니다:
 
 ```swift
 func draw(@DrawingBuilder content: () -> Drawable) -> Drawable {
@@ -548,11 +548,11 @@ func makeGreeting(for name: String? = nil) -> Drawable {
 }
 let genericGreeting = makeGreeting()
 print(genericGreeting.draw())
-// "***Hello WORLD!**" 를 인쇄합니다.
+// "***Hello WORLD!**" 를 인쇄함
 
 let personalGreeting = makeGreeting(for: "Ravi Patel")
 print(personalGreeting.draw())
-// "***Hello RAVI PATEL!**" 를 인쇄합니다.
+// "***Hello RAVI PATEL!**" 를 인쇄함
 ```
 
 `makeGreeting(for:)` 함수는 `name` 매개 변수를 취하고 이를 사용하여여 '개인별 인사말' 을 그립니다. `draw(_:)` 와 `caps(_:)` 함수 둘 다, `@DrawingBuilder` 특성으로 표시한, 단일 클로저를 인자로 취합니다. 해당 함수를 호출할 땐, `DrawingBuilder` 가 정의한 '특수 구문' 을 사용합니다.[^greeting-draw] 스위프트는 함수 인자로 전달한 값을 제작하기 위해 해당 그림의 '선언형 설명' 을 `DrawingBuilder` 메소드에 대한 연속된 호출로 변형합니다. 예를 들어, 스위프트는 해당 예제의 `caps(_:)` 호출을 다음 같은 코드로 변형합니다:
