@@ -12,7 +12,7 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 스위프트의 _어휘 구조 (lexical structure)_ 는 언어의 유효 낱말[^token] 을 형성하는 일련의 문자가 뭔지를 설명합니다. 이러한 유효 낱말이 언어의 가장 낮은-수준 건축 자재를 형성하며 이를 써서 뒤이은 장의 언어 나머지 (부분)을 설명합니다. 낱말은 식별자 (identifier) 나, 키워드 (keyword), 글자 값 (literal), 또는 연산자 (operator) 로 구성합니다.
 
-대부분의 경우, 낱말은, 밑에서 지정할 문법의 구속 조건 안에서, 스위프트 소스 파일 문자 중 입력 텍스트의 가능한 가장 긴 하위 문자열을 고려함으로써 생성합니다. 이런 동작을 _longest match (가장 긴 일치)_ 또는 _maximal munch (최대한 잘라먹기)_[^maximal-munch] 라고 합니다.
+대부분의 경우, 낱말의 생성은, 밑에서 지정할 문법의 구속 조건 안에서, 스위프트 소스 파일 문자 중 입력 텍스트의 가능한 가장 긴 하위 문자열을 고려합니다. 이런 동작을 _longest match (가장 긴 일치)_ 또는 _maximal munch (최대한 잘라먹기)_[^maximal-munch] 라고 합니다.
 
 ### Whitespace and Comments (공백과 주석)
 
@@ -231,7 +231,7 @@ let textB = "Hello world"
 
 [^token]: '낱말 (token)' 은 프로그래밍 언어에서 '의미를 가지는 최소 단위' 를 뜻합니다. 여기서는 'token' 을 '낱말' 이라고 옮겼는데, 스위프트에서는 'token' 을 'lexical token (lexeme-어휘소와 비슷한 개념)' 의 의미로 사용하고 있는 것 같습니다. 굳이 옮기자면 '어휘소' 나, '형태소' 라고 할 수도 있겠으나, 프로그래밍을 하는데 이 정도까지 알아야 하는 것은 아니므로, 앞으로 'token' 을 계속 '낱말' 이라고 옮기겠습니다. 'token' 에 대한 더 자세한 개념은, 위키피디아의 [Lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis) 항목 안의 [Token](https://en.wikipedia.org/wiki/Lexical_analysis#Token) 부분을 참고하기 바랍니다.
 
-[^maximal-munch]: 'maximal munch' 라는 용어를 '최대한 잘라먹기' 라고 옮긴 것은, [Jay Two](https://j2doll.tistory.com) 님의 [최대한 잘라먹기(Maximal Munch)와 컴파일러(Compiler)](https://j2doll.tistory.com/109) 라는 블로그 글을 참고한 것인데, 이 말이 의미를 가장 잘 전달하고 있다고 생각해서 저도 따르기로 했습니다. 'longest match' 와 'maximal munch' 에 대한 더 자세한 정보는, 위피키디아의 [Maximal munch](https://en.wikipedia.org/wiki/Maximal_munch) 항목을 참고하기 바랍니다.
+[^maximal-munch]: '최대한 잘라먹기 (maximal munch)' 라는 용어는, [Jay Two](https://j2doll.tistory.com) 님의 [최대한 잘라먹기(Maximal Munch)와 컴파일러(Compiler)](https://j2doll.tistory.com/109) 라는 블로그 글이, 의미를 가장 잘 전달하고 있다고 생각하여, 따르기로 합니다. 'longest match' 와 'maximal munch' 에 대한 더 자세한 정보는, 위피키디아의 [Maximal munch](https://en.wikipedia.org/wiki/Maximal_munch) 항목을 참고하기 바랍니다.
 
 [^form-feed]: '양식 먹임 (form feed)' 이란 화면 내용을 출력할 때, 현재 페이지를 종료하고 다음 페이지의 첫 부분부터 다시 출력하라는 것을 지시하는 문자입니다.
 
