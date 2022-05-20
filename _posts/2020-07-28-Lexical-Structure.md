@@ -12,7 +12,7 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 스위프트의 _어휘 구조 (lexical structure)_ 는 언어의 유효 낱말[^token] 을 형성하는 일련의 문자가 뭔지를 설명합니다. 이러한 유효 낱말이 언어의 가장 낮은-수준 건축 자재를 형성하며 이를 써서 뒤이은 장의 언어 나머지 (부분)을 설명합니다. 낱말은 식별자 (identifier) 나, 키워드 (keyword), 글자 값 (literal), 또는 연산자 (operator) 로 구성합니다.
 
-대부분의 경우, '낱말' 은, 아래 지정한 문법의 '구속 조건' 하에서, 스위프트 소스 파일의 입력 문장에서 '가능한 가장 긴 하위 문자열' 을 고려한 문자들로 발생합니다. 이 동작을 _longest match (가장 긴 일치)_ 또는 _maximal munch (최대한 잘라먹기)_[^maximal-munch] 라고 합니다.
+대부분의 경우, 낱말은, 밑에서 지정할 문법의 구속 조건 안에서, 스위프트 소스 파일 문자 중 입력 텍스트의 가능한 가장 긴 하위 문자열을 고려함으로써 생성합니다. 이런 동작을 _longest match (가장 긴 일치)_ 또는 _maximal munch (최대한 잘라먹기)_[^maximal-munch] 라고 합니다.
 
 ### Whitespace and Comments (공백과 주석)
 
