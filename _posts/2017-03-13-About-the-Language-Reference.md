@@ -12,20 +12,20 @@ categories: Swift Language Grammar About Reference
 
 이 부분부터 스위프트 프로그래밍 언어의 공식 문법을 설명합니다. 여기서 설명하는 문법은, 구문 해석기 (parser) 나 컴파일러 (compiler) 를 직접 구현하게 하는 것 보단, 언어를 좀 더 자세히 이해하도록 돕기 위한 것입니다.
 
-스위프트 언어는 상대적으로 소규모 (small) 인데, 스위프트 코드 거의 어디서나 나타나는 수많은 공통 타입과, 함수, 및 연산자들이 실제론 스위프트 표준 라이브러리에 정의되어 있기 때문입니다. 이러한 타입과, 함수, 및 연산자들은 스위프트 언어 그 자체의 일부가 아니긴 하지만, 이제부터의 논의와 코드 예제에서 광범위하게 사용됩니다.
+스위프트 언어는 상대적으로 소규모 (small) 인데, 스위프트 코드 거의 어디서나 나타나는 수많은 공통 타입과, 함수, 및 연산자들이 실제론 스위프트 표준 라이브러리에 정의되어 있기 때문입니다. 이러한 타입과, 함수, 및 연산자들은 스위프트 언어 그 자체의 일부는 아니긴 하지만, 이제부터의 논의와 코드 예제에서 광범위하게 사용됩니다.
 
 ### How to Read the Grammar (문법 읽는 방법)
 
-'스위프트 프로그래밍 언어' 의 공식 문법을 설명하는데 사용하는 '표기법' 은 몇몇 '협약 (convention)' 을 따릅니다[^notation]:
+스위프트 프로그래밍 언어의 공식 문법 설명에 사용하는 표기법은 몇 가지 협약 (conventions) 을 따릅니다[^notation]:
 
-* '화살표 (→)' 는 '문법 산출물 (grammar productions)' 을 표시하는데 사용하며 “구성할 수 있다” 라고 이해할 수 있습니다
-* '구문 범주 (syntactic categories)' 는 _이탤릭체_ 로 지시하며 '문법 산출 규칙 (grammar production rule)' 양 쪽에 다 나타납니다.[^syntactic-categories]
-* '글자 값 (literal)[^literal] 단어' 와 '구두점 (punctuation)' 은 굵은 글씨의 '`constant width` 문장' 으로 지시하며 '문법 산출 규칙' 의 오른-쪽에서만 나타납니다.
-* '문법 산출물' 의 대안은 '세로 막대 (`|`)' 로 구분합니다. '대안 산출물' 이 쉽게 이해하기에 너무 길 때는, 이를 여러 '문법 산출 규칙' 으로 끊어서 새로운 줄에 나타냅니다.
-* 몇몇 경우에, '표준적인 글꼴 (regular font) 문장' 을 사용하여 '문법 산출 규칙' 의 오른-쪽을 설명합니다.[^regular-font]
-* 선택 사항인 '구문 범주' 와 '글자 값' 은, _opt_ 라는, '뒤에 딸린 첨자 연산 (trailing subscript)' 으로 표시합니다.
+* 문법 생산물 (grammar productions) 은 화살표 (`→`) 로 표시하며 “구성할 수 있다 (can consist of)” 고 읽을 수 있습니다.
+* 구문 범주 (syntactic categories) 는 _이탤릭체 (italic)_ 로 지시하며 문법 생산 규칙 (grammar production rule) 양 쪽에 나타납니다.[^syntactic-categories]
+* 글자 값 (literal)[^literal] 단어 및 구두점 (punctuation) 은 `constant width` (상수 폭) 굵은 글씨체로 지시하며 문법 생산 규칙 오른-쪽에만 나타납니다.
+* 대안으로 생산한 문법은 세로 막대 (`|`) 로 구분합니다. 대안 생산물이 너무 길어 이해하기 쉽지 않을 땐, 이를 여러 개의 문법 생산물로 끊어서 새로운 줄에 둡니다.
+* 몇몇 경우에, 표준 글꼴 (regular font) 텍스트를 사용하여 문법 생산 규칙의 오른-쪽 (부분)을 설명합니다.[^regular-font]
+* 선택적인 구문 범주와 글자 값은 뒤에 딸린 첨자 (trailing subscript) 인, _opt_ 로, 표시합니다.
 
-예를 들어, '획득자-설정자 블럭 (getter-setter block)' 문법은 다음 처럼 정의합니다:
+한 예로, 획득자-설정자 블럭 (getter-setter block) 의 문법은 다음 처럼 정의합니다:
 
 > GETTER-SETTER 블럭의 문법
 >
@@ -50,6 +50,6 @@ categories: Swift Language Grammar About Reference
 
 [^syntactic-categories]: 아래 예제에서, `getter-setter-block` 같이, '이텔릭체' 로 된 모든 것들이 다 '구문 범주' 입니다.
 
-[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말하는 것입니다. '글자 값' 에 대한 더 자세한 정보는, [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 부분을 참고하기 바랍니다. 
+[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말합니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 부분을 참고하기 바랍니다. 
 
-[^regular-font]: '표준적인 글꼴 (regular font)' 은 '문법' 자체가 아니라 그 문법 요소에 대한 '설명' 에 사용된다는 의미입니다.
+[^regular-font]: '표준 글꼴 (regular font)' 은 문법 그 자체가 아닌 그 문법 요소에 대한 설명에 사용합니다.
