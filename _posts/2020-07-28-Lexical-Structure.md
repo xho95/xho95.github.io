@@ -26,9 +26,9 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 ### Identifiers (식별자)
 
-_식별자 (identifiers)_ 는 'A' 에서 'Z' 까지의 대소문자 , 밑줄 (`_`), '다국어 기본 평면 (Basic Multilingual Plane)'[^BMP] 에 있는 조합하지 않은 유니코드 영숫자 문자'[^noncombining-alphanumeric], 또는 '다국어 기본 평면 밖에 있으면서 사용자 영역 (Private Use Area)[^PUA] 안에 있지 않은 문자' 로 시작합니다. 첫 번째 문자 뒤로는, '숫자 (digits)[^digits] 와 조합한 유니코드 문자' 도 올 수 있습니다.
+_식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), 다국어 기본 평면 (Basic Multilingual Plane)[^BMP] 안의 비-조합형 영숫자 유니코드 문자 [^noncombining-alphanumeric], 또는 다국어 기본 평면 밖이면서 사용자 영역 (Private Use Area)[^PUA] 안은 아닌 문자로 시작합니다. 첫 번째 문자 뒤엔, 숫자 (digits)[^digits] 및 조합형 유니코드 문자도 허용합니다.
 
-'밑줄로 시작하는 식별자' 는, `public` 접근-수준 수정자로 선언한 경우에도, '내부 (internal)' 로 취급합니다. 이 협약은, '선언이 공용 (public) 이길 요구하는 어떠한 제한' 이 있을지라도, '반드시 클라이언트와 상호 작용이나 의존을 안해야 하는 API' 를 표시하게 해줍니다. 이에 더하여, '두 밑줄로 시작하는 식별자' 는 스위프트 컴파일러 및 표준 라이브러리 용으로 예약되어 있습니다.
+밑줄로 시작한 식별자는, 선언을 `public` 접근-수준 수정자로 한 경우라도, 내부 (internal) 로 취급합니다. 이 협약은, '선언이 공용 (public) 이길 요구하는 어떠한 제한' 이 있을지라도, '반드시 클라이언트와 상호 작용이나 의존을 안해야 하는 API' 를 표시하게 해줍니다. 이에 더하여, '두 밑줄로 시작하는 식별자' 는 스위프트 컴파일러 및 표준 라이브러리 용으로 예약되어 있습니다.
 
 '예약어 (reserved word)' 를 '식별자' 로 사용하려면, 그 앞뒤에 '역따옴표 (backticks; `` ` ``)'[^backticks] 을 붙입니다. 예를 들어, `class` 는 유효한 식별자가 아니지만, `` `class` `` 는 유효합니다. '역따옴표' 자체는 식별자로 고려하지 않습니다; `` `x` `` 와 `x` 는 똑같은 의미입니다.
 
@@ -237,7 +237,7 @@ let textB = "Hello world"
 
 [^BMP]: '다국어 기본 평면 (Basic Multilingual Plane)' 이란 '유니코드 평면 (Unicode planes)' 에서 '0번 평면 (`U+0000 ~ U+FFFF`) 을 말하는 것으로, 거의 모든 근대 문자와 특수 문자를 포함합니다. '다국어 기본 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
-[^noncombining-alphanumeric]: '조합하지 않은 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)' 에서, '조합하지 않은 (noncombining)' 것이란 `é` 처럼 '강세' 기호 등과 '조합하지 않은 문자' 라는 의미이며, '영숫자 (alphanumeric)' 란 수학 기호로 사용되는 그리스 및 라틴 문자인 'Mathematical Alphanumeric Symbols' 을 의미합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목과 [Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols) 항목을 참고하기 바랍니다.
+[^noncombining-alphanumeric]: '비-조합형 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)' 에서, 비-조합형은 `é` 처럼 강세 기호 등의 문자와 조합하지 않은 문자를 의미하며, 영숫자는 수학 기호에 사용되는 그리스-라틴 문자 (Mathematical Alphanumeric Symbols) 을 의미합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목과 [Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols) 항목을 참고하기 바랍니다.
 
 [^PUA]: '사용자 영역 (Private Use Area)' 은 '유니코드 평면 (Unicode planes)' 의 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)' 을 말합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
