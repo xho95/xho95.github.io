@@ -16,11 +16,11 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 ### Whitespace and Comments (공백과 주석)
 
-'공백 (whitespace)' 은 두 가지 용도: 소스 파일에 있는 '낱말' 구분하기 그리고 ([Operators (연산자)](#operators-연산자) 에서 보듯) 접두사, 접미사, 및 이항 연산자 구별하기 를 가지지만, 그 외의 경우 무시합니다. 다음 문자들을 '공백 문자' 로 고려합니다: 공간 (space; U+0020), 줄 먹임 (line feed; U+000A), 캐리지 반환 (carriage return; U+000D), 가로 탭 (horizontal tab; U+0009), 세로 탭 (vertical tab; U+000B), 양식 먹임 (form feed; U+000C)[^form-feed], 그리고 널 문자 (null; U+0000).
+공백은: 소스 파일 안의 낱말 구분 그리고 ([Operators (연산자)](#operators-연산자) 에서 보듯) 접두사, 접미사, 및 중위 연산자 구별이라는 두 개의 용도가 있지만, 그 외 경우엔 무시합니다. 다음의 문자를 공백이라고 고려합니다: 공간 (space; U+0020), 줄 먹임 (line feed; U+000A), 캐리지 반환 (carriage return; U+000D), 가로 탭 (horizontal tab; U+0009), 세로 탭 (vertical tab; U+000B), 양식 먹임 (form feed; U+000C)[^form-feed], 및 널 문자 (null; U+0000).
 
-'주석 (comments)' 은 컴파일러가 '공백' 처럼 취급합니다. '한 줄짜리 주석' 은 `//` 로 시작하며 '줄 먹임 (U+000A)' 이나 '캐리지 반환 (U+000D)' 때까지 계속됩니다. '여러 줄짜리 주석' 은 `/*` 로 시작해서 `*/` 로 끝납니다. 여러 줄짜리 주석은 중첩을 허용하지만, 주석 표시는 반드시 균형이 맞아야 합니다.
+주석 (comments) 은 컴파일러가 공백처럼 취급합니다. 한 줄 주석은 `//` 로 시작해서 줄 먹임 (U+000A) 이나 캐리지 반환 (U+000D) 까지 계속됩니다. 여러 줄 주석은 `/*` 로 시작해서 `*/` 로 끝납니다. 여러 줄 주석의 중첩도 허용하지만, 주석 표시는 반드시 짝이 맞아야 합니다.
 
-주석은, [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html) 에서 설명한 것처럼, '추가적인 양식'과 '마크-업 (markup)' 을 담을 수 있습니다.
+[Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html) 에서 설명한 것처럼, 주석에 추가 양식 및 마크-업 (markup) 을 담을 수도 있습니다.
 
 > GRAMMAR OF WHITESPACE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID411)
 
@@ -233,7 +233,7 @@ let textB = "Hello world"
 
 [^maximal-munch]: '최대한 잘라먹기 (maximal munch)' 라는 용어는, [Jay Two](https://j2doll.tistory.com) 님의 [최대한 잘라먹기(Maximal Munch)와 컴파일러(Compiler)](https://j2doll.tistory.com/109) 라는 블로그 글이, 의미를 가장 잘 전달하고 있다고 생각하여, 따르기로 합니다. 'longest match' 와 'maximal munch' 에 대한 더 자세한 정보는, 위피키디아의 [Maximal munch](https://en.wikipedia.org/wiki/Maximal_munch) 항목을 참고하기 바랍니다.
 
-[^form-feed]: '양식 먹임 (form feed)' 이란 화면 내용을 출력할 때, 현재 페이지를 종료하고 다음 페이지의 첫 부분부터 다시 출력하라는 것을 지시하는 문자입니다.
+[^form-feed]: '양식 먹임 (form feed)' 이란, 화면 내용을 출력할 때, 현재 페이지를 끝내고 다음 페이지의 첫 부분부터 다시 출력하라는 것을 지시하는 문자입니다.
 
 [^BMP]: '다국어 기본 평면 (Basic Multilingual Plane)' 이란 '유니코드 평면 (Unicode planes)' 에서 '0번 평면 (`U+0000 ~ U+FFFF`) 을 말하는 것으로, 거의 모든 근대 문자와 특수 문자를 포함합니다. '다국어 기본 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
