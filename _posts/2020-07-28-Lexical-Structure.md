@@ -38,11 +38,9 @@ _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), �
 
 > GRAMMAR OF AN IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
-### Keywords and Punctuation (키워드와 문장 부호)
+### Keywords and Punctuation (키워드 및 문장 부호)
 
-다음 '키워드 (keywords)' 들은 예약되어 있으며, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 것처럼, '역따옴표 (backticks)' 로 '벗어나지 (escaped)'[^escaped] 않는 한, 식별자로 사용할 수 없습니다. `inout`, `var`, 그리고 `let` 이외의 키워드는 함수 선언이나 함수 호출 안에서 역따옴표로 벗어나지 않고도 '매개 변수 이름' 으로 사용할 수 있습니다.
-
-멤버가 키워드와 똑같은 이름을 가지고 있을 때는, 멤버에 대한 참조와 키워드의 사용 사이에 모호함이 있을 때를 제외하면, 해당 멤버에 대한 참조는 역따옴표로 벗어날 필요가 없습니다-예를 들어, `self`, `Type`, 그리고 `Protocol` 은 '명시적인 멤버 표현식' 에서 특수한 의미를 가지므로, 이들은 해당 상황에서 반드시 역따옴표로 벗어나야 합니다.
+다음 키워드들은 예약되어 있어서, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 것처럼, 역따옴표로 벗어나지 (escaped)[^escaped] 않는 한, 식별자로 사용할 수 없습니다. `inout` 과, `var`, 및 `let` 이외의 키워드는 역따옴표로 벗어남 없이 함수 선언이나 함수 호출 안에서 매개 변수 이름으로 사용할 수 있습니다. 멤버가 키워드와 똑같은 이름을 가지고 있을 때는, 멤버에 대한 참조와 키워드의 사용 사이에 모호함이 있을 때를 제외하면, 해당 멤버에 대한 참조는 역따옴표로 벗어날 필요가 없습니다-예를 들어, `self`, `Type`, 그리고 `Protocol` 은 '명시적인 멤버 표현식' 에서 특수한 의미를 가지므로, 이들은 해당 상황에서 반드시 역따옴표로 벗어나야 합니다.
 
 * 선언에서 사용하는 키워드: `associatedtype`, `class`, `deinit`, `enum`, `extension`, `fileprivate`, `func`, `import`, `init`, `inout`, `internal`, `let`, `open`, `operator`, `private`, `protocol`, `public`, `rethrows`, `static`, `struct`, `subscript`, `typealias`, 그리고 `var`.
 * '구문 (statements)' 에서 사용하는 키워드: `break`, `case`, `continue`, `default`, `defer`, `do`, `else`, `fallthrough`, `for`, `guard`, `if`, `in`, `repeat`, `return`, `switch`, `where`, 그리고 `while`.

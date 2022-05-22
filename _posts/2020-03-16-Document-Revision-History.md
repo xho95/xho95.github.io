@@ -172,7 +172,7 @@ categories: Swift Language Grammar Revision History
 * [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 과 [Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)]({% post_url 2020-08-15-Declarations %}#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 부분에서 `associatedtype` 키워드를 사용하기 위한 '결합 타입 (associated types)' 에 대한 논의를 갱신함.
 * [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 부분에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 갱신함.
 * '튜플 (tuples)' 을 비교하는 것에 대한 정보를 [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 부분에 추가함.
-* 키워드를 외부 매개 변수 이름으로 사용하는 것에 대한 정보를 [Keywords and Punctuation (키워드와 문장 부호)]({% post_url 2020-07-28-Lexical-Structure %}#keywords-and-punctuation-키워드와-문장-부호) 부분에 추가함.
+* 키워드를 외부 매개 변수 이름으로 사용하는 것에 대한 정보를 [Keywords and Punctuation (키워드 및 문장 부호)]({% post_url 2020-07-28-Lexical-Structure %}#keywords-and-punctuation-키워드-및-문장-부호) 부분에 추가함.
 * 열거체와 열거체 'case 값' 이 `@objc` 특성을 사용할 수 있다는 것에 주목하기 위해 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분에 있는 논의를 갱신함.
 * '점 (dot)' 을 담고 있는 사용자 정의 연산자에 대한 논의를 가지고 있는 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 갱신함.
 * [Rethrowing Functions and Methods (다시 던지는 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#rethrowing-functions-and-methods-다시-던지는-함수와-메소드) 부분에 '다시 던지는 함수 (rethrowing functions)' 는 직접 에러를 던질 수 없다는 기록을 추가함.
