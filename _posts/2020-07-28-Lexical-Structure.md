@@ -28,9 +28,9 @@ categories: Swift Language Grammar Reference Lexical-Structure
 
 _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), 다국어 기본 평면 (Basic Multilingual Plane)[^BMP] 안의 비-조합형 영숫자 유니코드 문자 [^noncombining-alphanumeric], 또는 다국어 기본 평면 밖이면서 사용자 영역 (Private Use Area)[^PUA] 안은 아닌 문자로 시작합니다. 첫 번째 문자 뒤엔, 숫자 (digits)[^digits] 및 조합형 유니코드 문자도 허용합니다.
 
-밑줄로 시작한 식별자는, 선언을 `public` 접근-수준 수정자로 한 경우라도, 내부 (internal) 로 취급합니다. 이 협약은, '선언이 공용 (public) 이길 요구하는 어떠한 제한' 이 있을지라도, '반드시 클라이언트와 상호 작용이나 의존을 안해야 하는 API' 를 표시하게 해줍니다. 이에 더하여, '두 밑줄로 시작하는 식별자' 는 스위프트 컴파일러 및 표준 라이브러리 용으로 예약되어 있습니다.
+밑줄로 시작한 식별자는, 선언을 `public` 접근-수준 수정자로 한 경우라도, 내부 (internal) 라고 취급합니다. 이런 협약은, 어떠한 제한이 선언이 공용 (public) 이길 요구할지라도, 클라이언트가 반드시 상호 작용 또는 의존을 안해야 하는 API 를 프레임웍 제작자가 표시하게 해줍니다. 이에 더하여, 두 개의 밑줄로 시작한 식별자는 스위프트 컴파일러와 표준 라이브러리 용으로 예약되어 있습니다.
 
-'예약어 (reserved word)' 를 '식별자' 로 사용하려면, 그 앞뒤에 '역따옴표 (backticks; `` ` ``)'[^backticks] 을 붙입니다. 예를 들어, `class` 는 유효한 식별자가 아니지만, `` `class` `` 는 유효합니다. '역따옴표' 자체는 식별자로 고려하지 않습니다; `` `x` `` 와 `x` 는 똑같은 의미입니다.
+예약어를 식별자로 사용하려면, 그 앞뒤로 역따옴표 (`` ` ``)[^backticks] 을 붙입니다. 예를 들어, `class` 는 유효한 식별자가 아니지만, `` `class` `` 는 유효합니다. 역따옴표 (자체는) 식별자로 고려하지 않습니다; `` `x` `` 와 `x` 의 의미는 똑같습니다.
 
 명시적인 매개 변수 이름이 없는 클로저 안에선, 암시적으로 매개 변수에 `$0`, `$1`, `$2`, 등의 이름을 붙입니다. 클로저 영역 안에서 이 이름들은 '유효한 식별자' 입니다.
 
@@ -243,7 +243,7 @@ let textB = "Hello world"
 
 [^digits]: 여기서의 'digits' 은 'Numerical digit' 을 의미하는 것으로, 수를 표기하기 위한 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Numerical digit](https://en.wikipedia.org/wiki/Numerical_digit) 항목과 [숫자](https://ko.wikipedia.org/wiki/숫자) 항목을 참고하기 바랍니다.
 
-[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달의 편의를 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
+[^backticks]: 원문에 있는 'backtics' 은 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
 
 [^property-wrapper-projection]: '속성 포장의 드러냄 (property wrapper projection) 을 가진 속성' 은 '드러낸 값 (projectedValue) 를 가진 속성' 을 의미합니다. 본문의 내용은, 속성이 `projectedValue` 를 가지고 있을 때, `$<projectedValue>` 같은 구문을 지원한다는 의미입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-내밀기) 부분을 참고하기 바랍니다. 
 
