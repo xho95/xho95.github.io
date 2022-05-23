@@ -42,14 +42,14 @@ _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), �
 
 다음 키워드들은 예약되어 있어서, 위의 [Idenfifiers (식별자)](#idenfifiers-식별자) 에서 설명한 것처럼, 역따옴표로 벗어나지 (escaped)[^escaped] 않는 한, 식별자로 사용할 수 없습니다. `inout` 과, `var`, 및 `let` 이외의 키워드는 역따옴표로 벗어나지 않고도 함수 선언이나 함수 호출 안에서 매개 변수 이름으로 사용할 수 있습니다. 멤버 이름이 키워드와 똑같을 땐, 그 멤버 참조가 역따옴표로 벗어날 필요는 없지만, 멤버 참조와 키워드 사용이 모호할 땐 예외입니다-예를 들어, `self` 와, `Type`, 및 `Protocol` 은 명시적 멤버 표현식에선 특수한 의미가 있으므로, 그 상황에선 반드시시 역따옴표로 벗어나게 해야 합니다.
 
-* 선언에서 사용하는 키워드: `associatedtype`, `class`, `deinit`, `enum`, `extension`, `fileprivate`, `func`, `import`, `init`, `inout`, `internal`, `let`, `open`, `operator`, `private`, `protocol`, `public`, `rethrows`, `static`, `struct`, `subscript`, `typealias`, 그리고 `var`.
-* '구문 (statements)' 에서 사용하는 키워드: `break`, `case`, `continue`, `default`, `defer`, `do`, `else`, `fallthrough`, `for`, `guard`, `if`, `in`, `repeat`, `return`, `switch`, `where`, 그리고 `while`.
-* 표현식과 타입에서 사용하는 키워드: `as`, `Any`, `catch`, `false`, `is`, `nil`, `super`, `self`, `Self`, `throw`, `throws`, `true`, 그리고 `try`.
-* '패턴 (pattern)' 에서 사용하는 키워드 : `_`.
-* '번호 기호 (`#`)' 로 시작하는 키워드: `#available`, `#colorLiteral`, `#column`, `#else`, `#elseif`, `#endif`, `#error`, `#file`, `#filePath`, `#fileLiteral`, `#function`, `#if`, `#imageLiteral`, `#line`, `#selector`, `#sourceLocation`, 그리고 `#warning`.
-* 특별한 상황을 위해 예약한 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 그리고 `willSet`. 문법상 나타나는 상황 밖에서, 이들을 식별자로 사용할 수 있습니다.
+* 선언에서 사용하는 키워드: `associatedtype`, `class`, `deinit`, `enum`, `extension`, `fileprivate`, `func`, `import`, `init`, `inout`, `internal`, `let`, `open`, `operator`, `private`, `protocol`, `public`, `rethrows`, `static`, `struct`, `subscript`, `typealias`, 및 `var`.
+* 구문에서 사용하는 키워드: `break`, `case`, `continue`, `default`, `defer`, `do`, `else`, `fallthrough`, `for`, `guard`, `if`, `in`, `repeat`, `return`, `switch`, `where`, 및 `while`.
+* 표현식과 타입에서 사용하는 키워드: `as`, `Any`, `catch`, `false`, `is`, `nil`, `super`, `self`, `Self`, `throw`, `throws`, `true`, 및 `try`.
+* 패턴 (pattern) 에서 사용하는 키워드 : `_`.
+* 번호 기호 (`#`) 로 시작하는 키워드: `#available`, `#colorLiteral`, `#column`, `#else`, `#elseif`, `#endif`, `#error`, `#file`, `#filePath`, `#fileLiteral`, `#function`, `#if`, `#imageLiteral`, `#line`, `#selector`, `#sourceLocation`, 및 `#warning`.
+* 특별한 상황을 위해 예약한 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 및 `willSet`. 문법 안에서 나타나는 상황 밖에선, 식별자로 사용할 수 있습니다.
 
-다음 '낱말' 들은 '문장 부호 (punctuation)' 로 예약되어 있으며 '사용자 정의 연산자' 로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, ('접두사 연산자' 인) `&`, `->`, `` ` ``, `?`, 및 ('접미사 연산자' 인)`!`.
+다음의 낱말은 문장 부호로 예약되어 있어서 사용자 정의 연산자로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, (접두사 연산자로써의) `&`, `->`, `` ` ``, `?`, 및 (접미사 연산자로써의)`!`.
 
 ### Literals (글자 값)
 
