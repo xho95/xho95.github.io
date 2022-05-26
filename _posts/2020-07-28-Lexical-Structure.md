@@ -122,24 +122,24 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 특정한 정밀도�
 
 여러 줄짜리 문자열 글자 값은 공백 (spaces) 과 탭 (tabs) 을 어떻게 조합하든 들여쓰기 할 수 있으며; 이 들여쓰기는 문자열에 포함되지 않습니다. 글자 값을 끝내는 `"""` 가 들여쓰기를 결정하는데: 글자 값 안의 모든 비어 있지 않은 줄은 반드시 닫는 `"""` 앞에 나타낸 것과 정확하게 똑같은 들여쓰기로 시작해야 하며; 탭과 공백이 서로 변환되진 않습니다. 그 들여쓰기 뒤에 추가로 공백과 탭을 포함할 수 있으며; 이러한 공백과 탭은 문자열에 나타납니다.
 
-여러 줄짜리 문자열 글자 값 안에 있는 줄 끊음은 줄 바꿈 문자를 사용하도록 정규화합니다.[^line-break-to-line-feed] 소스 파일에 캐리지 반환과 줄 먹임이 섞여 있는 경우라도, 문자열 안의 모든 줄 끊음은 똑같을 것입니다.
+여러 줄짜리 문자열 글자 값 안에 있는 줄 끊음은 줄 먹임 문자를 사용하도록 정규화합니다.[^line-break-to-line-feed] 소스 파일에 캐리지 반환과 줄 먹임이 섞여 있는 경우라도, 문자열 안의 모든 줄 끊음은 똑같을 것입니다.
 
-'여러 줄짜리 문자열 글자 값' 에서, 줄 끝에 '역 빗금 (`\`)' 을 작성하면 문자열에서 해당 '줄 끊음' 을 생략합니다. '역 빗금' 과 '줄 끊음' 사이의 어떤 공백이든 역시 생략합니다. 이 구문을 사용하면, 결과 문자열의 값을 바꾸지 않고도, '여러 줄짜리 문자열 글자 값' 을 소스 코드에서 '직접 줄 바꿈 (hard wrap)'[^hard-wrap] 할 수 있습니다.
+여러 줄짜리 문자열 글자 값에서, 줄 끝에 역 빗금 (`\`) 을 쓰면 문자열에서 그 줄을 끊는 건 생략합니다. 역 빗금과 줄 끊음 사이의 어떤 공백이든 역시 생략합니다. 이 구문을 사용하면, 결과 문자열 값을 바꾸지 않고도, 소스 코드 안의 여러 줄짜리 문자열 글자 값을 '직접 줄 바꿈 (hard wrap)'[^hard-wrap] 할 수 있습니다.
 
-특수 문자는 다음의 '벗어난 문자열[^escape-sequences] 을 사용하여 '한 줄짜리와 여러 줄짜리 형식인 문자열 글자 값' 둘 다에 포함할 수 있습니다:
+다음의 벗어난 확장열[^escape-sequences] 을 사용하면 한-줄 및 여러 줄 형식의 문자열 글자 값 둘 다 특수 문자를 포함할 수 있습니다:
 
 * 널 문자 (null character; `\0`)
 * 역 빗금 (backslash; `\\`)
 * 가로 탭 (horizontal tab; `\t`)
-* 줄 바꿈 (line feed; `\n`)
+* 줄 먹임 (line feed; `\n`)
 * 캐리지 반환 (carrige return; `\r`)
 * 큰 따옴표 (double quotation mark; `\"`)
 * 작은 따옴표 (single quotation mark; `\'`)
-* 유니코드 크기 값 (unicode scalar; `\u{n}`), 여기서 _n_ 은 '한 자리에서 여덟 자리 숫자' 를 가진 16진수입니다.
+* 유니코드 크기 값 (unicode scalar; `\u{n}`), 여기서 _n_ 은 한 개에서 여덟 개까지의 숫자로 된 16진수입니다.
 
-표현식의 값은 '역 빗금 (`\`)' 뒤의 괄호에 표현식을 둬서 '문자열 글자 값' 에 집어 넣을 수 있습니다. '끼워 넣는 (interpolated) 표현식'[^interpolation] 은 문자열 글자 값을 담을 수는 있지만, '벗어나지 않은 역 빗금', '캐리지 반환', 또는 '줄 먹임' 을 담을 수는 없습니다.
+표현식 값을 문자열 글자 값에 집어 넣으려면 괄호 안에 표현식을 두고 앞에 역 빗금 (`\`) 을 붙이면 됩니다. 끼워 넣은 표현식[^interpolation] 은 문자열 글자 값을 담을 수 있지만, 벗어나지 않은 역 빗금이나, 캐리지 반환, 또는 줄 먹임을 담을 순 없습니다.
 
-예를 들어, 다음의 모든 '문자열 글자 값' 은 똑같은 값을 가집니다:
+예를 들어, 다음의 문자열 글자 값은 모두 똑같은 값을 가집니다:
 
 ```swift
 "1 2 3"
@@ -257,15 +257,15 @@ let textB = "Hello world"
 
 [^begins-or-ends]: 이 설명은 글보다 예제를 직접 보는 게 더 낫습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
 
-[^line-break-to-line-feed]: 앞서, 줄 끊음과 줄 먹임 및 새 줄 문자가 모두 같다고 했는데, 스위프트는 이 세 개의 개행 문자들을 자동으로 줄 먹임 문자로 표준화한다고 볼 수 있습니다. 즉, 프로그래머가 수동으로 정규화할 필요가 없어진 셈입니다.
+[^line-break-to-line-feed]: 에전에는 프로그래머가 수동으로 줄 끊음 문자를 줄 먹임 문자로 바꿔줘야 했는데, 스위프트는 이러한 정규화 과정을 자동으로 해준다는 의미입니다.
 
-[^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 '자동 줄 바꿈' 과 관련된 개념으로, 실제 문자열 글자 값이 아니라, '편집기 (editor)' 에서 문자열이 보여지는 것과 관련한 용어입니다. 이 책에서 '직접 줄 바꿈 (hard wrap) 할 수 있다' 는 것은, 실제 글자 값은 그대로 유지하면서, Xcode 에서 줄 바꿈을 써서 문자열을 알아보기 쉽게 코딩할 수 있다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 항목과 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다.
+[^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 자동 줄 바꿈과 관련된 개념으로, 실제 문자열 글자 값이 아니라, 편집기에서 문자열이 보여지는 것과 관련된 용어입니다. 직접 줄 바꿈 (hard wrap) 할 수 있다는 건, Xcode 에서 문자열 글자 값은 그대로 유지하되, 편집기에선 코드를 줄 바꿈하여 알아보기 쉽게 한다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은, 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 항목과 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다.
 
-[^escape-sequences]: '벗어난 문자열 (escape sequences)' 에 대한 더 자세한 정보는, 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 항목과 [이스케이프 시퀀스 (확장열)](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
+[^escape-sequences]: '벗어난 확장열 (escape sequences)' 에 대한 더 자세한 정보는, 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 항목과 [이스케이프 시퀀스 (확장열)](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
 
 [^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 이는 본문에서 말하는 '균형 집합' 이란, 개수 자체는 상관없이 양쪽에 있는 `#` 의 개수가 똑같기만 하면 된다는 의미로 추측됩니다. '균형 집합' 에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
 
-[^interpolation]: 'interpolation' 은 수학 용어로 '보간법' 이라는 의미인데, '보간' 이란 말 자체가 '사이에 끼워 넣는다' 는 의미이므로, 수학 용어로써의 엄밀함이 요구되지 않으면 '끼워 넣기' 라고 하겠습니다. '보간법 (interpolation)' 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
+[^interpolation]: 'interpolation' 은 수학에서 말하는 보간법인데, '보간' 이란 말 자체가 사이에 끼워 넣는다는 의미이므로, 수학 용어로 사용되는게 아니면 '끼워 넣기' 라고 하겠습니다. 보간법 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
 
 [^more-than-one-number]: 본문 예제에서 첫 번째 코드인 `print(###"Line 1\###nLine 2"###)` 는, 결과를 두 줄로 인쇄합니다. '확장된 구분자로 구분한 문자열' 안에 있는 특수 문자는 보통 문자로 인쇄하지만, 이를 다시 '특수 문자' 로 표현하려면, `\###n` 처럼, '확장된 구분자로 구분한 문자열' 을 특수 문자 사이에 넣으면 된다는 것을 알 수 있습니다.
 
