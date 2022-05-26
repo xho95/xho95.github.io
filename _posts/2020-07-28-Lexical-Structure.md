@@ -149,7 +149,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 특정한 정밀도�
 let x = 3; "1 2 \(x)"
 ```
 
-'확장된 구분자 (delimiters) 로 구분한 문자열' 은 하나 이상의 '번호 기호 (`#`)' 로 된 '균형 집합 (balanced set)'[^balanced-set] 과 따옴표로 둘러싼 '일련의 문자들' 입니다. '확장된 구분자로 구분한 문자열' 은 다음 형식을 가집니다:
+확장 구분자로 구분된 문자열은 따옴표로 둘러싼 일련의 문자들과 하나 이상의 번호 기호 (`#`) 로 된 균형 집합 (balanced set)[^balanced-set] 입니다. 확장 구분자로 구분된 문자열의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#\"`characters-문자들`\"\#
 
@@ -157,7 +157,7 @@ let x = 3; "1 2 \(x)"
 &nbsp;&nbsp;&nbsp;&nbsp;`characters-문자들)`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\"\"\"\#
 
-'확장된 구분자로 구분한 문자열' 안의 특수 문자는 특수 문자가 아니라 '보통 문자' 로 '결과 문자열' 에 나타납니다. '확장된 구분자' 를 사용하면 평범하게 '문자열 끼워 넣기 (interpolation)[^interpolation] 생성', '벗어난 문자열 시작', 또는 '문자열 종결' 같은, 특수 효과를 가진 문자로 문자열을 생성할 수 있습니다.
+확장 구분자로 구분된 문자열 안의 특수 문자는 특수 문자라기 보단 보통의 문자 처럼 결과 문자열에 나타납니다. '확장된 구분자' 를 사용하면 평범하게 '문자열 끼워 넣기 (interpolation)[^interpolation] 생성', '벗어난 문자열 시작', 또는 '문자열 종결' 같은, 특수 효과를 가진 문자로 문자열을 생성할 수 있습니다.
 
 다음 예제는 서로 같은 문자열 값을 생성하는 '문자열 글자 값' 과 '확장된 구분자로 구분한 문자열' 을 보여줍니다:
 
@@ -263,7 +263,7 @@ let textB = "Hello world"
 
 [^escape-sequences]: '벗어난 확장열 (escape sequences)' 에 대한 더 자세한 정보는, 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 항목과 [이스케이프 시퀀스 (확장열)](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
 
-[^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 이는 본문에서 말하는 '균형 집합' 이란, 개수 자체는 상관없이 양쪽에 있는 `#` 의 개수가 똑같기만 하면 된다는 의미로 추측됩니다. '균형 집합' 에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
+[^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 본문에서 말하는 균형 집합이란, `#` 의 개수는 상관없이, 양쪽의 `#` 개수가 똑같으면 된다는 의미입니다. 균형 집합에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
 
 [^interpolation]: 'interpolation' 은 수학에서 말하는 보간법인데, '보간' 이란 말 자체가 사이에 끼워 넣는다는 의미이므로, 수학 용어로 사용되는게 아니면 '끼워 넣기' 라고 하겠습니다. 보간법 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
 
