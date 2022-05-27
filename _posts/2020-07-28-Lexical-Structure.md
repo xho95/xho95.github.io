@@ -149,7 +149,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 특정한 정밀도�
 let x = 3; "1 2 \(x)"
 ```
 
-확장 구분자로 구분된 문자열은 따옴표로 둘러싼 일련의 문자들과 하나 이상의 번호 기호 (`#`) 로 된 균형 집합 (balanced set)[^balanced-set] 입니다. 확장 구분자로 구분된 문자열의 형식은 다음과 같습니다:
+확장 구분자로 구분한 문자열은 따옴표로 둘러싼 일련의 문자들과 하나 이상의 번호 기호 (`#`) 로 된 균형 집합 (balanced set)[^balanced-set] 입니다. 확장 구분자로 구분한 문자열 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#\"`characters-문자들`\"\#
 
@@ -157,31 +157,31 @@ let x = 3; "1 2 \(x)"
 &nbsp;&nbsp;&nbsp;&nbsp;`characters-문자들)`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\"\"\"\#
 
-확장 구분자로 구분된 문자열 안의 특수 문자는 특수 문자라기 보단 보통의 문자 처럼 결과 문자열에 나타납니다. '확장된 구분자' 를 사용하면 평범하게 '문자열 끼워 넣기 (interpolation)[^interpolation] 생성', '벗어난 문자열 시작', 또는 '문자열 종결' 같은, 특수 효과를 가진 문자로 문자열을 생성할 수 있습니다.
+확장 구분자로 구분한 문자열 안의 특수 문자는 결과 문자열 안에서 특수 문자라기 보단 보통의 문자 처럼 나타납니다. 확장 구분자를 사용하면 문자열 끼워 넣기를 생성하거나, 벗어난 문자열을 시작하는, 또는 문자열을 종결하는 것 같이, 보통이라면 특수 효과를 가질 문자로도 문자열을 생성할 수 있습니다.
 
-다음 예제는 서로 같은 문자열 값을 생성하는 '문자열 글자 값' 과 '확장된 구분자로 구분한 문자열' 을 보여줍니다:
+다음 예제는 문자열 글자 값과 확장 구분자로 구분한 문자열이 서로 같은 문자열 값을 생성하는 걸 보여줍니다:
 
 ```swift
 let string = #"\(x) \ " \u{2603}"#
 let escaped = "\\(x) \\ \" \\u{2603}"
 print(string)
-// "\(x) \ " \u{2603}" 를 인쇄합니다.
+// "\(x) \ " \u{2603}" 를 인쇄함
 print(string == escaped)
-// "true" 를 인쇄합니다.
+// "true" 를 인쇄함
 ```
 
-'확장된 구분자로 구분한 문자열' 을 만들 때 하나 이상의 '번호 기호' 를 사용할 경우, '번호 기호' 사이에 공백을 두지 않습니다:[^more-than-one-number]
+하나 이상의 번호 기호를 써서 확장 구분자로 구분한 문자열을 만든다면, 번호 기호 사이에 공백을 두면 안됩니다:[^more-than-one-number]
 
 ```swift
-print(###"Line 1\###nLine 2"###) // OK
-print(# # #"Line 1\# # #nLine 2"# # #) // Error
+print(###"Line 1\###nLine 2"###) // 괜찮음
+print(# # #"Line 1\# # #nLine 2"# # #) // 에러
 ```
 
-'확장된 구분자' 를 사용하여 생성한 '여러 줄짜리 문자열 글자 값' 은 표준적인 '여러 줄짜리 문자열 글자 값' 과 똑같은 '들여쓰기 필수 조건' 을 가집니다.
+확장 구분자로 생성한 여러 줄짜리 문자열 글자 값의 들여쓰기는 표준적인 여러 줄짜리 문자열 글자 값과 똑같습니다.
 
-문자열 글자 값의 '기본 추론 타입' 은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 및 [String](https://developer.apple.com/documentation/swift/string)[^developer-string] 을 참고하기 바랍니다.
+문자열 글자 값의 기본 추론 타입은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장과 [String](https://developer.apple.com/documentation/swift/string)[^developer-string] 항목을 참고하기 바랍니다.
 
-`+` 연산자로 이어붙인 '문자열 글자 값' 은 '컴파일 시간' 에 이어붙습니다. 예를 들어, 아래 예제의 `textA` 와 `textB` 값은 완전히 똑같습니다-'실행 시간 이어붙임' 같은 건 없습니다.
+`+` 연산자로 이어붙인 문자열 글자 값은 컴파일 시간에 이어붙습니다. 예를 들어, 아래 예제의 `textA` 와 `textB` 값은 완전히 똑같습니다 (identical)[^identical]-실행 시간에 이어붙는 건 없습니다.
 
 ```swift
 let textA = "Hello " + "world"
@@ -267,7 +267,7 @@ let textB = "Hello world"
 
 [^interpolation]: 'interpolation' 은 수학에서 말하는 보간법인데, '보간' 이란 말 자체가 사이에 끼워 넣는다는 의미이므로, 수학 용어로 사용되는게 아니면 '끼워 넣기' 라고 하겠습니다. 보간법 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
 
-[^more-than-one-number]: 본문 예제에서 첫 번째 코드인 `print(###"Line 1\###nLine 2"###)` 는, 결과를 두 줄로 인쇄합니다. '확장된 구분자로 구분한 문자열' 안에 있는 특수 문자는 보통 문자로 인쇄하지만, 이를 다시 '특수 문자' 로 표현하려면, `\###n` 처럼, '확장된 구분자로 구분한 문자열' 을 특수 문자 사이에 넣으면 된다는 것을 알 수 있습니다.
+[^more-than-one-number]: 첫 번째 예제인 `print(###"Line 1\###nLine 2"###)` 는, 결과를 두 줄로 인쇄합니다. 확장 구분자로 구분한 문자열 안의 특수 문자는 보통 문자라고 인식하지만, `\###n` 처럼, 확장 구분자를 집어 넣으면 다시 특수 문자로 인식합니다.
 
 [^developer-string]: 원문 자체가 '애플 개발자 문서' 에 대한 링크입니다. 
 
