@@ -345,46 +345,46 @@ let alsoPositive = -negative
 
 #### Compound Assignment Operators (복합 할당 연산자)
 
-_복합 할당 연산자 (compound assignment operators)_ 는 '할당 (`=`)' 을 다른 연산과 조합합니다. 예를 들어, '더하기 할당 연산자 (`+=`)' 는 '더하기' 와 '할당' 을 단일 연산으로 조합합니다. '복합 할당 연산자' 의 '왼쪽 입력 매개 변수 타입' 은, '연산자 메소드' 안에서 매개 변수의 값을 직접 수정할 것이기 때문에, `inout` 으로 표시합니다.
+_복합 할당 연산자 (compound assignment operators)_ 는 할당 (`=`) 을 다른 연산과 조합합니다. 예를 들어, 덧셈 할당 연산자 (`+=`) 는 덧셈과 할당을 단일 연산으로 조합합니다. 복합 할당 연산자의 왼쪽 입력 매개 변수 타입은 `inout` 으로 표시하는데, 매개 변수 값을 연산자 메소드 안에서 직접 수정하기 때문입니다.
 
-아래 예제는 `Vector2D` 인스턴스에 대한 '더하기 할당 연산자 메소드' 를 구현합니다:
+아래 예제는 `Vector2D` 인스턴스의 덧셈 할당 연산자 메소드를 구현합니다:
 
 ```swift
 extension Vector2D {
-    static func += (left: inout Vector2D, right: Vector2D) {
-        left = left + right
+  static func += (left: inout Vector2D, right: Vector2D) {
+    left = left + right
     }
 }
 ```
 
-'덧셈 연산자' 는 앞에서 정의했기 때문에[^addition-earlier], 더하는 과정을 여기서 재구현할 필요는 없습니다. 그 대신, '더하기 할당 연산자 메소드' 는 '기존 덧셈 연산자 메소드' 를 사용하여, 왼쪽 값과 오른쪽 값을 더한 것을 왼쪽 값에 설정합니다:
+덧셈 연산자는 앞서 정의했기 때문에[^addition-earlier], 덧셈 과정을 여기서 다시 구현할 필요는 없습니다. 그 대신, 덧셈 할당 연산자 메소드는 기존 덧셈 연산자 메소드를 사용하여, 왼쪽 값과 오른쪽 값을 더한 걸 왼쪽 값으로 설정합니다:
 
 ```swift
 var original = Vector2D(x: 1.0, y: 2.0)
 let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
 original += vectorToAdd
-// original 은 이제 (4.0, 6.0) 이라는 값을 가집니다.
+// original 의 값은 이제 (4.0, 6.0) 임
 ```
 
-> '기본 할당 연산자 (`=`)' 를 '중복 정의 (overload)' 하는 것은 불가능합니다. '복합 할당 연산자' 만 '중복 정의' 할 수 있습니다. 이와 비슷하게, '삼항 조건 연산자 (`a ? : b : c`)' 도 '중복 정의' 할 수 없습니다.
+> 기본 할당 연산자 (`=`) 를 중복 정의하는 건 불가능합니다. 복합 할당 연산자만 중복 정의할 수 있습니다. 이와 비슷하게, 삼항 조건 연산자 (`a ? : b : c`) 도 중복 정의할 수 없습니다.
 
 #### Equivalence Operators (같음 비교 연산자)
 
-기본적으로, 사용자 정의 클래스 및 구조체는, '_같음 (equal to)_ 연산자 (`==`)' 와 '_같지 않음 (not equal to)_ 연산자 (`!=`)' 라는, _같음 비교 연산자 euivalence operators)_ 구현을 가지지 않습니다. 대체로 `==` 연산자는 구현하며, `==` 연산자 결과를 반대로 만드는 `!=` 연산자는 표준 라이브러리의 기본 구현을 사용합니다. `==` 연산자 구현에는 두 가지 방식이 있습니다: 자신이 직접 구현할 수도 있고, 아니면 '많은 타입' 들에서, 구현을 만들어 통합하라고 스위프트에게 요청할 수 있습니다. 두 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜에 대한 '준수성' 을 추가합니다.
+기본적으로, 사용자가 정의한 클래스와 구조체는, _같음 (equal to)_ 연산자 (`==`) 와 _같지 않음 (not equal to)_ 연산자 (`!=`) 라는, _같음 비교 연산자 euivalence operators)_ 를 구현하지 않습니다. 대체로 `==` 연산자는 구현하고, `!=` 연산자는 표준 라이브러리의 기본 구현을 써서 `==` 연산자의 결과를 반대로 뒤집습니다. `==` 연산자 구현에는 두 가지 방법이 있는데: 스스로 구현할 수도, 또는 많은 타입들에서, 스위프트에 통합 구현을 요청할 수도 있습니다. 두 경우 모두, 표준 라이브러리의 `Equatable` 프로토콜을 준수하도록 추가합니다.
 
-`==` 연산자는 다른 '중위 연산자' 를 구현하는 것과 똑같이 구현합니다:
+`==` 연산자의 구현 방식은 다른 중위 연산자의 구현과 똑같습니다:
 
 ```swift
-extension Vector2D: Equatable {
-    static func == (left: Vector2D, right: Vector2D) -> Bool {
-        return (left.x == right.x) && (left.y == right.y)
-    }
+extension Vector2D: Equatable { 
+  static func == (left: Vector2D, right: Vector2D) -> Bool {
+    return (left.x == right.x) && (left.y == right.y)
+  }
 }
 ```
 
-위 예제는 두 `Vector2D` 인스턴스의 값이 같은 지를 검사하는 `==` 연산자를 구현합니다. `Vector2D` 에서, “같음 (equal)” 은 “두 인스턴스 모두 똑같은 `x` 값과 `y` 값을 가진다” 는 의미로 고려하는 것이 합리적이므로, 연산자 구현에서도 이 논리를 사용합니다.
+위 예제는 `==` 연산자를 구현하여 두 `Vector2D` 인스턴스가 가진 값이 같은 것인 지를 검사합니다. `Vector2D` 상황에선, “같음 (equal)” 의 의미가 “인스턴스 둘 다 동일한 `x` 값과 `y` 값을 가진다” 고 고려하는 게 말이 되므로, 이 논리를 연산자 구현에서도 사용합니다.
 
-이제 두 `Vector2D` 인스턴스가 같은 지를 검사하는데 이 연산자를 사용할 수 있습니다:
+이제 이 연산자를 사용하여 두 `Vector2D` 인스턴스가 같은 건지를 검사할 수 있습니다:
 
 ```swift
 let twoThree = Vector2D(x: 2.0, y: 3.0)
@@ -392,22 +392,22 @@ let anotherTwoThree = Vector2D(x: 2.0, y: 3.0)
 if twoThree == anotherTwoThree {
     print("These two vectors are equivalent.")
 }
-// "These two vectors are equivalent." 를 인쇄합니다.
+// "These two vectors are equivalent." 를 인쇄함
 ```
 
-[Adopting a Protocol Using a Synthesized Implementation (통합 구현을 써서 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-써서-프로토콜-채택하기) 에서 설명한 것처럼, 많은 단순한 경우에, '같음 비교 연산자' 의 '통합된 구현' 을 스위프트가 제공하도록 요청할 수 있습니다.
+[Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)]({% post_url 2016-03-03-Protocols %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-사용하여-프로토콜-채택하기) 에서 설명한 것처럼, 수많은 단순한 경우에, 스위프트가 같음 비교 연산자의 통합 구현을 제공하도록 요청할 수 있습니다.
 
 ### Custom Operators (사용자 정의 연산자)
 
-스위프트가 제공하는 '표준 연산자' 에 더하여 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. '사용자 정의 연산자' 를 정의할 때 사용할 수 있는 문자들의 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 참고하기 바랍니다.
+스위프트가 제공하는 표준 연산자에 더해 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. 자신만의 연산자 정의에 사용할 수 있는 문자 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 참고하기 바랍니다.
 
-새로운 연산자는 `operator` 키워드를 사용하여 '전역 수준' 에서 선언하며, `prefix`, `infix`, 또는 `postfix` 수정자로 표시합니다:[^global-level]
+새로운 연산자는 전역 수준에서 `operator` 키워드로 선언하며[^global-level], `prefix` 나, `infix`, 또는 `postfix` 수정자를 표시합니다:
 
 ```swift
 prefix operator +++
 ```
 
-위 예제는 `+++` 라는 새로운 '접두사 연산자' 를 정의합니다. 이 연산자는 기존 스위프트에서 의미가 없던 것이므로, 아래 처럼 `Vector2D` 인스턴스와 작업하는 특정 상황에서만 자신만의 사용자 정의 의미가 주어집니다. 이 예제 용으로, `+++` 는 “두 배로 만드는 접두사 형식의 (prefix doubling)” 새로운 연산자로 취급합니다. 이는, 앞에서 정의한 '더하기 할당 연산자' 로 벡터에 자신을 더함으로써, `Vector2D` 인스턴스의 `x` 와 `y` 값을 두 배로 만듭니다. `+++` 연산자를 구현하려면, 다음 처럼 `Vector2D` 에 `+++` 라는 타입 메소드를 추가합니다:
+위 예제는 `+++` 라는 새로운 접두사 연산자를 정의합니다. 이 연산자는 기존의 스위프트에선 없던 것이라서, `Vector2D` 인스턴스와 작업하는 특정 상황 하에서만 자신만의 의미를 가집니다. 이 예제 용으론, `+++` 를 새로 “두 배로 만드는 접두사 (prefix doubling)” 연산자로 취급합니다. 이는, 앞서 정의한 덧셈 할당 연산자로 벡터에 자신을 더하여, `Vector2D` 인스턴스의 `x` 와 `y` 값을 두 배로 만듭니다. `+++` 연산자를 구현하려면, 다음 처럼 `Vector2D` 에 `+++` 라는 타입 메소드를 추가합니다:
 
 ```swift
 extension Vector2D {
@@ -419,40 +419,40 @@ extension Vector2D {
 
 var toBeDoubled = Vector2D(x: 1.0, y: 4.0)
 let afterDoubling = +++toBeDoubled
-// toBeDoubled 은 이제 (2.0, 8.0) 라는 값을 가집니다.[^doubling]
-// afterDoubling 도 (2.0, 8.0) 라는 값을 가집니다.
+// toBeDoubled 의 값은 이제 (2.0, 8.0) 임[^doubling]
+// afterDoubling 의 값도 (2.0, 8.0) 임
 ```
 
 #### Precedence for Custom Infix Operators (사용자 중위 연산자의 우선권)
 
-각각의 사용자 중위 연산자는 우선권 그룹에 속합니다. 우선권 그룹은, 연산자의 결합성 (associativity) 뿐 아니라, 다른 중위 연산자에 상대적인 연산자 우선권을 지정합니다. 이 성질이 중위 연산자와 다른 중위 연산자와의 상호 작용에 영향을 주는 방법에 대한 설명은 [Precedence and Associativity (우선권과 결합성)](#precedence-and-associativity-우선권과-결합성) 을 참고하기 바랍니다.
+사용자 중위 연산자 각각은 우선권 그룹에 속합니다. 우선권 그룹은 다른 중위 연산자와 상대적인 연산자의 우선권 뿐만 아니라, 연산자의 결합성도 지정합니다. [Precedence and Associativity (우선권과 결합성)](#precedence-and-associativity-우선권과-결합성) 을 보면 이러한 성질이 중위 연산자와 다른 중위 연산자의 상호 작용에 영향을 주는 방법을 설명합니다.
 
-우선권 그룹을 명시하지 않은 사용자 중위 연산자에는 삼항 조건 연산자 바로 위의 우선권을 가진 기본 우선권 그룹을 줍니다.
+사용자 중위 연산자에 우선권 그룹을 명시하지 않으면 기본 우선권 그룹으로 삼항 조건 연산자 바로 위의 우선권을 줍니다.
 
-다음 예제는, `AdditionPrecedence` 우선권 그룹에 속한, `+-` 라는 새로운 사용자 중위 연산자를 정의합니다:
+다음 예제는 `+-` 라는 새로운 사용자 중위 연산자를 정의하는데, 이는 `AdditionPrecedence` 라는 우선권 그룹에 속합니다:
 
 ```swift
 infix operator +-: AdditionPrecedence
 extension Vector2D {
-    static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
-        return Vector2D(x: left.x + right.x, y: left.y - right.y)
-    }
+  static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
+    return Vector2D(x: left.x + right.x, y: left.y - right.y)
+  }
 }
 let firstVector = Vector2D(x: 1.0, y: 2.0)
 let secondVector = Vector2D(x: 3.0, y: 4.0)
 let plusMinusVector = firstVector +- secondVector
-// plusMinusVector 는 (4.0, -2.0) 라는 값을 가진 Vector2D 인스턴스입니다.
+// plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스임
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하며, `y` 값은 첫 번째에서 두 번째 벡터의 값을 뺍니다. 이는 본질적으로 "더하는 (additive)" 연산자이기 때문에, `+` 및 `-` 같은 더하기 중위 연산자와 동일한 우선권 그룹이 주어졌습니다. 연산자 우선권 그룹과 결합성 설정의 완전한 목록을 포함하여, 스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 을 참고하기 바랍니다. 우선권 그룹에 대한 더 많은 정보 및자신만의 연산자와 우선권 그룹을 정의하는 구문을 보려면, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 을 참고하기 바랍니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 동일한 우선권 그룹을 줬습니다. 스위프트 표준 라이브러리가 제공한, 연산자 우선권 그룹 및 결합성 설정에 대한 완전한 목록을 포함하는, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 참고하기 바랍니다. 우선권 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선권 그룹 정의 구문을 보려면, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 참고하기 바랍니다.
 
-> 접두사 또는 접미사 연산자를 정의할 땐 우선권을 지정하지 않습니다. 하지만, 동일한 피연산자에 접두사와 접미사 연산자를 둘 다를 적용하면, 접미사 연산자를 먼저 적용합니다.
+> 접두사나 접미사 연산자를 정의할 땐 우선권을 지정하지 않습니다. 하지만, 동일한 피연산자에 접두사와 접미사 연산자를 둘 다 적용하면, 접미사 연산자가 먼저 적용됩니다.
 
 ### Result Builders (결과 제작자)
 
-_결과 제작자 (result builder)_ 는, '리스트 (list)' 나 '트리 (tree)' 같은[^list-or-tree], '중첩 데이터' 를, 자연스러운, 선언형 방식으로, 생성하는 구문을 추가하기 위해 정의하는 타입입니다. '결과 제작자' 를 사용하는 코드는, `if` 와 `for` 같이, 조건문 또는 '데이터' 의 반복을 처리하는, 평범한 스위프트 구문을 포함할 수 있습니다.
+_결과 제작자 (result builder)_ 는 직접 정의하는 타입으로, 리스트나 트리 같이[^list-or-tree], 중첩된 데이터를, 자연스러운, 선언형 방식으로, 생성하게 하는 구문을 추가합니다. 결과 제작자를 사용한 코드는, `if` 와 `for` 같은, 평범한 스위프트 구문을 포함하여, 데이터의 조건이나 반복을 처리할 수 있습니다.
 
-아래 코드는 '별' 과 '문장' 으로 한 줄 위에 그림을 그리기 위한 몇몇 타입을 정의합니다.
+아래 코드는 별(문자) 와 텍스트를 한 줄 위에 그리기 위한 몇 가지 타입을 정의합니다.
 
 ```swift
 protocol Drawable {
@@ -482,9 +482,9 @@ struct AllCaps: Drawable {
 }
 ```
 
-`Drawable` 프로토콜은, 선이나 도형 같이, 그릴 수 있기 위한 '필수 조건' 인: 타입은 반드시 `draw()` 함수를 구현해야 한다는 것을 정의합니다. `Line` 구조체는 '한-줄 그림' 을 표현하며, 대부분의 그림에 대한 '최상단 컨테이너 (container)'[^container] 역할을 합니다. `Line` 을 그리기 위해, 구조체는 각각의 '줄 (line)' 성분에 대한 `draw()` 를 호출하며, 그런 다음 '결과 문자열' 들을 '단일 문자열' 로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 '그림' 으로 만듭니다. `AllCaps` 구조체는 또 다른 그림을 포장하고 수정하여, 그림 안의 어떤 문장이든 대문자로 변환합니다.
+`Drawable` 프로토콜은, 선이나 도형 같이, 그릴 것에 대한 필수 조건을 정의하는데: 타입은 반드시 `draw()` 함수를 구현해야 합니다. `Line` 구조체는 단 한-줄짜리 그림을 나타내며, 대부분의 그림에서 최-상단 컨테이너[^container] 역할을 합니다. `Line` 을 그리고자, 구조체는 각 줄 (line) 성분의 `draw()` 를 호출한 다음, 결과 문자열을 단일 문자열로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 그림으로 만듭니다. `AllCaps` 구조체는 또 다른 그림을 포장 및 수정하는데, 그림 안의 어떤 문장이든 대문자로 변환합니다.
 
-초기자를 호출함으로써 이 타입들로 그림을 만들 수 있습니다:
+이 타입들의 초기자를 호출함으로써 그림을 만드는 게 가능합니다:
 
 ```swift
 let name: String? = "Ravi Patel"
@@ -496,12 +496,12 @@ let manualDrawing = Line(elements: [
   Stars(length: 2),
   ])
 print(manualDrawing.draw())
-// "***Hello RAVI PATEL!**" 를 인쇄합니다.
+// "***Hello RAVI PATEL!**" 를 인쇄함
 ```
 
-이 코드는 작동은 하지만, 조금 어색합니다. `AllCaps` 뒤에 깊게 중첩된 괄호들은 이해하기가 힘듭니다. `name` 이 `nil` 일 때 "World" 를 사용하는 '대체 논리' 는, 어떤 더 복잡한 것도 어려울 것이므로, `??` 연산자를 사용하여 '인라인' 으로 했어야 합니다. 그림을 제작하기 위해 'switch 문' 이나 `for` 반복문을 포함할 필요가 있어도, 그럴 방법이 없습니다. '결과 제작자' 는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 처럼 보이게 합니다.
+이 코드는 작동하지만, 조금 어색합니다. `AllCaps` 뒤에 깊게 중첩된 괄호는 이해하기 힘듭니다. `name` 이 `nil` 일 땐 "World" 를 사용하라는 대체 논리는 `??` 연산자를 써서 인라인으로 해야 하는데, 어떤 더 복잡한 걸 쓰든 어려울 겁니다. switch 나 `for` 반복문을 포함하여 그림을 제작할 필요가 있어도, 그럴 방법이 없습니다. 결과 제작자는 이와 같은 코드를 재작성하여 보통의 스위프트 코드 같이 보이게 해줍니다.
 
-'결과 제작자' 를 정의하려면, '타입 선언' 에 '`@resultBuilder` 특성 (attribute)'[^attribute] 을 작성합니다. 예를 들어, 다음 코드는, '선언형 구문 (declarative)' 으로 그림을 설명하도록 해주는, `DrawingBuilder` 라는 '결과 제작자' 를 정의합니다:
+결과 제작자를 정의하려면, 타입 선언에 `@resultBuilder` 특성[^attribute] 을 씁니다. 예를 들어, 다음 코드는 `DrawingBuilder` 라는 결과 제작자를 정의하여, 선언형 구문으로 그림을 설명하게 해줍니다:
 
 ```swift
 @resultBuilder
@@ -518,9 +518,9 @@ struct DrawingBuilder {
 }
 ```
 
-`DrawingBuilder` 구조체는 '결과 제작자 구문' 일부를 구현하는 세 개의 메소드를 정의합니다. `buildBlock(_:)` 메소드는 코드 블럭에 '연속된 줄들 ' 을 작성하기 위한 지원을 추가합니다. 이는 해당 블럭에 있는 성분들을 하나의 `Line` 으로 조합합니다. `buildEither(first:)` 와 `buildEither(second:)` 메소드는 `if`-`else` 문에 대한 지원을 추가합니다.
+`DrawingBuilder` 구조체는 결과 제작자 구문의 (각) 부분들을 구현하는 세 메소드를 정의합니다. `buildBlock(_:)` 메소드는 코드 블럭에 연속된 줄의 작성을 지원합니다. 이는 그 블럭 안의 성분들을 하나의 `Line` 으로 조합합니다. `buildEither(first:)` 와 `buildEither(second:)` 메소드는 `if`-`else` 문을 지원합니다.
 
-함수의 매개 변수에 `@DrawingBuilder` 를 적용하여, 함수에 전달한 클로저를 해당 클로저로부터 '결과 제작자' 가 생성한 값으로 바꿀 수 있습니다. 예를 들어 다음과 같습니다:
+함수 매개 변수에 `@DrawingBuilder` 특성을 적용하면, 함수에 전달한 클로저를 그 클로저를 써서 결과 제작자가 생성한 값으로 바꿀 수 있습니다. 예를 들어 다음과 같습니다:
 
 ```swift
 func draw(@DrawingBuilder content: () -> Drawable) -> Drawable {
@@ -548,14 +548,14 @@ func makeGreeting(for name: String? = nil) -> Drawable {
 }
 let genericGreeting = makeGreeting()
 print(genericGreeting.draw())
-// "***Hello WORLD!**" 를 인쇄합니다.
+// "***Hello WORLD!**" 를 인쇄함
 
 let personalGreeting = makeGreeting(for: "Ravi Patel")
 print(personalGreeting.draw())
-// "***Hello RAVI PATEL!**" 를 인쇄합니다.
+// "***Hello RAVI PATEL!**" 를 인쇄함
 ```
 
-`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하고 이를 사용하여여 '개인별 인사말' 을 그립니다. `draw(_:)` 와 `caps(_:)` 함수 둘 다, `@DrawingBuilder` 특성으로 표시한, 단일 클로저를 인자로 취합니다. 해당 함수를 호출할 땐, `DrawingBuilder` 가 정의한 '특수 구문' 을 사용합니다.[^greeting-draw] 스위프트는 함수 인자로 전달한 값을 제작하기 위해 해당 그림의 '선언형 설명' 을 `DrawingBuilder` 메소드에 대한 연속된 호출로 변형합니다. 예를 들어, 스위프트는 해당 예제의 `caps(_:)` 호출을 다음 같은 코드로 변형합니다:
+`makeGreeting(for:)` 함수는 `name` 매개 변수를 취하여 이로써 개인별 인사말을 그립니다. `draw(_:)` 와 `caps(_:)` 함수는 둘 다 자신의 인자로 단일 클로저를 취하며, 이를 `@DrawingBuilder` 특성으로 표시합니다. 이 함수들을 호출할 땐, `DrawingBuilder` 가 정의한 특수 구문을 사용합니다.[^greeting-draw] 스위프트는 선언형 그림 설명을 `DrawingBuilder` 에 있는 메소드로의 연속 호출로 변형하여 함수 인자로 전달한 값을 제작합니다. 예를 들어, 스위프트는 위 예제 안의 `caps(_:)` 호출 코드를 다음 같이 변형합니다:[^greeting-caps]
 
 ```swift
 let capsDrawing = caps {
@@ -571,9 +571,9 @@ let capsDrawing = caps {
 }
 ```
 
-스위프트는 `if`-`else` 블럭을 `buildEither(first:)` 와 `buildEither(second:)` 메소드에 대한 호출로 변형합니다. 비록 자신의 코드에서 이 메소드를 호출하진 않더라도, 변형 결과를 보는 것은 `DrawingBuilder` 구문을 사용할 때 스위프트가 코드를 변형하는 방식을 알기 쉽게 만듭니다.
+스위프트는 `if`-`else` 블럭을 `buildEither(first:)` 와 `buildEither(second:)` 메소드 호출로 변형합니다. 자신의 코드에서 이 메소드들을 호출하지 않긴 하지만, 변형 결과를 보는 건 `DrawingBuilder` 구문을 사용할 때의 스위프트 코드 변형 방법을 더 알아보기 쉽게 합니다.
 
-그림을 그리는 '특수 구문' 에서 `for` 반복문 지원을 추가하도록 작성하려면, `buildArray(_:)` 메소드를 추가합니다:
+특수 그림 구문이 `for` 반복문 작성을 지원하게 하려면, `buildArray(_:)` 메소드를 추가합니다:
 
 ```swift
 extension DrawingBuilder {
@@ -590,9 +590,9 @@ let manyStars = draw {
 }
 ```
 
-위 코드에서, `for` 반복문은 그림 배열을 생성하며, `buildArray(_:)` 메소드는 해당 배열을 `Line` 으로 바꿉니다.
+위 코드에서, `for` 반복문은 그림 배열을 생성하며, `buildArray(_:)` 메소드가 그 배열을 `Line` 으로 바꿉니다.
 
-스위프트가 '제작자 구문' 을 '제작자 타입의 메소드에 대한 호출' 로 변형하는 방식에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 를 참고하기 바랍니다.
+제작자 구문을 제작자 타입의 메소드 호출로 스위프트가 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 부분을 참고하기 바랍니다.
 
 ### 다음 장
 
@@ -624,18 +624,20 @@ let manyStars = draw {
 
 [^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 참고하기 바랍니다.
 
-[^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. '스위프트 프로그래밍 언어' 책에 있는 예제는 하나의 장 단위로 내용이 이어집니다.
+[^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. 스위프트 프로그래밍 언어 책의 예제는 각각의 장별로 내용이 이어집니다.
 
-[^global-level]: 실제 '정의' 와는 별도로 '전역 수준' 에서 '선언' 을 따로 해야 한다는 의미입니다.
+[^global-level]: 실제 정의와는 별도로 전역 수준에서 따로 선언도 해야 한다는 의미입니다.
 
 [^doubling]: `+++` 는 '단항 접두사 연산자' 이므로, `toBeDoubled` 만 두 배로 만듭니다. 이어서 이 `toBeDoubled` 를 `afterDoubled` 에 할당함으로써 `afterDoubled` 가 `toBeDoubled` 와 같은 값을 가지게 됩니다.
 
 [^operator-declarations-apple]: 원문 자체가 '애플 개발자 문서' 로 가는 링크로 되어 있습니다.
 
-[^list-or-tree]: 여기서의 '리스트 (list)' 와 '트리 (tree)' 는 '자료 구조' 타입 중의 하나를 의미입니다. 
+[^list-or-tree]: '리스트 (list) 와 트리 (tree)' 자료 구조에 대한 더 자세한 정보는, 위키피디아의 [Linked list](https://en.wikipedia.org/wiki/Linked_list) 항목 및 [연결 리스트](https://ko.wikipedia.org/wiki/연결_리스트) 그리고 [Tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) 항목 및 [트리 구조](https://ko.wikipedia.org/wiki/트리_구조) 항목을 참고하기 바랍니다.
 
 [^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
 
-[^greeting-draw]: 본문 예제에서는 `makeGreeting` 함수 안에서 `greeting` 상수를 생성할 때 `draw { ... }` 와 `caps { ... }` 부분에서 이 '특수 구문' 을 사용하고 있습니다.
+[^greeting-draw]: `makeGreeting` 함수 안에서 `draw { ... }` 부분과 `caps { ... }` 부분이 이 함수들을 호출하는 부분이며, 이 때 `DrawingBuilder` 가 정의한 특수 구문을 사용하게 됩니다.
 
-[^container]: 여기서의 '컨테이너 (container)' 는 다른 객체들의 '집합체' 를 나타내는 '자료 구조 타입' 입니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. '컨테이너' 에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
+[^greeting-caps]: `makeGreeting` 함수 안에서 `caps { ... }` 부분을 본문 아래 처럼 변형한다는 의미입니다.
+
+[^container]: 여기서의 '컨테이너 (container)' 는 자료 구조 타입을 의미합니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. 컨테이너에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
