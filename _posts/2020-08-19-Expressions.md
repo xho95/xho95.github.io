@@ -10,9 +10,9 @@ categories: Swift Language Grammar Expression
 
 ## Expressions (표현식)
 
-스위프트에는, 네 가지 종류의 표현식인: '접두사 (prefix) 표현식', '이항 (binary) 표현식', '제1 (primary) 표현식', 및 '접미사 (postfix) 표현식' 이 있습니다. 표현식을 평가하면 값을 반환하거나, 부작용 (side effect)[^side-effect] 을 일으키고, 또는 둘 다를 합니다.
+스위프트에는, 네 종류의 표현식이 있는데: 접두사 표현식과, 중위 표현식, 으뜸 표현식[^primary-expression], 및 접미사 표현식이 그것입니다. 표현식의 평가는 값을 반환하거나, 부작용[^side-effect] 을 일으키거나, 혹은 둘 다 합니다.
 
-'접두사 표현식' 과 '이항 표현식' 은 더 작은 표현식에 연산자를 적용하게 해줍니다. '제1 표현식' 은 개념상 가장 단순한 종류의 표현식이며, 값에 접근하는 방법을 제공합니다. '접미사 표현식' 은, 접두사 및 이항 표현식 같이, 함수 호출 및 멤버 접근 같은 '접미사' 를 사용하여 더 복잡한 표현식을 제작하게 해줍니다. 각각의 종류에 대한 표현식은 아래 부분에서 더 자세히 설명합니다.
+접두사 및 이항 표현식은 더 작은 표현식에 연산자를 적용하게 해줍니다. 으뜸 표현식은 개념상 가장 단순한 종류의 표현식으로, 값에 접근하는 방식을 제공합니다. 접미사 표현식은, 접두사 및 중위 표현식과 마찬가지로, 함수 호출과 멤버 접근 같은 접미사를 사용하여 더 복잡한 표현식을 제작하게 해줍니다. 각 종류의 표현식은 밑의 절에서 자세하게 설명합니다.
 
 > GRAMMAR OF AN EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html)
 
@@ -1042,7 +1042,10 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^side-effect]: 컴퓨터 용어에서 'side effect' 를 '부작용' 이라고 직역하는 것이 옳은 것인지는 잘 모르겠습니다. 위키피디아에서는 'side effect' 를 다음과 같이 설명하고 있습니다. 컴퓨터 과학에서, 연산, 함수, 또는 표현식이 'side effect' 를 가지고 있다는 것은 이들이 지역 범위 외부에 있는 상태 변수의 값을 수정하는 경우를 말하는 것으로, 즉 해당 연산의 호출 쪽에서 함수 반환이라는 '주요 효과 (main effect)' 외에 별도로 '관찰 가능한 효과' 를 가지는 것을 말합니다. 이러한 정의에 따르면, 'side effect' 를 '부작용' 이라기 보다는 '부수적인 효과' 정도로 이해해도 좋을 것입니다. 다만, 'side effect' 가 '부작용' 이라고 널리 쓰이고 있으므로, 컴퓨터 용어에서의 '부작용' 이란 의미를 앞서와 같이 이해할 수도 있을 것입니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+[^primary-expression]: '으뜸 표현식 (primary expression)' 은 아래의 [Primary Expressions (으뜸 표현식)]({% post_url 2020-08-19-Expressions %}#primary-expressions-으뜸-표현식) 부분에서 설명합니다.
+
+[^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+
 
 [^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
 
