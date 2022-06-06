@@ -18,11 +18,11 @@ categories: Swift Language Grammar Expression
 
 ### Prefix Expressions (접두사 표현식)
 
-_접두사 표현식 (prefix expressions)_ 은 '선택적인 접두사 연산자' 와 '표현식' 을 조합합니다. '접두사 연산자' 는 하나의 인자로, 뒤따라 오는 표현식을, 취합니다.
+_접두사 표현식 (prefix expressions)_ 은 옵션인 접두사 연산자와 표현식을 조합합니다. 접두사 연산자는 하나의 인자로, 자신의 뒤에 있는 표현식을, 취합니다.
 
-이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 와 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
 
-'스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A PREFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
