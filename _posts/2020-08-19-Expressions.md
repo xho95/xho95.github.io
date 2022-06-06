@@ -38,23 +38,25 @@ _입-출력 표현식 (in-out expression)_ 은 함수 호출 표현식에 입-�
 
 > GRAMMAR OF AN IN-OUT EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
-#### Try Operator ('try' 연산자)
+#### Try Operator (try 연산자)
 
-_try 표현식 (try expression)_ 은 '`try` 연산자' 와 그 뒤의 '에러를 던질 수 있는 표현식' 으로 구성합니다. 형식은 다음과 같습니다:
+_try 표현식 (try expression)_ 은 `try` 연산자와 그 뒤의 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`
 
-_옵셔널-try 표현식 (optional-try expression)_ 은 '`try?` 연산자' 와 그 뒤의 '에러를 던질 수 있는 표현식' 으로 구성합니다. 형식은 다음과 같습니다:
+`try` 표현식의 값은 _표현식 (expression)_ 의 값입니다.
+
+_옵셔널-try 표현식 (optional-try expression)_ 은 `try?` 연산자와 그 뒤의 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;try? `expression-표현식`
 
-_표현식 (expression)_ 이 에러를 던지지 않으면, '옵셔널-try 표현식' 의 값은 _표현식 (expression)_ 의 값을 담은 '옵셔널' 입니다. 그 외의 경우, '옵셔널-try 표현식' 의 값은 `nil` 입니다.
+_표현식 (expression)_ 이 에러를 던지지 않으면, 옵셔널-try 표현식의 값은 _표현식 (expression)_ 의 값을 담은 옵셔널입니다. 그 외의 경우, 옵셔널-try 표현식의 값이 `nil` 입니다.
 
-_강제-try 표현식 (forced-try expression)_ 은 '`try!` 연산자' 와 그 뒤의 '에러를 던질 수 있는 표현식' 으로 구성합니다. 형식은 다음과 같습니다:
+_강제-try 표현식 (forced-try expression)_ 은 `try!` 연산자와 그 뒤의 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;try! `expression-표현식`
 
-_표현식 (expression)_ 이 에러를 던지면, 실행 시간 에러를 만들게 됩니다.
+강제-try 표현식의 값은 _표현식 (expression)_ 의 값입니다. _표현식 (expression)_ 이 에러를 던지면, 실행 시간 에러를 만듭니다.
 
 이항 연산자의 왼-쪽 표현식을 `try`, `try?`, 또는 `try!` 로 표시할 때, 해당 연산자는 이항 표현식 전체에 적용됩니다. 그렇다 하더라도, 괄호를 사용하여 연산자의 적용 범위를 명시할 수 있습니다.
 
