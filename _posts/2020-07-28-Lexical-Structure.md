@@ -198,7 +198,19 @@ let textB = "Hello world"
 
 정규 표현식 글자 값은 반드시 벗어나지 않은 탭이나 공백으로 시작해선 안되며, 벗어나지 않은 빗금 (`/`) 이나, 캐리지 반환, 또는 줄 먹임 문자를 담을 수도 없습니다. 
 
-정규 표현식 안의, 역빗금은 그 정규 표현식의 일부분으로 이해하며, 
+정규 표현식 안에선, 역빗금이 그 정규 표현식의 일부분이라고 이해하지, 문자열 글자 값 안에서와 같이 벗어난 문자라고 하지 않습니다.  
+
+&nbsp;&nbsp;&nbsp;&nbsp;\#\/`regular expression-정규 표현식`\/\#
+
+&nbsp;&nbsp;&nbsp;&nbsp;\#
+&nbsp;&nbsp;&nbsp;&nbsp;`regular expression-정규 표현식`
+&nbsp;&nbsp;&nbsp;&nbsp;\/\#
+
+
+```swift
+let regex1 = ##/abc/##      // 괜찮음
+let regex2 = # #/abc/# #    // 에러
+```
 
 > GRAMMAR OF A REGULAR EXPRESSION LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
