@@ -115,7 +115,7 @@ _중위 표현식 (infix expressions)_ 은 중위 이항 연산자를 왼쪽 및
 
 스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
-> 구문 해석 시간에, 중위 연산자로 이뤄진 표현식은 납작한 리스트 (flat list)[^flat-list] 로 나타냅니다. 이 리스트에 연산자 우선 순위를 적용하여 트리 (tree) 로 변형합니다. 예를 들어, 초기에는 표현식 `2 + 3 * 5` 가 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 납작한 리스트라고 이해합니다. 이 과정은 이를 `(2 + (3 * 5))` 라는 트리로 변형합니다.
+> 구문 해석 시간에, 중위 연산자로 이뤄진 표현식은 납작한 리스트 (flat list)[^flat-list] 로 나타냅니다. 이 리스트에 연산자 우선 순위를 적용함으로써 트리 (tree) 로 변형합니다. 예를 들어, 초기에는 표현식 `2 + 3 * 5` 가 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 납작한 리스트라고 이해합니다. 이 후 과정에서 이를 `(2 + (3 * 5))` 라는 트리로 변형합니다.
 
 > GRAMMAR OF A INFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -1057,7 +1057,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
 
-[^flat-list]: **kchanguk** 님의 블로그에 있는 [.map()과 .flatMap()의 차이](https://kchanguk.tistory.com/56) 라는 글을 참고하면, '납작한 리스트 (flat list)' 는 각각의 항목이 가장 작은 단위의 단일 원소로 이루어진 '리스트' 자료 구조라고 추측할 수 있습니다.
+[^flat-list]: '납작한 리스트 (flat list)' 는 차원을 축소하여 1-차원화한 리스트라고 이해할 수 있습니다.
 
 [^foundation]: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
 
