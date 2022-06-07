@@ -20,7 +20,7 @@ categories: Swift Language Grammar Expression
 
 _접두사 표현식 (prefix expressions)_ 은 옵션인 접두사 연산자와 표현식을 조합합니다. 접두사 연산자는 하나의 인자로, 자신의 뒤에 있는 표현식을, 취합니다.
 
-이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 와 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 를 참고하기 바랍니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
 스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
@@ -105,19 +105,19 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 > GRAMMAR OF A AWAIT EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
-### Binary Expressions (이항 표현식)
+### Infix Expressions (중위 표현식)
 
-_이항 표현식 (binary expressions)_ 은 '이항 중위 연산자'[^infix-binary-operator] 와 이것이 자신의 왼쪽과 오른쪽 인자로 취하는 '표현식' 을 조합합니다. 형식은 다음과 같습니다:
+_중위 표현식 (infix expressions)_ 은 중위 이항 연산자를 왼쪽 및 오른쪽 인자로 취한 표현식과 조합합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
 
-이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
-'스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목을 참고하기 바랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
 > '구문 해석 (parse)' 시간에, 이항 연산자로 이루어진 표현식은 '납작한 리스트 (flat list)'[^flat-list] 로 표현됩니다. 이 '리스트 (list)' 에 '연산자 우선권' 을 적용하여 '트리 (tree)' 로 변형합니다. 예를 들어, `2 + 3 * 5` 라는 표현식은 초기에는 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 '납작한 리스트' 라고 이해합니다. 이 가공 과정은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변형합니다.
 
-> GRAMMAR OF A BINARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
+> GRAMMAR OF A INFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
 #### Assignment Operator (할당 연산자)
 
@@ -1056,8 +1056,6 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문' 이 됩니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
-
-[^infix-binary-operator]: 이 책은 '중위 이항 연산자 (infix binary operator)' 와 '이항 중위 연산자 (binary infix operator)' 라는 말을 같이 사용하고 있는데, 편의를 위해서 '이항 중위 연산자' 로 통일하여 옮깁니다.
 
 [^flat-list]: [.map()과 .flatMap()의 차이](https://kchanguk.tistory.com/56) 라는 글을 참고해 볼 때, '납작한 리스트 (flat list)' 는 각각의 항목이 가장 작은 단위의 단일 원소로 이루어진 '리스트' 자료 구조라고 추측할 수 있습니다.
 

@@ -190,6 +190,18 @@ let textB = "Hello world"
 
 > GRAMMAR OF A STRING LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
+#### Regular Expression Literals (정규 표현식 글자 값)
+
+정규 표현식 글자 값[^regular-expression] 은 빗금 (`/`) 으로 둘러싼 일련의 문자들로 형식은 다음과 같습니다:
+
+&nbsp;&nbsp;&nbsp;&nbsp;\/`regular expression-정규 표현식`\/
+
+정규 표현식 글자 값은 반드시 벗어나지 않은 탭이나 공백으로 시작해선 안되며, 벗어나지 않은 빗금 (`/`) 이나, 캐리지 반환, 또는 줄 먹임 문자를 담을 수도 없습니다. 
+
+정규 표현식 안의, 역빗금은 그 정규 표현식의 일부분으로 이해하며, 
+
+> GRAMMAR OF A REGULAR EXPRESSION LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
+
 ### Operators (연산자)
 
 스위프트 표준 라이브러리에서 정의한 다수 연산자들의 사용법, 중 많은 것들은 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 와 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 논의합니다. 현재 절에선 사용자 연산자를 정의할 수 있는 문자가 어떤 것인지를 설명합니다.
@@ -270,6 +282,8 @@ let textB = "Hello world"
 [^more-than-one-number]: 첫 번째 예제인 `print(###"Line 1\###nLine 2"###)` 는, 결과를 두 줄로 인쇄합니다. 확장 구분자로 구분한 문자열 안의 특수 문자는 보통 문자라고 인식하지만, `\###n` 처럼, 확장 구분자를 집어 넣으면 다시 특수 문자로 인식합니다.
 
 [^developer-string]: 원문 자체가 '애플 개발자 문서' 에 대한 링크입니다. 
+
+[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안에서 검색 패턴을 지정하는 일련의 문자들을 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 참고하기 바랍니다. 
 
 [^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
 
