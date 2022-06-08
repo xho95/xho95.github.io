@@ -190,7 +190,7 @@ f(x as Any)
 
 ### Primary Expressions (으뜸 표현식)
 
-_으뜸 표현식 (primary expressions)_ 은 가장 기초적인 종류의 표현식입니다. 이는 그 자체로 표현식으로 사용할 수 있으며, 다른 '낱말 (tokens)' 과 조합하여 '접두사 표현식', '이항 표현식', '접미사 표현식' 을 만들 수도 있습니다.
+_으뜸 표현식 (primary expressions)_ 은 가장 기초적인 종류의 표현식입니다. 그 자체로 표현식으로 사용할 수도 있고, 다른 낱말과 조합하여 접두사 표현식과, 중위 표현식, 및 접미사 표현식을 만들 수도 있습니다.
 
 > GRAMMAR OF A PRIMARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
