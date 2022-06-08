@@ -138,13 +138,13 @@ _표현식 (expression)_ 의 값을 _값 (value)_ 평가로 구한 값으로 설
 
 #### Ternary Conditional Operator (삼항 조건 연산자)
 
-_삼항 조건 연산자 (ternary conditional operator)_ 는 조건의 값에 기초하여 주어진 두 값 중 하나를 평가합니다. 형식은 다음과 같습니다:
+_삼항 조건 연산자 (ternary conditional operator)_ 는 조건 값을 기초로 하여 주어진 두 값 중 하나를 평가합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`condition-조건` ? `expression used if true-true 면 사용할 표현식` : `expression used if false-false 면 사용할 표현식`
 
-_조건 (condition)_ 평가가 `true` 면, '조건 연산자' 는 '첫 번째 표현식' 을 평가하고 그 값을 반환합니다. 그 외의 경우, '두 번째 표현식' 을 평가하고 그 값을 반환합니다. 사용하지 않은 표현식은 평가하지 않습니다.
+_조건 (condition)_ 평가가 `true` 면, 조건 연산자가 첫 번째 표현식을 평가하고 그 값을 반환합니다. 그 외 경우, 두 번째 표현식을 평가하고 그 값을 반환합니다. 사용하지 않는 표현식은 평가하지 않습니다.
 
-'삼항 조건 연산자' 를 사용하는 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% post_url 2016-04-27-Basic-Operators %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 참고하기 바랍니다.
+삼항 조건 연산자의 사용 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% post_url 2016-04-27-Basic-Operators %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CONDITIONAL OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
