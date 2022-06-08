@@ -150,7 +150,7 @@ _조건 (condition)_ 평가가 `true` 면, 조건 연산자가 첫 번째 표현
 
 #### Type-Casting Operators (타입-변환 연산자)
 
-'타입-변환 연산자' 는: `is` 연산자, `as` 연산자, `as?` 연산자, 그리고 `as!` 연산자 이렇게 네 개가 있습니다.
+네 개의 타입-변환 연산자가 있는데: `is` 연산자와, `as` 연산자, `as?` 연산자, 및 `as!` 연산자가 그것입니다.
 
 형식은 다음과 같습니다:
 
@@ -159,26 +159,26 @@ _조건 (condition)_ 평가가 `true` 면, 조건 연산자가 첫 번째 표현
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` as? `type-타입`
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` as! `type-타입`
 
-`is` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 변환할 수 있는 지를 실행 시간에 검사합니다. _표현식 (expression)_ 을 특정 타입으로 변환할 수 있으면 `true` 를 반환하고; 그 외의 경우, `false` 를 반환합니다.
+`is` 연산자는 실행 시간에 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 변환할 수 있는 지 검사합니다. _표현식 (expression)_ 이 특정 _타입 (type)_ 으로 변환할 수 있으면 `true` 를 반환하며; 그 외 경우, `false` 를 반환합니다.
 
-`as` 연산자는, '올림 변환 (upcasting)' 이나 '연동 (bridging)' 같이, 변환이 항상 성공임을 컴파일 시간에 알고 있을 때 변환을 수행합니다. '올림 변환' 은, 중간 단계 변수의 사용 없이도, 표현식을 그 타입의 '상위 타입' 인스턴스로 사용할 수 있도록 해줍니다. 다음의 접근 방식은 '동치 (equivalent)' 입니다:
+`as` 연산자는, 올림 변환[^upcasting] 이나 연동 (bridging)[^bridging] 같이, 컴파일 시간에 변환이 항상 성공한다는 걸 알 때 하는 변환입니다. 올림 변환은, 중간 단계의 변수를 쓰지 않고도, 표현식을 그 타입의 상위 타입 인스턴스로 사용하게 해줍니다. 다음의 접근법은 서로 같은 겁니다:
 
 ```swift
 func f(_ any: Any) { print("Function for Any") }
 func f(_ int: Int) { print("Function for Int") }
 let x = 10
 f(x)
-// "Function for Int" 를 인쇄합니다.
+// "Function for Int" 를 인쇄함
 
 let y: Any = x
 f(y)
-// "Function for Any" 를 인쇄합니다.
+// "Function for Any" 를 인쇄함
 
 f(x as Any)
-// "Function for Any" 를 인쇄합니다.
+// "Function for Any" 를 인쇄함
 ```
 
-'연동' 은 새로운 인스턴스를 생성할 필요 없이도 `String` 같은 '스위프트 표준 라이브러리 타입' 의 표현식을 `NSString` 같은 그와 관련된 'Foundation' 타입[^foundation] 으로 사용할 수 있도록 해줍니다. '연동 (bridging)' 에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다.
+연동은 새로운 인스턴스를 생성할 필요 없이 `String` 같은 스위프트 표준 라이브러리 타입의 표현식을 `NSString` 같이 그에 해당하는 Foundation[^foundation] 타입으로 사용하게 해줍니다. 연동에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다.
 
 `as?` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 '조건부 변환' 합니다. `as?` 연산자는 특정 _타입 (type)_ 의 '옵셔널' 을 반환합니다. 실행 시간에, 변환이 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하고 반환하며; 그 외의 경우, 반환 값은 `nil` 입니다. 특정 _타입 (type)_ 으로의 변환이 실패라고 보증되거나 성공이라고 보증된다면, 컴파일-시간 에러를 일으킵니다.
 
@@ -1059,7 +1059,11 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^flat-list]: '납작한 리스트 (flat list)' 는 차원을 축소하여 1-차원화한 리스트라고 이해할 수 있습니다.
 
-[^foundation]: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
+[^upcasting]: '올림 변환 (upcasting)' 은 하위 클래스에서 상위 클래스로 형변환하는 것을 말합니다. 하위 클래스는 상위 클래스를 상속한 것이기 때문에 올림 변환은 항상 성공합니다. 
+
+[^bridging]: '연동 (bridging)' 은 애플에서 스위프트의 자료 타입과 오브젝티브-C 의 자료 타입을 서로 호환해서 사용할 수 있도록 만든 방식입니다. 본문 뒤에 나오는 설명 처럼 연동을 사용하여 `String` 타입을 `NSString` 타입으로 변환하여 사용할 수 있습니다. 
+
+[^foundation]: 'Foundation' 은 스위프트 프로그래밍 언어에서 가장 기반을 이루는 프레임웍으로, 보통 `import Foundation` 으로 불러옵니다.
 
 [^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
 
