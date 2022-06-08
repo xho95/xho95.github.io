@@ -196,17 +196,17 @@ _으뜸 표현식 (primary expressions)_ 은 가장 기초적인 종류의 표�
 
 #### Literal Expression (글자 값 표현식)
 
-_글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 평범한 글자 값, 배열 및 딕셔너리 글자 값, '플레이그라운드 (playground) 글자 값', 또는 다음의 '특수 (special) 글자 값' 중 하나로 구성합니다:
+_글자 값 표현식 (literal expression)_ 은 (문자열이나 수치 값 같은) 평범한 글자 값이나, 배열 및 딕셔너리 글자 값, 플레이그라운드 (playground) 글자 값, 또는 다음의 특수 글자 값 중 하나로 구성됩니다:
 
 글자 값 || 타입 || 값
 ---|---|---|---|---
-`#file` | | `String` | |  이 파일의 경로
+`#file` | | `String` | |  이 파일의 경로[^the-path]
 `#fileID` | | `String` | | 이 파일과 모듈의 이름
 `#filePath` | | `String` | | 이 파일의 경로
 `#line` | | `Int` | | 이 줄의 번호
 `#column` | | `Int` | | 이 시작 열의 번호
 `#function` | | `String` | | 이 선언의 이름
-`#dsohandle` | | `UnsafeRawPointer` | | 이 곳에서 사용 중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
+`#dsohandle` | | `UnsafeRawPointer` | | 여기서 사용하는 동적 공유 객체[^dynamic-shared-object] 의 핸들
 
 `#file` 의 문자열 값은, 예전 `#filePath` 동작을 새로운 `#fileID` 동작으로 '이전 (migration)' 할 수 있도록, 언어 버전에 의존합니다.[^filePath-and-fildID] 현재의, `#file` 은 `#filePath` 와 똑같은 값을 가집니다. 미래 버전의 스위프트는, `#file` 이 대신 `#fileID` 와 똑같은 값을 가질 것입니다. 미래의 동작을 채택하려면, `#file` 을 적절하게 `#fileID` 나 `#filePath` 로 대체하기 바랍니다.[^file-to-filePath-and-fildID]
 
@@ -1065,6 +1065,14 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^foundation]: '파운데이션 (Foundation)' 은 스위프트 프로그래밍 언어의 기반을 이루는 프레임웍으로, 보통 `import Foundation` 으로 불러옵니다. 여기서 말하는 파운데이션 타입은 오브젝티브-C 와의 호환성을 위해 Foundation 프레임웍 안에 정의되어 있는 타입을 의미합니다. 
 
+[^the-path]: `#ifle` 이 있는 곳의 파일 경로를 의미합니다.
+
+[^dynamic-shared-object]: '동적 공유 객체 (dynamic shared object; DSO)' 는 `.dylib` 나 `.so` 같이 현재 실행 중인 동적 연결 라이브러리를 의미합니다. 이에 대한 더 자세한 내용은, 애플 개발자 문서의 [Overview of Dynamic Libraries](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/OverviewOfDynamicLibraries.html) 항목을 참고하기 바랍니다. 
+
+[^filePath-and-fildID]: `#file` 은 예전 버전에서는 '파일 및 모듈의 이름' 이었지만, 지금 버전에서는 '파일의 경로' 입니다. 이는 스위프트 5.3 에서 새로 생긴 `#fileID` 와 관련된 것으로 추측됩니다.
+
+[^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
+
 [^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
 
 [^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
@@ -1076,10 +1084,6 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 '오른쪽-에서-왼쪽' 순서를 사용하는 건, 예전에는 뒤에 딸린 (trailing) 클로저가 하나뿐이이라 가장 오른쪽 매개 변수였기 때문으로 추측됩니다. 스위프트 5.3 부터 뒤에 딸린 클로저가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 사용한다고 볼 수 있습니다.
-
-[^filePath-and-fildID]: `#file` 은 예전 버전에서는 '파일 및 모듈의 이름' 이었지만, 지금 버전에서는 '파일의 경로' 입니다. 이는 스위프트 5.3 에서 새로 생긴 `#fileID` 와 관련된 것으로 추측됩니다.
-
-[^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 
