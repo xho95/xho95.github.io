@@ -121,15 +121,15 @@ _중위 표현식 (infix expressions)_ 은 중위 이항 연산자를 왼쪽 및
 
 #### Assignment Operator (할당 연산자)
 
-_할당 연산자 (assignment operator)_ 는 주어진 표현식에 새로운 값을 설정합니다. 형식은 다음과 같습니다:
+_할당 연산자 (assignment operator)_ 는 주어진 표현식에 새 값을 설정합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` = `value-값`
 
-_표현식 (expression)_ 의 값은 _값 (value)_ 을 평가하여 구한 값으로 설정합니다. _표현식 (expression)_ 이 '튜플' 이면, _값 (value)_ 은 반드시 똑같은 개수의 원소를 가진 튜플이어야 합니다. (중첩 튜플은 허용합니다.) '할당 (assignment)' 은 _값 (value)_ 의 각 부분을 이와 연관된 _표현식 (expression)_ 부분으로 수행합니다. 예를 들면 다음과 같습니다:
+_표현식 (expression)_ 의 값을 _값 (value)_ 평가로 구한 값으로 설정합니다. _표현식 (expression)_ 이 튜플이면, _값 (value)_ 도 반드시 원소 개수가 동일한 튜플이어야 합니다. (중첩 튜플은 허용합니다.) 각 부분의 _값 (value)_ 에서 해당 부분의 _표현식 (expression)_ 으로 할당을 수행합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 (a, _, (b, c)) = ("test", 9.45, (12, 3))
-// a 는 "test", b 는 12, c 는 3 이고, 9.45 는 무시합니다.
+// a 는 "test", b 는 12, c 는 3 이고, 9.45 는 무시함
 ```
 
 할당 연산자는 어떤 값도 반환하지 않습니다.
