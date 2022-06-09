@@ -212,32 +212,32 @@ _글자 값 표현식 (literal expression)_ 은 (문자열이나 수치 값 같�
 
 `#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 형식인데, _파일 (file)_ 은 표현식이 있는 파일 이름이고 _모듈 (module)_ 은 이 파일이 속해 있는 모듈 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일의 전체 파일-시스템 경로입니다. [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, 이 두 값 모두 `#sourceLocation` 으로 바꿀 수 있습니다. `#filePath` 와 달리, `#fileID` 에 소스 파일의 전체 경로를 박아 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 컴파일한 바이너리의 크기가 줄여듭니다. 테스트나, 빌드 스크립트, 또는 그 외 출하용 프로그램의 일부분이 아닌 코드 밖에선 `#filePath` 의 사용을 피합니다.[^shipping-program]
 
-> `#fileID` 표현식의 구문을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞의 문장을 읽고 파일 이름은 마지막 빗금 뒤의 문장을 읽습니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, 여러 개의 빗금을 담을 수도 있습니다.
+> `#fileID` 표현식 구문을 해석하려면, 첫 번째 빗금 (`/`) 앞의 텍스트는 모듈 이름으로 마지막 빗금 뒤의 텍스트는 파일 이름으로 읽습니다.[^first-and-last-slash] 미래에는, `MyModule/some/disambiguation/MyFile.swift` 같이, 문자열이 여러 개의 빗금을 담고 있을 지도 모릅니다.
 
-`#function` 의 값은, 함수 안에서는 해당 함수의 이름, 메소드 안에서는 해당 메소드의 이름, 속성의 '획득자' 나 '설정자' 안에서는 해당 속성의 이름, `init` 이나 `subscript` 같은 '특수한 멤버' 안에서는 해당 키워드의 이름, 그리고 파일의 최상단에서는 현재 모듈의 이름입니다.
+`#function` 값은, 함수 안에선 그 함수의 이름이고, 메소드 안에선 그 메소드의 이름, 속성의 획득자나 설정자 안에선 그 속성의 이름, `init` 이나 `subscript` 같은 특수 멤버 안에선 그 키워드의 이름이며, 파일의 최상단에선 현재 모듈의 이름입니다.
 
-'특수 글자 값' 을, 함수나 메소드 매개 변수의 '기본 값' 으로 사용할 때는, 호출한 쪽에서 '기본 값 표현식' 을 평가할 때 값이 결정됩니다.
+함수나 메소드 매개 변수의 기본 값으로 사용할 땐, 호출한 쪽에서 기본 값 표현식을 평가할 때 특수 글자 값의 값을 결정합니다.
 
 ```swift
 func logFunctionName(string: String = #function) {
   print(string)
 }
 func myFunction() {
-  logFunctionName() // "myFunction()" 를 인쇄합니다.
+  logFunctionName() // "myFunction()" 를 인쇄함
 }
 ```
 
-_배열 글자 값 (array literal)_ 은 값의 '순서가 있는 집합체 (ordered collection)'[^ordered-collection] 입니다. 형식은 다음과 같습니다:
+_배열 글자 값 (array literal)_ 은 순서 있는 값의 집합체 (ordered collection)[^ordered-collection] 입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `...`]
 
-배열의 마지막 표현식 뒤에는 쉼표가 있어도 됩니다. '배열 글자 값' 의 타입은 `[T]` 인데, 여기서 `T` 는 안에 있는 표현식의 타입입니다. 여러 타입의 표현식으로 된 경우, `T` 는 '가장 가까운 공통 상위 타입 (closest common supertype)' 입니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 사용하여 작성하며 특정 타입의 빈 배열을 생성하기 위해 사용할 수 있습니다.
+배열의 마지막 표현식 뒤엔 쉼표가 있어도 됩니다. 배열 글자 값의 타입은 `[T]` 인데, 여기서 `T` 는 그 안에 있는 표현식의 타입입니다. 표현식의 타입이 여러 개면, `T` 는 이들의 가장 가까운 공통 상위 타입 (closest common supertype) 입니다. 빈 배열 글자 값은 빈 대괄호 쌍으로 작성하며 이를 사용하여 특정 타입의 빈 배열을 생성할 수 있습니다.
 
 ```swift
 var emptyArray: [Double] = []
 ```
 
-_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs) 의 순서 없는 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
+_딕셔너리 글자 값 (dictionary literal)_ 은 키-값 쌍 (key-value pairs) 의 순서 없는 집합체 (unordered collection) 입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `...`]
 
@@ -1050,9 +1050,6 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
-
-[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
-
 [^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문' 이 됩니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
@@ -1074,6 +1071,10 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^file-to-filePath-and-fildID]: 미래 버전의 스위프트에선 `#file` 과 `#filePath` 를 확실하게 구분하려는 것 같습니다. 본문의 내용을 보면 `#filePath` 를 출하용 프로그램에서만 사용할 것을 권하는데, 이러한 구분은 개인 정보 보호 (privacy) 정책과도 관련있는 것 같습니다.
 
 [^shipping-program]: 개인이 소유하거나 컴파일하여 바이너리로 변환할 게 아닌 코드엔 `#filePath` 를 사용하지 않음으로써 개인 정보를 보호할 수 있다는 의미입니다.
+
+[^first-and-last-slash]: 현재는 `#fileID` 에 빗금이 하나 밖에 없어서 첫 번째와 마지막 빗금이 똑같지만, 미래에는 빗금이 여러 개일 수도 있으므로, 첫 번째와 마지막 빗금을 기준으로 읽을 것을 권장하고 있습니다.
+
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 서로 다른 겁니다. 이 둘의 차이점에 대해선, 스택 오버플로우 (StackOverflow) 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
 
 [^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
 
