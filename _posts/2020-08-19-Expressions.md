@@ -231,25 +231,25 @@ _배열 글자 값 (array literal)_ 은 순서 있는 값의 집합체 (ordered 
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `...`]
 
-배열의 마지막 표현식 뒤엔 쉼표가 있어도 됩니다. 배열 글자 값의 타입은 `[T]` 인데, 여기서 `T` 는 그 안에 있는 표현식의 타입입니다. 표현식의 타입이 여러 개면, `T` 는 이들의 가장 가까운 공통 상위 타입 (closest common supertype) 입니다. 빈 배열 글자 값은 빈 대괄호 쌍으로 작성하며 이를 사용하여 특정 타입의 빈 배열을 생성할 수 있습니다.
+배열의 마지막 표현식 뒤에 쉼표가 있어도 됩니다. 배열 글자 값은 `[T]` 타입인데, 여기서 `T` 는 그 안의 표현식 타입입니다. 표현식의 타입이 여러 개면, `T` 는 이들의 가장 가까운 공통 상위 타입 (closest common supertype) 입니다. 빈 배열 글자 값은 빈 대괄호 쌍으로 작성하며 이를 사용하여 특정 타입의 빈 배열을 생성할 수 있습니다.
 
 ```swift
 var emptyArray: [Double] = []
 ```
 
-_딕셔너리 글자 값 (dictionary literal)_ 은 키-값 쌍 (key-value pairs) 의 순서 없는 집합체 (unordered collection) 입니다. 형식은 다음과 같습니다:
+_딕셔너리 글자 값 (dictionary literal)_ 은 순서 없는 키-값 (key-value) 쌍의 집합체 (unordered collection) 입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `...`]
 
-딕셔너리의 마지막 표현식 뒤에는 쉼표가 있어도 됩니다. '딕셔너리 글자 값' 의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 (key) 표현식' 의 타입이고 `Value` 는 '값 (value) 표현식' 의 타입입니다. 여러 타입의 표현식으로 된 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 가까운 공통 상위 타입' 입니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '대괄호 쌍 안의 콜론 (`[:]`)' 으로 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 특정 키와 값 타입을 가진 '빈 딕셔너리 글자 값' 을 생성할 수 있습니다.
+딕셔너리의 마지막 표현식 뒤에 쉼표가 있어도 됩니다. 딕셔너리 글자 값은 `[Key : Value]` 타입인데, 여기서 `Key` 는 키 표현식의 타입이고 `Value` 는 값 표현식의 타입입니다. 표현식의 타입이 여러 개면, `Key` 와 `Value` 는 각자 값의 가장 가까운 공통 상위 타입입니다. 빈 딕셔너리 글자 값은 빈 배열 글자 값과 구별하려고 대괄호 쌍 안에 콜론 (`[:]`) 을 작성합니다. 빈 딕셔너리 글자 값을 사용하여 특정 키와 값 타입의 빈 딕셔너리 글자 값을 생성할 수 있습니다.
 
 ```swift
 var emptyDictionary: [String : Double] = [:]
 ```
 
-_플레이그라운드 글자 값 (playground literal)_ 은 '프로그램 편집기' 에서 색상, 파일, 또는 이미지에 대한 '상호 작용 가능한 표현' 을 생성하고자 '엑스코드 (Xcode)' 가 사용합니다. '엑스코드' 밖의 '평범한 문장' 에 있는 '플레이그라운드 글자 값' 은 '특수 글자 값 구문' 으로 표현합니다.[^playground-literal]
+_플레이그라운드 글자 값 (playground literal)_ 은 엑스코드 (Xcode) 에서 사용하는 것으로 프로그램 편집기 안에서 색상이나, 파일, 또는 이미지를 대화형으로 나타내도록 합니다. 엑스코드 밖에 있는 평범한 텍스트에선 플레이그라운드 글자 값을 특수 글자 값 구문으로 나타냅니다.[^playground-literal]
 
-'엑스코드' 에서 '플레이그라운드 글자 값' 을 사용하는 정보는, '엑스코드 도움말 (Xcode Help)' 에 있는 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 항목을 참고하기 바랍니다.
+엑스코드에서 플레이그라운드 글자 값을 사용하는 정보는, 엑스코드 도움말 (Xcode Help) 의 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1050,7 +1050,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
-[^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문' 이 됩니다.
+[^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 특수 글자 값 구문을 써서 나타냅니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
 
