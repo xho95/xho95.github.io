@@ -210,7 +210,7 @@ _글자 값 표현식 (literal expression)_ 은 (문자열이나 수치 값 같�
 
 `#file` 의 문자열 값은 언어 버전에 의존하여, 예전 동작인 `#filePath` 를 새로운 동작인 `#fileID` 로 이주할 수 있게 합니다.[^filePath-and-fildID] 현재, `#file` 는 `#filePath` 값과 똑같습니다. 미래 버전의 스위프트에선, 그 대신 `#file` 가 `#fileID` 값과 똑같을 겁니다. 미래의 동작을 채택하려면, `#file` 을 `#fileID` 나 `#filePath` 로 적절하게 대체하기 바랍니다.[^file-to-filePath-and-fildID]
 
-`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 형식인데, _파일 (file)_ 은 표현식이 있는 파일 이름이고 _모듈 (module)_ 은 이 파일이 속해 있는 모듈 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '전체 파일-시스템 경로' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 으로 바꿀 수 있습니다. `#fileID` 는, `#filePath` 와는 달리, 소스 파일에 대한 '전체 경로' 를 집어 넣지 않기 때문에, 더 나은 '개인 정보 보호' 를 제공하며 '컴파일한 바이너리' 의 크기를 줄여줍니다. 테스트, 빌드 스크립트, 또는 그 외 '출하용 (shipping) 프로그램' 이 아닌 코드 밖에서 `#filePath` 사용을 피하도록 합니다.
+`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 형식인데, _파일 (file)_ 은 표현식이 있는 파일 이름이고 _모듈 (module)_ 은 이 파일이 속해 있는 모듈 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일의 전체 파일-시스템 경로입니다. [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, 이 두 값 모두 `#sourceLocation` 으로 바꿀 수 있습니다. `#filePath` 와 달리, `#fileID` 에 소스 파일의 전체 경로를 박아 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 컴파일한 바이너리의 크기가 줄여듭니다. 테스트나, 빌드 스크립트, 또는 그 외 출하용 프로그램의 일부분이 아닌 코드 밖에선 `#filePath` 의 사용을 피합니다.[^shipping-program]
 
 > `#fileID` 표현식의 구문을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞의 문장을 읽고 파일 이름은 마지막 빗금 뒤의 문장을 읽습니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, 여러 개의 빗금을 담을 수도 있습니다.
 
@@ -1072,6 +1072,8 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^filePath-and-fildID]: 스위프트 5.3 이전까지의 `#file` 은 그 파일의 전체 경로였는데, 앞으로는 파일과 모듈 이름으로 바뀌게 됩니다. 본문의 내용은 현재는 `#file` 이 `#filePath` 와 똑같지만, 앞으로는 `#fileID` 와 똑같아질 거라는 의미입니다.
 
 [^file-to-filePath-and-fildID]: 미래 버전의 스위프트에선 `#file` 과 `#filePath` 를 확실하게 구분하려는 것 같습니다. 본문의 내용을 보면 `#filePath` 를 출하용 프로그램에서만 사용할 것을 권하는데, 이러한 구분은 개인 정보 보호 (privacy) 정책과도 관련있는 것 같습니다.
+
+[^shipping-program]: 개인이 소유하거나 컴파일하여 바이너리로 변환할 게 아닌 코드엔 `#filePath` 를 사용하지 않음으로써 개인 정보를 보호할 수 있다는 의미입니다.
 
 [^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
 
