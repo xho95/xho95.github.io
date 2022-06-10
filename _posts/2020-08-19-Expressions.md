@@ -253,23 +253,19 @@ _플레이그라운드 글자 값 (playground literal)_ 은 엑스코드 (Xcode)
 
 > GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Self Expression ('self' 표현식)
+#### Self Expression (self 표현식)
 
-`self` 표현식은 자신의 현재 타입 또는 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
+`self` 표현식은 현재 타입 또는 자기가 있는 타입의 인스턴스를 명시적으로 참조합니다. 형식은 다음과 같습니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;self
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)
-<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;self.init(`initializer arguments-초기자 인자`)
 
-초기자, 첨자 연산, 또는 인스턴스 메소드 안에서의, `self` 는 자신의 타입에 대한 '현재 인스턴스' 를 참조합니다. 타입 메소드 안에서의, `self` 는 자신의 '현재 타입' 을 참조합니다.
+초기자나, 첨자 연산, 또는 인스턴스 메소드 안에서의, `self` 는 자기가 있는 타입의 현재 인스턴스를 참조합니다. 타입 메소드 안에서의, `self` 는 자기가 있는 현재 타입을 참조합니다.
 
-`self` 표현식은, 함수 매개 변수 같이, 영역에 똑같은 이름의 또 다른 변수가 있을 때의 모호함을 없애면서, 멤버에 접근할 때의 영역을 지정하고지 사용합니다. 예를 들면 다음과 같습니다:
+멤버에 접근할 때 `self` 표현식으로 영역을 지정하면, 함수 매개 변수 같이, 영역에 동일한 이름의 또 다른 변수가 있을 때도 헷갈리지 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -280,7 +276,7 @@ class SomeClass {
 }
 ```
 
-'값 타입' 의 변경 메소드 안에서는, 해당 값 타입의 새로운 인스턴스를 `self` 에 할당할 수 있습니다.[^mutating-method] 예를 들면 다음과 같습니다:
+값 타입의 변경 메소드 안에선, 그 값 타입의 새로운 인스턴스를 `self` 에 할당할 수 있습니다.[^mutating-method] 예를 들면 다음과 같습니다:
 
 ```swift
 struct Point {
@@ -1076,7 +1072,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^ordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 서로 다른 겁니다. 이 둘의 차이점에 대해선, 스택 오버플로우 (StackOverflow) 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
 
-[^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
+[^mutating-method]: 값 타입 (value type) 은 구조체와 열거체를 말하고, '변경 메소드 (mutating method)' 는 값 타입의 `self` 를 변경할 수 있는 메소드를 말합니다. 본문은 `self` 에 다른 인스턴스를 할당함으로써 값 타입을 변경할 수 있다는 의미입니다.
 
 [^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
 
