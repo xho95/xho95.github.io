@@ -305,7 +305,7 @@ _상위 클래스 표현식 (superclass expression)_ 은 클래스를 자신의 
 
 #### Closure Expression (클로저 표현식)
 
-_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에서는 _람다 (lambda)_ 또는 _익명 함수 (anonymous function)_ 라고도 하는, '클로저' 를 생성합니다. '함수 선언' 같이, 클로저는 구문을 담으며, 자신을 둘러싼 영역의 상수와 변수를 '붙잡습니다 (capture)'. 형식은 다음과 같습니다:
+_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에선 _람다 (lambda)_ 나 _익명 함수 (anonymous function)_ 라고도 하는, 클로저를 생성합니다. 함수 선언 같이, 클로저도 구문을 담으며, 자신을 둘러싼 영역의 상수와 변수를 붙잡습니다.[^capture] 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;{ (`parameter-매개 변수`) -> `return type-반환 타입` in<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
@@ -1073,6 +1073,8 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^ordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 서로 다른 겁니다. 이 둘의 차이점에 대해선, 스택 오버플로우 (StackOverflow) 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
 
 [^mutating-method]: 값 타입 (value type) 은 구조체와 열거체를 말하고, '변경 메소드 (mutating method)' 는 값 타입의 `self` 를 변경할 수 있는 메소드를 말합니다. 본문은 `self` 에 다른 인스턴스를 할당함으로써 값 타입을 변경할 수 있다는 의미입니다.
+
+[^capture]: 클로저의 '붙잡기 (capturoing)' 에 대한 더 자세한 정보는, [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장의 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 참고하기 바랍니다. 
 
 [^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
 
