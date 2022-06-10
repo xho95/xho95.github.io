@@ -311,15 +311,23 @@ _클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-_매개 변수 (parameter)_ 는, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 형식이 똑같습니다.
+_매개 변수 (parameter)_ 의 형식은, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 똑같습니다.
 
-클로저는 더 간결하게 작성하게 하는 여러 특수 형식들이 있습니다:
+클로저 표현식에 `throws` 나 `async` 를 써서 클로저가 던지거나 비동기라는 걸 명시합니다.
 
-* 클로저는 매개 변수의 타입이나, 반환 타입을, 또는 둘 다를 생략할 수 있습니다. 매개 변수 이름과 타입 둘 다를 생략할 경우, 구문 앞의 `in` 키워드를 생략합니다. 생략한 타입을 추론할 수 없으면, 컴파일-시간 에러를 일으킵니다.
-* 클로저는 자신의 매개 변수 이름을 생략할 수도 있습니다. 그러면 매개 변수에: `$1`, `$2`, 등과 같이 `$` 뒤에 자신의 위치가 붙은 이름을 암시적으로 붙입니다.
-* 단일 표현식만으로 구성한 클로저는 해당 표현식의 값을 반환한다고 이해합니다. 주위 표현식에 대한 타입 추론을 할 때 이 표현식의 내용도 고려합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;{ (`parameter-매개 변수`) async throws -> `return type-반환 타입` in<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-다음 클로저 표현식들은 '동치 (equivalent)' 입니다:
+클로저 본문이 `try` 표현식을 포함하면, 던지는 클로저라고 이해합니다. 마찬가지로, `await` 표현식을 포함하면, 비동기라고 이해합니다. 
+
+여러가지 특수한 형식이 있어서 클로저를 더 간결하게 작성하도록 합니다:
+
+* 클로저는 자신의 매개 변수 타입이나, 반환 타입, 또는 둘 다 생략할 수 있습니다. 매개 변수 이름과 두 타입 모두를 생략하면, 구문 앞의 `in` 키워드도 생략합니다. 생략한 타입을 추론할 수 없으면, 컴파일-시간 에러가 일어납니다.
+* 클로저는 자신의 매개 변수 이름을 생략할 수도 있습니다. 그러면 매개 변수가 `$` 뒤에 자신의 위치가 붙은 암시적 이름을 가집니다: `$0`, `$1`, `$2`, 등으로 계속됩니다.
+* 단일 표현식으로만 구성한 클로저는 그 표현식 값을 반환하는 걸로 이해합니다. (이 표현식) 주위의 표현식 타입을 추론할 땐 이 표현식의 내용물도 고려합니다.
+
+다음의 클로저 표현식은 서로 같은 겁니다:
 
 ```swift
 myFunction { (x: Int, y: Int) -> Int in
@@ -335,11 +343,11 @@ myFunction { return $0 + $1 }
 myFunction { $0 + $1 }
 ```
 
-클로저를 함수의 인자로 전달하는 것에 대한 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 부분을 참고하기 바랍니다.
+클로저를 함수 인자로 전달하는 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 부분을 참고하기 바랍니다.
 
-클로저 표현식은, 함수 호출에서 클로저를 곧바로 사용할 때 처럼, 변수나 상수에 저장하지 않고도 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달한 클로저 표현식은 이 '곧바로 사용' 하는 한 예입니다. 그 결과, 클로저 표현식이 '벗어나는 (escaping)' 지 '벗어나지 않는 (nonescaping)' 지는 표현식의 주위 상황에 달려 있습니다. 곧바로 호출하거나 '벗어나지 않는 함수 인자' 로 전달한 경우의 클로저 표현식은 '벗어나지 않는' 것입니다. 그 외의 경우, 클로저 표현식은 '벗어나는' 것입니다.
+함수 호출 부분에서 곧바로 클로저를 사용할 때 처럼, 변수나 상수에 저장하지 않고도 클로저를 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달한 클로저 표현식이 곧바로 사용하는 예의 한 종류입니다. 그 결과, 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식의 주위 상황에 달려 있습니다.[^escaping-or-nonescaping] 곧바로 호출하거나 벗어나지 않는 함수 인자로 전달한 클로저 표현식은 벗어나지 않는 겁니다. 그 외 경우의, 클로저 표현식은 벗어나는 겁니다.
 
-'벗어나는 클로저' 에 대한 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
+벗어나는 클로저의 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
 
 <p>
 <strong id="capture-lists-붙잡을-목록">Capture Lists (붙잡을 목록)</strong>
@@ -1075,6 +1083,8 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^mutating-method]: 값 타입 (value type) 은 구조체와 열거체를 말하고, '변경 메소드 (mutating method)' 는 값 타입의 `self` 를 변경할 수 있는 메소드를 말합니다. 본문은 `self` 에 다른 인스턴스를 할당함으로써 값 타입을 변경할 수 있다는 의미입니다.
 
 [^capture]: 클로저의 '붙잡기 (capturoing)' 에 대한 더 자세한 정보는, [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장의 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 참고하기 바랍니다. 
+
+[^escaping-or-nonescaping]: 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식 자체가 아니라 표현식을 호출하는 쪽에 달려 있다는 의미입니다.
 
 [^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
 
