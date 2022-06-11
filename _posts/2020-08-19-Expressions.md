@@ -374,7 +374,7 @@ closure()
 
 `a` 라는 이름은, 주위 영역 안의 변수와 클로저 영역 안의 상수라는, 서로 다른 두 개가 있지만, `b` 라는 이름의 변수는 하나뿐입니다. 안쪽 영역의 `a` 는 클로저 생성 때 바깥 영역의 `a` 값으로 초기화하지만, 이러한 값은 어떤 특수한 방식으로도 연결된 게 아닙니다. 이는 바깥 영역의 `a` 값을 바꿔도 안쪽 영역의 `a` 값에 영향을 주지 않으며, 클로저 안의 `a` 를 바꿔도 클로저 밖의 `a` 값에 영향을 주지 않는다는 의미입니다. 이와 대조적으로, `b` 라는 이름의 변수는-바깥 영역의 `b` 라는-단 하나만 있어서 클로저 안팎에서 바꾸는 걸 양쪽 다 볼 수 있습니다.
 
-이런 구별은 '붙잡은 변수' 의 타입이 '참조 의미 구조 (reference semantics)'[^reference-semantics] 를 가질 때는 보이지 않습니다. 예를 들어, 아래 코드에는 `x` 라는 이름이, '바깥 영역의 변수' 와 '안쪽 영역의 상수' 라는, 두 가지가 있지만, '참조 의미 구조' 이기 때문에 둘 다 똑같은 객체를 참조합니다.
+붙잡은 변수의 타입이 참조 의미 구조[^reference-semantics] 를 가질 땐 이런 구별이 보이지 않습니다. 예를 들어, 아래 코드에는 바깥 영역의 변수와 안쪽 영역의 상수라는, 두 개의 `x` 가 있지만, 참조 의미 구조이기 때문에 둘 다 동일한 객체를 참조합니다.[^because-of-reference]
 
 ```swift
 class SimpleClass {
@@ -389,16 +389,16 @@ let closure = { [x] in
 x.value = 10
 y.value = 10
 closure()
-// "10 10" 을 인쇄합니다.
+// "10 10" 을 인쇄함
 ```
 
-표현식 값의 타입이 클래스라면, '붙잡을 목록' 에 있는 표현식을 `weak` 나 `unowned` 로 표시하여 표현식의 값을 '약한 참조' 나 '소유하지 않는 참조' 로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
+표현식 값의 타입이 클래스면, 붙잡을 목록 안의 표현식에 `weak` 나 `unowned` 를 표시하여 표현식 값에 대한 약한 또는 소유하지 않는 참조를 붙잡을 수 있습니다.[^weak-and-unowned-capture]
 
 ```swift
-myFunction { print(self.title) }                    // 암시적으로 강하게 붙잡기 (implicit strong capture)
-myFunction { [self] in print(self.title) }          // 명시적으로 강하게 붙잡기 (explicit strong capture)
-myFunction { [weak self] in print(self!.title) }    // 약하게 붙잡기 (weak capture)
-myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡기 (unowned capture)
+myFunction { print(self.title) }                    // 암시적으로 강하게 붙잡음 (implicit strong capture)
+myFunction { [self] in print(self.title) }          // 명시적으로 강하게 붙잡음 (explicit strong capture)
+myFunction { [weak self] in print(self!.title) }    // 약하게 붙잡음 (weak capture)
+myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡음 (unowned capture)
 ```
 
 '붙잡을 목록' 에서는 '임의의 표현식' 을 '이름 붙인 변수' 에 연결할 수도 있습니다. 표현식은 클로저를 생성할 때 평가하며, 값은 지정한 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
@@ -1088,7 +1088,11 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^strong-reference]: '강한 참조 (strong reference)' 에 대해서는 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 참고하기 바랍니다. 
 
-[^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
+[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+
+[^because-of-reference]: `x` 가 클래스의 인스턴스라서 참조 의미 구조를 가지기 때문에 바깥 영역의 `x` 와 안쪽 영역의 `x` 가 동일한 대상을 참조합니다.
+
+[^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 참조 타입이기 때문에, 서로를 참조하면 강한 참조 순환이 발생합니다. 이를 막기 위해, 약한 참조나 소유하지 않는 참조를 사용합니다.
 
 [^strength]: 여기서 '강하기 (strength)' 는 `strong`, `weak`, `unowned` 중 하나를 의미합니다.
 
@@ -1100,7 +1104,6 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 
-[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
 [^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
 
