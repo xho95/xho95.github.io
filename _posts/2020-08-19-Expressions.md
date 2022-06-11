@@ -401,14 +401,14 @@ myFunction { [weak self] in print(self!.title) }    // 약하게 붙잡음 (weak
 myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡음 (unowned capture)
 ```
 
-'붙잡을 목록' 에서는 '임의의 표현식' 을 '이름 붙인 변수' 에 연결할 수도 있습니다. 표현식은 클로저를 생성할 때 평가하며, 값은 지정한 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
+붙잡을 목록에서 임의의 표현식과 이름 붙인 변수를 연결할 수도 있습니다. 클로저 생성 때 표현식을 평가하여, 지정한 강하기로 값을 붙잡습니다.[^strength] 예를 들면 다음과 같습니다:
 
 ```swift
-// "self.parent" 를 "parent" 로 약하게 붙잡기
+// "self.parent" 를 "parent" 로 약하게 붙잡음
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 참고하기 바랍니다. '붙잡을 목록 (capture list)' 에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 참고하기 바랍니다.
+클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 참고하기 바랍니다. 붙잡을 목록에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1094,7 +1094,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 참조 타입이기 때문에, 서로를 참조하면 강한 참조 순환이 발생합니다. 이를 막기 위해, 약한 참조나 소유하지 않는 참조를 사용합니다.
 
-[^strength]: 여기서 '강하기 (strength)' 는 `strong`, `weak`, `unowned` 중 하나를 의미합니다.
+[^strength]: `strong` 이나, `weak`, 또는 `unowned` 로 지정한 강하기로 붙잡는다는 의미입니다.
 
 [^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
 
