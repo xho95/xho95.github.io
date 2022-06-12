@@ -431,7 +431,7 @@ x = .anotherValue
 var someOptional: MyEnumeration? = .someValue
 ```
 
-'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 따라 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 연쇄된 모든 접미사 표현식이 똑같은 타입을 가지는 것이 흔하긴 하지만, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 '자신의 상황이 암시하는 타입' 으로 변환 가능할 필요가 있다는 것 뿐입니다. 특히, '암시 타입' 이 옵셔널이면 '옵셔널-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+암시적 멤버 표현식 뒤엔 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에 나열된 접미사 연산자나 다른 접미사 구문이 있을 수 있습니다. 이를 _연쇄된 암시적 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 연쇄한 모든 접미사 표현식이 동일 타입을 가지는 게 흔하긴 하지만, 유일한 필수 조건은 연쇄된 암시적 멤버 표현식 전체가 자신의 암시 타입으로 변환 가능할 필요가 있다는 것뿐입니다. 특히, 암시 타입이 옵셔널이면 옵셔널-아닌 타입의 값을 사용할 수도 있고, 암시 타입이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수도 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -449,13 +449,13 @@ let y: SomeClass? = .shared
 let z: SomeClass = .sharedSubclass
 ```
 
-위 코드에서, `x` 의 타입은 '자신의 상황이 암시하는 타입'[^implied-type] 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
+위 코드에서, `x` 의 타입은 자신의 암시 타입[^implied-type] 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
 
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Parenthesized Expression (괄호 표현식)
 
-_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호를 사용하면 표현식 그룹을 명시함으로써 연산의 우선권을 지정할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
+_괄호 표현식 (parenthesized expression)_ 은 표현식을 괄호로 둘러싸서 구성합니다. 괄호를 사용하여 표현식을 명시적으로 그룹지으면 연산의 우선 순위를 지정할 수 있습니다. 괄호 그룹짓기는 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
 
 > GRAMMAR OF A PARENTHESIZED MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1096,7 +1096,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^strength]: `strong` 이나, `weak`, 또는 `unowned` 로 지정한 강하기로 붙잡는다는 의미입니다.
 
-[^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
+[^implied-type]: 자신의 암시 타입은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
 
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
