@@ -412,9 +412,9 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Implicit Member Expression (암시적인 멤버 표현식)
+#### Implicit Member Expression (암시적 멤버 표현식)
 
-_암시적인 멤버 표현식 (implicit member expression)_ 은, '열거체 case 값' 이나 '타입 메소드' 같이, 타입 추론이 '암시 (implied) 타입' 을 결정할 수 있는 상황에서, 타입의 멤버에 접근하는 단축 방식입니다. 형식은 다음과 같습니다:
+_암시적 멤버 표현식 (implicit member expression)_ 은, 열거체 case 나 타입 메소드 같이, 암시적 타입을 추론할 수 있는 상황에서, 타입 멤버에 접근하는 단축 방식입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;.`member name-멤버 이름`
 
@@ -425,7 +425,7 @@ var x = MyEnumeration.someValue
 x = .anotherValue
 ```
 
-추론한 타입이 옵셔널이면, '암시적인 멤버 표현식' 에서 '옵셔널-아닌 타입' 의 멤버를 사용할 수도 있습니다.
+추론한 타입이 옵셔널이면, 암시적 멤버 표현식 안에서 옵셔널-아닌 타입의 멤버도 사용할 수 있습니다.
 
 ```swift
 var someOptional: MyEnumeration? = .someValue
