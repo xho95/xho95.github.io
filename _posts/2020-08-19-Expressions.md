@@ -475,28 +475,28 @@ _튜플 표현식 (tuple expression)_ 은 쉼표로-구분한 표현식 목록�
 
 #### Wildcard Expression (와일드카드 표현식)
 
-_와일드카드 표현식 (wildcard expression)_ 은 할당 중에 명시적으로 값을 무시하고자 사용합니다. 예를 들어, 다음 할당은 '10' 을 `x` 에 할당하며 '20' 은 무시합니다:
+_와일드카드 표현식 (wildcard expression)_ 을 사용하면 할당 중에 값을 명시적으로 무시합니다. 예를 들어, 다음 할당에선 10 은 `x` 에 할당하고 20 은 무시합니다:
 
 ```swift
 (x, _) = (10, 20)
-// x 는 10 이고, 20 은 무시합니다.
+// x 는 10 이고, 20 은 무시함
 ```
 
 > GRAMMAR OF A WILDCARD EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Key-Path Expression (키-경로 표현식)
 
-_키-경로 표현식 (key-path expression)_ 은 타입의 속성이나 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에 사용합니다. 형식은 다음과 같습니다:
+_키-경로 표현식 (key-path expression)_ 은 타입의 속성이나 첨자를 참조합니다. 키-값 관찰[^key-value-observing] 같은, 동적 프로그래밍 임무에서 키-경로 표현식을 사용합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\\`type name-타입 이름`.`path-경로`
 
-_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같은, '일반화 (generic) 매개 변수' 를 포함한, '고정 타입' 의 이름입니다.
+_타입 이름 (type name)_ 은, `String` 이나, `[Int]`, 또는 `Set<Int>` 같이, 어떤 일반화 매개 변수도 포함한, 고정 타입의 이름입니다.
 
-_경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 (optional-chaining) 표현식', 그리고 '강제로 포장을 푸는 (foced unwrapping) 표현식' 으로 구성됩니다. 이 각각의 '키-경로 성분' 은 필요한 만큼 많이, 어떤 순서로든, 반복할 수 있습니다.
+_경로 (path)_ 는 속성 이름과, 첨자, 옵셔널-사슬 표현식, 및 포장을 강제로 푸는 표현식으로 구성됩니다. 이 각각의 키-경로 성분은 필요한 만큼 많이, 어떤 순서로든, 반복할 수 있습니다.
 
-컴파일 시간에, 키-경로 표현식은 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체합니다.
+컴파일 시간에, 키-경로 표현식을 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체합니다.
 
-'키-경로' 를 사용하여 값에 접근하려면, 모든 타입에서 사용 가능한, `subscript(keyPath:)` 첨자 연산에 그 '키 경로' 를 전달합니다. 예를 들면 다음과 같습니다:
+키-경로로 값에 접근하려면, `subscript(keyPath:)` 첨자에 키 경로를 전달하면 되는데, 이는 모든 타입에서 사용 가능합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct SomeStructure {
@@ -507,10 +507,10 @@ let s = SomeStructure(someValue: 12)
 let pathToProperty = \SomeStructure.someValue
 
 let value = s[keyPath: pathToProperty]
-// value 는 12 입니다.
+// value 는 12 임
 ```
 
-_타입 이름 (type name)_ 은 타입 추론이 암시 타입을 결정할 수 있는 상황이면 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
+타입 추론이 암시 타입을 결정할 수 있는 상황에선 _타입 이름 (type name)_ 을 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -526,11 +526,11 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-_경로 (path)_ 는 '자기 식별 (identity) 키 경로 (`\.self`)' 를 생성하는 `self` 를 참조할 수 있습니다. '자기 식별 키 경로' 는 인스턴스 전체를 참조하므로, 변수에 저장한 모든 데이터를 한 번에 접근하고 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
+_경로 (path)_ 는 `self` 를 참조하여 자기 식별 키 경로 (`\.self`) 를 생성할 수 있습니다. 자기 식별 키 경로는 인스턴스 전체를 참조하므로, 이를 사용하여 변수 안에 저장한 모든 데이터를 한 번만에 접근하고 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
-// compoundValue = (a: 10, b: 20) 와 '동치 (equivalent)' 임
+// compoundValue = (a: 10, b: 20) 와 같은 것
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
@@ -1099,6 +1099,8 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^implied-type]: 자신의 암시 타입은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
 
 [^void-vs-empty-tuple-expression]: 그렇기 때문에 `Void -> Void` 같은 함수 타입은 없습니다. `() -> Void` 라고 해야 합니다. 
+
+[^key-value-observing]: '키-값 관찰 (Key-Value Observing)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Key-Value Observing in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) 항목을 참고하기 바랍니다.
 
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
