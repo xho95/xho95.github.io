@@ -10,122 +10,126 @@ categories: Swift Language Grammar Expression
 
 ## Expressions (표현식)
 
-스위프트에는, 네 가지 종류의 표현식인: '접두사 (prefix) 표현식', '이항 (binary) 표현식', '제1 (primary) 표현식', 및 '접미사 (postfix) 표현식' 이 있습니다. 표현식을 평가하면 값을 반환하거나, 부작용 (side effect)[^side-effect] 을 일으키고, 또는 둘 다를 합니다.
+스위프트에는, 네 종류의 표현식이 있는데: 접두사 표현식과, 중위 표현식, 으뜸 표현식[^primary-expression], 및 접미사 표현식이 그것입니다. 표현식의 평가는 값을 반환하거나, 부작용[^side-effect] 을 일으키거나, 혹은 둘 다 합니다.
 
-'접두사 표현식' 과 '이항 표현식' 은 더 작은 표현식에 연산자를 적용하게 해줍니다. '제1 표현식' 은 개념상 가장 단순한 종류의 표현식이며, 값에 접근하는 방법을 제공합니다. '접미사 표현식' 은, 접두사 및 이항 표현식 같이, 함수 호출 및 멤버 접근 같은 '접미사' 를 사용하여 더 복잡한 표현식을 제작하게 해줍니다. 각각의 종류에 대한 표현식은 아래 부분에서 더 자세히 설명합니다.
+접두사 및 중위 표현식은 더 작은 표현식에 연산자를 적용하게 해줍니다. 으뜸 표현식은 개념상 가장 단순한 종류의 표현식으로, 값에 접근하는 방식을 제공합니다. 접미사 표현식은, 접두사 및 중위 표현식과 마찬가지로, 함수 호출과 멤버 접근 같은 접미사를 사용하여 더 복잡한 표현식을 제작하게 해줍니다. 각 종류의 표현식은 밑의 절에서 자세하게 설명합니다.
 
 > GRAMMAR OF AN EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html)
 
 ### Prefix Expressions (접두사 표현식)
 
-_접두사 표현식 (prefix expressions)_ 은 '선택적인 접두사 연산자' 와 '표현식' 을 조합합니다. '접두사 연산자' 는 하나의 인자로, 뒤따라 오는 표현식을, 취합니다.
+_접두사 표현식 (prefix expressions)_ 은 옵션인 접두사 연산자와 표현식을 조합합니다. 접두사 연산자는 하나의 인자로, 자신의 뒤에 있는 표현식을, 취합니다.
 
-이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
-'스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A PREFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
 #### In-Out Expression (입-출력 표현식)
 
-_입-출력 표현식 (in-out expression)_ 은 함수 호출 표현식에 '입-출력 인자' 로 전달된 변수를 표시합니다.
+_입-출력 표현식 (in-out expression)_ 은 함수 호출 표현식에 입-출력 인자로 전달한 변수를 표시합니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;\&`expression-표현식`
 
 입-출력 매개 변수에 대한 더 많은 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
-입-출력 표현식은, [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)](#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환) 부분에서 설명하는 것처럼, 포인터가 필요한 상황에서 '포인터-아닌 인자' 를 제공할 때도 사용합니다. 
+입-출력 표현식은, [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)](#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환) 에서 설명하는 것처럼, 포인터가 필요한 상황에서 포인터-아닌 인자를 제공할 때도 사용합니다. 
 
 > GRAMMAR OF AN IN-OUT EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
-#### Try Operator ('try' 연산자)
+#### Try Operator (try 연산자)
 
-_try 표현식 (try expression)_ 은 '`try` 연산자' 와 그 뒤의 '에러를 던질 수 있는 표현식' 으로 구성합니다. 형식은 다음과 같습니다:
+_try 표현식 (try expression)_ 은 `try` 연산자와 그 뒤의 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`
 
-_옵셔널-try 표현식 (optional-try expression)_ 은 '`try?` 연산자' 와 그 뒤의 '에러를 던질 수 있는 표현식' 으로 구성합니다. 형식은 다음과 같습니다:
+`try` 표현식의 값은 _표현식 (expression)_ 의 값입니다.
+
+_옵셔널-try 표현식 (optional-try expression)_ 은 `try?` 연산자와 그 뒤의 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;try? `expression-표현식`
 
-_표현식 (expression)_ 이 에러를 던지지 않으면, '옵셔널-try 표현식' 의 값은 _표현식 (expression)_ 의 값을 담은 '옵셔널' 입니다. 그 외의 경우, '옵셔널-try 표현식' 의 값은 `nil` 입니다.
+_표현식 (expression)_ 이 에러를 던지지 않으면, 옵셔널-try 표현식의 값은 _표현식 (expression)_ 의 값을 담은 옵셔널입니다. 그 외의 경우, 옵셔널-try 표현식의 값이 `nil` 입니다.
 
-_강제-try 표현식 (forced-try expression)_ 은 '`try!` 연산자' 와 그 뒤의 '에러를 던질 수 있는 표현식' 으로 구성합니다. 형식은 다음과 같습니다:
+_강제-try 표현식 (forced-try expression)_ 은 `try!` 연산자와 그 뒤의 에러를 던질 수 있는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;try! `expression-표현식`
 
-_표현식 (expression)_ 이 에러를 던지면, 실행 시간 에러를 만들게 됩니다.
+강제-try 표현식의 값은 _표현식 (expression)_ 의 값입니다. _표현식 (expression)_ 이 에러를 던지면, 실행 시간 에러를 만듭니다.
 
-이항 연산자의 왼-쪽 표현식을 `try`, `try?`, 또는 `try!` 로 표시할 때, 해당 연산자는 이항 표현식 전체에 적용됩니다. 그렇다 하더라도, 괄호를 사용하여 연산자의 적용 범위를 명시할 수 있습니다.
+중위 연산자의 왼-쪽 표현식에 `try` 나, `try?`, 또는 `try!` 를 표시할 땐, 중위 표현식 전체에 그 연산자를 적용합니다. 그렇더라도, 괄호를 사용하면 연산자의 적용 범위을 명시할 수 있습니다.
 
 ```swift
-sum = try someThrowingFunction() + anotherThrowingFunction()   // 두 함수 호출에 다 try 를 적용합니다.
-sum = try (someThrowingFunction() + anotherThrowingFunction()) // 두 함수 호출에 다 try 를 적용합니다.
-sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: try 를 첫 번째 함수 호출에만 적용합니다.
+sum = try someThrowingFunction() + anotherThrowingFunction()   // 두 함수 호출 모두에 try 를 적용함
+sum = try (someThrowingFunction() + anotherThrowingFunction()) // 두 함수 호출 모두에 try 를 적용함
+sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: 첫 번째 함수 호출에만 try 를 적용함
 ```
 
-이항 연산자가 할당 연산자이거나 `try` 표현식을 괄호로 테두리 치지 않는 한, `try` 표현식이 이항 연산자의 오른-쪽에 있을 수는 없습니다.
+중위 연산자가 할당 연산자거나 `try` 표현식에 괄호친 게 아닌 한, 중위 연산자 오른-쪽에 `try` 표현식이 나타날 순 없습니다.
 
-`try`, `try?`, 그리고 `try!` 를 사용하는 방법에 대한 예제와 더 많은 정보는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장을 참고하기 바랍니다.
+표현식이 `try` 와 `await` 연산자를 둘 다 포함하면, 반드시 `try` 연산자가 먼저 나타나야 합니다. 
+
+`try` 와, `try?`, 및 `try!` 에 대한 더 많은 정보와 사용 예제를 보려면, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장을 참고하기 바랍니다.
 
 > GRAMMAR OF A TRY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
 #### Await Operator (`await` 연산자)
 
-_await 표현식 (await expression)_ 은 '`await` 연산자' 와 비동기 연산의 결과를 사용하는 그 뒤의 '표현식' 으로 구성됩니다. 형식은 다음과 같습니다:
+_await 표현식 (await expression)_ 은 `await` 연산자와 그 뒤의 비동기 연산 결과를 사용하는 표현식으로 구성됩니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;await `expression-표현식`
 
 `await` 표현식의 값은 _표현식 (expression)_ 의 값입니다.
 
-`await` 로 표시한 표현식은 _잠재적으로 멈춰달 지점 (potential suspension point)_ 이라고 합니다. 비동기 함수의 실행은 `await` 로 표시한 각각의 표현식 마다 멈춰달 수 있습니다. 이에 더하여, 그 외 다른 어떤 곳에서도 절대 '동시적인 코드' 의 실행을 멈춰달 수 없습니다. 이는 '잠재적으로 멈춰달 지점' 들 간의 코드는, 그 다음 '잠재적으로 멈춰달 지점' 전에 갱신을 완료하여 제공된, '불변 (invariants)' 을 일시적으로 깨뜨릴 것을 요구하는 '상태 (state)' 를 안전하게 갱신할 수 있다는 의미입니다. 
+`await` 로 표시한 표현식을 _잠재적인 잠시 멈춤 지점 (potential suspension point)_ 이라고 합니다. 비동기 함수 실행은 `await` 로 표시한 각각의 표현식마다 잠시 멈출 수 있습니다. 여기다, 동시적 코드 실행은 다른 어떤 지점에서도 절대 잠시 멈추지 않습니다. 이는 잠재적인 잠시 멈춤 지점 사이의 코드가 불변성 (invariants) 을 일시적으로 깨길 요구하는 상태 업데이트를 안전하게 할 수 있도록, 그 다음 잠재적인 잠시 멈춤 지점 전에 업데이트를 완료한다는, 의미입니다.
 
-`await` 표현식은, `async(priority:operation:)` 함수에 전달한 '뒤에 딸린 클로저' 같이, '비동기인 상황' 에서만 있을 수 있습니다. `defer` 문의 본문, 또는 '동기 함수 타입' 의 '자동 클로저' 안에 있을 수는 없습니다.
+`await` 표현식은, `async(priority:operation:)` 함수에 전달하는 뒤딸린 클로저 같은, 비동기 상황 안에서만 나타날 수 있습니다. `defer` 문의 본문이나, 동기 함수 타입의 자동 클로저 안에선 나타날 수 없습니다.
 
-이항 연산자 왼-쪽의 표현식을 `await` 연산자로 표시할 땐, 해당 연산자가 이항 표현식 전체에 적용됩니다. 그렇다 하더라도, 괄호를 사용하여 연산자의 적용 범위를 명시할 수 있습니다.
+중위 연산자의 왼-쪽 표현식에 `await` 연산자를 표시할 땐, 중위 표현식 전체에 그 연산자를 적용합니다. 그렇더라도, 괄호를 사용하면 연산자의 적용 범위를 명시할 수 있습니다.
 
 ```swift
-// await 를 두 함수 호출 모두에 적용합니다.
+// 두 함수 호출 모두에 await 를 적용함
 sum = await someAsyncFunction() + anotherAsyncFunction()
 
-// await 를 두 함수 호출 모두에 적용합니다.
+// 두 함수 호출 모두에 await 를 적용함
 sum = await (someAsyncFunction() + anotherAsyncFunction())
 
-// 에러: await 를 첫 번째 함수 호출에만 적용합니다.
+// 에러: 첫 번째 함수 호출에만 await 를 적용함
 sum = (await someAsyncFunction()) + anotherAsyncFunction()
 ```
 
-`await` 표현식은, 이항 연산자가 '할당 연산자' 이거나 `await` 표현식을 괄호로 테두리 치지 않는 한, 이항 연산자의 오른-쪽에 있을 수 없습니다.
+중위 연산자가 할당 연산자거나 `await` 표현식에 괄호친 게 아닌 한, 중위 연산자 오른-쪽에 `await` 표현식이 나타날 순 없습니다.
 
-표현식이 `await` 와 `try` 연산자를 둘 다 포함하면, `try` 연산자가 반드시 먼저 있어야 합니다. 
+표현식이 `try` 와 `await` 연산자를 둘 다 포함하면, 반드시 `try` 연산자가 먼저 나타나야 합니다. 
 
 > GRAMMAR OF A AWAIT EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
-### Binary Expressions (이항 표현식)
+### Infix Expressions (중위 표현식)
 
-_이항 표현식 (binary expressions)_ 은 '이항 중위 연산자'[^infix-binary-operator] 와 이것이 자신의 왼쪽과 오른쪽 인자로 취하는 '표현식' 을 조합합니다. 형식은 다음과 같습니다:
+_중위 표현식 (infix expressions)_ 은 중위 이항 연산자를 왼쪽 및 오른쪽 인자로 취한 표현식과 조합합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
 
-이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
-'스위프트 표준 라이브러리' 가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목을 참고하기 바랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
 
-> '구문 해석 (parse)' 시간에, 이항 연산자로 이루어진 표현식은 '납작한 리스트 (flat list)'[^flat-list] 로 표현됩니다. 이 '리스트 (list)' 에 '연산자 우선권' 을 적용하여 '트리 (tree)' 로 변형합니다. 예를 들어, `2 + 3 * 5` 라는 표현식은 초기에는 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 '납작한 리스트' 라고 이해합니다. 이 가공 과정은 이를 `(2 + (3 * 5))` 라는 '트리 (tree)' 로 변형합니다.
+> 구문 해석 시간에, 중위 연산자로 이뤄진 표현식은 납작한 리스트 (flat list)[^flat-list] 로 나타냅니다. 이 리스트에 연산자 우선 순위를 적용함으로써 트리 (tree) 로 변형합니다. 예를 들어, 초기에는 표현식 `2 + 3 * 5` 가 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 납작한 리스트라고 이해합니다. 이 후 과정에서 이를 `(2 + (3 * 5))` 라는 트리로 변형합니다.
 
-> GRAMMAR OF A BINARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
+> GRAMMAR OF A INFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
 #### Assignment Operator (할당 연산자)
 
-_할당 연산자 (assignment operator)_ 는 주어진 표현식에 새로운 값을 설정합니다. 형식은 다음과 같습니다:
+_할당 연산자 (assignment operator)_ 는 주어진 표현식에 새 값을 설정합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` = `value-값`
 
-_표현식 (expression)_ 의 값은 _값 (value)_ 을 평가하여 구한 값으로 설정합니다. _표현식 (expression)_ 이 '튜플' 이면, _값 (value)_ 은 반드시 똑같은 개수의 원소를 가진 튜플이어야 합니다. (중첩 튜플은 허용합니다.) '할당 (assignment)' 은 _값 (value)_ 의 각 부분을 이와 연관된 _표현식 (expression)_ 부분으로 수행합니다. 예를 들면 다음과 같습니다:
+_표현식 (expression)_ 의 값을 _값 (value)_ 평가로 구한 값으로 설정합니다. _표현식 (expression)_ 이 튜플이면, _값 (value)_ 도 반드시 원소 개수가 동일한 튜플이어야 합니다. (중첩 튜플은 허용합니다.) 각 부분의 _값 (value)_ 에서 해당 부분의 _표현식 (expression)_ 으로 할당을 수행합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 (a, _, (b, c)) = ("test", 9.45, (12, 3))
-// a 는 "test", b 는 12, c 는 3 이고, 9.45 는 무시합니다.
+// a 는 "test", b 는 12, c 는 3 이고, 9.45 는 무시함
 ```
 
 할당 연산자는 어떤 값도 반환하지 않습니다.
@@ -134,19 +138,19 @@ _표현식 (expression)_ 의 값은 _값 (value)_ 을 평가하여 구한 값으
 
 #### Ternary Conditional Operator (삼항 조건 연산자)
 
-_삼항 조건 연산자 (ternary conditional operator)_ 는 조건의 값에 기초하여 주어진 두 값 중 하나를 평가합니다. 형식은 다음과 같습니다:
+_삼항 조건 연산자 (ternary conditional operator)_ 는 조건 값을 기초로 하여 주어진 두 값 중 하나를 평가합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`condition-조건` ? `expression used if true-true 면 사용할 표현식` : `expression used if false-false 면 사용할 표현식`
 
-_조건 (condition)_ 평가가 `true` 면, '조건 연산자' 는 '첫 번째 표현식' 을 평가하고 그 값을 반환합니다. 그 외의 경우, '두 번째 표현식' 을 평가하고 그 값을 반환합니다. 사용하지 않은 표현식은 평가하지 않습니다.
+_조건 (condition)_ 평가가 `true` 면, 조건 연산자가 첫 번째 표현식을 평가하고 그 값을 반환합니다. 그 외 경우, 두 번째 표현식을 평가하고 그 값을 반환합니다. 사용하지 않는 표현식은 평가하지 않습니다.
 
-'삼항 조건 연산자' 를 사용하는 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% post_url 2016-04-27-Basic-Operators %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 참고하기 바랍니다.
+삼항 조건 연산자의 사용 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% post_url 2016-04-27-Basic-Operators %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CONDITIONAL OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
 #### Type-Casting Operators (타입-변환 연산자)
 
-'타입-변환 연산자' 는: `is` 연산자, `as` 연산자, `as?` 연산자, 그리고 `as!` 연산자 이렇게 네 개가 있습니다.
+네 개의 타입-변환 연산자가 있는데: `is` 연산자와, `as` 연산자, `as?` 연산자, 및 `as!` 연산자가 그것입니다.
 
 형식은 다음과 같습니다:
 
@@ -155,117 +159,113 @@ _조건 (condition)_ 평가가 `true` 면, '조건 연산자' 는 '첫 번째 �
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` as? `type-타입`
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식` as! `type-타입`
 
-`is` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 변환할 수 있는 지를 실행 시간에 검사합니다. _표현식 (expression)_ 을 특정 타입으로 변환할 수 있으면 `true` 를 반환하고; 그 외의 경우, `false` 를 반환합니다.
+`is` 연산자는 실행 시간에 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 변환할 수 있는 지 검사합니다. _표현식 (expression)_ 이 특정 _타입 (type)_ 으로 변환할 수 있으면 `true` 를 반환하며; 그 외 경우, `false` 를 반환합니다.
 
-`as` 연산자는, '올림 변환 (upcasting)' 이나 '연동 (bridging)' 같이, 변환이 항상 성공임을 컴파일 시간에 알고 있을 때 변환을 수행합니다. '올림 변환' 은, 중간 단계 변수의 사용 없이도, 표현식을 그 타입의 '상위 타입' 인스턴스로 사용할 수 있도록 해줍니다. 다음의 접근 방식은 '동치 (equivalent)' 입니다:
+`as` 연산자는, 올림 변환[^upcasting] 이나 연동 (bridging)[^bridging] 같이, 변환이 항상 성공함을 컴파일 시간에 알 수 있을 때 하는 변환입니다. 올림 변환은, 중간 단계의 변수를 쓰지 않고도, 표현식을 그 타입의 상위 타입 인스턴스로 사용하게 해줍니다. 다음의 접근법은 서로 같은 겁니다:
 
 ```swift
 func f(_ any: Any) { print("Function for Any") }
 func f(_ int: Int) { print("Function for Int") }
 let x = 10
 f(x)
-// "Function for Int" 를 인쇄합니다.
+// "Function for Int" 를 인쇄함
 
 let y: Any = x
 f(y)
-// "Function for Any" 를 인쇄합니다.
+// "Function for Any" 를 인쇄함
 
 f(x as Any)
-// "Function for Any" 를 인쇄합니다.
+// "Function for Any" 를 인쇄함
 ```
 
-'연동' 은 새로운 인스턴스를 생성할 필요 없이도 `String` 같은 '스위프트 표준 라이브러리 타입' 의 표현식을 `NSString` 같은 그와 관련된 'Foundation' 타입[^foundation] 으로 사용할 수 있도록 해줍니다. '연동 (bridging)' 에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다.
+연동은 새로운 인스턴스를 생성할 필요 없이 `String` 같은 스위프트 표준 라이브러리 타입의 표현식을 `NSString` 같이 그에 해당하는 파운데이션 (Foundation)[^foundation] 타입으로 사용하게 해줍니다. 연동에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다.
 
-`as?` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 '조건부 변환' 합니다. `as?` 연산자는 특정 _타입 (type)_ 의 '옵셔널' 을 반환합니다. 실행 시간에, 변환이 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하고 반환하며; 그 외의 경우, 반환 값은 `nil` 입니다. 특정 _타입 (type)_ 으로의 변환이 실패라고 보증되거나 성공이라고 보증된다면, 컴파일-시간 에러를 일으킵니다.
+`as?` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 조건부 변환합니다. `as?` 연산자는 특정 _타입 (type)_ 에 대한 옵셔널을 반환합니다. 실행 시간에, 변환 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하여 반환하며; 그 외 경우, 반환 값이 `nil` 입니다. 특정 _타입 (type)_ 으로의 변환이 실패로 보증된 것 또는 성공으로 보증된 것이면, 컴파일-시간 에러가 일어납니다.
 
-`as!` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 '강제 변환' 합니다. `as!` 연산자는, 옵셔널 타입이 아니라, 특정 _타입 (type)_ 의 값을 반환합니다. 변환이 실패하면, 실행 시간 에러를 일으킵니다. `x as! T` 의 동작은 `(x as? T)!` 의 동작과 똑같습니다.
+`as!` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 강제 변환합니다. `as!` 연산자는, 옵셔널 타입이 아닌, 특정 _타입 (type)_ 값을 반환합니다. 변환을 실패하면, 실행 시간 에러가 일어납니다. `x as! T` 는 `(x as? T)!` 와 똑같이 동작합니다.
 
-'타입 변환' 에 대한 더 많은 정보와 '타입-변환 연산자' 를 사용하는 예제는, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) 장을 참고하기 바랍니다.
+타입 변환에 대한 더 많은 정보 및 타입-변환 연산자의 사용 예제는, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) 장을 참고하기 바랍니다.
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
 ### Primary Expressions (으뜸 표현식)
 
-_으뜸 표현식 (primary expressions)_ 은 가장 기초적인 종류의 표현식입니다. 이는 그 자체로 표현식으로 사용할 수 있으며, 다른 '낱말 (tokens)' 과 조합하여 '접두사 표현식', '이항 표현식', '접미사 표현식' 을 만들 수도 있습니다.
+_으뜸 표현식 (primary expressions)_ 은 가장 기초적인 종류의 표현식입니다. 그 자체로 표현식으로 사용할 수도 있고, 다른 낱말과 조합하여 접두사 표현식과, 중위 표현식, 및 접미사 표현식을 만들 수도 있습니다.
 
 > GRAMMAR OF A PRIMARY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Literal Expression (글자 값 표현식)
 
-_글자 값 표현식 (literal expression)_ 은 (문자열이나 수 같은) 평범한 글자 값, 배열 및 딕셔너리 글자 값, '플레이그라운드 (playground) 글자 값', 또는 다음의 '특수 (special) 글자 값' 중 하나로 구성합니다:
+_글자 값 표현식 (literal expression)_ 은 (문자열이나 수치 값 같은) 평범한 글자 값이나, 배열 및 딕셔너리 글자 값, 플레이그라운드 (playground) 글자 값, 또는 다음의 특수 글자 값 중 하나로 구성됩니다:
 
 글자 값 || 타입 || 값
 ---|---|---|---|---
-`#file` | | `String` | |  이 파일의 경로
+`#file` | | `String` | |  이 파일의 경로[^the-path]
 `#fileID` | | `String` | | 이 파일과 모듈의 이름
 `#filePath` | | `String` | | 이 파일의 경로
 `#line` | | `Int` | | 이 줄의 번호
 `#column` | | `Int` | | 이 시작 열의 번호
 `#function` | | `String` | | 이 선언의 이름
-`#dsohandle` | | `UnsafeRawPointer` | | 이 곳에서 사용 중인 '동적 공유 객체 (dynamic shared object; DSO) 의 핸들 (handle)'
+`#dsohandle` | | `UnsafeRawPointer` | | 여기서 사용하는 동적 공유 객체[^dynamic-shared-object] 의 핸들
 
-`#file` 의 문자열 값은, 예전 `#filePath` 동작을 새로운 `#fileID` 동작으로 '이전 (migration)' 할 수 있도록, 언어 버전에 의존합니다.[^filePath-and-fildID] 현재의, `#file` 은 `#filePath` 와 똑같은 값을 가집니다. 미래 버전의 스위프트는, `#file` 이 대신 `#fileID` 와 똑같은 값을 가질 것입니다. 미래의 동작을 채택하려면, `#file` 을 적절하게 `#fileID` 나 `#filePath` 로 대체하기 바랍니다.[^file-to-filePath-and-fildID]
+`#file` 의 문자열 값은 언어 버전에 의존하여, 예전 동작인 `#filePath` 를 새로운 동작인 `#fileID` 로 이주할 수 있게 합니다.[^filePath-and-fildID] 현재, `#file` 는 `#filePath` 값과 똑같습니다. 미래 버전의 스위프트에선, 그 대신 `#file` 가 `#fileID` 값과 똑같을 겁니다. 미래의 동작을 채택하려면, `#file` 을 `#fileID` 나 `#filePath` 로 적절하게 대체하기 바랍니다.[^file-to-filePath-and-fildID]
 
-`#fileID` 표현식의 문자열 값은 형식이 _모듈/파일 (module/file)_ 인데, 여기서 _파일 (file)_ 은 표현식이 있는 파일의 이름이고 _모듈 (module)_ 은 이 파일이 속한 모듈의 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일에 대한 '전체 파일-시스템 경로' 입니다. 이 두 값 모두, [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, `#sourceLocation` 으로 바꿀 수 있습니다. `#fileID` 는, `#filePath` 와는 달리, 소스 파일에 대한 '전체 경로' 를 집어 넣지 않기 때문에, 더 나은 '개인 정보 보호' 를 제공하며 '컴파일한 바이너리' 의 크기를 줄여줍니다. 테스트, 빌드 스크립트, 또는 그 외 '출하용 (shipping) 프로그램' 이 아닌 코드 밖에서 `#filePath` 사용을 피하도록 합니다.
+`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 형식인데, _파일 (file)_ 은 표현식이 있는 파일 이름이고 _모듈 (module)_ 은 이 파일이 속해 있는 모듈 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일의 전체 파일-시스템 경로입니다. [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, 이 두 값 모두 `#sourceLocation` 으로 바꿀 수 있습니다. `#filePath` 와 달리, `#fileID` 에 소스 파일의 전체 경로를 박아 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 컴파일한 바이너리의 크기가 줄여듭니다. 테스트나, 빌드 스크립트, 또는 그 외 출하용 프로그램의 일부분이 아닌 코드 밖에선 `#filePath` 의 사용을 피합니다.[^shipping-program]
 
-> `#fileID` 표현식의 구문을 해석하려면, 모듈 이름은 첫 번째 빗금 (`/`) 앞의 문장을 읽고 파일 이름은 마지막 빗금 뒤의 문장을 읽습니다. 미래에는, 문자열이, `MyModule/some/disambiguation/MyFile.swift` 처럼, 여러 개의 빗금을 담을 수도 있습니다.
+> `#fileID` 표현식 구문을 해석하려면, 첫 번째 빗금 (`/`) 앞의 텍스트는 모듈 이름으로 마지막 빗금 뒤의 텍스트는 파일 이름으로 읽습니다.[^first-and-last-slash] 미래에는, `MyModule/some/disambiguation/MyFile.swift` 같이, 문자열이 여러 개의 빗금을 담고 있을 지도 모릅니다.
 
-`#function` 의 값은, 함수 안에서는 해당 함수의 이름, 메소드 안에서는 해당 메소드의 이름, 속성의 '획득자' 나 '설정자' 안에서는 해당 속성의 이름, `init` 이나 `subscript` 같은 '특수한 멤버' 안에서는 해당 키워드의 이름, 그리고 파일의 최상단에서는 현재 모듈의 이름입니다.
+`#function` 값은, 함수 안에선 그 함수의 이름이고, 메소드 안에선 그 메소드의 이름, 속성의 획득자나 설정자 안에선 그 속성의 이름, `init` 이나 `subscript` 같은 특수 멤버 안에선 그 키워드의 이름이며, 파일의 최상단에선 현재 모듈의 이름입니다.
 
-'특수 글자 값' 을, 함수나 메소드 매개 변수의 '기본 값' 으로 사용할 때는, 호출한 쪽에서 '기본 값 표현식' 을 평가할 때 값이 결정됩니다.
+함수나 메소드 매개 변수의 기본 값으로 사용할 땐, 호출한 쪽에서 기본 값 표현식을 평가할 때 특수 글자 값의 값을 결정합니다.
 
 ```swift
 func logFunctionName(string: String = #function) {
   print(string)
 }
 func myFunction() {
-  logFunctionName() // "myFunction()" 를 인쇄합니다.
+  logFunctionName() // "myFunction()" 를 인쇄함
 }
 ```
 
-_배열 글자 값 (array literal)_ 은 값의 '순서가 있는 집합체 (ordered collection)'[^ordered-collection] 입니다. 형식은 다음과 같습니다:
+_배열 글자 값 (array literal)_ 은 순서 있는 값의 집합체 (ordered collection)[^ordered-collection] 입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `...`]
 
-배열의 마지막 표현식 뒤에는 쉼표가 있어도 됩니다. '배열 글자 값' 의 타입은 `[T]` 인데, 여기서 `T` 는 안에 있는 표현식의 타입입니다. 여러 타입의 표현식으로 된 경우, `T` 는 '가장 가까운 공통 상위 타입 (closest common supertype)' 입니다. '빈 배열 글자 값' 은 '빈 대괄호 쌍' 을 사용하여 작성하며 특정 타입의 빈 배열을 생성하기 위해 사용할 수 있습니다.
+배열의 마지막 표현식 뒤에 쉼표가 있어도 됩니다. 배열 글자 값은 `[T]` 타입인데, 여기서 `T` 는 그 안의 표현식 타입입니다. 표현식의 타입이 여러 개면, `T` 는 이들의 가장 가까운 공통 상위 타입 (closest common supertype) 입니다. 빈 배열 글자 값은 빈 대괄호 쌍으로 작성하며 이를 사용하여 특정 타입의 빈 배열을 생성할 수 있습니다.
 
 ```swift
 var emptyArray: [Double] = []
 ```
 
-_딕셔너리 글자 값 (dictionary literal)_ 은 '키-값 쌍 (key-value pairs) 의 순서 없는 집합체 (unordered collection)' 입니다. 형식은 다음과 같습니다:
+_딕셔너리 글자 값 (dictionary literal)_ 은 순서 없는 키-값 (key-value) 쌍의 집합체 (unordered collection) 입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`key 1-키 1`: `value 1-값 1`, `key 2-키 2`: `value 2-값 2`, `...`]
 
-딕셔너리의 마지막 표현식 뒤에는 쉼표가 있어도 됩니다. '딕셔너리 글자 값' 의 타입은 `[Key : Value]` 인데, 여기서 `Key` 는 '키 (key) 표현식' 의 타입이고 `Value` 는 '값 (value) 표현식' 의 타입입니다. 여러 타입의 표현식으로 된 경우, `Key` 와 `Value` 는 각자의 값에 대한 '가장 가까운 공통 상위 타입' 입니다. '빈 딕셔너리 글자 값' 은 '빈 배열 글자 값' 과 구별하기 위해 '대괄호 쌍 안의 콜론 (`[:]`)' 으로 작성합니다. '빈 딕셔너리 글자 값' 을 사용하여 특정 키와 값 타입을 가진 '빈 딕셔너리 글자 값' 을 생성할 수 있습니다.
+딕셔너리의 마지막 표현식 뒤에 쉼표가 있어도 됩니다. 딕셔너리 글자 값은 `[Key : Value]` 타입인데, 여기서 `Key` 는 키 표현식의 타입이고 `Value` 는 값 표현식의 타입입니다. 표현식의 타입이 여러 개면, `Key` 와 `Value` 는 각자 값의 가장 가까운 공통 상위 타입입니다. 빈 딕셔너리 글자 값은 빈 배열 글자 값과 구별하려고 대괄호 쌍 안에 콜론 (`[:]`) 을 작성합니다. 빈 딕셔너리 글자 값을 사용하여 특정 키와 값 타입의 빈 딕셔너리 글자 값을 생성할 수 있습니다.
 
 ```swift
 var emptyDictionary: [String : Double] = [:]
 ```
 
-_플레이그라운드 글자 값 (playground literal)_ 은 '프로그램 편집기' 에서 색상, 파일, 또는 이미지에 대한 '상호 작용 가능한 표현' 을 생성하고자 '엑스코드 (Xcode)' 가 사용합니다. '엑스코드' 밖의 '평범한 문장' 에 있는 '플레이그라운드 글자 값' 은 '특수 글자 값 구문' 으로 표현합니다.[^playground-literal]
+_플레이그라운드 글자 값 (playground literal)_ 은 엑스코드 (Xcode) 에서 사용하는 것으로 프로그램 편집기 안에서 색상이나, 파일, 또는 이미지를 대화형으로 나타내도록 합니다. 엑스코드 밖에 있는 평범한 텍스트에선 플레이그라운드 글자 값을 특수 글자 값 구문으로 나타냅니다.[^playground-literal]
 
-'엑스코드' 에서 '플레이그라운드 글자 값' 을 사용하는 정보는, '엑스코드 도움말 (Xcode Help)' 에 있는 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 항목을 참고하기 바랍니다.
+엑스코드에서 플레이그라운드 글자 값을 사용하는 정보는, 엑스코드 도움말 (Xcode Help) 의 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Self Expression ('self' 표현식)
+#### Self Expression (self 표현식)
 
-`self` 표현식은 자신의 현재 타입 또는 타입의 인스턴스에 대한 명시적인 참조입니다. 형식은 다음과 같습니다:
+`self` 표현식은 현재 타입 또는 자기가 있는 타입의 인스턴스를 명시적으로 참조합니다. 형식은 다음과 같습니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;self
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]
-<br />
-&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)
-<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self.`member name-멤버 이름`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self [`subscript index-첨자 연산 색인`]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;self (`initializer arguments-초기자 인자`)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;self.init(`initializer arguments-초기자 인자`)
 
-초기자, 첨자 연산, 또는 인스턴스 메소드 안에서의, `self` 는 자신의 타입에 대한 '현재 인스턴스' 를 참조합니다. 타입 메소드 안에서의, `self` 는 자신의 '현재 타입' 을 참조합니다.
+초기자나, 첨자 연산, 또는 인스턴스 메소드 안에서의, `self` 는 자기가 있는 타입의 현재 인스턴스를 참조합니다. 타입 메소드 안에서의, `self` 는 자기가 있는 현재 타입을 참조합니다.
 
-`self` 표현식은, 함수 매개 변수 같이, 영역에 똑같은 이름의 또 다른 변수가 있을 때의 모호함을 없애면서, 멤버에 접근할 때의 영역을 지정하고지 사용합니다. 예를 들면 다음과 같습니다:
+멤버에 접근할 때 `self` 표현식으로 영역을 지정하면, 함수 매개 변수 같이, 영역에 동일한 이름의 또 다른 변수가 있을 때도 헷갈리지 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -276,7 +276,7 @@ class SomeClass {
 }
 ```
 
-'값 타입' 의 변경 메소드 안에서는, 해당 값 타입의 새로운 인스턴스를 `self` 에 할당할 수 있습니다.[^mutating-method] 예를 들면 다음과 같습니다:
+값 타입의 변경 메소드 안에선, 그 값 타입의 새로운 인스턴스를 `self` 에 할당할 수 있습니다.[^mutating-method] 예를 들면 다음과 같습니다:
 
 ```swift
 struct Point {
@@ -291,35 +291,43 @@ struct Point {
 
 #### Superclass Expression (상위 클래스 표현식)
 
-_상위 클래스 표현식 (superclass expression)_ 은 클래스가 상위 클래스와 상호 작용하도록 해줍니다. 형식은 다음 중 하나입니다:
+_상위 클래스 표현식 (superclass expression)_ 은 클래스를 자신의 상위 클래스와 상호 작용하게 해줍니다. 형식은 다음 중 하나입니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;super.`memeber name-멤버 이름`
 &nbsp;&nbsp;&nbsp;&nbsp;super[`subscript index-첨자 연산 색인`]
 &nbsp;&nbsp;&nbsp;&nbsp;super.init(`initializer arguments-초기자 인자`)
 
-첫 번째 형식은 상위 클래스의 멤버에 접근하려고 사용합니다. 두 번째 형식은 상위 클래스의 첨자 연산 구현에 접근하려고 사용합니다. 세 번째 형식은 상위 클래스의 초기자에 접근하려고 사용합니다.
+첫 번째 형식으로는 상위 클래스의 멤버에 접근합니다. 두 번째 형식으론 상위 클래스의 첨자 구현에 접근합니다. 세 번째 형식으론 상위 클래스의 초기자에 접근합니다.
 
-하위 클래스는 자신의 상위 클래스에 있는 구현을 사용하기 위해 자신의 멤버, 첨자 연산, 그리고 초기자 구현에서 '상위 클래스 표현식' 을 사용할 수 있습니다.
+하위 클래스의 멤버와, 첨자, 및 초기자 구현 안에 상위 클래스 표현식을 사용하면 자신의 상위 클래스 안의 구현을 사용할 수 있습니다.
 
 > GRAMMAR OF A SUPERCLASS EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Closure Expression (클로저 표현식)
 
-_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에서는 _람다 (lambda)_ 또는 _익명 함수 (anonymous function)_ 라고도 하는, '클로저' 를 생성합니다. '함수 선언' 같이, 클로저는 구문을 담으며, 자신을 둘러싼 영역의 상수와 변수를 '붙잡습니다 (capture)'. 형식은 다음과 같습니다:
+_클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에선 _람다 (lambda)_ 나 _익명 함수 (anonymous function)_ 라고도 하는, 클로저를 생성합니다. 함수 선언 같이, 클로저도 구문을 담으며, 자신을 둘러싼 영역의 상수와 변수를 붙잡습니다.[^capture] 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;{ (`parameter-매개 변수`) -> `return type-반환 타입` in<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-_매개 변수 (parameter)_ 는, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 형식이 똑같습니다.
+_매개 변수 (parameter)_ 의 형식은, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 똑같습니다.
 
-클로저는 더 간결하게 작성하게 하는 여러 특수 형식들이 있습니다:
+클로저 표현식에 `throws` 나 `async` 를 써서 클로저가 던지거나 비동기라는 걸 명시합니다.
 
-* 클로저는 매개 변수의 타입이나, 반환 타입을, 또는 둘 다를 생략할 수 있습니다. 매개 변수 이름과 타입 둘 다를 생략할 경우, 구문 앞의 `in` 키워드를 생략합니다. 생략한 타입을 추론할 수 없으면, 컴파일-시간 에러를 일으킵니다.
-* 클로저는 자신의 매개 변수 이름을 생략할 수도 있습니다. 그러면 매개 변수에: `$1`, `$2`, 등과 같이 `$` 뒤에 자신의 위치가 붙은 이름을 암시적으로 붙입니다.
-* 단일 표현식만으로 구성한 클로저는 해당 표현식의 값을 반환한다고 이해합니다. 주위 표현식에 대한 타입 추론을 할 때 이 표현식의 내용도 고려합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;{ (`parameter-매개 변수`) async throws -> `return type-반환 타입` in<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
 
-다음 클로저 표현식들은 '동치 (equivalent)' 입니다:
+클로저 본문이 `try` 표현식을 포함하면, 던지는 클로저라고 이해합니다. 마찬가지로, `await` 표현식을 포함하면, 비동기라고 이해합니다. 
+
+클로저를 더 간결하게 작성하는 여러가지 특수한 형식이 있습니다:
+
+* 클로저는 자신의 매개 변수 타입이나, 반환 타입, 또는 둘 다 생략할 수 있습니다. 매개 변수 이름과 두 타입 모두를 생략하면, 구문 앞의 `in` 키워드도 생략합니다. 생략한 타입을 추론할 수 없으면, 컴파일-시간 에러가 일어납니다.
+* 클로저는 자신의 매개 변수 이름을 생략할 수도 있습니다. 그러면 매개 변수가 `$` 뒤에 자신의 위치가 붙은 암시적 이름을 가집니다: `$0`, `$1`, `$2`, 등으로 계속됩니다.
+* 단일 표현식으로만 구성한 클로저는 그 표현식 값을 반환하는 걸로 이해합니다. (이 표현식) 주위의 표현식 타입을 추론할 땐 이 표현식의 내용도 고려합니다.
+
+다음의 클로저 표현식은 서로 같은 겁니다:
 
 ```swift
 myFunction { (x: Int, y: Int) -> Int in
@@ -335,21 +343,21 @@ myFunction { return $0 + $1 }
 myFunction { $0 + $1 }
 ```
 
-클로저를 함수의 인자로 전달하는 것에 대한 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 부분을 참고하기 바랍니다.
+클로저를 함수 인자로 전달하는 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 부분을 참고하기 바랍니다.
 
-클로저 표현식은, 함수 호출에서 클로저를 곧바로 사용할 때 처럼, 변수나 상수에 저장하지 않고도 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달한 클로저 표현식은 이 '곧바로 사용' 하는 한 예입니다. 그 결과, 클로저 표현식이 '벗어나는 (escaping)' 지 '벗어나지 않는 (nonescaping)' 지는 표현식의 주위 상황에 달려 있습니다. 곧바로 호출하거나 '벗어나지 않는 함수 인자' 로 전달한 경우의 클로저 표현식은 '벗어나지 않는' 것입니다. 그 외의 경우, 클로저 표현식은 '벗어나는' 것입니다.
+함수 호출 부분에서 곧바로 클로저를 사용할 때 처럼, 변수나 상수에 저장하지 않고도 클로저를 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달한 클로저 표현식이 곧바로 사용하는 예의 한 종류입니다. 그 결과, 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식의 주위 상황에 달려 있습니다.[^escaping-or-nonescaping] 곧바로 호출하거나 벗어나지 않는 함수 인자로 전달한 클로저 표현식은 벗어나지 않는 겁니다. 그 외 경우의, 클로저 표현식은 벗어나는 겁니다.
 
-'벗어나는 클로저' 에 대한 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
+벗어나는 클로저의 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
 
 <p>
 <strong id="capture-lists-붙잡을-목록">Capture Lists (붙잡을 목록)</strong>
 </p>
 
-기본적으로, 클로저 표현식은 주위 영역에 있는 상수와 변수를 그 값에 대한 '강한 참조 (strong references)' 로 붙잡습니다. 클로저에서 값을 붙잡을 방법을 명시적으로 제어하기 위해서 _붙잡을 목록 (capture list)_ 을 사용할 수 있습니다.
+기본적으로, 클로저 표현식은 자기 주위 영역의 상수와 변수 값을 강한 참조[^strong-reference] 로 붙잡습니다. _붙잡을 목록 (capture list)_ 을 사용하면 클로저에서 값을 붙잡는 방법을 명시적으로 제어할 수 있습니다.
 
-'붙잡을 목록' 은 쉼표로-구분한 표현식 목록을, 매개 변수 목록 앞에, 대괄호로 둘러싸서 작성합니다. '붙잡을 목록' 을 사용하면, 매개 변수 이름, 매개 변수 타입, 그리고 반환 타입을 생략한 경우에도, 반드시 `in` 키워드를 같이 사용해야 합니다.
+붙잡을 목록은, 매개 변수 목록 앞에, 쉼표로-구분한 표현식 목록을 대괄호로 둘러싸서 작성합니다. 붙잡을 목록을 사용하면, 매개 변수 이름과, 매개 변수 타입, 및 반환 타입을 생략한 경우라도, 반드시 `in` 키워드를 사용해야 합니다.
 
-'붙잡을 목록' 에 있는 '요소 (entries)' 들은 클로저를 생성할 때 초기화 됩니다. 붙잡을 목록의 각 요소마다, 주위 영역에서 똑같은 이름을 가진 상수나 변수 값에 대한 상수가 초기화 됩니다. 아래 코드 예제에서, `a` 는 '붙잡을 목록' 에 포함되지만 `b` 는 아니어서, 서로 다른 동작을 합니다.
+붙잡을 목록 안의 요소는 클로저 생성 때 초기화합니다. 붙잡을 목록의 각 요소마다, 한 상수를 주위 영역 안의 동일 이름인 상수나 변수 값으로 초기화합니다. 아래 코드 예제에서, `a` 는 붙잡을 목록이 포함하지만 `b` 는 아니어서, 서로 다르게 동작합니다.
 
 ```swift
 var a = 0
@@ -361,12 +369,12 @@ let closure = { [a] in
 a = 10
 b = 10
 closure()
-// "0 10" 를 인쇄합니다.
+// "0 10" 를 인쇄함
 ```
 
-`a` 라는 이름은, '주위 영역의 변수' 와 '클로저 영역의 상수' 라는, 서로 다른 두 가지가 있지만, `b` 라는 이름의 변수는 하나뿐입니다. 안쪽 영역의 `a` 는 클로저를 생성할 때 바깥 영역에 있는 `a` 값으로 초기화 되지만, 이 값들은 어떤 특수한 방식으로든 연결되지 않습니다. 이는 바깥 영역의 `a` 값을 바꿔도 안쪽 영역의 `a` 값에 영향을 주지 않으며, 클로저 안의 `a` 를 바꿔도 클로저 밖의 `a` 값에 영향을 주지 않는다는 의미입니다. 이와 대조적으로, `b` 라는 이름의 변수는-바깥 영역의 `b` 라는-하나만 있으므로 클로저 안팎에서 바뀌면 양쪽에서 다 볼 수 있습니다.
+`a` 라는 이름은, 주위 영역 안의 변수와 클로저 영역 안의 상수라는, 서로 다른 두 개가 있지만, `b` 라는 이름의 변수는 하나뿐입니다. 안쪽 영역의 `a` 는 클로저 생성 때 바깥 영역의 `a` 값으로 초기화하지만, 이러한 값은 어떤 특수한 방식으로도 연결된 게 아닙니다. 이는 바깥 영역의 `a` 값을 바꿔도 안쪽 영역의 `a` 값에 영향을 주지 않으며, 클로저 안의 `a` 를 바꿔도 클로저 밖의 `a` 값에 영향을 주지 않는다는 의미입니다. 이와 대조적으로, `b` 라는 이름의 변수는-바깥 영역의 `b` 라는-단 하나만 있어서 클로저 안팎에서 바꾸는 걸 양쪽 다 볼 수 있습니다.
 
-이런 구별은 '붙잡은 변수' 의 타입이 '참조 의미 구조 (reference semantics)'[^reference-semantics] 를 가질 때는 보이지 않습니다. 예를 들어, 아래 코드에는 `x` 라는 이름이, '바깥 영역의 변수' 와 '안쪽 영역의 상수' 라는, 두 가지가 있지만, '참조 의미 구조' 이기 때문에 둘 다 똑같은 객체를 참조합니다.
+붙잡은 변수의 타입이 참조 의미 구조[^reference-semantics] 를 가질 땐 이런 구별이 보이지 않습니다. 예를 들어, 아래 코드에는 바깥 영역의 변수와 안쪽 영역의 상수라는, 두 개의 `x` 가 있지만, 참조 의미 구조이기 때문에 둘 다 동일한 객체를 참조합니다.[^because-of-reference]
 
 ```swift
 class SimpleClass {
@@ -381,32 +389,32 @@ let closure = { [x] in
 x.value = 10
 y.value = 10
 closure()
-// "10 10" 을 인쇄합니다.
+// "10 10" 을 인쇄함
 ```
 
-표현식 값의 타입이 클래스라면, '붙잡을 목록' 에 있는 표현식을 `weak` 나 `unowned` 로 표시하여 표현식의 값을 '약한 참조' 나 '소유하지 않는 참조' 로 붙잡을 수 있습니다.[^weak-and-unowned-capture]
+표현식 값의 타입이 클래스면, 붙잡을 목록 안의 표현식에 `weak` 나 `unowned` 를 표시하여 표현식 값에 대한 약한 또는 소유하지 않는 참조를 붙잡을 수 있습니다.[^weak-and-unowned-capture]
 
 ```swift
-myFunction { print(self.title) }                    // 암시적으로 강하게 붙잡기 (implicit strong capture)
-myFunction { [self] in print(self.title) }          // 명시적으로 강하게 붙잡기 (explicit strong capture)
-myFunction { [weak self] in print(self!.title) }    // 약하게 붙잡기 (weak capture)
-myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡기 (unowned capture)
+myFunction { print(self.title) }                    // 암시적으로 강하게 붙잡음 (implicit strong capture)
+myFunction { [self] in print(self.title) }          // 명시적으로 강하게 붙잡음 (explicit strong capture)
+myFunction { [weak self] in print(self!.title) }    // 약하게 붙잡음 (weak capture)
+myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙잡음 (unowned capture)
 ```
 
-'붙잡을 목록' 에서는 '임의의 표현식' 을 '이름 붙인 변수' 에 연결할 수도 있습니다. 표현식은 클로저를 생성할 때 평가하며, 값은 지정한 '강하기 (strength)'[^strength] 로 붙잡습니다. 예를 들면 다음과 같습니다:
+붙잡을 목록에서 임의의 표현식과 이름 붙인 변수를 연결할 수도 있습니다. 클로저 생성 때 표현식을 평가하여, 지정한 강하기로 값을 붙잡습니다.[^strength] 예를 들면 다음과 같습니다:
 
 ```swift
-// "self.parent" 를 "parent" 로 약하게 붙잡기
+// "self.parent" 를 "parent" 로 약하게 붙잡음
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 참고하기 바랍니다. '붙잡을 목록 (capture list)' 에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 참고하기 바랍니다.
+클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 참고하기 바랍니다. 붙잡을 목록에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
-#### Implicit Member Expression (암시적인 멤버 표현식)
+#### Implicit Member Expression (암시적 멤버 표현식)
 
-_암시적인 멤버 표현식 (implicit member expression)_ 은, '열거체 case 값' 이나 '타입 메소드' 같이, 타입 추론이 '암시 (implied) 타입' 을 결정할 수 있는 상황에서, 타입의 멤버에 접근하는 단축 방식입니다. 형식은 다음과 같습니다:
+_암시적 멤버 표현식 (implicit member expression)_ 은, 열거체 case 나 타입 메소드 같이, 암시적 타입을 추론할 수 있는 상황에서, 타입 멤버에 접근하는 단축 방식입니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;.`member name-멤버 이름`
 
@@ -417,13 +425,13 @@ var x = MyEnumeration.someValue
 x = .anotherValue
 ```
 
-추론한 타입이 옵셔널이면, '암시적인 멤버 표현식' 에서 '옵셔널-아닌 타입' 의 멤버를 사용할 수도 있습니다.
+추론한 타입이 옵셔널이면, 암시적 멤버 표현식 안에서 옵셔널-아닌 타입의 멤버도 사용할 수 있습니다.
 
 ```swift
 var someOptional: MyEnumeration? = .someValue
 ```
 
-'암시적인 멤버 표현식' 뒤에는 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에서 나열한 '접미사 연산자' 또는 다른 '접미사 구문' 이 따라 올 수 있습니다. 이를 _연쇄된 암시적인 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 연쇄된 모든 접미사 표현식이 똑같은 타입을 가지는 것이 흔하긴 하지만, 유일한 필수 조건은 '연쇄된 암시적인 멤버 표현식' 전체가 '자신의 상황이 암시하는 타입' 으로 변환 가능할 필요가 있다는 것 뿐입니다. 특히, '암시 타입' 이 옵셔널이면 '옵셔널-아닌 타입' 의 값을 사용할 수 있으며, '암시 타입' 이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+암시적 멤버 표현식 뒤엔 [Postfix Expressions (접미사 표현식)](#postfix-expressions-접미사-표현식) 에 나열된 접미사 연산자나 다른 접미사 구문이 있을 수 있습니다. 이를 _연쇄된 암시적 멤버 표현식 (chained implicit member expression)_ 이라고 합니다. 연쇄한 모든 접미사 표현식이 동일 타입을 가지는 게 흔하긴 하지만, 유일한 필수 조건은 연쇄된 암시적 멤버 표현식 전체가 자신의 암시 타입으로 변환 가능할 필요가 있다는 것뿐입니다. 특히, 암시 타입이 옵셔널이면 옵셔널-아닌 타입의 값을 사용할 수도 있고, 암시 타입이 클래스 타입이면 자신의 하위 클래스 타입 중 하나의 값을 사용할 수도 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -441,54 +449,54 @@ let y: SomeClass? = .shared
 let z: SomeClass = .sharedSubclass
 ```
 
-위 코드에서, `x` 의 타입은 '자신의 상황이 암시하는 타입'[^implied-type] 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
+위 코드에서, `x` 의 타입은 자신의 암시 타입[^implied-type] 과 정확하게 일치하고, `y` 의 타입은 `SomeClass` 에서 `SomeClass?` 로 변환 가능하며, `z` 의 타입은 `SomeSubclass` 에서 `SomeClass` 로 변환 가능합니다.
 
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Parenthesized Expression (괄호 표현식)
 
-_괄호 표현식 (parenthesized expression)_ 은 괄호로 주위를 둘러싼 표현식으로 구성됩니다. 괄호를 사용하면 표현식 그룹을 명시함으로써 연산의 우선권을 지정할 수 있습니다. 괄호로 그룹짓는 것은 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
+_괄호 표현식 (parenthesized expression)_ 은 표현식을 괄호로 둘러싸서 구성합니다. 괄호를 사용하여 표현식을 명시적으로 그룹지으면 연산의 우선 순위를 지정할 수 있습니다. 괄호 그룹짓기는 표현식의 타입을 바꾸지 않습니다-예를 들어, `(1)` 의 타입은 단순히 `Int` 입니다.
 
 > GRAMMAR OF A PARENTHESIZED MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Tuple Expression (튜플 표현식)
 
-_튜플 표현식 (tuple expression)_ 은 쉼표로-구분한 표현식 목록을 괄호로 둘러싸서 구성합니다. 각각의 표현식은 선택 사항으로 자신의 앞에, 콜론 (`:`) 으로 구분한, 식별자를 가질 수 있습니다. 형식은 다음과 같습니다:
+_튜플 표현식 (tuple expression)_ 은 쉼표로-구분한 표현식 목록을 괄호로 둘러싸서 구성합니다. 각각의 표현식엔 옵션으로 자기 앞에, 콜론 (`:`) 으로 구분한, 식별자가 있을 수 있습니다. 형식은 다음과 같습니다:
 
-(`identifier 1-식별자 1`: `expression 1-표현식 1`, `identifier 2-식별자 2`: `expression 2-표현식 2`, `...`)
+&nbsp;&nbsp;&nbsp;&nbsp;(`identifier 1-식별자 1`: `expression 1-표현식 1`, `identifier 2-식별자 2`: `expression 2-표현식 2`, `...`)
 
-튜플 표현식에 있는 각 식별자는 튜플 표현식 영역에서 반드시 유일해야 합니다. '중첩된 튜플 표현식' 에서는, 중첩 수준이 똑같은 식별자는 반드시 유일해야 합니다. 예를 들어, `(a: 10, a: 20)` 은 똑같은 수준에 `a` 라는 이름표가 두 번 있기 때문에 무효입니다. 하지만, `(a: 10, b: (a: 1, x: 2))` 는-비록 `a` 가 두 번 있을지라도, 바깥 튜플에 한 번 안쪽 튜플에 한 번 있으므로-유효입니다.
+튜플 표현식에 있는 각각의 식별자는 튜플 표현식 영역 안에서 반드시 유일해야 합니다. 중첩 튜플 표현식에선, 동일 중첩 수준의 식별자는 반드시 유일해야 합니다. 예를 들어, `(a: 10, a: 20)` 은 무효인데 동일한 수준에 이름표 `a` 가 두 번 나타나기 때문입니다. 하지만, `(a: 10, b: (a: 1, x: 2))` 는 유효입니다-`a` 가 두 번 나타나긴 하지만, 한 번은 바깥쪽 튜플에서 한 번은 안쪽 튜플에서 나타납니다.
 
-튜플 표현식은 '0' 개의 표현식을 담거나, 두 개 이상의 표현식을 담을 수 있습니다. 괄호 안에 단일 표현식이 있으면 '괄호 표현식' 입니다.
+튜플 표현식은 0 개의 표현식을 담거나, 둘 이상의 표현식을 담을 수 있습니다. 괄호 안에 표현식이 단 하나면 괄호 표현식입니다.
 
-> '빈 튜플 표현식' 과 '빈 튜플 타입' 은 스위프트에서 둘 다 `()` 라고 작성합니다. `Void` 는 `()` 에 대한 '타입 별명' 이기 때문에, '빈 튜플 타입' 을 작성하기 위해 이를 사용할 수 있습니다. 하지만, 모든 '타입 별명' 들 처럼, `Void` 는 항상 '타입' 입니다-'빈 튜플 표현식' 을 작성하기 위해 이를 사용할 수는 없습니다.
+> 스위프트에서 빈 튜플 표현식과 빈 튜플 타입은 둘 다 `()` 로 작성합니다. `Void` 는 `()` 의 타입 별명이기 때문에, 이걸 써서 빈 튜플 타입을 작성할 수 있습니다. 하지만, 모든 타입 별명과 마찬가지로, `Void` 는 항상 타입입니다-이를 써서 빈 튜플 표현식을 작성할 순 없습니다.[^void-vs-empty-tuple-expression]
 
 > GRAMMAR OF A TUPLE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Wildcard Expression (와일드카드 표현식)
 
-_와일드카드 표현식 (wildcard expression)_ 은 할당 중에 명시적으로 값을 무시하고자 사용합니다. 예를 들어, 다음 할당은 '10' 을 `x` 에 할당하며 '20' 은 무시합니다:
+_와일드카드 표현식 (wildcard expression)_ 을 사용하면 할당 중에 값을 명시적으로 무시합니다. 예를 들어, 다음 할당에선 10 은 `x` 에 할당하고 20 은 무시합니다:
 
 ```swift
 (x, _) = (10, 20)
-// x 는 10 이고, 20 은 무시합니다.
+// x 는 10 이고, 20 은 무시함
 ```
 
 > GRAMMAR OF A WILDCARD EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
 #### Key-Path Expression (키-경로 표현식)
 
-_키-경로 표현식 (key-path expression)_ 은 타입의 속성이나 첨자 연산을 참조합니다. '키-경로 표현식' 은, '키-값 관찰 (observing)' 같은, 동적 프로그래밍 임무에 사용합니다. 형식은 다음과 같습니다:
+_키-경로 표현식 (key-path expression)_ 은 타입의 속성이나 첨자를 참조합니다. 키-값 관찰[^key-value-observing] 같은, 동적 프로그래밍 임무에서 키-경로 표현식을 사용합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\\`type name-타입 이름`.`path-경로`
 
-_타입 이름 (type name)_ 은, `String`, `[Int]`, 또는 `Set<Int>` 같은, '일반화 (generic) 매개 변수' 를 포함한, '고정 타입' 의 이름입니다.
+_타입 이름 (type name)_ 은, `String` 이나, `[Int]`, 또는 `Set<Int>` 같이, 어떤 일반화 매개 변수도 포함한, 고정 타입의 이름입니다.
 
-_경로 (path)_ 는 속성 이름, 첨자 연산, '옵셔널-연쇄 (optional-chaining) 표현식', 그리고 '강제로 포장을 푸는 (foced unwrapping) 표현식' 으로 구성됩니다. 이 각각의 '키-경로 성분' 은 필요한 만큼 많이, 어떤 순서로든, 반복할 수 있습니다.
+_경로 (path)_ 는 속성 이름과, 첨자, 옵셔널-사슬 표현식, 및 포장을 강제로 푸는 표현식으로 구성됩니다. 이 각각의 키-경로 성분은 필요한 만큼 많이, 어떤 순서로든, 반복할 수 있습니다.
 
-컴파일 시간에, 키-경로 표현식은 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체합니다.
+컴파일 시간에, 키-경로 표현식을 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체합니다.
 
-'키-경로' 를 사용하여 값에 접근하려면, 모든 타입에서 사용 가능한, `subscript(keyPath:)` 첨자 연산에 그 '키 경로' 를 전달합니다. 예를 들면 다음과 같습니다:
+키-경로로 값에 접근하려면, `subscript(keyPath:)` 첨자에 키 경로를 전달하면 되는데, 이는 모든 타입에서 사용 가능합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct SomeStructure {
@@ -499,10 +507,10 @@ let s = SomeStructure(someValue: 12)
 let pathToProperty = \SomeStructure.someValue
 
 let value = s[keyPath: pathToProperty]
-// value 는 12 입니다.
+// value 는 12 임
 ```
 
-_타입 이름 (type name)_ 은 타입 추론이 암시 타입을 결정할 수 있는 상황이면 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
+타입 추론이 암시 타입을 결정할 수 있는 상황에선 _타입 이름 (type name)_ 을 생략할 수 있습니다. 다음 코드는 `\SomeClass.someProperty` 대신 `\.someProperty` 를 사용합니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -518,11 +526,11 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-_경로 (path)_ 는 '자기 식별 (identity) 키 경로 (`\.self`)' 를 생성하는 `self` 를 참조할 수 있습니다. '자기 식별 키 경로' 는 인스턴스 전체를 참조하므로, 변수에 저장한 모든 데이터를 한 번에 접근하고 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
+_경로 (path)_ 는 `self` 를 참조하여 자기 식별 키 경로 (`\.self`) 를 생성할 수 있습니다. 자기 식별 키 경로는 인스턴스 전체를 참조하므로, 이를 사용하여 변수 안에 저장한 모든 데이터를 한 번만에 접근하고 바꿀 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
-// compoundValue = (a: 10, b: 20) 와 '동치 (equivalent)' 임
+// compoundValue = (a: 10, b: 20) 와 같은 것
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
@@ -1042,39 +1050,64 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^side-effect]: 컴퓨터 용어에서 'side effect' 를 '부작용' 이라고 직역하는 것이 옳은 것인지는 잘 모르겠습니다. 위키피디아에서는 'side effect' 를 다음과 같이 설명하고 있습니다. 컴퓨터 과학에서, 연산, 함수, 또는 표현식이 'side effect' 를 가지고 있다는 것은 이들이 지역 범위 외부에 있는 상태 변수의 값을 수정하는 경우를 말하는 것으로, 즉 해당 연산의 호출 쪽에서 함수 반환이라는 '주요 효과 (main effect)' 외에 별도로 '관찰 가능한 효과' 를 가지는 것을 말합니다. 이러한 정의에 따르면, 'side effect' 를 '부작용' 이라기 보다는 '부수적인 효과' 정도로 이해해도 좋을 것입니다. 다만, 'side effect' 가 '부작용' 이라고 널리 쓰이고 있으므로, 컴퓨터 용어에서의 '부작용' 이란 의미를 앞서와 같이 이해할 수도 있을 것입니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+[^primary-expression]: '으뜸 표현식 (primary expression)' 은 아래의 [Primary Expressions (으뜸 표현식)]({% post_url 2020-08-19-Expressions %}#primary-expressions-으뜸-표현식) 부분에서 설명합니다.
 
-[^ordered-collection]: '순서가 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 그 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
+[^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
-[^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 '특수 글자 값 구문' 이 됩니다.
+[^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 특수 글자 값 구문을 써서 나타냅니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트로 연결되는 링크로 되어 있습니다.
 
-[^infix-binary-operator]: 이 책은 '중위 이항 연산자 (infix binary operator)' 와 '이항 중위 연산자 (binary infix operator)' 라는 말을 같이 사용하고 있는데, 편의를 위해서 '이항 중위 연산자' 로 통일하여 옮깁니다.
+[^flat-list]: '납작한 리스트 (flat list)' 는 차원을 축소하여 1-차원화한 리스트라고 이해할 수 있습니다.
 
-[^flat-list]: [.map()과 .flatMap()의 차이](https://kchanguk.tistory.com/56) 라는 글을 참고해 볼 때, '납작한 리스트 (flat list)' 는 각각의 항목이 가장 작은 단위의 단일 원소로 이루어진 '리스트' 자료 구조라고 추측할 수 있습니다.
+[^upcasting]: '올림 변환 (upcasting)' 은 하위 클래스에서 상위 클래스로 형변환하는 것을 말합니다. 하위 클래스는 상위 클래스를 상속한 것이기 때문에 올림 변환은 항상 성공합니다. 
 
-[^foundation]: 여기서 'Foundation' 은 스위프트 프로그래밍을 하기 위해 애플에서 제공하고 있는 가장 기초가 되는 프레임웍이며, 스위프트에서는 보통 `import Foundation` 으로 불러오게 됩니다. 'Foundaton 타입' 이라면 'Foundation' 프레임웍에서 제공하고 있지만 스위프트 표준 라이브러리에 해당하는 타입은 아닌 것을 말한다고 이해할 수 있습니다.
+[^bridging]: '연동 (bridging)' 은 애플에서 스위프트의 자료 타입과 오브젝티브-C 의 자료 타입을 서로 호환해서 사용할 수 있도록 만든 방식입니다. 본문 뒤에 나오는 설명 처럼 연동을 사용하여 `String` 타입을 `NSString` 타입으로 변환하여 사용할 수 있습니다. 
 
-[^mutating-method]: '값 타입 (value type)' 은 구조체와 열거체를 말하는 것이며, '변경 메소드 (mutating method)' 는 값 타입의 'self' 를 변경할 수 있는 메소드를 말합니다. 이는 다른 인스턴스를 할당함으로써 `self` 를 변경할 수 있다는 의미입니다.
+[^foundation]: '파운데이션 (Foundation)' 은 스위프트 프로그래밍 언어의 기반을 이루는 프레임웍으로, 보통 `import Foundation` 으로 불러옵니다. 여기서 말하는 파운데이션 타입은 오브젝티브-C 와의 호환성을 위해 Foundation 프레임웍 안에 정의되어 있는 타입을 의미합니다. 
 
-[^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 '참조 타입' 이기 때문에, 서로를 참조하면 '강한 참조 순환' 이 발생합니다. 이를 방지하기 위해 '약한 참조' 나 '소유하지 않는 참조' 를 사용합니다.
+[^the-path]: `#ifle` 이 있는 곳의 파일 경로를 의미합니다.
 
-[^strength]: 여기서 '강하기 (strength)' 는 `strong`, `weak`, `unowned` 중 하나를 의미합니다.
+[^dynamic-shared-object]: '동적 공유 객체 (dynamic shared object; DSO)' 는 `.dylib` 나 `.so` 같이 현재 실행 중인 동적 연결 라이브러리를 의미합니다. 이에 대한 더 자세한 내용은, 애플 개발자 문서의 [Overview of Dynamic Libraries](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/OverviewOfDynamicLibraries.html) 항목을 참고하기 바랍니다. 
 
-[^implied-type]: 여기서 '자신의 상황이 암시하는 타입' 은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
+[^filePath-and-fildID]: 스위프트 5.3 이전까지의 `#file` 은 그 파일의 전체 경로였는데, 앞으로는 파일과 모듈 이름으로 바뀌게 됩니다. 본문의 내용은 현재는 `#file` 이 `#filePath` 와 똑같지만, 앞으로는 `#fileID` 와 똑같아질 거라는 의미입니다.
+
+[^file-to-filePath-and-fildID]: 미래 버전의 스위프트에선 `#file` 과 `#filePath` 를 확실하게 구분하려는 것 같습니다. 본문의 내용을 보면 `#filePath` 를 출하용 프로그램에서만 사용할 것을 권하는데, 이러한 구분은 개인 정보 보호 (privacy) 정책과도 관련있는 것 같습니다.
+
+[^shipping-program]: 개인이 소유하거나 컴파일하여 바이너리로 변환할 게 아닌 코드엔 `#filePath` 를 사용하지 않음으로써 개인 정보를 보호할 수 있다는 의미입니다.
+
+[^first-and-last-slash]: 현재는 `#fileID` 에 빗금이 하나 밖에 없어서 첫 번째와 마지막 빗금이 똑같지만, 미래에는 빗금이 여러 개일 수도 있으므로, 첫 번째와 마지막 빗금을 기준으로 읽을 것을 권장하고 있습니다.
+
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 서로 다른 겁니다. 이 둘의 차이점에 대해선, 스택 오버플로우 (StackOverflow) 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
+
+[^mutating-method]: 값 타입 (value type) 은 구조체와 열거체를 말하고, '변경 메소드 (mutating method)' 는 값 타입의 `self` 를 변경할 수 있는 메소드를 말합니다. 본문은 `self` 에 다른 인스턴스를 할당함으로써 값 타입을 변경할 수 있다는 의미입니다.
+
+[^capture]: 클로저의 '붙잡기 (capturoing)' 에 대한 더 자세한 정보는, [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장의 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 참고하기 바랍니다. 
+
+[^escaping-or-nonescaping]: 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식 자체가 아니라 표현식을 호출하는 쪽에 달려 있다는 의미입니다.
+
+[^strong-reference]: '강한 참조 (strong reference)' 에 대해서는 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 참고하기 바랍니다. 
+
+[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+
+[^because-of-reference]: `x` 가 클래스의 인스턴스라서 참조 의미 구조를 가지기 때문에 바깥 영역의 `x` 와 안쪽 영역의 `x` 가 동일한 대상을 참조합니다.
+
+[^weak-and-unowned-capture]: 클로저와 클래스는 둘 다 참조 타입이기 때문에, 서로를 참조하면 강한 참조 순환이 발생합니다. 이를 막기 위해, 약한 참조나 소유하지 않는 참조를 사용합니다.
+
+[^strength]: `strong` 이나, `weak`, 또는 `unowned` 로 지정한 강하기로 붙잡는다는 의미입니다.
+
+[^implied-type]: 자신의 암시 타입은 `SomeClass` 인데, `f()` 메소드의 반환 타입이 `SomeClass` 이므로 정확하게 일치합니다.
+
+[^void-vs-empty-tuple-expression]: 그렇기 때문에 `Void -> Void` 같은 함수 타입은 없습니다. `() -> Void` 라고 해야 합니다. 
+
+[^key-value-observing]: '키-값 관찰 (Key-Value Observing)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Key-Value Observing in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) 항목을 참고하기 바랍니다.
 
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 '오른쪽-에서-왼쪽' 순서를 사용하는 건, 예전에는 뒤에 딸린 (trailing) 클로저가 하나뿐이이라 가장 오른쪽 매개 변수였기 때문으로 추측됩니다. 스위프트 5.3 부터 뒤에 딸린 클로저가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 사용한다고 볼 수 있습니다.
 
-[^filePath-and-fildID]: `#file` 은 예전 버전에서는 '파일 및 모듈의 이름' 이었지만, 지금 버전에서는 '파일의 경로' 입니다. 이는 스위프트 5.3 에서 새로 생긴 `#fileID` 와 관련된 것으로 추측됩니다.
-
-[^file-to-filePath-and-fildID]: 미래 버전의 스위프트에서는 `#file` 과 `#filePath` 의 역할을 확실하게 구분하려는 의도가 있는 것 같습니다. 이어지는 본문의 내용을 보면 `#filePath` 를 '출하용 프로그램' 이외에는 사용하지 말 것을 권하는데, 이러한 역할 구분은 '개인 정보 보호 (privacy)' 정책과도 관련이 있는 것 같습니다.
-
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 
-[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
 
 [^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
 

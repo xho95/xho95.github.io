@@ -108,7 +108,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 특정한 정밀도�
 
 \"`characters-문자들`\"
 
-문자열 글자 값은 벗어나지 않은 (unescaped) 큰 따옴표 (`"`)[^unescaped] 나, 벗어나지 않은 역 빗금 (backslash; `\`), 캐리지 반환 (carriage return; `\r`), 또는 줄 먹임 (line feed; `\n`) 을 담을 수 없습니다.
+문자열 글자 값은 벗어나지 않는 큰 따옴표 (`"`)[^unescaped] 나, 벗어나지 않는 역 빗금 (backslash; `\`), 캐리지 반환 (carriage return; `\r`), 또는 줄 먹임 (line feed; `\n`) 을 담을 수 없습니다.
 
 여러 줄짜리 문자열 글자 값은 세 개의 큰 따옴표로 둘러싸며 형식은 다음과 같습니다:
 
@@ -116,7 +116,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 특정한 정밀도�
 `characters-문자들`<br />
 \"\"\"
 
-한-줄짜리 문자열 글자 값과 달리, 여러 줄짜리 문자열 글자 값은 벗어나지 않은 큰 따옴표 (`"`), 캐리지 반환 (`\r`), 및 줄 먹임 (`\n`) 을 담을 수 있습니다. 세 개의 벗어나지 않은 큰 따옴표를 서로 나란히 담을 순 없습니다.[^three-unescaped-double-quotation-marks]
+한-줄짜리 문자열 글자 값과 달리, 여러 줄짜리 문자열 글자 값은 벗어나지 않는 큰 따옴표 (`"`), 캐리지 반환 (`\r`), 및 줄 먹임 (`\n`) 을 담을 수 있습니다. 세 개의 벗어나지 않는 큰 따옴표를 서로 나란히 담을 순 없습니다.[^three-unescaped-double-quotation-marks]
 
 여러 줄짜리 문자열 글자 값을 시작하는 `"""` 뒤의 줄 끊음 (line break; `\n`)[^line-break] 은 문자열의 일부가 아닙니다. 글자 값을 끝내는 `"""` 앞의 줄 끊음도 문자열의 일부가 아닙니다. 여러 줄짜리 문자열 글자 값이 줄 먹임으로 시작하거나 끝나려면, 자신의 첫 번째 또는 마지막 줄에 빈 줄을 작성합니다.[^begins-or-ends]
 
@@ -137,7 +137,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 특정한 정밀도�
 * 작은 따옴표 (single quotation mark; `\'`)
 * 유니코드 크기 값 (unicode scalar; `\u{n}`), 여기서 _n_ 은 한 개에서 여덟 개까지의 숫자로 된 16진수입니다.
 
-표현식 값을 문자열 글자 값에 집어 넣으려면 괄호 안에 표현식을 두고 앞에 역 빗금 (`\`) 을 붙이면 됩니다. 끼워 넣은 표현식[^interpolation] 은 문자열 글자 값을 담을 수 있지만, 벗어나지 않은 역 빗금이나, 캐리지 반환, 또는 줄 먹임을 담을 순 없습니다.
+표현식 값을 문자열 글자 값에 집어 넣으려면 괄호 안에 표현식을 두고 앞에 역 빗금 (`\`) 을 붙이면 됩니다. 끼워 넣은 표현식[^interpolation] 은 문자열 글자 값을 담을 수 있지만, 벗어나지 않는 역 빗금이나, 캐리지 반환, 또는 줄 먹임을 담을 순 없습니다.
 
 예를 들어, 다음의 문자열 글자 값은 모두 똑같은 값을 가집니다:
 
@@ -189,6 +189,37 @@ let textB = "Hello world"
 ```
 
 > GRAMMAR OF A STRING LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
+
+#### Regular Expression Literals (정규 표현식 글자 값)
+
+정규 표현식 글자 값[^regular-expression] 은 빗금 (`/`) 으로 둘러싼 일련의 문자들로 형식은 다음과 같습니다:
+
+&nbsp;&nbsp;&nbsp;&nbsp;\/`regular expression-정규 표현식`\/
+
+정규 표현식 글자 값은 반드시 벗어나지 않는 탭이나 공백으로 시작해선 안되며, 벗어나지 않는 빗금 (`/`) 이나, 캐리지 반환, 또는 줄 먹임 문자를 담을 수도 없습니다. 
+
+정규 표현식 안에선, 역빗금이 그 정규 표현식의 일부분이라고 이해하지, 문자열 글자 값 안에서와 같이 벗어난 문자라고 하지 않습니다. 이는 다음의 특수 문자를 글자로 해석하거나, 다음의 특수하지 않은 문자를 특수한 방식으로 해석하라고 지시합니다. 예를 들어, `/\(/` 는 단일 왼쪽 괄호와 일치하고 `/\d/` 는 단일 숫자와 일치합니다.
+
+확장 구분자로 구분한 정규 표현식 글자 값은 빗금 (`/`) 으로 둘러싼 일련의 문자들과 하나 이상의 번호 기호 (`#`) 로 된 균형 집합[^balanced-set] 입니다. 확장 구분자로 구분한 정규 표현식 글자 값의 형식은 다음과 같습니다:
+
+&nbsp;&nbsp;&nbsp;&nbsp;\#\/`regular expression-정규 표현식`\/\#
+
+&nbsp;&nbsp;&nbsp;&nbsp;\#\/
+&nbsp;&nbsp;&nbsp;&nbsp;`regular expression-정규 표현식`
+&nbsp;&nbsp;&nbsp;&nbsp;\/\#
+
+확장 구분자를 사용한 정규 표현식 글자 값은 벗어나지 않는 공백이나 탭으로 시작할 수도, 벗어나지 않는 빗금 (`/`) 을 담거나, 여러 줄에 걸쳐 있을 수도 있습니다. 여러 줄짜리 정규 표현식 글자 값에선, 여는 구분자는 반드시 줄 끝에 있어야 하고, 닫는 구분자는 자신만의 줄 위에 있어야 합니다.[^opening-and-closing-delimiter] 여러 줄짜리 정규 표현식 글자 값 안에선, 확장 정규 표현식 구문이 기본 사용 가능합니다-특히, 공백은 무시하고 주석을 허용합니다.
+
+확장 구분자로 구분한 정규 표현식 형식에 하나 이상의 번호 기호를 사용하려면, 번호 기호 사이에 공백을 두지 않습니다: 
+
+```swift
+let regex1 = ##/abc/##      // 괜찮음
+let regex2 = # #/abc/# #    // 에러
+```
+
+빈 정규 표현식 글자 값을 만들 필요가 있으면, 반드시 확장 구분자 구문을 사용해야 합니다.
+
+> GRAMMAR OF A REGULAR EXPRESSION LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
 ### Operators (연산자)
 
@@ -249,9 +280,9 @@ let textB = "Hello world"
 
 [^type-annotations]: '타입 보조 설명 (Type Annotations)' 에 대해서는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
 
-[^unescaped]: 여기서 '벗어나지 않은' 것이란, 앞서 '벗어난 (escaped) 것' 에서 설명한 것과 반대로, 문자의 본래 의미로 사용하는 것을 말합니다. 본문에서는 '문자열 글자 값' 이 '따옴표' 를 직접 담을 수 없으며, 따옴표를 문자열 글자 값에 사용하려면 `\` 를 붙여야 함을 설명하고 있습니다.
+[^unescaped]: 여기서 '벗어나지 않는 것' 이란, 앞서 '벗어난 (escaped) 것' 에서 설명한 것과 반대로, 문자의 본래 의미로 사용하는 것을 말합니다. 본문에서는 '문자열 글자 값' 이 '따옴표' 를 직접 담을 수 없으며, 따옴표를 문자열 글자 값에 사용하려면 `\` 를 붙여야 함을 설명하고 있습니다.
 
-[^three-unescaped-double-quotation-marks]: 세 개의 벗어나지 않은 큰 따옴표를 서로 나란히 담을 수 없다는 건 `""""""` 처럼 큰 따옴표 여섯 개를 나란히 사용할 순 없다는 의미입니다. 이러면 `Multi-line string literal content must begin on a new line (여러 줄짜리 문자열 글자 값은 반드시 새로운 줄 문자 (\n) 로 시작해야 합니다.)` 라는 에러가 발생합니다.
+[^three-unescaped-double-quotation-marks]: 세 개의 벗어나지 않는 큰 따옴표를 서로 나란히 담을 수 없다는 건 `""""""` 처럼 큰 따옴표 여섯 개를 나란히 사용할 순 없다는 의미입니다. 이러면 `Multi-line string literal content must begin on a new line (여러 줄짜리 문자열 글자 값은 반드시 새로운 줄 문자 (\n) 로 시작해야 합니다.)` 라는 에러가 발생합니다.
 
 [^line-break]: 이 책에서는 '줄 끊음 (line break) 과, 줄 먹임 (line feed) 및, 새 줄 (new line; 개행 문자)' 이라는 용어를 섞어 쓰는데, 셋 다 `\n` 를 의미합니다. 초창기에 컴퓨터 운영 체제마다 서로 다른 개행 문자를 사용하다 보니, 똑같은 걸 의미하는 용어가 생긴 것이 아닌가 생각합니다. 스위프트에선 '개행 문자로 줄 먹임 (line feed; LF; `\n`) 만 사용' 하는 게 표준입니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Newline](https://en.wikipedia.org/wiki/Newline) 항목과 [새줄 문자](https://ko.wikipedia.org/wiki/새줄_문자) 항목을 참고하기 바랍니다.
 
@@ -265,11 +296,15 @@ let textB = "Hello world"
 
 [^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 본문에서 말하는 균형 집합이란, `#` 의 개수는 상관없이, 양쪽의 `#` 개수가 똑같으면 된다는 의미입니다. 균형 집합에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
 
+[^opening-and-closing-delimiter]: 이는 본문의 형식에서 보돗, `#/` 과 `/#` 이 각각 그 자체로 한 줄을 차지해야 한다는 의미입니다.
+
 [^interpolation]: 'interpolation' 은 수학에서 말하는 보간법인데, '보간' 이란 말 자체가 사이에 끼워 넣는다는 의미이므로, 수학 용어로 사용되는게 아니면 '끼워 넣기' 라고 하겠습니다. 보간법 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
 
 [^more-than-one-number]: 첫 번째 예제인 `print(###"Line 1\###nLine 2"###)` 는, 결과를 두 줄로 인쇄합니다. 확장 구분자로 구분한 문자열 안의 특수 문자는 보통 문자라고 인식하지만, `\###n` 처럼, 확장 구분자를 집어 넣으면 다시 특수 문자로 인식합니다.
 
 [^developer-string]: 원문 자체가 '애플 개발자 문서' 에 대한 링크입니다. 
+
+[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안에서 검색 패턴을 지정하는 일련의 문자들을 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 참고하기 바랍니다. 
 
 [^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
 
