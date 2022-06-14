@@ -534,7 +534,7 @@ var compoundValue = (a: 1, b: 2)
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
-_경로 (path)_ 는, 속성 값의 속성을 참조하기 위해, 마침표로 구분한, 여러 개의 속성 이름을 담을 수 있습니다. 다음 코드는 `OuterStructure` 타입의 `outer` 속성에 있는 `someValue` 속성에 접근하려고 `\OuterStructure.outer.someValue` 라는 '키 경로 표현식' 을 사용합니다:
+_경로 (path)_ 는 여러 속성 이름을, 마침표로 구분하여, 담아, 속성 값의 속성도 참조할 수 있습니다. 다음 코드는 `OuterStructure` 타입의 `outer` 속성에 있는 `someValue` 속성에 접근하려고 `\OuterStructure.outer.someValue` 라는 '키 경로 표현식' 을 사용합니다:
 
 ```swift
 struct OuterStructure {
