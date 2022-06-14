@@ -551,7 +551,7 @@ let nestedValue = nested[keyPath: nestedKeyPath]
 // nestedValue 는 24 임
 ```
 
-_경로 (path)_ 는, 첨자의 매개 변수 타입이 `Hashable` 프로토콜을 준수하는 한, 그 첨자를 대괄호로 포함할 수 있습니다. 다음 예제는 키 경로에서 첨자를 써서 배열의 두 번째 원소에 접근합니다:
+_경로 (path)_ 는, 첨자의 매개 변수 타입이 `Hashable` 프로토콜을 준수하는 한, 대괄호를 써서 첨자를 포함할 수 있습니다. 다음 예제는 키 경로에서 첨자를 써서 배열의 두 번째 원소에 접근합니다:
 
 ```swift
 let greetings = ["hello", "hola", "bonjour", "안녕"]
@@ -559,7 +559,7 @@ let myGreeting = greetings[keyPath: \[String].[1]]
 // myGreeting 은 'hola' 임
 ```
 
-첨자 연산에서 사용하는 값은 '이름 붙인 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
+첨자에서 사용할 수 있는 값은 이름 붙인 값 또는 글자 값입니다. 키 경로는 값 의미 구조로 값을 붙잡습니다. 이 다음 코드는 키-경로 표현식과 클로저 둘 다에서 `index` 변수로 `greetings` 배열의 세 번째 원소에 접근합니다. `index` 를 수정할 땐, 키-경로 표현식이 여전히 세 번째 원소를 참조하는 동안, 클로저는 새로운 색인을 사용합니다.
 
 ```swift
 var index = 2
@@ -567,31 +567,31 @@ let path = \[String].[index]
 let fn: ([String]) -> String = { strings in strings[index] }
 
 print(greetings[keyPath: path])
-// "bonjour" 를 인쇄합니다.
+// "bonjour" 를 인쇄함
 print(fn(greetings))
-// "bonjour" 를 인쇄합니다.
+// "bonjour" 를 인쇄함
 
-// 'index' 에 새 값을 설정해도 'path' 에는 영향을 주지 않습니다.
+// 'index' 에 새 값을 설정하는 건 'path' 에 영향을 주지 않음
 index += 1
 print(greetings[keyPath: path])
-// "bonjour" 를 인쇄합니다.
+// "bonjour" 를 인쇄함
 
-// 'fn' 이 'index' 를 잡아 가두기 때문에, 새 값을 사용합니다.
+// 'fn' 이 'index' 를 닫아 버리기 때문에, 새 값을 사용함
 print(fn(greetings))
-// "안녕" 를 인쇄합니다.
+// "안녕" 를 인쇄함
 ```
 
-_경로 (path)_ 는 '옵셔널 연쇄 (optional chaining)' 와 '강제 포장 풀기 (forced unwrapping)' 를 사용할 수 있습니다. 다음 코드는 옵셔널 문자열의 속성에 접근하기 위해 '키 경로' 에서 '옵셔널 연쇄' 를 사용합니다:
+_경로 (path)_ 는 옵셔널 사슬과 강제 포장 풀기를 사용할 수 있습니다. 이 다음 코드는 키 경로에서 옵셔널 사슬를 써서 옵셔널 문자열 안의 속성에 접근합니다:
 
 ```swift
 let firstGreeting: String? = greetings.first
 print(firstGreeting?.count as Any)
-// "Optional(5)" 를 인쇄합니다.
+// "Optional(5)" 를 인쇄함
 
 // 키 경로를 써서 똑같이 합니다.
 let count = greetings[keyPath: \[String].first?.count]
 print(count as Any)
-// "Optional(5)" 를 인쇄합니다.
+// "Optional(5)" 를 인쇄함
 ```
 
 타입 안에 깊숙하게 중첩된 값에 접근하기 위해 '키 경로' 성분을 섞어서 일치시킬 수 있습니다. 다음 코드는 이 성분들을 조합한 '키-경로 표현식' 을 사용함으로써 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
