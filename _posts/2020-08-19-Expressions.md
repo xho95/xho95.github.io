@@ -623,23 +623,23 @@ var toDoList = [
   Task(description: "Visit Boston in the Fall.", completed: false),
 ]
 
-// 아래 접근 방식 둘 다 '동치 (equivalent)' 입니다.
+// 아래의 접근법은 둘 다 같은 겁니다.
 let descriptions = toDoList.filter(\.completed).map(\.description)
 let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
 ```
 
-키 경로 표현식의 부작용이라면 표현식을 평가하는 그 시점에만 평가한다는 것입니다. 예를 들어, 키 경로 표현식에 있는 첨자 연산 안에서 함수 호출을 하면, 키 경로를 사용할 때마다가 아닌, 표현식 평가 때 단 한번만 함수를 호출합니다.
+키 경로 표현식의 어떤 부작용이든[^side-effects] 표현식을 평가하는 시점에만 평가합니다. 예를 들어, 키 경로 표현식의 첨자 안에 함수 호출을 만들면, 표현식 평가 부분에서 단 한번만 함수를 호출하지, 키 경로를 사용할 때마다 하진 않습니다.
 
 ```swift
 func makeIndex() -> Int {
   print("Made an index")
   return 0
 }
-// 아래 줄은 makeIndex() 를 호출합니다.
+// 아래 줄은 makeIndex() 를 호출함
 let taskKeyPath = \[Task][makeIndex()]
-// "Made an index" 를 인쇄합니다.
+// "Made an index" 를 인쇄함
 
-// taskKeyPath 를 사용해도 makeIndex() 를 다시 호출하진 않습니다.
+// taskKeyPath 의 사용은 makeIndex() 를 다시 호출하지 않음
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 
@@ -1102,13 +1102,14 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^key-value-observing]: '키-값 관찰 (Key-Value Observing)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Key-Value Observing in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) 항목을 참고하기 바랍니다.
 
+[^side-effects]: 프로그래밍에서의 '부작용 (side effects)' 은 '부수적 효과' 정도의 의미입니다.
+
+[^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
+
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 '오른쪽-에서-왼쪽' 순서를 사용하는 건, 예전에는 뒤에 딸린 (trailing) 클로저가 하나뿐이이라 가장 오른쪽 매개 변수였기 때문으로 추측됩니다. 스위프트 5.3 부터 뒤에 딸린 클로저가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 사용한다고 볼 수 있습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
-
-
-[^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
 
 [^argument-label]: 여기서 말하는 '매개 변수에 대한 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 참고하기 바랍니다. 
