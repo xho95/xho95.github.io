@@ -594,23 +594,23 @@ print(count as Any)
 // "Optional(5)" 를 인쇄함
 ```
 
-타입 안에 깊숙하게 중첩된 값에 접근하기 위해 '키 경로' 성분을 섞어서 일치시킬 수 있습니다. 다음 코드는 이 성분들을 조합한 '키-경로 표현식' 을 사용함으로써 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
+키 경로의 성분을 섞어서 맞춰보면 타입 안에 깊숙히 중첩된 값에 접근할 수 있습니다. 다음 코드는 이러한 성분을 조합한 키-경로 표현식을 사용하여 배열 딕셔너리의 서로 다른 값과 속성에 접근합니다.
 
 ```swift
 let interestingNumbers = ["prime": [2, 3, 5, 7, 11, 13, 17],
                           "triangular": [1, 3, 6, 10, 15, 21, 28],
                           "hexagonal": [1, 6, 15, 28, 45, 66, 91]]
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]] as Any)
-// "Optional([2, 3, 5, 7, 11, 13, 17])" 을 인쇄합니다.
+// "Optional([2, 3, 5, 7, 11, 13, 17])" 을 인쇄함
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]![0]])
-// "2" 를 인쇄합니다.
+// "2" 를 인쇄함
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count])
-// "7" 을 인쇄합니다.
+// "7" 을 인쇄함
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count.bitWidth])
-// "64" 를 인쇄합니다.
+// "64" 를 인쇄함
 ```
 
-'키 경로 표현식' 은 보통이라면 함수나 클로저를 제공할만한 상황에서 사용할 수 있습니다. 특히, '근원 (root) 타입' 은 `SomeType` 이고 경로는, `(SomeType) -> Value` 타입의 함수나 클로저 대신, `Value` 타입의 값을 만드는 '키 경로 표현식' 을 사용할 수 있습니다.
+보통은 함수나 클로저를 제공할 상황에서 키 경로 표현식을 사용할 수 있습니다. 특히, `(SomeType) -> Value` 타입의 함수나 클로저 대신, 근원 타입은 `SomeType` 이고 경로는 `Value` 타입의 값을 만드는 키 경로 표현식을 사용할 수도 있습니다.
 
 ```swift
 struct Task {
