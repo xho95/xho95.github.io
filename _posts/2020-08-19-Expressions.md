@@ -534,7 +534,7 @@ var compoundValue = (a: 1, b: 2)
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
-_경로 (path)_ 는 여러 속성 이름을, 마침표로 구분하여, 담아, 속성 값의 속성도 참조할 수 있습니다. 다음 코드는 `OuterStructure` 타입의 `outer` 속성에 있는 `someValue` 속성에 접근하려고 `\OuterStructure.outer.someValue` 라는 '키 경로 표현식' 을 사용합니다:
+_경로 (path)_ 는 여러 속성 이름을, 마침표로 구분하여, 담아, 속성 값의 속성도 참조할 수 있습니다. 다음 코드는 `\OuterStructure.outer.someValue` 키 경로 표현식을 사용하여 `OuterStructure` 타입의 `outer` 속성에 있는 `someValue` 속성에 접근합니다:
 
 ```swift
 struct OuterStructure {
@@ -548,15 +548,15 @@ let nested = OuterStructure(someValue: 24)
 let nestedKeyPath = \OuterStructure.outer.someValue
 
 let nestedValue = nested[keyPath: nestedKeyPath]
-// nestedValue 는 24 입니다.
+// nestedValue 는 24 임
 ```
 
-_경로 (path)_ 는, 첨자 연산의 매개 변수 타입이 `Hashable` 프로토콜을 준수하면, 대괄호를 써서 첨자 연산을 포함할 수 있습니다. 다음 예제는 배열에 있는 두 번째 원소에 접근하기 위해 '키 경로' 에서 첨자 연산을 사용합니다.
+_경로 (path)_ 는, 첨자의 매개 변수 타입이 `Hashable` 프로토콜을 준수하는 한, 그 첨자를 대괄호로 포함할 수 있습니다. 다음 예제는 키 경로에서 첨자를 써서 배열의 두 번째 원소에 접근합니다:
 
 ```swift
 let greetings = ["hello", "hola", "bonjour", "안녕"]
 let myGreeting = greetings[keyPath: \[String].[1]]
-// myGreeting 은 'hola' 입니다.
+// myGreeting 은 'hola' 임
 ```
 
 첨자 연산에서 사용하는 값은 '이름 붙인 (named) 값' 이나 '글자 값 (literal)' 일 수 있습니다. '키 경로' 는 '값 의미 구조 (value semantics)' 를 사용하여 값을 붙잡습니다. 다음 코드는 `greetings` 배열의 세 번째 원소에 접근하기 위해 키-경로 표현식과 클로저 둘 다 `index` 변수를 사용합니다. `index` 를 수정하면, 키-경로 표현식은 여전히 세 번째 원소를 참조하는 반면, 클로저는 새로운 색인을 사용합니다.
