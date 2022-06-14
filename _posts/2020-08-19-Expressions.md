@@ -643,7 +643,7 @@ let taskKeyPath = \[Task][makeIndex()]
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 
-오브젝티브-C API 와 상호 작용하는 코드에서 '키 경로' 를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 과 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 코드에서의 키 경로 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. 키-값 코딩과 키-값 관찰에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
 
 >> GRAMMAR OF A KEY-PATH EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
