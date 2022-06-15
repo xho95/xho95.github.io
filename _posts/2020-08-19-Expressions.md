@@ -739,11 +739,11 @@ print(keyPath == c.getSomeKeyPath())
 
 ### Postfix Expressions (접미사 표현식)
 
-_접미사 표현식 (postfix expressions)_ 은 표현식에 접미사 연산자 또는 다른 접미사 구문을 적용함으로써 형성합니다. 구문상으로, 모든 '으뜸 (primary) 표현식' 들은 또한 '접미사 표현식' 입니다.
+_접미사 표현식 (postfix expressions)_ 은 접미사 연산자나 그 외 접미사 구문을 표현식에 적용함으로써 형성합니다. 구문상, 모든 으뜸 표현식 또한 접미사 표현식입니다.
 
-이 연산자들의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이러한 연산자의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
+스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
 
 > GRAMMAR OF A POSTFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
