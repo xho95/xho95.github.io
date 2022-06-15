@@ -649,7 +649,7 @@ let someTask = toDoList[keyPath: taskKeyPath]
 
 #### Selector Expression (선택자 표현식)
 
-_선택자 표현식 (selector expression)_ 은 오브젝티브-C 에 있는 메소드나 속성의 '획득자 (getter)' 또는 '설정자 (setter)' 를 참조하기 위한 '선택자 (selector)' 에 접근하도록 합니다. 형식은 다음과 같습니다:
+_선택자 표현식 (selector expression)_ 은 선택자[^selector] 에 접근해서 오브젝티브-C 의 메소드나 속성의 획득자 또는 설정자를 참조하게 해줍니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#selector(`method name-메소드 이름`)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\#selector(getter: `property name-속성 이름`<br />
@@ -1103,6 +1103,8 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^key-value-observing]: '키-값 관찰 (Key-Value Observing)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Key-Value Observing in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) 항목을 참고하기 바랍니다.
 
 [^side-effects]: 프로그래밍에서의 '부작용 (side effects)' 은 '부수적 효과' 정도의 의미입니다.
+
+[^selector]: 오브젝티브-C 의 '선택자 (selector)' 는 오브젝티브-C 메소드 이름을 참조하는 타입입니다. 스위프트의 선택자 표현식은 이 오브젝티브-C 의 선택자에 접근하도록 해줍니다. 이에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using-objective-c-runtime-features-in-swift) 항목을 참고하기 바랍니다. 
 
 [^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
 
