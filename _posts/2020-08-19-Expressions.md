@@ -749,17 +749,17 @@ _접미사 표현식 (postfix expressions)_ 은 접미사 연산자나 그 외 �
 
 #### Function Call Expression (함수 호출 표현식)
 
-_함수 호출 표현식 (function call expression)_ 은 '괄호 친 쉼표로-구분한 함수 인자 목록' 이 뒤따라 오는 '함수 이름' 으로 구성됩니다. '함수 호출 표현식' 의 형식은 다음과 같습니다:
+_함수 호출 표현식 (function call expression)_ 은 함수 이름과 그 뒤의 괄호 안에 넣은 쉼표로-구분한 함수 인자 목록으로 구성합니다. 함수 호출 표현식의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`function name-함수 이름`(`argument value 1-인자 값 1`, `argument value 2-인자 값 2`)
 
-_함수 이름 (function name)_ 은 함수 타입의 값인 어떤 표현식이든 될 수 있습니다.
+_함수 이름 (function name)_ 은 그 값이 함수 타입인 어떤 표현식이든 될 수 있습니다.
 
-'함수 정의' 가 매개 변수에 대한 이름[^argument-label] 을 포함하고 있으면, '함수 호출' 도 자신의 인자 값 앞에, 콜론 (`:`) 으로 구분한, 이름을 반드시 포함해야 합니다. 이런 종류의 '함수 호출 표현식' 은 다음 형식을 가집니다:
+함수 정의가 자신의 매개 변수의 이름[^argument-label] 을 포함하면, 함수 호출도 반드시 자신의 인자 값 앞에, 콜론 (`:`) 으로 구분한, 이름을 포함해야 합니다. 이런 종류의 함수 호출 표현식 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
 
-'함수 호출 표현식' 은 닫는 괄호 바로 뒤에 '클로저 표현식' 형식의 '뒤에 딸린 클로저 (trailing closures)' 를 포함할 수 있습니다. 뒤에 딸린 클로저는, 마지막 괄호 친 인자 뒤에 추가한, 함수의 인자로 이해합니다. '첫 번째 클로저 표현식' 은 이름표를 붙이지 않으며; 어떤 '추가적인 클로저 표현식' 이든 앞에 '인자 이름표 (argument labels)' 를 붙입니다. 아래 예제는 '뒤에 딸린 클로저 구문을 사용한 것과 사용하지 않은 것이 서로 같은 버전의 함수 호출' 을 보여줍니다:
+함수 호출 표현식은 닫는 괄호 바로 뒤에 클로저 표현식 형식의 뒤딸린 클로저 (trailing closures) 를 포함할 수 있습니다. 뒤딸린 클로저는, 괄호 안 마지막 인자 뒤에 추가된, 함수 인자로 이해합니다. 첫 번째 클로저 표현식엔 이름표를 붙이지 않으며; 추가적인 어떤 클로저 표현식이든 앞에 자신의 인자 이름표를 붙입니다. 아래 예제는 '뒤에 딸린 클로저 구문을 사용한 것과 사용하지 않은 것이 서로 같은 버전의 함수 호출' 을 보여줍니다:
 
 ```swift
 // someFunction 은 정수와 클로저를 인자로 취합니다.
@@ -1110,10 +1110,10 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^key-path-string-expression]: '키-경로 문자열 표현식 (key-path string expression)' 은 '키-경로 표현식 (key-path expression)' 을 오브젝티브-C 의 속성에 사용하기 위한 방법일 것이라고 생각합니다.
 
+[^argument-label]: 여기서 말하는 '매개 변수의 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 참고하기 바랍니다. 
+
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 '오른쪽-에서-왼쪽' 순서를 사용하는 건, 예전에는 뒤에 딸린 (trailing) 클로저가 하나뿐이이라 가장 오른쪽 매개 변수였기 때문으로 추측됩니다. 스위프트 5.3 부터 뒤에 딸린 클로저가 여러 개가 될 수 있으므로 '왼쪽-에서-오른쪽' 순서를 사용한다고 볼 수 있습니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
-
-[^argument-label]: 여기서 말하는 '매개 변수에 대한 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 참고하기 바랍니다. 
