@@ -655,7 +655,7 @@ _선택자 표현식 (selector expression)_ 은 선택자[^selector] 에 접근�
 &nbsp;&nbsp;&nbsp;&nbsp;\#selector(getter: `property name-속성 이름`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\#selector(setter: `property name-속성 이름`)
 
-_메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 반드시 '오브젝티드-C 런타임' 에서 사용 가능한 메소드나 속성의 참조여야 합니다. '선택자 표현식' 의 값은 `Selector` 타입의 인스턴스입니다. 예를 들면 다음과 같습니다:
+_메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 반드시 오브젝티드-C 런타임에서 사용 가능한 메소드나 속성을 참조해야 합니다. 선택자 표현식의 값은 `Selector` 타입의 인스턴스입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -672,9 +672,9 @@ let selectorForMethod = #selector(SomeClass.doSomething(_:))
 let selectorForPropertyGetter = #selector(getter: SomeClass.property)
 ```
 
-속성의 획득자를 위해 선택자를 생성할 때는, _속성 이름 (property name)_ 이 변수나 상수 속성의 참조일 수 있습니다. 이와 대조적으로, 속성의 설정자를 위해 선택자를 생성할 때는, _속성 이름 (property name)_ 이 반드시 변수 속성의 참조여야만 합니다.
+속성의 획득자를 위해 선택자를 생성할 땐, _속성 이름 (property name)_ 이 변수 또는 상수 속성의 참조일 수 있습니다. 이와 대조적으로, 속성의 설정자를 위해 선택자를 생성할 땐, _속성 이름 (property name)_ 이 반드시 변수 속성만의 참조여야 합니다.
 
-_메소드 이름 (method name)_ 은, 이름은 공유하지만 '타입 서명' 은 서로 다른 메소드 사이의 모호함을 없애기 위한 `as` 연산자 뿐만 아니라, 그룹짓기를 위한 괄호도 담을 수 있습니다. 예를 들면 다음과 같습니다:
+_메소드 이름 (method name)_ 은, 이름은 공유하지만 타입 서명은 다른 메소드[^methods-type-signatures] 사이의 모호함을 없애는 `as` 연산자뿐 아니라, 그룹을 짓기 위한 괄호도 담을 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 extension SomeClass {
@@ -684,11 +684,11 @@ extension SomeClass {
 let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (String) -> Void)
 ```
 
-선택자는, 실행 시간이 아니라, 컴파일 시간에 생성하기 때문에, 컴파일러가 메소드나 속성이 존재하며 '오브젝티브-C 런타임' 으로 노출되고 있는 지를 검사할 수 있습니다.
+실행 시간이 아닌, 컴파일 시간에 선택자를 생성하기 때문에, 메소드 및 속성이 존재하는 지 그리고 오브젝티브-C 런타임으로 드러냈는 지를 컴파일러가 검사할 수 있습니다.
 
-> 비록 _메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 이 '표현식' 일지라도, 이를 절대로 평가하지 않습니다.
+> _메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 표현식이긴 하지만, 절대로 평가를 하지 않습니다.
 
-오브젝티브-C API 와 상호 작용하는 스위프트 코드에서 선택자를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 스위프트 코드에서의 선택자 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다.
 
 > GRAMMAR OF A SELECTOR EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1105,6 +1105,8 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 [^side-effects]: 프로그래밍에서의 '부작용 (side effects)' 은 '부수적 효과' 정도의 의미입니다.
 
 [^selector]: 오브젝티브-C 의 '선택자 (selector)' 는 오브젝티브-C 메소드 이름을 참조하는 타입입니다. 스위프트의 선택자 표현식은 이 오브젝티브-C 의 선택자에 접근하도록 해줍니다. 이에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using-objective-c-runtime-features-in-swift) 항목을 참고하기 바랍니다. 
+
+[^methods-type-signatures]: '이름은 공유하지만 타입 서명은 다른 메소드' 는 '중복 정의 (overloading) 하여 함수 이름은 같지만 매개 변수 및 반환 타입을 포함한 함수의 타입 자체는 다른 메소드들' 을 말합니다.
 
 [^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
 
