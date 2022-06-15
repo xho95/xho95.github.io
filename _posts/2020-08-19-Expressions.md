@@ -684,9 +684,9 @@ extension SomeClass {
 let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (String) -> Void)
 ```
 
-실행 시간이 아닌, 컴파일 시간에 선택자를 생성하기 때문에, 메소드 및 속성이 존재하는 지 그리고 오브젝티브-C 런타임으로 드러냈는 지를 컴파일러가 검사할 수 있습니다.
+실행 시간이 아닌, 컴파일 시간에 선택자를 생성하기 때문에, 메소드 및 속성이 존재하는지 그리고 오브젝티브-C 런타임으로 드러냈는지를 컴파일러가 검사할 수 있습니다.
 
-> _메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 표현식이긴 하지만, 절대로 평가를 하지 않습니다.
+> _메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 표현식이긴 하지만, 절대로 평가하지 않습니다.
 
 오브젝티브-C API 와 상호 작용하는 스위프트 코드에서의 선택자 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다.
 
@@ -694,11 +694,11 @@ let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (Str
 
 #### Key-Path String Expression (키 경로 문자열 표현식)
 
-'키-경로 문자열 표현식' 은, '키-값 코딩 (coding)' 과 '키-값 관찰 (observing)' API 에서 사용하기 위해, 오브젝티브-C 의 속성 참조에 사용하는 문자열을 접근하도록 합니다.[^key-path-string-expression] 형식은 다음과 같습니다:
+키-경로 문자열 표현식은 문자열에 접근해서, 키-값 코딩과 키-값 관찰 API 에서 사용할, 오브젝티브-C 의 속성을 참조하게 해줍니다.[^key-path-string-expression] 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#keyPath(`property name-속성 이름`)
 
-_속성 이름 (property name)_ 은 반드시 '오브젝티브-C 런타임' 에서 사용 가능한 속성의 참조여야 합니다. 컴파일 시간에, '키-경로 문자열 표현식' 은 '문자열 글자 값 (literal)' 으로 대체됩니다. 예를 들면 다음과 같습니다:
+_속성 이름 (property name)_ 은 반드시 오브젝티브-C 런타임에서 사용 가능한 속성을 참조해야 합니다. 컴파일 시간에, 키-경로 문자열 표현식을 문자열 글자 값으로 대체합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass: NSObject {
@@ -714,10 +714,10 @@ let keyPath = #keyPath(SomeClass.someProperty)
 if let value = c.value(forKey: keyPath) {
   print(value)
 }
-// "12" 를 인쇄합니다.
+// "12" 를 인쇄함
 ```
 
-클래스 안에서 '키-경로 문자열 표현식' 을 사용할 때는, 클래스 이름 없이, 속성 이름을 작성하는 것만으로도 해당 클래스의 속성을 참조할 수 있습니다.
+클래스 안에서 키-경로 문자열 표현식을 사용할 땐, 클래스 이름 없이, 그냥 속성 이름만 작성하여 그 클래스의 속성을 참조할 수 있습니다.
 
 ```swift
 extension SomeClass {
@@ -726,14 +726,14 @@ extension SomeClass {
   }
 }
 print(keyPath == c.getSomeKeyPath())
-// "true" 를 인쇄합니다.
+// "true" 를 인쇄함
 ```
 
-키 경로 문자열은, 실행 시간이 아니라, 컴파일 시간에 생성하기 때문에, 컴파일러가 속성이 존재하며 '오브젝티브-C 런타임' 으로 노출되고 있는 지를 검사할 수 있습니다.
+실행 시간이 아닌, 컴파일 시간에 키 경로 문자열을 생성하기 때문에, 속성이 존재하는지 그리고 속성을 오브젝티브-C 런타임으로 드러냈는지를 컴파일러가 검사할 수 있습니다.
 
-오브젝티브-C API 와 상호 작용하는 스위프트 코드에서 '키 경로 (key paths)' 를 사용하는 것에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. '키-값 코딩 (key-value coding)' 과 '키-값 관찰 (key-value observing)' 에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 스위프트 코드에서의 키 경로 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. 키-값 코딩과 키-값 관찰에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
 
-> 비록 _속성 이름 (property name)_ 이 '표현식' 일지라도, 이를 절대로 평가하지 않습니다.
+> _속성 이름 (property name)_ 은 표현식이긴 하지만, 절대로 평가하지 않습니다.
 
 > GRAMMAR OF A KEY-PATH STRING EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -1108,7 +1108,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^methods-type-signatures]: '이름은 공유하지만 타입 서명은 다른 메소드' 는 '중복 정의 (overloading) 하여 함수 이름은 같지만 매개 변수 및 반환 타입을 포함한 함수의 타입 자체는 다른 메소드들' 을 말합니다.
 
-[^key-path-string-expression]: '키-값 문자열 표현식' 은 '키-값 표현식' 을 오브젝티브-C 의 속성에서 사용하기 위한 방법이라고 생각됩니다.
+[^key-path-string-expression]: '키-경로 문자열 표현식 (key-path string expression)' 은 '키-경로 표현식 (key-path expression)' 을 오브젝티브-C 의 속성에 사용하기 위한 방법일 것이라고 생각합니다.
 
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
