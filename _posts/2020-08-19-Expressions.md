@@ -759,22 +759,22 @@ _함수 이름 (function name)_ 은 그 값이 함수 타입인 어떤 표현식
 
 &nbsp;&nbsp;&nbsp;&nbsp;`function name-함수 이름`(`argument name 1-인자 이름 1`: `argument value 1-인자 값 1`, `argument name 2-인자 이름 2`: `argument value 2-인자 값 2`)
 
-함수 호출 표현식은 닫는 괄호 바로 뒤에 클로저 표현식 형식의 뒤딸린 클로저 (trailing closures) 를 포함할 수 있습니다. 뒤딸린 클로저는, 괄호 안 마지막 인자 뒤에 추가된, 함수 인자로 이해합니다. 첫 번째 클로저 표현식엔 이름표를 붙이지 않으며; 추가적인 어떤 클로저 표현식이든 앞에 자신의 인자 이름표를 붙입니다. 아래 예제는 '뒤에 딸린 클로저 구문을 사용한 것과 사용하지 않은 것이 서로 같은 버전의 함수 호출' 을 보여줍니다:
+함수 호출 표현식은 닫는 괄호 바로 뒤에 클로저 표현식 형식의 뒤딸린 클로저 (trailing closures) 를 포함할 수 있습니다. 뒤딸린 클로저는, 괄호 안 마지막 인자 뒤에 추가된, 함수 인자로 이해합니다. 첫 번째 클로저 표현식엔 이름표를 붙이지 않으며; 추가적인 어떤 클로저 표현식이든 앞에 자신의 인자 이름표를 붙입니다. 아래 예제는 뒤딸린 클로저 구문을 사용한 것과 하지 않은 게 서로 같은 함수 호출을 보여줍니다:
 
 ```swift
-// someFunction 은 정수와 클로저를 인자로 취합니다.
+// someFunction 은 하나의 정수와 하나의 클로저를 인자로 취함
 someFunction(x: x, f: { $0 == 13 })
 someFunction(x: x) { $0 == 13 }
 
-// anotherFunction 은 정수와 두 개의 클로저를 인자로 취합니다.
+// anotherFunction 은 하나의 정수와 두 개의 클로저를 인자로 취함
 anotherFunction(x: x, f: { $0 == 13 }, g: { print(99) })
 anotherFunction(x: x) { $0 == 13 } g: { print(99) }
 ```
 
-뒤에 딸린 클로저가 함수의 유일한 인자라면, 괄호를 생략할 수 있습니다.
+뒤딸린 클로저가 함수의 유일한 인자면, 괄호를 생략할 수 있습니다.
 
 ```swift
-// someMethod 는 클로저를 유일한 인자로 취합니다.
+// someMethod 는 하나의 클로저를 자신의 유일한 인자로 취함
 myData.someMethod() { $0 == 13 }
 myData.someMethod { $0 == 13 }
 ```
