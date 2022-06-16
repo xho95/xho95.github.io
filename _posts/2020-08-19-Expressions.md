@@ -889,13 +889,13 @@ let s4 = type(of: someValue)(data: 5)       // 에러
 
 > GRAMMAR OF AN INITIALIZER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
-#### Explicit Member Expression (명시적인 멤버 표현식)
+#### Explicit Member Expression (명시적 멤버 표현식)
 
-_명시적인 멤버 표현식 (explicit member expression)_ 은 '이름 붙인 타입 (named type)' 이나, 튜플, 또는 모듈의 멤버에 대한 접근을 허용합니다. 이는 '항목 (item)' 과 그 멤버의 '식별자 (identifier)' 사이에 있는 '마침표 (`.`)' 로 구성됩니다.
+_명시적 멤버 표현식 (explicit member expression)_ 은 이름 붙인 타입이나, 튜플, 또는 모듈의 멤버에 대한 접근을 허용합니다. 이는 항목과 자신의 멤버 식별자 사이의 마침표 (`.`) 로 구성됩니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`.`member name-멤버 이름`
 
-'이름 붙인 타입' 의 멤버는 타입의 '선언' 이나 '익스텐션 (extension)' 에서 이름이 붙습니다. 예를 들면 다음과 같습니다:
+이름 붙인 타입의 멤버는 타입의 선언이나 익스텐션 부분에서 이름이 붙습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -905,19 +905,19 @@ let c = SomeClass()
 let y = c.someProperty  // 멤버 접근
 ```
 
-튜플의 멤버는 나타나는 순서대로, '0' 부터 시작하는, 정수를 사용하여 암시적인 이름이 붙습니다. 예를 들면 다음과 같습니다:
+튜플의 멤버는 암시적으로, 자신이 나타나는 순서대로, 0 부터 시작하는 정수로, 이름이 붙습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var t = (10, 20, 30)
 t.0 = t.1
-// 이제 t 는 (20, 20, 30) 입니다.
+// t 는 이제 (20, 20, 30) 임
 ```
 
-모듈의 멤버는 해당 모듈의 '최상단 선언 (top-level declarations)' 들에 접근합니다.
+모듈의 멤버는 그 모듈의 최상단 선언들에 접근합니다.
 
-`dynamicMemberLookup` 특성을 가지고 선언한 타입은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 에서 설명한 것처럼, 실행 시간에 찾아 보는 멤버를 포함합니다.
+`dynamicMemberLookup` 특성으로 선언한 타입은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 에서 설명한 것처럼, 실행 시간에 찾아 보는 멤버를 포함합니다.
 
-이름이 다른 거라곤 자신의 인자 이름뿐인 메소드들끼리 또는 초기자들끼리 구별하려면, 괄호 안에 인자 이름을 포함시키고, 각 인자 이름 뒤에 '콜론 (`:`)' 을 붙입니다. 이름 없는 인자는 '밑줄 (`_`)' 을 작성합니다. '중복 정의한 (overloaded) 메소드' 들끼리 구별하려면, '타입 보조 설명 (annotation)' 을 사용합니다. 예를 들면 다음과 같습니다:
+이름이 다른 거라곤 자신의 인자 이름뿐인 메소드나 초기자를 구별하려면, 괄호 안에 인자 이름을 포함하고, 각각의 인자 이름 뒤에 콜론 (`:`) 을 붙입니다. 이름 없는 인자엔 밑줄 (`_`) 을 씁니다. 중복 정의한 메소드를 구별하려면, 타입 보조 설명을 사용합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass {
@@ -936,7 +936,7 @@ let d = instance.overloadedMethod(x:y:)  // 여전히 헷갈림
 let d: (Int, Bool) -> Void  = instance.overloadedMethod(x:y:)  // 헷갈리지 않음
 ```
 
-줄의 시작이 '마침표' 면, '암시적인 멤버 표현식' 이 아니라, '명시적인 멤버 표현식' 이라고 이해합니다. 예를 들어, 아래에 나열한 것은 여러 줄에 걸쳐 쪼개진 '연쇄적인 메소드 호출' 을 보여줍니다:
+마침표가 줄 맨 앞에 나타나면, 암시적 멤버 표현식이 아닌, 명시적 멤버 표현식의 일부분으로 이해합니다. 예를 들어, 아래 나열한 건 연쇄적인 메소드 호출을 여러 줄로 쪼갠 걸 보여줍니다:
 
 ```swift
 let x = [10, 3, 20, 15, 4]
@@ -944,6 +944,23 @@ let x = [10, 3, 20, 15, 4]
     .filter { $0 > 5 }
     .map { $0 * 100 }
 ```
+
+이렇게 여러 줄로 연쇄한 구문을 컴파일러 제어문으로 조합하여 각각의 메소드 호출 시점을 제어할 수 있습니다. 예를 들어, 다음 코드는 iOS 에선 다른 규칙으로 걸러냅니다:
+
+```swift
+let numbers = [10, 20, 33, 43, 50]
+#if os(iOS)
+.filter { $0 < 40 }
+#else
+.filter { $0 > 25 }
+#endif
+```
+
+`#if` 와, `#endif`, 및 다른 컴파일 지시자 사이에 있는, 조건부 컴파일 블럭[^conditional-compilation-block] 에 암시적 멤버 표현식 및 그 뒤의 0개 이상의 접미사를 담아, 접미사 표현식을 형성할 수 있습니다. 또 다른 조건부 컴파일 블럭이나, 이 표현식과 블럭들을 조합한 것도 담을 수 있습니다.
+
+최상단 코드 뿐만 아니라, 명시적 멤버 표현식을 작성할 수 있는 어떤 곳이든 이 구문을 사용할 수 있습니다.
+
+조건부 컴파일 블럭에서, `#if` 컴파일 지시자 분기는 반드시 적어도 하나의 표현식을 담아야 합니다. 다른 분기는 비어도 됩니다. 
 
 > GRAMMAR OF AN EXPLICIT MEMBER EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
@@ -1116,6 +1133,9 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^contiguous]: 배열 저장 공간이 딱 붙어있다는 건 배열 전체를 메모리 안에 한 덩어리로 저장한다는 의미입니다. 이렇게 하면 배열 주소를 더하고 빼는 것으로도 배열 요소를 탐색할 수 있습니다.
 
+[^conditional-compilation-block]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 더 자세한 내용은, [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분을 참고하기 바랍니다.
+
 [^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
+

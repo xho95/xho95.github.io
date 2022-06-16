@@ -21,7 +21,7 @@ categories: Swift Language Grammar Revision History
 #### 2022-03-14
 
 * 스위프트 5.6 에서 업데이트함. 
-* 연쇄적인 메소드 호출과 그 외 접미사 표현식 주위의 `#if` 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적인-멤버-표현식) 절을 업데이트함.
+* 연쇄적인 메소드 호출과 그 외 접미사 표현식 주위의 `#if` 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절을 업데이트함.
 * 보여지는 전체 그림 스타일을 업데이트함.
 
 #### 2021-09-20
@@ -181,7 +181,7 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 2.2 에서 업데이트함.
 * 사용중인 스위프트 버전에 따라 조건부로 코드를 컴파일하는 방법에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 절에 추가함.
-* 이름이 다른 것이라곤 인자 이름뿐인 메소드와 초기자를 구별하는 방법에 대한 정보를 [Explicit Member Expression (명시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적인-멤버-표현식) 절에 추가함.
+* 이름이 다른 것이라곤 인자 이름뿐인 메소드와 초기자를 구별하는 방법에 대한 정보를 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절에 추가함.
 * 오브젝티브-C '선택자 (selectors)' 를 위한 `#selector` 구문 표현에 대한 정보를 [Selector Expression (선택자 표현식)]({% post_url 2020-08-19-Expressions %}#selector-expression-선택자-표현식) 절에 추가함.
 * [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 과 [Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)]({% post_url 2020-08-15-Declarations %}#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 절에서 `associatedtype` 키워드를 사용하기 위한 '결합 타입 (associated types)' 에 대한 논의를 업데이트함.
 * [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 절에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 업데이트함.
