@@ -856,34 +856,34 @@ _초기자 표현식 (initializer expression)_ 은 타입 초기자에 대한 �
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`.init(`initializer arguments-초기자의 인자`)
 
-'초기자 표현식' 은 새로운 타입 인스턴스를 초기화하기 위해 '함수 호출 표현식' 에서 사용합니다. '초기자 표현식' 은 상위 클래스의 초기자로 '위임 (delegate)' 하기 위해 사용하기도 합니다.
+함수 호출 표현식에서 초기자 표현식을 사용하여 타입의 새로운 인스턴스를 초기화합니다. 초기자 표현식을 사용하여 상위 클래스 초기자로 일을 맡기기 (delegate) 도 합니다.
 
 ```swift
 class SomeSubClass: SomeSuperClass {
     override init() {
-        // 하위 클래스의 초기화는 여기에 둡니다.
+        // 하위 클래스 초기화는 여기에 둠
         super.init()
     }
 }
 ```
 
-함수와 같이, 초기자도 '값' 처럼 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+함수 같이, 초기자를 값처럼 사용할 수도 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
-// String 에는 여러 초기자가 있기 때문에 '타입 보조 설명 (annotation)' 은 필수입니다.
+// 타입 보조 설명이 필요한데 String 의 초기자는 여러 개이기 때문입니다.
 let initializer: (Int) -> String = String.init
 let oneTwoThree = [1, 2, 3].map(initializer).reduce("", +)
 print(oneTwoThree)
-// "123" 을 dlstho합니다.
+// "123" 을 인쇄함
 ```
 
-타입에 이름을 지정하면, 초기자 표현식을 사용하지 않고도 타입의 초기자에 접근할 수 있습니다. 다른 모든 경우에는, 초기자 표현식을 반드시 사용해야 합니다.
+타입 이름을 정하면, 초기자 표현식을 사용하지 않고 타입 초기자에 접근할 수 있습니다. 다른 모든 경우엔, 반드시 초기자 표현식을 사용해야 합니다.
 
 ```swift
-let s1 = SomeType.init(data: 3)  // 유효
-let s2 = SomeType(data: 1)       // 역시 유효
+let s1 = SomeType.init(data: 3)  // 유효함
+let s2 = SomeType(data: 1)       // 역시 유효함
 
-let s3 = type(of: someValue).init(data: 7)  // 유효
+let s3 = type(of: someValue).init(data: 7)  // 유효함
 let s4 = type(of: someValue)(data: 5)       // 에러
 ```
 
