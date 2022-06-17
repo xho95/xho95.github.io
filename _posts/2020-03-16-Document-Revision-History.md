@@ -270,7 +270,7 @@ categories: Swift Language Grammar Revision History
 * 이제 지역 함수 영역에서는 상수를 초기화하지 않고도 선언할 수 있습니다. 맨 처음 사용하기 전에 설정 값을 반드시 가져야 합니다. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고하기 바랍니다.
 * '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 를 참고하기 바랍니다.
 * '다중 옵셔널 연결 (multiple optional bindings)' 은 이제 쉼표로-구분된 할당 표현식 목록으로써 단일 `if` 문에 나타낼 수 있습니다. 더 많은 정보는, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 을 참고하기 바랍니다.
-* [Optional-Chaining Expression (옵셔널-연쇄 표현식)]({% post_url 2020-08-19-Expressions %}#optional-chaining-expression-옵셔널-연쇄-표현식) 은 반드시 '접미사 표현식 (postfix expression)' 내에 있어야 합니다.
+* [Optional-Chaining Expression (옵셔널-사슬 표현식)]({% post_url 2020-08-19-Expressions %}#optional-chaining-expression-옵셔널-사슬-표현식) 은 반드시 접미사 표현식 안에 있어야 합니다.
 * '프로토콜 변환 (protocol casts)' 은 더 이상 `@objc` 프로토콜로 제한되지 않습니다.
 * 실행 시간에 실패할 수 있는 '타입 변환 (type casts)' 은 이제 `as?` 또는 `as!` 연산자를 사용하며, 실패하지 않는다고 보증한 '타입 변환' 은 `as` 연산자를 사용합니다. 더 많은 정보는, [Type-Casting Operators (타입-변환 연산자)]({% post_url 2020-08-19-Expressions %}#type-casting-operators-타입-변환-연산자) 를 참고하기 바랍니다.
 
