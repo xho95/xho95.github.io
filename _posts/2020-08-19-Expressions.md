@@ -973,13 +973,13 @@ let numbers = [10, 20, 33, 43, 50]
 
 첫 번째 형식은 _표현식 (expression)_ 의 값을 평가합니다. 예를 들어, `x.self` 는 `x` 를 평가합니다.
 
-두 번째 형식은 _타입 (type)_ 의 값을 평가합니다. 타입을 값으로 접근하려면 이 형식을 사용합니다. 예를 들어, `SomeClass.self` 는 `SomeClass` 타입 그 자체를 평가하기 때문에,  타입-수준 인자를 받는 함수나 메소드에 이를 전달할 수 있습니다.
+두 번째 형식은 _타입 (type)_ 의 값을 평가합니다. 타입을 값으로 접근하려면 이 형식을 사용합니다. 예를 들어, `SomeClass.self` 는 `SomeClass` 타입 그 자체라고 평가하기 때문에, 타입-수준 인자를 받아들이는 함수나 메소드에 전달할 수 있습니다.
 
 > GRAMMAR OF A POSTFIX SELF EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
-#### Subscript Expression (첨자 연산 표현식)
+#### Subscript Expression (첨자 표현식)
 
-_첨자 연산 표현식 (subscript expression)_ 은 해당 첨자 연산 선언의 획득자 (getter) 와 설정자 (setter) 를 사용한 '첨자 연산 접근' 을 제공합니다. 형식은 다음과 같습니다:
+_첨자 표현식 (subscript expression)_ 은 해당 첨자 선언의 획득자와 설정자를 사용한 첨자 접근을 제공합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`expression-표현식`[`index expressions-색인 표현식`]
 
