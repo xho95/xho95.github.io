@@ -1021,14 +1021,14 @@ _옵셔널-사슬 표현식 (optional-chaining expression)_ 은 접미사 표현
 
 옵셔널-사슬 표현식은 반드시 접미사 표현식 안에 있어야 하며, 접미사 표현식을 특수한 방식으로 평가하게 합니다. 옵셔널-사슬 표현식 값이 `nil` 이면, 접미사 표현식 안의 모든 다른 연산을 무시하고 전체 접미사 표현식을 `nil` 로 평가합니다. 옵셔널-사슬 표현식 값이 `nil` 이 아니면, 옵셔널-사슬 표현식 값의 포장을 풀고 이를 써서 접미사 표현식의 나머지 부분을 평가합니다. 어느 경우든, 접미사 표현식 값은 여전히 옵셔널 타입입니다.
 
-'옵셔널-연쇄 표현식' 을 담고 있는 '접미사 표현식' 이 다른 접미사 표현식 안에 중첩되어 있으면, 가장 바깥쪽 표현식만이 '옵셔널 타입' 을 반환합니다.[^outmost-expression] 아래 예제에서, `c` 가 `nil` 이 아닐 때, 값의 포장을 풀고 `.property` 를 평가하며, 이 값을 `.performAction()` 을 평가하는 데 사용합니다. `c?.property.performAction()` 라는 전체 표현식은 '옵셔널 타입' 인 값을 가집니다.
+옵셔널-사슬 표현식을 담은 접미사 표현식이 다른 접미사 표현식 안에 중첩되어 있으면, 가장 바깥쪽 표현식만 옵셔널 타입을 반환합니다.[^outmost-expression] 아래 예제에서, `c` 가 `nil` 이 아닐 때, 값의 포장을 풀고 이를 써서 `.property` 를 평가한 후, 그 값으로 `.performAction()` 을 평가합니다. 전체 표현식 `c?.property.performAction()` 의 값은 옵셔널 타입입니다.
 
 ```swift
 var c: SomeClass?
 var result: Bool? = c?.property.performAction()
 ```
 
-다음 예제는 '옵셔널 연쇄' 없이 위 예제가 동작하는 걸 보여줍니다.
+다음 예제는 위 예제 동작을 옵셔널 사슬 사용없이 (하는 걸) 보여줍니다.
 
 ```swift
 var result: Bool?
@@ -1037,7 +1037,7 @@ if let unwrappedC = c {
 }
 ```
 
-'옵셔널-연쇄 표현식' 의 '포장을 푼 값' 은, 값 자체를 변경하거나, 값의 멤버 중 하나에 할당함으로써, 수정할 수 있습니다. '옵셔널-연쇄 표현식' 의 값이 `nil` 이면, 할당 연산자의 오른-쪽에 있는 표현식을 평가하지 않습니다. 예를 들면 다음과 같습니다:
+옵셔널-사슬 표현식의 포장 푼 값은, 값 그 자체를 변경하거나, 값의 멤버 중 하나에 할당함으로써, 수정할 수 있습니다. 옵셔널-사슬 표현식 값이 `nil` 이면, 할당 연산자의 오른-쪽 표현식을 평가하지 않습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func someFunctionWithSideEffects() -> Int {
@@ -1046,12 +1046,12 @@ func someFunctionWithSideEffects() -> Int {
 var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]
 
 someDictionary["not here"]?[0] = someFunctionWithSideEffects()
-// someFunctionWithSideEffects 를 평가하지 않습니다
-// someDictionary 는 여전히 ["a": [1, 2, 3], "b": [10, 20]] 입니다
+// someFunctionWithSideEffects 를 평가하지 않음
+// someDictionary 는 여전히 ["a": [1, 2, 3], "b": [10, 20]] 임
 
 someDictionary["a"]?[0] = someFunctionWithSideEffects()
-// someFunctionWithSideEffects 를 평가하여 42 를 반환합니다
-// someDictionary 는 이제 ["a": [42, 2, 3], "b": [10, 20]] 입니다
+// someFunctionWithSideEffects 를 평가하고 42 를 반환함
+// someDictionary 는 이제 ["a": [42, 2, 3], "b": [10, 20]] 임
 ```
 
 > GRAMMAR OF AN OPTIONAL-CHAINING EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
@@ -1134,7 +1134,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^conditional-compilation-block]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 더 자세한 내용은, [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분을 참고하기 바랍니다.
 
-[^outmost-expression]: 이는 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
+[^outmost-expression]: 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 
