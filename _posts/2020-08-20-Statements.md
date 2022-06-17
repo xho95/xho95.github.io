@@ -26,9 +26,9 @@ categories: Swift Language Grammar Statement
 
 > GRAMMAR OF A LOOP STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID429)
 
-#### For-In Statement ('for-in' 문)
+#### For-In Statement (for-in 문)
 
-`for`-`in` 문은 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하는 집합체 (또는 어떤 타입) 의 각 항목마다 한 번씩 코드 블럭을 실행하도록 합니다.
+`for`-`in` 문은 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수한 집합체 (나 어떤 타입) 안의 각 항목마다 한 번씩 코드 블럭을 실행하게 합니다.
 
 `for`-`in` 문의 형식은 다음과 같습니다:
 
@@ -36,7 +36,7 @@ categories: Swift Language Grammar Statement
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'반복자 (iterator) 타입'-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-의 값을 구하기 위해 _집합체 (collection)_ 표현식에 대한 `makeIterator()` 메소드를 호출합니다. 프로그램은 '반복자' 에 대한 `next()` 메소드를 호출함으로써 반복문의 실행을 시작합니다. 반환한 값이 `nil` 이 아니면, 이를 _항목 (item)_ '패턴 (pattern)' 에 할당하고, 프로그램이 _구문 (statements)_ 을 실행한 다음, 반복문 맨 앞에서 실행을 계속합니다. 그 외의 경우, 프로그램은 할당이나 _구문 (statements)_ 실행을 하지 않고, `for`-`in` 문 실행을 종료합니다.
+_집합체 (collection)_ 표현식의 `makeIterator()` 메소드를 호출하여 반복자[^iterator] 타입-즉, [IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol) 프로토콜을 준수하는 타입-의 값을 구합니다. 프로그램은 반복자의 `next()` 메소드를 호출함으로써 반복문 실행을 시작합니다. 반환 값이 `nil` 이 아니면, 이를 _항목 (item)_ 패턴에 할당하여, 프로그램이 _구문 (statements)_ 을 실행한 다음, 반복문 맨 앞에서 실행을 계속합니다. 그 외 경우, 프로그램이 할당이나 _구문 (statements)_ 실행을 하지 않고, `for`-`in` 문 실행을 종료합니다.
 
 > GRAMMAR OF A FOR-IN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
@@ -513,6 +513,8 @@ _사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 �
 [^line-control-statement]: '라인 제어문 (line control statement)'은, 밑에 있는 [Line Control Statement (라인 제어문)](#line-control-statement-라인-제어문) 부분에서 설명합니다.
 
 [^control-transfer-statements]: '제어 전달문 (control transfer statements)' 은, 밑에 있는 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 부분에서 설명합니다.
+
+[^iterator]: '반복자 (iterator)' 는 컨테이너 안의 항목 사이를 오갈 수 있게 만드는 객체입니다. 반복자에 대한 더 자세한 정보는, 위키피디아의 [Iterator](https://en.wikipedia.org/wiki/Iterator) 항목과 [반복자](https://ko.wikipedia.org/wiki/반복자) 항목을 참고하기 바랍니다.
 
 [^scalar-types]: '크기 타입 (scalar types)' 은 수학에서 사용하는 용어인 '스칼라량 (scalar)' 과 비슷하게, 크기 값만 가지고 있는 타입입니다.
 
