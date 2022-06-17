@@ -20,9 +20,9 @@ categories: Swift Language Grammar Statement
 
 ### Loop Statements (반복문)
 
-반복문은, 반복문에서 지정한 조건에 따라, 코드 블럭을 반복해서 실행하도록 합니다. 스위프트에는: `for`-`in` 문, `while` 문, `repeat`-`while` 문 이라는 세 개의 반복문이 있습니다.
+반복문은, 반복문이 정한 조건에 따라, 코드 블럭을 반복하여 실행하도록 합니다. 스위프트에는 세 개의 반복문이 있는데: `for`-`in` 문과, `while` 문, 및 `repeat`-`while` 문이 그것입니다.
 
-반복문의 제어 흐름은 `break` 문과 `continue` 문으로 바꿀 수 있으며 이는 아래에 있는 [Break Statement ('break' 문)](#break-statement-break-문) 과 [Continue Statement ('continue' 문)](#continue-statement-continue-문) 부분에서 논의합니다.
+반복문의 제어 흐름은 `break` 문과 `continue` 문으로 바꿀 수 있으며 밑에 있는 [Break Statement (break 문)](#break-statement-break-문) 과 [Continue Statement (continue 문)](#continue-statement-continue-문) 에서 논의합니다.
 
 > GRAMMAR OF A LOOP STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID429)
 
