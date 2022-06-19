@@ -155,9 +155,9 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 
 > GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
-#### Switch Statement ('switch' 문)
+#### Switch Statement (switch 문)
 
-`switch` 문은 제어 표현식의 값에 따라 정해진 코드 블럭을 실행하도록 합니다.
+`switch` 문은 제어 표현식 값에 따라 특정 코드 블럭을 실행하도록 합니다.
 
 `switch` 문의 형식은 다음과 같습니다:
 
@@ -173,7 +173,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 'case 절' 에서 지정한 '패턴 (patterns)' 과 비교합니다. 일치하는 것을 찾으면, 프로그램은 해당 'case 절' 영역 안에 나열한 _구문 (statements)_ 을 실행합니다. 각 'case 절' 영역은 비워둘 수 없습니다. 그 결과, 반드시 최소 하나의 구문을 각 'case 이름표' 의 '콜론 (`:`)' 뒤에 포함시켜야 합니다. '일치한 case 절' 본문에서 어떤 코드도 실행하지 않으려면 '단일 `break` 문' 을 사용합니다.
+`switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 case 에서 정한 패턴과 비교합니다. 일치한 걸 찾으면, 프로그램이 그 case 영역에서 나열한 _구문 (statements)_ 을 실행합니다. 각 case 영역은 비어있을 수 없습니다. 그 결과, 각 case 이름표 콜론 (`:`) 뒤에 적어도 하나의 구문을 반드시 포함해야 합니다. 일치한 case 절 본문에서 어떤 코드도 실행하지 않을 의도라면 단일 `break` 문을 사용합니다.
 
 코드가 분기할 수 있는 표현식의 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, '크기 (scalar) 타입'[^scalar-types] 의 값에 더하여, 부동-소수점 수, 문자열, 튜플, 사용자 정의 클래스의 인스턴스, 그리고 옵셔널을 포함한, 어떤 타입의 값에 대해서든 코드를 분기할 수 있습니다. _제어 표현식 (control expression)_ 의 값은 심지어 열거체의 'case 값' 과도 일치할 수 있고 특정 범위가 값을 포함하는지도 검사할 수 있습니다. `switch` 문에서 이 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 참고하기 바랍니다.
 
