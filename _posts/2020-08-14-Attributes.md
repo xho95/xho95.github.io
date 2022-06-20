@@ -252,7 +252,7 @@ print(wrapper.x)
 
 '명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 쓰려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 쓰려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (`BUILD_LIBRARY_FOR_DISTRIBUTION`)" 이라는 '배포 설정 (build setting)' 을 '예 (Yes)' 로 설정합니다.
 
-'동결 열거체' 에 대한 'switch 문' 은, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 에서 논의한 것처럼, '`default` case 절' 을 요구하지 않습니다. 동결 열거체를 전환할 때 '`default` 나 `@unknown default` case 절' 를 포함하면 해당 코드를 절대로 실행하지 않기 때문에 '경고' 를 만들어 냅니다.
+'동결 열거체' 에 대한 'switch 문' 은, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 에서 논의한 것처럼, '`default` case 절' 을 요구하지 않습니다. 동결 열거체를 전환할 때 '`default` 나 `@unknown default` case 절' 를 포함하면 해당 코드를 절대로 실행하지 않기 때문에 '경고' 를 만들어 냅니다.
 
 #### GKInspectable (점검 가능한 GameplayKit)
 
@@ -757,7 +757,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### unknown (알려지지 않음)
 
-이 특성은 '코드 컴파일 시점에 알려진 어떤 열거체 case 값과도 일치하지 않을 것으로 예상함' 을 지시하기 위해 'switch 문의 case 절' 에 적용합니다. `unknown` 특성의 사용 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 부분을 참고하기 바랍니다.
+이 특성은 '코드 컴파일 시점에 알려진 어떤 열거체 case 값과도 일치하지 않을 것으로 예상함' 을 지시하기 위해 'switch 문의 case 절' 에 적용합니다. `unknown` 특성의 사용 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
 
