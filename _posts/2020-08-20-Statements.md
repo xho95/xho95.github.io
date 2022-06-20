@@ -199,9 +199,9 @@ case let (x, y) where x == y:
 
 _동결하지 않은 열거체 (nonfrozen enumeration)_ 는 미래에-심지어 앱을 컴파일하고 출하한 후에-도 새로운 열거체 case 를 얻을 수 있는 특수한 종류의 열거체입니다. 동결하지 않은 열거체의 전환에는 부가적으로 고려할 게 있습니다. 라이브러리 작성자가 열거체를 동결하지 않은 걸로 표시할 땐, 새로운 열거체 case 를 추가할 권리를 예약한 것으로, 그 열거체와 상호 작용할 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이러한 미래 case 들을 처리할 수 있어야 합니다. 라이브러리 진화 모드[^library-evolution-mode] 로 컴파일한 코드와, 표준 라이브러리 안의 코드, 애플 프레임웍을 스위프트로 덧씌운 것[^swift-overlays], 및 C 와 오브젝티브-C 코드가 동결하지 않은 열거체를 선언할 수 있습니다. 동결 및 동결하지 않은 열거체에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 부분을 참고하기 바랍니다.
 
-'동결 아닌 열거체' 의 값을 전환할 때는, 열거체의 모든 'case 값' 이 이미 관련 'switch 문 case 절' 을 가지고 있는 경우에도, 항상 '기본 case 절' 을 포함할 필요가 있습니다. '기본 case 절' 은, 이미래에 추가되는 '열거체 case 값' 과만 일치해야 함을 지시하도록, '기본 case 절' 에 `@unknown` 속성을 적용할 수 있습니다. 스위프트는 '기본 case 절' 이 컴파일 시간에 알고 있는 '어떤 열거체 case 값' 과 일치할 경우 경고를 만들어 냅니다. 이런 '미래 경고' 는 라이브러리 작성자가 열거체에 '관련 switch 문 case 절' 을 가지지 않은 새로운 'case 값' 을 추가했음을 알려줍니다.
+동결하지 않은 열거체의 값을 전환할 땐, 열거체의 모든 case 에 해당 switch 문의 case 가 이미 있더라도, 항상 기본 case 절을 포함할 필요가 있습니다. `@unknown` 특성을 기본 case 절에 적용하여, 기본 case 를 미래에 추가될 열거체 case 와만 맞춰봐야 한다는 걸 지시할 수 있습니다. 컴파일 시간에 알려진 어떤 열거체 case 든 기본 case 와 일치하면 스위프트가 경고를 만들어 냅니다. 이 미래의 경고는 라이브러리 작성자가 해당 switch 문 case 가 없는 새로운 case 를 열거체에 추가했다는 걸 알려줍니다.
 
-다음 예제는 표준 라이브러리에 있는 [Mirror.AncestorRepresentation](https://developer.apple.com/documentation/swift/mirror/ancestorrepresentation) 열거체의 모든 세 '기존 case 값' 에 대해 전환합니다. 미래에 '추가적인 case 값' 을 추가하면, '새로운 case 값' 을 고려하도록 'switch 문' 을 갱신할 필요가 있다고 지시하는 경고를 컴파일러가 발생합니다.
+다음 예제는 표준 라이브러리에 있는 [Mirror.AncestorRepresentation](https://developer.apple.com/documentation/swift/mirror/ancestorrepresentation) 열거체의 모든 기존의 세 case 들을 전환합니다. 추가적인 case 를 미래에 추가하면, 컴파일러가 경고를 생성하여 새로운 case 를 고려하도록 switch 문을 업데이트할 필요가 있다는 걸 지시합니다.
 
 ```swift
 let representation: Mirror.AncestorRepresentation = .generated
@@ -215,7 +215,7 @@ case .suppressed:
 @unknown default:
     print("Use a representation that was unknown when this code was compiled.")
 }
-// "Generate a default mirror for all ancestor classes." 를 인쇄합니다.
+// "Generate a default mirror for all ancestor classes." 를 인쇄함
 ```
 
 **Execution Does Not Fall Through Cases Implicitly ('case 절' 을 암시적으로 뚫고 가서 실행하진 않습니다)**
