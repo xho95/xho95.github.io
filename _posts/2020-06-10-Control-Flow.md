@@ -308,7 +308,7 @@ if temperatureInFahrenheit <= 32 {
 
 `if` 문 본문 같이, 각각의 `case` 절은 '별도의 코드 실행 분기' 입니다. `switch` 문은 어느 분기를 선택할 지 결정합니다. 이 절차를 '고려할 값 _전환 (switching)_' 이라고 합니다.
 
-모든 `switch` 문은 반드시 완전히 _소진해야 (exhaustive)_[^exhaustive] 합니다. 즉, '고려 중인 타입의 가능한 모든 값은 `switch` 문 case 절 하나와 반드시 일치' 해야 합니다. 가능한 모든 값에 case 절을 제공하는 게 적절치 않다면, 명시하지 않은 어떤 값이든 다루는 '기본 (default) case 절' 을 정의할 수 있습니다. 이 기본 case 절은 `default` 키워드로 지시하며, 반드시 항상 마지막에 있어야 합니다.
+모든 `switch` 문은 반드시 _다 써버려야 (exhaustive)_[^exhaustive] 합니다. 즉, '고려 중인 타입의 가능한 모든 값은 `switch` 문 case 절 하나와 반드시 일치' 해야 합니다. 가능한 모든 값에 case 절을 제공하는 게 적절치 않다면, 명시하지 않은 어떤 값이든 다루는 '기본 (default) case 절' 을 정의할 수 있습니다. 이 기본 case 절은 `default` 키워드로 지시하며, 반드시 항상 마지막에 있어야 합니다.
 
 다음 예제는 `switch` 문을 써서 `someCharacter` 라는 단일 소문자를 고려합니다:
 
@@ -325,7 +325,7 @@ default:
 // "The last letter of the alphabet" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 절은 영어 알파벳 첫 글자[^letter] 인, `a`, 와 일치하며, 두 번째 case 절은 마지막 글자인, `z`, 와 일치합니다. `switch` 는, 모든 알파벳 글자만이 아니라, 가능한 모든 글자마다 반드시 case 절을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 이외의 모든 문자와 일치하는 `default` case 절을 사용합니다. 이걸 제공하면 `switch` 문이 완전 소진하게 (exhaustive) 보장합니다.
+`switch` 문의 첫 번째 case 절은 영어 알파벳 첫 글자[^letter] 인, `a`, 와 일치하며, 두 번째 case 절은 마지막 글자인, `z`, 와 일치합니다. `switch` 는, 모든 알파벳 글자만이 아니라, 가능한 모든 글자마다 반드시 case 절을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 이외의 모든 문자와 일치하는 `default` case 절을 사용합니다. 이걸 제공하면 `switch` 문이 다 써버리는 걸 보장합니다.
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
@@ -450,7 +450,7 @@ case let (x, y):
 
 임시 상수의 선언 후엔, 이를 case 절 코드 블럭 안에서 사용할 수 있습니다. 여기선, '점의 범주' 를 인쇄하는데 사용합니다.
 
-이 `switch` 문엔 `default` case 절이 없습니다. 최종 case 절인, `case let (x, y)` 는, '어떤 값이든 일치 가능한 두 개의 자리 표시용 상수를 가진 튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가진 튜플이기 때문에, 이 case 절은 남아 있는 가능한 모든 값과 일치하며, `switch` 문을 완전 소진하게 만드는 `default` case 절이 필요 없습니다.
+이 `switch` 문엔 `default` case 절이 없습니다. 최종 case 절인, `case let (x, y)` 는, '어떤 값이든 일치 가능한 두 개의 자리 표시용 상수를 가진 튜플' 을 선언합니다. `anotherPoint` 는 항상 두 값을 가진 튜플이기 때문에, 이 case 절은 남아 있는 가능한 모든 값과 일치하며, `switch` 문을 다 써버리게 만드는 `default` case 절이 필요 없습니다.
 
 **Where (where 절)**
 
@@ -477,7 +477,7 @@ case let (x, y):
 
 세 `switch` case 절은, `yetAnotherPoint` 에서 튜플 값 두 개를 임시로 취하는, 자리 표시용 상수 `x` 와 `y` 를 선언합니다. 이 상수는, 동적 필터를 생성하는, `where` 절에서 사용합니다. `switch` case 절은 해당 값의 `where` 절 조건 평가가 `true` 인 경우에만 현재 `point` 값과 일치합니다.
 
-이전 예제 처럼, 최종 case 절은 남아 있는 가능한 모든 값과 일치하므로, `switch` 문을 완전 소진하게 만드는 `default` case 절이 필요 없습니다.
+이전 예제 처럼, 최종 case 절은 남아 있는 가능한 모든 값과 일치하므로, `switch` 문을 다 써버리게 만드는 `default` case 절이 필요 없습니다.
 
 <p>
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
@@ -786,7 +786,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 [^Fahrenheit-32]: '화씨 (Fahrenheit) 32도' 는 '섭씨 (Celsius) 0도' 와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
 
-[^exhaustive]: '완전히 소진해야 (exhaustive) 한다' 는 것은 뒤에 설명 하듯이, `switch` 문으로 전달한 변수나 상수를 해당 `switch` 문 `case` 절에서 반드시 다뤄야 한다는 의미입니다. 스위프트 컴파일러는 `switch` 문이 완전 소진하지 않으면 컴파일 시간 에러를 띄웁니다.
+[^exhaustive]: '다 써버려야 (exhaustive)' 한다는 건, 뒤에 설명 하듯, `switch` 문 `case` 에선 그 `switch` 문으로 전달한 변수나 상수를 반드시 모두 다 써야 한다는 의미입니다. 스위프트 컴파일러는 `switch` 문을 다 써버리지 않으면 컴파일 시간 에러를 띄웁니다.
 
 [^letter]: 원문에서는 'letter' 라는 단어를 사용하는데, 영어에서 'character' 는 표의 문자, 'letter' 는 표음 문자를 의미한다고 합니다. 원문에도 영어 알파벳은 항상 'letter' 를 사용합니다.
 
