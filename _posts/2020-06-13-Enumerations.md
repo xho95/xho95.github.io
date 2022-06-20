@@ -92,7 +92,7 @@ case .west:
 
 ...등을 계속합니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, 열거체의 case 를 검토할 땐 반드시 `switch` 문을 '완전 소진 (exhaustive)' 해야 합니다. `.west` 이라는  `case` 를 생략하면, `CompassPoint` 의 완전한 case 목록을 검토한 게 아니기 때문에, 코드를 컴파일하지 않습니다. 완전 소진을 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, 열거체 case 를 고려할 땐 `switch` 문을 반드시 다 써버려야 합니다. `.west` 이라는  `case` 를 생략하면, `CompassPoint` 의 완전한 case 목록을 검토한 게 아니기 때문에, 코드를 컴파일하지 않습니다. 다 써버리도록 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
 
 모든 열거채 case 마다 `case` 절을 제공하는 게 적절하지 않을 때, `default` case 절을 제공하면 명시적으로 알리지 않은 어떤 case 도 다룰 수 있습니다:
 
@@ -107,7 +107,7 @@ default:
 // "Mostly harmless" 를 인쇄함
 ```
 
-### Iterating over Enumeration Cases (열거체 case 들에 동작 반복하기)
+### Iterating over Enumeration Cases (열거체 case 들을 반복하기)
 
 일부 열거체에선, 그 열거체의 '모든 case 를 집합체 (collection)' 로 가지는 게 유용합니다. 열거체 이름 뒤에 `: CaseIterable` 을 작성하면 이렇게 할 수 있습니다. 스위프트는 모든 case 의 집합체를 '열거체 타입의 `allCases` 속성' 으로 노출합니다. 다음은 예제입니다:
 
