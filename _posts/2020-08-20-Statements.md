@@ -236,16 +236,15 @@ case .suppressed:
 
 ### Control Transfer Statements (제어 전달문)
 
-'제어 전달문 (control transfer statements)' 은 '프로그램 제어' 를 무조건 코드 한 곳에서 다른 곳으로 전달함으로써 프로그램에서 코드가 실행되는 순서를 바꿀 수 있습니다. 스위프트에는: `break` 문, `continue` 문, `fallthrough` 문, `return` 문, 그리고 `throw` 문 이라는 다섯 개의 '제어 전달문' 이 있습니다.
+제어 전달문은 프로그램 제어를 코드 한 곳에서 다른 곳으로 무조건 전달함으로써 프로그램 코드의 실행 순서를 바꿀 수 있습니다. 스위프트에는 다섯 개의 제어 전달문이 있는데: `break` 문과, `continue` 문, `fallthrough` 문, `return` 문, 및 `throw` 문이 그것입니다.
 
 > GRAMMAR OF A CONTROL TRANSFER STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
-#### Break Statement ('break' 문)
+#### Break Statement (break 문)
 
 `break` 문은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. `break` 문은, 아래 보인 것처럼, `break` 키워드만으로 구성할 수, 아니면 `break` 키워드와 그 뒤의 '구문 이름표' 이름으로 구성할 수도 있습니다.
 
-&nbsp;&nbsp;&nbsp;&nbsp;break
-<br />
+&nbsp;&nbsp;&nbsp;&nbsp;break<br />
 &nbsp;&nbsp;&nbsp;&nbsp;break `label name-이름표 이름`
 
 `break` 문 뒤에 '구문 이름표' 가 있을 때는, 해당 이름표가 붙은 반복문, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다.
