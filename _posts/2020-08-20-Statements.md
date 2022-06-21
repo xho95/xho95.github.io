@@ -218,9 +218,9 @@ case .suppressed:
 // "Generate a default mirror for all ancestor classes." 를 인쇄함
 ```
 
-**Execution Does Not Fall Through Cases Implicitly ('case 절' 을 암시적으로 뚫고 가서 실행하진 않습니다)**
+**Execution Does Not Fall Through Cases Implicitly (실행은 암시적으로 case 절로 빠져버리지 않습니다)**
 
-일치한 'case 절' 안의 코드 실행을 종료하고 난 후, 프로그램은 `switch` 문을 빠져 나갑니다. 프로그램은 '그 다음 case 절' 이나 '기본 case 절' 로 "뚫고 가서 (fall through)" 계속 실행하진 않습니다. 그렇다 하더라도, '한 case 절' 에서 '그 다음' 으로 계속 실행하길 원할 경우, 실행을 계속할 'case 절' 에서, `fallthrough` 키워드로만 구성된, '`fallthrough` 문' 을 명시적으로 포함하면 됩니다. `fallthrough` 문에 대한 더 많은 정보는, 아래의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 부분을 참고하기 바랍니다.
+일치한 case 절 안의 코드 실행을 종료한 후, 프로그램이 `switch` 문 밖으로 나갑니다. 프로그램 실행은 그 다음 case 절이나 기본 case 절로 계속하거나 "빠져 버리지 (fall through)" 않습니다. 그렇더라도, 실행이 한 case 절에서 그 다음으로 계속되길 원한다면, 실행을 계속할 case 절 안에, 단순히 `fallthrough` 키워드로 구성된, `fallthrough` 문을 명시적으로 포함하면 됩니다. `fallthrough` 문에 대한 더 많은 정보는, 밑의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A SWITCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
