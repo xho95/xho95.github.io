@@ -242,37 +242,37 @@ case .suppressed:
 
 #### Break Statement (break 문)
 
-`break` 문은 반복문이나, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. 밑에서 보는 것처럼, `break` 문은 `break` 키워드로만 구성하거나, `break` 키워드와 그 뒤의 구문 이름표 이름으로 구성할 수 있습니다.
+`break` 문은 반복문이나, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다. 밑에서 보는 것처럼, `break` 문은 `break` 키워드로만 구성하거나, `break` 키워드와 그 뒤의 구문 이름표로 구성할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;break<br />
 &nbsp;&nbsp;&nbsp;&nbsp;break `label name-이름표 이름`
 
-`break` 문 뒤에 구문 이름표가 있을 땐, 그 이름표가 붙은 반복문이나, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다.
+`break` 문 뒤에 구문 이름표가 있을 땐, 그 이름표가 있는 반복문이나, `if` 문, 또는 `switch` 문의 프로그램 실행을 끝냅니다.
 
 `break` 문 뒤에 구문 이름표가 없을 땐, 자기가 있는 `switch` 문이나 자기를 둘러싼 가장 안쪽 반복문의 프로그램 실행을 끝냅니다. 이름표가 없는 `break` 문을 써서 `if` 문을 끊어 나올 순 없습니다.
 
-그러면, 두 경우 모두, 자신을 둘러싼 반복문이나 `switch` 문 뒤의 첫 번째 줄, 이 있으면 (그리로), 프로그램 제어를 전달합니다.
+두 경우 모두, 그런 다음 자신을 둘러싼 반복문이나 `switch` 문 뒤의 첫 번째 줄이, 있으면 (그리로), 프로그램 제어를 전달합니다.
 
-`break` 문의 사용 방법 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
+`break` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
-#### Continue Statement ('continue' 문)
+#### Continue Statement (continue 문)
 
-`continue` 문은 반복문에 대한 현재 회차의 프로그램 실행을 종료하지만 반복문의 실행을 멈추진 않습니다. `continue` 문은, 아래 보인 것처럼, `continue` 키워드만으로 구성할 수도, 아니면 `continue` 키워드와 그 뒤의 '구문 이름표' 로 구성할 수도 있습니다.
+`continue` 문은 반복문의 현재 회차 프로그램 실행을 종료하지만 반복문의 실행은 멈추지 않습니다. 밑에서 보는 것처럼, `continue` 문은 `continue` 키워드로만 구성하거나, `continue` 키워드와 그 뒤의 구문 이름표로 구성할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;continue<br />
 &nbsp;&nbsp;&nbsp;&nbsp;continue `label name-이름표 이름`
 
-`continue` 문 뒤에 '구문 이름표' 가 있을 때는, 해당 이름표를 붙인 반복문의 현재 회차에 대한 프로그램 실행을 종료합니다.
+`continue` 문 뒤에 구문 이름표가 있을 땐, 그 이름표가 있는 반복문의 현재 회차 프로그램 실행을 종료합니다.
 
-`continue` 문 뒤에 '구문 이름표' 이름이 없을 때는, 자기를 가장 안쪽에서 둘러싼 반복문의 프로그램 실행을 종료합니다.
+`continue` 문 뒤에 구문 이름표가 없을 땐, 자기를 가장 안쪽에서 둘러싼 반복문의 프로그램 실행을 종료합니다.
 
-두 경우 모두, 자기를 둘러싼 반복문의 조건문으로 프로그램 제어를 전달합니다.
+두 경우 모두, 그런 다음 자신을 둘러싼 반복문의 조건절로 프로그램 제어를 전달합니다.
 
-`for` 문에서, `continue` 문을 실행한 후에도 '증가 표현식 (increment expression)' 은 여전히 평가되는데, 이는 '증가 표현식' 이 반복문의 본문을 실행한 후에 평가되기 때문입니다.
+`for` 문에선, `continue` 문 실행 후에도 여전히 증가 표현식[^increment-expression] 을 평가하는데, 반복문 본문을 실행한 후 증가 표현식을 평가하기 때문입니다.
 
-`continue` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 을 참고하기 바랍니다.
+`continue` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A CONTINUE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -520,6 +520,8 @@ _사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 �
 [^library-evolution-mode]: '라이브러리 진화 모드 (library evolution mode)' 는 스위프트 바이너리 프레임웍을 생성할 때 사용할 수 있는 옵션입니다. 라이브러리 진화 모드에 대한 더 자세한 정보는, [Library Evolution in Swift](https://swift.org/blog/library-evolution/) 항목을 참고하기 바랍니다. 
 
 [^swift-overlays]: 여기서 '스위프트로 덧씌운 것 (Swift overlays)' 은, 예를 들어, `Foundation` 같은 애플 프레임웍을 사용할 때, 오브젝티브-C 등으로 작성된 타입을 스위프트로 연동하여 사용할 수 있게 하는 걸 말합니다. '스위프트로 덧씌운 것 (Swift overlays)' 에 대한 더 자세한 내용은 [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다. 
+
+[^increment-expression]: '증가 표현식 (increment expression)' 은 예전의 `for` 문에서 `i++` 같은 표현식이라고 이해하면 됩니다.
 
 [^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말합니다. '파일 서술자' 에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
