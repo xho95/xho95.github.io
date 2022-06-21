@@ -286,20 +286,20 @@ case .suppressed:
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
-#### Return Statement ('return' 문)
+#### Return Statement (return 문)
 
-`return` 문은 함수나 메소드 정의의 본문에서 일어나며 프로그램 실행을 호출 함수 또는 메소드로 반환하도록 합니다. 프로그램은 함수나 메소드 호출의 바로 다음 지점에서 계속 실행됩니다.
+`return` 문은 함수나 메소드 정의 본문 안에 생기며 프로그램 실행을 호출한 함수나 메소드로 되돌려 반환합니다. 프로그램 실행은 함수나 메소드 호출 바로 다음 지점에서 계속됩니다.
 
-`return` 문은, 아래 보인 것처럼, `return` 키워드만으로 구성할 수도, 아니면 `return` 키워드와 그 뒤의 표현식으로 구성할 수도 있습니다.
+밑에서 보는 것처럼, `return` 문은 `return` 키워드로만 구성하거나, `return` 키워드와 그 뒤의 표현식으로 구성할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;return<br />
 &nbsp;&nbsp;&nbsp;&nbsp;return `expression-표현식`
 
-`return` 문 뒤에 표현식이 있을 때는, 표현식의 값을 호출 함수 또는 메소드로 반환합니다. 만약 표현식의 값이 함수나 메소드 선언에서 선언한 반환 타입의 값과 일치하지 않으면, 호출 함수나 메소드로 반환하기 전에 표현식의 값을 반환 타입으로 변환합니다.
+`return` 문 뒤에 표현식이 있을 땐, 표현식 값을 호출 함수나 메소드로 반환합니다. 표현식 값이 함수나 메소드 선언에서 선언한 반환 타입 값과 일치하지 않으면, 호출 함수나 메소드로 반환하기 전에 표현식 값을 반환 타입으로 변환합니다.
 
-> [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자) 에서 설명한 것처럼, '실패 가능 초기자' 에서 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하면 초기화의 실패를 지시할 수 있습니다.
+> [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자) 에서 설명한 것처럼, 실패 가능 초기자에선 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하여 초기화 실패를 지시할 수 있습니다.
 
-`return` 문 뒤에 표현식이 없을 때는, 값을 반환하지 않는 함수나 메소드의 반환에서 (즉, 함수나 메소드의 반환 타입이 `Void` 나 `()` 일 때) 만 사용할 수 있습니다.
+`return` 문 뒤에 표현식이 없을 땐, 값을 반환하지 않는 함수나 메소드 반환에서만 (즉, 함수나 메소드 반환 타입이 `Void` 나 `()` 일 때만) 사용할 수 있습니다.
 
 > GRAMMAR OF A RETURN STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
