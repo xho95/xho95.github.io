@@ -276,13 +276,13 @@ case .suppressed:
 
 > GRAMMAR OF A CONTINUE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
-#### Fallthrough Statement ('fallthrough' 문)
+#### Fallthrough Statement (fallthrough 문)
 
-`fallthrough` 문은 `fallthrough` 키워드로 구성하며 `switch` 문의 'case 블럭' 안에서만 일어납니다. `fallthrough` 문은 프로그램이 `switch` 문의 한 'case 절' 에서 그 다음 'case 절' 로 계속 실행되도록 합니다. 프로그램은 'case 이름표' 의 '패턴 (pattern)' 이 `switch` 문의 '제어 표현식' 값과 일치하지 않는 경우에도 그 다음 'case 절' 을 계속 실행합니다.
+`fallthrough` 문은 `fallthrough` 키워드로 구성하며 `switch` 문의 case 블럭 안에만 있습니다. `fallthrough` 문은 프로그램 실행을 `switch` 문의 한 case 절에서 그 다음 case 절로 계속하게 합니다. 프로그램 실행은 case 이름표 패턴이 `switch` 문의 제어 표현식 값과 일치하지 않더라도 그 다음 case 절로 계속됩니다.
 
-`fallthrough` 문은 'case 블럭' 의 마지막 구문만이 아니라, `switch` 문 안의 어떤 곳에서든 나타날 수 있지만, '최종 case 블럭' 에서는 사용할 수 없습니다. '값 연결 (value binding) 패턴' 을 담고 있는 'case 블럭' 으로 제어를 전달할 수도 없습니다.
+`fallthrough` 문은, case 블럭 마지막 문장만이 아니라, `switch` 문 안의 어떤 곳에든 나타날 수 있지만, 최종 case 블럭에선 사용할 수 없습니다.[^final-case-block] 값 연결 패턴을 담은 case 블럭으로 제어를 전달할 수도 없습니다.
 
-`switch` 문에서 `fallthrough` 문을 사용하는 방법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 부분을 참고하기 바랍니다.
+`switch` 문에서 `fallthrough` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 부분을 참고하기 바랍니다.
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -521,7 +521,9 @@ _사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 �
 
 [^swift-overlays]: 여기서 '스위프트로 덧씌운 것 (Swift overlays)' 은, 예를 들어, `Foundation` 같은 애플 프레임웍을 사용할 때, 오브젝티브-C 등으로 작성된 타입을 스위프트로 연동하여 사용할 수 있게 하는 걸 말합니다. '스위프트로 덧씌운 것 (Swift overlays)' 에 대한 더 자세한 내용은 [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다. 
 
-[^increment-expression]: '증가 표현식 (increment expression)' 은 예전의 `for` 문에서 `i++` 같은 표현식이라고 이해하면 됩니다.
+[^increment-expression]: '증가 표현식 (increment expression)' 은 예전 `for` 문의 `i++` 같은 것이라고 이해할 수 있습니다.
+
+[^final-case-block]: 최종 case 블럭에는 그 다음 case 가 없기 때문에 `fallthrough` 문 자체가 의미없습니다.
 
 [^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말합니다. '파일 서술자' 에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
