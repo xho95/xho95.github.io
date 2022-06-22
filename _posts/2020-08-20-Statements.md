@@ -321,7 +321,7 @@ _표현식 (expression)_ 값은 반드시 `Error` 프로토콜을 준수한 타�
 
 ### Defer Statement ('defer' 문)
 
-`defer` 문은 프로그램 제어를 `defer` 문이 있는 영역 밖으로 전달하기 바로 직전에 코드를 실행하고자 사용합니다.
+`defer` 문을 사용하면 `defer` 문이 있는 영역 밖으로 프로그램 제어를 전달하기 바로 직전에 코드를 실행합니다.
 
 `defer` 문의 형식은 다음과 같습니다:
 
@@ -329,7 +329,7 @@ _표현식 (expression)_ 값은 반드시 `Error` 프로토콜을 준수한 타�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`defer` 문 안의 구문은 프로그램 제어를 전달하는 방법과는 상관없이 실행됩니다. 이는 `defer` 문을, 예를 들어, '파일 서술자 (file descriptors)[^file-discriptors] 닫기' 같은 '수동 자원 관리' 를 위해, 그리고 에러를 던지는 경우에도 발생할 필요가 있는 행동을 위해, 사용할 수 있다는 의미입니다.
+`defer` 문 안의 구문은 어떻게 프로그램 제어를 전달하던 간에 실행합니다. 이는 `defer` 문을 사용하면, 예를 들어, 파일 서술자[^file-discriptors] 닫기 같은 수동 자원 관리 및, 에러를 던지더라도 발생할 필요가 있는 행동을, 할 수 있다는 의미입니다.
 
 동일한 영역에 여러 개의 `defer` 문이 있을 경우, 실행 순서는 나타난 순서와는 거꾸로 입니다. 주어진 영역에서 '마지막 `defer` 문' 을 첫 번째로 실행한다는 것은 해당 '마지막 `defer` 문' 안의 구문은 다른 `defer` 문이 정리할 자원에도 참조할 수 있다는 의미입니다.
 
@@ -525,7 +525,7 @@ _사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 �
 
 [^final-case-block]: 최종 case 블럭에는 그 다음 case 가 없기 때문에 `fallthrough` 문 자체가 의미없습니다.
 
-[^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 말합니다. '파일 서술자' 에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 본문 내용은 `defer` 문을 사용하면 프로그렘이 열어둔 파일을 닫더라도 그 전에 특정 구문을 실행하게 할 수 있다는 의미입니다. 파일 서술자에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
 [^flag]: '명령 줄 깃표 (command line flag)' 는 '비트 필드' 의 한 비트를 `On`/`Off` 하여 프로그램에 약속된 신호를 남기기 위해 사용하는 '미리 정의된 비트' 를 말합니다. '명령 줄 깃표' 에 대한 더 자세한 내용은, 위키피디아의 [플래그](https://ko.wikipedia.org/wiki/플래그) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다.
 
