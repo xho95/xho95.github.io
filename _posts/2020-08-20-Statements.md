@@ -384,27 +384,27 @@ f()
 
 ### Compiler Control Statements (컴파일러 제어문)
 
-컴파일러 제어문은 프로그램이 컴파일러 동작 부분을 바꾸는 걸 허용합니다. 스위프트에는 세 개의 컴파일러 제어문이 있는데: 조건부 컴파일 블럭과, 라인 제어문, 및 컴파일-시간 진단문이 그것입니다.
+컴파일러 제어문은 프로그램이 컴파일러 동작 부분을 바꾸도록 합니다. 스위프트에는 세 개의 컴파일러 제어문이 있는데: 조건부 컴파일 블럭과, 라인 제어문, 및 컴파일-시간 진단문이 그것입니다.
 
 > GRAMMAR OF A COMPILER CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 #### Conditional Compilation Block (조건부 컴파일 블럭)
 
-'조건부 컴파일 블럭' 은 코드가 하나 이상의 컴파일 조건 값에 따라 조건부로 컴파일되도록 허용합니다.
+조건부 컴파일 블럭은 하나 이상의 컴파일 조건 값에 따라 코드를 조건부로 컴파일하도록 합니다.
 
-모든 '조건부 컴파일 블럭' 은 '`#if` 컴파일 지시자 (directive)' 로 시작해서 '`#endif` 컴파일 지시자' 로 끝납니다. 단순한 '조건부 컴파일 블럭' 의 형식은 다음과 같습니다:
+모든 조건부 컴파일 블럭은 `#if` 컴파일 지시자[^directive] 로 시작해서 `#endif` 컴파일 지시자로 끝납니다. 단순한 조건부 컴파일 블럭의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#if `compilation condition-컴파일 조건`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\#endif
 
-`if` 문의 조건과는 달리, _컴파일 조건 (compile condition)_ 은 컴파일 시간에 평가합니다. 그 결과, _컴파일 조건 (compile condition)_ 이 컴파일 시간에 `true` 로 평가될 때만 _구문 (statements)_ 을 컴파일해서 실행합니다.
+`if` 문 조건과는 달리, _컴파일 조건 (compile condition)_ 은 컴파일 시간에 평가합니다. 그 결과, 컴파일 시간에 _컴파일 조건 (compile condition)_ 이 `true` 로 평가될 때만 _구문 (statements)_ 을 컴파일하고 실행합니다.
 
-_컴파일 조건 (compile condition)_ 은 `true` 와 `false` 의 '불리언 글자 값', `-D` '명령 줄 깃표 (command line flag)'[^flag] 와 함께 사용하는 식별자, 또는 아래 표에 나열한 어떤 '플랫폼 (platform) 조건' 이든 포함할 수 있습니다.
+_컴파일 조건 (compile condition)_ 은 `true` 및 `false` 불리언 글자 값이나, `-D` 명령 줄 깃표 (command line flag)[^flag] 와 사용하는 식별자, 또는 밑의 표에 나열한 어떤 플랫폼 조건이든 포함할 수 있습니다.
 
 **Platform condition (플랫폼 조건)** || **Valid arguments (유효한 인자)**
 ---|---|---
-`os()` || `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`
+`os()` || `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`, `Windows`[^windows]
 `arch()` || `i386`, `x86_64`, `arm`, `arm64`
 `swift()` || `>=` 또는 `<` 와 그 뒤의 버전 번호
 `compiler()` || `>=` 또는 `<` 와 그 뒤의 버전 번호
@@ -527,6 +527,10 @@ _사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 �
 
 [^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 본문 내용은 `defer` 문을 사용하면 프로그렘이 열어둔 파일을 닫더라도 그 전에 특정 구문을 실행하게 할 수 있다는 의미입니다. 파일 서술자에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
-[^flag]: '명령 줄 깃표 (command line flag)' 는 '비트 필드' 의 한 비트를 `On`/`Off` 하여 프로그램에 약속된 신호를 남기기 위해 사용하는 '미리 정의된 비트' 를 말합니다. '명령 줄 깃표' 에 대한 더 자세한 내용은, 위키피디아의 [플래그](https://ko.wikipedia.org/wiki/플래그) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다.
+[^directive]: 프로그래밍 용어로 '지시자 (directive)' 는 자신의 입력을 어떻게 처리해야 하는지 컴파일러에게 지시하는 구문입니다. 지시자는 프로그래밍 언어의 일부가 아니며, 보통 컴파일 과정이 아니라 전처리 과정에서 처리합니다. 지시자에 대한 더 자세한 정보는 위키피디아의 [Directive (programming)](https://en.wikipedia.org/wiki/Directive_(programming)) 항목을 참고하기 바랍니다.
+
+[^flag]: '명령 줄 깃표 (command line flag)' 는 비트 필드의 한 비트를 `On`/`Off` 하여 프로그램과 약속한 신호를 남기는데 사용하는 미리 정의된 비트를 말합니다. 명령 줄 깃표에 대한 더 자세한 내용은, 위키피디아의 [Bit field](https://en.wikipedia.org/wiki/Bit_field) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다. 위키피디아의 자료를 보면 '깃표 (flag)' 라는 용어보다 '비트 필드 (bit field)' 라는 용어를 표준으로 사용하는 것을 알 수 있습니다.
+
+[^windows]: 2020년 9월 이후로 윈도우즈에서도 스위프트 개발을 할 수 있게 되었습니다. 보다 자세한 내용은 [Introducing Swift on Windows](https://www.swift.org/blog/swift-on-windows/) 항목을 참고하기 바랍니다.
 
 [^Swift-version-setting]: 이것은 '스위프트 컴파일러 버전' 과 '소스 코드 상의 스위프트 언어 버전' 이 다를 수 있기 때문입니다. 예를 들어, 새로운 컴파일러를 설치한 후에 예전 소스 코드를 컴파일할 경우, '스위프트 버전 설정' 은 예전 버전으로 두면서 컴파일은 최신 버전으로 할 수도 있습니다.
