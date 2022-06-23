@@ -28,13 +28,13 @@ _선언 (declaration)_ 은 프로그램에 새로운 이름이나 구조물 (con
 
 ### Code Blocks (코드 블럭)
 
-_코드 블럭 (code block)_ 은 '구문 (statements)' 을 서로 그룹짓기 위해 다양한 '선언' 과 '제어 구조' 에서 사용합니다. 형식은 다음과 같습니다:
+_코드 블럭 (code block)_ 은 구문을 서로 그룹짓고자 다양한 선언 및 제어 구조에서 사용합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;{<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'코드 블럭' 안의 _구문 (statements)_ 은 '선언', '표현식', 그리고 다른 종류의 '구문' 을 포함하며 소스 코드에 나타난 순서대로 실행합니다.
+코드 블럭 안의 _구문 (statements)_ 은 선언과, 표현식, 및 다른 종류의 구문을 포함하며 소스 코드에 나타난 순서대로 실행합니다.
 
 > GRAMMAR OF A CODE BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID353)
 
