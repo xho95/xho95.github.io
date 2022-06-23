@@ -45,7 +45,7 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` 의 내용물은 태생적으로 순서가 없으며[^dictionary-contents], 반복 시에 이를 가져오는 순서는 보장하지 않습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복 순서를 정의하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 참고하기 바랍니다.
+`Dictionary` 의 내용물은 태생적으로 순서가 없으며[^dictionary-contents], 반복 시에 이를 가져오는 순서는 보장하지 않습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복 순서를 정의하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 보도록 합니다.
 
 `for`-`in` 반복문을 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 요소를 인쇄합니다:
 
@@ -79,7 +79,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 위 예제는 수치 값 하나를 다른 수로 거듭 제곱 (이 경우는, `3` 을 `10` 제곱) 합니다. 이는, `1` 에서 시작해서 `10` 으로 끝나는 닫힌 범위를 써서, `1` 이라는 시작 값 (즉, `3` 의 `0` 제곱) 에 `3` 을, 열 번, 곱합니다. 이 계산에서는, 매 반복문 통과 시의 개별 횟수 값은 불필요합니다-단순히 올바른 횟수만큼 반복문을 실행하는 코드입니다. 반복 변수 자리에 밑줄 문자 (`_`) 를 사용하면 개별 값을 무시하도록 하며 각 반복 회차 동안 현재 값의 접근을 제공하지 않습니다.
 
-일부 상황에서는, 두 끝점을 포함한, 닫힌 범위를 사용하지 않길 원할 지 모릅니다. 시계 면의 모든 분마다 눈금을 그리는 걸 고려해 봅시다. `0` 분에서 시작해서, `60` 개의 눈금을 그리고자 합니다. '낮은 경계 (lower bound) 값은 포함하지만 높은 경계 (upper bound) 값은 빼기' 위해 반-열린 범위 연산자 (`..<`) 를 사용합니다. '범위 (ranges)' 에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 부분을 참고하기 바랍니다.
+일부 상황에서는, 두 끝점을 포함한, 닫힌 범위를 사용하지 않길 원할 지 모릅니다. 시계 면의 모든 분마다 눈금을 그리는 걸 고려해 봅시다. `0` 분에서 시작해서, `60` 개의 눈금을 그리고자 합니다. '낮은 경계 (lower bound) 값은 포함하지만 높은 경계 (upper bound) 값은 빼기' 위해 반-열린 범위 연산자 (`..<`) 를 사용합니다. '범위 (ranges)' 에 대한 더 많은 내용은, [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 부분을 보도록 합니다.
 
 ```swift
 let minutes = 60
@@ -331,7 +331,7 @@ default:
 
 C 및 오브젝티브-C 의 `switch` 문과 대조적으로, 스위프트의 `switch` 문은 기본적으로 각각의 case 절을 빠져나가 다음으로 들어가지 않습니다. 그 대신, 명시적인 `break` 문 없이도, 첫 번째로 일치한 `switch` case 절을 완료하자마자 곧, 전체 `switch` 문을 종료합니다. 이는 C 에서보다 `switch` 문을 더 안전하고 쉽게 사용하게 해주며 실수로 `switch` case 절을 하나 이상 실행하는 걸 피하게 해줍니다.
 
-> 스위프트에서 `break` 는 필수가 아니긴 하지만, 특별한 case 절과 일치시키거나 무시하기 위해 또는 일치한 case 절의 실행 완료 전에 해당 case 절을 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 세부적인 건, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 참고하기 바랍니다.
+> 스위프트에서 `break` 는 필수가 아니긴 하지만, 특별한 case 절과 일치시키거나 무시하기 위해 또는 일치한 case 절의 실행 완료 전에 해당 case 절을 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 세부적인 건, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 보도록 합니다.
 
 각 case 절 본문은 _반드시 (must)_ 적어도 하나의 실행문은 담고 있어야 합니다. 코드를 다음 처럼 작성하면, 첫 번째 case 절이 비었기 때문에, 무효입니다:
 
@@ -362,7 +362,7 @@ default:
 // "The letter A" 를 인쇄함
 ```
 
-가독성을 위해, 복합 case 절을 여러 줄에 걸쳐 작성할 수도 있습니다. 복합 case 절에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 참고하기 바랍니다.
+가독성을 위해, 복합 case 절을 여러 줄에 걸쳐 작성할 수도 있습니다. 복합 case 절에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 보도록 합니다.
 
 > 특별한 `switch` case 절 끝을 명시적으로 빠져 나가려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한, `fallthrough` 키워드를 사용합니다.
 
@@ -746,7 +746,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 위 사용 가능성 조건은 'iOS 라면, iOS 10 이후 버전에서만; macOS 라면, macOS 10.12 이후 버전에서만 `if` 문 본문을 실행하라' 고 지정합니다. 마지막 인자인, `*` 는, 필수이며, '대상에서 지정한 최소 배포 대상 이외의 다른 어떤 플랫폼 (platform) 에서든, `if` 본문을 실행하라' 지정합니다.
 
-일반 형식의, 사용 가능성 조건은 '플랫폼 이름과 버전의 목록' 을 취합니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 및 `tvOS` 같은 것을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 참고하기 바랍니다. 'iOS 8 이나 macOS 10.10 같은 주 (major) 버전 번호' 지정에다가, 'iOS 11.2.6 및 macOS 10.13.3 같은 부 (minor) 버전 번호' 도 지정할 수 있습니다.
+일반 형식의, 사용 가능성 조건은 '플랫폼 이름과 버전의 목록' 을 취합니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 및 `tvOS` 같은 것을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 보도록 합니다. 'iOS 8 이나 macOS 10.10 같은 주 (major) 버전 번호' 지정에다가, 'iOS 11.2.6 및 macOS 10.13.3 같은 부 (minor) 버전 번호' 도 지정할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능할 때 실행하는 구문`<br />
@@ -764,19 +764,19 @@ if #available(iOS 10, macOS 10.12, *) {
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 참고하기 바랍니다.
+[^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 보도록 합니다.
 
 [^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 이력을 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
 
 [^optional]: 여기서의 '옵션 (optional)' 은 '옵셔널 타입' 과는 상관이 없습니다.
 
-[^wildcard-pattern]: '와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정한 문자열 뿐만 아니라, '조건에 부합하는 모든 문자열을 맞춰보는 패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은, 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목에 있는 'wildcard pattern' 부분을 참고하기 바랍니다.
+[^wildcard-pattern]: '와일드카드 (wildcard)' 는 일종의 '만능 카드' 처럼 상황에 따라 어떤 값도 가질 수 있는 카드를 말합니다. '와일드카드 패턴 (wildcard pattern)' 은 특정한 문자열 뿐만 아니라, '조건에 부합하는 모든 문자열을 맞춰보는 패턴' 이라고 이해할 수 있습니다. 보다 자세한 내용은, 위키피디아의 [Pattern matching](https://en.wikipedia.org/wiki/Pattern_matching) 항목에 있는 'wildcard pattern' 부분을 보도록 합니다.
 
-[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 '자료 구조' 입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
+[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 '자료 구조' 입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 보도록 합니다. 
 
 [^C-like]: 'C-같은 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장에서 언급한 'C-에 기초한 언어 (C-based languages)' 와 같은 개념으로, 보통 'C-계열 (C-family) 언어' 라고도 합니다. 이는 역사적으로 C 언어의 영향을 받았거나 C 언어에서 파생한 언어들을 이르는 말입니다. 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목을 보면 이런 'C-계열 언어' 들을 확인할 수 있습니다.
 
-[^dictionary-contents]: 딕셔너리는 '내용물 (contents) 을 저장할 때 해시 함수 (hash function) 를 사용' 하기 때문에, 태생적으로 내용물의 순서를 알 수가 없습니다. 이에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장의 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 부분 또는 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+[^dictionary-contents]: 딕셔너리는 '내용물 (contents) 을 저장할 때 해시 함수 (hash function) 를 사용' 하기 때문에, 태생적으로 내용물의 순서를 알 수가 없습니다. 이에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장의 [Hash Values for Set Types (셋 타입을 위한 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입을-위한-해시-값) 부분 또는 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목과 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 보도록 합니다.
 
 [^stride-to-through]: `stride(from:to:by:)` 는 '반-열린 범위' 를 만들고, `stride(from:through:by:)` 는 '닫힌 범위' 를 만듭니다.
 
@@ -792,7 +792,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 [^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진 (exhaustive) 합니다. 왜냐면, `Character` 가 영어 문자가 아닌 다른 유니코드 문자를 가질 수도 있기 때문입니다.
 
-[^SDK]: 'SDK' 는 '소프트웨어 개발 키트 (Software development kit)' 의 약자입니다. '엑스코드 (Xcode)' 같은 '통합 개발 환경 (IDE; Integrated Development Environment)' 과는 의미가 조금 다릅니다. '통합 개발 환경' 이 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이라면, '소프트웨어 개발 키트' 는 개발에 필요한, 컴파일러와 패키지 등을 포함한, 실제 '도구' 들을 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
+[^SDK]: 'SDK' 는 '소프트웨어 개발 키트 (Software development kit)' 의 약자입니다. '엑스코드 (Xcode)' 같은 '통합 개발 환경 (IDE; Integrated Development Environment)' 과는 의미가 조금 다릅니다. '통합 개발 환경' 이 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이라면, '소프트웨어 개발 키트' 는 개발에 필요한, 컴파일러와 패키지 등을 포함한, 실제 '도구' 들을 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 보도록 합니다.
 
 [^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, 스위프트 4.0 용 SDK 로 스위프트 5.0 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
 

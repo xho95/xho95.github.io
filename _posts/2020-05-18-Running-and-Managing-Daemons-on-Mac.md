@@ -54,16 +54,16 @@ $ launchctl unload -w ~/Library/LaunchAgents/myservice.plist
 
 ### 참고 자료
 
-[^daemon]: 컴퓨터 용어로 '데몬 (daemon)' 은 멀티태스킹 OS 에서, 사용자가 직접 제어하지 않고 '백그라운드 프로세스' 로 실행되는 프로그램을 말합니다. (참고로 영어 발음 자체는 '데몬' 보다는 '디먼' 에 좀 더 가깝습니다.) 이에 대한 더 자세한 정보는 위키피디아의 [Daemon (computing)](https://en.wikipedia.org/wiki/Daemon_(computing)) 또는 [데몬 (컴퓨팅)](https://ko.wikipedia.org/wiki/데몬_(컴퓨팅)) 을 참고하기 바랍니다.
+[^daemon]: 컴퓨터 용어로 '데몬 (daemon)' 은 멀티태스킹 OS 에서, 사용자가 직접 제어하지 않고 '백그라운드 프로세스' 로 실행되는 프로그램을 말합니다. (참고로 영어 발음 자체는 '데몬' 보다는 '디먼' 에 좀 더 가깝습니다.) 이에 대한 더 자세한 정보는 위키피디아의 [Daemon (computing)](https://en.wikipedia.org/wiki/Daemon_(computing)) 또는 [데몬 (컴퓨팅)](https://ko.wikipedia.org/wiki/데몬_(컴퓨팅)) 을 보도록 합니다.
 
-[^launchd]: `launchd` 는 BSD-스타일의 `init` 과 `SystemSmarter` 를 대체하기 위해 만든 것으로 Apple 에서 2005년에 발표했습니다. 이에 대한 더 자세한 정보는 위키피디아의 [launchd](https://en.wikipedia.org/wiki/Launchd) 항목을 참고하기 바랍니다.
+[^launchd]: `launchd` 는 BSD-스타일의 `init` 과 `SystemSmarter` 를 대체하기 위해 만든 것으로 Apple 에서 2005년에 발표했습니다. 이에 대한 더 자세한 정보는 위키피디아의 [launchd](https://en.wikipedia.org/wiki/Launchd) 항목을 보도록 합니다.
 
-[^apple-launchd]: 해당 설명에 대한 더 자세한 정보는 Apple 지원 페이지에 있는 [Script management with launchd in Terminal on Mac](https://support.apple.com/guide/terminal/script-management-with-launchd-apdc6c1077b-5d5d-4d35-9c19-60f2397b2369/mac) 를 참고하기 바랍니다. 이에 따르면 macOS 사용자는 `launchd` 로 자기가 만든 '쉘 스크립트 (shell scripts)' 를 실행할 수도 있다고 합니다.
+[^apple-launchd]: 해당 설명에 대한 더 자세한 정보는 Apple 지원 페이지에 있는 [Script management with launchd in Terminal on Mac](https://support.apple.com/guide/terminal/script-management-with-launchd-apdc6c1077b-5d5d-4d35-9c19-60f2397b2369/mac) 를 보도록 합니다. 이에 따르면 macOS 사용자는 `launchd` 로 자기가 만든 '쉘 스크립트 (shell scripts)' 를 실행할 수도 있다고 합니다.
 
-[^IPC]: 'IPC' 는 '프로세스 간의 통신 (Inter-Process Communication)' 을 의미하는 말입니다. 이에 대한 더 자세한 내용은 [Inter-Process Communication (IPC) techniques on Mac OS X](https://www.slideshare.net/Hem_Dutt/ipc-on-mac-osx) 를 참고하기 바랍니다.
+[^IPC]: 'IPC' 는 '프로세스 간의 통신 (Inter-Process Communication)' 을 의미하는 말입니다. 이에 대한 더 자세한 내용은 [Inter-Process Communication (IPC) techniques on Mac OS X](https://www.slideshare.net/Hem_Dutt/ipc-on-mac-osx) 를 보도록 합니다.
 
 [^launchctl-load]: 사실 `launchctl start` 라는 명령도 있지만, `launchctl load` 명령이 macOS 에서 데몬을 실행하는 좀 더 표준적인 방법인 듯 합니다. 이부분은 좀 더 알게되면 정리하도록 하겠습니다.
 
 [^launchctl-load-sample]: 여기서 `myservice` 는 실제로 있는 것이 아니라 그냥 하나의 예시입니다. 해당 내용은 설명을 위해 [How to start a service using Mac OSX's launchctl](https://superuser.com/questions/930389/how-to-start-a-service-using-mac-osxs-launchctl) 에 있는 예제를 참고한 것입니다.
 
-[^apache]: 해당 명령은 모든 설정이 완료됐을 때 실행하는 것입니다. macOS 에서 아파치를 설정하고 실행하는 전체 과정은 [Apache : macOS 에서 아파치 웹서버 실행하기]({% post_url 2016-10-02-Apache-WebServer %}) 를 참고하기 바랍니다.
+[^apache]: 해당 명령은 모든 설정이 완료됐을 때 실행하는 것입니다. macOS 에서 아파치를 설정하고 실행하는 전체 과정은 [Apache : macOS 에서 아파치 웹서버 실행하기]({% post_url 2016-10-02-Apache-WebServer %}) 를 보도록 합니다.

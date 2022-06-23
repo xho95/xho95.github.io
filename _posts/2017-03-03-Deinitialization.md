@@ -120,4 +120,4 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^deallocated]: 여기서 'deallocated' 는 메모리 해제를 말하는데, 스위프트가 앞서 말한 'ARC (Auto Reference Counting)' 로 자동으로 합니다.
 
-[^singleton]: `Bank` 클래스는, 참조 타입이라서 복사되지 않으며, 타입 속성 및 메소드로 구현하여 개별 인스턴스를 따로 생성하지 않으므로, 싱글턴 (singleton) 에 해다합니다. 이 예제는 스위프트로 싱글턴을 구현하는 방법을 보여줍니다. 싱글턴 패턴에 대한 더 자세한 정보는 위키피디아의 [Singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 항목과 [싱글턴 패턴](https://ko.wikipedia.org/wiki/싱글턴_패턴) 항목을 참고하기 바랍니다.
+[^singleton]: `Bank` 클래스는, 참조 타입이라서 복사되지 않으며, 타입 속성 및 메소드로 구현하여 개별 인스턴스를 따로 생성하지 않으므로, 싱글턴 (singleton) 에 해다합니다. 이 예제는 스위프트로 싱글턴을 구현하는 방법을 보여줍니다. 싱글턴 패턴에 대한 더 자세한 정보는 위키피디아의 [Singleton pattern](https://en.wikipedia.org/wiki/Singleton_pattern) 항목과 [싱글턴 패턴](https://ko.wikipedia.org/wiki/싱글턴_패턴) 항목을 보도록 합니다.

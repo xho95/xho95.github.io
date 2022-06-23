@@ -21,7 +21,7 @@ _익스텐션 (extensions; 확장)_[^extension] 은 기존의 클래스나, 구�
 * 새로운 중첩 타입을 정의하여 사용함
 * 기존 타입이 프로토콜을 준수하게 함
 
-스위프트에선, 심지어 프로토콜을 확장하여 자신의 필수 조건에 구현을 제공하거나 추가 기능을 더하는 등의 이점을 준수 타입이 취할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 참고하기 바랍니다.
+스위프트에선, 심지어 프로토콜을 확장하여 자신의 필수 조건에 구현을 제공하거나 추가 기능을 더하는 등의 이점을 준수 타입이 취할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 보도록 합니다.
 
 > 익스텐션은 타입에 새로운 기능을 추가할 순 있지만, 기존 기능을 재정의할 순 없습니다.
 
@@ -291,7 +291,7 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^functionality]: '기능 (functionality) 을 추가한다' 는 건, 타입의 구조를 바꾸는 저장 속성은 추가하지 않는다는 의미를 이미 내포하고 있습니다. 사실 기능만 추가하기 때문에, 기존 타입의 확장 (extension) 이 가능한 것입니다.
 
-[^retroactive-modeling]: 스위프트는, '소급 적용 모델링 (retroactive modeling)' 을 통하여, 스위프트 표준 라이브러리의 타입과 패키지의 타입도 '확장' 할 수 있습니다. '소급 적용 모델링' 에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 참고하기 바랍니다.
+[^retroactive-modeling]: 스위프트는, '소급 적용 모델링 (retroactive modeling)' 을 통하여, 스위프트 표준 라이브러리의 타입과 패키지의 타입도 '확장' 할 수 있습니다. '소급 적용 모델링' 에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 보도록 합니다.
 
 [^adopt]: '프로토콜을 채택한다 (adopt)' 는 건 특정 객체를 정의할 때 프로토콜 이름도 붙여서 그 프로토콜을 따르도록 한다는 의미입니다. 한편, 프로토콜을 '준수한다 (conform)' 는 건 모든 프로토콜 필수 조건을 구현하여 이를 만족한다는 의미입니다.
 
@@ -301,12 +301,12 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^read-only]: 설정자 (setter) 없이 획득자 (getter) 만 있으므로 읽기-전용 계산 속성입니다.
 
-[^property-observers]: '속성 관찰자 (property observers)' 는 원래 저장 속성에만 추가할 수 있는 것으로, 계산 속성의 경우 속성이 바뀌는 시점을 자신이 알 수 있어서 속성 관찰자가 필요 없습니다. 속성 관찰자에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
+[^property-observers]: '속성 관찰자 (property observers)' 는 원래 저장 속성에만 추가할 수 있는 것으로, 계산 속성의 경우 속성이 바뀌는 시점을 자신이 알 수 있어서 속성 관찰자가 필요 없습니다. 속성 관찰자에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 [^access-self]: 익스텐션으로 추가할 수 있는 초기자는 사실상 편의 초기자 역할을 합니다. 구조체의 경우 편의 초기자와 지명 초기자라는 구분은 없지만, 익스텐션으로 추가하는 초기자는 기존 초기자를 활용하여 초기화를 수행합니다. 실제 인스턴스의 전체 메모리를 초기화하는 것은 기존 초기자입니다. 
 
 <!--
-접근할려는 인스턴스의 전체 메모리가 초기화되어 있어야 `self` 에 접근할 수 있기 때문입니다. 익스텐션으로 추가하는 초기자는 편의 초기자 클래스와 구조체라는 약간의 차이는 있지만, 스위프트는 '2-단계 초기화' 를 하며, `self` 에 대한 접근은 '1-단계 초기화' 가 완료된 시점부터 가능합니다. 본문에 있는 다른 '지명 초기자' 를 호출 완료한 시점이 '1-단계 초기화' 가 완료된 시점에 해당합니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 부분을 참고하기 바랍니다.
+접근할려는 인스턴스의 전체 메모리가 초기화되어 있어야 `self` 에 접근할 수 있기 때문입니다. 익스텐션으로 추가하는 초기자는 편의 초기자 클래스와 구조체라는 약간의 차이는 있지만, 스위프트는 '2-단계 초기화' 를 하며, `self` 에 대한 접근은 '1-단계 초기화' 가 완료된 시점부터 가능합니다. 본문에 있는 다른 '지명 초기자' 를 호출 완료한 시점이 '1-단계 초기화' 가 완료된 시점에 해당합니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 부분을 보도록 합니다.
 -->
 
 [^automatic-memberwise-initializer]: '자동 멤버 초기자 (autumatic memberwise initializer)' 라는 이름은 이 '멤버 초기자' 가 명시적인 구현없이, 스위프트의 컴파일러에 의해 자동으로 제공되기 때문에 붙은 이름입니다.

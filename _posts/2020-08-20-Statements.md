@@ -151,7 +151,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 * `continue`
 * `throw`
 
-제어 전달문은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 반환 타입인 함수에 대한 더 많은 정보는, [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 부분을 참고하기 바랍니다.
+제어 전달문은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 반환 타입인 함수에 대한 더 많은 정보는, [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 부분을 보도록 합니다.
 
 > GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
@@ -175,7 +175,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 
 `switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 case 에서 정한 패턴과 비교합니다. 일치한 걸 찾으면, 프로그램이 그 case 영역에서 나열한 _구문 (statements)_ 을 실행합니다. 각 case 영역은 비어있을 수 없습니다. 그 결과, 각 case 이름표 콜론 (`:`) 뒤에 적어도 하나의 구문을 반드시 포함해야 합니다. 일치한 case 절 본문에서 어떤 코드도 실행하지 않을 의도면 단일 `break` 문을 사용합니다.
 
-코드가 분기할 수 있는 표현식 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, 크기 타입[^scalar-types] 값에 더해, 부동-소수점 수와, 문자열, 튜플, 사용자 클래스 인스턴스, 및 옵셔널을 포함한, 어떤 타입 값으로도 코드를 분기할 수 있습니다. 심지어 _제어 표현식 (control expression)_ 값을 열거체 case 값과 맞춰볼 수도 있고 특정 값 범위에 포함되는지도 검사할 수 있습니다. `switch` 문에서 이렇게 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 안의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 참고하기 바랍니다.
+코드가 분기할 수 있는 표현식 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, 크기 타입[^scalar-types] 값에 더해, 부동-소수점 수와, 문자열, 튜플, 사용자 클래스 인스턴스, 및 옵셔널을 포함한, 어떤 타입 값으로도 코드를 분기할 수 있습니다. 심지어 _제어 표현식 (control expression)_ 값을 열거체 case 값과 맞춰볼 수도 있고 특정 값 범위에 포함되는지도 검사할 수 있습니다. `switch` 문에서 이렇게 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 안의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 보도록 합니다.
 
 `switch` 문 case 는 각각의 패턴 뒤에 옵션으로 `where` 절을 담을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 이를 써서 case 안의 패턴을 _제어 표현식 (control expression)_ 과 맞춰보기 전에 추가 조건을 제공합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 case 패턴 중 하나와 일치하면서 `where` 절 표현식이 `true` 로 평가된 경우에만 연관된 case 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에선, `(1, 1)` 같이, 동일한 두 원소를 담은 튜플인 경우에만 _제어 표현식 (control expression)_ 과 case 가 일치합니다.
 
@@ -197,7 +197,7 @@ case let (x, y) where x == y:
 <strong id="switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기">Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)</strong>
 </p>
 
-_동결하지 않은 열거체 (nonfrozen enumeration)_ 는 미래에-심지어 앱을 컴파일하고 출하한 후에-도 새로운 열거체 case 를 얻을 수 있는 특수한 종류의 열거체입니다. 동결하지 않은 열거체의 전환에는 부가적으로 고려할 게 있습니다. 라이브러리 작성자가 열거체를 동결하지 않은 걸로 표시할 땐, 새로운 열거체 case 를 추가할 권리를 예약한 것으로, 그 열거체와 상호 작용할 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이러한 미래 case 들을 처리할 수 있어야 합니다. 라이브러리 진화 모드[^library-evolution-mode] 로 컴파일한 코드와, 표준 라이브러리 안의 코드, 애플 프레임웍을 스위프트로 덧씌운 것[^swift-overlays], 및 C 와 오브젝티브-C 코드가 동결하지 않은 열거체를 선언할 수 있습니다. 동결 및 동결하지 않은 열거체에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 부분을 참고하기 바랍니다.
+_동결하지 않은 열거체 (nonfrozen enumeration)_ 는 미래에-심지어 앱을 컴파일하고 출하한 후에-도 새로운 열거체 case 를 얻을 수 있는 특수한 종류의 열거체입니다. 동결하지 않은 열거체의 전환에는 부가적으로 고려할 게 있습니다. 라이브러리 작성자가 열거체를 동결하지 않은 걸로 표시할 땐, 새로운 열거체 case 를 추가할 권리를 예약한 것으로, 그 열거체와 상호 작용할 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이러한 미래 case 들을 처리할 수 있어야 합니다. 라이브러리 진화 모드[^library-evolution-mode] 로 컴파일한 코드와, 표준 라이브러리 안의 코드, 애플 프레임웍을 스위프트로 덧씌운 것[^swift-overlays], 및 C 와 오브젝티브-C 코드가 동결하지 않은 열거체를 선언할 수 있습니다. 동결 및 동결하지 않은 열거체에 대한 정보는, [frozen (동결)]({% post_url 2020-08-14-Attributes %}#frozen-동결) 부분을 보도록 합니다.
 
 동결하지 않은 열거체의 값을 전환할 땐, 열거체의 모든 case 에 해당 switch 문의 case 가 이미 있더라도, 항상 기본 case 절을 포함할 필요가 있습니다. `@unknown` 특성을 기본 case 절에 적용하여, 기본 case 를 미래에 추가될 열거체 case 와만 맞춰봐야 한다는 걸 지시할 수 있습니다. 컴파일 시간에 알려진 어떤 열거체 case 든 기본 case 와 일치하면 스위프트가 경고를 만들어 냅니다. 이 미래의 경고는 라이브러리 작성자가 해당 switch 문 case 가 없는 새로운 case 를 열거체에 추가했다는 걸 알려줍니다.
 
@@ -220,7 +220,7 @@ case .suppressed:
 
 **Execution Does Not Fall Through Cases Implicitly (실행은 암시적으로 case 절로 빠져버리지 않습니다)**
 
-일치한 case 절 안의 코드 실행을 종료한 후, 프로그램이 `switch` 문 밖으로 나갑니다. 프로그램 실행은 그 다음 case 절이나 기본 case 절로 계속하거나 "빠져 버리지 (fall through)" 않습니다. 그렇더라도, 실행이 한 case 절에서 그 다음으로 계속되길 원한다면, 실행을 계속할 case 절 안에, 단순히 `fallthrough` 키워드로 구성된, `fallthrough` 문을 명시적으로 포함하면 됩니다. `fallthrough` 문에 대한 더 많은 정보는, 밑의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 부분을 참고하기 바랍니다.
+일치한 case 절 안의 코드 실행을 종료한 후, 프로그램이 `switch` 문 밖으로 나갑니다. 프로그램 실행은 그 다음 case 절이나 기본 case 절로 계속하거나 "빠져 버리지 (fall through)" 않습니다. 그렇더라도, 실행이 한 case 절에서 그 다음으로 계속되길 원한다면, 실행을 계속할 case 절 안에, 단순히 `fallthrough` 키워드로 구성된, `fallthrough` 문을 명시적으로 포함하면 됩니다. `fallthrough` 문에 대한 더 많은 정보는, 밑의 [Fallthrough Statement ('fallthrough' 문)](#fallthrough-statement-fallthrough-문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A SWITCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
@@ -230,7 +230,7 @@ case .suppressed:
 
 이름표 구문의 영역은 구문 이름표 뒤의 전체 구문입니다. 이름표 구문을 중첩할 순 있지만, 각각의 구문 이름표 이름은 반드시 유일해야 합니다.
 
-구문 이름표에 대한 더 많은 정보와 사용 방법 예제를 보려면, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
+구문 이름표에 대한 더 많은 정보와 사용 방법 예제를 보려면, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
@@ -253,7 +253,7 @@ case .suppressed:
 
 두 경우 모두, 그런 다음 자신을 둘러싼 반복문이나 `switch` 문 뒤의 첫 번째 줄이, 있으면 (그리로), 프로그램 제어를 전달합니다.
 
-`break` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
+`break` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -272,7 +272,7 @@ case .suppressed:
 
 `for` 문에선, `continue` 문 실행 후에도 여전히 증가 표현식[^increment-expression] 을 평가하는데, 반복문 본문을 실행한 후 증가 표현식을 평가하기 때문입니다.
 
-`continue` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 참고하기 바랍니다.
+`continue` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONTINUE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -282,7 +282,7 @@ case .suppressed:
 
 `fallthrough` 문은, case 블럭 마지막 문장만이 아니라, `switch` 문 안의 어떤 곳에든 나타날 수 있지만, 최종 case 블럭에선 사용할 수 없습니다.[^final-case-block] 값 연결 패턴을 담은 case 블럭으로 제어를 전달할 수도 없습니다.
 
-`switch` 문에서 `fallthrough` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 부분을 참고하기 바랍니다.
+`switch` 문에서 `fallthrough` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Control Transfer Statements (제어 전달문)]({% post_url 2020-06-10-Control-Flow %}#control-transfer-statements-제어-전달문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -315,7 +315,7 @@ case .suppressed:
 
 _표현식 (expression)_ 값은 반드시 `Error` 프로토콜을 준수한 타입이어야 합니다.
 
-`throw` 문의 사용법에 대한 예제는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장의 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 부분을 참고하기 바랍니다.
+`throw` 문의 사용법에 대한 예제는, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장의 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 부분을 보도록 합니다.
 
 > GRAMMAR OF A THROW STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -376,9 +376,9 @@ f()
 
 패턴이 여러 개인 `catch` 절은 자신의 어떤 패턴이든 에러와 일치하면 에러와 일치합니다. `catch` 절에 패턴이 여러 개면, 모든 패턴이 반드시 동일한 상수 또는 변수 연결 (binding) 을 담아야 하며, 연결한 각각의 변수나 상수의 타입은 반드시 모든 `catch` 절 패턴에서 똑같아야 합니다.
 
-에러 처리를 보장하려면, `catch` 절에,  와일드카드 패턴 (`_`) 같은, 모든 에러와 일치하는 패턴을 사용합니다. `catch` 절에서 패턴을 정하지 않으면, `catch` 절이 어떤 에러와도 일치하며 이를 `error` 라는 이름의 지역 상수에 연결합니다. `catch` 절에 쓸 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
+에러 처리를 보장하려면, `catch` 절에,  와일드카드 패턴 (`_`) 같은, 모든 에러와 일치하는 패턴을 사용합니다. `catch` 절에서 패턴을 정하지 않으면, `catch` 절이 어떤 에러와도 일치하며 이를 `error` 라는 이름의 지역 상수에 연결합니다. `catch` 절에 쓸 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 보도록 합니다.
 
-여러 `catch` 절이 있는 `do` 문의 사용법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 부분을 참고하기 바랍니다.
+여러 `catch` 절이 있는 `do` 문의 사용법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% post_url 2020-05-16-Error-Handling %}#handling-errors-에러-처리하기) 부분을 보도록 합니다.
 
 > GRAMMAR OF A DO STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID533)
 
@@ -446,7 +446,9 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 &nbsp;&nbsp;&nbsp;&nbsp;`statements to compile if both compilation conditions are false-컴파일 조건 둘 다 거짓일 때 컴파일하는 구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\#endif
 
-> '조건부 컴파일 블럭' 본문의 각 구문은 컴파일되지 않는 경우에도 구문을 해석합니다. 하지만, 컴파일 조건이 `swift()` 나 `compiler()` 플랫폼 조건을 포함하는 경우는 예외인데: 언어나 컴파일러 버전이 플랫폼 조건에서 지정한 것과 일치할 경우에만 구문을 해석합니다. 이 예외는 '더 예전의 컴파일러' 가 '새 버전의 스위프트' 에서 도입한 '구문 (syntax)' 해석을 시도하지 않도록 보장합니다.
+> 조건부 컴파일 블럭 본문 안의 각 구문은 컴파일하지 않더라도 해석합니다. 하지만, 컴파일 조건에 `swift()` 나 `compiler()` 플랫폼 조건이 포함되면 예외인데: 플랫폼 조건에서 정한 것과 일치한 언어 또는 컴파일러 버전인 경우에만 해석합니다. 이런 예외는 더 예전 컴파일러가 새 버전 스위프트에서 도입한 구문을 해석하려 하지 않도록 보장합니다.
+
+조건부 컴파일 블럭에서 명시적 멤버 표현식을 포장할 수 있는 방법에 대한 정보는, []() 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONDITIONAL COMPILATION BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
@@ -460,7 +462,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 &nbsp;&nbsp;&nbsp;&nbsp;\#sourceLocation()
 
 
-첫 번째 형식의 라인 제어문은, 라인 제어문 다음의 '코드 라인' 에서 시작하는, `#line`, `#file`, `#fileID`, 그리고 `#filePath` 글자 표현식의 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 의 값을 바꾸는, '0' 보다 큰 어떤 '정수 글자 값' 입니다. _파일 경로 (file path)_ 는 `#file`, `#fileID`, 그리고 `#filePath` 의 값을 바꾸는, '문자열 글자 값' 입니다. 지정한 문자열은 `#filePath` 의 값이 되고, 문자열의 '마지막 경로 성분' 은 `#fileID` 값으로 사용합니다. `#file`, `#fileID`, 와 `#filePath` 에 대한 더 많은 정보는, [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분을 참고하기 바랍니다.
+첫 번째 형식의 라인 제어문은, 라인 제어문 다음의 '코드 라인' 에서 시작하는, `#line`, `#file`, `#fileID`, 그리고 `#filePath` 글자 표현식의 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 의 값을 바꾸는, '0' 보다 큰 어떤 '정수 글자 값' 입니다. _파일 경로 (file path)_ 는 `#file`, `#fileID`, 그리고 `#filePath` 의 값을 바꾸는, '문자열 글자 값' 입니다. 지정한 문자열은 `#filePath` 의 값이 되고, 문자열의 '마지막 경로 성분' 은 `#fileID` 값으로 사용합니다. `#file`, `#fileID`, 와 `#filePath` 에 대한 더 많은 정보는, [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분을 보도록 합니다.
 
 두 번째 형식의 라인 제어문인, `#sourceLocation()` 은, 소스 코드 위치를 '기본 라인 번호와 파일 경로' 로 재설정 합니다.
 
@@ -511,27 +513,27 @@ _사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 �
 
 [^control-transfer-statements]: '제어 전달문 (control transfer statements)' 은, 밑에 있는 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 부분에서 설명합니다.
 
-[^iterator]: '반복자 (iterator)' 는 컨테이너 안의 항목 사이를 오갈 수 있게 만드는 객체입니다. 반복자에 대한 더 자세한 정보는, 위키피디아의 [Iterator](https://en.wikipedia.org/wiki/Iterator) 항목과 [반복자](https://ko.wikipedia.org/wiki/반복자) 항목을 참고하기 바랍니다.
+[^iterator]: '반복자 (iterator)' 는 컨테이너 안의 항목 사이를 오갈 수 있게 만드는 객체입니다. 반복자에 대한 더 자세한 정보는, 위키피디아의 [Iterator](https://en.wikipedia.org/wiki/Iterator) 항목과 [반복자](https://ko.wikipedia.org/wiki/반복자) 항목을 보도록 합니다.
 
 [^scalar-types]: '크기 타입 (scalar types)' 은 수학 용어인 '스칼라 (scalar)' 를 사용한 것에서 알 수 있는 것처럼, 크기 값만 가지는 타입입니다.
 
-[^pattern-matching]: '패턴-맞춤 (pattern-matching)' 은 단일 값 또는 합성 값을 구조화하여 여러 가지 값과 맞춰보는 방식입니다. 값과 값을 직접 맞춰보는 게 아니라 패턴과 값을 맞춰보기 때문에 하나의 패턴으로 여러가지 다양한 값과 맞춰볼 수 있습니다. 패턴에 대한 더 자세한 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
+[^pattern-matching]: '패턴-맞춤 (pattern-matching)' 은 단일 값 또는 합성 값을 구조화하여 여러 가지 값과 맞춰보는 방식입니다. 값과 값을 직접 맞춰보는 게 아니라 패턴과 값을 맞춰보기 때문에 하나의 패턴으로 여러가지 다양한 값과 맞춰볼 수 있습니다. 패턴에 대한 더 자세한 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 보도록 합니다.
 
-[^library-evolution-mode]: '라이브러리 진화 모드 (library evolution mode)' 는 스위프트 바이너리 프레임웍을 생성할 때 사용할 수 있는 옵션입니다. 라이브러리 진화 모드에 대한 더 자세한 정보는, [Library Evolution in Swift](https://swift.org/blog/library-evolution/) 항목을 참고하기 바랍니다. 
+[^library-evolution-mode]: '라이브러리 진화 모드 (library evolution mode)' 는 스위프트 바이너리 프레임웍을 생성할 때 사용할 수 있는 옵션입니다. 라이브러리 진화 모드에 대한 더 자세한 정보는, [Library Evolution in Swift](https://swift.org/blog/library-evolution/) 항목을 보도록 합니다. 
 
-[^swift-overlays]: 여기서 '스위프트로 덧씌운 것 (Swift overlays)' 은, 예를 들어, `Foundation` 같은 애플 프레임웍을 사용할 때, 오브젝티브-C 등으로 작성된 타입을 스위프트로 연동하여 사용할 수 있게 하는 걸 말합니다. '스위프트로 덧씌운 것 (Swift overlays)' 에 대한 더 자세한 내용은 [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다. 
+[^swift-overlays]: 여기서 '스위프트로 덧씌운 것 (Swift overlays)' 은, 예를 들어, `Foundation` 같은 애플 프레임웍을 사용할 때, 오브젝티브-C 등으로 작성된 타입을 스위프트로 연동하여 사용할 수 있게 하는 걸 말합니다. '스위프트로 덧씌운 것 (Swift overlays)' 에 대한 더 자세한 내용은 [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 보도록 합니다. 
 
 [^increment-expression]: '증가 표현식 (increment expression)' 은 예전 `for` 문의 `i++` 같은 것이라고 이해할 수 있습니다.
 
 [^final-case-block]: 최종 case 블럭에는 그 다음 case 가 없기 때문에 `fallthrough` 문 자체가 의미없습니다.
 
-[^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 본문 내용은 `defer` 문을 사용하면 프로그렘이 열어둔 파일을 닫더라도 그 전에 특정 구문을 실행하게 할 수 있다는 의미입니다. 파일 서술자에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 컴퓨터 용어로, POSIX 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 본문 내용은 `defer` 문을 사용하면 프로그렘이 열어둔 파일을 닫더라도 그 전에 특정 구문을 실행하게 할 수 있다는 의미입니다. 파일 서술자에 대한 더 자세한 내용은. 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 보도록 합니다.
 
-[^directive]: 프로그래밍 용어로 '지시자 (directive)' 는 자신의 입력을 어떻게 처리해야 하는지 컴파일러에게 지시하는 구문입니다. 지시자는 프로그래밍 언어의 일부가 아니며, 보통 컴파일 과정이 아니라 전처리 과정에서 처리합니다. 지시자에 대한 더 자세한 정보는 위키피디아의 [Directive (programming)](https://en.wikipedia.org/wiki/Directive_(programming)) 항목을 참고하기 바랍니다.
+[^directive]: 프로그래밍 용어로 '지시자 (directive)' 는 자신의 입력을 어떻게 처리해야 하는지 컴파일러에게 지시하는 구문입니다. 지시자는 프로그래밍 언어의 일부가 아니며, 보통 컴파일 과정이 아니라 전처리 과정에서 처리합니다. 지시자에 대한 더 자세한 정보는 위키피디아의 [Directive (programming)](https://en.wikipedia.org/wiki/Directive_(programming)) 항목을 보도록 합니다.
 
-[^flag]: '명령 줄 깃표 (command line flag)' 는 비트 필드의 한 비트를 `On`/`Off` 하여 프로그램과 약속한 신호를 남기는데 사용하는 미리 정의된 비트를 말합니다. 명령 줄 깃표에 대한 더 자세한 내용은, 위키피디아의 [Bit field](https://en.wikipedia.org/wiki/Bit_field) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 참고하기 바랍니다. 위키피디아의 자료를 보면 '깃표 (flag)' 라는 용어보다 '비트 필드 (bit field)' 라는 용어를 표준으로 사용하는 것을 알 수 있습니다.
+[^flag]: '명령 줄 깃표 (command line flag)' 는 비트 필드의 한 비트를 `On`/`Off` 하여 프로그램과 약속한 신호를 남기는데 사용하는 미리 정의된 비트를 말합니다. 명령 줄 깃표에 대한 더 자세한 내용은, 위키피디아의 [Bit field](https://en.wikipedia.org/wiki/Bit_field) 와 [비트 필드](https://ko.wikipedia.org/wiki/비트_필드) 항목을 보도록 합니다. 위키피디아의 자료를 보면 '깃표 (flag)' 라는 용어보다 '비트 필드 (bit field)' 라는 용어를 표준으로 사용하는 것을 알 수 있습니다.
 
-[^windows]: 2020년 9월 이후로 윈도우즈에서도 스위프트 개발을 할 수 있게 되었습니다. 보다 자세한 내용은 [Introducing Swift on Windows](https://www.swift.org/blog/swift-on-windows/) 항목을 참고하기 바랍니다.
+[^windows]: 2020년 9월 이후로 윈도우즈에서도 스위프트 개발을 할 수 있게 되었습니다. 보다 자세한 내용은 [Introducing Swift on Windows](https://www.swift.org/blog/swift-on-windows/) 항목을 보도록 합니다.
 
 [^Swift-version-setting]: 이것은 스위프트 컴파일러 버전과 소스 코드 상의 스위프트 언어 버전이 다를 수 있기 때문입니다. 예를 들어, 새로운 컴파일러를 설치한 후, 예전 소스 코드를 컴파일하면, 스위프트 버전 설정은 예전 버전으로 두면서 컴파일러는 최신 버전을 쓸 수도 있습니다.
 

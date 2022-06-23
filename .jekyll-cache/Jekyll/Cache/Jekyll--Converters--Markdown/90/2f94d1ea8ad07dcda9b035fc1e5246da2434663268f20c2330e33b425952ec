@@ -628,7 +628,7 @@ two
       <p>원문은 <a href="https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html">Strings and Characters</a> 에서 확인할 수 있습니다. <a href="#fnref:Strings-and-Characters" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:collection" role="doc-endnote">
-      <p>‘컬렉션 (collection)’ 은 스위프트에서 특정한 값들의 집합을 묘사하는 ‘집합체’ 타입입니다. 보다 자세한 내용은 <a href="/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html">Collection Types (집합체 타입)</a> 을 참고하기 바랍니다. <a href="#fnref:collection" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>‘컬렉션 (collection)’ 은 스위프트에서 특정한 값들의 집합을 묘사하는 ‘집합체’ 타입입니다. 보다 자세한 내용은 <a href="/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html">Collection Types (집합체 타입)</a> 을 보도록 합니다. <a href="#fnref:collection" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:string-literal-syntax" role="doc-endnote">
       <p>‘문자열 글자표현 구문 (string literal syntax)’ 은 말은 어렵지만 개념은 아주 간단합니다. <code class="highlighter-rouge">let greeting = "hello"</code> 와 같은 문장에서 <code class="highlighter-rouge">"hello"</code> 가 바로 ‘문자열 글자표현 구문 (string literal syntax)’ 입니다. 이 책에서 말하는 것은 스위프트에서 사용하는 이 ‘문자열 글자표현 구문’ 이 사실상 C 언어와 같아서 이해하기 쉽다는 의미입니다. <a href="#fnref:string-literal-syntax" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

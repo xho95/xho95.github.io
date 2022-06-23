@@ -143,9 +143,9 @@ ZSH_THEME="ys"
 
 ### 참고 자료
 
-[^bash]: bash 쉘에 대해서는 위키피디아의 [Bash (Unix shell)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) 항목을 참고하기 바랍니다.
+[^bash]: bash 쉘에 대해서는 위키피디아의 [Bash (Unix shell)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) 항목을 보도록 합니다.
 
-[^zsh]: zsh (Z 쉘) 에 대해서는 위키피디아의 [Z shell](https://en.wikipedia.org/wiki/Z_shell) 항목을 참고하기 바랍니다.
+[^zsh]: zsh (Z 쉘) 에 대해서는 위키피디아의 [Z shell](https://en.wikipedia.org/wiki/Z_shell) 항목을 보도록 합니다.
 
 [^Use-zsh]: 보다 자세한 내용은 [Use zsh as the default shell on your Mac](https://support.apple.com/en-us/HT208050) 에서 확인할 수 있습니다.
 

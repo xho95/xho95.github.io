@@ -20,9 +20,9 @@ categories: Swift Language Grammar Expression
 
 _접두사 표현식 (prefix expressions)_ 은 옵션인 접두사 연산자와 표현식을 조합합니다. 접두사 연산자는 하나의 인자로, 자신의 뒤에 있는 표현식을, 취합니다.
 
-이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 보도록 합니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
 > GRAMMAR OF A PREFIX EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
@@ -32,7 +32,7 @@ _입-출력 표현식 (in-out expression)_ 은 함수 호출 표현식에 입-�
 
 &nbsp;&nbsp;&nbsp;&nbsp;\&`expression-표현식`
 
-입-출력 매개 변수에 대한 더 많은 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
+입-출력 매개 변수에 대한 더 많은 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 입-출력 표현식은, [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적 변환)](#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적-변환) 에서 설명하는 것처럼, 포인터가 필요한 상황에서 포인터-아닌 인자를 제공할 때도 사용합니다. 
 
@@ -70,7 +70,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: 첫 �
 
 표현식이 `try` 와 `await` 연산자를 둘 다 포함하면, 반드시 `try` 연산자가 먼저 나타나야 합니다. 
 
-`try` 와, `try?`, 및 `try!` 에 대한 더 많은 정보와 사용 예제를 보려면, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장을 참고하기 바랍니다.
+`try` 와, `try?`, 및 `try!` 에 대한 더 많은 정보와 사용 예제를 보려면, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장을 보도록 합니다.
 
 > GRAMMAR OF A TRY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
@@ -111,9 +111,9 @@ _중위 표현식 (infix expressions)_ 은 중위 이항 연산자를 왼쪽 및
 
 &nbsp;&nbsp;&nbsp;&nbsp;`left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
 
-이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 보도록 합니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
 > 구문 해석 시간에, 중위 연산자로 이뤄진 표현식은 납작한 리스트 (flat list)[^flat-list] 로 나타냅니다. 이 리스트에 연산자 우선 순위를 적용함으로써 트리 (tree) 로 변형합니다. 예를 들어, 초기에는 표현식 `2 + 3 * 5` 가 `2`, `+`, `3`, `*`, 및 `5` 라는 다섯 항목으로 된 납작한 리스트라고 이해합니다. 이 후 과정에서 이를 `(2 + (3 * 5))` 라는 트리로 변형합니다.
 
@@ -144,7 +144,7 @@ _삼항 조건 연산자 (ternary conditional operator)_ 는 조건 값을 기�
 
 _조건 (condition)_ 평가가 `true` 면, 조건 연산자가 첫 번째 표현식을 평가하고 그 값을 반환합니다. 그 외 경우, 두 번째 표현식을 평가하고 그 값을 반환합니다. 사용하지 않는 표현식은 평가하지 않습니다.
 
-삼항 조건 연산자의 사용 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% post_url 2016-04-27-Basic-Operators %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 참고하기 바랍니다.
+삼항 조건 연산자의 사용 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% post_url 2016-04-27-Basic-Operators %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONDITIONAL OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -178,13 +178,13 @@ f(x as Any)
 // "Function for Any" 를 인쇄함
 ```
 
-연동은 새로운 인스턴스를 생성할 필요 없이 `String` 같은 스위프트 표준 라이브러리 타입의 표현식을 `NSString` 같이 그에 해당하는 파운데이션 (Foundation)[^foundation] 타입으로 사용하게 해줍니다. 연동에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 참고하기 바랍니다.
+연동은 새로운 인스턴스를 생성할 필요 없이 `String` 같은 스위프트 표준 라이브러리 타입의 표현식을 `NSString` 같이 그에 해당하는 파운데이션 (Foundation)[^foundation] 타입으로 사용하게 해줍니다. 연동에 대한 더 많은 정보는, [Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/working_with_foundation_types) 항목을 보도록 합니다.
 
 `as?` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 조건부 변환합니다. `as?` 연산자는 특정 _타입 (type)_ 에 대한 옵셔널을 반환합니다. 실행 시간에, 변환 성공하면, _표현식 (expression)_ 의 값을 옵셔널로 포장하여 반환하며; 그 외 경우, 반환 값이 `nil` 입니다. 특정 _타입 (type)_ 으로의 변환이 실패로 보증된 것 또는 성공으로 보증된 것이면, 컴파일-시간 에러가 일어납니다.
 
 `as!` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 강제 변환합니다. `as!` 연산자는, 옵셔널 타입이 아닌, 특정 _타입 (type)_ 값을 반환합니다. 변환을 실패하면, 실행 시간 에러가 일어납니다. `x as! T` 는 `(x as? T)!` 와 똑같이 동작합니다.
 
-타입 변환에 대한 더 많은 정보 및 타입-변환 연산자의 사용 예제는, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) 장을 참고하기 바랍니다.
+타입 변환에 대한 더 많은 정보 및 타입-변환 연산자의 사용 예제는, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) 장을 보도록 합니다.
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -249,7 +249,7 @@ var emptyDictionary: [String : Double] = [:]
 
 _플레이그라운드 글자 값 (playground literal)_ 은 엑스코드 (Xcode) 에서 사용하는 것으로 프로그램 편집기 안에서 색상이나, 파일, 또는 이미지를 대화형으로 나타내도록 합니다. 엑스코드 밖에 있는 평범한 텍스트에선 플레이그라운드 글자 값을 특수 글자 값 구문으로 나타냅니다.[^playground-literal]
 
-엑스코드에서 플레이그라운드 글자 값을 사용하는 정보는, 엑스코드 도움말 (Xcode Help) 의 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 항목을 참고하기 바랍니다.
+엑스코드에서 플레이그라운드 글자 값을 사용하는 정보는, 엑스코드 도움말 (Xcode Help) 의 [Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc) 항목을 보도록 합니다.
 
 > GRAMMAR OF A LITERAL EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -343,11 +343,11 @@ myFunction { return $0 + $1 }
 myFunction { $0 + $1 }
 ```
 
-클로저를 함수 인자로 전달하는 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 부분을 참고하기 바랍니다.
+클로저를 함수 인자로 전달하는 정보는, [Function Call Expression (함수 호출 표현식)](#function-call-expression-함수-호출-표현식) 부분을 보도록 합니다.
 
 함수 호출 부분에서 곧바로 클로저를 사용할 때 처럼, 변수나 상수에 저장하지 않고도 클로저를 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달한 클로저 표현식이 곧바로 사용하는 예의 한 종류입니다. 그 결과, 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식의 주위 상황에 달려 있습니다.[^escaping-or-nonescaping] 곧바로 호출하거나 벗어나지 않는 함수 인자로 전달한 클로저 표현식은 벗어나지 않는 겁니다. 그 외 경우의, 클로저 표현식은 벗어나는 겁니다.
 
-벗어나는 클로저의 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
+벗어나는 클로저의 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 보도록 합니다.
 
 <p>
 <strong id="capture-lists-붙잡을-목록">Capture Lists (붙잡을 목록)</strong>
@@ -408,7 +408,7 @@ myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙�
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 참고하기 바랍니다. 붙잡을 목록에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 참고하기 바랍니다.
+클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 보도록 합니다. 붙잡을 목록에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -643,7 +643,7 @@ let taskKeyPath = \[Task][makeIndex()]
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 
-오브젝티브-C API 와 상호 작용하는 코드에서의 키 경로 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. 키-값 코딩과 키-값 관찰에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 코드에서의 키 경로 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 보도록 합니다. 키-값 코딩과 키-값 관찰에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 보도록 합니다.
 
 >> GRAMMAR OF A KEY-PATH EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -688,7 +688,7 @@ let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (Str
 
 > _메소드 이름 (method name)_ 과 _속성 이름 (property name)_ 은 표현식이긴 하지만, 절대로 평가하지 않습니다.
 
-오브젝티브-C API 와 상호 작용하는 스위프트 코드에서의 선택자 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 스위프트 코드에서의 선택자 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 보도록 합니다.
 
 > GRAMMAR OF A SELECTOR EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -731,7 +731,7 @@ print(keyPath == c.getSomeKeyPath())
 
 실행 시간이 아닌, 컴파일 시간에 키 경로 문자열을 생성하기 때문에, 속성이 존재하는지 그리고 속성을 오브젝티브-C 런타임으로 드러냈는지를 컴파일러가 검사할 수 있습니다.
 
-오브젝티브-C API 와 상호 작용하는 스위프트 코드에서의 키 경로 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 참고하기 바랍니다. 키-값 코딩과 키-값 관찰에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 참고하기 바랍니다.
+오브젝티브-C API 와 상호 작용하는 스위프트 코드에서의 키 경로 사용에 대한 더 많은 정보는, [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective-c_runtime_features_in_swift) 항목을 보도록 합니다. 키-값 코딩과 키-값 관찰에 대한 정보는, [Key-Value Coding Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i) 항목과 [Key-Value Observing Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i) 항목을 보도록 합니다.
 
 > _속성 이름 (property name)_ 은 표현식이긴 하지만, 절대로 평가하지 않습니다.
 
@@ -741,7 +741,7 @@ print(keyPath == c.getSomeKeyPath())
 
 _접미사 표현식 (postfix expressions)_ 은 접미사 연산자나 그 외 접미사 구문을 표현식에 적용함으로써 형성합니다. 구문상, 모든 으뜸 표현식 또한 접미사 표현식입니다.
 
-이러한 연산자의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 참고하기 바랍니다.
+이러한 연산자의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 보도록 합니다.
 
 스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
 
@@ -985,7 +985,7 @@ _첨자 표현식 (subscript expression)_ 은 해당 첨자 선언의 획득자�
 
 첨자 표현식의 값을 평가하려면, 첨자 매개 변수로 전달한 _색인 표현식 (index expressions)_ 으로 _표현식 (expression)_ 타입의 첨자 획득자를 호출합니다. 값을 설정하려면, 첨자 설정자를 똑같은 방식으로 호출합니다.
 
-첨자 선언에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-선언) 부분을 참고하기 바랍니다.
+첨자 선언에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-선언) 부분을 보도록 합니다.
 
 > GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
@@ -1068,7 +1068,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^primary-expression]: '으뜸 표현식 (primary expression)' 은 아래의 [Primary Expressions (으뜸 표현식)]({% post_url 2020-08-19-Expressions %}#primary-expressions-으뜸-표현식) 부분에서 설명합니다.
 
-[^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+[^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 보도록 합니다.
 
 [^playground-literal]: 예를 들어 '빨간색' 플레이그라운드 글자 값은 ![Playground Color](/assets/Swift/Swift-Programming-Language/Expressions-playground-literal.png){:width="100px"} 인데, 이를 복사하여 다른 편집기로 옮기면 `var color = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)` 과 같은 특수 글자 값 구문을 써서 나타냅니다.
 
@@ -1084,7 +1084,7 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^the-path]: `#ifle` 이 있는 곳의 파일 경로를 의미합니다.
 
-[^dynamic-shared-object]: '동적 공유 객체 (dynamic shared object; DSO)' 는 `.dylib` 나 `.so` 같이 현재 실행 중인 동적 연결 라이브러리를 의미합니다. 이에 대한 더 자세한 내용은, 애플 개발자 문서의 [Overview of Dynamic Libraries](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/OverviewOfDynamicLibraries.html) 항목을 참고하기 바랍니다. 
+[^dynamic-shared-object]: '동적 공유 객체 (dynamic shared object; DSO)' 는 `.dylib` 나 `.so` 같이 현재 실행 중인 동적 연결 라이브러리를 의미합니다. 이에 대한 더 자세한 내용은, 애플 개발자 문서의 [Overview of Dynamic Libraries](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/OverviewOfDynamicLibraries.html) 항목을 보도록 합니다. 
 
 [^filePath-and-fildID]: 스위프트 5.3 이전까지의 `#file` 은 그 파일의 전체 경로였는데, 앞으로는 파일과 모듈 이름으로 바뀌게 됩니다. 본문의 내용은 현재는 `#file` 이 `#filePath` 와 똑같지만, 앞으로는 `#fileID` 와 똑같아질 거라는 의미입니다.
 
@@ -1094,17 +1094,17 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^first-and-last-slash]: 현재는 `#fileID` 에 빗금이 하나 밖에 없어서 첫 번째와 마지막 빗금이 똑같지만, 미래에는 빗금이 여러 개일 수도 있으므로, 첫 번째와 마지막 빗금을 기준으로 읽을 것을 권장하고 있습니다.
 
-[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 서로 다른 겁니다. 이 둘의 차이점에 대해선, 스택 오버플로우 (StackOverflow) 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다.
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 서로 다른 겁니다. 이 둘의 차이점에 대해선, 스택 오버플로우 (StackOverflow) 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 보도록 합니다.
 
 [^mutating-method]: 값 타입 (value type) 은 구조체와 열거체를 말하고, '변경 메소드 (mutating method)' 는 값 타입의 `self` 를 변경할 수 있는 메소드를 말합니다. 본문은 `self` 에 다른 인스턴스를 할당함으로써 값 타입을 변경할 수 있다는 의미입니다.
 
-[^capture]: 클로저의 '붙잡기 (capturoing)' 에 대한 더 자세한 정보는, [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장의 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 참고하기 바랍니다. 
+[^capture]: 클로저의 '붙잡기 (capturoing)' 에 대한 더 자세한 정보는, [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장의 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 보도록 합니다. 
 
 [^escaping-or-nonescaping]: 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식 자체가 아니라 표현식을 호출하는 쪽에 달려 있다는 의미입니다.
 
-[^strong-reference]: '강한 참조 (strong reference)' 에 대해서는 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 참고하기 바랍니다. 
+[^strong-reference]: '강한 참조 (strong reference)' 에 대해서는 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 보도록 합니다. 
 
-[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
 
 [^because-of-reference]: `x` 가 클래스의 인스턴스라서 참조 의미 구조를 가지기 때문에 바깥 영역의 `x` 와 안쪽 영역의 `x` 가 동일한 대상을 참조합니다.
 
@@ -1116,25 +1116,25 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^void-vs-empty-tuple-expression]: 그렇기 때문에 `Void -> Void` 같은 함수 타입은 없습니다. `() -> Void` 라고 해야 합니다. 
 
-[^key-value-observing]: '키-값 관찰 (Key-Value Observing)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Key-Value Observing in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) 항목을 참고하기 바랍니다.
+[^key-value-observing]: '키-값 관찰 (Key-Value Observing)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Key-Value Observing in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift) 항목을 보도록 합니다.
 
 [^side-effects]: 프로그래밍에서의 '부작용 (side effects)' 은 '부수적 효과' 정도의 의미입니다.
 
-[^selector]: 오브젝티브-C 의 '선택자 (selector)' 는 오브젝티브-C 메소드 이름을 참조하는 타입입니다. 스위프트의 선택자 표현식은 이 오브젝티브-C 의 선택자에 접근하도록 해줍니다. 이에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using-objective-c-runtime-features-in-swift) 항목을 참고하기 바랍니다. 
+[^selector]: 오브젝티브-C 의 '선택자 (selector)' 는 오브젝티브-C 메소드 이름을 참조하는 타입입니다. 스위프트의 선택자 표현식은 이 오브젝티브-C 의 선택자에 접근하도록 해줍니다. 이에 대한 더 자세한 정보는, 애플 개발자 문서의 [Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using-objective-c-runtime-features-in-swift) 항목을 보도록 합니다. 
 
 [^methods-type-signatures]: '이름은 공유하지만 타입 서명은 다른 메소드' 는 '중복 정의 (overloading) 하여 함수 이름은 같지만 매개 변수 및 반환 타입을 포함한 함수의 타입 자체는 다른 메소드들' 을 말합니다.
 
 [^key-path-string-expression]: '키-경로 문자열 표현식 (key-path string expression)' 은 '키-경로 표현식 (key-path expression)' 을 오브젝티브-C 의 속성에 사용하기 위한 방법일 것이라고 생각합니다.
 
-[^argument-label]: 여기서 말하는 '매개 변수의 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 참고하기 바랍니다. 
+[^argument-label]: 여기서 말하는 '매개 변수의 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 보도록 합니다. 
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 오른쪽-에서-왼쪽 순서를 사용한 건, 예전엔 뒤딸린 클로저가 가장 오른쪽 매개 변수 하나뿐이었기 때문으로 추측합니다. 스위프트 5.3 이후 부턴 뒤 딸린 클로저가 여러 개일 수 있어서 왼쪽-에서-오른쪽 순서를 사용한다고 볼 수 있습니다.
 
 [^contiguous]: 배열 저장 공간이 딱 붙어있다는 건 배열 전체를 메모리 안에 한 덩어리로 저장한다는 의미입니다. 이렇게 하면 배열 주소를 더하고 빼는 것으로도 배열 요소를 탐색할 수 있습니다.
 
-[^conditional-compilation-block]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 더 자세한 내용은, [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분을 참고하기 바랍니다.
+[^conditional-compilation-block]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 더 자세한 내용은, [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분을 보도록 합니다.
 
-[^outmost-expression]: 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
+[^outmost-expression]: 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 보도록 합니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 

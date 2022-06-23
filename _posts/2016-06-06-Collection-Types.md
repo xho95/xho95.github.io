@@ -17,7 +17,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 스위프트에서 배열, 셋, 그리고 딕셔너리는 자신이 저장할 값과 키의 타입을 항상 명확히 합니다. 이는 집합체에 잘못된 타입의 값을 실수로 집어 넣을 수는 없다는 의미입니다. 집합체로부터 가져올 값의 타입을 자신해도 된다는 의미이기도 합니다.
 
-> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. '일반화 (generic) 타입과 집합체' 에 대한 더 많은 것은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 참고하기 바랍니다.
+> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. '일반화 (generic) 타입과 집합체' 에 대한 더 많은 것은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 보도록 합니다.
 
 ### Mutability of Collections (집합체의 변경 가능성)
 
@@ -31,7 +31,7 @@ _배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordere
 
 > 스위프트의 `Array` 타입은 'Foundation[^Foundation] 의 `NSArray` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> `Array` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 참고하기 바랍니다.
+> `Array` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 보도록 합니다.
 
 #### Array Type Shorthand Syntax (짧게 줄인 배열 타입 구문)
 
@@ -236,7 +236,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보도록 합니다.
 
 ### Sets (셋)
 
@@ -244,7 +244,7 @@ _셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서
 
 > 스위프트의 `Set` 타입은 'Foundation[^Foundation] 의 `NSSet` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> `Set` 과 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 참고하기 바랍니다.
+> `Set` 과 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 보도록 합니다.
 
 #### Hash Values for Set Types (셋 타입을 위한 해시 값)
 
@@ -252,7 +252,7 @@ _셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서
 
 스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해시 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해시 가능합니다.   
 
-> 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수함으로써 '셋' 의 값 타입 또는 '딕셔너리' 의 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 참고하기 바랍니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 참고하기 바랍니다.
+> 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수함으로써 '셋' 의 값 타입 또는 '딕셔너리' 의 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 보도록 합니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 보도록 합니다.
 
 #### Set Type Syntax (셋 타입 구문)
 
@@ -366,7 +366,7 @@ for genre in favoriteGenres {
 // Hip Hop
 ```
 
-`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보도록 합니다.
 
 스위프트의 `Set` 타입은 순서를 정의하지 않습니다. 특정 순서로 셋의 값을 반복하려면, `<` 연산자로 정렬한 배열로써 셋 원소를 반환하는, `sorted()` 메소드를 사용합니다.
 
@@ -440,7 +440,7 @@ _딕셔너리 (dictionary)_ 는 '똑같은 타입의 키와 똑같은 타입의 
 
 > 스위프트의 `Dictionary` 타입은 'Foundation[^Foundation] 의 `NSDictionary` 클래스와 연동 (bridged)' 되어 있습니다.
 >
-> `Dictionary` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 항목을 참고하기 바랍니다.
+> `Dictionary` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 항목을 보도록 합니다.
 
 #### Dictionary Type Shorthand Syntax (짧게 줄인 딕셔너리 타입 구문)
 
@@ -591,7 +591,7 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 참고하기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보도록 합니다.
 
 `keys` 와 `values` 속성에 접근함으로써 딕셔너리의 키와 값을 '반복 가능한 집합체 (iterable collection)' 로 가져올 수도 있습니다:
 
@@ -641,7 +641,7 @@ let airportNames = [String](airports.values)
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
-[^isEmpty-count]: 스위프트는 '배열, 셋, 딕셔너리가 비었는 지 검사할 때 `isEmpty` 를 사용하라' 고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것이 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 부분에서 설명한 것처럼, 배열, 셋, 딕셔너리가 비었는 지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야할 수도 있습니다. 이러한 유형의 최적화에 대해서는, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
+[^isEmpty-count]: 스위프트는 '배열, 셋, 딕셔너리가 비었는 지 검사할 때 `isEmpty` 를 사용하라' 고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것이 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 부분에서 설명한 것처럼, 배열, 셋, 딕셔너리가 비었는 지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야할 수도 있습니다. 이러한 유형의 최적화에 대해서는, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 보도록 합니다.
 
 [^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 이는 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
 
@@ -661,19 +661,19 @@ let airportNames = [String](airports.values)
 
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
-[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order 는 순서' 로, 'sort 는 정렬' 로 옮깁니다.
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 보도록 합니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order 는 순서' 로, 'sort 는 정렬' 로 옮깁니다.
 
 '순서가 있는 집합 (ordered set)' 은 '정렬된 집합 (sorted set)' 과는 수학적인 의미가 다릅니다. 
 
-[^ordered-list]: '순서 있는 리스트 (ordered list)' 에서의 리스트는 자료 구조의 하나입니다. '리스트 (list) 자료 구조' 에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
+[^ordered-list]: '순서 있는 리스트 (ordered list)' 에서의 리스트는 자료 구조의 하나입니다. '리스트 (list) 자료 구조' 에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 보도록 합니다.
 
-[^Foundation]: 'Foundation' 은 '모든 스위프트 프로그래밍의 기반이 되는 프레임웍' 이며, `import Foundation` 이라고 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+[^Foundation]: 'Foundation' 은 '모든 스위프트 프로그래밍의 기반이 되는 프레임웍' 이며, `import Foundation` 이라고 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 보도록 합니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 
 [^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
 
-[^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 참고하기 바랍니다.
+[^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 보도록 합니다.
 
 [^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 

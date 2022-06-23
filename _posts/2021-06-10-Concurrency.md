@@ -154,7 +154,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 }
 ```
 
-임무 그룹에 대한 더 많은 정보는, [TaskGroup](https://developer.apple.com/documentation/swift/taskgroup) 항목을 참고하기 바랍니다. 
+임무 그룹에 대한 더 많은 정보는, [TaskGroup](https://developer.apple.com/documentation/swift/taskgroup) 항목을 보도록 합니다. 
 
 #### Unstructured Concurrency (구조화 안된 동시성)
 
@@ -168,7 +168,7 @@ let handle = async {
 let result = await handle.get()
 ```
 
-떼어낸 임무의 관리에 대한 더 많은 정보는, [Task](https://developer.apple.com/documentation/swift/task/) 항목을 참고하기 바랍니다.
+떼어낸 임무의 관리에 대한 더 많은 정보는, [Task](https://developer.apple.com/documentation/swift/task/) 항목을 보도록 합니다.
 
 #### Task Cancellation (임무 취소)
 
@@ -251,16 +251,16 @@ print(logger.max)  // 에러
 
 [^built-in-support]: '비동기 및 병렬 코드의 구조적 작성을 내장 지원 (built-in support) 한다' 는 건 다른 프레임웍을 사용하지 않고도 언어 자체로 그런 기능을 작성할 수 있다는 의미입니다.
 
-[^scheduling]: '스케줄링 (scheduling)' 은 임무를 수행하기 위한 자원을 할당하는 행동을 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Scheduling (computing)](https://en.wikipedia.org/wiki/Scheduling_(computing)) 항목과 [스케줄링 (컴퓨팅)](https://ko.wikipedia.org/wiki/스케줄링_(컴퓨팅)) 항목을 참고하기 바랍니다. 
+[^scheduling]: '스케줄링 (scheduling)' 은 임무를 수행하기 위한 자원을 할당하는 행동을 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Scheduling (computing)](https://en.wikipedia.org/wiki/Scheduling_(computing)) 항목과 [스케줄링 (컴퓨팅)](https://ko.wikipedia.org/wiki/스케줄링_(컴퓨팅)) 항목을 보도록 합니다. 
 
 [^threads]: '쓰레드 (thread)' 는 스위프트 내부에서 사용하는 것이고, 우리는 쓰레드를 사용하여 제작된 '동시성 (concurrency)' 을 사용하게 됩니다.
 
 [^possible-suspension-point]: '잠시 멈춤 가능 지점 (the possible suspension point)' 는 스위프트가 '쓰레드 넘겨주기 (yielding the thread)' 를 하는 지점입니다. 이에 대한 내용은 본문 바로 밑에서 설명합니다.
 
-[^preemptive]: '선점 (preemptive)' 이란 '운영체제가 우선 순위에 따라 프로세스의 CPU 자원을 강제로 빼앗을 수 있는 방식' 을 의미합니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
+[^preemptive]: '선점 (preemptive)' 이란 '운영체제가 우선 순위에 따라 프로세스의 CPU 자원을 강제로 빼앗을 수 있는 방식' 을 의미합니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 보도록 합니다.
 
-[^sequence]: '시퀀스 (sequence)' 는 수학에서의 '수열' 을 의미하며, 자료 구조에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 시퀀스에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
+[^sequence]: '시퀀스 (sequence)' 는 수학에서의 '수열' 을 의미하며, 자료 구조에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 시퀀스에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 보도록 합니다. 
 
-[^cooperative-cancellation-model]: '협동 취소 모델 (cooperative cancellation model)' 은 부모 임무를 취소할 경우 자신의 모든 자식 임무에게 자신이 취소됐음을 알리는 방식을 의미합니다. 이에 대한 더 자세한 내용은, [Alexito's World](https://alejandromp.com) 님의 [The importance of cooperative cancellation](https://alejandromp.com/blog/the-importance-of-cooperative-cancellation/) 항목을 참고하기 바랍니다. 
+[^cooperative-cancellation-model]: '협동 취소 모델 (cooperative cancellation model)' 은 부모 임무를 취소할 경우 자신의 모든 자식 임무에게 자신이 취소됐음을 알리는 방식을 의미합니다. 이에 대한 더 자세한 내용은, [Alexito's World](https://alejandromp.com) 님의 [The importance of cooperative cancellation](https://alejandromp.com/blog/the-importance-of-cooperative-cancellation/) 항목을 보도록 합니다. 
 
 [^on-the-actor]: `update(with:)` 메소드는 행위자의 멤버이므로, 특정한 행위자에 대해서 실행하고 있는 중입니다.

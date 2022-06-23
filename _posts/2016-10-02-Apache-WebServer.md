@@ -8,7 +8,7 @@ categories: macOS Apache WebServer mod_wsgi
 
 > 이 글은 macOS 에서 아파치 웹 서버를 실행하고 설정하는 방법에 대한 내용을 정리한 글입니다.
 >
-> 아파치의 가상 호스트를 설정하는 방법은 [아파치 가상 호스트 설정하기]({% post_url 2016-10-10-Apache-Virtual-Host %}) 를 참고하기 바랍니다.
+> 아파치의 가상 호스트를 설정하는 방법은 [아파치 가상 호스트 설정하기]({% post_url 2016-10-10-Apache-Virtual-Host %}) 를 보도록 합니다.
 
 ## macOS 에서 아파치 웹서버 실행하기
 
@@ -213,22 +213,22 @@ Allow from all은 모든 것으로부터의 접속을 허용한다는 의미입�
 
 [^apache]: '아파치 (apache)' 는 전세계에서 가장 많이 사용하고 있는 HTTP 서버이며, macOS 에는 기본 설치되어 있는 HTTP 서버입니다.
 
-[^apple-DOC-3083]: macOS Yosemite 이후로 웹서버 설정 방법이 변경되었다는 내용은 [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) 를 참고하기 바랍니다.
+[^apple-DOC-3083]: macOS Yosemite 이후로 웹서버 설정 방법이 변경되었다는 내용은 [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) 를 보도록 합니다.
 
 [^references]: 이 글의 최초 버전은 [limslee](http://devmac.tistory.com/) 님의 [맥에 웹서버(Apache, PHP) 구동하기 - 요세미티 기준](http://devmac.tistory.com/11) 과 [Apple Communities](https://discussions.apple.com/) 의 [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) 를 참고하여 작성하였고, 이 후 macOS Catalina 에서도 정상 동작하는 것을 확인하면서 일부 수정한 것입니다.
 
-[^launchctl]: macOS 에서 `$ sudo apachectl start` 명령으로 아파치를 실행하는 방법은 표준이 아닌 것 같습니다. macOS 에서 '데몬' 을 실행하는 방법에 대한 더 자세한 내용은 [macOS: Daemon (데몬) 실행하고 관리하기]({% post_url 2020-05-18-Running-and-Managing-Daemons-on-Mac %}) 를 참고하기 바랍니다.
+[^launchctl]: macOS 에서 `$ sudo apachectl start` 명령으로 아파치를 실행하는 방법은 표준이 아닌 것 같습니다. macOS 에서 '데몬' 을 실행하는 방법에 대한 더 자세한 내용은 [macOS: Daemon (데몬) 실행하고 관리하기]({% post_url 2020-05-18-Running-and-Managing-Daemons-on-Mac %}) 를 보도록 합니다.
 
 [^macOS-unix]: macOS 는 유닉스 계열 (Unix-like) OS로 분류되는데, 유닉스 시스템에서 `/` 는 루트 디렉토리 (root directory) 를 의미합니다. 따라서 루트 디렉토리를 기준으로 이동할 때는 반드시 `/`를 경로의 맨 앞에 붙여줘야 합니다.  
 
-[^private-etc]: macOS 에서 **/private** 은 해당 기기에만 해당하는 정보를 담는 디렉토리이고, **/etc** 는 주로 환경 설정 파일들을 담는 디렉토리입니다. **/etc** 디렉토리는 실제로는 **/private/etc** 디렉토리의 '심볼릭 링크' 입니다. 즉, macOS 에서 **/etc/...** 와 **/private/etc/...** 는 같은 디렉토리입니다. 각각에 대한 더 자세한 정보는 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}) 를 참고하기 바랍니다.
+[^private-etc]: macOS 에서 **/private** 은 해당 기기에만 해당하는 정보를 담는 디렉토리이고, **/etc** 는 주로 환경 설정 파일들을 담는 디렉토리입니다. **/etc** 디렉토리는 실제로는 **/private/etc** 디렉토리의 '심볼릭 링크' 입니다. 즉, macOS 에서 **/etc/...** 와 **/private/etc/...** 는 같은 디렉토리입니다. 각각에 대한 더 자세한 정보는 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}) 를 보도록 합니다.
 
-[^configuration-files]: 아파치의 `httpd.conf` 파일에 대한 더 자세한 정보는 아파치 공식 홈페이지의 [Configuration Files](https://httpd.apache.org/docs/2.4/configuring.html) 문서를 참고하기 바랍니다.
+[^configuration-files]: 아파치의 `httpd.conf` 파일에 대한 더 자세한 정보는 아파치 공식 홈페이지의 [Configuration Files](https://httpd.apache.org/docs/2.4/configuring.html) 문서를 보도록 합니다.
 
 [^setting-apache2]: [Setting up a local web server on OS X](https://discussions.apple.com/docs/DOC-3083) 글과 [맥에 웹서버(Apache, PHP) 구동하기 - 요세미티 기준](http://devmac.tistory.com/11) 글의 설정 방법이 다른데, 일단은 후자의 설정을 따랐습니다. 이 부분은 좀 더 내용을 알게 되면 정리하도록 하겠습니다.
 
-[^home-directory]: macOS 의 홈 디렉토리에 대해서는 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}) 에 있는 [`~` : macOS 의 홈 디렉토리]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}#--macos-의-홈-디렉토리) 부분을 참고하기 바랍니다.
+[^home-directory]: macOS 의 홈 디렉토리에 대해서는 [macOS: 파일 시스템의 유닉스-고유 디렉토리 알아보기]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}) 에 있는 [`~` : macOS 의 홈 디렉토리]({% post_url 2020-04-29-macOS-UNIX-specific-Directories %}#--macos-의-홈-디렉토리) 부분을 보도록 합니다.
 
-[^launchctl-unload]: macOS 에서 `$ sudo apachectl stop` 명령으로 아파치를 종료하는 방법은 표준이 아닌 것 같습니다. macOS 에서 '데몬' 을 종료하는 방법에 대한 더 자세한 내용은 [macOS: Daemon (데몬) 실행하고 관리하기]({% post_url 2020-05-18-Running-and-Managing-Daemons-on-Mac %}) 를 참고하기 바랍니다.
+[^launchctl-unload]: macOS 에서 `$ sudo apachectl stop` 명령으로 아파치를 종료하는 방법은 표준이 아닌 것 같습니다. macOS 에서 '데몬' 을 종료하는 방법에 대한 더 자세한 내용은 [macOS: Daemon (데몬) 실행하고 관리하기]({% post_url 2020-05-18-Running-and-Managing-Daemons-on-Mac %}) 를 보도록 합니다.
 
 [^webdir-httpd]: [CentOS: Apache(아파치) 설정파일 분석 - httpd.conf](http://webdir.tistory.com/178)

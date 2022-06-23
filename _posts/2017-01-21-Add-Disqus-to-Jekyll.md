@@ -9,7 +9,7 @@ redirect_from: "/blog/jekyll/disqus/migration/2017/01/20/Add-Disqus-to-Jekyll.ht
 
 > 이 글은 Jekyll 블로그에 Disqus 를 이용하여 댓글 시스템을 연결하는 방법을 정리한 것입니다.
 >
-> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 참고하기 바랍니다.
+> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 보도록 합니다.
 
 ## Jekyll: Disqus 연결부터 마이그레이션까지
 

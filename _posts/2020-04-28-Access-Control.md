@@ -389,7 +389,7 @@ extension SomeStruct: SomeProtocol {
 
 [^stored-properties]: 저장 속성의 획득자와 설정자는 스위프트가 자동으로 만들어 주지만, 이들의 접근 수준은 개발자가 조절할 수 있다는 의미입니다.
 
-[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
+[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다. 
 
 [^more-public]: 더 공개 (public) 일 수 없다는 건 더 높은 접근 수준을 가질 수 없다는 의미입니다. 어떤 속성을 '공개 (public)' 하고 싶으면 그 속성을 가진 타입도 반드시 공개 (public) 해야 합니다.
 

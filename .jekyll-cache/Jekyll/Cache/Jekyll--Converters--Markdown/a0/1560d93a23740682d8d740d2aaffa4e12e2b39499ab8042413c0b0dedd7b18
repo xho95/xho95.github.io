@@ -1,4 +1,4 @@
-I"��<blockquote>
+I"��<blockquote>
   <p>Apple 에서 공개한 <a href="https://docs.swift.org/swift-book/">The Swift Programming Language (Swift 5.2)</a> 책의 <a href="https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html">Memory Safety</a> 부분<sup id="fnref:Memory-Safety" role="doc-noteref"><a href="#fn:Memory-Safety" class="footnote">1</a></sup>을 번역하고 정리한 글입니다.</p>
 
   <p>현재 전체 중에서 번역 완료된 목록은 <a href="/swift/programming/language/grammar/2017/02/28/The-Swift-Programming-Language.html">Swift 5.2: Swift Programming Language (스위프트 프로그래밍 언어)</a> 에서 확인할 수 있습니다.</p>
@@ -205,7 +205,7 @@
       <p>이 글에 대한 원문은 <a href="https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html">Memory Safety</a> 에서 확인할 수 있습니다. <a href="#fnref:Memory-Safety" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:Thread-Sanitizer" role="doc-endnote">
-      <p>‘Sanitizer’ 는 우리 말로 ‘소독제, 살균제’ 등으로 옮길 수 있는데, ‘Thread Sanitizer (쓰레드 살균제)’ 는 Xcode 에 포함된 도구 중의 하나로 앱에서 ‘data race (자료 경쟁)’ 가 일어나는 지를 찾아줍니다. ‘data race’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Race_condition">Race condition</a> 이나 <a href="https://ko.wikipedia.org/wiki/경쟁_상태">경쟁 상태</a> 항목을 참고하기 바랍니다. <a href="#fnref:Thread-Sanitizer" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>‘Sanitizer’ 는 우리 말로 ‘소독제, 살균제’ 등으로 옮길 수 있는데, ‘Thread Sanitizer (쓰레드 살균제)’ 는 Xcode 에 포함된 도구 중의 하나로 앱에서 ‘data race (자료 경쟁)’ 가 일어나는 지를 찾아줍니다. ‘data race’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Race_condition">Race condition</a> 이나 <a href="https://ko.wikipedia.org/wiki/경쟁_상태">경쟁 상태</a> 항목을 보도록 합니다. <a href="#fnref:Thread-Sanitizer" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:local-variable" role="doc-endnote">
       <p>전역 변수에 저장할 경우 컴파일러가 이 변수에 대한 접근이 언제 다시 이루어지게 될지 장담할 수 없으므로 에러가 발생하지만, 지역 변수에 저장할 경우 이 변수에 대한 접근이 특정 지역 내로 한정됨을 알 수 있기 때문인 것으로 추측됩니다. 본문의 이어지는 내용에서 이에 대해 좀 더 설명하고 있습니다. <a href="#fnref:local-variable" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

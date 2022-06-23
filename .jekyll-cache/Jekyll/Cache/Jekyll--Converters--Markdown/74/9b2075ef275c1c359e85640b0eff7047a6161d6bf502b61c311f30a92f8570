@@ -1,7 +1,7 @@
-I"�p<blockquote>
+I"�p<blockquote>
   <p>이 글은 macOS 의 파일 시스템에 있는 ‘유닉스-고유 디렉토리 (UNIX-specific directories)’ 에 대해 정리한 글입니다.</p>
 
-  <p>macOS 파일 시스템의 기본적인 디렉토리들에 대해서는 <a href="/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html">macOS: 파일 시스템의 기본 디렉토리 구조</a> 를 참고하기 바랍니다.</p>
+  <p>macOS 파일 시스템의 기본적인 디렉토리들에 대해서는 <a href="/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html">macOS: 파일 시스템의 기본 디렉토리 구조</a> 를 보도록 합니다.</p>
 </blockquote>
 
 <h2 id="macos-파일-시스템의-유닉스-고유-디렉토리-unix-specific-directories">macOS 파일 시스템의 ‘유닉스-고유 디렉토리 (UNIX-specific directories)’</h2>
@@ -197,19 +197,19 @@ lrwxr-xr-x@  1 root  admin    11 Oct  9  2019 etc -&gt; private/etc
       <p>macOS 의 ‘유닉스-고유 디렉토리 (UNIX-specific directories)’ 에 대해서는 <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW2">File System Basics</a> 문서의 <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW7">Hidden Files and Directories: Simplifying the User Experience</a> 부분에서 설명하고 있습니다. <a href="#fnref:UNIX-specific-directories" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:finder" role="doc-endnote">
-      <p>macOS 의 ‘표준 디렉토리’ 와 ‘유닉스-고유 디렉토리’ 의 차이점에 대해서는 <a href="/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html">macOS: 파일 시스템의 기본 디렉토리 구조</a> 문서를 참고하기 바랍니다. <a href="#fnref:finder" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>macOS 의 ‘표준 디렉토리’ 와 ‘유닉스-고유 디렉토리’ 의 차이점에 대해서는 <a href="/macos/file-system/directory/2020/04/20/macOS-File-System-Layout.html">macOS: 파일 시스템의 기본 디렉토리 구조</a> 문서를 보도록 합니다. <a href="#fnref:finder" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:man-hier" role="doc-endnote">
       <p>파일 내용이 길 경우 <code class="highlighter-rouge">$ man hier &gt; hier.txt</code> 와 같이 파일로 옮겨서 따로 확인할 수도 있습니다. <a href="#fnref:man-hier" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:standard-os-x" role="doc-endnote">
-      <p>여기서 따로 설명하지 않은 <code class="highlighter-rouge">/boot</code> 등의 디렉토리에 대한 설명은 <a href="https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr">What is standard for OS X filesystem? e.g. /opt/ vs. /usr/</a> 라는 글을 참고하기 바랍니다. <a href="#fnref:standard-os-x" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>여기서 따로 설명하지 않은 <code class="highlighter-rouge">/boot</code> 등의 디렉토리에 대한 설명은 <a href="https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr">What is standard for OS X filesystem? e.g. /opt/ vs. /usr/</a> 라는 글을 보도록 합니다. <a href="#fnref:standard-os-x" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:directory-separator" role="doc-endnote">
-      <p>예전에는 macOS 에서 ‘디렉토리 구분자’ 로 콜론 (<code class="highlighter-rouge">:</code>) 기호를 사용했으며 그래서 예전 자료를 보다 보면 디렉토리를 구분할 때 콜론 (<code class="highlighter-rouge">:</code>) 을 사용하는 것을 볼 수가 있습니다. 지금은 macOS 에서 ‘디렉토리 구분자’ 는 슬래쉬 기호로 완전히 통일되었습니다. ‘콜론 (<code class="highlighter-rouge">:</code>) 디렉토리 구분자’ 에 대해서는 <a href="https://apple.stackexchange.com/questions/173529/when-did-the-colon-character-become-an-allowed-character-in-the-filesystem">When did the colon character : become an allowed character in the filesystem?</a> 라는 글을 참고하기 바랍니다. <a href="#fnref:directory-separator" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>예전에는 macOS 에서 ‘디렉토리 구분자’ 로 콜론 (<code class="highlighter-rouge">:</code>) 기호를 사용했으며 그래서 예전 자료를 보다 보면 디렉토리를 구분할 때 콜론 (<code class="highlighter-rouge">:</code>) 을 사용하는 것을 볼 수가 있습니다. 지금은 macOS 에서 ‘디렉토리 구분자’ 는 슬래쉬 기호로 완전히 통일되었습니다. ‘콜론 (<code class="highlighter-rouge">:</code>) 디렉토리 구분자’ 에 대해서는 <a href="https://apple.stackexchange.com/questions/173529/when-did-the-colon-character-become-an-allowed-character-in-the-filesystem">When did the colon character : become an allowed character in the filesystem?</a> 라는 글을 보도록 합니다. <a href="#fnref:directory-separator" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:cores" role="doc-endnote">
-      <p><code class="highlighter-rouge">/cores</code> 디렉토리에 대한 더 자세한 정보는 <a href="https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space">OS X El-Capitan - /cores directory taking up a lot of space?</a> 라는 글을 참고하기 바랍니다. <a href="#fnref:cores" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><code class="highlighter-rouge">/cores</code> 디렉토리에 대한 더 자세한 정보는 <a href="https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space">OS X El-Capitan - /cores directory taking up a lot of space?</a> 라는 글을 보도록 합니다. <a href="#fnref:cores" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:profile" role="doc-endnote">
       <p>macOS Catalina 에서부터 기본 쉘이 ‘bash (배쉬)’ 에서 ‘zsh (z-쉘)’ 로 변경되었습니다. ‘zsh’ 의 기본 설정 파일은 <code class="highlighter-rouge">zprofile</code> 인데, 이 파일 역시 <code class="highlighter-rouge">/etc</code> 디렉토리에 있습니다. 직접 <code class="highlighter-rouge">sh</code> 을 사용하지 않는다면 <code class="highlighter-rouge">profile</code> 대신, <code class="highlighter-rouge">zprofile</code> 을 사용할 것입니다. <a href="#fnref:profile" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -218,22 +218,22 @@ lrwxr-xr-x@  1 root  admin    11 Oct  9  2019 etc -&gt; private/etc
       <p><a href="http://elfinlas.tistory.com">wisseraph</a> 님의 <a href="http://elfinlas.tistory.com/266">Mac에서 Path 설정하기</a> 글에 따르면 <code class="highlighter-rouge">/etc/paths</code> 는 macOS 에서 가장 기본적인 경로를 설정하는 파일이라고 합니다. <a href="#fnref:paths" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:symbolic-link" role="doc-endnote">
-      <p>macOS 에서 특정 디렉토리가 ‘심볼릭 링크 (symbolic link)’ 인지를 확인하는 방법은 <a href="https://askubuntu.com/questions/1145925/how-to-know-if-a-folder-is-a-symbolic-link">How to know if a folder is a symbolic link?</a> 를 참고하기 바랍니다. <a href="#fnref:symbolic-link" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>macOS 에서 특정 디렉토리가 ‘심볼릭 링크 (symbolic link)’ 인지를 확인하는 방법은 <a href="https://askubuntu.com/questions/1145925/how-to-know-if-a-folder-is-a-symbolic-link">How to know if a folder is a symbolic link?</a> 를 보도록 합니다. <a href="#fnref:symbolic-link" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:firmlink" role="doc-endnote">
       <p>둘 중 어느 것이 정확한 것인지는 아직 찾지 못했지만, 다른 자료들을 보면 ‘고정 링크 (firmlink)’ 로 설명하지는 않아서 ‘심볼릭 링크 (symbolic link)’ 라고 추측하고 있습니다. 애플 <strong>WWDC19</strong> 에서 공개한 <a href="https://developer.apple.com/videos/play/wwdc2019/710/">What’s New in Apple File Systems</a> 영상을 보면 이 두 가지는 서로 비슷하다고 합니다. <a href="#fnref:firmlink" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:APFS-boot-directory" role="doc-endnote">
-      <p><code class="highlighter-rouge">/Symbolic/Volumes/Data</code> 디렉토리에 대한 더 자세한 내용은 <a href="https://apple.stackexchange.com/questions/367158/whats-system-volumes-data">What’s /System/Volumes/Data?</a> 및 <a href="https://eclecticlight.co/2019/10/08/macos-catalina-boot-volume-layout/">macOS Catalina Boot Volume Layout</a> 를 참고하기 바랍니다. <a href="#fnref:APFS-boot-directory" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><code class="highlighter-rouge">/Symbolic/Volumes/Data</code> 디렉토리에 대한 더 자세한 내용은 <a href="https://apple.stackexchange.com/questions/367158/whats-system-volumes-data">What’s /System/Volumes/Data?</a> 및 <a href="https://eclecticlight.co/2019/10/08/macos-catalina-boot-volume-layout/">macOS Catalina Boot Volume Layout</a> 를 보도록 합니다. <a href="#fnref:APFS-boot-directory" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:private" role="doc-endnote">
-      <p>해당 내용에 대한 더 자세한 정보는 <a href="https://www.quora.com/What-is-the-private-folder-on-a-Mac-computer">What is the private folder on a Mac computer?</a> 를 참고하기 바랍니다. <a href="#fnref:private" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>해당 내용에 대한 더 자세한 정보는 <a href="https://www.quora.com/What-is-the-private-folder-on-a-Mac-computer">What is the private folder on a Mac computer?</a> 를 보도록 합니다. <a href="#fnref:private" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:macOS-home" role="doc-endnote">
-      <p>macOS 에서 <code class="highlighter-rouge">/Users/username</code> 을 ‘홈 디렉토리’ 로 사용하는 이유에 대한 더 자세한 정보는 <a href="https://apple.stackexchange.com/questions/50633/why-are-home-folders-in-mac-os-x-located-in-users-and-not-home">Why are home folders in Mac OS X located in /Users, and not /home?</a> 를 참고하기 바랍니다. 해당 글을 보면 유닉스에서 <code class="highlighter-rouge">/home</code> 디렉토리를 ‘홈 디렉토리’ 로 사용하는 것은 기본 설정이지 필수 사항은 아니기 때문에, ‘유닉스-고유 디렉토리’ 구조에서 홈 디렉토리를 <code class="highlighter-rouge">/Users/username</code> 로 설정하는 것에는 아무런 문제가 없다고 합니다. <a href="#fnref:macOS-home" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>macOS 에서 <code class="highlighter-rouge">/Users/username</code> 을 ‘홈 디렉토리’ 로 사용하는 이유에 대한 더 자세한 정보는 <a href="https://apple.stackexchange.com/questions/50633/why-are-home-folders-in-mac-os-x-located-in-users-and-not-home">Why are home folders in Mac OS X located in /Users, and not /home?</a> 를 보도록 합니다. 해당 글을 보면 유닉스에서 <code class="highlighter-rouge">/home</code> 디렉토리를 ‘홈 디렉토리’ 로 사용하는 것은 기본 설정이지 필수 사항은 아니기 때문에, ‘유닉스-고유 디렉토리’ 구조에서 홈 디렉토리를 <code class="highlighter-rouge">/Users/username</code> 로 설정하는 것에는 아무런 문제가 없다고 합니다. <a href="#fnref:macOS-home" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:GUI-environment" role="doc-endnote">
-      <p>‘GUI’ 에서도 <code class="highlighter-rouge">$HOME</code> 환경 설정 변수를 확인할 수 있는데, 이 방법에 대한 더 자세한 정보는 <a href="https://apple.stackexchange.com/questions/51280/where-do-i-find-my-user-folder-in-the-os-x-folder-hierarchy">Where do I find my user folder in the OS X folder hierarchy?</a> 를 참고하기 바랍니다. <a href="#fnref:GUI-environment" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>‘GUI’ 에서도 <code class="highlighter-rouge">$HOME</code> 환경 설정 변수를 확인할 수 있는데, 이 방법에 대한 더 자세한 정보는 <a href="https://apple.stackexchange.com/questions/51280/where-do-i-find-my-user-folder-in-the-os-x-folder-hierarchy">Where do I find my user folder in the OS X folder hierarchy?</a> 를 보도록 합니다. <a href="#fnref:GUI-environment" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>

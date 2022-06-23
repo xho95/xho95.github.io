@@ -72,7 +72,7 @@ if x = y {
 10.0 / 2.5  // 4.0 과 같습니다.
 ```
 
-C 및 오브젝티브-C 의 산술 연산자와 달리, 스위프트 산술 연산자는 기본적으로 '값의 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침 동작은 '(`a &+ b` 같은) 스위프트의 값 넘침 연산자를 사용함으로써 직접 선택할 수 있습니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 부분도 참고하기 바랍니다.
+C 및 오브젝티브-C 의 산술 연산자와 달리, 스위프트 산술 연산자는 기본적으로 '값의 넘침 (overflow)' 을 허용하지 않습니다. 값 넘침 동작은 '(`a &+ b` 같은) 스위프트의 값 넘침 연산자를 사용함으로써 직접 선택할 수 있습니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 부분도 보도록 합니다.
 
 덧셈 연산자는 '`String` 이어붙이기 (concatenation)' 도 지원합니다:
 
@@ -159,7 +159,7 @@ a += 2
 
 > 복합 할당 연산자는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 라고 작성할 수 없습니다.
 
-스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
+스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
 ### Comparison Operators (비교 연산자)
 
@@ -172,7 +172,7 @@ a += 2
 * 크거나 같음 (greater than or equal to; `a >= b`)
 * 작거나 같음 (less than or equal to; `a <= b`)
 
-> 스위프트는, 두 객체 참조 모두가 똑같은 객체 인스턴스를 참조하는 지 검사하는, 두 개의 _식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공합니다. 더 많은 정보는, [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 부분을 참고하기 바랍니다.
+> 스위프트는, 두 객체 참조 모두가 똑같은 객체 인스턴스를 참조하는 지 검사하는, 두 개의 _식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공합니다. 더 많은 정보는, [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 부분을 보도록 합니다.
 
 각각의 비교 연산자는 '구문이 참인지 아닌 지를 지시하는 `Bool` 값' 을 반환합니다:
 
@@ -197,7 +197,7 @@ if name == "world" {
 // name 이 진짜로 "world" 와 같기 때문에, "hello, world" 를 인쇄합니다.
 ```
 
-`if` 문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 참고하기 바랍니다.
+`if` 문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보도록 합니다.
 
 두 개의 '튜플' 이 똑같은 타입과 똑같은 개수의 값을 가지고 있으면 서로 비교할 수 있습니다. 튜플은, 두 값이 같지 않음을 찾을 때까지, 한 번에 한 값씩, 왼쪽에서 오른쪽으로 비교합니다. 이 두 값들을 비교하며, 해당 비교 연산의 결과가 '전체 튜플 비교 연산의 결과를 결정' 합니다. 모든 원소가 같으면, 튜플 자체가 같습니다. 예를 들면 다음과 같습니다:
 
@@ -316,7 +316,7 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-`for-in` 반복문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 참고하기 바랍니다.
+`for-in` 반복문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보도록 합니다.
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 
@@ -336,7 +336,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-배열에 네 개의 항목이 담겨 있지만, `0..<count` 이, 반-열린 연산자이기 때문에, (배열의 마지막 항목 색인인) `3` 까지만 셉니다. 배열에 대한 더 많은 것은, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 부분을 참고하기 바랍니다.
+배열에 네 개의 항목이 담겨 있지만, `0..<count` 이, 반-열린 연산자이기 때문에, (배열의 마지막 항목 색인인) `3` 까지만 셉니다. 배열에 대한 더 많은 것은, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 부분을 보도록 합니다.
 
 #### One-Sided Ranges (한-쪽 범위)
 
@@ -486,16 +486,16 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 '수학적으로 엄밀하게 정의한 나머지 연산' 을 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 참고하기 바랍니다. 이에 대한 한글 자료는 거의 없는데, [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 항목이 연관이 있는 것 같습니다.
+[^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 '수학적으로 엄밀하게 정의한 나머지 연산' 을 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 보도록 합니다. 이에 대한 한글 자료는 거의 없는데, [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 항목이 연관이 있는 것 같습니다.
 
-[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념입니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, '단락-회로 계산' 은 '컴퓨터 공학에서 계산량을 줄일 목적으로 불필요한 표현식 계산을 하지 않는 방식' 이라고 할 수 있습니다. 컴퓨터 용어로는 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 참고하기 바랍니다. (아직 한글 번역은 없는 것 같습니다.)
+[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념입니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, '단락-회로 계산' 은 '컴퓨터 공학에서 계산량을 줄일 목적으로 불필요한 표현식 계산을 하지 않는 방식' 이라고 할 수 있습니다. 컴퓨터 용어로는 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 보도록 합니다. (아직 한글 번역은 없는 것 같습니다.)
 
-[^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다. (위키피디아에 이 항목에 대한 번역은 아직 없는 것 같습니다.)
+[^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 보도록 합니다. (위키피디아에 이 항목에 대한 번역은 아직 없는 것 같습니다.)
 
-[^infix]: 'infix' 는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
+[^infix]: 'infix' 는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 보도록 합니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
 
-[^zero-based]: '기초가-0인 목록 (zero-based lists)' 은 '0으로 시작하는 색인 (index) 을 가진 목록' 입니다. 이에 대한 더 많은 정보는, 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 참고하기 바랍니다.
+[^zero-based]: '기초가-0인 목록 (zero-based lists)' 은 '0으로 시작하는 색인 (index) 을 가진 목록' 입니다. 이에 대한 더 많은 정보는, 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 보도록 합니다.
 
 [^c-based-languages]: 'C-에 기초한 언어 (C-based languages)' 는 'C-family' 라고도 하며, 여기에 속한 언어들의 목록은 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 확인할 수 있습니다. 애플에서 만든 '오브젝티브-C (Objective-C)' 와 '스위프트 (Swift)' 는 모두 'C-family' 임을 알 수 있습니다.

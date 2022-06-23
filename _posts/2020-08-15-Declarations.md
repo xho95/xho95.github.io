@@ -80,7 +80,7 @@ print("The second number is \(secondNumber).")
 
 '상수 타입 속성 (constant type property)' 을 선언하려면, '`static` 선언 수정자' 로 선언을 표시합니다. 클래스의 '상수 타입 속성' 은 암시적으로 항상 '최종 (final)' 이며; 하위 클래스의 재정의를 허용 또는 불허하려고 `class` 나 `final` 선언 수정자를 표시할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
 
-상수에 대한 더 많은 정보 및 사용 시점에 대한 안내는, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 부분과 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 참고하기 바랍니다.
+상수에 대한 더 많은 정보 및 사용 시점에 대한 안내는, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 부분과 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONSTANT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID355)
 
@@ -129,7 +129,7 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설�
 
 '이름 붙인 저장 값'[^stored-named-values] 및 '저장 변수 속성' 과 달리, '이름 붙인 계산 값' 이나 '계산 속성' 의 값은 메모리에 저장하지 않습니다.
 
-계산 속성에 대한 더 자세한 정보와 예제를 보려면, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 부분을 참고하기 바랍니다.
+계산 속성에 대한 더 자세한 정보와 예제를 보려면, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 부분을 보도록 합니다.
 
 #### Stored Variable Observers and Property Observers (저장 변수 관찰자와 저장 속성 관찰자)
 
@@ -197,7 +197,7 @@ newAndOld.x = 200
 // "Old value 12 - new value 200" 를 인쇄합니다.
 ```
 
-속성 관찰자에 대한 더 많은 정보와 사용 방법에 대한 예제는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
+속성 관찰자에 대한 더 많은 정보와 사용 방법에 대한 예제는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 #### Type Variable Properties (타입 변수 속성)
 
@@ -252,7 +252,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 이 타입 별명 없이는, `sum` 함수가 '결합 타입' 을 `T.Element` 대신 `T.Iterator.Element` 라고 참조했을 것입니다.
 
-[Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 도 참고하기 바랍니다.
+[Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 도 보도록 합니다.
 
 > GRAMMAR OF A TYPE ALIAS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID361)
 
@@ -280,7 +280,7 @@ _함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드�
 
 중첩 함수는-'입-출력 매개 변수' 같이-절대 벗어나지 않음을 보증한 또는 '벗어나지 않는 (nonescaping) 함수 인자' 로 전달한 값을 붙잡으면 '벗어나지 않 (nonescaping)' 습니다.[^escaping] 그 외의 경우, 중첩 함수는 '벗어나는 (escaping) 함수' 입니다.
 
-중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 부분을 참고하기 바랍니다.
+중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 부분을 보도록 합니다.
 
 #### Parameter Names (매개 변수 이름)
 
@@ -323,7 +323,7 @@ repeatGreeting("Hello, world!", count: 2) //  count 에는 이름표가 있지�
 
 함수 안에서는, 현재 영역에서 원본 값이 사용 가능한 경우에도, '입-출력 인자' 로 전달한 값에 접근하지 않도록 합니다. 원본에 대한 접근은, 스위프트의 '메모리 독점권 보증 (exclusivity guarantee)' 을 위반하는, '값에 대한 동시 접근 (simultaneous aceess)' 입니다. 똑같은 이유로, 동일 값을 여러 개의 '입-출력 매개 변수' 로 전달할 수 없습니다.
 
-'메모리 안전성' 과 '메모리 독점권' 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장을 참고하기 바랍니다.
+'메모리 안전성' 과 '메모리 독점권' 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장을 보도록 합니다.
 
 입-출력 매개 변수를 붙잡는 클로저나 중첩 함수는 반드시 '벗어나지 않아야 (nonescaping)' 합니다. '입-출력 매개 변수' 를 '변경 (mutating)' 없이 붙잡을 필요가 있으면, '붙잡을 목록 (capture list)' 을 사용하여 매개 변수를 명시적으로 변경 불가능하게 붙잡도록 합니다.[^closure-with-inout-parameter]
 
@@ -347,7 +347,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 }
 ```
 
-입-출력 매개 변수에 대한 더 많은 논의와 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
+입-출력 매개 변수에 대한 더 많은 논의와 예제는, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 #### Special Kinds of Parameters (특수한 종류의 매개 변수)
 
@@ -359,7 +359,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 '밑줄 (`_`) 매개 변수' 는 명시적으로 무시하는 것으로 함수 본문 안에서 접근할 수 없습니다.
 
-'기초 타입 이름' 바로 뒤에 세 점 (`...`) 을 가진 매개 변수는 '가변 (variadic) 매개 변수' 인 것으로 이해합니다. '가변 매개 변수' 바로 뒤의 매개 변수는 '인자 이름표' 를 반드시 가져야 합니다.[^variadic-label] 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름의 원소' 들을 담고 있는 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. '가변 매개 변수' 의 사용 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 참고하기 바랍니다.
+'기초 타입 이름' 바로 뒤에 세 점 (`...`) 을 가진 매개 변수는 '가변 (variadic) 매개 변수' 인 것으로 이해합니다. '가변 매개 변수' 바로 뒤의 매개 변수는 '인자 이름표' 를 반드시 가져야 합니다.[^variadic-label] 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름의 원소' 들을 담고 있는 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. '가변 매개 변수' 의 사용 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 보도록 합니다.
 
 자신의 타입 뒤에 '등호 (`=`) 기호와 표현식' 을 가진 매개 변수는 '표현식으로 주어진 기본 값' 을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 평가합니다. 함수 호출 시에 매개 변수를 생략하면, 그 대신 '기본 값' 을 사용합니다.
 
@@ -488,7 +488,7 @@ _열거체 선언 (enumeration declaration)_ 은 '이름 붙인 열거체 타입
 
 클래스 및 구조체와는 달리, 열거체 타입은 암시적으로 제공되는 '기본 초기자' 를 가지지 않으며; 모든 초기자는 반드시 명시적으로 선언해야 합니다. 초기자는 열거체의 다른 초기자로 '위임 (delegate)' 할 수 있지만, 초기자가 '열거체 case 값' 중 하나를 `self` 에 할당한 후에만 초기화 과정이 완료됩니다.
 
-구조체와는 같지만 클래스와는 달리, 열거체는 '값 타입' 으로; 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 열거체의 인스턴스를 복사합니다. '값 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 참고하기 바랍니다.
+구조체와는 같지만 클래스와는 달리, 열거체는 '값 타입' 으로; 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 열거체의 인스턴스를 복사합니다. '값 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 보도록 합니다.
 
 열거체 타입의 동작은, [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 선언' 으로 확장할 수 있습니다.
 
@@ -519,7 +519,7 @@ let f = Number.integer
 let evenInts: [Number] = [0, 2, 4, 6].map(f)
 ```
 
-'결합 값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다.
+'결합 값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 보도록 합니다.
 
 **Enumerations with Indirection (간접을 가진 열거체)**
 
@@ -569,7 +569,7 @@ enum GamePlayMode: String {
 
 위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"`, `GamePlayMode.individual` 의 원시 값은 `"individual"`, 그리고 `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
 
-'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
+'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 보도록 합니다.
 
 #### Accessing Enumeration Cases (열거체의 'case 값' 에 접근하기)
 
@@ -587,7 +587,7 @@ _구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-구조체의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
+구조체의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언은 '정리자 (deinitializer)' 나 '프로토콜 선언' 을 담을 수 없습니다. 다양한 종류의 선언을 포함하고 있는 구조체에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보도록 합니다.
 
 구조체 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스, 열거체, 또는 다른 구조체를 상속할 순 없습니다.
 
@@ -601,7 +601,7 @@ _구조체 선언 (structure declaration)_ 은 '이름 붙인 구조체 타입' 
 
 구조체 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
 
-구조체는 '값 타입' 이며; 구조체 인스턴스는 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 참고하기 바랍니다.
+구조체는 '값 타입' 이며; 구조체 인스턴스는 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 보도록 합니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 구조체 타입의 동작을 확장할 수 있습니다.
 
@@ -615,7 +615,7 @@ _클래스 선언 (class declaration)_ 은 '이름 붙인 클래스 타입' 을 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-클래스의 본문은 0개 이상의 _선언 (declaration)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 '프로토콜 선언' 을 담을 순 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 참고하기 바랍니다.
+클래스의 본문은 0개 이상의 _선언 (declaration)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 '프로토콜 선언' 을 담을 순 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보도록 합니다.
 
 클래스 타입은, _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만을 상속할 수 있지만, 프로토콜은 어떤 개수든 채택할 수 있습니다. _클래스 이름 (class anme)_ 과 콜론 뒤에 _상위 클래스 (superclass)_ 를 최초로 나타내고, _채택한 프로토콜 (adopted protocols)_ 을 뒤에 둡니다. '일반화 (generic) 클래스' 는 다른 '일반화 및 일반화 아닌 클래스' 를 상속할 수 있지만, '일반화 아닌 (nongeneric) 클래스' 는 다른 '일반화 아닌 클래스' 만 상속할 수 있습니다. '일반화 상위 클래스' 클래스의 이름을 콜론 뒤에 작성할 때는, 반드시 '해당 일반화 클래스' 의, '일반화 매개 변수 절' 을 포함한, 전체 이름을 포함시켜야 합니다.
 
@@ -634,7 +634,7 @@ _상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 �
 
 클래스 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근합니다.
 
-클래스는 '참조 타입' 이며; 클래스 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 부분을 참고하기 바랍니다.
+클래스는 '참조 타입' 이며; 클래스 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 부분을 보도록 합니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 클래스 타입의 동작을 확장할 수 있습니다.
 
@@ -648,7 +648,7 @@ _행위자 선언 (actor declaration)_ 은 '이름 붙인 행위자 타입' 을 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'행위자' 의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자', 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. 다양한 종류의 선언을 포함하고 있는 '행위자' 에 대한 논의와 여러 예제들은, [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
+'행위자' 의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자', 첨자 연산, 타입 별명, 그리고 심지어 다른 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. 다양한 종류의 선언을 포함하고 있는 '행위자' 에 대한 논의와 여러 예제들은, [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보도록 합니다. 
 
 '행위자 타입' 은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스, 열거체, 구조체나, 다른 '행위자' 를 상속할 순 없습니다. 하지만, '`@objc` 특성' 으로 표시한 '행위자' 는 암시적으로 `NSObjectProtocol` 프로토콜을 준수하며 '오브젝티브-C 런타임' 에서 `NSObject` 의 하위 타입으로 노출됩니다.
 
@@ -667,7 +667,7 @@ _행위자 선언 (actor declaration)_ 은 '이름 붙인 행위자 타입' 을 
 
 행위자 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
 
-행위자는 참조 타입이며; 행위자 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+행위자는 참조 타입이며; 행위자 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 행위자 타입의 동작을 확장할 수 있습니다.
 
@@ -683,13 +683,13 @@ _프로토콜 선언 (protocol declaration)_ 은 '이름 붙인 프로토콜 타
 
 프로토콜의 본문은, 프로토콜을 채택한 어떤 타입이든 반드시 충족해야 할 '준수성 필수 조건 (conformance requirements)' 을 설명하는, 0개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 들을 담습니다. 특히, 프로토콜은 '준수 타입 (conforming types)' 이 반드시 정해진 속성, 메소드, 초기자, 및 첨자 연산을 구현해야 함을 선언할 수 있습니다. 프로토콜은, 다양한 프로토콜 선언들 사이의 관계를 지정할 수 있는, _결합 타입 (associated types)_ 이라는, 특수한 종류의 '타입 별명 (type aliases)' 도 선언할 수 있습니다. 프로토콜 선언은 클래스, 구조체, 열거체, 또는 다른 프로토콜 선언을 담을 순 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 아래에서 자세히 논의합니다.
 
-프로토콜 타입은 어떤 개수의 다른 프로토콜이든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건 집합' 을 '한데 모으며 (aggregated)', 현재 프로토콜을 상속한 어떤 타입이든 반드시 이 모든 필수 조건들을 준수해야 합니다. '프로토콜 상속' 의 사용 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 부분을 참고하기 바랍니다.
+프로토콜 타입은 어떤 개수의 다른 프로토콜이든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 때는, 다른 프로토콜에 있는 '필수 조건 집합' 을 '한데 모으며 (aggregated)', 현재 프로토콜을 상속한 어떤 타입이든 반드시 이 모든 필수 조건들을 준수해야 합니다. '프로토콜 상속' 의 사용 방법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% post_url 2016-03-03-Protocols %}#protocol-inheritance-프로토콜-상속) 부분을 보도록 합니다.
 
 > [Protocol Composition Type (프로토콜 합성 타입)]({% post_url 2020-02-20-Types %}#protocol-composition-type-프로토콜-합성-타입) 과 [Protocol Composition (프로토콜 합성)]({% post_url 2016-03-03-Protocols %}#protocol-composition-프로토콜-합성) 에서 설명한 것처럼, '프로토콜 합성 타입' 으로 '여러 프로토콜의 준수성 필수 조건' 들을 한데 모을 수도 있습니다.
 
 해당 타입의 '익스텐션 (extension) 선언' 에서 프로토콜을 채택함으로써 이전에 선언한 타입에 '프로토콜 준수성' 을 추가할 수 있습니다. '익스텐션' 에서는, 채택한 프로토콜의 필수 조건들을 반드시 모두 구현해야 합니다. 타입이 이미 모든 필수 조건을 구현하고 있으면, '익스텐션 선언' 의 본문은 비워둘 수도 있습니다.
 
-기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜에서 선언한 모든 속성, 메소드, 및 첨자 연산을 구현해야 합니다. 그렇다 하더라도, 이 프로토콜 멤버 선언들을 '`optional` 선언 수정자' 로 표시하여 '준수 타입의 구현부' 가 '옵셔널 (optional)' 임을 지정할 수 있습니다.[^optional-member] '`optional` 수정자' 는 '`objc` 특성' 으로 표시한 멤버와, '`objc` 특성' 으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 가진 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자의 사용 방법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버로의 접근 방법-예를 들어, '준수 타입' 의 구현 여부를 확신할 수 없을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 참고하기 바랍니다.
+기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜에서 선언한 모든 속성, 메소드, 및 첨자 연산을 구현해야 합니다. 그렇다 하더라도, 이 프로토콜 멤버 선언들을 '`optional` 선언 수정자' 로 표시하여 '준수 타입의 구현부' 가 '옵셔널 (optional)' 임을 지정할 수 있습니다.[^optional-member] '`optional` 수정자' 는 '`objc` 특성' 으로 표시한 멤버와, '`objc` 특성' 으로 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과, 클래스 타입만이 '옵셔널 멤버 필수 조건' 을 가진 프로토콜을 채택하고 준수할 수 있습니다. `optional` 선언 수정자의 사용 방법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버로의 접근 방법-예를 들어, '준수 타입' 의 구현 여부를 확신할 수 없을 때-에 대한 지침은, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보도록 합니다.
 
 '열거체의 case 값' 은 '타입 멤버' 에 대한 프로토콜 필수 조건을 만족할 수 있습니다. 특히, '어떤 결합 값도 없는 열거체 case 값' 은 '`Self` 타입의 읽기-전용 타입 변수' 에 대한 프로토콜 필수 조건을 만족하며,[^enumeration-get-only] '결합 값을 가진 열거체 case 값' 은 '매개 변수와 인자 이름표가 case 의 결합 값과 일치하는 `Self` 를 반환하는 함수' 에 대한 프로토콜 필수 조건을 만족합니다.[^enumeration-function] 예를 들면 다음과 같습니다:
 
@@ -730,21 +730,21 @@ protocol SomeProtocol: AnyObject {
 
 다른 프로토콜 멤버 선언에서 처럼, 이 속성 선언은 프로토콜이 준수하는 타입에 대한 '획득자와 설정자 필수 조건 (requirements)' 만 선언합니다. 그 결과, 자신을 선언한 프로토콜에서 획득자와 설정자를 직접 구현하진 않습니다.
 
-'준수 타입' 은 다양한 방식으로 '획득자와 설정자 필수 조건' 을 만족시킬 수 있습니다. 속성 선언이 `get` 과 `set` 키워드 둘 다를 포함하면, '준수 타입' 은 읽기 쓰기 둘 다 가능한 (즉, 획득자와 설정자 둘 다를 구현한) '저장 변수 속성' 이나 '계산 속성' 으로 구현할 수 있습니다. 하지만, 해당 속성 선언을 '상수 속성' 이나 '읽기-전용 계산 속성' 으로 구현할 순 없습니다. 속성 선언이 `get` 키워드만 포함하면, 어떤 종류의 속성으로도 구현할 수 있습니다. 프로토콜의 속성 필수 조건을 구현하는 '준수 타입' 에 대한 예제는, [Property Requirements (속성 필수 조건)]({% post_url 2016-03-03-Protocols %}#property-requirements-속성-필수-조건) 부분을 참고하기 바랍니다.
+'준수 타입' 은 다양한 방식으로 '획득자와 설정자 필수 조건' 을 만족시킬 수 있습니다. 속성 선언이 `get` 과 `set` 키워드 둘 다를 포함하면, '준수 타입' 은 읽기 쓰기 둘 다 가능한 (즉, 획득자와 설정자 둘 다를 구현한) '저장 변수 속성' 이나 '계산 속성' 으로 구현할 수 있습니다. 하지만, 해당 속성 선언을 '상수 속성' 이나 '읽기-전용 계산 속성' 으로 구현할 순 없습니다. 속성 선언이 `get` 키워드만 포함하면, 어떤 종류의 속성으로도 구현할 수 있습니다. 프로토콜의 속성 필수 조건을 구현하는 '준수 타입' 에 대한 예제는, [Property Requirements (속성 필수 조건)]({% post_url 2016-03-03-Protocols %}#property-requirements-속성-필수-조건) 부분을 보도록 합니다.
 
 프로토콜 선언에서 '타입 속성 필수 조건' 을 선언하려면, 속성 선언을 `static` 키워드로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 속성을 `static` 키워드로 선언하며, 프로토콜을 클래스가 준수하면 속성을 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션 (extension)' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '타입 속성 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
-[Variable Declaration (변수 선언)](#variable-declaration-변수-선언) 부분도 참고하기 바랍니다.
+[Variable Declaration (변수 선언)](#variable-declaration-변수-선언) 부분도 보도록 합니다.
 
 > GRAMMAR OF A PROTOCOL PROPERTY DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Method Declaration (프로토콜 메소드 선언)
 
-프로토콜은 프로토콜 선언 본문에 '프로토콜 메소드 선언' 을 포함함으로써 '준수 타입' 이 메소드를 반드시 구현해야 한다고 선언합니다. '프로토콜 메소드 선언' 은: 함수 본문을 포함하지 않고, 함수 선언에서 '어떤 기본 매개 변수 값' 도 제공할 수 없다는 두 가지를 제외하면 함수 선언과 형식이 똑같습니다. 프로토콜 메소드 필수 조건을 구현하는 '준수 타입' 에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 부분을 참고하기 바랍니다.
+프로토콜은 프로토콜 선언 본문에 '프로토콜 메소드 선언' 을 포함함으로써 '준수 타입' 이 메소드를 반드시 구현해야 한다고 선언합니다. '프로토콜 메소드 선언' 은: 함수 본문을 포함하지 않고, 함수 선언에서 '어떤 기본 매개 변수 값' 도 제공할 수 없다는 두 가지를 제외하면 함수 선언과 형식이 똑같습니다. 프로토콜 메소드 필수 조건을 구현하는 '준수 타입' 에 대한 예제는, [Method Requirements (메소드 필수 조건)]({% post_url 2016-03-03-Protocols %}#method-requirements-메소드-필수-조건) 부분을 보도록 합니다.
 
 프로토콜 선언에서 '클래스 또는 정적 메소드 필수 조건' 을 선언하려면, 메소드 선언을 '`static` 선언 수정자' 로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 메소드를 `static` 키워드로 선언하고, 프로토콜을 클래스가 준수하면 메소드를 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '타입 메소드 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
-[Function Declaration (함수 선언)](#function-declaration-함수-선언) 부분도 참고하기 바랍니다.
+[Function Declaration (함수 선언)](#function-declaration-함수-선언) 부분도 보도록 합니다.
 
 > GRAMMAR OF A PROTOCOL METHOD DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
@@ -756,7 +756,7 @@ protocol SomeProtocol: AnyObject {
 
 이미 '`final` 선언 수정자' 로 표시한 클래스가 아니라면, 프로토콜의 '초기자 필수 조건' 을 만족하는 초기자를 클래스가 구현할 때는, 초기자를 반드시 '`required` 선언 수정자' 로 표시해야 합니다.
 
-[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 부분도 참고하기 바랍니다.
+[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 부분도 보도록 합니다.
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
@@ -770,13 +770,13 @@ protocol SomeProtocol: AnyObject {
 
 프로토콜 선언에서 '정적 (static) 첨자 연산 필수 조건' 을 선언하려면, 첨자 연산 선언을 '`static` 선언 수정자' 로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 '첨자 연산' 을 `static` 키워드로 선언하며, 프로토콜을 클래스가 준수하면 '첨자 연산' 을 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션 (extension)' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '정적 첨자 연산 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
 
-[Subscript Declaration (첨자 연산 선언)](#subscript-declaration-첨자-연산-선언) 부분도 참고하기 바랍니다.
+[Subscript Declaration (첨자 연산 선언)](#subscript-declaration-첨자-연산-선언) 부분도 보도록 합니다.
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
 #### Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)
 
-프로토콜은 `associatedtype` 키워드로 '결합 타입 (associated types)' 을 선언합니다. '결합 타입' 은 프로토콜 선언에서 사용하는 타입에 대한 '별명 (alias)' 을 제공합니다. '결합 타입' 은 '일반화 (generic) 매개 변수 절' 에 있는 '타입 매개 변수' 와 비슷하지만, 자신을 선언한 프로토콜의 `Self` 와 결합되어 있습니다. 해당 상황에서는, `Self` 가 '프로토콜을 준수하는 최종 결과 (eventual) 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
+프로토콜은 `associatedtype` 키워드로 '결합 타입 (associated types)' 을 선언합니다. '결합 타입' 은 프로토콜 선언에서 사용하는 타입에 대한 '별명 (alias)' 을 제공합니다. '결합 타입' 은 '일반화 (generic) 매개 변수 절' 에 있는 '타입 매개 변수' 와 비슷하지만, 자신을 선언한 프로토콜의 `Self` 와 결합되어 있습니다. 해당 상황에서는, `Self` 가 '프로토콜을 준수하는 최종 결과 (eventual) 타입' 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 보도록 합니다.
 
 '결합 타입' 을 '재선언 (redeclaring)' 하지 않고도, 다른 프로토콜에서 상속한 '결합 타입' 에 '구속 조건' 을 추가하려면 프로토콜 선언에서 '일반화 (generic) `where` 절' 을 사용합니다. 예를 들어, 아래의 `SubProtocol` 선언들은 서로 '같은 값' 입니다:
 
@@ -794,7 +794,7 @@ protocol SubProtocolA: SomeProtocol {
 protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 ```
 
-[Type Alias Declaration (타입 별명 선언)](#type-alias-declaration-타입-별명-선언) 부분도 참고하기 바랍니다.
+[Type Alias Declaration (타입 별명 선언)](#type-alias-declaration-타입-별명-선언) 부분도 보도록 합니다.
 
 > GRAMMAR OF A PROTOCOL ASSOCIATED TYPE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
@@ -834,7 +834,7 @@ _초기자 선언 (initializer declaration)_ 은 프로그램에 클래스, 구�
 
 함수와 메소드인 것 같이, 초기자도 에러를 던지거나 다시 던질 수 있습니다. 그리고 함수와 메소드인 것 같이, 적절한 동작을 지시하기 위해 초기자 매개 변수 뒤에 `throws` 나 `rethrows` 키워드를 사용합니다.
 
-다양한 타입 선언에서의 초기자에 대한 예제를 보려면, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장을 참고하기 바랍니다.
+다양한 타입 선언에서의 초기자에 대한 예제를 보려면, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장을 보도록 합니다.
 
 #### Failable Initializers (실패 가능 초기자)
 
@@ -874,7 +874,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 '실패 가능 지명 초기자' 는 하위 클래스에서 어떤 종류의 지명 초기자로도 '재정의' 할 수 있습니다. '실패하지 않는 지명 초기자' 는 하위 클래스에서 '실패하지 않는 지명 초기자' 만으로 재정의할 수 있습니다.
 
-실패 가능 초기자에 대한 더 많은 정보와 예제를 보려면, [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 부분을 참고하기 바랍니다.
+실패 가능 초기자에 대한 더 많은 정보와 예제를 보려면, [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 부분을 보도록 합니다.
 
 > GRAMMAR OF AN INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID375)
 
@@ -892,7 +892,7 @@ _정리자 선언 (deinitializer declaration)_ 은 클래스 타입에 대한 '�
 
 정리자는 직접 호출하지 않습니다.
 
-클래스 선언에서 정리자를 사용하는 방법에 대한 예제는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다.
+클래스 선언에서 정리자를 사용하는 방법에 대한 예제는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 보도록 합니다.
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
 
@@ -904,7 +904,7 @@ _익스텐션 선언 (extension declaration)_ 은 기존 타입 동작의 확장
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-익스텐션 선언의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 계산 속성, 계산 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산 선언, 그리고 심지어 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. '익스텐션 선언' 은 정리자나 프로토콜 선언, 저장 속성, 속성 관찰자, 또는 '다른 익스텐션 선언' 을 담을 순 없습니다. '프로토콜 익스텐션' 에 있는 선언들은 `final` 로 표시할 수 없습니다. 다양한 종류의 선언을 포함하고 있는 '익스텐션' 에 대한 논의와 여러 예제들은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+익스텐션 선언의 본문은 0개 이상의 _선언 (declarations)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 계산 속성, 계산 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 연산 선언, 그리고 심지어 클래스, 구조체, 및 열거체 선언을 포함할 수 있습니다. '익스텐션 선언' 은 정리자나 프로토콜 선언, 저장 속성, 속성 관찰자, 또는 '다른 익스텐션 선언' 을 담을 순 없습니다. '프로토콜 익스텐션' 에 있는 선언들은 `final` 로 표시할 수 없습니다. 다양한 종류의 선언을 포함하고 있는 '익스텐션' 에 대한 논의와 여러 예제들은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 보도록 합니다.
 
 _타입 이름 (type name)_ 이 클래스, 구조체, 및 열거체 타입이면, '익스텐션' 은 해당 타입을 확장합니다. _타입 이름 (type name)_ 이 프로토콜 타입이면, '익스텐션' 은 해당 프로토콜을 준수하는 모든 타입을 확장합니다.
 
@@ -1097,7 +1097,7 @@ _매개 변수 (paramter)_ 나 _반환 타입 (return type)_ 이 '중복 정의 
 
 첨자 연산은, [Protocol Subscript Declaration (프로토콜 첨자 선언)](#protocol-subscript-declaration-프로토콜-첨자-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 선언할 수도 있습니다.
 
-첨자에 대한 더 많은 정보 및 첨자 선언에 대한 예제를 보려면, [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}) 장을 참고하기 바랍니다.
+첨자에 대한 더 많은 정보 및 첨자 선언에 대한 예제를 보려면, [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}) 장을 보도록 합니다.
 
 #### Type Subscript Declarations (타입 첨자 선언)
 
@@ -1119,7 +1119,7 @@ _연산자 선언 (operator declaration)_ 은 프로그램에 새로운 '중위 
 
 _중위 연산자 (infix operator)_ 는, 익숙한 `1 + 2` 표현식의 '덧셈 연산자 (`+`)' 같이, 두 피연산자 사이에 작성하는 '이항 (binary) 연산자' 입니다.
 
-중위 연산자는 옵션으로 우선권 그룹을 지정할 수 있습니다. 연산자의 우선권 그룹을 생략하면, 스위프트가, `DefaultPrecedence` 라는, 기본 우선권 그룹을 사용하는데, 이는 `TernaryPrecedence` 바로 위의 우선권을 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선권 그룹 선언)](#precedence-group-declaration-우선권-그룹-선언) 부분을 참고하기 바랍니다.
+중위 연산자는 옵션으로 우선권 그룹을 지정할 수 있습니다. 연산자의 우선권 그룹을 생략하면, 스위프트가, `DefaultPrecedence` 라는, 기본 우선권 그룹을 사용하는데, 이는 `TernaryPrecedence` 바로 위의 우선권을 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선권 그룹 선언)](#precedence-group-declaration-우선권-그룹-선언) 부분을 보도록 합니다.
 
 다음 형식은 새로운 '접두사 연산자' 를 선언합니다:
 
@@ -1137,7 +1137,7 @@ _접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 �
 
 접두사 연산자 처럼, 접미사 연산자 선언은 우선권 수준을 지정하지 않습니다. 접미사 연산자도 비-결합적 (nonassociative)[^nonassociative] 입니다.
 
-새로운 연산자를 선언한 후엔, '연산자와 똑같은 이름의 정적 메소드' 를 선언함으로써 이를 구현합니다. '정적 메소드' 는 연산자가 취하는 한 인자 값 타입의 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체의 '정적 메소드' 로 구현합니다. 접두사나 접미사 연산자를 구현 중이면, '해당 메소드 선언' 도 반드시 '관련 `prefix` 나 `postfix` 선언 수정자; 로 표시해야 합니다. 새로운 연산자의 생성과 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분을 참고하기 바랍니다.
+새로운 연산자를 선언한 후엔, '연산자와 똑같은 이름의 정적 메소드' 를 선언함으로써 이를 구현합니다. '정적 메소드' 는 연산자가 취하는 한 인자 값 타입의 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체의 '정적 메소드' 로 구현합니다. 접두사나 접미사 연산자를 구현 중이면, '해당 메소드 선언' 도 반드시 '관련 `prefix` 나 `postfix` 선언 수정자; 로 표시해야 합니다. 새로운 연산자의 생성과 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분을 보도록 합니다.
 
 > GRAMMAR OF AN OPERATOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380)
 
@@ -1158,7 +1158,7 @@ _더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름�
 
 > _더 낮은 그룹 이름들 (lower group names)_ 과 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관련된 우선권 그룹은 반드시 '단일 관계 계층 (single relational hierarchy)' 을 이뤄야 하지만, '선형 계층 (linear hierarchy)' 을 형성하진 않아도 됩니다. 이는 '상대적인 우선권을 정의하지 않은 우선권 그룹을 가지는 것' 도 가능하다는 의미입니다. 이 우선권 그룹 연산자들은 그룹짓는 괄호 없이는 서로 나란히 사용할 수 없습니다.
 
-스위프트는 표준 라이브러리가 제공하는 연산자와 같이 나아가는 수 없이 많은 우선권 그룹을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선권 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
+스위프트는 표준 라이브러리가 제공하는 연산자와 같이 나아가는 수 없이 많은 우선권 그룹을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선권 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
 연산자 _결합성 (associativity)_ 은 괄호 그룹이 없을 때 똑같은 우선권 수준을 가지는 일련의 연산자들끼리 그룹짓는 방법을 지정합니다. 연산자 결합성은 `left`, `right`, 또는 `none` 이라는 '상황에-민감한 (context-sensitive) 키워드'[^context-sensitive] 하나를 작성함으로써 지정합니다-'결합성' 을 생략하면, 기본 값이 `none` 입니다. '왼쪽-결합 (left-associative) 연산자' 는 왼쪽에서 오른쪽으로 그룹 짓습니다. 예를 들어, '빼기 연산자 (`-`)' 는 왼쪽-결합이므로, `4 - 5 - 6` 라는 표현식은 `(4 - 5) - 6` 으로 그룹지으며 `-7` 이라고 평가합니다. '오른쪽-결합 연산자' 는 오른쪽에서 왼쪽으로 그룹지으며, `none` 이라는 결합성으로 지정한 연산자는 결합을 아예 하지 않습니다. '똑같은 우선권 수준의 비-결합 (nonassociative) 연산자' 는 서로 인접해 있을 수 없습니다. 예를 들어, `<` 연산자의 '결합성' 은 `none` 인데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아니라는 의미입니다.
 
@@ -1182,17 +1182,17 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `final`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '클래스' 또는 '클래스의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 클래스에 적용하면 클래스가 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 것을 지시합니다. `final` 특성의 사용 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '클래스' 또는 '클래스의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 클래스에 적용하면 클래스가 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 것을 지시합니다. `final` 특성의 사용 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
 
 `lazy`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 속성의 초기 값을, 속성에 최초로 접근할 때, 최대 한 번만 계산하고 저장함을 지시하기 위해 클래스나 구조체의 저장 변수 속성에 적용합니다. `lazy` 수정자의 사용 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 속성의 초기 값을, 속성에 최초로 접근할 때, 최대 한 번만 계산하고 저장함을 지시하기 위해 클래스나 구조체의 저장 변수 속성에 적용합니다. `lazy` 수정자의 사용 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보도록 합니다.
 
 `optional`
 
 &nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 준수 타입이 해당 멤버를 구현하는 게 필수는 아님을 지시하기 위해 '프로토콜의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 '`objc` 특성으로 표시한 프로토콜' 에만 적용할 수 있습니다. 그 결과, '클래스 타입' 만이 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자의 사용 방법에 대한 더 많은 정보와-예를 들어, 준수 타입이 이를 구현하는지 확실하지 않을 때-옵셔널 프로토콜 멤버로 접근하는 방법에 대한 길잡이는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 '`objc` 특성으로 표시한 프로토콜' 에만 적용할 수 있습니다. 그 결과, '클래스 타입' 만이 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자의 사용 방법에 대한 더 많은 정보와-예를 들어, 준수 타입이 이를 구현하는지 확실하지 않을 때-옵셔널 프로토콜 멤버로 접근하는 방법에 대한 길잡이는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보도록 합니다.
 
 `required`
 
@@ -1204,7 +1204,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `unowned`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 실행 시간 에러를 일으킵니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 실행 시간 에러를 일으킵니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보도록 합니다.
 
 `unowned(safe)`
 
@@ -1212,11 +1212,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `unowned(unsafe)`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 객체였던 위치의 메모리에 접근하는데, 이는 '메모리-안전하지 않은 (memory-unsafe) 연산' 입니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다.`unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 객체였던 위치의 메모리에 접근하는데, 이는 '메모리-안전하지 않은 (memory-unsafe) 연산' 입니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다.`unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보도록 합니다.
 
 `weak`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 약한 (weak) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 변수나 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제와 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 참고하기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 약한 (weak) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 변수나 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제와 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 보도록 합니다.
 
 #### Access Control Levels (접근 제어 수준)
 
@@ -1280,7 +1280,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다. 즉, 'MVVM' 에서는 의도적으로 `Never` 타입을 사용하는 것입니다. 
 
-[^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다.
+[^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
 [^designated-initializers]: 여기서 '초기자' 가 아니라 '지명 초기자' 라고 한 것은, 재정의한 초기자가 상위 클래스에서 '지명 초기자' 이든 '편의 초기자' 이든, 재정의하고 나면 무조건 '지명 초기자' 가 되기 때문입니다.
 
@@ -1288,7 +1288,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 
-[^nonassociative]: '비-결합적 (nonassociative)' 은 '결합성 (associativity)' 이 `none` 인 것을 말합니다. 보다 자세한 내용은, 이어지는 절인 [Precedence Group Declaration (우선권 그룹 선언)](#precedence-group-declaration-우선권-그룹-선언) 부분을 참고하기 바랍니다.
+[^nonassociative]: '비-결합적 (nonassociative)' 은 '결합성 (associativity)' 이 `none` 인 것을 말합니다. 보다 자세한 내용은, 이어지는 절인 [Precedence Group Declaration (우선권 그룹 선언)](#precedence-group-declaration-우선권-그룹-선언) 부분을 보도록 합니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
 
@@ -1300,20 +1300,20 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^enumeration-function]: 아래 예제의 열거체에서 `case someFuntion(x: Int)` 가 프로토콜의 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족한다는 의미입니다. [Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)](#enumerations-with-cases-of-any-type-어떤-타입이든-되는-case-값-을-가진-열거체) 에서 설명한 것처럼, '결합 값을 가진 열거체 case 값' 은 함수처럼 사용할 수 있기 때문입니다.
 
-[^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 참고하기 바랍니다. 
+[^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보도록 합니다. 
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
 [^type-computed-properties]: '타입 변수 속성 (type variable property)' 이 아니라, '타입 계산 속성 (type computed property)' 입니다. '타입 저장 속성 (type stored property)' 는 해당하지 않습니다. 
 
-[^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 참고하기 바랍니다.
+[^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 보도록 합니다.
 
 [^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 
 
 [^signature]: 함수나 메소드에서 '서명 (signature)' 과 '이름 (name)' 의 차이점은 '매개 변수' 를 포함하는 지의 여부입니다. 이 예제에 있는 `init(rawValue: RawValue)` 는 '초기자 서명 (signature)' 이며, 매개 변수 부분을 뺀 `init?` 이 '초기자 이름' 입니다. 
 
-[^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 참고하기 바랍니다. 
+[^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 보도록 합니다. 
 
-[^dynamically-dispatched]: '동적으로 급파 (dynamically dispatched) 한다' 는 개념은 'C++ 과 같은 언어' 에서 많이 사용하는 '가상 함수 테이블 (virtual function table) 을 사용한다' 는 의미입니다. '가상 함수 테이블' 을 사용하기 때문에, '인라인' 이나 '탈-가상화' 를 할 수 없습니다. '가상 함수 테이블' 에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 참고하기 바랍니다.  
+[^dynamically-dispatched]: '동적으로 급파 (dynamically dispatched) 한다' 는 개념은 'C++ 과 같은 언어' 에서 많이 사용하는 '가상 함수 테이블 (virtual function table) 을 사용한다' 는 의미입니다. '가상 함수 테이블' 을 사용하기 때문에, '인라인' 이나 '탈-가상화' 를 할 수 없습니다. '가상 함수 테이블' 에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 보도록 합니다.  
 
 [^unowned-safe]: 즉, 스위프트에서 `unowned` 라고 사용하는 것은 `unowned(safe)` 를 사용하는 것이며, `unowned(unsafe)` 를 명시하지 않은 이상, 항상 `unowned(safe)` 를 사용하게 됩니다.

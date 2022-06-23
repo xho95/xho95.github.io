@@ -350,7 +350,7 @@ class ExampleClass: NSObject {
 }
 ```
 
-더 많은 정보는, [Importing Swift into Objective-C](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c) 항목을 참고하기 바랍니다.
+더 많은 정보는, [Importing Swift into Objective-C](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c) 항목을 보도록 합니다.
 
 > `objc` 특성의 인자는 해당 선언에 대한 '실행 시간 (runtime) 이름' 도 바꿀 수 있습니다. '실행 시간 이름' 은, [NSClassFromString](https://developer.apple.com/documentation/foundation/1395135-nsclassfromstring) 같이, '오브젝티브-C 런타임' 과 상호 작용하는 함수를 호출할 때와, 앱의 'Info.plist' 파일에 있는 '클래스 이름' 을 지정할 때, 사용합니다. 인자를 전달함으로써 이름을 지정하면, 해당 이름을 '오브젝티브-C 코드에 있는 이름' 인 것처럼 그리고 '실행 시간 이름' 인 것처럼 사용합니다. 인자를 생략하면, 오브젝티브-C 코드에서 사용하는 이름이 스위프트 코드의 이름과 일치하며, '실행 시간 이름' 은 스위프트 컴파일러의 일반적인 '이름 뭉개기 (name mangling) 협약' 을 따릅니다.
 
@@ -427,7 +427,7 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### resultBuilder (결과 제작자)
 
-이 특성은 '해당 타입을 결과 제작자 (result builder) 로 사용' 하기 위해 클래스, 구조체, 열거체에 적용합니다. _결과 제작자 (result builder)_ 는 '중첩 자료 구조를 단계별로 제작하는 타입' 니다. '결과 제작자' 는 '중첩 자료 구조를 자연스러운, 선언 방식으로, 생성' 하기 위한 '특정-분야 언어 (domain-specific language; DSL) 을 구현' 하기 위해 사용합니다. `resultBuilder` 특성의 사용 방법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 부분을 참고하기 바랍니다.
+이 특성은 '해당 타입을 결과 제작자 (result builder) 로 사용' 하기 위해 클래스, 구조체, 열거체에 적용합니다. _결과 제작자 (result builder)_ 는 '중첩 자료 구조를 단계별로 제작하는 타입' 니다. '결과 제작자' 는 '중첩 자료 구조를 자연스러운, 선언 방식으로, 생성' 하기 위한 '특정-분야 언어 (domain-specific language; DSL) 을 구현' 하기 위해 사용합니다. `resultBuilder` 특성의 사용 방법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 부분을 보도록 합니다.
 
 **Result-Building Methods (결과-제작 메소드)**
 
@@ -733,7 +733,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### autoclosure (자동 클로저)
 
-이 특성은 '표현식을 인자 없는 클로저로 자동 포장함으로써 해당 표현식의 평가를 늦추기' 위해 적용합니다. 이는, 함수나 메소드 선언에 있는 매개 변수 타입이, 인자를 취하지 않고 표현식 타입의 값을 반환하는 함수 타입일 때, 매개 변수 타입에 적용합니다. `autoclosure` 특성의 사용 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분을 참고하기 바랍니다.
+이 특성은 '표현식을 인자 없는 클로저로 자동 포장함으로써 해당 표현식의 평가를 늦추기' 위해 적용합니다. 이는, 함수나 메소드 선언에 있는 매개 변수 타입이, 인자를 취하지 않고 표현식 타입의 값을 반환하는 함수 타입일 때, 매개 변수 타입에 적용합니다. `autoclosure` 특성의 사용 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분을 보도록 합니다.
 
 #### convention (협약)
 
@@ -749,7 +749,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### escaping (벗어남)
 
-이 특성은 '나중의 실행을 위해 매개 변수의 값을 저장할 수 있음' 을 지시하기 위해 메소드나 함수 선언의 매개 변수 타입에 적용합니다. 이는 호출 수명보다 값이 오래 사는 걸 허용한다는 의미입니다. '`escaping` 타입 특성을 가진 함수 타입 매개 변수' 는 속성이나 메소드가 `self.` 를 명시적으로 사용할 것을 요구합니다. `escaping` 특성의 사용 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 참고하기 바랍니다.
+이 특성은 '나중의 실행을 위해 매개 변수의 값을 저장할 수 있음' 을 지시하기 위해 메소드나 함수 선언의 매개 변수 타입에 적용합니다. 이는 호출 수명보다 값이 오래 사는 걸 허용한다는 의미입니다. '`escaping` 타입 특성을 가진 함수 타입 매개 변수' 는 속성이나 메소드가 `self.` 를 명시적으로 사용할 것을 요구합니다. `escaping` 특성의 사용 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 보도록 합니다.
 
 ### Switch Case Attributes (switch 문 case 절 특성)
 
@@ -757,7 +757,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### unknown (알려지지 않음)
 
-이 특성은 '코드 컴파일 시점에 알려진 어떤 열거체 case 값과도 일치하지 않을 것으로 예상함' 을 지시하기 위해 'switch 문의 case 절' 에 적용합니다. `unknown` 특성의 사용 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 참고하기 바랍니다.
+이 특성은 '코드 컴파일 시점에 알려진 어떤 열거체 case 값과도 일치하지 않을 것으로 예상함' 을 지시하기 위해 'switch 문의 case 절' 에 적용합니다. `unknown` 특성의 사용 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 보도록 합니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
 
@@ -775,11 +775,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^objc]: '오브젝티브-C' 의 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
 
-[^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 참고하기 바랍니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 참고하기 바랍니다.
+[^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
 
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
 
-[^dynamic-callable]: '동적으로 호출 가능 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 참고하기 바랍니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
+[^dynamic-callable]: '동적으로 호출 가능 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
 
 [^dynamic-member-lookup]: '동적으로 멤버 찾아보기 (dynamicMemberLookup)' 은 스위프트에서 'Core Data' 나 'JSON' 을 다룰 때 사용하게 되는 것 같습니다.
 

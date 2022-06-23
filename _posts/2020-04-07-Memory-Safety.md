@@ -50,7 +50,7 @@ print("We're number \(one)!")
 
 읽기 및 쓰기 접근의 차이는 대체로 명백한데: 쓰기 접근은 그 장소의 메모리를 바꾸지만, 읽기 접근은 아니라는 겁니다. 메모리 장소는 접근하고 있는 걸 참조하는데-예를 틀어, 변수나, 상수, 또는 속성 등입니다. 메모리 접근의 지속 시간은 순간적 (instantaneous) 이거나 장기적 (long-term) 입니다.
 
-C-언어의 원자적 연산 (atomic operations) 만 사용하면 연산이 _원자적 (atomic)_ 이며; 그 외의 경우 원자적이 아닙니다 (nonatomic). 이 함수들의 목록은, `stdatomic(3)` 매뉴얼 페이지 (man page)[^man-page] 를 참고하기 바랍니다.
+C-언어의 원자적 연산 (atomic operations) 만 사용하면 연산이 _원자적 (atomic)_ 이며; 그 외의 경우 원자적이 아닙니다 (nonatomic). 이 함수들의 목록은, `stdatomic(3)` 매뉴얼 페이지 (man page)[^man-page] 를 보도록 합니다.
 
 접근을 시작한 후엔 이게 끝나기 전까지 다른 코드의 실행이 불가능하면 접근이 _순간적 (instantaneous)_ 입니다. 태생적으로, 두 개의 순간적 접근이 동시에 발생할 순 없습니다. 대부분의 메모리 접근은 순간적입니다. 예를 들어, 아래 나열한 코드의 모든 읽기 및 쓰기 접근은 순간적입니다:
 
@@ -216,17 +216,17 @@ func someFunction() {
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 참고하기 바랍니다.
+[^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 보도록 합니다.
 
-[^nonatomic]: '원자적이 아닌 접근 (nonatomic access)' 은 뒤의 본문에서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이 아닌 함수로 접근하는 것을 의미합니다. '원자적 접근' 에 대해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 항목을 참고하기 바랍니다.
+[^nonatomic]: '원자적이 아닌 접근 (nonatomic access)' 은 뒤의 본문에서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이 아닌 함수로 접근하는 것을 의미합니다. '원자적 접근' 에 대해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 항목을 보도록 합니다.
 
 [^man-page]: '매뉴얼 페이지 (man page)' 란 터미널에서 `man` 명령어로 해당 명령어의 매뉴얼을 출력한 페이지를 말합니다. 본문에 있는 `stdatomic(3)` 의 매뉴얼 페이지를 보려면 macOS 의 터미널에서 `$ man stdatomic` 라고 명령하면 됩니다. 해당 매뉴얼을 보면 원자적 연산은 앞에 `atomic_` 이라는 접두사가 붙는다는 걸 알 수 있습니다.
 
-[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
+[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% post_url 2020-06-02-Functions %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 [^three-rules]: 즉, 앞에서 말한 충돌이 일어나는 세 가지 조건 모두에 부합합니다. 세 가지 조건 중 하나라도 해당이 안되면, 충돌은 일어나지 않습니다.
 
-[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
+[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% post_url 2020-05-03-Methods %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% post_url 2020-05-03-Methods %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 보도록 합니다.
 
 [^safe-overlap]: 이어지는 내용에서 설명하는 것처럼, 구조체를 지역 변수에 저장하면, 그 속성으로의 접근이 겹쳐도 컴파일러가 안전하다는 걸 증명할 수 있으면 충돌이 발생하지 않습니다.
 

@@ -28,7 +28,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 * 확장을 하여 기본 구현을 넘어 자신의 기능을 늘림
 * 프로토콜을 준수하여 정해진 종류의 표준 기능을 제공함
 
-더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
+더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보도록 합니다.
 
 클래스에는 구조체는 없는 추가적인 보유 능력이 있습니다:
 
@@ -37,7 +37,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서
 * 정리자 (deinitializer) 는 클래스 인스턴스에 할당한 어떤 자원이든 풀 수 있게 합니다.
 * 참조 카운팅 (reference counting) 은 클래스 인스턴스에 대한 하나 이상의 참조를 허용합니다.
 
-더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 참고하기 바랍니다.
+더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 보도록 합니다.
 
 클래스가 지원하는 추가적인 보유 능력은 복잡도 증가라는 비용에 직면합니다. 일반적인 지침으로는, 구조체가 이유를 파악하기 쉽기 때문에 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 이는, 실상, 대부분의 사용자 정의 자료 타입이 구조체와 열거체일 것이라는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
 
@@ -252,7 +252,7 @@ if tenEighty === alsoTenEighty {
 
 #### Pointers (포인터)
 
-C, C++ 또는 오브젝티브-C 에 대한 경험이 있으면, 이 언어들은 메모리 주소를 참조할 때 _포인터 (pointers)_ 를 사용한다는 걸 알고 있을 겁니다. 어떠한 참조 타입 인스턴스를 참조하는 건 스위프트 상수 또는 변수와 C 의 포인터와 비슷하지만, 메모리 주소의 직접적인 포인터는 아니며, 참조 생성을 지시하는 별표 (`*`) 의 작성을 요구하지도 않습니다. 그 대신, 이 참조들은 스위프트의 다른 어떤 상수나 변수인 것 같이 정의합니다. 표준 라이브러리는 '포인터와 직접 상호 작용할 필요가 있을 경우 사용할 수 있는 포인터와 버퍼 (buffer) 타입을 제공' 합니다-[Manual Memory Management (수동 메모리 관리)](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)[^manual-memory-management] 항목을 참고하기 바랍니다.
+C, C++ 또는 오브젝티브-C 에 대한 경험이 있으면, 이 언어들은 메모리 주소를 참조할 때 _포인터 (pointers)_ 를 사용한다는 걸 알고 있을 겁니다. 어떠한 참조 타입 인스턴스를 참조하는 건 스위프트 상수 또는 변수와 C 의 포인터와 비슷하지만, 메모리 주소의 직접적인 포인터는 아니며, 참조 생성을 지시하는 별표 (`*`) 의 작성을 요구하지도 않습니다. 그 대신, 이 참조들은 스위프트의 다른 어떤 상수나 변수인 것 같이 정의합니다. 표준 라이브러리는 '포인터와 직접 상호 작용할 필요가 있을 경우 사용할 수 있는 포인터와 버퍼 (buffer) 타입을 제공' 합니다-[Manual Memory Management (수동 메모리 관리)](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)[^manual-memory-management] 항목을 보도록 합니다.
 
 ### 다음 장
 
@@ -266,9 +266,9 @@ C, C++ 또는 오브젝티브-C 에 대한 경험이 있으면, 이 언어들은
 
 [^object-instance]: 스위프트 구조체와 클래스를 같이 설명하는데, 객체라는 용어는 클래스에만 해당하므로, 인스턴스라는 용어를 사용해서 클래스와 구조체 모두에 해당하는 부분을 설명한다는 의미입니다.
 
-[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 보이기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 `UpperCamelCase` 와 `lowerCamelCase` 로 또다시 나누기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮깁니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은, 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 항목과 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
+[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 보이기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 `UpperCamelCase` 와 `lowerCamelCase` 로 또다시 나누기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮깁니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은, 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 항목과 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 보도록 합니다.
 
-[^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 참고하기 바랍니다.
+[^interlaced]: 'interlaced' 는 예전 모니터의 화면 주사 방식 중에서 '비월 주사 방식' 을 의미하는 것입니다. 보다 자세한 내용은 위키피디아의 [Interlaced video](https://en.wikipedia.org/wiki/Interlaced_video) 와 [비월 주사 방식](https://ko.wikipedia.org/wiki/비월_주사_방식) 항목을 보도록 합니다.
 
 [^choosing-between-structures-and-classes]: 원문 자체가 '애플 개발자 (developer) 문서 링크' 입니다.
 

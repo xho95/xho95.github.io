@@ -14,7 +14,7 @@ _초기화 (initialization)_ 는 사용할 클래스나, 구조체, 또는 열�
 
 한 특별한 타입의 새 인스턴스를 생성하고자 호출할 수 있는 특수한 함수 같은, _초기자 (initializers)_ 를 정의함으로써 이 초기화 과정을 구현합니다. 오브젝티브-C 초기자와 달리, 스위프트 초기자는 값을 반환하지 않습니다. 이들의 으뜸 역할은 최초로 사용하기 전에 새 타입 인스턴스를 올바로 초기화하도록 보장하는 겁니다.
 
-클래스 타입 인스턴스는, 그 클래스의 인스턴스 해제 직전에 어떤 자신만의 정리를 하는, _정리자 (deinitializers)_ 도 구현할 수 있습니다. 정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 부분을 참고하기 바랍니다.
+클래스 타입 인스턴스는, 그 클래스의 인스턴스 해제 직전에 어떤 자신만의 정리를 하는, _정리자 (deinitializers)_ 도 구현할 수 있습니다. 정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 부분을 보도록 합니다.
 
 ### Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)
 
@@ -263,7 +263,7 @@ print(zeroByZero.width, zeroByZero.height)
 
 값 타입에 자신만의 초기자를 정의하면, 더 이상 그 타입의 기본 초기자 (또는, 구조체면, 멤버 초기자) 에 접근할 수 없다는 걸 기억하기 바랍니다. 이런 구속은 누군가 하나의 자동 초기자를 사용함으로써 더 복잡한 초기자에서 제공한 핵심 추가 설정을 우회하게 되는 사고를 막아줍니다.
 
-> 자신의 값 타입이 기본 초기자 및 멤버 초기자와 함께, 자신만의 초기자로도 초기화 가능하게 하고 싶으면, 자신의 초기자를 값 타입의 원본 구현 부분 보단 익스텐션 (extension) 에서 작성합니다. 더 많은 정보는, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+> 자신의 값 타입이 기본 초기자 및 멤버 초기자와 함께, 자신만의 초기자로도 초기화 가능하게 하고 싶으면, 자신의 초기자를 값 타입의 원본 구현 부분 보단 익스텐션 (extension) 에서 작성합니다. 더 많은 정보는, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 보도록 합니다.
 
 다음 예제는 기하 직사각형을 나타내는 `Rect` 구조체를 정의합니다. 예제는 `Size` 와 `Point` 라는 두 개의 지원용 구조체를 요구하는데, 둘 다 자신의 모든 속성에 `0.0` 이라는 기본 값을 제공합니다:
 
@@ -318,7 +318,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 `init(center:size:)` 초기자 스스로 적절한 속성에 새 `origin` 과 `size` 값을 할당할 수도 있을 겁니다. 하지만, `init(center:size:)` 초기자가 이미 정확히 그 기능을 하는 기존 초기자라는 이점을 취하는게 더 편리 (하며 의도도 더 명확) 합니다.
 
-> `init()` 과 `init(origin:size:)` 초기자 그 자체의 정의 없이 이 예제를 작성하는 대안은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 참고하기 바랍니다.
+> `init()` 과 `init(origin:size:)` 초기자 그 자체의 정의 없이 이 예제를 작성하는 대안은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 을 보도록 합니다.
 
 ### Class Inheritance and Initialization (클래스 상속 및 초기화)
 
@@ -459,7 +459,7 @@ _편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지
 
 오브젝티브-C 의 하위 클래스와 달리, 스위프트의 하위 클래스는 기본적으로 자신의 상위 클래스 초기자를 상속하지 않습니다. 스위프트 접근법은 더 특수화된 하위 클래스가 단순한 상위 클래스 초기자를 상속하여 완전하지 않거나 올바르지 않게 초기화된 새 하위 클래스 인스턴스를 생성하는 상황을 막아줍니다.
 
-> 정해진 상황에선 상위 클래스 초기자 _를 (are)_ 상속하지만, 그러는게 안전하고 적절할 때만 그렇습니다. 더 많은 정보는, 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 을 참고하기 바랍니다.  
+> 정해진 상황에선 상위 클래스 초기자 _를 (are)_ 상속하지만, 그러는게 안전하고 적절할 때만 그렇습니다. 더 많은 정보는, 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 을 보도록 합니다.  
 
 하위 클래스에 자신의 상위 클래스와 동일한 초기자를 두고 싶으면, 하위 클래스 안에서 그 초기자에 자신만의 구현을 제공(하여 그렇게) 할 수 있습니다.
 
@@ -1034,7 +1034,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^convenience]: 이 부분은 원문 자체가 장황하게 설명되어 있는데, 결국 의미 자체는 번역한 문장과 대동소이 하므로, 짧게 줄여서 변역했습니다.
 
-[^base-class]: 기초 클래스 (base class) 는 어떤 클래스로부터도 상속받지 않은 클래스입니다. 계층 구조 맨 위에 있을 수 있는 모든 클래스는 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스도 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다. 
+[^base-class]: 기초 클래스 (base class) 는 어떤 클래스로부터도 상속받지 않은 클래스입니다. 계층 구조 맨 위에 있을 수 있는 모든 클래스는 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스도 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다. 
 
 [^default-member-initializer]: [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 멤버 초기자는 구조체에만 주어집니다. 즉, 클래스에는 기본 멤버 초기자라는게 따로 없습니다. 구조체의 멤버 초기자 같은 초기자가 클래스에 필요하면, 본문 같이 이를 직접 구현해야 합니다.
 

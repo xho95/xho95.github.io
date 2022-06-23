@@ -136,4 +136,4 @@ Git 매뉴얼 문서의 전체 목록은 [git](https://git-scm.com/docs/git) 을
 
 [^translate-google]: [Google 번역](https://translate.google.com/?hl=ko&tab=wT) : 이 문장의 경우 구글 번역이 너무 완벽해서 손을 댈 필요가 없을 정도였습니다. 어찌보면 좋은 세상이고 어찌보면 조금 무서운 세상입니다.
 
-[^xho95-gitignore]: `git rm --cached` 명령을 사용하는 방법은 [Git: .gitignore로 버전 관리에서 특정 파일 제외하기]({% post_url 2016-07-16-Making-a-.gitignore-file %}) 를 참고하기 바랍니다.
+[^xho95-gitignore]: `git rm --cached` 명령을 사용하는 방법은 [Git: .gitignore로 버전 관리에서 특정 파일 제외하기]({% post_url 2016-07-16-Making-a-.gitignore-file %}) 를 보도록 합니다.

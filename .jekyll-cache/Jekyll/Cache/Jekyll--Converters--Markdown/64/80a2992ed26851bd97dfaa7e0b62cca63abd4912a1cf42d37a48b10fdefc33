@@ -13,7 +13,7 @@
 <p>스위프트에 있는 배열, 셋, 그리고 딕셔너리는 저장할 수 있는 값과 키의 타입을 명확하게 알고 있습니다. 이는 실수로 컬렉션에 잘못된 타입의 값을 넣을 가능성은 없다는 의미입니다. 또 컬렉션에서 가져오는 값의 타입을 확신할 수 있다는 의미이기도 합니다.</p>
 
 <blockquote>
-  <p>스위프트의 배열, 셋 그리고 딕셔너리 타입은 <em>일반화된 집합체 (generic collections)</em> 방식으로 구현되었습니다. 일반화된 타입과 일반화된 집합체 (generic types and collections) 에 대한 더 자세한 내용은 <a href="/swift/language/grammar/generic/2020/02/29/Generics.html">Generics (일반화)</a> 를 참고하기 바랍니다.</p>
+  <p>스위프트의 배열, 셋 그리고 딕셔너리 타입은 <em>일반화된 집합체 (generic collections)</em> 방식으로 구현되었습니다. 일반화된 타입과 일반화된 집합체 (generic types and collections) 에 대한 더 자세한 내용은 <a href="/swift/language/grammar/generic/2020/02/29/Generics.html">Generics (일반화)</a> 를 보도록 합니다.</p>
 </blockquote>
 
 <h3 id="mutability-of-collections-집합체의-변경-용이성">Mutability of Collections (집합체의 변경-용이성)</h3>
@@ -589,7 +589,7 @@
 <span class="c1">// LHR: London Heathrow               </span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">for-in</code> 반복문에 대한 더 자세한 내용은 <a href="">For-In Loops</a> 를 참고하기 바랍니다.</p>
+<p><code class="highlighter-rouge">for-in</code> 반복문에 대한 더 자세한 내용은 <a href="">For-In Loops</a> 를 보도록 합니다.</p>
 
 <p>딕셔너리의 키와 값들에 대해서 ‘동작을 반복 적용할 수 있는 컬렉션 (iterable collection)’ 을 가질 수도 있는데, 이는 딕셔너리의 <code class="highlighter-rouge">keys</code> 와 <code class="highlighter-rouge">properties</code> 속성을 사용하면 됩니다:</p>
 
@@ -667,13 +667,13 @@
       <p>‘equtable’ 은 ‘서로 같은 지를 비교할 수 있는’ 지를 의미합니다. <a href="#fnref:equtable" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:reflexivity" role="doc-endnote">
-      <p>여기서 말하는 ‘반사성’ 은 수학에서 말하는 ‘반사 관계’ 를 말하는 것 같습니다. ‘반사 관계’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Reflexive_relation">Reflexive relation</a> 문서를 참고하기 바랍니다. <a href="#fnref:reflexivity" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>여기서 말하는 ‘반사성’ 은 수학에서 말하는 ‘반사 관계’ 를 말하는 것 같습니다. ‘반사 관계’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Reflexive_relation">Reflexive relation</a> 문서를 보도록 합니다. <a href="#fnref:reflexivity" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:symmetry" role="doc-endnote">
-      <p>여기서 말하는 ‘대칭성’ 은 수학에서 말하는 ‘대칭 관계’ 를 말하는 것 같습니다. ‘대칭 관계’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Symmetric_relation">Symmetric relation</a> 문서를 참고하기 바랍니다. <a href="#fnref:symmetry" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>여기서 말하는 ‘대칭성’ 은 수학에서 말하는 ‘대칭 관계’ 를 말하는 것 같습니다. ‘대칭 관계’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Symmetric_relation">Symmetric relation</a> 문서를 보도록 합니다. <a href="#fnref:symmetry" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:transitivity" role="doc-endnote">
-      <p>여기서 말하는 ‘추이성’ 은 수학에서 말하는 ‘추이 관계’ 를 말하는 것 같습니다. ‘추이 관계’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Transitive_relation">Transitive relation</a> 문서를 참고하기 바랍니다. <a href="#fnref:transitivity" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>여기서 말하는 ‘추이성’ 은 수학에서 말하는 ‘추이 관계’ 를 말하는 것 같습니다. ‘추이 관계’ 에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Transitive_relation">Transitive relation</a> 문서를 보도록 합니다. <a href="#fnref:transitivity" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:set-array-literal" role="doc-endnote">
       <p>이것은 ‘배열 글자표현 (array literal)’ 만 사용할 경우, <code class="highlighter-rouge">Array</code> 로 추론되기 때문일 것입니다. <a href="#fnref:set-array-literal" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -682,7 +682,7 @@
       <p>‘셋’ 은 실제로 수학에서 ‘집합’ 을 가리키는 용어인데, 스위프트의 ‘셋’ 타입은 배열이나 딕셔너리보다 좀 더 수학적인 연산에 사용하는 타입이라 이해할 수 있습니다. 따라서 여기서의 ‘set operations’ 은 ‘집합 연산’의 의미로 이해하는 것이 맞을 것 같습니다. <a href="#fnref:set-operations" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:disjoint" role="doc-endnote">
-      <p>이를 수학 용어로는 ‘분리 집합 (disjoint sets)’ 이라고 하는 것 같습니다. 분리 집합에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Disjoint_sets">Disjoint sets</a>문서를 참고하기 바랍니다. 한글로는 ‘<a href="https://ko.wikipedia.org/wiki/서로소_집합">서로 소 집합</a>’ 이라는 용어가 있는데, 프로그래밍 분야에서는 ‘분리 집합’ 이라는 표현도 같이 사용하고 있는 듯 합니다. <a href="#fnref:disjoint" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>이를 수학 용어로는 ‘분리 집합 (disjoint sets)’ 이라고 하는 것 같습니다. 분리 집합에 대해서는 위키피디아의 <a href="https://en.wikipedia.org/wiki/Disjoint_sets">Disjoint sets</a>문서를 보도록 합니다. 한글로는 ‘<a href="https://ko.wikipedia.org/wiki/서로소_집합">서로 소 집합</a>’ 이라는 용어가 있는데, 프로그래밍 분야에서는 ‘분리 집합’ 이라는 표현도 같이 사용하고 있는 듯 합니다. <a href="#fnref:disjoint" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:optional-value" role="doc-endnote">
       <p>‘optional value’ 는 ‘선택적 값’ 이라고도 옮길 수 있겠지만, 여기서는 스위프트의 타입임을 드러내기 위해서 발음을 따라서 ‘옵셔널 값’ 으로 옮깁니다. <a href="#fnref:optional-value" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

@@ -161,4 +161,4 @@ macOS Shell 전반에 대한 내용은 [bash on Mac OS X](http://appletree.or.kr
 [^coolest-path]: [What it is and How to Modify the Shell Path in macOS Sierra and OSX using Terminal](https://coolestguidesontheplanet.com/add-shell-path-osx/) : 상당히 좋은 글인 것 같습니다. 결국 이 자료도 완벽하지는 않았습니다. 다만 맥과 리눅스의 차이로 인한 것일 수 있습닏.
 
 
-[^xho95-directory]: 맥의 홈 디렉토리에 대해서는 [macOS: 맥의 기본 디렉토리 구조 살펴보기]({% post_url 2016-10-09-macOS-Directory-Structure %}) 를 참고하기 바랍니다.
+[^xho95-directory]: 맥의 홈 디렉토리에 대해서는 [macOS: 맥의 기본 디렉토리 구조 살펴보기]({% post_url 2016-10-09-macOS-Directory-Structure %}) 를 보도록 합니다.

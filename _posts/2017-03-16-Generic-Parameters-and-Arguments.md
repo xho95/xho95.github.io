@@ -13,7 +13,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 이 장은 '일반화 (generic) 타입, 함수, 그리고 초기자에 대한 매개 변수와 인자' 를 설명합니다. '일반화 (generic) 타입, 함수, 첨자 연산, 또는 초기자' 를 선언할 때는, 일반화 타입, 함수, 또는 초기자와 작업 가능한 '타입 매개 변수' 를 지정합니다. 이 '타입 매개 변수' 들은 '일반화 타입의 인스턴스를 생성' 하거나 '일반화 함수 또는 초기자를 호출' 할 때의 '실제 고정 타입 (concrete type) 인자' 로 대체할 '자리 표시자 (placeholders)' 처럼 행동합니다.
 
-스위프트 '일반화' 의 개요는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 참고하기 바랍니다.
+스위프트 '일반화' 의 개요는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 보도록 합니다.
 
 ### Generic Parameter Clause (일반화 매개 변수 절)
 
@@ -71,7 +71,7 @@ extension Collection where Element: SomeProtocol {
 
 타입 매개 변수에 대해 '서로 다른 구속 조건, 필수 조건, 또는 둘 다' 를 제공함으로써 '일반화 함수나 초기자' 를 '중복 정의 (overload)' 할 수 있습니다. '중복 정의한 일반화 함수나 초기자' 를 호출할 땐, 중복 정의한 함수나 초기자 중에서 부를 것을 해결하고자 컴파일러가 이 구속 조건들을 사용합니다.
 
-'일반화 `where` 절' 에 대한 더 많은 정보와 '일반화 함수 선언' 에서의 사용 예제를 보려면, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
+'일반화 `where` 절' 에 대한 더 많은 정보와 '일반화 함수 선언' 에서의 사용 예제를 보려면, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 보도록 합니다.
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID407)
 
@@ -113,7 +113,7 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 [^GPandA]: 원문은 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 에서 확인할 수 있습니다.
 
-[^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 '함수 이름' 과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
+[^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의된 함수들 중에서 호출해야 할 것을 찾기 위해 사용하는 것으로, 보통 '함수 이름' 과 매개 변수 등으로 구성됩니다. '함수 서명 (function signature)' 이 '함수 선언 (function declaration)' 과 다른 점이라면 '반환 타입' 자체는 '함수 선언' 에 포함되지 않는다는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 보도록 합니다.
 
 [^specialized-version]: '특수화 버전 (specialized version)' 은 '일반화 타입 (generic type) 의 타입 매개 변수를 고정하여 특수한 타입으로 정한 것' 을 말합니다.
 

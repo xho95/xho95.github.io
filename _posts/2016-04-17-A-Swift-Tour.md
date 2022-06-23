@@ -860,23 +860,23 @@ anyCommonElements([1, 2, 3], [3])
 
 [^a-swift-tour]: 'Swift' 는 '재빠른' 이라는 의미도 가지고 있기 때문에, 이 장의 제목인 'A Swift Tour' 는 '재빨리 둘러보기' 라는 중의적인 의미도 가지고 있습니다.
 
-[^indentation]: 이 부분은 말로 하는 설명보다는 예제를 보는 것이 이해하기 더 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분을 참고하기 바랍니다.
+[^indentation]: 이 부분은 말로 하는 설명보다는 예제를 보는 것이 이해하기 더 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분을 보도록 합니다.
 
 [^break-out]: ''switch 문을 명시적으로 깨고 (break) 나올 필요는 없다' 는 것은 'switch 문의 각 case 절마다 `break` 를 쓸 필요는 없다' 는 의미입니다.
 
-[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어, '일급 (first-class) 인 대상' 은 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수 등에 할당할 수도 있습니다. 스위프트에서는 '함수' 도 '일급 (first-class) 타입' 이기 때문에, 인자 전달, 함수 반환, 변수 할당 등에 사용할 수 있다는 의미입니다. '일급 객체' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
+[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어, '일급 (first-class) 인 대상' 은 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수 등에 할당할 수도 있습니다. 스위프트에서는 '함수' 도 '일급 (first-class) 타입' 이기 때문에, 인자 전달, 함수 반환, 변수 할당 등에 사용할 수 있다는 의미입니다. '일급 객체' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 보도록 합니다.
 
 [^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
 [^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다 (conform to a protocol)' 는 것과는 의미가 조금 다릅니다
 
-[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
+[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 보도록 합니다.
 
 [^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 의 `NSObject` 와 같은 클래스를 말하며, 스위프트에는 이런 식의 클래스가 없습니다.
 
-[^getter-and-setter]: 사실 여기서 말하는 '간단한 속성' 과 '획득자 및 설정자를 가지는 속성' 은 서로 다른 것입니다. 전자를 '저장 속성 (stored properties)' 라고 하고 후자를 '계산 속성 (computed properties)' 라고 합니다. 책의 다른 부분에서 많이 설명하고 있기 때문인지, 여기서는 이 둘을 딱히 구분하지 않고 설명하고 있습니다. 보다 자세한 내용은 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 참고하기 바랍니다.
+[^getter-and-setter]: 사실 여기서 말하는 '간단한 속성' 과 '획득자 및 설정자를 가지는 속성' 은 서로 다른 것입니다. 전자를 '저장 속성 (stored properties)' 라고 하고 후자를 '계산 속성 (computed properties)' 라고 합니다. 책의 다른 부분에서 많이 설명하고 있기 때문인지, 여기서는 이 둘을 딱히 구분하지 않고 설명하고 있습니다. 보다 자세한 내용은 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 보도록 합니다.
 
-[^unordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 수학적으로 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 향후 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다. 
+[^unordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 수학적으로 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 보도록 합니다. 향후 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다. 
 
 [^methods-associated]: '열거체가 자신과 결합된 메소드 (methods associated with them) 를 가질 수 있다' 는 말은 '열거체가 멤버 함수를 가질 수 있다' 는 의미입니다.
 

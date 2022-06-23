@@ -10,7 +10,7 @@
 
 [Redirects on GitHub Pages](https://help.github.com/en/enterprise/2.13/user/articles/redirects-on-github-pages)
 
-301 Redirect 는 GtiHub Pages 에서 지원하지 않는 듯 합니다. 좀 더 확인이 필요합니다. [Changing Permalinks and duplicate content/ranking/indexing](https://support.google.com/webmasters/forum/AAAA2Jdx3sUh7T62hZuWuA/?hl=ko) 를 참고하기 바랍니다.
+301 Redirect 는 GtiHub Pages 에서 지원하지 않는 듯 합니다. 좀 더 확인이 필요합니다. [Changing Permalinks and duplicate content/ranking/indexing](https://support.google.com/webmasters/forum/AAAA2Jdx3sUh7T62hZuWuA/?hl=ko) 를 보도록 합니다.
 
 ### Jekyll 플러그인 : `jekyll-redirect-from` 패키지
 

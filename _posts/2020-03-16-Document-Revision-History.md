@@ -253,10 +253,10 @@ categories: Swift Language Grammar Revision History
 #### 2015-04-08
 
 * 스위프트 1.2 에서 업데이트함.
-* 스위프트는 이제 그 자체의 `Set` '집합체 (collection)' 타입을 가집니다. 더 많은 정보는, [Sets (셋)]({% post_url 2016-06-06-Collection-Types %}#sets-셋-집합) 를 참고하기 바랍니다.
-* `@autoclosure` 는 이제, 매개 변수의 타입이 아니라, 매개 변수 선언의 특성입니다. 새로운 매개 변수 선언 특성인 `@noescape` 도 있습니다. 더 많은 정보는, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 를 참고하기 바랍니다.
-* '타입 메소드' 와 '타입 속성' 은 이제 `static` 키워드를 '선언 수정자' 로 사용합니다. 더 많은 정보는 [Type Variable Properties (타입 변수 속성)]({% post_url 2020-08-15-Declarations %}#type-variable-properties-타입-변수-속성) 을 참고하기 바랍니다.
-* 스위프트는 이제 `as?` 와 `as!` 라는 '실패 가능한 내림 변환 연산자 (failable downcast operators)' 를 포함합니다. [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 를 참고하기 바랍니다.
+* 스위프트는 이제 그 자체의 `Set` '집합체 (collection)' 타입을 가집니다. 더 많은 정보는, [Sets (셋)]({% post_url 2016-06-06-Collection-Types %}#sets-셋-집합) 를 보도록 합니다.
+* `@autoclosure` 는 이제, 매개 변수의 타입이 아니라, 매개 변수 선언의 특성입니다. 새로운 매개 변수 선언 특성인 `@noescape` 도 있습니다. 더 많은 정보는, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 를 보도록 합니다.
+* '타입 메소드' 와 '타입 속성' 은 이제 `static` 키워드를 '선언 수정자' 로 사용합니다. 더 많은 정보는 [Type Variable Properties (타입 변수 속성)]({% post_url 2020-08-15-Declarations %}#type-variable-properties-타입-변수-속성) 을 보도록 합니다.
+* 스위프트는 이제 `as?` 와 `as!` 라는 '실패 가능한 내림 변환 연산자 (failable downcast operators)' 를 포함합니다. [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 를 보도록 합니다.
 * [String Indices (문자열 색인)]({% post_url 2016-05-29-Strings-and-Characters %}#string-indices-문자열-색인) 에 대하여 새로운 지침 부분을 추가함.
 * [Overflow Operators (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 '값 넘침 나누기 (overflow division; `&/`)' 와 '값 넘침 나머지 (overflow remainder; `&%`)' 연산자를 제거함.
 * 상수 및 상수 속성 선언과 초기화에 대한 규칙을 업데이트함. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고 바람.
@@ -267,12 +267,12 @@ categories: Swift Language Grammar Revision History
 * 프로토콜 선언의 '영역 (scope)' 과 '멤버 (members; 구성원)' 을 분명히 밝히기 위해 [Protocol Declaration (프로토콜 선언)]({% post_url 2020-08-15-Declarations %}#protocol-declaration-프로토콜-선언) 을 업데이트함.
 * '클로저가 붙잡을 목록 (closure capture lists)' 에 있는 '약한 참조 (weak references)' 와 '소유하지 않는 참조 (unowned references)' 에 대한 구문 표현을 분명히 밝히기 위해 [Defining a Capture List (붙잡을 목록 정의하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#defining-a-capture-list-붙잡을-목록-정의하기) 을 업데이트함.
 * 사용자 정의 연산자를 위해 지원되는 문자들, 가령 수학 연산자들, 잡다한 기호들, 그리고 '딩뱃 (dingbats)[^dingbats] 유니코드 블럭들', 에 대한 예제를 명시적으로 언급하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 업데이트함.
-* 이제 지역 함수 영역에서는 상수를 초기화하지 않고도 선언할 수 있습니다. 맨 처음 사용하기 전에 설정 값을 반드시 가져야 합니다. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고하기 바랍니다.
-* '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 를 참고하기 바랍니다.
-* '다중 옵셔널 연결 (multiple optional bindings)' 은 이제 쉼표로-구분된 할당 표현식 목록으로써 단일 `if` 문에 나타낼 수 있습니다. 더 많은 정보는, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 을 참고하기 바랍니다.
+* 이제 지역 함수 영역에서는 상수를 초기화하지 않고도 선언할 수 있습니다. 맨 처음 사용하기 전에 설정 값을 반드시 가져야 합니다. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 보도록 합니다.
+* '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 를 보도록 합니다.
+* '다중 옵셔널 연결 (multiple optional bindings)' 은 이제 쉼표로-구분된 할당 표현식 목록으로써 단일 `if` 문에 나타낼 수 있습니다. 더 많은 정보는, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 을 보도록 합니다.
 * [Optional-Chaining Expression (옵셔널-사슬 표현식)]({% post_url 2020-08-19-Expressions %}#optional-chaining-expression-옵셔널-사슬-표현식) 은 반드시 접미사 표현식 안에 있어야 합니다.
 * '프로토콜 변환 (protocol casts)' 은 더 이상 `@objc` 프로토콜로 제한되지 않습니다.
-* 실행 시간에 실패할 수 있는 '타입 변환 (type casts)' 은 이제 `as?` 또는 `as!` 연산자를 사용하며, 실패하지 않는다고 보증한 '타입 변환' 은 `as` 연산자를 사용합니다. 더 많은 정보는, [Type-Casting Operators (타입-변환 연산자)]({% post_url 2020-08-19-Expressions %}#type-casting-operators-타입-변환-연산자) 를 참고하기 바랍니다.
+* 실행 시간에 실패할 수 있는 '타입 변환 (type casts)' 은 이제 `as?` 또는 `as!` 연산자를 사용하며, 실패하지 않는다고 보증한 '타입 변환' 은 `as` 연산자를 사용합니다. 더 많은 정보는, [Type-Casting Operators (타입-변환 연산자)]({% post_url 2020-08-19-Expressions %}#type-casting-operators-타입-변환-연산자) 를 보도록 합니다.
 
 #### 2014-10-16
 
@@ -280,7 +280,7 @@ categories: Swift Language Grammar Revision History
 * [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 에 온전한 전체 지침을 추가함.
 * 프로토콜의 [Failable Initializer Requirements (실패 가능 초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#failable-initializer-requirements-실패-가능-초기자-필수-조건) 에 대한 설명을 추가함.
 * `Any` 타입인 상수와 변수는 이제 함수 인스턴스를 가질 수 있음. `switch` 문 내에서 함수 타입을 검사하고 변환하는 방법을 보여주기 위해 [Type Casting for Any and AnyObject (Any 와 AnyObject 의 타입 변환)]({% post_url 2020-04-01-Type-Casting %}#type-casting-for-any-and-anyobject-any-와-anyobject-의-타입-변환) 에 있는 예제를 업데이트함.
-* '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-값-을-가지는-열거체) 를 참고하기 바랍니다.
+* '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-값-을-가지는-열거체) 를 보도록 합니다.
 * 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자) 에 대하여 새로운 기준 부분을 추가함.
 * 사용자 정의 연산자는 이제 `?` 문자를 가질 수 있음. 개정된 규칙을 설명하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 의 기준을 업데이트함. [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 에서 유효한 연산자 문자 집합에 대한 중복된 설명을 제거함.
 
@@ -343,9 +343,9 @@ categories: Swift Language Grammar Revision History
 
 [^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.
 
-[^dingbats]: '딩뱃 (dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
+[^dingbats]: '딩뱃 (dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 보도록 합니다.
 
-[^canonical]: 여기서 원문의 'canonical' 을 '표준적인' 이라는 말이 아니라 '법적인' 이라는 말로 옮겼는데, 이는 'canon' 이 원래 '교회 법' 을 의미하는 말이기 때문입니다. '법적으로 동등함' 이 무엇인지에 대해서는 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 참고하기 바랍니다.
+[^canonical]: 여기서 원문의 'canonical' 을 '표준적인' 이라는 말이 아니라 '법적인' 이라는 말로 옮겼는데, 이는 'canon' 이 원래 '교회 법' 을 의미하는 말이기 때문입니다. '법적으로 동등함' 이 무엇인지에 대해서는 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 보도록 합니다.
 
 [^introducing-swift]: '스위프트 (Swift)' 프로그래밍 언어는 2014년 'WWDC' 에서 2014년 6월 2일에 최초로 발표되었습니다. 2014년 8월 18일은 그 이후 최초로 갱신된 내용입니다.
 
