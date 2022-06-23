@@ -436,7 +436,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 컴파일 조건들을 `&&` 와, `||`, 및 `!` 등의 논리 연산자와 괄호 그룹으로 조합하고 반대로 뒤집을 수 있습니다. 이러한 연산자는 평범한 불리언 표현식 조합에 쓰이는 논리 연산자와 동일한 결합 법칙 및 우선 순위를 가집니다.
 
-`if` 문과 비슷하게, 서로 다른 컴파일 조건을 검사하기 위해 여러 개의 '조건 분기 (conditional branches)' 를 추가할 수 있습니다. '`#elseif` 절' 을 사용하여 어떤 개수의 '추가적인 분기' 든 추가할 수 있습니다. '`#else` 절' 로 '추가적인 최종 분기' 도 추가할 수 있습니다. 여러 개의 '분기' 를 담고 있는 '조건부 컴파일 블럭' 의 형식은 다음과 같습니다:
+`if` 문과 비슷하게, 조건 분기를 여러 개 추가하면 서로 다른 컴파일 조건을 검사할 수 있습니다. `#elseif` 절로 어떤 개수의 추가 분기든 추가할 수 있습니다. `#else` 절로 추가적인 최종 분기를 추가할 수도 있습니다. 여러 분기를 담은 조건부 컴파일 블럭의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#if `compilation condition 1-컴파일 조건 1`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`statements to compile if compilation condition 1 is true-컴파일 조건 1이 참일 때 컴파일하는 구문`<br />
