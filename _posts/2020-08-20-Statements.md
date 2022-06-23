@@ -469,20 +469,20 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 #### Compile-Time Diagnostic Statement (컴파일-시간 진단문)
 
-'컴파일-시간 진단 (compile-time diagnostic) 문' 은 컴파일하는 동안 컴파일러가 '에러 (error)' 나 '경고 (warning)' 를 내보내도록 합니다. '컴파일-시간 진단문' 의 형식은 다음과 같습니다:
+컴파일-시간 진단문은 컴파일 중에 컴파일러가 에러 (error) 나 경고 (warning) 를 내뿜도록 합니다. 컴파일-시간 진단문의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#error("`error message-에러 메시지`")<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\#warning("`warning message-경고 메시지`")
 
-첫 번째 형식은 _에러 메시지 (error message)_ 를 '치명적인 에러 (fatal error)' 로 내보내고 '컴파일 과정' 을 종결합니다. 두 번째 형식은 _경고 메시지 (warning message)_ 를 '치명적이진 않은 경고 (nonfatal warning)' 로 내보내고 컴파일을 계속 진행하도록 허용합니다. '진단 (diagnostic) 메시지' 는 '정적 문자열 (static string) 글자 값' 으로 작성합니다. '정적 문자열 글자 값' 은 '문자열 보간 (interpolation) 이나 이음 (concatenation)' 같은 특징은 사용할 수 없지만, '여러 줄짜리 문자열 글자 값 (multiline string literal) 구문' 은 사용할 수 있습니다.
+첫 번째 형식은 _에러 메시지 (error message)_ 를 치명적 에러라고 내뿜고 컴파일 과정을 종결합니다. 두 번째 형식은 _경고 메시지 (warning message)_ 를 치명적이진 않은 경고라고 내뿜고 컴파일은 계속 진행하도록 합니다. 진단 메시지는 정적 문자열 글자 값으로 작성합니다. 정적 문자열 글자 값은 문자열 보간이나 이어붙이기 같은 특징을 사용할 순 없지만, 여러 줄짜리 문자열 글자 값 구문을 사용할 순 있습니다.
 
 > GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 ### Availability Condition (사용 가능성 조건)
 
-_사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 인자' 를 기초로, API 의 '사용 가능성' 을 실행 시간에 조회하기 위해 `if` 문, `while` 문, 그리고 `guard` 문의 조건으로 사용하는 것입니다.
+_사용 가능성 조건 (availablility condition)_ 을 `if` 문과, `while` 문, 및 `guard` 문 조건에 사용하면, 지정한 플랫폼 인자를 기초로, 실행 시간에 API 의 사용 가능성을 조회합니다.
 
-'사용 가능성 조건' 의 형식은 다음과 같습니다:
+사용 가능성 조건의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
@@ -490,11 +490,19 @@ _사용 가능성 조건 (availablility condition)_ 은, 지정한 '플랫폼 �
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'사용 가능성 조건' 은, 원하는 API 가 실행 시간에 사용 가능한 지에 따라, 코드 블럭을 실행하기 위해 사용합니다. 컴파일러는 해당 코드 블럭의 API 가 사용 가능한지를 증명할 때 '사용 가능성 조건' 정보를 사용합니다.
+사용 가능성 조건을 사용하면, 사용하고 싶은 API 가 실행 시간에 사용 가능한 지에 따라, 코드 블럭을 실행합니다. 그 코드 블럭 안의 API 가 사용 가능한지 입증할 때 컴파일러가 사용 가능성 조건 정보를 사용합니다.
 
-'사용 가능성 조건' 은 쉼표로-구분한 '플랫폼 이름 및 버전 목록' 을 취합니다. 플랫폼 이름으로 `iOS`, `macOS`, `watchOS`, 및 `tvOS` 를 사용하며, 관련 '버전 번호' 를 포함합니다. `*` 인자는 필수이며, '사용 가능성 조건' 이 보호하는 '코드 블럭 본문' 이 '대상 (target)' 으로 지정한 '최소 배포 (minimum deployment) 대상' 에서 실행되도록 하는, '다른 어떤 플랫폼' 을 지정합니다.
+사용 가능성 조건은 쉼표로-구분한 플랫폼 이름 및 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 를 사용하고, 해당하는 버전 번호를 포함합니다. `*` 인자는 필수이며, 다른 어떤 플랫폼에서든, 사용 가능성 조건으로 보호할 코드 블럭 본문을 대상으로 정한 최소 배포 대상에서 실행하도록, 지정합니다.
 
-'불리언 조건' 과는 달리, '사용 가능성 조건' 은 `&&` 와 `||` 같은 '논리 연산자' 로 조합할 수 없습니다.
+불리언 조건과 달리, 사용 가능성 조건을 `&&` 와 `||` 같은 논리 연산자로 조합할 순 없습니다. `!` 로 사용 가능성 조건을 반대로 뒤집는 대신, 다음 형식의, 사용 불가능성 조건을 사용합니다:
+
+&nbsp;&nbsp;&nbsp;&nbsp;if #unavailable(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+`#unavailable` 형식은 조건을 반대로 뒤집는 수월한 구문입니다. 사용 불가능성 조건에서, `*` 인자는 암시적아라 반드시 포함하지 말아야 합니다. 이것의 의미는 사용 가능성 조건안의 `*` 인자와 똑같습니다.
 
 > GRAMMAR OF AN AVAILABILITY CONDITION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID522)
 
