@@ -448,23 +448,22 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 > 조건부 컴파일 블럭 본문 안의 각 구문은 컴파일하지 않더라도 해석합니다. 하지만, 컴파일 조건에 `swift()` 나 `compiler()` 플랫폼 조건이 포함되면 예외인데: 플랫폼 조건에서 정한 것과 일치한 언어 또는 컴파일러 버전인 경우에만 해석합니다. 이런 예외는 더 예전 컴파일러가 새 버전 스위프트에서 도입한 구문을 해석하려 하지 않도록 보장합니다.
 
-조건부 컴파일 블럭에서 명시적 멤버 표현식을 포장할 수 있는 방법에 대한 정보는, []() 부분을 보도록 합니다.
+조건부 컴파일 블럭에서 명시적 멤버 표현식을 포장할 수 있는 방법에 대한 정보는, [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONDITIONAL COMPILATION BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
 #### Line Control Statement (라인 제어문)
 
-'라인 제어 (line control) 문' 은 컴파일 중인 소스 코드의 '라인 (line) 번호' 및 '파일 이름' 과 다를 수 있는 '라인 번호' 및 '파일 이름' 을 지정하기 위해 사용합니다. '라인 제어문' 은 스위프트가 사용 중인 소스 코드 위치를 '진단 (diagnostic)' 과 '디버깅 (debugging)' 목적을 위해 바꾸려고 사용합니다.
+라인 제어문을 사용하여 컴파일 중인 소스 코드의 줄 번호 및 파일 이름과 다를 수 있는 줄 번호 및 파일 이름을 지정합니다. 스위프트가 진단 (diagnostic) 및 디버깅 (debugging) 목적으로 사용할 소스 코드 위치를 바꾸기 위해 라인 제어문을 사용합니다.
 
-'라인 제어문' 의 형식은 다음과 같습니다:
+라인 제어문의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#sourceLocation(file: `file path-파일 경로`, line: `line number-라인 번호`)
 &nbsp;&nbsp;&nbsp;&nbsp;\#sourceLocation()
 
+첫 번째 형식의 라인 제어문은, 라인 제어문의 다음 코드 줄에서 시작하는, `#line` 과, `#file`, `#fileID`, 및 `#filePath` 글자 표현식 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 값을 바꾸는, 0 보다 큰 어떤 정수 글자 값입니다. _파일 경로 (file path)_ 는 `#file` 과, `#fileID`, 및 `#filePath` 값을 바꾸는, 문자열 글자 값입니다. 지정한 문자열이 `#filePath` 값이 되고, 문자열의 마지막 경로 성분은 `#fileID` 값이 사용합니다. `#file` 과, `#fileID`, 및 `#filePath` 에 대한 정보는, [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분을 보도록 합니다.
 
-첫 번째 형식의 라인 제어문은, 라인 제어문 다음의 '코드 라인' 에서 시작하는, `#line`, `#file`, `#fileID`, 그리고 `#filePath` 글자 표현식의 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 의 값을 바꾸는, '0' 보다 큰 어떤 '정수 글자 값' 입니다. _파일 경로 (file path)_ 는 `#file`, `#fileID`, 그리고 `#filePath` 의 값을 바꾸는, '문자열 글자 값' 입니다. 지정한 문자열은 `#filePath` 의 값이 되고, 문자열의 '마지막 경로 성분' 은 `#fileID` 값으로 사용합니다. `#file`, `#fileID`, 와 `#filePath` 에 대한 더 많은 정보는, [Literal Expression (글자 값 표현식)]({% post_url 2020-08-19-Expressions %}#literal-expression-글자-값-표현식) 부분을 보도록 합니다.
-
-두 번째 형식의 라인 제어문인, `#sourceLocation()` 은, 소스 코드 위치를 '기본 라인 번호와 파일 경로' 로 재설정 합니다.
+두 번째 형식의 라인 제어문인, `#sourceLocation()` 은, 소스 코드 위치를 기본 라인 번호 및 파일 경로로 재설정합니다.
 
 > GRAMMAR OF A LINE CONTROL STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
