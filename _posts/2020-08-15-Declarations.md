@@ -28,7 +28,7 @@ _선언 (declaration)_ 은 프로그램에 새로운 이름이나 구조물 (con
 
 ### Code Blocks (코드 블럭)
 
-_코드 블럭 (code block)_ 은 구문을 서로 그룹짓고자 다양한 선언 및 제어 구조에서 사용합니다. 형식은 다음과 같습니다:
+_코드 블럭 (code block)_ 은 구문을 서로 그룹묶기 위해 다양한 선언 및 제어 구조에서 사용합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;{<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
@@ -38,13 +38,13 @@ _코드 블럭 (code block)_ 은 구문을 서로 그룹짓고자 다양한 선�
 
 > GRAMMAR OF A CODE BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID353)
 
-### Import Declaration (선언 불러오기)
+### Import Declaration (불러오기 선언)
 
-_선언 불러오기 (import declaration)_ 는 현재 파일 밖에서 선언한 '기호 (symbols)' 에 접근하게 해줍니다. '기초 형식' 은 전체 모듈을 불러오며; '`import` 키워드' 와 그 뒤의 '모듈 이름' 으로 구성합니다:
+_불러오기 선언 (import declaration)_ 는 현재 파일 밖에서 선언한 기호에 접근하게 해줍니다. 기본 형식은 전체 모듈을 불러오며; `import` 키워드와 그 뒤의 모듈 이름으로 구성합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;import `module-모듈`
 
-불러올 '기호' 에 대한 더 '세부적인 제한 (detail limits)' 을 제공하면-모듈이나 하위 모듈 안의 '특정 하위 모듈' 이나 '특정 선언' 을 지정할 수 있습니다. 이 '세부 형식' 을 사용할 때는, 현재 영역에서 (선언한 모듈이 아닌) '불러온 기호' 만 사용 가능해집니다.
+어느 기호를 불러올지 더 자세하게 제한하면-모듈이나 하위 모듈 안의 특정 하위 모듈 또는 특정 선언을 지정할 수 있습니다. 이런 자세한 형식을 사용할 땐, (선언한 모듈이 아닌) 불러온 기호만 현재 영역에서 사용 가능합니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;import `import kind-불러올 종류` `module-모듈`.`symbole name-기호 이름`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;import `module-모듈`.`submodule-하위 모듈`
