@@ -131,9 +131,9 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정
 
 계산 속성에 대한 더 자세한 정보 및 예제를 보려면, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 부분을 보도록 합니다.
 
-#### Stored Variable Observers and Property Observers (저장 변수 관찰자와 저장 속성 관찰자)
+#### Stored Variable Observers and Property Observers (저장 변수 관찰자와 속성 관찰자)
 
-`willSet` 과 `didSet` 관찰자를 가진 '저장 변수나 속성' 을 선언할 수도 있습니다. 관찰자를 가진 저장 변수나 속성의 선언 형식은 다음과 같습니다:
+`willSet` 과 `didSet` 관찰자가 있는 저장 변수나 속성을 선언할 수도 있습니다. 관찰자가 있는 저장 변수나 속성의 선언 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` = `expression-표현식` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;willSet(`setter name-설정자 이름`) {<br />
@@ -144,15 +144,15 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식의 변수 선언은 '전역 (global)' 이나, 함수 지역, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수 선언을 '전역 또는 함수 지역' 에서 선언할 때, 관찰자를 _저장 변수 관찰자 (stored variable observers)_ 라고 합니다. '클래스 또는 구조체 선언' 에서 선언할 때는, 관찰자를 _속성 관찰자 (property observers)_ 라고 합니다.
+이 형식의 변수 선언은 전역이나, 함수 지역, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수 선언을 전역이나 함수 지역에서 할 땐, 관찰자를 _저장 변수 관찰자 (stored variable observers)_ 라고 합니다. 클래스나 구조체 선언에서 선언할 땐, 관찰자를 _속성 관찰자 (property observers)_ 라고 합니다.
 
-어떤 저장 속성에든 속성 관찰자를 추가할 수 있습니다. 속성 관찰자는, [Overriding Property Observers (속성 관찰자 재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-property-observers-속성-관찰자-재정의하기) 에서 설명한 것처럼, 하위 클래스 안에서 속성을 '재정의' 함으로써 어떤 (저장 또는 계산) 상속 속성에도 추가할 수 있습니다.
+속성 관찰자는 어떤 저장 속성에든 추가할 수 있습니다. [Overriding Property Observers (속성 관찰자 재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-property-observers-속성-관찰자-재정의하기) 에서 설명한 것처럼, 하위 클래스 안에서 속성을 재정의함으로써 (저장이든 계산이든 상관없이) 어떤 상속 속성에도 속성 관찰자를 추가할 수 있습니다.
 
-초기자 _표현식 (expression)_[^expression] 은 클래스나 구조체 선언에서는 옵션이지만, 다른 곳에서는 필수입니다. _타입 (type)_ 보조 설명은 초기자 _표현식 (expression)_ 으로 타입을 추론할 수 있을 때는 옵션입니다. 이 표현식은 최초로 속성 값을 읽을 때 평가합니다. 이를 읽지 않고 속성의 초기 값을 덮어 쓰면, 이 표현식은 최초로 속성에 쓰기 전 평가합니다.
+초기자 _표현식 (expression)_[^expression] 은 클래스나 구조체 선언에서는 옵션이지만, 다른 곳에선 필수입니다. 초기자 _표현식 (expression)_ 으로 타입을 추론할 수 있을 땐 _타입 (type)_ 보조 설명이 옵션입니다. 속성 값을 최초로 읽을 때 이 표현식을 평가합니다. 속성 초기 값을 읽지 않고 덮어 쓰면, 속성에 최초로 쓰기 전 이 표현식을 평가합니다.
 
-`willSet` 과 `didSet` 관찰자는 변수나 속성 값을 설정하고 있을 때 이를 관찰하고 (적절하게 응답하는) 방법을 제공합니다. 관찰자는 변수나 속성이 최초로 초기화될 때는 호출하지 않습니다. 그 대신, 초기화 밖에서 값이 설정될 때만 호출합니다.
+`willSet` 과 `didSet` 관찰자는 변수나 속성 값을 설정할 때 이를 관찰하고 (적절히 응답할) 방법을 제공합니다. 변수나 속성을 최초로 초기화할 땐 관찰자를 호출하지 않습니다. 그 대신, 초기화(인 상황) 밖에서 값을 설정할 때만 호출합니다.
 
-`willSet` 관찰자는 변수나 속성 값을 설정하기 직전에 호출됩니다. 새 값은 `willSet` 관찰자에 상수로 전달되며, 따라서 `willSet` 절의 구현에서 바꿀 수 없습니다. `didSet` 관찰자는 새 값을 설정한 직후에 호출됩니다. `willSet` 관찰자와는 대조적으로, 여전히 접근이 필요한 경우를 위해 예전 변수나 속성 값을 `didSet` 관찰자에 전달합니다. 그렇다 하더라도, 자신의 '`didSet` 관찰자 절' 안에서 변수나 속성 값을 할당하면, 새로 할당한 값이 방금 설정하여 `willSet` 관찰자로 전달됐던 것을 대체할 것입니다.
+`willSet` 관찰자는 변수나 속성 값 설정 직전에 호출됩니다. 새 값은 상수로 `willSet` 관찰자에 전달되며, 따라서 `willSet` 절 구현부에서 바꿀 순 없습니다. `didSet` 관찰자는 새 값 설정 직후에 호출됩니다. `willSet` 관찰자와는 대조적으로, 여전히 접근이 필요한 경우를 위해 변수나 속성의 예전 값이 `didSet` 관찰자에 전달됩니다. 그렇더라도, 변수나 속성 자신의 `didSet` 관찰자 절 안에서 값을 할당하면, 그 할당한 새 값이 방금 설정하여 `willSet` 관찰자로 전달했던 걸 대체할 것입니다.
 
 `willSet` 과 `didSet` 절의 _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, `willSet` 과 `didSet` 관찰자의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, `willSet` 관찰자의 '기본 매개 변수 이름' 은 `newValue` 이고 `didSet` 관찰자의 '기본 매개 변수 이름' 은 `oldValue` 입니다.
 
@@ -1258,7 +1258,9 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^global-scope]: '전역 (global scope)' 는 최상단 영역을 말하며, 사실상 프로그램의 진입점에 해당합니다.
 
-[^expression]: 여기서의 '표현식 (expression)' 은 위에 있는 형식의 `expression-표현식` 부분을 말합니다. 클래스나 구조체 선언에서는 이 `expression-표현식` 부분이 없어도 된다는 의미입니다.
+[^stored-named-values]: 본문에 있는 '저장 이름 값 (stored named values)' 은 바로 위에서 설명한 저장 변수를 의미합니다.
+
+[^expression]: 여기서의 '표현식 (expression)' 은 위 형식의 `expression-표현식` 부분을 말합니다. 클래스나 구조체 선언에서는 이 `expression-표현식` 부분이 없어도 된다는 의미입니다.
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
@@ -1273,8 +1275,6 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수인 매개 변수 (throwing function parameter)' 를 의미합니다.
 
 [^final]: 이미 `final` 인 상태라서 따로 설정할 수 없습니다.
-
-[^stored-named-values]: 본문에 있는 '저장 이름 값 (stored named values)' 은 바로 위에서 설명한 저장 변수를 의미합니다.
 
 [^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 '함수 본문 전체' 를 의미하기 위해 '함수 정의 (function definition)' 라는 표현을 사용했습니다.
 
