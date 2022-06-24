@@ -53,15 +53,15 @@ _불러오기 선언 (import declaration)_ 는 현재 파일 밖에서 선언한
 
 ### Constant Declaration (상수 선언)
 
-_상수 선언 (constant declaration)_ 은 '이름 붙인 상수 값' 을 프로그램에 도입합니다. 상수 선언은 `let` 키워드로 선언하며 형식은 다음과 같습니다:
+_상수 선언 (constant declaration)_ 은 프로그램에 상수 이름 값을 도입합니다. 상수 선언은 `let` 키워드로 선언하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;let `constant name-상수 이름`: `type-타입` = `expression-표현식`
 
-상수 선언은 _상수 이름 (constant name)_ 과 초기자 _표현식 (expression)_ 값 사이에 '변경 불가한 연결 (immutable binding)' 을 정의하며; 상수 값을 설정한 후에는, 바꿀 수 없습니다. 그렇다 하더라도, 상수를 클래스 객체로 초기화하면, 상수 이름과 이것이 참조하는 객체 사이의 연결을 바꿀 순 없지만, 객체 자체는 바꿀 수 있습니다.[^immutable]
+상수 선언은 _상수 이름 (constant name)_ 과 초기자 _표현식 (expression)_ 값 사이에 변경 불가한 연결을 정의하여; 상수 값을 설정한 후엔, 바꿀 수 없습니다. 그렇더라도, 상수를 클래스 객체로 상초기화하면, 상수 이름과 그게 참조할 수 객체 사이의 연결은 바꿀 수 없지만, 객체 그 자체는 바꿀 수 있습니다.[^immutable]
 
-상수를 '전역 (global scope)' 에서 선언할 때는, 반드시 '값' 으로 초기화해야 합니다. 상수 선언이 함수나 메소드 안에 있을 때는, 맨 처음 값을 읽기 전에 값을  설정한다는 보증을 하는 한, 나중에 초기화할 수 있습니다. 컴파일러가 상수 값을 절대로 읽지 않는다고 증명할 수 있다면, 상수에 값을 설정하는 건 아예 필수도 아닙니다. 상수 선언이 클래스나 구조체 선언에 있을 때는, _상수 속성 (constant property)_ 이라고 고려합니다. 상수 선언은 '계산 속성 (computed properties)' 이 아니며 따라서 '획득자 (getter)' 나 '설정자 (setter)' 를 가지지 않습니다.
+전역[^global-scope] 에서 상수를 선언할 땐, 반드시 값으로 초기화해야 합니다. 함수나 메소드에서 상수 선언을 할 땐, 값을 최초로 읽기 전에 설정한다고 보증하는 한, 나중에 초기화할 수 있습니다. 상수 값을 절대 읽지 않는다는 걸 컴파일러가 증명할 수 있으면, 아예 상수 값 설정이 필수가 아닙니다. 클래스나 구조체 선언에서 상수 선언을 할 땐, _상수 속성 (constant property)_ 이라고 고려합니다. 상수 선언은 계산 속성이 아니며 따라서 획득자나 설정자가 없습니다.
 
-상수 선언에서 _상수 이름 (constant name)_ 이 튜플 패턴이면, 튜플에 있는 각 항목 이름을 초기자 _표현식 (expression)_ 의 해당 값과 연결합니다.
+상수 선언의 _상수 이름 (constant name)_ 이 튜플 패턴이면, 튜플 안의 각 항목 이름을 초기자 _표현식 (expression)_ 안의 해당 값과 연결합니다.
 
 ```swift
 let (firstNumber, secondNumber) = (10, 42)
@@ -71,16 +71,16 @@ let (firstNumber, secondNumber) = (10, 42)
 
 ```swift
 print("The first number is \(firstNumber).")
-// "The first number is 10." 를 인쇄합니다.
+// "The first number is 10." 를 인쇄함
 print("The second number is \(secondNumber).")
-// "The second number is 42." 를 인쇄합니다.
+// "The second number is 42." 를 인쇄함
 ```
 
-(`:` _타입 (type)_ 형식인) '타입 보조 설명' 은, [Type Inference (타입 추론)]({% post_url 2020-02-20-Types %}#type-inference-타입-추론) 에서 설명한 것처럼, _상수 이름 (constant name)_ 의 타입을 추론할 수 있는 때는 '옵션' 입니다.
+[Type Inference (타입 추론)]({% post_url 2020-02-20-Types %}#type-inference-타입-추론) 에서 설명한 것처럼, _상수 이름 (constant name)_ 의 타입을 추론할 수 있을 땐 (`:` _타입 (type)_ 이라는) 타입 보조 설명이 옵션입니다.
 
-'상수 타입 속성 (constant type property)' 을 선언하려면, '`static` 선언 수정자' 로 선언을 표시합니다. 클래스의 '상수 타입 속성' 은 암시적으로 항상 '최종 (final)' 이며; 하위 클래스의 재정의를 허용 또는 불허하려고 `class` 나 `final` 선언 수정자를 표시할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
+상수 타입 속성을 선언하려면, 선언을 `static` 선언 수정자로 표시합니다. 클래스의 상수 타입 속성은 항상 암시적으로 최종 (final) 이며; `class` 나 `final` 선언 수정자로 표시하여 하위 클래스의 재정의를 허용하거나 불허할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
 
-상수에 대한 더 많은 정보 및 사용 시점에 대한 안내는, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 부분과 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 보도록 합니다.
+상수에 대한 더 많은 정보와 사용 시점에 대한 본보기는, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 와 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONSTANT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID355)
 
@@ -1254,7 +1254,9 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^Declarations]: 원문은 [Declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+[^immutable]: 상수는 값을 바꿀 수 없는 것인데, 클래스 같은 참조 타입은 주소가 값이기 때문에, 바꿀 수 없는 것은 주소이며, 그 주소가 가리키는 곳의 내용은 바꿀 수 있습니다.
+
+[^global-scope]: '전역 (global scope)' 는 최상단 영역을 말하며, 사실상 프로그램의 진입점에 해당합니다.
 
 [^expression]: 여기서의 '표현식 (expression)' 은 위에 있는 형식의 `expression-표현식` 부분을 말합니다. 클래스나 구조체 선언에서는 이 `expression-표현식` 부분이 없어도 된다는 의미입니다.
 
@@ -1270,9 +1272,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수인 매개 변수 (throwing function parameter)' 를 의미합니다.
 
-[^immutable]: '상수' 는 값을 바꿀 수 없는 것인데, 'class' 같은 '참조 타입 (reference type)' 은 '참조 대상의 주소' 가 값이기 때문에, '참조 대상의 내용' 은 바꿀 수 있지만, 다른 대상을 참조하도록 '참조 대상의 주소' 를 바꿀 수는 없다는 의미입니다. 
-
-[^final]: 사실상 이미 'final' 인 상태라고 이해할 수 있습니다.
+[^final]: 이미 `final` 인 상태라서 따로 설정할 수 없습니다.
 
 [^stored-named-values]: 원문에서 말하는 '이름 붙인 저장 값 (stored named values)' 은 '저장 변수 (stored variable)' 를 의미합니다.
 
