@@ -100,17 +100,17 @@ _변수 선언 (variable declaration)_ 은 프로그램에 변수 이름 값을 
 
 &nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` = `expression-표현식`
 
-이 형식의 변수 선언은 전역이나, 함수 지역, 또는 클래스나 구조체 선언에서 정의합니다. 전역이나 함수 지역에서 이 형식의 변수 선언을 할 땐, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언에서 이를 선언할 땐, _저장 변수 속성 (stored variable property)_ 이라고 합니다.
+이 형식의 변수 선언은 전역이나, 함수 지역, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수 선언을 전역이나 함수 지역에서 할 때, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언에서 선언할 땐, _저장 변수 속성 (stored variable property)_ 이라고 합니다.
 
 초기자 _표현식 (expression)_ 은 프로토콜 선언에 있을 수 없지만, 다른 모든 상황에서, 초기자 _표현식 (expression)_ 은 옵션입니다. 그렇더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 반드시 (`:` _타입 (type)_ 이라는) 명시적 타입 보조 설명을 변수 선언에 포함해야 합니다.
 
 상수 선언 처럼, _변수 이름 (variable name)_ 이 튜플 패턴이면, 튜플 안의 각 항목 이름을 초기자 _표현식 (expression)_ 안의 해당 값과 연결합니다.
 
-이름이 제시하듯, 저장 변수 또는 저장 변수 속성 값은 메모리에 저장됩니다.
+이름이 제시하듯, 저장 변수 또는 저장 변수 속성 값은 메모리에 저장합니다.
 
 #### Computed Variables and Computed Properties (계산 변수와 계산 속성)
 
-다음 형식은 '계산 변수' 또는 '계산 속성' 을 선언합니다:
+다음 형식은 계산 변수 또는 계산 속성을 선언합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get {<br />
@@ -121,15 +121,15 @@ _변수 선언 (variable declaration)_ 은 프로그램에 변수 이름 값을 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식의 변수 선언은 '전역 ' 이나, '함수 지역' 에서, 또는 클래스, 구조체, 열거체, 및 '익스텐션 (extension)' 선언에서 정의합니다. 이 형식의 변수 선언을 '전역 또는 함수 지역' 에서 선언할 때, _계산 변수 (computed variable)_ 라고 합니다. '클래스, 구조체, 또는 익스텐션 선언' 에서 선언할 때는, _계산 속성 (computed property)_ 이라고 합니다.
+이 형식의 변수 선언은 전역이나, 함수 지역, 또는 클래스나, 구조체, 열거체, 및 익스텐션 선언에서 정의합니다. 이 형식의 변수 선언을 전역이나 함수 지역에서 할 때, _계산 변수 (computed variable)_ 라고 합니다. 클래스나, 구조체, 또는 익스텐션 선언에서 할 땐, _계산 속성 (computed property)_ 이라고 합니다.
 
-'획득자 (getter)' 는 값을 읽는 데 사용하고, '설정자 (setter)' 는 값을 쓰는 데 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 두 '절' 다 생략하고 단순히 '요청 값' 을 직접 반환할 수 있습니다. 그러나 '설정자 절' 을 제공한다면, 반드시 '획득자 절' 도 제공해야 합니다.
+획득자 (getter) 로 값을 읽고, 설정자 (setter) 로 값을 씁니다. [Read-Only Computed Properties (읽기-전용 계산 속성)]({% post_url 2020-05-30-Properties %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 설정자 절은 옵션이라, 획득자만 필요할 땐, 두 절 모두 생략하고 단순히 요청 값만 직접 반환할 수 있습니다. 그러나 설정자 절을 제공하면, 획득자 절도 반드시 제공해야 합니다.
 
-_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, 이를 '설정자 (setter)' 의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, [Shorthand Setter Declaration (짧게 줄인 설정자 선언)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-짧게-줄인-설정자-선언) 에서 설명한 것처럼, '설정자' 의 '기본 매개 변수 이름' 이 `newValue` 가 됩니다.
+_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정자 이름을 제공하면, 설정자의 매개 변수 이름으로 이걸 사용합니다. 설정자 이름을 제공하지 않으면, [Shorthand Setter Declaration (짧게 줄인 설정자 선언)]({% post_url 2020-05-30-Properties %}#shorthand-setter-declaration-짧게-줄인-설정자-선언) 에서 설명한 것처럼, `newValue` 가 설정자의 기본 매개 변수 이름입니다.
 
-'이름 붙인 저장 값'[^stored-named-values] 및 '저장 변수 속성' 과 달리, '이름 붙인 계산 값' 이나 '계산 속성' 의 값은 메모리에 저장하지 않습니다.
+저장 이름 값[^stored-named-values] 및 저장 변수 속성과는 달리, 계산 이름 값 또는 계산 속성 값은 메모리에 저장하지 않습니다.
 
-계산 속성에 대한 더 자세한 정보와 예제를 보려면, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 부분을 보도록 합니다.
+계산 속성에 대한 더 자세한 정보 및 예제를 보려면, [Computed Properties (계산 속성)]({% post_url 2020-05-30-Properties %}#computed-properties-계산-속성) 부분을 보도록 합니다.
 
 #### Stored Variable Observers and Property Observers (저장 변수 관찰자와 저장 속성 관찰자)
 
@@ -1274,7 +1274,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^final]: 이미 `final` 인 상태라서 따로 설정할 수 없습니다.
 
-[^stored-named-values]: 원문에서 말하는 '이름 붙인 저장 값 (stored named values)' 은 '저장 변수 (stored variable)' 를 의미합니다.
+[^stored-named-values]: 본문에 있는 '저장 이름 값 (stored named values)' 은 바로 위에서 설명한 저장 변수를 의미합니다.
 
 [^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 '함수 본문 전체' 를 의미하기 위해 '함수 정의 (function definition)' 라는 표현을 사용했습니다.
 
