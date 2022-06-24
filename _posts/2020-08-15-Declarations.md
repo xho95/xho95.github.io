@@ -86,27 +86,27 @@ print("The second number is \(secondNumber).")
 
 ### Variable Declaration (변수 선언)
 
-_변수 선언 (variable declaration)_ 은 '이름 붙인 변수 값' 을 프로그램에 도입하며 `var` 키워드로 선언합니다.
+_변수 선언 (variable declaration)_ 은 프로그램에 변수 이름 값을 도입하며 `var` 키워드로 선언합니다.
 
-변수 선언은 여러가지 형식으로, '저장 및 계산 변수와 속성', '저장 변수와 속성 관찰자', 그리고 '정적 변수 속성' 을 포함한, 서로 다른 종류의 '이름 붙인, 변경 가능한 값' 을 선언합니다. 사용하기 적절한 형식은 변수를 선언하는 영역과 선언하려는 변수의 종류에 달려 있습니다.
+변수 선언은 여러 가지 형식으로 서로 다른 종류의 이름을 붙인, 변경 가능한 값을 선언하는데, 이는 저장 및 계산 변수와 속성, 저장 변수와 속성 관찰자, 및 정적 변수 속성을 포함합니다. 사용에 적절한 형식은 변수를 선언할 영역과 선언할 의도인 변수의 종류에 달려 있습니다.
 
-> 속성은, [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, '프로토콜 선언' 에서 선언할 수도 있습니다.
+> [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, 프로토콜 선언에서 속성을 선언할 수도 있습니다.
 
-하위 클래스에 있는 속성은, [Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 '`override` 선언 수정자' 로 표시함으로써 재정의할 수 있습니다.
+[Overriding (재정의하기)]({% post_url 2020-03-31-Inheritance %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 `override` 선언 수정자로 표시함으로써 하위 클래스에서 속성을 재정의할 수 있습니다.
 
 #### Stored Variables and Stored Variable Properties (저장 변수와 저장 변수 속성)
 
-다음 형식은 '저장 변수' 또는 '저장 변수 속성' 을 선언합니다:
+다음 형식은 저장 변수 또는 저장 변수 속성을 선언합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;var `variable name-변수 이름`: `type-타입` = `expression-표현식`
 
-이 형식의 변수 선언은 '전역 (global)' 이나, '함수 지역 (local)' 에서, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수 선언을 '전역 또는 함수 지역' 에서 선언할 때, _저장 변수 (stored variable)_ 라고 합니다. '클래스 또는 구조체 선언' 에서 선언할 때는, _저장 변수 속성 (stored variable property)_ 이라고 합니다.
+이 형식의 변수 선언은 전역이나, 함수 지역, 또는 클래스나 구조체 선언에서 정의합니다. 전역이나 함수 지역에서 이 형식의 변수 선언을 할 땐, _저장 변수 (stored variable)_ 라고 합니다. 클래스나 구조체 선언에서 이를 선언할 땐, _저장 변수 속성 (stored variable property)_ 이라고 합니다.
 
-'초기자 _표현식 (expression)_' 은 프로토콜 선언에 있을 순 없지만, 다른 모든 상황에서는, 초기자 _표현식 (expression)_ 이 '옵션' 입니다. 그렇다 하더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 변수 선언이 반드시 '(`:` _타입 (type)_ 형식의) 명시적인 타입 보조 설명' 을 포함해야 합니다.
+초기자 _표현식 (expression)_ 은 프로토콜 선언에 있을 수 없지만, 다른 모든 상황에서, 초기자 _표현식 (expression)_ 은 옵션입니다. 그렇더라도, 초기자 _표현식 (expression)_ 이 아무 것도 없으면, 반드시 (`:` _타입 (type)_ 이라는) 명시적 타입 보조 설명을 변수 선언에 포함해야 합니다.
 
-상수 선언에서 처럼, _변수 이름 (variable name)_ 이 튜플 패턴이면, 튜플에 있는 각 항목 이름을 초기자 _표현식 (expression)_ 에 있는 해당 값과 연결합니다.
+상수 선언 처럼, _변수 이름 (variable name)_ 이 튜플 패턴이면, 튜플 안의 각 항목 이름을 초기자 _표현식 (expression)_ 안의 해당 값과 연결합니다.
 
-이름이 제시하는 것처럼, '저장 변수' 나 '저장 변수 속성' 의 값은 메모리에 저장됩니다.
+이름이 제시하듯, 저장 변수 또는 저장 변수 속성 값은 메모리에 저장됩니다.
 
 #### Computed Variables and Computed Properties (계산 변수와 계산 속성)
 
