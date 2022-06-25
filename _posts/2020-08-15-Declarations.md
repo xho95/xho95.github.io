@@ -207,7 +207,7 @@ newAndOld.x = 200
 
 ### Type Alias Declaration (타입 별명 선언)
 
-_타입 별명 선언 (type alias declaration)_ 은 프로그램에 기존 타입의 별명을 도입합니다. 타입 별명 선언은 `typealias` 키워드로 선언하며 형식은 다음과 같습니다:
+_타입 별명 선언 (type alias declaration)_ 은 프로그램에 기존 타입의 별명을 도입합니다. 타입 별명 선언은 `typealias` 키워드로 하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;typealias `name-이름` = `existing type-기존 타입`
 
@@ -258,27 +258,27 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 ### Function Declaration (함수 선언)
 
-_함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드를 도입합니다. '클래스, 구조체, 열거체, 또는 프로토콜' 에서 선언한 함수를 _메소드 (method)_ 라고 합니다. '함수 선언' 은 `func` 키워드로 선언하며 형식은 다음과 같습니다:
+_함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드를 도입합니다. 클래스나, 구조체, 열거체, 또는 프로토콜 안에서 선언한 함수를 _메소드 (method)_ 라고 합니다. 함수 선언은 `func` 키워드로 하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) -> `return type-반환 타입` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-함수의 반환 타입이 `Void` 면, 반환 타입을 다음 처럼 생략할 수 있습니다:
+함수 반환 타입이 `Void` 면, 다음 처럼 반환 타입을 생략할 수 있습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-각 매개 변수의 타입은 반드시 포함해야 합니다-이는 추론할 수 없습니다. 매개 변수 타입 앞에 `inout` 을 작성하면, 매개 변수를 함수 영역 안에서 수정할 수 있습니다. '입-출력 (in-out) 매개 변수' 는, 아래의, [In-Out Parameters (입-출력 매개 변수)](#in-out-parameters-입-출력-매개-변수) 에서 자세하게 논의합니다.
+각각의 매개 변수 타입은 반드시 포함해야 합니다-이는 추론할 수 있는게 아닙니다. 매개 변수 타입 앞에 `inout` 을 쓰면, 함수 영역 안에서 매개 변수를 수정할 수 있습니다. 입-출력 매개 변수는, 밑의, [In-Out Parameters (입-출력 매개 변수)](#in-out-parameters-입-출력-매개-변수) 에서 자세히 논의합니다.
 
-'함수 선언' 의 _구문 (statements)_ 이 '단일 표현식' 만 포함하고 있으면 '해당 표현식의 값' 을 반환한다고 이해합니다. 표현식의 타입과 함수의 반환 타입이 `Void` 가 아니며 `Never` 같이 '어떤 case 값도 가지지 않는 열거체' 가 아닐 때만 이 '암시적인 반환 구문' 을 고려합니다.
+함수 선언 _구문 (statements)_ 이 단일 표현식만 포함하고 있으면 그 표현식 값을 반환하는 걸로 이해합니다. 표현식 타입과 함수 반환 타입이 `Void` 도 아니고 `Never` 같은 어떤 case 값도 없는 열거체가 아닐 때만 이런 암시적 반환 구문을 고려합니다.
 
-함수는 반환 타입으로 '튜플 타입' 을 사용하여 여러 개의 값을 반환할 수 있습니다.
+튜플 타입을 함수의 반환 타입으로 사용하면 함수가 여러 개의 값을 반환할 수 있습니다.
 
-'함수 정의 (function definition)'[^function-definition] 가 또 다른 '함수 선언' 안에 있을 수 있습니다. 이런 종류의 함수를 _중첩 함수 (nested function)_ 라고 합니다.
+함수 정의를 또 다른 함수 선언 안에 나타낼 수 있습니다.[^function-definition] 이런 종류의 함수를 _중첩 함수 (nested function)_ 라고 합니다.
 
-중첩 함수는-'입-출력 매개 변수' 같이-절대 벗어나지 않음을 보증한 또는 '벗어나지 않는 (nonescaping) 함수 인자' 로 전달한 값을 붙잡으면 '벗어나지 않 (nonescaping)' 습니다.[^escaping] 그 외의 경우, 중첩 함수는 '벗어나는 (escaping) 함수' 입니다.
+입-출력 매개 변수 같이-절대 벗어나지 않는다는 걸 보증한 값 또는 벗어나지 않는 함수 인자로 전달한 값을 붙잡으면 중첩 함수가 벗어나지 않는 겁니다.[^escaping] 그 외 경우에, 중첩 함수는 벗어나는 함수입니다.
 
 중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 부분을 보도록 합니다.
 
@@ -1258,6 +1258,8 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^global-scope]: '전역 (global scope)' 는 최상단 영역을 말하며, 사실상 프로그램의 진입점에 해당합니다.
 
+[^final]: 이미 `final` 인 상태라서 따로 설정할 수 없습니다.
+
 [^stored-named-values]: 본문에 있는 '저장 이름 값 (stored named values)' 은 바로 위에서 설명한 저장 변수를 의미합니다.
 
 [^expression]: 여기서의 '표현식 (expression)' 은 위 형식의 `expression-표현식` 부분을 말합니다. 클래스나 구조체 선언에서는 이 `expression-표현식` 부분이 없어도 된다는 의미입니다.
@@ -1267,6 +1269,10 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^generic]: '일반화 매개 변수 (generic parameters)' 는 꺽쇠 괄호 (`<>`) 사이에 있는 매개 변수를 말합니다.
 
 [^concrete-type]: 프로그래밍에서 '추상 타입 (abstract type)' 은 자신이 직접 인스턴스를 만들 수 없는 타입을 말합니다. 이와 반대로, 자신이 직접 인스턴스를 만들 수 있는, 추상 타입이 아닌 모든 타입을 '고정 타입 (concrete type)' 이라고 합니다. 스위프트에선 프로토콜이 추상 타입이고, 인스턴스를 만들 수 있는 다른 타입들은 모두 고정 타입니다. 고정 타입에 대한 더 자세한 내용는, 위키피디아의 [Abstract type](https://en.wikipedia.org/wiki/Abstract_type) 항목을 보도록 합니다. 추상 타입은 직접 인스턴스를 만들 순 없지만, 하나의 타입으로써 사용할 순 있는데, 이를 일컬어 실존 타입 (existential type) 이라 합니다. 실존 타입에 대한 더 자세한 내용은, [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 부분을 보도록 합니다.
+
+[^function-definition]: 본문의 내용을 보면 함수 선언이란 용어와 함수 정의라는 용어를 구분 없이 사용하고 있음을 알 수 있습니다. 다만, 여기서 '함수 정의 (function definition)' 라는 용어를 사용한 건 함수 본문 전체를 강조하기 위해서 입니다.
+
+[^escaping]: '벗어나는 것 (escaping)' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분의 내용과 주석을 보도록 합니다.
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
@@ -1279,10 +1285,6 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^optional-member]: 프로토콜에서 선언한 '필수 조건' 의 구현 여부 자체가 '옵셔널' 이라는 의미입니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 구현체가 있는 것이고, 구현을 안했으면 `nil` 입니다.
 
 [^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수인 매개 변수 (throwing function parameter)' 를 의미합니다.
-
-[^final]: 이미 `final` 인 상태라서 따로 설정할 수 없습니다.
-
-[^function-definition]: 스위프트는, 이 장 첫 부분에서 설명한 것처럼, '선언-정의-초기화' 를 한 번에 하기 때문에, '함수 선언' 과 '함수 정의' 가 큰 차이가 없습니다. 다만 여기서는 '함수 본문 전체' 를 의미하기 위해 '함수 정의 (function definition)' 라는 표현을 사용했습니다.
 
 [^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다. 즉, 'MVVM' 에서는 의도적으로 `Never` 타입을 사용하는 것입니다. 
 
@@ -1309,8 +1311,6 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보도록 합니다. 
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
-
-[^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 보도록 합니다.
 
 [^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 
 
