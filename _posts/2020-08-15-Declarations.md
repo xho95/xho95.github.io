@@ -78,7 +78,7 @@ print("The second number is \(secondNumber).")
 
 [Type Inference (타입 추론)]({% post_url 2020-02-20-Types %}#type-inference-타입-추론) 에서 설명한 것처럼, _상수 이름 (constant name)_ 의 타입을 추론할 수 있을 땐 (`:` _타입 (type)_ 이라는) 타입 보조 설명이 옵션입니다.
 
-상수 타입 속성을 선언하려면, 선언을 `static` 선언 수정자로 표시합니다. 클래스의 상수 타입 속성은 항상 암시적으로 최종 (final) 이며; `class` 나 `final` 선언 수정자로 표시하여 하위 클래스의 재정의를 허용하거나 불허할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
+상수 타입 속성을 선언하려면, 선언에 `static` 선언 수정자를 표시합니다. 클래스의 상수 타입 속성은 항상 암시적으로 최종 (final) 이며; `class` 나 `final` 선언 수정자를 표시하여 하위 클래스 재정의를 허용하거나 불허할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 에서 논의합니다.
 
 상수에 대한 더 많은 정보와 사용 시점에 대한 본보기는, [Constants and Variables (상수와 변수)]({% post_url 2016-04-24-The-Basics %}#constants-and-variables-상수와-변수) 와 [Stored Properties (저장 속성)]({% post_url 2020-05-30-Properties %}#stored-properties-저장-속성) 부분을 보도록 합니다.
 
@@ -201,7 +201,7 @@ newAndOld.x = 200
 
 #### Type Variable Properties (타입 변수 속성)
 
-타입 변수 속성을 선언하려면, `static` 선언 수정자로 선언을 표시합니다. 클래스는 타입 계산 속성[^type-computed-properties] 을 `class` 선언 수정자로 대신 표시하여 상위 클래스 구현을 하위 클래스가 재정의하도록 허용할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분에서 논의합니다.
+타입 변수 속성을 선언하려면, 선언에 `static` 선언 수정자를 표시합니다. 클래스에선 그 대신 타입 계산 속성[^type-computed-properties] 에 `class` 선언 수정자를 표시하여 하위 클래스에서 상위 클래스 구현을 재정의하게 할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% post_url 2020-05-30-Properties %}#type-properties-타입-속성) 부분에서 논의합니다.
 
 > GRAMMAR OF A VARIABLE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID356)
 
