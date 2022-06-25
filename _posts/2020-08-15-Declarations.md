@@ -152,13 +152,13 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정
 
 `willSet` 과 `didSet` 관찰자는 변수나 속성 값을 설정할 때 이를 관찰하고 (적절히 응답할) 방법을 제공합니다. 변수나 속성을 최초로 초기화할 땐 관찰자를 호출하지 않습니다. 그 대신, 초기화(인 상황) 밖에서 값을 설정할 때만 호출합니다.
 
-`willSet` 관찰자는 변수나 속성 값 설정 직전에 호출됩니다. 새 값은 상수로 `willSet` 관찰자에 전달되며, 따라서 `willSet` 절 구현부에서 바꿀 순 없습니다. `didSet` 관찰자는 새 값 설정 직후에 호출됩니다. `willSet` 관찰자와는 대조적으로, 여전히 접근이 필요한 경우를 위해 변수나 속성의 예전 값이 `didSet` 관찰자에 전달됩니다. 그렇더라도, 변수나 속성 자신의 `didSet` 관찰자 절 안에서 값을 할당하면, 그 할당한 새 값이 방금 설정하여 `willSet` 관찰자로 전달했던 걸 대체할 것입니다.
+`willSet` 관찰자는 변수나 속성 값 설정 직전에 호출됩니다. 새 값은 `willSet` 관찰자에 상수로 전달되어, 따라서 `willSet` 절 구현부에선 바꿀 수 없습니다. `didSet` 관찰자는 새 값 설정 직후에 호출됩니다. `willSet` 관찰자와는 대조적으로, 여전히 접근이 필요한 경우를 위해 `didSet` 관찰자에 변수나 속성의 예전 값을 전달합니다. 그렇더라도, 변수나 속성 자신의 `didSet` 관찰자 절에서 값을 할당하면, 그 할당한 새 값이 방금 전 설정하여 `willSet` 관찰자로 전달한 걸 대체할 것입니다.
 
-`willSet` 과 `didSet` 절의 _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, `willSet` 과 `didSet` 관찰자의 매개 변수 이름으로 사용합니다. '설정자 이름' 을 제공하지 않으면, `willSet` 관찰자의 '기본 매개 변수 이름' 은 `newValue` 이고 `didSet` 관찰자의 '기본 매개 변수 이름' 은 `oldValue` 입니다.
+`willSet` 과 `didSet` 절의 _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정자 이름을 제공하면, `willSet` 과 `didSet` 관찰자의 매개 변수 이름으로 이걸 사용합니다. 설정자 이름을 제공하지 않으면, `willSet` 관찰자의 기본 매개 변수 이름은 `newValue` 이고 `didSet` 관찰자의 기본 매개 변수 이름은 `oldValue` 입니다.
 
-`willSet` 절을 제공할 때는 `didSet` 절이 옵션입니다. 마찬가지로, `didSet` 절을 제공할 때는 `willSet` 절이 옵션입니다.
+`willSet` 절을 제공할 뗀 `didSet` 절이 옵션입니다. 마찬가지로, `didSet` 절을 제공할 땐 `willSet` 절이 옵션입니다.
 
-`didSet` 관찰자 본문에서 '예전 값' 을 참조하면, '예전 값' 이 사용 가능하도록, 관찰자에 앞서 '획득자' 를 호출합니다. 그 외의 경우, 상위 클래스 '획득자' 의 호출 없이 '새 값' 을 저장합니다. 아래 예제는 상위 클래스에서 정의하고 관찰자 추가를 위해 하위 클래스에서 재정의한 계산 속성을 보여줍니다: 
+`didSet` 관찰자 본문에서 예전 값을 참조하면, 예전 값이 사용 가능헤지도록, 관찰자 전에 획득자를 호출합니다. 그 외 경우, 상위 클래스의 획득자를 호출하지 않고 새 값을 저장합니다. 아래 예제는 상위 클래스에서 정의한 계산 속성에 관찰자를 추가하도록 하위 클래스에서 재정의하는 걸 보여줍니다: 
 
 ```swift
 class Superclass {
@@ -169,8 +169,8 @@ class Superclass {
   }
 }
 
-// 이 하위 클래스는 자신의 관찰자에서 oldValue 를 참조하지 않으므로,
-// 상위 클래스 획득자는 값을 출력할 때 딱 한 번만 호출됩니다.
+// 이 하위 클래스의 관찰자에선 oldValue 를 참조하지 않으므로,
+// 상위 클래스 획득자를 값 인쇄 때 딱 한 번만 호출합니다.
 class New: Superclass {
   override var x: Int {
     didSet { print("New value \(x)") }
@@ -178,12 +178,12 @@ class New: Superclass {
 }
 let new = New()
 new.x = 100
-// "Setter was called" 를 인쇄합니다.
-// "Getter was called" 를 인쇄합니다.
-// "New value 100" 를 인쇄합니다.
+// "Setter was called" 를 인쇄함
+// "Getter was called" 를 인쇄함
+// "New value 100" 를 인쇄함
 
-// 이 하위 클래스는 자신의 관찰자에서 oldValue 를 참조하므로,
-// 상위 클래스 획득자는 설정자에 앞서 한 번, 값을 출력할 때 다시 한 번 호출됩니다.
+// 이 하위 클래스의 관찰자에선 oldValue 를 참조하므로,
+// 상위 클래스 획득자를 설정자 전에 한 번, 값 인쇄 때 다시 한 번 호출합니다.
 class NewAndOld: Superclass {
   override var x: Int {
     didSet { print("Old value \(oldValue) - new value \(x)") }
@@ -191,13 +191,13 @@ class NewAndOld: Superclass {
 }
 let newAndOld = NewAndOld()
 newAndOld.x = 200
-// "Getter was called" 를 인쇄합니다.
-// "Setter was called" 를 인쇄합니다.
-// "Getter was called" 를 인쇄합니다.
-// "Old value 12 - new value 200" 를 인쇄합니다.
+// "Getter was called" 를 인쇄함
+// "Setter was called" 를 인쇄함
+// "Getter was called" 를 인쇄함
+// "Old value 12 - new value 200" 를 인쇄함
 ```
 
-속성 관찰자에 대한 더 많은 정보와 사용 방법에 대한 예제는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
+속성 관찰자에 대한 더 많은 정보와 사용법 예제를 보려면, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 #### Type Variable Properties (타입 변수 속성)
 
