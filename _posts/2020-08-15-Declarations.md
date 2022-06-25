@@ -207,37 +207,37 @@ newAndOld.x = 200
 
 ### Type Alias Declaration (타입 별명 선언)
 
-_타입 별명 선언 (type alias declaration)_ 은 '기존 타입에 이름 붙인 별명' 을 프로그램에 도입합니다. '타입 별명 선언' 은 `typealias` 키워드로 선언하며 형식은 다음과 같습니다:
+_타입 별명 선언 (type alias declaration)_ 은 프로그램에 기존 타입의 별명을 도입합니다. 타입 별명 선언은 `typealias` 키워드로 선언하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;typealias `name-이름` = `existing type-기존 타입`
 
-'타입 별명' 을 선언한 후엔, 프로그램 어디서나 _기존 타입 (existing type)_ 대신 '별명 붙인 _이름 (name)_' 을 사용할 수 있습니다. _기존 타입 (existing type)_ 은 '이름 붙인 타입' 이거나 '복합 타입' 일 수 있습니다. 타입 별명은 새로운 타입을 생성하진 않으며; 단순히 기존 타입을 참조하는 이름을 허용하는 것입니다.
+타입 별명의 선언 후엔, 프로그램 어디서나 _기존 타입 (existing type)_ 대신 별명 _이름 (name)_ 을 사용할 수 있습니다. _기존 타입 (existing type)_ 은 이름 붙인 타입이나 복합 타입일 수 있습니다. 타입 별명은 새로운 타입을 생성하지 않으며; 단순히 한 이름이 기존 타입을 가리키도록 합니다.
 
-'타입 별명 선언' 은 '기존 일반화 타입' 에 이름을 부여하기 위해 '일반화 (generic) 매개 변수' 를 사용할 수 있습니다. 타입 별명은 기존 타입의 일부 또는 모든 '일반화 매개 변수' 에 '고정 (concrete) 타입' 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
+타입 별명 선언은 일반화 매개 변수[^generic] 를 사용하여 기존 일반화 타입에 이름을 줄 수 있습니다. 타입 별명은 기존 타입의 일반화 매개 변수 중 일부 또는 모두에 고정 타입[^concrete-type] 을 제공할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 typealias StringDictionary<Value> = Dictionary<String, Value>
 
-// 다음 딕셔너리는 똑같은 타입입니다.
+// 다음 딕셔너리들은 똑같은 타입입니다.
 var dictionary1: StringDictionary<Int> = [:]
 var dictionary2: Dictionary<String, Int> = [:]
 ```
 
-'일반화 매개 변수를 가진 타입 별명' 을 선언할 때는, '해당 매개 변수에 대한 구속 조건' 이 '기존 타입의 일반화 매개 변수에 대한 구속 조건' 과 반드시 정확하게 일치해야 합니다. 예를 들면 다음과 같습니다:
+일반화 매개 변수가 있는 타입 별명을 선언할 땐, 그 매개 변수에 대한 구속 조건과 기존 타입의 일반화 매개 변수에 대한 구속 조건이 반드시 정확히 일치해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
 ```
 
-타입 별명과 기존 타입은 상호 교환해서 사용 가능해야 하기 때문에, 타입 별명에 추가적인 '일반화 구속 조건 (generic constraints)' 을 도입할 순 없습니다.
+타입 별명과 기존 타입은 서로 바꿔 쓸 수 있기 때문에, 타입 별명에 추가적인 일반화 구속 조건을 도입할 순 없습니다.
 
-타입 별명은 '선언에 있는 모든 일반화 매개 변수를 생략함' 으로써 '기존 타입의 일반화 매개 변수' 를 발송할 수 있습니다. 예를 들어, 다음에 선언한 `Diccionario` 라는 타입 별명은 `Dictionary` 와 똑같은 '일반화 매개 변수 및 구속 조건' 을 가집니다.
+타입 별명은 선언에 있는 모든 일반화 매개 변수를 생략함으로써 기존 타입의 일반화 매개 변수를 보내줄 수 있습니다. 예를 들어, 여기서 선언한 `Diccionario` 라는 타입 별명은 `Dictionary` 와 일반화 매개 변수 및 구속 조건이 똑같습니다.
 
 ```swift
 typealias Diccionario = Dictionary
 ```
 
-'프로토콜 선언' 안에서는, 자주 사용하는 타입에 타입 별명으로 더 짧고 편리한 이름을 줄 수 있습니다. 예를 들면 다음과 같습니다:
+프로토콜 선언 안에선, 타입 별명이 자주 사용할 타입에 더 짧고 편리한 이름을 줄 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 protocol Sequence {
@@ -250,9 +250,9 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 }
 ```
 
-이 타입 별명 없이는, `sum` 함수가 '결합 타입' 을 `T.Element` 대신 `T.Iterator.Element` 라고 참조했을 것입니다.
+이 타입 별명이 없다면, `sum` 함수가 결합 타입을 `T.Element` 대신 `T.Iterator.Element` 라고 참조해야 했을 겁니다.
 
-[Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 도 보도록 합니다.
+[Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)](#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 부분도 보도록 합니다.
 
 > GRAMMAR OF A TYPE ALIAS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID361)
 
@@ -1262,6 +1262,12 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^expression]: 여기서의 '표현식 (expression)' 은 위 형식의 `expression-표현식` 부분을 말합니다. 클래스나 구조체 선언에서는 이 `expression-표현식` 부분이 없어도 된다는 의미입니다.
 
+[^type-computed-properties]: '타입 변수 속성 (type variable property)' 이 아니라, '타입 계산 속성 (type computed property)' 입니다. '타입 저장 속성 (type stored property)' 는 해당하지 않습니다. 
+
+[^generic]: '일반화 매개 변수 (generic parameters)' 는 꺽쇠 괄호 (`<>`) 사이에 있는 매개 변수를 말합니다.
+
+[^concrete-type]: 프로그래밍에서 '추상 타입 (abstract type)' 은 자신이 직접 인스턴스를 만들 수 없는 타입을 말합니다. 이와 반대로, 자신이 직접 인스턴스를 만들 수 있는, 추상 타입이 아닌 모든 타입을 '고정 타입 (concrete type)' 이라고 합니다. 스위프트에선 프로토콜이 추상 타입이고, 인스턴스를 만들 수 있는 다른 타입들은 모두 고정 타입니다. 고정 타입에 대한 더 자세한 내용는, 위키피디아의 [Abstract type](https://en.wikipedia.org/wiki/Abstract_type) 항목을 보도록 합니다. 추상 타입은 직접 인스턴스를 만들 순 없지만, 하나의 타입으로써 사용할 순 있는데, 이를 일컬어 실존 타입 (existential type) 이라 합니다. 실존 타입에 대한 더 자세한 내용은, [Protocols as Types (타입으로써의 프로토콜)]({% post_url 2016-03-03-Protocols %}#protocols-as-types-타입으로써의-프로토콜) 부분을 보도록 합니다.
+
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
 [^call-by-value-result]: 기본적으로, '값-결과에 의한 호출 (call by value result)' 은 '값에 의한 호출 (call by value)' 과 '참조에 의한 호출 (call by reference)' 이 합쳐진 것으로 볼 수 있습니다. [프로그래밍 학습법탐구자](http://blog.daum.net/here8now/) 님의 [call by value, call by reference, call by value result, call by name](http://blog.daum.net/here8now/37) 항목에 따르면, 함수 안에서는 '값에 의한 호출 (call by value)' 처럼 동작하고, 함수 반환 시에는 '참조에 의한 호출 (call by reference)' 처럼 동작합니다. 다만, 이어지는 본문에서 설명하는 것처럼, 입-출력 매개 변수는 최적화에 의해 '참조에 의한 호출' 작동 방식을 사용하기도 합니다.즉, 스위프트의 '입-출력 매개 변수' 는 상황에 따라 '참조에 의한 호출' 과 '값-결과에 의한 호출' 을 적절하게 선택해서 인자를 전달합니다.
@@ -1303,8 +1309,6 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보도록 합니다. 
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
-
-[^type-computed-properties]: '타입 변수 속성 (type variable property)' 이 아니라, '타입 계산 속성 (type computed property)' 입니다. '타입 저장 속성 (type stored property)' 는 해당하지 않습니다. 
 
 [^escaping]: '벗어나는 (escaping) 것' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분에 있는 내용과 주석을 보도록 합니다.
 
