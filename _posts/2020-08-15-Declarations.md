@@ -292,21 +292,21 @@ _함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드�
 
 ```swift
 func f(x: Int, y: Int) -> Int { return x + y }
-f(x: 1, y: 2) // x 와 y 둘 다 이름표가 있음
+f(x: 1, y: 2) // x 와 y 둘 다 이름표 있음
 ```
 
-'인자 이름표' 에 대한 기본 동작을 다음 형식 중 하나로 '재정의 (override)' 할 수 있습니다:
+다음 형식 중 하나로 인자 이름표의 기본 동작을 재정의할 수 있습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`argument label-인자 이름표` `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\_ `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
 
-매개 변수 이름 앞에 있는 이름은, 매개 변수 이름과는 다를 수도 있는, 명시적인 인자 이름표를 매개 변수에 부여합니다. 함수나 메소드 호출에서 해당 인자는 반드시 주어진 인자 이름표를 사용해야 합니다.
+매개 변수 이름 앞의 이름은 매개 변수에 명시적 인자 이름표를 주는데, 이는 매개 변수 이름과 다를 수 있습니다. 해당 인자는 함수나 메소드 호출에서 반드시 주어진 인자 이름표를 사용해야 합니다.
 
-매개 변수 이름 앞의 '밑줄 (`_`)' 은 '인자 이름표' 를 억제합니다. 함수나 메소드 호출에서 해당 인자는 반드시 이름표가 없어야 합니다.
+매개 변수 이름 앞의 밑줄 (`_`) 은 인자 이름표를 억누릅니다. 해당 인자는 함수나 메소드 호출에서 반드시 아무런 이름표가 없어야 합니다.
 
 ```swift
-func repeatGreeting(_ greeting: String, count n: Int) { /* 인사를 n 번 합니다 */ }
-repeatGreeting("Hello, world!", count: 2) //  count 에는 이름표가 있지만, greeting 에는 없습니다.
+func repeatGreeting(_ greeting: String, count n: Int) { /* n 번 인사 합니다 */ }
+repeatGreeting("Hello, world!", count: 2) //  count 엔 이름표가 있고, greeting 엔 없음
 ```
 
 #### In-Out Parameters (입-출력 매개 변수)
