@@ -351,23 +351,23 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 #### Special Kinds of Parameters (특수한 종류의 매개 변수)
 
-매개 변수는, 다음 형식을 사용하여, 무시하거나, 가변 개수의 값을 취하거나, 기본 값을 제공할 수 있습니다:
+다음 형식을 사용하면 매개 변수를 무시하고, 가변 개수의 값을 취하며, 기본 값을 제공할 수 있습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\_ : `parameter type-매개 변수 타입`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`...<br />
 &nbsp;&nbsp;&nbsp;&nbsp;`parameter name-매개 변수 이름`: `parameter type-매개 변수 타입` = `default argument value-기본 설정 인자 값`
 
-'밑줄 (`_`) 매개 변수' 는 명시적으로 무시하는 것으로 함수 본문 안에서 접근할 수 없습니다.
+밑줄 (`_`) 매개 변수는 명시적으로 무시하며 함수 본문 안에서 접근할 수 없습니다.
 
-'기초 타입 이름' 바로 뒤에 세 점 (`...`) 을 가진 매개 변수는 '가변 (variadic) 매개 변수' 인 것으로 이해합니다. '가변 매개 변수' 바로 뒤의 매개 변수는 '인자 이름표' 를 반드시 가져야 합니다.[^variadic-label] 함수는 여러 개의 '가변 매개 변수' 를 가질 수 있습니다. 가변 매개 변수는 '기초 타입 이름의 원소' 들을 담고 있는 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. '가변 매개 변수' 의 사용 예제는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 보도록 합니다.
+기초 타입 이름 바로 뒤에 세 점 (`...`) 이 있는 매개 변수는 가변 매개 변수라고 이해합니다. 가변 매개 변수 바로 뒤에 있는 매개 변수엔 반드시 인자 이름표가 있어야 합니다.[^variadic-label] 함수의 가변 매개 변수는 여러 개일 수 있습니다. 가변 매개 변수는 기초 타입 이름의 원소를 담은 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. 가변 매개 변수의 사용 예는, [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 보도록 합니다.
 
-자신의 타입 뒤에 '등호 (`=`) 기호와 표현식' 을 가진 매개 변수는 '표현식으로 주어진 기본 값' 을 가진다고 이해합니다. 주어진 표현식은 함수를 호출할 때 평가합니다. 함수 호출 시에 매개 변수를 생략하면, 그 대신 '기본 값' 을 사용합니다.
+자신의 타입 뒤에 같음 기호 (`=`)[^equals-sign] 와 표현식이 있는 매개 변수는 주어진 표현식에 (해당하는) 기본 값을 가진다고 이해합니다. 주어진 표현식은 함수 호출 때 평가합니다. 함수 호출 때 매개 변수를 생략하면, 기본 값을 대신 사용합니다.
 
 ```swift
 func f(x: Int = 42) -> Int { return x }
 f()       // 유효, 기본 값 사용
-f(x: 7)   // 유효, 제공힌 값 사용
-f(7)      // 무효, 인자 이름표 누락
+f(x: 7)   // 유효, 제공한 값 사용
+f(7)      // 무효, 인자 이름표가 빠짐
 ```
 
 #### Special Kinds of Methods (특수한 종류의 메소드)
@@ -1282,11 +1282,15 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^optimization]: 입-출력 매개 변수의 최적화는 컴파일러가 컴파일 단게에서 알아서 신경쓰는 문제이므로, 개발자는 값에 의한 호출 (복사-입력 복사 출력) 방식을 사용하기만 하면 된다는 의미입니다.
 
-[^closure-with-inout-parameter]: 본문 밑에 있는 예제인 `{ [a] in return a + 1 }` 라는 클로저는 `a` 값을 변경하지 않으므로, 붙잡을 목록 `[a]` 를 써서 `a` 가 변경 불가능하다고 명시하고 나서 붙잡았습니다.
-
 [^simultaneous-access]: '동시 접근 (simulaneous access)' 을 하면 메모리 접근 충돌이 발생하게 됩니다.
 
 [^memory-exclusivity-guarantee]: 바로 밑에 나와 있듯, 스위프트의 메모리 독점권 보증 (memory exclusivity guarantee) 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장을 보도록 합니다.
+
+[^closure-with-inout-parameter]: 본문 밑에 있는 예제인 `{ [a] in return a + 1 }` 라는 클로저는 `a` 값을 변경하지 않으므로, 붙잡을 목록 `[a]` 를 써서 `a` 가 변경 불가능하다고 명시하고 나서 붙잡았습니다.
+
+[^variadic-label]: 인자 이름표가 없으면 새로운 매개 변수가 아닌 가변 매개 변수의 한 원소라고 인식하기 때문입니다. 
+
+[^equals-sign]: 원문에 '같음 기호 (equals sign)' 이라고 되어 있지만, 프로그래밍에서 같음 기호를 한 번만 쓰면 대입 연산자라는 의미입니다. 수학적 의미의 같음을 나타내려면 `==` 같이 같음 기호를 두 번 연속으로 써야 합니다.  
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
@@ -1319,8 +1323,6 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보도록 합니다. 
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
-
-[^variadic-label]: '인자 이름표' 가 없으면 새로운 매개 변수로 인식하지 않고, 가변 매개 변수의 한 원소로 인식되기 때문입니다. 
 
 [^signature]: 함수나 메소드에서 '서명 (signature)' 과 '이름 (name)' 의 차이점은 '매개 변수' 를 포함하는 지의 여부입니다. 이 예제에 있는 `init(rawValue: RawValue)` 는 '초기자 서명 (signature)' 이며, 매개 변수 부분을 뺀 `init?` 이 '초기자 이름' 입니다. 
 
