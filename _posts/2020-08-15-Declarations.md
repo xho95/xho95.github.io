@@ -380,13 +380,13 @@ f(7)      // 무효, 인자 이름표가 빠짐
 
 #### Methods with Special Names (특수한 이름의 메소드)
 
-특수한 이름의 여러가지 메소드로 함수 호출 구문을 수월하게 할 수 있습니다. 타입에서 이 메소드 중 하나를 정의하면, 타입의 인스턴스를 함수 호출 구문으로 사용할 수 있습니다. 함수 호출은 그 인스턴스의 특수 이름 메소드 중 하나를 호출하는 걸로 이해합니다.
+특수한 이름의 여러가지 메소드로 함수 호출 구문을 수월하게 할 수 있습니다. 타입에서 이 메소드 중 하나를 정의하면, 타입의 인스턴스를 함수 호출 구문에 사용할 수 있습니다. 함수 호출은 그 인스턴스의 특수 이름 메소드 중 하나를 호출하는 걸로 이해합니다.
 
-클래스나, 구조체, 또는 열거체 타입은, [dynamicCallable (동적으로 호출 가능)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명 처럼, 함수-처럼-호출하는 메소드를 정의함으로써, 함수 호출 구문을 지원할 수 있습니다. 타입에서 함수-처럼-호출하는 메소드와 `dynamicCallable` 특성의 메소드를 둘 다 정의하면, 어느 메소드든 사용할 수 있는 상황에선 함수-처럼-호출하는 메소드에 컴파일러가 우선 순위를 줍니다.
+클래스나, 구조체, 또는 열거체 타입은, [dynamicCallable (동적으로 호출 가능)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명 처럼, 함수-처럼-호출하는 메소드를 정의함으로써, 함수 호출 구문을 지원할 수 있습니다. 타입에서 함수-처럼-호출하는 메소드와 `dynamicCallable` 특성의 메소드를 둘 다 정의하면, 어느 메소드든 사용할 수 있는 상황에선 컴파일러가 함수-처럼-호출하는 메소드에 우선권을 줍니다.
 
-'함수-처럼-호출하는 메소드' 의 이름은 `callAsFunction()` 이거나, `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한 또 다른 이름입니다-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 도 '함수-처럼-호출하는 메소드' 이름으로 유효합니다.
+함수-처럼-호출하는 메소드의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한 이름입니다-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 모두 함수-처럼-호출하는 메소드 이름으로 유효합니다.
 
-다음 함수 호출은 서로 '같은 값' 입니다:
+다음의 함수 호출들은 서로 같은 겁니다:
 
 ```swift
 struct CallableStruct {
@@ -401,16 +401,16 @@ callable.callAsFunction(4, scale: 2)
 // 두 함수 호출 모두 208 을 인쇄합니다.
 ```
 
-'함수-처럼-호출하는 메소드' 와 '`dynamicCallable` 특성의 메소드' 는 '타입 시스템에 부호화 (encode) 해서 넣을 정보량' 과 '실행 시간에 가능한 동적 동작의 크기' 사이에 '서로 다른 절충점 (trade-offs)' 을 만듭니다. '함수-처럼-호출하는 메소드' 를 선언할 땐, 인자 개수와, 각 인자의 타입과 이름표를 지정합니다. '`dynamicCallable` 특성의 메소드' 는 인자 배열을 쥐는데 사용할 타입만 지정합니다.
+함수-처럼-호출하는 메소드와 `dynamicCallable` 특성인 메소드 사이에는 얼마나 많은 정보를 타입 시스템에 부호화 (encode) 해서 넣을 것인지 그리고 실행 시간에 얼마나 많은 동적 동작이 가능한지에 대해서 서로 다르게 절충 (trade-offs) 합니다. 함수-처럼-호출하는 메소드를 선언할 땐, 인자의 개수와, 각각의 인자 타입과 이름표를 지정합니다. `dynamicCallable` 특성인 메소드는 인자 배열을 들고 있는데 쓸 타입만을 지정합니다.
 
-'함수-처럼-호출하는 메소드' 나, '`dynamicCallable` 특성의 메소드' 정의는, 마치 '함수 호출 표현식' 이 아닌 어떤 곳에서는 함수인 것처럼 해당 타입의 인스턴스를 사용하도록 해주진 않습니다. 예를 들면 다음과 같습니다:
+함수-처럼-호출하는 메소드나, `dynamicCallable` 특성인 메소드를 정의한다고, 함수 호출 표현식이 아닌 곳에서 그 타입의 인스턴스를 마치 함수인 것처럼 사용할 수 있는 건 아닙니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someFunction1: (Int, Int) -> Void = callable(_:scale:)  // 에러
 let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 ```
 
-'`subscript(dynamicMemberLookup:)` 첨자 연산' 은, [dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, '멤버 찾아보기' 를 '수월한 구문' 으로 할 수 있게 합니다.
+[dynamicMemberLookup (동적으로 멤버 찾아보기)]({% post_url 2020-08-14-Attributes %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, `subscript(dynamicMemberLookup:)` 첨자는 멤버 찾아보기 구문을 수월하게 할 수 있습니다.
 
 #### Throwing Functions and Methods (던지는 함수와 메소드)
 
