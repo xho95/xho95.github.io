@@ -295,7 +295,7 @@ func f(x: Int, y: Int) -> Int { return x + y }
 f(x: 1, y: 2) // x 와 y 둘 다 이름표 있음
 ```
 
-다음 형식 중 하나로 인자 이름표의 기본 동작을 재정의할 수 있습니다:
+인자 이름표의 기본 동작을 다음 형식 중 하나로 재정의할 수도 있습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`argument label-인자 이름표` `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\_ `parameter name-매개 변수 이름`: `parameter type-매개 변수 타입`
@@ -311,21 +311,21 @@ repeatGreeting("Hello, world!", count: 2) //  count 엔 이름표가 있고, gre
 
 #### In-Out Parameters (입-출력 매개 변수)
 
-'입-출력 매개 변수' 는 다음 처럼 전달합니다:
+입-출력 매개 변수는 다음 처럼 전달합니다:
 
-1. 함수를 호출할 때, 인자 값을 복사합니다.
+1. 함수 호출 때, 인자 값을 복사합니다.
 2. 함수 본문에서, 복사본을 수정합니다.
-3. 함수를 반환할 때, 복사본의 값을 원본 인자에 할당합니다.
+3. 함수 반환 때, 복사본 값을 원본 인자에 할당합니다.
 
-이런 동작을 _복사-입력 복사-출력 (copy-in copy-out)_ 또는 _값-결과에 의한 호출 (call by value result)_[^call-by-value-result] 이라고 합니다. 예를 들어, '계산 속성' 또는 '관찰자를 가진 속성' 을 '입-출력 매개 변수' 로 전달할 때, 그 '획득자 (getter)' 는 함수 호출 시에 호출하고 그 '설정자 (setter)' 는 함수 반환 시에 호출합니다.
+이 동작을 _복사-입력 복사-출력 (copy-in copy-out)_ 또는 _값-결과에 의한 호출 (call by value result)_[^call-by-value-result] 이라고 합니다. 예를 들어, 계산 속성 또는 관찰자가 있는 속성을 입-출력 매개 변수로 전달할 땐, 함수 호출 시엔 획득자를 호출하고 함수 반환 시엔 설정자를 호출합니다.
 
-'최적화' 로써, 인자가 메모리의 물리 주소에 저장된 값일 때는, 함수 본문 내 외부 둘 다에서 똑같은 메모리 위치를 사용합니다. 이 최적화된 동작을 _참조에 의한 호출 (call by reference)_ 이라고 하는데; 복사라는 부담을 제거하면서 '복사-입력 복사-출력 모델' 의 모든 필수 조건을 만족합니다.[^call-by-reference] '참조에-의한-호출 최적화' 에 의존하지 않고, 최적화 하든 안하든 올바르게 동작하게 하려면, 주어진 '복사-입력 복사-출력' 모델로 코드를 작성합니다.
+최적화로써, 인자가 메모리의 물리 주소에 저장된 값일 땐, 함수 본문 안과 밖 모두에서 동일한 메모리 위치를 사용합니다.[^physical-address] (이런) 최적화 동작을 _참조에 의한 호출 (call by reference)_ 이라고 하며; 복사-입력 복사-출력 모델의 모든 필수 조건을 만족하면서도 복사라는 부담을 제거합니다.[^call-by-reference] 참조에-의한-호출 최적화에 의존하지 말고, 주어진 복사-입력 복사-출력 모델로 코드를 작성하면, 최적화가 있던 없던 올바로 동작합니다.[^optimization]
 
-함수 안에서는, 현재 영역에서 원본 값이 사용 가능한 경우에도, '입-출력 인자' 로 전달한 값에 접근하지 않도록 합니다. 원본에 대한 접근은, 스위프트의 '메모리 독점권 보증 (exclusivity guarantee)' 을 위반하는, '값에 대한 동시 접근 (simultaneous aceess)' 입니다. 똑같은 이유로, 동일 값을 여러 개의 '입-출력 매개 변수' 로 전달할 수 없습니다.
+함수 안에선, 현재 영역에서 원본 값이 사용 가능하더라도, 입-출력 인자로 전달한 값엔 접근하지 않아야 합니다. 원본에 접근하면 값에 대한 동시 접근[^simultaneous-access] 이라, 스위프트의 메모리 독점권 보증[^memory-exclusivity-guarantee] 을 위반합니다. 똑같은 이유로, 여러 개의 입-출력 매개 변수에 동일한 값을 전달할 순 없습니다.
 
-'메모리 안전성' 과 '메모리 독점권' 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장을 보도록 합니다.
+메모리 안전성과 메모리 독점권에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장을 보도록 합니다.
 
-입-출력 매개 변수를 붙잡는 클로저나 중첩 함수는 반드시 '벗어나지 않아야 (nonescaping)' 합니다. '입-출력 매개 변수' 를 '변경 (mutating)' 없이 붙잡을 필요가 있으면, '붙잡을 목록 (capture list)' 을 사용하여 매개 변수를 명시적으로 변경 불가능하게 붙잡도록 합니다.[^closure-with-inout-parameter]
+입-출력 매개 변수를 붙잡는 클로저나 중첩 함수는 반드시 벗어나지 않아야 (nonescaping) 합니다. 입-출력 매개 변수를 변경 (mutating) 없이 붙잡을 필요가 있다면, 붙잡을 목록 (capture list) 을 써서 매개 변수가 변경 불가능하다는 걸 명시하고 붙잡아야 합니다.[^closure-with-inout-parameter]
 
 ```swift
 func someFunction(a: inout Int) -> () -> Int {
@@ -333,15 +333,15 @@ func someFunction(a: inout Int) -> () -> Int {
 }
 ```
 
-함수 반환 전에 모든 변경이 종료됐음을 보장하는 '다중 쓰레드 코드' 에서와 같이, 입-출력 매개 변수를 붙잡아서 변경할 필요가 있으면, 명시적인 '지역 복사본 (local copy)' 을 사용합니다.
+입-출력 매개 변수를 붙잡고 변경할 필요가 있다면, 함수 반환 전에 모든 변경의 종료를 보장하는 다중 쓰레드 코드 처럼, 명시적 지역 복사본 (local copy) 을 사용합니다.
 
 ```swift
 func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
-  // 지역 복사본을 만들고 수동 복사로-되돌립니다.
+  // 지역 복사본을 만들고 수동으로 복사하여 되돌립니다.
   var localX = x
   defer { x = localX }
 
-  // localX 에 대한 비동기 연산을 한 다음, 반환 전에 기다립니다.
+  // localX 에 비동기 연산을 한 다음, 반환 전에 기다립니다.
   queue.async { someMutatingOperation(&localX) }
   queue.sync {}
 }
@@ -1274,13 +1274,21 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^escaping]: '벗어나는 것 (escaping)' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분의 내용과 주석을 보도록 합니다.
 
+[^call-by-value-result]: 기본적으로, '값-결과에 의한 호출 (call by value result)' 은 '값에 의한 호출 (call by value)' 과 '참조에 의한 호출 (call by reference)' 이 합쳐진 것으로 볼 수 있습니다. [프로그래밍 학습법탐구자](http://blog.daum.net/here8now/) 님의 [call by value, call by reference, call by value result, call by name](http://blog.daum.net/here8now/37) 항목에 따르면, 함수 안에서는 '값에 의한 호출 (call by value)' 처럼 동작하고, 함수 반환 시에는 '참조에 의한 호출 (call by reference)' 처럼 동작합니다. 다만, 이어지는 본문에서 설명하는 것처럼, 입-출력 매개 변수는 최적화에 의해 참조에 의한 호출 동작을 사용하기도 합니다. 즉, 스위프트의 입-출력 매개 변수는 상황에 따라 참조에 의한 호출과 값-결과에 의한 호출을 적절하게 선택하여 인자를 전달합니다.
+
+[^physical-address]: 인자가 주소면, (설령, 주소는 복사되더라도) 값 자체는 복사되지 않고 하나로만 유지된다는 의미입니다.
+
+[^call-by-reference]: 즉, 스위프트는 안자가 값인지 주소인지에 따라, 값에 의한 호출과 참조에 의한 호출이라는 두 가지 방식으로 입-출력 매개 변수 전달을 최적화합니다. 
+
+[^optimization]: 입-출력 매개 변수의 최적화는 컴파일러가 컴파일 단게에서 알아서 신경쓰는 문제이므로, 개발자는 값에 의한 호출 (복사-입력 복사 출력) 방식을 사용하기만 하면 된다는 의미입니다.
+
+[^closure-with-inout-parameter]: 본문 밑에 있는 예제인 `{ [a] in return a + 1 }` 라는 클로저는 `a` 값을 변경하지 않으므로, 붙잡을 목록 `[a]` 를 써서 `a` 가 변경 불가능하다고 명시하고 나서 붙잡았습니다.
+
+[^simultaneous-access]: '동시 접근 (simulaneous access)' 을 하면 메모리 접근 충돌이 발생하게 됩니다.
+
+[^memory-exclusivity-guarantee]: 바로 밑에 나와 있듯, 스위프트의 메모리 독점권 보증 (memory exclusivity guarantee) 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) 장을 보도록 합니다.
+
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
-
-[^call-by-value-result]: 기본적으로, '값-결과에 의한 호출 (call by value result)' 은 '값에 의한 호출 (call by value)' 과 '참조에 의한 호출 (call by reference)' 이 합쳐진 것으로 볼 수 있습니다. [프로그래밍 학습법탐구자](http://blog.daum.net/here8now/) 님의 [call by value, call by reference, call by value result, call by name](http://blog.daum.net/here8now/37) 항목에 따르면, 함수 안에서는 '값에 의한 호출 (call by value)' 처럼 동작하고, 함수 반환 시에는 '참조에 의한 호출 (call by reference)' 처럼 동작합니다. 다만, 이어지는 본문에서 설명하는 것처럼, 입-출력 매개 변수는 최적화에 의해 '참조에 의한 호출' 작동 방식을 사용하기도 합니다.즉, 스위프트의 '입-출력 매개 변수' 는 상황에 따라 '참조에 의한 호출' 과 '값-결과에 의한 호출' 을 적절하게 선택해서 인자를 전달합니다.
-
-[^call-by-reference]: 즉, 스위프트의 '입-출력 매개 변수' 는, 인자가 메모리의 물리 주소에 저장된 값일 경우, '참조에 의한 호출' 작동 방식으로 동작합니다.
-
-[^closure-with-inout-parameter]: 아래 예제에 있는 `{ [a] in return a + 1 }` 라는 클로저는 `a` 의 값을 변경하지 않으므로, `[a]` 라는 '붙잡을 목록' 을 사용하여 `a` 를 변경 불가능하게 붙잡았습니다.
 
 [^optional-member]: 프로토콜에서 선언한 '필수 조건' 의 구현 여부 자체가 '옵셔널' 이라는 의미입니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 구현체가 있는 것이고, 구현을 안했으면 `nil` 입니다.
 
