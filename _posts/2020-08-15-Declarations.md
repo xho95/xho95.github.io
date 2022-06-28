@@ -414,23 +414,23 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 #### Throwing Functions and Methods (던지는 함수와 메소드)
 
-에러를 던질 수 있는 함수와 메소드는 반드시 `throws` 키워드로 표시해야 합니다. 이 함수와 메소드들을 _던지는 함수 (throwing functions)_ 와 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
+에러를 던질 수 있는 함수와 메소드엔 반드시 `throws` 키워드를 표시해야 합니다. 이러한 함수와 메소드를 _던지는 함수 (throwing functions)_ 와 _던지는 메소드 (throwing methods)_ 라고 합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) throws -> `return type-반환 타입` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-던지는 함수나 메소드에 대한 호출은 반드시 `try` 나 `try!` 표현식으로 (즉, `try` 나 `try!` 연산자 영역 안에) 포장해야 합니다.
+던지는 함수나 메소드 호출문은 반드시 `try` 나 `try!` 표현식 (즉, `try` 나 `try!` 연산자 영역) 으로 감싸야 합니다.
 
-`throws` 키워드는 함수 타입의 일부분으로, '던지지 않는 (nonthrowing) 함수' 는 '던지는 함수' 의 하위 타입입니다. 그 결과, '던지는 것' 을 예상하는 곳에서 '던지지 않는 함수' 를 사용할 수 있습니다.
+`throws` 키워드는 함수 타입의 일부이며, 던지지 않는 함수는 던지는 함수의 하위 타입입니다. 그 결과, 던지는 함수를 예상한 곳에서 던지지 않는 함수를 사용할 수도 있습니다.
 
-함수가 에러를 던질 수 있는지 만을 기초로 하여 함수를 '중복 정의 (overload)' 할 수는 없습니다. 그렇다 하더라도, 함수의 _매개 변수 (parameter)_ 가 에러를 던질 수 있는 지를 기초로 함수를 '중복 정의' 할 수는 있습니다.
+함수가 에러를 던질 수 있는지만을 기초로 함수를 중복 정의할 순 없습니다.[^throw-overload] 그렇더라도, 함수의 _매개 변수 (parameter)_ 가 에러를 던질 수 있는지를 기초로는 함수를 중복 정의할 수 있습니다.
 
-'던지는 메소드' 는 '던지지 않는 메소드' 를 '재정의 (override)' 할 수 없으며, '던지는 메소드' 가 '던지지 않는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 없습니다. 그렇다 하더라도, '던지지 않는 메소드' 는 '던지는 메소드' 를 재정의할 수 있으며, '던지지 않는 메소드' 가 '던지는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 있습니다.
+던지는 메소드는 던지지 않는 메소드를 재정의할 수도 없고, 던지지 않는 메소드에 대한 프로토콜 필수 조건을 던지는 메소드로 만족할 수도 없습니다. 그렇더라도, 던지지 않는 메소드는 던지는 메소드를 재정의할 수 있고, 던지는 메소드에 대한 프로토콜 필수 조건을 던지지 않는 메소드로 만족할 수도 있습니다.[^throwing-nonthrowing]
 
 #### Rethrowing Functions and Methods (다시 던지는 함수와 메소드)
 
-함수나 메소드는 자신의 함수 매개 변수가 에러를 던질 때만 에러를 던진다고 지시하기 위해 `rethrows` 키워드로 선언할 수 있습니다. 이 함수와 메소드를 _다시 던지는 함수 (rethrowing functions)_ 와 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. '다시 던지는 함수와 메소드' 는 최소한 하나의 '던지는 함수 매개 변수' 는 반드시 가져야 합니다:
+함수나 메소드를 `rethrows` 키워드로 선언하면 함수 매개 변수 중 하나가 에러를 던지는 경우에만 에러를 던진다고 지시할 수 있습니다. 이러한 함수와 메소드를 _다시 던지는 함수 (rethrowing functions)_ 와 _다시 던지는 메소드 (rethrowing methods)_ 라고 합니다. 다시 던지는 함수와 메소드엔는 반드시 적어도 하나의 던지는 함수 매개 변수가 있어야 합니다:
 
 ```swift
 func someFunction(callback: () throws -> Void) rethrows {
@@ -438,7 +438,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 }
 ```
 
-'다시 던지는 함수나 메소드' 는 '`catch` 절' 에서만 `throw` 문을 담을 수 있습니다. 이는 `do`-`catch` 문 안에서 '던지는 함수' 를 호출하도록 그리고 다른 에러를 던짐으로써 `catch` 절이 에러를 처리하도록 해줍니다. 이에 더하여, `catch` 절은 반드시 '다시 던지는 함수' 의 '던지는 매개 변수'[^throwing-parameter] 가 던진 에러만 처리해야 합니다. 예를 들어, 다음은 `alwaysThrows()` 가 던진 에러도 `catch` 절이 처리할 것이기 때문에 무효입니다.
+다시 던지는 함수나 메소드는 `catch` 절 안에서만 `throw` 문을 담을 수 있습니다. 이는 던지는 함수 호출을 `do`-`catch` 문 안에서 하게 하고 `catch` 절의 에러 처리를 또 다른 에러를 던지는 걸로 하게 해줍니다. 이에 더해, `catch` 절은 반드시 다시 던지는 함수의 던지는 매개 변수가 던진 에러만 처리해야 합니다. 예를 들어, 다음은 `catch` 절이 `alwaysThrows()` 가 던진 에러도 처리할 것이기 때문에 무효입니다.
 
 ```swift
 func alwaysThrows() throws {
@@ -447,26 +447,26 @@ func alwaysThrows() throws {
 func someFunction(callback: () throws -> Void) rethrows {
   do {
     try callback()
-    try alwaysThrows()  // 무효, alwaysThrows() 는 '던지는 매개 변수' 가 아닙니다.
+    try alwaysThrows()  // 무효, alwaysThrows() 는 던지는 매개 변수가 아님
   } catch {
     throw AnotherError.error
   }
 }
 ```
 
-'던지는 메소드' 는 '다시 던지는 메소드' 를 재정의할 수 없으며, '던지는 메소드' 가 '다시 던지는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 없습니다. 그렇다 하더라도, '다시 던지는 메소드' 는 '던지는 메소드' 를 재정의 할 수 있으며, '다시 던지는 메소드' 가 '던지는 메소드' 에 대한 '프로토콜 필수 조건' 을 만족할 순 있습니다.
+던지는 메소드는 다시 던지는 메소드를 재정의할 수도 없고, 다시 던지는 메소드에 대한 프로토콜 필수 조건을 던지는 메소드로 만족할 수도 없습니다. 그렇더라도, 다시 던지는 메소드는 던지는 메소드를 재정의 할 수 있고, 던지는 메소드에 대한 프로토콜 필수 조건을 다시 던지는 메소드로 만족할 수도 있습니다.[^rethrowing-function]
 
 #### Asynchronous Functions and Methods (비동기 함수와 메소드)
 
-비동기로 실행하는 함수와 메소드는 반드시 `async` 키워드로 표시해야 합니다. 이 함수와 메소드를 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 형식은 다음과 같습니다:
+비동기로 실행하는 함수와 메소드엔 반드시 `async` 키워드를 표시해야 합니다. 이러한 함수와 메소드를 _비동기 함수 (asynchronous functions)_ 와 _비동기 메소드 (asynchronous methods)_ 라고 합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;func `function name-함수 이름`(`parameters-매개 변수`) async -> `return type-반환 타입` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-비동기 함수나 메소드에 대한 호출은 반드시 `await` 표현식으로 포장해야 합니다-즉, 반드시 `await` 연산자 영역 안에 있어야 합니다. 
+비동기 함수나 메소드 호출문은 반드시 `await` 표현식으로 감싸야 합니다-즉, 반드시 `await` 연산자 영역 안에 있어야 합니다. 
 
-`async` 키워드는 함수 타입의 일부분으로, '동기 (synchronous) 함수' 는 '비동기 함수' 의 하위 타입입니다. 그 결과, '비동기 함수' 를 예상하는 곳에서 '동기 함수' 를 사용할 수 있습니다. 예를 들어, '비동기 메소드' 를 '동기 메소드' 로 재정의할 수 있으며, '비동기 메소드' 를 요구하는 '프로토콜 필수 조건' 을 '동기 메소드' 가 만족할 수도 있습니다. 
+`async` 키워드는 함수 타입의 일부이며, 동기 함수[^synchronous-function] 는 비동기 함수의 하위 타입입니다. 그 결과, 비동기 함수를 예상한 곳에서 동기 함수를 사용할 수도 있습니다. 예를 들어, 비동기 메소드를 동기 메소드로 재정의할 수도 있고, 비동기 메소드를 요구한 프로토콜 필수 조건을 동기 메소드로 만족할 수도 있습니다. 
 
 #### Functions that Never Return (절대 반환하지 않는 함수)
 
@@ -1292,11 +1292,17 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^equals-sign]: 원문에 '같음 기호 (equals sign)' 이라고 되어 있지만, 프로그래밍에서 같음 기호를 한 번만 쓰면 대입 연산자라는 의미입니다. 수학적 의미의 같음을 나타내려면 `==` 같이 같음 기호를 두 번 연속으로 써야 합니다.  
 
+[^throw-overload]: 에러를 던지는 것과 던지지 않는 것만 차이가 나고 나머지는 똑같은 함수를 둘 수는 없다는 의미입니다.
+
+[^throwing-nonthrowing]: 던지는 함수는 에러를 던질 수도 있고 아닐 수도 있습니다. 그러므로 던지는 함수를 던지지 않는 함수로 재정의하는 건 자연스럽습니다. 하지만, 던지지 않는 함수를 던지는 함수로 재정의하면 원래 정의한 성질에 맞지 않게 됩니다.
+
+[^rethrowing-function]: 이 설명을 보면, 다시 던지는 함수는 함수 매개 변수가 던진 에러를 다시 던진다는 걸 빼면, 함수 자체로는 에러를 던지지 않는 함수라고 할 수 있습니다.
+
+[^synchronous-function]: 비동기 함수가 아닌 모든 함수는 '동기 함수 (synchronous functions)' 입니다.
+
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
 [^optional-member]: 프로토콜에서 선언한 '필수 조건' 의 구현 여부 자체가 '옵셔널' 이라는 의미입니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 구현체가 있는 것이고, 구현을 안했으면 `nil` 입니다.
-
-[^throwing-parameter]: '던지는 매개 변수 (throwing paramter)' 는 앞에서 얘기한 '던지는 함수인 매개 변수 (throwing function parameter)' 를 의미합니다.
 
 [^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다. 즉, 'MVVM' 에서는 의도적으로 `Never` 타입을 사용하는 것입니다. 
 
