@@ -470,7 +470,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 #### Functions that Never Return (절대 반환하지 않는 함수)
 
-스위프트는, 호출하는 쪽으로 반환하지 않는 함수나 메소드를 지시하는, `Never` 타입을 정의합니다. `Never` 라는 반환 타입을 가진 함수와 메소드를 _반환하지 않는 (nonreturning)_ 것이라고 합니다. '반환하지 않는 함수와 메소드' 는 '복구할 수 없는 에러' 를 유발하든지 아니면 '무한정 계속되는 일련의 작업'[^indefinitely] 을 시작합니다. 이는 다른 경우라면 호출 후에 바로 실행될 코드가 절대 실행되지 않는다는 의미입니다. '던지고 함수와 다시 던지는 함수' 는, 반환하지 않을 때에도, 적절한 '`catch` 절' 로 프로그램 제어를 옮길 수 있습니다.
+스위프트는 `Never` 타입을 정의하여, 자신을 호출한 쪽으로 반환하지 않는 함수나 메소드를 지시합니다. `Never` 반환 타입인 함수와 메소드를 _반환하지 않는 (nonreturning)_ 거라고 합니다. 반환하지 않는 함수와 메소드는 복구할 수 없는 에러를 일으키거나 무한정 계속하는 일련의 작업[^indefinitely] 을 시작합니다. 이는 다른 경우라면 호출 바로 뒤에 실행될 코드를 절대 실행하지 않는다는 의미입니다. 던지는 및 다시 던지는 함수는, 반환하지 않는 것이더라도, 적절한 `catch` 절로 프로그램 제어를 옮길 수 있습니다.
 
 '반환하지 않는 함수나 메소드' 는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 논의한 것처럼, 'guard 문의 `else` 절' 을 결론 내리고자 호출할 수 있습니다.
 
@@ -1300,11 +1300,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^synchronous-function]: 비동기 함수가 아닌 모든 함수는 '동기 함수 (synchronous functions)' 입니다.
 
+[^indefinitely]: 스위프트에서 `Never` 타입은 MVVM 의 발행자 (Publisher) 가 사용하며, 프로그램 실행 동안 구독자 (Subscriber) 쪽으로 정보를 계속해서 보냅니다. 컴파일 시간엔 프로그램 종료 시점을 알 수 없으므로, `Never` 타입을 사용합니다.
+
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
 [^optional-member]: 프로토콜에서 선언한 '필수 조건' 의 구현 여부 자체가 '옵셔널' 이라는 의미입니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 구현체가 있는 것이고, 구현을 안했으면 `nil` 입니다.
-
-[^indefinitely]: 스위프트의 `Never` 타입은 'MVVM' 의 'Publisher' 에서 사용하는데, 이는 프로그램을 실행하는 동안 계속해서 'Subscriber' 쪽으로 정보를 보냅니다. 컴파일 시간에는 프로그램의 종료 시점을 알 수 없으므로 `Never` 타입을 사용합니다. 즉, 'MVVM' 에서는 의도적으로 `Never` 타입을 사용하는 것입니다. 
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
