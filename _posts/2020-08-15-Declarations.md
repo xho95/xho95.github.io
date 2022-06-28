@@ -470,11 +470,11 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 #### Functions that Never Return (절대 반환하지 않는 함수)
 
-스위프트는 `Never` 타입을 정의하여, 자신을 호출한 쪽으로 반환하지 않는 함수나 메소드를 지시합니다. `Never` 반환 타입인 함수와 메소드를 _반환하지 않는 (nonreturning)_ 거라고 합니다. 반환하지 않는 함수와 메소드는 복구할 수 없는 에러를 일으키거나 무한정 계속하는 일련의 작업[^indefinitely] 을 시작합니다. 이는 다른 경우라면 호출 바로 뒤에 실행될 코드를 절대 실행하지 않는다는 의미입니다. 던지는 및 다시 던지는 함수는, 반환하지 않는 것이더라도, 적절한 `catch` 절로 프로그램 제어를 옮길 수 있습니다.
+스위프트는 `Never` 타입을 정의하여, 자신을 호출한 쪽으로 반환하지 않는 함수나 메소드를 지시합니다. `Never` 반환 타입인 함수와 메소드를 _반환하지 않는 (nonreturning)_ 거라고 합니다. 반환하지 않는 함수와 메소드는 복구할 수 없는 에러를 일으키거나 무한정 계속하는 일련의 작업을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 바로 뒤에 실행될 코드를 절대 실행하지 않는다는 의미입니다. 던지는 및 다시 던지는 함수는, 자신이 반환하지 않더라도, 적절한 `catch` 절로 프로그램 제어를 옮길 순 있습니다.
 
-'반환하지 않는 함수나 메소드' 는, [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 논의한 것처럼, 'guard 문의 `else` 절' 을 결론 내리고자 호출할 수 있습니다.
+[Guard Statement (guard 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 에서 논의한 것처럼, 반환하지 않는 함수나 메소드를 호출하여 'guard' 문의 `else` 절로 결론지어 끝낼 수 있습니다.
 
-'반환하지 않는 메소드' 를 재정의할 순 있지만, 새로운 메소드는 반드시 '자신의 반환 타입' 과 '반환하지 않는 동작' 을 보존해야 합니다.
+반환하지 않는 메소드를 재정의할 순 있지만, 새 메소드는 반드시 자신의 반환 타입과 반환하지 않는다는 동작을 보존해야 합니다.
 
 > GRAMMAR OF A FUNCTION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID362)
 
@@ -1300,7 +1300,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^synchronous-function]: 비동기 함수가 아닌 모든 함수는 '동기 함수 (synchronous functions)' 입니다.
 
-[^indefinitely]: 스위프트에서 `Never` 타입은 MVVM 의 발행자 (Publisher) 가 사용하며, 프로그램 실행 동안 구독자 (Subscriber) 쪽으로 정보를 계속해서 보냅니다. 컴파일 시간엔 프로그램 종료 시점을 알 수 없으므로, `Never` 타입을 사용합니다.
+[^indefinitely]: 사실상, 복구할 수 없는 에러가 발생하지 않는 한, 무한히 반복되는 작업을 시작합니다. 컴파일 시간엔 프로그램 종료 시점을 알 수 없으므로, `Never` 타입을 사용한다고 이해할 수 있습니다. 스위프트에선 발행자 (Publisher) 가 `Never` 타입을 사용하며, 프로그램 실행 동안 구독자 (Subscriber) 쪽으로 정보를 계속해서 보냅니다.
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
