@@ -509,7 +509,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 이름지은 �
 
 이 형식에선, 각각의 case 블럭을 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 열거체 case 들로 구성합니다. 각각의 case 이름은 반드시 유일해야 합니다. 각각의 case 가 주어진 타입의 값을 저장한다고 지정할 수도 있습니다.[^specify-store] case 이름 바로 뒤의, _결합 값 타입 (associated value types)_ 튜플 안에 이러한 타입을 지정합니다.
 
-'결합 값을 저장한 열거체 case 값' 은 '지정한 결합 값을 가진 열거체 인스턴스를 생성하는 함수' 처럼 사용할 수 있습니다. 그리고 그냥 함수 같이, '열거체 case 값' 에 대한 참조를 가질 수도 코드 나중에 이를 적용할 수도 있습니다.
+결합 값을 저장한 열거체 case 는 지정한 결합 값으로 열거체 인스턴스를 생성하는 함수처럼 사용할 수 있습니다. 그리고 함수인 것 같이, 열거체 case 로의 참조를 가질 수도 나중에 이를 코드에 적용할 수도 있습니다.
 
 ```swift
 enum Number {
@@ -517,19 +517,19 @@ enum Number {
   case real(Double)
 }
 let f = Number.integer
-// f 는 타입이 (Int) -> Number 인 함수입니다
+// f 는 (Int) -> Number 타입의 함수임
 
-// 정수 값을 가진 Number 인스턴스 배열을 생성하고자 f 를 적용합니다
+// f 를 적용하여 정수 값으로 Number 인스턴스 배열을 생성함
 let evenInts: [Number] = [0, 2, 4, 6].map(f)
 ```
 
-'결합 값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 보도록 합니다.
+결합 값 타입이 있는 case 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 보도록 합니다.
 
-**Enumerations with Indirection (간접을 가진 열거체)**
+**Enumerations with Indirection (간접을 가지는 열거체)**
 
-열거체는 재귀 구조 (recursive structure) 를, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case 를 가질 수 있습니다. 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지는데, 이는 메모리에서 '고정 구획 (fixed layout)' 을 가진다는 의미입니다. 재귀를 지원하려면, 컴파일러가 반드시 '간접 계층 (layer of indirection)' 을 집어 넣어야 합니다.
+열거체는 재귀 구조, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case, 를 가질 수 있습니다.[^recursive-structure] 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지며, 이는 메모리 안에 고정 구획을 가진다는 의미입니다.[^fixed-layout] 재귀를 지원하려면, 컴파일러가 반드시 간접 층[^layer-of-indirection] 을 집어 넣어야 합니다.
 
-특별한 한 열거체 case 가 간접할 수 있게 하려면, 이를 `indirect` 선언 수정자로 표시합니다. 간접 case 는 반드시 결합 값을 가져야 합니다.
+특별한 한 열거체 case 가 간접할 수 있게 하려면, 거기에 `indirect` 선언 수정자를 표시합니다. 간접 case 엔 반드시 결합 값이 있어야 합니다.
 
 ```swift
 enum Tree<T> {
@@ -538,9 +538,9 @@ enum Tree<T> {
 }
 ```
 
-결합 값을 가진 모든 열거체 case 가 간접할 수 있게 하려면, 전체 열거체를 `indirect` 수정자로 표시합니다-이는 각각을 `indirect` 수정자로 표시해야 하는 case 를 열거체가 많이 담고 있을 때 편리합니다.
+결합 값이 있는 모든 열거체 case 가 간접할 수 있게 하려면, 전체 열거체에 `indirect` 수정자를 표시합니다-열거체가 `indirect` 수정자를 표시해야 할 case 를 많이 담고 있을 때 편리합니다.
 
-`indirect` 수정자로 표시한 열거체는 결합 값을 가진 case 와 그렇지 않은 case 가 섞인 걸 담을 수 있습니다. 그렇다 하더라도, `indirect` 수정자로 표시한 어떤 case 를 다시 담을 순 없습니다.
+`indirect` 수정자로 표시한 열거체는 결합 값이 있는 case 와 그렇지 않은 case 를 섞어서 담을 수 있습니다. 그렇더라도, `indirect` 수정자를 표시한 어떤 case 를 다시 담을 순 없습니다.
 
 #### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
 
@@ -1307,6 +1307,12 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^indefinitely]: 사실상, 복구할 수 없는 에러가 발생하지 않는 한, 무한히 반복되는 작업을 시작합니다. 컴파일 시간엔 프로그램 종료 시점을 알 수 없으므로, `Never` 타입을 사용한다고 이해할 수 있습니다. 스위프트에선 발행자 (Publisher) 가 `Never` 타입을 사용하며, 프로그램 실행 동안 구독자 (Subscriber) 쪽으로 정보를 계속해서 보냅니다.
 
 [^specify-store]: 본문 예제의 열거체에서 두 번째 case 가 이에 해당합니다.
+
+[^recursive-structure]: 프로그래밍에서 '재귀 (recursion)' 란 하나의 컴퓨터 문제를 더 작은 동일 문제를 풀어서 해결해 나가는 방법입니다. 대부분의 컴퓨터 프로그래밍 언어는 하나의 함수 안에서 자기 자신을 호출함으로써 이러한 '재귀 (recursion)' 문제를 지원합니다. 재귀에 대한 더 자세한 정보는, 위키피디아의 [Recursion (computer science)](https://en.wikipedia.org/wiki/Recursion_(computer_science)) 과 [재귀 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/재귀_(컴퓨터_과학)) 항목을 보기 바랍니다. 
+
+[^fixed-layout]: 여기서 말하는 메모리 안의 고정 구획 (fixed layout) 을 보통 스택 (stack) 이라고 합니다.
+
+[^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라서 스택에 저장되므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면 그 인스턴스로의 참조도 저장해야 한다는 의미입니다. 그 인스턴스로의 참조를 '간접 층 (layer-of-indirection)' 이라고 합니다.
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
