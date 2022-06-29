@@ -498,7 +498,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 이름지은 �
 
 #### Enumerations with Cases of Any Type (어떤 타입의 case 든 가지는 열거체)
 
-다음 형식은 어떤 타입의 열거체 case 도 담는 열거체 타입을 선언합니다:
+다음 형식으로 선언한 열거체 타입은 어떤 타입의 열거체 case 든 담습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1`<br />
@@ -507,7 +507,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 이름지은 �
 
 이런 형식으로 선언한 열거체를 다른 프로그래밍 언어에서는 _discriminated unions (차별화된 공용체)_ 라고도 합니다.
 
-이 형식에선, 각각의 case 블럭을 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 열거체 case 들로 구성합니다. 각각의 case 이름은 반드시 유일해야 합니다. 각각의 case 가 주어진 타입의 값을 저장한다고 지정할 수도 있습니다.[^specify-store] case 이름 바로 뒤의, _결합 값 타입 (associated value types)_ 튜플 안에 이러한 타입을 지정합니다.
+이 형식에선, 각각의 case 블럭을 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 열거체 case 로 구성합니다. 각각의 case 이름은 반드시 유일해야 합니다. 각각의 case 가 주어진 타입의 값을 저장한다고 지정할 수도 있습니다.[^specify-store] case 이름 바로 뒤의, _결합 값 타입 (associated value types)_ 튜플 안에 이러한 타입을 지정합니다.
 
 결합 값을 저장한 열거체 case 는 지정한 결합 값으로 열거체 인스턴스를 생성하는 함수처럼 사용할 수 있습니다. 그리고 함수인 것 같이, 열거체 case 로의 참조를 가질 수도 나중에 이를 코드에 적용할 수도 있습니다.
 
@@ -527,7 +527,7 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 **Enumerations with Indirection (간접을 가지는 열거체)**
 
-열거체는 재귀 구조, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case, 를 가질 수 있습니다.[^recursive-structure] 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지며, 이는 메모리 안에 고정 구획을 가진다는 의미입니다.[^fixed-layout] 재귀를 지원하려면, 컴파일러가 반드시 간접 층[^layer-of-indirection] 을 집어 넣어야 합니다.
+열거체는 재귀 구조, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case, 를 가질 수 있습니다.[^recursive-structure] 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지며, 이는 메모리 안에 고정 구획을 가진다는 의미입니다.[^fixed-layout] 재귀를 지원하려면, 컴파일러가 반드시 간접 층을 집어 넣어야 합니다.[^layer-of-indirection] 
 
 특별한 한 열거체 case 가 간접할 수 있게 하려면, 거기에 `indirect` 선언 수정자를 표시합니다. 간접 case 엔 반드시 결합 값이 있어야 합니다.
 
@@ -542,18 +542,18 @@ enum Tree<T> {
 
 `indirect` 수정자로 표시한 열거체는 결합 값이 있는 case 와 그렇지 않은 case 를 섞어서 담을 수 있습니다. 그렇더라도, `indirect` 수정자를 표시한 어떤 case 를 다시 담을 순 없습니다.
 
-#### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)
+#### Enumerations with Cases of a Raw-Value Type (원시-값 타입의 case 를 가지는 열거체)
 
-다음 형식은 기초 타입이 똑같은 '열거체 case 값' 을 담는 열거체 타입을 선언합니다:
+다음 형식으로 선언한 열거체 타입은 동일한 기초 타입의 열거체 case 를 담습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;enum `enumeration name-열거체 이름`: `raw-value type-원시-값 타입`, `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 1-열거체 case 값 1` = `원시 값 1-raw value 1`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case `enumeration case 2-열거체 case 값 2` = `원시 값 2-raw value 2`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-이 형식에서, 각각의 'case 블럭' 은 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 '열거체 case 값' 으로 구성합니다. 첫 번째 형식에서의 'case 값' 과는 달리, 각 'case 값' 은, 기초 타입이 똑같은, _원시 값 (raw value)_ 이라는, '실제 값' 을 가집니다. 이 값의 타입은 _원시-값 타입 (raw-value type)_ 에서 지정하며 반드시 정수, 부동 소수점 수, 문자열, 또는 단일 문자를 표현해야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 반드시 `Equatable` 프로토콜과 다음의 프로토콜들: '정수 글자 값' 이면 `ExpressibleByIntegerLiteral`, '부동-소수점 글자 값' 이면 `ExpressibleByFloatLiteral`, 어떤 개수의 문자든 담을 '문자열 글자 값' 이면 `ExpressibleByStringLiteral`, 단일 문자만 담을 '문자열 글자 값' 이면 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 중 하나를 준수해야 합니다. 각 'case 값' 은 반드시 '유일한 이름' 을 가지며 '유일한 원시 값' 을 할당해야 합니다.
+이 형식에선, 각각의 case 블럭을 `case` 키워드와 그 뒤에, 쉼표로 구분한, 하나 이상의 열거체 case 로 구성합니다. 첫 번째 형식의 case 와는 달리, 각각의 case 는, _원시 값 (raw value)_ 이라는, 동일한 기초 타입의, 실제 값을 가집니다. 이러한 값의 타입은 _원시-값 타입 (raw-value type)_ 에서 정하며 반드시 정수나, 부동-소수점 수, 문자열, 또는 단일 문자를 나타내야 합니다. 특히, _원시-값 타입 (raw-value type)_ 은 `Equatable` 프로토콜과 다음의 프로토콜 중 하나를 반드시 준수해야 하는데: 정수 글자 값이면 `ExpressibleByIntegerLiteral`, 부동-소수점 글자 값이면 `ExpressibleByFloatLiteral`, 어떤 개수의 문자든 담는 문자열 글자 값이면 `ExpressibleByStringLiteral`, 단 하나의 문자만 담는 문자열 글자 값이면 `ExpressibleByUnicodeScalarLiteral` 또는 `ExpressibleByExtendedGraphemeClusterLiteral` 이 그것입니다. 각각의 case 는 반드시 유일한 이름을 가지고 유일한 원시 값을 할당해야 합니다.
 
-원시-값 타입을 `Int` 로 지정했는데 'case 값' 할당을 명시하지 않으면, `0`, `1`, `2`, 등의 값을 암시적으로 할당합니다. 각각의 '할당 안된 `Int` 타입 case 값' 은 '이전 case 의 원시 값' 에서 자동 증가한 '원시 값' 을 암시적으로 할당합니다.
+원시-값 타입을 `Int` 로 정했는데 case 값을 명시하지 않으면, `0`, `1`, `2`, 등의 값을 암시적으로 할당합니다. 할당 안한 각각의 `Int` 타입 case 엔 이전 case 원시 값에서 자동 증가한 원시 값을 암시적으로 할당합니다.
 
 ```swift
 enum ExampleEnum: Int {
@@ -561,9 +561,9 @@ enum ExampleEnum: Int {
 }
 ```
 
-위 예제에서, `ExampleEnum.a` 의 원시 값은 `0` 이고 `ExampleEnum.b` 값은 `1` 입니다. 그리고 `ExampleEnum.c` 값은 `5` 라고 명시적으로 설정했기 때문에, `ExampleEnum.d` 의 값은 따라서 `5` 에서 자동으로 증가한 `6` 입니다.
+위 예제에서, `ExampleEnum.a` 의 원시 값은 `0` 이고 `ExampleEnum.b` 값은 `1` 입니다. 그리고 `ExampleEnum.c` 값은 `5` 로 명시하여 설정했기 때문에, `ExampleEnum.d` 값은 따라서 `5` 에서 자동 증가한 `6` 입니다.
 
-원시-값 타입을 `String` 으로 지정했는데 'case 값' 할당을 명시하지 않으면, 각각의 '할당 안된 case 값' 은 '해당 case 이름과 똑같은 문장의 문자열' 을 암시적으로 할당합니다.
+원시-값 타입을 `String` 으로 정했는데 case 값을 명시하지 않으면, 할당 안한 각각의 case 엔 그 case 이름과 똑같은 글자의 문자열을 암시적으로 할당합니다.
 
 ```swift
 enum GamePlayMode: String {
@@ -1294,7 +1294,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^variadic-label]: 인자 이름표가 없으면 새로운 매개 변수가 아닌 가변 매개 변수의 한 원소라고 인식하기 때문입니다. 
 
-[^equals-sign]: 원문에 '같음 기호 (equals sign)' 이라고 되어 있지만, 프로그래밍에서 같음 기호를 한 번만 쓰면 대입 연산자라는 의미입니다. 수학적 의미의 같음을 나타내려면 `==` 같이 같음 기호를 두 번 연속으로 써야 합니다.  
+[^equals-sign]: 원문에선 '같음 기호 (equals sign)' 라고 하지만, 같음 기호를 한 번만 쓰면 할당 연산자입니다. 수학적 의미의 같음은 `==` 같이 같음 기호를 두 번 연속으로 써서 나타냅니다.
 
 [^throw-overload]: 에러를 던지는 것과 던지지 않는 것만 차이가 나고 나머지는 똑같은 함수를 둘 수는 없다는 의미입니다.
 
@@ -1312,7 +1312,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^fixed-layout]: 여기서 말하는 메모리 안의 고정 구획 (fixed layout) 을 보통 스택 (stack) 이라고 합니다.
 
-[^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라서 스택에 저장되므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면 그 인스턴스로의 참조도 저장해야 한다는 의미입니다. 그 인스턴스로의 참조를 '간접 층 (layer-of-indirection)' 이라고 합니다.
+[^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라 스택에 저장하므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면, 그 인스턴스로의 참조도 따로 저장해야 합니다. 그 인스턴스로의 참조를 추가하여 저장하는 걸 '간접 층 (layer-of-indirection) 을 집어 넣는다' 고 합니다.
 
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
