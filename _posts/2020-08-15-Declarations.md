@@ -571,15 +571,15 @@ enum GamePlayMode: String {
 }
 ```
 
-위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"`, `GamePlayMode.individual` 의 원시 값은 `"individual"`, 그리고 `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
+위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"` 이고, `GamePlayMode.individual` 의 원시 값은 `"individual"` 이며, `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
 
-'원시-값 타입의 case 값' 을 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, '`rawValue` 속성' 과 '서명 (signature)'[^signature] 이 `init?(rawValue: RawValue)` 인 '실패 가능 초기자 (failable initializer)' 를 가집니다. `rawValue` 속성을 사용하면, `ExampleEnum.b.rawValue` 처럼, '열거체 case 의 원시 값' 에 접근할 수 있습니다. '원시 값' 은 '관련 case 값', 이 하나 있는 경우, `ExampleEnum(rawValue: 5)` 처럼, '옵셔널 case 값' 을 반환하는, 열거체의 '실패 가능 초기자' 를 호출함으로써, 이를 찾을 수 있습니다. '원시-값 타입을 가진 case 값' 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 보도록 합니다.
+원시-값 타입의 case 를 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, `rawValue` 속성과 `init?(rawValue: RawValue)` 라는 서명[^signature] 의 실패 가능 초기자를 가집니다. `ExampleEnum.b.rawValue` 처럼, `rawValue` 속성을 사용하여 열거체 case 의 원시 값에 접근할 수 있습니다. 원시 값을 사용하여 해당하는 case 를 찾을 수도 있으며, 하나가 있다면, `ExampleEnum(rawValue: 5)` 처럼, 열거체의 실패 가능 초기자를 호출하면 되는데, 이는 옵셔널 case 를 반환합니다. 원시-값 타입을 가지는 case 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 보기 바랍니다.
 
-#### Accessing Enumeration Cases (열거체의 'case 값' 에 접근하기)
+#### Accessing Enumeration Cases (열거체 case 에 접근하기)
 
-'열거체 타입의 case 값' 을 참조하려면, `EnumerationType.enumerationCase` 과 같은, '점 (`.`) 구문' 을 사용합니다. 열거체 타입을 추론할 수 있는 상황일 땐, [Enumeration Syntax (열거체 구문)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문) 과 [Implicit Member Expression (암시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적-멤버-표현식) 에서 설명한 것처럼, 생략할 수 있습니다. ('점' 은 여전히 필수입니다)
+열거체 타입의 case 를 참조하려면, `EnumerationType.enumerationCase` 처럼, 점 (`.`) 구문을 사용합니다. [Enumeration Syntax (열거체 구문)]({% post_url 2020-06-13-Enumerations %}#enumeration-syntax-열거체-구문) 과 [Implicit Member Expression (암시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적-멤버-표현식) 에서 설명한 것처럼, 열거체 타입을 추론할 수 있는 상황일 땐, 이를 생략할 수 있습니다 (점은 여전히 필수입니다).
 
-'열거체 case 의 값' 을 검사하려면, [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 보인 것처럼, `switch` 문을 사용합니다. 열거체 타입은, [Enumeration Case Pattern (열거체 case 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-패턴) 에서 설명한 것처럼, '`switch` 문의 case 블럭' 에 있는 '열거체 case 패턴' 과 패턴을-맞춰봅니다.
+열거체 case 의 값을 검사하려면, [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)]({% post_url 2020-06-13-Enumerations %}#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에서 본 것처럼, `switch` 문을 사용합니다. [Enumeration Case Pattern (열거체 case 패턴)]({% post_url 2020-08-25-Patterns %}#enumeration-case-pattern-열거체-case-패턴) 에서 설명한 것처럼, 열거체 타입은 `switch` 문 case 블럭 안의 열거체 case 패턴과 패턴을-맞춰봅니다.
 
 > GRAMMAR OF AN ENUMERATION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID364)
 
@@ -1340,7 +1340,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
-[^signature]: 함수나 메소드에서 '서명 (signature)' 과 '이름 (name)' 의 차이점은 '매개 변수' 를 포함하는 지의 여부입니다. 이 예제에 있는 `init(rawValue: RawValue)` 는 '초기자 서명 (signature)' 이며, 매개 변수 부분을 뺀 `init?` 이 '초기자 이름' 입니다. 
+[^signature]: 함수나 메소드에서 '서명 (signature) 과 이름 (name)' 의 차이점은 매개 변수의 포함 여부입니다. 이 예제의 `init(rawValue: RawValue)` 는 초기자 서명 (signature) 이라고 하고, 매개 변수 부분을 뺀 `init?` 은 초기자 이름이라고 합니다.
 
 [^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 보도록 합니다. 
 
