@@ -591,13 +591,13 @@ _구조체 선언 (structure declaration)_ 은 프로그램에 이름지은 구�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-구조체 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자, 타입 별명, 및 심지어 다른 구조체와, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언은 정리자나 프로토콜 선언을 담을 수 없습니다. 다양한 종류의 선언을 포함한 구조체의 논의와 여러가지 예제에 대해선, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보기 바랍니다.
+구조체 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자, 타입 별명, 및 심지어 다른 구조체와, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언에 정리자나 프로토콜 선언을 담을 순 없습니다. 다양한 종류의 선언을 포함한 구조체에 대한 논의 및 여러 가지 예제는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보기 바랍니다.
 
 구조체 타입은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스나, 열거체, 또는 다른 구조체를 상속할 순 없습니다.
 
-세 가지 방법으로 이전에 선언한 구조체의 인스턴스를 생성합니다:
+이전에 선언한 구조체로 인스턴스를 생성하는 데는 세 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 처럼, 구조체 안에서 선언한 초기자 중 하나를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 처럼, 구조체 안에 선언한 초기자 중 하나를 호출합니다.
 * 아무런 초기자도 선언하지 않은 경우, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 멤버 초기자를 호출합니다.
 * 아무런 초기자를 선언하지 않았으나, 구조체 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 기본 초기자를 호출합니다.
 
@@ -613,34 +613,34 @@ _구조체 선언 (structure declaration)_ 은 프로그램에 이름지은 구�
 
 ### Class Declaration (클래스 선언)
 
-_클래스 선언 (class declaration)_ 은 '이름 붙인 클래스 타입' 을 프로그램에 도입합니다. '클래스 선언' 은 `class` 키워드로 선언하며 형식은 다음과 같습니다:
+_클래스 선언 (class declaration)_ 은 프로그램에 이름지은 클래스 타입을 도입합니다. 클래스 선언은 `class` 키워드로 하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;class `class name-클래스 이름`: `superclass-상위 클래스`, `adopted protocols-채택한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-클래스의 본문은 0개 이상의 _선언 (declaration)_ 들을 담습니다. 이 _선언 (declarations)_ 들은 저장과 계산 속성 모두, 인스턴스 메소드, 타입 메소드, 초기자, 단일 '정리자 (deinitializer)', 첨자 연산, 타입 별명, 그리고 심지어 다른 구조체, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언은 '프로토콜 선언' 을 담을 순 없습니다. 다양한 종류의 선언을 포함하고 있는 클래스에 대한 논의와 여러 예제들은, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보도록 합니다.
+클래스 본문은 0 개 이상의 _선언 (declaration)_ 을 담습니다. 이 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 인스턴스 메소드, 타입 메소드, 초기자, 단일한 정리자, 첨자, 타입 별명, 및 심지어 다른 클래스, 구조체, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언에 프로토콜 선언을 담을 순 없습니다. 다양한 종류의 선언을 포함한 클래스에 대한 논의 및 여러 가지 예제는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보기 바랍니다.
 
-클래스 타입은, _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만을 상속할 수 있지만, 프로토콜은 어떤 개수든 채택할 수 있습니다. _클래스 이름 (class anme)_ 과 콜론 뒤에 _상위 클래스 (superclass)_ 를 최초로 나타내고, _채택한 프로토콜 (adopted protocols)_ 을 뒤에 둡니다. '일반화 (generic) 클래스' 는 다른 '일반화 및 일반화 아닌 클래스' 를 상속할 수 있지만, '일반화 아닌 (nongeneric) 클래스' 는 다른 '일반화 아닌 클래스' 만 상속할 수 있습니다. '일반화 상위 클래스' 클래스의 이름을 콜론 뒤에 작성할 때는, 반드시 '해당 일반화 클래스' 의, '일반화 매개 변수 절' 을 포함한, 전체 이름을 포함시켜야 합니다.
+클래스 타입은, 자신의 _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만 상속할 수 있지만, 프로토콜은 어떤 개수든 채택할 수 있습니다. _클래스 이름 (class anme)_ 과 콜론 뒤에 _상위 클래스 (superclass)_ 를 첫 번째로 나타내고, 그 뒤에 _채택한 프로토콜 (adopted protocols)_ 을 둡니다. 일반화 (generic) 클래스는 다른 일반화 및 일반화 아닌 클래스를 상속할 수 있지만, 일반화 아닌 (nongeneric) 클래스는 다른 일반화 아닌 클래스만 상속할 수 있습니다. 콜론 뒤에 일반화 상위 클래스 이름을 쓸 때는, 반드시 그 일반화 클래스의 전체 이름을 포함해야 해서, 일반화 매개 변수 절도 포함해야 합니다.
 
-[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 에서 논의한 것처럼, 클래스는 '지명 (designated) 초기자' 와 '편의 (convenience) 초기자' 를 가질 수 있습니다. 클래스의 '지명 초기자' 는 클래스가 선언한 모든 속성을 반드시 초기화해야 하므로 이를 반드시 상위 클래스의 '지명 초기자' 를 호출하기 전에 해야 합니다.
+[Initializer Declaration (초기자 선언)](#initializer-declaration-초기자-선언) 에서 논의한 것처럼, 클래스엔 지명 초기자와 편의 초기자가 있을 수 있습니다. 클래스의 지명 초기자는 반드시 클래스가 선언한 모든 속성을 초기화해야 하며 그걸 반드시 상위 클래스의 지명 초기자 호출 전에 해야 합니다.
 
-클래스는 상위 클래스의 속성, 메소드, 첨자 연산, 및 초기자를 '재정의 (override)' 할 수 있습니다. 재정의한 속성, 메소드, 첨자 연산, 및 지명 초기자[^designated-initializers] 는 반드시 '`override` 선언 수정자' 로 표시해야 합니다.
+클래스는 상위 클래스의 속성과, 메소드, 첨자, 및 초기자를 재정의할 수 있습니다. 재정의한 속성과, 메소드, 첨자, 및 지명 초기자[^designated-initializers] 엔 반드시 `override` 선언 수정자를 표시해야 합니다.
 
-하위 클래스가 상위 클래스의 초기자를 필수로 구현하도록 요구하려면, 상위 클래스의 초기자를 '`required` 선언 수정자' 로 표시합니다. '해당 초기자의 하위 클래스 구현' 도 반드시 `required` 선언 수정자로 표시해야 합니다.
+하위 클래스가 상위 클래스 초기자를 구현하길 요구하려면, 상위 클래스 초기자에 `required` 선언 수정자를 표시합니다. 그 초기자의 하위 클래스 구현에도 반드시 `required` 선언 수정자를 표시해야 합니다.
 
-_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스에서 상속하긴 하지만, _상위 클래스 (superclass)_ 에서 선언한 '지명 초기자' 는 하위 클래스가 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명한 조건과 부합할 때만 상속합니다. 스위프트 클래스는 '범용 기초 클래스 (universal base class)'[^universal-base-class] 를 상속하지 않습니다.
+_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스가 상속하긴 하지만, _상위 클래스 (superclass)_ 에서 선언한 지명 초기자는 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% post_url 2016-01-23-Initialization %}#automatic-initializer-inheritance-자동적인-초기자-상속) 의 설명 조건과 만날 때만 하위 클래스가 상속합니다. 스위프트 클래스는 범용 기초 클래스를 상속하지 않습니다.[^universal-base-class] 
 
-이전에 선언한 클래스의 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
+이전에 선언한 클래스로 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
 * [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 클래스 안에 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자는 없지만, 클래스 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 '기본 초기자' 를 호출합니다.
+* 아무런 초기자를 선언하지 않았으나, 클래스 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 기본 초기자를 호출합니다.
 
-클래스 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근합니다.
+[Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문 으로 클래스 인스턴스의 속성에 접근할 수 있습니다.
 
-클래스는 '참조 타입' 이며; 클래스 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다)[^reference-type] 부분을 보도록 합니다.
+클래스는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 클래스 인스턴스는, 복사 보단, 참조됩니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
 
-[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 클래스 타입의 동작을 확장할 수 있습니다.
+[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, 익스텐션 선언으로 클래스 타입의 동작을 확장할 수 있습니다.
 
 > GRAMMAR OF A CLASS DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID368)
 
@@ -659,7 +659,7 @@ _행위자 선언 (actor declaration)_ 은 '이름 붙인 행위자 타입' 을 
 이전에 선언한 '행위자' 의 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
 * [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 안에 선언한 초기자 중 하나를 호출합니다.
-* 선언한 초기자는 없지만, 행위자 선언의 모든 속성에 초기 값을 줬으면, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 '기본 초기자' 를 호출합니다.
+* 아무런 초기자를 선언하지 않았으나, 클래스 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 기본 초기자를 호출합니다.
 
 기본적으로, 행위자의 멤버는 해당 행위자로 격리됩니다.[^isolate] 메소드의 본문이나 속성의 획득자 같은, 코드는 해당 행위자 상에서 실행합니다. 행위자 안의 코드는 해당 코드가 이미 동일한 행위자 상에서 실행 중이기 때문에 이와 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 '이 코드가 또 다른 행위자 상에서 비동기로 실행 중인 코드' 임을 지시하기 위해 반드시 `await` 로 표시해야 합니다. '키 경로 (key paths)' 는 '행위자의 격리 멤버' 를 참조할 수 없습니다. '행위자로-격리한 (actor-isolated) 저장 속성' 은 '동기 함수' 의 '입-출력 매개 변수' 로 전달할 순 있지만, '비동기 함수' 로는 안됩니다. 
 
@@ -1314,17 +1314,17 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라 스택에 저장하므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면, 그 인스턴스로의 참조도 따로 저장해야 합니다. 그 인스턴스로의 참조를 추가하여 저장하는 걸 '간접 층 (layer-of-indirection) 을 집어 넣는다' 고 합니다.
 
+[^signature]: 함수나 메소드에서 '서명 (signature) 과 이름 (name)' 의 차이점은 매개 변수의 포함 여부입니다. 이 예제의 `init(rawValue: RawValue)` 는 초기자 서명 (signature) 이라고 하고, 매개 변수 부분을 뺀 `init?` 은 초기자 이름이라고 합니다.
+
+[^designated-initializers]: 여기서 그냥 초기자가 아니라 지명 초기자라고 한 건, 재정의할 초기자가 상위 클래스에서 지명 초기자이든 편의 초기자이든, 재정의하고 나면 무조건 지명 초기자가 되기 때문입니다.
+
+[^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말합니다. 대부분의 OOP 클래스들은 이러한 범용 기초 클래스를 상속합니다.
+
 [^type]: 여기서의 '타입 (type)' 보조 설명이란 위 에제 양식에 있는 'type' 을 말합니다. 뒤에 붙은 'expression' 을 통해 타입을 추론할 수 있는 경우 생략할 수 있는데, 스위프트에서는 거의 생략된 채로 사용합니다.
 
 [^optional-member]: 프로토콜에서 선언한 '필수 조건' 의 구현 여부 자체가 '옵셔널' 이라는 의미입니다. 즉, 프로토콜의 준수 타입에서 구현을 했으면 구현체가 있는 것이고, 구현을 안했으면 `nil` 입니다.
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
-
-[^designated-initializers]: 여기서 '초기자' 가 아니라 '지명 초기자' 라고 한 것은, 재정의한 초기자가 상위 클래스에서 '지명 초기자' 이든 '편의 초기자' 이든, 재정의하고 나면 무조건 '지명 초기자' 가 되기 때문입니다.
-
-[^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말합니다.
-
-[^reference-type]: 원문 자체가 [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 를 참고하라고 되어 있는데, 내용을 보면 실제로는 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 참고하는 것이 맞습니다. 원문 자체의 오류일 것으로 추측됩니다.
 
 [^nonassociative]: '비-결합적 (nonassociative)' 은 '결합성 (associativity)' 이 `none` 인 것을 말합니다. 보다 자세한 내용은, 이어지는 절인 [Precedence Group Declaration (우선권 그룹 선언)](#precedence-group-declaration-우선권-그룹-선언) 부분을 보도록 합니다.
 
@@ -1339,8 +1339,6 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보도록 합니다. 
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
-
-[^signature]: 함수나 메소드에서 '서명 (signature) 과 이름 (name)' 의 차이점은 매개 변수의 포함 여부입니다. 이 예제의 `init(rawValue: RawValue)` 는 초기자 서명 (signature) 이라고 하고, 매개 변수 부분을 뺀 `init?` 은 초기자 이름이라고 합니다.
 
 [^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 보도록 합니다. 
 
