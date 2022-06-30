@@ -599,11 +599,11 @@ _구조체 선언 (structure declaration)_ 은 프로그램에 이름지은 구�
 
 * [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 처럼, 구조체 안에 선언한 초기자 중 하나를 호출합니다.
 * 아무런 초기자도 선언하지 않은 경우, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 멤버 초기자를 호출합니다.
-* 아무런 초기자를 선언하지 않았으나, 구조체 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 기본 초기자를 호출합니다.
+* 아무런 초기자도 선언하지 않았으나, 구조체 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 기본 초기자를 호출합니다.
 
 구조체에서 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
-[Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문 으로 구조체 인스턴스의 속성에 접근할 수 있습니다.
+[Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 구조체 인스턴스의 속성에 접근할 수 있습니다.
 
 구조체는 값 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 구조체 인스턴스가 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 보기 바랍니다.
 
@@ -634,11 +634,11 @@ _상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 �
 이전에 선언한 클래스로 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
 * [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 클래스 안에 선언한 초기자 중 하나를 호출합니다.
-* 아무런 초기자를 선언하지 않았으나, 클래스 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 기본 초기자를 호출합니다.
+* 아무런 초기자도 선언하지 않았으나, 클래스 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 기본 초기자를 호출합니다.
 
-[Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문 으로 클래스 인스턴스의 속성에 접근할 수 있습니다.
+[Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 클래스 인스턴스의 속성에 접근할 수 있습니다.
 
-클래스는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 클래스 인스턴스는, 복사 보단, 참조됩니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
+클래스는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 클래스 인스턴스를, 복사하기 보단, 참조합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, 익스텐션 선언으로 클래스 타입의 동작을 확장할 수 있습니다.
 
@@ -658,22 +658,22 @@ _행위자 선언 (actor declaration)_ 은 프로그램에 이름지은 행위�
 
 이전에 선언한 행위자로 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, '행위자' 안에 선언한 초기자 중 하나를 호출합니다.
-* 아무런 초기자를 선언하지 않았으나, 클래스 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 기본 초기자를 호출합니다.
+* [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 에서 설명한 것처럼, 행위자 안에 선언한 초기자 중 하나를 호출합니다.
+* 아무런 초기자도 선언하지 않았으나, 행위자 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 기본 초기자를 호출합니다.
 
-기본적으로, 행위자의 멤버는 해당 행위자로 격리됩니다.[^isolate] 메소드의 본문이나 속성의 획득자 같은, 코드는 해당 행위자 상에서 실행합니다. 행위자 안의 코드는 해당 코드가 이미 동일한 행위자 상에서 실행 중이기 때문에 이와 '동기로 (synchronously)' 상호 작용할 수 있지만, 행위자 밖의 코드는 '이 코드가 또 다른 행위자 상에서 비동기로 실행 중인 코드' 임을 지시하기 위해 반드시 `await` 로 표시해야 합니다. '키 경로 (key paths)' 는 '행위자의 격리 멤버' 를 참조할 수 없습니다. '행위자로-격리한 (actor-isolated) 저장 속성' 은 '동기 함수' 의 '입-출력 매개 변수' 로 전달할 순 있지만, '비동기 함수' 로는 안됩니다. 
+기본적으로, 행위자의 멤버는 그 행위자로 격리됩니다.[^isolate] 메소드 본문이나 속성 획득자 같은, 코드는 그 행위자 위에서 실행합니다. 행위자 안의 코드는 이미 동일한 행위자 위에서 실행하고 있기 때문에 서로 동기로 상호 작용할 수 있지만, 행위자 밖의 코드엔 반드시 `await` 를 표시해서 이 코드가 다른 행위자 위에서 비동기로 실행 중이라는 걸 지시해야 합니다. 키 경로 (key paths) 는 행위자의 격리 멤버를 참조할 수 없습니다. 행위자로-격리한 저장 속성을 동기 함수의 입-출력 매개 변수로 전달할 순 있지만, 비동기 함수로는 안됩니다. 
 
-행위자는 '격리 안된 멤버' 도 가질 수 있는데, 이 선언은 `nonisolated` 키워드로 표시합니다. '격리 안된 멤버' 는 행위자 밖의 코드 처럼 실행하는데: 행위자의 어떤 '격리 상태' 와도 상호 작용할 수 없고, 호출하는 쪽에서 사용할 때 `await` 를 표시하지 않습니다.
+행위자는 격리 안한 멤버도 가질 수 있는데, 이들의 선언엔 `nonisolated` 키워드를 표시합니다. 격리 안한 멤버는 행위자 밖의 코드 처럼 실행하는데: 행위자의 어떤 격리 상태와도 상호 작용할 수 없으며, 호출하는 쪽에서 사용할 때 `await` 를 표시하지 않습니다.
 
-행위자 멤버는 '격리 안된 (nonisolated)' 것이나 '비동기 (asynchronous)' 인 경우에만 `@objc` 특성으로 표시할 수 있습니다. 
+행위자의 멤버는 그게 격리 안한 것이나 비동기인 경우에만 `@objc` 특성을 표시할 수 있습니다. 
 
 행위자가 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명합니다.
 
-행위자 인스턴스의 속성은, [Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, '점 (`.`) 구문' 으로 접근할 수 있습니다.
+[Accessing Properties (속성에 접근하기)]({% post_url 2020-04-14-Structures-and-Classes %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 행위자 인스턴스의 속성에 접근할 수 있습니다.
 
-행위자는 참조 타입이며; 행위자 인스턴스는, 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사 보다는, '참조' 됩니다. '참조 타입' 에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
+행위자는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 행위자의 인스턴스를, 복사하기 보단, 참조합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
 
-[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, '익스텐션 (extension) 선언' 으로 행위자 타입의 동작을 확장할 수 있습니다.
+[Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, 익스텐션 선언으로 행위자 타입의 동작을 확장할 수 있습니다.
 
 > GRAMMAR OF A ACTOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID648)
 
@@ -1336,7 +1336,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^enumeration-function]: 아래 예제의 열거체에서 `case someFuntion(x: Int)` 가 프로토콜의 `static func someFunction(x: Int) -> Self` 라는 필수 조건을 만족한다는 의미입니다. [Enumerations with Cases of Any Type (어떤 타입의 case 든 가지는 열거체)](#enumerations-with-cases-of-any-type-어떤-타입의-case-든-가지는-열거체) 에서 설명한 것처럼, '결합 값을 가진 열거체 case 값' 은 함수처럼 사용할 수 있기 때문입니다.
 
-[^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보도록 합니다. 
+: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장의 [Actors (행위자)]({% post_url 2021-06-10-Concurrency %}#actors-행위자) 부분을 보기 바랍니다.
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
