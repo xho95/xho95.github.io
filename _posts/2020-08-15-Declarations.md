@@ -679,7 +679,7 @@ _행위자 선언 (actor declaration)_ 은 프로그램에 이름지은 행위�
 
 ### Protocol Declaration (프로토콜 선언)
 
-_프로토콜 선언 (protocol declaration)_ 은 '이름 붙인 프로토콜 타입' 을 프로그램에 도입합니다. '프로토콜 선언' 은 '전역 (global scope)' 에서 `protocol` 키워드로 선언하며 형식은 다음과 같습니다:
+_프로토콜 선언 (protocol declaration)_ 은 프로그램에 이름지은 프로토콜 타입을 도입합니다. 프로토콜 선언은 `protocol` 키워드로 전역에서 선언하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;protocol `protocol name-프로토콜 이름`: `inherited protocols-상속한 프로토콜` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`protocol member declarations-프로토콜 멤버 선언`<br />
