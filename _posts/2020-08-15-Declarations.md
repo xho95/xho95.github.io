@@ -728,7 +728,7 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Property Declaration (프로토콜 속성 선언)
 
-프로토콜은 프로토콜 선언 본문에 _프로토콜 속성 선언 (protocol property declaration)_ 을 포함함으로써 '준수 타입' 이 속성을 반드시 구현해야 한다고 선언합니다. '프로토콜 속성 선언' 은 특수한 형식의 변수 선언입니다:
+프로토콜의 준수 타입이 반드시 하나의 속성을 구현해야 한다고 선언하려면 프로토콜 선언 본문 안에 _프로토콜 속성 선언 (protocol property declaration)_ 을 포함하면 됩니다. 프로토콜 속성 선언은 특수한 형식의 변수 선언입니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;var `property name-속성 이름`: `type-타입` { get set }
 
