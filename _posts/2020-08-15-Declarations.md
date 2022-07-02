@@ -766,15 +766,15 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Subscript Declaration (프로토콜 첨자 선언)
 
-프로토콜은 프로토콜 선언 본문에 '프로토콜 첨자 연산 선언' 을 포함함으로써 '준수 타입' 이 '첨자' 를 반드시 구현해야 한다고 선언합니다. '프로토콜 첨자 선언' 은 특수한 형식의 첨자 연산 선언입니다:
+프로토콜 준수 타입이 반드시 첨자를 구현해야 한다고 선언하려면 프로토콜 선언 본문 안에 프로토콜 첨자 선언을 포함하면 됩니다. 프로토콜 첨자 선언은 특수한 형식의 첨자 선언입니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;subscript (`parameters-매개 변수`) -> `return type-반환 타입` { get set }
 
-'첨자 연산 선언' 이 프로토콜의 준수 타입을 위한 '최소한의 획득자와 설정자 구현 필수 조건' 만 선언합니다. 첨자 연산 선언에 `get` 과 `set` 키워드 둘 다 포함하면, 준수 타입이 '획득자와 설정자 절' 둘 다를 반드시 구현해야 합니다. 첨자 연산 선언에 `get` 키워드만 포함하면, 준수 타입은 반드시 _적어도 (at least)_ '획득자 절' 을 구현해야 하며 '설정자 절' 구현은 옵션입니다.
+첨자 선언은 프로토콜을 준수하는 타입에 대한 최소한의 획득자 및 설정자 구현 필수 조건만 선언합니다. 첨자 선언이 `get` 과 `set` 키워드를 둘 다 포함하면, 준수 타입은 반드시 획득자와 설정자 절을 둘 다 구현해야 합니다. 첨자 선언이 `get` 키워드만 포함하면, 준수 타입은 _적어도 (at least)_ 획득자 절은 반드시 구현해야 하며 설정자 절 구현은 옵션으로 할 수 있습니다.
 
-프로토콜 선언에서 '정적 (static) 첨자 연산 필수 조건' 을 선언하려면, 첨자 연산 선언을 '`static` 선언 수정자' 로 표시합니다. 프로토콜을 구조체와 열거체가 준수하면 '첨자 연산' 을 `static` 키워드로 선언하며, 프로토콜을 클래스가 준수하면 '첨자 연산' 을 `static` 이나 `class` 키워드로 선언합니다. 구조체, 열거체, 또는 클래스에 '프로토콜 준수성' 을 추가하는 '익스텐션 (extension)' 은 자신이 확장하는 타입과 똑같은 키워드를 사용합니다. '정적 첨자 연산 필수 조건' 에 대한 기본 구현을 제공하는 '익스텐션' 은 `static` 키워드를 사용합니다.
+프로토콜 선언 안에서 정적 첨자 필수 조건을 선언하려면, 첨자 선언에 `static` 선언 수정자를 표시합니다. 프로토콜을 준수하는게 구조체와 열거체면 첨자를 `static` 키워드로 선언하고, 프로토콜을 준수하는게 클래스면 첨자를 `static` 이나 `class` 키워드로 선언합니다. 구조체나, 열거체, 또는 클래스에 프로토콜 준수성을 추가하는 익스텐션은 자신이 확장할 타입과 똑같은 키워드를 사용합니다. 정적 첨자 필수 조건에 기본 구현을 제공하는 익스텐션은 `static` 키워드를 사용합니다.
 
-[Subscript Declaration (첨자 연산 선언)](#subscript-declaration-첨자-연산-선언) 부분도 보도록 합니다.
+[Subscript Declaration (첨자 선언)](#subscript-declaration-첨자-선언) 부분도 보기 바랍니다.
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
@@ -1074,7 +1074,7 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 > GRAMMAR OF AN EXTENSION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID378)
 
-### Subscript Declaration (첨자 연산 선언)
+### Subscript Declaration (첨자 선언)
 
 _첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가 '첨자 연산 기능' 을 지원하도록 하며 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 원소의 접근을 위한 '편의 (convenient) 구문' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드로 선언하며 형식은 다음과 같습니다:
 
