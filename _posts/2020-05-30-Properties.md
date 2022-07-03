@@ -248,7 +248,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출한 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 이를 호출하지 않습니다.[^obervers-and-superclass]
 >
-> 초기자 위임 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 부분을 보도록 합니다.
+> 초기자 맡김 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 부분을 보도록 합니다.
 
 다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는, 사람이 산책하는 동안의 총 걸음 수를 추적하는, `StepCounter` 라는 새로운 클래스를 정의합니다. 이 클래스는 일과 중에 사람의 운동을 추적하기 위해 만보계 (pedometer) 나 다른 걸음 측정기 (step counter) 에 있는 입력 자료를 사용할 지 모릅니다.
 
