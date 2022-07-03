@@ -804,11 +804,11 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 
 ### Initializer Declaration (초기자 선언)
 
-_초기자 선언 (initializer declaration)_ 은 프로그램에 클래스, 구조체, 및 열거체를 위한 초기자를 도입합니다. '초기자 선언' 은 `init` 키워드로 선언하며 두 개의 기초 형식이 있습니다.
+_초기자 선언 (initializer declaration)_ 은 프로그램에 클래스나, 구조체, 또는 열거체의 초기자를 도입합니다. 초기자 선언은 `init` 키워드로 하며 두 가지 기초 형식이 있습니다.
 
-구조체, 열거체, 및 클래스 타입은 어떤 개수의 초기자든 가질 수 있지만, '클래스 초기자' 에 대한 '규칙과 결합 동작' 은 다릅니다. [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명한 것처럼, 구조체 및 열거체와는 달리, 클래스에는: '지명 (designated) 초기자' 와 '편의 (convenience) 초기자' 라는 두 가지 종류의 초기자가 있습니다.
+구조체와, 열거체, 및 클래스 타입엔 초기자가 어떤 개수든 있을 수 있지만, 클래스 초기자들에선 규칙과 결합 동작이 다릅니다. 구조체 및 열거체와는 달리, 클래스엔 두 종류의 초기자가 있는데: [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에서 설명한, 지명 초기자와 편의 초기자가 그것입니다.
 
-다음 형식은 '구조체와, 열거체의 초기자', 그리고 '클래스의 지명 초기자' 를 선언합니다:
+다음 형식으론 구조체와, 열거체의 초기자, 및 클래스의 지명 초기자를 선언합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;init (`parameters-매개 변수`) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
