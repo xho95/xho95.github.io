@@ -884,19 +884,19 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 ### Deinitializer Declaration (정리자 선언)
 
-_정리자 선언 (deinitializer declaration)_ 은 클래스 타입에 대한 '정리자' 를 선언합니다. '정리자' 는 매개 변수를 취하지 않으며 형식은 다음과 같습니다:
+_정리자 선언 (deinitializer declaration)_ 은 클래스 타입의 정리자를 선언합니다. 정리자는 매개 변수를 취하지 않으며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;deinit {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-정리자는, 클래스 객체를 해제하기 직전에, 더 이상 클래스 객체에 대한 어떤 참조도 없을 때 자동으로 호출합니다. 정리자는-클래스 익스텐션이 아닌-클래스 선언 본문에서만 선언할 수 있으며 클래스마다 최대 하나만 가질 수 있습니다.
+클래스 객체의 해제 직전, 더 이상 클래스 객체로의 어떤 참조도 없을 때 정리자를 자동으로 호출합니다. 정리자는 클래스 선언 본문에서만 선언할 수 있지-클래스 익스텐션에선 안되며-각 클래스마다 최대 하나만 가질 수 있습니다.
 
-하위 클래스는 상위 클래스의 정리자를 상속하는데, 이는 하위 클래스 객체를 해제하기 직전에 암시적으로 호출합니다. '하위 클래스 객체' 는 자신의 '상속 사슬 (inheritance chain)' 에 있는 모든 정리자의 실행을 종료할 때까지 해제되지 않습니다.
+하위 클래스는 상위 클래스의 정리자를 상속하며, 하위 클래스 객체의 해제 직전 암시적으로 호출합니다. 하위 클래스 객체는 자신의 상속 사슬 안의 모든 정리자를 실행 종료할 때까지 해제되지 않습니다.
 
 정리자는 직접 호출하지 않습니다.
 
-클래스 선언에서 정리자를 사용하는 방법에 대한 예제는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 보도록 합니다.
+클래스 선언에서의 정리자 사용법에 대한 예제는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 를 보기 바랍니다.
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
 
