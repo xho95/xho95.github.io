@@ -932,7 +932,7 @@ _타입 이름 (type name)_ 이 클래스나, 구조체, 또는 열거체 타입
 
 **Overridden Requirements Aren't Used in Some Generic Contexts (일부 일반화 상황에선 재정의한 필수 조건을 사용하지 않습니다)**
 
-일부 일반화 상황에선, 프로토콜의 조건부 준수성으로 동작을 획득한 타입이 항상 그 프로토콜 필수 조건의 특수화 구현[^specialized-implementations] 을 사용하는 건 아닙니다. 이 동작을 묘사하기 위해, 다음 예제는 두 프로토콜과 그 두 프로토콜을 모두 조건부로 준수하는 일반화 타입을 하나 정의합니다.
+일부 일반화 상황에선, 프로토콜 조건부 준수성으로 동작을 획득한 타입이 그 프로토콜 필수 조건의 특수화 구현[^specialized-implementations] 을 항상 사용하는 건 아닙니다. 이 동작을 묘사하기 위해, 다음 예제는 두 프로토콜과 그 두 프로토콜을 모두 조건부로 준수하는 일반화 타입을 하나 정의합니다.
 
 ```swift
 protocol Loggable {
@@ -975,29 +975,29 @@ extension String: TitledLoggable {
 }
 ```
 
-`Pair` 구조체는 '자신의 일반화 타입' 이, 각자, `Loggable` 이나 `TitledLoggable` 을 준수할 때마다 `Loggable` 과 `TitledLoggable` 을 준수합니다. 아래 예제에서, `oneAndTwo` 는 `Pair<String>` 의 인스턴스인데, 이는 `String` 이 `TitleLoggable` 을 준수하기 때문에 `TitledLoggable` 을 준수합니다. `oneAndTwo` 의 `log()` 메소드를 직접 호출할 때는, 제목 문자열을 담은 '특수화 버전' 을 사용합니다.
+`Pair` 구조체는, 각자, 자신의 일반화 타입이 `Loggable` 이나 `TitledLoggable` 을 준수할 때마다 `Loggable` 과 `TitledLoggable` 을 준수합니다. 아래 예제에서, `oneAndTwo` 는 `Pair<String>` 의 인스턴스로, `TitledLoggable` 을 준수하는데 이는 `String` 이 `TitleLoggable` 을 준수하기 때문입니다. `oneAndTwo` 의 `log()` 메소드를 직접 호출할 땐, 제목 문자열을 담은 특수화 버전을 사용합니다.
 
 ```swift
 let oneAndTwo = Pair(first: "one", second: "two")
 oneAndTwo.log()
-// "Pair of 'String': (one, two)" 를 인쇄합니다.
+// "Pair of 'String': (one, two)" 를 인쇄함
 ```
 
-하지만, `oneAndTwo` 를 '일반화 상황' 에서나 `Loggable` 프로토콜의 인스턴스로써 사용할 때는, '특수화 버전' 을 사용하지 않습니다. 스위프트는 `Pair` 가 `Loggable` 을 준수하는 데 필요한 '최소 필수 조건' 만을 참고하여 '호출할 `log()` 구현' 을 고릅니다. 이런 이유로, 그 대신 `Loggable` 프로토콜이 제공하는 '기본 구현' 을 사용합니다.
+하지만, 일반화 상황 안에서나 `Loggable` 프로토콜의 인스턴스로써 `oneAndTwo` 를 사용할 땐, 특수화 버전을 사용하지 않습니다. 스위프트는 `Pair` 가 `Loggable` 을 준수하는 데 필요한 최소 필수 조건만을 참고하여 호출할 `log()` 구현을 고릅니다. 이런 이유로, `Loggable` 프로토콜이 제공gks 기본 구현을 대신 사용합니다.
 
 ```swift
 func doSomething<T: Loggable>(with x: T) {
   x.log()
 }
 doSomething(with: oneAndTwo)
-// "(one, two)" 를 인쇄합니다.
+// "(one, two)" 를 인쇄함
 ```
 
-`doSomething(_:)` 으로 전달한 인스턴스의 `log()` 를 호출할 때는, '기록 (logged) 문자열' 에서 '사용자가 정한 제목 (customized title)' 을 생략합니다.
+`doSomething(_:)` 으로 전달한 인스턴스의 `log()` 를 호출할 땐, 기록 문자열에서 사용자가 정한 제목을 생략합니다.
 
-#### Protocol Conformance Must Not Be Redundant (프로토콜 준수성은 반드시 과잉이지 않아야 합니다)
+#### Protocol Conformance Must Not Be Redundant (프로토콜 준수성은 반드시 남아돌아선 안됩니다)
 
-'고정 (concrete) 타입' 은 특별한 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 '과잉인 프로토콜 준수성' 을 에러라고 표시합니다. 이런 종류의 에러는 두 가지 종류의 상황에서 마주칠 것 같습니다. 첫 번째 상황은, 서로 다른 '필수 조건' 을 가진, 동일한 프로토콜을 명시적으로 여러 번 준수할 때 입니다. 두 번째 상황은 동일한 프로토콜을 암시적으로 여러 번 상속할 때 입니다. 아래 부분에서 이 상황들을 논의합니다.
+고정 타입 (concrete type) 은 특별한 한 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 프로토콜 준수성이 남아도는 걸 에러로 표시합니다. 이런 종류의 에러는 두 가지 종류의 상황에서 마주칠 겁니다. 첫 번째 상황은 동일한 프로토콜을, 서로 다른 필수 조건으로, 명시적으로 여러 번 준수할 때 입니다. 두 번째 상황은 동일한 프로토콜을 암시적으로 여러 번 상속할 때 입니다. 아래 절에서 이러한 상황을 논의합니다.
 
 **Resolving Explicit Redundancy (명시적인 과잉 해결하기)**
 
@@ -1326,7 +1326,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^required-override]: '필수 (required)' 라는 개념 안에 이미 '재정의 (override)' 가 들어 있기 때문에, 따로 `override` 를 작성할 필요가 없습니다.
 
-[^specialized-implementations]: '특수화 구현 (specialized implementations)' 은 일반화 타입의 타입 매개 변수를 특수한 타입으로 고정하여 구현한 것을 말합니다.
+[^specialized-implementations]: '특수화 구현 (specialized implementations)' 은 일반화 타입의 타입 매개 변수를 특수한 타입으로 고정하여 적용 범위를 더욱 좁힌 구현을 의미합니다.
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
