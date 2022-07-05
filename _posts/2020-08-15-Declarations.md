@@ -1001,7 +1001,7 @@ doSomething(with: oneAndTwo)
 
 **Resolving Explicit Redundancy (명시적으로 남아도는 것 해결하기)**
 
-고정 타입에 대한 여러 개의 익스텐션은, 익스텐션의 필수 조건이 상호 배타적 (mutually exclusive) 이더라도, 동일한 프로토콜에 대한 준수성을 추가할 수 없습니다. 아래 예제에서 이러한 제약을 실증합니다. 두 '익스텐션 선언' 이 `Serializable` 프로토콜에 '조건부 준수성' 을 추가하려고 하는데, 하나는 `Int` 원소를 가진 배열을 위한 것이고, 다른 하나는 `String` 원소를 가진 배열을 위한 것입니다.
+고정 타입에 대한 여러 개의 익스텐션은, 익스텐션의 필수 조건이 상호 배타적 (mutually exclusive) 이더라도, 동일한 프로토콜로의 준수성을 추가할 수 없습니다. 아래 예제에서 이러한 제약을 실제로 보여줍니다. 두 개의 익스텐션 선언이 `Serializable` 프로토콜로의 조건부 준수성을 추가하려고 하는데, 하나는 원소가 `Int` 인 배열을 위해서, 다른 하나는 원소가 `String` 인 배열을 위해서입니다.
 
 ```swift
 protocol Serializable {
@@ -1018,10 +1018,10 @@ extension Array: Serializable where Element == String {
     // 구현
   }
 }
-// 에러: 'Array<Element>' 가 'Serializable' 프로토콜을 과잉 준수함
+// 에러: 'Array<Element>' 가 'Serializable' 프로토콜을 준수하는게 남아돎
 ```
 
-여러 개의 '고정 타입' 을 기초로 '조건부 준수성' 을 추가할 필요가 있으면, 각각의 타입이 준수할 수 있는 새로운 프로토콜을 생성한 다음 '조건부 준수성' 을 선언할 때 '해당 프로토콜' 을 '필수 조건' 으로 사용합니다.
+여러 개의 고정 타입에 기초하여 조건부 준수성을 추가할 필요가 있으면, 각각의 타입이 준수할 수 있는 새로운 프로토콜을 생성하고 조건부 준수성 선언 때 그 프로토콜을 필수 조건으로 사용합니다.
 
 ```swift
 protocol SerializableInArray { }
@@ -1035,7 +1035,7 @@ extension Array: Serializable where Element: SerializableInArray {
 }
 ```
 
-**Resolving Implicit Redundancy (암시적인 과잉 해결하기)**
+**Resolving Implicit Redundancy (암시적으로 남아도는 것 해결하기)**
 
 '고정 타입' 이 프로토콜을 조건부로 준수할 때는, 해당 타입이 '동일한 필수 조건을 가진 어떤 부모 프로토콜' 이든 암시적으로 준수합니다.
 
