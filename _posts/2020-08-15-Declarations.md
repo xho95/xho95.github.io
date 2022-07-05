@@ -930,9 +930,9 @@ _타입 이름 (type name)_ 이 클래스나, 구조체, 또는 열거체 타입
 
 일반화 타입이 프로토콜을 조건부로 준수하도록 확장해서, 타입의 인스턴스가 특정한 필수 조건과 만날 때만 프로토콜을 준수하게, 할 수 있습니다. 프로토콜에 조건부 준수성을 추가하려면 익스텐션 선언이 _필수 조건 (requirements)_ 을 포함하면 됩니다.
 
-**Overridden Requirements Aren't Used in Some Generic Contexts (재정의한 필수 조건은 일부 일반화 상황에선 사용되지 않습니다)**
+**Overridden Requirements Aren't Used in Some Generic Contexts (일부 일반화 상황에선 재정의한 필수 조건을 사용하지 않습니다)**
 
-일부 일반화 상황에선, 프로토콜의 조건부 준수성으로 동작을 획득한 타입이 항상 그 프로토콜 필수 조건의 특수화 구현을 사용하는 건 아닙니다. 이 동작을 묘사하기 위해, 다음 예제는 프로토콜 두 개와 프로토콜 둘 다를 조건부로 준수하는 일반화 타입을 하나 정의합니다.
+일부 일반화 상황에선, 프로토콜의 조건부 준수성으로 동작을 획득한 타입이 항상 그 프로토콜 필수 조건의 특수화 구현[^specialized-implementations] 을 사용하는 건 아닙니다. 이 동작을 묘사하기 위해, 다음 예제는 두 프로토콜과 그 두 프로토콜을 모두 조건부로 준수하는 일반화 타입을 하나 정의합니다.
 
 ```swift
 protocol Loggable {
@@ -1325,6 +1325,8 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^optional-member]: 프로토콜에서 선언한 필수 조건의 구현 그 자체가 옵셔널이라는 의미입니다. 즉, 프로토콜의 준수 타입이 구현을 하면 구현부가 있는 것이고, 안하면 `nil` 입니다.
 
 [^required-override]: '필수 (required)' 라는 개념 안에 이미 '재정의 (override)' 가 들어 있기 때문에, 따로 `override` 를 작성할 필요가 없습니다.
+
+[^specialized-implementations]: '특수화 구현 (specialized implementations)' 은 일반화 타입의 타입 매개 변수를 특수한 타입으로 고정하여 구현한 것을 말합니다.
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
