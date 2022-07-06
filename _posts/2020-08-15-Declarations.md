@@ -1105,7 +1105,7 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정
 
 #### Type Subscript Declarations (타입 첨자 선언)
 
-타입의 인스턴스 보단, 타입이 드러낼 첨자를 선언하려면, `static` 선언 수정자로 첨자 선언을 표시합니다. 클래스는 타입 계산 속성을 `class` 선언 수정자로 대신 표시하여 상위 클래스 구현을 하위 클래스가 재정의하도록 허용할 수 있습니다. 클래스 선언에서의, `static` 키워드는 `class` 와 `final` 선언 수정자 둘 다로 선언을 표시한 것과 똑같은 효과입니다.
+첨자를, 타입의 인스턴스 보단, 타입이 드러내도록 선언하려면, 첨자 선언에 `static` 선언 수정자를 표시합니다. 클래스의 타입 계산 속성은 `class` 선언 수정자를 대신 표시하여 상위 클래스 구현을 하위 클래스가 재정의하는 걸 허용할 수 있습니다. 클래스 선언에서, `static` 키워드는 선언에 `class` 와 `final` 선언 수정자를 둘 다 표시한 것과 똑같은 효과입니다.
 
 > GRAMMAR OF A SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID379)
 
