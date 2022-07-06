@@ -999,7 +999,7 @@ doSomething(with: oneAndTwo)
 
 고정 타입 (concrete type) 은 특별한 한 프로토콜을 단 한 번만 준수할 수 있습니다. 스위프트는 프로토콜 준수성이 남아도는 걸 에러로 표시합니다. 이런 종류의 에러는 두 가지 종류의 상황에서 마주칠 겁니다. 첫 번째 상황은 동일한 프로토콜을, 서로 다른 필수 조건으로, 명시적으로 여러 번 준수할 때 입니다. 두 번째 상황은 동일한 프로토콜을 암시적으로 여러 번 상속할 때 입니다. 아래 절에서 이러한 상황을 논의합니다.
 
-**Resolving Explicit Redundancy (명시적으로 남아도는 것 해결하기)**
+**Resolving Explicit Redundancy (명시적 남아돌기 해결하기)**
 
 고정 타입에 대한 여러 개의 익스텐션은, 익스텐션의 필수 조건이 상호 배타적 (mutually exclusive) 이더라도, 동일한 프로토콜로의 준수성을 추가할 수 없습니다. 아래 예제에서 이러한 제약을 실제로 보여줍니다. 두 개의 익스텐션 선언이 `Serializable` 프로토콜로의 조건부 준수성을 추가하려고 하는데, 하나는 원소가 `Int` 인 배열을 위해서, 다른 하나는 원소가 `String` 인 배열을 위해서입니다.
 
@@ -1035,13 +1035,13 @@ extension Array: Serializable where Element: SerializableInArray {
 }
 ```
 
-**Resolving Implicit Redundancy (암시적으로 남아도는 것 해결하기)**
+**Resolving Implicit Redundancy (암시적 남아돌기 해결하기)**
 
 고정 타입이 프로토콜을 조건부로 준수할 때, 그 타입은 필수 조건이 같은 어떤 부모 프로토콜이든 암시적으로 준수합니다.
 
-타입이 단일 부모를 상속한 두 개의 프로토콜을 조건부로 준수할 필요가 있으면, 부모 프로토콜로의 준수성을 명시적으로 선언합니다. 이는 부모 프로토콜을 서로 다른 필수 조건으로 두 번 암시적으로 준수하느는 걸 피하도록 합니다.
+단일 부모를 상속한 두 개의 프로토콜을 조건부로 준수하는 타입이 필요하다면, 부모 프로토콜로의 준수성을 명시적으로 선언합니다. 이는 부모 프로토콜을 암시적으로 서로 다른 필수 조건으로 두 번 준수하는 걸 피하게 합니다.
 
-다음 예제는 '`TitledLoggable` 과 새로운 `MarkedLoggable` 프로토콜에 대한 조건부 준수성 둘 다를 선언' 할 때의 충돌을 피하고자 '`Loggable` 에 대한 조건부 준수성' 을 명시적으로 `Array` 에 선언합니다.
+다음 예제는 `Array` 의 조건부 준수성을 `Loggable` 로 명시적으로 선언하여 `TitledLoggable` 및 새로운 `MarkedLoggable` 프로토콜 둘 다에 대한 조건부 준수성을 선언할 때의 충돌을 피하게 합니다.
 
 ```swift
 protocol MarkedLoggable: Loggable {
@@ -1064,19 +1064,19 @@ extension Array: TitledLoggable where Element: TitledLoggable {
 extension Array: MarkedLoggable where Element: MarkedLoggable { }
 ```
 
-'`Loggable` 에 대한 조건부 준수성' 을 명시적으로 선언하는 '익스텐션' 없이는, 다른 `Array` 익스텐션들이 이 선언을 암시적으로 생성할 것이고, 에러가 되버립니다:
+`Loggable` 로의 조건부 준수성을 명시한 익스텐션이 없다면, 다른 `Array` 익스텐션들이 이 선언을 암시적으로 생성하여, 에러가 될 것입니다:[^loggable]
 
 ```swift
 extension Array: Loggable where Element: TitledLoggable { }
 extension Array: Loggable where Element: MarkedLoggable { }
-// 에러: 'Array<Element>' 가 'Loggable' 프로토콜을 과잉 준수함
+// 에러: 'Array<Element>' 가 'Loggable' 프로토콜을 준수하는게 남아돎
 ```
 
 > GRAMMAR OF AN EXTENSION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID378)
 
 ### Subscript Declaration (첨자 선언)
 
-_첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가 '첨자 연산 기능' 을 지원하도록 하며 전형적으로 '집합체 (collection)', '리스트 (list)', 또는 '시퀀스 (sequence)' 원소의 접근을 위한 '편의 (convenient) 구문' 을 제공하는데 사용합니다. '첨자 연산 선언' 은 `subscript` 키워드로 선언하며 형식은 다음과 같습니다:
+_첨자 선언 (subscript declaration)_ 은 특별한 한 타입의 객체에 첨자 지원 기능을 추가하도록 하며 전형적으로 이를 사용하여 집합체 (collection) 나, 리스트 (list), 또는 시퀀스 (sequence) 원소 접근의 편의 구문을 제공합니다. 첨자 선언은 `subscript` 키워드로 하며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;subscript (`parameters-매개 변수`) -> `return type-반환 타입` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get {<br />
@@ -1087,11 +1087,11 @@ _첨자 연산 선언 (subscript declaration)_ 은 특별한 타입의 객체가
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-'첨자 연산 선언' 은 '클래스, 구조체, 열거체, 익스텐션, 또는 프로토콜 선언' 에만 있을 수 있습니다.
+첨자 선언은 클래스나, 구조체, 열거체, 익스텐션, 또는 프로토콜 선언 안에서만 있을 수 있습니다.
 
-_매개 변수 (paramter)_ 는 첨자 연산 표현식에 있는 해당 타입의 원소에 접근하는데 사용하는 하나 이상의 색인 (예를 들어, `object[i]` 표현식에 있는 `i`) 을 지정합니다. 원소 접근에 사용하는 색인은 어떤 타입이든 되긴 하지만, 각각의 매개 변수는 반드시 각 색인 타입을 지정하는 '타입 보조 설명' 을 포함해야 합니다. _반환 타입 (return type)_ 은 접근하는 원소의 타입을 지정합니다.
+_매개 변수 (paramter)_ 는 첨자 표현식에서 해당 타입의 원소 접근에 사용하는 하나 이상의 색인을 (예를 들어, `object[i]` 표현식의 `i` 같은 걸) 지정합니다. 원소 접근에 사용할 색인은 어떤 타입이어도 되긴 하지만, 각 매개 변수는 반드시 타입 보조 설명을 포함하여 각각의 색인 타입을 지정해야 합니다. _반환 타입 (return type)_ 은 접근할 원소의 타입을 지정합니다.
 
-'계산 속성' 에서 처럼, 첨자 연산 선언은 접근한 원소 값에 대한 읽기와 쓰기를 지원합니다. 값을 읽는 데는 '획득자 (getter)' 를 사용하며, 값을 쓰는 데는 '설정자 (setter)' 를 사용합니다. '설정자 절' 은 옵션이며, '획득자' 만 필요할 때는, 두 절 모두 생략하고 단순히 요청 값을 직접 반환 할 수가 있습니다. 그렇다 하더라도, '설정자 절' 을 제공할 경우, '획득자 절' 도 반드시 제공해야 합니다.
+계산 속성 처럼, 첨자 선언은 접근한 원소 값의 읽기와 쓰기를 지원합니다. 획득자를 써서 값을 읽고, 설정자를 써서 값을 씁니다. 설정자 절은 옵션이며, 획득자만 필요할 땐, 두 절 모두 생략하고 단순히 요청 값을 직접 반환 할 수도 있습니다. 그렇더라도, 설정자 절을 제공한다면, 반드시 획득자 절도 제공해야 합니다.
 
 _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. '설정자 이름' 을 제공하면, 설정자의 매개 변수 이름으로 이를 사용합니다. '설정자 이름' 을 제공하지 않으면, 설정자의 '기본 매개 변수 이름' 은 `value` 입니다. 설정자의 매개 변수 타입은 _반환 타입 (return type)_ 과 똑같습니다.
 
@@ -1327,6 +1327,8 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 [^required-override]: '필수 (required)' 라는 개념 안에 이미 '재정의 (override)' 가 들어 있기 때문에, 따로 `override` 를 작성할 필요가 없습니다.
 
 [^specialized-implementations]: '특수화 구현 (specialized implementations)' 은 일반화 타입의 타입 매개 변수를 특수한 타입으로 고정하여, 적용 범위를 좁힌 구현을 의미합니다.
+
+[^loggable]: 부모 프로토콜로의 준수성을 명시하면 자식 프로토콜로의 준수성으로 인하여 부모 프로토콜로의 준수성이 암시적으로 생기는 것을 막아줍니다.
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
