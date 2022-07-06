@@ -983,7 +983,7 @@ oneAndTwo.log()
 // "Pair of 'String': (one, two)" 를 인쇄함
 ```
 
-하지만, 일반화 상황 안에서나 `Loggable` 프로토콜의 인스턴스로써 `oneAndTwo` 를 사용할 땐, 특수화 버전을 사용하지 않습니다. 스위프트는 `Pair` 가 `Loggable` 을 준수하는 데 필요한 최소 필수 조건만을 참고하여 호출할 `log()` 구현을 고릅니다. 이런 이유로, `Loggable` 프로토콜이 제공gks 기본 구현을 대신 사용합니다.
+하지만, 일반화 상황 안에서나 `Loggable` 프로토콜의 인스턴스로써 `oneAndTwo` 를 사용할 땐, 특수화 버전을 사용하지 않습니다. 스위프트는 `Pair` 가 `Loggable` 을 준수하는 데 필요한 최소 필수 조건만을 참고하여 호출할 `log()` 구현을 고릅니다. 이런 이유로, 그 대신 `Loggable` 프로토콜이 제공하는 기본 구현을 사용합니다.
 
 ```swift
 func doSomething<T: Loggable>(with x: T) {
@@ -1037,9 +1037,9 @@ extension Array: Serializable where Element: SerializableInArray {
 
 **Resolving Implicit Redundancy (암시적으로 남아도는 것 해결하기)**
 
-'고정 타입' 이 프로토콜을 조건부로 준수할 때는, 해당 타입이 '동일한 필수 조건을 가진 어떤 부모 프로토콜' 이든 암시적으로 준수합니다.
+고정 타입이 프로토콜을 조건부로 준수할 때, 그 타입은 필수 조건이 같은 어떤 부모 프로토콜이든 암시적으로 준수합니다.
 
-'단일 부모를 상속하는 두 프로토콜' 을 조건부로 준수하는 타입이 필요한 경우, '부모 프로토콜에 대한 준수성' 을 명시적으로 선언합니다. 이는 '서로 다른 필수 조건을 가지는 부모 프로토콜' 을 암시적으로 두 번 준수하는 걸 피하게 합니다.
+타입이 단일 부모를 상속한 두 개의 프로토콜을 조건부로 준수할 필요가 있으면, 부모 프로토콜로의 준수성을 명시적으로 선언합니다. 이는 부모 프로토콜을 서로 다른 필수 조건으로 두 번 암시적으로 준수하느는 걸 피하도록 합니다.
 
 다음 예제는 '`TitledLoggable` 과 새로운 `MarkedLoggable` 프로토콜에 대한 조건부 준수성 둘 다를 선언' 할 때의 충돌을 피하고자 '`Loggable` 에 대한 조건부 준수성' 을 명시적으로 `Array` 에 선언합니다.
 
@@ -1326,7 +1326,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^required-override]: '필수 (required)' 라는 개념 안에 이미 '재정의 (override)' 가 들어 있기 때문에, 따로 `override` 를 작성할 필요가 없습니다.
 
-[^specialized-implementations]: '특수화 구현 (specialized implementations)' 은 일반화 타입의 타입 매개 변수를 특수한 타입으로 고정하여 적용 범위를 더욱 좁힌 구현을 의미합니다.
+[^specialized-implementations]: '특수화 구현 (specialized implementations)' 은 일반화 타입의 타입 매개 변수를 특수한 타입으로 고정하여, 적용 범위를 좁힌 구현을 의미합니다.
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
