@@ -1111,21 +1111,21 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정
 
 ### Operator Declaration (연산자 선언)
 
-_연산자 선언 (operator declaration)_ 은 프로그램에 새로운 '중위 (infix), 접두사 (prefix), 및 접미사 (postfix) 연산자' 를 도입하며 `operator` 키워드로 선언합니다.
+_연산자 선언 (operator declaration)_ 은 프로그램에 새로운 중위 (infix) 나, 접두사 (prefix), 또는 접미사 (postfix) 연산자를 도입하며 `operator` 키워드로 선언합니다.
 
-세 가지 서로 다른 '고정 위치 (fixity)' 인: '중위', '접두사', 및 '접미사' 로 연산자를 선언할 수 있습니다. 연산자의 _고정 위치 (fixity)_ 는 자신의 '피연산자 (operands)' 에 대한 연산자의 '상대 위치 (relative position)' 를 지정합니다.
+연산자는 서로 다른 세 개의 고정 위치 (fixity) 로 선언할 수 있는데: 중위 및, 접두사, 접미사가 그것입니다. 연산자의 _고정 위치 (fixity)_ 가 지정하는 건 피연산자에 대한 연산자의 상대 위치입니다.
 
-연산자 선언은, 각각의 '고정 위치' 마다 하나씩, 총 세 개의 기초 형식이 있습니다. 연산자의 고정 위치는 연산자 선언의 `operator` 키워드 앞을 `infix`, `prefix`, 또는 `postfix` 선언 수정자로 표시함으로써 지정합니다. 각각의 형식에서, 연산자 이름은 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 에서 정의한 '연산자 문자 (operator characters)' 만을 담을 수 있습니다.
+연산자 선언은, 각각의 고정 위치마다 하나씩, 총 세 개의 기초 형식이 있습니다. 연산자 고정 위치는 연산자 선언에서 `operator` 키워드 앞에 `infix` 나, `prefix`, 또는 `postfix` 선언 수정자를 표시하여 지정합니다. 각 형식에서, 연산자 이름엔 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 에서 정의한 연산자 문자만 담을 수 있습니다.
 
-다음 형식은 새로운 '중위 연산자' 를 선언합니다:
+다음 형식은 새로운 중위 연산자를 선언합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;infix operator `operator name-연산자 이름`: `precedence group-우선권 그룹`
 
-_중위 연산자 (infix operator)_ 는, 익숙한 `1 + 2` 표현식의 '덧셈 연산자 (`+`)' 같이, 두 피연산자 사이에 작성하는 '이항 (binary) 연산자' 입니다.
+_중위 연산자 (infix operator)_ 는 두 개의 피연산자 사이에 작성하는 이항 연산자며, `1 + 2` 표현식으로 익숙한 덧셈 연산자 (`+`) 같은 겁니다.
 
-중위 연산자는 옵션으로 우선권 그룹을 지정할 수 있습니다. 연산자의 우선권 그룹을 생략하면, 스위프트가, `DefaultPrecedence` 라는, 기본 우선권 그룹을 사용하는데, 이는 `TernaryPrecedence` 바로 위의 우선권을 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선권 그룹 선언)](#precedence-group-declaration-우선권-그룹-선언) 부분을 보도록 합니다.
+중위 연산자는 옵션으로 우선 순위 그룹을 지정할 수 있습니다. 연산자의 우선 순위 그룹을 생략하면, `DefaultPrecedence` 라는, 기본 우선권 그룹을 스위프트가 사용하며, 이는 `TernaryPrecedence` 바로 위의 우선 순위를 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 보기 바랍니다.
 
-다음 형식은 새로운 '접두사 연산자' 를 선언합니다:
+다음 형식은 새로운 접두사 연산자를 선언합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;prefix operator `operator name-연산자 이름`
 
@@ -1145,9 +1145,9 @@ _접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 �
 
 > GRAMMAR OF AN OPERATOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380)
 
-### Precedence Group Declaration (우선권 그룹 선언)
+### Precedence Group Declaration (우선 순위 그룹 선언)
 
-_우선권 그룹 선언 (precedence group declaration)_ 은 프로그램에 새로운 중위 연산자 우선권 그룹을 도입합니다. 연산자의 우선권은, 그룹짓는 괄호가 없을 때, 연산자와 피연산자가 얼마나 밀접하게 붙는지를 지정합니다.
+_우선 순위 그룹 선언 (precedence group declaration)_ 은 프로그램에 새로운 중위 연산자 우선권 그룹을 도입합니다. 연산자의 우선권은, 그룹짓는 괄호가 없을 때, 연산자와 피연산자가 얼마나 밀접하게 붙는지를 지정합니다.
 
 우선권 그룹 선언의 형식은 다음과 같습니다:
 
@@ -1332,7 +1332,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
-[^nonassociative]: '비-결합적 (nonassociative)' 은 '결합성 (associativity)' 이 `none` 인 것을 말합니다. 보다 자세한 내용은, 이어지는 절인 [Precedence Group Declaration (우선권 그룹 선언)](#precedence-group-declaration-우선권-그룹-선언) 부분을 보도록 합니다.
+[^nonassociative]: '비-결합적 (nonassociative)' 은 '결합성 (associativity)' 이 `none` 인 것을 말합니다. 보다 자세한 내용은, 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 보도록 합니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
 
