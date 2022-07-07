@@ -1121,7 +1121,7 @@ _연산자 선언 (operator declaration)_ 은 프로그램에 새로운 중위 (
 
 &nbsp;&nbsp;&nbsp;&nbsp;infix operator `operator name-연산자 이름`: `precedence group-우선권 그룹`
 
-_중위 연산자 (infix operator)_ 는 두 개의 피연산자 사이에 작성하는 이항 연산자며, `1 + 2` 표현식으로 익숙한 덧셈 연산자 (`+`) 같은 겁니다.
+_중위 연산자 (infix operator)_ 는 두 개의 피연산자 사이에 작성하는 이항 (binary) 연산자로, 익숙한 `1 + 2` 표현식 안의 덧셈 연산자 (`+`) 같은 겁니다.
 
 중위 연산자는 옵션으로 우선 순위 그룹을 지정할 수 있습니다. 연산자의 우선 순위 그룹을 생략하면, `DefaultPrecedence` 라는, 기본 우선권 그룹을 스위프트가 사용하며, 이는 `TernaryPrecedence` 바로 위의 우선 순위를 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 보기 바랍니다.
 
@@ -1129,19 +1129,19 @@ _중위 연산자 (infix operator)_ 는 두 개의 피연산자 사이에 작성
 
 &nbsp;&nbsp;&nbsp;&nbsp;prefix operator `operator name-연산자 이름`
 
-_접두사 연산자 (prefix operator)_ 는, `!a` 표현식의 '접두사 논리 부정 (NOT) 연산자 (`!`)' 같이, 자신의 피연산자 바로 앞에 작성하는 '단항 (unary) 연산자' 입니다.
+_접두사 연산자 (prefix operator)_ 는 피연산자 바로 앞에 작성하는 단항 (unary) 연산자로, `!a` 표현식 안의 접두사 논리 부정 (NOT) 연산자 (`!`) 같은 겁니다.
 
-접두사 연산자 선언은 우선권 수준을 지정하지 않습니다. 접두사 연산자는 비-결합적 (nonassociative)[^nonassociative] 입니다.
+접두사 연산자 선언은 우선 순위를 지정하지 않습니다. 접두사 연산자는 비-결합적 (nonassociative)[^nonassociative] 입니다.
 
-다음 형식은 새로운 '접미사 연산자' 를 선언합니다:
+다음 형식은 새로운 접미사 연산자를 선언합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;postfix operator `operator name-연산자 이름`
 
-_접미사 연산자 (postfix operator)_ 는, `a!` 표현식의 '강제-포장 풀기 연산자 (`!`)' 같이, 자신의 피연산자 바로 뒤에 작성하는 '단항 (unary) 연산자' 입니다.
+_접미사 연산자 (postfix operator)_ 는 피연산자 바로 뒤에 작성하는 단항 (unary) 연산자로, `a!` 표현식 안의 강제-포장 풀기 연산자 (`!`) 같은 겁니다.
 
-접두사 연산자 처럼, 접미사 연산자 선언은 우선권 수준을 지정하지 않습니다. 접미사 연산자도 비-결합적 (nonassociative)[^nonassociative] 입니다.
+접두사 연산자 처럼, 접미사 연산자 선언도 우선 순위를 지정하지 않습니다. 접미사 연산자는 비-결합적입니다.
 
-새로운 연산자를 선언한 후엔, '연산자와 똑같은 이름의 정적 메소드' 를 선언함으로써 이를 구현합니다. '정적 메소드' 는 연산자가 취하는 한 인자 값 타입의 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체의 '정적 메소드' 로 구현합니다. 접두사나 접미사 연산자를 구현 중이면, '해당 메소드 선언' 도 반드시 '관련 `prefix` 나 `postfix` 선언 수정자; 로 표시해야 합니다. 새로운 연산자의 생성과 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분을 보도록 합니다.
+새로운 연산자를 선언한 후, 연산자와 똑같은 이름의 정적 메소드를 선언하여 이를 구현합니다. 정적 메소드는 연산자가 인자로 취하는 값 타입 안의 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체의 정적 메소드로 구현합니다. 접두사나 접미사 연산자를 구현할 거면, 반드시 그 메소드 선언에 해당하는 `prefix` 나 `postfix` 선언 수정자도 표시해야 합니다. 새로운 연산자의 생성 및 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분을 보기 바랍니다.
 
 > GRAMMAR OF AN OPERATOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380)
 
