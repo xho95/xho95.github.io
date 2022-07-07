@@ -1182,11 +1182,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 &nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 적용한 어떤 클래스 멤버든 오브젝티브-C 로 나타낼 수 있습니다. 멤버 선언에 `dynamic` 수정자를 표시할 땐, 그 멤버로의 접근은 항상 오브젝티브-C 런타임을 써서 동적 급파 (dispatched) 합니다. 그 멤버러의 접근은 컴파일러가 절대 인라인 (inline; 코드 줄에 넣기) 하거나 탈-가상화 (devirtualized) 하지 않습니다.[^dynamically-dispatched]
 
-&nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 오브젝티브-C 런타임을 써서 급파하기 때문에, 반드시 '`objc` 특성을 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 오브젝티브-C 런타임을 써서 급파하기 때문에, 반드시 `objc` 특성을 표시해야 합니다.
 
 `final`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '클래스' 또는 '클래스의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 클래스에 적용하면 클래스가 하위 클래스를 만들 수 없다는 것을 지시합니다. 클래스의 속성, 메소드, 및 첨자 연산에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 것을 지시합니다. `final` 특성의 사용 방법에 대한 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 클래스 또는 클래스의 속성이나, 메소드, 첨자 멤버에 적용합니다. 클래스에 적용하면 클래스로 하위 클래스를 만들 수 없다는 걸 지시합니다. 클래스의 속성이나, 메소드, 첨자에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 걸 지시합니다. `final` 사용법의 예제는, [Preventing Overrides (재정의 막기)]({% post_url 2020-03-31-Inheritance %}#preventing-overrides-재정의-막기) 부분을 보기 바랍니다.
 
 `lazy`
 
