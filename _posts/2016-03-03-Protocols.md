@@ -1000,7 +1000,7 @@ print(differentNumbers.allEqual())
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 보도록 합니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
-[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분을 보도록 합니다. 
+[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분을 보기 바랍니다.
 
 [^required-initializer]: `required` 수정자로 표시한 초기자를 '필수 초기자 (required initializer)' 라고 한 건 준수 타입이 반드시 구현해야 하기 때문입니다.
 

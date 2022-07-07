@@ -1162,27 +1162,27 @@ _더 낮은 그룹 이름들 (lower group names)_ 및 _더 높은 그룹 이름�
 
 > _더 낮은 그룹 이름들 (lower group names)_ 및 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관련된 우선 순위 그룹은 반드시 단일 관계 계층 (single relational hierarchy) 이어야 하지만, 선형 계층 (linear hierarchy) 을 형성하진 않아도 됩니다. 이는 상대적인 우선 순위를 정의하지 않은 우선 순위 그룹도 가능하다는 의미입니다. 이러한 우선 순위 그룹의 연산자들은 괄호 그룹 없이 서로 나란히 사용할 수 없습니다.
 
-스위프트는 수 없이 많은 우선 순위 그룹을 정의하여 표준 라이브러리가 제공한 연산자와 나란히 사용합니다. 예를 들어, 덧셈 (`+`) 및 뺄셈 (`-`) 연산자는 `AdditionPrecedence` 그룹에 속하고, 곱셈 (`*`) 및 나눗셈 (`/`) 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보기 바랍니다.
+스위프트는 수 없이 많은 우선 순위 그룹을 정의하여 표준 라이브러리에서 제공한 연산자와 나란히 사용합니다. 예를 들어, 덧셈 (`+`) 및 뺄셈 (`-`) 연산자는 `AdditionPrecedence` 그룹에 속하고, 곱셈 (`*`) 및 나눗셈 (`/`) 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보기 바랍니다.
 
-연산자 _결합성 (associativity)_ 은 괄호 그룹이 없을 때 똑같은 우선권 수준을 가지는 일련의 연산자들끼리 그룹짓는 방법을 지정합니다. 연산자 결합성은 `left`, `right`, 또는 `none` 이라는 '상황에-민감한 (context-sensitive) 키워드'[^context-sensitive] 하나를 작성함으로써 지정합니다-'결합성' 을 생략하면, 기본 값이 `none` 입니다. '왼쪽-결합 (left-associative) 연산자' 는 왼쪽에서 오른쪽으로 그룹 짓습니다. 예를 들어, '빼기 연산자 (`-`)' 는 왼쪽-결합이므로, `4 - 5 - 6` 라는 표현식은 `(4 - 5) - 6` 으로 그룹지으며 `-7` 이라고 평가합니다. '오른쪽-결합 연산자' 는 오른쪽에서 왼쪽으로 그룹지으며, `none` 이라는 결합성으로 지정한 연산자는 결합을 아예 하지 않습니다. '똑같은 우선권 수준의 비-결합 (nonassociative) 연산자' 는 서로 인접해 있을 수 없습니다. 예를 들어, `<` 연산자의 '결합성' 은 `none` 인데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아니라는 의미입니다.
+연산자 _결합성 (associativity)_[^associativity] 은 괄호 그룹이 없을 때 동일한 우선 순위인 일련의 연산자를 어떻게 서로 그룹짓는지 지정합니다. 연산자 결합성은 `left` 나, `right`, 또는 `none` 이라는 상황에-민감한 (context-sensitive) 키워드[^context-sensitive] 중 하나를 작성하여 지정합니다-결합성을 생략하면, 기본 값은 `none` 입니다. 왼쪽-결합 (left-associative) 연산자는 왼쪽에서-오른쪽으로 그룹 짓습니다. 예를 들어, 뺄셈 연산자 (`-`) 는 왼쪽-결합이라서, 표현식 `4 - 5 - 6` 은 `(4 - 5) - 6` 으로 그룹지어 `-7` 이라고 평가합니다. 오른쪽-결합 연산자는 오른쪽에서-왼쪽으로 그룹짓고, `none` 이라는 결합성을 지정한 연산자는 아예 결합을 하지 않습니다. 동일한 우선 순위인 비-결합 연산자는 서로 인접하여 나타날 수 없습니다. 예를 들어, `<` 연산자의 결합성은 `none` 이며, 이는 `1 < 2 < 3` 같은 건 유효한 표현식은 아니라는 의미입니다.
 
-'우선권 그룹의 _할당 (assignment)_' 은 '옵셔널 연쇄 (optional chaining) 를 포함한 연산에서 사용할 때의 연산자 우선 순위' 를 지정합니다. `true` 로 설정할 땐, 옵셔널 연쇄 중에 '관련 우선권 그룹의 연산자' 가 '표준 라이브러리의 할당 연산자' 와 똑같은 그룹 규칙을 사용합니다. 그 외의 경우, `false` 로 설정하거나 생략할 땐, '우선권 그룹의 연산자' 가 '할당을 하지 않는 연산자' 와 똑같은 옵셔널 연쇄 규칙을 따릅니다.
+우선 순위 그룹의 _할당 (assignment)_ 은 옵셔널 사슬을 포함한 연산에 사용할 때의 연산자 우선 순위를 지정합니다. `true` 로 설정할 땐, 옵셔널 사슬 중에 해당 우선 순위 그룹 안의 연산자가 표준 라이브러리 할당 연산자와 동일한 그룹 규칙을 사용합니다. 그 외 경우, `false` 로 설정하거나 생략할 땐, 우선 순위 그룹 안의 연산자가 할당을 하지 않는 연산자와 동일한 옵셔널 사슬 규칙을 따릅니다.
 
 > GRAMMAR OF A PRECEDENCE GROUP DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID550)
 
 ### Declaration Modifiers (선언 수정자)
 
-_선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 수정하는 '키워드' 나 '상황에-민감한 (context-sensitive) 키워드'[^context-sensitive] 입니다. '선언 수정자' 는 '선언의 특성 (이 있으면 이들) 과 선언을 도입한 키워드' 사이에 적절한 '키워드' 또는 '상황에-민감한 키워드' 를 작성함으로써 지정합니다.
+_선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 수정하는 키워드 또는 상황에-민감한 키워드[^context-sensitive] 입니다. 선언 수정자는 (있다면) 선언의 특성과 선언을 도입한 키워드 사이에 적절한 키워드 또는 상황에-민감한 키워드를 작성하여 지정합니다.
 
 `class`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 해당 멤버가, 클래스 인스턴스의 멤버라기 보다는, 클래스 자신의 멤버임을 지시하기 위해 클래스의 멤버에 적용합니다. 이 수정자를 가지나 `final` 수정자는 가지지 않는 상위 클래스 멤버는 하위 클래스에서 재정의할 수 있습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스 멤버에 적용하면 멤버가, 클래스 인스턴스의 멤버라기 보단, 클래스 그 자체의 멤버라는 걸 지시합니다. 이 수정자는 있고 `final` 수정자는 없는 상위 클래스 멤버는 하위 클래스에서 재정의할 수 있습니다.
 
 `dynamic`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 오브젝티브-C 로 표현할 수 있는 어떤 클래스 멤버에든 적용합니다. 멤버 선언을 `dynamic` 수정자로 표시할 때, 해당 멤버에 대한 접근은 항상 '오브젝티브-C 런타임' 을 사용하여 '동적으로 급파 (dispatched)' 합니다. '해당 멤버에 대한 접근' 은 절대로 컴파일러가 '인라인 (inline; 코드 줄로 넣음)' 하거나 '탈-가상화 (devirtualized)' 하지 않습니다.[^dynamically-dispatched]
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 적용한 어떤 클래스 멤버든 오브젝티브-C 로 나타낼 수 있습니다. 멤버 선언에 `dynamic` 수정자를 표시할 땐, 그 멤버로의 접근은 항상 오브젝티브-C 런타임을 써서 동적 급파 (dispatched) 합니다. 그 멤버러의 접근은 컴파일러가 절대 인라인 (inline; 코드 줄에 넣기) 하거나 탈-가상화 (devirtualized) 하지 않습니다.[^dynamically-dispatched]
 
-&nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 '오브젝티브-C 런타임' 을 사용하여 '급파 (dispatched)' 하기 때문에, 반드시 '`objc` 특성 (attribute)' 으로도 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`dynamic` 수정자로 표시한 선언은 오브젝티브-C 런타임을 써서 급파하기 때문에, 반드시 '`objc` 특성을 표시해야 합니다.
 
 `final`
 
@@ -1330,18 +1330,20 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^loggable]: 부모 프로토콜로의 준수성을 명시하면 자식 프로토콜로의 준수성으로 인하여 부모 프로토콜로의 준수성이 암시적으로 생기는 것을 막아줍니다.
 
-[^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. '함수 객체' 에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
+[^method-with-special-anme]: 본문에서 설명하는 내용은 C++ 언어에 있는 '함수 객체 (Function Object)' 와 비슷한 내용입니다. 함수 객체에 대한 더 자세한 정보는 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다.
 
 [^nonassociative]: '비-결합적 (nonassociative)' 은 '결합성 (associativity)' 이 `none` 인 것을 말합니다. 보다 자세한 내용은, 이어지는 절인 [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 보도록 합니다.
 
-[^operator-declarations]: 원문 자체가 애플 개발자 사이트의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결되어 있습니다.
+[^associativity]: '결합성 (associativity)' 은 사실 결합 법칙이라고 옮겨도 됩니다. 다만 수학에서 말하는 결합 법칙을 'associative law' 라고 하므로 결합성이라고 옮깁니다. 
+
+[^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 특수한 상황에서만 인식되는 언어 원소입니다. 상황에-민감한 키워드에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 보기 바랍니다.
+
+[^operator-declarations]: 원문 자체가 애플 개발자 문서의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결됩니다.
 
 [^class-final]: 즉, 클래스 선언 안에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
-[^context-sensitive]: '상황에-민감한 키워드 (context-sensitive keywords)' 는 '특수한 상황에서만 인식되는 언어 원소' 를 말합니다. '상황에-민감한 키워드' 에 대한 더 자세한 정보는, 마이크로소프트 문서의 [Context-Sensitive Keywords](https://docs.microsoft.com/en-us/cpp/extensions/context-sensitive-keywords-cpp-component-extensions?view=msvc-160) 항목을 보도록 합니다. 
-
-[^dynamically-dispatched]: '동적으로 급파 (dynamically dispatched) 한다' 는 개념은 'C++ 과 같은 언어' 에서 많이 사용하는 '가상 함수 테이블 (virtual function table) 을 사용한다' 는 의미입니다. '가상 함수 테이블' 을 사용하기 때문에, '인라인' 이나 '탈-가상화' 를 할 수 없습니다. '가상 함수 테이블' 에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 보도록 합니다.  
+[^dynamically-dispatched]: '동적 급파 (dynamically dispatched)' 라는 개념은 C++ 등에서 사용하는 가상 함수 테이블 (virtual function table) 을 사용한다는 의미입니다. 가상 함수 테이블을 사용하기 때문에, 인라인이나 탈-가상화를 할 수 없습니다. 가상 함수 테이블에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 보도록 합니다.  
 
 [^unowned-safe]: 즉, 스위프트에서 `unowned` 라고 사용하는 것은 `unowned(safe)` 를 사용하는 것이며, `unowned(unsafe)` 를 명시하지 않은 이상, 항상 `unowned(safe)` 를 사용하게 됩니다.
