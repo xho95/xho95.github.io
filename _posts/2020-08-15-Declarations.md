@@ -1160,9 +1160,9 @@ _우선 순위 그룹 선언 (precedence group declaration)_ 은 프로그램에
 
 _더 낮은 그룹 이름들 (lower group names)_ 및 _더 높은 그룹 이름들 (higher group names)_ 목록은 새로운 우선 순위 그룹과 기존 우선 순위 그룹 사이의 관계를 지정합니다. `lowerThan` 우선 순위 그룹 특성은 현재 모듈 밖에서 선언한 우선 순위 그룹의 참조에만 사용할 수도 있습니다. `2 + 3 * 5` 표현식 같이, 두 연산자가 피연산자를 두고 경쟁할 때는, 상대적으로 더 높은 우선 순위의 연산자가 피연산자와 더 밀접하게 연결됩니다.
 
-> _더 낮은 그룹 이름들 (lower group names)_ 및 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관련된 우선 순위 그룹은 반드시 단일 관계 계층 (single relational hierarchy) 이어야 하지만, 선형 계층 (linear hierarchy) 을 형성하진 않아도 됩니다. 이는 상대적인 우선 순위를 정의하지 않은 우선 순위 그룹도 가능하다는 의미입니다. 이러한 우선 순위 그룹인 연산자들은 괄호 그룹 없이는 서로 나란히 사용할 수 없습니다.
+> _더 낮은 그룹 이름들 (lower group names)_ 및 _더 높은 그룹 이름들 (higher group names)_ 로 서로 관련된 우선 순위 그룹은 반드시 단일 관계 계층 (single relational hierarchy) 이어야 하지만, 선형 계층 (linear hierarchy) 을 형성하진 않아도 됩니다. 이는 상대적인 우선 순위를 정의하지 않은 우선 순위 그룹도 가능하다는 의미입니다. 이러한 우선 순위 그룹의 연산자들은 괄호 그룹 없이 서로 나란히 사용할 수 없습니다.
 
-스위프트는 표준 라이브러리가 제공하는 연산자와 같이 나아가는 수 없이 많은 우선권 그룹을 정의합니다. 예를 들어, '더하기 (`+`) 및 빼기 (`-`) 연산자' 는 `AdditionPrecedence` 그룹에 속하며, '곱하기 (`*`) 및 나누기 (`/`)' 연산자' 는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선권 그룹에 대한 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
+스위프트는 수 없이 많은 우선 순위 그룹을 정의하여 표준 라이브러리가 제공한 연산자와 나란히 사용합니다. 예를 들어, 덧셈 (`+`) 및 뺄셈 (`-`) 연산자는 `AdditionPrecedence` 그룹에 속하고, 곱셈 (`*`) 및 나눗셈 (`/`) 연산자는 `MultiplicationPrecedence` 그룹에 속합니다. 스위프트 표준 라이브러리가 제공하는 우선 순위 그룹의 완전한 목록은, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보기 바랍니다.
 
 연산자 _결합성 (associativity)_ 은 괄호 그룹이 없을 때 똑같은 우선권 수준을 가지는 일련의 연산자들끼리 그룹짓는 방법을 지정합니다. 연산자 결합성은 `left`, `right`, 또는 `none` 이라는 '상황에-민감한 (context-sensitive) 키워드'[^context-sensitive] 하나를 작성함으로써 지정합니다-'결합성' 을 생략하면, 기본 값이 `none` 입니다. '왼쪽-결합 (left-associative) 연산자' 는 왼쪽에서 오른쪽으로 그룹 짓습니다. 예를 들어, '빼기 연산자 (`-`)' 는 왼쪽-결합이므로, `4 - 5 - 6` 라는 표현식은 `(4 - 5) - 6` 으로 그룹지으며 `-7` 이라고 평가합니다. '오른쪽-결합 연산자' 는 오른쪽에서 왼쪽으로 그룹지으며, `none` 이라는 결합성으로 지정한 연산자는 결합을 아예 하지 않습니다. '똑같은 우선권 수준의 비-결합 (nonassociative) 연산자' 는 서로 인접해 있을 수 없습니다. 예를 들어, `<` 연산자의 '결합성' 은 `none` 인데, 이는 `1 < 2 < 3` 이 '유효한 표현식' 은 아니라는 의미입니다.
 
