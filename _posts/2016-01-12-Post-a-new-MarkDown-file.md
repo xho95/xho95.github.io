@@ -9,7 +9,7 @@ redirect_from: "/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-fi
 
 > 이 글은 Jekyll 블로그에서 마크다운 (markdown) 문서로 새 포스트를 작성하는 방밥을 정리한 것입니다.
 >
-> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 참고하기 바랍니다.
+> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 보도록 합니다.
 
 ## Jekyll: 마크다운 (markdown) 양식으로 새 포스트 만들기
 
@@ -90,8 +90,8 @@ markdown: kramdown
 
 [^front-matter]: 'front matter' 는 우리 말로는 '서문' 정도에 해당하며, 문서 맨 앞에 붙이는 요소 정도로 이해하면 될 것 같습니다. 'Jekyll 의 모든 포스트는 이 'front matter' 가 반드시 문서 맨 앞에 있어야 하는데, 이 'front matter' 의 '메타 데이터 (mata data)' 들을 해석해서 해당 포스트의 이름과 경로 등을 지정하기 때문입니다.
 
-[^naming-of-github-pages]: 이에 대한 내용은 [Adding a new page to your site](https://help.github.com/en/github/working-with-github-pages/adding-content-to-your-github-pages-site-using-jekyll#adding-a-new-page-to-your-site) 를 참고하기 바랍니다.
+[^naming-of-github-pages]: 이에 대한 내용은 [Adding a new page to your site](https://help.github.com/en/github/working-with-github-pages/adding-content-to-your-github-pages-site-using-jekyll#adding-a-new-page-to-your-site) 를 보도록 합니다.
 
-[^naming-sample-of-jekyll]: 이에 대한 내용은 [Creating Posts](https://jekyllrb.com/docs/posts/#creating-posts) 를 참고하기 바랍니다.
+[^naming-sample-of-jekyll]: 이에 대한 내용은 [Creating Posts](https://jekyllrb.com/docs/posts/#creating-posts) 를 보도록 합니다.
 
 [^kramdown]: 이에 대한 설명은 [Kramdown](https://jekyllrb.com/docs/configuration/markdown/#kramdown) 에서 확인할 수 있습니다. Kramdown 은 GitHub 에서도 기본 번역 엔진으로 사용되고 있습니다. 단, Jekyll 4.x 버전부터는 kramdown-2.x 이상의 버전만을 지원한다고 합니다.

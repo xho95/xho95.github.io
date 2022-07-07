@@ -73,7 +73,7 @@ numberOfLegs["bird"] = 2
 
 위 예제는 `numberOfLegs` 라는 변수를 정의하고 세 키-값 쌍을 담은 딕셔너리 글자 값으로 이를 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론합니다. 딕셔너리를 생성한 후, 이 예제는 첨자 할당을 사용하여 딕셔너리에 `"bird"` 라는 `String` 키와 `2` 라는 `Int` 값을 추가합니다.
 
-`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 참고하기 바랍니다.
+`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 보도록 합니다.
 
 > 스위프트의 `Dictionary` 타입은 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자로 자신의 키-값 첨자 연산을 구현합니다. 위의 `numberOfLegs` 딕셔너리에선, 키-값 첨자가 `Int?`, 또는 "옵셔널 정수 (optional int)", 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 옵셔널 첨자 타입을 사용하여 모든 키가 값을 가지진 않을 거라는 사실을 모델링하고, 그 키에 `nil` 값을 할당함으로써 키의 값을 삭제할 방법을 제공합니다.
 
@@ -177,10 +177,10 @@ print(mars)
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection), 리스트 (list), 시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 자료 구조입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 참고하기 바랍니다. 
+[^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection), 리스트 (list), 시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 자료 구조입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 보도록 합니다. 
 
 [^read-only]: 이런 동작은 바로 뒤에서 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보면 계산 속성과 첨자는 인스턴스 메소드의 특수한 한 형태라고 볼 수 있습니다.
 
-[^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 참고하기 바랍니다.
+[^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2020-04-14-Structures-and-Classes %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 보도록 합니다.
 
 [^flattend-version]: '납작한 (flattened) 버전의 행렬' 이란 2-차원 배열의 형상을 바꿔서 1-차원 배열로 만들었다는 의미입니다.

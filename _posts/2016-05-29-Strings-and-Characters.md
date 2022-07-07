@@ -18,7 +18,7 @@ _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같은, 연속된 �
 
 > 스위프트 `String` 타입은 'Foundation[^Foundation] 의 `NSString` 클래스와 연동' 되어 있습니다. 'Foundation' 은 `NSString` 이 정의한 메소드를 노출하기 위해 `String` 도 확장합니다. 이는, 'Foundation' 을 불러 오면, `String` 에 대한 이 `NSString` 메소드에 '타입 변환 (casting)' 없이 접근할 수 있다는 의미입니다.
 >
-> 'Foundation 과 Cocoa'[^Cocoa] 를 가지고 `String` 을 사용하는 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 참고하기 바랍니다.
+> 'Foundation 과 Cocoa'[^Cocoa] 를 가지고 `String` 을 사용하는 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보도록 합니다.
 
 ### String Literals (문자열 글자 값)
 
@@ -662,9 +662,9 @@ for scalar in dogString.unicodeScalars {
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 참고하기 바랍니다.
+[^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 보도록 합니다.
 
-[^string-literal-syntax]: '문자열 글자 값 구문 (string literal syntax)' 은, `let greeting = "hello"` 같은 문장에서의, `"hello"` 를 의미합니다. 이런 '문자열 글자 값 구문' 이 C 언어와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 정보는, 바로 아래의 '글자 값 (literals) 에 대한 주석'[^literals] 이나 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 항목을 참고하기 바랍니다.
+[^string-literal-syntax]: '문자열 글자 값 구문 (string literal syntax)' 은, `let greeting = "hello"` 같은 문장에서의, `"hello"` 를 의미합니다. 이런 '문자열 글자 값 구문' 이 C 언어와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 정보는, 바로 아래의 '글자 값 (literals) 에 대한 주석'[^literals] 이나 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 항목을 보도록 합니다.
 
 [^literals]: 여기서 '글자 값 (literals)' 는 '글자로 표현된 실제 값' 을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값이 되고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값이 됩니다. 즉 '글자 값 (literals)' 에서 값의 타입은 그 값이 실제로 표현하는 것이 무엇인지에 따라 달라집니다.
 
@@ -682,17 +682,17 @@ for scalar in dogString.unicodeScalars {
 
 [^optimize-string]: 이 말은 `String` 이 기본적으로는 '깊은 복사' 를 하지만, 만약 전달받은 `String` 이 상수라면, 어차피 값이 바뀌지 않으므로 최적화에 의해, 실제 복사를 안할 수도 있다는 말입니다. 하지만 이런 경우에라도 밖에서 보는 작동 방식은 동일하므로, 개발자는 `String` 이 마치 계속 '복사 (copy)' 된다고 이해하고 사용해도 문제가 없습니다.
 
-[^annotation]: 프로그래밍 용어로 '주석 (comment)' 이란 단어를 이미 사용하고 있으므로, 타입 주석이라고 하지 않고 '타입 보조 설명 (type annotation)' 이라고 옮깁니다. 타입 보조 설명에 대한 더 자세한 정보는, [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다. 
+[^annotation]: 프로그래밍 용어로 '주석 (comment)' 이란 단어를 이미 사용하고 있으므로, 타입 주석이라고 하지 않고 '타입 보조 설명 (type annotation)' 이라고 옮깁니다. 타입 보조 설명에 대한 더 자세한 정보는, [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 보도록 합니다. 
 
 [^extended-grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자는 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 덩어리로 되어 있다는 의미입니다. '확장된 자소 덩어리' 자체는 본문 뒤에서 좀 더 자세히 설명합니다.
 
-[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 참고하기 바랍니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
+[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
-[^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 참고하기 바랍니다.
+[^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 보도록 합니다.
 
 [^line-feed-escape-sequence]: '(벗어난) 줄 먹임 문자열 (line feed escape sequence)' 은 말 그대로 `\n` 문자열 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 '`\` 과 `n` 이라는 문자가 연속된 것' 으로 인식한다는 의미입니다.
 
-[^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+[^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 보도록 합니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
 
@@ -710,8 +710,8 @@ for scalar in dogString.unicodeScalars {
 
 [^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 잠시동안 죽는 듯한 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 라는 의미로 '수도사' 중에서 수도원에 머무르지 않는 이들을 의미한다고 합니다.
 
-[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는, 본문 뒤에 나오는 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
+[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는, 본문 뒤에 나오는 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 보도록 합니다.
 
-[^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 참고하기 바랍니다.
+[^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
 
-[^extended-string-delimiters]: '확장된 문자열 구분자 (Extended String Delimiters)' 에 대한 더 자세한 정보는, 바로 위의 [Extended String Delimiters (확장된 문자열 구분자)](#extended-string-delimiters-확장된-문자열-구분자) 부분을 참고하기 바랍니다. 
+[^extended-string-delimiters]: '확장된 문자열 구분자 (Extended String Delimiters)' 에 대한 더 자세한 정보는, 바로 위의 [Extended String Delimiters (확장된 문자열 구분자)](#extended-string-delimiters-확장된-문자열-구분자) 부분을 보도록 합니다. 

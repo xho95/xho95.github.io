@@ -33,16 +33,16 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^targets]: '엑스코드 (Xcode)' 에서 하나의 '대상 (target)' 이란 '제품 (product) 을 정의한 것' 입니다. 프로젝트는 하나지만 '대상 (target)' 은 여러 개일 수 있습니다. 좀 더 자세한 내용은 [Xcode Target](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html) 항목을 참고하기 바랍니다.
+[^targets]: '엑스코드 (Xcode)' 에서 하나의 '대상 (target)' 이란 '제품 (product) 을 정의한 것' 입니다. 프로젝트는 하나지만 '대상 (target)' 은 여러 개일 수 있습니다. 좀 더 자세한 내용은 [Xcode Target](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html) 항목을 보도록 합니다.
 
-[^swift-runtime]: 런타임 (runtime) 은 '런타임 라이브러리' 를 의미하는데, 위키피디아의 [Swift (programming language)](https://en.wikipedia.org/wiki/Swift_(programming_language)) 항목에 따르면, 2019년 3월에 공개한 스위프트 5 부터 ABI 안전성 (ABI Stability)[^ABI-Stability] 을 지원하면서 스위프트 런타임이 애플 운영체제 속에 포함되었다고 합니다. 즉, 최신 버전의 '스위프트 런타임' 을 사용하려면 '운영 체제' 도 최신으로 업데이트해야 합니다. '스위프트 런타임' 에 대한 더 많은 내용은, [The Swift Runtime](https://github.com/apple/swift/blob/master/docs/Runtime.md) 항목을 참고하기 바랍니다.
+[^swift-runtime]: 런타임 (runtime) 은 '런타임 라이브러리' 를 의미하는데, 위키피디아의 [Swift (programming language)](https://en.wikipedia.org/wiki/Swift_(programming_language)) 항목에 따르면, 2019년 3월에 공개한 스위프트 5 부터 ABI 안전성 (ABI Stability)[^ABI-Stability] 을 지원하면서 스위프트 런타임이 애플 운영체제 속에 포함되었다고 합니다. 즉, 최신 버전의 '스위프트 런타임' 을 사용하려면 '운영 체제' 도 최신으로 업데이트해야 합니다. '스위프트 런타임' 에 대한 더 많은 내용은, [The Swift Runtime](https://github.com/apple/swift/blob/master/docs/Runtime.md) 항목을 보도록 합니다.
 
-[^ABI-Stability]: 스위프트의 ABI 안정성에 대해서는 [Evolving Swift On Apple Platforms After ABI Stability](https://swift.org/blog/abi-stability-and-apple/) 항목을 참고하기 바랍니다. 한글 자료로는 **Zedd02028** 님이 [ABI stability](https://zeddios.tistory.com/654) 라는 글에 정리를 잘 해두신 것 같습니다.
+[^ABI-Stability]: 스위프트의 ABI 안정성에 대해서는 [Evolving Swift On Apple Platforms After ABI Stability](https://swift.org/blog/abi-stability-and-apple/) 항목을 보도록 합니다. 한글 자료로는 **Zedd02028** 님이 [ABI stability](https://zeddios.tistory.com/654) 라는 글에 정리를 잘 해두신 것 같습니다.
 
-[^level-of-optionality]: '부가적인 수준의 옵셔널성을 도입하지 않는다' 는 것은, 옵셔널을 한 번 더 옵셔널로 포장하더라도 이 옵셔널의 포장을 풀 때 두 번 풀 필요는 없다는 의미입니다. 좀 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 참고하기 바랍니다.
+[^level-of-optionality]: '부가적인 수준의 옵셔널성을 도입하지 않는다' 는 것은, 옵셔널을 한 번 더 옵셔널로 포장하더라도 이 옵셔널의 포장을 풀 때 두 번 풀 필요는 없다는 의미입니다. 좀 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 항목을 보도록 합니다.
 
 [^large-integer-literal]: '아주 큰 정수 글자 값' 이란 바로 뒤 예제에 나오는 것처럼, 정수가 아주 클 때, `0xffff_ffff_ffff_ffff` 처럼, 일정 자리마다 구분자를 표시한 '글자 값' 을 말합니다. 여기서 '글자 값 (literal)' 이란 '글자로 표현된 그 자체로서의 값' 을 의미하며, `let x = 1` 과 같은 구문이 있을 때, `1` 을 문자가 아니라 그 글자가 표현하는 값인 하나의 수 `1` 로 인식한다는 것을 의미합니다.
 
-[^depend-on]: 이는 스위프트 5.2 부터 ABI 안정성[^ABI-Stability] 에다가 모듈 안정성 (module stability) 도 지원하기 때문입니다. 이에 대한 더 자세한 내용은, [ABI Stability and More](https://swift.org/blog/abi-stability-and-more/) 항목을 참고하기 바랍니다.
+[^depend-on]: 이는 스위프트 5.2 부터 ABI 안정성[^ABI-Stability] 에다가 모듈 안정성 (module stability) 도 지원하기 때문입니다. 이에 대한 더 자세한 내용은, [ABI Stability and More](https://swift.org/blog/abi-stability-and-more/) 항목을 보도록 합니다.
 
 [^swift-version]: [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 장에서 확인할 수 있는 것처럼, 스위프트는 2019년 이후로 메이저 버전이 '5.x' 로 유지되고 있습니다. 그 이전에는 1년마다 메이저 버전을 업데이트했는데, 이는 스위프트 문법이 이제 어느 정도 안정화되었기 때문입니다.

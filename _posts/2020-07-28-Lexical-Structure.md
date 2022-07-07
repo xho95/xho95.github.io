@@ -34,7 +34,7 @@ _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), �
 
 클로저 안에 명시적 매개 변수 이름이 없으면, 매개 변수에 암시적으로 `$0`, `$1`, `$2`, 등등의 이름을 붙입니다. 이 이름들은 클로저 영역 안에선 유효한 식별자입니다.
 
-속성 포장의 내민 값을 가진 속성이면 컴파일러가 달러 기호 (`$`) 로 시작하는 식별자를 통합합니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 이 접두사의 식별자를 (직접) 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
+속성 포장의 내민 값을 가진 속성이면 컴파일러가 달러 기호 (`$`) 로 시작하는 식별자를 통합합니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 이 접두사의 식별자를 (직접) 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
 
 > GRAMMAR OF AN IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
@@ -179,7 +179,7 @@ print(# # #"Line 1\# # #nLine 2"# # #) // 에러
 
 확장 구분자로 생성한 여러 줄짜리 문자열 글자 값의 들여쓰기는 표준적인 여러 줄짜리 문자열 글자 값과 똑같습니다.
 
-문자열 글자 값의 기본 추론 타입은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장과 [String](https://developer.apple.com/documentation/swift/string)[^developer-string] 항목을 참고하기 바랍니다.
+문자열 글자 값의 기본 추론 타입은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장과 [String](https://developer.apple.com/documentation/swift/string)[^developer-string] 항목을 보도록 합니다.
 
 `+` 연산자로 이어붙인 문자열 글자 값은 컴파일 시간에 이어붙습니다. 예를 들어, 아래 예제의 `textA` 와 `textB` 값은 완전히 똑같습니다 (identical)-실행 시간에 이어붙이기를 하진 않습니다.
 
@@ -246,7 +246,7 @@ let regex2 = # #/abc/# #    // 에러
 
 특정 구조에서, 맨 앞이 `<` 나 `>` 인 연산자는 두 개 이상의 낱말로 쪼개질 수 있습니다. 나머지 부분도 똑같은 식으로 취급하여 또 다시 쪼깨질 수 있습니다. 그 결과, `Dictionary<String, Array<Int>>` 같은 구조의 닫는 `>` 문자 사이에 공백을 추가해서 헷갈리지 않게 할 필요가 없습니다. 이 예제에선, 닫는 `>` 문자를 단일 낱말로 취급하여 비트 이동 `>>` 연산자로 잘못 해석할 일이 없습니다.[^misinterprete]
 
-새로운, 사용자 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분과 [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 참고하기 바랍니다. 기존 연산자를 중복 정의하는 방법을 배우려면, [Operator Methods (연산자 메소드)]({% post_url 2020-03-03-Closures %}#operator-methods-연산자-메소드) 부분을 참고하기 바랍니다.
+새로운, 사용자 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분과 [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 보도록 합니다. 기존 연산자를 중복 정의하는 방법을 배우려면, [Operator Methods (연산자 메소드)]({% post_url 2020-03-03-Closures %}#operator-methods-연산자-메소드) 부분을 보도록 합니다.
 
 ### 다음 장
 
@@ -258,55 +258,55 @@ let regex2 = # #/abc/# #    // 에러
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^token]: '낱말 (token)' 은 프로그래밍 언어에서 '의미를 가지는 최소 단위' 를 뜻합니다. 여기서는 'token' 을 '낱말' 이라고 옮겼는데, 스위프트에서는 'token' 을 'lexical token (lexeme-어휘소와 비슷한 개념)' 의 의미로 사용하고 있는 것 같습니다. 굳이 옮기자면 '어휘소' 나, '형태소' 라고 할 수도 있겠으나, 프로그래밍을 하는데 이 정도까지 알아야 하는 것은 아니므로, 앞으로 'token' 을 계속 '낱말' 이라고 옮기겠습니다. 'token' 에 대한 더 자세한 개념은, 위키피디아의 [Lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis) 항목 안의 [Token](https://en.wikipedia.org/wiki/Lexical_analysis#Token) 부분을 참고하기 바랍니다.
+[^token]: '낱말 (token)' 은 프로그래밍 언어에서 '의미를 가지는 최소 단위' 를 뜻합니다. 여기서는 'token' 을 '낱말' 이라고 옮겼는데, 스위프트에서는 'token' 을 'lexical token (lexeme-어휘소와 비슷한 개념)' 의 의미로 사용하고 있는 것 같습니다. 굳이 옮기자면 '어휘소' 나, '형태소' 라고 할 수도 있겠으나, 프로그래밍을 하는데 이 정도까지 알아야 하는 것은 아니므로, 앞으로 'token' 을 계속 '낱말' 이라고 옮기겠습니다. 'token' 에 대한 더 자세한 개념은, 위키피디아의 [Lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis) 항목 안의 [Token](https://en.wikipedia.org/wiki/Lexical_analysis#Token) 부분을 보도록 합니다.
 
-[^maximal-munch]: '최대한 잘라먹기 (maximal munch)' 라는 용어는, [Jay Two](https://j2doll.tistory.com) 님의 [최대한 잘라먹기(Maximal Munch)와 컴파일러(Compiler)](https://j2doll.tistory.com/109) 라는 블로그 글이, 의미를 가장 잘 전달하고 있다고 생각하여, 따르기로 합니다. 'longest match' 와 'maximal munch' 에 대한 더 자세한 정보는, 위피키디아의 [Maximal munch](https://en.wikipedia.org/wiki/Maximal_munch) 항목을 참고하기 바랍니다.
+[^maximal-munch]: '최대한 잘라먹기 (maximal munch)' 라는 용어는, [Jay Two](https://j2doll.tistory.com) 님의 [최대한 잘라먹기(Maximal Munch)와 컴파일러(Compiler)](https://j2doll.tistory.com/109) 라는 블로그 글이, 의미를 가장 잘 전달하고 있다고 생각하여, 따르기로 합니다. 'longest match' 와 'maximal munch' 에 대한 더 자세한 정보는, 위피키디아의 [Maximal munch](https://en.wikipedia.org/wiki/Maximal_munch) 항목을 보도록 합니다.
 
 [^form-feed]: '양식 먹임 (form feed)' 이란, 화면 내용을 출력할 때, 현재 페이지를 끝내고 다음 페이지의 첫 부분부터 다시 출력하라는 것을 지시하는 문자입니다.
 
-[^BMP]: '다국어 기본 평면 (Basic Multilingual Plane)' 이란 '유니코드 평면 (Unicode planes)' 에서 '0번 평면 (`U+0000 ~ U+FFFF`) 을 말하는 것으로, 거의 모든 근대 문자와 특수 문자를 포함합니다. '다국어 기본 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
+[^BMP]: '다국어 기본 평면 (Basic Multilingual Plane)' 이란 '유니코드 평면 (Unicode planes)' 에서 '0번 평면 (`U+0000 ~ U+FFFF`) 을 말하는 것으로, 거의 모든 근대 문자와 특수 문자를 포함합니다. '다국어 기본 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
 
-[^noncombining-alphanumeric]: '비-조합형 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)' 에서, 비-조합형은 `é` 처럼 강세 기호 등의 문자와 조합하지 않은 문자를 의미하며, 영숫자는 수학 기호에 사용되는 그리스-라틴 문자 (Mathematical Alphanumeric Symbols) 을 의미합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목과 [Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols) 항목을 참고하기 바랍니다.
+[^noncombining-alphanumeric]: '비-조합형 영숫자 유니코드 문자 (noncombining alphanumeric Unicode character)' 에서, 비-조합형은 `é` 처럼 강세 기호 등의 문자와 조합하지 않은 문자를 의미하며, 영숫자는 수학 기호에 사용되는 그리스-라틴 문자 (Mathematical Alphanumeric Symbols) 을 의미합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Combining character](https://en.wikipedia.org/wiki/Combining_character) 항목과 [Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols) 항목을 보도록 합니다.
 
-[^PUA]: '사용자 영역 (Private Use Area)' 은 '유니코드 평면 (Unicode planes)' 의 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)' 을 말합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
+[^PUA]: '사용자 영역 (Private Use Area)' 은 '유니코드 평면 (Unicode planes)' 의 '15번 평면 (`F0000 ~ FFFFF`)' 과 '16번 평면 (`100000 ~ 10FFFF`)' 을 말합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
 
-[^digits]: 여기서의 'digits' 은 'Numerical digit' 을 의미하는 것으로, 수를 표기하기 위한 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Numerical digit](https://en.wikipedia.org/wiki/Numerical_digit) 항목과 [숫자](https://ko.wikipedia.org/wiki/숫자) 항목을 참고하기 바랍니다.
+[^digits]: 여기서의 'digits' 은 'Numerical digit' 을 의미하는 것으로, 수를 표기하기 위한 문자를 의미합니다. 더 자세한 내용은 위키피디아의 [Numerical digit](https://en.wikipedia.org/wiki/Numerical_digit) 항목과 [숫자](https://ko.wikipedia.org/wiki/숫자) 항목을 보도록 합니다.
 
-[^backticks]: 원문에 있는 'backtics' 은 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
+[^backticks]: 원문에 있는 'backtics' 은 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
 
-[^property-wrapper-projection]: 본문의 의미는, 속성에 `projectedValue` 가 있으면, 스위프트가 `$<projectedValue>` 같은 구문을 자동 지원한다는 것입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-내밀기) 부분을 참고하기 바랍니다. 
+[^property-wrapper-projection]: 본문의 의미는, 속성에 `projectedValue` 가 있으면, 스위프트가 `$<projectedValue>` 같은 구문을 자동 지원한다는 것입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)]({% post_url 2020-05-30-Properties %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-내밀기) 부분을 보도록 합니다. 
 
 [^escaped]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 보통은 'excape character' 라고 하면 `\` 기호를 붙이는 것을 말하지만, 여기서는 `` ` `` 기호를 사용하여 '키워드' 를 마치 일반 단어처럼 사용할 수 있게 만드는 것을 의미합니다.
 
-[^type-annotations]: '타입 보조 설명 (Type Annotations)' 에 대해서는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
+[^type-annotations]: '타입 보조 설명 (Type Annotations)' 에 대해서는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 보도록 합니다.
 
 [^unescaped]: 여기서 '벗어나지 않는 것' 이란, 앞서 '벗어난 (escaped) 것' 에서 설명한 것과 반대로, 문자의 본래 의미로 사용하는 것을 말합니다. 본문에서는 '문자열 글자 값' 이 '따옴표' 를 직접 담을 수 없으며, 따옴표를 문자열 글자 값에 사용하려면 `\` 를 붙여야 함을 설명하고 있습니다.
 
 [^three-unescaped-double-quotation-marks]: 세 개의 벗어나지 않는 큰 따옴표를 서로 나란히 담을 수 없다는 건 `""""""` 처럼 큰 따옴표 여섯 개를 나란히 사용할 순 없다는 의미입니다. 이러면 `Multi-line string literal content must begin on a new line (여러 줄짜리 문자열 글자 값은 반드시 새로운 줄 문자 (\n) 로 시작해야 합니다.)` 라는 에러가 발생합니다.
 
-[^line-break]: 이 책에서는 '줄 끊음 (line break) 과, 줄 먹임 (line feed) 및, 새 줄 (new line; 개행 문자)' 이라는 용어를 섞어 쓰는데, 셋 다 `\n` 를 의미합니다. 초창기에 컴퓨터 운영 체제마다 서로 다른 개행 문자를 사용하다 보니, 똑같은 걸 의미하는 용어가 생긴 것이 아닌가 생각합니다. 스위프트에선 '개행 문자로 줄 먹임 (line feed; LF; `\n`) 만 사용' 하는 게 표준입니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Newline](https://en.wikipedia.org/wiki/Newline) 항목과 [새줄 문자](https://ko.wikipedia.org/wiki/새줄_문자) 항목을 참고하기 바랍니다.
+[^line-break]: 이 책에서는 '줄 끊음 (line break) 과, 줄 먹임 (line feed) 및, 새 줄 (new line; 개행 문자)' 이라는 용어를 섞어 쓰는데, 셋 다 `\n` 를 의미합니다. 초창기에 컴퓨터 운영 체제마다 서로 다른 개행 문자를 사용하다 보니, 똑같은 걸 의미하는 용어가 생긴 것이 아닌가 생각합니다. 스위프트에선 '개행 문자로 줄 먹임 (line feed; LF; `\n`) 만 사용' 하는 게 표준입니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Newline](https://en.wikipedia.org/wiki/Newline) 항목과 [새줄 문자](https://ko.wikipedia.org/wiki/새줄_문자) 항목을 보도록 합니다.
 
 [^begins-or-ends]: 이 설명은 글보다 예제를 직접 보는 게 더 낫습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
 
 [^line-break-to-line-feed]: 에전에는 프로그래머가 수동으로 줄 끊음 문자를 줄 먹임 문자로 바꿔줘야 했는데, 스위프트는 이러한 정규화 과정을 자동으로 해준다는 의미입니다.
 
-[^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 자동 줄 바꿈과 관련된 개념으로, 실제 문자열 글자 값이 아니라, 편집기에서 문자열이 보여지는 것과 관련된 용어입니다. 직접 줄 바꿈 (hard wrap) 할 수 있다는 건, Xcode 에서 문자열 글자 값은 그대로 유지하되, 편집기에선 코드를 줄 바꿈하여 알아보기 쉽게 한다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은, 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 항목과 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 참고하기 바랍니다.
+[^hard-wrap]: 'hard wrap' 과 'sofe wrap' 은 자동 줄 바꿈과 관련된 개념으로, 실제 문자열 글자 값이 아니라, 편집기에서 문자열이 보여지는 것과 관련된 용어입니다. 직접 줄 바꿈 (hard wrap) 할 수 있다는 건, Xcode 에서 문자열 글자 값은 그대로 유지하되, 편집기에선 코드를 줄 바꿈하여 알아보기 쉽게 한다는 의미입니다. 자동 줄 바꿈에 대한 더 자세한 내용은, 위키피디아의 [Line wrap and word wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap) 항목과 [자동 줄 바꿈](https://ko.wikipedia.org/wiki/자동_줄_바꿈) 항목을 보도록 합니다.
 
-[^escape-sequences]: '벗어난 확장열 (escape sequences)' 에 대한 더 자세한 정보는, 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 항목과 [이스케이프 시퀀스 (확장열)](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 참고하기 바랍니다.
+[^escape-sequences]: '벗어난 확장열 (escape sequences)' 에 대한 더 자세한 정보는, 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 항목과 [이스케이프 시퀀스 (확장열)](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 보도록 합니다.
 
 [^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 본문에서 말하는 균형 집합이란, `#` 의 개수는 상관없이, 양쪽의 `#` 개수가 똑같으면 된다는 의미입니다. 균형 집합에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
 
 [^opening-and-closing-delimiter]: 이는 본문의 형식에서 보돗, `#/` 과 `/#` 이 각각 그 자체로 한 줄을 차지해야 한다는 의미입니다.
 
-[^interpolation]: 'interpolation' 은 수학에서 말하는 보간법인데, '보간' 이란 말 자체가 사이에 끼워 넣는다는 의미이므로, 수학 용어로 사용되는게 아니면 '끼워 넣기' 라고 하겠습니다. 보간법 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 참고하기 바랍니다.
+[^interpolation]: 'interpolation' 은 수학에서 말하는 보간법인데, '보간' 이란 말 자체가 사이에 끼워 넣는다는 의미이므로, 수학 용어로 사용되는게 아니면 '끼워 넣기' 라고 하겠습니다. 보간법 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 보도록 합니다.
 
 [^more-than-one-number]: 첫 번째 예제인 `print(###"Line 1\###nLine 2"###)` 는, 결과를 두 줄로 인쇄합니다. 확장 구분자로 구분한 문자열 안의 특수 문자는 보통 문자라고 인식하지만, `\###n` 처럼, 확장 구분자를 집어 넣으면 다시 특수 문자로 인식합니다.
 
 [^developer-string]: 원문 자체가 '애플 개발자 문서' 에 대한 링크입니다. 
 
-[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안에서 검색 패턴을 지정하는 일련의 문자들을 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 참고하기 바랍니다. 
+[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안에서 검색 패턴을 지정하는 일련의 문자들을 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 보도록 합니다. 
 
-[^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
+[^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 보도록 합니다.
 
 [^optional]: 단일 물음표 문자 (`?`) 는 스위프트에서 이미 '옵셔널 (optional)' 를 의미하기 때문입니다.
 

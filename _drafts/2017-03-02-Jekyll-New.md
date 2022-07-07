@@ -2,7 +2,7 @@
 
 새로운 [Jekyll](https://jekyllrb.com) 의 구조에 대해서 정리합니다. 일단 Jekyll 홈페이지의 내용부터 정리합니다. [^jekyllrb]
 
-최근의 Jekyll 은 설치하면 [Minima](https://github.com/jekyll/minima) 테마를 사용합니다. [^jekyll-minima] [^jekyllrb-themes] 이전 질문답변을 참고하기 바랍니다.
+최근의 Jekyll 은 설치하면 [Minima](https://github.com/jekyll/minima) 테마를 사용합니다. [^jekyll-minima] [^jekyllrb-themes] 이전 질문답변을 보도록 합니다.
 
 ### Jekyll 이란
 
@@ -18,7 +18,7 @@ Jekyll 의 설치는 다음과 같이 RubyGems 을 사용합니다. [^ruby-gems]
 $ gem install jekyll bundler
 ```
 
-그렇기 때문에 Jekyll 을 사용하려면 Ruby 가 먼저 설치되어 있어야 합니다. Ruby 설치에 관련된 내용은 이전 글을 참고하기 바랍니다.
+그렇기 때문에 Jekyll 을 사용하려면 Ruby 가 먼저 설치되어 있어야 합니다. Ruby 설치에 관련된 내용은 이전 글을 보도록 합니다.
 
 #### running
 

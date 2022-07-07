@@ -729,7 +729,7 @@ x.move(from: x, to: y)
 
 [^symbol-comman-syntax]: 링크 자체는 바로 위의 링크와 같은 [symbol documentation markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/SymbolDocumentation.html#//apple_ref/doc/uid/TP40016497-CH51-SW1) 문서로 연결됩니다.
 
-[^factory-method]: '공장 메소드 (factory method)' 는 '공장 메소드 패턴 (factory method pattern)' 에서 사용하는 메소드로, 구체적으로 '고정된 타입 (concrete type)' 을 지정하지 않은 채 객체를 생성할 수 있게 해줍니다. 이에 대한 더 자세한 정보는 위키피디아의 [Factory method pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) 항목과 [팩토리 메서드 패턴](https://ko.wikipedia.org/wiki/팩토리_메서드_패턴) 항목을 참고하기 바랍니다.
+[^factory-method]: '공장 메소드 (factory method)' 는 '공장 메소드 패턴 (factory method pattern)' 에서 사용하는 메소드로, 구체적으로 '고정된 타입 (concrete type)' 을 지정하지 않은 채 객체를 생성할 수 있게 해줍니다. 이에 대한 더 자세한 정보는 위키피디아의 [Factory method pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) 항목과 [팩토리 메서드 패턴](https://ko.wikipedia.org/wiki/팩토리_메서드_패턴) 항목을 보도록 합니다.
 
 [^base-name]: '기본 이름 (base name)' 은 함수 또는 메소드에서 매개 변수와 괄호를 뺀 순수한 함수 자체의 이름인 것으로 추측됩니다.
 
@@ -741,16 +741,16 @@ x.move(from: x, to: y)
 
 [^sin]: 'verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle' 이 말을 직역하면 '각도를 가진 반지름의 끝이 원점에 있는 단위 원 상에 있을 때의 수직 위치' 정도로 옮길 수 있습니다.
 
-[^complexity]: 컴퓨터 용어로 '복잡도 (complexity)' 라는 것은 알고리즘을 실행하는데 필요한 자원의 총량을 나타내는 말입니다. 보다 자세한 내용은 위키피디아의 [Computational complexity](https://en.wikipedia.org/wiki/Computational_complexity) 항목을 참고하기 바랍니다.
+[^complexity]: 컴퓨터 용어로 '복잡도 (complexity)' 라는 것은 알고리즘을 실행하는데 필요한 자원의 총량을 나타내는 말입니다. 보다 자세한 내용은 위키피디아의 [Computational complexity](https://en.wikipedia.org/wiki/Computational_complexity) 항목을 보도록 합니다.
 
-[^free-function]: 스위프트에서 '자유 함수 (free function)' 는 어느 영역에도 소속되어 있지 않은 '멤버가 아닌 함수 (non-member function)'-즉 일종의 전역 함수-를 의미합니다. 보다 자세한 내용은 위키피디아의 [Free function](https://en.wikipedia.org/wiki/Free_function) 항목을 참고하기 바랍니다.
+[^free-function]: 스위프트에서 '자유 함수 (free function)' 는 어느 영역에도 소속되어 있지 않은 '멤버가 아닌 함수 (non-member function)'-즉 일종의 전역 함수-를 의미합니다. 보다 자세한 내용은 위키피디아의 [Free function](https://en.wikipedia.org/wiki/Free_function) 항목을 보도록 합니다.
 
-[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 참고하기 바랍니다.
+[^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 생겼기 때문에 나온 말입니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 와 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 보도록 합니다.
 
-[^acronyms]: '두문자어 (Acronyms and Initialisms)' 는 'ASCII' 같이 단어의 앞머리 글자만 떼어 만든 줄임말을 의미합니다. 그리고 영어의 'Acronyms' 와 'Initialisms' 는 사실상 같은 단어입니다. 우리말의 [초성체](https://ko.wikipedia.org/wiki/초성체) 도 사실상 두문자어라고 할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Acronym](https://en.wikipedia.org/wiki/Acronym) 항목과 [두문자어](https://ko.wikipedia.org/wiki/두문자어) 항목을 참고하기 바랍니다.
+[^acronyms]: '두문자어 (Acronyms and Initialisms)' 는 'ASCII' 같이 단어의 앞머리 글자만 떼어 만든 줄임말을 의미합니다. 그리고 영어의 'Acronyms' 와 'Initialisms' 는 사실상 같은 단어입니다. 우리말의 [초성체](https://ko.wikipedia.org/wiki/초성체) 도 사실상 두문자어라고 할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Acronym](https://en.wikipedia.org/wiki/Acronym) 항목과 [두문자어](https://ko.wikipedia.org/wiki/두문자어) 항목을 보도록 합니다.
 
 [^simpler]: '기본 설정 매개 변수 (default parameters)' 를 사용하면 함수를 호출할 때 그와 연관된 인자를 생략할 수 있어서 코드가 간단해집니다. 스위프트의 `print(_:separator:terminator:)` 함수가 대표적인 예라고 할 수 있습니다.
 
-[^monomorphism]: 원문에서는 '단사 사상 (monomorphism)' 이라는 말을 사용하고 있지만, 이를 사실 '단사 함수 (injective function)' 의 의미로써 사용하고 있습니다. '단사 함수' 는 '정의역 또는 소스 (source)' 에 있는 서로 다른 원소를 '공역 또는 결과 (result)' 에 있는 서로 다른 원소로 대응시키는 함수를 말합니다. 보다 자세한 내용은 위키피디아의 [Monomorphism](https://en.wikipedia.org/wiki/Monomorphism) 항목 및 [단사 사상](https://ko.wikipedia.org/wiki/단사_사상) 항목, 그리고 [Injective function](https://en.wikipedia.org/wiki/Injective_function) 항목 및 [단사 함수](https://ko.wikipedia.org/wiki/단사_함수) 항목을 참고하기 바랍니다.
+[^monomorphism]: 원문에서는 '단사 사상 (monomorphism)' 이라는 말을 사용하고 있지만, 이를 사실 '단사 함수 (injective function)' 의 의미로써 사용하고 있습니다. '단사 함수' 는 '정의역 또는 소스 (source)' 에 있는 서로 다른 원소를 '공역 또는 결과 (result)' 에 있는 서로 다른 원소로 대응시키는 함수를 말합니다. 보다 자세한 내용은 위키피디아의 [Monomorphism](https://en.wikipedia.org/wiki/Monomorphism) 항목 및 [단사 사상](https://ko.wikipedia.org/wiki/단사_사상) 항목, 그리고 [Injective function](https://en.wikipedia.org/wiki/Injective_function) 항목 및 [단사 함수](https://ko.wikipedia.org/wiki/단사_함수) 항목을 보도록 합니다.
 
-[^method-signature]: '메소드 서명 (method signature)' 은 메소드 이름과 매개 변수의 개수 및 타입, 그리고 순서 등으로 구성된 것으로, 메소드를 식별하기 위해 사용되는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목에 있는 [Method signature](https://en.wikipedia.org/wiki/Type_signature#Method_signature) 부분을 참고하기 바랍니다.
+[^method-signature]: '메소드 서명 (method signature)' 은 메소드 이름과 매개 변수의 개수 및 타입, 그리고 순서 등으로 구성된 것으로, 메소드를 식별하기 위해 사용되는 것입니다. 보다 자세한 정보는 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목에 있는 [Method signature](https://en.wikipedia.org/wiki/Type_signature#Method_signature) 부분을 보도록 합니다.

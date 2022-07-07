@@ -66,7 +66,7 @@
 
 <p>위에 있는 예제는 <code class="highlighter-rouge">numberOfLegs</code> 라는 변수를 정의하고 이를 세 개의 키-값 쌍을 가지고 있는 ‘딕셔너리 글자표현 (dictionary literal)’ 으로 초기화하고 있습니다. <code class="highlighter-rouge">numberOfLegs</code> 딕셔너리의 타입은 <code class="highlighter-rouge">[String: Int]</code> 로 추론합니다. 딕셔너리를 만든 다음, 이 예제는 첨자 연산 할당을 사용하여 문자열 키가 <code class="highlighter-rouge">"bird"</code> 이고 <code class="highlighter-rouge">Int</code> 값이 <code class="highlighter-rouge">2</code> 인 원소를 딕셔너리에 할당합니다.</p>
 
-<p><code class="highlighter-rouge">Dictionary</code> 첨자 연산에 대한 더 많은 정보는 <a href="https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID116">Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)</a> 를 참고하기 바랍니다.</p>
+<p><code class="highlighter-rouge">Dictionary</code> 첨자 연산에 대한 더 많은 정보는 <a href="https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html#ID116">Accessing and Modifying a Dictionary (딕셔너리에 접근하고 수정하기)</a> 를 보도록 합니다.</p>
 
 <blockquote>
   <p>스위프트의 ‘딕셔너리’ 타입은 키-값 첨자 연산이 옵셔널 타입을 받아들이고 반환하는 것으로 구현하고 있습니다. 위의 <code class="highlighter-rouge">numberOfLegs</code> 딕셔너리에서는, 키-값 첨자 연산이 값의 타입으로 <code class="highlighter-rouge">Int?</code>, 또는 “옵셔널 정수 (optional int)” 를 받아들이고 반환합니다. <code class="highlighter-rouge">Dictionary</code> 타입이 옵셔널 첨자 연산 타입을 사용한다는 것은 모든 키가 값을 가지는 것은 아니라는 사실을 모델링하고 있기도 하고, 키에 <code class="highlighter-rouge">nil</code> 값을 할당하여 그 키에 대한 값을 지울 수 있는 방법을 제공하고 있는 것이기도 합니다.</p>

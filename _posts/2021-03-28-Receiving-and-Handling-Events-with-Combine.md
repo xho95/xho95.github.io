@@ -6,7 +6,7 @@ date:   2021-03-28 11:30:00 +0900
 categories: Swift Framework Combine Event
 ---
 
-> 이 글은 '애플 개발자 문서' 에 있는 [Receiving and Handling Events with Combine](https://docs.swift.org/swift-book/) 문서를 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다. 'Combine' 프레임웍에 대해서는, [Combine Framework (프레임웍)]({% post_url 2021-03-27-Combine %}) 문서를 참고하기 바랍니다.[^combine]
+> 이 글은 '애플 개발자 문서' 에 있는 [Receiving and Handling Events with Combine](https://docs.swift.org/swift-book/) 문서를 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 것입니다. 'Combine' 프레임웍에 대해서는, [Combine Framework (프레임웍)]({% post_url 2021-03-27-Combine %}) 문서를 보도록 합니다.[^combine]
 
 ## Receiving and Handling Events with Combine ('Combine' 으로 이벤트 받고 처리하기)
 
@@ -104,12 +104,12 @@ sub?.cancel()
 
 [^combine]: `Combine` 은 애플이 [WWDC 2019](https://developer.apple.com/videos/wwdc2019/) 에서 발표한 프레임웍입니다.
 
-[^declarative]: '선언형 (declarative)' 에 대한 더 자세한 정보는, 위키피디아의 [Declarative programming](https://en.wikipedia.org/wiki/Declarative_programming) 항목과 [선언형 프로그래밍](https://ko.wikipedia.org/wiki/선언형_프로그래밍) 항목을 참고하기 바랍니다.
+[^declarative]: '선언형 (declarative)' 에 대한 더 자세한 정보는, 위키피디아의 [Declarative programming](https://en.wikipedia.org/wiki/Declarative_programming) 항목과 [선언형 프로그래밍](https://ko.wikipedia.org/wiki/선언형_프로그래밍) 항목을 보도록 합니다.
 
-[^appkit]: `AppKit` 은 'macOS' 의 'UI' 를 구성하기 위한 프레임웍입니다. '앱 킷 (AppKit)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [AppKit](https://developer.apple.com/documentation/appkit) 을 참고하기 바랍니다.
+[^appkit]: `AppKit` 은 'macOS' 의 'UI' 를 구성하기 위한 프레임웍입니다. '앱 킷 (AppKit)' 에 대한 더 자세한 정보는, 애플 개발자 문서의 [AppKit](https://developer.apple.com/documentation/appkit) 을 보도록 합니다.
 
 [^default-instance]: '`default` 인스턴스' 는 `NotificationCenter` 에 정의되어 있는 '전역 변수' 입니다.
 
-[^associated-type]: '결합 타입 (associated type)' 은 프로토콜에서 사용하는 타입에 '자리 표시용 (placeholder) 이름' 을 부여한 것입니다. '결합 타입' 에 대한 더 자세한 정보는, [스위프트 프로그래밍 언어 (Swift Programming Language)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 책의 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장에 있는 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
+[^associated-type]: '결합 타입 (associated type)' 은 프로토콜에서 사용하는 타입에 '자리 표시용 (placeholder) 이름' 을 부여한 것입니다. '결합 타입' 에 대한 더 자세한 정보는, [스위프트 프로그래밍 언어 (Swift Programming Language)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 책의 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장에 있는 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 보도록 합니다.
 
 [^view-model]: 여기서의 '뷰 모델 객체 (view model object)' 는 'MVVM' 에 있는 '뷰 모델 (View Model)' 을 말하는 것입니다. 스위프트에서 'MVVM' 의 '뷰 모델' 은 항상 '클래스' 로 구현하기 때문에 '뷰 모델 객체' 라는 용어를 사용한 것으로 추측됩니다.

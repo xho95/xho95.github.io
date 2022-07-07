@@ -47,7 +47,7 @@ _소스 파일 (source file)_ 은 모듈 안에 있는 단일한 스위프트 �
 
 예를 들면 다음과 같습니다:
 
-* 공용 변수는 내부나, 파일-전용, 또는 개인 전용 타입을 가지게 정의할 수 ㄴ없는데, 공용 변수를 사용한 모든 곳에서 타입을 사용하지 못할 지도 모르기 때문입니다.
+* 공용 변수는 내부나, 파일-전용, 또는 개인 전용 타입을 가지게 정의할 수 없는데, 공용 변수를 사용한 모든 곳에서 타입을 사용하지 못할지도 모르기 때문입니다.
 * 함수는 자신의 매개 변수 타입 및 반환 타입보다 더 높은 접근 수준을 가질 수 없는데, 함수를 사용한 곳 주위 코드에서 자신의 구성 요소 타입을 사용하지 못할 수도 있기 때문입니다.
 
 언어의 서로 다른 부분에서 이 지침이 가지는 특정한 의미는 밑에서 자세히 다룹니다:
@@ -389,7 +389,7 @@ extension SomeStruct: SomeProtocol {
 
 [^stored-properties]: 저장 속성의 획득자와 설정자는 스위프트가 자동으로 만들어 주지만, 이들의 접근 수준은 개발자가 조절할 수 있다는 의미입니다.
 
-[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다. 
+[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다. 
 
 [^more-public]: 더 공개 (public) 일 수 없다는 건 더 높은 접근 수준을 가질 수 없다는 의미입니다. 어떤 속성을 '공개 (public)' 하고 싶으면 그 속성을 가진 타입도 반드시 공개 (public) 해야 합니다.
 

@@ -194,7 +194,7 @@ print("Car: \(car.description)")
 <strong id="overriding-proper92ty-observers-속성-관찰자-재정의하기">Overriding Property Observers (속성 관찰자 재정의하기)</strong>
 </p>
 
-속성 재정의를 사용하면 상속한 속성에 속성 관찰자를 추가할 수 있습니다. 이는, 그 속성의 원본 구현 방법과는 상관없이, 상속한 속성 값이 바뀔 때 알림을 받을 수 있게 합니다. 속성 관찰자에 대한 더 많은 정보는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
+속성 재정의를 사용하면 상속한 속성에 속성 관찰자를 추가할 수 있습니다. 이는, 그 속성의 원본 구현 방법과는 상관없이, 상속한 속성 값이 바뀔 때 알림을 받을 수 있게 합니다. 속성 관찰자에 대한 더 많은 정보는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 > 상속한 상수 저장 속성이나 상속한 읽기-전용 계산 속성엔 속성 관찰자를 추가할 수 없습니다. 이 속성은 값을 설정할 수 없으므로, 재정의 부분에서 `willSet` 이나 `didSet` 구현을 제공하는 게 적절하지 않습니다.
 >

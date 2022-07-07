@@ -1,4 +1,4 @@
-I"�I<p>제가 블로그를 만들면서 처음으로 작성한 글은 <a href="/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html">Jekyll 기반의 GitHub Pages에 블로그 만들기</a> 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.</p>
+I"�I<p>제가 블로그를 만들면서 처음으로 작성한 글은 <a href="/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html">Jekyll 기반의 GitHub Pages에 블로그 만들기</a> 라는 글입니다. 즉 Jekyll 로 블로그를 만들면서 그 과정을 자연스럽게 글로 정리를 한 것이었습니다.</p>
 
 <p>그런데 최근 Jekyll 의 구조가 제가 처음에 익히던 때와는 많이 달라졌다는 것을 알게 되었습니다. 따라서 예전에 정리한 설명도 지금과는 맞지 않는 부분이 생겼습니다.</p>
 
@@ -158,8 +158,8 @@
 <h3 id="관련-자료">관련 자료</h3>
 
 <ul>
-  <li>예전 버전의 Jekyll 로 블로그를 만드는 방법에 대해서는 <a href="/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html">Jekyll 기반의 GitHub Pages에 블로그 만들기</a> 을 참고하기 바랍니다.</li>
-  <li>Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 <a href="/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html">MarkDown 문서를 이용하여 블로그에 포스트하기</a> 을 참고하기 바랍니다.</li>
+  <li>예전 버전의 Jekyll 로 블로그를 만드는 방법에 대해서는 <a href="/blog/github/jekyll/git/2016/01/11/Make-a-blog-with-Jekyll.html">Jekyll 기반의 GitHub Pages에 블로그 만들기</a> 을 보도록 합니다.</li>
+  <li>Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 <a href="/jekyll/markdown/atom/kramdown/2016/01/12/Post-a-new-MarkDown-file.html">MarkDown 문서를 이용하여 블로그에 포스트하기</a> 을 보도록 합니다.</li>
   <li>Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 <a href="/blog/jekyll/disqus/migration/2017/01/21/Add-Disqus-to-Jekyll.html">Jekyll: Disqus 연결부터 마이그레이션까지</a> 를 보도록 합니다.</li>
 </ul>
 

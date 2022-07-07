@@ -276,7 +276,7 @@ signedOverflow = signedOverflow &- 1
 
 이 계산이 내는 최종 답은 `17` 입니다.
 
-스위프트 표준 라이브러리가 제공한 연산자에 대한, 연산자 우선권 그룹과 결합성 설정의 완전한 목록을 포함한, 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 바랍니다.
+스위프트 표준 라이브러리가 제공한 연산자에 대한, 연산자 우선권 그룹과 결합성 설정의 완전한 목록을 포함한, 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
 > 스위프트의 연산자 우선권과 결합성 규칙은 C 및 오브젝티브-C 의 것보다 단순하여 더 예측하기 쉽습니다. 하지만, 이는 C-기반 언어의 것과 정확히 똑같지는 않다는 의미이기도 합니다. 기존 코드를 스위프트로 이식할 땐 연산자가 여전히 의도대로 상호 작용하도록 보장하는데 주의하기 바랍니다.
 
@@ -399,7 +399,7 @@ if twoThree == anotherTwoThree {
 
 ### Custom Operators (사용자 정의 연산자)
 
-스위프트가 제공하는 표준 연산자에 더해 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. 자신만의 연산자 정의에 사용할 수 있는 문자 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 참고하기 바랍니다.
+스위프트가 제공하는 표준 연산자에 더해 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. 자신만의 연산자 정의에 사용할 수 있는 문자 목록은, [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 부분을 보도록 합니다.
 
 새로운 연산자는 전역 수준에서 `operator` 키워드로 선언하며[^global-level], `prefix` 나, `infix`, 또는 `postfix` 수정자를 표시합니다:
 
@@ -444,15 +444,15 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스임
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 동일한 우선권 그룹을 줬습니다. 스위프트 표준 라이브러리가 제공한, 연산자 우선권 그룹 및 결합성 설정에 대한 완전한 목록을 포함하는, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 참고하기 바랍니다. 우선권 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선권 그룹 정의 구문을 보려면, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 참고하기 바랍니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 동일한 우선권 그룹을 줬습니다. 스위프트 표준 라이브러리가 제공한, 연산자 우선권 그룹 및 결합성 설정에 대한 완전한 목록을 포함하는, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 보도록 합니다. 우선권 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선권 그룹 정의 구문을 보려면, [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 보도록 합니다.
 
 > 접두사나 접미사 연산자를 정의할 땐 우선권을 지정하지 않습니다. 하지만, 동일한 피연산자에 접두사와 접미사 연산자를 둘 다 적용하면, 접미사 연산자가 먼저 적용됩니다.
 
 ### Result Builders (결과 제작자)
 
-_결과 제작자 (result builder)_ 는 직접 정의하는 타입으로, 리스트나 트리 같이[^list-or-tree], 중첩된 데이터를, 자연스러운, 선언형 방식으로, 생성하게 하는 구문을 추가합니다. 결과 제작자를 사용한 코드는, `if` 와 `for` 같은, 평범한 스위프트 구문을 포함하여, 데이터의 조건이나 반복을 처리할 수 있습니다.
+_결과 제작자 (result builder)_ 는, 자연스러운, 선언형 방식으로, 리스트나 트리 같은[^list-or-tree], 중첩 데이터 생성 구문을 추가하는 직접 정의하는 타입합니다. 결과 제작자를 사용한 코드는, `if` 와 `for` 같은, 평범한 스위프트 구문을 포함해서, 조건이나 데이터 조각의 반복을 처리할 수 있습니다.
 
-아래 코드는 별(문자) 와 텍스트를 한 줄 위에 그리기 위한 몇 가지 타입을 정의합니다.
+아래 코드는 한 줄 위에 별과 글로 그림을 그리는 몇 가지 타입을 정의합니다.
 
 ```swift
 protocol Drawable {
@@ -484,7 +484,7 @@ struct AllCaps: Drawable {
 
 `Drawable` 프로토콜은, 선이나 도형 같이, 그릴 것에 대한 필수 조건을 정의하는데: 타입은 반드시 `draw()` 함수를 구현해야 합니다. `Line` 구조체는 단 한-줄짜리 그림을 나타내며, 대부분의 그림에서 최-상단 컨테이너[^container] 역할을 합니다. `Line` 을 그리고자, 구조체는 각 줄 (line) 성분의 `draw()` 를 호출한 다음, 결과 문자열을 단일 문자열로 이어붙입니다. `Text` 구조체는 문자열을 포장하여 그림으로 만듭니다. `AllCaps` 구조체는 또 다른 그림을 포장 및 수정하는데, 그림 안의 어떤 문장이든 대문자로 변환합니다.
 
-이 타입들의 초기자를 호출함으로써 그림을 만드는 게 가능합니다:
+이 타입들의 초기자를 호출하면 그림을 만드는게 가능합니다:
 
 ```swift
 let name: String? = "Ravi Patel"
@@ -592,7 +592,7 @@ let manyStars = draw {
 
 위 코드에서, `for` 반복문은 그림 배열을 생성하며, `buildArray(_:)` 메소드가 그 배열을 `Line` 으로 바꿉니다.
 
-제작자 구문을 제작자 타입의 메소드 호출로 스위프트가 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 부분을 참고하기 바랍니다.
+제작자 구문을 제작자 타입의 메소드 호출로 스위프트가 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 부분을 보도록 합니다.
 
 ### 다음 장
 
@@ -602,27 +602,27 @@ let manyStars = draw {
 
 [^Advanced-Operators]: 이 글에 대한 원문은 [Advanced Operators](https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html) 에서 확인할 수 있습니다.
 
-[^ampersand]: '앰퍼샌드 (ampersand; `&`)' 는 영어로 `and` 를 의미하는 라틴어의 `et` 에서 유래한 단어로 '앤드 기호' 라고도 합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Ampersand](https://en.wikipedia.org/wiki/Ampersand) 항목과 [앰퍼샌드](https://ko.wikipedia.org/wiki/앰퍼샌드) 항목을 참고하기 바랍니다.
+[^ampersand]: '앰퍼샌드 (ampersand; `&`)' 는 영어로 `and` 를 의미하는 라틴어의 `et` 에서 유래한 단어로 '앤드 기호' 라고도 합니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Ampersand](https://en.wikipedia.org/wiki/Ampersand) 항목과 [앰퍼샌드](https://ko.wikipedia.org/wiki/앰퍼샌드) 항목을 보도록 합니다.
 
-[^exclusive-or]: '배타적 논리 합 (exclusive OR)' 에 대한 더 자세한 내용은, 위키피디아의 [Exclusive or](https://en.wikipedia.org/wiki/Exclusive_or) 항목과 [배타적 논리합](https://ko.wikipedia.org/wiki/배타적_논리합) 항목을 참고하기 바랍니다. 
+[^exclusive-or]: '배타적 논리 합 (exclusive OR)' 에 대한 더 자세한 내용은, 위키피디아의 [Exclusive or](https://en.wikipedia.org/wiki/Exclusive_or) 항목과 [배타적 논리합](https://ko.wikipedia.org/wiki/배타적_논리합) 항목을 보도록 합니다. 
 
-[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer) 나 수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각각의 구성 요소를 말합니다. '인수 분해 (factorization)' 에서의 인수가 이것입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 참고하기 바랍니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
+[^factor]: '인수 (factor)' 는 수학 용어로, '정수 (integer) 나 수식 (equation)' 을 몇 개의 곱으로 나타냈을 때, 각각의 구성 요소를 말합니다. '인수 분해 (factorization)' 에서의 인수가 이것입니다. '인수 (factor)' 에 대한 더 자세한 정보는, 위키피디아의 [Factor (mathematics)](https://en.wikipedia.org/wiki/Factor#Mathematics) 항목과 [인수](https://ko.wikipedia.org/wiki/인수) 항목을 보도록 합니다. 요즘에는 '인수' 보다 [약수](https://ko.wikipedia.org/wiki/약수) ([divisor](https://en.wikipedia.org/wiki/Divisor)) 라는 말을 더 많이 사용하는 것 같습니다.
 
-[^CSS]: 원문은 'Cascading Style Sheets' 라고 되어 있는데, CSS 라는 줄임말이 더 유명하며 이해하기 쉬울 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 참고하기 바랍니다.
+[^CSS]: 원문은 'Cascading Style Sheets' 라고 되어 있는데, CSS 라는 줄임말이 더 유명하며 이해하기 쉬울 것입니다. 'CSS' 에 대한 더 자세한 정보는, 위키피디아의 [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 항목과 [종속형 시트](https://ko.wikipedia.org/wiki/종속형_시트) 항목을 보도록 합니다.
 
-[^two-s-complement]: `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 걸 '2의 보수 (two's complement)' 라고 합니다. 2의 보수를 사용하면, `0` 의 표현 방식을 한 가지로 통일할 수 있으며, 사칙 연산도 자연스러워집니다. 2의 보수에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 참고하기 바랍니다.
+[^two-s-complement]: `2` 의 `n` 제곱에서 자신의 절대 값을 뺀 걸 '2의 보수 (two's complement)' 라고 합니다. 2의 보수를 사용하면, `0` 의 표현 방식을 한 가지로 통일할 수 있으며, 사칙 연산도 자연스러워집니다. 2의 보수에 대한 더 자세한 정보는, 위키피디아의 [Two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) 항목과 [2의 보수](https://ko.wikipedia.org/wiki/2의_보수) 항목을 보도록 합니다.
 
-[^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은, 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 항목과 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 항목을 참고하기 바랍니다.
+[^arithmetic-shift]: '산술 이동 (arithmetic shift)' 에 대한 더 자세한 내용은, 위키피디아의 [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift) 항목과 [산술 시프트](https://ko.wikipedia.org/wiki/산술_시프트) 항목을 보도록 합니다.
 
-[^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 9, 0, 1 ... 9, 0, ...` 처럼 최대 값을 넘어선 수들이 다시 처음부터 되풀이되는 걸 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 참고하기 바랍니다.
+[^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 9, 0, 1 ... 9, 0, ...` 처럼 최대 값을 넘어선 수들이 다시 처음부터 되풀이되는 걸 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 보도록 합니다.
 
-[^associativity]: 스위프트의 '결합성 (associativity)' 은 수학 분야에 있는 '결합 법칙 (associative law)' 과 관련이 있습니다. 결합 법칙에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
+[^associativity]: 스위프트의 '결합성 (associativity)' 은 수학 분야에 있는 '결합 법칙 (associative law)' 과 관련이 있습니다. 결합 법칙에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 보도록 합니다.
 
 [^operator-declarations]: 원문 자체가 '애플 개발자 문서' 로 연결된 링크입니다.
 
-[^infix]: '중위 (infix)' 는 '중간에 위치한다' 라는 말을 줄인 것으로, 수학에서 사용하는 용어입니다. '중위 (infix)' 에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다. 
+[^infix]: '중위 (infix)' 는 '중간에 위치한다' 라는 말을 줄인 것으로, 수학에서 사용하는 용어입니다. '중위 (infix)' 에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 보도록 합니다. 
 
-[^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 참고하기 바랍니다.
+[^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% post_url 2017-03-03-Nested-Types %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 보도록 합니다.
 
 [^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. 스위프트 프로그래밍 언어 책의 예제는 각각의 장별로 내용이 이어집니다.
 
@@ -632,12 +632,12 @@ let manyStars = draw {
 
 [^operator-declarations-apple]: 원문 자체가 '애플 개발자 문서' 로 가는 링크로 되어 있습니다.
 
-[^list-or-tree]: '리스트 (list) 와 트리 (tree)' 자료 구조에 대한 더 자세한 정보는, 위키피디아의 [Linked list](https://en.wikipedia.org/wiki/Linked_list) 항목 및 [연결 리스트](https://ko.wikipedia.org/wiki/연결_리스트) 그리고 [Tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) 항목 및 [트리 구조](https://ko.wikipedia.org/wiki/트리_구조) 항목을 참고하기 바랍니다.
+[^list-or-tree]: '리스트 (list) 와 트리 (tree)' 자료 구조에 대한 더 자세한 정보는, 위키피디아의 [Linked list](https://en.wikipedia.org/wiki/Linked_list) 항목 및 [연결 리스트](https://ko.wikipedia.org/wiki/연결_리스트) 그리고 [Tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) 항목 및 [트리 구조](https://ko.wikipedia.org/wiki/트리_구조) 항목을 보도록 합니다.
 
-[^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
+[^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 보도록 합니다.
 
 [^greeting-draw]: `makeGreeting` 함수 안에서 `draw { ... }` 부분과 `caps { ... }` 부분이 이 함수들을 호출하는 부분이며, 이 때 `DrawingBuilder` 가 정의한 특수 구문을 사용하게 됩니다.
 
 [^greeting-caps]: `makeGreeting` 함수 안에서 `caps { ... }` 부분을 본문 아래 처럼 변형한다는 의미입니다.
 
-[^container]: 여기서의 '컨테이너 (container)' 는 자료 구조 타입을 의미합니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. 컨테이너에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 참고하기 바랍니다.
+[^container]: 여기서의 '컨테이너 (container)' 는 자료 구조 타입을 의미합니다. 예제에 있는 `List` 구조체도 그리기 가능한 원소들을 `[Drawable]` 처럼 배열로 담고 있습니다. 컨테이너에 대한 더 자세한 정보는, 위키피디아의 [Container (abstract data type)](https://en.wikipedia.org/wiki/Container_(abstract_data_type) 항목을 보도록 합니다.

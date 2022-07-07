@@ -1,7 +1,7 @@
 I"<blockquote>
   <p>이 글은 Jekyll 블로그에서 Markdown 로 포스팅하는 방밥을 정리한 것입니다.</p>
 
-  <p>Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 <a href="/blog/jekyll/github/2020/05/06/Jekyll-Blog.html">Jekyll: 블로그 제작의 모든 것</a> 을 참고하기 바랍니다.</p>
+  <p>Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 <a href="/blog/jekyll/github/2020/05/06/Jekyll-Blog.html">Jekyll: 블로그 제작의 모든 것</a> 을 보도록 합니다.</p>
 </blockquote>
 
 <h2 id="jekyll-markdown-으로-새-포스트-만들기">Jekyll: MarkDown 으로 새 포스트 만들기</h2>
@@ -77,16 +77,16 @@
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:posts" role="doc-endnote">
-      <p>이에 대한 더 자세한 내용은 Jeyll 홈페이지의 <a href="https://jekyllrb.com/docs/posts/">Posts</a> 를 참고하기 바랍니다. <a href="#fnref:posts" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>이에 대한 더 자세한 내용은 Jeyll 홈페이지의 <a href="https://jekyllrb.com/docs/posts/">Posts</a> 를 보도록 합니다. <a href="#fnref:posts" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:front-matter" role="doc-endnote">
       <p>‘front matter’ 라고 하면 우리 말로는 ‘서문’ 정도에 해당합니다. Jekyll 의 모든 포스트는 이 ‘서문’ 이 문서 맨 앞에 반드시 있어야 하는데, Jekyll 이 이 ‘서문’ 을 해석해서 해당 포스트의 이름과 경로를 지정하기 때문입니다. <a href="#fnref:front-matter" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:naming-of-github-pages" role="doc-endnote">
-      <p>이에 대한 내용은 <a href="https://help.github.com/en/github/working-with-github-pages/adding-content-to-your-github-pages-site-using-jekyll#adding-a-new-page-to-your-site">Adding a new page to your site</a> 를 참고하기 바랍니다. <a href="#fnref:naming-of-github-pages" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>이에 대한 내용은 <a href="https://help.github.com/en/github/working-with-github-pages/adding-content-to-your-github-pages-site-using-jekyll#adding-a-new-page-to-your-site">Adding a new page to your site</a> 를 보도록 합니다. <a href="#fnref:naming-of-github-pages" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:naming-sample-of-jekyll" role="doc-endnote">
-      <p>이에 대한 내용은 <a href="https://jekyllrb.com/docs/posts/#creating-posts">Creating Posts</a> 를 참고하기 바랍니다. <a href="#fnref:naming-sample-of-jekyll" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>이에 대한 내용은 <a href="https://jekyllrb.com/docs/posts/#creating-posts">Creating Posts</a> 를 보도록 합니다. <a href="#fnref:naming-sample-of-jekyll" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:kramdown" role="doc-endnote">
       <p>GitHub 에서는 markdown 기본 번역 엔진으로 ‘kramdown’ 을 사용합니다. 그리고 Jekyll 4.x 버전부터는 kramdown-1.x 버전을 지원하지 않습니다. <a href="#fnref:kramdown" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

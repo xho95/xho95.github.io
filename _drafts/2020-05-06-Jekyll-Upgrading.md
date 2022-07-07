@@ -8,7 +8,7 @@ categories: Blog Jekyll Upgrade Ruby Bundler
 
 > 이 글은 Jekyll 버전을 업그레이드하는 내용을 정리한 것입니다.
 >
-> Jekyll 로 블로그를 제작하는 방법은 [Jekyll: 블로그 제작의 모든 것]({% post_url 20202-05-06-Jekyll-Blog %}) 을 참고하기 바랍니다.
+> Jekyll 로 블로그를 제작하는 방법은 [Jekyll: 블로그 제작의 모든 것]({% post_url 20202-05-06-Jekyll-Blog %}) 을 보도록 합니다.
 
 ## Jekyll: 버전 4.x 로 업그레이드하기
 
@@ -82,7 +82,7 @@ $ bundle init
 
 직접 Gemfile 을 만드는 방법은 [Could not locate Gemfile or .bundle/ directory](https://forestry.io/docs/troubleshooting/could-not-locate-gemfile-or-bundle-directory/) 에 나온대로 위와 같이 하면 됩니다.
 
-> 'Gemfiles' 은 최소한 하나 이상의, RubyGems 서버에 대한 URL 양식의, 'gem' 소스를 요구합니다. 위 명령은 기본적인 rubygems.org 소스를 사용해서 'Gemfile' 을 생성하는 명령입니다. 이에 대한 설명은 [Gemfiles](https://bundler.io/gemfile.html#gemfiles) 를 참고하기 바랍니다.
+> 'Gemfiles' 은 최소한 하나 이상의, RubyGems 서버에 대한 URL 양식의, 'gem' 소스를 요구합니다. 위 명령은 기본적인 rubygems.org 소스를 사용해서 'Gemfile' 을 생성하는 명령입니다. 이에 대한 설명은 [Gemfiles](https://bundler.io/gemfile.html#gemfiles) 를 보도록 합니다.
 
 
 ### `bundle update jekyll`

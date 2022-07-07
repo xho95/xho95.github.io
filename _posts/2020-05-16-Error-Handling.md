@@ -16,7 +16,7 @@ _에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하�
 
 예를 들어, 디스크 (disk) 에 있는 ㄴ파일에서 자료를 읽고 가공하는 임무를 고려해 봅시다. 특정 경로에 파일이 존재하지 않거나, 파일을 읽을 권한이 없거나, 또는 호환 가능한 양식으로 파일을 부호화 (encoded) 하지 않은 걸 포함한, 다수의 이유로 이 임무가 실패할 수 있습니다. 이 서로 다른 상황들 사이를 구별하는 건 프로그램이 일부 에러는 해결하도록 그리고 해결할 수 없는 어떤 에러든 사용자와 소통하도록 허용합니다.
 
-> 스위프트의 에러 처리는 Cocoa 및 오브젝티브-C 에서 `NSError` 클래스를 사용하는 에러 처리 패턴과 상호 호환됩니다. 이 클래스에 대한 더 많은 정보는, [Handling Cocoa Errors in Swift (스위프트에서 Cocoa 에러 처리하기)](https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift) 를 참고하기 바랍니다.
+> 스위프트의 에러 처리는 Cocoa 및 오브젝티브-C 에서 `NSError` 클래스를 사용하는 에러 처리 패턴과 상호 호환됩니다. 이 클래스에 대한 더 많은 정보는, [Handling Cocoa Errors in Swift (스위프트에서 Cocoa 에러 처리하기)](https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift) 를 보도록 합니다.
 
 ### Representing and Throwing Errors (에러 나타내기 및 던지기)
 
@@ -151,7 +151,7 @@ struct PurchasedSnack {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`catch` 뒤에 패턴 (pattern) 을 작성하여 그 절이 처리할 수 있는 에러를 지시합니다. `catch` 절에 패턴이 없으면, 그 절은 어떤 에러와도 일치하며 `error` 라는 이름의 지역 상수와 에러를 연결 (bind) 합니다. 패턴 맞춤 (pattern matching) 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다.
+`catch` 뒤에 패턴 (pattern) 을 작성하여 그 절이 처리할 수 있는 에러를 지시합니다. `catch` 절에 패턴이 없으면, 그 절은 어떤 에러와도 일치하며 `error` 라는 이름의 지역 상수와 에러를 연결 (bind) 합니다. 패턴 맞춤 (pattern matching) 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 보도록 합니다.
 
 예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 모든 case 들과 맞춰봅니다.
 
@@ -287,18 +287,18 @@ func processFile(filename: String) throws {
 
 [^Error-Handling]: 이 글에 대한 원문은 [Error Handling](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html) 에서 확인할 수 있습니다.
 
-[^first-class-support]: 스위프트가 에러 처리를 일-급 지원 (first-class support) 한다는 건 언어 수준에서 에러 처리를 지원한다는 의미입니다. 이에 대한 더 자세한 정보는 [Error Handling with Try and Catch in Swift](https://www.appypie.com/error-handling-swift-do-try-catch) 항목을 참고하기 바랍니다. 
+[^first-class-support]: 스위프트가 에러 처리를 일-급 지원 (first-class support) 한다는 건 언어 수준에서 에러 처리를 지원한다는 의미입니다. 이에 대한 더 자세한 정보는 [Error Handling with Try and Catch in Swift](https://www.appypie.com/error-handling-swift-do-try-catch) 항목을 보도록 합니다. 
 
 [^empty-protocol]: 스위프트의 `Error` 프로토콜은 본문 없이 비어 있는 프로토콜로 구현되어 있습니다. 즉, `Error` 라는 타입만 정의한 프로토콜입니다.
 
-[^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 참고하기 바랍니다.
+[^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 보도록 합니다.
 
-[^try-expression]: '`try` 표현식' 에 대한 더 자세한 정보는 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장의 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분을 참고하기 바랍니다.
+[^try-expression]: '`try` 표현식' 에 대한 더 자세한 정보는 [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 장의 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 부분을 보도록 합니다.
 
 [^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 즉, `try?` 는 사실상 모든 에러를 똑같은 방식으로만 처리할 수 있습니다.
 
 [^runtime-error]: 실행 시간에 에러를 던지지 않을 거라는 사실을 안다는 건, 결국 그 때가 '실행 시간에 에러가 나면 안될 때' 이기 때문입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 걸, 개발 과정에서 미리 파악하여 조치하고자 사용하는 겁니다.
 
-[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 보도록 합니다.
 
-[^runtime-assertion]: '실행시간 단언문 (runtime assertion)' 에 대한 더 자세한 정보는 [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 부분을 참고하기 바랍니다. 
+[^runtime-assertion]: '실행시간 단언문 (runtime assertion)' 에 대한 더 자세한 정보는 [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Assertions and Preconditions (단언문과 선행 조건문)]({% post_url 2016-04-24-The-Basics %}#assertions-and-preconditions-단언문과-선행-조건문) 부분을 보도록 합니다. 

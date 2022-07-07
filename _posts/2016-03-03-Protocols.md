@@ -215,9 +215,9 @@ class SomeClass: SomeProtocol {
 
 `required` 수정자를 사용하면 준수 클래스의 모든 하위 클래스도 초기자 필수 조건의 명시적 또는 상속 구현을 제공하도록 하여, 이들의 프로토콜 준수도, 보장합니다.
 
-필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 참고하기 바랍니다.
+필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 부분을 보도록 합니다.
 
-> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 부분을 참고하기 바랍니다.
+> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% post_url 2016-01-23-Initialization %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
 
 하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 일치하는 초기자 필수 조건도 구현한다면, 초기자 구현에 `required` 와 `override` 수정자를 둘 다 표시합니다:
 
@@ -244,7 +244,7 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능한-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
 
-실패 가능 초기자 필수 조건은 준수 타입에서 실패 가능 또는 실패하지 않는 초기자로 만족할 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 포장을 암시적으로 푸는 실패 가능 초기자로 만족할 수 있습니다.
+실패 가능 초기자 필수 조건은 준수 타입에서 실패 가능 또는 실패하지 않는 초기자로 만족할 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 암시적으로 포장 푸는 실패 가능 초기자로 만족할 수 있습니다.
 
 ### Protocols as Types (타입으로써의 프로토콜)
 
@@ -299,7 +299,7 @@ for _ in 1...5 {
 
 ### Delegation (맡김)
 
-_맡김 (delegation)_ 은 클래스나 구조체가 자신의 책임 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴은 맡길 책임을 은닉한 프로토콜 정의로 구현해서, 준수 타입 (일-맡길자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김은 특별한 한 행동에 응답하거나, 외부 소스의 실제 타입을 모르고도 그 소스에서 자료를 가져오는데 사용할 수 있습니다.
+_맡김 (delegation)_ 은 클래스나 구조체가 자신의 책임 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴은 맡길 책임을 은닉한 프로토콜 정의로 구현해서, 준수 타입 (일-맡은자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김은 특별한 한 행동에 응답하거나, 외부 소스의 실제 타입을 모르고도 그 소스에서 자료를 가져오는데 사용할 수 있습니다.
 
 아래 예제는 주사위-기반 보드 게임에 사용할 두 개의 프로토콜을 정의합니다:
 
@@ -318,7 +318,7 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이든 채택할 수 있는 프로토콜입니다.
 
-`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡길자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 참고하기 바랍니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡길자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
+`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡은자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 보도록 합니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡은자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
 
 원래 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 소개한 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전은 주사위-굴림 값으론 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
 
@@ -361,11 +361,11 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임의 플레이 설명은, [Break (b
 
 _뱀과 사다리 (Snakes and Ladders)_ 게임판 설정은 클래스의 `init()` 초기자 안에서 일어납니다. 모든 게임 논리는, 프로토콜의 필수 `dice` 속성으로 자신의 주사위 굴림 값을 제공하는, 프로토콜의 `play` 메소드 안으로 이동합니다.
 
-게임을 플레이하는데 일-맡길자 (delegate) 가 필수는 아니기 때문에, `delegate` 속성을 _옵셔널 (optional)_ `DiceGameDelegate`' 로 정의한다는 걸 기억하기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 초기 값을 `nil` 로 자동 설정합니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 속성에 적합한 일-맡길자를 설정할 옵션을 가집니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일-맡길자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
+게임 플레이에 일-맡은자 (delegate) 가 필수는 아니기 때문에, `delegate` 속성을 _옵셔널 (optional)_ `DiceGameDelegate`' 로 정의한다는 걸 기억하기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 초기 값을 `nil` 로 자동 설정합니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 속성에 적합한 일-맡은자를 설정할 옵션을 가집니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일-맡은자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
 
 `DiceGameDelegate` 는 게임의 진행 상황을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위의 `play()` 메소드 안에 있는 게임 논리에 편입되어 있어, 새 게임을 시작할 때나, 새 차례의 시작, 또는 게임이 끝날 때, 호출됩니다.
 
-`delegate` 속성은 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드가 일-맡길자의 메소드를 호출할 때마다 옵셔널 사슬[^optional-chaining] 을 사용합니다. `delegate` 속성이 'nil' 이면, 이 일-맡길자의 호출은 에러 없이 우아하게 실패합니다.[^gracefully-fail] `delegate` 속성이 'nil' 이 아니면, 일-맡길자의 메소드를 호출하며, 매개 변수로는 `SnakesAndLadders` 인스턴스를 전달합니다.[^snakes-and-ladders-instance]
+`delegate` 속성은 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드가 일-맡은자의 메소드를 호출할 때마다 옵셔널 사슬[^optional-chaining] 을 사용합니다. `delegate` 속성이 'nil' 이면, 이 일-맡은자의 호출은 에러 없이 우아하게 실패합니다.[^gracefully-fail] `delegate` 속성이 'nil' 이 아니면, 일-맡은자의 메소드를 호출하며, 매개 변수로는 `SnakesAndLadders` 인스턴스를 전달합니다.[^snakes-and-ladders-instance]
 
 이 다음 예제가 보여주는 건, `DiceGameDelegate` 프로토콜을 채택한, `DiceGameTracker` 라는 클래스입니다:
 
@@ -413,7 +413,7 @@ game.play()
 
 ### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
 
-기존 타입의 소스 코드에 접근할 수 없는 경우에도, 기존 타입을 확장하면 새로운 프로토콜을 채택하고 준수할 수 있습니다. 익스텐션 (extensions) 은 기존 타입에 새로운 속성, 메소드, 및 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건을 추가하는 것도 가능합니다. 익스텐션에 대한 더 많은 것은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 장을 참고하기 바랍니다.
+기존 타입의 소스 코드에 접근할 수 없는 경우에도, 기존 타입을 확장하면 새로운 프로토콜을 채택하고 준수할 수 있습니다. 익스텐션 (extensions) 은 기존 타입에 새로운 속성, 메소드, 및 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건을 추가하는 것도 가능합니다. 익스텐션에 대한 더 많은 것은, [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 장을 보도록 합니다.
 
 > 익스텐션에서 인스턴스의 타입에 프로토콜 준수성을 추가할 때 타입의 기존 인스턴스는 자동으로 그 프로토콜을 채택하고 준수합니다.
 
@@ -459,7 +459,7 @@ print(game.textualDescription)
 
 #### Conditionally Conforming to a Protocol (조건부로 프로토콜 준수하기)
 
-일반화 타입[^generic-type] 은, 타입의 일반화 매개 변수가 프로토콜을 준수할 때와 같은, 특정 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. 일반화 타입이 조건부로 프로토콜을 준수하게 하려면 타입을 확장할 때 구속 조건을 나열하면 됩니다. 이러한 구속 조건을 채택할 프로토콜 이름 뒤에 작성하는 건 일반화 `where` 절의 작성으로 합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 을 참고하기 바랍니다.
+일반화 타입[^generic-type] 은, 타입의 일반화 매개 변수가 프로토콜을 준수할 때와 같은, 특정 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. 일반화 타입이 조건부로 프로토콜을 준수하게 하려면 타입을 확장할 때 구속 조건을 나열하면 됩니다. 이러한 구속 조건을 채택할 프로토콜 이름 뒤에 작성하는 건 일반화 `where` 절의 작성으로 합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 을 보도록 합니다.
 
 다음 익스텐션은 저장한 원소의 타입이 `TextRepresentable` 을 준수할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하게 합니다.[^array-element]
 
@@ -644,7 +644,7 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려는 구조체 또는 열거체 정의를 작성하면 컴파일-시간 에러입니다.
 
-> 그 프로토콜의 필수 조건이 정의한 동작이 준수 타입은 값 의미 구조 보단 참조 의미 구조를 가진다고 가정 또는 요구할 때 클래스-전용 프로토콜을 사용합니다. 참조 및 값 의미 구조에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 참고하기 바랍니다.
+> 그 프로토콜의 필수 조건이 정의한 동작이 준수 타입은 값 의미 구조 보단 참조 의미 구조를 가진다고 가정 또는 요구할 때 클래스-전용 프로토콜을 사용합니다. 참조 및 값 의미 구조에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
 
 ### Protocol Composition (프로토콜 합성)
 
@@ -789,7 +789,7 @@ for object in objects {
 
 옵셔널 필수 조건에서 메소드나 속성을 사용할 땐, 자신의 타입이 자동으로 옵셔널이 됩니다. 예를 들어, `(Int) -> String` 타입의 메소드는 `((Int) -> String)?` 이 됩니다. 메소드의 반환 값이 아닌, 전체 함수 타입이 옵셔널로 포장된다는 걸 기억하기 바랍니다.
 
-옵셔널 프로토콜 필수 조건을 옵셔널 사슬로 호출하면, 프로토콜을 준수한 타입이 필수 조건을 구현하지 않았을 가능성을 서술할 수 있습니다. 옵셔널 메소드의 구현을 검사하려면, `someOptionalMethod?(someArgument)` 와 같이, 호출 때 메소드 이름 뒤에 물음표를 작성하면 됩니다. 옵셔널 사슬에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다.
+옵셔널 프로토콜 필수 조건을 옵셔널 사슬로 호출하면, 프로토콜을 준수한 타입이 필수 조건을 구현하지 않았을 가능성을 서술할 수 있습니다. 옵셔널 메소드의 구현을 검사하려면, `someOptionalMethod?(someArgument)` 와 같이, 호출 때 메소드 이름 뒤에 물음표를 작성하면 됩니다. 옵셔널 사슬에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 보도록 합니다.
 
 다음 예제는 정수를-세는 `Counter` 라는 클래스를 정의하는데, 이는 외부 데이터 소스를 사용하여 자신의 증가량을 제공합니다. 이 데이터 소스는, 두 개의 옵셔널 필수 조건이 있는, `CounterDataSource` 프로토콜로 정의합니다:
 
@@ -826,9 +826,9 @@ class Counter {
 
 여기서 _두 (two)_ 단계의 옵셔널 사슬로 동작함을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 인게 가능하므로, `dataSource` 이름 뒤에 물음표를 둬서 `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 를 호출해야함을 지시합니다. 두 번째로, `dataSource` 가 존재 _하 (does)_ 더라도, `increment(forCount:)` 가 옵셔널 필수 조건이기 때문에, 이를 구현한다는 보증이 없습니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성도 옵셔널 사슬로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 이름 뒤에도 물음표를 작성한 이유입니다.
 
-이 두 이유 중 어느 것으로도 `increment(forCount:)` 호출이 실패할 수 있기 때문에, 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-연결하기) 를 참고하기 바랍니다.
+이 두 이유 중 어느 것으로도 `increment(forCount:)` 호출이 실패할 수 있기 때문에, 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)]({% post_url 2020-06-17-Optional-Chaining %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-연결하기) 를 보도록 합니다.
 
-`increment(forCount:)` 호출 후에, 옵셔널 연결로, 반환한 옵셔널 `Int` 를 풀어서 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있으면-즉, 일-맡길자[^delegate] 와 메소드 둘 다 존재하고, 메소드가 값을 반환한 경우면-포장 푼 `amount` 를 `count` 저장 속성에 추가하고, 증가를 완료합니다.
+`increment(forCount:)` 호출 후에, 옵셔널 연결로, 반환한 옵셔널 `Int` 를 풀어서 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있으면-즉, 일-맡은자[^delegate] 와 메소드 둘 다 존재하고, 메소드가 값을 반환한 경우면-포장 푼 `amount` 를 `count` 저장 속성에 추가하고, 증가를 완료합니다.
 
 `increment(forCount:)` 메소드에서 값을 가져오는 게 _불 (not)_ 가능하면-`dataSource` 가 `nil` 이거나, 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인데-그 땐 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 값을 대신 가져오려고 합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이라서, `CounterDataSource` 프로토콜 정의 부분에서 `fixedIncrement` 를 옵셔널-아닌 `Int` 속성으로 정의할지라도, 그 값은 옵셔널 `Int` 입니다.
 
@@ -935,7 +935,7 @@ extension PrettyTextRepresentable {
 
 #### Adding Constraints to Protocol Extensions (프로토콜 익스텐션에 구속 조건 추가하기)
 
-프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 준수 타입이 이를 만족해야 익스텐션의 메소드와 속성을 쓸 수 있게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화-where-절) 부분을 참고하기 바랍니다.
+프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 준수 타입이 이를 만족해야 익스텐션의 메소드와 속성을 쓸 수 있게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}#generic-where-clauses-일반화-where-절) 부분을 보도록 합니다.
 
 예를 들어, `Collection` 프로토콜에 익스텐션을 정의하면서 그 원소가 `Equatable` 프로토콜을 준수하는 어떤 집합체에 적용되게 할 수 있습니다. 표준 라이브러리의 일부인, `Equatable` 프로토콜로 집합체 원소를 구속함으로써, `==` 와 `!=` 연산자로 두 원소의 같음 (equality) 과 다름 (inequality) 을 검사할 수 있습니다.
 
@@ -984,7 +984,7 @@ print(differentNumbers.allEqual())
 
 [^requirements]: '필수 조건 (requirements)' 은 어떠한 타입이 프로토콜을 준수하려면 반드시 구현해야 하는 조건들을 말합니다.
 
-[^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 참고하기 바랍니다.
+[^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 보도록 합니다.
 
 [^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
 
@@ -992,33 +992,33 @@ print(differentNumbers.allEqual())
 
 [^qualified]: 스위프트에서 '규명하다 (qualify)' 는 자신의 소속을 알린다는 의미입니다.
 
-[^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 '스타 트랙 (Star Trek)' 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 'USS 엔터프라이즈 (USS Enterprise)' 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 참고하기 바랍니다. 
+[^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 '스타 트랙 (Star Trek)' 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 'USS 엔터프라이즈 (USS Enterprise)' 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 보도록 합니다. 
 
 [^optional]: 우주선에 이름은 반드시 있어야 하지만, '경칭 (prefix)' 같은 건 옵션이므로, 옵셔널 타입으로 구현하고 있습니다.
 
 [^random]: 이는 스위프트 내장 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
-[^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 참고하기 바랍니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
+[^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 보도록 합니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
-[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다. 
+[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% post_url 2020-08-15-Declarations %}#declaration-modifiers-선언-수정자) 부분을 보기 바랍니다.
 
 [^required-initializer]: `required` 수정자로 표시한 초기자를 '필수 초기자 (required initializer)' 라고 한 건 준수 타입이 반드시 구현해야 하기 때문입니다.
 
-[^adopt]: 원문에서 준수 (conforming) 대신 채택 (adopt) 을 사용했습니다. 스위프트 문서에선 항상 준수와 채택이란 말을 분명히 구분하여 사용합니다. 이 둘의 차이점은 이 문서 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
+[^adopt]: 원문에서 준수 (conforming) 대신 채택 (adopt) 을 사용했습니다. 스위프트 문서에선 항상 준수와 채택이란 말을 분명히 구분하여 사용합니다. 이 둘의 차이점은 이 문서 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 보도록 합니다.
 
-[^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에서 공통으로 발생하는 소프트웨어 디자인 문제에 대한 일반적이며, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 항목과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 참고하기 바랍니다.   
+[^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에서 공통으로 발생하는 소프트웨어 디자인 문제에 대한 일반적이며, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 항목과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 보도록 합니다.   
 
-[^delegate]: 보통 '일-맡길자 (delegate)' 를 '대리자' 라고도 합니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 참고하기 바랍니다.
+[^delegate]: 보통 '일-맡은자 (delegate)' 를 대리자라고도 합니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 보도록 합니다.
 
-[^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 참고하기 바랍니다. 
+[^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 보도록 합니다. 
 
 [^instantiator]: '인스턴스를 만드는 자 (instantiator)' 는 코드 상에서 인스턴스를 생성하는 곳 또는 그 주체를 의미합니다. 실제 게임을 구현한다면, 일종의 `game manager` 같은 객체가 인스턴스를 생성할 텐데, 이 때 `game manager` 를 인스턴스를 만드는 자라고 할 수 있습니다.
 
-[^weak-reference-cycles]: `DiceGameDelegate` 프로토콜을 클래스-전용으로 만들지 않았다면, 일-맡길자를 `weak` 로 선언할 수 없어서 참조 순환이 발생할 수도 있었을 것입니다.
+[^weak-reference-cycles]: `DiceGameDelegate` 프로토콜을 클래스-전용으로 만들지 않았다면, 일-맡은자를 `weak` 로 선언할 수 없어서 참조 순환이 발생할 수도 있었을 것입니다.
 
-[^optional-chaining]: '옵셔널 사슬 (optional chaining)' 에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 참고하기 바랍니다. 
+[^optional-chaining]: '옵셔널 사슬 (optional chaining)' 에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 보도록 합니다. 
 
-[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 이에 대한 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 참고하기 바랍니다.
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 이에 대한 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장의 맨 앞부분 설명을 보도록 합니다.
 
 [^snakes-and-ladders-instance]: 예제 코드에 있는 `self` 가 `SnakesAndLadders` 인스턴스입니다.
 
@@ -1026,28 +1026,28 @@ print(differentNumbers.allEqual())
 
 [^adoption]: 이것이 스위프트에서 채택 (adoption) 과 준수 (conformance) 를 명확히 구분하여 사용하는 이유입니다.
 
-[^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 참고하기 바랍니다. 
+[^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 보도록 합니다. 
 
 [^synthesized]: 본문에서 말하는 '통합 구현 (synthesized implementation)' 은 스위프트 내부에 이미 구현되어 있다는 의미입니다. 즉, `Equatable` 프로토콜 같은 건 이미 스위프트에 있는 걸 그냥 사용하면 됩니다.
 
-[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
+[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 보도록 합니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분도 보도록 합니다.
 
-[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자, 동치 연산자,같음 연산자' 등으로 옮길 수 있는데, 위키피디아에서 '같음 (equal to)' 을 사용하고 있어서, 같음 비교라는 말을 사용합니다. 관계 연산자에 대한 더 자세한 내용은, 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
+[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자, 동치 연산자,같음 연산자' 등으로 옮길 수 있는데, 위키피디아에서 '같음 (equal to)' 을 사용하고 있어서, 같음 비교라는 말을 사용합니다. 관계 연산자에 대한 더 자세한 내용은, 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 보도록 합니다.
 
-[^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 참고하기 바랍니다.
+[^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장에 있는 [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 부분을 보도록 합니다.
 
 [^remaining-comparison-operators]: 스위프트는 `<` 연산자의 통합 구현 외에도, `<=`, `>`, `>=` 연산자들의 기본 구현을 제공하는데, 이러한 기본 구현들이 나머지 연산자들의 구현을 제공한다는 의미입니다. 즉, `<` 연산자의 통합 구현을 받으면, 그 외 나머지 연산자들은 구현하지 않아도 됩니다.
 
 [^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
-[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 참고하기 바랍니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다.
 
-[^type-safe]: '타입-안전 (type-safe) 하다' 는 건 '스위프트가 기본 제공하는 타입 추론 (type inference) 및 타입 검사 (type check) 기능을 사용할 수 있다' 는 의미입니다. 타입 추론 및 타입 검사에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
+[^type-safe]: '타입-안전 (type-safe) 하다' 는 건 '스위프트가 기본 제공하는 타입 추론 (type inference) 및 타입 검사 (type check) 기능을 사용할 수 있다' 는 의미입니다. 타입 추론 및 타입 검사에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
 
-[^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 참고하기 바랍니다.
+[^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장을 보도록 합니다.
 
 [^protocol-extend]: '프로토콜 익스텐션으로 프로토콜을 확장할 수 없다' 는 건 '프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다' 는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기존의 필수 조건에 기본 구현을 제공하거나 새로운 기능을 추가하기 위해, 사용하는 것입니다.
 
 [^array-and-integer]: 스위프트의 `Array` 타입은 `Collection` 프로토콜을 준수하고 `Int` 타입은 `Equatable` 을 준수하고 있다는 의미입니다.
 
-[^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건 중에서 적용 범위가 가장 좁은 것' 을 말합니다. 가장 특수화된 구속 조건에 대한 더 자세한 내용은, 애플 [Developer Forums](https://developer.apple.com/forums/) 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 참고하기 바랍니다.
+[^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건 중에서 적용 범위가 가장 좁은 것' 을 말합니다. 가장 특수화된 구속 조건에 대한 더 자세한 내용은, 애플 [Developer Forums](https://developer.apple.com/forums/) 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 보도록 합니다.

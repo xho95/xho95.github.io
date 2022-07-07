@@ -85,7 +85,7 @@ print(joinedTriangle.draw())
 
 ### Returning an Opaque Type (불투명 타입 반환하기)
 
-불투명 타입은 일반화 타입의 역방향이라고 생각할 수 있습니다. 일반화 타입은 함수 호출 코드가 그 함수의 매개 변수와 반환 값 타입을 고르게 해서 함수 구현을 추상화하는 방식입니다. 예를 들어, 다음 코드에서 함수가 반환할 타입은 자신을 호출한 쪽에 의존합니다:
+불투명 타입은 일반화 타입의 역방향이라고 생각할 수 있습니다. 일반화 타입은 그 함수의 매개 변수와 반환 값 타입을 함수를 호출하는 코드가 고르게 해서 함수 구현을 추상화하는 방식입니다. 예를 들어, 다음 코드에 있는 함수의 반환 타입은 자신을 호출한 쪽에 달려있습니다:
 
 ```swift
 func max<T>(_ x: T, _ y: T) -> T where T: Comparable { ... }
@@ -273,26 +273,26 @@ print(type(of: twelve))
 
 [^Opaque-Types]: 전체 원문은 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html)에서 확인할 수 있습니다.
 
-[^private]: '개인 전용 (private)' 은 스위프트의 '개체 (entity)' 에 대한 '접근 수준' 이 `private` 인 것을 말합니다. '개인 전용' 에 대한 더 자세한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 있는 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 부분을 참고하기 바랍니다.
+[^private]: '개인 전용 (private)' 은 스위프트의 '개체 (entity)' 에 대한 '접근 수준' 이 `private` 인 것을 말합니다. '개인 전용' 에 대한 더 자세한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 있는 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 부분을 보도록 합니다.
 
 [^type-identity]: '타입 정체성 (type identity) 을 보존한다' 는 건 불투명 타입을 사용하면 한 특정한 타입이 계속 유지된다 의미입니다. 프로토콜은 그 프로토콜을 준수하는 어떤 타입이든 모두 그 프로토콜 타입이기 때문에 타입 정체성을 보존할 수 없습니다.
 
-[^requirement]: '필수 조건 (requirement)' 은 그 프로토콜을 준수하는 타입이 반드시 구현해야 하는 조건을 의미합니다. 필수 조건에 대한 더 자세한 내용은, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장에 있는 설명을 참고하기 바랍니다.
+[^requirement]: '필수 조건 (requirement)' 은 그 프로토콜을 준수하는 타입이 반드시 구현해야 하는 조건을 의미합니다. 필수 조건에 대한 더 자세한 내용은, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장에 있는 설명을 보도록 합니다.
 
 [^flippedTriangle-Type]: 이 예제에서, `flippedTriangle` 은 `FlippedShape<Triangle>` 타입입니다. 본문이 의미하는 건, (모듈 안에 있어야 할) `FlippedShape` 이라는 타입이 모듈 밖으로 드러난다는 의미입니다.
 
 [^joinedTriangle-Type]: 원문에서는 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 라고 되어 있는데, `JoinedShape<Triangle, FlippedShape<Triangle>>` 이 맞는 것 같습니다.
 
-[^wrapper-types]: '포장 타입 (wrapper type)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 참고하기 바랍니다.
+[^wrapper-types]: '포장 타입 (wrapper type)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
 
 [^invalid-code]: 스위프트에서 '코드가 무효 (invalid) 하다' 는 건 그 코드를 컴파일하면 컴파일-시간 에러가 발생한다는 의미입니다.
 
-[^differ-type-identity]: '타입 정체성 (type identity)' 에 대해서는 이 장 맨 앞부분의 설명과 주석을 참고하기 바랍니다.
+[^differ-type-identity]: '타입 정체성 (type identity)' 에 대해서는 이 장 맨 앞부분의 설명과 주석을 보도록 합니다.
 
 [^less-sepcific]: 이는 '프로토콜 타입' 을 사용하면 해당 '프로토콜 필수 조건' 에서 정의한 인터페이스만 사용할 수 있기 때문입니다. 즉 타입 정보가 덜 특정해 질수록 사용할 수 있는 인터페이스가 더 줄어들게 됩니다.
 
 [^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
 
-[^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
+[^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 보도록 합니다.
 
-[^type-inference]: '타입 추론' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
+[^type-inference]: '타입 추론' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.

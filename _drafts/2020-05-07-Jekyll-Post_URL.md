@@ -8,7 +8,7 @@ categories: Blog Jekyll timezone post-url
 
 > 이 글은 Jekyll 블로그의 시간대 (timezone) 를 설정하고 `post_url` 을 사용하는 방법을 정리한 것입니다.
 >
-> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 참고하기 바랍니다.
+> Jekyll 로 블로그를 제작하고 설정하는 방법에 대한 전체 내용은 [Jekyll: 블로그 제작의 모든 것]({% post_url 2020-05-06-Jekyll-Blog %}) 을 보도록 합니다.
 
 ## Jekyll: 시간대 (timezone) 설정하고 `post_url` 사용하기
 
@@ -27,7 +27,7 @@ timezone: Asia/Seoul
 
 Jekyll 에서 사용할 수 있는 시간대 (timezone) 목록은 [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) 에 잘 나와 있습니다.
 
-설정 예제는 [Posting Jekyll Content on Time](https://mehmandarov.com/jekyll-content-on-time/) 을 참고하기 바랍니다.
+설정 예제는 [Posting Jekyll Content on Time](https://mehmandarov.com/jekyll-content-on-time/) 을 보도록 합니다.
 
 ### 시간대 설정에 따른 이슈 해결하기
 
@@ -43,9 +43,9 @@ Jekyll 에서 사용할 수 있는 시간대 (timezone) 목록은 [List of tz da
 
 [Redirects on GitHub Pages](https://help.github.com/en/enterprise/2.13/user/articles/redirects-on-github-pages)
 
-301 Redirect 는 GtiHub Pages 에서 지원하지 않는 듯 합니다. 좀 더 확인이 필요합니다. [Changing Permalinks and duplicate content/ranking/indexing](https://support.google.com/webmasters/forum/AAAA2Jdx3sUh7T62hZuWuA/?hl=ko) 를 참고하기 바랍니다.
+301 Redirect 는 GtiHub Pages 에서 지원하지 않는 듯 합니다. 좀 더 확인이 필요합니다. [Changing Permalinks and duplicate content/ranking/indexing](https://support.google.com/webmasters/forum/AAAA2Jdx3sUh7T62hZuWuA/?hl=ko) 를 보도록 합니다.
 
 
 ### 참고 자료
 
-[^post-url-not-build]: '시간대 (timezone)' 를 설정하지 않은 상태에서 `post_url` 을 사용할 경우의 문제는 [Using post_url causes pages to not build in Github](https://github.com/jekyll/jekyll/issues/3179) 를 참고하기 바랍니다.
+[^post-url-not-build]: '시간대 (timezone)' 를 설정하지 않은 상태에서 `post_url` 을 사용할 경우의 문제는 [Using post_url causes pages to not build in Github](https://github.com/jekyll/jekyll/issues/3179) 를 보도록 합니다.

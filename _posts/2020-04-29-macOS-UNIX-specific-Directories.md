@@ -9,7 +9,7 @@ redirect_from: "/macos/file-system/unix-specific/directory/2020/04/28/macOS-UNIX
 
 > 이 글은 macOS 의 파일 시스템에 있는 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 대해 정리한 글입니다.
 >
-> macOS 파일 시스템의 기본적인 디렉토리들에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 를 참고하기 바랍니다.
+> macOS 파일 시스템의 기본적인 디렉토리들에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 를 보도록 합니다.
 
 ## macOS 파일 시스템의 '유닉스-고유 디렉토리 (UNIX-specific directories)'
 
@@ -194,28 +194,28 @@ $ echo $HOME
 
 [^UNIX-specific-directories]: macOS 의 '유닉스-고유 디렉토리 (UNIX-specific directories)' 에 대해서는 [File System Basics](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW2) 문서의 [Hidden Files and Directories: Simplifying the User Experience](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW7) 부분에서 설명하고 있습니다.
 
-[^finder]: macOS 의 '표준 디렉토리' 와 '유닉스-고유 디렉토리' 의 차이점에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 문서를 참고하기 바랍니다.
+[^finder]: macOS 의 '표준 디렉토리' 와 '유닉스-고유 디렉토리' 의 차이점에 대해서는 [macOS: 파일 시스템의 기본 디렉토리 구조]({% post_url 2020-04-20-macOS-File-System-Layout %}) 문서를 보도록 합니다.
 
 [^man-hier]: 파일 내용이 길 경우 `$ man hier > hier.txt` 와 같이 파일로 옮겨서 따로 확인할 수도 있습니다.
 
-[^standard-os-x]: 여기서 따로 설명하지 않은 `/boot` 등의 디렉토리에 대한 설명은 [What is standard for OS X filesystem? e.g. /opt/ vs. /usr/](https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr) 라는 글을 참고하기 바랍니다.
+[^standard-os-x]: 여기서 따로 설명하지 않은 `/boot` 등의 디렉토리에 대한 설명은 [What is standard for OS X filesystem? e.g. /opt/ vs. /usr/](https://apple.stackexchange.com/questions/119230/what-is-standard-for-os-x-filesystem-e-g-opt-vs-usr) 라는 글을 보도록 합니다.
 
-[^directory-separator]: 예전에는 macOS 에서 '디렉토리 구분자' 로 콜론 (`:`) 기호를 사용했으며 그래서 예전 자료를 보다 보면 디렉토리를 구분할 때 콜론 (`:`) 을 사용하는 것을 볼 수가 있습니다. 지금은 macOS 에서 '디렉토리 구분자' 는 '빗금 기호 (slash)' 로 완전히 통일되었습니다. '콜론 (`:`) 디렉토리 구분자' 에 대해서는 [When did the colon character : become an allowed character in the filesystem?](https://apple.stackexchange.com/questions/173529/when-did-the-colon-character-become-an-allowed-character-in-the-filesystem) 라는 글을 참고하기 바랍니다.
+[^directory-separator]: 예전에는 macOS 에서 '디렉토리 구분자' 로 콜론 (`:`) 기호를 사용했으며 그래서 예전 자료를 보다 보면 디렉토리를 구분할 때 콜론 (`:`) 을 사용하는 것을 볼 수가 있습니다. 지금은 macOS 에서 '디렉토리 구분자' 는 '빗금 기호 (slash)' 로 완전히 통일되었습니다. '콜론 (`:`) 디렉토리 구분자' 에 대해서는 [When did the colon character : become an allowed character in the filesystem?](https://apple.stackexchange.com/questions/173529/when-did-the-colon-character-become-an-allowed-character-in-the-filesystem) 라는 글을 보도록 합니다.
 
-[^cores]: `/cores` 디렉토리에 대한 더 자세한 정보는 [OS X El-Capitan - /cores directory taking up a lot of space?](https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space) 라는 글을 참고하기 바랍니다.
+[^cores]: `/cores` 디렉토리에 대한 더 자세한 정보는 [OS X El-Capitan - /cores directory taking up a lot of space?](https://apple.stackexchange.com/questions/215410/os-x-el-capitan-cores-directory-taking-up-a-lot-of-space) 라는 글을 보도록 합니다.
 
 [^profile]: macOS Catalina 에서부터 기본 쉘이 'bash (배쉬)' 에서 'zsh (z-쉘)' 로 변경되었습니다. 'zsh' 의 기본 설정 파일은 `zprofile` 인데, 이 파일 역시 `/etc` 디렉토리에 있습니다. 직접 `sh` 을 사용하지 않는다면 `profile` 대신, `zprofile` 을 사용할 것입니다.
 
 [^paths]: [wisseraph](http://elfinlas.tistory.com) 님의 [Mac에서 Path 설정하기](http://elfinlas.tistory.com/266) 글에 따르면 `/etc/paths` 는 macOS 에서 가장 기본적인 경로를 설정하는 파일이라고 합니다.
 
-[^symbolic-link]: macOS 에서 특정 디렉토리가 '심볼릭 링크 (symbolic link)' 인지를 확인하는 방법은 [How to know if a folder is a symbolic link?](https://askubuntu.com/questions/1145925/how-to-know-if-a-folder-is-a-symbolic-link) 를 참고하기 바랍니다.
+[^symbolic-link]: macOS 에서 특정 디렉토리가 '심볼릭 링크 (symbolic link)' 인지를 확인하는 방법은 [How to know if a folder is a symbolic link?](https://askubuntu.com/questions/1145925/how-to-know-if-a-folder-is-a-symbolic-link) 를 보도록 합니다.
 
 [^firmlink]: 둘 중 어느 것이 정확한 것인지는 아직 찾지 못했지만, 다른 자료들을 보면 '고정 링크 (firmlink)' 로 설명하지는 않아서 '심볼릭 링크 (symbolic link)' 라고 추측하고 있습니다. 애플 **WWDC19** 에서 공개한 [What's New in Apple File Systems](https://developer.apple.com/videos/play/wwdc2019/710/) 영상을 보면 이 두 가지는 서로 비슷하다고 합니다.
 
-[^APFS-boot-directory]: `/Symbolic/Volumes/Data` 디렉토리에 대한 더 자세한 내용은 [What's /System/Volumes/Data?](https://apple.stackexchange.com/questions/367158/whats-system-volumes-data) 및 [macOS Catalina Boot Volume Layout](https://eclecticlight.co/2019/10/08/macos-catalina-boot-volume-layout/) 를 참고하기 바랍니다.
+[^APFS-boot-directory]: `/Symbolic/Volumes/Data` 디렉토리에 대한 더 자세한 내용은 [What's /System/Volumes/Data?](https://apple.stackexchange.com/questions/367158/whats-system-volumes-data) 및 [macOS Catalina Boot Volume Layout](https://eclecticlight.co/2019/10/08/macos-catalina-boot-volume-layout/) 를 보도록 합니다.
 
-[^private]: 해당 내용에 대한 더 자세한 정보는 [What is the private folder on a Mac computer?](https://www.quora.com/What-is-the-private-folder-on-a-Mac-computer) 를 참고하기 바랍니다.
+[^private]: 해당 내용에 대한 더 자세한 정보는 [What is the private folder on a Mac computer?](https://www.quora.com/What-is-the-private-folder-on-a-Mac-computer) 를 보도록 합니다.
 
-[^macOS-home]: macOS 에서 `/Users/username` 을 '홈 디렉토리' 로 사용하는 이유에 대한 더 자세한 정보는 [Why are home folders in Mac OS X located in /Users, and not /home?](https://apple.stackexchange.com/questions/50633/why-are-home-folders-in-mac-os-x-located-in-users-and-not-home) 를 참고하기 바랍니다. 해당 글을 보면 유닉스에서 `/home` 디렉토리를 '홈 디렉토리' 로 사용하는 것은 기본 설정이지 필수 사항은 아니기 때문에, '유닉스-고유 디렉토리' 구조에서 홈 디렉토리를 `/Users/username` 로 설정하는 것에는 아무런 문제가 없다고 합니다.
+[^macOS-home]: macOS 에서 `/Users/username` 을 '홈 디렉토리' 로 사용하는 이유에 대한 더 자세한 정보는 [Why are home folders in Mac OS X located in /Users, and not /home?](https://apple.stackexchange.com/questions/50633/why-are-home-folders-in-mac-os-x-located-in-users-and-not-home) 를 보도록 합니다. 해당 글을 보면 유닉스에서 `/home` 디렉토리를 '홈 디렉토리' 로 사용하는 것은 기본 설정이지 필수 사항은 아니기 때문에, '유닉스-고유 디렉토리' 구조에서 홈 디렉토리를 `/Users/username` 로 설정하는 것에는 아무런 문제가 없다고 합니다.
 
-[^GUI-environment]: 'GUI' 에서도 `$HOME` 환경 설정 변수를 확인할 수 있는데, 이 방법에 대한 더 자세한 정보는 [Where do I find my user folder in the OS X folder hierarchy?](https://apple.stackexchange.com/questions/51280/where-do-i-find-my-user-folder-in-the-os-x-folder-hierarchy) 를 참고하기 바랍니다.
+[^GUI-environment]: 'GUI' 에서도 `$HOME` 환경 설정 변수를 확인할 수 있는데, 이 방법에 대한 더 자세한 정보는 [Where do I find my user folder in the OS X folder hierarchy?](https://apple.stackexchange.com/questions/51280/where-do-i-find-my-user-folder-in-the-os-x-folder-hierarchy) 를 보도록 합니다.

@@ -389,9 +389,9 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^gracefully-fail]: '우아하게 (gracefully) 실패한다' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 사슬의 어떤 고리든 `nil` 이면, 실행시간 에러가 발생하는 게 아니라, 전체 사슬이 `nil` 이 됩니다.
 
-[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
+[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 보도록 합니다.
 
-[^side-effect]: 프로그래밍 분야에선 '부작용 (side effects)' 을 '부수적인 효과' 라는 의미로 이해하는 게 좋습니다. 본문 내용은 상수에 대한 접근이 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는지 아닌지 알 방법이 없다는 의미입니다. 프로그래밍 분야의 부작용에 대한 더 자세한 내용은, [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 참고하기 바랍니다.
+[^side-effect]: 프로그래밍 분야에선 '부작용 (side effects)' 을 '부수적인 효과' 라는 의미로 이해하는 게 좋습니다. 본문 내용은 상수에 대한 접근이 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는지 아닌지 알 방법이 없다는 의미입니다. 프로그래밍 분야의 부작용에 대한 더 자세한 내용은, [Expressions (표현식)]({% post_url 2020-08-19-Expressions %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 보도록 합니다.
 
 [^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것이 프로그래밍에서 말하는 부수적인 효과, 즉, '부작용 (side effects)' 입니다. 이 함수의 원래 목적은 주소를 생성하는 것인데, `print` 는 원래 목적과는 상관없이 부수적인 효과-부작용-를 일으킵니다.
 

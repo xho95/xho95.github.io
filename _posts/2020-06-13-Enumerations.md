@@ -18,7 +18,7 @@ C 와 익숙하다면, C 열거체가 서로 관련된 이름을 정수 값 집�
 
 스위프트 열거체는 그 자체로 '일급 (first-class) 타입'[^first-class] 입니다. 이는, 열거체 현재 값에 대한 추가 정보를 제공하는 계산 속성과, 열거체가 표현하는 값과 관련한 기능을 제공하는 인스턴스 메소드 같이, 전통적으로 클래스만 지원하던 수많은 특징을 채택합니다. 열거체는 초기 case 값을 제공하는 초기자 (initializers) 도 정의할 수 있고; 원본 구현 너머로 자신의 기능을 늘리도록 확장 (extend) 할 수도; 표준 기능을 제공하도록 프로토콜을 준수할 수도 있습니다.
 
-이 보유 능력에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
+이 보유 능력에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보도록 합니다.
 
 ### Enumeration Syntax (열거체 구문)
 
@@ -92,7 +92,7 @@ case .west:
 
 ...등을 계속합니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, 열거체의 case 를 검토할 땐 반드시 `switch` 문을 '완전 소진 (exhaustive)' 해야 합니다. `.west` 이라는  `case` 를 생략하면, `CompassPoint` 의 완전한 case 목록을 검토한 게 아니기 때문에, 코드를 컴파일하지 않습니다. 완전 소진을 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, 열거체 case 를 고려할 땐 `switch` 문을 반드시 다 써버려야 합니다. `.west` 이라는  `case` 를 생략하면, `CompassPoint` 의 완전한 case 목록을 검토한 게 아니기 때문에, 코드를 컴파일하지 않습니다. 다 써버리도록 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
 
 모든 열거채 case 마다 `case` 절을 제공하는 게 적절하지 않을 때, `default` case 절을 제공하면 명시적으로 알리지 않은 어떤 case 도 다룰 수 있습니다:
 
@@ -107,7 +107,7 @@ default:
 // "Mostly harmless" 를 인쇄함
 ```
 
-### Iterating over Enumeration Cases (열거체 case 들에 동작 반복하기)
+### Iterating over Enumeration Cases (열거체 case 들을 반복하기)
 
 일부 열거체에선, 그 열거체의 '모든 case 를 집합체 (collection)' 로 가지는 게 유용합니다. 열거체 이름 뒤에 `: CaseIterable` 을 작성하면 이렇게 할 수 있습니다. 스위프트는 모든 case 의 집합체를 '열거체 타입의 `allCases` 속성' 으로 노출합니다. 다음은 예제입니다:
 
@@ -131,7 +131,7 @@ for beverage in Beverage.allCases {
 // juice
 ```
 
-위 예제에서 사용한 구문은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수한다고 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
+위 예제에서 사용한 구문은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수한다고 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보도록 합니다.
 
 ### Associated Values (결합 값)
 
@@ -275,7 +275,7 @@ let possiblePlanet = Planet(rawValue: 7)
 
 하지만, 모든 `Int` 값이 일치하는 행성을 찾을 수 있는 건 아닙니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 은 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
 
-> 원시 값 초기자는, 모든 원시 값이 열거체 case 를 반환하는 건 아니기 때문에, '실패 가능 (failable) 초기자' 입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 부분을 참고하기 바랍니다.
+> 원시 값 초기자는, 모든 원시 값이 열거체 case 를 반환하는 건 아니기 때문에, '실패 가능 (failable) 초기자' 입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 부분을 보도록 합니다.
 
 `11` 번 째 위치의 행성을 찾으려고 하면, 원시 값 초기자가 반환할 옵셔널 `Planet` 값이 `nil` 일 겁니다:
 
@@ -359,18 +359,18 @@ print(evaluate(product))
 
 [^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
-[^type-safe]: 여기서 '타입-안전한 (type-safe) 방식' 은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있음을 의미합니다. 이에 대한 더 자세한 정보는 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
+[^type-safe]: 여기서 '타입-안전한 (type-safe) 방식' 은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있음을 의미합니다. 이에 대한 더 자세한 정보는 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
 
-[^first-class]: 프로그래밍에서 '일급 (first-class) 이다' 라는 말은 '객체 (class) 와 동-급으로 사용할 수 있다' 는 의미입니다. 예를 들어, 어떠한 것이 객체 처럼 인자로 전달할 수 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있다면, '이는 일급이다' 라고 합니다. '일급' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
+[^first-class]: 프로그래밍에서 '일급 (first-class) 이다' 라는 말은 '객체 (class) 와 동-급으로 사용할 수 있다' 는 의미입니다. 예를 들어, 어떠한 것이 객체 처럼 인자로 전달할 수 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있다면, '이는 일급이다' 라고 합니다. '일급' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 보도록 합니다.
 
 [^cases]: 스위프트에서 'case' 는 하나의 키워드 (keyword) 이면서, 우리말로 경우라는 의미도 담고 있습니다. 여기서는, 'case' 가 키워드 `case` 를 의미할 때는 영어 그대로 두도록 합니다.
 
 [^plural-vs-singular]: 열거체 이름을 복수형으로 만들면 본문 예제는 `CompassPoints` 가 되는데, 이 경우, 그 아래 예제는 `CompassPoints.west` 가 됩니다. 이러면, 코드를 이해할 때 나침판 방향이 여러 개 있다고 오해할 수 있습니다.
 
-[^variants]: 여기 있는 세 가지 용어는 사실상 똑같은 개념입니다. 각각에 대한 더 자세한 정보는, 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 컴퓨터 공학 용어로는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 이기 때문에, 이 둘은 항목 자체가 같습니다. 어쨌든, 본문 내용에 따르면 '스위프트 열거체의 결합 값' 은 'C 언어의 공용체 (union)' 와 유사한 개념이라고 이해할 수 있습니다.
+[^variants]: 여기 있는 세 가지 용어는 사실상 똑같은 개념입니다. 각각에 대한 더 자세한 정보는, 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 보도록 합니다. 컴퓨터 공학 용어로는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 이기 때문에, 이 둘은 항목 자체가 같습니다. 어쨌든, 본문 내용에 따르면 '스위프트 열거체의 결합 값' 은 'C 언어의 공용체 (union)' 와 유사한 개념이라고 이해할 수 있습니다.
 
 [^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패-가능-초기자) 에서도 설명하고 있습니다.
 
-[^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 참고하기 바랍니다.
+[^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 보도록 합니다.
 
 [^indirection]: 본문을 보면 '재귀 (recursive)' 라는 말과 '간접 (indirection)' 이라는 말을 거의 같은 개념으로 사용하는데, 이는 스위프트 열거체를 '재귀적으로 만드는 방식' 이 '메모리의 간접 주소 방식' 을 써서 구현하기 때문입니다.

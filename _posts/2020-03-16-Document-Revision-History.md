@@ -21,7 +21,7 @@ categories: Swift Language Grammar Revision History
 #### 2022-03-14
 
 * 스위프트 5.6 에서 업데이트함. 
-* 연쇄적인 메소드 호출과 그 외 접미사 표현식 주위의 `#if` 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적인-멤버-표현식) 절을 업데이트함.
+* 연쇄적인 메소드 호출과 그 외 접미사 표현식 주위의 `#if` 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절을 업데이트함.
 * 보여지는 전체 그림 스타일을 업데이트함.
 
 #### 2021-09-20
@@ -34,7 +34,7 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 5.4 에서 업데이트함.
 * '결과 제작자 (result builders)' 에 대한 정보를 가진 [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 와 [resultBuilder]({% post_url 2020-08-14-Attributes %}#resultbuilder-결과-제작자) 부분을 추가함.
-* 함수 호출 시에 '입-출력 매개 변수' 를 '안전하지 않은 (unsafe) 포인터' 로 암시적으로 변환할 수 있는 방법에 대한 정보를 가진 [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적인 변환)]({% post_url 2020-08-19-Expressions %}#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적인-변환) 부분을 추가함.
+* 함수 호출 시에 '입-출력 매개 변수' 를 '안전하지 않은 (unsafe) 포인터' 로 암시적으로 변환할 수 있는 방법에 대한 정보를 가진 [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적 변환)]({% post_url 2020-08-19-Expressions %}#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적-변환) 부분을 추가함.
 * [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 와 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분을 갱신했으며, 이제 함수는 '다중 가변 매개 변수' 를 가질 수 있음.
 * [Implicit Member Expression (암시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#implicit-member-expression-암시적-멤버-표현식) 부분을 갱신했으며, 이제 암시적 멤버 표현식을 서로 연쇄할 수 있음.
 
@@ -52,14 +52,14 @@ categories: Swift Language Grammar Revision History
 * `Any` 에 대한 더 많은 정보를 추가했으며 이를 새로 [Any Type ('Any' 타입)]({% post_url 2020-02-20-Types %}#any-type-any-타입) 부분으로 옮김.
 * [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 갱신했으며, 이제 '느긋한 속성 (lazy properties)' 도 관찰자를 가질 수 있음.
 * [Protocol Declaration (프로토콜 선언)]({% post_url 2020-08-15-Declarations %}#protocol-declaration-프로토콜-선언) 부분을 갱신했으며, 이제 열거체의 멤버도 '프로토콜 필수 조건 (protocol requirements)' 을 만족할 수 있음.
-* 언제 '획득자 (getter)' 가 '관찰자 (observer)' 이전에 호출되는 지를 설명하기 위해 [Stored Variable Observers and Property Observers (저장 변수 관찰자와 저장 속성 관찰자)]({% post_url 2020-08-15-Declarations %}#stored-variable-observers-and-property-observers-저장-변수-관찰자와-저장-속성-관찰자) 절을 업데이트함.
+* 언제 '획득자 (getter)' 가 '관찰자 (observer)' 이전에 호출되는 지를 설명하기 위해 [Stored Variable Observers and Property Observers (저장 변수 관찰자와 속성 관찰자)]({% post_url 2020-08-15-Declarations %}#stored-variable-observers-and-property-observers-저장-변수-관찰자와-속성-관찰자) 절을 업데이트함.
 * '원자적인 연산 (atomic operations)' 을 언급하기 위해 [Memory Safety (메모리 안전성)]({% post_url 2020-04-07-Memory-Safety %}) '장 (chapter)' 을 업데이트함.
 
 #### 2020-03-24
 
 * 스위프트 5.2 에서 업데이트함.
 * 클로저를 대신하는 '키 경로 (key path)' 전달에 대한 정보를 [Key-Path Expression (키-경로 표현식)]({% post_url 2020-08-19-Expressions %}#key-path-expression-키-경로-표현식) 절에 추가함.
-* 클래스, 구조체, 및 열거체의 인스턴스를 '함수 호출 구문 표현' 에서 사용할 수 있게 하는 '수월한 구문 표현 (syntatic sugar)' 에 대한 정보를 가지고 있는 [Methods with Special Names (특수한 이름을 가진 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름을-가진-메소드) 부분을 추가함.
+* 클래스, 구조체, 및 열거체의 인스턴스를 '함수 호출 구문 표현' 에서 사용할 수 있게 하는 '수월한 구문 표현 (syntatic sugar)' 에 대한 정보를 가지고 있는 [Methods with Special Names (특수한 이름의 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름의-메소드) 부분을 추가함.
 * [Subscript Options (첨자의 옵션)]({% post_url 2020-03-30-Subscripts %}#subscript-options-첨자의-옵션) 부분을 갱신했으며, 이제 기본 값을 가진 매개 변수를 첨자가 지원함.
 * [Self Type ('Self' 타입)]({% post_url 2020-02-20-Types %}#self-type-self-타입) 부분을 갱신했으며, 이제 `Self` 를 더 많은 상황에서 사용할 수 있음.
 * '암시적으로 포장 푸는 옵셔널 값' 은 '옵셔널 값' 으로든 '옵셔널-아닌 값' 으로든 사용할 수 있다는 것을 확실히 하기 위해 [Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장-푸는-옵셔널) 절을 업데이트함.
@@ -83,14 +83,14 @@ categories: Swift Language Grammar Revision History
 * 스위프트 5.0 에서 업데이트함.
 * [Extended String Delimiters (확장된 문자열 구분자)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-string-delimiters-확장된-문자열-구분자) 부분을 추가했으며 '확장된 문자열 구분자 (extended string delimiters)' 에 대한 정보를 가진 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 절을 업데이트함.
 * `dynamicCallable` 특성을 사용하여 함수처럼 동적으로 호출하는 인스턴스에 대한 정보를 가진 [dynamicCallable (동적으로 호출 가능)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능) 부분을 추가함.
-* 'switch' 문에 있는 미래의 열거체 'case 값' 을 처리하기 위하여 `unknown` 이라는 'switch 문의 case 절' 특성을 사용하는 것에 대한 정보를 가진 [unknown (알려지지 않음)]({% post_url 2020-08-14-Attributes %}#unknown-알려지지-않음) 과 [Switching Over Future Enumeration Cases (미래의 '열거체 case 값' 에 대해 전환 (switching) 하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-값에-대해-전환-switching-하기) 부분을 추가함.
+* 'switch' 문에 있는 미래의 열거체 'case 값' 을 처리하기 위하여 `unknown` 이라는 'switch 문의 case 절' 특성을 사용하는 것에 대한 정보를 가진 [unknown (알려지지 않음)]({% post_url 2020-08-14-Attributes %}#unknown-알려지지-않음) 과 [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 추가함.
 * '자기 식별 키 경로 (identity key path; `\.self`)' 에 대한 정보를 [Key-Path Expression (키-경로 표현식)]({% post_url 2020-08-19-Expressions %}#key-path-expression-키-경로-표현식) 절에 추가함.
 * '플랫폼 조건 (platform conditions)' 에서 '보다 작음 연산자 (less than operator; `<`)' 를 사용하는 것에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 절에 추가함.
 
 #### 2018-09-17
 
 * 스위프트 4.2 에서 업데이트함.
-* 열거체의 모든 case 에 접근하는 것에 대한 정보를 [Iterating over Enumeration Cases (열거체 case 들에 동작 반복하기)]({% post_url 2020-06-13-Enumerations %}#iterating-over-enumeration-cases-열거체-case-들에-동작-반복하기) 절에 추가함.
+* 열거체의 모든 case 에 접근하는 것에 대한 정보를 [Iterating over Enumeration Cases (열거체 case 들을 반복하기)]({% post_url 2020-06-13-Enumerations %}#iterating-over-enumeration-cases-열거체-case-들을-반복하기) 절에 추가함.
 * `#error` 와 `#warning` 에 대한 정보를 [Compile-Time Diagnostic Statement (컴파일-시간 진단문)]({% post_url 2020-08-20-Statements %}#compile-time-diagnostic-statement-컴파일-시간-진단문) 절에 추가함.
 * '인라이닝 (inlining)' 에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분 밑의 `inlinable` 과 `usableFromInline` 특성에 추가함.
 * 실행 시간에 이름으로 찾아 가는 멤버에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분 밑의 `dynamicMemberLookup` 특성에 추가함.
@@ -151,7 +151,7 @@ categories: Swift Language Grammar Revision History
 * `open` 과 `fileprivate` 접근-수준 수정자에 대한 정보를 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 추가함.
 * `inout` 이 매개 변수의 이름 앞이 아니라 매개 변수의 타입 앞에 나타남에 주목하기 위해 [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 부분의 논의를 업데이트함.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 와 [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 부분 그리고 [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장에 있는 `@noescape` 와 `@autoclosure` 에 대한 논의를 갱신했으며 이제 이들은, '선언 특성' 이 아니라, '타입 특성' 임.
-* '연산자 우선 순위 그룹 (operator precedence groups)' 에 대한 정보를 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장의 [Precedence for Custom Infix Operators (사용자 중위 연산자의 우선권)]({% post_url 2020-05-11-Advanced-Operators %}#precedence-for-custom-infix-operators-사용자-중위-연산자의-우선권) 부분과, [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Precedence Group Declaration (우선권 그룹 선언)]({% post_url 2020-08-15-Declarations %}#precedence-group-declaration-우선권-그룹-선언) 절에, 추가함.
+* '연산자 우선 순위 그룹 (operator precedence groups)' 에 대한 정보를 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장의 [Precedence for Custom Infix Operators (사용자 중위 연산자의 우선권)]({% post_url 2020-05-11-Advanced-Operators %}#precedence-for-custom-infix-operators-사용자-중위-연산자의-우선권) 부분과, [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Precedence Group Declaration (우선 순위 그룹 선언)]({% post_url 2020-08-15-Declarations %}#precedence-group-declaration-우선-순위-그룹-선언) 절에, 추가함.
 * 'OS X' 대신 'macOS' 를, `ErrorProtocol` 대신 `Error` 를, 그리고 `StringLiteralConvertible` 대신 `ExpressibleByStringLiteral` 같은 프로토콜 이름을 사용하도록 전체에 걸쳐서 논의를 업데이트함.
 * [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분과 [Generic Parameters and Arguments (일반화된 매개 변수와 일반화된 인자)]({% post_url 2017-03-16-Generic-Parameters-and-Arguments %}) 장에 있는 논의를 갱신했으며, 이제 '일반화된 (generic) `where` 절' 은 선언의 끝에 작성함.
 * [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 절에 있는 논의를 갱신했으며, 이제 클로저는 '벗어나지 않는 (nonescaping)' 것이 기본임.
@@ -181,7 +181,7 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 2.2 에서 업데이트함.
 * 사용중인 스위프트 버전에 따라 조건부로 코드를 컴파일하는 방법에 대한 정보를 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 절에 추가함.
-* 이름이 다른 것이라곤 인자 이름뿐인 메소드와 초기자를 구별하는 방법에 대한 정보를 [Explicit Member Expression (명시적인 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적인-멤버-표현식) 절에 추가함.
+* 이름이 다른 것이라곤 인자 이름뿐인 메소드와 초기자를 구별하는 방법에 대한 정보를 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절에 추가함.
 * 오브젝티브-C '선택자 (selectors)' 를 위한 `#selector` 구문 표현에 대한 정보를 [Selector Expression (선택자 표현식)]({% post_url 2020-08-19-Expressions %}#selector-expression-선택자-표현식) 절에 추가함.
 * [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 과 [Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)]({% post_url 2020-08-15-Declarations %}#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 절에서 `associatedtype` 키워드를 사용하기 위한 '결합 타입 (associated types)' 에 대한 논의를 업데이트함.
 * [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 절에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 업데이트함.
@@ -214,7 +214,7 @@ categories: Swift Language Grammar Revision History
 * '에러 처리 (error handling)' 에 대한 정보를 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장과, [Do Statement ('do' 문)]({% post_url 2020-08-20-Statements %}#do-statement-do-문) 부분, [Throw Statement ('throw' 문)]({% post_url 2020-08-20-Statements %}#throw-statement-throw-문) 부분, [Defer Statement ('defer' 문)]({% post_url 2020-08-20-Statements %}#defer-statement-defer-문) 부분, 그리고 [Try Operator ('try' 연산자)]({% post_url 2020-08-19-Expressions %}#try-operator-try-연산자) 절에 추가함.
 * [Representing and Throwing Errors (에러 나타내기 및 던지기)]({% post_url 2020-05-16-Error-Handling %}#representing-and-throwing-errors-에러-나타내기-및-던지기) 부분을 갱신했으며, 이제 모든 타입이 `ErrorType` 프로토콜을 준수할 수 있음.
 * 새롭게 `try?` 키워드에 대한 정보를 [Converting Errors to Optional Values (에러를 옵셔널 값 변환하기)]({% post_url 2020-05-16-Error-Handling %}#converting-errors-to-optional-values-에러를-옵셔널-값-변환하기) 절에 추가함.
-* '재귀 열거체 (recursive enumerations)' 에 대한 정보를 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Recursive Enumerations (재귀 열거체)]({% post_url 2020-06-13-Enumerations %}#recursive-enumerations-재귀-열거체) 부분과 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-any-type-어떤-타입이든-되는-case-값-을-가진-열거체) 절에 추가함.
+* '재귀 열거체 (recursive enumerations)' 에 대한 정보를 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Recursive Enumerations (재귀 열거체)]({% post_url 2020-06-13-Enumerations %}#recursive-enumerations-재귀-열거체) 부분과 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Enumerations with Cases of Any Type (어떤 타입의 case 든 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-any-type-어떤-타입의-case-든-가지는-열거체) 절에 추가함.
 * 'API 사용 가능성 (API avaiability)' 에 대한 정보를 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Checking API Availability (API 사용 가능성 검사)]({% post_url 2020-06-10-Control-Flow %}#checking-api-availability-api-사용-가능성-검사) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [Availability Condition (사용 가능성 조건)]({% post_url 2020-08-20-Statements %}#availability-condition-사용-가능성-조건) 절에 추가함.
 * 새롭게 `guard` 문에 대한 정보를 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Early Exit (때 이른 탈출문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-때-이른-탈출문) 부분과 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 장의 [Guard Statement ('guard' 문)]({% post_url 2020-08-20-Statements %}#guard-statement-guard-문) 절에 추가함.
 * '프로토콜 익스텐션 (protocol extensions)' 에 대한 정보를 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 절에 추가함.
@@ -223,7 +223,7 @@ categories: Swift Language Grammar Revision History
 * `repeat`-`while` 반복문에 대한 정보를 가지고 [Repeat-While (Repeat-While 문)]({% post_url 2020-06-10-Control-Flow %}#repeat-while-repeat-while-문) 절을 업데이트함.
 * [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 갱신했으며, 이제 `String` 은 더 이상 스위프트 표준 라이브러리의 `CollectionType` 프로토콜을 준수하지 않음.
 * 스위프트 표준 라이브러리의 새로운 `print(_:separator:terminator)` 함수에 대한 정보를 [Printing Constants and Variables (상수와 변수 인쇄하기)]({% post_url 2016-04-24-The-Basics %}#printing-constants-and-variables-상수와-변수-인쇄하기) 절에 추가함.
-* `String` 원시 값을 가지는 열거체 'case 값' 의 작동 방식에 대한 정보를 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Implicitly Assigned Raw Values (암시적으로 할당하는 원시 값)]({% post_url 2020-06-13-Enumerations %}#implicitly-assigned-raw-values-암시적으로-할당하는-원시-값) 부분과 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-값-을-가지는-열거체) 절에 추가함.
+* `String` 원시 값을 가지는 열거체 'case 값' 의 작동 방식에 대한 정보를 [Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 장의 [Implicitly Assigned Raw Values (암시적으로 할당하는 원시 값)]({% post_url 2020-06-13-Enumerations %}#implicitly-assigned-raw-values-암시적으로-할당하는-원시-값) 부분과 [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 case 를 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-를-가지는-열거체) 절에 추가함.
 * `@autoclosure` 특성에 대한 정보를-그의 `@autoclosure(escaping)` 형식을 포함하여-[Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 절에 추가함.
 * `@available` 과 `@warn_unused_result` 특성에 대한 정보를 가지고 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 절을 업데이트함.
 * `@convention` 특성에 대한 정보를 가지고 [Type Attributes (타입 특성)]({% post_url 2020-08-14-Attributes %}#type-attributes-타입-특성) 절을 업데이트함.
@@ -234,7 +234,7 @@ categories: Swift Language Grammar Revision History
 * [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 절에 있는 `@NSManaged` 특성에 대한 논의를 갱신했으며, 이제 이 특성은 정해진 인스턴스 메소드에 적용할 수 있음.
 * [Variadic Parameters (가변 매개 변수)]({% post_url 2020-06-02-Functions %}#variadic-parameters-가변-매개-변수) 부분을 갱신했으며, 이제 '가변 매개 변수' 는 함수 매개 변수 목록의 어떤 위치에서라도 선언할 수 있음.
 * 상위 클래스 초기자의 결과를 '강제 포장 풀기 (force-unwrapping)' 하면 '실패하지 않는 초기자 (nonfailable initializer)' 가 '실패 가능 초기자 (failable initializer)' 로 '위로 위임 (delegate up)' 할 수 있다는 것에 대하여 [Overriding a Failable Initializer (실패 가능 초기자 재정의하기)]({% post_url 2016-01-23-Initialization %}#overriding-a-failable-initializer-실패-가능-초기자-재정의하기) 절에 정보를 추가함.
-* '열거체 case 값 (enumeration cases)' 을 함수처럼 사용하는 것에 대한 정보를 [Enumerations with Cases of Any Type (어떤 타입이든 되는 'case 값' 을 가진 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-any-type-어떤-타입이든-되는-case-값-을-가진-열거체) 절에 추가함.
+* 열거체 case 를 함수처럼 사용하는 것에 대한 정보를 [Enumerations with Cases of Any Type (어떤 타입의 case 든 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-any-type-어떤-타입의-case-든-가지는-열거체) 절에 추가함.
 * 초기자를 명시적으로 참조하는 것에 대한 정보를 [Initializer Expression (초기자 표현식)]({% post_url 2020-08-19-Expressions %}#initializer-expression-초기자-표현식) 절에 추가함.
 * '제작 구성 (build configuration)' 과 '라인 제어문 (line control statements)' 에 대한 정보를 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 절에 추가함.
 * '메타 타입 (metatype)' 값으로부터 클래스 인스턴스를 생성하는 것에 대하여 [Metatype Type (메타타입 타입)]({% post_url 2020-02-20-Types %}#metatype-type-메타타입-타입) 절에 기록을 추가함.
@@ -253,10 +253,10 @@ categories: Swift Language Grammar Revision History
 #### 2015-04-08
 
 * 스위프트 1.2 에서 업데이트함.
-* 스위프트는 이제 그 자체의 `Set` '집합체 (collection)' 타입을 가집니다. 더 많은 정보는, [Sets (셋)]({% post_url 2016-06-06-Collection-Types %}#sets-셋-집합) 를 참고하기 바랍니다.
-* `@autoclosure` 는 이제, 매개 변수의 타입이 아니라, 매개 변수 선언의 특성입니다. 새로운 매개 변수 선언 특성인 `@noescape` 도 있습니다. 더 많은 정보는, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 를 참고하기 바랍니다.
-* '타입 메소드' 와 '타입 속성' 은 이제 `static` 키워드를 '선언 수정자' 로 사용합니다. 더 많은 정보는 [Type Variable Properties (타입 변수 속성)]({% post_url 2020-08-15-Declarations %}#type-variable-properties-타입-변수-속성) 을 참고하기 바랍니다.
-* 스위프트는 이제 `as?` 와 `as!` 라는 '실패 가능한 내림 변환 연산자 (failable downcast operators)' 를 포함합니다. [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 를 참고하기 바랍니다.
+* 스위프트는 이제 그 자체의 `Set` '집합체 (collection)' 타입을 가집니다. 더 많은 정보는, [Sets (셋)]({% post_url 2016-06-06-Collection-Types %}#sets-셋-집합) 를 보도록 합니다.
+* `@autoclosure` 는 이제, 매개 변수의 타입이 아니라, 매개 변수 선언의 특성입니다. 새로운 매개 변수 선언 특성인 `@noescape` 도 있습니다. 더 많은 정보는, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 를 보도록 합니다.
+* '타입 메소드' 와 '타입 속성' 은 이제 `static` 키워드를 '선언 수정자' 로 사용합니다. 더 많은 정보는 [Type Variable Properties (타입 변수 속성)]({% post_url 2020-08-15-Declarations %}#type-variable-properties-타입-변수-속성) 을 보도록 합니다.
+* 스위프트는 이제 `as?` 와 `as!` 라는 '실패 가능한 내림 변환 연산자 (failable downcast operators)' 를 포함합니다. [Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 를 보도록 합니다.
 * [String Indices (문자열 색인)]({% post_url 2016-05-29-Strings-and-Characters %}#string-indices-문자열-색인) 에 대하여 새로운 지침 부분을 추가함.
 * [Overflow Operators (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 '값 넘침 나누기 (overflow division; `&/`)' 와 '값 넘침 나머지 (overflow remainder; `&%`)' 연산자를 제거함.
 * 상수 및 상수 속성 선언과 초기화에 대한 규칙을 업데이트함. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고 바람.
@@ -267,12 +267,12 @@ categories: Swift Language Grammar Revision History
 * 프로토콜 선언의 '영역 (scope)' 과 '멤버 (members; 구성원)' 을 분명히 밝히기 위해 [Protocol Declaration (프로토콜 선언)]({% post_url 2020-08-15-Declarations %}#protocol-declaration-프로토콜-선언) 을 업데이트함.
 * '클로저가 붙잡을 목록 (closure capture lists)' 에 있는 '약한 참조 (weak references)' 와 '소유하지 않는 참조 (unowned references)' 에 대한 구문 표현을 분명히 밝히기 위해 [Defining a Capture List (붙잡을 목록 정의하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#defining-a-capture-list-붙잡을-목록-정의하기) 을 업데이트함.
 * 사용자 정의 연산자를 위해 지원되는 문자들, 가령 수학 연산자들, 잡다한 기호들, 그리고 '딩뱃 (dingbats)[^dingbats] 유니코드 블럭들', 에 대한 예제를 명시적으로 언급하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 를 업데이트함.
-* 이제 지역 함수 영역에서는 상수를 초기화하지 않고도 선언할 수 있습니다. 맨 처음 사용하기 전에 설정 값을 반드시 가져야 합니다. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고하기 바랍니다.
-* '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 를 참고하기 바랍니다.
-* '다중 옵셔널 연결 (multiple optional bindings)' 은 이제 쉼표로-구분된 할당 표현식 목록으로써 단일 `if` 문에 나타낼 수 있습니다. 더 많은 정보는, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 을 참고하기 바랍니다.
-* [Optional-Chaining Expression (옵셔널-연쇄 표현식)]({% post_url 2020-08-19-Expressions %}#optional-chaining-expression-옵셔널-연쇄-표현식) 은 반드시 '접미사 표현식 (postfix expression)' 내에 있어야 합니다.
+* 이제 지역 함수 영역에서는 상수를 초기화하지 않고도 선언할 수 있습니다. 맨 처음 사용하기 전에 설정 값을 반드시 가져야 합니다. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 보도록 합니다.
+* '초기자 (initializer)' 안에서, 상수 속성은 이제 값을 단 한번만 할당할 수 있습니다. 더 많은 정보는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 를 보도록 합니다.
+* '다중 옵셔널 연결 (multiple optional bindings)' 은 이제 쉼표로-구분된 할당 표현식 목록으로써 단일 `if` 문에 나타낼 수 있습니다. 더 많은 정보는, [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 을 보도록 합니다.
+* [Optional-Chaining Expression (옵셔널-사슬 표현식)]({% post_url 2020-08-19-Expressions %}#optional-chaining-expression-옵셔널-사슬-표현식) 은 반드시 접미사 표현식 안에 있어야 합니다.
 * '프로토콜 변환 (protocol casts)' 은 더 이상 `@objc` 프로토콜로 제한되지 않습니다.
-* 실행 시간에 실패할 수 있는 '타입 변환 (type casts)' 은 이제 `as?` 또는 `as!` 연산자를 사용하며, 실패하지 않는다고 보증한 '타입 변환' 은 `as` 연산자를 사용합니다. 더 많은 정보는, [Type-Casting Operators (타입-변환 연산자)]({% post_url 2020-08-19-Expressions %}#type-casting-operators-타입-변환-연산자) 를 참고하기 바랍니다.
+* 실행 시간에 실패할 수 있는 '타입 변환 (type casts)' 은 이제 `as?` 또는 `as!` 연산자를 사용하며, 실패하지 않는다고 보증한 '타입 변환' 은 `as` 연산자를 사용합니다. 더 많은 정보는, [Type-Casting Operators (타입-변환 연산자)]({% post_url 2020-08-19-Expressions %}#type-casting-operators-타입-변환-연산자) 를 보도록 합니다.
 
 #### 2014-10-16
 
@@ -280,7 +280,7 @@ categories: Swift Language Grammar Revision History
 * [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 에 온전한 전체 지침을 추가함.
 * 프로토콜의 [Failable Initializer Requirements (실패 가능 초기자 필수 조건)]({% post_url 2016-03-03-Protocols %}#failable-initializer-requirements-실패-가능-초기자-필수-조건) 에 대한 설명을 추가함.
 * `Any` 타입인 상수와 변수는 이제 함수 인스턴스를 가질 수 있음. `switch` 문 내에서 함수 타입을 검사하고 변환하는 방법을 보여주기 위해 [Type Casting for Any and AnyObject (Any 와 AnyObject 의 타입 변환)]({% post_url 2020-04-01-Type-Casting %}#type-casting-for-any-and-anyobject-any-와-anyobject-의-타입-변환) 에 있는 예제를 업데이트함.
-* '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 'case 값' 을 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-값-을-가지는-열거체) 를 참고하기 바랍니다.
+* '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% post_url 2020-06-13-Enumerations %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 case 를 가지는 열거체)]({% post_url 2020-08-15-Declarations %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-를-가지는-열거체) 를 보도록 합니다.
 * 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자) 에 대하여 새로운 기준 부분을 추가함.
 * 사용자 정의 연산자는 이제 `?` 문자를 가질 수 있음. 개정된 규칙을 설명하기 위해 [Operators (연산자)]({% post_url 2020-07-28-Lexical-Structure %}#operators-연산자) 의 기준을 업데이트함. [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 에서 유효한 연산자 문자 집합에 대한 중복된 설명을 제거함.
 
@@ -343,9 +343,9 @@ categories: Swift Language Grammar Revision History
 
 [^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.
 
-[^dingbats]: '딩뱃 (dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 참고하기 바랍니다.
+[^dingbats]: '딩뱃 (dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 보도록 합니다.
 
-[^canonical]: 여기서 원문의 'canonical' 을 '표준적인' 이라는 말이 아니라 '법적인' 이라는 말로 옮겼는데, 이는 'canon' 이 원래 '교회 법' 을 의미하는 말이기 때문입니다. '법적으로 동등함' 이 무엇인지에 대해서는 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 참고하기 바랍니다.
+[^canonical]: 여기서 원문의 'canonical' 을 '표준적인' 이라는 말이 아니라 '법적인' 이라는 말로 옮겼는데, 이는 'canon' 이 원래 '교회 법' 을 의미하는 말이기 때문입니다. '법적으로 동등함' 이 무엇인지에 대해서는 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 부분을 보도록 합니다.
 
 [^introducing-swift]: '스위프트 (Swift)' 프로그래밍 언어는 2014년 'WWDC' 에서 2014년 6월 2일에 최초로 발표되었습니다. 2014년 8월 18일은 그 이후 최초로 갱신된 내용입니다.
 

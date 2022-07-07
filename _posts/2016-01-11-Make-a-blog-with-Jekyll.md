@@ -166,7 +166,7 @@ $ git push origin master
 ### 관련 자료
 
 * 새 버전의 Jekyll 을 설치하고 사용하는 방법에 대해서는 [Jekyll: GitHub Pages 에 블로그 만들기]({% post_url 2017-03-05-Jekyll-Blog-with-Minima %}) 글을 참고하시기 바랍니다.
-* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %}) 글을 참고하기 바랍니다.
+* Jekyll 블로그에 새 블로그 글을 포스트 하는 방법은 [MarkDown 문서를 이용하여 블로그에 포스트하기]({% post_url 2016-01-12-Post-a-new-MarkDown-file %}) 글을 보도록 합니다.
 * Jekyll 로 만든 블로그에 댓글 달기 기능 추가하기 위해서 Disqus 를 사용하는 방법을 알고 싶다면 [Jekyll: Disqus 연결부터 마이그레이션까지]({% post_url 2017-01-21-Add-Disqus-to-Jekyll %}) 글을 보도록 합니다.
 
 ### 참고 자료

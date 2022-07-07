@@ -502,7 +502,7 @@ print(paragraph!.asHTML())
 
 ![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
 
-인스턴스의 `asHTML` 속성은 자신의 클로저로의 강한 참조를 쥡니다. 하지만, 클로저가 (`self.name` 과 `self.text` 를 참조하는 식으로) 자신의 본문 안에서 `self` 를 참조하기 때문에, 클로저가 'self' 를 _붙잡으며 (capture)_, 이는 `HTMLElement` 인스턴스로의 강한 참조를 되돌려 쥔다는 걸 의미합니다. 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 참고하기 바랍니다.)
+인스턴스의 `asHTML` 속성은 자신의 클로저로의 강한 참조를 쥡니다. 하지만, 클로저가 (`self.name` 과 `self.text` 를 참조하는 식으로) 자신의 본문 안에서 `self` 를 참조하기 때문에, 클로저가 'self' 를 _붙잡으며 (capture)_, 이는 `HTMLElement` 인스턴스로의 강한 참조를 되돌려 쥔다는 걸 의미합니다. 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 보도록 합니다.)
 
 > 클로저가 `self` 를 여러 번 참조할지라도, `HTMLElement` 인스턴스로의 강한 참조는 하나만 붙잡습니다.
 
@@ -599,7 +599,7 @@ paragraph = nil
 // "p is being deinitialized" 를 인쇄함
 ```
 
-붙잡을 목록에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 을 참고하기 바랍니다.
+붙잡을 목록에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 을 보도록 합니다.
 
 ### 다음 장
 
@@ -611,17 +611,17 @@ paragraph = nil
 
 [^ARC-Objective-C]: 원문 자체가 '애플 개발자 문서' 로 가는 링크입니다. '오브젝티브-C' 개발자가 아니라면 해당 문서를 직접 볼 필요 까지는 없습니다.
 
-[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법인데, 여기서 '메모리 관리' 란 '동적 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장 공간 (free store; 또는 heap)' 이라고 하며, '참조' 라는 말은 '자유 저장 공간' 에 할당된 메모리 영역을 '참조한다 (refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장 공간' 이 아닌 '정적 메모리 공간' 인 '스택 (stack)' 에 생기므로 메모리 관리 대상이 아닙니다. 이에 대한 더 자세한 정보는, 위키피디아의 'Memory management' 항목에 있는 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
+[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법인데, 여기서 '메모리 관리' 란 '동적 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장 공간 (free store; 또는 heap)' 이라고 하며, '참조' 라는 말은 '자유 저장 공간' 에 할당된 메모리 영역을 '참조한다 (refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장 공간' 이 아닌 '정적 메모리 공간' 인 '스택 (stack)' 에 생기므로 메모리 관리 대상이 아닙니다. 이에 대한 더 자세한 정보는, 위키피디아의 'Memory management' 항목에 있는 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 보도록 합니다.
 
 [^stored-constant-property]: 원문은 'stored constant property' 라서 직역하면 '저장 상수 속성' 이지만, 첵의 다른 곳에서 'constant stored property' 라는 말을 더 많이 쓰고 있어서, 통일성을 위해 '상수 저장 속성' 이라고 옮깁니다. 사실 '저장 상수 속성' 이나 '상수 저장 속성' 이나 의미는 같은 것인데, 우리 말로 옮겼을 때 '상수 저장 속성' 이 좀 더 자연스럽게 느껴집니다.
 
-[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다.
+[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 보도록 합니다.
 
 [^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
 
-[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
+[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
-[^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
+[^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 보도록 합니다.
 
 [^ARC-unsuitable-caching-mechanism]: ARC 에선 약한 참조를 '단순 임시 저장 구조 (simple caching mechanism)' 를 만드는 용도로는 사용하지 않는다는 의미입니다.
 
@@ -631,7 +631,7 @@ paragraph = nil
 
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
-[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
+[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보도록 합니다.
 
 [^capture-list-place]: 사실, 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 붙잡을 목록은 클로저 본문 맨 앞에 둔다라고 생각하면 됩니다.
 

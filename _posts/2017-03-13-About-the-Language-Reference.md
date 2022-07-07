@@ -46,10 +46,10 @@ categories: Swift Language Grammar About Reference
 
 [^Language-Reference]: 원문은 [About the Language Reference](https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html#) 에서 확인할 수 있습니다.
 
-[^notation]: '구문 문법' 자체를 번역하는 것은 의미가 없기 때문에, 사실 '구문 표기법' 자체도 큰 의미가 없습니다. 앞으로, 실제 '표기법' 이 나타나는 곳마다, 원문 링크를 달아놓을 것이므로, 해당 '구문 문법' 이 궁금하다면 링크를 통하여 확인하기 바랍니다. 스위프트의 모든 '구문 문법' 을 한 번에 확인하고 싶으면, [Summary of the Grammar (문법 총정리)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#) 내용을 참고하기 바랍니다. 
+[^notation]: '구문 문법' 자체를 번역하는 것은 의미가 없기 때문에, 사실 '구문 표기법' 자체도 큰 의미가 없습니다. 앞으로, 실제 '표기법' 이 나타나는 곳마다, 원문 링크를 달아놓을 것이므로, 해당 '구문 문법' 이 궁금하다면 링크를 통하여 확인하기 바랍니다. 스위프트의 모든 '구문 문법' 을 한 번에 확인하고 싶으면, [Summary of the Grammar (문법 총정리)](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html#) 내용을 보도록 합니다. 
 
 [^syntactic-categories]: 아래 예제에서, `getter-setter-block` 같이, '이텔릭체' 로 된 모든 것들이 다 '구문 범주' 입니다.
 
-[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말합니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 부분을 참고하기 바랍니다. 
+[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말합니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 부분을 보도록 합니다. 
 
 [^regular-font]: '표준 글꼴 (regular font)' 은 문법 그 자체가 아닌 그 문법 요소에 대한 설명에 사용합니다.
