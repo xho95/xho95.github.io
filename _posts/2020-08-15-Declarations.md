@@ -1190,7 +1190,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `lazy`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 속성의 초기 값을, 속성에 최초로 접근할 때, 최대 한 번만 계산하고 저장함을 지시하기 위해 클래스나 구조체의 저장 변수 속성에 적용합니다. `lazy` 수정자의 사용 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스나 구조체의 저장 변수 속성에 적용하면, 속성에 최초로 접근할 때, 최대 한 번만 속성의 초기 값을 계산하고 저장한다는 걸 지시합니다. `lazy` 수정자의 사용법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보기 바랍니다.
 
 `optional`
 

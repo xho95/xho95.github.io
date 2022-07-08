@@ -291,6 +291,8 @@ print(type(of: twelve))
 
 [^less-sepcific]: 이는 '프로토콜 타입' 을 사용하면 해당 '프로토콜 필수 조건' 에서 정의한 인터페이스만 사용할 수 있기 때문입니다. 즉 타입 정보가 덜 특정해 질수록 사용할 수 있는 인터페이스가 더 줄어들게 됩니다.
 
+[^protocol-type-value]: 프로토콜을 준수한다는 건 프로토콜의 필수 조건을 모두 구현한다는 의미입니다. 하지만, 프로토콜 그 자체는 추상 타입이라서 어떤 것도 직접 구현하지 않습니다. 즉, 어떠한 값이 프로토콜 타입이라면 그 프로토콜을 준수하지 않습니다.
+
 [^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
 
 [^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 보도록 합니다.
