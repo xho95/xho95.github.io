@@ -1224,7 +1224,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 #### Access Control Levels (접근 제어 수준)
 
-스위프트는: '공개 (open)', '공용 (public)', '내부 (internal)', '파일 전용 (file private)', 및 '개인 전용 (private)' 이라는 '다섯 가지 수준의 접근 제어' 를 제공합니다. 선언의 '접근 수준' 을 지정하기 위해 아래의 '접근-수준 수정자' 중 하나를 선언에 표시할 수 있습니다. '접근 제어' 는 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에서 자세하게 논의합니다.
+스위프트는 다섯 가지 수준의 접근 제어를 제공하는데: 공개 (open), 공용 (public), 내부 (internal), 파일 전용 (file private), 및 개인 전용 (private) 이 그것입니다. 선언에 아래의 접근-수준 중 하나를 표시하여 선언의 접근 수준을 지정합니다. 접근 제어는 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 에서 자세히 논합니다.
 
 `open`
 
