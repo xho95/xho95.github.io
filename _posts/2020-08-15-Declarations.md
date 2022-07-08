@@ -1194,17 +1194,17 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `optional`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 준수 타입이 해당 멤버를 구현하는 게 필수는 아님을 지시하기 위해 '프로토콜의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 프로토콜의 속성이나, 메소드, 또는 첨자 멤버에 적용하면 준수 타입이 이러한 멤버를 구현하는 게 필수는 아니라는 걸 지시합니다.
 
-&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 '`objc` 특성으로 표시한 프로토콜' 에만 적용할 수 있습니다. 그 결과, '클래스 타입' 만이 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자의 사용 방법에 대한 더 많은 정보와-예를 들어, 준수 타입이 이를 구현하는지 확실하지 않을 때-옵셔널 프로토콜 멤버로 접근하는 방법에 대한 길잡이는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 `objc` 특성을 표시한 프로토콜에만 적용할 수 있습니다. 그 결과, 클래스 타입만 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자 사용법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버의 접근법에 대한 길잡이-예를 들어, 준수 타입이 구현했는지 확실하지 않을 때-는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보기 바랍니다.
 
 `required`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 모든 하위 클래스가 반드시 해당 초기자를 구현해야 함을 지시하기 위해 '지명 또는 편의 초기자' 에 적용합니다. 해당 초기자의 하위 클래스 구현도 반드시 `required` 수정자로 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스의 지명 또는 편의 초기자에 적용하면 반드시 모든 하위 클래스가 그 초기자를 구현해야 한다는 걸 지시합니다. 그 초기자의 하위 클래스 구현에도 반드시 `required` 수정자를 표시해야 합니다.
 
 `static`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 멤버가, 해당 타입 인스턴스의 멤버라기 보다는, 해당 타입의 멤버임을 지시하기 위해 '구조체, 클래스, 열거체, 또는 프로토콜의 멤버' 에 적용합니다. 클래스 선언 영역에서, 멤버 선언에 `static` 수정자를 작성하는 건 해당 멤버 선언에 대해 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과를 가집니다.[^class-final] 하지만, 클래스의 '상수 타입 속성' 은 예외인데: 이 선언에는 `class` 나 `final` 을 작성할 수 없기 때문에 여기서는 `static` 이 보통의, 클래스 아닌 의미를 가집니다. 
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 구조체나, 클래스, 열거체, 또는 프로토콜 멤버에 적용하면, 그 타입의 인스턴스에 대한 멤버라기 보단, 타입 (자체)의 멤버라는 걸 지시합니다. 클래스 선언 영역 안에서, 멤버 선언에 `static` 수정자를 작성하면 그 멤버 선언에 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과입니다.[^class-final] 하지만, 클래스의 상수 타입 속성은 예외인데: 여기선 `static` 이 보통의, 클래스가 아닌 의미를 가지는게 이 선언들엔 `class` 나 `final` 을 쓸 수 없기 때문입니다.
 
 `unowned`
 
@@ -1340,7 +1340,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^operator-declarations]: 원문 자체가 애플 개발자 문서의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결됩니다.
 
-[^class-final]: 즉, 클래스 선언 안에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
+[^class-final]: 즉, 클래스 선언 안에서 `static` 을 사용하면 `class` 와 `final` 을 동시에 사용하는 것과 같은 효과입니다.
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
