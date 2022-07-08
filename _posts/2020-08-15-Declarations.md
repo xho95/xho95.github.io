@@ -1208,11 +1208,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `unowned`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 실행 시간 에러를 일으킵니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 실행 시간 에러가 일어납니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와는 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
 
 `unowned(safe)`
 
-&nbsp;&nbsp;&nbsp;&nbsp;`unowned` 의 (전체) 철자를 명시한 것입니다.[^unowned-safe]
+&nbsp;&nbsp;&nbsp;&nbsp;`unowned` 의 (전체) 철자를 명시한 겁니다.[^unowned-safe]
 
 `unowned(unsafe)`
 
@@ -1346,4 +1346,4 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^dynamically-dispatched]: '동적 급파 (dynamically dispatched)' 라는 개념은 C++ 등에서 사용하는 가상 함수 테이블 (virtual function table) 을 사용한다는 의미입니다. 가상 함수 테이블을 사용하기 때문에, 인라인이나 탈-가상화를 할 수 없습니다. 가상 함수 테이블에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 보도록 합니다.  
 
-[^unowned-safe]: 즉, 스위프트에서 `unowned` 라고 사용하는 것은 `unowned(safe)` 를 사용하는 것이며, `unowned(unsafe)` 를 명시하지 않은 이상, 항상 `unowned(safe)` 를 사용하게 됩니다.
+[^unowned-safe]: 스위프트에서 `unowned` 를 사용하는 건 `unowned(safe)` 를 사용하는 것과 같은 것이고, 따로 `unowned(unsafe)` 라고 명시하지 않는 한, 항상 `unowned(safe)` 를 사용합니다.
