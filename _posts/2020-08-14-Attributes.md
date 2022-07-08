@@ -25,9 +25,9 @@ categories: Swift Language Grammar Attribute
 
 #### available (사용 가능)
 
-이 특성은 '정해진 스위프트 언어 버전' 또는 '정해진 플랫폼과 운영 체제 버전' 과 관계 있는 선언의 '생애 주기 (life cycle)' 를 지시하기 위해 적용합니다.
+이 특성을 적용하면 특정 스위프트 언어 버전이나 특정 플랫폼 및 운영 체제 버전에 따라 상대적인 선언의 생명 주기[^life-cycle] 를 지시합니다.
 
-'`available` 특성' 은 항상 쉼표로 구분한 둘 이상의 '특성 인자 목록' 들과 같이 있습니다. 이 인자들은 다음의 플랫폼 또는 언어 이름으로 시작합니다:
+`available` 특성은 항상 쉼표로 구분한 둘 이상의 특성 인자 목록과 함께 나타납니다. 이러한 인자는 다음의 플랫폼이나 언어 이름 중 하나로 시작합니다:
 
 * `iOS`
 * `iOSApplicationExtension`
@@ -41,11 +41,11 @@ categories: Swift Language Grammar Attribute
 * `tvOSApplicationExtension`
 * `swift`
 
-'별표 (asterisk; `*`)' 로 '위에 나열한 모든 플랫폼 이름' 에 대한 '선언의 사용 가능성 (availability)' 을 지시할 수도 있습니다. '스위프트 버전 번호로 사용 가능성을 지시한 `available` 특성' 은 '별표' 를 사용할 수 없습니다.
+별표 (`*`) 로 위에 나열한 모든 플랫폼 이름에 대해 선언의 사용 가능성 (availability) 을 지시할 수도 있습니다. 스위프트 버전 번호로 사용 가능성을 지시한 `available` 특성엔 별표를 사용할 수 없습니다.
 
-나머지 인자들은 어떤 순서로든 있을 수 있으며, 중요한 '이정표 (milestones)' 를 포함하여, '선언의 생애 주기에 대한 추가적인 정보' 를 지정할 수 있습니다.
+나머지 인자는 어떤 순서로든 나타날 수 있으며 선언 생명 주기에 대한 추가 정보를 지정할 수 있는데, 이는 중요한 이정표 (milestones) 를 포함합니다.
 
-* `unavailable` 인자는 '특정 플랫폼에서는 사용 불가능한 선언' 을 지시합니다. '스위프트 버전 사용 가능성' 을 지정할 땐 이 인자를 사용할 수 없습니다.
+* `unavailable` 인자는 지정한 플랫폼에선 선언의 사용이 불가능하다는 걸 지시합니다. 스위프트 버전 사용 가능성을 지정할 땐 이 인자를 사용할 수 없습니다.
 
 * `introduced` 인자는 '선언을 도입한 첫 번째 특정 플랫폼 또는 언어 버전' 을 지시합니다. 형식은 다음과 같습니다:
 
@@ -769,7 +769,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^Attributes]: 원문은 [Attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+[^life-cycle]: '생명 주기 (life cycle)' 는 다양한 분야에서 여러 가지 의미로 사용되므로 정확하게 딱 잘라 말하기 어렵지만, 여기서는 대체로 하나의 선언이 메모리 할당부터 해제될 때까지 겪는 상태 변화를 의미합니다. 생명 주기에 대한 더 자세한 정보는 애플 개발자 문서의 [Life cycles](https://developer.apple.com/documentation/watchkit/life_cycles) 항목을 참고하기 바랍니다. 
 
 [^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 개요 (database schema)' 를 의미합니다. 여기서의 '개체 (entity)' 는 '다른 데이터베이스 언어의 테이블 (table)' 에 해당합니다.
 
