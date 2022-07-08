@@ -41,35 +41,35 @@ categories: Swift Language Grammar Attribute
 * `tvOSApplicationExtension`
 * `swift`
 
-별표 (`*`) 로 위에 나열한 모든 플랫폼 이름에 대해 선언의 사용 가능성 (availability) 을 지시할 수도 있습니다. 스위프트 버전 번호로 사용 가능성을 지시한 `available` 특성엔 별표를 사용할 수 없습니다.
+별표 (`*`) 를 사용하야 위에 나열한 모든 플랫폼 이름에 대한 선언의 사용 가능성 (availability) 을 지시할 수도 있습니다. 스위프트 버전 번호로 사용 가능성을 지시한 `available` 특성엔 별표를 사용할 수 없습니다.
 
 나머지 인자는 어떤 순서로든 나타날 수 있으며 선언 생명 주기에 대한 추가 정보를 지정할 수 있는데, 이는 중요한 이정표 (milestones) 를 포함합니다.
 
 * `unavailable` 인자는 지정한 플랫폼에선 선언의 사용이 불가능하다는 걸 지시합니다. 스위프트 버전 사용 가능성을 지정할 땐 이 인자를 사용할 수 없습니다.
 
-* `introduced` 인자는 '선언을 도입한 첫 번째 특정 플랫폼 또는 언어 버전' 을 지시합니다. 형식은 다음과 같습니다:
+* `introduced` 인자는 지정한 플랫폼이나 언어 버전이 선언을 도입한 첫번째 버전이라는 걸 지시합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;introduce: `version number-버전 번호`
 
-&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 1개에서 3개까지의 양수를, 마침표로 구분하여, 구성합니다.
 
-* `deprecated` 인자는 '선언을 폐기할 (deprecated) 첫 번째 특정 플랫폼 또는 언어 버전' 을 지시합니다. 형식은 다음과 같습니다:
+* `deprecated` 인자는 지정한 플랫폼이나 언어 버전이 선언을 폐기할 예정인[^deprecated] 첫 번째 버전이라는 걸 지시합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;deprecated: `version number-버전 번호`
 
-&nbsp;&nbsp;&nbsp;&nbsp;옵션인 _버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다. '버전 번호' 를 생략하면, 폐기 시점에 대한 어떤 정보도 없이, 현재 해당 선언이 폐기 예정임을 지시합니다. 버전 번호를 생략하면, '콜론 (`:`)' 마저 생략합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;옵션인 _버전 번호 (version number)_ 는, 1개에서 3개까지의 양수를, 마침표로 구분하여, 구성합니다. 버전 번호를 생략하면, 언제 폐기가 일어나는지에 대해선 어떤 정보도 주지 않고, 현재부터 선언이 폐기 예정이라는 걸 지시합니다. 버전 번호를 생략한다면, 콜론 (`:`) 마저 생략합니다.
 
-* `obsoleted` 인자는 '선언을 폐기한 (obsoleted) 첫 번째 특정 플랫폼 또는 언어 버전' 을 지시합니다. 폐기한 선언일 땐, 특정 플랫폼이나 언어에서 이를 제거하며 더 이상 사용할 수 없습니다. 형식은 다음과 같습니다:
+* `obsoleted` 인자는 지정한 플랫폼이나 언어 버전이 선언을 폐기한[^obsoleted] 첫 번째 버전이라는 걸 지시합니다. 폐기한 선언일 땐, 지정한 플랫폼이나 언어에서 제거하여 더 이상 사용할 수 없습니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;obsoleted: `version number-버전 번호`
 
-&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 마침표로 구분한, '1개에서 3개까지의 양수' 로 구성합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 1개에서 3개까지의 양수를, 마침표로 구분하여, 구성합니다.
 
-* `message` 인자는 '폐기 예정 (deprecated) 이거나 폐기한 (obsoleted) 선언' 의 사용에 대한 '경고 (warning) 나 에러 (error)' 를 내보낼 때 컴파일러가 보여줄 문장 메시지를 제공합니다. 형식은 다음과 같습니다:
+* `message` 인자는 폐기 예정이거나 폐기한 선언의 사용에 대한 경고 또는 에러를 내보낼 때 컴파일러가 보여줄 텍스트 메시지를 제공합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;message: `message-메시지`
 
-&nbsp;&nbsp;&nbsp;&nbsp;_메시지 (message)_ 는 '문자열 글자 값 (literal)' 으로 구성합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_메시지 (message)_ 는 문자열 글자 값으로 구성합니다.
 
 * `renamed` 인자는 '이름이 바뀐 선언에 새로운 이름을 지시하는 문장 메시지' 를 제공합니다. 컴파일러는 '이름 바뀐 선언의 사용에 대한 에러' 를 내보낼 때 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
 
@@ -770,6 +770,10 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^Attributes]: 원문은 [Attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 에서 확인할 수 있습니다.
 
 [^life-cycle]: '생명 주기 (life cycle)' 는 다양한 분야에서 여러 가지 의미로 사용되므로 정확하게 딱 잘라 말하기 어렵지만, 여기서는 대체로 하나의 선언이 메모리 할당부터 해제될 때까지 겪는 상태 변화를 의미합니다. 생명 주기에 대한 더 자세한 정보는 애플 개발자 문서의 [Life cycles](https://developer.apple.com/documentation/watchkit/life_cycles) 항목을 참고하기 바랍니다. 
+
+[^deprecated]: 선언을 '폐기할 예정 (deprecated)' 이라는 건 당장은 쓸 수 있지만 앞으로 폐기할 거라서 지금부터 쓰지 않는게 좋다고 알리는 것입니다. 
+
+[^obsoleted]: 선언을 '폐기한 (obseleted)' 건 이미 쓸 수 없는 선언이라는 의미입니다.
 
 [^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 개요 (database schema)' 를 의미합니다. 여기서의 '개체 (entity)' 는 '다른 데이터베이스 언어의 테이블 (table)' 에 해당합니다.
 
