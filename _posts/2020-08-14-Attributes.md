@@ -769,7 +769,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^Attributes]: 원문은 [Attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html) 에서 확인할 수 있습니다.
 
-[^life-cycle]: '생명 주기 (life cycle)' 는 다양한 분야에서 여러 가지 의미로 사용되므로 정확하게 딱 잘라 말하기 어렵지만, 여기서는 대체로 하나의 선언이 메모리 할당부터 해제될 때까지 겪는 상태 변화를 의미합니다. 생명 주기에 대한 더 자세한 정보는 애플 개발자 문서의 [Life cycles](https://developer.apple.com/documentation/watchkit/life_cycles) 항목을 참고하기 바랍니다. 
+[^life-cycle]: '생명 주기 (life cycle)' 는 다양한 분야에서 여러 가지 의미로 사용되므로 정확하게 딱 잘라 말하기 어렵지만, 여기서는 대체로 하나의 선언이 메모리 할당부터 해제될 때까지 겪는 상태 변화를 의미합니다. 생명 주기에 대한 더 자세한 정보는 애플 개발자 문서의 [Managing Your App's Life Cycle](https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle/) 항목을 참고하기 바랍니다. 
 
 [^deprecated]: 선언을 '폐기할 예정 (deprecated)' 이라는 건 당장은 쓸 수 있지만 앞으로 폐기할 거라서 지금부터 쓰지 않는게 좋다고 알리는 것입니다. 
 
