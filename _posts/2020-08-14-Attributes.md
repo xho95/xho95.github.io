@@ -21,7 +21,7 @@ categories: Swift Language Grammar Attribute
 
 ### Declaration Attributes (선언 특성)
 
-'선언 특성' 은 선언에만 적용할 수 있습니다.
+선언 특성은 선언에만 적용할 수 있습니다.
 
 #### available (사용 가능)
 
