@@ -1208,7 +1208,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `unowned`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 실행 시간 에러가 일어납니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와는 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 실행 시간 에러가 일어납니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
 
 `unowned(safe)`
 
@@ -1216,11 +1216,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `unowned(unsafe)`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 객체였던 위치의 메모리에 접근하는데, 이는 '메모리-안전하지 않은 (memory-unsafe) 연산' 입니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다.`unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 객체였던 메모리 장소에 접근할 건데, 이는 안전하지 않은-메모리 연산입니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
 
 `weak`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 약한 (weak) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 변수나 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제와 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나 저장 변수 속성에 적용하면 변수나 속성의 값이 객체로의 약한 참조라는 걸 지시합니다. 변수나 속성의 타입은 반드시 옵셔널 클래스 타입이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 값이 `nil` 입니다. `weak` 수정자에 대한 예제 및 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 보기 바랍니다.
 
 #### Access Control Levels (접근 제어 수준)
 
