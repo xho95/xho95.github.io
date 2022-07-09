@@ -180,11 +180,11 @@ print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
 // a
 ```
 
-`dynamicallyCall(withKeywordArguments:)` 메소드 선언은 반드시 [ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral) 프로토콜을 준수하는 단일 매개 변수를 가져야 하며, 반환 타입은 어떤 타입이어도 됩니다. 매개 변수의 [Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key) 는 반드시 [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 이어야 합니다. 이전 예제는 매개 변수 타입으로 [KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs) 를 사용하므로 호출한 쪽에서 매개 변수 이름표를 중복하여 포함할 수 있습니다-`repeat` 호출에 `a` 와 `b` 가 여러 번 있습니다.
+`dynamicallyCall(withKeywordArguments:)` 메소드 선언엔 반드시 [ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral) 프로토콜을 준수한 단일 매개 변수가 있어야 하며, 반환 타입은 어떤 타입이든 됩니다. 매개 변수의 [Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key) 는 반드시 [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 이어야 합니다. 이전 예제는 [KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs) 를 매개 변수 타입으로 사용해서 호출한 쪽이 매개 변수 이름표를 중복으로 포함할 수 있습니다-`repeat` 호출에 `a` 와 `b` 가 여러 번 나타납니다.
 
-`dynamicallyCall` 메소드를 둘 다 구현하면, 메소드 호출 시 키워드 인자를 포함하면 `dynamicallyCall(withKeywordArguments:)` 을 호출합니다. 다른 모든 경우에는, `dynamicallyCall(withArguments:)` 를 호출합니다.
+`dynamicallyCall` 메소드를 둘 다 구현하면, 메소드 호출에 키워드 인자를 포함할 때 `dynamicallyCall(withKeywordArguments:)` 를 호출합니다. 다른 모든 경우엔, `dynamicallyCall(withArguments:)` 를 호출합니다.
 
-`dynamicallyCall` 메소드 구현에서 지정한 타입과 일치하는 인자와 반환 값을 가진 '동적으로 호출 가능한 인스턴스' 만 호출할 수 있습니다. 다음 예제의 호출은 `KeyValuePairs<String, String>` 을 취하는 `dynamicallyCall(withArguments:)` 구현이 없기 때문에 컴파일되지 않습니다.
+인자와 반환 값 타입이 `dynamicallyCall` 메소드 구현에서 지정한 것과 일치한 동적 호출 가능 인스턴스만 호출할 수 있습니다. 다음 예제 호출은 컴파일이 안되는데 `KeyValuePairs<String, String>` 을 취하는 `dynamicallyCall(withArguments:)` 구현이 없기 때문입니다.
 
 ```swift
 repeatLabels(a: "four") // 에러
