@@ -192,9 +192,9 @@ repeatLabels(a: "four") // 에러
 
 #### dynamicMemberLookup (동적으로 멤버 찾아보기)
 
-이 특성은 실행 시간에 멤버를 이름으로 찾아볼 수 있게 클래스, 구조체, 열거체, 또는 프로토콜에 적용합니다. 타입은 반드시 '`subscript(dynamicMemberLookup:)` 첨자 연산' 을 구현해야 합니다.
+이 특성을 클래스나, 구조체, 열거체, 또는 프로토콜에 적용하면 멤버를 실행 시간에 이름으로 찾아볼 수 있게 합니다. 타입은 반드시 `subscript(dynamicMemberLookup:)` 첨자를 구현해야 합니다.
 
-명시적 멤버 표현식에서, 이름 붙인 멤버에 해당하는 선언이 없는 경우, 멤버에 대한 정보를 인자로 전달하는, 타입의 `subscript(dynamicMemberLookup:)` 첨자 연산을 호출하는 표현식인 것으로 이해합니다. 첨자 연산은 '키 경로 (key path)' 나 '멤버 이름' 인 매개 변수를 취할 수 있는데; 두 첨자 연산 모두를 구현하면, '키 경로 인자를 취하는 첨자 연산' 을 사용합니다.
+명시적 멤버 표현식에서, 이름 있는 멤버에 해당하는 선언이 없으면, 표현식이 타입의 `subscript(dynamicMemberLookup:)` 첨자로의 호출이라고 이해하며, 멤버에 대한 정보를 인자로 전달합니다. 첨자는 키 경로나 멤버 이름인 매개 변수를 받아들일 수 있으며; 두 첨자를 모두 구현하면, 키 경로 인자를 가진 첨자를 사용합니다.
 
 `subscript(dynamicMemberLookup:)` 구현은 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 또는 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 타입의 인자를 사용하는 '키 경로' 를 취할 수 있습니다. [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 프로토콜을 준수하는 타입-대부분의 경우, `String`-인 인자를 사용하는 '멤버 이름' 을 취할 수도 있습니다. 첨자 연산의 반환 타입은 어떤 타입이어도 됩니다.
 
