@@ -196,9 +196,9 @@ repeatLabels(a: "four") // 에러
 
 명시적 멤버 표현식에서, 이름 있는 멤버에 해당하는 선언이 없으면, 표현식이 타입의 `subscript(dynamicMemberLookup:)` 첨자로의 호출이라고 이해하며, 멤버에 대한 정보를 인자로 전달합니다. 첨자는 키 경로나 멤버 이름인 매개 변수를 받아들일 수 있으며; 두 첨자를 모두 구현하면, 키 경로 인자를 가진 첨자를 사용합니다.
 
-`subscript(dynamicMemberLookup:)` 구현은 [KeyPath](https://developer.apple.com/documentation/swift/keypath), [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 또는 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 타입의 인자를 사용하는 '키 경로' 를 취할 수 있습니다. [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 프로토콜을 준수하는 타입-대부분의 경우, `String`-인 인자를 사용하는 '멤버 이름' 을 취할 수도 있습니다. 첨자 연산의 반환 타입은 어떤 타입이어도 됩니다.
+`subscript(dynamicMemberLookup:)` 구현은 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 나, [WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath), 또는 [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath) 타입의 인자를 사용한 키 경로를 받아들일 수 있습니다. [ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral) 프로토콜을 준수하는 타입의 인자를 사용한 멤버 이름도 받아들일 수 있는데-대부분의 경우, `String` 입니다. 첨자의 반환 타입은 어떤 타입이든 됩니다.
 
-'멤버 이름을 써서 동적으로 멤버 찾아보기' 는, 다른 언어로 된 자료를 스위프트 안으로 연동할 때 처럼, 컴파일 시간에 타입 검사를 할 수 없는 자료의 '포장 타입 (wrapper type)' 을 생성하기 위해 사용할 수 있습니다.[^dynamic-member-lookup] 예를 들면 다음과 같습니다:
+멤버 이름을 써서 동적으로 멤버 찾아보기는, 다른 언어로 된 데이터를 스위프트로 연동할 때 같이, 컴파일 시간에 타입 검사를 할 수 없는 데이터의 포장 타입을 생성하는데 사용할 수 있습니다. [^dynamic-member-lookup] 예를 들면 다음과 같습니다:
 
 ```swift
 @dynamicMemberLookup
@@ -211,18 +211,18 @@ struct DynamicStruct {
 }
 let s = DynamicStruct()
 
-// '동적으로 멤버 찾아보기' 를 사용합니다.
+// 동적으로 멤버 찾아보기를 사용합니다.
 let dynamic = s.someDynamicMember
 print(dynamic)
-// "325" 를 출력합니다.
+// "325" 를 인쇄함
 
-// 실제 첨자 연산을 직접 호출합니다.
+// 실제 첨자를 직접 호출합니다.
 let equivalent = s[dynamicMember: "someDynamicMember"]
 print(dynamic == equivalent)
-// "true" 를 출력합니다.
+// "true" 를 인쇄함
 ```
 
-'키 경로를 써서 동적으로 멤버 찾아보기' 는 '컴파일-시간 타입 검사를 지원하는 식으로 포장 타입' 을 구현하기 위해 사용할 수 있습니다. 예를 들면 다음과 같습니다:
+키 경로를 써서 동적으로 멤버 찾아보기는 컴파일-시간 타입 검사를 지원하는 방식의 포장 타입을 구현하는데 사용할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct Point { var x, y: Int }
@@ -779,6 +779,10 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^seperate]: 하나의 `available` 특성에 스위프트 버전과 플랫펌 버전 인자를 동시에 쓸 수 없다는 의미입니다.
 
+[^dynamic-callable]: '동적으로 호출 가능한 (dynamicCallable) 특성' 은 C++ 언어 등에 있는 함수 객체 (function object) 와 유사한 개념입니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보기 바랍니다.
+
+[^dynamic-member-lookup]: 본문에서 설명한 것처럼, 스위프트에서 **Core Data** 나 **JSON** 을 다룰 때 동적으로 멤버 찾아보기 (dynamicMemberLookup) 를 많이 사용하게 됩니다. 다만, 스위프트 언어가 업데이트되면서 동적으로 멤버 찾아보기 같은 기능을 명시적으로 쓰는 경우는 점점 줄어들고 있습니다. 
+
 [^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 개요 (database schema)' 를 의미합니다. 여기서의 '개체 (entity)' 는 '다른 데이터베이스 언어의 테이블 (table)' 에 해당합니다.
 
 [^objc]: '오브젝티브-C' 의 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
@@ -786,10 +790,6 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
 
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
-
-[^dynamic-callable]: '동적으로 호출 가능한 (dynamicCallable) 특성' 은 C++ 언어 등에 있는 함수 객체 (function object) 와 유사한 개념입니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보기 바랍니다.
-
-[^dynamic-member-lookup]: '동적으로 멤버 찾아보기 (dynamicMemberLookup)' 은 스위프트에서 'Core Data' 나 'JSON' 을 다룰 때 사용하게 되는 것 같습니다.
 
 [^NSApplicationMain-UIApplicationMain]: `NSApplicationMain` 과 `UIApplicationMain` 을 사용하는 방식은 다 예전 방식입니다. 최신 'SwiftUI' 를 사용하면 `@main` 을 기본으로 사용하기 때문에, `NSApplicationMain` 이나 `UIApplicationMain` 특성 또는 `main.swift` 파일을 사용할 일이 없습니다.
 
