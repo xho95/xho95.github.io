@@ -65,19 +65,19 @@ categories: Swift Language Grammar Attribute
 
 &nbsp;&nbsp;&nbsp;&nbsp;_버전 번호 (version number)_ 는, 1개에서 3개까지의 양수를, 마침표로 구분하여, 구성합니다.
 
-* `message` 인자는 폐기 예정이거나 폐기한 선언의 사용에 대한 경고 또는 에러를 내보낼 때 컴파일러가 보여줄 텍스트 메시지를 제공합니다. 형식은 다음과 같습니다:
+* `message` 인자는 폐기 예정이거나 폐기한 선언의 사용에 대한 경고 또는 에러를 내보낼 때 컴파일러가 보여줄 메시지 글을 제공합니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;message: `message-메시지`
 
 &nbsp;&nbsp;&nbsp;&nbsp;_메시지 (message)_ 는 문자열 글자 값으로 구성합니다.
 
-* `renamed` 인자는 '이름이 바뀐 선언에 새로운 이름을 지시하는 문장 메시지' 를 제공합니다. 컴파일러는 '이름 바뀐 선언의 사용에 대한 에러' 를 내보낼 때 새로운 이름을 보여줍니다. 형식은 다음과 같습니다:
+* `renamed` 인자는 이름을 바꾼 선언의 새 이름을 지시하는 메시지 글을 제공합니다. 컴파일러는 이름 바꾼 선언의 사용에 대한 에러를 내보낼 때 새 이름을 보여줍니다. 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;renamed: `new name-새로운 이름`
 
-&nbsp;&nbsp;&nbsp;&nbsp;_새로운 이름 (new name)_ 은 '문자열 글자 값' 으로 구성합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;_새로운 이름 (new name)_ 은 문자열 글자 값으로 구성합니다.
 
-&nbsp;&nbsp;&nbsp;&nbsp;프레임웍이나 라이브러리를 발매한 사이에 선언 이름이 바뀌었음을 지시하기 위해, 아래 보인 것처럼, `rename` 과 `unavailable` 인자를 가진 `available` 특성을 '타입 별명 (type alias) 선언' 에 적용할 수 있습니다. 이 조합은 '선언 이름이 바뀌었다' 는 컴파일 시간 에러가 됩니다.
+&nbsp;&nbsp;&nbsp;&nbsp;밑에서 보는 것처럼, `rename` 과 `unavailable` 인자가 있는 `available` 특성을 타입 별명 선언에 적용하면, 프레임웍이나 라이브러리 발매 사이에 바뀐 선언의 이름을 지시할 수 있습니다. 이 조합은 선언의 이름이 바뀌었다는 컴파일 시간 에러가 됩니다.
 
   ```swift
   // 첫 번재 발매
@@ -85,7 +85,7 @@ categories: Swift Language Grammar Attribute
     // 프로토콜 정의
   }
 
-  // 후속 발매 시 MyProtocol 이름을 바꿉니다.
+  // 후속 발매 시에 MyProtocol 이름을 바꿈
   protocol MyRenamedProtocol {
     // 프로토콜 정의
   }
@@ -94,14 +94,14 @@ categories: Swift Language Grammar Attribute
   typealias MyProtocol = MyRenamedProtocol
   ```
 
-서로 다른 플랫폼 및 서로 다른 스위프트 버전에 대해서 '선언의 사용 가능성' 을 지정하기 위해 '단일 선언' 에 '여러 개의 `available` 특성' 을 적용할 수 있습니다. '특성에서 지정한 플랫폼이나 언어 버전' 이 '현재 대상' 과 일치하지 않으면 '`available` 특성을 적용한 선언' 을 무시합니다. 여러 개의 `available` 특성을 사용한 경우로, 실제 효과 있는 사용 가능성은 플랫폼과 스위프트 사용 가능성을 조합한 것입니다.
+단일 선언에 여러 개의 `available` 특성을 적용하여 서로 다른 플랫폼과 서로 다른 스위프트 버전에 대한 선언 사용 가능성을 지정할 수 있습니다. 특성이 지정한 플랫폼이나 언어 버전이 현재 대상과 일치하지 않으면 `available` 특성을 적용한 선언을 무시합니다. 여러 개의 `available` 특성을 사용하면, 효과적인 사용 가능성은 플랫폼과 스위프트 사용 가능성을 조합한 것입니다.[^effective]
 
-`available` 특성이 플랫폼 및 언어 이름 인자 외에 `introduced` 인자만 지정할 경우, 다음 짧게 줄인 구문을 대신 사용할 수 있습니다:
+`available` 특성이 플랫폼이나 언어 이름 인자 외엔 `introduced` 인자만 지정한다면, 다음의 짧게 줄인 구문을 대신 사용할 수 있습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\@available(`platform name-플랫폼 이름` `version number-버전 번호`, *)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;\@available(swift `version number-버전 번호`)
 
-`available` 특성을 짧게 줄인 구문은 여러 플랫폼에 대한 사용 가능성을 간결하게 나타냅니다. 두 형식의 기능이 '동치 (equivalent)' 이긴 하지만, 가능할 때마다 짧게 줄인 형식을 사용하는 게 좋습니다.
+`available` 특성의 짧게 줄인 구문은 여러 플랫폼의 사용 가능성을 간결하게 표현합니다. 두 형식의 기능이 같긴 하지만, 가능할 때마다 짧게 줄인 형식을 쓰는게 더 좋습니다.
 
 ```swift
 @available(iOS 10.0, macOS 10.12, *)
@@ -110,7 +110,7 @@ class MyClass {
 }
 ```
 
-'스위프트 버전 번호로 사용 가능성을 지정하는 `available` 특성' 은 '선언의 플랫폼 사용 가능성' 을 추가적으로 지정할 수 없습니다. 그 대신, 별도의 `available` 특성을 사용하여 '스위프트 버전 사용 가능성' 과 '하나 이상의 플랫폼 사용 가능성' 을 지정합니다.
+스위프트 버전 번호를 써서 사용 가능성을 지정한 `available` 특성은 선언의 플랫폼 사용 가능성을 추가로 지정할 수 없습니다. 그 대신, 별도의 `available` 특성으로 스위프트 버전 사용 가능성과 하나 이상의 플랫폼 사용 가능성을 지정합니다.[^seperate]
 
 ```swift
 @available(swift 3.0.2)
@@ -120,15 +120,15 @@ struct MyStruct {
 }
 ```
 
-#### discardableResult (버릴 수 있는 결과)
+#### discardableResult (버려도 되는 결과)
 
-이 특성은 '결과를 사용하지 않고 값을 반환하는 함수나 메소드를 호출할 때의 컴파일러 경고' 를 억제하기 위해 함수나 메소드 선언에 적용합니다.
+이 특성을 함수나 메소드 선언에 적용하면 값을 반환하는 함수나 메소드를 호출하고 결과를 사용하지 않을 때의 컴파일러 경고를 억누릅니다.
 
 #### dynamicCallable (동적으로 호출 가능)
 
-이 특성은 '타입의 인스턴스를 호출 가능한 함수처럼 취급' 하기 위해 클래스, 구조체, 열거체, 또는 프로토콜에 적용합니다.[^dynamic-callable] 타입은 반드시 `dynamicallyCall(withArguments:)` 메소드나, `dynamicallyCall(withKeywordArguments:)` 메소드, 또는 둘 다를 구현해야 합니다.
+이 특성을 클래스나, 구조체, 열거체, 또는 프로토콜에 적용하면 그 타입의 인스턴스를 호출 가능한 함수로 취급합니다.[^dynamic-callable] 타입은 반드시 `dynamicallyCall(withArguments:)` 메소드나, `dynamicallyCall(withKeywordArguments:)` 메소드, 또는 둘 다를 구현해야 합니다.
 
-'동적으로 호출 가능한 타입의 인스턴스' 는 마치 '어떤 개수의 인자든 취할 수 있는 함수' 인 것처럼 호출할 수 있습니다.
+동적으로 호출 가능한 타입의 인스턴스은 마치 어떤 개수의 인자든 취하는 함수인 것처럼 호출할 수 있습니다.
 
 ```swift
 @dynamicCallable
@@ -146,18 +146,18 @@ let dial = TelephoneExchange()
 
 // 동적 메소드 호출을 사용합니다.
 dial(4, 1, 1)
-// "Get Swift help on forums.swift.org" 를 인쇄합니다.
+// "Get Swift help on forums.swift.org" 를 인쇄함
 
 dial(8, 6, 7, 5, 3, 0, 9)
-// "Unrecognized number" 를 인쇄합니다.
+// "Unrecognized number" 를 인쇄함
 
 // 실제 메소드를 직접 호출합니다.
 dial.dynamicallyCall(withArguments: [4, 1, 1])
 ```
 
-`dynamicallyCall(withArguments:)` 메소드 선언은 반드시-위 예제의 `[Int]` 같이-[ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral) 프로토콜을 준수하는 단일 매개 변수를 가져야 합니다. 반환 타입은 어떤 타입이어도 됩니다.
+`dynamicallyCall(withArguments:)` 메소드 선언은 반드시 [ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral) 프로토콜을 준수한 단일 매개 변수-위 예제의 `[Int]` 같은 거-를 가져야 합니다. 반환 타입은 어떤 타입이든 됩니다.
 
-`dynamicallyCall(withKeywordArguments:)` 메소드를 구현하면 '동적 메소드 호출' 에 '이름표' 를 포함할 수 있습니다.
+`dynamicallyCall(withKeywordArguments:)` 메소드를 구현한다면 동적 메소드 호출에 이름표를 포함시킬 수 있습니다.
 
 ```swift
 @dynamicCallable
@@ -775,6 +775,10 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^obsoleted]: 선언을 '폐기한 (obseleted)' 건 이미 쓸 수 없는 선언이라는 의미입니다.
 
+[^effective]: 여러 개의 `available` 특성을 사용할 경우, 플랫폼 사용 가능성만 여러 개 적용하거나 스위프트 버전 사용 가능성만 여러 개 적용한 건 별 의미가 없다는 의미입니다. 
+
+[^seperate]: 하나의 `available` 특성에 스위프트 버전과 플랫펌 버전 인자를 동시에 쓸 수 없다는 의미입니다.
+
 [^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 개요 (database schema)' 를 의미합니다. 여기서의 '개체 (entity)' 는 '다른 데이터베이스 언어의 테이블 (table)' 에 해당합니다.
 
 [^objc]: '오브젝티브-C' 의 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
@@ -783,7 +787,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
 
-[^dynamic-callable]: '동적으로 호출 가능 (dynamicCallable) 특성' 은 C++ 언어의 '함수 객체 (function object)' 와 개념이 유사합니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보도록 합니다. 사실 스위프트에는 클로저가 있기 때문에 특수한 목적이 아니라면 직접 `dynamicCallable` 특성을 사용할 일이 거의 없을 것입니다.  
+[^dynamic-callable]: '동적으로 호출 가능한 (dynamicCallable) 특성' 은 C++ 언어 등에 있는 함수 객체 (function object) 와 유사한 개념입니다. 함수 객체에 대한 더 자세한 정보는, 위키피디아의 [Function object](https://en.wikipedia.org/wiki/Function_object) 항목을 보기 바랍니다.
 
 [^dynamic-member-lookup]: '동적으로 멤버 찾아보기 (dynamicMemberLookup)' 은 스위프트에서 'Core Data' 나 'JSON' 을 다룰 때 사용하게 되는 것 같습니다.
 
