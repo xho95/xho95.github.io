@@ -248,11 +248,11 @@ print(wrapper.x)
 
 라이브러리 진화 모드에서, 동결 아닌 구조체 및 열거체 멤버와 상호 작용하는 코드는 미래 버전의 라이브러리가 그 타입의 일부 멤버를 추가, 삭제, 또는 재배치하더라도 재-컴파일 없이 작업을 계속 허용하는 방식으로 컴파일합니다. 컴파일러는 실행 시간에 정보 찾아보기 및 간접 계층 추가하기 같은 기술을 써서 이를 가능하게 합니다. 구조체나 열거체를 동결로 만드는 건 이런 유연함을 포기하면서 성능을 얻는 것인데: 미래 버전의 라이브러리가 타입을 바꾸는 데는 제한이 있지만, 타입 멤버와 상호 작용하는 코드를 컴파일러가 추가로 최적화할 수 있습니다.
 
-동결 타입과, 동결 구조체의 저장 속성 타입, 및 동결 열거체 case 의 결합 값은 반드시 공용 (public) 이거나 '`usableFromInline` 특성을 표시해야 합니다. 동결 구조체의 속성엔 속성 관찰자가 있을 수 없으며, [inlinable (인라인 가능)](#inlinable-인라인-가능) 에서 논의한 것처럼, 저장 인스턴스 속성의 초기 값을 제공하는 표현식은 인라인 가능 함수 (inlinable functions) 와 동일한 제약을 반드시 따라야 합니다.
+동결 타입과, 동결 구조체의 저장 속성 타입, 및 동결 열거체 case 의 결합 값은 반드시 공용 (public) 이거나 '`usableFromInline` 특성을 표시해야 합니다. 동결 구조체의 속성엔 속성 관찰자가 있을 수 없으며, 저장 인스턴스 속성에 초기 값을 제공하는 표현식은, [inlinable (인라인 가능)](#inlinable-인라인-가능) 에서 논의한 것처럼, 반드시 인라인 가능 함수와 똑같은 제약 사항을 따라야 합니다.
 
-'명령 줄 (command line)' 에서 '라이브러리 진화 모드' 를 쓰려면, 스위프트 컴파일러에 `-enable-library-evolution` 옵션을 전달합니다. '엑스코드 (Xcode)' 에서 쓰려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한 것처럼, "배포용 라이브러리 제작 (`BUILD_LIBRARY_FOR_DISTRIBUTION`)" 이라는 '배포 설정 (build setting)' 을 '예 (Yes)' 로 설정합니다.
+명령 줄[^command-line] 에서 라이브러리 진화 모드를 켜려면, `-enable-library-evolution` 옵션을 스위프트 컴파일러로 전달합니다. 엑스코드에서 켜려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한, "배포용 라이브러리 제작 (`BUILD_LIBRARY_FOR_DISTRIBUTION`)" 배포 설정을 예 (Yes) 로 설정합니다.
 
-'동결 열거체' 에 대한 'switch 문' 은, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 에서 논의한 것처럼, '`default` case 절' 을 요구하지 않습니다. 동결 열거체를 전환할 때 '`default` 나 `@unknown default` case 절' 를 포함하면 해당 코드를 절대로 실행하지 않기 때문에 '경고' 를 만들어 냅니다.
+[Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 에서 논의한 것처럼, 동결 열거체에 대한 switch 문은 `default` case 를 요구하지 않습니다. 동결 열거체 전환 때 `default` 나 `@unknown default` case 를 포함하면 경고를 만들어 내는데 그 코드는 절대 실행되지 않기 때문입니다.
 
 #### GKInspectable (점검 가능한 GameplayKit)
 
@@ -786,6 +786,8 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^library-evolution-mode]: '라이브러리 진화 모드 (library evolution mode)' 는 스위프트 바이너리 프레임웍을 생성할 때 사용할 수 있는 옵션입니다. 이어지는 설명을 볼 때, 앞으로 라이브러리가 지속적으로 바뀔 가능성이 있을 때 선택하는 옵션이라고 추측할 수 있습니다. 라이브러리 진화 모드에 대한 더 자세한 정보는, [Library Evolution in Swift](https://swift.org/blog/library-evolution/) 항목을 보도록 합니다. 
 
 [^ABI-compatibility]: 'ABI 호환성 (Application Binary Interface Compatibility)' 이란 앱과 앱에서 사용한 라이브러리가 바이너리 수준에서 호환성을 가지는 걸 말합니다. ABI 호환성이 있으면 이미 컴파일되어 있는 라이브러리로 앱에서 그대로 사용할 수 있습니다. 이렇게 ABI 호환성을 가질려면 기존에 컴파일해둔 라이브러리가 미래에 바뀌어선 안되는 것입니다. 
+
+[^command-line]: '명령 줄 (command line)' 은 터미널 (terminal) 에서 명령을 입력하는 곳을 말합니다. 
 
 [^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 '엑스코드 (Xcode)' 의 `*.xcdatamodeld` 파일에서 만드는 '데이터베이스 개요 (database schema)' 를 의미합니다. 여기서의 '개체 (entity)' 는 '다른 데이터베이스 언어의 테이블 (table)' 에 해당합니다.
 
