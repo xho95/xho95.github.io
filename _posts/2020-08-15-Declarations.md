@@ -527,7 +527,7 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 **Enumerations with Indirection (간접을 가지는 열거체)**
 
-열거체는 재귀 구조, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case, 를 가질 수 있습니다.[^recursive-structure] 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지며, 이는 메모리 안에 고정 구획을 가진다는 의미입니다.[^fixed-layout] 재귀를 지원하려면, 컴파일러가 반드시 간접 층을 집어 넣어야 합니다.[^layer-of-indirection] 
+열거체는 재귀 구조, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case, 를 가질 수 있습니다.[^recursive-structure] 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지며, 이는 메모리 안에 고정 구획을 가진다는 의미입니다.[^fixed-layout] 재귀를 지원하려면, 컴파일러가 반드시 간접 계층을 집어 넣어야 합니다.[^layer-of-indirection] 
 
 특별한 한 열거체 case 가 간접할 수 있게 하려면, 거기에 `indirect` 선언 수정자를 표시합니다. 간접 case 엔 반드시 결합 값이 있어야 합니다.
 
@@ -1312,7 +1312,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^fixed-layout]: 여기서 말하는 메모리 안의 고정 구획 (fixed layout) 을 보통 스택 (stack) 이라고 합니다.
 
-[^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라 스택에 저장하므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면, 그 인스턴스로의 참조도 따로 저장해야 합니다. 그 인스턴스로의 참조를 추가하여 저장하는 걸 '간접 층 (layer-of-indirection) 을 집어 넣는다' 고 합니다.
+[^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라 스택에 저장하므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면, 그 인스턴스로의 참조도 따로 저장해야 합니다. 그 인스턴스로의 참조를 추가하여 저장하는 걸 '간접 계층 (layer-of-indirection) 을 집어 넣는다' 고 합니다.
 
 [^signature]: 함수나 메소드에서 '서명 (signature) 과 이름 (name)' 의 차이점은 매개 변수의 포함 여부입니다. 이 예제의 `init(rawValue: RawValue)` 는 초기자 서명 (signature) 이라고 하고, 매개 변수 부분을 뺀 `init?` 은 초기자 이름이라고 합니다.
 
