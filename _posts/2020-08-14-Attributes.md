@@ -268,26 +268,26 @@ print(wrapper.x)
 
 #### main (메인)
 
-이 특성은 '프로그램 흐름의 최상단 진입점 (top-level entry point) 을 담고 있음' 을 지시하기 위해 구조체, 클래스, 또는 열거체 선언에 적용합니다. 타입은 반드시 '어떤 인자도 취하지 않으면서 `Void` 를 반환하는 `main` 타입 함수' 를 제공해야 합니다. 예를 들면 다음과 같습니다:
+이 특성을 구조체나, 클래스, 또는 열거체 선언에 적용하면 이게 프로그램 흐름의 최상단 진입점 (top-level entry point) 을 담고 있다고 지시합니다. 타입은 반드시 어떤 인자도 취하지 않고 `Void` 를 반환하는 `main` 타입 함수를 제공해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 @main
 struct MyTopLevel {
   static func main() {
-    // 최상단 코드는 여기에 둡니다
+    // 최상단 코드는 여기에 둠
   }
 }
 ```
 
-'`main` 특성의 필수 조건' 을 설명하는 또 다른 방식은 이 특성을 작성한 타입은 반드시 '다음의 가상 (hypothetical) 프로토콜을 준수하는 타입과 똑같은 필수 조건' 을 만족해야 한다는 것입니다:
+`main` 특성의 필수 조건을 설명하는 또 다른 방식은 이 특성을 쓴 타입은 반드시 다음의 가상 (hypothetical) 프로토콜을 준수한 타입과 똑같은 필수 조건을 만족해야 한다는 것입니다:
 
 ```swift
 protocol ProvidesMain {
-    static func main() throws
+  static func main() throws
 }
 ```
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논의한 것처럼, 최대 한 개의 '최상단 진입점' 을 담을 수 있습니다.
+[Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
 #### nonobjc (오브젝티브-C 아님)
 
