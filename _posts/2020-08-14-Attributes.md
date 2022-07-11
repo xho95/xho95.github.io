@@ -301,16 +301,16 @@ protocol ProvidesMain {
 
 #### NSApplicationMain (NS 앱 메인)
 
-이 특성은 '자신이 앱 대리자 (delegate) 임' 을 지시하기 위해 클래스에 적용합니다. 이 특성의 사용은 `NSApplicationMain(_:_:)` 함수의 호출과 '동치 (equivalent)' 입니다.
+이 특성을 클래스에 적용하면 이게 응용 프로그램을-맡은자 (the application delegate) 라는 걸 지시합니다. 이 특성을 사용하는 건 `NSApplicationMain(_:_:)` 함수를 호출하는 것과 같은 겁니다.
 
-이 특성을 사용하지 않으면, 다음 처럼 최상단에서 `NSApplicationMain(_:_:)` 함수를 호출하는 코드를 가진 `main.swift` 파일을 공급합니다:[^NSApplicationMain-UIApplicationMain]
+이 특성을 사용하지 않는다면, 다음 처럼 `NSApplicationMain(_:_:)` 함수를 최상단에서 호출하는 코드가 있는 `main.swift` 파일을 공급하기 바랍니다:[^NSApplicationMain-UIApplicationMain]
 
 ```swift
 import AppKit
 NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 ```
 
-실행 파일을 만들려고 컴파일하는 스위프트 코드는, [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논의한 것처럼, 최대 한 개의 '최상단 진입점' 을 담을 수 있습니다.
+[Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
 #### NSCopying (NS 복사)
 
@@ -797,7 +797,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
 
-[^NSApplicationMain-UIApplicationMain]: `NSApplicationMain` 과 `UIApplicationMain` 을 사용하는 방식은 다 예전 방식입니다. 최신 'SwiftUI' 를 사용하면 `@main` 을 기본으로 사용하기 때문에, `NSApplicationMain` 이나 `UIApplicationMain` 특성 또는 `main.swift` 파일을 사용할 일이 없습니다.
+[^NSApplicationMain-UIApplicationMain]: `NSApplicationMain` 과 `UIApplicationMain` 을 사용하는 방식은 예전 방식입니다. 이제 SwiftUI 에선 `@main` 을 사용하기 때문에, `NSApplicationMain` 이나, `UIApplicationMain`, 또는 `main.swift` 파일을 사용할 일이 없습니다.
 
 [^evaluate]: 할당문의 경우 `buildExpression(_:)` 의 `()` 를 평가한 결과를 사용한다는 의미입니다.
 
