@@ -334,15 +334,15 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 * `objc` 특성을 가진 프로토콜의 필수 조건을 만족하는 선언인 경우
 * `IBAction` 이나, `IBSegueAction`, `IBOutlet`, `IBDesignable`, `IBInspectable`, `NSManaged`, 또는 `GKInspectable` 특성을 가진 선언인 경우
 
-`objc` 특성을 열거체에 적용하면, 각각의 '열거체 case 값' 은 '열거체 이름과 case 이름을 이어붙인 형태' 로 오브젝티드-C 코드에 노출됩니다. 'case 이름' 의 첫 글자는 대문자입니다. 예를 들어, 스위프트 `Planet` 열거체의 `venus` 라는 'case 값' 은 오브젝티브-C 에 `PlanetVenus` 라는 'case 이름' 으로 노출됩니다.
+열거체에 `objc` 특성을 적용하면, 각각의 열거체 case 를 열거체 이름과 case 이름을 이어붙인 형태로 오브젝티드-C 코드에 드러납니다. case 이름의 첫 글자는 대문자입니다. 예를 들어, 스위프트 `Planet` 열거체 안의 `venus` 라는 이름의 case 는 `PlanetVenus` 라는 이름의 case 로 오브젝티브-C 에 드러납니다.
 
-`objc` 특성은 옵션으로, '식별자 (identifier)' 로 구성한, 단일한 '특성 인자' 를 받습니다. 이 식별자는 '`objc` 특성을 적용할 개체 (entity)' 가 '오브젝티브-C 로 노출될 이름' 을 지정합니다. 이 인자는 클래스, 열거체, '열거체 case 값', 프로토콜, 메소드, 획득자, 설정자, 그리고 초기자의 이름을 짓는데 사용할 수 있습니다. 클래스, 프로토콜, 또는 열거체의 '오브젝티브-C 이름' 을 지정할 경우, [Programming with Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210) 의 [Conventions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Conventions/Conventions.html#//apple_ref/doc/uid/TP40011210-CH10-SW1) 항목에서 설명한 것처럼, 이름에 '세-글자짜리 접두사 (three-letter prefix)' 를 포함합니다. 아래 예제는 '`ExampleClass` 의 `enabled` 속성에 대한 획득자' 를 속성 자신의 이름 보다는 `isEnabled` 로 오브젝티브-C 코드에 노출합니다.
+`objc` 특성은, 식별자로 구성한, 단일 특성 인자를 옵션으로 받습니다. 식별자는 `objc` 특성을 적용한 개체가 오브젝티브-C 로 드러날 이름을 지정합니다. 이 인자를 사용하여 클래스와, 열거체, 열거체 case, 프로토콜, 메소드, 획득자, 설정자, 및 초기자의 이름을 지을 수 있습니다. 클래스나, 프로토콜, 또는 열거체의 오브젝티브-C 이름을 지정한다면, [Programming with Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210) 에 있는 [Conventions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Conventions/Conventions.html#//apple_ref/doc/uid/TP40011210-CH10-SW1) 에서 설명한 것처럼, 이름에 세-글자짜리 접두사[^three-letter-prefix] 를 포함시킵니다. 아래 예제는 `ExampleClass` 에 있는 `enabled` 속성의 획득자를 속성 자신의 이름 보단 `isEnabled` 로 오브젝티브-C 코드에 드러냅니다.
 
 ```swift
 class ExampleClass: NSObject {
   @objc var enabled: Bool {
     @objc(isEnabled) get {
-      // 적절한 값을 반환합니다.
+      // 적절한 값을 반환함
     }
   }
 }
@@ -787,7 +787,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^command-line]: '명령 줄 (command line)' 은 터미널 (terminal) 에서 명령을 입력하는 곳을 말합니다. 
 
-[^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 엑스코드 안의 `*.xcdatamodeld` 파일에서 만드는 데이터베이스 스키마 (database schema) 를 말합니다. 코어 데이터의 개체 (entity) 는 다른 데이터베이스의 테이블 (table) 을 말합닏.
+[^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 엑스코드 안의 `*.xcdatamodeld` 파일에서 만드는 데이터베이스 스키마 (database schema) 를 말합니다. 코어 데이터의 개체 (entity) 는 다른 데이터베이스의 테이블 (table) 을 말합니다.
+
+[^three-letter-prefix]: 오브젝티브-C 에서 클래스 이름에 세-글자짜리 접두사를 붙이는 이유는 오브젝티브-C 가 이름 공간 (namespaces) 을 지원하지 않기 때문입니다. 이에 대한 더 자세한 정보는 스택오버플로우의 [Is prefix necessary for methods in iOS?](https://stackoverflow.com/questions/26711099/is-prefix-necessary-for-methods-in-ios) 항목과 [What is the best way to solve an Objective-C namespace collision?](https://stackoverflow.com/questions/178434/what-is-the-best-way-to-solve-an-objective-c-namespace-collision) 항목을 참고하기 바랍니다. 
 
 [^objc]: '오브젝티브-C' 의 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
 
