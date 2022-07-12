@@ -348,9 +348,9 @@ class ExampleClass: NSObject {
 }
 ```
 
-더 많은 정보는, [Importing Swift into Objective-C](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c) 항목을 보도록 합니다.
+더 많은 정보는, [Importing Swift into Objective-C](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c) 항목을 보기 바랍니다.
 
-> `objc` 특성의 인자는 해당 선언에 대한 '실행 시간 (runtime) 이름' 도 바꿀 수 있습니다. '실행 시간 이름' 은, [NSClassFromString](https://developer.apple.com/documentation/foundation/1395135-nsclassfromstring) 같이, '오브젝티브-C 런타임' 과 상호 작용하는 함수를 호출할 때와, 앱의 'Info.plist' 파일에 있는 '클래스 이름' 을 지정할 때, 사용합니다. 인자를 전달함으로써 이름을 지정하면, 해당 이름을 '오브젝티브-C 코드에 있는 이름' 인 것처럼 그리고 '실행 시간 이름' 인 것처럼 사용합니다. 인자를 생략하면, 오브젝티브-C 코드에서 사용하는 이름이 스위프트 코드의 이름과 일치하며, '실행 시간 이름' 은 스위프트 컴파일러의 일반적인 '이름 뭉개기 (name mangling) 협약' 을 따릅니다.
+> `objc` 특성의 인자는 그 선언의 런타임[^runtime]  이름도 바꿀 수 있습니다. 런타임 이름은, [NSClassFromString](https://developer.apple.com/documentation/foundation/1395135-nsclassfromstring) 같이, 오브젝티브-C 런타임과 상호 작용하는 함수를 호출할 때와, 앱의 **Info.plist** 파일에서 클래스 이름을 지정할 때, 사용합니다. 인자를 전달해서 이름을 정하면, 그 이름을 오브젝티브-C 코드 안의 이름과 런타임 이름으로 사용합니다. 인자를 생략하면, 오브젝티브-C 코드 안에서 사용할 이름이 스위프트 코드 안의 이름과 일치하며, 런타임 이름은 보통의 스위프트 컴파일러 이름 뭉개기 협약[^name-mangling] 을 따릅니다.
 
 #### objcMembers (오브젝티브-C 멤버)
 
@@ -790,6 +790,10 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^associated-entity-description]: '결합 개체 설명 (associated entity description)' 은 엑스코드 안의 `*.xcdatamodeld` 파일에서 만드는 데이터베이스 스키마 (database schema) 를 말합니다. 코어 데이터의 개체 (entity) 는 다른 데이터베이스의 테이블 (table) 을 말합니다.
 
 [^three-letter-prefix]: 오브젝티브-C 에서 클래스 이름에 세-글자짜리 접두사를 붙이는 이유는 오브젝티브-C 가 이름 공간 (namespaces) 을 지원하지 않기 때문입니다. 이에 대한 더 자세한 정보는 스택오버플로우의 [Is prefix necessary for methods in iOS?](https://stackoverflow.com/questions/26711099/is-prefix-necessary-for-methods-in-ios) 항목과 [What is the best way to solve an Objective-C namespace collision?](https://stackoverflow.com/questions/178434/what-is-the-best-way-to-solve-an-objective-c-namespace-collision) 항목을 참고하기 바랍니다. 
+
+[^runtime]: 여기서 말하는 '런타임 (runtime)' 은 런타임 라이브러리를 의미합니다. 
+
+[^name-mangling]: '이름 뭉개기 (name mangling)' 는 현대 프로그래밍에서 함수와 같은 각각의 프로그램 개체에 유일한 이름을 주기 위한 기법입니다. 타입 자체의 이름에 추가 정보를 덧대어서 유일한 이름을 만드는데 이 과정에서 이름이 뭉개지기 때문에 이렇게 부르는 것으로 추측됩니다.
 
 [^objc]: '오브젝티브-C' 의 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
 
