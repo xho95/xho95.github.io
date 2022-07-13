@@ -362,11 +362,11 @@ class ExampleClass: NSObject {
 
 이 특성을 클래스나, 구조체, 또는 열거체 선언에 적용하면 그  타입을 속성 포장으로 사용합니다. 이 특성을 타입에 적용할 땐, 그 타입과 똑같은 이름을 가진 자신만의 특성을 생성하는 겁니다. 그 새로운 특성을 클래스나, 구조체, 또는 열거체 속성에 적용하면 속성으로의 접근을 포장 타입 (wrapper type) 의 인스턴스로 포장하며; 특성을 지역 저장 변수에 적용하면 변수로의 접근을 똑같은 방식으로 포장합니다. 계산 변수와, 전역 변수, 및 상수는 속성 포장을 사용할 수 없습니다.
 
-포장 (wrapper) 은 반드시 `wrappedValue` 인스턴스 속성을 정의해야 합니다. 속성의 _포장 값 (wrapped value)_ 은 이 속성의 획득자 (getter) 와 설정자 (setter) 가 드러낼 값입니다. 대부분의 경우, `wrappedValue` 는 계산 값 (computed value) 이지만, 그 대신 저장 값 (stored value) 일 수도 있습니다. 포장은 자신의 포장 값에 필요한 어떤 실제 저장 공간이든 정의하고 관리합니다. 컴파일러는 '포장 타입의 인스턴스에 대한 저장 공간' 을 '포장 속성의 이름 앞에 밑줄 (`_`) 접두사를 붙임' 으로써 통합합니다-예를 들어, `someProperty` 의 포장은 `_someProperty` 로 저장합니다. '포장의 통합 저장 공간' 은 `private` 접근 제어 수준을 가집니다.
+포장 (wrapper) 은 반드시 `wrappedValue` 인스턴스 속성을 정의해야 합니다. 속성의 _포장 값 (wrapped value)_ 은 이 속성의 획득자 (getter) 와 설정자 (setter) 가 드러낼 값입니다. 대부분의 경우, `wrappedValue` 는 계산 값 (computed value) 이지만, 그 대신 저장 값 (stored value) 일 수도 있습니다. 포장은 자신의 포장 값에 필요한 어떤 실제 저장 공간이든 정의하고 관리합니다. 컴파일러는 포장한 속성 이름 앞에 접두사로 밑줄 (`_`) 을 붙여서 포장 타입 인스턴스의 저장 공간을 만들어 통합합니다-예를 들어, `someProperty` 의 포장은 `_someProperty` 라고 저장됩니다. 포장의 통합 저장 공간은 `private` 접근 제어 수준을 가집니다.
 
-속성 포장을 가진 속성은 `willSet` 과 `didSet` 블럭을 포함할 수 있지만, '컴파일러가-통합한 `get` 이나 `set` 블럭' 을 '재정의 (override)' 할 순 없습니다.
+속성 포장을 가진 속성은 `willSet` 과 `didSet` 블럭을 포함할 수 있지만, 컴파일러에-통합된 `get` 이나 `set` 블럭을 재정의할 순 없습니다.
 
-스위프트는 '속성 포장' 의 초기화를 위해 두 가지 형식의 '수월한 구문 (syntactic sugar)' 을 제공합니다. '포장 값' 정의에서 '할당 (assignment) 구문' 을 사용하면 할당의 오른-쪽 표현식을 '속성 포장' 초기자의 `wrappedValue` 매개 변수에 대한 인자로 전달할 수 있습니다. 특성을 속성에 적용할 때 인자를 제공할 수도 있으며, 이 인자들은 '속성 포장의 초기자' 로 전달됩니다. 예를 들어, 아래 코드에서, `SomeStruct` 는 `SomeWrapper` 가 정의한 각각의 초기자를 호출합니다.
+스위프트는 속성 포장의 초기화를 위해 두 가지 형식의 수월한 구문을 제공합니다. 포장 값 정의에 할당 구문을 사용하면 할당 오른-쪽 표현식을 속성 포장 초기자의 `wrappedValue` 매개 변수에 인자로 전달할 수 있습니다. 속성에 특성을 적용할 때 인자를 제공할 수도 있는데, 이 인자들은 속성 포장 초기자로 전달됩니다. 예를 들어, 아래 코드에서, `SomeStruct` 는 `SomeWrapper` 에서 정의한 각각의 초기자를 호출합니다.
 
 ```swift
 @propertyWrapper
@@ -388,13 +388,13 @@ struct SomeWrapper {
 }
 
 struct SomeStruct {
-  // init() 을 사용합니다.
+  // init() 을 사용함
   @SomeWrapper var a: Int
 
-  // init(wrappedValue:) 을 사용합니다.
+  // init(wrappedValue:) 을 사용함
   @SomeWrapper var b = 10
 
-  // 둘 다 init(wrappedValue:custom:) 을 사용합니다.
+  // 둘 다 init(wrappedValue:custom:) 을 사용함
   @SomeWrapper(custom: 98.7) var c = 30
   @SomeWrapper(wrappedValue: 30, custom: 98.7) var d
 }
