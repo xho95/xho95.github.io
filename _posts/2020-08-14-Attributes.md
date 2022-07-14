@@ -500,7 +500,7 @@ struct ArrayBuilder {
 
 다음의 구문 변형을 재귀적으로 적용하여 결과-제작자 구문 코드를 결과 제작자 타입의 정적 메소드 호출 코드로 바꿉니다:
 
-* 결과 제작자에 `buildExpression(_:)` 메소드가 있으면, 각각의 표현식은 그 메소드 호출이 됩니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 같은 겁니다:
+* 결과 제작자에 `buildExpression(_:)` 메소드가 있으면, 각각의 표현식은 그 메소드 호출이 됩니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 서로 같은 겁니다:
 
 ```swift
 @ArrayBuilder var builderNumber: [Int] { 10 }
@@ -589,9 +589,9 @@ extension DrawingBuilder {
 // typeErasedDrawing 의 타입은 Line<DrawEither<AnyDrawable, Line<Text>>> 임
 ```
 
-* 분기문은 `buildEither(first:)` 와 `buildEither(second:)` 를 '연속으로 중첩한 호출' 들이 됩니다. '구문 조건과 case 값' 들은 '이진 트리 (binary tree)' 의 '잎 노드 (leaf nodes)' 에 대응하며, '구문' 은 '뿌리 노드 (root node) 에서 해당 잎 노드로의 경로' 를 따라가는 `buildEither` 메소드의 '중첩 호출' 이 됩니다.
+* 분기문은 연속된 `buildEither(first:)` 와 `buildEither(second:)` 의 중첩 호출이 됩니다. 구문의 조건과 case 는 이진 트리[^binary-tree] 의 잎 노드 (leaf nodes) 에 대응하며, 구문은 뿌리 노드 (root node) 에서 그 잎 노드로의 경로를 따라가는 중첩된 `buildEither` 메소드 호출이 됩니다.
 
-예를 들어, '세 개의 case 절을 가진 switch 문' 을 작성하면, 컴파일러가 '세 개의 잎 노드를 가진 이진 트리' 를 사용합니다. 마찬가지로, '뿌리 노드에서 두 번째 case 절로의 경로' 는 "두 번째 자식" 인 다음 "첫 번째 자식" 이기 때문에, '해당 case 절' 은 `buildEither(first: buildEither(second: ...))` 와 같은 '중첩 호출' 이 됩니다. 다음 선언은 서로 '같은 값' 입니다:  
+예를 들어, 세 개의 case 절이 있는 switch 문을 작성하면, 컴파일러는 세 개의 잎 노드가 있는 이진 트리를 사용합니다. 마찬가지로, 뿌리 노드에서 두 번째 case 로의 경로는 "두 번째 자식" 다음에 "첫 번째 자식" 이기 때문에, 그 case 는 `buildEither(first: buildEither(second: ...))` 와 같은 중첩 호출이 됩니다. 다음 선언들은 서로 같은 겁니다:  
 
 ```swift
 let someNumber = 19
@@ -620,7 +620,7 @@ if someNumber < 12 {
 }
 ```
 
-* `else` 절 없는 `if` 문 같이, 값을 만들지 않을 지도 모를 분기문은, `buildOptional(_:)` 호출이 됩니다. `if` 문 조건을 만족하면, 자신의 코드 블럭을 변형하여 인자로 전달하며; 그 외 경우, `nil` 인자로 `buildOptional(_:)` 을 호출합니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+* 값을 만들지 않을 지도 모르는, `else` 절 없는 `if` 문 같은, 분기문은, `buildOptional(_:)` 호출이 됩니다. `if` 문의 조건을 만족하면, 자신의 코드 블럭을 변형하여 인자로 전달하며; 그 외 경우, `nil` 을 인자로 가진 `buildOptional(_:)` 을 호출합니다. 예를 들어, 다음 선언들은 서로 같은 겁니다:
 
 ```swift
 @ArrayBuilder var builderOptional: [Int] {
@@ -810,6 +810,8 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^NSApplicationMain-UIApplicationMain]: `NSApplicationMain` 과 `UIApplicationMain` 을 사용하는 방식은 예전 방식입니다. 이제 SwiftUI 에선 `@main` 을 사용하기 때문에, `NSApplicationMain` 이나, `UIApplicationMain`, 또는 `main.swift` 파일을 사용할 일이 없습니다.
 
 [^evaluate]: 할당문의 경우, `buildExpression(_:)` 의 평가 결과를 사용한다는 의미입니다.
+
+[^binary-tree]: '이진 트리 (binary tree)' 는 각각의 노드 (node) 에 최대 두 개의 자식 노드가 있는 트리 자료 구조입니다. 이진 트리에 대한 더 자세한 정보는, 위키피디아의 [Binary tree](https://en.wikipedia.org/wiki/Binary_tree) 항목과 [이진 트리](https://ko.wikipedia.org/wiki/이진_트리) 항목을 참고하기 바랍니다. 
 
 [^test-enabled]: '엑스코드 (Xcode)' 에서 '스킴 (Scheme) 화면' 의 '테스트 (Test) 옵션' 에 있는 'Debug executable' 이 켜져 있어야 합니다. 
 
