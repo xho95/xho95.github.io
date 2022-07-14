@@ -634,7 +634,7 @@ if (someNumber % 2) == 1 {
 var manualOptional = ArrayBuilder.buildOptional(partialResult)
 ```
 
-* 코드 블럭이나 `do` 문은 `buildBlock(_:)` 메소드 호출이 됩니다. 블럭 안의 각 구문이, 한번에 하나씩, 변형되어, `buildBlock(_:)` 메소드의 인자가 됩니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+* 코드 블럭이나 `do` 문은 `buildBlock(_:)` 메소드 호출이 됩니다. 블럭 안에 있는 각각의 구문은, 한번에 하나씩, 변형하여, `buildBlock(_:)` 메소드의 인자가 됩니다. 예를 들어, 다음 선언들은 서로 같은 겁니다:
 
 ```swift
 @ArrayBuilder var builderBlock: [Int] {
@@ -650,7 +650,7 @@ var manualBlock = ArrayBuilder.buildBlock(
 )
 ```
 
-* `for` 반복문은 '임시 변수[^temporary-variable] 와, `for` 반복문, 그리고 `buildArray(_:)` 메소드 호출' 이 됩니다. 새로운 `for` 반복문이 '시퀀스 (sequence)' 를 반복하며 '각각의 부분 결과' 를 해당 배열에 덧붙입니다. 이 임시 배열을 `buildArray(_:)` 호출에 대한 인자로 전달합니다. 예를 들어, 다음 선언은 서로 '동치' 입니다:
+* `for` 반복문은 임시 변수[^temporary-variable] 와, `for` 반복문, 및 `buildArray(_:)` 메소드 호출이 됩니다. 새로운 `for` 반복문은 시퀀스[^sequence] 를 반복하여 각 부분 결과를 그 배열에 덧붙입니다. 임시 배열은 `buildArray(_:)` 호출의 인자로 전달됩니다. 예를 들어, 다음 선언들은 서로 같은 겁니다:
 
 ```swift
 @ArrayBuilder var builderArray: [Int] {
@@ -667,11 +667,11 @@ for i in 5...7 {
 let manualArray = ArrayBuilder.buildArray(temporary)
 ```
 
-* 결과 제작자가 `buildFinalResult(_:)` 메소드를 가지고 있으면, '최종 결과' 는 '해당 메소드에 대한 호출' 이 됩니다. 이 변형이 항상 마지막입니다.
+* 결과 제작자에 `buildFinalResult(_:)` 메소드가 있으면, 최종 결과는 그 메소드 호출이 됩니다. 이 변형이 항상 마지막입니다.
 
-변형 동작을 임시 변수라는 용어로 설명하긴 하지만, 결과 제작자가 실제로 눈에 보이는 어떤 새로운 선언을 코드에 생성하진 않습니다.
+변형 동작을 임시 변수로 설명하긴 했지만, 결과 제작자를 사용한다고 실제로 어떤 새로운 선언을 코드에 보이게 생성하는 건 아닙니다.
 
-결과 제작자가 변형하는 코드에 `break`, `continue`, `defer`, `guard`, 나 `return` 문, `while` 문, 또는 `do`-`catch` 문을 사용할 수 없습니다.
+결과 제작자가 변형할 코드에 `break` 나, `continue`, `defer`, `guard`, 또는 `return` 문, `while` 문, 및 `do`-`catch` 문을 사용할 수 없습니다.
 
 변형 과정은 코드에서, 표현식을 조각 조각 제작하는 임시 상수와 변수를 사용하게 해주는, 선언을 바꾸지 않습니다. 이는 `throw` 문, 컴파일-시간 진단 (diagnostic) 문, 또는 '`return` 문을 담은 클로저' 도 바꾸지 않습니다.
 
@@ -803,9 +803,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^do-not-actually]: 이것도 바로 앞에서 설명한 내용과 같은 의미입니다. 정적 메소드만 있어서 인스턴스를 만들지 않으므로, 필수 조건의 구현이라는 개념이 의미가 없기 때문입니다.
 
-[^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
+[^temporary-variable]: 이 세 개 중에서 임시 변수는, 바로 이어서 설명하는 것처럼, 배열입니다.
 
-[^temporary-variable]: 이 세 개 중에서 '임시 변수' 는, 바로 이어서 설명하는 것처럼, '배열' 입니다.
+[^sequence]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection), 리스트 (list), 시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 자료 구조입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 보도록 합니다. 
 
 [^NSApplicationMain-UIApplicationMain]: `NSApplicationMain` 과 `UIApplicationMain` 을 사용하는 방식은 예전 방식입니다. 이제 SwiftUI 에선 `@main` 을 사용하기 때문에, `NSApplicationMain` 이나, `UIApplicationMain`, 또는 `main.swift` 파일을 사용할 일이 없습니다.
 
@@ -818,3 +818,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^preceding-qualifier]: '선행 규명자 (preceding qualifier)' 는 본문 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 '해당 기호의 앞에 **선행**하여 해당 기호를 **규명**해주는 지시**자**' 를 말합니다.
 
 [^interface-builder]: '인터페이스 빌더 (Interface Builder)' 는 '엑스코드 (Xcode)' 에서 사용하는 'UI 제작 도구' 입니다. 2019년에 'SwiftUI' 라는 '새로운 UI 제작용 프레임웍' 을 발표함에 따라 차차 사용이 줄어들 것으로 예상합니다.
+
+[^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
