@@ -687,13 +687,13 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 결과 제작자 특성을 적용해도 ABI 호환성엔 충격을 주지 않습니다. 결과 제작자 특성을 매개 변수에 적용하면 그 특성이 함수 인터페이스의 일부가 되어, 소스 호환성에 효과를 줄 수 있습니다.
 
-#### requires_stored_property_inits (저장 속성 초기화가 필수임)
+#### requires_stored_property_inits (저장 속성 초기화를 요구함)
 
-이 특성을 클래스 선언에 적용하면 클래스 안의 모든 저장 속성이 자신의 정의 부분에서 기본 값을 제공하길 요구합니다. `NSManagedObject` 를 상속한 어떤 클래스든 이 특성이라고 추론합니다.
+이 특성을 클래스 선언에 적용하면 클래스 정의 부분에서 자신의 모든 저장 속성에 기본 값을 제공하길 요구합니다. `NSManagedObject` 를 상속한 어떤 클래스든 이 특성이라고 추론합니다.
 
 #### testable (테스트 가능)
 
-이 특성은 '모듈 코드 테스트의 단순화를 위해 해당 모듈의 접근 제어를 바꿔서 불러오도록 `import` 선언' 에 적용합니다. 모듈에서 '`internal` 접근-수준 수정자로 표시한 개체' 들을 불러오면 '마치 `public` 접근-수준 수정자로 선언한 것' 처럼 불러옵니다. '`internal` 이나 `public` 접근-수준 수정자로 표시한 클래스와 클래스 멤버' 는 '마치 `open` 접근-수준 수정자로 선언한 것' 처럼 불러옵니다. 불러온 모듈은 반드시 테스트 할 수 있는 상태[^test-enabled] 에서 컴파일해야 합니다.
+이 특성을 `import` 선언에 적용하면 그 모듈의 접근 제어를 바꾼 채로 불러와서 모듈 코드 테스트를 단순하게 해줍니다. 불러온 모듈 안의 개체가 `internal` 접근-수준 수정자로 표시한 거면 마치 `public` 접근-수준 수정자로 선언한 것처럼 불러옵니다. `internal` 이나 `public` 접근-수준 수정자로 표시한 클래스 및 클래스 멤버는 마치 `open` 접근-수준 수정자로 선언한 것처럼 불러옵니다. 불러온 모듈은 반드시 테스트 할 수 있는 상태 (testing enabled)[^test-enabled] 로 컴파일해야 합니다.
 
 #### UIApplicationMain (UI 앱 메인)
 
@@ -813,7 +813,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^binary-tree]: '이진 트리 (binary tree)' 는 각각의 노드 (node) 에 최대 두 개의 자식 노드가 있는 트리 자료 구조입니다. 이진 트리에 대한 더 자세한 정보는, 위키피디아의 [Binary tree](https://en.wikipedia.org/wiki/Binary_tree) 항목과 [이진 트리](https://ko.wikipedia.org/wiki/이진_트리) 항목을 참고하기 바랍니다. 
 
-[^test-enabled]: '엑스코드 (Xcode)' 에서 '스킴 (Scheme) 화면' 의 '테스트 (Test) 옵션' 에 있는 'Debug executable' 이 켜져 있어야 합니다. 
+[^test-enabled]: '데트스 할 수 있는 상태 (tesing enabled)' 란 엑스코드의 스킴 (Scheme) 화면 안의 테스트 (Test) 옵션에서 **Debug executable** 이 켜진 상태를 의미합니다.
 
 [^preceding-qualifier]: '선행 규명자 (preceding qualifier)' 는 본문 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 '해당 기호의 앞에 **선행**하여 해당 기호를 **규명**해주는 지시**자**' 를 말합니다.
 
