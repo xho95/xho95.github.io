@@ -437,31 +437,31 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 `static func buildBlock(_ components: Compnent...) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;'부분 결과들의 배열' 을 '단일 부분 결과' 로 조합. '결과 제작자' 는 반드시 이 메소드를 구현해야 함.
+&nbsp;&nbsp;&nbsp;&nbsp;부분 결과들의 배열을 단일 부분 결과로 조합함. 결과 제작자는 반드시 이 메소드를 구현해야 함.
 
 `static func buildOptional(_ component: Compnent?) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;'`nil` 일 수 있는 부분 결과' 로 '부분 결과' 를 제작. `else` 절을 포함하지 않은 `if` 문을 지원하기 위해 이 메소드를 구현함.
+&nbsp;&nbsp;&nbsp;&nbsp;`nil` 일 수 있는 부분 결과로 부분 결과를 제작함. 이 메소드를 구현하면 `else` 절을 포함하지 않는 `if` 문을 지원함.
 
 `static func buildEither(first: Compnent) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;일부 조건에 따라 값이 변하는 '부분 결과' 를 제작. `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 이 메소드와 `buildEither(second:)` 둘 다를 구현함.
+&nbsp;&nbsp;&nbsp;&nbsp;어떠한 조건에 따라 값이 변하는 부분 결과를 제작함. 이 메소드와 `buildEither(second:)` 둘 다를 구현하면 `switch` 문과 `else` 절을 포함한 `if` 문을 지원함.
 
 `static func buildEither(second: Compnent) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;일부 조건에 따라 값이 변하는 '부분 결과' 를 제작. `else` 절을 포함하는 `switch` 문과 `if` 문을 지원하기 위해 이 메소드와 `buildEither(first:)` 둘 다를 구현함.
+&nbsp;&nbsp;&nbsp;&nbsp;어떠한 조건에 따라 값이 변하는 부분 결과를 제작함. 이 메소드와 `buildEither(first:)` 둘 다를 구현하면 `switch` 문과 `else` 절을 포함한 `if` 문을 지원함.
 
 `static func buildArray(_ components: [Compnent]) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;'부분 결과들의 배열' 로 '부분 결과' 를 제작. `for` 반복분을 지원하기 위해 이 메소드를 구현함.
+&nbsp;&nbsp;&nbsp;&nbsp;부분 결과들의 배열로 부분 결과를 제작함. 이 메소드를 구현하면 `for` 반복분을 지원함.
 
 `static func buildExpression(_ expression: Expression) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;'표현식' 으로 '부분 결과' 를 제작. 전처리 과정을 수행하거나-예를 들어, 표현식을 내부 타입으로 변환하기 등-사용자 쪽에 타입 추론에 대한 추가 정보를 제공하기 위해 이 메소드를 구현할 수 있음.
+&nbsp;&nbsp;&nbsp;&nbsp;표현식으로 부분 결과를 제작함. 이 메소드를 구현하면 전처리 과정을 수행-예를 들어, 표현식을 내부 타입으로 변환하는 것을-하거나 사용하는 쪽에 타입 추론을 위한 추가 정보를 제공함.
 
 `static func buildFinalResult(_ component: Compnent) -> FinalResult`
 
-&nbsp;&nbsp;&nbsp;&nbsp;'부분 결과' 로 '최총 결과' 를 제작. '부분과 최종 결과에 대해 서로 다른 타입을 사용하는 결과 제작자' 로, 또는 '반환 전의 결과에 또 다른 후처리 과정' 을 하기 위해, 이 메소드를 구현할 수 있음.
+&nbsp;&nbsp;&nbsp;&nbsp;부분 결과로 최총 결과를 제작함. 이 메소드는 부분 및 최종 결과에서 사용할 타입이 서로 다른 결과 제작자를 구현하거나, 결과 반환 전에 다른 후처리 과정을 수행하기 위해 구현할 수 있음.
 
 `static func buildLimitedAvailablility(_ component: Compnent) -> Component`
 
