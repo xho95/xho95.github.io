@@ -425,7 +425,7 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### resultBuilder (결과 제작자)
 
-이 특성을 클래스, 구조체, 및 열거체에 적용하면 그 타입을 결과 제작자로 사용합니다. _결과 제작자 (result builder)_ 는 중첩 자료 구조를 한걸음씩 단계별로 제작하는 타입입니다. 결과 제작자를 사용하여 자연스러운, 선언형 방식으로, 중첩 자료 구조를 생성하기 위한 특정-분야 언어 (DSL)[^domain-specific-language] 을 구현합니다. `resultBuilder` 특성의 사용법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 부분을 보기 바랍니다.
+이 특성을 클래스, 구조체, 및 열거체에 적용하면 그 타입을 결과 제작자로 사용합니다. _결과 제작자 (result builder)_ 는 중첩 자료 구조를 한 걸음씩 단계별로 제작하는 타입입니다. 결과 제작자를 사용하여 자연스러운, 선언형 방식으로, 중첩 자료 구조를 생성하기 위한 특정-분야 언어 (DSL)[^domain-specific-language] 을 구현합니다. `resultBuilder` 특성의 사용법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 부분을 보기 바랍니다.
 
 **Result-Building Methods (결과-제작 메소드)**
 
@@ -673,9 +673,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 결과 제작자가 변형할 코드에 `break` 나, `continue`, `defer`, `guard`, 또는 `return` 문, `while` 문, 및 `do`-`catch` 문을 사용할 수 없습니다.
 
-변형 과정은 코드에서, 표현식을 조각 조각 제작하는 임시 상수와 변수를 사용하게 해주는, 선언을 바꾸지 않습니다. 이는 `throw` 문, 컴파일-시간 진단 (diagnostic) 문, 또는 '`return` 문을 담은 클로저' 도 바꾸지 않습니다.
+변형 과정은 코드 안의 선언을 바꾸지 않으며, 이는 임시 상수와 변수를 사용하여 표현식을 한 조각씩 제작하게 해줍니다. 이는 `throw` 문이나, 컴파일-시간 진단문, 또는 `return` 문을 담은 클로저도 바꾸지 않습니다.
 
-가능할 때마다, 변형을 합체합니다. 예를 들어, `4 + 5 * 6` 라는 표현식은 '해당 함수를 여러 번 호출' 하기 보다는 `buildExpression(4 + 5 * 6)` 가 됩니다. 마찬가지로, 중첩 분기문은 `buildEither` 메소드를 호출하는 '단일 이진 트리' 가 됩니다.
+가능할 때마다, 변형을 합체합니다. 예를 들어, 표현식 `4 + 5 * 6` 는 그 함수를 여러 번 호출하기 보단 `buildExpression(4 + 5 * 6)` 가 됩니다. 마찬가지로, 중첩한 분기문은 단일 이진 트리 형태로 `buildEither` 메소드를 호출합니다.
 
 **Custom Result-Builder Attributes (사용자 정의 결과-제작자 특성)**
 
