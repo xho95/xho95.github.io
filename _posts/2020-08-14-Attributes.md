@@ -689,7 +689,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### requires_stored_property_inits (저장 속성 초기화가 필수임)
 
-이 특성은 '클래스 안의 모든 저장 속성이 자신의 정의에서 '기본 값' 을 제공할 것을 요구' 하기 위해 클래스 선언에 적용합니다. `NSManagedObject` 를 상속한 어떤 클래스든 이 특성이 (있다고) 추론합니다.
+이 특성을 클래스 선언에 적용하면 클래스 안의 모든 저장 속성이 자신의 정의 부분에서 기본 값을 제공하길 요구합니다. `NSManagedObject` 를 상속한 어떤 클래스든 이 특성이라고 추론합니다.
 
 #### testable (테스트 가능)
 
