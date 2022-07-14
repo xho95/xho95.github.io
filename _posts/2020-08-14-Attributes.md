@@ -465,9 +465,9 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 `static func buildLimitedAvailablility(_ component: Compnent) -> Component`
 
-&nbsp;&nbsp;&nbsp;&nbsp;'사용 가능성을 검사하는 컴파일러-제어문 밖으로 타입 정보를 전파하거나 지우는 부분 결과' 를 제작. 조건 분기마다 변하는 타입 정보를 지우기 위해 이를 사용할 수 있음.
+&nbsp;&nbsp;&nbsp;&nbsp;사용 가능성을 검사하는 컴파일러-제어문 밖으로 타입 정보를 전파하거나 지우는 부분 결과를 제작함. 이를 사용하면 조건 분기마다 다양하게 변하는 타입 정보를 지울 수 있음.
 
-예를 들어, 아래 코드는 정수 배열을 제작하는 단순한 '결과 제작자' 를 정의합니다. 이 코드는, 위의 메소드 목록과 아래 예제가 일치하도록, `Component` 와 `Expression` 을 '타입 별명 (type aliases)' 으로 정의하여, 더 보기 쉽게 합니다.
+예를 들어, 아래 코드는 정수 배열을 제작하는 단순한 결과 제작자를 정의합니다. 이 코드는 `Component` 와 `Expression` 을 타입 별명으로 정의하여, 아래 예제와 위의 메소드 목록을 더 쉽게 맞춰보게 합니다.
 
 ```swift
 @resultBuilder
