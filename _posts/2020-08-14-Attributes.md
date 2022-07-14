@@ -429,11 +429,11 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 **Result-Building Methods (결과-제작 메소드)**
 
-'결과 제작자' 는 아래 설명할 '정적 (static) 메소드' 를 구현합니다. 결과 제작자의 모든 기능은 정적 메소드를 통해 노출하기 때문에, 해당 타입의 인스턴스는 초기화를 항상 안합니다. `buildBlock(_:)` 메소드는 필수이며; 'DSL' 에 추가 기능을 부여하는-다른 메소드들은 옵션입니다. '결과 제작자 타입의 선언' 은 실제로 어떤 프로토콜 준수성도 포함하지 않아도 됩니다.
+결과 제작자는 밑에서 설명할 정적 메소드를 구현합니다. 결과 제작자의 모든 기능은 정적 메소드를 통해 드러나기 때문에, 절대 그 타입의 인스턴스를 초기화하지 않습니다.[^do-not-ever] `buildBlock(_:)` 메소드는 필수이며; DSL 에 추가 기능을 부여하는-다른 메소드는 옵션입니다. 결과 제작자 타입의 선언은 어떤 프로토콜 준수성도 실제로 포함하지 않아도 됩니다.[^do-not-actually]
 
-정적 메소드 설명은 세 개의 타입을 '자리 표시자 (placeholder)' 로 사용합니다. `Expression` 타입은 '결과 제작자의 입력 타입' 에 대한 자리 표시자이고, `Component` 는 '부분 결과 타입' 에 대한 자리 표시자이며, `FinalResult` 는 '결과 제작자가 만드는 결과의 타입' 에 대한 자리 표시자입니다. 이 타입들을 결과 제작자가 사용할 실제 타입으로 대체합니다. '결과-제작 메소드' 가 `Expression` 이나 `FinalResult` 타입을 지정하지 않으면, `Component` 와 똑같아 지는 것이 기본입니다.
+정적 메소드 설명엔 세 개의 타입을 자리 표시자로 사용합니다. `Expression` 타입은 결과 제작자의 입력 타입에 대한 자리 표시자이고, `Component` 는 부분 결과 타입에 대한 자리 표시자이며, `FinalResult` 는 결과 제작자가 만들어 내는 결과 타입에 대한 자리 표시자입니다. 이러한 타입은 자신의 결과 제작자가 사용할 실제 타입으로 대체합니다. 자신의 결과-제작 메소드에서 `Expression` 이나 `FinalResult` 타입을 지정하지 않으면, 기본적으로 `Component` 와 똑같아 집니다.
 
-'결과-제작 메소드' 는 다음과 같습니다:
+결과-제작 메소드는 다음과 같습니다:
 
 `static func buildBlock(_ components: Compnent...) -> Component`
 
@@ -798,6 +798,10 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^objc]: 오브젝티브-C 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
 
 [^domain-specific-language]: '특정-분야 언어 (domain-specific language; DSL)' 는 특별한 한 응용 분야에서만 특정하게 사용되는 언어입니다. DSL 중에 대표적인 것이 홈페이지를 만드는데 특화된 HTML 입니다. 
+
+[^do-not-ever]: 타입에 정적 메소드만 있으므로, 타입 그 자체를 사용하지 그 타입의 인스턴스를 만들어서 쓸 일이 없다는 의미입니다.
+
+[^do-not-actually]: 이것도 바로 앞에서 설명한 내용과 같은 의미입니다. 정적 메소드만 있어서 인스턴스를 만들지 않으므로, 필수 조건의 구현이라는 개념이 의미가 없기 때문입니다.
 
 [^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
 
