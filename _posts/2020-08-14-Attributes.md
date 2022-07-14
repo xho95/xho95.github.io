@@ -500,7 +500,7 @@ struct ArrayBuilder {
 
 다음의 구문 변형을 재귀적으로 적용하여 결과-제작자 구문 코드를 결과 제작자 타입의 정적 메소드 호출 코드로 바꿉니다:
 
-* 결과 제작자에 `buildExpression(_:)` 메소드가 있으면, 각각의 표현식은 그 메소드로의 호출이 됩니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 같은 겁니다:
+* 결과 제작자에 `buildExpression(_:)` 메소드가 있으면, 각각의 표현식은 그 메소드 호출이 됩니다. 이 변형이 항상 첫 번째입니다. 예를 들어, 다음 선언들은 같은 겁니다:
 
 ```swift
 @ArrayBuilder var builderNumber: [Int] { 10 }
@@ -509,7 +509,7 @@ var manualNumber = ArrayBuilder.buildExpression(10)
 
 * 할당문의 변형은 표현식과 같지만, `()` 를 평가하는 걸로 이해합니다.[^evaluate] `()` 타입 인자를 취하는 `buildExpression(_:)` 을 중복 정의하면 할당을 특수하게 처리할 수 있습니다.
 
-* '사용 가능성 조건을 검사하는 분기문' 은 `buildLimitedAvailablility(_:)` 메소드 호출이 됩니다. 이 변형은 `buildEither(first:)`, `buildEither(second:)`, 또는 `buildOptional(_:)` 호출로의 변형 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드는 '어느 분기를 취하는 지에 따라 바뀌는 타입 정보' 를 지우고자 사용합니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 '분기 둘 다의 타입 정보를 붙잡는 일반화 (generic) 타입' 을 사용합니다.
+* 사용 가능성 조건을 검사하는 분기문은 `buildLimitedAvailablility(_:)` 메소드 호출이 됩니다. 이 변형은 `buildEither(first:)` 나, `buildEither(second:)`, 또는 `buildOptional(_:)` 호출로 변형하기 전에 발생합니다. `buildLimitedAvailablility(_:)` 메소드를 사용하면 어느 분기를 취할 지에 따라 바뀌는 타입 정보를 지웁니다. 예를 들어, 아래의 `buildEither(first:)` 와 `buildEither(second:)` 메소드는 일반화 타입을 사용하여 두 분기 모두에 대한 타입 정보를 붙잡습니다.
 
 ```swift
 protocol Drawable {
@@ -545,7 +545,7 @@ struct DrawingBuilder {
 }
 ```
 
-하지만, 이런 접근 방식은 '사용 가능성 검사 코드' 에서 문제를 유발합니다:
+하지만, 이런 접근법은 사용 가능성을 검사하는 코드에서 문제를 일으킵니다:
 
 ```swift
 @available(macOS 99, *)
@@ -561,12 +561,12 @@ struct FutureText: Drawable {
     Text("Inside.present")
   }
 }
-// brokenDrawing 의 타입은 Line<DrawEither<Line<FutureText>, Line<Text>>> 입니다.
+// brokenDrawing 의 타입은 Line<DrawEither<Line<FutureText>, Line<Text>>> 임
 ```
 
-위 코드에서, `brokenDrawing` 의 타입에 `FutureText` 가 있는데 이것도 `DrawEither` 라는 '일반화 (generic) 타입' 의 한 타입이기 때문입니다. 이는, 해당 타입을 명시적으로 사용하지 않는 경우라도, 실행 시간에 `FutureText` 가 사용 가능하지 않으면 프로그램 충돌을 유발할 수 있습니다.
+위 코드엔, `brokenDrawing` 타입 부분에 `FutureText` 가 나타나는데 이는 `DrawEither` 일반화 타입에 있는 타입 중 하나이기 때문입니다. 이는 `FutureText` 타입을 명시적으로 사용하지 않는 경우라도, 실행 시간에 그 타입이 사용 가능하지 않으면 프로그램 충돌을 일으킬 수 있습니다.
 
-이 문제를 풀려면, `buildLimitedAvailability(_:)` 메소드를 구현하여 타입 정보를 지웁니다. 예를 들어, 아래 코드는 '자신의 사용 가능성 검사' 로부터 `AnyDrawable` 값을 제작합니다.
+이 문제를 풀려면, `buildLimitedAvailability(_:)` 메소드를 구현하여 타입 정보를 지웁니다. 예를 들어, 아래 코드는 자신의 사용 가능성 검사로 `AnyDrawable` 값을 제작합니다.
 
 ```swift
 struct AnyDrawable: Drawable {
@@ -586,7 +586,7 @@ extension DrawingBuilder {
     Text("Inside.present")
   }
 }
-// typeErasedDrawing 의 타입은 Line<DrawEither<AnyDrawable, Line<Text>>> 입니다.
+// typeErasedDrawing 의 타입은 Line<DrawEither<AnyDrawable, Line<Text>>> 임
 ```
 
 * 분기문은 `buildEither(first:)` 와 `buildEither(second:)` 를 '연속으로 중첩한 호출' 들이 됩니다. '구문 조건과 case 값' 들은 '이진 트리 (binary tree)' 의 '잎 노드 (leaf nodes)' 에 대응하며, '구문' 은 '뿌리 노드 (root node) 에서 해당 잎 노드로의 경로' 를 따라가는 `buildEither` 메소드의 '중첩 호출' 이 됩니다.
