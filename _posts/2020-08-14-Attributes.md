@@ -425,7 +425,7 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### resultBuilder (결과 제작자)
 
-이 특성은 '해당 타입을 결과 제작자 (result builder) 로 사용' 하기 위해 클래스, 구조체, 열거체에 적용합니다. _결과 제작자 (result builder)_ 는 '중첩 자료 구조를 단계별로 제작하는 타입' 니다. '결과 제작자' 는 '중첩 자료 구조를 자연스러운, 선언 방식으로, 생성' 하기 위한 '특정-분야 언어 (domain-specific language; DSL) 을 구현' 하기 위해 사용합니다. `resultBuilder` 특성의 사용 방법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 부분을 보도록 합니다.
+이 특성을 클래스, 구조체, 및 열거체에 적용하면 그 타입을 결과 제작자로 사용합니다. _결과 제작자 (result builder)_ 는 중첩 자료 구조를 한걸음씩 단계별로 제작하는 타입입니다. 결과 제작자를 사용하여 자연스러운, 선언형 방식으로, 중첩 자료 구조를 생성하기 위한 특정-분야 언어 (DSL)[^domain-specific-language] 을 구현합니다. `resultBuilder` 특성의 사용법에 대한 예제는, [Result Builders (결과 제작자)]({% post_url 2020-05-11-Advanced-Operators %}#result-builders-결과-제작자) 부분을 보기 바랍니다.
 
 **Result-Building Methods (결과-제작 메소드)**
 
@@ -796,6 +796,8 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^name-mangling]: '이름 뭉개기 (name mangling)' 는 현대 프로그래밍에서 함수와 같은 각각의 프로그램 개체에 유일한 이름을 주기 위한 기법입니다. 타입 자체의 이름에 추가 정보를 덧대어서 유일한 이름을 만드는데 이 과정에서 이름이 뭉개지기 때문에 이렇게 부르는 것으로 추측됩니다.
 
 [^objc]: 오브젝티브-C 기능을 아주 많이 쓰면, 호환성을 위해 `objc` 를 남발하게 될텐데, 이 때의 비효율성을 줄이기 위해 `objcMembers` 특성을 사용한다고 이해할 수 있습니다. 
+
+[^domain-specific-language]: '특정-분야 언어 (domain-specific language; DSL)' 는 특별한 한 응용 분야에서만 특정하게 사용되는 언어입니다. DSL 중에 대표적인 것이 홈페이지를 만드는데 특화된 HTML 입니다. 
 
 [^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
 
