@@ -711,11 +711,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### usableFromInline (인라인에서 사용 가능)
 
-이 특성은 '선언과 동일한 모듈에서 정의한 인라인 가능 코드에서 해당 기호를 사용할 것을 허용' 하기 위해 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 정리자  선언에 적용합니다. 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 '자신의 속성들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 '자신의 case 원시 값과 결합 값들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다.
+이 특성을 함수나, 메소드, 계산 속성, 첨자, 초기자, 또는 정리자 선언에 적용하면 선언과 동일한 모듈 안에서 정의한 인라인 가능 코드에서 그 기호를 사용하는 걸 허용합니다. 선언엔 반드시 `internal` 접근 수준 수정자가 있어야 합니다. `usableFromInline` 을 표시한 구조체나 클래스는 자신의 속성이 공용 (public) 또는 `usableFromInline` 인 타입만 사용할 수 있습니다. `usableFromInline` 을 표시한 열거체는 자신의 case 원시 값과 결합 값이 공용 또는 `usableFromInline` 인 타입만 사용할 수 있습니다.
 
-`public` 접근 수준 수정자 같이, 이 특성은 '모듈의 공개 인터페이스로 선언을 노출' 합니다. `public` 과는 달리, 컴파일러는 '`usableFromInline` 으로 표시한 선언' 이, 선언 기호를 밖으로 내보낼지라도, 모듈 밖의 코드에서 이름으로 참조하는 걸 허용하지 않습니다. 하지만,  모듈 밖의 코드는 '실행 시간 동작' 으로 선언 기호와 여전히 상호 작용할지도 모릅니다.
+`public` 접근 수준 수정자와 같이, 이 특성은 모듈의 공개 인터페이스 부분에서 선언을 드러냅니다. `public` 과는 달리, 선언 기호를 내보낼지라도, `usableFromInline` 을 표시한 선언이 모듈 밖 코드에서 이름으로 참조되는 걸 컴파일러가 허용하진 않습니다. 하지만, 모듈 밖 코드는 런타임 동작을 사용하여 여전히 선언 기호와 상호 작용할 수 있을지도 모릅니다.
 
-`inlinable` 특성으로 표시한 선언은 '인라인 가능 (inlinable) 코드' 에서 암시적으로 사용 가능합니다. `inlinable` 이든 `usableFromInline` 이든 `internal` 선언에 적용할 수 있긴 하지만, 두 특성 다 적용하는 건 에러입니다.
+`inlinable` 특성을 표시한 선언은 암시적으로 인라인 가능한 코드에서 사용 가능합니다.[^inlinable] `inlinable` 이든 `usableFromInline` 이든 `internal` 선언에 적용할 수 있긴 하지만, 두 특성을 모두 적용하면 에러입니다.
 
 #### warn_unqualified_access (규명 안된 접근 경고하기)
 
@@ -822,6 +822,8 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^test-enabled]: '데트스 할 수 있는 상태 (tesing enabled)' 란 엑스코드의 스킴 (Scheme) 화면 안의 테스트 (Test) 옵션에서 **Debug executable** 이 켜진 상태를 의미합니다.
 
 [^sendable]: 한 동시성 영역에서 다른 곳으로 안전하게 값을 보낼 수 있는 (sendable) 타입입니다. 보다 자세한 내용은 본문에 있는 애플 개발자 문서 내용을 참고하기 바랍니다. 
+
+[^inlinable]: `inlinable` 특성을 부여하면 따로 `usableFromInline` 특성을 부여할 필요가 없다는 의미입니다.
 
 [^preceding-qualifier]: '선행 규명자 (preceding qualifier)' 는 본문 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 '해당 기호의 앞에 **선행**하여 해당 기호를 **규명**해주는 지시**자**' 를 말합니다.
 
