@@ -741,11 +741,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### convention (협약)
 
-이 특성은 '호출 협약 (calling conventions)[^calling-convention] 을 지시' 하기 위해 함수의 타입에 적용합니다.
+이 특성을 함수의 타입에 적용하면 호출 협약[^calling-convention] 을 지시합니다.
 
-`convention` 특성은 항상 다음 인자들 중 하나와 함께 나타납니다:
+`convention` 특성은 항상 다음의 인자 중 하나와 함께 나타납니다:
 
-* `swift` 인자는 '스위프트 함수 참조' 를 지시합니다. 이는 '스위프트 함수 값' 에 대한 '표준 호출 협약' 입니다.
+* `swift` 인자는 스위프트 함수 참조를 지시합니다. 이는 스위프트에서 함수 값의 표준 호출 협약입니다.
 * `block` 인자는 '오브젝티브-C 호환 가능한 블럭 참조' 를 지시합니다. 함수 값은, '객체 안에 자신의 소환 함수 (invocation function) 를 박은 `id`-호환 가능 오브젝티브-C 객체' 인, '블럭 객체' 의 참조로써 표현합니다. '소환 함수' 는 'C 호출 협약' 을 사용합니다.
 * `c` 인자는 'C 함수 참조' 를 지시합니다. 함수 값은 '문맥 상황 (context)' 을 옮기지 않으며 'C 호출 협약' 을 사용합니다.
 
@@ -829,4 +829,4 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^interface-builder]: '인터페이스 빌더 (Interface Builder)' 는 엑스코드에서 사용하는 UI 제작 도구입니다. 2019년 애플에서 **SwiftUI** 라는 새로운 UI 제작 프레임웍을 발표함에 따라 사용이 줄어들고 있습니다.
 
-[^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
+[^calling-convention]: '호출 협약 (calling conventions)' 은 호출한 쪽의 매개 변수 전달 방법과 하위 루틴의 결과 반환 방법을 협의해서 정한 약속입니다. 호출 규약이라고도 하는데, 규약은 프로토콜 (protocol) 을 의미하기 때문에, Convention 은 협약이라고 옮깁니다. 호출 협약에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 참고하기 바랍니다. 스위프트의 호출 협약에 대한 더 자세한 정보는, 애플의 **GitHub** 저장소에 있는' [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 참고하기 바랍니다.
