@@ -719,9 +719,9 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### warn_unqualified_access (규명 안된 접근 경고하기)
 
-이 특성은 '모듈 이름, 타입 이름, 또는 인스턴스 변수나 인스턴스 상수 같은, '선행 규명자 (preceding qualifier)'[^preceding-qualifier] 없이 함수나 메소드를 사용할 때 경고를 발동' 하기 위해 '최상단 함수, 인스턴스 메소드, 또는 클래스나 정적 메소드' 에 적용합니다. 이 특성을 사용하면 동일 영역에서 접근 가능한 똑같은 이름을 가진 함수 사이의 모호함이 없도록 합니다.
+이 특성을 최상단 함수나, 인스턴스 메소드, 또는 클래스나 정적 메소드에 적용하면, 모듈 이름이나, 타입 이름, 또는 인스턴스 변수 및 상수 같은, 앞선 규명자[^preceding-qualifier] 없이 그 함수나 메소드를 사용할 때 경고를 발생시킵니다. 이 특성을 사용하면 동일한 영역에서 접근 가능한 똑같은 이름의 함수 사이에 모호함이 없게 도와줍니다.
 
-예를 들어, 스위프트 표준 라이브러리는 '최상단 `min(_:_:)` 함수' 와 '비교 가능 원소를 가진 시퀀스 (sequence) 에 대한 `min()` 메소드' 둘 다 포함합니다. '시퀀스 메소드' 는 '`Sequence` 익스텐션' 안에서 둘 중 하나를 사용할 때 혼동을 감소하고자 `warn_unqualified_access` 특성으로 선언되어 있습니다.
+예를 들어, 스위프트 표준 라이브러리는 최상단 `min(_:_:)` 함수 및 비교 가능 원소의 시퀀스 (sequence) 를 위한 `min()` 메소드를 둘 다 포함합니다. 시퀀스 메소드는 `warn_unqualified_access` 특성으로 선언되어 `Sequence` 익스텐션 안에서 둘 중 하나를 사용하려할 때의 혼동을 줄이도록 합니다.
 
 #### Declaration Attributes Used by Interface Builder (인터페이스 빌더에서 사용하는 선언 특성)
 
@@ -825,7 +825,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^inlinable]: `inlinable` 특성을 부여하면 따로 `usableFromInline` 특성을 부여할 필요가 없다는 의미입니다.
 
-[^preceding-qualifier]: '선행 규명자 (preceding qualifier)' 는 본문 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 '해당 기호의 앞에 **선행**하여 해당 기호를 **규명**해주는 지시**자**' 를 말합니다.
+[^preceding-qualifier]: '앞선 규명자 (preceding qualifier)' 는 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 그 기호에 **앞**에서 그 기호가 어디에 소속되어 있는지를 **규명**하는 지시**자** 입니다.
 
 [^interface-builder]: '인터페이스 빌더 (Interface Builder)' 는 '엑스코드 (Xcode)' 에서 사용하는 'UI 제작 도구' 입니다. 2019년에 'SwiftUI' 라는 '새로운 UI 제작용 프레임웍' 을 발표함에 따라 차차 사용이 줄어들 것으로 예상합니다.
 
