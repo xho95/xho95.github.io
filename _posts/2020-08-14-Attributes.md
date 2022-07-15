@@ -753,11 +753,19 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### escaping (벗어남)
 
-이 특성은 '나중의 실행을 위해 매개 변수의 값을 저장할 수 있음' 을 지시하기 위해 메소드나 함수 선언의 매개 변수 타입에 적용합니다. 이는 호출 수명보다 값이 오래 사는 걸 허용한다는 의미입니다. '`escaping` 타입 특성을 가진 함수 타입 매개 변수' 는 속성이나 메소드가 `self.` 를 명시적으로 사용할 것을 요구합니다. `escaping` 특성의 사용 방법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 보도록 합니다.
+이 특성을 함수나 메소드 선언 안의 매개 변수 타입에 적용하면 나중에 실행하기 위해 매개 변수 값을 저장할 수 있다는 걸 지시합니다. 이는 그 값이 호출 수명보다 오래 사는 걸 허용한다는 의미입니다. `escaping` 타입 특성인 함수 타입 매개 변수는 속성이나 메소드에 `self.` 를 명시하여 사용할 걸 요구합니다. `escaping` 특성의 사용법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 보기 바랍니다.
+
+#### Sendable (보내기 가능)
+
+이 특성을 함수의 타입에 적용하면 함수나 클로저가 보내기 가능하다는 걸 지시합니다. 이 특성을 참수 타입에 적용하는 건 함수-아닌 타입이 [Sendable](https://developer.apple.com/documentation/swift/sendable) 프로토콜을 준수하는 것과 똑같은 의미입니다.
+
+함수나 클로저가 보내기 가능한 값을 예상한 상황에서 사용되는데, 그 함수나 클로저가 보내기 가능에 필요한 필수 조건을 만족한다면, 함수나 클로저가 이 특성이라고 추론합니다.
+
+보내기 가능한 함수 타입은 보내기 불가능한 함수 타입에 해당하는 것의 하위 타입입니다.
 
 ### Switch Case Attributes (switch 문 case 절 특성)
 
-'switch 문 case 절 특성' 은 'switch 문의 case 절' 에만 적용할 수 있습니다.
+**switch** 의 **case** 특성은 switch 문의 case 에만 적용할 수 있습니다.
 
 #### unknown (알려지지 않음)
 
