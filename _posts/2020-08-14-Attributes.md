@@ -745,11 +745,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 `convention` 특성은 항상 다음의 인자 중 하나와 함께 나타납니다:
 
-* `swift` 인자는 스위프트 함수 참조를 지시합니다. 이는 스위프트에서 함수 값의 표준 호출 협약입니다.
-* `block` 인자는 '오브젝티브-C 호환 가능한 블럭 참조' 를 지시합니다. 함수 값은, '객체 안에 자신의 소환 함수 (invocation function) 를 박은 `id`-호환 가능 오브젝티브-C 객체' 인, '블럭 객체' 의 참조로써 표현합니다. '소환 함수' 는 'C 호출 협약' 을 사용합니다.
-* `c` 인자는 'C 함수 참조' 를 지시합니다. 함수 값은 '문맥 상황 (context)' 을 옮기지 않으며 'C 호출 협약' 을 사용합니다.
+* `swift` 인자는 스위프트 함수 참조를 지시합니다. 이는 스위프트 함수 값에 대한 표준 호출 협약입니다.
+* `block` 인자는 오브젝티브-C 호환 가능한 블럭 참조를 지시합니다. 함수 값은 블럭 객체로의 참조를 나타내는데, 이는 자신의 소환 함수[^invocation-function] 를 객체 안에 박아 넣은 `id`-호환 가능한 오브젝티브-C 객체입니다. 소환 함수는 **C** 호출 협약 을 사용합니다.
+* `c` 인자는 C 함수 참조를 지시합니다. 함수 값은 아무런 의미도 없으며 **C** 호출 협약을 사용합니다.
 
-몇 가지를 제외하면, '어떤 호출 협약인 함수' 든 '어떤 다른 호출 협약인 함수' 가 필요할 때 사용할 수 있습니다. '일반화 아닌 (nongeneric) 전역 함수', '어떤 지역 변수도 붙잡지 (capture) 않는 지역 함수', 또는 '어떤 지역 변수도 붙잡지 않는 클로저' 는 'C 호출 협약' 으로 '변환 (converted)' 할 수 있습니다. 다른 스위프트 함수들은 'C 호출 협약' 으로 변환할 수 없습니다. '오브젝티브-C 블럭 호출 협약을 가진 함수' 는 'C 호출 협약' 으로 변환 할 수 없습니다.
+몇 가지를 제외하면, 어떤 호출 협약의 함수든 다른 어떤 호출 협약인 함수가 필요할 때 사용할 수 있습니다. 일반화 아닌 전역 함수나, 어떤 지역 변수도 붙잡지 않는 지역 함수, 또는 어떤 지역 변수도 붙잡지 않는 클로저는 **C** 호출 협약으로 변환할 수 있습니다. 다른 스위프트 함수는 C 호출 협약으로 변환할 수 없습니다. 오브젝티브-C 블럭 호출 협약인 함수는 C 호출 협약으로 변환 할 수 없습니다.
 
 #### escaping (벗어남)
 
@@ -830,3 +830,5 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^interface-builder]: '인터페이스 빌더 (Interface Builder)' 는 엑스코드에서 사용하는 UI 제작 도구입니다. 2019년 애플에서 **SwiftUI** 라는 새로운 UI 제작 프레임웍을 발표함에 따라 사용이 줄어들고 있습니다.
 
 [^calling-convention]: '호출 협약 (calling conventions)' 은 호출한 쪽의 매개 변수 전달 방법과 하위 루틴의 결과 반환 방법을 협의해서 정한 약속입니다. 호출 규약이라고도 하는데, 규약은 프로토콜 (protocol) 을 의미하기 때문에, Convention 은 협약이라고 옮깁니다. 호출 협약에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 참고하기 바랍니다. 스위프트의 호출 협약에 대한 더 자세한 정보는, 애플의 **GitHub** 저장소에 있는' [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 참고하기 바랍니다.
+
+[^invocation-function]: '자신의 소환 함수 (invocation function)' 란 자기 자신을 호출하는 함수를 의미합니다. 호출 (call) 은 어떠한 메소드를 직접 실행하는 것을 의미하고 소환 (invoke) 은 어떤 것이 알아서 자동으로 메소드를 실행하게 하는 것을 의미합니다.
