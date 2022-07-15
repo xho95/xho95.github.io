@@ -755,7 +755,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 이 특성을 함수나 메소드 선언 안의 매개 변수 타입에 적용하면 나중에 실행하기 위해 매개 변수 값을 저장할 수 있다는 걸 지시합니다. 이는 그 값이 호출 수명보다 오래 사는 걸 허용한다는 의미입니다. `escaping` 타입 특성인 함수 타입 매개 변수는 속성이나 메소드에 `self.` 를 명시하여 사용할 걸 요구합니다. `escaping` 특성의 사용법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 보기 바랍니다.
 
-#### Sendable (보내기 가능)
+#### Sendable (보내기 가능함)
 
 이 특성을 함수의 타입에 적용하면 함수나 클로저가 보내기 가능하다는 걸 지시합니다. 이 특성을 참수 타입에 적용하는 건 함수-아닌 타입이 [Sendable](https://developer.apple.com/documentation/swift/sendable) 프로토콜을 준수하는 것과 똑같은 의미입니다.
 
@@ -765,11 +765,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 ### Switch Case Attributes (switch 문 case 절 특성)
 
-**switch** 의 **case** 특성은 switch 문의 case 에만 적용할 수 있습니다.
+**switch** 의 **case** 특성은 **switch** 문의 **case** 에만 적용할 수 있습니다.
 
 #### unknown (알려지지 않음)
 
-이 특성은 '코드 컴파일 시점에 알려진 어떤 열거체 case 값과도 일치하지 않을 것으로 예상함' 을 지시하기 위해 'switch 문의 case 절' 에 적용합니다. `unknown` 특성의 사용 방법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 보도록 합니다.
+이 특성을 **switch** 문의 **case** 에 적용하면 코드를 컴파일하는 시점에 알고 있는 어떤 열거체 case 와도 일치하지 않을 것으로 예상한다고 지시합니다. `unknown` 특성의 사용법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 보기 바랍니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
 
