@@ -723,13 +723,13 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 예를 들어, 스위프트 표준 라이브러리는 최상단 `min(_:_:)` 함수 및 비교 가능 원소의 시퀀스 (sequence) 를 위한 `min()` 메소드를 둘 다 포함합니다. 시퀀스 메소드는 `warn_unqualified_access` 특성으로 선언되어 `Sequence` 익스텐션 안에서 둘 중 하나를 사용하려할 때의 혼동을 줄이도록 합니다.
 
-#### Declaration Attributes Used by Interface Builder (인터페이스 빌더에서 사용하는 선언 특성)
+#### Declaration Attributes Used by Interface Builder (인터페이스 빌더에서 쓰는 선언 특성)
 
-'인터페이스 빌더 특성' 은 '엑스코드 (Xcode)' 와 동기화하기 위해 '인터페이스 빌더 (interface builder)'[^interface-builder] 가 사용하는 '선언 특성' 입니다. 스위프트는: `IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 그리고 `IBInspectable` 과 같은 '인터페이스 빌더 특성' 을 제공합니다. 이 특성은 '오브젝티브-C 에 있는 것' 과 개념이 똑같습니다.
+인터페이스 빌더 특성은 인터페이스 빌더[^interface-builder] 에서 엑스코드와 동기화하기 위해 쓰는 선언 특성입니다. 스위프트는 다음의 인터페이스 빌더 특성을 제공하는데: `IBAction` 과, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 및 `IBInspectable` 이 그것입니다. 이러한 특성은 오브젝티브-C 에 있는 것과 개념이 똑같습니다.
 
-`IBOutlet` 과 `IBInspectable` 특성은 '클래스의 속성 선언' 에 적용합니다. `IBAction` 과 `IBSegueAction` 특성은 '클래스의 메소드 선언' 에 그리고 `IBDesignable` 특성은 '클래스 선언' 에 적용합니다.
+`IBOutlet` 과 `IBInspectable` 특성은 클래스의 속성 선언에 적용합니다. `IBAction` 과 `IBSegueAction` 특성은 클래스의 메소드 선언에 `IBDesignable` 특성은 클래스 선언에 적용합니다.
 
-`IBAction`, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 또는 `IBInspectable` 특성을 적용하면 `objc` 특성임을 암시하는 것이기도 합니다.
+`IBAction` 이나, `IBSegueAction`, `IBOutlet`, `IBDesignable`, 또는 `IBInspectable` 특성을 적용하는 건 `objc` 특성이기도 함을 암시합니다.
 
 ### Type Attributes (타입 특성)
 
@@ -737,7 +737,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### autoclosure (자동 클로저)
 
-이 특성은 '표현식을 인자 없는 클로저로 자동 포장함으로써 해당 표현식의 평가를 늦추기' 위해 적용합니다. 이는, 함수나 메소드 선언에 있는 매개 변수 타입이, 인자를 취하지 않고 표현식 타입의 값을 반환하는 함수 타입일 때, 매개 변수 타입에 적용합니다. `autoclosure` 특성의 사용 방법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분을 보도록 합니다.
+이 특성을 적용하면 인자 없는 클로저로 표현식을 자동 포장함으로써 그 표현식의 평가를 늦춥니다. 함수나 메소드 선언에서, 매개 변수 타입이 아무런 인자도 취하지 않으며 표현식 타입의 값을 반환하는 함수 타입이면, 그 매개 변수 타입에 이를 적용합니다. `autoclosure` 특성의 사용법에 대한 예제는, [Autoclosures (자동 클로저)]({% post_url 2020-03-03-Closures %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% post_url 2020-02-20-Types %}#function-type-함수-타입) 부분을 보기 바랍니다.
 
 #### convention (협약)
 
@@ -827,6 +827,6 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [^preceding-qualifier]: '앞선 규명자 (preceding qualifier)' 는 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 그 기호에 **앞**에서 그 기호가 어디에 소속되어 있는지를 **규명**하는 지시**자** 입니다.
 
-[^interface-builder]: '인터페이스 빌더 (Interface Builder)' 는 '엑스코드 (Xcode)' 에서 사용하는 'UI 제작 도구' 입니다. 2019년에 'SwiftUI' 라는 '새로운 UI 제작용 프레임웍' 을 발표함에 따라 차차 사용이 줄어들 것으로 예상합니다.
+[^interface-builder]: '인터페이스 빌더 (Interface Builder)' 는 엑스코드에서 사용하는 UI 제작 도구입니다. 2019년 애플에서 **SwiftUI** 라는 새로운 UI 제작 프레임웍을 발표함에 따라 사용이 줄어들고 있습니다.
 
 [^calling-convention]: '호출 협약 (calling conventions)' 은 '하위 루틴이 호출한 쪽에서 매개 변수를 전달받는 방법과 결과를 반환하는 방법을 정한 약속' 입니다. '호출 규약' 이라고도 하는데, '규약' 은 프로그래밍 용어로 'Protocol' 을 의미하기 때문에, 'Convention' 을 '협약' 이라고 옮깁니다. '호출 협약' 에 대한 더 자세한 정보는, 위키피디아의 [Calling convention](https://en.wikipedia.org/wiki/Calling_convention) 항목과 [호출 규약](https://ko.wikipedia.org/wiki/호출_규약) 항목을 보도록 합니다. '스위프트에서의 호출 협약' 에 대한 더 자세한 정보는, '깃허브 (GitHub) 애플 (Apple) 저장소' 의 [The Swift Calling Convention](https://github.com/apple/swift/blob/main/docs/ABI/CallingConvention.rst) 항목을 보도록 합니다.
