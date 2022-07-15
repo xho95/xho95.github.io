@@ -703,6 +703,12 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
+#### unchecked (검사하지 않는)
+
+이 특성을 채택한 프로토콜의 타입 선언 목록 부분의 프로토콜 타입에 적용하면 그 프로토콜 필수 조건을 강제하는 걸 끕니다.
+
+이를 지원하는 단 하나의 프로토콜은 [Sendable](https://developer.apple.com/documentation/swift/sendable) 입니다.[^sendable]
+
 #### usableFromInline (인라인에서 사용 가능)
 
 이 특성은 '선언과 동일한 모듈에서 정의한 인라인 가능 코드에서 해당 기호를 사용할 것을 허용' 하기 위해 함수, 메소드, 계산 속성, 첨자 연산, 초기자, 또는 정리자  선언에 적용합니다. 선언은 반드시 `internal` 접근 수준 수정자를 가져야 합니다. `usableFromInline` 으로 표시한 구조체나 클래스는 '자신의 속성들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다. `usableFromInline` 으로 표시한 열거체는 '자신의 case 원시 값과 결합 값들이 공용 (public) 이나 `usableFromInline` 인 타입' 만 사용할 수 있습니다.
@@ -814,6 +820,8 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 [^binary-tree]: '이진 트리 (binary tree)' 는 각각의 노드 (node) 에 최대 두 개의 자식 노드가 있는 트리 자료 구조입니다. 이진 트리에 대한 더 자세한 정보는, 위키피디아의 [Binary tree](https://en.wikipedia.org/wiki/Binary_tree) 항목과 [이진 트리](https://ko.wikipedia.org/wiki/이진_트리) 항목을 참고하기 바랍니다. 
 
 [^test-enabled]: '데트스 할 수 있는 상태 (tesing enabled)' 란 엑스코드의 스킴 (Scheme) 화면 안의 테스트 (Test) 옵션에서 **Debug executable** 이 켜진 상태를 의미합니다.
+
+[^sendable]: 한 동시성 영역에서 다른 곳으로 안전하게 값을 보낼 수 있는 (sendable) 타입입니다. 보다 자세한 내용은 본문에 있는 애플 개발자 문서 내용을 참고하기 바랍니다. 
 
 [^preceding-qualifier]: '선행 규명자 (preceding qualifier)' 는 본문 예제에 있던 `temporary.append(partialResult)` 에서의 `temporary` 같이 '해당 기호의 앞에 **선행**하여 해당 기호를 **규명**해주는 지시**자**' 를 말합니다.
 
