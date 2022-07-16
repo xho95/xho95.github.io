@@ -91,7 +91,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 
 일반화 `Dictionary` 타입의 특수화 버전인, `Dictionary<String, Int>` 는 `Key: Hashable` 과 `Value` 라는 일반화 매개 변수를 `String` 과 `Int` 라는 고정 타입 인자로 대체하여 형성합니다. 각각의 타입 인자는 반드시 자신이 대체할 일반화 매개 변수의 모든 구속 조건을 만족해야 하는데, 이는 일반화 `where` 절에서 지정한 어떤 추가 필수 조건도 포함합니다. 위 예제의, `Key` 타입 매개 변수는 `Hashable` 프로토콜을 준수하도록 구속하며 따라서 `String` 도 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-'타입 매개 변수' 는 '자기 스스로 (적절한 구속 조건과 필수 조건을 만족하도록 한) 일반화 타입의 특수화 버전인 타입 인자' 로 대체할 수도 있습니다.  예를 들어, `Array<Element>` 에 있는 `Element` 라는 타입 매개 변수를, 원소 스스로가 정수 배열인 배열을 형성하도록, '행렬의 특수화 버전' 인, `Array<Int>` 로, 대체할 수 있습니다.
+타입 매개 변수의 교체를 그 자체가 일반화 타입의 특수화 버전인 타입 인자 (적절한 구속 조건과 필수 조건을 만족하게 한 거) 로 할 수도 있습니다. 예를 들어, `Array<Element>` 의 `Element` 타입 매개 변수를, `Array<Int>` 라는, 행렬의 특수화 버전으로 대체하면, 원소 그 자체가 정수 배열인 배열을 형성할 수 있습니다.
 
 ```swift
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -103,7 +103,7 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 ### 다음 장 
 
-* 'Summary of the Grammar (문법 총정리) 장' 은 번역 의미가 없으므로 생략함, 해당 장의 링크는 아래 '전체 목록' 참고 바람
+* **Summary of the Grammar (문법 총정리)** 장은 번역하는게 의미가 없으므로 생략합니다. 그 장의 링크는 밑에 있는 전체 목록을 참고하기 바랍니다.
 
 ### 전체 목록 
 
