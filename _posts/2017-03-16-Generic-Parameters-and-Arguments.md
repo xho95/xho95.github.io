@@ -89,7 +89,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 }
 ```
 
-일반화 `Dictionary` 타입의 특수화 버전인, `Dictionary<String, Int>` 는 '일반화 매개 변수인 `Key: Hashable` 과 `Value`' 를 '고정 타입 인자인 `String` 과 `Int`' 로 대체함으로써 형성합니다. 각각의 타입 인자는 반드시 자신이 대체할 일반화 매개 변수에 대하여, 일반화 `where` 절에서 지정한 어떤 추가적인 필수 조건까지 포함한, 모든 구속 조건을 만족해야 합니다. 위 예제는, `Key` 라는 타입 매개 변수가 `Hashable` 프로토콜을 준수하도록 구속하며 따라서 `String` 도 반드시 `Hashable` 프로토콜을 준수해야 합니다.
+일반화 `Dictionary` 타입의 특수화 버전인, `Dictionary<String, Int>` 는 `Key: Hashable` 과 `Value` 라는 일반화 매개 변수를 `String` 과 `Int` 라는 고정 타입 인자로 대체하여 형성합니다. 각각의 타입 인자는 반드시 자신이 대체할 일반화 매개 변수의 모든 구속 조건을 만족해야 하는데, 이는 일반화 `where` 절에서 지정한 어떤 추가 필수 조건도 포함합니다. 위 예제의, `Key` 타입 매개 변수는 `Hashable` 프로토콜을 준수하도록 구속하며 따라서 `String` 도 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
 '타입 매개 변수' 는 '자기 스스로 (적절한 구속 조건과 필수 조건을 만족하도록 한) 일반화 타입의 특수화 버전인 타입 인자' 로 대체할 수도 있습니다.  예를 들어, `Array<Element>` 에 있는 `Element` 라는 타입 매개 변수를, 원소 스스로가 정수 배열인 배열을 형성하도록, '행렬의 특수화 버전' 인, `Array<Int>` 로, 대체할 수 있습니다.
 
@@ -97,7 +97,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-[Generic Parameter Clause (일반화 매개 변수 절)](#generic-parameter-clause-일반화-매개-변수-절) 에서 언급한 것처럼, '일반화 함수나 초기자의 타입 인자' 를 지정하기 위해 '일반화 인자 절' 을 사용할 수는 없습니다.
+[Generic Parameter Clause (일반화 매개 변수 절)](#generic-parameter-clause-일반화-매개-변수-절) 에서 언급한 것처럼, 일반화 인자 절로 일반화 함수나 초기자의 타입 인자를 지정하진 않습니다.
 
 > GRAMMAR OF A GENERIC ARGUMENT CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID409)
 
