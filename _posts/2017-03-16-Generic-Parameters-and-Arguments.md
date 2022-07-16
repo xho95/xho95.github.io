@@ -77,11 +77,11 @@ extension Collection where Element: SomeProtocol {
 
 ### Generic Argument Clause (일반화 인자 절)
 
-_일반화 인자 절 (generic argument clause)_ 은 '일반화 타입의 타입 인자' 를 지정합니다. '일반화 인자 절' 은 '꺾쇠 괄호 (`<>`)' 로 테두리 치며 형식은 다음과 같습니다:
+_일반화 인자 절 (generic argument clause)_ 은 일반화 타입의 타입 인자를 지정합니다. 일반화 인자 절의 테두리는 꺾쇠 괄호 (`<>`) 이며 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;<`generic argument list-일반화 인자 목록`>
 
-_일반화 인자 목록 (generic argument list)_ 은 '타입 인자들을 쉼표로-구분한 목록' 입니다. _타입 인자 (type argument)_ 는 일반화 타입의 일반화 매개 변수 절에 있는 해당 타입 매개 변수를 대체하는 '실제 고정 타입 이름' 입니다. 결과는 '해당 일반화 타입의 특수화 버전 (specialized version)'[^specialized-version] 입니다. 아래 예제는 '스위프트 표준 라이브러리에 있는 일반화 딕셔너리 타입' 의 '단순화 버전' 입니다.
+_일반화 인자 목록 (generic argument list)_ 은 쉼표로-구분한 타입 인자 목록입니다. _타입 인자 (type argument)_ 는 실제 고정 타입의 이름으로 일반화 타입의 일반화 매개 변수 절 안에 있는 해당 타입 매개 변수를 대체합니다. 결과는 그 일반화 타입의 특수화 버전[^specialized-version] 입니다. 아래 예제는 스위프트 표준 라이브러리의 일반화 딕셔너리 타입을 단순하게 한 버전입니다.
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
@@ -119,6 +119,6 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 [^signature]: 함수나 초기자의 '서명 (signature)' 은, 중복 정의한 함수에서 호출할 걸 찾기 위해 사용하며, 보통 함수 이름과 매개 변수 등을 합쳐서 구성됩니다. 함수 서명 (function signature) 과 함수 선언 (function declaration) 의 차이점은 함수 선언의 경우 반환 타입을 포함하지 않는다는 것입니다. 타입 서명에 대한 더 자세한 정보는, 위키피디아의 [Type signature](https://en.wikipedia.org/wiki/Type_signature) 항목을 참고하기 바랍니다.
 
-[^specialized-version]: '특수화 버전 (specialized version)' 은 '일반화 타입 (generic type) 의 타입 매개 변수를 고정하여 특수한 타입으로 정한 것' 을 말합니다.
+[^specialized-version]: '특수화 버전 (specialized version)' 은 일반화 타입의 타입 매개 변수가 특수한 타입으로 정해진 것입니다. 이렇게 특수화 버전을 만들면 일반화 타입의 적용 범위가 좁아집니다.
 
 [^identical]: 프로그래밍에서 '정체가 같다 (identical)' 는 건 '값이 똑같다 (equal)' 보다 더 강한 개념입니다. 두 개의 인스턴스가 있는데, 이들의 값이 똑같으면 값이 똑같은 거지만, 이 둘의 정체가 같은 건 아닙니다. 본문은 타입에 대한 설명이므로, 정체가 같다라고 표현합니다.
