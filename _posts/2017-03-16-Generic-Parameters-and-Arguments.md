@@ -51,7 +51,7 @@ simpleMax(3.14159, 2.71828) // T 는 Double 이라고 추론함
 
 &nbsp;&nbsp;&nbsp;&nbsp;where `requirements-필수 조건`
 
-'일반화 `where` 절의 _필수 조건 (requirements)_' 은 '클래스를 상속하거나 프로토콜 또는 프로토콜 합성을 준수하는 타입 매개 변수' 를 지정합니다. '일반화 `where` 절' 이 '타입 매개 변수에 대한 단순 구속 조건' 을 표현하는 수월한 구문 (syntactic sugar) 을 (예를 들어, `<T: Comparable>` 과 동치인 `<T> where T: Comparable` 등을) 제공하긴 하지만, 타입 매개 변수와 그 결합 타입에 대한 더 복잡한 구속 조건을 제공하고자 이를 사용할 수도 있습니다. 예를 들어, 타입 매개 변수의 결합 타입이 프로토콜을 준수하도록 구속할 수 있습니다. 예를 들어, `<S: Sequence> where S.Iterator.Element: Equatable` 은 `S` 가 `Sequence` 프로토콜을 준수하고 결합 타입인 `S.Iterator.Element` 가 `Equatable` 프로토콜을 준수하도록 지정합니다. 이 구속 조건은 '시퀀스 (sequence)' 의 각 원소가 '같음 비교 가능 (equatable)' 함을 보장합니다.
+일반화 `where` 절의 _필수 조건 (requirements)_ 은 타입 매개 변수가 클래스를 상속하거나 프로토콜 또는 프로토콜 합성을 준수하도록 지정합니다. 일반화 `where` 절이 타입 매개 변수에 대한 단순한 구속 조건 표현의 수월한 구문을 제공하긴 하지만 (예를 들어, `<T: Comparable>` 과 같은 것인 `<T> where T: Comparable` 등등), 이를 사용하여 타입 매개 변수와 그 결합 타입에 더 복잡한 구속 조건을 제공할 수도 있습니다. 예를 들어, 타입 매개 변수의 결합 타입이 프로토콜을 준수하도록 구속할 수 있습니다. 예를 들어, `<S: Sequence> where S.Iterator.Element: Equatable` 은 `S` 가 `Sequence` 프로토콜을 준수하면서 그 결합 타입인 `S.Iterator.Element` 는 `Equatable` 프로토콜을 준수하도록 지정합니다. 이 구속 조건은 시퀀스의 각 원소가 같음 비교 가능하도록 보장합니다.
 
 `==` 연산자로, 두 타입이 '완전히 똑같다 (identical)[^identical] 는 필수 조건' 도 지정할 수 있습니다. 예를 들어, `<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` 는 '`S1` 과 `S2` 가 `Sequence` 프로토콜을 준수하며 두 '시퀀스 (sequence)' 는 반드시 똑같은 타입이라는 구속 조건' 을 표현합니다.
 
