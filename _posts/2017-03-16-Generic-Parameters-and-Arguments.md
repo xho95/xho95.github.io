@@ -55,11 +55,11 @@ simpleMax(3.14159, 2.71828) // T 는 Double 이라고 추론함
 
 `==` 연산자로, 두 타입의 정체가 같다 (identical)[^identical] 는 필수 조건을 지정할 수도 있습니다. 예를 들어, `<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` 는 `S1` 과 `S2` 가 `Sequence` 프로토콜을 준수하면서 반드시 두 시퀀스 모두 똑같은 타입이어야 한다는 구속 조건을 표현합니다.
 
-타입 매개 변수를 대체할 어떤 타입 인자든 반드시 타입 매개 변수에 있는 모든 구속 조건 및 필수 조건과 부합해야 합니다.
+타입 매개 변수를 대체할 어떤 타입 인자든 반드시 타입 매개 변수에 있는 모든 구속 조건 및 필수 조건을 만족해야 합니다.
 
-'일반화 `where` 절' 은 '타입 매개 변수를 포함한 선언' 이나 '타입 매개변수를 포함한 선언 안에 중첩된 선언' 으로써 나타날 수 있습니다. '중첩 선언의 일반화 `where` 절' 은 여전히 (자신을) 둘러싼 선언의 타입 매개 변수를 참조할 수 있으나; 하지만, '해당 where 절의 필수 조건' 은 이를 작성한 선언에만 적용합니다.
+일반화 `where` 절은 타입 매개 변수를 포함한 선언 부분이나, 타입 매개변수를 포함한 선언 안의 중첩 선언 부분에 나타날 수 있습니다. 중첩 선언의 일반화 `where` 절은 자신을 둘러싼 선언의 타입 매개 변수를 여전히 참조할 수 있으며; 하지만, 그 where 절의 필수 조건은 이를 작성한 선언에만 적용됩니다.
 
-(자신을) 둘러싼 선언에도 'where 절' 이 있으면, '두 절 모두의 필수 조건' 을 조합합니다. 아래 예제의, `startsWithZero()` 는 `Element` 가 `SomeProtocol` 과 `Numeric` 를 둘 다 준수하는 경우에만 사용 가능합니다.
+자신을 둘러싼 선언에도 where 절이 있으면, 두 절의 필수 조건을 모두 조합합니다. 아래 예제에서, `startsWithZero()` 는 `Element` 가 `SomeProtocol` 과 `Numeric` 을 둘 다 준수해야만 사용 가능합니다.
 
 ```swift
 extension Collection where Element: SomeProtocol {
@@ -69,9 +69,9 @@ extension Collection where Element: SomeProtocol {
 }
 ```
 
-타입 매개 변수에 대해 '서로 다른 구속 조건, 필수 조건, 또는 둘 다' 를 제공함으로써 '일반화 함수나 초기자' 를 '중복 정의 (overload)' 할 수 있습니다. '중복 정의한 일반화 함수나 초기자' 를 호출할 땐, 중복 정의한 함수나 초기자 중에서 부를 것을 해결하고자 컴파일러가 이 구속 조건들을 사용합니다.
+일반화 함수나 초기자를 중복 정의하려면 타입 매개 변수에 서로 다른 구속 조건이나, 필수 조건, 또는 둘 다를 제공하면 됩니다. 중복 정의한 일반화 함수나 초기자를 호출할 때, 컴파일러가 이러한 구속 조건을 사용하여 어느 중복 정의 함수나 초기자를 소환할 건지 해결합니다.
 
-'일반화 `where` 절' 에 대한 더 많은 정보와 '일반화 함수 선언' 에서의 사용 예제를 보려면, [Generic Where Clauses (일반화 'where' 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 보도록 합니다.
+일반화 `where` 절에 대한 더 많은 정보와 일반화 함수 선언에서의 사용 예를 보려면, [Generic Where Clauses (일반화 where 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 보기 바랍니다.
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID407)
 
