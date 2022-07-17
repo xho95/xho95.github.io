@@ -703,7 +703,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
-#### unchecked (검사하지 않는)
+#### unchecked (검사하지 않음)
 
 이 특성을 채택한 프로토콜의 타입 선언 목록 부분의 프로토콜 타입에 적용하면 그 프로토콜 필수 조건을 강제하는 걸 끕니다.
 
