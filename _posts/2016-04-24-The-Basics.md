@@ -583,6 +583,10 @@ if let myNumber = myNumber {
 // "My number is 123" 을 인쇄함
 ```
 
+이 코드는, 이전 예제 안의 코드와 같이, `myNumber` 에 값이 담겨 있는지 검사하는 걸로 시작합니다. `myNumber` 에 값이 있으면, `myNumber` 라는 이름의 새 상수 값에 그 값을 설정합니다. `if` 문 본문 안에서, `myNumber` 를 쓰면 새로운 그 옵셔널-아닌 상수를 참조합니다. `if` 문 시작 전과 끝난 후에, `myNumber` 를 쓰면 원본인 정수 상수를 참조합니다.
+
+이런 종류의 코드가 너무 흔하기 때문에, 더 짧은 철자를 써서 옵셔널 값의 포장을 풀 수 있는데: 그냥 포장 풀 상수나 변수 이름을 쓰면 됩니다. 새로운, 포장 푼 상수나 변수는 암시적으로 옵셔널 값과 똑같은 이름을 사용합니다.
+
 ```swift
 if let myNumber {
   print("My number is \(myNumber)")
@@ -590,17 +594,15 @@ if let myNumber {
 // "My number is 123" 을 인쇄함
 ```
 
+상수와 변수 둘 다 옵셔널 연결로 사용할 수 있습니다. `if` 문의 첫 번째 분기 안에서 `myNumber` 값을 조작하고 싶다면, 그 대신 `if var myNumber` 라고 작성하면, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용 가능할 것입니다.
 
-
-상수와 변수 둘 다 옵셔널 연결과 사용할 수 있습니다. `actualNumber` 의 값을 `if` 문 첫 번째 분기 안에서 조작하고 싶으면, `if var actualNumber` 라고 대신 작성하면, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용 가능하게 할 수 있을 것입니다.
-
-쉼표로 구분하여, 필요한 만큼 '많은 옵셔널 연결과 불리언 조건' 을, 단일 `if` 문 안에 포함할 수 있습니다. 옵셔널 연결의 어떤 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 라고 평가한다면, `if` 문 조건 전체가 `false` 인 것으로 고려합니다. 다음 `if` 문들은 서로 '같은 값' 입니다:
+필요한 만큼 많은 옵셔널 연결과 불리언 조건을 단일 `if` 문 안에 포함시키는 건, 쉼표로 구분하여 할 수 있습니다. 어떤 옵셔널 연결 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 로 평가되면, `if` 문의 전체 조건이 `false` 라고 고려합니다. 다음의 `if` 문은 서로 같은 겁니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
   print("\(firstNumber) < \(secondNumber) < 100")
 }
-// "4 < 42 < 100" 를 인쇄합니다.
+// "4 < 42 < 100" 를 인쇄함
 
 if let firstNumber = Int("4") {
   if let secondNumber = Int("42") {
@@ -609,7 +611,7 @@ if let firstNumber = Int("4") {
     }
   }
 }
-// "4 < 42 < 100" 를 인쇄합니다.
+// "4 < 42 < 100" 를 인쇄함
 ```
 
 > '`if` 문의 옵셔널 연결로 생성한 상수와 변수' 는 '`if` 문 본문 안에서만 사용 가능' 합니다. 이와 대조적으로, `guard` 문으로 생성한 상수와 변수는, [Early Exit (때 이른 탈출문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-때-이른-탈출문) 에서 설명한 것처럼, `guard` 문 뒤의 코드 줄에서 사용 가능합니다.
