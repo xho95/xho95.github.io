@@ -554,7 +554,7 @@ _옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널에 값이 담�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-[Optionals (옵셔널)](#optionals-옵셔널) 부분의 `possibleNumber` 예제는 '강제 포장 풀기' 보단 '옵셔널 연결' 을 사용하도록 재작성할 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널) 절에 있는 `possibleNumber` 예제를 강제 포장 풀기 보단 옵셔널 연결을 사용하게 재작성할 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -562,14 +562,35 @@ if let actualNumber = Int(possibleNumber) {
 } else {
   print("The string \"\(possibleNumber)\" could not be converted to an integer")
 }
-// "The string "123" has an integer value of 123" 을 인쇄합니다.
+// "The string "123" has an integer value of 123" 을 인쇄함
 ```
 
-이 코드는 다음처럼 이해할 수 있습니다:
+이 코드는 다음처럼 읽을 수 있습니다:
 
-"`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 가 값을 담고 있다면, 옵셔널이 담은 값을 `actualNumber` 라는 새로운 상수에 설정합니다."
+"`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 에 값이 담겨 있으면, `actualNumber` 라는 새 상수에 옵셔널이 담은 값을 설정합니다."
 
-변환을 성공하면, `actualNumber` 라는 상수가 `if` 문의 첫 번째 분기 안에서 사용 가능해 집니다. 이미 옵셔널 _안에 (within)_ 담긴 값으로 초기화 했으므로, 값에 접근할 때 `!` 접미사를 사용하지 않습니다. 이 예제의, `actualNumber` 는 변환 결과를 단순히 인쇄하는데 사용합니다.
+변환 성공이면, `if` 문 첫 번째 분기 안에서 `actualNumber` 상수를 사용하는게 가능해집니다. 이미 옵셔널 _안에 (within)_ 담은 값으로 초기화되었으므로, 값에 접근하는데 `!` 접미사를 쓰지 않습니다. 이 예제에선, `actualNumber` 를 단순히 변환 결과의 인쇄에 사용합니다.
+
+자신이 담은 값에 접근한 후에 원본인, 옵셔널 상수나 변수로의 참조가 필요 없으면, 새로운 상수나 변수에 똑같은 이름을 사용할 수 있습니다:
+
+```swift
+let myNumber = Int(possibleNumber)
+// 여기서, myNumber 는 옵셔널 정수임
+if let myNumber = myNumber {
+  // 여기서, myNumber 는 옵셔널-아닌 정수임
+  print("My number is \(myNumber)")
+}
+// "My number is 123" 을 인쇄함
+```
+
+```swift
+if let myNumber {
+  print("My number is \(myNumber)")
+}
+// "My number is 123" 을 인쇄함
+```
+
+
 
 상수와 변수 둘 다 옵셔널 연결과 사용할 수 있습니다. `actualNumber` 의 값을 `if` 문 첫 번째 분기 안에서 조작하고 싶으면, `if var actualNumber` 라고 대신 작성하면, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용 가능하게 할 수 있을 것입니다.
 
