@@ -546,9 +546,9 @@ if convertedNumber != nil {
 
 #### Optional Binding (옵셔널 연결)
 
-옵셔널이 값을 담고 있는 지 알아내고, 그럴 경우, 해당 값을 임시 상수나 변수로 사용 가능하도록, _옵셔널 연결 (optional binding)_ 을 사용합니다. 옵셔널 연결은, 단일 작업으로, 옵셔널 안의 값을 검사하고, 상수나 변수로 해당 값을 추출하기 위해, `if` 와 `while` 문과 사용할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 설명합니다.
+_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널에 값이 담겼는지 알아내서, 그렇다면, 그 값을 임시 상수나 변수로 사용 가능하게 만듭니다. 옵셔널 연결을 `if` 및 `while` 문과 사용하면 옵셔널 안의 값 검사와, 그 값을 상수나 변수로 뽑아내는 걸, 단일 행동으로 할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 설명합니다.
 
-`if` 문을 위한 옵셔널 연결은 다음 처럼 작성합니다:
+`if` 문의 옵셔널 연결은 다음 처럼 작성합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;if let `constantName-상수 이름` = `someOptional-어떤 옵셔널` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />

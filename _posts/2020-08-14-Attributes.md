@@ -707,7 +707,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 이 특성을 채택한 프로토콜의 타입 선언 목록 부분의 프로토콜 타입에 적용하면 그 프로토콜 필수 조건을 강제하는 걸 끕니다.
 
-이를 지원하는 단 하나의 프로토콜은 [Sendable](https://developer.apple.com/documentation/swift/sendable) 입니다.[^sendable]
+지원하는 단 하나의 프로토콜은 [Sendable](https://developer.apple.com/documentation/swift/sendable) 입니다.[^sendable]
 
 #### usableFromInline (인라인에서 사용 가능)
 
