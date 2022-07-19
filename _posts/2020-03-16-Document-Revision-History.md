@@ -21,14 +21,14 @@ categories: Swift Language Grammar Revision History
 #### 2022-03-14
 
 * 스위프트 5.6 에서 업데이트함. 
-* 연쇄적인 메소드 호출과 그 외 접미사 표현식 주위의 `#if` 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절을 업데이트함.
-* 보여지는 전체 그림 스타일을 업데이트함.
+* 연쇄된 메소드 호출 및 다른 접미사 표현식 주변에서 `#if` 의 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절을 업데이트함.
+* 보여지는 그림 스타일을 전체적으로 업데이트함.
 
 #### 2021-09-20
 
 * 스위프트 5.5 에서 업데이트함. 
-* 비동기 함수 (asynchronous functions) 와, 임무 (tasks), 및 행위자 (actors) 에 대한 정보를 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장과, [Actor Declaration (행위자 선언)]({% post_url 2020-08-15-Declarations %}#actor-declaration-행위자-선언), [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드), 그리고 [Await Operator (`await` 연산자)]({% post_url 2020-08-19-Expressions %}#await-operator-await-연산자)  추가함.
-* '밑줄 (underscore) 로 시작하는 식별자' 에 대한 정보를 가지고 [Identifiers (식별자)]({% post_url 2020-07-28-Lexical-Structure %}#identifiers-식별자) 절을 업데이트함.
+* 비동기 함수와, 임무, 및 행위자에 대한 정보를 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장 및, [Actor Declaration (행위자 선언)]({% post_url 2020-08-15-Declarations %}#actor-declaration-행위자-선언) 과, [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드), 및 [Await Operator (`await` 연산자)]({% post_url 2020-08-19-Expressions %}#await-operator-await-연산자) 절에 추가함.
+* 밑줄로 시작하는 식별자에 대한 정보를 가지고 [Identifiers (식별자)]({% post_url 2020-07-28-Lexical-Structure %}#identifiers-식별자) 절을 업데이트함.
 
 #### 2021-04-26
 
