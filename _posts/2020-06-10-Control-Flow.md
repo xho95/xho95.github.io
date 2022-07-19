@@ -771,7 +771,7 @@ func chooseBestColor() -> String {
 }
 ```
 
-위 예제에서, `ColorPreference` 구조체는 **macOS 10.12** 이상을 요구합니다. `chooseBestColor()` 함수는 사용 가능성 guard 문으로 시작합니다. 플랫폼 버전이 `ColorPreference` 를 사용하기에 너무 오래된 거면, 항상 사용 가능한 동작으로 대체합니다. `guard` 문 후엔, **macOS 10.12** 이상이길 요구하는 API 를 사용할 수 있습니다.
+위 예제에서, `ColorPreference` 구조체는 **macOS 10.12** 이후를 요구합니다. `chooseBestColor()` 함수는 사용 가능성 guard 문으로 시작합니다. 플랫폼 버전이 `ColorPreference` 를 사용하기에 너무 오래된 거면, 항상 사용 가능한 동작으로 대체합니다. `guard` 문 후엔, **macOS 10.12** 이후를 요구하는 API 를 사용할 수 있습니다.
 
 `#available` 에 더하여, 스위프트는 사용 불가능성 조건으로 정반대로 검사하는 것도 지원합니다.예를 들어, 다음의 두 검사는 똑같은 걸 합니다:
 
