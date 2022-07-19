@@ -45,4 +45,4 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 
 [^depend-on]: 이는 스위프트 5.2 부터 ABI 안정성[^ABI-Stability] 에다가 모듈 안정성 (module stability) 도 지원하기 때문입니다. 이에 대한 더 자세한 내용은, [ABI Stability and More](https://swift.org/blog/abi-stability-and-more/) 항목을 보도록 합니다.
 
-[^swift-version]: [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 장에서 확인할 수 있는 것처럼, 스위프트는 2019년 이후로 메이저 버전이 '5.x' 로 유지되고 있습니다. 그 이전에는 1년마다 메이저 버전을 업데이트했는데, 이는 스위프트 문법이 이제 어느 정도 안정화되었기 때문입니다.
+[^swift-version]: [Document Revision History (문서를 다듬은 역사)]({% post_url 2020-03-16-Document-Revision-History %}) 에서 확인할 수 있는 것처럼, 스위프트는 2019년 이후로 메이저 버전이 '5.x' 로 유지되고 있습니다. 이는 스위프트 언어의 문법이 어느 정도 안정되었기 때문으로 추측됩니다.
