@@ -71,4 +71,4 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 
 ### 참고 자료
 
-[^Swift]: 'The Swift Programming Language (스위프트 프로그래밍 언어)' 는 애플에서 공개하고 있는 '스위프트 문법 책' 이며, 2021년 2월 17일에 '버전 5.4' 로 갱신되었습니다. 원문 링크는 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 입니다.
+[^Swift]: 'The Swift Programming Language (스위프트 프로그래밍 언어)' 는 애플에서 공개하고 있는 '스위프트 문법 책' 이며, 2021년 2월 17일에 '버전 5.4' 로 갱신되었습니다. 원문 링크는 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 입니다.

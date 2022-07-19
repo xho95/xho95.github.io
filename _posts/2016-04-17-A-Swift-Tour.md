@@ -6,22 +6,22 @@ date:   2016-04-17 19:45:00 +0900
 categories: Swift Language Grammar Tour
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 부분[^A-Swift-Tour]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 부분[^A-Swift-Tour]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## A Swift Tour (스위프트 둘러보기)[^a-swift-tour]
 
-새로운 언어의 첫 번째 프로그램은 화면에 `"Hello, world!"` 를 인쇄하는 것이 전통입니다. 스위프트는, 이를 단 한 줄로 할 수 있습니다:
+새로운 언어의 첫 번째 프로그램은 `"Hello, world!"` 라는 글을 화면에 인쇄하는게 좋다는 전통이 있습니다.[^hello-world] 스위프트는, 이를 단 한 줄로 할 수 있습니다:
 
 ```swift
 print("Hello, world!")
-// "Hello, world!"  를 인쇄합니다.
+// "Hello, world!"  를 인쇄함
 ```
 
-'C 나 오브젝티브-C' 로 코딩을 해봤다면, 이 구문이 익숙할텐데-스위프트에서, 이 한 줄의 코드는 완전한 프로그램입니다. 입/출력이나 문자열 처리 같은 기능을 위한 별도의 라이브러리를 불러올 필요가 없습니다. 전역에서 작성한 코드는 프로그램의 '진입점 (entry point)' 으로 사용하므로, `main()` 함수도 필요 없습니다. 모든 문장 끝에 세미콜론을 작성할 필요도 없습니다.
+**C** 나 **오브젝티브-C** 코딩을 해봤으면, 이 구문이 익숙할 건데-스위프트에서, 이 한 줄의 코드가 완전한 프로그램입니다. 입/출력이나 문자열 처리 같은 기능을 위해 별도의 라이브러리를 불러올 필요가 없습니다. 전역[^global-scope] 에서 작성한 코드는 프로그램의 진입점[^entry-point] 으로 사용해서, `main()` 함수도 필요 없습니다. 모든 문장 끝마다 세미콜론을 작성할 필요도 없습니다.
 
-이 '둘러보기 (tour)' 에서는 '다양한 프로그래밍 임무 달성 방법을 보임' 으로써 '스위프트 코드 작성을 시작하기 위한 충분한 정보' 를 제공합니다. 뭔가 이해 안되더라도 걱정할 필요 없습니다-'둘러보기' 에서 소개한 모든 것을 책의 나머지 부분에서 (다시) 자세하게 설명합니다.
+이 둘러보기에선 다양한 프로그래밍 임무를 어떻게 달성하는지를 보여줘서 스위프트 코드 작성을 시작하기에 충분한 정보를 줍니다. 어떤게 이해가 안돼도 걱정할 필요 없습니다-둘러보기에서 소개한 모든 걸 이 책 나머지에서 더 자세히 설명합니다.
 
-> '엑스코드 (Xcode) 를 설치한 맥 (Mac)' 이나, '스위프트 플레이그라운드 (Swift Playgounds) 가 있는 아이패드 (iPad)' 에서는, 이 장을 '플레이그라운드' 로 열 수 있습니다. '플레이그라운드' 로 나열한 코드를 곧바로 편집하여 결과를 볼 수 있습니다.
+> **엑스코드** 를 설치한 **맥** 이나, **스위프트 플레이그라운드** 가 있는 **아이패드** 에선, 이 장을 **플레이그라운드** 로 열 수 있습니다. **플레이그라운드** 로는 나열한 코드를 편집하고 곧바로 결과도 볼 수 있습니다.
 >
 > [Download Playground (플레이그라운드 다운로드 하기)](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
@@ -856,9 +856,13 @@ anyCommonElements([1, 2, 3], [3])
 
 [^A-Swift-Tour]: 원문은 [A Swift Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+[^a-swift-tour]: 영어의 **Swift** 에는 재빠르다라는 의미도 있기 때문에, 이 장의 제목인 **A Swift Tour** 는 **재빨리 둘러보기** 라는 중의적인 의미도 가지고 있습니다.
 
-[^a-swift-tour]: 'Swift' 는 '재빠른' 이라는 의미도 가지고 있기 때문에, 이 장의 제목인 'A Swift Tour' 는 '재빨리 둘러보기' 라는 중의적인 의미도 가지고 있습니다.
+[^hello-world]: `"Hello, world!"` 를 출력하는게 전통이 된 것은, 1978년 [The C Programming Language](https://en.wikipedia.org/wiki/The_C_Programming_Language) 라는 책에 이 예제가 처음으로 등장하면서부터입니다. 이 책의 공동 저자 중 한 사람이 **유닉스** 와 **C 언어** 를 개발한, 그 유명한 [Dennis Ritchie (데니스 리치)](https://en.wikipedia.org/wiki/Dennis_Ritchie) 입니다.
+
+[^global-scope]: '전역 (global scope)' 이란 어떤 영역에도 속하지 않는 프로그램의 가장 바깥쪽 영역입니다. 
+
+[^entry-point]: '진입점 (entry point)' 이란 프로그램 실행을 시작하는 지점을 말합니다. 보통의 프로그래밍 언어에선 `main()` 함수를 자신의 진입점으로 사용합니다.
 
 [^indentation]: 이 부분은 말로 하는 설명보다는 예제를 보는 것이 이해하기 더 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분을 보도록 합니다.
 
