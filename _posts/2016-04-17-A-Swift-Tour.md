@@ -194,7 +194,7 @@ default:
 >
 > 기본 case[^default-case] 를 제거해 봅니다. 무슨 에러가 뜹니까?
 
-패턴[^pattern] 안에서 `let` 을 사용하면 패턴에 맞는 값을 상수로 할당할 수 있다는 걸 알기 바랍니다.
+패턴[^pattern] 에서 `let` 을 사용하여 패턴과 맞는 값을 상수로 할당할 수 있는 방법을 알기 바랍니다.
 
 맞는 switch 문 case 안의 코드를 실행한 후엔, 프로그램이 switch 문 밖을 나갑니다. 실행이 그 다음 case 로 계속되진 않아서, 각각의 case 코드 끝에서 명시적으로 switch 문을 끊고 나올 필요가 없습니다.[^break-out]
 
@@ -381,7 +381,7 @@ print(sortedNumbers)
 
 ### Objects and Classes (객체와 클래스)
 
-클래스는 `class` 뒤에 '클래스 이름' 을 붙여서 생성합니다. 클래스의 속성 선언은, 클래스 안이라는 것만 제외하면, 상수나 변수 선언과 똑같은 방식으로 작성합니다. 마찬가지로, 메소드와 함수 선언도 똑같은 방식으로 작성합니다.
+`class` 뒤에 클래스 이름을 쓰면 클래스를 생성합니다. 클래스 안의 속성 선언으, 그게 클래스 안에 있다는 것만 제외하면, 상수나 변수 선언과 똑같은 방식으로 작성합니다. 마찬가지로, 메소드 및 함수 선언도 똑같은 방식으로 작성합니다.
 
 ```swift
 class Shape {
@@ -394,9 +394,9 @@ class Shape {
 
 > 실험
 >
-> `let` 으로 상수 속성을 추가하고, 인자를 취하는 또 다른 메소드를 추가해 봅니다.
+> `let` 으로 상수 속성을 추가해 보고, 인자를 가지는 또 다른 메소드도 추가해 봅니다.
 
-클래스 인스턴스는 클래스 이름 뒤에 괄호를 둬서 생성합니다. 인스턴스의 속성과 메소드에 접근하려면 '점 구문 (dot syntax)' 을 사용합니다.
+클래스 인스턴스를 생성하려면 클래스 이름 뒤에 괄호를 두면 됩니다. 점 구문 (dot syntax) 으로 인스턴스의 속성과 메소드에 접근합니다.
 
 ```swift
 var shape = Shape()
@@ -404,7 +404,7 @@ shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
 ```
 
-이 버전의 `Shape` 클래스에는 뭔가 중요한 것이 빠졌는데: 인스턴스를 생성할 때 클래스를 설정하는 '초기자 (initializer)' 가 그것입니다. `init` 으로 하나 생성합니다.
+이 버전의 `Shape` 클래스는 중요한 걸 잃어버렸는데: 인스턴스를 생성할 때 클래스를 초기 설정하는 초기자[^initializer] 가 그것입니다. `init` 으로 하나 생성합니다.
 
 ```swift
 class NamedShape {
@@ -421,13 +421,13 @@ class NamedShape {
 }
 ```
 
-`name` 속성과 초기자의 `name` 인자를 구별하기 위해 `self` 를 사용하는 방법에 주목하기 바랍니다. 클래스의 인스턴스를 생성할 때 함수 호출 처럼 초기자 인자를 전달합니다. 모든 속성은-(`numberOfSides` 과 같이) 자신의 선언에서든 (`name` 과 같은) 초기자에서든-할당 값이 필요합니다.
+`self` 를 사용해서 초기자의 `name` 속성과 `name` 인자를 구별하는 방법을 알기 바랍니다. 초기자의 인자는 클래스 인스턴스를 생성할 때 함수 호출인 것 같이 전달합니다. 모든 속성에 값을 할당할 필요가 있습니다-(`numberOfSides` 처럼) 자신의 선언에서든 (`name` 처럼) 초기자에서든 그렇습니다.
 
-객체 해제 전에 어떠한 청소가 필요하면 `deinit` 을 써서 정리자 (deinitializer) 를 생성합니다.
+객체를 해제하기 전에 어떤 정리가 필요하다면 `deinit` 으로 정리자[^deinitializer] 를 생성합니다.
 
-'하위 클래스 (subclasses)' 는 자신의 클래스 이름 뒤에, 콜론으로 구분한, '상위 클래스 (superclass) 이름' 을 포함합니다. 클래스가 '어떤 표준 근원 클래스 (standard root class)[^standard-root-class] 의 하위 클래스' 라는 '필수 조건 (requirement)' 은 없으므로, 필요에 따라 상위 클래스를 포함하거나 생략할 수 있습니다.
+하위 클래스는 자신의 클래스 이름 뒤에, 콜론으로 구분하여, 상위 클래스 이름을 포함합니다. 클래스가 어떤 표준 뿌리 클래스[^standard-root-class] 의 하위 클래스여야 한다는 필수 조건은 없어서, 필요에 따라 상위 클래스를 포함하거나 생략할 수 있습니다.
 
-'상위 클래스 구현을 재정의 (override) 한 하위 클래스 메소드' 는 `override` 로 표시합니다—`override` 없이, 우연히 재정의한 메소드는, 컴파일러가 에러라고 탐지합니다. 실제로는 상위 클래스의 어떤 메소드도 재정의하지 않으면서 `override` 를 가진 메소드도 컴파일러가 탐지합니다.
+하위 클래스 메소드가 상위 클래스 구현을 재정의한다면 `override` 를 표시합니다—`override` 없이, 메소드를 재정의하는 우연한 사고가 일어나면, 컴파일러가 에러라고 탐지합니다. 컴파일러는 `override` 를 가지고도 실제로는 어떤 상위 클래스 메소드도 재정의하지 않는 메소드 역시 탐지합니다.
 
 ```swift
 class Square: NamedShape {
@@ -454,9 +454,9 @@ test.simpleDescription()
 
 > 실험
 >
-> 초기자 인자로 반지름과 이름을 취하는 `Circle` 이라는 `NamedShape` 의 또 다른 하위 클래스를 만들어 봅니다. `Circle` 클래스에 대해 `area()` 와 `simpleDescription()` 메소드를 구현해 봅니다.
+> `NamedShape` 의 또 다른 하위 클래스로 `Circle` 을 만들고 초기자 인자로는 반지름과 이름을 가지게 합니다. `Circle` 클래스의 `area()` 와 `simpleDescription()` 메소드를 구현해 봅니다.
 
-저장을 한다는 단순한 속성에 더하여, 속성은 '획득자 (getter)' 와 '설정자 (setter)' 를 가질 수 있습니다.[^getter-and-setter]
+저장하는 단순 속성에 더하여, 속성에 획득자와 설정자가 있을 수 있습니다.[^getter-and-setter]
 
 ```swift
 class EquilateralTriangle: NamedShape {
@@ -483,21 +483,21 @@ class EquilateralTriangle: NamedShape {
 }
 var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
-// "9.3" 을 인쇄합니다.
+// "9.3" 을 인쇄함
 triangle.perimeter = 9.9
 print(triangle.sideLength)
-// "3.3000000000000003" 을 인쇄합니다.
+// "3.3000000000000003" 을 인쇄함
 ```
 
-`perimeter` 의 '설정자' 안에서, 새 값은 `newValue` 라는 암시적인 이름을 가집니다. 명시적인 이름은 `set` 뒤의 괄호에서 제공할 수 있습니다.
+`perimeter` 의 설정자 안에선, 새 값이 `newValue` 라는 암시적 이름을 가집니다. `set` 뒤의 괄호에서 명시적 이름을 제공할 수 있습니다.
 
-`EquilateralTriangle` 클래스의 초기자는 서로 다른 세 단계를 거친다는 것에 주목하기 바랍니다:
+`EquilateralTriangle` 클래스의 초기자엔 세 개의 서로 다른 단계가 있다는 걸 알기 바랍니다:
 
-1. 하위 클래스가 선언한 속성 값 설정하기
-2. 상위 클래스의 초기자 호출하기
-3. 상위 클래스가 정의한 속성 값 바꾸기. 이 시점에서 메소드, 획득자, 또는 설정자를 사용한 어떤 추가적인 설정 작업도 할 수 있음.
+1. 하위 클래스가 선언한 속성에 값을 설정함
+2. 상위 클래스의 초기자를 호출함
+3. 상위 클래스가 정의한 속성의 값을 바꿈. 메소드나, 획득자, 또는 설정자를 사용한 어떤 추가 설정 작업도 이 시점에서 할 수 있음.
 
-속성을 계산할 필요는 없지만 여전히 새 값 설정 전후에 실행할 코드를 제공할 필요가 있다면, `willSet` 과  `didSet` 을 사용합니다. 제공한 코드는 값이 초기자 밖에서 바뀔 때마다 실행됩니다. 예를 들어, 아래 클래스는 삼각형 한 변 길이가 정사각형 한 변 길이와 항상 똑같도록 보장합니다.
+속성을 계산할 필요는 없지만 새 값 설정 전후에 실행할 코드는 여전히 제공할 필요가 있다면, `willSet` 과 `didSet` 을 사용합니다. 제공한 코드는 초기자 밖에서 값이 바뀔 때마다 실행됩니다. 예를 들어, 아래 클래스는 삼각형 한 변 길이가 정사각형 한 변 길이와 항상 똑같도록 보장합니다.
 
 ```swift
 class TriangleAndSquare {
@@ -518,15 +518,15 @@ class TriangleAndSquare {
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
 print(triangleAndSquare.square.sideLength)
-// "10.0" 을 인쇄합니다.
+// "10.0" 을 인쇄함
 print(triangleAndSquare.triangle.sideLength)
-// "10.0" 을 인쇄합니다.
+// "10.0" 을 인쇄함
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
-// "50.0" 을 인쇄합니다.
+// "50.0" 을 인쇄함
 ```
 
-'옵셔널 값' 과 작업할 때는, '메소드, 속성, 및 첨자 연산 (subscripting)' 같은 연산 앞에 `?` 를 작성할 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 뒤의 모든 것을 무시하며 전체 표현식 값은 `nil` 입니다. 그 외 경우, 옵셔널 값의 포장을 풀며, `?` 뒤의 모든 것을 '포장 푼 값' 에 작용합니다. 두 경우 모두, 전체 표현식 값이 옵셔널 값입니다.
+옵셔널 값과 작업할 땐, 메소드와, 속성, 및 첨자 같은 연산 앞에 `?` 를 쓸 수 있습니다. `?` 앞의 값이 `nil` 이면, `?` 뒤의 모든 걸 무시하여 전체 표현식 값이 `nil` 입니다. 그 외 경우, 옵셔널 값의 포장을 풀어서, `?` 뒤의 모든 걸 포장 푼 값에 작용합니다. 두 경우 모두, 전체 표현식 값은 옵셔널 값입니다.
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -535,7 +535,7 @@ let sideLength = optionalSquare?.sideLength
 
 ### Enumerations and Structures (열거체와 구조체)
 
-열거체는 `enum` 으로 생성합니다. 클래스 및 '그 외 모든 이름 붙인 (named) 타입' 같이, 열거체는 자신과 결합된 메소드[^methods-associated] 를 가질 수 있습니다.
+`enum` 으로 열거체를 생성합니다. 클래스 및 다른 모든 이름 있는 타입 같이, 열거체엔 자신과 결합된 메소드가 있을 수 있습니다.
 
 ```swift
 enum Rank: Int {
@@ -563,11 +563,11 @@ let aceRawValue = ace.rawValue
 
 > 실험
 >
-> '서로의 원시 값 (raw value) 을 비교함' 으로써 '두 `Rank` 값을 비교하는 함수' 를 작성해 봅니다.
+> 서로의 원시 값[^raw-value] 을 비교해서 두 `Rank` 값을 비교하는 함수를 작성해 봅니다.
 
-기본적으로, 스위프트는 '0에서 시작해서 매번 1씩 증가하는 원시 값 (raw value)' 을 할당하지만, 값을 명시적으로 지정함으로써 이 동작을 바꿀 수 있습니다. 위 예제에선, `Ace` 에 `1` 이라는 원시 값을 명시적으로 부여하며, 나머지 원시 값은 순서대로 할당합니다. 문자열이나 부동-소수점 수를 열거체의 원시 타입으로 사용할 수도 있습니다. '열거체 case 값 (enumeration case) 의 원시 값' 에 접근하려면 `rawValue` 속성을 사용합니다.
+기본적으로, 스위프트는 0 에서 시작하여 매번 1 씩 증가하는 원시 값을 할당하지만, 값을 명시해서 이 동작을 바꿀 수 있습니다. 위 예제에선, `Ace` 에 `1` 이라는 원시 값을 명시해주고, 나머지 원시 값은 순서대로 할당됩니다. 문자열이나 부동-소수점 수를 열거체의 원시 타입으로 사용할 수도 있습니다. `rawValue` 속성을 써서 열거체 case 의 원시 값에 접근합니다.
 
-원시 값으로 열거체의 인스턴스를 만들려면 `init?(rawValue:)` 초기자를 사용합니다. 이는 '원시 값과 일치하는 열거체 case 값을 반환' 하거나 아니면 '일치하는 `Rank` 가 없을 경우 `nil` 을 반환' 합니다.
+`init?(rawValue:)` 초기자를 사용하면 원시 값으로 열거체 인스턴스를 만듭니다. 이는 원시 값과 맞는 열거체 case 또는 맞는 `Rank` 가 없다면 `nil` 을 반환합니다.
 
 ```swift
 if let convertedRank = Rank(rawValue: 3) {
@@ -575,7 +575,7 @@ if let convertedRank = Rank(rawValue: 3) {
 }
 ```
 
-'열거체 case 값' 은, 자신의 원시 값을 작성하는 또 다른 방식인 것이 아니라, '실제 값' 입니다. 사실상, 원시 값이 의미가 없을 경우, 이를 제공하지 않아도 됩니다.
+열거체 case 값은 실제 값이지, 자신의 원시 값을 또 다른 방식으로 작성한게 아닙니다. 사실상, 의미있는 원시 값이 없는 경우라면, 이를 제공하지 않아도 됩니다.
 
 ```swift
 enum Suit {
@@ -910,16 +910,18 @@ anyCommonElements([1, 2, 3], [3])
 
 [^single-statement-closures]: '단일문 클로저 (single statement closures)' 는 클로저 본문에 단 하나의 구문만 있는 걸 말합니다.
 
+[^initializer]: '초기자 (initializer)' 에 대한 더 자세한 정보는 [Initializers (초기자)]({% post_url 2016-01-23-Initialization %}#initializers-초기자) 부분을 참고하기 바랍니다. 
+
+[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는 [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 참고하기 바랍니다. 
+
+[^standard-root-class]: '표준 뿌리 클래스 (standard root class)' 는 오브젝티브-C 에서의 `NSObject` 같은 클래스를 말합니다. 스위프트는 함수형 프로그래밍 패러다임을 가진 언어라서 객체 지향 프로그래밍 언어에서 사용하는 이런 식의 클래스가 없습니다.
+
+[^getter-and-setter]: 본문에서 말하는 단순 속성을 '저장 속성 (stored properties)' 이라고 하고, 획득자와 설정자가 있는 속성을 '계산 속성 (computed properties)' 이라고 합니다. 각각에 대한 더 자세한 정보는 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 참고하기 바랍니다.
+
 [^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
 [^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다 (conform to a protocol)' 는 것과는 의미가 조금 다릅니다
 
 [^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 보도록 합니다.
-
-[^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 의 `NSObject` 와 같은 클래스를 말하며, 스위프트에는 이런 식의 클래스가 없습니다.
-
-[^getter-and-setter]: 사실 여기서 말하는 '간단한 속성' 과 '획득자 및 설정자를 가지는 속성' 은 서로 다른 것입니다. 전자를 '저장 속성 (stored properties)' 라고 하고 후자를 '계산 속성 (computed properties)' 라고 합니다. 책의 다른 부분에서 많이 설명하고 있기 때문인지, 여기서는 이 둘을 딱히 구분하지 않고 설명하고 있습니다. 보다 자세한 내용은 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 보도록 합니다.
-
-[^methods-associated]: '열거체가 자신과 결합된 메소드 (methods associated with them) 를 가질 수 있다' 는 말은 '열거체가 멤버 함수를 가질 수 있다' 는 의미입니다.
 
 [^sequence]: 컴퓨터 자료 구조의 하나인 '시퀀스 (sequence)' 는 원래 수학 용어인 '수열' 에서 온 개념입니다. 그러므로 해당 문장은 '두 수열에 공통인 원소 배열을 반환하는 함수' 라고 이해할 수도 있습니다.
