@@ -153,11 +153,11 @@ if let name = optionalName {
 
 > 실험
 >
-> `optionalName` 을 `nil` 로 바꿔 봅니다. 어떤 인사말을 가지게 됩니까? `else` 절을 추가하여 `optionalName` 이 `nil` 이면 다른 인사말을 설정해 봅니다.
+> `optionalName` 을 `nil` 로 바꿔 봅니다. 무슨 인사말이 뜹니까? `else` 절을 추가하여 `optionalName` 이 `nil` 이면 다른 인사말을 설정해 봅니다.
 
-옵셔널 값이 `nil` 이면, 조건절은 `false` 이고 중괄호 안의 코드는 건너뜁니다. 그 외 경우, 옵셔널 값의 포장을 풀고 `let` 뒤의 상수에 할당하여, 코드 블럭 안에서 '포장 푼 값 (unwrapped value)' 을 사용 가능하게 합니다.
+옵셔널 값이 `nil` 이면, 조건은 `false` 고 중괄호 안의 코드를 건너뜁니다. 그 외 경우, 옵셔널 값의 포장을 풀어서 `let` 뒤의 상수에 할당하는데, 이는 코드 블럭에서 포장 푼 값을 사용 가능하게 합니다.
 
-옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자로 '기본 (default) 값' 을 제공하는 것입니다. 옵셔널 값이 빠졌으면, '기본 값' 을 대신 사용합니다.
+옵셔널 값을 처리하는 또 다른 방법은 `??` 연산자로 기본 값을 제공하는 겁니다. 옵셔널 값이 잃어버린 거면, 그 대신 기본 값을 사용합니다.
 
 ```swift
 let nickName: String? = nil
@@ -165,7 +165,15 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 ```
 
-switch 문은 어떤 종류의 자료와도 아주 다양한 비교 연산을 지원합니다-'정수와 같음 비교 (equality) 테스트' 만으로 제한하지 않습니다.
+포장 푼 값과 똑같은 이름을 사용하면, 더 짧은 철자로 값의 포장을 풀 수 있습니다.[^shorter-spelling]
+
+```swift
+if let nickname {
+  print("Hey, \(nickname)")
+}
+```
+
+**switch 문** 은 어떤 종류의 자료와도 다양한 폭의 비교 연산을 지원합니다-정수 및 같음 테스트만으로 제한하지 않습니다.
 
 ```swift
 let vegetable = "red pepper"
@@ -179,18 +187,18 @@ case let x where x.hasSuffix("pepper"):
 default:
   print("Everything tastes good in soup.")
 }
-// "Is it a spicy red pepper?" 를 인쇄합니다.
+// "Is it a spicy red pepper?" 를 인쇄함
 ```
 
 > 실험
 >
-> '기본 (default) case 절' 을 제거해 봅니다. 무슨 에러를 가지게 됩니까?
+> 기본 case[^default-case] 를 제거해 봅니다. 무슨 에러가 뜹니까?
 
-'패턴 (pattern) 과 일치하는 값을 상수에 할당' 하기 위해 '패턴에서 `let` 을 사용하는 방법' 에 주목하기 바랍니다.
+패턴[^pattern] 안에서 `let` 을 사용하면 패턴에 맞는 값을 상수로 할당할 수 있다는 걸 알기 바랍니다.
 
-'일치한 switch 문 case 절 안의 코드를 실행' 한 후, 프로그램은 'switch 문' 을 빠져 나갑니다. 그 다음 'case 절' 을 계속 실행하진 않으므로, 각 'case 절 코드' 끝에서 'switch 문을 명시적으로 깨고 (break) 나올 필요' 는 없습니다.[^break-out]
+맞는 switch 문 case 안의 코드를 실행한 후엔, 프로그램이 switch 문 밖을 나갑니다. 실행이 그 다음 case 로 계속되진 않아서, 각각의 case 코드 끝에서 명시적으로 switch 문을 끊고 나올 필요가 없습니다.[^break-out]
 
-'딕셔너리 (dictionary) 항목' 에 '각각의 키-값 쌍 (key-value pair) 에서 사용할 이름 쌍' 을 제공함으로써 동작을 반복하려면 `for`-`in` 을 사용합니다. 딕셔너리는 '순서 없는 집합체 (unordered collection)'[^unordered-collection] 이므로, 임의의 순서로 키와 값을 반복합니다.
+`for`-`in` 으로 딕셔너리의 항목을 반복하려면 각각의 키-값 쌍[^key-value-pair] 에 사용할 한 쌍의 이름을 제공하면 됩니다. 딕셔너리는 순서 없는 집합체[^unordered-collection] 라서, 자신의 키와 값을 임의의 순서로 반복합니다.
 
 ```swift
 let interestingNumbers = [
@@ -207,14 +215,14 @@ for (_, numbers) in interestingNumbers {
   }
 }
 print(largest)
-// "25" 를 인쇄합니다.
+// "25" 를 인쇄함
 ```
 
 > 실험
 >
-> `_` 를 변수 이름으로 대체하여, 가장 큰 수의 종류가 무엇인지를 추적해 봅니다.
+> `_` 를 변수 이름으로 대체해서, 가장 큰 수가 무슨 종류인지 추적해 봅니다.
 
-조건이 바뀔 때까지 '코드 블럭' 을 반복하려면 `while` 문을 사용합니다. 반복문을 적어도 한 번은 실행하도록, 반복문 조건이 끝에 있을 수도 있습니다.
+`while` 문을 사용하면 조건이 바뀔 때까지 코드 블럭을 반복합니다. 반복문 조건을 끝에 대신 둬서, 반복문이 적어도 한 번은 실행되도록 보장할 수도 있습니다.
 
 ```swift
 var n = 2
@@ -222,17 +230,17 @@ while n < 100 {
   n = n * 2
 }
 print(n)
-// "128" 을 인쇄합니다.
+// "128" 을 인쇄함
 
 var m = 2
 repeat {
   m = m * 2
 } while m < 100
 print(m)
-// "128" 을 인쇄합니다.
+// "128" 을 인쇄함
 ```
 
-`..<` 로 '색인 범위 (range of indexes)' 를 만들면 반복 회차에서 '색인' 을 유지할 수 있습니다.
+반복문의 한 회차에서 색인을 유지하려면 `..<` 로 색인의 범위를 만들면 됩니다.
 
 ```swift
 var total = 0
@@ -240,14 +248,14 @@ for i in 0..<4 {
   total += i
 }
 print(total)
-// "6" 을 인쇄합니다.
+// "6" 을 인쇄함
 ```
 
-'최상단 값 (upper value) 을 생략한 범위' 를 만들려면 `..<` 을 사용하며, '양 끝단 값 둘 다 포함한 범위' 를 만들려면 `...` 를 사용합니다.
+`..<` 로는 자신의 가장 윗 값을 생략한 범위를 만들고, `...` 로는 양 끝 값을 둘 다 포함한 범위를 만듭니다.
 
 ### Functions and Closures (함수와 클로져)
 
-`func` 으로 함수를 선언합니다. 이름 뒤에 인자 목록을 담은 괄호를 붙여 함수를 호출합니다. `->` 로 '매개 변수 이름과 타입' 을 '함수 반환 타입' 과 구분합니다.
+`func` 로 함수를 선언합니다. 함수를 호출하려면 이름 뒤에 인자 목록을 담은 괄호를 붙이면 됩니다. `->` 로 매개 변수 이름 및 타입을 함수의 반환 타입과 구분합니다.
 
 ```swift
 func greet(person: String, day: String) -> String {
@@ -258,9 +266,9 @@ greet(person: "Bob", day: "Tuesday")
 
 > 실험
 >
-> `day` 매개 변수를 제거해 봅니다. '인사말에 오늘의 점심 특선을 포함하는 매개 변수' 를 추가해 봅니다.
+> `day` 매개 변수를 제거해 봅니다. 매개 변수를 추가하여 인사말에 오늘의 점심 특선을 포함시켜 봅니다.
 
-기본적으로, 함수는 '자신의 매개 변수 이름' 을 '인자 이름표 (labels)' 로 사용합니다. 매개 변수 이름 앞에 '사용자 정의 인자 이름표' 를 작성하거나, 아무런 인자 이름표를 사용하지 않기 위한 `_` 를 작성합니다.
+기본적으로, 함수는 자신의 매개 변수 이름을 인자의 이름표로 사용합니다. 자신만의 인자 이름표를 매개 변수 이름 앞에 작성하거나, `_` 를 작성하여 아무런 인자 이름표도 사용하지 않습니다.
 
 ```swift
 func greet(_ person: String, on day: String) -> String {
@@ -269,7 +277,7 @@ func greet(_ person: String, on day: String) -> String {
 greet("John", on: "Wednesday")
 ```
 
-'튜플 (tuple)' 로는-예를 들어, '여러 값' 을 함수에서 반환하기 위한-'복합 값 (compound value)' 을 만듭니다. 튜플 원소는 '이름' 이나 '번호' 로 참조할 수 있습니다.
+튜플[^tuple] 로 복합 값을 만듭니다-예를 들어, 함수에서 여러 개의 값을 반환합니다. 튜플 원소의 참조는 이름이나 번호로 할 수 있습니다.
 
 ```swift
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
@@ -290,12 +298,12 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
-// "120" 을 인쇄합니다.
+// "120" 을 인쇄함
 print(statistics.2)
-// "120" 을 인쇄합니다.
+// "120" 을 인쇄함
 ```
 
-함수는 중첩할 수 있습니다. '중첩 함수 (nested functions)' 는 바깥 함수에서 선언한 변수에 접근할 수 있습니다. 중첩 함수로 길고 복잡한 함수 코드를 정돈할 수 있습니다.
+함수는 중첩할 수 있습니다. 중첩 함수[^nested-functions] 는 더 바깥 쪽 함수에서 선언한 변수에 접근합니다. 중첩 함수를 사용하면 길고 복잡한 함수의 코드를 정돈할 수 있습니다.
 
 ```swift
 func returnFifteen() -> Int {
@@ -309,7 +317,7 @@ func returnFifteen() -> Int {
 returnFifteen()
 ```
 
-함수는 '일급 타입 (first-class type)' 입니다.[^first-class] 이는 함수가 또 다른 함수를 자신의 값으로 반환할 수 있다는 의미입니다.
+함수는 일급 타입입니다.[^first-class] 이는 한 함수가 반환한 값이 또 다른 함수일 수 있다는 의미입니다.
 
 ```swift
 func makeIncrementer() -> ((Int) -> Int) {
@@ -322,7 +330,7 @@ var increment = makeIncrementer()
 increment(7)
 ```
 
-함수는 또 다른 함수를 자신의 인자로 취할 수 있습니다.
+함수는 자신의 인자로 또 다른 함수를 가질 수 있습니다.
 
 ```swift
 func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
@@ -342,7 +350,7 @@ var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
 ```
 
-함수는 사실: 나중에 호출 할 수 있는 '코드 블럭' 인, '클로저 (closure)' 의 한 특수한 종류입니다. 클로저 코드는, 실행할 때의 클로저가 다른 영역인 경우에도, 클로저를 생성한 영역에서 사용 가능한 변수와 함수 같은 것들에 접근할 수 있습니다-이 예제는 '중첩 함수' 부분에서 이미 봤습니다. '이름 없는 클로저' 는 '중괄호 (`{}`) 로 코드를 둘러쌈' 으로써 작성할 수 있습니다. `in` 으로 인자와 반환 타입을 본문과 구분합니다.
+함수는 실제로는 클로저[^closures] 의 한 특수한 경우인: 나중에 호출 할 수 있는 코드 블럭입니다. 클로저 안의 코드는 클로저를 생성한 시야 범위에서 사용 가능한 변수와 함수 같은 거라면, 실행 때 클로저가 다른 시야 범위에 있더라도, 접근합니다-이미 이런 예를 중첩 함수에서 봤습니다. 클로저를 이름 없이 작성하려면 중괄호 (`{}`) 로 코드를 둘러싸면 됩니다. `in` 으로 인자 및 반환 타입을 본문과 구분합니다.
 
 ```swift
 numbers.map({ (number: Int) -> Int in
@@ -353,22 +361,22 @@ numbers.map({ (number: Int) -> Int in
 
 > 실험
 >
-> 모든 홀수마다 '0' 을 반환하도록 클로저를 재작성해 봅니다.
+> 클로저를 재작성하여 모든 홀수마다 0 을 반환해 봅니다.
 
-클로저를 더 간결하게 작성하는 여러 옵션들이 있습니다. '대리자 (delegate) 에 대한 콜백 (callback)' 같이, 클로저 타입을 이미 알고 있으면, 그 매개 변수, 반환 타입, 또는 둘 다의 타입을 생략할 수 있습니다. '단일 구문 클로저 (single statement closures)' 는 자신의 유일한 구문 값을 암시적으로 반환합니다.
+여러 가지 옵션으로 클로저를 더 간결하게 작성합니다. 일-맡은자[^delegate] 의 콜백[^callback] 같이, 이미 클로저의 타입을 알고 있을 땐, 매개 변수나, 반환 타입, 또는 둘 다의 타입을 생략할 수 있습니다. 단일문 클로저[^single-statement-closures] 는 자신의 유일한 구문 값을 암시적으로 반환합니다.
 
 ```swift
 let mappedNumbers = numbers.map({ number in 3 * number })
 print(mappedNumbers)
-// "[60, 57, 21, 36]" 을 인쇄합니다.
+// "[60, 57, 21, 36]" 을 인쇄함
 ```
 
-매개 변수는 '이름' 대신 '번호 (number)' 로 참조 할 수 있습니다-이 접근 방식은 특히 클로저가 아주 짧을 때 유용합니다. 함수 마지막 인자로 전달한 클로저는 괄호 바로 뒤에 나타날 수 있습니다. 클로저가 함수의 유일한 인자일 때는, 괄호 전체를 생략할 수 있습니다.
+매개 변수의 참조를 이름 대신 번호로 할 수도 있습니다-이 접근법은 아주 짧은 클로저에서 특히 유용합니다. 함수의 마지막 인자로 전달한 클로저는 괄호 바로 뒤에 나타날 수 있습니다. 클로저가 함수의 유일한 인자일 땐, 괄호 전체를 생략할 수 있습니다.
 
 ```swift
 let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
-// "[20, 19, 12, 7]" 을 인쇄합니다.
+// "[20, 19, 12, 7]" 을 인쇄함
 ```
 
 ### Objects and Classes (객체와 클래스)
@@ -876,9 +884,31 @@ anyCommonElements([1, 2, 3], [3])
 
 [^optionals]: '옵셔널 (optionals)' 에 대한 더 자세한 설명은 [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 부분을 참고하기 바랍니다. 
 
-[^break-out]: ''switch 문을 명시적으로 깨고 (break) 나올 필요는 없다' 는 것은 'switch 문의 각 case 절마다 `break` 를 쓸 필요는 없다' 는 의미입니다.
+[^shorter-spelling]: **스위프트 5.7** 에서 추가된 문법으로 `if let nickname { ... }` 은 예전 버전에서 `if let nickname = nickname { ... }` 라고 하는 것과 같습니다.
 
-[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 특정 대상을 '객체' 와 동급으로 사용할 수 있다는 것을 의미합니다. 예를 들어, '일급 (first-class) 인 대상' 은 '객체' 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수 등에 할당할 수도 있습니다. 스위프트에서는 '함수' 도 '일급 (first-class) 타입' 이기 때문에, 인자 전달, 함수 반환, 변수 할당 등에 사용할 수 있다는 의미입니다. '일급 객체' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 보도록 합니다.
+[^default-case]: switch 문 안의 `default:` 절을 말합니다. 
+
+[^pattern]: '패턴 (Pattern)' 에 대한 더 자세한 정보는 [Patterns (패턴; 유형)]({% post_url 2020-08-25-Patterns %}) 장을 참고하기 바랍니다. 
+
+[^break-out]: '명시적으로 switch 문을 끊고 나올 필요가 없다' 는 건 `break` 문을 쓸 필요가 없다는 의미입니다.
+
+[^key-value-pair]: '딕셔너리 (dictionary)' 자체가 키 (key) 와 값 (value) 의 쌍 (pair) 으로 구성되어 있습니다.  
+
+[^unordered-collection]: 수학적으로 '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 다른 의미입니다. 이 둘의 차이점에 대해서는, **StackOverflow** 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 이 후부턴,  **order** 는 순서로, **sort** 는 정렬로 옮기겠습니다.
+
+[^tuple]: '튜플 ()' 에 대한 더 자세한 정보는 [Tuples (튜플; 짝)]({% post_url 2016-04-24-The-Basics %}#tuples-튜플-짝) 부분을 참고하기 바랍니다.  
+
+[^nested-functions]: '중첩 함수 (nested functions)' 에 대한 더 자세한 정보는 [Nested Functions (중첩 함수)]({% post_url 2020-06-02-Functions %}#nested-functions-중첩-함수) 부분을 참고하기 바랍니다.
+
+[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 객체와 동급으로 사용할 수 있다는 걸 의미합니다. 예를 들어, 일급인 함수는 객체 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있습니다. 스위프트에선 함수가 일급 타입이기 때문에, 함수를 인자의 전달과, 함수의 반환, 및 변수로 할당할 수 있습니다. 일급에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
+
+[^closures]: '클로저 (closures)' 에 대한 더 자세한 정보는 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장을 참고하기 바랍니다. 
+
+[^delegate]: '일-맡은자 (delegate)' 에 대한 더 자세한 정보는 [Delegation (맡김)]({% post_url 2016-03-03-Protocols %}#delegation-맡김) 부분을 참고하기 바랍니다.
+
+[^callback]: '콜백 (callback)' 또는 콜백 함수는 다른 쪽에 인자로 넘겨서, 받은 쪽에서 호출하는 함수를 의미합니다. 스위프트에선, 이 콜백을 가지고 있는 개체를 일을 맡았다는 의미로 '일-맡은자 (delegate)' 라고 합니다. 콜백 자체는 '되돌아서 호출한다 (call back)' 는 의미입니다. 콜백에 대한 더 자세한 정보는 위키피디아의 [Callback (computer programming)](https://en.wikipedia.org/wiki/Callback_(computer_programming)) 항목과 [콜백](https://ko.wikipedia.org/wiki/콜백) 항목을 참고하기 바랍니다. 
+
+[^single-statement-closures]: '단일문 클로저 (single statement closures)' 는 클로저 본문에 단 하나의 구문만 있는 걸 말합니다.
 
 [^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
 
@@ -889,8 +919,6 @@ anyCommonElements([1, 2, 3], [3])
 [^standard-root-class]: 여기서 말하는 '표준 근원 클래스 (standard root class)' 는 오브젝티브-C 의 `NSObject` 와 같은 클래스를 말하며, 스위프트에는 이런 식의 클래스가 없습니다.
 
 [^getter-and-setter]: 사실 여기서 말하는 '간단한 속성' 과 '획득자 및 설정자를 가지는 속성' 은 서로 다른 것입니다. 전자를 '저장 속성 (stored properties)' 라고 하고 후자를 '계산 속성 (computed properties)' 라고 합니다. 책의 다른 부분에서 많이 설명하고 있기 때문인지, 여기서는 이 둘을 딱히 구분하지 않고 설명하고 있습니다. 보다 자세한 내용은 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 보도록 합니다.
-
-[^unordered-collection]: '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 수학적으로 의미가 다릅니다. 이 둘의 차이점에 대해서는, '스택 오버플로우 (StackOverflow)' 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 보도록 합니다. 향후 'order' 는 '순서' 로, 'sort' 는 '정렬' 로 옮기도록 합니다. 
 
 [^methods-associated]: '열거체가 자신과 결합된 메소드 (methods associated with them) 를 가질 수 있다' 는 말은 '열거체가 멤버 함수를 가질 수 있다' 는 의미입니다.
 
