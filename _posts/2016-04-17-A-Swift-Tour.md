@@ -35,9 +35,9 @@ myVariable = 50
 let myConstant = 42
 ```
 
-상수나 변수는 반드시 할당하고 싶은 값과 똑같은 타입을 가져야 합니다. 하지만, 타입을 항상 명시하여 작성하진 않아도 됩니다. 상수나 변수를 생성할 때 값을 제공하면 컴파일러가 타입을 추론합니다. 위 예제에선, 컴파일러가 `myVariable` 가 정수라고 추론하는데 이는 초기 값이 정수이기 때문입니다.
+상수나 변수는 반드시 할당하고 싶은 값과 똑같은 타입이어야 합니다. 하지만, 항상 타입을 명시하진 않아도 됩니다. 상수나 변수를 생성할 때 값을 제공하면 컴파일러가 타입을 추론합니다. 위 예제에선, 컴파일러가 `myVariable` 를 정수로 추론하는데 이는 초기 값이 정수이기 때문입니다.
 
-초기 값이 충분한 정보를 제공하지 않을 (또는 초기 값이 없을) 경우, 변수 뒤에, '콜론' 으로 구분하여, 작성함으로써 타입을 지정합니다.
+초기 값이 충분한 정보를 제공하지 않(거나 초기 값이 없)으면, 콜론으로 구분한, 변수 뒤에 타입을 작성하여 지정합니다.
 
 ```swift
 let implicitInteger = 70
@@ -47,9 +47,9 @@ let explicitDouble: Double = 70
 
 > 실험
 >
-> 명시적인 타입이 `Float` 이고 값이 `4` 인 상수를 생성해 봅니다.
+> 명시적 타입이 `Float` 이고 값이 `4` 인 상수를 생성해 봅니다.
 
-값은 절대 또 다른 타입으로 암시적으로 변환되지 않습니다. 값을 다른 타입으로 변환할 필요가 있으면, 원하는 타입의 인스턴스를 명시적으로 만들어야 합니다.
+값을 절대 다른 타입으로 암시적으로 자동 변환하지 않습니다.[^convert] 값을 다른 타입으로 변환할 필요가 있으면, 원하는 타입의 인스턴스를 명시적으로 만듭니다.
 
 ```swift
 let label = "The width is "
@@ -59,9 +59,9 @@ let widthLabel = label + String(width)
 
 > 실험
 >
-> 마지막 줄의 `String` 변환을 제거해 봅니다. 무슨 에러를 가지게 됩니까?
+> 마지막 줄에 있는 `String` 으로의 변환을 제거해 봅니다. 무슨 에러가 뜹니까?
 
-심지어 문자열이 값을 포함하는 더 단순한 방식도 있는데: 괄호 안에 값을 작성하고, 괄호 앞에 '역 빗금 (backshlash; `\`)' 을 작성하는 것입니다. 예를 들면 다음과 같습니다:
+심지어 문자열에 값을 포함하는 더 단순한 방식도 있는데: 괄호 안에 값을 쓰고, 괄호 앞에 역 빗금 (backshlash; `\`) 을 쓰는 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let apples = 3
@@ -72,9 +72,9 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 
 > 실험
 >
-> `\()` 로 문자열에 부동-소수점 계산 값을 포함시켜 보고 인사말에 누군가의 이름을 포함시켜 봅니다.
+> `\()` 를 써서 문자열에 부동-소수점 계산도 포함시키고 인사말에 어떤 사람의 이름도 포함시켜 봅니다.
 
-'여러 줄 (lines) 을 차지하는 문자열' 에는 '세 따옴표 (`"""`)' 를 사용합니다. 각 줄 시작마다, '닫는 따옴표의 들여쓰기' 와 일치하는 만큼의, 들여쓰기를 제거합니다.[^indentation] 예를 들면 다음과 같습니다:
+여러 줄을 차지하는 문자열엔 세 개의 큰 따옴표 (`"""`) 를 사용합니다. 각각의 따온 줄 시작에 있는 들여쓰기는, 닫는 따옴표의 들여쓰기와 일치하는 만큼, 제거합니다.[^indentation] 예를 들면 다음과 같습니다:
 
 ```swift
 let quotation = """
@@ -83,7 +83,7 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 """
 ```
 
-'배열 (arrays) 과 딕셔너리 (dictionary)' 는 '대괄호 (`[]`)' 로 생성하며, '대괄호 안에 색인 (index) 이나 키 (key) 를 작성' 함으로써 그 원소에 접근합니다. 마지막 원소 뒤에 '쉼표 (comma)' 가 있어도 됩니다.
+배열과 딕셔너리는 대괄호 (`[]`) 로 생성하며, 원소 접근은 대괄호 안에 색인이나 키를 작성하면 됩니다. 마지막 원소 뒤에 쉼표를 둬도 됩니다.
 
 ```swift
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
@@ -96,21 +96,21 @@ var occupations = [
 occupations["Jayne"] = "Public Relations"
 ```
 
-원소를 추가하면 배열이 자동으로 커집니다.
+배열은 원소를 추가함에 따라 자동으로 커집니다.
 
 ```swift
 shoppingList.append("blue paint")
 print(shoppingList)
 ```
 
-빈 배열이나 딕셔너리를 생성하려면, '초기자 구문 (initializer syntax)' 을 사용합니다.
+빈 배열 또는 딕셔너리를 생성하려면, 초기자 구문 을 사용합니다.[^initializer-syntax]
 
 ```swift
-let emptyArray = [String]()
-let emptyDictionary = [String: Float]()
+let emptyArray: [String] = []
+let emptyDictionary: [String: Float] = [:]
 ```
 
-'타입 정보' 를 추론할 수 있으면, 예를 들어, 변수에 새 값을 설정하거나 함수에 인자를 전달할 때-'빈 배열은 `[]`' 로 '빈 딕셔너리는 `[:]`' 라고 작성할 수 있습니다.
+타입 정보를 추론할 수 있으면, 빈 배열은 `[]` 로 빈 딕셔너리는 `[:]` 로 작성할 수 있습니다[^empty-literal]-예를 들어, 변수에 새 값을 설정하거나 함수에 인자를 전달할 때가 그렇습니다.
 
 ```swift
 shoppingList = []
@@ -119,7 +119,7 @@ occupations = [:]
 
 ### Control Flow (제어 흐름)
 
-조건문을 만들려면 `if` 와 `switch` 를 사용하고, 반복문을 만들려면 `for`-`in`, `while`, 그리고 `repeat`-`while` 을 사용합니다. 조건이나 반복 변수 주변의 괄호는 옵션입니다. 본문 주변의 '중괄호' 는 필수입니다.
+`if` 와 `switch` 로 조건문을 만들고, `for`-`in` 와, `while`, 및 `repeat`-`while` 로 반복문을 만듭니다. 조건이나 반복 변수 주변의 괄호는 옵션입니다. 본문 주변의 중괄호는 필수입니다.
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
@@ -132,17 +132,17 @@ for score in individualScores {
   }
 }
 print(teamScore)
-// "11" 을 인쇄합니다.  
+// "11" 을 인쇄함
 ```
 
-`if` 문의, 조건 절은 반드시 '불리언 (Boolean) 표현식' 이어야 하는데-이는 `if score { ... }` 같은 코드, 0과 암시적인 비교를 하는 것이 아니라, 에러라는 의미입니다.
+`if` 문의, 조건은 반드시 불리언 표현식[^Boolean] 이어야 하며-이는 `if score { ... }` 같은 코드는 에러이지, 암시적으로 0 비교하는 게 아니라는 의미입니다.
 
-'빠졌을 지도 모를 값' 과 작업하는 데는 `if` 와 `let` 을 함께 사용할 수 있습니다. 이 값들은 '옵셔널 (optionals)' 로 표현합니다. '옵셔널 값' 은 값을 담고 있든지 아니면 값이 빠졌다고 지시하는 `nil` 을 담고 있습니다. 값의 타입 뒤에 '물음표 (`?`)' 를 작성하여 값을 옵셔널로 표시합니다.
+`if` 와 `let` 을 함께 사용하면 잃어버린 건지도 모를 값과 작업할 수 있습니다. 이러한 값은 옵셔널[^optionals] 로 나타냅니다. 옵셔널 값은 값을 담고 있거나 `nil` 을 담아 값을 잃어버렸다고 지시합니다. 값에 옵셔널을 표시하려면 값 타입 뒤에 물음표 (`?`) 를 작성합니다.
 
 ```swift
 var optionalString: String? = "Hello"
 print(optionalString == nil)
-// "false" 를 인쇄합니다.
+// "false" 를 인쇄함
 
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
@@ -864,7 +864,17 @@ anyCommonElements([1, 2, 3], [3])
 
 [^entry-point]: '진입점 (entry point)' 이란 프로그램 실행을 시작하는 지점을 말합니다. 보통의 프로그래밍 언어에선 `main()` 함수를 자신의 진입점으로 사용합니다.
 
-[^indentation]: 이 부분은 말로 하는 설명보다는 예제를 보는 것이 이해하기 더 쉽습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분을 보도록 합니다.
+[^convert]: 타입 변환에는 '변환 (casting)' 과 '자동 변환 (conversion)' 이라는 두 가지 종류가 있습니다. 본문에서 말하는 '자동 변환 (conversion)' 은 컴파일러가 자동으로 타입을 변환하는 걸 말합니다. 본문 내용은 다른 언어와는 달리 스위프트는 값을 자동 변환하지 않는다는 의미입니다.
+
+[^indentation]: 이 설명은 예제를 보는게 더 이해하기 쉽습니다. 예제는, [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
+
+[^initializer-syntax]: 사실 본문에 있는 예제는 '초기자 구문 (initializer syntax)' 이라기 보단 '빈 글자값 (empty literal)' 을 사용한 것입니다. 예전에는 초기자 구문을 사용한 예제였었는데, 책의 버전이 바뀌면서 예제 코드가 바뀌었습니다. 실제로 초기자 구문을 사용하는 예제는 [Creating an Empty Array (빈 배열 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-empty-array-빈-배열-생성하기) 와 [Creating an Empty Dictionary (빈 딕셔너리 생성하기)]({% post_url 2016-06-06-Collection-Types %}#creating-an-empty-dictionary-빈-딕셔너리-생성하기) 부분을 참고하기 바랍니다. 
+
+[^empty-literal]: 이걸 각각 '빈 배열 글자값 (empty array literal)' 및 '빈 딕셔너리 글자값 (empty dictionary literal)' 이라고 하는데, 사실 위에서도 이 빈 글자값들을 사용했습니다.
+
+[^Boolean]: '불리언 (Boolean)' 은 `true` 또는 `false` 값만 가지는 논리 타입입니다.
+
+[^optionals]: '옵셔널 (optionals)' 에 대한 더 자세한 설명은 [Optionals (옵셔널)]({% post_url 2016-04-24-The-Basics %}#optionals-옵셔널) 부분을 참고하기 바랍니다. 
 
 [^break-out]: ''switch 문을 명시적으로 깨고 (break) 나올 필요는 없다' 는 것은 'switch 문의 각 case 절마다 `break` 를 쓸 필요는 없다' 는 의미입니다.
 
