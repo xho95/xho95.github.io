@@ -627,9 +627,9 @@ case let .failure(message):
 >
 > `ServerResponse` 와 switch 문에 세 번째 case 를 추가해 봅니다.
 
-switch 문 case 와 값을 맞춰보는 부분에서 `ServerResponse` 값의 일출 및 일몰 시간 추출 방법을 알기 바랍니다.
+switch 문 case 와 값을 맞춰보면서 `ServerResponse` 값에서 일출 및 일몰 시간을 추출하는 방법을 알기 바랍니다.
 
-`struct` 로 구조체를 생성합니다. 구조체는 클래스와 똑같이, 메소드와 초기자를 포함한, 많은 동작을 지원합니다. 구조체와 클래스의 가장 중요한 차이점은 주변 코드로 전달할 때 구조체는 항상 복사하지만, 클래스는 참조로 전달한다는 것입니다.
+`struct` 로 구조체를 생성합니다. 구조체는, 메소드와 초기자를 포함하여, 클래스와 똑같은 수많은 동작을 지원합니다. 구조체와 클래스의 가장 중요한 차이점은 코드 주변으로 전달할 때 구조체는 항상 복사되자만, 클래스는 참조로 전달된다는 것입니다.
 
 ```swift
 struct Card {
@@ -645,11 +645,56 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 > 실험
 >
-> 각각의 카드가 '계급 (rank) 과 패 (suit)[^suit] 의 조합' 인, '카드 한 벌 (full deck) 을 담은 배열' 을 반환하는 함수를 작성해 봅니다.
+> 함수를 작성하여, 하나의 카드가 각각 끗수 (rank)[^rank] 와 패의 조합인, 한 벌의 카드[^deck] 를 담은 배열을 반환해 봅니다.
+
+### Concurrency (동시성)
+
+`async` 로 비동기 실행 함수를 표시합니다.
+
+```swift
+func fetchUserID(from server: String) async -> Int {
+  if server == "primary" {
+    return 97
+  }
+  return 501
+}
+```
+
+비동기 함수 호출을 표시하려면 그 앞에 `await` 를 작성하면 됩니다.
+
+```swift
+func fetchUsername(from server: String) async -> String {
+  let userID = await fetchUserID(from: server)
+  if userID == 501 {
+    return "John Appleseed"
+  }
+  return "Guest"
+}
+```
+
+`async let` 으로 비동기 함수를 호출하면, 다른 비동기 코드와 병렬로 실행합니다. 반환하는 값을 사용할 땐, `await` 를 작성합니다.
+
+```swift
+func connectUer(to server: Stirng) async {
+  async let userID = fetchUserID(from: server
+  async let username = fetchUsername(from: server
+  let greeting = await "Hello \(username), user ID \(userID)"
+  print(greeting)
+}
+```
+
+`Task` 를 사용하면, 비동기 함수의 반환을 기다리지 않고, 동기 코드에서 이를 호출합니다.
+
+```swift
+Task {
+  await connectUser(to: "primary")
+}
+//  "Hello Guest, user ID 97" 를 인쇄함
+```
 
 ### Protocols and Extensions (프로토콜과 익스텐션)
 
-'프로토콜 (protocol)' 은 `protocol` 로 선언합니다.
+`protocol` 로 프로토콜을 선언합니다.
 
 ```swift
 protocol ExampleProtocol {
@@ -658,7 +703,7 @@ protocol ExampleProtocol {
 }
 ```
 
-클래스, 열거체, 그리고 구조체 모두 프로토콜을 '채택 (adopt)'[^adopt] 할 수 있습니다.
+클래스와, 열거체, 및 구조체 모두 프로토콜을 채택[^adopt] 할 수 있습니다.
 
 ```swift
 class SimpleClass: ExampleProtocol {
@@ -685,11 +730,11 @@ let bDescription = b.simpleDescription
 
 > 실험
 >
-> 또 다른 '필수 조건 (requirement)' 을 `ExampleProtocol` 에 추가해 봅니다. `SimpleClass` 와 `SimpleStructure` 가 프로토콜을 여전히 '준수 (conform)' 하도록 하려면 무엇을 바꿔야 합니까?
+> `ExampleProtocol` 에 또 다른 필수 조건[^requirement] 을 추가해 봅니다. 무엇을 바꿔야 `SimpleClass` 와 `SimpleStructure` 가 여전히 프로토콜을 준수하게 됩니까?
 
-구조체를 수정하는 메소드를 표시하고자 `SimpleStructure` 선언에 `mutating` 키워드를 사용함에 주목하기 바랍니다. `SimpleClass` 선언은 자신의 어떤 메소드도 '변경 (mutating)' 으로 표시할 필요가 없는데 클래스 메소드는 항상 클래스를 수정할 수 있기 때문입니다.
+`SimpleStructure` 선언 안에서 `mutating` 키워드를 사용하여 구조체를 수정할 메소드를 표시한다는 걸 알기 바랍니다. `SimpleClass` 선언에선 어떤 메소드도 변경[^mutating] 으로 표시할 필요가 없는데 클래스 메소드는 항상 클래스를 수정할 수 있기 때문입니다.
 
-`extension` 으로 기존 타입에, 새로운 '메소드나 계산 (computed) 속성' 같은, 기능을 추가합니다. 다른 곳에서 선언한 타입, 또는 심지어 라이브러리나 프레임웍에서 불러온 타입에, '프로토콜 준수성 (protocol conformance)'[^protocol-conformance] 을 추가하기 위해 '익스텐션 (extension)' 을 사용할 수 있습니다.
+`extension` 을 사용하면 기존 타입에, 새로운 메소드와 계산 속성 같은, 기능을 추가합니다. 익스텐션을 사용하면 다른 곳에서 선언한 타입, 또는 심지어 라이브러리나 프레임웍에서 불러온 타입에, 프로토콜 준수성[^protocol-conformance] 을 추가할 수 있습니다.
 
 ```swift
 extension Int: ExampleProtocol {
@@ -701,23 +746,23 @@ extension Int: ExampleProtocol {
   }
 }
 print(7.simpleDescription)
-// "The number 7" 을 인쇄합니다.
+// "The number 7" 을 인쇄함
 ```
 
 > 실험
 >
-> `Double` 타입에 `absoluteValue` 속성을 추가하는 '익스텐션' 을 작성해 봅니다.
+> 익스텐션을 작성하여 `Double` 타입에 `absoluteValue` 속성을 추가해 봅니다.
 
-'프로토콜 이름' 은 그냥 다른 어떤 '이름 붙인 (named) 타입' 인 것처럼-예를 들어, 서로 다른 타입이지만 모두 단일 프로토콜을 준수하는 '객체의 집합체 (collection)' 을 생성하는데-사용할 수 있습니다. 프로토콜 타입인 값과 작업할 때는, 프로토콜 정의 밖의 메소드를 사용할 수 없습니다.
+프로토콜 이름은 그냥 다른 어떤 이름의 타입인 것 처럼-예를 들어, 타입은 서로 다르지만 모두가 단일 프로토콜을 준수하는 객체 집합체[^collection] 를 생성하는데-사용할 수 있습니다. 타입이 프로토콜 타입인 값과 작업할 땐, 프로토콜 정의 밖의 메소드는 사용하는게 불가능합니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// "A very simple class.  Now 100% adjusted." 를 인쇄합니다.
-// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러가 나타납니다.
+// "A very simple class.  Now 100% adjusted." 를 인쇄함
+// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러를 보게됨
 ```
 
-`protocolValue` 변수의 '실행 시간 (runtime) 타입' 이 `SimpleClass` 일지라도, 컴파일러는 주어진 타입이 `ExampleProtocol` 인 것처럼 취급합니다. 이는 자신의 프로토콜 준수성과는 별개로 클래스가 구현한 메소드나 속성에 접근하는 사고가 일어날 순 없다는 의미입니다.
+`protocolValue` 변수의 실행 시간타입은 `SimpleClass` 일지라도, 주어진 타입이 `ExampleProtocol` 인 것처럼 컴파일러가 취급합니다. 이는 자신의 프로토콜 준수성과는 별개로 클래스가 구현한 메소드나 속성에 접근하는 사고가 일어날 순 없다는 의미입니다.
 
 ### Error Handling (에러 처리)
 
@@ -918,10 +963,18 @@ anyCommonElements([1, 2, 3], [3])
 
 [^getter-and-setter]: 본문에서 말하는 단순 속성을 '저장 속성 (stored properties)' 이라고 하고, 획득자와 설정자가 있는 속성을 '계산 속성 (computed properties)' 이라고 합니다. 각각에 대한 더 자세한 정보는 [Properties (속성)]({% post_url 2020-05-30-Properties %}) 부분을 참고하기 바랍니다.
 
-[^suit]: 영어로 'suit' 에는 카드의 '패' 라는 의미가 있으며, '다이아몬드', '하트' 등이 이 'suit' 입니다. 서양 카드에는 4 종류의 'suits' 가 있습니다.
+[^suit]: '패 (suits)' 는 스페이드 (spades), 다이아몬드 (diamonds), 하트 (hearts), 클로버 (clovers) 라는 서양 카드의 네 가지 범주를 말합니다.
 
-[^adopt]: '프로토콜을 채택한다' 는 것의 의미는 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 앞 부분에 잘 설명되어 있습니다. '프로토콜을 준수한다 (conform to a protocol)' 는 것과는 의미가 조금 다릅니다
+[^associated-values]: 결합 값에 대한 더 자세한 정보는 [Associated Values (결합 값)]({% post_url 2020-06-13-Enumerations %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 
 
-[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 보도록 합니다.
+[^rank]: '끗수 (ranks)' 는 각각의 카드마다 숫자 또는 알파펫으로 나타내는 등급을 말합니다. 서양 카드에는 13 가지 끗수가 있습니다.
+
+[^deck]: '벌 (deck)' 은 한 세트의 카드 묶음을 말합니다. 한 벌의 서양 카드엔 총 52 장의 카드가 있습니다.
+
+[^adopt]: 프로토콜 채택에 대한 더 자세한 정보는 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장의 앞 부분을 참고하기 바랍니다. 프로토콜 채택과 프로토콜 준수는 의미가 조금 다릅니다
+
+[^requirement]: '필수 조건 (requirements)' 에 대한 더 자세한 정보도 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
+
+[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
 
 [^sequence]: 컴퓨터 자료 구조의 하나인 '시퀀스 (sequence)' 는 원래 수학 용어인 '수열' 에서 온 개념입니다. 그러므로 해당 문장은 '두 수열에 공통인 원소 배열을 반환하는 함수' 라고 이해할 수도 있습니다.
