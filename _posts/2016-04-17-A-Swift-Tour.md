@@ -753,16 +753,16 @@ print(7.simpleDescription)
 >
 > 익스텐션을 작성하여 `Double` 타입에 `absoluteValue` 속성을 추가해 봅니다.
 
-프로토콜 이름은 그냥 다른 어떤 이름의 타입인 것 처럼-예를 들어, 타입은 서로 다르지만 모두가 단일 프로토콜을 준수하는 객체 집합체[^collection] 를 생성하는데-사용할 수 있습니다. 타입이 프로토콜 타입인 값과 작업할 땐, 프로토콜 정의 밖의 메소드는 사용하는게 불가능합니다.
+프로토콜 이름은 그냥 다른 어떤 이름의 타입인 것 처럼-예를 들어, 타입은 서로 다르지만 모두가 단일 프로토콜을 준수하는 객체 집합체[^collection] 를 생성하는데-사용할 수 있습니다. 프로토콜 타입인 값과 작업할 땐, 프로토콜 정의 밖의 메소드를 사용하는게 불가능합니다.
 
 ```swift
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
 // "A very simple class.  Now 100% adjusted." 를 인쇄함
-// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러를 보게됨
+// print(protocolValue.anotherProperty)  // 주석을 제거하면 에러를 봄
 ```
 
-`protocolValue` 변수의 실행 시간타입은 `SimpleClass` 일지라도, 주어진 타입이 `ExampleProtocol` 인 것처럼 컴파일러가 취급합니다. 이는 자신의 프로토콜 준수성과는 별개로 클래스가 구현한 메소드나 속성에 접근하는 사고가 일어날 순 없다는 의미입니다.
+`protocolValue` 변수의 실행 시간 타입이 `SimpleClass` 일지라도, 컴파일러는 이 타입을 `ExampleProtocol` 로 주어진 것처럼 취급합니다. 이는 클래스 구현 중에서 프로토콜 준수성 이외인 메소드나 속성에 접근하는 사고는 일어날 수 없다는 걸 의미합니다.
 
 ### Error Handling (에러 처리)
 
