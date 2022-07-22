@@ -10,7 +10,7 @@ categories: Swift Language Grammar Basics
 
 ## The Basics (기초)
 
-스위프트는 'iOS, macOS, watchOS, 및 tvOS 앱 개발' 을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, C 와 오브젝티브-C 개발 경험으로 인하여 스위프트의 많은 부분들이 익숙할 것입니다.
+스위프트는 **iOS** 와, **macOS**, **watchOS**, 및 **tvOS** 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, C 와 오브젝티브-C 개발 경험으로 인하여 스위프트의 많은 부분들이 익숙할 것입니다.
 
 스위프트는, 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불리언 (Boolean) 값' 을 위한 `Bool`, 그리고 문장 자료를 위한 `String` 을 포함한, 모든 C 와 오브젝티브-C 기본 타입에 대한 자신만의 버전을 제공합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리)[^set-dictionary] 라는, 강력한 '주요 집합체 (collection) 타입' 세 개도 제공합니다.
 
