@@ -852,7 +852,7 @@ print(fridgeIsOpen)
 
 ### Generics (일반화)
 
-'꺽쇠 괄호 (angle brackets) 안에 이름을 작성' 하여 '일반화 (generic) 함수나 타입' 을 만듭니다.
+꺽쇠 괄호[^angle-brackets] 안에 이름을 써서 일반화 함수나 타입을 만듭니다.[^generic]
 
 ```swift
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
@@ -865,10 +865,10 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 makeArray(repeating: "knock", numberOfTimes:4)
 ```
 
-클래스, 열거체, 및 구조체 뿐만 아니라, '함수와 메소드에 대한 일반화 형식 (generic forms)' 도 만들 수 있습니다.
+클래스와, 열거체, 및 구조체 뿐 아니라, 일반화 형식의 함수와 메소드도 만들 수 있습니다.
 
 ```swift
-// 스위프트 표준 라이브러리에 있는 옵셔널 타입을 재구현한 것
+// 스위프트 표준 라이브러리의 옵셔널 타입을 재-구현한 것
 enum OptionalValue<Wrapped> {
   case none
   case some(Wrapped)
@@ -877,7 +877,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-`where` 를 본문 바로 앞에 사용하여 '필수 조건 (requirements) 목록'-예를 들어, 타입이 프로토콜을 구현하도록 요구하거나, 두 타입이 똑같을 것을 요구, 또는 클래스가 특별한 상위 클래스를 가질 것을 요구하는 등-을 지정합니다.
+본문 바로 앞의 `where` 로 필수 조건 목록을 지정합니다-예를 들어, 타입이 프로토콜을 구현하길 요구하거나, 두 타입이 똑같을 걸 요구하며, 또는 클래스가 특별한 상위 클래스를 가지길 요구합니다.
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
@@ -896,10 +896,10 @@ anyCommonElements([1, 2, 3], [3])
 
 > 실험
 >
-> `anyCommonElements(_:_:)` 함수를 수정하여 '두 시퀀스 (sequence)[^sequence] 에 공통인 원소 배열을 반환하는 함수' 를 만들어 봅니다.
+> `anyCommonElements(_:_:)` 함수를 수정해서 어떤 두 시퀀스[^sequence] 의 공통 원소 배열든 반환하는 함수를 만들어 봅니다.
 
 
-`<T: Equatable>` 이라고 작성하는 것은 `<T> ... where T: Equatable` 이라고 작성하는 것과 똑같습니다.
+`<T: Equatable>` 을 작성하는 건 `<T> ... where T: Equatable` 을 작성하는 것과 똑같습니다.
 
 ### 다음 장
 
@@ -976,5 +976,9 @@ anyCommonElements([1, 2, 3], [3])
 [^requirement]: '필수 조건 (requirements)' 에 대한 더 자세한 정보도 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 참고하기 바랍니다.
 
 [^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
+
+[^angle-brackets]: `< ... >` 을 말합니다.
+
+[^generic]: '일반화 (generic)' 에 대한 더 자세한 정보는 [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 참고하기 바랍니다.
 
 [^sequence]: 컴퓨터 자료 구조의 하나인 '시퀀스 (sequence)' 는 원래 수학 용어인 '수열' 에서 온 개념입니다. 그러므로 해당 문장은 '두 수열에 공통인 원소 배열을 반환하는 함수' 라고 이해할 수도 있습니다.
