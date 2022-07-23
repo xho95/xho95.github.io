@@ -28,60 +28,60 @@ categories: Swift Language Grammar Basics
 
 #### Declaring Constants and Variables (상수와 변수 선언하기)
 
-상수와 변수는 반드시 사용 전에 선언해야 합니다. 상수는 `let` 키워드로 변수는 `var` 키워드로 선언합니다. 다음은 상수와 변수로 사용자 로그인 시도 횟수를 추적하는 방법에 대한 예제입니다:
+상수와 변수는 반드시 사용 전에 선언해야 합니다. 상수는 `let` 키워드로 변수는 `var` 키워드로 선언합니다. 상수와 변수로 사용자의 로그인 시도 횟수를 추적할 수 있는 사례는 이렇습니다:
 
 ```swift
 let maximumNumberOfLoginAttempts = 10
 var currentLoginAttempt = 0
 ```
 
-이 코드는 다음 처럼 이해할 수 있습니다:
+이 코드는 다음 처럼 읽을 수 있습니다:
 
 "`maximumNumberOfLoginAttempts` 라는 새로운 상수를 선언하고, `10` 이라는 값을 줍니다. 그런 다음, `currentLoginAttempt` 라는 새로운 변수를 선언하고, `0` 이라는 초기 값을 줍니다."
 
-이 예제에서, 최대 값은 절대 바뀌지 않기 때문에, '로그인 시도 최대 허용 횟수' 를 상수로 선언합니다. '현재 로그인 시도 횟수' 의, 값은 각각의 로그인 시도가 실패한 후에 반드시 증가해야 하기 때문에, 변수로 선언합니다.
+이 예제에서, 최대 로그인 허용 횟수는 상수로 선언하는데, 최대 값은 절대로 바뀌지 않기 때문입니다. 현재 로그인 횟수 측정기는 변수로 선언하는데, 이 값은 각각의 로그인 시도가 실패한 뒤엔 반드시 증가해야 하기 때문입니다.
 
-'쉼표 (commas)' 로 구분하여, 여러 개의 상수나 여러 개의 변수를 한 줄로 선언할 수 있습니다:
+여러 개의 상수나 여러 개의 변수를 한 줄로 선언하려면, 쉼표로 구분하면 됩니다:
 
 ```swift
 var x = 0.0, y = 0.0, z = 0.0
 ```
 
-> 코드에서 저장 값을 바꾸지 않을 거라면, 항상 `let` 키워드를 가진 상수로 선언합니다. 저장 값이 바뀔 수 있는 경우에만 변수를 사용합니다.
+> 코드에 있는 저장 값을 바꾸지 않을 거면, 항상 `let` 키워드를 써서 상수로 선언합니다. 바꿀 필요가 있는 저장 값에만 변수를 사용합니다.
 
 #### Type Annotations (타입 보조 설명)
 
-상수나 변수를 선언할 때는, 상수나 변수가 저장할 값의 종류가 명확하도록, _타입 보조 설명 (type annotation)_[^annotation] 을 제공할 수 있습니다. '타입 보조 설명' 은 상수나 변수 이름 뒤에 콜론을 두고, 공백을 넣은 다음, 뒤에 사용할 타입 이름을 써서 작성합니다.
+상수나 변수를 선언할 때 _타입 보조 설명 (type annotation)_[^annotation] 을 제공하면, 상수나 변수가 저장할 수 있는 값의 종류를 명확하게 합니다. 타입 보조 설명을 작성하려면 상수나 변수 이름 뒤에 콜론과, 공백을 둔 다음, 사용할 타입 이름을 두면 됩니다.
 
-다음 예제는 `welcomeMessage` 라는 변수가 , `String` 값을 저장할 수 있음을 지시하는, 타입 보조 설명을 제공합니다: 
+다음 예제는 `welcomeMessage` 라는 변수에 타입 보조 설명을 제공하여, `String` 값을 저장할 수 있는 변수라는 걸 지시합니다: 
 
 ```swift
 var welcomeMessage: String
 ```
 
-선언에서 콜론은 "...타입인 (of type)..." 의 의미이므로, 위 코드는 다음 처럼 이해할 수 있습니다:
+선언에서 콜론은 "...타입인 (of type)..." 이라는 의미라서, 위 코드를 다음 처럼 읽을 수 있습니다:
 
 "`String` 타입인 `welcomeMessage` 라는 변수를 선언합니다."
 
-"`String` 타입인" 이라는 구절은 "어떤 `String` 값이든 저장할 수 있다" 는 의미입니다. 저장할 수 있는 "어떤 것의 타입" (또는 "어떤 것의 종류") 를 의미한다고 생각하기 바랍니다.
+"`String` 타입인" 이라는 구절은 "어떤 `String` 값이든 저장할 수 있다" 는 의미입니다. 저장할 수 있는 "어떤 것의 타입" (또는 "어떤 것의 종류") 라는 의미로 생각하면 됩니다.
 
-이제 `welcomeMessage` 변수에는 에러 없이 어떤 문자열 값이든 설정할 수 있습니다:
+이제 `welcomeMessage` 변수엔 어떤 문자열 값이든 에러 없이 설정할 수 있습니다:
 
 ```swift
 welcomeMessage = "Hello"
 ```
 
-동일한 타입의 관련된 변수 여러 개를, 쉼표로 구분하면, 최종 변수 이름 뒤의 단일 '타입 보조 설명' 을 가지고, 한 줄로 정의할 수 있습니다:
+똑같은 타입인 여러 개의 관련 변수를 한 줄로 정의하려면, 쉼표로 구분하고, 최종 변수 이름 뒤에 단 하나의 타입 보조 설명을 두면 됩니다:
 
 ```swift
 var red, green, blue: Double
 ```
 
-> 실제로 '타입 보조 설명' 을 작성할 필요는 거의 없습니다. 상수나 변수를 정의하는 시점에 초기 값을 제공하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 해당 상수나 변수가 사용할 타입을 거의 항상 스위프트가 추론할 수 있습니다. 위 `welcomeMessage` 예제는, 초기 값을 제공하지 않으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하기 보다 '타입 보조 설명' 으로 지정한 것입니다.
+> 사실상 타입 보조 설명을 작성할 필요는 거의 없습니다. 상수나 변수 정의 시점에 초기 값을 제공하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 스위프트가 거의 항상 그 상수나 변수에 사용할 타입을 추론할 수 있습니다. 위의 `welcomeMessage` 예제에선, 초기 값을 제공하지 않아서, `welcomeMessage` 변수의 타입을 초기 값으로 추론하게 하기 보단 타입 보조 설명으로 지정한 겁니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
-상수와 변수 이름은, '유니코드 문자 (Unicode characters)' 를 포함한, 거의 어떤 문자든 담을 수 있습니다:
+상수와 변수 이름엔 거의 어떤 문자든 담을 수 있는데, 유니코드 문자[^unicode-characters] 도 포함합니다:
 
 ```swift
 let π = 3.14159
@@ -89,11 +89,11 @@ let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
 ```
 
-상수와 변수 이름은 '공백 (whitespace) 문자', '수학 기호 (mathematical symbols)', '화살표 (arrows)', '사용자 영역 유니코드 크기 값 (private-use Unicode scalar values)'[^private-use-Unicode-scalar-values], 또는 '선- 및 상자-그리기 (line-drawing and box-drawing) 문자' 를 담을 순 없습니다. 숫자로 시작하는 것도 안되긴 하지만, 이름 안의 다른 곳에 숫자를 포함할 순 있습니다.
+상수와 변수 이름은 공백 문자[^whitespace] 나, 수학 기호[^mathematical-symbols], 화살표[^arrows], 사용자 영역 유니코드 크기 값[^private-use-Unicode-scalar-values], 또는 선- 및 상자-그리기 문자[^line-drawing-and-box-drawing] 를 담을 수 없습니다. 숫자로 시작하는 것도 안되긴 하지만, 이름 안의 다른 곳에 숫자를 포함시킬 순 있습니다.
 
-정해진 타입의 상수나 변수를 한 번 선언하고 나면, 똑같은 이름을 가지고 다시 선언하거나, 다른 타입의 값을 저장하도록 바꿀 수 없습니다. 상수를 변수로 변수를 상수로 바꿀 수도 없습니다.
+일단 한번 특정 타입의 상수나 변수를 선언하면, 똑같은 이름으로 다시 선언하거나, 다른 타입 값을 저장하게 바꿀 수 없습니다. 상수를 변수로 변수를 상수로 바꿀 수도 없습니다.
 
-> 상수나 변수에 '스위프트 예약 키워드 (reserved Swift keyword) 와 똑같은 이름' 을 줘야 한다면, 키워드를 이름으로 사용할 때 '역따옴표 (backticks; `` ` ``)'[^backticks] 로 감쌉니다. 하지만, 절대적으로 선택의 여지가 없는 것이 아닌 한 키워드를 이름으로 사용하는 걸 피하기 바랍니다.
+> 상수나 변수에 스위프트가 예약한 키워드[^reserved-swift-keyword] 와 똑같은 이름을 줄 필요가 있다면, 키워드를 이름으로 사용할 때 역따옴표 (`` ` ``)[^backticks] 로 둘러쌉니다. 하지만, 선택할게 절대로 없는게 아닌 한 이름에 키워드를 사용하는 걸 피하도록 합니다.
 
 기존 변수의 값을 호환 가능한 타입의 또 다른 값으로 바꿀 수 있습니다. 다음 예제는, `friendlyWelcome` 의 값을 `"Hello!"` 에서 `"Bonjour!"` 로 바꿉니다:
 
@@ -784,13 +784,11 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^set-dictionary]: `Set` 은 실제 수학 용어로써 '집합' 이라는 의미이고, `Dictionary` 는 '사전' 이라는 의미입니다. 하지만, 본문에서 자료 타입으로 사용할 때는 이들을 **셋** 과 **딕셔너리** 처럼 발음 그대로 옮깁니다. `Array` 는 오랜 시간 동안 이미 **배열** 이라는 용어를 사용해 오고 있기 때문에, 계속해서 배열이라고 옮깁니다.
 
-[^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
-
 [^annotation]: 'annotation' 는 사실 '주석' 이라고 옮기는 것이 가장 적당하지만, 프로그래밍 분야에서는 'comments' 가 '주석' 이라고 이미 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라고 옮깁니다. 실제로 스위프트에서는 'annotation' 을 쓸 일이 거의 없기 때문에 이 용어에는 비중을 크게 두지 않아도 됩니다.
+
+[^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
 
 [^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
 
