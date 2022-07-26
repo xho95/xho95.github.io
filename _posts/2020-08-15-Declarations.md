@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Declarations (선언)"
+title:  "Swift 5.7: Declarations (선언)"
 date:   2020-08-15 11:30:00 +0900
 categories: Swift Language Grammar Declaration
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html) 부분[^Declarations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html) 부분[^Declarations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Declarations (선언)
 
@@ -527,7 +527,7 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 **Enumerations with Indirection (간접을 가지는 열거체)**
 
-열거체는 재귀 구조, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case, 를 가질 수 있습니다.[^recursive-structure] 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지며, 이는 메모리 안에 고정 구획을 가진다는 의미입니다.[^fixed-layout] 재귀를 지원하려면, 컴파일러가 반드시 간접 층을 집어 넣어야 합니다.[^layer-of-indirection] 
+열거체는 재귀 구조, 즉, 결합 값이 열거체 타입 그 자체의 인스턴스인 case, 를 가질 수 있습니다.[^recursive-structure] 하지만, 열거체 타입 인스턴스는 값 의미 구조를 가지며, 이는 메모리 안에 고정 구획을 가진다는 의미입니다.[^fixed-layout] 재귀를 지원하려면, 컴파일러가 반드시 간접 계층을 집어 넣어야 합니다.[^layer-of-indirection] 
 
 특별한 한 열거체 case 가 간접할 수 있게 하려면, 거기에 `indirect` 선언 수정자를 표시합니다. 간접 case 엔 반드시 결합 값이 있어야 합니다.
 
@@ -1190,65 +1190,65 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `lazy`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 속성의 초기 값을, 속성에 최초로 접근할 때, 최대 한 번만 계산하고 저장함을 지시하기 위해 클래스나 구조체의 저장 변수 속성에 적용합니다. `lazy` 수정자의 사용 방법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스나 구조체의 저장 변수 속성에 적용하면, 속성에 최초로 접근할 때, 최대 한 번만 속성의 초기 값을 계산하고 저장한다는 걸 지시합니다. `lazy` 수정자의 사용법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보기 바랍니다.
 
 `optional`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 준수 타입이 해당 멤버를 구현하는 게 필수는 아님을 지시하기 위해 '프로토콜의 속성, 메소드, 및 첨자 연산 멤버' 에 적용합니다. 
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 프로토콜의 속성이나, 메소드, 또는 첨자 멤버에 적용하면 준수 타입이 이러한 멤버를 구현하는 게 필수는 아니라는 걸 지시합니다.
 
-&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 '`objc` 특성으로 표시한 프로토콜' 에만 적용할 수 있습니다. 그 결과, '클래스 타입' 만이 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자의 사용 방법에 대한 더 많은 정보와-예를 들어, 준수 타입이 이를 구현하는지 확실하지 않을 때-옵셔널 프로토콜 멤버로 접근하는 방법에 대한 길잡이는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 `objc` 특성을 표시한 프로토콜에만 적용할 수 있습니다. 그 결과, 클래스 타입만 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자 사용법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버의 접근법에 대한 길잡이-예를 들어, 준수 타입이 구현했는지 확실하지 않을 때-는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% post_url 2016-03-03-Protocols %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보기 바랍니다.
 
 `required`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 모든 하위 클래스가 반드시 해당 초기자를 구현해야 함을 지시하기 위해 '지명 또는 편의 초기자' 에 적용합니다. 해당 초기자의 하위 클래스 구현도 반드시 `required` 수정자로 표시해야 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스의 지명 또는 편의 초기자에 적용하면 반드시 모든 하위 클래스가 그 초기자를 구현해야 한다는 걸 지시합니다. 그 초기자의 하위 클래스 구현에도 반드시 `required` 수정자를 표시해야 합니다.
 
 `static`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 멤버가, 해당 타입 인스턴스의 멤버라기 보다는, 해당 타입의 멤버임을 지시하기 위해 '구조체, 클래스, 열거체, 또는 프로토콜의 멤버' 에 적용합니다. 클래스 선언 영역에서, 멤버 선언에 `static` 수정자를 작성하는 건 해당 멤버 선언에 대해 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과를 가집니다.[^class-final] 하지만, 클래스의 '상수 타입 속성' 은 예외인데: 이 선언에는 `class` 나 `final` 을 작성할 수 없기 때문에 여기서는 `static` 이 보통의, 클래스 아닌 의미를 가집니다. 
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 구조체나, 클래스, 열거체, 또는 프로토콜 멤버에 적용하면, 그 타입의 인스턴스에 대한 멤버라기 보단, 타입 (자체)의 멤버라는 걸 지시합니다. 클래스 선언 영역 안에서, 멤버 선언에 `static` 수정자를 작성하면 그 멤버 선언에 `class` 와 `final` 수정자를 작성하는 것과 똑같은 효과입니다.[^class-final] 하지만, 클래스의 상수 타입 속성은 예외인데: 여기선 `static` 이 보통의, 클래스가 아닌 의미를 가지는게 이 선언들엔 `class` 나 `final` 을 쓸 수 없기 때문입니다.
 
 `unowned`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 실행 시간 에러를 일으킵니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다. `unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 실행 시간 에러가 일어납니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
 
 `unowned(safe)`
 
-&nbsp;&nbsp;&nbsp;&nbsp;`unowned` 의 (전체) 철자를 명시한 것입니다.[^unowned-safe]
+&nbsp;&nbsp;&nbsp;&nbsp;`unowned` 의 (전체) 철자를 명시한 겁니다.[^unowned-safe]
 
 `unowned(unsafe)`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 소유하지 않은 (unowned) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 객체를 해제한 후에 변수나 속성에 접근하려고 하면, 객체였던 위치의 메모리에 접근하는데, 이는 '메모리-안전하지 않은 (memory-unsafe) 연산' 입니다. '약한 (weak) 참조' 와 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하지만; '약한 참조' 와는 달리, 타입이 '옵셔널-아닌 (non-optional)' 것입니다.`unowned` 수정자에 대한 예제와 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 객체였던 메모리 장소에 접근할 건데, 이는 안전하지 않은-메모리 연산입니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
 
 `weak`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '변수나 속성이 자신의 값으로 저장한 객체에 대한 약한 (weak) 참조를 가진다' 고 지시하기 위해 '저장 변수나, 상수, 또는 저장 속성' 에 적용합니다. 변수나 속성의 타입은 반드시 '옵셔널 클래스 타입' 이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 그 값은 `nil` 입니다. `weak` 수정자에 대한 예제와 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 보도록 합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나 저장 변수 속성에 적용하면 변수나 속성의 값이 객체로의 약한 참조라는 걸 지시합니다. 변수나 속성의 타입은 반드시 옵셔널 클래스 타입이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 값이 `nil` 입니다. `weak` 수정자에 대한 예제 및 더 많은 정보는, [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 부분을 보기 바랍니다.
 
 #### Access Control Levels (접근 제어 수준)
 
-스위프트는: '공개 (open)', '공용 (public)', '내부 (internal)', '파일 전용 (file private)', 및 '개인 전용 (private)' 이라는 '다섯 가지 수준의 접근 제어' 를 제공합니다. 선언의 '접근 수준' 을 지정하기 위해 아래의 '접근-수준 수정자' 중 하나를 선언에 표시할 수 있습니다. '접근 제어' 는 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에서 자세하게 논의합니다.
+스위프트는 다섯 가지 수준의 접근 제어를 제공하는데: 공개 (open), 공용 (public), 내부 (internal), 파일 전용 (file private), 및 개인 전용 (private) 이 그것입니다. 선언에 아래의 접근-수준 중 하나를 표시하여 선언의 접근 수준을 지정합니다. 접근 제어는 [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 에서 자세히 논합니다.
 
 `open`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드가 선언에 접근하고 하위 클래스를 만들 수 있다' 는 것을 지시하기 위해 선언에 적용합니다. '`open` 접근-수준 수정자로 표시한 선언' 은 '해당 선언을 담은 모듈을 불러온 모듈 코드' 도 접근하고 하위 클래스를 만들 수 있습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 선언에 적용하면 선언과 동일한 모듈 안의 코드가 선언에 접근하고 하위 클래스를 만들 수 있다는 걸 지시합니다. `open` 접근-수준 수정자를 표시한 선언은 그 선언이 담긴 모듈을 불러온 모듈 코드도 접근하고 하위 클래스를 만들 수 있습니다.
 
 `public`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드가 선언에 접근하고 하위 클래스를 만들 수 있다' 는 것을 지시하기 위해 선언에 적용합니다. '`public` 접근-수준 수정자로 표시한 선언' 은 '해당 선언을 담은 모듈을 불러온 모듈 코드' 가 (하위 클래스를 만들 순 없지만) 접근할 수는 있습니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 선언에 적용하면 선언과 동일한 모듈 안의 코드가 선언에 접근하고 하위 클래스를 만들 수 있다는 걸 지시합니다. `public` 접근-수준 수정자를 표시한 선언은 그 선언이 담긴 모듈을 불러온 모듈 코드도 접근할 수 있습니다 (하위 클래스 만들기는 안됩니다).
 
 `internal`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드만 선언에 접근할 수 있다' 는 것을 지시하기 위해 선언에 적용합니다. 기본적으로, 대부분의 선언은 암시적으로 '`internal` 접근-수준 수정자' 로 표시합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 선언에 적용하면 선언과 동일한 모듈 안의 코드만 선언에 접근할 수 있다는 걸 지시합니다. 기본적으로, 대부분의 선언에 `internal` 접근-수준 수정자를 암시적으로 표시합니다.
 
 `fileprivate`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언과 동일한 모듈에 있는 코드만 선언에 접근할 수 있다' 는 것을 지시하기 위해 선언에 적용합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 선언에 적용하면 선언과 동일한 소스 파일 안의 코드만 선언에 접근할 수 있다는 걸 지시합니다.
 
 `private`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 '선언을 직접 둘러싼 영역 안의 코드만 선언에 접근할 수 있다' 는 것을 지시하기 위해 선언에 적용합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 선언에 적용하면 선언을 직접 둘러싼 영역 안의 코드만 선언에 접근할 수 있다는 걸 지시합니다.
 
-'접근 제어' 용으로, 동일 파일에 있는 동일 타입에 대한 '익스텐션' 들은 '접근-제어 영역' 을 서로 공유합니다. '익스텐션' 이 확장하는 타입도 동일 파일에 있으면, '타입의 접근-제어 영역' 을 서로 공유합니다. 타입 선언에서 선언한 '개인 전용 (private) 멤버' 를 '익스텐션' 이 접근할 수 있으며, '한 익스텐션에서 선언한 개인 전용 멤버' 를 '다른 익스텐션' 과 '타입의 선언' 이 접근할 수 있습니다.
+접근 제어용으론, 동일한 파일에 있는 동일한 타입의 익스텐션들은 접근-제어 영역을 공유합니다. 확장한 타입도 동일한 파일 안에 있으면, 타입의 접근-제어 영역을 공유합니다. 타입 선언 안에서 선언한 개인 전용 (private) 멤버를 익스텐션에서 접근할 수 있고, 한 익스텐션 안에서 선언한 개인 전용 멤버를 다른 익스텐션 및 타입 선언에서 접근할 수도 있습니다.
 
-위의 각 '접근-수준 수정자' 는, 괄호로 테두리 친 `set` 키워드로 (예를 들어, `private(set)` 같이) 구성한, 단일 인자를 옵션으로 받습니다. 이 형식의 접근-제어 수정자는, [Getters and Setters (획득자 및 설정자)]({% post_url 2020-04-28-Access-Control %}#getters-and-setters-획득자-및-설정자) 에서 논의한 것처럼, '변수나 첨자 연산의 설정자에 대한 접근 수준' 을 '변수나 첨자 연산 자신의 접근 수준' 보다 낮거나 같게 지정하고 싶을 때 사용합니다.
+위에 있는 각각의 접근-수준 수정자는 옵션으로 단일 인자를 받는데, 이는 (예를 들어, `private(set)` 같이) `set` 키워드를 괄호로 테두리 쳐서 구성됩니다. [Getters and Setters (획득자 및 설정자)]({% post_url 2020-04-28-Access-Control %}#getters-and-setters-획득자-및-설정자) 에서 논한 것처럼, 변수나 첨자의 설정자 접근 수준이 변수나 첨자 그 자체의 접근 수준 보다 낮거나 같게 지정하고 싶을 때 이런 형식의 접근-제어 수정자를 사용합니다.
 
 ### 다음 장
 
@@ -1312,7 +1312,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^fixed-layout]: 여기서 말하는 메모리 안의 고정 구획 (fixed layout) 을 보통 스택 (stack) 이라고 합니다.
 
-[^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라 스택에 저장하므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면, 그 인스턴스로의 참조도 따로 저장해야 합니다. 그 인스턴스로의 참조를 추가하여 저장하는 걸 '간접 층 (layer-of-indirection) 을 집어 넣는다' 고 합니다.
+[^layer-of-indirection]: 열거체 인스턴스는 값 의미 구조라 스택에 저장하므로, 한 열거체 인스턴스가 다른 인스턴스를 호출하려면, 그 인스턴스로의 참조도 따로 저장해야 합니다. 그 인스턴스로의 참조를 추가하여 저장하는 걸 '간접 계층 (layer-of-indirection) 을 집어 넣는다' 고 합니다.
 
 [^signature]: 함수나 메소드에서 '서명 (signature) 과 이름 (name)' 의 차이점은 매개 변수의 포함 여부입니다. 이 예제의 `init(rawValue: RawValue)` 는 초기자 서명 (signature) 이라고 하고, 매개 변수 부분을 뺀 `init?` 은 초기자 이름이라고 합니다.
 
@@ -1340,10 +1340,10 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^operator-declarations]: 원문 자체가 애플 개발자 문서의 [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations) 항목으로 연결됩니다.
 
-[^class-final]: 즉, 클래스 선언 안에서의 `static` 은 `class` 와 `final` 을 동시에 사용하는 것과 같은 의미입니다.
+[^class-final]: 즉, 클래스 선언 안에서 `static` 을 사용하면 `class` 와 `final` 을 동시에 사용하는 것과 같은 효과입니다.
 
 [^structure-type]: 원문에서는 '구조체 타입 (structure type)' 이라고 되어 있는데, '행위자 타입 (actor type)' 의 오타라고 추측됩니다.
 
 [^dynamically-dispatched]: '동적 급파 (dynamically dispatched)' 라는 개념은 C++ 등에서 사용하는 가상 함수 테이블 (virtual function table) 을 사용한다는 의미입니다. 가상 함수 테이블을 사용하기 때문에, 인라인이나 탈-가상화를 할 수 없습니다. 가상 함수 테이블에 대한 더 자세한 정보는, 위키피디아의 [Virtual method table](https://en.wikipedia.org/wiki/Virtual_method_table) 항목과 [가상 메소드 테이블](https://ko.wikipedia.org/wiki/가상_메소드_테이블) 항목을 보도록 합니다.  
 
-[^unowned-safe]: 즉, 스위프트에서 `unowned` 라고 사용하는 것은 `unowned(safe)` 를 사용하는 것이며, `unowned(unsafe)` 를 명시하지 않은 이상, 항상 `unowned(safe)` 를 사용하게 됩니다.
+[^unowned-safe]: 스위프트에서 `unowned` 를 사용하는 건 `unowned(safe)` 를 사용하는 것과 같은 것이고, 따로 `unowned(unsafe)` 라고 명시하지 않는 한, 항상 `unowned(safe)` 를 사용합니다.

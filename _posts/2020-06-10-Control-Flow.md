@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Control Flow (제어 흐름)"
+title:  "Swift 5.7: Control Flow (제어 흐름)"
 date:   2020-06-10 10:00:00 +0900
 categories: Swift Language Grammar Control-Flow For-In While Switch
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 부분[^Control-Flow]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 부분[^Control-Flow]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Control Flow (제어 흐름)
 
@@ -730,29 +730,63 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 ### Checking API Availability (API 사용 가능성 검사)
 
-주어진 '배포 대상 (development target) 에서는 사용 불가능한 API 를 사용하는 사고' 가 없도록, 스위프트는 'API 사용 가능성 검사를 내장 지원 (built-in support)' 합니다.
+스위프트는 API 사용 가능성 검사를 내장 지원하는데, 이는 주어진 배포 대상에선 사용 불가능한 API 를 쓰는 사고가 없도록 보장합니다.
 
-컴파일러는 '코드에서 사용한 모든 API 가 프로젝트에서 지정한 배포 대상에서 사용 가능한 지 검증' 하기 위해 'SDK[^SDK] 에 있는 사용 가능성 정보' 를 사용합니다.[^availability-information] 사용 불가능한 API 를 사용하려고 하면 스위프트는 컴파일 시간에 에러를 보고합니다.
+컴파일러는 SDK[^SDK] 의 사용 가능성 정보를 써서 코드 안의 모든 API 가 프로젝트에서 지정한 배포 대상에 사용 가능한지 밝혀냅니다.[^availability-information] 사용 불가능한 API 를 쓰려고 하면 컴파일 시간에 스위프트가 에러를 보고합니다.
 
-실행 시간에 사용 가능한 지에 따라 사용하려는 API, 코드 블럭을 조건부로 실행하려면 _사용 가능성 조건 (availability condition)_[^availability-condition] 을 `if` 문이나 `guard` 문 안에 사용합니다. 컴파일러는 해당 코드 블럭 API 가 사용 가능한 지 검증할 때 사용 가능성 조건에 있는 정보를 사용합니다.
+`if` 문이나 `guard` 문에서 _사용 가능성 조건 (availability condition)_ 을 쓰면, 사용하고 싶은 API 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행합니다.[^availability-condition] 컴파일러는 그 코드 블럭 안의 API 가 사용 가능한지 밝혀낼 때 사용 가능성 조건 정보를 사용합니다.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
-  // iOS 에서는 iOS 10 API 를 사용하고, macOS 에서는 macOS 10.12 API 를 사용함
+  // iOS 면 iOS 10 API 를 사용하고, macOS 면 macOS 10.12 API 를 사용함
 } else {
-  // 물러나서 더 이전 iOS 와 macOS API 를 사용함
+  // 더 앞선 iOS 및 macOS API 로 대체함
 }
 ```
 
-위 사용 가능성 조건은 'iOS 라면, iOS 10 이후 버전에서만; macOS 라면, macOS 10.12 이후 버전에서만 `if` 문 본문을 실행하라' 고 지정합니다. 마지막 인자인, `*` 는, 필수이며, '대상에서 지정한 최소 배포 대상 이외의 다른 어떤 플랫폼 (platform) 에서든, `if` 본문을 실행하라' 지정합니다.
+위 사용 가능성 조건이 지정하는 건 iOS 에선, iOS 10 이후에서만; macOS 에선, macOS 10.12 이후에서만 `if` 문 본문을 실행하라는 겁니다. 마지막 인자인, `*` 는, 필수이며, 다른 어떤 플랫폼에서든, 대상이 지정한 최소 배포 대상에서 `if` 본문을 실행하도록, 지정합니다.
 
-일반 형식의, 사용 가능성 조건은 '플랫폼 이름과 버전의 목록' 을 취합니다. 플랫폼 이름은 `iOS`, `macOS`, `watchOS`, 및 `tvOS` 같은 것을 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 보도록 합니다. 'iOS 8 이나 macOS 10.10 같은 주 (major) 버전 번호' 지정에다가, 'iOS 11.2.6 및 macOS 10.13.3 같은 부 (minor) 버전 번호' 도 지정할 수 있습니다.
+자신의 일반 형식에서, 사용 가능성 조건은 플랫폼 이름 및 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 보기 바랍니다. iOS 8 이나 macOS 10.10 같은 주 버전 번호[^major-version-numbers] 지정에 더하여, iOS 11.2.6 과 macOS 10.13.3 같은 부 버전 번호[^minor-version-numbers] 들도 지정할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능할 때 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;} else {<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능할 때 실행하는 구문`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
+
+사용 가능성 조건을 `guard` 문에 쓰면, 사용 가능성 조건을 다듬어 그 코드 블럭의 나머지 코드에서 사용합니다.
+
+```swift
+@available(macOS 10.12, *)
+struct ColorPreference {
+  var bestColor = "blue"
+}
+
+func chooseBestColor() -> String {
+  guard #available(macOS 10.12, *) else {
+    return "gray"
+  }
+  let colors = ColorPreference()
+  return colors.bestColor
+}
+```
+
+위 예제에서, `ColorPreference` 구조체는 **macOS 10.12** 이후를 요구합니다. `chooseBestColor()` 함수는 사용 가능성 guard 문으로 시작합니다. 플랫폼 버전이 `ColorPreference` 를 사용하기에 너무 오래된 거면, 항상 사용 가능한 동작으로 대체합니다. `guard` 문 후엔, **macOS 10.12** 이후를 요구하는 API 를 사용할 수 있습니다.
+
+`#available` 에 더하여, 스위프트는 사용 불가능성 조건으로 정반대로 검사하는 것도 지원합니다.예를 들어, 다음의 두 검사는 똑같은 걸 합니다:
+
+```swift
+if #available(iOS 10, *) {
+} else {
+  // 대체 코드
+}
+
+if #unavailable(iOS 10) {
+  // 대체 코드
+}
+```
+
+`#unavailable` 형식을 사용하면 대체 코드만 담은 검사일 때의 코드를 더 읽기 쉽게 해줍니다.
 
 ### 다음 장
 
@@ -766,7 +800,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 [^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 보도록 합니다.
 
-[^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서 개정 이력)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 이력을 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
+[^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서를 다듬은 역사)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 역사를 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
 
 [^optional]: 여기서의 '옵션 (optional)' 은 '옵셔널 타입' 과는 상관이 없습니다.
 
@@ -792,8 +826,13 @@ if #available(iOS 10, macOS 10.12, *) {
 
 [^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진 (exhaustive) 합니다. 왜냐면, `Character` 가 영어 문자가 아닌 다른 유니코드 문자를 가질 수도 있기 때문입니다.
 
-[^SDK]: 'SDK' 는 '소프트웨어 개발 키트 (Software development kit)' 의 약자입니다. '엑스코드 (Xcode)' 같은 '통합 개발 환경 (IDE; Integrated Development Environment)' 과는 의미가 조금 다릅니다. '통합 개발 환경' 이 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이라면, '소프트웨어 개발 키트' 는 개발에 필요한, 컴파일러와 패키지 등을 포함한, 실제 '도구' 들을 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 보도록 합니다.
+[^SDK]: 'SDK' 는 소프트웨어 개발 키트 (Software development kit) 의 줄임말입니다. 엑스코드 같은 통합 개발 환경 (IDE; Integrated Development Environment) 과는 의미가 조금 다릅니다. 통합 개발 환경은 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이고, 소프트웨어 개발 키트는 실제 개발에 필요한, 컴파일러와 패키지 등을 포함한, 도구를 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목과 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
-[^availability-information]: 여기서 'SDK 에 있는 사용 가능성 정보를 사용한다' 는 말은, 예를 들어, 스위프트 4.0 용 SDK 로 스위프트 5.0 기능을 사용할 수 없는 것 처럼, 해당 SDK 에 있는 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
+[^availability-information]: 여기서 SDK 의 사용 가능성 정보를 쓴다는 건, 예를 들어, 스위프트 4.0 용 SDK 로 스위프트 5.0 기능을 사용할 수 없는 것처럼, 그 SDK 의 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
 
-[^availability-condition]: '사용 가능성 조건 (avaailability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, '컴파일러 제어문' 은 컴파일 시간에 동작하는 반면, '사용 가능성 조건' 은 '실행 시간' 에 동작한다는 점에서, 이 둘은 서로 완전히 다른 것입니다.
+[^availability-condition]: '사용 가능성 조건 (availability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, 컴파일러 제어문은 컴파일 시간에 검사하는 반면, 사용 가능성 조건은 실행 시간에 검사합니다. 이에 대한 더 자세한 내용은, 애플 개발자 포럼의 [Do we need something like ‘#if available’?](https://forums.swift.org/t/do-we-need-something-like-if-available/40349) 항목을 참고하기 바랍니다. 
+
+[^major-version-numbers]: '주 버전 번호 (major version numbers)' 는 의미 구조 상의 버전 번호에서 가장 큰 버전을 의미합니다.
+
+[^minor-version-numbers]: '부 버전 번호 (minor version numbers)' 는 의미 구조 상의 버전 번호에서 두 번째로 큰 버전을 의미합니다.
+

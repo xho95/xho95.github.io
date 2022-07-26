@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Expressions (표현식)"
+title:  "Swift 5.7: Expressions (표현식)"
 date:   2020-08-19 11:30:00 +0900
 categories: Swift Language Grammar Expression
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Expressions (표현식)
 
@@ -956,7 +956,7 @@ let numbers = [10, 20, 33, 43, 50]
 #endif
 ```
 
-`#if` 와, `#endif`, 및 다른 컴파일 지시자 사이에 있는, 조건부 컴파일 블럭[^conditional-compilation-block] 에 암시적 멤버 표현식 및 그 뒤의 0개 이상의 접미사를 담아, 접미사 표현식을 형성할 수 있습니다. 또 다른 조건부 컴파일 블럭이나, 이 표현식과 블럭들을 조합한 것도 담을 수 있습니다.
+`#if` 와, `#endif`, 및 다른 컴파일 지시자 사이에 있는, 조건부 컴파일 블럭[^conditional-compilation-block] 에 암시적 멤버 표현식 및 그 뒤의 0 개 이상의 접미사를 담아, 접미사 표현식을 형성할 수 있습니다. 또 다른 조건부 컴파일 블럭이나, 이 표현식과 블럭들을 조합한 것도 담을 수 있습니다.
 
 최상단 코드 뿐만 아니라, 명시적 멤버 표현식을 작성할 수 있는 어떤 곳이든 이 구문을 사용할 수 있습니다.
 

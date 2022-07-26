@@ -1,87 +1,87 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: The Basics (기초)"
+title:  "Swift 5.7: The Basics (기초)"
 date:   2016-04-24 19:45:00 +0900
 categories: Swift Language Grammar Basics
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 부분[^The-Basics]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 부분[^The-Basics]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## The Basics (기초)
 
-스위프트는 'iOS, macOS, watchOS, 및 tvOS 앱 개발' 을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, C 와 오브젝티브-C 개발 경험으로 인하여 스위프트의 많은 부분들이 익숙할 것입니다.
+스위프트는 **iOS** 와, **macOS**, **watchOS**, 및 **tvOS** 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, **C** 와 **오브젝티브-C**  개발 경험으로부터 스위프트의 수많은 부분들이 익숙할 것입니다.
 
-스위프트는, 정수를 위한 `Int`, 부동 소수점 값을 위한 `Double` 과 `Float`, '불리언 (Boolean) 값' 을 위한 `Bool`, 그리고 문장 자료를 위한 `String` 을 포함한, 모든 C 와 오브젝티브-C 기본 타입에 대한 자신만의 버전을 제공합니다. 스위프트는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명한 것처럼, `Array` (배열), `Set` (셋), 그리고 `Dictionary` (딕셔너리)[^set-dictionary] 라는, 강력한 '주요 집합체 (collection) 타입' 세 개도 제공합니다.
+스위프트는 모든 **C** 및 **오브젝티브-C** 기본 타입에 자신만의 버전을 제공하며, 이는 정수를 위한 `Int` 와, 부동 소수점 값을 위한 `Double` 및 `Float`, 불리언 값을 위한 `Bool`, 및 텍스트 데이터를 위한 `String` 을 포함합니다. [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 에서 설명하듯, 스위프트는 강력한 버전의 세 으뜸가는 집합체 타입인, `Array` 과, `Set`, 및 `Dictionary`[^set-dictionary] 도 제공합니다.
 
-C 같이, 스위프트도 '식별 가능한 이름 (identifying name) 으로 값을 저장하고 참조' 하기 위해 '변수 (variables)' 를 사용합니다. 스위프트는 '값을 바꿀 수 없는 변수' 도 광범위하게 사용합니다. 이를 '상수 (constants)' 라고 하는데, C 에 있는 상수보다 훨씬 더 강력합니다. 바꿀 필요가 없는 값과 작업할 때 코드를 더 안전하고 명확하게 만들려는 의도로 스위프트 전반에 걸쳐 상수를 사용합니다.
+**C** 같이, 스위프트는 식별 이름[^identifying-name] 으로 값을 저장하고 참조하는데 변수를 사용합니다. 스위프트는 값을 바꿀 수 없는 변수도 광범위하게 사용합니다. 이를 상수라고 하며, **C** 에 있는 상수보다 훨씬 더 강력합니다. 스위프트 전반에 걸쳐 상수를 사용하면 바꿀 필요 없는 값과 작업할 의도일 때의 코드를 더 안전하고 명확하게 만듭니다.
 
-익숙한 타입에 더하여, 스위프트는 오브젝티브-C 에 없는, '튜플 (tuple)' 같은, 고급 타입도 도입합니다. 튜플은 '값의 그룹 (groupings)' 을 생성하고 전달할 수 있게 합니다. 함수에서 '여러 개의 값을 단일 복합 값 (single compound value) 으로 반환' 하기 위해 튜플을 사용할 수 있습니다.
+익숙한 타입에다가, 스위프트는 **오브젝티브-C** 엔 없는, 튜플 같은, 진보한 타입도 도입합니다. 튜플은 값의 그룹을 생성하고 전달할 수 있게 합니다. 튜플을 사용하면 함수에서 여러 개의 값을 단일 복합 값[^compound-value] 으로 반환할 수 있습니다.
 
-스위프트는, '값의 없음 (absence)' 을 처리하는, '옵셔널 (optional) 타입' 도 도입합니다. 옵셔널은 "값이 _있고 (is)_, 그건 x 입니다" 라거나 아니면 "값이 전혀 _없습니다 (isn't)_" 라고 말합니다. '옵셔널의 사용' 은 '오브젝티브-C 의 포인터에 `nil` 을 사용' 한 것과 비슷하지만, '클래스 (class)' 뿐만 아니라, 어떤 타입과도 작업할 수 있습니다. 옵셔널은 오브젝티브-C 의 '`nil` 포인터' 보다 더 안전하고 표현력이 풍부할 뿐만 아니라, 수많은 스위프트의 가장 강력한 특징 중에서도 핵심입니다.
+스위프트는 옵셔널 타입[^optional-types] 도 도입하는데, 이는 값의 없음[^absence] 을 처리합니다. 옵셔널은 "값이 _있는데 (is)_, 그건 _x_ 입니다" 라고 하거나 "전혀 값이 _없습니다 (isn't)_" 라고 말합니다. 옵셔널을 사용하는 건 오브젝티브-C 에서 포인터에 `nil` 을 사용하는 것과 비슷하지만, 클래스만이 아니라, 어떤 타입에도 쓸 수 있습니다. 옵셔널은 오브젝티브-C 의 `nil` 포인터 보다 더 안전하면서 표현력도 더 좋을 뿐 아니라, 수많은 스위프트의 가장 강력한 특징 중에서도 심장부에 해당합니다.
 
-스위프트는 '_타입-안전 (type-sefe)_ 언어' 이며, 이는 '코드에서 작업할 값의 타입이 명확하도록 언어가 도와준다' 는 의미입니다. 코드가 `String` 을 요구하면, '타입 안전 장치 (type safety)' 가 `Int` 를 전달하는 실수를 막아줍니다. 마찬가지로, 타입 안전 장치는 '옵셔널-아닌 `String` 을 요구하는 코드' 에 '옵셔널 `String` 을 전달하는 사고' 도 막아줍니다. '타입 안전 장치' 는 개발 과정에서 에러를 가능한 빨리 잡아내고 고칠 수 있게 도와줍니다.
+스위프트는 _타입-안전 (type-sefe)_ 언어인데, 이는 코드에서 작업할 수 있는 값의 타입이 명확하도록 언어가 도와준다는 의미입니다. 코드가 `String` 을 요구하면, 타입 안전 장치[^type-safety] 가 실수로 `Int` 를 전달하는 걸 막아줍니다. 마찬가지로, 타입 안전 장치는 옵셔널-아닌 `String` 을 요구한 코드 조각에 옵셔널 `String` 을 전달하는 사고도 막아줍니다. 타입 안전 장치는 개발 과정에서 가능한 일찍 에러를 잡아내서 고칠 수 있게 돕습니다.
 
 ### Constants and Variables (상수와 변수)
 
-상수와 변수는 (`maximumNumberOfLoginAttempts` 나 `welcomeMessage` 같은) 이름을 (`10` 이라는 수나 `"Hello"` 라는 문자열 같은) 특별한 타입의 값과 결합합니다. _상수 (constant)_ 값은 한 번 설정하면 바꿀 수 없는 반면, _변수 (variable)_ 는 미래에 다른 값을 설정할 수 있습니다.
+상수와 변수는 (`maximumNumberOfLoginAttempts` 나 `welcomeMessage` 같은) 이름을 (`10` 이라는 수나 `"Hello"` 라는 문자열 같은) 특별한 타입의 값과 결합합니다. _상수 (constant)_ 값은 한 번 설정하고 나면 바꿀 수 없는 반면, _변수 (variable)_ 는 미래에 다른 값을 설정할 수 있습니다.
 
 #### Declaring Constants and Variables (상수와 변수 선언하기)
 
-상수와 변수는 반드시 사용 전에 선언해야 합니다. 상수는 `let` 키워드로 변수는 `var` 키워드로 선언합니다. 다음은 상수와 변수로 사용자 로그인 시도 횟수를 추적하는 방법에 대한 예제입니다:
+상수와 변수는 반드시 사용 전에 선언해야 합니다. 상수는 `let` 키워드로 변수는 `var` 키워드로 선언합니다. 상수와 변수로 사용자의 로그인 시도 횟수를 추적할 수 있는 사례는 이렇습니다:
 
 ```swift
 let maximumNumberOfLoginAttempts = 10
 var currentLoginAttempt = 0
 ```
 
-이 코드는 다음 처럼 이해할 수 있습니다:
+이 코드는 다음 처럼 읽을 수 있습니다:
 
 "`maximumNumberOfLoginAttempts` 라는 새로운 상수를 선언하고, `10` 이라는 값을 줍니다. 그런 다음, `currentLoginAttempt` 라는 새로운 변수를 선언하고, `0` 이라는 초기 값을 줍니다."
 
-이 예제에서, 최대 값은 절대 바뀌지 않기 때문에, '로그인 시도 최대 허용 횟수' 를 상수로 선언합니다. '현재 로그인 시도 횟수' 의, 값은 각각의 로그인 시도가 실패한 후에 반드시 증가해야 하기 때문에, 변수로 선언합니다.
+이 예제에서, 최대 로그인 허용 횟수는 상수로 선언하는데, 최대 값은 절대로 바뀌지 않기 때문입니다. 현재 로그인 횟수 측정기는 변수로 선언하는데, 이 값은 각각의 로그인 시도가 실패한 뒤엔 반드시 증가해야 하기 때문입니다.
 
-'쉼표 (commas)' 로 구분하여, 여러 개의 상수나 여러 개의 변수를 한 줄로 선언할 수 있습니다:
+여러 개의 상수나 여러 개의 변수를 한 줄로 선언하려면, 쉼표로 구분하면 됩니다:
 
 ```swift
 var x = 0.0, y = 0.0, z = 0.0
 ```
 
-> 코드에서 저장 값을 바꾸지 않을 거라면, 항상 `let` 키워드를 가진 상수로 선언합니다. 저장 값이 바뀔 수 있는 경우에만 변수를 사용합니다.
+> 코드에 있는 저장 값을 바꾸지 않을 거면, 항상 `let` 키워드를 써서 상수로 선언합니다. 바꿀 필요가 있는 저장 값에만 변수를 사용합니다.
 
 #### Type Annotations (타입 보조 설명)
 
-상수나 변수를 선언할 때는, 상수나 변수가 저장할 값의 종류가 명확하도록, _타입 보조 설명 (type annotation)_[^annotation] 을 제공할 수 있습니다. '타입 보조 설명' 은 상수나 변수 이름 뒤에 콜론을 두고, 공백을 넣은 다음, 뒤에 사용할 타입 이름을 써서 작성합니다.
+상수나 변수를 선언할 때 _타입 보조 설명 (type annotation)_[^annotation] 을 제공하면, 상수나 변수가 저장할 수 있는 값의 종류를 명확하게 합니다. 타입 보조 설명을 작성하려면 상수나 변수 이름 뒤에 콜론과, 공백을 둔 다음, 사용할 타입 이름을 두면 됩니다.
 
-다음 예제는 `welcomeMessage` 라는 변수가 , `String` 값을 저장할 수 있음을 지시하는, 타입 보조 설명을 제공합니다: 
+다음 예제는 `welcomeMessage` 라는 변수에 타입 보조 설명을 제공하여, `String` 값을 저장할 수 있는 변수라는 걸 지시합니다: 
 
 ```swift
 var welcomeMessage: String
 ```
 
-선언에서 콜론은 "...타입인 (of type)..." 의 의미이므로, 위 코드는 다음 처럼 이해할 수 있습니다:
+선언에서 콜론은 "...타입인 (of type)..." 이라는 의미라서, 위 코드를 다음 처럼 읽을 수 있습니다:
 
 "`String` 타입인 `welcomeMessage` 라는 변수를 선언합니다."
 
-"`String` 타입인" 이라는 구절은 "어떤 `String` 값이든 저장할 수 있다" 는 의미입니다. 저장할 수 있는 "어떤 것의 타입" (또는 "어떤 것의 종류") 를 의미한다고 생각하기 바랍니다.
+"`String` 타입인" 이라는 구절은 "어떤 `String` 값이든 저장할 수 있다" 는 의미입니다. 저장할 수 있는 "어떤 것의 타입" (또는 "어떤 것의 종류") 라는 의미로 생각하면 됩니다.
 
-이제 `welcomeMessage` 변수에는 에러 없이 어떤 문자열 값이든 설정할 수 있습니다:
+이제 `welcomeMessage` 변수엔 어떤 문자열 값이든 에러 없이 설정할 수 있습니다:
 
 ```swift
 welcomeMessage = "Hello"
 ```
 
-동일한 타입의 관련된 변수 여러 개를, 쉼표로 구분하면, 최종 변수 이름 뒤의 단일 '타입 보조 설명' 을 가지고, 한 줄로 정의할 수 있습니다:
+똑같은 타입인 여러 개의 관련 변수를 한 줄로 정의하려면, 쉼표로 구분하고, 최종 변수 이름 뒤에 단 하나의 타입 보조 설명을 두면 됩니다:
 
 ```swift
 var red, green, blue: Double
 ```
 
-> 실제로 '타입 보조 설명' 을 작성할 필요는 거의 없습니다. 상수나 변수를 정의하는 시점에 초기 값을 제공하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 해당 상수나 변수가 사용할 타입을 거의 항상 스위프트가 추론할 수 있습니다. 위 `welcomeMessage` 예제는, 초기 값을 제공하지 않으므로, `welcomeMessage` 변수의 타입을 초기 값으로 추론하기 보다 '타입 보조 설명' 으로 지정한 것입니다.
+> 사실상 타입 보조 설명을 작성할 필요는 거의 없습니다. 상수나 변수 정의 시점에 초기 값을 제공하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 스위프트가 거의 항상 그 상수나 변수에 사용할 타입을 추론할 수 있습니다. 위의 `welcomeMessage` 예제에선, 초기 값을 제공하지 않아서, `welcomeMessage` 변수의 타입을 초기 값으로 추론하게 하기 보단 타입 보조 설명으로 지정한 겁니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
 
-상수와 변수 이름은, '유니코드 문자 (Unicode characters)' 를 포함한, 거의 어떤 문자든 담을 수 있습니다:
+상수와 변수 이름엔 거의 어떤 문자든 담을 수 있는데, 유니코드 문자[^unicode-characters] 도 포함합니다:
 
 ```swift
 let π = 3.14159
@@ -89,116 +89,116 @@ let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
 ```
 
-상수와 변수 이름은 '공백 (whitespace) 문자', '수학 기호 (mathematical symbols)', '화살표 (arrows)', '사용자 영역 유니코드 크기 값 (private-use Unicode scalar values)'[^private-use-Unicode-scalar-values], 또는 '선- 및 상자-그리기 (line-drawing and box-drawing) 문자' 를 담을 순 없습니다. 숫자로 시작하는 것도 안되긴 하지만, 이름 안의 다른 곳에 숫자를 포함할 순 있습니다.
+상수와 변수 이름은 공백 문자[^whitespace] 나, 수학 기호[^mathematical-symbols], 화살표[^arrows], 사용자 영역 유니코드 크기 값[^private-use-Unicode-scalar-values], 또는 선- 및 상자-그리기 문자[^line-drawing-and-box-drawing] 를 담을 수 없습니다. 숫자로 시작하는 것도 안되긴 하지만, 이름 안의 다른 곳에 숫자를 포함시킬 순 있습니다.
 
-정해진 타입의 상수나 변수를 한 번 선언하고 나면, 똑같은 이름을 가지고 다시 선언하거나, 다른 타입의 값을 저장하도록 바꿀 수 없습니다. 상수를 변수로 변수를 상수로 바꿀 수도 없습니다.
+일단 한번 특정 타입의 상수나 변수를 선언하면, 똑같은 이름으로 다시 선언하거나, 다른 타입 값을 저장하게 바꿀 수 없습니다. 상수를 변수로 변수를 상수로 바꿀 수도 없습니다.
 
-> 상수나 변수에 '스위프트 예약 키워드 (reserved Swift keyword) 와 똑같은 이름' 을 줘야 한다면, 키워드를 이름으로 사용할 때 '역따옴표 (backticks; `` ` ``)'[^backticks] 로 감쌉니다. 하지만, 절대적으로 선택의 여지가 없는 것이 아닌 한 키워드를 이름으로 사용하는 걸 피하기 바랍니다.
+> 상수나 변수에 스위프트가 예약한 키워드[^reserved-swift-keyword] 와 똑같은 이름을 줄 필요가 있다면, 키워드를 이름으로 사용할 때 역따옴표 (`` ` ``)[^backticks] 로 둘러쌉니다. 하지만, 선택할게 절대로 없는게 아닌 한 이름에 키워드를 사용하는 걸 피하도록 합니다.
 
-기존 변수의 값을 호환 가능한 타입의 또 다른 값으로 바꿀 수 있습니다. 다음 예제는, `friendlyWelcome` 의 값을 `"Hello!"` 에서 `"Bonjour!"` 로 바꿉니다:
+기존 변수 값을 호환 가능한 타입의 다른 값으로 바꿀 수 있습니다. 다음 예제에선, `friendlyWelcome` 값을 `"Hello!"` 에서 `"Bonjour!"` 로 바꿉니다:
 
 ```swift
 var friendlyWelcome = "Hello!"
 friendlyWelcome = "Bonjour!"
-// friendlyWelcome 은 이제 "Bonjour!" 입니다.
+// friendlyWelcome 은 이제 "Bonjour!" 임
 ```
 
-변수와 달리, 상수 값은 설정 후에 바꿀 수 없습니다. 그렇게 하려고 하면 코드 컴파일 때 에러를 보고합니다:
+변수와 달리, 상수 값은 설정 후에 바꿀 수 없습니다. 그렇게 하려고 하면 코드를 컴파일할 때 에러라고 보고합니다:
 
 ```swift
 let languageName = "Swift"
 languageName = "Swift++"
-// 이는 컴파일-시간 에러입니다: languageName 을 바꿀 수 없습니다.
+// This is a compile-time error: languageName cannot be changed. (이는 컴파일-시간 에러입니다: languageName 은 바꿀 수 없습니다.)
 ```
 
 #### Printing Constants and Variables (상수와 변수 인쇄하기)
 
-상수나 변수의 현재 값은 `print(_:separator:terminator:)` 함수로 인쇄할 수 있습니다:
+`print(_:separator:terminator:)` 함수로 상수나 변수의 현재 값을 인쇄할 수 있습니다:
 
 ```swift
 print(friendlyWelcome)
-// "Bonjour!" 를 인쇄합니다.
+// "Bonjour!" 를 인쇄함
 ```
 
-`print(_:separator:terminator:)` 함수는 하나 이상의 값을 적절한 출력 결과로 인쇄하는 전역 함수입니다. '엑스코드 (Xcode)' 에선, 예를 들어, `print(_:separator:terminator:)` 함수가 출력 결과를 '엑스코드의 "콘솔 (console)" 구역' 에 인쇄합니다. `separator` 와 `terminator` 매개 변수에는 '기본 (default) 값' 이 있으므로, 함수 호출 시 이를 생략할 수 있습니다. 기본적으로, 함수는 자신이 인쇄하는 줄에 '줄 끊음 (line break)' 을 추가하여 종결합니다. '줄 끊음' 없이 값을 인쇄하려면,-예를 들어, `print(someValue, terminator : "")` 처럼-빈 문자열을 '종결자 (terminator)' 로 전달합니다. '기본 값을 가진 매개 변수' 에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분을 보도록 합니다.
+`print(_:separator:terminator:)` 함수는 전역 함수로서 하나 이상의 값을 적절한 출력 결과로 인쇄합니다. **엑스코드** 에선, 예를 들어, `print(_:separator:terminator:)` 함수가 자신의 출력 결과를 **엑스코드** 의 "콘솔 (console)" 판에 인쇄합니다. `separator` 와 `terminator` 매개 변수엔 기본 값이 있어서, 이 함수의 호출 때 생략할 수 있습니다. 기본적으로, 함수는 줄 끊음[^line-break] 을 추가하는 걸로 자신이 인쇄하는 줄을 종결합니다. 줄 끊음 없이 값을 인쇄하려면 빈 문자열을 종결자 (terminator) 로 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. 기본 값이 있는 매개 변수에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분을 보기 바랍니다.
 
-스위프트는 '상수나 변수 이름을 더 긴 문자열 안의 자리 표시자 (placeholder) 로 포함시켜, 이를 해당 상수나 변수의 현재 값으로 대체' 하도록 스위프트에게 알리기 위한 _문자열 보간법 (string interpolation)_[^string-interpolation] 을 사용합니다. 이는 '이름을 괄호로 포장' 하고 '시작 괄호 앞에서 역 빗금 (backslash) 으로 벗어나게 (escape)'[^escape] 하면 됩니다:
+스위프트는 _문자열 보간법 (string interpolation)_[^string-interpolation] 을 사용하여 상수나 변수 이름을 더 긴 문자열 안에 자리 표시자[^placeholder] 로 포함시키고, 스위프트에게 이를 그 상수나 변수의 현재 값으로 대체하라고 알립니다. 이름을 괄호로 포장하고 여는 괄호 앞에서 역 빗금[^backslash] 으로 벗어나게[^escape] 하면 됩니다:
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
-// "The current value of friendlyWelcome is Bonjour!" 를 인쇄합니다.
+// "The current value of friendlyWelcome is Bonjour!" 를 인쇄함
 ```
 
-> '문자열 보간법과 같이 쓸 수 있는 모든 옵션' 들은 [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 부분에서 설명합니다.
+> 문자열 보간법과 같이 쓸 수 있는 모든 옵션은 [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 에서 설명합니다.
 
 ### Comments (주석)
 
-스스로의 기록이나 암시를 위해, '주석 (comments)' 을 사용하여 실행 불가능한 문장을 코드에 포함합니다. 스위프트 컴파일러는 코드를 컴파일할 때 주석을 무시합니다.
+주석을 사용하면 실행 불가능한 글을 코드에 포함시켜, 스스로 기록하거나 떠올리게 합니다. 주석은 스위프트가 코드를 컴파일할 때 무시합니다.
 
-스위프트의 주석은 C 의 주석과 매우 비슷합니다. '한-줄 (single-line) 주석' 은 '두 빗금 (two forward-slashes; `//`)' 으로 시작합니다:
+스위프트 주석은 **C** 주석과 매우 비슷합니다. 한-줄짜리 주석은 두 개의 빗금(`//`)[^forward-slashes] 으로 시작합니다:
 
 ```swift
 // 이것은 주석입니다.
 ```
 
-'여러 줄 (multiline) 주석' 은 '빗금과 그 뒤의 별표 (`/*`)' 로 시작하여 '별표와 그 뒤의 빗금 (`*/`)' 으로 끝납니다:
+여러 줄짜리 주석은 빗금과 그 뒤의 별표 (`/*`)[^asterisk] 로 시작해서 별표와 그 뒤의 빗금 (`*/`) 으로 끝납니다:
 
 ```swift
 /* 이것도 주석이지만
- 여러 줄에 걸쳐 작성합니다 */
+ 여러 줄 위에 작성합니다 */
 ```
 
-'C 의 여러 줄 주석' 과는 달리, '스위프트의 여러 줄 주석' 은 '다른 여러 줄 주석 안에 중첩' 할 수 있습니다. '중첩 주석' 은 '여러 줄 주석 블럭을 시작한 다음 첫 번째 블럭 안에서 두 번째 여러 줄 주석을 시작' 함으로써 작성합니다. 그런 다음 두 번째 블럭을 닫고, 그 뒤에 첫 번째 블럭을 닫습니다:
+**C** 의 여러 줄 주석과 달리, 스위프트의 여러 줄 주석은 다른 여러 줄 주석 안에 중첩할 수 있습니다. 중첩 주석을 작성하려면 여러 줄 주석 블럭을 시작한 다음 첫 번째 블럭 안에서 두 번째 여러 줄 주석을 시작하면 됩니다. 그런 다음 두 번째 블럭을 닫은, 뒤에 첫 번째 블럭을 닫습니다:
 
 ```swift
 /* 이것은 첫 번째 여러 줄 주석의 시작입니다.
- /* 이것은 중첩한, 두 번째 여러 줄 주석입니다. */
+ /* 이것은 중첩된, 두 번째 여러 줄 주석입니다. */
  이것은 첫 번째 여러 줄 주석의 끝입니다. */
 ```
 
-'여러 줄 주석 중첩' 은, 코드에 이미 '여러 줄 주석' 이 있는 경우에도, 빠르고 쉽게 큰 코드 블럭을 주석으로 만들 수 있게 합니다.
+여러 줄 주석의 중첩은, 코드에 이미 여러 줄 주석이 있더라도, 빠르고 쉽게 아주 큰 코드 블럭을 주석 처리할 수 있도록 합니다.
 
 ### 세미콜론 (Semicolons)
 
-다른 많은 언어들과는 달리, 스위프트는, 원한다면 그럴 순 있지만, 각각의 코드 구문 뒤에 '세미콜론 (`;`)' 을 작성하도록 요구하지 않습니다. 하지만, 별도의 여러 구문을 한 줄로 작성하고 싶으면 '세미콜론 _이 (are)_ 필수' 입니다:
+수많은 다른 언어와 달리, 스위프트는 각각의 구문 뒤에 세미콜론 (`;`) 을 작성하길 요구하지 않으나, 원한다면 그럴 순 있습니다. 하지만, 여러 개의 별도 구문을 한 줄에 작성하고 싶으면 세미콜론 _이 (are)_ 필수입니다:
 
 ```swift
 let cat = "🐱"; print(cat)
-// "🐱" 를 인쇄합니다.
+// "🐱" 를 인쇄함
 ```
 
 ### Integers (정수)
 
-_정수 (integers)_ 는, `42` 와 `-23` 같이, '분수 성분이 없는 수' 전체 입니다. 정수는 _부호 있는 (signed)_ 것 (양수, 0, 또는 음수) 이거나 아니면 _부호 없는 (unsigned)_ 것 (양수, 또는 0) 입니다.
+_정수 (integers)_ 는, `42` 와 `-23` 같이, 분수 성분이 없는 수 전체입니다. 정수는 _부호 있는 (signed)_ 것 (양수, 0, 또는 음수) 이거나 _부호 없는 (unsigned)_ 것 (양수, 또는 0) 입니다.
 
-스위프트는 '8, 16, 32, 및 64 비트 형식의 부호 있는 그리고 부호 없는 정수' 를 제공합니다. 이 정수들은, '8-비트 부호 없는 정수' 가 `UInt8` 타입이고, '32-비트 부호 있는 정수' 는 `Int32` 타입이라는 점에서, C 와 비슷한 '작명법 (naming convention)' 을 따릅니다. 스위프트의 모든 타입 같이, 이 정수 타입 이름들은 대문자로 시작합니다.
+스위프트는 8, 16, 32, 및 64 비트 형식의 부호 있는 그리고 부호 없는 정수를 제공합니다. 이 정수들은 **C** 와 비슷한 작명법[^naming-convention] 을 따라서, 8-비트 부호 없는 정수는 `UInt8` 타입이고, 32-비트 부호 있는 정수는 `Int32` 타입입니다. 스위프트의 모든 타입 같이, 이 정수 타입 이름들도 대문자로 시작합니다.
 
 #### Integer Bounds (정수의 경계)
 
-`min` 과 `max` 속성으로 각 정수 타입의 최소 및 최대 값에 접근할 수 있습니다:
+각 정수 타입의 최소 및 최대 값엔 `min` 과 `max` 속성으로 접근할 수 있습니다:
 
 ```swift
-let minValue = UInt8.min  // minValue 는 0 이고, 타입은 UInt8 입니다.
-let maxValue = UInt8.max  // maxValue 는 255 이고, 타입은 UInt8 입니다.
+let minValue = UInt8.min  // minValue 는 0 이고, 타입은 UInt8 임
+let maxValue = UInt8.max  // maxValue 는 255 이고, 타입은 UInt8 임
 ```
 
-이 속성 값들은 (위 예제의 `UInt8` 같은) 적절한-크기의 수치 타입이며 따라서 표현식에서 똑같은 타입의 다른 값과 나란히 사용할 수 있습니다.
+이 속성 값들은 적절한-크기의 수치 타입 (위 예제의 `UInt8` 같은 것) 이므로 표현식 안에서 타입이 똑같은 다른 값과 나란하게 사용할 수 있습니다.
 
 #### Int (정수)
 
-대부분의 경우, 코드에서 사용할 특정 정수의 크기는 고를 필요가 없습니다. 스위프트는, `Int` 라는, 추가적인 정수 타입을 제공하며, 이는 '현 플랫폼 고유의 워드 (word)[^word] 크기' 와 똑같은 크기를 가집니다:
+대부분의 경우, 코드에서 사용할 특정한 정수 크기는 고를 필요가 없습니다. 스위프트는 추가 정수 타입으로, `Int` 를 제공하는데, 이것의 크기는 현재 플랫폼의 고유 워드 크기[^word] 와 똑같습니다:
 
-* 32-비트 플랫폼에 대한, `Int` 는 `Int32` 와 똑같은 크기입니다.
-* 64-비트 플랫폼에 대한, `Int` 는 `Int64` 와 똑같은 크기입니다.
+* 32-비트 플랫폼에서, `Int` 는 `Int32` 와 똑같은 크기입니다.
+* 64-비트 플랫폼에서, `Int` 는 `Int64` 와 똑같은 크기입니다.
 
-특정 크기의 정수와 작업해야 하는 것이 아닌 한, 코드에서 정수 값으로 항상 `Int` 를 사용합니다. 이는 '코드 일관성 (consistency) 과 상호 호환성 (interoperability)' 을 높입니다. 32-비트 플랫폼에 대한, `Int` 도 `-2,147,483,648` 에서 `2,147,483,647` 에 이르는 값을 저장할 수 있으며, 수많은 정수 범위로는 충분히 큽니다.
+특정 크기의 정수 작업을 할 필요가 있는게 아닌 한, 항상 코드 안의 정수 값에 `Int` 를 사용하도록 합니다. 이는 코드 일관성[^consistency] 과 상호 호환성[^interoperability] 을 높입니다. 심지어 32-비트 플랫폼의, `Int` 도 `-2,147,483,648` 에서 `2,147,483,647` 사이의 어떤 값이든 저장할 수 있으며, 수많은 정수 범위로는 이것도 충분히 큽니다.
 
 #### UInt (부호없는 정수)
 
-스위프트는, `UInt` 라는, 부호없는 정수 타입도 제공하며, 이는 '현 플랫폼 고유의 워드 크기' 와 똑같은 크기를 가집니다:
+스위프트는 부호없는 정수 타입인, `UInt` 도 제공하는데, 이것의 크기는 현재 플랫폼의 고유 워드 크기와 똑같습니다:
 
-* 32-비트 플랫폼에 대한, `UInt` 는 `UInt32` 와 똑같은 크기입니다.
-* 64-비트 플랫폼에 대한, `UInt` 는 `UInt64` 와 똑같은 크기입니다.
+* 32-비트 플랫폼에서, `UInt` 는 `UInt32` 와 똑같은 크기입니다.
+* 64-비트 플랫폼에서, `UInt` 는 `UInt64` 와 똑같은 크기입니다.
 
 > `UInt` 는 특히 '플랫폼 고유의 워드 크기와 똑같은 크기의 부호 없는 정수가 필요할 때' 에만 사용합니다. 이 경우가 아니면, 저장 값이 음수가 아님을 알 때에도, `Int` 가 더 좋습니다. 정수 값에 `Int` 를 일관성 있게 사용하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, '코드 상호 호환성 (interoperability)' 을 높이고, 서로 다른 수치 타입 사이의 변환을 피하며, '정수 타입 추론' 과도 일치합니다.
 
@@ -546,15 +546,15 @@ if convertedNumber != nil {
 
 #### Optional Binding (옵셔널 연결)
 
-옵셔널이 값을 담고 있는 지 알아내고, 그럴 경우, 해당 값을 임시 상수나 변수로 사용 가능하도록, _옵셔널 연결 (optional binding)_ 을 사용합니다. 옵셔널 연결은, 단일 작업으로, 옵셔널 안의 값을 검사하고, 상수나 변수로 해당 값을 추출하기 위해, `if` 와 `while` 문과 사용할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 설명합니다.
+_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널에 값이 담겼는지 알아내서, 그렇다면, 그 값을 임시 상수나 변수로 사용 가능하게 만듭니다. 옵셔널 연결을 `if` 및 `while` 문과 사용하면 옵셔널 안의 값 검사와, 그 값을 상수나 변수로 뽑아내는 걸, 단일 행동으로 할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 설명합니다.
 
-`if` 문을 위한 옵셔널 연결은 다음 처럼 작성합니다:
+`if` 문의 옵셔널 연결은 다음 처럼 작성합니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;if let `constantName-상수 이름` = `someOptional-어떤 옵셔널` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-[Optionals (옵셔널)](#optionals-옵셔널) 부분의 `possibleNumber` 예제는 '강제 포장 풀기' 보단 '옵셔널 연결' 을 사용하도록 재작성할 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널) 절에 있는 `possibleNumber` 예제를 강제 포장 풀기 보단 옵셔널 연결을 사용하게 재작성할 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -562,24 +562,47 @@ if let actualNumber = Int(possibleNumber) {
 } else {
   print("The string \"\(possibleNumber)\" could not be converted to an integer")
 }
-// "The string "123" has an integer value of 123" 을 인쇄합니다.
+// "The string "123" has an integer value of 123" 을 인쇄함
 ```
 
-이 코드는 다음처럼 이해할 수 있습니다:
+이 코드는 다음처럼 읽을 수 있습니다:
 
-"`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 가 값을 담고 있다면, 옵셔널이 담은 값을 `actualNumber` 라는 새로운 상수에 설정합니다."
+"`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 에 값이 담겨 있으면, `actualNumber` 라는 새 상수에 옵셔널이 담은 값을 설정합니다."
 
-변환을 성공하면, `actualNumber` 라는 상수가 `if` 문의 첫 번째 분기 안에서 사용 가능해 집니다. 이미 옵셔널 _안에 (within)_ 담긴 값으로 초기화 했으므로, 값에 접근할 때 `!` 접미사를 사용하지 않습니다. 이 예제의, `actualNumber` 는 변환 결과를 단순히 인쇄하는데 사용합니다.
+변환 성공이면, `if` 문 첫 번째 분기 안에서 `actualNumber` 상수를 사용하는게 가능해집니다. 이미 옵셔널 _안에 (within)_ 담은 값으로 초기화되었으므로, 값에 접근하는데 `!` 접미사를 쓰지 않습니다. 이 예제에선, `actualNumber` 를 단순히 변환 결과의 인쇄에 사용합니다.
 
-상수와 변수 둘 다 옵셔널 연결과 사용할 수 있습니다. `actualNumber` 의 값을 `if` 문 첫 번째 분기 안에서 조작하고 싶으면, `if var actualNumber` 라고 대신 작성하면, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용 가능하게 할 수 있을 것입니다.
+자신이 담은 값에 접근한 후에 원본인, 옵셔널 상수나 변수로의 참조가 필요 없으면, 새로운 상수나 변수에 똑같은 이름을 사용할 수 있습니다:
 
-쉼표로 구분하여, 필요한 만큼 '많은 옵셔널 연결과 불리언 조건' 을, 단일 `if` 문 안에 포함할 수 있습니다. 옵셔널 연결의 어떤 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 라고 평가한다면, `if` 문 조건 전체가 `false` 인 것으로 고려합니다. 다음 `if` 문들은 서로 '같은 값' 입니다:
+```swift
+let myNumber = Int(possibleNumber)
+// 여기서, myNumber 는 옵셔널 정수임
+if let myNumber = myNumber {
+  // 여기서, myNumber 는 옵셔널-아닌 정수임
+  print("My number is \(myNumber)")
+}
+// "My number is 123" 을 인쇄함
+```
+
+이 코드는, 이전 예제 안의 코드와 같이, `myNumber` 에 값이 담겨 있는지 검사하는 걸로 시작합니다. `myNumber` 에 값이 있으면, `myNumber` 라는 이름의 새 상수 값에 그 값을 설정합니다. `if` 문 본문 안에서, `myNumber` 를 쓰면 새로운 그 옵셔널-아닌 상수를 참조합니다. `if` 문 시작 전과 끝난 후에, `myNumber` 를 쓰면 원본인 정수 상수를 참조합니다.
+
+이런 종류의 코드가 너무 흔하기 때문에, 더 짧은 철자를 써서 옵셔널 값의 포장을 풀 수 있는데: 그냥 포장 풀 상수나 변수 이름을 쓰면 됩니다. 새로운, 포장 푼 상수나 변수는 암시적으로 옵셔널 값과 똑같은 이름을 사용합니다.
+
+```swift
+if let myNumber {
+  print("My number is \(myNumber)")
+}
+// "My number is 123" 을 인쇄함
+```
+
+상수와 변수 둘 다 옵셔널 연결로 사용할 수 있습니다. `if` 문의 첫 번째 분기 안에서 `myNumber` 값을 조작하고 싶다면, 그 대신 `if var myNumber` 라고 작성하면, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용 가능할 것입니다.
+
+필요한 만큼 많은 옵셔널 연결과 불리언 조건을 단일 `if` 문 안에 포함시키는 건, 쉼표로 구분하여 할 수 있습니다. 어떤 옵셔널 연결 값이든 `nil` 이거나 어떤 불리언 조건이든 `false` 로 평가되면, `if` 문의 전체 조건이 `false` 라고 고려합니다. 다음의 `if` 문은 서로 같은 겁니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
   print("\(firstNumber) < \(secondNumber) < 100")
 }
-// "4 < 42 < 100" 를 인쇄합니다.
+// "4 < 42 < 100" 를 인쇄함
 
 if let firstNumber = Int("4") {
   if let secondNumber = Int("42") {
@@ -588,10 +611,10 @@ if let firstNumber = Int("4") {
     }
   }
 }
-// "4 < 42 < 100" 를 인쇄합니다.
+// "4 < 42 < 100" 를 인쇄함
 ```
 
-> '`if` 문의 옵셔널 연결로 생성한 상수와 변수' 는 '`if` 문 본문 안에서만 사용 가능' 합니다. 이와 대조적으로, `guard` 문으로 생성한 상수와 변수는, [Early Exit (때 이른 탈출문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-때-이른-탈출문) 에서 설명한 것처럼, `guard` 문 뒤의 코드 줄에서 사용 가능합니다.
+> `if` 문에서 옵셔널 연결로 생성한 상수와 변수는 `if` 문 본문 안에서만 사용 가능합니다. 이와 대조하여, [Early Exit (때 이른 탈출문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-때-이른-탈출문) 에서 설명한 것처럼, `guard` 문으로 생성한 상수와 변수는 `guard` 문 다음 줄의 코드에서 사용 가능합니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)
 
@@ -749,7 +772,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 실패가 일어났다는 것-예를 들어, '모든 유효한 입력 자료는 switch 문의 다른 case 절에서 처리했어야 함' 에도, 'switch 문의 기본 case 절' 을 취한 경우 등-을 지시하기 위해 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출할 수도 있습니다.
 
-> '검사 안하는 (unchecked) 모드 (`-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건문을 항상 참으로 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과 상관없이, 실행을 항상 중단합니다.
+> '검사하지 않음 (unchecked) 모드 (`-Ounchecked`)' 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건문을 항상 참으로 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정과 상관없이, 실행을 항상 중단합니다.
 >
 > `fatalError(_:file:line:)` 함수는 프로토 타입 및 이른 시기의 개발 중에 아직 구현 안된 기능에 대해, `fatalError("Unimplemented")` 를 작성함으로써, '토막 (stub) 구현'[^stub] 을 생성하고자, 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 최적화로 절대 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, '토막 구현' 과 마주치면 항상 실행이 중단된다고 확신할 수 있습니다.
 
@@ -761,13 +784,11 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^The-Basics]: 원문은 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^set-dictionary]: 'Set (셋)' 은 수학 용어로 '집합' 을 의미하고, 'Dictionary (딕셔너리)' 는 '사전' 을 의미합니다. 이들의 역할은 용어의 의미와 일치하지만, 각자 '자료 타입' 임을 확실히 나타내기 위해, '셋' 과 '딕셔너리' 라고 발음대로 옮깁니다. 'Array (배열)' 의 경우에는, 이미 '배열' 이라는 용어를 '자료 타입' 으로 널리 사용하고 있으므로 계속 '배열' 이라고 옮깁니다.
-
-[^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
+[^set-dictionary]: `Set` 은 실제 수학 용어로써 '집합' 이라는 의미이고, `Dictionary` 는 '사전' 이라는 의미입니다. 하지만, 본문에서 자료 타입으로 사용할 때는 이들을 **셋** 과 **딕셔너리** 처럼 발음 그대로 옮깁니다. `Array` 는 오랜 시간 동안 이미 **배열** 이라는 용어를 사용해 오고 있기 때문에, 계속해서 배열이라고 옮깁니다.
 
 [^annotation]: 'annotation' 는 사실 '주석' 이라고 옮기는 것이 가장 적당하지만, 프로그래밍 분야에서는 'comments' 가 '주석' 이라고 이미 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라고 옮깁니다. 실제로 스위프트에서는 'annotation' 을 쓸 일이 거의 없기 때문에 이 용어에는 비중을 크게 두지 않아도 됩니다.
+
+[^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
 
 [^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
 

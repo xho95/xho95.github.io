@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Automatic Reference Counting (자동 참조 카운팅)"
+title:  "Swift 5.7: Automatic Reference Counting (자동 참조 카운팅)"
 date:   2020-06-30 10:00:00 +0900
 categories: Swift Language Grammar ARC Automatic Reference Counting
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Automatic Reference Counting (자동 참조 카운팅)
 
@@ -93,7 +93,7 @@ reference3 = nil
 
 위 예제에서, ARC 는 새로 생성한 `Person` 인스턴스의 참조 개수를 추적하고 더 이상 필요하지 않을 땐 그 `Person` 인스턴스를 해제하는게 가능합니다.
 
-하지만, 작성한 코드에서 클래스 인스턴스의 강한 참조가 _절대로 (never)_ 0개가 되지 않을 가능성이 있습니다. 이는 클래스 인스턴스 두 개가 서로의 강한 참조를 쥐고 있어, 각각의 인스턴스가 다른 걸 살아있게 하면, 발생할 수 있습니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라 합니다.
+하지만, 작성한 코드에서 클래스 인스턴스의 강한 참조가 _절대로 (never)_ 0 개가 되지 않을 가능성이 있습니다. 이는 클래스 인스턴스 두 개가 서로의 강한 참조를 쥐고 있어, 각각의 인스턴스가 다른 걸 살아있게 하면, 발생할 수 있습니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라 합니다.
 
 강한 참조 순환을 해결하려면 클래스 사이의 일부 관계를 강한 참조 대신 약한 (weak) 또는 소유하지 않는 (unowned) 참조로 정의하면 됩니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환의 해결 방법을 배우기 전에, 그런 순환을 유발하는 방법을 이해하는게 유용합니다.
 

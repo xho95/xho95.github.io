@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Functions (함수)"
+title:  "Swift 5.7: Functions (함수)"
 date:   2020-06-02 10:00:00 +0900
 categories: Swift Language Grammar Function
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Functions](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 부분[^Functions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Functions](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 부분[^Functions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Functions (함수)
 
@@ -298,7 +298,7 @@ someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 임
 
 #### Variadic Parameters (가변 매개 변수)
 
-_가변 매개 변수 (variadic parameter)_ 는 특정 타입의 값을 0개 이상 받아 들입니다. 가변 매개 변수는 함수 호출할 때 매개 변수에다가 다양한 개수의 입력 값을 전달할 수 있음을 지정하고자 사용합니다. 매개 변수 타입 이름 뒤에 마침표 문자 세 개 (`...`) 를 집어 넣어서 가변 매개 변수를 작성합니다.
+_가변 매개 변수 (variadic parameter)_ 는 특정 타입의 값을 0 개 이상 받아 들입니다. 가변 매개 변수는 함수 호출할 때 매개 변수에다가 다양한 개수의 입력 값을 전달할 수 있음을 지정하고자 사용합니다. 매개 변수 타입 이름 뒤에 마침표 문자 세 개 (`...`) 를 집어 넣어서 가변 매개 변수를 작성합니다.
 
 가변 매개 변수에 전달한 값은 함수 본문 안에서 적절한 타입의 배열로 사용 가능합니다. 예를 들어, `numbers` 라는 이름과 `Double...` 이라는 타입을 가진 가변 매개 변수는 함수 본문 안에서 `[Double]` 타입의 `numbers` 라는 상수 배열로 사용 가능합니다.
 

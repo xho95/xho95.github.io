@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Opaque Types (불투명 타입)"
+title:  "Swift 5.7: Opaque Types (불투명 타입)"
 date:   2020-02-22 11:30:00 +0900
 categories: Swift Language Grammar Opaque Type
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Opaque Types (불투명 타입)
 
@@ -40,7 +40,7 @@ print(smallTriangle.draw())
 // ***
 ```
 
-일반화를 사용하면, 아래 코드에서 보는 것처럼, 도형을 수직으로 뒤집는 연산을 구현할 수도 있을 겁니다. 하지만, 이 접근법에는 중요한 한계가 있는데: 뒤집은 결과의 생성에 사용하는 일반화 타입을 정확히 드러낸다는 겁니다.[^flippedTriangle-Type]
+일반화를 사용하면, 아래 코드에서 보듯, 도형을 수직으로 뒤집는 연산도 구현할 수 있을 것입니다. 하지만, 이 접근법에는 중요한 한계가 있는데: 뒤집은 결과를 생성하는데 사용한 일반화 타입이 정확하게 드러난다는 겁니다.[^flippedTriangle-Type]
 
 ```swift
 struct FlippedShape<T: Shape>: Shape {
@@ -290,6 +290,8 @@ print(type(of: twelve))
 [^differ-type-identity]: '타입 정체성 (type identity)' 에 대해서는 이 장 맨 앞부분의 설명과 주석을 보도록 합니다.
 
 [^less-sepcific]: 이는 '프로토콜 타입' 을 사용하면 해당 '프로토콜 필수 조건' 에서 정의한 인터페이스만 사용할 수 있기 때문입니다. 즉 타입 정보가 덜 특정해 질수록 사용할 수 있는 인터페이스가 더 줄어들게 됩니다.
+
+[^protocol-type-value]: 프로토콜을 준수한다는 건 프로토콜의 필수 조건을 모두 구현한다는 의미입니다. 하지만, 프로토콜 그 자체는 추상 타입이라서 어떤 것도 직접 구현하지 않습니다. 즉, 어떠한 값이 프로토콜 타입이라면 그 프로토콜을 준수하지 않습니다.
 
 [^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
 

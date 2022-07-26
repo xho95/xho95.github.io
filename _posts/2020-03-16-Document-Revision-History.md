@@ -1,34 +1,34 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Document Revision History (문서 개정 이력)"
+title:  "Swift 5.7: Document Revision History (문서를 다듬은 역사)"
 date:   2020-03-16 10:00:00 +0900
 categories: Swift Language Grammar Revision History
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 부분[^Revision-History]을 번역하고, 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 부분[^Revision-History]을 번역하고, 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
-## Document Revision History (문서 개정 이력)
+## Document Revision History (문서를 다듬은 역사)
 
 #### 2022-06-06
 
 * 스위프트 5.7 에서 업데이트함.
-* 행위자 (actors) 와 임무 (tasks) 사이에 데이터 보내기에 대한 정보를 가진, [Sendable Types]() 절을 추가하고, `@Sendable` 과 `@unchecked` 특성에 대한 정보를 [Sendable]() 과 [unchecked]() 절에 추가함.
-* 정규 표현식 (regular expression) 생성에 대한 정보를 가진 [Regular Expression Literals]({% post_url 2020-07-28-Lexical-Structure %}#regular-expression-literals-정규-표현식-글자 값) 절을 추가함.
-* 짧은 형식의 `if`-`let` 에 대한 정보를 [Optional Binding]() 절에 추가함.
-* `#unavailable` 에 대한 정보를 [Checking API Availability]() 절에 추가함.
+* 행위자와 임무 사이의 데이터 보내기에 대한 정보를 가진, [Sendable Types (보내기 가능 타입)]({% post_url 2021-06-10-Concurrency %}#sendable-types-보내기-가능-타입) 절을 추가하고, [Sendable (보내기 가능함)]({% post_url 2020-08-14-Attributes %}#sendable-보내기-가능함) 과 [unchecked (검사하지 않음)]({% post_url 2020-08-14-Attributes %}#unchecked-검사하지-않음) 절에 `@Sendable` 과 `@unchecked` 특성애 대한 정보를 추가함.
+* 정규 표현식의 생성에 대한 정보를 가진 [Regular Expression Literals (정규 표현식 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#regular-expression-literals-정규-표현식-글자 값) 절을 추가함.
+* [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 절에 짧은 형식의 `if`-`let` 에 대한 정보를 추가함.
+* [Checking API Availability (API 사용 가능성 검사)]({% post_url 2020-06-10-Control-Flow %}#checking-api-availability-api-사용-가능성-검사) 절에 `#unavailable` 에 대한 정보를 추가함.
 
 #### 2022-03-14
 
 * 스위프트 5.6 에서 업데이트함. 
-* 연쇄적인 메소드 호출과 그 외 접미사 표현식 주위의 `#if` 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절을 업데이트함.
-* 보여지는 전체 그림 스타일을 업데이트함.
+* 연쇄된 메소드 호출 및 다른 접미사 표현식 주변에서 `#if` 의 사용에 대한 정보를 가지고 [Explicit Member Expression (명시적 멤버 표현식)]({% post_url 2020-08-19-Expressions %}#explicit-member-expression-명시적-멤버-표현식) 절을 업데이트함.
+* 보여지는 그림 스타일을 전체적으로 업데이트함.
 
 #### 2021-09-20
 
 * 스위프트 5.5 에서 업데이트함. 
-* 비동기 함수 (asynchronous functions) 와, 임무 (tasks), 및 행위자 (actors) 에 대한 정보를 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장과, [Actor Declaration (행위자 선언)]({% post_url 2020-08-15-Declarations %}#actor-declaration-행위자-선언), [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드), 그리고 [Await Operator (`await` 연산자)]({% post_url 2020-08-19-Expressions %}#await-operator-await-연산자)  추가함.
-* '밑줄 (underscore) 로 시작하는 식별자' 에 대한 정보를 가지고 [Identifiers (식별자)]({% post_url 2020-07-28-Lexical-Structure %}#identifiers-식별자) 절을 업데이트함.
+* 비동기 함수와, 임무, 및 행위자에 대한 정보를 [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장 및, [Actor Declaration (행위자 선언)]({% post_url 2020-08-15-Declarations %}#actor-declaration-행위자-선언) 과, [Asynchronous Functions and Methods (비동기 함수와 메소드)]({% post_url 2020-08-15-Declarations %}#asynchronous-functions-and-methods-비동기-함수와-메소드), 및 [Await Operator (`await` 연산자)]({% post_url 2020-08-19-Expressions %}#await-operator-await-연산자) 절에 추가함.
+* 밑줄로 시작하는 식별자에 대한 정보를 가지고 [Identifiers (식별자)]({% post_url 2020-07-28-Lexical-Structure %}#identifiers-식별자) 절을 업데이트함.
 
 #### 2021-04-26
 

@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Concurrency (동시성)"
+title:  "Swift 5.7: Concurrency (동시성)"
 date:   2021-06-10 11:30:00 +0900
 categories: Swift Language Grammar Concurrency
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Concurrency](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Conccurency] 을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Concurrency](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Conccurency] 을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Concurrency (동시성)
 
@@ -240,6 +240,46 @@ print(logger.max)  // 에러
 ```
 
 `await` 작성 없이 `logger.max` 에 접근하면 실패하는데 행위자의 속성은 그 행위자의 격리된 지역 상태 (isolated local state) 의 일부이기 때문입니다. 스위프트는 행위자 안의 코드만 행위자의 지역 상태에 접근할 수 있음을 보증합니다. 이 보증을 _행위자 격리 (actor isolation)_ 라고 합니다.
+
+### Sendable Types (보내기 가능 타입)
+
+임무와 행위자는 프로그램을 조각조각 나누어 동시에 안전하게 실행할 수 있게 합니다. 임무나 행위자 인스턴스 안에서, 변수와 속성 같이, 변경 가능 상태를 담은 프로그램 부분을, _동시성 영역 (concurrency domain)_ 이라고 부릅니다. 일부 데이터는 동시성 영역 사이에서 공유할 수 없는데, 그 데이터가 변경 가능 상태를 담고 있어, 접근 겹침을 보호하지 않기 때문입니다.
+
+한 동시성 영역에서 또 다른 곳으로 공유할 수 있는 타입을 _보내기 가능한 (sendable)_ 타입이라고 합니다. 예를 들어, 이는 행위자 메소드 호출 때 인자로 전달될 수도 임무 결과로 반환될 수도 있습니다. 이 장 앞의 예제에선 보내기 가능성을 논하지 않았는데 그 예제들은 단순한 값 타입을 사용해서 동시성 영역 사이에서 값을 전달하여 공유하는게 항상 안전하기 때문입니다. 이와 대조하여, 일부 타입은 동시성 영역을 통과하는게 안전하지 않습니다. 예를 들어, 변경 가능 속성을 담으면서 그 속성으로의 접근을 직렬화 하지 않은 클래스는 서로 다른 임무 사이에 그 클래스 인스턴스를 전달할 때 예측 불가능한 잘못된 결과를 만들 수 있습니다.
+
+타입을 보내기 가능이라고 표시하려면 `Sendable` 프로토콜 준수성을 선언하면 됩니다. 이 프로토콜엔 어떤 필수 조건 코드도 없지만, 의미 구조 상의 필수 조건을 스위프트가 강제합니다. 일반적으로, 세 가지 방법으로 타입을 보내기 가능합니다:
+
+* 타입이 값 타입이면서, 자신의 변경 가능 상태가 다른 보내기 가능한 데이터들로 구성된 것-예를 들어, 보내기 가능한 속성을 저장하는 구조체나 보내기 가능한 결합 값이 있는 열거체 등
+* 타입에 어떤 변경 가능 상태도 없으며서, 자신의 변경 불가 상태가 다른 보내기 가능한 데이터들로 구성된 것-예를 들어, 읽기-전용 속성만 있는 구조체나 클래스 등
+* 타입에 변경 가능 상태의 안전성을 보장하는 코드가 있는 것, `@MainActor` 를 표시한 클래스나 속성으로의 접근을 특별한 쓰레드나 큐로 직렬화 한 클래스 같은 것 등 
+
+의미 구조 상의 필수 조건에 대한 자세한 목록은, [Sendable](https://developer.apple.com/documentation/swift/sendable) 프로토콜 자료를 보기 바랍니다. 
+
+일부 타입은 항상 보내기 가능한데, 보내기 가능 속성만 있는 구조체와 보내기 가능 결합 값만 있는 열거체가 그것입니다. 예를 들면, 다음과 같습니다:
+
+```swift
+struct TemperatureReading: Sendable {
+  var measurement: Int
+}
+
+extension TemperatureLogger {
+  func addReading(from reading: TemperatureReading) {
+    measurements.append(reading.measurement)
+  }
+}
+
+let logger = TemperatureLogger(label: "Tea kettle", measurement: 85)
+let reading = TemperatureReading(measurement: 45)
+await logger.addReading(frome: reading)
+```
+
+`TemperatureReading` 은 보내기 가능 속성만 있는 구조체면서, 구조체를 `public` 이나 `@usableFromInline` 로 표시하지 않기 때문에, 암시적으로 보내기 가능합니다. `Sendable` 프로토콜을 암시적으로 준수하는 구조체 버전은 이렇습니다:
+
+```swift
+struct TemperatureReading {
+  var measurement: Int
+}
+```
 
 ### 다음 글
 

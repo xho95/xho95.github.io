@@ -1,13 +1,13 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Collection Types (집합체 타입)"
+title:  "Swift 5.7: Collection Types (집합체 타입)"
 date:   2016-06-06 19:45:00 +0900
 categories: Swift Grammar Collection Array Set Dictionary
 redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collection-Types.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html) 부분[^Collection-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html) 부분[^Collection-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Collection Types (집합체 타입)
 

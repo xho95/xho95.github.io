@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Initialization (초기화)"
+title:  "Swift 5.7: Initialization (초기화)"
 date:   2016-01-23 19:35:00 +0900
 categories: Xcode Swift Grammar Initialization
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Initialization](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 부분[^Initialization]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Initialization](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 부분[^Initialization]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Initialization (초기화)
 
@@ -513,7 +513,7 @@ print("Bicycle: \(bicycle.description)")
 // Bicycle: 2 wheel(s)
 ```
 
-하위 클래스 초기자는 초기화 과정 단계 2 에서 아무런 사용자 정의도 하지 않고, 상위 클래스는 인자가-0개인 지명 초기자를 가진다면, 하위 클래스의 모든 저장 속성에 값을 할당한 후에 `super.init()` 호출을 생략할 수 있습니다.[^no-customization]
+하위 클래스 초기자는 초기화 과정 단계 2 에서 아무런 사용자 정의도 하지 않고, 상위 클래스는 인자가-0 개인 지명 초기자를 가진다면, 하위 클래스의 모든 저장 속성에 값을 할당한 후에 `super.init()` 호출을 생략할 수 있습니다.[^no-customization]
 
 이 예제는, `Hoverboard` 라는, 또 다른 `Vehicle` 하위 클래스를 정의합니다. 자신의 초기자에서, `Hoverboard` 클래스는 `color` 속성만 설정합니다. `super.init()` 호출을 명시하는 대신, 이 초기자는 상위 클래스 초기자의 암시적 호출로 과정을 완료합니다.
 

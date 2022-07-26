@@ -1,14 +1,14 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Nested Types (중첩 타입)"
+title:  "Swift 5.7: Nested Types (중첩 타입)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Nested Types
 redirect_from: "/swift/language/grammar/nested/2017/03/02/Nested-Types.html"
 redirect_from: "/swift/language/grammar/nested/types/2017/03/02/Nested-Types.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 부분[^Nested-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 부분[^Nested-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Nested Types (중첩 타입)
 

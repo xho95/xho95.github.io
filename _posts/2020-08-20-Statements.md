@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.5: Statements (구문)"
+title:  "Swift 5.7: Statements (구문)"
 date:   2020-08-20 11:30:00 +0900
 categories: Swift Language Grammar Statement
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.5)](https://docs.swift.org/swift-book/) 책의 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Statements]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.5: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Statements]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
 
 ## Statements (구문)
 
@@ -492,7 +492,7 @@ _사용 가능성 조건 (availablility condition)_ 을 `if` 문과, `while` 문
 
 사용 가능성 조건을 사용하면, 사용하고 싶은 API 가 실행 시간에 사용 가능한 지에 따라, 코드 블럭을 실행합니다. 그 코드 블럭 안의 API 가 사용 가능한지 입증할 때 컴파일러가 사용 가능성 조건 정보를 사용합니다.
 
-사용 가능성 조건은 쉼표로-구분한 플랫폼 이름 및 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 를 사용하고, 해당하는 버전 번호를 포함합니다. `*` 인자는 필수이며, 다른 어떤 플랫폼에서든, 사용 가능성 조건으로 보호할 코드 블럭 본문을 대상으로 정한 최소 배포 대상에서 실행하도록, 지정합니다.
+사용 가능성 조건은 쉼표로-구분한 플랫폼 이름 및 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 를 사용하고, 해당하는 버전 번호를 포함합니다. `*` 인자는 필수이며, 다른 어떤 플랫폼에서든, 대상이 지정한 최소 배포 대상에서 사용 가능성 조건이 보호할 코드 블럭 본문을 실행하도록, 지정합니다.
 
 불리언 조건과 달리, 사용 가능성 조건을 `&&` 와 `||` 같은 논리 연산자로 조합할 순 없습니다. `!` 로 사용 가능성 조건을 반대로 뒤집는 대신, 다음 형식의, 사용 불가능성 조건을 사용합니다:
 
@@ -503,6 +503,7 @@ _사용 가능성 조건 (availablility condition)_ 을 `if` 문과, `while` 문
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
 `#unavailable` 형식은 조건을 반대로 뒤집는 수월한 구문입니다. 사용 불가능성 조건에서, `*` 인자는 암시적아라 반드시 포함하지 말아야 합니다. 이것의 의미는 사용 가능성 조건안의 `*` 인자와 똑같습니다.
+
 
 > GRAMMAR OF AN AVAILABILITY CONDITION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID522)
 
