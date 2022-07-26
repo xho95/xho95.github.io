@@ -204,14 +204,14 @@ let maxValue = UInt8.max  // maxValue 는 255 이고, 타입은 UInt8 임
 
 ### Floating-Point Numbers (부동-소수점 수)
 
-_부동-소수점 수 (floating-point numbers)_ 는, `3.14159`, `0.1`, 및 `-273.15` 같이, '분수 성분을 가진 수' 입니다.
+_부동-소수점 수 (floating-point numbers)_ 는, `3.14159` 와, `0.1`, 및 `-273.15` 같이, 분수 성분이 있는 수입니다.
 
-'부동-소수점 타입' 은 정수 타입보다 훨씬 넓은 범위의 값을 표현할 수 있으며, `Int` 에 저장할 수 있는 것보다 훨씬 더 크거나 작은 수도 저장할 수 있습니다. 스위프트는 두 개의 부호 있는 부동-소수점 수치 타입을 제공합니다:
+부동-소수점 타입은 정수 타입보다 훨씬 더 넓은 범위의 값을 나타낼 수 있으며, `Int` 가 저장할 수 있는 것보다 훨씬 더 크거나 작은 수도 저장할 수 있습니다. 스위프트는 두 개의 부호 있는 부동-소수점 수치 타입을 제공합니다:
 
-* `Double` 은 64-비트 부동-소수점 수를 표현합니다.
-* `Float` 은 32-비트 부동-소수점 수를 표현합니다.
+* `Double` 은 64-비트 부동-소수점 수를 나타냅니다.
+* `Float` 은 32-비트 부동-소수점 수를 나타냅니다.
 
-> `Double` 은 적어도 '15 자리 유효 숫자 (decimal digits) 의 정밀도' 를 가지는 반면, `Float` 의 정밀도는 좀 더 적은 '6 자리 유효 숫자' 를 가질 수 있습니다. 사용에 적절한 부동-소수점 타입은 코드 작업에 필요한 값의 본질과 범위에 달려 있습니다. 어느 타입이든 적절할 수 있는 상황에선, `Double` 이 더 좋습니다.
+> `Double` 의 정밀도는 적어도 15 자리 유효 숫자[^decimal-digits] 인 반면, `Float` 의 정밀도는 6 자리 유효 숫자인 만큼 작습니다. 사용에 적절한 부동-소수점 타입은 코드 작업에 필요한 값의 고유 성질과 범위에 달려 있습니다. 어느 타입이어도 적절할 상황이면, `Double` 이 더 좋습니다.
 
 ### Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)
 
@@ -790,13 +790,13 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
 
-[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
-
 [^string-interpolation]: 'interpolation' 은 원래 수학 용어로 '보간법' 이라고 하며, 두 값 사이에 근사식으로 구한 값을 집어넣는 것을 말합니다. 'string interpolation' 은 '문자열 삽입법' 정도로 옮길 수도 있지만, 수학 용어로 '보간법' 이라는 말이 널리 쓰이고 있으므로 '문자열 보간법' 이라고 옮깁니다.
 
 [^escape]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 는 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자'-즉, '특수한 의미를 가지는 문자' 정도로 이해할 수 있습니다. 참고로 스위프트에는 'escaping closure' 라는 것도 있는데, 이는 '(자신이 정의되어 있는 영역을) 벗어나서 (존재할 수 있는) 클로저'-즉, '영역을 벗어날 수 있는 클로저' 정도의 의미를 가지고 있습니다.
 
 [^word]: 컴퓨터 용어로 'word (워드; 단어)' 는 프로세서에서 한 번에 처리할 수 있는 데이터 단위를 말합니다.
+
+[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
 
 [^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 보도록 합니다.
 
