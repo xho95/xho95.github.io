@@ -380,9 +380,9 @@ let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-`orangesAreOrange` 와 `turnipsAreDelicious` 타입은 '불리언 글자 값으로 초기화한다' 는 사실에 의해서 `Bool` 이라고 추론합니다. 위의 `Int` 와 `Double` 에서 처럼, 상수나 변수를 생성하자 마자 `true` 나 `false` 로 설정하면 `Bool` 이라고 선언할 필요가 없습니다. '타입 추론 (장치)' 는 이미 타입을 알고 있는 값으로 상수나 변수를 초기화할 때 더 간결하고 이해하기 쉬운 스위프트 코드를 만들도록 도와줍니다.
+`orangesAreOrange` 와 `turnipsAreDelicious` 타입은 불리언 글자 값으로 초기화한다는 사실로 인하여 `Bool` 로 추론되었습니다. 위에 있는 `Int` 와 `Double` 처럼, 상수나 변수를 생성하자 마자 `true` 나 `false` 로 설정하면 `Bool` 로 선언할 필요가 없습니다. 타입 추론 장치는 이미 타입을 아는 값으로 상수나 변수를 초기화할 때 더 간결하고 읽기 쉬운 스위프트 코드를 만들도록 해줍니다.
 
-불리언 값은 특히 `if` 문 같은 조건문과 작업할 때 유용합니다:
+불리언 값은 `if` 문 같은 조건문과 작업할 때 특히 더 유용합니다:
 
 ```swift
 if turnipsAreDelicious {
@@ -390,32 +390,32 @@ if turnipsAreDelicious {
 } else {
   print("Eww, turnips are horrible.")
 }
-// "Eww, turnips are horrible." 를 인쇄합니다.
+// "Eww, turnips are horrible." 를 인쇄함
 ```
 
 `if` 문 같은 조건문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 다룹니다.
 
-스위프트의 '타입 안전 (장치)' 는 '불리언-아닌 (non-Boolean) 값을 `Bool` 로 대체하는 것' 을 막아줍니다. 다음 예제는 컴파일-시간 에러를 보고합니다:
+스위프트 타입 안전 장치는 불리언-아닌 값이 `Bool` 을 대체하는 걸 막아 줍니다. 다음 예제는 컴파일-시간 에러를 보고합니다:
 
 ```swift
 let i = 1
 if i {
-  // 이 예제는 컴파일하지 않고, 에러를 보고할 것입니다.
+  // 이 예제는 컴파일하지 않고, 에러를 보고할 것임
 }
 ```
 
-하지만, 아래의 대안 예제는 유효입니다:
+하지만, 대안으로 밑에 있는 예제는 유효합니다:
 
 ```swift
 let i = 1
 if i == 1 {
-  // 이 예제는 컴파일 성공할 것입니다.
+  // 이 예제는 컴파일 성공할 것임
 }
 ```
 
-`i == 1` 비교 결과는 `Bool` 타입이므로, 두 번째 예제는 '타입 검사' 를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장에서 논의합니다.
+`i == 1` 비교 결과는 `Bool` 타입이라서, 이 두 번째 예제는 타입 검사를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 에서 논의합니다.
 
-스위프트의 '다른 타입 안전 예제' 에서 처럼, 이런 접근 방식은 에러 사고를 피하고 특별한 부분의 코드가 항상 명확한 의도를 가지도록 보장합니다.
+스위프트의 다른 타입 안전 장치 예제 처럼, 이 접근법은 우연한 사고로 인한 에러를 피하고 코드의 특별한 코드의 의도가 항상 명확하도록 보장합니다.
 
 ### Tuples (튜플; 짝)
 
