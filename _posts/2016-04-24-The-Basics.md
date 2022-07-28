@@ -430,51 +430,51 @@ let http404Error = (404, "Not Found")
 
 `(404, "Not Found")` 튜플은 `Int` 와 `String` 을 함께 그룹지어 HTTP 상태 코드에 두 개의 별도 값을 주는데: 수치 값과 사람이-읽을 수 있는 설명이 그것입니다. 이는 "`(Int, String)` 타입인 튜플" 이라고 설명할 수 있습니다.
 
-어떤 '순서로 조합 (permutation)[^permutation] 한 타입' 으로든 튜플을 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수도 있습니다. `(Int, Int, Int)` 나, `(String, Bool)` , 또는 '진짜 그 외 요구한 어떤 순서 조합의 타입' 이든 가질 수 있습니다.
+튜플은 어떤 순서 조합[^permutation] 의 타입으로든 생성할 수 있으며, 서로 다른 타입을 원하는 만큼 많이 담을 수 있습니다. `(Int, Int, Int)` 나, `(String, Bool)`, 또는 진짜 필요한 다른 어떤 순서 조합 타입인 튜플도 다 됩니다.
 
-튜플의 내용물은 별도의 상수나 변수로 _분해 (decompose)_ 한 다음, 평소 처럼 접근할 수 있습니다:
+튜플의 내용을 별도의 상수나 변수로 _분해 (decompose)_ 한 다음, 평소 처럼 접근할 수 있습니다:
 
 ```swift
 let (statusCode, statusMessage) = http404Error
 print("The status code is \(statusCode)")
-// "The status code is 404" 를 인쇄합니다.
+// "The status code is 404" 를 인쇄함
 print("The status message is \(statusMessage)")
-// "The status message is Not Found" 를 인쇄합니다.
+// "The status message is Not Found" 를 인쇄함
 ```
 
-튜플에서 일부 값만 필요한 경우, 튜플을 분해할 때 '밑줄 (underscore; `_`) 로 튜플의 일부분을 무시합니다:
+일부 튜플 값만 필요하다면, 튜플을 분해할 때 밑줄 (`_`) 로 튜플의 일부분을 무시합니다:
 
 ```swift
 let (justTheStatusCode, _) = http404Error
 print("The status code is \(justTheStatusCode)")
-// "The status code is 404" 를 인쇄합니다.
+// "The status code is 404" 를 인쇄함
 ```
 
-대안으로는, '0에서 시작하는 색인 (index) 번호' 로 튜플의 개별 원소 값에 접근합니다:
+대안으로, 0 부터 시작하는 색인 번호[^index] 를 써서 튜플의 개별 원소 값에 접근합니다:
 
 ```swift
 print("The status code is \(http404Error.0)")
-// "The status code is 404" 를 인쇄합니다.
+// "The status code is 404" 를 인쇄함
 print("The status message is \(http404Error.1)")
-// "The status message is Not Found" 를 인쇄합니다.
+// "The status message is Not Found" 를 인쇄함
 ```
 
-튜플을 정의할 때 튜플 개별 원소에 이름을 붙일 수 있습니다:
+튜플을 정의할 때 튜플 안의 개별 원소에 이름을 붙일 수 있습니다:
 
 ```swift
 let http200Status = (statusCode: 200, description: "OK")
 ```
 
-튜플 원소에 이름을 붙이면, 원소 이름으로 해당 원소 값에 접근할 수 있습니다:
+튜플 원소에 이름을 붙이면, 원소 이름을 써서 그 원소 값에 접근할 수 있습니다:
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
-// "The status code is 200" 를 인쇄합니다.
+// "The status code is 200" 를 인쇄함
 print("The status message is \(http200Status.description)")
-// "The status message is OK" 를 인쇄합니다.
+// "The status message is OK" 를 인쇄함
 ```
 
-튜플은 특히 함수 반환 값으로 유용합니다. 웹 페이지를 가져오려고 하는 함수는 페이지 가져오기의 성공 또는 실패를 설명하는 `(Int, String)` 튜플 타입을 반환할 지도 모릅니다. 함수는, 각각이 서로 다른 타입인, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입의 단일 값을 반환하는 경우보다 더 자신의 결과물에 대한 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보도록 합니다.
+튜플은 함수 반환 값으로 특히 더 유용합니다. 웹 페이지를 가져오려는 함수는 `(Int, String)` 튜플 타입을 반환하여 페이지 가져오기의 성공 또는 실패를 설명할지도 모릅니다. 함수는, 각각이 서로 다른 타입인, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입의 단일 값을 반환하는 경우보다 더 자신의 결과물에 대한 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보도록 합니다.
 
 > 튜플은 단순한 관련 값 그룹에 유용합니다. 복잡한 자료 구조를 생성하는 데는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보도록 합니다.
 
@@ -804,6 +804,6 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 보도록 합니다.
 
-[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 n 개의 원소에서 r 개를 선택해서 한 줄로 세울 수 있는 경우의 수를 말합니다. 즉, 스위프트에서 'n 개의 원소를 가진 튜플' 이 가질 수 있는 경우의 수는 이 '순열 (permetation) 개수 만큼 많다' 는 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서 조합' 라는 말로 옮겼습니다. '순열 (permutation)' 에 대한 더 자세한 정보는, 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목과 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 보도록 합니다.
+[^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 `n` 개의 원소에서 `r` 개를 선택해서 한 줄로 세울 수 있는 경우의 수입니다. 즉, 원소가 `n` 개인 튜플의 경우의 수는 이 순열 개수 만큼 많다는 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서 조합' 라는 말로 옮겼습니다. 순열에 대한 더 자세한 정보는, 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목과 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
 [^stub]: '토막 구현 (stub implementation)' 은 소프트웨어 개발 과정에서 다른 기능을 위해 (잠시) 세워 놓은 코드입니다. '토막 구현' 에 대한 더 자세한 정보는, 위키피디아의 [Method stub](https://en.wikipedia.org/wiki/Method_stub) 항목과 [메소드 스텁](https://ko.wikipedia.org/wiki/메소드_스텁) 항목을 보도록 합니다.  
