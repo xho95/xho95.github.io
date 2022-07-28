@@ -474,9 +474,9 @@ print("The status message is \(http200Status.description)")
 // "The status message is OK" 를 인쇄함
 ```
 
-튜플은 함수 반환 값으로 특히 더 유용합니다. 웹 페이지를 가져오려는 함수는 `(Int, String)` 튜플 타입을 반환하여 페이지 가져오기의 성공 또는 실패를 설명할지도 모릅니다. 함수는, 각각이 서로 다른 타입인, 별개의 두 값을 가진 튜플을 반환함으로써, 단일 타입의 단일 값을 반환하는 경우보다 더 자신의 결과물에 대한 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보도록 합니다.
+튜플은 함수 반환 값으로 특히 더 유용합니다. 웹 페이지를 가져오려는 함수는 `(Int, String)` 튜플 타입을 반환하여 페이지 가져오기의 성공 또는 실패를 설명할지도 모릅니다. 서로 다른 타입인, 별개의 두 값이 있는 튜플을 반환함으로써, 단일 타입인 단 하나의 값만 반환할 수 있는 경우보다 함수 자신의 결과물에 대해 더 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보기 바랍니다.
 
-> 튜플은 단순한 관련 값 그룹에 유용합니다. 복잡한 자료 구조를 생성하는 데는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보도록 합니다.
+> 튜플은 단순한 그룹의 관련 값에 유용합니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보기 바랍니다.
 
 ### Optionals (옵셔널)
 
