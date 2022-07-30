@@ -520,18 +520,18 @@ var surveyAnswer: String?
 
 #### If Statements and Forced Unwrapping (If 문과 강제 포장 풀기)
 
-`if` 문으로 옵셔널을 `nil` 과 비교함으로써 옵셔널이 값을 담고 있는 지를 알아낼 수 있습니다. 이 비교 연산은 "같음 (equal to)" 연산자 (`==`) 나 "같지 않음 (not equal to)" 연산자 (`!=`) 로 수행합니다:
+`if` 문으로 옵셔널이 값을 담고 있는지 알아내려면 옵셔널을 `nil` 과 비교하면 됩니다. 이 비교 연산은 "같음 (equal to)" 연산자 (`==`) 나 "같지 않음 (not equal to)" 연산자 (`!=`) 로 합니다:
 
-옵셔널이 값을 가지고 있으면, `nil` 과 "같지 않은" 것으로 고려합니다:
+옵셔널에 값이 있으면, `nil` 과 "같지 않다" 고 고려합니다:
 
 ```swift
 if convertedNumber != nil {
   print("convertedNumber contains some integer value.")
 }
-// "convertedNumber contains some integer value." 를 인쇄합니다.
+// "convertedNumber contains some integer value." 를 인쇄함
 ```
 
-옵셔널이 값을 담고 _있다고 (does)_ 한 번 확신하고 나면, '옵셔널 이름 끝에 느낌표 (`!`) 를 추가함' 으로써 이 실제 값에 접근할 수 있습니다. 느낌표는 사실상, "이 옵셔널은 확실히 값을 가지고 있다고 알고 있으니; 사용하기 바랍니다." 라고 말하는 것입니다. 이를 '옵셔널 값의 _강제 포장 풀기 (forced unwrapping)_' 라고 합니다:
+일단 한 번 옵셔널이 값을 담은 _걸 (does)_ 확신하면, 옵셔널 이름 끝에 느낌표 (`!`) 를 추가하여 그 실제 값에 접근할 수 있습니다. 느낌표는 사실상, "이 옵셔널은 확실히 값을 가지고 있다고 알고 있으니; 사용하기 바랍니다." 라고 말하는 것입니다. 이를 '옵셔널 값의 _강제 포장 풀기 (forced unwrapping)_' 라고 합니다:
 
 ```swift
 if convertedNumber != nil {
