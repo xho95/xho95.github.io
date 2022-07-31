@@ -531,18 +531,18 @@ if convertedNumber != nil {
 // "convertedNumber contains some integer value." 를 인쇄함
 ```
 
-일단 한 번 옵셔널이 값을 담은 _걸 (does)_ 확신하면, 옵셔널 이름 끝에 느낌표 (`!`) 를 추가하여 그 실제 값에 접근할 수 있습니다. 느낌표는 사실상, "이 옵셔널은 확실히 값을 가지고 있다고 알고 있으니; 사용하기 바랍니다." 라고 말하는 것입니다. 이를 '옵셔널 값의 _강제 포장 풀기 (forced unwrapping)_' 라고 합니다:
+일단 한 번 옵셔널이 값을 담은 _걸 (does)_ 확신하면, 옵셔널 이름 끝에 느낌표 (`!`) 를 추가하여 그 실제 값에 접근할 수 있습니다. 느낌표의 효과는, "이 옵셔널엔 값이 있다는 걸 확실하게 알고 있으니; 사용하기 바랍니다." 라고 말하는 겁니다. 이를 옵셔널 값의 _강제 포장 풀기 (forced unwrapping)_ 라고 합니다:
 
 ```swift
 if convertedNumber != nil {
   print("convertedNumber has an integer value of \(convertedNumber!).")
 }
-// "convertedNumber has an integer value of 123." 을 인쇄합니다.
+// "convertedNumber has an integer value of 123." 을 인쇄함
 ```
 
-`if` 문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 부분을 보도록 합니다.
+`if` 문에 대한 더 많은 건, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 부분을 보기 바랍니다.
 
-> 존재하지 않는 옵셔널 값에 접근하려고 `!` 를 사용하면 실행 시간 에러를 발동합니다. 값의 포장을-강제로 풀려고 `!` 를 사용하기 전에 항상 옵셔널이 '`nil`-아닌 값을 담고 있음을 확실히 합니다.
+> `!` 로 존재하지 않는 옵셔널 값에 접근하려 하면 실행 시간 에러를 발동합니다. `!` 로 자신의 값을 강제로-풀기 전에 항상 옵셔널에 `nil`-아닌 값이 담겨 있는지 확실하게 합니다.
 
 #### Optional Binding (옵셔널 연결)
 
