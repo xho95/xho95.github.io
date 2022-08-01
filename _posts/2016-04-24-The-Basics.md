@@ -554,7 +554,7 @@ _옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널에 값이 담�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-[Optionals (옵셔널)](#optionals-옵셔널) 절에 있는 `possibleNumber` 예제를 강제 포장 풀기 보단 옵셔널 연결을 사용하게 재작성할 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널) 절의 `possibleNumber` 예제가 강제 포장 풀기 보단 옵셔널 연결을 사용하도록 재작성할 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -569,15 +569,15 @@ if let actualNumber = Int(possibleNumber) {
 
 "`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 에 값이 담겨 있으면, `actualNumber` 라는 새 상수에 옵셔널이 담은 값을 설정합니다."
 
-변환 성공이면, `if` 문 첫 번째 분기 안에서 `actualNumber` 상수를 사용하는게 가능해집니다. 이미 옵셔널 _안에 (within)_ 담은 값으로 초기화되었으므로, 값에 접근하는데 `!` 접미사를 쓰지 않습니다. 이 예제에선, `actualNumber` 를 단순히 변환 결과의 인쇄에 사용합니다.
+자동 변환[^conversion] 이 성공하면, `if` 문의 첫 번째 분기 안에서 `actualNumber` 상수를 사용하는게 가능해집니다. 옵셔널 _안에 (within)_ 담긴 값으로 이미 초기화되어서, 값 접근에 `!` 접미사를 쓰지 않습니다. 이 예제에선, 단순히 `actualNumber` 를 써서 자동 변환 결과만 인쇄합니다.
 
-자신이 담은 값에 접근한 후에 원본인, 옵셔널 상수나 변수로의 참조가 필요 없으면, 새로운 상수나 변수에 똑같은 이름을 사용할 수 있습니다:
+원본, 옵셔널 상수나 변수가 담은 값에 접근한 후에 이를 참조할 필요가 없다면, 새로운 상수나 변수에 똑같은 이름을 사용할 수 있습니다:
 
 ```swift
 let myNumber = Int(possibleNumber)
-// 여기서, myNumber 는 옵셔널 정수임
+// 여기선, myNumber 가 옵셔널 정수임
 if let myNumber = myNumber {
-  // 여기서, myNumber 는 옵셔널-아닌 정수임
+  // 여기선, myNumber 가 옵셔널-아닌 정수임
   print("My number is \(myNumber)")
 }
 // "My number is 123" 을 인쇄함
