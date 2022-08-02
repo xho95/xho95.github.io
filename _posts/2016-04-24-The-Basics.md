@@ -622,7 +622,7 @@ if let firstNumber = Int("4") {
 
 최초로 값을 설정한 후엔, 프로그램 구조에 의해 옵셔널에 _항상 (always)_ 값이 있음이 명확할 때가 있습니다. 이 경우엔, 옵셔널 값에 접근할 때마다 검사하고 포장 푸는 걸 제거하는게 유용한데, 모든 시간에 값이 있다고 가정해도 안전하기 때문입니다.
 
-이런 종류의 옵셔널을 _암시적으로 포장 푸는 옵셔널 (implicitly unwrapped optionals)_ 이라고 정의합니다. '암시적으로 포장 푸는 옵셔널' 은 옵셔널로 만들고 싶은 타입 뒤에 물음표 (`String?`) 보단 느낌표 (`String!`) 를 붙여서 작성합니다. 사용할 때 옵셔널 이름 뒤에 느낌표를 붙이기 보다는, 선언할 때 옵셔널 타입 뒤에 느낌표를 붙입니다.
+이런 종류의 옵셔널을 _암시적으로 포장 푸는 옵셔널 (implicitly unwrapped optionals)_ 이라고 정의합니다. 암시적으로 포장 푸는 옵셔널을 쓰려면 옵셔널을 만들고 싶은 타입 뒤에 물음표 (`String?`) 보단 느낌표 (`String!`) 를 붙이면 됩니다. 사용할 때 옵셔널 이름 뒤에 느낌표를 두는 것 보단, 선언할 때 옵셔널 타입 뒤에 느낌표를 둡니다.[^implicitly-optional-declare]
 
 '암시적으로 포장 푸는 옵셔널' 은 옵셔널 값이 최초로 옵셔널을 정의한 바로 뒤 존재를 확정하고 그 후의 모든 시점에 존재를 확실히 가정할 수 있을 때 유용합니다. 스위프트에서 '암시적으로 포장 푸는 옵셔널' 은, [Unowned References and Implicitly Unwrapped Optional Properties (소유하지 않는 참조와 암시적으로 포장 푸는 옵셔널 속성)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-and-implicitly-unwrapped-optional-properties-소유하지-않는-참조와-암시적으로-포장-푸는-옵셔널-속성) 에서 설명한 것처럼, 클래스를 초기화하는 동안에 주로 사용합니다.
 
