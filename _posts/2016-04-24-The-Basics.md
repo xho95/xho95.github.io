@@ -711,11 +711,11 @@ do {
 }
 ```
 
-이 예제에서는, 사용 가능한 깨끗한 접시가 없거나 어떤 재료가 빠지면 `makeASandwich()` 함수가 에러를 던질 것입니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 함수 호출을 `try` 표현식으로 포장합니다. 함수 호출을 `do` 문으로 포장함으로써, 어떤 에러를 던지든 제공된 `catch` 절로 전파할 것입니다.
+이 예제에선, 쓸만한 깨끗한 접시가 없거나 어떤 재료를 깜빡하면 `makeASandwich()` 함수가 에러를 던질 겁니다. `makeASandwich()` 가 에러를 던질 수 있기 때문에, 함수 호출을 `try` 표현식으로 포장합니다. `do` 문으로 함수 호출을 포장함으로써, 어떤 에러를 던져도 제공한 `catch` 절로 전파할 겁니다.
 
-아무 에러도 던지지 않으면, `eatASandwich()` 함수를 호출합니다. 에러를 던지는데 이것이 '`SandwichError.outOfCleanDishes` case 절' 과 일치하면, 그 때는 `washDishes()` 함수를 호출할 것입니다. 에러를 던지는데 이것이 '`SandwichError.missingIngredients` case 절' 과 일치하면, 그 때는 '`catch` 절 패턴 (pattern) 이 붙잡는 `[String]` 결합 값' 을 가지고 `buyGroceries(_:)` 함수를 호출합니다.
+던진 에러가 없으면, `eatASandwich()` 함수를 호출합니다. 던진 에러가 `SandwichError.outOfCleanDishes` case 와 맞으면, `washDishes()` 함수를 호출할 겁니다. 던진 에러가 `SandwichError.missingIngredients` case 와 맞으면, 그 땐 `catch` 패턴이 붙잡은 `[String]` 결합 값을 가지고 `buyGroceries(_:)` 함수를 호출합니다.
 
-에러 던지기, 붙잡기, 전파하기는 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장에서 아주 자세하게 다룹니다.
+에러 던지기와, 붙잡기, 및 전파하기는 [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 에서 아주 자세히 다룹니다.
 
 ### Assertions and Preconditions (단언문과 선행 조건문)
 
