@@ -774,7 +774,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 > 검사하지 않음 모드 (`-Ounchecked`)[^unchecked] 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건문이 항상 참이라고 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정에 상관없이, 항상 실행을 중단합니다.
 >
-> `fatalError(_:file:line:)` 함수는 프로토 타입 및 이른 시기의 개발 중에 아직 구현 안된 기능에 대해, `fatalError("Unimplemented")` 를 작성함으로써, '토막 (stub) 구현'[^stub] 을 생성하고자, 사용할 수 있습니다. '치명적인 에러 (fatal errors)' 는 최적화로 절대 없어지지 않기 때문에, 단언문이나 선행 조건문과는 달리, '토막 구현' 과 마주치면 항상 실행이 중단된다고 확신할 수 있습니다.
+> `fatalError(_:file:line:)` 함수를 프로토 타입 및 이른 개발 시기에 사용하여 아직 구현안된 자투리 기능을 생성하려면, `fatalError("Unimplemented")` 를 자투리 구현[^stub] 으로 쓰면 됩니다. 치명적인 에러[^fatal-errors] 는 절대로 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과 달리, 짜투리 구현과 마주치면 실행이 항상 중단된다는 걸 확신할 수 있습니다.
 
 ### 다음 장
 
@@ -806,4 +806,4 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 `n` 개의 원소에서 `r` 개를 선택해서 한 줄로 세울 수 있는 경우의 수입니다. 즉, 원소가 `n` 개인 튜플의 경우의 수는 이 순열 개수 만큼 많다는 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서 조합' 라는 말로 옮겼습니다. 순열에 대한 더 자세한 정보는, 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목과 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
-[^stub]: '토막 구현 (stub implementation)' 은 소프트웨어 개발 과정에서 다른 기능을 위해 (잠시) 세워 놓은 코드입니다. '토막 구현' 에 대한 더 자세한 정보는, 위키피디아의 [Method stub](https://en.wikipedia.org/wiki/Method_stub) 항목과 [메소드 스텁](https://ko.wikipedia.org/wiki/메소드_스텁) 항목을 보도록 합니다.  
+[^stub]: '자투리 (stub)' 는 나무 토막이나 그루터기 처럼 그 자체로는 미완성인 것을 말합니다. '자투리 구현 (stub implementation)' 은 소프트웨어 개발 과정에서 아직 완성안된 기능을 위해 임시로 놓아 두는 코드입니다. 자투리 구현에 대한 더 자세한 정보는, 위키피디아의 [Method stub](https://en.wikipedia.org/wiki/Method_stub) 과 [메소드 스텁](https://ko.wikipedia.org/wiki/메소드_스텁) 항목을 참고하기 바랍니다.
