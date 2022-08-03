@@ -208,7 +208,7 @@ _글자 값 표현식 (literal expression)_ 은 (문자열이나 수치 값 같�
 `#function` | | `String` | | 이 선언의 이름
 `#dsohandle` | | `UnsafeRawPointer` | | 여기서 사용하는 동적 공유 객체[^dynamic-shared-object] 의 핸들
 
-`#file` 의 문자열 값은 언어 버전에 의존하여, 예전 동작인 `#filePath` 를 새로운 동작인 `#fileID` 로 이주할 수 있게 합니다.[^filePath-and-fildID] 현재, `#file` 는 `#filePath` 값과 똑같습니다. 미래 버전의 스위프트에선, 그 대신 `#file` 가 `#fileID` 값과 똑같을 겁니다. 미래의 동작을 채택하려면, `#file` 을 `#fileID` 나 `#filePath` 로 적절하게 대체하기 바랍니다.[^file-to-filePath-and-fildID]
+`#file` 의 문자열 값은 언어 버전에 의존하여, 예전 동작인 `#filePath` 를 새로운 동작인 `#fileID` 로 이주할 수 있게 합니다.[^filePath-and-fildID] 현재, `#file` 는 `#filePath` 값과 똑같습니다. 미래 버전의 스위프트에선, 그 대신 `#file` 가 `#fileID` 값과 똑같을 겁니다. 미래의 동작을 채택하려면, `#file` 을 `#fileID` 나 `#filePath` 로 적절하게 교체하기 바랍니다.[^file-to-filePath-and-fildID]
 
 `#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 형식인데, _파일 (file)_ 은 표현식이 있는 파일 이름이고 _모듈 (module)_ 은 이 파일이 속해 있는 모듈 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일의 전체 파일-시스템 경로입니다. [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, 이 두 값 모두 `#sourceLocation` 으로 바꿀 수 있습니다. `#filePath` 와 달리, `#fileID` 에 소스 파일의 전체 경로를 박아 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 컴파일한 바이너리의 크기가 줄여듭니다. 테스트나, 빌드 스크립트, 또는 그 외 출하용 프로그램의 일부분이 아닌 코드 밖에선 `#filePath` 의 사용을 피합니다.[^shipping-program]
 
@@ -494,7 +494,7 @@ _타입 이름 (type name)_ 은, `String` 이나, `[Int]`, 또는 `Set<Int>` 같
 
 _경로 (path)_ 는 속성 이름과, 첨자, 옵셔널-사슬 표현식, 및 포장을 강제로 푸는 표현식으로 구성됩니다. 이 각각의 키-경로 성분은 필요한 만큼 많이, 어떤 순서로든, 반복할 수 있습니다.
 
-컴파일 시간에, 키-경로 표현식을 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 대체합니다.
+컴파일 시간에, 키-경로 표현식을 [KeyPath](https://developer.apple.com/documentation/swift/keypath) 클래스의 인스턴스로 교체합니다.
 
 키-경로로 값에 접근하려면, `subscript(keyPath:)` 첨자에 키 경로를 전달하면 되는데, 이는 모든 타입에서 사용 가능합니다. 예를 들면 다음과 같습니다:
 
@@ -698,7 +698,7 @@ let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (Str
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#keyPath(`property name-속성 이름`)
 
-_속성 이름 (property name)_ 은 반드시 오브젝티브-C 런타임에서 사용 가능한 속성을 참조해야 합니다. 컴파일 시간에, 키-경로 문자열 표현식을 문자열 글자 값으로 대체합니다. 예를 들면 다음과 같습니다:
+_속성 이름 (property name)_ 은 반드시 오브젝티브-C 런타임에서 사용 가능한 속성을 참조해야 합니다. 컴파일 시간에, 키-경로 문자열 표현식을 문자열 글자 값으로 교체합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 class SomeClass: NSObject {

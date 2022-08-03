@@ -178,7 +178,7 @@ var productBarcode = Barcode.upc(8, 85909, 51226, 3)
 productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 ```
 
-이 순간, 원본 `Barcode.upc` 와 정수 값들을 새로운 `Barcode.qrCode` 와 문자열 값으로 대체합니다. `Barcode` 타입의 상수와 변수는 `.upc` 든 `.qrCode` 든 (자신의 결합 값과 함께) 저장할 수 있지만, 주어진 어떤 순간엔 하나만 저장할 수 있습니다.
+이 순간, 원본 `Barcode.upc` 와 정수 값들을 새로운 `Barcode.qrCode` 와 문자열 값으로 교체합니다. `Barcode` 타입의 상수와 변수는 `.upc` 든 `.qrCode` 든 (자신의 결합 값과 함께) 저장할 수 있지만, 주어진 어떤 순간엔 하나만 저장할 수 있습니다.
 
 [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 있는 예제와 비슷하게, switch 문을 사용하여 서로 다른 바코드 타입들을 검사할 수 있습니다. 하지만, 이번엔 switch 문에서 결합 값을 뽑아냅니다. `switch` 문 case 절 본문 안에서 사용할 (`let` 접두사의) 상수나 (`var` 접두사의) 변수로 각각의 결합 값을 뽑아냅니다:
 

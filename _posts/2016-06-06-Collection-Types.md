@@ -162,7 +162,7 @@ shoppingList[0] = "Six eggs"
 
 첨자 연산 구문을 사용할 때, 지정한 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 실행 시간 에러가 됩니다.[^count-concurrent]
 
-첨자 연산 구문을 사용하면, 대체할 값 집합과 대체 대상의 범위의 길이가 서로 다른 경우에도, 일정 범위의 값을 한 번에 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 대체합니다:
+첨자 연산 구문을 사용하면, 교체할 값 집합과 교체 대상의 범위의 길이가 서로 다르더라도, 일정 범위의 값을 한 번에 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]

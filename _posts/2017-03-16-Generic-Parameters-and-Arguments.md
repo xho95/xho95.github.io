@@ -11,7 +11,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 ## Generic Parameters and Arguments (일반화 매개 변수와 인자)
 
-이번 장에선 일반화 타입과, 함수, 및 초기자의 매개 변수와 인자를 설명합니다. 일반화 타입이나, 함수, 첨자, 또는 초기자를 선언할 땐, 일반화 타입이나, 함수, 또는 초기자와 작업할 수 있는 타입 매개 변수를 지정합니다. 이러한 타입 매개 변수는 자리 표시자[^placeholders] 처럼 행동하며 일반화 타입 인스턴스를 생성하거나 일반화 함수 또는 초기자를 호출할 때 실제 고정 타입[^concrete-type] 인자로 대체합니다.
+이번 장에선 일반화 타입과, 함수, 및 초기자의 매개 변수와 인자를 설명합니다. 일반화 타입이나, 함수, 첨자, 또는 초기자를 선언할 땐, 일반화 타입이나, 함수, 또는 초기자와 작업할 수 있는 타입 매개 변수를 지정합니다. 이러한 타입 매개 변수는 자리 표시자[^placeholders] 처럼 행동하며 일반화 타입 인스턴스를 생성하거나 일반화 함수 또는 초기자를 호출할 때 실제 고정 타입[^concrete-type] 인자로 교체합니다.
 
 스위프트 일반화의 전체 개요에 대해선, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 를 보기 바랍니다.
 
@@ -81,7 +81,7 @@ _일반화 인자 절 (generic argument clause)_ 은 일반화 타입의 타입 
 
 &nbsp;&nbsp;&nbsp;&nbsp;<`generic argument list-일반화 인자 목록`>
 
-_일반화 인자 목록 (generic argument list)_ 은 쉼표로-구분한 타입 인자 목록입니다. _타입 인자 (type argument)_ 는 실제 고정 타입의 이름으로 일반화 타입의 일반화 매개 변수 절 안에 있는 해당 타입 매개 변수를 대체합니다. 결과는 그 일반화 타입의 특수화 버전[^specialized-version] 입니다. 아래 예제는 스위프트 표준 라이브러리의 일반화 딕셔너리 타입을 단순하게 한 버전입니다.
+_일반화 인자 목록 (generic argument list)_ 은 쉼표로-구분한 타입 인자 목록입니다. _타입 인자 (type argument)_ 는 실제 고정 타입의 이름으로 일반화 타입의 일반화 매개 변수 절 안에 있는 해당 타입 매개 변수를 교체합니다. 결과는 그 일반화 타입의 특수화 버전[^specialized-version] 입니다. 아래 예제는 스위프트 표준 라이브러리의 일반화 딕셔너리 타입을 단순하게 한 버전입니다.
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
@@ -89,9 +89,9 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 }
 ```
 
-일반화 `Dictionary` 타입의 특수화 버전인, `Dictionary<String, Int>` 는 `Key: Hashable` 과 `Value` 라는 일반화 매개 변수를 `String` 과 `Int` 라는 고정 타입 인자로 대체하여 형성합니다. 각각의 타입 인자는 반드시 자신이 대체할 일반화 매개 변수의 모든 구속 조건을 만족해야 하는데, 이는 일반화 `where` 절에서 지정한 어떤 추가 필수 조건도 포함합니다. 위 예제의, `Key` 타입 매개 변수는 `Hashable` 프로토콜을 준수하도록 구속하며 따라서 `String` 도 반드시 `Hashable` 프로토콜을 준수해야 합니다.
+일반화 `Dictionary` 타입의 특수화 버전인, `Dictionary<String, Int>` 는 `Key: Hashable` 과 `Value` 라는 일반화 매개 변수를 `String` 과 `Int` 라는 고정 타입 인자로 교체하여 형성합니다. 각각의 타입 인자는 반드시 자신이 대체할 일반화 매개 변수의 모든 구속 조건을 만족해야 하는데, 이는 일반화 `where` 절에서 지정한 어떤 추가 필수 조건도 포함합니다. 위 예제의, `Key` 타입 매개 변수는 `Hashable` 프로토콜을 준수하도록 구속하며 따라서 `String` 도 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-타입 매개 변수의 교체를 그 자체가 일반화 타입의 특수화 버전인 타입 인자 (적절한 구속 조건과 필수 조건을 만족하게 한 거) 로 할 수도 있습니다. 예를 들어, `Array<Element>` 의 `Element` 타입 매개 변수를, `Array<Int>` 라는, 행렬의 특수화 버전으로 대체하면, 원소 그 자체가 정수 배열인 배열을 형성할 수 있습니다.
+타입 매개 변수의 교체를 그 자체가 일반화 타입의 특수화 버전인 타입 인자 (적절한 구속 조건과 필수 조건을 만족하게 한 거) 로 할 수도 있습니다. 예를 들어, `Array<Element>` 의 `Element` 타입 매개 변수를, `Array<Int>` 라는, 행렬의 특수화 버전으로 교체하면, 원소 그 자체가 정수 배열인 배열을 형성할 수 있습니다.
 
 ```swift
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]

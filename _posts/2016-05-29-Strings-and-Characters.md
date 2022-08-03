@@ -270,7 +270,7 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 // message 는 "3 times 2.5 is 7.5" 입니다.
 ```
 
-위 예제에서는, `\(multiplier)` 라고 하여 `multiplier` 값을 문자열 글자 값에 집어 넣습니다. 이 '자리 표시자 (placeholder)' 는 '문자열 보간법을 평가해서 실제 문자열을 생성할 때 실제 `multiplier` 값으로 대체' 됩니다.
+위 예제에서는, `\(multiplier)` 라고 하여 `multiplier` 값을 문자열 글자 값에 집어 넣습니다. 문자열 보간법을 평가하여 실제 문자열을 생성할 때 이 자리 표시자를 `multiplier` 의 실제 값으로 교체합니다.
 
 `multiplier` 값은 '문자열 나중에 있는 더 큰 표현식의 일부분' 이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 값을 계산하며 (`7.5` 라는) 결과를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함할 때 `\(Double(multiplier) * 2.5)` 라고 표현식을 작성합니다.
 
