@@ -774,7 +774,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 > 검사하지 않음 모드 (`-Ounchecked`)[^unchecked] 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건문이 항상 참이라고 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정에 상관없이, 항상 실행을 중단합니다.
 >
-> `fatalError(_:file:line:)` 함수를 프로토 타입 및 이른 개발 시기에 사용하여 아직 구현안된 자투리 기능을 생성하려면, `fatalError("Unimplemented")` 를 자투리 구현[^stub] 으로 쓰면 됩니다. 치명적인 에러[^fatal-errors] 는 절대로 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과 달리, 짜투리 구현과 마주치면 실행이 항상 중단된다는 걸 확신할 수 있습니다.
+> `fatalError(_:file:line:)` 함수를 프로토 타입 및 이른 개발 시기에 사용하여 아직 구현안된 자투리 기능을 생성하려면, `fatalError("Unimplemented")` 를 자투리 구현[^stub] 으로 쓰면 됩니다. 치명적인 에러[^fatal-errors] 는 절대로 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과 달리, 짜투리 구현과 마주치면 실행이 항상 중단된다고 확신할 수 있습니다.
 
 ### 다음 장
 
