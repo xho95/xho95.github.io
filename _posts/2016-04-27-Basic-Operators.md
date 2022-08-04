@@ -82,19 +82,19 @@ if x = y {
 
 #### Remainder Operator (나머지 연산자)
 
-_나머지 연산자 (remainder operator_; `a % b`_)_ 는 `a` 안을 몇 배수의 `b` 로 채우는 지 알아내고 남은 (_나머지 (remainder)_ 라는) 값을 반환합니다.
+_나머지 연산자 (remainder operator_; `a % b`_)_ 는 몇 배수의 `b` 가 `a` 안에 들어가는지 알아내고 남은 (_나머지 (remainder)_ 라는) 값을 반환합니다.
 
-> 다른 언어에서는 나머지 연산자 (`%`) 를 _모듈러 연산자 (modulo operator)_ 라고도 합니다. 하지만, 스위프트 음수에 대한 이의 동작은, 엄밀히 말해서, '모듈러 (modulo) 연산'[^modulo-opartion] 이라기 보다는 나머지에 해당합니다.
+> 다른 언어에선 나머지 연산자 (`%`) 를 _모듈러 연산자 (modulo operator)_ 라고도 합니다.[^modulo-opartion] 하지만, 스위프트의 음수에 대한 이 동작은, 엄밀히 말해서, 모듈러라기 보단 나머지 연산입니다.[^remainder-vs-modulo]
 
-다음은 나머지 연산자의 작업 방법입니다. `9 % 4` 를 계산하기 위해, 처음에 `9` 안을 몇 개의 `4` 로 채울 지를 알아냅니다:
+나머지 연산자는 이렇게 작업합니다. `9 % 4` 를 계산하려면, 첫 번째로 `9` 안에 몇 개의 `4` 가 들어가는 지를 알아냅니다:
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Basic-Operators-remainder-operator-works.jpg)
 
-두 개의 `4` 로 `9` 를 채울 수 있고, (주황색으로 보인) 나머지는 `1` 입니다.
+`9` 안엔 두 개의 `4` 가 들어갈 수 있고, (주황색으로 본) 나머지는 `1` 입니다.
 
-스위프트로, 이는 다음처럼 작성할 수 있습니다:
+스위프트에선, 이를 다음 처럼 작성할 겁니다:
 
-```
+```swift
 9 % 4    // 1 과 같음
 ```
 
@@ -110,7 +110,7 @@ _나머지 연산자 (remainder operator_; `a % b`_)_ 는 `a` 안을 몇 배수�
 
 `a` 가 음수 값일 때의 나머지 계산에도 똑같은 방법을 적용합니다:
 
-```
+```swift
 -9 % 4   // -1 과 같음
 ```
 
@@ -484,15 +484,15 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^Basic-Operators]: 원문은 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+[^infix]: '중위 (infix)' 는 **중** 간에 **위** 치한다는 의미입니다. 중위라는 말에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
 
-[^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 '수학적으로 엄밀하게 정의한 나머지 연산' 을 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 보도록 합니다. 이에 대한 한글 자료는 거의 없는데, [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 항목이 연관이 있는 것 같습니다.
+[^modulo-opartion]: 'modulo operation (모듈러 연산)' 은 수학적으로 엄밀하게 정의한 나머지 연산입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) 항목을 참고하기 바랍니다. 모듈러 연산에 대한 한글 자료는 [합동 산술](https://ko.wikipedia.org/wiki/합동_산술) 항목을 참고하기 바랍니다.
 
-[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념입니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, '단락-회로 계산' 은 '컴퓨터 공학에서 계산량을 줄일 목적으로 불필요한 표현식 계산을 하지 않는 방식' 이라고 할 수 있습니다. 컴퓨터 용어로는 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 보도록 합니다. (아직 한글 번역은 없는 것 같습니다.)
+[^remainder-vs-modulo]: 모듈러 연산과 나머지 연산의 차이점은 음수 연산에서 발생합니다. 이에 대한 더 자세한 정보는, **StackOverflow** 의 [What's the difference between “mod” and “remainder”?](https://stackoverflow.com/questions/13683563/whats-the-difference-between-mod-and-remainder) 항목을 참고하기 바랍니다. 
 
-[^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 보도록 합니다. (위키피디아에 이 항목에 대한 번역은 아직 없는 것 같습니다.)
+[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념입니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, '단락-회로 계산' 은 '컴퓨터 공학에서 계산량을 줄일 목적으로 불필요한 표현식 계산을 하지 않는 방식' 이라고 할 수 있습니다. 컴퓨터 용어로는 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 보도록 합니다.
 
-[^infix]: 'infix' 는 '중간에 위치' 한다는 의미로 '중위' 라고 합니다. '중위 (infix)' 라는 말에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 보도록 합니다.
+[^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
 
