@@ -124,7 +124,7 @@ _나머지 연산자 (remainder operator_; `a % b`_)_ 는 몇 배수의 `b` 가 
 
 #### Unary Minus Operator (단항 음수 연산자)
 
-수치 값의 부호는, _단항 음수 연산자 (unary minus operator)_ 라는, `-` 접두사로 '전환 (toggled)' 할 수 있습니다:
+수치 값의 부호는, _단항 음수 연산자 (unary minus operator)_ 라는, `-` 접두사로 반전할 수 있습니다:
 
 ```swift
 let three = 3
