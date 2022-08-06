@@ -72,7 +72,7 @@ if x = y {
 10.0 / 2.5  // 4.0 과 같음
 ```
 
-**C** 및 **오브젝티브-C** 의 산술 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값 넘침을 허용하지 않습니다. 값 넘침 동작을 직접 선택하려면 (`a &+ b` 같이) 스위프트의 값 넘침 연산자를 사용하면 됩니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 부분도 보기 바랍니다.
+**C** 및 **오브젝티브-C** 의 산술 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값 넘침을 허용하지 않습니다. 값 넘침 동작을 직접 선택하려면 (`a &+ b` 같이) 스위프트의 값 넘침 연산자를 사용하면 됩니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 부분도 보도록 합니다.
 
 덧셈 연산자는 `String` 이어붙이기[^concatenation] 도 지원합니다:
 
@@ -159,33 +159,33 @@ a += 2
 
 > 복합 할당 연산자는 값을 반환하지 않습니다. 예를 들어, `let b = a += 2` 라고 작성할 수 없습니다.
 
-스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보기 바랍니다.
+스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
 ### Comparison Operators (비교 연산자)
 
 스위프트는 다음의 _비교 연산자 (comparison operators)_ 를 지원합니다:
 
-* 같음 (equal to; `a == b`)
-* 같지 않음 (not equal to; `a != b`)
-* 보다 큼 (greater than; `a > b`)
-* 보다 작음 (less than; `a < b`)
-* 크거나 같음 (greater than or equal to; `a >= b`)
-* 작거나 같음 (less than or equal to; `a <= b`)
+* 같음 (`a == b`)
+* 같지 않음 (`a != b`)
+* 보다 큼 (`a > b`)
+* 보다 작음 (`a < b`)
+* 크거나 같음 (`a >= b`)
+* 작거나 같음 (`a <= b`)
 
-> 스위프트는, 두 객체 참조 모두가 똑같은 객체 인스턴스를 참조하는 지 검사하는, 두 개의 _식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공합니다. 더 많은 정보는, [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 부분을 보도록 합니다.
+> 스위프트는 두 개의 _식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공하는데, 이를 사용하여 두 객체 참조가 둘 다 똑같은 객체 인스턴스를 참조하는지 검사합니다. 더 많은 정보는, [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 부분을 보기 바랍니다.
 
-각각의 비교 연산자는 '구문이 참인지 아닌 지를 지시하는 `Bool` 값' 을 반환합니다:
+각각의 비교 연산자는 `Bool` 값을 반환하여 구문이 참인지 아닌지 지시합니다:
 
 ```swift
-1 == 1   // 1 은 1 과 같기 때문에 참
-2 != 1   // 2 는 1 과 같지 않기 때문에 참
-2 > 1    // 2 는 1 보다 크기 때문에 참
-1 < 2    // 1 은 2 보다 작기 때문에 참
-1 >= 1   // 1 은 1 보다 크거가 같기 때문에 참
-2 <= 1   // 2 는 1 보다 작거나 같지 않기 때문에 거짓
+1 == 1   // 참, 1 은 1 과 같기 때문
+2 != 1   // 참, 2 는 1 과 같지 않기 때문
+2 > 1    // 참, 2 는 1 보다 크기 때문
+1 < 2    // 참, 1 은 2 보다 작기 때문
+1 >= 1   // 참, 1 은 1 보다 크거가 같기 때문
+2 <= 1   // 거짓, 2 는 1 보다 작거나 같지 않기 때문
 ```
 
-비교 연산자는, `if` 문 같은, 조건 (conditional) 문에서 자주 사용합니다:
+비교 연산자는, `if` 문 같은, 조건문에서 자주 사용합니다:
 
 ```swift
 let name = "world"
@@ -194,12 +194,12 @@ if name == "world" {
 } else {
   print("I'm sorry \(name), but I don't recognize you")
 }
-// name 이 진짜로 "world" 와 같기 때문에, "hello, world" 를 인쇄합니다.
+// "hello, world" 를 인쇄하는데, name 이 진짜로 "world" 와 같기 때문임
 ```
 
-`if` 문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보도록 합니다.
+`if` 문에 대한 더 많은 내용은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보기 바랍니다.
 
-두 개의 '튜플' 이 똑같은 타입과 똑같은 개수의 값을 가지고 있으면 서로 비교할 수 있습니다. 튜플은, 두 값이 같지 않음을 찾을 때까지, 한 번에 한 값씩, 왼쪽에서 오른쪽으로 비교합니다. 이 두 값들을 비교하며, 해당 비교 연산의 결과가 '전체 튜플 비교 연산의 결과를 결정' 합니다. 모든 원소가 같으면, 튜플 자체가 같습니다. 예를 들면 다음과 같습니다:
+두 개의 튜플이 똑같은 타입이면서 똑같은 개수의 값이 있다면 서로 비교할 수 있습니다. 튜플 비교 연산은 왼쪽에서 오른쪽으로, 한 번에 한 값씩, 두 값이 같지 않은 걸 찾을 때까지, 비교합니다. 그렇게 두 값을 비교하며, 그 비교 연산의 결과가 전체 튜플 비교 연산의 결과를 결정합니다. 모든 원소가 같으면, 튜플 그 자체가 같습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 (1, "zebra") < (2, "apple")   // 1 이 2 보다 작기 때문에 참; "zebra" 와 "apple" 은 비교하지 않음

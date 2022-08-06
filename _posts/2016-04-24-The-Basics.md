@@ -120,7 +120,7 @@ print(friendlyWelcome)
 // "Bonjour!" 를 인쇄함
 ```
 
-`print(_:separator:terminator:)` 함수는 전역 함수로서 하나 이상의 값을 적절한 출력 결과로 인쇄합니다. **엑스코드** 에선, 예를 들어, `print(_:separator:terminator:)` 함수가 자신의 출력 결과를 **엑스코드** 의 "콘솔 (console)" 판에 인쇄합니다. `separator` 와 `terminator` 매개 변수엔 기본 값이 있어서, 이 함수의 호출 때 생략할 수 있습니다. 기본적으로, 함수는 줄 끊음[^line-break] 을 추가하는 걸로 자신이 인쇄하는 줄을 종결합니다. 줄 끊음 없이 값을 인쇄하려면 빈 문자열을 종결자 (terminator) 로 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. 기본 값이 있는 매개 변수에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분을 보기 바랍니다.
+`print(_:separator:terminator:)` 함수는 전역 함수로서 하나 이상의 값을 적절한 출력 결과로 인쇄합니다. **엑스코드** 에선, 예를 들어, `print(_:separator:terminator:)` 함수가 자신의 출력 결과를 **엑스코드** 의 "콘솔 (console)" 판에 인쇄합니다. `separator` 와 `terminator` 매개 변수엔 기본 값이 있어서, 이 함수의 호출 때 생략할 수 있습니다. 기본적으로, 함수는 줄 끊음[^line-break] 을 추가하는 걸로 자신이 인쇄하는 줄을 종결합니다. 줄 끊음 없이 값을 인쇄하려면 빈 문자열을 종결자 (terminator) 로 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. 기본 값이 있는 매개 변수에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% post_url 2020-06-02-Functions %}#default-parameter-values-기본-매개-변수-값) 부분을 보도록 합니다.
 
 스위프트는 _문자열 보간법 (string interpolation)_[^string-interpolation] 을 써서 상수나 변수 이름을 더 긴 문자열의 자리 표시자[^placeholder] 로 포함시키고, 스위프트가 이를 그 상수나 변수의 현재 값으로 즉시 교체하게 합니다. 이름을 괄호로 포장하고 여는 괄호 앞에서 역 빗금[^backslash] 으로 벗어나게[^escape] 하면 됩니다:
 
@@ -474,9 +474,9 @@ print("The status message is \(http200Status.description)")
 // "The status message is OK" 를 인쇄함
 ```
 
-튜플은 함수 반환 값으로 특히 더 유용합니다. 웹 페이지를 가져오려는 함수는 `(Int, String)` 튜플 타입을 반환하여 페이지 가져오기의 성공 또는 실패를 설명할지도 모릅니다. 서로 다른 타입인, 별개의 두 값이 있는 튜플을 반환함으로써, 단일 타입인 단 하나의 값만 반환할 수 있는 경우보다 함수 자신의 결과물에 대해 더 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보기 바랍니다.
+튜플은 함수 반환 값으로 특히 더 유용합니다. 웹 페이지를 가져오려는 함수는 `(Int, String)` 튜플 타입을 반환하여 페이지 가져오기의 성공 또는 실패를 설명할지도 모릅니다. 서로 다른 타입인, 별개의 두 값이 있는 튜플을 반환함으로써, 단일 타입인 단 하나의 값만 반환할 수 있는 경우보다 함수 자신의 결과물에 대해 더 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% post_url 2020-06-02-Functions %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보도록 합니다.
 
-> 튜플은 단순한 그룹의 관련 값에 유용합니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보기 바랍니다.
+> 튜플은 단순한 그룹의 관련 값에 유용합니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% post_url 2020-04-14-Structures-and-Classes %}) 장을 보도록 합니다.
 
 ### Optionals (옵셔널)
 
@@ -540,7 +540,7 @@ if convertedNumber != nil {
 // "convertedNumber has an integer value of 123." 을 인쇄함
 ```
 
-`if` 문에 대한 더 많은 건, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 부분을 보기 바랍니다.
+`if` 문에 대한 더 많은 건, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 부분을 보도록 합니다.
 
 > `!` 로 존재하지 않는 옵셔널 값에 접근하려 하면 실행 시간 에러를 발생시킵니다. `!` 로 자신의 값을 강제로-풀기 전에 항상 옵셔널에 `nil`-아닌 값이 담겨 있는지 확실히 합니다.
 
@@ -788,7 +788,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^annotation]: 'annotation' 는 사실 '주석' 이라고 옮기는 것이 가장 적당하지만, 프로그래밍 분야에서는 'comments' 가 '주석' 이라고 이미 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라고 옮깁니다. 실제로 스위프트에서는 'annotation' 을 쓸 일이 거의 없기 때문에 이 용어에는 비중을 크게 두지 않아도 됩니다.
 
-[^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 보도록 합니다.
+[^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
 [^string-interpolation]: 'interpolation' 은 원래 수학 용어로 '보간법' 이라고 하며, 두 값 사이에 근사식으로 구한 값을 집어넣는 것을 말합니다. 'string interpolation' 은 '문자열 삽입법' 정도로 옮길 수도 있지만, 수학 용어로 '보간법' 이라는 말이 널리 쓰이고 있으므로 '문자열 보간법' 이라고 옮깁니다.
 
@@ -800,9 +800,9 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^documents]: '사용 중인 자료의 고유 성질을 암시적으로 문서화한다' 는 건, 예를 들어, `Int` 라고 할 걸 `UInt8` 이라고 하면 타입의 범위가 `0 ~ 255` 까지라는 걸 알 수 있듯이, 타입을 명시하는 것 자체도 하나의 문서화에 해당한다는 의미입니다. '암시적인 문서화 (implicitly documents)' 는 별도의 주석이나 문서 작성 없이 코드 그 자체가 문서화 효과를 가지는 걸 말합니다. 문서화에 대한 더 자세한 정보는, [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 안의 '문서화 주석' 부분 설명을 참고하기 바랍니다.
 
-[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
+[^backticks]: 'backtics' 는 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 이해하기 어렵기 때문에 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 항목 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 참고하기 바랍니다.
 
-[^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 보도록 합니다.
+[^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
 
 [^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 `n` 개의 원소에서 `r` 개를 선택해서 한 줄로 세울 수 있는 경우의 수입니다. 즉, 원소가 `n` 개인 튜플의 경우의 수는 이 순열 개수 만큼 많다는 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서 조합' 라는 말로 옮겼습니다. 순열에 대한 더 자세한 정보는, 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목과 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
 
