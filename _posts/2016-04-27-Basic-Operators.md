@@ -220,7 +220,7 @@ if name == "world" {
 
 ### Ternary Conditional Operator (삼항 조건 연산자)
 
-_삼항 조건 연산자 (ternary conditional operator)_ 는, `question ? answer1 : answer2` 라는 형식을 취하는, 세 부분으로 된 특수한 연산자입니다. 이는 `question` 이 참인지 거짓인지를 기초로 '두 표현식 중 하나를 평가하는 줄임말 (shortcut)' 입니다. `question` 이 참이면, `answer1` 의 평가 값을 반환하며; 그 외의 경우, `answer2` 의 평가 값을 반환합니다.
+_삼항 조건 연산자 (ternary conditional operator)_ 는 세 부분을 가진 특수한 연산자로, `question ? answer1 : answer2` 라는 형식을 취합니다. 이는 `question` 이 참인지 거짓인지에 기초하여 두 표현식 중 하나를 평가하는 줄임말입니다. `question` 이 참이면, `answer1` 을 평가한 값을 반환하며; 그 외 경우, `answer2` 를 평가한 값을 반환합니다.
 
 삼항 조건 연산자는 아래 코드를 짧게 줄인 겁니다:
 
