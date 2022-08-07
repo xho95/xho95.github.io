@@ -269,18 +269,18 @@ _nil-합체 연산자 (nil-coalescing operator_; `a ?? b`_)_ 는 옵셔널 `a` �
 a != nil ? a! : b
 ```
 
-위 코드는 '삼항 조건 연산자와 강제 포장 풀기 (`a!`) 를 사용' 하여 `a` 가 `nil` 이 아닐 땐 `a` 안의 포장 값에 접근하고, 그 외 경우엔 `b` 를 반환합니다. 'nil-합체 연산자' 는 '이런 조건 검사와 포장 풀기를 간결하고 이해 가능한 형식으로 은닉' 하는 더 우아한 방식을 제공합니다.
+위 코드는 삼항 조건 연산자와 강제 포장 풀기 (`a!`) 를 써서 `a` 가 `nil` 이 아닐 땐 `a` 안에 포장된 값에 접근하고, 그 외 경우면 `b` 를 반환합니다. **nil**-합체 연산자는 더 우아한 방식으로 이러한 조건 검사와 포장 풀기를 간결하고 쉽게 읽히는 형식 안에 감춥니다.
 
-> `a` 가 `nil`-아닌 값이면, `b` 값을 평가하지 않습니다. 이를 _단락-회로 계산 (short-circuit evaluation)_ 이라고 합니다.[^short-circuit]
+> `a` 값이 `nil` 이-아니면, `b` 값은 평가하지 않습니다. 이를 _단락-회로 계산 (short-circuit evaluation)_ 이라고 합니다.[^short-circuit]
 
-아래 예제는 'nil-합체 연산자' 로 '기본 색상 이름' 과 '사용자가 옵션으로-정의한 색상 이름' 중 하나를 선택합니다:
+아래 예제는 **nil**-합체 연산자를 써서 기본 색상 이름과 사용자가 옵션으로-정의한 색상 이름 중 하나를 선택합니다:
 
 ```swift
 let defaultColorName = "red"
-var userDefinedColorName: String?   // 기본은 nil 임
+var userDefinedColorName: String?   // nil 이 기본임
 
 var colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이므로, colorNameToUse 를 "red" 라는 기본 값으로 설정함
+// userDefinedColorName 이 nil 이라서, colorNameToUse 를 기본 (값) "red" 로 설정함
 ```
 
 `userDefinedColorName` 변수는, `nil` 이라는 기본 값을 가진, 옵셔널 `String` 이라고 정의합니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, 값을 고려할 때 `nil-합체 연산자` 를 사용할 수 있습니다. 위 예제에서는, 연산자는 `colorNameToUse` 라는 `String` 변수의 초기 값을 결정하는데 사용합니다.`userDefinedColorName` 이 `nil` 이기 때문에, `userDefinedColorName ?? defaultColorName` 라는 표현식은 `defaultColorName` 의 값인, `"red"` 를 반환합니다.
@@ -488,7 +488,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^remainder-vs-modulo]: 모듈러 연산과 나머지 연산의 차이점은 음수 연산에서 발생합니다. 이에 대한 더 자세한 정보는, **StackOverflow** 의 [What's the difference between “mod” and “remainder”?](https://stackoverflow.com/questions/13683563/whats-the-difference-between-mod-and-remainder) 항목을 참고하기 바랍니다. 
 
-[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 은 전기 공학에서 나온 개념입니다. 전기 회로에서 '단락 회로 (short-circuit)' 가 생기면 다른 곳으로 전류가 흐르지 않듯이, '단락-회로 계산' 은 '컴퓨터 공학에서 계산량을 줄일 목적으로 불필요한 표현식 계산을 하지 않는 방식' 이라고 할 수 있습니다. 컴퓨터 용어로는 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 보도록 합니다.
+[^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 에서 단락-회로라는 건 원래 전기 공학에서 나온 개념입니다. '단락 (短絡)' 은 짧게 이어졌다는 의미며, 단락-회로는 (이론상) 무한히 짧아서 저항이 0 인 상태로 이어진 회로를 의미합니다. 저항이 0 이므로 (이론상) 무한대의 전류가 흐르며, 다른 회로 쪽으로는 전류가 흐르지 않게 됩니다. 즉, 전기 회로에서 단락-회로가 생기면 다른 곳으로 전류가 흐르지 않듯이, 단락-회로 계산은 한 곳의 계산 결과에 따라 다른 곳의 계산을 아예 하지 않는 걸 의미합니다. 컴퓨터 공학에선, 불필요한 표현식의 계산을 하지 않아 계산량을 줄일 수 있는 방식입니다. 컴퓨터 용어로 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 참고하기 바랍니다.
 
 [^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
 

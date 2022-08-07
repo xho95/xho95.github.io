@@ -673,7 +673,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 // "7" 을 인쇄함
 ```
 
-_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려 하면, 오른쪽 채널의 `currentLevel` 속성 상한을 `10` 이라는 최대 값으로 제한하고, `maxInputLevelForAllChannels` 타입 속성을 `10` 으로 갱신하는 걸 볼 수 있습니다:
+_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려 하면, 오른쪽 채널의 `currentLevel` 속성이 최대 값 `10` 으로 위가 막히며, `maxInputLevelForAllChannels` 타입 속성은 `10` 으로 업데이트하는 걸 볼 수 있습니다:
 
 ```swift
 rightChannel.currentLevel = 11
