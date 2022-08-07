@@ -280,17 +280,17 @@ let defaultColorName = "red"
 var userDefinedColorName: String?   // nil 이 기본임
 
 var colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이라서, colorNameToUse 를 기본 (값) "red" 로 설정함
+// userDefinedColorName 이 nil 이라서, colorNameToUse 를 "red" 로 기본 설정함
 ```
 
 `userDefinedColorName` 변수는 옵셔널 `String` 으로 정의하여, 기본 값이 `nil` 입니다. `userDefinedColorName` 이 옵셔널 타입이기 때문에, **nil**-합체 연산자로 그 값을 고려할 수 있습니다. 위 예제에선, 연산자로 `colorNameToUse` 라는 `String` 변수의 초기 값을 결정합니다. `userDefinedColorName` 이 `nil` 이기 때문에, 표현식 `userDefinedColorName ?? defaultColorName` 이 `defaultColorName` 값, 또는 `"red"` 를 반환합니다.
 
-`nil`-아닌 값을 `userDefinedColorName` 에 할당하고 nil-합체 연산자 검사를 다시 하면, `userDefinedColorName` 안의 포장 값을 기본 값 대신 사용합니다:
+`userDefinedColorName` 에 `nil`-아닌 값을 할당하고 다시 **nil**-합체 연산자로 검사하면, 기본 값 대신 `userDefinedColorName` 안에 포장된 값을 사용합니다:
 
 ```swift
 userDefinedColorName = "green"
 colorNameToUse = userDefinedColorName ?? defaultColorName
-// userDefinedColorName 이 nil 이 아니므로, colorNameToUse 를 "green" 으로 설정함
+// userDefinedColorName 이 nil 이 아니라서, colorNameToUse 를 "green" 으로 설정함
 ```
 
 ### Range Operators (범위 연산자)
