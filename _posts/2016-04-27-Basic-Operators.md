@@ -318,9 +318,9 @@ for index in 1...5 {
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 
-_반-열린 범위 연산자 (half-open range operator;_ `a..<b`_)_ 는 `a` 에서 `b` 에 이르는 범위를 정의하지만, `b` 를 포함하진 않습니다. _반-열린 (half-open)_ 이라는 건 '첫 번째 값은 담지만, 최종 값은 아니기 때문' 입니다. 닫힌 범위 연산자에서 처럼, `a` 값은 반드시 `b` 보다 크지 않아야 합니다. `a` 값이 `b` 와 같으면, 결과 범위가 '빌 (empty)' 것입니다.
+_반-열린 범위 연산자 (half-open range operator;_ `a..<b`_)_ 는 `a` 부터 `b` 에 이르는 범위를 정의하지만, `b` 는 포함하지 않습니다. _반-열린 (half-open)_ 이라고 말하는 건 첫 번째 값은 담지만, 최종 값은 아니기 때문입니다. 닫힌 범위 연산자 처럼, `a` 값은 반드시 `b` 보다 크지 않아야 합니다. `a` 값이 `b` 와 같으면, 결과 범위는 빌 (empty) 것입니다.
 
-반-열린 범위는 배열 같이, 목록 길이를 (포함하지 않고) 세는 것이 유용한 곳에서, '기초가-0인 (zero-based)[^zero-based] 목록' 과 작업할 때 특히 더 유용합니다:
+반-열린 범위는 배열 같이, 목록 길이까지 세는(만 이를 포함하진 않는)게 유용한, 0-기반 목록[^zero-based] 과 작업할 때 특히 더 유용합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -334,7 +334,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-배열에 네 개의 항목이 담겨 있지만, `0..<count` 이, 반-열린 연산자이기 때문에, (배열의 마지막 항목 색인인) `3` 까지만 셉니다. 배열에 대한 더 많은 것은, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 부분을 보도록 합니다.
+배열앤 네 개의 항목이 담겨 있지만, `0..<count` 는 (배열의 마지막 항목 색인인) `3` 까지만 세는데, 이는 반-열린 연산자이기 때문입니다. 배열에 대한 더 많은 것은, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 부분을 보기 바랍니다.
 
 #### One-Sided Ranges (한-쪽 범위)
 
@@ -490,10 +490,10 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^short-circuit]: '단락-회로 계산 (short-circuit evaluation)' 에서 단락-회로라는 건 원래 전기 공학에서 나온 개념입니다. '단락 (短絡)' 은 짧게 이어졌다는 의미며, 단락-회로는 (이론상) 무한히 짧아서 저항이 0 인 상태로 이어진 회로를 의미합니다. 저항이 0 이므로 (이론상) 무한대의 전류가 흐르며, 다른 회로 쪽으로는 전류가 흐르지 않게 됩니다. 즉, 전기 회로에서 단락-회로가 생기면 다른 곳으로 전류가 흐르지 않듯이, 단락-회로 계산은 한 곳의 계산 결과에 따라 다른 곳의 계산을 아예 하지 않는 걸 의미합니다. 컴퓨터 공학에선, 불필요한 표현식의 계산을 하지 않아 계산량을 줄일 수 있는 방식입니다. 컴퓨터 용어로 '최소 계산 (minimal evaluation)' 이라고도 하는데, 이에 대한 더 자세한 정보는, 위키피디아의 [Short-circuit evaluation](https://en.wikipedia.org/wiki/Short-circuit_evaluation) 항목을 참고하기 바랍니다.
 
+[^zero-based]: '0-기반 목록 (zero-based lists)' 은 색인이 0 부터 시작하는 목록입니다. 0-기반 목록에 대한 더 많은 정보는, 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 참고하기 바랍니다.
+
 [^left-associative]: '왼쪽-결합 (left-associative)' 는 '연산자 결합성 (operator associativity)' 의 한 가지 방식입니다. '연산자 결합성' 은 괄호 없이 묶인 연산자들이 같은 우선 순위를 가질 경우에 작동하는 방식입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Operator associativity](https://en.wikipedia.org/wiki/Operator_associativity) 항목을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
-
-[^zero-based]: '기초가-0인 목록 (zero-based lists)' 은 '0으로 시작하는 색인 (index) 을 가진 목록' 입니다. 이에 대한 더 많은 정보는, 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 보도록 합니다.
 
 [^c-based-languages]: 'C-에 기초한 언어 (C-based languages)' 는 'C-family' 라고도 하며, 여기에 속한 언어들의 목록은 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 확인할 수 있습니다. 애플에서 만든 '오브젝티브-C (Objective-C)' 와 '스위프트 (Swift)' 는 모두 'C-family' 임을 알 수 있습니다.
