@@ -295,13 +295,13 @@ colorNameToUse = userDefinedColorName ?? defaultColorName
 
 ### Range Operators (범위 연산자)
 
-스위프트는, 값의 범위를 표현하는 줄임말인, 여러 개의 _범위 연산자 (range operators)_ 를 포함합니다.
+스위프트는 여러 가지 _범위 연산자 (range operators)_ 를 포함하는데, 이는 값의 범위를 표현하는 줄임말입니다.
 
 #### Closed Range Operator (닫힌 범위 연산자)
 
-_닫힌 범위 연산자 (closed range operator;_ `a...b`_)_ 는 `a` 에서 `b` 에 이르는 범위를 정의하며, `a` 와 `b` 값도 포함합니다. `a` 값은 반드시 `b` 보다 크지 않아야 합니다.
+_닫힌 범위 연산자 (closed range operator;_ `a...b`_)_ 는 `a` 부터 `b` 에 이르는 범위를 정의하며, `a` 및 `b` 값도 포함합니다. `a` 값은 반드시 `b` 보다 크지 않아야 합니다.
 
-닫힌 범위 연산자는, `for`-`in` 반복문 같이, 모든 값을 사용하고 싶은 범위를 반복할 때 유용합니다:
+닫힌 범위 연산자는, `for`-`in` 반복문 처럼, 범위를 반복하여 모든 값을 사용하고 싶을 때 유용합니다:
 
 ```swift
 for index in 1...5 {
@@ -314,7 +314,7 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-`for-in` 반복문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보도록 합니다.
+`for-in` 반복문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보기 바랍니다.
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 
