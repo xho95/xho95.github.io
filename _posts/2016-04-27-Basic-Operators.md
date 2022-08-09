@@ -461,7 +461,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 
 #### Explicit Parentheses (명시적인 괄호)
 
-꼭 필요하진 않더라도, 복잡한 표현식을 더 쉽게 이해하도록, 괄호를 포함하는 것이 유용할 때가 있습니다. 위 '출입문 접근 예제' 에서는, 복합 표현식의 첫 번째 부분에 괄호를 추가하는 것이 의도를 명시적으로 만들기에 좋습니다:
+엄밀히 필요한 건 아닐 때라도 괄호를 포함하여, 복잡한 표현식의 의도롤 읽기 쉽게 만드는게, 유용할 때가 있습니다. 위의 출입문 접근 예제에선, 복합 표현식의 첫 부분에 괄호를 추가하여 의도를 명시하는게 유용합니다:
 
 ```swift
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
@@ -469,10 +469,10 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 } else {
   print("ACCESS DENIED")
 }
-// "Welcome!" 를 인쇄합니다.
+// "Welcome!" 를 인쇄함
 ```
 
-괄호는 처음의 두 값을 '전체 논리에서 가능한 별도의 상태로 고려함' 을 명확하게 합니다. 복합 표현식의 출력 결과는 바뀌지 않지만, 전체적인 의도는 더 명확해 집니다. '가독성 (readability)' 은 항상 '간결함 (brevity)' 보다 더 좋으므로; 의도를 명확하게 하는데 도움이 될 때는 괄호를 사용합니다.
+괄호는 처음 두 값이 전체 논리에서 별도로 고려 가능한 상태라는 걸 명확하게 합니다. 복합 표현식의 결과물은 바뀌지 않지만, 전체 의도는 더 명확하게 읽힙니다. 쉽게 읽히는 게[^readability] 간결한 것 보다[^brevity] 항상 더 좋습니다; 의도가 명확해지게 돕는 곳이면 괄호를 사용하기 바랍니다.
 
 ### 다음 장
 
