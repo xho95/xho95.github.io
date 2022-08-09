@@ -402,11 +402,11 @@ if !allowedEntry {
 
 #### Logical AND Operator (논리 곱 연산자)
 
-_논리 곱 연산자 (logical AND operator;_ `a && b`_)_ 는 '반드시 두 값 모두 `true` 여야 전체적인 표현식도 `true` 가 되는 논리 표현식 (logical expressions)' 을 생성합니다.
+_논리 곱 연산자 (logical AND operator;_ `a && b`_)_ 는 두 값이 모두 반드시 `true` 여야 전체적인 표현식도 `true` 가 되는 논리 표현식을 생성합니다.
 
-어느 값이든 `false` 면, 전체적인 표현식도 `false` 가 될 것입니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 전체적인 표현식을 `true` 로 만드는 것이 불가능하기 때문에, 심지어 두 번째 값을 평가하지도 않을 것입니다. 이를 _단락-회로 계산 (short-circuit evaluation)_[^short-circuit] 이라고 합니다.
+어느 값이든 `false` 면, 전체적인 표현식도 `false` 가 됩니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 심지어 두 번째 값을 평가하지도 않을 건데, 전체 표현식을 `true` 로 만드는게 (이미) 불가능하기 때문입니다. 이를 _단락-회로 계산 (short-circuit evaluation)_[^short-circuit] 이라고 합니다.
 
-다음 예제는 두 `Bool` 값을 고려하여 두 값 모두 `true` 일 때만 접근을 허용합니다:
+다음 예제는 두 `Bool` 값을 고려하여 두 값이 다 `true` 여야만 접근을 허용합니다:
 
 ```swift
 let enteredDoorCode = true
@@ -416,7 +416,7 @@ if enteredDoorCode && passedRetinaScan {
 } else {
   print("ACCESS DENIED")
 }
-// "ACCESS DENIED" 를 인쇄합니다.
+// "ACCESS DENIED" 를 인쇄함
 ```
 
 #### Logical OR Operator (논리 합 연산자)
