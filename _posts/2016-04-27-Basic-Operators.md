@@ -440,7 +440,7 @@ if hasDoorKey || knowsOverridePassword {
 
 #### Combining Logical Operators (논리 연산자 조합하기)
 
-여러 개의 논리 연산자를 조합하여 더 긴 '복합 (compound) 표현식' 을 생성할 수 있습니다:
+여러 개의 논리 연산자를 조합하여 더 긴 복합 표현식을 생성할 수 있습니다:
 
 ```swift
 if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
