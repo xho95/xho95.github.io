@@ -402,9 +402,9 @@ if !allowedEntry {
 
 #### Logical AND Operator (논리 곱 연산자)
 
-_논리 곱 연산자 (logical AND operator;_ `a && b`_)_ 는 두 값이 모두 반드시 `true` 여야 전체적인 표현식도 `true` 가 되는 논리 표현식을 생성합니다.
+_논리 곱 연산자 (logical AND operator;_ `a && b`_)_ 는 두 값이 모두 반드시 `true` 여야 전체 표현식도 `true` 가 되는 논리 표현식을 생성합니다.
 
-어느 값이든 `false` 면, 전체적인 표현식도 `false` 가 됩니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 심지어 두 번째 값을 평가하지도 않을 건데, 전체 표현식을 `true` 로 만드는게 (이미) 불가능하기 때문입니다. 이를 _단락-회로 계산 (short-circuit evaluation)_[^short-circuit] 이라고 합니다.
+어느 값이든 `false` 면, 전체 표현식도 `false` 가 됩니다. 사실, _첫 번째 (first)_ 값이 `false` 면, 심지어 두 번째 값을 평가하지도 않을 건데, 전체 표현식을 `true` 로 만드는게 (이미) 불가능하기 때문입니다. 이를 _단락-회로 계산 (short-circuit evaluation)_[^short-circuit] 이라고 합니다.
 
 다음 예제는 두 `Bool` 값을 고려하여 두 값이 다 `true` 여야만 접근을 허용합니다:
 
@@ -421,11 +421,11 @@ if enteredDoorCode && passedRetinaScan {
 
 #### Logical OR Operator (논리 합 연산자)
 
-_논리 합 연산자 (logical OR operator;_ `a || b`_)_ 는 '인접한 두 개의 파이프 문자 (`|`) 로 만드는 중위 (infix) 연산자' 입니다. 이는 '두 값 중 _하나 (one)_ 만 `true` 면 전체적인 표현식이 `true` 가 되는 논리 표현식' 를 생성하는데 사용합니다.
+_논리 합 연산자 (logical OR operator;_ `a || b`_)_ 는 인접한 두 파이프 문자 (`|`) 로 만드는 중위 연산자입니다. 이를 써서 두 값 중 _하나 (one)_ 만 `true` 면 전체 표현식이 `true` 가 되는 논리 표현식를 생성합니다.
 
-위 '논리 곱 연산자' 와 같이, '논리 합 연산자' 도 '단락-회로 계산' 을 써서 자신의 표현식을 고려합니다. 논리 합 표현식 왼쪽이 `true` 면, 전체 표현식의 결과를 바꿀 수 없기 때문에, 오른쪽을 평가하지 않습니다.
+위의 논리 곱 연산자 같이, 논리 합 연산자도 단락-회로 계산을 써서 자신의 표현식을 고려합니다. 논리 합 표현식의 왼쪽이 `true` 면, 오른쪽은 평가하지 않는데, 전체 표현식의 결과물을 바꿀 수 없기 때문입니다.
 
-아래 예제에서, 첫 번째 `Bool` 값 (`hasDoorKey`) 는 `false` 지만, 두 번째 값 (`knowsOverridePassword`) 는 `true` 입니다. 하나의 값이 `true` 이기 때문에, 전체 표현식도 `true` 라고 평가하며, 접근을 허용합니다:
+아래 예제에선, 첫 번째 `Bool` 값 (`hasDoorKey`) 는 `false` 지만, 두 번째 값 (`knowsOverridePassword`) 는 `true` 입니다. 한 값이 `true` 기 때문에, 전체 표현식도 `true` 로 평가하여, 접근을 허용합니다:
 
 ```swift
 let hasDoorKey = false
@@ -435,7 +435,7 @@ if hasDoorKey || knowsOverridePassword {
 } else {
   print("ACCESS DENIED")
 }
-// "Welcome!" 을 인쇄합니다.
+// "Welcome!" 을 인쇄함
 ```
 
 #### Combining Logical Operators (논리 연산자 조합하기)
@@ -448,7 +448,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 } else {
   print("ACCESS DENIED")
 }
-// "Welcome!" 을 인쇄합니다.
+// "Welcome!" 을 인쇄함
 ```
 
 이 예제는 여러 개의 `&&` 와 `||` 연산자를 써서 '더 긴 복합 표현식' 을 생성합니다. 하지만, `&&` 와 `||` 연산자는 여전히 두 값에 대해서만 연산하므로, 이는 실제로는 서로 '연쇄된 (chained)' 세 개의 작은 표현식입니다. 예제는 다음 처럼 이해할 수 있습니다:
