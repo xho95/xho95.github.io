@@ -376,11 +376,11 @@ range.contains(-1)  // 참
 
 ### Logical Operators (논리 연산자)
 
-_논리 연산자 (logical operators)_ 는 '`true` 와 `false` 라는 불리언 (Boolean) 논리 값' 을 수정 또는 조합합니다. 스위프트는 'C-에 기초한 언어[^c-based-languages] 의 표준 논리 연산자 세 개' 를 지원합니다:
+_논리 연산자 (logical operators)_ 는 불리언 논리 값인 `true` 와 `false` 를 수정하거나 조합합니다. 스위프트는 C-기반 언어[^c-based-languages] 에 있는 세 개의 표준 논리 연산자를 지원합니다:
 
-* 논리 부정 (Logical NOT; `!a`)
-* 논리 곱 (Logical AND; `a && b`)
-* 논리 합 (Logical OR; `a || b`)
+* 논리 부정 (`!a`)
+* 논리 곱 (`a && b`)
+* 논리 합 (`a || b`)
 
 #### Logical NOT Operator (논리 부정 연산자)
 
