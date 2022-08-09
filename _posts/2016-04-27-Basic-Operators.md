@@ -455,9 +455,9 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 
 올바른 출입문 코드도 입력하고 망막 조사도 통과한 경우나, 유효한 출입문 열쇠가 있는 경우, 또는 긴급 해제 비밀번호[^emergency-override-password] 를 알고 있는 경우라면, 접근을 허용합니다.
 
-`enterDoorCode`, `passedRetinaScan`, 및 `hasDoorKey` 값에 기초하면, 처음 두 하위 표현식은 `false` 입니다. 하지만, '긴급 해제 비밀번호' 를 알고 있으므로, 전체 복합 표현식은 여전히 `true` 로 평가합니다.
+`enterDoorCode` 와, `passedRetinaScan`, 및 `hasDoorKey` 값에 기반한, 첫 두 하위 표현식은 `false` 입니다. 하지만, 긴급 해제 비밀번호를 알고 있어서, 전체 복합 표현식을 여전히 `true` 로 평가합니다.
 
-> 스위프트 논리 연산자인 `&&` 와 `||` 는 '왼쪽-결합'[^left-associative] 인데, 이는 '여러 개의 논리 연산자가 있는 복합 표현식의 경우 가장 왼쪽의 하위 표현식을 먼저 평가한다' 는 의미입니다.
+> 스위프트의 논리 연산자 `&&` 와 `||` 는 왼쪽-결합[^left-associative] 인데, 이는 논리 연산자가 여러 개인 복합 표현식이면 가장 왼쪽의 하위 표현식을 첫 번째로 평가한다는 의미입니다.
 
 #### Explicit Parentheses (명시적인 괄호)
 
