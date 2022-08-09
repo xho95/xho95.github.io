@@ -384,21 +384,21 @@ _논리 연산자 (logical operators)_ 는 불리언 논리 값인 `true` 와 `f
 
 #### Logical NOT Operator (논리 부정 연산자)
 
-_논리 부정 연산자 (logical NOT operator;_ `!a`_)_ 는 '불리언 값' 을 거꾸로 만들어서 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
+_논리 부정 연산자 (logical NOT operator;_ `!a`_)_ 는 불리언 값을 반대로 하여 `true` 는 `false` 가 되고, `false` 는 `true` 가 됩니다.
 
-논리 부정 연산자는 '접두사 (prefix) 연산자' 이며, 어떤 공백도 없이, 자신의 연산 값 바로 앞에 나타냅니다. 이는, 다음 예제에서 보는 것처럼, “`a` 아닌 것 (not `a`)” 으로 이해할 수 있습니다:
+논리 부정 연산자는 접두사 연산자이며, 어떤 공백도 없이, 연산 값 바로 앞에 나타납니다. 다음 예제에서 보듯, “`a` 아님 (not `a`)” 이라고 읽을 수 있습니다:
 
 ```swift
 let allowedEntry = false
 if !allowedEntry {
   print("ACCESS DENIED")
 }
-// "ACCESS DENIED" 를 인쇄합니다.
+// "ACCESS DENIED" 를 인쇄함
 ```
 
-`if !allowedEntry` 라는 절은 "허용된 진입이 아니면 (if not allowed entry)" 으로 이해할 수 있습니다. 뒤이은 줄은 "허용된 진입이 아닌 것" 이 참일 경우에만; 즉, `allowedEntry` 가 `false` 인 경우에만, 실행합니다.
+`if !allowedEntry` 라는 구절은 "진입을 허용한게 아니면 (if not allowed entry)" 라고 읽을 수 있습니다. 뒤이은 줄은 "진입을 안 허용한게" 참인; 즉, `allowedEntry` 가 `false` 인 경우에만 실행합니다.
 
-이 예제에서 처럼, '불리언 상수와 변수 이름' 은 신경써서 선택해야, 이중 부정 또는 논리 문의 혼동을 피하면서, 코드를 이해 가능하고 간단하게 유지할 수 있습니다.
+이 예제처럼, 불리언 상수와 변수 이름은 신경써서 선택해야 코드를 쉽게 읽히고 간결하게 유지하면서, 이중 부정이나 논리 구문의 혼동도 피할 수 있습니다.
 
 #### Logical AND Operator (논리 곱 연산자)
 
@@ -496,4 +496,4 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 [^operator-declarations]: 원문 자체가 애플 개발자 사이트의 링크로 되어 있습니다. 해당 페이지에 스위프트 표준 라이브러리가 제공하는 연산자에 대한 전체 목록이 있습니다.
 
-[^c-based-languages]: 'C-에 기초한 언어 (C-based languages)' 는 'C-family' 라고도 하며, 여기에 속한 언어들의 목록은 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 확인할 수 있습니다. 애플에서 만든 '오브젝티브-C (Objective-C)' 와 '스위프트 (Swift)' 는 모두 'C-family' 임을 알 수 있습니다.
+[^c-based-languages]: 'C-기반 언어 (C-based languages)' 는 **C-family** (C-계열 언어) 라고도 하는데, 여기에 속한 언어 목록은 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 확인할 수 있습니다. 애플에서 만든 **오브젝티브-C** 와 **스위프트** 는 모두 **C-family** 입니다.
