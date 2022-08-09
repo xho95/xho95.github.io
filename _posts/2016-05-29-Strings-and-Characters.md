@@ -10,9 +10,9 @@ categories: Swift Grammar Strings Characters
 
 ## Strings and Characters (문자열과 문자)
 
-_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같은, 연속된 문자들 입니다. 스위프트 문자열은 `String` 타입으로 표현합니다. `String` 의 '내용물 (contents)' 은, '`Character` 값의 집합체 (collection)'[^collection] 로써 접근하는 것' 을 포함하여, 다양한 방식으로 접근할 수 있습니다.
+_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같이, 연속한 문자들 입니다. 스위프트의 문자열은 `String` 타입으로 나타냅니다. `String` 의 내용물[^contents] 은 다양한 방식으로 접근할 수 있는데, `Character` 값의 집합체[^collection] 도 포함됩니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드에서의 텍스트 작업을 위한 '빠르면서, 유니코드를-따르는 (Unicode-compliant) 방식' 을 제공합니다. '문자열 생성 및 조작 구문' 은, 'C 와 비슷한 문자열 글자 값 (string literal) 구문'[^string-literal-syntax] 로, 가볍고 이해하기 쉽습니다. '문자열 이어붙이기 (concatenation)' 는 두 문자열을 `+` 연산자로 조합하면 될 정도로 간단하며, '문자열 변경 가능성 (mutability)' 은, 스위프트에 있는 그냥 다른 어떤 값인 것처럼, 상수인지 변수인지 선택하기만 함으로써 관리합니다. 문자열을 사용하여 '상수, 변수, 글자 값 (literals)'[^literals], 과 표현식 (expressions)' 을 더 긴 문자열에 집어 넣을 수도 있는데, 이 과정을 '문자열 보간법 (string interpolation)'[^interpolation] 이라고 합니다. 이는 '표시, 저장, 및 인쇄를 위한 사용자 정의 문자열 값의 생성' 을 하기 쉽게 만듭니다.
+스위프트의 `String` 과 `Character` 타입은 코드에서, 빠르면서, 유니코드를-따르는 방식[^unicode-compliant] 의 텍스트 작업을 제공합니다. 문자열 생성과 조작 구문은 가볍고 쉽게 읽히며, C 와 비슷한 문자열 글자 값 구문[^string-literal-syntax] 을 가집니다. 문자열 이어붙이기[^concatenation] 는 `+` 연산자로 두 문자열을 조합할 정도로 간단하며, 문자열의 변경 가능성[^mutability] 관리도, 스위프트 안의 그냥 다른 어떤 값인 것처럼, 상수나 변수 사이에서 선택만 하면 됩니다. 문자열을 사용하여 상수와, 변수, 글자 값[^literals], 및 표현식을 더 긴 문자열 안에 집어 넣을 수도 있는데, 이 과정을 문자열 끼워넣기[^string-interpolation] 라고 합니다. 이는 자신만의 문자열 값을 생성하여 보여주고, 저장하며, 인쇄하기 쉽게 해줍니다.
 
 이런 구문의 단순함에도 불구하고, 스위프트 `String` 타입은 '빠른, 현대적인 문자열 구현' 입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 합성하며, '다양한 유니코드 표현으로 해당 문자에 접근하는 것' 을 지원합니다.
 
