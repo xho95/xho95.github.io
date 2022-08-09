@@ -12,13 +12,13 @@ categories: Swift Grammar Strings Characters
 
 _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같이, 연속한 문자들 입니다. 스위프트의 문자열은 `String` 타입으로 나타냅니다. `String` 의 내용물[^contents] 은 다양한 방식으로 접근할 수 있는데, `Character` 값의 집합체[^collection] 도 포함됩니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드에서, 빠르면서, 유니코드를-따르는 방식[^unicode-compliant] 의 텍스트 작업을 제공합니다. 문자열 생성과 조작 구문은 가볍고 쉽게 읽히며, C 와 비슷한 문자열 글자 값 구문[^string-literal-syntax] 을 가집니다. 문자열 이어붙이기[^concatenation] 는 `+` 연산자로 두 문자열을 조합할 정도로 간단하며, 문자열의 변경 가능성[^mutability] 관리도, 스위프트 안의 그냥 다른 어떤 값인 것처럼, 상수나 변수 사이에서 선택만 하면 됩니다. 문자열을 사용하여 상수와, 변수, 글자 값[^literals], 및 표현식을 더 긴 문자열 안에 집어 넣을 수도 있는데, 이 과정을 문자열 끼워넣기[^string-interpolation] 라고 합니다. 이는 자신만의 문자열 값을 생성하여 보여주고, 저장하며, 인쇄하기 쉽게 해줍니다.
+스위프트의 `String` 과 `Character` 타입은 코드에서, 빠르면서, 유니코드를-따르는 방식[^unicode-compliant] 의 텍스트 작업을 제공합니다. 문자열 생성과 조작 구문은 가볍고 쉽게 읽히며, C 와 비슷한 문자열 글자 값 구문[^string-literal-syntax] 을 가집니다. 문자열 이어붙이기[^concatenation] 는 `+` 연산자로 두 문자열을 조합할 정도로 간단하며, 문자열의 변경 가능성[^mutability] 관리도, 스위프트 안의 그냥 다른 어떤 값인 것처럼, 상수나 변수 사이에서 선택만 하면 됩니다. 문자열을 사용하여 상수와, 변수, 글자 값[^literals], 및 표현식을 더 긴 문자열 안에 집어 넣을 수도 있는데, 이 과정을 문자열 끼워넣기[^string-interpolation] 라고 합니다. 이는 자신만의 문자열 값을 보여주고, 저장하며, 인쇄하기 쉽게 생성하도록 합니다.
 
-이런 구문의 단순함에도 불구하고, 스위프트 `String` 타입은 '빠른, 현대적인 문자열 구현' 입니다. 모든 문자열은 '인코딩-독립적인 유니코드 문자들 (encoding-independent Unicode characters)' 로 합성하며, '다양한 유니코드 표현으로 해당 문자에 접근하는 것' 을 지원합니다.
+이렇게 구문이 단순함에도 불구하고, 스위프트 `String` 타입은 빠른, 최신의 문자열 구현입니다. 모든 문자열이 인코딩-독립적인 유니코드 문자[^encoding-independent-unicode-characters] 로 합성되어, 다양한 유니코드 표현법으로 그 문자들에 접근하는 걸 지원합니다.
 
-> 스위프트 `String` 타입은 'Foundation[^Foundation] 의 `NSString` 클래스와 연동' 되어 있습니다. 'Foundation' 은 `NSString` 이 정의한 메소드를 노출하기 위해 `String` 도 확장합니다. 이는, 'Foundation' 을 불러 오면, `String` 에 대한 이 `NSString` 메소드에 '타입 변환 (casting)' 없이 접근할 수 있다는 의미입니다.
+> 스위프트의 `String` 타입은 **Foundation**[^Foundation] 의 `NSString` 클래스와 연동되어 있습니다. **Foundation** 은 `String` 도 확장하여 `NSString` 이 정의한 메소드도 드러냅니다. 이것은, **Foundation** 을 불러 오면, 타입 변환 없이 `String` 에서 `NSString` 메소드에 접근할 수 있다는 걸 의미합니다.
 >
-> 'Foundation 과 Cocoa'[^Cocoa] 를 가지고 `String` 을 사용하는 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보도록 합니다.
+> `String` 을 **Foundation** 및 **Cocoa**[^Cocoa] 와 사용하는데 대한 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보기 바랍니다.
 
 ### String Literals (문자열 글자 값)
 
