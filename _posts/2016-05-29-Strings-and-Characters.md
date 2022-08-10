@@ -10,11 +10,11 @@ categories: Swift Grammar Strings Characters
 
 ## Strings and Characters (문자열과 문자)
 
-_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같이, 연속한 문자들 입니다. 스위프트의 문자열은 `String` 타입으로 나타냅니다. `String` 의 내용물[^contents] 은 다양한 방식으로 접근할 수 있는데, `Character` 값의 집합체[^collection] 도 포함됩니다.
+_문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같이, 연속한 문자들 입니다. 스위프트의 문자열은 `String` 타입으로 나타냅니다. `String` 의 내용물엔, `Character` 값의 집합체[^collection] 로도 포함하여, 다양한 방식으로 접근할 수 있습니다.
 
-스위프트의 `String` 과 `Character` 타입은 코드에서, 빠르면서, 유니코드를-따르는 방식[^unicode-compliant] 의 텍스트 작업을 제공합니다. 문자열 생성과 조작 구문은 가볍고 쉽게 읽히며, C 와 비슷한 문자열 글자 값 구문[^string-literal-syntax] 을 가집니다. 문자열 이어붙이기[^concatenation] 는 `+` 연산자로 두 문자열을 조합할 정도로 간단하며, 문자열의 변경 가능성[^mutability] 관리도, 스위프트 안의 그냥 다른 어떤 값인 것처럼, 상수나 변수 사이에서 선택만 하면 됩니다. 문자열을 사용하여 상수와, 변수, 글자 값[^literals], 및 표현식을 더 긴 문자열 안에 집어 넣을 수도 있는데, 이 과정을 문자열 끼워넣기[^string-interpolation] 라고 합니다. 이는 자신만의 문자열 값을 보여주고, 저장하며, 인쇄하기 쉽게 생성하도록 합니다.
+스위프트의 `String` 과 `Character` 타입은 코드에서, 빠르면서, 유니코드를-따르는[^unicode-compliant] 방식의 텍스트 작업을 제공합니다. 문자열 생성 및 조작 구문은 가볍고 쉽게 읽히며, 문자열 글자 값[^literals] 구문은 **C** 와 비슷합니다.[^string-literal-syntax] 문자열 이어붙이기[^concatenation] 는 `+` 연산자로 두 문자열을 조합할 정도로 간단하며, 문자열의 변경 가능성을 [^mutability] 관리하는 것도 상수나 변수 사이에 선택만 하면 되어, 그냥 스위프트의 다른 어떤 값인 것처럼 하면 됩니다. 문자열을 사용하여 상수와, 변수, 글자 값, 및 표현식을 더 긴 문자열 안에 집어 넣을 수도 있는데, 이 과정을 문자열 끼워넣기[^string-interpolation] 라고 합니다. 이는 자신만의 문자열 값을 보여주고, 저장하며, 인쇄하기 쉽게 생성하도록 합니다.
 
-이렇게 구문이 단순함에도 불구하고, 스위프트 `String` 타입은 빠른, 최신의 문자열 구현입니다. 모든 문자열이 인코딩-독립적인 유니코드 문자[^encoding-independent-unicode-characters] 로 합성되어, 다양한 유니코드 표현법으로 그 문자들에 접근하는 걸 지원합니다.
+이렇게 구문이 단순함에도 불구하고, 스위프트의 `String` 타입은 빠르고, 최신인 문자열 구현입니다. 모든 문자열이 인코딩-독립적인 유니코드 문자[^encoding-independent-unicode-characters] 로 합성되어, 다양한 유니코드 표현법으로 그 문자들에 접근하는 걸 지원합니다.
 
 > 스위프트의 `String` 타입은 **Foundation**[^Foundation] 의 `NSString` 클래스와 연동되어 있습니다. **Foundation** 은 `String` 도 확장하여 `NSString` 이 정의한 메소드도 드러냅니다. 이것은, **Foundation** 을 불러 오면, 타입 변환 없이 `String` 에서 `NSString` 메소드에 접근할 수 있다는 걸 의미합니다.
 >
@@ -22,15 +22,15 @@ _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같이, 연속한 �
 
 ### String Literals (문자열 글자 값)
 
-미리 정의한 `String` 값을 _문자열 글자 값 (string literals)_ 으로써 코드 안에 포함할 수 있습니다. 문자열 글자 값은 '큰 따옴표 (`"`) 로 둘러싼 일련의 문자들' 입니다.
+미리 정의한 `String` 값을 _문자열 글자 값 (string literals)_ 으로 코드 안에 포함시킬 수 있습니다. 문자열 글자 값은 큰 따옴표 (`"`) 로 둘러싼 일련의 문자들을 말합니다.
 
-문자열 글자 값은 '상수나 변수의 초기 값 (initial value)' 으로 사용합니다:
+문자열 글자 값은 상수나 변수의 초기 값으로 사용합니다:
 
 ```swift
 let someString = "Some string literal value"
 ```
 
-`someString` 상수를 문자열 글자 값으로 초기화하기 때문에 스위프트가 `String` 타입으로 추론함을 기억하기 바랍니다.
+스위프트가 `someString` 상수를 `String` 타입으로 추론하는 건 문자열 글자 값으로 초기화하기 때문이라는 걸 기록하기 바랍니다.
 
 #### Multiline String Literals (여러 줄짜리 문자열 글자 값)
 
@@ -88,7 +88,7 @@ It also ends with a line break.
 
 문자열 글자 값은 '다음의 특수 문자' 을 포함할 수 있습니다:
 
-* '(본래의 의미를) 벗어난 (escaped)[^escaped] 특수 문자' 인 `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed)[^line-feed], `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
+* (의미를) 벗어난 [^escaped] 특수 문자인 `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed)[^line-feed], `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
 * _n_ 이 1-8자리 16진수일 때, `\u{`_n_`}` 라고 작성한, '임의의 유니코드 크기 (Unicode scalar) 값'[^scalar] (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 부분에서 논의함)
 
 아래 코드는 이 특수 문자들의 네 가지 예를 보여줍니다. `wiseWords` 상수는 '두 개의 벗어난 (escaped) 큰 따옴표' 를 담고 있습니다. `dollarSign`, `blackHeart`, 및  `sparklingHeart` 상수는 '유니코드 크기 값 양식' 을 실증합니다:
@@ -660,17 +660,23 @@ for scalar in dogString.unicodeScalars {
 
 [^Strings-and-Characters]: 원문은 [Strings and Characters](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
+[^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 참고하기 바랍니다.
 
-[^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 보도록 합니다.
+[^literals]: '글자 값 (literals)' 은 실제 글자로 표현되는 값을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값을 말하고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값을 말합니다. 즉, 글자 값의 타입은 그 값이 실제로 표현하는게 뭔지에 따라 추론됩니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 부분을 참고하기 바랍니다.
 
-[^string-literal-syntax]: '문자열 글자 값 구문 (string literal syntax)' 은, `let greeting = "hello"` 같은 문장에서의, `"hello"` 를 의미합니다. 이런 '문자열 글자 값 구문' 이 C 언어와 비슷하는 의미입니다. '글자 값 (literal)' 에 대한 더 자세한 정보는, 바로 아래의 '글자 값 (literals) 에 대한 주석'[^literals] 이나 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 항목을 보도록 합니다.
+[^string-literal-syntax]: '문자열 글자 값 구문 (string literal syntax)' 이란 `let greeting = "hello"` 에서 `"hello"` 같은 구문을 말하며, 이게 **C** 언어와 비슷하는 의미입니다. 
 
-[^literals]: 여기서 '글자 값 (literals)' 는 '글자로 표현된 실제 값' 을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값이 되고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값이 됩니다. 즉 '글자 값 (literals)' 에서 값의 타입은 그 값이 실제로 표현하는 것이 무엇인지에 따라 달라집니다.
+[^concatenation]: '문자열 이어붙이기 (string concatenation)' 는 두 문자열을 합쳐서 하나의 문자열로 만드는 것을 말합니다. 이에 대한 더 자세한 내용은, [Concatenating Strings and Characters (문자열과 문자 이어붙이기)](#concatenating-strings-and-characters-문자열과-문자-이어붙이기) 부분을 참고하기 바랍니다.
 
-[^interpolation]: '보간법 (interpolation)' 은 원래 수학 용어로 그래프 상에서 두 점 사이의 값을 근사적으로 구해서 채워넣는 방법을 말합니다. 'string interpolation' 은 굳이 직역하면 '문자열 삽입법' 등으로 옮길 수 있겠지만, 'interpolation' 은 원래부터 '보간법' 이라는 말로 많이 사용하고 있으므로 그대로 '보간법' 을 사용하도록 합니다. '문자열 보간법' 은 한 문자열 중간에 다른 값을 문자열의 형태로 집어넣는 것으로 이해할 수 있습니다.
+[^string-interpolation]: '문자열 끼워넣기 (string interpolation)' 는 한 문자열 중간에 다른 문자열을 집어 넣는 방법을 말합니다. '끼워넣기 (interpolation)' 는 '보간법' 이라고도 하는데, 원래 수학 용어로 그래프 상에서 두 점 사이의 값을 근사적으로 구해서 채워넣는 방법을 말합니다. 이러한 방법을 문자열에도 적용했다고 이해하면 됩니다.
 
-[^escaped]: 'escape' 은 우리 말로 '벗어나다' 라는 의미인데, 프로그래밍 용어로 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나 다른 의미를 가지는 특수 문자' 입니다. 예를 들어, `n` 은 그냥 하나의 영어 문자이지만, `\n` 은 본래의 영어 의미를 벗어난 `새로운 줄 (new line)` 이라는 의미를 가지게 됩니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 '본래 의미를 벗어난 다른 의미를 가지도록 한 문자' 를 'escaped characters' 라고 합니다.
+[^encoding-independent-unicode-characters]: 문자열이 인코딩-독립적인 유니코드 문자로 합성되었다는 건 `UTF-8`, `UTF-16` 등등에 상관없이 어떤 인코딩 방식으로도 문자열을 사용할 수 있게 만들어졌다는 의미입니다. 
+
+[^Foundation]: **Foundation** 은 모든 스위프트 프로그래밍에서 사용하는 가장 기본적인 프레임웍입니다. 이에 대한 더 자세한 정보는, 애플 개발자 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+
+[^Cocoa]: **Cocoa** 는 애플에서 만든 **macOS** 용 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라고 설명합니다. 애플에서 **M1** 맥북을 발표하는 등, **macOS** 도 **ARM** 기반이 되면서, **Cocoa** 의 비중은 계속 줄어들고 있습니다.
+
+[^escaped]: 'escape' 은 우리 말로 '벗어나다' 라는 의미인데, 프로그래밍 용어로 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나 다른 의미를 가지는 특수 문자' 입니다. 예를 들어, `n` 은 그냥 하나의 영어 문자이지만, `\n` 은 문자 본래의 의미를 벗어나서 `새로운 줄 (new line)` 이라는 의미를 가집니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 본래 의미를 벗어나 다른 의미를 가지게 한 문자를 '벗어난 문자 (escaped characters)' 라고 합니다.
 
 [^scalar]: 'scalar' 는 원래 수학 용어로 '크기만을 가지는 값' 입니다. 여기서 'Unicode scalar value' 은 각각의 문자에 일대일 대응되는 '유니코드 크기 값' 을 의미합니다. 예를 들어, 문자는 `$` 는 유니코드 크기 값이 `U+0024` 에 해당합니다.
 
@@ -691,10 +697,6 @@ for scalar in dogString.unicodeScalars {
 [^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 보도록 합니다.
 
 [^line-feed-escape-sequence]: '(벗어난) 줄 먹임 문자열 (line feed escape sequence)' 은 말 그대로 `\n` 문자열 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 '`\` 과 `n` 이라는 문자가 연속된 것' 으로 인식한다는 의미입니다.
-
-[^Foundation]: 'Foundation (기반)' 은 모든 스위프트 프로그래밍에서 사용하는 기본 프레임웍으로 `import Foundation` 으로 불러옵니다. 이에 대한 더 자세한 내용은, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 보도록 합니다.
-
-[^Cocoa]: 'Cocoa (코코아)' 는 'macOS' 를 위해 애플에서 만든 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라는 설명이 나옵니다. 최근 'M1' 을 사용한 맥을 발표했으므로, 'macOS' 도 'ARM' 기반이 될 것이라, 'Cocoa (코코아)' 의 비중은 더 줄어들 것입니다.
 
 [^single-and-multiline]: 즉, 예제에 있는 `singleLineString` 과 `multilineString` 은 사실상 같은 문자열이비다. `multilineString` 은 '세 개의 큰 따옴표' 를 사용하고 있지만, '한-줄짜리 문자열' 만 담고 있습니다.
 
