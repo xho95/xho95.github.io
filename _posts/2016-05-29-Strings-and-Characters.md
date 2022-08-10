@@ -84,12 +84,12 @@ It also ends with a line break.
 
 위 예제에선, 여러 줄짜리 문자열 글자 값 전체에 들여쓰기가 있더라도, 문자열의 첫 번째와 마지막 줄은 공백으로 시작하지 않습니다. 중간 줄은 닫는 따옴표 (줄)보다 더 들여 썼으므로, 그 부가적인 네-칸 들여쓰기로 시작합니다.
 
-#### Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)
+#### Special Characters in String Literals (문자열 글자 값 안의 특수 문자)
 
-문자열 글자 값은 '다음의 특수 문자' 을 포함할 수 있습니다:
+문자열 글자 값은 다음의 특수 문자들을 포함할 수 있습니다:
 
-* (의미를) 벗어난 [^escaped] 특수 문자인 `\0` (널-null 문자), `\\` (역 빗금-backslash), `\t` (가로 탭-tab), `\n` (줄 먹임-line feed)[^line-feed], `\r` (캐리지-carriage 반환), `\"` (큰 따옴표) 그리고 `\'` (작은 따옴표)
-* _n_ 이 1-8자리 16진수일 때, `\u{`_n_`}` 라고 작성한, '임의의 유니코드 크기 (Unicode scalar) 값'[^scalar] (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 부분에서 논의함)
+* (의미를) 벗어난[^escaped] 특수 문자인 `\0` (널 문자), `\\` (역 빗금), `\t` (가로 탭), `\n` (줄 먹임), `\r` (캐리지 반환)[^carriage], `\"` (큰 따옴표) 및 `\'` (작은 따옴표)
+* `\u{`_n_`}` 라고 쓰는, 임의의 유니코드 크기 값[^scalar], 여기서 _n_ 은 1-8숫자의 16진수 (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 부분에서 논의함)
 
 아래 코드는 이 특수 문자들의 네 가지 예를 보여줍니다. `wiseWords` 상수는 '두 개의 벗어난 (escaped) 큰 따옴표' 를 담고 있습니다. `dollarSign`, `blackHeart`, 및  `sparklingHeart` 상수는 '유니코드 크기 값 양식' 을 실증합니다:
 
@@ -685,6 +685,8 @@ for scalar in dogString.unicodeScalars {
 [^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 보도록 합니다.
 
 [^escaped]: 'escape' 은 우리 말로 '벗어나다' 라는 의미인데, 프로그래밍 용어로 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나 다른 의미를 가지는 특수 문자' 입니다. 예를 들어, `n` 은 그냥 하나의 영어 문자이지만, `\n` 은 문자 본래의 의미를 벗어나서 `새로운 줄 (new line)` 이라는 의미를 가집니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 본래 의미를 벗어나 다른 의미를 가지게 한 문자를 '벗어난 문자 (escaped characters)' 라고 합니다.
+
+[^carriage]: '캐리지 (carriage)' 는 원래 타자기에서 종이를 들고 움직이는 장치를 말합니다. 타자기에서 '캐리지 반환 (carriage return)' 은 이 캐리지를 다음 줄의 맨 앞으로 움직이는 동작이었습니다. 이것이 컴퓨터가 등장하면서 커서의 위치를 다음 줄의 맨 앞으로 움직이는 걸 의미하게 되었습니다.
 
 [^scalar]: 'scalar' 는 원래 수학 용어로 '크기만을 가지는 값' 입니다. 여기서 'Unicode scalar value' 은 각각의 문자에 일대일 대응되는 '유니코드 크기 값' 을 의미합니다. 예를 들어, 문자는 `$` 는 유니코드 크기 값이 `U+0024` 에 해당합니다.
 

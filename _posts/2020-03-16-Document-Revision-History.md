@@ -248,7 +248,7 @@ categories: Swift Language Grammar Revision History
 * `willSet` 과 `didSet` 관찰자의 작동 방식을 분명하게 밝히기 위해 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 절에 있는 기록을 업데이트함.
 * `private` 접근의 영역에 대한 정보를 가지고 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 절에 기록을 추가함.
 * '쓰레기 수집 시스템 (garbage collected systems)' 과 'ARC' 간의 '약한 참조 (weak references)' 에 있는 차이점에 대하여 [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 절에 기록을 추가함.
-* '유니코드 크기 값 (Unicode scalars)' 의 더 엄밀한 정의를 가지고 [Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값에-있는-특수-문자) 절을 업데이트함.
+* '유니코드 크기 값 (Unicode scalars)' 의 더 엄밀한 정의를 가지고 [Special Characters in String Literals (문자열 글자 값 안의 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값-안의-특수-문자) 절을 업데이트함.
 
 #### 2015-04-08
 
@@ -260,7 +260,7 @@ categories: Swift Language Grammar Revision History
 * [String Indices (문자열 색인)]({% post_url 2016-05-29-Strings-and-Characters %}#string-indices-문자열-색인) 에 대하여 새로운 지침 부분을 추가함.
 * [Overflow Operators (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 '값 넘침 나누기 (overflow division; `&/`)' 와 '값 넘침 나머지 (overflow remainder; `&%`)' 연산자를 제거함.
 * 상수 및 상수 속성 선언과 초기화에 대한 규칙을 업데이트함. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고 바람.
-* '문자열 글자 값 (string literals)' 에 있는 '유니코드 크기 값 (Unicode scalars)' 의 정의를 업데이트함. [Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값에-있는-특수-문자) 를 참고 바람.
+* '문자열 글자 값 (string literals)' 에 있는 '유니코드 크기 값 (Unicode scalars)' 의 정의를 업데이트함. [Special Characters in String Literals (문자열 글자 값 안의 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값-안의-특수-문자) 를 참고 바람.
 * 시작 색인과 끝 색인이 같은 '반-열린 범위 (half-open range)' 는 비어 있을 것이라는 것에 주목하기 위해 [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 업데이트함.
 * 변수를 붙잡는 규칙을 분명히 밝히기 위해 [Closures Are Reference Types (클로저는 참조 타입입니다)]({% post_url 2020-03-03-Closures %}#closures-are-reference-types-클로저는-참조-타입입니다) 를 업데이트함.
 * 부호 있는 정수와 부호 없는 정수에 대한 '값 넘침' 작동 방식을 분명히 밝히기 위해 [Value Overflow (값 넘침)]({% post_url 2020-05-11-Advanced-Operators %}#value-overflow-값-넘침) 을 업데이트함.
