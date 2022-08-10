@@ -34,7 +34,7 @@ let someString = "Some string literal value"
 
 #### Multiline String Literals (여러 줄짜리 문자열 글자 값)
 
-여러 줄에 걸쳐진 문자열이 필요한 경우, 세 개의 큰 따옴표로 둘러싼 일련의 문자열인-'여러 줄짜리 문자열 글자 값 (multiline string literal)' 을 사용합니다:
+여러 줄에 걸쳐 있는 문자열이 필요한 경우, 여러 줄짜리 문자열 글자 값인-세 개의 큰 따옴표로 둘러싼 일련의 문자들을 사용합니다:
 
 ```swift
 let quotation = """
@@ -46,7 +46,7 @@ till you come to the end; then stop."
 """
 ```
 
-'여러 줄짜리 문자열 글자 값' 은 '열고 닫는 따옴표 사이의 모든 줄' 을 포함합니다. 문자열은 '여는 따옴표 (`"""`) 뒤의 첫째 줄' 에서 시작해서 '닫는 따옴표 앞 줄' 에서 끝나는데, 이는 '아래에 있는 어느 쪽 문자열도 줄 끊음 (line break) 으로 시작하거나 끝나지 않는다' 는 의미입니다:[^single-and-multiline]
+여러 줄짜리 문자열 글자 값은 열고 닫는 따옴표 사이의 모든 줄을 포함합니다. 문자열은 여는 따옴표 (`"""`) 뒤의 첫째 줄에서 시작하고 닫는 따옴표 앞 줄에서 끝나는데, 이는 아래의 어느 문자열도 줄 끊음[^line-break] (문자)로 시작하거나 끝나지 않는다는 의미입니다:[^single-and-multiline]
 
 ```swift
 let singleLineString = "These are the same."
@@ -55,7 +55,7 @@ These are the same.
 """
 ```
 
-소스 코드에 있는 '여러 줄짜리 문자열 글자 값이 줄 끊음을 포함' 하고 있을 때, 줄 끊음은 문자열 글자 값에서도 나타납니다. 소스 코드를 쉽게 이해하도록 '줄 끊음' 은 사용하고 싶지만, '줄 끊음' 이 문자열 글자 값의 일부분이 되길 원하지는 않을 경우엔, 그 줄 끝에 '역 빅금 (backslash; `\`)' 을 작성합니다:
+소스 코드의 여러 줄짜리 문자열 글자 값이 줄 끊음을 포함할 땐, 그 줄 끊음이 문자열 값에 나타납니다. 줄 끊음으로 소스 코드를 읽기 쉽게 하고 싶지만, 줄 끊음이 문자열 값의 일부가 되는게 싫다면, 그 줄 끝에 역 빅금 (`\`) 을 씁니다:[^backslash]
 
 ```swift
 let softWrappedQuotation = """
@@ -67,7 +67,7 @@ till you come to the end; then stop."
 """
 ```
 
-'줄 먹임 (line feed)' 으로 시작하거나 끝나는 '여러 줄짜리 문자열 글자 값' 을 만들려면, 첫 번째나 마지막 줄에 '빈 (blank) 줄' 을 작성합니다. 예를 들면 다음과 같습니다:
+여러 줄짜리 문자열 글자 값이 줄 먹임[^line-feed] (문자)로 시작하거나 끝나게 하려면, 첫 번째나 마지막 줄에 텅 빈 줄을 작성합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let lineBreaks = """
@@ -78,11 +78,11 @@ It also ends with a line break.
 """
 ```
 
-'여러 줄짜리 문자열' 은 주위 코드와 일치하도록 들여쓰기를 할 수 있습니다. '닫는 따옴표 (`"""`) 앞의 공백' 은 '다른 모든 줄 앞에서 무시할 공백' 을 스위프트에게 말합니다. 하지만, 닫는 따옴표 앞의 것에 더해서 줄 앞에 공백을 작성하면, 해당 공백 _을 (is)_ 포함합니다.
+여러 줄짜리 문자열은 들여쓰기해서 주위 코드와 맞출 수 있습니다. 닫는 따옴표 (`"""`) 앞의 공백은 다른 모든 줄 앞에 무시할 공백이 뭔지를 스위프트에게 말합니다. 하지만, 닫는 따옴표 앞의 것에 더해 줄 앞에 (또) 공백을 작성하면, 그 공백 _은 (is)_ 포함됩니다.
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-indent.jpg)
 
-위 예제에서, '여러 줄짜리 문자열 글자 값' 전체에 들여쓰기를 했음에도, 문자열의 첫 번째와 마지막 줄은 공백으로 시작하지 않습니다. 중간 줄은 닫는 따옴표보다 더 들여 썼으므로, '부가적인 네-칸 들여쓰기' 로 시작합니다.
+위 예제에선, 여러 줄짜리 문자열 글자 값 전체에 들여쓰기가 있더라도, 문자열의 첫 번째와 마지막 줄은 공백으로 시작하지 않습니다. 중간 줄은 닫는 따옴표 (줄)보다 더 들여 썼으므로, 그 부가적인 네-칸 들여쓰기로 시작합니다.
 
 #### Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)
 
@@ -676,6 +676,14 @@ for scalar in dogString.unicodeScalars {
 
 [^Cocoa]: **Cocoa** 는 애플에서 만든 **macOS** 용 API 입니다. 하지만 현재 [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 문서를 보면 '그만둔 문서 (Retired Document)' 라고 설명합니다. 애플에서 **M1** 맥북을 발표하는 등, **macOS** 도 **ARM** 기반이 되면서, **Cocoa** 의 비중은 계속 줄어들고 있습니다.
 
+[^line-break]: 스위프트에서 '줄 끊음 (line break)' 문자는 사실상 '새 줄 (new line; `\n`)' 문자와 똑같습니다.
+
+[^single-and-multiline]: 즉, 예제에 있는 `singleLineString` 과 `multilineString` 은 사실상 같은 문자열입니다. `multilineString` 은 세 개의 큰 따옴표를 사용한 문자열이지만, 실제로는 한-줄짜리 문자열과 똑같은 문자열을 담고 있습니다.
+
+[^backslash]: 줄 끝에 '역 빗금 (backslash)' 문자가 있으면 그 다음 줄도 하나의 줄로 인식합니다.
+
+[^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 보도록 합니다.
+
 [^escaped]: 'escape' 은 우리 말로 '벗어나다' 라는 의미인데, 프로그래밍 용어로 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나 다른 의미를 가지는 특수 문자' 입니다. 예를 들어, `n` 은 그냥 하나의 영어 문자이지만, `\n` 은 문자 본래의 의미를 벗어나서 `새로운 줄 (new line)` 이라는 의미를 가집니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 본래 의미를 벗어나 다른 의미를 가지게 한 문자를 '벗어난 문자 (escaped characters)' 라고 합니다.
 
 [^scalar]: 'scalar' 는 원래 수학 용어로 '크기만을 가지는 값' 입니다. 여기서 'Unicode scalar value' 은 각각의 문자에 일대일 대응되는 '유니코드 크기 값' 을 의미합니다. 예를 들어, 문자는 `$` 는 유니코드 크기 값이 `U+0024` 에 해당합니다.
@@ -694,11 +702,7 @@ for scalar in dogString.unicodeScalars {
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
-[^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% post_url 2020-07-28-Lexical-Structure %}) 장의 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 보도록 합니다.
-
 [^line-feed-escape-sequence]: '(벗어난) 줄 먹임 문자열 (line feed escape sequence)' 은 말 그대로 `\n` 문자열 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 '`\` 과 `n` 이라는 문자가 연속된 것' 으로 인식한다는 의미입니다.
-
-[^single-and-multiline]: 즉, 예제에 있는 `singleLineString` 과 `multilineString` 은 사실상 같은 문자열이비다. `multilineString` 은 '세 개의 큰 따옴표' 를 사용하고 있지만, '한-줄짜리 문자열' 만 담고 있습니다.
 
 [^letter]: 엄밀하게 말하면, 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 
 
