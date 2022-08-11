@@ -101,7 +101,7 @@ let blackHeart = "\u{2665}"       // ♥, 유니코드 크기 값 U+2665
 let sparklingHeart = "\u{1F496}"  // 💖, 유니코드 크기 값 U+1F496
 ```
 
-여러 줄짜리 문자열 글자 값은 한 개 대신 세 개의 큰 따옴표를 쓰기 때문에, 벗어나게[^escaping]  하지않고도 여러 줄짜리 문자열 글자 값 안에다 큰 따옴표 (`"`) 를 포함시킬 수 있습니다. 여러 줄짜리 문자열에 `"""` 를 텍스트로 포함시키려면, 적어도 한 따옴표는 벗어나게 해야 합니다. 예를 들면 다음과 같습니다:
+여러 줄짜리 문자열 글자 값은 한 개 대신 세 개의 큰 따옴표를 쓰기 때문에, 벗어나게[^escaping] 하지 않고도 여러 줄짜리 문자열 글자 값 안에 큰 따옴표 (`"`) 를 포함할 수 있습니다. 여러 줄짜리 문자열이 `"""` 를 텍스트로 포함하려면, 적어도 한 따옴표는 벗어나게 해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let threeDoubleQuotationMarks = """
@@ -112,13 +112,13 @@ Escaping all three quotation mark \"\"\"
 
 #### Extended String Delimiters (확장된 문자열 구분자)
 
-_확장된 구분자 (extended delimiters)_ 안에 문자열 글자 값을 두면 특수 문자 효과를 소환하지 않고도 문자열에 포함할 수 있습니다. '따옴표 (`"`)' 안에 문자열을 두고 이를 '번호 기호 (number signs; `#`)'[^number-sign] 로 둘러쌉니다. 예를 들어, `#"Line 1\nLine 2"#` 라는 문자열 글자 값을 인쇄하면 '두 줄에 걸친 문자열' 을 인쇄하기 보단 '(벗어난) 줄 먹임 문자열 (`\n`)'[^line-feed-escape-sequence] 을 인쇄합니다.
+_확장 구분자 (extended delimiters)_ 안에 문자열 글자 값을 두면 그 효과를 불러내지 않고도 문자열 안에 특수 문자를 포함시킬 수 있습니다. 따옴표 (`"`) 안에 문자열을 두고 그걸 번호 기호 (`#`)[^number-sign] 로 둘러쌉니다. 예를 들어, 문자열 글자 값 `#"Line 1\nLine 2"#` 을 인쇄하면 두 줄에 걸쳐 문자열을 인쇄하기 보단 (벗어난) 줄 먹임 시퀀스 (`\n`)[^line-feed-escape-sequence] 자체를 인쇄합니다.
 
-문자열 글자 값에서 '문자의 특수 효과' 가 필요하면, '벗어난 (escape) 문자 (`\`)' 뒤의 문자열 안에서 '번호 기호 개수' 를 일치하도록 합니다. 예를 들어, `#"Line 1\nLine 2"#` 이라는 문자열의 줄을 끊고 싶으면, `#"Line 1\#nLine 2"#` 이라고 대신 사용할 수 있습니다. 이와 비슷하게, `###"Line 1\###nLine 2"###` 도 줄을 끊습니다.
+문자열 글자 값 안에서 특수 문자 효과가 필요하면, 벗어남 문자 (`\`) 뒤의 문자열 안에서 '번호 기호 개수' 를 일치하도록 합니다. 예를 들어, `#"Line 1\nLine 2"#` 이라는 문자열의 줄을 끊고 싶으면, `#"Line 1\#nLine 2"#` 이라고 대신 사용할 수 있습니다. 이와 비슷하게, `###"Line 1\###nLine 2"###` 도 줄을 끊습니다.
 
-확장된 구분자로 '여러 줄짜리 문자열 글자 값' 도 생성할 수 있습니다. '확장된 구분자' 를 사용하면, '글자 값을 끝낸다' 는 기본 동작을 재정의하여, `"""` 문자를 '여러 줄짜리 문자열' 에 포함할 수 있습니다. 예를 들면 다음과 같습니다:
+확장 구분자로 '여러 줄짜리 문자열 글자 값' 도 생성할 수 있습니다. '확장 구분자' 를 사용하면, '글자 값을 끝낸다' 는 기본 동작을 재정의하여, `"""` 문자를 '여러 줄짜리 문자열' 에 포함할 수 있습니다. 예를 들면 다음과 같습니다:
 
-```
+```swift
 let threeMoreDoubleQuotationMarks = #"""
 Here are three more double quotes: """
 """#
@@ -274,14 +274,14 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 
 `multiplier` 값은 '문자열 나중에 있는 더 큰 표현식의 일부분' 이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 값을 계산하며 (`7.5` 라는) 결과를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함할 때 `\(Double(multiplier) * 2.5)` 라고 표현식을 작성합니다.
 
-'확장된 문자열 구분자'[^extended-string-delimiters] 를 사용하면 그 외 경우라면 문자열 보간법으로 취급될 문자를 담은 문자열을 생성할 수 있습니다. 예를 들면 다음과 같습니다:
+확장된 문자열 구분자[^extended-string-delimiters] 를 사용하면 그 외 경우라면 문자열 보간법으로 취급될 문자를 담은 문자열을 생성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
 // "Write an interpolated string in Swift using \(multiplier)." 를 인쇄합니다.
 ```
 
-'확장된 구분자를 사용한 문자열 안에서 문자열 보간법을 사용' 하려면, '역 빗금 (backslash) 뒤의 번호 기호 개수' 를 '문자열 시작과 끝의 번호 기호 개수' 와 일치시킵니다. 예를 들면 다음과 같습니다:
+'확장 구분자를 사용한 문자열 안에서 문자열 보간법을 사용' 하려면, '역 빗금 (backslash) 뒤의 번호 기호 개수' 를 '문자열 시작과 끝의 번호 기호 개수' 와 일치시킵니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
@@ -692,7 +692,7 @@ for scalar in dogString.unicodeScalars {
 
 [^escaping]: 여기서 '벗어나게 (escaping)' 할 필요 없다는 말은 '역 빗금 (backslash; `\`)' 기호를 붙일 필요가 없다는 것을 의미합니다.
 
-[^number-sign]: '#' 은 영어로 'number sign' 이라고 하는데, 보통 우리 말로는 '샾 기호' 라고 알려져 있습니다. 하지만 실제 샾 기호와는 다르며 하나의 숫자를 의미합니다. 여기서는 '번호 기호' 라고 옮기도록 합니다.
+[^number-sign]: `#` 은 영어로는 'number sign' 이라고 하는데, 우리 말로는 보통 '샾 기호' 라고 합니다. 하지만, 실제로는 샾 기호와 달리 하나의 숫자를 의미합니다. 여기서는 번호 기호라고 옮기도록 합니다.
 
 [^value-type]: '값 타입 (value type)' 이라는 말은, 프로그래밍 용어에서 '깊은 복사' 와 '옅은 복사' 라는 말이 있는데, 이 중에서 복사 시의 기본 동작이 '깊은 복사' 인 타입이라고 이해할 수 있습니다.
 
@@ -704,7 +704,7 @@ for scalar in dogString.unicodeScalars {
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
-[^line-feed-escape-sequence]: '(벗어난) 줄 먹임 문자열 (line feed escape sequence)' 은 말 그대로 `\n` 문자열 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 '`\` 과 `n` 이라는 문자가 연속된 것' 으로 인식한다는 의미입니다.
+[^line-feed-escape-sequence]: '(벗어난) 줄 먹임 시퀀스 (line feed escape sequence)' 는 말 그대로 `\n` 문자열 그 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 `\` 과 `n` 이라는 문자의 시퀀스로-즉, 문자들이 일렬로 나열된 것으로-인식한다는 의미입니다.
 
 [^letter]: 엄밀하게 말하면, 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 
 
@@ -722,4 +722,4 @@ for scalar in dogString.unicodeScalars {
 
 [^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
 
-[^extended-string-delimiters]: '확장된 문자열 구분자 (Extended String Delimiters)' 에 대한 더 자세한 정보는, 바로 위의 [Extended String Delimiters (확장된 문자열 구분자)](#extended-string-delimiters-확장된-문자열-구분자) 부분을 보도록 합니다. 
+[^extended-string-delimiters]: '확장된 문자열 구분자 (Extended String Delimiters)' 는 바로 위의 [Extended String Delimiters (확장된 문자열 구분자)](#extended-string-delimiters-확장된-문자열-구분자) 절에서 설명했습니다.
