@@ -134,7 +134,7 @@ var anotherEmptyString = String()   // 초기화 구문
 // 이 두 문자열은 둘 다 비어 있으며, 서로 같은 겁니다.
 ```
 
-`String` 값이 비었는지 알아내려면 불리언 속성인 `isEmpty` 를 검사하면 됩니다:
+`String` 값이 비었는지 알아내려면 `isEmpty` 불리언 속성을 검사합니다:
 
 ```swift
 if emptyString.isEmpty {
@@ -145,19 +145,19 @@ if emptyString.isEmpty {
 
 ### String Mutability (문자열 변경 가능성)
 
-특정 `String` 을 수정 (또는 _변경-mutated_) 할 수 있는 지는, (수정할 수 있는 경우엔) 변수, (수정할 수 없는 경우엔) 상수에 할당함으로써, 지시합니다:
+한 특별한 `String` 이 수정 (또는 _변경-mutated_) 될 수 있는건지 지시하려면 (수정할 수 있는 거면) 변수에, (수정할 수 없는 거면) 상수에 할당하면 됩니다:
 
 ```swift
 var variableString = "Horse"
 variableString += " and carriage"
-// variableString 은 이제 "Horse and carriage" 입니다
+// variableString 은 이제 "Horse and carriage" 임
 
 let constantString = "Highlander"
 constantString += " and another Highlander"
-// 이는-상수 문자열을 수정할 수 없다-는 컴파일-시간 에러를 보고합니다
+// 이는 컴파일-시간 에러를 보고함 - 상수 문자열을 수정할 순 없음
 ```
 
-> 이런 접근 방식은 '오브젝티브-C 와 Cocoa 에서의 문자열 변경 (방식)' 과는 다른데, 여기선 (`NSString` 과 `NSMutableString` 이라는) 두 클래스 중 하나를 선택함으로써 문자열을 변경할 수 있는지 지시합니다.
+> 이 접근법은 **오브젝티브-C** 및 **Cocoa** 의 문자열 변경과는 다른데, 여기선 (`NSString` 과 `NSMutableString` 이라는) 두 클래스 중 하나를 선택하여 문자열이 변경될 수 있는 건지를 지시합니다.
 
 ### Strings Are Value Types (문자열은 값 타입입니다)
 
