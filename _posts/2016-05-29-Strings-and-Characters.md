@@ -86,12 +86,12 @@ It also ends with a line break.
 
 #### Special Characters in String Literals (문자열 글자 값 안의 특수 문자)
 
-문자열 글자 값은 다음의 특수 문자들을 포함할 수 있습니다:
+문자열 글자 값은 다음 특수 문자들을 포함할 수 있습니다:
 
 * (의미를) 벗어난[^escaped] 특수 문자인 `\0` (널 문자), `\\` (역 빗금), `\t` (가로 탭), `\n` (줄 먹임), `\r` (캐리지 반환)[^carriage], `\"` (큰 따옴표) 및 `\'` (작은 따옴표)
-* `\u{`_n_`}` 라고 쓰는, 임의의 유니코드 크기 값[^scalar], 여기서 _n_ 은 1-8숫자의 16진수 (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 부분에서 논의함)
+* `\u{`_n_`}` 라고 쓰는, 임의의 유니코드 크기 값[^scalar], 여기서 _n_ 은 1-8 숫자의 16진수 (유니코드는 아래의 [Unicode (유니코드)](#unicode-유니코드) 부분에서 논의함)
 
-아래 코드는 이 특수 문자들의 네 가지 예를 보여줍니다. `wiseWords` 상수는 '두 개의 벗어난 (escaped) 큰 따옴표' 를 담고 있습니다. `dollarSign`, `blackHeart`, 및  `sparklingHeart` 상수는 '유니코드 크기 값 양식' 을 실증합니다:
+아래 코드는 이러한 특수 문자의 네 가지 예를 보여줍니다. `wiseWords` 상수는 벗어난 두 개의 큰 따옴표를 담고 있습니다. `dollarSign` 과, `blackHeart`, 및 `sparklingHeart` 상수는 유니코드 크기 값 양식을 실제로 보여줍니다:
 
 ```swift
 let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
@@ -101,7 +101,7 @@ let blackHeart = "\u{2665}"       // ♥, 유니코드 크기 값 U+2665
 let sparklingHeart = "\u{1F496}"  // 💖, 유니코드 크기 값 U+1F496
 ```
 
-'여러 줄짜리 문자열 글자 값' 은 하나가 아닌 세 개의 큰 따옴표를 사용하기 때문에, '벗어나게 (escaping)'[^escaping] 하지 않고도 '여러 줄짜리 문자열 글자 값' 안에 '큰 따옴표 (`"`)' 를 포함할 수 있습니다. '여러 줄짜리 문자열' 안에 `"""` 문자를 포함하려면, 적어도 하나의 따옴표는 '벗어나도록 (escape)' 합니다. 예를 들면 다음과 같습니다:
+여러 줄짜리 문자열 글자 값은 한 개 대신 세 개의 큰 따옴표를 쓰기 때문에, 벗어나게[^escaping]  하지않고도 여러 줄짜리 문자열 글자 값 안에다 큰 따옴표 (`"`) 를 포함시킬 수 있습니다. 여러 줄짜리 문자열에 `"""` 를 텍스트로 포함시키려면, 적어도 한 따옴표는 벗어나게 해야 합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let threeDoubleQuotationMarks = """
@@ -690,7 +690,7 @@ for scalar in dogString.unicodeScalars {
 
 [^scalar]: 'scalar' 는 원래 수학 용어로 '크기만을 가지는 값' 입니다. 여기서 'Unicode scalar value' 은 각각의 문자에 일대일 대응되는 '유니코드 크기 값' 을 의미합니다. 예를 들어, 문자는 `$` 는 유니코드 크기 값이 `U+0024` 에 해당합니다.
 
-[^escaping]: 여기서 'escaping' 할 필요 없다는 말은 '역 빗금 (backslash; `\`)' 기호를 붙일 필요가 없다는 것을 의미합니다.
+[^escaping]: 여기서 '벗어나게 (escaping)' 할 필요 없다는 말은 '역 빗금 (backslash; `\`)' 기호를 붙일 필요가 없다는 것을 의미합니다.
 
 [^number-sign]: '#' 은 영어로 'number sign' 이라고 하는데, 보통 우리 말로는 '샾 기호' 라고 알려져 있습니다. 하지만 실제 샾 기호와는 다르며 하나의 숫자를 의미합니다. 여기서는 '번호 기호' 라고 옮기도록 합니다.
 
