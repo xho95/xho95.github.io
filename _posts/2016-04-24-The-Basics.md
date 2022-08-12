@@ -129,7 +129,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // "The current value of friendlyWelcome is Bonjour!" 를 인쇄함
 ```
 
-> 문자열 보간법과 같이 쓸 수 있는 모든 옵션은 [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 에서 설명합니다.
+> 문자열 보간법과 같이 쓸 수 있는 모든 옵션은 [String Interpolation (문자열 끼워 넣기)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-끼워-넣기) 에서 설명합니다.
 
 ### Comments (주석)
 

@@ -110,7 +110,7 @@ Escaping all three quotation mark \"\"\"
 """
 ```
 
-#### Extended String Delimiters (확장된 문자열 구분자)
+#### Extended String Delimiters (확장한 문자열 구분자)
 
 _확장 구분자 (extended delimiters)_ 안에 문자열 글자 값을 두면 그 효과를 불러내지 않고도 문자열 안에 특수 문자를 포함시킬 수 있습니다. 따옴표 (`"`) 안에 문자열을 두고 그걸 번호 기호 (`#`)[^number-sign] 로 둘러쌉니다. 예를 들어, 문자열 글자 값 `#"Line 1\nLine 2"#` 을 인쇄하면 두 줄에 걸쳐 문자열을 인쇄하기 보단 (벗어난) 줄 먹임 시퀀스 (`\n`)[^line-feed-escape-sequence] 자체를 인쇄합니다.
 
@@ -231,7 +231,7 @@ welcome.append(exclamationMark)
 여러 줄짜리 문자열 글자 값을 써서 더 긴 문자열 줄을 제작한다면, 마지막 줄을 포함한, 모든 문자열 줄이 줄 끊음으로 끝나게 하고 싶을 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
-let basStart = """
+let badStart = """
 one
 two
 """
@@ -240,8 +240,8 @@ let end = """
 three
 """
 
-print(basStart + end)
-// 두 줄로 인쇄합니다:
+print(badStart + end)
+// 두 줄로 인쇄함:
 // one
 // twothree
 
@@ -252,43 +252,43 @@ two
 """
 
 print(goodStart + end)
-// 세 줄로 인쇄합니다:
+// 세 줄로 인쇄함:
 // one
 // two
 // three
 ```
 
-위 코드에서, `badStart` 와 `end` 를 이어붙이면 두-줄짜리 문자열을 만드는 데, 이는 원하던 결과가 아닙니다. `badStart` 마지막 줄은 '줄 끊음' 으로 끝나지 않기 때문에, 해당 줄은 `end` 첫 번째 줄과 뭉쳐집니다. 이와 대조적으로, `goodStart` 의 두 줄은 모두 '줄 끊음' 으로 끝나므로, `end` 와 조합할 때의 결과는, 예상대로, 세 줄입니다.
+위 코드에서, `badStart` 와 `end` 를 이어붙이면 두-줄짜리 문자열을 만들어 내는데, 이는 원하는 결과가 아닙니다. `badStart` 의 마지막 줄이 줄 끊음으로 끝나지 않기 때문에, 그 줄이 `end` 의 첫 번째 줄과 뭉쳐집니다. 이와 대조하여, `goodStart` 는 두 줄 모두 줄 끊음으로 끝나서, `end` 와 조합할 때의 결과가, 예상대로, 세 줄입니다.
 
-### String Interpolation (문자열 보간법)
+### String Interpolation (문자열 끼워 넣기)
 
-_문자열 보간법 (string interpolation)_ 은 '상수, 변수, 글자 값, 및 표현식을 섞은 걸 문자열 글자 값 안에 포함함으로써 새로운 `String` 값을 생성하는 방법' 입니다. 한-줄짜리 및 여러 줄짜리 문자열 글자 값 둘 다 문자열 보간법을 사용할 수 있습니다. 문자열 글자 값 안에 집어 넣는 각각의 항목은 '괄호 쌍으로 포장한 후, 역 빗금 (backslash; `\`) 접두사' 를 붙입니다:
+_문자열 끼워 넣기 (string interpolation)_ 는 문자열 글자 값 안에 상수와, 변수, 글자 값, 및 표현식을 섞어서 포함하여 새로운 `String` 값을 생성하는 방법입니다. 문자열 끼워 넣기는 한-줄짜리 및 여러 줄짜리 문자열 글자 값 둘 다에서 사용할 수 있습니다. 문자열 글자 값에 집어 넣을 각 항목은 한 쌍의 괄호로 포장한 후, 접두사로 역 빗금 (`\`) 을 둡니다:
 
 ```swift
 let multiplier = 3
 let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
-// message 는 "3 times 2.5 is 7.5" 입니다.
+// message 는 "3 times 2.5 is 7.5" 임
 ```
 
-위 예제에서는, `\(multiplier)` 라고 하여 `multiplier` 값을 문자열 글자 값에 집어 넣습니다. 문자열 보간법을 평가하여 실제 문자열을 생성할 때 이 자리 표시자를 `multiplier` 의 실제 값으로 교체합니다.
+위 예제에선, `\(multiplier)` 로 `multiplier` 값을 문자열 글자 값에 집어 넣습니다. 이 자리 표시자는 문자열 끼어 넣기를 평가하여 실제 문자열을 생성할 때 실제 `multiplier` 값으로 교체됩니다.
 
-`multiplier` 값은 '문자열 나중에 있는 더 큰 표현식의 일부분' 이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 값을 계산하며 (`7.5` 라는) 결과를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 포함할 때 `\(Double(multiplier) * 2.5)` 라고 표현식을 작성합니다.
+`multiplier` 값은 문자열 더 나중에 있는 더 큰 표현식[^larger-expression] 의 일부이기도 합니다. 이 표현식은 `Double(multiplier) * 2.5` 값을 계산하여 결과인 (`7.5`) 를 문자열에 집어 넣습니다. 이 경우, 문자열 글자 값 안에 표현식을 포함할 때 `\(Double(multiplier) * 2.5)` 라고 씁니다.
 
-확장된 문자열 구분자[^extended-string-delimiters] 를 사용하면 그 외 경우라면 문자열 보간법으로 취급될 문자를 담은 문자열을 생성할 수 있습니다. 예를 들면 다음과 같습니다:
+확장한 문자열 구분자[^extended-string-delimiters] 로 문자열을 생성하면 문자열 끼워 넣기로 취급했을 문자를 담을 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
-// "Write an interpolated string in Swift using \(multiplier)." 를 인쇄합니다.
+// "Write an interpolated string in Swift using \(multiplier)." 를 인쇄함
 ```
 
-'확장 구분자를 사용한 문자열 안에서 문자열 보간법을 사용' 하려면, '역 빗금 (backslash) 뒤의 번호 기호 개수' 를 '문자열 시작과 끝의 번호 기호 개수' 와 일치시킵니다. 예를 들면 다음과 같습니다:
+확장 구분자를 쓴 문자열 안에서 문자열 끼워 넣기를 사용하려면, 역 빗금 뒤의 번호 기호 개수를 문자열 시작 및 끝에 있는 번호 기호 개수와 맞춥니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
-// "6 times 7 is 42." 를 출력합니다.
+// "6 times 7 is 42." 를 인쇄함
 ```
 
-> '보간 문자열의 괄호 안에 작성한 표현식' 은 '벗어나지 않는 (unescaped) 역 빗금 (`\`), 캐리지 반환 (`\r`), 또는 줄 먹임 (`\n`) 문자' 를 담을 수 없습니다. 하지만, '다른 문자열 글자 값' 은 담을 수 있습니다.
+> 끼워 넣을 문자열의 괄호 안에 쓴 표현식은 벗어나지 않는 역 빗금 (`\`) 이나, 캐리지 반환 (`\r`), 또는 줄 먹임 (`\n`) 을 담을 수 없습니다. 하지만, 다른 문자열 글자 값은 담을 수 있습니다.
 
 ### Unicode (유니코드)
 
@@ -702,6 +702,10 @@ for scalar in dogString.unicodeScalars {
 
 [^annotation]: 프로그래밍 용어로 '주석 (comment)' 이란 단어를 이미 사용하고 있으므로, 타입 주석이라고 하지 않고 '타입 보조 설명 (type annotation)' 이라고 옮깁니다. 타입 보조 설명에 대한 더 자세한 정보는, [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 보도록 합니다. 
 
+[^larger-expression]: `\(Double(multiplier) * 2.5)` 를 말합니다.
+
+[^extended-string-delimiters]: '확장한 문자열 구분자 (Extended String Delimiters)' 에 대해서는 바로 위의 [Extended String Delimiters (확장한 문자열 구분자)](#extended-string-delimiters-확장한-문자열-구분자) 부분을 참고하기 바랍니다.
+
 [^extended-grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자는 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 덩어리로 되어 있다는 의미입니다. '확장된 자소 덩어리' 자체는 본문 뒤에서 좀 더 자세히 설명합니다.
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
@@ -721,5 +725,3 @@ for scalar in dogString.unicodeScalars {
 [^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는, 본문 뒤에 나오는 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 보도록 합니다.
 
 [^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
-
-[^extended-string-delimiters]: '확장된 문자열 구분자 (Extended String Delimiters)' 는 바로 위의 [Extended String Delimiters (확장된 문자열 구분자)](#extended-string-delimiters-확장된-문자열-구분자) 절에서 설명했습니다.
