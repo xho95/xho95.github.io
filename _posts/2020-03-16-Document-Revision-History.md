@@ -81,7 +81,7 @@ categories: Swift Language Grammar Revision History
 #### 2019-03-25
 
 * 스위프트 5.0 에서 업데이트함.
-* [Extended String Delimiters (확장된 문자열 구분자)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-string-delimiters-확장된-문자열-구분자) 부분을 추가했으며 '확장된 문자열 구분자 (extended string delimiters)' 에 대한 정보를 가진 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 절을 업데이트함.
+* [Extended String Delimiters (확장한 문자열 구분자)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-string-delimiters-확장한-문자열-구분자) 절을 추가했고 확장한 문자열 구분자에 대한 정보가 있는 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 절을 업데이트함.
 * `dynamicCallable` 특성을 사용하여 함수처럼 동적으로 호출하는 인스턴스에 대한 정보를 가진 [dynamicCallable (동적으로 호출 가능)]({% post_url 2020-08-14-Attributes %}#dynamiccallable-동적으로-호출-가능) 부분을 추가함.
 * 'switch' 문에 있는 미래의 열거체 'case 값' 을 처리하기 위하여 `unknown` 이라는 'switch 문의 case 절' 특성을 사용하는 것에 대한 정보를 가진 [unknown (알려지지 않음)]({% post_url 2020-08-14-Attributes %}#unknown-알려지지-않음) 과 [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% post_url 2020-08-20-Statements %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 추가함.
 * '자기 식별 키 경로 (identity key path; `\.self`)' 에 대한 정보를 [Key-Path Expression (키-경로 표현식)]({% post_url 2020-08-19-Expressions %}#key-path-expression-키-경로-표현식) 절에 추가함.
@@ -199,7 +199,7 @@ categories: Swift Language Grammar Revision History
 #### 2015-10-20
 
 * 스위프트 2.1 에서 업데이트함.
-* [String Interpolation (문자열 보간법)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-보간법) 과 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 갱신했으며 이제 '문자열 보간법' 은 '문자열 글자 값' 을 담을 수 있음.
+* [String Interpolation (문자열 끼워 넣기)]({% post_url 2016-05-29-Strings-and-Characters %}#string-interpolation-문자열-끼워-넣기) 과 [String Literals (문자열 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#string-literals-문자열-글자-값) 부분을 갱신했으며 이제 '문자열 보간법' 은 '문자열 글자 값' 을 담을 수 있음.
 * `@noescape` 특성에 대한 정보를 가진 [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 추가함.
 * 'tvOS' 에 대한 정보를 가진 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 과 [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 절을 업데이트함.
 * '입-출력 매개 변수 (in-out parameters)' 의 작동 방식에 대한 정보를 [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-08-15-Declarations %}#in-out-parameters-입-출력-매개-변수) 절에 추가함.
@@ -248,7 +248,7 @@ categories: Swift Language Grammar Revision History
 * `willSet` 과 `didSet` 관찰자의 작동 방식을 분명하게 밝히기 위해 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 절에 있는 기록을 업데이트함.
 * `private` 접근의 영역에 대한 정보를 가지고 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 절에 기록을 추가함.
 * '쓰레기 수집 시스템 (garbage collected systems)' 과 'ARC' 간의 '약한 참조 (weak references)' 에 있는 차이점에 대하여 [Weak References (약한 참조)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#weak-references-약한-참조) 절에 기록을 추가함.
-* '유니코드 크기 값 (Unicode scalars)' 의 더 엄밀한 정의를 가지고 [Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값에-있는-특수-문자) 절을 업데이트함.
+* '유니코드 크기 값 (Unicode scalars)' 의 더 엄밀한 정의를 가지고 [Special Characters in String Literals (문자열 글자 값 안의 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값-안의-특수-문자) 절을 업데이트함.
 
 #### 2015-04-08
 
@@ -260,7 +260,7 @@ categories: Swift Language Grammar Revision History
 * [String Indices (문자열 색인)]({% post_url 2016-05-29-Strings-and-Characters %}#string-indices-문자열-색인) 에 대하여 새로운 지침 부분을 추가함.
 * [Overflow Operators (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 '값 넘침 나누기 (overflow division; `&/`)' 와 '값 넘침 나머지 (overflow remainder; `&%`)' 연산자를 제거함.
 * 상수 및 상수 속성 선언과 초기화에 대한 규칙을 업데이트함. 더 많은 정보는, [Constant Declaration (상수 선언)]({% post_url 2020-08-15-Declarations %}#constant-declaration-상수-선언) 를 참고 바람.
-* '문자열 글자 값 (string literals)' 에 있는 '유니코드 크기 값 (Unicode scalars)' 의 정의를 업데이트함. [Special Characters in String Literals (문자열 글자 값에 있는 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값에-있는-특수-문자) 를 참고 바람.
+* '문자열 글자 값 (string literals)' 에 있는 '유니코드 크기 값 (Unicode scalars)' 의 정의를 업데이트함. [Special Characters in String Literals (문자열 글자 값 안의 특수 문자)]({% post_url 2016-05-29-Strings-and-Characters %}#special-characters-in-string-literals-문자열-글자-값-안의-특수-문자) 를 참고 바람.
 * 시작 색인과 끝 색인이 같은 '반-열린 범위 (half-open range)' 는 비어 있을 것이라는 것에 주목하기 위해 [Range Operators (범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#range-operators-범위-연산자) 를 업데이트함.
 * 변수를 붙잡는 규칙을 분명히 밝히기 위해 [Closures Are Reference Types (클로저는 참조 타입입니다)]({% post_url 2020-03-03-Closures %}#closures-are-reference-types-클로저는-참조-타입입니다) 를 업데이트함.
 * 부호 있는 정수와 부호 없는 정수에 대한 '값 넘침' 작동 방식을 분명히 밝히기 위해 [Value Overflow (값 넘침)]({% post_url 2020-05-11-Advanced-Operators %}#value-overflow-값-넘침) 을 업데이트함.
@@ -303,7 +303,7 @@ categories: Swift Language Grammar Revision History
 * '지명 초기자 (designated initializer)' 의 재정의는 반드시 이제 `override` 수정자로 표시해야 함을 알리기 위해 [Initializer Inheritance and Overriding (초기자 상속 및 재정의)]({% post_url 2016-01-23-Initialization %}#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 절을 업데이트함.
 * 이제 '필수 초기자' 의 모든 하위 클래스 구현 앞에 `required` 수정자를 붙여야 하며, '필수 초기자' 의 '필수 조건 (requirements)' 은 '자동으로 상속된 초기자' 로 만족시킬 수 있음을 알리기 위해, [Required Initializers (필수 초기자)]({% post_url 2016-01-23-Initialization %}#required-initializers-필수-초기자) 절을 업데이트함.
 * '중위 (infix)' [Operator Methods (연산자 메소드)]({% post_url 2020-05-11-Advanced-Operators %}#operator-methods-연산자-메소드) 는 이제 더 이상 `@infix` 특성을 필수로 요구하지 않음.
-* [Prefix and Postfix Operators (접두사 및 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-및-접미사-연산자) 에 대한 `@prefix` 와 `@postfix` 특성은 `prefix` 와 `postfix` 선언 수정자로 대체되었음.
+* [Prefix and Postfix Operators (접두사 및 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-및-접미사-연산자) 의 `@prefix` 와 `@postfix` 특성을 `prefix` 와 `postfix` 선언 수정자로 교체했음.
 * 동일한 '피연산자 (operand)' 에 '접두사 (prefix) 연산자' 와 '접미사 (postfix) 연산자' 를 둘 다 적용할 때 [Prefix and Postfix Operators (접두사 및 접미사 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#prefix-and-postfix-operators-접두사-및-접미사-연산자) 가 적용되는 순서에 대한 기록을 추가함.
 * [Compound Assignment Operators (복합 할당 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#compound-assignment-operators-복합-할당-연산자) 에 대한 '연산자 함수 (operator functions)' 는 이제 함수를 정의할 때 더 이상 `@assignment` 특성을 사용하지 않습니다.
 * [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 를 정의할 때 지정하는 수정자의 순서가 바뀌었음. 예를 들어, 이제 `operator prefix` 가 아니라 `prefix operator` 라고 작성함.

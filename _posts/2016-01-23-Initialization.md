@@ -503,7 +503,7 @@ class Bicycle: Vehicle {
 
 `Bicycle` 하위 클래스는, `init()` 라는, 자신만의 지명 초기자를 정의합니다. 이 지명 초기자는 `Bicycle` 의 상위 클래스에 있는 지명 초기자와 일치하므로, 이 초기자의 `Bicycle` 버전을 `override` 수정자로 표시합니다.
 
-`Bicycle` 의 `init()` 초기자는 `super.init()` 을 호출함으로써 시작하는데, 이는 `Bicycle` 의 상위 클래스에 있는 기본 초기자를 호출합니다. 이는 `Bicycle` 이 속성을 수정할 기회를 가지기 전에 `numberOfWheels` 라는 상속 속성을 `Vehicle` 이 (먼저) 초기화하도록 보장합니다. `super.init()` 호출 후에, `numberOfWheels` 원본 값을 `2` 라는 새 값으로 대체합니다.
+`Bicycle` 의 `init()` 초기자는 `super.init()` 을 호출함으로써 시작하는데, 이는 `Bicycle` 의 상위 클래스에 있는 기본 초기자를 호출합니다. 이는 `Bicycle` 이 속성을 수정할 기회를 가지기 전에 `numberOfWheels` 라는 상속 속성을 `Vehicle` 이 (먼저) 초기화하도록 보장합니다. `super.init()` 호출 후에, `numberOfWheels` 원본 값을 `2` 라는 새 값으로 교체합니다.
 
 `Bicycle` 인스턴스를 생성하면, 상속한 `description` 계산 속성을 호출하여 `numberOfWheels` 속성을 어떻게 갱신했는지 볼 수 있습니다:
 

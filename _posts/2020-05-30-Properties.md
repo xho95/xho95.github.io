@@ -244,7 +244,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 `willSet` 관찰자를 구현하면, 새로운 속성 값을 상수 매개 변수로 전달합니다. `willSet` 구현부에서 이 매개 변수에 이름을 지정할 수 있습니다. 구현부에서 매개 변수 이름과 괄호를 작성하지 않으면, `newValue` 라는 기본 매개 변수 이름으로 매개 변수를 사용할 수 있습니다.
 
-이와 비슷하게, `didSet` 관찰자를 구현하면, 예전 속성 값을 담은 상수 매개 변수를 전달합니다. 매개 변수에 이름을 붙이거나 `oldValue` 라는 기본 매개 변수 이름을 사용할 수도 있습니다. 자신의 `didSet` 관찰자 안에서 속성에 값을 할당하면, 새로운 할당 값이 그전에 설정한 것을 대체합니다.
+이와 비슷하게, `didSet` 관찰자를 구현하면, 예전 속성 값을 담은 상수 매개 변수를 전달합니다. 매개 변수에 이름을 붙이거나 `oldValue` 라는 기본 매개 변수 이름을 사용할 수도 있습니다. 자신의 `didSet` 관찰자 안에서 속성에 값을 할당하면, 방금 설정된 걸 새로 할당한 값으로 교체합니다.
 
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출한 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 이를 호출하지 않습니다.[^obervers-and-superclass]
 >
@@ -673,7 +673,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 // "7" 을 인쇄함
 ```
 
-_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려 하면, 오른쪽 채널의 `currentLevel` 속성 상한을 `10` 이라는 최대 값으로 제한하고, `maxInputLevelForAllChannels` 타입 속성을 `10` 으로 갱신하는 걸 볼 수 있습니다:
+_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려 하면, 오른쪽 채널의 `currentLevel` 속성이 최대 값 `10` 으로 위가 막히며, `maxInputLevelForAllChannels` 타입 속성은 `10` 으로 업데이트하는 걸 볼 수 있습니다:
 
 ```swift
 rightChannel.currentLevel = 11
