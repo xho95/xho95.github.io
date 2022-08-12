@@ -201,21 +201,21 @@ print(catString)
 
 ### Concatenating Strings and Characters (문자열과 문자 이어붙이기)
 
-'덧셈 연산자 (`+`)' 로 `String` 값을 더하거나 (_이어붙여 (concatenated)_ 서) 새로운 `String` 값을 생성할 수 있습니다:
+덧셈 연산자 (`+`) 로 `String` 값을 서로 더하(거나 _이어붙여 (concatenated)_ 서) 새로운 `String` 값을 생성할 수 있습니다:
 
 ```swift
 let string1 = "hello"
 let string2 = " there"
 var welcome = string1 + string2
-// welcome 은 이제 "hello there" 입니다.
+// welcome 은 이제 "hello there" 와 같음
 ```
 
-'더하기 할당 연산자 (`+=`)' 로 기존 `String` 변수에 `String` 값을 덧붙일 수도 있습니다:
+덧셈 할당 연산자 (`+=`) 로 기존 `String` 변수에 `String` 값을 덧붙일 수도 있습니다:
 
 ```swift
 var instruction = "look over"
 instruction += string2
-// instruction 은 이제 "look over there" 입니다.
+// instruction 은 이제 "look over there" 와 같음
 ```
 
 `String` 타입의 `append()` 메소드로는 `String` 변수에 `Character` 값을 덧붙일 수 있습니다:
@@ -223,12 +223,12 @@ instruction += string2
 ```swift
 let exclamationMark: Character = "!"
 welcome.append(exclamationMark)
-// welcome 은 이제 "hello there!" 입니다.
+// welcome 은 이제 "hello there!" 와 같음
 ```
 
-> `Character` 값은 반드시 단일 문자만 담아야 하기 때문에, 기존 `Character` 변수에 `String` 이나 `Character` 를 덧붙일 수는 없습니다.
+> `String` 이나 `Character` 를 기존 `Character` 변수에 덧붙일 순 없는데, `Character` 값은 반드시 단일 문자만 담아야 하기 때문입니다.
 
-더 긴 문자열을 제작하기 위해 '여러 줄짜리 문자열 글자 값' 을 사용한다면, 문자열, 마지막 줄을 포함한, 모든 줄을 '줄 끊음 (line break)' 으로 끝내고 싶을 겁니다. 예를 들면 다음과 같습니다:
+여러 줄짜리 문자열 글자 값을 써서 더 긴 문자열 줄을 제작한다면, 마지막 줄을 포함한, 모든 문자열 줄이 줄 끊음으로 끝나게 하고 싶을 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let basStart = """
