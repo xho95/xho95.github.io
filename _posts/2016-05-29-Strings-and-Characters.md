@@ -167,9 +167,9 @@ constantString += " and another Highlander"
 
 그 이면에선, 스위프트 컴파일러가 문자열 사용을 최적화하므로 실제 복사는 절대적으로 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 문자열 작업을 값 타입으로 할 땐 항상 아주 뛰어난 성능을 가진다는 의미입니다.
 
-### Working with Characters (문자 작업하기)
+### Working with Characters (문자와 작업하기)
 
-`for-in` 반복문으로 문자열에 동작을 반복함으로써 `String` 의 개별 `Character` 값에 접근할 수 있습니다:
+`String` 의 개별 `Character` 값에 접근하려면 `for-in` 반복문으로 문자열을 반복하면 됩니다:
 
 ```swift
 for character in "Dog!🐶" {
@@ -184,19 +184,19 @@ for character in "Dog!🐶" {
 
 `for-in` 반복문은 [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 에서 설명합니다.
 
-대안으로, '`Character` 타입 보조 설명 (annotation)'[^annotation] 을 제공하면 '단일-문자 글자 값으로 독립적인 `Character` 상수나 변수를 생성' 할 수 있습니다:
+대안으로, 단일-문자 글자 값으로 (홀로-선) 독립 `Character` 상수나 변수를 생성하려면 `Character` 타입 보조 설명[^annotation] 을 제공하면 됩나다:
 
 ```swift
 let exclamationMark: Character = "!"
 ```
 
-`Character` 값 배열을 자신의 초기자 인자로 전달함으로써 `String` 값을 생성할 수 있습니다:
+`Character` 값 배열을 초기자의 인자로 전달하여 `String` 값을 생성할 수도 있습니다:
 
 ```swift
 let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
 let catString = String(catCharacters)
 print(catString)
-// "Cat!🐱" 을 인쇄합니다.
+// "Cat!🐱" 을 인쇄함
 ```
 
 ### Concatenating Strings and Characters (문자열과 문자 이어붙이기)
@@ -567,7 +567,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 문서 파일이나 그 외 어떤 저장 공간에서 작성한 유니코드 문자열은, 해당 문자열의 유니코드 크기 값이 '유니코드에서-정의한 여러 _인코딩 형식 (encording forms)_ 중 하나로 부호화 (encoding)' 됩니다. 각 형식은 문자열을 _코드 단위 (code units)_ 라는 작은 조각으로 부호화 합니다. 이는 (문자열을 8-비트 코드 단위로 부호화 하는) 'UTF-8 인코딩 형식, (문자열을 16-비트 코드 단위로 부호화 하는) UTF-16 인코딩 형식 , 그리고 (문자열을 32-비트 코드 단위로 부호화 하는) UTF-32 인코딩 형식' 을 포함합니다.
 
-스위프트는 서로 다른 여러 가지의 '문자열 유니코드 표현법' 접근 방식을 제공합니다. 문자열을 `for`-`in` 문으로 반복하면, 개별 `Character` 값을 '확장된 유니코드 자소 덩어리' 로 접근할 수 있습니다. 이 과정은 [Working with Characters (문자 작업하기)](#working-with-characters-문자-작업하기) 에서 설명합니다.
+스위프트는 서로 다른 여러 가지의 '문자열 유니코드 표현법' 접근 방식을 제공합니다. 문자열을 `for`-`in` 문으로 반복하면, 개별 `Character` 값을 '확장된 유니코드 자소 덩어리' 로 접근할 수 있습니다. 이 과정은 [Working with Characters (문자와 작업하기)](#working-with-characters-문자와-작업하기) 에서 설명합니다.
 
 대안으로, '유니코드를-따르는 표현법 세 가지 중 하나' 로 `String` 값에 접근합니다:
 
