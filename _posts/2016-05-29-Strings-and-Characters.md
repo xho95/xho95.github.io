@@ -161,9 +161,9 @@ constantString += " and another Highlander"
 
 ### Strings Are Value Types (문자열은 값 타입입니다)
 
-스위프트의 `String` 타입은 _값 타입 (value type)_[^value-type] 입니다. 새 `String` 값을 생성하면, 함수나 메소드에 전달할 때, 또는 상수나 변수에 할당할 때, 해당 `String` 값을 _복사 (copied)_ 합니다. 각 경우마다, 기존 `String` 값에 대한 새로운 복사본을 생성하며, 원본 버전이 아닌, 새로운 복사본을 전달하거나 할당합니다. 값 타입은 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분에서 설명합니다.
+스위프트의 `String` 타입은 _값 타입 (value type)_[^value-type] 입니다. 새로운 `String` 값을 생성하면, 그 `String` 을 함수나 메소드에 전달할 때나, 상수나 변수에 할당할 때, 값을 _복사 (copied)_ 합니다. 각각의 경우마다, 기존 `String` 값의 새 복사본을 생성하여, 원본 버전이 아니라, 새 복사본을 전달하거나 할당합니다. 값 타입은 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 에서 설명합니다.
 
-스위프트의 '복사가-기본인 (copy-by-default) `String` 동작' 은 함수나 메소드가 `String` 값을 전달할 때, 어디서 왔는 지 상관없이, 정확한 `String` 값을 소유함이 명확하도록 보장합니다. 전달받은 문자열은 자신이 직접 수정하지 않는 한 수정될 일이 없다고 자신할 수 있습니다.
+스위프트의 복사가-기본인 `String` 동작은 함수나 메소드가 `String` 값을 전달할 때, 어디서 왔는 지 상관없이, 정확한 `String` 값을 소유함이 명확하도록 보장합니다. 전달받은 문자열은 자신이 직접 수정하지 않는 한 수정될 일이 없다고 자신할 수 있습니다.
 
 속을 들여다보면, 스위프트 컴파일러는 문자열 사용을 최적화 하므로 실제 복사는 꼭 필요할 때만 일어납니다.[^optimize-string] 이는 값 타입인 문자열과 작업할 때는 항상 훌륭한 성능을 얻게 된다는 의미입니다.
 
@@ -692,7 +692,9 @@ for scalar in dogString.unicodeScalars {
 
 [^escaping]: 여기서 '벗어나게 (escaping)' 할 필요 없다는 말은 '역 빗금 (backslash; `\`)' 기호를 붙일 필요가 없다는 것을 의미합니다.
 
-[^number-sign]: `#` 은 영어로는 'number sign' 이라고 하는데, 우리 말로는 보통 '샾 기호' 라고 합니다. 하지만, 실제로는 샾 기호와 달리 하나의 숫자를 의미합니다. 여기서는 번호 기호라고 옮기도록 합니다.
+[^number-sign]: `#` 은 영어로는 '번호 기호 (number sign)' 라고 하는데, 우리 말로는 악보에 있는 올림표인 '샾 (sharp)' 과 비슷하게 생겨 샾 기호라고 많이 부릅니다. 하지만, 번호 기호는 실제로 샾 기호와는 유래부터 의미까지 모두 다른 것으로, 보통 임의의 숫자를 나타내는데 씁니다.
+
+[^line-feed-escape-sequence]: '(벗어난) 줄 먹임 시퀀스 (line feed escape sequence)' 는 말 그대로 `\n` 문자열 그 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 `\` 과 `n` 이라는 문자의 시퀀스로-즉, 문자들이 일렬로 나열된 것으로-인식한다는 의미입니다.
 
 [^value-type]: '값 타입 (value type)' 이라는 말은, 프로그래밍 용어에서 '깊은 복사' 와 '옅은 복사' 라는 말이 있는데, 이 중에서 복사 시의 기본 동작이 '깊은 복사' 인 타입이라고 이해할 수 있습니다.
 
@@ -703,8 +705,6 @@ for scalar in dogString.unicodeScalars {
 [^extended-grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자는 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 덩어리로 되어 있다는 의미입니다. '확장된 자소 덩어리' 자체는 본문 뒤에서 좀 더 자세히 설명합니다.
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
-
-[^line-feed-escape-sequence]: '(벗어난) 줄 먹임 시퀀스 (line feed escape sequence)' 는 말 그대로 `\n` 문자열 그 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 `\` 과 `n` 이라는 문자의 시퀀스로-즉, 문자들이 일렬로 나열된 것으로-인식한다는 의미입니다.
 
 [^letter]: 엄밀하게 말하면, 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 
 
