@@ -22,7 +22,7 @@ _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같이, 연속한 �
 
 ### String Literals (문자열 글자 값)
 
-미리 정의한 `String` 값을 _문자열 글자 값 (string literals)_ 으로 코드 안에 포함시킬 수 있습니다. 문자열 글자 값은 큰 따옴표 (`"`) 로 둘러싼 일련의 문자들을 말합니다.
+미리 정의한 `String` 값을 _문자열 글자 값 (string literals)_ 으로 코드 안에 포함할 수 있습니다. 문자열 글자 값은 일렬로 나열된 문자들을 큰 따옴표 (`"`) 로 둘러싼 겁니다.
 
 문자열 글자 값은 상수나 변수의 초기 값으로 사용합니다:
 
@@ -34,7 +34,7 @@ let someString = "Some string literal value"
 
 #### Multiline String Literals (여러 줄짜리 문자열 글자 값)
 
-여러 줄에 걸쳐 있는 문자열이 필요한 경우, 여러 줄짜리 문자열 글자 값인-세 개의 큰 따옴표로 둘러싼 일련의 문자들을 사용합니다:
+여러 줄에 걸친 문자열이 필요하면, 여러 줄짜리 문자열 글자 값을 쓰는데-이는 일렬로 나열된 문자들을 세 개의 큰 따옴표로 둘러싼 겁니다:
 
 ```swift
 let quotation = """
@@ -300,11 +300,11 @@ _유니코드 (Unicode)_ 는 서로 다른 문자 체계에서 텍스트를 인�
 
 모든 21-비트 유니코드 크기 값에 문자가 할당된 건 아니라는 걸 기록하기 바랍니다-일부 크기 값은 미래의 할당이나 **UTF-16** 인코딩 용으로 예약되어 있습니다. 문자가 할당된 크기 값엔 이름도 있는게 전형적인데, 위 예제에서 `LATIN SMALL LETTER A` 와 `FRONT-FACING BABY CHICK` 같은 겁니다.
 
-#### Extended Grapheme Clusters (확장된 자소 덩어리)
+#### Extended Grapheme Clusters (확장 자소 덩어리)
 
-스위프트의 모든 `Character` 타입 인스턴스는 '단일한 _확장된 자소 덩어리 (extended grapheme cluster)_ 를 나타냅니다.[^extended-grapheme-cluster] '확장된 자소 덩어리' 는 '(조합하면) 사람이-이해할 수 있는 단일 문자를 만드는 하나 이상의 일련의 유니코드 크기 값' 입니다. 
+스위프트의 모든 `Character` 타입 인스턴스는 단일한 _확장 자소 덩어리 (extended grapheme cluster)_ 를 나타냅니다.[^grapheme-cluster] 확장 자소 덩어리는 일렬로 나열된 하나 이상의 유니코드 크기 값들로 (조합할 땐) 사람이-읽을 수 있는 단일 문자를 만들어 냅니다.
 
-예를 들어 보겠습니다. `é` 라는 '글자 (letter)'[^letter] 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 또는, `U+00E9`) 로 나타낼 수 있습니다. 하지만, 똑같은 글자를-표준 글자 `e` (`LATIN SMALL LETTER E` 또는, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` (`U+0301`) 라는-'한 _쌍 (pair)_ 의 크기 값' 으로 나타낼 수도 있습니다. `COMBINING ACUTE ACCENT` 라는 크기 값은 '자기 앞의 크기 값에 시각적으로 적용' 하여, '유니코드-인식 문장-표현 시스템' 이 `e` 를 `é` 로 바꿔서 그리도록 합니다.
+한 예는 이렇습니다. `é` 라는 '글자 (letter)'[^letter] 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 또는, `U+00E9`) 로 나타낼 수 있습니다. 하지만, 똑같은 글자를-표준 글자 `e` (`LATIN SMALL LETTER E` 또는, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` (`U+0301`) 라는-'한 _쌍 (pair)_ 의 크기 값' 으로 나타낼 수도 있습니다. `COMBINING ACUTE ACCENT` 라는 크기 값은 '자기 앞의 크기 값에 시각적으로 적용' 하여, '유니코드-인식 문장-표현 시스템' 이 `e` 를 `é` 로 바꿔서 그리도록 합니다.
 
 두 경우 모두, 하나의 '확장된 자소 덩어리' 를 나타내는 '단일 스위프트 `Character` 값' 으로 `é` 라는 글자를 나타냅니다. 첫 번째 경우는, 덩어리가 단일 크기 값을 담고 있으며; 두 번째 경우는, 두 크기 값의 덩어리 입니다:
 
@@ -694,7 +694,7 @@ for scalar in dogString.unicodeScalars {
 
 [^number-sign]: `#` 은 영어로는 '번호 기호 (number sign)' 라고 하는데, 우리 말로는 악보에 있는 올림표인 '샾 (sharp)' 과 비슷하게 생겨 샾 기호라고 많이 부릅니다. 하지만, 번호 기호는 실제로 샾 기호와는 유래부터 의미까지 모두 다른 것으로, 보통 임의의 숫자를 나타내는데 씁니다.
 
-[^line-feed-escape-sequence]: '(벗어난) 줄 먹임 시퀀스 (line feed escape sequence)' 는 말 그대로 `\n` 문자열 그 자체를 의미합니다. `\n` 을 단일 문자로 인식하는 것이 아니라 `\` 과 `n` 이라는 문자의 시퀀스로-즉, 문자들이 일렬로 나열된 것으로-인식한다는 의미입니다.
+[^line-feed-escape-sequence]: '(벗어난) 줄 먹임 시퀀스 (line feed escape sequence)' 는 `\n` 문자열 그 자체를 의미합니다. `\n` 을 특수한 의미를 가진 단일 문자로 인식하는게 아니라 `\` 과 `n` 이라는 문자들의 시퀀스-즉, 일렬로 나열될 문자들-로 인식한다는 의미입니다.
 
 [^value-type]: '값 타입 (value type)' 이라는 말은, 프로그래밍 용어에서 '깊은 복사' 와 '옅은 복사' 라는 말이 있는데, 이 중에서 복사 시의 기본 동작이 '깊은 복사' 인 타입이라고 이해할 수 있습니다.
 
@@ -706,15 +706,15 @@ for scalar in dogString.unicodeScalars {
 
 [^extended-string-delimiters]: '확장한 문자열 구분자 (Extended String Delimiters)' 에 대해서는 바로 위의 [Extended String Delimiters (확장한 문자열 구분자)](#extended-string-delimiters-확장한-문자열-구분자) 부분을 참고하기 바랍니다.
 
-[^extended-grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자는 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 덩어리로 되어 있다는 의미입니다. '확장된 자소 덩어리' 자체는 본문 뒤에서 좀 더 자세히 설명합니다.
-
-[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
+[^grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자를 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 하나의 자소 덩어리로 본다는 의미입니다. '확장 자소 덩어리 (extended grapheme cluster)' 는 이러한 자소 덩어리를 확장한 것을 말하는데, 이어지는 부분에서 더 자세히 설명합니다.
 
 [^letter]: 엄밀하게 말하면, 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 
 
 [^indexed-by-integer-values]: 이는, 예를 들어 `var myString: String` 이라고 할 때, `myString[3]` 처럼 '정수 색인으로 특정 문자에 임의 접근 (random access) 할 순 없다' 는 의미입니다.
 
 [^subscript-syntax]: 여기서 사용하는 '첨자 연산 구문' 은, '배열에서 사용하는 임의 접근 (random access) 방식' 이 아니라, '처음과 끝에서 시작해서 순차적으로 탐색하는 '리스트 방식' 으로 동작합니다.
+
+[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
 [^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 는 '표준적으로' 라고 옮길 수도 있는데, 이 역시 '교회 법' 이 하나의 '표준' 이기 때문에 유래한 의미입니다.
 
