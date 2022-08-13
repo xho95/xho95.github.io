@@ -304,36 +304,36 @@ _유니코드 (Unicode)_ 는 서로 다른 문자 체계에서 텍스트를 인�
 
 스위프트의 모든 `Character` 타입 인스턴스는 단일한 _확장 자소 덩어리 (extended grapheme cluster)_ 를 나타냅니다.[^grapheme-cluster] 확장 자소 덩어리는 일렬로 나열된 하나 이상의 유니코드 크기 값들로 (조합할 땐) 사람이-읽을 수 있는 단일 문자를 만들어 냅니다.
 
-한 예는 이렇습니다. `é` 라는 '글자 (letter)'[^letter] 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE` 또는, `U+00E9`) 로 나타낼 수 있습니다. 하지만, 똑같은 글자를-표준 글자 `e` (`LATIN SMALL LETTER E` 또는, `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` (`U+0301`) 라는-'한 _쌍 (pair)_ 의 크기 값' 으로 나타낼 수도 있습니다. `COMBINING ACUTE ACCENT` 라는 크기 값은 '자기 앞의 크기 값에 시각적으로 적용' 하여, '유니코드-인식 문장-표현 시스템' 이 `e` 를 `é` 로 바꿔서 그리도록 합니다.
+한 예는 이렇습니다. `é` 라는 글자[^letter] 는 단일 유니코드 크기 값 `é` (`LATIN SMALL LETTER E WITH ACUTE`, 또는 `U+00E9`) 로 나타낼 수 있습니다. 하지만, 똑같은 글자를 한  _쌍 (pair)_ 의 크기 값으로 나타낼 수도 있는데-표준 글자 `e` (`LATIN SMALL LETTER E`, 또는 `U+0065`) 와, 그 뒤의 `COMBINING ACUTE ACCENT` 크기 값 (`U+0301`)이 그것입니다. `COMBINING ACUTE ACCENT` 크기 값은 그 앞에 있는 크기 값에 시각적으로 적용하여, 유니코드-인식 텍스트-그리기 시스템이 `e` 를 `é` 로 바꿔 그리게 합니다.
 
-두 경우 모두, 하나의 '확장된 자소 덩어리' 를 나타내는 '단일 스위프트 `Character` 값' 으로 `é` 라는 글자를 나타냅니다. 첫 번째 경우는, 덩어리가 단일 크기 값을 담고 있으며; 두 번째 경우는, 두 크기 값의 덩어리 입니다:
+두 경우 모두, 확장 자소 덩어리를 나타내는 단일 스위프트 `Character` 값으로 글자 `é` 를 나타냅니다. 첫 번째 경우엔, 덩어리에 단일 크기 값이 담겨 있으며; 두 번째 경우엔, 두 크기 값의 덩어리 입니다:
 
 ```swift
 let eAcute: Character = "\u{E9}"                // é
 let combinedEAcute: Character = "\u{65}\u{301}" // e 와 그 뒤의  ́
-// eAcute 는 é 이고, combinedEAcute 도 é 입니다.
+// eAcute 는 é 이고, combinedEAcute 도 é 임
 ```
 
-'확장된 자소 덩어리' 는 수많은 '쓰기 복잡한 문자들을 단일 `Character` 값으로 나타내는 유연한 방식' 입니다. 예를 들어, 한국의 '한글 음절' 은 '완성형 (precomposed)' 으로 또는 '조합형 (decomposed)' 으로 나타낼 수 있습니다. 스위프트에서는 이 두 표현법 모두 '단일 `Character` 값' 으로 '인정 (qualify)' 합니다:
+확장 자소 덩어리는 유연한 방식으로 쓰기 복잡한 수많은 문자들을 단일 `Character` 값으로 나타냅니다. 예를 들어, 대한민국의 한글 음절을 완성형 또는 조합형 시퀀스[^precomposed-decomposed-sequence] 로 나타낼 수 있습니다. 이 두 표현법 모두 스위프트에선 단일 `Character` 값으로 자격 있습니다:
 
 ```swift
 let precomposed: Character = "\u{D55C}"                 // 한
 let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"  // ᄒ, ᅡ, ᆫ
-// precomposed 는 '한' 이고, decomposed 도 '한' 입니다.
+// precomposed 는 '한' 이고, decomposed 도 '한' 임
 ```
 
-'확장된 자소 덩어리' 는 '(`COMBINING ENCLOSING CIRCLE` 또는, `U+20DD` 같은) 테두리 표시로 다른 유니코드 크기 값에 테두리를 쳐서 단일 `Character` 값' 을 만들 수 있게 합니다:
+확장 자소 덩어리는 (`COMBINING ENCLOSING CIRCLE`, 또는 `U+20DD` 같은) 테두리 표시 크기 값으로 단일 `Character` 값 부분의 다른 유니코드 크기 값들에 테두리를 칠 수 있게 합니다:
 
 ```swift
 let enclosedEAcute: Character = "\u{E9}\u{20DD}"
-// enclosedEAcute 은 é⃝ 입니다.
+// enclosedEAcute 은 é⃝ 임 
 ```
 
-'지역 지시 기호 (regional indicator symbols) 유니코드 크기 값' 은, 다음의 `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 조합 같이, '단일 `Character` 값을 만들기 위해 쌍으로 조합' 할 수 있습니다:
+지역 지시 기호[^regional-indicator-symbols] 유니코드 크기 값들을 쌍으로 조합하면 단일 `Character` 값을 만들 수 있는데, `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 를 조합한 다음 같은 겁니다:
 
 ```swift
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
-// regionalIndicatorForUS 은 🇺🇸 입니다.
+// regionalIndicatorForUS 은 🇺🇸 임
 ```
 
 ### Counting Characters (문자 개수 세기)
@@ -708,7 +708,7 @@ for scalar in dogString.unicodeScalars {
 
 [^grapheme-cluster]: '자소 덩어리 (grapheme cluster)' 는, 예를 들어, `가` 라는 문자를 `ㄱ` 과 `ㅏ` 라는 자소가 합쳐진 하나의 자소 덩어리로 본다는 의미입니다. '확장 자소 덩어리 (extended grapheme cluster)' 는 이러한 자소 덩어리를 확장한 것을 말하는데, 이어지는 부분에서 더 자세히 설명합니다.
 
-[^letter]: 엄밀하게 말하면, 'character' 는 한자 같은 '표의 문자' 를, 'letter' 는 '표음 문자' 를 의미한다고 합니다. 
+[^letter]: 엄밀하게 말하면, 영어로 'character' 는 한자 같은 표의 문자를, 'letter' 는 표음 문자를 의미한다고 합니다. 여기서는 각각을 '문자 (character)' 와 '글자 (letter)' 라고 옮깁니다. 
 
 [^indexed-by-integer-values]: 이는, 예를 들어 `var myString: String` 이라고 할 때, `myString[3]` 처럼 '정수 색인으로 특정 문자에 임의 접근 (random access) 할 순 없다' 는 의미입니다.
 
