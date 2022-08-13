@@ -326,7 +326,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 덧셈 양 쪽이 모두 `UInt16` 타입이기 때문에, 덧셈이 됩니다. (`twoThousandAndOne` 이라는) 출력 상수는 `UInt16` 타입으로 추론하며, 이는 `UInt16` 값 두 개의 합이기 때문입니다.
 
-`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 그 이면은, `UInt16` 에 `UInt8` 값을 받는 초기자가 있어서, 이 초기자를 써서 기존 `UInt8` 로 새로운 `UInt16` 를 만듭니다. 하지만, 여기에 _어떤 (any)_ 타입이든 전달할 수 있는 건 아닙니다-`UInt16` 이 초기자를 제공한 타입이어야 합니다. 기존 타입을 확장하여 (자신이 정의한 타입을 포함한) 새로운 타입을 받는 초기자를 제공하는 건 [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 에서 다룹니다.
+`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 그 속을 보면, `UInt16` 에 `UInt8` 값을 받는 초기자가 있어서, 이 초기자를 써서 기존 `UInt8` 로 새로운 `UInt16` 를 만듭니다. 하지만, 여기에 _어떤 (any)_ 타입이든 전달할 수 있는 건 아닙니다-`UInt16` 이 초기자를 제공한 타입이어야 합니다. 기존 타입을 확장하여 (자신이 정의한 타입을 포함한) 새로운 타입을 받는 초기자를 제공하는 건 [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}) 에서 다룹니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
@@ -626,7 +626,7 @@ if let firstNumber = Int("4") {
 
 암시적으로 포장 푸는 옵셔널은 최초로 옵셔널을 정의한 바로 뒤에 옵셔널 값이 존재한다는게 확정되고 그 후의 모든 시점에도 확실히 존재한다고 가정할 수 있을 때 유용합니다. [Unowned References and Implicitly Unwrapped Optional Properties (소유하지 않는 참조와 암시적으로 포장 푸는 옵셔널 속성)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#unowned-references-and-implicitly-unwrapped-optional-properties-소유하지-않는-참조와-암시적으로-포장-푸는-옵셔널-속성) 에서 설명한 것처럼, 스위프트에서 암시적으로 포장 푸는 옵셔널은 클래스 초기화 중에 사용하는게 으뜸입니다.
 
-암시적으로 포장 푸는 옵셔널도 그 이면은 보통의 옵셔널이지만, 접근할 때마다 옵셔널 값의 포장을 풀 필요가 없는, 옵셔널-아닌 값 처럼 사용할 수도 있습니다. 다음 예제는 자신의 포장 값을 명시적 `String` 으로 접근할 때의 옵셔널 문자열과 암시적으로 포장 푸는 옵셔널 문자열 동작의 차이를 보여줍니다:
+암시적으로 포장 푸는 옵셔널도 그 속을 보면 보통의 옵셔널이지만, 접근할 때마다 옵셔널 값의 포장을 풀 필요가 없는, 옵셔널-아닌 값 처럼 사용할 수도 있습니다. 다음 예제는 자신의 포장 값을 명시적 `String` 으로 접근할 때의 옵셔널 문자열과 암시적으로 포장 푸는 옵셔널 문자열 동작의 차이를 보여줍니다:
 
 ```swift
 let possibleString: String? = "An optional string."
