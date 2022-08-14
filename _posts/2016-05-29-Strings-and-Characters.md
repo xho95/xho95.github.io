@@ -414,29 +414,29 @@ for index in greeting.indices {
 
 #### Inserting and Removing (집어넣기와 제거하기)
 
-문자열의 특정 색인 위치에 단일 문자를 집어 넣으려면, `insert(_:at:)` 메소드를 사용하며, 특정 색인 위치에 '또 다른 문자열' 을 집어 넣으려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
+문자열의 지정 색인 위치에 단일 문자를 집어 넣으려면, `insert(_:at:)` 메소드를 사용하고, 지정 색인 위치에 다른 문자열의 내용물을 집어 넣으려면, `insert(contentsOf:at:)` 메소드를 사용합니다.
 
 ```swift
 var welcome = "hello"
 welcome.insert("!", at: welcome.endIndex)
-// welcome 은 이제 "hello!" 임
+// welcome 은 이제 "hello!" 와 같음
 
 welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
-// welcome 은 이제 "hello there!" 임
+// welcome 은 이제 "hello there!" 와 같음
 ```
 
-문자열의 특정 색인 위체에서 단일 문자를 제거하려면, `remove(at:)` 메소드를 사용하며, 특정 범위의 '하위 문자열' 을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
+문자열의 지정 색인 위치에서 단일 문자를 제거하려면, `remove(at:)` 메소드를 사용하고, 지정 범위에서 하위 문자열을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
 
 ```swift
 welcome.remove(at: welcome.index(before: welcome.endIndex))
-// welcome 은 이제 "hello there" 임
+// welcome 은 이제 "hello there" 와 같음
 
 let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
 welcome.removeSubrange(range)
-// welcome 은 이제 "hello" 임
+// welcome 은 이제 "hello" 와 같음
 ```
 
-> `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, 및 `removeSubrange(_:)` 메소드는 `RangeReplaceableCollection` 프로토콜을 준수하는 어떤 타입에서든 사용할 수 있습니다. 이는, 여기서 본, `String` 뿐만 아니라, `Array`, `Dictionary`, 그리고 `Set` 같은 '집합체 (collection) 타입' 을 포함합니다.
+> `RangeReplaceableCollection` 프로토콜을 준수한 어떤 타입이든 `insert(_:at:)` 과, `insert(contentsOf:at:)`, `remove(at:)`, 및 `removeSubrange(_:)` 메소드를 사용할 수 있습니다. 이는, 여기서 본, `String` 뿐만 아니라, `Array` 와, `Dictionary`, 및 `Set` 같은 집합체 타입도 포함합니다.
 
 ### Substrings (하위 문자열)
 
