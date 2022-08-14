@@ -314,7 +314,7 @@ let combinedEAcute: Character = "\u{65}\u{301}" // e 와 그 뒤의  ́
 // eAcute 는 é 이고, combinedEAcute 도 é 임
 ```
 
-확장 자소 덩어리는 유연한 방식으로 쓰기 복잡한 수많은 문자들을 단일 `Character` 값으로 나타냅니다. 예를 들어, 대한민국의 한글 음절을 완성형 또는 조합형 시퀀스[^precomposed-decomposed-sequence] 로 나타낼 수 있습니다. 이 두 표현법 모두 스위프트에선 단일 `Character` 값으로 자격 있습니다:
+확장 자소 덩어리는 쓰기 복잡한 수많은 문자들을 단일 `Character` 값으로 나타내는 유연한 방식입니다. 예를 들어, 대한민국의 한글 음절은 완성형 또는 조합형 시퀀스[^precomposed-decomposed-sequence] 로 나타낼 수 있습니다. 이 두 표현법 모두 스위프트에선 단일 `Character` 값으로 자격이 있습니다:
 
 ```swift
 let precomposed: Character = "\u{D55C}"                 // 한
@@ -329,7 +329,7 @@ let enclosedEAcute: Character = "\u{E9}\u{20DD}"
 // enclosedEAcute 은 é⃝ 임 
 ```
 
-지역 지시 기호[^regional-indicator-symbols] 유니코드 크기 값들을 쌍으로 조합하면 단일 `Character` 값을 만들 수 있는데, `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 를 조합한 다음 같은 겁니다:
+지역 지시 기호[^regional-indicator-symbols] 를 위한 유니코드 크기 값을 쌍으로 조합하여 단일 `Character` 값을 만들 수 있는데, `REGIONAL INDICATOR SYMBOL LETTER U (U+1F1FA)` 와 `REGIONAL INDICATOR SYMBOL LETTER S (U+1F1F8)` 를 조합하면 다음과 같습니다:
 
 ```swift
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
@@ -338,7 +338,7 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 
 ### Counting Characters (문자 개수 세기)
 
-문자열의 `Character` 값 개수를 가져오려면, 문자열의 `count` 속성을 사용합니다:
+문자열에서 `Character` 값의 개수를 가져오려면, 문자열의 `count` 속성을 사용합니다:
 
 ```swift
 let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
@@ -346,9 +346,9 @@ print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
 // "unusualMenagerie has 40 characters" 를 인쇄함
 ```
 
-스위프트에서 `Character` 값으로 확장된 자소 덩어리를 사용함' 은 '문자열 이어붙이기와 수정이 항상 문자열 문자 개수에 영향을 주는 것은 아니라는 의미' 임을 기억하기 바랍니다.
+스위프트가 `Character` 값에 확장 자소 덩어리를 사용한다는 건 문자열 이어붙이기와 수정이 문자열의 문자 개수에 영향을 항상 주진 않는다는 의미라는 걸 기록하기 바랍니다.
 
-예를 들어, `cafe` 라는 네-글자 단어로 새 문자열을 초기화한 다음, 문자열 끝에 `COMBINING ACUTE ACCENT` (`U+0301`) 를 덧붙이면, 네 번재 문자는, `e` 가 아닌, `é` 가 되며, 결과 문자열은 여전히 `4` 개의 문자를 가질 것입니다:
+예를 들어, 새 문자열을 `cafe` 라는 네-글자 단어로 초기화한 다음, 문자열 끝에 `COMBINING ACUTE ACCENT` (`U+0301`) 를 덧붙이면, 결과 문자열엔 여전히 `4` 개의 문자가 있으며, 네 번재 문자는, `e` 가 아닌, `é` 가 됩니다:
 
 ```swift
 var word = "cafe"
@@ -361,19 +361,19 @@ print("the number of characters in \(word) is \(word.characters.count)")
 // "the number of characters in café is 4" 를 인쇄함
 ```
 
-> '확장된 자소 덩어리' 는 '여러 개의 유니코드 크기 값' 으로 합성될 수 있습니다. 이는 '서로 다른 문자-그리고 똑같은 문자에 대한 서로 다른 표현-을 저장하기 위해 서로 다른 메모리 양을 요구할 수 있다' 는 의미입니다. 이 때문에, 스위프트에서 각각의 문자는 문자열 표현법 안에서 똑같은 메모리 크기를 차지하지 않습니다. 그 결과, 문자열의 문자 개수는 '문자열 전체를 반복하여 자신의 확장된 자소 덩어리 경계를 결정' 하지 않고는 계산할 수 없습니다. 특별히 긴 문자열 작업을 한다면, 해당 문자열의 문자를 결정하기 위해선 `count` 속성이 전체 문자열의 유니코드 크기 값을 반드시 반복해야 함을 인식하고 있어야 합니다.
+> 확장 자소 덩어리는 여러 개의 유니코드 크기 값들로 합성될 수 있습니다. 이는 서로 다른 문자들-및 똑같은 문자의 서로 다른 표현법들-이 서로 다른 메모리 저장량을 요구할 수 있다는 의미입니다. 이 때문에, 스위프트의 문자는 한 문자열 표현법 안에서 각각이 똑같은 메모리량을 차지하지 않습니다. 그 결과, 문자열 안의 문자 개수는 문자열 전체를 반복해서 확장 자소 덩어리의 경계를 결정하지 않고는 계산할 수 없습니다. 특히 더 긴 문자열 값과 작업한다면, `count` 속성이 그 문자열의 문자를 결정하기 위해선 반드시 전체 문자열의 유니코드 크기 값들을 반복해야 한다는 걸 인식하기 바랍니다.
 >
-> `count` 속성이 반환한 문자 개수는 똑같은 문자를 담은 `NSString` 의 `length` 속성과 항상 똑같지는 않습니다. `NSString` 의 '길이' 는 '문자열의 UTF-16 표현법 안에 있는 16-비트 코드 단위[^16-bit-code-units] 개수에 기초한 것' 이지 '문자열 안의 확장된 유니코드 자소 덩어리 개수' 가 아닙니다.
+> `count` 속성이 반환한 문자 개수와 동일 문자를 담은 `NSString` 의 `length` 속성이 항상 똑같은 건 아닙니다. `NSString` 의 길이는 문자열의 **UTF-16** 표현법 안의 16-비트 코드 단위[^16-bit-code-units] 개수를 기반으로 한 것이지 문자열 안의 유니코드 확장 자소 덩어리 개수가 아닙니다.
 
 ### Accessing and Modifying a String (문자열 접근하기와 수정하기)
 
-문자열은 자신의 메소드와 속성을 통하여, 또는 '첨자 연산 (subscript) 구문' 을 사용하여, 접근하고 수정합니다.
+문자열의 접근과 수정은 메소드와 속성을 통하거나, 첨자 구문을 사용해서 합니다.
 
 #### String Indices (문자열 색인)
 
-각각의 `String` 값에는, 문자열의 각 `Character` 위치에 해당하는, `String.Index` 라는, 결합된 _색인 타입 (index type)_ 이 있습니다.
+각각의 `String` 값엔 결합된 _색인 타입 (index type)_ 인, `String.Index` 가 있는데, 이는 문자열 안의 각 `Character` 위치에 해당합니다.
 
-위에서 언급한 것처럼, 서로 다른 문자를 저장하기 위해 서로 다른 메모리 양을 요구할 수 있으므로, 특별한 위치에 있는 `Character` 를 결정하기 위해선, '해당 `String` 각각의 유니코드 크기 값' 을 반드시 처음부터 끝까지 반복해야 합니다. 이런 이유로, 스위프트 문자열에는 정수 값 색인을 쓸 수 없습니다.[^indexed-by-integer-values]
+위에서 언급하듯, 서로 다른 문자마다 서로 다른 메모리 저장량을 요구할 수 있어서, 어느 한 특별한 위치에 있는 `Character` 를 결정하기 위해선, 반드시 각각의 유니코드 크기 값을 그 `String` 의 처음부터 끝까지 반복해야 합니다. 이런 이유로, 스위프트 문자열은 정수 값으로 색인할 수 없습니다.[^indexed-by-integer-values]
 
 `startIndex` 속성으로 `String` 의 첫 번째 `Character` 위치에 접근합니다. `endIndex` 속성은 `String` 마지막 문자 그 뒤의 위치입니다. 그 결과, `endIndex` 속성은 문자열의 첨자 연산으로 유효한 인자가 아닙니다. `String` 이 비었으면, `startIndex` 와 `endIndex` 가 같습니다.
 
@@ -710,7 +710,7 @@ for scalar in dogString.unicodeScalars {
 
 [^letter]: 엄밀하게 말하면, 영어로 'character' 는 한자 같은 표의 문자를, 'letter' 는 표음 문자를 의미한다고 합니다. 여기서는 각각을 '문자 (character)' 와 '글자 (letter)' 라고 옮깁니다. 
 
-[^indexed-by-integer-values]: 이는, 예를 들어 `var myString: String` 이라고 할 때, `myString[3]` 처럼 '정수 색인으로 특정 문자에 임의 접근 (random access) 할 순 없다' 는 의미입니다.
+[^indexed-by-integer-values]: 예를 들어, `var myString: String` 이 있을 때, `myString[3]` 처럼 정수 색인을 써서 특정 문자에 임의 접근할 수 없다는 의미입니다.
 
 [^subscript-syntax]: 여기서 사용하는 '첨자 연산 구문' 은, '배열에서 사용하는 임의 접근 (random access) 방식' 이 아니라, '처음과 끝에서 시작해서 순차적으로 탐색하는 '리스트 방식' 으로 동작합니다.
 
@@ -722,6 +722,6 @@ for scalar in dogString.unicodeScalars {
 
 [^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 잠시동안 죽는 듯한 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 라는 의미로 '수도사' 중에서 수도원에 머무르지 않는 이들을 의미한다고 합니다.
 
-[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 가 무엇인지에 대해서는, 본문 뒤에 나오는 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 보도록 합니다.
+[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 에 대한 더 자세한 정보는, 본문 뒤의 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
 
 [^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
