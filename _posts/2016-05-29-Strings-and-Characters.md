@@ -375,11 +375,11 @@ print("the number of characters in \(word) is \(word.characters.count)")
 
 위에서 언급하듯, 서로 다른 문자마다 서로 다른 메모리 저장량을 요구할 수 있어서, 어느 한 특별한 위치에 있는 `Character` 를 결정하기 위해선, 반드시 각각의 유니코드 크기 값을 그 `String` 의 처음부터 끝까지 반복해야 합니다. 이런 이유로, 스위프트 문자열은 정수 값으로 색인할 수 없습니다.[^indexed-by-integer-values]
 
-`startIndex` 속성으로 `String` 의 첫 번째 `Character` 위치에 접근합니다. `endIndex` 속성은 `String` 마지막 문자 그 뒤의 위치입니다. 그 결과, `endIndex` 속성은 문자열의 첨자 연산으로 유효한 인자가 아닙니다. `String` 이 비었으면, `startIndex` 와 `endIndex` 가 같습니다.
+`startIndex` 속성을 쓰면 `String` 의 첫 번째 `Character` 위치에 접근합니다. `endIndex` 속성은 `String` 의 마지막 문자 뒤의 위치입니다. 그 결과, `endIndex` 속성은 문자열 첨자로 유효한 인자는 아닙니다. 빈 `String` 이면, `startIndex` 와 `endIndex` 가 같습니다.
 
-주어진 색인의 이전 및 이후 색인에는 `String` 의 `index(before:)` 와 `index(after:)` 메소드로 접근합니다. 주어진 색인에서 더 멀리 떨어진 색인에 접근하려면, 이 메소드를 여러 번 호출하는 대신 `index(_:offsetBy:)` 메소드를 사용할 수 있습니다.
+주어진 색인의 앞과 뒤 색인에 접근하는데는 `String` 의 `index(before:)` 와 `index(after:)` 메소드를 사용합니다. 주어진 색인에서 더 멀리 떨어진 색인에 접근하려면, 이러한 메소드를 여러 번 호출하는 대신 `index(_:offsetBy:)` 메소드를 사용할 수 있습니다.
 
-'첨자 연산 구문' 을 사용하면 '`String` 에서 특별한 색인의 `Character` 에 접근' 할 수 있습니다.[^subscript-syntax]
+첨자 구문을 사용하면 한 특별한 `String` 색인의 `Character` 에 접근할 수 있습니다.[^subscript-syntax]
 
 ```swift
 let greeting = "Guten Tag!"
@@ -394,14 +394,14 @@ greeting[index]
 // a
 ```
 
-문자열 범위 밖 색인이나 문자열 범위 밖 색인에 있는 `Character` 에 접근하려고 하면 '실행 시간 에러' 가 발생할 것입니다.
+문자열 범위 밖의 색인이나 문자열 범위 밖 색인의 `Character` 에 접근하려 하면 실행 시간 에러를 발생시킬 겁니다.
 
 ```swift
 // greeting[greeting.endIndex]  // 에러
 // greeting.index(after: greeting.endIndex) // 에러
 ```
 
-문자열에 있는 모든 개별 문자의 색인에 접근하려면 `indices` 속성을 사용합니다.
+`indices` 속성을 사용하면 문자열 안에 있는 모든 개별 문자의 색인에 접근합니다.
 
 ```swift
 for index in greeting.indices {
@@ -410,7 +410,7 @@ for index in greeting.indices {
 // "G u t e n   T a g ! " 을 인쇄함
 ```
 
-> `startIndex` 와 `endIndex` 속성 및 `index(before:)`, `index(after:)`, `index(_:offsetBy:)` 메소드는 `Collection` 프로토콜을 준수하는 어떤 타입에서든 사용할 수 있습니다. 이는 여기서 본, `String` 뿐만 아니라, `Array`, `Dictionary`, 그리고 `Set` 같은 '집합체 (collection) 타입' 을 포함합니다.
+> `Collection` 프로토콜을 준수한 어떤 타입이든 `startIndex` 와 `endIndex` 속성 및 `index(before:)` 와, `index(after:)`, 및 `index(_:offsetBy:)` 메소드를 사용할 수 있습니다. 이는, 여기서 본, `String` 뿐만 아니라, `Array` 와, `Dictionary`, 및 `Set` 같은 집합체 타입[^collection] 도 포함합니다.
 
 #### Inserting and Removing (집어넣기와 제거하기)
 
@@ -712,7 +712,7 @@ for scalar in dogString.unicodeScalars {
 
 [^indexed-by-integer-values]: 예를 들어, `var myString: String` 이 있을 때, `myString[3]` 처럼 정수 색인을 써서 특정 문자에 임의 접근할 수 없다는 의미입니다.
 
-[^subscript-syntax]: 여기서 사용하는 '첨자 연산 구문' 은, '배열에서 사용하는 임의 접근 (random access) 방식' 이 아니라, '처음과 끝에서 시작해서 순차적으로 탐색하는 '리스트 방식' 으로 동작합니다.
+[^subscript-syntax]: 여기서 사용하는 첨자 구문은, 배열에서 쓰는 임의 접근 방식이 아닌, 처음 또는 끝에서 시작해서 순차적으로 탐색하는 리스트 방식으로 동작합니다.
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
