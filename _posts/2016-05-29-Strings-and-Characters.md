@@ -454,11 +454,11 @@ let newString = String(beginning)
 
 문자열 같이, 각각의 하위 문자열엔 하위 문자열을 이룬 문자를 저장한 메모리 영역이 있습니다. 문자열과 하위 문자열이 다른 건, 성능 최적화로, 원본 문자열을 저장하는데 사용한 일부의 메모리나, 또 다른 하위 문자열을 저장하는데 사용한 일부의 메모리를 하위 문자열이 재사용할 수 있다는 겁니다. (문자열도 비슷한 최적화를 하지만, 두 문자열이 메모리를 공유한다면, 이들은 같은 겁니다.) 이런 성능 최적화가 의미하는 건 문자열 또는 하위 문자열의 수정 전까진 메모리를 복사하는데 드는 비용을 지불하지 않아도 된다는 겁니다. 위에서 언급했듯, 하위 문자열은 긴-기간 저장하는데는 적합하지 않은데-원본 문자열의 저장 공간을 재사용하기 때문에, 자신의 하위 문자열 어떤 것이든 사용하는 한 반드시 전체 원본 문자열을 메모리에 유지해야 하기 때문입니다.
 
-위 예제에서, `greeting` 은 문자열이며, 이는 문자열 문자들을 저장한 메모리 영역을 가진다는 의미입니다. `beginning` 은 `greeting` 의 하위 문자열이기 때문에, `greeting` 이 사용하는 메모리를 재사용합니다. 이와 대조적으로, `newString` 은 문자열이며-하위 문자열을 가지고 생성할 때, 자신만의 저장 공간을 가집니다. 아래 그림은 이 관계를 보여줍니다:
+위 예제에서, `greeting` 은 문자열인데, 이는 메모리 영역에 문자열을 이루는 문자들을 저장한다는 의미입니다. `beginning` 은 `greeting` 의 하위 문자열이기 때문에, `greeting` 이 사용한 메모리를 재사용합니다. 이와 대조하여, `newString` 은 문자열이라-하위 문자열로 생성할 때, 자신만의 저장 공간을 가집니다. 아래 그림은 이러한 관계를 보여줍니다:
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-substrings.jpg)
 
-> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 '문자열 조작 (manipulation) 함수가 `StringProtocol` 값을 받을 경우 편리하다' 는 의미입니다. 그런 함수는 `String` 이든 `Substring` 값이든 호출할 수 있습니다.
+> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 문자열 조작 함수가 `StringProtocol` 값을 받는게 대체로 편리하다는 걸 의미합니다. 그런 함수는 `String` 및 `Substring` 값 어느 것으로도 호출할 수 있습니다.
 
 ### Comparing Strings (문자열 비교하기)
 
