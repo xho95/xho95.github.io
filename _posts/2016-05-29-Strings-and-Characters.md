@@ -458,11 +458,11 @@ let newString = String(beginning)
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-substrings.jpg)
 
-> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 문자열 조작 함수가 `StringProtocol` 값을 받는게 대체로 편리하다는 걸 의미합니다. 그런 함수는 `String` 및 `Substring` 값 어느 것으로도 호출할 수 있습니다.
+> `String` 과 `Substring` 은 둘 다 [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol) 프로토콜을 준수하는데, 이는 문자열 조작 함수가 `StringProtocol` 값을 받는게 편리할 때가 자주 있다는 의미입니다. 그런 함수는 `String` 및 `Substring` 값 어느 것으로도 호출할 수 있습니다.
 
 ### Comparing Strings (문자열 비교하기)
 
-스위프트는 '문장 값 비교' 를 위해: '문자열 및 문자 같음 (equality), 접두사 같음, 접미사 같음' 이라는 세 가지 방식을 제공합니다.
+스위프트는 글로 된 값을 비교하는 세 가지 방식을 제공하는데: 문자열 및 문자 같음과, 접두사 같음, 및 접미사 같음이 그것입니다.
 
 #### String and Character Equality (문자열 및 문자 같음)
 
