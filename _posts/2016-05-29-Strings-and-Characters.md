@@ -466,7 +466,7 @@ let newString = String(beginning)
 
 #### String and Character Equality (문자열 및 문자 같음)
 
-'문자열 및 문자 같음' 은, [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 에서 설명한 것처럼, "같음 (equal to)" 연산자 (`==`) 와 "같지 않음 (not equal to)" 연산자 (`!=`) 로 검사합니다:
+문자열 및 문자 같음은 "같음 (equal to)" 연산자 (`==`) 와 "같지 않음 (not equal to)" 연산자 (`!=`) 로 검사하며, [Comparison Operators (비교 연산자)]({% post_url 2016-04-27-Basic-Operators %}#comparison-operators-비교-연산자) 에서 설명합니다:
 
 ```swift
 let quotation = "We're a lot alike, you and I."
@@ -477,9 +477,9 @@ if quotation == sameQuotation {
 // "These two strings are considered equal." 을 인쇄함
 ```
 
-두 `String` 값 (또는 두 `Character` 값) 은 '자신들의 확장된 자소 덩어리가 _법적으로 같은 값 (canonically equivalent)_[^canonically] 이면 같다' 고 고려합니다. 확장된 자소 덩어리가, 실제로는 서로 다른 유니코드 크기 값으로 합성한 경우에도, '언어의 (linguistic) 의미와 형태가 똑같으면 법적으로 같은 값' 입니다.
+두 `String` 값 (또는 두 `Character` 값) 들은 확장 자소 덩어리가 _법적으로 같다고 볼 수 있는 (canonically equivalent)_[^canonically] 거면 같다고 고려합니다. 확장 자소 덩어리가, 그 속은 서로 다른 유니코드 크기 값으로 합성한 경우라도, 언어의 의미와 나타난 모습이 똑같으면 법적으로 같은 겁니다.
 
-예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 '`LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 있는 것' 과 법적으로 같습니다. 이 '확장된 자소 덩어리' 둘 다 `é` 라는 문자를 나타내는 유효한 방식이므로, 법적으로 같은 값이라고 고려합니다:
+예를 들어, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) 는 `LATIN SMALL LETTER E` (`U+0065`) 뒤에 `COMBINING ACUTE ACCENT` (`U+0301`) 가 있는 것과 법적으로 같은 겁니다. 이러한 확장 자소 덩어리는 둘 다 유효한 방식으로 문자 `é` 를 나타내서, 법적으로 같은 것으로 고려합니다:
 
 ```swift
 // LATIN SMALL LETTER E WITH ACUTE 를 사용한 "Voulez-vous un café?"
@@ -716,7 +716,7 @@ for scalar in dogString.unicodeScalars {
 
 [^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
 
-[^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 는 '표준적으로' 라고 옮길 수도 있는데, 이 역시 '교회 법' 이 하나의 '표준' 이기 때문에 유래한 의미입니다.
+[^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 를 '표준적으로' 라고 옮길 수도 있는데, 이 역시 교회 법이 하나의 표준 역할을 했기 때문에 가지게 된 의미입니다.
 
 [^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 '성 (가문 이름)' 입니다. 즉, 줄리엣의 본명이 '줄리엣 캐퓰렛' 입니다.
 
