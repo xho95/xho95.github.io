@@ -494,7 +494,7 @@ if eAcuteQuestion == combinedEAccuteQuestion {
 // "These two strings are considered equal" 를 인쇄함
 ```
 
-반대로 말해서, 영어에 있는, `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`) 는, 러시아어에 있는, `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`) 와 같은 값이 _아닙니다 (not)_. 문자가 보기에는 비슷하지만, 언어의 의미가 똑같지는 않습니다:
+거꾸로, `LATIN CAPITAL A` (`U+0041`, 또는 `"A"`), 라고 영어로 쓴 건, `CYRILLIC CAPITAL LETTER A` (`U+0410`, 또는 `"А"`), 라고 쓴 러시아어와 같다고 볼 수 _없습니다 (not)_. 문자가 비슷해 보이지만, 언어의 의미는 똑같지 않습니다:
 
 ```swift
 let latinCapitalLetterA: Character = "\u{41}"
@@ -507,13 +507,13 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 // "These two characters are not equivalent" 를 인쇄함
 ```
 
-> 스위프트의 문자열 및 문자 비교는 '지역에-민감 (locale-sensitive)'[^locale-sensitive] 하지 않습니다.
+> 스위프트의 문자열 및 문자 비교 연산은 지역에-민감[^locale-sensitive] 하지 않습니다.
 
 #### Prefix and Suffix Equality (접두사 및 접미사 같음)
 
-문자열이 특별한 문자열 접두사 또는 접미사를 가지는 지 검사하려면, 문자열의 `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드를 호출하는 데, 이 둘 모두 `String` 타입인 단일 인자를 취하며 '불리언 값' 을 반환합니다.
+문자열에 한 특별한 문자열 접두사나 접미사가 있는지 검사하려면, 문자열의 `hasPrefix(_:)` 및 `hasSuffix(_:)` 메소드를 호출하는데, 이들은 둘 다 단일한 `String` 타입 인자를 취하고 불리언 값을 반환합니다.
 
-아래 예제는 셰익스피어의 _로미오와 줄리엣 (Romeo and Juliet)_ '첫 두 막 (acts) 에 있는 장 (scene) 들의 위치' 를 나타내는 문자열 배열을 고려합니다:
+아래 예제는 **셰익스피어** 의 _로미오와 줄리엣 (Romeo and Juliet)_ 첫 두 **막**[^acts] 의 **장**[^scene] (면) 위치를 나타내는 문자열 배열을 고려합니다:
 
 ```swift
 let romeoAndJuliet = [
@@ -531,7 +531,7 @@ let romeoAndJuliet = [
 ]
 ```
 
-`romeoAndJuliet` 배열과 `hasPrefix(_:)` 메소드를 사용하면 '희곡 (play) 제 1막의 장(면) 개수' 를 셀 수 있습니다:
+`romeoAndJuliet` 배열에 `hasPrefix(_:)` 메소드를 사용하여 **희곡**[^play] 의 **제 1막** 에 있는 **장** (면) 개수를 셀 수 있습니다:
 
 ```swift
 var act1SceneCount = 0
@@ -545,7 +545,7 @@ print("There are \(act1SceneCount) scenes in Act 1")
 // "There are 5 scenes in Act 1" 를 인쇄함
 ```
 
-이와 비슷하게, `hasSuffix(_:)` 메소드를 사용하면 '캐퓰렛 저택 (Capulet's mansion)[^capulet] 과 로렌스 수사의 작은 방 (Friar Lawrence's cell)[^friar] 안 및 그 주변에서 일어나는 장(면) 의 개수' 를 셀 수 있습니다:
+이와 비슷하게, `hasSuffix(_:)` 메소드로 **캐퓰렛 저택 (Capulet's mansion)**[^capulet] 과 **로렌스 수사의 작은 방 (Friar Lawrence's cell)**[^friar] 안과 그 주변에서 일어나는 **장** (면) 개수를 셀 수 있습니다:
 
 ```swift
 var mansionCount = 0
@@ -561,7 +561,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 // "6 mansion scenes; 2 cell scenes" 를 인쇄함
 ```
 
-> `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는, [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명한 것처럼, '각각의 문자열에 있는 확장된 자소 덩어리 사이에 문자-끼리 법적으로 같은 지의 비교' 를 수행합니다.
+> [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명했듯, `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열의 확장 자소 덩어리 사이의 문자-마다 법적으로 같다고 볼 수 있는지 비교하는 연산을 합니다.
 
 ### Unicode Representations of Strings (문자열의 유니코드 표현법)
 
@@ -714,13 +714,13 @@ for scalar in dogString.unicodeScalars {
 
 [^subscript-syntax]: 여기서 사용하는 첨자 구문은, 배열에서 쓰는 임의 접근 방식이 아닌, 처음 또는 끝에서 시작해서 순차적으로 탐색하는 리스트 방식으로 동작합니다.
 
-[^locale-sensitive]: [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목에 따르면, '지역에-민감 (locale-sensitive) 하다' 는 것은, '비교 연산을 위해서 지역 정보 (locale) 객체를 요구하는 것' 을 의미합니다. 따라서, 스위프트의 문자 비교가 지역에-민감하지 않다는 것은, 이 '지역 정보 객체' 를 요구하지 않는다는 의미입니다. 보다 자세한 내용은 [해당 링크](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 를 보도록 합니다. (내용이 깨져 보일 때는 사파리 'Text Encoding' 을 'Korean (Windows, DOS)' 로 설정해보기 바랍니다.)
+[^locale-sensitive]: '지역에 민감 (locale-sensitive) 하다' 는 건, 비교 연산을 위해 지역 정보 (locale) 객체를 요구하는 것을 의미합니다. 스위프트의 문자 비교 연산은 이러한 지역 정보 객체를 요구하지 않습니다. 이에 대한 더 자세한 정보는, [로케일이란 개념](http://apple-document.50megs.com/apple_tech_document/documentation/CoreFoundation/Conceptual/CFLocales/Articles/CFLocaleConcepts.html) 항목을 참고하기 바랍니다. (내용이 깨져 보일 때는 사파리의 **Text Encoding** 을 **Korean (Windows, DOS)** 로 설정해보기 바랍니다.)
 
 [^canonically]: '법적으로 (canonically)' 에서 'canon' 은 원래 '교회 법' 에서 유래한 단어입니다. 'canonically' 를 '표준적으로' 라고 옮길 수도 있는데, 이 역시 교회 법이 하나의 표준 역할을 했기 때문에 가지게 된 의미입니다.
 
-[^capulet]: '캐퓰렛 (Capulet)' 은 '로미오와 줄리엣' 에서 줄리엣의 '성 (가문 이름)' 입니다. 즉, 줄리엣의 본명이 '줄리엣 캐퓰렛' 입니다.
+[^capulet]: '캐퓰렛 (Capulet)' 은 **로미오와 줄리엣** 에서 줄리엣의 가문 이름 (성) 입니다. 즉, 줄리엣의 본명은 줄리엣 캐퓰렛입니다.
 
-[^friar]: '로렌스 수사 (Friar Lawrence)' 는 '로미오와 줄리엣' 에서 마시면 잠시동안 죽는 듯한 약을 만든 사람입니다. 'friar' 는 '탁발 수사' 라는 의미로 '수도사' 중에서 수도원에 머무르지 않는 이들을 의미한다고 합니다.
+[^friar]: '로렌스 수사 (Friar Lawrence)' 는 **로미오와 줄리엣** 에서 마시면 잠시 죽는 효과를 내는 약을 만든 사람입니다. '탁발 수사 (friar)' 는 수도사 중에서 수도원에 머무르지 않는 사람을 의미합니다.
 
 [^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 에 대한 더 자세한 정보는, 본문 뒤의 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
 
