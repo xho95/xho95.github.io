@@ -583,7 +583,7 @@ let dogString = "Dog!!🐶"
 
 #### UTF-8 Representation (UTF-8 표현법)
 
-`String` 을 **UTF-8** 으로 나타내려면 `utf8` 속성을 반복하면 됩니다. 이 속성은 `String.UTF8View` 타입으로, '문자열에 대한 UTF-8 표현법의 각 바이트 하나가, 부호없는 8-비트 (`UInt8`) 값인 집합체 (collection)' 입니다:
+**UTF-8** 으로 나타낸 `String` 에 접근하려면 `utf8` 속성을 반복하면 됩니다. 이 속성은 `String.UTF8View` 타입인데, 이는, 각각의 바이트 하나가 문자열의 **UTF-8** 표현법인, 부호없는 8-비트 (`UInt8`) 값의 집합체입니다:
 
 ![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
