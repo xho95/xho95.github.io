@@ -563,11 +563,11 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 > [String and Character Equality (문자열 및 문자 같음)](#string-and-character-equality-문자열-및-문자-같음) 에서 설명했듯, `hasPrefix(_:)` 와 `hasSuffix(_:)` 메소드는 각 문자열의 확장 자소 덩어리 사이의 문자-마다 법적으로 같다고 볼 수 있는지 비교하는 연산을 합니다.
 
-### Unicode Representations of Strings (문자열의 유니코드 표현법)
+### Unicode Representations of Strings (문자열을 유니코드로 나타내기)
 
-유니코드 문자열을 문서 파일이나 어떠한 다른 저장 공간에 쓸 땐, 그 문자열 안의 유니코드 크기 값을 유니코드가-정의한 여러 가지 _인코딩 형식 (encording forms)_ 중 하나로 인코딩 합니다. 각각의 형식은 _코드 단위 (code units)_ 라는 작은 뭉치로 문자열을 인코딩 합니다. 이는 (문자열을 8-비트 코드 단위로 인코딩 하는) **UTF-8** 인코딩 형식과, (문자열을 16-비트 코드 단위로 인코딩 하는) **UTF-16** 인코딩 형식, 및 (문자열을 32-비트 코드 단위로 인코딩 하는) **UTF-32** 인코딩 형식도 포함합니다.
+문서 파일이나 어떠한 다른 저장 공간에 유니코드 문자열을 쓸 땐, 그 문자열의 유니코드 크기 값을 유니코드에서-정의한 여러 가지 _인코딩 형식 (encording forms)_ 중 하나로 인코딩 합니다. 각 형식은 _코드 단위 (code units)_ 라는 작은 뭉치로 문자열을 인코딩 합니다. 여기엔 (문자열을 8-비트 코드 단위로 인코딩 하는) **UTF-8** 인코딩 형식과, (문자열을 16-비트 코드 단위로 인코딩 하는) **UTF-16** 인코딩 형식, 및 (문자열을 32-비트 코드 단위로 인코딩 하는) **UTF-32** 인코딩 형식을 포함합니다.
 
-스위프트는 서로 다른 여러 가지 방식으로 문자열의 유니코드 표현법에 접근합니다. `for`-`in` 문으로 문자열을 반복하면, 유니코드 확장 자소 덩어리로 개별 `Character` 값에 접근할 수 있습니다. 이 과정은 [Working with Characters (문자 작업하기)](#working-with-characters-문자-작업하기) 에서 설명합니다.
+스위프트는 서로 다른 여러 가지 방식으로 유니코드로 나타낸 문자열에 접근합니다. `for`-`in` 문으로 문자열을 반복하면, 개별 `Character` 값을 유니코드 확장 자소 덩어리로 접근할 수 있습니다. 이 과정은 [Working with Characters (문자 작업하기)](#working-with-characters-문자-작업하기) 에서 설명합니다.
 
 대안으로, 유니코드를-따르는 세 개의 다른 표현법 중 하나로 `String` 값에 접근합니다:
 
@@ -722,6 +722,6 @@ for scalar in dogString.unicodeScalars {
 
 [^friar]: '로렌스 수사 (Friar Lawrence)' 는 **로미오와 줄리엣** 에서 마시면 잠시 죽는 효과를 내는 약을 만든 사람입니다. '탁발 수사 (friar)' 는 수도사 중에서 수도원에 머무르지 않는 사람을 의미합니다.
 
-[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 에 대한 더 자세한 정보는, 본문 뒤의 [Unicode Representations of Strings (문자열의 유니코드 표현법)](#unicode-representations-of-strings-문자열의-유니코드-표현법) 부분을 참고하기 바랍니다.
+[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 에 대한 더 자세한 정보는, 본문 뒤의 [Unicode Representations of Strings (문자열을 유니코드로 나타내기)](#unicode-representations-of-strings-문자열을-유니코드로-나타내기) 부분을 참고하기 바랍니다.
 
 [^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
