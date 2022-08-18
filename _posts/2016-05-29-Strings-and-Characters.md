@@ -567,7 +567,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 문서 파일이나 어떠한 다른 저장 공간에 유니코드 문자열을 쓸 땐, 그 문자열 안의 유니코드 크기 값을 유니코드에서-정의한 여러 가지 _인코딩 형식 (encording forms)_ 으로 인코딩 합니다. 각각의 형식은 문자열을 _코드 단위 (code units)_ 라는 작은 뭉치로 인코딩 합니다. 이는 (문자열을 8-비트 코드 단위로 인코딩 하는) **UTF-8** 인코딩 형식과, (문자열을 16-비트 코드 단위로 인코딩 하는) **UTF-16** 인코딩 형식, 및 (문자열을 32-비트 코드 단위로 인코딩 하는) **UTF-32** 인코딩 형식을 포함합니다.
 
-스위프트는 유니코드로 나타낸 문자열에 여러 가지 서로 다른 접근 방식을 제공합니다. `for`-`in` 문으로 문자열을 반복하면, 개별 `Character` 값을 유니코드 확장 자소 덩어리로 접근할 수 있습니다. 이 과정은 [Working with Characters (문자 작업하기)](#working-with-characters-문자-작업하기) 에서 설명합니다.
+스위프트는 유니코드로 나타낼 문자열에 여러 가지 서로 다른 접근 방식을 제공합니다. `for`-`in` 문으로 문자열을 반복하면, 개별 `Character` 값을 유니코드 확장 자소 덩어리로 접근할 수 있습니다. 이 과정은 [Working with Characters (문자 작업하기)](#working-with-characters-문자-작업하기) 에서 설명합니다.
 
 대안으로, 유니코드를-따르는 세 개의 다른 방법으로 `String` 값에 접근합니다:
 
@@ -581,9 +581,9 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 let dogString = "Dog!!🐶"
 ```
 
-#### UTF-8 Representation (UTF-8 으로 나타내는 법)
+#### UTF-8 Representation (UTF-8 으로 나타내기)
 
-`String` 을 **UTF-8** 으로 나타내도록 접근하려면 `utf8` 속성을 반복하면 됩니다. 이 속성은 `String.UTF8View` 타입인데, 각각의 바이트가 문자열을 **UTF-8** 으로 나타낸 것인, 부호없는 8-비트 (`UInt8`) 값의 집합체입니다:
+`String` 을 **UTF-8** 으로 나타내게 접근하려면 `utf8` 속성을 반복하면 됩니다. 이 속성은 `String.UTF8View` 타입인데, 각각의 바이트가 문자열을 **UTF-8** 으로 나타낸 것인, 부호없는 8-비트 (`UInt8`) 값의 집합체입니다:
 
 ![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
@@ -595,11 +595,11 @@ print("")
 // "68 111 103 226 128 188 240 159 144 182 " 를 인쇄함
 ```
 
-위 예제에서, (`68`, `111`, `103` 이라는) 처음 세 개의 10진 `codeUnit` 값은, UTF-8 표현법이 ASCII 표현법과 똑같은, 문자인 `D`, `o`, 및 `g` 를 나타냅니다. (`226`, `128`, `188` 라는) 그 다음 세 개의 10진 `codeUnit` 값은 '`DOUBLE EXCLAMATION MARK` 문자에 대한 세-바이트 짜리 UTF-8 표현법' 입니다. (`240`, `159`, `144`, `182` 라는) 마지막 네 `codeUnit` 값은 '`DOG FACE` 문자에 대한 네-바이트 짜리 UTF-8 표현법' 입니다.
+위 예제의, 처음 세 10 진 `codeUnit` 값 (인 `68`, `111`, `103`) 은 `D` 와, `o`, 및 `g` 문자를 나타내며, 이렇게 **UTF-8** 로 나타낸 건 **ASCII** 로 나타낸 것과 똑같습니다. 그 다음 세 10 진 `codeUnit` 값 (인 `226`, `128`, `188`) 은 `DOUBLE EXCLAMATION MARK` 문자를 세-바이트의 **UTF-8** 으로 나타낸 겁니다. 마지막 네 `codeUnit` 값 (인 `240`, `159`, `144`, `182`) 는 `DOG FACE` 문자를 네-바이트의 **UTF-8** 으로 나타낸 겁니다.
 
-#### UTF-16 Representation (UTF-16 표현법)
+#### UTF-16 Representation (UTF-16 으로 나타내기)
 
-`String` 을 UTF-16 표현법으로 접근하려면 `utf16` 속성에 동작을 반복합니다. 이 속성은 `String.UTF16View` 타입으로, '문자열에 대한 UTF-16 표현법의 각 16-비트 코드 단위 하나가, 부호없는 16-비트 (`UInt16`) 값인 집합체' 입니다:
+`String` 을 **UTF-16** 으로 나타내게 접근하려면 `utf16` 속성을 반복하면 됩니다. 이 속성은 `String.UTF16View` 타입인데, 각각이 문자열을 **UTF-16** 로 나타낸 16-비트 코드 단위인, 부호없는 16-비트 (`UInt16`) 값의 집합체입니다:
 
 ![UTF-16 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-16-representation.jpg)
 
@@ -722,6 +722,6 @@ for scalar in dogString.unicodeScalars {
 
 [^friar]: '로렌스 수사 (Friar Lawrence)' 는 **로미오와 줄리엣** 에서 마시면 잠시 죽는 효과를 내는 약을 만든 사람입니다. '탁발 수사 (friar)' 는 수도사 중에서 수도원에 머무르지 않는 사람을 의미합니다.
 
-[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 에 대한 더 자세한 정보는, 본문 뒤의 [Unicode Representations of Strings (문자열을 유니코드로 나타내는-법)](#unicode-representations-of-strings-문자열을-유니코드로-나타내는-법) 부분을 참고하기 바랍니다.
+[^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 에 대한 더 자세한 정보는, 본문 뒤의 [Unicode Representations of Strings (문자열을 유니코드로 나타내는 법)](#unicode-representations-of-strings-문자열을-유니코드로-나타내는-법) 부분을 참고하기 바랍니다.
 
 [^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
