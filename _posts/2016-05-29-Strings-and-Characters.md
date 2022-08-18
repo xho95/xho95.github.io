@@ -595,7 +595,7 @@ print("")
 // "68 111 103 226 128 188 240 159 144 182 " 를 인쇄함
 ```
 
-위 예제의, 처음 세 10 진 `codeUnit` 값 (인 `68`, `111`, `103`) 은 `D` 와, `o`, 및 `g` 문자를 나타내며, 이렇게 **UTF-8** 로 나타낸 건 **ASCII** 로 나타낸 것과 똑같습니다. 그 다음 세 10 진 `codeUnit` 값 (인 `226`, `128`, `188`) 은 `DOUBLE EXCLAMATION MARK` 문자를 세-바이트의 **UTF-8** 으로 나타낸 겁니다. 마지막 네 `codeUnit` 값 (인 `240`, `159`, `144`, `182`) 는 `DOG FACE` 문자를 네-바이트의 **UTF-8** 으로 나타낸 겁니다.
+위 예제의, 첫 세 10진 `codeUnit` 값 (인 `68`, `111`, `103`) 은 `D` 와, `o`, 및 `g` 문자를 나타내며, 이렇게 **UTF-8** 로 나타낸 건 **ASCII** 로 나타낸 것과 똑같습니다. 그 다음 세 10진 `codeUnit` 값 (인 `226`, `128`, `188`) 은 `DOUBLE EXCLAMATION MARK` 문자를 세-바이트의 **UTF-8** 으로 나타낸 겁니다. 마지막 네 `codeUnit` 값 (인 `240`, `159`, `144`, `182`) 는 `DOG FACE` 문자를 네-바이트의 **UTF-8** 으로 나타낸 겁니다.
 
 #### UTF-16 Representation (UTF-16 으로 나타내기)
 
@@ -611,11 +611,11 @@ print("")
 // "68 111 103 8252 55357 56374 " 를 인쇄함
 ```
 
-다시, (`68`, `111`, `103` 이라는) 처음 세 개의 `codeUnit` 값은, (이 유니코드 크기 값들이 ASCII 문자를 나타내기 때문에) UTF-16 코드 단위가 문자열의 UTF-8 표현법과 똑같은, 문자인 `D`, `o`, 및 `g` 를 나타냅니다.
+다시, 첫 세 `codeUnit` 값 (인 `68`, `111`, `103`) 은 `D` 와, `o`, 및 `g` 문자를 나타내며, 이러한 **UTF-16** 코드 단위들은 문자열을 **UTF-8** 로 나타낸 것과 값이 똑같습니다 (이 유니코드 크기 값들이 **ASCII** 문자를 나타내고 있기 때문입니다).
 
-(`8252` 라는) 네 번째 `codeUnit` 값은, '`DOUBLE EXCLAMATION MARK` 문자에 대한 유니코드 크기 값 `U+203C` 를 나타내는, 16진수 `203C` 와 서로 같은 10진 값' 입니다. UTF-16 은 이 문자를 '단일 코드 단위' 로 나타낼 수 있습니다.
+네 번째 `codeUnit` 값 (인 `8252`) 라는 10진수는 16진 값 `203C` 와 같은 것으로, `DOUBLE EXCLAMATION MARK` 문자의 유니코드 크기 값인 `U+203C` 를 나타냅니다. **UTF-16** 에선 이 문자를 단일 코드 단위로 나타낼 수 있습니다.
 
-(`55357` 와 `56374` 라는) 다섯 째와 여섯 째 `codeUnit` 값은 '`DOG FACE` 문자에 대한 UTF-16 대용 쌍 (surrogate pair)[^surrogate-pair] 표현법' 입니다. 이 값들은 '(10진수로는 `55357` 인) `U+D83D` 라는 높은자리-대용 값' 과 '(10진수로는 `56374` 인) `U+DC36` 라는 낮은자리-대용 값' 입니다.
+다섯 째와 여섯 째 `codeUnit` 값 (인 `55357` 와 `56374`) 는 `DOG FACE` 문자를 **UTF-16** 으로 나타낸 한 쌍의 대용품[^surrogate-pair] 입니다. 이 값들은 높은자리-대용품 값인 `U+D83D` (10진수론 `55357`) 과 낮은자리-대용품 값인 `U+DC36` (10진수론 `56374`) 입니다.
 
 #### Unicode Scalar Representation ('유니코드 크기 값' 표현법)
 
@@ -724,4 +724,4 @@ for scalar in dogString.unicodeScalars {
 
 [^16-bit-code-units]: '16-비트 코드 단위 (16-buit code units)' 에 대한 더 자세한 정보는, 본문 뒤의 [Unicode Representations of Strings (문자열을 유니코드로 나타내는 법)](#unicode-representations-of-strings-문자열을-유니코드로-나타내는-법) 부분을 참고하기 바랍니다.
 
-[^surrogate-pair]: '대용 쌍 (surrogate pair)' 은 유니코드에서 16-비트로 값을 표현할 수 없는 문자들을 두 개의 16-비트 문자로 변환하여 한 쌍으로써 문자를 나타내는 방식을 말합니다. '대용 쌍 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
+[^surrogate-pair]: '한 쌍의 대용품 (surrogate pair)' 이란 유니코드에서 16-비트로 값을 표현할 수 없는 문자를 두 개의 16-비트 문자로 변환하여 한 쌍으로 문자를 나타내는 방식입니다. '한 쌍의 대용품 (surrogate pair)' 에 대한 더 자세한 내용은, 위키피디아의 [UTF-16 (영문)](https://en.wikipedia.org/wiki/UTF-16) 항목과 [UTF-16 (한글)](https://ko.wikipedia.org/wiki/UTF-16) 항목을 보도록 합니다.
