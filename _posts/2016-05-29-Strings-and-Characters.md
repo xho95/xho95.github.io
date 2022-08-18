@@ -613,15 +613,15 @@ print("")
 
 다시, 첫 세 `codeUnit` 값 (인 `68`, `111`, `103`) 은 `D` 와, `o`, 및 `g` 문자를 나타내며, 이러한 **UTF-16** 코드 단위들은 문자열을 **UTF-8** 로 나타낸 것과 값이 똑같습니다 (이 유니코드 크기 값들이 **ASCII** 문자를 나타내고 있기 때문입니다).
 
-네 번째 `codeUnit` 값 (인 `8252`) 라는 10진수는 16진 값 `203C` 와 같은 것으로, `DOUBLE EXCLAMATION MARK` 문자의 유니코드 크기 값인 `U+203C` 를 나타냅니다. **UTF-16** 에선 이 문자를 단일 코드 단위로 나타낼 수 있습니다.
+네 번째 `codeUnit` 값 (인 `8252`) 는 16진 값 `203C` 와 같다고 볼 수 있는 10진수로, `DOUBLE EXCLAMATION MARK` 문자의 유니코드 크기 값인 `U+203C` 를 나타냅니다. **UTF-16** 에선 이 문자를 단일 코드 단위로 나타낼 수 있습니다.
 
 다섯 째와 여섯 째 `codeUnit` 값 (인 `55357` 와 `56374`) 는 `DOG FACE` 문자를 **UTF-16** 으로 나타낸 한 쌍의 대용품[^surrogate-pair] 입니다. 이 값들은 높은자리-대용품 값인 `U+D83D` (10진수론 `55357`) 과 낮은자리-대용품 값인 `U+DC36` (10진수론 `56374`) 입니다.
 
 #### Unicode Scalar Representation (유니코드 크기 값으로 나타내기)
 
-`String` 값을 유니코드 크기 값 표현법으로 접근하려면 `unicodeScalars` 속성에 동작을 반복합니다. 이 속성은 `UnicodeScalarView` 타입으로, '`UnicodeScalar` 타입인 값들의 집합체' 입니다.
+`String` 을 유니코드 크기 값으로 나타내게 접근하려면 `unicodeScalars` 속성을 반복하면 됩니다. 이 속성은 `UnicodeScalarView` 타입이며, `UnicodeScalar` 타입인 값들의 집합체입니다.
 
-각각의 `UnicodeScalar` 에는 '크기 값 (scalar) 의 21-비트 값을, `UInt32` 값으로, 반환하는 `value` 속성' 이 있습니다:
+각각의 `UnicodeScalar` 엔 크기 값의 21-비트 값을 반환하는 `value` 속성이 있는데, `UInt32` 값으로 나타납니다:
 
 ![Unicode Scalar representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-Unicode-scalar-representation.jpg)
 
@@ -633,13 +633,13 @@ print("")
 // "68 111 103 8252 128054 " 를 인쇄함
 ```
 
-(`68`, `111`, `103` 이라는) 처음 세 `UnicodeScalar` 값의 `value` 속성은 다시 한번 `D`, `o`, 및 `g` 라는 문자를 나타냅니다.
+첫 세 `UnicodeScalar` 값들의 `value` 속성 (인 `68`, `111`, `103`) 는 다시 한번 `D` 와, `o`, 및 `g` 문자를 나타냅니다.
 
-(`8252` 라는) 네 번째 `codeUnit` 값은 다시, '`DOUBLE EXCLAMATION MARK` 문자에 대한 유니코드 크기 값 `U+203C` 를 나타내는, 16진수 `203C` 와 서로 같은 10진 값' 입니다.
+네 번째 `codeUnit` 값 (인 `8252`) 는 다시 16진 값 `203C` 와 같다고 볼 수 있는 10진수로, `DOUBLE EXCLAMATION MARK` 문자의 유니코드 크기 값 `U+203C` 를 나타냅니다.
 
-다섯 번째이자 최종 `UnicodeScalar` 의 `value` 속성인, `128054` 는, '`DOG FACE` 문자에 대한 유니코드 크기 값 `U+1F436` 을 나타내는, 16진수 `1F436` 와 서로 같은 10진 값' 입니다.
+다섯 째이자 최종 `UnicodeScalar` 의 `value` 속성인, `128054` 는 16진 값 `1F436` 와 같다고 볼 수 있는 10진수로, `DOG FACE` 문자의 유니코드 크기 값 `U+1F436` 을 나타냅니다.
 
-`value` 속성 조회의 대안으로써, 문자열 보간법에서 처럼, 각각의 `UnicodeScalar` 값을 사용하여 새로운 `String` 값을 생성할 수도 있습니다:
+자신의 `value` 속성 조회의 대안으로, 문자열 끼워넣기에서 처럼, 각각의 `UnicodeScalar` 값을 써서 새로운 `String` 값을 생성할 수도 있습니다:
 
 ```swift
 for scalar in dogString.unicodeScalars {
