@@ -617,7 +617,7 @@ print("")
 
 다섯 째와 여섯 째 `codeUnit` 값 (인 `55357` 와 `56374`) 는 `DOG FACE` 문자를 **UTF-16** 으로 나타낸 한 쌍의 대용품[^surrogate-pair] 입니다. 이 값들은 높은자리-대용품 값인 `U+D83D` (10진수론 `55357`) 과 낮은자리-대용품 값인 `U+DC36` (10진수론 `56374`) 입니다.
 
-#### Unicode Scalar Representation ('유니코드 크기 값' 표현법)
+#### Unicode Scalar Representation (유니코드 크기 값으로 나타내기)
 
 `String` 값을 유니코드 크기 값 표현법으로 접근하려면 `unicodeScalars` 속성에 동작을 반복합니다. 이 속성은 `UnicodeScalarView` 타입으로, '`UnicodeScalar` 타입인 값들의 집합체' 입니다.
 
