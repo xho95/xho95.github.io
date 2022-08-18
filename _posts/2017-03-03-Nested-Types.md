@@ -105,8 +105,6 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^Nested-Types]: 이 글에 대한 원문은 [Nested Types](https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^blackjack]: '블랙잭 (blackjack)' 은 카드 합이 21 을 넘지않는 선에서 최대한 21 에 가깝게 만들면 이기는 게임입니다. 블랙잭 게임에 대한 더 자세한 정보는, 위키피디아의 [Blackjack](https://en.wikipedia.org/wiki/Blackjack) 항목과 [블랙잭](https://ko.wikipedia.org/wiki/블랙잭) 항목을 보도록 합니다.
 
 [^playing-card]: '놀이용 카드 (playing card)' 는 서양 카드 놀이에 사용되는 종이나 플라스틱으로 만든 카드를 말합니다. 우리나라에서는 보통 트럼프라고 부르는 경우가 많습니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Playing card](https://en.wikipedia.org/wiki/Playing_card) 항목과 [플레잉 카드](https://ko.wikipedia.org/wiki/플레잉_카드) 항목을 보도록 합니다. 

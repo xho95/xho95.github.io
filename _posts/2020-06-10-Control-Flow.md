@@ -796,8 +796,6 @@ if #unavailable(iOS 10) {
 
 [^Control-Flow]: 이 글에 대한 원문은 [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 보도록 합니다.
 
 [^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서를 다듬은 역사)]({% post_url 2020-03-16-Document-Revision-History %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 역사를 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.

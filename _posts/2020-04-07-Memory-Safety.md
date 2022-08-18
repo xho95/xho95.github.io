@@ -214,8 +214,6 @@ func someFunction() {
 
 [^Memory-Safety]: 이 글에 대한 원문은 [Memory Safety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 보도록 합니다.
 
 [^nonatomic]: '원자적이 아닌 접근 (nonatomic access)' 은 뒤의 본문에서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이 아닌 함수로 접근하는 것을 의미합니다. '원자적 접근' 에 대해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 항목을 보도록 합니다.

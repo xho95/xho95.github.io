@@ -385,8 +385,6 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^Optional-Chaining]: 이 글에 대한 원문은 [Optional Chaining](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^gracefully-fail]: '우아하게 (gracefully) 실패한다' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 사슬의 어떤 고리든 `nil` 이면, 실행시간 에러가 발생하는 게 아니라, 전체 사슬이 `nil` 이 됩니다.
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 부분을 보도록 합니다.

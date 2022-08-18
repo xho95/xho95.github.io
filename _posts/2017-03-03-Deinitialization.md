@@ -114,8 +114,6 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 [^Deinitialization]: 이 글에 대한 원문은 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^deinitializer]: '정리자 (deinitializer)' 라고 옮긴 것은 '초기자 (initializer)' 와 짝을 맞추기 위함입니다. 이는 C++ 의 '생성자 (constructor) 와 소멸자 (destructor)' 에서 착안한 것입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 으로 자동으로 메모리를 관리하기 때문에, 메모리의 생성이나 소멸이라는 개념이 (사실상) 거의 없습니다. 그러므로 생성자나 소멸자 같은 용어보다 초기자 및 정리자 같은 용어가 더 적합합니다.
 
 [^deallocated]: 여기서 'deallocated' 는 메모리 해제를 말하는데, 스위프트가 앞서 말한 'ARC (Auto Reference Counting)' 로 자동으로 합니다.

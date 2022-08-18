@@ -1026,8 +1026,6 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^Initialization]: 원문은 [Initialization](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^property-declaration]: 앞서 [Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-초기-값-설정하기) 부분에선, 기본 값 설정을 속성 정의 (definition) 에서 한다고 했다가, 여기선 속성 선언 (declaration) 에서 지정한다고 말합니다. 이것은, [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장 맨 앞에서 설명한 것처럼, 스위프트에선 이 둘의 구분이 중요하지 않아서, 두 용어를 거의 같은 의미로 사용하기 때문입니다.
 
 [^funnel]: 지명 초기자를 '깔대기' 에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연쇄되는 모습이 깔대기와 흡사하기 때문입니다.

@@ -357,8 +357,6 @@ print(evaluate(product))
 
 [^Enumerations]: 이 글에 대한 원문은 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^type-safe]: 여기서 '타입-안전한 (type-safe) 방식' 은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있음을 의미합니다. 이에 대한 더 자세한 정보는 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
 
 [^first-class]: 프로그래밍에서 '일급 (first-class) 이다' 라는 말은 '객체 (class) 와 동-급으로 사용할 수 있다' 는 의미입니다. 예를 들어, 어떠한 것이 객체 처럼 인자로 전달할 수 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있다면, '이는 일급이다' 라고 합니다. '일급' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 보도록 합니다.

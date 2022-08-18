@@ -337,8 +337,6 @@ categories: Swift Language Grammar Revision History
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 과 함께 발표 되었다가, 2020-09-16 일에 Apple Event 와 함께 다시 갱신 되었습니다.
-
 [^dynamic-type-expression]: '동적 타입 표현식 (Dynamic Type Expression)' 에 대한 내용은 [2017-03-27](#2017-03-27) 일에 공개한 스위프트 3.1 에서 제거되었기 때문에 링크가 없습니다.
 
 [^variable-function-arguments]: '변수인 함수 인자 (variable function arguments)' 라는 것은 `func someFunction(var argument: String)` 처럼 인자에 `var` 를 붙여서 해당 인자를 변수 처럼 사용하는 것을 말합니다. 스위프트 2.2 부터 사용이 불가능하게 되었습니다.

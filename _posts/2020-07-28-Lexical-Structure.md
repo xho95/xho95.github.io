@@ -256,8 +256,6 @@ let regex2 = # #/abc/# #    // 에러
 
 [^Lexical-Structure]: 이 글에 대한 원문은 [Lexical Structure](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^token]: '낱말 (token)' 은 프로그래밍 언어에서 '의미를 가지는 최소 단위' 를 뜻합니다. 여기서는 'token' 을 '낱말' 이라고 옮겼는데, 스위프트에서는 'token' 을 'lexical token (lexeme-어휘소와 비슷한 개념)' 의 의미로 사용하고 있는 것 같습니다. 굳이 옮기자면 '어휘소' 나, '형태소' 라고 할 수도 있겠으나, 프로그래밍을 하는데 이 정도까지 알아야 하는 것은 아니므로, 앞으로 'token' 을 계속 '낱말' 이라고 옮기겠습니다. 'token' 에 대한 더 자세한 개념은, 위키피디아의 [Lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis) 항목 안의 [Token](https://en.wikipedia.org/wiki/Lexical_analysis#Token) 부분을 보도록 합니다.
 
 [^maximal-munch]: '최대한 잘라먹기 (maximal munch)' 라는 용어는, [Jay Two](https://j2doll.tistory.com) 님의 [최대한 잘라먹기(Maximal Munch)와 컴파일러(Compiler)](https://j2doll.tistory.com/109) 라는 블로그 글이, 의미를 가장 잘 전달하고 있다고 생각하여, 따르기로 합니다. 'longest match' 와 'maximal munch' 에 대한 더 자세한 정보는, 위피키디아의 [Maximal munch](https://en.wikipedia.org/wiki/Maximal_munch) 항목을 보도록 합니다.

@@ -262,8 +262,6 @@ C, C++ 또는 오브젝티브-C 에 대한 경험이 있으면, 이 언어들은
 
 [^Structures-and-Classes]: 이 글에 대한 원문은 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^object-instance]: 스위프트 구조체와 클래스를 같이 설명하는데, 객체라는 용어는 클래스에만 해당하므로, 인스턴스라는 용어를 사용해서 클래스와 구조체 모두에 해당하는 부분을 설명한다는 의미입니다.
 
 [^uppser-camel-case]: '낙타 모양 대소문자 (camel case)' 는, 변수 이름을 지정할 때 모든 단어를 붙이고. 각 단어의 첫 글자를 대문자로 표기하면, 모양이 낙타 등처럼 보이기 때문에 나온 말입니다. 위키피디아에서는 'camel case' 를 '낙타 대문자' 라고 옮기고 있지만, 이 책에서는 `UpperCamelCase` 와 `lowerCamelCase` 로 또다시 나누기 때문에, 각각 '낙타 모양 대문자' 와 '낙타 모양 소문자' 라고 옮깁니다. '낙타 모양 대소문자 (camel Case)' 에 대한 보다 자세한 내용은, 위키피디아의 [Camel case](https://en.wikipedia.org/wiki/Camel_case) 항목과 [낙타 대문자](https://ko.wikipedia.org/wiki/낙타_대문자) 항목을 보도록 합니다.
