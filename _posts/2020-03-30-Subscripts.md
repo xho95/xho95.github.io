@@ -175,8 +175,6 @@ print(mars)
 
 [^Subscripts]: 이 글에 대한 원문은 [Subscripts](https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection), 리스트 (list), 시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 자료 구조입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 보도록 합니다. 
 
 [^read-only]: 이런 동작은 바로 뒤에서 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보면 계산 속성과 첨자는 인스턴스 메소드의 특수한 한 형태라고 볼 수 있습니다.

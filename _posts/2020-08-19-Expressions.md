@@ -1064,8 +1064,6 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^Expressions]: 원문은 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^primary-expression]: '으뜸 표현식 (primary expression)' 은 아래의 [Primary Expressions (으뜸 표현식)]({% post_url 2020-08-19-Expressions %}#primary-expressions-으뜸-표현식) 부분에서 설명합니다.
 
 [^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 보도록 합니다.

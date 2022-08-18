@@ -212,8 +212,6 @@ things.append(optionalNumber as Any) // 경고 없음
 
 [^Type-Casting]: 이 글에 대한 원문은 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^type-casting-and-type-conversion]: 타입 변환은 영어로 'type casting' 과 'type conversion' 둘 다에 적용할 수 있지만, 이 둘은 서로 조금 다릅니다. 'type casting' 과 'type conversion' 의 가장 기본적인 차이점은 'type conversion' 은 컴파일러에 의해 자동으로 이루어지는 반면, 'type casting' 은 개발자가 명시적으로 지정한다는 점입니다. 'type casting' 과 'type conversion' 의 차이점에 대한 정보는, [Difference Between Type Casting and Type Conversion](https://techdifferences.com/difference-between-type-casting-and-type-conversion.html) 항목을 보도록 합니다.
 
 [^expressive]: '표현력이 좋다 (expressive)' 는 건 '컴파일러와 개발자 모두가 이해하기 쉬운 코드를 쉽게 작성할 수 있다' 는 의미입니다. 이에 대한 더 자세한 내용은, **stackoverflow** 의 [What does "expressive" mean when referring to programming languages?](https://stackoverflow.com/questions/638881/what-does-expressive-mean-when-referring-to-programming-languages) 항목을 보도록 합니다. 

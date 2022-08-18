@@ -11,19 +11,19 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는, 값의 집합체를 저장하는, '배열 (arrays), 셋 (sets)[^sets-type], 및 딕셔너리 (dictionaries)[^dictionaries-type]' 라는, 세 가지 주요 _집합체 타입 (collection types)_[^collections] 을 제공합니다. 배열은 '값들의 순서가 있는 (ordered) 집합체'[^ordered-collection] 입니다. 셋은 '유일한 값들이 순서 없이 (unordered) 있는 집합체' 입니다. 딕셔너리는 '키-값 결합 (key-value associations) 들이 순서 없이 있는 집합체' 입니다.
+스위프트는, 배열[^arrays-type] 과, 셋[^sets-type], 및 딕셔너리[^dictionaries-type] 라는, 세 개의 으뜸 _집합체 타입 (collection types)_[^collections] 을 제공하여, 값의 집합체를 저장합니다. 배열은 순서 있는 값들의 집합체[^ordered-collection] 입니다. 셋은 순서 없는 유일한 값들의 집합체입니다. 딕셔너리는 순서 없는 키-값 결합들 [^key-value-associations] 의 집합체입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
-스위프트에서 배열, 셋, 그리고 딕셔너리는 자신이 저장할 값과 키의 타입을 항상 명확히 합니다. 이는 집합체에 잘못된 타입의 값을 실수로 집어 넣을 수는 없다는 의미입니다. 집합체로부터 가져올 값의 타입을 자신해도 된다는 의미이기도 합니다.
+스위프트의 배열과, 셋, 및 딕셔너리에 저장할 수 있는 값 및 키의 타입은 항상 명확합니다. 이는 실수로 잘못된 타입 값을 집합체에 집어 넣을 순 없다는 걸 의미합니다. 집합체에서 가져올 값의 타입에 자신감을 가져도 된다는 의미이기도 합니다.
 
-> 스위프트의 배열, 셋 그리고 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. '일반화 (generic) 타입과 집합체' 에 대한 더 많은 것은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 보도록 합니다.
+> 스위프트의 배열과, 셋, 및 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. 일반화 타입 및 집합체에 대한 더 많은 내용은, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장을 보기 바랍니다.
 
 ### Mutability of Collections (집합체의 변경 가능성)
 
-배열이나, 셋, 또는 딕셔너리를 생성한 후, 이를 변수에 할당하면, 생성한 집합체가 _변경 가능 (mutable)_ 할 것입니다. 이는 집합체를 생성한 후 집합체의 항목을 추가, 삭제, 또는 바꿈으로써 이를 바꾸거나-_변경 (mutate)_-할 수 있다는 의미입니다. 배열, 셋, 또는 딕셔너리를 상수에 할당하면, 그 집합체는 _변경 불가능 (immutable)_ 하며, 크기와 내용물을 바꿀 수 없습니다.
+배열이나, 셋, 또는 딕셔너리를 생성하고, 이를 변수에 할당한다면, 생성한 집합체는 _변경 가능 (mutable)_ 할 겁니다. 이는 집합체를 생성한 후엔 집합체 안의 항목을 추가하거나, 삭제, 또는 바꿈으로써 이를 바꿀 수 (또는 _변경 (mutate)_ 할 수) 있다는 의미입니다. 배열이나, 셋, 또는 딕셔너리를 상수에 할당한다면, 그 집합체는 _변경 불가능 (immutable)_ 이라, 크기와 내용물을 바꿀 수 없습니다.
 
-> 바꿀 필요가 없는 모든 집합체는 '변경 불가능한 집합체로 생성' 하는 것이 좋은 습관입니다. 그럼으로써 코드 파악이 쉬워지며 생성한 집합체를 스위프트 컴파일러가 성능 최적화 하도록 합니다.
+> 바꿀 필요가 없는 모든 집합체인 경우 이를 변경 불가능한 집합체로 생성하는게 좋은 습관입니다. 그럼으로써 코드 파악이 쉬워지며 생성한 집합체를 스위프트 컴파일러가 성능 최적화 하도록 합니다.
 
 ### Arrays (배열)
 
@@ -629,13 +629,13 @@ let airportNames = [String](airports.values)
 
 [^Collection-Types]: 원문은 [Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
-[^collections]: 'collection' 은 '집합', '묶음' 등 여러 가지 말로 옮길 수 있지만 여기서는 '집합체' 라는 말을 사용합니다. 이는 프로그래밍 용어에서 '객체', '구조체', '열거체' 등이 하나의 '타입' 을 의미하는 것에서 착안한 것입니다. '집합체' 는 어떤 성분들의 집합으로 이루어진 '타입' 이라고 이해하면 좋을 것 같습니다.
-
 [^sets-type]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있으며, 스위프트의 '셋 (sets)' 역시 수학에 있는 '집합 (sets)' 에서 유래한 개념입니다. 실제로 '셋이라는 자료 구조' 는 '수학에서의 집합을 구현한 것' 입니다. 하지만, '집합' 이라고 하면 수학 용어인지 자료 타입인지 모호할 수 있으므로, 스위프트의 자료 타입임을 의미할 때는 '셋' 이라는 발음대로 옮기도록 합니다.
 
 [^dictionaries-type]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
+
+[^collections]: 'collection' 은 '집합', '묶음' 등 여러 가지 말로 옮길 수 있지만 여기서는 '집합체' 라는 말을 사용합니다. 이는 프로그래밍 용어에서 '객체', '구조체', '열거체' 등이 하나의 '타입' 을 의미하는 것에서 착안한 것입니다. '집합체' 는 어떤 성분들의 집합으로 이루어진 '타입' 이라고 이해하면 좋을 것 같습니다.
+
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장이 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 부분에서 보듯, 여기선 'order' 는 순서로 'sort' 는 정렬이라고 옮깁니다.
 
 [^compatible]: 컴퓨터 용어로 '호환 가능 (compatible) 하다' 는 것은 '서로 같이 사용하거나 교체가 가능하다' 는 의미입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 '덧셈 연산자와 호환 가능' 하기 때문에, 두 값을 덧셈 연산자로 더할 수 있습니다. 본문에서 '호환 가능 (compatible) 하다' 는 표현을 사용한 것은, 두 값을 더할 때는 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
@@ -660,10 +660,6 @@ let airportNames = [String](airports.values)
 [^sets]: 여기서도 위와 마찬가지 이유로 'set' 을 '집합' 이라고 옮깁니다.
 
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
-
-[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 보도록 합니다. 참고로 [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장에 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 라는 항목이 따로 있기도 하므로, 'order 는 순서' 로, 'sort 는 정렬' 로 옮깁니다.
-
-'순서가 있는 집합 (ordered set)' 은 '정렬된 집합 (sorted set)' 과는 수학적인 의미가 다릅니다. 
 
 [^ordered-list]: '순서 있는 리스트 (ordered list)' 에서의 리스트는 자료 구조의 하나입니다. '리스트 (list) 자료 구조' 에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 보도록 합니다.
 

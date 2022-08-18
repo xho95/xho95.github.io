@@ -171,7 +171,7 @@ while square < finalSquare {
 print("Game over!")
 ```
 
-위 예제는 아주 단순한 주사위 굴림 방식을 사용합니다. 난수 발생 대신, `0` 이라는 `diceRoll` 값으로 시작합니다. 매 번 `while` 반복문을 통과할 때마다, `diceRoll` 을 하나씩 증가한 다음 너무 커진 건 아닌 지 검사합니다. 이 반환 값이 `7` 일 때마다, 주사위 굴림 값이 너무 커진 것이므로 `1` 이라는 값으로 재설정합니다. 결과는 항상 `1`, `2`, `3`, `4`, `5`, `6`, `1`, `2`, 로 계속되는 '일련의 `diceRoll` 값' 입니다.
+위 예제는 아주 단순한 주사위 굴림 방식을 사용합니다. 난수 발생 대신, `0` 이라는 `diceRoll` 값으로 시작합니다. 매 번 `while` 반복문을 통과할 때마다, `diceRoll` 을 하나씩 증가한 다음 너무 커진 건 아닌 지 검사합니다. 이 반환 값이 `7` 일 때마다, 주사위 굴림 값이 너무 커진 것이므로 `1` 이라는 값으로 재설정합니다. 결과는 일렬로 나열된 `diceRoll` 값으로 항상 `1`, `2`, `3`, `4`, `5`, `6`, `1`, `2`, 등등 입니다.
 
 주사위 굴림 후, 참가자는 `diceRoll` 개의 정사각형만큼 앞으로 이동합니다. 주사위 굴림이 참가자를 25번 정사각형 너머로 이동하게 할 수도 있는데, 이 경우 게임이 끝납니다. 이 줄거리를 구현하고자, 코드에서는 `square` 가 `board` 배열의 `count` 속성보다 작은 지를 검사합니다. `square` 가 유효하면, 사다리냐 뱀이냐에 따라 참가자를 위 아래로 이동하기 위해 `board[square]` 에 저장한 값을 현재 `square` 값에 더합니다.
 
@@ -795,8 +795,6 @@ if #unavailable(iOS 10) {
 ### 참고 자료
 
 [^Control-Flow]: 이 글에 대한 원문은 [Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 에서 확인할 수 있습니다.
-
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
 
 [^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 보도록 합니다.
 

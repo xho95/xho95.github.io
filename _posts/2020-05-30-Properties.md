@@ -691,8 +691,6 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^Properties]: 이 글에 대한 원문은 [Properties](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^instance-variables]: 이 부분은 오브젝티브-C 나 C++ 같은 객체 지향 언어에 대한 설명이므로, 객체 지향 언어에 익숙하지 않으면 넘어가도 됩니다. 객체 지향 언어에서는 '객체 안에서만 접근 가능한 내부 변수' 와 '객체 외부와의 인터페이스를 담당하는 속성' 이란 두 가지 방식으로 값을 저장합니다. 속성에서 인터페이스를 담당하는 부분이 '설정자 (setter) 와 획득자 (getter)' 입니다. 스위프트에서는 이 두 가지를 '속성' 하나로 통합했다는 의미입니다.
 
 [^optional-setter]: '옵션인 설정자 (optional setter)' 는 설정자는 가질 수도 있고 안가질 수도 있기 때문입니다. 참고로, 여기서의 'optional' 은 스위프트의 옵셔널 타입과는 (직접적으로) 상관 없습니다.

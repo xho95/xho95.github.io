@@ -285,8 +285,6 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^Extensions]: 원문은 [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) 에서 확인할 수 있습니다.
 
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 에 맞춰서 발표 되었다가, 2020-09-16 일에 다시 갱신 되었습니다.
-
 [^extension]: 스위프트의 `extension` 은 확장이라는 의미를 가진 하나의 키워드입니다. 키워드 자체로 사용할 때는 '익스텐션' 이라는 발음 그대로 사용합니다.
 
 [^functionality]: '기능 (functionality) 을 추가한다' 는 건, 타입의 구조를 바꾸는 저장 속성은 추가하지 않는다는 의미를 이미 내포하고 있습니다. 사실 기능만 추가하기 때문에, 기존 타입의 확장 (extension) 이 가능한 것입니다.

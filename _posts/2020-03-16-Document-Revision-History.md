@@ -311,7 +311,7 @@ categories: Swift Language Grammar Revision History
 * '타입 추론 (type inference)' 이 [Literals (글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#literals-글자-값) 과 작업하는 방법에 대한 정보를 추가함.
 * '커리 함수 (curried functions)' 에 대한 정보를 추가함.[^curried-functions]
 * [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 에 대한 새로운 장을 추가함.
-* 스위프트의 `Character` 타입은 이제 단일한 '유니코드 확장 자소 덩어리 (Unicode extended grapheme cluster)' 를 나타낸다는 사실을 반영하기 위해 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 업데이트함. 이는 [Extended Grapheme Clusters (확장된 자소 덩어리)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-grapheme-clusters-확장된-자소-덩어리) 에 대한 새로운 부분과 [Unicode Scalar Values (유니코드 크기 값)]({% post_url 2016-05-29-Strings-and-Characters %}#unicode-scalar-values-유니코드-크기-값) 및 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 에 대한 더 많은 정보를 포함함.
+* 스위프트의 `Character` 타입은 이제 단일한 '유니코드 확장 자소 덩어리 (Unicode extended grapheme cluster)' 를 나타낸다는 사실을 반영하기 위해 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장을 업데이트함. 이는 [Extended Grapheme Clusters (확장 자소 덩어리)]({% post_url 2016-05-29-Strings-and-Characters %}#extended-grapheme-clusters-확장-자소-덩어리) 에 대한 새로운 부분과 [Unicode Scalar Values (유니코드 크기 값)]({% post_url 2016-05-29-Strings-and-Characters %}#unicode-scalar-values-유니코드-크기-값) 및 [Comparing Strings (문자열 비교하기)]({% post_url 2016-05-29-Strings-and-Characters %}#comparing-strings-문자열-비교하기) 에 대한 더 많은 정보를 포함함.
 * '문자열 글자 값 (string literals)' 안에 있는 '유니코드 크기 값 (Unicode scalars)' 은 이제, 유니코드 '코드 공간 (codespace)' 범위인, '0' 에서 '10FFFF' 사이의 16-진수인 `n` 을 써서, `\u{n}` 처럼 작성된다는 것을 알리기 위해 [String Literals (문자열 글자 값)]({% post_url 2016-05-29-Strings-and-Characters %}#string-literals-문자열-글자-값) 절을 업데이트함.
 * `NSString length` 속성은 이제, `utf16count` 가 아니라, `utf16Count`으로써 스위프트 자체의 `Sting` 타입에 대응됨.
 * 스위프트의 자체 `String` 타입은 이제 더 이상 `uppercaseString` 이나 `lowercaseString` 속성을 가지지 않음. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에 있던 관련된 부분을 제거했으며, 다양한 코드 예제를 업데이트함.
@@ -336,8 +336,6 @@ categories: Swift Language Grammar Revision History
 ### 참고 자료
 
 [^Revision-History]: 이 글에 대한 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 확인할 수 있습니다.
-
-[^swift-update]: 스위프트 5.3 은 2020-06-22 에 WWDC 20 과 함께 발표 되었다가, 2020-09-16 일에 Apple Event 와 함께 다시 갱신 되었습니다.
 
 [^dynamic-type-expression]: '동적 타입 표현식 (Dynamic Type Expression)' 에 대한 내용은 [2017-03-27](#2017-03-27) 일에 공개한 스위프트 3.1 에서 제거되었기 때문에 링크가 없습니다.
 
