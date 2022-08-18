@@ -575,15 +575,15 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 * **UTF-16** 코드 단위의 집합체 (문자열의 `utf16` 속성으로 접근함)
 * 21-비트 유니코드 크기 값의 집합체, 문자열의 **UTF-32** 인코딩 형식과 같다고 볼 수 있음 (문자열의 `unicodeScalars` 속성으로 접근함)
 
-아래의 각 예제는, 문자 `D` 와, `o`, `g`, (`DOUBLE EXCLAMATION MARK`, 또는 유니코드 크기 값 `U+203C` 인) `‼`, 및 (`DOG FACE`, 또는 유니코드 크기 값 `U+1F436` 인) `🐶` 문자로 이루어진, 다음 문자열을 서로 다른 표현법으로 보여줍니다:
+아래의 각 예제는, 문자 `D` 와, `o`, `g`, (`DOUBLE EXCLAMATION MARK`, 또는 유니코드 크기 값 `U+203C` 인) `‼`, 및 (`DOG FACE`, 또는 유니코드 크기 값 `U+1F436` 인) `🐶` 문자로 이루어진, 다음 문자열을 서로 다르게 나타내는 법을 보여줍니다:
 
 ```swift
 let dogString = "Dog!!🐶"
 ```
 
-#### UTF-8 Representation (UTF-8 표현법)
+#### UTF-8 Representation (UTF-8 으로 나타내는 법)
 
-**UTF-8** 으로 나타낸 `String` 에 접근하려면 `utf8` 속성을 반복하면 됩니다. 이 속성은 `String.UTF8View` 타입인데, 이는, 각각의 바이트 하나가 문자열의 **UTF-8** 표현법인, 부호없는 8-비트 (`UInt8`) 값의 집합체입니다:
+`String` 을 **UTF-8** 으로 나타내도록 접근하려면 `utf8` 속성을 반복하면 됩니다. 이 속성은 `String.UTF8View` 타입인데, 각각의 바이트가 문자열을 **UTF-8** 으로 나타낸 것인, 부호없는 8-비트 (`UInt8`) 값의 집합체입니다:
 
 ![UTF-8 representation](/assets/Swift/Swift-Programming-Language/Strings-and-Characters-UTF-8-representation.jpg)
 
