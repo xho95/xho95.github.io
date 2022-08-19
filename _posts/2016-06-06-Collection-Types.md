@@ -23,23 +23,23 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 배열이나, 셋, 또는 딕셔너리를 생성하고, 이를 변수에 할당한다면, 생성한 집합체는 _변경 가능 (mutable)_ 할 겁니다. 이는 집합체를 생성한 후엔 집합체 안의 항목을 추가하거나, 삭제, 또는 바꿈으로써 이를 바꿀 수 (또는 _변경 (mutate)_ 할 수) 있다는 의미입니다. 배열이나, 셋, 또는 딕셔너리를 상수에 할당한다면, 그 집합체는 _변경 불가능 (immutable)_ 이라, 크기와 내용물을 바꿀 수 없습니다.
 
-> 바꿀 필요가 없는 모든 집합체인 경우 이를 변경 불가능한 집합체로 생성하는게 좋은 습관입니다. 그럼으로써 코드 파악이 쉬워지며 생성한 집합체를 스위프트 컴파일러가 성능 최적화 하도록 합니다.
+> 바꿀 필요가 없는 모든 집합체는 변경 불가능한 집합체로 생성하는게 좋은 습관입니다. 그렇게 하면 코드를 파악하는게 쉬워지며 스위프트 컴파일러가 생성한 집합체의 성능을 최적화할 수 있게 합니다.
 
 ### Arrays (배열)
 
-_배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordered-list] 에 저장' 합니다. 배열에서는 똑같은 값이 서로 다른 위치에 여러 번 있을 수 있습니다.
+_배열 (array)_ 은 똑같은 타입의 값을 순서 있는 리스트[^list] 에 저장합니다. 배열에선 똑같은 값이 서로 다른 위치에 여러 번 나타날 수 있습니다.
 
-> 스위프트의 `Array` 타입은 'Foundation[^Foundation] 의 `NSArray` 클래스와 연동 (bridged)' 되어 있습니다.
+> 스위프트의 `Array` 타입은 **Foundation**[^Foundation] 의 `NSArray` 클래스와 연동되어 있습니다.
 >
-> `Array` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 보도록 합니다.
+> `Array` 를 **Foundation** 및 **Cocoa**[^Cocoa] 와 사용하기 위한 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보기 바랍니다.
 
 #### Array Type Shorthand Syntax (짧게 줄인 배열 타입 구문)
 
-스위프트 배열 타입을 완전체로는 `Array<Element>` 라고 작성하는데, 여기서 `Element` 는 배열이 저장을 허용한 값 타입입니다. `[Element]` 라는 짧게 줄인 형식으로 배열 타입을 작성할 수도 있습니다. 두 형식의 기능이 완전히 똑같긴 하지만, 짧게 줄인 형식이 더 좋으며 이 설명서 전반에 걸쳐 배열 타입을 참조할 때는 이를 사용합니다.
+스위프트 배열 타입은 완전체로 `Array<Element>` 라고 작성하는데, 여기서 `Element` 는 배열에 저장을 허용한 값의 타입입니다. 배열 타입은 `[Element]` 라는 짧게 줄인 형식으로 작성할 수도 있습니다. 두 형식의 기능은 정체가 같지만, 짧게 줄인 형식이 더 좋으며 이 안내서 전체에 걸쳐 배열 타입을 참조할 땐 이를 사용합니다.
 
 #### Creating an Empty Array (빈 배열 생성하기)
 
-'초기자 구문 (initializer syntax)' 으로 '정해진 타입의 빈 배열' 을 생성할 수 있습니다:
+특정 타입의 빈 배열은 초기자 구문으로 생성할 수 있습니다:
 
 ```swift
 var someInts = [Int]()
@@ -47,36 +47,36 @@ print(("someInts is of type [Int] with \(someInts.count) items.")
 // "someInts is of type [Int] with 0 items." 를 인쇄함
 ```
 
-`someInts` 라는 변수 타입은 초기자의 타입에 의해 `[Int]` 라고 추론함을 기억하기 바랍니다.
+`someInts` 변수의 타입은 초기자 타입으로부터 `[Int]` 로 추론한다는 걸 기록하기 바랍니다.
 
-대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '(빈 대괄호 쌍인) `[]` 를 쓴, 빈 배열 글자 값 (empty array literal)' 으로 빈 배열을 생성할 수 있습니다:
+대안으로, 이미 타입 정보를 제공한, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같은, 상황이면, 빈 배열 글자 값[^empty-array-literal] 으로 빈 배열을 생성할 수 있는데, 이는 `[]` (비어 있는 한 쌍의 빈 대괄호) 로 작성합니다:
 
 ```swift
 someInts.append(3)
-// someInts 는 이제 Int 타입의 값 1개를 담고 있음
+// someInts 는 이제 Int 타입 값 1 개를 담고 있음
 someInts = []
 // someInts 는 이제 빈 배열이지만, 여전히 [Int] 타입임
 ```
 
 #### Creating an Array with a Default Value (기본 값으로 배열 생성하기)
 
-스위프트 `Array` 타입은 '정해진 크기의 배열을 생성할 때 자신의 모든 값을 똑같은 기본 값으로 설정하는 초기자' 도 제공합니다. 이 초기자에 '(`repeating` 이라는) 적절한 타입의 기본 값' 과 '(`count` 라는) 새로운 배열에서 해당 값을 반복할 횟수' 를 전달합니다:
+스위프트의 `Array` 타입은 특정 크기면서 자신의 모든 값에 동일한 기본 값을 설정한 배열을 생성하는 초기자도 제공합니다. 이 초기자엔 적절한 타입의 (`repeating` 이라는) 기본 값: 과 새 배열에서 그 값을 반복할 (`count` 라는) 횟수를 전달합니다: 
 
 ```swift
 var threeDoubles = Array(repeating: 0.0, count: 3)
 // threeDoubles 은 [Double] 타입이고, [0.0, 0.0, 0.0] 와 같음
 ```
 
-#### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 배열 생성하기)
+#### Creating an Array by Adding Two Arrays Together (두 배열을 함께 더하여 배열 생성하기)
 
-새로운 배열은 '덧셈 연산자 (`+`) 와 호환 가능한[^compatible] 타입인 두 기존 배열을 더함' 으로써 생성할 수 있습니다. 새 배열의 타입은 서로 더한 두 배열의 타입으로 추론합니다:
+덧셈 연산자 (`+`) 와 호환 가능한[^compatible] 타입의 두 기존 배열을 함께 더해서 새로운 배열을 생성할 할 수도 있습니다. 새 배열의 타입은 함께 더한 두 배열 타입으로 추론합니다:
 
 ```swift
 var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
 // anotherThreeDoubles 은 [Double] 타입이고, [2.5, 2.5, 2.5] 와 같음
 
 var sixDoubles = threeDoubles + anotherThreeDoubles
-// sixDoubles 은 [Double] 타입이라고 추론하며, [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같음
+// sixDoubles 은 [Double] 타입이라 추론하며, [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같음
 ```
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
@@ -637,7 +637,11 @@ let airportNames = [String](airports.values)
 
 [^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장이 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 부분에서 보듯, 여기선 'order' 는 순서로 'sort' 는 정렬이라고 옮깁니다.
 
-[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible) 하다' 는 것은 '서로 같이 사용하거나 교체가 가능하다' 는 의미입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 '덧셈 연산자와 호환 가능' 하기 때문에, 두 값을 덧셈 연산자로 더할 수 있습니다. 본문에서 '호환 가능 (compatible) 하다' 는 표현을 사용한 것은, 두 값을 더할 때는 둘의 타입이 똑같을 필요는 없기 때문입니다.
+[^list]: '리스트 (list)' 는 자료 구조의 하나입니다. 리스트 자료 구조에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
+
+[^Foundation]: **Foundation** 은 모든 스위프트 프로그래밍의 기반이 되는 프레임웍이며, `import Foundation` 으로 불러옵니다. **Foundation** 프레임웍에 대한 더 자세한 정보는, 애플 개발자 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+
+[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 건 서로 같이 사용하거나 교체가 가능하다는 말입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 덧셈 연산자와 호환 가능이라 이 둘을 덧셈 연산자로 더할 수 있습니다. 본문에서 호환 가능하다라는 표현을 사용한 건 두 값을 더할 때 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
@@ -660,10 +664,6 @@ let airportNames = [String](airports.values)
 [^sets]: 여기서도 위와 마찬가지 이유로 'set' 을 '집합' 이라고 옮깁니다.
 
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
-
-[^ordered-list]: '순서 있는 리스트 (ordered list)' 에서의 리스트는 자료 구조의 하나입니다. '리스트 (list) 자료 구조' 에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 보도록 합니다.
-
-[^Foundation]: 'Foundation' 은 '모든 스위프트 프로그래밍의 기반이 되는 프레임웍' 이며, `import Foundation` 이라고 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 보도록 합니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 

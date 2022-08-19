@@ -18,7 +18,7 @@ _문자열 (string)_ 은, `"hello, world"` 나 `"albatross"` 같이, 연속한 �
 
 > 스위프트의 `String` 타입은 **Foundation**[^Foundation] 의 `NSString` 클래스와 연동되어 있습니다. **Foundation** 은 `String` 도 확장하여 `NSString` 이 정의한 메소드도 드러냅니다. 이것은, **Foundation** 을 불러 오면, 타입 변환 없이 `String` 에서 `NSString` 메소드에 접근할 수 있다는 걸 의미합니다.
 >
-> `String` 을 **Foundation** 및 **Cocoa**[^Cocoa] 와 사용하는데 대한 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보기 바랍니다.
+> `String` 을 **Foundation** 및 **Cocoa**[^Cocoa] 와 사용하기 위한 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보기 바랍니다.
 
 ### String Literals (문자열 글자 값)
 
