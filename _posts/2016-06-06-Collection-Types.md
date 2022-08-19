@@ -67,16 +67,16 @@ var threeDoubles = Array(repeating: 0.0, count: 3)
 // threeDoubles 은 [Double] 타입이고, [0.0, 0.0, 0.0] 와 같음
 ```
 
-#### Creating an Array by Adding Two Arrays Together (두 배열을 서로 더해서 배열 생성하기)
+#### Creating an Array by Adding Two Arrays Together (두 배열을 함께 더하여 배열 생성하기)
 
-새로운 배열은 '덧셈 연산자 (`+`) 와 호환 가능한[^compatible] 타입인 두 기존 배열을 더함' 으로써 생성할 수 있습니다. 새 배열의 타입은 서로 더한 두 배열의 타입으로 추론합니다:
+덧셈 연산자 (`+`) 와 호환 가능한[^compatible] 타입의 두 기존 배열을 함께 더해서 새로운 배열을 생성할 할 수도 있습니다. 새 배열의 타입은 함께 더한 두 배열 타입으로 추론합니다:
 
 ```swift
 var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
 // anotherThreeDoubles 은 [Double] 타입이고, [2.5, 2.5, 2.5] 와 같음
 
 var sixDoubles = threeDoubles + anotherThreeDoubles
-// sixDoubles 은 [Double] 타입이라고 추론하며, [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같음
+// sixDoubles 은 [Double] 타입이라 추론하며, [0.0, 0,0, 0.0, 2.5, 2.5, 2.5] 와 같음
 ```
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
@@ -641,7 +641,7 @@ let airportNames = [String](airports.values)
 
 [^Foundation]: **Foundation** 은 모든 스위프트 프로그래밍의 기반이 되는 프레임웍이며, `import Foundation` 으로 불러옵니다. **Foundation** 프레임웍에 대한 더 자세한 정보는, 애플 개발자 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
-[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible) 하다' 는 것은 '서로 같이 사용하거나 교체가 가능하다' 는 의미입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 '덧셈 연산자와 호환 가능' 하기 때문에, 두 값을 덧셈 연산자로 더할 수 있습니다. 본문에서 '호환 가능 (compatible) 하다' 는 표현을 사용한 것은, 두 값을 더할 때는 둘의 타입이 똑같을 필요는 없기 때문입니다.
+[^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 건 서로 같이 사용하거나 교체가 가능하다는 말입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 덧셈 연산자와 호환 가능이라 이 둘을 덧셈 연산자로 더할 수 있습니다. 본문에서 호환 가능하다라는 표현을 사용한 건 두 값을 더할 때 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
