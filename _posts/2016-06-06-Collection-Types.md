@@ -23,15 +23,15 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 배열이나, 셋, 또는 딕셔너리를 생성하고, 이를 변수에 할당한다면, 생성한 집합체는 _변경 가능 (mutable)_ 할 겁니다. 이는 집합체를 생성한 후엔 집합체 안의 항목을 추가하거나, 삭제, 또는 바꿈으로써 이를 바꿀 수 (또는 _변경 (mutate)_ 할 수) 있다는 의미입니다. 배열이나, 셋, 또는 딕셔너리를 상수에 할당한다면, 그 집합체는 _변경 불가능 (immutable)_ 이라, 크기와 내용물을 바꿀 수 없습니다.
 
-> 바꿀 필요가 없는 모든 집합체인 경우 이를 변경 불가능한 집합체로 생성하는게 좋은 습관입니다. 그럼으로써 코드 파악이 쉬워지며 생성한 집합체를 스위프트 컴파일러가 성능 최적화 하도록 합니다.
+> 바꿀 필요가 없는 모든 집합체는 변경 불가능한 집합체로 생성하는게 좋은 습관입니다. 그렇게 하면 코드를 파악하는게 쉬워지며 스위프트 컴파일러가 생성한 집합체의 성능을 최적화할 수 있게 합니다.
 
 ### Arrays (배열)
 
-_배열 (array)_ 은 '똑같은 타입의 값을 순서 있는 리스트[^ordered-list] 에 저장' 합니다. 배열에서는 똑같은 값이 서로 다른 위치에 여러 번 있을 수 있습니다.
+_배열 (array)_ 은 똑같은 타입의 값을 순서 있는 리스트[^list] 에 저장합니다. 배열에선 똑같은 값이 서로 다른 위치에 여러 번 나타날 수 있습니다.
 
-> 스위프트의 `Array` 타입은 'Foundation[^Foundation] 의 `NSArray` 클래스와 연동 (bridged)' 되어 있습니다.
+> 스위프트의 `Array` 타입은 **Foundation**[^Foundation] 의 `NSArray` 클래스와 연동되어 있습니다.
 >
-> `Array` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 보도록 합니다.
+> `Array` 를 **Foundation** 및 **Cocoa**[^Cocoa] 와 사용하기 위한 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보기 바랍니다.
 
 #### Array Type Shorthand Syntax (짧게 줄인 배열 타입 구문)
 
@@ -637,6 +637,10 @@ let airportNames = [String](airports.values)
 
 [^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장이 [The Sorted Method (정렬 메소드)]({% post_url 2020-03-03-Closures %}#the-sorted-method-정렬-메소드) 부분에서 보듯, 여기선 'order' 는 순서로 'sort' 는 정렬이라고 옮깁니다.
 
+[^list]: '리스트 (list)' 는 자료 구조의 하나입니다. 리스트 자료 구조에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
+
+[^Foundation]: **Foundation** 은 모든 스위프트 프로그래밍의 기반이 되는 프레임웍이며, `import Foundation` 으로 불러옵니다. **Foundation** 프레임웍에 대한 더 자세한 정보는, 애플 개발자 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
+
 [^compatible]: 컴퓨터 용어로 '호환 가능 (compatible) 하다' 는 것은 '서로 같이 사용하거나 교체가 가능하다' 는 의미입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 '덧셈 연산자와 호환 가능' 하기 때문에, 두 값을 덧셈 연산자로 더할 수 있습니다. 본문에서 '호환 가능 (compatible) 하다' 는 표현을 사용한 것은, 두 값을 더할 때는 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
 [^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
@@ -660,10 +664,6 @@ let airportNames = [String](airports.values)
 [^sets]: 여기서도 위와 마찬가지 이유로 'set' 을 '집합' 이라고 옮깁니다.
 
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
-
-[^ordered-list]: '순서 있는 리스트 (ordered list)' 에서의 리스트는 자료 구조의 하나입니다. '리스트 (list) 자료 구조' 에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 보도록 합니다.
-
-[^Foundation]: 'Foundation' 은 '모든 스위프트 프로그래밍의 기반이 되는 프레임웍' 이며, `import Foundation` 이라고 불러옵니다. 'Foundation 프레임웍' 에 대한 더 자세한 정보는, 애플 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 보도록 합니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 
