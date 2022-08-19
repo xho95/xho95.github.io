@@ -47,13 +47,13 @@ print(("someInts is of type [Int] with \(someInts.count) items.")
 // "someInts is of type [Int] with 0 items." 를 인쇄함
 ```
 
-`someInts` 라는 변수 타입은 초기자의 타입에 의해 `[Int]` 라고 추론함을 기억하기 바랍니다.
+`someInts` 변수의 타입은 초기자 타입으로부터 `[Int]` 로 추론한다는 걸 기록하기 바랍니다.
 
-대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '(빈 대괄호 쌍인) `[]` 를 쓴, 빈 배열 글자 값 (empty array literal)' 으로 빈 배열을 생성할 수 있습니다:
+대안으로, 이미 타입 정보를 제공한, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같은, 상황이면, 빈 배열 글자 값[^empty-array-literal] 으로 빈 배열을 생성할 수 있는데, 이는 `[]` (비어 있는 한 쌍의 빈 대괄호) 로 작성합니다:
 
 ```swift
 someInts.append(3)
-// someInts 는 이제 Int 타입의 값 1개를 담고 있음
+// someInts 는 이제 Int 타입 값 1 개를 담고 있음
 someInts = []
 // someInts 는 이제 빈 배열이지만, 여전히 [Int] 타입임
 ```
