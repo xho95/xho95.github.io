@@ -108,9 +108,9 @@ var shoppingList = ["Eggs", "Milk"]
 
 #### Accessing and Modifying an Array (배열 접근하기와 수정하기)
 
-배열은 '메소드와 속성을 통하거나, 첨자 구문 (subscript syntax)' 을 써서, 접근하고 수정합니다.
+배열의 접근과 수정은 메소드와 속성을 통하거나, 첨자 구문을 써서 합니다.
 
-배열에 있는 항목의 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
+배열의 항목 개수를 알아내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
