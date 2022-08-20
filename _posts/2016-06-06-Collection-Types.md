@@ -92,19 +92,19 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 // shoppingList 를 두 개의 초기 항목으로 초기화됨
 ```
 
-`shoppingList` 변수는, `[String]` 이라고 써서, "문자열 값 배열" 로 선언합니다. 이 특별한 배열에 `String` 타입인 값을 지정했기 때문에, `String` 값의 저장만 허용합니다. 여기서, `shoppingList` 배열은, '배열 글자 값' 안에 작성한, (`"Eggs"` 와 `"Milk"` 라는) 두 `String` 값으로 초기화 합니다.
+`shoppingList` 변수는 "문자열 값 배열" 이라 선언하고, `[String]` 이라고 씁니다. 이 특별한 배열엔 `String` 이라는 값 타입을 지정했기 때문에, `String` 값만 저장을 허용합니다. 여기선, 배열 글자 값 안에 작성한, (`"Eggs"` 와 `"Milk"` 라는) 두 `String` 값으로 `shoppingList` 배열을 초기화 합니다.
 
-> `shoppingList` 배열을 (`let` '도입자 (introducer)' 를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 '구매 목록 (shopping list)' 에 더 많은 항목을 추가하기 때문입니다.
+> `shoppingList` 배열은 (`let` 도입자[^introducer] 를 쓰는) 상수가 아니라 (`var` 도입자를 쓰는) 변수로 선언하는데 아래 예제에서 구매 목록 (shopping list) 에 더 많은 항목을 추가하기 때문입니다.
 
-이 경우, 배열 글자 값은 두 `String` 값 외엔 아무 것도 담지 않습니다. 이는 `shoppingList` 변수 선언의 타입 (인 `String` 값만 담을 수 있는 배열) 과 일치하므로, 두 초기 항목으로 `shoppingList` 를 초기화하는 '배열 글자 값 할당 방식' 을 허가합니다.
+이 경우, 배열 글자 값은 두 `String` 값 외엔 아무 것도 담지 않습니다. 이는 `shoppingList` 변수가 선언한 타입 (인 `String` 값만 담을 수 있는 배열) 과 맞아서, 배열 글자 값 할당을 `shoppingList` 를 두 초기 항목으로 초기화하는 방식으로 허가합니다.
 
-스위프트의 타입 추론에 감사하게도, 동일한 타입의 값을 담은 배열 글자 값으로 초기화할 경우 배열 타입은 작성하지 않아도 됩니다. `shoppingList` 초기화를 더 짧은 형식으로 대신 작성할 수도 있습니다:
+고맙게도 스위프트의 타입 추론 덕분에, 동일 타입 값을 담은 배열 글자 값으로 초기화한다면 배열 타입은 작성하지 않아도 됩니다. `shoppingList` 초기화를 더 짧은 형식으로 대신 작성할 수도 있을 겁니다:
 
 ```swift
 var shoppingList = ["Eggs", "Milk"]
 ```
 
-배열 글자 값의 모든 값이 똑같은 타입이기 때문에, `shoppingList` 변수에 사용할 올바른 타입이 `[String]` 임을 스위프트가 추론할 수 있습니다.
+배열 글자 값 안의 모든 값이 똑같은 타입이기 때문에, `[String]` 이 `shoppingList` 변수에 사용할 올바른 타입이라는 걸 스위프트가 추론할 수 있습니다.
 
 #### Accessing and Modifying an Array (배열 접근하기와 수정하기)
 
