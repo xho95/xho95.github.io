@@ -81,15 +81,15 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 #### Creating an Array with an Array Literal (배열 글자 값으로 배열 생성하기)
 
-하나 이상의 값을 배열 집합체로 짧게 줄여 작성하는 방식의, _배열 글자 값 (array literal)_[^literal] 으로 배열을 초기화할 수도 있습니다. '배열 글자 값' 은, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸서 작성합니다:
+_배열 글자 값 (array literal)_[^literal] 으로 배열을 초기화할 수도 있는데, 이는 하나 이상의 값을 배열 집합체로 짧게 줄여 작성하는 방식입니다. 배열 글자 값을 작성하려면, 쉼표로 구분한, 값의 목록을, 대괄호 쌍으로 둘러싸면 됩니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;[`value 1-값 1`, `value 2-값 2`, `value 3-값 3`]
 
-아래 예제는 `String` 값을 저장하는 `shoppingList` 라는 배열을 생성합니다:
+아래 예제는 `shoppingList` 라는 배열을 생성하여 `String` 값을 저장합니다:
 
 ```swift
 var shoppingList: [String] = ["Eggs", "Milk"]
-// shoppingList 를 두 개의 초기 항목으로 초기화함
+// shoppingList 를 두 개의 초기 항목으로 초기화됨
 ```
 
 `shoppingList` 변수는, `[String]` 이라고 써서, "문자열 값 배열" 로 선언합니다. 이 특별한 배열에 `String` 타입인 값을 지정했기 때문에, `String` 값의 저장만 허용합니다. 여기서, `shoppingList` 배열은, '배열 글자 값' 안에 작성한, (`"Eggs"` 와 `"Milk"` 라는) 두 `String` 값으로 초기화 합니다.
@@ -643,7 +643,7 @@ let airportNames = [String](airports.values)
 
 [^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 건 서로 같이 사용하거나 교체가 가능하다는 말입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 덧셈 연산자와 호환 가능이라 이 둘을 덧셈 연산자로 더할 수 있습니다. 본문에서 호환 가능하다라는 표현을 사용한 건 두 값을 더할 때 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
-[^literal]: 'literal' (글자 값) 은 '실제 글자로 표현된 값' 을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
+[^literal]: 'literal' (글자 값) 은 실제 글자로 표현된 값을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
 [^isEmpty-count]: 스위프트는 '배열, 셋, 딕셔너리가 비었는 지 검사할 때 `isEmpty` 를 사용하라' 고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는 것이 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장에 있는 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 부분에서 설명한 것처럼, 배열, 셋, 딕셔너리가 비었는 지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야할 수도 있습니다. 이러한 유형의 최적화에 대해서는, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 보도록 합니다.
 
