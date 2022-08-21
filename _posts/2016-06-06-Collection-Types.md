@@ -135,7 +135,7 @@ shoppingList.append("Flour")
 // shoppingList 엔 이제 3 개의 항목이 담겨 있는데, 누군가 팬케이크를 만드는가 봅니다.
 ```
 
-대안으론, 덧셈 할당 연산자 (`+=`) 로 하나 이상의 호환되는 항목 배열을 덧붙입니다:
+대안으로, 호환되는 하나 이상의 항목을 가진 배열을 덧셈 할당 연산자 (`+=`) 로 덧붙입니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
@@ -144,29 +144,29 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList 엔 이제 7개의 항목이 담겨 있음
 ```
 
-배열에 있는 값은, 배열 이름 바로 뒤 대괄호 안에 가져오려는 값의 '색인 (index)' 을 전달하는, _첨자 구문 (subscript syntax)_ 으로 가져옵니다:
+배열에서 값을 가져오는건 _첨자 구문 (subscript syntax)_ 을 쓰는데, 가져오고 싶은 값의 색인을 배열 이름 바로 뒤의 대괄호 안에 전달하면 됩니다:
 
 ```swift
 var firstItem = shoppingList[0]
 // firstItem 은 "Eggs" 와 같음
 ```
 
-> 배열의 첫 번째 항목은, `1` 이 아닌, `0` 이라는 색인을 가집니다. 스위프트 배열은 항상 0 기반-색인[^zero-indexed] 입니다.
+> 배열 첫 번째 항목의 색인은, `1` 이 아니라, `0` 입니다. 스위프트의 배열은 항상 0 기반-색인[^zero-indexed] 입니다.
 
-첨자 연산 구문을 사용하면 주어진 색인에 있는 기존 값을 바꿀 수 있습니다:
+첨자 구문을 사용하면 주어진 색인에 있는 기존 값을 바꿀 수 있습니다:
 
 ```swift
 shoppingList[0] = "Six eggs"
-// 목록의 첫 번째 항목은 이제 "Eggs" 가 아닌 "Six eggs" 와 같음
+// 목록의 첫 번째 항목은 이제 "Eggs" 라기 보단 "Six eggs" 와 같음
 ```
 
-첨자 연산 구문을 사용할 때, 지정한 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 실행 시간 에러가 됩니다.[^count-concurrent]
+첨자 구문을 사용할 땐, 지정한 색인이 유효할 필요가 있습니다. 예를 들어, `shoppingList[shoppingList.count] = "Salt"` 라고 써서 배열 끝에 항목을 덧붙이려 하면 실행 시간 에러가 되버립니다.[^count-runtime-error]
 
-첨자 연산 구문을 사용하면, 교체할 값 집합과 교체 대상의 범위의 길이가 서로 다르더라도, 일정 범위의 값을 한 번에 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
+첨자 구문을 사용하여 일정 범위의 값을 한 번에 바꿀 수 있는데, 교체한 값 집합의 길이가 교체할 범위와 달라도 됩니다. 다음 예제는 `"Chocolate Spread"` 와, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 항목을 담고 있음
+// shoppingList 엔 이제 6 개의 항목이 담겨 있음
 ```
 
 배열의 특정 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
@@ -647,7 +647,7 @@ let airportNames = [String](airports.values)
 
 [^isEmpty-count]: 스위프트는 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는게 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 절에서 설명하듯, 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야만 할 수도 있습니다. 이런 종류의 최적화에 대해선, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
 
-[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 이는 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
+[^count-runtime-error]: `shippingList.count` 는 현재 배열의 전체 항목 개수인데, 이 값을 써서 새 항목을 추가하는 행위 자체가 다시 `count` 값을 바꿉니다. 이는 `count` 라는 변수에 값을 읽고 쓰는 행위를 동시에 하는 것과 같아서, 동시성 문제를 일으킵니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
 
 [^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 옮길 수 있겠지만, 컴퓨터 용어임을 의미하도록 '해시' 라고 발음대로 옮기도록 합니다.
 
@@ -680,3 +680,5 @@ let airportNames = [String](airports.values)
 [^subset]: '하위 집합 (subset)' 은 '수학에서 말하는 부분 집합' 입니다. 다만, 'subset' 에 대응하는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위 집합 (subset)' 이라고 합니다.
 
 [^IATA]: 본문에 있는 '국제 항공 운송 협회 (International Air Transport Association)' 는 예제를 위한 것이 아니라 실제로 존재하는 협회입니다. 이 협회의 홈페이지는 [https://www.iata.org](https://www.iata.org) 입니다.
+
+[^zero-indexed]: '0 기반-색인 (zero-indexed)' 은 색인이 0 부터 시작한다는 의미입니다. 앞 장에 있는 0-기반 목록과 유사한 개념입니다. 0-기반 목록에 대한 더 많은 정보는, 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 참고하기 바랍니다.
