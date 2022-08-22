@@ -166,20 +166,20 @@ shoppingList[0] = "Six eggs"
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 엔 이제 6 개의 항목이 담겨 있음
+// shoppingList 는 이제 6 개의 항목을 담음
 ```
 
-배열의 특정 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
+배열에서 지정한 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 항목을 담고 있음
-// "Maple Syrup" 이 이제 목록의 첫 번째 항목임
+// shoppingList 는 이제 7 개의 항목을 담음
+// 이제 "Maple Syrup" 이 목록의 첫 번째 항목임
 ```
 
-이 `insert(_:at:)` 메소드 호출은 `"Maple Syrup"` 이라는 값을 가진 새로운 항목을, 색인 `0` 으로 지시한, '구매 목록' 맨 앞에, 집어 넣습니다.
+이 `insert(_:at:)` 메소드 호출은 `"Maple Syrup"` 값을 가진 새 항목을, `0` 이라는 색인으로 지시한, 구매 목록 맨 앞에 집어 넣습니다.
 
-이와 비슷하게, 배열에 있는 항목은 `remove(at:)` 메소드로 제거합니다. 이 메소드는 특정 색인에 있는 항목을 제거하고 제거한 항목을 반환합니다. (물론 필요 없다면 반환 값을 무시할 수 있습니다):
+이와 비슷하게, 배열에서 항목을 제거하는 건 `remove(at:)` 메소드로 합니다. 이 메소드는 특정 색인에 있는 항목을 제거하고 제거한 항목을 반환합니다. (물론 필요 없다면 반환 값을 무시할 수 있습니다):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
