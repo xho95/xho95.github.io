@@ -132,16 +132,16 @@ if shoppingList.isEmpty {
 
 ```swift
 shoppingList.append("Flour")
-// shoppingList 엔 이제 3 개의 항목이 담겨 있는데, 누군가 팬케이크를 만드는가 봅니다.
+// shoppingList 은 이제 3 개의 항목을 담는데, 누군가 팬케이크를 만드는가 봅니다.
 ```
 
 대안으로, 호환되는 하나 이상의 항목을 가진 배열을 덧셈 할당 연산자 (`+=`) 로 덧붙입니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 엔 이제 4개의 항목이 담겨 있음
+// shoppingList 가 담은 항목은 이제 4 개임
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 엔 이제 7개의 항목이 담겨 있음
+// shoppingList 가 담은 항목은 이제 7개임
 ```
 
 배열에서 값을 가져오는건 _첨자 구문 (subscript syntax)_ 을 쓰는데, 가져오고 싶은 값의 색인을 배열 이름 바로 뒤의 대괄호 안에 전달하면 됩니다:
@@ -160,41 +160,41 @@ shoppingList[0] = "Six eggs"
 // 목록의 첫 번째 항목은 이제 "Eggs" 라기 보단 "Six eggs" 와 같음
 ```
 
-첨자 구문을 사용할 땐, 지정한 색인이 유효할 필요가 있습니다. 예를 들어, `shoppingList[shoppingList.count] = "Salt"` 라고 써서 배열 끝에 항목을 덧붙이려 하면 실행 시간 에러가 되버립니다.[^count-runtime-error]
+첨자 구문을 사용할 땐, 지정한 색인이 유효할 필요가 있습니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 쓰면 결과는 실행 시간 에러입니다.[^count-runtime-error]
 
-첨자 구문을 사용하여 일정 범위의 값을 한 번에 바꿀 수 있는데, 교체한 값 집합의 길이가 교체할 범위와 달라도 됩니다. 다음 예제는 `"Chocolate Spread"` 와, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
+첨자 구문을 사용하면, 교체할 값 집합 길이가 교체될 범위와 다르더라도, 한번에 일정 범위의 값을 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"` 와, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 항목을 담음
+// shoppingList 가 담은 항목은 이제 6 개임
 ```
 
-배열에서 지정한 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
+항목을 배열에서 지정한 색인에 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 항목을 담음
+// shoppingList 가 담은 항목은 이제 7 개임
 // 이제 "Maple Syrup" 이 목록의 첫 번째 항목임
 ```
 
-이 `insert(_:at:)` 메소드 호출은 `"Maple Syrup"` 값을 가진 새 항목을, `0` 이라는 색인으로 지시한, 구매 목록 맨 앞에 집어 넣습니다.
+이렇게 호출한 `insert(_:at:)` 메소드는 값이 `"Maple Syrup"` 인 새 항목을 구매 목록의 맨 앞인, 색인 `0` 으로 지시한 곳, 에 집어 넣습니다.
 
-이와 비슷하게, 배열에서 항목을 제거하는 건 `remove(at:)` 메소드로 합니다. 이 메소드는 특정 색인에 있는 항목을 제거하고 제거한 항목을 반환합니다. (물론 필요 없다면 반환 값을 무시할 수 있습니다):
+이와 비슷하게, 배열에서 항목을 제거하는 건 `remove(at:)` 메소드로 합니다. 이 메소드는 지정한 색인의 항목을 제거하고 제거한 항목을 반환합니다 (물론 필요 없다면 반환 값을 무시할 수 있긴 합니다):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
-// 방금 색인 0 에 있는 값을 제거함
-// shoppingList 는 이제 6 개의 항목을 담으며, Maple Syrup 은 없음
-// mapleSyrup 상수는 이제 제거한 문자열인 "Maple Syrup" 과 같음
+// 색인 0 에 있던 항목을 방금 제거했음
+// shoppingList 가 담은 항목은 이제 6 개며, Maple Syrup 이 없음
+// 이제 mapleSyrup 상수는 제거한 문자열인 "Maple Syrup" 과 같음
 ```
 
-> 배열에 존재하는 경계 밖의 색인으로 값에 접근하거나 수정하려고 하면, 실행 시간 에러를 발동할 것입니다. 색인을 사용하기 전에 이를 배열의 `count` 속성과 비교함으로써 유효한 지 검사할 수 있습니다. 배열 색인은 '0-에서 시작' 하기 때문에 '배열에서 가장 큰 유효 색인은 `count - 1`' 입니다-하지만, `count` 가 (빈 배열을 의미하는) `0` 일 땐, 유효 색인이 아무 것도 없습니다.
+> 기존 배열 경계 밖에 있는 색인의 값에 접근하거나 수정하려 하면, 실행 시간 에러를 발생시킬 겁니다. 색인이 유효한지 검사하려면 사용 전에 배열의 `count` 속성과 비교하면 됩니다. 배열에서 유효한 색인으로 가장 큰 건 `count - 1` 인데 이는 배열 색인이 0-기반 색인이기 때문입니다-하지만, `count` 가 (빈 배열을 의미하는) `0` 일 땐, 유효한 색인은 아무 것도 없습니다.
 
-항목을 제거할 때는 배열의 어떤 빈틈이든 메우므로, 색인 `0` 에서의 값은 다시 한 번 `"Six eggs"` 가 됩니다:
+배열에서 항목을 제거할 땐 어떤 빈틈도 메꾸므로, 색인 `0` 의 값은 다시 한 번 `"Six eggs"` 와 같습니다:
 
 ```swift
 firstItem = shoppingList[0]
-// firstItem 은 이제 "Six eggs" 임
+// 이제 firstItem 은 "Six eggs" 임
 ```
 
 배열의 최종 항목을 제거하고 싶으면, 배열의 `count` 속성을 조회할 필요를 피하도록 `remove(at:)` 메소드 보다는 `removeLast()` 메소드를 사용합니다. `remove(at:)` 메소드 같이, `removeLast()` 메소드도 제거한 항목을 반환합니다:
