@@ -206,9 +206,9 @@ let apples = shoppingList.removeLast()
 // 이제 apples 상수는 제거한 문자열인 "Apples" 와 같음
 ```
 
-#### Iterating Over an Array (배열에 동작을 반복하기)
+#### Iterating Over an Array (배열 반복하기)
 
-`for`-`in` 반복문으로 '배열의 전체 값 집합에 동작을 반복'[^iterate-over] 할 수 있습니다:
+배열의 전체 값 집합을 반복하는 건 `for`-`in` 반복문으로 할 수 있습니다:
 
 ```swift
 for item in shoppingList {
@@ -222,7 +222,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-자신의 값 뿐 아니라 각 항목에 대한 정수 색인이 필요하다면, 배열에 동작을 반복하기 위해 `enumerated()` 메소드를 대신 사용합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. '반복 회차 (iteration)' 마다 튜플을 임시 상수나 변수로 분해할 수 있습니다:
+각 항목의 값 뿐만 아니라 정수 색인도 필요하면, `enumerated()` 메소드로 대신 배열을 반복합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. '반복 회차 (iteration)' 마다 튜플을 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -649,6 +649,8 @@ let airportNames = [String](airports.values)
 
 [^count-runtime-error]: `shippingList.count` 는 현재 배열의 전체 항목 개수인데, 이 값을 써서 새 항목을 추가하는 행위 자체가 다시 `count` 값을 바꿉니다. 이는 `count` 라는 변수에 값을 읽고 쓰는 행위를 동시에 하는 것과 같아서, 동시성 문제를 일으킵니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
 
+[^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
+
 [^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 옮길 수 있겠지만, 컴퓨터 용어임을 의미하도록 '해시' 라고 발음대로 옮기도록 합니다.
 
 [^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개고 뒤섞어서 다진 값' 정도로 이해할 수 있습니다. 역시 컴퓨터 용어임을 의미하도록 '해시 값' 이라고 발음대로 옮기도록 합니다.
@@ -666,8 +668,6 @@ let airportNames = [String](airports.values)
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
-
-[^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
 
 [^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 보도록 합니다.
 
