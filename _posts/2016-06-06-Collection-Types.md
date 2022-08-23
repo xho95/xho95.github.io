@@ -208,7 +208,7 @@ let apples = shoppingList.removeLast()
 
 #### Iterating Over an Array (배열 반복하기)
 
-배열의 전체 값 집합을 반복하는 건 `for`-`in` 반복문으로 할 수 있습니다:
+배열의 전체 값 집합은 `for`-`in` 반복문으로 반복할 수 있습니다:
 
 ```swift
 for item in shoppingList {
@@ -222,7 +222,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-각 항목의 값 뿐만 아니라 정수 색인도 필요하면, `enumerated()` 메소드로 대신 배열을 반복합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. '반복 회차 (iteration)' 마다 튜플을 임시 상수나 변수로 분해할 수 있습니다:
+각각의 정수 색인도 그 값만큼 필요하다면, 그 대신 `enumerated()` 메소드로 배열을 반복합니다. 배열 안의 각 항목마다, `enumerated()` 메소드가 정수와 항목을 합성한 튜플을 반환합니다. 정수는 0 에서 시작해서 각각의 항목마다 하나씩 위로 세며; 배열 전체를 열거[^enumerate] 한다면, 이러한 정수는 항목의 색인과 맞습니다. 매 반복 부분마다 튜플을 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -236,7 +236,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보도록 합니다.
+`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보기 바랍니다.
 
 ### Sets (셋)
 
