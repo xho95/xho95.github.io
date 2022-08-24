@@ -132,83 +132,83 @@ if shoppingList.isEmpty {
 
 ```swift
 shoppingList.append("Flour")
-// shoppingList 엔 이제 3 개의 항목이 담겨 있는데, 누군가 팬케이크를 만드는가 봅니다.
+// shoppingList 은 이제 3 개의 항목을 담는데, 누군가 팬케이크를 만드는가 봅니다.
 ```
 
-대안으론, 덧셈 할당 연산자 (`+=`) 로 하나 이상의 호환되는 항목 배열을 덧붙입니다:
+대안으로, 호환되는 하나 이상의 항목을 가진 배열을 덧셈 할당 연산자 (`+=`) 로 덧붙입니다:
 
 ```swift
 shoppingList += ["Baking Powder"]
-// shoppingList 엔 이제 4개의 항목이 담겨 있음
+// shoppingList 가 담은 항목은 이제 4 개임
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 엔 이제 7개의 항목이 담겨 있음
+// shoppingList 가 담은 항목은 이제 7개임
 ```
 
-배열에 있는 값은, 배열 이름 바로 뒤 대괄호 안에 가져오려는 값의 '색인 (index)' 을 전달하는, _첨자 구문 (subscript syntax)_ 으로 가져옵니다:
+배열에서 값을 가져오는건 _첨자 구문 (subscript syntax)_ 을 쓰는데, 가져오고 싶은 값의 색인을 배열 이름 바로 뒤의 대괄호 안에 전달하면 됩니다:
 
 ```swift
 var firstItem = shoppingList[0]
 // firstItem 은 "Eggs" 와 같음
 ```
 
-> 배열의 첫 번째 항목은, `1` 이 아닌, `0` 이라는 색인을 가집니다. 스위프트 배열은 항상 0 기반-색인[^zero-indexed] 입니다.
+> 배열 첫 번째 항목의 색인은, `1` 이 아니라, `0` 입니다. 스위프트의 배열은 항상 0 기반-색인[^zero-indexed] 입니다.
 
-첨자 연산 구문을 사용하면 주어진 색인에 있는 기존 값을 바꿀 수 있습니다:
+첨자 구문을 사용하면 주어진 색인에 있는 기존 값을 바꿀 수 있습니다:
 
 ```swift
 shoppingList[0] = "Six eggs"
-// 목록의 첫 번째 항목은 이제 "Eggs" 가 아닌 "Six eggs" 와 같음
+// 목록의 첫 번째 항목은 이제 "Eggs" 라기 보단 "Six eggs" 와 같음
 ```
 
-첨자 연산 구문을 사용할 때, 지정한 색인은 유효해야 합니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 하면 실행 시간 에러가 됩니다.[^count-concurrent]
+첨자 구문을 사용할 땐, 지정한 색인이 유효할 필요가 있습니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 쓰면 결과는 실행 시간 에러입니다.[^count-runtime-error]
 
-첨자 연산 구문을 사용하면, 교체할 값 집합과 교체 대상의 범위의 길이가 서로 다르더라도, 일정 범위의 값을 한 번에 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"`, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
+첨자 구문을 사용하면, 교체할 값 집합 길이가 교체될 범위와 다르더라도, 한번에 일정 범위의 값을 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"` 와, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
-// shoppingList 는 이제 6 개의 항목을 담고 있음
+// shoppingList 가 담은 항목은 이제 6 개임
 ```
 
-배열의 특정 색인에 항목을 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
+항목을 배열에서 지정한 색인에 집어 넣으려면, 배열의 `insert(_:at:)` 메소드를 호출합니다:
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
-// shoppingList 는 이제 7 개의 항목을 담고 있음
-// "Maple Syrup" 이 이제 목록의 첫 번째 항목임
+// shoppingList 가 담은 항목은 이제 7 개임
+// 이제 "Maple Syrup" 이 목록의 첫 번째 항목임
 ```
 
-이 `insert(_:at:)` 메소드 호출은 `"Maple Syrup"` 이라는 값을 가진 새로운 항목을, 색인 `0` 으로 지시한, '구매 목록' 맨 앞에, 집어 넣습니다.
+이렇게 호출한 `insert(_:at:)` 메소드는 값이 `"Maple Syrup"` 인 새 항목을 구매 목록의 맨 앞인, 색인 `0` 으로 지시한 곳, 에 집어 넣습니다.
 
-이와 비슷하게, 배열에 있는 항목은 `remove(at:)` 메소드로 제거합니다. 이 메소드는 특정 색인에 있는 항목을 제거하고 제거한 항목을 반환합니다. (물론 필요 없다면 반환 값을 무시할 수 있습니다):
+이와 비슷하게, 배열에서 항목을 제거하는 건 `remove(at:)` 메소드로 합니다. 이 메소드는 지정한 색인의 항목을 제거하고 제거한 항목을 반환합니다 (물론 필요 없다면 반환 값을 무시할 수 있긴 합니다):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
-// 방금 색인 0 에 있는 값을 제거함
-// shoppingList 는 이제 6 개의 항목을 담으며, Maple Syrup 은 없음
-// mapleSyrup 상수는 이제 제거한 문자열인 "Maple Syrup" 과 같음
+// 색인 0 에 있던 항목을 방금 제거했음
+// shoppingList 가 담은 항목은 이제 6 개며, Maple Syrup 이 없음
+// 이제 mapleSyrup 상수는 제거한 문자열인 "Maple Syrup" 과 같음
 ```
 
-> 배열에 존재하는 경계 밖의 색인으로 값에 접근하거나 수정하려고 하면, 실행 시간 에러를 발동할 것입니다. 색인을 사용하기 전에 이를 배열의 `count` 속성과 비교함으로써 유효한 지 검사할 수 있습니다. 배열 색인은 '0-에서 시작' 하기 때문에 '배열에서 가장 큰 유효 색인은 `count - 1`' 입니다-하지만, `count` 가 (빈 배열을 의미하는) `0` 일 땐, 유효 색인이 아무 것도 없습니다.
+> 기존 배열 경계 밖에 있는 색인의 값에 접근하거나 수정하려 하면, 실행 시간 에러를 발생시킬 겁니다. 색인이 유효한지 검사하려면 사용 전에 배열의 `count` 속성과 비교하면 됩니다. 배열에서 유효한 색인으로 가장 큰 건 `count - 1` 인데 이는 배열 색인이 0-기반 색인이기 때문입니다-하지만, `count` 가 (빈 배열을 의미하는) `0` 일 땐, 유효한 색인은 아무 것도 없습니다.
 
-항목을 제거할 때는 배열의 어떤 빈틈이든 메우므로, 색인 `0` 에서의 값은 다시 한 번 `"Six eggs"` 가 됩니다:
+배열에서 항목을 제거할 땐 어떤 빈틈도 메꾸므로, 색인 `0` 의 값은 다시 한 번 `"Six eggs"` 와 같습니다:
 
 ```swift
 firstItem = shoppingList[0]
-// firstItem 은 이제 "Six eggs" 임
+// 이제 firstItem 은 "Six eggs" 임
 ```
 
-배열의 최종 항목을 제거하고 싶으면, 배열의 `count` 속성을 조회할 필요를 피하도록 `remove(at:)` 메소드 보다는 `removeLast()` 메소드를 사용합니다. `remove(at:)` 메소드 같이, `removeLast()` 메소드도 제거한 항목을 반환합니다:
+배열에서 최종 항목을 제거하고 싶으면, `remove(at:)` 메소드 보단 `removeLast()` 메소드를 사용하여 배열의 `count` 속성을 조회할 필요를 피하도록 합니다. `remove(at:)` 메소드 같이, `removeLast()` 메소드도 제거한 항목을 반환합니다:
 
 ```swift
 let apples = shoppingList.removeLast()
-// 방금 배열의 마지막 항목을 제거함
-// shoppingList 는 이제 5 개의 항목을 담으며, apple 은 없음
-// apples 상수는 이제 제거한 문자열인 "Apples" 와 같음
+// 배열 마지막 항목을 방금 제거했음
+// shoppingList 가 담은 항목은 이제 5 개며, apple 은 없음
+// 이제 apples 상수는 제거한 문자열인 "Apples" 와 같음
 ```
 
-#### Iterating Over an Array (배열에 동작을 반복하기)
+#### Iterating Over an Array (배열 반복하기)
 
-`for`-`in` 반복문으로 '배열의 전체 값 집합에 동작을 반복'[^iterate-over] 할 수 있습니다:
+배열의 전체 값 집합은 `for`-`in` 반복문으로 반복할 수 있습니다:
 
 ```swift
 for item in shoppingList {
@@ -222,7 +222,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-자신의 값 뿐 아니라 각 항목에 대한 정수 색인이 필요하다면, 배열에 동작을 반복하기 위해 `enumerated()` 메소드를 대신 사용합니다. `enumerated()` 메소드는, 배열의 각 항목마다, '정수와 항목을 합성한 튜플을 반환' 합니다. 정수는 0 에서 시작하여 각 항목마다 하나씩 세어 나가며; 배열 전체를 '열거 (enumerate)' 하는 경우, 이 정수들은 항목의 색인들과 일치합니다. '반복 회차 (iteration)' 마다 튜플을 임시 상수나 변수로 분해할 수 있습니다:
+각각의 정수 색인도 그 값만큼 필요하다면, 그 대신 `enumerated()` 메소드로 배열을 반복합니다. 배열 안의 각 항목마다, `enumerated()` 메소드가 정수와 항목을 합성한 튜플을 반환합니다. 정수는 0 에서 시작해서 각각의 항목마다 하나씩 위로 세며; 배열 전체를 열거[^enumerate] 한다면, 이러한 정수는 항목의 색인과 맞습니다. 매 반복 부분마다 튜플을 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -236,7 +236,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보도록 합니다.
+`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보기 바랍니다.
 
 ### Sets (셋)
 
@@ -647,7 +647,9 @@ let airportNames = [String](airports.values)
 
 [^isEmpty-count]: 스위프트는 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는게 아닙니다. [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 장의 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 절에서 설명하듯, 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야만 할 수도 있습니다. 이런 종류의 최적화에 대해선, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
 
-[^count-concurrent]: `shippingList.count` 는 현재 배열에 있는 전체 항목의 개수를 나타내는데, 이 값으로 새 항목을 추가하면 그 행위 자체가 다시 `count` 값을 바꾸게 됩니다. 이는 `count` 라는 변수에 값을 읽는 행위와 값을 쓰는 행위를 동시에 하려는 문제가 발생합니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
+[^count-runtime-error]: `shippingList.count` 는 현재 배열의 전체 항목 개수인데, 이 값을 써서 새 항목을 추가하는 행위 자체가 다시 `count` 값을 바꿉니다. 이는 `count` 라는 변수에 값을 읽고 쓰는 행위를 동시에 하는 것과 같아서, 동시성 문제를 일으킵니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
+
+[^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
 
 [^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 옮길 수 있겠지만, 컴퓨터 용어임을 의미하도록 '해시' 라고 발음대로 옮기도록 합니다.
 
@@ -667,8 +669,6 @@ let airportNames = [String](airports.values)
 
 [^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
 
-[^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
-
 [^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 보도록 합니다.
 
 [^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
@@ -680,3 +680,5 @@ let airportNames = [String](airports.values)
 [^subset]: '하위 집합 (subset)' 은 '수학에서 말하는 부분 집합' 입니다. 다만, 'subset' 에 대응하는 'superset' 에 대한 명확한 우리말이 없는 것 같아서, 여기서는 일단 '상위 집합 (superset)' 과의 대응의 의미로 '하위 집합 (subset)' 이라고 합니다.
 
 [^IATA]: 본문에 있는 '국제 항공 운송 협회 (International Air Transport Association)' 는 예제를 위한 것이 아니라 실제로 존재하는 협회입니다. 이 협회의 홈페이지는 [https://www.iata.org](https://www.iata.org) 입니다.
+
+[^zero-indexed]: '0 기반-색인 (zero-indexed)' 은 색인이 0 부터 시작한다는 의미입니다. 앞 장에 있는 0-기반 목록과 유사한 개념입니다. 0-기반 목록에 대한 더 많은 정보는, 위키피디아의 [Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering) 항목을 참고하기 바랍니다.
