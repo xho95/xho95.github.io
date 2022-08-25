@@ -252,11 +252,11 @@ _셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서
 
 스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해시 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해시 가능합니다.   
 
-> 자신만의 타입을 셋의 값 타입 또는 딕셔너리 키 타입으로 사용하려면 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수하게 하면 됩니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 보도록 합니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 보도록 합니다.
+> 자신만의 타입을 셋의 값 타입 또는 딕셔너리 키 타입으로 사용하려면 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수하게 하면 됩니다. 필수인 `hash(into:)` 메소드를 구현하기 위한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 보기 바랍니다. 프로토콜을 준수하기 위한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 보기 바랍니다.
 
 #### Set Type Syntax (셋 타입 구문)
 
-스위프트 셋 타입은 `Set<Element>` 라고 작성하는데, 여기서 `Element` 는 셋에 저장이 허용된 타입입니다. 배열과 달리, 셋은 줄임 형식 같은 것이 없습니다.
+스위프트의 셋 타입은 `Set<Element>` 라고 작성하며, 여기서 `Element` 는 셋이 저장을 허용한 타입입니다. 배열과 달리, 셋은 짧게 줄인 형식 같은게 없습니다.
 
 #### Creating and Initializing an Empty Set (빈 셋 생성하고 초기화하기)
 
