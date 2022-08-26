@@ -260,7 +260,7 @@ _셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서
 
 #### Creating and Initializing an Empty Set (빈 셋 생성하고 초기화하기)
 
-초기자 구문으로 '정해진 타입의 빈 셋' 을 생성할 수 있습니다:
+특정 타입의 빈 셋을 생성하려면 초기자 구문을 사용합니다:
 
 ```swift
 var letters = Set<Character>()
@@ -268,15 +268,15 @@ print("letters is of type Set<Character> with \(letters.count) items.")
 // "letters is of type Set<Character> with 0 items." 을 인쇄함
 ```
 
-> `letters` 변수의 타입은, 초기자 타입에 의해, `Set<Character>` 이라고 추론합니다.
+> 초기자의 타입으로부터, `letters` 변수 타입을 `Set<Character>` 라고 추론합니다.
 
-대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, '빈 배열 글자 값'[^empty-array-literal] 으로 빈 셋을 생성할 수 있습니다:
+대안으로, 함수 인자 또는 이미 타입을 지정한 변수나 상수 같이, 이미 타입 정보를 제공한 상황이라면, 빈 배열 글자 값[^empty-array-literal] 으로 빈 셋을 생성할 수 있습니다:
 
 ```swift
 letters.insert("a")
-// letters 는 이제 Character 타입의 값 1개를 담고 있음
+// letters 는 이제 Character 타입인 값을 1개 담음
 letters = []
-// letters 는 이제 빈 셋이지만, 여전히 Set<Character> 타입임
+// 이제 letters 는 빈 셋이지만, 여전히 Set<Character> 타입임
 ```
 
 #### Creating a Set with an Array Literal (배열 글자 값으로 셋 생성하기)
