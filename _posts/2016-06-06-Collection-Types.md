@@ -281,16 +281,16 @@ letters = []
 
 #### Creating a Set with an Array Literal (배열 글자 값으로 셋 생성하기)
 
-하나 이상의 값을 '셋 집합체 (set collection)' 로 작성하여 줄인, _배열 글자 값 (array literal)_[^set-array-collection] 으로 '셋' 을 초기화할 수도 있습니다.
+셋을 배열 글자 값[^set-array-collection] 으로 초기화할 수도 있는데, 하나 이상의 값을 셋 집합체로 짧게 줄여 작성하는 방식입니다.
 
-아래 예제는 `String` 값을 저장하는 `favoriteGenres` 라는 '셋' 을 생성합니다:
+아래 예제는 `favoriteGenres` 라는 셋을 생성하여 `String` 값을 저장합니다:
 
 ```swift
 var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
-// favoriteGenres 를 세 개의 초기 항목으로 초기화함
+// favoriteGenres 를 초기 항목 세 개로 초기화했음
 ```
 
-`favoriteGenres` 변수는, `Set<String>` 이라고 써서, "`String` 값의 셋” 으로 선언합니다. 이 특별한 셋의 값 타입을 `String` 으로 지정했기 때문에, `String` 값 _만 (only)_ 저장을 허용합니다. 여기서는, 배열 글자 값 안에 작성한, (`"Rock"`, `"Classical"`, 및 `"Hip hop"` 이라는) 세 `String`  값으로 `favoriteGenres` 셋을 초기화 합니다.
+`favoriteGenres` 변수는, `Set<String>` 을 써서, "`String` 값의 셋” 이라고 선언합니다. 이 특별한 셋에는 `String` 값 타입을 지정했기 때문에, `String` 값의 저장 _만 (only)_ 허용합니다. 여기선, 배열 글자 값 안에 쓴, 세 개의 `String` 값 (인 `"Rock"` 과, `"Classical"`, 및 `"Hip hop"`) 으로 `favoriteGenres` 셋을 초기화 합니다.
 
 > `favoriteGenres` 셋을 (`let` 도입자를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 항목을 추가하거나 제거하기 때문입니다.
 
