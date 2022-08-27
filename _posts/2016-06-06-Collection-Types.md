@@ -281,9 +281,9 @@ letters = []
 
 #### Creating a Set with an Array Literal (배열 글자 값으로 셋 생성하기)
 
-하나 이상의 값을 '셋 집합체 (set collection)' 로 작성하여 줄인, _배열 글자 값 (array literal)_[^set-array-collection] 으로 '셋' 을 초기화할 수도 있습니다.
+셋을 배열 글자 값[^set-array-collection] 으로 초기화할 수도 있는데, 하나 이상의 값을 셋 집합체로 짧게 줄여 작성하는 방식입니다.
 
-아래 예제는 `String` 값을 저장하는 `favoriteGenres` 라는 '셋' 을 생성합니다:
+아래 예제는 `favoriteGenres` 라는 셋을 생성하여 `String` 값을 저장합니다:
 
 ```swift
 var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
