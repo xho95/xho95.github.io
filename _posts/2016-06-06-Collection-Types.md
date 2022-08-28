@@ -287,20 +287,20 @@ letters = []
 
 ```swift
 var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
-// favoriteGenres 를 초기 항목 세 개로 초기화했음
+// favoriteGenres 를 세 개의 초기 항목으로 초기화했음
 ```
 
 `favoriteGenres` 변수는, `Set<String>` 을 써서, "`String` 값의 셋” 이라고 선언합니다. 이 특별한 셋에는 `String` 값 타입을 지정했기 때문에, `String` 값의 저장 _만 (only)_ 허용합니다. 여기선, 배열 글자 값 안에 쓴, 세 개의 `String` 값 (인 `"Rock"` 과, `"Classical"`, 및 `"Hip hop"`) 으로 `favoriteGenres` 셋을 초기화 합니다.
 
-> `favoriteGenres` 셋을 (`let` 도입자를 쓴) 상수가 아니라 (`var` 도입자를 쓴) 변수로 선언했는데 이는 아래 예제에서 항목을 추가하거나 제거하기 때문입니다.
+> `favoriteGenres` 셋을 (`let` 도입자인) 상수가 아니라 (`var` 도입자인) 변수로 선언한 건 아래 예제에서 항목을 추가 및 제거하기 때문입니다.
 
-배열 글자 값 홀로 있으면 셋 타입이라고 추론할 수 없으므로[^set-array-literal], `Set` 타입은 반드시 명시적으로 선언해야 합니다. 하지만, 스위프트의 타입 추론 때문에, 단 한 가지 타입의 값만 담은 배열 글자 값으로 초기화할 경우 '셋' 의 원소 타입은 작성하지 않아도 됩니다. `favoriteGenres` 초기화를 더 짧은 형식으로 대신 작성할 수도 있습니다:
+배열 글자 값 홀로는 셋 타입으로 추론할 수 없으므로[^set-array-literal], 반드시 `Set` 타입을 명시하여 선언해야 합니다. 하지만, 스위프트의 타입 추론 때문에, 초기화하는 배열 글자 값에 단 하나의 타입 값만 담겨 있으면 셋의 원소 타입을 작성하지 않아도 됩니다. 그 대신 `favoriteGenres` 초기화를 더 짧은 형식으로 작성할 수 있을 겁니다:
 
 ```swift
 var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 ```
 
-배열 글자 값의 모든 값이 똑같은 타입이기 때문에, `favoriteGenres` 변수에 사용할 올바른 타입이 `Set<String>` 임을 스위프트가 추론할 수 있습니다.
+배열 글자 값 안의 모든 값이 똑같은 타입이기 때문에, `Set<String>` 이 `favoriteGenres` 변수에 사용할 올바른 타입임을 스위프트가 추론할 수 있습니다.
 
 #### Accessing and Modifying a Set (셋 접근하기와 수정하기)
 
