@@ -141,7 +141,7 @@ shoppingList.append("Flour")
 shoppingList += ["Baking Powder"]
 // shoppingList 가 담은 항목은 이제 4 개임
 shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList 가 담은 항목은 이제 7개임
+// shoppingList 가 담은 항목은 이제 7 개임
 ```
 
 배열에서 값을 가져오는건 _첨자 구문 (subscript syntax)_ 을 쓰는데, 가져오고 싶은 값의 색인을 배열 이름 바로 뒤의 대괄호 안에 전달하면 됩니다:
@@ -300,20 +300,20 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip Hop"]
 var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 ```
 
-배열 글자 값 안의 모든 값이 똑같은 타입이기 때문에, `Set<String>` 이 `favoriteGenres` 변수에 사용할 올바른 타입임을 스위프트가 추론할 수 있습니다.
+배열 글자 값 안의 모든 값이 똑같은 타입이기 때문에, `favoriteGenres` 변수에 쓸 올바른 타입이 `Set<String>` 이라는 걸 스위프트가 추론할 수 있습니다.
 
 #### Accessing and Modifying a Set (셋 접근하기와 수정하기)
 
 셋은 메소드와 속성을 통하여 접근하고 수정합니다.
 
-셋에 있는 항목의 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
+셋의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("I have \(favoriteGenres.count) favorite music genres.")
 // "I have 3 favorite music genres." 를 인쇄함
 ```
 
-`count` 속성이 `0` 과 같은 지를 검사하는 줄임말로 '불리언 속성인 `isEmpty`' 를 사용합니다:
+불리언 속성인 `isEmpty` 를 쓰는 건 `count` 속성이 `0` 과 같은지 검사하는 것의 줄임말입니다:
 
 ```swift
 if favoriteGenres.isEmpty {
@@ -324,14 +324,14 @@ if favoriteGenres.isEmpty {
 // "I have particular music preferences." 를 인쇄함
 ```
 
-셋의 `insert(_:)` 메소드를 호출하면 셋에 새로운 항목을 추가할 수 있습니다:
+셋 안에 새로운 항목을 추가하려면 셋의 `insert(_:)` 메소드를 호출하면 됩니다:
 
 ```swift
 favoriteGenres.insert("Jazz")
-// favoriteGenres 는 이제 4 개의 항목을 담고 있음
+// favoriteGenres 가 담은 항목은 이제 4 개임
 ```
 
-셋의 `remove(_:)` 메소드를 호출하면 셋에서 항목을 제거할 수 있는데, 이는 항목이 셋의 멤버면 이를 제거하고, 제거한 값을 반환하지만, 셋이 이를 담고 있지 않으면 `nil` 을 반환합니다. 대안으로, `removeAll()` 메소드로 셋의 모든 항목을 제거할 수 있습니다.
+셋에서 항목을 제거하려면 셋의 `remove(_:)` 메소드를 호출하는데, 항목이 셋의 멤버면 이를 제거하고, 제거한 값을 반환하나, 셋에 담겨 있지 않으면 `nil` 을 반환합니다. 대안으로는, 셋의 모든 항목을 `removeAll()` 메소드로 제거할 수 있습니다.
 
 ```swift
 if let removeGenres = favoriteGenres.remove("Rock") {
@@ -342,7 +342,7 @@ if let removeGenres = favoriteGenres.remove("Rock") {
 // "Rock? I'm over it." 를 인쇄함
 ```
 
-셋이 특별한 항목을 담고 있는 지 검사하려면, `contains(_:)` 메소드를 사용합니다.
+셋이 특별한 항목을 담고 있는지 검사하려면, `contains(_:)` 메소드를 사용합니다.
 
 ```swift
 if favoriteGenres.contains("Funk") {
