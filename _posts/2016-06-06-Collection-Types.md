@@ -29,9 +29,9 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 _배열 (array)_ 은 똑같은 타입의 값을 순서 있는 리스트[^list] 에 저장합니다. 배열에선 똑같은 값이 서로 다른 위치에 여러 번 나타날 수 있습니다.
 
-> 스위프트의 `Array` 타입은 **Foundation**[^Foundation] 의 `NSArray` 클래스와 연동되어 있습니다.
+> 스위프트의 `Array` 타입은 **Foundation**[^Foundation] 의 `NSArray` 클래스와 연동됩니다.
 >
-> `Array` 를 **Foundation** 및 **Cocoa**[^Cocoa] 와 사용하기 위한 더 많은 정보는, [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514) 항목을 보기 바랍니다.
+> **Foundation** 및 **Cocoa** 와 사용하는 `Array` 에 대한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 보기 바랍니다.
 
 #### Array Type Shorthand Syntax (짧게 줄인 배열 타입 구문)
 
@@ -240,15 +240,15 @@ for (index, value) in shoppingList.enumerated() {
 
 ### Sets (셋)
 
-_셋 (set)_ 은 '똑같은 타입의 서로 별개인 값들을 정의한 순서없이[^no-defined-ordering] 집합체에 저장' 합니다. '셋' 은 '항목의 순서가 중요하지 않거나, 한 항목이 한 번만 나타난다고 보장해야 할 때, 배열 대신 사용' 할 수 있습니다.
+_셋 (set)_ 은 똑같은 타입의 별개 값을 아무런 순서 없이[^with-no-defined-ordering] 집합체에 저장합니다. 항목의 순서가 중요하지 않거나, 한 항목이 한 번만 나타나는 걸 보장할 필요가 있을 때 배열 대신 셋을 사용할 수 있습니다.
 
-> 스위프트의 `Set` 타입은 'Foundation[^Foundation] 의 `NSSet` 클래스와 연동 (bridged)' 되어 있습니다.
+> 스위프트의 `Set` 타입은 **Foundation** 의 `NSSet` 클래스와 연동됩니다.
 >
-> `Set` 과 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 을 보도록 합니다.
+> **Foundation** 및 **Cocoa** 와 사용하는 `Set` 에 대한 더 많은 정보는, [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530) 항목을 보기 바랍니다.
 
-#### Hash Values for Set Types (셋 타입을 위한 해시 값)
+#### Hash Values for Set Types (셋 타입의 해시 값)
 
-셋에 저장할 타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 합니다-즉, 타입은 반드시 '스스로 _해시 값 (hash value)_[^hash-value] 계산 방식을 제공' 해야 합니다. 해시 값은 '비교해서 같은 모든 객체끼리는 똑같은 하나의 `Int` 값' 이어서, `a == b` 이면, `a` 의 해시 값과 `b` 의 해시 값이 같습니다.
+타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 셋에 저장됩니다-즉, 타입은 반드시 스스로 _해시 값 (hash value)_[^hash-value] 을 계산할 방법을 제공해야 합니다. 해시 값은 비교하여 같은 모든 객체끼리는 똑같은 하나의 `Int` 값이어서, `a == b` 이면, `a` 의 해시 값과 `b` 의 해시 값이 같습니다.
 
 스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해시 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해시 가능합니다.   
 
@@ -629,7 +629,7 @@ let airportNames = [String](airports.values)
 
 [^Collection-Types]: 원문은 [Collection Types](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html) 에서 확인할 수 있습니다.
 
-[^sets-type]: 'Sets' 은 수학 용어로써 그 자체로 '집합' 이라는 뜻을 가지고 있으며, 스위프트의 '셋 (sets)' 역시 수학에 있는 '집합 (sets)' 에서 유래한 개념입니다. 실제로 '셋이라는 자료 구조' 는 '수학에서의 집합을 구현한 것' 입니다. 하지만, '집합' 이라고 하면 수학 용어인지 자료 타입인지 모호할 수 있으므로, 스위프트의 자료 타입임을 의미할 때는 '셋' 이라는 발음대로 옮기도록 합니다.
+[^sets-type]: 'Sets' 은 수학 용어로 그 자체로 집합이라는 뜻이며, 스위프트의 '셋 (sets)' 역시 수학의 집합 (sets) 에서 유래한 개념입니다. 실제로 셋이라는 자료 구조는 수학에 있는 집합을 프로그램으로 구현한 것에 해당합니다. 하지만, 셋을 집합이라고 번역하면 수학 용어를 말하는 것인지 자료 타입을 말하는 것인지가 모호하므로, 스위프트의 자료 타입을 의미할 땐 '셋' 이라고 발음을 그대로 사용합니다.
 
 [^dictionaries-type]: 'dictionaries' 는 '사전' 이라고 옮길 수도 있는데, 타입이 실제 사전처럼 '키' 와 '값' 이라는 두 가지 성분으로 되어있습니다. 다만 '셋' 과 마찬가지로 '사전' 이라고 옮기면 다른 의미로 해석될 수 있으므로, 스위프트의 자료 타입 중 하나임을 의미하도록 '딕셔너리' 라고 발음 그대로 옮깁니다.
 
@@ -641,6 +641,8 @@ let airportNames = [String](airports.values)
 
 [^Foundation]: **Foundation** 은 모든 스위프트 프로그래밍의 기반이 되는 프레임웍이며, `import Foundation` 으로 불러옵니다. **Foundation** 프레임웍에 대한 더 자세한 정보는, 애플 개발자 문서의 [Foundation](https://developer.apple.com/documentation/foundation) 항목을 참고하기 바랍니다.
 
+[^Cocoa]: **Cocoa** 는 **macOS** 용 **API** 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 그만둔 (Retired) 문서라고 합니다. **M1** 맥북의 등장하며 **macOS** 가 **ARM** 기반이 되면서 **Cocoa** 프레임웍의 비중은 더 줄어들고 있습니다.
+
 [^compatible]: 컴퓨터 용어로 '호환 가능 (compatible)' 하다는 건 서로 같이 사용하거나 교체가 가능하다는 말입니다. 예를 들어, 스위프트에서 `Float` 과 `Double` 타입은 덧셈 연산자와 호환 가능이라 이 둘을 덧셈 연산자로 더할 수 있습니다. 본문에서 호환 가능하다라는 표현을 사용한 건 두 값을 더할 때 둘의 타입이 똑같을 필요는 없기 때문입니다.
 
 [^literal]: 'literal' (글자 값) 은 실제 글자로 표현된 값을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
@@ -651,9 +653,11 @@ let airportNames = [String](airports.values)
 
 [^iterate-over]: '동작을 반복한다 (iterate over)' 는 것은 '배열의 모든 항목마다 한 번씩 동작한다' 는 의미입니다.
 
-[^hashable]: 'hash' 는 '고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식' 에서 유래한 말로 '많은 것들이 마구잡이로 뒤섞인 것' 을 말합니다. 'hashable' 은 이렇게 'hash 를 만들 수 있는' 이라는 의미를 가진 단어입니다. 이것을 컴퓨터 용어로 이해하면, 타입이 'hashable' 이라는 말은 '많은 양의 정보를 잘게 쪼개서 마구 뒤섞어 놓은 형태로 저장할 수 있는' 기능을 의미합니다. 우리말로 하자면 '(잘게) 다질 수 있는' 정도로 옮길 수 있겠지만, 컴퓨터 용어임을 의미하도록 '해시' 라고 발음대로 옮기도록 합니다.
+[^with-no-defined-ordering]: '(정의한) 아무런 순서가 없다 (no defined ordering)' 는 건 항목을 집어넣는 순서와 저장된 순서 사이에 아무런 관계가 없다는 의미입니다. 여기서 순서 (order) 는 정렬 (sort) 과 상관 없는 개념입니다. 이에 대해서는 앞에서 설명한 순서 있는 집합체[^ordered-collection] 부분을 참고하기 바랍니다.
 
-[^hash-value]: 'hash value' 란 앞서 'hashable' 에서 살펴본 바와 같이, '잘게 쪼개고 뒤섞어서 다진 값' 정도로 이해할 수 있습니다. 역시 컴퓨터 용어임을 의미하도록 '해시 값' 이라고 발음대로 옮기도록 합니다.
+[^hashable]: '해시 (hash)' 는 고기와 감자를 잘게 다져서 마구잡이로 섞어놓은 음식에서 유래한 것으로 '많은 것을 마구잡이로 뒤섞은 것' 을 의미합니다. 즉, 'hashable' 은 이렇게 'hash 를 만들 수 있는' 걸 의미하며, 컴퓨터 용어로는, '많은 양의 정보를 잘게 다져 마구 뒤섞어 놓은 형태로 저장할 수 있다는' 의미입니다. 우리말로 '(잘게) 다질 수 있는' 정도로 이해할 수 있는데, 여기선, 컴퓨터 용어임을 알 수 있게 해시라는 발음을 그대로 사용합니다.
+
+[^hash-value]: '해시 값 (hash value)' 은, 앞에서 설명한 'hashable' 을 참고하여, '잘게 쪼개고 뒤섞어 다진 값' 정도로 이해할 수 있습니다.
 
 [^empty-array-literal]: '빈 셋 글자 값 (empty set literal)' 같은 건 따로 없기 때문에, '빈 배열 글자 값 (empty array literal)' 을 그대로 사용합니다.
 
@@ -666,10 +670,6 @@ let airportNames = [String](airports.values)
 [^sets]: 여기서도 위와 마찬가지 이유로 'set' 을 '집합' 이라고 옮깁니다.
 
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
-
-[^Cocoa]: 'Cocoa (코코아)' 는 'Apple (애플) 에서 macOS 용으로 만든 API' 입니다. 하지만, [Cocoa Fundamentals Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/WhatIsCocoa/WhatIsCocoa.html) 항목을 보면 현재는 '그만둔 (Retired) 문서' 라고 설명합니다. 'M1 칩' 의 등장 이후로 '맥 (mac) 과 모바일 기기' 가 더 유사해 질 것이므로, 'Cocoa 프레임웍' 의 비중은 더 줄어드는 추세라고 이해할 수 있습니다.
-
-[^no-defined-ordering]: '정의한 순서가 없다 (no defined ordering)' 는 것은 '정렬 (sort) 하지 않는다' 와는 다른 개념입니다. 이에 대해서는 앞서 설명한 '순서 있는 집합체 (ordered collection)'[^ordered-collection] 부분의 설명을 보도록 합니다.
 
 [^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 '명사' 나 '분사' 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
