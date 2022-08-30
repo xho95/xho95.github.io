@@ -208,7 +208,7 @@ let apples = shoppingList.removeLast()
 
 #### Iterating Over an Array (배열 반복하기)
 
-배열의 전체 값 집합은 `for`-`in` 반복문으로 반복할 수 있습니다:
+`for`-`in` 반복문으로 배열 안의 전체 값 집합을 반복할 수 있습니다:
 
 ```swift
 for item in shoppingList {
@@ -353,9 +353,9 @@ if favoriteGenres.contains("Funk") {
 // "It's too funky in here." 를 인쇄함
 ```
 
-#### Iterating Over a Set (셋에 동작을 반복하기)
+#### Iterating Over a Set (셋 반복하기)
 
-`for`-`in` 반복문으로 '셋의 값들에 동작을 반복' 할 수 있습니다.
+`for`-`in` 반복문으로 셋 안의 값을 반복할 수 있습니다.
 
 ```swift
 for genre in favoriteGenres {
@@ -366,9 +366,9 @@ for genre in favoriteGenres {
 // Hip Hop
 ```
 
-`for`-`in` 반복문에 대한 더 많은 내용은, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 부분을 보도록 합니다.
+`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 보기 바랍니다.
 
-스위프트의 `Set` 타입은 순서를 정의하지 않습니다. 특정 순서로 셋의 값을 반복하려면, `<` 연산자로 정렬한 배열로써 셋 원소를 반환하는, `sorted()` 메소드를 사용합니다.
+스위프트의 `Set` 타입엔 정의된 순서가 없습니다. 셋의 값을 지정한 순서로 반복하려면, `sorted()` 메소드를 사용하는데, 이는 `<` 연산자로 정렬한 배열로 셋의 원소를 반환합니다.
 
 ```swift
 for genre in favoriteGenres.sorted() {
