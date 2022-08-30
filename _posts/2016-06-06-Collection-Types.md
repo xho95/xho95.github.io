@@ -379,9 +379,9 @@ for genre in favoriteGenres.sorted() {
 // Jazz
 ```
 
-### Performing Set Operations (집합 연산 수행하기)
+### Performing Set Operations (집합 연산하기)
 
-두 집합을 서로 조합하거나, 두 집합에 공통인 값 결정하기, 또는 두 집합에 똑같은 값이 모두, 일부, 아니면 아무 것도 아닌 지 결정하는 것 같은, '기본적인 집합 연산 (set operations)'[^set-operations] 을 ('셋' 으로) 효율적으로 수행할 수 있습니다.  
+(셋으로) 두 집합을 서로 조합하거나, 두 집합에 공통인 값 결정하기, 또는 두 집합이 담은 값 중 똑같은게 모두인지, 일부인지, 아무 것도 없는지를 결정하는 것 같은, 기본적인 집합 연산 (set operations)[^set-operations] 을 효율적으로 할 수 있습니다.  
 
 ### Fundamental Set Operations (기본적인 집합 연산)
 
@@ -665,7 +665,7 @@ let airportNames = [String](airports.values)
 
 [^set-array-literal]: '셋 글자 값' 이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값' 만 사용하면 `Array` 타입이라고 추론할 것입니다.
 
-[^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set) 타입' 자체가 '수학에서 말하는 집합 (set) 을 나타내는 타입' 이기 때문에, 셋 타입으로 수학에서 말하는 집합 연산을 할 수 있습니다.
+[^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set)' 자체가 수학 집합을 뜻하기 때문에, 셋 연산은 그 자체로 수학에서의 집합 연산을 의미합니다.
 
 [^sets]: 여기서도 위와 마찬가지 이유로 'set' 을 '집합' 이라고 옮깁니다.
 
