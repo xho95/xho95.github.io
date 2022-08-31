@@ -409,9 +409,9 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sort()
 // [1, 2, 9]
 ```
 
-### Set Membership and Equality (집합의 포함 관계와 같음 비교)
+### Set Membership and Equality (집합의 포함 관계 및 같음 비교)
 
-아래 삽화는-`a`, `b`, 및 `c` 라는-세 집합[^sets] 사이의 공유 원소를 나타낸 영역을 겹쳐 보입니다. 집합 `a` 는, `a` 가 `b` 의 모든 원소를 담고 있기 때문에, 집합 `b` 의 _상위 집합 (superset)_ 입니다. 반대로 말해서, 집합 `b` 는, `b` 의 모든 원소가 `a` 에도 담겨 있기 때문에, 집합 `a` 의 _하위 집합 (subset)_[^subset] 입니다. 집합 `b`와 집합 `c`는, 공통으로 공유한 원소가 없기 때문에, 서로 _분리 (disjoint)_[^disjoint] 라고 합니다.
+아래 삽화는 세 집합-`a` 와, `b`, 및 `c`-에서 겹치는 지역을 그려서 집합 사이의 공유 원소를 나타냅니다. 집합 `a` 는 집합 `b` 의 _상위 집합 (superset)_ 인데, `a` 가 `b` 의 모든 원소를 담기 때문입니다. 거꾸로, 집합 `b` 는 집합 `a` 의 _하위 집합 (subset)_[^subset] 인데, `b` 안의 모든 원소가 `a` 에도 담겼기 때문입니다. 집합 `b`와 집합 `c`는 서로 _분리 (disjoint)_[^disjoint] 라고 하는데, 이는 공유하는 공통 원소가 없기 때문입니다.
 
 ![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-membership-and-equality.jpg)
 
@@ -666,8 +666,6 @@ let airportNames = [String](airports.values)
 [^set-array-literal]: '셋 글자 값' 이 따로 없기 때문에, 타입을 명시하지 않고 '배열 글자 값' 만 사용하면 `Array` 타입이라고 추론할 것입니다.
 
 [^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set)' 자체가 수학 집합을 뜻하기 때문에, 셋 연산은 그 자체로 수학에서의 집합 연산을 의미합니다.
-
-[^sets]: 여기서도 위와 마찬가지 이유로 'set' 을 '집합' 이라고 옮깁니다.
 
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
 
