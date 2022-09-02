@@ -33,7 +33,7 @@ _배열 (array)_ 은 똑같은 타입의 값을 순서 있는 리스트[^list] �
 >
 > **Foundation** 및 **Cocoa** 와 사용하는 `Array` 에 대한 더 많은 정보는, [Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730) 항목을 보기 바랍니다.
 
-#### Array Type Shorthand Syntax (짧게 줄인 배열 타입 구문)
+#### Array Type Shorthand Syntax (배열 타입을 짧게 줄인 구문)
 
 스위프트 배열 타입은 완전체로 `Array<Element>` 라고 작성하는데, 여기서 `Element` 는 배열에 저장을 허용한 값의 타입입니다. 배열 타입은 `[Element]` 라는 짧게 줄인 형식으로 작성할 수도 있습니다. 두 형식의 기능은 정체가 같지만, 짧게 줄인 형식이 더 좋으며 이 안내서 전체에 걸쳐 배열 타입을 참조할 땐 이를 사용합니다.
 
@@ -438,17 +438,18 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 _딕셔너리 (dictionary)_ 는 동일한 타입의 키와 동일한 타입의 값 사이의 결합 (associations) 을 아무런 순서 없이 집합체에 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 결합되는데, 이는 딕셔너리 안에서 그 값의 식별자[^identifier] 처럼 행동합니다. 배열의 항목과 달리, 딕셔너리의 항목엔 정해진 순서가 없습니다. 자신의 식별자를 기반으로 값을 찾아볼 필요가 있을 때 딕셔너리를 사용하는데, 이는 실제-세계에서 사전[^dictionary] 을 사용하여 한 특별한 단어의 정의를 찾아 보는 것과 거의 똑같은 방식입니다.
 
-> 스위프트의 `Dictionary` 타입은 'Foundation[^Foundation] 의 `NSDictionary` 클래스와 연동 (bridged)' 되어 있습니다.
+> 스위프트의 `Dictionary` 타입은 **Foundation** 의 `NSDictionary` 클래스와 연동됩니다.
 >
-> `Dictionary` 와 'Foundation 및 Cocoa[^Cocoa] 를 같이 사용' 하기 위한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 항목을 보도록 합니다.
+> **Foundation** 및 **Cocoa** 와 사용하는 `Dictionary` 에 대한 더 많은 정보는, [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239) 항목을 보기 바랍니다.
 
-#### Dictionary Type Shorthand Syntax (짧게 줄인 딕셔너리 타입 구문)
 
-스위프트 딕셔너리 타입의 완전체는 `Dictionary<Key, Value>` 라고 작성하는데, 여기서 `Key` 는 딕셔너리 키로 쓸 수 있는 값의 타입이고, `Value` 는 딕셔너리가 그 키로 저장하는 값의 타입입니다.
+#### Dictionary Type Shorthand Syntax (딕셔너리 타입을 짧게 줄인 구문)
+
+스위프트의 딕셔너리 타입은 완전체로 `Dictionary<Key, Value>` 라고 작성하는데, 여기서 `Key` 는 딕셔너리 키로 쓸 수 있는 값의 타입이고, `Value` 는 딕셔너리가 그 키에 저장할 값의 타입입니다.
 
 > 딕셔너리 `Key` 타입은, 셋의 값 타입 처럼, 반드시 `Hashable` 프로토콜을 준수해야 합니다.
 
-`[Key: Value]` 라고 짧게 줄인 형식으로 딕셔너리 타입을 작성할 수도 있습니다. 두 형식의 기능이 완전히 똑같긴 하지만, 짧게 줄인 형식이 더 좋으며 이 설명서 전반에 걸쳐 딕셔너리 타입을 참조할 때는 이를 사용합니다.
+딕셔너리 타입은 `[Key: Value]` 라는 짧게 줄인 형식으로 작성할 수도 있습니다. 두 형식의 기능은 정체가 같지만, 짧게 줄인 형식이 더 좋으며 이 안내서 전체에 걸쳐 딕셔너리 타입을 참조할 땐 이를 사용합니다.
 
 #### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
 
