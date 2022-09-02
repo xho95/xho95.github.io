@@ -409,17 +409,17 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sort()
 // [1, 2, 9]
 ```
 
-### Set Membership and Equality (집합의 포함 관계 및 같음 비교)
+### Set Membership and Equality (집합의 포함 관계 및 같음)
 
-아래 삽화는 세 집합-`a` 와, `b`, 및 `c`-에서 겹치는 지역을 그려서 집합 사이의 공유 원소를 나타냅니다. 집합 `a` 는 집합 `b` 의 _상위 집합 (superset)_ 인데, `a` 가 `b` 의 모든 원소를 담기 때문입니다. 거꾸로, 집합 `b` 는 집합 `a` 의 _하위 집합 (subset)_[^subset] 인데, `b` 안의 모든 원소가 `a` 에도 담겼기 때문입니다. 집합 `b`와 집합 `c`는 서로 _분리 (disjoint)_[^disjoint] 라고 하는데, 이는 공유하는 공통 원소가 없기 때문입니다.
+아래 삽화는 세 집합-`a` 와, `b`, 및 `c`-의 겹치는 지역으로 집합 사이의 공유 원소를 그려서 나타냅니다. 집합 `a` 는 집합 `b` 의 _상위 집합 (superset)_ 인데, `a` 가 `b` 의 모든 원소를 담고 있기 때문입니다. 거꾸로, 집합 `b` 는 집합 `a` 의 _하위 집합 (subset)_[^subset] 인데, `b` 안의 모든 원소가 `a` 에도 담겨 있기 때문입니다. 집합 `b`와 집합 `c`는 서로 _분리 (disjoint)_[^disjoint] 라고 하며, 이는 공유하는 공통 원소가 없기 때문입니다.
 
 ![Set-Membership-and-Equality](/assets/Swift/Swift-Programming-Language/Collection-Types-set-membership-and-equality.jpg)
 
-* “같음 (is equal; `==`)” 연산자는 '두 집합이 모두 똑같은 값을 담고 있는 지 결정' 하고자 사용함
-* `isSubset(of:)` 메소드는 '집합의 모든 값이 특정 집합에 담겨 있는 지 결정' 하고자 사용함
-* `isSuperset(of:)` 메소드는 '집합이 특정 집합의 모든 값을 담고 있는 지 결정' 하고자 사용함
-* `isStrictSubset(of:)` 또는 `isStrictSuperset(of:)` 메소드는 '집합이, 특정 집합과 같지는 않은, 진 부분 (하위) 집합 또는 진 상위 집합인 지 결정' 하고자 사용함
-* `isDisjoint(with:)` 메소드는 '두 집합의 공통 값은 없는 지 결정' 하고자 사용함
+* “같음 (`==`)” 연산자를 사용하면 두 집합에 담긴 값이 모두 똑같은지 결정합니다.
+* `isSubset(of:)` 메소드를 사용하면 햔 집합의 모든 값이 지정한 집합에도 담겨 있는지 결정합니다.
+* `isSuperset(of:)` 메소드를 사용하면 지정한 집합의 모든 값이 한 집합에도 담겨 있는지 결정합니다.
+* `isStrictSubset(of:)` 이나 `isStrictSuperset(of:)` 메소드를 사용하면 한 집합이, 지정한 집합과, 같지 않은, 하위 집합 또는 상위 집합인지 결정합니다.[^subset-or-superset]
+* `isDisjoint(with:)` 메소드를 사용하면 두 집합에 공통인 값은 없는지 결정합니다.
 
 ```swift
 let houseAnimals: Set = ["🐶", "🐱"]
@@ -668,6 +668,8 @@ let airportNames = [String](airports.values)
 [^set-operations]: 여기서는 'set' 을 '집합' 이라고 옮겼는데, '셋 (set)' 자체가 수학 집합을 뜻하기 때문에, 셋 연산은 그 자체로 수학에서의 집합 연산을 의미합니다.
 
 [^disjoint]: 'disjoint' 는 수학 용어로 '분리' 또는 '서로 소' 라고 옮기는 것 같습니다. 영어로 [Disjoint sets](https://en.wikipedia.org/wiki/Disjoint_sets) 은 한글로 [서로 소 집합](https://ko.wikipedia.org/wiki/서로소_집합) 이라고 하지만, [분리 합집합](https://ko.wikipedia.org/wiki/분리_합집합) 이라는 용어도 있는 것을 보면, 'disjoint' 를 '분리' 라고 하는 것도 맞는 것 같습니다.
+
+[^subset-or-superset]: 수학 용어로 이를 진 부분 집합 (진 하위 집합) 및 진 상위 집합이라고 합니다.
 
 [^intersection]: 원래는 메소드의 이름이 `intersect` 였는데, `intersection` 으로 바뀌었습니다. 이는 애플의 [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %}) 에 있는 [Strive for Fluent Usage (자연스러운 사용법이 되도록 노력하기)]({% post_url 2020-09-15-API-Design-Guidelines %}#strive-for-fluent-usage-자연스러운-사용법이-되도록-노력하기) 에서 설명한 규칙에 맞추기 위함으로 보입니다. 즉, 메소드의 이름을 **명사** 나 **분사** 형태로 만들어서 원본이 변경되지 않음을 나타낸 것입니다.
 
