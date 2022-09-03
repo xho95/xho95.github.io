@@ -248,9 +248,9 @@ _셋 (set)_ 은 똑같은 타입의 별개 값을 아무런 순서 없이[^with-
 
 #### Hash Values for Set Types (셋 타입의 해시 값)
 
-타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 셋에 저장됩니다-즉, 타입은 반드시 스스로 _해시 값 (hash value)_[^hash-value] 을 계산할 방법을 제공해야 합니다. 해시 값은 비교하여 같은 모든 객체끼리는 똑같은 하나의 `Int` 값이어서, `a == b` 이면, `a` 의 해시 값과 `b` 의 해시 값이 같습니다.
+타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 셋에 저장됩니다-즉, 타입은 반드시 스스로 _해시 값 (hash value)_[^hash-value] 을 계산할 방법을 제공해야 합니다. 비교해서 같은 모든 객체의 해시 값은 똑같은 하나의 `Int` 값이어서, `a == b` 이면, `a` 의 해시 값과 `b` 의 해시 값이 같습니다.
 
-스위프트의 모든 (`String`, `Int`, `Double`, 및 `Bool` 같은) 기본 타입은 기본적으로 '해시 가능' 해서, '셋' 의 값 타입 또는 '딕셔너리 (dictionary)' 의 '키 (key)' 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) '결합 값 (associated values)' 이 없는 '열거체 case 값' 역시 기본적으로 해시 가능합니다.   
+스위프트의 (`String` 과, `Int`, `Double`, 및 `Bool` 같은) 모든 기본 타입은 기본적으로 해시 가능하며, 셋의 값 타입 또는 딕셔너리의 키 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% post_url 2020-06-13-Enumerations %}) 에서 설명한 것처럼) 결합 값이 없는 열거체 case 값도 기본적으로 해시 가능합니다.   
 
 > 자신만의 사용자 정의 타입은 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수함으로써 '셋' 의 값 타입 또는 '딕셔너리' 의 키 타입으로 사용할 수 있습니다. '필수 (required) 메소드' 인 `hash(into:)` 을 구현하는 것에 대한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 보도록 합니다. 프로토콜을 준수하는 것에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 보도록 합니다.
 
