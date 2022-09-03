@@ -53,7 +53,7 @@ print(("someInts is of type [Int] with \(someInts.count) items.")
 
 ```swift
 someInts.append(3)
-// someInts 는 이제 Int 타입 값 1 개를 담고 있음
+// someInts 는 이제 Int 타입 값 1 개를 담음
 someInts = []
 // someInts 는 이제 빈 배열이지만, 여전히 [Int] 타입임
 ```
@@ -453,20 +453,20 @@ _딕셔너리 (dictionary)_ 는 동일한 타입의 키와 동일한 타입의 �
 
 #### Creating an Empty Dictionary (빈 딕셔너리 생성하기)
 
-배열과 같이, 초기자 구문을 사용하여 정해진 타입의 빈 `Dictionary` 를 생성할 수 있습니다:
+배열 처럼, 특정 타입의 빈 `Dictionary` 을 생성하려면 초기자 구문을 사용하면 됩니다:
 
 ```swift
 var namesOfIntegers = [Int: String]()
-// namesOfIntegers 는 [Int: String] 타입의 빈 딕셔너리임
+// namesOfIntegers 는 빈 [Int: String] 딕셔너리임
 ```
 
-이 예제는 '사람이-읽을 수 있는 정수 값의 이름' 을 저장하고자 `[Int: String]` 타입의 빈 딕셔너리를 생성합니다. 이의 키는 `Int` 타입이고, 값은 `String` 타입입니다.
+이 예제는 [Int: String]` 타입의 빈 딕셔너리를 생성하여 정수 값을 사람이-읽을 수 있는 이름으로 저장합니다. 키는 `Int` 타입이고, 값은 `String` 타입입니다.
 
-이미 타입 정보를 제공한 상황이라면, '(대괄호 쌍 안의 콜론인) `[:]` 라고 쓴, 빈 딕셔너리 글자 값 (empty dictionary literal)' 으로 빈 딕셔너리를 생성할 수 있습니다:
+이미 타입 정보를 제공한 상황이면, 빈 딕셔너리를 빈 딕셔너리 글자 값[^empty-dictionary-literal] 으로 생성할 수 있는데, 이는 `[:]` (한 쌍의 대괄호 안의 콜론) 이라고 씁니다:
 
 ```swift
 namesOfIntegers[16] = "sixteen"
-// namesOfIntegers 는 이제 1 개의 '키-값 쌍' 을 담고 있음
+// namesOfIntegers 는 이제 1 개의 키-값 쌍을 담음
 namesOfIntegers = [:]
 // namesOfIntegers 는 다시 한 번 [Int: String] 타입의 빈 딕셔너리임
 ```
@@ -528,7 +528,7 @@ if airports.isEmpty {
 
 ```swift
 airports["LHR"] = "London"
-// airports 딕셔너리는 이제 3 개의 항목을 담고 있음
+// airports 딕셔너리는 이제 3 개의 항목을 담음
 ```
 
 특별한 키와 결합된 값을 바꿀 때도 첨자 연산 구문을 사용할 수 있습니다:
