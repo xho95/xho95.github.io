@@ -106,18 +106,18 @@ var shoppingList = ["Eggs", "Milk"]
 
 배열 글자 값 안의 모든 값이 똑같은 타입이기 때문에, `[String]` 이 `shoppingList` 변수에 사용할 올바른 타입이라는 걸 스위프트가 추론할 수 있습니다.
 
-#### Accessing and Modifying an Array (배열 접근하기와 수정하기)
+#### Accessing and Modifying an Array (배열 접근 및 수정하기)
 
 배열은 메소드와 속성을 통하거나, 첨자 구문을 써서, 접근하고 수정합니다.
 
-배열의 항목 개수를 알아내려면, 읽기-전용 속성인 `count` 를 검사합니다:
+배열의 항목 개수를 찾아내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
 // "The shopping list contains 2 items." 를 인쇄함
 ```
 
-`count` 속성이 `0` 과 같은지 검사하는데는 줄임말로 불리언 속성인 `isEmpty` 사용합니다[^isEmpty-count]:
+`count` 속성이 `0` 인지 검사하는 건 그 줄임말인 `isEmpty` 불리언 속성을 사용합니다[^isEmpty-count]:
 
 ```swift
 if shoppingList.isEmpty {
@@ -302,9 +302,9 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
 
 배열 글자 값 안의 모든 값이 똑같은 타입이기 때문에, `Set<String>` 이 `favoriteGenres` 변수에 사용할 올바른 타입이라는 걸 스위프트가 추론할 수 있습니다.
 
-#### Accessing and Modifying a Set (셋 접근하기와 수정하기)
+#### Accessing and Modifying a Set (셋 접근 및 수정하기)
 
-셋은 메소드와 속성을 통하여 접근하고 수정합니다.
+셋의 메소드와 속성을 통해서 접근하고 수정합니다.
 
 셋의 항목 개수를 알아 내려면, 읽기-전용 속성인 `count` 를 검사합니다:
 
@@ -313,7 +313,7 @@ print("I have \(favoriteGenres.count) favorite music genres.")
 // "I have 3 favorite music genres." 를 인쇄함
 ```
 
-불리언 속성인 `isEmpty` 를 쓰는 건 `count` 속성이 `0` 과 같은지 검사하는 것의 줄임말입니다:
+`count` 속성이 `0` 인지 검사하는 건 그 줄임말인 `isEmpty` 불리언 속성을 사용합니다:
 
 ```swift
 if favoriteGenres.isEmpty {
@@ -501,18 +501,18 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 글자 값 안의 모든 키가 서로 같은 타입이고, 마찬가지로 모든 값이 서로 같은 타입이기 때문에, `[String: String]` 이 `airports` 딕셔너리에 사용할 올바른 타입이라는 걸 스위프트가 추론할 수 있습니다.
 
-#### Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)
+#### Accessing and Modifying a Dictionary (딕셔너리 접근 및 수정하기)
 
-딕셔너리는 '메소드와 속성을 통하거나, 첨자 연산 구문' 을 써서, 접근하고 수정합니다.
+딕셔너리는 메소드와 속성을 통하거나, 첨자 구문을 써서, 접근하고 수정합니다.
 
-배열 처럼, 딕셔너리에 있는 항목의 개수는 읽기-전용 속성인 `count` 를 검사하여 알아냅니다:
+배열에서 처럼, `Dictionary` 의 항목 개수를 찾아내려면 읽기-전용 속성인 `count` 를 검사하면 됩니다:
 
 ```swift
 print("The airports dictionary contains \(airports.count) items.")
 // "The airports_2 dictionary contains 2 items." 를 인쇄함
 ```
 
-`count` 속성이 `0` 과 같은 지를 검사하는 줄임말로 '불리언 속성인 `isEmpty`' 를 사용합니다:
+`count` 속성이 `0` 인지 검사하는 건 그 줄임말인 `isEmpty` 불리언 속성을 사용합니다:
 
 ```swift
 if airports.isEmpty {
@@ -523,23 +523,23 @@ if airports.isEmpty {
 // "The airports dictionary is not empty." 를 인쇄함
 ```
 
-첨자 연산 구문으로 딕셔너리에 새 항목을 추가할 수 있습니다. 적절한 타입의 새 키를 '첨자 연산 색인' 으로 사용하여, 적절한 타입의 새 값을 할당합니다:  
+딕셔너리에 새 항목을 추가하는 건 첨자 구문으로 할 수 있습니다. 적절한 타입의 새로운 키를 첨자 색인으로 사용하고, 적절한 타입의 새 값을 할당하면 됩니다:  
 
 ```swift
 airports["LHR"] = "London"
-// airports 딕셔너리는 이제 3 개의 항목을 담음
+// 이제 airports 딕셔너리는 3개의 항목을 담음
 ```
 
-특별한 키와 결합된 값을 바꿀 때도 첨자 연산 구문을 사용할 수 있습니다:
+첨자 구문으로 한 특별한 키와 결합된 값을 바꿀 수도 있습니다:
 
 ```swift
 airports["LHR"] = "London Heathrow"
-// "LHR" 에 대한 값을 "London Heathrow" 로 바꿈
+// "LHR" 의 값을 "London Heathrow" 로 바꿨음
 ```
 
-첨자 연산의 대안으로, 특별한 키에 값을 설정하거나 갱신하려면 딕셔너리의 `updateValue(_:forKey:)` 메소드를 사용합니다. 위 첨자 연산 예제와 같이, `updateValue(_:forKey:)` 메소드는 키가 존재하지 않으면 값을 설정하고, 그 키가 이미 존재하면 값을 갱신합니다. 하지만, 첨자 연산과는 달리, `updateValue(_:forKey:)` 메소드는 갱신 후에 _예전 (old)_ 값을 반환합니다. 이는 갱신이 일어났는지 아닌지 검사할 수 있게 합니다.
+첨자의 대안으로는, 딕셔너리의 `updateValue(_:forKey:)` 메소드로 특별한 키의 값을 설정하거나 업데이트합니다. 위의 첨자 예제 같이, `updateValue(_:forKey:)` 메소드는 키가 존재하지 않으면 값을 설정하고, 그 키가 이미 존재하면 값을 업데이트합니다. 하지만, 첨자와 달리, `updateValue(_:forKey:)` 메소드는 업데이트한 후에 _예전 (old)_ 값을 반환합니다. 이는 업데이트를 했는지 안했는지 검사할 수 있게 합니다.
 
-`updateValue(_:forKey:)` 메소드는 딕셔너리 값을 옵셔널 타입의 값으로 반환합니다. `String` 값을 저장한 딕셔너리면, 예를 들어, `String?`, 또는 "옵셔널 `String`", 타입의 값을 메소드가 반환합니다. 이 옵셔널 값은, 갱신 전에 값이 존재했으면 해당 키의 예전 값을, 값이 존재하지 않았으면 `nil` 을, 담습니다:
+`updateValue(_:forKey:)` 메소드는 딕셔너리 값 타입의 옵셔널 값을 반환합니다. 딕셔너리가 `String` 값을 저장한 거면, 예를 들어, 메소드가 `String?`, 또는 "옵셔널 `String`", 타입의 값을 반환합니다. 이 옵셔널 값은 업데이트 전에 그 키에 값이 하나라도 존재했으면 예전 값을, 값이 존재하지 않았으면 `nil` 을, 담고 있습니다:
 
 ```swift
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
@@ -548,7 +548,7 @@ if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
 // "The old value for DUB was Dublin." 를 인쇄함
 ```
 
-딕셔너리에서 특별한 키에 해당하는 값을 가져오려고 첨자 연산 구문을 사용할 수도 있습니다. 값이 존재하지 않는 키로도 요청할 수 있기 때문에, 딕셔너리의 첨자 연산은 딕셔너리 값을 옵셔널 타입의 값으로 반환합니다. 요청한 키의 값을 딕셔너리가 담고 있으면, 첨자 연산이 '해당 키에 존재하는 값을 담은 옵셔널 값' 을 반환합니다. 그 외의 경우, 첨자 연산이 `nil` 을 반환합니다:
+첨자 구문을 사용하여 딕셔너리에서 특별한 키의 값을 가져올 수도 있습니다. 요청한 키에 값이 존재하지 않는 것도 가능하기 때문에, 딕셔너리의 첨자는 딕셔너리 값 타입의 옵셔널 값을 반환합니다. 요청한 키의 값을 딕셔너리가 담고 있으면, 첨자는 그 키에 존재하는 값을 담은 옵셔널 값을 반환합니다. 그 외 경우, 첨자는 `nil` 을 반환합니다:
 
 ```swift
 if let airportName = airports["DUB"] {
@@ -559,16 +559,16 @@ if let airportName = airports["DUB"] {
 // "The name of the airport is Dublin Airport." 를 인쇄함
 ```
 
-첨자 연산 구문을 사용하면 '해당 키에 `nil` 값을 할당하여 딕셔너리의 키-값 쌍을 제거' 할 수 있습니다:
+첨자 구문으로 딕셔너리에서 키-값 쌍을 제거하려면 그 키에 `nil` 값을 할당하면 됩니다:
 
 ```swift
 airports["APL"] = "Apple International"
-// "Apple International" 은 APL 의 실제 공항이 아니므로, 이를 삭제함
+// "Apple International" 은 실제 APL 의 공항이 아니라서, 이를 삭제함
 airports["APL"] = nil
-// APL 을 이제 딕셔너리에서 제거함
+// 이제 APL 을 딕셔너리에서 제거했음
 ```
 
-대안으로, 딕셔너리의 키-값 쌍을 `removeValue(_:forKey)` 메소드로도 제거합니다. 이 메소드는 키-값 쌍이 존재하면 제거한 후 제거한 값을 반환하지만, 값이 존재하지 않으면 `nil` 을 반환합니다:
+대안으로, `removeValue(_:forKey)` 메소드로도 딕셔너리에서 키-값 쌍을 제거합니다. 이 메소드는 키-값 쌍이 존재하면 이를 제거하고 제거한 값을 반환하지만, 값이 존재하지 않으면 `nil` 을 반환합니다:
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
@@ -579,9 +579,9 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 // "The removed airport's name is Dublin Airport." 를 인쇄함
 ```
 
-#### Iterating Over a Dictionary (딕셔너리에 동작을 반복하기)
+#### Iterating Over a Dictionary (딕셔너리 반복하기)
 
-`for`-`in` 반복문으로 '딕셔너리에 있는 키-값 쌍들에 동작을 반복' 할 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플로 반환하며, '반복 회차 (iteration)' 마다 튜플의 멤버를 임시 상수나 변수로 분해할 수 있습니다:
+딕셔너리에 있는 키-값 쌍들에 `for`-`in` 반복문으로 '동작을 반복' 할 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플로 반환하며, '반복 회차 (iteration)' 마다 튜플의 멤버를 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (airportCode, airportName) in airports {
