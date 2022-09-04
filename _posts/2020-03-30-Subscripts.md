@@ -73,7 +73,7 @@ numberOfLegs["bird"] = 2
 
 위 예제는 `numberOfLegs` 라는 변수를 정의하고 세 키-값 쌍을 담은 딕셔너리 글자 값으로 이를 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론합니다. 딕셔너리를 생성한 후, 이 예제는 첨자 할당을 사용하여 딕셔너리에 `"bird"` 라는 `String` 키와 `2` 라는 `Int` 값을 추가합니다.
 
-`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근하기와 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근하기와-수정하기) 부분을 보도록 합니다.
+`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근 및 수정하기)]({% post_url 2016-06-06-Collection-Types %}#accessing-and-modifying-a-dictionary-딕셔너리-접근-및-수정하기) 부분을 보도록 합니다.
 
 > 스위프트의 `Dictionary` 타입은 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자로 자신의 키-값 첨자 연산을 구현합니다. 위의 `numberOfLegs` 딕셔너리에선, 키-값 첨자가 `Int?`, 또는 "옵셔널 정수 (optional int)", 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 옵셔널 첨자 타입을 사용하여 모든 키가 값을 가지진 않을 거라는 사실을 모델링하고, 그 키에 `nil` 값을 할당함으로써 키의 값을 삭제할 방법을 제공합니다.
 
