@@ -537,9 +537,9 @@ airports["LHR"] = "London Heathrow"
 // "LHR" 의 값을 "London Heathrow" 로 바꿨음
 ```
 
-첨자의 대안으로는, 딕셔너리의 `updateValue(_:forKey:)` 메소드로 특별한 키의 값을 설정하거나 업데이트합니다. 위의 첨자 예제 같이, `updateValue(_:forKey:)` 메소드는 키가 존재하지 않으면 값을 설정하고, 그 키가 이미 존재하면 값을 갱신합니다. 하지만, 첨자 연산과는 달리, `updateValue(_:forKey:)` 메소드는 갱신 후에 _예전 (old)_ 값을 반환합니다. 이는 갱신이 일어났는지 아닌지 검사할 수 있게 합니다.
+첨자의 대안으로는, 딕셔너리의 `updateValue(_:forKey:)` 메소드로 특별한 키의 값을 설정하거나 업데이트합니다. 위의 첨자 예제 같이, `updateValue(_:forKey:)` 메소드는 키가 존재하지 않으면 값을 설정하고, 그 키가 이미 존재하면 값을 업데이트합니다. 하지만, 첨자와 달리, `updateValue(_:forKey:)` 메소드는 업데이트한 후에 _예전 (old)_ 값을 반환합니다. 이는 업데이트를 했는지 안했는지 검사할 수 있게 합니다.
 
-`updateValue(_:forKey:)` 메소드는 딕셔너리 값을 옵셔널 타입의 값으로 반환합니다. `String` 값을 저장한 딕셔너리면, 예를 들어, `String?`, 또는 "옵셔널 `String`", 타입의 값을 메소드가 반환합니다. 이 옵셔널 값은, 갱신 전에 값이 존재했으면 해당 키의 예전 값을, 값이 존재하지 않았으면 `nil` 을, 담습니다:
+`updateValue(_:forKey:)` 메소드는 딕셔너리 값 타입의 옵셔널 값을 반환합니다. 딕셔너리가 `String` 값을 저장한 거면, 예를 들어, 메소드가 `String?`, 또는 "옵셔널 `String`", 타입의 값을 반환합니다. 이 옵셔널 값은 업데이트 전에 그 키에 값이 하나라도 존재했으면 예전 값을, 값이 존재하지 않았으면 `nil` 을, 담고 있습니다:
 
 ```swift
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
