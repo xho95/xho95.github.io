@@ -579,9 +579,9 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 // "The removed airport's name is Dublin Airport." 를 인쇄함
 ```
 
-#### Iterating Over a Dictionary (딕셔너리에 동작을 반복하기)
+#### Iterating Over a Dictionary (딕셔너리 반복하기)
 
-`for`-`in` 반복문으로 '딕셔너리에 있는 키-값 쌍들에 동작을 반복' 할 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플로 반환하며, '반복 회차 (iteration)' 마다 튜플의 멤버를 임시 상수나 변수로 분해할 수 있습니다:
+딕셔너리에 있는 키-값 쌍들에 `for`-`in` 반복문으로 '동작을 반복' 할 수 있습니다. 딕셔너리의 각 항목은 `(key, value)` 튜플로 반환하며, '반복 회차 (iteration)' 마다 튜플의 멤버를 임시 상수나 변수로 분해할 수 있습니다:
 
 ```swift
 for (airportCode, airportName) in airports {
