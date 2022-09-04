@@ -548,7 +548,7 @@ if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
 // "The old value for DUB was Dublin." 를 인쇄함
 ```
 
-딕셔너리에서 특별한 키에 해당하는 값을 가져오려고 첨자 연산 구문을 사용할 수도 있습니다. 값이 존재하지 않는 키로도 요청할 수 있기 때문에, 딕셔너리의 첨자 연산은 딕셔너리 값을 옵셔널 타입의 값으로 반환합니다. 요청한 키의 값을 딕셔너리가 담고 있으면, 첨자 연산이 '해당 키에 존재하는 값을 담은 옵셔널 값' 을 반환합니다. 그 외의 경우, 첨자 연산이 `nil` 을 반환합니다:
+첨자 구문을 사용하여 딕셔너리에서 특별한 키의 값을 가져올 수도 있습니다. 요청한 키에 값이 존재하지 않는 것도 가능하기 때문에, 딕셔너리의 첨자는 딕셔너리 값 타입의 옵셔널 값을 반환합니다. 요청한 키의 값을 딕셔너리가 담고 있으면, 첨자는 그 키에 존재하는 값을 담은 옵셔널 값을 반환합니다. 그 외 경우, 첨자는 `nil` 을 반환합니다:
 
 ```swift
 if let airportName = airports["DUB"] {
@@ -559,13 +559,13 @@ if let airportName = airports["DUB"] {
 // "The name of the airport is Dublin Airport." 를 인쇄함
 ```
 
-첨자 연산 구문을 사용하면 '해당 키에 `nil` 값을 할당하여 딕셔너리의 키-값 쌍을 제거' 할 수 있습니다:
+첨자 구문으로 딕셔너리에서 키-값 쌍을 제거하려면 그 키에 `nil` 값을 할당하면 됩니다:
 
 ```swift
 airports["APL"] = "Apple International"
-// "Apple International" 은 APL 의 실제 공항이 아니므로, 이를 삭제함
+// "Apple International" 은 실제 APL 의 공항이 아니라서, 이를 삭제함
 airports["APL"] = nil
-// APL 을 이제 딕셔너리에서 제거함
+// 이제 APL 을 딕셔너리에서 제거했음
 ```
 
 대안으로, 딕셔너리의 키-값 쌍을 `removeValue(_:forKey)` 메소드로도 제거합니다. 이 메소드는 키-값 쌍이 존재하면 제거한 후 제거한 값을 반환하지만, 값이 존재하지 않으면 `nil` 을 반환합니다:
