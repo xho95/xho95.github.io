@@ -568,7 +568,7 @@ airports["APL"] = nil
 // 이제 APL 을 딕셔너리에서 제거했음
 ```
 
-대안으로, 딕셔너리의 키-값 쌍을 `removeValue(_:forKey)` 메소드로도 제거합니다. 이 메소드는 키-값 쌍이 존재하면 제거한 후 제거한 값을 반환하지만, 값이 존재하지 않으면 `nil` 을 반환합니다:
+대안으로, `removeValue(_:forKey)` 메소드로도 딕셔너리에서 키-값 쌍을 제거합니다. 이 메소드는 키-값 쌍이 존재하면 이를 제거하고 제거한 값을 반환하지만, 값이 존재하지 않으면 `nil` 을 반환합니다:
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
