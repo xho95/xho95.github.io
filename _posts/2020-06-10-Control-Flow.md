@@ -18,9 +18,9 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 ### For-In Loops (for-in 반복문)
 
-`for`-`in` 반복문은, '배열의 항목, 수치 범위, 또는 문자열의 문자들 같은, 시퀀스 (sequences) 를 반복' 하려고 사용합니다.
+`for`-`in` 반복문을 사용하여, 배열 항목이나, 수치 범위, 또는 문자열의 문자 같은, 시퀀스[^sequences] 를 반복합니다.
 
-다음 예제는 배열 항목에 동작을 반복하려고 `for`-`in` 반복문을 사용합니다:
+다음 예제는 `for`-`in` 반복문으로 배열 안의 항목을 반복합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -33,7 +33,7 @@ for name in names {
 // Hello, Jack!
 ```
 
-딕셔너리의 '키-값 쌍 (key-value pairs)' 에 접근하려고 이를 반복할 수도 있습니다. 딕셔너리를 반복할 때는 딕셔너리의 각 항목을 `(key, value)` 튜플로 반환하며, `for`-`in` 반복문 본문 안에서 사용하도록 `(key, value)` 튜플 멤버를 '명시적인 이름의 상수로 분해' 할 수 있습니다. 아래 예제 코드에서, 딕셔너리 키는 `animalName` 이라는 상수로 분해하고, 딕셔너리 값은 `legCount` 라는 상수로 분해합니다.
+딕셔너리를 반복하여 그것의 키-값 쌍[^key-value-pairs] 에 접근할 수도 있습니다. 딕셔너리를 반복할 땐 딕셔너리 각각의 항목을 `(key, value)` 튜플로 반환하며, `(key, value)` 튜플의 멤버를 이름이 명시된 상수로 분해하여 `for`-`in` 반복문 본문 안에서 사용할 수도 있습니다. 아래 예제 코드는, 딕셔너리 키를 `animalName` 이라는 상수로 분해하고, 딕셔너리 값은 `legCount` 라는 상수로 분해합니다.
 
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
@@ -45,9 +45,9 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` 의 내용물은 태생적으로 순서가 없으며[^dictionary-contents], 반복 시에 이를 가져오는 순서는 보장하지 않습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복 순서를 정의하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 보도록 합니다.
+`Dictionary` 의 내용물은 날 때부터 순서가 없으며[^dictionary-contents], 이를 반복하는 건 가져올 순서를 보증하지 않습니다.[^not-guarantee-the-order] 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복할 순서를 정하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 건, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 보기 바랍니다.
 
-`for`-`in` 반복문을 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 요소를 인쇄합니다:
+`for`-`in` 반복문을 수치 범위에 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 첫 몇몇 요소를 인쇄합니다:
 
 ```swift
 for index in 1...5 {
@@ -60,11 +60,11 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-반복할 '시퀀스' 는, '끝을 포함 (inclusive) 하도록, 닫힌 범위 연산자 (`...`) 로 지시한, `1` 에서 `5` 까지의 수치 범위' 입니다. `index` 값을 '범위의 첫 번째 수 (`1`) 로 설정' 하고, 반복문 안의 구문을 실행합니다. 이 경우, 반복문은, 현재 `index` 값의 구구단 5-단 요소를 인쇄하는, 하나의 구문만 담고 있습니다. 구문을 실행한 후, 범위의 두 번째 값 (`2`) 을 담도록 `index` 값을 갱신하며, `print(_:separator:terminator:)` 함수를 다시 호출합니다. 이 과정을 범위 끝에 닿을 때까지 계속합니다.
+반복할 시퀀스는 `1` 부터 `5` 까지의 수치 범위로, 끝을 포함 (inclusive)[^inclusive] 하도록, 닫힌 범위 연산자 (`...`) 를 사용하여 지시합니다. `index` 값을 범위의 첫 번째 수 (`1`) 로 설정하고, 반복문 안의 구문을 실행합니다. 이 경우, 반복문엔 하나의 구문만 담겨 있는데, 이는 구구단 5-단의 현재 `index` 값에 있는 요소를 인쇄합니다. 구문을 실행 후에, `index` 값을 업데이트하여 범위의 두 번째 값 (`2`) 을 담고, 다시 `print(_:separator:terminator:)` 함수를 호출합니다. 범위의 끝에 닿을 때까지 이 과정을 계속합니다.
 
-위 예제에서, `index` 는 '각각의 반복문 회차 (iteration) 시작 시에 자동으로 값을 설정하는 상수' 입니다. 그로 인해, `index` 를 사용 이전에 선언하지 않아도 됩니다. `let` 선언 키워드를 사용할 필요 없이, 단순히 반복문 선언에 포함하기만 하면, 암시적으로 선언됩니다.
+위 예제에서, `index` 는 반복문의 매 회차 [^iteration] 시작 시에 자동으로 값이 설정되는 상수입니다. 그로 인해, `index` 를 사용 전에 선언하지 않아도 됩니다. 단순히 이를 반복문 선언에 포함하면 암시적으로 선언되어, `let` 선언 키워드를 쓸 필요가 없습니다.
 
-'시퀀스' 에서 각각의 값이 필요하진 않는 경우, 변수 이름 자리에 '밑줄 (`_`) 을 사용' 하여 그 값을 무시할 수 있습니다.
+시퀀스에서 각각의 값이 필요한게 아니라, 값을 무시하고 싶으면 변수 이름 자리에 밑줄 (`_`) 을 쓰면 됩니다.
 
 ```swift
 let base = 3
@@ -808,7 +808,9 @@ if #unavailable(iOS 10) {
 
 [^C-like]: 'C-같은 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장에서 언급한 **C-기반 언어** 와 같은 개념으로, 보통 'C-계열 (C-family) 언어' 라고도 합니다. 이는 역사적으로 C 언어의 영향을 받았거나 C 언어에서 파생한 언어들을 말합니다. 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이 **C-계열 언어** 목록을 확인할 수 있습니다.
 
-[^dictionary-contents]: 딕셔너리는 '내용물 (contents) 을 저장할 때 해시 함수 (hash function) 를 사용' 하기 때문에, 태생적으로 내용물의 순서를 알 수가 없습니다. 이에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장에 있는 [Hash Values for Set Types (셋 타입의 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입의-해시-값) 부분이나 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 및 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+[^dictionary-contents]: 딕셔너리의 내용물 (contents) 은 해시 함수 (hash function) 를 써서 저장하기 때문에, 저장 순서를 알 길이 없습니다. 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장의 [Hash Values for Set Types (셋 타입의 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입의-해시-값) 부분과 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목 및 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+
+[^not-guarantee-the-order]: 반복할 때마다 가져오는 순서가 달라질 수 있다는 의미입니다.
 
 [^stride-to-through]: `stride(from:to:by:)` 는 '반-열린 범위' 를 만들고, `stride(from:through:by:)` 는 '닫힌 범위' 를 만듭니다.
 
