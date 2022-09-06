@@ -18,9 +18,9 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 ### For-In Loops (for-in 반복문)
 
-`for`-`in` 반복문은, '배열의 항목, 수치 범위, 또는 문자열의 문자들 같은, 시퀀스 (sequences) 를 반복' 하려고 사용합니다.
+`for`-`in` 반복문을 사용하여, 배열 항목이나, 수치 범위, 또는 문자열의 문자 같은, 시퀀스[^sequences] 를 반복합니다.
 
-다음 예제는 배열 항목에 동작을 반복하려고 `for`-`in` 반복문을 사용합니다:
+다음 예제는 `for`-`in` 반복문으로 배열 안의 항목을 반복합니다:
 
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
@@ -33,7 +33,7 @@ for name in names {
 // Hello, Jack!
 ```
 
-딕셔너리의 '키-값 쌍 (key-value pairs)' 에 접근하려고 이를 반복할 수도 있습니다. 딕셔너리를 반복할 때는 딕셔너리의 각 항목을 `(key, value)` 튜플로 반환하며, `for`-`in` 반복문 본문 안에서 사용하도록 `(key, value)` 튜플 멤버를 '명시적인 이름의 상수로 분해' 할 수 있습니다. 아래 예제 코드에서, 딕셔너리 키는 `animalName` 이라는 상수로 분해하고, 딕셔너리 값은 `legCount` 라는 상수로 분해합니다.
+딕셔너리를 반복하여 그것의 키-값 쌍[^key-value-pairs] 에 접근할 수도 있습니다. 딕셔너리를 반복할 땐 딕셔너리 각각의 항목을 `(key, value)` 튜플로 반환하며, `(key, value)` 튜플의 멤버를 이름이 명시된 상수로 분해하여 `for`-`in` 반복문 본문 안에서 사용할 수도 있습니다. 아래 예제 코드는, 딕셔너리 키를 `animalName` 이라는 상수로 분해하고, 딕셔너리 값은 `legCount` 라는 상수로 분해합니다.
 
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
@@ -45,9 +45,9 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` 의 내용물은 태생적으로 순서가 없으며[^dictionary-contents], 반복 시에 이를 가져오는 순서는 보장하지 않습니다. 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복 순서를 정의하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장을 보도록 합니다.
+`Dictionary` 의 내용물은 날 때부터 순서가 없으며[^dictionary-contents], 이를 반복하는 건 가져올 순서를 보증하지 않습니다.[^not-guarantee-the-order] 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복할 순서를 정하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 건, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 을 보기 바랍니다.
 
-`for`-`in` 반복문을 '수치 범위 (numeric ranges)' 와 같이 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 처음 몇 요소를 인쇄합니다:
+`for`-`in` 반복문을 수치 범위에 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 첫 몇몇 요소를 인쇄합니다:
 
 ```swift
 for index in 1...5 {
@@ -808,7 +808,9 @@ if #unavailable(iOS 10) {
 
 [^C-like]: 'C-같은 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장에서 언급한 **C-기반 언어** 와 같은 개념으로, 보통 'C-계열 (C-family) 언어' 라고도 합니다. 이는 역사적으로 C 언어의 영향을 받았거나 C 언어에서 파생한 언어들을 말합니다. 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이 **C-계열 언어** 목록을 확인할 수 있습니다.
 
-[^dictionary-contents]: 딕셔너리는 '내용물 (contents) 을 저장할 때 해시 함수 (hash function) 를 사용' 하기 때문에, 태생적으로 내용물의 순서를 알 수가 없습니다. 이에 대한 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장에 있는 [Hash Values for Set Types (셋 타입의 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입의-해시-값) 부분이나 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 및 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+[^dictionary-contents]: 딕셔너리의 내용물 (contents) 은 해시 함수 (hash function) 를 써서 저장하기 때문에, 저장 순서를 알 길이 없습니다. 더 자세한 내용은, [Collection Types (집합체 타입)]({% post_url 2016-06-06-Collection-Types %}) 장의 [Hash Values for Set Types (셋 타입의 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입의-해시-값) 부분과 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목 및 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+
+[^not-guarantee-the-order]: 반복할 때마다 가져오는 순서가 달라질 수 있다는 의미입니다.
 
 [^stride-to-through]: `stride(from:to:by:)` 는 '반-열린 범위' 를 만들고, `stride(from:through:by:)` 는 '닫힌 범위' 를 만듭니다.
 
