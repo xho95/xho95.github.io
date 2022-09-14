@@ -179,21 +179,21 @@ print("Game over!")
 
 그런 다음 현재의 `while` 반복문 실행을 끝내고, 반복 조건을 검사하여 반복문을 다시 실행할지 확인합니다. 참가자가 `25`번 정사각형 위로나 그 너머로 이동하면, 반복 조건을 `false` 로 평가하여 게임을 끝냅니다.
 
-이 경우엔 `while` 반복문이 적절한데, 게임의 길이가 `while` 반복문을 시작할 때 명확하지 않기 때문입니다. 그 대신, 특별한 조건을 만족할 때까지 반복문을 실행합니다.
+이 경우엔 `while` 반복문이 적절한데, `while` 반복문을 시작할 때 게임 길이가 명확하지 않기 때문입니다. 그 대신, 한 특별한 조건을 만족할 때까지 반복문을 실행합니다.
 
 #### Repeat-While (repeat-while 문)
 
-`while` 반복문이 다르게 변화한, `repeat`-`while` 반복문은, 반복 조건을 고려하기 _전에 (before)_, 처음에 반복문 블럭을 한 번 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 되풀이합니다.
+`while` 반복문의 변화 버전인, `repeat`-`while` 반복문은, 반복 조건을 고려하기 _전에 (before)_, 첫 번째로 단 한 번 반복 블럭을 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 되풀이합니다.
 
-> 스위프트의 `repeat`-`while` 반복문은 다른 언어에 있는 `do`-`while` 반복문과 유사한 것입니다.[^do-while]
+> 스위프트의 `repeat`-`while` 반복문은 다른 언어의 `do`-`while` 반복문과 유사합니다.[^do-while]
 
-다음은 `repeat`-`while` 반복문의 일반 형식입니다:
+`repeat`-`while` 반복문의 일반 형식은 이렇습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;repeat {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;} while `condition-조건`<br />
 
-다음은, `while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제입니다. `finalSquare`, `board`, `square`, 및 `diceRoll` 값은 `while` 반복문과 정확히 똑같은 방식으로 초기화합니다.
+`while` 반복문 대신 `repeat`-`while` 반복문으로 다시 작성한, _뱀과 사다리 (Snakes and Ladders)_ 예제는 이렇습니다. `finalSquare` 와, `board`, `square`, 및 `diceRoll` 값의 초기화 방식은 `while` 반복문에서와 정확히 똑같습니다.
 
 ```swift
 let finalSquare = 25
@@ -204,18 +204,18 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임에서, 반복문의 _첫 번째 (first)_ 행동은 사다리인지 뱀인지를 검사하는 것입니다. 참가자를 곧바로 25번 정사각형으로 가져오는 게임판 사다리는 없으므로, 사다리를 올라간다고 해서 게임을 이기는 건 불가능합니다. 따라서, 뱀인지 사다리인지 검사하는 걸 반복문의 첫 번째 행동으로 해도 안전합니다.
+이 버전의 게임에서, 반복문의 _첫 (first)_ 행동은 사다리인지 뱀인지 검사하는 겁니다. 게임판의 사다리 중에 참가자를 곧바로 25번 정사각형으로 가져오는 건 없으므로, 사다리를 올라가는 걸로 게임을 이기는 건 불가능합니다. 따라서, 뱀인지 사다리인지 검사하는게 반복문의 첫 번째 행동이라도 안전합니다.
 
-게임 시작 시에, 참가자는 “0번 정사각형” 에 있습니다. `board[0]` 는 항상 `0` 이며 아무런 효과도 없습니다.[^no-effect]
+게임을 시작할 때, 참가자는 “0번 정사각형” 에 있습니다. `board[0]` 는 항상 `0` 과 같고 아무런 효과도 없습니다.[^no-effect]
 
 ```swift
 repeat {
-  // 뱀이나 사다리를 따라 오르내림
+  // 뱀 또는 사다리를 따라 오르내림
   square += board[square]
   // 주사위를 굴림
   diceRoll += 1
   if diceRoll == 7 { diceRoll = 1 }
-  // 굴림 양에 따라 이동함
+  // 굴림 양만큼 이동함
   square += diceRoll
 } while square < finalSquare
 print("Game over!")
@@ -816,7 +816,7 @@ if #unavailable(iOS 10) {
 
 [^square-zero]: 즉, 게임판 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
 
-[^no-effect]: 이는, 게임을 시작할 때는 `square` 가 0 이라서, `square < finalSquare` 가 항상 참이라서, (효과가 없는) 비교를 안해도 문제가 없다는 의미입니다.
+[^no-effect]: 이는, 게임을 시작할 때는 `square` 가 0 이라, `square < finalSquare` 가 항상 참이라서, 비교를 안해도 아무런 문제가 없다 (즉, 효과가 없다) 는 의미입니다.
 
 [^Fahrenheit-32]: '화씨 (Fahrenheit) 32도' 는 '섭씨 (Celsius) 0도' 와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
 
