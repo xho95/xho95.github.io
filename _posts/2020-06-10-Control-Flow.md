@@ -221,9 +221,9 @@ repeat {
 print("Game over!")
 ```
 
-뱀인지 사다리인지 검사한 후에, 주사위를 굴리고 `diceRoll` 정사각형 만큼 참가자를 앞으로 이동합니다. 그런 다음 현재 회차 실행을 끝냅니다.
+뱀인지 사다리인지 검사한 후, 주사위를 굴리고 `diceRoll` 정사각형 만큼 참가자가 앞으로 이동합니다. 그런 다음 현재 반복의 실행을 끝냅니다.
 
-반복 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번에는 첫 번째 실행의 반복문 통과가 _끝 (end)_ 나기 전까지 평가하지 않습니다. 이 게임에는 `repeat`-`while` 반복문 구조가 이전 예제의 `while` 반복문보다 더 적합합니다. 위 `repeat`-`while` 반복문에서, `square += board[square]` 는 항상 반복문 `while` 조건이 `square` 가 여전히 게임판에 있음을 확정한 _바로 뒤에 (immediately after)_ 실행합니다. 이런 동작은 '앞서 설명한 `while` 반복문 버전 게임의 배열 경계 값 검사' 를 할 필요가 없게 합니다.
+반복 조건 (`while square < finalSquare`) 은 이전과 똑같지만, 이번엔 첫 번째 실행의 반복문 통과가 _끝 (end)_ 날 때까지 평가를 안합니다. 이 게임에선 `repeat`-`while` 반복문 구조가 이전의 `while` 반복문 예제보다 더 적합합니다. 위의 `repeat`-`while` 반복문에선, 항상 반복문의 `while` 조건이 `square` 가 여전히 게임판 위에 있다는 걸 확정한 _바로 뒤에 (immediately after)_ `square += board[square]` 를 실행합니다. 이런 동작은 앞서 설명한 `while` 반복문 버전의 게임에서 본 배열 경계 검사의 필요성을 제거합니다.[^array-bounds-check]
 
 ### Conditional Statements (조건문)
 
@@ -817,6 +817,8 @@ if #unavailable(iOS 10) {
 [^square-zero]: 즉, 게임판 밖의 가상의 공간에서부터 시작합니다. 윷놀이에서 말이 대기하고 있는 것과 같습니다.
 
 [^no-effect]: 이는, 게임을 시작할 때는 `square` 가 0 이라, `square < finalSquare` 가 항상 참이라서, 비교를 안해도 아무런 문제가 없다 (즉, 효과가 없다) 는 의미입니다.
+
+[^array-bounds-check]: `square < board.count` 를 검사할 필요가 없다는 의미입니다.
 
 [^Fahrenheit-32]: '화씨 (Fahrenheit) 32도' 는 '섭씨 (Celsius) 0도' 와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
 
