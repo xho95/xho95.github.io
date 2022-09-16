@@ -233,7 +233,7 @@ print("Game over!")
 
 #### If (if 문)
 
-가장 단순한 형식의, `if` 문은 '단일한 `if` 조건' 을 가집니다. 이는 해당 조건이 `true` 일 때만 구문 집합을 실행합니다.
+가장 단순한 형식의, `if` 문엔 단 하나의 `if` 조건만 있습니다. 이는 그 조건이 `true` 일 때만 구문 집합을 실행합니다.
 
 ```swift
 var temperatureInFahrenheit = 30
@@ -243,9 +243,9 @@ if temperatureInFahrenheit <= 32 {
 // "It's very cold. Consider wearing a scarf." 를 인쇄함
 ```
 
-위 예제는 '온도가 (물이 어는 점인) 화씨 32도[^Fahrenheit-32] 이하인 지 검사' 합니다. 그렇다면, 메시지를 인쇄합니다. 그 외의 경우, 메시지를 인쇄하지 않고, '`if` 문 닫는 중괄호 (closing brace) 뒤의 코드를 계속 실행' 합니다.
+위 예제는 온도가 화씨 32도[^Fahrenheit-32] 이하 (물의 어는점) 인지를 검사합니다. 그렇다면, 메시지를 인쇄합니다. 그 외 라면, 아무런 메시지도 인쇄하지 않고, `if` 문의 닫는 중괄호 뒤에서 코드 실행을 계속합니다.
 
-`if` 문은, `if` 조건이 `false` 인 상황을 위해, 'else 절 (else clause) 이라는, 대안 구문 집합' 을 제공할 수 있습니다. 이 구문은 `else` 키워드로 지시합니다.
+`if` 문은, `if` 조건이 `false` 일 때의 상황을 위해, _else 절 (else clause)_ 이라는, 대안 구문 집합을 제공할 수 있습니다. 이 구문은 `else` 키워드로 지시합니다.
 
 ```swift
 temperatureInFahrenheit = 40
@@ -257,9 +257,9 @@ if temperatureInFahrenheit <= 32 {
 // "It's not that cold. Wear a t-shirt." 를 인쇄함
 ```
 
-두 분기 중 하나는 항상 실행합니다. 온도가 화씨 40도 까지 증가했기 때문에, 더 이상 스카프를 하라고 조언할 정도로 춥진 않으므로 대신 `else` 분기를 발동합니다.
+항상 이 두 분기 중 하나를 실행합니다. 온도가 화씨 40도까지 증가했기 때문에, 더 이상 스카프를 하라고 조언할 만큼 춥진 않아서 `else` 분기를 대신 발생시킵니다.
 
-추가적인 절을 고려하기 위해 '여러 `if` 문을 연쇄 (chain)' 할 수 있습니다.
+여러 개의 `if` 문을 사슬처럼 이어서 추가 구절을 고려할 수 있습니다.
 
 ```swift
 temperatureInFahrenheit = 90
@@ -273,9 +273,9 @@ if temperatureInFahrenheit <= 32 {
 // "It's really warm. Don't forget to wear sunscreen." 를 인쇄함
 ```
 
-여기선, 특별히 따뜻한 온도에 대한 응답으로 '추가적인 `if` 문' 을 더합니다. '최종 `else` 절' 은 남아 있으며, 너무 덥지도 춥지도 않은 어떤 온도에 대한 응답이든 인쇄합니다.
+여기선, 추가로 `if` 문을 더하여 특별히 더 따뜻한 온도일 때도 응답합니다. 최종 `else` 절은 남아 있어서, 너무 덥지도 춥지도 않은 어떤 온도의 응답이든 인쇄합니다.
 
-하지만, 최종 `else` 절은 옵션[^optional] 이며, 조건 집합을 완료할 필요가 없으면 배제할 수 있습니다.
+하지만, 최종 `else` 절은 옵션[^optional] 이라, 조건 집합을 완료할 필요가 없으면 없어도 됩니다.
 
 ```swift
 temperatureInFahrenheit = 72
@@ -286,7 +286,7 @@ if temperatureInFahrenheit <= 32 {
 }
 ```
 
-`if` 나 `else if` 조건을 발동할 만큼 온도가 너무 춥지도 덥지도 않기 때문에, 아무런 메시지도 인쇄하지 않습니다.
+온도가 `if` 나 `else if` 조건을 발생시킬 만큼 너무 춥지도 덥지도 않기 때문에, 아무런 메시지도 인쇄하지 않습니다.
 
 #### Switch (switch 문)
 
