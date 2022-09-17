@@ -290,9 +290,9 @@ if temperatureInFahrenheit <= 32 {
 
 #### Switch (switch 문)
 
-`switch` 문은 '일치 가능한 여러 패턴과 값을 비교' 하고 고려합니다. 그런 다음, 일치 성공한 첫 번째 패턴에 기초하여, 적절한 코드 블럭을 실행합니다. `switch` 문은 `if` 문의 대안으로 '여러 개의 잠재적인 상태에 대한 응답' 을 제공합니다.
+`switch` 문은 하나의 값을 고려하며 이를 가능한 여러 가지 패턴과 맞춰보고 비교합니다. 그런 다음, 첫 번째로 맞는게 성공한 패턴을 기반으로, 적절한 코드 블럭을 실행합니다. `switch` 문은 `if` 문의 대안으로 여러 개일 수도 있는 상태에 대한 응답을 제공합니다.
 
-가장 단순한 형식의, `switch` 문은 '하나의 값을 똑같은 타입의 하나 이상의 값들과 비교' 합니다.
+가장 단순한 형식의, `switch` 문은 하나의 값을 하나 이상의 동일한 타입의 값들과 비교합니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;switch `some value to consider-고려할 값` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;case `value 1-값 1`:<br />
@@ -304,13 +304,13 @@ if temperatureInFahrenheit <= 32 {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`otherwise, do something else-그 외 경우, 다른 걸 합니다`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-모든 `switch` 문은, '각각이 `case` 키워드로 시작하는, 가능한 여러 개의 _case 절 (cases)_ 로 구성' 합니다. 특정 값과 비교하는 것에 더하여, 스위프트는 각 case 절마다 더 복잡한 패턴을 지정하는 여러 방법을 제공합니다. 이 옵션은 이 장 나중에 설명합니다.
+모든 `switch` 문은 여러 개의 가능한 _case 절 (cases)_ 로 구성되며, 이들 각각은 `case` 키워드로 시작합니다. 정해진 값과 비교하는 것에 더하여, 스위프트는 여러 가지 방식으로 각각의 case 에 더 복잡하게 맞춰볼 패턴도 지정합니다. 이 옵션들은 이 장 나중에 설명합니다.
 
-`if` 문 본문 같이, 각각의 `case` 절은 '별도의 코드 실행 분기' 입니다. `switch` 문은 어느 분기를 선택할 지 결정합니다. 이 절차를 '고려할 값 _전환 (switching)_' 이라고 합니다.
+`if` 문의 본문 같이, 각각의 `case` 는 별도로 실행되는 코드 분기입니다. `switch` 문은 어느 분기를 선택하는게 좋은지 결정합니다. 이 절차를 고려 중인 값의 _전환 (switching)_ 이라고 합니다.
 
-모든 `switch` 문은 반드시 _다 써버려야 (exhaustive)_[^exhaustive] 합니다. 즉, '고려 중인 타입의 가능한 모든 값은 `switch` 문 case 절 하나와 반드시 일치' 해야 합니다. 가능한 모든 값에 case 절을 제공하는 게 적절치 않다면, 명시하지 않은 어떤 값이든 다루는 '기본 (default) case 절' 을 정의할 수 있습니다. 이 기본 case 절은 `default` 키워드로 지시하며, 반드시 항상 마지막에 있어야 합니다.
+모든 `switch` 문은 반드시 _다 써버려야 (exhaustive)_ 합니다.[^exhaustive] 즉, 고려 중인 타입으로 가능한 모든 값은 반드시 `switch` 문의 한 case 와 맞아야 합니다. 가능한 모든 값에 case 를 제공하는 게 적절치 않다면, 기본 case 를 정의하여 명시 안한 어떤 값이든 다루게 할 수 있습니다. 이 기본 case 는 `default` 키워드로 지시하며, 반드시 항상 마지막에 나타나야 합니다.
 
-다음 예제는 `switch` 문을 써서 `someCharacter` 라는 단일 소문자를 고려합니다:
+다음 예제는 `switch` 문을 써서 `someCharacter` 라는 단일한 소문자를 고려합니다:
 
 ```swift
 let someCharacter: Character = "z"
@@ -325,7 +325,7 @@ default:
 // "The last letter of the alphabet" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 절은 영어 알파벳 첫 글자[^letter] 인, `a`, 와 일치하며, 두 번째 case 절은 마지막 글자인, `z`, 와 일치합니다. `switch` 는, 모든 알파벳 글자만이 아니라, 가능한 모든 글자마다 반드시 case 절을 가져야 하기 때문에, 이 `switch` 문은 `a` 와 `z` 이외의 모든 문자와 일치하는 `default` case 절을 사용합니다. 이걸 제공하면 `switch` 문이 다 써버리는 걸 보장합니다.
+`switch` 문의 첫 번째 case 와 맞는 건 영어 알파벳 첫 글자[^letter] 인, `a` 이고, 두 번째 case 와 맞는 건 마지막 글자인, `z` 입니다. `switch` 엔, 모든 알파벳 문자만이 아닌, 가능한 모든 문자에 대한 case 가 있어야 하기 때문에, 이 `switch` 문은 `default` case 를 써서 `a` 와 `z` 이외의 모든 문자를 맞춰봅니다. 이걸 제공하면 `switch` 문이 다 써버리는 걸 보장합니다.
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
@@ -822,7 +822,7 @@ if #unavailable(iOS 10) {
 
 [^Fahrenheit-32]: '화씨 (Fahrenheit) 32도' 는 '섭씨 (Celsius) 0도' 와 같습니다. '화-씨', '섭-씨' 에서의 '씨' 는 '김-씨', '이-씨' 할 때의 '씨 (氏)' 입니다.
 
-[^exhaustive]: '다 써버려야 (exhaustive)' 한다는 건, 뒤에 설명 하듯, `switch` 문 `case` 에선 그 `switch` 문으로 전달한 변수나 상수를 반드시 모두 다 써야 한다는 의미입니다. 스위프트 컴파일러는 `switch` 문을 다 써버리지 않으면 컴파일 시간 에러를 띄웁니다.
+[^exhaustive]: '다 써버려야 (exhaustive)' 한다는 건, 뒤에 설명 하듯, `switch` 문으로 전달될 수 있는 모든 값이 적어도 한 `case` 와는 맞아야 한다는 의미입니다. 스위프트 컴파일러는 `switch` 문을 다 써버리지 않으면 컴파일 시간 에러를 띄웁니다.
 
 [^letter]: 원문에서는 'letter' 라는 단어를 사용하는데, 영어에서 'character' 는 표의 문자, 'letter' 는 표음 문자를 의미한다고 합니다. 원문에도 영어 알파벳은 항상 'letter' 를 사용합니다.
 
