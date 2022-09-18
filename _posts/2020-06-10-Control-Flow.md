@@ -329,22 +329,22 @@ default:
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
-C 및 오브젝티브-C 의 `switch` 문과 대조적으로, 스위프트의 `switch` 문은 기본적으로 각각의 case 절을 빠져나가 다음으로 들어가지 않습니다. 그 대신, 명시적인 `break` 문 없이도, 첫 번째로 일치한 `switch` case 절을 완료하자마자 곧, 전체 `switch` 문을 종료합니다. 이는 C 에서보다 `switch` 문을 더 안전하고 쉽게 사용하게 해주며 실수로 `switch` case 절을 하나 이상 실행하는 걸 피하게 해줍니다.
+**C** 와 **오브젝티브-C** 의 `switch` 문과 대조하여, 기본적으로 스위프트의 `switch` 문은 각각의 case 밑을 빠져나가 그 다음 걸로 들어가지 않습니다. 그 대신, 명시적 `break` 문의 요구 없이도, 첫 번째로 맞은 `switch` case 를 완료하자마자 곧, 전체 `switch` 문의 실행을 종료합니다. 이는 **C** 의 `switch` 문 보다 더 안전하고 쉽게 쓸 수 있게 하며 실수로 하나 보다 많은 `switch` case 를 실행하는 것도 피해줍니다.
 
-> 스위프트에서 `break` 는 필수가 아니긴 하지만, 특별한 case 절과 일치시키거나 무시하기 위해 또는 일치한 case 절의 실행 완료 전에 해당 case 절을 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 세부적인 건, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 보도록 합니다.
+> 스위프트에서 `break` 가 필수는 아니지만, `break` 문을 사용하면 한 특별한 case 와 맞춰봐서 무시할 수도 있고 또는 맞는 case 의 실행이 완료되기 전에 그 case 를 끊고 나올 수 있습니다. 자세한 건, [Break in a Switch Statement (Switch 문의 Break)](#break-in-a-switch-statement-switch-문의-break) 을 보기 바랍니다.
 
-각 case 절 본문은 _반드시 (must)_ 적어도 하나의 실행문은 담고 있어야 합니다. 코드를 다음 처럼 작성하면, 첫 번째 case 절이 비었기 때문에, 무효입니다:
+각각의 case 본문엔 _반드시 (must)_ 적어도 하나의 실행문이 담겨 있어야 합니다. 다음 코드처럼 쓰면 무효인데, 첫 번째 case 가 비어 있기 때문입니다:
 
 ```swift
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
-case "a": // 무효, case 절 본문이 비었슴
+case "a": // 무효, case 의 본문이 비었슴
 case "A":
   print("The letter A")
 default:
   print("Not the letter A")
 }
-// 이는 컴파일-시간 에러라고 보고합니다.
+// 이는 컴파일-시간 에러를 보고할 겁니다.
 ```
 
 C `switch` 문과는 달리, 이 `switch` 문은 `"a"` 및 `"A"` 둘 다 일치하지 않습니다. 그 보다, '`case "a":` 가 어떤 실행문도 담고 있지 않다' 는 실행-시간 에러를 띄웁니다. 이런 접근법은 '한 case 절에서 다른 곳으로 빠져나가는 사고' 를 피하게 하고 '코드의 의도를 더 명확하고 안전' 하게 합니다.
@@ -559,7 +559,7 @@ print(puzzleOutput)
 반복문 안에서 사용할 땐, `break` 가 반복문 실행을 곧바로 끝내고 제어를 반복문 닫는 중괄호 (`}`) 뒤의 코드로 옮깁니다. 더 이상 반복문의 현재 회차 코드를 실행하지도, 반복문 회차를 시작하지도 않습니다.
 
 <p>
-<strong id="break-in-a-switch-statement-switch-문-안의-break-문">Break in a Switch Statement (switch 문 안의 break 문)</strong>
+<strong id="break-in-a-switch-statement-switch-문의-break">Break in a Switch Statement (switch 문의 break)</strong>
 </p>
 
 `switch` 문 안에서 사용할 땐, `break` 가 `switch` 문 실행을 곧바로 끝내고 제어를 `switch` 문 닫는 중괄호 (`}`) 뒤의 코드로 옮기도록 합니다.
