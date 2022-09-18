@@ -329,9 +329,9 @@ default:
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
-C 및 오브젝티브-C 의 `switch` 문과 대조적으로, 스위프트의 `switch` 문은 기본적으로 각각의 case 절을 빠져나가 다음으로 들어가지 않습니다. 그 대신, 명시적인 `break` 문 없이도, 첫 번째로 일치한 `switch` case 절을 완료하자마자 곧, 전체 `switch` 문을 종료합니다. 이는 C 에서보다 `switch` 문을 더 안전하고 쉽게 사용하게 해주며 실수로 `switch` case 절을 하나 이상 실행하는 걸 피하게 해줍니다.
+**C** 와 **오브젝티브-C** 의 `switch` 문과 대조하여, 기본적으로 스위프트의 `switch` 문은 각각의 case 밑을 빠져나가 그 다음 걸로 들어가지 않습니다. 그 대신, 명시적 `break` 문의 요구 없이도, 첫 번째로 맞은 `switch` case 를 완료하자마자 곧, 전체 `switch` 문의 실행을 종료합니다. 이는 **C** 의 `switch` 문 보다 더 안전하고 쉽게 쓸 수 있게 하며 실수로 하나 보다 많은 `switch` case 를 실행하는 것도 피해줍니다.
 
-> 스위프트에서 `break` 는 필수가 아니긴 하지만, 특별한 case 절과 일치시키거나 무시하기 위해 또는 일치한 case 절의 실행 완료 전에 해당 case 절을 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 세부적인 건, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 보도록 합니다.
+> 스위프트에서 `break` 가 필수는 아니지만, 특별한 case 절과 일치시키거나 무시하기 위해 또는 일치한 case 절의 실행 완료 전에 해당 case 절을 끊고 나오기 위해 `break` 문을 사용할 수 있습니다. 세부적인 건, [Break in a Switch Statement (Switch 구문 내의 Break 문)](#break-in-a-switch-statement-switch-문-안의-break-문) 을 보도록 합니다.
 
 각 case 절 본문은 _반드시 (must)_ 적어도 하나의 실행문은 담고 있어야 합니다. 코드를 다음 처럼 작성하면, 첫 번째 case 절이 비었기 때문에, 무효입니다:
 
