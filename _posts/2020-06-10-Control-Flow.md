@@ -338,7 +338,7 @@ default:
 ```swift
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
-case "a": // 무효, case 의 본문이 비었슴
+case "a": // 무효, case 본문이 비었음
 case "A":
   print("The letter A")
 default:
@@ -347,9 +347,9 @@ default:
 // 이는 컴파일-시간 에러를 보고할 겁니다.
 ```
 
-C `switch` 문과는 달리, 이 `switch` 문은 `"a"` 및 `"A"` 둘 다 일치하지 않습니다. 그 보다, '`case "a":` 가 어떤 실행문도 담고 있지 않다' 는 실행-시간 에러를 띄웁니다. 이런 접근법은 '한 case 절에서 다른 곳으로 빠져나가는 사고' 를 피하게 하고 '코드의 의도를 더 명확하고 안전' 하게 합니다.
+**C** 의 `switch` 문과 달리, 이 `switch` 문은 `"a"` 및 `"A"` 둘 다와 맞지 않습니다. 그 보다, `case "a":` 에 어떤 실행문도 담겨 있지 않다는 실행-시간 에러를 보고합니다. 이런 접근법은 한 case 에서 다른 곳으로 빠져나가는 사고를 피해주며 의도가 명확한 더 안전한 코드를 만듭니다.
 
-`switch` 문의 단일 case 절로 `"a"` 와 `"A"` 둘 다 일치하게 하려면, 두 값을, 쉼표로 구분하여, '복합 case 절' 로 만듭니다.
+`switch` 문의 단일 case 로 `"a"` 와 `"A"` 둘 다와 맞게 하려면, 두 값을 복합 case 로 조합하며, 값들을 쉼표로 구분합니다.
 
 ```swift
 let anotherCharacter: Character = "a"
@@ -362,9 +362,9 @@ default:
 // "The letter A" 를 인쇄함
 ```
 
-가독성을 위해, 복합 case 절을 여러 줄에 걸쳐 작성할 수도 있습니다. 복합 case 절에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 보도록 합니다.
+읽기 쉽도록, 복합 case 도 여러 줄에 걸쳐 작성할 수 있습니다. 복합 case 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 보기 바랍니다.
 
-> 특별한 `switch` case 절 끝을 명시적으로 빠져 나가려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한, `fallthrough` 키워드를 사용합니다.
+> 한 특별한 `switch` case 끝에서 빠져 나가는 걸 명시하려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한, `fallthrough` 키워드를 사용합니다.
 
 **Interval Matching (구간 맞춤)**
 
