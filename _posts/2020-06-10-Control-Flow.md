@@ -14,7 +14,7 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 스위프트는 `for`-`in` 반복문도 제공하여 배열과, 딕셔너리, 범위, 문자열, 및 기타 다른 시퀀스[^sequences] 들도 쉽게 반복하도록 합니다.
 
-스위프트의 `switch` 문은 **C**-같은 언어[^C-like] 에 있는 수많은 비슷한 것들보다 더 꽤 강력합니다. case 절은 수많은 서로 다른  패턴들[^patterns] 과 맞춰볼 수 있으며, 이는 구간 맞춤[^interval-matches] 과, 튜플, 및 정해진 타입으로의 변환[^casts] 도 포함합니다. `switch` 문 case 에 맞는 값은 임시 상수나 변수로 연결되어 case 본문 안에서 사용할 수도 있고, 각각의 case 에서 `where` 절로 복잡한 맞춤 조건을 표현할 수도 있습니다.
+스위프트의 `switch` 문은 수많은 **C**-같은 언어[^C-like] 에 있는 자신의 상대방보다 상당히 더 강력합니다. case 절은, 구간 맞춰보기[^interval-matches] 와, 튜플, 및 지정한 타입으로의 변환[^casts] 을 포함하여, 수많은 서로 다른 패턴들[^patterns] 과 맞춰볼 수 있습니다. `switch` 문 case 에 맞는 값은 임시 상수나 변수로 연결되어 case 본문 안에서 사용할 수도 있고, 각각의 case 에서 `where` 절로 복잡한 맞춤 조건을 표현할 수도 있습니다.
 
 ### For-In Loops (for-in 반복문)
 
@@ -366,9 +366,9 @@ default:
 
 > 한 특별한 `switch` case 끝에서 빠져 나가는 걸 명시하려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한, `fallthrough` 키워드를 사용합니다.
 
-**Interval Matching (구간 맞춤)**
+**Interval Matching (구간 맞춰보기)**
 
-`switch` case 절에서 '값이 일정 구간 (interval) 에 포함되는 지를 검사' 할 수 있습니다. 다음 예제는 '수치 구간 (number intervals)' 을 사용하여 어떤 크기의 수든 자연-어로 세는 기능을 제공합니다:
+`switch` case 안의 값은 자신이 구간[^interval] 에 포함되는지 검사할 수 있습니다. 다음 예제는 수치 구간을 써서 어떤 크기의 수든 자연-어로 세는 기능을 제공합니다:
 
 ```swift
 let approximateCount = 62
