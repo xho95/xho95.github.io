@@ -392,13 +392,13 @@ print("There are \(naturalCount) \(countedThings).")
 // "There are dozens of moons orbiting Saturn." 를 인쇄함
 ```
 
-위 예제에선, `approximateCount` 를 `switch` 문으로 평가합니다. 각각의 `case` 는 그 값을 하나의 수치 값 또는 구간과 비교합니다. `approximateCount` 값은 `12` 와 `100` 사이로 떨어지기 때문에, `naturalCount` 엔 `"dozens of"` 값을 할당하고, 실행을 `switch` 문 밖으로 전달합니다.
+위 예제에선, `switch` 문으로 `approximateCount` 를 평가합니다. 각각의 `case` 는 그 값을 수치 값이나 구간과 비교합니다. `approximateCount` 값은 `12` 와 `100` 사이로 떨어지기 때문에, `naturalCount` 엔 값 `"dozens of"` 를 할당하고, 실행을 `switch` 문 밖으로 전달합니다.
 
 **Tuples (튜플)**
 
-튜플을 사용하면 동일한 `switch` 문에서 여러 개의 값을 테스트할 수 있습니다. 각각의 튜플 원소를 서로 다른 값 또는 구간과 테스트할 수 있습니다. 대안으로, '밑줄 문자 (`_`) 를 쓰면, 가능한 어떤 값과도 일치' 하게 되는데, 이를 '와일드카드 패턴 (wildcard pattern)'[^wildcard-pattern] 이라고 합니다.
+튜플을 사용하면 동일한 `switch` 문에서 여러 개의 값을 테스트할 수 있습니다. 각각의 튜플 원소를 서로 다른 값이나 구간과 테스트할 수 있습니다. 대안으로, 와일드카드 패턴[^wildcard-pattern] 이라고도 하는, 밑줄 문자 (`_`) 를 쓰면, 어떤 것이든 가능한 값과 맞춰볼 수 있습니다.
 
-아래 예제는, `(Int, Int)` 라는 단순한 튜플 타입으로 표현한, (x, y) 점을 취하여, 이를 예제 뒤의 그래프에 분류합니다.
+아래 예제는, `(Int, Int)` 라는 단순한 튜플 타입으로 표현된, (x, y) 점을 취하여, 예제 뒤의 그래프 위에 이를 분류합니다.
 
 ```swift
 let somePoint = (1, 1)
@@ -419,9 +419,9 @@ default:
 
 ![a (x, y) point with tuples](/assets/Swift/Swift-Programming-Language/Control-Flow-tuples.png)
 
-`switch` 문은 '해당 점이 원점 (0, 0) 인지, 빨간색 x-축 위인 지, 주황색 y-축 위인 지, 중심이 원점인 파란색 4x4 상자 안인 지, 아니면 상자 밖인 지' 를 결정합니다.
+`switch` 문은 점이 원점인 (0, 0) 에 있는지, 빨간색 x-축 위인지, 녹색 y-축 위인지, 중심이 원점인 파란색 4x4 상자 안인지, 또는 상자 밖인지를 결정합니다.
 
-C 와 달리, 스위프트는 '똑같은 값 또는 값들을 고려하는 여러 개의 `switch` case 절' 을 허용합니다. 사실, 점 (0, 0) 은 이 예제의 '모든 _네 (four)_ case 절' 과 일치할 수 있습니다. 하지만, 여러 개가 일치 가능하면, 항상 첫 번째로 일치한 case 절을 사용합니다. 점 (0, 0) 은 `case (0, 0)` 과 첫 번째로 일치할 것이므로, 일치하는 다른 모든 case 절을 무시할 것입니다.
+**C** 와 달리, 스위프트는 여러 개의 `switch` case 가 똑같은 값 및 값들을 고려하는 걸 허용합니다. 사실, 점 (0, 0) 은 이 예제의 _네 (four)_ case 모두와 맞을 수도 있습니다. 하지만, 여러 개가 맞는게 가능하면, 항상 첫 번째로 맞춰볼 case 를 사용합니다. 점 (0, 0) 은 `case (0, 0)` 과 첫 번째로 맞을 것이므로, 맞춰볼 다른 모든 case 를 무시할 겁니다.
 
 **Value Bindings (값 연결)**
 
