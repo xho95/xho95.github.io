@@ -446,17 +446,17 @@ case let (x, y):
 
 `switch` 문은 점이 빨간색 x-축 위나, 주황색 y-축 위, 또는 (어느 축도 아닌) 또 다른 곳에 있는지를 결정합니다.
 
-세 `switch` case 들은 자리 표시용 상수 `x` 와 `y` 를 선언하는데, 이는 일시적으로 `anotherPoint` 의 튜플 값 하나 또는 둘 다를 취합니다. 첫 번째 case 인, `case (let x, 0)` 는, `y` 값이 `0` 인 어떤 점과도 맞으며 점의 `x` 값을 임시 상수 `x` 에 할당합니다. 이와 비슷하게, 두 번째 case 인, `case (0, let y)` 는, `x` 값이 `0` 인 어떤 점과도 맞으며 점의 `y` 값을 임시 상수 `y` 에 할당합니다.
+세 개의 `switch` case 는 자리 표시용 상수 `x` 와 `y` 를 선언하는데, 이는 일시적으로 `anotherPoint` 의 튜플 값 하나 또는 둘 다를 취합니다. 첫 번째 case 인, `case (let x, 0)` 는, `y` 값이 `0` 인 어떤 점과도 맞으며 점의 `x` 값을 임시 상수 `x` 에 할당합니다. 이와 비슷하게, 두 번째 case 인, `case (0, let y)` 는, `x` 값이 `0` 인 어떤 점과도 맞으며 점의 `y` 값을 임시 상수 `y` 에 할당합니다.
 
 임시 상수를 선언한 후엔, case 코드 블럭 안에서 사용할 수 있습니다. 여기선, 점을 분류한 걸 인쇄하는데 사용합니다.
 
-이 `switch` 문엔 `default` case 가 없습니다. 최종 case 인, `case let (x, y)` 는, 한 튜플에 두 개의 자리 표시용 상수를 선언하여 어떤 값과도 맞을 수 있습니다. `anotherPoint` 는 항상 값이 두 개인 튜플이기 때문에, 이 case 는 가능한 모든 나머지 값들과 맞아서, `switch` 문을 다 써버리게 하는 `default` case 가 필요 없습니다.
+이 `switch` 문엔 `default` case 가 없습니다. 최종 case 인, `case let (x, y)` 는, 한 튜플에 두 개의 자리 표시용 상수를 선언하여 어떤 값과도 맞을 수 있습니다. `anotherPoint` 는 항상 값이 두 개인 튜플이기 때문에, 이 case 는 가능한 모든 나머지 값들과 맞아서, `switch` 문을 다 써버리는 `default` case 가 필요 없습니다.
 
 **Where (where 절)**
 
-`switch` case 절에 `where` 절을 사용하면 추가 조건을 검사할 수 있습니다.
+`switch` case 는 `where` 절을 써서 추가 조건을 검사할 수도 있습니다.
 
-아래 예제는 뒤의 그래프에 (x, y) 점을 분류합니다:
+아래 예제는 뒤에 있는 그래프 위에다가 (x, y) 점을 분류합니다:
 
 ```swift
 let yetAnotherPoint = (1, -1)
@@ -473,11 +473,11 @@ case let (x, y):
 
 ![a (x, y) point with where](/assets/Swift/Swift-Programming-Language/Control-Flow-where.png)
 
-`switch` 문은 해당 점이 `x == y` 인 녹색 대각선 위인지, `x == -y` 인 보라색 대각선 위인지, 아니면 어느 쪽도 아닌지 결정합니다.
+`switch` 문은 점이 `x == y` 인 녹색 대각선 위나, `x == -y` 인 보라색 대각선 위, 또는 어느 쪽도 아닌지를 결정합니다.
 
-세 `switch` case 절은, `yetAnotherPoint` 에서 튜플 값 두 개를 임시로 취하는, 자리 표시용 상수 `x` 와 `y` 를 선언합니다. 이 상수는, 동적 필터를 생성하는, `where` 절에서 사용합니다. `switch` case 절은 해당 값의 `where` 절 조건 평가가 `true` 인 경우에만 현재 `point` 값과 일치합니다.
+세 개의 `switch` case 는 자리 표시용 상수 `x` 와 `y` 를 선언하는데, 이는 일시적으로 `yetAnotherPoint` 의 튜플 값 두 개를 취합니다. `where` 절에서 이 상수들을 써서, 동적 필터를 생성합니다. 현재 `point` 값의 `where` 절 조건이 `true` 로 평가되는 경우에만 `switch` case 와 그 값이 맞습니다.
 
-이전 예제 처럼, 최종 case 절은 남아 있는 가능한 모든 값과 일치하므로, `switch` 문을 다 써버리게 만드는 `default` case 절이 필요 없습니다.
+이전 예제에서 처럼, 최종 case 는 가능한 모든 나머지 값들과 맞아서, `switch` 문을 다 써버리는 `default` case 가 필요 없습니다.
 
 <p>
 <strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
