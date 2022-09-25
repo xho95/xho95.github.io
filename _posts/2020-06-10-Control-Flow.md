@@ -362,7 +362,7 @@ default:
 // "The letter A" 를 인쇄함
 ```
 
-읽기 쉽도록, 복합 case 도 여러 줄에 걸쳐 작성할 수 있습니다. 복합 case 에 대한 더 많은 정보는, [Compound Cases (복합 case 절)](#compound-cases-복합-case-절) 을 보기 바랍니다.
+읽기 쉽도록, 복합 case 도 여러 줄에 걸쳐 작성할 수 있습니다. 복합 case 에 대한 더 많은 정보는, [Compound Cases (복합 case)](#compound-cases-복합-case) 을 보기 바랍니다.
 
 > 한 특별한 `switch` case 끝에서 빠져 나가는 걸 명시하려면, [Fallthrough (fallthrough 문)](#fallthrough-fallthrough-문) 에서 설명한, `fallthrough` 키워드를 사용합니다.
 
@@ -480,10 +480,10 @@ case let (x, y):
 이전 예제에서 처럼, 최종 case 는 가능한 모든 나머지 값들과 맞아서, `switch` 문을 다 써버리는 `default` case 가 필요 없습니다.
 
 <p>
-<strong id="compound-cases-복합-case-절">Compound Cases (복합 case 절)</strong>
+<strong id="compound-cases-복합-case">Compound Cases (복합 case)</strong>
 </p>
 
-'switch 문에서 동일한 본문을 공유하는 여러 개의 case 절' 은 `case` 뒤에 , 각 패턴 사이에 쉼표를 둔, 여러가지 패턴을 작성함으로써 조합할 수 있습니다. 패턴 중 어떤 것이든 일치하면, 그 case 절은 일치하는 것으로 고려합니다. 목록이 길면 패턴을 여러 줄로 작성할 수 있습니다. 예를 들면 다음과 같습니다:
+여러 개의 switch case 가 동일한 본문을 공유하도록 조합하려면 `case` 뒤에 여러 가지 패턴을 쓰고, 각각의 패턴 사이에 쉼표를 두면 됩니다. 어떤 패턴이든 맞으면, case 가 맞는 걸로 고려합니다. 목록이 길면 패턴을 여러 줄에 걸쳐 작성할 수 있습니다. 예를 들면 다음과 같습니다:
 
 ```swift
 let someCharacter: Character = "e"
