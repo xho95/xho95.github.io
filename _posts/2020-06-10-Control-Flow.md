@@ -499,9 +499,9 @@ default:
 // "e is a vowel" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 절은 영어의 모든 '모음 (vowels) 소문자' 다섯 개와 일치합니다. 이와 비슷하게, 두 번째 case 절은 영어의 '모든 자음 (consonants) 소문자' 와 일치합니다. 최종적으로, `default` case 절은 다른 어떤 문자든 일치합니다.[^default-case-character]
+`switch` 문의 첫 번째 case 는 영어의 소문자 모음 다섯 개 모두와 맞습니다. 이와 비슷하게, 두 번째 case 는 소문자 영어 자음 모두와 맞습니다. 최후로는, `default` case 가 다른 어떤 문자와도 맞습니다.[^default-case-character]
 
-복합 case 절은 '값 연결 (value bindings) 을 포함' 할 수도 있습니다. 복합 case 절의 모든 패턴은 동일한 값 연결 집합을 포함해야 하며, 각각의 연결 (binding) 은 모든 복합 case 절 패턴에서 똑같은 타입의 값을 가져야 합니다. 이는, 복합 case 절의 어느 부분이 일치하든 간에, case 절 본문 코드가 연결 값에 항상 접근할 수 있고 값의 타입이 항상 똑같도록, 보장합니다.
+복합 case 도 값 연결[^value-bindings] 을 포함할 수 있습니다. 복합 case 의 모든 패턴에서 똑같은 집합의 값 연결을 포함해야 하며, 각각의 연결은 복합 case 의 모든 패턴에서 똑같은 타입의 값을 가져야 합니다. 이는, 어느 복합 case 부분이 맞든 간에, case 본문 코드가 연결 값에 항상 접근할 수 있으며 값도 항상 똑같은 타입이라는 걸, 보장합니다.
 
 ```swift
 let stillAnotherPoint = (9, 0)
@@ -514,7 +514,7 @@ default:
 // "On an axis, 9 from the origin" 를 인쇄함
 ```
 
-위 `case` 절은: x-축 상의 점과 일치하는 `(let distance, 0)` 와 y-축 상의 점과 일치하는 `(0, let distance)` 라는 두 개의 패턴을 가집니다. 두 패턴 모두 `distance` 와의 연결을 포함하며 두 패턴 모두에서 `distance` 는 정수입니다-이는 `case` 절 본문 코드가 `distance` 값에 항상 접근할 수 있음을 의미합니다.
+위 `case` 절엔 두 개의 패턴이 있습니다: `(let distance, 0)` 는 x-축 위의 점과 맞고 `(0, let distance)` 는 y-축 위의 점과 맞습니다. 패턴 둘 다 `distance` 와의 연결을 포함하며 `distance` 는 패턴 둘 다에서 정수입니다-이는 `case` 본문 코드가 항상 `distance` 의 값에 접근할 수 있다는 의미입니다.
 
 ### Control Transfer Statements (제어 전달문)
 
@@ -826,7 +826,7 @@ if #unavailable(iOS 10) {
 
 [^letter]: 원문에서는 'letter' 라는 단어를 사용하는데, 영어에서 'character' 는 표의 문자, 'letter' 는 표음 문자를 의미한다고 합니다. 원문에도 영어 알파벳은 항상 'letter' 를 사용합니다.
 
-[^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진 (exhaustive) 합니다. 왜냐면, `Character` 가 영어 문자가 아닌 다른 유니코드 문자를 가질 수도 있기 때문입니다.
+[^default-case-character]: 이 예제에선 `default` case 가 있어야 `switch` 문을 다 써버립니다. `Character` 는 영어 문자 외에 다른 유니코드 문자도 가질 수 있기 때문입니다.
 
 [^SDK]: 'SDK' 는 소프트웨어 개발 키트 (Software development kit) 의 줄임말입니다. 엑스코드 같은 통합 개발 환경 (IDE; Integrated Development Environment) 과는 의미가 조금 다릅니다. 통합 개발 환경은 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이고, 소프트웨어 개발 키트는 실제 개발에 필요한, 컴파일러와 패키지 등을 포함한, 도구를 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목과 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
