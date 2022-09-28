@@ -331,7 +331,7 @@ default:
 
 **C** 와 **오브젝티브-C** 의 `switch` 문과 대조하여, 기본적으로 스위프트의 `switch` 문은 각각의 case 밑을 빠져나가 그 다음 걸로 들어가지 않습니다. 그 대신, 명시적 `break` 문의 요구 없이도, 첫 번째로 맞은 `switch` case 를 완료하자마자 곧, 전체 `switch` 문의 실행을 종료합니다. 이는 **C** 의 `switch` 문 보다 더 안전하고 쉽게 쓸 수 있게 하며 실수로 하나 보다 많은 `switch` case 를 실행하는 것도 피해줍니다.
 
-> 스위프트에서 `break` 가 필수는 아니지만, `break` 문을 사용하면 한 특별한 case 와 맞춰봐서 무시할 수도 있고 또는 맞는 case 의 실행이 완료되기 전에 그 case 를 끊고 나올 수 있습니다. 자세한 건, [Break in a Switch Statement (Switch 문의 Break)](#break-in-a-switch-statement-switch-문의-break) 을 보기 바랍니다.
+> 스위프트에서 `break` 가 필수는 아니지만, `break` 문을 사용하면 한 특별한 case 와 맞춰봐서 무시할 수도 있고 또는 맞는 case 의 실행이 완료되기 전에 그 case 를 끊고 나올 수 있습니다. 자세한 건, [Break in a Switch Statement (Switch 문 안의 Break)](#break-in-a-switch-statement-switch-문-안의-break) 을 보기 바랍니다.
 
 각각의 case 본문엔 _반드시 (must)_ 적어도 하나의 실행문이 담겨 있어야 합니다. 다음 코드처럼 쓰면 무효인데, 첫 번째 case 가 비어 있기 때문입니다:
 
@@ -499,9 +499,9 @@ default:
 // "e is a vowel" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 절은 영어의 모든 '모음 (vowels) 소문자' 다섯 개와 일치합니다. 이와 비슷하게, 두 번째 case 절은 영어의 '모든 자음 (consonants) 소문자' 와 일치합니다. 최종적으로, `default` case 절은 다른 어떤 문자든 일치합니다.[^default-case-character]
+`switch` 문의 첫 번째 case 는 영어의 소문자 모음 다섯 개 모두와 맞습니다. 이와 비슷하게, 두 번째 case 는 소문자 영어 자음 모두와 맞습니다. 최후로는, `default` case 가 다른 어떤 문자와도 맞습니다.[^default-case-character]
 
-복합 case 절은 '값 연결 (value bindings) 을 포함' 할 수도 있습니다. 복합 case 절의 모든 패턴은 동일한 값 연결 집합을 포함해야 하며, 각각의 연결 (binding) 은 모든 복합 case 절 패턴에서 똑같은 타입의 값을 가져야 합니다. 이는, 복합 case 절의 어느 부분이 일치하든 간에, case 절 본문 코드가 연결 값에 항상 접근할 수 있고 값의 타입이 항상 똑같도록, 보장합니다.
+복합 case 도 값 연결[^value-bindings] 을 포함할 수 있습니다. 복합 case 의 모든 패턴에서 똑같은 집합의 값 연결을 포함해야 하며, 각각의 연결은 복합 case 의 모든 패턴에서 똑같은 타입의 값을 가져야 합니다. 이는, 어느 복합 case 부분이 맞든 간에, case 본문 코드가 연결 값에 항상 접근할 수 있으며 값도 항상 똑같은 타입이라는 걸, 보장합니다.
 
 ```swift
 let stillAnotherPoint = (9, 0)
@@ -514,11 +514,11 @@ default:
 // "On an axis, 9 from the origin" 를 인쇄함
 ```
 
-위 `case` 절은: x-축 상의 점과 일치하는 `(let distance, 0)` 와 y-축 상의 점과 일치하는 `(0, let distance)` 라는 두 개의 패턴을 가집니다. 두 패턴 모두 `distance` 와의 연결을 포함하며 두 패턴 모두에서 `distance` 는 정수입니다-이는 `case` 절 본문 코드가 `distance` 값에 항상 접근할 수 있음을 의미합니다.
+위 `case` 절엔 두 개의 패턴이 있습니다: `(let distance, 0)` 는 x-축 위의 점과 맞고 `(0, let distance)` 는 y-축 위의 점과 맞습니다. 패턴 둘 다 `distance` 와의 연결을 포함하며 `distance` 는 패턴 둘 다에서 정수입니다-이는 `case` 본문 코드가 항상 `distance` 의 값에 접근할 수 있다는 의미입니다.
 
 ### Control Transfer Statements (제어 전달문)
 
-_제어 전달문 (control transfer statements)_ 은, 제어를 코드 한 곳에서 다른 곳으로 전달하여, 코드 실행 순서를 바꿉니다. 스위프트에는 다섯 개의 제어 전달문이 있습니다:
+_제어 전달문 (control transfer statements)_ 은, 코드 한 곳에서 다른 곳으로 제어를 전달함으로써, 코드의 실행 순서를 바꿉니다. 스위프트엔 다섯 개의 제어 전달문이 있습니다:
 
 * `continue`
 * `break`
@@ -526,13 +526,13 @@ _제어 전달문 (control transfer statements)_ 은, 제어를 코드 한 곳�
 * `return`
 * `thorw`
 
-`continue`, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서, `throw` 문은 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 에서 설명합니다.
+`continue` 와, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% post_url 2020-06-02-Functions %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% post_url 2020-05-16-Error-Handling %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 에서 설명합니다.
 
 #### Continue (continue 문)
 
-`continue` 문은 반복문에게 '지금 하고 있는 것을 멈추고 반복문을 통과하여 다음 회차 맨 앞에서 다시 시작하라' 고 말합니다. 이는 반복문을 완전히 떠나지 않고도 "현재 반복 회차에서 할 건 다했다" 고 말합니다.
+`continue` 문은 반복문에게 하고 있는 걸 멈추고 반복을 통과하여 그 다음 회차 맨 앞에서 다시 시작하라고 말합니다. 이는 반복문을 완전히 다 떠나지 않고도 "현재 반복 회차에서 할 건 다했다" 라고 말하는 겁니다.
 
-다음 예제는 '수수께끼 구절 (cryptic puzzle phrase) 생성을 위해 소문자 문자열에서 모든 모음과 공백을 제거' 합니다:
+다음 예제는 소문자 문자열에서 모음과 공백을 모두 제거하여 수수께끼 구절을 생성합니다:
 
 ```swift
 let puzzleInput = "great minds think alike"
@@ -548,21 +548,21 @@ print(puzzleOutput)
 // "grtmndsthnklk" 를 인쇄함
 ```
 
-위 코드는 모음이나 공백과 일치할 때마다 `continue` 키워드를 호출하여, 반복문 현재 회차를 곧바로 끝내고 다음 회차 시작으로 곧장 뛰어 넘도록 합니다.
+위 코드는 모음이나 공백과 맞을 때마다 `continue` 키워드를 호출하여, 현재 반복 회차를 곧바로 끝내고 곧장 그 다음 회차 시작으로 뛰어 넘도록 합니다.
 
 #### Break (break 문)
 
-`break` 문은 곧바로 전체 제어 흐름문 실행을 끝냅니다. `switch` 문이나 반복문 실행을 다른 경우보다 더 일찍 종결하고 싶을 때 `switch` 문이나 반복문 안에 `break` 문을 사용할 수 있습니다.
+`break` 문은 전체 제어 흐름문 실행을 곧바로 끝냅니다. `switch` 문 또는 반복문의 실행을 다른 경우보다 더 일찍 종결하고 싶을 때 `switch` 문이나 반복문 안에 `break` 문을 쓸 수 있습니다.
 
 **Break in a Loop Statement (반복문 안의 break 문)**
 
-반복문 안에서 사용할 땐, `break` 가 반복문 실행을 곧바로 끝내고 제어를 반복문 닫는 중괄호 (`}`) 뒤의 코드로 옮깁니다. 더 이상 반복문의 현재 회차 코드를 실행하지도, 반복문 회차를 시작하지도 않습니다.
+반복문 안에서 쓸 땐, `break` 가 반복문의 실행을 곧바로 끝내며 반복문의 닫는 중괄호 (`}`) 뒤의 코드로 제어를 옮깁니다. 더 이상 현재 반복 회차 코드를 실행하지도, 반복 회차를 (새로) 시작하지도 않습니다.
 
 <p>
-<strong id="break-in-a-switch-statement-switch-문의-break">Break in a Switch Statement (switch 문의 break)</strong>
+<strong id="break-in-a-switch-statement-switch-문-안의-break">Break in a Switch Statement (switch 문 안의 break)</strong>
 </p>
 
-`switch` 문 안에서 사용할 땐, `break` 가 `switch` 문 실행을 곧바로 끝내고 제어를 `switch` 문 닫는 중괄호 (`}`) 뒤의 코드로 옮기도록 합니다.
+`switch` 문 안에서 쓸 땐, `break` 가 `switch` 문 실행을 곧바로 끝내고 제어를 `switch` 문 닫는 중괄호 (`}`) 뒤의 코드로 옮기도록 합니다.
 
 이런 동작을 사용하면 `switch` 문에 있는 하나 이상의 case 절을 일치시켜서 무시할 수 있습니다. 스위프트의 `switch` 문은 다 써버려야 하고 빈 case 절을 허용하지 않기 때문에, 의도를 명시하기 위해선 일부러 case 절을 일치시키고 무시하는 게 필요할 때가 있습니다. 이를 하려면 무시하려는 case 절 전체 본문을 `break` 문으로 작성하면 됩니다. `switch` 문이 해당 case 절과 일치할 때, case 절 안의 `break` 문이 `switch` 문 실행을 곧바로 끝냅니다.
 
@@ -826,7 +826,7 @@ if #unavailable(iOS 10) {
 
 [^letter]: 원문에서는 'letter' 라는 단어를 사용하는데, 영어에서 'character' 는 표의 문자, 'letter' 는 표음 문자를 의미한다고 합니다. 원문에도 영어 알파벳은 항상 'letter' 를 사용합니다.
 
-[^default-case-character]: 이 예제는 `default` case 절이 있어야, 완전 소진 (exhaustive) 합니다. 왜냐면, `Character` 가 영어 문자가 아닌 다른 유니코드 문자를 가질 수도 있기 때문입니다.
+[^default-case-character]: 이 예제에선 `default` case 가 있어야 `switch` 문을 다 써버립니다. `Character` 는 영어 문자 외에 다른 유니코드 문자도 가질 수 있기 때문입니다.
 
 [^SDK]: 'SDK' 는 소프트웨어 개발 키트 (Software development kit) 의 줄임말입니다. 엑스코드 같은 통합 개발 환경 (IDE; Integrated Development Environment) 과는 의미가 조금 다릅니다. 통합 개발 환경은 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이고, 소프트웨어 개발 키트는 실제 개발에 필요한, 컴파일러와 패키지 등을 포함한, 도구를 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목과 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
