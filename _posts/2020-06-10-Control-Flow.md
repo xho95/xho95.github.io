@@ -331,7 +331,7 @@ default:
 
 **C** 와 **오브젝티브-C** 의 `switch` 문과 대조하여, 기본적으로 스위프트의 `switch` 문은 각각의 case 밑을 빠져나가 그 다음 걸로 들어가지 않습니다. 그 대신, 명시적 `break` 문의 요구 없이도, 첫 번째로 맞은 `switch` case 를 완료하자마자 곧, 전체 `switch` 문의 실행을 종료합니다. 이는 **C** 의 `switch` 문 보다 더 안전하고 쉽게 쓸 수 있게 하며 실수로 하나 보다 많은 `switch` case 를 실행하는 것도 피해줍니다.
 
-> 스위프트에서 `break` 가 필수는 아니지만, `break` 문을 사용하면 한 특별한 case 와 맞춰봐서 무시할 수도 있고 또는 맞는 case 의 실행이 완료되기 전에 그 case 를 끊고 나올 수 있습니다. 자세한 건, [Break in a Switch Statement (Switch 문의 Break)](#break-in-a-switch-statement-switch-문의-break) 을 보기 바랍니다.
+> 스위프트에서 `break` 가 필수는 아니지만, `break` 문을 사용하면 한 특별한 case 와 맞춰봐서 무시할 수도 있고 또는 맞는 case 의 실행이 완료되기 전에 그 case 를 끊고 나올 수 있습니다. 자세한 건, [Break in a Switch Statement (Switch 문 안의 Break)](#break-in-a-switch-statement-switch-문-안의-break) 을 보기 바랍니다.
 
 각각의 case 본문엔 _반드시 (must)_ 적어도 하나의 실행문이 담겨 있어야 합니다. 다음 코드처럼 쓰면 무효인데, 첫 번째 case 가 비어 있기 때문입니다:
 
@@ -548,21 +548,21 @@ print(puzzleOutput)
 // "grtmndsthnklk" 를 인쇄함
 ```
 
-위 코드는 모음이나 공백과 맞을 때마다 `continue` 키워드를 호출하여, 현재 반복 회차를 곧바로 끝내고 곧장 뛰어서 그 다음 회차 시작으로 가게 합니다.
+위 코드는 모음이나 공백과 맞을 때마다 `continue` 키워드를 호출하여, 현재 반복 회차를 곧바로 끝내고 곧장 그 다음 회차 시작으로 뛰어 넘도록 합니다.
 
 #### Break (break 문)
 
-`break` 문은 곧바로 전체 제어 흐름문 실행을 끝냅니다. `switch` 문이나 반복문 실행을 다른 경우보다 더 일찍 종결하고 싶을 때 `switch` 문이나 반복문 안에 `break` 문을 사용할 수 있습니다.
+`break` 문은 전체 제어 흐름문 실행을 곧바로 끝냅니다. `switch` 문 또는 반복문의 실행을 다른 경우보다 더 일찍 종결하고 싶을 때 `switch` 문이나 반복문 안에 `break` 문을 쓸 수 있습니다.
 
 **Break in a Loop Statement (반복문 안의 break 문)**
 
-반복문 안에서 사용할 땐, `break` 가 반복문 실행을 곧바로 끝내고 제어를 반복문 닫는 중괄호 (`}`) 뒤의 코드로 옮깁니다. 더 이상 반복문의 현재 회차 코드를 실행하지도, 반복문 회차를 시작하지도 않습니다.
+반복문 안에서 쓸 땐, `break` 가 반복문의 실행을 곧바로 끝내며 반복문의 닫는 중괄호 (`}`) 뒤의 코드로 제어를 옮깁니다. 더 이상 현재 반복 회차 코드를 실행하지도, 반복 회차를 (새로) 시작하지도 않습니다.
 
 <p>
-<strong id="break-in-a-switch-statement-switch-문의-break">Break in a Switch Statement (switch 문의 break)</strong>
+<strong id="break-in-a-switch-statement-switch-문-안의-break">Break in a Switch Statement (switch 문 안의 break)</strong>
 </p>
 
-`switch` 문 안에서 사용할 땐, `break` 가 `switch` 문 실행을 곧바로 끝내고 제어를 `switch` 문 닫는 중괄호 (`}`) 뒤의 코드로 옮기도록 합니다.
+`switch` 문 안에서 쓸 땐, `break` 가 `switch` 문 실행을 곧바로 끝내고 제어를 `switch` 문 닫는 중괄호 (`}`) 뒤의 코드로 옮기도록 합니다.
 
 이런 동작을 사용하면 `switch` 문에 있는 하나 이상의 case 절을 일치시켜서 무시할 수 있습니다. 스위프트의 `switch` 문은 다 써버려야 하고 빈 case 절을 허용하지 않기 때문에, 의도를 명시하기 위해선 일부러 case 절을 일치시키고 무시하는 게 필요할 때가 있습니다. 이를 하려면 무시하려는 case 절 전체 본문을 `break` 문으로 작성하면 됩니다. `switch` 문이 해당 case 절과 일치할 때, case 절 안의 `break` 문이 `switch` 문 실행을 곧바로 끝냅니다.
 
