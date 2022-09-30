@@ -566,12 +566,12 @@ print(puzzleOutput)
 
 이 동작을 사용하면 `switch` 문의 case 와 맞게 하여 (이를) 무시할 수 있습니다. 스위프트의 `switch` 문은 다 써버려야 하고 빈 case 는 허용안되기 때문에, 의도를 명시하기 위해 일부러 case 와 맞춰서 무시하는게 필요할 때가 있습니다. 이렇게 하려면 무시하고 싶은 case 의 전체 본문으로 `break` 문을 쓰면 됩니다. `switch` 문에서 그 case 가 맞을 때, case 안의 `break` 문이 `switch` 문의 실행을 곧바로 끝냅니다.
 
-> 주석만 담은 `switch` case 절은 컴파일-시간 에러를 보고합니다. 주석은 구문이 아니며 `switch` case 절을 무시하도록 유발하지 않습니다. `switch` case 절을 무시하려면 항상 `break` 문을 사용합니다.
+> `switch` case 가 주석만 담고 있으면 컴파일-시간 에러를 보고합니다. 주석은 구문이 아니라서 `switch` case 를 무시하도록 하지 않습니다. 항상 `break` 문을 써야 `switch` case 를 무시합니다.
 
-다음 예제는 `Character` 값에 대한 '전환 (switch)' 으로 네 개 중 어느 언어로 나타낸 숫자인지를 결정합니다. 간결함을 위해, 단일 `switch` case 절에서 여러 개의 값을 다룹니다.
+다음 예제는 한 `Character` 값을 전환하여 네 언어로 된 숫자 중 어느 걸 나타내는지 결정합니다. 간결하게, 단일한 `switch` case 안에서 여러 개의 값을 다룹니다.
 
 ```swift
-let numberSymbol: Character = "三"  // 숫자 3 의 중국어 기호
+let numberSymbol: Character = "三"  // 중국어로 된 숫자 3
 var possibleIntegerValue: Int?
 switch numberSymbol {
 case "1", "١", "一", "๑":
