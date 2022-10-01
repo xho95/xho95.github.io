@@ -308,7 +308,7 @@ if temperatureInFahrenheit <= 32 {
 
 `if` 문의 본문 같이, 각각의 `case` 는 별도로 실행되는 코드 분기입니다. `switch` 문은 어느 분기를 선택하는게 좋은지 결정합니다. 이 절차를 고려 중인 값의 _전환 (switching)_ 이라고 합니다.
 
-모든 `switch` 문은 반드시 _다 써버려야 (exhaustive)_ 합니다.[^exhaustive] 즉, 고려 중인 타입으로 가능한 모든 값은 반드시 `switch` 문의 한 case 와 맞아야 합니다. 가능한 모든 값에 case 를 제공하는 게 적절치 않다면, 기본 case 를 정의하여 명시 안한 어떤 값이든 다루게 할 수 있습니다. 이 기본 case 는 `default` 키워드로 지시하며, 반드시 항상 마지막에 나타나야 합니다.
+모든 `switch` 문은 반드시 _다 써버려야 (exhaustive)_ 합니다.[^exhaustive] 즉, 고려 중인 타입으로 가능한 모든 값은 반드시 `switch` case 하나와 맞아야 합니다. 가능한 모든 값에 case 를 제공하는게 적절치 않다면, 기본 case 를 정의하여 명시 안한 어떤 값이든 다루게 할 수 있습니다. 이 기본 case 는 `default` 키워드로 지시하며, 반드시 항상 마지막에 나타나야 합니다.
 
 다음 예제는 `switch` 문을 써서 `someCharacter` 라는 단일한 소문자를 고려합니다:
 
@@ -325,7 +325,7 @@ default:
 // "The last letter of the alphabet" 를 인쇄함
 ```
 
-`switch` 문의 첫 번째 case 와 맞는 건 영어 알파벳 첫 글자[^letter] 인, `a` 이고, 두 번째 case 와 맞는 건 마지막 글자인, `z` 입니다. `switch` 엔, 모든 알파벳 문자만이 아닌, 가능한 모든 문자에 대한 case 가 있어야 하기 때문에, 이 `switch` 문은 `default` case 를 써서 `a` 와 `z` 이외의 모든 문자를 맞춰봅니다. 이걸 제공하면 `switch` 문이 다 써버리는 걸 보장합니다.
+`switch` 문의 첫 번째 case 와 맞는 건 영어 알파벳 첫 글자[^letter] 인, `a` 이고, 두 번째 case 와 맞는 건 마지막 글자인, `z` 입니다. `switch` 는, 모든 알파벳 문자만이 아니라, 가능한 모든 문자에 대해 case 가 있어야 하기 때문에, 이 `switch` 문은 `default` case 를 사용하여 `a` 와 `z` 이외의 모든 다른 문자를 맞춥니다. 이걸 제공하면 `switch` 문이 다 써버린다는 걸 보장합니다.
 
 **No Implicit Fallthrough (암시적으로 빠져나가지 않음)**
 
@@ -597,11 +597,11 @@ if let integerValue = possibleIntegerValue {
 
 `switch` 문의 실행을 완료한 후, 예제는 옵셔널 연결을 사용하여 값을 찾았는지 결정합니다. 옵셔널 타입인 덕에 `possibleIntegerValue` 변수엔 암시적 초기 값인 `nil` 이 있으므로, `switch` 문의 첫 네 case 중 하나에서 `possibleIntegerValue` 에 실제로 값을 설정한 경우에만 옵셔널 연결이 성공할 겁니다.
 
-위 예제에서 가능한 모든 `Character` 값을 나열하는 건 현실적이지 않기 때문에, `default` case 로 맞지 않는 어떤 문자든 처리합니다. 이 `default` case 는 어떤 행동도 할 필요가 없으므로, 그 본문엔 단일 `break` 문을 씁니다. `default` case 와 맞자마자, `break` 문이 `switch` 문의 실행을 끝내며, `if let` 문부터 (다시) 코드 실행을 계속합니다.
+위 예제에선 `Character` 로 가능한 모든 값을 나열하는 건 현실적이지 않기 때문에, `default` case 로 안맞는 문자들을 처리합니다. 이 `default` case 는 어떤 행동도 할 필요가 없어서, 단일 `break` 문을 본문에 씁니다. `default` case 와 맞자마자, `break` 문이 `switch` 문의 실행을 끝내며, `if let` 문부터 코드 실행을 계속합니다.
 
 #### Fallthrough (fallthrough 문)
 
-스위프트의, `switch` 문은 각각의 case 절 밑을 빠져나가 다음으로 들어가지 않습니다. 즉, 첫 번째로 일치한 case 절을 완료하자마자 전체 `switch` 문 실행을 완료합니다. 이와 대조적으로, C 는 모든 `switch` case 절 끝에 빠져 나가는 걸 막기 위한 명시적인 `break` 문을 집어 넣을 걸 요구합니다. 기본적인 빠져 나감을 피한다는 건 스위프트 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 여러 개의 `switch` case 절을 실수로 실행하는 걸 피하게 해준다는 의미입니다.
+스위프트에선, `switch` 문이 각각의 case 밑을 빠져나가서 그 다음으로 들어가지 않습니다. 즉, 첫 번째로 맞은 case 를 완료하자마자 전체 `switch` 문의 실행을 완료합니다. 이와 대조하여, **C** 는 빠져 나가는 걸 막고자 모든 `switch` case 끝에 `break` 문을 명시하여 집어 넣도록 요구합니다. 기본적인 빠져 나감을 피한다는 건 스위프트 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 여러 개의 `switch` case 절을 실수로 실행하는 걸 피하게 해준다는 의미입니다.
 
 C-스타일의 빠져 나감 (fallthrough) 동작이 필요하면, 각각의 경우마다 `fallthrough` 키워드로 이 동작을 직접 선택할 수 있습니다. 아래 예제는 수치 값을 설명하는 문장을 생성하기 위해 `fallthrough` 를 사용합니다.
 
