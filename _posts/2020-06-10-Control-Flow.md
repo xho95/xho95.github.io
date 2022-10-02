@@ -601,9 +601,9 @@ if let integerValue = possibleIntegerValue {
 
 #### Fallthrough (fallthrough 문)
 
-스위프트에선, `switch` 문이 각각의 case 밑을 빠져나가서 그 다음으로 들어가지 않습니다. 즉, 첫 번째로 맞은 case 를 완료하자마자 전체 `switch` 문의 실행을 완료합니다. 이와 대조하여, **C** 는 빠져 나가는 걸 막고자 모든 `switch` case 끝에 `break` 문을 명시하여 집어 넣도록 요구합니다. 빠져나가는 걸 기본으로 피한다는 건 스위프트의 `switch` 문이 C 의 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 실수로 여러 개의 `switch` case 를 실행하는 걸 피하게 한다는 의미입니다.
+스위프트에선, `switch` 문이 각각의 case 밑을 빠져셔 그 다음으로 넘어가지 않습니다. 즉, 첫 번째로 맞은 case 를 완료하자마자 전체 `switch` 문의 실행을 완료합니다. 이와 대조하여, **C** 는 빠져 나가는 걸 막고자 모든 `switch` case 끝에 `break` 문을 명시하여 집어 넣도록 요구합니다. 기본으로 빠져나가는 걸 피한다는 건 스위프트의 `switch` 문이 **C** 의 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 여러 개의 `switch` case 를 실수로 실행하는 걸 피해준다는 의미입니다.
 
-C-스타일의 빠져 나감 (fallthrough) 동작이 필요하면, 각각의 경우마다 `fallthrough` 키워드로 이 동작을 직접 선택할 수 있습니다. 아래 예제는 수치 값을 설명하는 문장을 생성하기 위해 `fallthrough` 를 사용합니다.
+**C**-스타일의 빠져 나감 동작이 필요하다면, 각각의 경우마다 `fallthrough` 키워드로 이런 동작을 직접 선택할 수 있습니다. 아래 예제는 `fallthrough` 를 써서 수치 값을 설명하는 글을 생성합니다.
 
 ```swift
 let integerToDescribe = 5
@@ -619,13 +619,13 @@ print(description)
 // "The number 5 is a prime number, and also an integer." 를 인쇄함
 ```
 
-이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 여기에 초기 값을 할당합니다. 그런 다음 `switch` 문을 사용하여 `integerToDescribe` 값을 고려합니다. `integerToDescribe` 값이 목록에 있는 소수 (prime number) 중 하나면, 수치 값이 소수임을 표기하기 위해, `description` 끝에 문장을 덧붙입니다. 그런 다음 `default` case 절 까지 마저 "빠져 들기 (fall into)" 위해 `fallthrough` 키워드를 사용합니다. `default` case 절은 설명 끝에 부가적인 문장을 추가하고, `switch` 문을 완료합니다.
+이 예제는 `description` 이라는 새로운 `String` 변수를 선언하고 여기에 초기 값을 할당합니다. 그런 다음 `switch` 문으로 `integerToDescribe` 의 값을 고려합니다. `integerToDescribe` 값이 목록 안의 소수[^prime-number] 중 하나면, 함수가 `description` 끝에 글을 덧붙여, 수치 값이 소수라는 걸 기록합니다. 그런 다음 `fallthrough` 키워드로 `default` case 까지 마저 "빠져 들어 (fall into)" 갑니다. `default` case 는 설명 끝에 부가적인 글을 추가하고, `switch` 문을 완료합니다.
 
-`integerToDescribe` 값이 목록에 있는 소수가 아닌 한, 첫 번째 `switch` case 절과는 아예 일치하지 않습니다. 지정한 다른 case 절이 없기 때문에, `integerToDescribe` 는 `default` case 절과 일치합니다.
+`integerToDescribe` 값이 목록 안의 소수가 아닌 한, 첫 번째 `switch` case 와는 아예 맞춰지지 않습니다. 다른 case 를 지정한게 없기 때문에, `integerToDescribe` 는 `default` case 와 맞춰집니다.
 
-`switch` 문 실행을 종료한 후, `print(_:separator:terminator:)` 함수를 사용하여 수치 값 설명을 인쇄합니다. 이 예제는, 수 `5` 가 소수라고 올바로 식별합니다.
+`switch` 문의 실행을 종료한 후에, `print(_:separator:terminator:)` 함수로 수치 값의 설명을 인쇄합니다. 이 예제에선, 수 `5` 의 정체가 소수라는 걸 올바로 식별합니다.
 
-> `fallthrough` 키워드는 빠져 들어 실행할 `switch` case 절 조건을 검사하진 않습니다. `fallthrough` 키워드는, C 표준 `swtich` 문 동작 처럼, 단순히 코드 실행이 그 다음 case 절 (또는 `default` case 절) 블럭으로 직접 이동하도록 합니다.
+> `fallthrough` 키워드는 빠져 들어 실행할 `switch` case 의 조건을 검사하지 않습니다. `fallthrough` 키워드는, **C** 표준 `swtich` 문의 동작 처럼, 코드 실행을 단순히 그 다음 case (나 `default` case) 블럭에 있는 구문으로 직접 이동하게 합니다.
 
 #### Labeled Statements (이름표 구문)
 
