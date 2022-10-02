@@ -14,7 +14,7 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 스위프트는 `for`-`in` 반복문도 제공하여 배열과, 딕셔너리, 범위, 문자열, 및 기타 다른 시퀀스[^sequences] 들도 쉽게 반복하도록 합니다.
 
-스위프트의 `switch` 문은 수많은 **C**-같은 언어[^C-like] 에 있는 자신의 상대방보다 상당히 더 강력합니다. case 절은, 구간 맞춰보기[^interval-matches] 와, 튜플, 및 지정한 타입으로의 변환[^casts] 을 포함하여, 수많은 서로 다른 패턴들[^patterns] 과 맞춰볼 수 있습니다. `switch` 문 case 에 맞는 값은 임시 상수나 변수로 연결되어 case 본문 안에서 사용할 수도 있고, 각각의 case 에서 `where` 절로 복잡한 맞춤 조건을 표현할 수도 있습니다.
+스위프트의 `switch` 문은 수많은 **C**-같은 언어[^C-like] 의 것들보다 훨씬 더 강력합니다. case 절은, 구간 맞춰보기[^interval-matches] 와, 튜플, 및 지정한 타입으로의 변환[^casts] 을 포함하여, 수많은 서로 다른 패턴들[^patterns] 과 맞춰볼 수 있습니다. `switch` 문 case 에 맞는 값은 임시 상수나 변수로 연결되어 case 본문 안에서 사용할 수도 있고, 각각의 case 에서 `where` 절로 복잡한 맞춤 조건을 표현할 수도 있습니다.
 
 ### For-In Loops (for-in 반복문)
 
@@ -601,7 +601,7 @@ if let integerValue = possibleIntegerValue {
 
 #### Fallthrough (fallthrough 문)
 
-스위프트에선, `switch` 문이 각각의 case 밑을 빠져나가서 그 다음으로 들어가지 않습니다. 즉, 첫 번째로 맞은 case 를 완료하자마자 전체 `switch` 문의 실행을 완료합니다. 이와 대조하여, **C** 는 빠져 나가는 걸 막고자 모든 `switch` case 끝에 `break` 문을 명시하여 집어 넣도록 요구합니다. 기본적인 빠져 나감을 피한다는 건 스위프트 `switch` 문이 C 에 있는 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 여러 개의 `switch` case 절을 실수로 실행하는 걸 피하게 해준다는 의미입니다.
+스위프트에선, `switch` 문이 각각의 case 밑을 빠져나가서 그 다음으로 들어가지 않습니다. 즉, 첫 번째로 맞은 case 를 완료하자마자 전체 `switch` 문의 실행을 완료합니다. 이와 대조하여, **C** 는 빠져 나가는 걸 막고자 모든 `switch` case 끝에 `break` 문을 명시하여 집어 넣도록 요구합니다. 빠져나가는 걸 기본으로 피한다는 건 스위프트의 `switch` 문이 C 의 것보다 훨씬 더 간결하고 예측 가능하며, 따라서 실수로 여러 개의 `switch` case 를 실행하는 걸 피하게 한다는 의미입니다.
 
 C-스타일의 빠져 나감 (fallthrough) 동작이 필요하면, 각각의 경우마다 `fallthrough` 키워드로 이 동작을 직접 선택할 수 있습니다. 아래 예제는 수치 값을 설명하는 문장을 생성하기 위해 `fallthrough` 를 사용합니다.
 
