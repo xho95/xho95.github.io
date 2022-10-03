@@ -224,13 +224,13 @@ case .suppressed:
 
 > GRAMMAR OF A SWITCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
-### Labeled Statement (이름표 구문)
+### Labeled Statement (이름표 문)
 
 반복문이나, `if` 문, `switch` 문, 또는 `do` 문 앞엔 접두사로 _구문 이름표 (statement label)_ 를 둘 수 있는데, 이는 이름표 이름과 그 바로 뒤의 콜론 (`:`) 으로 구성됩니다. 밑에 있는 [Break Statement ('break' 문)](#break-statement-break-문) 과 [Continue Statement ('continue' 문)](#continue-statement-continue-문) 부분에서 논의하듯, 반복문이나 `switch` 문 안에서 제어 흐름을 바꿀 방법을 명시하려면, `break` 및 `continue` 문에 구문 이름표를 사용합니다.
 
-이름표 구문의 영역은 구문 이름표 뒤의 전체 구문입니다. 이름표 구문을 중첩할 순 있지만, 각각의 구문 이름표 이름은 반드시 유일해야 합니다.
+이름표 문의 영역은 구문 이름표 뒤의 전체 구문입니다. 이름표 문을 중첩할 순 있지만, 각각의 구문 이름표 이름은 반드시 유일해야 합니다.
 
-구문 이름표에 대한 더 많은 정보와 사용 방법 예제를 보려면, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 보도록 합니다.
+구문 이름표에 대한 더 많은 정보와 사용 방법 예제를 보려면, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Labeled Statements (이름표 문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
@@ -253,7 +253,7 @@ case .suppressed:
 
 두 경우 모두, 그런 다음 자신을 둘러싼 반복문이나 `switch` 문 뒤의 첫 번째 줄이, 있으면 (그리로), 프로그램 제어를 전달합니다.
 
-`break` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 보도록 합니다.
+`break` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장의 [Break (break 문)]({% post_url 2020-06-10-Control-Flow %}#break-break-문) 과 [Labeled Statements (이름표 문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -272,7 +272,7 @@ case .suppressed:
 
 `for` 문에선, `continue` 문 실행 후에도 여전히 증가 표현식[^increment-expression] 을 평가하는데, 반복문 본문을 실행한 후 증가 표현식을 평가하기 때문입니다.
 
-`continue` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 구문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-구문) 부분을 보도록 합니다.
+`continue` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에 있는 [Continue (Continue 문)]({% post_url 2020-06-10-Control-Flow %}#continue-continue-문) 과 [Labeled Statements (이름표 문)]({% post_url 2020-06-10-Control-Flow %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONTINUE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
