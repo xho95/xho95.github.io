@@ -633,23 +633,23 @@ print(description)
 
 이 목표를 달성하기 위해서, 반복문이나 조건문에 _구문 이름표 (statement label)_ 를 표시할 수 있습니다. 조건문에선, 구문 이름표와 `break` 문을 사용하여 이름표 문의 실행을 끝낼 수 있습니다. 반복문에선, 구문 이름표와 `break` 또는 `continue` 문을 사용하여 이름표 문의 실행을 끝내거나 계속할 수 있습니다.
 
-이름표 문은 '구문 도입자 (introducer) 키워드와 동일한 줄에 이름표를 두고, 뒤에 콜론을 붙임' 으로써, 지시합니다. 다음은 `while` 반복문을 위한 이 구문 예제이지만, 원리는 모든 반복문과 `switch` 문에서 똑같습니다:
+이름표 문을 지시하려면 구문 도입자 키워드[^introducer] 와 같은 줄에 이름표를 두고, 그 뒤에 콜론을 붙이면 됩니다. 이 구문의 `while` 반복문 예제는 이렇는데, 원리는 모든 반복문과 `switch` 문에서 똑같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`label name-이름표 이름`: while `condition-조건` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-다음 예제는 이 장 앞에 봤던 _뱀과 사다리 (Snakes and Ladders)_ 게임을 '이름표 붙인 `while` 반복문을 가진 `break` 문과 `continue` 문을 사용' 하여 개조한 버전입니다. 단 이번에는, 게임에 부가적인 규칙이 있습니다:
+다음 예제는 `break` 와 `continue` 문 및 이름표 단 `while` 반복문으로 이 장 앞에서 본 _뱀과 사다리 (Snakes and Ladders)_ 게임을 개조한 버전입니다. 단 이번에는, 게임에 부가 규칙이 있습니다:
 
 * 승리하려면, 반드시 25번 정사각형에 _정확하게 (exactly)_ 착륙해야 합니다.
 
-특정 주사위 굴림 값이 25번 정사각형을 넘어가게 하면, 반드시 25번 정사각형에 착륙할 정확한 수를 굴릴 때까지 다시 굴려야 합니다.
+특별한 주사위 굴림 값이 25번 정사각형을 넘어가게 한다면, 25번 정사각형에 정확하게 착륙할 수를 굴릴 때까지 반드시 다시 굴려야 합니다.
 
 게임판은 이전과 똑같습니다.
 
 ![snakes and ladders](/assets/Swift/Swift-Programming-Language/Control-Flow-snakes-and-ladders.jpg)
 
-`finalSquare`, `board`, `square`, 및 `diceRoll` 값도 이전과 똑같이 초기화합니다:
+`finalSquare` 와, `board`, `square`, 및 `diceRoll` 값의 초기화도 이전과 똑같습니다:
 
 ```swift
 let finalSquare = 25
