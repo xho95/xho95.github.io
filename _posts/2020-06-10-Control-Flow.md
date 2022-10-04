@@ -660,9 +660,9 @@ var square = 0
 var diceRoll = 0
 ```
 
-이 버전의 게임은 게임 로직을 구현하기 위해 `while` 반복문과 `switch` 문을 사용합니다. `while` 반복문은 자신이 뱀과 사다리 게임의 주요 게임 반복문임을 지시하도록 `gameLoop` 라는 구문 이름표를 가집니다.
+이 버전의 게임은 `while` 반복문과 `switch` 문으로 게임 로직을 구현합니다. `while` 반복문엔 `gameLoop` 라는 구문 이름표가 있어서 뱀과 사다리 게임의 주요 게임 반복문임을 지시합니다.
 
-`while` 반복문 조건은, 반드시 정확하게 25번 정사각형에 착륙해야 함을 반영한, `while square != finalSquare` 입니다.
+`while` 반복 조건은 `while square != finalSquare` 이며, 반드시 25번 정사각형에 정확하게 착륙해야한다는 걸 반영합니다.
 
 ```swift
 gameLoop: while square != finalSquare {
