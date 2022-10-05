@@ -696,7 +696,7 @@ print("Game over!")
 
 ### Early Exit (때 이른 탈출문)
 
-`guard` 문은, `if` 문 같이, 표현식의 불리언 값에 의존하여 구문을 실행합니다. `guard` 문은 `guard` 문 뒤의 코드를 실행하기 위해선 조건이 반드시 참이길 요구하고자 사용합니다. `if` 문과 달리, `guard` 문에는 항상 `else` 절이 있습니다-조건이 참이 아니면 `else` 절 안의 코드를 실행합니다.
+`guard` 문은, `if` 문 같이, 표현식의 불리언 값에 따라 구문을 실행합니다. `guard` 문을 사용하면 조건이 반드시 참이어야 `guard` 문 뒤의 코드가 실행되도록 요구합니다. `if` 문과 달리, `guard` 문엔 항상 `else` 절이 있습니다-조건이 참이 아니면 `else` 절 안의 코드를 실행합니다.
 
 ```swift
 func greet(person: [String: String]) {
