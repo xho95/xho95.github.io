@@ -830,7 +830,7 @@ let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-`defer` 를 사용하여, 함수 반환 직전, 함수 안의 다른 모든 코드 뒤에 실행할 코드 블럭을 작성합니다. 함수가 에러를 던지는 거엔 상관없이 코드를 실행합니다. `defer` 를 사용하면, 서로 다른 시간에 실행할 필요가 있는 설정 및 정리 코드도, 나란히 작성할 수 있습니다.
+`defer` 를 사용하여, 함수 반환 직전, 함수 안의 다른 모든 코드 뒤에 실행할 코드 블럭을 작성합니다. 함수가 에러를 던지는 거엔 상관없이 코드를 실행합니다. `defer` 를 쓰면, 서로 다른 시간에 실행할 필요가 있는, 설정 및 정리 코드도 서로 나란하게 작성할 수 있습니다.
 
 ```swift
 var fridgeIsOpen = false
