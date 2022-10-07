@@ -744,9 +744,9 @@ if #available(iOS 10, macOS 10.12, *) {
 }
 ```
 
-위의 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후만; **macOS** 면, **macOS 10.12** 이후만 `if` 문 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수이며, 다른 어떤 플랫폼에서도, 대상이 지정한 최소 배포 대상에 `if` 본문을 실행하라고, 지정합니다.
+위의 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후만; **macOS** 면, **macOS 10.12** 이후만 `if` 문 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수이며, 다른 어떤 플랫폼이든, 대상이 지정한 최소 배포 대상에서 `if` 본문을 실행하도록, 지정합니다.
 
-자신의 일반 형식에서, 사용 가능성 조건은 플랫폼 이름 및 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 보기 바랍니다. iOS 8 이나 macOS 10.10 같은 주 버전 번호[^major-version-numbers] 지정에 더하여, iOS 11.2.6 과 macOS 10.13.3 같은 부 버전 번호[^minor-version-numbers] 들도 지정할 수 있습니다.
+사용 가능성 조건의 일반 형식에선, 플랫폼 이름 및 버전의 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 보기 바랍니다. iOS 8 이나 macOS 10.10 같은 주 버전 번호[^major-version-numbers] 지정에 더하여, iOS 11.2.6 과 macOS 10.13.3 같은 부 버전 번호[^minor-version-numbers] 들도 지정할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
