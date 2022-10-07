@@ -730,11 +730,11 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 ### Checking API Availability (API 사용 가능성 검사)
 
-스위프트는 API 사용 가능성 검사를 내장 지원하는데, 이는 주어진 배포 대상에선 사용 불가능한 API 를 쓰는 사고가 없도록 보장합니다.
+스위프트는 **API** 사용 가능성 검사를 내장 지원하여, 주어진 배포 대상에서 사용 불가인 API 를 쓰는 사고가 없도록 보장합니다.
 
-컴파일러는 SDK[^SDK] 의 사용 가능성 정보를 써서 코드 안의 모든 API 가 프로젝트에서 지정한 배포 대상에 사용 가능한지 밝혀냅니다.[^availability-information] 사용 불가능한 API 를 쓰려고 하면 컴파일 시간에 스위프트가 에러를 보고합니다.
+컴파일러는 **SDK**[^SDK] 안의 사용 가능성 정보로 코드에 쓴 모든 API 들이 프로젝트에서 지정한 배포 대상에서 사용 가능한 것인지 밝혀냅니다.[^availability-information] 사용 불가인 API 를 쓰려고 하면 컴파일 시간에 스위프트가 에러를 보고합니다.
 
-`if` 문이나 `guard` 문에서 _사용 가능성 조건 (availability condition)_ 을 쓰면, 사용하고 싶은 API 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행합니다.[^availability-condition] 컴파일러는 그 코드 블럭 안의 API 가 사용 가능한지 밝혀낼 때 사용 가능성 조건 정보를 사용합니다.
+_사용 가능성 조건 (availability condition)_ 을 `if` 문이나 `guard` 문에 쓰면, 쓰고 싶은 **API** 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행합니다.[^availability-condition] 그 코드 블럭 안의 **API** 가 사용 가능한지 밝혀낼 때 컴파일러가 사용 가능성 조건의 정보를 사용합니다.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
@@ -828,9 +828,9 @@ if #unavailable(iOS 10) {
 
 [^default-case-character]: 이 예제에선 `default` case 가 있어야 `switch` 문을 다 써버립니다. `Character` 는 영어 문자 외에 다른 유니코드 문자도 가질 수 있기 때문입니다.
 
-[^SDK]: 'SDK' 는 소프트웨어 개발 키트 (Software development kit) 의 줄임말입니다. 엑스코드 같은 통합 개발 환경 (IDE; Integrated Development Environment) 과는 의미가 조금 다릅니다. 통합 개발 환경은 소프트웨어 개발을 한 곳에서 할 수 있게 환경을 제공하는 프로그램이고, 소프트웨어 개발 키트는 실제 개발에 필요한, 컴파일러와 패키지 등을 포함한, 도구를 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 항목과 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
+[^SDK]: **SDK** 는 소프트웨어 개발 키트 (Software development kit) 의 줄임말로, 엑스코드 같은 통합 개발 환경 (IDE; Integrated Development Environment) 과는 의미가 조금 다릅니다. 통합 개발 환경은 소프트웨어 개발을 한 곳에서 할 수 있는 환경을 제공하는 프로그램인데 반해, 소프트웨어 개발 키트는 실제 개발에 필요한-컴파일러와 패키지 등을 포함한-도구를 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
-[^availability-information]: 여기서 SDK 의 사용 가능성 정보를 쓴다는 건, 예를 들어, 스위프트 4.0 용 SDK 로 스위프트 5.0 기능을 사용할 수 없는 것처럼, 그 SDK 의 정보를 활용하여 API 의 사용 가능성을 검사한다는 의미입니다.
+[^availability-information]: 여기서, **SDK** 안의 사용 가능성 정보라는 건, 예를 들어, 스위프트 4.0 용 **SDK** 인지 5.0 용 **SDK** 인지와 같은 정보를 말합니다.
 
 [^availability-condition]: '사용 가능성 조건 (availability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, 컴파일러 제어문은 컴파일 시간에 검사하는 반면, 사용 가능성 조건은 실행 시간에 검사합니다. 이에 대한 더 자세한 내용은, 애플 개발자 포럼의 [Do we need something like ‘#if available’?](https://forums.swift.org/t/do-we-need-something-like-if-available/40349) 항목을 참고하기 바랍니다. 
 
