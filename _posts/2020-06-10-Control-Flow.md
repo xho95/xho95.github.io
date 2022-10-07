@@ -740,11 +740,11 @@ _사용 가능성 조건 (availability condition)_ 을 `if` 문이나 `guard` �
 if #available(iOS 10, macOS 10.12, *) {
   // iOS 면 iOS 10 API 를 사용하고, macOS 면 macOS 10.12 API 를 사용함
 } else {
-  // 더 앞선 iOS 및 macOS API 로 대체함
+  // 더 이전 iOS 및 macOS API 로 대체함
 }
 ```
 
-위 사용 가능성 조건이 지정하는 건 iOS 에선, iOS 10 이후에서만; macOS 에선, macOS 10.12 이후에서만 `if` 문 본문을 실행하라는 겁니다. 마지막 인자인, `*` 는, 필수이며, 다른 어떤 플랫폼에서든, 대상이 지정한 최소 배포 대상에서 `if` 본문을 실행하도록, 지정합니다.
+위의 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후만; **macOS** 면, **macOS 10.12** 이후만 `if` 문 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수이며, 다른 어떤 플랫폼에서도, 대상이 지정한 최소 배포 대상에 `if` 본문을 실행하라고, 지정합니다.
 
 자신의 일반 형식에서, 사용 가능성 조건은 플랫폼 이름 및 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 보기 바랍니다. iOS 8 이나 macOS 10.10 같은 주 버전 번호[^major-version-numbers] 지정에 더하여, iOS 11.2.6 과 macOS 10.13.3 같은 부 버전 번호[^minor-version-numbers] 들도 지정할 수 있습니다.
 
