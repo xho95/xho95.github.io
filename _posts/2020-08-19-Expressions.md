@@ -739,7 +739,7 @@ print(keyPath == c.getSomeKeyPath())
 
 ### Postfix Expressions (접미사 표현식)
 
-_접미사 표현식 (postfix expressions)_ 은 접미사 연산자나 그 외 접미사 구문을 표현식에 적용함으로써 형성합니다. 구문상, 모든 으뜸 표현식 또한 접미사 표현식입니다.
+_접미사 표현식 (postfix expressions)_ 은 접미사 연산자나 그 외 접미사 구문을 표현식에 적용함으로써 형성합니다. 구문상, 모든 으뜸 표현식은 접미사 표현식이기도 합니다.
 
 이러한 연산자의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 보도록 합니다.
 
