@@ -730,21 +730,21 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 ### Checking API Availability (API 사용 가능성 검사)
 
-스위프트는 **API** 사용 가능성 검사를 내장 지원하여, 주어진 배포 대상에서 사용 불가인 API 를 쓰는 사고가 없도록 보장합니다.
+스위프트는 **API** 사용 가능성 검사를 내장 지원하여, 주어진 배포 대상에서 사용 불가능한 API 를 쓰는 사고가 없도록 보장합니다.
 
-컴파일러는 **SDK**[^SDK] 안의 사용 가능성 정보로 코드에 쓴 모든 API 들이 프로젝트에서 지정한 배포 대상에서 사용 가능한 것인지 밝혀냅니다.[^availability-information] 사용 불가인 API 를 쓰려고 하면 컴파일 시간에 스위프트가 에러를 보고합니다.
+컴파일러는 **SDK**[^SDK] 안의 사용 가능성 정보로 코드에 쓴 모든 API 들이 프로젝트에서 지정한 배포 대상에서 사용 가능한 것인지 밝혀냅니다.[^availability-information] 사용 불가능한 API 를 쓰려고 하면 컴파일 시간에 스위프트가 에러를 보고합니다.
 
-_사용 가능성 조건 (availability condition)_ 을 `if` 문이나 `guard` 문에 쓰면, 쓰고 싶은 **API** 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행합니다.[^availability-condition] 그 코드 블럭 안의 **API** 가 사용 가능한지 밝혀낼 때 컴파일러가 사용 가능성 조건의 정보를 사용합니다.
+_사용 가능성 조건 (availability condition)_ 을 `if` 문이나 `guard` 문에서 사용하면, 사용하고 싶은 **API** 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행합니다.[^availability-condition] 컴파일러는 그 코드 블럭 안의 **API** 가 사용 가능한지 밝힐 때 사용 가능성 조건에 있는 정보를 사용합니다.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
-  // iOS 면 iOS 10 API 를 사용하고, macOS 면 macOS 10.12 API 를 사용함
+  // iOS 10 API 들을 iOS 에 사용하고, macOS 10.12 API 들을 macOS 에 사용함
 } else {
-  // 더 이전 iOS 및 macOS API 로 대체함
+  // 더 이른 (버전의) iOS 및 macOS API 로 대체함
 }
 ```
 
-위의 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후만; **macOS** 면, **macOS 10.12** 이후만 `if` 문 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수이며, 다른 어떤 플랫폼이든, 대상이 지정한 최소 배포 대상에서 `if` 본문을 실행하도록, 지정합니다.
+위의 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후인 경우에만; **macOS** 면, **macOS 10.12** 이후인 경우에만 `if` 문의 본문을 실행하라고 지정하는 겁니다. 마지막 인자인, `*` 는, 필수로써, 자신의 대상에서 `if` 본문을 실행하라고 지정한 최소 배포 대상 (이후의), 다른 어떤 플랫폼이든 지정합니다.
 
 사용 가능성 조건의 일반 형식에선, 플랫폼 이름 및 버전의 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 사용하며-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 을 보기 바랍니다. iOS 8 이나 macOS 10.10 같은 주 버전 번호[^major-version-numbers] 지정에 더하여, iOS 11.2.6 과 macOS 10.13.3 같은 부 버전 번호[^minor-version-numbers] 들도 지정할 수 있습니다.
 
