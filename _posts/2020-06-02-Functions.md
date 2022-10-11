@@ -42,15 +42,15 @@ print(greet(person: "Brian"))
 // "Hello, Brian!" 를 인쇄함
 ```
 
-`greet(person:)` 함수는, `greet(person: "Anna")` 같이, `person` 인자 이름표 뒤에 `String` 값을 전달하여 호출합니다. 함수가 `String` 값을 반환하기 때문에, 위에 보는 것처럼, `print(_:separator:terminator:)` 함수 안에 `greet(person:)` 함수를 포장한 채로 호출하여 해당 문자열을 인쇄하고 반환 값을 볼 수 있습니다.
+`greet(person:)` 함수를 호출하려면, `greet(person: "Anna")` 처럼, `person` 인자 이름표 뒤에 `String` 값을 전달하면 됩니다. 함수가 `String` 값을 반환하기 때문에, 위에서 보듯, `greet(person:)` 함수를 `print(_:separator:terminator:)` 함수 호출로 감싼 채로 문자열을 인쇄하고 반환 값을 볼 수 있습니다.
 
-> `print(_:separator:terminator:)` 함수는 자신의 첫 번째 인자에 대한 이름표를 가지지 않으며, 다른 인자들은 기본 값을 가지고 있기 때문에 옵션입니다. 이런 함수 구문의 변화는 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분과 [Default Parameter Values (기본 매개 변수 값)](#default-parameter-values-기본-매개-변수-값) 부분에서 논의합니다.
+> `print(_:separator:terminator:)` 함수엔 첫 번째 인자에 대한 이름표는 없고, 다른 인자들은 기본 값이 있기 때문에 옵션입니다. 이런 함수 구문의 변화는 아래의 [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)](#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 과 [Default Parameter Values (기본 매개 변수 값)](#default-parameter-values-기본-매개-변수-값) 부분에서 논의합니다.
 
-`greet(person:)` 함수 본문은 `greeting` 이라는 새로운 `String` 상수를 정의하고 단순한 인사말 메시지를 설정하는 것으로 시작합니다. 그런 다음 `return` 키워드로 이 인사말을 함수 밖으로 되돌려 줍니다. `return greeting` 이라는 코드 줄에서, 함수 실행을 종료하고 현재 `greeting` 값을 반환합니다.
+`greet(person:)` 함수의 본문은 `greeting` 이라는 새로운 `String` 상수를 정의하고 거기에 단순한 인사말 메시지를 설정하는 걸로 시작합니다. 그런 다음 `return` 키워드로 이 인사말을 함수 밖으로 되돌려 줍니다. `return greeting` 이라고 하는 코드 줄에서, 함수는 실행을 종료하고 현재 `greeting` 값을 반환합니다.
 
-서로 다른 입력 값을 가지고 `greet(person:)` 함수를 여러 번 호출할 수 있습니다. 위 예제는 `"Anna"` 라는 입력 값과, `"Brian"` 이라는 입력 값을 가지고 호출하면 무슨 일이 발생하는 지를 보여줍니다. 함수는 각 경우마다 맞춤식 인사말을 반환합니다.
+서로 다른 입력 값으로 `greet(person:)` 함수를 여러 번 호출할 수 있습니다. 위의 예제는 이를 `"Anna"` 라는 입력 값과, `"Brian"` 이라는 입력 값으로 호출하면 발생하는게 뭔지 보여줍니다. 각각의 경우마다 함수는 맞춤식 인사말을 반환합니다.
 
-메시지 생성문과 반환문을 한 줄로 조합하면, 이 함수 본문을 더 짧게 만들 수 있습니다:
+이 함수의 본문을 더 짧게 만들기 위해, 메시지 생성문과 반환문을 한 줄로 조합할 수도 있습니다:
 
 ```swift
 func greetAgain(person: String) -> String {
