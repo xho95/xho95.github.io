@@ -173,9 +173,9 @@ print("min is \(bounds.min) and max is \(bounds.max)")
 <strong id="optional-tuple-return-types-옵셔널-튜플-반환-타입">Optional Tuple Return Types (옵셔널 튜플 반환 타입)</strong>
 </p>
 
-함수가 반환하는 튜플 타입에서 전체 튜플의 "값이 없을 (no value)" 가능성이 있는 경우, _옵셔널 (optional)_ 튜플 반환 타입을 사용하면 전체 튜플이 `nil` 일 수 있다는 사실을 반영할 수 있습니다. 옵셔널 튜플 반환 타입은, '`(Int, Int)?` 나 `(String, Int, Bool)?` 같이, 튜플 타입 닫는 괄호 뒤에 물음표를 둬서 작성합니다.
+함수가 반환할 튜플 타입에서 전체 튜플이 "값이 없을 (no value)" 수도 있는 경우, _옵셔널 (optional)_ 튜플 반환 타입을 사용하면 전체 튜플이 `nil` 일 수 있다는 사실을 반영할 수 있습니다. 옵셔널 튜플 반환 타입을 쓰려면, `(Int, Int)?` 나 `(String, Int, Bool)?` 같이, 튜플 타입의 닫는 괄호 뒤에 물음표를 두면 됩니다.
 
-> `(Int, Int)?` 같은 '옵셔널 튜플 타입' 은 `(Int?, Int?)` 같이 '옵셔널 타입을 담은 튜플' 과는 다릅니다.[^optional-tuple-type] 옵셔널 튜플 타입에선, 튜플 안의 각 개별 값만이 아니라, 전체 튜플이 옵셔널입니다.
+> `(Int, Int)?` 같은 옵셔널 튜플 타입은 `(Int?, Int?)` 같이 옵셔널 타입을 담은 튜플과는 다른 겁니다.[^optional-tuple-type] 옵셔널 튜플 타입에선, 튜플 안에 있는 각각의 개별 값뿐만 아니라, 전체 튜플이 옵셔널입니다.
 
 위 `minMax(array:)` 함수는 두 `Int` 값을 담은 튜플을 반환합니다. 하지만, 전달한 배열에 대한 어떤 안전성 검사도 함수가 하지 않습니다. `array` 인자가 빈 배열을 담고 있다면, 위에 정의한, `minMax(array:)` 함수가, `array[0]` 에 접근하려고 할 때 실행시간 에러를 발동할 것입니다.
 
