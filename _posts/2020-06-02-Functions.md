@@ -232,17 +232,17 @@ print(anotherGreeting(for: "Dave"))
 
 ### Function Argument Labels and Parameter Names (함수 인자 이름표와 매개 변수 이름)
 
-각각의 함수 매개 변수엔 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 이 둘 다 있습니다. 인자 이름표는 함수를 호출할 때 사용하는데; 각각의 인자 앞에 자신의 인자 이름표를 가지고 함수 호출을 작성합니다. 매개 변수 이름은 함수 구현에서 사용합니다. 기본적으로는, 매개 변수가 매개 변수 이름을 자신의 인자 이름표로 사용합니다.
+각각의 함수 매개 변수엔 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 이 둘 다 있습니다. 인자 이름표는 함수를 호출할 때 사용하며; 함수 호출 안의 각 인자마다 그 앞에 인자 이름표를 씁니다. 매개 변수 이름은 함수 구현부에서 사용합니다. 기본적으로, 매개 변수는 자신의 매개 변수 이름을 인자 이름표로 사용합니다.
 
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {
-  // 함수 본문에서, firstParameterName 과 secondParameterName 은
-  // 첫 번째 및 두 번째 매개 변수의 인자 값을 참조합니다.
+  // 함수 본문에선, firstParameterName 과 secondParameterName 이
+  // 첫 번째와 두 번째 매개 변수의 인자 값을 가리킵니다.
 }
 someFunction(firstParameterName: 1, secondParameterName: 2)
 ```
 
-모든 매개 변수는 반드시 유일한 이름을 가져야 합니다. 여러 개의 매개 변수가 동일한 인자 이름표를 가지는 게 가능은 하지만, 유일한 인자 이름표는 코드를 더 쉽게 이해하도록 도와줍니다.
+모든 매개 변수엔 반드시 유일한 이름이 있어야 합니다. 여러 매개 변수에 똑같은 인자 이름표가 있는게 가능하긴 하지만, 유일한 인자 이름표가 코드를 더 읽기 쉽게 해줍니다.
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
