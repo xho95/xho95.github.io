@@ -246,16 +246,16 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 
 #### Specifying Argument Labels (인자 이름표 지정하기)
 
-인자 이름표는, 매개 변수 이름 앞에, 공백으로 구분하여, 작성합니다:
+인자 이름표는 매개 변수 이름 앞에, 공백으로 구분하여, 작성합니다:
 
 ```swift
 func someFunction(argumentLabel parameterName: Int) {
-  // 함수 본문에서, parameterName 은
-  // 해당 매개 변수의 인자 값을 참조합니다.
+  // 함수 본문에선, parameterName 이
+  // 그 매개 변수의 인자 값을 가리킵니다.
 }
 ```
 
-다음은 `greet(person:)` 함수가 변하여 사람 이름과 출신지를 취하고 인사말을 반환하도록 한 것입니다:
+`greet(person:)` 함수의 변화 중에 사람 이름과 출신지를 입력 받아 인사말을 반환하는 건 이렇습니다:
 
 ```swift
 func greet(person: String, from hometown: String) -> String {
@@ -265,7 +265,7 @@ print (greet(person: "Bill", from: "Cupertino"))
 // "Hello Bill! Glad you could visit from Cupertino." 를 인쇄함
 ```
 
-인자 이름표를 사용하면, 이해가 쉽고 의도가 명확한 함수 본문을 제공하면서도, 풍부한 표현력을 가진, 일반 문장-같은 관례에 따라 함수를 호출하도록 허용합니다.
+인자 이름표를 사용하면 표현력이 좋은, (일반) 문장-같은 예에 따라 함수를 호출하면서도, 여전히 읽기 쉽고 의도가 명확한 함수 본문을 제공할 수 있게 합니다.
 
 #### Omitting Argument Labels (인자 이름표 생략하기)
 

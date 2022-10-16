@@ -183,7 +183,7 @@ print("Game over!")
 
 #### Repeat-While (repeat-while 문)
 
-`while` 반복문의 변화 버전인, `repeat`-`while` 반복문은, 반복 조건을 고려하기 _전에 (before)_, 첫 번째로 단 한 번 반복 블럭을 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 되풀이합니다.
+`while` 반복문의 다른 변화인, `repeat`-`while` 반복문이라는 건, 반복 조건을 고려하기 _전에 (before)_, 첫 번째로 단 한 번 반복 블럭을 통과합니다. 그런 다음 조건이 `false` 가 될 때까지 반복문을 계속 되풀이합니다.
 
 > 스위프트의 `repeat`-`while` 반복문은 다른 언어의 `do`-`while` 반복문과 유사합니다.[^do-while]
 
