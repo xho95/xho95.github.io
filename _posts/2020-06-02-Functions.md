@@ -208,7 +208,7 @@ if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
 
 #### Functions With an Implicit Return (암시적으로 반환하는 함수)
 
-전체 함수 본문이 단일 표현식인 경우, 함수가 해당 표현식을 암시적으로 반환합니다. 예를 들어, 아래의 두 함수는 똑같이 동작합니다:
+전체 함수 본문이 단일 표현식이면, 함수는 그 표현식을 암시적으로 반환합니다.[^implicitly-returns] 예를 들어, 아래의 두 함수는 똑같이 동작합니다:
 
 ```swift
 func greeting(for person: String) -> String {
@@ -224,15 +224,15 @@ print(anotherGreeting(for: "Dave"))
 // "Hello, Dave!" 를 인쇄함
 ```
 
-전체 `greeting(for:)` 함수 정의가 자신이 반환할 인사말 메시지인데, 이는 이런 더 짧은 형식을 사용할 수 있다는 걸 의미합니다. `anotherGreeting(for:)` 함수는, 더 긴 함수 처럼 `return` 키워드를 써서, 동일한 인사말 메시지를 반환합니다. 단 하나의 `return` 줄만으로 작성한 어떤 함수든 `return` 을 생략할 수 있습니다.
+`greeting(for:)` 함수의 전체 정의는 자신이 반환할 인사 메시지이며, 이는 이런 더 짧은 형식을 사용할 수 있다는 의미입니다. `anotherGreeting(for:)` 함수는 똑같은 인사 메시지를 반환하는데, 더 긴 함수 같이 `return` 키워드를 사용합니다. 단 하나의 `return` 줄만 쓰는 어떤 함수든 `return` 을 생략할 수 있습니다.
 
-[Shorthand Getter Declaration (짧게 줄인 획득자 선언)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 볼 것처럼, '속성 획득자 (property getter)' 도 암시적인 반환을 사용할 수 있습니다.
+[Shorthand Getter Declaration (짧게 줄인 획득자 선언)]({% post_url 2020-05-30-Properties %}#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 보게 될 것처럼, 속성 획득자[^property-getter] 도 암시적 반환을 사용할 수 있습니다.
 
-> 암시적인 반환 값이라고 작성한 코드는 어떠한 값을 반환할 필요가 있습니다. 예를 들어, `fatalError("Oh no!")` 나 `print(13)` 을 암시적인 반환 값으로 사용할 순 없습니다.
+> 암시적 반환 값이라고 쓴 코드는 어떠한 값을 반환할 필요가 있습니다. 예를 들어, `print(13)` 을 암시적 반환 값으로 사용할 순 없습니다. 하지만, `fatalError("Oh no!")` 같은 절대 반환하지 않는 함수[^never-return] 는 암시적 반환 값으로 사용할 수 있는데, 그 암시적 반환은 발생하지 않는다는 걸 스위프트가 알기 때문입니다.
 
 ### Function Argument Labels and Parameter Names (함수 인자 이름표와 매개 변수 이름)
 
-각각의 함수 매개 변수에는 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 가 둘 다 있습니다. 인자 이름표는 함수를 호출할 때 사용하는데; 각각의 인자 앞에 자신의 인자 이름표를 가지고 함수 호출을 작성합니다. 매개 변수 이름은 함수 구현에서 사용합니다. 기본적으로는, 매개 변수가 매개 변수 이름을 자신의 인자 이름표로 사용합니다.
+각각의 함수 매개 변수엔 _인자 이름표 (argument label)_ 와 _매개 변수 이름 (paramenter name)_ 이 둘 다 있습니다. 인자 이름표는 함수를 호출할 때 사용하는데; 각각의 인자 앞에 자신의 인자 이름표를 가지고 함수 호출을 작성합니다. 매개 변수 이름은 함수 구현에서 사용합니다. 기본적으로는, 매개 변수가 매개 변수 이름을 자신의 인자 이름표로 사용합니다.
 
 ```swift
 func someFunction (firstParameterName: Int, secondParameterName: Int) {
@@ -531,6 +531,10 @@ print("zero!")
 
 [^hyphen]: '하이픈' 이라고도 하는 '붙임표 (hyphen)' 는, 두 낱말을 합쳐서 하나의 낱말로 만들거나 낱말의 음절을 나눌 때 사용합니다. '대시 (dash)' 와는 기능이 다릅니다. 붙임표에 대한 더 자세한 정보는 위키피디아의 [Hyphen](https://en.wikipedia.org/wiki/Hyphen) 항목 및 [붙임표](https://ko.wikipedia.org/wiki/붙임표) 항목을 참고하기 바랍니다.
 
-[^optional-tuple-type]: 전자인 `(Int, Int)?` 는 튜플 멤버는 옵셔널이 아니지만 전체 튜플이 옵셔널인 경우이고, 후자인 `(Int?, Int?)` 는 튜플 멤버 각각이 옵셔널인 경우입니다.
+[^optional-tuple-type]: `(Int, Int)?` 는 전체 튜플이 옵셔널이라는 의미인 반면, `(Int?, Int?)` 는 튜플 각각의 멤버는 옵셔널이지만 전체 튜플은 옵셔널이 아닌 경우입니다.
+
+[^implicitly-returns]: '암시적으로 반환한다 (implicitly returns)' 는 것은 `return` 을 쓰지 않아도 반환한다는 의미입니다.
+
+[^never-return]: 절대 반환하지 않는 함수에 대한 더 자세한 정보는, [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 부분을 참고하기 바랍니다. 
 
 [^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 이 내용은 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 부분의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 바 있습니다.
