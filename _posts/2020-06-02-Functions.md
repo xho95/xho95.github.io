@@ -283,22 +283,22 @@ someFunction (1, secondParameterName: 2)
 
 #### Default Parameter Values (기본 매개 변수 값)
 
-해당 매개 변수 타입 뒤에 값을 할당함으로써 어떤 함수 매개 변수에든 _기본 값 (default value)_ 을 정의할 수 있습니다. 기본 값을 정의하면, 함수를 호출할 때 해당 매개 변수를 생략할 수 있습니다.
+함수의 어떤 함수 매개 변수든 _기본 값 (default value)_ 을 정의하려면 그 매개 변수의 타입 뒤에 매개 변수의 값을 할당하면 됩니다. 기본 값을 정의하면, 함수 호출 때 그 매개 변수를 생략할 수 있습니다.
 
 ```swift
 func someFunction (parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
   // 이 함수를 호출할 때 두 번째 인자를 생략하면,
-  // parameterWithDefault 값이 함수 본문 안에서 12 가 됩니다.
+  // 함수 본문 안에서 parameterWithDefault 값은 12 입니다.
 }
-someFunction (parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault 는 6 임
-someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12 임
+someFunction (parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault 는 6
+someFunction (parameterWithoutDefault: 4) // parameterWithDefault 는 12
 ```
 
-기본 값 없는 매개 변수는, 기본 값 있는 매개 변수 앞인, 함수 매개 변수 목록 맨 앞에 둡니다. 기본 값 없는 매개 변수가 함수 의미상 대체로 더 중요합니다-이를 먼저 작성하면, 어떤 기본 매개 변수를 생략하든 상관없이, 동일 함수를 호출하고 있음을 더 인식하기 쉽게 해줍니다.
+기본 값이 없는 매개 변수를, 기본 값이 있는 매개 변수의 앞인, 함수의 매개 변수 목록 맨 앞에 둡니다. 기본 값이 없는 매개 변수가 대체로 함수의 의미로는 더 중요합니다-이들을 첫 번째로 작성하면, 어떤 기본 매개 변수를 생략하든, 똑같은 함수를 호출하고 있다는 걸 더 알아보기 쉽게 해줍니다.
 
 #### Variadic Parameters (가변 매개 변수)
 
-_가변 매개 변수 (variadic parameter)_ 는 특정 타입의 값을 0 개 이상 받아 들입니다. 가변 매개 변수는 함수 호출할 때 매개 변수에다가 다양한 개수의 입력 값을 전달할 수 있음을 지정하고자 사용합니다. 매개 변수 타입 이름 뒤에 마침표 문자 세 개 (`...`) 를 집어 넣어서 가변 매개 변수를 작성합니다.
+_가변 매개 변수 (variadic parameter)_ 는 0개 이상의 정해진 타입 값들을 받습니다. 가변 매개 변수를 사용하면 함수 호출 때 매개 변수에 다양한 개수의 입력 값을 전달한다는 걸 지정할 수 있습니다. 가변 매개 변수를 작성하려면 매개 변수의 타입 이름 뒤에 마침표 세 개 (`...`) 를 집어 넣으면 됩니다.
 
 가변 매개 변수에 전달한 값은 함수 본문 안에서 적절한 타입의 배열로 사용 가능합니다. 예를 들어, `numbers` 라는 이름과 `Double...` 이라는 타입을 가진 가변 매개 변수는 함수 본문 안에서 `[Double]` 타입의 `numbers` 라는 상수 배열로 사용 가능합니다.
 
