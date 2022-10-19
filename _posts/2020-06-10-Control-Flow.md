@@ -14,7 +14,7 @@ categories: Swift Language Grammar Control-Flow For-In While Switch
 
 스위프트는 `for`-`in` 반복문도 제공하여 배열과, 딕셔너리, 범위, 문자열, 및 기타 다른 시퀀스[^sequences] 들도 쉽게 반복하도록 합니다.
 
-스위프트의 `switch` 문은 수많은 **C**-같은 언어[^C-like] 의 것들보다 훨씬 더 강력합니다. case 절은, 구간 맞춰보기[^interval-matches] 와, 튜플, 및 지정한 타입으로의 변환[^casts] 을 포함하여, 수많은 서로 다른 패턴들[^patterns] 과 맞춰볼 수 있습니다. `switch` 문 case 에 맞는 값은 임시 상수나 변수로 연결되어 case 본문 안에서 사용할 수도 있고, 각각의 case 에서 `where` 절로 복잡한 맞춤 조건을 표현할 수도 있습니다.
+스위프트의 `switch` 문은 수많은 **C**-같은 언어[^C-like] 의 것보다 훨씬 더 강력합니다. case 절은, 구간 맞춰보기[^interval-matches] 와, 튜플, 및 정해진 타입으로의 변환[^casts] 을 포함하여, 수많은 서로 다른 패턴들[^patterns] 과 맞춰볼 수 있습니다. `switch` 문 case 에 맞는 값은 임시 상수나 변수로 연결되어 case 본문 안에서 사용할 수도 있고, 각각의 case 에서 `where` 절로 복잡한 맞춤 조건을 표현할 수도 있습니다.
 
 ### For-In Loops (for-in 반복문)
 

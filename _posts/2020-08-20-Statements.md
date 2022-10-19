@@ -175,7 +175,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 
 `switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 case 에서 정한 패턴과 비교합니다. 일치한 걸 찾으면, 프로그램이 그 case 영역에서 나열한 _구문 (statements)_ 을 실행합니다. 각 case 영역은 비어있을 수 없습니다. 그 결과, 각 case 이름표 콜론 (`:`) 뒤에 적어도 하나의 구문을 반드시 포함해야 합니다. 일치한 case 절 본문에서 어떤 코드도 실행하지 않을 의도면 단일 `break` 문을 사용합니다.
 
-코드가 분기할 수 있는 표현식 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, 크기 타입[^scalar-types] 값에 더해, 부동-소수점 수와, 문자열, 튜플, 사용자 클래스 인스턴스, 및 옵셔널을 포함한, 어떤 타입 값으로도 코드를 분기할 수 있습니다. 심지어 _제어 표현식 (control expression)_ 값을 열거체 case 값과 맞춰볼 수도 있고 특정 값 범위에 포함되는지도 검사할 수 있습니다. `switch` 문에서 이렇게 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 안의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 보도록 합니다.
+코드가 분기할 수 있는 표현식 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, 크기 타입[^scalar-types] 값에 더해, 부동-소수점 수와, 문자열, 튜플, 사용자 클래스 인스턴스, 및 옵셔널을 포함한, 어떤 타입 값으로도 코드를 분기할 수 있습니다. 심지어 _제어 표현식 (control expression)_ 값을 열거체 case 값과 맞춰볼 수도 있고 지정된 범위의 값에 포함되는지도 검사할 수 있습니다. `switch` 문에서 이렇게 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 안의 [Switch (Switch 문)]({% post_url 2020-06-10-Control-Flow %}#switch-switch-문) 부분을 보도록 합니다.
 
 `switch` 문 case 는 각각의 패턴 뒤에 옵션으로 `where` 절을 담을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 이를 써서 case 안의 패턴을 _제어 표현식 (control expression)_ 과 맞춰보기 전에 추가 조건을 제공합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 case 패턴 중 하나와 일치하면서 `where` 절 표현식이 `true` 로 평가된 경우에만 연관된 case 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에선, `(1, 1)` 같이, 동일한 두 원소를 담은 튜플인 경우에만 _제어 표현식 (control expression)_ 과 case 가 일치합니다.
 
