@@ -342,7 +342,7 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 
 `swapTwoInts(_:_:)` 함수는 단순히 `b` 값은 `a` 로, `a` 값은 `b` 로 맞바꿉니다. 함수는 `a` 값을 `temporaryA` 라는 임시 상수에 저장하고, `b` 값을 `a` 에 할당한 다음, `temporaryA` 를 `b` 에 할당함으로써 이 맞바꿈을 수행합니다.
 
-자신의 값을 맞바꿀 두 `Int` 타입 변수를 가지고 `swapTwoInts(_:_:)` 함수를 호출할 수 있습니다. `swapTwoInts(_:_:)` 함수에 전달할 때 `someInt` 와 `anotherInt` 이름 앞에는 '앰퍼샌드' 접두사를 붙인다는 걸 기억하기 바랍니다:
+두 개의 `Int` 타입 변수를 가지고 `swapTwoInts(_:_:)` 함수를 호출하면 값들을 맞바꿀 수 있습니다. `someInt` 와 `anotherInt` 를 `swapTwoInts(_:_:)` 함수로 전달할 땐 이름 앞에 접두사로 앰퍼샌드를 둔다는 걸 기록하기 바랍니다:
 
 ```swift
 var someInt = 3
@@ -352,9 +352,9 @@ print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 // "someInt is now 107, and anotherInt is now 3" 를 인쇄함
 ```
 
-위 예제는, 원래의 `someInt` 와 `anotherInt` 를 함수 밖에서 정의했을지라도, `swapTwoInts(_:_:)` 함수가 이들의 원본 값을 수정함을 보여줍니다.
+위 예제는 `someInt` 와 `anotherInt` 원본 값을 `swapTwoInts(_:_:)` 함수가 수정하는 걸 보여주는데, 심지어 원본을 함수 밖에서 정의한거라도 그렇습니다.
 
-> 입-출력 매개 변수는 함수의 값 반환과 똑같지 않습니다. 위의 `swapTwoInts` 예제는 반환 타입을 정의하지도 값을 반환하지도 않지만, 여전히 `someInt` 와 `anotherInt` 값을 수정합니다. 입-출력 매개 변수는 함수가 자신의 함수 본문 영역 밖으로 효과를 주기 위한 대안입니다.
+> 입-출력 매개 변수는 함수에서 값을 반환하는 것과 똑같지 않습니다. 위의 `swapTwoInts` 예제는 반환 타입을 정의하지도 값을 반환하지도 않지만, 여전히 `someInt` 와 `anotherInt` 값을 수정합니다. 입-출력 매개 변수는 함수가 자신의 함수 본문 시야 밖으로 효과를 주기 위한 대안입니다.
 
 ### Function Types (함수 타입)
 
