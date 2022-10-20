@@ -397,18 +397,18 @@ var mathFunction: (Int, Int) -> Int = addTwoInts
 
 이는 다음 처럼 읽을 수 있습니다:
 
-"'두 `Int` 값을 취하고, `Int` 값을 반환하는 함수' 타입인, `mathFunction` 이라는 변수를 정의합니다. 이 새 변수가 `addTwoInts` 라는 함수를 참조하도록 설정합니다."
+"'두 `Int` 값을 입력 받아, `Int` 값을 반환하는 함수' 타입인, `mathFunction` 이라는 변수를 정의합니다. 이 새로운 변수가 `addTwoInts` 라는 함수를 참조하도록 설정합니다."
 
-`addTwoInts(_:_:)` 함수는 `mathFunction` 변수와 똑같은 타입이므로, 스위프트 타입-검사기가 이 할당을 허용합니다.
+`addTwoInts(_:_:)` 함수와 `mathFunction` 변수는 똑같은 타입이므로, 스위프트 타입-검사기가 이 할당을 허용합니다.
 
-이제 할당한 함수를 `mathFunction` 이란 이름으로 호출할 수 있습니다:
+할당한 함수를 이제 `mathFunction` 이란 이름으로 호출할 수 있습니다:
 
 ```swift
 print("Result: \(mathFunction(2, 3))")
 // "Result: 5" 를 인쇄함
 ```
 
-타입이 동일하게 일치하는 서로 다른 함수는, 함수아닌 타입과 똑같이, 동일한 변수에 할당할 수 있습니다.   
+서로 다른 함수도 타입이 똑같이 맞으면 동일한 변수에 할당할 수 있으며, 이는 비-함수 타입과 똑같은 방식입니다:
 
 ```swift
 mathFunction = multiplyTwoInts
@@ -416,7 +416,7 @@ print("Result: \(mathFunction(2, 3))")
 // "Result: 6" 을 인쇄함
 ```
 
-다른 어떤 타입 처럼, 상수나 변수에 함수를 할당할 때 스위프트가 함수 타입을 추론하게 내버려둘 수 있습니다.
+다른 어떤 타입에서도 그러듯, 함수를 상수나 변수에 할당할 때도 스위프트가 함수 타입을 추론하도록 내버려둘 수 있습니다.
 
 ```swift
 let anotherMathFunction = addTwoInts
