@@ -474,9 +474,9 @@ let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
 // moveNearerToZero 는 이제 stepBackward() 함수를 참조함
 ```
 
-위 예제는 `currentValue` 라는 변수가 점점 더 0에 가까워지려면 양으로 걸어야 하는지 음으로 걸어야 하는 지 결정합니다. `currentValue` 의 초기 값은 `3` 인데, 이는 `currentValue > 0` 가 `true` 를 반환하여, `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환하도록 한다는 의미합니다. 반환한 함수의 참조는 `moveNearerToZero` 라는 상수에 저장합니다.
+위 예제는 `currentValue` 변수가 점점 더 0에 가까워지려면 걷는 방향이 양이어야 하는지 음이어야 하는지를 결정합니다. `currentValue` 의 초기 값이 `3` 인데, 이는 `currentValue > 0` 가 `true` 를 반환하여, `chooseStepFunction(backward:)` 가 `stepBackward(_:)` 함수를 반환하게 한다는 의미입니다. 반환한 함수로의 참조는 `moveNearerToZero` 라는 상수에 저장합니다.
 
-이제 `moveNearerToZero` 가 올바른 함수를 참조하므로, 영까지 세는 데 사용할 수 있습니다:
+이제 `moveNearerToZero` 가 올바른 함수를 참조하므로, 이것으로 영까지 셀 수 있습니다:
 
 ```swift
 print("Counting to zero:")
