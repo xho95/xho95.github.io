@@ -441,13 +441,13 @@ printMathResult(addTwoInts, 3, 5)
 
 `printMathResult(_:_:_:)` 를 호출할 땐, `addTwoInts(_:_:)` 함수와, 정수 값 `3` 및 `5` 를 전달합니다. 제공한 함수를 `3` 과 `5` 로 호출하며, `8` 이라는 결과를 인쇄합니다.
 
-`printMathResult(_:_:_:)` 의 역할은 적절한 타입의 수학 함수 호출 결과를 인쇄하는 겁니다. 그 함수 구현이 실제로 뭘하든 문제 삼지 않습니다-함수가 올바른 타입인지만 문제 삼습니다. 이는 `printMathResult(_:_:_:)` 가 자신의 일부 기능을 타입-안전하게[^type-safe] 함수를 호출한 쪽으로 넘기게 합니다.
+`printMathResult(_:_:_:)` 의 역할은 적절한 타입의 수학 함수 호출 결과를 인쇄하는 겁니다. 그 함수 구현이 실제로 뭘하든 문제 삼지 않습니다-함수가 올바른 타입인지만 문제 삼습니다. 이는 `printMathResult(_:_:_:)` 가 자신의 일부 기능을 함수를 호출한 쪽으로 타입-안전하게[^type-safe] 넘기도록 합니다.
 
 #### Function Types as Return Types (반환 타입으로써의 함수 타입)
 
-함수 타입을 또 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환할 함수의 반환 화살표 (`->`) 바로 뒤에 완전한 함수 타입을 작성하면 됩니다.
+함수 타입은 또 다른 함수의 반환 타입으로 사용할 수 있습니다. 이렇게 하려면 반환하는 함수의 반환 화살표 (`->`) 바로 뒤에 완성된 함수 타입을 작성하면 됩니다.
 
-다음 예제는 `stepForward(_:)` 와 `stepBackward(_:)` 라는 단순한 두 함수를 정의합니다. `stepForward(_:)` 함수는 자신의 입력 값보다 하나 큰 값을 반환하고, `stepBackward(_:)` 함수는 자신의 입력 값보다 하나 작은 값을 반환합니다. 두 함수 모두 `(Int) -> Int` 타입입니다:
+다음 예제는 두 개의 단순한 함수인 `stepForward(_:)` 와 `stepBackward(_:)` 를 정의합니다. `stepForward(_:)` 함수는 자신의 입력 값보다 하나 큰 값을 반환하고, `stepBackward(_:)` 함수는 자신의 입력 값보다 하나 작은 값을 반환합니다. 두 함수는 모두 `(Int) -> Int` 타입입니다:
 
 ```swift
 func stepForward(_ input: Int) -> Int {
@@ -458,7 +458,7 @@ func stepBackward(_ input: Int) -> Int {
 }
 ```
 
-다음은, 반환 타입이 `(Int) -> Int` 인, `chooseStepFunction(backward:)` 라는 함수입니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불리언 (Boolean) 매개 변수를 기초로 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
+`chooseStepFunction(backward:)` 라는, 반환 타입이 `(Int) -> Int` 인, 함수는 이렇습니다. `chooseStepFunction(backward:)` 함수는 `backward` 라는 불리언 매개 변수에 기반하여 `stepForward(_:)` 함수나 `stepBackward(_:)` 함수를 반환합니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -466,7 +466,7 @@ func chooseStepFunction(backward: Bool) -> (Int) -> Int {
 }
 ```
 
-이제 `chooseStepFunction(backward:)` 를 사용하면 이 쪽 또는 저 쪽 방향으로 걸음을 옮기는 함수를 구할 수 있습니다:
+이제 `chooseStepFunction(backward:)` 를 사용하여 이 방향 또는 저 방향으로 걸어가는 함수를 구할 수 있습니다:
 
 ```swift
 var currentValue = 3
