@@ -30,7 +30,7 @@ enum SomeEnumeration {
 }
 ```
 
-다음 예제는 '네 개의 나침반 주 방위 (points)' 입니다:
+나침반의 네 주요 방위에 대한 예제는 이렇습니다:
 
 ```swift
 enum CompassPoint {
