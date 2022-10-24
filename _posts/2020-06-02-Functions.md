@@ -10,7 +10,7 @@ categories: Swift Language Grammar Function
 
 ## Functions (함수)
 
-_함수 (functions)_ 는 그 자체로-동작하는 코드 뭉치이며 정해진 임무를 수행합니다. 함수는 뭘 하는지 정체를 파악할 이름을 줘서, 필요할 때 이 이름으로 임무를 수행할 함수를 "호출 (call)" 합니다.
+_함수 (functions)_ 는 그 자체로-동작하는 코드 뭉치로써 정해진 임무를 수행합니다. 함수는 뭘 하는지 정체를 파악할 이름을 줘서, 필요할 때 이 이름으로 임무를 수행할 함수를 "호출 (call)" 합니다.
 
 스위프트의 통일된 함수 구문은 충분히 유연해서 매개 변수 이름이 없는 단순한 **C**-스타일 함수부터 각각의 매개 변수마다 이름과 인자 이름표가 있는 복잡한 **오브젝티브-C**-스타일 메소드까지 어떤 것이든 표현합니다. 매개 변수는 기본 값을 제공하여 함수 호출을 단순하게 할 수도 있고, 입-출력 매개 변수[^in-out] 로 전달하여, 일단 한 번 함수 실행을 완료하고 나면 전달된 변수를 수정하게 할 수도 있습니다.
 
@@ -539,4 +539,4 @@ print("zero!")
 
 [^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 이 내용은 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 부분의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 바 있습니다.
 
-[^global-scope]: '전체 시야 범위 (global scope)' 를 줄여서 전역이라고 합니다.
+[^global-scope]: '전체 시야 범위 (global scope)' 를 보통 '전역' 이라고 합니다.
