@@ -47,7 +47,7 @@ _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), �
 * 표현식과 타입에서 사용하는 키워드: `as`, `Any`, `catch`, `false`, `is`, `nil`, `super`, `self`, `Self`, `throw`, `throws`, `true`, 및 `try`.
 * 패턴 (pattern) 에서 사용하는 키워드 : `_`.
 * 번호 기호 (`#`) 로 시작하는 키워드: `#available`, `#colorLiteral`, `#column`, `#else`, `#elseif`, `#endif`, `#error`, `#file`, `#filePath`, `#fileLiteral`, `#function`, `#if`, `#imageLiteral`, `#line`, `#selector`, `#sourceLocation`, 및 `#warning`.
-* 특별한 상황을 위해 예약한 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 및 `willSet`. 문법 안에서 나타나는 상황 밖에선, 식별자로 사용할 수 있습니다.
+* 특별한 상황을 위해 예약한 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 및 `willSet`. 문법 안에서 나타난 상황 밖에선, 식별자로 사용할 수 있습니다.
 
 다음의 낱말은 문장 부호로 예약되어 있어서 사용자 정의 연산자로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, (접두사 연산자로써의) `&`, `->`, `` ` ``, `?`, 및 (접미사 연산자로써의)`!`.
 
