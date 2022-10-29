@@ -10,7 +10,7 @@ categories: Swift Language Grammar Function
 
 ## Functions (함수)
 
-_함수 (functions)_ 는 그 자체로-동작하는 코드 뭉치이며 정해진 임무를 수행합니다. 함수는 뭘 하는지 정체를 파악할 이름을 줘서, 필요할 때 이 이름으로 임무를 수행할 함수를 "호출 (call)" 합니다.
+_함수 (functions)_ 는 그 자체로-동작하는 코드 뭉치로써 정해진 임무를 수행합니다. 함수는 뭘 하는지 정체를 파악할 이름을 줘서, 필요할 때 이 이름으로 임무를 수행할 함수를 "호출 (call)" 합니다.
 
 스위프트의 통일된 함수 구문은 충분히 유연해서 매개 변수 이름이 없는 단순한 **C**-스타일 함수부터 각각의 매개 변수마다 이름과 인자 이름표가 있는 복잡한 **오브젝티브-C**-스타일 메소드까지 어떤 것이든 표현합니다. 매개 변수는 기본 값을 제공하여 함수 호출을 단순하게 할 수도 있고, 입-출력 매개 변수[^in-out] 로 전달하여, 일단 한 번 함수 실행을 완료하고 나면 전달된 변수를 수정하게 할 수도 있습니다.
 
@@ -494,11 +494,11 @@ print("zero!")
 
 ### Nested Functions (중첩 함수)
 
-이 장에서 지금까지 마주친 모든 함수는, 전역 범위에서 정의한, _전역 함수 (global functions)_ 예제였습니다. 다른 함수 본문 안에서 함수를 정의할 수도 있는데, 이를 _중첩 함수 (nested functions)_ 라고 합니다.
+지금까지 이 장에서 마주쳤던 모든 함수는 _전역 함수 (global functions)_ 예제인데, 이는 전체 시야 범위[^global-scope] 에서 정의합니다. 함수를 다른 함수 본문 안에서 정의할 수도 있는데, 이는 _중첩 함수 (nested functions)_ 라고 합니다.
 
-중첩 함수는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 둘러싼 함수에선 여전히 호출하고 사용할 수 있습니다. 중첩 함수를 둘러싼 함수는 또 다른 영역에서 사용할 수 있도록 자신의 중첩 함수 하나를 반환할 수도 있습니다.
+중첩 함수는 기본적으로 외부 세계로부터 숨겨져 있지만, 자신을 둘러싼 함수에선 여전히 호출하여 쓸 수 있습니다. (중첩 함수를) 둘러싼 함수는 중첩 함수를 반환하여 이를 또 다른 시야 범위에서 사용하도록 허용할 수도 있습니다.
 
-중첩 함수를 사용하고 반환하도록 위의 `chooseStepFunction(backward:)` 예제를 재작성할 수 있습니다:
+위의 `chooseStepFunction(backward:)` 예제도 중첩 함수를 써서 반환하도록 재작성할 수 있습니다:
 
 ```swift
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -538,3 +538,5 @@ print("zero!")
 [^never-return]: 절대 반환하지 않는 함수에 대한 더 자세한 정보는, [Declarations (선언)]({% post_url 2020-08-15-Declarations %}) 장의 [Functions that Never Return (절대 반환하지 않는 함수)]({% post_url 2020-08-15-Declarations %}#functions-that-never-return-절대-반환하지-않는-함수) 부분을 참고하기 바랍니다. 
 
 [^type-safe]: 여기서 '타입-안전한 방식 (type-safe way)' 이라는 것은 스위프트가 기본적으로 제공하는 '타입 추론 (type inference)' 과 '타입 검사 (type check)' 기능을 사용할 수 있다는 것을 의미합니다. 이 내용은 [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 부분의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 바 있습니다.
+
+[^global-scope]: '전체 시야 범위 (global scope)' 를 보통 '전역' 이라고 합니다.

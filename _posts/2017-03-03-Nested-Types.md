@@ -88,14 +88,14 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 ### Referring to Nested Types (중첩 타입 참조하기)
 
-자신을 정의한 곳 밖에서 중첩 타입을 사용하려면, 그 이름에 자신을 중첩한 타입의 이름을 접두사로 붙입니다:
+정의한 곳 밖에서 중첩 타입을 사용하려면, 자신을 중첩한 타입의 이름을 이름 앞에 접두사로 둡니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 // heartsSymbol 은 "♡" 임
 ```
 
-위 예제에서, 이는 `Suit`, `Rank`, 및 `Values` 의 이름을 의도적으로 짧게 유지할 수 있게 하는데, 자신을 정의한 곳이 자신의 이름을 자연스럽게 규명하기[^qualified] 때문입니다.
+위 예제에서, 이는 `Suit` 와, `Rank`, 및 `Values` 의 이름을 의도적으로 짧게 유지할 수 있도록 하는데, 이는 자신이 정의된 곳의 상황에 의해 그 이름의 소속이 자연스럽게 밝혀지기 때문입니다.[^qualified]
 
 ### 다음 장
 
@@ -119,4 +119,4 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^case-name-alone]: `Suit.spades` 처럼 타입을 붙이지 않고, `.spades` 같이 사용할 수 있다는 의미입니다. 이는 (암시적인) 초기자의 매개 변수에서 타입을 명시하기 때문에, 초기자 호출 시에 매개 변수 타입을 추론할 수 있기 때문입니다.
 
-[^qualified]: 스위프트에서 '규명한다 (qualified)' 는 건 자신의 소속이 어디인지 알게 한다는 의미입니다. 중첩 타입은 정의한 곳 자체가 소속이므로 자연스럽게 규명됩니다.
+[^qualified]: 중첩 타입을 정의한 곳이 중첩 타입이 소속된 곳이므로 자연스럽게 '소속이 밝혀지게 (qualified)' 됩니다.
