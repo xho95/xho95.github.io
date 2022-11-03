@@ -41,11 +41,11 @@ enum CompassPoint {
 }
 ```
 
-열거체에서 정의한 (`north`, `south`, `east`, 및 `west` 같은) 값은 자신의 _열거체 case (enumeration cases)_ 입니다.[^cases] 새로운 열거체 case 는 `case` 키워드를 사용하여 도입합니다.
+열거체 안에 정의한 (`north` 와, `south`, `east`, 및 `west` 같은) 값이 _열거체 case (enumeration cases)_ 입니다. `case` 키워드로 새로운 열거체 case 를 도입합니다.
 
-> 스위프트의 열거체 case 는, C 및 오브젝티브-C 같은 언어와 달리, 정수 값을 기본 설정하지 않습니다. 위 `CompassPoint` 예제의, `north`, `south`, `east`, 및 `west` 는 암시적으로 `0`, `1`, `2`, 및 `3` 과 같지 않습니다. 그 대신, 서로 다른 열거체 case 들은 그 자체로 값이며, 명시적으로 정의한 `CompassPoint` 라는 타입을 가집니다.
+> **C** 와 **오브젝티브-C** 같은 언어와 달리, 스위프트 열거체 case 는 기본적으로 정수 값을 설정하지 않습니다. 위의 `CompassPoint` 예제에서, `north` 와, `south`, `east`, 및 `west` 는 `0` 과, `1`, `2`, 및 `3` 과 같지 않습니다. 그 대신, 각각의 열거체 case 는 그 자체로 값이며, `CompassPoint` 라는 명시적으로 정의한 타입을 가집니다.
 
-여러 개의 case 들을, 쉼표로 구분하여, 한 줄로 나타낼 수 있습니다:
+여러 case 를 한 줄로 나타내려면, 쉼표로 구분하면 됩니다:
 
 ```swift
 enum Planet {
@@ -53,19 +53,19 @@ enum Planet {
 }
 ```
 
-각각의 열거체 정의는 새로운 타입을 정의합니다. 스위프트의 다른 타입 같이, (`CompassPoint` 와 `Planet` 같은) 이름은 대문자로 시작합니다. 열거체 타입은 '복수형 (plural) 보단 단수형 (singular)' 이름을 부여해야, 자명해집니다.[^plural-vs-singular]:
+각각의 열거체 정의는 새로운 타입을 정의합니다. 스위프트의 다른 타입 같이, 이들의 이름은 (`CompassPoint` 와 `Planet` 같이) 대문자로 시작합니다. 열거체 타입은 복수형 보단 단수형 이름이어야, 그 자체로-분명하게 읽힙니다[^plural-vs-singular]:
 
 ```swift
 var directionToHead = CompassPoint.west
 ```
 
-하나의 가능한 `CompassPoint` 값으로 초기화할 때 `directionToHead` 의 타입을 추론합니다. 한 번 `directionToHead` 를 `CompassPoint` 로 선언하고 나면, 다른 `CompassPoint` 값을 더 짧은 점 구문으로 설정할 수 있습니다:
+`directionToHead` 의 타입은 가능한 `CompassPoint` 값 하나로 초기화할 때 추론합니다. 일단 한 번 `directionToHead` 를 `CompassPoint` 로 선언하면, 다른 `CompassPoint` 값은 더 짧은 점 구문으로 설정할 수 있습니다:
 
 ```swift
 directionToHead = .east
 ```
 
-`directionToHead` 타입을 이미 알고 있으므로, 값 설정 때 타입을 빼먹을 수 있습니다. 이는 명시적으로 타입을 지정한 열거체 값과 작업할 때 아주 이해하기 쉬운 코드를 만듭니다.
+`directionToHead` 의 타입을 이미 알고 있어서, 값을 설정할 때 타입을 뺄 수 있습니다. 이는 타입을 명시한 열거체 값과 작업할 때 코드를 아주 읽기 쉽게 합니다.
 
 ### Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)
 
@@ -361,9 +361,7 @@ print(evaluate(product))
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 건 객체 (class) 와 동-급으로 사용할 수 있다는 의미입니다. 예를 들어, 객체 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있다면, '일급' 이라고 합니다. 일급에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
-[^cases]: 스위프트에서 'case' 는 하나의 키워드 (keyword) 이면서, 우리말로 경우라는 의미도 담고 있습니다. 여기서는, 'case' 가 키워드 `case` 를 의미할 때는 영어 그대로 두도록 합니다.
-
-[^plural-vs-singular]: 열거체 이름을 복수형으로 만들면 본문 예제는 `CompassPoints` 가 되는데, 이 경우, 그 아래 예제는 `CompassPoints.west` 가 됩니다. 이러면, 코드를 이해할 때 나침판 방향이 여러 개 있다고 오해할 수 있습니다.
+[^plural-vs-singular]: 열거체는 한 번에 하나의 case 값만 가집니다. 그러므로 열거체 이름이 단수형이어야 코드가 그 자체로-분명해집니다. 열거체 이름이 `CompassPoints` 처럼 복수형이 되면, 아래 예제는 `CompassPoints.west` 가 되는데, 이러면 동시에 여러 방향을 가지고 있다고 오해할 수 있습니다.
 
 [^variants]: 여기 있는 세 가지 용어는 사실상 똑같은 개념입니다. 각각에 대한 더 자세한 정보는, 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 보도록 합니다. 컴퓨터 공학 용어로는 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 이기 때문에, 이 둘은 항목 자체가 같습니다. 어쨌든, 본문 내용에 따르면 '스위프트 열거체의 결합 값' 은 'C 언어의 공용체 (union)' 와 유사한 개념이라고 이해할 수 있습니다.
 
