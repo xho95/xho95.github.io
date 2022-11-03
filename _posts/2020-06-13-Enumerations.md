@@ -14,15 +14,15 @@ _열거체 (enumerations)_ 는 관련된 값의 그룹에 공통 타입을 정�
 
 **C** 에 익숙하다면, **C** 열거체는 관련된 이름에 정수 값 집합을 할당하는 걸 알 겁니다. 스위프트 열거체는 훨씬 더 유연해서, 각각의 열거체 case 마다 값을 제공하지 않아도 됩니다. 각 열거체 case 마다 (_원시 (raw)_ 값이라는) 값을 제공할 경우, 값은 문자열이나, 문자, 또는 어떤 정수나 부동-소수점 타입이든 다 됩니다.
 
-대안으로, 열거체 case 에 _어떤 (any)_ 타입의 결합 값을 지정하여 서로 다른 각각의 case 값과 나란히 저장하게 할 수 있는데, 다른 언어에선 대부분 공용체[^unions] 나 가변체[^variants] 가 하는 겁니다. 한 열거체에서 서로 관련된 case 들의 공통 집합을 정의할 수 있는데, 제각각 자신과 결합된 적절한 타입의 서로 다른 값 집합을 가집니다.
+대안으로, 열거체 case 에 _어떤 (any)_ 타입의 결합 값을 지정하여 서로 다른 각각의 case 값과 나란히 저장할 수 있는데, 다른 언어에선 대부분 공용체[^unions] 나 가변체[^variants] 로 이렇게 합니다. 한 열거체 안에서 관련된 case 들의 공통 집합을 정의할 수 있는데, 제각각은 자신과 결합된 서로 다른 적절한 타입의 값 집합을 가집니다.
 
-스위프트 열거체는 그 자체로 '일급 (first-class) 타입'[^first-class] 입니다. 이는, 열거체 현재 값에 대한 추가 정보를 제공하는 계산 속성과, 열거체가 표현하는 값과 관련한 기능을 제공하는 인스턴스 메소드 같이, 전통적으로 클래스만 지원하던 수많은 특징을 채택합니다. 열거체는 초기 case 값을 제공하는 초기자 (initializers) 도 정의할 수 있고; 원본 구현 너머로 자신의 기능을 늘리도록 확장 (extend) 할 수도; 표준 기능을 제공하도록 프로토콜을 준수할 수도 있습니다.
+스위프트 열거체는 그 자체로 일급 타입입니다.[^first-class] 전통적으로 클래스에서만 지원하던 수많은 특징을 채택하는데, 계산 속성으로 현재 열거체 값에 추가 정보 제공하기, 인스턴스 메소드로 열거체가 나타내는 값과 관련된 기능 제공하기 같은 겁니다. 열거체는 초기자[^initializers] 를 정의하여 초기 case 값도 제공할 수 있으며; 확장[^extend] 하여 자신의 원본 구현 너머로 기능을 늘릴 수도 있고; 프로토콜을 준수하여 표준 기능을 제공할 수도 있습니다.
 
-이 보유 능력에 대한 더 많은 내용은, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보도록 합니다.
+이런 더 많은 보유 능력에 대한 건, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 과, [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보기 바랍니다.
 
 ### Enumeration Syntax (열거체 구문)
 
-열거체는 `enum` 키워드로 도입하며 한 쌍의 중괄호 안에 전체 정의를 둡니다:
+열거체는 `enum` 키워드로 도입하며 자신의 전체 정의를 한 쌍의 중괄호 안에 둡니다:
 
 ```swift
 enum SomeEnumeration {
@@ -30,7 +30,7 @@ enum SomeEnumeration {
 }
 ```
 
-다음 예제는 '네 개의 나침반 주 방위 (points)' 입니다:
+나침반의 네 주요 방위의 예는 이렇습니다:
 
 ```swift
 enum CompassPoint {
@@ -359,7 +359,7 @@ print(evaluate(product))
 
 [^type-safe]: 스위프트에서 '타입-안전 (type-safe)' 하다는 건 스위프트가 제공하는 타입 추론 (type inference) 과 타입 검사 (type check) 기능을 사용할 수 있다는 걸 의미합니다. 이에 대한 더 자세한 정보는, [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
-[^first-class]: 프로그래밍에서 '일급 (first-class) 이다' 라는 말은 '객체 (class) 와 동-급으로 사용할 수 있다' 는 의미입니다. 예를 들어, 어떠한 것이 객체 처럼 인자로 전달할 수 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있다면, '이는 일급이다' 라고 합니다. '일급' 에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 항목과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 보도록 합니다.
+[^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 건 객체 (class) 와 동-급으로 사용할 수 있다는 의미입니다. 예를 들어, 객체 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있다면, '일급' 이라고 합니다. 일급에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
 [^cases]: 스위프트에서 'case' 는 하나의 키워드 (keyword) 이면서, 우리말로 경우라는 의미도 담고 있습니다. 여기서는, 'case' 가 키워드 `case` 를 의미할 때는 영어 그대로 두도록 합니다.
 
