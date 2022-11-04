@@ -69,7 +69,7 @@ directionToHead = .east
 
 ### Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)
 
-`switch` 문을 가지고 개별 열거체 값을 맞춰볼 수 있습니다:
+개별 열거체 값은 `switch` 문으로 맞춰볼 수 있습니다:
 
 ```swift
 directionToHead = .south
@@ -86,15 +86,15 @@ case .west:
 // "Watch out for penguins" 를 인쇄함
 ```
 
-이 코드는 다음처럼 이해할 수 있습니다:
+이 코드는 다음처럼 읽을 수 있습니다:
 
-“`directionToHead` 값을 검토합니다. `.north` 와 같은 경우, `"Lots of planets have a north"` 를 인쇄합니다. `.south` 와 같은 경우, `"Watch out for penguins"` 을 인쇄합니다."
+“`directionToHead` 값을 고려합니다. 이게 `.north` 와 같은 경우면, `"Lots of planets have a north"` 를 인쇄합니다. `.south` 와 같은 경우면, `"Watch out for penguins"` 을 인쇄합니다."
 
-...등을 계속합니다.
+...등으로 계속됩니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명한 것처럼, 열거체 case 를 고려할 땐 `switch` 문을 반드시 다 써버려야 합니다. `.west` 이라는  `case` 를 생략하면, `CompassPoint` 의 완전한 case 목록을 검토한 게 아니기 때문에, 코드를 컴파일하지 않습니다. 다 써버리도록 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
+[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명하듯, 열거체 case 를 고려할 땐 반드시 `switch` 문을 다 써버려야 합니다. `.west` 라는 `case` 를 생략하면, 이 코드의 컴파일이 안되는데, 이는 완성된 `CompassPoint` case 목록을 검토하지 않기 때문입니다. 다 써버리길 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
 
-모든 열거채 case 마다 `case` 절을 제공하는 게 적절하지 않을 때, `default` case 절을 제공하면 명시적으로 알리지 않은 어떤 case 도 다룰 수 있습니다:
+모든 열거채 case 마다 `case` 를 제공하는 게 적절하지 않을 땐, `default` case 를 제공하면 명시하지 않은 어떤 case 도 다룰 수 있습니다:
 
 ```swift
 let somePlanet = Planet.earth
