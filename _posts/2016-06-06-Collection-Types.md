@@ -11,7 +11,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 ## Collection Types (집합체 타입)
 
-스위프트는, 배열[^arrays-type] 과, 셋[^sets-type], 및 딕셔너리[^dictionaries-type] 라는, 세 개의 으뜸가는 _집합체 타입 (collection types)_[^collections] 을 제공하여, 값의 집합체를 저장합니다. 배열은 순서 있는 값들의 집합체[^ordered-collection] 입니다. 셋은 순서 없는 유일한 값들의 집합체입니다. 딕셔너리는 순서 없는 키-값 결합들 [^key-value-associations] 의 집합체입니다.
+스위프트는, 배열[^arrays-type] 과, 셋[^sets-type], 및 딕셔너리[^dictionaries-type] 라는, 세 개의 으뜸 _집합체 타입 (collection types)_[^collections] 을 제공하여, 값의 집합체를 저장합니다. 배열은 순서 있는 값들의 집합체[^ordered-collection] 입니다. 셋은 순서 없는 유일한 값들의 집합체입니다. 딕셔너리는 순서 없는 키-값 결합들 [^key-value-associations] 의 집합체입니다.
 
 ![Array-Set-Dictionary](/assets/Swift/Swift-Programming-Language/Collection-Types-array-set-dictionary.jpg)
 
@@ -368,7 +368,7 @@ for genre in favoriteGenres {
 
 `for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% post_url 2020-06-10-Control-Flow %}#for-in-loops-for-in-반복문) 을 보기 바랍니다.
 
-스위프트의 `Set` 타입은 순서를 정의하지 않습니다. 셋 값을 정해진 순서로 반복하려면, `sorted()` 메소드를 사용하는데, 이는 `<` 연산자로 정렬한 배열로 셋의 원소를 반환합니다.
+스위프트의 `Set` 타입은 순서를 정의하지 않습니다. 셋의 값을 지정한 순서로 반복하려면, `sorted()` 메소드를 사용하는데, 이는 `<` 연산자로 정렬한 배열로 셋의 원소를 반환합니다.
 
 ```swift
 for genre in favoriteGenres.sorted() {
@@ -436,7 +436,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 ### Dictionaries (딕셔너리)
 
-_딕셔너리 (dictionary)_ 는 동일한 타입의 키와 동일한 타입의 값 사이의 결합 (associations) 을 아무런 순서 없이 집합체에 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 결합되는데, 이는 딕셔너리 안에서 그 값의 식별자[^identifier] 처럼 행동합니다. 배열 항목과 달리, 딕셔너리 항목엔 지정된 순서가 없습니다. 자신의 식별자를 기반으로 값을 찾아볼 필요가 있을 때 딕셔너리를 사용하는데, 이는 실제-세계에서 사전[^dictionary] 을 사용하여 한 특별한 단어의 정의를 찾아 보는 것과 거의 똑같은 방식입니다.
+_딕셔너리 (dictionary)_ 는 동일한 타입의 키와 동일한 타입의 값 사이의 결합 (associations) 을 아무런 순서 없이 집합체에 저장합니다. 각각의 값은 유일한 _키 (key)_ 와 결합되는데, 이는 딕셔너리 안에서 그 값의 식별자[^identifier] 처럼 행동합니다. 배열의 항목과 달리, 딕셔너리의 항목엔 정해진 순서가 없습니다. 자신의 식별자를 기반으로 값을 찾아볼 필요가 있을 때 딕셔너리를 사용하는데, 이는 실제-세계에서 사전[^dictionary] 을 사용하여 한 특별한 단어의 정의를 찾아 보는 것과 거의 똑같은 방식입니다.
 
 > 스위프트의 `Dictionary` 타입은 **Foundation** 의 `NSDictionary` 클래스와 연동됩니다.
 >
@@ -619,7 +619,7 @@ let airportNames = [String](airports.values)
 // airportNames 은 ["London Heathrow", "Toronto Pearson"] 임
 ```
 
-스위프트의 `Dictionary` 타입은 순서를 정의하지 않습니다. 딕셔너리의 키나 값을 정해진 순서로 반복하려면, `sorted()` 메소드를 `keys` 또는 `values` 속성에 사용합니다.
+스위프트의 `Dictionary` 타입은 순서를 정의하지 않습니다. 딕셔너리의 키 또는 값을 정해진 순서대로 반복하려면, `sorted()` 메소드를 `keys` 또는 `values` 속성에 사용합니다.
 
 ### 다음 장
 
