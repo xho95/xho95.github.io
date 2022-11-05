@@ -90,7 +90,7 @@ categories: Swift Language Grammar Revision History
 #### 2018-09-17
 
 * 스위프트 4.2 에서 업데이트함.
-* 열거체의 모든 case 에 접근하는 것에 대한 정보를 [Iterating over Enumeration Cases (열거체 case 들 반복하기)]({% post_url 2020-06-13-Enumerations %}#iterating-over-enumeration-cases-열거체-case-들-반복하기) 절에 추가함.
+* 열거체의 모든 case 에 접근하는 것에 대한 정보를 [Iterating over Enumeration Cases (열거체 case 들을 반복하기)]({% post_url 2020-06-13-Enumerations %}#iterating-over-enumeration-cases-열거체-case-들을-반복하기) 절에 추가함.
 * `#error` 와 `#warning` 에 대한 정보를 [Compile-Time Diagnostic Statement (컴파일-시간 진단문)]({% post_url 2020-08-20-Statements %}#compile-time-diagnostic-statement-컴파일-시간-진단문) 절에 추가함.
 * '인라이닝 (inlining)' 에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분 밑의 `inlinable` 과 `usableFromInline` 특성에 추가함.
 * 실행 시간에 이름으로 찾아 가는 멤버에 대한 정보를 [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분 밑의 `dynamicMemberLookup` 특성에 추가함.
