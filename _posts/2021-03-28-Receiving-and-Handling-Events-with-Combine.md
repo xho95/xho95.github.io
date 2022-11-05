@@ -76,7 +76,7 @@ let sub = NotificationCenter.default
 
 * '텍스트 필드' 에 타이핑한 어떤 문자열로 '뷰 모델' 을 갱신하기 보다는, 정해진 길이 이하의 입력을 무시하거나 '영숫자가-아닌' 문자를 거부하기 위해 [filter(_:)](https://developer.apple.com/documentation/combine/publisher/filter(_:)) 연산자를 사용할 수 있을 것입니다.
 * '걸러내는 (filtering) 연산' 의 비용이 비싼 경우-예를 들어, 큰 데이터베이스를 조회하는 경우-사용자가 타이핑을 멈출 때까지 기다리길 원할지도 모릅니다. 이를 위해, [debounce(for:scheduler:options:)](https://developer.apple.com/documentation/combine/publisher/debounce(for:scheduler:options:)) 연산자는 '발행자' 가 이벤트를 내보내기 전에 반드시 경과해야 하는 '최소 시간 간격' 을 설정하도록 해줍니다. [RunLoop](https://developer.apple.com/documentation/foundation/runloop) 클래스는 수 초에서 밀리 초 단위로 '지연 시간' 을 지정하도록 하는 편의를 제공합니다.
-* 결과가 'UI' 를 갱신하면, [receive(on:options:)](https://developer.apple.com/documentation/combine/publisher/receive(on:options:)) 메소드를 호출하여 '주 쓰레드 (main thread)' 에 '콜백' 을 배달할 수 있습니다. [RunLoop](https://developer.apple.com/documentation/foundation/runloop) 클래스에서 제공하는 [Scheduler](https://developer.apple.com/documentation/combine/scheduler) 인스턴스를 첫 번째 매개 변수로 지정함으로써, 자신의 '구독자' 를 '주 실행 루프' 에서 호출하라고 `Combine` 에게 말합니다.
+* 결과가 'UI' 를 갱신하면, [receive(on:options:)](https://developer.apple.com/documentation/combine/publisher/receive(on:options:)) 메소드를 호출하여 '주요 쓰레드 (main thread)' 에 '콜백' 을 배달할 수 있습니다. [RunLoop](https://developer.apple.com/documentation/foundation/runloop) 클래스에서 제공하는 [Scheduler](https://developer.apple.com/documentation/combine/scheduler) 인스턴스를 첫 번째 매개 변수로 지정함으로써, 자신의 '구독자' 를 '주 실행 루프' 에서 호출하라고 `Combine` 에게 말합니다.
 
 결과 '발행자' 선언은 다음과 같습니다:
 
