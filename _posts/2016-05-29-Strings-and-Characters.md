@@ -425,7 +425,7 @@ welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex)
 // welcome 은 이제 "hello there!" 와 같음
 ```
 
-문자열의 지정 색인 위치에서 단일 문자를 제거하려면, `remove(at:)` 메소드를 사용하고, 지정 범위에서 하위 문자열을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
+문자열에서 지정된 색인의 단일 문자를 제거하려면, `remove(at:)` 메소드를 사용하고, 지정된 범위의 하위 문자열을 제거하려면, `removeSubrange(_:)` 메소드를 사용합니다:
 
 ```swift
 welcome.remove(at: welcome.index(before: welcome.endIndex))

@@ -47,7 +47,7 @@ _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), �
 * 표현식과 타입에서 사용하는 키워드: `as`, `Any`, `catch`, `false`, `is`, `nil`, `super`, `self`, `Self`, `throw`, `throws`, `true`, 및 `try`.
 * 패턴 (pattern) 에서 사용하는 키워드 : `_`.
 * 번호 기호 (`#`) 로 시작하는 키워드: `#available`, `#colorLiteral`, `#column`, `#else`, `#elseif`, `#endif`, `#error`, `#file`, `#filePath`, `#fileLiteral`, `#function`, `#if`, `#imageLiteral`, `#line`, `#selector`, `#sourceLocation`, 및 `#warning`.
-* 특별한 상황을 위해 예약한 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 및 `willSet`. 문법 안에서 나타나는 상황 밖에선, 식별자로 사용할 수 있습니다.
+* 특별한 상황을 위해 예약한 키워드: `associativity`, `convenience`, `dynamic`, `didSet`, `final`, `get`, `infix`, `indirect`, `lazy`, `left`, `mutating`, `none`, `nonmutating`, `optional`, `override`, `postfix`, `precedence`, `prefix`, `Protocol`, `required`, `right`, `set`, `Type`, `unowned`, `weak`, 및 `willSet`. 문법 안에서 나타난 상황 밖에선, 식별자로 사용할 수 있습니다.
 
 다음의 낱말은 문장 부호로 예약되어 있어서 사용자 정의 연산자로 사용할 수 없습니다: `(`, `)`, `{`, `}`, `[`, `]`, `.`, `,`, `:`, `;`, `=`, `@`, `#`, (접두사 연산자로써의) `&`, `->`, `` ` ``, `?`, 및 (접미사 연산자로써의)`!`.
 
@@ -244,7 +244,7 @@ let regex2 = # #/abc/# #    // 에러
 
 위 규칙엔 한 가지 주의할 점이 있습니다. 이미 정의된 `!` 및 `?` 연산자 왼쪽에 공백이 없으면, 오른쪽 공백과 상관없이, 접미사 연산자로 취급한다는 것입니다. `?` 을 옵셔널-사슬 연산자로 사용하려면, 반드시 왼쪽엔 공백이 없어야 합니다. 삼항 조건 (`? :`) 연산자로 사용하려면, 반드시 양쪽에 공백이 있어야 합니다.
 
-특정 구조에서, 맨 앞이 `<` 나 `>` 인 연산자는 두 개 이상의 낱말로 쪼개질 수 있습니다. 나머지 부분도 똑같은 식으로 취급하여 또 다시 쪼깨질 수 있습니다. 그 결과, `Dictionary<String, Array<Int>>` 같은 구조의 닫는 `>` 문자 사이에 공백을 추가해서 헷갈리지 않게 할 필요가 없습니다. 이 예제에선, 닫는 `>` 문자를 단일 낱말로 취급하여 비트 이동 `>>` 연산자로 잘못 해석할 일이 없습니다.[^misinterprete]
+특정한 구조에선, 맨 앞이 `<` 나 `>` 인 연산자가 두 개 이상의 낱말로 쪼개질 수 있습니다. 나머지 부분도 똑같은 식으로 취급하여 또 다시 쪼깨질 수 있습니다. 그 결과, `Dictionary<String, Array<Int>>` 같은 구조의 닫는 `>` 문자 사이에 공백을 추가해서 헷갈리지 않게 할 필요가 없습니다. 이 예제에선, 닫는 `>` 문자를 단일 낱말로 취급하여 비트 이동 `>>` 연산자로 잘못 해석할 일이 없습니다.[^misinterprete]
 
 새로운, 사용자 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#custom-operators-사용자-정의-연산자) 부분과 [Operator Declaration (연산자 선언)]({% post_url 2020-08-15-Declarations %}#operator-declaration-연산자-선언) 부분을 보도록 합니다. 기존 연산자를 중복 정의하는 방법을 배우려면, [Operator Methods (연산자 메소드)]({% post_url 2020-03-03-Closures %}#operator-methods-연산자-메소드) 부분을 보도록 합니다.
 

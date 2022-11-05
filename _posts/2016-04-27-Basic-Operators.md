@@ -461,7 +461,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 
 #### Explicit Parentheses (명시적인 괄호)
 
-엄밀히 필요한 건 아닐 때라도 괄호를 포함하여, 복잡한 표현식의 의도롤 읽기 쉽게 만드는게, 유용할 때가 있습니다. 위의 출입문 접근 예제에선, 복합 표현식의 첫 부분에 괄호를 추가하여 의도를 명시하는게 유용합니다:
+엄밀히 필요한 건 아닐 때라도 괄호를 포함하여, 복잡한 표현식의 의도롤 읽기 쉽게 만드는게, 유용할 때가 있습니다. 위의 출입문 접근 예제에선, 복합 표현식 첫 번째 부분 주변에 괄호를 추가하여 의도를 명시하는게 유용합니다:
 
 ```swift
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
