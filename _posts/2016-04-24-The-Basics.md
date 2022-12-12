@@ -565,7 +565,7 @@ if let actualNumber = Int(possibleNumber) {
 // "The string "123" has an integer value of 123" 을 인쇄함
 ```
 
-이 코드는 다음처럼 읽을 수 있습니다:
+이 코드는 다음 처럼 읽을 수 있습니다:
 
 "`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 에 값이 담겨 있으면, `actualNumber` 라는 새 상수에 옵셔널이 담은 값을 설정합니다."
 
