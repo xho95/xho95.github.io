@@ -53,6 +53,7 @@ production_url : https://xho95.github.io
 #  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "fenced_code_blocks", "footnotes"]
 
 markdown: kramdown
+remote-theme: just-the-docs
 
 kramdown:
   input: GFM
