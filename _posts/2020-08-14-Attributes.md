@@ -757,11 +757,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### Sendable (보내기 가능함)
 
-이 특성을 함수의 타입에 적용하면 함수나 클로저가 보내기 가능하다는 걸 지시합니다. 이 특성을 참수 타입에 적용하는 건 함수-아닌 타입이 [Sendable](https://developer.apple.com/documentation/swift/sendable) 프로토콜을 준수하는 것과 똑같은 의미입니다.
+이 특성은 함수 타입에 적용하여 함수나 클로저가 보내기 가능하다는 걸 지시합니다. 이 특성을 참수 타입에 적용하는 건 함수-아닌 타입이 [Sendable](https://developer.apple.com/documentation/swift/sendable) 프로토콜을 따르는 것과 의미가 똑같습니다.
 
-함수나 클로저가 보내기 가능한 값을 예상한 상황에서 사용되는데, 그 함수나 클로저가 보내기 가능에 필요한 필수 조건을 만족한다면, 함수나 클로저가 이 특성이라고 추론합니다.
+함수나 클로저를 사용하는 곳이 보내기 가능한 값을 예상한 상황이면서, 함수나 클로저가 보내기 가능한 필수 조건을 만족하는 경우에, 함수와 클로저에서 이 특성을 추론합니다.
 
-보내기 가능한 함수 타입은 보내기 불가능한 함수 타입에 해당하는 것의 하위 타입입니다.
+보내기 가능한 함수 타입은 그에 해당하는 보내기 불가능한 함수 타입의 하위 타입입니다.
 
 ### Switch Case Attributes (switch 문 case 절 특성)
 
