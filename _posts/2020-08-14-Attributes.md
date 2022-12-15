@@ -703,11 +703,11 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 [Top-Level Code (최상단 코드)]({% post_url 2020-08-15-Declarations %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
-#### unchecked (검사하지 않음)
+#### unchecked (검사 안함)
 
-이 특성을 채택한 프로토콜의 타입 선언 목록 부분의 프로토콜 타입에 적용하면 그 프로토콜 필수 조건을 강제하는 걸 끕니다.
+타입 선언이 채택한 프로토콜 목록 부분에 이 특성을 적용하면 그 프로토콜 필수 조건을 강제하는 걸 끕니다.
 
-지원하는 단 하나의 프로토콜은 [Sendable](https://developer.apple.com/documentation/swift/sendable) 입니다.[^sendable]
+유일하게 지원하는 프로토콜은 [Sendable](https://developer.apple.com/documentation/swift/sendable) 입니다.[^sendable]
 
 #### usableFromInline (인라인에서 사용 가능)
 
