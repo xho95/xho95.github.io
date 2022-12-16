@@ -10,13 +10,13 @@ categories: Swift Language Grammar Revision History
 
 ## Document Revision History (문서를 다듬은 역사)
 
-#### 2022-06-06
+#### 2022-09-12
 
 * 스위프트 5.7 에서 업데이트함.
-* 행위자와 임무 사이의 데이터 보내기에 대한 정보를 가진, [Sendable Types (보내기 가능 타입)]({% post_url 2021-06-10-Concurrency %}#sendable-types-보내기-가능-타입) 절을 추가하고, [Sendable (보내기 가능함)]({% post_url 2020-08-14-Attributes %}#sendable-보내기-가능함) 과 [unchecked (검사하지 않음)]({% post_url 2020-08-14-Attributes %}#unchecked-검사하지-않음) 절에 `@Sendable` 과 `@unchecked` 특성애 대한 정보를 추가함.
-* 정규 표현식의 생성에 대한 정보를 가진 [Regular Expression Literals (정규 표현식 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#regular-expression-literals-정규-표현식-글자 값) 절을 추가함.
-* [Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 절에 짧은 형식의 `if`-`let` 에 대한 정보를 추가함.
-* [Checking API Availability (API 사용 가능성 검사)]({% post_url 2020-06-10-Control-Flow %}#checking-api-availability-api-사용-가능성-검사) 절에 `#unavailable` 에 대한 정보를 추가함.
+* 행위자와 임무 사이에 데이터를 보내는 정보가 있는, [Sendable Types (보내기 가능 타입)]({% post_url 2021-06-10-Concurrency %}#sendable-types-보내기-가능-타입) 절을 추가하고, `@Sendable` 과 `@unchecked` 특성 정보를 [Sendable (보내기 가능함)]({% post_url 2020-08-14-Attributes %}#sendable-보내기-가능함) 과 [unchecked (검사 안함)]({% post_url 2020-08-14-Attributes %}#unchecked-검사-안함) 절에 추가함.
+* 정규 표현식 생성 정보가 있는 [Regular Expression Literals (정규 표현식 글자 값)]({% post_url 2020-07-28-Lexical-Structure %}#regular-expression-literals-정규-표현식-글자 값) 절을 추가함.
+* 짧은 형식의 `if`-`let` 에 대한 정보를[Optional Binding (옵셔널 연결)]({% post_url 2016-04-24-The-Basics %}#optional-binding-옵셔널-연결) 절에 추가함.
+* `#unavailable` 에 대한 정보를 [Checking API Availability (API 사용 가능성 검사)]({% post_url 2020-06-10-Control-Flow %}#checking-api-availability-api-사용-가능성-검사) 절에 추가함.
 
 #### 2022-03-14
 
