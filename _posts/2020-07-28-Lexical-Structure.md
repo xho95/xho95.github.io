@@ -196,9 +196,9 @@ let textB = "Hello world"
 
 &nbsp;&nbsp;&nbsp;&nbsp;\/`regular expression-정규 표현식`\/
 
-정규 표현식 글자 값은 벗어나지 않은 탭이나 공백으로 시작해선 안되며, 벗어나지 않은 빗금 (`/`) 이나, 캐리지 반환[^carriage-return], 또는 줄 먹임 문자[^line-feed] 를 담을 수도 없습니다. 
+정규 표현식 글자 값은 벗어나지 않은 탭이나 공백[^unescaped-tab]으로 시작해선 안되고, 벗어나지 않은 빗금 (`/`) 이나, 캐리지 반환[^carriage-return], 또는 줄 먹임[^line-feed] 문자를 담을 수도 없습니다. 
 
-정규 표현식 안에서의, 역 빗금은 그 정규 표현식의 일부이지, 문자열 글자 값 안에서 같이 벗어난 문자로 이해하지 않습니다. 이는 그 뒤의 특수 문자를 글자 그대로 해석하거나, 그 뒤의 특수하지 않은 문자를 특수한 방식으로 해석하라고 지시합니다. 예를 들어, `/\(/` 는 단일한 왼쪽 괄호와 들어 맞고 `/\d/` 는 단일한 숫자와 들어 맞습니다.
+정규 표현식 안에서, 역 빗금은 그 정규 표현식의 일부이지, 그냥 문자열 글자 값 안의 벗어난 문자 같은 걸로 이해하지 않습니다. 이는 뒤에 있는 특수 문자를 글자 그대로 해석하거나, 그 뒤의 특수하지 않은 문자를 특수한 방식으로 해석하라고 지시합니다. 예를 들어, `/\(/` 는 단일한 왼쪽 괄호와 들어 맞고 `/\d/` 는 단일한 숫자와 들어 맞습니다.
 
 확장 구분자로 구분한 정규 표현식 글자 값은 일렬로 나열한 문자를 빗금 (`/`) 으로 둘러싼 후 하나 이상의 번호 기호 (`#`) 로 균형을 맞춘 집합[^balanced-set] 입니다. 확장 구분자로 구분한 정규 표현식 글자 값은 다음의 형식을 가집니다:
 
@@ -306,7 +306,9 @@ let regex2 = # #/abc/# #    // 에러
 
 [^developer-string]: 원문 자체가 '애플 개발자 문서' 에 대한 링크입니다. 
 
-[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안에서 검색 패턴을 지정하는 일련의 문자들을 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 보도록 합니다. 
+[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안의 검색 패턴을 지정하는 일련의 문자를 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 참고하기 바랍니다.
+
+[^unescaped-tab]: 즉, 정규 표현식을 공백으로 시작하면 안된다는 의미입니다.
 
 [^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 보도록 합니다.
 
