@@ -596,7 +596,7 @@ if let myNumber {
 
 상수와 변수 둘 다 옵셔널 연결과 쓸 수 있습니다. 첫 번째 `if` 문 분기에서 `myNumber` 값을 조작하고 싶었으면, `if var myNumber` 라고 대신 써서, 옵셔널의 값을 상수 보단 변수로 사용할 수도 있었을 겁니다. `if` 문 본문 안에서 `myNumber` 를 바꾸면 그 지역 변수에만 적용되지, 포장을 푼 원본, 옵셔널 상수나 변수는 _아닙니다 (not)_.
 
-쉼표로 구분하면, 단일 `if` 문 안에 필요한 만큼 많은 옵셔널 연결과 불리언 조건을 포함시킬 수 있습니다. 어떤 옵셔널 연결 값이든 `nil` 이거나 어떤 불리언 조건 평가든 `false` 면, `if` 문 전체 조건을 `false` 로 고려합니다. 다음 `if` 문들은 서로 같은 겁니다:
+단일한 `if` 문에 옵셔널 연결과 불리언 조건을 필요한 만큼 많이 포함시키려면, 쉼표로 구분하면 됩니다. 어떤 옵셔널 연결 값이든 `nil` 이거나 어떤 불리언 조건 평가든 `false` 면, 전체 `if` 문의 조건이 `false` 라고 고려합니다. 다음의 `if` 문들은 서로 같은 겁니다:
 
 ```swift
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
@@ -614,7 +614,7 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" 를 인쇄함
 ```
 
-> `if` 문의 옵셔널 연결로 생성한 상수와 변수는 `if` 문의 본문 안에서만 사용 가능합니다. 이와 대조하여, `guard` 문으로 생성한 상수와 변수는, [Early Exit (때 이른 탈출문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-때-이른-탈출문) 에서 설명하듯, `guard` 문 뒤의 코드 줄에서 사용 가능합니다.
+> `if` 문에서 옵셔널 연결로 생성한 상수와 변수는 `if` 문 본문에서만 쓸 수 있습니다. 이와 대조하여, [Early Exit (때 이른 탈출문)]({% post_url 2020-06-10-Control-Flow %}#early-exit-때-이른-탈출문) 에서 설명하듯, `guard` 문으로 생성한 상수와 변수는 `guard` 문 뒤의 코드 줄에서 쓸 수 있습니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)
 
