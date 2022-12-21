@@ -546,15 +546,15 @@ if convertedNumber != nil {
 
 #### Optional Binding (옵셔널 연결)
 
-_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널에 값이 담겼는지 알아내고, 그렇다면, 임시 상수나 변수로 그 값을 사용 가능하게 합니다. 옵셔널 연결을 `if` 및 `while` 문과 사용하면 옵셔널 안의 값 검사와, 그 값을 상수나 변수로 뽑아내는 걸, 단 하나의 행동으로 할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 설명합니다.
+_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 담고 있는지 알아내서, 그렇다면, 그 값을 임시 상수나 변수로 쓸 수 있게 합니다. 옵셔널 연결을 `if` 와 `while` 문과 같이 써서 옵셔널 안의 값을 검사하는 것과, 그 값을 상수나 변수로 뽑아내는 걸, 단 하나의 행동으로 할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장에서 더 자세히 설명합니다.
 
-`if` 문의 옵셔널 연결은 다음 처럼 작성합니다:
+`if` 문에서 옵셔널 연결을 쓰는 건 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;if let `constantName-상수 이름` = `someOptional-어떤 옵셔널` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-[Optionals (옵셔널)](#optionals-옵셔널) 절의 `possibleNumber` 예제가 강제 포장 풀기 보단 옵셔널 연결을 사용하도록 재작성할 수 있습니다:
+[Optionals (옵셔널)](#optionals-옵셔널) 절의 `possibleNumber` 예제도 강제 풀기 보단 옵셔널 연결을 사용하도록 다시 쓸 수 있습니다:
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -567,11 +567,11 @@ if let actualNumber = Int(possibleNumber) {
 
 이 코드는 다음 처럼 읽을 수 있습니다:
 
-"`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 에 값이 담겨 있으면, `actualNumber` 라는 새 상수에 옵셔널이 담은 값을 설정합니다."
+"`Int(possibleNumber)` 가 반환한 옵셔널 `Int` 에 값이 담겼으면, `actualNumber` 라는 새 상수에 옵셔널 안에 담긴 값을 설정합니다."
 
-자동 변환[^conversion] 이 성공하면, `if` 문의 첫 번째 분기 안에서 `actualNumber` 상수를 사용하는게 가능해집니다. 옵셔널 _안에 (within)_ 담긴 값으로 이미 초기화되어서, 값 접근에 `!` 접미사를 쓰지 않습니다. 이 예제에선, 단순히 `actualNumber` 를 써서 자동 변환 결과만 인쇄합니다.
+자동 변환[^conversion] 이 성공하면, `actualNumber` 상수가 `if` 문 첫 번째 분기 안에서 쓸 수 있게 됩니다. 이미 옵셔널 _안에 (within)_ 담긴 값으로 초기화돼서, `!` 접미사로 값에 접근하지 않습니다. 이 예제에선, `actualNumber` 로 단순히 자동 변환한 결과만 인쇄합니다.
 
-원본, 옵셔널 상수나 변수가 담은 값에 접근한 후에 이를 참조할 필요가 없다면, 새로운 상수나 변수에 똑같은 이름을 사용할 수 있습니다:
+옵셔널 상수나 변수가 담은 값에 접근한 후에, 원본을 참조할 필요가 없으면, 새로운 상수나 변수 이름을 똑같은 걸로 쓸 수 있습니다:
 
 ```swift
 let myNumber = Int(possibleNumber)
@@ -583,9 +583,9 @@ if let myNumber = myNumber {
 // "My number is 123" 을 인쇄함
 ```
 
-이전 예제 코드 같이, 이 코드도 `myNumber` 에 값이 담겼는지 검사하는 걸로 시작합니다. `myNumber` 에 값이 있으면, 그 값을 `myNumber` 라는 이름의 새 상수 값으로 설정합니다. `if` 문 본문 안에서, `myNumber` 를 쓰면 옵셔널-아닌 그 새로운 상수를 참조합니다. `if` 문 시작 전과 끝난 후에, `myNumber` 를 쓰면 옵셔널 정수 상수를 참조합니다.
+이 코드는, 이전 예제 코드 같이, `myNumber` 가 값을 담고 있는지 검사하는 걸로 시작합니다. `myNumber` 에 값이 있으면, 이름이 `myNumber` 인 새 상수의 값을 그 값으로 설정합니다. `if` 문의 본문 안에서, `myNumber` 를 쓰면 새로운 옵셔널-아닌 상수를 참조합니다. `if` 문의 시작 전과 끝난 후에, `myNumber` 를 쓰면 옵셔널 정수인 상수를 참조합니다.
 
-이런 종류의 코드는 너무 흔하기 때문에, 더 짧은 철자로 옵셔널 값의 포장을 풀 수도 있는데: 그냥 포장 풀 상수나 변수 이름을 쓰면 됩니다. 새로운, 포장 푼 상수나 변수는 옵셔널 값과 똑같은 이름을 암시적으로 사용합니다.
+이런 종류의 코드가 너무 흔하기 때문에, 더 짧은 철자법으로 옵셔널 값을 풀 수가 있는데: 포장을 풀 상수나 변수의 이름을 그냥 쓰는 겁니다. 새로, 푼 상수나 변수는 암시적으로 옵셔널 값과 똑같은 이름을 사용합니다.
 
 ```swift
 if let myNumber {
@@ -594,7 +594,7 @@ if let myNumber {
 // "My number is 123" 을 인쇄함
 ```
 
-상수와 변수 둘 다 옵셔널 연결과 사용할 수 있습니다. `if` 문의 첫 번째 분기 안에서 `myNumber` 값을 조작하고 싶으면, `if var myNumber` 라고 대신 작성하여, 옵셔널 안에 담긴 값을 상수 보단 변수로 사용할 수 있을 겁니다. `myNumber` 를 `if` 문 본문 안에서 바꾼 건, 포장 푼 원본, 옵셔널 상수나 변수가 _아닌 (not)), 그 지역 변수에만 적용됩니다.
+상수와 변수 둘 다 옵셔널 연결과 쓸 수 있습니다. 첫 번째 `if` 문 분기에서 `myNumber` 값을 조작하고 싶었으면, `if var myNumber` 라고 대신 써서, 옵셔널의 값을 상수 보단 변수로 사용할 수도 있었을 겁니다. `if` 문 본문 안에서 `myNumber` 를 바꾸면 그 지역 변수에만 적용되지, 포장을 푼 원본, 옵셔널 상수나 변수는 _아닙니다 (not)_.
 
 쉼표로 구분하면, 단일 `if` 문 안에 필요한 만큼 많은 옵셔널 연결과 불리언 조건을 포함시킬 수 있습니다. 어떤 옵셔널 연결 값이든 `nil` 이거나 어떤 불리언 조건 평가든 `false` 면, `if` 문 전체 조건을 `false` 로 고려합니다. 다음 `if` 문들은 서로 같은 겁니다:
 
@@ -805,5 +805,7 @@ precondition(index > 0, "Index must be greater than zero.")
 [^base-number]: 'base number' 는 우리 말로 지수의 '밑수', '가수', '기저' 등의 말로 옮길 수 있는데, 컴퓨터 용어로 엄밀하게 말 할 때는 '가수' 라는 말을 쓰는 것 같습니다. 여기서는 일단 지수의 '밑수' 라고 옮깁니다. 부동-소수점 수에서는 'base-number' 가 '유효 숫자' 에 해당하는데, 이에 대한 더 자세한 내용은 위키피디아의 [부동소수점](https://ko.wikipedia.org/wiki/부동소수점) 항목과 [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 항목을 참고하기 바랍니다.
 
 [^permutation]: 'permutation' 은 수학 용어로 '순열' 을 의미합니다. '순열' 이라는 것은 서로 다른 `n` 개의 원소에서 `r` 개를 선택해서 한 줄로 세울 수 있는 경우의 수입니다. 즉, 원소가 `n` 개인 튜플의 경우의 수는 이 순열 개수 만큼 많다는 의미입니다. 여기서는 '순열' 이라는 말을 좀 더 이해하기 쉽게 '순서 조합' 라는 말로 옮겼습니다. 순열에 대한 더 자세한 정보는, 위키피디아의 [Permutation](https://en.wikipedia.org/wiki/Permutation) 항목과 [순열](https://ko.wikipedia.org/wiki/순열) 항목을 참고하기 바랍니다.
+
+[^conversion]: 새로운 상수에 값을 설정할 때 그 값의 타입을 상수 타입으로 '자동 변환 (conversion)' 하게 되는데, 성공할 수도 있고 실패할 수도 있습니다. 
 
 [^stub]: '자투리 (stub)' 는 나무 토막이나 그루터기 처럼 그 자체로는 미완성인 것을 말합니다. '자투리 구현 (stub implementation)' 은 소프트웨어 개발 과정에서 아직 완성안된 기능을 위해 임시로 놓아 두는 코드입니다. 자투리 구현에 대한 더 자세한 정보는, 위키피디아의 [Method stub](https://en.wikipedia.org/wiki/Method_stub) 과 [메소드 스텁](https://ko.wikipedia.org/wiki/메소드_스텁) 항목을 참고하기 바랍니다.
