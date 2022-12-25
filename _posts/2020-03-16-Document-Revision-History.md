@@ -329,7 +329,7 @@ categories: Swift Language Grammar Revision History
 * `[KeyType : ValueType]` 로 작성하는, [Dictionary Type Shorthand Syntax (딕셔너리 타입을 짧게 줄인 구문))]({% post_url 2016-06-06-Collection-Types %}#dictionary-type-shorthand-syntax-딕셔너리-타입을-짧게-줄인-구문)) 에 대하여 새로운 부분을 추가함.
 * [Hash Values for Set Types (셋 타입의 해시 값)]({% post_url 2016-06-06-Collection-Types %}#hash-values-for-set-types-셋-타입의-해시-값) 에 새로운 부분을 추가함.
 * [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 의 예제는 이제, 새롭게 배열의 '값 의미 구조 (value semantics)' 을 반영하기 위해, '전역 `sort(_:_:)` 함수' 대신 '전역 `sorted(_:_:)` 함수' 를 사용함.
-* 구조체의 저장 속성이 기본 값을 가지고 있지 않은 경우라도 구조체의 '멤버 초기자 (memberwise initializer)' 가 사용 가능함을 분명히 밝히기 위해 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에 대한 정보를 업데이트함.
+* [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% post_url 2016-01-23-Initialization %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에 대한 정보를 업데이트하여 구조체의 저장 속성에 기본 값이 없는 경우에도 구조체의 멤버 초기자 (memberwise initializer) 를 쓸 수 있다는 걸 분명히 함.
 * [Half-Open Range Operator (반-열린 범위 연산자)]({% post_url 2016-04-27-Basic-Operators %}#half-open-range-operator-반-열린-범위-연산자) 를 `..` 대신 `..<` 로 업데이트함.
 * [Extending a Generic Type (일반화 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화-타입-확장하기) 에 대한 예제를 추가함.
 

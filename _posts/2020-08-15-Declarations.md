@@ -44,7 +44,7 @@ _불러오기 선언 (import declaration)_ 는 현재 파일 밖에서 선언한
 
 &nbsp;&nbsp;&nbsp;&nbsp;import `module-모듈`
 
-어느 기호를 불러올지 더 자세하게 제한하면-모듈이나 하위 모듈 안의 특정 하위 모듈 또는 특정 선언을 지정할 수 있습니다. 이런 자세한 형식을 사용할 땐, (선언한 모듈이 아닌) 불러온 기호만 현재 영역에서 사용 가능합니다.
+더 자세하게 제공하면 불러올 기호를 제한합니다-모듈이나 하위 모듈 안의 특정 하위 모듈이나 특정 선언을 지정할 수 있습니다. 이 자세한 형식을 사용할 땐, (선언한 모듈이 아닌) 불러온 기호만 현재 시야에서 쓸 수 있게 됩니다.ㅇ
 
 &nbsp;&nbsp;&nbsp;&nbsp;import `import kind-불러올 종류` `module-모듈`.`symbole name-기호 이름`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;import `module-모듈`.`submodule-하위 모듈`
