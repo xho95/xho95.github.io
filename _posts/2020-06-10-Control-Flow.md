@@ -730,7 +730,7 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 ### Checking API Availability (API 사용 가능성 검사하기)
 
-스위프트에는 **API** 가 쓸 수 있는 것인지 검사하는 기능이 내장되어 있어서, 주어진 배포 대상에선 쓸 수 없는 API 를 쓰지 않도록 보장해줍니다.
+스위프트는 **API** 가 쓸 수 있는 것인지 검사하는 기능을 내장하고 있어, 주어진 배포 대상에선 쓸 수 없는 API 를 쓰는 일이 없도록 보장합니다.
 
 컴파일러는 **SDK**[^SDK] 안에 있는 정보로 코드의 모든 **API** 들이 프로젝트가 지정한 배포 대상에서 쓸 수 있는 것들인지 밝혀냅니다.[^availability-information] 사용 불가능한 **API** 를 쓰려고 하면 스위프트가 컴파일 시간에 에러를 보고합니다.
 
@@ -744,9 +744,9 @@ if #available(iOS 10, macOS 10.12, *) {
 }
 ```
 
-위의 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후인 경우에만; **macOS** 면, **macOS 10.12** 이후인 경우에만 `if` 문의 본문을 실행하라고 지정하는 겁니다. 마지막 인자인, `*` 는, 필수로써, 자신의 대상에서 `if` 본문을 실행하라고 지정한 최소 배포 대상 (이후의), 다른 어떤 플랫폼이든 지정합니다.
+위에 있는 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후에서만; **macOS** 면, **macOS 10.12** 이후에서만 `if` 문 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수이며, `if` 본문을 실행하라고 지정한 최소 배포 대상 (이후의), 다른 어떤 플랫폼이든 지정하는 겁니다.
 
-일반 형식의, 사용 가능성 조건은 플랫폼의 이름과 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 쓰는데-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 보기 바랍니다. **iOS 8** 이나 **macOS 10.10** 같은 주 버전 번호 [^major-version-numbers] 지정에 더해, **iOS 11.2.6** 과 **macOS 10.13.3** 같은 부 버전 번호[^minor-version-numbers] 도 지정할 수 있습니다.
+일반 형식의, 사용 가능성 조건은 플랫폼 이름 및 버전 목록을 입력 받습니다. 플랫폼 이름엔 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 씁니다-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 보도록 합니다. **iOS 8** 이나 **macOS 10.10** 같은 주 버전 번호[^major-version-numbers] 지정에 더해, **iOS 11.2.6** 과 **macOS 10.13.3** 같은 부 버전 번호[^minor-version-numbers] 도 지정할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
@@ -754,7 +754,7 @@ if #available(iOS 10, macOS 10.12, *) {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-사용 가능성 조건을 `guard` 문에서 사용할 땐, 그 코드 블럭의 나머지 코드에서 사용할 사용 가능성 정보를 다듬습니다.
+사용 가능성 조건을 `guard` 문에서 쓸 땐, 그 코드 블럭의 나머지에서 쓸 사용 가능성 정보를 정교하게 다듬게 됩니다.
 
 ```swift
 @available(macOS 10.12, *)
@@ -771,9 +771,9 @@ func chooseBestColor() -> String {
 }
 ```
 
-위 예제에서, `ColorPreference` 구조체는 **macOS 10.12** 이후 버전을 요구합니다. `chooseBestColor()` 함수는 사용 가능성 보호 (guard) 문으로 시작합니다. 플랫폼 버전이 `ColorPreference` 를 쓰기에 너무 오래됐으면, 항상 사용 가능한 걸로 동작을 대체합니다. `guard` 문 뒤엔, **macOS 10.12** 이후가 필요한 **API** 를 쓸 수 있습니다.
+위 예제에서, `ColorPreference` 구조체는 **macOS 10.12** 이후 버전을 요구합니다. `chooseBestColor()` 함수의 시작은 사용 가능성 보호 (guard) 문입니다. 플랫폼 버전이 `ColorPreference` 를 쓰기에 너무 오래된 거면, 항상 사용 가능한 동작으로 대체합니다. `guard` 문 뒤엔, **macOS 10.12** 이후를 요구하는 **API** 를 쓸 수 있습니다.
 
-`#available` 에 더하여, 스위프트는 사용 불가능성 조건을 써서 정반대로 검사하는 것도 지원합니다. 예를 들어, 다음의 두 검사는 똑같은 걸 합니다:
+`#available` 에 더하여, 스위프트는 정반대로 검사하는 사용 불가능성 조건도 지원합니다. 예를 들어, 다음의 두 검사는 똑같은 걸 합니다:
 
 ```swift
 if #available(iOS 10, *) {
@@ -786,7 +786,7 @@ if #unavailable(iOS 10) {
 }
 ```
 
-`#unavailable` 형식을 사용하면 대체 코드만 담긴 검사일 때 코드를 더 읽기 쉽도록 해줍니다.
+`#unavailable` 형식을 쓰면 검사에 대체 코드만 있을 때 코드를 더 읽기 쉽게 해줍니다.
 
 ### 다음 장
 
@@ -834,7 +834,7 @@ if #unavailable(iOS 10) {
 
 [^availability-condition]: '사용 가능성 조건 (availability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, 컴파일러 제어문은 컴파일 시간에 검사하는 반면, 사용 가능성 조건은 실행 시간에 검사합니다. 이에 대한 더 자세한 내용은, 애플 개발자 포럼의 [Do we need something like ‘#if available’?](https://forums.swift.org/t/do-we-need-something-like-if-available/40349) 항목을 참고하기 바랍니다. 
 
-[^major-version-numbers]: '주 버전 번호 (major version numbers)' 는 의미 구조 상의 버전 번호 (semantic versioning) 에서 가장 큰 버전 번호를 말합니다.
+[^major-version-numbers]: '주 버전 번호 (major version numbers)' 는 의미 있는 버전 붙이기 (semantic versioning) 에서 맨 앞에 붙는 버전 번호를 말합니다. 의미 있는 버전에 대한 더 자세한 정보는 [Semantic Versioning 2.0.0](https://semver.org) 항목 및 [유의적 버전 2.0.0-ko2](https://semver.org/lang/ko/) 항목을 참고하기 바랍니다. 
 
-[^minor-version-numbers]: '부 버전 번호 (minor version numbers)' 는 의미 구조 상의 버전 번호 (semantic versioning) 에서 두 번째로 큰 버전 번호를 말합니다.
+[^minor-version-numbers]: '부 버전 번호 (minor version numbers)' 는 의미 있는 버전 붙이기 (semantic versioning) 에서 두 번째에 붙는 버전 번호를 말합니다. 의미 있는 버전에 대한 더 자세한 정보는 [Semantic Versioning 2.0.0](https://semver.org) 항목 및 [유의적 버전 2.0.0-ko2](https://semver.org/lang/ko/) 항목을 참고하기 바랍니다. 
 
