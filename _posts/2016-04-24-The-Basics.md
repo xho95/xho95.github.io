@@ -786,7 +786,7 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [^set-dictionary]: `Set` 은 실제 수학 용어로써 '집합' 이라는 의미이고, `Dictionary` 는 '사전' 이라는 의미입니다. 하지만, 본문에서 자료 타입으로 사용할 때는 이들을 **셋** 과 **딕셔너리** 처럼 발음 그대로 옮깁니다. `Array` 는 오랜 시간 동안 이미 **배열** 이라는 용어를 사용해 오고 있기 때문에, 계속해서 배열이라고 옮깁니다.
 
-[^annotation]: 'annotation' 는 사실 '주석' 이라고 옮기는 것이 가장 적당하지만, 프로그래밍 분야에서는 'comments' 가 '주석' 이라고 이미 쓰이고 있으므로, 스위프트의 'annotation' 은 '보조 설명' 이라고 옮깁니다. 실제로 스위프트에서는 'annotation' 을 쓸 일이 거의 없기 때문에 이 용어에는 비중을 크게 두지 않아도 됩니다.
+[^annotation]: 'annotation' 을 '주석' 이라고 옮길 수도 있지만, 프로그래밍에선 이미 'comments' 를 '주석' 이라고 부르고 있으므로, 여기서는 'annotation' 을 '보조 설명' 이라고 옮깁니다.
 
 [^private-use-Unicode-scalar-values]: 유니코드에는 '15번 평면 (`F0000 ~ FFFFF`) 과 16번 평면 (`100000 ~ 10FFFF`)' 이라는, 두 개의 '사용자 영역 (private-use areas)' 이 있습니다. '사용자 영역 유니코드 크기 값' 은 '유니코드 평면 (Unicode planes) 의 사용자 영역 (private-use areas) 에 있는 값' 을 말합니다. '유니코드 평면' 에 대한 더 자세한 정보는, 위키피디아의 [Plane (Unicode)](https://en.wikipedia.org/wiki/Plane_(Unicode)) 항목과 [유니코드 평면](https://ko.wikipedia.org/wiki/유니코드_평면) 항목을 참고하기 바랍니다.
 
