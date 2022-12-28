@@ -82,7 +82,7 @@ print("There are now \(Bank.coinsInBank) coins left in the bank")
 // "There are now 9900 coins left in the bank" 를 인쇄함
 ```
 
-새로운 `Player` 인스턴스를 생성하면서, 동전 100 개가 가능한지 요청합니다. 이 `Player` 인스턴스는 `playerOne` 이라는 옵셔널 `Player` 변수에 저장합니다. 여기서 옵셔널 변수를 사용하는 건, 언제든지 참가자가 게임을 떠날 수 있기 때문입니다. 옵셔널은 게임에 참가자가 현재 있는지 추적하게 해줍니다.
+새로운 `Player` 인스턴스를 생성하면서, 동전 100 개를 쓸 수 있는지 요청합니다. 이 `Player` 인스턴스는 `playerOne` 이라는 옵셔널 `Player` 변수에 저장합니다. 여기서 옵셔널 변수를 사용하는 건, 언제든지 참가자가 게임을 떠날 수 있기 때문입니다. 옵셔널은 게임에 참가자가 현재 있는지 추적하게 해줍니다.
 
 `playerOne` 은 옵셔널이기 때문에, `coinsInPurse` 속성에 접근하여 자신의 기본 동전 수를 인쇄할 때, 및 `winCoins(_:)` 메소드를 호출할 때마다, 느낌표 (`!`) 로 규명합니다:
 

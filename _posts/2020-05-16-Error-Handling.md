@@ -62,7 +62,7 @@ func cannotThrowErrors() -> String
 
 > 던지는 함수만 에러를 전파할 수 있습니다. 던지지 않는 (nonthrowing) 함수 안에서 던진 어떤 에러든 함수 안에서 반드시 처리해야 합니다.
 
-아래 예제의, `VendingMachine` 클래스엔 `vend(itemNamed:)` 메소드가 있는데, 요청 불가능한 항목이거나, 재고가 없거나, 또는 비용이 현재 보관량을 초과할 경우, 적절한 `VendingMachineError` 를 던집니다:
+아래 예제의, `VendingMachine` 클래스엔 `vend(itemNamed:)` 메소드가 있는데, 요청한 항목을 쓸 수 없거나, 재고가 없거나, 또는 비용이 현재 보관량을 초과할 경우, 적절한 `VendingMachineError` 를 던집니다:
 
 ```swift
 struct Item {

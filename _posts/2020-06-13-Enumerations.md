@@ -178,9 +178,9 @@ var productBarcode = Barcode.upc(8, 85909, 51226, 3)
 productBarcode = .qrCode( "ABCDEFGHIJKLMNOP")
 ```
 
-이 순간, 원본 `Barcode.upc` 와 그 정수 값들이 새로운 `Barcode.qrCode` 및 그 문자열 값으로 교체됩니다. 타입이 `Barcode` 인 상수와 변수는 `.upc` 든 `.qrCode` 든 (결합 값과 함께) 저장할 수 있지만, 주어진 시간엔 이 중 단 하나만 저장할 수 있습니다.
+이 순간, 원본 `Barcode.upc` 와 정수 값이 새로운 `Barcode.qrCode` 와 문자열 값으로 교체됩니다. `Barcode` 타입의 상수와 변수는 `.upc` 나 `.qrCode` 중 어느 것이든 (결합 값과 함께) 저장할 수 있지만, 주어진 시간에 단 하나만 저장할 수 있습니다.
 
-switch 문으로 서로 다른 바코드 타입을 검사할 수 있는데, 이는 [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 의 예제와 비슷합니다. 하지만, 이번엔 switch 문 부분에서 결합 값을 뽑아냅니다. 각각의 결합 값을 (`let` 접두사인) 상수나 (`var` 접두사인) 변수로 뽑아내어 `switch` case 본문 안에서 사용합니다:
+서로 다른 바코드 타입은 switch 문으로 검사할 수 있으며, 이는 [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)](#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에 있는 예제와 비슷합니다. 하지만, 이번에는 switch 문에서 결합 값을 뽑아냅니다. 각각의 결합 값을 (`let` 접두사인) 상수나 (`var` 접두사인) 변수로 뽑아서 `switch` case 본문에서 사용합니다:
 
 ```swift
 switch productBarcode {
@@ -192,7 +192,7 @@ case .qrCode(let productCode):
 // "QR code: ABCDEFGHIJKLMNOP." 를 인쇄함
 ```
 
-열거체 case 의 모든 결합 값을 상수나, 변수로 뽑아낸다면, case 이름 앞에 단일한 `var` 나 `let` 보조 설명[^annotation] 을 둬서, 간결하게 할 수 있습니다:
+열거체 case 의 모든 결합 값을 상수나, 변수로 뽑아낸다면, case 이름 앞에 단 하나의 `var` 나 `let` 보조 설명[^annotation] 만 둬서, 간결하게 할 수 있습니다:
 
 ```swift
 switch productBarcode {
@@ -366,6 +366,8 @@ print(evaluate(product))
 [^plural-vs-singular]: 열거체는 한 번에 하나의 case 값만 가집니다. 그러므로 열거체 이름이 단수형이어야 코드가 그 자체로-분명해집니다. 열거체 이름이 `CompassPoints` 처럼 복수형이 되면, 아래 예제는 `CompassPoints.west` 가 되는데, 이러면 동시에 여러 방향을 가지고 있다고 오해할 수 있습니다.
 
 [^unions-variants]: 여기 있는 세 가지 용어는 사실상 똑같은 개념입니다. 각각에 대한 더 자세한 정보는, 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 컴퓨터 공학 용어에선 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 이기 때문에, 위키피디아에서도 이 둘의 항목이 아예 같습니다. 어쨌든, 본문에 따르면 스위프트 열거체에서의 결합 값은 **C** 언어에서의 공용체 (union) 와 유사한 개념이라고 볼 수 있습니다.
+
+[^annotation]: '보조 설명 (annotation)' 에 대한 더 자세한 설명은 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
 
 [^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패-가능-초기자) 에서도 설명하고 있습니다.
 
