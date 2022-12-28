@@ -149,7 +149,7 @@ _부동-소수점 글자 값 (floating-point literals)_ 은 특정한 정밀도�
 let x = 3; "1 2 \(x)"
 ```
 
-확장 구분자로 구분한 문자열은 따옴표로 둘러싼 일렬로 나열된 문자들과 하나 이상의 번호 기호 (`#`) 로 된 균형 집합[^balanced-set] 입니다. 확장 구분자로 구분한 문자열 형식은 다음과 같습니다:
+확장 구분자로 구분한 문자열은 일렬로 나열한 문자를 따옴표로 둘러싼 후 하나 이상의 번호 기호 (`#`) 로 균형을 맞춘 집합[^balanced-set] 입니다. 확장 구분자로 구분한 문자열 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#\"`characters-문자들`\"\#
 
@@ -192,15 +192,15 @@ let textB = "Hello world"
 
 #### Regular Expression Literals (정규 표현식 글자 값)
 
-정규 표현식 글자 값[^regular-expression] 은 일렬로 나열된 문자들을 빗금 (`/`) 으로 둘러싼 것으로 형식은 다음과 같습니다:
+정규 표현식 글자 값[^regular-expression] 은 일렬로 나열한 문자를 빗금 (`/`) 으로 둘러싼 것으로 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\/`regular expression-정규 표현식`\/
 
-정규 표현식 글자 값은 반드시 벗어나지 않는 탭이나 공백으로 시작해선 안되며, 벗어나지 않는 빗금 (`/`) 이나, 캐리지 반환, 또는 줄 먹임 문자를 담을 수도 없습니다. 
+정규 표현식 글자 값은 벗어나지 않은 탭이나 공백[^unescaped-tab]으로 시작해선 안되고, 벗어나지 않은 빗금 (`/`) 이나, 캐리지 반환[^carriage-return], 또는 줄 먹임[^line-feed] 문자를 담을 수도 없습니다. 
 
-정규 표현식 안에선, 역 빗금이 그 정규 표현식의 일부분이라고 이해하지, 문자열 글자 값 안에서와 같이 벗어난 문자라고 하지 않습니다. 이는 다음의 특수 문자를 글자로 해석하거나, 다음의 특수하지 않은 문자를 특수한 방식으로 해석하라고 지시합니다. 예를 들어, `/\(/` 는 단일 왼쪽 괄호와 일치하고 `/\d/` 는 단일 숫자와 일치합니다.
+정규 표현식 안에서의, 역 빗금은, 문자열 글자 값 안에서의 벗어난 문자 같은 것 만이 아니라, 그 정규 표현식의 일부로 이해합니다. 이는 뒤에 오는 특수 문자를 글자 그대로 해석하라거나, 뒤에 오는 특수하지 않은 문자를 특수한 방식으로 해석하라고 지시합니다. 예를 들어, `/\(/` 는 단일한 왼쪽 괄호와 맞고 `/\d/` 는 한 자리 숫자와 맞습니다.
 
-확장 구분자로 구분한 정규 표현식 글자 값은 빗금 (`/`) 으로 둘러싼 일렬로 나열된 문자들과 하나 이상의 번호 기호 (`#`) 로 된 균형 집합[^balanced-set] 입니다. 확장 구분자로 구분한 정규 표현식 글자 값의 형식은 다음과 같습니다:
+정규 표현식 글자 값을 확장 구분자로 구분한 것은 일렬로 나열한 문자를 빗금 (`/`) 으로 둘러싸고 하나 이상의 번호 기호 (`#`) 로 균형을 맞춘 집합[^balanced-set] 입니다. 정규 표현식 글자 값을 확장 구분자로 구분한 것의 형식은 다음과 같습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;\#\/`regular expression-정규 표현식`\/\#
 
@@ -208,16 +208,16 @@ let textB = "Hello world"
 &nbsp;&nbsp;&nbsp;&nbsp;`regular expression-정규 표현식`
 &nbsp;&nbsp;&nbsp;&nbsp;\/\#
 
-확장 구분자를 사용한 정규 표현식 글자 값은 벗어나지 않는 공백이나 탭으로 시작할 수도, 벗어나지 않는 빗금 (`/`) 을 담거나, 여러 줄에 걸쳐 있을 수도 있습니다. 여러 줄짜리 정규 표현식 글자 값에선, 여는 구분자는 반드시 줄 끝에 있어야 하고, 닫는 구분자는 자신만의 줄 위에 있어야 합니다.[^opening-and-closing-delimiter] 여러 줄짜리 정규 표현식 글자 값 안에선, 확장 정규 표현식 구문이 기본 사용 가능합니다-특히, 공백은 무시하고 주석을 허용합니다.
+정규 표현식 글자 값에 확장 구분자를 사용하면 벗어나지 않은 공백이나 탭으로 시작할 수도 있고, 벗어나지 않은 빗금 (`/`) 을 담을 수도 있으며, 여러 줄에 걸쳐 있을 수도 있습니다.[^uses-extended-delimiters] 여러 줄짜리 정규 표현식 글자 값에서, 여는 구분자는 반드시 줄 끝에 있어야 하고, 닫는 구분자는 그 자신만의 줄에 있어야 합니다.[^opening-and-closing-delimiter] 여러 줄짜리 정규 표현식 글자 값 안에서는, 확장 정규 표현식 구문을 기본적으로 쓸 수 있는데-특히, 공백은 무시하고 주석은 허용합니다.
 
-확장 구분자로 구분한 정규 표현식 형식에 하나 이상의 번호 기호를 사용하려면, 번호 기호 사이에 공백을 두지 않습니다: 
+정규 표현식 글자 값을 확장 구분자로 구분하는데 하나 이상의 번호 기호를 쓰면, 번호 기호 사이에는 공백을 두지 않습니다: 
 
 ```swift
 let regex1 = ##/abc/##      // 괜찮음
 let regex2 = # #/abc/# #    // 에러
 ```
 
-빈 정규 표현식 글자 값을 만들 필요가 있으면, 반드시 확장 구분자 구문을 사용해야 합니다.
+빈 정규 표현식 글자 값을 만들 필요가 있다면, 반드시 확장 구분자 구문을 써야 합니다.
 
 > GRAMMAR OF A REGULAR EXPRESSION LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
@@ -292,9 +292,15 @@ let regex2 = # #/abc/# #    // 에러
 
 [^escape-sequences]: '벗어난 확장열 (escape sequences)' 에 대한 더 자세한 정보는, 위키피디아의 [Escape sequence](https://en.wikipedia.org/wiki/Escape_sequence) 항목과 [이스케이프 시퀀스 (확장열)](https://ko.wikipedia.org/wiki/이스케이프_시퀀스) 항목을 보도록 합니다.
 
-[^balanced-set]: '균형 집합 (balanced set)' 은 수학 용어로 스칼라 값 `a` 에 대해 `aS ⊆ S` 를 만족하는 모든 집합 `S` 를 의미합니다. 본문에서 말하는 균형 집합이란, `#` 의 개수는 상관없이, 양쪽의 `#` 개수가 똑같으면 된다는 의미입니다. 균형 집합에 대한 더 자세한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
+[^carriage-return]: 캐리지 반환 문자는 앞 절에서 설명한 `/r` 문자를 말합니다.
 
-[^opening-and-closing-delimiter]: 이는 본문의 형식에서 보돗, `#/` 과 `/#` 이 각각 그 자체로 한 줄을 차지해야 한다는 의미입니다.
+[^line-feed]: 줄 먹임 문자는 앞 절에서 설명한 `/n` 문자를 말합니다.
+
+[^balanced-set]: 여기서 말하는 '균형을 맞춘 집합' 이란, `#` 의 개수와는 상관없이, 양쪽의 `#` 개수가 똑같게 맞춘 문자 집합을 말합니다. 수학 용어인 '균형 집합 (balanced set)' 에서 파생된 용어라고 생각됩니다. 수학에서 말하는 균형 집합에 대한 정보는, 위피키디아의 [Balanced set](https://en.wikipedia.org/wiki/Balanced_set) 항목과 [균형 집합](https://ko.wikipedia.org/wiki/균형_집합) 항목을 참고하기 바립니다.
+
+[^uses-extended-delimiters]: 본문에 나열한 것들을 하기 위해서 정규 표현식에 확장 구분자를 사용하는 것입니다.
+
+[^opening-and-closing-delimiter]: 이는 본문의 형식에서 보돗, `#/` 과 `/#` 이 각각 그 자체로 한 줄을 차지한다는 의미입니다. 즉, 실제 정규 표현식은 `#/` 그 다음 줄부터 시작하고, `/#` 윗 줄에서 끝납니다.
 
 [^interpolation]: 'interpolation' 은 수학에서 말하는 보간법인데, '보간' 이란 말 자체가 사이에 끼워 넣는다는 의미이므로, 수학 용어로 사용되는게 아니면 '끼워 넣기' 라고 하겠습니다. 보간법 자체에 대한 더 자세한 정보는, 위키피디아의 [Interpolation](https://en.wikipedia.org/wiki/Interpolation) 항목과 [보간법](https://ko.wikipedia.org/wiki/보간법) 항목을 보도록 합니다.
 
@@ -302,7 +308,9 @@ let regex2 = # #/abc/# #    // 에러
 
 [^developer-string]: 원문 자체가 '애플 개발자 문서' 에 대한 링크입니다. 
 
-[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안에서 검색 패턴을 지정하는 일련의 문자들을 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 보도록 합니다. 
+[^regular-expression]: '정규 표현식 (regular expression)' 은 문장 안의 검색 패턴을 지정하는 일련의 문자를 말합니다. 정규 표현식에 대한 더 자세한 정보는, 위키피디아의 [Regular expression](https://en.wikipedia.org/wiki/Regular_expression) 항목과 [정규 표현식](https://ko.wikipedia.org/wiki/정규_표현식) 항목을 참고하기 바랍니다.
+
+[^unescaped-tab]: 즉, 정규 표현식을 공백으로 시작하면 안된다는 의미입니다.
 
 [^dingbats]: '딩뱃 (Dingbats)' 은 조판 시에 사용하는 장식 문자나 공백을 말합니다. 이에 대한 자세한 내용은 위키피디아의 [Dingbat](https://en.wikipedia.org/wiki/Dingbat) 및 [딩뱃](https://ko.wikipedia.org/wiki/딩뱃) 항목을 보도록 합니다.
 

@@ -728,25 +728,25 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 필수 조건에 `guard` 문을 사용하면, 똑같은 검사를 `if` 문으로 하는 것에 비교하여, 코드를 읽기 쉽게 개선합니다. 이는 일반 실행 코드를 `else` 블럭으로 감싸지 않고 작성하게 해주며, 필수 조건과 나란하게 필수 조건의 위반 처리 코드를 두도록 해줍니다.
 
-### Checking API Availability (API 사용 가능성 검사)
+### Checking API Availability (API 사용 가능성 검사하기)
 
-스위프트는 **API** 사용 가능성 검사를 내장 지원하여, 주어진 배포 대상에서 사용 불가능한 API 를 쓰는 사고가 없도록 보장합니다.
+스위프트는 **API** 가 쓸 수 있는 것인지 검사하는 기능을 내장하고 있어, 주어진 배포 대상에선 쓸 수 없는 API 를 쓰는 일이 없도록 보장합니다.
 
-컴파일러는 **SDK**[^SDK] 안의 사용 가능성 정보로 코드에 쓴 모든 API 들이 프로젝트에서 지정한 배포 대상에서 사용 가능한 것인지 밝혀냅니다.[^availability-information] 사용 불가능한 API 를 쓰려고 하면 컴파일 시간에 스위프트가 에러를 보고합니다.
+컴파일러는 **SDK**[^SDK] 안에 있는 정보로 코드의 모든 **API** 들이 프로젝트가 지정한 배포 대상에서 쓸 수 있는 것들인지 밝혀냅니다.[^availability-information] 사용 불가능한 **API** 를 쓰려고 하면 스위프트가 컴파일 시간에 에러를 보고합니다.
 
-_사용 가능성 조건 (availability condition)_ 을 `if` 문이나 `guard` 문에서 사용하면, 사용하고 싶은 **API** 가 실행 시간에 사용 가능한지에 따라, 조건부로 코드 블럭을 실행합니다.[^availability-condition] 컴파일러는 그 코드 블럭 안의 **API** 가 사용 가능한지 밝힐 때 사용 가능성 조건에 있는 정보를 사용합니다.
+`if` 문이나 `guard` 문 안에 _사용 가능성 조건 (availability condition)_ 을 쓰면, 사용하고 싶은 **API** 가 실행 시간에 쓸 수 있는 것인지에 따라, 조건부로 코드 블럭을 실행합니다.[^availability-condition] 컴파일러는 그 코드 블럭 안의 **API** 가 쓸 수 있는 것인지 밝힐 때 사용 가능성 조건에 있는 정보를 사용합니다.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
-  // iOS 10 API 들을 iOS 에 사용하고, macOS 10.12 API 들을 macOS 에 사용함
+  // iOS 에선 iOS 10 API 를 사용하고, macOS 에선 macOS 10.12 API 를 사용함
 } else {
-  // 더 이른 (버전의) iOS 및 macOS API 로 대체함
+  // 더 앞선 (버전의) iOS 와 macOS API 로 대체함
 }
 ```
 
-위의 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후인 경우에만; **macOS** 면, **macOS 10.12** 이후인 경우에만 `if` 문의 본문을 실행하라고 지정하는 겁니다. 마지막 인자인, `*` 는, 필수로써, 자신의 대상에서 `if` 본문을 실행하라고 지정한 최소 배포 대상 (이후의), 다른 어떤 플랫폼이든 지정합니다.
+위에 있는 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후에서만; **macOS** 면, **macOS 10.12** 이후에서만 `if` 문 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수이며, `if` 본문을 실행하라고 지정한 최소 배포 대상 (이후의), 다른 어떤 플랫폼이든 지정하는 겁니다.
 
-일반 형식의, 사용 가능성 조건은 플랫폼의 이름과 버전 목록을 취합니다. 플랫폼 이름으론 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 쓰는데-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 보기 바랍니다. **iOS 8** 이나 **macOS 10.10** 같은 주 버전 번호 [^major-version-numbers] 지정에 더해, **iOS 11.2.6** 과 **macOS 10.13.3** 같은 부 버전 번호[^minor-version-numbers] 도 지정할 수 있습니다.
+일반 형식의, 사용 가능성 조건은 플랫폼 이름 및 버전 목록을 입력 받습니다. 플랫폼 이름엔 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 씁니다-전체 목록은, [Declaration Attributes (선언 특성)]({% post_url 2020-08-14-Attributes %}#declaration-attributes-선언-특성) 부분을 보도록 합니다. **iOS 8** 이나 **macOS 10.10** 같은 주 버전 번호[^major-version-numbers] 지정에 더해, **iOS 11.2.6** 과 **macOS 10.13.3** 같은 부 버전 번호[^minor-version-numbers] 도 지정할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
@@ -754,7 +754,7 @@ if #available(iOS 10, macOS 10.12, *) {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`fallback statements to execute if the APIs are unavailable-API 가 사용 불가능하면 실행할 대체 구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-사용 가능성 조건을 `guard` 문에서 사용할 땐, 그 코드 블럭의 나머지 코드에서 사용할 사용 가능성 정보를 다듬습니다.
+사용 가능성 조건을 `guard` 문에서 쓸 땐, 그 코드 블럭의 나머지에서 쓸 사용 가능성 정보를 정교하게 다듬게 됩니다.
 
 ```swift
 @available(macOS 10.12, *)
@@ -771,9 +771,9 @@ func chooseBestColor() -> String {
 }
 ```
 
-위 예제에서, `ColorPreference` 구조체는 **macOS 10.12** 이후 버전을 요구합니다. `chooseBestColor()` 함수는 사용 가능성 보호 (guard) 문으로 시작합니다. 플랫폼 버전이 `ColorPreference` 를 쓰기에 너무 오래됐으면, 항상 사용 가능한 걸로 동작을 대체합니다. `guard` 문 뒤엔, **macOS 10.12** 이후가 필요한 **API** 를 쓸 수 있습니다.
+위 예제에서, `ColorPreference` 구조체는 **macOS 10.12** 이후 버전을 요구합니다. `chooseBestColor()` 함수의 시작은 사용 가능성 보호 (guard) 문입니다. 플랫폼 버전이 `ColorPreference` 를 쓰기에 너무 오래된 거면, 항상 사용 가능한 동작으로 대체합니다. `guard` 문 뒤엔, **macOS 10.12** 이후를 요구하는 **API** 를 쓸 수 있습니다.
 
-`#available` 에 더하여, 스위프트는 사용 불가능성 조건을 써서 정반대로 검사하는 것도 지원합니다. 예를 들어, 다음의 두 검사는 똑같은 걸 합니다:
+`#available` 에 더하여, 스위프트는 정반대로 검사하는 사용 불가능성 조건도 지원합니다. 예를 들어, 다음의 두 검사는 똑같은 걸 합니다:
 
 ```swift
 if #available(iOS 10, *) {
@@ -786,7 +786,7 @@ if #unavailable(iOS 10) {
 }
 ```
 
-`#unavailable` 형식을 사용하면 대체 코드만 담긴 검사일 때 코드를 더 읽기 쉽도록 해줍니다.
+`#unavailable` 형식을 쓰면 검사에 대체 코드만 있을 때 코드를 더 읽기 쉽게 해줍니다.
 
 ### 다음 장
 
@@ -830,11 +830,11 @@ if #unavailable(iOS 10) {
 
 [^SDK]: **SDK** 는 소프트웨어 개발 키트 (Software development kit) 의 줄임말로, 엑스코드 같은 통합 개발 환경 (IDE; Integrated Development Environment) 과는 의미가 조금 다릅니다. 통합 개발 환경은 소프트웨어 개발을 한 곳에서 할 수 있는 환경을 제공하는 프로그램인데 반해, 소프트웨어 개발 키트는 실제 개발에 필요한-컴파일러와 패키지 등을 포함한-도구를 말합니다. 이에 대한 더 자세한 정보는 위키피디아의 [Software development kit](https://en.wikipedia.org/wiki/Software_development_kit) 및 [소프트웨어 개발 키트](https://ko.wikipedia.org/wiki/소프트웨어_개발_키트) 항목을 참고하기 바랍니다.
 
-[^availability-information]: 여기서, **SDK** 안의 사용 가능성 정보라는 건, 예를 들어, 스위프트 4.0 용 **SDK** 인지 5.0 용 **SDK** 인지와 같은 정보를 말합니다.
+[^availability-information]: 여기서, **SDK** 안에 있는 정보라는 건, 예를 들어, 스위프트 4.0 **SDK** 나 5.0 **SDK** 안에 들어 있는 정보를 말합니다.
 
 [^availability-condition]: '사용 가능성 조건 (availability condition)' 은 [Statements (구문)]({% post_url 2020-08-20-Statements %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% post_url 2020-08-20-Statements %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, 컴파일러 제어문은 컴파일 시간에 검사하는 반면, 사용 가능성 조건은 실행 시간에 검사합니다. 이에 대한 더 자세한 내용은, 애플 개발자 포럼의 [Do we need something like ‘#if available’?](https://forums.swift.org/t/do-we-need-something-like-if-available/40349) 항목을 참고하기 바랍니다. 
 
-[^major-version-numbers]: '주 버전 번호 (major version numbers)' 는 의미 구조 상의 버전 번호 (semantic versioning) 에서 가장 큰 버전 번호를 말합니다.
+[^major-version-numbers]: '주 버전 번호 (major version numbers)' 는 의미 있는 버전 붙이기 (semantic versioning) 에서 맨 앞에 붙는 버전 번호를 말합니다. 의미 있는 버전에 대한 더 자세한 정보는 [Semantic Versioning 2.0.0](https://semver.org) 항목 및 [유의적 버전 2.0.0-ko2](https://semver.org/lang/ko/) 항목을 참고하기 바랍니다. 
 
-[^minor-version-numbers]: '부 버전 번호 (minor version numbers)' 는 의미 구조 상의 버전 번호 (semantic versioning) 에서 두 번째로 큰 버전 번호를 말합니다.
+[^minor-version-numbers]: '부 버전 번호 (minor version numbers)' 는 의미 있는 버전 붙이기 (semantic versioning) 에서 두 번째에 붙는 버전 번호를 말합니다. 의미 있는 버전에 대한 더 자세한 정보는 [Semantic Versioning 2.0.0](https://semver.org) 항목 및 [유의적 버전 2.0.0-ko2](https://semver.org/lang/ko/) 항목을 참고하기 바랍니다. 
 
