@@ -62,6 +62,7 @@ kramdown:
 
 
 plugins:
+  - jekyll-feed
   - jekyll-redirect-from
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts

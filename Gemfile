@@ -34,3 +34,5 @@ gem "webrick", "~> 1.7"
 
 # Themes
 gem "just-the-docs"
+
+gem "jekyll", "~> 3.9"

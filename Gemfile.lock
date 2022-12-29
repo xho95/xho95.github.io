@@ -264,6 +264,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  jekyll (~> 3.9)
   jekyll-feed (~> 0.6)
   jekyll-redirect-from
   just-the-docs
