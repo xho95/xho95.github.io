@@ -206,9 +206,9 @@ case let .qrCode(productCode):
 
 ### Raw Values (원시 값)
 
-[Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체 case 가 서로 다른 타입의 결합 값을 저장한다고 선언할 수 있는 방법을 보여줍니다. 결합 값의 대안으로써, (_원시 값 (raw values)_ 이라는), 모두 동일한 타입의, 기본 값을 가지고 열거체 case 를 미리 채울 수 있습니다.
+[Associated Values (결합 값)](#associated-values-결합-값) 에 있는 바코드 예제는 열거체 case 를 어떻게 선언하면 서로 다른 타입의 결합 값을 저장할 수 있는지 보여줍니다. 결합 값의 대안으로, (_원시 값 (raw values)_ 이라는) 기본 값으로 열거체 case 를 미리 채울 수도 있는데, 이들은 모두 똑같은 타입입니다.
 
-다음은 원시 ASCII 값을 이름 붙인 열거체 case 와 나란하게 저장하는 예제입니다:
+원시 ASCII 값과 이름 있는 열거체 case 를 나란히 저장하는 예제는 이렇습니다:
 
 ```swift
 enum ASCIIControlCharacter: Character {
@@ -218,11 +218,11 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-여기선, `ASCIIControlCharacter` 라는 열거체의 원시 값을 `Character` 타입으로 정의하며, 좀 더 흔한 일부의 ASCII 제어 문자들로 설정합니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명합니다.
+여기서, `ASCIIControlCharacter` 라는 열거체의 원시 값은 `Character` 타입이라고 정의하며, 좀 더 흔한 일부 ASCII 제어 문자들로 설정합니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명합니다.
 
-원시 값은 문자열이나, 문자, 아니면 어떤 정수 또는 부동-소수점 수 타입일 수 있습니다. 각각의 원시 값은 자신의 열거체 선언 안에서 반드시 유일해야 합니다.
+원시 값은 문자열이나, 문자, 또는 어떠한 정수나 부동-소수점 수 타입일 수 있습니다. 각각의 원시 값은 반드시 자신의 열거체 선언 안에서 유일해야 합니다.
 
-> 원시 값은 결합 값과 똑같지 _않습니다 (not)_. 원시 값은, 위의 ASCII 코드 세 개 같이, 코드에서 최초로 열거체를 선언할 때 미리 채울 값으로 설정합니다. 특별한 한 열거체 case 의 원시 값은 항상 똑같습니다. 결합 값은 열거체 case 중 하나를 기초로 새로운 상수나 변수를 생성할 때 설정하며, 그럴 때마다 서로 다를 수 있습니다.
+> 원시 값은 결합 값과 똑같지 _않습니다 (not)_. 원시 값은 코드에서 열거체를 최초로 선언할 때 설정하는 미리 채울 값으로, 위에 있는 세 ASCII 코드 같은 겁니다. 특별한 한 열거체 case 의 원시 값은 항상 똑같습니다. 결합 값은 한 열거체 case 를 기반으로 새로운 상수나 변수를 생성할 때 설정하는 것으로, 그럴 때마다 서로 다를 수 있습니다.
 
 #### Implicitly Assigned Raw Values (암시적으로 할당하는 원시 값)
 
