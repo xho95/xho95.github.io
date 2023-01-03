@@ -264,13 +264,13 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
 
-원시-값 타입을 가진 열거체를 정의하면, 열거체가 '원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 취하고 열거체 case 나 `nil` 을 반환하는 초기자 (initializer)' 를 자동으로 받습니다. 이 초기자를 사용하면 새로운 열거체 인스턴스를 생성할 수 있습니다.
+열거체 정의에 원시-값 타입이 있으면, 열거체가 자동으로 초기자를 받게 되는데 이는 원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 입력 받고 열거체 case 나 `nil` 증 어느 하나를 반환합니다. 이 초기자로 열거체의 새로운 인스턴스를 생성하려고 할 수 있습니다.
 
-이 예제는 `7` 이라는 원시 값으부터 '천왕성 (Uranus)' 을 식별합니다:
+다음 예제는 원시 값 `7` 로부터 천왕성 (Uranus) 의 정체를 파악합니다:
 
 ```swift
 let possiblePlanet = Planet(rawValue: 7)
-// possiblePlanet 은 Planet? 타입이고 Planet.uranus 와 같음
+// possiblePlanet 의 타입은 Planet? 이고 Planet.uranus 와 같음
 ```
 
 하지만, 모든 `Int` 값이 일치하는 행성을 찾을 수 있는 건 아닙니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 은 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
