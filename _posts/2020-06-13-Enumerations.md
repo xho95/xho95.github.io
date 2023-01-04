@@ -273,11 +273,11 @@ let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet 의 타입은 Planet? 이고 Planet.uranus 와 같음
 ```
 
-하지만, 모든 `Int` 값이 일치하는 행성을 찾을 수 있는 건 아닙니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 은 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
+하지만, 모든 `Int` 값들로 맞는 행성을 찾을 순 없습니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 `Planet`” 입니다.
 
-> 원시 값 초기자는, 모든 원시 값이 열거체 case 를 반환하는 건 아니기 때문에, '실패 가능 (failable) 초기자' 입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 부분을 보도록 합니다.
+> 원시 값 초기자는 실패 가능 초기자인데, 모든 원시 값이 열거체 case 를 반환할 건 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 보기 바랍니다.
 
-`11` 번 째 위치의 행성을 찾으려고 하면, 원시 값 초기자가 반환할 옵셔널 `Planet` 값이 `nil` 일 겁니다:
+위치가 `11` 인 행성을 찾으려 하면, 원시 값 초기자가 반환한 옵셔널 `Planet` 값은 `nil` 일 겁니다:
 
 ```swift
 let positionToFind = 11
@@ -294,7 +294,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 // "There isn't a planet at position 11" 를 인쇄함
 ```
 
-이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 원시 값 `11` 을 가진 행성에 접근하려고 합니다. 구문 `if let somePlanet = Planet(rawValue : 11)` 은 옵셔널 `Planet` 을 생성하고, 옵셔널 `Planet` 값을 가져올 수 있다면 `somePlanet` 에 그 값을 설정합니다. 이 경우, `11` 번 째 위치의 행성을 가져오는 건 불가능하므로, 대신 `else` 분기를 실행합니다.
+이 예제는 옵셔널 연결[^optional-binding] 을 써서 원시 값이 `11` 인 행성에 접근하려고 합니다. 구문 `if let somePlanet = Planet(rawValue : 11)` 은 옵셔널 `Planet` 을 생성한 다음, 그 값을 가져올 수 있다면 `somePlanet` 에 옵셔널 `Planet` 값을 설정합니다. 이 경우, 위치가 `11` 인 행성을 가져오는 건 불가능하므로, 대신 `else` 분기를 실행합니다.
 
 ### Recursive Enumerations (재귀 열거체)
 
