@@ -298,9 +298,9 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 ### Recursive Enumerations (재귀 열거체)
 
-_재귀 열거체 (recursive enumeration)_ 는 '하나 이상의 열거체 case 가 결합 값으로 또 다른 열거체 인스턴스를 가지는 열거체' 입니다. 열거체 case 가 재귀적이라고 지시하려면, 필요한 '간접 계층 (layer of indirection)' 을 집어 넣어야 함을 컴파일러에게 알리고자, 그 앞에 `indirect`[^indirect] 를 작성합니다.
+_재귀 열거체 (recursive enumeration)_ 는 열거체 case 의 결합 값이 또 다른 열거체의 인스턴스인 열거체를 말합니다. 열거체 case 가 재귀한다고 지시하려면 그 앞에 `indirect`[^indirect] 를 쓰면되는데, 이는 컴파일러에게 필요한 간접 계층 (layer of indirection) 을 집어 넣으라고 말하는 겁니다.
 
-예를 들어, 다음은 단순한 산술 표현식을 저장하는 열거체입니다:
+예를 들어, 단순 산술 표현식을 저장하는 열거체는 이렇습니다:
 
 ```swift
 enum ArithmeticExpression {
@@ -310,7 +310,7 @@ enum ArithmeticExpression {
 }
 ```
 
-열거체 맨 앞에 `indirect` 를 작성하면 '결합 값을 가진 모든 열거체 case 가 간접 (indirection)'[^indirection] 이 되게 할 수 있습니다:
+열거체 맨 앞에 `indirect` 를 작성하여 결합 값이 있는 모든 열거체 case 가 간접 (indirection)[^indirection] 이게 할 수도 있습니다:
 
 ```swift
 indirect enum ArithmeticExpression {
