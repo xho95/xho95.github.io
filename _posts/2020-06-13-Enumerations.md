@@ -224,13 +224,13 @@ enum ASCIIControlCharacter: Character {
 
 > 원시 값은 결합 값과 똑같지 _않습니다 (not)_. 원시 값은 코드에서 열거체를 최초로 선언할 때 설정하는 미리 채울 값으로, 위에 있는 세 ASCII 코드 같은 겁니다. 특별한 한 열거체 case 의 원시 값은 항상 똑같습니다. 결합 값은 한 열거체 case 를 기반으로 새로운 상수나 변수를 생성할 때 설정하는 것으로, 그럴 때마다 서로 다를 수 있습니다.
 
-#### Implicitly Assigned Raw Values (암시적으로 할당하는 원시 값)
+#### Implicitly Assigned Raw Values (암시적으로 할당되는 원시 값)
 
-정수나 문자열 원시 값을 저장한 열거체와 작업할 때는, 각 case 의 원시 값을 명시적으로 할당하지 않아도 됩니다. 안 할 땐, 스위프트가 자동으로 값을 할당합니다.
+열거체가 정수 또는 문자열 원시 값을 저장할 때는, 각 case 의 원시 값 할당을 명시하지 않아도 됩니다. 그럴 땐, 스위프트가 값을 자동으로 할당합니다.
 
-예를 들어, 원시 값으로 정수를 사용할 땐, 각 case 값이 이전 case 보다 암시적으로 하나 커집니다. 첫 번째 case 에 값을 설정하지 않으면, 그 값은 `0` 입니다.
+예를 들어, 원시 값이 정수일 땐, 각 case 의 암시적 값은 이전 case 보다 하나 큽니다. 첫 번째 case 에 설정 값이 없으면, 그 값은 `0` 입니다.
 
-아래 열거체는, 태양으로부터 각 행성의 순서를 나타내는 정수 원시 값을 갖도록, 앞선 `Planet` 열거체를 개량한 것입니다:
+아래 열거체는 앞에 있던 `Planet` 열거체를 다듬어서, 태양으로부터 각 행성의 순서를 정수 원시 값으로 나타내도록 한 겁니다:
 
 ```swift
 enum Planet: Int {
@@ -238,11 +238,11 @@ enum Planet: Int {
 }
 ```
 
-위 예제에서, `Planet.mercury` 는 `1` 이라는 명시적인 원시 값을 가지고, `Planet.venus` 는 `2` 라는 암시적인 원시 값을 가지며, 등등 그렇게 계속됩니다.
+위 예제에서, `Planet.mercury` 에는 명시적 원시 값인 `1` 이 있고, `Planet.venus` 에는 암시적 원시 값인 `2` 가 있으며, 기타 등등 그렇게 계속됩니다.
 
-원시 값으로 문자열을 사용할 땐, 그 case 이름에 있는 문장이 각 case 의 암시적인 값입니다.
+문자열을 원시 값으로 쓸 땐, 각 case 의 암시적 값은 그 case 이름에 있는 글입니다.
 
-아래 열거체는, 각 방향의 이름을 나타내는 문자열 원시 값을 갖도록, 앞선 `CompassPoint` 열거체를 개량한 것입니다:
+아래 열거체는 앞에 있던 `CompassPoint` 열거체를 다듬어서, 문자열 원시 값으로 각 방향의 이름을 나타내도록 한 겁니다:
 
 ```swift
 enum CompassPoint: String {
@@ -250,13 +250,13 @@ enum CompassPoint: String {
 }
 ```
 
-위 예제에서, `CompassPoint.south` 는 `"south"` 라는 암시적인 원시 값을 가지며, 등등 그렇게 계속됩니다.
+위 예제에서, `CompassPoint.south` 에는 암시적 원시 값인 `"south"` 가 있으며, 기타 등등 그렇게 계속됩니다.
 
-열거체 case 의 원시 값엔 `rawValue` 속성으로 접근합니다:
+열거체 case 의 원시 값은 `rawValue` 속성으로 접근합니다:
 
 ```swift
 let earthsOrder = Planet.earth.rawValue
-// earthsOrder (지구의 순서) 는 3 임
+// earthsOrder (지구 순서) 는 3 임
 
 let sunsetDirection = CompassPoint.west.rawValue
 // sunsetDirection (해지는 방향) 은 "west (서쪽)" 임
@@ -264,20 +264,20 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 #### Initializing from a Raw Value (원시 값으로 초기화하기)
 
-원시-값 타입을 가진 열거체를 정의하면, 열거체가 '원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 취하고 열거체 case 나 `nil` 을 반환하는 초기자 (initializer)' 를 자동으로 받습니다. 이 초기자를 사용하면 새로운 열거체 인스턴스를 생성할 수 있습니다.
+열거체 정의에 원시-값 타입이 있으면, 열거체가 자동으로 초기자를 받게 되는데 이는 원시 값 타입의 값을 (`rawValue` 라는 매개 변수로) 입력 받고 열거체 case 나 `nil` 증 어느 하나를 반환합니다. 이 초기자로 열거체의 새로운 인스턴스를 생성하려고 할 수 있습니다.
 
-이 예제는 `7` 이라는 원시 값으부터 '천왕성 (Uranus)' 을 식별합니다:
+다음 예제는 원시 값 `7` 로부터 천왕성 (Uranus) 의 정체를 파악합니다:
 
 ```swift
 let possiblePlanet = Planet(rawValue: 7)
-// possiblePlanet 은 Planet? 타입이고 Planet.uranus 와 같음
+// possiblePlanet 의 타입은 Planet? 이고 Planet.uranus 와 같음
 ```
 
-하지만, 모든 `Int` 값이 일치하는 행성을 찾을 수 있는 건 아닙니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 은 `Planet?` 타입, 또는 “옵셔널 (optional) `Planet`” 타입입니다.
+하지만, 모든 `Int` 값들로 맞는 행성을 찾을 순 없습니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 `Planet`” 입니다.
 
-> 원시 값 초기자는, 모든 원시 값이 열거체 case 를 반환하는 건 아니기 때문에, '실패 가능 (failable) 초기자' 입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 부분을 보도록 합니다.
+> 원시 값 초기자는 실패 가능 초기자인데, 모든 원시 값이 열거체 case 를 반환할 건 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 보기 바랍니다.
 
-`11` 번 째 위치의 행성을 찾으려고 하면, 원시 값 초기자가 반환할 옵셔널 `Planet` 값이 `nil` 일 겁니다:
+위치가 `11` 인 행성을 찾으려 하면, 원시 값 초기자가 반환한 옵셔널 `Planet` 값은 `nil` 일 겁니다:
 
 ```swift
 let positionToFind = 11
@@ -294,13 +294,13 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 // "There isn't a planet at position 11" 를 인쇄함
 ```
 
-이 예제는 '옵셔널 연결 (optional binding)' 을 사용하여 원시 값 `11` 을 가진 행성에 접근하려고 합니다. 구문 `if let somePlanet = Planet(rawValue : 11)` 은 옵셔널 `Planet` 을 생성하고, 옵셔널 `Planet` 값을 가져올 수 있다면 `somePlanet` 에 그 값을 설정합니다. 이 경우, `11` 번 째 위치의 행성을 가져오는 건 불가능하므로, 대신 `else` 분기를 실행합니다.
+이 예제는 옵셔널 연결[^optional-binding] 을 써서 원시 값이 `11` 인 행성에 접근하려고 합니다. 구문 `if let somePlanet = Planet(rawValue : 11)` 은 옵셔널 `Planet` 을 생성한 다음, 그 값을 가져올 수 있다면 `somePlanet` 에 옵셔널 `Planet` 값을 설정합니다. 이 경우, 위치가 `11` 인 행성을 가져오는 건 불가능하므로, 대신 `else` 분기를 실행합니다.
 
 ### Recursive Enumerations (재귀 열거체)
 
-_재귀 열거체 (recursive enumeration)_ 는 '하나 이상의 열거체 case 가 결합 값으로 또 다른 열거체 인스턴스를 가지는 열거체' 입니다. 열거체 case 가 재귀적이라고 지시하려면, 필요한 '간접 계층 (layer of indirection)' 을 집어 넣어야 함을 컴파일러에게 알리고자, 그 앞에 `indirect`[^indirect] 를 작성합니다.
+_재귀 열거체 (recursive enumeration)_ 는 열거체 case 의 결합 값이 또 다른 열거체의 인스턴스인 열거체를 말합니다. 열거체 case 가 재귀한다고 지시하려면 그 앞에 `indirect`[^indirect] 를 쓰면되는데, 이는 컴파일러에게 필요한 간접 계층 (layer of indirection) 을 집어 넣으라고 말하는 겁니다.
 
-예를 들어, 다음은 단순한 산술 표현식을 저장하는 열거체입니다:
+예를 들어, 단순 산술 표현식을 저장하는 열거체는 이렇습니다:
 
 ```swift
 enum ArithmeticExpression {
@@ -310,7 +310,7 @@ enum ArithmeticExpression {
 }
 ```
 
-열거체 맨 앞에 `indirect` 를 작성하면 '결합 값을 가진 모든 열거체 case 가 간접 (indirection)'[^indirection] 이 되게 할 수 있습니다:
+열거체 맨 앞에 `indirect` 를 작성하여 결합 값이 있는 모든 열거체 case 가 간접 (indirection)[^indirection] 이게 할 수도 있습니다:
 
 ```swift
 indirect enum ArithmeticExpression {
