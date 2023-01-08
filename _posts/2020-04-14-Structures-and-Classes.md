@@ -17,22 +17,22 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 범용적이고, 유연�
 
 > 클래스의 인스턴스는 전통적으로 _객체 (object)_ 라고 합니다. 하지만, 스위프트의 구조체와 클래스는 다른 언어에서보다 기능이 훨씬 더 밀접해서, 이 장에서 설명한 대부분의 기능은 클래스나 구조체 타입 중 _어느 (either)_ 인스턴트에든 적용됩니다. 이 때문에, 좀 더 일반적인 용어인 _인스턴스 (instance)_ 를 사용합니다.[^object-instance]
 
-### Comparing Structures and Classes (구조체 및 클래스 비교하기)
+### Comparing Structures and Classes (구조체와 클래스 비교하기)
 
-스위프트 구조체와 클래스에는 수많은 공통점이 있습니다. 둘 다 다음을 할 수 있습니다:
+스위프트의 구조체와 클래스엔 공통점이 많습니다. 둘 다 할 수 있는 건 이렇습니다:
 
 * 속성을 정의하여 값을 저장함
 * 메소드를 정의하여 기능을 제공함
-* 첨자 연산을 정의하여 자신의 값에 접근하는 첨자 연산 구문을 제공함
+* 첨자 연산을 정의하여 자신의 값에 접근하는 첨자 구문을 제공함
 * 초기자를 정의하여 자신의 초기 상태를 설정함
-* 확장을 하여 기본 구현을 넘어 자신의 기능을 늘림
-* 프로토콜을 준수하여 정해진 종류의 표준 기능을 제공함
+* 확장을 하여 자신의 기본 구현 너머로 기능을 늘림
+* 프로토콜을 따름으로써 특정 종류의 표준 기능을 제공함
 
-더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보도록 합니다.
+더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 과, [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 보기 바랍니다.
 
-클래스에는 구조체는 없는 추가적인 보유 능력이 있습니다:
+클래스는 구조체엔 없는 추가 능력을 보유합니다:
 
-* 상속 (inheritance) 은 한 클래스가 또 다른 클래스의 성질 (characteristics) 을 상속할 수 있게 합니다.
+* 상속 (inheritance) 은 한 클래스가 또 다른 클래스의 성질[^characteristics] 을 상속할 수 있게 합니다.
 * 타입 변환 (type casting) 은 실행 시간에 클래스 인스턴스의 타입을 검사하고 해석할 수 있게 합니다.
 * 정리자 (deinitializer) 는 클래스 인스턴스에 할당한 어떤 자원이든 풀 수 있게 합니다.
 * 참조 카운팅 (reference counting) 은 클래스 인스턴스에 대한 하나 이상의 참조를 허용합니다.
