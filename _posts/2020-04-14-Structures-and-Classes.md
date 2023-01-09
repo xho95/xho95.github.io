@@ -39,7 +39,9 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 범용적이고, 유연�
 
 더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 과, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 을 보기 바랍니다.
 
-클래스가 지원하는 추가적인 보유 능력은 복잡도 증가라는 비용에 직면합니다. 일반적인 지침으로는, 구조체가 이유를 파악하기 쉽기 때문에 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 이는, 실상, 대부분의 사용자 정의 자료 타입이 구조체와 열거체일 것이라는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
+클래스가 지원하는 추가 능력엔 복잡도 증가라는 비용이 따라 붙습니다. 일반적인 지침은, 이유 파악이 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용하라는 겁니다. 실상, 이는 직접 정의하는 대부분의 사용자 자료 타입은 구조체와 열거체일 거라는 의미입니다. 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes] 를 보기 바랍니다.
+
+> 클래스와 행위자는 똑같은 성질과 동작을 많이 공유합니다. 행위자에 대한 정보는, [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장을 보기 바랍니다. 
 
 #### Definition Syntax (정의 구문)
 
