@@ -45,7 +45,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 범용적이고, 유연�
 
 #### Definition Syntax (정의 구문)
 
-구조체와 클래스의 정의 구문은 비슷합니다. `struct` 키워드로 구조체를 도입하며 `class` 키워드로 클래스를 도입합니다. 둘 다 한 쌍의 중괄호 안에 자신의 전체 정의를 둡니다:
+구조체와 클래스의 정의 구문은 비슷합니다. 구조체는 `struct` 키워드로 클래스는 `class` 키워드로 첫 소개를 합니다. 둘 다 한 쌍의 중괄호 안에 자신의 전체 정의를 둡니다:
 
 ```swift
 struct SomeStructure {
@@ -56,9 +56,9 @@ class SomeClass {
 }
 ```
 
-> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 겁니다. (여기 있는 `SomeStructure` 와 `SomeClass` 같이) 타입에 `UpperCamelCase`[^uppser-camel-case] (낙타 모양 대문자) 이름을 부여하여 (`String`, `Int`, 및 `Bool` 같은) 표준 스위프트 타입의 대문자 방식과 일치하도록 합니다. (`frameRate` 와 `incrementCount` 같이) 속성과 메소드엔 `lowerCamelCase` (낙타 모양 소문자) 이름을 부여하여 타입 이름과 구별합니다.
+> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 겁니다. 타입에는 (여기 있는 `SomeStructure` 와 `SomeClass` 같이) `UpperCamelCase` (낙타 모양 대문자)[^uppser-camel-case] 이름을 줘서 (`String` 과, `Int`, 및 `Bool` 같은) 표준 스위프트 타입의 대문자 방식과 맞춥니다. 속성과 메소드엔 (`frameRate` 와 `incrementCount` 같은) `lowerCamelCase` (낙타 모양 소문자) 이름을 줘서 타입 이름과 구별하도록 합니다.
 
-다음 예제는 구조체 정의 및 클래스 정의입니다:
+구조체 정의와 클래스 정의의 예는 이렇습니다:
 
 ```swift
 struct Resolution {
@@ -73,9 +73,9 @@ class VideoMode {
 }
 ```
 
-위 예제는, 디스플레이 해상도를 픽셀을-기초로 설명하는, `Resolution` 이라는 새 구조체를 정의합니다. 이 구조체에는 `width` 와 `height` 라는 두 개의 저장 속성이 있습니다.저장 속성은 '구조체나 클래스의 일부분으로 뭉쳐서 저장하는 상수 또는 변수' 입니다. 이 두 속성은 `0` 이라는 초기 값으로 설정함에 따라 `Int` 타입이라고 추론합니다.
+위 예제는 `Resolution` 이라는 새로운 구조체를 정의하여, 픽셀-기반[^pixel] 디스플레이의 해상도를 설명합니다. 이 구조체엔 `width` 와 `height` 이라는 두 저장 속성이 있습니다. 저장 속성은 구조체나 클래스의 일부로 엮여서 저장되는 상수나 변수입니다. 이 두 속성은 초기 정수 값을 `0` 으로 설정하여 `Int` 타입이라고 추론됩니다.
 
-위 예제는, 영상 디스플레이의 특정 영상 모드를 설명하는, `VideoMode` 라는 새 클래스도 정의합니다. 이 클래스에는 네 개의 저장 속성 변수가 있습니다. 첫 번째인, `resolution` 은, 새로운 `Resolution` 구조체 인스턴스로 초기화하여, 속성 타입이 `Resolution` 이라고 추론합니다. 다른 세 속성은, ("비월 주사 방식 영상"[^interlaced] 임을 의미하는) `false` 라는 `interalced`, `0.0` 이라는 '녹화 프레임 재생 속도', 및 `name` 이라는 옵셔널 `String` 값을 가지고 새로운 `VideoMode` 인스턴스를 초기화할 것입니다. `name` 속성은, 옵셔널 타입이기 때문에, 자동으로 `nil` 이라는 기본 값, 또는 "`name` 값 없음", 을 부여합니다.
+위 예제는 `VideoMode` 라는 새로운 클래스도 정의하여, 영상 디스플레이에 특화된 영상 모드를 설명합니다. 이 클래스에는 네 개의 저장 속성 변수가 있습니다. 첫 번째인, `resolution` 은, 새로운 `Resolution` 구조체 인스턴스로 초기화하며, 속성의 타입은 `Resolution` 으로 추론합니다. 다른 세 속성의 경우, 새로운 `VideoMode` 인스턴스에서 `interalced` 설정은 ("비월 주사 방식"[^interlaced] 을 의미하는) `false` 로, 녹화 프레임 재생 속도[^playback] 는 `0.0` 으로, 옵셔널 `String` 값은 `name` 으로 초기화할 겁니다. `name` 속성엔 기본 값 `nil`, 또는 "`name` 값 없음" 이, 자동으로 주어지는데, 이는 옵셔널 타입이기 때문입니다.
 
 #### Structure and Class Instances (구조체와 클래스 인스턴스)
 
