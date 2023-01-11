@@ -53,6 +53,18 @@ production_url : https://xho95.github.io
 #  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "fenced_code_blocks", "footnotes"]
 
 markdown: kramdown
+# theme: just-the-docs
+remote-theme: just-the-docs
+
+search_enabled: true
+search.heading_level: 2
+search.tokenizer_separator: /[\s/]+/
+
+collections:
+  # Define a collection named "tests", its documents reside in the "_tests" directory
+  posts:
+    # permalink: "/:collection/:path/"
+    output: true
 
 kramdown:
   input: GFM
@@ -61,6 +73,7 @@ kramdown:
 
 
 plugins:
+  - jekyll-feed
   - jekyll-redirect-from
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
