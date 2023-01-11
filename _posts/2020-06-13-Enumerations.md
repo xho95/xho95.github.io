@@ -310,7 +310,7 @@ enum ArithmeticExpression {
 }
 ```
 
-열거체 맨 앞에 `indirect` 를 작성하여 결합 값이 있는 모든 열거체 case 가 간접 (indirection)[^indirection] 이게 할 수도 있습니다:
+`indirect` 를 열거체 맨 앞에 써서 결합 값이 있는 모든 열거체 case 가 간접 (indirection)[^indirection] 이라고 할 수도 있습니다:
 
 ```swift
 indirect enum ArithmeticExpression {
@@ -320,7 +320,7 @@ indirect enum ArithmeticExpression {
 }
 ```
 
-이 열거체는: 평범한 수, 두 표현식의 덧셈, 그리고 두 표현식의 곱셈이라는 세 가지 종류의 산술 표현식을 저장할 수 있습니다. `addition` 과 `multiplication` case 는 또 다시 산술 표현식인 결합 값을 가집니다-이러한 결합 값은 표현식을 중첩 가능하게 합니다. 예를 들어, 표현식 `(5 + 4) * 2` 는 곱셈 오른-쪽엔 수가 있고 곱셈 왼-쪽엔 또 다른 표현식이 있습니다. 자료를 중첩하기 때문에, 자료를 저장하는데 사용하는 열거체도 중첩을 지원할 필요가 있습니다-이는 열거체가 재귀적일 (recursive) 필요가 있다는 의미입니다. 아래 코드는 `(5 + 4) * 2` 를 생성하고 있는 재귀 열거체인 `ArithmeticExpression` 을 보여줍니다:
+이 열거체는 세 종류의 산술 표현식을 저장할 수 있는데: 평범한 수와, 두 표현식의 덧셈, 및 두 표현식의 곱셈이 그것입니다. `addition` 과 `multiplication` case 엔 또 다시 산술 표현식인 결합 값이 있습니다-이 결합 값들은 표현식을 중첩 가능하게 만듭니다. 예를 들어, 표현식 `(5 + 4) * 2` 엔 곱셈 오른-쪽에 수가 있고 곱셈 왼-쪽엔 또 다른 표현식이 있습니다. 데이터가 중첩되기 때문에, 데이터 저장에 사용할 열거체도 중첩하는게 필요합니다-이는 열거체가 재귀 (recursive) 인게 필요하다는 의미입니다. 아래 코드는 `(5 + 4) * 2` 를 위해 생성하는 `ArithmeticExpression` 재귀 열거체를 보여줍니다:
 
 ```swift
 let five = ArithmeticExpression.number(5)
@@ -329,7 +329,7 @@ let sum = ArithmeticExpression.addition(five, four)
 let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
 ```
 
-재귀 함수는 재귀 구조를 가진 자료와 직접적인 방식으로 작업합니다. 예를 들어, 다음은 산술 표현식을 평가하는 함수입니다:
+재귀 함수는 재귀 구조를 가진 데이터와 직접적인 방식으로 일합니다. 예를 들어, 산술 표현식을 평가하는 함수는 이렇습니다:
 
 ```swift
 func evaluate(_ expression: ArithmeticExpression) -> Int {
@@ -347,7 +347,7 @@ print(evaluate(product))
 // "18" 를 인쇄함
 ```
 
-이 함수가 평범한 수를 평가하는 방식은 단순히 결합 값을 반환하는 것입니다. 덧셈이나 곱셈의 평가 방식은 '왼-쪽의 표현식을 평가하고, 오른-쪽의 표현식을 평가한 다음, 이를 더하거나 곱하는 것' 입니다.
+이 함수는 평범한 수라면 단순히 결합 값을 반환하는 걸로 평가합니다. 덧셈이나 곱셈은 왼-쪽 표현식을 평가하고, 오른-쪽 표현식을 평가한 다음, 이를 더하거나 곱하는 걸로 평가합니다.
 
 ### 다음 장
 
