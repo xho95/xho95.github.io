@@ -11,39 +11,41 @@ redirect_from: "/swift/language/grammar/structure/class/2020/04/08/Structures-an
 
 ## Structures and Classes (구조체와 클래스)
 
-_구조체 (structures)_ 와 _클래스 (classes)_ 는 프로그램 코드에서 건축 자재 역할을 하는 범용적이고, 유연한 '구조물 (constructs)' 입니다. 구조체와 클래스에 기능을 추가하는 속성과 메소드는 상수, 변수, 및 함수 정의에 쓰는 것과 똑같은 구문을 사용하여 정의합니다.
+_구조체 (structures)_ 와 _클래스 (classes)_ 는 범용적이고, 유연한 구조물로써 프로그램 코드의 건축 자재 역할을 합니다. 속성과 메소드 정의로 구조체와 클래스에 기능을 추가하는 건 상수와, 변수, 및 함수 정의에 쓰인 것과 똑같은 구문을 사용합니다.
 
-다른 프로그래밍 언어와 달리, 스위프트는 인터페이스 파일과 구현 파일로 분리하여 사용자 정의 구조체 및 클래스를 생성하라고 요구하지 않습니다. 스위프트에선, 구조체나 클래스를 단일 파일 안에 정의하며, 그 클래스나 구조체의 외부 인터페이스는 다른 코드에서 자동으로 쓸 수 있게 됩니다.
+다른 프로그래밍 언어와 달리, 스위프트는 자신의 구조체와 클래스를 인터페이스와 구현 파일로 분리하여 생성하라고 요구하지 않습니다. 스위프트에선, 구조체나 클래스를 단 하나의 파일로 정의하며, 그 클래스나 구조체의 외부 인터페이스는 다른 코드에서 쓸 수 있게 자동으로 만들어집니다.
 
-> 클래스 인스턴스를 전통적으로 _객체 (object)_ 라고 합니다. 하지만, 스위프트 구조체와 클래스는 다른 언어에서보다 그 기능이 훨씬 더 가까우며, 이 장 많은 곳에서 설명할 기능은 클래스나 구조체 _어느 (either)_ 타입의 인스턴트에든 적용되는 것입니다. 이 때문에, _인스턴스 (instance)_ 라는 좀 더 일반적인 용어를 사용합니다.[^object-instance]
+> 클래스의 인스턴스는 전통적으로 _객체 (object)_ 라고 합니다. 하지만, 스위프트의 구조체와 클래스는 다른 언어에서보다 기능이 훨씬 더 밀접해서, 이 장에서 설명한 대부분의 기능은 클래스나 구조체 타입 중 _어느 (either)_ 인스턴트에든 적용됩니다. 이 때문에, 좀 더 일반적인 용어인 _인스턴스 (instance)_ 를 사용합니다.[^object-instance]
 
-### Comparing Structures and Classes (구조체 및 클래스 비교하기)
+### Comparing Structures and Classes (구조체와 클래스 비교하기)
 
-스위프트 구조체와 클래스에는 수많은 공통점이 있습니다. 둘 다 다음을 할 수 있습니다:
+스위프트의 구조체와 클래스엔 공통점이 많습니다. 둘 다 할 수 있는 건 이렇습니다:
 
 * 속성을 정의하여 값을 저장함
 * 메소드를 정의하여 기능을 제공함
-* 첨자 연산을 정의하여 자신의 값에 접근하는 첨자 연산 구문을 제공함
+* 첨자 연산을 정의하여 자신의 값에 접근하는 첨자 구문을 제공함
 * 초기자를 정의하여 자신의 초기 상태를 설정함
-* 확장을 하여 기본 구현을 넘어 자신의 기능을 늘림
-* 프로토콜을 준수하여 정해진 종류의 표준 기능을 제공함
+* 확장을 하여 자신의 기본 구현 너머로 기능을 늘림
+* 프로토콜을 따름으로써 특정 종류의 표준 기능을 제공함
 
-더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}), [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보도록 합니다.
+더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 과, [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 보기 바랍니다.
 
-클래스에는 구조체는 없는 추가적인 보유 능력이 있습니다:
+클래스는 구조체엔 없는 추가 능력이 있습니다:
 
-* 상속 (inheritance) 은 한 클래스가 또 다른 클래스의 성질 (characteristics) 을 상속할 수 있게 합니다.
-* 타입 변환 (type casting) 은 실행 시간에 클래스 인스턴스의 타입을 검사하고 해석할 수 있게 합니다.
-* 정리자 (deinitializer) 는 클래스 인스턴스에 할당한 어떤 자원이든 풀 수 있게 합니다.
-* 참조 카운팅 (reference counting) 은 클래스 인스턴스에 대한 하나 이상의 참조를 허용합니다.
+* 상속 (inheritance) 은 한 클래스가 또 다른 것의 성질[^characteristics] 을 상속할 수 있게 합니다.
+* 타입 변환 (type casting) 은 클래스 인스턴스의 타입을 실행 시간에 검사하고 해석할 수 있게 합니다.
+* 정리자 (deinitializer) 는 클래스 인스턴스가 할당한 어떤 자원이든 풀어줄 수 있게 합니다.
+* 참조 카운팅 (reference counting) 은 클래스 인스턴스로의 참조를 하나 이상 허용합니다.
 
-더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}), [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (객체 정리하기)]({% post_url 2017-03-03-Deinitialization %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 보도록 합니다.
+더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 과, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 을 보기 바랍니다.
 
-클래스가 지원하는 추가적인 보유 능력은 복잡도 증가라는 비용에 직면합니다. 일반적인 지침으로는, 구조체가 이유를 파악하기 쉽기 때문에 더 좋으며, 클래스는 적절하거나 필요할 때만 사용합니다. 이는, 실상, 대부분의 사용자 정의 자료 타입이 구조체와 열거체일 것이라는 의미입니다. 좀 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes]를 첨고하기 바랍니다.
+클래스가 지원하는 추가 능력엔 복잡도 증가라는 비용이 따라 붙습니다. 일반적인 지침은, 이유 파악이 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용하라는 겁니다. 실상, 이는 직접 정의하는 대부분의 사용자 자료 타입은 구조체와 열거체일 거라는 의미입니다. 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes] 를 보기 바랍니다.
+
+> 클래스와 행위자는 똑같은 성질과 동작을 많이 공유합니다. 행위자에 대한 정보는, [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장을 보기 바랍니다. 
 
 #### Definition Syntax (정의 구문)
 
-구조체와 클래스의 정의 구문은 비슷합니다. `struct` 키워드로 구조체를 도입하며 `class` 키워드로 클래스를 도입합니다. 둘 다 한 쌍의 중괄호 안에 자신의 전체 정의를 둡니다:
+구조체와 클래스의 정의 구문은 비슷합니다. 구조체는 `struct` 키워드로 클래스는 `class` 키워드로 첫 소개를 합니다. 둘 다 한 쌍의 중괄호 안에 자신의 전체 정의를 둡니다:
 
 ```swift
 struct SomeStructure {
@@ -54,9 +56,9 @@ class SomeClass {
 }
 ```
 
-> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 겁니다. (여기 있는 `SomeStructure` 와 `SomeClass` 같이) 타입에 `UpperCamelCase`[^uppser-camel-case] (낙타 모양 대문자) 이름을 부여하여 (`String`, `Int`, 및 `Bool` 같은) 표준 스위프트 타입의 대문자 방식과 일치하도록 합니다. (`frameRate` 와 `incrementCount` 같이) 속성과 메소드엔 `lowerCamelCase` (낙타 모양 소문자) 이름을 부여하여 타입 이름과 구별합니다.
+> 새로운 구조체나 클래스를 정의할 때마다, 새로운 스위프트 타입을 정의하는 겁니다. 타입에는 (여기 있는 `SomeStructure` 와 `SomeClass` 같이) `UpperCamelCase` (낙타 모양 대문자)[^uppser-camel-case] 이름을 줘서 (`String` 과, `Int`, 및 `Bool` 같은) 표준 스위프트 타입의 대문자 방식과 맞춥니다. 속성과 메소드엔 (`frameRate` 와 `incrementCount` 같은) `lowerCamelCase` (낙타 모양 소문자) 이름을 줘서 타입 이름과 구별하도록 합니다.
 
-다음 예제는 구조체 정의 및 클래스 정의입니다:
+구조체 정의와 클래스 정의의 예는 이렇습니다:
 
 ```swift
 struct Resolution {
@@ -71,22 +73,22 @@ class VideoMode {
 }
 ```
 
-위 예제는, 디스플레이 해상도를 픽셀을-기초로 설명하는, `Resolution` 이라는 새 구조체를 정의합니다. 이 구조체에는 `width` 와 `height` 라는 두 개의 저장 속성이 있습니다.저장 속성은 '구조체나 클래스의 일부분으로 뭉쳐서 저장하는 상수 또는 변수' 입니다. 이 두 속성은 `0` 이라는 초기 값으로 설정함에 따라 `Int` 타입이라고 추론합니다.
+위 예제는 `Resolution` 이라는 새로운 구조체를 정의하여, 픽셀-기반[^pixel] 디스플레이의 해상도를 설명합니다. 이 구조체엔 `width` 와 `height` 이라는 두 저장 속성이 있습니다. 저장 속성은 구조체나 클래스의 일부로 엮여서 저장되는 상수나 변수입니다. 이 두 속성은 초기 정수 값을 `0` 으로 설정하여 `Int` 타입이라고 추론됩니다.
 
-위 예제는, 영상 디스플레이의 특정 영상 모드를 설명하는, `VideoMode` 라는 새 클래스도 정의합니다. 이 클래스에는 네 개의 저장 속성 변수가 있습니다. 첫 번째인, `resolution` 은, 새로운 `Resolution` 구조체 인스턴스로 초기화하여, 속성 타입이 `Resolution` 이라고 추론합니다. 다른 세 속성은, ("비월 주사 방식 영상"[^interlaced] 임을 의미하는) `false` 라는 `interalced`, `0.0` 이라는 '녹화 프레임 재생 속도', 및 `name` 이라는 옵셔널 `String` 값을 가지고 새로운 `VideoMode` 인스턴스를 초기화할 것입니다. `name` 속성은, 옵셔널 타입이기 때문에, 자동으로 `nil` 이라는 기본 값, 또는 "`name` 값 없음", 을 부여합니다.
+위 예제는 `VideoMode` 라는 새로운 클래스도 정의하여, 영상 디스플레이에 특화된 영상 모드를 설명합니다. 이 클래스에는 네 개의 저장 속성 변수가 있습니다. 첫 번째인, `resolution` 은, 새로운 `Resolution` 구조체 인스턴스로 초기화하며, 속성의 타입은 `Resolution` 으로 추론합니다. 다른 세 속성의 경우, 새로운 `VideoMode` 인스턴스에서 `interalced` 설정은 ("비월 주사 방식"[^interlaced] 을 의미하는) `false` 로, 녹화 프레임 재생 속도[^playback] 는 `0.0` 으로, 옵셔널 `String` 값은 `name` 으로 초기화할 겁니다. `name` 속성엔 기본 값 `nil`, 또는 "`name` 값 없음" 이, 자동으로 주어지는데, 이는 옵셔널 타입이기 때문입니다.
 
 #### Structure and Class Instances (구조체와 클래스 인스턴스)
 
-`Resolution` 구조체 정의와 `VideoMode` 클래스 정의는 `Resolution` 이나 `VideoMode` 가 어떻게 보일지만 설명합니다. 스스로는 특정 해상도나 영상 모드를 설명하지 않습니다. 그럴려면, 구조체나 클래스 인스턴스를 생성할 필요가 있습니다.
+`Resolution` 구조체 정의와 `VideoMode` 클래스 정의는 `Resolution` 이나 `VideoMode` 가 보여질 모습만을 설명합니다. 그 자체로 특정 해상도나 영상 모드를 설명하진 않습니다. 그럴려면, 구조체나 클래스의 인스턴스를 생성해야 합니다.
 
-인스턴스 생성 구문은 구조체와 클래스 둘 다 아주 비슷합니다:
+구조체와 클래스 양 쪽의 인스턴스 생성 구문은 매우 비슷합니다:
 
 ```swift
 let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 둘 다 새로운 인스턴스에 '초기자 구문 (initializer syntax) 을 사용' 합니다. 가장 단순한 형식의 초기자 구문은, `Resolution()` 이나 `VideoMode()` 처럼, 클래스 또는 구조체 타입 이름 뒤에 빈 괄호를 사용하는 겁니다. 이는 클래스나 구조체의, 어떤 속성이든 자신의 기본 값으로 초기화한, 새 인스턴스를 생성합니다. 클래스와 구조체 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세히 설명합니다.
+구조체와 클래스 둘 다 새 인스턴스에 초기자 구문[^initializer-syntax] 을 사용합니다. 가장 단순한 형식의 초기자 구문은 클래스나 구조체의 타입 이름 뒤에 빈 괄호가 있는, `Resolution()` 이나 `VideoMode()` 같은 겁니다. 이는 클래스나 구조체의 새 인스턴스를 생성하면서, 어떤 속성이든 자신의 기본 값으로 초기화합니다. 클래스와 구조체 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세하게 설명합니다.
 
 #### Accessing Properties (속성에 접근하기)
 
