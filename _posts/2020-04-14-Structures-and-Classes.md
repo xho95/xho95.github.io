@@ -118,13 +118,13 @@ print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
 
 #### Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)
 
-모든 구조체엔 _멤버 초기자 (memberwise initializer)_ 가 자동으로 생기며, 이것으로 새로운 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다. 새 인스턴스 속성을 위한 기본 값은 멤버 초기자에 이름을 써서 전달할 수 있습니다:
+모든 구조체엔 자동으로 생기는 _멤버 초기자 (memberwise initializer)_ 가 있는데, 이걸 쓰면 새 구조체 인스턴스의 멤버 속성을 초기화할 수 있습니다. 새 인스턴스에 있는 속성의 기본 값은 이름으로 멤버 초기자로 전달할 수 있습니다:
 
 ```swift
 let vga = Resolution(width: 640, height: 480)
 ```
 
-구조체와는 달리, 클래스 인스턴스는 기본 멤버 초기자를 받지 않습니다. 초기자는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세히 설명합니다.
+구조체와 달리, 클래스 인스턴스는 기본 멤버 초기자를 받지 않습니다. 초기자는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세하게 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 
