@@ -1,29 +1,29 @@
-I"z<p>맥의 경우 <code class="highlighter-rouge">command (⌘)</code>+<code class="highlighter-rouge">control(⌃)</code>+<code class="highlighter-rouge">space</code> 키를 누르면 특수 문자를 입력할 수 있는 대화창이 나타납니다.<sup id="fnref:macnews-1723" role="doc-noteref"><a href="#fn:macnews-1723" class="footnote">1</a></sup>  <sup id="fnref:macnews-1439" role="doc-noteref"><a href="#fn:macnews-1439" class="footnote">2</a></sup></p>
+I"e<p>맥의 경우 <code class="language-plaintext highlighter-rouge">command (⌘)</code>+<code class="language-plaintext highlighter-rouge">control(⌃)</code>+<code class="language-plaintext highlighter-rouge">space</code> 키를 누르면 특수 문자를 입력할 수 있는 대화창이 나타납니다.<sup id="fnref:macnews-1723" role="doc-noteref"><a href="#fn:macnews-1723" class="footnote" rel="footnote">1</a></sup>  <sup id="fnref:macnews-1439" role="doc-noteref"><a href="#fn:macnews-1439" class="footnote" rel="footnote">2</a></sup></p>
 
 <p>이 특수 문자 입력창을 이용하면 어떤 유니코드 문자라도 찾아서 입력할 수 있습니다.</p>
 
 <p>다만 원하는 문자를 찾는 과정이 그렇게 쉽지는 않습니다. 특히 프로그래밍을 하다보면 유니코드(unicode) 값 자체는 아는데 해당 문자를 찾기가 힘들어서 입력이 힘든 경우가 있습니다.</p>
 
-<p>이 경우 대화창의 검색 필드를 이용하면 쉽게 유니코드 문자를 찾아서 입력할 수있습니다. 그냥 검색창에서 유니코드 값을 hex 코드의 형태로 입력해서 검색하면 됩니다. hex 코드를 입력하는 방법은 코드 맨 앞에 <code class="highlighter-rouge">0x</code>를 붙여주기만 하면 됩니다.</p>
+<p>이 경우 대화창의 검색 필드를 이용하면 쉽게 유니코드 문자를 찾아서 입력할 수있습니다. 그냥 검색창에서 유니코드 값을 hex 코드의 형태로 입력해서 검색하면 됩니다. hex 코드를 입력하는 방법은 코드 맨 앞에 <code class="language-plaintext highlighter-rouge">0x</code>를 붙여주기만 하면 됩니다.</p>
 
-<p>참고로 <code class="highlighter-rouge">é</code> 문자의 hex 코드는 다음과 같습니다.</p>
+<p>참고로 <code class="language-plaintext highlighter-rouge">é</code> 문자의 hex 코드는 다음과 같습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>é == 0xe9 == 0xE9
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>é == 0xe9 == 0xE9
 </code></pre></div></div>
 
 <blockquote>
   <p>참고로 특수 문자 입력창에서 유니코드는 알파벳의 대소문자를 구분하지 않고 인식이 되는 것 같습니다.</p>
 </blockquote>
 
-<p><a href="http://unicode-table.com/en/">Unicode® character table</a> 등을 찾아보면 원하는 문자의 유니코드 값을 찾아볼 수도 있습니다.<sup id="fnref:unicode-table" role="doc-noteref"><a href="#fn:unicode-table" class="footnote">3</a></sup></p>
+<p><a href="http://unicode-table.com/en/">Unicode® character table</a> 등을 찾아보면 원하는 문자의 유니코드 값을 찾아볼 수도 있습니다.<sup id="fnref:unicode-table" role="doc-noteref"><a href="#fn:unicode-table" class="footnote" rel="footnote">3</a></sup></p>
 
-<p>특수 문자 입력 대화창에서 <code class="highlighter-rouge">0xe9</code>를 입력해서 검색한 결과는 다음과 같습니다.</p>
+<p>특수 문자 입력 대화창에서 <code class="language-plaintext highlighter-rouge">0xe9</code>를 입력해서 검색한 결과는 다음과 같습니다.</p>
 
 <p><img src="/assets/macOS/special-character.jpg" alt="맥 특수 문자 입력기" /></p>
 
-<p>검색창에 <code class="highlighter-rouge">0xe9</code>라 입력하면 각각의 문자도 검색되지만 맨 밑에 해당 문자 코드로 만들 수 있는 글자인 <code class="highlighter-rouge">é</code>도 같이 검색되는 것을 알 수 있습니다.</p>
+<p>검색창에 <code class="language-plaintext highlighter-rouge">0xe9</code>라 입력하면 각각의 문자도 검색되지만 맨 밑에 해당 문자 코드로 만들 수 있는 글자인 <code class="language-plaintext highlighter-rouge">é</code>도 같이 검색되는 것을 알 수 있습니다.</p>
 
-<p>이제 <code class="highlighter-rouge">é</code>를 더블클릭하면 원하는 곳에 문자를 넣을 수 있습니다.</p>
+<p>이제 <code class="language-plaintext highlighter-rouge">é</code>를 더블클릭하면 원하는 곳에 문자를 넣을 수 있습니다.</p>
 
 <h3 id="참고-자료">참고 자료</h3>
 

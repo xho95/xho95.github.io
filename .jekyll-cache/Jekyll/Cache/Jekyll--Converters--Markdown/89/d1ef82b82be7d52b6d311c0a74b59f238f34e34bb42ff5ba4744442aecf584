@@ -1,24 +1,24 @@
-I"�<p>여기서는 <strong>Declarations from extensions cannot be overridden yet</strong> 에러가 발생했을 경우의 해결 방법에 대해서 정리합니다.</p>
+I"�<p>여기서는 <strong>Declarations from extensions cannot be overridden yet</strong> 에러가 발생했을 경우의 해결 방법에 대해서 정리합니다.</p>
 
 <h3 id="에러의-원인">에러의 원인</h3>
 
-<p>에러 문구 : Declarations from extensions cannot be overridden yet<sup id="fnref:Situation" role="doc-noteref"><a href="#fn:Situation" class="footnote">1</a></sup></p>
+<p>에러 문구 : Declarations from extensions cannot be overridden yet<sup id="fnref:Situation" role="doc-noteref"><a href="#fn:Situation" class="footnote" rel="footnote">1</a></sup></p>
 
-<p>직역하면 <code class="highlighter-rouge">extension</code>에서 선언한 함수를 재정의(override)하는게 아직 가능하지 않다는 의미입니다. 이것은 실제로 <code class="highlighter-rouge">extension</code>에서 선언한 함수를 재정의 할 수 없는 것이 아니라 재정의에 필요한 조건을 만족하지 않기 때문에 현재로써는 방법이 없다는 뜻입니다.</p>
+<p>직역하면 <code class="language-plaintext highlighter-rouge">extension</code>에서 선언한 함수를 재정의(override)하는게 아직 가능하지 않다는 의미입니다. 이것은 실제로 <code class="language-plaintext highlighter-rouge">extension</code>에서 선언한 함수를 재정의 할 수 없는 것이 아니라 재정의에 필요한 조건을 만족하지 않기 때문에 현재로써는 방법이 없다는 뜻입니다.</p>
 
-<p>일단 추즉컨데, 시스템에서도 다룰 수 있어야 하는 함수의 경우, 단순히 재정의만 하면 안되고 시스템에서 호출할 수 있도록 <code class="highlighter-rouge">Objective-C</code>와의 호환성을 유지해야하기 때문에 발생하는 에러인 듯 합니다.</p>
+<p>일단 추즉컨데, 시스템에서도 다룰 수 있어야 하는 함수의 경우, 단순히 재정의만 하면 안되고 시스템에서 호출할 수 있도록 <code class="language-plaintext highlighter-rouge">Objective-C</code>와의 호환성을 유지해야하기 때문에 발생하는 에러인 듯 합니다.</p>
 
-<p>따라서 호환성을 위해 <code class="highlighter-rouge">@objc</code> 키워드를 사용하는 것이 해결 방법의 핵심입니다.</p>
+<p>따라서 호환성을 위해 <code class="language-plaintext highlighter-rouge">@objc</code> 키워드를 사용하는 것이 해결 방법의 핵심입니다.</p>
 
 <h3 id="해결-방법">해결 방법</h3>
 
-<p><strong>stackoverflow</strong> 의 답글 중에 <code class="highlighter-rouge">Objective-C</code>와의 호환성을 유지하기 위해 <code class="highlighter-rouge">@objc</code> 키워드가 필요하다는 답변이 있습니다.<sup id="fnref:stackoverflow1" role="doc-noteref"><a href="#fn:stackoverflow1" class="footnote">2</a></sup></p>
+<p><strong>stackoverflow</strong> 의 답글 중에 <code class="language-plaintext highlighter-rouge">Objective-C</code>와의 호환성을 유지하기 위해 <code class="language-plaintext highlighter-rouge">@objc</code> 키워드가 필요하다는 답변이 있습니다.<sup id="fnref:stackoverflow1" role="doc-noteref"><a href="#fn:stackoverflow1" class="footnote" rel="footnote">2</a></sup></p>
 
-<p>만약 Swift로 만든 클래스를 함수에 전달할 경우 그 클래스에 <code class="highlighter-rouge">@objc</code> 키워드가 적용되든지, 아니면 <code class="highlighter-rouge">NSObject</code>를 상속받은 클래스던지 해야합니다. 그런데 <code class="highlighter-rouge">@objc</code> 클래스를 선언하려면 해당 클래스가 <code class="highlighter-rouge">NSObject</code>를 상속받은 클래스여야 합니다. 따라서 사용자가 만든 클래스에 <code class="highlighter-rouge">@objc</code>를 적용하고 싶으면 단순히 <code class="highlighter-rouge">NSObject</code>를 상속받기만 하면 됩니다.<sup id="fnref:stackoverflow2" role="doc-noteref"><a href="#fn:stackoverflow2" class="footnote">3</a></sup></p>
+<p>만약 Swift로 만든 클래스를 함수에 전달할 경우 그 클래스에 <code class="language-plaintext highlighter-rouge">@objc</code> 키워드가 적용되든지, 아니면 <code class="language-plaintext highlighter-rouge">NSObject</code>를 상속받은 클래스던지 해야합니다. 그런데 <code class="language-plaintext highlighter-rouge">@objc</code> 클래스를 선언하려면 해당 클래스가 <code class="language-plaintext highlighter-rouge">NSObject</code>를 상속받은 클래스여야 합니다. 따라서 사용자가 만든 클래스에 <code class="language-plaintext highlighter-rouge">@objc</code>를 적용하고 싶으면 단순히 <code class="language-plaintext highlighter-rouge">NSObject</code>를 상속받기만 하면 됩니다.<sup id="fnref:stackoverflow2" role="doc-noteref"><a href="#fn:stackoverflow2" class="footnote" rel="footnote">3</a></sup></p>
 
 <h3 id="고찰하기">고찰하기</h3>
 
-<p>이 글에 나온 내용들과 <code class="highlighter-rouge">@objc</code>에 대한 내용은 애플의 공식 문서인 <strong>Using Swift Cocoa and Objective-C</strong> 에 잘 나와 있는 것 같습니다. 나중에 이 글도 공식 문서를 참고하여 업데이트할 예정입니다.</p>
+<p>이 글에 나온 내용들과 <code class="language-plaintext highlighter-rouge">@objc</code>에 대한 내용은 애플의 공식 문서인 <strong>Using Swift Cocoa and Objective-C</strong> 에 잘 나와 있는 것 같습니다. 나중에 이 글도 공식 문서를 참고하여 업데이트할 예정입니다.</p>
 
 <h3 id="참고-자료">참고 자료</h3>
 
@@ -28,7 +28,7 @@
       <p>해당 에러의 발생 상황과 원인에 대해서는 GitHub에 <strong>onmyway133</strong>분이 <a href="https://github.com/onmyway133/notes/issues/86">Declarations from extensions cannot be overridden yet</a>라는 노트로 잘 정리해 두었습니다. <a href="#fnref:Situation" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:stackoverflow1" role="doc-endnote">
-      <p><a href="http://stackoverflow.com/questions/34061246/override-function-error-in-swift">Override function error in swift</a>라는 글에 설명이 되어 있는데, 다만 이 글의 경우 Override 하는 함수에 <code class="highlighter-rouge">@objc</code> 키워드를 적용하였습니다. 일단 이것 만으로는 에러가 해결이 안됩니다. <a href="#fnref:stackoverflow1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="http://stackoverflow.com/questions/34061246/override-function-error-in-swift">Override function error in swift</a>라는 글에 설명이 되어 있는데, 다만 이 글의 경우 Override 하는 함수에 <code class="language-plaintext highlighter-rouge">@objc</code> 키워드를 적용하였습니다. 일단 이것 만으로는 에러가 해결이 안됩니다. <a href="#fnref:stackoverflow1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:stackoverflow2" role="doc-endnote">
       <p><a href="http://stackoverflow.com/questions/28838433/unable-to-use-custom-class-in-a-protocol-with-objc-attribute">Unable to use custom class in a protocol with @objc attribute?</a> 글에 클래스를 <strong>NSObject</strong>에서 상속받도록 하는 것이 나옵니다. <a href="#fnref:stackoverflow2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

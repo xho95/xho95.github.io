@@ -1,4 +1,4 @@
-I":7<p>여기서는 Swift 공식 블로그 글인 <a href="https://swift.org/getting-started/">Getting Started</a> 글을 번역 정리하면서 리눅스에서 Swift 로 개발하는 방법을 소개하도록 합니다. <sup id="fnref:swift-started" role="doc-noteref"><a href="#fn:swift-started" class="footnote">1</a></sup></p>
+I"Z:<p>여기서는 Swift 공식 블로그 글인 <a href="https://swift.org/getting-started/">Getting Started</a> 글을 번역 정리하면서 리눅스에서 Swift 로 개발하는 방법을 소개하도록 합니다. <sup id="fnref:swift-started" role="doc-noteref"><a href="#fn:swift-started" class="footnote" rel="footnote">1</a></sup></p>
 
 <h3 id="들어가며">들어가며</h3>
 
@@ -8,56 +8,56 @@
 
 <h3 id="repl-사용하기">REPL 사용하기</h3>
 
-<p><a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> 은 Read–Eval_(uate)_ –Print Loop 의 약자로 직역하면 읽고-실행하고-출력하는 것을 반복하는 것을 의미합니다. 프로그래밍에서 코드를 작성하면 한 줄씩 실행하면서 결과를 바로 볼 수 있도록 대화형으로 개발이 진행되는 방식을 말합니다. <sup id="fnref:repl" role="doc-noteref"><a href="#fn:repl" class="footnote">2</a></sup></p>
+<p><a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> 은 Read–Eval_(uate)_ –Print Loop 의 약자로 직역하면 읽고-실행하고-출력하는 것을 반복하는 것을 의미합니다. 프로그래밍에서 코드를 작성하면 한 줄씩 실행하면서 결과를 바로 볼 수 있도록 대화형으로 개발이 진행되는 방식을 말합니다. <sup id="fnref:repl" role="doc-noteref"><a href="#fn:repl" class="footnote" rel="footnote">2</a></sup></p>
 
-<p>리눅스에서 REPL 을 실행하려면 터미널에서 아래와 같이 <code class="highlighter-rouge">swift</code> 명령을 입력하면 됩니다.</p>
+<p>리눅스에서 REPL 을 실행하려면 터미널에서 아래와 같이 <code class="language-plaintext highlighter-rouge">swift</code> 명령을 입력하면 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift
 
 Welcome to Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1). Type :help for assistance.
   1&gt;  
 </code></pre></div></div>
 
-<p>그러면 프롬프터가 나타나면서 Swift 를 사용할 수 있습니다. <sup id="fnref:exercise" role="doc-noteref"><a href="#fn:exercise" class="footnote">3</a></sup> 이것 저것 Swift 를 실습해 보도록 합니다.</p>
+<p>그러면 프롬프터가 나타나면서 Swift 를 사용할 수 있습니다. <sup id="fnref:exercise" role="doc-noteref"><a href="#fn:exercise" class="footnote" rel="footnote">3</a></sup> 이것 저것 Swift 를 실습해 보도록 합니다.</p>
 
-<p>REPL 에서 빠져 나올려면 <code class="highlighter-rouge">vi</code> 편집기에서 빠져나올 때 처럼 프롬프터에서 <code class="highlighter-rouge">:q</code> 를 입력하면 됩니다.</p>
+<p>REPL 에서 빠져 나올려면 <code class="language-plaintext highlighter-rouge">vi</code> 편집기에서 빠져나올 때 처럼 프롬프터에서 <code class="language-plaintext highlighter-rouge">:q</code> 를 입력하면 됩니다.</p>
 
 <h4 id="시스템-모듈">시스템 모듈</h4>
 
-<p>Swift 의 경우 운영 체제별로 시스템 모듈을 불러와서 사용할 수 있도록 하고 있습니다. macOS 의 경우 <strong>Darwin</strong> 이라는 모듈을 사용할 수 있는데, 리눅스에서는 <a href="https://en.wikipedia.org/wiki/GNU_C_Library"><strong>Glibc</strong></a> 라는 모듈을 불러올 수 있습니다. <sup id="fnref:wikipedia-gnu-c" role="doc-noteref"><a href="#fn:wikipedia-gnu-c" class="footnote">4</a></sup></p>
+<p>Swift 의 경우 운영 체제별로 시스템 모듈을 불러와서 사용할 수 있도록 하고 있습니다. macOS 의 경우 <strong>Darwin</strong> 이라는 모듈을 사용할 수 있는데, 리눅스에서는 <a href="https://en.wikipedia.org/wiki/GNU_C_Library"><strong>Glibc</strong></a> 라는 모듈을 불러올 수 있습니다. <sup id="fnref:wikipedia-gnu-c" role="doc-noteref"><a href="#fn:wikipedia-gnu-c" class="footnote" rel="footnote">4</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1&gt; import Glibc
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1&gt; import Glibc
 </code></pre></div></div>
 
-<p>이 모듈은 Swift 에서 표준 C 코드를 사용할 수 있도록 하는 것으로 추측하는데, 왜냐면 이 모듈을 불러오면 <code class="highlighter-rouge">fopen</code> 같은 C 함수들을 사용할 수 있기 때문입니다.</p>
+<p>이 모듈은 Swift 에서 표준 C 코드를 사용할 수 있도록 하는 것으로 추측하는데, 왜냐면 이 모듈을 불러오면 <code class="language-plaintext highlighter-rouge">fopen</code> 같은 C 함수들을 사용할 수 있기 때문입니다.</p>
 
 <h3 id="패키지-관리자-사용하기">패키지 관리자 사용하기</h3>
 
 <p>패키지 관리자는 라이브러리를 만들기도 하지만, 실행 파일을 만들 때도 사용됩니다. 그리고 여러 프로젝트 사이에서 코드를 공유하도록 해주기도 합니다.</p>
 
-<p>패키지 관리자 도구에는 <code class="highlighter-rouge">swift package</code>, <code class="highlighter-rouge">swift build</code>, <code class="highlighter-rouge">swift test</code> 가 있습니다.</p>
+<p>패키지 관리자 도구에는 <code class="language-plaintext highlighter-rouge">swift package</code>, <code class="language-plaintext highlighter-rouge">swift build</code>, <code class="language-plaintext highlighter-rouge">swift test</code> 가 있습니다.</p>
 
 <p>아래와 같이 해서 패키지 관리자가 실행되는지 확인합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift package --help
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift package --help
 </code></pre></div></div>
 
 <h4 id="패키지-만들기">패키지 만들기</h4>
 
-<p>프로젝트를 담을 디렉토리를 하나 만들고 해당 디렉토리로 이동합니다. <sup id="fnref:example" role="doc-noteref"><a href="#fn:example" class="footnote">5</a></sup></p>
+<p>프로젝트를 담을 디렉토리를 하나 만들고 해당 디렉토리로 이동합니다. <sup id="fnref:example" role="doc-noteref"><a href="#fn:example" class="footnote" rel="footnote">5</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir Hello
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir Hello
 $ cd Hello
 </code></pre></div></div>
 
 <p>모든 패키지들은 <strong>Package.swift</strong> 라고 하는 관리 목록(manifest) 파일을 최상위 디렉토리에 가지고 있어야 합니다. 아래와 같이 하면 패키지를 만들 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift package init
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift package init
 </code></pre></div></div>
 
 <p>명령을 실행하고 나면 해당 폴더에 아래와 같은 디렉토리와 파일들이 생깁니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── Package.swift
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── Package.swift
 ├── Sources
 │   └── Hello.swift
 └── Tests
@@ -66,32 +66,32 @@ $ cd Hello
     └── LinuxMain.swift
 </code></pre></div></div>
 
-<p>이제 <code class="highlighter-rouge">swift build</code> 명령으로 패키지를 빌드할 수 있습니다. 이 명령은 관리 목록 (manifest) 파일에 기록되어 있는 의존 파일들을 찾아서 다운로드 하고 컴파일합니다.</p>
+<p>이제 <code class="language-plaintext highlighter-rouge">swift build</code> 명령으로 패키지를 빌드할 수 있습니다. 이 명령은 관리 목록 (manifest) 파일에 기록되어 있는 의존 파일들을 찾아서 다운로드 하고 컴파일합니다.</p>
 
-<p>패키지에 대한 테스트를 실행하려면 <code class="highlighter-rouge">swift test</code> 를 사용합니다.</p>
+<p>패키지에 대한 테스트를 실행하려면 <code class="language-plaintext highlighter-rouge">swift test</code> 를 사용합니다.</p>
 
 <h4 id="실행-파일-만들기">실행 파일 만들기</h4>
 
 <p>패키지에 <strong>main.swift</strong> 라는 파일을 담고 있으면 실행파일로 간주합니다. 패키지 관리자는 그 파일을 바이너리 실행 파일로 컴파일하게 됩니다.</p>
 
-<p>일단 “Hello” 를 출력하는 <code class="highlighter-rouge">Hello</code> 실행 파일을 만드는 방법을 알아봅니다.</p>
+<p>일단 “Hello” 를 출력하는 <code class="language-plaintext highlighter-rouge">Hello</code> 실행 파일을 만드는 방법을 알아봅니다.</p>
 
-<p>여기서는 일단 바로 전에 만들었던 <code class="highlighter-rouge">Hello</code> 디렉토리를 지우고 새로 만듭니다. 아니면 프로젝트나 디렉토리 이름을 다른 이름으로 해도 됩니다.</p>
+<p>여기서는 일단 바로 전에 만들었던 <code class="language-plaintext highlighter-rouge">Hello</code> 디렉토리를 지우고 새로 만듭니다. 아니면 프로젝트나 디렉토리 이름을 다른 이름으로 해도 됩니다.</p>
 
-<p>새로 만든 <code class="highlighter-rouge">Hello</code> 디렉토리로 이동합니다.</p>
+<p>새로 만든 <code class="language-plaintext highlighter-rouge">Hello</code> 디렉토리로 이동합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir Hello
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir Hello
 $ cd Hello
 </code></pre></div></div>
 
 <p>패키지 관리자에 아래와 같이 실행 파일 옵션을 줘서 프로젝트를 만듭니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift package init --type executable
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift package init --type executable
 </code></pre></div></div>
 
 <p>생성되는 파일 및 디렉토리는 다음과 같습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── Package.swift
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── Package.swift
 ├── Sources
 │   └── main.swift
 └── Tests
@@ -99,33 +99,33 @@ $ cd Hello
 
 <p>아래와 같이 패키지를 컴파일합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift build
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift build
 </code></pre></div></div>
 
 <p>빌드 결과는 <strong>.build</strong> 디렉토리에 생깁니다. 이름에서 숨겨진 디렉토리임을 알 수 있습니다. 아래와 같이 <strong>Hello</strong> 프로그램을 실행합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ .build/debug/Hello
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ .build/debug/Hello
 Hello, world!
 </code></pre></div></div>
 
-<p>결과로 <code class="highlighter-rouge">Hello, world!</code> 가 출력되는 것을 볼 수 있습니다.</p>
+<p>결과로 <code class="language-plaintext highlighter-rouge">Hello, world!</code> 가 출력되는 것을 볼 수 있습니다.</p>
 
 <blockquote>
-  <p>참고로 에러가 발생할 경우에 디버그 정보는 <strong>debug.yaml</strong> 파일, 즉, <strong>YAML</strong> 양식으로 저장되는 것 같습니다. <sup id="fnref:yaml" role="doc-noteref"><a href="#fn:yaml" class="footnote">6</a></sup></p>
+  <p>참고로 에러가 발생할 경우에 디버그 정보는 <strong>debug.yaml</strong> 파일, 즉, <strong>YAML</strong> 양식으로 저장되는 것 같습니다. <sup id="fnref:yaml" role="doc-noteref"><a href="#fn:yaml" class="footnote" rel="footnote">6</a></sup></p>
 </blockquote>
 
 <h3 id="여러-소스-파일-다루기">여러 소스 파일 다루기</h3>
 
-<p><strong>Sources/</strong> 디렉토리에 <strong>Greeter.swift</strong> 라는 새 파일을 만들고 다음과 같이 입력합니다. 코드 편집은 원하는 아무 편집기를 사용해도 상관없습니다. 리눅스의 경우 <code class="highlighter-rouge">vi</code> 나 <code class="highlighter-rouge">gedit</code> 를 사용할 수도 있습니다. <sup id="fnref:atom" role="doc-noteref"><a href="#fn:atom" class="footnote">7</a></sup></p>
+<p><strong>Sources/</strong> 디렉토리에 <strong>Greeter.swift</strong> 라는 새 파일을 만들고 다음과 같이 입력합니다. 코드 편집은 원하는 아무 편집기를 사용해도 상관없습니다. 리눅스의 경우 <code class="language-plaintext highlighter-rouge">vi</code> 나 <code class="language-plaintext highlighter-rouge">gedit</code> 를 사용할 수도 있습니다. <sup id="fnref:atom" role="doc-noteref"><a href="#fn:atom" class="footnote" rel="footnote">7</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func sayHello(name: String) {
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func sayHello(name: String) {
     print("Hello, \(name)!")
 }
 </code></pre></div></div>
 
 <p><strong>main.swift</strong> 파일은 아래와 같이 변경합니다:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if CommandLine.arguments.count != 2 {
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if CommandLine.arguments.count != 2 {
     print("Usage: hello NAME")
 } else {
     let name = CommandLine.arguments[1]
@@ -133,15 +133,15 @@ Hello, world!
 }
 </code></pre></div></div>
 
-<p>호출하는 함수가 Hello 모듈의 일부이기 때문에 <code class="highlighter-rouge">import</code> 구문이 필요없습니다. <sup id="fnref:access-control" role="doc-noteref"><a href="#fn:access-control" class="footnote">8</a></sup> <sup id="fnref:command-line" role="doc-noteref"><a href="#fn:command-line" class="footnote">9</a></sup></p>
+<p>호출하는 함수가 Hello 모듈의 일부이기 때문에 <code class="language-plaintext highlighter-rouge">import</code> 구문이 필요없습니다. <sup id="fnref:access-control" role="doc-noteref"><a href="#fn:access-control" class="footnote" rel="footnote">8</a></sup> <sup id="fnref:command-line" role="doc-noteref"><a href="#fn:command-line" class="footnote" rel="footnote">9</a></sup></p>
 
-<p><code class="highlighter-rouge">swift build</code> 를 실행해서 새 버전의 Hello 를 실험해 봅니다:</p>
+<p><code class="language-plaintext highlighter-rouge">swift build</code> 를 실행해서 새 버전의 Hello 를 실험해 봅니다:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift build
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ swift build
 $ .build/debug/Hello `whoami`
 </code></pre></div></div>
 
-<p>출력 결과를 보면 위에서 인자로 넘긴 <code class="highlighter-rouge">whoami</code> 부분이 현재 로그인 사용자의 이름으로 대체되는 것을 확인할 수 있습니다.</p>
+<p>출력 결과를 보면 위에서 인자로 넘긴 <code class="language-plaintext highlighter-rouge">whoami</code> 부분이 현재 로그인 사용자의 이름으로 대체되는 것을 확인할 수 있습니다.</p>
 
 <p>축하합니다! 이제 리눅스에서 Swift 로 프로젝트를 만들고 실행 파일을 만들 수 있게 되었습니다.</p>
 
@@ -159,7 +159,7 @@ $ .build/debug/Hello `whoami`
       <p>Swift 공식 블로그에 있는 <a href="https://swift.org/getting-started/">Getting Started</a> 는 REPL, 패키지 관리자, LLDB 디버거를 사용하는 방법을 설명한 글입니다. <a href="#fnref:swift-started" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:repl" role="doc-endnote">
-      <p>위키피디아의 <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> 을 참고하면 좀 더 자세한 의미를 알 수 있습니다. 리눅스 터미널에서 <code class="highlighter-rouge">swift</code> 명령을 실행하면 이 REPL 방식으로 개발을 할 수 있습니다. <a href="#fnref:repl" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>위키피디아의 <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> 을 참고하면 좀 더 자세한 의미를 알 수 있습니다. 리눅스 터미널에서 <code class="language-plaintext highlighter-rouge">swift</code> 명령을 실행하면 이 REPL 방식으로 개발을 할 수 있습니다. <a href="#fnref:repl" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:exercise" role="doc-endnote">
       <p>이 글에는 따로 REPL 을 사용하는 방법을 정리하지 않았는데, 이 부분은 Swift 언어를 공부하는 부분에 해당되기 때문에 직접 <a href="https://swift.org/getting-started/">Getting Started</a> 의 REPL 부분을 보고 코딩을 해보거나 아니면 다른 Swift 책에 있는 예제를 실습해 보도록 합니다. <a href="#fnref:exercise" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -177,7 +177,7 @@ $ .build/debug/Hello `whoami`
       <p>저의 경우 리눅스에서 Swift 로 개발할 때는 Atom 문서 편집기를 사용하는데, 리눅스에서 Atom 문서 편집기로 Swift 를 개발하는 방법에 대해서는 나중에 한 번 정리할 예정입니다. <a href="#fnref:atom" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:access-control" role="doc-endnote">
-      <p>이것은 Swift 언어의 접근 제어 (Access Control) 방식과 관계가 있습니다. Swift 는 접근 제어를 파일 단위로 하는 독특한 성질을 가지고 있는데, Swift 에서는 클래스나 함수에 아무런 접근 제어자가 없으면 기본으로 <code class="highlighter-rouge">internal</code> 특성을 가집니다. 따라서 같은 프로젝트 내에 있는 파일들에 대한 접근을 할 때는 따로 <code class="highlighter-rouge">import</code> 가 필요 없습니다. <a href="#fnref:access-control" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>이것은 Swift 언어의 접근 제어 (Access Control) 방식과 관계가 있습니다. Swift 는 접근 제어를 파일 단위로 하는 독특한 성질을 가지고 있는데, Swift 에서는 클래스나 함수에 아무런 접근 제어자가 없으면 기본으로 <code class="language-plaintext highlighter-rouge">internal</code> 특성을 가집니다. 따라서 같은 프로젝트 내에 있는 파일들에 대한 접근을 할 때는 따로 <code class="language-plaintext highlighter-rouge">import</code> 가 필요 없습니다. <a href="#fnref:access-control" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:command-line" role="doc-endnote">
       <p>그 외에도 터미널 명령줄에서 인자를 받아들이는 방식이 상당히 인상깊습니다. 이 부분에 대해서는 나중에 다시 정리해 보도록 하겠습니다. <a href="#fnref:command-line" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

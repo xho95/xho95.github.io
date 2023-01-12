@@ -1,4 +1,4 @@
-I"�<p>지난 번 파트에서 <a href="http://perfect.org/">Perfect</a> 프레임웍을 사용하여 Swift 로 서버를 개발하는 방법을 알아보았습니다. <sup id="fnref:perfect" role="doc-noteref"><a href="#fn:perfect" class="footnote">1</a></sup> 이번에는 이어서 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started">Server Side Swift with Perfect: Getting Started</a> 동영상의 뒷 부분을 정리합니다. <sup id="fnref:raywenderlich" role="doc-noteref"><a href="#fn:raywenderlich" class="footnote">2</a></sup></p>
+I"�<p>지난 번 파트에서 <a href="http://perfect.org/">Perfect</a> 프레임웍을 사용하여 Swift 로 서버를 개발하는 방법을 알아보았습니다. <sup id="fnref:perfect" role="doc-noteref"><a href="#fn:perfect" class="footnote" rel="footnote">1</a></sup> 이번에는 이어서 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started">Server Side Swift with Perfect: Getting Started</a> 동영상의 뒷 부분을 정리합니다. <sup id="fnref:raywenderlich" role="doc-noteref"><a href="#fn:raywenderlich" class="footnote" rel="footnote">2</a></sup></p>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>

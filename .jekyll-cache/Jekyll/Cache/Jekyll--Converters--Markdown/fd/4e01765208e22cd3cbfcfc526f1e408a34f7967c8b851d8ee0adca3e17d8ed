@@ -1,6 +1,6 @@
-I"�8<p>여기서는 맥의 Xcode 개발 환경에서 <a href="http://www.boost.org">부스트(Boost) 라이브러리</a> 를 사용하는 방법을 정리합니다. <sup id="fnref:boost" role="doc-noteref"><a href="#fn:boost" class="footnote">1</a></sup></p>
+I"c;<p>여기서는 맥의 Xcode 개발 환경에서 <a href="http://www.boost.org">부스트(Boost) 라이브러리</a> 를 사용하는 방법을 정리합니다. <sup id="fnref:boost" role="doc-noteref"><a href="#fn:boost" class="footnote" rel="footnote">1</a></sup></p>
 
-<p>원래 처음에 이 글은 작성할 때는 이지형님의 <a href="http://warmz.tistory.com">Warmz’s Dev</a> 라는 블로그에 있는 글을 많이 참고 했었습니다. 다만 글을 수정하는 과정에서 해당 글을 찾아보니 현재는 글이 삭제된 것 같습니다. <sup id="fnref:warmz" role="doc-noteref"><a href="#fn:warmz" class="footnote">2</a></sup></p>
+<p>원래 처음에 이 글은 작성할 때는 이지형님의 <a href="http://warmz.tistory.com">Warmz’s Dev</a> 라는 블로그에 있는 글을 많이 참고 했었습니다. 다만 글을 수정하는 과정에서 해당 글을 찾아보니 현재는 글이 삭제된 것 같습니다. <sup id="fnref:warmz" role="doc-noteref"><a href="#fn:warmz" class="footnote" rel="footnote">2</a></sup></p>
 
 <blockquote>
   <p>맥에서 부스트 라이브러리를 설치하는 방법에 대해서 이 글을 처음 쓰는 당시에는 이지형님의 글이 큰 도움이 되었는데 안타깝습니다. 나중에 원 글을 찾게 되면 꼭 소개하도록 하겠습니다.</p>
@@ -10,26 +10,26 @@
 
 <h3 id="부스트boost-라이브러리-다운하기">부스트(Boost) 라이브러리 다운하기</h3>
 
-<p>부스트 라이브러리는 부스트 공식 홈페이지인 <a href="http://www.boost.org">Boost.org</a> 에서 다운받을 수 있습니다. 이 글을 수정하고 있는 <strong>2017-01-15</strong> 일 현재 최신 빌드 버전은 <code class="highlighter-rouge">1.63.0</code>입니다. 부스트 라이브러리는 Boost.org의 GitHub 저장소인 <a href="https://github.com/boostorg/boost">boostorg/boost</a> 에서도 다운받을 수 있습니다. <sup id="fnref:github-boost" role="doc-noteref"><a href="#fn:github-boost" class="footnote">3</a></sup> <sup id="fnref:multism" role="doc-noteref"><a href="#fn:multism" class="footnote">4</a></sup></p>
+<p>부스트 라이브러리는 부스트 공식 홈페이지인 <a href="http://www.boost.org">Boost.org</a> 에서 다운받을 수 있습니다. 이 글을 수정하고 있는 <strong>2017-01-15</strong> 일 현재 최신 빌드 버전은 <code class="language-plaintext highlighter-rouge">1.63.0</code>입니다. 부스트 라이브러리는 Boost.org의 GitHub 저장소인 <a href="https://github.com/boostorg/boost">boostorg/boost</a> 에서도 다운받을 수 있습니다. <sup id="fnref:github-boost" role="doc-noteref"><a href="#fn:github-boost" class="footnote" rel="footnote">3</a></sup> <sup id="fnref:multism" role="doc-noteref"><a href="#fn:multism" class="footnote" rel="footnote">4</a></sup></p>
 
-<p>다운 받은 라이브러리의 압축을 풀고, 적당한 폴더에 둡니다. 뒤의 설명을 위해 여기서는 <code class="highlighter-rouge">~/Desktop/Boost</code> 폴더에 옮겼다고 가정합니다.</p>
+<p>다운 받은 라이브러리의 압축을 풀고, 적당한 폴더에 둡니다. 뒤의 설명을 위해 여기서는 <code class="language-plaintext highlighter-rouge">~/Desktop/Boost</code> 폴더에 옮겼다고 가정합니다.</p>
 
 <h3 id="부스트-라이브러리-빌드하기">부스트 라이브러리 빌드하기</h3>
 
-<p>이제 Boost가 있는 폴더로 이동하여 아래와 같이 <code class="highlighter-rouge">bootstrap.sh</code> 쉘 파일을 실행합니다.</p>
+<p>이제 Boost가 있는 폴더로 이동하여 아래와 같이 <code class="language-plaintext highlighter-rouge">bootstrap.sh</code> 쉘 파일을 실행합니다.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> ~/Desktop/Boost
 <span class="nv">$ </span>./bootstrap.sh
 </code></pre></div></div>
 
-<p>그러면 <code class="highlighter-rouge">b2</code>라는 Boost를 설치할 수 있는 설치 파일이 생깁니다. 아래와 같이 옵션을 주고 b2를 실행합니다.</p>
+<p>그러면 <code class="language-plaintext highlighter-rouge">b2</code>라는 Boost를 설치할 수 있는 설치 파일이 생깁니다. 아래와 같이 옵션을 주고 b2를 실행합니다.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./b2 <span class="nv">toolset</span><span class="o">=</span>darwin <span class="nb">link</span><span class="o">=</span>static <span class="nv">threading</span><span class="o">=</span>multi address-model<span class="o">=</span>64 runtime-link<span class="o">=</span>static
 </code></pre></div></div>
 
-<p>위에서 <code class="highlighter-rouge">darwin</code> 은 맥에서 사용하기 위해 설정하는 값으로, 윈도우즈에서라면 다른 값이 들어가게 됩니다. 또한 <code class="highlighter-rouge">address-model</code>의 경우 시스템이 32비트인지 64비트인지를 체크하는 것 같아서 64로 지정했습니다. 이 과정에서 <a href="https://twitter.com/_taromati">taromati</a> 라는 아이디를 사용하는 <a href="https://twitter.com/_taromati">이재현</a>님의 블로그 글에서 도움을 받았습니다. <sup id="fnref:taromati" role="doc-noteref"><a href="#fn:taromati" class="footnote">5</a></sup></p>
+<p>위에서 <code class="language-plaintext highlighter-rouge">darwin</code> 은 맥에서 사용하기 위해 설정하는 값으로, 윈도우즈에서라면 다른 값이 들어가게 됩니다. 또한 <code class="language-plaintext highlighter-rouge">address-model</code>의 경우 시스템이 32비트인지 64비트인지를 체크하는 것 같아서 64로 지정했습니다. 이 과정에서 <a href="https://twitter.com/_taromati">taromati</a> 라는 아이디를 사용하는 <a href="https://twitter.com/_taromati">이재현</a>님의 블로그 글에서 도움을 받았습니다. <sup id="fnref:taromati" role="doc-noteref"><a href="#fn:taromati" class="footnote" rel="footnote">5</a></sup></p>
 
-<p>실제 <code class="highlighter-rouge">b2</code> 실행과정에서 아래와 같이 <code class="highlighter-rouge">toolset</code> 값만 지정해줘도 나머지 옵션은 알아서 지정이 된다고 합니다. <sup id="fnref:sim9108" role="doc-noteref"><a href="#fn:sim9108" class="footnote">6</a></sup></p>
+<p>실제 <code class="language-plaintext highlighter-rouge">b2</code> 실행과정에서 아래와 같이 <code class="language-plaintext highlighter-rouge">toolset</code> 값만 지정해줘도 나머지 옵션은 알아서 지정이 된다고 합니다. <sup id="fnref:sim9108" role="doc-noteref"><a href="#fn:sim9108" class="footnote" rel="footnote">6</a></sup></p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./b2 <span class="nv">toolset</span><span class="o">=</span>darwin
 </code></pre></div></div>
@@ -42,13 +42,13 @@
 
 <h3 id="xcode-프로젝트-설정하기">Xcode 프로젝트 설정하기</h3>
 
-<p><code class="highlighter-rouge">b2</code>를 실행하고 나면 부스트 내부에 <strong>stage</strong> 라는 폴더가 생기고, 그 밑의 <strong>lib</strong> 폴더에 라이브러리 파일들이 위치합니다. Xcode에서 부스트 라이브러리를 사용하려면 프로젝트에 이 경로들을 지정하면 됩니다.</p>
+<p><code class="language-plaintext highlighter-rouge">b2</code>를 실행하고 나면 부스트 내부에 <strong>stage</strong> 라는 폴더가 생기고, 그 밑의 <strong>lib</strong> 폴더에 라이브러리 파일들이 위치합니다. Xcode에서 부스트 라이브러리를 사용하려면 프로젝트에 이 경로들을 지정하면 됩니다.</p>
 
 <blockquote>
   <p>부스트 라이브러리를 빌드를 하고 나면 어떤 경로를 지정해주면 되는지 친철하게 결과를 터미널 창에 알려줍니다. 그 두 경로를 그대로 프로젝트에 지정하면 됩니다.</p>
 </blockquote>
 
-<p>예를 들어 <code class="highlighter-rouge">~/Desktop/Boost</code> 폴더에 설치가 되었다면 아래와 같은 경로가 나타날 것입니다. (참고로 뒤의 숫자는 버전에 따라 달라집니다.)</p>
+<p>예를 들어 <code class="language-plaintext highlighter-rouge">~/Desktop/Boost</code> 폴더에 설치가 되었다면 아래와 같은 경로가 나타날 것입니다. (참고로 뒤의 숫자는 버전에 따라 달라집니다.)</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/.../Desktop/Boost/boost_1_60_0  
 /Users/.../Desktop/Boost/boost_1_60_0/stage/lib
@@ -58,17 +58,17 @@
 
 <h3 id="부스트-라이브러리-테스트하기">부스트 라이브러리 테스트하기</h3>
 
-<p>아래의 C++ 코드는 <a href="http://www.boost.org">Boost.org</a> 사이트에 있는 <a href="http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html"><code class="highlighter-rouge">adjacent_filtered</code></a> 에 대한 예제 코드입니다. <sup id="fnref:adjacent-filtered" role="doc-noteref"><a href="#fn:adjacent-filtered" class="footnote">7</a></sup></p>
+<p>아래의 C++ 코드는 <a href="http://www.boost.org">Boost.org</a> 사이트에 있는 <a href="http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html"><code class="language-plaintext highlighter-rouge">adjacent_filtered</code></a> 에 대한 예제 코드입니다. <sup id="fnref:adjacent-filtered" role="doc-noteref"><a href="#fn:adjacent-filtered" class="footnote" rel="footnote">7</a></sup></p>
 
 <p>이 코드를 빌드하기 위해서는 당연히 부스트 라이브러리가 필요합니다.</p>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;boost/range/adaptor/adjacent_filtered.hpp&gt;
-#include &lt;boost/range/algorithm/copy.hpp&gt;
-#include &lt;boost/assign.hpp&gt;
-#include &lt;iterator&gt;
-#include &lt;functional&gt;
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;boost/range/adaptor/adjacent_filtered.hpp&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;boost/range/algorithm/copy.hpp&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;boost/assign.hpp&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iterator&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
@@ -130,7 +130,7 @@
       <p>이 정보도 수원에서 C++ 스터디를 운영하시는 <a href="https://www.facebook.com/sim9108?fref=nf">윤훈남</a> 님에게서 설명을 듣고 알게된 것입니다. 윤훈남 님에 대해서는 참고 자료 4번을 보시기 바랍니다. <a href="#fnref:sim9108" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:adjacent-filtered" role="doc-endnote">
-      <p><a href="http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html"><code class="highlighter-rouge">adjacent_filtered</code></a> : 부스트 라이브러리에 추가된 <code class="highlighter-rouge">adjacent_filtered</code>에 대한 예제 코드 링크입니다. <code class="highlighter-rouge">adjacent_filtered</code>는 일정 범위의 요소들에 대해 옆 요소의 값이 같으면 걸러내는 필터 역할을 하는 것 같습니다. <a href="#fnref:adjacent-filtered" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="http://www.boost.org/doc/libs/1_60_0/libs/range/doc/html/range/reference/adaptors/reference/adjacent_filtered.html"><code class="language-plaintext highlighter-rouge">adjacent_filtered</code></a> : 부스트 라이브러리에 추가된 <code class="language-plaintext highlighter-rouge">adjacent_filtered</code>에 대한 예제 코드 링크입니다. <code class="language-plaintext highlighter-rouge">adjacent_filtered</code>는 일정 범위의 요소들에 대해 옆 요소의 값이 같으면 걸러내는 필터 역할을 하는 것 같습니다. <a href="#fnref:adjacent-filtered" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>

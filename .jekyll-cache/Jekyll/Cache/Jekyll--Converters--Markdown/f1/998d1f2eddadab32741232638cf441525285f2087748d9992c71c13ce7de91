@@ -1,4 +1,4 @@
-I"�<p>컴퓨터로 어딘가에 접속하려다 보면 SSH 를 사용해야 하는 경우가 생깁니다. <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH (Secure Shell)</a> <sup id="fnref:wikipedia-ssh" role="doc-noteref"><a href="#fn:wikipedia-ssh" class="footnote">1</a></sup> 는 보안되지 않는 네트웍에서도 네트웍 서비스를 안전하게 운영하기 위한 암호화 기반 네트웍 프로토콜을 말하는데, 가장 대표적인 예는 사용자가 컴퓨터 시스템에 원격으로 로그인하는 것입니다. <sup id="fnref:understanding-ssh" role="doc-noteref"><a href="#fn:understanding-ssh" class="footnote">2</a></sup></p>
+I"�<p>컴퓨터로 어딘가에 접속하려다 보면 SSH 를 사용해야 하는 경우가 생깁니다. <a href="https://en.wikipedia.org/wiki/Secure_Shell">SSH (Secure Shell)</a> <sup id="fnref:wikipedia-ssh" role="doc-noteref"><a href="#fn:wikipedia-ssh" class="footnote" rel="footnote">1</a></sup> 는 보안되지 않는 네트웍에서도 네트웍 서비스를 안전하게 운영하기 위한 암호화 기반 네트웍 프로토콜을 말하는데, 가장 대표적인 예는 사용자가 컴퓨터 시스템에 원격으로 로그인하는 것입니다. <sup id="fnref:understanding-ssh" role="doc-noteref"><a href="#fn:understanding-ssh" class="footnote" rel="footnote">2</a></sup></p>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>

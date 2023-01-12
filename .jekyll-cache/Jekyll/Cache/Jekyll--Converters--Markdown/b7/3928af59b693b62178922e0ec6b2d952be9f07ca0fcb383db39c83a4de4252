@@ -1,6 +1,6 @@
-I"�D<p>리눅스에서 Swift 로 프로그램을 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 <a href="https://www.raywenderlich.com">Ray Wenderlich</a> <sup id="fnref:raywenderlich" role="doc-noteref"><a href="#fn:raywenderlich" class="footnote">1</a></sup> 라는 곳에서 <a href="http://perfect.org/">Perfect</a> <sup id="fnref:perfect" role="doc-noteref"><a href="#fn:perfect" class="footnote">2</a></sup> 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.</p>
+I"]E<p>리눅스에서 Swift 로 프로그램을 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 <a href="https://www.raywenderlich.com">Ray Wenderlich</a> <sup id="fnref:raywenderlich" role="doc-noteref"><a href="#fn:raywenderlich" class="footnote" rel="footnote">1</a></sup> 라는 곳에서 <a href="http://perfect.org/">Perfect</a> <sup id="fnref:perfect" role="doc-noteref"><a href="#fn:perfect" class="footnote" rel="footnote">2</a></sup> 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.</p>
 
-<p>이에 Ray Wenderlich 에서 공개한 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started">Server Side Swift with Perfect: Getting Started</a> 라는 동영상을 보고 실습한 내용을 정리하도록 합니다. <sup id="fnref:ray-perfect" role="doc-noteref"><a href="#fn:ray-perfect" class="footnote">3</a></sup></p>
+<p>이에 Ray Wenderlich 에서 공개한 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started">Server Side Swift with Perfect: Getting Started</a> 라는 동영상을 보고 실습한 내용을 정리하도록 합니다. <sup id="fnref:ray-perfect" role="doc-noteref"><a href="#fn:ray-perfect" class="footnote" rel="footnote">3</a></sup></p>
 
 <p>이를 기초로 리눅스에서 Swift 로 서버를 구현하는 방법을 간단하게나마 살펴볼 수 있을 것입니다.</p>
 
@@ -12,7 +12,7 @@
 
 <p>일단 리눅스에서 필요한 것들을 설치해둬야 합니다. 당연히 가장 첫 순서는 리눅스에 Swift 를 설치하는 것입니다.</p>
 
-<p>Swift 와 기타 필수 파일들을 따로 설치해도 되며, 귀찮은 분은 아래 목록에서 <strong>설치 과정 한 방에 해결하기</strong> 를 통해서 쉘 스크립트로 한 번에 모든 것을 설치할 수도 있습니다. <sup id="fnref:install" role="doc-noteref"><a href="#fn:install" class="footnote">4</a></sup></p>
+<p>Swift 와 기타 필수 파일들을 따로 설치해도 되며, 귀찮은 분은 아래 목록에서 <strong>설치 과정 한 방에 해결하기</strong> 를 통해서 쉘 스크립트로 한 번에 모든 것을 설치할 수도 있습니다. <sup id="fnref:install" role="doc-noteref"><a href="#fn:install" class="footnote" rel="footnote">4</a></sup></p>
 
 <h4 id="swift-설치하기">Swift 설치하기</h4>
 
@@ -29,9 +29,9 @@
 
 <p>Perfect 에서는 위에서 따로따로 설치한 것들을 한 방에 설치하도록 해주는 스크립트를 만들어서 공개했습니다.</p>
 
-<p>GitHub 의 <a href="https://github.com/PerfectlySoft/Perfect-Ubuntu">Install Swift 3.0.2 into an Ubuntu 16.04 System</a> 라는 곳에 가면 우분투에 필요한 것들을 한번에 설치할 수 있는 쉘 스크립트를 제공합니다. <sup id="fnref:perfect-ubuntu" role="doc-noteref"><a href="#fn:perfect-ubuntu" class="footnote">5</a></sup></p>
+<p>GitHub 의 <a href="https://github.com/PerfectlySoft/Perfect-Ubuntu">Install Swift 3.0.2 into an Ubuntu 16.04 System</a> 라는 곳에 가면 우분투에 필요한 것들을 한번에 설치할 수 있는 쉘 스크립트를 제공합니다. <sup id="fnref:perfect-ubuntu" role="doc-noteref"><a href="#fn:perfect-ubuntu" class="footnote" rel="footnote">5</a></sup></p>
 
-<p>여기에는 Perfect 뿐만 아니라 PostgreSQL, MySQL 등도 같이 설치해 줍니다. 일단 저의 경우 이미 설치된 것들이 있어도 큰 문제없이 설치 과정이 진행된 것 같습니다. <sup id="fnref:db" role="doc-noteref"><a href="#fn:db" class="footnote">6</a></sup></p>
+<p>여기에는 Perfect 뿐만 아니라 PostgreSQL, MySQL 등도 같이 설치해 줍니다. 일단 저의 경우 이미 설치된 것들이 있어도 큰 문제없이 설치 과정이 진행된 것 같습니다. <sup id="fnref:db" role="doc-noteref"><a href="#fn:db" class="footnote" rel="footnote">6</a></sup></p>
 
 <p>해당 페이지의 스크립트를 실행하고 나면 마지막에 아래와 같은 메시지가 뜹니다.</p>
 
@@ -46,14 +46,14 @@
 
 <h4 id="hello-perfect-프로젝트-시작하기">Hello-Perfect 프로젝트 시작하기</h4>
 
-<p>다시 Ray 아저씨 설명을 따라서 실습해 봅니다. 프로젝트 파일들을 위치할 폴더로 이동해서 아래의 명령으로 프로젝트를 만듭니다. <sup id="fnref:swift-package" role="doc-noteref"><a href="#fn:swift-package" class="footnote">7</a></sup></p>
+<p>다시 Ray 아저씨 설명을 따라서 실습해 봅니다. 프로젝트 파일들을 위치할 폴더로 이동해서 아래의 명령으로 프로젝트를 만듭니다. <sup id="fnref:swift-package" role="doc-noteref"><a href="#fn:swift-package" class="footnote" rel="footnote">7</a></sup></p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>hello-perfect
 <span class="nv">$ </span><span class="nb">cd </span>hello-perfect
 <span class="nv">$ </span>swift package init <span class="nt">--type</span> executable
 </code></pre></div></div>
 
-<p>위에서 <code class="highlighter-rouge">--type executable</code> 옵션은 프로젝트의 빌드 결과를 실행 파일 형태로 만들도록하는 옵션입니다.</p>
+<p>위에서 <code class="language-plaintext highlighter-rouge">--type executable</code> 옵션은 프로젝트의 빌드 결과를 실행 파일 형태로 만들도록하는 옵션입니다.</p>
 
 <p><a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-getting-started">Server Side Swift with Perfect: Getting Started</a> 동영상을 보다 보면 이 시점에서 빌드를 Xcode 로 하고 있는데, 리눅스에는 Xcode 가 없다고 당황하지 말고 터미널에서 다음과 같은 명령으로 빌드하면 됩니다.</p>
 
@@ -75,7 +75,7 @@ Hello, world!
 
 <h4 id="perfect-패키지-추가하기">Perfect 패키지 추가하기</h4>
 
-<p><strong>package.swift</strong> 파일에 다음과 같이 dependencies 를 추가합니다. <sup id="fnref:editor" role="doc-noteref"><a href="#fn:editor" class="footnote">8</a></sup></p>
+<p><strong>package.swift</strong> 파일에 다음과 같이 dependencies 를 추가합니다. <sup id="fnref:editor" role="doc-noteref"><a href="#fn:editor" class="footnote" rel="footnote">8</a></sup></p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
 
@@ -94,7 +94,7 @@ Hello, world!
 
 <p>그러면 프로젝트에서 의존하고 있는 파일들을 자동으로 내려받게 됩니다. 맥과 리눅스에서는 설치되는 패키지가 조금 다른 것 같습니다만, 물론 큰 상관은 없습니다.</p>
 
-<p>그리고 패키지 설치가 끝나면 다음과 같이 <strong>main.swift</strong> 파일에 3개의 모듈을 <code class="highlighter-rouge">import</code> 합니다. 서버 관련 모듈을 불러오는 것을 알 수 있습니다.</p>
+<p>그리고 패키지 설치가 끝나면 다음과 같이 <strong>main.swift</strong> 파일에 3개의 모듈을 <code class="language-plaintext highlighter-rouge">import</code> 합니다. 서버 관련 모듈을 불러오는 것을 알 수 있습니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">PerfectLib</span>
 <span class="kd">import</span> <span class="kt">PerfectHTTP</span>
@@ -103,7 +103,7 @@ Hello, world!
 <span class="nf">print</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>앞서와 같이 터미널에서 <code class="highlighter-rouge">swift build</code> 를 실행해보면 문제없이 빌드되는 것을 알 수 있습니다.</p>
+<p>앞서와 같이 터미널에서 <code class="language-plaintext highlighter-rouge">swift build</code> 를 실행해보면 문제없이 빌드되는 것을 알 수 있습니다.</p>
 
 <p>이제 실제 서버에서 보여줄 파일과 서버 동작에 필요한 코딩을 추가합니다.</p>
 
@@ -140,7 +140,7 @@ Hello, world!
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>터미널에서 프로젝트를 빌드하고 실행합니다. <sup id="fnref:directory" role="doc-noteref"><a href="#fn:directory" class="footnote">9</a></sup></p>
+<p>터미널에서 프로젝트를 빌드하고 실행합니다. <sup id="fnref:directory" role="doc-noteref"><a href="#fn:directory" class="footnote" rel="footnote">9</a></sup></p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>swift build
 <span class="nv">$ </span>.build/debug/hello-perfect
@@ -148,7 +148,7 @@ Hello, world!
 <span class="o">[</span>INFO] Starting HTTP server on 0.0.0.0:8080
 </code></pre></div></div>
 
-<p>서버가 동작하는 것을 볼 수 있습니다. 이제 다음과 같이 브라우저를 실행해서 <code class="highlighter-rouge">localhost:8080/hello.txt</code> 로 접속하면 아래와 같이 동작하는 것을 볼 수 있습니다.</p>
+<p>서버가 동작하는 것을 볼 수 있습니다. 이제 다음과 같이 브라우저를 실행해서 <code class="language-plaintext highlighter-rouge">localhost:8080/hello.txt</code> 로 접속하면 아래와 같이 동작하는 것을 볼 수 있습니다.</p>
 
 <p><img src="/assets/Perfect/perfect-hello.png" alt="Perfect-Hello" /></p>
 

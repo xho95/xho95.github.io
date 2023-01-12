@@ -1,21 +1,21 @@
-I"2<p>이 글은 아파치 웹 서버를 설정하는 방법에 대한 시리즈 글의 일부입니다. 관련 목차는 아래와 같습니다.</p>
+I"�3<p>이 글은 아파치 웹 서버를 설정하는 방법에 대한 시리즈 글의 일부입니다. 관련 목차는 아래와 같습니다.</p>
 
 <ul>
   <li><a href="/macos/apache/webserver/mod_wsgi/2016/10/02/Apache-WebServer.html">맥에서 아파치 웹 서버 실행하기</a></li>
   <li><a href="">아파치 가상 호스트 설정하기</a></li>
 </ul>
 
-<p>이번 글에서는 아파치 웹서버에서 가상 호스트를 사용하는 방법을 정리합니다. 기본적으로 <a href="https://jason.pureconcepts.net"><strong>Jason McCreary’s  Blog</strong></a> 글 <a href="http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/">Configuring Apache Virtual Hosts on Mac OS X</a> 를 중심으로 다른 자료들을 참고해서 정리했습니다. <sup id="fnref:pureconcepts" role="doc-noteref"><a href="#fn:pureconcepts" class="footnote">1</a></sup>  <sup id="fnref:joont" role="doc-noteref"><a href="#fn:joont" class="footnote">2</a></sup></p>
+<p>이번 글에서는 아파치 웹서버에서 가상 호스트를 사용하는 방법을 정리합니다. 기본적으로 <a href="https://jason.pureconcepts.net"><strong>Jason McCreary’s  Blog</strong></a> 글 <a href="http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/">Configuring Apache Virtual Hosts on Mac OS X</a> 를 중심으로 다른 자료들을 참고해서 정리했습니다. <sup id="fnref:pureconcepts" role="doc-noteref"><a href="#fn:pureconcepts" class="footnote" rel="footnote">1</a></sup>  <sup id="fnref:joont" role="doc-noteref"><a href="#fn:joont" class="footnote" rel="footnote">2</a></sup></p>
 
 <h3 id="가상-호스트virtual-hosts라는-것은-무엇인가">가상 호스트(Virtual Hosts)라는 것은 무엇인가?</h3>
 
-<p><a href="http://httpd.apache.org/docs/current/en/vhosts/">아파치 Virtual Host 공식 문서</a>에 따르면 가상 호스트(Virtual Hosts)라는 것은 한 대의 기기에서 하나 이상의 웹 사이트를 구동 시키기 위한 기술을 말합니다. <sup id="fnref:docs-vhosts" role="doc-noteref"><a href="#fn:docs-vhosts" class="footnote">3</a></sup></p>
+<p><a href="http://httpd.apache.org/docs/current/en/vhosts/">아파치 Virtual Host 공식 문서</a>에 따르면 가상 호스트(Virtual Hosts)라는 것은 한 대의 기기에서 하나 이상의 웹 사이트를 구동 시키기 위한 기술을 말합니다. <sup id="fnref:docs-vhosts" role="doc-noteref"><a href="#fn:docs-vhosts" class="footnote" rel="footnote">3</a></sup></p>
 
-<p>기본적으로, 맥 OS에서 아파치 환경 설정 파일을 구성하면 <strong>/Library/WebServer/Documents</strong> 위치에 있는 서버 파일들은 브라우저에서 <code class="highlighter-rouge">locahost</code>로 접속할 수 있습니다. <sup id="fnref:Apache-WebServer" role="doc-noteref"><a href="#fn:Apache-WebServer" class="footnote">4</a></sup></p>
+<p>기본적으로, 맥 OS에서 아파치 환경 설정 파일을 구성하면 <strong>/Library/WebServer/Documents</strong> 위치에 있는 서버 파일들은 브라우저에서 <code class="language-plaintext highlighter-rouge">locahost</code>로 접속할 수 있습니다. <sup id="fnref:Apache-WebServer" role="doc-noteref"><a href="#fn:Apache-WebServer" class="footnote" rel="footnote">4</a></sup></p>
 
-<p>다만, 이것은 하나의 사이트에 대한 설정입니다. 물론 <code class="highlighter-rouge">userdir</code>을 활성화 한다든지 해서 하위 디렉토리를 만들어서 <code class="highlighter-rouge">localhost/somesite</code> 같이 여러 사이트를 만든 것처럼 흉내낼 수는 있습니다.</p>
+<p>다만, 이것은 하나의 사이트에 대한 설정입니다. 물론 <code class="language-plaintext highlighter-rouge">userdir</code>을 활성화 한다든지 해서 하위 디렉토리를 만들어서 <code class="language-plaintext highlighter-rouge">localhost/somesite</code> 같이 여러 사이트를 만든 것처럼 흉내낼 수는 있습니다.</p>
 
-<p>하지만 이것은 어딜 봐도 그다지 좋아 보이진 않습니다. 특히 여러 사이트를 운영한다면 하위 디렉토리가 아니라 <code class="highlighter-rouge">somesite.local</code> 처럼 독립된 주소로 접근하고 싶을 것입니다.</p>
+<p>하지만 이것은 어딜 봐도 그다지 좋아 보이진 않습니다. 특히 여러 사이트를 운영한다면 하위 디렉토리가 아니라 <code class="language-plaintext highlighter-rouge">somesite.local</code> 처럼 독립된 주소로 접근하고 싶을 것입니다.</p>
 
 <p>바로 이럴 때 필요한 것이 가상 호스트입니다. 가상 호스트를 설정하면 여러 사이트 주소를 지원할 수 있기 때문입니다.</p>
 
@@ -25,13 +25,13 @@
 
 <p>아파치 환경 설정 파일을 편집합니다. 아파치 환경 설정 파일은 <strong>/private/etc/apache2/</strong> 폴더의 <strong>httpd.conf</strong>입니다. 편집은 아래와 같이 관리자 권한으로 할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /private/etc/apache2/
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /private/etc/apache2/
 $ sudo vi httpd.conf
 </code></pre></div></div>
 
-<p><strong>httpd.conf</strong> 파일에서 아래와 같이 <code class="highlighter-rouge">Include /private/etc/apache2/extra/httpd-vhosts.conf</code> 부분의 주석을 해제합니다. <sup id="fnref:difference" role="doc-noteref"><a href="#fn:difference" class="footnote">5</a></sup></p>
+<p><strong>httpd.conf</strong> 파일에서 아래와 같이 <code class="language-plaintext highlighter-rouge">Include /private/etc/apache2/extra/httpd-vhosts.conf</code> 부분의 주석을 해제합니다. <sup id="fnref:difference" role="doc-noteref"><a href="#fn:difference" class="footnote" rel="footnote">5</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 # Virtual hosts
 Include /private/etc/apache2/extra/httpd-vhosts.conf
 ...
@@ -47,13 +47,13 @@ Include /private/etc/apache2/extra/httpd-vhosts.conf
 
 <p><strong>/private/etc/apache2/extra/</strong> 폴더에 있는 <strong>httpd-vhosts.conf</strong> 파일에서 가상 호스트에 대한 설정을 하도록 합니다. 마찬가지로 아래와 같이 편집할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /private/etc/apache2/extra
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /private/etc/apache2/extra
 $ sudo vi httpd-vhosts.conf
 </code></pre></div></div>
 
 <p><strong>httpd-vhosts.conf</strong> 파일에 다음과 같은 내용을 추가해 줍니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
     DocumentRoot "/Users/username/user-sites"
     ServerName www.user-domain.com
     ErrorLog "/private/var/log/apache2/www.user-domain.com-error_log"
@@ -67,9 +67,9 @@ $ sudo vi httpd-vhosts.conf
 &lt;/VirtualHost&gt;
 </code></pre></div></div>
 
-<p>위와 같이 하면 가상 호스트 설정에 의해서 (로컬 개발환경에서?) 웹 사이트를 <code class="highlighter-rouge">http://www.user-domain.com</code>과 같이 접근할 수 있습니다.</p>
+<p>위와 같이 하면 가상 호스트 설정에 의해서 (로컬 개발환경에서?) 웹 사이트를 <code class="language-plaintext highlighter-rouge">http://www.user-domain.com</code>과 같이 접근할 수 있습니다.</p>
 
-<p><code class="highlighter-rouge">Require all granted</code> 설정은 Apache 2.4 환경에 맞추기 위한 것으로 OS X 요세미티 이후 버전에 해당합니다. 요세미티 이전 버전이면 아파치 2.2 설정에 맞춰야 합니다. <sup id="fnref:docs-upgrading" role="doc-noteref"><a href="#fn:docs-upgrading" class="footnote">6</a></sup></p>
+<p><code class="language-plaintext highlighter-rouge">Require all granted</code> 설정은 Apache 2.4 환경에 맞추기 위한 것으로 OS X 요세미티 이후 버전에 해당합니다. 요세미티 이전 버전이면 아파치 2.2 설정에 맞춰야 합니다. <sup id="fnref:docs-upgrading" role="doc-noteref"><a href="#fn:docs-upgrading" class="footnote" rel="footnote">6</a></sup></p>
 
 <h4 id="hosts-파일-수정하기">hosts 파일 수정하기</h4>
 
@@ -77,22 +77,22 @@ $ sudo vi httpd-vhosts.conf
 
 <p><strong>/private/etc/</strong> 폴더의 <strong>hosts</strong> 파일을 아래와 같이 편집하면 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /private/etc/
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /private/etc/
 $ sudo vi hosts
 </code></pre></div></div>
 
 <p><strong>hosts</strong> 파일의 맨 밑에 아래와 같은 내용을 붙여줍니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1 www.user-domain.com
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1 www.user-domain.com
 </code></pre></div></div>
 
-<p>이제 아파치 서버를 재시작하면 <code class="highlighter-rouge">www.user-domain.com</code>으로 로컬 호스트에 접근할 수 있습니다.</p>
+<p>이제 아파치 서버를 재시작하면 <code class="language-plaintext highlighter-rouge">www.user-domain.com</code>으로 로컬 호스트에 접근할 수 있습니다.</p>
 
 <h4 id="접근-권한-문제-해결하기">접근 권한 문제 해결하기</h4>
 
 <p>하지만 실행하면 아래와 같이 접근 거부(403 Forbidden) 메시지가 뜰 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Forbidden
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Forbidden
 
 You don't have permission to access / on this server.
 </code></pre></div></div>
@@ -101,13 +101,13 @@ You don't have permission to access / on this server.
 
 <ol>
   <li>
-    <p><a href="http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/">Configuring Apache Virtual Hosts on Mac OS X</a> 에서는 해당 디렉토리의 접근권한을 755로 변경하는 방법을 택했습니다.<sup id="fnref:uci" role="doc-noteref"><a href="#fn:uci" class="footnote">7</a></sup> 다만 이 방법은 유일한 방법도 아니고, 가장 좋은 방법도 아니며, 단지 가장 쉬운 방법이라고 합니다.</p>
+    <p><a href="http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/">Configuring Apache Virtual Hosts on Mac OS X</a> 에서는 해당 디렉토리의 접근권한을 755로 변경하는 방법을 택했습니다.<sup id="fnref:uci" role="doc-noteref"><a href="#fn:uci" class="footnote" rel="footnote">7</a></sup> 다만 이 방법은 유일한 방법도 아니고, 가장 좋은 방법도 아니며, 단지 가장 쉬운 방법이라고 합니다.</p>
   </li>
   <li>
-    <p><a href="http://joont.tistory.com/46">아파치 VIRTUALHOST 설정</a> 에서는 이 문제를 <strong>httpd.conf</strong> 파일에 <code class="highlighter-rouge">&lt;Directory&gt;</code> 태그를 추가해서 해결했습니다.</p>
+    <p><a href="http://joont.tistory.com/46">아파치 VIRTUALHOST 설정</a> 에서는 이 문제를 <strong>httpd.conf</strong> 파일에 <code class="language-plaintext highlighter-rouge">&lt;Directory&gt;</code> 태그를 추가해서 해결했습니다.</p>
   </li>
   <li>
-    <p>저는 <strong>httpd-vhosts.conf</strong> 파일의 <code class="highlighter-rouge">&lt;Directory&gt;</code> 태그에서 접근 권한 설정을 변경해서 해결하는 방법을 택했습니다.</p>
+    <p>저는 <strong>httpd-vhosts.conf</strong> 파일의 <code class="language-plaintext highlighter-rouge">&lt;Directory&gt;</code> 태그에서 접근 권한 설정을 변경해서 해결하는 방법을 택했습니다.</p>
   </li>
 </ol>
 
@@ -123,7 +123,7 @@ You don't have permission to access / on this server.
 
 <p>일단 참고 자료마다 설정하는 값들이 달라서 최선의 설정 방법이 무엇인지는 아직 모릅니다. 아파치 버전 문제에 따른 설정 값 변경도 있는 것 같고, 서버를 설정하는 사람마다 선호하는 방법이 조금씩 다른 것 같습니다.</p>
 
-<p>참고 자료처럼 macOS Sierra에 대한 새로운 자료들도 계속 나오고 있는 것 같습니다. <sup id="fnref:sierra-apache" role="doc-noteref"><a href="#fn:sierra-apache" class="footnote">8</a></sup></p>
+<p>참고 자료처럼 macOS Sierra에 대한 새로운 자료들도 계속 나오고 있는 것 같습니다. <sup id="fnref:sierra-apache" role="doc-noteref"><a href="#fn:sierra-apache" class="footnote" rel="footnote">8</a></sup></p>
 
 <p>이 부분은 새롭게 알게 되는  내용이 있으면 정리해서 올릴 예정입니다.</p>
 

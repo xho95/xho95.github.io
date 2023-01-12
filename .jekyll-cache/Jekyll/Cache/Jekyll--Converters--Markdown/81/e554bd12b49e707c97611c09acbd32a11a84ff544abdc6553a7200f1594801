@@ -1,12 +1,12 @@
-I"�R<p>Ray Wenderlich 사이트에서 Server Side Swift with Perfect 시리즈 동영상으로 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-introduction-to-perfect-assistant">Perfect Assistant 소개하기 (Introduction to Perfect Assistant)</a> 라는 영상과 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-deploying-with-perfect-assistant">Perfect Assistant 로 배포하기 (Deploying with Perfect Assistant)</a> 라는 영상을 추가했습니다.</p>
+I"�T<p>Ray Wenderlich 사이트에서 Server Side Swift with Perfect 시리즈 동영상으로 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-introduction-to-perfect-assistant">Perfect Assistant 소개하기 (Introduction to Perfect Assistant)</a> 라는 영상과 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-deploying-with-perfect-assistant">Perfect Assistant 로 배포하기 (Deploying with Perfect Assistant)</a> 라는 영상을 추가했습니다.</p>
 
-<p>이 중에서 이번에는 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-deploying-with-perfect-assistant">Perfect Assistant 로 배포하기 (Deploying with Perfect Assistant)</a> 에 대한 내용을 정리합니다. <sup id="fnref:introduction" role="doc-noteref"><a href="#fn:introduction" class="footnote">1</a></sup></p>
+<p>이 중에서 이번에는 <a href="https://videos.raywenderlich.com/screencasts/server-side-swift-with-perfect-deploying-with-perfect-assistant">Perfect Assistant 로 배포하기 (Deploying with Perfect Assistant)</a> 에 대한 내용을 정리합니다. <sup id="fnref:introduction" role="doc-noteref"><a href="#fn:introduction" class="footnote" rel="footnote">1</a></sup></p>
 
 <h3 id="들어가며">들어가며</h3>
 
 <p><a href="https://perfect.org/en/assistant/">Perfect Assistant</a> 는 명령줄로 수행하는 작업들을 명령줄을 사용하지 않고도 할 수 있도록 도와주는 도구입니다. 프로젝트를 생성하고 의존성 파일을 작성하는 등의 동작을 버튼 클릭으로 간단하게 수행해 줍니다. 말 그대로 도우미 역할을 수행합니다.</p>
 
-<p>설치하고 나서 실행하면 아래와 같은 화면이 나타납니다. <sup id="fnref:install" role="doc-noteref"><a href="#fn:install" class="footnote">2</a></sup></p>
+<p>설치하고 나서 실행하면 아래와 같은 화면이 나타납니다. <sup id="fnref:install" role="doc-noteref"><a href="#fn:install" class="footnote" rel="footnote">2</a></sup></p>
 
 <p><img src="/assets/Perfect/perfect-assistant-aws.jpeg" alt="Perfect Assistant" /></p>
 
@@ -16,32 +16,32 @@
 
 <h4 id="aws-cli-설치하기">AWS CLI 설치하기</h4>
 
-<p>Perfect Assistant 로 AWS 에 접속하려면 <code class="highlighter-rouge">awscli</code> <sup id="fnref:aws-cli" role="doc-noteref"><a href="#fn:aws-cli" class="footnote">3</a></sup> 를 설치해야 합니다. <sup id="fnref:assistant-aws" role="doc-noteref"><a href="#fn:assistant-aws" class="footnote">4</a></sup> 맥에서는 다음과 같이 터미널에서 Homebrew 를 사용해서 설치할 수 있습니다.</p>
+<p>Perfect Assistant 로 AWS 에 접속하려면 <code class="language-plaintext highlighter-rouge">awscli</code> <sup id="fnref:aws-cli" role="doc-noteref"><a href="#fn:aws-cli" class="footnote" rel="footnote">3</a></sup> 를 설치해야 합니다. <sup id="fnref:assistant-aws" role="doc-noteref"><a href="#fn:assistant-aws" class="footnote" rel="footnote">4</a></sup> 맥에서는 다음과 같이 터미널에서 Homebrew 를 사용해서 설치할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install awscli
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install awscli
 </code></pre></div></div>
 
 <p>각 운영 체제 별로 설치하는 방법 등에 대한 정보는 <a href="https://aws.amazon.com/ko/cli/">AWS 명령줄 인터페이스</a> 를 참고하도록 합니다.</p>
 
 <h4 id="사용자-만들기">사용자 만들기</h4>
 
-<p>이제 서버에 배포하기 위해 일종의 사이트 관리자 계정을 만듭니다. <strong>Services &gt; Security, Identity &amp; Compliance &gt; IAM</strong> <sup id="fnref:iam" role="doc-noteref"><a href="#fn:iam" class="footnote">5</a></sup> 메뉴를 선택하고 <strong>Users &gt; Add user</strong> 를 선택해서 사용자를 만듭니다. 사용자 이름은 perfect 로 하고 접근 권한은 Programmatic access 를 체크한 다음 Next: Permissions 를 누릅니다.</p>
+<p>이제 서버에 배포하기 위해 일종의 사이트 관리자 계정을 만듭니다. <strong>Services &gt; Security, Identity &amp; Compliance &gt; IAM</strong> <sup id="fnref:iam" role="doc-noteref"><a href="#fn:iam" class="footnote" rel="footnote">5</a></sup> 메뉴를 선택하고 <strong>Users &gt; Add user</strong> 를 선택해서 사용자를 만듭니다. 사용자 이름은 perfect 로 하고 접근 권한은 Programmatic access 를 체크한 다음 Next: Permissions 를 누릅니다.</p>
 
 <p>이제 사용자 그룹도 만듭니다. 여기서 EC2 에 대한 접근 권한을 부여합니다. <strong>Create group</strong> 을 선택한 다음 Group name 은 ec2-full-access 로 하고 권한은 검색창에 EC2 를 입력해서 맨 위의 AmazonEC2FullAccess 를 선택합니다. 맨 밑의 <strong>Create group</strong> 을 눌러서 그룹을 생성합니다.</p>
 
 <p><strong>Next: Review</strong> 를 누른 후 다음 화면에서 <strong>Create user</strong> 를 누릅니다.</p>
 
-<p>마지막 단계에서 Access Key 와 Secret Access Key 를 만듭니다. 이 값들을 복사해서 안전한 곳에 옮겨 둡니다. 이 값들은 <code class="highlighter-rouge">aws configure</code> 에서 사용합니다.</p>
+<p>마지막 단계에서 Access Key 와 Secret Access Key 를 만듭니다. 이 값들을 복사해서 안전한 곳에 옮겨 둡니다. 이 값들은 <code class="language-plaintext highlighter-rouge">aws configure</code> 에서 사용합니다.</p>
 
 <h4 id="터미널에서-aws-설정하기">터미널에서 AWS 설정하기</h4>
 
 <p>다시 터미널로 돌아와서 AWS CLI 를 사용하여 AWS 에 대한 환경 설정을 해줍니다.</p>
 
-<p>아래와 같이 <code class="highlighter-rouge">aws configure</code> 명령을 실행하고 앞서 저장한 Access Key 와 Secret Access Key 를 등록합니다.</p>
+<p>아래와 같이 <code class="language-plaintext highlighter-rouge">aws configure</code> 명령을 실행하고 앞서 저장한 Access Key 와 Secret Access Key 를 등록합니다.</p>
 
-<p>‘Default region name’ 은 Seoul 리전을 선택할 경우 <code class="highlighter-rouge">ap-northeast-2</code> 라고 입력하고, ‘Default output format’ 은 json 으로 입력합니다.</p>
+<p>‘Default region name’ 은 Seoul 리전을 선택할 경우 <code class="language-plaintext highlighter-rouge">ap-northeast-2</code> 라고 입력하고, ‘Default output format’ 은 json 으로 입력합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws configure
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws configure
 
 AWS Access Key ID [None]:
 AWS Secret Access Key [None]:
@@ -49,11 +49,11 @@ Default region name [None]:  ap-northeast-2
 Default output format [None]: json
 </code></pre></div></div>
 
-<p>위에서 Default region name 은 주의해서 입력해야 합니다. 입력 값은 AWS 홈페이지의 <a href="http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">리전 및 가용 영역</a> <sup id="fnref:aws-regions" role="doc-noteref"><a href="#fn:aws-regions" class="footnote">6</a></sup> 글을 참고해서 입력하면 됩니다.</p>
+<p>위에서 Default region name 은 주의해서 입력해야 합니다. 입력 값은 AWS 홈페이지의 <a href="http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">리전 및 가용 영역</a> <sup id="fnref:aws-regions" role="doc-noteref"><a href="#fn:aws-regions" class="footnote" rel="footnote">6</a></sup> 글을 참고해서 입력하면 됩니다.</p>
 
-<p>설정이 제대로 됐는지 테스트하려면 다음과 같은 명령을 입력합니다. <sup id="fnref:reservations" role="doc-noteref"><a href="#fn:reservations" class="footnote">7</a></sup></p>
+<p>설정이 제대로 됐는지 테스트하려면 다음과 같은 명령을 입력합니다. <sup id="fnref:reservations" role="doc-noteref"><a href="#fn:reservations" class="footnote" rel="footnote">7</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws ec2 describe-instances
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws ec2 describe-instances
 
 {
     "Reservations": []
@@ -62,9 +62,9 @@ Default output format [None]: json
 
 <h4 id="ssh-공개키-만들고-등록하기">SSH 공개키 만들고 등록하기</h4>
 
-<p>이제 사용중인 컴퓨터에서 AWS 에 로그인할 때 본인임을 인증하기 위한 SSH 키를 만듭니다.  아래와 같은 명령을 사용해서 키를 만들 수 있습니다. <sup id="fnref:xho95-ssh" role="doc-noteref"><a href="#fn:xho95-ssh" class="footnote">8</a></sup></p>
+<p>이제 사용중인 컴퓨터에서 AWS 에 로그인할 때 본인임을 인증하기 위한 SSH 키를 만듭니다.  아래와 같은 명령을 사용해서 키를 만들 수 있습니다. <sup id="fnref:xho95-ssh" role="doc-noteref"><a href="#fn:xho95-ssh" class="footnote" rel="footnote">8</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-keygen -t rsa -C "perfect-key" -f ~/.ssh/perfect-key
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-keygen -t rsa -C "perfect-key" -f ~/.ssh/perfect-key
 
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase):
@@ -73,7 +73,7 @@ Enter same passphrase again:
 
 <p>생성한 SSH 키를 다음과 같은 AWS CLI 명령을 사용하여 서버에 등록합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws ec2 import-key-pair --key-name "perfect-key" --public-key-material file://$HOME/.ssh/perfect-key.pub
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws ec2 import-key-pair --key-name "perfect-key" --public-key-material file://$HOME/.ssh/perfect-key.pub
 
 {
     "KeyName": "perfect-key",
@@ -103,7 +103,7 @@ Enter same passphrase again:
 
 <p><img src="/assets/Perfect/perfect-ec2-credentials.jpeg" alt="Perfect EC2 Credentials" /></p>
 
-<p>대화 상자에서 <strong>Create</strong> 를 눌러서 새로 등록합니다. ‘CREDENTIALS NAME’은 perfect 로 지정하고 앞서 저장한 Access Key 와 Secret Access Key 를 넣어줍니다. ‘DEFAULT REGION’ 은 앞서 지정한 ‘Default region name’ 와 같은 값을 선택합니다. 여기서는 <code class="highlighter-rouge">ap-northeast-2</code> 를 선택합니다.</p>
+<p>대화 상자에서 <strong>Create</strong> 를 눌러서 새로 등록합니다. ‘CREDENTIALS NAME’은 perfect 로 지정하고 앞서 저장한 Access Key 와 Secret Access Key 를 넣어줍니다. ‘DEFAULT REGION’ 은 앞서 지정한 ‘Default region name’ 와 같은 값을 선택합니다. 여기서는 <code class="language-plaintext highlighter-rouge">ap-northeast-2</code> 를 선택합니다.</p>
 
 <h4 id="프로젝트-불러오기">프로젝트 불러오기</h4>
 
@@ -119,11 +119,11 @@ Enter same passphrase again:
 
 <p>이 부분은 건너뛰어도 되긴 하지만 잘 작동하는지 확인하기 위해 실습을 해 봅니다. Projects 에서 불러온 프로젝트를 선택하고 <strong>BUILD &gt; Local</strong> 을 눌러서 빌드합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting macOS build of /.../Hello-Perfect
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting macOS build of /.../Hello-Perfect
 Success.
 </code></pre></div></div>
 
-<p>위와 같이 빌드가 끝나면 <strong>RUN &gt; Local Exe</strong> 를 눌러서 로컬에서 테스트를 할 수 있습니다. 서버가 실행되면 브라우저에서 <code class="highlighter-rouge">localhost:8080</code> 으로 접속해서 결과를 확인할 수 있습니다.</p>
+<p>위와 같이 빌드가 끝나면 <strong>RUN &gt; Local Exe</strong> 를 눌러서 로컬에서 테스트를 할 수 있습니다. 서버가 실행되면 브라우저에서 <code class="language-plaintext highlighter-rouge">localhost:8080</code> 으로 접속해서 결과를 확인할 수 있습니다.</p>
 
 <p><img src="/assets/Perfect/perfect-assistant-local-test.jpeg" alt="Perfect Assistant Local Test" /></p>
 
@@ -137,7 +137,7 @@ Success.
 
 <p><img src="/assets/Perfect/perfect-assistant-deploy.jpeg" alt="Perfect Assistant Deploy" /></p>
 
-<p>그러면 위와 같은 대화 상자가 나타나는데 아직 배포 설정이 갖춰진 것이 없으므로 <strong>Create New…</strong> 버튼을 눌러서 새로 배포 환경을 등록합니다. <sup id="fnref:deploy-button" role="doc-noteref"><a href="#fn:deploy-button" class="footnote">9</a></sup> 이후의 화면에서는 <strong>AWS</strong> 를 선택하고 <strong>Next</strong> 를 누릅니다. 그러면 아래와 같은 대화 상자가 나타납니다.</p>
+<p>그러면 위와 같은 대화 상자가 나타나는데 아직 배포 설정이 갖춰진 것이 없으므로 <strong>Create New…</strong> 버튼을 눌러서 새로 배포 환경을 등록합니다. <sup id="fnref:deploy-button" role="doc-noteref"><a href="#fn:deploy-button" class="footnote" rel="footnote">9</a></sup> 이후의 화면에서는 <strong>AWS</strong> 를 선택하고 <strong>Next</strong> 를 누릅니다. 그러면 아래와 같은 대화 상자가 나타납니다.</p>
 
 <p><img src="/assets/Perfect/perfect-aws-deployment.jpeg" alt="Perfect AWS Deployment" /></p>
 
@@ -147,7 +147,7 @@ Success.
 
 <p>‘SSH KEY’ 는 <strong>Choose…</strong> 버튼을 눌러서 perfect-key 가 저장된 위치를 찾은 후 private 키를 선택해 줍니다.</p>
 
-<p>‘AVAILABLE INSTANCES’ 에서는 <strong>Add..</strong> 를 눌러 줍니다. 그러면 새로운 대화 상자가 나타나는데 아래 그림을 참고해서 지정해 줍니다. <sup id="fnref:ap-northeast-2" role="doc-noteref"><a href="#fn:ap-northeast-2" class="footnote">10</a></sup></p>
+<p>‘AVAILABLE INSTANCES’ 에서는 <strong>Add..</strong> 를 눌러 줍니다. 그러면 새로운 대화 상자가 나타나는데 아래 그림을 참고해서 지정해 줍니다. <sup id="fnref:ap-northeast-2" role="doc-noteref"><a href="#fn:ap-northeast-2" class="footnote" rel="footnote">10</a></sup></p>
 
 <p><img src="/assets/Perfect/perfect-available-instance.jpeg" alt="Perfect Available Instance" /></p>
 
@@ -163,7 +163,7 @@ Success.
 
 <p>이제 대화 상자에서 Deploy 버튼을 누릅니다. 그러면 실제 배포 작업이 이루어집니다.</p>
 
-<p>그러면 콘솔에 배포되고 있는 상황이 나타납니다. 이 과정은 생각보다 시간이 걸리는데 인내심을 갖고 기다리다보면 Success 가 뜨는데 그러면 배포가 된 것입니다. <sup id="fnref:deploy-process" role="doc-noteref"><a href="#fn:deploy-process" class="footnote">11</a></sup></p>
+<p>그러면 콘솔에 배포되고 있는 상황이 나타납니다. 이 과정은 생각보다 시간이 걸리는데 인내심을 갖고 기다리다보면 Success 가 뜨는데 그러면 배포가 된 것입니다. <sup id="fnref:deploy-process" role="doc-noteref"><a href="#fn:deploy-process" class="footnote" rel="footnote">11</a></sup></p>
 
 <p>이제 EC2 Dashboard 에서 실행중인 인스턴스의 <strong>Public DNS</strong> 를 사용해서 접속해보면 아래와 같이  AWS 에서 서버가 동작하는 것을 확인할 수 있습니다.</p>
 
@@ -175,12 +175,12 @@ Success.
 
 <p>필요하다면 SSH 키를 사용하여 AWS 에 직접 접속할 수 있습니다. 서버 환경을 설정하거나 직접 배포하기를 원하는 경우에 사용할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i ~/.ssh/perfect-key ubuntu@ec2-13-124-50-118.ap-northeast-2.compute.amazonaws.com
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i ~/.ssh/perfect-key ubuntu@ec2-13-124-50-118.ap-northeast-2.compute.amazonaws.com
 </code></pre></div></div>
 
 <p>위와 같이 하면 콘솔 프롬프터가 AWS 에 있는 ubuntu 로 바뀝니다. 아래와 같이 명령을 입력하면 AWS 에 배포된 내용들을 볼 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /
 $ ls
 
 bin             lib               proc   swift-3.0.2-RELEASE-ubuntu16.04
@@ -194,7 +194,7 @@ initrd.img.old  perfect-deployed  swift  vmlinuz.old
 
 <p>AWS 에서 로그아웃하려면 exit 명령을 사용합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ exit
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ exit
 
 logout
 Connection to ec2-13-124-50-118.ap-northeast-2.compute.amazonaws.com closed.
@@ -226,16 +226,16 @@ Connection to ec2-13-124-50-118.ap-northeast-2.compute.amazonaws.com closed.
       <p>다운로드는 <a href="https://perfect.org/en/assistant/">The Perfect Assistant</a> 에서 할 수 있습니다. 아직은 macOS 에만 설치가 가능한 것 같습니다. 따라서 이번 실습은 리눅스가 아닌 맥에서 수행하도록 합니다. <a href="#fnref:install" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:aws-cli" role="doc-endnote">
-      <p><code class="highlighter-rouge">awscli</code> 에 대해서는 <a href="https://aws.amazon.com/ko/blogs/korea/tips-aws-cli/">DevOps를 위한 AWS CLI 활용팁</a> 이라는 글을 읽어볼 만 합니다. <a href="#fnref:aws-cli" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><code class="language-plaintext highlighter-rouge">awscli</code> 에 대해서는 <a href="https://aws.amazon.com/ko/blogs/korea/tips-aws-cli/">DevOps를 위한 AWS CLI 활용팁</a> 이라는 글을 읽어볼 만 합니다. <a href="#fnref:aws-cli" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:assistant-aws" role="doc-endnote">
-      <p>AWS 에 배포하기 위해 <code class="highlighter-rouge">awscli</code> 를 설치해야 하는 것은 아니지만 <code class="highlighter-rouge">awscli</code> 를 설치해야 Perfect Assistant 에서 AWS 를 인식해서 버튼이 활성화되는 것 같습니다. <a href="#fnref:assistant-aws" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>AWS 에 배포하기 위해 <code class="language-plaintext highlighter-rouge">awscli</code> 를 설치해야 하는 것은 아니지만 <code class="language-plaintext highlighter-rouge">awscli</code> 를 설치해야 Perfect Assistant 에서 AWS 를 인식해서 버튼이 활성화되는 것 같습니다. <a href="#fnref:assistant-aws" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:iam" role="doc-endnote">
       <p>IAM 은 Identity and Access Management 의 약자로 사용자를 등록하고 접근 권한을 지정하는 곳입니다. <a href="#fnref:iam" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:aws-regions" role="doc-endnote">
-      <p>AWS 의 <a href="http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">리전 및 가용 영역</a> 글에서 <strong>사용 가능한 리전</strong> 부분을 보면 각 리전을 선택하기 위한 코드가 표로 정리되어 있습니다. <strong>아시아 태평양(서울)</strong> 을 선택하려면 <code class="highlighter-rouge">ap-northeast-2</code> 를 입력하면 됨을 알 수 있습니다. <a href="#fnref:aws-regions" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>AWS 의 <a href="http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">리전 및 가용 영역</a> 글에서 <strong>사용 가능한 리전</strong> 부분을 보면 각 리전을 선택하기 위한 코드가 표로 정리되어 있습니다. <strong>아시아 태평양(서울)</strong> 을 선택하려면 <code class="language-plaintext highlighter-rouge">ap-northeast-2</code> 를 입력하면 됨을 알 수 있습니다. <a href="#fnref:aws-regions" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:reservations" role="doc-endnote">
       <p>실습을 하고나서 인스턴스를 삭제하면 아무것도 나타나지 않는 것 같습니다. 이부분은 저도 AWS 에 대해서 모르는 것이 많아서 정확한 내용은 아직 잘 모르겠습니다. <a href="#fnref:reservations" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -247,7 +247,7 @@ Connection to ec2-13-124-50-118.ap-northeast-2.compute.amazonaws.com closed.
       <p>여기서는 Deploy 버튼이 의미가 없고 실제로는 나중에 환경 설정이 끝난 후에 Deploy 버튼을 사용하게 됩니다. 이 부분은 UI 가 조금 헷갈리게 설계된 것 같습니다. <a href="#fnref:deploy-button" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:ap-northeast-2" role="doc-endnote">
-      <p>이를 위해서 이전에 region 을 잘 맞춰뒀어야 합니다. 앞서 Default region name 으로 설정한 곳과 같은 곳을 선택해야하며 같은 곳에 SSH 키를 업로드 해야 합니다. 저의 경우 region 은 Seoul 에 맞추기 위해 모두 <code class="highlighter-rouge">ap-northeast-2</code> 로 지정했습니다. <a href="#fnref:ap-northeast-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>이를 위해서 이전에 region 을 잘 맞춰뒀어야 합니다. 앞서 Default region name 으로 설정한 곳과 같은 곳을 선택해야하며 같은 곳에 SSH 키를 업로드 해야 합니다. 저의 경우 region 은 Seoul 에 맞추기 위해 모두 <code class="language-plaintext highlighter-rouge">ap-northeast-2</code> 로 지정했습니다. <a href="#fnref:ap-northeast-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:deploy-process" role="doc-endnote">
       <p>이 과정에서 콘솔을 보면 뭔가 내부적으로는 도커를 사용하고 있는 것 같습니다. 저의 경우 AWS 로 배포하기 전에 도커가 설치되어 있는 환경이었는데, 만약 도커가 설치되어 있지 않았다면 어떻게 진행되는지는 잘 모르겠습니다. <a href="#fnref:deploy-process" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

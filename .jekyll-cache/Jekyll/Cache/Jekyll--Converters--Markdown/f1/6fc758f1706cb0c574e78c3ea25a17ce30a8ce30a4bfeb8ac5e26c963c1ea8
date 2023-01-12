@@ -1,4 +1,4 @@
-I"<(<p>Swift로 웹 관련 프로그래밍을 하다보면 url에서 특정 부분을 추출해야할 경우가 생깁니다.</p>
+I")<p>Swift로 웹 관련 프로그래밍을 하다보면 url에서 특정 부분을 추출해야할 경우가 생깁니다.</p>
 
 <p>예를 들어서, 아래와 같은 웹페이지 주소가 있다고 가정합시다.</p>
 
@@ -7,11 +7,11 @@
 
 <p>위의 주소에서 param1에 해당하는 값인 value1 만을 뽑아내야 하는 경우가 있을 수 있습니다.</p>
 
-<p>이 경우에 Foundation에 있는 NSURLComponents 클래스와 이 클래스의 속성들을 사용하면 편리합니다. NSURLComponents 클래스를 사용하면 따로 NSURL을 파싱하는 다른 외부 라이브러리를 사용하지 않아도 Swift에서 url을 쉽게 다룰 수 있습니다.<sup id="fnref:Alamofire" role="doc-noteref"><a href="#fn:Alamofire" class="footnote">1</a></sup></p>
+<p>이 경우에 Foundation에 있는 NSURLComponents 클래스와 이 클래스의 속성들을 사용하면 편리합니다. NSURLComponents 클래스를 사용하면 따로 NSURL을 파싱하는 다른 외부 라이브러리를 사용하지 않아도 Swift에서 url을 쉽게 다룰 수 있습니다.<sup id="fnref:Alamofire" role="doc-noteref"><a href="#fn:Alamofire" class="footnote" rel="footnote">1</a></sup></p>
 
 <h3 id="nsurlcomponents-클래스"><strong>NSURLComponents</strong> 클래스</h3>
 
-<p>NSURLComponents 클래스는 <code class="highlighter-rouge">RFC 3986</code>에 기초하여 URL을 파싱하고, 구성 요소들로 URL을 만드는 용도로 설계된 클래스입니다.<sup id="fnref:NSURLComponents" role="doc-noteref"><a href="#fn:NSURLComponents" class="footnote">2</a></sup></p>
+<p>NSURLComponents 클래스는 <code class="language-plaintext highlighter-rouge">RFC 3986</code>에 기초하여 URL을 파싱하고, 구성 요소들로 URL을 만드는 용도로 설계된 클래스입니다.<sup id="fnref:NSURLComponents" role="doc-noteref"><a href="#fn:NSURLComponents" class="footnote" rel="footnote">2</a></sup></p>
 
 <p>애플의 문서에 따르면 NSURL은 예전 RFC를 따르기 때문에 NSURLComponents와는 동작방식이 조금 다르다고 합니다. 하지만, NSURL과 NSURLComponents는 서로 쉽게 변환할 수 있습니다. 보다 자세한 내용은 애플의 <a href="https://developer.apple.com/library/ios/documentation/Foundation/Reference/NSURLComponents_class/">NSURLComponents Class Reference</a> 를 참고하면 됩니다.</p>
 
@@ -21,12 +21,12 @@
 이 queryItems 속성을 사용하면 url에서 원하는 부분을 name을 키(key)로 해서 찾을 수 있습니다.</p>
 
 <blockquote>
-  <p>queryItems가 아니라 query를 사용해서 파싱하는 방법도 있는 것 같습니다만,<sup id="fnref:NSURL_query" role="doc-noteref"><a href="#fn:NSURL_query" class="footnote">3</a></sup>, <sup id="fnref:NSURL_query_Parsing" role="doc-noteref"><a href="#fn:NSURL_query_Parsing" class="footnote">4</a></sup> queryItems를 사용하는 것이 더 편한 것 같습니다.<sup id="fnref:NSURL_Parsing" role="doc-noteref"><a href="#fn:NSURL_Parsing" class="footnote">5</a></sup></p>
+  <p>queryItems가 아니라 query를 사용해서 파싱하는 방법도 있는 것 같습니다만,<sup id="fnref:NSURL_query" role="doc-noteref"><a href="#fn:NSURL_query" class="footnote" rel="footnote">3</a></sup>, <sup id="fnref:NSURL_query_Parsing" role="doc-noteref"><a href="#fn:NSURL_query_Parsing" class="footnote" rel="footnote">4</a></sup> queryItems를 사용하는 것이 더 편한 것 같습니다.<sup id="fnref:NSURL_Parsing" role="doc-noteref"><a href="#fn:NSURL_Parsing" class="footnote" rel="footnote">5</a></sup></p>
 </blockquote>
 
 <h3 id="sample-code">Sample Code</h3>
 
-<p>앞의 url에서 <code class="highlighter-rouge">param1</code>에 해당하는 <code class="highlighter-rouge">value1</code>를 리턴하는 함수는 다음과 같습니다.</p>
+<p>앞의 url에서 <code class="language-plaintext highlighter-rouge">param1</code>에 해당하는 <code class="language-plaintext highlighter-rouge">value1</code>를 리턴하는 함수는 다음과 같습니다.</p>
 
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Foundation</span>
 
@@ -43,7 +43,7 @@
 
 <p>위의 코드를 보면 NSURLComponents 클래스를 사용하여 String 형태로 전달된 url을 urlComponents라는 상수에 담고, 이 상수의 queryItems 속성에서 filter를 통하여 param1에 해당하는 값을 추출해 내는 것을 알 수 있습니다.</p>
 
-<p>마지막으로 값의 추출은 항상 성공하는 것은 아니므로 <code class="highlighter-rouge">nil</code> 인지를 체크하여 <code class="highlighter-rouge">nil</code> 일 경우 빈 문자열을 반환하도록 합니다.</p>
+<p>마지막으로 값의 추출은 항상 성공하는 것은 아니므로 <code class="language-plaintext highlighter-rouge">nil</code> 인지를 체크하여 <code class="language-plaintext highlighter-rouge">nil</code> 일 경우 빈 문자열을 반환하도록 합니다.</p>
 
 <p>사용할 때는 아래와 같이 하면 됩니다.</p>
 
@@ -59,7 +59,7 @@
 
 <p>다음과 같은 결과를 얻을 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[param1 : value1]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[param1 : value1]
 [param2 : value2]
 </code></pre></div></div>
 
@@ -67,7 +67,7 @@
 
 <p>URL을 파싱하기 위한 <strong>RFC</strong> 및 <strong>RFC 3986</strong> 이 무엇인지는 아직 잘 모릅니다. 이 부분은 나중에 따로 내용을 업데이트 할 예정입니다.</p>
 
-<p>Swift 프로그래밍에서는 URL을 다룰 경우에 본문과 같이 Foundation 프레임웍을 직접 사용하기 보다는 Alamofire 같은 외부 라이브러리를 많이 사용하는 것 같습니다. <sup id="fnref:Alamofire_RayWenderlich" role="doc-noteref"><a href="#fn:Alamofire_RayWenderlich" class="footnote">6</a></sup>  <sup id="fnref:Alamofire_Tstory" role="doc-noteref"><a href="#fn:Alamofire_Tstory" class="footnote">7</a></sup> 아직 제가 Alamofire를 직접 사용해 본적은 없지만 상당히 많은 개발자들이 사용하고 있는 것으로 알고 있습니다. 기회가 되면 AAlamofire 사용법에 대해서도 정리하도록 하겠습니다.</p>
+<p>Swift 프로그래밍에서는 URL을 다룰 경우에 본문과 같이 Foundation 프레임웍을 직접 사용하기 보다는 Alamofire 같은 외부 라이브러리를 많이 사용하는 것 같습니다. <sup id="fnref:Alamofire_RayWenderlich" role="doc-noteref"><a href="#fn:Alamofire_RayWenderlich" class="footnote" rel="footnote">6</a></sup>  <sup id="fnref:Alamofire_Tstory" role="doc-noteref"><a href="#fn:Alamofire_Tstory" class="footnote" rel="footnote">7</a></sup> 아직 제가 Alamofire를 직접 사용해 본적은 없지만 상당히 많은 개발자들이 사용하고 있는 것으로 알고 있습니다. 기회가 되면 AAlamofire 사용법에 대해서도 정리하도록 하겠습니다.</p>
 
 <h3 id="참고-자료">참고 자료</h3>
 

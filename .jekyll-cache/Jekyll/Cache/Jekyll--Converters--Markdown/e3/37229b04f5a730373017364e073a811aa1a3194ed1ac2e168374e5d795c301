@@ -1,22 +1,22 @@
-I"�0<p><a href="https://atom.io">아톰(Atom) 문서 편집기(Atom Editor)</a> <sup id="fnref:atom" role="doc-noteref"><a href="#fn:atom" class="footnote">1</a></sup> 는 <a href="https://github.com">GitHub</a> <sup id="fnref:github" role="doc-noteref"><a href="#fn:github" class="footnote">2</a></sup> 에서 만든 문서 편집기입니다.</p>
+I"!2<p><a href="https://atom.io">아톰(Atom) 문서 편집기(Atom Editor)</a> <sup id="fnref:atom" role="doc-noteref"><a href="#fn:atom" class="footnote" rel="footnote">1</a></sup> 는 <a href="https://github.com">GitHub</a> <sup id="fnref:github" role="doc-noteref"><a href="#fn:github" class="footnote" rel="footnote">2</a></sup> 에서 만든 문서 편집기입니다.</p>
 
-<p>아톰의 장점이라면 <a href="https://github.com/electron/electron">일렉트론(Electron)</a> <sup id="fnref:electron" role="doc-noteref"><a href="#fn:electron" class="footnote">3</a></sup> 프레임웍이라는 웹 기반 기술로 만들어서 운영 체제에 상관없이 동작한다는 점입니다. 따라서 Windows, OS X, Linux 등 모든 운영체제에서 동작합니다. <sup id="fnref:dovetail" role="doc-noteref"><a href="#fn:dovetail" class="footnote">4</a></sup></p>
+<p>아톰의 장점이라면 <a href="https://github.com/electron/electron">일렉트론(Electron)</a> <sup id="fnref:electron" role="doc-noteref"><a href="#fn:electron" class="footnote" rel="footnote">3</a></sup> 프레임웍이라는 웹 기반 기술로 만들어서 운영 체제에 상관없이 동작한다는 점입니다. 따라서 Windows, OS X, Linux 등 모든 운영체제에서 동작합니다. <sup id="fnref:dovetail" role="doc-noteref"><a href="#fn:dovetail" class="footnote" rel="footnote">4</a></sup></p>
 
-<p>그 밖에도 마크다운(Markdown) 관련 패키지가 기본으로 내장되어 있어서 마크다운 편집기로 사용해도 좋다고 합니다. <sup id="fnref:kichul" role="doc-noteref"><a href="#fn:kichul" class="footnote">5</a></sup></p>
+<p>그 밖에도 마크다운(Markdown) 관련 패키지가 기본으로 내장되어 있어서 마크다운 편집기로 사용해도 좋다고 합니다. <sup id="fnref:kichul" role="doc-noteref"><a href="#fn:kichul" class="footnote" rel="footnote">5</a></sup></p>
 
 <h3 id="아톰-편집기-설치하기">아톰 편집기 설치하기</h3>
 
 <p>아톰 편집기는 공식 홈페이지인 <a href="https://atom.io">https://atom.io</a> 에서 다운 받을 수 있습니다.</p>
 
-<p>맥(Mac)의 경우 홈페이지에서 <code class="highlighter-rouge">Download For Mac</code> 버튼을 누르면 다운되며, 압축을 풀기만 하면 바로 하나의 실행 파일 형태로 되어서 사실상 설치가 끝납니다.</p>
+<p>맥(Mac)의 경우 홈페이지에서 <code class="language-plaintext highlighter-rouge">Download For Mac</code> 버튼을 누르면 다운되며, 압축을 풀기만 하면 바로 하나의 실행 파일 형태로 되어서 사실상 설치가 끝납니다.</p>
 
 <blockquote>
-  <p>필요하다면 실행 파일을 맥의 <code class="highlighter-rouge">Application</code> 폴더로 이동하여 <code class="highlighter-rouge">Launchpad</code>에 등록하거나 앱 아이콘을 끌어다가 <code class="highlighter-rouge">Dock</code>에 두고 사용할 수 있습니다.</p>
+  <p>필요하다면 실행 파일을 맥의 <code class="language-plaintext highlighter-rouge">Application</code> 폴더로 이동하여 <code class="language-plaintext highlighter-rouge">Launchpad</code>에 등록하거나 앱 아이콘을 끌어다가 <code class="language-plaintext highlighter-rouge">Dock</code>에 두고 사용할 수 있습니다.</p>
 </blockquote>
 
 <h3 id="아톰-편집기-설정하기">아톰 편집기 설정하기</h3>
 
-<p>아톰 에디터의 단축키는 참고 자료에 잘 정리되어 있습니다. <sup id="fnref:tistory" role="doc-noteref"><a href="#fn:tistory" class="footnote">6</a></sup> <sup id="fnref:shortcutfoo-atom-mac" role="doc-noteref"><a href="#fn:shortcutfoo-atom-mac" class="footnote">7</a></sup></p>
+<p>아톰 에디터의 단축키는 참고 자료에 잘 정리되어 있습니다. <sup id="fnref:tistory" role="doc-noteref"><a href="#fn:tistory" class="footnote" rel="footnote">6</a></sup> <sup id="fnref:shortcutfoo-atom-mac" role="doc-noteref"><a href="#fn:shortcutfoo-atom-mac" class="footnote" rel="footnote">7</a></sup></p>
 
 <h3 id="터미널에서-아톰-편집기-실행하기">터미널에서 아톰 편집기 실행하기</h3>
 
@@ -25,7 +25,7 @@
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>atom <span class="nb">.</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">"."</code>은 현재 폴더를 프로젝트로 연다는 의미가 되며 atom 뒤에 특정 파일 이름을 입력하면 해당 파일을 열게 됩니다. <sup id="fnref:stackoverflow" role="doc-noteref"><a href="#fn:stackoverflow" class="footnote">8</a></sup></p>
+<p><code class="language-plaintext highlighter-rouge">"."</code>은 현재 폴더를 프로젝트로 연다는 의미가 되며 atom 뒤에 특정 파일 이름을 입력하면 해당 파일을 열게 됩니다. <sup id="fnref:stackoverflow" role="doc-noteref"><a href="#fn:stackoverflow" class="footnote" rel="footnote">8</a></sup></p>
 
 <h3 id="아톰-문서-편집기를-마크다운-편집기로-사용하기">아톰 문서 편집기를 마크다운 편집기로 사용하기</h3>
 
@@ -42,19 +42,19 @@
 
 <h3 id="아톰-편집기를-파이썬python-개발-도구로-사용하기">아톰 편집기를 파이썬(Python) 개발 도구로 사용하기</h3>
 
-<p>아톰 편집기를 파이썬 개발도구로 사용하는 것은 문제가 있다고 하는 블로그 글이 있습니다. <sup id="fnref:chann" role="doc-noteref"><a href="#fn:chann" class="footnote">9</a></sup> 다만, 직접 사용하면서 겪은 바로는, 아나콘다(Anaconda) 덕분인지 아니면 아톰 에디터가 버전업하면서 문제가 해결되었는지 큰 문제는 없는 것 같습니다.</p>
+<p>아톰 편집기를 파이썬 개발도구로 사용하는 것은 문제가 있다고 하는 블로그 글이 있습니다. <sup id="fnref:chann" role="doc-noteref"><a href="#fn:chann" class="footnote" rel="footnote">9</a></sup> 다만, 직접 사용하면서 겪은 바로는, 아나콘다(Anaconda) 덕분인지 아니면 아톰 에디터가 버전업하면서 문제가 해결되었는지 큰 문제는 없는 것 같습니다.</p>
 
 <h4 id="파이썬-관련-패키지package-설치하기">파이썬 관련 패키지(Package) 설치하기</h4>
 
-<p>아톰 편집기를 파이썬 개발툴로 사용하는 방법 및 관련 패키지의 설치에 대해서는 <a href="http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html">Atom을 Python 개발 툴로 사용하기</a>라는 블로그 글에 잘 정리되어 있습니다. <sup id="fnref:reachlab-kr" role="doc-noteref"><a href="#fn:reachlab-kr" class="footnote">10</a></sup></p>
+<p>아톰 편집기를 파이썬 개발툴로 사용하는 방법 및 관련 패키지의 설치에 대해서는 <a href="http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html">Atom을 Python 개발 툴로 사용하기</a>라는 블로그 글에 잘 정리되어 있습니다. <sup id="fnref:reachlab-kr" role="doc-noteref"><a href="#fn:reachlab-kr" class="footnote" rel="footnote">10</a></sup></p>
 
-<p>그 외에 아톰 편집기에 설치할만한 패키지에 대해서는 <a href="http://blog.naver.com/PostView.nhn?blogId=jkikss&amp;logNo=220590070604&amp;categoryNo=44&amp;parentCategoryNo=0&amp;viewDate=&amp;currentPage=1&amp;postListTopCurrentPage=1&amp;from=postView">Atom Editor 추천 패키지</a> 라는 글을 참고할 만 합니다. <sup id="fnref:naver" role="doc-noteref"><a href="#fn:naver" class="footnote">11</a></sup>  <sup id="fnref:marinamele" role="doc-noteref"><a href="#fn:marinamele" class="footnote">12</a></sup></p>
+<p>그 외에 아톰 편집기에 설치할만한 패키지에 대해서는 <a href="http://blog.naver.com/PostView.nhn?blogId=jkikss&amp;logNo=220590070604&amp;categoryNo=44&amp;parentCategoryNo=0&amp;viewDate=&amp;currentPage=1&amp;postListTopCurrentPage=1&amp;from=postView">Atom Editor 추천 패키지</a> 라는 글을 참고할 만 합니다. <sup id="fnref:naver" role="doc-noteref"><a href="#fn:naver" class="footnote" rel="footnote">11</a></sup>  <sup id="fnref:marinamele" role="doc-noteref"><a href="#fn:marinamele" class="footnote" rel="footnote">12</a></sup></p>
 
 <blockquote>
-  <p><a href="http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html">Atom을 Python 개발 툴로 사용하기</a>라는 블로그에서는 아톰 편집기를 시작할 때 터미널에서 <code class="highlighter-rouge">atom .</code>로 실행해야 해당 폴더를 인식하기 때문에 시작할 때 조금 귀찮다고 설명하고 있는데, 막상 사용해보면 굳이 터미널에서 실행하지 않아도 특별한 문제는 없었습니다.</p>
+  <p><a href="http://reachlab-kr.github.io/python/2016/01/10/Python-Atom-Packages.html">Atom을 Python 개발 툴로 사용하기</a>라는 블로그에서는 아톰 편집기를 시작할 때 터미널에서 <code class="language-plaintext highlighter-rouge">atom .</code>로 실행해야 해당 폴더를 인식하기 때문에 시작할 때 조금 귀찮다고 설명하고 있는데, 막상 사용해보면 굳이 터미널에서 실행하지 않아도 특별한 문제는 없었습니다.</p>
 </blockquote>
 
-<p>요약하면 아톰 편집기에서 <strong><code class="highlighter-rouge">autocomplete-python</code></strong>과 <strong><code class="highlighter-rouge">script</code></strong>라는 두 개의 패키지를 설치하면 아톰 편집기를 파이썬 개발 도구로 사용할 수 있게 됩니다. 기타 유용한 패키지들은 참고 자료에 소개되어 있습니다. <sup id="fnref:useful-atom-packages" role="doc-noteref"><a href="#fn:useful-atom-packages" class="footnote">13</a></sup></p>
+<p>요약하면 아톰 편집기에서 <strong><code class="language-plaintext highlighter-rouge">autocomplete-python</code></strong>과 <strong><code class="language-plaintext highlighter-rouge">script</code></strong>라는 두 개의 패키지를 설치하면 아톰 편집기를 파이썬 개발 도구로 사용할 수 있게 됩니다. 기타 유용한 패키지들은 참고 자료에 소개되어 있습니다. <sup id="fnref:useful-atom-packages" role="doc-noteref"><a href="#fn:useful-atom-packages" class="footnote" rel="footnote">13</a></sup></p>
 
 <p>아톰 편집기에서 패키기를 설치하는 방법은 <strong>Atom &gt; Preferences… &gt; Settings &gt; + Install</strong> 메뉴에서 필요한 패키지를 이름으로 검색한 후 설치하면 됩니다.</p>
 

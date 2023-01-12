@@ -4,8 +4,7 @@ title: About
 permalink: /about/
 ---
 
-![profile]
-
+{: .note }
 반갑습니다. **소중한꿈** 입니다.
 
 ### Apps
@@ -36,6 +35,3 @@ permalink: /about/
 ### Communities
 
 * 2020-06-28 : SwiftUI 스터디 모임 Steppers 시작
-
-[profile]: /assets/Me/Memoji.jpeg
-{: margin="50px" align="right" height="100px"}

@@ -1,24 +1,24 @@
-I"�d<p>여기서는 <a href="http://brew.sh">Homebrew</a> 의 사용 방법에 대해서 간단하게 알아보고, Homebrew 를 사용하다가 문제가 발생할 경우의 해결 방법에 대해서 정리합니다.</p>
+I"�j<p>여기서는 <a href="http://brew.sh">Homebrew</a> 의 사용 방법에 대해서 간단하게 알아보고, Homebrew 를 사용하다가 문제가 발생할 경우의 해결 방법에 대해서 정리합니다.</p>
 
-<p><strong>Homebrew</strong> 는 macOS 용 패키지 관리자<sup id="fnref:brew" role="doc-noteref"><a href="#fn:brew" class="footnote">1</a></sup>입니다. <sup id="fnref:mimul-homebrew" role="doc-noteref"><a href="#fn:mimul-homebrew" class="footnote">2</a></sup> 이 도구를 사용해서 맥에 필요한 각종 패키지를 설치할 수 있습니다. <sup id="fnref:tree" role="doc-noteref"><a href="#fn:tree" class="footnote">3</a></sup> 맥 사용자, 특히 개발자라면 원하든 원하지 않든 반드시 사용할 일이 생깁니다.</p>
+<p><strong>Homebrew</strong> 는 macOS 용 패키지 관리자<sup id="fnref:brew" role="doc-noteref"><a href="#fn:brew" class="footnote" rel="footnote">1</a></sup>입니다. <sup id="fnref:mimul-homebrew" role="doc-noteref"><a href="#fn:mimul-homebrew" class="footnote" rel="footnote">2</a></sup> 이 도구를 사용해서 맥에 필요한 각종 패키지를 설치할 수 있습니다. <sup id="fnref:tree" role="doc-noteref"><a href="#fn:tree" class="footnote" rel="footnote">3</a></sup> 맥 사용자, 특히 개발자라면 원하든 원하지 않든 반드시 사용할 일이 생깁니다.</p>
 
 <blockquote>
-  <p>Homebrew 공식 홈페이지에서는 한글도 지원합니다. 첫 화면의 선택 상자에서 한국어를 선택하면 됩니다. <sup id="fnref:brew-ko" role="doc-noteref"><a href="#fn:brew-ko" class="footnote">4</a></sup></p>
+  <p>Homebrew 공식 홈페이지에서는 한글도 지원합니다. 첫 화면의 선택 상자에서 한국어를 선택하면 됩니다. <sup id="fnref:brew-ko" role="doc-noteref"><a href="#fn:brew-ko" class="footnote" rel="footnote">4</a></sup></p>
 
-  <p>macOS용 패키지 관리자에는 Homebrew 외에도 <a href="https://www.macports.org">MacPorts</a> 라는 것도 있습니다. <sup id="fnref:macports" role="doc-noteref"><a href="#fn:macports" class="footnote">5</a></sup> 하지만 Homebrew 와 비교하면 사용할 일이 적으며 가끔씩 macports로만 설치할 수 있는 패키지가 있을 때 사용합니다.</p>
+  <p>macOS용 패키지 관리자에는 Homebrew 외에도 <a href="https://www.macports.org">MacPorts</a> 라는 것도 있습니다. <sup id="fnref:macports" role="doc-noteref"><a href="#fn:macports" class="footnote" rel="footnote">5</a></sup> 하지만 Homebrew 와 비교하면 사용할 일이 적으며 가끔씩 macports로만 설치할 수 있는 패키지가 있을 때 사용합니다.</p>
 </blockquote>
 
-<p>사실 맥을 사용하는 개발자 중에 Homebrew를 사용하지 않는 사람은 없기 때문에 Homebrew에 대해서 따로 정리할 필요를 느끼지 못했었습니다. 그런데 최근 macOS 시에라(Sierra)가 나오고 나서 한동안 Homebrew가 시에라를 지원하지 못하는 바람에 여러가지 문제를 겪게 되면서 관련 이슈에 대해서 정리해야겠다고 생각하게 되었습니다. <sup id="fnref:brew-issues" role="doc-noteref"><a href="#fn:brew-issues" class="footnote">6</a></sup></p>
+<p>사실 맥을 사용하는 개발자 중에 Homebrew를 사용하지 않는 사람은 없기 때문에 Homebrew에 대해서 따로 정리할 필요를 느끼지 못했었습니다. 그런데 최근 macOS 시에라(Sierra)가 나오고 나서 한동안 Homebrew가 시에라를 지원하지 못하는 바람에 여러가지 문제를 겪게 되면서 관련 이슈에 대해서 정리해야겠다고 생각하게 되었습니다. <sup id="fnref:brew-issues" role="doc-noteref"><a href="#fn:brew-issues" class="footnote" rel="footnote">6</a></sup></p>
 
 <p>이제 매년 새로운 macOS가 나오고 있는데 혹시라도 다음에 macOS를 업데이트 하고 나서 Homebrew 사용에 문제가 생기면 이 글이 도움이 되지 않을까 생각합니다.</p>
 
 <h3 id="homebrew-설치하기">Homebrew 설치하기</h3>
 
-<p>우선 터미널에서 <code class="highlighter-rouge">brew</code> 또는 <code class="highlighter-rouge">brew -v</code> 명령을 입력해서 Homebrew가 설치되었는지 확인합니다. 이미 설치되어 있다면 <code class="highlighter-rouge">brew update</code> 명령으로 업데이트를 해 줍니다. <code class="highlighter-rouge">brew update</code> 명령은 이 글 마지막 부분에 설명해 두었습니다.</p>
+<p>우선 터미널에서 <code class="language-plaintext highlighter-rouge">brew</code> 또는 <code class="language-plaintext highlighter-rouge">brew -v</code> 명령을 입력해서 Homebrew가 설치되었는지 확인합니다. 이미 설치되어 있다면 <code class="language-plaintext highlighter-rouge">brew update</code> 명령으로 업데이트를 해 줍니다. <code class="language-plaintext highlighter-rouge">brew update</code> 명령은 이 글 마지막 부분에 설명해 두었습니다.</p>
 
 <p>설치되어있지 않으면 공식 홈페이지에서 설명한 대로 터미널에 아래의 명령을 입력해서 설치합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 </code></pre></div></div>
 
 <p>명령어가 길기 때문에 타자를 치기보다는 그냥 복사하는 편이 나을 것입니다. 홈페이지에서도 당당하게 <strong>터미널에 붙여넣기</strong> 하라고 설명합니다.</p>
@@ -26,12 +26,12 @@
 <blockquote>
   <p>위에서 보듯이 Homebrew는 ruby를 통해서 설치되지만 macOS에는 ruby가 이미 설치되어 있으므로 따로 신경쓸 필요가 없습니다.</p>
 
-  <p>curl 명령도 사용하는데 이 또한 macOS에는 이미 설치되어 있기 때문에 크게 신경쓰지 않아도 됩니다. curl 명령에 대한 내용은 정광섭님의 글 <a href="https://www.lesstif.com/pages/viewpage.action?pageId=14745703">curl 설치 및 사용법 - HTTP GET/POST, REST API 연계 등</a> 을 참고하시면 좋을 것 같습니다. <sup id="fnref:lesstif-14745703" role="doc-noteref"><a href="#fn:lesstif-14745703" class="footnote">7</a></sup></p>
+  <p>curl 명령도 사용하는데 이 또한 macOS에는 이미 설치되어 있기 때문에 크게 신경쓰지 않아도 됩니다. curl 명령에 대한 내용은 정광섭님의 글 <a href="https://www.lesstif.com/pages/viewpage.action?pageId=14745703">curl 설치 및 사용법 - HTTP GET/POST, REST API 연계 등</a> 을 참고하시면 좋을 것 같습니다. <sup id="fnref:lesstif-14745703" role="doc-noteref"><a href="#fn:lesstif-14745703" class="footnote" rel="footnote">7</a></sup></p>
 </blockquote>
 
-<p>설치를 완료한 후 터미널에 <code class="highlighter-rouge">brew</code> 명령을 입력해서 아래와 같이 기본적인 사용법이 나타나면 설치가 잘 된 것입니다.</p>
+<p>설치를 완료한 후 터미널에 <code class="language-plaintext highlighter-rouge">brew</code> 명령을 입력해서 아래와 같이 기본적인 사용법이 나타나면 설치가 잘 된 것입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Example usage:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Example usage:
   brew search [TEXT|/REGEX/]
   brew (info|home|options) [FORMULA...]
   brew install FORMULA...
@@ -57,78 +57,78 @@ Further help:
 </code></pre></div></div>
 
 <blockquote>
-  <p>버전에 따라서 내용이 조금 다를 수는 있을 것입니다. 설치 관련해서는 다른 문서도 있습니다. <sup id="fnref:homebrew-installation" role="doc-noteref"><a href="#fn:homebrew-installation" class="footnote">8</a></sup></p>
+  <p>버전에 따라서 내용이 조금 다를 수는 있을 것입니다. 설치 관련해서는 다른 문서도 있습니다. <sup id="fnref:homebrew-installation" role="doc-noteref"><a href="#fn:homebrew-installation" class="footnote" rel="footnote">8</a></sup></p>
 </blockquote>
 
 <h3 id="homebrew-사용하기">Homebrew 사용하기</h3>
 
-<p>사용 방법은 정말 간단하며 <code class="highlighter-rouge">brew install</code> 명령 뒤에 원하는 패키지 명을 사용하면 됩니다. 만약 <code class="highlighter-rouge">wget</code>을 설치하고 싶다면 아래와 같이 하면 됩니다.</p>
+<p>사용 방법은 정말 간단하며 <code class="language-plaintext highlighter-rouge">brew install</code> 명령 뒤에 원하는 패키지 명을 사용하면 됩니다. 만약 <code class="language-plaintext highlighter-rouge">wget</code>을 설치하고 싶다면 아래와 같이 하면 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install wget
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install wget
 </code></pre></div></div>
 
 <p>보통의 경우 설치하고자 하는 패키지 사이트에서 brew를 사용해서 설치하는 방법이 나와 있으므로 그대로 따라하면 됩니다.</p>
 
 <h4 id="homebrew에-새로운-저장소-등록하기">Homebrew에 새로운 저장소 등록하기</h4>
 
-<p><code class="highlighter-rouge">brew</code> 명령은 Homebrew의 저장소에서 패키지를 다운받는 명령입니다. 하지만 어떤 경우에는 원하는 패키지가 Homebrew 저장소가 아닌 다른 저장소에 있을 수도 있습니다. 이 경우 homebrew는 새로운 저장소를 등록해서 다운받을 수 있도록 하고 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">brew</code> 명령은 Homebrew의 저장소에서 패키지를 다운받는 명령입니다. 하지만 어떤 경우에는 원하는 패키지가 Homebrew 저장소가 아닌 다른 저장소에 있을 수도 있습니다. 이 경우 homebrew는 새로운 저장소를 등록해서 다운받을 수 있도록 하고 있습니다.</p>
 
-<p>이것은 아래와 같이 <code class="highlighter-rouge">brew tap</code> 명령을 사용합니다. <sup id="fnref:brew-tap" role="doc-noteref"><a href="#fn:brew-tap" class="footnote">9</a></sup></p>
+<p>이것은 아래와 같이 <code class="language-plaintext highlighter-rouge">brew tap</code> 명령을 사용합니다. <sup id="fnref:brew-tap" role="doc-noteref"><a href="#fn:brew-tap" class="footnote" rel="footnote">9</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew tap new_repository
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew tap new_repository
 </code></pre></div></div>
 
-<p>즉 위와 같이 하면 <code class="highlighter-rouge">new_repository</code>를 <code class="highlighter-rouge">brew</code>에 등록하게 됩니다. 이제 <code class="highlighter-rouge">new_repository</code> 에 있는 다른 패키지들도 다운 받을 수 있습니다.</p>
+<p>즉 위와 같이 하면 <code class="language-plaintext highlighter-rouge">new_repository</code>를 <code class="language-plaintext highlighter-rouge">brew</code>에 등록하게 됩니다. 이제 <code class="language-plaintext highlighter-rouge">new_repository</code> 에 있는 다른 패키지들도 다운 받을 수 있습니다.</p>
 
-<p>예를 들어 아래와 같이 하면 <code class="highlighter-rouge">some_package</code>라는 패키지를 다운 받을 수 있습니다.</p>
+<p>예를 들어 아래와 같이 하면 <code class="language-plaintext highlighter-rouge">some_package</code>라는 패키지를 다운 받을 수 있습니다.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>some_package
 </code></pre></div></div>
 
 <h4 id="기타-사용-방법에-대한-글들">기타 사용 방법에 대한 글들</h4>
 
-<p><a href="https://gist.github.com/kevinelliott">Kevin Elliott</a> 님의 <a href="https://gist.github.com/kevinelliott/7a152c556a83b322e0a8cd2df128235c">macOS 10.12 Sierra Setup</a> 라는 글에는 macOS 시에라에 각종 도구들을 설치하는 방법이 나오는데 Homebrew 의 다양한 사용법을 은연 중에 볼 수 있습니다. <sup id="fnref:kevin" role="doc-noteref"><a href="#fn:kevin" class="footnote">10</a></sup></p>
+<p><a href="https://gist.github.com/kevinelliott">Kevin Elliott</a> 님의 <a href="https://gist.github.com/kevinelliott/7a152c556a83b322e0a8cd2df128235c">macOS 10.12 Sierra Setup</a> 라는 글에는 macOS 시에라에 각종 도구들을 설치하는 방법이 나오는데 Homebrew 의 다양한 사용법을 은연 중에 볼 수 있습니다. <sup id="fnref:kevin" role="doc-noteref"><a href="#fn:kevin" class="footnote" rel="footnote">10</a></sup></p>
 
-<p><a href="https://rkjun.wordpress.com">RKJun</a> 님의 <a href="https://rkjun.wordpress.com/2013/07/14/os-x-missing-package-manager-home-brew/">HOMEBREW 로 OS X 패키지 관리하기</a> 라는 글에는 Homebrew 의 설치부터 사용법까지 잘 설명되어 있습니다. 특히 특정 패키지의 과거 버전을 사용하는 방법에 대해서 설명이 잘 되어 있는 것 같습니다. <sup id="fnref:rkjun" role="doc-noteref"><a href="#fn:rkjun" class="footnote">11</a></sup></p>
+<p><a href="https://rkjun.wordpress.com">RKJun</a> 님의 <a href="https://rkjun.wordpress.com/2013/07/14/os-x-missing-package-manager-home-brew/">HOMEBREW 로 OS X 패키지 관리하기</a> 라는 글에는 Homebrew 의 설치부터 사용법까지 잘 설명되어 있습니다. 특히 특정 패키지의 과거 버전을 사용하는 방법에 대해서 설명이 잘 되어 있는 것 같습니다. <sup id="fnref:rkjun" role="doc-noteref"><a href="#fn:rkjun" class="footnote" rel="footnote">11</a></sup></p>
 
-<p><a href="http://apple.viewtreefull.com/index.html">주경야근</a> 님의 글 <a href="https://veryfaraway.github.io/digging/homebrew.html">Homebrew 설치하기</a> 에도 설치 및 사용 방법이 잘 정리되어 있습니다. 특히, 특정 패키지의 버전을 고정하는 <code class="highlighter-rouge">brew pin</code> 명령에 대한 내용이 설명되어 있습니다. <sup id="fnref:veryfaraway-homebrew" role="doc-noteref"><a href="#fn:veryfaraway-homebrew" class="footnote">12</a></sup></p>
+<p><a href="http://apple.viewtreefull.com/index.html">주경야근</a> 님의 글 <a href="https://veryfaraway.github.io/digging/homebrew.html">Homebrew 설치하기</a> 에도 설치 및 사용 방법이 잘 정리되어 있습니다. 특히, 특정 패키지의 버전을 고정하는 <code class="language-plaintext highlighter-rouge">brew pin</code> 명령에 대한 내용이 설명되어 있습니다. <sup id="fnref:veryfaraway-homebrew" role="doc-noteref"><a href="#fn:veryfaraway-homebrew" class="footnote" rel="footnote">12</a></sup></p>
 
 <h3 id="homebrew-이슈-정리">Homebrew 이슈 정리</h3>
 
 <p>이제 macOS 시에라에서 Homebrew 를 사용할 경우 발생할 수 있는 문제들에 대해 살펴봅니다. 사실 글을 작성하는 시점에서는 Homebrew 가 시에라를 공식 지원하기 때문에 문제가 해결된 것도 있지만 나중에라도 언제든 발생할 수 있는 부분이라서 기록해 둡니다.</p>
 
-<h4 id="usrlocal-폴더-권한-문제"><code class="highlighter-rouge">/usr/local</code> 폴더 권한 문제</h4>
+<h4 id="usrlocal-폴더-권한-문제"><code class="language-plaintext highlighter-rouge">/usr/local</code> 폴더 권한 문제</h4>
 
 <p>시에라에서 부터인지 아니면 그 전 OS X에서 부터인지 잘 모르겠지만 최근의 macOS 에서는 <strong>/usr/local/</strong> 폴더의 권한이 변경되었습니다.</p>
 
 <blockquote>
-  <p>참고 자료에 따르면 엘 케피탄부터 변경된 것 같습니다. <sup id="fnref:macnews-3728" role="doc-noteref"><a href="#fn:macnews-3728" class="footnote">13</a></sup></p>
+  <p>참고 자료에 따르면 엘 케피탄부터 변경된 것 같습니다. <sup id="fnref:macnews-3728" role="doc-noteref"><a href="#fn:macnews-3728" class="footnote" rel="footnote">13</a></sup></p>
 </blockquote>
 
-<p>따라서 <code class="highlighter-rouge">brew install</code> 명령을 사용하는 과정에서 아래와 비슷한 에러가 발생하면서 설치가 안되는 경우가 있습니다.</p>
+<p>따라서 <code class="language-plaintext highlighter-rouge">brew install</code> 명령을 사용하는 과정에서 아래와 비슷한 에러가 발생하면서 설치가 안되는 경우가 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>==&gt; The following existing directories will be made group writable:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>==&gt; The following existing directories will be made group writable:
 /usr/local/bin
 </code></pre></div></div>
 
-<p>이것은 Homebrew 의 작동 방식이 전용 디렉토리에 패키지를 설치하고 <strong>/usr/local</strong> 위치로 심볼릭 링크를 연결하는 방식인데 해당 폴더에 대한 권한이 없기 때문입니다. <sup id="fnref:symbolic-link" role="doc-noteref"><a href="#fn:symbolic-link" class="footnote">14</a></sup> 즉, 패키지 자체는 설치되지만 권한 때문에 해당 패키지의 심볼릭 링크를 만들 수 없는 현상이 발생하는 것입니다.</p>
+<p>이것은 Homebrew 의 작동 방식이 전용 디렉토리에 패키지를 설치하고 <strong>/usr/local</strong> 위치로 심볼릭 링크를 연결하는 방식인데 해당 폴더에 대한 권한이 없기 때문입니다. <sup id="fnref:symbolic-link" role="doc-noteref"><a href="#fn:symbolic-link" class="footnote" rel="footnote">14</a></sup> 즉, 패키지 자체는 설치되지만 권한 때문에 해당 패키지의 심볼릭 링크를 만들 수 없는 현상이 발생하는 것입니다.</p>
 
-<p>해결 방법은 <a href="https://github.com/Homebrew/brew/issues/385">In macOS 10.12 Sierra, /usr/local is readonly.</a> 라는 글에 나와 있는대로 <code class="highlighter-rouge">/usr/local</code> 폴더의 권한을 다음과 같이 수정하는 것입니다.</p>
+<p>해결 방법은 <a href="https://github.com/Homebrew/brew/issues/385">In macOS 10.12 Sierra, /usr/local is readonly.</a> 라는 글에 나와 있는대로 <code class="language-plaintext highlighter-rouge">/usr/local</code> 폴더의 권한을 다음과 같이 수정하는 것입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chown -R $(whoami) /usr/local
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chown -R $(whoami) /usr/local
 </code></pre></div></div>
 
 <blockquote>
-  <p>참고로 위에서 <code class="highlighter-rouge">$(whoami)</code> 부분은 철자 그대로 입력해야 합니다.</p>
+  <p>참고로 위에서 <code class="language-plaintext highlighter-rouge">$(whoami)</code> 부분은 철자 그대로 입력해야 합니다.</p>
 
   <p>최신 Homebrew의 경우 폴더 권한을 알아서 수정해 주는 줄 알았는데, 패키지에 따라서는 폴더 권한을 수정해야 하는 경우가 발생합니다. 일단 한 번만 폴더 권한을 수정하면 되긴 하지만 Homebrew에서 자동으로 폴더 권한을 수정하지는 않는 것 같습니다.</p>
 </blockquote>
 
-<p>폴더 권한 문제이므로 <code class="highlighter-rouge">brew</code> 명령에 <code class="highlighter-rouge">sudo</code> 를 붙이면 해결할 수 있지 않을까 생각되지만, <code class="highlighter-rouge">brew</code> 에 <code class="highlighter-rouge">sudo</code> 를 사용하는 것은 위험성 때문에 운영체제에서 막고 있습니다.</p>
+<p>폴더 권한 문제이므로 <code class="language-plaintext highlighter-rouge">brew</code> 명령에 <code class="language-plaintext highlighter-rouge">sudo</code> 를 붙이면 해결할 수 있지 않을까 생각되지만, <code class="language-plaintext highlighter-rouge">brew</code> 에 <code class="language-plaintext highlighter-rouge">sudo</code> 를 사용하는 것은 위험성 때문에 운영체제에서 막고 있습니다.</p>
 
-<p><code class="highlighter-rouge">$ sudo brew</code> 를 실행해보면 다음과 같은 에러 메시지를 볼 수 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">$ sudo brew</code> 를 실행해보면 다음과 같은 에러 메시지를 볼 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Running Homebrew as root is extremely dangerous and no longer supported.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Running Homebrew as root is extremely dangerous and no longer supported.
 As Homebrew does not drop privileges on installation you would be giving all
 build scripts full access to your system.
 </code></pre></div></div>
@@ -137,34 +137,34 @@ build scripts full access to your system.
 
 <h4 id="brew-link-이슈">brew link 이슈</h4>
 
-<p><code class="highlighter-rouge">/usr/local</code> 폴더에 권한이 없어서 패키지 설치가 완료가 안되더라도 심볼릭 링크만 생성되지 않을 뿐이지 패키지 자체는 설치될 경우가 있습니다. 그럴 경우 아래와 같은 메시지가 출력됩니다.</p>
+<p><code class="language-plaintext highlighter-rouge">/usr/local</code> 폴더에 권한이 없어서 패키지 설치가 완료가 안되더라도 심볼릭 링크만 생성되지 않을 뿐이지 패키지 자체는 설치될 경우가 있습니다. 그럴 경우 아래와 같은 메시지가 출력됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: The `brew link` step did not complete successfully
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: The `brew link` step did not complete successfully
 The formula built, but is not symlinked into /usr/local
 Could not symlink ...
 /usr/local/... is not writable.
 </code></pre></div></div>
 
-<p>일단 <code class="highlighter-rouge">/usr/local</code> 폴더의 권한 문제는 앞서와 같이 아래 명령을 사용해서 해결할 수 있습니다.</p>
+<p>일단 <code class="language-plaintext highlighter-rouge">/usr/local</code> 폴더의 권한 문제는 앞서와 같이 아래 명령을 사용해서 해결할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chown -R $(whoami) /usr/local
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chown -R $(whoami) /usr/local
 </code></pre></div></div>
 
 <p>다만 폴더 권한 문제로 설치가 진행되다가 멈춘 경우 이미 패키지 자체는 설치되어 있지만 심볼릭 링크를 만들 수 없어서 link 관련 문제가 발생하는 것입니다.</p>
 
-<p>이 경우 위의 방법으로 폴더 권한을 수정한 후 설치를 다시 수행하면 아래와 같이 <code class="highlighter-rouge">brew link</code>를 먼저 수행하라는 에러를 띄웁니다.</p>
+<p>이 경우 위의 방법으로 폴더 권한을 수정한 후 설치를 다시 수행하면 아래와 같이 <code class="language-plaintext highlighter-rouge">brew link</code>를 먼저 수행하라는 에러를 띄웁니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: You must `brew link ...` before ... can be installed
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: You must `brew link ...` before ... can be installed
 </code></pre></div></div>
 
 <p>또는 아래와 같은 경고가 나타날 수도 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning: ... already installed, it's just not linked
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning: ... already installed, it's just not linked
 </code></pre></div></div>
 
-<p>이 경우 다음과 같이 <code class="highlighter-rouge">brew link ...</code>를 수행해서 설치된 파일을 연결하도록 하면 문제가 해결됩니다. <sup id="fnref:stackoverflow-37135982" role="doc-noteref"><a href="#fn:stackoverflow-37135982" class="footnote">15</a></sup></p>
+<p>이 경우 다음과 같이 <code class="language-plaintext highlighter-rouge">brew link ...</code>를 수행해서 설치된 파일을 연결하도록 하면 문제가 해결됩니다. <sup id="fnref:stackoverflow-37135982" role="doc-noteref"><a href="#fn:stackoverflow-37135982" class="footnote" rel="footnote">15</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew link ...
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew link ...
 </code></pre></div></div>
 
 <blockquote>
@@ -175,36 +175,36 @@ Could not symlink ...
 
 <h4 id="brew-doctor">brew doctor</h4>
 
-<p><code class="highlighter-rouge">brew link</code> 등의 명령이 안될 경우 아래의 명령으로 원인을 알 수 있다고 합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">brew link</code> 등의 명령이 안될 경우 아래의 명령으로 원인을 알 수 있다고 합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew doctor
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew doctor
 </code></pre></div></div>
 
-<p>현재의 문제를 파악해주는 Homebrew 명령으로 추측됩니다. 저는 아직까지 직접 사용해 본 적이 없어서 <code class="highlighter-rouge">brew doctor</code>에 대해서는 잘 모르겠습니다.</p>
+<p>현재의 문제를 파악해주는 Homebrew 명령으로 추측됩니다. 저는 아직까지 직접 사용해 본 적이 없어서 <code class="language-plaintext highlighter-rouge">brew doctor</code>에 대해서는 잘 모르겠습니다.</p>
 
 <h4 id="brew-update-이슈">brew update 이슈</h4>
 
-<p>Homebrew를 사용하다가 아래처럼 upate 에러가 발생하면서 설치 등에 문제가 발생할 수 있습니다. <sup id="fnref:tackoverflow-38410020" role="doc-noteref"><a href="#fn:tackoverflow-38410020" class="footnote">16</a></sup></p>
+<p>Homebrew를 사용하다가 아래처럼 upate 에러가 발생하면서 설치 등에 문제가 발생할 수 있습니다. <sup id="fnref:tackoverflow-38410020" role="doc-noteref"><a href="#fn:tackoverflow-38410020" class="footnote" rel="footnote">16</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: update-report should not be called directly
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: update-report should not be called directly
 </code></pre></div></div>
 
-<p>위 문제는 <code class="highlighter-rouge">brew update</code> 명령을 직접 사용해서 해결할 수 있습니다.</p>
+<p>위 문제는 <code class="language-plaintext highlighter-rouge">brew update</code> 명령을 직접 사용해서 해결할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew update
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew update
 </code></pre></div></div>
 
-<p>위와 같이 <code class="highlighter-rouge">brew update</code> 명령을 실행한 후에도 문제가 그대로인 경우가 있는데 이 경우 <code class="highlighter-rouge">brew upate</code> 명령을 다시 실행하면 <code class="highlighter-rouge">brew</code>가 스스로 문제를 찾는다고 합니다.</p>
+<p>위와 같이 <code class="language-plaintext highlighter-rouge">brew update</code> 명령을 실행한 후에도 문제가 그대로인 경우가 있는데 이 경우 <code class="language-plaintext highlighter-rouge">brew upate</code> 명령을 다시 실행하면 <code class="language-plaintext highlighter-rouge">brew</code>가 스스로 문제를 찾는다고 합니다.</p>
 
 <blockquote>
-  <p><code class="highlighter-rouge">brew upate</code> 명령을 두 번 사용하는 것은 직접 설명을 보고 실행한 적이 있는데, 글을 작성하는 시점이 실행한 시점과는 다르다 보니 해당 내용이 설명된 문서를 찾지 못하고 있습니다. 찾게 되면 링크를 추가하도록 하겠습니다.</p>
+  <p><code class="language-plaintext highlighter-rouge">brew upate</code> 명령을 두 번 사용하는 것은 직접 설명을 보고 실행한 적이 있는데, 글을 작성하는 시점이 실행한 시점과는 다르다 보니 해당 내용이 설명된 문서를 찾지 못하고 있습니다. 찾게 되면 링크를 추가하도록 하겠습니다.</p>
 
-  <p>다만, 아래 내용을 보면 알겠지만 최신 Homebrew 부터는 <code class="highlighter-rouge">brew upate</code> 명령을 사용할 일이 없어질 것 같습니다.</p>
+  <p>다만, 아래 내용을 보면 알겠지만 최신 Homebrew 부터는 <code class="language-plaintext highlighter-rouge">brew upate</code> 명령을 사용할 일이 없어질 것 같습니다.</p>
 </blockquote>
 
-<p>이 글을 작성하고 있는 시점에서 <code class="highlighter-rouge">brew install</code> 명령을 사용해 보면 <code class="highlighter-rouge">brew update</code>가 가장 먼저 실행되는 것을 볼 수 있습니다. 참고로, 사용하고 있는 Homebrew 버전은 <code class="highlighter-rouge">Homebrew 1.1.6</code> 입니다.</p>
+<p>이 글을 작성하고 있는 시점에서 <code class="language-plaintext highlighter-rouge">brew install</code> 명령을 사용해 보면 <code class="language-plaintext highlighter-rouge">brew update</code>가 가장 먼저 실행되는 것을 볼 수 있습니다. 참고로, 사용하고 있는 Homebrew 버전은 <code class="language-plaintext highlighter-rouge">Homebrew 1.1.6</code> 입니다.</p>
 
-<p>제 기억이 맞는 지는 모르겠는데 얼마전까지는 <code class="highlighter-rouge">brew install</code> 명령을 실행할 때 <code class="highlighter-rouge">brew update</code>를 자동으로 호출하지 않았던 것으로 기억합니다. 지금은 <code class="highlighter-rouge">brew</code> 자체적으로 스스로를 최신 버전으로 유지하려고 하는 것 같습니다. 따라서 최신 Homebrew를 사용하면 앞으로 <code class="highlighter-rouge">brew update</code>를 사용할 일이 거의 없어지지 않을까 생각됩니다.</p>
+<p>제 기억이 맞는 지는 모르겠는데 얼마전까지는 <code class="language-plaintext highlighter-rouge">brew install</code> 명령을 실행할 때 <code class="language-plaintext highlighter-rouge">brew update</code>를 자동으로 호출하지 않았던 것으로 기억합니다. 지금은 <code class="language-plaintext highlighter-rouge">brew</code> 자체적으로 스스로를 최신 버전으로 유지하려고 하는 것 같습니다. 따라서 최신 Homebrew를 사용하면 앞으로 <code class="language-plaintext highlighter-rouge">brew update</code>를 사용할 일이 거의 없어지지 않을까 생각됩니다.</p>
 
 <h3 id="고찰하기">고찰하기</h3>
 
@@ -221,7 +221,7 @@ Could not symlink ...
       <p><a href="https://github.com/mimul/dev-environment/blob/master/mac-homebrew.md">Homebrew 대해</a> : <a href="http://www.mimul.com/pebble/default/">mimul</a> 님의 GitHub 저장소 글입니다. 공식 홈페이지에도 없는 Homebrew의 어원에 대해서 설명하고 있어서 인상적입니다. <a href="#fnref:mimul-homebrew" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:tree" role="doc-endnote">
-      <p>Homebrew를 통해 설치할 수 있는 것 중에 <code class="highlighter-rouge">tree</code>가 있습니다. <code class="highlighter-rouge">tree</code>의 설치 및 사용 방법에 대해서는 따로 정리할 생각입니다. <a href="#fnref:tree" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>Homebrew를 통해 설치할 수 있는 것 중에 <code class="language-plaintext highlighter-rouge">tree</code>가 있습니다. <code class="language-plaintext highlighter-rouge">tree</code>의 설치 및 사용 방법에 대해서는 따로 정리할 생각입니다. <a href="#fnref:tree" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:brew-ko" role="doc-endnote">
       <p><a href="http://brew.sh/index_ko.html">Homebrew</a> : Homebrew 공식 홈페이지 한글 버전 바로가기입니다. <a href="#fnref:brew-ko" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -239,16 +239,16 @@ Could not symlink ...
       <p><a href="https://github.com/Homebrew/brew/blob/master/docs/Installation.md#installation">Installation</a> : Homebrew의 GitHub 저장소 중에서 설치관련 문서입니다. 보다 자세한 정보를 원하는 분은 참고하시면 될 것 같습니다. 특별한 일이 없으면 공식 홈페이지만으로 충분한 것 같습니다. <a href="#fnref:homebrew-installation" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:brew-tap" role="doc-endnote">
-      <p><a href="https://github.com/Homebrew/brew/blob/master/docs/brew-tap.md">Taps (third-party repositories)</a> : <code class="highlighter-rouge">brew tap</code> 명령에 대해서 정리한 Homebrew의 GitHub 저장소 글입니다. 일단 <code class="highlighter-rouge">brew tap</code> 명령에 대한 공식 문서라고 할 수 있겠습니다. <a href="#fnref:brew-tap" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="https://github.com/Homebrew/brew/blob/master/docs/brew-tap.md">Taps (third-party repositories)</a> : <code class="language-plaintext highlighter-rouge">brew tap</code> 명령에 대해서 정리한 Homebrew의 GitHub 저장소 글입니다. 일단 <code class="language-plaintext highlighter-rouge">brew tap</code> 명령에 대한 공식 문서라고 할 수 있겠습니다. <a href="#fnref:brew-tap" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:kevin" role="doc-endnote">
-      <p><a href="https://gist.github.com/kevinelliott/7a152c556a83b322e0a8cd2df128235c">macOS 10.12 Sierra Setup</a> : macOS 시에라에서 여러가지 Homebrew를 사용해서 여러가지 도구들을 셋업하는 방법을 소개한 글입니다. 지금 시점에서 꼭 필요하지 않을 수도 있지만 Homebrew에 문제가 있을 경우의 다양한 방법들이 은연 중에 녹아 있습니다. <code class="highlighter-rouge">brew pin</code>, <code class="highlighter-rouge">brew tap</code> 등의 옵션들을 자유자재로 사용하는 것을 볼 수 있습니다. <a href="#fnref:kevin" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="https://gist.github.com/kevinelliott/7a152c556a83b322e0a8cd2df128235c">macOS 10.12 Sierra Setup</a> : macOS 시에라에서 여러가지 Homebrew를 사용해서 여러가지 도구들을 셋업하는 방법을 소개한 글입니다. 지금 시점에서 꼭 필요하지 않을 수도 있지만 Homebrew에 문제가 있을 경우의 다양한 방법들이 은연 중에 녹아 있습니다. <code class="language-plaintext highlighter-rouge">brew pin</code>, <code class="language-plaintext highlighter-rouge">brew tap</code> 등의 옵션들을 자유자재로 사용하는 것을 볼 수 있습니다. <a href="#fnref:kevin" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:rkjun" role="doc-endnote">
       <p><a href="https://rkjun.wordpress.com/2013/07/14/os-x-missing-package-manager-home-brew/">HOMEBREW 로 OS X 패키지 관리하기</a> : Homebrew의 여러가지 사용법에 대해서 설명을 잘 해놓은 <a href="https://rkjun.wordpress.com">RKJun</a> 님의 글입니다. 다만 텍스트와 코드가 분리가 되지 않아서 글을 보기가 살짝 불편한 것 같습니다. 하지만 내용이 워낙 좋아서 한 번 찬찬히 볼 만하다고 생각합니다. <a href="#fnref:rkjun" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:veryfaraway-homebrew" role="doc-endnote">
-      <p><a href="https://veryfaraway.github.io/digging/homebrew.html">Homebrew 설치하기</a> : Homebrew의 설치 방법과 사용법에 대해서 정리한 <a href="http://apple.viewtreefull.com/index.html">주경야근</a> 님의 글입니다. 조금 특이하게 <code class="highlighter-rouge">brew pin</code> 명령에 대한 설명이 나와서 기록 차원에서 참조를 연결합니다. <a href="#fnref:veryfaraway-homebrew" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="https://veryfaraway.github.io/digging/homebrew.html">Homebrew 설치하기</a> : Homebrew의 설치 방법과 사용법에 대해서 정리한 <a href="http://apple.viewtreefull.com/index.html">주경야근</a> 님의 글입니다. 조금 특이하게 <code class="language-plaintext highlighter-rouge">brew pin</code> 명령에 대한 설명이 나와서 기록 차원에서 참조를 연결합니다. <a href="#fnref:veryfaraway-homebrew" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:macnews-3728" role="doc-endnote">
       <p><a href="http://macnews.tistory.com/3728">OS X 10.11 엘 캐피탄에 ‘홈브류(Homebrew)’를 설치하는 방법</a> : 엘 케피탄에서의 Homebrew 이슈와 시스템 무결성 보호에 대한 내용이 잘 정리되어 있습니다. 이 글에 따르면 엘 케피탄부터 적용된 시스템 무결성 보호 정책 때문에 Homebrew 이슈가 발생하게 된 것 같습니다. <a href="#fnref:macnews-3728" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -257,7 +257,7 @@ Could not symlink ...
       <p><a href="https://ko.wikipedia.org/wiki/심볼릭_링크">심볼릭 링크</a> : 심볼릭 링크에 대한 한글 위키피디아 설명입니다. <a href="#fnref:symbolic-link" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:stackoverflow-37135982" role="doc-endnote">
-      <p><a href="http://stackoverflow.com/questions/37135982/cmake-3-5-2-already-installed-its-just-not-linked">cmake-3.5.2 already installed, it’s just not linked</a> : cmake의 link가 연결되지 않을 경우의 해결 방법에 대한 글입니다. <code class="highlighter-rouge">brew link</code>의 사용 방법이 잘 나와 있습니다. <a href="#fnref:stackoverflow-37135982" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p><a href="http://stackoverflow.com/questions/37135982/cmake-3-5-2-already-installed-its-just-not-linked">cmake-3.5.2 already installed, it’s just not linked</a> : cmake의 link가 연결되지 않을 경우의 해결 방법에 대한 글입니다. <code class="language-plaintext highlighter-rouge">brew link</code>의 사용 방법이 잘 나와 있습니다. <a href="#fnref:stackoverflow-37135982" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:tackoverflow-38410020" role="doc-endnote">
       <p><a href="http://stackoverflow.com/questions/38410020/homebrew-error-update-report-should-not-be-called-directly">Homebrew: Error: update-report should not be called directly</a> <a href="#fnref:tackoverflow-38410020" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

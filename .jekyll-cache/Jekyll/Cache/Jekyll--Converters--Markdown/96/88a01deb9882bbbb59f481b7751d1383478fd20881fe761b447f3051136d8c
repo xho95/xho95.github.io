@@ -1,12 +1,12 @@
-I"�6<p><a href="https://git-scm.com">Git</a> 을 사용하면 파일들의 버전 관리를 할 수 있어 편리하지만,<sup id="fnref:git-scm" role="doc-noteref"><a href="#fn:git-scm" class="footnote">1</a></sup> 가끔씩 원하지 않는 파일들까지 관리하려고 하는 불편함이 생기기도 합니다. 가장 대표적인 경우가 개발 과정에서 부산물로 생기는 임시 파일들을 추적하게되는 경우입니다. 이러한 임시 파일들에는 프로젝트의 설정 파일, 빌드 과정에서 생기는 object 파일들이 있습니다.</p>
+I"q8<p><a href="https://git-scm.com">Git</a> 을 사용하면 파일들의 버전 관리를 할 수 있어 편리하지만,<sup id="fnref:git-scm" role="doc-noteref"><a href="#fn:git-scm" class="footnote" rel="footnote">1</a></sup> 가끔씩 원하지 않는 파일들까지 관리하려고 하는 불편함이 생기기도 합니다. 가장 대표적인 경우가 개발 과정에서 부산물로 생기는 임시 파일들을 추적하게되는 경우입니다. 이러한 임시 파일들에는 프로젝트의 설정 파일, 빌드 과정에서 생기는 object 파일들이 있습니다.</p>
 
-<p>버전 관리에서 제외하고 싶은 파일들을 Git의 변경 내력 추적에서 제외하려면 <strong>.gitignore</strong> 파일을 만들면 됩니다. <sup id="fnref:Shako" role="doc-noteref"><a href="#fn:Shako" class="footnote">2</a></sup> Git은 해당 폴더의 <strong>.gitignore</strong> 파일에 적혀있는 파일들을 버전 관리에서 제외합니다. <sup id="fnref:ProGit_1" role="doc-noteref"><a href="#fn:ProGit_1" class="footnote">3</a></sup></p>
+<p>버전 관리에서 제외하고 싶은 파일들을 Git의 변경 내력 추적에서 제외하려면 <strong>.gitignore</strong> 파일을 만들면 됩니다. <sup id="fnref:Shako" role="doc-noteref"><a href="#fn:Shako" class="footnote" rel="footnote">2</a></sup> Git은 해당 폴더의 <strong>.gitignore</strong> 파일에 적혀있는 파일들을 버전 관리에서 제외합니다. <sup id="fnref:ProGit_1" role="doc-noteref"><a href="#fn:ProGit_1" class="footnote" rel="footnote">3</a></sup></p>
 
 <blockquote>
-  <p>macOS 에서 파일 이름 앞의 <code class="highlighter-rouge">.</code>은 숨김 파일을 의미합니다. 따라서 <strong>.gitignore</strong> 파일은 보통은 보이지 않으며 터미널에서 <code class="highlighter-rouge">$ ls -al</code> 같은 명령을 입력해야 볼 수 있습니다. 이는 <strong>.gitignore</strong> 파일을 함부로 고치는 것을 막기 위한 조치로 보입니다.</p>
+  <p>macOS 에서 파일 이름 앞의 <code class="language-plaintext highlighter-rouge">.</code>은 숨김 파일을 의미합니다. 따라서 <strong>.gitignore</strong> 파일은 보통은 보이지 않으며 터미널에서 <code class="language-plaintext highlighter-rouge">$ ls -al</code> 같은 명령을 입력해야 볼 수 있습니다. 이는 <strong>.gitignore</strong> 파일을 함부로 고치는 것을 막기 위한 조치로 보입니다.</p>
 </blockquote>
 
-<p><strong>.gitignore</strong> 파일에 기록할 내용들은 개발자마다 다르고 개발 언어마다 다르겠지만, <a href="https://github.com">GitHub</a> 에서 친절하게 사실상 거의 모든 언어에 대한 <strong>.gitignore</strong> 파일을 미리 만들어서 <a href="https://github.com/github/gitignore">github/gitignore</a> 라는 저장소(repository)에 올려 두었습니다. <sup id="fnref:github_gitignore" role="doc-noteref"><a href="#fn:github_gitignore" class="footnote">4</a></sup> 따라서 우리는 이 자료를 고맙게 사용하면 됩니다.</p>
+<p><strong>.gitignore</strong> 파일에 기록할 내용들은 개발자마다 다르고 개발 언어마다 다르겠지만, <a href="https://github.com">GitHub</a> 에서 친절하게 사실상 거의 모든 언어에 대한 <strong>.gitignore</strong> 파일을 미리 만들어서 <a href="https://github.com/github/gitignore">github/gitignore</a> 라는 저장소(repository)에 올려 두었습니다. <sup id="fnref:github_gitignore" role="doc-noteref"><a href="#fn:github_gitignore" class="footnote" rel="footnote">4</a></sup> 따라서 우리는 이 자료를 고맙게 사용하면 됩니다.</p>
 
 <p>보통은 이 자료를 그대로 사용해도 문제가 없으며, 제 개인적으로도 현재까지 GitHub에 있는 <strong>.gitignore</strong> 파일을 그대로 사용해서 문제가 생겼던 적은 없었습니다.</p>
 
@@ -22,37 +22,37 @@
 
 <p>Xcode 및 Swift 개발 과정에서 <strong>.gitignore</strong> 파일에 작성해야 할 내용은 github/gitignore 저장소의 <a href="https://github.com/github/gitignore/blob/master/Swift.gitignore">Swift.gitignore</a> 파일에 정리되어 있습니다.</p>
 
-<p>또 github/gitignore 저장소에 가보면 Swift.gitignore 파일외에도 하위 폴더인 <a href="https://github.com/github/gitignore/tree/master/Global">Global</a> 폴더에 <a href="https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore">Xcode.gitignore</a> 파일이 따로 존재하는 것을 볼 수 있습니다. <sup id="fnref:GitIgnore" role="doc-noteref"><a href="#fn:GitIgnore" class="footnote">5</a></sup></p>
+<p>또 github/gitignore 저장소에 가보면 Swift.gitignore 파일외에도 하위 폴더인 <a href="https://github.com/github/gitignore/tree/master/Global">Global</a> 폴더에 <a href="https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore">Xcode.gitignore</a> 파일이 따로 존재하는 것을 볼 수 있습니다. <sup id="fnref:GitIgnore" role="doc-noteref"><a href="#fn:GitIgnore" class="footnote" rel="footnote">5</a></sup></p>
 
-<p>확인해 봤을 때, Swift.gitignore 파일은 Xcode.gitignore 파일의 내용을 모두 포함하고 있는 것 같으므로, 실제로는 Swift.gitignore 파일만 사용하면 될 것 같습니다. <sup id="fnref:Question" role="doc-noteref"><a href="#fn:Question" class="footnote">6</a></sup></p>
+<p>확인해 봤을 때, Swift.gitignore 파일은 Xcode.gitignore 파일의 내용을 모두 포함하고 있는 것 같으므로, 실제로는 Swift.gitignore 파일만 사용하면 될 것 같습니다. <sup id="fnref:Question" role="doc-noteref"><a href="#fn:Question" class="footnote" rel="footnote">6</a></sup></p>
 
 <p>이제 자신의 <strong>.git</strong> 이 있는 폴더에 가서 <strong>.gitignore</strong> 파일을 만들고 내용을 Swift.gitignore 파일 처럼 만듭니다. 아니면 Swift.gitignore 파일을 다운받고 이름을 <strong>.gitignore</strong> 로 바꿔도 됩니다.</p>
 
-<p>저는 <code class="highlighter-rouge">$ vi .gitignore</code> 명령을 사용하여 파일을 만들고, Swift.gitignore 파일의 내용을 복사하는 편입니다.</p>
+<p>저는 <code class="language-plaintext highlighter-rouge">$ vi .gitignore</code> 명령을 사용하여 파일을 만들고, Swift.gitignore 파일의 내용을 복사하는 편입니다.</p>
 
 <h4 id="python-및-장고django-의-경우">Python 및 장고(Django) 의 경우</h4>
 
 <p>Python 의 경우, github/gitignore 저장소에 있는 <a href="https://github.com/github/gitignore/blob/master/Python.gitignore">Python.gitignore</a> 파일을 사용하면 되는데, 이 파일에는 장고(Django) 와 관련한 부분도 이미 있습니다.</p>
 
-<p>다만 장고의 경우, 장고 개발팀이 직접 GitHub 의 <a href="https://github.com/django/django">django/django</a> 라는 저장소에 소스를 올려두었는데, 여기에 있는 <a href="https://github.com/django/django/blob/master/.gitignore">.gitignore</a> 파일을 참고해도 좋을 것 같습니다. <sup id="fnref:github-django" role="doc-noteref"><a href="#fn:github-django" class="footnote">7</a></sup></p>
+<p>다만 장고의 경우, 장고 개발팀이 직접 GitHub 의 <a href="https://github.com/django/django">django/django</a> 라는 저장소에 소스를 올려두었는데, 여기에 있는 <a href="https://github.com/django/django/blob/master/.gitignore">.gitignore</a> 파일을 참고해도 좋을 것 같습니다. <sup id="fnref:github-django" role="doc-noteref"><a href="#fn:github-django" class="footnote" rel="footnote">7</a></sup></p>
 
 <h3 id="gitignore-파일로-제외할-수-없는-파일-제외하기">.gitignore 파일로 제외할 수 없는 파일 제외하기</h3>
 
 <p><strong>.gitignore</strong> 은 앞으로 Git 버전 관리에서 제외할 파일 목록을 지정하는 파일입니다. 따라서 이미 버전 관리에 포함되어 있는 파일들을 <strong>.gitigore</strong> 파일에 기록한다고 해서 Git이 알아서 버전 관리에서 제외 하지는 않습니다.</p>
 
-<p>이럴 경우에는 수동으로 해당 파일들을 버전 관리에서 제외시켜줘야 합니다. Git 버전 관리에서 수동으로 파일을 제외하려면 아래와 같이 <code class="highlighter-rouge">$ git rm --cached</code> 명령어를 사용합니다.</p>
+<p>이럴 경우에는 수동으로 해당 파일들을 버전 관리에서 제외시켜줘야 합니다. Git 버전 관리에서 수동으로 파일을 제외하려면 아래와 같이 <code class="language-plaintext highlighter-rouge">$ git rm --cached</code> 명령어를 사용합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git rm --cached .../UserInterfaceState.xcuserstate
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git rm --cached .../UserInterfaceState.xcuserstate
 </code></pre></div></div>
 
-<p>위의 예제는 Xcode의 레이아웃 관리 파일을 제거하는 예제입니다. <sup id="fnref:Kyejusung" role="doc-noteref"><a href="#fn:Kyejusung" class="footnote">8</a></sup> <code class="highlighter-rouge">$ git rm</code> 명령을 사용하면 실제 파일도 삭제하지만, <code class="highlighter-rouge">$ git rm --cached</code> 명령을 상요하면 실제 파일은 삭제하지 않고 Git의 버전 관리에서만 제외한다는 의미를 가집니다. <sup id="fnref:ProGit_2" role="doc-noteref"><a href="#fn:ProGit_2" class="footnote">9</a></sup></p>
+<p>위의 예제는 Xcode의 레이아웃 관리 파일을 제거하는 예제입니다. <sup id="fnref:Kyejusung" role="doc-noteref"><a href="#fn:Kyejusung" class="footnote" rel="footnote">8</a></sup> <code class="language-plaintext highlighter-rouge">$ git rm</code> 명령을 사용하면 실제 파일도 삭제하지만, <code class="language-plaintext highlighter-rouge">$ git rm --cached</code> 명령을 상요하면 실제 파일은 삭제하지 않고 Git의 버전 관리에서만 제외한다는 의미를 가집니다. <sup id="fnref:ProGit_2" role="doc-noteref"><a href="#fn:ProGit_2" class="footnote" rel="footnote">9</a></sup></p>
 
-<p>그리고 위의 명령을 실행한 다음에 이어서 아래와 같이 commit 까지 해주면 Git에서 해당 파일을 버전 관리에서 제외합니다. <sup id="fnref:Asata" role="doc-noteref"><a href="#fn:Asata" class="footnote">10</a></sup></p>
+<p>그리고 위의 명령을 실행한 다음에 이어서 아래와 같이 commit 까지 해주면 Git에서 해당 파일을 버전 관리에서 제외합니다. <sup id="fnref:Asata" role="doc-noteref"><a href="#fn:Asata" class="footnote" rel="footnote">10</a></sup></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git commit -m "some message"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git commit -m "some message"
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">$ git rm --cached</code> 만 하고 commit 을 하지 않으면, 아직 staged 상태라 버전 관리에서 완전히 빠지지 않으므로 깜빡하지 않도록 주의가 필요합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">$ git rm --cached</code> 만 하고 commit 을 하지 않으면, 아직 staged 상태라 버전 관리에서 완전히 빠지지 않으므로 깜빡하지 않도록 주의가 필요합니다.</p>
 
 <h3 id="고찰-하기">고찰 하기</h3>
 
@@ -61,7 +61,7 @@
 <p>각각의 파일들에 대해서 더 깊게 안다면 자신의 상황에 맞게 <strong>.gitignore</strong> 파일을 최적화할 수 있을 것입니다.</p>
 
 <blockquote>
-  <p>일단 참고 자료에 따르면 <strong>.dSYM</strong> 파일은 Debug Symbols file 의 줄임말로 앱의 디버그 심볼들을 저장하는 파일이라고 합니다. <sup id="fnref:LLDB" role="doc-noteref"><a href="#fn:LLDB" class="footnote">11</a></sup> 아직까지는 설명을 봐도 감이 잘 오지 않는 것 같습니다.</p>
+  <p>일단 참고 자료에 따르면 <strong>.dSYM</strong> 파일은 Debug Symbols file 의 줄임말로 앱의 디버그 심볼들을 저장하는 파일이라고 합니다. <sup id="fnref:LLDB" role="doc-noteref"><a href="#fn:LLDB" class="footnote" rel="footnote">11</a></sup> 아직까지는 설명을 봐도 감이 잘 오지 않는 것 같습니다.</p>
 
   <p>나중에 기회가 되면 Xcode 프로젝트 관련 파일들에 대해서도 정리하도록 할 예정입니다.</p>
 </blockquote>
@@ -89,7 +89,7 @@
       <p>온라인에 공개된 <strong>ProGit</strong> 책의 2장 <a href="https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기">파일 무시하기</a> 부분을 보면 .gitignore에 대한 설명이 잘 나와있습니다. Git 관련 설명은 이 책보다 좋은 자료가 없는 것 같습니다. 언젠가 기회가 되면 간단하게 Git 사용법에 대한 내용도 정리해 볼 예정입니다. <a href="#fnref:ProGit_1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:github_gitignore" role="doc-endnote">
-      <p>GitHub의 <a href="https://github.com/github/gitignore">github/gitignore</a> 저장소(repository)에는 Swift 뿐만 아니라 현존하는 거의 모든 프로그래밍 언어와 프로그래밍 도구에서 필요한 <code class="highlighter-rouge">.gitignore</code> 파일이 정리되어 있습니다. 괜히 GitHub가 아닌 것 같습니다. <a href="#fnref:github_gitignore" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>GitHub의 <a href="https://github.com/github/gitignore">github/gitignore</a> 저장소(repository)에는 Swift 뿐만 아니라 현존하는 거의 모든 프로그래밍 언어와 프로그래밍 도구에서 필요한 <code class="language-plaintext highlighter-rouge">.gitignore</code> 파일이 정리되어 있습니다. 괜히 GitHub가 아닌 것 같습니다. <a href="#fnref:github_gitignore" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:GitIgnore" role="doc-endnote">
       <p>Swift.gitignore 파일은 <a href="https://github.com/github/gitignore/blob/master/Swift.gitignore">github/gitignore/Swift.gitignore</a> 이며, Xcode.gitignore 파일은 <a href="https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore">gitignore/Global/Xcode.gitignore</a> 입니다. <a href="#fnref:GitIgnore" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
@@ -104,7 +104,7 @@
       <p>토미님의 블로그 글 <a href="http://kyejusung.com/2016/06/git-gitignore로-tracking-제외할-수-없는-파일-제외하기/">gitignore로 tracking 제외할 수 없는 파일 제외하기</a>을 보면 UserInterfaceState .xcuserstate 파일은 Xcode 프로젝트의 워크스페이스나 프로젝트 네비게이션 바에서 도큐먼트 레이아웃 정보를 관리하는 파일이라고 합니다. 즉, 우리가 Xcode에서 특정 파일을 열어 보기만 해도 변경되는 파일이라고 볼 수 있습니다. <a href="#fnref:Kyejusung" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:ProGit_2" role="doc-endnote">
-      <p>ProGit 책의 2장 <a href="https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기">파일 삭제하기</a> 부분을 보면 <code class="highlighter-rouge">git rm</code>  및 <code class="highlighter-rouge">git rm --cached</code> 명령에 대해서 설명이 잘 되어 있습니다. <a href="#fnref:ProGit_2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>ProGit 책의 2장 <a href="https://git-scm.com/book/ko/v2/Git의-기초-수정하고-저장소에-저장하기">파일 삭제하기</a> 부분을 보면 <code class="language-plaintext highlighter-rouge">git rm</code>  및 <code class="language-plaintext highlighter-rouge">git rm --cached</code> 명령에 대해서 설명이 잘 되어 있습니다. <a href="#fnref:ProGit_2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:Asata" role="doc-endnote">
       <p>아사타님의 블로그 글 <a href="http://asata.pe.kr/504">github에서 ignore 안되는 파일 제거하기~~~</a>에 설명이 되어 있습니다. <a href="#fnref:Asata" class="reversefootnote" role="doc-backlink">&#8617;</a></p>

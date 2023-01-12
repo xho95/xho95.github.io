@@ -1,72 +1,72 @@
-I"�!<p>여기서는 Git의 사용법에 대해서 정리하도록 합니다. 아직은 관련 링크만 연결해두었지만 차차 내용을 정리할 생각입니다.</p>
+I"�#<p>여기서는 Git의 사용법에 대해서 정리하도록 합니다. 아직은 관련 링크만 연결해두었지만 차차 내용을 정리할 생각입니다.</p>
 
 <h3 id="git-기본-명령어들">Git 기본 명령어들</h3>
 
-<p>터미널에서 <code class="highlighter-rouge">git --help</code>를 입력하면 기본 사용법이 나오는데, 이 때 기본 명령어들에 대한 간단한 설명들이 나옵니다.</p>
+<p>터미널에서 <code class="language-plaintext highlighter-rouge">git --help</code>를 입력하면 기본 사용법이 나오는데, 이 때 기본 명령어들에 대한 간단한 설명들이 나옵니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git --help
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git --help
 </code></pre></div></div>
 
 <h4 id="작업-공간-시작하기">작업 공간 시작하기</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">clone</code> : 원격 저장소를 지역 디렉토리에 복제합니다.</li>
-  <li><code class="highlighter-rouge">init</code> : 비어있는 Git 저장소를 만들거나 기존에 있던 것을 초기화합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">clone</code> : 원격 저장소를 지역 디렉토리에 복제합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">init</code> : 비어있는 Git 저장소를 만들거나 기존에 있던 것을 초기화합니다.</li>
 </ul>
 
 <blockquote>
-  <p><code class="highlighter-rouge">git help tutorial</code>의 결과도 살펴볼 필요가 있습니다.</p>
+  <p><code class="language-plaintext highlighter-rouge">git help tutorial</code>의 결과도 살펴볼 필요가 있습니다.</p>
 </blockquote>
 
 <h4 id="현재의-변경에서-작업하기">현재의 변경에서 작업하기</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">add</code> : 파일 변경 내용을 인덱스에 추가합니다.</li>
-  <li><code class="highlighter-rouge">mv</code> : 파일, 디렉토리, 또는 (연결)링크를 옮기거나 이름을 변경합니다.</li>
-  <li><code class="highlighter-rouge">reset</code> : 현재 <strong>HEAD</strong> 를 특정한 상태로 재설정합니다.</li>
-  <li><code class="highlighter-rouge">rm</code> : 파일들을 작업 트리와 인덱스에서 제거합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code> : 파일 변경 내용을 인덱스에 추가합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">mv</code> : 파일, 디렉토리, 또는 (연결)링크를 옮기거나 이름을 변경합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">reset</code> : 현재 <strong>HEAD</strong> 를 특정한 상태로 재설정합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">rm</code> : 파일들을 작업 트리와 인덱스에서 제거합니다.</li>
 </ul>
 
 <blockquote>
-  <p><code class="highlighter-rouge">git help everyday</code>의 결과도 살펴볼 필요가 있습니다.</p>
+  <p><code class="language-plaintext highlighter-rouge">git help everyday</code>의 결과도 살펴볼 필요가 있습니다.</p>
 </blockquote>
 
 <h4 id="변경-내력과-상태를-검사하기">변경 내력과 상태를 검사하기</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">bisect</code> : 버그를 알리는 커밋을 찾기 위해 이진 트리를 사용합니다.</li>
-  <li><code class="highlighter-rouge">grep</code> : 패턴과 들어맞는 라인들을 출력합니다.</li>
-  <li><code class="highlighter-rouge">log</code> : 커밋 로그들을 보여줍니다.</li>
-  <li><code class="highlighter-rouge">show</code> : 다양한 타입의 객체들을 보여줍니다.</li>
-  <li><code class="highlighter-rouge">status</code> : 작업 트리의 상태를 보여줍니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">bisect</code> : 버그를 알리는 커밋을 찾기 위해 이진 트리를 사용합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">grep</code> : 패턴과 들어맞는 라인들을 출력합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">log</code> : 커밋 로그들을 보여줍니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">show</code> : 다양한 타입의 객체들을 보여줍니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">status</code> : 작업 트리의 상태를 보여줍니다.</li>
 </ul>
 
 <blockquote>
-  <p><code class="highlighter-rouge">git help revisions</code>의 결과도 살펴볼 필요가 있습니다.</p>
+  <p><code class="language-plaintext highlighter-rouge">git help revisions</code>의 결과도 살펴볼 필요가 있습니다.</p>
 </blockquote>
 
 <h4 id="변경-내력을-키우고-표시하고-비틀기">변경 내력을 키우고, 표시하고, 비틀기</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">branch</code> : 브랜치들을 나열하고, 만들고, 또는 지웁니다.</li>
-  <li><code class="highlighter-rouge">checkout</code> : 브랜치들을 바꾸거나 작업 트리 파일들을 재저장합니다.</li>
-  <li><code class="highlighter-rouge">commit</code> : 변경 사항들을 저장소에 기록합니다.</li>
-  <li><code class="highlighter-rouge">diff</code> : 커밋들 또는 커밋과 작업 트리 사이의 변경 사항을 보여줍니다.</li>
-  <li><code class="highlighter-rouge">merge</code> : 두 개 또는 다수의 개발 변경 내력을 서로 합칩니다.</li>
-  <li><code class="highlighter-rouge">rebase</code> : Forward-port local commits to the updated upstream head (아직 뭐라고 번역해야할지 모르겠습니다. ㅜㅜ)</li>
-  <li><code class="highlighter-rouge">tag</code> : GPG로 표기된 태그 객체를 만들고, 나열하고, 지우고, 또는 확인합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">branch</code> : 브랜치들을 나열하고, 만들고, 또는 지웁니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">checkout</code> : 브랜치들을 바꾸거나 작업 트리 파일들을 재저장합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">commit</code> : 변경 사항들을 저장소에 기록합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">diff</code> : 커밋들 또는 커밋과 작업 트리 사이의 변경 사항을 보여줍니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">merge</code> : 두 개 또는 다수의 개발 변경 내력을 서로 합칩니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">rebase</code> : Forward-port local commits to the updated upstream head (아직 뭐라고 번역해야할지 모르겠습니다. ㅜㅜ)</li>
+  <li><code class="language-plaintext highlighter-rouge">tag</code> : GPG로 표기된 태그 객체를 만들고, 나열하고, 지우고, 또는 확인합니다.</li>
 </ul>
 
 <h4 id="협업하기">협업하기</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">fetch</code> : 다른 저장소에서 객체들과 참조들을 다운로드 합니다.</li>
-  <li><code class="highlighter-rouge">pull</code> : 다른 저장소나 브랜치에서 fetch를 하고 취합합니다.</li>
-  <li><code class="highlighter-rouge">push</code> : 원격 참조들을 관련된 객체들을 가지고서 업데이트 합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">fetch</code> : 다른 저장소에서 객체들과 참조들을 다운로드 합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">pull</code> : 다른 저장소나 브랜치에서 fetch를 하고 취합합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">push</code> : 원격 참조들을 관련된 객체들을 가지고서 업데이트 합니다.</li>
 </ul>
 
 <blockquote>
-  <p><code class="highlighter-rouge">git help workflows</code>의 결과도 살펴볼 필요가 있습니다.</p>
+  <p><code class="language-plaintext highlighter-rouge">git help workflows</code>의 결과도 살펴볼 필요가 있습니다.</p>
 </blockquote>
 
 <h3 id="고찰하기">고찰하기</h3>

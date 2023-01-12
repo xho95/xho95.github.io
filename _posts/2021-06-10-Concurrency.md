@@ -7,6 +7,7 @@ categories: Swift Language Grammar Concurrency
 ---
 
 > Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Concurrency](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Conccurency] 을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{: .info-gray }
 
 ## Concurrency (동시성)
 
@@ -17,7 +18,8 @@ categories: Swift Language Grammar Concurrency
 이 장 나머지에선 이 일반적인 조합의 비동기 및 병렬 코드를 _동시성 (concurrency)_ 이란 용어로 참조합니다.
 
 > 이전에 동시성 코드를 작성해봤으면, 쓰레드 작업이 익숙할지 모릅니다. 스위프트의 동시성 모델은 쓰레드 위에서 제작되었지만, (우리가 쓰레드를) 직접 사용하진 않습니다.[^threads] 스위프트의 비동기 함수는 자신이 실행 중인 쓰레드를 포기하여, (이) 첫 번째 함수를 차단하는 동안 그 쓰레드에서 다른 비동기 함수를 실행하게 할 수 있습니다.
-
+{: .note }
+
 스위프트 언어가 지원하는 걸 사용하지 않고도 동시성 코드 작성이 가능하긴 하지만, 그런 코드는 더 이해하기 어려운 경향이 있습니다. 예를 들어, 다음 코드는 사진 목록을 내려받고, 그 목록의 첫 번째 사진을 내려받아서, 사용자에게 사진을 보여줍니다:
 
 ```swift
@@ -77,13 +79,14 @@ show(photo)
 * 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보는 것처럼, 떼어낸 하위 임무 (detached child task) 안에 있는 코드
 
 > [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 단순한 코드를 작성하여 동시성 작업 방식을 익히고자 할 때 유용합니다. 이 메소드는, 반환 전에 적어도 주어진 나노 초 만큼을 기다리는 외엔, 아무 것도 하지 않습니다. 다음은 `sleep()` 을 사용하여 네트웍 연산의 기다림을 모의 실험하는 `listPhotos(inGallery:)` 함수 버전입니다.
-> 
+>
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
   await Task.sleep(2 * 1_000_000_000)  // 2초
   return ["IMG001", "IMG99", "IMG0404"]
 }
 ```
+{: .note }
 
 ### Asynchronous Sequences (비동기 시퀀스)
 

@@ -8,7 +8,7 @@
 # A sentence like as "xho95 = Programmer(with: Swift)" can't use with Jekyll.
 
 # Site settings
-title: xho95 (소중한꿈)'s Swift Life
+title: xho95's Swift Life
 email: xho1995@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   let me = Programmer(with: .swift)
@@ -55,24 +55,17 @@ production_url : https://xho95.github.io
 #  extensions: ["tables", "autolink", "strikethrough", "space_after_header", "fenced_code_blocks", "footnotes"]
 
 markdown: kramdown
-# theme: just-the-docs
-remote-theme: just-the-docs
-
-search_enabled: true
-search.heading_level: 2
-search.tokenizer_separator: /[\s/]+/
-
-collections:
-  # Define a collection named "tests", its documents reside in the "_tests" directory
-  posts:
-    # permalink: "/:collection/:path/"
-    output: true
 
 kramdown:
   input: GFM
   syntax_highlighter: rouge
   auto_ids: true
 
+collections:
+  # Define a collection named "tests", its documents reside in the "_tests" directory
+  posts:
+    # permalink: "/:collection/:path/"
+    output: true
 
 plugins:
   - jekyll-feed
@@ -84,3 +77,36 @@ disqus: xho95githubio
 
 # google search console
 google_verification: JM4y4DtsPxlc9mu0woL1luHlLdgkNbgJMUWf2zBbTJc
+
+# Just the Docs
+theme: just-the-docs
+# remote_theme: just-the-docs/just-the-docs
+# remote_theme: just-the-docs
+
+# Collections 
+just_the_docs:
+  collections:
+    posts:
+      name: Posts
+
+# Callouts
+# callouts_opacity: 0.15
+# callouts_level: loud
+
+# callouts:
+#  custom:
+#    title: Custom
+#    color: pink
+#  warning:
+#    title: Warning
+#    color: red
+
+# aux_links: 
+#  "About":
+#    - "/about/"
+
+# search
+search_enabled: true
+search.heading_level: 2
+search.tokenizer_separator: /[\s/]+/
+

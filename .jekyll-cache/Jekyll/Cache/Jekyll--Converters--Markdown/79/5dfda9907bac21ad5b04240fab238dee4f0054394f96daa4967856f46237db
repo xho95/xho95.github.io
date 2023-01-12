@@ -1,4 +1,4 @@
-I"�<p>리눅스에서 Swift 로 프로그램을 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 <a href="https://www.raywenderlich.com">Ray Wenderlich</a> <sup id="fnref:raywenderlich" role="doc-noteref"><a href="#fn:raywenderlich" class="footnote">1</a></sup> 라는 곳에서 <a href="http://perfect.org/">Perfect</a> <sup id="fnref:perfect" role="doc-noteref"><a href="#fn:perfect" class="footnote">2</a></sup> 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.</p>
+I"�<p>리눅스에서 Swift 로 프로그램을 개발할 수 있음은 몇 번 말씀드린 적이 있습니다. 하지만 당장 Swift 로 무엇을 할지 고민하던 차에 마침 <a href="https://www.raywenderlich.com">Ray Wenderlich</a> <sup id="fnref:raywenderlich" role="doc-noteref"><a href="#fn:raywenderlich" class="footnote" rel="footnote">1</a></sup> 라는 곳에서 <a href="http://perfect.org/">Perfect</a> <sup id="fnref:perfect" role="doc-noteref"><a href="#fn:perfect" class="footnote" rel="footnote">2</a></sup> 프레임웍을 사용하여 Swift 로 서버를 제작하는 방법을 정리한 동영상 강좌를 공개하였습니다.</p>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
