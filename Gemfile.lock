@@ -94,7 +94,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
   jekyll-redirect-from
   jekyll-remote-theme
-  just-the-docs (~> 0.3)
+  just-the-docs
   rouge (~> 4.0)
   tzinfo-data
   webrick (~> 1.7)
