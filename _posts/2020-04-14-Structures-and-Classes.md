@@ -143,11 +143,11 @@ let hd = Resolution(width : 1920, height : 1080)
 var cinema = hd
 ```
 
-이 예제는 `hd` 라는 상수를 선언하고 `Resolution` 인스턴스를 설정하는데 이는 **Full HD** 영상 너비와 높이 (1920 픽셀 너비와 1080 픽셀 높이) 로 초기화된 겁니다.
+이 예제는 `hd` 라는 상수를 선언하고 여기에 **Full HD** 영상의 너비와 높이 (1920 픽셀 너비와 1080 픽셀 높이) 로 초기화된 `Resolution` 인스턴스를 설정합니다.
 
-그런 다음 `cinema` 라는 변수를 선언하고 현재의 `hd` 값을 설정합니다. `Resolution` 은 구조체이기 때문에, 기존 인스턴스의 _복사본 (copy)_ 을 만들며, 이 새 복사본을 `cinema` 에 할당합니다. 이제 `hd` 와 `cinema` 의 너비와 높이가 똑같을지라도, 이들의 이면은 서로 완전히 다른 두 개의 인스턴스입니다.
+그런 다음 `cinema` 라는 변수를 선언하고 여기엔 현재 `hd` 값을 설정합니다. `Resolution` 은 구조체이기 때문에, 기존 인스턴스의 _복사본 (copy)_ 이 만들어지고, 이 새 복사본을 `cinema` 에 할당합니다. 이제 `hd` 와 `cinema` 가 똑같은 너비와 높이일지라도, 이들의 이면은 완전히 다른 두 인스턴스입니다.
 
-그 다음, 디지털 영화 송출에 사용하는 살짝 더 넓은 2K 표준 너비 (2048 픽셀 너비와 1080 픽셀 높이) 로 `cinema` 의 `width` 속성을 정정합니다:
+그 다음, `cinema` 의 `width` 속성을 조금 고쳐서 디지털 영화 송출에 쓰는 살짝 더 넓은 **2K** 표준 (2048 픽셀 너비와 1080 픽셀 높이) 의 너비가 되게 합니다:
 
 ```swift
 cinema.width = 2048
@@ -160,7 +160,7 @@ print("cinema is now \(cinema.width) pixels wide")
 // "cinema is now 2048 pixels wide" 를 인쇄함
 ```
 
-하지만, 원본 `hd` 인스턴스의 `width` 속성은 여전히 `1920` 이라는 예전 값을 가집니다:
+하지만, 원본 `hd` 인스턴스의 `width` 속성엔 여전히 예전 값인 `1920` 이 있습니다:
 
 ```swift
 print("hd is still \(hd.width) pixels wide")
