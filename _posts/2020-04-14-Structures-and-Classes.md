@@ -167,11 +167,11 @@ print("hd is still \(hd.width) pixels wide")
 // "hd is still 1920 pixels wide" 를 인쇄함
 ```
 
-`cinema` 에 현재 `hd` 값이 주어질 땐, `hd` 에 저장된 _값 (values)_ 이 새 `cinema` 인스턴스로 복사됩니다. 끝 결과는 완전히 분리된 두 개의 인스턴스로 동일한 수치 값을 담은  하지만, 분리된 인스턴스이기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비를 `2048` 로 설정하는 건 `hd` 에 저장한 너비에 영향을 주지 않습니다:
+`cinema` 에 현재 `hd` 값이 주어질 때, `hd` 의 저장 _값 (values)_ 이 새 `cinema` 인스턴스로 복사됩니다. 끝의 결과는 똑같은 수치 값이 담긴 완전히 분리된 두 개의 인스턴스입니다. 하지만, 분리된 인스턴스기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비에 `2048` 을 설정하는 건 `hd` 가 저장한 너비에는 영향이 없습니다:
 
 ![an copy of the value type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
 
-열거체 동작도 똑같이 적용됩니다:
+열거체에 적용되는 동작도 똑같습니다:
 
 ```swift
 enum CompassPoint {
@@ -190,7 +190,7 @@ print("The remembered direction is \(rememberedDirection)")
 // "The remembered direction is west" 를 인쇄함
 ```
 
-`rememberedDirection` 에 `currentDirection` 값을 할당할 땐, 실제로는 그 값의 복사본을 설정합니다. 그 후에 `currentDirection` 값을 바꾸는 건 `rememberedDirection` 에 저장된 원본 값의 복사본에 영향을 주지 않습니다.
+`rememberedDirection` 에 `currentDirection` 값을 할당할 때, 실제로는 그 값의 복사본을 설정합니다. 그 후에 `currentDirection` 값을 바꾸는 건 `rememberedDirection` 가 저장한 원본 값의 복사본에는 영향을 주지 않습니다.
 
 ### Classes Are Reference Types (클래스는 참조 타입입니다)
 
