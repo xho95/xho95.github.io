@@ -167,7 +167,7 @@ print("hd is still \(hd.width) pixels wide")
 // "hd is still 1920 pixels wide" 를 인쇄함
 ```
 
-`cinema` 에 현재 `hd` 값을 줄 땐, `hd` 에 저장한 _값 (values)_ 을 새로운 `cinema` 인스턴스로 복사합니다. 끝단의 결과는 동일한 수치 값을 담은 완전히 분리된 두 인스턴스입니다. 하지만, 분리된 인스턴스이기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비를 `2048` 로 설정하는 건 `hd` 에 저장한 너비에 영향을 주지 않습니다:
+`cinema` 에 현재 `hd` 값이 주어질 땐, `hd` 에 저장된 _값 (values)_ 이 새 `cinema` 인스턴스로 복사됩니다. 끝 결과는 완전히 분리된 두 개의 인스턴스로 동일한 수치 값을 담은  하지만, 분리된 인스턴스이기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비를 `2048` 로 설정하는 건 `hd` 에 저장한 너비에 영향을 주지 않습니다:
 
 ![an copy of the value type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
 
