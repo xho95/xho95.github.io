@@ -128,26 +128,26 @@ let vga = Resolution(width: 640, height: 480)
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 
-_값 타입 (value type)_ 은 변수나 상수에 할당할 때나, 함수에 전달할 때, 값을 _복사하는 (copied)_ 타입입니다.
+_값 타입 (value type)_ 은 변수나 상수에 할당할 때, 또는 함수로 전달할 때, 자신의 값을 _복사하는 (copied)_ 타입입니다.
 
-실제로 이전 장들 전반에 걸쳐 광범위하게 값 타입을 사용해왔습니다. 사실, 스위프트의 모든 기본 타입-정수, 부동 소수점 수, 불리언 (Booleans), 문자열, 배열, 및 딕셔너리-는 값 타입이며, 그 이면은 구조체로 구현되어 있습니다.
+실제로 이전 장들 내내 값 타입을 광범위하게 썼습니다. 사실, 스위프트의 모든 기본 타입인-정수와, 부동 소수점 수, 불리언, 문자열, 배열, 및 딕셔너리-는 값 타입으로, 그 이면엔 구조체로 구현되어 있습니다.
 
-스위프트에서 모든 구조체와 열거체는 값 타입입니다. 이는 생성한 어떤 구조체와 열거체 인스턴스든-그리고 이들이 속성으로 가진 어떤 값 타입이든-코드에서 전달할 때 항상 복사된다는 의미입니다.
+스위프트에서 모든 구조체와 열거체는 값 타입입니다. 이것의 의미는 어떤 구조체와 열거체 인스턴스를 생성하든-그리고 어떤 값 타입을 속성으로 가지든-이들을 코드 주변으로 전달할 땐 항상 복사된다는 겁니다.
 
-> 배열, 딕셔너리, 및 문자열 같이 표준 라이브러리가 정의하는 집합체 (collections) 는 복사 성능 비용을 감소시키려고 최적화를 합니다. 곧바로 복사하는 대신, 이 집합체들은 원소가 저장된 메모리를 원본 인스턴스와 복사본 사이에 공유합니다. 집합체의 한 복사본을 수정하면, 수정 직전에 원소를 복사합니다. 코드의 동작은 마치 항상 복사가 곧바로 일어나는 것처럼 보입니다.
+> 배열과, 딕셔너리, 및 문자열 같이 표준 라이브러리에서 정의한 집합체[^collections] 는 최적화를 써서 복사하기 위한 성능 비용을 감소시킵니다. 곧바로 복사하는 대신, 이러한 집합체는 원본 인스턴스와 복사본이 원소를 저장한 곳의 메모리를 공유합니다. 집합체의 한 복사본을 수정하면, 수정 직전에 원소를 복사합니다. 코드 동작은 마치 항상 곧바로 복사하는 것처럼 보입니다.
 
-이전 예제의 `Resolution` 구조체를 사용한, 다음 예제를 고려해 봅시다:
+이전 예제에 있던 `Resolution` 구조체를 쓴, 다음 예제를 고려해 봅시다:
 
 ```swift
 let hd = Resolution(width : 1920, height : 1080)
 var cinema = hd
 ```
 
-이 예제는 `hd` 라는 상수를 선언하고 여기에 Full HD 영상 너비와 높이 (1920 픽셀 너비와 1080 픽셀 높이) 로 초기화한 `Resolution` 인스턴스를 설정합니다.
+이 예제는 `hd` 라는 상수를 선언하고 여기에 **Full HD** 영상의 너비와 높이 (1920 픽셀 너비와 1080 픽셀 높이) 로 초기화된 `Resolution` 인스턴스를 설정합니다.
 
-그런 다음 `cinema` 라는 변수를 선언하고 여기에 현재 `hd` 값을 설정합니다. `Resolution` 은 구조체이기 때문에, 기존 인스턴스의 _복사본 (copy)_ 을 만들며, 이 새 복사본을  `cinema` 에 할당합니다. 이제 `hd` 와 `cinema` 의 너비와 높이가 똑같을지라도, 이들의 이면은 서로 완전히 다른 두 개의 인스턴스입니다.
+그런 다음 `cinema` 라는 변수를 선언하고 여기엔 현재 `hd` 값을 설정합니다. `Resolution` 은 구조체이기 때문에, 기존 인스턴스의 _복사본 (copy)_ 이 만들어지고, 이 새 복사본을 `cinema` 에 할당합니다. 이제 `hd` 와 `cinema` 가 똑같은 너비와 높이일지라도, 이들의 이면은 완전히 다른 두 인스턴스입니다.
 
-그 다음, 디지털 영화 송출에 사용하는 살짝 더 넓은 2K 표준 너비 (2048 픽셀 너비와 1080 픽셀 높이) 로 `cinema` 의 `width` 속성을 정정합니다:
+그 다음, `cinema` 의 `width` 속성을 조금 고쳐서 디지털 영화 송출에 쓰는 살짝 더 넓은 **2K** 표준 (2048 픽셀 너비와 1080 픽셀 높이) 의 너비가 되게 합니다:
 
 ```swift
 cinema.width = 2048
@@ -160,18 +160,18 @@ print("cinema is now \(cinema.width) pixels wide")
 // "cinema is now 2048 pixels wide" 를 인쇄함
 ```
 
-하지만, 원본 `hd` 인스턴스의 `width` 속성은 여전히 `1920` 이라는 예전 값을 가집니다:
+하지만, 원본 `hd` 인스턴스의 `width` 속성엔 여전히 예전 값인 `1920` 이 있습니다:
 
 ```swift
 print("hd is still \(hd.width) pixels wide")
 // "hd is still 1920 pixels wide" 를 인쇄함
 ```
 
-`cinema` 에 현재 `hd` 값을 줄 땐, `hd` 에 저장한 _값 (values)_ 을 새로운 `cinema` 인스턴스로 복사합니다. 끝단의 결과는 동일한 수치 값을 담은 완전히 분리된 두 인스턴스입니다. 하지만, 분리된 인스턴스이기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비를 `2048` 로 설정하는 건 `hd` 에 저장한 너비에 영향을 주지 않습니다:
+`cinema` 에 현재 `hd` 값이 주어질 때, `hd` 의 저장 _값 (values)_ 이 새 `cinema` 인스턴스로 복사됩니다. 끝의 결과는 똑같은 수치 값이 담긴 완전히 분리된 두 개의 인스턴스입니다. 하지만, 분리된 인스턴스기 때문에, 아래 그림에서 보는 것처럼, `cinema` 너비에 `2048` 을 설정하는 건 `hd` 가 저장한 너비에는 영향이 없습니다:
 
 ![an copy of the value type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-value-type-copy.jpg)
 
-열거체 동작도 똑같이 적용됩니다:
+열거체에 적용되는 동작도 똑같습니다:
 
 ```swift
 enum CompassPoint {
@@ -190,13 +190,13 @@ print("The remembered direction is \(rememberedDirection)")
 // "The remembered direction is west" 를 인쇄함
 ```
 
-`rememberedDirection` 에 `currentDirection` 값을 할당할 땐, 실제로는 그 값의 복사본을 설정합니다. 그 후에 `currentDirection` 값을 바꾸는 건 `rememberedDirection` 에 저장된 원본 값의 복사본에 영향을 주지 않습니다.
+`rememberedDirection` 에 `currentDirection` 값을 할당할 때, 실제로는 그 값의 복사본을 설정합니다. 그 후에 `currentDirection` 값을 바꾸는 건 `rememberedDirection` 가 저장한 원본 값의 복사본에는 영향을 주지 않습니다.
 
 ### Classes Are Reference Types (클래스는 참조 타입입니다)
 
-값 타입과 달리, _참조 타입 (reference types)_ 은 변수나 상수에 할당할 때나, 함수에 전달할 때, 복사하지 _않습니다 (not)_. 복사하기 보단, 기존과 동일한 인스턴스의 참조를 사용합니다.
+값 타입과 달리, _참조 타입 (reference types)_ 은 변수나 상수에 할당할 때, 또는 함수로 전달할 때, 복사되지 _않습니다 (not)_. 복사 보단, 기존과 똑같은 인스턴스로의 참조를 사용합니다.
 
-다음 예제는, 위에서 정의한 `VideoMode` 클래스를 사용합니다:
+위에 정의한 `VideoMode` 클래스를 쓰는, 예는 이렇습니다:
 
 ```swift
 let tenEighty = VideoMode()
@@ -206,29 +206,29 @@ tenEighty.name = "1080i"
 tenEighty.frameRate = 25.0
 ```
 
-이 예제는 `tenEighty` 라는 새로운 상수를 선언하고 여기에 새로운 `VideoMode` 클래스 인스턴스의 참조를 설정합니다. 영상 모드에는 전에 있던 `1920` 너비 `1080` 높이의 HD 해상도 복사본을 할당합니다. 비월 주사 방식 (interlaced) 과, "`1080i`" 라는 이름, 및 초당 `25.0` 프레임이라는 프레임 재생 속도를 설정합니다.
+이 예제는 `tenEighty` 라는 새로운 상수를 선언하고 이게 `VideoMode` 클래스의 새로운 인스턴스를 참조하도록 설정합니다. 영상 모드에는 이전의 `1920` 및 `1080` **HD** 해상도의 복사본을 할당합니다. 비월 주사 방식이고, 이름은 "`1080i`" 이며, 프레임 재생 속도는 초당 `25.0` 프레임이라고 설정합니다.
 
-그 다음, `tenEighty` 에, `alsoTenEighty` 라는, 새로운 상수를 할당하고, `alsoTenEighty` 의 프레임 재생 속도를 수정합니다:
+그 다음, `alsoTenEighty` 라는, 새로운 상수에 `tenEighty` 를 할당하고, `alsoTenEighty` 의 프레임 재생 속도를 수정합니다:
 
 ```swift
 let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
 ```
 
-클래스가 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 둘 다 실제로 _동일한 (same)_ `VideoMode` 인스턴스를 참조합니다. 사실상, 아래 그림에서 보는 것처럼, 이들은 그냥 동일한 단일 인스턴스에 대한 서로 다른 두 이름일 뿐입니다:
+클래스는 참조 타입이기 때문에, `tenEighty` 와 `alsoTenEighty` 는 실제로 둘 다 _똑같은 (same)_ `VideoMode` 인스턴스를 참조합니다. 그 효과로, 아래 그림에서 보듯, 이들은 그냥 단 하나의 똑같은 인스턴스에 대한 서로 다른 두 이름일 뿐입니다:
 
 ![before and after of an reference type](/assets/Swift/Swift-Programming-Language/Structures-and-Classes-reference-type-before-after.jpg)
 
-`tenEighty` 의 `frameRate` 속성을 검사하면 실제 `VideoMode` 인스턴스에 있는 `30.0` 이라는 새로운 프레임 재생 속도를 올바로 보고합니다:
+`tenEighty` 의 `frameRate` 속성을 검사하면 그 밑에 놓인 `VideoMode` 인스턴스로부터 새로운 프레임 재생 속도인 `30.0` 을 올바로 보고한다는 걸 보여줍니다:
 
 ```swift
 print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 // "The frameRate property of tenEighty is now 30.0" 를 인쇄함
 ```
 
-이 예제는 참조 타입을 파악하는 게 얼마나 힘들어질 수 있는 지도 보여줍니다. 프로그램 코드에서 `tenEighty` 와 `alsoTenEighty` 가 멀리 떨어져 있으면, 바뀐 모든 영상 모드 방식을 찾는 게 여러울 수도 있습니다. `tenEighty` 를 사용하는 곳마다, `alsoTenEighty` 를 사용하는 코드에 대해 생각해야 하며, 그 반대도 마찬가집니다. 이와 대조하여, 값 타입은 소스 파일에서 동일 값과 상호 작용하는 모든 코드가 서로 가까이 있기 때문에 더 파악하기 쉽습니다.
+이 예제는 참조 타입의 파악이 얼마나 더 힘들어질 수 있는지도 보여줍니다. `tenEighty` 와 `alsoTenEighty` 가 프로그램 코드에서 멀리 떨어져 있다면, 영상 모드를 바꾸는 모든 방법을 찾는게 어려울 수가 있습니다. `tenEighty` 를 쓰는 곳마다, `alsoTenEighty` 를 쓰는 코드를 생각해야 하며, 그 반대도 마찬가집니다. 이와 대조하여, 값 타입은 파악하기가 더 쉬운데 이는 똑같은 값과 상호 작용할 모든 코드가 소스 파일 안에서 서로 가까이에 있기 때문입니다.
 
-`tenEighty` 와 `alsoTenEighty` 를, 변수 보단, _상수 (constants)_ 로 선언한다는 걸 기억하기 바랍니다. 하지만, `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 를 여전히 바꿀 수 있는데 실제로는 `tenEighty` 와 `alsoTenEighty` 상수 자체의 값이 바뀌지 않기 때문입니다. `tenEighty` 와 `alsoTenEighty` 자체로는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-그 대신, 이면에서 이 둘 다 `VideoMode` 인스턴스를 _참조 (refer)_ 합니다. 바뀌는 건, 그 `VideoMode` 를 참조하는 상수 값이 아니라, 실제 `VideoMode` 에 있는 `frameRate` 속성입니다.
+`tenEighty` 와 `alsoTenEighty` 는, 변수 보단, _상수 (constants)_ 로 선언한다는 걸 기록하기 바랍니다. 하지만, 여전히 `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 를 바꿀 수 있는데 이는 `tenEighty` 와 `alsoTenEighty` 상수 그 자체의 값을 실제로 바꾸진 않기 때문입니다. `tenEighty` 와 `alsoTenEighty` 그 자체는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-그 대신, 이 둘은 모두 그 이면에서 `VideoMode` 인스턴스를 _참조 (refer)_ 합니다. 바뀌는 건 그 밑에 놓인 `VideoMode` 의 `frameRate` 속성이지, 그 `VideoMode` 로의 상수 참조 값이 아닙니다.
 
 #### Identity Operators (식별 연산자)
 
