@@ -6,7 +6,7 @@ layout: default
 
   <h1 class="page-heading">Posts</h1>
 
-  {% for post in site.posts %}
+  {% for post in paginator.posts %}
     {{ post.date | date: "%b %-d, %Y" }} • <a href="https://xho95.github.io{{ post.url }}#disqus_thread">0 Comments</a><br />
     <a class="post-link" href="{{ post.url | prepend: site.baseurl }}"><h2 class="list">{{ post.title }}</h2></a><br />
   {% endfor %}
@@ -19,8 +19,8 @@ layout: default
         <h2><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
       </li>
     {% endfor %}
-  </ul>
--->
+  </ul> -->
+
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

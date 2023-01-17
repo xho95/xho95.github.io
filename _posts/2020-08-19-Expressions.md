@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Expressions (표현식)"
 date:   2020-08-19 11:30:00 +0900

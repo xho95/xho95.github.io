@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Document Revision History (문서를 다듬은 역사)"
 date:   2020-03-16 10:00:00 +0900

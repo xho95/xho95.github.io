@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Apache : macOS 에서 아파치 웹서버 실행하기"
 date:   2016-10-02 11:58:00 +0900

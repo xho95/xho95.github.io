@@ -4,7 +4,6 @@ title: About
 permalink: /about/
 ---
 
-{: .note }
 반갑습니다. **소중한꿈** 입니다.
 
 ### Apps

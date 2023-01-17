@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title: "Swift: Perfect Assistant 로 AWS 에 서버 배포하기"
 date: 2017-03-21 02:00:00 +0900

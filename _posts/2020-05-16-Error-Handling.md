@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Error Handling (에러 처리)"
 date:   2020-05-16 10:00:00 +0900

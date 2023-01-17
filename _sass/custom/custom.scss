@@ -2,7 +2,6 @@
 
 $gray-000: #999999;
 $gray-300: #909090;
-
 /*
 $pink-000: #f77ef1;
 $pink-100: #f967f1;
@@ -11,12 +10,12 @@ $pink-300: #dd2cd4;
 */
 
 $callouts: (
-  comment: ($gray-300, rgba($gray-000, .2), ''),
-  note: ($yellow-300, rgba($yellow-000, .2), 'NOTE'),
-  info-gray: ($gray-300, rgba($gray-000, .2), 'INFO'),
-  info: ($blue-300, rgba($blue-000, .2), 'INFO'),
-  warn: ($yellow-300, rgba($yellow-000, .2), 'WARNING'),
-  danger: ($red-300, rgba($red-000, .2), 'DANGER')
+  custom-comment: ($gray-300, rgba($gray-000, .2), ''),
+  custom-note: ($yellow-300, rgba($yellow-000, .2), 'NOTE'),
+  custom-info-gray: ($gray-300, rgba($gray-000, .2), 'INFO'),
+  custom-info: ($blue-300, rgba($blue-000, .2), 'INFO'),
+  custom-warn: ($yellow-300, rgba($yellow-000, .2), 'WARNING'),
+  custom-danger: ($red-300, rgba($red-000, .2), 'DANGER')
 );
 
 @each $class, $props in $callouts {

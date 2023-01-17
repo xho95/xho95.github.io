@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift: 리눅스에서 Swift 개발 환경 구축하기"
 date:   2017-02-19 23:00:00 +0900

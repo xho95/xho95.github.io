@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Deinitialization (뒷정리)"
 date:   2017-03-03 02:00:00 +0900

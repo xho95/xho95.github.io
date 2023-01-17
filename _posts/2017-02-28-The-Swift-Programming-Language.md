@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)"
 date:   2017-02-28 00:00:00 +0900

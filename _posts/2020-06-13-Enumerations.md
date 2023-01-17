@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Enumerations (열거체)"
 date:   2020-06-13 10:00:00 +0900

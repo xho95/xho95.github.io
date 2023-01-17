@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Functions (함수)"
 date:   2020-06-02 10:00:00 +0900

@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: About Swift (스위프트에 대하여)"
 date:   2017-03-02 10:00:00 +0900

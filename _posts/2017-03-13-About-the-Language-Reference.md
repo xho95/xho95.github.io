@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: About the Language Reference (언어의 기준에 대하여)"
 date:   2017-03-13 11:30:00 +0900

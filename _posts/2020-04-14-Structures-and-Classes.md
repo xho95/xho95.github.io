@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Structures and Classes (구조체와 클래스)"
 date:   2020-04-14 10:00:00 +0900

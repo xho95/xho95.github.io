@@ -26,6 +26,7 @@ gem "just-the-docs"
 group :jekyll_plugins do
    gem "jekyll-feed", "~> 0.6"
    gem "jekyll-redirect-from"
+   gem "jekyll-paginate-v2"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -38,3 +39,4 @@ gem "faraday-retry"
 
 gem "rouge", "~> 4.0"
 gem "jekyll-remote-theme"
+

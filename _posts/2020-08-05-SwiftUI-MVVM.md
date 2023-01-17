@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "SwiftUI: MVVM 이해하기"
 date:   2020-08-05 19:45:00 +0900

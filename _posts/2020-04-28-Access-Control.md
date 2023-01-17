@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Access Control (접근 제어)"
 date:   2020-04-28 10:00:00 +0900

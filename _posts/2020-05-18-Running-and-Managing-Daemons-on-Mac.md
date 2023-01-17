@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "macOS: Daemon (데몬) 실행하고 관리하기"
 date:   2020-05-18 10:00:00 +0900

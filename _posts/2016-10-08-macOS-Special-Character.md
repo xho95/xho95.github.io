@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "macOS: 특수 문자 입력창에서 유니코드 문자 검색해서 입력하기"
 date:   2016-10-08 03:15:00 +0900

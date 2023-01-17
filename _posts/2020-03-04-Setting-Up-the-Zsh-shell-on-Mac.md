@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "macOS: 기본 쉘 (shell) 이 된 zsh 설정하기"
 date:   2020-03-04 11:30:00 +0900

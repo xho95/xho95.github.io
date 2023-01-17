@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Generic Parameters and Arguments (일반화 매개 변수와 인자)"
 date:   2017-03-16 00:00:00 +0900

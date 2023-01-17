@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Strings and Characters (문자열과 문자)"
 date:   2016-05-29 19:45:00 +0900

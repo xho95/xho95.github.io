@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Protocols (프로토콜; 규약)"
 date:   2016-03-03 23:30:00 +0900

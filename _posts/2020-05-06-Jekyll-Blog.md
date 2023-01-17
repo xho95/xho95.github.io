@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Jekyll: 블로그 제작의 모든 것"
 date:   2020-05-06 12:30:00 +0900

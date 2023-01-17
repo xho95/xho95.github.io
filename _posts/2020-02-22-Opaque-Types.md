@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Opaque Types (불투명 타입)"
 date:   2020-02-22 11:30:00 +0900

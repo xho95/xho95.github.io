@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "Swift 5.7: Statements (구문)"
 date:   2020-08-20 11:30:00 +0900

@@ -1,5 +1,7 @@
 ---
 layout: post
+pagination: 
+  enabled: true
 comments: true
 title:  "macOS: 맥에서 SSH 키 생성하고 사용하기"
 date:   2017-02-22 02:00:00 +0900
