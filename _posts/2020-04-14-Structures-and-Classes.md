@@ -230,14 +230,14 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 `tenEighty` 와 `alsoTenEighty` 는, 변수 보단, _상수 (constants)_ 로 선언한다는 걸 기록하기 바랍니다. 하지만, 여전히 `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 를 바꿀 수 있는데 이는 `tenEighty` 와 `alsoTenEighty` 상수 그 자체의 값을 실제로 바꾸진 않기 때문입니다. `tenEighty` 와 `alsoTenEighty` 그 자체는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-그 대신, 이 둘은 모두 그 이면에서 `VideoMode` 인스턴스를 _참조 (refer)_ 합니다. 바뀌는 건 그 밑에 놓인 `VideoMode` 의 `frameRate` 속성이지, 그 `VideoMode` 로의 상수 참조 값이 아닙니다.
 
-#### Identity Operators (식별 연산자)
+#### Identity Operators (정체 식별 연산자)
 
-클래스가 참조 타입이기 때문에, 그 이면에서 여러 개의 상수와 변수가 동일한 단일 클래스 인스턴스를 참조하는 게 가능합니다. (구조체와 열거체는, 상수나 변수에 할당하거나, 함수에 전달할 때, 항상 복사되기 때문에, 이와 똑같지 않습니다.)
+클래스는 참조 타입이기 때문에, 여러 개의 상수와 변수가 그 이면은 똑같은 단 하나의 클래스 인스턴스를 참조할 가능성이 있습니다. (구조체와 열거체는 이와 같지 않은데, 이들은 상수나 변수로의 할당, 또는 함수로의 전달 때, 항상 복사되기 때문입니다.)
 
-두 상수 또는 변수가 정확하게 동일한 클래스 인스턴스를 참조하는 지 찾아내는 게 유용할 때가 있습니다. 이것이 가능하도록, 스위프트는 두 개의 식별 연산자를 제공합니다:
+두 상수나 변수가 정확하게 똑같은 클래스 인스턴스를 참조하고 있는 지 찾아내는 게 유용할 때가 있습니다. 이걸 할 수 있게, 스위프트는 두 개의 정체 식별 연산자를 제공합니다:
 
-* 식별됨 (identical to; `===`)'
-* 식별되지 않음 (not identical to; `!==`)'
+* 정체가 같음 (identical to; `===`)'
+* 정체가 같지 않음 (not identical to; `!==`)'
 
 이 연산자들을 사용하여 두 상수 또는 변수가 동일한 단일 인스턴스를 참조하는 지 검사합니다:
 
