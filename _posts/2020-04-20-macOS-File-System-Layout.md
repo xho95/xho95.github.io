@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "macOS: 파일 시스템 (APFS) 의 기본 디렉토리 구조"

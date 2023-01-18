@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "macOS: 맥에서 SSH 키 생성하고 사용하기"

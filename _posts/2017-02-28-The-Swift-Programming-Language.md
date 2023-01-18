@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)"

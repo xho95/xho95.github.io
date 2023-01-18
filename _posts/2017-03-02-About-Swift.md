@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "Swift 5.7: About Swift (스위프트에 대하여)"

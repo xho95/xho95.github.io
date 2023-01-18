@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "Swift 5.7: Automatic Reference Counting (자동 참조 카운팅)"

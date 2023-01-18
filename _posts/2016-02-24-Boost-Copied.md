@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "C++: Boost 라이브러리의 Copied 어댑터 정리"

@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "C++: Xcode에서 Boost 라이브러리 사용하기"

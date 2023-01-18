@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "macOS: 기본 쉘 (shell) 이 된 zsh 설정하기"

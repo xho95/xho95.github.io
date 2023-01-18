@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "Swift: 리눅스에서 Perfect 프레임웍으로 서버 개발하기 (Part 2)"

@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title: "Swift: Perfect Assistant 로 AWS 에 서버 배포하기"

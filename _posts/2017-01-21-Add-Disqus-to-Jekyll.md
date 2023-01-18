@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "Jekyll: Disqus 연결부터 마이그레이션까지"
@@ -54,8 +54,7 @@ comments: true
 ```yaml
 ---
 layout: post
-pagination: 
-  enabled: true
+pagination:  enabled: true
 comments: true
 title:  "Jekyll: Disqus 연결부터 마이그레이션까지"
 date:   2017-01-21 02:10:30 +0900

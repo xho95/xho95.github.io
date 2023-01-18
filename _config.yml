@@ -62,7 +62,7 @@ kramdown:
   auto_ids: true
 
 collections:
-  lists:
+  pages:
     output: true
   posts:
     # permalink: "/:collection/:path/"
@@ -88,8 +88,8 @@ theme: just-the-docs
 # Collections 
 just_the_docs:
   collections:
-    lists:
-      name: List
+    pages:
+      name: Pages
     posts:
       name: Posts
 
@@ -127,7 +127,10 @@ search.heading_level: 2
 search.tokenizer_separator: /[\s/]+/
 
 # Pagination
-pagination: 
+pagination:  
   enabled: true
   per_page: 10
-  permalink: '/page/:num'
+  permalink: '/page/:num/'
+  trail:
+    before: 2
+    after: 2

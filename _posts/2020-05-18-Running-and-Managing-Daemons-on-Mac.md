@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "macOS: Daemon (데몬) 실행하고 관리하기"

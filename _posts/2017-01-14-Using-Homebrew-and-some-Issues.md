@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "Homebrew: 설치 및 Sierra 관련 이슈 정리"

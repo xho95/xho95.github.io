@@ -1,6 +1,6 @@
 ---
 layout: post
-pagination: 
+pagination:
   enabled: true
 comments: true
 title:  "Foundation: NSURLComponents 클래스로 URL 파싱하기"
