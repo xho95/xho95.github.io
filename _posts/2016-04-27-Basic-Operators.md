@@ -174,7 +174,7 @@ a += 2
 * 크거나 같음 (`a >= b`)
 * 작거나 같음 (`a <= b`)
 
-> 스위프트는 두 개의 _식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공하는데, 이를 사용하여 두 객체 참조가 둘 다 똑같은 객체 인스턴스를 참조하는지 검사합니다. 더 많은 정보는, [Identity Operators (식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-식별-연산자) 부분을 보도록 합니다.
+> 스위프트는 두 개의 _정체 식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공하는데, 이를 사용하여 두 객체 참조가 둘 다 똑같은 객체 인스턴스를 참조하는지 검사합니다. 더 많은 정보는, [Identity Operators (정체 식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-정체-식별-연산자) 부분을 보도록 합니다.
 
 각각의 비교 연산자는 `Bool` 값을 반환하여 구문이 참인지 아닌지 지시합니다:
 

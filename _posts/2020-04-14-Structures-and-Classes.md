@@ -232,16 +232,16 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 `tenEighty` 와 `alsoTenEighty` 는, 변수 보단, _상수 (constants)_ 로 선언한다는 걸 기록하기 바랍니다. 하지만, 여전히 `tenEighty.frameRate` 와 `alsoTenEighty.frameRate` 를 바꿀 수 있는데 이는 `tenEighty` 와 `alsoTenEighty` 상수 그 자체의 값을 실제로 바꾸진 않기 때문입니다. `tenEighty` 와 `alsoTenEighty` 그 자체는 `VideoMode` 인스턴스를 "저장 (store)" 하지 않습니다-그 대신, 이 둘은 모두 그 이면에서 `VideoMode` 인스턴스를 _참조 (refer)_ 합니다. 바뀌는 건 그 밑에 놓인 `VideoMode` 의 `frameRate` 속성이지, 그 `VideoMode` 로의 상수 참조 값이 아닙니다.
 
-#### Identity Operators (식별 연산자)
+#### Identity Operators (정체 식별 연산자)
 
-클래스가 참조 타입이기 때문에, 그 이면에서 여러 개의 상수와 변수가 동일한 단일 클래스 인스턴스를 참조하는 게 가능합니다. (구조체와 열거체는, 상수나 변수에 할당하거나, 함수에 전달할 때, 항상 복사되기 때문에, 이와 똑같지 않습니다.)
+클래스는 참조 타입이기 때문에, 여러 개의 상수와 변수가 그 이면은 동일한 단 하나의 클래스 인스턴스를 참조할 가능성이 있습니다. (구조체와 열거체는 이와 같지 않은데, 이들은 상수나 변수로의 할당, 또는 함수로의 전달 때, 항상 복사되기 때문입니다.)
 
-두 상수 또는 변수가 정확하게 동일한 클래스 인스턴스를 참조하는 지 찾아내는 게 유용할 때가 있습니다. 이것이 가능하도록, 스위프트는 두 개의 식별 연산자를 제공합니다:
+두 개의 상수나 변수가 정확하게 동일한 클래스 인스턴스를 참조하고 있는지 찾아내는 게 유용할 때가 있습니다. 이럴 수 있게, 스위프트는 두 개의 정체 식별 연산자를 제공합니다:
 
-* 식별됨 (identical to; `===`)'
-* 식별되지 않음 (not identical to; `!==`)'
+* 정체가 같음 (`===`)
+* 정체가 같지 않음 (`!==`)
 
-이 연산자들을 사용하여 두 상수 또는 변수가 동일한 단일 인스턴스를 참조하는 지 검사합니다:
+이 연산자들로 두 개의 상수나 변수가 동일한 단 하나의 인스턴스를 참조하는 지를 검사합니다:
 
 ```swift
 if tenEighty === alsoTenEighty {
@@ -250,13 +250,13 @@ if tenEighty === alsoTenEighty {
 // "tenEighty and alsoTenEighty refer to the same VideoMode instance." 를 인쇄함
 ```
 
-(세 개의 같음 기호, 또는 `===` 로 나타낸) _식별됨 (identical to)_ 은 (두 개의 같음 기호, 또는 `==` 로 나타낸) _같음 (equal to)_ 과 똑같은 의미가 아니라는 걸 기억하기 바랍니다. _식별됨 (identical to)_ 은 클래스 타입인 두 상수 또는 변수가 정확하게 동일한 클래스 인스턴스를 참조한다는 의미입니다. _같음 (equal to)_ 은, 타입 설계자가 정의한, 어떠한 적절한 _같음 (equal)_ 이라는 의미에 따라서, 두 인스턴스의 값이 같거나 같다고 할 수 있는 것으로 고려한다는 의미입니다.
+(세 개의 같음 기호, 또는 `===` 로 나타낸) _정체가 같음 (identical to)_ 은 (두 개의 같음 기호, 또는 `==` 로 나타낸) _같음 (equal to)_ 과 똑같은 걸 의미하지 않는다는 걸 기록하기 바랍니다. _정체가 같음 (identical to)_ 의 의미는 클래스 타입의 두 상수나 변수가 정확하게 동일한 클래스 인스턴스를 참조한다는 겁니다. _같음 (equal to)_ 의 의미는, 타입 설계자가 정의한, 어떠한 적절한 _같음 (equal)_ 의 의미에 따라서, 두 인스턴스의 값이 같거나 같은 걸로 볼 수 있다고 고려하는 겁니다.
 
-자신만의 구조체와 클래스를 정의할 때는, 두 인스턴스가 같다고 규명하는 게 본인 책임입니다. 자신만의 `==` 와 `!=` 연산자 구현을 정의하는 공정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
+자신만의 구조체와 클래스를 정의할 땐, 두 인스턴스를 같다고 볼 조건을 결정하는게 본인 책임입니다. 자신만의 구현으로 `==` 와 `!=` 연산자 정의하는 과정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
 
 #### Pointers (포인터)
 
-C, C++ 또는 오브젝티브-C 에 대한 경험이 있으면, 이 언어들은 메모리 주소를 참조할 때 _포인터 (pointers)_ 를 사용한다는 걸 알고 있을 겁니다. 어떠한 참조 타입 인스턴스를 참조하는 건 스위프트 상수 또는 변수와 C 의 포인터와 비슷하지만, 메모리 주소의 직접적인 포인터는 아니며, 참조 생성을 지시하는 별표 (`*`) 의 작성을 요구하지도 않습니다. 그 대신, 이 참조들은 스위프트의 다른 어떤 상수나 변수인 것 같이 정의합니다. 표준 라이브러리는 '포인터와 직접 상호 작용할 필요가 있을 경우 사용할 수 있는 포인터와 버퍼 (buffer) 타입을 제공' 합니다-[Manual Memory Management (수동 메모리 관리)](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)[^manual-memory-management] 항목을 보도록 합니다.
+**C** 나, **C++** 및 **오브젝티브-C** 를 경험했으면, 이 언어들이 _포인터 (pointers)_ 로 메모리 주소를 참조한다는 걸 알 겁니다. 스위프트의 상수나 변수는 어떠한 참조 타입의 인스턴스를 참조하는 건 **C** 의 포인터와 비슷하지만, 메모리 주소로의 직접적인 포인터는 아니며, 별표 (`*`) 를 써서 참조 생성을 지시하도록 요구하지도 않습니다. 그 대신, 이러한 참조를 스위프트의 다른 어떤 상수나 변수인 것 같이 정의합니다. 표준 라이브러리는 포인터 및 버퍼[^buffer] 타입을 제공하여 포인터와 직접 상호 작용할 필요가 있다면 이를 쓸 수 있습니다-[Manual Memory Management (수동 메모리 관리)](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)[^manual-memory-management] 항목을 보기 바랍니다.
 
 ### 다음 장
 
