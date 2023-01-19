@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Apache : 아파치 가상 호스트 설정하기"
 date:   2016-10-10 11:58:00 +0900

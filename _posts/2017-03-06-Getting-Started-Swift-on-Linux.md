@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift: 리눅스에서 Swift 개발 시작하기"
 date:   2017-03-06 10:30:00 +0900

@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "아톰(Atom) 문서 편집기 활용하기"
 date:   2016-09-28 02:15:00 +0900

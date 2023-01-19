@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Xcode 7: 프로젝트 이름 바꾸기"
 date:   2016-06-04 03:30:00 +0900

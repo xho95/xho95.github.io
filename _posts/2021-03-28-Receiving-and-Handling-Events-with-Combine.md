@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift: Combine 으로 이벤트 받고 처리하기"
 date:   2021-03-28 11:30:00 +0900

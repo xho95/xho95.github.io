@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)"
 date:   2017-02-28 00:00:00 +0900
@@ -9,9 +7,11 @@ categories: Swift Programming Language Grammar
 redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/)[^Swift] 책을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리했습니다.
+{: .comment }
+> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/)[^Swift] 책을 번역하고, 
+> 주석을 달아서 정리한 글입니다.
 >
-> 현재는 5차 번역을 진행하면서, 문장을 다듬는 중입니다. 수정 사항을 발견하게 되면 댓글이나 <a href="mailto:{{ site.email }}">메일</a>로 연락주시면 감사하겠습니다.
+> 수정할 부분이 있으면 댓글 또는 <a href="mailto:{{ site.email }}">메일</a>로 알려주시면 감사하겠습니다.
 
 ### Translator's words (옮긴이의 말)
 

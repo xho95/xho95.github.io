@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "macOS: 맥의 기본 디렉토리 구조 살펴보기"
 date:   2016-10-09 02:50:00 +0900

@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Extensions (익스텐션; 확장)"
 date:   2016-01-19 17:10:00 +0900

@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Jekyll: 마크다운 (markdown) 양식으로 새 포스트 만들기"
 date:   2016-01-12 11:58:00 +0900

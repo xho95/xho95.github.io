@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "macOS: 파일 시스템 (APFS) 의 유닉스-고유 디렉토리 알아보기"
 date:   2020-04-29 02:50:00 +0900

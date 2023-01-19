@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift: 리눅스에서 Perfect 프레임웍으로 서버 개발하기 (Part 2)"
 date:   2017-03-10 01:30:00 +0900

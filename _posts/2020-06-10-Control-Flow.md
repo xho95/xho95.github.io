@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Control Flow (제어 흐름)"
 date:   2020-06-10 10:00:00 +0900

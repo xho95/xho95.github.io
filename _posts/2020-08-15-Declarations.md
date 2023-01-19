@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Declarations (선언)"
 date:   2020-08-15 11:30:00 +0900

@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Concurrency (동시성)"
 date:   2021-06-10 11:30:00 +0900

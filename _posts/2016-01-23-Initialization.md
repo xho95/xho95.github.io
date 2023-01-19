@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Initialization (초기화)"
 date:   2016-01-23 19:35:00 +0900

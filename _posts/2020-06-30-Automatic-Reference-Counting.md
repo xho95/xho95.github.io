@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Automatic Reference Counting (자동 참조 카운팅)"
 date:   2020-06-30 10:00:00 +0900

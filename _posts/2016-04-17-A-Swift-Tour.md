@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: A Swift Tour (스위프트 둘러보기)"
 date:   2016-04-17 19:45:00 +0900

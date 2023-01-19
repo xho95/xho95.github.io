@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Basic Operators (기초 연산자)"
 date:   2016-04-27 10:00:00 +0900

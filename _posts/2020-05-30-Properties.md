@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Properties (속성)"
 date:   2020-05-30 10:00:00 +0900

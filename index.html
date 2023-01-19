@@ -4,12 +4,12 @@ pagination:
   enabled: true
 ---
 
+Is this right?
+
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-  <p class="author">
-    <span class="date">{{ post.date }}</span>
-  </p>
+<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+<p class="author"><span class="date">{{ post.date | date_to_string}}</span></p>
 {% endfor %}
 
 <!-- Pagination links -->
@@ -30,42 +30,3 @@ pagination:
     <span class="next ">Next</span>
   {% endif %}
 </div>
-
-<!--
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  {% for post in paginator.posts %}
-    {{ post.date | date: "%b %-d, %Y" }} • <a href="https://xho95.github.io{{ post.url }}#disqus_thread">0 Comments</a><br />
-    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}"><h2 class="list">{{ post.title }}</h2></a><br />
-  {% endfor %}
-
-  {% if paginator.total_pages > 1 %}
-<ul>
-  {% if paginator.previous_page %}
-  <li>
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
-  </li>
-  {% endif %}
-  {% if paginator.next_page %}
-  <li>
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
-  </li>
-  {% endif %}
-</ul>
-{% endif %}
-
-<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-  old code
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} • <a href="https://xho95.github.io{{ post.url }}#disqus_thread">0 Comments</a></span>
-        <h2><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
--->

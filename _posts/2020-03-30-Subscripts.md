@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: Subscripts (첨자)"
 date:   2020-03-30 10:00:00 +0900

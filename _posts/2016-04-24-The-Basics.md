@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Swift 5.7: The Basics (기초)"
 date:   2016-04-24 19:45:00 +0900

@@ -1,7 +1,5 @@
 ---
 layout: post
-pagination:
-  enabled: true
 comments: true
 title:  "Error: Declarations from extensions cannot be overridden yet"
 date:   2016-07-22 01:50:00 +0900
