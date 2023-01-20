@@ -1,19 +1,19 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Generic Parameters and Arguments (일반화 매개 변수와 인자)"
+title:  "Generic Parameters and Arguments (일반화 매개 변수와 인자)"
 date:   2017-03-16 00:00:00 +0900
 categories: Swift Language Grammar Generic Parameters Arguments
 redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/Generic-Parameters-and-Arguments.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 부분[^Version-Compatibility]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Generic Parameters and Arguments (일반화 매개 변수와 인자)
 
 이번 장에선 일반화 타입과, 함수, 및 초기자의 매개 변수와 인자를 설명합니다. 일반화 타입이나, 함수, 첨자, 또는 초기자를 선언할 땐, 일반화 타입이나, 함수, 또는 초기자와 작업할 수 있는 타입 매개 변수를 지정합니다. 이러한 타입 매개 변수는 자리 표시자[^placeholders] 처럼 행동하며 일반화 타입 인스턴스를 생성하거나 일반화 함수 또는 초기자를 호출할 때 실제 고정 타입[^concrete-type] 인자로 교체합니다.
 
-스위프트 일반화의 전체 개요에 대해선, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 를 보기 바랍니다.
+스위프트 일반화의 전체 개요에 대해선, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 를 보기 바랍니다.
 
 ### Generic Parameter Clause (일반화 매개 변수 절)
 
@@ -71,7 +71,7 @@ extension Collection where Element: SomeProtocol {
 
 일반화 함수나 초기자를 중복 정의하려면 타입 매개 변수에 서로 다른 구속 조건이나, 필수 조건, 또는 둘 다를 제공하면 됩니다. 중복 정의한 일반화 함수나 초기자를 호출할 때, 컴파일러가 이러한 구속 조건을 사용하여 어느 중복 정의 함수나 초기자를 불러낼 건지 해결합니다.
 
-일반화 `where` 절에 대한 더 많은 정보와 일반화 함수 선언에서의 사용 예를 보려면, [Generic Where Clauses (일반화 where 절)]({% post_url 2020-02-29-Generics %}#generic-where-clauses-일반화-where-절) 부분을 보기 바랍니다.
+일반화 `where` 절에 대한 더 많은 정보와 일반화 함수 선언에서의 사용 예를 보려면, [Generic Where Clauses (일반화 where 절)]({% link docs/books/swift-programming-language/generics.md %}#generic-where-clauses-일반화-where-절) 부분을 보기 바랍니다.
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID407)
 
@@ -101,17 +101,13 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 > GRAMMAR OF A GENERIC ARGUMENT CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID409)
 
-### 다음 장 
+### 다음 장
 
-* **Summary of the Grammar (문법 총정리)** 장은 번역하는게 의미가 없으므로 생략합니다. 그 장의 링크는 밑에 있는 전체 목록을 참고하기 바랍니다.
-
-### 전체 목록 
-
-[Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %})
+[Document Revision History (문서를 다듬은 역사) >]({% link docs/books/swift-programming-language/document-revision-history.md %})[^link]
 
 ### 참고 자료
 
-[^GPandA]: 원문은 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Generic Parameters and Arguments](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html) 에서 볼 수 있습니다.
 
 [^placeholders]: '자리 표시자 (placeholder)' 에 대한 자세한 설명은 [Generic Functions (일반화 함수)](#generic-functions-일반화-함수)) 부분을 참고하기 바랍니다.
 
@@ -122,3 +118,5 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 [^specialized-version]: '특수화 버전 (specialized version)' 은 일반화 타입의 타입 매개 변수가 특수한 타입으로 정해진 것입니다. 이렇게 특수화 버전을 만들면 일반화 타입의 적용 범위가 좁아집니다.
 
 [^identical]: 프로그래밍에서 '정체가 같다 (identical)' 는 건 '값이 똑같다 (equal)' 보다 더 강한 개념입니다. 두 개의 인스턴스가 있는데, 이들의 값이 똑같으면 값이 똑같은 거지만, 이 둘의 정체가 같은 건 아닙니다. 본문은 타입에 대한 설명이므로, 정체가 같다라고 표현합니다.
+
+[^link]: 원래 바로 다음 장은 **Summary of the Grammar (문법 총정리)** 이지만, 번역하는게 의미가 없으므로 생략합니다. 원문을 직접 보고 싶으면 [Summary of the Grammar](https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html) 에 가면 직접 확인할 수 있습니다.

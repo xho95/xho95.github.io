@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Type Casting (타입 변환)"
+title:  "Type Casting (타입 변환)"
 date:   2020-03-31 10:00:00 +0900
 categories: Swift Language Grammar Type Casting
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 부분[^Type-Casting]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Type Casting (타입 변환)
 
@@ -14,7 +14,7 @@ _타입 변환 (Type Casting)_[^type-casting-and-type-conversion] 은 인스턴�
 
 스위프트의 타입 변환은 `is` 와 `as` 연산자로 구현합니다. 이 두 연산자는 단순하고 좋은 표현력으로[^expressive] 값의 타입을 검사하거나 값을 다른 타입으로 변환하는 방식을 제공합니다.
 
-[Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% post_url 2016-03-03-Protocols %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명한 것처럼, 타입 변환을 사용하여 타입이 프로토콜을 준수하는지 검사할 수 있습니다.
+[Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% link docs/books/swift-programming-language/protocols.md %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명한 것처럼, 타입 변환을 사용하여 타입이 프로토콜을 준수하는지 검사할 수 있습니다.
 
 ### Defining a Class Hierarchy for Type Casting (타입 변환을 위한 클래스 계층 정의하기)
 
@@ -206,17 +206,17 @@ things.append(optionalNumber as Any) // 경고 없음
 
 ### 다음 장
 
-[Nested Types (중첩 타입) > ]({% post_url 2017-03-03-Nested-Types %})
+[Nested Types (중첩 타입) >]({% link docs/books/swift-programming-language/nested-types.md %})
 
 ### 참고 자료
 
-[^Type-Casting]: 이 글에 대한 원문은 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Type Casting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html) 에서 볼 수 있습니다.
 
 [^type-casting-and-type-conversion]: 타입 변환은 영어로 'type casting' 과 'type conversion' 둘 다에 적용할 수 있지만, 이 둘은 서로 조금 다릅니다. 'type casting' 과 'type conversion' 의 가장 기본적인 차이점은 'type conversion' 은 컴파일러에 의해 자동으로 이루어지는 반면, 'type casting' 은 개발자가 명시적으로 지정한다는 점입니다. 'type casting' 과 'type conversion' 의 차이점에 대한 정보는, [Difference Between Type Casting and Type Conversion](https://techdifferences.com/difference-between-type-casting-and-type-conversion.html) 항목을 보도록 합니다.
 
 [^expressive]: '표현력이 좋다 (expressive)' 는 건 '컴파일러와 개발자 모두가 이해하기 쉬운 코드를 쉽게 작성할 수 있다' 는 의미입니다. 이에 대한 더 자세한 내용은, **stackoverflow** 의 [What does "expressive" mean when referring to programming languages?](https://stackoverflow.com/questions/638881/what-does-expressive-mean-when-referring-to-programming-languages) 항목을 보도록 합니다. 
 
-[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass) 가 없는 클래스' 를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% post_url 2020-03-31-Inheritance %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 보도록 합니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass) 가 없는 클래스' 를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/books/swift-programming-language/inheritance.md %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 보도록 합니다.
 
 [^downcast]: '내림 변환 (downcast)' 은 클래스 계층 구조에서 하위 클래스의 하나로 변환하는 것을 말합니다. 내림 변환에 대한 자세한 내용은, 바로 뒤의 [Downcasting (내림 변환)](#downcasting-내림-변환) 부분에서 설명하고 있습니다.
 

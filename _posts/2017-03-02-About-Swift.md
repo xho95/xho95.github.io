@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: About Swift (스위프트에 대하여)"
+title:  "About Swift (스위프트에 대하여)"
 date:   2017-03-02 10:00:00 +0900
 categories: Swift Language Grammar About
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [About Swift](https://docs.swift.org/swift-book/) 부분[^About-Swift]을 번역하고, 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## About Swift (스위프트에 대하여)
 
@@ -31,11 +31,11 @@ categories: Swift Language Grammar About
 
 ### 다음 장
 
-[Version Compatibility (버전 호환성) >]({% post_url 2020-03-15-Version-Compatibility %})
+[Version Compatibility (버전 호환성) >]({% link docs/books/swift-programming-language/version-compatibility.md %})
 
 ### 참고 자료
 
-[^About-Swift]: 원문은 [About Swift](https://docs.swift.org/swift-book/) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [About Swift](https://docs.swift.org/swift-book/) 에서 볼 수 있습니다.
 
 [^modern]: 원문에서 사용한 **modern** 이란 단어는 현대라는 의미와 최신이란 의미를 둘 다 담고 있는 말입니다.
 
@@ -43,6 +43,6 @@ categories: Swift Language Grammar About
 
 [^modern-programming-patterns]: 이 역시, 최신 프로그래밍 패턴으로 해석해도 무방합니다.
 
-[^overflow]: 일부러 '값 넘침 (overflow)' 을 의도할 수도 있습니다. 이에 대한 더 자세한 내용은 [Overflow Operators (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 부분을 참고하기 바랍니다.
+[^overflow]: 일부러 '값 넘침 (overflow)' 을 의도할 수도 있습니다. 더 자세한 내용은 [Overflow Operators (값 넘침 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#overflow-operators-값-넘침-연산자) 부분을 참고하기 바랍니다.
 
 [^the-obvious-way]: 우리말 속담 중에 **보기 좋은 떡이 먹기도 좋다** 와 비슷합니다. 스위프트의 최적화가 좋아서, 뛰어난 성능을 내는 코드를 깔끔하고 단순하게 작성할 수 있다 정도의 의미입니다.

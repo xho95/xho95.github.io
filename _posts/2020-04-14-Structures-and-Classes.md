@@ -1,13 +1,13 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Structures and Classes (구조체와 클래스)"
+title:  "Structures and Classes (구조체와 클래스)"
 date:   2020-04-14 10:00:00 +0900
 categories: Swift Language Grammar Structure Class
 redirect_from: "/swift/language/grammar/structure/class/2020/04/08/Structures-and-Classes.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 부분[^Structures-and-Classes]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Structures and Classes (구조체와 클래스)
 
@@ -28,7 +28,7 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 범용적이고, 유연�
 * 확장을 하여 자신의 기본 구현 너머로 기능을 늘림
 * 프로토콜을 따름으로써 특정 종류의 표준 기능을 제공함
 
-더 많은 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 과, [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Subscripts (첨자)]({% post_url 2020-03-30-Subscripts %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 을 보기 바랍니다.
+더 많은 정보는, [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 과, [Methods (메소드)]({% link docs/books/swift-programming-language/methods.md %}), [Subscripts (첨자)]({% link docs/books/swift-programming-language/subscripts.md %}), [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}), [Extensions (익스텐션; 확장)]({% link docs/books/swift-programming-language/extensions.md %}), 및 [Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %}) 을 보기 바랍니다.
 
 클래스는 구조체엔 없는 추가 능력이 있습니다:
 
@@ -37,11 +37,11 @@ _구조체 (structures)_ 와 _클래스 (classes)_ 는 범용적이고, 유연�
 * 정리자 (deinitializer) 는 클래스 인스턴스가 할당한 어떤 자원이든 풀어줄 수 있게 합니다.
 * 참조 카운팅 (reference counting) 은 클래스 인스턴스로의 참조를 하나 이상 허용합니다.
 
-더 많은 정보는, [Inheritance (상속)]({% post_url 2020-03-31-Inheritance %}) 과, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}), [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 을 보기 바랍니다.
+더 많은 정보는, [Inheritance (상속)]({% link docs/books/swift-programming-language/inheritance.md %}) 과, [Type Casting (타입 변환)]({% link docs/books/swift-programming-language/type-casting.md %}), [Deinitialization (뒷정리)]({% link docs/books/swift-programming-language/deinitialization.md %}), 및 [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}) 을 보기 바랍니다.
 
 클래스가 지원하는 추가 능력엔 복잡도 증가라는 비용이 따라 붙습니다. 일반적인 지침은, 이유 파악이 더 쉽기 때문에 구조체가 더 좋으며, 클래스는 적절하거나 필요할 때만 사용하라는 겁니다. 실상, 이는 직접 정의하는 대부분의 사용자 자료 타입은 구조체와 열거체일 거라는 의미입니다. 더 자세한 비교는, [Choosing Between Structures and Classes (구조체와 클래스 사이에서 선택하기)](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes) 문서[^choosing-between-structures-and-classes] 를 보기 바랍니다.
 
-> 클래스와 행위자는 똑같은 성질과 동작을 많이 공유합니다. 행위자에 대한 정보는, [Concurrency (동시성)]({% post_url 2021-06-10-Concurrency %}) 장을 보기 바랍니다. 
+> 클래스와 행위자는 똑같은 성질과 동작을 많이 공유합니다. 행위자에 대한 정보는, [Concurrency (동시성)]({% link docs/books/swift-programming-language/concurrency.md %}) 장을 보기 바랍니다. 
 
 #### Definition Syntax (정의 구문)
 
@@ -88,7 +88,7 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-구조체와 클래스 둘 다 새 인스턴스에 초기자 구문[^initializer-syntax] 을 사용합니다. 가장 단순한 형식의 초기자 구문은 클래스나 구조체의 타입 이름 뒤에 빈 괄호가 있는, `Resolution()` 이나 `VideoMode()` 같은 겁니다. 이는 클래스나 구조체의 새 인스턴스를 생성하면서, 어떤 속성이든 자신의 기본 값으로 초기화합니다. 클래스와 구조체 초기화는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세하게 설명합니다.
+구조체와 클래스 둘 다 새 인스턴스에 초기자 구문[^initializer-syntax] 을 사용합니다. 가장 단순한 형식의 초기자 구문은 클래스나 구조체의 타입 이름 뒤에 빈 괄호가 있는, `Resolution()` 이나 `VideoMode()` 같은 겁니다. 이는 클래스나 구조체의 새 인스턴스를 생성하면서, 어떤 속성이든 자신의 기본 값으로 초기화합니다. 클래스와 구조체 초기화는 [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 장에서 더 자세하게 설명합니다.
 
 #### Accessing Properties (속성에 접근하기)
 
@@ -124,7 +124,7 @@ print ( "The width of someVideoMode is now \(someVideoMode.resolution.width)")
 let vga = Resolution(width: 640, height: 480)
 ```
 
-구조체와 달리, 클래스 인스턴스는 기본 멤버 초기자를 받지 않습니다. 초기자는 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에서 더 자세하게 설명합니다.
+구조체와 달리, 클래스 인스턴스는 기본 멤버 초기자를 받지 않습니다. 초기자는 [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 장에서 더 자세하게 설명합니다.
 
 ### Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)
 
@@ -250,7 +250,7 @@ if tenEighty === alsoTenEighty {
 
 (세 개의 같음 기호, 또는 `===` 로 나타낸) _정체가 같음 (identical to)_ 은 (두 개의 같음 기호, 또는 `==` 로 나타낸) _같음 (equal to)_ 과 똑같은 걸 의미하지 않는다는 걸 기록하기 바랍니다. _정체가 같음 (identical to)_ 의 의미는 클래스 타입의 두 상수나 변수가 정확하게 동일한 클래스 인스턴스를 참조한다는 겁니다. _같음 (equal to)_ 의 의미는, 타입 설계자가 정의한, 어떠한 적절한 _같음 (equal)_ 의 의미에 따라서, 두 인스턴스의 값이 같거나 같은 걸로 볼 수 있다고 고려하는 겁니다.
 
-자신만의 구조체와 클래스를 정의할 땐, 두 인스턴스를 같다고 볼 조건을 결정하는게 본인 책임입니다. 자신만의 구현으로 `==` 와 `!=` 연산자 정의하는 과정은 [Equivalence Operators (같음 비교 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
+자신만의 구조체와 클래스를 정의할 땐, 두 인스턴스를 같다고 볼 조건을 결정하는게 본인 책임입니다. 자신만의 구현으로 `==` 와 `!=` 연산자 정의하는 과정은 [Equivalence Operators (같음 비교 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#equivalence-operators-같음-비교-연산자) 에서 설명합니다.
 
 #### Pointers (포인터)
 
@@ -258,11 +258,11 @@ if tenEighty === alsoTenEighty {
 
 ### 다음 장
 
-[Properties (속성) > ]({% post_url 2020-05-30-Properties %})
+[Properties (속성) >]({% link docs/books/swift-programming-language/properties.md %})
 
 ### 참고 자료
 
-[^Structures-and-Classes]: 이 글에 대한 원문은 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Structures and Classes](https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html) 에서 볼 수 있습니다.
 
 [^object-instance]: 스위프트 구조체와 클래스를 같이 설명하는데, 객체라는 용어는 클래스에만 해당하므로, 인스턴스라는 용어를 사용해서 클래스와 구조체 모두에 해당하는 부분을 설명한다는 의미입니다.
 

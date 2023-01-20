@@ -62,12 +62,8 @@ kramdown:
   auto_ids: true
 
 collections:
-  books:
-    order:
-      - 2017-02-28-The-Swift-Programming-Language.md
-    output: true
-  lists:
-    output: true
+#  docs:
+#    output: true
   posts:
 #    permalink: "/:collection/:path/"
     output: true
@@ -93,14 +89,13 @@ theme: just-the-docs
 # Collections 
 just_the_docs:
   collections:
-    books: 
-      name: Books
+#    lists:  
+#      name: List
+#    docs:
+#      name: Docs
+    posts:
+      name: Legacies
       nav_fold: true
-    lists:  
-      name: List
-#    posts:
-#      name: All Posts
-#      nav_fold: true
 
 # Callouts
 callouts:
@@ -109,6 +104,9 @@ callouts:
     color: grey-lt
   note:
     title: Note
+    color: grey-dk
+  experiment:
+    title: Experiment
     color: grey-dk
   info:
     title: Information

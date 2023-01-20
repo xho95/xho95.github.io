@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Extensions (익스텐션; 확장)"
+title:  "Extensions (익스텐션; 확장)"
 date:   2016-01-19 17:10:00 +0900
 categories: Xcode Swift Grammar Extensions
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) 부분[^Extensions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Extensions (익스텐션; 확장)
 
@@ -21,7 +21,7 @@ _익스텐션 (extensions; 확장)_[^extension] 은 기존의 클래스나, 구�
 * 새로운 중첩 타입을 정의하여 사용함
 * 기존 타입이 프로토콜을 준수하게 함
 
-스위프트에선, 심지어 프로토콜을 확장하여 자신의 필수 조건에 구현을 제공하거나 추가 기능을 더하는 등의 이점을 준수 타입이 취할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% post_url 2016-03-03-Protocols %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 보도록 합니다.
+스위프트에선, 심지어 프로토콜을 확장하여 자신의 필수 조건에 구현을 제공하거나 추가 기능을 더하는 등의 이점을 준수 타입이 취할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% link docs/books/swift-programming-language/protocols.md %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 보도록 합니다.
 
 > 익스텐션은 타입에 새로운 기능을 추가할 순 있지만, 기존 기능을 재정의할 순 없습니다.
 
@@ -43,9 +43,9 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 }
 ```
 
-이런 식으로 프로토콜 준수성을 추가하는 건 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% post_url 2016-03-03-Protocols %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
+이런 식으로 프로토콜 준수성을 추가하는 건 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% link docs/books/swift-programming-language/protocols.md %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
 
-[Extending a Generic Type (일반화 타입 확장하기)]({% post_url 2020-02-29-Generics %}#extending-a-generic-type-일반화-타입-확장하기) 에서 설명한 것처럼, 기존 일반화 타입을 확장하는데 익스텐션을 사용할 수 있습니다. [Extensions with a Generic Where Clause (일반화 where 절이 있는 익스텐션)]({% post_url 2020-02-29-Generics %}#extensions-with-a-generic-where-clause-일반화-where-절이-있는-익스텐션) 에서 설명한 것처럼, 일반화 타입을 확장하여 조건부로 기능을 추가할 수도 있습니다.
+[Extending a Generic Type (일반화 타입 확장하기)]({% link docs/books/swift-programming-language/generics.md %}#extending-a-generic-type-일반화-타입-확장하기) 에서 설명한 것처럼, 기존 일반화 타입을 확장하는데 익스텐션을 사용할 수 있습니다. [Extensions with a Generic Where Clause (일반화 where 절이 있는 익스텐션)]({% link docs/books/swift-programming-language/generics.md %}#extensions-with-a-generic-where-clause-일반화-where-절이-있는-익스텐션) 에서 설명한 것처럼, 일반화 타입을 확장하여 조건부로 기능을 추가할 수도 있습니다.
 
 > 기존 타입에 새로운 기능을 추가하기 위해 익스텐션을 정의하면, 익스텐션 정의 전에 생성한 그 타입의 모든 기존 인스턴스에서도, 새로운 기능을 사용할 수 있습니다.
 
@@ -93,7 +93,7 @@ print("A marathon is \(aMarathon) meters long")
 
 익스텐션은 클래스에 새로운 편의 초기자를 추가할 수 있지만, 새로운 지명 초기자를 추가하거나 클래스에 정리자를 추가할 순 없습니다. 지명 초기자 및 정리자는 반드시 항상 원본 클래스 구현에서 제공해야 합니다.
 
-자신의 모든 저장 속성에 기본 값을 제공하면서 어떤 초기자도 정의하지 않은 값 타입에 익스텐션으로 초기자를 추가하면, 익스텐션의 초기자 안에서 그 값 타입의 기본 초기자와 멤버 초기자를 호출할 수 있습니다. [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% post_url 2016-01-23-Initialization %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 에서 설명한 것처럼, 값 타입의 원본 구현 부분에서 초기자를 작성했으면 이렇지 않을 겁니다.
+자신의 모든 저장 속성에 기본 값을 제공하면서 어떤 초기자도 정의하지 않은 값 타입에 익스텐션으로 초기자를 추가하면, 익스텐션의 초기자 안에서 그 값 타입의 기본 초기자와 멤버 초기자를 호출할 수 있습니다. [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% link docs/books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 에서 설명한 것처럼, 값 타입의 원본 구현 부분에서 초기자를 작성했으면 이렇지 않을 겁니다.
 
 다른 모듈에서 선언한 구조체에 익스텐션으로 초기자를 추가하면, 새로운 초기자가 정의 모듈에 있는 초기자를 호출하기 전까진 `self` 에 접근할 수 없습니다.[^access-self]
 
@@ -114,7 +114,7 @@ struct Rect {
 }
 ```
 
-`Rect` 구조체는 자신의 모든 속성에 기본 값을 제공하기 때문에, [Default Initializers (기본 초기자)]({% post_url 2016-01-23-Initialization %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 기본 초기자와 멤버 초기자를 받습니다. 이 초기자들을 사용하여 새로운 `Rect` 인스턴스를 생성할 수 있습니다:
+`Rect` 구조체는 자신의 모든 속성에 기본 값을 제공하기 때문에, [Default Initializers (기본 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 기본 초기자와 멤버 초기자를 받습니다. 이 초기자들을 사용하여 새로운 `Rect` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let defaultRect = Rect()
@@ -279,11 +279,11 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 ### 다음 장
 
-[Protocols (프로토콜; 규약) > ]({% post_url 2016-03-03-Protocols %})
+[Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %})
 
 ### 참고 자료
 
-[^Extensions]: 원문은 [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) 에서 볼 수 있습니다.
 
 [^extension]: 스위프트의 `extension` 은 확장이라는 의미를 가진 하나의 키워드입니다. 키워드 자체로 사용할 때는 '익스텐션' 이라는 발음 그대로 사용합니다.
 
@@ -299,12 +299,12 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^read-only]: 설정자 (setter) 없이 획득자 (getter) 만 있으므로 읽기-전용 계산 속성입니다.
 
-[^property-observers]: '속성 관찰자 (property observers)' 는 원래 저장 속성에만 추가할 수 있는 것으로, 계산 속성의 경우 속성이 바뀌는 시점을 자신이 알 수 있어서 속성 관찰자가 필요 없습니다. 속성 관찰자에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
+[^property-observers]: '속성 관찰자 (property observers)' 는 원래 저장 속성에만 추가할 수 있는 것으로, 계산 속성의 경우 속성이 바뀌는 시점을 자신이 알 수 있어서 속성 관찰자가 필요 없습니다. 속성 관찰자에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 장의 [Property Observers (속성 관찰자)]({% link docs/books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 [^access-self]: 익스텐션으로 추가할 수 있는 초기자는 사실상 편의 초기자 역할을 합니다. 구조체의 경우 편의 초기자와 지명 초기자라는 구분은 없지만, 익스텐션으로 추가하는 초기자는 기존 초기자를 활용하여 초기화를 수행합니다. 실제 인스턴스의 전체 메모리를 초기화하는 것은 기존 초기자입니다. 
 
 <!--
-접근할려는 인스턴스의 전체 메모리가 초기화되어 있어야 `self` 에 접근할 수 있기 때문입니다. 익스텐션으로 추가하는 초기자는 편의 초기자 클래스와 구조체라는 약간의 차이는 있지만, 스위프트는 '2-단계 초기화' 를 하며, `self` 에 대한 접근은 '1-단계 초기화' 가 완료된 시점부터 가능합니다. 본문에 있는 다른 '지명 초기자' 를 호출 완료한 시점이 '1-단계 초기화' 가 완료된 시점에 해당합니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 부분을 보도록 합니다.
+접근할려는 인스턴스의 전체 메모리가 초기화되어 있어야 `self` 에 접근할 수 있기 때문입니다. 익스텐션으로 추가하는 초기자는 편의 초기자 클래스와 구조체라는 약간의 차이는 있지만, 스위프트는 '2-단계 초기화' 를 하며, `self` 에 대한 접근은 '1-단계 초기화' 가 완료된 시점부터 가능합니다. 본문에 있는 다른 '지명 초기자' 를 호출 완료한 시점이 '1-단계 초기화' 가 완료된 시점에 해당합니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)]({% link docs/books/swift-programming-language/initialization.md %}#two-phase-initialization-2-단계-초기화) 부분을 보도록 합니다.
 -->
 
 [^automatic-memberwise-initializer]: '자동 멤버 초기자 (autumatic memberwise initializer)' 라는 이름은 이 '멤버 초기자' 가 명시적인 구현없이, 스위프트의 컴파일러에 의해 자동으로 제공되기 때문에 붙은 이름입니다.

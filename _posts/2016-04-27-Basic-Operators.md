@@ -1,22 +1,22 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Basic Operators (기초 연산자)"
+title:  "Basic Operators (기초 연산자)"
 date:   2016-04-27 10:00:00 +0900
 categories: Swift Language Grammar Basic Operators
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [The Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) 부분[^The-Basics]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Basic Operators (기초 연산자)
 
 _연산자 (operator)_ 는 특수한 기호[^symbol] 나 구절[^phrase] 로서 값의 검사, 바꿈, 또는 조합에 사용합니다. 예를 들어, 덧셈 연산자 (`+`) 는, `let i = 1 + 2` 처럼, 두 수를 더하고, 논리 곱 (AND) 연산자 (`&&`) 는, `if enterDoorCode && passedRetinaScan` 처럼, 두 불리언 값을 조합합니다.
 
-스위프트는 **C** 같은 언어로 이미 알고 있을 연산자를 지원하면서, 여러 가지 보유 능력을 개선하여 공통적인 코딩 에러를 없앱니다. 할당 연산자 (`=`)[^assignment] 는 값을 반환하지 않아서, 같음 연산자 (`==`)[^equal-to] 를 의도할 때 실수로 사용되는 걸 막아줍니다. (`+`,`-`, `*`, `/`, `%` 등의) 산술 연산자[^arithmetic] 는 값 넘침[^value-overflow] 을 탐지하고 이를 허용치 않아서, 저장 타입이 허용한 값 범위보다 더 커지거나 작아진 수와 작업할 때의 예상치 못한 결과를 피해줍니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 에서 설명하듯, 스위프트의 값 넘침 연산자를 사용하여 값 넘침 동작을 직접 선택할 수 있습니다.
+스위프트는 **C** 같은 언어로 이미 알고 있을 연산자를 지원하면서, 여러 가지 보유 능력을 개선하여 공통적인 코딩 에러를 없앱니다. 할당 연산자 (`=`)[^assignment] 는 값을 반환하지 않아서, 같음 연산자 (`==`)[^equal-to] 를 의도할 때 실수로 사용되는 걸 막아줍니다. (`+`,`-`, `*`, `/`, `%` 등의) 산술 연산자[^arithmetic] 는 값 넘침[^value-overflow] 을 탐지하고 이를 허용치 않아서, 저장 타입이 허용한 값 범위보다 더 커지거나 작아진 수와 작업할 때의 예상치 못한 결과를 피해줍니다. [Overflow Operator (값 넘침 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#overflow-operators-값-넘침-연산자) 에서 설명하듯, 스위프트의 값 넘침 연산자를 사용하여 값 넘침 동작을 직접 선택할 수 있습니다.
 
 스위프트는 C 에서는 찾아볼 수 없는, 값의 범위를 표현하는 줄임말인, `a..<b` 와 `a...b` 같은, 범위 연산자[^range] 도 제공합니다.
 
-이 장에선 일반적으로 흔한 스위프트 연산자를 설명합니다. 스위프트의 고급 연산자와, 자신만의 연산자를 정의하는 방법 및 자신만의 타입에 표준 연산자를 구현하는 방법은 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 에서 다룹니다.
+이 장에선 일반적으로 흔한 스위프트 연산자를 설명합니다. 스위프트의 고급 연산자와, 자신만의 연산자를 정의하는 방법 및 자신만의 타입에 표준 연산자를 구현하는 방법은 [Advanced Operators (고급 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}) 에서 다룹니다.
 
 ### Terminology (용어)
 
@@ -72,7 +72,7 @@ if x = y {
 10.0 / 2.5  // 4.0 과 같음
 ```
 
-**C** 및 **오브젝티브-C** 의 산술 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값 넘침을 허용하지 않습니다. 값 넘침 동작을 직접 선택하려면 (`a &+ b` 같이) 스위프트의 값 넘침 연산자를 사용하면 됩니다. [Overflow Operator (값 넘침 연산자)]({% post_url 2020-05-11-Advanced-Operators %}#overflow-operators-값-넘침-연산자) 부분도 보도록 합니다.
+**C** 및 **오브젝티브-C** 의 산술 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값 넘침을 허용하지 않습니다. 값 넘침 동작을 직접 선택하려면 (`a &+ b` 같이) 스위프트의 값 넘침 연산자를 사용하면 됩니다. [Overflow Operator (값 넘침 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#overflow-operators-값-넘침-연산자) 부분도 보도록 합니다.
 
 덧셈 연산자는 `String` 이어붙이기[^concatenation] 도 지원합니다:
 
@@ -172,7 +172,7 @@ a += 2
 * 크거나 같음 (`a >= b`)
 * 작거나 같음 (`a <= b`)
 
-> 스위프트는 두 개의 _정체 식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공하는데, 이를 사용하여 두 객체 참조가 둘 다 똑같은 객체 인스턴스를 참조하는지 검사합니다. 더 많은 정보는, [Identity Operators (정체 식별 연산자)]({% post_url 2020-04-14-Structures-and-Classes %}#identity-operators-정체-식별-연산자) 부분을 보도록 합니다.
+> 스위프트는 두 개의 _정체 식별 연산자 (identity operators_; `===` 와 `!==`_)_ 도 제공하는데, 이를 사용하여 두 객체 참조가 둘 다 똑같은 객체 인스턴스를 참조하는지 검사합니다. 더 많은 정보는, [Identity Operators (정체 식별 연산자)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#identity-operators-정체-식별-연산자) 부분을 보도록 합니다.
 
 각각의 비교 연산자는 `Bool` 값을 반환하여 구문이 참인지 아닌지 지시합니다:
 
@@ -197,7 +197,7 @@ if name == "world" {
 // "hello, world" 를 인쇄하는데, name 이 진짜로 "world" 와 같기 때문임
 ```
 
-`if` 문에 대한 더 많은 내용은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보도록 합니다.
+`if` 문에 대한 더 많은 내용은, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장을 보도록 합니다.
 
 두 개의 튜플이 똑같은 타입이면서 똑같은 개수의 값이 있다면 서로 비교할 수 있습니다. 튜플 비교 연산은 왼쪽에서 오른쪽으로, 한 번에 한 값씩, 두 값이 같지 않은 걸 찾을 때까지, 비교합니다. 그렇게 두 값을 비교하며, 그 비교 연산의 결과가 전체 튜플 비교 연산의 결과를 결정합니다. 모든 원소가 같으면, 튜플 그 자체가 같습니다. 예를 들면 다음과 같습니다:
 
@@ -314,7 +314,7 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-`for-in` 반복문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 장을 보기 바랍니다.
+`for-in` 반복문에 대한 더 많은 것은, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장을 보기 바랍니다.
 
 #### Half-Open Range Operator (반-열린 범위 연산자)
 
@@ -334,7 +334,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-배열앤 네 개의 항목이 담겨 있지만, `0..<count` 는 (배열의 마지막 항목 색인인) `3` 까지만 세는데, 이는 반-열린 연산자이기 때문입니다. 배열에 대한 더 많은 것은, [Arrays (배열)]({% post_url 2016-06-06-Collection-Types %}#arrays-배열) 부분을 보기 바랍니다.
+배열앤 네 개의 항목이 담겨 있지만, `0..<count` 는 (배열의 마지막 항목 색인인) `3` 까지만 세는데, 이는 반-열린 연산자이기 때문입니다. 배열에 대한 더 많은 것은, [Arrays (배열)]({% link docs/books/swift-programming-language/collection-types.md %}#arrays-배열) 부분을 보기 바랍니다.
 
 #### One-Sided Ranges (한-쪽 범위)
 
@@ -476,11 +476,11 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 
 ### 다음 장
 
-[Strings and Characters (문자열과 문자) > ]({% post_url 2016-05-29-Strings-and-Characters %})
+[Strings and Characters (문자열과 문자) >]({% link docs/books/swift-programming-language/strings-and-characters.md %})
 
 ### 참고 자료
 
-[^Basic-Operators]: 원문은 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Basic Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html) 에서 볼 수 있습니다.
 
 [^infix]: '중위 (infix)' 는 **중** 간에 **위** 치한다는 의미입니다. 중위라는 말에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 참고하기 바랍니다.
 

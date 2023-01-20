@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Expressions (표현식)"
+title:  "Expressions (표현식)"
 date:   2020-08-19 11:30:00 +0900
 categories: Swift Language Grammar Expression
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 부분[^Expressions]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Expressions (표현식)
 
@@ -20,7 +20,7 @@ categories: Swift Language Grammar Expression
 
 _접두사 표현식 (prefix expressions)_ 은 옵션인 접두사 연산자와 표현식을 조합합니다. 접두사 연산자는 하나의 인자로, 자신의 뒤에 있는 표현식을, 취합니다.
 
-이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 보도록 합니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}) 장과 [Advanced Operators (고급 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}) 장을 보도록 합니다.
 
 스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
@@ -32,7 +32,7 @@ _입-출력 표현식 (in-out expression)_ 은 함수 호출 표현식에 입-�
 
 &nbsp;&nbsp;&nbsp;&nbsp;\&`expression-표현식`
 
-입-출력 매개 변수에 대한 더 많은 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% post_url 2020-06-02-Functions %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
+입-출력 매개 변수에 대한 더 많은 정보와 예제를 보려면, [In-Out Parameters (입-출력 매개 변수)]({% link docs/books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 입-출력 표현식은, [Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적 변환)](#implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적-변환) 에서 설명하는 것처럼, 포인터가 필요한 상황에서 포인터-아닌 인자를 제공할 때도 사용합니다. 
 
@@ -70,7 +70,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction() // 에러: 첫 �
 
 표현식이 `try` 와 `await` 연산자를 둘 다 포함하면, 반드시 `try` 연산자가 먼저 나타나야 합니다. 
 
-`try` 와, `try?`, 및 `try!` 에 대한 더 많은 정보와 사용 예제를 보려면, [Error Handling (에러 처리)]({% post_url 2020-05-16-Error-Handling %}) 장을 보도록 합니다.
+`try` 와, `try?`, 및 `try!` 에 대한 더 많은 정보와 사용 예제를 보려면, [Error Handling (에러 처리)]({% link docs/books/swift-programming-language/error-handling.md %}) 장을 보도록 합니다.
 
 > GRAMMAR OF A TRY EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID384)
 
@@ -111,7 +111,7 @@ _중위 표현식 (infix expressions)_ 은 중위 이항 연산자를 왼쪽 및
 
 &nbsp;&nbsp;&nbsp;&nbsp;`left-hand argument-왼쪽 인자` `operator-연산자` `right-hand argument-오른쪽 인자`
 
-이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 장과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 보도록 합니다.
+이 연산자 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}) 장과 [Advanced Operators (고급 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}) 장을 보도록 합니다.
 
 스위프트 표준 라이브러리에서 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
 
@@ -144,7 +144,7 @@ _삼항 조건 연산자 (ternary conditional operator)_ 는 조건 값을 기�
 
 _조건 (condition)_ 평가가 `true` 면, 조건 연산자가 첫 번째 표현식을 평가하고 그 값을 반환합니다. 그 외 경우, 두 번째 표현식을 평가하고 그 값을 반환합니다. 사용하지 않는 표현식은 평가하지 않습니다.
 
-삼항 조건 연산자의 사용 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% post_url 2016-04-27-Basic-Operators %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 보도록 합니다.
+삼항 조건 연산자의 사용 예제는, [Ternary Conditional Operator (삼항 조건 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}Ternary Conditional Operator (삼항 조건 연산자)) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONDITIONAL OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -184,7 +184,7 @@ f(x as Any)
 
 `as!` 연산자는 _표현식 (expression)_ 을 특정 _타입 (type)_ 으로 강제 변환합니다. `as!` 연산자는, 옵셔널 타입이 아닌, 특정 _타입 (type)_ 값을 반환합니다. 변환을 실패하면, 실행 시간 에러가 일어납니다. `x as! T` 는 `(x as? T)!` 와 똑같이 동작합니다.
 
-타입 변환에 대한 더 많은 정보 및 타입-변환 연산자의 사용 예제는, [Type Casting (타입 변환)]({% post_url 2020-04-01-Type-Casting %}) 장을 보도록 합니다.
+타입 변환에 대한 더 많은 정보 및 타입-변환 연산자의 사용 예제는, [Type Casting (타입 변환)]({% link docs/books/swift-programming-language/type-casting.md %}) 장을 보도록 합니다.
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID385)
 
@@ -210,7 +210,7 @@ _글자 값 표현식 (literal expression)_ 은 (문자열이나 수치 값 같�
 
 `#file` 의 문자열 값은 언어 버전에 의존하여, 예전 동작인 `#filePath` 를 새로운 동작인 `#fileID` 로 이주할 수 있게 합니다.[^filePath-and-fildID] 현재, `#file` 는 `#filePath` 값과 똑같습니다. 미래 버전의 스위프트에선, 그 대신 `#file` 가 `#fileID` 값과 똑같을 겁니다. 미래의 동작을 채택하려면, `#file` 을 `#fileID` 나 `#filePath` 로 적절하게 교체하기 바랍니다.[^file-to-filePath-and-fildID]
 
-`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 형식인데, _파일 (file)_ 은 표현식이 있는 파일 이름이고 _모듈 (module)_ 은 이 파일이 속해 있는 모듈 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일의 전체 파일-시스템 경로입니다. [Line Control Statement (라인 제어문)]({% post_url 2020-08-20-Statements %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, 이 두 값 모두 `#sourceLocation` 으로 바꿀 수 있습니다. `#filePath` 와 달리, `#fileID` 에 소스 파일의 전체 경로를 박아 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 컴파일한 바이너리의 크기가 줄여듭니다. 테스트나, 빌드 스크립트, 또는 그 외 출하용 프로그램의 일부분이 아닌 코드 밖에선 `#filePath` 의 사용을 피합니다.[^shipping-program]
+`#fileID` 표현식의 문자열 값은 _모듈/파일 (module/file)_ 형식인데, _파일 (file)_ 은 표현식이 있는 파일 이름이고 _모듈 (module)_ 은 이 파일이 속해 있는 모듈 이름입니다. `#filePath` 표현식의 문자열 값은 표현식이 있는 파일의 전체 파일-시스템 경로입니다. [Line Control Statement (라인 제어문)]({% link docs/books/swift-programming-language/statements.md %}#line-control-statement-라인-제어문) 에서 설명한 것처럼, 이 두 값 모두 `#sourceLocation` 으로 바꿀 수 있습니다. `#filePath` 와 달리, `#fileID` 에 소스 파일의 전체 경로를 박아 넣지 않기 때문에, 개인 정보를 더 잘 보호하며 컴파일한 바이너리의 크기가 줄여듭니다. 테스트나, 빌드 스크립트, 또는 그 외 출하용 프로그램의 일부분이 아닌 코드 밖에선 `#filePath` 의 사용을 피합니다.[^shipping-program]
 
 > `#fileID` 표현식 구문을 해석하려면, 첫 번째 빗금 (`/`) 앞의 텍스트는 모듈 이름으로 마지막 빗금 뒤의 텍스트는 파일 이름으로 읽습니다.[^first-and-last-slash] 미래에는, `MyModule/some/disambiguation/MyFile.swift` 같이, 문자열이 여러 개의 빗금을 담고 있을 지도 모릅니다.
 
@@ -311,7 +311,7 @@ _클로저 표현식 (closure expression)_ 은, 다른 프로그래밍 언어에
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-_매개 변수 (parameter)_ 의 형식은, [Function Declaration (함수 선언)]({% post_url 2020-08-15-Declarations %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 똑같습니다.
+_매개 변수 (parameter)_ 의 형식은, [Function Declaration (함수 선언)]({% link docs/books/swift-programming-language/declarations.md %}#function-declaration-함수-선언) 에서 설명한 것처럼, 함수 선언의 매개 변수와 똑같습니다.
 
 클로저 표현식에 `throws` 나 `async` 를 써서 클로저가 던지거나 비동기라는 걸 명시합니다.
 
@@ -347,7 +347,7 @@ myFunction { $0 + $1 }
 
 함수 호출 부분에서 곧바로 클로저를 사용할 때 처럼, 변수나 상수에 저장하지 않고도 클로저를 사용할 수 있습니다. 위 코드에서 `myFunction` 에 전달한 클로저 표현식이 곧바로 사용하는 예의 한 종류입니다. 그 결과, 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식의 주위 상황에 달려 있습니다.[^escaping-or-nonescaping] 곧바로 호출하거나 벗어나지 않는 함수 인자로 전달한 클로저 표현식은 벗어나지 않는 겁니다. 그 외 경우의, 클로저 표현식은 벗어나는 겁니다.
 
-벗어나는 클로저의 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% post_url 2020-03-03-Closures %}#escaping-closures-벗어나는-클로저) 부분을 보도록 합니다.
+벗어나는 클로저의 더 많은 정보는, [Escaping Closures (벗어나는 클로저)]({% link docs/books/swift-programming-language/closures.md %}#escaping-closures-벗어나는-클로저) 부분을 보도록 합니다.
 
 <p>
 <strong id="capture-lists-붙잡을-목록">Capture Lists (붙잡을 목록)</strong>
@@ -408,7 +408,7 @@ myFunction { [unowned self] in print(self.title) }  // 소유하지 않게 붙�
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% post_url 2020-03-03-Closures %}#closure-expressions-클로저-표현식) 부분을 보도록 합니다. 붙잡을 목록에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% post_url 2020-06-30-Automatic-Reference-Counting %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 보도록 합니다.
+클로저 표현식에 대한 더 많은 정보와 예제는, [Closure Expressions (클로저 표현식)]({% link docs/books/swift-programming-language/closures.md %}#closure-expressions-클로저-표현식) 부분을 보도록 합니다. 붙잡을 목록에 대한 더 많은 정보와 예제는, [Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}#resolving-strong-reference-cycles-for-closures-클로저의-강한-참조-순환-해결하기) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CLOSURE EXPRESSION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID389)
 
@@ -741,7 +741,7 @@ print(keyPath == c.getSomeKeyPath())
 
 _접미사 표현식 (postfix expressions)_ 은 접미사 연산자나 그 외 접미사 구문을 표현식에 적용함으로써 형성합니다. 구문상, 모든 으뜸 표현식은 접미사 표현식이기도 합니다.
 
-이러한 연산자의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% post_url 2016-04-27-Basic-Operators %}) 과 [Advanced Operators (고급 연산자)]({% post_url 2020-05-11-Advanced-Operators %}) 장을 보도록 합니다.
+이러한 연산자의 동작에 대한 정보는, [Basic Operators (기초 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}) 과 [Advanced Operators (고급 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}) 장을 보도록 합니다.
 
 스위프트 표준 라이브러리가 제공하는 연산자에 대한 정보는, [Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 참고하기 발랍니다.
 
@@ -817,7 +817,7 @@ someFunction { return $0 } secondClosure: { return $0 }  // "10 20" 를 인쇄�
 
 위 예제에서, "헷갈림 (ambiguous)" 으로 표시한 함수 호출은 "- 120" 을 인쇄하며 스위프트 5.3 에서 컴파일러 경고를 만듭니다. 미래 버전의 스위프트는 "110 -" 을 인쇄할 겁니다.
 
-클래스나, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름의 메소드)]({% post_url 2020-08-15-Declarations %}#methods-with-special-names-특수한-이름의-메소드) 에서 설명한, 여러가지 메소드 중 하나를 선언함으로써 수월한 함수 호출 구문을 사용할 수 있습니다.
+클래스나, 구조체, 또는 열거체 타입은, [Methods with Special Names (특수한 이름의 메소드)]({% link docs/books/swift-programming-language/declarations.md %}#methods-with-special-names-특수한-이름의-메소드) 에서 설명한, 여러가지 메소드 중 하나를 선언함으로써 수월한 함수 호출 구문을 사용할 수 있습니다.
 
 <p>
 <strong id="implicit-conversion-to-a-pointer-type-포인터-타입으로의-암시적-변환">Implicit Conversion to a Pointer Type (포인터 타입으로의 암시적 변환)</strong>
@@ -915,7 +915,7 @@ t.0 = t.1
 
 모듈의 멤버는 그 모듈의 최상단 선언들에 접근합니다.
 
-`dynamicMemberLookup` 특성으로 선언한 타입은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 에서 설명한 것처럼, 실행 시간에 찾아 보는 멤버를 포함합니다.
+`dynamicMemberLookup` 특성으로 선언한 타입은, [Attributes (특성)]({% link docs/books/swift-programming-language/attributes.md %}) 에서 설명한 것처럼, 실행 시간에 찾아 보는 멤버를 포함합니다.
 
 이름이 다른 거라곤 자신의 인자 이름뿐인 메소드나 초기자를 구별하려면, 괄호 안에 인자 이름을 포함하고, 각각의 인자 이름 뒤에 콜론 (`:`) 을 붙입니다. 이름 없는 인자엔 밑줄 (`_`) 을 씁니다. 중복 정의한 메소드를 구별하려면, 타입 보조 설명을 사용합니다. 예를 들면 다음과 같습니다:
 
@@ -985,7 +985,7 @@ _첨자 표현식 (subscript expression)_ 은 해당 첨자 선언의 획득자�
 
 첨자 표현식의 값을 평가하려면, 첨자 매개 변수로 전달한 _색인 표현식 (index expressions)_ 으로 _표현식 (expression)_ 타입의 첨자 획득자를 호출합니다. 값을 설정하려면, 첨자 설정자를 똑같은 방식으로 호출합니다.
 
-첨자 선언에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 선언)]({% post_url 2020-08-15-Declarations %}#protocol-subscript-declaration-프로토콜-첨자-선언) 부분을 보도록 합니다.
+첨자 선언에 대한 정보는, [Protocol Subscript Declaration (프로토콜 첨자 선언)]({% link docs/books/swift-programming-language/declarations.md %}#protocol-subscript-declaration-프로토콜-첨자-선언) 부분을 보도록 합니다.
 
 > GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#ID397)
 
@@ -1058,13 +1058,13 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 ### 다음 장
 
-[Statements (구문) > ]({% post_url 2020-08-20-Statements %})
+[Statements (구문) >]({% link docs/books/swift-programming-language/statements.md %})
 
 ### 참고 자료
 
-[^Expressions]: 원문은 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html) 에서 볼 수 있습니다.
 
-[^primary-expression]: '으뜸 표현식 (primary expression)' 은 아래의 [Primary Expressions (으뜸 표현식)]({% post_url 2020-08-19-Expressions %}#primary-expressions-으뜸-표현식) 부분에서 설명합니다.
+[^primary-expression]: '으뜸 표현식 (primary expression)' 은 아래의 [Primary Expressions (으뜸 표현식)]({% link docs/books/swift-programming-language/expressions.md %}#primary-expressions-으뜸-표현식) 부분에서 설명합니다.
 
 [^side-effect]: 컴퓨터 용어에서의 '부작용 (side effect)' 은 '부수적 효과' 정도로 이해할 수 있습니다. 보다 자세한 내용은 위키피디아의 [Side effect (computer science)](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) 및 [부작용 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/부작용_(컴퓨터_과학)) 항목을 보도록 합니다.
 
@@ -1096,13 +1096,13 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^mutating-method]: 값 타입 (value type) 은 구조체와 열거체를 말하고, '변경 메소드 (mutating method)' 는 값 타입의 `self` 를 변경할 수 있는 메소드를 말합니다. 본문은 `self` 에 다른 인스턴스를 할당함으로써 값 타입을 변경할 수 있다는 의미입니다.
 
-[^capture]: 클로저의 '붙잡기 (capturoing)' 에 대한 더 자세한 정보는, [Closures (클로저; 잠금 블럭)]({% post_url 2020-03-03-Closures %}) 장의 [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 부분을 보도록 합니다. 
+[^capture]: 클로저의 '붙잡기 (capturoing)' 에 대한 더 자세한 정보는, [Closures (클로저; 잠금 블럭)]({% link docs/books/swift-programming-language/closures.md %}) 장의 [Capturing Values (값 붙잡기)]({% link docs/books/swift-programming-language/closures.md %}#capturing-values-값-붙잡기) 부분을 보도록 합니다. 
 
 [^escaping-or-nonescaping]: 클로저 표현식이 벗어나는 건지 벗어나지 않는 건지는 표현식 자체가 아니라 표현식을 호출하는 쪽에 달려 있다는 의미입니다.
 
-[^strong-reference]: '강한 참조 (strong reference)' 에 대해서는 [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 장을 보도록 합니다. 
+[^strong-reference]: '강한 참조 (strong reference)' 에 대해서는 [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}) 장을 보도록 합니다. 
 
-[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
+[^reference-semantics]: '참조 의미 구조 (reference semantics)' 에 대한 더 자세한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
 
 [^because-of-reference]: `x` 가 클래스의 인스턴스라서 참조 의미 구조를 가지기 때문에 바깥 영역의 `x` 와 안쪽 영역의 `x` 가 동일한 대상을 참조합니다.
 
@@ -1124,15 +1124,15 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 
 [^key-path-string-expression]: '키-경로 문자열 표현식 (key-path string expression)' 은 '키-경로 표현식 (key-path expression)' 을 오브젝티브-C 의 속성에 사용하기 위한 방법일 것이라고 생각합니다.
 
-[^argument-label]: 여기서 말하는 '매개 변수의 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% post_url 2020-06-02-Functions %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 보도록 합니다. 
+[^argument-label]: 여기서 말하는 '매개 변수의 이름' 은 '인자 이름표 (argument label)' 를 의미합니다. '인자 이름표' 에 대한 더 자세한 설명은, [Function Argument Labels and Parameter Names (함수의 인자 이름표와 매개 변수 이름)]({% link docs/books/swift-programming-language/functions.md %}#function-argument-labels-and-parameter-names-함수의-인자-이름표와-매개-변수-이름) 부분을 보도록 합니다. 
 
 [^left-to-right]: 스위프트 5.3 이전 버전에서 오른쪽-에서-왼쪽 순서를 사용한 건, 예전엔 뒤딸린 클로저가 가장 오른쪽 매개 변수 하나뿐이었기 때문으로 추측합니다. 스위프트 5.3 이후 부턴 뒤 딸린 클로저가 여러 개일 수 있어서 왼쪽-에서-오른쪽 순서를 사용한다고 볼 수 있습니다.
 
 [^contiguous]: 배열 저장 공간이 딱 붙어있다는 건 배열 전체를 메모리 안에 한 덩어리로 저장한다는 의미입니다. 이렇게 하면 배열 주소를 더하고 빼는 것으로도 배열 요소를 탐색할 수 있습니다.
 
-[^conditional-compilation-block]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 더 자세한 내용은, [Conditional Compilation Block (조건부 컴파일 블럭)]({% post_url 2020-08-20-Statements %}#conditional-compilation-block-조건부-컴파일-블럭) 부분을 보도록 합니다.
+[^conditional-compilation-block]: '조건부 컴파일 블럭 (Conditional Compilation Block)' 에 대한 더 자세한 내용은, [Conditional Compilation Block (조건부 컴파일 블럭)]({% link docs/books/swift-programming-language/statements.md %}#conditional-compilation-block-조건부-컴파일-블럭) 부분을 보도록 합니다.
 
-[^outmost-expression]: 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% post_url 2020-06-17-Optional-Chaining %}) 장을 보도록 합니다.
+[^outmost-expression]: 옵셔널을 다시 옵셔널로 포장하지는 않는다는 의미입니다. 이에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% link docs/books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다.
 
 [^using-unsafe-API]: 이 말은 `&` 같은 '입-출력 매개 변수' 를 사용해서 '안전하지 않은 포인터' 로 암시적으로 변환하는 기능은 '저-수준 C 함수' 를 호출할 때만 사용하라는 의미입니다.
 

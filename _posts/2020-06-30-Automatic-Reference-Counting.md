@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Automatic Reference Counting (자동 참조 카운팅)"
+title:  "Automatic Reference Counting (자동 참조 카운팅)"
 date:   2020-06-30 10:00:00 +0900
 categories: Swift Language Grammar ARC Automatic Reference Counting
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Automatic Reference Counting (자동 참조 카운팅)
 
@@ -412,9 +412,9 @@ class City {
 
 두 클래스 사이에 상호 의존성을 설정하기 위해, `City` 초기자는 `Country` 인스턴스를 취하고, 이 인스턴스를 자신의 `country` 속성에 저장합니다.
 
-`City` 초기자는 `Country` 초기자 안에서 호출합니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% post_url 2016-01-23-Initialization %}#two-phase-initialization-2-단계-초기화) 에서 설명한 것처럼, 새 `Country` 인스턴스 완전히 초기화하기 전까진 `Country` 초기자가 `self` 를 `City` 초기자에 전달할 수 없습니다.
+`City` 초기자는 `Country` 초기자 안에서 호출합니다. 하지만, [Two-Phase Initialization (2-단계 초기화)]({% link docs/books/swift-programming-language/initialization.md %}#two-phase-initialization-2-단계-초기화) 에서 설명한 것처럼, 새 `Country` 인스턴스 완전히 초기화하기 전까진 `Country` 초기자가 `self` 를 `City` 초기자에 전달할 수 없습니다.
 
-이 필수 조건에 대처하려면, `Country` 의 `capitalCity` 속성을 암시적으로 포장 푸는 옵셔널 속성으로 선언하고자, 자신의 타입 보조 설명 끝에 느낌표를 붙여 (`City!` 라고) 지시합니다. 이는, 다른 어떤 옵셔널 같이, `capitalCity` 속성도 `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)]({% post_url 2016-04-24-The-Basics %}#implicitly-unwrapped-optionals-암시적으로-포장-푸는-옵셔널) 에서 설명한 것처럼 값의 포장을 풀지 않고도 접근 할 수 있다는 의미입니다.
+이 필수 조건에 대처하려면, `Country` 의 `capitalCity` 속성을 암시적으로 포장 푸는 옵셔널 속성으로 선언하고자, 자신의 타입 보조 설명 끝에 느낌표를 붙여 (`City!` 라고) 지시합니다. 이는, 다른 어떤 옵셔널 같이, `capitalCity` 속성도 `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)]({% link docs/books/swift-programming-language/the-basics.md %}#implicitly-unwrapped-optionals-암시적으로-포장-푸는-옵셔널) 에서 설명한 것처럼 값의 포장을 풀지 않고도 접근 할 수 있다는 의미입니다.
 
 `capitalCity` 엔 기본 값 `nil` 이 있기 때문에, `Country` 인스턴스가 초기자 안에서 자신의 `name` 속성을 설정하자마자 곧 새로운 `Country` 인스턴스는 완전히 초기화된 걸로 고려합니다. 이는 `name` 속성을 설정하자마자 곧 `Country` 초기자가 암시적 `self` 속성의 참조와 전달을 시작할 수 있다는 의미입니다. 그리하여 `Country` 초기자가 자신만의 `capitalCity` 속성을 설정할 때 `Country` 초기자가 `City` 초기자의 매개 변수로 `self` 를 전달할 수 있습니다.
 
@@ -502,7 +502,7 @@ print(paragraph!.asHTML())
 
 ![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
 
-인스턴스의 `asHTML` 속성은 자신의 클로저로의 강한 참조를 쥡니다. 하지만, 클로저가 (`self.name` 과 `self.text` 를 참조하는 식으로) 자신의 본문 안에서 `self` 를 참조하기 때문에, 클로저가 'self' 를 _붙잡으며 (capture)_, 이는 `HTMLElement` 인스턴스로의 강한 참조를 되돌려 쥔다는 걸 의미합니다. 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% post_url 2020-03-03-Closures %}#capturing-values-값-붙잡기) 를 보도록 합니다.)
+인스턴스의 `asHTML` 속성은 자신의 클로저로의 강한 참조를 쥡니다. 하지만, 클로저가 (`self.name` 과 `self.text` 를 참조하는 식으로) 자신의 본문 안에서 `self` 를 참조하기 때문에, 클로저가 'self' 를 _붙잡으며 (capture)_, 이는 `HTMLElement` 인스턴스로의 강한 참조를 되돌려 쥔다는 걸 의미합니다. 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% link docs/books/swift-programming-language/closures.md %}#capturing-values-값-붙잡기) 를 보도록 합니다.)
 
 > 클로저가 `self` 를 여러 번 참조할지라도, `HTMLElement` 인스턴스로의 강한 참조는 하나만 붙잡습니다.
 
@@ -599,15 +599,15 @@ paragraph = nil
 // "p is being deinitialized" 를 인쇄함
 ```
 
-붙잡을 목록에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% post_url 2020-08-19-Expressions %}#capture-lists-붙잡을-목록) 을 보도록 합니다.
+붙잡을 목록에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% link docs/books/swift-programming-language/expressions.md %}#capture-lists-붙잡을-목록) 을 보도록 합니다.
 
 ### 다음 장
 
-[Memory Safety (메모리 안전성) > ]({% post_url 2020-04-07-Memory-Safety %})
+[Memory Safety (메모리 안전성) >]({% link docs/books/swift-programming-language/memory-safety.md %})
 
 ### 참고 자료
 
-[^Automatic-Reference-Counting]: 이 글에 대한 원문은 [Automatic-Reference-Counting](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Automatic-Reference-Counting](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html) 에서 볼 수 있습니다.
 
 [^ARC-Objective-C]: 원문 자체가 '애플 개발자 문서' 로 가는 링크입니다. '오브젝티브-C' 개발자가 아니라면 해당 문서를 직접 볼 필요 까지는 없습니다.
 
@@ -615,11 +615,11 @@ paragraph = nil
 
 [^stored-constant-property]: 원문은 'stored constant property' 라서 직역하면 '저장 상수 속성' 이지만, 첵의 다른 곳에서 'constant stored property' 라는 말을 더 많이 쓰고 있어서, 통일성을 위해 '상수 저장 속성' 이라고 옮깁니다. 사실 '저장 상수 속성' 이나 '상수 저장 속성' 이나 의미는 같은 것인데, 우리 말로 옮겼을 때 '상수 저장 속성' 이 좀 더 자연스럽게 느껴집니다.
 
-[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% post_url 2017-03-03-Deinitialization %}) 장을 보도록 합니다.
+[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% link docs/books/swift-programming-language/deinitialization.md %}) 장을 보도록 합니다.
 
 [^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
 
-[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장에 있는 [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
+[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 장에 있는 [Property Observers (속성 관찰자)]({% link docs/books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 [^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 보도록 합니다.
 
@@ -631,7 +631,7 @@ paragraph = nil
 
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
-[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% post_url 2020-05-30-Properties %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보도록 합니다.
+[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% link docs/books/swift-programming-language/properties.md %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보도록 합니다.
 
 [^capture-list-place]: 사실, 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 붙잡을 목록은 클로저 본문 맨 앞에 둔다라고 생각하면 됩니다.
 

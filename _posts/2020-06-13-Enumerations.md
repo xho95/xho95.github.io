@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Enumerations (열거체)"
+title:  "Enumerations (열거체)"
 date:   2020-06-13 10:00:00 +0900
 categories: Swift Language Grammar Error Handling
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 부분[^Enumerations]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Enumerations (열거체)
 
@@ -18,7 +18,7 @@ _열거체 (enumerations)_ 는 관련된 값의 그룹에 공통 타입을 정�
 
 스위프트 열거체는 그 자체로 일급 타입입니다.[^first-class] 전통적으로 클래스에서만 지원하던 수많은 특징을 채택하는데, 계산 속성으로 현재 열거체 값에 추가 정보 제공하기, 인스턴스 메소드로 열거체가 나타내는 값과 관련된 기능 제공하기 같은 겁니다. 열거체는 초기자[^initializers] 를 정의하여 초기 case 값도 제공할 수 있으며; 확장[^extend] 하여 자신의 원본 구현 너머로 기능을 늘릴 수도 있고; 프로토콜을 준수하여 표준 기능을 제공할 수도 있습니다.
 
-이런 더 많은 보유 능력에 대한 건, [Properties (속성)]({% post_url 2020-05-30-Properties %}) 과, [Methods (메소드)]({% post_url 2020-05-03-Methods %}), [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}), [Extensions (익스텐션; 확장)]({% post_url 2016-01-19-Extensions %}), 및 [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보기 바랍니다.
+이런 더 많은 보유 능력에 대한 건, [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 과, [Methods (메소드)]({% link docs/books/swift-programming-language/methods.md %}), [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}), [Extensions (익스텐션; 확장)]({% link docs/books/swift-programming-language/extensions.md %}), 및 [Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %}) 장을 보기 바랍니다.
 
 ### Enumeration Syntax (열거체 구문)
 
@@ -92,7 +92,7 @@ case .west:
 
 ...등으로 계속됩니다.
 
-[Control Flow (제어 흐름)]({% post_url 2020-06-10-Control-Flow %}) 에서 설명하듯, 열거체 case 를 고려할 땐 반드시 `switch` 문을 다 써버려야 합니다. `.west` 라는 `case` 를 생략하면, 이 코드의 컴파일이 안되는데, 이는 완성된 `CompassPoint` case 목록을 검토하지 않기 때문입니다. 다 써버리길 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
+[Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 에서 설명하듯, 열거체 case 를 고려할 땐 반드시 `switch` 문을 다 써버려야 합니다. `.west` 라는 `case` 를 생략하면, 이 코드의 컴파일이 안되는데, 이는 완성된 `CompassPoint` case 목록을 검토하지 않기 때문입니다. 다 써버리길 요구하는 건 열거체 case 를 생략하는 사고가 없도록 보장합니다.
 
 모든 열거채 case 마다 `case` 를 제공하는 게 적절하지 않을 땐, `default` case 를 제공하면 명시하지 않은 어떤 case 도 다룰 수 있습니다:
 
@@ -131,7 +131,7 @@ for beverage in Beverage.allCases {
 // juice
 ```
 
-위 예제에서 쓴 구문은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수한다고 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장을 보기 바랍니다.
+위 예제에서 쓴 구문은 열거체가 [CaseIterable](https://developer.apple.com/documentation/swift/caseiterable) 프로토콜을 준수한다고 표시합니다. 프로토콜에 대한 정보는, [Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %}) 장을 보기 바랍니다.
 
 ### Associated Values (결합 값)
 
@@ -218,7 +218,7 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-여기서, `ASCIIControlCharacter` 라는 열거체의 원시 값은 `Character` 타입이라고 정의하며, 좀 더 흔한 일부 ASCII 제어 문자들로 설정합니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% post_url 2016-05-29-Strings-and-Characters %}) 에서 설명합니다.
+여기서, `ASCIIControlCharacter` 라는 열거체의 원시 값은 `Character` 타입이라고 정의하며, 좀 더 흔한 일부 ASCII 제어 문자들로 설정합니다. `Character` 값은 [Strings and Characters (문자열과 문자)]({% link docs/books/swift-programming-language/strings-and-characters.md %}) 에서 설명합니다.
 
 원시 값은 문자열이나, 문자, 또는 어떠한 정수나 부동-소수점 수 타입일 수 있습니다. 각각의 원시 값은 반드시 자신의 열거체 선언 안에서 유일해야 합니다.
 
@@ -275,7 +275,7 @@ let possiblePlanet = Planet(rawValue: 7)
 
 하지만, 모든 `Int` 값들로 맞는 행성을 찾을 순 없습니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 `Planet`” 입니다.
 
-> 원시 값 초기자는 실패 가능 초기자인데, 모든 원시 값이 열거체 case 를 반환할 건 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% post_url 2020-08-15-Declarations %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 보기 바랍니다.
+> 원시 값 초기자는 실패 가능 초기자인데, 모든 원시 값이 열거체 case 를 반환할 건 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% link docs/books/swift-programming-language/declarations.md %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 보기 바랍니다.
 
 위치가 `11` 인 행성을 찾으려 하면, 원시 값 초기자가 반환한 옵셔널 `Planet` 값은 `nil` 일 겁니다:
 
@@ -351,13 +351,13 @@ print(evaluate(product))
 
 ### 다음 장
 
-[Structures and Classes (구조체와 클래스) > ]({% post_url 2020-04-14-Structures-and-Classes %})
+[Structures and Classes (구조체와 클래스) >]({% link docs/books/swift-programming-language/structures-and-classes.md %})
 
 ### 참고 자료
 
-[^Enumerations]: 이 글에 대한 원문은 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Enumerations](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 에서 볼 수 있습니다.
 
-[^type-safe]: 스위프트에서 '타입-안전 (type-safe)' 하다는 건 스위프트가 제공하는 타입 추론 (type inference) 과 타입 검사 (type check) 기능을 사용할 수 있다는 걸 의미합니다. 이에 대한 더 자세한 정보는, [The Basic (기초)]({% post_url 2016-04-24-The-Basics %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
+[^type-safe]: 스위프트에서 '타입-안전 (type-safe)' 하다는 건 스위프트가 제공하는 타입 추론 (type inference) 과 타입 검사 (type check) 기능을 사용할 수 있다는 걸 의미합니다. 이에 대한 더 자세한 정보는, [The Basic (기초)]({% link docs/books/swift-programming-language/the-basics.md %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% link docs/books/swift-programming-language/the-basics.md %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
 [^variants]: 공용체 (unions) 나 가변체 (variants) 는 뒤에 있는 [Associated Values (결합 값)](#associated-values-결합-값) 부분에서 설명합니다.
 
@@ -367,9 +367,9 @@ print(evaluate(product))
 
 [^unions-variants]: 여기 있는 세 가지 용어는 사실상 똑같은 개념입니다. 각각에 대한 더 자세한 정보는, 위키피디아의 [Tagged union](https://en.wikipedia.org/wiki/Tagged_union) 항목과 [Variant type](https://en.wikipedia.org/wiki/Variant_type) 항목을 참고하기 바랍니다. 컴퓨터 공학 용어에선 '차별화된 공용체 (discriminated union)' 가 '꼬리표 단 공용체 (tagged union)' 이기 때문에, 위키피디아에서도 이 둘의 항목이 아예 같습니다. 어쨌든, 본문에 따르면 스위프트 열거체에서의 결합 값은 **C** 언어에서의 공용체 (union) 와 유사한 개념이라고 볼 수 있습니다.
 
-[^annotation]: '보조 설명 (annotation)' 에 대한 더 자세한 설명은 [Type Annotations (타입 보조 설명)]({% post_url 2016-04-24-The-Basics %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
+[^annotation]: '보조 설명 (annotation)' 에 대한 더 자세한 설명은 [Type Annotations (타입 보조 설명)]({% link docs/books/swift-programming-language/the-basics.md %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
 
-[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% post_url 2016-01-23-Initialization %}) 에 있는 [Failable Initializers (실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-실패-가능-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)]({% post_url 2016-01-23-Initialization %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패-가능-초기자) 에서도 설명하고 있습니다.
+[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 에 있는 [Failable Initializers (실패 가능 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패-가능-초기자) 에서도 설명하고 있습니다.
 
 [^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 보도록 합니다.
 

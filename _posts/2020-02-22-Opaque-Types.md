@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Opaque Types (불투명 타입)"
+title:  "Opaque Types (불투명 타입)"
 date:   2020-02-22 11:30:00 +0900
 categories: Swift Language Grammar Opaque Type
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 부분[^Opaque-Types]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Opaque Types (불투명 타입)
 
@@ -225,7 +225,7 @@ protoFlippedTriangle == sameThing     //  에러
 
 이 접근법이 가진 또 다른 문제는 도형의 변형을 중첩하지 않는다는 겁니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수한 어떠한 타입인 인자를 취합니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않으며[^protocol-type-value]; `protoFlip(_:)` 이 반환한 값은 `Shape` 을 준수하지 않습니다. 이는 여러 번 변형하는 `protoFlip(protoFlip(smallTriangle))` 같은 코드는 무효라는 의미인데 뒤집은 도형은 `protoFlip(_:)` 의 유효 인자가 아니기 때문입니다.[^invalid-flipped]
 
-이와 대조하여, 불투명 타입은 실제 타입의 정체성을 보존합니다. 스위프트가 결합 타입[^associated-types] 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서 불투명 타입 값 을 사용하도록 해줍니다. 예를 들어, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 에 있는 한 `Container` 프로토콜 버전입니다:
+이와 대조하여, 불투명 타입은 실제 타입의 정체성을 보존합니다. 스위프트가 결합 타입[^associated-types] 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서 불투명 타입 값 을 사용하도록 해줍니다. 예를 들어, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 에 있는 한 `Container` 프로토콜 버전입니다:
 
 ```swift
 protocol Container {
@@ -267,23 +267,23 @@ print(type(of: twelve))
 
 ### 다음 장
 
-[Automatic Reference Counting (자동 참조 카운팅) > ]({% post_url 2020-06-30-Automatic-Reference-Counting %})
+[Automatic Reference Counting (자동 참조 카운팅) >]({% link docs/books/swift-programming-language/automatic-reference-counting.md %})
 
 ### 참고 자료
 
-[^Opaque-Types]: 전체 원문은 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html)에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html) 에서 볼 수 있습니다.
 
-[^private]: '개인 전용 (private)' 은 스위프트의 '개체 (entity)' 에 대한 '접근 수준' 이 `private` 인 것을 말합니다. '개인 전용' 에 대한 더 자세한 정보는, [Access Control (접근 제어)]({% post_url 2020-04-28-Access-Control %}) 장에 있는 [Access Levels (접근 수준)]({% post_url 2020-04-28-Access-Control %}#access-levels-접근-수준) 부분을 보도록 합니다.
+[^private]: '개인 전용 (private)' 은 스위프트의 '개체 (entity)' 에 대한 '접근 수준' 이 `private` 인 것을 말합니다. '개인 전용' 에 대한 더 자세한 정보는, [Access Control (접근 제어)]({% link docs/books/swift-programming-language/access-control.md %}) 장에 있는 [Access Levels (접근 수준)]({% link docs/books/swift-programming-language/access-control.md %}#access-levels-접근-수준) 부분을 보도록 합니다.
 
 [^type-identity]: '타입 정체성 (type identity) 을 보존한다' 는 건 불투명 타입을 사용하면 한 특정한 타입이 계속 유지된다 의미입니다. 프로토콜은 그 프로토콜을 준수하는 어떤 타입이든 모두 그 프로토콜 타입이기 때문에 타입 정체성을 보존할 수 없습니다.
 
-[^requirement]: '필수 조건 (requirement)' 은 그 프로토콜을 준수하는 타입이 반드시 구현해야 하는 조건을 의미합니다. 필수 조건에 대한 더 자세한 내용은, [Protocols (프로토콜; 규약)]({% post_url 2016-03-03-Protocols %}) 장에 있는 설명을 보도록 합니다.
+[^requirement]: '필수 조건 (requirement)' 은 그 프로토콜을 준수하는 타입이 반드시 구현해야 하는 조건을 의미합니다. 필수 조건에 대한 더 자세한 내용은, [Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %}) 장에 있는 설명을 보도록 합니다.
 
 [^flippedTriangle-Type]: 이 예제에서, `flippedTriangle` 은 `FlippedShape<Triangle>` 타입입니다. 본문이 의미하는 건, (모듈 안에 있어야 할) `FlippedShape` 이라는 타입이 모듈 밖으로 드러난다는 의미입니다.
 
 [^joinedTriangle-Type]: 원문에서는 타입이 `JoinedShape<FlippedShape<Triangle>, Triangle>` 라고 되어 있는데, `JoinedShape<Triangle, FlippedShape<Triangle>>` 이 맞는 것 같습니다.
 
-[^wrapper-types]: '포장 타입 (wrapper type)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% post_url 2020-08-14-Attributes %}) 장의 [propertyWrapper (속성 포장)]({% post_url 2020-08-14-Attributes %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
+[^wrapper-types]: '포장 타입 (wrapper type)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% link docs/books/swift-programming-language/attributes.md %}) 장의 [propertyWrapper (속성 포장)]({% link docs/books/swift-programming-language/attributes.md %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
 
 [^invalid-code]: 스위프트에서 '코드가 무효 (invalid) 하다' 는 건 그 코드를 컴파일하면 컴파일-시간 에러가 발생한다는 의미입니다.
 
@@ -295,6 +295,6 @@ print(type(of: twelve))
 
 [^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
 
-[^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% post_url 2020-02-29-Generics %}) 장의 [Associated Types (결합 타입)]({% post_url 2020-02-29-Generics %}#associated-types-결합-타입) 부분을 보도록 합니다.
+[^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분을 보도록 합니다.
 
-[^type-inference]: '타입 추론' 에 대한 더 자세한 정보는, [The Basics (기초)]({% post_url 2016-04-24-The-Basics %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% post_url 2016-04-24-The-Basics %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
+[^type-inference]: '타입 추론' 에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/books/swift-programming-language/the-basics.md %}) 장에 있는 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% link docs/books/swift-programming-language/the-basics.md %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.

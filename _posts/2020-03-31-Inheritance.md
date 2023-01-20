@@ -1,12 +1,12 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Inheritance (상속)"
+title:  "Inheritance (상속)"
 date:   2020-03-31 10:00:00 +0900
 categories: Swift Language Grammar Inheritance
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Inheritance](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html) 부분[^Inheritance]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Inheritance (상속)
 
@@ -194,7 +194,7 @@ print("Car: \(car.description)")
 <strong id="overriding-proper92ty-observers-속성-관찰자-재정의하기">Overriding Property Observers (속성 관찰자 재정의하기)</strong>
 </p>
 
-속성 재정의를 사용하면 상속한 속성에 속성 관찰자를 추가할 수 있습니다. 이는, 그 속성의 원본 구현 방법과는 상관없이, 상속한 속성 값이 바뀔 때 알림을 받을 수 있게 합니다. 속성 관찰자에 대한 더 많은 정보는, [Property Observers (속성 관찰자)]({% post_url 2020-05-30-Properties %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
+속성 재정의를 사용하면 상속한 속성에 속성 관찰자를 추가할 수 있습니다. 이는, 그 속성의 원본 구현 방법과는 상관없이, 상속한 속성 값이 바뀔 때 알림을 받을 수 있게 합니다. 속성 관찰자에 대한 더 많은 정보는, [Property Observers (속성 관찰자)]({% link docs/books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 > 상속한 상수 저장 속성이나 상속한 읽기-전용 계산 속성엔 속성 관찰자를 추가할 수 없습니다. 이 속성은 값을 설정할 수 없으므로, 재정의 부분에서 `willSet` 이나 `didSet` 구현을 제공하는 게 적절하지 않습니다.
 >
@@ -231,11 +231,11 @@ _최종 (final)_ 으로 표시함으로써 메소드나, 속성, 및 첨자의 �
 
 ### 다음 장
 
-[Initialization (초기화) > ]({% post_url 2016-01-23-Initialization %})
+[Initialization (초기화) >]({% link docs/books/swift-programming-language/initialization.md %})
 
 ### 참고 자료
 
-[^Inheritance]: 이 글에 대한 원문은 [Inheritance](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Inheritance](https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html) 에서 볼 수 있습니다.
 
 [^base-class]: 프로그래밍 언어마다 'base class' 라는 용어의 의미가 조금씩 다른데, 'base class' 를 '상위 클래스 (superclass)' 의 의미로 사용하는 언어도 있습니다. 하지만, 스위프트의 기초 클래스 (base class) 는 상위 클래스 (superclass) 와 의미가 조금 다릅니다. 스위프트의 기초 클래스는 상위 클래스 여부와는 상관없이, 아무 클래스도 상속하지 않는 클래스, 즉, 상속 계층이 있다면 최상단에 위치하게 되는 클래스를 의미합니다.
 

@@ -6,8 +6,7 @@ date:   2021-06-10 11:30:00 +0900
 categories: Swift Language Grammar Concurrency
 ---
 
-{: .comment }
-> 이 글은 **Apple** 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Concurrency](https://docs.swift.org/swift-book/ReferenceManual/Statements.html) 부분[^Conccurency] 을 번역하고, 주석을 달아서 정리한 것입니다. 전체 번역 목록은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 # {{ page.title }}
 
@@ -187,7 +186,7 @@ let result = await handle.get()
 
 ### Actors (행위자)
 
-클래스 같이, 행위자도 참조 타입이라서, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% post_url 2020-04-14-Structures-and-Classes %}#classes-are-reference-types-클래스는-참조-타입입니다) 에 있는 값 타입과 참조 타입의 비교는 클래스뿐 아니라 행위자에도 적용됩니다. (하지만) 클래스와 달리, 행위자는 자신의 변경 가능 상태에 한번에 한 임무의 접근만 허용하는데, 이는 여러 개의 임무 코드가 동일한 행위자 인스턴스와 안전하게 상호 작용하도록 합니다. 예를 들어, 온도를 기록하는 행위자는 이렇습니다:
+클래스 같이, 행위자도 참조 타입이라서, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 에 있는 값 타입과 참조 타입의 비교는 클래스뿐 아니라 행위자에도 적용됩니다. (하지만) 클래스와 달리, 행위자는 자신의 변경 가능 상태에 한번에 한 임무의 접근만 허용하는데, 이는 여러 개의 임무 코드가 동일한 행위자 인스턴스와 안전하게 상호 작용하도록 합니다. 예를 들어, 온도를 기록하는 행위자는 이렇습니다:
 
 ```swift
 actor TemperatureLogger {
@@ -286,11 +285,11 @@ struct TemperatureReading {
 
 ### 다음 글
 
-[Type Casting (타입 변환) > ]({% post_url 2020-04-01-Type-Casting %})
+[Type Casting (타입 변환) >]({% link docs/books/swift-programming-language/type-casting.md %})
 
 ### 참고 자료
 
-[^Conccurency]: 원문은 [Conccurency](https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Conccurency](https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html) 에서 볼 수 있습니다.
 
 [^built-in-support]: '비동기 및 병렬 코드의 구조적 작성을 내장 지원 (built-in support) 한다' 는 건 다른 프레임웍을 사용하지 않고도 언어 자체로 그런 기능을 작성할 수 있다는 의미입니다.
 

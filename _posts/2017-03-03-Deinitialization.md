@@ -1,13 +1,13 @@
 ---
 layout: post
 comments: true
-title:  "Swift 5.7: Deinitialization (뒷정리)"
+title:  "Deinitialization (뒷정리)"
 date:   2017-03-03 02:00:00 +0900
 categories: Swift Language Grammar Deinitialization
 redirect_from: "/swift/language/grammar/deinitialization/2017/03/02/Deinitialization.html"
 ---
 
-> Apple 에서 공개한 [The Swift Programming Language (Swift 5.7)](https://docs.swift.org/swift-book/) 책의 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 부분[^Deinitialization]을 번역하고, 설명이 필요한 부분은 주석을 달아서 정리한 글입니다. 전체 번역은 [Swift 5.7: Swift Programming Language (스위프트 프로그래밍 언어)]({% post_url 2017-02-28-The-Swift-Programming-Language %}) 에서 확인할 수 있습니다.
+{% include header_swift_book.md %}
 
 ## Deinitialization (뒷정리)
 
@@ -15,7 +15,7 @@ _정리자 (deinitializer)_[^deinitializer] 는 클래스 인스턴스를 해제
 
 ### How Deinitialization Works (뒷정리 방법)
 
-스위프트는 인스턴스가 더 이상 필요없을 때, 자원을 풀어주고자, 자동으로 해제합니다. [Automatic Reference Counting (자동 참조 카운팅)]({% post_url 2020-06-30-Automatic-Reference-Counting %}) 에서 설명한 것처럼, 스위프트는 _자동 참조 카운팅 (ARC)_ 을 통해 인스턴스 메모리 관리를 처리합니다. 인스턴스를 해제할 때 일반적으론 수동 정리를 할 필요가 없습니다. 하지만, 자신만의 자원으로 작업할 땐, 스스로 어떠한 추가 정리를 해야할 지도 모릅니다. 예를 들어, 자신만의 클래스를 생성하여 파일을 열고 어떠한 데이터를 작성하면, 클래스 인스턴스의 해제 전에 파일을 닫아야 할 지 모릅니다.
+스위프트는 인스턴스가 더 이상 필요없을 때, 자원을 풀어주고자, 자동으로 해제합니다. [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}) 에서 설명한 것처럼, 스위프트는 _자동 참조 카운팅 (ARC)_ 을 통해 인스턴스 메모리 관리를 처리합니다. 인스턴스를 해제할 때 일반적으론 수동 정리를 할 필요가 없습니다. 하지만, 자신만의 자원으로 작업할 땐, 스스로 어떠한 추가 정리를 해야할 지도 모릅니다. 예를 들어, 자신만의 클래스를 생성하여 파일을 열고 어떠한 데이터를 작성하면, 클래스 인스턴스의 해제 전에 파일을 닫아야 할 지 모릅니다.
 
 클래스 정의에는 클래스 당 최대 하나의 정리자가 있을 수 있습니다. 정리자는 어떤 매개 변수도 취하지 않고 괄호 없이 작성합니다:
 
@@ -108,11 +108,11 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 ### 다음 장
 
-[Optional Chaining (옵셔널 사슬) > ]({% post_url 2020-06-17-Optional-Chaining %})
+[Optional Chaining (옵셔널 사슬) >]({% link docs/books/swift-programming-language/optional-chaining.md %})
 
 ### 참고 자료
 
-[^Deinitialization]: 이 글에 대한 원문은 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 에서 확인할 수 있습니다.
+{% include footer_swift_book.md %} 이 장의 원문은 [Deinitialization](https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html) 에서 볼 수 있습니다.
 
 [^deinitializer]: '정리자 (deinitializer)' 라고 옮긴 것은 '초기자 (initializer)' 와 짝을 맞추기 위함입니다. 이는 C++ 의 '생성자 (constructor) 와 소멸자 (destructor)' 에서 착안한 것입니다. 스위프트는 '자동 참조 카운팅 (Automatic Reference Counting)' 으로 자동으로 메모리를 관리하기 때문에, 메모리의 생성이나 소멸이라는 개념이 (사실상) 거의 없습니다. 그러므로 생성자나 소멸자 같은 용어보다 초기자 및 정리자 같은 용어가 더 적합합니다.
 
