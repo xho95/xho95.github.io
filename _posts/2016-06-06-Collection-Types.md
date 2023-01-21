@@ -17,7 +17,7 @@ redirect_from: "/swift/grammar/collection/array/set/dictionary/2016/06/06/Collec
 
 스위프트의 배열과, 셋, 및 딕셔너리에 저장할 수 있는 값 및 키의 타입은 항상 명확합니다. 이는 실수로 잘못된 타입 값을 집합체에 집어 넣을 순 없다는 걸 의미합니다. 집합체에서 가져올 값의 타입에 자신감을 가져도 된다는 의미이기도 합니다.
 
-> 스위프트의 배열과, 셋, 및 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. 일반화 타입 및 집합체에 대한 더 많은 내용은, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 장을 보기 바랍니다.
+> 스위프트의 배열과, 셋, 및 딕셔너리 타입은 _일반화 집합체 (generic collections)_ 로 구현되어 있습니다. 일반화 타입 및 집합체에 대한 더 많은 내용은, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장을 보기 바랍니다.
 
 ### Mutability of Collections (집합체의 변경 가능성)
 
@@ -236,7 +236,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% link docs/books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 부분을 보기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 부분을 보기 바랍니다.
 
 ### Sets (셋)
 
@@ -250,9 +250,9 @@ _셋 (set)_ 은 똑같은 타입의 별개 값을 아무런 순서 없이[^with-
 
 타입은 반드시 _해시 가능 (hashable)_[^hashable] 해야 셋에 저장됩니다-즉, 타입은 반드시 스스로 _해시 값 (hash value)_[^hash-value] 을 계산할 방법을 제공해야 합니다. 비교해서 같은 모든 객체의 해시 값은 똑같은 하나의 `Int` 값이어서, `a == b` 이면, `a` 의 해시 값과 `b` 의 해시 값이 같습니다.
 
-스위프트의 (`String` 과, `Int`, `Double`, 및 `Bool` 같은) 모든 기본 타입은 기본적으로 해시 가능하며, 셋의 값 타입 또는 딕셔너리의 키 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% link docs/books/swift-programming-language/enumerations.md %}) 에서 설명한 것처럼) 결합 값이 없는 열거체 case 값도 기본적으로 해시 가능합니다.   
+스위프트의 (`String` 과, `Int`, `Double`, 및 `Bool` 같은) 모든 기본 타입은 기본적으로 해시 가능하며, 셋의 값 타입 또는 딕셔너리의 키 타입으로 사용할 수 있습니다. ([Enumerations (열거체)]({% link docs/swift-books/swift-programming-language/enumerations.md %}) 에서 설명한 것처럼) 결합 값이 없는 열거체 case 값도 기본적으로 해시 가능합니다.   
 
-> 자신만의 타입을 셋의 값 타입 또는 딕셔너리 키 타입으로 사용하려면 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수하게 하면 됩니다. 필수인 `hash(into:)` 메소드를 구현하기 위한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 보기 바랍니다. 프로토콜을 준수하기 위한 정보는, [Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %}) 을 보기 바랍니다.
+> 자신만의 타입을 셋의 값 타입 또는 딕셔너리 키 타입으로 사용하려면 스위프트 표준 라이브러리의 `Hashable` 프로토콜을 준수하게 하면 됩니다. 필수인 `hash(into:)` 메소드를 구현하기 위한 정보는, [Hashable](https://developer.apple.com/documentation/swift/hashable) 을 보기 바랍니다. 프로토콜을 준수하기 위한 정보는, [Protocols (프로토콜; 규약)]({% link docs/swift-books/swift-programming-language/protocols.md %}) 을 보기 바랍니다.
 
 #### Set Type Syntax (셋 타입 구문)
 
@@ -366,7 +366,7 @@ for genre in favoriteGenres {
 // Hip Hop
 ```
 
-`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% link docs/books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 을 보기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 을 보기 바랍니다.
 
 스위프트의 `Set` 타입은 순서를 정의하지 않습니다. 셋 값을 정해진 순서로 반복하려면, `sorted()` 메소드를 사용하는데, 이는 `<` 연산자로 정렬한 배열로 셋의 원소를 반환합니다.
 
@@ -591,7 +591,7 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% link docs/books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 부분을 보기 바랍니다.
+`for`-`in` 반복문에 대한 더 많은 건, [For-In Loops (For-In 반복문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 부분을 보기 바랍니다.
 
 딕셔너리의 `keys` 와 `values` 속성에 접근하여 반복 가능한 집합체[^iterable-collection] 형태로 키와 값을 가져올 수도 있습니다:
 
@@ -623,7 +623,7 @@ let airportNames = [String](airports.values)
 
 ### 다음 장
 
-[Control Flow (제어 흐름) >]({% link docs/books/swift-programming-language/control-flow.md %})
+[Control Flow (제어 흐름) >]({% link docs/swift-books/swift-programming-language/control-flow.md %})
 
 ### 참고 자료
 
@@ -635,7 +635,7 @@ let airportNames = [String](airports.values)
 
 [^collections]: 'collection' 은 '집합', '묶음' 등 여러 가지 말로 옮길 수 있지만 여기서는 '집합체' 라는 말을 사용합니다. 이는 프로그래밍 용어에서 '객체', '구조체', '열거체' 등이 하나의 '타입' 을 의미하는 것에서 착안한 것입니다. '집합체' 는 어떤 성분들의 집합으로 이루어진 '타입' 이라고 이해하면 좋을 것 같습니다.
 
-[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. [Closures (클로저; 잠금 블럭)]({% link docs/books/swift-programming-language/closures.md %}) 장이 [The Sorted Method (정렬 메소드)]({% link docs/books/swift-programming-language/closures.md %}#the-sorted-method-정렬-메소드) 부분에서 보듯, 여기선 'order' 는 순서로 'sort' 는 정렬이라고 옮깁니다.
+[^ordered-collection]: '순서 있는 집합체 (ordered collections)' 는 '정렬된 집합체 (sorted collection)' 와 다릅니다. 이 둘의 차이점에 대해서는, StackOverflow 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. [Closures (클로저; 잠금 블럭)]({% link docs/swift-books/swift-programming-language/closures.md %}) 장이 [The Sorted Method (정렬 메소드)]({% link docs/swift-books/swift-programming-language/closures.md %}#the-sorted-method-정렬-메소드) 부분에서 보듯, 여기선 'order' 는 순서로 'sort' 는 정렬이라고 옮깁니다.
 
 [^list]: '리스트 (list)' 는 자료 구조의 하나입니다. 리스트 자료 구조에 대한 더 많은 정보는, 위키피디아의 [List (abstract data type)](https://en.wikipedia.org/wiki/List_(abstract_data_type)) 항목과 [리스트 (컴퓨팅)](https://ko.wikipedia.org/wiki/리스트_(컴퓨팅)) 항목을 참고하기 바랍니다.
 
@@ -647,7 +647,7 @@ let airportNames = [String](airports.values)
 
 [^literal]: 'literal' (글자 값) 은 실제 글자로 표현된 값을 의미합니다. 예를 들어 `let a = 10` 이라고 하면 여기서 `10` 은 ASCII 코드로 된 문자 `1` 과 `0` 의 조합이지만 '실제 글자로 표현된 값' 은 정수 `10` 을 의미하므로, `a` 는 `Int` 타입으로 추론됩니다.
 
-[^isEmpty-count]: 스위프트는 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는게 아닙니다. [Strings and Characters (문자열과 문자)]({% link docs/books/swift-programming-language/strings-and-characters.md %}) 장의 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 절에서 설명하듯, 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야만 할 수도 있습니다. 이런 종류의 최적화에 대해선, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
+[^isEmpty-count]: 스위프트는 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `isEmpty` 를 사용하라고 합니다. `count` 는 값의 개수를 셀 때 사용합니다. `count` 와 `isEmpty` 는 사용 목적이 다르며, 단순히 편리하기 때문에 `isEmpty` 를 사용하는게 아닙니다. [Strings and Characters (문자열과 문자)]({% link docs/swift-books/swift-programming-language/strings-and-characters.md %}) 장의 [Counting Characters (문자 개수 세기)](#counting-characters-문자-개수-세기) 절에서 설명하듯, 배열이나, 셋, 또는 딕셔너리가 빈 것인지 검사할 때 `count` 를 사용하면, 배열의 전체 항목을 반복해야만 할 수도 있습니다. 이런 종류의 최적화에 대해선, [isEmpty vs. count == 0](https://medium.com/better-programming/strings-comparison-isempty-vs-count-0-be80d701901b) 항목을 참고하기 바랍니다.
 
 [^count-runtime-error]: `shippingList.count` 는 현재 배열의 전체 항목 개수인데, 이 값을 써서 새 항목을 추가하는 행위 자체가 다시 `count` 값을 바꿉니다. 이는 `count` 라는 변수에 값을 읽고 쓰는 행위를 동시에 하는 것과 같아서, 동시성 문제를 일으킵니다. 따라서 `shippingList.count` 는 유효한 색인이 아닙니다.
 

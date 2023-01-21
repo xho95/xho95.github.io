@@ -25,13 +25,13 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 
 ### 다음 장
 
-[A Swift Tour (스위프트 둘러보기) >]({% link docs/books/swift-programming-language/a-swift-tour.md %})
+[A Swift Tour (스위프트 둘러보기) >]({% link docs/swift-books/swift-programming-language/a-swift-tour.md %})
 
 ### 참고 자료
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Version Compatibility](https://docs.swift.org/swift-book/GuidedTour/Compatibility.html) 에서 볼 수 있습니다.
 
-[^swift-version]: [Document Revision History (문서를 다듬은 역사)]({% link docs/books/swift-programming-language/document-revision-history.md %}) 에서 확인할 수 있는 것처럼, 스위프트 언어의 버전은 매년 1씩 증가하다가, 2019년 이후로는 주 버전이 5.x 대를 유지하고 있습니다. 아마도 스위프트 언어의 문법이 어느 정도 정리되었기 때문일 것입니다.
+[^swift-version]: [Document Revision History (문서를 다듬은 역사)]({% link docs/swift-books/swift-programming-language/document-revision-history.md %}) 에서 확인할 수 있는 것처럼, 스위프트 언어의 버전은 매년 1씩 증가하다가, 2019년 이후로는 주 버전이 5.x 대를 유지하고 있습니다. 아마도 스위프트 언어의 문법이 어느 정도 정리되었기 때문일 것입니다.
 
 [^targets]: 엑스코드에서 하나의 **대상 (target)** 이란 '하나의 제품 (product) 을 정의한 것' 입니다. 프로젝트는 하나지만 대상은 여러 개일 수 있는데, 한 프로젝트로 만든 앱을 다양한 종류의 기기로 배포할 수도 있기 때문입니다. 대상에 대한 더 자세한 정보는, [Xcode Target](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html) 항목을 참고하기 바랍니다.
 
@@ -39,11 +39,11 @@ redirect_from: "/swift/language/grammar/versuib/compatibility/2020/03/15/Version
 
 [^ABI-Stability]: 스위프트의 ABI 안정성에 대해서는 [Evolving Swift On Apple Platforms After ABI Stability](https://swift.org/blog/abi-stability-and-apple/) 항목을 보도록 합니다. 한글 자료로는 **Zedd02028** 님이 [ABI stability](https://zeddios.tistory.com/654) 라는 글에 정리를 잘 해두신 것 같습니다.
 
-[^level-of-optionality]: '옵셔널 수준을 부가하지 않는다' 는 건, 이미 옵셔널을 반환하는 걸 다시 옵셔널로 포장하지 않는다는 의미입니다. 옵셔널성에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% link docs/books/swift-programming-language/optional-chaining.md %}) 부분을 참고하기 바랍니다.
+[^level-of-optionality]: '옵셔널 수준을 부가하지 않는다' 는 건, 이미 옵셔널을 반환하는 걸 다시 옵셔널로 포장하지 않는다는 의미입니다. 옵셔널성에 대한 더 자세한 내용은, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 부분을 참고하기 바랍니다.
 
 [^large-integer-literal]: '아주 큰 정수 글자 값 초기화 표현식 (large integer literal initialization expressions)' 이란, 바로 뒤의 예제 처럼, 정수가 아주 클 때 `0xffff_ffff_ffff_ffff` 같이 일정 자리마다 구분자를 표시한 글자 값입니다. 여기서 '글자 값 (literal)' 은 글자로 그 자체의 값을 의미하며, `let x = 1` 과 같은 구문에서의 `1` 같은 값입니다.
 
-[^concurrency]: 동시성에 대한 더 자세한 정보는 [Concurrency (동시성)]({% link docs/books/swift-programming-language/concurrency.md %}) 장을 참고하기 바랍니다.
+[^concurrency]: 동시성에 대한 더 자세한 정보는 [Concurrency (동시성)]({% link docs/swift-books/swift-programming-language/concurrency.md %}) 장을 참고하기 바랍니다.
 
 [^deployment-target]: 여기서 나열한 배포 대상들이 스위프트 5.7 이후의 기능을 사용하기 위한 조건입니다.
 

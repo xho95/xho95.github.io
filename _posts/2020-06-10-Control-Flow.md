@@ -45,7 +45,7 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` 의 내용물은 날 때부터 순서가 없으며[^dictionary-contents], 이를 반복하는 건 가져올 순서를 보증하지 않습니다.[^not-guarantee-the-order] 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복할 순서를 정하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 건, [Collection Types (집합체 타입)]({% link docs/books/swift-programming-language/collection-types.md %}) 을 보기 바랍니다.
+`Dictionary` 의 내용물은 날 때부터 순서가 없으며[^dictionary-contents], 이를 반복하는 건 가져올 순서를 보증하지 않습니다.[^not-guarantee-the-order] 특히, `Dictionary` 에 항목을 집어 넣는 순서가 반복할 순서를 정하는 것도 아닙니다. 배열과 딕셔너리에 대한 더 많은 건, [Collection Types (집합체 타입)]({% link docs/swift-books/swift-programming-language/collection-types.md %}) 을 보기 바랍니다.
 
 `for`-`in` 반복문을 수치 범위에 사용할 수도 있습니다. 다음 예제는 구구단 5-단의 첫 몇몇 요소를 인쇄합니다:
 
@@ -79,7 +79,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 위 예제는 한 수치 값을 다른 걸로 거듭 제곱합니다 (이 경우는, `3` 의 `10` 제곱). `1` 이라는 시작 값에 (즉, `3` 의 `0` 제곱에) `3` 을, `1` 로 시작해서 `10` 으로 끝나는 닫힌 범위로, 열 번, 곱합니다. 이 계산에선, 매 반복문을 통과할 때의 개별 횟수 값이 불필요합니다-단순히 올바른 횟수만큼 반복문을 실행하면 되는 코드입니다. 반복 변수 자리에 밑줄 문자 (`_`) 를 쓰면 개별 값을 무시하고 각각의 반복 회차 동안 현재 값으로의 접근을 제공하지 않습니다.
 
-일부 상황에선, 두 끝점을 모두 포함한, 닫힌 범위를 쓰고 싶지 않을 지도 모릅니다. 시계의 모든 분마다 눈금을 그린다고 고려해 봅니다. `0` 분에서 시작하는, `60` 개의 눈금을 그리고 싶습니다. 반-열린 범위 연산자 (`..<`) 를 써서 낮은 경계 값[^lower-bound] 은 포함하되 높은 경계 값[^upper-bound] 은 그러지 않아야 합니다. 범위에 대한 더 많은 건, [Range Operators (범위 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}#range-operators-범위-연산자) 부분을 보기 바랍니다.
+일부 상황에선, 두 끝점을 모두 포함한, 닫힌 범위를 쓰고 싶지 않을 지도 모릅니다. 시계의 모든 분마다 눈금을 그린다고 고려해 봅니다. `0` 분에서 시작하는, `60` 개의 눈금을 그리고 싶습니다. 반-열린 범위 연산자 (`..<`) 를 써서 낮은 경계 값[^lower-bound] 은 포함하되 높은 경계 값[^upper-bound] 은 그러지 않아야 합니다. 범위에 대한 더 많은 건, [Range Operators (범위 연산자)]({% link docs/swift-books/swift-programming-language/basic-operators.md %}#range-operators-범위-연산자) 부분을 보기 바랍니다.
 
 ```swift
 let minutes = 60
@@ -526,7 +526,7 @@ _제어 전달문 (control transfer statements)_ 은, 코드 한 곳에서 다�
 * `return`
 * `thorw`
 
-`continue` 와, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% link docs/books/swift-programming-language/functions.md %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% link docs/books/swift-programming-language/error-handling.md %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 에서 설명합니다.
+`continue` 와, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% link docs/swift-books/swift-programming-language/functions.md %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% link docs/swift-books/swift-programming-language/error-handling.md %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 에서 설명합니다.
 
 #### Continue (continue 문)
 
@@ -746,7 +746,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 위에 있는 사용 가능성 조건은 **iOS** 면, **iOS 10** 이후에서만; **macOS** 면, **macOS 10.12** 이후에서만 `if` 문 본문을 실행하라고 지정합니다. 마지막 인자인, `*` 는, 필수이며, `if` 본문을 실행하라고 지정한 최소 배포 대상 (이후의), 다른 어떤 플랫폼이든 지정하는 겁니다.
 
-일반 형식의, 사용 가능성 조건은 플랫폼 이름 및 버전 목록을 입력 받습니다. 플랫폼 이름엔 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 씁니다-전체 목록은, [Declaration Attributes (선언 특성)]({% link docs/books/swift-programming-language/attributes.md %}#declaration-attributes-선언-특성) 부분을 보도록 합니다. **iOS 8** 이나 **macOS 10.10** 같은 주 버전 번호[^major-version-numbers] 지정에 더해, **iOS 11.2.6** 과 **macOS 10.13.3** 같은 부 버전 번호[^minor-version-numbers] 도 지정할 수 있습니다.
+일반 형식의, 사용 가능성 조건은 플랫폼 이름 및 버전 목록을 입력 받습니다. 플랫폼 이름엔 `iOS` 와, `macOS`, `watchOS`, 및 `tvOS` 같은 걸 씁니다-전체 목록은, [Declaration Attributes (선언 특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}#declaration-attributes-선언-특성) 부분을 보도록 합니다. **iOS 8** 이나 **macOS 10.10** 같은 주 버전 번호[^major-version-numbers] 지정에 더해, **iOS 11.2.6** 과 **macOS 10.13.3** 같은 부 버전 번호[^minor-version-numbers] 도 지정할 수 있습니다.
 
 &nbsp;&nbsp;&nbsp;&nbsp;if #available(`platform name-플랫폼 이름` `version-버전`, `...`, *) {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if the APIs are available-API 가 사용 가능하면 실행할 구문`<br />
@@ -790,7 +790,7 @@ if #unavailable(iOS 10) {
 
 ### 다음 장
 
-[Functions (함수) >]({% link docs/books/swift-programming-language/functions.md %})
+[Functions (함수) >]({% link docs/swift-books/swift-programming-language/functions.md %})
 
 ### 참고 자료
 
@@ -798,7 +798,7 @@ if #unavailable(iOS 10) {
 
 [^snakes-and-ladders]: '뱀과 사다리 (Snakes and Ladders)' 는 인도에서 유래하여 영국에서 만들어진 보드 게임이라고 합니다. 'Chutes and Ladders (미끄럼틀과 사다리)' 라는 이름은 이 게임을 미국 회사에서 다시 만들게 되면서 유래한 것 같습니다. 더 자세한 정보는 위키피디아의 [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) 와 [뱀과 사다리](https://ko.wikipedia.org/wiki/뱀과_사다리) 항목을 보도록 합니다.
 
-[^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서를 다듬은 역사)]({% link docs/books/swift-programming-language/document-revision-history.md %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 역사를 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
+[^do-while]: 원문에서는 스위프트의 `repeat`-`while` 문이 다른 언어의 `do`-`while` 문과 유사하다고 했지만, 원래 스위프트도 처음에는 `do`-`while` 문을 썼었는데, `repeat`-`while` 문으로 이름이 바뀐 것입니다. 바뀐 이유는 잘 모르겠지만, [Document Revision History (문서를 다듬은 역사)]({% link docs/swift-books/swift-programming-language/document-revision-history.md %}) 에 있는 [2015-09-16](#2015-09-16) 부분의 역사를 보면 대략 '스위프트 2.0' 부터 바뀐 것으로 추정됩니다.
 
 [^optional]: 여기서의 '옵션 (optional)' 은 '옵셔널 타입' 과는 상관이 없습니다.
 
@@ -806,9 +806,9 @@ if #unavailable(iOS 10) {
 
 [^sequences]: '시퀀스 (sequence)' 는 수학 용어로는 '수열' 을 의미하는 단어이지만, 자료 구조로는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 본문에 있는 '집합체 (collection)', '리스트 (list)', '시퀀스 (sequence)' 등은 모두 알고리즘에서 사용하는 '자료 구조' 입니다. '시퀀스' 에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 보도록 합니다. 
 
-[^C-like]: 'C-같은 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}) 장에서 언급한 **C-기반 언어** 와 같은 개념으로, 보통 'C-계열 (C-family) 언어' 라고도 합니다. 이는 역사적으로 C 언어의 영향을 받았거나 C 언어에서 파생한 언어들을 말합니다. 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이 **C-계열 언어** 목록을 확인할 수 있습니다.
+[^C-like]: 'C-같은 언어 (C-like languages) ' 는 [Basic Operators (기초 연산자)]({% link docs/swift-books/swift-programming-language/basic-operators.md %}) 장에서 언급한 **C-기반 언어** 와 같은 개념으로, 보통 'C-계열 (C-family) 언어' 라고도 합니다. 이는 역사적으로 C 언어의 영향을 받았거나 C 언어에서 파생한 언어들을 말합니다. 위키피디아의 [List of C-family programming languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) 항목에서 이 **C-계열 언어** 목록을 확인할 수 있습니다.
 
-[^dictionary-contents]: 딕셔너리의 내용물 (contents) 은 해시 함수 (hash function) 를 써서 저장하기 때문에, 저장 순서를 알 길이 없습니다. 더 자세한 내용은, [Collection Types (집합체 타입)]({% link docs/books/swift-programming-language/collection-types.md %}) 장의 [Hash Values for Set Types (셋 타입의 해시 값)]({% link docs/books/swift-programming-language/collection-types.md %}#hash-values-for-set-types-셋-타입의-해시-값) 부분과 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목 및 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
+[^dictionary-contents]: 딕셔너리의 내용물 (contents) 은 해시 함수 (hash function) 를 써서 저장하기 때문에, 저장 순서를 알 길이 없습니다. 더 자세한 내용은, [Collection Types (집합체 타입)]({% link docs/swift-books/swift-programming-language/collection-types.md %}) 장의 [Hash Values for Set Types (셋 타입의 해시 값)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#hash-values-for-set-types-셋-타입의-해시-값) 부분과 위키피디아의 [Hash function](https://en.wikipedia.org/wiki/Hash_function) 항목 및 [해시 함수](https://ko.wikipedia.org/wiki/해시_함수) 항목을 참고하기 바랍니다.
 
 [^not-guarantee-the-order]: 반복할 때마다 가져오는 순서가 달라질 수 있다는 의미입니다.
 
@@ -832,7 +832,7 @@ if #unavailable(iOS 10) {
 
 [^availability-information]: 여기서, **SDK** 안에 있는 정보라는 건, 예를 들어, 스위프트 4.0 **SDK** 나 5.0 **SDK** 안에 들어 있는 정보를 말합니다.
 
-[^availability-condition]: '사용 가능성 조건 (availability condition)' 은 [Statements (구문)]({% link docs/books/swift-programming-language/statements.md %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% link docs/books/swift-programming-language/statements.md %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, 컴파일러 제어문은 컴파일 시간에 검사하는 반면, 사용 가능성 조건은 실행 시간에 검사합니다. 이에 대한 더 자세한 내용은, 애플 개발자 포럼의 [Do we need something like ‘#if available’?](https://forums.swift.org/t/do-we-need-something-like-if-available/40349) 항목을 참고하기 바랍니다. 
+[^availability-condition]: '사용 가능성 조건 (availability condition)' 은 [Statements (구문)]({% link docs/swift-books/swift-programming-language/statements.md %}) 에 있는 [Compiler Control Statements (컴파일러 제어문)]({% link docs/swift-books/swift-programming-language/statements.md %}#compiler-control-statements-컴파일러-제어문) 과 비슷해 보입니다. 하지만, 컴파일러 제어문은 컴파일 시간에 검사하는 반면, 사용 가능성 조건은 실행 시간에 검사합니다. 이에 대한 더 자세한 내용은, 애플 개발자 포럼의 [Do we need something like ‘#if available’?](https://forums.swift.org/t/do-we-need-something-like-if-available/40349) 항목을 참고하기 바랍니다. 
 
 [^major-version-numbers]: '주 버전 번호 (major version numbers)' 는 의미 있는 버전 붙이기 (semantic versioning) 에서 맨 앞에 붙는 버전 번호를 말합니다. 의미 있는 버전에 대한 더 자세한 정보는 [Semantic Versioning 2.0.0](https://semver.org) 항목 및 [유의적 버전 2.0.0-ko2](https://semver.org/lang/ko/) 항목을 참고하기 바랍니다. 
 

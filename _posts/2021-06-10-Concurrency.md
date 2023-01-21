@@ -186,7 +186,7 @@ let result = await handle.get()
 
 ### Actors (행위자)
 
-클래스 같이, 행위자도 참조 타입이라서, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 에 있는 값 타입과 참조 타입의 비교는 클래스뿐 아니라 행위자에도 적용됩니다. (하지만) 클래스와 달리, 행위자는 자신의 변경 가능 상태에 한번에 한 임무의 접근만 허용하는데, 이는 여러 개의 임무 코드가 동일한 행위자 인스턴스와 안전하게 상호 작용하도록 합니다. 예를 들어, 온도를 기록하는 행위자는 이렇습니다:
+클래스 같이, 행위자도 참조 타입이라서, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 에 있는 값 타입과 참조 타입의 비교는 클래스뿐 아니라 행위자에도 적용됩니다. (하지만) 클래스와 달리, 행위자는 자신의 변경 가능 상태에 한번에 한 임무의 접근만 허용하는데, 이는 여러 개의 임무 코드가 동일한 행위자 인스턴스와 안전하게 상호 작용하도록 합니다. 예를 들어, 온도를 기록하는 행위자는 이렇습니다:
 
 ```swift
 actor TemperatureLogger {
@@ -285,7 +285,7 @@ struct TemperatureReading {
 
 ### 다음 글
 
-[Type Casting (타입 변환) >]({% link docs/books/swift-programming-language/type-casting.md %})
+[Type Casting (타입 변환) >]({% link docs/swift-books/swift-programming-language/type-casting.md %})
 
 ### 참고 자료
 

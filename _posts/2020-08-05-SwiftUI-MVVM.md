@@ -87,6 +87,6 @@ SwiftUI 프레임웍은 `ObservableObject` 프로토콜 및 `@Published` 와 `@O
 
 [^johns-blog]: 원문에서는 분명히 자신의 블로그에 발표했다고 하는데, 링크를 들어가 보면 마이크로소프트의 아카이브로 연결됩니다. 아마도 사내 블로그가 아니었을까 추측합니다.
 
-[^property-wrapper]: '속성 포장 (property wrapper)' 에 대해서는 '스위프트 프로그래밍 언어' 책을 번역한 내용 중에서 [Property Wrappers (속성 포장)]({% link docs/books/swift-programming-language/properties.md %}#property-wrappers-속성-포장) 부분을 보도록 합니다.
+[^property-wrapper]: '속성 포장 (property wrapper)' 에 대해서는 '스위프트 프로그래밍 언어' 책을 번역한 내용 중에서 [Property Wrappers (속성 포장)]({% link docs/swift-books/swift-programming-language/properties.md %}#property-wrappers-속성-포장) 부분을 보도록 합니다.
 
 [^business-logic]: 모델이 가능한 많은 작업을 한다는 것은 모델이 '비지니스 로직 (business logic)' 을 담당하기 때문이라고 이해할 수 있을 것입니다.

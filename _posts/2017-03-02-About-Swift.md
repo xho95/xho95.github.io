@@ -31,7 +31,7 @@ categories: Swift Language Grammar About
 
 ### 다음 장
 
-[Version Compatibility (버전 호환성) >]({% link docs/books/swift-programming-language/version-compatibility.md %})
+[Version Compatibility (버전 호환성) >]({% link docs/swift-books/swift-programming-language/version-compatibility.md %})
 
 ### 참고 자료
 
@@ -43,6 +43,6 @@ categories: Swift Language Grammar About
 
 [^modern-programming-patterns]: 이 역시, 최신 프로그래밍 패턴으로 해석해도 무방합니다.
 
-[^overflow]: 일부러 '값 넘침 (overflow)' 을 의도할 수도 있습니다. 더 자세한 내용은 [Overflow Operators (값 넘침 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#overflow-operators-값-넘침-연산자) 부분을 참고하기 바랍니다.
+[^overflow]: 일부러 '값 넘침 (overflow)' 을 의도할 수도 있습니다. 더 자세한 내용은 [Overflow Operators (값 넘침 연산자)]({% link docs/swift-books/swift-programming-language/advanced-operators.md %}#overflow-operators-값-넘침-연산자) 부분을 참고하기 바랍니다.
 
 [^the-obvious-way]: 우리말 속담 중에 **보기 좋은 떡이 먹기도 좋다** 와 비슷합니다. 스위프트의 최적화가 좋아서, 뛰어난 성능을 내는 코드를 깔끔하고 단순하게 작성할 수 있다 정도의 의미입니다.

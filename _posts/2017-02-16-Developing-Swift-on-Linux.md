@@ -102,7 +102,7 @@ Swift 패키지 관리자에 대해서 더 알고 싶으면 공식 블로그의 
 ### 관련 자료
 
 * [Swift: 리눅스에서 Swift 개발 시작하기]({% post_url 2017-03-06-Getting-Started-Swift-on-Linux %})
-* [Swift 3.1: 빠르게 (Swift) 둘러보기]({% link docs/books/swift-programming-language/a-swift-tour.md %})
+* [Swift 3.1: 빠르게 (Swift) 둘러보기]({% link docs/swift-books/swift-programming-language/a-swift-tour.md %})
 
 ### 참고 자료
 

@@ -276,14 +276,14 @@ public struct TrackedString {
 
 ### Initializers (초기자)
 
-사용자 정의 초기자에는 자신을 초기화할 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 ([Required Initializers (필수 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#required-initializers-필수-초기자) 에서 정의한) 필수 초기자입니다. 필수 초기자의 접근 수준은 반드시 자신이 속한 클래스와 똑같아야 합니다.
+사용자 정의 초기자에는 자신을 초기화할 타입보다 더 낮거나 같은 접근 수준을 할당할 수 있습니다. 단 하나의 예외는 ([Required Initializers (필수 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#required-initializers-필수-초기자) 에서 정의한) 필수 초기자입니다. 필수 초기자의 접근 수준은 반드시 자신이 속한 클래스와 똑같아야 합니다.
 
 함수 및 메소드 매개 변수 처럼, 초기자 매개 변수의 타입은 초기자 자신의 접근 수준보다 더 개인적 (private) 일 수 없습니다.[^more-private]
 
 #### Default Initializers (기본 초기자)
 
 
-[Default Initializers (기본 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 자신의 모든 속성에 기본 값을 제공하면서 그 자체론 단 하나의 초기자도 제공하지 않는 어떤 구조체나 기초 클래스에든 _기본 초기자 (default initializer)_ 를 제공합니다.
+[Default Initializers (기본 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 스위프트는 자신의 모든 속성에 기본 값을 제공하면서 그 자체론 단 하나의 초기자도 제공하지 않는 어떤 구조체나 기초 클래스에든 _기본 초기자 (default initializer)_ 를 제공합니다.
 
 기본 초기자는, 자신을 초기화하는 타입의 정의가 `public` 이 아닌 한, 그 타입과 동일한 접근 수준을 가집니다. `public` 으로 정의한 타입은, 기본 초기자가 내부 (internal) 라고 고려합니다. 공용 (public) 타입이 다른 모듈에서 사용될 때 인자-없는 초기자로 초기화 가능하게 하고 싶으면, 타입 정의 부분에서 반드시 직접 인자-없는 공용 초기자를 명시해야 합니다.[^public-no-argument]
 
@@ -365,7 +365,7 @@ extension SomeStruct: SomeProtocol {
 
 ### 다음 장
 
-[Advanced Operators (고급 연산자) >]({% link docs/books/swift-programming-language/advanced-operators.md %})
+[Advanced Operators (고급 연산자) >]({% link docs/swift-books/swift-programming-language/advanced-operators.md %})
 
 ### 참고 자료
 
@@ -389,7 +389,7 @@ extension SomeStruct: SomeProtocol {
 
 [^stored-properties]: 저장 속성의 획득자와 설정자는 스위프트가 자동으로 만들어 주지만, 이들의 접근 수준은 개발자가 조절할 수 있다는 의미입니다.
 
-[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 장의 [Property Observers (속성 관찰자)]({% link docs/books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다. 
+[^property-observer]: '속성 관찰자 (property observers)' 에 대한 더 자세한 내용은, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Property Observers (속성 관찰자)]({% link docs/swift-books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다. 
 
 [^more-public]: 더 공개 (public) 일 수 없다는 건 더 높은 접근 수준을 가질 수 없다는 의미입니다. 어떤 속성을 '공개 (public)' 하고 싶으면 그 속성을 가진 타입도 반드시 공개 (public) 해야 합니다.
 

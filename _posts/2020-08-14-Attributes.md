@@ -252,7 +252,7 @@ print(wrapper.x)
 
 명령 줄[^command-line] 에서 라이브러리 진화 모드를 켜려면, `-enable-library-evolution` 옵션을 스위프트 컴파일러로 전달합니다. 엑스코드에서 켜려면, [Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba) 에서 설명한, "배포용 라이브러리 제작 (`BUILD_LIBRARY_FOR_DISTRIBUTION`)" 배포 설정을 예 (Yes) 로 설정합니다.
 
-[Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% link docs/books/swift-programming-language/statements.md %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 에서 논의한 것처럼, 동결 열거체에 대한 switch 문은 `default` case 를 요구하지 않습니다. 동결 열거체 전환 때 `default` 나 `@unknown default` case 를 포함하면 경고를 만들어 내는데 그 코드는 절대 실행되지 않기 때문입니다.
+[Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% link docs/swift-books/swift-programming-language/statements.md %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 에서 논의한 것처럼, 동결 열거체에 대한 switch 문은 `default` case 를 요구하지 않습니다. 동결 열거체 전환 때 `default` 나 `@unknown default` case 를 포함하면 경고를 만들어 내는데 그 코드는 절대 실행되지 않기 때문입니다.
 
 #### GKInspectable (점검 가능한 GameplayKit)
 
@@ -287,7 +287,7 @@ protocol ProvidesMain {
 }
 ```
 
-[Top-Level Code (최상단 코드)]({% link docs/books/swift-programming-language/declarations.md %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
+[Top-Level Code (최상단 코드)]({% link docs/swift-books/swift-programming-language/declarations.md %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
 #### nonobjc (오브젝티브-C 아님)
 
@@ -308,7 +308,7 @@ import AppKit
 NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 ```
 
-[Top-Level Code (최상단 코드)]({% link docs/books/swift-programming-language/declarations.md %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
+[Top-Level Code (최상단 코드)]({% link docs/swift-books/swift-programming-language/declarations.md %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
 #### NSCopying (NS 복사)
 
@@ -425,7 +425,7 @@ s.$x.wrapper  // WrapperWithProjection 값
 
 #### resultBuilder (결과 제작자)
 
-이 특성을 클래스, 구조체, 및 열거체에 적용하면 그 타입을 결과 제작자로 사용합니다. _결과 제작자 (result builder)_ 는 중첩 자료 구조를 한 걸음씩 단계별로 제작하는 타입입니다. 결과 제작자를 사용하여 자연스러운, 선언형 방식으로, 중첩 자료 구조를 생성하기 위한 특정-분야 언어 (DSL)[^domain-specific-language] 을 구현합니다. `resultBuilder` 특성의 사용법에 대한 예제는, [Result Builders (결과 제작자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#result-builders-결과-제작자) 부분을 보기 바랍니다.
+이 특성을 클래스, 구조체, 및 열거체에 적용하면 그 타입을 결과 제작자로 사용합니다. _결과 제작자 (result builder)_ 는 중첩 자료 구조를 한 걸음씩 단계별로 제작하는 타입입니다. 결과 제작자를 사용하여 자연스러운, 선언형 방식으로, 중첩 자료 구조를 생성하기 위한 특정-분야 언어 (DSL)[^domain-specific-language] 을 구현합니다. `resultBuilder` 특성의 사용법에 대한 예제는, [Result Builders (결과 제작자)]({% link docs/swift-books/swift-programming-language/advanced-operators.md %}#result-builders-결과-제작자) 부분을 보기 바랍니다.
 
 **Result-Building Methods (결과-제작 메소드)**
 
@@ -701,7 +701,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 이 특성을 사용하지 않는다면, 최상단에서 [UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain) 함수를 호출하는 코드가 있는 `main.swift` 파일을 공급합니다. 예를 들어, 자신의 앱이 자신만의 `UIApplication` 하위 클래스를 주된 클래스 (principal class) 로 사용한다면, 이 특성을 사용하는 대신 `UIApplicationMain(_:_:_:_:)` 함수를 호출합니다.[^NSApplicationMain-UIApplicationMain]
 
-[Top-Level Code (최상단 코드)]({% link docs/books/swift-programming-language/declarations.md %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
+[Top-Level Code (최상단 코드)]({% link docs/swift-books/swift-programming-language/declarations.md %}#top-level-code-최상단-코드) 에서 논한 것처럼, 실행 파일을 만들려고 컴파일하는 스위프트 코드는 최대 한 개의 최상단 진입점을 담을 수 있습니다.
 
 #### unchecked (검사 안함)
 
@@ -737,7 +737,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### autoclosure (자동 클로저)
 
-이 특성을 적용하면 인자 없는 클로저로 표현식을 자동 포장함으로써 그 표현식의 평가를 늦춥니다. 함수나 메소드 선언에서, 매개 변수 타입이 아무런 인자도 취하지 않으며 표현식 타입의 값을 반환하는 함수 타입이면, 그 매개 변수 타입에 이를 적용합니다. `autoclosure` 특성의 사용법에 대한 예제는, [Autoclosures (자동 클로저)]({% link docs/books/swift-programming-language/closures.md %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% link docs/books/swift-programming-language/types.md %}#function-type-함수-타입) 부분을 보기 바랍니다.
+이 특성을 적용하면 인자 없는 클로저로 표현식을 자동 포장함으로써 그 표현식의 평가를 늦춥니다. 함수나 메소드 선언에서, 매개 변수 타입이 아무런 인자도 취하지 않으며 표현식 타입의 값을 반환하는 함수 타입이면, 그 매개 변수 타입에 이를 적용합니다. `autoclosure` 특성의 사용법에 대한 예제는, [Autoclosures (자동 클로저)]({% link docs/swift-books/swift-programming-language/closures.md %}#autoclosures-자동-클로저) 와 [Function Type (함수 타입)]({% link docs/swift-books/swift-programming-language/types.md %}#function-type-함수-타입) 부분을 보기 바랍니다.
 
 #### convention (협약)
 
@@ -753,7 +753,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### escaping (벗어남)
 
-이 특성을 함수나 메소드 선언 안의 매개 변수 타입에 적용하면 나중에 실행하기 위해 매개 변수 값을 저장할 수 있다는 걸 지시합니다. 이는 그 값이 호출 수명보다 오래 사는 걸 허용한다는 의미입니다. `escaping` 타입 특성인 함수 타입 매개 변수는 속성이나 메소드에 `self.` 를 명시하여 사용할 걸 요구합니다. `escaping` 특성의 사용법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% link docs/books/swift-programming-language/closures.md %}#escaping-closures-벗어나는-클로저) 부분을 보기 바랍니다.
+이 특성을 함수나 메소드 선언 안의 매개 변수 타입에 적용하면 나중에 실행하기 위해 매개 변수 값을 저장할 수 있다는 걸 지시합니다. 이는 그 값이 호출 수명보다 오래 사는 걸 허용한다는 의미입니다. `escaping` 타입 특성인 함수 타입 매개 변수는 속성이나 메소드에 `self.` 를 명시하여 사용할 걸 요구합니다. `escaping` 특성의 사용법에 대한 예제는, [Escaping Closures (벗어나는 클로저)]({% link docs/swift-books/swift-programming-language/closures.md %}#escaping-closures-벗어나는-클로저) 부분을 보기 바랍니다.
 
 #### Sendable (보내기 가능함)
 
@@ -769,13 +769,13 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 #### unknown (알려지지 않음)
 
-이 특성을 **switch** 문의 **case** 에 적용하면 코드를 컴파일하는 시점에 알고 있는 어떤 열거체 case 와도 일치하지 않을 것으로 예상한다고 지시합니다. `unknown` 특성의 사용법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% link docs/books/swift-programming-language/statements.md %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 보기 바랍니다.
+이 특성을 **switch** 문의 **case** 에 적용하면 코드를 컴파일하는 시점에 알고 있는 어떤 열거체 case 와도 일치하지 않을 것으로 예상한다고 지시합니다. `unknown` 특성의 사용법에 대한 예제는, [Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)]({% link docs/swift-books/swift-programming-language/statements.md %}#switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기) 부분을 보기 바랍니다.
 
 > GRAMMAR OF AN ATTRIBUTE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID604)
 
 ### 다음 장
 
-[Patterns (패턴; 유형) >]({% link docs/books/swift-programming-language/patterns.md %})
+[Patterns (패턴; 유형) >]({% link docs/swift-books/swift-programming-language/patterns.md %})
 
 ### 참고 자료
 

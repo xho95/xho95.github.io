@@ -154,7 +154,7 @@ print("And another one: \(generator.random())")
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
 
-메소드가 자신이 속한 인스턴스를 수정 (또는 _변경 (mutate)_ 하는) 것이 필요할 때가 있습니다. 값 타입의 (즉, 구조체 및 열거체의) 인스턴스 메소드면 메소드의 `func` 키워드 앞에 `mutating` 키워드를 둬서 메소드가 자신이 속한 인스턴스 및 그 인스턴스에 있는 어떤 속성의 수정이든 허용한다고 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
+메소드가 자신이 속한 인스턴스를 수정 (또는 _변경 (mutate)_ 하는) 것이 필요할 때가 있습니다. 값 타입의 (즉, 구조체 및 열거체의) 인스턴스 메소드면 메소드의 `func` 키워드 앞에 `mutating` 키워드를 둬서 메소드가 자신이 속한 인스턴스 및 그 인스턴스에 있는 어떤 속성의 수정이든 허용한다고 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
 
 프로토콜을 채택한 어떤 타입의 인스턴스든 변경할 의도로 프로토콜 인스턴스 메소드 필수 조건을 정의하는 거라면, 프로토콜 정의 부분에서 `mutating` 키워드로 메소드를 표시합니다. 이는 구조체 및 열거체가 프로토콜을 채택해서 그 메소드 필수 조건을 만족할 수 있게 합니다.
 
@@ -215,9 +215,9 @@ class SomeClass: SomeProtocol {
 
 `required` 수정자를 사용하면 준수 클래스의 모든 하위 클래스도 초기자 필수 조건의 명시적 또는 상속 구현을 제공하도록 하여, 이들의 프로토콜 준수도, 보장합니다.
 
-필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#required-initializers-필수-초기자) 부분을 보도록 합니다.
+필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#required-initializers-필수-초기자) 부분을 보도록 합니다.
 
-> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% link docs/books/swift-programming-language/initialization.md %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
+> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% link docs/swift-books/swift-programming-language/initialization.md %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
 
 하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 일치하는 초기자 필수 조건도 구현한다면, 초기자 구현에 `required` 와 `override` 수정자를 둘 다 표시합니다:
 
@@ -242,7 +242,7 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 #### Failable Initializer Requirements (실패 가능 초기자 필수 조건)
 
-[Failable Initializers (실패 가능 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능한-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
+[Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능한-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
 
 실패 가능 초기자 필수 조건은 준수 타입에서 실패 가능 또는 실패하지 않는 초기자로 만족할 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 암시적으로 포장 푸는 실패 가능 초기자로 만족할 수 있습니다.
 
@@ -276,7 +276,7 @@ class Dice {
 
 이 예제는, 보드 게임에 사용할 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스에는, 면의 개수를 나타내는, `sides` 라는 정수 속성과, 주사위 굴림 값 생성을 위한 난수 발생기를 제공하는, `generator` 라는 속성이 있습니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 이 프로토콜을 준수하는 모든 발생기에 적용되는 방식으로만 `generator` 와 상호 작용할 수 있습니다. 이는 발생기의 실제 타입이 정의한 어떤 메소드나 속성도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% link docs/books/swift-programming-language/type-casting.md %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 식으로 프로토콜 타입에서 실제 타입으로 내림 변환할 순 있습니다.
+`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 이 프로토콜을 준수하는 모든 발생기에 적용되는 방식으로만 `generator` 와 상호 작용할 수 있습니다. 이는 발생기의 실제 타입이 정의한 어떤 메소드나 속성도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 식으로 프로토콜 타입에서 실제 타입으로 내림 변환할 순 있습니다.
 
 `Dice` 에는, 자신의 초기 상태를 설정하는, 초기자도 있습니다. 이 초기자엔, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수가 있습니다. 새로운 `Dice` 인스턴스를 초기화할 땐 어떤 준수 타입의 값이든 이 매개 변수에 전달할 수 있습니다.
 
@@ -318,9 +318,9 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이든 채택할 수 있는 프로토콜입니다.
 
-`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡은자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 보도록 합니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡은자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
+`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡은자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 보도록 합니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡은자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
 
-원래 [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장에서 소개한 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전은 주사위-굴림 값으론 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
+원래 [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장에서 소개한 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전은 주사위-굴림 값으론 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
 
 ```swift
 class SnakesAndLadders: DiceGame {
@@ -355,7 +355,7 @@ class SnakesAndLadders: DiceGame {
 }
 ```
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임의 플레이 설명은, [Break (break 문)]({% link docs/books/swift-programming-language/control-flow.md %}#break-break-문) 을 참고합니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임의 플레이 설명은, [Break (break 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#break-break-문) 을 참고합니다.
 
 이 버전의 게임은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 포장되어 있습니다. 이는 프로토콜의 준수를 위해서 획득 가능한 `dice` 속성과 `play()` 메소드를 제공합니다. (`dice` 속성은 초기화 후엔 바뀔 필요가 없고, 프로토콜은 획득 가능할 것만을 요구하기 때문에, 상수 속성으로 선언합니다.)
 
@@ -413,7 +413,7 @@ game.play()
 
 ### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
 
-기존 타입의 소스 코드에 접근할 수 없는 경우에도, 기존 타입을 확장하면 새로운 프로토콜을 채택하고 준수할 수 있습니다. 익스텐션 (extensions) 은 기존 타입에 새로운 속성, 메소드, 및 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건을 추가하는 것도 가능합니다. 익스텐션에 대한 더 많은 것은, [Extensions (익스텐션; 확장)]({% link docs/books/swift-programming-language/extensions.md %}) 장을 보도록 합니다.
+기존 타입의 소스 코드에 접근할 수 없는 경우에도, 기존 타입을 확장하면 새로운 프로토콜을 채택하고 준수할 수 있습니다. 익스텐션 (extensions) 은 기존 타입에 새로운 속성, 메소드, 및 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건을 추가하는 것도 가능합니다. 익스텐션에 대한 더 많은 것은, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 장을 보도록 합니다.
 
 > 익스텐션에서 인스턴스의 타입에 프로토콜 준수성을 추가할 때 타입의 기존 인스턴스는 자동으로 그 프로토콜을 채택하고 준수합니다.
 
@@ -459,7 +459,7 @@ print(game.textualDescription)
 
 #### Conditionally Conforming to a Protocol (조건부로 프로토콜 준수하기)
 
-일반화 타입[^generic-type] 은, 타입의 일반화 매개 변수가 프로토콜을 준수할 때와 같은, 특정 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. 일반화 타입이 조건부로 프로토콜을 준수하게 하려면 타입을 확장할 때 구속 조건을 나열하면 됩니다. 이러한 구속 조건을 채택할 프로토콜 이름 뒤에 작성하는 건 일반화 `where` 절의 작성으로 합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% link docs/books/swift-programming-language/generics.md %}#generic-where-clauses-일반화-where-절) 을 보도록 합니다.
+일반화 타입[^generic-type] 은, 타입의 일반화 매개 변수가 프로토콜을 준수할 때와 같은, 특정 조건 하에서만 프로토콜의 필수 조건을 만족할 수도 있습니다. 일반화 타입이 조건부로 프로토콜을 준수하게 하려면 타입을 확장할 때 구속 조건을 나열하면 됩니다. 이러한 구속 조건을 채택할 프로토콜 이름 뒤에 작성하는 건 일반화 `where` 절의 작성으로 합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% link docs/swift-books/swift-programming-language/generics.md %}#generic-where-clauses-일반화-where-절) 을 보도록 합니다.
 
 다음 익스텐션은 저장한 원소의 타입이 `TextRepresentable` 을 준수할 때마다 `Array` 인스턴스가 `TextRepresentable` 프로토콜을 준수하게 합니다.[^array-element]
 
@@ -644,7 +644,7 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려는 구조체 또는 열거체 정의를 작성하면 컴파일-시간 에러입니다.
 
-> 그 프로토콜의 필수 조건이 정의한 동작이 준수 타입은 값 의미 구조 보단 참조 의미 구조를 가진다고 가정 또는 요구할 때 클래스-전용 프로토콜을 사용합니다. 참조 및 값 의미 구조에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
+> 그 프로토콜의 필수 조건이 정의한 동작이 준수 타입은 값 의미 구조 보단 참조 의미 구조를 가진다고 가정 또는 요구할 때 클래스-전용 프로토콜을 사용합니다. 참조 및 값 의미 구조에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
 
 ### Protocol Composition (프로토콜 합성)
 
@@ -712,7 +712,7 @@ beginConcert(in: seattle)
 
 ### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
-[Type Casting (타입 변환)]({% link docs/books/swift-programming-language/type-casting.md %}) 에서 설명한 `is` 와 `as` 연산자를 사용하면 프로토콜 준수성을 검사하고, 특정 프로토콜로 변환할 수 있습니다. 프로토콜 검사 및 변환은 타입 검사 및 변환과 정확하게 동일한 구문을 따릅니다:
+[Type Casting (타입 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}) 에서 설명한 `is` 와 `as` 연산자를 사용하면 프로토콜 준수성을 검사하고, 특정 프로토콜로 변환할 수 있습니다. 프로토콜 검사 및 변환은 타입 검사 및 변환과 정확하게 동일한 구문을 따릅니다:
 
 * `is` 연산자는 인스턴스가 프로토콜을 준수하면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다.
 * `as?` 버전의 내림 변환 연산자는 프로토콜 타입의 옵셔널 값을 반환하며, 인스턴스가 그 프로토콜을 준수하지 않으면 이 값이 `nil` 입니다.
@@ -789,7 +789,7 @@ for object in objects {
 
 옵셔널 필수 조건에서 메소드나 속성을 사용할 땐, 자신의 타입이 자동으로 옵셔널이 됩니다. 예를 들어, `(Int) -> String` 타입의 메소드는 `((Int) -> String)?` 이 됩니다. 메소드의 반환 값이 아닌, 전체 함수 타입이 옵셔널로 포장된다는 걸 기억하기 바랍니다.
 
-옵셔널 프로토콜 필수 조건을 옵셔널 사슬로 호출하면, 프로토콜을 준수한 타입이 필수 조건을 구현하지 않았을 가능성을 서술할 수 있습니다. 옵셔널 메소드의 구현을 검사하려면, `someOptionalMethod?(someArgument)` 와 같이, 호출 때 메소드 이름 뒤에 물음표를 작성하면 됩니다. 옵셔널 사슬에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다.
+옵셔널 프로토콜 필수 조건을 옵셔널 사슬로 호출하면, 프로토콜을 준수한 타입이 필수 조건을 구현하지 않았을 가능성을 서술할 수 있습니다. 옵셔널 메소드의 구현을 검사하려면, `someOptionalMethod?(someArgument)` 와 같이, 호출 때 메소드 이름 뒤에 물음표를 작성하면 됩니다. 옵셔널 사슬에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다.
 
 다음 예제는 정수를-세는 `Counter` 라는 클래스를 정의하는데, 이는 외부 데이터 소스를 사용하여 자신의 증가량을 제공합니다. 이 데이터 소스는, 두 개의 옵셔널 필수 조건이 있는, `CounterDataSource` 프로토콜로 정의합니다:
 
@@ -826,7 +826,7 @@ class Counter {
 
 여기서 _두 (two)_ 단계의 옵셔널 사슬로 동작함을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 인게 가능하므로, `dataSource` 이름 뒤에 물음표를 둬서 `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 를 호출해야함을 지시합니다. 두 번째로, `dataSource` 가 존재 _하 (does)_ 더라도, `increment(forCount:)` 가 옵셔널 필수 조건이기 때문에, 이를 구현한다는 보증이 없습니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성도 옵셔널 사슬로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 이름 뒤에도 물음표를 작성한 이유입니다.
 
-이 두 이유 중 어느 것으로도 `increment(forCount:)` 호출이 실패할 수 있기 때문에, 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)]({% link docs/books/swift-programming-language/optional-chaining.md %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-연결하기) 를 보도록 합니다.
+이 두 이유 중 어느 것으로도 `increment(forCount:)` 호출이 실패할 수 있기 때문에, 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-연결하기) 를 보도록 합니다.
 
 `increment(forCount:)` 호출 후에, 옵셔널 연결로, 반환한 옵셔널 `Int` 를 풀어서 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있으면-즉, 일-맡은자[^delegate] 와 메소드 둘 다 존재하고, 메소드가 값을 반환한 경우면-포장 푼 `amount` 를 `count` 저장 속성에 추가하고, 증가를 완료합니다.
 
@@ -935,7 +935,7 @@ extension PrettyTextRepresentable {
 
 #### Adding Constraints to Protocol Extensions (프로토콜 익스텐션에 구속 조건 추가하기)
 
-프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 준수 타입이 이를 만족해야 익스텐션의 메소드와 속성을 쓸 수 있게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% link docs/books/swift-programming-language/generic-parameters-and-arguments.md %}#generic-where-clauses-일반화-where-절) 부분을 보도록 합니다.
+프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 준수 타입이 이를 만족해야 익스텐션의 메소드와 속성을 쓸 수 있게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% link docs/swift-books/swift-programming-language/generic-parameters-and-arguments.md %}#generic-where-clauses-일반화-where-절) 부분을 보도록 합니다.
 
 예를 들어, `Collection` 프로토콜에 익스텐션을 정의하면서 그 원소가 `Equatable` 프로토콜을 준수하는 어떤 집합체에 적용되게 할 수 있습니다. 표준 라이브러리의 일부인, `Equatable` 프로토콜로 집합체 원소를 구속함으로써, `==` 와 `!=` 연산자로 두 원소의 같음 (equality) 과 다름 (inequality) 을 검사할 수 있습니다.
 
@@ -974,7 +974,7 @@ print(differentNumbers.allEqual())
 
 ### 다음 장
 
-[Generics (일반화) >]({% link docs/books/swift-programming-language/generics.md %})
+[Generics (일반화) >]({% link docs/swift-books/swift-programming-language/generics.md %})
 
 ### 참고 자료
 
@@ -1000,7 +1000,7 @@ print(differentNumbers.allEqual())
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 보도록 합니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
-[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% link docs/books/swift-programming-language/declarations.md %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다.
+[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다.
 
 [^required-initializer]: `required` 수정자로 표시한 초기자를 '필수 초기자 (required initializer)' 라고 한 건 준수 타입이 반드시 구현해야 하기 때문입니다.
 
@@ -1010,15 +1010,15 @@ print(differentNumbers.allEqual())
 
 [^delegate]: 보통 '일-맡은자 (delegate)' 를 대리자라고도 합니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 보도록 합니다.
 
-[^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 보도록 합니다. 
+[^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 보도록 합니다. 
 
 [^instantiator]: '인스턴스를 만드는 자 (instantiator)' 는 코드 상에서 인스턴스를 생성하는 곳 또는 그 주체를 의미합니다. 실제 게임을 구현한다면, 일종의 `game manager` 같은 객체가 인스턴스를 생성할 텐데, 이 때 `game manager` 를 인스턴스를 만드는 자라고 할 수 있습니다.
 
 [^weak-reference-cycles]: `DiceGameDelegate` 프로토콜을 클래스-전용으로 만들지 않았다면, 일-맡은자를 `weak` 로 선언할 수 없어서 참조 순환이 발생할 수도 있었을 것입니다.
 
-[^optional-chaining]: '옵셔널 사슬 (optional chaining)' 에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% link docs/books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다. 
+[^optional-chaining]: '옵셔널 사슬 (optional chaining)' 에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다. 
 
-[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 이에 대한 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/books/swift-programming-language/optional-chaining.md %}) 장의 맨 앞부분 설명을 보도록 합니다.
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 이에 대한 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장의 맨 앞부분 설명을 보도록 합니다.
 
 [^snakes-and-ladders-instance]: 예제 코드에 있는 `self` 가 `SnakesAndLadders` 인스턴스입니다.
 
@@ -1026,25 +1026,25 @@ print(differentNumbers.allEqual())
 
 [^adoption]: 이것이 스위프트에서 채택 (adoption) 과 준수 (conformance) 를 명확히 구분하여 사용하는 이유입니다.
 
-[^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 보도록 합니다. 
+[^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 보도록 합니다. 
 
 [^synthesized]: 본문에서 말하는 '통합 구현 (synthesized implementation)' 은 스위프트 내부에 이미 구현되어 있다는 의미입니다. 즉, `Equatable` 프로토콜 같은 건 이미 스위프트에 있는 걸 그냥 사용하면 됩니다.
 
-[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% link docs/books/swift-programming-language/enumerations.md %}) 장의 [Associated Values (결합 값)]({% link docs/books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 보도록 합니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분도 보도록 합니다.
+[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% link docs/swift-books/swift-programming-language/enumerations.md %}) 장의 [Associated Values (결합 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 보도록 합니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/swift-books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분도 보도록 합니다.
 
 [^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자, 동치 연산자,같음 연산자' 등으로 옮길 수 있는데, 위키피디아에서 '같음 (equal to)' 을 사용하고 있어서, 같음 비교라는 말을 사용합니다. 관계 연산자에 대한 더 자세한 내용은, 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 보도록 합니다.
 
-[^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% link docs/books/swift-programming-language/enumerations.md %}) 장에 있는 [Raw Values (원시 값)]({% link docs/books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 부분을 보도록 합니다.
+[^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% link docs/swift-books/swift-programming-language/enumerations.md %}) 장에 있는 [Raw Values (원시 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 부분을 보도록 합니다.
 
 [^remaining-comparison-operators]: 스위프트는 `<` 연산자의 통합 구현 외에도, `<=`, `>`, `>=` 연산자들의 기본 구현을 제공하는데, 이러한 기본 구현들이 나머지 연산자들의 구현을 제공한다는 의미입니다. 즉, `<` 연산자의 통합 구현을 받으면, 그 외 나머지 연산자들은 구현하지 않아도 됩니다.
 
 [^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
-[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다.
 
-[^type-safe]: '타입-안전 (type-safe) 하다' 는 건 '스위프트가 기본 제공하는 타입 추론 (type inference) 및 타입 검사 (type check) 기능을 사용할 수 있다' 는 의미입니다. 타입 추론 및 타입 검사에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/books/swift-programming-language/the-basics.md %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% link docs/books/swift-programming-language/the-basics.md %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
+[^type-safe]: '타입-안전 (type-safe) 하다' 는 건 '스위프트가 기본 제공하는 타입 추론 (type inference) 및 타입 검사 (type check) 기능을 사용할 수 있다' 는 의미입니다. 타입 추론 및 타입 검사에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
 
-[^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% link docs/books/swift-programming-language/attributes.md %}) 장을 보도록 합니다.
+[^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장을 보도록 합니다.
 
 [^protocol-extend]: '프로토콜 익스텐션으로 프로토콜을 확장할 수 없다' 는 건 '프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다' 는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기존의 필수 조건에 기본 구현을 제공하거나 새로운 기능을 추가하기 위해, 사용하는 것입니다.
 

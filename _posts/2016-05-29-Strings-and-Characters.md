@@ -161,7 +161,7 @@ constantString += " and another Highlander"
 
 ### Strings Are Value Types (문자열은 값 타입입니다)
 
-스위프트의 `String` 타입은 _값 타입 (value type)_[^value-type] 입니다. 새로운 `String` 값을 생성하면, 그 `String` 을 함수나 메소드에 전달할 때나, 상수나 변수에 할당할 때, 값을 _복사 (copied)_ 합니다. 각각의 경우마다, 기존 `String` 값의 새 복사본을 생성하여, 원본 버전이 아니라, 새 복사본을 전달하거나 할당합니다. 값 타입은 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 에서 설명합니다.
+스위프트의 `String` 타입은 _값 타입 (value type)_[^value-type] 입니다. 새로운 `String` 값을 생성하면, 그 `String` 을 함수나 메소드에 전달할 때나, 상수나 변수에 할당할 때, 값을 _복사 (copied)_ 합니다. 각각의 경우마다, 기존 `String` 값의 새 복사본을 생성하여, 원본 버전이 아니라, 새 복사본을 전달하거나 할당합니다. 값 타입은 [Structure and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 에서 설명합니다.
 
 스위프트의 복사-기본 `String` 동작은 함수나 메소드가 `String` 값을 전달할 때, 그게 어디서 왔든 상관없이, 정확한 `String` 값을 소유하는게 명확하도록 보장합니다. 자신이 직접 수정하지 않는 한 전달받은 문자열이 수정되지 않을 거라는 걸 자신할 수 있습니다.
 
@@ -182,7 +182,7 @@ for character in "Dog!🐶" {
 // 🐶
 ```
 
-`for-in` 반복문은 [For-In Loops (For-In 반복문)]({% link docs/books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 에서 설명합니다.
+`for-in` 반복문은 [For-In Loops (For-In 반복문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 에서 설명합니다.
 
 대안으로, 단일-문자 글자 값으로 (홀로-선) 독립 `Character` 상수나 변수를 생성하려면 `Character` 타입 보조 설명[^annotation] 을 제공하면 됩나다:
 
@@ -466,7 +466,7 @@ let newString = String(beginning)
 
 #### String and Character Equality (문자열 및 문자 같음)
 
-문자열 및 문자 같음은 "같음 (equal to)" 연산자 (`==`) 와 "같지 않음 (not equal to)" 연산자 (`!=`) 로 검사하며, [Comparison Operators (비교 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}#comparison-operators-비교-연산자) 에서 설명합니다:
+문자열 및 문자 같음은 "같음 (equal to)" 연산자 (`==`) 와 "같지 않음 (not equal to)" 연산자 (`!=`) 로 검사하며, [Comparison Operators (비교 연산자)]({% link docs/swift-books/swift-programming-language/basic-operators.md %}#comparison-operators-비교-연산자) 에서 설명합니다:
 
 ```swift
 let quotation = "We're a lot alike, you and I."
@@ -654,15 +654,15 @@ for scalar in dogString.unicodeScalars {
 
 ### 다음 장
 
-[Collection Types (집합체 타입) >]({% link docs/books/swift-programming-language/collection-types.md %})
+[Collection Types (집합체 타입) >]({% link docs/swift-books/swift-programming-language/collection-types.md %})
 
 ### 참고 자료
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Strings and Characters](https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html) 에서 볼 수 있습니다.
 
-[^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% link docs/books/swift-programming-language/collection-types.md %}) 장을 참고하기 바랍니다.
+[^collection]: '집합체 (collection)' 에 대한 더 자세한 정보는, [Collection Types (집합체 타입)]({% link docs/swift-books/swift-programming-language/collection-types.md %}) 장을 참고하기 바랍니다.
 
-[^literals]: '글자 값 (literals)' 은 실제 글자로 표현되는 값을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값을 말하고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값을 말합니다. 즉, 글자 값의 타입은 그 값이 실제로 표현하는게 뭔지에 따라 추론됩니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% link docs/books/swift-programming-language/lexical-structure.md %}#literals-글자-값) 부분을 참고하기 바랍니다.
+[^literals]: '글자 값 (literals)' 은 실제 글자로 표현되는 값을 의미하며, `let a = 3.14` 에서는 `3.14` 라는 `Double` 값을 말하고, `let b = "hello"` 에서는 `"hello"` 라는 `String` 값을 말합니다. 즉, 글자 값의 타입은 그 값이 실제로 표현하는게 뭔지에 따라 추론됩니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}#literals-글자-값) 부분을 참고하기 바랍니다.
 
 [^string-literal-syntax]: '문자열 글자 값 구문 (string literal syntax)' 이란 `let greeting = "hello"` 에서 `"hello"` 같은 구문을 말하며, 이게 **C** 언어와 비슷하는 의미입니다. 
 
@@ -682,7 +682,7 @@ for scalar in dogString.unicodeScalars {
 
 [^backslash]: 줄 끝에 '역 빗금 (backslash)' 문자가 있으면 그 다음 줄도 하나의 줄로 인식합니다.
 
-[^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% link docs/books/swift-programming-language/lexical-structure.md %}) 장의 [String Literals (문자열 글자 값)]({% link docs/books/swift-programming-language/lexical-structure.md %}#string-literals-문자열-글자-값) 부분을 보도록 합니다.
+[^line-feed]: 스위프트를 포함한 애플 운영체제에서, '줄 먹임 (line feed)', '줄 끊음 (line break)', '새 줄 (new line; 개행) 문자' 는 모두 똑같은 의미를 가집니다. 이 책에서도 세 단어를 구분없이 사용하는 경우가 종종 있습니다. 이에 대한 더 자세한 내용은, [Lexical Structure (어휘 구조)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}) 장의 [String Literals (문자열 글자 값)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}#string-literals-문자열-글자-값) 부분을 보도록 합니다.
 
 [^escaped]: 'escape' 은 우리 말로 '벗어나다' 라는 의미인데, 프로그래밍 용어로 'escaped special characters' 라고 하면 '(본래의 의미를) 벗어나 다른 의미를 가지는 특수 문자' 입니다. 예를 들어, `n` 은 그냥 하나의 영어 문자이지만, `\n` 은 문자 본래의 의미를 벗어나서 `새로운 줄 (new line)` 이라는 의미를 가집니다. 이렇게 문자 앞에 '역 빗금 (backslash; `\`)' 를 붙여서 본래 의미를 벗어나 다른 의미를 가지게 한 문자를 '벗어난 문자 (escaped characters)' 라고 합니다.
 
@@ -700,7 +700,7 @@ for scalar in dogString.unicodeScalars {
 
 [^optimize-string]: 이 말은 `String` 이 기본적으로는 '깊은 복사' 를 하지만, 만약 전달받은 `String` 이 상수라면, 어차피 값이 바뀌지 않으므로 최적화에 의해, 실제 복사를 안할 수도 있다는 말입니다. 하지만 이런 경우에라도 밖에서 보는 작동 방식은 동일하므로, 개발자는 `String` 이 마치 계속 '복사 (copy)' 된다고 이해하고 사용해도 문제가 없습니다.
 
-[^annotation]: 프로그래밍 용어로 '주석 (comment)' 이란 단어를 이미 사용하고 있으므로, 타입 주석이라고 하지 않고 '타입 보조 설명 (type annotation)' 이라고 옮깁니다. 타입 보조 설명에 대한 더 자세한 정보는, [Type Annotations (타입 보조 설명)]({% link docs/books/swift-programming-language/the-basics.md %}#type-annotations-타입-보조-설명) 부분을 보도록 합니다. 
+[^annotation]: 프로그래밍 용어로 '주석 (comment)' 이란 단어를 이미 사용하고 있으므로, 타입 주석이라고 하지 않고 '타입 보조 설명 (type annotation)' 이라고 옮깁니다. 타입 보조 설명에 대한 더 자세한 정보는, [Type Annotations (타입 보조 설명)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-annotations-타입-보조-설명) 부분을 보도록 합니다. 
 
 [^larger-expression]: `\(Double(multiplier) * 2.5)` 를 말합니다.
 

@@ -73,7 +73,7 @@ numberOfLegs["bird"] = 2
 
 위 예제는 `numberOfLegs` 라는 변수를 정의하고 세 키-값 쌍을 담은 딕셔너리 글자 값으로 이를 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론합니다. 딕셔너리를 생성한 후, 이 예제는 첨자 할당을 사용하여 딕셔너리에 `"bird"` 라는 `String` 키와 `2` 라는 `Int` 값을 추가합니다.
 
-`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근 및 수정하기)]({% link docs/books/swift-programming-language/collection-types.md %}#accessing-and-modifying-a-dictionary-딕셔너리-접근-및-수정하기) 부분을 보도록 합니다.
+`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근 및 수정하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#accessing-and-modifying-a-dictionary-딕셔너리-접근-및-수정하기) 부분을 보도록 합니다.
 
 > 스위프트의 `Dictionary` 타입은 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자로 자신의 키-값 첨자 연산을 구현합니다. 위의 `numberOfLegs` 딕셔너리에선, 키-값 첨자가 `Int?`, 또는 "옵셔널 정수 (optional int)", 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 옵셔널 첨자 타입을 사용하여 모든 키가 값을 가지진 않을 거라는 사실을 모델링하고, 그 키에 `nil` 값을 할당함으로써 키의 값을 삭제할 방법을 제공합니다.
 
@@ -81,7 +81,7 @@ numberOfLegs["bird"] = 2
 
 첨자는 어떤 개수의 입력 매개 변수든 취할 수 있으며, 이 입력 매개 변수는 어떤 타입이든 될 수 있습니다. 첨자는 어떤 타입의 값이든 반환할 수도 있습니다.
 
-[Variadic Parameters (가변 매개 변수)]({% link docs/books/swift-programming-language/functions.md %}#variadic-parameters-가변-매개-변수) 와 [Default Parameter Values (기본 매개 변수 값)]({% link docs/books/swift-programming-language/functions.md %}#default-parameter-values-기본-매개-변수-값) 에서 설명한 것처럼, 함수와 같이, 첨자도 가변 개수의 매개 변수를 취할 수 있으며 이 매개 변수에 기본 값을 제공할 수도 있습니다. 하지만, 함수와 달리, 첨자 연산은 입-출력 (in-out) 매개 변수를 사용할 수 없습니다.
+[Variadic Parameters (가변 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#variadic-parameters-가변-매개-변수) 와 [Default Parameter Values (기본 매개 변수 값)]({% link docs/swift-books/swift-programming-language/functions.md %}#default-parameter-values-기본-매개-변수-값) 에서 설명한 것처럼, 함수와 같이, 첨자도 가변 개수의 매개 변수를 취할 수 있으며 이 매개 변수에 기본 값을 제공할 수도 있습니다. 하지만, 함수와 달리, 첨자 연산은 입-출력 (in-out) 매개 변수를 사용할 수 없습니다.
 
 클래스나 구조체는 필요한 만큼 많은 첨자 구현을 제공할 수 있으며, 사용하가 적절한 첨자는 첨자를 사용할 시점에 첨자 대괄호 안에 담은 값이나 값들의 타입을 기초로 추론할 겁니다. 이런 여러 개의 첨자 정의를 _첨자 중복 정의 (subscript overloading)_ 라고 합니다.
 
@@ -112,7 +112,7 @@ struct Matrix {
 }
 ```
 
-`Matrix` 는 `rows` 와 `columns` 이라는 두 매개 변수를 취하는 초기자를 제공하며, `rows * columns` 개의 `Double` 타입 값을 저장할만큼 충분히 큰 배열을 생성합니다. 행렬 (matrix) 안의 각 위치엔 `0.0` 이라는 초기 값을 줍니다. 이를 달성하기 위해, 배열 초기자에 배열 크기와, `0.0` 이라는 초기 단위 조직 값을 전달하여, 올바른 크기의 새 배열을 생성하고 초기화합니다. 이 초기자는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% link docs/books/swift-programming-language/collection-types.md %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
+`Matrix` 는 `rows` 와 `columns` 이라는 두 매개 변수를 취하는 초기자를 제공하며, `rows * columns` 개의 `Double` 타입 값을 저장할만큼 충분히 큰 배열을 생성합니다. 행렬 (matrix) 안의 각 위치엔 `0.0` 이라는 초기 값을 줍니다. 이를 달성하기 위해, 배열 초기자에 배열 크기와, `0.0` 이라는 초기 단위 조직 값을 전달하여, 올바른 크기의 새 배열을 생성하고 초기화합니다. 이 초기자는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
 
 자신의 초기자에 적절한 행과 열 개수를 전달함으로써 새로운 `Matrix` 인스턴스를 생성할 수 있습니다:
 
@@ -169,7 +169,7 @@ print(mars)
 
 ### 다음 장
 
-[Inheritance (상속) >]({% link docs/books/swift-programming-language/inheritance.md %})
+[Inheritance (상속) >]({% link docs/swift-books/swift-programming-language/inheritance.md %})
 
 ### 참고 자료
 
@@ -179,6 +179,6 @@ print(mars)
 
 [^read-only]: 이런 동작은 바로 뒤에서 설명하는 '계산 속성 (computed property)' 과 비슷합니다. 이런 관점에서 보면 계산 속성과 첨자는 인스턴스 메소드의 특수한 한 형태라고 볼 수 있습니다.
 
-[^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 보도록 합니다.
+[^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 보도록 합니다.
 
 [^flattend-version]: '납작한 (flattened) 버전의 행렬' 이란 2-차원 배열의 형상을 바꿔서 1-차원 배열로 만들었다는 의미입니다.

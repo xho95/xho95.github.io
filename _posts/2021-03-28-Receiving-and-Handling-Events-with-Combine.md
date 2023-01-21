@@ -110,6 +110,6 @@ sub?.cancel()
 
 [^default-instance]: '`default` 인스턴스' 는 `NotificationCenter` 에 정의되어 있는 '전역 변수' 입니다.
 
-[^associated-type]: '결합 타입 (associated type)' 은 프로토콜에서 사용하는 타입에 '자리 표시용 (placeholder) 이름' 을 부여한 것입니다. 결합 타입에 대한 더 자세한 정보는, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
+[^associated-type]: '결합 타입 (associated type)' 은 프로토콜에서 사용하는 타입에 '자리 표시용 (placeholder) 이름' 을 부여한 것입니다. 결합 타입에 대한 더 자세한 정보는, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/swift-books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분을 참고하기 바랍니다.
 
 [^view-model]: 여기서의 '뷰 모델 객체 (view model object)' 는 'MVVM' 에 있는 '뷰 모델 (View Model)' 을 말하는 것입니다. 스위프트에서 'MVVM' 의 '뷰 모델' 은 항상 '클래스' 로 구현하기 때문에 '뷰 모델 객체' 라는 용어를 사용한 것으로 추측됩니다.

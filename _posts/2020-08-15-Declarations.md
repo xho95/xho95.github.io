@@ -76,11 +76,11 @@ print("The second number is \(secondNumber).")
 // "The second number is 42." 를 인쇄함
 ```
 
-[Type Inference (타입 추론)]({% link docs/books/swift-programming-language/types.md %}#type-inference-타입-추론) 에서 설명한 것처럼, _상수 이름 (constant name)_ 의 타입을 추론할 수 있을 땐 (`:` _타입 (type)_ 이라는) 타입 보조 설명이 옵션입니다.
+[Type Inference (타입 추론)]({% link docs/swift-books/swift-programming-language/types.md %}#type-inference-타입-추론) 에서 설명한 것처럼, _상수 이름 (constant name)_ 의 타입을 추론할 수 있을 땐 (`:` _타입 (type)_ 이라는) 타입 보조 설명이 옵션입니다.
 
-상수 타입 속성을 선언하려면, 선언에 `static` 선언 수정자를 표시합니다. 클래스의 상수 타입 속성은 항상 암시적으로 최종 (final) 이며; `class` 나 `final` 선언 수정자를 표시하여 하위 클래스 재정의를 허용하거나 불허할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% link docs/books/swift-programming-language/properties.md %}#type-properties-타입-속성) 에서 논의합니다.
+상수 타입 속성을 선언하려면, 선언에 `static` 선언 수정자를 표시합니다. 클래스의 상수 타입 속성은 항상 암시적으로 최종 (final) 이며; `class` 나 `final` 선언 수정자를 표시하여 하위 클래스 재정의를 허용하거나 불허할 수 없습니다.[^final] 타입 속성은 [Type Properties (타입 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#type-properties-타입-속성) 에서 논의합니다.
 
-상수에 대한 더 많은 정보와 사용 시점에 대한 본보기는, [Constants and Variables (상수와 변수)]({% link docs/books/swift-programming-language/the-basics.md %}#constants-and-variables-상수와-변수) 와 [Stored Properties (저장 속성)]({% link docs/books/swift-programming-language/properties.md %}#stored-properties-저장-속성) 부분을 보도록 합니다.
+상수에 대한 더 많은 정보와 사용 시점에 대한 본보기는, [Constants and Variables (상수와 변수)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#constants-and-variables-상수와-변수) 와 [Stored Properties (저장 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#stored-properties-저장-속성) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONSTANT DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID355)
 
@@ -92,7 +92,7 @@ _변수 선언 (variable declaration)_ 은 프로그램에 변수 이름 값을 
 
 > [Protocol Property Declaration (프로토콜 속성 선언)](#protocol-property-declaration-프로토콜-속성-선언) 에서 설명한 것처럼, 프로토콜 선언에서 속성을 선언할 수도 있습니다.
 
-[Overriding (재정의하기)]({% link docs/books/swift-programming-language/inheritance.md %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 `override` 선언 수정자로 표시함으로써 하위 클래스에서 속성을 재정의할 수 있습니다.
+[Overriding (재정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#overriding-재정의하기) 에서 설명한 것처럼, 하위 클래스의 속성 선언을 `override` 선언 수정자로 표시함으로써 하위 클래스에서 속성을 재정의할 수 있습니다.
 
 #### Stored Variables and Stored Variable Properties (저장 변수와 저장 변수 속성)
 
@@ -123,13 +123,13 @@ _변수 선언 (variable declaration)_ 은 프로그램에 변수 이름 값을 
 
 이 형식의 변수 선언은 전역이나, 함수 지역, 또는 클래스나, 구조체, 열거체, 및 익스텐션 선언에서 정의합니다. 이 형식의 변수 선언을 전역이나 함수 지역에서 할 때, _계산 변수 (computed variable)_ 라고 합니다. 클래스나, 구조체, 또는 익스텐션 선언에서 할 땐, _계산 속성 (computed property)_ 이라고 합니다.
 
-획득자 (getter) 로 값을 읽고, 설정자 (setter) 로 값을 씁니다. [Read-Only Computed Properties (읽기-전용 계산 속성)]({% link docs/books/swift-programming-language/properties.md %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 설정자 절은 옵션이라, 획득자만 필요할 땐, 두 절 모두 생략하고 단순히 요청 값만 직접 반환할 수 있습니다. 그러나 설정자 절을 제공하면, 획득자 절도 반드시 제공해야 합니다.
+획득자 (getter) 로 값을 읽고, 설정자 (setter) 로 값을 씁니다. [Read-Only Computed Properties (읽기-전용 계산 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#read-only-computed-properties-읽기-전용-계산-속성) 에서 설명한 것처럼, 설정자 절은 옵션이라, 획득자만 필요할 땐, 두 절 모두 생략하고 단순히 요청 값만 직접 반환할 수 있습니다. 그러나 설정자 절을 제공하면, 획득자 절도 반드시 제공해야 합니다.
 
-_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정자 이름을 제공하면, 설정자의 매개 변수 이름으로 이걸 사용합니다. 설정자 이름을 제공하지 않으면, [Shorthand Setter Declaration (짧게 줄인 설정자 선언)]({% link docs/books/swift-programming-language/properties.md %}#shorthand-setter-declaration-짧게-줄인-설정자-선언) 에서 설명한 것처럼, `newValue` 가 설정자의 기본 매개 변수 이름입니다.
+_설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정자 이름을 제공하면, 설정자의 매개 변수 이름으로 이걸 사용합니다. 설정자 이름을 제공하지 않으면, [Shorthand Setter Declaration (짧게 줄인 설정자 선언)]({% link docs/swift-books/swift-programming-language/properties.md %}#shorthand-setter-declaration-짧게-줄인-설정자-선언) 에서 설명한 것처럼, `newValue` 가 설정자의 기본 매개 변수 이름입니다.
 
 저장 이름 값[^stored-named-values] 및 저장 변수 속성과는 달리, 계산 이름 값 또는 계산 속성 값은 메모리에 저장하지 않습니다.
 
-계산 속성에 대한 더 자세한 정보 및 예제를 보려면, [Computed Properties (계산 속성)]({% link docs/books/swift-programming-language/properties.md %}#computed-properties-계산-속성) 부분을 보도록 합니다.
+계산 속성에 대한 더 자세한 정보 및 예제를 보려면, [Computed Properties (계산 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#computed-properties-계산-속성) 부분을 보도록 합니다.
 
 #### Stored Variable Observers and Property Observers (저장 변수 관찰자와 속성 관찰자)
 
@@ -146,7 +146,7 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정
 
 이 형식의 변수 선언은 전역이나, 함수 지역, 또는 클래스나 구조체 선언에서 정의합니다. 이 형식의 변수 선언을 전역이나 함수 지역에서 할 땐, 관찰자를 _저장 변수 관찰자 (stored variable observers)_ 라고 합니다. 클래스나 구조체 선언에서 선언할 땐, 관찰자를 _속성 관찰자 (property observers)_ 라고 합니다.
 
-속성 관찰자는 어떤 저장 속성에든 추가할 수 있습니다. [Overriding Property Observers (속성 관찰자 재정의하기)]({% link docs/books/swift-programming-language/inheritance.md %}#overriding-property-observers-속성-관찰자-재정의하기) 에서 설명한 것처럼, 하위 클래스 안에서 속성을 재정의함으로써 (저장이든 계산이든 상관없이) 어떤 상속 속성에도 속성 관찰자를 추가할 수 있습니다.
+속성 관찰자는 어떤 저장 속성에든 추가할 수 있습니다. [Overriding Property Observers (속성 관찰자 재정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#overriding-property-observers-속성-관찰자-재정의하기) 에서 설명한 것처럼, 하위 클래스 안에서 속성을 재정의함으로써 (저장이든 계산이든 상관없이) 어떤 상속 속성에도 속성 관찰자를 추가할 수 있습니다.
 
 초기자 _표현식 (expression)_[^expression] 은 클래스나 구조체 선언에서는 옵션이지만, 다른 곳에선 필수입니다. 초기자 _표현식 (expression)_ 으로 타입을 추론할 수 있을 땐 _타입 (type)_ 보조 설명이 옵션입니다. 속성 값을 최초로 읽을 때 이 표현식을 평가합니다. 속성 초기 값을 읽지 않고 덮어 쓰면, 속성에 최초로 쓰기 전 이 표현식을 평가합니다.
 
@@ -197,11 +197,11 @@ newAndOld.x = 200
 // "Old value 12 - new value 200" 를 인쇄함
 ```
 
-속성 관찰자에 대한 더 많은 정보와 사용법 예제를 보려면, [Property Observers (속성 관찰자)]({% link docs/books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
+속성 관찰자에 대한 더 많은 정보와 사용법 예제를 보려면, [Property Observers (속성 관찰자)]({% link docs/swift-books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
 #### Type Variable Properties (타입 변수 속성)
 
-타입 변수 속성을 선언하려면, 선언에 `static` 선언 수정자를 표시합니다. 클래스에선 그 대신 타입 계산 속성[^type-computed-properties] 에 `class` 선언 수정자를 표시하여 하위 클래스에서 상위 클래스 구현을 재정의하게 할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% link docs/books/swift-programming-language/properties.md %}#type-properties-타입-속성) 부분에서 논의합니다.
+타입 변수 속성을 선언하려면, 선언에 `static` 선언 수정자를 표시합니다. 클래스에선 그 대신 타입 계산 속성[^type-computed-properties] 에 `class` 선언 수정자를 표시하여 하위 클래스에서 상위 클래스 구현을 재정의하게 할 수 있습니다. 타입 속성은 [Type Properties (타입 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#type-properties-타입-속성) 부분에서 논의합니다.
 
 > GRAMMAR OF A VARIABLE DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID356)
 
@@ -280,7 +280,7 @@ _함수 선언 (function declaration)_ 은 프로그램에 함수나 메소드�
 
 입-출력 매개 변수 같이-절대 벗어나지 않는다는 걸 보증한 값 또는 벗어나지 않는 함수 인자로 전달한 값을 붙잡으면 중첩 함수가 벗어나지 않는 겁니다.[^escaping] 그 외 경우에, 중첩 함수는 벗어나는 함수입니다.
 
-중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% link docs/books/swift-programming-language/functions.md %}#nested-functions-중첩-함수) 부분을 보도록 합니다.
+중첩 함수에 대한 논의는, [Nested Functions (중첩 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#nested-functions-중첩-함수) 부분을 보도록 합니다.
 
 #### Parameter Names (매개 변수 이름)
 
@@ -323,7 +323,7 @@ repeatGreeting("Hello, world!", count: 2) //  count 엔 이름표가 있고, gre
 
 함수 안에선, 현재 영역에서 원본 값이 사용 가능하더라도, 입-출력 인자로 전달한 값엔 접근하지 않아야 합니다. 원본에 접근하면 값에 대한 동시 접근[^simultaneous-access] 이라, 스위프트의 메모리 독점권 보증[^memory-exclusivity-guarantee] 을 위반합니다. 똑같은 이유로, 여러 개의 입-출력 매개 변수에 동일한 값을 전달할 순 없습니다.
 
-메모리 안전성과 메모리 독점권에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% link docs/books/swift-programming-language/memory-safety.md %}) 장을 보도록 합니다.
+메모리 안전성과 메모리 독점권에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% link docs/swift-books/swift-programming-language/memory-safety.md %}) 장을 보도록 합니다.
 
 입-출력 매개 변수를 붙잡는 클로저나 중첩 함수는 반드시 벗어나지 않아야 (nonescaping) 합니다. 입-출력 매개 변수를 변경 (mutating) 없이 붙잡을 필요가 있다면, 붙잡을 목록 (capture list) 을 써서 매개 변수가 변경 불가능하다는 걸 명시하고 붙잡아야 합니다.[^closure-with-inout-parameter]
 
@@ -347,7 +347,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 }
 ```
 
-입-출력 매개 변수에 대한 더 많은 논의와 예제는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
+입-출력 매개 변수에 대한 더 많은 논의와 예제는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 #### Special Kinds of Parameters (특수한 종류의 매개 변수)
 
@@ -359,7 +359,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 밑줄 (`_`) 매개 변수는 명시적으로 무시하며 함수 본문 안에서 접근할 수 없습니다.
 
-기초 타입 이름 바로 뒤에 세 점 (`...`) 이 있는 매개 변수는 가변 매개 변수라고 이해합니다. 가변 매개 변수 바로 뒤에 있는 매개 변수엔 반드시 인자 이름표가 있어야 합니다.[^variadic-label] 함수의 가변 매개 변수는 여러 개일 수 있습니다. 가변 매개 변수는 기초 타입 이름의 원소를 담은 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. 가변 매개 변수의 사용 예는, [Variadic Parameters (가변 매개 변수)]({% link docs/books/swift-programming-language/functions.md %}#variadic-parameters-가변-매개-변수) 부분을 보도록 합니다.
+기초 타입 이름 바로 뒤에 세 점 (`...`) 이 있는 매개 변수는 가변 매개 변수라고 이해합니다. 가변 매개 변수 바로 뒤에 있는 매개 변수엔 반드시 인자 이름표가 있어야 합니다.[^variadic-label] 함수의 가변 매개 변수는 여러 개일 수 있습니다. 가변 매개 변수는 기초 타입 이름의 원소를 담은 배열로 취급합니다. 예를 들어, `Int...` 라는 가변 매개 변수는 `[Int]` 로 취급합니다. 가변 매개 변수의 사용 예는, [Variadic Parameters (가변 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#variadic-parameters-가변-매개-변수) 부분을 보도록 합니다.
 
 자신의 타입 뒤에 같음 기호 (`=`)[^equals-sign] 와 표현식이 있는 매개 변수는 주어진 표현식에 (해당하는) 기본 값을 가진다고 이해합니다. 주어진 표현식은 함수 호출 때 평가합니다. 함수 호출 때 매개 변수를 생략하면, 기본 값을 대신 사용합니다.
 
@@ -382,7 +382,7 @@ f(7)      // 무효, 인자 이름표가 빠짐
 
 특수한 이름의 여러가지 메소드로 함수 호출 구문을 수월하게 할 수 있습니다. 타입에서 이 메소드 중 하나를 정의하면, 타입의 인스턴스를 함수 호출 구문에 사용할 수 있습니다. 함수 호출은 그 인스턴스의 특수 이름 메소드 중 하나를 호출하는 걸로 이해합니다.
 
-클래스나, 구조체, 또는 열거체 타입은, [dynamicCallable (동적으로 호출 가능)]({% link docs/books/swift-programming-language/attributes.md %}#dynamiccallable-동적으로-호출-가능) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명 처럼, 함수-처럼-호출하는 메소드를 정의함으로써, 함수 호출 구문을 지원할 수 있습니다. 타입에서 함수-처럼-호출하는 메소드와 `dynamicCallable` 특성의 메소드를 둘 다 정의하면, 어느 메소드든 사용할 수 있는 상황에선 컴파일러가 함수-처럼-호출하는 메소드에 우선권을 줍니다.
+클래스나, 구조체, 또는 열거체 타입은, [dynamicCallable (동적으로 호출 가능)]({% link docs/swift-books/swift-programming-language/attributes.md %}#dynamiccallable-동적으로-호출-가능) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명 처럼, 함수-처럼-호출하는 메소드를 정의함으로써, 함수 호출 구문을 지원할 수 있습니다. 타입에서 함수-처럼-호출하는 메소드와 `dynamicCallable` 특성의 메소드를 둘 다 정의하면, 어느 메소드든 사용할 수 있는 상황에선 컴파일러가 함수-처럼-호출하는 메소드에 우선권을 줍니다.
 
 함수-처럼-호출하는 메소드의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한 이름입니다-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 모두 함수-처럼-호출하는 메소드 이름으로 유효합니다.
 
@@ -410,7 +410,7 @@ let someFunction1: (Int, Int) -> Void = callable(_:scale:)  // 에러
 let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 ```
 
-[dynamicMemberLookup (동적으로 멤버 찾아보기)]({% link docs/books/swift-programming-language/attributes.md %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, `subscript(dynamicMemberLookup:)` 첨자는 멤버 찾아보기 구문을 수월하게 할 수 있습니다.
+[dynamicMemberLookup (동적으로 멤버 찾아보기)]({% link docs/swift-books/swift-programming-language/attributes.md %}#dynamicmemberlookup-동적으로-멤버-찾아보기) 에서 설명한 것처럼, `subscript(dynamicMemberLookup:)` 첨자는 멤버 찾아보기 구문을 수월하게 할 수 있습니다.
 
 #### Throwing Functions and Methods (던지는 함수와 메소드)
 
@@ -476,7 +476,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 스위프트는 `Never` 타입을 정의하여, 자신을 호출한 쪽으로 반환하지 않는 함수나 메소드를 지시합니다. `Never` 반환 타입인 함수와 메소드를 _반환하지 않는 (nonreturning)_ 거라고 합니다. 반환하지 않는 함수와 메소드는 복구할 수 없는 에러를 일으키거나 무한정 계속하는 일렬로 나열된 작업을 시작합니다.[^indefinitely] 이는 다른 경우라면 호출 바로 뒤에 실행될 코드를 절대 실행하지 않는다는 의미입니다. 던지는 및 다시 던지는 함수는, 자신이 반환하지 않더라도, 적절한 `catch` 절로 프로그램 제어를 옮길 순 있습니다.
 
-[Guard Statement (guard 문)]({% link docs/books/swift-programming-language/statements.md %}#guard-statement-guard-문) 에서 논의한 것처럼, 반환하지 않는 함수나 메소드를 호출하여 'guard' 문의 `else` 절로 결론지어 끝낼 수 있습니다.
+[Guard Statement (guard 문)]({% link docs/swift-books/swift-programming-language/statements.md %}#guard-statement-guard-문) 에서 논의한 것처럼, 반환하지 않는 함수나 메소드를 호출하여 'guard' 문의 `else` 절로 결론지어 끝낼 수 있습니다.
 
 반환하지 않는 메소드를 재정의할 순 있지만, 새 메소드는 반드시 자신의 반환 타입과 반환하지 않는다는 동작을 보존해야 합니다.
 
@@ -492,7 +492,7 @@ _열거체 선언 (enumeration declaration)_ 은 프로그램에 이름지은 �
 
 클래스 및 구조체와는 달리, 열거체 타입엔 암시적으로 제공하는 기본 초기자가 없으며; 모든 초기자는 반드시 명시적으로 선언해야 합니다. 초기자는 열거체 안의 다른 초기자에 일을-맡길 수 있지만, 초기자가 `self` 에 열거체 case 중 하나를 할당한 후에만 초기화 과정을 완료합니다.
 
-구조체와 같지만 클래스와는 달리, 열거체는 값 타입이며; 열거체의 인스턴스는 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 보도록 합니다.
+구조체와 같지만 클래스와는 달리, 열거체는 값 타입이며; 열거체의 인스턴스는 변수나 상수에 할당할 때나, 함수 호출의 인자로 전달할 때, 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 보도록 합니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, 익스텐션 선언으로 열거체 타입의 동작을 확장할 수 있습니다.
 
@@ -523,7 +523,7 @@ let f = Number.integer
 let evenInts: [Number] = [0, 2, 4, 6].map(f)
 ```
 
-결합 값 타입이 있는 case 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% link docs/books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 보도록 합니다.
+결합 값 타입이 있는 case 에 대한 더 많은 정보와 예제를 보려면, [Associated Values (결합 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 보도록 합니다.
 
 **Enumerations with Indirection (간접을 가지는 열거체)**
 
@@ -573,13 +573,13 @@ enum GamePlayMode: String {
 
 위 예제에서, `GamePlayMode.cooperative` 의 원시 값은 `"cooperative"` 이고, `GamePlayMode.individual` 의 원시 값은 `"individual"` 이며, `GamePlayMode.competitive` 의 원시 값은 `"competitive"` 입니다.
 
-원시-값 타입의 case 를 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, `rawValue` 속성과 `init?(rawValue: RawValue)` 라는 서명[^signature] 의 실패 가능 초기자를 가집니다. `ExampleEnum.b.rawValue` 처럼, `rawValue` 속성을 사용하여 열거체 case 의 원시 값에 접근할 수 있습니다. 원시 값을 사용하여 해당하는 case 를 찾을 수도 있으며, 하나가 있다면, `ExampleEnum(rawValue: 5)` 처럼, 열거체의 실패 가능 초기자를 호출하면 되는데, 이는 옵셔널 case 를 반환합니다. 원시-값 타입을 가지는 case 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% link docs/books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 부분을 보기 바랍니다.
+원시-값 타입의 case 를 가진 열거체는 암시적으로, 스위프트 표준 라이브러리에서 정의한, `RawRepresentable` 프로토콜을 준수합니다. 그 결과, `rawValue` 속성과 `init?(rawValue: RawValue)` 라는 서명[^signature] 의 실패 가능 초기자를 가집니다. `ExampleEnum.b.rawValue` 처럼, `rawValue` 속성을 사용하여 열거체 case 의 원시 값에 접근할 수 있습니다. 원시 값을 사용하여 해당하는 case 를 찾을 수도 있으며, 하나가 있다면, `ExampleEnum(rawValue: 5)` 처럼, 열거체의 실패 가능 초기자를 호출하면 되는데, 이는 옵셔널 case 를 반환합니다. 원시-값 타입을 가지는 case 에 대한 더 많은 정보와 예제를 보려면, [Raw Values (원시 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 부분을 보기 바랍니다.
 
 #### Accessing Enumeration Cases (열거체 case 에 접근하기)
 
-열거체 타입의 case 를 참조하려면, `EnumerationType.enumerationCase` 처럼, 점 (`.`) 구문을 사용합니다. [Enumeration Syntax (열거체 구문)]({% link docs/books/swift-programming-language/enumerations.md %}#enumeration-syntax-열거체-구문) 과 [Implicit Member Expression (암시적 멤버 표현식)]({% link docs/books/swift-programming-language/expressions.md %}#implicit-member-expression-암시적-멤버-표현식) 에서 설명한 것처럼, 열거체 타입을 추론할 수 있는 상황일 땐, 이를 생략할 수 있습니다 (점은 여전히 필수입니다).
+열거체 타입의 case 를 참조하려면, `EnumerationType.enumerationCase` 처럼, 점 (`.`) 구문을 사용합니다. [Enumeration Syntax (열거체 구문)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#enumeration-syntax-열거체-구문) 과 [Implicit Member Expression (암시적 멤버 표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}#implicit-member-expression-암시적-멤버-표현식) 에서 설명한 것처럼, 열거체 타입을 추론할 수 있는 상황일 땐, 이를 생략할 수 있습니다 (점은 여전히 필수입니다).
 
-열거체 case 의 값을 검사하려면, [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)]({% link docs/books/swift-programming-language/enumerations.md %}#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에서 본 것처럼, `switch` 문을 사용합니다. [Enumeration Case Pattern (열거체 case 패턴)]({% link docs/books/swift-programming-language/patterns.md %}#enumeration-case-pattern-열거체-case-패턴) 에서 설명한 것처럼, 열거체 타입은 `switch` 문 case 블럭 안의 열거체 case 패턴과 패턴을-맞춰봅니다.
+열거체 case 의 값을 검사하려면, [Matching Enumeration Values with a Switch Statement (switch 문으로 열거체 값 맞춰보기)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#matching-enumeration-values-with-a-switch-statement-switch-문으로-열거체-값-맞춰보기) 에서 본 것처럼, `switch` 문을 사용합니다. [Enumeration Case Pattern (열거체 case 패턴)]({% link docs/swift-books/swift-programming-language/patterns.md %}#enumeration-case-pattern-열거체-case-패턴) 에서 설명한 것처럼, 열거체 타입은 `switch` 문 case 블럭 안의 열거체 case 패턴과 패턴을-맞춰봅니다.
 
 > GRAMMAR OF AN ENUMERATION DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID364)
 
@@ -591,21 +591,21 @@ _구조체 선언 (structure declaration)_ 은 프로그램에 이름지은 구�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-구조체 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자, 타입 별명, 및 심지어 다른 구조체와, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언에 정리자나 프로토콜 선언을 담을 순 없습니다. 다양한 종류의 선언을 포함한 구조체에 대한 논의 및 여러 가지 예제는, [Structures and Classes (구조체와 클래스)]({% link docs/books/swift-programming-language/structures-and-classes.md %}) 장을 보기 바랍니다.
+구조체 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자, 타입 별명, 및 심지어 다른 구조체와, 클래스, 행위자, 및 열거체 선언을 포함할 수 있습니다. 구조체 선언에 정리자나 프로토콜 선언을 담을 순 없습니다. 다양한 종류의 선언을 포함한 구조체에 대한 논의 및 여러 가지 예제는, [Structures and Classes (구조체와 클래스)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}) 장을 보기 바랍니다.
 
 구조체 타입은 어떤 개수의 프로토콜도 채택할 수 있지만, 클래스나, 열거체, 또는 다른 구조체를 상속할 순 없습니다.
 
 이전에 선언한 구조체로 인스턴스를 생성하는 데는 세 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% link docs/books/swift-programming-language/initialization.md %}#initializers-초기자) 에서 설명한 처럼, 구조체 안에 선언한 초기자 중 하나를 호출합니다.
-* 아무런 초기자도 선언하지 않은 경우, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 멤버 초기자를 호출합니다.
-* 아무런 초기자도 선언하지 않았으나, 구조체 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 기본 초기자를 호출합니다.
+* [Initializers (초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializers-초기자) 에서 설명한 처럼, 구조체 안에 선언한 초기자 중 하나를 호출합니다.
+* 아무런 초기자도 선언하지 않은 경우, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 구조체의 멤버 초기자를 호출합니다.
+* 아무런 초기자도 선언하지 않았으나, 구조체 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 구조체의 기본 초기자를 호출합니다.
 
-구조체에서 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 에서 설명합니다.
+구조체에서 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 에서 설명합니다.
 
-[Accessing Properties (속성에 접근하기)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 구조체 인스턴스의 속성에 접근할 수 있습니다.
+[Accessing Properties (속성에 접근하기)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 구조체 인스턴스의 속성에 접근할 수 있습니다.
 
-구조체는 값 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 구조체 인스턴스가 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 보기 바랍니다.
+구조체는 값 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 구조체 인스턴스가 복사됩니다. 값 타입에 대한 정보는, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분을 보기 바랍니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, 익스텐션 선언으로 구조체 타입의 동작을 확장할 수 있습니다.
 
@@ -619,7 +619,7 @@ _클래스 선언 (class declaration)_ 은 프로그램에 이름지은 클래�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-클래스 본문은 0 개 이상의 _선언 (declaration)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 인스턴스 메소드, 타입 메소드, 초기자, 단일한 정리자, 첨자, 타입 별명, 및 심지어 다른 클래스, 구조체, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언에 프로토콜 선언을 담을 순 없습니다. 다양한 종류의 선언을 포함한 클래스에 대한 논의 및 여러 가지 예제는, [Structures and Classes (구조체와 클래스)]({% link docs/books/swift-programming-language/structures-and-classes.md %}) 장을 보기 바랍니다.
+클래스 본문은 0 개 이상의 _선언 (declaration)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 인스턴스 메소드, 타입 메소드, 초기자, 단일한 정리자, 첨자, 타입 별명, 및 심지어 다른 클래스, 구조체, 행위자, 및 열거체 선언을 포함할 수 있습니다. 클래스 선언에 프로토콜 선언을 담을 순 없습니다. 다양한 종류의 선언을 포함한 클래스에 대한 논의 및 여러 가지 예제는, [Structures and Classes (구조체와 클래스)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}) 장을 보기 바랍니다.
 
 클래스 타입은, 자신의 _상위 클래스 (superclass)_ 라는, 단 하나의 부모 클래스만 상속할 수 있지만, 프로토콜은 어떤 개수든 채택할 수 있습니다. _클래스 이름 (class anme)_ 과 콜론 뒤에 _상위 클래스 (superclass)_ 를 첫 번째로 나타내고, 그 뒤에 _채택한 프로토콜 (adopted protocols)_ 을 둡니다. 일반화 (generic) 클래스는 다른 일반화 및 일반화 아닌 클래스를 상속할 수 있지만, 일반화 아닌 (nongeneric) 클래스는 다른 일반화 아닌 클래스만 상속할 수 있습니다. 콜론 뒤에 일반화 상위 클래스 이름을 쓸 때는, 반드시 그 일반화 클래스의 전체 이름을 포함해야 해서, 일반화 매개 변수 절도 포함해야 합니다.
 
@@ -629,16 +629,16 @@ _클래스 선언 (class declaration)_ 은 프로그램에 이름지은 클래�
 
 하위 클래스가 상위 클래스 초기자를 구현하길 요구하려면, 상위 클래스 초기자에 `required` 선언 수정자를 표시합니다. 그 초기자의 하위 클래스 구현에도 반드시 `required` 선언 수정자를 표시해야 합니다.
 
-_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스가 상속하긴 하지만, _상위 클래스 (superclass)_ 에서 선언한 지명 초기자는 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% link docs/books/swift-programming-language/initialization.md %}#automatic-initializer-inheritance-자동적인-초기자-상속) 의 설명 조건과 만날 때만 하위 클래스가 상속합니다. 스위프트 클래스는 범용 기초 클래스를 상속하지 않습니다.[^universal-base-class] 
+_상위 클래스 (superclass)_ 에서 선언한 속성과 메소드를 현재 클래스가 상속하긴 하지만, _상위 클래스 (superclass)_ 에서 선언한 지명 초기자는 [Automatic Initializer Inheritance (자동적인 초기자 상속)]({% link docs/swift-books/swift-programming-language/initialization.md %}#automatic-initializer-inheritance-자동적인-초기자-상속) 의 설명 조건과 만날 때만 하위 클래스가 상속합니다. 스위프트 클래스는 범용 기초 클래스를 상속하지 않습니다.[^universal-base-class] 
 
 이전에 선언한 클래스로 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% link docs/books/swift-programming-language/initialization.md %}#initializers-초기자) 에서 설명한 것처럼, 클래스 안에 선언한 초기자 중 하나를 호출합니다.
-* 아무런 초기자도 선언하지 않았으나, 클래스 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 기본 초기자를 호출합니다.
+* [Initializers (초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializers-초기자) 에서 설명한 것처럼, 클래스 안에 선언한 초기자 중 하나를 호출합니다.
+* 아무런 초기자도 선언하지 않았으나, 클래스 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 클래스의 기본 초기자를 호출합니다.
 
-[Accessing Properties (속성에 접근하기)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 클래스 인스턴스의 속성에 접근할 수 있습니다.
+[Accessing Properties (속성에 접근하기)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 클래스 인스턴스의 속성에 접근할 수 있습니다.
 
-클래스는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 클래스 인스턴스를, 복사하기 보단, 참조합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
+클래스는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 클래스 인스턴스를, 복사하기 보단, 참조합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, 익스텐션 선언으로 클래스 타입의 동작을 확장할 수 있습니다.
 
@@ -652,14 +652,14 @@ _행위자 선언 (actor declaration)_ 은 프로그램에 이름지은 행위�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-행위자 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 인스턴스 메소드, 타입 메소드, 초기자, 단일한 정리자, 첨자, 타입 별명, 및 심지어 다른 클래스와, 구조체, 및 열거체 선언을 포함할 수 있습니다. 다양한 종류의 선언을 포함한 행위자에 대한 논의 및 여러 가지 예제는, [Actors (행위자)]({% link docs/books/swift-programming-language/concurrency.md %}#actors-행위자) 부분을 보기 바랍니다.
+행위자 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 저장 및 계산 속성 둘 다와, 인스턴스 메소드, 타입 메소드, 초기자, 단일한 정리자, 첨자, 타입 별명, 및 심지어 다른 클래스와, 구조체, 및 열거체 선언을 포함할 수 있습니다. 다양한 종류의 선언을 포함한 행위자에 대한 논의 및 여러 가지 예제는, [Actors (행위자)]({% link docs/swift-books/swift-programming-language/concurrency.md %}#actors-행위자) 부분을 보기 바랍니다.
 
 행위자 타입은 어떤 개수의 프로토콜이든 채택할 수 있지만, 클래스나, 열거체, 구조체, 또는 다른 행위자를 상속할 수 없습니다. 하지만, `@objc` 특성을 표시한 행위자는 암시적으로 `NSObjectProtocol` 프로토콜을 준수하며 오브젝티브-C 런타임에서 `NSObject` 의 하위 타입으로 드러납니다.
 
 이전에 선언한 행위자로 인스턴스를 생성하는 데는 두 가지 방법이 있습니다:
 
-* [Initializers (초기자)]({% link docs/books/swift-programming-language/initialization.md %}#initializers-초기자) 에서 설명한 것처럼, 행위자 안에 선언한 초기자 중 하나를 호출합니다.
-* 아무런 초기자도 선언하지 않았으나, 행위자 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 기본 초기자를 호출합니다.
+* [Initializers (초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializers-초기자) 에서 설명한 것처럼, 행위자 안에 선언한 초기자 중 하나를 호출합니다.
+* 아무런 초기자도 선언하지 않았으나, 행위자 선언의 모든 속성에 초기 값을 준 경우, [Default Initializers (기본 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 행위자의 기본 초기자를 호출합니다.
 
 기본적으로, 행위자의 멤버는 그 행위자로 격리됩니다.[^isolate] 메소드 본문이나 속성 획득자 같은, 코드는 그 행위자 위에서 실행합니다. 행위자 안의 코드는 이미 동일한 행위자 위에서 실행하고 있기 때문에 서로 동기로 상호 작용할 수 있지만, 행위자 밖의 코드엔 반드시 `await` 를 표시해서 이 코드가 다른 행위자 위에서 비동기로 실행 중이라는 걸 지시해야 합니다. 키 경로 (key paths) 는 행위자의 격리 멤버를 참조할 수 없습니다. 행위자로-격리한 저장 속성을 동기 함수의 입-출력 매개 변수로 전달할 순 있지만, 비동기 함수로는 안됩니다. 
 
@@ -667,11 +667,11 @@ _행위자 선언 (actor declaration)_ 은 프로그램에 이름지은 행위�
 
 행위자의 멤버는 그게 격리 안한 것이나 비동기인 경우에만 `@objc` 특성을 표시할 수 있습니다. 
 
-행위자가 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 에서 설명합니다.
+행위자가 선언한 속성의 초기화 과정은 [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 에서 설명합니다.
 
-[Accessing Properties (속성에 접근하기)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 행위자 인스턴스의 속성에 접근할 수 있습니다.
+[Accessing Properties (속성에 접근하기)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#accessing-properties-속성에-접근하기) 에서 설명한 것처럼, 점 (`.`) 구문으로 행위자 인스턴스의 속성에 접근할 수 있습니다.
 
-행위자는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 행위자의 인스턴스를, 복사하기 보단, 참조합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
+행위자는 참조 타입이며; 변수나 상수에 할당할 때, 또는 함수 호출의 인자로 전달할 때, 행위자의 인스턴스를, 복사하기 보단, 참조합니다. 참조 타입에 대한 정보는, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보기 바랍니다.
 
 [Extension Declaration (익스텐션 선언)](#extension-declaration-익스텐션-선언) 에서 논의한 것처럼, 익스텐션 선언으로 행위자 타입의 동작을 확장할 수 있습니다.
 
@@ -687,13 +687,13 @@ _프로토콜 선언 (protocol declaration)_ 은 프로그램에 이름지은 �
 
 프로토콜 본문은 0 개 이상의 _프로토콜 멤버 선언 (protocol member declarations)_ 을 담는데, 이는 어떤 프로토콜 채택 타입이든 반드시 충족해야 할 준수 필수 조건을 설명합니다. 특히, 프로토콜은 준수 타입이 반드시 구현해야 할 특정한 속성과, 메소드, 초기자, 및 첨자를 선언할 수 있습니다. 프로토콜은, _결합 타입 (associated types)_ 이라는, 특수한 종류의 타입 별명도 선언할 수 있는데, 이것으로 프로토콜의 다양한 선언들 사이의 관계를 지정할 수 있습니다. 프로토콜 선언엔 클래스나, 구조체, 열거체, 및 다른 프로토콜 선언을 담을 수 없습니다. _프로토콜 멤버 선언 (protocol member declarations)_ 은 밑에서 자세히 논의합니다.
 
-프로토콜 타입은 다른 프로토콜을 어떤 개수든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 땐, 다른 프로토콜의 필수 조건 집합을 한군데로 모으므로 (aggregated), 현재 프로토콜을 상속한 어떤 타입이든 반드시 이 모든 필수 조건을 준수해야 합니다. 프로토콜 상속 사용법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% link docs/books/swift-programming-language/protocols.md %}#protocol-inheritance-프로토콜-상속) 부분을 보기 바랍니다.
+프로토콜 타입은 다른 프로토콜을 어떤 개수든 상속할 수 있습니다. 프로토콜 타입이 다른 프로토콜을 상속할 땐, 다른 프로토콜의 필수 조건 집합을 한군데로 모으므로 (aggregated), 현재 프로토콜을 상속한 어떤 타입이든 반드시 이 모든 필수 조건을 준수해야 합니다. 프로토콜 상속 사용법에 대한 예제는, [Protocol Inheritance (프로토콜 상속)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocol-inheritance-프로토콜-상속) 부분을 보기 바랍니다.
 
-> [Protocol Composition Type (프로토콜 합성 타입)]({% link docs/books/swift-programming-language/types.md %}#protocol-composition-type-프로토콜-합성-타입) 과 [Protocol Composition (프로토콜 합성)]({% link docs/books/swift-programming-language/protocols.md %}#protocol-composition-프로토콜-합성) 에서 설명한 것처럼, 프로토콜 합성 타입을 사용하여 여러 프로토콜의 준수 필수 조건을 한군데로 모을 수도 있습니다.
+> [Protocol Composition Type (프로토콜 합성 타입)]({% link docs/swift-books/swift-programming-language/types.md %}#protocol-composition-type-프로토콜-합성-타입) 과 [Protocol Composition (프로토콜 합성)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocol-composition-프로토콜-합성) 에서 설명한 것처럼, 프로토콜 합성 타입을 사용하여 여러 프로토콜의 준수 필수 조건을 한군데로 모을 수도 있습니다.
 
 이전에 선언한 타입에 프로토콜 준수성을 추가하려면 그 타입의 익스텐션 선언에 프로토콜을 채택하면 됩니다. 익스텐션에선, 채택한 프로토콜의 모든 필수 조건들을 반드시 구현해야 합니다. 타입이 모든 필수 조건을 이미 구현하고 있다면, 익스텐션 선언의 본문을 비워둬도 됩니다.
 
-기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜 안에 선언한 모든 속성과, 메소드, 및 첨자를 구현해야 합니다. 그렇더라도, 이 프로토콜 멤버 선언에 `optional` 선언 수정자를 표시하면 준수 타입의 구현부가 옵셔널임을 지정할 수 있습니다.[^optional-member] `optional` 수정자는 `objc` 특성을 표시한 멤버와, `objc` 특성을 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과, 옵셔널 멤버 필수 조건을 담은 프로토콜은 클래스 타입만이 채택하고 준수할 수 있습니다. `optional` 선언 수정자의 사용법에 대한 더 많은 정보 및 옵셔널 프로토콜 멤버에 대한 접근법-예를 들어, 준수 타입이 구현했는지 확신할 수 없을 때-에 대한 본보기는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% link docs/books/swift-programming-language/protocols.md %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보기 바랍니다.
+기본적으로, 프로토콜을 준수하는 타입은 반드시 프로토콜 안에 선언한 모든 속성과, 메소드, 및 첨자를 구현해야 합니다. 그렇더라도, 이 프로토콜 멤버 선언에 `optional` 선언 수정자를 표시하면 준수 타입의 구현부가 옵셔널임을 지정할 수 있습니다.[^optional-member] `optional` 수정자는 `objc` 특성을 표시한 멤버와, `objc` 특성을 표시한 프로토콜의 멤버에만 적용할 수 있습니다. 그 결과, 옵셔널 멤버 필수 조건을 담은 프로토콜은 클래스 타입만이 채택하고 준수할 수 있습니다. `optional` 선언 수정자의 사용법에 대한 더 많은 정보 및 옵셔널 프로토콜 멤버에 대한 접근법-예를 들어, 준수 타입이 구현했는지 확신할 수 없을 때-에 대한 본보기는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% link docs/swift-books/swift-programming-language/protocols.md %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보기 바랍니다.
 
 열거체 case 는 타입 멤버의 프로토콜 필수 조건을 만족할 수 있습니다. 특히, 어떤 결합 값도 없는 열거체 case 는 `Self` 타입인 읽기-전용 타입 변수의 프로토콜 필수 조건을 만족하며, 결합 값이 있는 열거체 case 는 매개 변수와 인자 이름표가 case 의 결합 값과 일치하고 `Self` 를 반환하는 함수의 프로토콜 필수 조건을 만족합니다. 예를 들면 다음과 같습니다:
 
@@ -720,9 +720,9 @@ protocol SomeProtocol: AnyObject {
 
 > 프로토콜에 `objc` 특성을 표시하면, 그 프로토콜에 `AnyObject` 필수 조건을 암시적으로 적용하므로; `AnyObject` 필수 조건을 프로토콜에 명시할 필요가 없습니다.
 
-프로토콜은 이름 있는 타입이며, 따라서, [Protocols as Types (타입으로써의 프로토콜)]({% link docs/books/swift-programming-language/protocols.md %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 다른 이름 있는 타입과 똑같은 곳의 코드에 나타날 수 있습니다. 하지만, 프로토콜로 인스턴스를 생성할 순 없는데, 프로토콜이 자신이 지정한 필수 조건의 구현을 실제로 제공하진 않기 때문입니다.
+프로토콜은 이름 있는 타입이며, 따라서, [Protocols as Types (타입으로써의 프로토콜)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocols-as-types-타입으로써의-프로토콜) 에서 논의한 것처럼, 다른 이름 있는 타입과 똑같은 곳의 코드에 나타날 수 있습니다. 하지만, 프로토콜로 인스턴스를 생성할 순 없는데, 프로토콜이 자신이 지정한 필수 조건의 구현을 실제로 제공하진 않기 때문입니다.
 
-[Delegation (맡김)]({% link docs/books/swift-programming-language/protocols.md %}#delegation-맡김) 에서 설명한 것처럼, 프로토콜을 사용하면 클래스나 구조체의 일-맡은자 (delegate) 가 어느 메소드를 구현해야 하는지를 선언할 수 있습니다.
+[Delegation (맡김)]({% link docs/swift-books/swift-programming-language/protocols.md %}#delegation-맡김) 에서 설명한 것처럼, 프로토콜을 사용하면 클래스나 구조체의 일-맡은자 (delegate) 가 어느 메소드를 구현해야 하는지를 선언할 수 있습니다.
 
 > GRAMMAR OF A PROTOCOL DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID369)
 
@@ -734,7 +734,7 @@ protocol SomeProtocol: AnyObject {
 
 다른 프로토콜 멤버 선언 처럼, 이 속성 선언은 프로토콜을 준수할 타입의 획득자 및 설정자 필수 조건만 선언합니다. 그 결과, 이를 선언한 프로토콜이 획득자와 설정자를 직접 구현하진 않습니다.
 
-준수 타입은 다양한 방식으로 획득자 및 설정자 필수 조건을 만족할 수 있습니다. 속성 선언이 `get` 과 `set` 키워드를 둘 다 포함하면, 준수 타입이 읽기 쓰기가 둘 다 가능한 (즉, 획득자와 설정자를 둘 다 구현한) 저장 변수 속성 또는 계산 속성으로 이를 구현할 수 있습니다. 하지만, 그 속성 선언을 상수 속성 또는 읽기-전용 계산 속성으로 구현할 순 없습니다. 속성 선언이 `get` 키워드만 포함하면, 어떤 종류의 속성으로도 이를 구현할 수 있습니다. 준수 타입이 프로토콜의 속성 필수 조건을 구현하는 예제는, [Property Requirements (속성 필수 조건)]({% link docs/books/swift-programming-language/protocols.md %}#property-requirements-속성-필수-조건) 부분을 보기 바랍니다.
+준수 타입은 다양한 방식으로 획득자 및 설정자 필수 조건을 만족할 수 있습니다. 속성 선언이 `get` 과 `set` 키워드를 둘 다 포함하면, 준수 타입이 읽기 쓰기가 둘 다 가능한 (즉, 획득자와 설정자를 둘 다 구현한) 저장 변수 속성 또는 계산 속성으로 이를 구현할 수 있습니다. 하지만, 그 속성 선언을 상수 속성 또는 읽기-전용 계산 속성으로 구현할 순 없습니다. 속성 선언이 `get` 키워드만 포함하면, 어떤 종류의 속성으로도 이를 구현할 수 있습니다. 준수 타입이 프로토콜의 속성 필수 조건을 구현하는 예제는, [Property Requirements (속성 필수 조건)]({% link docs/swift-books/swift-programming-language/protocols.md %}#property-requirements-속성-필수-조건) 부분을 보기 바랍니다.
 
 프로토콜 선언 안에서 타입 속성 필수 조건을 선언하려면, 속성 선언에 `static` 키워드를 표시합니다. 프로토콜을 준수하는게 구조체와 열거체면 속성을 `static` 키워드로 선언하고, 프로토콜을 준수하는게 클래스면 속성을 `static` 이나 `class` 키워드로 선언합니다. 구조체나, 열거체, 또는 클래스에 프로토콜 준수성을 추가하는 익스텐션은 자신이 확장할 타입과 똑같은 키워드를 사용합니다. 타입 속성 필수 조건에 기본 구현을 제공하는 익스텐션은 `static` 키워드를 사용합니다.
 
@@ -744,7 +744,7 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Method Declaration (프로토콜 메소드 선언)
 
-프로토콜 준수 타입이 반드시 메소드를 구현해야 한다고 선언하려면 프로토콜 선언 본문 안에 프로토콜 메소드 선언을 포함하면 됩니다. 프로토콜 메소드 선언의 형식은 함수 선언과 똑같으나, 두 가지 예외가 있는데: 함수 본문을 포함하지 않고, 함수 선언 부분에서 어떤 기본 매개 변수 값도 제공할 수 없다는 것이 그것입니다. 프로토콜의 메소드 필수 조건을 구현한 준수 타입 예제는, [Method Requirements (메소드 필수 조건)]({% link docs/books/swift-programming-language/protocols.md %}#method-requirements-메소드-필수-조건) 부분을 보기 바랍니다.
+프로토콜 준수 타입이 반드시 메소드를 구현해야 한다고 선언하려면 프로토콜 선언 본문 안에 프로토콜 메소드 선언을 포함하면 됩니다. 프로토콜 메소드 선언의 형식은 함수 선언과 똑같으나, 두 가지 예외가 있는데: 함수 본문을 포함하지 않고, 함수 선언 부분에서 어떤 기본 매개 변수 값도 제공할 수 없다는 것이 그것입니다. 프로토콜의 메소드 필수 조건을 구현한 준수 타입 예제는, [Method Requirements (메소드 필수 조건)]({% link docs/swift-books/swift-programming-language/protocols.md %}#method-requirements-메소드-필수-조건) 부분을 보기 바랍니다.
 
 프로토콜 선언 안에서 클래스 및 정적 메소드 필수 조건을 선언하려면, 메소드 선언에 `static` 선언 수정자를 표시합니다. 프로토콜을 준수하는게 구조체와 열거체면 메소드를 `static` 키워드로 선언하고, 프로토콜을 준수하는게 클래스면 메소드를 `static` 이나 `class` 키워드로 선언합니다. 구조체나, 열거체, 또는 클래스에 프로토콜 준수성을 추가하는 익스텐션은 자신이 확장할 타입과 똑같은 키워드를 사용합니다. 타입 메소드 필수 조건에 기본 구현을 제공하는 익스텐션은 `static` 키워드를 사용합니다.
 
@@ -780,7 +780,7 @@ protocol SomeProtocol: AnyObject {
 
 #### Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)
 
-프로토콜은 `associatedtype` 키워드를 사용하여 결합 타입을 선언합니다. 결합 타입은 프로토콜 선언의 일부로 사용할 타입에 별명을 제공합니다. 결합 타입은 일반화 매개 변수 절에 있는 타입 매개 변수와 비슷하지만, 자신을 선언한 프로토콜의 `Self` 와 결합되어 있습니다. 그런 상황에선, `Self` 가 프로토콜을 준수한 최종 결과 타입 (eventual type) 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% link docs/books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분을 보기 바랍니다.
+프로토콜은 `associatedtype` 키워드를 사용하여 결합 타입을 선언합니다. 결합 타입은 프로토콜 선언의 일부로 사용할 타입에 별명을 제공합니다. 결합 타입은 일반화 매개 변수 절에 있는 타입 매개 변수와 비슷하지만, 자신을 선언한 프로토콜의 `Self` 와 결합되어 있습니다. 그런 상황에선, `Self` 가 프로토콜을 준수한 최종 결과 타입 (eventual type) 을 참조합니다. 더 많은 정보와 예제는, [Associated Types (결합 타입)]({% link docs/swift-books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분을 보기 바랍니다.
 
 프로토콜 선언에선, 결합 타입의 재-선언 없이, 일반화 `where` 절로 다른 프로토콜에서 상속한 결합 타입에 구속 조건을 추가합니다. 예를 들어, 밑에 있는 `SubProtocol` 선언들은 서로 같은 겁니다:
 
@@ -806,7 +806,7 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 
 _초기자 선언 (initializer declaration)_ 은 프로그램에 클래스나, 구조체, 또는 열거체의 초기자를 도입합니다. 초기자 선언은 `init` 키워드로 하며 두 가지 기초 형식이 있습니다.
 
-구조체와, 열거체, 및 클래스 타입엔 초기자가 어떤 개수든 있을 수 있지만, 클래스 초기자들에선 규칙과 결합 동작이 다릅니다. 구조체 및 열거체와는 달리, 클래스엔 두 종류의 초기자가 있는데: [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 에서 설명한, 지명 초기자와 편의 초기자가 그것입니다.
+구조체와, 열거체, 및 클래스 타입엔 초기자가 어떤 개수든 있을 수 있지만, 클래스 초기자들에선 규칙과 결합 동작이 다릅니다. 구조체 및 열거체와는 달리, 클래스엔 두 종류의 초기자가 있는데: [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 에서 설명한, 지명 초기자와 편의 초기자가 그것입니다.
 
 다음 형식으론 구조체와, 열거체의 초기자, 및 클래스의 지명 초기자를 선언합니다:
 
@@ -838,7 +838,7 @@ _초기자 선언 (initializer declaration)_ 은 프로그램에 클래스나, �
 
 함수와 메소드인 것 같이, 초기자도 에러를 던지거나 다시 던질 수 있습니다. 그리고 함수와 메소드인 것 같이, 초기자의 매개 변수 뒤에 `throws` 나 `rethrows` 키워드를 써서 적절한 동작을 지시합니다. 마찬가지로, 초기자는 비동기일 수 있으며, `async` 키워드로 이를 지시합니다.
 
-다양한 타입 선언 안의 초기자 예제를 보려면, [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 를 보기 바랍니다.
+다양한 타입 선언 안의 초기자 예제를 보려면, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 를 보기 바랍니다.
 
 #### Failable Initializers (실패 가능 초기자)
 
@@ -878,7 +878,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 실패 가능 지명 초기자를 하위 클래스에서 재정의하는 건 어떤 종류의 지명 초기자로도 할 수 있습니다. 실패하지 않는 지명 초기자를 하위 클래스에서 재정의하는 건 실패하지 않는 지명 초기자민 할 수 있습니다.
 
-실패 가능 초기자에 대한 더 많은 정보와 예제를 보려면, [Failable Initializers (실패 가능 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능-초기자) 부분을 보기 바랍니다.
+실패 가능 초기자에 대한 더 많은 정보와 예제를 보려면, [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능-초기자) 부분을 보기 바랍니다.
 
 > GRAMMAR OF AN INITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID375)
 
@@ -896,7 +896,7 @@ _정리자 선언 (deinitializer declaration)_ 은 클래스 타입의 정리자
 
 정리자는 직접 호출하지 않습니다.
 
-클래스 선언에서의 정리자 사용법에 대한 예제는, [Deinitialization (뒷정리)]({% link docs/books/swift-programming-language/deinitialization.md %}) 를 보기 바랍니다.
+클래스 선언에서의 정리자 사용법에 대한 예제는, [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) 를 보기 바랍니다.
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID377)
 
@@ -908,7 +908,7 @@ _익스텐션 선언 (extension declaration)_ 은 기존 타입의 동작을 확
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`declarations-선언`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-익스텐션 선언 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 계산 속성과, 계산 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 선언, 및 심지어 클래스와, 구조체, 및 열거체 선언을 포함할 수 있습니다. 익스텐션 선언엔 정리자 및 프로토콜 선언이나, 저장 속성, 속성 관찰자, 또는 다른 익스텐션 선언을 담을 수 없습니다. 프로토콜 익스텐션 안의 선언엔 `final` 을 표시할 수 없습니다. 다양한 종류의 선언을 포함한 익스텐션에 대한 논의 및 여러 가지 예제는, [Extensions (익스텐션; 확장)]({% link docs/books/swift-programming-language/extensions.md %}) 을 보기 바랍니다.
+익스텐션 선언 본문은 0 개 이상의 _선언 (declarations)_ 을 담습니다. 이러한 _선언 (declarations)_ 은 계산 속성과, 계산 타입 속성, 인스턴스 메소드, 타입 메소드, 초기자, 첨자 선언, 및 심지어 클래스와, 구조체, 및 열거체 선언을 포함할 수 있습니다. 익스텐션 선언엔 정리자 및 프로토콜 선언이나, 저장 속성, 속성 관찰자, 또는 다른 익스텐션 선언을 담을 수 없습니다. 프로토콜 익스텐션 안의 선언엔 `final` 을 표시할 수 없습니다. 다양한 종류의 선언을 포함한 익스텐션에 대한 논의 및 여러 가지 예제는, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보기 바랍니다.
 
 _타입 이름 (type name)_ 이 클래스나, 구조체, 또는 열거체 타입이면, 익스텐션은 그 타입을 확장합니다. _타입 이름 (type name)_ 이 프로토콜 타입이면, 익스텐션은 그 프로토콜을 준수한 모든 타입을 확장합니다.
 
@@ -1101,7 +1101,7 @@ _설정자 이름 (setter name)_ 과 테두리 괄호는 옵션입니다. 설정
 
 [Protocol Subscript Declaration (프로토콜 첨자 선언)](#protocol-subscript-declaration-프로토콜-첨자-선언) 에서 설명한 것처럼, 프로토콜 선언 안에서 첨자 연산을 선언할 수도 있습니다.
 
-첨자에 대한 더 많은 정보 및 첨자 선언 예제를 보려면, [Subscripts (첨자)]({% link docs/books/swift-programming-language/subscripts.md %}) 를 보기 바랍니다.
+첨자에 대한 더 많은 정보 및 첨자 선언 예제를 보려면, [Subscripts (첨자)]({% link docs/swift-books/swift-programming-language/subscripts.md %}) 를 보기 바랍니다.
 
 #### Type Subscript Declarations (타입 첨자 선언)
 
@@ -1115,7 +1115,7 @@ _연산자 선언 (operator declaration)_ 은 프로그램에 새로운 중위 (
 
 연산자는 서로 다른 세 개의 고정 위치 (fixity) 로 선언할 수 있는데: 중위 및, 접두사, 접미사가 그것입니다. 연산자의 _고정 위치 (fixity)_ 가 지정하는 건 피연산자에 대한 연산자의 상대 위치입니다.
 
-연산자 선언은, 각각의 고정 위치마다 하나씩, 총 세 개의 기초 형식이 있습니다. 연산자 고정 위치는 연산자 선언에서 `operator` 키워드 앞에 `infix` 나, `prefix`, 또는 `postfix` 선언 수정자를 표시하여 지정합니다. 각 형식에서, 연산자 이름엔 [Operators (연산자)]({% link docs/books/swift-programming-language/lexical-structure.md %}#operators-연산자) 에서 정의한 연산자 문자만 담을 수 있습니다.
+연산자 선언은, 각각의 고정 위치마다 하나씩, 총 세 개의 기초 형식이 있습니다. 연산자 고정 위치는 연산자 선언에서 `operator` 키워드 앞에 `infix` 나, `prefix`, 또는 `postfix` 선언 수정자를 표시하여 지정합니다. 각 형식에서, 연산자 이름엔 [Operators (연산자)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}#operators-연산자) 에서 정의한 연산자 문자만 담을 수 있습니다.
 
 다음 형식은 새로운 중위 연산자를 선언합니다:
 
@@ -1141,7 +1141,7 @@ _접미사 연산자 (postfix operator)_ 는 피연산자 바로 뒤에 작성�
 
 접두사 연산자 처럼, 접미사 연산자 선언도 우선 순위를 지정하지 않습니다. 접미사 연산자는 비-결합적입니다.
 
-새로운 연산자를 선언한 후, 연산자와 똑같은 이름의 정적 메소드를 선언하여 이를 구현합니다. 정적 메소드는 연산자가 인자로 취하는 값 타입 안의 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체의 정적 메소드로 구현합니다. 접두사나 접미사 연산자를 구현할 거면, 반드시 그 메소드 선언에 해당하는 `prefix` 나 `postfix` 선언 수정자도 표시해야 합니다. 새로운 연산자의 생성 및 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#custom-operators-사용자-정의-연산자) 부분을 보기 바랍니다.
+새로운 연산자를 선언한 후, 연산자와 똑같은 이름의 정적 메소드를 선언하여 이를 구현합니다. 정적 메소드는 연산자가 인자로 취하는 값 타입 안의 멤버입니다-예를 들어, `Double` 과 `Int` 를 곱하는 연산자는 `Double` 이나 `Int` 구조체의 정적 메소드로 구현합니다. 접두사나 접미사 연산자를 구현할 거면, 반드시 그 메소드 선언에 해당하는 `prefix` 나 `postfix` 선언 수정자도 표시해야 합니다. 새로운 연산자의 생성 및 구현 방법에 대한 예제를 보려면, [Custom Operators (사용자 정의 연산자)]({% link docs/swift-books/swift-programming-language/advanced-operators.md %}#custom-operators-사용자-정의-연산자) 부분을 보기 바랍니다.
 
 > GRAMMAR OF AN OPERATOR DECLARATION 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID380)
 
@@ -1186,17 +1186,17 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `final`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 클래스 또는 클래스의 속성이나, 메소드, 첨자 멤버에 적용합니다. 클래스에 적용하면 클래스로 하위 클래스를 만들 수 없다는 걸 지시합니다. 클래스의 속성이나, 메소드, 첨자에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 걸 지시합니다. `final` 사용법의 예제는, [Preventing Overrides (재정의 막기)]({% link docs/books/swift-programming-language/inheritance.md %}#preventing-overrides-재정의-막기) 부분을 보기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자는 클래스 또는 클래스의 속성이나, 메소드, 첨자 멤버에 적용합니다. 클래스에 적용하면 클래스로 하위 클래스를 만들 수 없다는 걸 지시합니다. 클래스의 속성이나, 메소드, 첨자에 적용하면 클래스 멤버를 어떤 하위 클래스에서도 재정의할 수 없다는 걸 지시합니다. `final` 사용법의 예제는, [Preventing Overrides (재정의 막기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#preventing-overrides-재정의-막기) 부분을 보기 바랍니다.
 
 `lazy`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스나 구조체의 저장 변수 속성에 적용하면, 속성에 최초로 접근할 때, 최대 한 번만 속성의 초기 값을 계산하고 저장한다는 걸 지시합니다. `lazy` 수정자의 사용법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% link docs/books/swift-programming-language/properties.md %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 클래스나 구조체의 저장 변수 속성에 적용하면, 속성에 최초로 접근할 때, 최대 한 번만 속성의 초기 값을 계산하고 저장한다는 걸 지시합니다. `lazy` 수정자의 사용법에 대한 예제는, [Lazy Stored Properties (느긋한 저장 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보기 바랍니다.
 
 `optional`
 
 &nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 프로토콜의 속성이나, 메소드, 또는 첨자 멤버에 적용하면 준수 타입이 이러한 멤버를 구현하는 게 필수는 아니라는 걸 지시합니다.
 
-&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 `objc` 특성을 표시한 프로토콜에만 적용할 수 있습니다. 그 결과, 클래스 타입만 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자 사용법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버의 접근법에 대한 길잡이-예를 들어, 준수 타입이 구현했는지 확실하지 않을 때-는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% link docs/books/swift-programming-language/protocols.md %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;`optional` 수정자는 `objc` 특성을 표시한 프로토콜에만 적용할 수 있습니다. 그 결과, 클래스 타입만 옵셔널 멤버 필수 조건을 담은 프로토콜을 채택하고 준수할 수 있습니다. `optional` 수정자 사용법에 대한 더 많은 정보와 옵셔널 프로토콜 멤버의 접근법에 대한 길잡이-예를 들어, 준수 타입이 구현했는지 확실하지 않을 때-는, [Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)]({% link docs/swift-books/swift-programming-language/protocols.md %}#optional-protocol-requirements-옵셔널-프로토콜-필수-조건) 부분을 보기 바랍니다.
 
 `required`
 
@@ -1208,7 +1208,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `unowned`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 실행 시간 에러가 일어납니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 실행 시간 에러가 일어납니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
 
 `unowned(safe)`
 
@@ -1216,15 +1216,15 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 `unowned(unsafe)`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 객체였던 메모리 장소에 접근할 건데, 이는 안전하지 않은-메모리 연산입니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나, 상수, 또는 저장 속성에 적용하면 변수나 속성의 값이 객체로의 소유하지 않은 참조라는 걸 지시합니다. 객체를 해제한 후에 변수나 속성에 접근하려 하면, 객체였던 메모리 장소에 접근할 건데, 이는 안전하지 않은-메모리 연산입니다. 약한 참조 같이, 속성이나 값의 타입은 반드시 클래스 타입이어야 하며; 약한 참조와 달리, 옵셔널-아닌 타입입니다. `unowned` 수정자에 대한 예제 및 더 많은 정보는, [Unowned References (소유하지 않는 참조)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#unowned-references-소유하지-않는-참조) 부분을 보기 바랍니다.
 
 `weak`
 
-&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나 저장 변수 속성에 적용하면 변수나 속성의 값이 객체로의 약한 참조라는 걸 지시합니다. 변수나 속성의 타입은 반드시 옵셔널 클래스 타입이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 값이 `nil` 입니다. `weak` 수정자에 대한 예제 및 더 많은 정보는, [Weak References (약한 참조)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}#weak-references-약한-참조) 부분을 보기 바랍니다.
+&nbsp;&nbsp;&nbsp;&nbsp;이 수정자를 저장 변수나 저장 변수 속성에 적용하면 변수나 속성의 값이 객체로의 약한 참조라는 걸 지시합니다. 변수나 속성의 타입은 반드시 옵셔널 클래스 타입이어야 합니다. 객체를 해제한 후에 변수나 속성에 접근하면, 값이 `nil` 입니다. `weak` 수정자에 대한 예제 및 더 많은 정보는, [Weak References (약한 참조)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#weak-references-약한-참조) 부분을 보기 바랍니다.
 
 #### Access Control Levels (접근 제어 수준)
 
-스위프트는 다섯 가지 수준의 접근 제어를 제공하는데: 공개 (open), 공용 (public), 내부 (internal), 파일 전용 (file private), 및 개인 전용 (private) 이 그것입니다. 선언에 아래의 접근-수준 중 하나를 표시하여 선언의 접근 수준을 지정합니다. 접근 제어는 [Access Control (접근 제어)]({% link docs/books/swift-programming-language/access-control.md %}) 에서 자세히 논합니다.
+스위프트는 다섯 가지 수준의 접근 제어를 제공하는데: 공개 (open), 공용 (public), 내부 (internal), 파일 전용 (file private), 및 개인 전용 (private) 이 그것입니다. 선언에 아래의 접근-수준 중 하나를 표시하여 선언의 접근 수준을 지정합니다. 접근 제어는 [Access Control (접근 제어)]({% link docs/swift-books/swift-programming-language/access-control.md %}) 에서 자세히 논합니다.
 
 `open`
 
@@ -1248,11 +1248,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 접근 제어용으론, 동일한 파일에 있는 동일한 타입의 익스텐션들은 접근-제어 영역을 공유합니다. 확장한 타입도 동일한 파일 안에 있으면, 타입의 접근-제어 영역을 공유합니다. 타입 선언 안에서 선언한 개인 전용 (private) 멤버를 익스텐션에서 접근할 수 있고, 한 익스텐션 안에서 선언한 개인 전용 멤버를 다른 익스텐션 및 타입 선언에서 접근할 수도 있습니다.
 
-위에 있는 각각의 접근-수준 수정자는 옵션으로 단일 인자를 받는데, 이는 (예를 들어, `private(set)` 같이) `set` 키워드를 괄호로 테두리 쳐서 구성됩니다. [Getters and Setters (획득자 및 설정자)]({% link docs/books/swift-programming-language/access-control.md %}#getters-and-setters-획득자-및-설정자) 에서 논한 것처럼, 변수나 첨자의 설정자 접근 수준이 변수나 첨자 그 자체의 접근 수준 보다 낮거나 같게 지정하고 싶을 때 이런 형식의 접근-제어 수정자를 사용합니다.
+위에 있는 각각의 접근-수준 수정자는 옵션으로 단일 인자를 받는데, 이는 (예를 들어, `private(set)` 같이) `set` 키워드를 괄호로 테두리 쳐서 구성됩니다. [Getters and Setters (획득자 및 설정자)]({% link docs/swift-books/swift-programming-language/access-control.md %}#getters-and-setters-획득자-및-설정자) 에서 논한 것처럼, 변수나 첨자의 설정자 접근 수준이 변수나 첨자 그 자체의 접근 수준 보다 낮거나 같게 지정하고 싶을 때 이런 형식의 접근-제어 수정자를 사용합니다.
 
 ### 다음 장
 
-[Attributes (특성) >]({% link docs/books/swift-programming-language/attributes.md %})
+[Attributes (특성) >]({% link docs/swift-books/swift-programming-language/attributes.md %})
 
 ### 참고 자료
 
@@ -1272,11 +1272,11 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^generic]: '일반화 매개 변수 (generic parameters)' 는 꺽쇠 괄호 (`<>`) 사이에 있는 매개 변수를 말합니다.
 
-[^concrete-type]: 프로그래밍에서 '추상 타입 (abstract type)' 은 자신이 직접 인스턴스를 만들 수 없는 타입을 말합니다. 이와 반대로, 자신이 직접 인스턴스를 만들 수 있는, 추상 타입이 아닌 모든 타입을 '고정 타입 (concrete type)' 이라고 합니다. 스위프트에선 프로토콜이 추상 타입이고, 인스턴스를 만들 수 있는 다른 타입들은 모두 고정 타입니다. 고정 타입에 대한 더 자세한 내용는, 위키피디아의 [Abstract type](https://en.wikipedia.org/wiki/Abstract_type) 항목을 보도록 합니다. 추상 타입은 직접 인스턴스를 만들 순 없지만, 하나의 타입으로써 사용할 순 있는데, 이를 일컬어 실존 타입 (existential type) 이라 합니다. 실존 타입에 대한 더 자세한 내용은, [Protocols as Types (타입으로써의 프로토콜)]({% link docs/books/swift-programming-language/protocols.md %}#protocols-as-types-타입으로써의-프로토콜) 부분을 보도록 합니다.
+[^concrete-type]: 프로그래밍에서 '추상 타입 (abstract type)' 은 자신이 직접 인스턴스를 만들 수 없는 타입을 말합니다. 이와 반대로, 자신이 직접 인스턴스를 만들 수 있는, 추상 타입이 아닌 모든 타입을 '고정 타입 (concrete type)' 이라고 합니다. 스위프트에선 프로토콜이 추상 타입이고, 인스턴스를 만들 수 있는 다른 타입들은 모두 고정 타입니다. 고정 타입에 대한 더 자세한 내용는, 위키피디아의 [Abstract type](https://en.wikipedia.org/wiki/Abstract_type) 항목을 보도록 합니다. 추상 타입은 직접 인스턴스를 만들 순 없지만, 하나의 타입으로써 사용할 순 있는데, 이를 일컬어 실존 타입 (existential type) 이라 합니다. 실존 타입에 대한 더 자세한 내용은, [Protocols as Types (타입으로써의 프로토콜)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocols-as-types-타입으로써의-프로토콜) 부분을 보도록 합니다.
 
 [^function-definition]: 본문의 내용을 보면 함수 선언이란 용어와 함수 정의라는 용어를 구분 없이 사용하고 있음을 알 수 있습니다. 다만, 여기서 '함수 정의 (function definition)' 라는 용어를 사용한 건 함수 본문 전체를 강조하기 위해서 입니다.
 
-[^escaping]: '벗어나는 것 (escaping)' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% link docs/books/swift-programming-language/closures.md %}#escaping-closures-벗어나는-클로저) 부분의 내용과 주석을 보도록 합니다.
+[^escaping]: '벗어나는 것 (escaping)' 에 대한 더 자세한 내용은, [Escaping Closures (벗어나는 클로저)]({% link docs/swift-books/swift-programming-language/closures.md %}#escaping-closures-벗어나는-클로저) 부분의 내용과 주석을 보도록 합니다.
 
 [^call-by-value-result]: 기본적으로, '값-결과에 의한 호출 (call by value result)' 은 '값에 의한 호출 (call by value)' 과 '참조에 의한 호출 (call by reference)' 이 합쳐진 것으로 볼 수 있습니다. [프로그래밍 학습법탐구자](http://blog.daum.net/here8now/) 님의 [call by value, call by reference, call by value result, call by name](http://blog.daum.net/here8now/37) 항목에 따르면, 함수 안에서는 '값에 의한 호출 (call by value)' 처럼 동작하고, 함수 반환 시에는 '참조에 의한 호출 (call by reference)' 처럼 동작합니다. 다만, 이어지는 본문에서 설명하는 것처럼, 입-출력 매개 변수는 최적화에 의해 참조에 의한 호출 동작을 사용하기도 합니다. 즉, 스위프트의 입-출력 매개 변수는 상황에 따라 참조에 의한 호출과 값-결과에 의한 호출을 적절하게 선택하여 인자를 전달합니다.
 
@@ -1288,7 +1288,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^simultaneous-access]: '동시 접근 (simulaneous access)' 을 하면 메모리 접근 충돌이 발생하게 됩니다.
 
-[^memory-exclusivity-guarantee]: 바로 밑에 나와 있듯, 스위프트의 메모리 독점권 보증 (memory exclusivity guarantee) 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% link docs/books/swift-programming-language/memory-safety.md %}) 장을 보도록 합니다.
+[^memory-exclusivity-guarantee]: 바로 밑에 나와 있듯, 스위프트의 메모리 독점권 보증 (memory exclusivity guarantee) 에 대한 더 많은 정보는, [Memory Safety (메모리 안전성)]({% link docs/swift-books/swift-programming-language/memory-safety.md %}) 장을 보도록 합니다.
 
 [^closure-with-inout-parameter]: 본문 밑에 있는 예제인 `{ [a] in return a + 1 }` 라는 클로저는 `a` 값을 변경하지 않으므로, 붙잡을 목록 `[a]` 를 써서 `a` 가 변경 불가능하다고 명시하고 나서 붙잡았습니다.
 
@@ -1320,7 +1320,7 @@ _선언 수정자 (declaration modifiers)_ 는 선언의 동작이나 의미를 
 
 [^universal-base-class]: '범용 기초 클래스 (universal base class)' 는 오브젝티브-C 언어의 `NSObject` 같은 클래스를 말합니다. 대부분의 OOP 클래스들은 이러한 범용 기초 클래스를 상속합니다.
 
-[^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% link docs/books/swift-programming-language/concurrency.md %}) 장의 [Actors (행위자)]({% link docs/books/swift-programming-language/concurrency.md %}#actors-행위자) 부분을 보기 바랍니다.
+[^isolate]: 이를 '행위자 격리 (actor isolation)' 이라고 하는데, 이에 대한 더 자세한 정보는 [Concurrency (동시성)]({% link docs/swift-books/swift-programming-language/concurrency.md %}) 장의 [Actors (행위자)]({% link docs/swift-books/swift-programming-language/concurrency.md %}#actors-행위자) 부분을 보기 바랍니다.
 
 [^optional-member]: 프로토콜에서 선언한 필수 조건의 구현 그 자체가 옵셔널이라는 의미입니다. 즉, 프로토콜의 준수 타입이 구현을 하면 구현부가 있는 것이고, 안하면 `nil` 입니다.
 

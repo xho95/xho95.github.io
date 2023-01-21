@@ -60,7 +60,7 @@ _집합체 (collection)_ 표현식의 `makeIterator()` 메소드를 호출하여
 
 _조건 (condition)_ 값을 _구문 (statements)_ 실행 전에 평가하기 때문에, `while` 문 안의 _구문 (statements)_ 을 0번 이상 실행할 수 있습니다.
 
-_조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
+_조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
 
 > GRAMMAR OF A WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
@@ -84,7 +84,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 
 _조건 (condition)_ 값을 _구문 (statements)_ 실행 후에 평가하기 때문에, `repeat`-`while` 문 안의 _구문 (statements)_ 을 적어도 한 번은 실행합니다.
 
-_조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
+_조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html)
 
@@ -126,7 +126,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements to execute if both conditions are false- 두 조건 다 거짓이면 실행하는 구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-어떤 `if` 문 조건 값이든 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
+어떤 `if` 문 조건 값이든 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
 
 > GRAMMAR OF A BRANCH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
@@ -140,7 +140,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-어떤 `guard` 문 조건 값이든 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
+어떤 `guard` 문 조건 값이든 반드시 `Bool` 타입 또는 `Bool` 과 연동한 타입이어야 합니다. [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 에서 설명한 것처럼, 조건이 옵셔널 연결 선언일 수도 있습니다.
 
 `guard` 문 조건 안의 옵셔널 연결 선언에서 값을 할당한 어떤 상수나 변수든 guard 문을 둘러싼 나머지 영역에서 사용할 수 있습니다.
 
@@ -151,7 +151,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 * `continue`
 * `throw`
 
-제어 전달문은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 반환 타입인 함수에 대한 더 많은 정보는, [Functions that Never Return (절대 반환하지 않는 함수)]({% link docs/books/swift-programming-language/declarations.md %}#functions-that-never-return-절대-반환하지-않는-함수) 부분을 보도록 합니다.
+제어 전달문은 아래의 [Control Transfer Statements (제어 전달문)](#control-transfer-statements-제어-전달문) 에서 논의합니다. `Never` 반환 타입인 함수에 대한 더 많은 정보는, [Functions that Never Return (절대 반환하지 않는 함수)]({% link docs/swift-books/swift-programming-language/declarations.md %}#functions-that-never-return-절대-반환하지-않는-함수) 부분을 보도록 합니다.
 
 > GRAMMAR OF A GUARD STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID434)
 
@@ -175,7 +175,7 @@ _조건 (condition)_ 값은 반드시 `Bool` 타입 또는 `Bool` 과 연동한 
 
 `switch` 문의 _제어 표현식 (control expression)_ 을 평가한 다음 각각의 case 에서 정한 패턴과 비교합니다. 일치한 걸 찾으면, 프로그램이 그 case 영역에서 나열한 _구문 (statements)_ 을 실행합니다. 각 case 영역은 비어있을 수 없습니다. 그 결과, 각 case 이름표 콜론 (`:`) 뒤에 적어도 하나의 구문을 반드시 포함해야 합니다. 일치한 case 절 본문에서 어떤 코드도 실행하지 않을 의도면 단일 `break` 문을 사용합니다.
 
-코드가 분기할 수 있는 표현식 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, 크기 타입[^scalar-types] 값에 더해, 부동-소수점 수와, 문자열, 튜플, 사용자 클래스 인스턴스, 및 옵셔널을 포함한, 어떤 타입 값으로도 코드를 분기할 수 있습니다. 심지어 _제어 표현식 (control expression)_ 값을 열거체 case 값과 맞춰볼 수도 있고 지정된 범위의 값에 포함되는지도 검사할 수 있습니다. `switch` 문에서 이렇게 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 안의 [Switch (Switch 문)]({% link docs/books/swift-programming-language/control-flow.md %}#switch-switch-문) 부분을 보도록 합니다.
+코드가 분기할 수 있는 표현식 값은 매우 유연합니다. 예를 들어, 정수와 문자 같은, 크기 타입[^scalar-types] 값에 더해, 부동-소수점 수와, 문자열, 튜플, 사용자 클래스 인스턴스, 및 옵셔널을 포함한, 어떤 타입 값으로도 코드를 분기할 수 있습니다. 심지어 _제어 표현식 (control expression)_ 값을 열거체 case 값과 맞춰볼 수도 있고 지정된 범위의 값에 포함되는지도 검사할 수 있습니다. `switch` 문에서 이렇게 다양한 타입의 값을 사용하는 방법은, [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 안의 [Switch (Switch 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#switch-switch-문) 부분을 보도록 합니다.
 
 `switch` 문 case 는 각각의 패턴 뒤에 옵션으로 `where` 절을 담을 수 있습니다. _where 절 (where clause)_ 은 `where` 키워드와 그 뒤의 표현식으로 도입하며, 이를 써서 case 안의 패턴을 _제어 표현식 (control expression)_ 과 맞춰보기 전에 추가 조건을 제공합니다. `where` 절이 있으면, _제어 표현식 (control expression)_ 값이 case 패턴 중 하나와 일치하면서 `where` 절 표현식이 `true` 로 평가된 경우에만 연관된 case 안의 _구문 (statements)_ 을 실행합니다. 예를 들어, 아래 예제에선, `(1, 1)` 같이, 동일한 두 원소를 담은 튜플인 경우에만 _제어 표현식 (control expression)_ 과 case 가 일치합니다.
 
@@ -197,7 +197,7 @@ case let (x, y) where x == y:
 <strong id="switching-over-future-enumeration-cases-미래의-열거체-case-를-전환하기">Switching Over Future Enumeration Cases (미래의 열거체 case 를 전환하기)</strong>
 </p>
 
-_동결하지 않은 열거체 (nonfrozen enumeration)_ 는 미래에-심지어 앱을 컴파일하고 출하한 후에-도 새로운 열거체 case 를 얻을 수 있는 특수한 종류의 열거체입니다. 동결하지 않은 열거체의 전환에는 부가적으로 고려할 게 있습니다. 라이브러리 작성자가 열거체를 동결하지 않은 걸로 표시할 땐, 새로운 열거체 case 를 추가할 권리를 예약한 것으로, 그 열거체와 상호 작용할 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이러한 미래 case 들을 처리할 수 있어야 합니다. 라이브러리 진화 모드[^library-evolution-mode] 로 컴파일한 코드와, 표준 라이브러리 안의 코드, 애플 프레임웍을 스위프트로 덧씌운 것[^swift-overlays], 및 C 와 오브젝티브-C 코드가 동결하지 않은 열거체를 선언할 수 있습니다. 동결 및 동결하지 않은 열거체에 대한 정보는, [frozen (동결)]({% link docs/books/swift-programming-language/attributes.md %}#frozen-동결) 부분을 보도록 합니다.
+_동결하지 않은 열거체 (nonfrozen enumeration)_ 는 미래에-심지어 앱을 컴파일하고 출하한 후에-도 새로운 열거체 case 를 얻을 수 있는 특수한 종류의 열거체입니다. 동결하지 않은 열거체의 전환에는 부가적으로 고려할 게 있습니다. 라이브러리 작성자가 열거체를 동결하지 않은 걸로 표시할 땐, 새로운 열거체 case 를 추가할 권리를 예약한 것으로, 그 열거체와 상호 작용할 어떤 코드든 _반드시 (must)_ 재컴파일 없이 이러한 미래 case 들을 처리할 수 있어야 합니다. 라이브러리 진화 모드[^library-evolution-mode] 로 컴파일한 코드와, 표준 라이브러리 안의 코드, 애플 프레임웍을 스위프트로 덧씌운 것[^swift-overlays], 및 C 와 오브젝티브-C 코드가 동결하지 않은 열거체를 선언할 수 있습니다. 동결 및 동결하지 않은 열거체에 대한 정보는, [frozen (동결)]({% link docs/swift-books/swift-programming-language/attributes.md %}#frozen-동결) 부분을 보도록 합니다.
 
 동결하지 않은 열거체의 값을 전환할 땐, 열거체의 모든 case 에 해당 switch 문의 case 가 이미 있더라도, 항상 기본 case 절을 포함할 필요가 있습니다. `@unknown` 특성을 기본 case 절에 적용하여, 기본 case 를 미래에 추가될 열거체 case 와만 맞춰봐야 한다는 걸 지시할 수 있습니다. 컴파일 시간에 알려진 어떤 열거체 case 든 기본 case 와 일치하면 스위프트가 경고를 만들어 냅니다. 이 미래의 경고는 라이브러리 작성자가 해당 switch 문 case 가 없는 새로운 case 를 열거체에 추가했다는 걸 알려줍니다.
 
@@ -230,7 +230,7 @@ case .suppressed:
 
 이름표 문의 영역은 구문 이름표 뒤의 전체 구문입니다. 이름표 문을 중첩할 순 있지만, 각각의 구문 이름표 이름은 반드시 유일해야 합니다.
 
-구문 이름표에 대한 더 많은 정보와 사용 방법 예제를 보려면, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장의 [Labeled Statements (이름표 문)]({% link docs/books/swift-programming-language/control-flow.md %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
+구문 이름표에 대한 더 많은 정보와 사용 방법 예제를 보려면, [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장의 [Labeled Statements (이름표 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A LABELED STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID439)
 
@@ -253,7 +253,7 @@ case .suppressed:
 
 두 경우 모두, 그런 다음 자신을 둘러싼 반복문이나 `switch` 문 뒤의 첫 번째 줄이, 있으면 (그리로), 프로그램 제어를 전달합니다.
 
-`break` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장의 [Break (break 문)]({% link docs/books/swift-programming-language/control-flow.md %}#break-break-문) 과 [Labeled Statements (이름표 문)]({% link docs/books/swift-programming-language/control-flow.md %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
+`break` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장의 [Break (break 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#break-break-문) 과 [Labeled Statements (이름표 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A BREAK STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -272,7 +272,7 @@ case .suppressed:
 
 `for` 문에선, `continue` 문 실행 후에도 여전히 증가 표현식[^increment-expression] 을 평가하는데, 반복문 본문을 실행한 후 증가 표현식을 평가하기 때문입니다.
 
-`continue` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 에 있는 [Continue (Continue 문)]({% link docs/books/swift-programming-language/control-flow.md %}#continue-continue-문) 과 [Labeled Statements (이름표 문)]({% link docs/books/swift-programming-language/control-flow.md %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
+`continue` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 에 있는 [Continue (Continue 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#continue-continue-문) 과 [Labeled Statements (이름표 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#labeled-statements-이름표-문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONTINUE STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -282,7 +282,7 @@ case .suppressed:
 
 `fallthrough` 문은, case 블럭 마지막 문장만이 아니라, `switch` 문 안의 어떤 곳에든 나타날 수 있지만, 최종 case 블럭에선 사용할 수 없습니다.[^final-case-block] 값 연결 패턴을 담은 case 블럭으로 제어를 전달할 수도 없습니다.
 
-`switch` 문에서 `fallthrough` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장의 [Control Transfer Statements (제어 전달문)]({% link docs/books/swift-programming-language/control-flow.md %}#control-transfer-statements-제어-전달문) 부분을 보도록 합니다.
+`switch` 문에서 `fallthrough` 문의 사용법에 대한 예제는, [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장의 [Control Transfer Statements (제어 전달문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#control-transfer-statements-제어-전달문) 부분을 보도록 합니다.
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -297,7 +297,7 @@ case .suppressed:
 
 `return` 문 뒤에 표현식이 있을 땐, 표현식 값을 호출 함수나 메소드로 반환합니다. 표현식 값이 함수나 메소드 선언에서 선언한 반환 타입 값과 일치하지 않으면, 호출 함수나 메소드로 반환하기 전에 표현식 값을 반환 타입으로 변환합니다.
 
-> [Failable Initializers (실패 가능 초기자)]({% link docs/books/swift-programming-language/declarations.md %}#failable-initializers-실패-가능-초기자) 에서 설명한 것처럼, 실패 가능 초기자에선 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하여 초기화 실패를 지시할 수 있습니다.
+> [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패-가능-초기자) 에서 설명한 것처럼, 실패 가능 초기자에선 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하여 초기화 실패를 지시할 수 있습니다.
 
 `return` 문 뒤에 표현식이 없을 땐, 값을 반환하지 않는 함수나 메소드 반환에서만 (즉, 함수나 메소드 반환 타입이 `Void` 나 `()` 일 때만) 사용할 수 있습니다.
 
@@ -315,7 +315,7 @@ case .suppressed:
 
 _표현식 (expression)_ 값은 반드시 `Error` 프로토콜을 준수한 타입이어야 합니다.
 
-`throw` 문의 사용법에 대한 예제는, [Error Handling (에러 처리)]({% link docs/books/swift-programming-language/error-handling.md %}) 장의 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% link docs/books/swift-programming-language/error-handling.md %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 부분을 보도록 합니다.
+`throw` 문의 사용법에 대한 예제는, [Error Handling (에러 처리)]({% link docs/swift-books/swift-programming-language/error-handling.md %}) 장의 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)]({% link docs/swift-books/swift-programming-language/error-handling.md %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-전파하기) 부분을 보도록 합니다.
 
 > GRAMMAR OF A THROW STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID440)
 
@@ -376,9 +376,9 @@ f()
 
 패턴이 여러 개인 `catch` 절은 자신의 어떤 패턴이든 에러와 일치하면 에러와 일치합니다. `catch` 절에 패턴이 여러 개면, 모든 패턴이 반드시 동일한 상수 또는 변수 연결 (binding) 을 담아야 하며, 연결한 각각의 변수나 상수의 타입은 반드시 모든 `catch` 절 패턴에서 똑같아야 합니다.
 
-에러 처리를 보장하려면, `catch` 절에,  와일드카드 패턴 (`_`) 같은, 모든 에러와 일치하는 패턴을 사용합니다. `catch` 절에서 패턴을 정하지 않으면, `catch` 절이 어떤 에러와도 일치하며 이를 `error` 라는 이름의 지역 상수에 연결합니다. `catch` 절에 쓸 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% link docs/books/swift-programming-language/patterns.md %}) 장을 보도록 합니다.
+에러 처리를 보장하려면, `catch` 절에,  와일드카드 패턴 (`_`) 같은, 모든 에러와 일치하는 패턴을 사용합니다. `catch` 절에서 패턴을 정하지 않으면, `catch` 절이 어떤 에러와도 일치하며 이를 `error` 라는 이름의 지역 상수에 연결합니다. `catch` 절에 쓸 수 있는 패턴에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% link docs/swift-books/swift-programming-language/patterns.md %}) 장을 보도록 합니다.
 
-여러 `catch` 절이 있는 `do` 문의 사용법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% link docs/books/swift-programming-language/error-handling.md %}#handling-errors-에러-처리하기) 부분을 보도록 합니다.
+여러 `catch` 절이 있는 `do` 문의 사용법에 대한 예제를 보려면, [Handling Errors (에러 처리하기)]({% link docs/swift-books/swift-programming-language/error-handling.md %}#handling-errors-에러-처리하기) 부분을 보도록 합니다.
 
 > GRAMMAR OF A DO STATEMENT 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID533)
 
@@ -448,7 +448,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 > 조건부 컴파일 블럭 본문 안의 각 구문은 컴파일하지 않더라도 해석합니다. 하지만, 컴파일 조건에 `swift()` 나 `compiler()` 플랫폼 조건이 포함되면 예외인데: 플랫폼 조건에서 정한 것과 일치한 언어 또는 컴파일러 버전인 경우에만 해석합니다. 이런 예외는 더 예전 컴파일러가 새 버전 스위프트에서 도입한 구문을 해석하려 하지 않도록 보장합니다.
 
-조건부 컴파일 블럭에서 명시적 멤버 표현식을 포장할 수 있는 방법에 대한 정보는, [Explicit Member Expression (명시적 멤버 표현식)]({% link docs/books/swift-programming-language/expressions.md %}#explicit-member-expression-명시적-멤버-표현식) 부분을 보도록 합니다.
+조건부 컴파일 블럭에서 명시적 멤버 표현식을 포장할 수 있는 방법에 대한 정보는, [Explicit Member Expression (명시적 멤버 표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}#explicit-member-expression-명시적-멤버-표현식) 부분을 보도록 합니다.
 
 > GRAMMAR OF A CONDITIONAL COMPILATION BLOCK 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#ID538)
 
@@ -461,7 +461,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 &nbsp;&nbsp;&nbsp;&nbsp;\#sourceLocation(file: `file path-파일 경로`, line: `line number-라인 번호`)
 &nbsp;&nbsp;&nbsp;&nbsp;\#sourceLocation()
 
-첫 번째 형식의 라인 제어문은, 라인 제어문의 다음 코드 줄에서 시작하는, `#line` 과, `#file`, `#fileID`, 및 `#filePath` 글자 표현식 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 값을 바꾸는, 0 보다 큰 어떤 정수 글자 값입니다. _파일 경로 (file path)_ 는 `#file` 과, `#fileID`, 및 `#filePath` 값을 바꾸는, 문자열 글자 값입니다. 지정한 문자열이 `#filePath` 값이 되고, 문자열의 마지막 경로 성분은 `#fileID` 값이 사용합니다. `#file` 과, `#fileID`, 및 `#filePath` 에 대한 정보는, [Literal Expression (글자 값 표현식)]({% link docs/books/swift-programming-language/expressions.md %}#literal-expression-글자-값-표현식) 부분을 보도록 합니다.
+첫 번째 형식의 라인 제어문은, 라인 제어문의 다음 코드 줄에서 시작하는, `#line` 과, `#file`, `#fileID`, 및 `#filePath` 글자 표현식 값을 바꿉니다. _라인 번호 (line number)_ 는 `#line` 값을 바꾸는, 0 보다 큰 어떤 정수 글자 값입니다. _파일 경로 (file path)_ 는 `#file` 과, `#fileID`, 및 `#filePath` 값을 바꾸는, 문자열 글자 값입니다. 지정한 문자열이 `#filePath` 값이 되고, 문자열의 마지막 경로 성분은 `#fileID` 값이 사용합니다. `#file` 과, `#fileID`, 및 `#filePath` 에 대한 정보는, [Literal Expression (글자 값 표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}#literal-expression-글자-값-표현식) 부분을 보도록 합니다.
 
 두 번째 형식의 라인 제어문인, `#sourceLocation()` 은, 소스 코드 위치를 기본 라인 번호 및 파일 경로로 재설정합니다.
 
@@ -509,7 +509,7 @@ _사용 가능성 조건 (availablility condition)_ 을 `if` 문과, `while` 문
 
 ### 다음 장 
 
-[Declarations (선언) >]({% link docs/books/swift-programming-language/declarations.md %})
+[Declarations (선언) >]({% link docs/swift-books/swift-programming-language/declarations.md %})
 
 ### 참고 자료
 
@@ -525,7 +525,7 @@ _사용 가능성 조건 (availablility condition)_ 을 `if` 문과, `while` 문
 
 [^scalar-types]: '크기 타입 (scalar types)' 은 수학 용어인 '스칼라 (scalar)' 를 사용한 것에서 알 수 있는 것처럼, 크기 값만 가지는 타입입니다.
 
-[^pattern-matching]: '패턴-맞춤 (pattern-matching)' 은 단일 값 또는 합성 값을 구조화하여 여러 가지 값과 맞춰보는 방식입니다. 값과 값을 직접 맞춰보는 게 아니라 패턴과 값을 맞춰보기 때문에 하나의 패턴으로 여러가지 다양한 값과 맞춰볼 수 있습니다. 패턴에 대한 더 자세한 정보는, [Patterns (패턴; 유형)]({% link docs/books/swift-programming-language/patterns.md %}) 장을 보도록 합니다.
+[^pattern-matching]: '패턴-맞춤 (pattern-matching)' 은 단일 값 또는 합성 값을 구조화하여 여러 가지 값과 맞춰보는 방식입니다. 값과 값을 직접 맞춰보는 게 아니라 패턴과 값을 맞춰보기 때문에 하나의 패턴으로 여러가지 다양한 값과 맞춰볼 수 있습니다. 패턴에 대한 더 자세한 정보는, [Patterns (패턴; 유형)]({% link docs/swift-books/swift-programming-language/patterns.md %}) 장을 보도록 합니다.
 
 [^library-evolution-mode]: '라이브러리 진화 모드 (library evolution mode)' 는 스위프트 바이너리 프레임웍을 생성할 때 사용할 수 있는 옵션입니다. 라이브러리 진화 모드에 대한 더 자세한 정보는, [Library Evolution in Swift](https://swift.org/blog/library-evolution/) 항목을 보도록 합니다. 
 

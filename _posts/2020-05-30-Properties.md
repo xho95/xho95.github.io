@@ -22,7 +22,7 @@ _속성 (properties)_ 은 값을 특별한 클래스, 구조체, 또는 열거�
 
 가장 단순한 형식의, 저장 속성은, 특별한 클래스나 구조체 인스턴스의 일부분으로써 저장하는 상수나 변수입니다. 저장 속성은 (`var` 키워드로 도입한) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입한) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
 
-[Default Property Values (기본 속성 값)]({% link docs/books/swift-programming-language/initialization.md %}#default-property-values-기본-속성-값) 에서 설명한 것처럼, 저장 속성을 정의하면서 기본 값 (default value) 을 제공할 수 있습니다. 초기화 중에 저장 속성의 초기 값을 설정하고 수정할 수도 있습니다. [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% link docs/books/swift-programming-language/initialization.md %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명한 것처럼, 이는 상수 저장 속성에서도 참입니다.
+[Default Property Values (기본 속성 값)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-property-values-기본-속성-값) 에서 설명한 것처럼, 저장 속성을 정의하면서 기본 값 (default value) 을 제공할 수 있습니다. 초기화 중에 저장 속성의 초기 값을 설정하고 수정할 수도 있습니다. [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% link docs/swift-books/swift-programming-language/initialization.md %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명한 것처럼, 이는 상수 저장 속성에서도 참입니다.
 
 아래 예제는, 생성 후엔 길이를 바꿀 수 없는 정수 범위를 설명한, `FixedLengthRange` 라는 구조체를 정의합니다:
 
@@ -201,7 +201,7 @@ struct CompactRect {
 }
 ```
 
-획득자에서 `return` 을 생략하는 건, [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% link docs/books/swift-programming-language/functions.md %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명한 것처럼, 함수에서 `return` 을 생략하는 것과 동일한 규칙을 따릅니다.
+획득자에서 `return` 을 생략하는 건, [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명한 것처럼, 함수에서 `return` 을 생략하는 것과 동일한 규칙을 따릅니다.
 
 #### Read-Only Computed Properties (읽기-전용 계산 속성)
 
@@ -235,7 +235,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 * 자신이 상속한 저장 속성
 * 자신이 상속한 계산 속성
 
-상속한 속성이면, 하위 클래스에서 그 속성을 재정의 (overriding) 함으로써 속성 관찰자를 추가합니다. 자신이 정의한 계산 속성이면, 관찰자를 생성하는 대신, 속성의 설정자로 값의 바뀜을 관찰하여 응답합니다. 속성을 재정의하는 건 [Overriding (재정의하기)]({% link docs/books/swift-programming-language/inheritance.md %}#overriding-재정의하기) 부분에서 설명합니다.
+상속한 속성이면, 하위 클래스에서 그 속성을 재정의 (overriding) 함으로써 속성 관찰자를 추가합니다. 자신이 정의한 계산 속성이면, 관찰자를 생성하는 대신, 속성의 설정자로 값의 바뀜을 관찰하여 응답합니다. 속성을 재정의하는 건 [Overriding (재정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#overriding-재정의하기) 부분에서 설명합니다.
 
 속성에 대해 다음 관찰자 중 하나만 정의할지 둘 다 정의할지 선택할 수 있습니다:
 
@@ -248,7 +248,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출한 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 이를 호출하지 않습니다.[^obervers-and-superclass]
 >
-> 초기자 맡김 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% link docs/books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)]({% link docs/books/swift-programming-language/initialization.md %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 부분을 보도록 합니다.
+> 초기자 맡김 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 부분을 보도록 합니다.
 
 다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는, 사람이 산책하는 동안의 총 걸음 수를 추적하는, `StepCounter` 라는 새로운 클래스를 정의합니다. 이 클래스는 일과 중에 사람의 운동을 추적하기 위해 만보계 (pedometer) 나 다른 걸음 측정기 (step counter) 에 있는 입력 자료를 사용할 지 모릅니다.
 
@@ -285,7 +285,7 @@ stepCounter.totalSteps = 896
 
 `totalSteps` 값을 갱신한 후 `didSet` 관찰자를 호출합니다. 이는 새 `totalSteps` 값과 예전 값을 비교합니다. 총 걸음 수가 증가했으면, 새 걸음 수가 얼마인지 표시하고자 메시지를 인쇄합니다. `didSet` 관찰자는 예전 값에 사용자 정의 매개 변수 이름을 제공하지 않고, `oldValue` 라는 기본 이름을 대신 사용합니다.
 
-> 관찰자를 가진 속성을 '입-출력 (in-out) 매개 변수' 로 함수에 전달하면, `willSet` 과 `didSet` 관찰자를 항상 호출합니다. 이는: 함수 끝에서 값을 속성으로 항상 다시 작성하는 '입-출력 매개 변수의 복사-입력 복사-출력 (copy-in copy-out) 메모리 모델' (방식) 때문입니다. 입-출력 매개 변수 동작에 대한 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/books/swift-programming-language/declarations.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
+> 관찰자를 가진 속성을 '입-출력 (in-out) 매개 변수' 로 함수에 전달하면, `willSet` 과 `didSet` 관찰자를 항상 호출합니다. 이는: 함수 끝에서 값을 속성으로 항상 다시 작성하는 '입-출력 매개 변수의 복사-입력 복사-출력 (copy-in copy-out) 메모리 모델' (방식) 때문입니다. 입-출력 매개 변수 동작에 대한 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/declarations.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 ### Property Wrappers (속성 포장)
 
@@ -307,7 +307,7 @@ struct TwelveOrLess {
 
 설정자는 새 값이 12 보다 작다는 걸 보장하며, 획득자는 저장한 값을 반환합니다.
 
-> 위 예제의 `number` 선언은 변수를 `private` 이라고 표시하는데, 이는 `TwelveOrLess` 의 구현부 안에서만 `number` 를 사용하도록 보장합니다. 그 외 어떤 곳에서 작성한 코드든 `wrappedValue` 의 획득자와 설정자로 값에 접근(해야) 하며, 직접 `number` 를 사용할 순 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% link docs/books/swift-programming-language/access-control.md %}) 장을 보도록 합니다.
+> 위 예제의 `number` 선언은 변수를 `private` 이라고 표시하는데, 이는 `TwelveOrLess` 의 구현부 안에서만 `number` 를 사용하도록 보장합니다. 그 외 어떤 곳에서 작성한 코드든 `wrappedValue` 의 획득자와 설정자로 값에 접근(해야) 하며, 직접 `number` 를 사용할 순 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% link docs/swift-books/swift-programming-language/access-control.md %}) 장을 보도록 합니다.
 
 속성 앞에 포장 이름을 '특성 (attribute)'[^attribute] 으로 작성함으로써 속성에 포장을 적용합니다. 다음은, 직사각형의 차원이 항상 12 이하가 되도록 보장하고자 `TwelveOrLess` 속성 포장을 사용하여 저장하는 구조체입니다:
 
@@ -380,7 +380,7 @@ struct SmallNumber {
 }
 ```
 
-`SmallNumber` 정의는-`init()`, `init(wrappedValue:)`, 및 `init(wrappedValue:maximum:)` 이라는-세 개의 초기자를 포함하며 아래 예제에서 포장 값과 최대 값을 설정할 때 이를 사용합니다. 초기자와 초기자 구문에 대한 정보는, [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 장을 보도록 합니다.
+`SmallNumber` 정의는-`init()`, `init(wrappedValue:)`, 및 `init(wrappedValue:maximum:)` 이라는-세 개의 초기자를 포함하며 아래 예제에서 포장 값과 최대 값을 설정할 때 이를 사용합니다. 초기자와 초기자 구문에 대한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장을 보도록 합니다.
 
 속성에 포장을 적용하면서 초기 값을 지정하지 않을 땐, 스위프트가 `init()` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
@@ -685,7 +685,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 ### 다음 장
 
-[Methods (메소드) >]({% link docs/books/swift-programming-language/methods.md %})
+[Methods (메소드) >]({% link docs/swift-books/swift-programming-language/methods.md %})
 
 ### 참고 자료
 
@@ -705,11 +705,11 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^dispatch]: 예전에는 [Grand Central Dispatch (GCD)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 라는 용어를 많이 사용하였는데, 최근에는 'Dispatch' 라고만 하고 있으며, [Dispatch](https://developer.apple.com/documentation/dispatch) 프레임웍 문서에서 'Dispatch' 를 'Grand Central Dispatch (GCD)' 라고도 한다고 설명하고 있습니다.
 
-[^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% link docs/books/swift-programming-language/initialization.md %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 보도록 합니다.
+[^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 보도록 합니다.
 
 [^be-settable]: 즉, `volumn` 은 획득자만 있는 읽기-전용 계산 속성이어야 말이 된다는 의미입니다.
 
-[^attribute]: '특성 (attribute)' 는 스위프트 언어에서 지원하는 문법 양식입니다. 보다 자세한 내용은, [Attributes (특성)]({% link docs/books/swift-programming-language/attributes.md %}) 장을 보도록 합니다.
+[^attribute]: '특성 (attribute)' 는 스위프트 언어에서 지원하는 문법 양식입니다. 보다 자세한 내용은, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장을 보도록 합니다.
 
 [^attribute-syntax]: '특수한 특성 구문 (special attribute syntax)' 을 사용하지 않는다는 건 위 예제에 있는 `@TwelveOrLess` 같은 걸 사용하지 않는다는 의미입니다.
 

@@ -40,7 +40,7 @@ categories: Swift Language Grammar About Reference
 
 ### 다음 장
 
-[Lexical Structure (어휘 구조) >]({% link docs/books/swift-programming-language/lexical-structure.md %})
+[Lexical Structure (어휘 구조) >]({% link docs/swift-books/swift-programming-language/lexical-structure.md %})
 
 ### 참고 자료
 
@@ -50,6 +50,6 @@ categories: Swift Language Grammar About Reference
 
 [^syntactic-categories]: 아래 예제에서, `getter-setter-block` 같이, '이텔릭체' 로 된 모든 것들이 다 '구문 범주' 입니다.
 
-[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말합니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% link docs/books/swift-programming-language/lexical-structure.md %}#literals-글자-값) 부분을 보도록 합니다. 
+[^literal]: 여기서 '글자 값 (literal)' 이란 `let a = 10` 에서의 `10` 과 같은 값을 말합니다. 글자 값에 대한 더 자세한 정보는, [Literals (글자 값)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}#literals-글자-값) 부분을 보도록 합니다. 
 
 [^regular-font]: '표준 글꼴 (regular font)' 은 문법 그 자체가 아닌 그 문법 요소에 대한 설명에 사용합니다.

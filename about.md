@@ -13,7 +13,7 @@ permalink: /about/
 
 ### 번역 (Translations)
 
-* [Swift Programming Language (스위프트 프로그래밍 언어)]({% link docs/books/swift-programming-language/index.md %})
+* [Swift Programming Language (스위프트 프로그래밍 언어)]({% link docs/swift-books/swift-programming-language/index.md %})
 
 - 2020-10 : [API Design Guidelines (API 설계 지침)]({% post_url 2020-09-15-API-Design-Guidelines %})
 - 2020-08 : [MVVM (모델-뷰-뷰모델)](https://ko.wikipedia.org/wiki/모델-뷰-뷰모델) 참여

@@ -208,7 +208,7 @@ func someFunction() {
 
 ### 다음 장
 
-[Access Control (접근 제어) >]({% link docs/books/swift-programming-language/access-control.md %})
+[Access Control (접근 제어) >]({% link docs/swift-books/swift-programming-language/access-control.md %})
 
 ### 참고 자료
 
@@ -220,11 +220,11 @@ func someFunction() {
 
 [^man-page]: '매뉴얼 페이지 (man page)' 란 터미널에서 `man` 명령어로 해당 명령어의 매뉴얼을 출력한 페이지를 말합니다. 본문에 있는 `stdatomic(3)` 의 매뉴얼 페이지를 보려면 macOS 의 터미널에서 `$ man stdatomic` 라고 명령하면 됩니다. 해당 매뉴얼을 보면 원자적 연산은 앞에 `atomic_` 이라는 접두사가 붙는다는 걸 알 수 있습니다.
 
-[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% link docs/books/swift-programming-language/functions.md %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% link docs/books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
+[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% link docs/swift-books/swift-programming-language/functions.md %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 [^three-rules]: 즉, 앞에서 말한 충돌이 일어나는 세 가지 조건 모두에 부합합니다. 세 가지 조건 중 하나라도 해당이 안되면, 충돌은 일어나지 않습니다.
 
-[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% link docs/books/swift-programming-language/methods.md %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 보도록 합니다.
+[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% link docs/swift-books/swift-programming-language/methods.md %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 보도록 합니다.
 
 [^safe-overlap]: 이어지는 내용에서 설명하는 것처럼, 구조체를 지역 변수에 저장하면, 그 속성으로의 접근이 겹쳐도 컴파일러가 안전하다는 걸 증명할 수 있으면 충돌이 발생하지 않습니다.
 

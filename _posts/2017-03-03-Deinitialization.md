@@ -15,7 +15,7 @@ _정리자 (deinitializer)_[^deinitializer] 는 클래스 인스턴스를 해제
 
 ### How Deinitialization Works (뒷정리 방법)
 
-스위프트는 인스턴스가 더 이상 필요없을 때, 자원을 풀어주고자, 자동으로 해제합니다. [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}) 에서 설명한 것처럼, 스위프트는 _자동 참조 카운팅 (ARC)_ 을 통해 인스턴스 메모리 관리를 처리합니다. 인스턴스를 해제할 때 일반적으론 수동 정리를 할 필요가 없습니다. 하지만, 자신만의 자원으로 작업할 땐, 스스로 어떠한 추가 정리를 해야할 지도 모릅니다. 예를 들어, 자신만의 클래스를 생성하여 파일을 열고 어떠한 데이터를 작성하면, 클래스 인스턴스의 해제 전에 파일을 닫아야 할 지 모릅니다.
+스위프트는 인스턴스가 더 이상 필요없을 때, 자원을 풀어주고자, 자동으로 해제합니다. [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}) 에서 설명한 것처럼, 스위프트는 _자동 참조 카운팅 (ARC)_ 을 통해 인스턴스 메모리 관리를 처리합니다. 인스턴스를 해제할 때 일반적으론 수동 정리를 할 필요가 없습니다. 하지만, 자신만의 자원으로 작업할 땐, 스스로 어떠한 추가 정리를 해야할 지도 모릅니다. 예를 들어, 자신만의 클래스를 생성하여 파일을 열고 어떠한 데이터를 작성하면, 클래스 인스턴스의 해제 전에 파일을 닫아야 할 지 모릅니다.
 
 클래스 정의에는 클래스 당 최대 하나의 정리자가 있을 수 있습니다. 정리자는 어떤 매개 변수도 취하지 않고 괄호 없이 작성합니다:
 
@@ -108,7 +108,7 @@ print("The bank now has \(Bank.coinsInBank) coins")
 
 ### 다음 장
 
-[Optional Chaining (옵셔널 사슬) >]({% link docs/books/swift-programming-language/optional-chaining.md %})
+[Optional Chaining (옵셔널 사슬) >]({% link docs/swift-books/swift-programming-language/optional-chaining.md %})
 
 ### 참고 자료
 

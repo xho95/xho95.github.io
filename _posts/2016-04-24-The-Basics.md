@@ -12,7 +12,7 @@ categories: Swift Language Grammar Basics
 
 스위프트는 **iOS** 와, **macOS**, **watchOS**, 및 **tvOS** 앱 개발을 위한 새로운 프로그래밍 언어입니다. 그럼에도 불구하고, **C** 와 **오브젝티브-C**  개발 경험으로부터 스위프트의 수많은 부분들이 익숙할 것입니다.
 
-스위프트는 모든 **C** 및 **오브젝티브-C** 기본 타입에 자신만의 버전을 제공하며, 이는 정수를 위한 `Int` 와, 부동 소수점 값을 위한 `Double` 및 `Float`, 불리언 값을 위한 `Bool`, 및 텍스트 데이터를 위한 `String` 을 포함합니다. 스위프트는 강력한 버전의 세 으뜸 집합체 타입인, `Array` 와, `Set`, 및 `Dictionary`[^set-dictionary] 도 제공하는데, [Collection Types (집합체 타입)]({% link docs/books/swift-programming-language/collection-types.md %}) 에서 설명합니다.
+스위프트는 모든 **C** 및 **오브젝티브-C** 기본 타입에 자신만의 버전을 제공하며, 이는 정수를 위한 `Int` 와, 부동 소수점 값을 위한 `Double` 및 `Float`, 불리언 값을 위한 `Bool`, 및 텍스트 데이터를 위한 `String` 을 포함합니다. 스위프트는 강력한 버전의 세 으뜸 집합체 타입인, `Array` 와, `Set`, 및 `Dictionary`[^set-dictionary] 도 제공하는데, [Collection Types (집합체 타입)]({% link docs/swift-books/swift-programming-language/collection-types.md %}) 에서 설명합니다.
 
 **C** 같이, 스위프트는 식별 이름[^identifying-name] 으로 값을 저장하고 참조하는데 변수를 사용합니다. 스위프트는 값을 바꿀 수 없는 변수도 광범위하게 사용합니다. 이를 상수라고 하며, **C** 에 있는 상수보다 훨씬 더 강력합니다. 스위프트 전반에 걸쳐 상수를 사용하면 바꿀 필요 없는 값과 작업할 의도일 때의 코드를 더 안전하고 명확하게 만듭니다.
 
@@ -47,6 +47,7 @@ var currentLoginAttempt = 0
 var x = 0.0, y = 0.0, z = 0.0
 ```
 
+{: .note }
 > 코드에 있는 저장 값을 바꾸지 않을 거면, 항상 `let` 키워드를 써서 상수로 선언합니다. 바꿀 필요가 있는 저장 값에만 변수를 사용합니다.
 
 #### Type Annotations (타입 보조 설명)
@@ -77,6 +78,7 @@ welcomeMessage = "Hello"
 var red, green, blue: Double
 ```
 
+{: .note }
 > 사실상 타입 보조 설명을 작성할 필요는 거의 없습니다. 상수나 변수 정의 시점에 초기 값을 제공하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명한 것처럼, 스위프트가 거의 항상 그 상수나 변수에 사용할 타입을 추론할 수 있습니다. 위의 `welcomeMessage` 예제에선, 초기 값을 제공하지 않아서, `welcomeMessage` 변수의 타입을 초기 값으로 추론하게 하기 보단 타입 보조 설명으로 지정한 겁니다.
 
 #### Naming Constants and Variables (상수와 변수 이름짓기)
@@ -93,6 +95,7 @@ let 🐶🐮 = "dogcow"
 
 일단 한번 특정 타입의 상수나 변수를 선언하면, 똑같은 이름으로 다시 선언하거나, 다른 타입 값을 저장하게 바꿀 수 없습니다. 상수를 변수로 변수를 상수로 바꿀 수도 없습니다.
 
+{: .note }
 > 상수나 변수에 스위프트가 예약한 키워드[^reserved-swift-keyword] 와 똑같은 이름을 줄 필요가 있다면, 키워드를 이름으로 사용할 때 역따옴표 (`` ` ``)[^backticks] 로 둘러쌉니다. 하지만, 선택할게 절대로 없는게 아닌 한 이름에 키워드를 사용하는 걸 피하도록 합니다.
 
 기존 변수 값을 호환 가능한 타입의 다른 값으로 바꿀 수 있습니다. 다음 예제에선, `friendlyWelcome` 값을 `"Hello!"` 에서 `"Bonjour!"` 로 바꿉니다:
@@ -120,7 +123,7 @@ print(friendlyWelcome)
 // "Bonjour!" 를 인쇄함
 ```
 
-`print(_:separator:terminator:)` 함수는 전역 함수로서 하나 이상의 값을 적절한 출력 결과로 인쇄합니다. **엑스코드** 에선, 예를 들어, `print(_:separator:terminator:)` 함수가 자신의 출력 결과를 **엑스코드** 의 "콘솔 (console)" 판에 인쇄합니다. `separator` 와 `terminator` 매개 변수엔 기본 값이 있어서, 이 함수의 호출 때 생략할 수 있습니다. 기본적으로, 함수는 줄 끊음[^line-break] 을 추가하는 걸로 자신이 인쇄하는 줄을 종결합니다. 줄 끊음 없이 값을 인쇄하려면 빈 문자열을 종결자 (terminator) 로 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. 기본 값이 있는 매개 변수에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% link docs/books/swift-programming-language/functions.md %}#default-parameter-values-기본-매개-변수-값) 부분을 보도록 합니다.
+`print(_:separator:terminator:)` 함수는 전역 함수로서 하나 이상의 값을 적절한 출력 결과로 인쇄합니다. **엑스코드** 에선, 예를 들어, `print(_:separator:terminator:)` 함수가 자신의 출력 결과를 **엑스코드** 의 "콘솔 (console)" 판에 인쇄합니다. `separator` 와 `terminator` 매개 변수엔 기본 값이 있어서, 이 함수의 호출 때 생략할 수 있습니다. 기본적으로, 함수는 줄 끊음[^line-break] 을 추가하는 걸로 자신이 인쇄하는 줄을 종결합니다. 줄 끊음 없이 값을 인쇄하려면 빈 문자열을 종결자 (terminator) 로 전달합니다-예를 들어, `print(someValue, terminator : "")` 라고 합니다. 기본 값이 있는 매개 변수에 대한 정보는, [Default Parameter Values (기본 매개 변수 값)]({% link docs/swift-books/swift-programming-language/functions.md %}#default-parameter-values-기본-매개-변수-값) 부분을 보도록 합니다.
 
 스위프트는 _문자열 보간법 (string interpolation)_[^string-interpolation] 을 써서 상수나 변수 이름을 더 긴 문자열의 자리 표시자[^placeholder] 로 포함시키고, 스위프트가 이를 그 상수나 변수의 현재 값으로 즉시 교체하게 합니다. 이름을 괄호로 포장하고 여는 괄호 앞에서 역 빗금[^backslash] 으로 벗어나게[^escape] 하면 됩니다:
 
@@ -129,7 +132,8 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // "The current value of friendlyWelcome is Bonjour!" 를 인쇄함
 ```
 
-> 문자열 보간법과 같이 쓸 수 있는 모든 옵션은 [String Interpolation (문자열 끼워 넣기)]({% link docs/books/swift-programming-language/strings-and-characters.md %}#string-interpolation-문자열-끼워-넣기) 에서 설명합니다.
+{: .note }
+> 문자열 보간법과 같이 쓸 수 있는 모든 옵션은 [String Interpolation (문자열 끼워 넣기)]({% link docs/swift-books/swift-programming-language/strings-and-characters.md %}#string-interpolation-문자열-끼워-넣기) 에서 설명합니다.
 
 ### Comments (주석)
 
@@ -200,6 +204,7 @@ let maxValue = UInt8.max  // maxValue 는 255 이고, 타입은 UInt8 임
 * 32-비트 플랫폼에서, `UInt` 는 `UInt32` 와 똑같은 크기입니다.
 * 64-비트 플랫폼에서, `UInt` 는 `UInt64` 와 똑같은 크기입니다.
 
+{: .note }
 > `UInt` 는 특히 플랫폼 고유의 워드 크기와 크기가 똑같은 부호 없는 정수가 필요할 때만 사용합니다. 이 경우가 아니면, 저장 값이 음수가 아님을 알 때라도, `Int` 가 더 좋습니다. 정수 값에 `Int` 를 일관되게 사용하면, [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)](#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 에서 설명하듯, 코드의 상호 호환성도 높이고, 다른 수치 타입끼리 변환할 필요도 없애주며, 정수 타입 추론과도 (잘) 맞습니다.
 
 ### Floating-Point Numbers (부동-소수점 수)
@@ -211,6 +216,7 @@ _부동-소수점 수 (floating-point numbers)_ 는, `3.14159` 와, `0.1`, 및 `
 * `Double` 은 64-비트 부동-소수점 수를 나타냅니다.
 * `Float` 은 32-비트 부동-소수점 수를 나타냅니다.
 
+{: .note }
 > `Double` 의 정밀도는 적어도 15 자리 유효 숫자[^decimal-digits] 인 반면, `Float` 의 정밀도는 6 자리 유효 숫자인 만큼 작습니다. 사용에 적절한 부동-소수점 타입은 코드 작업에 필요한 값의 고유 성질과 범위에 달려 있습니다. 어느 타입이어도 적절할 상황이면, `Double` 이 더 좋습니다.
 
 ### Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)
@@ -326,7 +332,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 이제 덧셈 양 쪽이 모두 `UInt16` 타입이기 때문에, 덧셈이 됩니다. (`twoThousandAndOne` 이라는) 출력 상수는 `UInt16` 타입으로 추론하며, 이는 `UInt16` 값 두 개의 합이기 때문입니다.
 
-`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 그 속을 보면, `UInt16` 에 `UInt8` 값을 받는 초기자가 있어서, 이 초기자를 써서 기존 `UInt8` 로 새로운 `UInt16` 를 만듭니다. 하지만, 여기에 _어떤 (any)_ 타입이든 전달할 수 있는 건 아닙니다-`UInt16` 이 초기자를 제공한 타입이어야 합니다. 기존 타입을 확장하여 (자신이 정의한 타입을 포함한) 새로운 타입을 받는 초기자를 제공하는 건 [Extensions (익스텐션; 확장)]({% link docs/books/swift-programming-language/extensions.md %}) 에서 다룹니다.
+`SomeType(ofInitialValue)` 는 스위프트 타입의 초기자를 호출하고 초기 값을 전달하는 기본 방식입니다. 그 속을 보면, `UInt16` 에 `UInt8` 값을 받는 초기자가 있어서, 이 초기자를 써서 기존 `UInt8` 로 새로운 `UInt16` 를 만듭니다. 하지만, 여기에 _어떤 (any)_ 타입이든 전달할 수 있는 건 아닙니다-`UInt16` 이 초기자를 제공한 타입이어야 합니다. 기존 타입을 확장하여 (자신이 정의한 타입을 포함한) 새로운 타입을 받는 초기자를 제공하는 건 [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 에서 다룹니다.
 
 #### Integer and Floating-Point Conversion (정수와 부동-소수점 수 변환)
 
@@ -350,6 +356,7 @@ let integerPi = Int(pi)
 
 이런 식으로 새 정수 값을 초기화할 땐 부동-소수점 값이 항상 잘립니다. 이는 `4.75` 은 `4` 가, `-3.9` 는 `-3` 이 된다는 의미입니다.
 
+{: .note }
 > 수치 상수와 변수를 조합하는 규칙은 수치 글자 값의 규칙과 다릅니다. 글자 값 `3` 과 글자 값 `0.14159` 는 직접 더할 수 있는데, 이는 수치 글자 값 그 자체에 명시적 타입이 있는 것도 그 자체가 타입인 것도 아니기 때문입니다. 이들의 타입은 컴파일러가 이들을 평가하는 시점에만 추론됩니다.
 
 ### Type Aliases (타입 별명)
@@ -393,7 +400,7 @@ if turnipsAreDelicious {
 // "Eww, turnips are horrible." 를 인쇄함
 ```
 
-`if` 문 같은 조건문은 [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장에서 더 자세히 다룹니다.
+`if` 문 같은 조건문은 [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장에서 더 자세히 다룹니다.
 
 스위프트 타입 안전 장치는 불리언-아닌 값이 `Bool` 을 대체하는 걸 막아 줍니다. 다음 예제는 컴파일-시간 에러를 보고합니다:
 
@@ -413,7 +420,7 @@ if i == 1 {
 }
 ```
 
-`i == 1` 비교 결과는 `Bool` 타입이라서, 이 두 번째 예제는 타입 검사를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기초 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}) 에서 논의합니다.
+`i == 1` 비교 결과는 `Bool` 타입이라서, 이 두 번째 예제는 타입 검사를 통과합니다. `i == 1` 같은 비교 연산은 [Basic Operators (기초 연산자)]({% link docs/swift-books/swift-programming-language/basic-operators.md %}) 에서 논의합니다.
 
 스위프트의 다른 타입 안전 장치 예제 처럼, 이 접근법은 우연한 사고로 인한 에러를 피하고 코드의 특별한 코드의 의도가 항상 명확하도록 보장합니다.
 
@@ -474,14 +481,16 @@ print("The status message is \(http200Status.description)")
 // "The status message is OK" 를 인쇄함
 ```
 
-튜플은 함수 반환 값으로 특히 더 유용합니다. 웹 페이지를 가져오려는 함수는 `(Int, String)` 튜플 타입을 반환하여 페이지 가져오기의 성공 또는 실패를 설명할지도 모릅니다. 서로 다른 타입인, 별개의 두 값이 있는 튜플을 반환함으로써, 단일 타입인 단 하나의 값만 반환할 수 있는 경우보다 함수 자신의 결과물에 대해 더 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% link docs/books/swift-programming-language/functions.md %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보도록 합니다.
+튜플은 함수 반환 값으로 특히 더 유용합니다. 웹 페이지를 가져오려는 함수는 `(Int, String)` 튜플 타입을 반환하여 페이지 가져오기의 성공 또는 실패를 설명할지도 모릅니다. 서로 다른 타입인, 별개의 두 값이 있는 튜플을 반환함으로써, 단일 타입인 단 하나의 값만 반환할 수 있는 경우보다 함수 자신의 결과물에 대해 더 유용한 정보를 제공합니다. 더 많은 정보는, [Functions with Multiple Return Values (반환 값이 여러 개인 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#functions-with-multiple-return-values-반환-값이-여러-개인-함수) 부분을 보도록 합니다.
 
-> 튜플은 단순한 그룹의 관련 값에 유용합니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% link docs/books/swift-programming-language/structures-and-classes.md %}) 장을 보도록 합니다.
+{: .note }
+> 튜플은 단순한 그룹의 관련 값에 유용합니다. 복잡한 자료 구조의 생성에는 적합하지 않습니다. 자료 구조가 더 복잡해질 것 같으면, 튜플 보다는, 클래스나 구조체로 모델링 합니다. 더 많은 정보는, [Structures and Classes (구조체와 클래스)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}) 장을 보도록 합니다.
 
 ### Optionals (옵셔널)
 
 _옵셔널 (optionals)_ 은 값이 없을 수도 있는 상황에서 사용합니다. 옵셔널은 두 가지 가능성을 나타내는데: 값이 _있어서 (is)_, 옵셔널의 포장을 풀고 그 값에 접근할 수 있다, 또는 값이 전혀 _없다 (isn't)_ 라는게 그것입니다.
 
+{: .note }
 > **C** 나 **오브젝티브-C** 에는 옵셔널이라는 개념이 존재하지 않습니다. **오브젝티브-C** 에서 (그나마) 가장 가까운 건, "유효한 객체가 없음" 을 의미하는 `nil` 을 가지고, 다른 경우라면 객체를 반환했을 메소스가 `nil` 을 반환하는 능력입니다. 하지만, 이는 객체하고만 작동합니다-구조체나, C 기초 타입, 또는 열거체 값과 작동하진 않습니다. 이러한 타입에선, 전형적으로 오브젝티브-C 메소드가 (`NSNotFound` 같은) 특수한 값을 반환하여 값의 없음을 지시합니다. 이런 접근법은 메소드를 호출한 쪽이 테스트할 특수 값이 있다는 것도 알고 검사하는 걸 기억도 하고 있다고 가정합니다. 스위프트 옵셔널은 _아예 어떤 타입 (any type at all)_ 의 값 없음이든 지시하면서, 특수 상수도 필요 없습니다.
 
 옵셔널로 값의 없음을 대처할 수 있는 예는 이렇습니다. 스위프트의 `Int` 타입엔 `String` 값을 `Int` 값으로 자동 변환하려는 초기자가 있습니다. 하지만, 모든 문자열을 정수로 변환할 수 있는 건 아닙니다. `"123"` 이라는 문자열은 `123` 이라는 수치 값으로 변환할 수 있지만, `"hello, world"` 라는 문자열은 변환할 수치 값이 분명하지 않습니다:
@@ -507,6 +516,7 @@ serverResponseCode = nil
 // serverResponseCode 는 이제 아무 값도 담지 않음
 ```
 
+{: .note }
 > 옵셔널-아닌 상수와 변수엔 `nil` 을 쓸 수 없습니다. 특정 조건에서 코드가 값이 없는 상수나 변수와 작업할 필요가 있다면, 항상 적절한 타입의 옵셔널 값으로 선언합니다.
 
 옵셔널 변수를 정의하면서 기본 값을 제공하지 않으면, 변수에 자동으로 `nil` 을 설정합니다:
@@ -516,6 +526,7 @@ var surveyAnswer: String?
 // surveyAnswer 에 자동으로 nil 을 설정합니다.
 ```
 
+{: .note }
 > 스위프트의 `nil` 은 오브젝티브-C 의 `nil` 과 똑같은게 아닙니다. 오브젝티브-C 의, `nil` 은 존재하지 않는 객체로의 포인터[^pointer] 입니다. 스위프트의, `nil` 은 포인터가 아닙니다-이는 특정 타입의 값이 없다는 것입니다. 객체 타입만이 아니라, _어떤 (any)_ 타입의 옵셔널도 `nil` 로 설정할 수 있습니다.
 
 #### If Statements and Forced Unwrapping (If 문과 강제 포장 풀기)
@@ -540,13 +551,14 @@ if convertedNumber != nil {
 // "convertedNumber has an integer value of 123." 을 인쇄함
 ```
 
-`if` 문에 대한 더 많은 건, [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 부분을 보도록 합니다.
+`if` 문에 대한 더 많은 건, [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 부분을 보도록 합니다.
 
+{: .note }
 > `!` 로 존재하지 않는 옵셔널 값에 접근하려 하면 실행 시간 에러를 발생시킵니다. `!` 로 자신의 값을 강제로-풀기 전에 항상 옵셔널에 `nil`-아닌 값이 담겨 있는지 확실히 합니다.
 
 #### Optional Binding (옵셔널 연결)
 
-_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 담고 있는지 알아내서, 그렇다면, 그 값을 임시 상수나 변수로 쓸 수 있게 합니다. 옵셔널 연결을 `if` 와 `while` 문과 같이 써서 옵셔널 안의 값을 검사하는 것과, 그 값을 상수나 변수로 뽑아내는 걸, 단 하나의 행동으로 할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% link docs/books/swift-programming-language/control-flow.md %}) 장에서 더 자세히 설명합니다.
+_옵셔널 연결 (optional binding)_ 을 사용하면 옵셔널이 값을 담고 있는지 알아내서, 그렇다면, 그 값을 임시 상수나 변수로 쓸 수 있게 합니다. 옵셔널 연결을 `if` 와 `while` 문과 같이 써서 옵셔널 안의 값을 검사하는 것과, 그 값을 상수나 변수로 뽑아내는 걸, 단 하나의 행동으로 할 수 있습니다. `if` 와 `while` 문은 [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장에서 더 자세히 설명합니다.
 
 `if` 문에서 옵셔널 연결을 쓰는 건 다음과 같습니다:
 
@@ -614,7 +626,8 @@ if let firstNumber = Int("4") {
 // "4 < 42 < 100" 를 인쇄함
 ```
 
-> `if` 문에서 옵셔널 연결로 생성한 상수와 변수는 `if` 문 본문에서만 쓸 수 있습니다. 이와 대조하여, [Early Exit (때 이른 탈출문)]({% link docs/books/swift-programming-language/control-flow.md %}#early-exit-때-이른-탈출문) 에서 설명하듯, `guard` 문으로 생성한 상수와 변수는 `guard` 문 뒤의 코드 줄에서 쓸 수 있습니다.
+{: .note }
+> `if` 문에서 옵셔널 연결로 생성한 상수와 변수는 `if` 문 본문에서만 쓸 수 있습니다. 이와 대조하여, [Early Exit (때 이른 탈출문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#early-exit-때-이른-탈출문) 에서 설명하듯, `guard` 문으로 생성한 상수와 변수는 `guard` 문 뒤의 코드 줄에서 쓸 수 있습니다.
 
 #### Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)
 
@@ -624,7 +637,7 @@ if let firstNumber = Int("4") {
 
 이런 종류의 옵셔널을 _암시적으로 포장 푸는 옵셔널 (implicitly unwrapped optionals)_ 이라고 정의합니다. 암시적으로 포장 푸는 옵셔널을 쓰려면 옵셔널을 만들고 싶은 타입 뒤에 물음표 (`String?`) 보단 느낌표 (`String!`) 를 붙이면 됩니다. 사용할 때 옵셔널 이름 뒤에 느낌표를 두는 것 보단, 선언할 때 옵셔널 타입 뒤에 느낌표를 둡니다.[^implicitly-optional-declare]
 
-암시적으로 포장 푸는 옵셔널은 최초로 옵셔널을 정의한 바로 뒤에 옵셔널 값이 존재한다는게 확정되고 그 후의 모든 시점에도 확실히 존재한다고 가정할 수 있을 때 유용합니다. [Unowned References and Implicitly Unwrapped Optional Properties (소유하지 않는 참조와 암시적으로 포장 푸는 옵셔널 속성)]({% link docs/books/swift-programming-language/automatic-reference-counting.md %}#unowned-references-and-implicitly-unwrapped-optional-properties-소유하지-않는-참조와-암시적으로-포장-푸는-옵셔널-속성) 에서 설명한 것처럼, 스위프트에서 암시적으로 포장 푸는 옵셔널은 클래스 초기화 중에 사용하는게 으뜸입니다.
+암시적으로 포장 푸는 옵셔널은 최초로 옵셔널을 정의한 바로 뒤에 옵셔널 값이 존재한다는게 확정되고 그 후의 모든 시점에도 확실히 존재한다고 가정할 수 있을 때 유용합니다. [Unowned References and Implicitly Unwrapped Optional Properties (소유하지 않는 참조와 암시적으로 포장 푸는 옵셔널 속성)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#unowned-references-and-implicitly-unwrapped-optional-properties-소유하지-않는-참조와-암시적으로-포장-푸는-옵셔널-속성) 에서 설명한 것처럼, 스위프트에서 암시적으로 포장 푸는 옵셔널은 클래스 초기화 중에 사용하는게 으뜸입니다.
 
 암시적으로 포장 푸는 옵셔널도 그 속을 보면 보통의 옵셔널이지만, 접근할 때마다 옵셔널 값의 포장을 풀 필요가 없는, 옵셔널-아닌 값 처럼 사용할 수도 있습니다. 다음 예제는 자신의 포장 값을 명시적 `String` 으로 접근할 때의 옵셔널 문자열과 암시적으로 포장 푸는 옵셔널 문자열 동작의 차이를 보여줍니다:
 
@@ -663,6 +676,7 @@ if let definiteString = assumedString {
 // "An implicitly unwrapped optional string." 를 인쇄함
 ```
 
+{: .note }
 > 더 나중 시점에 변수가 `nil` 일 가능성이 있을 땐 암시적으로 포장 푸는 옵셔널을 사용하지 않습니다. 변수가 살아 있는 중에 `nil` 값 검사가 필요한 경우라면 항상 보통의 옵셔널 타입을 사용합니다.
 
 ### Error Handling (에러 처리)
@@ -715,7 +729,7 @@ do {
 
 던진 에러가 없으면, `eatASandwich()` 함수를 호출합니다. 던진 에러가 `SandwichError.outOfCleanDishes` case 와 맞으면, `washDishes()` 함수를 호출할 겁니다. 던진 에러가 `SandwichError.missingIngredients` case 와 맞으면, 그 땐 `catch` 패턴이 붙잡은 `[String]` 결합 값을 가지고 `buyGroceries(_:)` 함수를 호출합니다.
 
-에러 던지기와, 붙잡기, 및 전파하기는 [Error Handling (에러 처리)]({% link docs/books/swift-programming-language/error-handling.md %}) 에서 아주 자세히 다룹니다.
+에러 던지기와, 붙잡기, 및 전파하기는 [Error Handling (에러 처리)]({% link docs/swift-books/swift-programming-language/error-handling.md %}) 에서 아주 자세히 다룹니다.
 
 ### Assertions and Preconditions (단언문과 선행 조건문)
 
@@ -772,13 +786,14 @@ precondition(index > 0, "Index must be greater than zero.")
 
 [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) 함수를 호출하여 실패가 일어났음을 지시할 수도 있는데-예를 들어, 모든 유효한 입력 데이터는 switch 문의 다른 case 절에서 처리하는게 좋음에도, switch 문의 기본 case 를 차지한 경우에 그렇습니다.
 
+{: .note }
 > 검사하지 않음 모드 (`-Ounchecked`)[^unchecked] 로 컴파일하면, 선행 조건문을 검사하지 않습니다. 컴파일러는 선행 조건문이 항상 참이라고 가정하며, 그에 따라 코드를 최적화합니다. 하지만, `fatalError(_:file:line:)` 함수는, 최적화 설정에 상관없이, 항상 실행을 중단합니다.
 >
 > `fatalError(_:file:line:)` 함수를 프로토 타입 및 이른 개발 시기에 사용하여 아직 구현안된 자투리 기능을 생성하려면, `fatalError("Unimplemented")` 를 자투리 구현[^stub] 으로 쓰면 됩니다. 치명적인 에러[^fatal-errors] 는 절대로 최적화로 없어지지 않기 때문에, 단언문이나 선행 조건문과 달리, 짜투리 구현과 마주치면 실행이 항상 중단된다고 확신할 수 있습니다.
 
 ### 다음 장
 
-[Basic Operators (기초 연산자) >]({% link docs/books/swift-programming-language/basic-operators.md %})
+[Basic Operators (기초 연산자) >]({% link docs/swift-books/swift-programming-language/basic-operators.md %})
 
 ### 참고 자료
 

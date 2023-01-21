@@ -904,7 +904,7 @@ anyCommonElements([1, 2, 3], [3])
 
 ### 다음 장
 
-[The Basics (기초) >]({% link docs/books/swift-programming-language/the-basics.md %})
+[The Basics (기초) >]({% link docs/swift-books/swift-programming-language/the-basics.md %})
 
 ### 참고 자료
 
@@ -920,21 +920,21 @@ anyCommonElements([1, 2, 3], [3])
 
 [^convert]: 타입 변환에는 '변환 (casting)' 과 '자동 변환 (conversion)' 이라는 두 가지 종류가 있습니다. 본문에서 말하는 '자동 변환 (conversion)' 은 컴파일러가 자동으로 타입을 변환하는 걸 말합니다. 본문 내용은 다른 언어와는 달리 스위프트는 값을 자동 변환하지 않는다는 의미입니다.
 
-[^indentation]: 이 설명은 예제를 보는게 더 이해하기 쉽습니다. 예제는, [Strings and Characters (문자열과 문자)]({% link docs/books/swift-programming-language/strings-and-characters.md %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
+[^indentation]: 이 설명은 예제를 보는게 더 이해하기 쉽습니다. 예제는, [Strings and Characters (문자열과 문자)]({% link docs/swift-books/swift-programming-language/strings-and-characters.md %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)](#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
 
-[^initializer-syntax]: 사실 본문에 있는 예제는 '초기자 구문 (initializer syntax)' 이라기 보단 '빈 글자값 (empty literal)' 을 사용한 것입니다. 예전에는 초기자 구문을 사용한 예제였었는데, 책의 버전이 바뀌면서 예제 코드가 바뀌었습니다. 실제로 초기자 구문을 사용하는 예제는 [Creating an Empty Array (빈 배열 생성하기)]({% link docs/books/swift-programming-language/collection-types.md %}#creating-an-empty-array-빈-배열-생성하기) 와 [Creating an Empty Dictionary (빈 딕셔너리 생성하기)]({% link docs/books/swift-programming-language/collection-types.md %}#creating-an-empty-dictionary-빈-딕셔너리-생성하기) 부분을 참고하기 바랍니다. 
+[^initializer-syntax]: 사실 본문에 있는 예제는 '초기자 구문 (initializer syntax)' 이라기 보단 '빈 글자값 (empty literal)' 을 사용한 것입니다. 예전에는 초기자 구문을 사용한 예제였었는데, 책의 버전이 바뀌면서 예제 코드가 바뀌었습니다. 실제로 초기자 구문을 사용하는 예제는 [Creating an Empty Array (빈 배열 생성하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#creating-an-empty-array-빈-배열-생성하기) 와 [Creating an Empty Dictionary (빈 딕셔너리 생성하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#creating-an-empty-dictionary-빈-딕셔너리-생성하기) 부분을 참고하기 바랍니다. 
 
 [^empty-literal]: 이걸 각각 '빈 배열 글자값 (empty array literal)' 및 '빈 딕셔너리 글자값 (empty dictionary literal)' 이라고 하는데, 사실 위에서도 이 빈 글자값들을 사용했습니다.
 
 [^Boolean]: '불리언 (Boolean)' 은 `true` 또는 `false` 값만 가지는 논리 타입입니다.
 
-[^optionals]: '옵셔널 (optionals)' 에 대한 더 자세한 설명은 [Optionals (옵셔널)]({% link docs/books/swift-programming-language/the-basics.md %}#optionals-옵셔널) 부분을 참고하기 바랍니다. 
+[^optionals]: '옵셔널 (optionals)' 에 대한 더 자세한 설명은 [Optionals (옵셔널)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optionals-옵셔널) 부분을 참고하기 바랍니다. 
 
 [^shorter-spelling]: **스위프트 5.7** 에서 추가된 문법으로 `if let nickname { ... }` 은 예전 버전에서 `if let nickname = nickname { ... }` 라고 하는 것과 같습니다.
 
 [^default-case]: switch 문 안의 `default:` 절을 말합니다. 
 
-[^pattern]: '패턴 (Pattern)' 에 대한 더 자세한 정보는 [Patterns (패턴; 유형)]({% link docs/books/swift-programming-language/patterns.md %}) 장을 참고하기 바랍니다. 
+[^pattern]: '패턴 (Pattern)' 에 대한 더 자세한 정보는 [Patterns (패턴; 유형)]({% link docs/swift-books/swift-programming-language/patterns.md %}) 장을 참고하기 바랍니다. 
 
 [^break-out]: '명시적으로 switch 문을 끊고 나올 필요가 없다' 는 건 `break` 문을 쓸 필요가 없다는 의미입니다.
 
@@ -942,44 +942,44 @@ anyCommonElements([1, 2, 3], [3])
 
 [^unordered-collection]: 수학적으로 '순서 있는 집합체 (ordered collections)' 와 '정렬된 집합체 (sorted collection)' 는 다른 의미입니다. 이 둘의 차이점에 대해서는, **StackOverflow** 의 [What is the difference between an ordered and a sorted collection?](https://stackoverflow.com/questions/1084146/what-is-the-difference-between-an-ordered-and-a-sorted-collection) 항목을 참고하기 바랍니다. 이 후부턴,  **order** 는 순서로, **sort** 는 정렬로 옮기겠습니다.
 
-[^tuple]: '튜플 ()' 에 대한 더 자세한 정보는 [Tuples (튜플; 짝)]({% link docs/books/swift-programming-language/the-basics.md %}#tuples-튜플-짝) 부분을 참고하기 바랍니다.  
+[^tuple]: '튜플 ()' 에 대한 더 자세한 정보는 [Tuples (튜플; 짝)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#tuples-튜플-짝) 부분을 참고하기 바랍니다.  
 
-[^nested-functions]: '중첩 함수 (nested functions)' 에 대한 더 자세한 정보는 [Nested Functions (중첩 함수)]({% link docs/books/swift-programming-language/functions.md %}#nested-functions-중첩-함수) 부분을 참고하기 바랍니다.
+[^nested-functions]: '중첩 함수 (nested functions)' 에 대한 더 자세한 정보는 [Nested Functions (중첩 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#nested-functions-중첩-함수) 부분을 참고하기 바랍니다.
 
 [^first-class]: 프로그래밍에서 '일급 (first-class)' 이라는 말은 객체와 동급으로 사용할 수 있다는 걸 의미합니다. 예를 들어, 일급인 함수는 객체 처럼 인자로 전달할 수도 있고, 함수에서 반환할 수도 있으며, 다른 변수에 할당할 수도 있습니다. 스위프트에선 함수가 일급 타입이기 때문에, 함수를 인자의 전달과, 함수의 반환, 및 변수로 할당할 수 있습니다. 일급에 대한 더 자세한 정보는, 위키피디아의 [First-class citizen](https://en.wikipedia.org/wiki/First-class_citizen) 과 [일급 객체](https://ko.wikipedia.org/wiki/일급_객체) 항목을 참고하기 바랍니다.
 
-[^closures]: '클로저 (closures)' 에 대한 더 자세한 정보는 [Closures (클로저; 잠금 블럭)]({% link docs/books/swift-programming-language/closures.md %}) 장을 참고하기 바랍니다. 
+[^closures]: '클로저 (closures)' 에 대한 더 자세한 정보는 [Closures (클로저; 잠금 블럭)]({% link docs/swift-books/swift-programming-language/closures.md %}) 장을 참고하기 바랍니다. 
 
-[^delegate]: '일-맡은자 (delegate)' 에 대한 더 자세한 정보는 [Delegation (맡김)]({% link docs/books/swift-programming-language/protocols.md %}#delegation-맡김) 부분을 참고하기 바랍니다.
+[^delegate]: '일-맡은자 (delegate)' 에 대한 더 자세한 정보는 [Delegation (맡김)]({% link docs/swift-books/swift-programming-language/protocols.md %}#delegation-맡김) 부분을 참고하기 바랍니다.
 
 [^callback]: '콜백 (callback)' 또는 콜백 함수는 다른 쪽에 인자로 넘겨서, 받은 쪽에서 호출하는 함수를 의미합니다. 스위프트에선, 이 콜백을 가지고 있는 개체를 일을 맡았다는 의미로 '일-맡은자 (delegate)' 라고 합니다. 콜백 자체는 '되돌아서 호출한다 (call back)' 는 의미입니다. 콜백에 대한 더 자세한 정보는 위키피디아의 [Callback (computer programming)](https://en.wikipedia.org/wiki/Callback_(computer_programming)) 항목과 [콜백](https://ko.wikipedia.org/wiki/콜백) 항목을 참고하기 바랍니다. 
 
 [^single-statement-closures]: '단일문 클로저 (single statement closures)' 는 클로저 본문에 단 하나의 구문만 있는 걸 말합니다.
 
-[^initializer]: '초기자 (initializer)' 에 대한 더 자세한 정보는 [Initializers (초기자)]({% link docs/books/swift-programming-language/initialization.md %}#initializers-초기자) 부분을 참고하기 바랍니다. 
+[^initializer]: '초기자 (initializer)' 에 대한 더 자세한 정보는 [Initializers (초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializers-초기자) 부분을 참고하기 바랍니다. 
 
-[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는 [Deinitialization (뒷정리)]({% link docs/books/swift-programming-language/deinitialization.md %}) 장을 참고하기 바랍니다. 
+[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는 [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) 장을 참고하기 바랍니다. 
 
 [^standard-root-class]: '표준 뿌리 클래스 (standard root class)' 는 오브젝티브-C 에서의 `NSObject` 같은 클래스를 말합니다. 스위프트는 함수형 프로그래밍 패러다임을 가진 언어라서 객체 지향 프로그래밍 언어에서 사용하는 이런 식의 클래스가 없습니다.
 
-[^getter-and-setter]: 본문에서 말하는 단순 속성을 '저장 속성 (stored properties)' 이라고 하고, 획득자와 설정자가 있는 속성을 '계산 속성 (computed properties)' 이라고 합니다. 각각에 대한 더 자세한 정보는 [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 부분을 참고하기 바랍니다.
+[^getter-and-setter]: 본문에서 말하는 단순 속성을 '저장 속성 (stored properties)' 이라고 하고, 획득자와 설정자가 있는 속성을 '계산 속성 (computed properties)' 이라고 합니다. 각각에 대한 더 자세한 정보는 [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 부분을 참고하기 바랍니다.
 
 [^suit]: '패 (suits)' 는 스페이드 (spades), 다이아몬드 (diamonds), 하트 (hearts), 클로버 (clovers) 라는 서양 카드의 네 가지 범주를 말합니다.
 
-[^associated-values]: 결합 값에 대한 더 자세한 정보는 [Associated Values (결합 값)]({% link docs/books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 
+[^associated-values]: 결합 값에 대한 더 자세한 정보는 [Associated Values (결합 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 
 
 [^rank]: '끗수 (ranks)' 는 각각의 카드마다 숫자 또는 알파펫으로 나타내는 등급을 말합니다. 서양 카드에는 13 가지 끗수가 있습니다.
 
 [^deck]: '벌 (deck)' 은 한 세트의 카드 묶음을 말합니다. 한 벌의 서양 카드엔 총 52 장의 카드가 있습니다.
 
-[^adopt]: 프로토콜 채택에 대한 더 자세한 정보는 [Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %}) 장의 앞 부분을 참고하기 바랍니다. 프로토콜 채택과 프로토콜 준수는 의미가 조금 다릅니다
+[^adopt]: 프로토콜 채택에 대한 더 자세한 정보는 [Protocols (프로토콜; 규약)]({% link docs/swift-books/swift-programming-language/protocols.md %}) 장의 앞 부분을 참고하기 바랍니다. 프로토콜 채택과 프로토콜 준수는 의미가 조금 다릅니다
 
-[^requirement]: '필수 조건 (requirements)' 에 대한 더 자세한 정보도 [Protocols (프로토콜; 규약)]({% link docs/books/swift-programming-language/protocols.md %}) 장을 참고하기 바랍니다.
+[^requirement]: '필수 조건 (requirements)' 에 대한 더 자세한 정보도 [Protocols (프로토콜; 규약)]({% link docs/swift-books/swift-programming-language/protocols.md %}) 장을 참고하기 바랍니다.
 
-[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% link docs/books/swift-programming-language/protocols.md %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
+[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
 
 [^angle-brackets]: `< ... >` 을 말합니다.
 
-[^generic]: '일반화 (generic)' 에 대한 더 자세한 정보는 [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 장을 참고하기 바랍니다.
+[^generic]: '일반화 (generic)' 에 대한 더 자세한 정보는 [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장을 참고하기 바랍니다.
 
 [^sequence]: 컴퓨터 자료 구조의 하나인 '시퀀스 (sequence)' 는 원래 수학 용어인 '수열' 에서 온 개념입니다. 그러므로 해당 문장은 '두 수열에 공통인 원소 배열을 반환하는 함수' 라고 이해할 수도 있습니다.

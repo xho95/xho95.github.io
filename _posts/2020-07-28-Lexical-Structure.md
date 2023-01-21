@@ -34,7 +34,7 @@ _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), �
 
 클로저 안에 명시적 매개 변수 이름이 없으면, 매개 변수에 암시적으로 `$0`, `$1`, `$2`, 등등의 이름을 붙입니다. 이 이름들은 클로저 영역 안에선 유효한 식별자입니다.
 
-속성 포장의 내민 값을 가진 속성이면 컴파일러가 달러 기호 (`$`) 로 시작하는 식별자를 통합합니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 이 접두사의 식별자를 (직접) 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% link docs/books/swift-programming-language/attributes.md %}) 장의 [propertyWrapper (속성 포장)]({% link docs/books/swift-programming-language/attributes.md %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
+속성 포장의 내민 값을 가진 속성이면 컴파일러가 달러 기호 (`$`) 로 시작하는 식별자를 통합합니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 이 접두사의 식별자를 (직접) 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장의 [propertyWrapper (속성 포장)]({% link docs/swift-books/swift-programming-language/attributes.md %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
 
 > GRAMMAR OF AN IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
@@ -80,7 +80,7 @@ _정수 글자 값 (integer literals)_ 은 특정한 정밀도가 없는 정수 
 
 가독성을 위해 숫자 사이에 밑줄 (`_`) 을 둘 수 있지만, (이 값은) 무시하므로 글자 값에는 영향을 주지 않습니다. 정수 글자 값은 `0` 으로 시작할 수 있는데, (이 값) 역시 무시하므로 글자 값의 밑수나 값엔 영향을 주지 않습니다.
 
-따로 지정하지 않는 한, 정수 글자 값의 기본 추론 타입은 스위프트 표준 라이브러리 타입 `Int` 입니다. 스위프트 표준 라이브러리는, [Integers (정수)]({% link docs/books/swift-programming-language/the-basics.md %}#integers-정수) 에서 설명한 것처럼, 다양한 크기의 부호 있는 정수와 부호 없는 정수도 정의합니다.
+따로 지정하지 않는 한, 정수 글자 값의 기본 추론 타입은 스위프트 표준 라이브러리 타입 `Int` 입니다. 스위프트 표준 라이브러리는, [Integers (정수)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#integers-정수) 에서 설명한 것처럼, 다양한 크기의 부호 있는 정수와 부호 없는 정수도 정의합니다.
 
 > GRAMMAR OF AN INTEGER LITERAL 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID414)
 
@@ -179,7 +179,7 @@ print(# # #"Line 1\# # #nLine 2"# # #) // 에러
 
 확장 구분자로 생성한 여러 줄짜리 문자열 글자 값의 들여쓰기는 표준적인 여러 줄짜리 문자열 글자 값과 똑같습니다.
 
-문자열 글자 값의 기본 추론 타입은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% link docs/books/swift-programming-language/strings-and-characters.md %}) 장과 [String](https://developer.apple.com/documentation/swift/string)[^developer-string] 항목을 보도록 합니다.
+문자열 글자 값의 기본 추론 타입은 `String` 입니다. `String` 타입에 대한 더 많은 정보는, [Strings and Characters (문자열과 문자)]({% link docs/swift-books/swift-programming-language/strings-and-characters.md %}) 장과 [String](https://developer.apple.com/documentation/swift/string)[^developer-string] 항목을 보도록 합니다.
 
 `+` 연산자로 이어붙인 문자열 글자 값은 컴파일 시간에 이어붙습니다. 예를 들어, 아래 예제의 `textA` 와 `textB` 값은 완전히 똑같습니다 (identical)-실행 시간에 이어붙이기를 하진 않습니다.
 
@@ -223,7 +223,7 @@ let regex2 = # #/abc/# #    // 에러
 
 ### Operators (연산자)
 
-스위프트 표준 라이브러리에서 정의한 다수 연산자들의 사용법, 중 많은 것들은 [Basic Operators (기초 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}) 와 [Advanced Operators (고급 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}) 에서 논의합니다. 현재 절에선 사용자 연산자를 정의할 수 있는 문자가 어떤 것인지를 설명합니다.
+스위프트 표준 라이브러리에서 정의한 다수 연산자들의 사용법, 중 많은 것들은 [Basic Operators (기초 연산자)]({% link docs/swift-books/swift-programming-language/basic-operators.md %}) 와 [Advanced Operators (고급 연산자)]({% link docs/swift-books/swift-programming-language/advanced-operators.md %}) 에서 논의합니다. 현재 절에선 사용자 연산자를 정의할 수 있는 문자가 어떤 것인지를 설명합니다.
 
 사용자 정의 연산자는  `/` 나, `=`, `-`, `+`, `!`, `*`, `%`, `<`, `>`, `&`, `|`, `^`, `?` 또는 `~` 라는 아스키 (ASCII) 문자 중 하나, 혹은 아래 문법에서 정의한 유니코드 문자 중 하나로 시작할 수 있습니다 (이는, 유니 코드 중에서, _수학 연산자 (Mathematical Operators)_, _잡다한 기호 (Miscellaneous Symbols)_, 및 _딩뱃 (Dingbats)_[^dingbats] 유니코드 블럭 안의 문자를 포함합니다). 첫 번째 문자 뒤엔, 조합형 유니코드 문자도 허용합니다.
 
@@ -246,11 +246,11 @@ let regex2 = # #/abc/# #    // 에러
 
 특정한 구조에선, 맨 앞이 `<` 나 `>` 인 연산자가 두 개 이상의 낱말로 쪼개질 수 있습니다. 나머지 부분도 똑같은 식으로 취급하여 또 다시 쪼깨질 수 있습니다. 그 결과, `Dictionary<String, Array<Int>>` 같은 구조의 닫는 `>` 문자 사이에 공백을 추가해서 헷갈리지 않게 할 필요가 없습니다. 이 예제에선, 닫는 `>` 문자를 단일 낱말로 취급하여 비트 이동 `>>` 연산자로 잘못 해석할 일이 없습니다.[^misinterprete]
 
-새로운, 사용자 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% link docs/books/swift-programming-language/advanced-operators.md %}#custom-operators-사용자-정의-연산자) 부분과 [Operator Declaration (연산자 선언)]({% link docs/books/swift-programming-language/declarations.md %}#operator-declaration-연산자-선언) 부분을 보도록 합니다. 기존 연산자를 중복 정의하는 방법을 배우려면, [Operator Methods (연산자 메소드)]({% link docs/books/swift-programming-language/closures.md %}#operator-methods-연산자-메소드) 부분을 보도록 합니다.
+새로운, 사용자 연산자를 정의하는 방법을 배우려면, [Custom Operators (사용자 정의 연산자)]({% link docs/swift-books/swift-programming-language/advanced-operators.md %}#custom-operators-사용자-정의-연산자) 부분과 [Operator Declaration (연산자 선언)]({% link docs/swift-books/swift-programming-language/declarations.md %}#operator-declaration-연산자-선언) 부분을 보도록 합니다. 기존 연산자를 중복 정의하는 방법을 배우려면, [Operator Methods (연산자 메소드)]({% link docs/swift-books/swift-programming-language/closures.md %}#operator-methods-연산자-메소드) 부분을 보도록 합니다.
 
 ### 다음 장
 
-[Types (타입) >]({% link docs/books/swift-programming-language/types.md %})
+[Types (타입) >]({% link docs/swift-books/swift-programming-language/types.md %})
 
 ### 참고 자료
 
@@ -272,11 +272,11 @@ let regex2 = # #/abc/# #    // 에러
 
 [^backticks]: 원문에 있는 'backtics' 은 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
 
-[^property-wrapper-projection]: 본문의 의미는, 속성에 `projectedValue` 가 있으면, 스위프트가 `$<projectedValue>` 같은 구문을 자동 지원한다는 것입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% link docs/books/swift-programming-language/properties.md %}) 장의 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)]({% link docs/books/swift-programming-language/properties.md %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-내밀기) 부분을 보도록 합니다. 
+[^property-wrapper-projection]: 본문의 의미는, 속성에 `projectedValue` 가 있으면, 스위프트가 `$<projectedValue>` 같은 구문을 자동 지원한다는 것입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)]({% link docs/swift-books/swift-programming-language/properties.md %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-내밀기) 부분을 보도록 합니다. 
 
 [^escaped]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 보통은 'excape character' 라고 하면 `\` 기호를 붙이는 것을 말하지만, 여기서는 `` ` `` 기호를 사용하여 '키워드' 를 마치 일반 단어처럼 사용할 수 있게 만드는 것을 의미합니다.
 
-[^type-annotations]: '타입 보조 설명 (Type Annotations)' 에 대해서는, [The Basics (기초)]({% link docs/books/swift-programming-language/the-basics.md %}) 장의 [Type Annotations (타입 보조 설명)]({% link docs/books/swift-programming-language/the-basics.md %}#type-annotations-타입-보조-설명) 부분을 보도록 합니다.
+[^type-annotations]: '타입 보조 설명 (Type Annotations)' 에 대해서는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Type Annotations (타입 보조 설명)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-annotations-타입-보조-설명) 부분을 보도록 합니다.
 
 [^unescaped]: 여기서 '벗어나지 않는 것' 이란, 앞서 '벗어난 (escaped) 것' 에서 설명한 것과 반대로, 문자의 본래 의미로 사용하는 것을 말합니다. 본문에서는 '문자열 글자 값' 이 '따옴표' 를 직접 담을 수 없으며, 따옴표를 문자열 글자 값에 사용하려면 `\` 를 붙여야 함을 설명하고 있습니다.
 
@@ -284,7 +284,7 @@ let regex2 = # #/abc/# #    // 에러
 
 [^line-break]: 이 책에서는 '줄 끊음 (line break) 과, 줄 먹임 (line feed) 및, 새 줄 (new line; 개행 문자)' 이라는 용어를 섞어 쓰는데, 셋 다 `\n` 를 의미합니다. 초창기에 컴퓨터 운영 체제마다 서로 다른 개행 문자를 사용하다 보니, 똑같은 걸 의미하는 용어가 생긴 것이 아닌가 생각합니다. 스위프트에선 '개행 문자로 줄 먹임 (line feed; LF; `\n`) 만 사용' 하는 게 표준입니다. 이에 대한 더 자세한 내용은, 위키피디아의 [Newline](https://en.wikipedia.org/wiki/Newline) 항목과 [새줄 문자](https://ko.wikipedia.org/wiki/새줄_문자) 항목을 보도록 합니다.
 
-[^begins-or-ends]: 이 설명은 글보다 예제를 직접 보는 게 더 낫습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% link docs/books/swift-programming-language/strings-and-characters.md %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)]({% link docs/books/swift-programming-language/strings-and-characters.md %}#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
+[^begins-or-ends]: 이 설명은 글보다 예제를 직접 보는 게 더 낫습니다. 관련 예제는, [Strings and Characters (문자열과 문자)]({% link docs/swift-books/swift-programming-language/strings-and-characters.md %}) 장의 [Multiline String Literals (여러 줄짜리 문자열 글자 값)]({% link docs/swift-books/swift-programming-language/strings-and-characters.md %}#multiline-string-literals-여러-줄짜리-문자열-글자-값) 부분에 있습니다.
 
 [^line-break-to-line-feed]: 에전에는 프로그래머가 수동으로 줄 끊음 문자를 줄 먹임 문자로 바꿔줘야 했는데, 스위프트는 이러한 정규화 과정을 자동으로 해준다는 의미입니다.
 

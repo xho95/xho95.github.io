@@ -13,7 +13,7 @@ redirect_from: "/swift/language/grammar/generic/parameters/arguments/2017/03/15/
 
 이번 장에선 일반화 타입과, 함수, 및 초기자의 매개 변수와 인자를 설명합니다. 일반화 타입이나, 함수, 첨자, 또는 초기자를 선언할 땐, 일반화 타입이나, 함수, 또는 초기자와 작업할 수 있는 타입 매개 변수를 지정합니다. 이러한 타입 매개 변수는 자리 표시자[^placeholders] 처럼 행동하며 일반화 타입 인스턴스를 생성하거나 일반화 함수 또는 초기자를 호출할 때 실제 고정 타입[^concrete-type] 인자로 교체합니다.
 
-스위프트 일반화의 전체 개요에 대해선, [Generics (일반화)]({% link docs/books/swift-programming-language/generics.md %}) 를 보기 바랍니다.
+스위프트 일반화의 전체 개요에 대해선, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 를 보기 바랍니다.
 
 ### Generic Parameter Clause (일반화 매개 변수 절)
 
@@ -71,7 +71,7 @@ extension Collection where Element: SomeProtocol {
 
 일반화 함수나 초기자를 중복 정의하려면 타입 매개 변수에 서로 다른 구속 조건이나, 필수 조건, 또는 둘 다를 제공하면 됩니다. 중복 정의한 일반화 함수나 초기자를 호출할 때, 컴파일러가 이러한 구속 조건을 사용하여 어느 중복 정의 함수나 초기자를 불러낼 건지 해결합니다.
 
-일반화 `where` 절에 대한 더 많은 정보와 일반화 함수 선언에서의 사용 예를 보려면, [Generic Where Clauses (일반화 where 절)]({% link docs/books/swift-programming-language/generics.md %}#generic-where-clauses-일반화-where-절) 부분을 보기 바랍니다.
+일반화 `where` 절에 대한 더 많은 정보와 일반화 함수 선언에서의 사용 예를 보려면, [Generic Where Clauses (일반화 where 절)]({% link docs/swift-books/swift-programming-language/generics.md %}#generic-where-clauses-일반화-where-절) 부분을 보기 바랍니다.
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#ID407)
 
@@ -103,7 +103,7 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 ### 다음 장
 
-[Document Revision History (문서를 다듬은 역사) >]({% link docs/books/swift-programming-language/document-revision-history.md %})[^link]
+[Document Revision History (문서를 다듬은 역사) >]({% link docs/swift-books/swift-programming-language/document-revision-history.md %})[^link]
 
 ### 참고 자료
 

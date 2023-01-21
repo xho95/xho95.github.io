@@ -14,7 +14,7 @@ _초기화 (initialization)_ 는 사용할 클래스나, 구조체, 또는 열�
 
 한 특별한 타입의 새 인스턴스를 생성하고자 호출할 수 있는 특수한 함수 같은, _초기자 (initializers)_ 를 정의함으로써 이 초기화 과정을 구현합니다. 오브젝티브-C 초기자와 달리, 스위프트 초기자는 값을 반환하지 않습니다. 이들의 으뜸 역할은 최초로 사용하기 전에 새 타입 인스턴스를 올바로 초기화하도록 보장하는 겁니다.
 
-클래스 타입 인스턴스는, 그 클래스의 인스턴스 해제 직전에 어떤 자신만의 정리를 하는, _정리자 (deinitializers)_ 도 구현할 수 있습니다. 정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% link docs/books/swift-programming-language/deinitialization.md %}) 부분을 보도록 합니다.
+클래스 타입 인스턴스는, 그 클래스의 인스턴스 해제 직전에 어떤 자신만의 정리를 하는, _정리자 (deinitializers)_ 도 구현할 수 있습니다. 정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) 부분을 보도록 합니다.
 
 ### Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)
 
@@ -257,13 +257,13 @@ print(zeroByZero.width, zeroByZero.height)
 
 초기자는 다른 초기자를 호출하여 인스턴스 일부분을 초기화할 수 있습니다. _초기자 맡김 (initializer delegation)_ 이라는, 이 과정은, 여러 초기자를 가로질러 코드가 중복되는 걸 피하게 합니다.
 
-초기자 맡김 작업 방법, 및 허용한 맡김 형식 규칙은, 값 타입과 클래스 타입에서 서로 다릅니다. (구조체와 열거체인) 값 타입은 상속을 지원하지 않으므로, 초기자 맡김 과정이 상대적으로 단순한데, 자기 자신이 제공한 또 다른 초기자로만 맡길 수 있기 때문입니다. 하지만, 클래스는, [Inheritance (상속)]({% link docs/books/swift-programming-language/inheritance.md %}) 에서 설명한 것처럼, 다른 클래스를 상속할 수 있습니다. 이는 초기화 중에 자신이 상속한 모든 저장 속성에 적합한 값을 할당한다고 보장할 추가적인 책임이 클래스엔 있다는 의미입니다. 클래스의 경우  이 책임은 아래의 [Class Inheritance and Initialization (클래스 상속 및 초기화)](#class-inheritance-and-initialization-클래스-상속-및-초기화) 부분에서 설명합니다.
+초기자 맡김 작업 방법, 및 허용한 맡김 형식 규칙은, 값 타입과 클래스 타입에서 서로 다릅니다. (구조체와 열거체인) 값 타입은 상속을 지원하지 않으므로, 초기자 맡김 과정이 상대적으로 단순한데, 자기 자신이 제공한 또 다른 초기자로만 맡길 수 있기 때문입니다. 하지만, 클래스는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 에서 설명한 것처럼, 다른 클래스를 상속할 수 있습니다. 이는 초기화 중에 자신이 상속한 모든 저장 속성에 적합한 값을 할당한다고 보장할 추가적인 책임이 클래스엔 있다는 의미입니다. 클래스의 경우  이 책임은 아래의 [Class Inheritance and Initialization (클래스 상속 및 초기화)](#class-inheritance-and-initialization-클래스-상속-및-초기화) 부분에서 설명합니다.
 
 값 타입에선, 자신만의 초기자를 작성할 때 `self.init` 으로 동일 값 타입의 다른 초기자를 참조합니다. 초기자 안에서만 `self.init` 을 호출할 수 있습니다.
 
 값 타입에 자신만의 초기자를 정의하면, 더 이상 그 타입의 기본 초기자 (또는, 구조체면, 멤버 초기자) 에 접근할 수 없다는 걸 기억하기 바랍니다. 이런 구속은 누군가 하나의 자동 초기자를 사용함으로써 더 복잡한 초기자에서 제공한 핵심 추가 설정을 우회하게 되는 사고를 막아줍니다.
 
-> 자신의 값 타입이 기본 초기자 및 멤버 초기자와 함께, 자신만의 초기자로도 초기화 가능하게 하고 싶으면, 자신의 초기자를 값 타입의 원본 구현 부분 보단 익스텐션 (extension) 에서 작성합니다. 더 많은 정보는, [Extensions (익스텐션; 확장)]({% link docs/books/swift-programming-language/extensions.md %}) 을 보도록 합니다.
+> 자신의 값 타입이 기본 초기자 및 멤버 초기자와 함께, 자신만의 초기자로도 초기화 가능하게 하고 싶으면, 자신의 초기자를 값 타입의 원본 구현 부분 보단 익스텐션 (extension) 에서 작성합니다. 더 많은 정보는, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보도록 합니다.
 
 다음 예제는 기하 직사각형을 나타내는 `Rect` 구조체를 정의합니다. 예제는 `Size` 와 `Point` 라는 두 개의 지원용 구조체를 요구하는데, 둘 다 자신의 모든 속성에 `0.0` 이라는 기본 값을 제공합니다:
 
@@ -318,7 +318,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 `init(center:size:)` 초기자 스스로 적절한 속성에 새 `origin` 과 `size` 값을 할당할 수도 있을 겁니다. 하지만, `init(center:size:)` 초기자가 이미 정확히 그 기능을 하는 기존 초기자라는 이점을 취하는게 더 편리 (하며 의도도 더 명확) 합니다.
 
-> `init()` 과 `init(origin:size:)` 초기자 그 자체의 정의 없이 이 예제를 작성하는 대안은, [Extensions (익스텐션; 확장)]({% link docs/books/swift-programming-language/extensions.md %}) 을 보도록 합니다.
+> `init()` 과 `init(origin:size:)` 초기자 그 자체의 정의 없이 이 예제를 작성하는 대안은, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보도록 합니다.
 
 ### Class Inheritance and Initialization (클래스 상속 및 초기화)
 
@@ -1020,21 +1020,21 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 ### 다음 장
 
-[Deinitialization (뒷정리) >]({% link docs/books/swift-programming-language/deinitialization.md %})
+[Deinitialization (뒷정리) >]({% link docs/swift-books/swift-programming-language/deinitialization.md %})
 
 ### 참고 자료
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Initialization](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html) 에서 볼 수 있습니다.
 
-[^property-declaration]: 앞서 [Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-초기-값-설정하기) 부분에선, 기본 값 설정을 속성 정의 (definition) 에서 한다고 했다가, 여기선 속성 선언 (declaration) 에서 지정한다고 말합니다. 이것은, [Declarations (선언)]({% link docs/books/swift-programming-language/declarations.md %}) 장 맨 앞에서 설명한 것처럼, 스위프트에선 이 둘의 구분이 중요하지 않아서, 두 용어를 거의 같은 의미로 사용하기 때문입니다.
+[^property-declaration]: 앞서 [Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-초기-값-설정하기) 부분에선, 기본 값 설정을 속성 정의 (definition) 에서 한다고 했다가, 여기선 속성 선언 (declaration) 에서 지정한다고 말합니다. 이것은, [Declarations (선언)]({% link docs/swift-books/swift-programming-language/declarations.md %}) 장 맨 앞에서 설명한 것처럼, 스위프트에선 이 둘의 구분이 중요하지 않아서, 두 용어를 거의 같은 의미로 사용하기 때문입니다.
 
 [^funnel]: 지명 초기자를 '깔대기' 에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연쇄되는 모습이 깔대기와 흡사하기 때문입니다.
 
 [^convenience]: 이 부분은 원문 자체가 장황하게 설명되어 있는데, 결국 의미 자체는 번역한 문장과 대동소이 하므로, 짧게 줄여서 변역했습니다.
 
-[^base-class]: 기초 클래스 (base class) 는 어떤 클래스로부터도 상속받지 않은 클래스입니다. 계층 구조 맨 위에 있을 수 있는 모든 클래스는 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스도 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% link docs/books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다. 
+[^base-class]: 기초 클래스 (base class) 는 어떤 클래스로부터도 상속받지 않은 클래스입니다. 계층 구조 맨 위에 있을 수 있는 모든 클래스는 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스도 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다. 
 
-[^default-member-initializer]: [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 멤버 초기자는 구조체에만 주어집니다. 즉, 클래스에는 기본 멤버 초기자라는게 따로 없습니다. 구조체의 멤버 초기자 같은 초기자가 클래스에 필요하면, 본문 같이 이를 직접 구현해야 합니다.
+[^default-member-initializer]: [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 멤버 초기자는 구조체에만 주어집니다. 즉, 클래스에는 기본 멤버 초기자라는게 따로 없습니다. 구조체의 멤버 초기자 같은 초기자가 클래스에 필요하면, 본문 같이 이를 직접 구현해야 합니다.
 
 [^function-name]: 사실, 초기자는 이름을 가지지 않는다기 보단 모든 함수 이름이 `init` 으로 똑같은 경우입니다. 그래서, 초기자를 이름만으로 식별할 순 없습니다.
 

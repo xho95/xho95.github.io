@@ -221,7 +221,7 @@ func printNumberOfRooms() {
 }
 ```
 
-이 메소드는 반환 타입을 지정하지 않습니다. 하지만, [Functions Without Return Values (반환 값이 없는 함수)]({% link docs/books/swift-programming-language/functions.md %}#functions-without-return-values-반환-값이-없는-함수) 에서 설명한 것처럼, 반환 타입이 없는 함수와 메소드는 `Void` 라는 암시적인 반환 타입을 가집니다. 이는 이들이 `()` 라는 반환 값, 또는 빈 튜플을 반환한다는 의미입니다.
+이 메소드는 반환 타입을 지정하지 않습니다. 하지만, [Functions Without Return Values (반환 값이 없는 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#functions-without-return-values-반환-값이-없는-함수) 에서 설명한 것처럼, 반환 타입이 없는 함수와 메소드는 `Void` 라는 암시적인 반환 타입을 가집니다. 이는 이들이 `()` 라는 반환 값, 또는 빈 튜플을 반환한다는 의미입니다.
 
 옵셔널 값에서 옵셔널 사슬로 이 메소드를 호출하면, 메소드 반환 타입이, `Void` 가 아니라, `Void?` 일 건데, 옵셔널 사슬을 통하여 호출할 땐 반환 값이 항상 옵셔널 타입이기 때문입니다. 이는, 메소드가 그 자체론 반환 값을 정의하지 않을지라도, `if` 문을 사용하여 `printNumberOfRooms()` 메소드 호출이 가능한지 검사할 수 있게 합니다. 메소드 호출이 성공했는지 알아보려면 `printNumberOfRooms` 호출의 반환 값을 `nil` 과 비교하기 바랍니다.
 
@@ -379,7 +379,7 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 ### 다음 장
 
-[Error Handling (에러 처리) >]({% link docs/books/swift-programming-language/error-handling.md %})
+[Error Handling (에러 처리) >]({% link docs/swift-books/swift-programming-language/error-handling.md %})
 
 ### 참고 자료
 
@@ -387,9 +387,9 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^gracefully-fail]: '우아하게 (gracefully) 실패한다' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 사슬의 어떤 고리든 `nil` 이면, 실행시간 에러가 발생하는 게 아니라, 전체 사슬이 `nil` 이 됩니다.
 
-[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/books/swift-programming-language/the-basics.md %}) 장의 [Optional Binding (옵셔널 연결)]({% link docs/books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 부분을 보도록 합니다.
+[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 부분을 보도록 합니다.
 
-[^side-effect]: 프로그래밍 분야에선 '부작용 (side effects)' 을 '부수적인 효과' 라는 의미로 이해하는 게 좋습니다. 본문 내용은 상수에 대한 접근이 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는지 아닌지 알 방법이 없다는 의미입니다. 프로그래밍 분야의 부작용에 대한 더 자세한 내용은, [Expressions (표현식)]({% link docs/books/swift-programming-language/expressions.md %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 보도록 합니다.
+[^side-effect]: 프로그래밍 분야에선 '부작용 (side effects)' 을 '부수적인 효과' 라는 의미로 이해하는 게 좋습니다. 본문 내용은 상수에 대한 접근이 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는지 아닌지 알 방법이 없다는 의미입니다. 프로그래밍 분야의 부작용에 대한 더 자세한 내용은, [Expressions (표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 보도록 합니다.
 
 [^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것이 프로그래밍에서 말하는 부수적인 효과, 즉, '부작용 (side effects)' 입니다. 이 함수의 원래 목적은 주소를 생성하는 것인데, `print` 는 원래 목적과는 상관없이 부수적인 효과-부작용-를 일으킵니다.
 

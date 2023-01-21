@@ -14,7 +14,7 @@ _타입 변환 (Type Casting)_[^type-casting-and-type-conversion] 은 인스턴�
 
 스위프트의 타입 변환은 `is` 와 `as` 연산자로 구현합니다. 이 두 연산자는 단순하고 좋은 표현력으로[^expressive] 값의 타입을 검사하거나 값을 다른 타입으로 변환하는 방식을 제공합니다.
 
-[Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% link docs/books/swift-programming-language/protocols.md %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명한 것처럼, 타입 변환을 사용하여 타입이 프로토콜을 준수하는지 검사할 수 있습니다.
+[Checking for Protocol Conformance (프로토콜 준수성 검사하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#checking-for-protocol-conformance-프로토콜-준수성-검사하기) 에서 설명한 것처럼, 타입 변환을 사용하여 타입이 프로토콜을 준수하는지 검사할 수 있습니다.
 
 ### Defining a Class Hierarchy for Type Casting (타입 변환을 위한 클래스 계층 정의하기)
 
@@ -206,7 +206,7 @@ things.append(optionalNumber as Any) // 경고 없음
 
 ### 다음 장
 
-[Nested Types (중첩 타입) >]({% link docs/books/swift-programming-language/nested-types.md %})
+[Nested Types (중첩 타입) >]({% link docs/swift-books/swift-programming-language/nested-types.md %})
 
 ### 참고 자료
 
@@ -216,7 +216,7 @@ things.append(optionalNumber as Any) // 경고 없음
 
 [^expressive]: '표현력이 좋다 (expressive)' 는 건 '컴파일러와 개발자 모두가 이해하기 쉬운 코드를 쉽게 작성할 수 있다' 는 의미입니다. 이에 대한 더 자세한 내용은, **stackoverflow** 의 [What does "expressive" mean when referring to programming languages?](https://stackoverflow.com/questions/638881/what-does-expressive-mean-when-referring-to-programming-languages) 항목을 보도록 합니다. 
 
-[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass) 가 없는 클래스' 를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/books/swift-programming-language/inheritance.md %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 보도록 합니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass) 가 없는 클래스' 를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 보도록 합니다.
 
 [^downcast]: '내림 변환 (downcast)' 은 클래스 계층 구조에서 하위 클래스의 하나로 변환하는 것을 말합니다. 내림 변환에 대한 자세한 내용은, 바로 뒤의 [Downcasting (내림 변환)](#downcasting-내림-변환) 부분에서 설명하고 있습니다.
 

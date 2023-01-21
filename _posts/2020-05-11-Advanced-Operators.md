@@ -10,7 +10,7 @@ categories: Swift Language Grammar Advanced Operator
 
 ## Advanced Operators (고급 연산자)
 
-[Basic Operators (기초 연산자)]({% link docs/books/swift-programming-language/basic-operators.md %}) 에서 설명한 연산자에 더해, 스위프트는 더 복잡하게 값을 조작하는 여러 가지 고급 연산자를 제공합니다. 이는 모든 종류의 비트 (bitwise) 및 비트 이동 (bit shifting) 연산자를 포함하는데 C 와 오브젝티브-C 에서부터 익숙할 겁니다.
+[Basic Operators (기초 연산자)]({% link docs/swift-books/swift-programming-language/basic-operators.md %}) 에서 설명한 연산자에 더해, 스위프트는 더 복잡하게 값을 조작하는 여러 가지 고급 연산자를 제공합니다. 이는 모든 종류의 비트 (bitwise) 및 비트 이동 (bit shifting) 연산자를 포함하는데 C 와 오브젝티브-C 에서부터 익숙할 겁니다.
 
 C 의 산술 (arithmetic) 연산자와 달리, 스위프트의 산술 연산자는 기본적으로 값이 넘치지 않습니다. 값 넘침 (overflow) 동작은 잡아서 에러라고 보고합니다. 값 넘침 동작을 직접 선택하려면, 값 넘침 덧셈 연산자 (`&+`) 같이, 기본적으로 값이 넘치는 스위프트의 두 번째 산술 연산자 집합을 사용합니다. 이러한 모든 값 넘침 연산자는 앰퍼샌드 (`&`)[^ampersand] 로 시작합니다.
 
@@ -395,11 +395,11 @@ if twoThree == anotherTwoThree {
 // "These two vectors are equivalent." 를 인쇄함
 ```
 
-[Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)]({% link docs/books/swift-programming-language/protocols.md %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-사용하여-프로토콜-채택하기) 에서 설명한 것처럼, 수많은 단순한 경우에, 스위프트가 같음 비교 연산자의 통합 구현을 제공하도록 요청할 수 있습니다.
+[Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-사용하여-프로토콜-채택하기) 에서 설명한 것처럼, 수많은 단순한 경우에, 스위프트가 같음 비교 연산자의 통합 구현을 제공하도록 요청할 수 있습니다.
 
 ### Custom Operators (사용자 정의 연산자)
 
-스위프트가 제공하는 표준 연산자에 더해 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. 자신만의 연산자 정의에 사용할 수 있는 문자 목록은, [Operators (연산자)]({% link docs/books/swift-programming-language/lexical-structure.md %}#operators-연산자) 부분을 보도록 합니다.
+스위프트가 제공하는 표준 연산자에 더해 자신만의 _사용자 정의 연산자 (custom operators)_ 를 선언하고 구현할 수 있습니다. 자신만의 연산자 정의에 사용할 수 있는 문자 목록은, [Operators (연산자)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}#operators-연산자) 부분을 보도록 합니다.
 
 새로운 연산자는 전역 수준에서 `operator` 키워드로 선언하며[^global-level], `prefix` 나, `infix`, 또는 `postfix` 수정자를 표시합니다:
 
@@ -444,7 +444,7 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스임
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 동일한 우선권 그룹을 줬습니다. 스위프트 표준 라이브러리가 제공한, 연산자 우선권 그룹 및 결합성 설정에 대한 완전한 목록을 포함하는, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 보도록 합니다. 우선권 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선권 그룹 정의 구문을 보려면, [Operator Declaration (연산자 선언)]({% link docs/books/swift-programming-language/declarations.md %}#operator-declaration-연산자-선언) 부분을 보도록 합니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 동일한 우선권 그룹을 줬습니다. 스위프트 표준 라이브러리가 제공한, 연산자 우선권 그룹 및 결합성 설정에 대한 완전한 목록을 포함하는, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 보도록 합니다. 우선권 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선권 그룹 정의 구문을 보려면, [Operator Declaration (연산자 선언)]({% link docs/swift-books/swift-programming-language/declarations.md %}#operator-declaration-연산자-선언) 부분을 보도록 합니다.
 
 > 접두사나 접미사 연산자를 정의할 땐 우선권을 지정하지 않습니다. 하지만, 동일한 피연산자에 접두사와 접미사 연산자를 둘 다 적용하면, 접미사 연산자가 먼저 적용됩니다.
 
@@ -592,11 +592,11 @@ let manyStars = draw {
 
 위 코드에서, `for` 반복문은 그림 배열을 생성하며, `buildArray(_:)` 메소드가 그 배열을 `Line` 으로 바꿉니다.
 
-제작자 구문을 제작자 타입의 메소드 호출로 스위프트가 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% link docs/books/swift-programming-language/attributes.md %}#resultbuilder-결과-제작자) 부분을 보도록 합니다.
+제작자 구문을 제작자 타입의 메소드 호출로 스위프트가 변형하는 방법에 대한 완전한 목록은, [resultBuilder]({% link docs/swift-books/swift-programming-language/attributes.md %}#resultbuilder-결과-제작자) 부분을 보도록 합니다.
 
 ### 다음 장
 
-[About the Language Reference (언어의 기준에 대하여)]({% link docs/books/swift-programming-language/about-the-language-reference.md %})
+[About the Language Reference (언어의 기준에 대하여)]({% link docs/swift-books/swift-programming-language/about-the-language-reference.md %})
 
 ### 참고 자료
 
@@ -622,7 +622,7 @@ let manyStars = draw {
 
 [^infix]: '중위 (infix)' 는 '중간에 위치한다' 라는 말을 줄인 것으로, 수학에서 사용하는 용어입니다. '중위 (infix)' 에 대한 더 자세한 정보는, 위키피디아의 [Infix notation](https://en.wikipedia.org/wiki/Infix_notation) 항목과 [중위 표기법](https://ko.wikipedia.org/wiki/중위_표기법) 항목을 보도록 합니다. 
 
-[^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% link docs/books/swift-programming-language/nested-types.md %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 보도록 합니다.
+[^qualified]: '규명 (qualifed) 해야 한다' 는 건 자신의 소속을 알려야 한다는 의미입니다. 규명하다는 것에 대한 더 자세한 내용은, [Nested Types (중첩 타입)]({% link docs/swift-books/swift-programming-language/nested-types.md %}) 장의 [Referring to Nested Types (중첩 타입 참조하기)](#referring-to-nested-types-중첩-타입-참조하기) 부분에 있는 주석을 보도록 합니다.
 
 [^addition-earlier]: [Operator Methods (연산자 메소드)](#operator-methods-연산자-메소드) 부분에서 구현한 것을 그대로 사용합니다. 스위프트 프로그래밍 언어 책의 예제는 각각의 장별로 내용이 이어집니다.
 
@@ -634,7 +634,7 @@ let manyStars = draw {
 
 [^list-or-tree]: '리스트 (list) 와 트리 (tree)' 자료 구조에 대한 더 자세한 정보는, 위키피디아의 [Linked list](https://en.wikipedia.org/wiki/Linked_list) 항목 및 [연결 리스트](https://ko.wikipedia.org/wiki/연결_리스트) 그리고 [Tree (data structure)](https://en.wikipedia.org/wiki/Tree_(data_structure)) 항목 및 [트리 구조](https://ko.wikipedia.org/wiki/트리_구조) 항목을 보도록 합니다.
 
-[^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% link docs/books/swift-programming-language/attributes.md %}) 장을 보도록 합니다.
+[^attribute]: '특성 (attribute)' 에 대한 더 자세한 내용은, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장을 보도록 합니다.
 
 [^greeting-draw]: `makeGreeting` 함수 안에서 `draw { ... }` 부분과 `caps { ... }` 부분이 이 함수들을 호출하는 부분이며, 이 때 `DrawingBuilder` 가 정의한 특수 구문을 사용하게 됩니다.
 
