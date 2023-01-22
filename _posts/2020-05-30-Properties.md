@@ -20,9 +20,9 @@ _속성 (properties)_ 은 값을 하나의 특별한 클래스나, 구조체, �
 
 ### Stored Properties (저장 속성)
 
-가장 단순한 형식의, 저장 속성은, 특별한 클래스나 구조체 인스턴스의 일부분으로써 저장하는 상수나 변수입니다. 저장 속성은 (`var` 키워드로 도입한) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입한) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
+가장 단순한 형식의, 저장 속성은 한 특별한 클래스나 구조체 인스턴스의 일부로 저장되는 상수나 변수입니다. 저장 속성은 (`var` 키워드로 도입한) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입한) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
 
-[Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명한 것처럼, 저장 속성을 정의하면서 기본 값 (default value) 을 제공할 수 있습니다. 초기화 중에 저장 속성의 초기 값을 설정하고 수정할 수도 있습니다. [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명한 것처럼, 이는 상수 저장 속성에서도 참입니다.
+[Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명한 것처럼, 저장 속성의 정의 부분에서 기본 값[^default-value] 을 제공할 수 있습니다. 저장 속성의 초기화 중에 초기 값을 설정하고 수정할 수도 있습니다. 이는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명하듯, 상수 저장 속성에서도 참입니다.
 
 아래 예제는, 생성 후엔 길이를 바꿀 수 없는 정수 범위를 설명한, `FixedLengthRange` 라는 구조체를 정의합니다:
 
