@@ -254,7 +254,7 @@ if tenEighty === alsoTenEighty {
 
 #### Pointers (포인터)
 
-**C** 나, **C++** 및 **오브젝티브-C** 를 경험했으면, 이 언어들이 _포인터 (pointers)_ 로 메모리 주소를 참조한다는 걸 알 겁니다. 스위프트의 상수나 변수는 어떠한 참조 타입의 인스턴스를 참조하는 건 **C** 의 포인터와 비슷하지만, 메모리 주소로의 직접적인 포인터는 아니며, 별표 (`*`) 를 써서 참조 생성을 지시하도록 요구하지도 않습니다. 그 대신, 이러한 참조를 스위프트의 다른 어떤 상수나 변수인 것 같이 정의합니다. 표준 라이브러리는 포인터 및 버퍼[^buffer] 타입을 제공하여 포인터와 직접 상호 작용할 필요가 있다면 이를 쓸 수 있습니다-[Manual Memory Management (수동 메모리 관리)](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)[^manual-memory-management] 항목을 보기 바랍니다.
+**C** 나, **C++** 및 **오브젝티브-C** 를 경험했으면, 이 언어들이 _포인터 (pointers)_ 로 메모리 주소를 참조한다는 걸 알 겁니다. 스위프트의 상수나 변수는 어떠한 참조 타입의 인스턴스를 참조하는 건 **C** 의 포인터와 비슷하지만, 메모리 주소를 직접 포인팅하는 건 아니며, 참조를 생성하고 있다고 지시하기 위해 별표 (`*`) 를 쓸 걸 요구하지도 않습니다. 그 대신, 이 참조들을 스위프트의 다른 어떤 상수나 변수인 것 같이 정의합니다. 표준 라이브러리는 포인터와 직접 상호 작용할 필요가 있을 경우 쓸 수 있는 포인터 및 버퍼[^buffer] 타입을 제공합니다-[Manual Memory Management (수동 메모리 관리)](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)[^manual-memory-management] 항목을 보기 바랍니다.
 
 ### 다음 장
 

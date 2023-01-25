@@ -10,21 +10,21 @@ categories: Swift Language Grammar Property
 
 ## Properties (속성)
 
-_속성 (properties)_ 은 값을 특별한 클래스, 구조체, 또는 열거체와 결합합니다. 저장 속성은 인스턴스의 일부분으로써 상수와 변수 값을 저장하는 반면, 계산 속성은 값을 (저장한다기 보단) 계산합니다. 계산 속성은 클래스, 구조체, 및 열거체에서 제공합니다. 저장 속성은 클래스와 구조체에서만 제공합니다.
+_속성 (properties)_ 은 값을 하나의 특별한 클래스나, 구조체, 또는 열거체와 결합합니다. 저장 속성은 상수와 변수 값을 인스턴스의 일부로 저장하는 반면, 계산 속성은 값을 (저장하기 보단) 계산합니다. 계산 속성은 클래스와, 구조체, 및 열거체에서 제공합니다. 저장 속성은 클래스와 구조체에서만 제공합니다.
 
-저장 속성과 계산 속성은 대체로 특별한 타입의 인스턴스와 결합합니다. 하지만, 속성은 타입 그 자체와 결합할 수도 있습니다. 그러한 속성을 타입 속성이라고 합니다.
+저장 및 계산 속성은 대체로 한 특별한 타입의 인스턴스와 결합됩니다. 하지만, 속성이 타입 그 자체와 결합될 수도 있습니다. 그런 속성을 타입 속성이라고 합니다.
 
-여기다, 속성 값이 바뀌는 걸 감시하는 속성 관찰자 (property observers) 를 정의할 수 있어, 사용자 정의 행동으로 응답할 수도 있습니다. 자신이 직접 정의한 저장 속성, 및 상위 클래스로부터 상속한 하위 클래스 속성에, 속성 관찰자를 추가할 수도 있습니다.
+게다가, 속성 관찰자[^property-observers] 를 정의하면 속성 값의 바뀜을 감시할 수 있어서, 사용자 정의 행동에도 응답할 수 있습니다. 속성 관찰자는 자신이 직접 정의한 저장 속성에도, 그리고 하위 클래스가 상위 클래스로부터 상속한 속성에도, 추가할 수 있습니다.
 
-속성 포장 (property wrapper) 을 사용하여 여러 속성에서 획득자 (getter) 와 설정자 (setter) 코드를 재사용할 수도 있습니다.
+속성 포장[^property-wrapper] 을 사용하여 여러 속성의 획득자[^getter] 와 설정자[^setter] 에서 코드를 재사용할 수도 있습니다.
 
 ### Stored Properties (저장 속성)
 
-가장 단순한 형식의, 저장 속성은, 특별한 클래스나 구조체 인스턴스의 일부분으로써 저장하는 상수나 변수입니다. 저장 속성은 (`var` 키워드로 도입한) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입한) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
+가장 단순한 형식의, 저장 속성은 한 특별한 클래스나 구조체 인스턴스의 일부로 저장되는 상수나 변수입니다. 저장 속성은 (`var` 키워드로 도입한) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입한) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
 
-[Default Property Values (기본 속성 값)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-property-values-기본-속성-값) 에서 설명한 것처럼, 저장 속성을 정의하면서 기본 값 (default value) 을 제공할 수 있습니다. 초기화 중에 저장 속성의 초기 값을 설정하고 수정할 수도 있습니다. [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% link docs/swift-books/swift-programming-language/initialization.md %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명한 것처럼, 이는 상수 저장 속성에서도 참입니다.
+[Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명한 것처럼, 저장 속성의 정의 부분에서 기본 값[^default-value] 을 제공할 수 있습니다. 저장 속성의 초기화 중에 초기 값을 설정하고 수정할 수도 있습니다. 이는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명하듯, 상수 저장 속성도 그렇습니다.
 
-아래 예제는, 생성 후엔 길이를 바꿀 수 없는 정수 범위를 설명한, `FixedLengthRange` 라는 구조체를 정의합니다:
+아래 예제는 `FixedLengthRange` 라는 구조체를 정의하여, 생성 후엔 길이를 바꿀 수 없는 정수 범위를 설명합니다:
 
 ```swift
 struct FixedLengthRange {
@@ -32,35 +32,35 @@ struct FixedLengthRange {
   let length: Int
 }
 var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
-// 이 범위는 정수 값 0, 1, 2 를 나타냄
+// 범위가 나타내는 정수 값은 0, 1, 2 임
 rangeOfThreeItems.firstValue = 6
-// 이제 범위는 정수 값 6, 7, 8 을 나타냄
+// 이제 범위가 나타내는 정수 값은 6, 7, 8 임
 ```
 
-`FixedLengthRange` 인스턴스에는 `firstValue` 라는 변수 저장 속성과 `length` 라는 상수 저장 속성이 있습니다. 위 예제에서, `length` 는, 상수 속성이기 때문에, 새 범위를 생성할 때 초기화하고 그 후엔 바꿀 수 없습니다.
+`FixedLengthRange` 인스턴스엔 변수 저장 속성인 `firstValue` 와 상수 저장 속성인 `length` 가 있습니다. 위 예제에서, `length` 는 새로운 범위를 생성할 때 초기화되고 그 이후론 바꿀 수 없는데, 상수 속성이기 때문입니다.
 
 #### Stored Properties of Constant Structure Instances (상수 구조체 인스턴스의 저장 속성)
 
-구조체 인스턴스를 생성하고 그 인스턴스를 상수에 할당하면, 변수 속성으로 선언한 경우에도, 인스턴스의 속성을 수정할 수 없습니다:
+구조체의 인스턴스를 생성하고 그 인스턴스를 상수로 할당하면, 인스턴스의 속성이 변수 속성으로 선언된 경우라도, 수정할 수 없습니다:
 
 ```swift
 let rangeOfFourItems = FixedLengthRange(firstValue : 0, length: 4)
-// 이 범위는 정수 값 0, 1, 2, 3 을 나타냄
+// 이 범위가 나타내는 정수 값은 0, 1, 2, 3 임
 rangeOfFourItems.firstValue = 6
-// 이는, firstValue 가 변수 속성일지라도, 에러를 보고할 것임
+// firstValue 가 변수 속성이더라도, 이는 에러를 보고할 것임
 ```
 
-(`let` 키워드로) `rangeOfFourItems` 을 상수로 선언하기 때문에, `firstValue` 가 변수 속성일지라도, 자신의 `firstValue` 속성을 바꾸는 게 불가능합니다.
+`rangeOfFourItems` 가 (`let` 키워드인) 상수로 선언됐기 때문에, `firstValue` 가 변수 속성이더라도, `firstValue` 속성을 바꾸는게 불가능합니다.
 
-이런 동작은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수로 표시할 땐, 자신의 모든 속성도 그렇습니다.
+이런 동작은 구조체가 _값 타입 (value types)_ 이기 때문입니다. 값 타입의 인스턴스를 상수라고 표시할 때는, 그것의 모든 속성도 그렇게 됩니다.
 
-_참조 타입 (reference types)_ 인, 클래스는 이와 똑같지 않습니다. 참조 타입의 인스턴스를 상수에 할당하면, 그 인스턴스의 변수 속성을 여전히 바꿀 수 있습니다.
+_참조 타입 (reference types)_ 인, 클래스는 이와 같지 않습니다. 참조 타입의 인스턴스를 상수로 할당하는 경우, 여전히 그 인스턴스의 변수 속성을 바꿀 수 있습니다.
 
 #### Lazy Stored Properties (느긋한 저장 속성)
 
-_느긋한 저장 속성 (lazy stored property)_ 은 최초로 사용하기 전까진 초기 값을 계산하지 않는 속성입니다. 선언 앞에 `lazy` 수정자 (modifier) 를 작성하여 느긋한 저장 속성을 지시합니다.
+_느긋한 저장 속성 (lazy stored property)_ 은 최초로 사용하기 전까지는 초기 값을 계산하지 않는 속성입니다. 느긋한 저장 속성이라고 지시하려면 선언 앞에 `lazy` 수정자[^modifier] 쓰면 됩니다.
 
-> 느긋한 속성은 반드시 항상 (`var` 키워드를 가진) 변수로 선언해야 하는데, 인스턴스 초기화를 완료하기 전까진 자신의 초기 값을 못가져올 수도 있기 때문입니다. 상수 속성은 반드시 항상 초기화 완료 _전에 (before)_ 값을 가져야 하므로, 느긋하다고 (lazy) 선언할 수 없습니다.
+> 느긋한 속성은 반드시 항상 (`var` 키워드를 써서) 변수로 선언해야 하는데, 인스턴스 초기화를 완료할 때까지 초기 값을 못가져올 수도 있기 때문입니다. 상수 속성은 초기화를 완료하기 _전에 (before)_ 반드시 항상 값이 있어야 하므로, 느긋하다고 (lazy) 선언할 수 없습니다.
 
 느긋한 속성은 속성의 초기 값이 외부 요인에 의존해서 인스턴스 초기화를 완료하기 전까지 값을 알 수 없을 때 유용합니다. 느긋한 속성은 속성의 초기 값이 복잡하거나 비싼 계산 비용을 요구해서 필요한 게 아닌 한 그 전까지 수행하지 않는게 좋을 때도 유용합니다.
 
