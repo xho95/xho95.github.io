@@ -8,21 +8,21 @@ categories: Swift Language Grammar Property
 
 {% include header_swift_book.md %}
 
-## Properties (속성)
+# Properties (속성)
 
 _속성 (properties)_ 은 값을 하나의 특별한 클래스나, 구조체, 또는 열거체와 결합합니다. 저장 속성은 상수와 변수 값을 인스턴스의 일부로 저장하는 반면, 계산 속성은 값을 (저장하기 보단) 계산합니다. 계산 속성은 클래스와, 구조체, 및 열거체에서 제공합니다. 저장 속성은 클래스와 구조체에서만 제공합니다.
 
-저장 및 계산 속성은 대체로 한 특별한 타입의 인스턴스와 결합됩니다. 하지만, 속성이 타입 그 자체와 결합될 수도 있습니다. 그런 속성을 타입 속성이라고 합니다.
+저장 및 계산 속성은 대체로 한 특별한 타입의 인스턴스에 결합됩니다. 하지만, 속성은 타입 그 자체와 결합될 수도 있습니다. 그런 속성은 타입 속성이라고 합니다.
 
-게다가, 속성 관찰자[^property-observers] 를 정의하면 속성 값의 바뀜을 감시할 수 있어서, 사용자 정의 행동에도 응답할 수 있습니다. 속성 관찰자는 자신이 직접 정의한 저장 속성에도, 그리고 하위 클래스가 상위 클래스로부터 상속한 속성에도, 추가할 수 있습니다.
+게다가, 속성 관찰자[^property-observer] 를 정의하면 속성 값의 바뀜을 감시할 수도 있어서, 사용자가 정의한 행동에도 응답할 수 있습니다. 속성 관찰자는 자신이 직접 정의한 저장 속성과, 하위 클래스가 상위 클래스로부터 상속한 속성에도, 추가할 수 있습니다.
 
-속성 포장[^property-wrapper] 을 사용하여 여러 속성의 획득자[^getter] 와 설정자[^setter] 에서 코드를 재사용할 수도 있습니다.
+속성 포장[^property-wrapper] 을 사용하여 여러 속성의 획득자 (getter) 와 설정자 (setter) 에서 코드를 재사용할 수도 있습니다.
 
-### Stored Properties (저장 속성)
+## Stored Properties (저장 속성)
 
 가장 단순한 형식의, 저장 속성은 한 특별한 클래스나 구조체 인스턴스의 일부로 저장되는 상수나 변수입니다. 저장 속성은 (`var` 키워드로 도입한) _변수 저장 속성 (variable stored properties)_ 이거나 (`let` 키워드로 도입한) _상수 저장 속성 (constant stored properties)_ 일 수 있습니다.
 
-[Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명한 것처럼, 저장 속성의 정의 부분에서 기본 값[^default-value] 을 제공할 수 있습니다. 저장 속성의 초기화 중에 초기 값을 설정하고 수정할 수도 있습니다. 이는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명하듯, 상수 저장 속성도 그렇습니다.
+[Default Property Values (기본 속성 값)]({% post_url 2016-01-23-Initialization %}#default-property-values-기본-속성-값) 에서 설명하듯, 저장 속성의 정의 부분에서 기본 값을 제공할 수 있습니다. 저장 속성을 초기화하는 중에 초기 값을 설정하고 수정할 수도 있습니다. 이는, [Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)]({% post_url 2016-01-23-Initialization %}#assigning-constant-properties-during-initialization-초기화-중에-상수-속성-할당하기) 에서 설명하듯, 상수 저장 속성도 그렇습니다.
 
 아래 예제는 `FixedLengthRange` 라는 구조체를 정의하여, 생성 후엔 길이를 바꿀 수 없는 정수 범위를 설명합니다:
 
@@ -39,7 +39,7 @@ rangeOfThreeItems.firstValue = 6
 
 `FixedLengthRange` 인스턴스엔 변수 저장 속성인 `firstValue` 와 상수 저장 속성인 `length` 가 있습니다. 위 예제에선, `length` 가 상수 속성이기 때문에, 새로운 범위를 생성할 때 초기화되며 그 이후론 바꿀 수 없습니다.
 
-#### Stored Properties of Constant Structure Instances (상수 구조체 인스턴스의 저장 속성)
+### Stored Properties of Constant Structure Instances (상수 구조체 인스턴스의 저장 속성)
 
 구조체의 인스턴스를 생성하고 그 인스턴스를 상수로 할당하면, 인스턴스의 속성이 변수 속성으로 선언된 경우라도, 수정할 수 없습니다:
 
@@ -56,7 +56,7 @@ rangeOfFourItems.firstValue = 6
 
 _참조 타입 (reference types)_ 인, 클래스는 이와 같지 않습니다. 참조 타입의 인스턴스를 상수로 할당하는 경우, 여전히 그 인스턴스의 변수 속성을 바꿀 수 있습니다.
 
-#### Lazy Stored Properties (느긋한 저장 속성)
+### Lazy Stored Properties (느긋한 저장 속성)
 
 _느긋한 저장 속성 (lazy stored property)_ 은 최초로 쓸 때까지 초기 값을 계산하지 않는 속성입니다. 느긋한 저장 속성이라고 하려면 선언 앞에 `lazy` 수정자[^modifier] 쓰면 됩니다.
 
@@ -69,48 +69,48 @@ _느긋한 저장 속성 (lazy stored property)_ 은 최초로 쓸 때까지 초
 ```swift
 class DataImporter {
   /*
-  DataImporter 는 외부 파일에서 자료를 불러오는 클래스입니다.
-  이 클래스의 초기화에는 유의미한 양의 시간이 걸린다고 가정합니다.
+  DataImporter 는 외부 파일에서 데이터를 불러오는 클래스입니다.
+  클래스를 초기화하는데 유의미한 양의 시간이 걸린다고 가정합니다.
   */
   var filename = "data.txt"
-  // DataImporter 클래스는 여기서 자료 불러오는 기능을 제공할 것임
+  // DataImporter 클래스는 여기에서 데이터 불러오기 기능을 제공할 것임
 }
 
 class DataManager {
   lazy var importer = DataImporter()
   var data = [String]()
-  // DataManager 클래스는 여기서 자료 관리 기능을 제공할 것임
+  // DataManager 클래스는 여기에서 자료 관리 기능을 제공할 것임
 }
 
 let manager = DataManager()
 manager.data.append("Some data")
 manager.data.append("Some more data")
-// importer 속성의 DataImporter 인스턴스는 아직 생성하지 않음
+// importer 속성의 DataImporter 인스턴스는 아직 생성되지 않았음
 ```
 
-`DataManager` 클래스에는 `data` 라는 저장 속성이 있는데, 이는 새로운, 빈 `String` 값 배열로 초기화됩니다. 나머지 기능을 보여주진 않지만, `DataManager` 클래스의 목적은 이 `String` 자료 배열의 접근을 제공하고 이를 관리하는 것입니다.
+`DataManager` 클래스에는 `data` 라는 저장 속성이 있는데, 이는 새로운, 빈 `String` 값 배열로 초기화됩니다. 나머지 기능들을 보여주진 않았지만, 이 `DataManager` 클래스의 목적은 `String` 데이터 배열을 관리하고 이에 대한 접근을 제공하는 겁니다.
 
-`DataManager` 클래스의 일부 기능은 파일에서 자료를 불러오는 능력입니다. 이 기능은, 초기화에 유의미한 양의 시간이 걸린다고 가정한, `DataImporter` 클래스가 제공합니다. 이는 `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열고 그 내용을 메모리로 읽어들일 필요가 있을 지도 모르기 때문입니다.
+`DataManager` 클래스의 기능 일부는 파일에서 데이터를 불러오는 능력입니다. 이 기능은 `DataImporter` 클래스가 제공하는데, 초기화에 유의미한 양의 시간이 걸린다고 가정합니다. `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열어서 그 내용물을 메모리로 읽어들이는게 필요할지도 모르기 때문입니다.
 
-`DataManager` 인스턴스가 파일에서 불러오지 않은 자료를 관리할 가능성도 있기 때문에, `DataManager` 는 `DataManager` 스스로를 생성할 때 새 `DataImporter` 인스턴스를 생성하지 않습니다. 그 대신, `DataImporter` 인스턴스를 최초로 사용할 경우 그 때 생성하는 게 더 말이 됩니다.
+`DataManager` 인스턴스가 관리하는 데이터가 늘 파일에서 불러온 데이터는 아닐 수 있기 때문에, `DataManager` 는 새로운 `DataImporter` 인스턴스를 `DataManager` 그 자체를 생성할 때 생성하지 않습니다. 그 대신, `DataImporter` 인스턴스를 최초로 사용한다면 그 때 생성하는게 더 말이 됩니다.
 
-`lazy` 수정자로 표시하기 때문에, `filename` 속성을 조회할 때 같이, `importer` 속성에 최초로 접근할 때에만 `importer` 속성의 `DataImporter` 인스턴스를 생성합니다:
+`lazy` 수정자로 표시하기 때문에, `importer` 속성의 `DataImporter` 인스턴스는, `filename` 속성을 조회할 때 같이, `importer` 속성에 처음으로 접근할 때만 생성됩니다:
 
 ```swift
 print(manager.importer.filename)
-// importer 속성의 DataImporter 인스턴스가 이제 막 생성됨
+// importer 속성의 DataImporter 인스턴스를 이제 막 생성했음
 // "data.txt" 를 인쇄함
 ```
 
-> `lazy` 수정자로 표시한 속성이 아직 초기화가 안됐는데 동시에 여러 개의 쓰레드가 접근할 경우, 속성이 한 번만 초기화될 거라는 보증은 없습니다.
+> `lazy` 수정자를 표시한 속성이 아직 초기화가 안됐는데 여러 쓰레드에서 동시에 접근할 경우, 속성이 한 번만 초기화된다는 걸 보증하지 않습니다.[^async]
 
-#### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)
+### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)
 
 오브젝티브-C 에 대한 경험이 있다면, 클래스 인스턴스 일부분으로 값과 참조를 저장하는데 _두 가지 (two)_ 방식을 제공하는 걸 알고 있을 겁니다.[^instance-variables] 속성에다가, 속성에 저장한 값의 백업용 저장 공간인 인스턴스 변수도 사용할 수 있습니다.
 
 스위프트는 이 개념들을 단일한 속성 선언으로 통일했습니다. 스위프트 속성은 해당하는 인스턴스 변수를 가지지 않으며, 속성의 백업용 저장 공간에 직접 접근하지 않습니다. 이런 접근법은 서로 다른 상황에서의 값 접근 방법에 대한 혼동을 피하게 하며 속성 선언을 단일, 정의문으로 단순화합니다. 속성의-이름, 타입, 및 메모리 관리 성질을 포함한-모든 정보는 타입 정의의 일부분으로써 단일 위치에 정의합니다.
 
-### Computed Properties (계산 속성)
+## Computed Properties (계산 속성)
 
 저장 속성에 더해, 클래스, 구조체, 및 열거체는, 실제론 값을 저장하지 않는, _계산 속성 (computed properties)_ 도 정의할 수 있습니다. 이는, 그 대신, 간접적으로 다른 속성과 값을 가져오고 설정하는 '획득자 (getter) 와 옵션인 설정자 (setter)'[^optional-setter] 를 제공합니다.
 
@@ -159,7 +159,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 ![computed properties](/assets/Swift/Swift-Programming-Language/Properties-computed-property.png)
 
-#### Shorthand Setter Declaration (짧게 줄인 설정자 선언)
+### Shorthand Setter Declaration (짧게 줄인 설정자 선언)
 
 설정할 새 값의 이름을 계산 속성 설정자가 정의하지 않으면, `newValue` 라는 기본 이름을 사용합니다. 이 짧게 줄인 표기법의 이점을 취한 대안 버전의 `Rect` 구조체는 이렇습니다:
 
@@ -181,7 +181,7 @@ struct AlternativeRect {
 }
 ```
 
-#### Shorthand Getter Declaration (짧게 줄인 획득자 선언)
+### Shorthand Getter Declaration (짧게 줄인 획득자 선언)
 
 획득자의 전체 본문이 단일 표현식이면, 획득자가 그 표현식을 암시적으로 반환합니다. 이 짧게 줄인 표기법과 짧게 줄인 설정자 표기법의 이점을 취한 또 다른 버전의 `Rect` 구조체는 이렇습니다:
 
@@ -203,7 +203,7 @@ struct CompactRect {
 
 획득자에서 `return` 을 생략하는 건, [Functions With an Implicit Return (암시적으로 반환하는 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#functions-with-an-implicit-return-암시적으로-반환하는-함수) 에서 설명한 것처럼, 함수에서 `return` 을 생략하는 것과 동일한 규칙을 따릅니다.
 
-#### Read-Only Computed Properties (읽기-전용 계산 속성)
+### Read-Only Computed Properties (읽기-전용 계산 속성)
 
 획득자는 있지만 설정자가 없는 계산 속성을 _읽기-전용 계산 속성 (read-only computed property)_ 이라고 합니다. 읽기-전용 계산 속성은 항상 값을 반환하며, 점 구문을 통해 접근할 수 있지만, 다른 값을 설정할 순 없습니다.
 
@@ -225,7 +225,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 이 예제는, `width`, `height`, 및 `depth` 속성으로 3-차원 직사각형 상자를 나타내는, `Cuboid` 라는 새로운 구조체를 정의합니다. 이 구조체에는, 직육면체[^cuboid] 의 현재 부피를 계산하여 반환하는, `volume` 이라는 읽기-전용 계산 속성이 있습니다. 특별한 한 `volume` 값에 대해 어떤 `width`, `height`, 및 `depth` 값을 사용해야할 지 헷갈리기 때문에, `volume` 이 설정 가능하다는 건 말이 안됩니다.[^be-settable] 그럼에도 불구하고, 현재 계산한 부피를 외부 사용자가 발견할 수 있도록 `Cuboid` 가 읽기-전용 계산 속성을 제공하는 게 유용합니다.
 
-### Property Observers (속성 관찰자)
+## Property Observers (속성 관찰자)
 
 속성 관찰자는 속성 값이 바뀌는 걸 관찰하여 응답합니다. 속성 관찰자는 속성 값을 설정할 때마다, 새 값이 현재 속성 값과 똑같은 경우에도, 호출됩니다.
 
@@ -287,9 +287,9 @@ stepCounter.totalSteps = 896
 
 > 관찰자를 가진 속성을 '입-출력 (in-out) 매개 변수' 로 함수에 전달하면, `willSet` 과 `didSet` 관찰자를 항상 호출합니다. 이는: 함수 끝에서 값을 속성으로 항상 다시 작성하는 '입-출력 매개 변수의 복사-입력 복사-출력 (copy-in copy-out) 메모리 모델' (방식) 때문입니다. 입-출력 매개 변수 동작에 대한 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/declarations.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
-### Property Wrappers (속성 포장)
+## Property Wrappers (속성 포장)
 
-속성 포장은 속성 저장 방법을 관리하는 코드와 속성을 정의하는 코드 사이에 구분 계층 (layer of seperation) 을 추가합니다. 예를 들어, 쓰레드-안전성 검사를 제공하거나 자신의 실제 자료를 데이터베이스에 저장하는 속성이 있다면, 모든 속성에 대해 그 코드를 작성해야 합니다. 속성 포장을 사용할 땐, 관리 코드를 포장 정의할 때 한 번 작성하면, 여러 속성에 적용함으로써 그 관리 코드를 재사용합니다.[^property-wrapper]
+속성 포장은 속성 저장 방법을 관리하는 코드와 속성을 정의하는 코드 사이에 구분 계층 (layer of seperation) 을 추가합니다. 예를 들어, 쓰레드-안전성 검사를 제공하거나 자신의 실제 자료를 데이터베이스에 저장하는 속성이 있다면, 모든 속성에 대해 그 코드를 작성해야 합니다. 속성 포장을 사용할 땐, 관리 코드를 포장 정의할 때 한 번 작성하면, 여러 속성에 적용함으로써 그 관리 코드를 재사용합니다.[^property-wrapper-management]
 
 속성 포장을 정의하려면, `wrappedValue` 속성을 정의한 구조체나, 열거체, 또는 클래스를 만듭니다. 아래 코드의, `TwelveOrLess` 구조체는 자기의 포장 값이 항상 12 보다 작거나 같은 수를 담는다는 걸 보장합니다. 더 큰 수를 저장하도록 요청하면, 12 를 대신 저장합니다.
 
@@ -351,7 +351,7 @@ struct SmallRectangle {
 
 `_height` 와 `_width` 속성은, `TwelveOrLess` 라는, 속성 포장의 인스턴스를 저장합니다. `height` 와 `width` 의 획득자와 설정자는 `wrappedValue` 속성에 대한 접근을 포장합니다.
 
-#### Setting Initial Values for Wrapped Properties (포장 속성에 초기 값 설정하기)
+### Setting Initial Values for Wrapped Properties (포장 속성에 초기 값 설정하기)
 
 위 예제 코드는 `TwelveOrLess` 정의 안에서 `number` 에 초기 값을 주는 것으로 포장 속성의 초기 값을 설정합니다. 이 속성 포장을 사용하는 코드는, `TwelveOrLess` 가 포장한 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 정의에서 `height` 나 `width` 에 초기 값을 줄 순 없습니다. 초기 값 설정 및 다른 사용자 정의를 지원하려면, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 `SmallNumber` 라고 `TwelveOrless` (의 기능을) 늘린 버전인데 초기자를 정의하여 포장 값과 최대 값을 설정합니다:
 
@@ -453,7 +453,7 @@ print(mixedRectangle.height)
 
 `height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 호출로 생성하는데, 이는 12 라는 기본 최대 값을 사용합니다. `width` 를 포장한 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 호출로 생성합니다.
 
-#### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)
+### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)
 
 포장 값에 더하여, 속성 포장은 _내민 값 (projected value)_ 을 정의함으로써 추가 기능을 드러낼 수 있습니다-예를 들어, 데이터베이스 접근을 관리하는 속성 포장은 자신의 내민 값에 대하여 `flushDatabaseConnection()` 메소드를 드러낼 수 있습니다. 내민 값의 이름은, 달러 기호 (`$`) 로 시작한다는 것만 제외하면, 포장 값과 똑같습니다. 코드에서 `$` 로 시작하는 속성을 정의할 순 없기 때문에 내민 값이 자신이 정의한 속성을 간섭할 일은 절대로 없습니다.
 
@@ -526,7 +526,7 @@ struct SizedRectangle {
 
 속성 포장 구문은 그냥 획득자와 설정자가 있는 속성을 위한 수월한 구문일 뿐이기 때문에, `height` 와 `width` 로의 접근은 다른 어떤 속성으로의 접근과 똑같이 동작합니다. 예를 들어, `resize(to:)` 코드는 자신의 속성 포장을 써서 `height` 와 `width` 에 접근합니다. `resize(to: .large)` 를 호출하면, `.large` 라는 switch 문 case 절이 직사각형의 높이와 폭을 100 으로 설정합니다. 포장 (wrapper) 은 그 속성 값이 12 보다 커지는 걸 막고, 자신이 값을 적당히 조정한 사실을 기록하고자, 내민 값을 `true` 로 설정합니다. `resize(to:)` 끝에서, 반환문이 `$heigh` 와 `$width` 를 검사하여 속성 포장이 `height` 나 `width` 중 어느 하나를 적당히 조정했는 지 결정합니다. 
 
-### Global and Local Variables (전역 변수와 지역 변수)
+## Global and Local Variables (전역 변수와 지역 변수)
 
 위에서 설명한 속성을 계산하고 관찰하는 능력은 _전역 변수 (global variables)_ 와 _지역 변수 (local variables)_ 에서도 사용 가능합니다. 전역 변수는 어떤 함수나, 메소드, 클로저, 및 타입 밖에서 정의한 변수입니다. 지역 변수는 함수나, 메소드, 및 클로저 안에서 정의한 변수입니다.
 
@@ -554,7 +554,7 @@ func someFunction() {
 
 `SmallNumber` 를 속성에 적용할 때 같이, `myNumber` 값에 10 을 설정하는 건 유효합니다. 12 보다 높은 값은 속성 포장이 허용하지 않기 때문에, 24 대신 12 를 `myNumber` 에 설정합니다.
 
-### Type Properties (타입 속성)
+## Type Properties (타입 속성)
 
 인스턴스 속성은 한 특별한 타입의 인스턴스에 속하는 속성입니다. 그 타입의 인스턴스를 새로 생성할 때마다, 다른 어떤 인스턴스와도 구분된, 자신만의 속성 값 집합을 가지게 됩니다.
 
@@ -568,7 +568,7 @@ func someFunction() {
 >
 > 저장 타입 속성은 최초로 접근할 때에 느긋하게 (lazily) 초기화됩니다. 동시에 여러 쓰레드가 접근할 때도, 단 한 번만 초기화하는 걸 보증하며, `lazy` 수정자로 표시할 필요도 없습니다.
 
-#### Type Property Syntax (타입 속성 구문)
+### Type Property Syntax (타입 속성 구문)
 
 C 와 오브젝티브-C 에선, 타입과 결합한 정적 상수와 변수를 _전역 (global)_ 정적 변수로 정의합니다. 스위프트에선, 하지만, 타입 속성을 타입 정의의 일부분인, 타입의 바깥 중괄호 안에서, 작성하며, 각각의 타입 속성 영역은 자신이 지원하는 타입 영역으로 명시됩니다.
 
@@ -600,7 +600,7 @@ class SomeClass {
 
 > 위의 계산 타입 속성 예제는 읽기-전용 (read-only) 계산 타입 속성을 위한 거지만, 계산 인스턴스 속성을 위한 것과 동일한 구문으로 읽고-쓰기 (read-write) 계산 타입 속성을 정의할 수도 있습니다.
 
-#### Querying and Setting Type Properties (타입 속성 조회하기 및 설정하기)
+### Querying and Setting Type Properties (타입 속성 조회하기 및 설정하기)
 
 타입 속성은, 그냥 인스턴스 속성인 것 같이, 점 구문으로 조회하고 설정합니다. 하지만, 타입 속성은, 그 타입의 인스턴스에서가 아니라, _타입 (type)_ 에 대해서 조회하고 설정합니다. 예를 들면 다음과 같습니다:
 
@@ -683,13 +683,17 @@ print(AudioChannel.maxInputLevelForAllChannels)
 // "10" 을 인쇄함
 ```
 
-### 다음 장
+## 다음 장
 
 [Methods (메소드) >]({% link docs/swift-books/swift-programming-language/methods.md %})
 
-### 참고 자료
+## 참고 자료
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Properties](https://docs.swift.org/swift-book/LanguageGuide/Properties.html) 에서 볼 수 있습니다.
+
+[^property-observer]: 속성 관찰자 (property bbserver) 는 뒤에 나오는 [Property Observers (속성 관찰자)](#property-observers-속성-관찰자) 절에서 자세하게 설명합니다.
+
+[^property-wrapper]: 속성 포장 (property wrapper) 은 뒤에 나오는 [Property Wrappers (속성 포장)](#property-wrappers-속성-포장) 절에서 자세하게 설명합니다.
 
 [^instance-variables]: 이 부분은 오브젝티브-C 나 C++ 같은 객체 지향 언어에 대한 설명이므로, 객체 지향 언어에 익숙하지 않으면 넘어가도 됩니다. 객체 지향 언어에서는 '객체 안에서만 접근 가능한 내부 변수' 와 '객체 외부와의 인터페이스를 담당하는 속성' 이란 두 가지 방식으로 값을 저장합니다. 속성에서 인터페이스를 담당하는 부분이 '설정자 (setter) 와 획득자 (getter)' 입니다. 스위프트에서는 이 두 가지를 '속성' 하나로 통합했다는 의미입니다.
 
@@ -701,7 +705,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
 
-[^property-wrapper]: 스위프트에서, 본문에서 예를 든 관리 코드 등은 언어 외부의 프레임웍에서 이미 제공하는 경우가 많습니다. 본문에 있는 쓰레드-안전성 검사와 데이터베이스 저장의 경우, 각각 [Dispatch](https://developer.apple.com/documentation/dispatch)[^dispatch] 와 [Core Data](https://developer.apple.com/documentation/coredata) 라는 프레임웍으로 제공하는 기능입니다. (쓰레드-안전성 검사는 최근에 생긴 'Concurrency' 를 통해 언어 차원에서 기능을 제공하고 있기도 합니다.)속성 포장은 자신이 직접 만들 수도 있지만, 보통은 이렇게 스위프트 언어 외부에서 제공하는 부가 기능을 사용할 때 많이 사용하게 됩니다.
+[^property-wrapper-management]: 스위프트에서, 본문에서 예를 든 관리 코드 등은 언어 외부의 프레임웍에서 이미 제공하는 경우가 많습니다. 본문에 있는 쓰레드-안전성 검사와 데이터베이스 저장의 경우, 각각 [Dispatch](https://developer.apple.com/documentation/dispatch)[^dispatch] 와 [Core Data](https://developer.apple.com/documentation/coredata) 라는 프레임웍으로 제공하는 기능입니다. (쓰레드-안전성 검사는 최근에 생긴 'Concurrency' 를 통해 언어 차원에서 기능을 제공하고 있기도 합니다.)속성 포장은 자신이 직접 만들 수도 있지만, 보통은 이렇게 스위프트 언어 외부에서 제공하는 부가 기능을 사용할 때 많이 사용하게 됩니다.
 
 [^dispatch]: 예전에는 [Grand Central Dispatch (GCD)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 라는 용어를 많이 사용하였는데, 최근에는 'Dispatch' 라고만 하고 있으며, [Dispatch](https://developer.apple.com/documentation/dispatch) 프레임웍 문서에서 'Dispatch' 를 'Grand Central Dispatch (GCD)' 라고도 한다고 설명하고 있습니다.
 
