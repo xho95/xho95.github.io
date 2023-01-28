@@ -60,11 +60,12 @@ _참조 타입 (reference types)_ 인, 클래스는 이와 같지 않습니다. 
 
 _느긋한 저장 속성 (lazy stored property)_ 은 최초로 쓸 때까지 초기 값을 계산하지 않는 속성입니다. 느긋한 저장 속성이라고 하려면 선언 앞에 `lazy` 수정자[^modifier] 쓰면 됩니다.
 
-> 느긋한 속성은 반드시 항상 (`var` 키워드의) 변수로 선언해야 하는데, 인스턴스 초기화가 완료한 후에도 초기 값을 못가져올 수 있기 때문입니다. 상수 속성은 초기화 완료 _전에 (before)_ 반드시 항상 값이 있어야 하므로, 느긋하다고 (lazy) 선언할 수 없습니다.
+{: .note }
+> 느긋한 속성은 반드시 (`var` 키워드로) 항상 변수라고 선언해야 하는데, 인스턴스 초기화를 완료한 후에도 초기 값을 가져오지 못할 수도 있기 때문입니다. 상수 속성은 초기화 완료 _전에 (before)_ 반드시 항상 값이 있어야 하므로, 느긋하다고 (lazy) 선언할 수 없습니다.
 
-느긋한 속성은 속성의 초기 값이 외부 요인에 의존하다 보니 인스턴스 초기화를 완료한 후에도 그 값을 알 수 없을 때 유용합니다. 느긋한 속성은 속성의 초기 값이 복잡 또는 비싼 계산 작업을 요구하다 보니 필요하기 전까지는 하지 않는게 좋을 때도 유용합니다.
+느긋한 속성은 속성의 초기 값이 외부 요인에 의존해서 인스턴스의 초기화를 완료한 후에도 그 값을 알 수 없을 때 유용합니다. 느긋한 속성은 속성의 초기 값이 복잡하거나 비싼 계산 작업을 요구해서 필요하기 전까지 안하는게 좋을 때도 유용합니다.
 
-아래 예제는 느긋한 저장 속성을 써서 복잡한 클래스의 불필요한 초기화를 피합니다. 이 예제는 `DataImporter` 와 `DataManager` 라는 두 클래스를 정의하며, 어느 쪽도 완전체로 보여주진 않았습니다:
+아래 예제는 느긋한 저장 속성을 써서 복잡한 클래스의 불필요한 초기화를 피합니다. 이 예제는 `DataImporter` 와 `DataManager` 라는 두 클래스를 정의하며, 어느 쪽도 완전하게 다 보여주진 않았습니다:
 
 ```swift
 class DataImporter {
@@ -88,7 +89,7 @@ manager.data.append("Some more data")
 // importer 속성의 DataImporter 인스턴스는 아직 생성되지 않았음
 ```
 
-`DataManager` 클래스에는 `data` 라는 저장 속성이 있는데, 이는 새로운, 빈 `String` 값 배열로 초기화됩니다. 나머지 기능들을 보여주진 않았지만, 이 `DataManager` 클래스의 목적은 `String` 데이터 배열을 관리하고 이에 대한 접근을 제공하는 겁니다.
+`DataManager` 클래스에는 `data` 라는 저장 속성이 있는데, 이는 새로운, 빈 `String` 값 배열로 초기화됩니다. 나머지 기능은 보여주진 않았지만, 이 `DataManager` 클래스의 목적은 `String` 데이터 배열을 관리하고 이에 대한 접근을 제공하는 겁니다.
 
 `DataManager` 클래스의 기능 일부는 파일에서 데이터를 불러오는 능력입니다. 이 기능은 `DataImporter` 클래스가 제공하는데, 초기화에 유의미한 양의 시간이 걸린다고 가정합니다. `DataImporter` 인스턴스를 초기화할 때 `DataImporter` 인스턴스가 파일을 열어서 그 내용물을 메모리로 읽어들이는게 필요할지도 모르기 때문입니다.
 
@@ -102,13 +103,14 @@ print(manager.importer.filename)
 // "data.txt" 를 인쇄함
 ```
 
+{: .note }
 > `lazy` 수정자를 표시한 속성이 아직 초기화가 안됐는데 여러 쓰레드에서 동시에 접근할 경우, 속성이 한 번만 초기화된다는 걸 보증하지 않습니다.[^async]
 
-### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수)
+### Stored Properties and Instance Variables (저장 속성과 인스턴스 변수) [^instance-variables]
 
-오브젝티브-C 에 대한 경험이 있다면, 클래스 인스턴스 일부분으로 값과 참조를 저장하는데 _두 가지 (two)_ 방식을 제공하는 걸 알고 있을 겁니다.[^instance-variables] 속성에다가, 속성에 저장한 값의 백업용 저장 공간인 인스턴스 변수도 사용할 수 있습니다.
+**오브젝티브-C** 에 대한 경험이 있다면, 이게 _두 가지 (two)_ 방식으로 클래스 인스턴스 부분에 값과 참조를 저장한다는 걸 알 겁니다. 속성에 더해, 속성 안에 저장된 값의 백업 저장 공간으로 인스턴스 변수를 쓸 수 있습니다.
 
-스위프트는 이 개념들을 단일한 속성 선언으로 통일했습니다. 스위프트 속성은 해당하는 인스턴스 변수를 가지지 않으며, 속성의 백업용 저장 공간에 직접 접근하지 않습니다. 이런 접근법은 서로 다른 상황에서의 값 접근 방법에 대한 혼동을 피하게 하며 속성 선언을 단일, 정의문으로 단순화합니다. 속성의-이름, 타입, 및 메모리 관리 성질을 포함한-모든 정보는 타입 정의의 일부분으로써 단일 위치에 정의합니다.
+스위프트는 이 개념들을 단 하나의 속성 선언으로 통일했습니다. 스위프트 속성엔 그에 해당하는 인스턴스 변수가 없으며, 속성의 백업 저장 공간을 직접 접근하지도 않습니다. 이런 접근법은 서로 다른 상황에서 값에 접근하는게 혼동되지 않게 하며 속성 선언이 단순하게 단 하나의, 정의문이 되도록 해줍니다. 속성에 대한-이름과, 타입, 및 메모리 관리 성질을 포함한-모든 정보는 타입 정의의 일부로써 단 하나의 장소에서 정의합니다.
 
 ## Computed Properties (계산 속성)
 
@@ -207,6 +209,7 @@ struct CompactRect {
 
 획득자는 있지만 설정자가 없는 계산 속성을 _읽기-전용 계산 속성 (read-only computed property)_ 이라고 합니다. 읽기-전용 계산 속성은 항상 값을 반환하며, 점 구문을 통해 접근할 수 있지만, 다른 값을 설정할 순 없습니다.
 
+{: .note }
 > 읽기-전용 계산 속성을 포함한-계산 속성은, 값이 고정된게 아니기 때문에, 반드시 `var` 키워드를 써서 변수 속성으로 선언해야 합니다. 인스턴스 초기화의 일부분으로 한 번 설정하고 나면 자신의 값을 바꿀 수 없다고 지시하는, 상수 속성에만 `let` 키워드를 사용합니다.
 
 `get` 키워드와 중괄호를 제거함으로써 읽기-전용 계산 속성의 선언을 단순화할 수 있습니다:[^simplify]
@@ -246,6 +249,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 이와 비슷하게, `didSet` 관찰자를 구현하면, 예전 속성 값을 담은 상수 매개 변수를 전달합니다. 매개 변수에 이름을 붙이거나 `oldValue` 라는 기본 매개 변수 이름을 사용할 수도 있습니다. 자신의 `didSet` 관찰자 안에서 속성에 값을 할당하면, 방금 설정된 걸 새로 할당한 값으로 교체합니다.
 
+{: .note }
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출한 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 이를 호출하지 않습니다.[^obervers-and-superclass]
 >
 > 초기자 맡김 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 부분을 보도록 합니다.
@@ -285,6 +289,7 @@ stepCounter.totalSteps = 896
 
 `totalSteps` 값을 갱신한 후 `didSet` 관찰자를 호출합니다. 이는 새 `totalSteps` 값과 예전 값을 비교합니다. 총 걸음 수가 증가했으면, 새 걸음 수가 얼마인지 표시하고자 메시지를 인쇄합니다. `didSet` 관찰자는 예전 값에 사용자 정의 매개 변수 이름을 제공하지 않고, `oldValue` 라는 기본 이름을 대신 사용합니다.
 
+{: .note }
 > 관찰자를 가진 속성을 '입-출력 (in-out) 매개 변수' 로 함수에 전달하면, `willSet` 과 `didSet` 관찰자를 항상 호출합니다. 이는: 함수 끝에서 값을 속성으로 항상 다시 작성하는 '입-출력 매개 변수의 복사-입력 복사-출력 (copy-in copy-out) 메모리 모델' (방식) 때문입니다. 입-출력 매개 변수 동작에 대한 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/declarations.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
 ## Property Wrappers (속성 포장)
@@ -307,6 +312,7 @@ struct TwelveOrLess {
 
 설정자는 새 값이 12 보다 작다는 걸 보장하며, 획득자는 저장한 값을 반환합니다.
 
+{: .note }
 > 위 예제의 `number` 선언은 변수를 `private` 이라고 표시하는데, 이는 `TwelveOrLess` 의 구현부 안에서만 `number` 를 사용하도록 보장합니다. 그 외 어떤 곳에서 작성한 코드든 `wrappedValue` 의 획득자와 설정자로 값에 접근(해야) 하며, 직접 `number` 를 사용할 순 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% link docs/swift-books/swift-programming-language/access-control.md %}) 장을 보도록 합니다.
 
 속성 앞에 포장 이름을 '특성 (attribute)'[^attribute] 으로 작성함으로써 속성에 포장을 적용합니다. 다음은, 직사각형의 차원이 항상 12 이하가 되도록 보장하고자 `TwelveOrLess` 속성 포장을 사용하여 저장하는 구조체입니다:
@@ -534,6 +540,7 @@ struct SizedRectangle {
 
 하지만, 전역이나 지역 중 어디서든, _계산 변수 (computed variables)_ 를 정의할 수도 저장 변수의 관찰자를 정의할 수도 있습니다. 계산 변수는, 자신의 값을 저장하기 보단, 계산하며, 계산 속성과 똑같은 식으로 작성합니다.
 
+{: .note }
 > 전역 상수와 변수는, [Lazy Stored Properties (느긋한 저장 속성)](#lazy-stored-properties-느긋한-저장-속성) 과 비슷한 관례에 따라, 항상 느긋하게 (lazily) 계산합니다. 느긋한 저장 속성과 달리, 전역 상수와 변수를 `lazy` 수정자로 표시할 필요는 없습니다.
 >
 > 지역 상수와 변수는 절대로 느긋하게 계산하지 않습니다.
@@ -564,6 +571,7 @@ func someFunction() {
 
 저장 타입 속성은 변수 또는 상수일 수 있습니다. 계산 타입 속성은, 계산 인스턴스 속성과 똑같이, 항상 변수 속성으로 선언합니다.
 
+{: .note }
 > 저장 인스턴스 속성과 달리, 저장 타입 속성엔 반드시 기본 값을 항상 줘야 합니다. 이는 타입 그 자체엔 초기화 시간에 저장 타입 속성에 값을 할당할 수 있는 초기자가 없기 때문입니다.
 >
 > 저장 타입 속성은 최초로 접근할 때에 느긋하게 (lazily) 초기화됩니다. 동시에 여러 쓰레드가 접근할 때도, 단 한 번만 초기화하는 걸 보증하며, `lazy` 수정자로 표시할 필요도 없습니다.
@@ -598,6 +606,7 @@ class SomeClass {
 }
 ```
 
+{: .note }
 > 위의 계산 타입 속성 예제는 읽기-전용 (read-only) 계산 타입 속성을 위한 거지만, 계산 인스턴스 속성을 위한 것과 동일한 구문으로 읽고-쓰기 (read-write) 계산 타입 속성을 정의할 수도 있습니다.
 
 ### Querying and Setting Type Properties (타입 속성 조회하기 및 설정하기)
@@ -654,6 +663,7 @@ struct AudioChannel {
 * 새 `currentLevel` 값이 허용한 `thresholdLevel` 보다 크면, 속성 관찰자가 `currentLevel` 상한을 `thresholdLevel` 까지로 제한합니다.
 * (상한을 제한한 후의) 새 `currentLevel` 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스가 받은 값보다도 높으면, 속성 관찰자가 새 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성에 저장합니다.
 
+{: .note }
 > 이 두 검사 중 첫 번째에서, `didSet` 관찰자가 `currentLevel` 을 다른 값으로 설정합니다. 하지만, 이것이 관찰자를 다시 호출하도록 하진 않습니다.
 
 `AudioChannel` 구조체를 사용하여, 스테레오 음향 시스템의 음량을 나타내는, `leftChannel` 과 `rightChennel` 이라는 두 음향 채널을 생성할 수 있습니다:
@@ -695,7 +705,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^property-wrapper]: 속성 포장 (property wrapper) 은 뒤에 나오는 [Property Wrappers (속성 포장)](#property-wrappers-속성-포장) 절에서 자세하게 설명합니다.
 
-[^instance-variables]: 이 부분은 오브젝티브-C 나 C++ 같은 객체 지향 언어에 대한 설명이므로, 객체 지향 언어에 익숙하지 않으면 넘어가도 됩니다. 객체 지향 언어에서는 '객체 안에서만 접근 가능한 내부 변수' 와 '객체 외부와의 인터페이스를 담당하는 속성' 이란 두 가지 방식으로 값을 저장합니다. 속성에서 인터페이스를 담당하는 부분이 '설정자 (setter) 와 획득자 (getter)' 입니다. 스위프트에서는 이 두 가지를 '속성' 하나로 통합했다는 의미입니다.
+[^instance-variables]: 이 부분은 **오브젝티브-C** 나 **C++** 같은 객체 지향 언어에 대한 설명이므로, 객체 지향 언어에 익숙하지 않으면 넘어가도 됩니다. 객체 지향 언어에서는 '객체 안에서만 접근 가능한 내부 변수' 와 '객체 외부와의 인터페이스를 담당하는 속성' 이란 두 가지 방식으로 값을 저장합니다. 속성에서 인터페이스를 담당하는 부분이 '설정자 (setter) 와 획득자 (getter)' 입니다. 스위프트에서는 이 두 가지를 '속성' 하나로 통합했다는 의미입니다.
 
 [^optional-setter]: '옵션인 설정자 (optional setter)' 는 설정자는 가질 수도 있고 안가질 수도 있기 때문입니다. 참고로, 여기서의 'optional' 은 스위프트의 옵셔널 타입과는 (직접적으로) 상관 없습니다.
 
