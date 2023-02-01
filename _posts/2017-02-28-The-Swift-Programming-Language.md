@@ -7,9 +7,9 @@ categories: Swift Programming Language Grammar
 redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Programming-Language.html"
 ---
 {: .comment}
-> **Apple** 의 **The Swift Programming Language**[^Swift-Programming-Language] 책을 번역하고, 주석을 달아 정리한 것입니다.
+> **Apple** 의 **The Swift Programming Language**[^Swift-Programming-Language] 책을 번역하고, 주석을 달아 정리했습니다.
 >
-> 읽는 중에 문의 사항이 있으면 **댓글** 또는 <a href="mailto:{{ site.email }}">**메일**</a> 로 알려 주시기 바랍니다.
+> 궁금한 점이 있으면 **댓글** 이나 <a href="mailto:{{ site.email }}">**메일**</a> 로 알려 주시기 바랍니다.
 
 # 스위프트 프로그래밍 언어
 
