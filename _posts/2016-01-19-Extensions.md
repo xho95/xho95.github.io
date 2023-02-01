@@ -21,7 +21,7 @@ _익스텐션 (extensions; 확장)_[^extension] 은 기존의 클래스나, 구�
 * 새로운 중첩 타입을 정의하여 사용함
 * 기존 타입이 프로토콜을 준수하게 함
 
-스위프트에선, 심지어 프로토콜을 확장하여 자신의 필수 조건에 구현을 제공하거나 추가 기능을 더하는 등의 이점을 준수 타입이 취할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 보도록 합니다.
+스위프트에선, 심지어 프로토콜을 확장하여 그 필수 조건에 구현을 제공하거나 준수 타입이 활용할 추가 기능을 더할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 보도록 합니다.
 
 > 익스텐션은 타입에 새로운 기능을 추가할 순 있지만, 기존 기능을 재정의할 순 없습니다.
 
