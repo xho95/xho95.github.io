@@ -207,12 +207,12 @@ struct CompactRect {
 
 ### Read-Only Computed Properties (읽기-전용 계산 속성)
 
-획득자는 있지만 설정자가 없는 계산 속성을 _읽기-전용 계산 속성 (read-only computed property)_ 이라고 합니다. 읽기-전용 계산 속성은 항상 값을 반환하며, 점 구문을 통해 접근할 수 있지만, 다른 값을 설정할 순 없습니다.
+계산 속성에 획득자는 있으나 설정자가 없는 걸 _읽기-전용 계산 속성 (read-only computed property)_ 이라 합니다. 읽기-전용 계산 속성은 항상 값을 반환하며, 점 구문을 통해 접근할 수 있지만, 다른 값으로 설정할 순 없습니다.
 
 {: .note }
-> 읽기-전용 계산 속성을 포함한-계산 속성은, 값이 고정된게 아니기 때문에, 반드시 `var` 키워드를 써서 변수 속성으로 선언해야 합니다. 인스턴스 초기화의 일부분으로 한 번 설정하고 나면 자신의 값을 바꿀 수 없다고 지시하는, 상수 속성에만 `let` 키워드를 사용합니다.
+> 계산 속성은-읽기-전용 계산 속성을 포함하여-반드시 `var` 키워드의 변수 속성으로 선언해야 하는데, 이는 그 값이 고정이 아니기 때문입니다. `let` 키워드는 상수 속성에만 써서, 인스턴스 초기화 부분에서 일단 한 번 설정하면 그 값을 바꿀 수 없다고 지시합니다.
 
-`get` 키워드와 중괄호를 제거함으로써 읽기-전용 계산 속성의 선언을 단순화할 수 있습니다:[^simplify]
+읽기-전용 계산 속성 선언을 단순화하려면 `get` 키워드와 중괄호를 제거하면 됩니다:[^simplify]
 
 ```swift
 struct Cuboid {
@@ -226,7 +226,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // "the volume of fourByFiveByTwo is 40.0" 를 인쇄함
 ```
 
-이 예제는, `width`, `height`, 및 `depth` 속성으로 3-차원 직사각형 상자를 나타내는, `Cuboid` 라는 새로운 구조체를 정의합니다. 이 구조체에는, 직육면체[^cuboid] 의 현재 부피를 계산하여 반환하는, `volume` 이라는 읽기-전용 계산 속성이 있습니다. 특별한 한 `volume` 값에 대해 어떤 `width`, `height`, 및 `depth` 값을 사용해야할 지 헷갈리기 때문에, `volume` 이 설정 가능하다는 건 말이 안됩니다.[^be-settable] 그럼에도 불구하고, 현재 계산한 부피를 외부 사용자가 발견할 수 있도록 `Cuboid` 가 읽기-전용 계산 속성을 제공하는 게 유용합니다.
+이 예제는 `Cuboid` 라는 새로운 구조체를 정의하여, `width` 와, `height`, 및 `depth` 속성으로 **3D** 직사각형 상자를 나타냅니다. 이 구조체엔 `volume` 이라는 읽기-전용 계산 속성도 있어서, 직육면체[^cuboid] 의 현재 부피를 계산하고 반환합니다. `volume` 이 설정 가능하다는 건 말이 안되는데[^be-settable], 한 특별한 `volume` 값에 어떠한 `width`, `height`, 및 `depth` 값을 써야 좋을지 헷갈리기 때문입니다. 그럼에도 불구하고, `Cuboid` 가 읽기-전용 계산 속성을 제공하여 외부 사용자가 현재 계산된 부피를 발견할 수 있도록 하는게 유용합니다.
 
 ## Property Observers (속성 관찰자)
 
@@ -709,7 +709,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^optional-setter]: '옵션인 설정자 (optional setter)' 는 설정자가 옵션이라 있어도 되고 없어도 된다는 의미입니다.
 
-[^simplify]: 이 예제에 있는 읽기-전용 계산 속성은 단일 표현식이기도 해서 `return` 키워드도 생략할 수 있습니다. 앞서 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)](#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 전체 획득자 본문이 단일 표현식이면 `return` 을 생략할 수 있다고 했는데, 전체 계산 속성 본문도 마찬가지입니다.
+[^simplify]: 이 예제에 있는 읽기-전용 계산 속성은 단일 표현식이기도 해서 `return` 키워드도 생략할 수 있습니다. 앞서 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)](#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 획득자의 본문 전체가 단일 표현식이면 `return` 을 생략할 수 있다고 했는데, 전체 계산 속성 본문도 마찬가지입니다.
 
 [^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미합니다. 직육면체는 모든 면이 직사각형인 기하학 도형을 말하며, 이름이 'cuboid' 인 건 기하학 구조의 일종인 '다면체 그래프 (polyhedral graph)' 가 '정육면체 (cube)' 와 같기 때문입니다. 보다 자세한 내용은, 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목과 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 보도록 합니다.
 
