@@ -240,21 +240,21 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 상속한 속성에선, 하위 클래스에서 그 속성을 재정의[^overriding] 하여 속성 관찰자를 추가합니다. 자신이 정의한 계산 속성에선, 관찰자를 생성하는 대신, 속성의 설정자를 써서 값이 바뀌는 걸 관찰하고 응답합니다. 속성의 재정의는 [Overriding (재정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#overriding-재정의하기) 에서 설명합니다.
 
-속성에서 다음 관찰자 중 하나만 정의할지 둘 다 정의할지 선택할 수 있습니다:
+속성에 대해서 다음 관찰자 중 하나를 정의할지 둘 다를 정의할지 선택할 수 있습니다:
 
 * `willSet` 은 값을 저장하기 직전에 호출됩니다.
 * `didSet` 은 새 값을 저장한 바로 뒤에 호출됩니다.
 
-`willSet` 관찰자를 구현하면, 새로운 속성 값을 상수 매개 변수로 전달합니다. `willSet` 구현부에서 이 매개 변수에 이름을 지정할 수 있습니다. 구현부에서 매개 변수 이름과 괄호를 작성하지 않으면, 매개 변수는 `newValue` 라는 기본 매개 변수 이름으로 쓸 수 있게 됩니다.
+`willSet` 관찰자를 구현하면, 새로운 속성 값이 상수 매개 변수로 전달됩니다. 이 매개 변수의 이름은 `willSet` 구현부에서 정할 수 있습니다. 구현부 안에서 매개 변수 이름과 괄호를 작성하지 않으면, 매개 변수를 기본 매개 변수 이름인 `newValue` 로 쓸 수 있게 됩니다.
 
-이와 비슷하게, `didSet` 관찰자를 구현하면, 예전 속성 값을 담은 상수 매개 변수를 전달합니다. 매개 변수에 이름을 붙이거나 `oldValue` 라는 기본 매개 변수 이름을 사용할 수도 있습니다. 자신의 `didSet` 관찰자 안에서 속성에 값을 할당하면, 방금 설정된 걸 새로 할당한 값으로 교체합니다.
+이와 비슷하게, `didSet` 관찰자를 구현하면, 예전 속성 값을 담은 상수 매개 변수가 전달됩니다. 매개 변수에 이름을 짓거나 기본 매개 변수 이름인 `oldValue` 를 사용할 수 있습니다. 자신의 `didSet` 관찰자 안에서 속성에 값을 할당하면, 새로 할당한 값이 방금 전에 설정했던 걸 교체합니다.
 
 {: .note }
-> 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출한 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 이를 호출하지 않습니다.[^obervers-and-superclass]
+> 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출하고 난 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 호출되지 않습니다.[^obervers-and-superclass]
 >
-> 초기자 맡김 (initializer delegation) 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입을 위한 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입을-위한-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입을 위한 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-class-types-클래스-타입을-위한-초기자-맡김) 부분을 보도록 합니다.
+> 초기자 맡김[^initializer-delegation] 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입의-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-class-types-클래스-타입의-초기자-맡김) 부분을 보기 바랍니다.
 
-다음은 `willSet` 과 `didSet` 의 실제 사례입니다. 아래 예제는, 사람이 산책하는 동안의 총 걸음 수를 추적하는, `StepCounter` 라는 새로운 클래스를 정의합니다. 이 클래스는 일과 중에 사람의 운동을 추적하기 위해 만보계 (pedometer) 나 다른 걸음 측정기 (step counter) 에 있는 입력 자료를 사용할 지 모릅니다.
+`willSet` 과 `didSet` 의 실제 사례는 이렇습니다. 아래 예제는 `StepCounter` 라는 새로운 클래스를 정의하여, 산책하는 동안 사람의 총 걸음 수를 추적합니다. 이 클래스는 만보계 (pedometer) 또는 다른 걸음 측정기 (step counter) 의 입력 데이터를 써서 하루 일과 중에 사람이 운동한 걸 추적할지도 모릅니다.
 
 ```swift
 class StepCounter {
@@ -271,13 +271,13 @@ class StepCounter {
 }
 let stepCounter = StepCounter()
 stepCounter.totalSteps = 200
-// About to set totalSteps to 200     // totalSteps 를 200 으로 설정하려고 함
+// About to set totalSteps to 200     // totalSteps 를 200 으로 설정하려 함
 // Added 200 steps                    // 200 걸음을 추가함
 stepCounter.totalSteps = 360
-// About to set totalSteps to 360     // totalSteps 를 360 으로 설정하려고 함
+// About to set totalSteps to 360     // totalSteps 를 360 으로 설정하려 함
 // Added 160 steps                    // 160 걸음을 추가함
 stepCounter.totalSteps = 896
-// About to set totalSteps to 896     // totalSteps 를 896 으로 설정하려고 함
+// About to set totalSteps to 896     // totalSteps 를 896 으로 설정하려 함
 // Added 536 steps                    // 536 걸음을 추가함
 ```
 
@@ -711,15 +711,15 @@ print(AudioChannel.maxInputLevelForAllChannels)
 
 [^simplify]: 이 예제에 있는 읽기-전용 계산 속성은 단일 표현식이기도 해서 `return` 키워드도 생략할 수 있습니다. 앞서 [Shorthand Getter Declaration (짧게 줄인 획득자 선언)](#shorthand-getter-declaration-짧게-줄인-획득자-선언) 에서 획득자의 본문 전체가 단일 표현식이면 `return` 을 생략할 수 있다고 했는데, 전체 계산 속성 본문도 마찬가지입니다.
 
-[^cuboid]: 'cuboid' 는 수학 용어로 '직육면체' 를 의미합니다. 직육면체는 모든 면이 직사각형인 기하학 도형을 말하며, 이름이 'cuboid' 인 건 기하학 구조의 일종인 '다면체 그래프 (polyhedral graph)' 가 '정육면체 (cube)' 와 같기 때문입니다. 보다 자세한 내용은, 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목과 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 보도록 합니다.
+[^cuboid]: 'cuboid' 는 수학 용어로 직육면체를 의미합니다. 직육면체는 모든 면이 직사각형인 기하학 도형을 말하며, 이름이 'cuboid' 인 건 기하학 구조의 일종인 '다면체 그래프 (polyhedral graph)' 가 '정육면체 (cube)' 와 같기 때문입니다. 보다 자세한 내용은, 위키피디아의 [Cuboid](https://en.wikipedia.org/wiki/Cuboid) 항목과 [직육면체](https://ko.wikipedia.org/wiki/직육면체) 항목을 보도록 합니다.
+
+[^obervers-and-superclass]: 이 개념은 스위프트 클래스의 2-단계 초기화와 관련이 있습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 상위 클래스의 속성을 다시 바꾸는 과정을 거칩니다. 즉, 본문은 상위 클래스 속성의 `willSet` 과 `didSet` 은 초기화의 2-단계에서만 호출된다는 의미입니다. 2-단계 초기화에 대한 더 자세한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 부분을 참고하기 바랍니다.
 
 [^nonoverridden-computed-properties]: 본문에서는 '재정의 하지 않은 계산 속성 (nonoverridden computed properties)' 이라고 뭔가 굉장히 어려운 말을 사용했는데, 그냥 개발자가 직접 만든 계산 속성은 모두 이 '재정의 하지 않은 계산 속성' 입니다. 본문의 내용은, 일반적으로 자신이 직접 만든 '계산 속성' 에는 따로 '속성 관찰자' 를 추가할 필요가 없다는 의미입니다. '계산 속성' 은 말 그대로 자신이 직접 값을 계산하는 것으로 값의 변화를 자기가 직접 제어하는 셈입니다. 그러니까 굳이 값의 변화를 관찰할 필요가 없습니다.
 
 [^property-wrapper-management]: 스위프트에서, 본문에서 예를 든 관리 코드 등은 언어 외부의 프레임웍에서 이미 제공하는 경우가 많습니다. 본문에 있는 쓰레드-안전성 검사와 데이터베이스 저장의 경우, 각각 [Dispatch](https://developer.apple.com/documentation/dispatch)[^dispatch] 와 [Core Data](https://developer.apple.com/documentation/coredata) 라는 프레임웍으로 제공하는 기능입니다. (쓰레드-안전성 검사는 최근에 생긴 'Concurrency' 를 통해 언어 차원에서 기능을 제공하고 있기도 합니다.)속성 포장은 자신이 직접 만들 수도 있지만, 보통은 이렇게 스위프트 언어 외부에서 제공하는 부가 기능을 사용할 때 많이 사용하게 됩니다.
 
 [^dispatch]: 예전에는 [Grand Central Dispatch (GCD)](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) 라는 용어를 많이 사용하였는데, 최근에는 'Dispatch' 라고만 하고 있으며, [Dispatch](https://developer.apple.com/documentation/dispatch) 프레임웍 문서에서 'Dispatch' 를 'Grand Central Dispatch (GCD)' 라고도 한다고 설명하고 있습니다.
-
-[^obervers-and-superclass]: 이 개념은 스위프트 클래스의 '2-단계 초기화' 와 관련이 깊습니다. 2-단계 초기화는, 먼저 자신의 속성을 초기화하고 상위 클래스의 초기자를 호출하며, 그런 다음 이어서 상위 클래스의 속성을 다시 바꾸는 과정을 거치는 것을 말합니다. 즉 본문의 내용은 상위 클래스 속성의 `willSet` 과 `didSet` 은 '2-단계' 에서만 호출된다는 의미입니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 를 보도록 합니다.
 
 [^be-settable]: 즉, `volumn` 은 획득자만 있는 읽기-전용 계산 속성이어야 말이 된다는 의미입니다.
 
