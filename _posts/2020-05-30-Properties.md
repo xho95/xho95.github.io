@@ -281,16 +281,16 @@ stepCounter.totalSteps = 896
 // Added 536 steps                    // 536 걸음을 추가함
 ```
 
-`StepCounter` 클래스는 `Int` 타입인 `totalSteps` 속성을 선언합니다. 이는 `willSet` 과 `didSet` 관찰자가 있는 저장 속성입니다.
+`StepCounter` 클래스는 `Int` 타입의 `totalSteps` 속성을 선언합니다. 이 저장 속성엔 `willSet` 과 `didSet` 관찰자가 있습니다.
 
-`totalSteps` 의 `willSet` 과 `didSet` 관찰자는 새 값을 속성에 할당할 때마다 호출됩니다. 이는 새 값이 현재 값과 똑같은 경우에도 참입니다.
+`totalSteps` 의 `willSet` 과 `didSet` 관찰자는 속성에 새 값을 할당할 때마다 호출됩니다. 이는 새 값과 현재 값이 똑같더라도 그렇습니다.
 
-이 예제의 `willSet` 관찰자는 새로 다가올 값으로 `newTotalSteps` 라는 사용자 정의 매개 변수 이름을 사용합니다. 이 예제에선, 설정하려는 값을 단순히 인쇄합니다.
+이 예제의 `willSet` 관찰자는 새로 올 값에 `newTotalSteps` 라는 자신만의 매개 변수 이름을 사용합니다. 이 예제에서는, 설정하려는 값을 단순히 인쇄하기만 합니다.
 
-`totalSteps` 값을 갱신한 후 `didSet` 관찰자를 호출합니다. 이는 새 `totalSteps` 값과 예전 값을 비교합니다. 총 걸음 수가 증가했으면, 새 걸음 수가 얼마인지 표시하고자 메시지를 인쇄합니다. `didSet` 관찰자는 예전 값에 사용자 정의 매개 변수 이름을 제공하지 않고, `oldValue` 라는 기본 이름을 대신 사용합니다.
+`didSet` 관찰자는 `totalSteps` 값이 업데이트된 후 호출됩니다. 이는 `totalSteps` 의 새 값을 예전 값과 비교합니다. 총 걸음 수가 증가했으면, 메시지를 인쇄하여 얼마나 새로 걸었는지를 표시합니다. `didSet` 관찰자는 예전 값에 자신만의 매개 변수 이름을 제공하지 않으며, 그 대신 기본 이름인 `oldValue` 를 사용합니다.
 
 {: .note }
-> 관찰자를 가진 속성을 '입-출력 (in-out) 매개 변수' 로 함수에 전달하면, `willSet` 과 `didSet` 관찰자를 항상 호출합니다. 이는: 함수 끝에서 값을 속성으로 항상 다시 작성하는 '입-출력 매개 변수의 복사-입력 복사-출력 (copy-in copy-out) 메모리 모델' (방식) 때문입니다. 입-출력 매개 변수 동작에 대한 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/declarations.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
+> 관찰자가 있는 속성을 함수의 입-출력 매개 변수로 전달하면, `willSet` 과 `didSet` 관찰자를 항상 호출합니다. 입-출력 매개 변수의 복사-입력 복사-출력 메모리 모델 (방식)[^copy-in-copy-out] 때문인데: 이는 함수 끝에서 값이 항상 속성으로 다시 써지는 방식입니다. 입-출력 매개 변수의 동작에 대한 자세한 논의는, [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/declarations.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보기 바랍니다.
 
 ## Property Wrappers (속성 포장)
 
