@@ -310,12 +310,12 @@ struct TwelveOrLess {
 }
 ```
 
-설정자는 새 값이 12 보다 작다는 걸 보장하며, 획득자는 저장한 값을 반환합니다.
+설정자는 새 값이 12 보다 작거나 같음을 보장하고, 획득자는 저장 값을 반환합니다.
 
 {: .note }
-> 위 예제의 `number` 선언은 변수를 `private` 이라고 표시하는데, 이는 `TwelveOrLess` 의 구현부 안에서만 `number` 를 사용하도록 보장합니다. 그 외 어떤 곳에서 작성한 코드든 `wrappedValue` 의 획득자와 설정자로 값에 접근(해야) 하며, 직접 `number` 를 사용할 순 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% link docs/swift-books/swift-programming-language/access-control.md %}) 장을 보도록 합니다.
+> 위 예제에 있는 `number` 선언은 변수가 `private` 이라고 표시했는데, 이는 `number` 가 `TwelveOrLess` 의 구현부에서만 사용되도록 보장합니다. 그 외에 어떤 곳에서 작성한 코드든 `wrappedValue` 의 획득자와 설정자로 값에 접근하며, `number` 를 직접 사용할 순 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% link docs/swift-books/swift-programming-language/access-control.md %}) 장을 보기 바랍니다.
 
-속성 앞에 포장 이름을 '특성 (attribute)'[^attribute] 으로 작성함으로써 속성에 포장을 적용합니다. 다음은, 직사각형의 차원이 항상 12 이하가 되도록 보장하고자 `TwelveOrLess` 속성 포장을 사용하여 저장하는 구조체입니다:
+속성에 포장을 적용하려면 포장의 이름을 속성 앞에 특성[^attribute] 으로 쓰면 됩니다. 직사각형을 저장하는데 `TwelveOrLess` 속성 포장을 써서 그 치수가 항상 12 이하임을 보장하는 구조체는 이렇습니다:
 
 ```swift
 struct SmallRectangle {
