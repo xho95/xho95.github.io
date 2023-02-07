@@ -315,7 +315,7 @@ struct TwelveOrLess {
 {: .note }
 > 위 예제에 있는 `number` 선언은 변수가 `private` 이라고 표시했는데, 이는 `number` 가 `TwelveOrLess` 의 구현부에서만 사용되도록 보장합니다. 그 외에 어떤 곳에서 작성한 코드든 `wrappedValue` 의 획득자와 설정자로 값에 접근하며, `number` 를 직접 사용할 순 없습니다. `private` 에 대한 정보는, [Access Control (접근 제어)]({% link docs/swift-books/swift-programming-language/access-control.md %}) 장을 보기 바랍니다.
 
-속성에 포장을 적용하려면 포장의 이름을 속성 앞에 특성[^attribute] 으로 쓰면 됩니다. 직사각형을 저장하는데 `TwelveOrLess` 속성 포장을 써서 그 치수가 항상 12 이하임을 보장하는 구조체는 이렇습니다:
+속성에 포장을 적용하려면 속성 앞에 포장 이름을 특성[^attribute] 으로 쓰면 됩니다. 직사각형을 저장하는데 `TwelveOrLess` 속성 포장을 써서 그 치수가 항상 12 이하임을 보장하는 구조체는 이렇습니다:
 
 ```swift
 struct SmallRectangle {
@@ -336,9 +336,9 @@ print(rectangle.height)
 // "12" 를 인쇄함
 ```
 
-`height` 와 `width` 속성은, `TwelveOrLess.number` 를 0 으로 설정한, `TwelveOrLess` 정의로부터 초기 값을 획득합니다. `TwelveOrLess` 의 설정자는 10 을 유효한 값으로 취급해서 `rectangle.height` 에 수 10 을 저장하는 건 작성한 대로 진행합니다. 하지만, 24 는 `TwelveOrLess` 가 허용한 것보다 커서, 24 를 저장하려는 건 `rectangle.height` 에, 허용한 가장 큰 값인, 12 를 대신 설정하는 것으로 끝납니다.
+`height` 와 `width` 속성은 `TwelveOrLess` 정의에서 자신의 초기 값을 가지게 되는데, 이는 `TwelveOrLess.number` 를 0 으로 설정합니다. `TwelveOrLess` 안의 설정자는 10 을 유효한 값으로 취급하므로 `rectangle.height` 에 수치 값 10 을 저장하는 건 작성한 대로 진행합니다. 하지만, 24 는 `TwelveOrLess` 가 허용한 것보다 커서, 24 를 저장하려고 하면 그 대신, 허용한 가장 큰 값인, 12 를 `rectangle.height` 에 설정하는 걸로 끝나게 됩니다.
 
-속성에 포장을 적용할 때, 컴파일러는 포장의 저장 공간을 제공하는 코드와 포장을 통해 속성의 접근을 제공하는 코드를 통합합니다. (속성 포장은 포장 값의 저장을 책임지므로, 그에 대한 통합 코드는 없습니다.) 특수한 특성 구문[^attribute-syntax] 의 이점을 취하지 않고, 속성 포장 동작을 사용하는 코드를 작성할 수도 있습니다. 예를 들어, 이전에 나열한 코드에서, `@TwelveOrLess` 를 특성으로 작성하는 대신, `TwelveOrLess` 구조체 안에 명시적으로 자신의 속성을 포장한 `SmallRectangle` 버전은 이렇습니다:[^explicitly-wrap]
+속성에 포장을 적용할 땐, 포장에 저장 공간을 제공하는 코드와 포장을 통해 속성에 접근하는 코드를 컴파일러가 통합합니다. (속성 포장이 포장 값의 저장을 책임지므로, 그에 대한 통합 코드는 없습니다.) 특수한 특성 구문[^attribute-syntax] 을 활용하지 않도고, 속성 포장의 동작을 하는 코드를 작성할 수도 있습니다. 예를 들어, 이전에 나열한 `SmallRectangle` 코드가, `@TwelveOrLess` 특성을 쓰는 대신, `TwelveOrLess` 구조체 안에 자신의 속성을 명시하여 포장한 버전은 이렇습니다:[^explicitly-wrap]
 
 ```swift
 struct SmallRectangle {
@@ -355,7 +355,7 @@ struct SmallRectangle {
 }
 ```
 
-`_height` 와 `_width` 속성은, `TwelveOrLess` 라는, 속성 포장의 인스턴스를 저장합니다. `height` 와 `width` 의 획득자와 설정자는 `wrappedValue` 속성에 대한 접근을 포장합니다.
+`_height` 와 `_width` 속성은 속성 포장의 인스턴스인, `TwelveOrLess` 를, 저장합니다. `height` 와 `width` 의 획득자와 설정자는 `wrappedValue` 속성으로의 접근을 포장합니다.
 
 ### Setting Initial Values for Wrapped Properties (포장 속성에 초기 값 설정하기)
 
