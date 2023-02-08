@@ -357,9 +357,9 @@ struct SmallRectangle {
 
 `_height` 와 `_width` 속성은 속성 포장의 인스턴스인, `TwelveOrLess` 를, 저장합니다. `height` 와 `width` 의 획득자와 설정자는 `wrappedValue` 속성으로의 접근을 포장합니다.
 
-### Setting Initial Values for Wrapped Properties (포장 속성에 초기 값 설정하기)
+### Setting Initial Values for Wrapped Properties (포장된 속성에 초기 값 설정하기)
 
-위 예제 코드는 `TwelveOrLess` 정의 안에서 `number` 에 초기 값을 주는 것으로 포장 속성의 초기 값을 설정합니다. 이 속성 포장을 사용하는 코드는, `TwelveOrLess` 가 포장한 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 정의에서 `height` 나 `width` 에 초기 값을 줄 순 없습니다. 초기 값 설정 및 다른 사용자 정의를 지원하려면, 속성 포장에 초기자를 추가할 필요가 있습니다. 다음은 `SmallNumber` 라고 `TwelveOrless` (의 기능을) 늘린 버전인데 초기자를 정의하여 포장 값과 최대 값을 설정합니다:
+위 예제 코드에서 포장된 속성의 초기 값은 `TwelveOrLess` 정의 안에서 `number` 에 초기 값을 줘서 설정합니다. 이런 속성 포장을 쓰는 코드는 `TwelveOrLess` 로 포장된 속성에 다른 초기 값을 지정할 수 없습니다-예를 들어, `SmallRectangle` 정의에서 `height` 나 `width` 에 초기 값을 줄 수 없습니다. 초기 값 설정이나 그 외 다른 사용자 맞춤 정의를 지원하려면, 속성 포장에 초기자를 추가하는게 필요합니다. 포장된 값과 최대 값을 설정하는 초기자를 정의하여  `TwelveOrless` 를 늘린 버전인 `SmallNumber` 는 이렇습니다:
 
 ```swift
 @propertyWrapper
@@ -386,9 +386,9 @@ struct SmallNumber {
 }
 ```
 
-`SmallNumber` 정의는-`init()`, `init(wrappedValue:)`, 및 `init(wrappedValue:maximum:)` 이라는-세 개의 초기자를 포함하며 아래 예제에서 포장 값과 최대 값을 설정할 때 이를 사용합니다. 초기자와 초기자 구문에 대한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장을 보도록 합니다.
+`SmallNumber` 정의에 포함된 세 개의 초기자인-`init()` 과, `init(wrappedValue:)`, 및 `init(wrappedValue:maximum:)` 은-아래 예제에서 포장 값과 최대 값을 설정하는데 사용합니다. 초기화와 초기자 구문에 대한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장을 보기 바랍니다.
 
-속성에 포장을 적용하면서 초기 값을 지정하지 않을 땐, 스위프트가 `init()` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
+속성에 포장을 적용하면서 초기 값을 지정하지 않을 땐, 스위프트가 `init()` 초기자를 써서 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct ZeroRectangle {
