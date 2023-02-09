@@ -388,7 +388,7 @@ struct SmallNumber {
 
 `SmallNumber` 정의에 포함된 세 개의 초기자인-`init()` 과, `init(wrappedValue:)`, 및 `init(wrappedValue:maximum:)` 은-아래 예제에서 포장 값과 최대 값을 설정하는데 사용합니다. 초기화와 초기자 구문에 대한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장을 보기 바랍니다.
 
-속성에 포장을 적용하면서 초기 값을 지정하지 않을 땐, 스위프트가 `init()` 초기자를 써서 포장을 설정합니다. 예를 들면 다음과 같습니다:
+속성 포장을 적용하면서 초기 값을 지정하지 않을 땐, 스위프트가 `init()` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct ZeroRectangle {
@@ -401,7 +401,7 @@ print(zeroRectangle.height, zeroRectangle.width)
 // "0 0" 를 인쇄함
 ```
 
-`height` 와 `width` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber()` 호출로 생성합니다. 그 초기자 안의 코드는, 0 과 12 라는 기본 값을 사용하여, 초기 포장 값과 초기 최대 값을 설정합니다. 속성 포장은, 앞서 `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 예제 같이, 여전히 모든 초기 값을 제공합니다. 그 예제완 달리, `SmallNumber` 는 속성을 선언하는 부분에서 그 초기 값을 작성하는 것도 지원합니다.
+`height` 와 `width` 를 포장한 `SmallNumber` 의 인스턴스는 `SmallNumber()` 를 호출하여 생성합니다. 그 초기자 안의 코드에서 설정하는 초기 포장 값과 초기 최대 값은, 기본 값인 0 과 12 를 사용합니다. 속성 포장은, 앞서 `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 예제 같이, 여전히 모든 초기 값을 제공합니다. 그 예제완 달리, `SmallNumber` 는 속성을 선언하는 부분에서 그 초기 값을 작성하는 것도 지원합니다.
 
 속성의 초기 값을 지정할 땐, 스위프트가 `init(wrappedValue:)` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
