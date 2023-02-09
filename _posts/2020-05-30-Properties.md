@@ -401,9 +401,9 @@ print(zeroRectangle.height, zeroRectangle.width)
 // "0 0" 를 인쇄함
 ```
 
-`height` 와 `width` 를 포장한 `SmallNumber` 의 인스턴스는 `SmallNumber()` 를 호출하여 생성합니다. 그 초기자 안의 코드에서 설정하는 초기 포장 값과 초기 최대 값은, 기본 값인 0 과 12 를 사용합니다. 속성 포장은, 앞서 `SmallRectangle` 에서 `TwelveOrLess` 를 사용한 예제 같이, 여전히 모든 초기 값을 제공합니다. 그 예제완 달리, `SmallNumber` 는 속성을 선언하는 부분에서 그 초기 값을 작성하는 것도 지원합니다.
+`height` 와 `width` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber()` 호출로 생성합니다. 그 초기자 안의 코드에서 설정하는 초기 포장 값과 초기 최대 값은, 기본 값인 0 과 12 를 사용합니다. 속성 포장은 여전히 모든 초기 값을 제공하며, 이는 `SmallRectangle` 에서 `TwelveOrLess` 를 쓴 앞선 예제와 같습니다. 그 예제와는 다르게, `SmallNumber` 는 속성 선언 부분에서 자신의 초기 값 작성도 지원합니다.
 
-속성의 초기 값을 지정할 땐, 스위프트가 `init(wrappedValue:)` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
+속성에 초기 값을 지정할 땐, 스위프트가 `init(wrappedValue:)` 초기자로 포장을 설정합니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct UnitRectangle {
@@ -416,9 +416,9 @@ print(unitRectangle.height, unitRectangle.width)
 // "1 1" 를 인쇄함
 ```
 
-포장을 가진 속성에 `= 1` 를 작성할 땐, `init(wrappedValue:)` 초기자의 호출이라고 번역합니다. `height` 와 `width` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 1)` 호출로 생성합니다. 초기자는 여기서 지정한 포장 값을 사용하며, 12 라는 기본 최대 값을 사용합니다.
+포장이 있는 속성에 `= 1` 를 작성할 땐, `init(wrappedValue:)` 초기자의 호출로 번역됩니다. `height` 와 `width` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 1)` 호출로 생성합니다. 초기자가 포장 값은 여기에 지정된 걸 쓰고, 최대 값은 기본인 12 를 사용합니다.
 
-사용자 정의 특성 (attribute) 뒤의 괄호 안에 인자를 작성할 땐, 스위프트가 그 인자를 받는 초기자로 포장을 설정합니다. 예를 들어, 초기 값과 최대 값을 제공하는 경우, 스위프트가 `init(wrappedValue:maximum:)` 초기자를 사용합니다:
+사용자 맞춤 특성 뒤의 괄호 안에 인자를 쓸 땐, 스위프트가 그 인자를 받는 초기자로 포장을 설정합니다. 예를 들어, 초기 값과 최대 값을 제공하먄, 스위프트가 `init(wrappedValue:maximum:)` 초기자를 사용합니다:
 
 ```swift
 struct NarrowRectangle {
@@ -438,7 +438,7 @@ print(narrowRectangle.height, narrowRectangle.width)
 
 `height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 5)` 호출로 생성하며, `width` 를 포장힌 인스턴스는 `SmallNumber(wrappedValue: 3, maximum: 4)` 호출로 생성합니다.
 
-속성 포장에 인자를 포함시켜서, 포장의 초기 상태를 설정하거나 포장을 생성할 때 다른 옵션을 전달할 수 있습니다. 이 구문이 속성 포장을 사용하는 가장 일반적인 방식입니다. 필요한 무슨 인자든 특성에 제공할 수 있으며, 이를 초기자로 전달합니다.
+속성 포장에 인자를 포함함으로써, 포장의 초기 상태를 설정하거나 포장 생성 때 다른 옵션을 전달할 수 있습니다. 이 구문이 속성 포장을 사용하는 가장 일반적인 방식입니다. 필요한 무슨 인자든 특성에 제공하여, 초기자로 전달할 수 있습니다.
 
 속성 포장 인자를 포함할 땐, 할당을 사용하여 초기 값을 지정할 수도 있습니다. 스위프트는 할당을 `wrappedValue` 인자인 것처럼 취급하여 초기자를 써서 포함한 인자를 받습니다. 예를 들면 다음과 같습니다:
 
