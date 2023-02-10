@@ -438,9 +438,9 @@ print(narrowRectangle.height, narrowRectangle.width)
 
 `height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 5)` 호출로 생성하며, `width` 를 포장힌 인스턴스는 `SmallNumber(wrappedValue: 3, maximum: 4)` 호출로 생성합니다.
 
-속성 포장에 인자를 포함함으로써, 포장의 초기 상태를 설정하거나 포장 생성 때 다른 옵션을 전달할 수 있습니다. 이 구문이 속성 포장을 사용하는 가장 일반적인 방식입니다. 필요한 무슨 인자든 특성에 제공하여, 초기자로 전달할 수 있습니다.
+속성 포장에 인자를 포함함으로써, 포장의 초기 상태를 설정하거나 포장 생성 때 다른 옵션을 전달할 수 있습니다. 이 구문이 속성 포장을 사용하는 가장 일반적인 방법입니다. 특성에 필요한 인자는 무엇이든 제공할 수 있으며, 이는 초기자로 전달됩니다.
 
-속성 포장 인자를 포함할 땐, 할당을 사용하여 초기 값을 지정할 수도 있습니다. 스위프트는 할당을 `wrappedValue` 인자인 것처럼 취급하여 초기자를 써서 포함한 인자를 받습니다. 예를 들면 다음과 같습니다:
+속성 포장의 인자를 포함시킬 땐, 초기 값을 할당으로 지정할 수도 있습니다. 스위프트는 할당을 `wrappedValue` 인자 처럼 취급하며 초기자를 써서 포함한 인자를 받아 들입니다. 예를 들면 다음과 같습니다:
 
 ```swift
 struct MixedRectangle {
@@ -457,7 +457,7 @@ print(mixedRectangle.height)
 // "12" 를 인쇄함
 ```
 
-`height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 호출로 생성하는데, 이는 12 라는 기본 최대 값을 사용합니다. `width` 를 포장한 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 호출로 생성합니다.
+`height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 호출로 생성하며, 이는 기본 최대 값인 12 를 사용합니다. `width` 를 포장한 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 호출로 생성합니다.
 
 ### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)
 
