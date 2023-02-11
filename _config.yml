@@ -64,9 +64,12 @@ kramdown:
 collections:
 #  docs:
 #    output: true
+  tests:  
+    output: true
   posts:
 #    permalink: "/:collection/:path/"
     output: true
+    sort_by: date
 
 plugins:
   - jekyll-sitemap
@@ -93,6 +96,8 @@ just_the_docs:
 #      name: List
 #    docs:
 #      name: Docs
+    tests:  
+      name: List
     posts:
       name: Legacies
       nav_fold: true
@@ -147,7 +152,7 @@ pagination:
   collection: 'posts'
   permalink: 'lists/:num/' 
   category: 'posts' 
-  per_page: 5
+  per_page: 10
   sort_reverse: true 
   sort_field: 'date' 
   title: 'Blog' 
@@ -156,4 +161,5 @@ pagination:
   trail:
     before: 2
     after: 2
-  extension: html 
+  extension: html
+

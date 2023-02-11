@@ -459,9 +459,9 @@ print(mixedRectangle.height)
 
 `height` 를 포장한 `SmallNumber` 인스턴스는 `SmallNumber(wrappedValue : 1)` 호출로 생성하며, 이는 기본 최대 값인 12 를 사용합니다. `width` 를 포장한 인스턴스는 `SmallNumber(wrappedValue: 2, maximum: 9)` 호출로 생성합니다.
 
-### Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)
+### Projecting a Value From a Property Wrapper (속성 포장에서 값 내보이기)
 
-포장 값에 더하여, 속성 포장은 _내민 값 (projected value)_ 을 정의함으로써 추가 기능을 드러낼 수 있습니다-예를 들어, 데이터베이스 접근을 관리하는 속성 포장은 자신의 내민 값에 대하여 `flushDatabaseConnection()` 메소드를 드러낼 수 있습니다. 내민 값의 이름은, 달러 기호 (`$`) 로 시작한다는 것만 제외하면, 포장 값과 똑같습니다. 코드에서 `$` 로 시작하는 속성을 정의할 순 없기 때문에 내민 값이 자신이 정의한 속성을 간섭할 일은 절대로 없습니다.
+포장된 값에 더하여, 속성 포장에서 추가 기능을 드러내려면 _내보인 값 (projected value)_ 을 정의하면 됩니다-예를 들어, 데이터베이스로의 접근을 관리하는 속성 포장이라면 `flushDatabaseConnection()` 메소드를 자신이 내보일 값으로 드러낼 수 있습니다. 내보인 값의 이름은, 달러 기호 (`$`) 로 시작한다는 것만 빼면, 포장된 값과 똑같습니다. 코드에선 `$` 로 시작하는 속성을 정의할 수 없기 때문에 내보인 값이 직접 정의한 속성을 간섭할 일은 절대 없습니다.
 
 위의 `SmallNumber` 예제에서, 너무 큰 수를 속성에 설정하려고 하면, 속성 포장이 저장 전에 수치 값을 적당히 조정합니다. 아래 코드는 `SmallNumber` 구조체에 `projectedValue` 속성을 추가하여 새 값을 속성에 저장하기 전에 속성 포장이 새 값을 적당히 조정했는지 추적합니다.
 

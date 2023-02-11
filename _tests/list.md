@@ -4,6 +4,6 @@ pagination:
   enabled: true
 ---
 
-Another one <a href="/list.html">Another List</a>
+# List
 
 {% include custom_paginate.md %}

@@ -34,7 +34,7 @@ _식별자 (identifiers)_ 는 A 에서 Z 까지의 대소문자, 밑줄 (`_`), �
 
 클로저 안에 명시적 매개 변수 이름이 없으면, 매개 변수에 암시적으로 `$0`, `$1`, `$2`, 등등의 이름을 붙입니다. 이 이름들은 클로저 영역 안에선 유효한 식별자입니다.
 
-속성 포장의 내민 값을 가진 속성이면 컴파일러가 달러 기호 (`$`) 로 시작하는 식별자를 통합합니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 이 접두사의 식별자를 (직접) 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장의 [propertyWrapper (속성 포장)]({% link docs/swift-books/swift-programming-language/attributes.md %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
+속성의 속성 포장에 내보인 값이 있으면 컴파일러가 달러 기호 (`$`) 로 시작하는 식별자를 만들어 넣습니다.[^property-wrapper-projection] 이 식별자와 상호 작용하는 코드를 만들 순 있지만, 이 접두사의 식별자를 (직접) 선언할 순 없습니다. 더 많은 정보는, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장의 [propertyWrapper (속성 포장)]({% link docs/swift-books/swift-programming-language/attributes.md %}#propertywrapper-속성-포장) 부분을 보도록 합니다.
 
 > GRAMMAR OF AN IDENTIFIER 부분 생략 - [링크](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID412)
 
@@ -272,7 +272,7 @@ let regex2 = # #/abc/# #    // 에러
 
 [^backticks]: 원문에 있는 'backtics' 은 'grave accent' 라고도 하며 우리말로는 '억음 부호' 라고 합니다. 말이 어렵기 때문에, 의미 전달을 위해 '역따옴표' 라고 옮깁니다. 'grave accent' 에 대해서는 위키피디아의 [Grave accent](https://en.wikipedia.org/wiki/Grave_accent) 또는 [억음 부호](https://ko.wikipedia.org/wiki/억음_부호) 항목을 보도록 합니다.
 
-[^property-wrapper-projection]: 본문의 의미는, 속성에 `projectedValue` 가 있으면, 스위프트가 `$<projectedValue>` 같은 구문을 자동 지원한다는 것입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Projecting a Value From a Property Wrapper (속성 포장에 있는 값 내밀기)]({% link docs/swift-books/swift-programming-language/properties.md %}#projecting-a-value-from-a-property-wrapper-속성-포장에-있는-값-내밀기) 부분을 보도록 합니다. 
+[^property-wrapper-projection]: 속성에 `projectedValue` 가 있으면, 스위프트 컴파일러가 `$<projectedValue>` 와 같은 구문을 자동으로 만들어 넣는다는 의미입니다. 이에 대한 더 자세한 내용은, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Projecting a Value From a Property Wrapper (속성 포장에서 값 내보이기)]({% link docs/swift-books/swift-programming-language/properties.md %}#projecting-a-value-from-a-property-wrapper-속성-포장에서-값-내보이기) 부분을 보기 바랍니다.
 
 [^escaped]: 'escape' 는 '벗어나다' 라는 의미를 가지고 있는데, 컴퓨터 용어에서 'escape character' 라고 하면 '(본래의 의미를) 벗어나서 (다른 의미를 가지는) 문자' 라는 의미가 있습니다. 보통은 'excape character' 라고 하면 `\` 기호를 붙이는 것을 말하지만, 여기서는 `` ` `` 기호를 사용하여 '키워드' 를 마치 일반 단어처럼 사용할 수 있게 만드는 것을 의미합니다.
 
