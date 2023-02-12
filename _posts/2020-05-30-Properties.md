@@ -530,7 +530,7 @@ struct SizedRectangle {
 }
 ```
 
-속성 포장 구문은 그냥 획득자와 설정자가 있는 속성을 위한 수월한 구문일 뿐이기 때문에, `height` 와 `width` 로의 접근은 다른 어떤 속성으로의 접근과 똑같이 동작합니다. 예를 들어, `resize(to:)` 코드는 자신의 속성 포장을 써서 `height` 와 `width` 에 접근합니다. `resize(to: .large)` 를 호출하면, `.large` 라는 switch 문 case 절이 직사각형의 높이와 폭을 100 으로 설정합니다. 포장 (wrapper) 은 그 속성 값이 12 보다 커지는 걸 막고, 자신이 값을 적당히 조정한 사실을 기록하고자, 내보인 값을 `true` 로 설정합니다. `resize(to:)` 끝에서, 반환문이 `$heigh` 와 `$width` 를 검사하여 속성 포장이 `height` 나 `width` 중 어느 하나를 적당히 조정했는 지 결정합니다. 
+속성 포장 구문은 그냥 획득자와 설정자가 있는 속성의 수월한 구문일 뿐이기 때문에, `height` 와 `width` 로 접근하는 건 다른 어떤 속성에 접근하는 것과 똑같이 동작합니다. 예를 들어, `resize(to:)` 안의 코드는 `height` 와 `width` 의 속성 포장으로 그들에 접근합니다. `resize(to: .large)` 를 호출하면, `.large` 의 switch 문 case 가 직사각형의 높이와 폭을 100 으로 설정합니다. 포장은 그 속성의 값이 12 보다 커지는 걸 막고, 내보인 값을 `true` 로 설정하여, 자신의 값을 적당히 조절한 사실을 기록합니다. `resize(to:)` 끝에서, 반환문이 `$heigh` 와 `$width` 를 검사하여 속성 포장이 `height` 나 `width` 중 어느 것이든 조절했는지 결정합니다. 
 
 ## Global and Local Variables (전역 변수와 지역 변수)
 
