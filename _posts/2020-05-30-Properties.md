@@ -664,16 +664,16 @@ struct AudioChannel {
 * (위를 막은 후의) 새 `currentLevel` 값이 이전에 _어떤 (any)_ `AudioChannel` 인스턴스로부터 받은 값보다 높으면, 속성 관찰자가 새 `currentLevel` 값을 `maxInputLevelForAllChannels` 타입 속성 안에 저장합니다.
 
 {: .note }
-> 이 두 검사 중 첫 번째에서, `didSet` 관찰자가 `currentLevel` 을 다른 값으로 설정합니다. 하지만, 이것이 관찰자를 다시 호출하도록 하진 않습니다.
+> 이 두 검사 중 첫 번째에서, `didSet` 관찰자는 `currentLevel` 을 다른 값으로 설정합니다. 이걸로, 하지만, 관찰자를 다시 호출하진 않습니다.
 
-`AudioChannel` 구조체를 사용하여, 스테레오 음향 시스템의 음량을 나타내는, `leftChannel` 과 `rightChennel` 이라는 두 음향 채널을 생성할 수 있습니다:
+`AudioChannel` 구조체로 `leftChannel` 과 `rightChennel` 이라는 두 개의 새로운 음향 채널을 생성하여, 스테레오 음향 시스템의 음량을 나타낼 수 있습니다:
 
 ```swift
 var leftChannel = AudioChannel()
 var rightChannel = AudioChannel()
 ```
 
-_왼쪽 (left)_ 채널의 `currentLevel` 을 `7` 로 설정하면, `maxInputLevelForAllChannels` 타입 속성을 `7` 로 갱신하는 걸 볼 수 있습니다:
+_왼쪽 (left)_ 채널의 `currentLevel` 을 `7` 로 설정하면, `maxInputLevelForAllChannels` 타입 속성이 `7` 과 같이 갱신되는 걸 볼 수 있습니다:
 
 ```swift
 leftChannel.currentLevel = 7
@@ -683,7 +683,7 @@ print(AudioChannel.maxInputLevelForAllChannels)
 // "7" 을 인쇄함
 ```
 
-_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려 하면, 오른쪽 채널의 `currentLevel` 속성이 최대 값 `10` 으로 위가 막히며, `maxInputLevelForAllChannels` 타입 속성은 `10` 으로 업데이트하는 걸 볼 수 있습니다:
+_오른쪽 (right)_ 채널의 `currentLevel` 을 `11` 로 설정하려고 하면, 오른쪽 채널의 `currentLevel` 속성이 최대 값인 `10` 으로 막혀서, `maxInputLevelForAllChannels` 타입 속성이 `10` 과 같이 업데이트되는 걸 볼 수 있습니다:
 
 ```swift
 rightChannel.currentLevel = 11
