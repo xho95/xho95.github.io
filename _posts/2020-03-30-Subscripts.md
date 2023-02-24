@@ -11,9 +11,9 @@ redirect_from: "/swift/language/grammar/subscripts/2020/03/15/Subscripts.html"
 
 ## Subscripts (첨자)
 
-클래스, 구조체, 및 열거체는, 집합체 (collection), 리스트 (list), 또는 시퀀스 (sequence)[^sequences] 멤버 원소에 접근하는 줄임말인, _첨자 (subscripts)_ 을 정의할 수 있습니다. 설정하고 가져오는데 별도의 메소드 없이 색인 (index) 으로 값을 설정하고 가져오기 위해 첨자를 사용합니다. 예를 들어, `Array` 인스턴스 원소는 `someArray[index]` 로 `Dictionary` 인스턴스 원소는 `someDictionary[key]` 로 접근합니다.
+클래스와, 구조체, 및 열거체는 _첨자 (subscripts)_ 를 정의할 수 있는데, 이는 집합체 (collection) 나, 리스트 (list), 또는 시퀀스 (sequence)[^sequences] 의 멤버 원소에 접근하기 위한 줄임말입니다. 첨자를 쓰면 설정하고 가져오기 위한 별도의 메소드 없이 색인[^index] 으로 값을 설정하고 가져옵니다. 예를 들어, `Array` 인스턴스 안의 원소는 `someArray[index]` 로 `Dictionary` 인스턴스 안의 원소는 `someDictionary[key]` 로 접근합니다.
 
-단일한 타입에 여러 개의 첨자를 정의할 수 있으며, 첨자에 전달한 색인 값 타입을 기초로 중복 정의한 첨자 중 사용하기 적절한 걸 선택합니다. 첨자는 일-차원민으로 제한하지 않으며,자신이 정의한 타입에 적합하도록 여러 개의 입력 매개 변수를 가진 첨자를 정의할 수도 있습니다.
+단일 타입에 여러 개의 첨자를 정의할 수 있으며, 중복 정의한 첨자 중 사용하기 적절한 건 첨자에 전달한 색인 값의 타입을 기반으로 선택됩니다. 첨자는 단일 차원으로 제한된 것이 아니며, 자신만의 타입에 어울리도록 여러 입력 매개 변수가 있는 첨자를 정의할 수도 있습니다.
 
 ### Subscript Syntax (첨자 구문)
 
