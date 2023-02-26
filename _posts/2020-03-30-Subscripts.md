@@ -62,20 +62,20 @@ print("six times three is \(threeTimesTable[6])")
 
 ### Subscript Usage (첨자 사용법)
 
-"첨자 (subscript)" 의 정확한 의미는 자신이 사용된 곳의 상황에 의존합니다. 첨자는 전형적으로 집합체나, 리스트, 또는 시퀀스 멤버 원소의 접근에 대한 줄임말로 사용합니다. 자신의 한 특별한 클래스나 구조체 기능에 가장 적절한 방식으로 자유롭게 첨자를 구현할 수 있습니다.
+"첨자 (subscript)" 의 정확한 의미는 사용한 상황에 의존합니다. 첨자는 일반적으로 집합체나, 리스트, 또는 시퀀스 안의 멤버 원소에 접근하기 위한 줄임말로 쓰입니다. 특별한 클래스나 구조체의 기능에 가장 적절하도록 자유롭게 첨자를 구현합니다.
 
-예를 들어, 스위프트의 `Dictionary` 타입은 `Dictionary` 인스턴스에 저장한 값을 설정하고 가져오고자 첨자를 구현합니다. 첨자 대괄호 안에 딕셔너리의 키 타입인 키를 제공하고, 첨자에 딕셔너리의 값 타입인 값을 할당함으로써, 딕셔너리에 값을 설정할 수 있습니다:
+예를 들어, 스위프트의 `Dictionary` 타입이 구현한 첨자는 `Dictionary` 인스턴스에 저장된 값을 설정하고 가져옵니다. 딕셔너리에 값을 설정하는 건 딕셔너리 키 타입의 키를 첨자 대괄호에 제공한 다음, 딕셔너리의 값 타입의 값을 첨자에 할당하면 됩니다:
 
 ```swift
 var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 numberOfLegs["bird"] = 2
 ```
 
-위 예제는 `numberOfLegs` 라는 변수를 정의하고 세 키-값 쌍을 담은 딕셔너리 글자 값으로 이를 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론합니다. 딕셔너리를 생성한 후, 이 예제는 첨자 할당을 사용하여 딕셔너리에 `"bird"` 라는 `String` 키와 `2` 라는 `Int` 값을 추가합니다.
+위 예제는 `numberOfLegs` 라는 변수를 정의하고 이를 세 개의 키-값 쌍을 담은 딕셔너리 글자 값으로 초기화합니다. `numberOfLegs` 딕셔너리의 타입은 `[String: Int]` 라고 추론합니다. 딕셔너리를 생성한 후, 이 예제는 첨자 할당을 써서 `String` 키가 `"bird"` 고 `Int` 값이 `2` 인 걸 딕셔너리에 추가합니다.
 
-`Dictionary` 첨자 연산에 대한 더 많은 정보는, [Accessing and Modifying a Dictionary (딕셔너리 접근 및 수정하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#accessing-and-modifying-a-dictionary-딕셔너리-접근-및-수정하기) 부분을 보도록 합니다.
+`Dictionary` 의 첨자 연산에 대한 더 많은 건, [Accessing and Modifying a Dictionary (딕셔너리 접근 및 수정하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#accessing-and-modifying-a-dictionary-딕셔너리-접근-및-수정하기) 부분을 보기 바랍니다.
 
-> 스위프트의 `Dictionary` 타입은 _옵셔널 (optional)_ 타입을 취하고 반환하는 첨자로 자신의 키-값 첨자 연산을 구현합니다. 위의 `numberOfLegs` 딕셔너리에선, 키-값 첨자가 `Int?`, 또는 "옵셔널 정수 (optional int)", 타입의 값을 취하고 반환합니다. `Dictionary` 타입은 옵셔널 첨자 타입을 사용하여 모든 키가 값을 가지진 않을 거라는 사실을 모델링하고, 그 키에 `nil` 값을 할당함으로써 키의 값을 삭제할 방법을 제공합니다.
+> 스위프트의 `Dictionary` 타입은 자신의 키-값 첨자 연산을 _옵셔널 (optional)_ 타입을 입력 받아 반환하는 첨자로 구현합니다. 위의 `numberOfLegs` 딕셔너리에선, 키-값 첨자가 입력 받고 반환하는 값이 `Int?`, 또는 "옵셔널 정수 (optional int)", 타입입니다. `Dictionary` 타입은 옵셔널 첨자 타입을 써서 모든 키에 값이 있는게 아니라는 사실을 모델링하며, 그 키에 `nil` 값을 할당하여 키의 값을 삭제하게 합니다.
 
 ### Subscript Options (첨자의 옵션)
 
