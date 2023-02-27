@@ -79,11 +79,11 @@ numberOfLegs["bird"] = 2
 
 ### Subscript Options (첨자의 옵션)
 
-첨자는 어떤 개수의 입력 매개 변수든 취할 수 있으며, 이 입력 매개 변수는 어떤 타입이든 될 수 있습니다. 첨자는 어떤 타입의 값이든 반환할 수도 있습니다.
+첨자는 어떤 개수의 입력 매개 변수든 받을 수 있으며, 이 입력 매개 변수는 어떤 타입이어도 됩니다. 첨자가 반환하는 값도 어떤 타입이든 됩니다.
 
-[Variadic Parameters (가변 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#variadic-parameters-가변-매개-변수) 와 [Default Parameter Values (기본 매개 변수 값)]({% link docs/swift-books/swift-programming-language/functions.md %}#default-parameter-values-기본-매개-변수-값) 에서 설명한 것처럼, 함수와 같이, 첨자도 가변 개수의 매개 변수를 취할 수 있으며 이 매개 변수에 기본 값을 제공할 수도 있습니다. 하지만, 함수와 달리, 첨자 연산은 입-출력 (in-out) 매개 변수를 사용할 수 없습니다.
+함수 같이, 첨자도 다양한 개수의 매개 변수를 입력 받아 그 매개 변수에 기본 값을 제공할 수 있는데, 이는 [Variadic Parameters (가변 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#variadic-parameters-가변-매개-변수) 와 [Default Parameter Values (기본 매개 변수 값)]({% link docs/swift-books/swift-programming-language/functions.md %}#default-parameter-values-기본-매개-변수-값) 에서 논의합니다. 하지만, 함수와 달리, 첨자 연산은 입-출력 매개 변수를 사용할 수 없습니다.
 
-클래스나 구조체는 필요한 만큼 많은 첨자 구현을 제공할 수 있으며, 사용하가 적절한 첨자는 첨자를 사용할 시점에 첨자 대괄호 안에 담은 값이나 값들의 타입을 기초로 추론할 겁니다. 이런 여러 개의 첨자 정의를 _첨자 중복 정의 (subscript overloading)_ 라고 합니다.
+클래스나 구조체는 필요한 만큼 많이 첨자를 구현할 수 있으며, 쓰기에 적절한 첨자의 추론은 첨자를 쓸 시점에 첨자 대괄호에 담긴 값 또는 값들의 타입을 기반으로 하게 됩니다. 이렇게 첨자를 여러 개 정의하는 걸 _첨자 중복 정의 (subscript overloading)_ 라고 합니다.
 
 단일 매개 변수를 취하는 첨자 연산이 가장 흔한 반면에, 자신의 타입에 적절하다면 여러 개의 매개 변수를 가진 첨자를 정의할 수도 있습니다. 다음 예제는, 이-차원 `Double` 값 배열을 나타내는, `Matrix` 구조체를 정의합니다. `Matrix` 구조체의 첨자는 두 정수 매개 변수를 취합니다:
 
