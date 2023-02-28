@@ -85,7 +85,7 @@ numberOfLegs["bird"] = 2
 
 클래스나 구조체는 필요한 만큼 많이 첨자를 구현할 수 있으며, 쓰기에 적절한 첨자의 추론은 첨자를 쓸 시점에 첨자 대괄호에 담긴 값 또는 값들의 타입을 기반으로 하게 됩니다. 이렇게 첨자를 여러 개 정의하는 걸 _첨자 중복 정의 (subscript overloading)_ 라고 합니다.
 
-단일 매개 변수를 취하는 첨자 연산이 가장 흔한 반면에, 자신의 타입에 적절하다면 여러 개의 매개 변수를 가진 첨자를 정의할 수도 있습니다. 다음 예제는, 이-차원 `Double` 값 배열을 나타내는, `Matrix` 구조체를 정의합니다. `Matrix` 구조체의 첨자는 두 정수 매개 변수를 취합니다:
+첨자는 단 하나의 매개 변수를 입력받는게 가장 흔하나, 자신의 타입에 적절하면 여러 개의 매개 변수를 가진 첨자를 정의할 수도 있습니다. 다음 예제는 `Matrix` 구조체를 정의하여, `Double` 값으로 2-차원 배열을 나타냅니다. `Matrix` 구조체의 첨자는 두 개의 정수 매개 변수를 입력 받습니다:
 
 ```swift
 struct Matrix {
@@ -112,30 +112,30 @@ struct Matrix {
 }
 ```
 
-`Matrix` 는 `rows` 와 `columns` 이라는 두 매개 변수를 취하는 초기자를 제공하며, `rows * columns` 개의 `Double` 타입 값을 저장할만큼 충분히 큰 배열을 생성합니다. 행렬 (matrix) 안의 각 위치엔 `0.0` 이라는 초기 값을 줍니다. 이를 달성하기 위해, 배열 초기자에 배열 크기와, `0.0` 이라는 초기 단위 조직 값을 전달하여, 올바른 크기의 새 배열을 생성하고 초기화합니다. 이 초기자는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
+`Matrix` 는 `rows` 와 `columns` 이라는 두 개의 매개 변수를 입력받는 초기자를 제공하며, `rows * columns` 개의 `Double` 타입 값을 저장하기에 충분한 배열을 생성합니다. 행렬의 각 위치엔 초기 값 `0.0` 을 줍니다. 이를 이루기 위해, 배열 크기와, 초기 단위 값 `0.0` 을 배열 초기자로 전달하여 올바른 크기의 새 배열을 생성하고 초기화합니다. 이 초기자는 [Creating an Array with a Default Value (기본 값으로 배열 생성하기)]({% link docs/swift-books/swift-programming-language/collection-types.md %}#creating-an-array-with-a-default-value-기본-값으로-배열-생성하기) 에서 더 자세히 설명합니다.
 
-자신의 초기자에 적절한 행과 열 개수를 전달함으로써 새로운 `Matrix` 인스턴스를 생성할 수 있습니다:
+새로운 `Matrix` 인스턴스를 생성하려면 그 초기자에 적절한 행과 열 횟수를 전달하면 됩니다:
 
 ```swift
 var matrix = Matrix(rows: 2, columns: 2)
 ```
 
-위 예제는 두 행과 두 열을 가진 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스의 `grid` 배열은 사실상, 맨 왼쪽 위에서 오른쪽 아래로 읽어가는, 납작한 버전의 행렬입니다[^flattend-version]:
+위 예제는 행의 두 개고 열이 두 개인 새로운 `Matrix` 인스턴스를 생성합니다. 이 `Matrix` 인스턴스에 있는 `grid` 배열은, 맨 왼쪽 위부터 오른쪽 아래로 읽어, 그 효과로 납작해진 행렬[^flattend-version] 입니다:
 
 ![flattened-version-of-the-matrix](/assets/Swift/Swift-Programming-Language/Subscripts-flattened-version-matrix.jpg)
 
-행과 열 값을, 쉼표로 구분하여, 첨자에 전달함으로써 행렬에 있는 값을 설정할 수 있습니다:
+행렬 안의 값을 설정하려면, 쉼표로 구분된, 행과 열 값을 첨자로 전달하면 됩니다:
 
 ```swift
 matrix[0, 1] = 1.5
 matrix[1, 0] = 3.2
 ```
 
-이 두 구문은 첨자의 설정자를 호출하여 (`row` 가 `0` 이고 `column` 이 `1` 인) 행렬 맨 오른쪽 위를 `1.5` 로, (`row` 가 `1` 이고 `column` 이 `0` 인) 맨 왼쪽 아래를 `3.2` 라는 값으로 설정합니다:
+이 두 구문은 첨자의 설정자를 호출하여 행렬 맨 오른쪽 위인 (`row` 가 `0` 이고 `column` 이 `1` 인) 곳은 `1.5` 로, 맨 왼쪽 아래인 (`row` 가 `1` 이고 `column` 이 `0` 인) 곳은 `3.2` 값을 설정합니다:
 
 ![matrix](/assets/Swift/Swift-Programming-Language/Subscripts-matrix.jpg)
 
-`Matrix` 첨자의 획득자와 설정자 둘 다 첨자의 `row` 와 `column` 값이 유효한지 검사하는 단언문 (assertion) 을 담고 있습니다. 이 단언문을 거들려고, 요청한 `row` 와 `column` 이 행렬 경계 안에 있는지 검사하는, `indexIsValid(row:column:)` 라는 편의(를 위한) 메소드를 `Matrix` 가 포함합니다:
+`Matrix` 첨자의 획득자와 설정자 둘 다 담고 있는 단언문으로 첨자의 `row` 와 `column` 값이 유효한지 검사합니다. 이 단언문을 거들고자, `Matrix` 는 `indexIsValid(row:column:)` 라는 편의(를 위한) 메소드를 포함하고 있어 요청한 `row` 와 `column` 이 행렬의 경계 안에 있는지를 검사합니다:
 
 ```swift
 func indexIsValid(row: Int, column: Int) -> Bool {
@@ -143,11 +143,11 @@ func indexIsValid(row: Int, column: Int) -> Bool {
 }
 ```
 
-행렬 경계 밖에 있는 첨자에 접근하려 하면 단언문을 발동합니다:
+행렬의 경계 밖에 있는 첨자에 접근하려고 하면 단언문을 발동합니다:
 
 ```swift
 let someValue = matrix[2, 2]
-// [2, 2] 가 행렬 경계 밖이기 때문에, 단언문을 발동합니다.
+// 이는 단언문을 발동하는데, [2, 2] 는 행렬의 경계 밖이기 때문입니다.
 }
 ```
 
@@ -181,4 +181,4 @@ print(mars)
 
 [^initializer]: 여기서 사용한 초기자 (initializer) 는 구조체 타입이면 자동으로 가지는 '멤버 초기자 (memberwise initializer)' 입니다. 자동으로 가지게 되므로 코드에는 없습니다. 멤버 초기자에 대한 더 많은 정보는, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 부분을 보도록 합니다.
 
-[^flattend-version]: '납작한 (flattened) 버전의 행렬' 이란 2-차원 배열의 형상을 바꿔서 1-차원 배열로 만들었다는 의미입니다.
+[^flattend-version]: 납작해진 (flattened) 행렬이란 2-차원 배열이었다가 1-차원 배열로 된 행렬이라는 의미입니다.
