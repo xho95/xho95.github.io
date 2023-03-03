@@ -381,7 +381,7 @@ for genre in favoriteGenres.sorted() {
 
 ### Performing Set Operations (집합 연산하기)
 
-(셋으로는) 기본적인 집합 연산 (set operations)[^set-operations] 을 효율적으로 할 수 있는데, 두 집합을 서로 조합하기, 두 집합의 공통 값 결정하기, 또는 두 집합에 담긴 값 중 똑같은게 모두인지, 일부인지, 아무것도 없는지 결정하기 등 입니다.
+(셋으로는) 기본적인 집합 연산 (set operations)[^set-operations] 을 효율적으로 할 수 있는데, 이는 두 집합을 서로 조합하기나, 두 집합의 공통 값 결정하기, 또는 두 집합이 담은 값 중에서 똑같은게 모두인지, 일부인지, 아무것도 없는지 결정하기 등 입니다.
 
 ### Fundamental Set Operations (기본적인 집합 연산)
 

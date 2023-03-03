@@ -35,7 +35,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Methods (메소드)]({% link docs/swift-books/swift-programming-language/methods.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Subscripts (첨자)]({% link docs/swift-books/swift-programming-language/subscripts.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
-* [Inheritance (상속; 물려받음)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
+* [Inheritance (상속; 물려받기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
