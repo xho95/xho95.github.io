@@ -20,11 +20,11 @@ categories: Swift Language Grammar Inheritance
 
 또 다른 클래스로부터 물려받는게 없는 어떤 클래스든 _기초 클래스 (base class)_[^base-class] 라고 합니다.
 
-> 스위프트의 클래스는 보편적인 기초 클래스 (universal base class) 를 물려받지 않습니다.[^universal-base-class] 직접 정의한 클래스에 상위 클래스를 지정하지 않으면 자동으로 기초 클래스가 됩니다.
+> 스위프트의 클래스는 보편적인 기초 클래스 (universal base class) 를 물려받지 않습니다.[^universal-base-class] 직접 정의한 클래스에 상위 클래스를 지정하지 않으면 자동으로 자신이 쓸 기초 클래스가 됩니다.
 
-아래 예제는 `Vehicle` 이라는 기초 클래스를 정의합니다. 이 기초 클래스는 `currentSpeed` 라는 저장 속성을 정의하는데, (속성 타입은 `Double` 로 추론하고) `0.0` 이라는 기본 값을 가집니다. `currentSpeed` 속성 값은 차량 (vehicle) 설명을 생성하는 `description` 이라는 `String` (타입) 읽기-전용 계산 속성이 사용합니다.
+아래 예제는 `Vehicle` 이라는 기초 클래스를 정의합니다. 이 기초 클래스는 `currentSpeed` 라는 저장 속성을 정의하며, 기본 값은 `0.0` 입니다 (속성의 타입은 `Double` 로 추론합니다). `description` 이라는 읽기-전용 `String` 계산 속성이 `currentSpeed` 속성의 값을 써서 차량에 대한 설명을 생성합니다.
 
-`Vehicle` 기초 클래스는 `makeNoise` 라는 메소드도 정의합니다. 이 메소드는 실제로 기초 `Vehicle` 인스턴스에선 아무 것도 안하지만, 나중에 `Vehicle` 의 하위 클래스에서 사용자 정의할 겁니다:
+`Vehicle` 기초 클래스는 `makeNoise` 라는 메소드도 정의합니다. 이 메소드는 기초 `Vehicle` 인스턴스에서는 실제로 아무 것도 안하지만, 나중에 `Vehicle` 의 하위 클래스에서 사용자가 알맞게 정의할 겁니다:
 
 ```swift
 class Vehicle {
@@ -33,25 +33,25 @@ class Vehicle {
     return "traveling at \(currentSpeed) miles per hour"
   }
   func makeNoise() {
-    // 아무 것도 안함 - 임의의 차량은 소음을 만들 필요가 없음
+    // 아무 것도 안함 - 임의의 차량이 소음을 만들 필요는 없음
   }
 }
 ```
 
-타입 이름 뒤에 빈 괄호를 작성하는, _초기자 구문 (initializer syntax)_ 을 가지고 `Vehicle` 의 새 인스턴스를 생성합니다:
+새로운 `Vehicle` 인스턴스는 _초기자 구문 (initializer syntax)_ 으로 생성하는데, 이는 타입 이름 뒤에 빈 괄호를 쓰면 됩니다:
 
 ```swift
 let someVehicle = Vehicle()
 ```
 
-새 `Vehicle` 인스턴스를 생성했으면, `description` 속성에 접근하여 현재 차량 속도를 사람이-이해할 수 있게 인쇄할 수 있습니다:
+새 `Vehicle` 인스턴스를 생성했다면, `description` 속성에 접근하여 사람이-읽을 수 있게 설명된 차량의 현재 속도를 인쇄할 수 있습니다:
 
 ```swift
 print("Vehicle: \(someVehicle.description)")
 // "Vehicle: traveling at 0.0 miles per hour" 를 인쇄함
 ```
 
-`Vehicle` 클래스는 임의의 차량에 공통인 성질을 정의하지만, 그 자체론 별 쓸모가 없습니다. 더 유용해지려면, 더 특정한 종류의 차량을 설명하도록 개량할 필요가 있습니다.
+`Vehicle` 클래스는 임의의 차량에 공통된 성질을 정의하지만, 그 자체론 별 쓸모가 없습니다. 더 쓸모 있으려면, 이를 다듬어서 더 특화된 종류의 차량을 설명할 필요가 있습니다.
 
 ### Subclassing (하위 클래스 만들기)
 
