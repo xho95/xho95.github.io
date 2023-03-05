@@ -55,17 +55,17 @@ print("Vehicle: \(someVehicle.description)")
 
 ### Subclassing (하위 클래스 만들기)
 
-_하위 클래스 만들기 (subclassing)_ 는 기존 클래스를 기초로 새로운 클래스를 만드는 행동입니다. 하위 클래스 (subclass) 는 기존 클래스의 성질을 상속한 다음, 나중에 개량할 수 있습니다. 하위 클래스에서 새로운 성질을 추가할 수도 있습니다.
+_하위 클래스 만들기 (subclassing)_ 는 이미 있던 클래스를 기초로 하여 새로운 클래스를 만드는 행동입니다. 하위 클래스는 이미 있던 클래스로부터 성질을 물려받은, 다음 이를 다듬을 수 있습니다. 하위 클래스에서 새로운 성질을 추가할 수도 있습니다.
 
-하위 클래스에 상위 클래스가 있다고 지시하려면, 상위 클래스 이름 앞에, 콜론으로 구분된, 하위 클래스 이름을 작성합니다:
+하위 클래스에서 상위 클래스가 있다는 걸 지시하려면, 하위 클래스 이름을 상위 클래스 이름 앞에, 콜론으로 구분하여, 쓰면 됩니다:
 
 ```swift
 class SomeSubclass: SomeSuperclass {
-  // 하위 클래스 정의를 여기에 둠
+  // 하위 클래스 정의는 여기에 둠
 }
 ```
 
-다음 예제는, `Vehicle` 이라는 상위 클래스를 가진, `Bicycle` 이라는 하위 클래스를 정의합니다:
+다음 예제는 `Bicycle` 이라는 하위 클래스를 정의하는데, 상위 클래스는 `Vehicle` 입니다:
 
 ```swift
 class Bicycle: Vehicle {
@@ -73,18 +73,18 @@ class Bicycle: Vehicle {
 }
 ```
 
-새 `Bicycle` 클래스는, `currentSpeed` 와 `description` 속성 및 `makeNoise()` 메소드 같은, `Vehicle` 의 모든 성질을 자동으로 얻습니다.
+새 `Bicycle` 클래스는 자동으로 `Vehicle` 의 모든 성질을 얻는데, `currentSpeed` 및 `description` 속성과 `makeNoise()` 메소드 같은 것들입니다.
 
-상속한 성질에 더해, `Bicycle` 클래스는, `hasBasket` 이라는, 새로운 저장 속성을 정의하는데, (속성은 `Bool` 타입으로 추론하고) `false` 라는 기본 값을 가집니다.
+자신이 물려받는 성질에 더해, `Bicycle` 클래스는 새로운 저장 속성인, `hasBasket` 도 정의하며, 기본 값은 `false` 입니다 (속성의 타입은 `Bool` 로 추론합니다). 
 
-기본적으로, 새로 생성한 어떤 `Bicycle` 인스턴스에도 바구니 (basket) 가 없을 겁니다. 한 특별한 `Bicycle` 인스턴스의 `hasBasket` 속성은 그 인스턴스를 생성한 후 `true` 라고 설정할 수 있습니다:
+기본적으로, 새로 생성한 어떤 `Bicycle` 인스턴스에도 바구니는 없을 겁니다. `hasBasket` 속성에 `true` 를 설정하는 건 한 특별한 `Bicycle` 인스턴스를 생성한 후에 할 수 있습니다: 
 
 ```swift
 let bicycle = Bicycle()
 bicycle.hasBasket = true
 ```
 
-`Bicycle` 인스턴스의 `currentSpeed` 상속 속성을 수정하고, 인스턴스의 `description` 상속 속성을 조회할 수도 있습니다:
+`Bicycle` 인스턴스의 물려받은 속성인 `currentSpeed` 도 수정하고, 인스턴스가 물려받은 `description` 속성을 조회하는 것도 할 수 있습니다:
 
 ```swift
 bicycle.currentSpeed = 15.0
@@ -92,7 +92,7 @@ print("Bicycle: \(bicycle.description)")
 // "Bicycle: traveling at 15.0 miles per hour" 를 인쇄함
 ```
 
-하위 클래스 그 자체도 하위 클래스를 만들 수 있습니다. 다음 예제는 "탠덤 (tandem)" 이라는 2-인승 자전거를 위해 `Bicycle` 의 하위 클래스를 생성합니다:
+하위 클래스 자체도 하위 클래스를 만들 수 있습니다. 다음 예제는 `Bicycle` 의 하위 클래스로 "탠덤 (tandem)" 이라는 2-인승 자전거를 생성합니다:
 
 ```swift
 class Tandem: Bicycle {
@@ -100,9 +100,9 @@ class Tandem: Bicycle {
 }
 ```
 
-`Tandem` 은 `Bicycle` 의 모든 속성과 메소드를 상속하고, (`Bicycle` 은) 차례대로 `Vehicle` 의 모든 속성과 메소드를 상속합니다. `Tandem` 하위 클래스는, `0` 이라는 기본 값을 가지고, `currentNumberOfPassengers` 라는 새로운 저장 속성도 추가합니다.
+`Tandem` 은 `Bicycle` 로부터 모든 속성과 메소드를 물려받으며, 이는[^bicycle] 차례대로 `Vehicle` 로부터 모든 속성과 메소드를 물려받습니다. 하위 클래스인 `Tandem` 은 `currentNumberOfPassengers` 라는 새로운 저장 속성도 추가하는데, 기본 값은 `0` 입니다.
 
-`Tandem` 의 인스턴스를 생성하면, 자신의 새 속성이든 상속 속성이든 어떤 것과도 작업할 수 있으며, `Vehicle` 에서 상속한 읽기-전용 `description` 속성도 조회할 수 있습니다:
+`Tandem` 의 인스턴스를 생성하면, 새로운 거든 물려받은 거든 어떤 속성과도 작업할 수 있으며, `Vehicle` 로부터 물려받은 읽기-전용 속성인 `description` 도 조회할 수 있습니다:
 
 ```swift
 let tandem = Tandem()
@@ -240,3 +240,5 @@ _최종 (final)_ 으로 표시함으로써 메소드나, 속성, 및 첨자의 �
 [^base-class]: 프로그래밍 언어마다 'base class' 라는 용어의 의미가 조금씩 다른데, 'base class' 를 '상위 클래스 (superclass)' 의 의미로 사용하는 언어도 있습니다. 하지만, 스위프트의 기초 클래스 (base class) 는 상위 클래스 (superclass) 와 의미가 조금 다릅니다. 스위프트의 기초 클래스는 상위 클래스 여부와는 상관없이, 아무 클래스도 상속하지 않는 클래스, 즉, 상속 계층이 있다면 최상단에 위치하게 되는 클래스를 의미합니다.
 
 [^universal-base-class]: '보편 기초 클래스 (universal base class)' 는 객체 지향 프로그래밍 언어에서 모든 객체가 상속을 받아햐 하는 클래스를 말합니다. 보통 상속 계층 최상단에 위치하며 `Object` 라는 이름이 붙는 경우가 많습니다. 오브젝티브-C 언어도 `NSObject` 라는 보편 기초 클래스를 가지고 있습니다. 객체 지향 프로그래밍 언어는 이런 보편 기초 클래스를 가진 경우가 많습니다. 스위프트 클래스는 기본적으로 보편 기초 클래스를 상속하진 않지만, 오브젝티브-C 와 호환되도록 하려면, `NSObject` 라는 보편 기초 클래스를 상속해야 합니다. 클래스 앞에 `@objc` 를 붙이는 것도 `NSObject` 를 상속하게 만드는 겁니다.
+
+[^bicycle]: `Tandem` 은 `Bicycle` 로부터 모든 걸 물려받고, `Bicycle` 은 `Vehicle` 로부터 모든 걸 물려받는다는 의미입니다. 즉, `Tandem` 은 `Vehicle` 로부터도 모든 걸 물려받습니다.
