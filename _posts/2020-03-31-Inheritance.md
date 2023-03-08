@@ -133,9 +133,9 @@ print("Tandem: \(tandem.description)")
 
 #### Overriding Methods (메소드 재정의하기)
 
-상속한 인스턴스 메소드나 타입 메소드를 재정의하면 하위 클래스 안에서 맞춤식 또는 대체 구현을 제공할 수 있습니다.
+물려받은 인스턴스 또는 타입 메소드를 재정의하여 하위 클래스에서 맞춤식 구현이나 대체 구현을 제공할 수 있습니다.
 
-다음 예제는 `Train` 이라는 새로운 `Vehicle` 하위 클래스를 정의하는데, 이는 `Vehicle` 에서 `Train` 이 상속한 `makeNoise()` 메소드를 재정의합니다:
+다음 예제는 `Train` 이라는 `Vehicle` 의 새로운 하위 클래스를 정의하여, `Train` 이 `Vehicle` 로부터 물려받은 `makeNoise()` 메소드를 재정의합니다:
 
 ```swift
 class Train: Vehicle {
@@ -145,7 +145,7 @@ class Train: Vehicle {
 }
 ```
 
-새 `Train` 인스턴스를 생성하고 `makeNoise()` 메소드를 호출하면, `Train` 하위 클래스 버전의 메소드를 호출하는 걸 볼 수 있습니다:
+새로운 `Train` 인스턴스를 생성하고 `makeNoise()` 메소드를 호출하면, `Train` 하위 클래스 버전의 메소드가 호출되는 걸 볼 수 있습니다:
 
 ```swift
 let train = Train()
