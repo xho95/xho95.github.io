@@ -167,7 +167,7 @@ train.makeNoise()
 
 > 속성 재정의 부분에서 설정자를 제공한다면, 반드시 그 재정의에서 획득자도 제공해야 합니다. 재정의하는 획득자에서 물려받은 속성 값을 수정하고 싶지 않다면, 물려받은 값을 단순히 통과시킬 수 있는데 이는 획득자에서 `super.someProperty` 를 반환하면 되며, 여기서 `someProperty` 는 재정의하고 있는 속성의 이름입니다.
 
-다음 예제는, `Vehicle` 의 하위 클래스인, `Car` 라는 새로운 클래스를 정의합니다. `Car` 클래스는, 기본 값이 `1` 인, `gear` 라는 새로운 저장 속성을 도입합니다. `Car` 클래스는 `Vehicle` 에서 상속한 `description` 속성도 재정의하여, 현재 기어 (gear) 상태를 포함한 자신만의 설명을 제공합니다:
+다음 예제에서 정의하는 `Car` 라는 새로운 클래스는, `Vehicle` 의 하위 클래스입니다. `Car` 클래스가 소개하는 `gear` 라는 새로운 저장 속성은, 기본 값이 `1` 입니다. `Car` 클래스는 `Vehicle` 로부터 물려받은 `description` 속성도 재정의하여, 기어의 현 상태를 포함한 자신만의 설명을 제공합니다:
 
 ```swift
 class Car: Vehicle {
@@ -178,9 +178,9 @@ class Car: Vehicle {
 }
 ```
 
-`description` 속성 재정의는, `Vehicle` 클래스의 `description` 속성을 반환하는, `super.description` 호출로 시작합니다. 그런 다음 `Car` 클래스 버전의 `description` 이 설명 (description) 끝에 현재 기어에 대한 정보를 제공하는 어떠한 부가 문장을 추가합니다.
+재정의한 `description` 속성의 시작 부분은 `super.description` 호출인데, 이는 `Vehicle` 클래스의 `description` 속성을 반환합니다. `Car` 클래스 버전의 `description` 이 그 다음에 이 설명의 끝에 약간의 텍스트를 더하여 현재 기어에 대한 정보를 추가합니다.
 
-`Car` 클래스의 인스턴스를 생성하고 `gear` 와 `currentSpeed` 속성을 설정하면, `description` 속성이 `Car` 클래스 안에서 정의한 맞춤식 설명을 반환하는 걸 볼 수 있습니다:
+`Car` 클래스의 인스턴스를 생성하고 `gear` 와 `currentSpeed` 속성을 설정하면, `description` 속성이 `Car` 클래스에서 정의한 맞춤식 설명을 반환하는 걸 볼 수 있습니다:
 
 ```swift
 let car = Car()
