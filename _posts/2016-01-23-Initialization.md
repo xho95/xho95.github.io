@@ -10,11 +10,11 @@ categories: Xcode Swift Grammar Initialization
 
 ## Initialization (초기화)
 
-_초기화 (initialization)_ 는 사용할 클래스나, 구조체, 또는 열거체 인스턴스를 준비하는 과정입니다. 이 과정은 인스턴스의 각 저장 속성마다 초기 값을 설정하는 것 그리고 새 인스턴스를 사용하기 전에 필수인 다른 어떤 설정이나 초기화를 하는 걸 포함합니다.
+_초기화 (initialization)_ 는 클래스나, 구조체, 또는 열거체를 쓰려고 인스턴스를 준비하는 과정입니다. 이 과정엔 그 인스턴스에 있는 각 저장 속성마다 초기 값을 설정하는 것과 새 인스턴스를 준비하기 전에 필요한 어떤 설정 및 초기화를 하는 걸 포함합니다.
 
-한 특별한 타입의 새 인스턴스를 생성하고자 호출할 수 있는 특수한 함수 같은, _초기자 (initializers)_ 를 정의함으로써 이 초기화 과정을 구현합니다. 오브젝티브-C 초기자와 달리, 스위프트 초기자는 값을 반환하지 않습니다. 이들의 으뜸 역할은 최초로 사용하기 전에 새 타입 인스턴스를 올바로 초기화하도록 보장하는 겁니다.
+이 초기화 과정을 구현하려면 _초기자 (initializers)_ 를 정의하면 되는데, 이는 특수한 메소드와 같은 것으로 호출하면 한 특별한 타입에 대한 새로운 인스턴스를 생성할 수 있습니다. **오브젝티브-C** 의 초기자와 달리, 스위프트 초기자는 값을 반환하지 않습니다. 이들의 으뜸 역할은 최초로 사용되기 전에 타입의 새로운 인스턴스가 올바로 초기화되도록 보장하는 겁니다.
 
-클래스 타입 인스턴스는, 그 클래스의 인스턴스 해제 직전에 어떤 자신만의 정리를 하는, _정리자 (deinitializers)_ 도 구현할 수 있습니다. 정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) 부분을 보도록 합니다.
+클래스 타입의 인스턴스는 _뒷정리자 (deinitializers)_ 도 구현할 수 있는데, 이는 그 클래스의 인스턴스가 해제되기 직전에 자신만의 뒷정리를 합니다. 뒷정리자에 대한 더 많은 정보는, [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) 부분을 보기 바랍니다.
 
 ### Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)
 
