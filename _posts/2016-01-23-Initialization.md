@@ -52,11 +52,11 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 
 #### Default Property Values (기본 속성 값)
 
-위에서 본 것처럼, 초기자 안에서 저장 속성의 초기 값을 설정할 수 있습니다. 대안으로는, 속성 선언 부분에서 _기본 속성 값 (default property value)_ 을 지정합니다.[^property-declaration] 정의할 때 속성에 초기 값을 할당함으로써 기본 속성 값을 지정합니다.
+저장 속성의 초기 값은 초기자 안에서 설정할 수 있으며, 이는 위에서 본 것과 같습니다. 대안은, 속성의 선언 부분에 _기본 속성 값 (default property value)_ 을 지정하는 겁니다.[^property-declaration] 기본 속성 값을 지정하려면 속성을 정의할 때 초기 값을 할당하면 됩니다.
 
-> 속성이 항상 동일한 초기 값을 취하면, 초기자 안에서 값을 설정하기 보단 기본 값을 제공합니다. 끝의 결과는 똑같지만, 기본 값이 속성 초기화와 그것의 선언을 더 가깝게 묶습니다. 이는 초기자를 더 짧고, 명확하게 하며 자신의 기본 값으로 속성의 타입을 추론할 수 있게 합니다. 기본 값은, 이 장 나중에 설명하는 것처럼, 기본 초기자 (default initializer) 와 초기자 상속 (initializer inheritance) 이라는 이점도 더 쉽게 취하게 합니다.
+> 속성이 항상 똑같은 초기 값을 입력 받는다면, 초기자 안에서 값을 설정하기 보단 기본 값을 제공하도록 합니다. 끝의 결과는 똑같지만, 기본 값이 속성 초기화와 선언을 더 가깝게 묶습니다. 이는 초기자를 더 짧고, 명확하게 만들며 속성의 타입을 기본 값으로 추론할 수 있게 해줍니다. 기본 값은 기본 초기자[^default-initializer] 와 초기자 상속[^initializer-inheritance] 도 더 쉽게 활용하도록 해주는데, 이는 이 장 나중에 설명합니다.
 
-속성을 선언하는 시점에 자신의 `temperature` 속성에 기본 값을 제공함으로써 위의 `Fahrenheit` 구조체를 더 단순한 형식으로 작성할 수 있습니다:
+위에 있는 `Fahrenheit` 구조체를 더 단순한 형식으로 작성하려면 속성 선언 시점에서 `temperature` 속성에 기본 값을 제공하면 됩니다:
 
 ```swift
 struct Fahrenheit {
@@ -64,15 +64,15 @@ struct Fahrenheit {
 }
 ```
 
-### Customizing Initialization (초기화 과정 사용자 정의하기)
+### Customizing Initialization (자신만의 초기화 만들기)
 
-다음 부분에서 설명하는 것처럼, 입력 매개 변수와 옵셔널 속성 타입으로, 또는 초기화 중에 상수 속성을 할당함으로써, 초기화 과정을 사용자 정의할 수 있습니다.
+자신만의 초기화 과정을 만들려면 입력 매개 변수와 옵셔널 속성 타입을 쓰거나, 초기화 중에 상수 속성을 할당하면 되는데, 이는 다음 절에서 설명합니다.
 
 #### Initialization Parameters (초기화 매개 변수)
 
-초기자 정의 부분에서 _초기화 매개 변수 (initialization parameters)_ 를 제공하여, 값의 타입과 이름을 정하면 초기화 과정을 사용자 정의할 수 있습니다. 초기화 매개 변수의 보유 능력과 구문은 함수 및 메소드 매개 변수와 똑같습니다.
+_초기화 매개 변수 (initialization parameters)_ 를 초기자 정의 부분에 제공하여, 값의 타입과 이름을 정의하면 자신만의 초기화 과정을 만들 수 있습니다. 초기화 매개 변수가 가진 능력과 구문은 함수 및 메소드 매개 변수와 똑같습니다.
 
-다음 예제는, 섭씨 (Celsius) 로 표현한 온도를 저장하는, `Celsius` 라는 구조체를 정의합니다. `Celsius` 구조체는 `init(fromFahrenheit:)` 와 `init(fromKelvin:)` 이라는 두 개의 사용자 정의 초기자를 구현하는데, 이는 다른 척도의 온도 값을 가지고 새 구조체 인스턴스를 초기화합니다:
+다음 예제는 `Celsius` 라는 구조체를 정의하여, 섭씨 (Celsius) 로 표현된 온도를 저장합니다. `Celsius` 구조체는 `init(fromFahrenheit:)` 와 `init(fromKelvin:)` 이라는 자신만의 초기자를 두 개 구현하는데, 이는 서로 다른 크기의 온도 값으로 새로운 구조체 인스턴스를 초기화합니다:
 
 ```swift
 struct Celsius {
@@ -90,7 +90,7 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 // freezingPointOfWater.temperatureInCelsius 는 0.0 임
 ```
 
-첫 번째 초기자에는 `fromFahrenheit` 라는 인자 이름표와 `fahrenheit` 라는 매개 변수 이름을 가진 단일 초기화 매개 변수가 있습니다. 두 번째 초기자에는 `fromKelvin` 이라는 인자 이름표와 `kelvin` 이라는 매개 변수 이름을 가진 단일 초기화 매개 변수가 있습니다. 두 초기자 모두 자신의 단일 인자를 해당하는 섭씨 값으로 변환한 다음 이 값을 `temperatureInCelsius` 라는 속성에 저장합니다.
+첫 번째 초기자엔 단 하나의 초기화 매개 변수가 있으며 인자 이름표는 `fromFahrenheit` 이고 매개 변수 이름은 `fahrenheit` 입니다. 두 번째 초기자에도 단 하나의 초기화 매개 변수가 있으며 인자 이름표는 `fromKelvin` 이고 매개 변수 이름은 `kelvin` 입니다. 두 초기자 모두 자신의 단일 인자를 그에 해당하는 섭씨 값으로 변환하고 `temperatureInCelsius` 라는 속성에 이 값을 저장합니다.
 
 #### Parameter Names and Argument Labels (매개 변수 이름과 인자 이름표)
 
