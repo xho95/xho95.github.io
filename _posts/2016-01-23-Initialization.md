@@ -134,9 +134,9 @@ let veryGreen = Color(0.0, 1.0, 0.0)
 
 #### Initializer Parameters Without Argument Labels (인자 이름표가 없는 초기자 매개 변수)
 
-초기자 매개 변수에 인자 이름표를 사용하고 싶지 않으면, 그 매개 변수에 명시적인 인자 이름표 대신 밑줄 (`_`) 을 작성하여 기본 동작을 재정의 합니다.
+초기자 매개 변수에 인자 이름표를 쓰고 싶지 않으면, 그 매개 변수에 인자 이름표를 명시하는 대신 밑줄 (`_`) 을 써서 기본 동작을 재정의합니다.
 
-다음은 위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를 늘려서, 이미 섭씨 척도인 `Double` 값으로 새 `Celsius` 인스턴스를 생성하는 추가적인 초기자를 가지도록 한, 버전입니다:
+위의 [Initialization Parameters (초기화 매개 변수)](#initialization-parameters-초기화-매개-변수) 에 있는 `Celsius` 예제를 확대한 버전은 이렇는데, 추가적인 초기자를 써서 이미 섭씨인 `Double` 값으로 새로운 `Celsius` 인스턴스를 생성합니다:
 
 ```swift
 struct Celsius {
@@ -155,13 +155,13 @@ let bodyTemperature = Celsius(37.0)
 // bodyTemperature.temperatureInCelsius 는 37.0 임
 ```
 
-`Celsius(37.0)` 라는 초기자 호출은 의도가 명확하여 인자 이름표가 필요 없습니다. 그러므로 이름 없는 `Double` 값을 제공해서 호출할 수 있도록 이 초기자를 `init(_ celsius: Double)` 로 작성하는 게 적절합니다.
+`Celsius(37.0)` 초기자 호출은 의도가 명확해서 인자 이름표가 필요없습니다. 그러므로 이 초기자를 `init(_ celsius: Double)` 이라고 써서 이름표 없는 `Double` 값으로 호출하게 하는게 적절합니다.
 
 #### Optional Property Types (옵셔널 속성 타입)
 
-사용자 정의 타입에-아마도 초기화 중이라 값을 설정할 수 없기 때문이거나, 어떠한 나중 시점에서의 "값 없음" 을 허용하기 때문에-"값 없음 (no value)" 논리를 허용한 저장 속성이 있으면, 속성을 _옵셔널 (optional)_ 타입으로 선언합니다. 옵셔널 타입의 속성은, 초기화 중엔 속성이 "아직 값 없음" 인게 일부러 의도한 것임을 지시하도록, 자동으로 `nil` 이라는 값으로 초기화합니다.
+자신만의 타입에서 저장 속성이 "값이 없는 (no value)" 논리를 허용한다면-아마도 초기화 중이라 값을 설정할 수 없거나, 나중의 어떤 시점에 "값이 없는" 걸 허용하기 때문이면-그 속성을 _옵셔널 (optional)_ 타입으로 선언합니다. 옵셔널 타입의 속성은 자동으로 값이 `nil` 로 초기화되어, 초기화 중에 "아직 값이 없는" 건 속성이 일부러 의도한 것임을 지시합니다.
 
-다음 예제는, `response` 라는 옵셔널 `String` 속성을 가진, `SurveyQuestion` 이라는 클래스를 정의합니다:
+다음 예제는 `SurveyQuestion` 이라는 클래스를 정의하는데, `response` 라는 옵셔널 `String` 속성이 있습니다:
 
 ```swift
 class SurveyQuestion {
@@ -180,7 +180,7 @@ cheeseQuestion.ask()
 cheeseQuestion.response = "Yes, I do like cheese."
 ```
 
-설문 조사 (survey question) 의 응답 (response) 은 물어보기 전까진 알 수 없으므로, `response` 속성은 `String?`, 또는 “옵셔널 `String`” 타입으로 선언합니다. `SurveyQuestion` 의 새 인스턴스를 초기화할 때, "아직 문자열 없음" 을 의미하는, `nil` 이라는 기본 값을 자동으로 할당합니다.
+설문 조사 (survey question) 에 대한 응답 (response) 은 묻기 전까진 알 수 없으므로, `response` 속성의 타입은 `String?`, 또는 “옵셔널 `String`” 타입이라고 선언합니다. 새로운 `SurveyQuestion` 인스턴스를 초기화할 때, "아직 문자열이 없다" 는 걸 의미하는, 기본 값 `nil` 을 자동으로 할당합니다.
 
 #### Assigning Constant Properties During Initialization (초기화 중에 상수 속성 할당하기)
 
