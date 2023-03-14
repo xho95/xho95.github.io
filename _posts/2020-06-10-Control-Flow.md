@@ -107,7 +107,7 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 }
 ```
 
-위 예제는 `for`-`in` 반복문으로 범위와, 배열, 딕셔너리, 및 문자열을 반복합니다. 하지만, 자신만의 클래스 및 집합체 타입을 포함하여, _어떤 (any)_ 집합체든 이 구문으로 반복할 수 있는데, 그 타입이 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하기만 하면 됩니다.
+위 예제는 `for`-`in` 반복문으로 범위와, 배열, 딕셔너리, 및 문자열을 반복합니다. 하지만, 이 구문을 써서, 자신만의 클래스와 집합체 타입을 포함한, _어떤 (any)_ 집합체든 반복할 수도 있는데, 그 타입이 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하기만 하면 됩니다.
 
 ### While Loops (while 반복문)
 
