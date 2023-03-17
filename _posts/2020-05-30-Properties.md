@@ -252,7 +252,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 {: .note }
 > 상위 클래스 속성의 `willSet` 과 `didSet` 관찰자는, 상위 클래스 초기자를 호출하고 난 후, 하위 클래스 초기자에서 속성을 설정할 때 호출됩니다. 상위 클래스 초기자를 호출하기 전, 클래스가 자신만의 속성을 설정하는 동안엔 호출되지 않습니다.[^obervers-and-superclass]
 >
-> 초기자 맡김[^initializer-delegation] 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입의-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-class-types-클래스-타입의-초기자-맡김) 부분을 보기 바랍니다.
+> 초기자 맡김[^initializer-delegation] 에 대한 더 많은 정보는, [Initializer Delegation for Value Types (값 타입에서의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입에서의-초기자-맡김) 과 [Initializer Delegation for Class Types (클래스 타입의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-class-types-클래스-타입의-초기자-맡김) 부분을 보기 바랍니다.
 
 `willSet` 과 `didSet` 의 실제 사례는 이렇습니다. 아래 예제는 `StepCounter` 라는 새로운 클래스를 정의하여, 산책하는 동안 사람의 총 걸음 수를 추적합니다. 이 클래스는 만보계 (pedometer) 또는 다른 걸음 측정기 (step counter) 의 입력 데이터를 써서 하루 일과 중에 사람이 운동한 걸 추적할지도 모릅니다.
 

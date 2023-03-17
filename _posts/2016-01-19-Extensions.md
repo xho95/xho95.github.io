@@ -93,7 +93,7 @@ print("A marathon is \(aMarathon) meters long")
 
 익스텐션은 클래스에 새로운 편의 초기자를 추가할 수 있지만, 새로운 지명 초기자를 추가하거나 클래스에 정리자를 추가할 순 없습니다. 지명 초기자 및 정리자는 반드시 항상 원본 클래스 구현에서 제공해야 합니다.
 
-자신의 모든 저장 속성에 기본 값을 제공하면서 어떤 초기자도 정의하지 않은 값 타입에 익스텐션으로 초기자를 추가하면, 익스텐션의 초기자 안에서 그 값 타입의 기본 초기자와 멤버 초기자를 호출할 수 있습니다. [Initializer Delegation for Value Types (값 타입의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입의-초기자-맡김) 에서 설명한 것처럼, 값 타입의 원본 구현 부분에서 초기자를 작성했으면 이렇지 않을 겁니다.
+자신의 모든 저장 속성에 기본 값을 제공하면서 어떤 초기자도 정의하지 않은 값 타입에 익스텐션으로 초기자를 추가하면, 익스텐션의 초기자 안에서 그 값 타입의 기본 초기자와 멤버 초기자를 호출할 수 있습니다. [Initializer Delegation for Value Types (값 타입에서의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입에서의-초기자-맡김) 에서 설명한 것처럼, 값 타입의 원본 구현 부분에서 초기자를 작성했으면 이렇지 않을 겁니다.
 
 다른 모듈에서 선언한 구조체에 익스텐션으로 초기자를 추가하면, 새로운 초기자가 정의 모듈에 있는 초기자를 호출하기 전까진 `self` 에 접근할 수 없습니다.[^access-self]
 
