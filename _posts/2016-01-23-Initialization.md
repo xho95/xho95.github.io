@@ -265,7 +265,7 @@ print(zeroByZero.width, zeroByZero.height)
 
 > 자신의 값 타입이 기본 초기자와 멤버 초기자에다가, 자신만의 초기자로도 초기화되도록 하고 싶으면, 자신만의 초기자를 값 타입의 원본 구현 부분 보단 익스텐션에서 작성하도록 합니다. 더 많은 정보는, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보기 바랍니다.
 
-다음 예제는 자신만의 `Rect` 구조체를 정의하여 기하 직사각형을 나타냅니다. 예제는 두 개의 지원용 구조체인 `Size` 와 `Point` 를 요구하는데, 둘 다 모든 속성에 기본 값 `0.0` 을 제공합니다:
+다음 예제는 자신만의 `Rect` 구조체를 정의하여 기하 직사각형을 나타냅니다. 예제는 `Size` 와 `Point` 라는 두 개의 지원용 구조체를 요구하는데, 둘 다 모든 속성에 기본 값 `0.0` 을 제공합니다:
 
 ```swift
 struct Size {
@@ -276,7 +276,7 @@ struct Point {
 }
 ```
 
-아래의 `Rect` 구조체는 세 가지 방법-기본 값 0 으로 초기화한 `origin` 과 `size` 속성 값 사용하기, 특정한 원점과 크기 제공하기, 또는 특정한 중심점과 크기 지정하기-중 하나로 초기화할 수 있습니다. 이 초기화 옵션들은 `Rect` 구조체 정의 부분에서 세 개의 사용자 정의 초기자로 나타냅니다:
+아래의 `Rect` 구조체는-기본인 0 으로 초기화된 `origin` 과 `size` 속성 값 사용하기나, 원점과 크기 지정하기, 또는 중심점과 크기 지정하기-라는 세 가지 방법 중 하나로 초기화할 수 있습니다. 이 초기화 옵션들은 `Rect` 구조체 정의 부분에 있는 초기자 세 개로 나타납니다:
 
 ```swift
 struct Rect {
@@ -295,30 +295,30 @@ struct Rect {
 }
 ```
 
-첫 번째 `Rect` 초기자인, `init()` 은, 구조체에 자신만의 초기자가 없을 경우 받을 기본 초기자와 기능이 똑같습니다. 이 초기자는 빈 본문을 가지며, 빈 중괄호 쌍 `{}` 으로 이를 나타냅니다. 이 초기자 호출이 반환하는 `Rect` 인스턴스는 `origin` 과 `size` 속성 정의로부터 둘 다를 `Point(x: 0.0, y: 0.0)` 과 `Size(width: 0.0, height: 0.0)` 라는 기본 값으로 초기화합니다: 
+첫 번째 `Rect` 초기자인, `init()` 은, 구조체에 초기자가 없다면 받았을 기본 초기자와 기능이 똑같습니다. 이 초기자의 본문은 비어 있어, 빈 중괄호 쌍 `{}` 으로 나타냅니다. 이 초기자를 호출하여 반환되는 `Rect` 인스턴스는 `origin` 과 `size` 속성 정의에 의해 두 속성 다 기본 값인 `Point(x: 0.0, y: 0.0)` 과 `Size(width: 0.0, height: 0.0)` 으로 초기화됩니다: 
 
 ```swift
 let basicRect = Rect()
 // basicRect 은 원점이 (0.0, 0.0) 이고 크기는 (0.0, 0.0) 임
 ```
 
-두 번째 `Rect` 초기자인, `init(origin:size:)` 는, 구조체에 자신만의 초기자가 없을 경우 받을 멤버 초기자와 기능이 똑같습니다. 이 초기자는 단순히 적절한 저장 속성에 `origin` 과 `size` 인자 값을 할당합니다:
+두 번째 `Rect` 초기자인, `init(origin:size:)` 는, 구조체에 초기자가 없다면 받았을 멤버 초기자와 기능이 똑같습니다. 이 초기자는 단순히 `origin` 과 `size` 인자 값을 적절한 저장 속성에 할당합니다:
 
 ```swift
 let originRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
 // originRect 는 원점이 (2.0, 2.0) 이고 크기는 (5.0, 5.0) 임
 ```
 
-세 번째 `Rect` 초기자인, `init(center:size:)` 는, 살짝 더 복잡합니다. 이는 `center` 점과 `size` 값에 기초한 적절한 원점 계산으로 시작합니다. 그런 다음, 적절한 속성에 새 원점 및 크기 값을 저장하는, `init(origin:size:)` 초기자를 호출 (또는 일을 _맡긴다 (delegates)_ 고) 합니다:
+세 번째 `Rect` 초기자인, `init(center:size:)` 는, 살짝 더 복잡합니다. 이는 `center` 점과 `size` 값에 기초한 적절한 원점을 계산하는 걸로 시작합니다. 그런 다음 `init(origin:size:)` 초기자를 호출 (또는 _일 맡김 (delegates)_) 하여, 새로운 원점과 크기 값을 적절한 속성에 저장합니다:
 
 ```swift
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
 // centerRect 은 원점이 (2.5, 2.5) 이고 크기는 (3.0, 3.0) 임
 ```
 
-`init(center:size:)` 초기자 스스로 적절한 속성에 새 `origin` 과 `size` 값을 할당할 수도 있을 겁니다. 하지만, `init(center:size:)` 초기자가 이미 정확히 그 기능을 하는 기존 초기자라는 이점을 취하는게 더 편리 (하며 의도도 더 명확) 합니다.
+`init(center:size:)` 초기자 스스로 새로운 `origin` 과 `size` 값을 적절한 속성에 할당할 수도 있었을 겁니다. 하지만, 이미 있는 초기자가 정확하게 그 기능을 한다면 `init(center:size:)` 초기자가 이를 활용하는게 더 편리(하며 의도도 더 명확)합니다.
 
-> `init()` 과 `init(origin:size:)` 초기자 그 자체의 정의 없이 이 예제를 작성하는 대안은, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보도록 합니다.
+> 이 예제의 대안으로 `init()` 과 `init(origin:size:)` 초기자를 직접 정의하지 않고 작성하려면, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보기 바랍니다.
 
 ### Class Inheritance and Initialization (클래스 상속 및 초기화)
 
