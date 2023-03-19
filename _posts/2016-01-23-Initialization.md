@@ -257,7 +257,7 @@ print(zeroByZero.width, zeroByZero.height)
 
 초기자는 다른 초기자를 호출하여 인스턴스의 일부를 초기화할 수 있습니다. 이 과정을, _초기자 맡김 (initializer delegation)_ 이라 하는데, 여러 초기자에 걸쳐 코드가 중복되는걸 피하게 합니다.
 
-초기자를 어떻게 맡기는지, 그리고 무슨 형식으로 맡길 수 있는지에 대한 규칙은, 값 타입과 클래스 타입이 서로 다릅니다. 값 타입(인 구조체와 열거체) 는 상속을 지원하지 않아서, 초기자를 맡기는 과정이 상대적으로 단순한데, 이들은 자기가 제공하는 또 다른 초기자로만 맡길 수 있기 때문입니다. 클래스는, 하지만, [Inheritance (상속; 물려받기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 에서 설명하듯, 다른 클래스를 물려받을 수 있습니다. 이것의 의미는 클래스는 초기화 중에 자신이 물려받은 모든 저장 속성에 알맞은 값이 할당되도록 할 책임이 추가된다는 겁니다. 이 책임에 대해서는 아래의 [Class Inheritance and Initialization (클래스 상속 및 초기화)](#class-inheritance-and-initialization-클래스-상속-및-초기화) 에서 설명합니다.
+초기자를 어떻게 맡기는지, 그리고 무슨 형식으로 맡길 수 있는지에 대한 규칙은, 값 타입과 클래스 타입이 서로 다릅니다. 값 타입(인 구조체와 열거체) 는 상속을 지원하지 않아서, 초기자를 맡기는 과정이 상대적으로 단순한데, 이들은 자기가 제공하는 또 다른 초기자로만 맡길 수 있기 때문입니다. 클래스는, 하지만, [Inheritance (상속; 물려받기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 에서 설명하듯, 다른 클래스를 물려받을 수 있습니다. 이것의 의미는 클래스는 초기화 중에 자신이 물려받은 모든 저장 속성에 알맞은 값이 할당되도록 할 책임이 추가된다는 겁니다. 이 책임에 대해서는 아래의 [Class Inheritance and Initialization (클래스의 상속과 초기화)](#class-inheritance-and-initialization-클래스의-상속과-초기화) 에서 설명합니다.
 
 값 타입은, 자신만의 초기자를 작성할 때 `self.init` 으로 똑같은 값 타입에 있는 다른 초기자를 참조합니다. `self.init` 은 초기자 안에서만 호출할 수 있습니다.
 
@@ -320,23 +320,23 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, heig
 
 > 이 예제의 대안으로 `init()` 과 `init(origin:size:)` 초기자를 직접 정의하지 않고 작성하려면, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보기 바랍니다.
 
-### Class Inheritance and Initialization (클래스 상속 및 초기화)
+### Class Inheritance and Initialization (클래스의 상속과 초기화)
 
-초기화 중엔-상위 클래스로부터 상속한 어떤 속성도 포함한-클래스의 모든 저장 속성에 _반드시 (must)_ 초기 값을 할당해야 합니다.
+클래스의 모든 저장 속성은-상위 클래스로부터 물려 받은 속성을 포함하여-_반드시 (must)_ 초기화 중에 초기 값을 할당해야 합니다.
 
-스위프트는 모든 저장 속성이 초기 값을 받도록 보장하기 위해 클래스 타입에 두 종류의 초기자를 정의합니다. 이들을 지명 초기자와 편의 초기자라고 합니다.
+스위프트는 클래스 타입에 두 가지 종류의 초기자를 정의하여 모든 저장 속성이 초기 값을 확실히 받도록 도와줍니다. 이를 지명 초기자와 편의 초기자라고 합니다.
 
 #### Designated Initializers and Convenience Initializers (지명 초기자와 편의 초기자)
 
-_지명 초기자 (designated initializers)_ 는 클래스의 으뜸 초기자입니다. 지명 초기자는 그 클래스가 도입한 모든 속성을 완전히 초기화하며 초기화 과정이 상위 클래스 사슬로 계속 올라가도록 적절한 상위 클래스 초기자를 호출합니다.
+_지명 초기자 (designated initializers)_ 는 클래스의 으뜸가는 초기자입니다. 지명 초기자는 그 클래스에서 도입한 모든 속성 전체를 초기화하고 적절한 상위 클래스 초기자를 호출하여 초기화 과정이 상위 클래스 사슬로 계속 올라가게 합니다.
 
-클래스엔 아주 적은 수의 지명 초기자만 있는 경향이 있으며, 하나만 있는 클래스도 꽤 흔합니다. 지명 초기자는 "깔때기 (funnel)"[^funnel] 같은 곳이라 이를 통해 초기화가 일어나고, 초기화 과정이 상위 클래스 사슬로 계속 올라갑니다.
+클래스의 지명 초기자는 아주 적은 경우가 많으며, 하나만 있는 클래스도 꽤 흔합니다. 지명 초기자는 "깔때기 (funnel)"[^funnel] 와 같아서 이를 통해 초기화가 일어나며, 이를 통해 초기화 과정이 상위 클래스 사슬로 계속 올라갑니다.
 
-모든 클래스는 적어도 하나의 지명 초기자는 반드시 가져야 합니다. 일부의 경우, 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명하는 것처럼, 상위 클래스로부터 하나 이상의 지명 초기자를 상속함으로써 이 필수 요구 조건을 만족하기도 합니다.
+모든 클래스엔 반드시 적어도 하나의 지명 초기자는 있어야 합니다. 일부의 경우, 상위 클래스로부터 하나 이상의 지명 초기자를 물려 받는 것으로 이 필수 조건을 만족하기도 하는데, 이는 아래의 [Automatic Initializer Inheritance (자동적인 초기자 상속)](#automatic-initializer-inheritance-자동적인-초기자-상속) 에서 설명합니다.
 
-_편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지원용 초기자입니다. 편의 초기자를 정의하면 지명 초기자의 일부 매개 변수를 기본 값으로 설정한 걸로 동일한 클래스의 지명 초기자를 호출할 수 있습니다. 편의 초기자를 정의하여 그 클래스의 인스턴스를 정해진 용도나 입력 값 타입을 가지게 생성할 수도 있습니다.
+_편의 초기자 (convenience initializers)_ 는 클래스의 둘째가는, 지원용 초기자입니다. 편의 초기자를 정의하면 같은 클래스에 있는 지명 초기자를 편의 초기자로 호출할 수 있는데 그 지명 초기자의 일부 매개 변수엔 기본 값을 설정합니다. 편의 초기자를 정의하여 그 클래스에 특정 용도나 입력 값 타입을 가진 인스턴스를 생성할 수도 있습니다.
 
-클래스에 필요하지 않으면 편의 초기자를 제공하지 않아도 됩니다. 공통 초기화 패턴으로의 줄임말이 시간을 절약하거나 클래스 초기화의 의도를 명확하게 할 때마다 편의 초기자를 생성합니다.
+클래스에 편의 초기자가 필요하지 않으면 없어도 됩니다. 편의 초기자는 패턴을 공유하여 초기화를 줄이는게 시간을 절약하거나 클래스의 초기화 의도가 명확해질 때마다 생성하도록 합니다.
 
 #### Syntax for Designated and Convenience Initializers (지명 및 편의 초기자의 구문)
 
@@ -1028,7 +1028,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^property-declaration]: 앞서 [Setting Initial Values for Stored Properties (저장 속성에 초기 값 설정하기)](#setting-initial-values-for-stored-properties-저장-속성에-초기-값-설정하기) 부분에선, 기본 값 설정을 속성 정의 (definition) 에서 한다고 했다가, 여기선 속성 선언 (declaration) 에서 지정한다고 말합니다. 이것은, [Declarations (선언)]({% link docs/swift-books/swift-programming-language/declarations.md %}) 장 맨 앞에서 설명한 것처럼, 스위프트에선 이 둘의 구분이 중요하지 않아서, 두 용어를 거의 같은 의미로 사용하기 때문입니다.
 
-[^funnel]: 지명 초기자를 '깔대기' 에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연쇄되는 모습이 깔대기와 흡사하기 때문입니다.
+[^funnel]: 지명 초기자를 깔대기에 비유한 것은 모든 초기화 과정이 일단 지명 초기자로 모인 다음 위쪽 상위 클래스로 연결되는 모습이 깔대기와 흡사하기 때문입니다.
 
 [^convenience]: 이 부분은 원문 자체가 장황하게 설명되어 있는데, 결국 의미 자체는 번역한 문장과 대동소이 하므로, 짧게 줄여서 변역했습니다.
 
