@@ -217,7 +217,7 @@ class SomeClass: SomeProtocol {
 
 필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#required-initializers-필수-초기자) 부분을 보도록 합니다.
 
-> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 최종 클래스는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% link docs/swift-books/swift-programming-language/initialization.md %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
+> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 마지막 클래스로는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% link docs/swift-books/swift-programming-language/initialization.md %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
 
 하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 일치하는 초기자 필수 조건도 구현한다면, 초기자 구현에 `required` 와 `override` 수정자를 둘 다 표시합니다:
 

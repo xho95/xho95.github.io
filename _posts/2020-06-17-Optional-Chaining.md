@@ -142,7 +142,7 @@ class Room {
 }
 ```
 
-이 모델 안의 최종 클래스는 `Address` 라고 합니다. 이 클래스에는 `String?` 타입의 옵셔널 속성이 세 개 있습니다. 처음 두 속성인, `buildingName` 과 `buildingNumber` 는, 주소 부분에서 한 특별한 건물을 식별하기 위한 대안입니다. 세 번째 속성인, `street` 는, 그 주소의 거리 이름으로 사용합니다:
+이 모델의 마지막 클래스는 `Address` 라고 합니다. 이 클래스에는 `String?` 타입의 옵셔널 속성이 세 개 있습니다. 처음 두 속성인, `buildingName` 과 `buildingNumber` 는, 주소 부분에서 한 특별한 건물을 식별하기 위한 대안입니다. 세 번째 속성인, `street` 는, 그 주소의 거리 이름으로 사용합니다:
 
 ```swift
 class Address {
