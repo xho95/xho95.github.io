@@ -560,9 +560,9 @@ print("Hoverboard: \(hoverboard.description)")
 
 #### Designated and Convenience Initialization in Action (지명 초기자와 편의 초기자의 실제 사례)
 
-다음 예제는 지명 초기자, 편의 초기자, 및 자동적인 초기자 상속을 실제 사례로 보여줍니다. 이 예제는 `Food`, `RecipeIngredient`, 및 `ShoppingListItem` 이라는 세 클래스들의 계층 구조를 정의하고, 이들의 초기자가 어떻게 상호 작용하는 지를 실증합니다.
+다음 예제는 지명 초기자와, 편의 초기자, 및 자동적인 초기자 상속의 실제 사례를 보여줍니다. 이 예제는 계층 구조로 된 세 개의 클래스인 `Food` 와, `RecipeIngredient`, 및 `ShoppingListItem` 를 정의하고, 그들의 초기자가 어떻게 상호 작용하는지를 실제로 보여줍니다.
 
-계층 구조의 기초 클래스는, 식료품 이름을 은닉하는 단순한 클래스인, `Food` 입니다. `Food` 클래스는 `name` 이라는 `String` 속성 하나를 도입하고 `Food` 인스턴스를 생성하기 위한 초기자를 두 개 제공합니다:
+계층 구조의 기초 클래스는 `Food` 라는, 단순한 클래스로 식료품 이름을 속에 갖고 있습니다. `Food` 클래스는 단 하나의 `String` 속성인 `name` 만 소개하며 `Food` 인스턴스를 생성하는 두 개의 초기자를 제공합니다:
 
 ```swift
 class Food {
@@ -576,11 +576,11 @@ class Food {
 }
 ```
 
-아래 그림은 `Food` 클래스의 초기자 사슬을 보여줍니다:
+아래 그림은 `Food` 클래스의 초기자 사슬망을 보여줍니다:
 
 ![Initializer chain for the Food](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-food.png)
 
-클래스에는 기본 멤버 초기자가 없으므로[^default-member-initializer], `Food` 클래스가 `name` 이라는 단일 인자를 취하는 지명 초기자를 제공합니다. 이 초기자를 사용하여 특정 이름을 가진 새 `Food` 인스턴스를 생성할 수 있습니다:
+클래스에는 기본 멤버 초기자가 없으므로[^default-member-initializer], `Food` 클래스는 단 하나의 인자인 `name` 만 입력받는 지명 초기자를 제공합니다. 이 초기자를 쓰면 특정한 이름으로 새로운 `Food` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let namedMeat = Food(name: "Bacon")
@@ -1034,7 +1034,7 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^base-class]: 기초 클래스 (base class) 는 어떤 클래스로부터도 상속받지 않은 클래스입니다. 계층 구조 맨 위에 있을 수 있는 모든 클래스는 기초 클래스이며, 계층 구조 없이 홀로 존재하는 클래스도 기초 클래스입니다. 기초 클래스에 대한 더 많은 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다. 
 
-[^default-member-initializer]: [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 멤버 초기자는 구조체에만 주어집니다. 즉, 클래스에는 기본 멤버 초기자라는게 따로 없습니다. 구조체의 멤버 초기자 같은 초기자가 클래스에 필요하면, 본문 같이 이를 직접 구현해야 합니다.
+[^default-member-initializer]: [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 멤버 초기자는 구조체에만 주어집니다. 즉, 클래스에는 기본 멤버 초기자라는게 따로 없습니다. 구조체에 멤버 초기자 같은게 필요하다면, 본문 처럼 이를 직접 구현해야 합니다.
 
 [^function-name]: 사실, 초기자는 이름이 없다기 보단 모든 이름이 `init` 으로 똑같은 경우입니다. 그래서, 초기자의 정체를 이름만으로 구별할 순 없습니다.
 
