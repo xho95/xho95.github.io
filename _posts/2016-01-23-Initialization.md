@@ -560,9 +560,9 @@ print("Hoverboard: \(hoverboard.description)")
 
 #### Designated and Convenience Initialization in Action (지명 초기자와 편의 초기자의 실제 사례)
 
-다음 예제는 지명 초기자와, 편의 초기자, 및 자동적인 초기자 상속의 실제 사례를 보여줍니다. 이 예제는 계층 구조로 된 세 개의 클래스인 `Food` 와, `RecipeIngredient`, 및 `ShoppingListItem` 를 정의하고, 그들의 초기자가 어떻게 상호 작용하는지를 실제로 보여줍니다.
+다음 예제는 지명 초기자와, 편의 초기자, 및 자동적인 초기자 상속을 실제 사례로 보여줍니다. 이 예제는 계층 구조를 이루는 세 개의 클래스인 `Food` 와, `RecipeIngredient`, 및 `ShoppingListItem` 를 정의하고, 그 초기자들이 어떻게 상호 작용하는지 실제로 보여줍니다.
 
-계층 구조의 기초 클래스는 `Food` 라는, 단순한 클래스로 식료품 이름을 속에 갖고 있습니다. `Food` 클래스는 단 하나의 `String` 속성인 `name` 만 소개하며 `Food` 인스턴스를 생성하는 두 개의 초기자를 제공합니다:
+계층 구조의 기초 클래스는 `Food` 라는, 단순한 클래스로 식료품 이름을 감추고 있습니다. `Food` 클래스는 `name` 이라는 단 하나의 `String` 속성만 도입하며 `Food` 인스턴스를 생성하기 위한 두 개의 초기자도 제공합니다:
 
 ```swift
 class Food {
@@ -580,23 +580,23 @@ class Food {
 
 ![Initializer chain for the Food](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-food.png)
 
-클래스에는 기본 멤버 초기자가 없으므로[^default-member-initializer], `Food` 클래스는 단 하나의 인자인 `name` 만 입력받는 지명 초기자를 제공합니다. 이 초기자를 쓰면 특정한 이름으로 새로운 `Food` 인스턴스를 생성할 수 있습니다:
+클래스에는 기본 멤버 초기자라는게 없으므로[^default-member-initializer], `Food` 클래스는 단 하나의 인자인 `name` 만 입력받는 지명 초기자를 제공하고 있습니다. 이 초기자를 써서 특정 이름을 가진 새로운 `Food` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let namedMeat = Food(name: "Bacon")
 // namedMeat 의 이름은 "Bacon" 임
 ```
 
-`Food` 클래스의 `init(name: String)` 초기자를 _지명 (designated)_ 초기자로 제공한 건, 새 `Food` 인스턴스의 모든 저장 속성을 완전히 초기화하도록 보장해야 하기 때문입니다. `Food` 클래스에는 상위 클래스가 없으므로, `init(name: String)` 초기자가 자신의 초기화를 완료하는데 `super.init()` 을 호출할 필요는 없습니다.
+`Food` 클래스에 있는 `init(name: String)` 초기자는 _지명 (designated)_ 초기자로 제공되는데, 이는 새로운 `Food` 인스턴스의 모든 저장 속성 전체가 초기화된다는 걸 보장해야 하기 때문입니다. `Food` 클래스엔 상위 클래스가 없으므로, `init(name: String)` 초기자가 초기화를 완료하는데 `super.init()` 을 호출할 필요는 없습니다.
 
-`Food` 클래스는, 인자 없는, `init()` 이라는, _편의 (convenience)_ 초기자도 제공합니다. `init()` 초기자는 `[Unnamed]` 라는 `name` 값을 가지고 `Food` 클래스의 `init(name: String)` 으로 옆으로 맡김으로써 새 음식에 기본적인 자리 표시용 이름을 제공합니다:
+`Food` 클래스는 _편의 (convenience)_ 초기자인, `init()` 도, 제공하는데, 인자가 없습니다. `init()` 초기자는 새로운 음식에 기본적인 자리 표시용 이름을 제공하는데 이건 `Food` 클래스의 `init(name: String)` 에다가 `name` 값은 `[Unnamed]` 라고 하여 일을 맡겨서 합니다:
 
 ```swift
 let mysteryMeat = Food()
 // mysteryMeat 의 이름은 "[Unnamed]" 임
 ```
 
-계층 구조의 두 번째 클래스는 `RecipeIngredient` 라는 `Food` 의 하위 클래스입니다. `RecipeIngredient` 클래스는 요리법에 있는 재료 (ingredient) 를 모델링합니다. 이는 (`Food` 에서 상속한 `name` 속성에 더하여) `quantity` 라는 `Int` 속성을 도입하고 `RecipeIngredient` 인스턴스를 생성하기 위한 초기자를 두 개 정의합니다:
+계층 구조의 두 번째 클래스는 `Food` 의 하위 클래스인 `RecipeIngredient` 입니다. `RecipeIngredient` 클래스는 요리법에 나와 있는 재료 (ingredient) 를 모델링합니다. 이는 `Int` 속성인 `quantity` 를 도입하고 (거기다 `Food` 로부터 `name` 속성도 물려받으며) `RecipeIngredient` 인스턴스를 생성하기 위한 두 개의 초기자도 정의합니다:
 
 ```swift
 class RecipeIngredient: Food {
@@ -611,7 +611,7 @@ class RecipeIngredient: Food {
 }
 ```
 
-아래 그림은 `RecipeIngredient` 클래스의 초기자 사슬을 보여줍니다:
+아래 그림은 `RecipeIngredient` 클래스의 초기자 사슬망을 보여줍니다:
 
 ![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
 
