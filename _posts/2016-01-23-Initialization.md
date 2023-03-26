@@ -615,17 +615,17 @@ class RecipeIngredient: Food {
 
 ![Initializer chain for the RecipeIngredient](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-recipe.png)
 
-`RecipeIngredient` 클래스에는, `init(name: String, amount: Int)` 라는, 지명 초기자가 하나 있는데, 이를 사용하면 새 `RecipeIngredient` 인스턴스의 모든 속성을 채울 수 있습니다. 이 초기자는 전달받은 `quantity` 인자를, `RecipeIngredient` 가 도입한 유일한 새 속성인, `quantity` 속성에 할당하는 것으로 시작합니다. 그런 후에, 초기자는 `Food` 클래스의 `init(name: String)` 초기자로 위로 맡깁니다. 이 과정은 위 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 의 안전성 검사 2 를 만족합니다.
+`RecipeIngredient` 클래스에는 단 하나의 지명 초기자인, `init(name: String, amount: Int)` 가 있는데, 이를 써서 새로운 `RecipeIngredient` 인스턴스의 모든 속성을 채울 수 있습니다. 이 초기자는 전달받은 `quantity` 인자를 `quantity` 속성에 할당하는 것으로 시작하는데, 이는 `RecipeIngredient` 가 도입한 유일한 새 속성입니다. 그런 후, 초기자는 `Food` 클래스의 `init(name: String)` 초기자로 일을 위로 맡깁니다. 이 과정은 위의 [Two-Phase Initialization (2-단계 초기화)](#two-phase-initialization-2-단계-초기화) 에 있는 안전성 검사 1 를 만족시킵니다.
 
-`RecipeIngredient` 는, `init(name: String)` 이라는, 편의 초기자도 정의하는데, 이를 사용하면 이름 단독으로 `RecipeIngredient` 인스턴스를 생성합니다. 이 편의 초기자는 수량을 명시하지 않고 생성한 어떤 `RecipeIngredient` 인스턴스든 수량이 `1` 이라 가정합니다. 이 편의 초기자의 정의는 `RecipeIngredient` 인스턴스 생성을 더 빠르고 편리하게 하며, 여러 가지로 단일-수량 `RecipeIngredient` 인스턴스를 생성할 때 코드 중복을 피하게 합니다. 이 편의 초기자는 단순하게 클래스의 지명 초기자로 옆으로 맡기며, `1` 이라는 `quantity` 값을 전달합니다.
+`RecipeIngredient` 는 편의 초기자인, `init(name: String)` 도, 정의하며, 이를 쓰면 `RecipeIngredient` 인스턴스를 이름만으로 생성합니다. 이 편의 초기자는 수량을 명시하지 않은 어떤 `RecipeIngredient` 인스턴스든 수량을 `1` 로 가정하고 생성합니다. 이런 편의 초기자의 정의는 `RecipeIngredient` 인스턴스의 생성을 더 빠르고 더 편리하게 하며, 수량이-하나인 `RecipeIngredient` 인스턴스를 여러 개 생성할 때 코드가 중복되는 걸 피하게 해줍니다. 이 편의 초기자는 단순히 클래스의 지명 초기자로 일을 옆으로 맡기면서, `quantity` 값엔 `1` 을 전달합니다.
 
-`RecipeIngredient` 에서 제공한 `init(name: String)` 편의 초기자는 `Food` 의 `init(name: String)` _지명 (designated)_ 초기자와 똑같은 매개 변수를 취합니다. 이 편의 초기자는 자신의 상위 클래스 지명 초기자를 재정의하기 때문에, ([Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것처럼) 반드시 `override` 수정자로 표시해야 합니다.
+`RecipeIngredient` 가 제공하는 `init(name: String)` 편의 초기자는 `Food` 에 있는 `init(name: String)` _지명 (designated)_ 초기자와 똑같은 매개 변수를 입력 받습니다. 이 편의 초기자는 상위 클래스의 지명 초기자를 재정의하고 있기 때문에, 반드시 `override` 수정자를 표시해야 하며 (이는 [Initializer Inheritance and Overriding (초기자 상속 및 재정의)](#initializer-inheritance-and-overriding-초기자-상속-및-재정의) 에서 설명한 것과 같습니다). 
 
-`RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공할지라도, `RecipeIngredient` 는 그럼에도 불구하고 자신의 모든 상위 클래스 지명 초기자를 구현하고 있습니다. 그러므로, `RecipeIngredient` 는 자동으로 자신의 모든 상위 클래스 편의 초기자도 상속합니다.
+`RecipeIngredient` 가 `init(name: String)` 초기자를 편의 초기자로 제공하더라도, 그럼에도 불구하고 `RecipeIngredient` 는 상위 클래스의 모든 지명 초기자를 구현했습니다. 그러므로, `RecipeIngredient` 는 상위 클래스의 모든 편의 초기자도 역시 자동으로 물려받습니다.
 
-이 예제에서, `RecipeIngredient` 의 상위 클래스는 `Food` 인데, `init()` 이라는 편의 초기자가 하나 있습니다. 그러므로 이 초기자를 `RecipeIngredient` 가 상속합니다. `Food` 버전 보단 `RecipeIngredient` 버전의 `init(name: String)` 으로 맡긴다는 걸 제외하면, 상속 버전 `init()` 의 기능은 `Food` 버전과 정확히 똑같습니다.
+이 예제에서, `RecipeIngredient` 의 상위 클래스인 `Food` 에는, 단 하나의 편의 초기자인 `init()` 이 있습니다. 따라서 이 초기자를 `RecipeIngredient` 가 물려받습니다. 물려받은 버전의 `init()` 함수는 그 기능이 `Food` 버전과 정확하게 똑같은데, 일을 `Food` 버전 보단 `RecipeIngredient` 버전의 `init(name: String)` 으로 맡긴다는 것만 빼면 그렇습니다.
 
-이 세 초기자 모두를 사용하여 새로운 `RecipeIngredient` 인스턴스를 생성할 수 있습니다:
+이 세 초기자 모두 새로운 `RecipeIngredient` 인스턴스를 생성하는데 쓸 수 있습니다:
 
 ```swift
 let oneMysteryItem = RecipeIngredient()
@@ -633,9 +633,9 @@ let oneBacon = RecipeIngredient(name: "Bacon")
 let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
 ```
 
-계층 구조의 세 번째이자 마지막인 클래스는 `ShoppingListItem` 이라는 `RecipeIngredient` 의 하위 클래스입니다. `ShoppingListItem` 클래스는 쇼핑 목록에 나타난 요리 재료 (recipe ingredient) 를 모델링합니다.
+계층 구조의 세 번째이자 마지막 클래스는 `RecipeIngredient` 의 하위 클래스인 `ShoppingListItem` 입니다. `ShoppingListItem` 클래스는 쇼핑 목록에 있는 요리 재료 (recipe ingredient) 를 모델링합니다.
 
-쇼핑 목록의 모든 항목은 "미구매 (unpurchased)" 로 시작합니다. 이 사실을 나타내고자, `false` 라는 기본 값을 가진, `purchased` 라는 불리언 속성을 `ShoppingListItem` 이 도입합니다. `ShoppingListItem` 은 `description` 계산 속성도 추가하여, `ShoppingListItem` 인스턴스의 설명문을 제공합니다:
+쇼핑 목록의 모든 항목은 "구매안함 (unpurchased)" 으로 시작합니다. 이 사실을 나타내고자, `ShoppingListItem` 이 도입한 불리언 속성인 `purchased` 는, 기본 값이 `false` 입니다. `ShoppingListItem` 에는 계산 속성인 `description` 도 추가하여, `ShoppingListItem` 인스턴스 설명하는 글도 제공합니다:
 
 ```swift
 class ShoppingListItem: RecipeIngredient {
