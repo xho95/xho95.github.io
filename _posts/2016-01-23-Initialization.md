@@ -635,7 +635,7 @@ let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
 
 계층 구조의 세 번째이자 마지막 클래스는 `RecipeIngredient` 의 하위 클래스인 `ShoppingListItem` 입니다. `ShoppingListItem` 클래스는 쇼핑 목록에 있는 요리 재료 (recipe ingredient) 를 모델링합니다.
 
-쇼핑 목록의 모든 항목은 "구매안함 (unpurchased)" 으로 시작합니다. 이 사실을 나타내고자, `ShoppingListItem` 이 도입한 불리언 속성인 `purchased` 는, 기본 값이 `false` 입니다. `ShoppingListItem` 에는 계산 속성인 `description` 도 추가하여, `ShoppingListItem` 인스턴스 설명하는 글도 제공합니다:
+쇼핑 목록의 모든 항목은 "구매안한 (unpurchased)" 상태로 시작합니다. 이 사실을 나타내기 위해, `ShoppingListItem` 이 도입한 불리언 속성 `purchased` 는, 기본 값이 `false` 입니다. `ShoppingListItem` 은 계산 속성인 `description` 도 추가하여, `ShoppingListItem` 인스턴스를 설명하는 글도 제공합니다:
 
 ```swift
 class ShoppingListItem: RecipeIngredient {
@@ -648,15 +648,15 @@ class ShoppingListItem: RecipeIngredient {
 }
 ```
 
-> `ShoppingListItem` 은 `purchased` 의 초기 값을 제공하기 위한 초기자를 정의하지 않는데, (여기서 모델링한) 쇼핑 목록 항목은 항상 미구매로 시작하기 때문입니다.
+> `ShoppingListItem` 은 초기자를 정의하여 `purchased` 에 초기 값을 제공하지 않는데, (여기서 모델링한) 쇼핑 목록의 항목들은 항상 구매안한 상태로 시작하기 때문입니다.
 
-자기가 도입한 모든 속성에 기본 값을 제공하면서 그 자체론 어떤 초기자도 정의하지 않기 때문에, `ShoppingListItem` 은 자동으로 상위 클래스의 _모든 (all)_ 지명 및 편의 초기자를 상속합니다.
+자신이 도입한 모든 속성에 기본 값을 제공하면서 그 자체로는 어떤 초기자도 정의하지 않기 때문에, `ShoppingListItem` 은 상위 클래스의 _모든 (all)_ 지명 및 편의 초기자를 자동으로 물려받습니다.
 
-아래 그림은 모든 세 클래스들의 전체적인 초기자 사슬을 보여줍니다:
+아래 그림은 세 클래스 모두에 대한 전체 초기자 사슬망을 보여줍니다:
 
 ![Initializer chain for the all](/assets/Swift/Swift-Programming-Language/Initialization-chain-for-all.png)
 
-상속한 세 초기자 모두를 사용하여 새로운 `ShoppingListItem` 인스턴스를 생성할 수 있습니다:
+물려받은 세 개의 초기자 모두로 새로운 `ShoppingListItem` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 var breakfastList = [
@@ -674,7 +674,7 @@ for item in breakfastList {
 // 6 x Eggs ✘
 ```
 
-여기선, 세 개의 새 `ShoppingListItem` 인스턴스를 담은 배열 글자 값으로 `breakfastList` 라는 새 배열을 생성합니다. 배열 타입은 `[ShoppingListItem]` 으로 추론합니다. 배열을 생성한 후, 배열 맨 처음의 `ShoppingListItem` 이름을 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸고 구매 완료로 표시합니다. 배열 각각의 항목에 대한 설명을 인쇄하면 기본 상태가 예상대로 설정된 걸 보여줍니다.
+여기서는, 세 개의 새로운 `ShoppingListItem` 인스턴스를 담은 배열 글자 값으로 `breakfastList` 라는 새로운 배열을 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론합니다. 배열을 생성한 후, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을이 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸며 구매했다고 표시합니다. 각각의 배열 항목에 대한 설명을 인쇄하면 기본 상태가 예상대로 설정된 걸 보여줍니다.
 
 ### Failable Initializers (실패 가능 초기자)
 
