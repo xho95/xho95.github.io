@@ -242,7 +242,7 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 #### Failable Initializer Requirements (실패 가능 초기자 필수 조건)
 
-[Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능한-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
+[Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
 
 실패 가능 초기자 필수 조건은 준수 타입에서 실패 가능 또는 실패하지 않는 초기자로 만족할 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 암시적으로 포장 푸는 실패 가능 초기자로 만족할 수 있습니다.
 

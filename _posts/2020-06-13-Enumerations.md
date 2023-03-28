@@ -275,7 +275,7 @@ let possiblePlanet = Planet(rawValue: 7)
 
 하지만, 모든 `Int` 값들로 맞는 행성을 찾을 순 없습니다. 이 때문에, 원시 값 초기자는 항상 _옵셔널 (optional)_ 열거체 case 를 반환합니다. 위 예제에서, `possiblePlanet` 의 타입은 `Planet?`, 또는 “옵셔널 `Planet`” 입니다.
 
-> 원시 값 초기자는 실패 가능 초기자인데, 모든 원시 값이 열거체 case 를 반환할 건 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패-가능-초기자)[^failable-initializer] 를 보기 바랍니다.
+> 원시 값 초기자는 실패 가능 초기자인데, 모든 원시 값이 열거체 case 를 반환할 건 아니기 때문입니다. 더 많은 정보는, [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패할-수-있는-초기자)[^failable-initializer] 를 보기 바랍니다.
 
 위치가 `11` 인 행성을 찾으려 하면, 원시 값 초기자가 반환한 옵셔널 `Planet` 값은 `nil` 일 겁니다:
 
@@ -369,7 +369,7 @@ print(evaluate(product))
 
 [^annotation]: '보조 설명 (annotation)' 에 대한 더 자세한 설명은 [Type Annotations (타입 보조 설명)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
 
-[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 에 있는 [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패-가능-초기자) 에서도 설명하고 있습니다.
+[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 에 있는 [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패-가능-초기자) 에서도 설명하고 있습니다.
 
 [^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 보도록 합니다.
 

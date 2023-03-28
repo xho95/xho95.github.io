@@ -128,7 +128,7 @@ categories: Swift Language Grammar Revision History
 * 스위프트 3.1 에서 업데이트함.
 * '필수 조건 (requirements)' 을 포함한 '익스텐션 (extensions)' 에 대한 정보가 있는 [Extensions with a Generic Where Clause (일반화 where 절이 있는 익스텐션)]({% link docs/swift-books/swift-programming-language/generics.md %}#extensions-with-a-generic-where-clause-일반화-where-절이-있는-익스텐션) 부분을 추가함.
 * '범위 (range)' 에 동작을 반복시키는 것에 대한 예제를 [For-In Loops (For-In 반복문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#for-in-loops-for-in-반복문) 절에 추가함.
-* 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능-초기자) 절에 추가함.
+* 실패 가능한 수치 변환에 대한 예제를 [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 절에 추가함.
 * `available` 특성을 스위프트 언어 버전에 사용하는 것에 대하여 [Declaration Attributes (선언 특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}#declaration-attributes-선언-특성) 절에 정보를 추가함.
 * '인자 이름표 (argument labels)' 는 함수 타입을 작성할 때는 허용되지 않는다는 것에 주목하기 위해 [Function Type (함수 타입)]({% link docs/swift-books/swift-programming-language/types.md %}#function-type-함수-타입) 절에 있는 논의를 업데이트함.
 * [Conditional Compilation Block (조건부 컴파일 블럭)]({% link docs/swift-books/swift-programming-language/statements.md %}#conditional-compilation-block-조건부-컴파일-블럭) 절에 있는 '스위프트 언어의 버전 번호' 에 대한 논의를 갱신했으며, 이제 선택적인 '땜빵 번호 (patch number)' 를 허용합니다.
@@ -184,7 +184,7 @@ categories: Swift Language Grammar Revision History
 * 이름이 다른 것이라곤 인자 이름뿐인 메소드와 초기자를 구별하는 방법에 대한 정보를 [Explicit Member Expression (명시적 멤버 표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}#explicit-member-expression-명시적-멤버-표현식) 절에 추가함.
 * 오브젝티브-C '선택자 (selectors)' 를 위한 `#selector` 구문 표현에 대한 정보를 [Selector Expression (선택자 표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}#selector-expression-선택자-표현식) 절에 추가함.
 * [Associated Types (결합 타입)]({% link docs/swift-books/swift-programming-language/generics.md %}#associated-types-결합-타입) 과 [Protocol Associated Type Declaration (프로토콜의 결합 타입 선언)]({% link docs/swift-books/swift-programming-language/declarations.md %}#protocol-associated-type-declaration-프로토콜의-결합-타입-선언) 절에서 `associatedtype` 키워드를 사용하기 위한 '결합 타입 (associated types)' 에 대한 논의를 업데이트함.
-* [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능-초기자) 절에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 업데이트함.
+* [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 절에서 인스턴스가 온전히 초기화되기 전에 `nil` 을 반환하는 초기자에 대한 정보를 업데이트함.
 * '튜플 (tuples)' 을 비교하는 것에 대한 정보를 [Comparison Operators (비교 연산자)]({% link docs/swift-books/swift-programming-language/basic-operators.md %}#comparison-operators-비교-연산자) 절에 추가함.
 * 키워드를 외부 매개 변수 이름으로 사용하는 것에 대한 정보를 [Keywords and Punctuation (키워드 및 문장 부호)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}#keywords-and-punctuation-키워드-및-문장-부호) 절에 추가함.
 * 열거체와 열거체 'case 값' 이 `@objc` 특성을 사용할 수 있다는 것에 주목하기 위해 [Declaration Attributes (선언 특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}#declaration-attributes-선언-특성) 절에 있는 논의를 업데이트함.
@@ -277,11 +277,11 @@ categories: Swift Language Grammar Revision History
 #### 2014-10-16
 
 * 스위프트 1.1 에서 업데이트함.
-* [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패-가능-초기자) 에 온전한 전체 지침을 추가함.
+* [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 에 온전한 전체 지침을 추가함.
 * 프로토콜의 [Failable Initializer Requirements (실패 가능 초기자 필수 조건)]({% link docs/swift-books/swift-programming-language/protocols.md %}#failable-initializer-requirements-실패-가능-초기자-필수-조건) 에 대한 설명을 추가함.
 * `Any` 타입인 상수와 변수는 이제 함수 인스턴스를 가질 수 있음. `switch` 문 내에서 함수 타입을 검사하고 변환하는 방법을 보여주기 위해 [Type Casting for Any and AnyObject (Any 와 AnyObject 의 타입 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#type-casting-for-any-and-anyobject-any-와-anyobject-의-타입-변환) 에 있는 예제를 업데이트함.
 * '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 case 를 가지는 열거체)]({% link docs/swift-books/swift-programming-language/declarations.md %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-를-가지는-열거체) 를 보도록 합니다.
-* 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패-가능-초기자) 에 대하여 새로운 기준 부분을 추가함.
+* 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패할-수-있는-초기자) 에 대하여 새로운 기준 부분을 추가함.
 * 사용자 정의 연산자는 이제 `?` 문자를 가질 수 있음. 개정된 규칙을 설명하기 위해 [Operators (연산자)]({% link docs/swift-books/swift-programming-language/lexical-structure.md %}#operators-연산자) 의 기준을 업데이트함. [Custom Operators (사용자 정의 연산자)]({% link docs/swift-books/swift-programming-language/advanced-operators.md %}#custom-operators-사용자-정의-연산자) 에서 유효한 연산자 문자 집합에 대한 중복된 설명을 제거함.
 
 #### 2014-08-18

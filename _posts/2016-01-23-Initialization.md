@@ -676,19 +676,19 @@ for item in breakfastList {
 
 여기서는, 세 개의 새로운 `ShoppingListItem` 인스턴스를 담은 배열 글자 값으로 `breakfastList` 라는 새로운 배열을 생성합니다. 배열의 타입은 `[ShoppingListItem]` 이라고 추론합니다. 배열을 생성한 후, 배열 맨 처음에 있는 `ShoppingListItem` 의 이름을이 `"[Unnamed]"` 에서 `"Orange juice"` 로 바꾸며 구매했다고 표시합니다. 각각의 배열 항목에 대한 설명을 인쇄하면 기본 상태가 예상대로 설정된 걸 보여줍니다.
 
-### Failable Initializers (실패 가능 초기자)
+### Failable Initializers (실패할 수 있는 초기자)
 
-초기화를 실패할 수도 있는 클래스, 구조체, 및 열거체를 정의하는 게 유용할 때가 있습니다. 이런 실패를 발동하는 건 무효한 초기화 매개 변수 값이거나, 필수 외부 자원의 없음, 또는 초기화의 성공을 막는 어떠한 다른 조건일 지 모릅니다.
+초기화가 실패할 수 있는 클래스나, 구조체, 또는 열거체를 정의하는게 유용할 때가 있습니다. 이런 실패가 발생하는 건 초기화 매개 변수의 값이 무효하거나, 필요한 외부 자원이 없거나, 또는 초기화의 성공을 막는 어떤 다른 조건 때문일지도 모릅니다.
 
-초기화가 실패할 조건에 대처하려면, 클래스, 구조체, 및 열거체 정의 부분에서 실패 가능 초기자를 하나 이상 정의합니다. 실패 가능 초기자는 (`init?` 처럼) `init` 키워드 뒤에 물음표를 둬서 작성합니다.
+실패할 수 있는 초기화 조건에 대처하려면, 클래스나, 구조체, 또는 열거체 정의 부분에 실패할 수 있는 초기자를 정의합니다. 실패할 수 있는 초기자를 작성하려면 `init` 키워드 뒤에 물음표를 (`init?` 처럼) 두면 됩니다.
 
-> 동일한 매개 변수 타입 및 이름을 가진 실패 가능 초기자와 실패하지 않는 초기자를 정의할 순 없습니다.
+> 실패할 수 있는 초기자와 실패할 수 없는 초기자는 매개 변수 타입과 이름이 똑같도록 정의할 수 없습니다.
 
-실패 가능 초기자는 자신이 초기화하는 타입의 _옵셔널 (optional)_ 값을 생성합니다. 실패 가능 초기자 안에서 `return nil` 을 작성하여 초기화 실패를 발동할 수 있는 지점을 표시합니다.
+실패할 수 있는 초기자는 자신이 초기화하는 타입의 _옵셔널 (optional)_ 값을 생성합니다. 실패할 수 있는 초기자 안에서 `return nil` 을 써서 초기화 실패가 발생할 수 있는 지점을 표시합니다.
 
-> 엄밀하게 말해서, 초기자는 값을 반환하지 않습니다. 그 보단, 초기화가 끝날 때까지 `self` 를 완전히 그리고 올바로 초기화하도록 보장하는 역할입니다. `return nil` 을 작성하여 초기화 실패를 발동하긴 하지만, `return` 키워드로 초기화 성공을 지시하진 않습니다.[^return-nil-return]
+> 엄밀히 말해서, 초기자는 값을 반환하지 않습니다. 그 보단, 초기화가 끝날 때까지 `self` 전체가 올바로 초기화된다는 걸 보장하는게 역할입니다. `return nil` 을 써서 초기화의 실패를 발생시키긴 하지만, `return` 키워드로 초기화의 성공을 지시하진 않습니다.[^return-nil-return]
 
-구체적인 사례로, 수치 타입 변환을 위해 구현된 실패 가능 초기자가 있습니다. 수치 타입 변환이 값을 정확하게 유지함을 보장하려면, `init(exactly:)` 초기자를 사용합니다.[^exactly] 타입 변환이 값을 유지할 수 없으면, 초기자가 실패합니다.
+구체적인 사례로, 수치 타입 변환을 위해 구현된 실패할 수 있는 초기자가 있습니다. 수치 타입 변환이 값을 정확히 유지함을 보장하기 위해, `init(exactly:)` 초기자를 씁니다.[^exactly] 타입 변환이 값을 유지할 수 없다면, 초기자가 실패합니다.
 
 ```swift
 let wholeNumber: Double = 12345.0
@@ -700,7 +700,7 @@ if let valueMaintained = Int(exactly: wholeNumber) {
 // "12345.0 conversion to Int maintains value of 12345" 를 인쇄함
 
 let valueChanged = Int(exactly: pi)
-// valueChanged 는, Int 타입이 아니라, Int? 타입입니다.
+// valueChanged 의 타입은 Int? 이지, Int 가 아님
 
 if valueChanged == nil {
   print("\(pi) conversion to Int does not maintain value")
@@ -708,7 +708,7 @@ if valueChanged == nil {
 // "3.14159 conversion to Int does not maintain value" 를 인쇄함
 ```
 
-아래 예제는, `species` 라는 `String` 상수 속성을 가진, `Animal` 이라는 구조체를 정의합니다. `Animal` 구조체는 `species` 라는 단일 매개 변수를 가진 실패 가능 초기자도 정의합니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열이면, 초기화 실패를 발동합니다. 그 외의 경우, `species` 속성의 값을 설정하여, 초기화를 성공합니다:
+아래 예제는 `Animal` 이라는 구조체를 정의하며, 여기엔 `species` 라는 `String` 상수 속성이 있습니다. `Animal` 구조체는 실패할 수 있는 초기자도 정의하는데 여기엔 `species` 라는 단 하나의 매개 변수가 있습니다. 이 초기자는 초기자로 전달된 `species` 값이 빈 문자열인지 검사합니다. 빈 문자열이면, 초기화 실패를 발생시킵니다. 그 외 경우, `species` 속성의 값을 설정하며, 초기화가 성공합니다:
 
 ```swift
 struct Animal {
@@ -720,7 +720,7 @@ struct Animal {
 }
 ```
 
-이 실패 가능 초기자를 사용하면 새로운 `Animal` 인스턴스를 초기화해서 초기화가 성공하는지 검사해 볼 수 있습니다:
+이 실패할 수 있는 초기자로 새로운 `Animal` 인스턴스를 초기화하고 초기화가 성공했는지 검사할 수 있습니다:
 
 ```swift
 let someCreature = Animal(species: "Giraffe")
@@ -732,7 +732,7 @@ if let giraffe = someCreature {
 // "An animal was initialized with a species of Giraffe" 를 인쇄함
 ```
 
-실패 가능 초기자의 `species` 매개 변수에 빈 문자열 값을 전달하면, 초기자가 초기화 실패를 발동합니다:
+실패할 수 있는 초기자의 `species` 매개 변수로 빈 문자열 값을 전달하면, 초기자가 초기화 실패를 발생시킵니다:
 
 ```swift
 let anonymousCreature = Animal(species: "")
@@ -744,7 +744,7 @@ if anonymousCreature == nil {
 // "The anonymous creature could not be initialized" 를 인쇄함
 ```
 
-> (`"Giraffe"` 라기 보단 `""` 같은) 빈 문자열 값의 검사는 _옵셔널 (optional)_ `String` 값의 없음을 지시하는 `nil` 검사와 똑같지 않습니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한, 옵셔널-아닌 `String` 입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열인 건 적절하지 않습니다. 이런 제약 사항을 모델링하고자, 빈 문자열이면 실패 가능 초기자가 초기화 실패를 발동합니다.
+> 빈 문자열 값 (가령 `"Giraffe"` 보단 `""` 같은 것) 을 검사하는 건 `nil` 을 검사하여 _옵셔널 (optional)_ `String` 값이 없다는 걸 지시하는 것과 똑같지 않습니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한, 옵셔널-아닌 `String` 입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열인 건 적절하지 않습니다. 이러한 제약을 모델링하기 위해, 빈 문자열이면 실패할 수 있는 초기자가 초기화 실패를 발생합니다.
 
 #### Failable Initializers for Enumerations (열거체의 실패 가능 초기자)
 
@@ -1044,14 +1044,14 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^final-class]: '최종 클래스 (final class)' 는 '상속 구조' 의 가장 밑에 있는 클래스를 말합니다. 스위프트에서 `final` 이라는 키워드는 원래 더 이상 상속을 하지 못하도록 하는 역할을 합니다.
 
-[^exactly]: `init(exactly:)` 초기자를 사용하면 값이 정확하게 유지될 때만 타입을 변환합니다. 본문 예제를 보면 `3.14159` 의 정확한 값을 유지하면서 `Int` 타입으로 변환할 수 없어서 실패합니다.  
-
 [^by-name]: 속성 이름이 자동으로 멤버 초기자의 인자 이름표가 되기 때문에 가능합니다.
 
 [^delegation-calls]: '맡김 호출 (delegation calls)' 이라고 하는 건 다른 초기자로 일을 맡기는 방식이 그 초기자를 호출해서 하기 때문입니다.
 
 [^no-customization]: 하위 클래스에서 자신의 저장 속성만 신경쓰고 상위 클래스의 저장 속성은 기본 값으로 초기화한다면 2 단계 초기화 자체가 필요 없으므로 `super.init()` 을 생략할 수 있다는 의미입니다.
 
-[^return-nil-return]: `return nil` 이 초기화 실패를 의미한다고 해서, `return` 자체가 초기화 성공을 의미하는 건 아니라는 뜻입니다.
+[^return-nil-return]: 원래 초기자에는 반환 값이나 반환 타입이라는 개념이 없습니다. 따라서 보통의 초기자에는 `return` 문 자체가 없습니다. 초기화가 실패했다는 사실을 알리기 위해서 `return nil` 만 사용할 뿐입니다.
+
+[^exactly]: `init(exactly:)` 초기자를 사용하면 값이 정확하게 유지될 때만 타입을 변환합니다. 본문 예제를 보면 `3.14159` 을 정확하게 유지하면서 `Int` 타입으로 변환할 수 없기 때문에 실패합니다.  
 
 [^required-override]: '필수 (required)' 라는 개념 안에 이미 '재정의 (override)' 라는 개념이 들어가 있기 때문에, 따로 `override` 를 작성할 필요가 없습니다.

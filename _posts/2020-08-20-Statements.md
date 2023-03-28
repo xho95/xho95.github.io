@@ -297,7 +297,7 @@ case .suppressed:
 
 `return` 문 뒤에 표현식이 있을 땐, 표현식 값을 호출 함수나 메소드로 반환합니다. 표현식 값이 함수나 메소드 선언에서 선언한 반환 타입 값과 일치하지 않으면, 호출 함수나 메소드로 반환하기 전에 표현식 값을 반환 타입으로 변환합니다.
 
-> [Failable Initializers (실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패-가능-초기자) 에서 설명한 것처럼, 실패 가능 초기자에선 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하여 초기화 실패를 지시할 수 있습니다.
+> [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패할-수-있는-초기자) 에서 설명한 것처럼, 실패할 수 있는 초기자에선 (`return nil` 이라는) 특수한 형식의 `return` 문을 사용하여 초기화 실패를 지시할 수 있습니다.
 
 `return` 문 뒤에 표현식이 없을 땐, 값을 반환하지 않는 함수나 메소드 반환에서만 (즉, 함수나 메소드 반환 타입이 `Void` 나 `()` 일 때만) 사용할 수 있습니다.
 
