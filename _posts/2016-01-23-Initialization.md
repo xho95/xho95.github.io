@@ -788,9 +788,9 @@ if unknownUnit == nil {
 
 #### Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패할 수 있는 초기자)
 
-원시 값이 있는 열거체는 자동으로, `init?(rawValue:)` 라는, 실패 가능 초기자를 받는데, 이는 `rawValue` 라는 적절한 원시-값 타입의 매개 변수를 취하여 일치한 열거체 case 를 찾으면 이를 선택하고, 일치 값이 없으면 초기화 실패를 발동합니다.
+원시 값이 있는 열거체는 실패할 수 있는 열거체인, `init?(rawValue:)` 를 자동으로 받는데, 이는 적절한 원시-값 타입의 매개 변수인 `rawValue` 를 입력받아서 맞는 열거체 case 를 찾으면 그걸 선택하고, 맞는게 없으면 초기화 실패를 발생합니다.
 
-`Character` 타입의 원시 값을 사용하고 `init?(rawValue:)` 초기자라는 이점을 취하도록 위의 `TemperatureUnit` 예제를 재작성할 수 있습니다:
+위에 있는 `TemperatureUnit` 예제는 원시 값 타입이 `Character` 이고 `init?(rawValue:)` 초기자를 활용하도록 다시 쓸 수 있습니다:
 
 ```swift
 enum TemperatureUnit: Character {
