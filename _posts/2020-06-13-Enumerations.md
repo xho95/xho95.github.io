@@ -369,7 +369,7 @@ print(evaluate(product))
 
 [^annotation]: '보조 설명 (annotation)' 에 대한 더 자세한 설명은 [Type Annotations (타입 보조 설명)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-annotations-타입-보조-설명) 부분을 참고하기 바랍니다.
 
-[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 에 있는 [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패-가능-초기자) 에서도 설명하고 있습니다.
+[^failable-initializer]: 사실 해당 내용은 **Language Guide** 부분의 [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 에 있는 [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 와 [Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-for-enumerations-with-raw-values-원시-값이-있는-열거체의-실패할-수-있는-초기자) 에서도 설명하고 있습니다.
 
 [^indirect]: 여기서 '재귀적인 (recursive) 열거체' 를 만들기 위해 '`indirect` (간접)' 이라는 키워드를 사용하는데, 이는 메모리 주소 방식 중 하나인 'indirect addressing mode' 라는 말에서 유래한 것으로 추측됩니다. 'indirect addressing mode' 에 대한 보다 더 자세한 내용은 [Difference between Indirect and Immediate Addressing Modes](https://www.geeksforgeeks.org/difference-between-indirect-and-immediate-addressing-modes/?ref=rp) 항목을 보도록 합니다.
 

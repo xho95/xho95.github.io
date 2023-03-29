@@ -744,13 +744,13 @@ if anonymousCreature == nil {
 // "The anonymous creature could not be initialized" 를 인쇄함
 ```
 
-> 빈 문자열 값 (가령 `"Giraffe"` 보단 `""` 같은 것) 을 검사하는 건 `nil` 을 검사하여 _옵셔널 (optional)_ `String` 값이 없다는 걸 지시하는 것과 똑같지 않습니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한, 옵셔널-아닌 `String` 입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열인 건 적절하지 않습니다. 이러한 제약을 모델링하기 위해, 빈 문자열이면 실패할 수 있는 초기자가 초기화 실패를 발생합니다.
+> 빈 문자열 값 (가령 `"Giraffe"` 보단 `""` 같은 것) 을 검사하는 건 `nil` 을 검사하여 _옵셔널 (optional)_ `String` 값이 없다는 걸 지시하는 것과 똑같지 않습니다. 위 예제에서, 빈 문자열 (`""`) 은 유효한, 옵셔널-아닌 `String` 입니다. 하지만, 동물의 `species` 속성 값이 빈 문자열인 건 적절하지 않습니다. 이러한 제약을 모델링하기 위해, 빈 문자열이면 실패할 수 있는 초기자가 초기화 실패를 발생시킵니다.
 
-#### Failable Initializers for Enumerations (열거체의 실패 가능 초기자)
+#### Failable Initializers for Enumerations (열거체의 실패할 수 있는 초기자)
 
-실패 가능 초기자를 사용하면 매개 변수를 기초로 하여 적절한 열거체 case 를 선택할 수 있습니다. 그러면 제공한 매개 변수와 적절한 열거체 case 가 일치하지 않은 경우에 초기화가 실패할 수 있습니다.
+실패할 수 있는 초기자를 써서 하나 이상의 매개 변수를 기반으로 적절한 열거체 case 를 선택할 수 있습니다. 그런 다음 제공된 매개 변수가 적절한 열거체 case 와 맞지 않으면 초기화가 실패할 수 있습니다.
 
-아래 예제는, (`kelvin`, `celsius`, 및 `fahrenheit` 라는) 세 개의 상태가 가능한, `TemperatureUnit` 이라는 열거체를 정의합니다. 실패 가능 초기자를 사용하여 온도 (temperature) 기호를 나타내는 `Character` 값에 적절한 열거체 case 를 찾습니다:
+아래 예제는 `TemperatureUnit` 이라는 열거체를 정의하는데, 세 개의 상태 (`kelvin` 과, `celsius`, 및 `fahrenheit`) 가 가능합니다. 실패할 수 있는 초기자를 써서 온도 기호를 나타내는 `Character` 값으로 적절한 열거체 case 를 찾습니다:
 
 ```swift
 enum TemperatureUnit {
@@ -770,7 +770,7 @@ enum TemperatureUnit {
 }
 ```
 
-이 실패 가능 초기자를 사용하면 가능한 세 상태에 대한 적절한 열거체 case 를 선택하고 매개 변수가 이 세 상태 중 하나와 일치하지 않으면 초기화를 실패하게 할 수 있습니다:
+이 실패할 수 있는 초기자를 쓰면 세 가지 가능한 상태로 적절한 열거체 case 를 선택할 수도 매개 변수가 이러한 세 상태와 맞지 않으면 초기화가 실패하도록 할 수 있습니다:
 
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
@@ -786,7 +786,7 @@ if unknownUnit == nil {
 // "This is not a defined temperature unit, so initialization failed." 를 인쇄함
 ```
 
-#### Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패 가능 초기자)
+#### Failable Initializers for Enumerations with Raw Values (원시 값이 있는 열거체의 실패할 수 있는 초기자)
 
 원시 값이 있는 열거체는 자동으로, `init?(rawValue:)` 라는, 실패 가능 초기자를 받는데, 이는 `rawValue` 라는 적절한 원시-값 타입의 매개 변수를 취하여 일치한 열거체 case 를 찾으면 이를 선택하고, 일치 값이 없으면 초기화 실패를 발동합니다.
 
