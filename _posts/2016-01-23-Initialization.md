@@ -839,9 +839,9 @@ class CartItem: Product {
 }
 ```
 
-`CartItem` 의 실패 가능 초기자는 받은 `quantity` 값이 `1` 이상인지 검증하는 걸로 시작합니다. `quantity` 가 무효면, 곧바로 전체 초기화 과정을 실패하며 초기화 코드는 더 이상 실행하지 않습니다. 마찬가지로, `Product` 의 실패 가능 초기자는 `name` 값을 검사하여, `name` 이 빈 문자열이면 곧바로 초기화 과정을 실패합니다.
+`CartItem` 의 실패할 수 있는 초기자는 받은 `quantity` 값이 `1` 이상인지 확인하는 걸로 시작합니다. `quantity` 가 무효면, 전체 초기화 과정이 곧바로 실패하고 더 이상 초기화 코드를 실행하지 않습니다. 마찬가지로, `Product` 의 실패할 수 있는 초기자도 `name` 값을 검사하여, `name` 이 빈 문자열이면 초기화 과정이 곧바로 실패합니다.
 
-비어있지 않은 이름과 `1` 이상의 수량으로 `CartItem` 인스턴스를 생성하면, 초기화가 성공입니다:
+`CartItem` 인스턴스를 비어있지 않은 이름과 `1` 이상의 수로 생성하면, 초기화가 성공합니다:
 
 ```swift
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
@@ -850,7 +850,7 @@ if let twoSocks = CartItem(name: "sock", quantity: 2) {
 // "Item: sock, quantity: 2" 를 인쇄함
 ```
 
-`0` 이라는 `quantity` 값으로 `CartItem` 인스턴스를 생성하려 하면, `CartItem` 초기자가 초기화를 실패하게 합니다:
+`CartItem` 인스턴스의 `quantity` 값을 `0` 으로 생성하려고 하면, `CartItem` 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
@@ -861,7 +861,7 @@ if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
 // "Unable to initialize zero shirts" 를 인쇄함
 ```
 
-이와 비슷하게, 빈 `name` 값으로 `CartItem` 인스턴스를 생성하려 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하게 합니다:
+이와 비슷하게, `CartItem` 인스턴스를 빈 `name` 값으로 생성하려고 하면, 상위 클래스인 `Product` 의 초기자가 초기화를 실패하게 합니다:
 
 ```swift
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
