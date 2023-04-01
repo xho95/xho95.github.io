@@ -872,20 +872,20 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 // "Unable to initialize one unnamed product" 를 인쇄함
 ```
 
-#### Overriding a Failable Initializer (실패 가능 초기자 재정의하기)
+#### Overriding a Failable Initializer (실패할 수 있는 초기자 재정의하기)
 
-하위 클래스에서 상위 클래스 실패 가능 초기자를, 다른 어떤 초기자인 것 같이, 재정의 할 수 있습니다. 대안으로, 하위 클래스의 _실패하지 않는 (nonfailable)_ 초기자를 가지고 상위 클래스의 실패 가능 초기자를 재정의할 수 있습니다. 이는, 상위 클래스가 초기화 실패를 허용할지라도, 하위 클래스가 초기화 실패할 순 없도록 정의할 수 있게 합니다.
+상위 클래스의 실패할 수 있는 초기자는, 다른 초기자들과 마찬가지로, 하위 클래스에서 재정의 할 수 있습니다. 대안으로, 상위 클래스의 실패할 수 있는 초기자를 하위 클래스의 _실패할 수 없는 (nonfailable)_ 초기자로 재정의할 수도 있습니다. 이는, 상위 클래스에서는 초기화가 실패하는 걸 허용할지라도, 하위 클래스에선 초기화가 실패할 수 없도록 정의하게 해줍니다.
 
-실패 가능한 상위 클래스 초기자를 실패하지 않는 하위 클래스 초기자로 재정의하면, 위의 상위 클래스로 맡기는 유일한 방법이 실패 가능한 상위 클래스 초기자 결과의 포장을 강제로-푸는 거라는 걸 기억하기 바랍니다.
+실패할 수 있는 상위 클래스 초기자를 실패할 수 없는 하위 클래스 초기자로 재정의할 경우, 상위 클래스로 일을 맡기는 유일한 방법이 실패할 수 있는 상위 클래스 초기자의 결과를 강제로-푸는 거라는 걸 알아두기 바랍니다.
 
-> 실패 가능 초기자를 실패하지 않는 초기자로 재정의할 순 있지만 그 반대는 아닙니다.
+> 실패할 수 있는 초기자를 실패할 수 없는 초기자로 재정의하는 건 되지만 그 반대는 안됩니다.
 
-아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스는 비어있지 않은 문자열 값 또는 `nil` 일 순 있지만, 빈 문자열일 순 없는, `name` 속성으로 초기화할 수 있는 문서 (document) 를 모델링합니다:
+아래 예제는 `Document` 라는 클래스를 정의합니다. 이 클래스가 모델링하는 문서 (document) 는 `name` 속성으로 초기화하는데 이는 비어있지 않은 문자열 값이나 `nil` 일 순 있지만, 빈 문자열일 순 없습니다:
 
 ```swift
 class Document {
   var name: String?
-  // 이 초기자는 nil 이라는 이름 값으로 문서를 생성함
+  // 이 초기자는 nil 이름 값으로 문서를 생성함
   init() {}
   // 이 초기자는 비어있지 않은 이름 값으로 문서를 생성함
   init?(name: String) {
@@ -895,7 +895,7 @@ class Document {
 }
 ```
 
-그 다음 예제는 `AutomaticNamedDocument` 라는 `Document` 의 하위 클래스를 정의합니다. `AutomaticNamedDocument` 하위 클래스는 `Document` 가 도입한 지명 초기자 둘 다 재정의합니다. 이러한 재정의는, 이름 없이 인스턴스를 초기화하거나, `init(name:)` 초기자에 빈 문자열을 전달하는 경우에, `AutomaticallyNamedDocument` 인스턴스가 `[Untitled]` 라는 초기 `name` 값을 갖도록 보장합니다:
+그 다음 예제는 `Document` 의 하위 클래스인 `AutomaticallyNamedDocument` 를 정의합니다. `AutomaticallyNamedDocument` 하위 클래스는 `Document` 에서 소개한 지명 초기자를 둘 다 재정의합니다. 이 재정의들은 인스턴스 초기화를 이름 없이 하거나, 빈 문자열을 `init(name:)` 초기자로 전달할 경우, `AutomaticallyNamedDocument` 인스턴스에 초기 `name` 값인 `[Untitled]` 가 있도록 보장합니다:
 
 ```swift
 class AutomaticallyNamedDocument: Document {
@@ -914,9 +914,9 @@ class AutomaticallyNamedDocument: Document {
 }
 ```
 
-`AutomaticNamedDocument` 는 상위 클래스의 실패 가능 `init?(name:)` 초기자를 실패하지 않는 `init(name:)` 초기자로 재정의합니다. `AutomaticNamedDocument` 는 상위 클래스와는 다른 식으로 빈 문자열인 경우에 대처하기 때문에, 자신의 초기자가 실패할 필요가 없어서, 실패하지 않는 버전의 초기자를 대신 제공합니다.
+`AutomaticallyNamedDocument` 는 상위 클래스의 실패할 수 있는 초기자인 `init?(name:)` 을 실패할 수 없는 초기자인 `init(name:)` 으로 재정의합니다. `AutomaticallyNamedDocument` 는 상위 클래스와 다른 방식으로 빈 문자열을 대처하기 때문에, 초기자가 실패할 필요가 없어서, 그 대신 실패할 수 없는 버전의 초기자를 제공합니다.
 
-초기자의 포장을 강제로 풀면 하위 클래스의 실패하지 않는 초기자 구현부에서 상위 클래스의 실패 가능 초기자를 호출할 수 있습니다. 예를 들어, 아래의 `UntitledDocument` 하위 클래스는 항상 `"[Untitled]"` 라는 이름을 붙이며, 초기화 중에 자신의 상위 클래스에 있는 실패 가능 `init(name:)` 초기자를 사용합니다.
+초기자 안에서 강제로 포장을 풀면 상위 클래스에 있는 실패할 수 있는 초기자를 하위 클래스의 실패할 수 없는 초기자 구현 부분에서 호출할 수 있습니다. 예를 들어, 아래의 `UntitledDocument` 하위 클래스는 항상 `"[Untitled]"` 라고 이름지으며, 초기화 중에 자신의 상위 클래스에 있는 실패할 수 있는 초기자인 `init(name:)` 을 사용합니다.
 
 ```swift
 class UntitledDocument: Document {
@@ -926,7 +926,7 @@ class UntitledDocument: Document {
 }
 ```
 
-이 경우, 빈 문자열 이름으로 상위 클래스의 `init(name:)` 초기자를 호출한 거였으면, 포장을 강제로 푸는 연산이 실행시간 에러로 끝났을 겁니다. 하지만, 문자열 상수로 호출했기 때문에, 초기자는 실패하지 않을 거라서, 이 경우 아무런 실행시간 에러도 일어날 수 없다는 걸, 알 수 있습니다.
+이 경우, 상위 클래스의 `init(name:)` 초기자를 빈 문자열 이름으로 호출했다면, 강제로 푸는 연산이 늘 그 결과가 실행시간 에러였을 겁니다. 하지만, 문자열 상수로 호출하기 때문에, 초기자가 실패하지 않는다는 걸 알고 있어서, 이 경우 아무런 실행시간 에러도 일어나지 않습니다.
 
 #### The `init!` Failable Initializer (`init!` 실패 가능 초기자)
 
