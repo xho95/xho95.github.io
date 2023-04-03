@@ -936,7 +936,7 @@ class UntitledDocument: Document {
 
 ### Required Initializers (필수 초기자)
 
-클래스 초기자 정의 앞에 `required` 수정자를 작성하면 클래스의 모든 하위 클래스가 반드시 그 초기자를 구현할 것을 지시합니다: 
+클래스 초기자 정의 앞에 `required` 수정자를 쓰면 클래스의 모든 하위 클래스가 반드시 그 초기자를 구현해야 한다는 걸 지시합니다: 
 
 ```swift
 class SomeClass {
@@ -946,7 +946,7 @@ class SomeClass {
 }
 ```
 
-필수 초기자의 모든 하위 클래스 구현 앞에도 반드시 `required` 수정자를 작성해야, 하위 클래스 사슬 더 밑으로 초기자 필수 조건을 적용함을 지시합니다. 필수 지명 초기자를 재정의할 땐 `override` 수정자를 작성하지 않습니다[^required-override]:
+필수 초기자의 모든 하위 클래스 구현 앞에도 반드시 `required` 수정자를 써서, 초기자 필수 조건이 사슬망 하위 클래스 밑으로 더 적용되도록 지시해야 합니다. 필수 지명 초기자를 재정의할 땐 `override` 수정자를 쓰지 않도록 합니다[^required-override]:
 
 ```swift
 class SomeSubClass: SomeClass {
@@ -956,7 +956,7 @@ class SomeSubClass: SomeClass {
 }
 ```
 
-> 상속한 초기자로 필수 조건를 만족할 수 있다면 필수 초기자 구현을 명시하지 않아도 됩니다.
+> 물려받은 초기자로 필수 조건을 만족한다면 필수 초기자를 명시해서 구현하지 않아도 됩니다.
 
 ### Setting a Default Property Value with a Closure or Function (클로저나 함수로 기본 속성 값 설정하기)
 
@@ -1054,4 +1054,4 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 
 [^exactly]: `init(exactly:)` 초기자를 사용하면 값이 정확하게 유지될 때만 타입을 변환합니다. 본문 예제를 보면 `3.14159` 을 정확하게 유지하면서 `Int` 타입으로 변환할 수 없기 때문에 실패합니다.  
 
-[^required-override]: '필수 (required)' 라는 개념 안에 이미 '재정의 (override)' 라는 개념이 들어가 있기 때문에, 따로 `override` 를 작성할 필요가 없습니다.
+[^required-override]: '필수 (required)' 라는 개념 안에 이미 '재정의 (override)' 라는 개념이 들어 있기 때문에, 따로 `override` 를 쓸 필요가 없습니다.
