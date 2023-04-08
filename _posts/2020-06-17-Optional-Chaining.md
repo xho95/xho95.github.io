@@ -10,9 +10,9 @@ categories: Swift Language Grammar Error Handling
 
 ## Optional Chaining (옵셔널 사슬)
 
-_옵셔널 사슬 (optional chaining)_ 는 현재는 `nil` 일지도 모를 옵셔널에서 속성, 메소드, 및 첨자를 조회하고 호출하는 과정입니다. 값을 담은 옵셔널이면, 속성이나, 메소드, 또는 첨자 호출이 성공하고; 옵셔널이 `nil` 이면, 속성이나, 메소드, 또는 첨자 호출이 `nil` 을 반환합니다. 여러 개의 조회를 사슬처럼 서로 이을 수 있으며, 사슬의 어떤 고리든 `nil` 이면 전체 사슬이 우아하게 (gracefully) 실패합니다.[^gracefully-fail]
+_옵셔널 사슬 (optional chaining)_ 은 현재 `nil` 일지도 모르는 옵셔널의 속성과, 메소드, 및 첨자를 캐물어서 호출하는 가공 과정입니다. 옵셔널이 값을 담고 있으면, 속성이나, 메소드, 또는 첨자 호출이 성공하고; 옵셔널이 `nil` 이면, 속성이나, 메소드, 또는 첨자 호출이 `nil` 을 반환합니다. 여러 번 캐묻는 걸 서로 사슬처럼 이을 수도 있으며, 사슬망의 어떤 고리든 `nil` 이면 전체 사슬이 우아하게 실패합니다.[^gracefully-fail]
 
-> 스위프트의 옵셔널 사슬은 오브젝티브-C 의 `nil` 메시지 보내기와 비슷하지만, 어떤 타입과도 작업하며, 성공이나 실패를 검사할 수 있는 방식입니다.
+> 스위프트의 옵셔널 사슬은 오브젝티브-C 에서 `nil` 메시지를 보내는 것과 비슷하지만, 어떤 타입과도 작동하며, 성공이냐 실패냐를 검사할 수 있는 방식입니다.
 
 ### Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안인 옵셔널 사슬)
 
@@ -385,7 +385,7 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Optional Chaining](https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html) 에서 볼 수 있습니다.
 
-[^gracefully-fail]: '우아하게 (gracefully) 실패한다' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 사슬의 어떤 고리든 `nil` 이면, 실행시간 에러가 발생하는 게 아니라, 전체 사슬이 `nil` 이 됩니다.
+[^gracefully-fail]: '우아하게 실패한다 (fails gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 사슬의 어떤 고리든 `nil` 이면, 실행시간 에러가 발생하는 게 아니라, 전체 사슬이 `nil` 이 됩니다.
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 부분을 보도록 합니다.
 
