@@ -1008,7 +1008,7 @@ struct Chessboard {
 }
 ```
 
-새로운 `Chessboard` 인스턴스를 생성할 때마다, 클로저가 실행되어, `boardColors` 의 기본 값을 계산하고 반환합니다. 위 예제에 있는 클로저는 임시 배열인 `temporaryBoard` 판 위의 각 정사각형에 적절한 색을 계산하여 설정하고, 설정을 완료하면 이 임시 배열을 클로저의 반환 값으로 반환합니다. 반환한 배열 값은 `boardColors` 에 저장되며 `squareIsBlackAt(row:column:)` 보조 함수로 조회하여 캐물을 수 있습니다:
+새로운 `Chessboard` 인스턴스를 생성할 때마다, 클로저가 실행되어, `boardColors` 의 기본 값을 계산하고 반환합니다. 위 예제에 있는 클로저는 임시 배열인 `temporaryBoard` 판 위의 각 정사각형에 적절한 색을 계산하여 설정하고, 설정을 완료하면 이 임시 배열을 클로저의 반환 값으로 반환합니다. 반환한 배열 값은 `boardColors` 에 저장되며 `squareIsBlackAt(row:column:)` 보조 함수로 조회할 수 있습니다:
 
 ```swift
 let board = Chessboard()
