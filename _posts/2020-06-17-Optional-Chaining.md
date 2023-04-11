@@ -44,16 +44,16 @@ class Residence {
 let john = Person()
 ```
 
-이 사람의 `residence` 에 있는 `numberOfRooms` 속성에 접근하려고, `residence` 뒤에 느낌표를 둬서 값의 포장을 강제로 풀면, 포장을 풀 `residence` 값이 없기 때문에, 실행시간 에러를 발동합니다:
+이 사람의 `residence` 에 있는 `numberOfRooms` 속성에 접근하려고, `residence` 뒤에 느낌표를 둬서 강제로 값을 풀면, 실행시간 에러를 발생시키게 되는데, 이는 포장을 풀 아무런 `residence` 값도 없기 때문입니다:
 
 ```swift
 let roomCount = john.residence!.numberOfRooms
-// 이는 실행시간 에러를 발동합니다.
+// 이는 실행시간 에러를 발생시킵니다.
 ```
 
-`john.residence` 값이 `nil`-이 아닐 땐 위 코드를 성공하여 적절한 방의 수를 담은 `Int` 값을 `roomCount` 에 설정할 겁니다. 하지만, 위에서 묘사한 것처럼, `residence` 가 `nil` 일 땐, 이 코드는 항상 실행시간 에러를 발동합니다.
+위 코드는 `john.residence` 에 `nil`-아닌 값이 있어서 `roomCount` 에 적절한 방 개수인 `Int` 값을 설정할 때 성공합니다. 하지만, 이 코드는 `residence` 가 `nil` 일 땐 항상 실행시간 에러를 발생시키며, 이는 위에서 묘사한 것과 같습니다.
 
-옵셔널 사슬은 `numberOfRooms` 값의 접근에 대안을 제공합니다. 옵셔널 사슬을 사용하려면, 느낌표 자리에 물음표를 사용합니다:
+옵셔널 사슬은 `numberOfRooms` 값에 접근하기 위한 대안을 제공합니다. 옵셔널 사슬을 쓰려면, 느낌표 자리에 물음표를 쓰면 됩니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -64,20 +64,19 @@ if let roomCount = john.residence?.numberOfRooms {
 // "Unable to retrieve the number of rooms." 를 인쇄함
 ```
 
-이는 옵셔널 `residence` 속성을 "사슬처럼 이어 (chain)" 서 `residence` 가 존재하면 `numberOfRooms` 값을 가져오라고 스위프트에게 말하는 겁니다.
+이는 스위프트에게 옵셔널 `residence` 속성을 "사슬처럼 이어 (chain)" 서 `residence` 가 존재하면 `numberOfRooms` 의 값을 가져오라고 말합니다.
 
-`numberOfRooms` 로의 접근 시도는 실패할 수도 있기 때문에, 옵셔널 사슬 시도는 `Int?`, 또는 "옵셔널 `Int`" 타입 값을 반환합니다. 위 예제에서 처럼, `residence` 가 `nil` 일 땐, 이 옵셔널 `Int` 도 `nil` 이어서, `numberOfRooms` 로의 접근이 불가능하다는 사실을 반영할 것입니다. 옵셔널 연결 (optional binding)[^optional-binding] 을 통해 옵셔널 `Int` 에 접근하면 정수의 포장을 풀고 옵셔널-아닌 값을 `roomCount` 상수에 할당합니다.
+`numberOfRooms` 로 접근하려는 시도는 실패할 수도 있기 때문에, 옵셔널 사슬로 시도한 것의 타입은 `Int?`, 또는 "옵셔널 `Int`" 타입의 값을 반환합니다. `residence` 가 `nil` 일 땐, 위 예제 처럼, 이 옵셔널 `Int` 도 `nil` 이 되어서, `numberOfRooms` 로 접근하는게 불가능하다는 사실을 반영할 것입니다. 옵셔널 `Int` 는 옵셔널 연결[^optional-binding] 을 통해 접근하여 정수를 풀며 옵셔널-아닌 값을 `roomCount` 상수에 할당합니다.
 
-이는 `numberOfRooms` 가 옵셔널-아닌 `Int` 일지라도 참이라는 걸 기억하기 바랍니다.[^non-optional-int] 옵셔널 사슬을 통하여 조회한다는 사실은 `numberOfRooms` 호출이 항상 `Int` 대신 `Int?` 를 반환할 거라는 의미입니다.
+이는 `numberOfRooms` 가 옵셔널-아닌 `Int` 라도 그렇다는 걸 기억하기 바랍니다.[^non-optional-int] 옵셔널 사슬을 통해 조회된다는 사실은 `numberOfRooms` 의 호출이 항상 `Int` 대신 `Int?` 를 반환한다는 걸 의미합니다.
 
-`john.residence` 에 `Residence` 인스턴스를 할당해서, 더 이상 `nil` 값을 갖지 않도록, 할 수 있습니다:
+`Residence` 인스턴스를 `john.residence` 에 할당하여, 더 이상 `nil` 값이 아니게 할 수 있습니다:
 
 ```swift
 john.residence = Residence()
 ```
 
-이제 `john.residence` 는, `nil` 보단, 실제 `Residence` 인스턴스를 담고 있습니다. 전과 동일한 옵셔널 사슬로 `numberOfRooms` 에 접근하려 하면, 이제 `1` 이라는
-기본 `numberOfRooms` 값을 담은 `Int?` 를 반환할 것입니다:
+이제 `john.residence` 엔, `nil` 보단, 실제 `Residence` 인스턴스가 담겨 있습니다. 이전과 똑같이 옵셔널 사슬로 `numberOfRooms` 에 접근하려고 하면, 이제 반환한 `Int?` 에는 기본 `numberOfRooms` 값인 `1` 이 담겨 있을 겁니다:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -387,7 +386,7 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^gracefully-fail]: '우아하게 실패한다 (fails gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 사슬의 어떤 고리든 `nil` 이면, 실행시간 에러가 발생하는 게 아니라, 전체 사슬이 `nil` 이 됩니다.
 
-[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 부분을 보도록 합니다.
+[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대해서는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
 
 [^side-effect]: 프로그래밍 분야에선 '부작용 (side effects)' 을 '부수적인 효과' 라는 의미로 이해하는 게 좋습니다. 본문 내용은 상수에 대한 접근이 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는지 아닌지 알 방법이 없다는 의미입니다. 프로그래밍 분야의 부작용에 대한 더 자세한 내용은, [Expressions (표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 보도록 합니다.
 
