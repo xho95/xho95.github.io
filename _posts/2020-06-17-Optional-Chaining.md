@@ -89,11 +89,11 @@ if let roomCount = john.residence?.numberOfRooms {
 
 ### Defining Model Classes for Optional Chaining (옵셔널 사슬을 모델링하는 클래스 정의하기)
 
-옵셔널 사슬을 사용하여 한 단계 깊이 이상의 속성, 메소드, 및 첨자를 호출할 수 있습니다. 이는 서로 복잡하게 관련된 타입 모델 안의 하위 속성으로 파고 들어 가서, 그 하위 속성의 속성, 메소드, 및 첨자 접근이 가능한 지 검사하도록 합니다.
+옵셔널 사슬을 쓰면 한 단계 이상의 깊이에 있는 속성과, 메소드, 및 첨자를 호출할 수 있습니다. 이는 서로 복잡하게 관련된 타입들의 모델 안에서 하위 속성으로 파고 들어가, 그 하위 속성에 대한 속성과, 메소드, 및 첨자가 접근할 수 있는 것인지 검사하게 합니다.
 
-아래 코드 조각은, 여러 단계인 옵셔널 사슬 예제를 포함하여, 뒤이은 여러 예제에서 사용할 모델 클래스를 네 개 정의합니다. 이 클래스들은, 결합된 속성, 메소드, 및 첨자를 가진, `Room` 과 `Address` 클래스를 추가함으로써, 위에 있는 `Person` 과 `Residence` 모델을 확대합니다.
+아래 코드 조각들은, 여러 단계의 옵셔널 사슬 예제를 포함한, 뒤이은 여러 예제들에서 쓸 네 개의 모델 클래스를 정의합니다. 이 클래스들은 위에 있는 `Person` 과 `Residence` 모델을 확대해서, 결합된 속성과, 메소드, 및 첨자가 있는, `Room` 과 `Address` 클래스를 추가합니다.
 
-`Person` 클래스는 이전과 똑같이 정의합니다:
+`Person` 클래스의 정의는 이전과 똑같습니다:
 
 ```swift
 class Person {
@@ -101,7 +101,7 @@ class Person {
 }
 ```
 
-`Residence` 클래스는 이전보다 더 복잡합니다. 이번엔, `Residence` 클래스가 `rooms` 라는 변수 속성을 정의하고, 이를 `[Room]` 타입의 빈 배열로 초기화합니다:
+`Residence` 클래스는 이전보다 더 복잡합니다. 이번엔, `Residence` 클래스에서 변수 속성인 `rooms` 를 정의하는데, 이는 `[Room]` 타입의 빈 배열로 초기화됩니다:
 
 ```swift
 class Residence {
@@ -124,15 +124,15 @@ class Residence {
 }
 ```
 
-이 버전의 `Residence` 는 `Room` 인스턴스 배열을 저장하기 때문에, 저장 속성이 아니라, 계산 속성으로 `numberOfRooms` 속성을 구현합니다. `numberOfRooms` 계산 속성은 단순히 `rooms` 배열의 `count` 속성 값을 반환합니다.
+이 버전의 `Residence` 는 `Room` 인스턴스의 배열을 저장하기 때문에, `numberOfRooms` 속성을, 저장 속성이 아닌, 계산 속성으로 구현합니다. 계산 속성인 `numberOfRooms` 는 단순히 `rooms` 배열에 있는 `count` 속성 값을 반환합니다.
 
-자신의 `rooms` 배열 접근의 줄임말로, 이 버전의 `Residence` 는 요청한 `rooms` 배열 색인의 방에 접근하는 읽고-쓰기 (read-write) 첨자를 제공합니다.
+`rooms` 배열에 바로 접근하기 위해, 이 버전의 `Residence` 는 `rooms` 배열에서 요청한 색인의 방에 접근하는 읽고-쓰기 첨자를 제공합니다.
 
-이 버전의 `Residence` 는 `printNumberOfRooms` 라는 메소드도 제공하며, 이는 단순히 거주 공간의 방 개수를 인쇄합니다.
+이 버전의 `Residence` 는 `printNumberOfRooms` 라는 메소드도 제공하는데, 이는 단순히 거주지의 방 개수를 인쇄합니다.
 
-최종적으로, `Residence` 는 `address` 라는, `Address?` 타입의, 옵셔널 속성을 정의합니다. 이 속성의 `Address` 클래스 타입은 아래에 정의합니다.
+마지막으로, `Residence` 는 옵셔널 속성인 `address` 를 정의하며, 타입은 `Address?` 입니다. 이 속성을 위한 `Address` 클래스 타입은 아래에서 정의합니다.
 
-`rooms` 배열에 사용된 `Room` 클래스는 `name` 이라는 하나의 속성 및, 그 속성에 적합한 방 이름을 설정하는 초기자를 가진, 단순한 클래스입니다:
+`rooms` 배열에 쓸 `Room` 클래스는 단순한 클래스로 `name` 이라는 하나의 속성과, 그 속성에 적당히 어울리는 방 이름을 설정하는 초기자가 있습니다:
 
 ```swift
 class Room {
@@ -141,7 +141,7 @@ class Room {
 }
 ```
 
-이 모델의 마지막 클래스는 `Address` 라고 합니다. 이 클래스에는 `String?` 타입의 옵셔널 속성이 세 개 있습니다. 처음 두 속성인, `buildingName` 과 `buildingNumber` 는, 주소 부분에서 한 특별한 건물을 식별하기 위한 대안입니다. 세 번째 속성인, `street` 는, 그 주소의 거리 이름으로 사용합니다:
+이 모델의 마지막 클래스는 `Address` 입니다. 이 클래스엔 `String?` 타입의 옵셔널 속성이 세 개 있습니다. 처음 두 속성인, `buildingName` 과 `buildingNumber` 는, 주소에서 한 특별한 건물의 정체를 알게하는 대안입니다. 세 번째 속성인, `street` 는, 그 주소의 거리 이름에 사용됩니다:
 
 ```swift
 class Address {
@@ -160,7 +160,7 @@ class Address {
 }
 ```
 
-`Address` 클래스는 `buildingIdentifier()` 라는, `String?` 반환 타입을 가진, 메소드도 제공합니다. 이 메소드는 주소의 속성을 검사하여 `buildingName` 에 값이 있으면 이를, 또는 `buildingNumber` 와 `street` 둘 다에 값이 있으면 이들을 이어붙인 걸, 또는 그 외의 경우 `nil` 을 반환합니다.
+`Address` 클래스는 `buildingIdentifier()` 라는 메소드도 제공하는데, 반환 타입은 `String?` 입니다. 이 메소드는 주소의 속성들을 검사하여 `buildingName` 에 값이 있으면 그걸, `buildingNumber` 와 `street` 둘 다에 값이 있으면 둘을 이어붙인 걸, 그 외의 경우라면 `nil` 을 반환합니다.
 
 ### Accessing Properties Through Optional Chaining (옵셔널 사슬을 통하여 속성 접근하기)
 
