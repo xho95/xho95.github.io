@@ -162,11 +162,11 @@ class Address {
 
 `Address` 클래스는 `buildingIdentifier()` 라는 메소드도 제공하는데, 반환 타입은 `String?` 입니다. 이 메소드는 주소의 속성들을 검사하여 `buildingName` 에 값이 있으면 그걸, `buildingNumber` 와 `street` 둘 다에 값이 있으면 둘을 이어붙인 걸, 그 외의 경우라면 `nil` 을 반환합니다.
 
-### Accessing Properties Through Optional Chaining (옵셔널 사슬을 통하여 속성 접근하기)
+### Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성에 접근하기)
 
-[Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안인 옵셔널 사슬)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-포장-풀기의-대안인-옵셔널-사슬) 에서 실증한 것처럼, 옵셔널 사슬을 사용하여 옵셔널 값의 속성에 접근하고, 그 속성 접근이 성공인지 검사할 수 있습니다.
+[Optional Chaining as an Alternative to Forced Unwrapping (강제 포장 풀기의 대안인 옵셔널 사슬)](#optional-chaining-as-an-alternative-to-forced-unwrapping-강제-포장-풀기의-대안인-옵셔널-사슬) 에서 실제로 보인 것처럼, 옵셔널 사슬을 쓰면 옵셔널 값의 속성에 접근하고, 그 속성 접근이 성공인지 검사할 수 있습니다.
 
-위에서 정의한 클래스를 사용하여 새 `Person` 인스턴스를 생성하고, 이전 처럼 `numberOfRooms` 속성에 접근해 봅니다:
+위에서 정의한 클래스들을 써서 새로운 `Person` 인스턴스를 생성하고, 이전처럼 `numberOfRooms` 속성에 접근해 봅시다:
 
 ```swift
 let john = Person()
@@ -178,9 +178,9 @@ if let roomCount = john.residence?.numberOfRooms {
 // "Unable to retrieve the number of rooms." 를 인쇄함
 ```
 
-`john.residence` 가 `nil` 이기 때문에, 이 옵셔널 사슬 호출은 이전과 똑같이 실패합니다.
+`john.residence` 가 `nil` 이기 때문에, 이 옵셔널 사슬 호출은 이전과 같이 실패합니다.
 
-옵셔널 사슬을 통하여 속성 값을 설정하려고 시도할 수도 있습니다:
+옵셔널 사슬을 통해 속성 값을 설정하는 시도도 할 수 있습니다:
 
 ```swift
 let someAddress = Address()
@@ -189,9 +189,9 @@ someAddress.street = "Acacia Road"
 john.residence?.address = someAddress
 ```
 
-이 예제에서, `john.residence` 가 현재 `nil` 이기 때문에, `john.residence` 의 `address` 속성을 설정하려는 시도가 실패할 것입니다.
+이 예제에선, `john.residence` 의 `address` 속성을 설정하는 시도가 실패할 건데, 이는 `john.residence` 가 현재 `nil` 이기 때문입니다.
 
-할당은 옵셔널 사슬의 일부인데, 이는 `=` 연산자의 오른-쪽 코드는 아무 것도 평가하지 않는다는 의미입니다. 이 예제에서, `someAddress` 를 절대 평가하지 않는다는 걸 알아보긴 쉽지 않은데, 상수에 접근하는 건 어떤 부작용[^side-effect] 도 없기 때문입니다. 아래 나열한 건 동일한 할당을 하지만, 함수를 사용하여 주소를 생성합니다. 값을 반환하기 전에, 함수가 "Function was called" 를 인쇄하여, `=` 연산자의 오른-쪽을 평가했는지 알아보게 해줍니다.[^function-was-called]
+할당도 옵셔널 사슬의 일부인데, 이는 `=` 연산자의 오른-쪽 코드는 아무 것도 평가하지 않는다는 의미입니다. 이 예제에선, `someAddress` 가 절대 평가되지 않는다는 걸 알아보기 쉽지 않은데, 상수에 접근하는 건 어떤 부수적인 효과[^side-effect] 도 없기 때문입니다. 아래 나열한 건 똑같은 할당을 하지만, 함수를 써서 주소를 생성합니다. 함수는 값을 반환하기 전에 "Function was called" 를 인쇄하여, `=` 연산자의 오른-쪽이 평가됐는지 알 수 있게 합니다.[^function-was-called]
 
 ```swift
 func createAddress() -> Address {
@@ -206,7 +206,7 @@ func createAddress() -> Address {
 john.residence?.address = createAddress()
 ```
 
-아무 것도 인쇄하지 않기 때문에, `createAddress()` 함수를 호출하지 않는다고 말할 수 있습니다.
+`createAddress()` 함수가 호출되지 않았다고 말할 수 있는 건, 아무 것도 인쇄된게 없기 때문입니다.
 
 ### Calling Methods Through Optional Chaining (옵셔널 사슬을 통하여 메소드 호출하기)
 
@@ -233,7 +233,7 @@ if john.residence?.printNumberOfRooms() != nil {
 // "It was not possible to print the number of rooms." 를 인쇄함
 ```
 
-옵셔널 사슬을 통하여 속성을 설정하려고 시도하는 경우도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통하여 속성 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통하여-속성-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 인데도, `john.residence` 의 `address` 값을 설정하려고 시도합니다. 옵셔널 사슬을 통하여 속성을 설정하려는 어떤 시도든 `Void?` 타입의 값을 반환하는데, 이는 `nil` 과 비교하여 속성 설정이 성공했는지 알아볼 수 있게 합니다:
+옵셔널 사슬을 통하여 속성을 설정하려고 시도하는 경우도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성에 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통해-속성에-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 인데도, `john.residence` 의 `address` 값을 설정하려고 시도합니다. 옵셔널 사슬을 통하여 속성을 설정하려는 어떤 시도든 `Void?` 타입의 값을 반환하는데, 이는 `nil` 과 비교하여 속성 설정이 성공했는지 알아볼 수 있게 합니다:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {
@@ -388,9 +388,9 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 
 [^optional-binding]: '옵셔널 연결 (optional binding)' 에 대해서는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Optional Binding (옵셔널 연결)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#optional-binding-옵셔널-연결) 부분을 참고하기 바랍니다.
 
-[^side-effect]: 프로그래밍 분야에선 '부작용 (side effects)' 을 '부수적인 효과' 라는 의미로 이해하는 게 좋습니다. 본문 내용은 상수에 대한 접근이 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는지 아닌지 알 방법이 없다는 의미입니다. 프로그래밍 분야의 부작용에 대한 더 자세한 내용은, [Expressions (표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 보도록 합니다.
+[^side-effect]: 프로그래밍 분야에선 '부작용 (side effects)' 을 '부수적인 효과' 라는 의미로 이해하는 게 좋습니다. 본문 내용은 상수에 대한 접근이 부수적인 효과가 없기 때문에, `someAddress` 를 평가했는지 아닌지 알 방법이 없다는 의미입니다. 프로그래밍 분야의 부작용에 대한 더 자세한 내용은, [Expressions (표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}) 맨 앞 부분에 있는 '부작용 (side effect)' 에 대한 주석을 참고하기 바랍니다.
 
-[^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것이 프로그래밍에서 말하는 부수적인 효과, 즉, '부작용 (side effects)' 입니다. 이 함수의 원래 목적은 주소를 생성하는 것인데, `print` 는 원래 목적과는 상관없이 부수적인 효과-부작용-를 일으킵니다.
+[^function-was-called]: 이 예제 코드에 있는 `print("Function was called.")` 같은 것들이 프로그래밍에서 말하는 부수적인 효과, 즉, 부작용 (side effects) 입니다. 이 함수의 원래 목적은 주소를 생성하는 것인데, `print` 는 원래 목적과는 상관없이 부수적인 효과를 일으킵니다.
 
 [^more-optional]: '더 옵셔널이 되진 않는다' 는 건 '옵셔널의 옵셔널' 같은 건 없다는 의미입니다.
 
