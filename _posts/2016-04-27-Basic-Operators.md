@@ -86,7 +86,7 @@ _나머지 연산자 (remainder operator_; `a % b`_)_ 는 몇 배수의 `b` 가 
 
 > 다른 언어에선 나머지 연산자 (`%`) 를 _모듈러 연산자 (modulo operator)_ 라고도 합니다.[^modulo-opartion] 하지만, 스위프트의 음수에 대한 이 동작은, 엄밀히 말해서, 모듈러라기 보단 나머지 연산입니다.[^remainder-vs-modulo]
 
-나머지 연산자는 이렇게 작업합니다. `9 % 4` 를 계산하려면, 첫 번째로 `9` 안에 몇 개의 `4` 가 들어가는 지를 알아냅니다:
+나머지 연산자의 작업은 이렇습니다. `9 % 4` 를 계산하려면, 첫 번째로 `9` 안에 몇 개의 `4` 가 들어가는 지를 알아냅니다:
 
 ![Indentation](/assets/Swift/Swift-Programming-Language/Basic-Operators-remainder-operator-works.jpg)
 

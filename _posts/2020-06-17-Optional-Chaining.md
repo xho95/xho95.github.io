@@ -208,9 +208,9 @@ john.residence?.address = createAddress()
 
 `createAddress()` 함수가 호출되지 않았다고 말할 수 있는 건, 아무 것도 인쇄된게 없기 때문입니다.
 
-### Calling Methods Through Optional Chaining (옵셔널 사슬을 통하여 메소드 호출하기)
+### Calling Methods Through Optional Chaining (옵셔널 사슬을 통해 메소드 호출하기)
 
-옵셔널 사슬을 사용하여 옵셔널 값의 메소드를 호출하고, 그 메소드 호출이 성공인지 검사할 수 있습니다. 그 메소드가 반환 값을 정의하지 않은 경우에도 이렇게 할 수 있습니다.
+옵셔널 사슬을 쓰면 옵셔널 값에 대한 메소드를 호출하고, 그 메소드 호출이 성공인지 검사할 수 있습니다. 이건 심지어 그 메소드에서 반환 값을 정의하지 않더라도 할 수 있습니다.
 
 `Residence` 클래스의 `printNumberOfRooms()` 메소드는 `numberOfRooms` 의 현재 값을 인쇄합니다. 메소드를 보면 이렇습니다:
 
@@ -220,9 +220,9 @@ func printNumberOfRooms() {
 }
 ```
 
-이 메소드는 반환 타입을 지정하지 않습니다. 하지만, [Functions Without Return Values (반환 값이 없는 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#functions-without-return-values-반환-값이-없는-함수) 에서 설명한 것처럼, 반환 타입이 없는 함수와 메소드는 `Void` 라는 암시적인 반환 타입을 가집니다. 이는 이들이 `()` 라는 반환 값, 또는 빈 튜플을 반환한다는 의미입니다.
+이 메소드는 반환 타입을 정하지 않습니다. 하지만, 반환 타입이 없는 함수와 메소드에도 암시적 반환 타입인 `Void` 가 있으며, 이는 [Functions Without Return Values (반환 값이 없는 함수)]({% link docs/swift-books/swift-programming-language/functions.md %}#functions-without-return-values-반환-값이-없는-함수) 에서 설명한 것과 같습니다. 이는 반환 값 `()`, 또는 빈 튜플을 반환한다는 의미입니다.
 
-옵셔널 값에서 옵셔널 사슬로 이 메소드를 호출하면, 메소드 반환 타입이, `Void` 가 아니라, `Void?` 일 건데, 옵셔널 사슬을 통하여 호출할 땐 반환 값이 항상 옵셔널 타입이기 때문입니다. 이는, 메소드가 그 자체론 반환 값을 정의하지 않을지라도, `if` 문을 사용하여 `printNumberOfRooms()` 메소드 호출이 가능한지 검사할 수 있게 합니다. 메소드 호출이 성공했는지 알아보려면 `printNumberOfRooms` 호출의 반환 값을 `nil` 과 비교하기 바랍니다.
+옵셔널 사슬로 옵셔널 값에서 이 메소드를 호출하면, 메소드의 반환 타입이 `Void?` 이지, `Void` 가 아닌데, 옵셔널 사슬을 통해 호출될 땐 반환 값이 항상 옵셔널 타입이기 때문입니다. 이는 `printNumberOfRooms()` 메소드를 호출하는게 가능한지 `if` 문으로 검사할 수 있게 해주며, 심지어 메소드 그 자체에 정의된 반환 값이 없어도 그렇습니다. `printNumberOfRooms` 호출의 반환 값을 `nil` 과 비교하여 메소드 호출이 성공했는지를 알아봅니다:
 
 ```swift
 if john.residence?.printNumberOfRooms() != nil {
@@ -233,7 +233,7 @@ if john.residence?.printNumberOfRooms() != nil {
 // "It was not possible to print the number of rooms." 를 인쇄함
 ```
 
-옵셔널 사슬을 통하여 속성을 설정하려고 시도하는 경우도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성에 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통해-속성에-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 인데도, `john.residence` 의 `address` 값을 설정하려고 시도합니다. 옵셔널 사슬을 통하여 속성을 설정하려는 어떤 시도든 `Void?` 타입의 값을 반환하는데, 이는 `nil` 과 비교하여 속성 설정이 성공했는지 알아볼 수 있게 합니다:
+옵셔널 사슬을 통해 속성을 설정하려고 시도하는 것도 똑같습니다. 위의 [Accessing Properties Through Optional Chaining (옵셔널 사슬을 통해 속성에 접근하기)](#accessing-properties-through-optional-chaining-옵셔널-사슬을-통해-속성에-접근하기) 에 있는 예제는, `residence` 속성이 `nil` 인데도, `john.residence` 에 `address` 값을 설정하려고 시도합니다. 옵셔널 사슬로 속성을 설정하는 어떤 시도든 `Void?` 타입의 값을 반환하는데, 이는  `nil` 과 비교해서 속성 설정이 성공인지 알 수 있게 합니다:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {
