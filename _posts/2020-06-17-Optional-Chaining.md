@@ -244,13 +244,13 @@ if (john.residence?.address = someAddress) != nil {
 // "It was not possible to set the address." 를 인쇄함
 ```
 
-### Accessing Subscripts Through Optional Chaining (옵셔널 사슬을 통하여 첨자 접근하기)
+### Accessing Subscripts Through Optional Chaining (옵셔널 사슬을 통해 첨자에 접근하기)
 
-옵셔널 사슬을 사용하여 옵셔널 값의 첨자로 값을 가져오고 설정하며, 그 첨자 호출이 성공인지 검사할 수 있습니다.
+옵셔널 사슬을 써서 옵셔널 값의 첨자로부터 값을 가져오고 설정하며, 그 첨자 호출이 성공인지를 검사할 수 있습니다.
 
-> 옵셔널 사슬을 통하여 옵셔널 값의 첨자에 접근할 땐, 첨자 대괄호, 뒤가 아닌, _앞에 (before)_ 물음표를 둡니다. 옵셔널 사슬의 물음표는 항상 표현식의 옵셔널 부분 바로 뒤에 붙습니다.
+> 옵셔널 사슬로 옵셔널 값의 첨자에 접근할 땐, 물음표를 첨자의 대괄호 _앞에 (before)_ 두지, 뒤에 두지 않습니다. 옵셔널 사슬 물음표는 옵셔널인 표현식 바로 뒤에 항상 따라옵니다.
 
-아래 예제는 `Residence` 클래스에서 정의한 첨자를 써서 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방 이름을 가져오려고 합니다. 현재는 `john.residence` 가 `nil` 이기 때문에, 첨자 호출이 실패합니다:
+아래 예제는 `john.residence` 속성의 `rooms` 배열에 있는 첫 번째 방 이름을 가져오려고 `Residence` 클래스에서 정의한 첨자를 씁니다. `john.residence` 가 현재 `nil` 이기 때문에, 첨자 호출은 실패합니다:
 
 ```swift
 if let firstRoomName = john.residence?[0].name {
@@ -261,17 +261,17 @@ if let firstRoomName = john.residence?[0].name {
 // "Unable to retrieve the first room name." 를 인쇄함
 ```
 
-이 첨자 호출에선, `john.residence` 바로 뒤, 첨자 대괄호 앞에, 옵셔널 사슬 물음표를 두는데, 이는 옵셔널 사슬이 시도하고 있는 옵셔널 값이 `john.residence` 이기 때문입니다.
+이 첨자 호출에서는 옵셔널 사슬 물음표가 `john.residence` 바로 뒤, 첨자 대괄호 앞에 있는데, 이는 `john.residence` 가 옵셔널 사슬이 시도 중인 옵셔널 값이 이기 때문입니다.
 
-이와 비슷하게, 옵셔널 사슬로 첨자를 통하여 새 값을 설정해 볼 수 있습니다:
+이와 비슷하게, 옵셔널 사슬로 첨자를 통해 새로운 값을 설정하려고 할 수 있습니다:
 
 ```swift
 john.residence?[0] = Room(name: "Bathroom")
 ```
 
-현재는 `residence` 가 `nil` 이기 때문에, 이 첨자 설정 시도도 실패합니다.
+이 첨자 설정 시도도 실패하는데, `residence` 가 현재 `nil` 이기 때문입니다.
 
-`Residence` 의 `rooms` 배열에 `Room` 인스턴스가 있는, 실제 인스턴스를 생성하여 `john.residence` 에 할당하면, `Residence` 첨자로 옵셔널 사슬을 통하여 `rooms` 배열의 실제 항목에 접근할 수 있습니다:
+실제 `Residence` 인스턴스를 생성하고 `john.residence` 에 할당하면서, `rooms` 배열에 하나 이상의 `Room` 인스턴스가 있으면, `Residence` 첨자로 옵셔널 사슬을 통해 `rooms` 배열의 실제 항목에 접근할 수 있습니다:
 
 ```swift
 let johnsHouse = Residence()
