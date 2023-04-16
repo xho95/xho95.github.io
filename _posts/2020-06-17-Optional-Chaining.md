@@ -289,17 +289,17 @@ if let firstRoomName = john.residence?[0].name {
 
 #### Accessing Subscripts of Optional Type (옵셔널 타입의 첨자에 접근하기)
 
-스위프트 `Dictionary` 타입의 키 (key) 첨자 같이-첨자가 옵셔널 타입의 값을 반환하면, 첨자의 닫는 대괄호 _뒤에 (after)_ 물음표를 둬서 자신의 옵셔널 반환 값을 사슬처럼 잇습니다:
+첨자가-스위프트 `Dictionary` 타입의 키 첨자 같이-옵셔널 타입의 값을 반환한다면 첨자의 닫는 대괄호 _뒤에 (after)_ 물음표를 둬서 그 옵셔널 반환 값이 사슬처럼 계속 이어지게 합니다:
 
 ```swift
 var testScores = ["Dave": [86, 82, 84], "Bev": [79, 94, 81]]
 testScores["Dave"]?[0] = 91
 testScores["Bev"]?[0] += 1
 testScores["Brian"]?[0] = 72
-// 이제 "Dave" 배열은 [91, 82, 84] 이고 "Bev" 배열은 [80, 94, 81] 임
+// "Dave" 배열은 이제 [91, 82, 84] 이고 "Bev" 배열은 이제 [80, 94, 81] 임
 ```
 
-위 예제는 `testScores` 라는 딕셔너리를 정의하는데, 이는 `String` 키를 `Int` 값 배열로 대응시키는 두 개의 키-값 쌍을 담고 있습니다. 예제는 옵셔널 사슬로 `"Dave"` 배열의 첫 번째 항목을 `91` 로 설정하고; `"Bev"` 배열의 첫 번째 항목은 `1` 만큼 증가시키며; 키가 `"Brian"` 인 배열의 첫 번째 항목을 설정합니다. 첫 두 호출은 성공인데, 이는 `testScores` 딕셔너리가 `"Dave"` 와 `"Bev"` 라는 키를 담고 있기 때문입니다. 세 번째 호출은 실패하며, 이는 `testScores` 딕셔너리가 `"Brian"` 이라는 키를 담고 있지 않기 때문입니다.
+위 예제는 `testScores` 라는 딕셔너리를 정의하는데, 여기엔 `String` 키를 `Int` 값 배열과 대응시키는 두 개의 키-값 쌍이 담겨 있습니다. 예제는 옵셔널 사슬을 써서 `"Dave"` 배열의 첫 번째 항목을 `91` 로 설정하고; `"Bev"` 배열의 첫 번째 항목을 `1` 만큼 증가시키며; 키가 `"Brian"` 인 배열에 첫 번째 항목을 설정하려고 합니다. 처음의 두 호출은 성공하는데, `testScores` 딕셔너리가 `"Dave"` 와 `"Bev"` 라는 키를 담고 있기 때문입니다. 세 번째 호출은 실패하는데, `testScores` 딕셔너리는 `"Brian"` 이라는 키를 담고 있지 않기 때문입니다.
 
 ### Linking Multiple Levels of Chaining (여러 수준의 사슬 연결하기)
 
