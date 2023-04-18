@@ -348,11 +348,11 @@ if let johnsStreet = john.residence?.address?.street {
 
 이 예제에선, `john.residence` 의 `address` 속성을 설정하려는 시도가 성공할 건데, 이는 `john.residence` 값에 현재 유효한 `Residence` 인스턴스가 담겨 있기 때문입니다.
 
-### Chaining on Methods with Optional Return Values (옵셔널 반환 값이 있는 메소드 사슬잇기)
+### Chaining on Methods with Optional Return Values (옵셔널 반환 값이 있는 메소드를 사슬처럼 잇기)
 
-이전 예제는 옵셔널 사슬로 옵셔널 타입의 속성 값을 가져오는 방법을 보여줍니다. 옵셔널 사슬을 사용하면 옵셔널 타입의 값을 반환하는 메소드도 호출하고, 필요하다면 그 메소드의 반환 값을 사슬처럼 이을 수도 있습니다.
+이전 예제는 옵셔널 타입의 속성 값을 옵셔널 사슬로 어떻게 가져오는지 보여줍니다. 옵셔널 사슬로 옵셔널 타입의 값을 반환하는 메소드도 호출하고, 필요하다면 그 메소드의 반환 값도 사슬처럼 이을 수 있습니다.
 
-아래 예제는 옵셔널 사슬을 통하여 `Address` 클래스의 `buildingIdentifier()` 메소드를 호출합니다. 이 메소드는 `String?` 타입의 값을 반환합니다. 위에서 설명한 것처럼, 옵셔널 사슬 뒤에 호출하는 이 메소드의 반환 타입도 결국에는 `String?` 입니다:
+아래 예제는 옵셔널 사슬을 통해 `Address` 클래스의 `buildingIdentifier()` 메소드를 호출합니다. 이 메소드가 반환하는 값은 `String?` 타입입니다. 위에서 설명한 것처럼, 옵셔널 사슬 뒤에서 호출한 이 메소드의 반환 타입도 결국 `String?` 입니다:
 
 ```swift
 if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
@@ -361,7 +361,7 @@ if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
 // "John's building identifier is The Larches." 를 인쇄함
 ```
 
-이 메소드 반환 값에서 옵셔널 사슬을 더 잇고 싶으면, 메소드 괄호 _뒤에 (after)_ 옵셔널 사슬 물음표를 둡니다:
+이 메소드의 반환 값에다가 옵셔널 사슬을 더 이어가고 싶으면, 옵셔널 사슬 물음표를 메소드의 괄호 _뒤에 (after)_ 둡니다:
 
 ```swift
 if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
@@ -374,7 +374,7 @@ if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix(
 // "John's building identifier begins with "The"." 를 인쇄함
 ```
 
-> 위 예제에서, 옵셔널 사슬 물음표는 괄호 _뒤에 (after)_ 붙이는데, 이는 사슬처럼 이을 옵셔널 값이, `buildingIdentifier()` 메소드 그 자체가 아니라, `buildingIdentifier()` 메소드의 반환 값이기 때문입니다.
+> 위 예제에선, 옵셔널 사슬 물음표를 괄호 _뒤에 (after)_ 두는데, 이는 사슬처럼 이을 옵셔널 값이 `buildingIdentifier()` 메소드의 반환 값이지, `buildingIdentifier()` 메소드 그 자체가 아니기 때문입니다.
 
 ### 다음 장
 
