@@ -18,11 +18,11 @@ _에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하�
 
 > 스위프트의 에러 처리는 `NSError` 클래스를 쓰는 **Cocoa** 와 **오브젝티브-C** 의 에러 처리 패턴과 서로 호환됩니다. 이 클래스에 대한 더 많은 정보는, [Handling Cocoa Errors in Swift (스위프트에서 Cocoa 에러 처리하기)](https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift) 를 보기 바랍니다.
 
-### Representing and Throwing Errors (에러 나타내기 및 던지기)
+### Representing and Throwing Errors (에러 나타내고 던지기)
 
-스위프트에선, `Error` 프로토콜을 따르는 타입의 값으로 에러를 나타냅니다. 이 빈 프로토콜[^empty-protocol] 은 에러 처리에 사용할 수 있는 타입을 지시합니다.
+스위프트에서, 에러는 `Error` 프로토콜을 따르는 타입의 값으로 나타냅니다. 이 빈 프로토콜[^empty-protocol] 은 에러 처리에 쓸 수 있는 타입임을 지시합니다.
 
-스위프트 열거체는, 결합 값으로 에러 통신에 추가 정보를 허용하므로, 서로 관련된 에러 조건 그룹을 모델링하기에 특히 더 적합합니다. 예를 들어, 다음은 게임 안에서 자동 판매기의 연산 에러 조건을 나타낼 지도 모를 방법입니다:
+스위프트 열거체는 특히 서로 관련된 에러 조건 그룹을 모델링하기에 적당한데, 결합 값은 통신할 에러 고유의 성질에 대한 추가 정보도 허용합니다. 예를 들어, 게임 안에서 자동 판매기 동작의 에러 조건을 나타낸다면 이럴지도 모릅니다:
 
 ```swift
 enum VendingMachineError: Error {
@@ -32,7 +32,7 @@ enum VendingMachineError: Error {
 }
 ```
 
-에러를 던지는 건 예상치 못한 뭔가 발생해서 보통의 실행 흐름을 계속할 순 없다고 지시합니다. `throw` 문을 사용하여 에러를 던집니다. 예를 들어, 다음 코드는 자동 판매기에 동전 5개가 추가로 필요함을 지시하는 에러를 던집니다:
+에러를 던지는 건 예상치 못한 일이 발생하여 보통의 실행 흐름이 계속될 수 없다는 걸 지시합니다. 에러는 `throw` 문으로 던집니다. 예를 들어, 다음 코드가 던지는 에러는 자동 판매기에 추가로 동전 5개가 필요하다는 걸 지시합니다:
 
 ```swift
 throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
@@ -289,7 +289,7 @@ func processFile(filename: String) throws {
 
 [^first-class-support]: 스위프트가 에러 처리를 일-급 지원 (first-class support) 한다는 건 언어 수준에서 에러 처리를 지원한다는 의미입니다. 이에 대한 더 자세한 정보는 [Error Handling with Try and Catch in Swift](https://www.appypie.com/error-handling-swift-do-try-catch) 항목을 보도록 합니다. 
 
-[^empty-protocol]: 스위프트의 `Error` 프로토콜은 본문 없이 비어 있는 프로토콜로 구현되어 있습니다. 즉, `Error` 라는 타입만 정의한 프로토콜입니다.
+[^empty-protocol]: `Error` 프로토콜은 본문이 없는 빈 프로토콜로 구현되어 있습니다. 즉, `Error` 라는 타입만 정의한 프로토콜입니다.
 
 [^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 보도록 합니다.
 
