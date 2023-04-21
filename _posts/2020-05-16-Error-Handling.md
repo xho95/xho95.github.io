@@ -40,13 +40,13 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 ### Handling Errors (에러 처리하기)
 
-에러를 던질 땐, 예를 들어, 문제를 바로 잡거나, 대안을 시도하거나, 또는 사용자에게 실패를 알림으로써-어떠한 주위 코드가 반드시 에러 처리를 책임져야 합니다.
+에러가 던져질 땐 주위를 둘러싼 코드 조각이 반드시 에러 처리를 책임져야 하는데-예를 들어, 문제를 바로 잡거나, 대안을 시도하거나, 또는 사용자에게 실패를 알리거나 합니다.
 
-스위프트의 에러 처리 방법엔 네 가지가 있습니다. 함수에서 그 함수를 호출한 코드로 에러를 전파 (propagate) 하거나, `do-catch` 문으로 에러를 처리하거나, 옵셔널 값으로 에러를 처리하거나, 또는 에러가 일어나지 않을 거라는 단언 (assert) 을 할 수 있습니다. 각각의 접근법은 아래 부분에서 설명합니다.
+스위프트의 에러 처리엔 네 가지 방법이 있습니다. 함수에서 그 함수를 호출한 코드로 에러를 퍼뜨리거나 (propagate), `do-catch` 문으로 에러를 처리하거나, 옵셔널 값으로 에러를 처리하거나, 또는 에러가 나지 않을 거라고 단언 (assert) 할 수 있습니다. 각각의 접근법은 아래 절에서 설명합니다.
 
-함수가 에러를 던질 땐, 프로그램 흐름을 바꾸므로, 에러를 던질 수 있는 코드를 빨리 식별할 수 있는 게 중요합니다. 이런 코드를 식별하기 위해, 에러를 던질 수 있는 함수, 메소드, 또는 초기자를 호출하는 코드 앞에, `try` 키워드-또는 `try?` 및 `try!` 같은 변화-를 작성합니다. 이러한 키워드는 아래 부분에서 설명합니다.
+함수가 에러를 던질 땐, 프로그램의 흐름이 바뀌게 되므로, 코드에서 에러를 던질 수 있는 곳을 빠르게 아는게 중요합니다. 코드에서 이런 곳을 알려면, `try` 키워드나-`try?` 또는 `try!` 같이 변화된 걸-에러를 던질 수 있는 함수나, 메소드, 또는 초기자의 호출 코드 앞에 쓰면 됩니다. 이 키워드들은 아래 절에서 설명합니다.
 
-> 스위프트 에러 처리는, `try`, `catch`, 및 `throw` 키워드를 사용한다는 점에서, 다른 언어의 예외 (exception) 처리와 닮았습니다. 오브젝티브-C 를 포함한-수많은 언어의 예외 처리와 달리, 스위프트 에러 처리는, 계산 비용이 비쌀 수 있는 과정인, 호출 스택 풀기 (unwinding call stack)[^unwinding-call-stack] 와 엮여 있지 않습니다. 그리하여, `throw` 문의 성능은 `return` 문에 비빌만합니다.
+> 스위프트의 에러 처리는, `try` 와, `catch`, 및 `throw` 키워드를 쓴다는 점에서, 다른 언어의 예외[^exception] 처리와 닮았습니다. **오브젝티브-C** 를 포함한-수많은 언어의 예외 처리와 달리, 스위프트의 에러 처리는, 계산 비용이 비쌀 수도 있는 과정인, 호출 스택 풀기[^unwinding-call-stack] 와 엮여 있지 않습니다. 그로 인해, `throw` 문의 수행 성능은 `return` 문과 비교할 만합니다.
 
 #### Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)
 
@@ -291,7 +291,7 @@ func processFile(filename: String) throws {
 
 [^empty-protocol]: `Error` 프로토콜은 본문이 없는 빈 프로토콜로 구현되어 있습니다. 즉, `Error` 라는 타입만 정의한 프로토콜입니다.
 
-[^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 위치에서 실행을 재개하기 위해 스택에서 하나 이상의 프레임을 '뽑아내어 (pop)' 풀어버리는 작업입니다. 다른 프로그래밍 언어에 있는 '예외 처리' 는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 이런 '호출 스택 풀기' 를 하지 않습니다. '호출 스택 풀기' 에 대한 더 자세한 정보는 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목에 있는 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 보도록 합니다.
+[^unwinding-call-stack]: '호출 스택 풀기 (unwinding call stack)' 는 프로그램의 다른 곳에서 실행을 다시 시작하려고 스택에서 하나 이상의 프레임을 뽑아서 (pop) 풀어버리는 걸 말합니다. 다른 프로그래밍 언어의 예외 처리는 던져진 예외를 처리할 때까지 스택을 풉니다. 반면, 스위프트는 호출 스택 풀기를 하지 않습니다. 호출 스택 풀기에 대한 더 자세한 정보는, 위키피디아의 [Call stack](https://en.wikipedia.org/wiki/Call_stack) 항목의 [Unwinding](https://en.wikipedia.org/wiki/Call_stack#Unwinding) 부분을 참고하기 바랍니다.
 
 [^try-expression]: '`try` 표현식' 에 대한 더 자세한 정보는 [Expressions (표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}) 장의 [Try Operator ('try' 연산자)]({% link docs/swift-books/swift-programming-language/expressions.md %}#try-operator-try-연산자) 부분을 보도록 합니다.
 
