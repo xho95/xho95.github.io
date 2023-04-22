@@ -48,9 +48,9 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 > 스위프트의 에러 처리는, `try` 와, `catch`, 및 `throw` 키워드를 쓴다는 점에서, 다른 언어의 예외[^exception] 처리와 닮았습니다. **오브젝티브-C** 를 포함한-수많은 언어의 예외 처리와 달리, 스위프트의 에러 처리는, 계산 비용이 비쌀 수도 있는 과정인, 호출 스택 풀기[^unwinding-call-stack] 와 엮여 있지 않습니다. 그로 인해, `throw` 문의 수행 성능은 `return` 문과 비교할 만합니다.
 
-#### Propagating Errors Using Throwing Functions (던지는 함수로 에러 전파하기)
+#### Propagating Errors Using Throwing Functions (던지는 함수를 써서 에러 전파하기)
 
-함수, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, 함수 선언의 매개 변수 뒤에 `throws` 키워드를 작성합니다. `throws` 로 표시한 함수를 _던지는 함수 (throwing function)_ 라고 합니다. 반환 타입을 지정한 함수면, 반환 화살표 (`->`) 앞에 `throws` 키워드를 씁니다.
+함수나, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, `throws` 키워드를 함수 선언에서 매개 변수 뒤에 쓰면 됩니다. `throws` 가 표시된 함수를 _던지는 함수 (throwing function)_ 라고 합니다. 함수가 반환 타입을 지정했으면, `throws` 키워드를 반환 화살표 (`->`) 앞에 씁니다.
 
 ```swift
 func canThrowErrors() throws -> String
@@ -58,11 +58,11 @@ func canThrowErrors() throws -> String
 func cannotThrowErrors() -> String
 ```
 
-던지는 함수는 자기 안에서 던진 에러를 자신을 호출한 영역으로 전파합니다.
+던지는 함수는 그 안에서 던져진 에러를 자신이 호출된 시야 범위로 퍼뜨립니다.
 
-> 던지는 함수만 에러를 전파할 수 있습니다. 던지지 않는 (nonthrowing) 함수 안에서 던진 어떤 에러든 함수 안에서 반드시 처리해야 합니다.
+> 오직 던지는 함수만 에러를 퍼뜨릴 수 있습니다. 던지지 않는 함수 안에서 던져진 에러는 어떤 것이든 반드시 그 함수 안에서 처리돼야 합니다.
 
-아래 예제의, `VendingMachine` 클래스엔 `vend(itemNamed:)` 메소드가 있는데, 요청한 항목을 쓸 수 없거나, 재고가 없거나, 또는 비용이 현재 보관량을 초과할 경우, 적절한 `VendingMachineError` 를 던집니다:
+아래 예제에서, `VendingMachine` 클래스엔 `vend(itemNamed:)` 메소드가 있는데, 요청한 항목을 사용할 수 없거나, 재고가 없거나, 또는 비용이 현재 보관량을 초과하면, 적절한 `VendingMachineError` 를 던집니다:
 
 ```swift
 struct Item {
