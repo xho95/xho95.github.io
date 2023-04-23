@@ -526,7 +526,7 @@ _제어 전달문 (control transfer statements)_ 은, 코드 한 곳에서 다�
 * `return`
 * `thorw`
 
-`continue` 와, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% link docs/swift-books/swift-programming-language/functions.md %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions (던지는 함수를 써서 에러 전파하기)]({% link docs/swift-books/swift-programming-language/error-handling.md %}#propagating-errors-using-throwing-functions-던지는-함수를-써서-에러-전파하기) 에서 설명합니다.
+`continue` 와, `break`, 및 `fallthrough` 문은 아래에서 설명합니다. `return` 문은 [Functions (함수)]({% link docs/swift-books/swift-programming-language/functions.md %}) 에서 설명하고, `throw` 문은 [Propagating Errors Using Throwing Functions (던지는 함수로 에러 퍼뜨리기)]({% link docs/swift-books/swift-programming-language/error-handling.md %}#propagating-errors-using-throwing-functions-던지는-함수로-에러-퍼뜨리기) 에서 설명합니다.
 
 #### Continue (continue 문)
 

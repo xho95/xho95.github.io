@@ -10,7 +10,7 @@ categories: Swift Language Grammar Error Handling
 
 ## Error Handling (에러 처리)
 
-_에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하고 이로부터 복구하는 과정을 말합니다. 스위프트는 일-급 지원[^first-class-support] 기능을 제공하여 실행 시간에 복구 가능한 에러를 던지고, 잡아내며, 전파하고, 조작합니다.
+_에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하고 이로부터 복구하는 과정을 말합니다. 스위프트는 일-급 지원[^first-class-support] 기능을 제공하여 실행 시간에 복구 가능한 에러를 던지고, 잡아내서, 퍼뜨리고, 조작합니다.
 
 일부 연산은 실행을 완료하거나 쓸만한 출력을 만들어 내는 걸 항상 보장하지 않습니다. 옵셔널을 써서 값이 없는 건 나타내지만, 연산이 실패할 땐, 무엇이 실패를 일으켰는지 이해하고, 그에 따라 코드가 응답할 수 있도록 하는게, 유용할 때가 자주 있습니다.
 
@@ -22,7 +22,7 @@ _에러 처리 (error handling)_ 는 프로그램의 에러 조건에 응답하�
 
 스위프트에서, 에러는 `Error` 프로토콜을 따르는 타입의 값으로 나타냅니다. 이 빈 프로토콜[^empty-protocol] 은 에러 처리에 쓸 수 있는 타입임을 지시합니다.
 
-스위프트 열거체는 특히 서로 관련된 에러 조건 그룹을 모델링하기에 적당한데, 결합 값은 통신할 에러 고유의 성질에 대한 추가 정보도 허용합니다. 예를 들어, 게임 안에서 자동 판매기 동작의 에러 조건을 나타낸다면 이럴지도 모릅니다:
+스위프트 열거체는 특히 서로 관련된 에러 조건 그룹을 모델링하기에 적당한데, 결합 값은 통신할 에러 고유의 성질에 대한 추가 정보도 허용합니다. 예를 들어, 게임에서 자동 판매기 동작의 에러 조건을 나타낸다면 이럴지도 모릅니다:
 
 ```swift
 enum VendingMachineError: Error {
@@ -48,7 +48,7 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 > 스위프트의 에러 처리는, `try` 와, `catch`, 및 `throw` 키워드를 쓴다는 점에서, 다른 언어의 예외[^exception] 처리와 닮았습니다. **오브젝티브-C** 를 포함한-수많은 언어의 예외 처리와 달리, 스위프트의 에러 처리는, 계산 비용이 비쌀 수도 있는 과정인, 호출 스택 풀기[^unwinding-call-stack] 와 엮여 있지 않습니다. 그로 인해, `throw` 문의 수행 성능은 `return` 문과 비교할 만합니다.
 
-#### Propagating Errors Using Throwing Functions (던지는 함수를 써서 에러 전파하기)
+#### Propagating Errors Using Throwing Functions (던지는 함수로 에러 퍼뜨리기)
 
 함수나, 메소드, 또는 초기자가 에러를 던질 수 있다고 지시하려면, `throws` 키워드를 함수 선언에서 매개 변수 뒤에 쓰면 됩니다. `throws` 가 표시된 함수를 _던지는 함수 (throwing function)_ 라고 합니다. 함수가 반환 타입을 지정했으면, `throws` 키워드를 반환 화살표 (`->`) 앞에 씁니다.
 
@@ -102,9 +102,9 @@ class VendingMachine {
 }
 ```
 
-`vend(itemNamed:)` 메소드 구현은 `guard` 문을 사용하여 간식 구매를 위한 어떤 필수 조건이든 만족하지 않으면 메소드를 때 이르게 빠져나와서 적절한 에러를 던집니다. `throw` 문이 곧바로 프로그램 제어를 옮기기 때문에, 이 모든 필수 조건에 부합할 경우에만 항목을 팔 것입니다.
+`vend(itemNamed:)` 메소드 구현은 간식 구매가 어떤 필수 조건과도 들어맞지 않으면 `guard` 문으로 메소드를 일찍 빠져나오며 적절한 에러를 던집니다. `throw` 문은 곧바로 프로그램 제어를 옮기기 때문에, 이 모든 필수 조건에 들어맞을 때만 항목이 팔릴 겁니다.
 
-`vend(itemNamed:)` 메소드는 자신이 던진 어떤 에러든 전파하기 때문에, 이 메소드를 호출하는 어떤 코드든 반드시-`do-catch` 문이나, `try?`, 또는 `try!` 를 써서-에러를 처리하든지, 아니면 이를 계속 전파해야 합니다. 예를 들어, 아래 예제의 `buyFavoriteSnack(person:vendingMachine:)` 도 던지는 함수이며, `vend(itemNamed:)` 메소드가 던진 어떤 에러든 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출한 곳으로 위로 전파 (propagate up) 할 것입니다.
+`vend(itemNamed:)` 메소드는 자기가 던진 어떤 에러도 퍼뜨리기 때문에, 이 메소드를 호출한 코드는 반드시 에러를-`do-catch` 문이나, `try?`, 또는 `try!` 로-처리하든지, 아니면 이를 계속 퍼뜨려야 합니다. 예를 들어, 아래 예제에 있는 `buyFavoriteSnack(person:vendingMachine:)` 도 던지는 함수로, `vend(itemNamed:)` 메소드가 던진 어떤 에러든 `buyFavoriteSnack(person:vendingMachine:)` 함수를 호출한 지점으로 (위로) 퍼뜨릴 겁니다.
 
 ```swift
 let favoriteSnaks = [
@@ -118,9 +118,9 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
 }
 ```
 
-이 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 간식을 찾아 보고 `vend(itemNamed:)` 메소드 호출로 이를 사려고 합니다. `vend(itemNamed:)` 메소드가 에러를 던질 수 있기 때문에, `try` 키워드를 앞에 붙여서 호출합니다.
+이 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 주어진 사람이 가장 좋아하는 간식을 찾아 보고 이를 사기 위해 `vend(itemNamed:)` 메소드를 호출합니다. `vend(itemNamed:)` 메소드는 에러를 던질 수 있기 때문에, 그 앞에 `try` 키워드를 붙여서 호출합니다.
 
-던지는 초기자 (throwing initializers) 는 던지는 함수와 똑같은 식으로 에러를 전파할 수 있습니다. 예를 들어, 아래 나열한 `PurchasedSnack` 구조체의 초기자는 초기화 과정에서 던지는 함수를 호출하며, 마주친 어떤 에러든 자신을 호출한 쪽으로 전파함으로써 이를 처리합니다.
+던지는 초기자[^throwing-initializers] 는 던지는 함수와 똑같은 방식으로 에러를 퍼뜨릴 수 있습니다. 예를 들어, 아래 나열된 `PurchasedSnack` 구조체의 초기자는 초기화 과정에서 던지는 함수를 호출하고, 자신과 마주친 어떤 에러든 호출한 쪽으로 퍼뜨려서 이를 처리합니다.
 
 ```swift
 struct PurchasedSnack {
