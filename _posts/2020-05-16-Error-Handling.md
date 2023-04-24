@@ -134,9 +134,9 @@ struct PurchasedSnack {
 
 #### Handling Errors Using Do-Catch ('Do-Catch' 문으로 에러 처리하기)
 
-`do`-`catch` 문을 사용하면 코드 블럭을 실행함으로써 에러를 처리합니다. `do` 절 코드에서 에러를 던지면, `catch` 절과 맞춰봐서 에러를 처리할 수 있는 걸 하나 결정합니다.
+`do`-`catch` 문을 쓰면 코드 블럭을 실행하는 것으로 에러를 처리합니다. `do` 절 안의 코드에서 에러를 던지면, `catch` 절과 맞춰보고 에러를 처리할 수 있는 걸 결정합니다.
 
-다음은 `do`-`catch` 문의 일반 형식입니다:
+일반적인 형식의 `do`-`catch` 문은 이렇습니다:
 
 &nbsp;&nbsp;&nbsp;&nbsp;do {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try `expression-표현식`<br />
@@ -151,9 +151,9 @@ struct PurchasedSnack {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`statements-구문`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;}
 
-`catch` 뒤에 패턴 (pattern) 을 작성하여 그 절이 처리할 수 있는 에러를 지시합니다. `catch` 절에 패턴이 없으면, 그 절은 어떤 에러와도 일치하며 `error` 라는 이름의 지역 상수와 에러를 연결 (bind) 합니다. 패턴 맞춤 (pattern matching) 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% link docs/swift-books/swift-programming-language/patterns.md %}) 장을 보도록 합니다.
+`catch` 뒤에 패턴[^pattern] 을 써서 그 절이 처리할 수 있는 에러가 뭔지를 지시합니다. `catch` 절에 패턴이 없으면, 어떤 에러든 들어맞는 절이며 에러를 `error` 라는 이름의 지역 상수와 묶어서 연결 (bind) 합니다. 패턴 맞춤[^pattern-matching] 에 대한 더 많은 정보는, [Patterns (패턴; 유형)]({% link docs/swift-books/swift-programming-language/patterns.md %}) 장을 보기 바랍니다.
 
-예를 들어, 다음 코드는 `VendingMachineError` 열거체의 세 모든 case 들과 맞춰봅니다.
+예를 들어, 다음 코드는 `VendingMachineError` 열거체의 모든 세 case 를 맞춰봅니다.
 
 ```swift
 var vendingMachine = VendingMachine()
@@ -174,7 +174,7 @@ do {
 // "Insufficient funds. Please insert an additional 2 coins." 를 인쇄함
 ```
 
-위 예제의, `buyFavoriteSnack(person:vendingMachine:)` 함수는 에러를 던질 수 있기 때문에, `try` 표현식[^try-expression] 안에서 호출합니다. 에러를 던지면, 곧바로`catch` 절로 실행을 옮기며, 여기서 전파를 계속 허용할 지 결정합니다. 일치하는 패턴이 없으면, 최종 `catch` 절이 에러를 잡아내어 `error` 라는 지역 상수에 연결합니다. 던진 에러가 없으면, `do` 문의 나머지 구문을 실행합니다.
+위 예제에서, `buyFavoriteSnack(person:vendingMachine:)` 함수는 `try` 표현식[^try-expression] 안에서 호출되는데, 그게 에러를 던질 수 있기 때문입니다. 에러가 던져지면, 실행을 곧바로`catch` 절로 옮겨서, 계속 퍼뜨려도 될지를 결정합니다. 아무런 패턴도 맞지 않으면, 마지막 `catch` 절이 에러를 잡아내며 `error` 라는 지역 상수와 연결됩니다. 던져진 에러가 없으면, `do` 문의 나머지 구문이 실행됩니다.
 
 `do` 절 코드가 던질 가능성이 있는 모든 에러를 `catch` 절이 처리하지 않아도 됩니다. 아무 `catch` 절도 에러를 처리하지 않으면, 에러를 주위 영역으로 전파합니다. 하지만, 전파한 에러는 _어떠한 (some)_ 주위 영역이 됐든 반드시 처리해야 합니다. 던지지 않는 함수에선, 둘러싼 `do`-`catch` 문이 반드시 에러를 처리해야 합니다. 던지는 함수에선, 둘러싼 `do-catch` 문이든 호출한 쪽이든 반드시 에러를 처리해야 합니다. 처리되지 않은 에러를 최상단 영역으로 전파하면, 실행시간 에러를 가지게 됩니다.
 
