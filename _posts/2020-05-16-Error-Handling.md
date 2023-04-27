@@ -244,11 +244,11 @@ func fetchData() -> Data? {
 }
 ```
 
-#### Disabling Error Propagation (에러 전파 못하게 하기)
+#### Disabling Error Propagation (에러 퍼뜨리지 못하게 하기)
 
-던지는 함수나 메소드가 실행 시간에 에러를 던지지 않을 거라는, 사실을, 알 때가 있습니다. 그럴 때, 표현식 앞에 `try!` 를 작성하면 에러 전파를 못하게 하고 실행시간 단언문[^runtime-assertion] 으로 호출을 포장하여 아무 에러도 던지지 않을거라고 (단언) 할 수 있습니다. 에러를 실제로 던지면, 실행시간 에러를 가지게 됩니다.[^runtime-error]
+때때로 던지는 함수나 메소드가, 사실, 실행 시간에 에러를 던지지 않을 거라는 걸 알기도 합니다. 그럴 때, 표현식 앞에 `try!` 를 쓰면 에러를 퍼뜨리지 못하게 하며 호출을 실행시간 단언문[^runtime-assertion] 으로 감싸서 아무런 에러도 던지지 않을거라고 우길 수도 있습니다. 에러를 실제로 던지면, 실행시간 에러를 가질 겁니다.[^runtime-error]
 
-예를 들어, 다음 코드는 `loadImage(atPath:)` 함수로, 주어진 경로의 이미지를 불러오거나 아니면 이미지를 불러올 수 없을 경우 에러를 던집니다. 이 경우, 응용 프로그램과 같이 이미지를 출하하기 때문에, 실행 시간에 에러를 던지진 않을 것이므로, 에러를 전파 못하게 하는 게 적절합니다.
+예를 들어, 다음 코드는 `loadImage(atPath:)` 함수를 써서, 주어진 경로에 있는 이미지를 불러오거나 이미지를 불러올 수 없을 경우 에러를 던집니다. 이 경우, 이미지는 응용 프로그램과 같이 출하되기 때문에, 아무런 에러도 실행 시간에 던져지지 않을 것이므로, 에러를 퍼뜨리지 못하게 하는게 적절합니다.
 
 ```swift
 let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
@@ -297,8 +297,8 @@ func processFile(filename: String) throws {
 
 [^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 즉, `try?` 는 사실상 모든 에러를 똑같은 방식으로만 처리할 수 있습니다.
 
-[^runtime-error]: 실행 시간에 에러를 던지지 않을 거라는 사실을 안다는 건, 결국 그 때가 '실행 시간에 에러가 나면 안될 때' 이기 때문입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 걸, 개발 과정에서 미리 파악하여 조치하고자 사용하는 겁니다.
-
 [^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 보도록 합니다.
 
-[^runtime-assertion]: '실행시간 단언문 (runtime assertion)' 에 대한 더 자세한 정보는 [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장에 있는 [Assertions and Preconditions (단언문과 선행 조건문)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#assertions-and-preconditions-단언문과-선행-조건문) 부분을 보도록 합니다. 
+[^runtime-assertion]: '실행시간 단언문 (runtime assertion)' 에 대한 더 자세한 정보는 [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장에 있는 [Assertions and Preconditions (단언문과 선행 조건문)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#assertions-and-preconditions-단언문과-선행-조건문) 부분을 참고하기 바랍니다.
+
+[^runtime-error]: 실행 시간에 에러를 던지지 않을 거라는 사실을 안다는 건, 그 때 실행 시간에 에러가 나면 안되기 때문입니다. 즉, `try!` 는 실행 시간에 에러가 나면 안되는 걸, 개발 과정에 미리 알아서 대처하기 위해 사용하는 것입니다.
