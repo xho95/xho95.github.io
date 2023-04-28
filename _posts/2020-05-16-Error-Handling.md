@@ -254,11 +254,11 @@ func fetchData() -> Data? {
 let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 ```
 
-### Specifying Cleanup Actions (정리 행동 지정하기)
+### Specifying Cleanup Actions (치울 행동 지정하기)
 
-`defer` 문을 사용하면 현재 코드 블럭을 떠나기 직전에 일정 구문 집합을 실행할 수 있습니다. 이 구문은 현재 코드 블럭을 떠나는 _방법 (how)_ 엔 상관없이-에러를 던지기 때문에 떠나든 `return` 이나 `break` 같은 구문 때문에 떠나든-하는게 필요한 어떤 정리를 하게 해줍니다. 예를 들어, `defer` 문을 사용하면 파일 서술자 (file descriptors)[^file-discriptors] 를 닫고 수동으로 할당한 메모리를 풀어준다는 걸 보장할 수 있습니다.
+`defer` 문을 쓰면 현재 코드 블럭을 떠나기 바로 전에 일정 구문 집합을 실행합니다. 이 구문은 현재 코드 블럭을 _어떻게 (how)_ 떠나든-에러가 던져졌기 때문이든 `return` 이나 `break` 같은 구문 때문이든-상관없이 치우는게 필요한 일을 하게 해줍니다. 예를 들어, `defer` 문을 쓰면 파일 서술자[^file-discriptors] 는 닫히고 수동으로 할당한 메모리는 풀어준다는 걸 보장할 수 있습니다.
 
-`defer` 문은 현재 영역을 빠져나갈 때까지 실행을 미룹니다. 이 구문은 `defer` 키워드 및 나중에 실행할 구문으로 이루어집니다. 미룬 구문 (deferred statements) 은 구문 밖으로 제어를 옮기는, `break` 나 `return` 문, 또는 에러 던짐 같은, 어떤 코드를 담고 있지 않을 수 있습니다. 미룬 행동은 소스 코드에 작성한 반대 순서로 실행합니다. 즉, 첫 번째 `defer` 문 코드를 마지막에 실행하고, 두 번째 `defer` 문 코드를 마지막에서 두 번째로 실행하며, 기타 등등 그렇게 계속됩니다. 소스 코드의 마지막 `defer` 문을 첫 번째로 실행합니다.
+`defer` 문은 현재 시야 범위를 빠져나가기 전까지 실행을 미룹니다. 이 구문은 `defer` 키워드와 나중에 실행할 구문으로 이루어집니다. 미뤄진 구문은, `break` 나 `return` 문, 또는 에러 던지기 같이, 구문 밖으로 제어를 옮길 어떤 코드도 담지 않을 수 있습니다. 미뤄진 행동은 소스 코드에 쓰여진 역순으로 실행됩니다. 즉, 첫 번째 `defer` 문 안의 코드는 마지막에 실행하고, 두 번째 `defer` 문 안의 코드는 마지막에서 두 번째로 실행하는, 식으로 계속됩니다. 소스 코드의 마지막 `defer` 문을 첫 번째로 실행합니다.
 
 ```swift
 func processFile(filename: String) throws {
@@ -268,16 +268,16 @@ func processFile(filename: String) throws {
       close(file)
     }
     while let line = try file.readline() {
-      // 파일 작업함.
+      // 파일 작업을 함.
     }
-    // close(file) 은, 영역의 끝인, 여기서 호출함.
+    // close(file) 은, 시야 범위의 끝인, 여기서 호출됨.
   }
 }
 ```
 
-위 예제는 `defer` 문을 사용하여 `open(_:)` 함수에 해당하는 `close(_:)` 를 호출함을 보장합니다.
+위 예제는 `defer` 문을 써서 `open(_:)` 함수엔 그에 해당하는 `close(_:)` 호출이 있다는 걸 보장합니다.
 
-> 에러 처리 코드와 엮이지 않은 때에도 `defer` 문을 사용할 수 있습니다.
+> `defer` 문은 심지어 에러 처리 코드와 엮이지 않을 때도 쓸 수 있습니다.
 
 ### 다음 장
 
@@ -297,7 +297,7 @@ func processFile(filename: String) throws {
 
 [^error-to-optional]: 본문에서 설명한 것처럼, `try?` 는 모든 에러를 `nil` 로 변환한다는, 단 한 가지 방식으로만 처리합니다. 즉, `try?` 는 사실상 모든 에러를 똑같은 방식으로만 처리할 수 있습니다.
 
-[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목과 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 보도록 합니다.
+[^file-discriptors]: '파일 서술자 (file descriptors)' 는 `POSIX` 운영 체제에서 특정 파일에 접근하기 위한 추상적인 키를 의미합니다. 더 자세한 정보는, 위키피디아의 [File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 항목 및 [파일 서술자](https://ko.wikipedia.org/wiki/파일_서술자) 항목을 참고하기 바랍니다.
 
 [^runtime-assertion]: '실행시간 단언문 (runtime assertion)' 에 대한 더 자세한 정보는 [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장에 있는 [Assertions and Preconditions (단언문과 선행 조건문)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#assertions-and-preconditions-단언문과-선행-조건문) 부분을 참고하기 바랍니다.
 
