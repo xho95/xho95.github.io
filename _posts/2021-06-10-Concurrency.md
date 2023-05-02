@@ -41,16 +41,16 @@ _비동기 함수 (asynchronous function)_ 나 _비동기 메소드 (asynchronou
 
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
-    let result = // ... 어떠한 비동기 네트웍 코드 ...
+    let result = // ... 어떤 비동기 네트워킹 코드 ...
     return result
 }
 ```
 
-비동기면서 던지기까지 하는 함수나 메소드면, `throws` 앞에 `async` 를 작성합니다. 
+함수나 메소드가 비동기면서 던지기까지 하면, `async` 를 `throws` 앞에 씁니다.
 
-비동기 메소드를 호출할 땐, 그 메소드가 반환할 때까지 실행을 잠시 멈춥니다. 호출 앞에 `await` 를 작성하여 잠시 멈춤 가능 지점[^possible-suspension-point] 을 표시합니다. 이는, 에러면 프로그램 흐름이 바뀔 가능성이 있다고 표시하고자, 던지는 함수 호출 때 `try` 를 작성하는 것과 비슷합니다. 비동기 메소드 안에선, 또 다른 비동기 메소드를 호출할 때 _만 (only)_ 실행 흐름이 잠시 멈춥니다-잠시 멈춤 (suspension) 은 절대로 암시적 또는 선점 (preemptive)[^preemptive] 이 아닙니다-이는 `await` 로 잠시 멈춤 가능한 모든 지점을 표시한다는 의미입니다.
+비동기 메소드를 호출할 땐, 그 메소드가 반환할 때까지 실행이 잠시 멈춥니다. 호출 앞에 `await` 를 써서 잠시 멈춤 가능 지점[^possible-suspension-point] 을 표시합니다. 이는 던지는 함수를 호출할 때 `try` 를 써서, 에러가 있으면 프로그램 흐름이 바뀔 수 있다고 표시하는 것과, 비슷합니다. 비동기 메소드 안에서, 실행 흐름은 또 다른 비동기 메소드를 호출할 때 _만 (only)_ 잠시 멈춥니다-잠시 멈춤은 절대로 암시적이거나 선점 (preemptive)[^preemptive] 이지 않습니다-이는 모든 잠시 멈춤 가능 지점에 `await` 를 표시한다는 걸 의미합니다.
 
-예를 들어, 아래 코드는 전시관의 모든 사진 이름을 가져온 다음 첫 번째 사진을 보여줍니다:
+예를 들어, 아래 코드는 전시관에 있는 모든 사진의 이름을 가져온 다음 첫 번째 사진을 보여줍니다:
 
 ```swift
 let photoNames = await listPhotos(inGallery: "Summer Vacation")
@@ -60,16 +60,16 @@ let photo = await downloadPhoto(named: name)
 show(photo)
 ```
 
-`listPhotos(inGallery:)` 와 `downloadPhoto(named:)` 함수 둘 다 네트웍 요청이 필요하기 때문에, 완료까지 상대적으로 긴 시간이 걸릴 수 있습니다. 반환 화살표 앞의 `async` 작성으로 둘 다 비동기로 만들면 이 코드가 사진이 준비되길 기다리는 동안 앱 나머지 코드가 실행을 유지하게 해줍니다.
+`listPhotos(inGallery:)` 와 `downloadPhoto(named:)` 함수는 둘 다 네트웍 요청이 필요하기 때문에, 상대적으로 긴 시간이 걸려야 완료할 수 있습니다. 이 둘 다 반환 화살표 앞에 `async` 를 써서 비동기로 만들면 이 코드가 사진이 준비되길 기다리는 동안 앱의 나머지 코드가 계속 실행되도록 해줍니다.
 
-위 예제의 동시성을 이해하기 위한, 한 가지 가능한 실행 순서는 이렇습니다: 
+위 예제의 동시적 성질을 이해하는, 한 가지 가능한 실행 순서는 이렇습니다: 
 
-1. 첫째 줄부터 코드의 실행을 시작하여 첫 번째 `await` 까지 실행합니다. `listPhotos(inGallery:)` 함수를 호출하고 그 함수가 반환하길 기다리는 동안 실행을 잠시 멈춥니다.
-2. 이 코드 실행이 잠시 멈춘 동안, 동일한 프로그램의 일부 다른 동시성 코드를 실행합니다. 예를 들어, 오래-걸리는 백그라운드 임무가 새로운 사진 전시관 목록의 갱신을 계속할 수도 있을 겁니다. 그 코드도, `await` 로 표시한, 그 다음 잠시 멈춤 지점까지, 또는 완료할 때까지 실행합니다. 
-3. `listPhotos(inGallery:)` 의 반환 후, 그 지점에서 이 코드의 실행을 계속합니다. 이는 반환한 값을 `photoNames` 에 할당합니다.
-4. `sortedNames` 와 `name` 을 정의하는 줄은 표준적인, 동기 코드입니다. 이 줄엔 `await` 표시가 아무 것도 없기 때문에, 어떠한 잠시 멈춤 가능 지점도 없습니다.
-5. 그 다음 `await` 표시는 `downloadPhoto(named:)` 함수 호출에 있습니다. 이 코드는 그 함수가 반환할 때까지 실행을 다시 일시 정지하여, 다른 동시성 코드에 실행 기회를 줍니다.
-6. `downloadPhoto(named:)` 의 반환 후, 반환 값을 `photo` 에 할당한 다음 `show(_:)` 를 호출할 때 인자로 전달합니다.
+1. 코드가 첫째 줄에서 실행을 시작해서 첫 번째 `await` 까지 실행합니다. `listPhotos(inGallery:)` 함수를 호출하고 그 함수의 반환을 기다리는 동안 실행이 잠시 멈춥니다.
+2. 이 코드의 실행을 잠시 멈춘 동안, 같은 프로그램에 있는 다른 동시성 코드를 실행합니다. 예를 들어, 아마 오래-걸리는 백그라운드 임무가 새로운 사진 전시관의 목록을 계속 업데이트할 수도 있을 겁니다. 그 코드도, `await` 로 표시된, 그 다음 잠시 멈춤 지점까지나, 완료 때까지 실행합니다.
+3. `listPhotos(inGallery:)` 의 반환 후에, 이 코드는 그 지점에서 계속 실행합니다. 이는 반환된 값을 `photoNames` 에 할당합니다.
+4. `sortedNames` 와 `name` 을 정의하는 줄은 표준적인, 동기 코드입니다. 이 줄엔 아무런 `await` 표시도 없기 때문에, 어떤 잠시 멈춤 가능 지점도 없습니다.
+5. 그 다음 `await` 표시는 `downloadPhoto(named:)` 함수의 호출에 있습니다. 이 코드는 다시 그 함수의 반환 때까지 실행을 일시 정지하여, 다른 동시성 코드가 실행될 기회를 줍니다.
+6. `downloadPhoto(named:)` 의 반환 후에, 그 반환 값은 `photo` 에 할당된 다음 `show(_:)` 의 호출 때 인자로 전달됩니다.
 
 코드에서 `await` 로 표시한 잠시 멈춤 가능 지점은 비동기 함수나 메소드의 반환을 기다리는 동안 현재 코드 조각을 일시 정지할지도 모른다고 지시합니다. 이를 _쓰레드 넘겨주기 (yielding the thread)_ 라고도 하는데, 스위프트가, 그 이면에서, 현재 쓰레드에서의 코드 실행을 잠시 멈추고 그 대신 그 쓰레드에서 어떠한 다른 코드를 실행하기 때문입니다. `await` 가 있는 코드는 실행을 잠시 멈출 수 있어야 하기 때문에, 비동기 함수나 메소드는 프로그램의 정해진 곳에서만 호출할 수 있습니다:
 
@@ -297,9 +297,9 @@ struct TemperatureReading {
 
 [^threads]: 쓰레드는 스위프트 내부에서 사용되며, 우리는 쓰레드를 써서 제작된 '동시성 (concurrency)' 을 쓰는 것입니다.
 
-[^possible-suspension-point]: '잠시 멈춤 가능 지점 (the possible suspension point)' 는 스위프트가 '쓰레드 넘겨주기 (yielding the thread)' 를 하는 지점입니다. 이에 대한 내용은 본문 바로 밑에서 설명합니다.
+[^possible-suspension-point]: '잠시 멈춤 가능 지점 (the possible suspension point)' 는 스위프트가 '쓰레드 넘겨주기 (yielding the thread)' 를 하는 지점입니다. 더 자세한 내용은 본문에서 계속 설명합니다.
 
-[^preemptive]: '선점 (preemptive)' 이란 '운영체제가 우선 순위에 따라 프로세스의 CPU 자원을 강제로 빼앗을 수 있는 방식' 을 의미합니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 보도록 합니다.
+[^preemptive]: '선점 (preemptive)' 이란 운영체제가 우선 순위에 따라 프로세스의 **CPU** 자원을 강제로 빼앗을 수 있는 방식을 의미합니다. 스위프트의 동시성은 비선점 방식입니다. 선점에 대한 더 자세한 정보는, 위키피디아의 [Preemption (computing)](https://en.wikipedia.org/wiki/Preemption_(computing)) 항목과 [선점 스케줄링](https://ko.wikipedia.org/wiki/선점_스케줄링) 항목을 참고하기 바랍니다.
 
 [^sequence]: '시퀀스 (sequence)' 는 수학에서의 '수열' 을 의미하며, 자료 구조에서는 '같은 타입의 값들이 순차적으로 붙어서 나열된 구조' 를 의미합니다. 시퀀스에 대한 더 자세한 정보는, 위키피디아의 [Sequential access](https://en.wikipedia.org/wiki/Sequential_access) 항목과 [순차 접근](https://ko.wikipedia.org/wiki/순차_접근) 항목을 보도록 합니다. 
 
