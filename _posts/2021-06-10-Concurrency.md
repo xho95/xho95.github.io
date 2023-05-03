@@ -71,13 +71,36 @@ show(photo)
 5. 그 다음 `await` 표시는 `downloadPhoto(named:)` 함수의 호출에 있습니다. 이 코드는 다시 그 함수의 반환 때까지 실행을 일시 정지하여, 다른 동시성 코드가 실행될 기회를 줍니다.
 6. `downloadPhoto(named:)` 의 반환 후에, 그 반환 값은 `photo` 에 할당된 다음 `show(_:)` 의 호출 때 인자로 전달됩니다.
 
-코드에서 `await` 로 표시한 잠시 멈춤 가능 지점은 비동기 함수나 메소드의 반환을 기다리는 동안 현재 코드 조각을 일시 정지할지도 모른다고 지시합니다. 이를 _쓰레드 넘겨주기 (yielding the thread)_ 라고도 하는데, 스위프트가, 그 이면에서, 현재 쓰레드에서의 코드 실행을 잠시 멈추고 그 대신 그 쓰레드에서 어떠한 다른 코드를 실행하기 때문입니다. `await` 가 있는 코드는 실행을 잠시 멈출 수 있어야 하기 때문에, 비동기 함수나 메소드는 프로그램의 정해진 곳에서만 호출할 수 있습니다:
+코드에서 `await` 로 표시된 잠시 멈춤 가능 지점은 비동기 함수나 메소드가 반환하길 기다리는 동안 현재 코드 조각이 일시 정지할지도 모른다고 지시합니다. 이를 _쓰레드 넘겨주기 (yielding the thread)_ 라고도 하는데, 그 속을 보면, 스위프트가 현재 쓰레드에 대한 코드 실행을 잠시 멈추고 그 쓰레드에서 다른 코드를 대신 실행하기 때문입니다. `await` 가 있는 코드는 실행을 잠시 멈출 수 있어야 하기 때문에, 프로그램의 특정한 곳에서만 비동기 함수나 메소드를 호출할 수 있습니다:
 
 * 비동기 함수나, 메소드, 또는 속성의 본문 안에 있는 코드
-* `@main` 으로 표시한 구조체나, 클래스, 또는 열거체의 정적 `main() 메소드 안에 있는 코드
-* 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보는 것처럼, 떼어낸 하위 임무 (detached child task) 안에 있는 코드
+* `@main` 으로 표시된 구조체나, 클래스, 또는 열거체의 정적 `main()` 메소드 안에 있는 코드
+* 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보듯, 떼어낸 하위 임무 (detached child task) 안에 있는 코드
 
-> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 단순한 코드를 작성하여 동시성 작업 방식을 익히고자 할 때 유용합니다. 이 메소드는, 반환 전에 적어도 주어진 나노 초 만큼을 기다리는 외엔, 아무 것도 하지 않습니다. 다음은 `sleep()` 을 사용하여 네트웍 연산의 기다림을 모의 실험하는 `listPhotos(inGallery:)` 함수 버전입니다.
+잠시 멈춤 가능 지점 사이에 있는 코드는 순차적으로 실행하며, 다른 동시성 코드로부터 방해받을 가능성이 없습니다. 예를 들어, 아래 코드는 사진을 한 전시관에서 다른 곳으로 이동합니다.
+
+```swift
+let firstPhoto = await listPhotos(inGallery: "Summer Vacation")[0]
+add(firstPhoto, toGallery: "Road Trip")
+// 이 순간, firstPhoto 는 일시적으로 두 전시관 모두에 있습니다.
+remove(firstPhoto, fromGallery: "Summer Vacation")
+```
+
+`add(_:toGallery:)` 와 `remove(_:fromGallery:)` 호출 사이에 다른 코드를 실행할 방법은 없습니다. 그 시간 중에, 첫 번째 사진은 두 전시관 모두에서 나타나며, 일시적으로 앱의 불변성을 깨뜨립니다. 미래에 이 코드 덩어리에 `await` 가 추가되어선 안된다는 걸 더 명확하게 하기 위해, 코드를 동기 함수로 리팩토링할 수도 있습니다:
+
+```swift
+func move(_ photoName: String, from source: String, to destination: String) {
+    add(photoName, toGallery: destination)
+    remove(photoName, fromGallery: source)
+}
+// ...
+let firstPhoto = await listPhotos(inGallery: "Summer Vacation")[0]
+move(firstPhoto, from: "Summer Vacation", to: "Road Trip")
+```
+
+위 예제에선, `move(_:from:to:)` 가 동기 함수이기 때문에, 절대로 잠시 멈춤 가능 지점이 담길 수 없다는 걸 보증합니다. 미래에, 이 함수에 동시성 코드를 추가하려고, 잠시 멈춤 가능 지점을 도입하면, 버그가 나타나는 대신 컴파일-시간 에러를 가지게 됩니다.
+
+> [Task.sleep(_:)](https://developer.apple.com/documentation/swift/task/3814836-sleep) 메소드는 단순한 코드 작성으로 동시성이 어떻게 작업하는지 배우고자 할 때 유용합니다. 이 메소드는 아무 것도 하지 않지만, 반환 전에 적어도 주어진 나노 초 만큼을 기다립니다. `sleep(until:tolerance:clock:)` 을 써서 네트웍 연산이 기다리는 걸 모의 실험하는 버전의 `listPhotos(inGallery:)` 함수는 이렇습니다:
 >
 ```swift
 func listPhotos(inGallery name: String) async -> [String] {
