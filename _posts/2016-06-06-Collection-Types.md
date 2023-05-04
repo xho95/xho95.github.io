@@ -162,7 +162,7 @@ shoppingList[0] = "Six eggs"
 
 첨자 구문을 사용할 땐, 지정한 색인이 유효할 필요가 있습니다. 예를 들어, 배열 끝에 항목을 덧붙이려고 `shoppingList[shoppingList.count] = "Salt"` 라고 쓰면 결과는 실행 시간 에러입니다.[^count-runtime-error]
 
-첨자 구문을 사용하면, 교체할 값 집합 길이가 교체될 범위와 다르더라도, 한번에 일정 범위의 값을 바꿀 수 있습니다. 다음 예제는 `"Chocolate Spread"` 와, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
+첨자 구문을 써서 일정 범위의 값을 한꺼번에 바꿀 수도 있는데, 심지어 교체할 값 집합의 길이가 교체될 범위와 달라도 됩니다. 다음 예제는 `"Chocolate Spread"` 와, `"Cheese"`, 및 `"Butter"` 를 `"Bananas"` 와 `"Apples"` 로 교체합니다:
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]

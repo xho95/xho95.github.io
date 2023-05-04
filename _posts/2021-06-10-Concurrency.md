@@ -112,7 +112,7 @@ func listPhotos(inGallery name: String) async -> [String] {
 
 ### Asynchronous Sequences (비동기 시퀀스)
 
-이전 부분의 `listPhotos(inGallery:)` 함수는, 모든 배열 원소를 준비한 후, 배열 전체를 한꺼번에 비동기로 반환합니다. 또 다른 접근법은 _비동기 시퀀스 (asynchronous sequence)_[^sequence] 를 사용하여 한번에 한 집합체 원소를 기다리는 겁니다. 비동기 시퀀스의 반복 동작을 보면 이렇습니다:
+이전 절에 있는 `listPhotos(inGallery:)` 함수는, 배열의 모든 원소가 준비된 후, 한꺼번에 비동기로 배열 전체를 반환합니다. 또 다른 접근법은 _비동기 시퀀스 (asynchronous sequence)_[^sequence] 를 써서 한번에 집합체 한 원소씩 기다리는 겁니다. 비동기 시퀀스의 반복을 보면 이렇습니다:
 
 ```swift
 import Foundation
@@ -123,9 +123,9 @@ for try await line in handle.bytes.lines {
 }
 ```
 
-평범한 `for`-`in` 반복문을 사용하는 대신, 위 예제에선 `for` 뒤에 `await` 를 작성합니다. 비동기 함수나 메소드 호출 때와 같이, `await` 를 작성하는 건 잠시 멈춤 가능 지점을 지시합니다. `for`-`await`-`in` 반복문은, 다음 원소의 사용을 기다릴 때, 각 회차의 맨 앞에서 실행을 잠시 멈출 가능성이 있습니다.
+평범한 `for`-`in` 반복문을 쓰는 대신, 위 예제에선 `for` 뒤에 `await` 를 씁니다. 비동기 함수나 메소드의 호출 때 같이, `await` 를 쓰면 잠시 멈춤 가능 지점을 지시합니다. `for`-`await`-`in` 반복문은, 그 다음 원소를 쓸 수 있을 때까지, 각 회차의 맨 앞에서 실행을 잠시 멈추고 기다릴 수가 있습니다.
 
-자신만의 타입을 `for`-`in` 반복문에서 사용하려면 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 준수하면 되는 것과 똑같이, 자신만의 타입을 `for`-`await`-`in` 반복문에서 사용하려면 [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜을 준수하면 됩니다. 
+자신만의 타입을 `for`-`in` 반복문에서 쓰려면 [Sequence](https://developer.apple.com/documentation/swift/sequence) 프로토콜을 따르게 하면 되는 것과 같이, 자신만의 타입을 `for`-`await`-`in` 반복문에서 쓰려면 [AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence) 프로토콜을 따르도록 하면 됩니다. 
 
 ### Calling Asynchronous Functions in Parallel (비동기 함수를 병렬로 호출하기)
 
