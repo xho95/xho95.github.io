@@ -235,50 +235,50 @@ signedOverflow = signedOverflow &- 1
 
 부호있는 정수 및 부호없는 정수 둘 다, 양의 방향 값 넘침은 최대 유효 정수 값에서 최소 값으로 넘어가며, 음의 방향 값 넘침은 최소 값에서 최대 값으로 넘어갑니다.
 
-### Precedence and Associativity (우선권과 결합성)
+### Precedence and Associativity (우선 순위와 결합 법칙)
 
-연산자 _우선권 (precedence)_ 은 일부 연산자에 다른 것보다 더 높은 우선 순위를 주며; 이 연산자를 먼저 적용합니다.
+연산자 _우선 순위 (precedence)_ 는 일부 연산자에 다른 것보다 더 높은 중요도를 줘서; 이 연산자를 먼저 적용하게 합니다.
 
-연산자 _결합성 (associativity)_[^associativity] 은 동일 우선권의 연산자를 서로-왼쪽부터 그룹짓거나, 오른쪽부터 그룹지어-묶는 방법을 정의합니다. 이는 “자신의 왼쪽 표현식과 결합한다”, 거나 “자신의 오른쪽 표현식과 결합한다” 는 의미로 생각하면 됩니다.
+연산자 _결합 법칙 (associativity)_[^associativity] 은 우선 순위가 똑같은 연산자를 어떻게 서로 그룹지을지-왼쪽부터 그룹지을지, 오른쪽부터 그룹지을지-정의합니다. 이는 “자신의 왼쪽 표현식과 결합한다” 거나, “자신의 오른쪽 표현식과 결합한다” 는 의미라고 생각하면 됩니다.
 
-각 연산자의 우선권과 결합성을 고려하는 건 복합 표현식의 계산 순서를 알아낼 때 중요합니다. 예를 들어, 연산자 우선권은 왜 다음 표현식이 `17` 인지 설명합니다.
+각 연산자의 우선 순위와 결합 법칙을 고려하는 건 복합 표현식의 계산 순서를 알아낼 때 중요합니다. 예를 들어, 연산자의 우선 순위는 다음 표현식이 왜 `17` 인지를 설명합니다.
 
 ```swift
 2 + 3 % 4 * 5
 // 이는 17 과 같음
 ```
 
-왼쪽에서 오른쪽으로 곧이곧대로 읽으면, 표현식 계산이 다음과 같다고 예상할 지 모릅니다:
+왼쪽에서 오른쪽으로 곧이곧대로 읽으면, 표현식이 다음 처럼 계산된다고 예상할지도 모릅니다:
 
 * `2` 더하기 `3` 은 `5`
 * `5` 를 `4` 로 나눈 나머지는 `1`
 * `1` 곱하기 `5` 는 `5`
 
-하지만, 실제 답은 `17` 이지, `5` 가 아닙니다. 더 높은-우선권인 연산자를 더 낮은-우선권인 것 앞에 평가합니다. 스위프트에선, C 처럼, 나머지 연산자 (`%`) 와 곱하기 연산자 (`*`) 의 우선 순위가 덧셈 연산자 (`+`) 보다 더 높습니다. 그 결과, 덧셈 전에 이 둘을 평가합니다.
+하지만, 실제 답은 `17` 이지, `5` 가 아닙니다. 우선 순위가-더 높은 연산자는 우선 순위가-더 낮은 것보다 앞서서 평가됩니다. 스위프트는, **C** 처럼, 나머지 연산자 (`%`) 와 곱하기 연산자 (`*`) 가 덧셈 연산자 (`+`) 보다 우선 순위가 더 높습니다. 그 결과, 이 둘 다 덧셈 전에 평가됩니다.
 
-하지만, 나머지와 곱셈의 우선권은 서로 _동일 (same)_ 합니다. 정확한 평가 순서를 알아 내려면, 그들의 결합성도 고려할 필요가 있습니다. 나머지와 곱셈 둘 다 자신의 왼쪽 표현식과 결합합니다. 이는 표현식 주위에, 왼쪽에서 시작하는, 암시적 괄호를 추가한다고 생각하면 됩니다:
+하지만, 나머지와 곱셈의 우선 순위는 서로 _똑같 (same)_ 습니다. 정확한 평가 순서를 알아 내려면, 그들의 결합 법칙도 고려할 필요가 있습니다. 나머지와 곱셈은 둘 다 자신의 왼쪽 표현식과 결합합니다. 이는 표현식 주위에, 왼쪽에서 시작하는, 암시적 괄호를 추가한다고 생각하면 됩니다:
 
 ```swift
 2 + ((3 % 4) * 5)
 ```
 
-`(3 % 4)` 는 `3` 이므로, 다음과 동치 (equivalent) 입니다:
+`(3 % 4)` 는 `3` 이므로, 다음과 같다고 볼 수 있습니다:
 
 ```swift
 2 + (3 * 5)
 ```
 
-`(3 * 5)` 는 `15` 이므로, 다음과 동치입니다:
+`(3 * 5)` 는 `15` 이므로, 다음과 같다고 볼 수 있습니다:
 
 ```swift
 2 + 15
 ```
 
-이 계산이 내는 최종 답은 `17` 입니다.
+이 계산이 내는 마지막 답은`17` 입니다.
 
-스위프트 표준 라이브러리가 제공한 연산자에 대한, 연산자 우선권 그룹과 결합성 설정의 완전한 목록을 포함한, 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보도록 합니다.
+스위프트 표준 라이브러리가 제공하는 연산자에 대한, 연산자 우선 순위 그룹 및 결합 법칙 설정의 완전한 목록을 포함한, 정보는, [Operator Declaration (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations] 항목을 보기 바랍니다.
 
-> 스위프트의 연산자 우선권과 결합성 규칙은 C 및 오브젝티브-C 의 것보다 단순하여 더 예측하기 쉽습니다. 하지만, 이는 C-기반 언어의 것과 정확히 똑같지는 않다는 의미이기도 합니다. 기존 코드를 스위프트로 이식할 땐 연산자가 여전히 의도대로 상호 작용하도록 보장하는데 주의하기 바랍니다.
+> 스위프트의 연산자 우선 순위 및 결합 법칙은 **C** 와 **오브젝티브-C** 보다 더 단순하며 예측하기 쉽습니다. 하지만, 이건 C-기반 언어와 정확하게 똑같진 않다는 의미이기도 합니다. 기존 코드를 스위프트로 이식할 땐 연산자가 여전히 의도한대로 상호 작용하도록 주의하기 바랍니다.
 
 ### Operator Methods (연산자 메소드)
 
@@ -423,13 +423,13 @@ let afterDoubling = +++toBeDoubled
 // afterDoubling 의 값도 (2.0, 8.0) 임
 ```
 
-#### Precedence for Custom Infix Operators (사용자 중위 연산자의 우선권)
+#### Precedence for Custom Infix Operators (자신만의 중위 연산자에 대한 우선 순위)
 
-사용자 중위 연산자 각각은 우선권 그룹에 속합니다. 우선권 그룹은 다른 중위 연산자와 상대적인 연산자의 우선권 뿐만 아니라, 연산자의 결합성도 지정합니다. [Precedence and Associativity (우선권과 결합성)](#precedence-and-associativity-우선권과-결합성) 을 보면 이러한 성질이 중위 연산자와 다른 중위 연산자의 상호 작용에 영향을 주는 방법을 설명합니다.
+자신만의 중위 연산자는 각각 우선 순위 그룹에 속합니다. 우선 순위 그룹은 다른 중위 연산자와의 상대적인 연산자 우선 순위뿐 아니라, 연산자의 결합 법칙도 지정합니다. [Precedence and Associativity (우선 순위와 결합 법칙)](#precedence-and-associativity-우선-순위와-결합-법칙) 을 보면 이러한 성질이 어떻게 한 중위 연산자와 다른 중위 연산자의 상호 작용에 영향을 주는지를 설명합니다.
 
-사용자 중위 연산자에 우선권 그룹을 명시하지 않으면 기본 우선권 그룹으로 삼항 조건 연산자 바로 위의 우선권을 줍니다.
+자신만의 중위 연산자에 우선 순위 그룹을 명시하지 않으면 기본 우선 순위 그룹이 주어지는데 이는 삼항 조건 연산자 우선 순위의 바로 위 우선 순위입니다.
 
-다음 예제는 `+-` 라는 새로운 사용자 중위 연산자를 정의하는데, 이는 `AdditionPrecedence` 라는 우선권 그룹에 속합니다:
+다음 예제는 `+-` 라는 새로운 자신만의 중위 연산자를 정의하는데, 이는 `AdditionPrecedence` 라는 우선 순위 그룹에 속합니다:
 
 ```swift
 infix operator +-: AdditionPrecedence
@@ -444,9 +444,9 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector 는 값이 (4.0, -2.0) 인 Vector2D 인스턴스임
 ```
 
-이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 동일한 우선권 그룹을 줬습니다. 스위프트 표준 라이브러리가 제공한, 연산자 우선권 그룹 및 결합성 설정에 대한 완전한 목록을 포함하는, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 보도록 합니다. 우선권 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선권 그룹 정의 구문을 보려면, [Operator Declaration (연산자 선언)]({% link docs/swift-books/swift-programming-language/declarations.md %}#operator-declaration-연산자-선언) 부분을 보도록 합니다.
+이 연산자는 두 벡터의 `x` 값은 서로 더하고, `y` 값은 첫 번째에서 두 번째 벡터 걸 뺍니다. 이는 본질적으로 "덧셈류 (additive)" 연산자이기 때문에, `+` 와 `-` 같은 덧셈류 중위 연산자와 같은 우선 순위 그룹이 주어집니다. 스위프트 표준 라이브러리가 제공하는, 연산자 우선 순위 그룹 및 결합 법칙 설정의 완전한 목록을 포함한, 연산자 정보는, [Operators Declarations (연산자 선언)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)[^operator-declarations-apple] 항목을 보기 바랍니다. 우선 순위 그룹에 대한 더 많은 정보와 자신만의 연산자 및 우선 순위 그룹을 정의하는 구문을 보려면, [Operator Declaration (연산자 선언)]({% link docs/swift-books/swift-programming-language/declarations.md %}#operator-declaration-연산자-선언) 부분을 보기 바립니다.
 
-> 접두사나 접미사 연산자를 정의할 땐 우선권을 지정하지 않습니다. 하지만, 동일한 피연산자에 접두사와 접미사 연산자를 둘 다 적용하면, 접미사 연산자가 먼저 적용됩니다.
+> 접두사나 접미사 연산자를 정의할 땐 우선 순위를 지정하지 않습니다. 하지만, 접두사와 접미사 연산자를 같은 피연산자에 둘 다 적용하면, 접미사 연산자가 먼저 적용됩니다.
 
 ### Result Builders (결과 제작자)
 
@@ -616,7 +616,7 @@ let manyStars = draw {
 
 [^wrap-around]: 컴퓨터 용어로 'wrap around' 는 `0, 1, 2 ... 9, 0, 1 ... 9, 0, ...` 처럼 최대 값을 넘어선 수들이 다시 처음부터 되풀이되는 걸 말합니다. 'wrap around' 에 대한 더 자세한 정보는, 위키피디아의 [Integer overflow](https://en.wikipedia.org/wiki/Integer_overflow) 항목을 보도록 합니다.
 
-[^associativity]: 스위프트의 '결합성 (associativity)' 은 수학 분야에 있는 '결합 법칙 (associative law)' 과 관련이 있습니다. 결합 법칙에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목과 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 보도록 합니다.
+[^associativity]: 스위프트의 '결합 법칙 (associativity)' 은 수학에서 말하는 결합 법칙과 같습니다. 결합 법칙에 대한 더 자세한 내용은, 위키피디아의 [Associative property](https://en.wikipedia.org/wiki/Associative_property) 항목 및 [결합법칙](https://ko.wikipedia.org/wiki/결합법칙) 항목을 참고하기 바랍니다.
 
 [^operator-declarations]: 원문 자체가 '애플 개발자 문서' 로 연결된 링크입니다.
 

@@ -382,7 +382,7 @@ f(7)      // 무효, 인자 이름표가 빠짐
 
 특수한 이름의 여러가지 메소드로 함수 호출 구문을 수월하게 할 수 있습니다. 타입에서 이 메소드 중 하나를 정의하면, 타입의 인스턴스를 함수 호출 구문에 사용할 수 있습니다. 함수 호출은 그 인스턴스의 특수 이름 메소드 중 하나를 호출하는 걸로 이해합니다.
 
-클래스나, 구조체, 또는 열거체 타입은, [dynamicCallable (동적으로 호출 가능)]({% link docs/swift-books/swift-programming-language/attributes.md %}#dynamiccallable-동적으로-호출-가능) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명 처럼, 함수-처럼-호출하는 메소드를 정의함으로써, 함수 호출 구문을 지원할 수 있습니다. 타입에서 함수-처럼-호출하는 메소드와 `dynamicCallable` 특성의 메소드를 둘 다 정의하면, 어느 메소드든 사용할 수 있는 상황에선 컴파일러가 함수-처럼-호출하는 메소드에 우선권을 줍니다.
+클래스나, 구조체, 또는 열거체 타입은, [dynamicCallable (동적으로 호출 가능)]({% link docs/swift-books/swift-programming-language/attributes.md %}#dynamiccallable-동적으로-호출-가능) 에서 설명한 것처럼, `dynamicallyCall(withArguments:)` 메소드나 `dynamicallyCall(withKeywordArguments:)` 메소드를 정의함으로써, 또는 아래 설명 처럼, 함수-처럼-호출하는 메소드를 정의함으로써, 함수 호출 구문을 지원할 수 있습니다. 타입에서 함수-처럼-호출하는 메소드와 `dynamicCallable` 특성의 메소드를 둘 다 정의하여, 어느 메소드든 사용할 수 있는 상황이면 함수-처럼-호출하는 메소드를 컴파일러가 더 선호합니다.
 
 함수-처럼-호출하는 메소드의 이름은 `callAsFunction()` 이거나, 아니면 `callAsFunction(` 으로 시작하고 이름표가 있거나 없는 인자를 추가한 이름입니다-예를 들어, `callAsFunction(_:_:)` 과 `callAsFunction(something:)` 모두 함수-처럼-호출하는 메소드 이름으로 유효합니다.
 
@@ -1119,11 +1119,11 @@ _연산자 선언 (operator declaration)_ 은 프로그램에 새로운 중위 (
 
 다음 형식은 새로운 중위 연산자를 선언합니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;infix operator `operator name-연산자 이름`: `precedence group-우선권 그룹`
+&nbsp;&nbsp;&nbsp;&nbsp;infix operator `operator name-연산자 이름`: `precedence group-우선 순위 그룹`
 
 _중위 연산자 (infix operator)_ 는 두 개의 피연산자 사이에 작성하는 이항 (binary) 연산자로, 익숙한 `1 + 2` 표현식 안의 덧셈 연산자 (`+`) 같은 겁니다.
 
-중위 연산자는 옵션으로 우선 순위 그룹을 지정할 수 있습니다. 연산자의 우선 순위 그룹을 생략하면, `DefaultPrecedence` 라는, 기본 우선권 그룹을 스위프트가 사용하며, 이는 `TernaryPrecedence` 바로 위의 우선 순위를 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 보기 바랍니다.
+중위 연산자는 옵션으로 우선 순위 그룹을 지정할 수 있습니다. 연산자의 우선 순위 그룹을 생략하면, `DefaultPrecedence` 라는, 기본 우선 순위 그룹을 스위프트가 사용하며, 이는 `TernaryPrecedence` 바로 위의 우선 순위를 지정합니다. 더 많은 정보는, [Precedence Group Declaration (우선 순위 그룹 선언)](#precedence-group-declaration-우선-순위-그룹-선언) 부분을 보기 바랍니다.
 
 다음 형식은 새로운 접두사 연산자를 선언합니다:
 
@@ -1151,7 +1151,7 @@ _우선 순위 그룹 선언 (precedence group declaration)_ 은 프로그램에
 
 우선 순위 그룹 선언의 형식은 다음과 같습니다:
 
-&nbsp;&nbsp;&nbsp;&nbsp;precedencegroup `precedence group name-우선권 그룹 이름` {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;precedencegroup `precedence group name-우선 순위 그룹 이름` {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;higherThan: `lower group names-더 낮은 그룹 이름들`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowerThan: `higher group names-더 높은 그룹 이름들`<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;associativity: `associativity-결합성`<br />
