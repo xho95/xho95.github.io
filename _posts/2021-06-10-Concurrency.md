@@ -75,7 +75,7 @@ show(photo)
 
 * 비동기 함수나, 메소드, 또는 속성의 본문 안에 있는 코드
 * `@main` 으로 표시된 구조체나, 클래스, 또는 열거체의 정적 `main()` 메소드 안에 있는 코드
-* 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보듯, 떼어낸 하위 임무 (detached child task) 안에 있는 코드
+* 아래의 [Unstructured Concurrency (구조화 안된 동시성)](#unstructured-concurrency-구조화-안된-동시성) 에서 보듯, 따로 떨어진 자식 임무 (detached child task) 안에 있는 코드
 
 잠시 멈춤 가능 지점 사이에 있는 코드는 순차적으로 실행하며, 다른 동시성 코드로부터 방해받을 가능성이 없습니다. 예를 들어, 아래 코드는 사진을 한 전시관에서 다른 곳으로 이동합니다.
 
@@ -197,15 +197,15 @@ let result = await handle.get()
 
 #### Task Cancellation (임무 취소)
 
-스위프트 동시성은 협동 취소 모델[^cooperative-cancellation-model] 을 사용합니다. 각각의 임무는 적절한 실행 시점에 자신의 취소 여부를 검사하고, 무슨 방식으로든 적절하게 취소에 응답합니다. 하던 작업에 따라, 이는 대체로 다음 중 하나를 의미합니다:
+스위프트 동시성은 협동 취소 모델[^cooperative-cancellation-model] 을 사용합니다. 각각의 임무는 자신이 취소됐는지 적절한 실행 시점에 검사하여, 적절한 무슨 방식으로든 취소에 응답합니다. 하고 있던 작업에 따라, 이는 대체로 다음 중 하나를 의미합니다:
 
 * `CancellationError` 같은 에러를 던짐
-* `nil` 또는 빈 집합체 (collection) 를 반환함
-* 부분적으로 완료한 작업을 반환함
+* `nil` 또는 빈 집합체[^collection] 를 반환함
+* 부분적으로 완료된 작업을 반환함
 
-취소를 검사하려면, 임무가 취소됐으면 `CancellationError` 를 던지는, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하든지, 아니면 [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 값을 검사하여 자신의 코드에서 취소를 처리합니다. 예를 들어, 전시관에서 사진을 내려받는 임무는 부분적으로 내려받은 건 삭제하고 네트웍 연결은 닫아야 할지도 모릅니다.
+취소를 검사하려면, [Task.checkCancellation()](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation) 을 호출하여, 임무가 취소됐으면 `CancellationError` 를 던지거나, [Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled) 값을 검사하여 자신만의 코드로 취소를 처리합니다. 예를 들어, 전시관에서 사진을 내려받는 임무라면 부분적으로 내려받은 걸 삭제하고 네트웍 연결은 닫아야 할지도 모릅니다.
 
-취소를 수동으로 전파하려면, [Task.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
+취소를 수동으로 퍼뜨리려면, [Task.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) 을 호출합니다.
 
 ### Actors (행위자)
 
