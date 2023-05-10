@@ -209,7 +209,9 @@ let result = await handle.get()
 
 ### Actors (행위자)
 
-클래스 같이, 행위자도 참조 타입이라서, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 에 있는 값 타입과 참조 타입의 비교는 클래스뿐 아니라 행위자에도 적용됩니다. (하지만) 클래스와 달리, 행위자는 자신의 변경 가능 상태에 한번에 한 임무의 접근만 허용하는데, 이는 여러 개의 임무 코드가 동일한 행위자 인스턴스와 안전하게 상호 작용하도록 합니다. 예를 들어, 온도를 기록하는 행위자는 이렇습니다:
+임무를 써서 프로그램을 격리된, 동시적 조각들로 다 끊어 놓을 수 있습니다. 임무는 서로 격리되어 있어서, 동시에 실행해도 안전하지만, 일부 정보를 임무 사이에 공유하는게 필요할 때도 있습니다. 행위자는 동시성 코드 사이에 정보를 공유하는 걸 안전하게 해줍니다.
+
+클래스 같이, 행위자도 참조 타입이라서, [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 에서 값 타입과 참조 타입을 비교한게 클래스뿐 아니라 행위자에도 적용됩니다. (하지만) 클래스와 달리, 행위자는 자신의 변경 가능 상태에 한번에 한 임무만 접근을 허용하는데, 이는 여러 개의 임무 코드가 똑같은 행위자 인스턴스와 상호 작용하는 걸 안전하게 합니다. 예를 들어, 온도를 기록하는 행위자는 이렇습니다:
 
 ```swift
 actor TemperatureLogger {
@@ -225,9 +227,9 @@ actor TemperatureLogger {
 }
 ```
 
-행위자는 `actor` 키워드, 뒤의 한 쌍의 중괄호 안에 자신을 정의하여 도입합니다. `TemperatureLogger` 행위자에는 행위자 밖의 다른 코드에서 접근할 수 있는 속성이 있으며, `max` 속성은 제약하여 행위자 안의 코드만 최대 값을 갱신할 수 있습니다.
+행위자는 `actor` 키워드와, 그 뒤의 한 쌍의 중괄호 안에 있는 정의로 도입합니다.[^actor-definition] `TemperatureLogger` 행위자엔 행위자 밖의 코드에서 접근할 수 있는 속성들이 있고, `max` 속성은 행위자 안의 코드만 최대 값을 업데이트할 수 있게 제약합니다.
 
-행위자의 인스턴스는 구조체 및 클래스와 동일한 초기자 구문으로 생성합니다. 행위자의 속성이나 메소드에 접근할 땐, `await` 를 사용하여 잠재적인 짐시 멈춤 지점을 표시합니다-예를 들면 다음과 같습니다:
+행위자의 인스턴스를 생성하는데는 구조체 및 클래스와 똑같은 초기자 구문을 씁니다. 행위자의 속성이나 메소드에 접근할 땐, `await` 를 써서 잠시 멈출 수도 있는 지점을 표시합니다-예를 들면 다음과 같습니다:
 
 ```swift
 let logger = TemperatureLogger(label: "Outdoors", measurement: 25)
@@ -235,9 +237,9 @@ print(await logger.max)
 // "25" 를 인쇄함
 ```
 
-이 예제에선, `logger.max` 로의 접근이 잠시 멈춤 가능 지점입니다. 행위자는 자신의 변경 가능 상태에 한번에 한 임무의 접근만 허용하기 때문에, 다른 임무 코드가 기록자 (logger) 와 이미 상호 작용 중이면, 속성 접근을 기다리는 동안 이 코드를 잠시 멈춥니다.
+이 예제에선, `logger.max` 로 접근하는게 잠시 멈춤 가능 지점입니다. 행위자는 한번에 한 임무만 변경 가능 상태에 접근하는 걸 허용하기 때문에, 다른 임무의 코드가 이미 기록자와 상호 작용 중이면, 이 코드를 잠시 멈추고 속성에 접근하는 걸 기다립니다.
 
-이와 대조적으로, 행위자에 속한 코드가 행위자의 속성에 접근할 땐 `await` 를 작성하지 않습니다. 예를 들어, 다음은 `TemperatureLogger` 를 새로운 온도로 갱신하는 메소드입니다:
+이와 대조하여, 행위자 안의 코드는가 행위자의 속성에 접근할 땐 `await` 를 쓰지 않습니다. 예를 들어, `TemperatureLogger` 를 새 온도로 업데이트하는 메소드는 이렇습니다:
 
 ```swift
 extension TemperatureLogger {
@@ -331,3 +333,5 @@ struct TemperatureReading {
 [^on-the-actor]: `update(with:)` 메소드는 행위자의 멤버이므로, 특정한 행위자에 대해서 실행하고 있는 중입니다.
 
 [^implied]: 본문 예제의 `TemperatureReading` 구조체는 따로 명시하지 않아도 `Sendable` 프로토콜을 따른다는 의미입니다.
+
+[^actor-definition]: 사실 행위자는 클래스와 문법이 똑같아서, 상속만 없다면 `class` 키워드를 `actor` 로 바꾸기만 하면 만들 수 있습니다.
