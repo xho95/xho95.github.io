@@ -252,21 +252,21 @@ extension TemperatureLogger {
 }
 ```
 
-`update(with:)` 메소드는 이미 행위자에서 실행하고 있는 것이므로[^on-the-actor], `max` 같은 속성의 접근에 `await` 를 표시하진 않습니다. 이 메소드는 행위자가 자신의 변경 가능 상태와 상호 작용할 때 한 번에 하나의 임무만 허용하는 이유: 행위자의 일부 상태를 갱신하는 건 일시적으로 불변성 (invariants) 을 깨뜨린다는 걸 보여줍니다. `TemperatureLogger` 행위자는 온도 목록과 최대 온도를 계속 추적하며, 새 측정 값을 기록할 때 최대 온도를 갱신합니다. 새 측정 값은 덧붙였지만 `max` 는 갱신하기 전인, 갱신 중간엔, 온도 기록자 (TemperatureLogger) 가 일시적으로 일관성이 없는 (inconsistent) 상태입니다. 동시에 여러 임무가 동일한 인스턴스와 상호 작용하는 걸 막으면 일련의 사건 같은 다음 문제들을 막아줍니다:
+`update(with:)` 메소드는 이미 행위자에서 실행하고 있는 중이므로[^on-the-actor], `max` 같은 속성에 접근하는데 `await` 를 표시하진 않습니다. 이 메소드는 행위자가 왜 한번에 한 임무만 변경 가능 상태와 상호 작용하도록 하는지 그 이유도 보여주는데: 행위자의 상태를 업데이트하면 일시적으로 불변성[^invariants] 을 깨뜨립니다. `TemperatureLogger` 행위자는 온도 및 최대 온도를 추적하면서, 새로운 측정 값을 기록할 때 최대 온도를 업데이트합니다. 새 측정 값을 덧붙였으나 `max` 는 업데이트하기 전인, 업데이트 중간엔, 온도 기록 (TemperatureLogger) 이 일시적으로 일관성이 없는 상태입니다. 여러 개의 임무가 동시에 똑같은 인스턴스와 상호 작용하는 걸 막으면 다음 사건과 같은 일련의 문제들을 막아줍니다:
 
-1. 코드가 `update(with:)` 메소드를 호출합니다. 이는 첫 번째로 `measurement` 배열을 업데이트합니다.
-2. 코드가 `max` 를 갱신하기 전에, 다른 곳의 코드가 최대 값 및 온도 배열을 읽을 수 있습니다.
-3. `max` 를 바꿔서 업데이트를 종료합니다.
+1. 코드에서 `update(with:)` 메소드를 호출합니다. 이는 첫 번째로 `measurement` 배열을 업데이트합니다.
+2. 코드에서 `max` 를 업데이트하기 전, 다른 곳의 코드에서 최대 값과 온도 배열을 읽습니다.
+3. 코드에서 `max` 를 바꿔서 업데이트를 마칩니다.
 
-이 경우, 다른 곳의 실행 코드는 잘못된 정보를 읽을 수 있는데 `update(with:)` 호출 중간 일시적으로 자료가 무효인 동안에 행위자 접근이 끼어들었기 때문입니다. 자신의 상태에 대해서 한번에 하나의 연산만 허용하기 때문에, 그리고 `await` 로 잠시 멈춤 지점을 표시한 곳에서만 코드를 방해할 수 있기 때문에, 스위프트 행위자를 사용할 땐 이 문제를 막을 수 있습니다. `update(with:)` 엔 어떤 잠시 멈춤 지점도 없기 때문에, 업데이트 중간에 자료에 접근할 수 있는 코드는 없습니다.
+이 경우, 다른 곳의 실행 코드는 잘못된 정보를 읽게 되는데 행위자로의 접근이 끼어든게 데이터가 일시적으로 무효인 `update(with:)` 호출 중간이기 때문입니다. 이 문제는 스위프트 행위자를 쓸 땐 막을 수 있으며 이는 자신의 상태에 대해 한번에 하나의 연산만 허용하기 때문이고, 코드를 방해할 수 있는 곳도 `await` 로 표시한 잠시 멈춤 지점뿐이기 때문입니다. `update(with:)` 엔 어떤 잠시 멈춤 지점도 담겨 있지 않기 때문에, 아무 코드도 업데이트 중간에 데이터에 접근할 수 없습니다.
 
-클래스 인스턴스에서 하는 것처럼, 이러한 속성을 행위자 밖에서 접근하려고 하면, 컴파일-시간 에러를 가지게 되며; 예를 들면 다음과 같습니다:
+이러한 속성을 행위자 밖에서 접근하려고, 클래스의 인스턴스에서 하듯이 하면, 컴파일-시간 에러를 갖게 됩니다. 예를 들면 다음과 같습니다:
 
 ```swift
 print(logger.max)  // 에러
 ```
 
-`await` 작성 없이 `logger.max` 에 접근하면 실패하는데 행위자의 속성은 그 행위자의 격리된 지역 상태 (isolated local state) 의 일부이기 때문입니다. 스위프트는 행위자 안의 코드만 행위자의 지역 상태에 접근할 수 있음을 보증합니다. 이 보증을 _행위자 격리 (actor isolation)_ 라고 합니다.
+`logger.max` 에 `await` 를 쓰지않고 접근하면 실패인데 이는 행위자의 속성이 그 행위자의 격리된 지역 상태 (isolated local state) 의 일부이기 때문입니다. 스위프트는 행위자 안의 코드만 행위자의 지역 상태에 접근할 수 있다는 걸 보증합니다. 이 보증을 _행위자 격리 (actor isolation)_ 라고 합니다.
 
 ### Sendable Types (보내기 가능 타입)
 
@@ -330,8 +330,10 @@ struct TemperatureReading {
 
 [^cooperative-cancellation-model]: '협동 취소 모델 (cooperative cancellation model)' 은 부모 임무를 취소할 경우 자신의 모든 자식 임무에게 자신이 취소됐음을 알리는 방식을 의미합니다. 이에 대한 더 자세한 내용은, [Alexito's World](https://alejandromp.com) 님의 [The importance of cooperative cancellation](https://alejandromp.com/blog/the-importance-of-cooperative-cancellation/) 항목을 보도록 합니다. 
 
-[^on-the-actor]: `update(with:)` 메소드는 행위자의 멤버이므로, 특정한 행위자에 대해서 실행하고 있는 중입니다.
+[^on-the-actor]: `update(with:)` 메소드는 행위자의 멤버이므로, 그 행위자에 대해서 실행되고 있는 중입니다.
 
 [^implied]: 본문 예제의 `TemperatureReading` 구조체는 따로 명시하지 않아도 `Sendable` 프로토콜을 따른다는 의미입니다.
 
 [^actor-definition]: 사실 행위자는 클래스와 문법이 똑같아서, 상속만 없다면 `class` 키워드를 `actor` 로 바꾸기만 하면 만들 수 있습니다.
+
+[^invariants]: 프로그래밍 분야에서 '불변성 (invariants)' 은 표현식 값이 프로그램 실행 중에 바뀌지 않는 것을 의미합니다. 상수와는 개념이 다릅니다. 불변성에 대한 더 자세한 정보는 위키피디아의 [Invariants in computer science](https://en.wikipedia.org/wiki/Invariant_(mathematics)#Invariants_in_computer_science) 항목을 참고하기 바랍니다.
