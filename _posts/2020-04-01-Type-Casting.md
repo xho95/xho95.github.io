@@ -31,7 +31,7 @@ class MediaItem {
 }
 ```
 
-그 다음 조각은 `MediaItem` 의 두 하위 클래스를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화 및 필름에 대한 추가 정보를 은닉합니다. 이는 `MediaItem` 이라는 기초 클래스 위에 `director` 속성과, 해당 초기자를, 추가합니다. 두 번째 하위 클래스인, `Song` 은, 기초 클래스 위에 `artist` 속성과 초기자를 추가합니다:
+그 다음 조각은 `MediaItem` 의 두 하위 클래스를 정의합니다. 첫 번째 하위 클래스인, `Movie` 는, 영화나 필름에 대한 추가 정보를 감추고 있습니다. 이는 기초 클래스인 `MediaItem` 위에 `director` 속성과, 그에 해당하는 초기자를 추가합니다. 두 번째 하위 클래스인, `Song` 은, 기초 클래스 위에 `artist` 속성 및 초기자를 추가합니다:
 
 ```swift
 class Movie: MediaItem {
@@ -51,7 +51,7 @@ class Song: MediaItem {
 }
 ```
 
-마지막 조각은, `Movie` 인스턴스 두 개와 `Song` 인스턴스 세 개를 담은, `library` 라는 상수 배열을 생성합니다. `library` 배열의 타입은 이를 초기화하는 배열 글자 값의 내용물로 추론합니다. 스위프트 타입 검사기는 `Movie` 와 `Song` 의 공통 상위 클래스가 `MediaItem` 임을 이끌어 낼 수 있으므로, `library` 배열은 `[MediaItem]` 타입이라고 추론합니다:
+마지막 조각은 `library` 라는 상수 배열을 생성하는데, 여기엔 두 개의 `Movie` 인스턴스와 세 개의 `Song` 인스턴스를 담습니다. `library` 배열의 타입은 이를 초기화하고 있는 배열 글자 값의 내용물로 추론됩니다. 스위프트의 타입 검사기는 `Movie` 와 `Song` 의 공통 상위 클래스가 `MediaItem` 이라는 걸 이끌어 낼 수 있어서, `[MediaItem]` 이 `library` 배열의 타입이라고 추론합니다:
 
 ```swift
 let library = [
@@ -64,7 +64,7 @@ let library = [
 // "library" 의 타입은 [MediaItem] 이라고 추론함
 ```
 
-`library` 에 저장한 항목의 이면은 여전히 `Movie` 와 `Song` 인스턴스입니다. 하지만, 이 배열 내용물을 반복하면, 되돌려 받는 항목은 `MediaItem` 타입이지, `Movie` 나 `Song` 이 아닙니다. 본래 자신의 타입으로 작업하기 위해선, 아래 설명한 것처럼, 타입을 _검사 (check)_ 하거나, 다른 타입으로 _내림 변환 (downcast)_[^downcast] 할 필요가 있습니다.
+`library` 안에 저장된 항목은 속을 보면 여전히 `Movie` 와 `Song` 인스턴스입니다. 하지만, 이 배열의 내용물을 반복하면, 돌려 받는 항목은 `MediaItem` 타입이지, `Movie` 나 `Song` 이 아닙니다. 자신의 본래 타입으로 작업하기 위해선, 타입을 _검사 (check)_ 하거나, 다른 타입으로 _내림 변환 (downcast)_[^downcast] 할 필요가 있는데, 이는 아래에서 설명합니다.
 
 ### Checking Type (타입 검사)
 
@@ -218,6 +218,6 @@ things.append(optionalNumber as Any) // 경고 없음
 
 [^base-class]: 스위프트의 '기초 클래스 (base class)' 는 '상위 클래스 (superclass) 가 없는 클래스' 를 말합니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장에 있는 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분 및 해당 주석을 보도록 합니다.
 
-[^downcast]: '내림 변환 (downcast)' 은 클래스 계층 구조에서 하위 클래스의 하나로 변환하는 것을 말합니다. 내림 변환에 대한 자세한 내용은, 바로 뒤의 [Downcasting (내림 변환)](#downcasting-내림-변환) 부분에서 설명하고 있습니다.
+[^downcast]: '내림 변환 (downcast)' 은 클래스 계층 구조에서 하위 클래스로 변환하는 것을 말합니다. 내림 변환에 대해서는, 바로 뒤의 [Downcasting (내림 변환)](#downcasting-내림-변환) 절에서 설명합니다.
 
 [^ghostbusters]: '고스트 버스터즈 (Ghostbusters)' 는 1984년에 최초로 개봉한 헐리우드 영화입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Ghostbusters](https://en.wikipedia.org/wiki/Ghostbusters) 항목과 [고스트버스터즈](https://ko.wikipedia.org/wiki/고스트버스터즈) 항목을 보도록 합니다.
