@@ -156,9 +156,9 @@ things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
 things.append({ (name: String) -> String in "Hello, \(name)" })
 ```
 
-`things` 배열은 `Int` 값 두 개, `Double` 값 두 개, `String` 값 한 개, `(Double, Double)` 타입의 튜플, "고스트 버스터즈 (Ghostbusters)"[^ghostbusters] 영화, 및 `String` 값을 취해서 또 다른 `String` 값을 반환하는 클로저 표현식을 담고 있습니다.
+`things` 배열에 두 개의 `Int` 값과, 두 개의 `Double` 값, 한 개의 `String` 값, `(Double, Double)` 타입의 튜플, "고스트 버스터즈 (Ghostbusters)"[^ghostbusters] 영화, 및 `String` 값을 입력 받아 또 다른 `String` 값을 반환하는 클로저 표현식을 담습니다.
 
-`Any` 나 `AnyObject` 타입인지만 아는 상수나 변수의 특정 타입을 발견하기 위해, `switch` 문 case 절에서 `is` 나 `as` 패턴을 사용할 수 있습니다. 아래 예제는 `things` 배열의 항목을 반복하여 `switch` 문으로 각 항목의 타입을 조회합니다. `switch` 문의 여러 case 들은 일치 값을 특정 타입의 상수와 연결하여 값을 인쇄할 수 있게 합니다:
+`Any` 나 `AnyObject` 타입이라는 것만 아는 특정 상수나 변수의 타입을 발견하려면, `switch` 문의 case 에서 `is` 나 `as` 패턴을 쓸 수 있습니다. 아래 예제는 `things` 배열 안의 항목을 반복하면서 각 항목의 타입을 `switch` 문으로 조회합니다. `switch` 문의 여러 case 들은 자신과 맞는 값을 지정된 타입의 상수로 연결하여 그 값을 인쇄할 수 있게 합니다:
 
 ```swift
 for thing in things {
@@ -196,7 +196,7 @@ for thing in things {
 // Hello, Michael
 ```
 
-> `Any` 타입은, 옵셔널 타입을 포함한, 어떤 타입의 값이든 나타냅니다. `Any` 타입의 값을 예상한 곳에 옵셔널 값을 사용하면 스위프크가 경고를 줍니다. 정말로 옵셔널 값을 `Any` 값으로 사용할 필요가 있으면, 아래 보는 것처럼, `as` 연산자를 사용하여 명시적으로 옵셔널을 `Any` 로 변환할 수 있습니다.
+> `Any` 타입은 어떠한 타입의 값이든 나타내며, 옵셔널 타입도 포함합니다. `Any` 타입의 값을 예상한 곳에서 옵셔널 값을 쓰면 스위프트가 경고를 줍니다. 옵셔널 값을 정말로 `Any` 값으로 사용하는게 필요하다면, 아래서 보듯, `as` 연산자를 써서 옵셔널을 `Any` 로 변환하는 걸 명시할 수 있습니다.
 
 ```swift
  let optionalNumber: Int? = 3
