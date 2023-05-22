@@ -71,11 +71,11 @@ struct BlackjackCard {
 * `first`, 타입은 `Int`
 * `second`, 타입은 `Int?`, 또는 “옵셔널 `Int`”
 
-`Rank` 는 계산 속성인, `values` 도 정의하여, `Values` 구조체의 인스턴스를 반환합니다. 이 계산 속성은 카드의 끗수를 고려하여 그 끗수에 기초한 적절한 값으로 새로운 `Values` 인스턴스를 초기화합니다. `jack` 과, `queen`, `king`, `ace` 면 특수한 값을 사용합니다. 숫자 카드면, 끗수의 `Int` 원시 값을 사용합니다.
+`Rank` 는 계산 속성인, `values` 도 정의하며, 이는 `Values` 구조체의 인스턴스를 반환합니다. 이 계산 속성은 카드의 끗수를 고려하여 그 끗수에 기초한 적절한 값으로 새로운 `Values` 인스턴스를 초기화합니다. `jack` 과, `queen`, `king`, `ace` 면 특수한 값을 사용합니다. 숫자 카드면, 끗수의 `Int` 원시 값을 사용합니다.
 
-`BlackjackCard` 구조체 그 자체도-`rank` 와 `suit` 라는-두 속성을 가집니다. `description` 이라는 계산 속성도 정의하는데, 이는 `rank` 와 `suit` 에 저장한 값을 사용하여 카드 이름과 값의 설명을 제작합니다. `description` 속성은 옵셔널 연결[^optional-binding] 을 사용하여 보여줄 두 번째 값이 있는 지 검사하고, 그럴 경우, 그 두 번째 값의 세부적인 추가 설명을 집어 넣습니다.
+`BlackjackCard` 구조체 그 자체에도 두 개의 속성인-`rank` 와 `suit` 가 있습니다. 이는 계산 속성인 `description` 도 정의하여, `rank` 와 `suit` 에 저장된 값을 써서 카드의 이름과 값에 대한 설명을 제작합니다. `description` 속성은 옵셔널 연결[^optional-binding] 을 써서 보여줄 두 번째 값이 있는지 검사하고, 그런 경우, 그 두 번째 값에 대한 세부적인 추가 설명을 집어 넣습니다.
 
-`BlackjackCard` 는 자신만의 초기자가 없는 구조체이기 때문에, [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명한 것처럼, 암시적인 멤버 초기자를 가집니다. 이 초기자를 사용하여 `theAceOfSpades` 라는 새로운 상수를 초기화할 수 있습니다:
+`BlackjackCard` 이란 구조체엔 자신만의 초기자가 없기 때문에, 암시적 멤버 초기자가 있으며, 이는 [Memberwise Initializers for Structure Types (구조체 타입을 위한 멤버 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#memberwise-initializers-for-structure-types-구조체-타입을-위한-멤버-초기자) 에서 설명했습니다. 이 초기자로 새로운 상수인 `theAceOfSpades` 를 초기화할 수 있습니다:
 
 ```swift
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)
@@ -83,7 +83,7 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 // "theAceOfSpades: suit is ♠, value is 1 or 11" 를 인쇄함
 ```
 
-`Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되어 있을지라도, 이 타입들은 상황으로 추론할 수 있어서, (`.ace` 와 `.spades` 라는) 자신의 case 이름 만으로도 이 인스턴스의 초기화가 열거체 case 를 참조할 수 있습니다.[^case-name-alone] 위 예제에선, 스페이드 에이스엔 `1` 또는 `11` 의 값이 있음을 `description` 속성이 올바로 보고합니다.
+`Rank` 와 `Suit` 가 `BlackjackCard` 안에 중첩되었을지라도, 상황으로부터 이 타입을 추론할 수 있어서, 이 인스턴스의 초기화 부분에선 열거체 case 의 이름 (인 `.ace` 와 `.spades`) 만으로도 열거체 case 를 참조할 수 있습니다.[^case-name-alone] 위 예제에서, `description` 속성은 스페이드 에이스에 `1` 또는 `11` 의 값이 있다고 올바로 보고합니다.
 
 ### Referring to Nested Types (중첩 타입 참조하기)
 
@@ -114,8 +114,8 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^ranks]: '끗수 (ranks)' 는 숫자 또는 알파펫으로 나타내는 카드의 등급을 말하며, 서양 카드엔 13 개의 끗수가 있습니다.
 
-[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장에 있는 [Optional Binding (옵셔널 연결)](#optional-binding-옵셔널-연결) 항목을 보도록 합니다.
+[^optional-binding]: '옵셔널 연결 (optional binding)' 에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Optional Binding (옵셔널 연결)](#optional-binding-옵셔널-연결) 절을 보기 바랍니다.
 
-[^case-name-alone]: `Suit.spades` 처럼 타입을 붙이지 않고, `.spades` 같이 사용할 수 있다는 의미입니다. 이는 (암시적인) 초기자의 매개 변수에서 타입을 명시하기 때문에, 초기자 호출 시에 매개 변수 타입을 추론할 수 있기 때문입니다.
+[^case-name-alone]: `Suit.spades` 처럼 하지 않고, `.spades` 만으로도 참조할 수 있다는 의미입니다. 초기자의 매개 변수에서 타입을 명시했기 때문에, 초기자 호출 시에 그 매개 변수의 타입을 추론할 수 있기 때문입니다.
 
 [^qualified]: 중첩 타입을 정의한 곳이 중첩 타입이 소속된 곳이므로 자연스럽게 '소속이 밝혀지게 (qualified)' 됩니다.
