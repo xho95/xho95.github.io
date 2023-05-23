@@ -87,14 +87,14 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 ### Referring to Nested Types (중첩 타입 참조하기)
 
-정의한 곳 밖에서 중첩 타입을 사용하려면, 자신을 중첩한 타입의 이름을 이름 앞에 접두사로 둡니다:
+자신이 정의된 곳 밖에서 중첩 타입을 쓰려면, 이름 앞에 자신이 중첩된 타입의 이름을 두면 됩니다:
 
 ```swift
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 // heartsSymbol 은 "♡" 임
 ```
 
-위 예제에서, 이는 `Suit` 와, `Rank`, 및 `Values` 의 이름을 의도적으로 짧게 유지할 수 있도록 하는데, 이는 자신이 정의된 곳의 상황에 의해 그 이름의 소속이 자연스럽게 밝혀지기 때문입니다.[^qualified]
+위 예제에서, 이는 `Suit` 와, `Rank`, 및 `Values` 의 이름을 짧게 놔둘 수 있는데, 이들을 정의한 곳으로부터 자연스럽게 이름의 소속이 밝혀지기 때문입니다.[^qualified]
 
 ### 다음 장
 
@@ -118,4 +118,4 @@ let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 
 [^case-name-alone]: `Suit.spades` 처럼 하지 않고, `.spades` 만으로도 참조할 수 있다는 의미입니다. 초기자의 매개 변수에서 타입을 명시했기 때문에, 초기자 호출 시에 그 매개 변수의 타입을 추론할 수 있기 때문입니다.
 
-[^qualified]: 중첩 타입을 정의한 곳이 중첩 타입이 소속된 곳이므로 자연스럽게 '소속이 밝혀지게 (qualified)' 됩니다.
+[^qualified]: 중첩 타입을 정의한 곳이 중첩 타입의 소속이므로, 자연스럽게 '소속이 밝혀지게 (qualified)' 됩니다.
