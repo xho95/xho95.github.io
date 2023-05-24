@@ -10,20 +10,20 @@ categories: Xcode Swift Grammar Extensions
 
 ## Extensions (익스텐션; 확장)
 
-_익스텐션 (extensions; 확장)_[^extension] 은 기존의 클래스나, 구조체, 열거체, 또는 프로토콜 타입에 새로운 기능[^functionality] 을 추가합니다. 이는 원본 소스 코드에 접근할 수 없는 타입을 확장하는 (_소급 적용 모델링 (retroactive modeling)_[^retroactive-modeling] 이라는) 능력도 포함합니다. 익스텐션은 오브젝티브-C 의 카테고리 (categories; 범주) 와 비슷합니다. (오브젝티브-C 의 카테고리와는 달리, 스위프트의 익스텐션엔 이름이 없습니다.)
+_익스텐션 (extensions; 확장)_[^extension] 은 이미 있던 클래스나, 구조체, 열거체, 또는 프로토콜 타입에 새로운 기능[^functionality] 을 추가합니다. 이는 원본 소스 코드에 접근할 수 없는 타입을 확장하는 (_소급 적용 모델링 (retroactive modeling)_[^retroactive-modeling] 이라는) 능력도 포함합니다. 익스텐션은 **오브젝티브-C** 의 카테고리 (categories)[^categories] 와 비슷합니다. (오브젝티브-C 의 카테고리와 달리, 스위프트의 익스텐션에는 이름이 없습니다.)
 
-스위프트의 익스텐션은 다음을 할 수 있습니다:
+스위프트의 익스텐션이 할 수 있는 건 다음과 같습니다:
 
-* 계산 인스턴스 속성 및 계산 타입 속성을 추가함
-* 인스턴스 메소드 및 타입 메소드를 정의함
+* 계산 인스턴스 속성과 계산 타입 속성을 추가함
+* 인스턴스 메소드와 타입 메소드를 정의함
 * 새로운 초기자를 제공함
-* 첨자 연산을 정의함
-* 새로운 중첩 타입을 정의하여 사용함
-* 기존 타입이 프로토콜을 준수하게 함
+* 첨자를 정의함
+* 새로운 중첩 타입을 정의하고 사용함
+* 이미 있던 타입이 프로토콜을 준수하도록 만듦
 
-스위프트에선, 심지어 프로토콜을 확장하여 그 필수 조건에 구현을 제공하거나 준수 타입이 활용할 추가 기능을 더할 수 있습니다. 더 자세한 내용은, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 보도록 합니다.
+스위프트에선, 심지어 프로토콜을 확장하여 필수 조건에 구현을 제공하거나 추가 기능을 더할 수 있어서 이를 준수 타입이 활용할 수 있습니다. 더 자세한 건, [Protocol Extensions (프로토콜 익스텐션; 규약 확장)]({% link docs/swift-books/swift-programming-language/protocols.md %}#protocol-extensions-프로토콜-익스텐션-규약-확장) 부분을 보기 바랍니다.
 
-> 익스텐션은 타입에 새로운 기능을 추가할 순 있지만, 기존 기능을 재정의할 순 없습니다.
+> 익스텐션은 타입에 새로운 기능을 추가할 수 있지만, 이미 있던 기능을 재정의할 순 없습니다.
 
 ### Extension Syntax (익스텐션 구문)
 
@@ -285,11 +285,13 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Extensions](https://docs.swift.org/swift-book/LanguageGuide/Extensions.html) 에서 볼 수 있습니다.
 
-[^extension]: 스위프트의 `extension` 은 확장이라는 의미를 가진 하나의 키워드입니다. 키워드 자체로 사용할 때는 '익스텐션' 이라는 발음 그대로 사용합니다.
+[^extension]: 스위프트의 `extension` 은 확장이라는 의미를 가진 하나의 키워드입니다. 키워드 자체로 사용할 때는 '익스텐션' 이라는 발음을 그대로 사용합니다.
 
-[^functionality]: '기능 (functionality) 을 추가한다' 는 건, 타입의 구조를 바꾸는 저장 속성은 추가하지 않는다는 의미를 이미 내포하고 있습니다. 사실 기능만 추가하기 때문에, 기존 타입의 확장 (extension) 이 가능한 것입니다.
+[^functionality]: '기능 (functionality) 을 추가한다' 는 건 타입의 본질을 바꾸지 않는 함수 같은 것들만 추가한다는 의미입니다. 즉, 타입의 구조를 바꾸는  저장 속성 같은 것들은 추가하지 않는다는 걸 이미 내포하고 있는 말입니다. 사실 기능만 추가하기 때문에, 기존 타입을 확장 (extension) 하는 것이 가능합니다.
 
-[^retroactive-modeling]: 스위프트는, '소급 적용 모델링 (retroactive modeling)' 을 통하여, 스위프트 표준 라이브러리의 타입과 패키지의 타입도 '확장' 할 수 있습니다. '소급 적용 모델링' 에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 보도록 합니다.
+[^retroactive-modeling]: '소급 적용 모델링 (retroactive modeling)' 은 적용하기 전에 있던 코드에도 영향을 미치는 모델링을 의미합니다. 스위프트의 소급 적용 모델링을 통하여 스위프트 표준 라이브러리에 있는 타입과 패키지에 있는 타입을 확장할 수 있습니다. 소급 적용 모델링에 대한 더 자세한 정보는, 위키피디아의 [Retroactive data structure](https://en.wikipedia.org/wiki/Retroactive_data_structure) 항목을 참고하기 바랍니다.
+
+[^categories]: '카테고리 (categories)' 는 범주 정도의 의미를 가지고 있습니다. 카데고리에 대한 더 자세한 정보는 애플 문서의 [Categories and Extensions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocCategories.html) 항목을 참고하기 바랍니다. 
 
 [^adopt]: '프로토콜을 채택한다 (adopt)' 는 건 특정 객체를 정의할 때 프로토콜 이름도 붙여서 그 프로토콜을 따르도록 한다는 의미입니다. 한편, 프로토콜을 '준수한다 (conform)' 는 건 모든 프로토콜 필수 조건을 구현하여 이를 만족한다는 의미입니다.
 
