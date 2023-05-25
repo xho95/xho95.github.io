@@ -31,23 +31,23 @@ _익스텐션 (extensions; 확장)_[^extension] 은 이미 있던 클래스나, 
 
 ```swift
 extension SomeType {
-  // SomeType 에 추가할 새로운 기능은 여기에 둡니다.
+  // SomeType 에 추가할 새로운 기능은 여기에 둠
 }
 ```
 
-익스텐션은 기존 타입을 확장하여 하나 이상의 프로토콜을 채택[^adopt] 하게 할 수 있습니다. 프로토콜 준수성[^conformance] 을 추가하려면, 클래스나 구조체에 작성하는 것과 똑같이 프로토콜 이름을 작성합니다:
+익스텐션은 이미 있던 타입이 하나 이상의 프로토콜을 채택[^adopt] 하도록 확장할 수 있습니다. 프로토콜 준수성[^conformance] 을 추가하려면, 클래스나 구조체에서 쓰는 것과 똑같은 방식으로 프로토콜 이름을 쓰면 됩니다:
 
 ```swift
 extension SomeType: SomeProtocol, AnotherProtocol {
-  // 프로토콜의 필수 조건 구현은 여기에 둡니다.
+  // 프로토콜 필수 조건의 구현은 여기에 둠
 }
 ```
 
-이런 식으로 프로토콜 준수성을 추가하는 건 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
+프로토콜 준수성을 이런 식으로 추가하는 건 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 에서 설명합니다.
 
-[Extending a Generic Type (일반화 타입 확장하기)]({% link docs/swift-books/swift-programming-language/generics.md %}#extending-a-generic-type-일반화-타입-확장하기) 에서 설명한 것처럼, 기존 일반화 타입을 확장하는데 익스텐션을 사용할 수 있습니다. [Extensions with a Generic Where Clause (일반화 where 절이 있는 익스텐션)]({% link docs/swift-books/swift-programming-language/generics.md %}#extensions-with-a-generic-where-clause-일반화-where-절이-있는-익스텐션) 에서 설명한 것처럼, 일반화 타입을 확장하여 조건부로 기능을 추가할 수도 있습니다.
+익스텐션을 써서 이미 있던 일반화 타입을 확장할 수 있는데, 이는 [Extending a Generic Type (일반화 타입 확장하기)]({% link docs/swift-books/swift-programming-language/generics.md %}#extending-a-generic-type-일반화-타입-확장하기) 에서 설명합니다. 일반화 타입을 확장하여 기능을 조건부로 추가할 수도 있는데, 이는 [Extensions with a Generic Where Clause (일반화 where 절이 있는 익스텐션)]({% link docs/swift-books/swift-programming-language/generics.md %}#extensions-with-a-generic-where-clause-일반화-where-절이-있는-익스텐션) 에서 설명합니다.
 
-> 기존 타입에 새로운 기능을 추가하기 위해 익스텐션을 정의하면, 익스텐션 정의 전에 생성한 그 타입의 모든 기존 인스턴스에서도, 새로운 기능을 사용할 수 있습니다.
+> 익스텐션을 정의하여 이미 있던 타입에 새로운 기능을 추가하면, 이미 있던 그 타입의 모든 인스턴스에서 새로운 기능을 사용할 수 있는데, 심지어 익스텐션을 정의하기 전에 생성한 것이라도 그렇습니다.
 
 ### Computed properties (계산 속성)
 
@@ -293,9 +293,9 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^categories]: '카테고리 (categories)' 는 범주 정도의 의미를 가지고 있습니다. 카데고리에 대한 더 자세한 정보는 애플 문서의 [Categories and Extensions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocCategories.html) 항목을 참고하기 바랍니다. 
 
-[^adopt]: '프로토콜을 채택한다 (adopt)' 는 건 특정 객체를 정의할 때 프로토콜 이름도 붙여서 그 프로토콜을 따르도록 한다는 의미입니다. 한편, 프로토콜을 '준수한다 (conform)' 는 건 모든 프로토콜 필수 조건을 구현하여 이를 만족한다는 의미입니다.
+[^adopt]: '프로토콜을 채택한다 (adopt)' 는 건 특정 객체를 정의할 때 프로토콜 이름도 붙여서 그 프로토콜을 따르게 한다는 의미입니다. 한편, '프로토콜을 준수한다 (conform)' 는 건 모든 프로토콜 필수 조건들을 구현하여 (그 조건을) 만족한다는 의미입니다.
 
-[^conformance]: 바로 앞 주석에서 설명한 것처럼, '프로토콜 준수성 (conformance) 을 추가한다' 는 건 모든 프로토콜 필수 조건에 대한 구현을 제공한다는 의미입니다. 이렇게 필수 조건에 대한 구현을 제공하려면, 먼저 프로토콜을 채택 (adopt) 해야 합니다. 
+[^conformance]: 바로 앞에서 설명한 것처럼, '프로토콜 준수성 (conformance) 을 추가한다' 는 건 모든 프로토콜 필수 조건에 대한 구현을 제공한다는 의미입니다. 이렇게 필수 조건에 대한 구현을 제공하려면, 먼저 프로토콜을 채택 (adopt) 해야 합니다. 
 
 [^literal]: '글자 값 (leteral)' 은 '글자 자체의 의미를 가진 값' 정도로 이해할 수 있습니다. 예를 들어, 코드에서 `0` 을 입력할 때 실제로는 문자 '0' 이지만, `let a = 0` 이라고 하면, 컴파일러가 이 `0` 을 '0' 이라는 정수로 이해합니다. 이런 상황에서의 `0` 을 정수 '글자 값 (literal)' 이라고 합니다.
 
