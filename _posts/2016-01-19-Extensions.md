@@ -95,9 +95,9 @@ print("A marathon is \(aMarathon) meters long")
 
 익스텐션으로 초기자를 추가한 값 타입이 모든 저장 속성에 기본 값을 제공하면서 자신만의 어떤 초기자도 정의하지 않았다면, 익스텐션의 초기자에서 그 값 타입의 기본 초기자와 멤버 초기자를 호출할 수 있습니다. 값 타입의 원본 구현에서 초기자를 작성했다면 이 경우에 해당이 안되는데, 이는 [Initializer Delegation for Value Types (값 타입에서의 초기자 맡김)]({% link docs/swift-books/swift-programming-language/initialization.md %}#initializer-delegation-for-value-types-값-타입에서의-초기자-맡김) 에서 설명합니다.
 
-다른 모듈에서 선언한 구조체에 익스텐션으로 초기자를 추가하면, 새로운 초기자가 정의 모듈에 있는 초기자를 호출하기 전까진 `self` 에 접근할 수 없습니다.[^access-self]
+익스텐션으로 초기자를 추가한 구조체가 다른 모듈에서 선언한 거라면, 정의 모듈에 있는 초기자를 호출하기 전까진 새로운 초기자로 `self` 에 접근할 수 없습니다.[^access-self]
 
-아래 예제는 기하학의 사각형을 나타내는 `Rect` 구조체를 정의합니다. 예제는 `Size` 와 `Point` 라는 지원용 구조체 두 개도 정의하는데, 둘 다 자신의 모든 속성에 `0.0` 이라는 기본 값을 제공합니다:
+아래 예제는 자신만의 `Rect` 구조체를 정의하여 기하 도형인 사각형을 나타냅니다. 예제는 두 개의 지원용 구조체인 `Size` 와 `Point` 도 정의하며, 이 둘 다 자신의 모든 속성에 `0.0` 이라는 기본 값을 제공합니다:
 
 ```swift
 struct Size {
@@ -114,14 +114,14 @@ struct Rect {
 }
 ```
 
-`Rect` 구조체는 자신의 모든 속성에 기본 값을 제공하기 때문에, [Default Initializers (기본 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명한 것처럼, 자동으로 기본 초기자와 멤버 초기자를 받습니다. 이 초기자들을 사용하여 새로운 `Rect` 인스턴스를 생성할 수 있습니다:
+`Rect` 구조체가 자신의 모든 속성에 기본 값을 제공하기 때문에, 기본 초기자와 멤버 초기자를 자동으로 받으며, 이는 [Default Initializers (기본 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#default-initializers-기본-초기자) 에서 설명했습니다. 이 초기자를 써서 새로운 `Rect` 인스턴스를 생성할 수 있습니다:
 
 ```swift
 let defaultRect = Rect()
 let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
 ```
 
-`Rect` 구조체를 확장하여 특정한 중심점과 크기를 취하는 추가적인 초기자를 제공할 수 있습니다.
+`Rect` 구조체를 확장하여 특정한 중심점과 크기를 입력 받는 초기자를 추가할 수 있습니다.
 
 ```swift
 extension Rect {
@@ -133,14 +133,14 @@ extension Rect {
 }
 ```
 
-이 새로운 초기자의 시작은 제공한 `center` 점 및 `size` 값에 기초한 적절한 원점을 계산하는 겁니다. 그런 다음, 적절한 속성에 새로운 원점 및 크기 값을 저장하는, 구조체의 자동 멤버 초기자[^automatic-memberwise-initializer] 인 `init(origin:size:)` 를 초기자가 호출합니다.
+이 새로운 초기자는 제공된 `center` 점과 `size` 값에 기초한 적절한 원점을 계산하는 걸로 시작합니다. 그런 다음 초기자가 구조체의 자동 멤버 초기자[^automatic-memberwise-initializer] 인 `init(origin:size:)` 를 호출하는데, 이는 새로운 원점과 크기 값을 적절한 속성에 저장합니다.
 
 ```swift
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
-// centerRect 의 원점은 (2.5, 2.5) 이고, 크기는 (3.0, 3.0) 임
+// centerRect 의 원점은 (2.5, 2.5) 이고 크기는 (3.0, 3.0) 임
 ```
 
-> 익스텐션으로 새로운 초기자를 제공한다면, 초기자를 완료하고 나면 확실히 각각의 초기자가 완전히 초기화된다는 걸 여전히 책임져야 합니다.
+> 익스텐션으로 새로운 초기자를 제공하는 경우에도, 일단 초기자가 완료되면 각각의 인스턴스 전체가 확실히 초기화된다는 걸 여전히 책임져야 합니다. 
 
 ### Methods (메소드)
 
@@ -303,7 +303,7 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 [^property-observers]: '속성 관찰자 (property observers)' 는 원래 저장 속성에만 추가할 수 있는 것으로, 계산 속성의 경우 속성이 바뀌는 시점을 자신이 알 수 있어서 속성 관찰자가 필요 없습니다. 속성 관찰자에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Property Observers (속성 관찰자)]({% link docs/swift-books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
 
-[^access-self]: 익스텐션으로 추가할 수 있는 초기자는 사실상 편의 초기자 역할을 합니다. 구조체의 경우 편의 초기자와 지명 초기자라는 구분은 없지만, 익스텐션으로 추가하는 초기자는 기존 초기자를 활용하여 초기화를 수행합니다. 실제 인스턴스의 전체 메모리를 초기화하는 것은 기존 초기자입니다. 
+[^access-self]: 익스텐션으로 추가할 수 있는 초기자는 사실상 편의 초기자 역할을 합니다. 구조체의 경우 편의 초기자와 지명 초기자라는 구분은 없지만, 익스텐션으로 추가하는 초기자는 이미 있던 초기자를 활용하여 초기화를 수행합니다. 실제 인스턴스의 메모리는 기존에 이미 있던 초기자가 초기화하는 것입니다.
 
 <!--
 접근할려는 인스턴스의 전체 메모리가 초기화되어 있어야 `self` 에 접근할 수 있기 때문입니다. 익스텐션으로 추가하는 초기자는 편의 초기자 클래스와 구조체라는 약간의 차이는 있지만, 스위프트는 '2-단계 초기화' 를 하며, `self` 에 대한 접근은 '1-단계 초기화' 가 완료된 시점부터 가능합니다. 본문에 있는 다른 '지명 초기자' 를 호출 완료한 시점이 '1-단계 초기화' 가 완료된 시점에 해당합니다. '2-단계 초기화' 에 대한 더 자세한 정보는, [Initialization (초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}) 장에 있는 [Two-Phase Initialization (2-단계 초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}#two-phase-initialization-2-단계-초기화) 부분을 보도록 합니다.
