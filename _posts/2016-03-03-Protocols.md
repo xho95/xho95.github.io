@@ -10,13 +10,13 @@ categories: Swift Language Grammar Protocol
 
 ## Protocols (프로토콜; 규약)
 
-_프로토콜 (protocol)_[^protocol] 은 특별한 임무 또는 기능 조각에 적합한 메소드와, 속성, 및 다른 필수 조건[^requirements] 들의 청사진[^blueprint] 을 정의합니다. 그러면 클래스나, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 하여 그 필수 조건들의 실제 구현을 제공할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 그 프로토콜을 _준수한다 (conform)_ 고 말합니다.
+_프로토콜 (protocol)_[^protocol] 은 특별한 임무나 기능 조각에 알맞도록 메소드와, 속성, 및 그 외 필수 조건[^requirements] 들의 청사진[^blueprint] 을 정의합니다. 그런 다음 클래스나, 구조체, 또는 열거체가 프로토콜을 _채택 (adopt)_ 하면 그 필수 조건들을 실제로 구현할 수 있습니다. 프로토콜의 필수 조건을 만족하는 어떤 타입이든 그 프로토콜을 _따른다 (conform)_[^conform] 고 합니다.
 
-준수 타입[^conforming-types] 이 구현해야 하는 필수 조건의 지정에 더하여, 프로토콜을 확장하면 이 필수 조건의 일부를 구현하거나 준수 타입이 활용할 수 있는 추가 기능을 구현할 수 있습니다.
+필수 조건을 지정하여 이를 따르는 타입[^conforming-types] 이 구현하게 하는 것에 더해, 프로토콜을 확장하여 이 필수 조건의 일부를 구현하거나 따르는 타입이 활용하도록 추가적인 기능을 구현할 수도 있습니다.
 
 ### Protocol Syntax (프로토콜 구문)
 
-프로토콜은 클래스, 구조체, 및 열거체와 아주 비슷한 방식으로 정의합니다:
+프로토콜을 정의하는 방식은 클래스, 구조체, 및 열거체와 아주 비슷합니다:
 
 ```swift
 protocol SomeProtocol {
@@ -24,7 +24,7 @@ protocol SomeProtocol {
 }
 ```
 
-사용자 정의 타입은, 자신의 정의 부분에서, 타입 이름 뒤에 프로토콜 이름을, 콜론으로 구분하여, 둠으로써 한 특별한 프로토콜을 채택한다고 알립니다. 여러 개의 프로토콜을, 쉼표로 구분하여, 나열할 수도 있습니다:
+자신만의 타입이 한 특별한 프로토콜을 채택한다는 걸 알리려면 정의 부분에서 프로토콜의 이름을 타입의 이름 뒤에, 콜론으로 구분하여, 두면 됩니다. 여러 개의 프로토콜을, 쉼표로 구분하여, 나열할 수도 있습니다:
 
 ```swift
 struct SomeStructure: FirstProtocol, AnotherProtocol {
@@ -32,7 +32,7 @@ struct SomeStructure: FirstProtocol, AnotherProtocol {
 }
 ```
 
-클래스에 상위 클래스가 있으면, 채택한 어떤 프로토콜들 보다 앞에 상위 클래스 이름을 나열하고, 그 뒤에 쉼표를 둡니다:
+클래스에 상위 클래스가 있으면, 상위 클래스 이름을 채택한 어떤 프로토콜 보다 앞에 나열하고, 그 뒤에 쉼표를 둡니다:
 
 ```swift
 class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
@@ -985,6 +985,8 @@ print(differentNumbers.allEqual())
 [^requirements]: '필수 조건 (requirements)' 은 어떠한 타입이 프로토콜을 준수하려면 반드시 구현해야 하는 조건들을 말합니다.
 
 [^blueprint]: '청사진 (blueprint)' 은 과거에 '제품 설계 도면' 이라는 의미로 사용하던 단어이며, 이는 설계 도면의 복사 방식이 과거에 파란색을 띄었기 때문입니다. 엑스코드 (Xcode) 아이콘을 보면 검은 망치 밑에 파란색 종이가 깔려 있는 데, 이 파란색 종이가 바로 청사진입니다. '청사진 (blueprint)' 에 대한 더 자세한 정보는, 위키피디아의 [Blueprint](https://en.wikipedia.org/wiki/Blueprint) 항목과 [청사진](https://ko.wikipedia.org/wiki/청사진) 항목을 보도록 합니다.
+
+[^conform]: 'conform' 은 '규칙을 따른다 또는 준수한다' 정도로 옮길 수 있습니다. 본문에서 'conform' 을 명사의 형태로 사용하는 경우가 많아서 많은 경우에 '준수한다' 라고 옮기도록 합니다.
 
 [^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
 
