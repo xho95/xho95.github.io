@@ -55,7 +55,7 @@ protocol SomeProtocol {
 }
 ```
 
-타입 속성 필수 조건을 프로토콜에서 정의할 땐 항상 `static` 키워드 접두사를 붙입니다. 이 규칙은 클래스가 구현할 때 타입 속성 필수 조건에 `class` 나 `static` 키워드 접두사를 붙일지라도 그대로 적용됩니다[^type-property-requirements]:
+타입 속성 필수 조건을 프로토콜에서 정의할 땐 항상 `static` 키워드를 접두사로 붙입니다. 이 규칙은 타입 속성 필수 조건이 클래스에서 구현될 때 `class` 나 `static` 키워드가 접두사도 붙을 수 있더라도 그대로 적용됩니다[^type-property-requirements]:
 
 ```swift
 protocol AnotherProtocol {
@@ -63,7 +63,7 @@ protocol AnotherProtocol {
 }
 ```
 
-단일한 인스턴스 속성 필수 조건을 가진 프로토콜은 이렇습니다:
+프로코콜에 단 하나의 인스턴스 속성 필수 조건만 있는 예는 이렇습니다:
 
 ```swift
 protocol FullyNamed {
@@ -71,9 +71,9 @@ protocol FullyNamed {
 }
 ```
 
-`FullyNamed` 프로토콜은 준수 타입이 완전히 규명된 이름[^qualified] 을 제공하길 요구합니다. 프로토콜은 준수 타입에 대한 어떤 다른 본성도 지정하지 않습니다-타입 그 자체가 반드시 전체 이름을 제공할 수 있어야 한다는 것만 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입이든, `fullName` 이라는, `String` 타입의, 획득 가능 인스턴스 속성을 가져야 한다고 알립니다.
+`FullyNamed` 프로토콜은 이를 따르는 타입이 전체 소속을 밝힌 이름[^qualified] 을 제공하길 요구합니다. 프로토콜은 이를 따르는 타입 고유의 성질에 대해서 어떤 다른 것도 지정하지 않습니다-타입 그 자체가 반드시 전체 이름을 제공할 수 있어야 한다는 것만 지정합니다. 프로토콜은 어떤 `FullyNamed` 타입이든, `String` 타입의, 획득 가능한 인스턴스 속성인 `fullName` 이 있어야 한다고 알립니다.
 
-`FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체 예제는 이렇습니다:
+`FullyNamed` 프로토콜을 채택하고 준수하는 단순한 구조체의 예는 이렇습니다:
 
 ```swift
 struct Person: FullyNamed {
@@ -990,9 +990,9 @@ print(differentNumbers.allEqual())
 
 [^conforming-types]: '준수 타입 (conforming types)' 은 어떠한 프로토콜의 모든 필수 조건을 만족하는 타입을 말합니다. 모든 필수 조건을 만족한다는 건 모든 필수 조건을 실제로 구현한다는 의미입니다.
 
-[^type-property-requirements]: 즉, 클래스의 '타입 속성 필수 조건 (type property requirements)' 은, `class` 나 `static` 으로 구분할 필요 없이,  무조건 `static` 을 사용하면 됩니다.
+[^type-property-requirements]: 즉, 클래스의 '타입 속성 필수 조건 (type property requirements)' 은 `class` 나 `static` 을 구분할 필요 없이, 무조건 `static` 을 사용하면 됩니다.
 
-[^qualified]: 스위프트에서 '규명하다 (qualify)' 는 자신의 소속을 알린다는 의미입니다.
+[^qualified]: 전체 소속을 밝힌 이름은, 예를 들어, 파일 이름이라면 이름에 전체 경로가 있는 걸 말합니다. 본문 예제에선 사람이름에 성과 이름이 모두 있는 경우를 말하고 있습니다.
 
 [^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 '스타 트랙 (Star Trek)' 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 'USS 엔터프라이즈 (USS Enterprise)' 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 보도록 합니다. 
 
