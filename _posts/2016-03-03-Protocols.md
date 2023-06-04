@@ -83,11 +83,11 @@ let john = Person(fullName: "John Appleseed")
 // john.fullName 은 "John Appleseed" 임
 ```
 
-이 예제는, 특정 이름의 사람을 나타내는, `Person` 이라는 구조체를 정의합니다. 이는 정의 첫째 줄 부분에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
+이 예제에서 정의한 `Person` 이라는 구조체는, 특정한 이름의 사람을 나타냅니다. 이는 자신의 정의 첫째 줄에서 `FullyNamed` 프로토콜을 채택한다고 알립니다.
 
-각각의 `Person` 인스턴스는, `String` 타입의, `fullName` 이라는 단일 저장 속성을 가집니다. 이는 `FullyNamed` 프로토콜의 단일 필수 조건과 일치하며, `Person` 이 프로토콜을 올바로 준수한다는 의미입니다. (프로토콜 필수 조건을 충족하지 않으면 컴파일 시간에 스위프트가 에러를 보고합니다.)
+각각의 `Person` 인스턴스엔 단 하나의 저장 속성인 `fullName` 이 있는데, 이는 `String` 타입입니다. 이게 `FullyNamed` 프로토콜에 있는 단 하나의 필수 조건과 맞으면, `Person` 이 프로토콜을 올바로 따른다는 의미입니다. (프로토콜 필수 조건을 충족하지 않으면 스위프트가 컴파일 시간에 에러를 보고합니다.)
 
-역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스는 이렇습니다:
+역시 `FullyNamed` 프로토콜을 채택하고 준수하는, 더 복잡한 클래스의 예는 이렇습니다:
 
 ```swift
 class Starship: FullyNamed {
@@ -105,7 +105,7 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 // ncc1701.fullName 은 "USS Enterprise" 임
 ```
 
-이 클래스는 `fullName` 속성 필수 조건을 우주선[^starship] 의 읽기-전용 계산 속성으로 구현합니다. 각각의 `Starship` 클래스 인스턴스는 의무적인 `name` 과 옵션인 `prefix`[^optional] 를 저장합니다. `prefix` 값이 존재하면 `fullName` 속성이, `name` 맨 앞에 이를 붙여 우주선 전체 이름을 생성합니다.
+이 클래스는 `fullName` 속성 필수 조건을 우주선[^starship] 에 대한 읽기-전용 계산 속성으로 구현합니다. 각각의 `Starship` 클래스 인스턴스는 의무적인 `name` 과 옵션인 `prefix` 를 저장합니다. `fullName` 속성은 `prefix` 값이 존재하면 이를, `name` 맨 앞에 붙여서 우주선의 전체 이름을 생성합니다.
 
 ### Method Requirements (메소드 필수 조건)
 
@@ -994,9 +994,7 @@ print(differentNumbers.allEqual())
 
 [^qualified]: 전체 소속을 밝힌 이름은, 예를 들어, 파일 이름이라면 이름에 전체 경로가 있는 걸 말합니다. 본문 예제에선 사람이름에 성과 이름이 모두 있는 경우를 말하고 있습니다.
 
-[^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 '스타 트랙 (Star Trek)' 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 'USS 엔터프라이즈 (USS Enterprise)' 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 보도록 합니다. 
-
-[^optional]: 우주선에 이름은 반드시 있어야 하지만, '경칭 (prefix)' 같은 건 옵션이므로, 옵셔널 타입으로 구현하고 있습니다.
+[^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 **스타 트랙 (Star Trek)** 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 **USS 엔터프라이즈 (USS Enterprise)** 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 보도록 합니다. 
 
 [^random]: 이는 스위프트 내장 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
