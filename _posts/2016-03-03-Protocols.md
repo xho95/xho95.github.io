@@ -119,7 +119,7 @@ protocol SomeProtocol {
 }
 ```
 
-다음 예제는 단일 인스턴스 메소드 필수 조건을 가진 프로토콜을 정의합니다:
+다음 예제는 단 하나의 인스턴스 메소드 필수 조건이 있는 프로토콜을 정의합니다:
 
 ```swift
 protocol RandomNumberGenerator {
@@ -127,11 +127,11 @@ protocol RandomNumberGenerator {
 }
 ```
 
-`RandomNumberGenerator` 라는, 이 프로토콜은 어떤 준수 타입이든 `random` 이라는 인스턴스 메소드를 가지길 요구하는데, 이는 호출할 때마다 `Double` 값을 반환합니다. 프로토콜에서 지정하지 않긴 않지만, 이 값은 `0.0` 에서 `1.0` 까지의 (1.0 을 포함하진 않는) 값이라 가정합니다.[^random]
+이, `RandomNumberGenerator` 라는, 프로토콜은 이를 따르는 어떤 타입이든 `random` 이라는 인스턴스 메소드를 가지길 요구하는데, 이는 호출할 때마다 `Double` 값을 반환합니다. 프로토콜 부분에 지정되지 않았지만, 이 값은 `0.0` 부터 `1.0` 사이의 (1.0 은 포함안하는) 값이라고 가정합니다.[^random]
 
-`RandomNumberGenerator` 프로토콜은 각각의 난수 발생 방법에 대해선 어떤 가정도 하지 않습니다-단순히 새 난수 발생을 위한 표준 방식을 발생기[^generator] 가 제공하길 요구할 뿐입니다.
+`RandomNumberGenerator` 프로토콜은 각각의 난수가 어떻게 발생되는 지에 대해선 어떤 가정도 하지 않습니다-단순히 새로운 난수를 발생하는 표준적인 방식을 발생기[^generator] 가 제공하길 요구할 뿐입니다.
 
-다음 구현은 `RandomNumberGenerator` 프로토콜을 채택하고 준수하는 클래스입니다. 이 클래스는 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라는 의사 (pseudorandom) 난수 발생 알고리즘을 구현합니다:
+`RandomNumberGenerator` 프로토콜을 채택하고 따르는 클래스의 구현은 이렇습니다. 이 클래스에서 구현한 건 _선형 합동 발생기 (linear congruential generator)_[^linear-congruential-generator] 라고 하는 의사 (pseudorandom) 난수 발생 알고리즘입니다:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
@@ -996,7 +996,7 @@ print(differentNumbers.allEqual())
 
 [^starship]: 이 예제에 있는 클래스 이름이 '우주선 (Starship)' 입니다. 참고로 예제에 있는 `ncc1701` 은 미국 유명 TV 시리즈인 **스타 트랙 (Star Trek)** 에 나오는 주인공 우주선의 제식번호 (registry) 이며, 이 우주선의 정식 이름은 **USS 엔터프라이즈 (USS Enterprise)** 입니다. 이에 대한 더 자세한 정보는, 위키피디아의 [USS Enterprise (NCC-1701)](https://en.wikipedia.org/wiki/USS_Enterprise_(NCC-1701)) 항목과 [USS 엔터프라이즈 (NCC-1701)](https://ko.wikipedia.org/wiki/USS_엔터프라이즈_(NCC-1701)) 항목을 보도록 합니다. 
 
-[^random]: 이는 스위프트 내장 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
+[^random]: 이는 스위프트에 내장된 `random` 함수가 `0.0..<1.0` 범위의 값을 반환하기 때문입니다.
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 보도록 합니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
