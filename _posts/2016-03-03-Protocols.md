@@ -154,7 +154,7 @@ print("And another one: \(generator.random())")
 
 ### Mutating Method Requirements (변경 메소드 필수 조건)
 
-메소드가 자신이 속한 인스턴스를 수정 (또는 _변경 (mutate)_ 하는) 것이 필요할 때가 있습니다. 값 타입의 (즉, 구조체 및 열거체의) 인스턴스 메소드면 메소드의 `func` 키워드 앞에 `mutating` 키워드를 둬서 메소드가 자신이 속한 인스턴스 및 그 인스턴스에 있는 어떤 속성의 수정이든 허용한다고 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
+메소드가 자신이 속해 있는 인스턴스를 수정 (또는 _변경 (mutate)_ 하는게) 필요할 때가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드에서 메소드의 `func` 키워드 앞에 `mutating` 키워드를 두면 메소드가 자신이 소속된 인스턴스 및 그 인스턴스의 속성을 수정하는 걸 허용한다고 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
 
 프로토콜을 채택한 어떤 타입의 인스턴스든 변경할 의도로 프로토콜 인스턴스 메소드 필수 조건을 정의하는 거라면, 프로토콜 정의 부분에서 `mutating` 키워드로 메소드를 표시합니다. 이는 구조체 및 열거체가 프로토콜을 채택해서 그 메소드 필수 조건을 만족할 수 있게 합니다.
 
