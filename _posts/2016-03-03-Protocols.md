@@ -156,13 +156,13 @@ print("And another one: \(generator.random())")
 
 메소드가 자신이 속해 있는 인스턴스를 수정 (또는 _변경 (mutate)_ 하는게) 필요할 때가 있습니다. 값 타입 (즉, 구조체와 열거체) 의 인스턴스 메소드에서 메소드의 `func` 키워드 앞에 `mutating` 키워드를 두면 메소드가 자신이 소속된 인스턴스 및 그 인스턴스의 속성을 수정하는 걸 허용한다고 지시합니다. 이 과정은 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 에서 설명합니다.
 
-프로토콜을 채택한 어떤 타입의 인스턴스든 변경할 의도로 프로토콜 인스턴스 메소드 필수 조건을 정의하는 거라면, 프로토콜 정의 부분에서 `mutating` 키워드로 메소드를 표시합니다. 이는 구조체 및 열거체가 프로토콜을 채택해서 그 메소드 필수 조건을 만족할 수 있게 합니다.
+자신이 정의한 프로토콜 인스턴스 메소드 필수 조건이 그 프로토콜을 채택한 어떤 타입의 인스턴스든 변경할 의도라면, 프로토콜의 정의 부분에서 그 메소드를 `mutating` 키워드로 표시합니다. 이는 구조체와 열거체가 프로토콜을 채택하여 그 메소드 필수 조건을 만족할 수 있게 합니다.
 
-> 프로토콜 인스턴스 메소드 필수 조건을 `mutating` 으로 표시한 경우, 그 메소드를 클래스가 구현할 땐 `mutating` 키워드를 작성할 필요가 없습니다. `mutating` 키워드는 구조체와 열거체만 사용합니다.
+> 프로토콜 인스턴스 메소드 필수 조건을 `mutating` 으로 표시하면, 그 메소드를 클래스에서 구현할 땐 `mutating` 키워드를 쓸 필요가 없습니다. `mutating` 키워드는 구조체와 열거체만 사용합니다.
 
-아래 예제는, `toggle` 이라는 단일 인스턴스 메소드 필수 조건을 정의하는, `Togglable` 이라는 프로토콜을 정의합니다. 이름이 제시하듯, `toggle()` 메소드의 의도는, 전형적으로 그 타입의 속성을 변경함으로써, 어떤 준수 타입의 상태를 전환 (toggle) 또는 반전 (invert) 하는 겁니다.
+아래 예제에서 정의한 `Togglable` 이라는 프로토콜은, 단 하나의 인스턴스 메소드 필수 조건인 `toggle` 을 정의합니다. 이름에서 제시하듯, `toggle()` 메소드의 의도는 이를 따르는 어떤 타입의 상태든 반전 (toggle) 하거나 반대로 (invert) 만드는 건데, 일반적으로 그 타입의 속성을 수정하게 됩니다.
 
-`Togglable` 프로토콜 정의 부분에서 `toggle()` 메소드를 `mutating` 키워드로 표시하여, 메소드를 호출할 때 준수 인스턴스[^conforming-instance] 의 상태를 변경하길 예상한다고 지시합니다:
+`toggle()` 메소드는 `Togglable` 프로토콜 정의 부분에 `mutating` 키워드가 표시되어 있어서, 메소드를 호출할 때 이를 따르는 인스턴스의 상태를 변경하는게 예상된다는 걸 지시합니다:
 
 ```swift
 protocol Togglable {
@@ -170,9 +170,9 @@ protocol Togglable {
 }
 ```
 
-구조체나 열거체가 `Togglable` 프로토콜을 구현하면, `mutating` 으로도 표시한 `toggle()` 메소드를 구현함으로써 그 구조체나 열거체가 프로토콜을 준수할 수 있습니다.
+`Togglable` 프로토콜을 구조체나 열거체에서 구현할 경우, 그 구조체나 열거체가 프로토콜을 따르게 하려면 `toggle()` 메소드의 구현부에도 `mutating` 을 표시해야 합니다.
 
-아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체는, `on` 과 `off` 열거체 case 로 표시한, 두 상태 사이를 전환합니다. `Togglable` 프로토콜의 필수 조건과 일치하도록, 열거체의 `toggle` 구현에 `mutating` 을 표시합니다:
+아래 예제는 `OnOffSwitch` 라는 열거체를 정의합니다. 이 열거체가 반전하는 두 상태는, 열거체 case 의 `on` 과 `off` 로 지시합니다. 열거체의 `toggle` 구현부에 `mutating` 을 표시하여, `Togglable` 프로토콜의 필수 조건과 맞춥니다:
 
 ```swift
 enum OnOffSwitch: Togglable {
