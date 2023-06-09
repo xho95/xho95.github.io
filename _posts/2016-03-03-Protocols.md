@@ -193,7 +193,7 @@ lightSwitch.toggle()
 
 ### Initializer Requirements (초기자 필수 조건)
 
-프로토콜은 준수 타입에게 특정 초기자의 구현을 요구할 수 있습니다. 이 초기자들은 보통의 초기자와 정확히 똑같은 방식으로 프로토콜 정의 부분에 작성하지만, 중괄호나 메소드 본문이 없습니다:
+프로토콜은 이를 따르는 타입이 특정한 초기자를 구현하도록 요구할 수 있습니다. 이 초기자를 프로토콜 정의 부분에 작성하는 방식은 보통의 초기자와 정확하게 똑같지만,  중괄호나 초기자의 본문이 없습니다:
 
 ```swift
 protocol SomeProtocol {
@@ -203,7 +203,7 @@ protocol SomeProtocol {
 
 #### Class Implementation of Protocol Initializer Requirements (프로토콜 초기자 필수 조건의 클래스 구현)
 
-프로토콜 초기자 필수 조건은 준수 클래스에서 지명 초기자나 편의 초기자 어느 거로든 구현할 수 있습니다. 두 경우 모두, 반드시 `required` 수정자[^required] 로 초기자 구현을 표시해야 합니다:
+프로토콜을 따르는 클래스에서의 초기자 필수 조건은 지명 초기자나 편의 초기자 중 어느 것으로도 구현할 수 있습니다. 두 경우 모두, 반드시 초기자 구현에 `required` 수정자[^required-modifier] 를 표시해야 합니다:
 
 ```swift
 class SomeClass: SomeProtocol {
@@ -213,13 +213,13 @@ class SomeClass: SomeProtocol {
 }
 ```
 
-`required` 수정자를 사용하면 준수 클래스의 모든 하위 클래스도 초기자 필수 조건의 명시적 또는 상속 구현을 제공하도록 하여, 이들의 프로토콜 준수도, 보장합니다.
+`required` 수정자를 사용하면 이를 따르는 클래스의 모든 하위 클래스들도 초기자 필수 조건의 구현을 명시하거나 상속하게 하여, 이들도 프로토콜을 따르게 합니다.
 
-필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#required-initializers-필수-초기자) 부분을 보도록 합니다.
+필수 초기자[^required-initializer] 에 대한 더 많은 정보는, [Required Initializers (필수 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#required-initializers-필수-초기자) 부분을 보기 바랍니다.
 
-> `final` 수정자로 표시한 클래스는 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 마지막 클래스로는 하위 클래스를 만들 수 없기 때문입니다. `final` 수정자에 대한 더 많은 내용은, [Preventing Overrides (재정의 막기)]({% link docs/swift-books/swift-programming-language/initialization.md %}#preventing-overrides-재정의-막기) 부분을 보도록 합니다.
+> `final` 수정자를 표시한 클래스에선 프로토콜 초기자 필수 조건에 `required` 수정자를 표시할 필요가 없는데, 마지막 클래스로 하위 클래스를 만들 순 없기 때문입니다. `final` 수정자에 대한 더 많은 것은, [Preventing Overrides (재정의 막기)]({% link docs/swift-books/swift-programming-language/initialization.md %}#preventing-overrides-재정의-막기) 부분을 보기 바랍니다.
 
-하위 클래스가 상위 클래스의 지명 초기자를 재정의하면서, 프로토콜의 일치하는 초기자 필수 조건도 구현한다면, 초기자 구현에 `required` 와 `override` 수정자를 둘 다 표시합니다:
+하위 클래스에서 상위 클래스의 지명 초기자도 재정의하면서, 그와 일치하는 프로토콜의 초기자 필수 조건도 구현한다면, 초기자 구현을 `required` 와 `override` 수정자로 둘 다 표시합니다:
 
 ```swift
 protocol SomeProtocol {
@@ -233,18 +233,18 @@ class SomeSuperClass {
 }
 
 class SomeSubClass: SomeSuperClass, SomeProtocol {
-  // "required" 는 SomeProtocol 준수에서; "override" 는 SomeSuperClass 에서 온 것임
+  // "required" 는 SomeProtocol 따르는 것에서; "override" 는 SomeSuperClass 에서 옴
   required override init() {
     // 초기자 구현은 여기에 둠
   }
 }
 ```
 
-#### Failable Initializer Requirements (실패 가능 초기자 필수 조건)
+#### Failable Initializer Requirements (실패할 수 있는 초기자 필수 조건)
 
-[Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 에 정의한 것처럼, 프로토콜은 준수 타입을 위한 실패 가능 초기자 필수 조건을 정의할 수 있습니다.
+프로토콜은 이를 따르는 타입에 실패할 수 있는 초기자 필수 조건을 정의할 수 있으며, 이는 [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 에서 정의합니다.
 
-실패 가능 초기자 필수 조건은 준수 타입에서 실패 가능 또는 실패하지 않는 초기자로 만족할 수 있습니다. 실패하지 않는 초기자 필수 조건은 실패하지 않는 초기자 또는 암시적으로 포장 푸는 실패 가능 초기자로 만족할 수 있습니다.
+실패할 수 있는 초기자 필수 조건은 이를 따르는 타입의 실패할 수 있는 또는 실패할 수 없는 초기자로 만족할 수 있습니다. 실패할 수 없는 초기자 필수 조건은 실패할 수 없는 초기자나 암시적으로 풀리는 실패할 수 있는 초기자로 만족할 수 있습니다.[^satisfied-by]
 
 ### Protocols as Types (타입으로써의 프로토콜)
 
@@ -1000,9 +1000,11 @@ print(differentNumbers.allEqual())
 
 [^linear-congruential-generator]: '선형 합동 발생기' 는 널리 알려진 '유사 난수 발생기' 라고 합니다. 다만 '선형 합동 발생기' 는 인자와 마지막으로 생성한 난수를 알면 그 뒤의 모든 난수를 예측할 수 있기 때문에 바람직한 '난수 발생기' 는 아니라고 합니다. 이에 대한 더 자세한 정보는, 위키피디아의 [Linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) 와 [선형 합동 생성기](https://ko.wikipedia.org/wiki/선형_합동_생성기) 항목을 보도록 합니다. 참고로 위키피디아에서도 'generator' 를 '생성기' 라고도 하고 '발생기' 라고도 하고 있어서, 여기서는 '발생기' 라고 통일하여 옮깁니다.
 
-[^required]: '수정자 (modifiers)' 는 (선언의) 동작이나 의미를 수정하는 키워드를 의미합니다. 이에 대한 더 자세한 정보는 [Declaration Modifiers (선언 수정자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다.
+[^required-modifier]: '수정자 (modifiers)' 는 선언한 것의 동작이나 의미를 수정하는 키워드입니다. 수정자에 대한 더 자세한 내용은 [Declaration Modifiers (선언 수정자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#declaration-modifiers-선언-수정자) 부분을 참고하기 바랍니다.
 
 [^required-initializer]: `required` 수정자로 표시한 초기자를 '필수 초기자 (required initializer)' 라고 한 건 준수 타입이 반드시 구현해야 하기 때문입니다.
+
+[^satisfied-by]: 본문은 말로 설명하다 보니 굉장히 복잡해 보이는데, 키워드로 보면 `init?` 필수 조건은 `init?` 과 `init` 으로 만족할 수 있고, `init` 필수 조건은 `init` 과 `init!` 으로 만족할 수 있다는 의미입니다.
 
 [^adopt]: 원문에서 준수 (conforming) 대신 채택 (adopt) 을 사용했습니다. 스위프트 문서에선 항상 준수와 채택이란 말을 분명히 구분하여 사용합니다. 이 둘의 차이점은 이 문서 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 보도록 합니다.
 

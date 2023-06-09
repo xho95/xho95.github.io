@@ -278,7 +278,7 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 1.1 에서 업데이트함.
 * [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/initialization.md %}#failable-initializers-실패할-수-있는-초기자) 에 온전한 전체 지침을 추가함.
-* 프로토콜의 [Failable Initializer Requirements (실패 가능 초기자 필수 조건)]({% link docs/swift-books/swift-programming-language/protocols.md %}#failable-initializer-requirements-실패-가능-초기자-필수-조건) 에 대한 설명을 추가함.
+* 프로토콜의 [Failable Initializer Requirements (실패할 수 있는 초기자 필수 조건)]({% link docs/swift-books/swift-programming-language/protocols.md %}#failable-initializer-requirements-실패할-수-있는-초기자-필수-조건) 에 대한 설명을 추가함.
 * `Any` 타입인 상수와 변수는 이제 함수 인스턴스를 가질 수 있음. `switch` 문 내에서 함수 타입을 검사하고 변환하는 방법을 보여주기 위해 [Type Casting for Any and AnyObject (Any 와 AnyObject 의 타입 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#type-casting-for-any-and-anyobject-any-와-anyobject-의-타입-변환) 에 있는 예제를 업데이트함.
 * '원시 값 (raw values)' 을 가진 열거체는 이제 `toRaw()` 메소드 대신 `rawValue` 속성을 가지며 `fromRaw()` 메소드 대신 `rawValue` 매개 변수를 받는 '실패 가능 초기자 (failable initializer)' 를 가집니다. 더 많은 정보는, [Raw Values (원시 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 과 [Enumerations with Cases of a Raw-Value Type (원시-값 타입의 case 를 가지는 열거체)]({% link docs/swift-books/swift-programming-language/declarations.md %}#enumerations-with-cases-of-a-raw-value-type-원시-값-타입의-case-를-가지는-열거체) 를 보도록 합니다.
 * 초기화를 실패하도록 만들 수 있는, [Failable Initializers (실패할 수 있는 초기자)]({% link docs/swift-books/swift-programming-language/declarations.md %}#failable-initializers-실패할-수-있는-초기자) 에 대하여 새로운 기준 부분을 추가함.
