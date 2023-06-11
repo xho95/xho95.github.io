@@ -250,15 +250,15 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 프로토콜은 그 자체로는 어떤 기능도 실제로 구현하지 않습니다. 그럼에도 불구하고, 프로토콜은 코드에서 완전한 형태의 타입인 것처럼 쓸 수 있습니다. 프로토콜을 타입으로 사용하는 걸 _실존 타입 (existential type)_ 이라고 할 때가 있는데, 이는 "프로토콜을 따르는 타입 **T** 가 **실**제로 **존**재한다" 라는 구절에서 비롯한 겁니다.
 
-프로토콜은 다른 타입들이 되는 수많은 곳에서 쓸 수 있는데, 이는 다음을 포함합니다:
+프로토콜은 그 외 타입들이 허용되는 수많은 곳에서 쓸 수 있는데, 다음을 포함합니다:
 
 * 함수나, 메소드, 또는 초기자의 매개 변수 타입이나 반환 타입으로
 * 상수나, 변수, 또는 속성의 타입으로
 * 배열이나, 딕셔너리, 또는 그 외 컨테이너의 항목 타입으로
 
-> 프로토콜은 타입이기 때문에, (`FullyNamed` 및 `RandomNumberGenerator` 같이) 이름을 대문자로 시작하여 (`Int`, `String`, 및 `Double` 같은) 스위프트의 다른 타입 이름과 일치하도록 합니다.
+> 프로토콜은 타입이기 때문에, 그 이름은 대문자로 시작하며 (`FullyNamed` 와 `RandomNumberGenerator` 같이) 스위프트의 다른 타입들 (인 `Int` 와, `String`, 및 `Double` 같은 것들) 과 이름을 맞춥니다.
 
-프로토콜을 타입으로 사용하는 예제는 이렇습니다:
+프로토콜을 타입으로 사용하는 예는 이렇습니다:
 
 ```swift
 class Dice {
@@ -274,15 +274,15 @@ class Dice {
 }
 ```
 
-이 예제는, 보드 게임에 사용할 n-면체 주사위를 나타내는, `Dice` 라는 새 클래스를 정의합니다. `Dice` 인스턴스에는, 면의 개수를 나타내는, `sides` 라는 정수 속성과, 주사위 굴림 값 생성을 위한 난수 발생기를 제공하는, `generator` 라는 속성이 있습니다.
+이번 예제에서 정의한 새로운 클래스인 `Dice` 는, 보드 게임에서 쓸 n-면체 주사위를 나타냅니다. `Dice` 인스턴스에 있는 `sides` 라는 정수 속성은, 면이 얼마나 많은 지를 나타내며, `generator` 라는 속성은, 주사위 굴림 값을 생성하는 난수 발생기를 제공합니다.
 
-`generator` 속성의 타입은 `RandomNumberGenerator` 입니다. 그러므로, `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 반드시 인스턴스가 `RandomNumberGenerator` 프로토콜을 채택[^adopt] 해야 한다는 것만 제외하면, 이 속성에 할당할 인스턴스엔 다른 아무 것도 요구하지 않습니다. 자신의 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드는 이 프로토콜을 준수하는 모든 발생기에 적용되는 방식으로만 `generator` 와 상호 작용할 수 있습니다. 이는 발생기의 실제 타입이 정의한 어떤 메소드나 속성도 사용할 수 없다는 의미입니다. 하지만, [Downcasting (내림 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#downcasting-내림-변환) 에서 논의한 것처럼, 상위 클래스에서 하위 클래스로 내림 변환할 수 있는 것과 똑같은 식으로 프로토콜 타입에서 실제 타입으로 내림 변환할 순 있습니다.
+`generator` 속성은`RandomNumberGenerator` 타입입니다. 그러므로, 여기엔 `RandomNumberGenerator` 프로토콜을 채택한 _어떤 (any)_ 타입의 인스턴스든 설정할 수 있습니다. 이 속성에 할당할 인스턴스는 `RandomNumberGenerator` 프로토콜을 반드시 채택[^adopt] 해야 한다는 것만 제외하면, 인스턴스에 다른 아무 것도 요구하지 않습니다. 그 타입이 `RandomNumberGenerator` 이기 때문에, `Dice` 클래스 안의 코드와 `generator` 는 이 프로토콜을 따르는 모든 발생기에 적용된 방식으로만 상호 작용할 수 있습니다. 그건 발생기 밑에 놓인 타입에서 정의한 메소드나 속성은 어떤 것도 쓸 수 없다는 의미입니다. 하지만, 프로토콜 타입을 그 밑에 놓인 타입으로 내림 변환할 수는 있는데 이는 상위 클래스를 하위 클래스로 내림 변환할 수 있는 것과 똑같은 방식으로, [Downcasting (내림 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#downcasting-내림-변환) 에서 논의한 것과 같습니다.
 
-`Dice` 에는, 자신의 초기 상태를 설정하는, 초기자도 있습니다. 이 초기자엔, 역시 `RandomNumberGenerator` 타입인, `generator` 라는 매개 변수가 있습니다. 새로운 `Dice` 인스턴스를 초기화할 땐 어떤 준수 타입의 값이든 이 매개 변수에 전달할 수 있습니다.
+`Dice` 엔 초기자가 있어서, 초기 상태도 설정합니다. 이 초기자에 있는 `generator` 라는 매개 변수도, `RandomNumberGenerator` 타입입니다. 이를 따르는 어떤 타입의 값이든 새로운 `Dice` 인스턴스를 초기화할 때 이 매개 변수에 전달할 수 있습니다.
 
-`Dice` 는, 1 과 주사위면 수 사이의 정수 값을 반환하는, `roll` 이라는, 한 인스턴스 메소드를 제공합니다. 이 메소드는 발생기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새 난수를 생성하며, 이 난수를 써서 올바른 범위 안에 있는 주사위 굴림 값을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택한다는 걸 알기 때문에, 호출할 `random()` 메소드가 있음이 보증됩니다.
+`Dice` 가 제공하는 단 하나의 인스턴스 메소드인, `roll` 은, **1** 과 주사위면 수 사이의 정수 값을 반환합니다. 이 메소드는 발생기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수로 올바른 범위 안에 있는 주사위 굴림 값을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택한다는 걸 알기 때문에, 호출할 `random()` 메소드가 있다는게 보증됩니다.
 
-`Dice` 클래스를 사용하여 `LinearCongruentialGenerator` 인스턴스를 자신의 난수 발생기로 가지는 6-면체 주사위의 생성 방법은 이렇습니다:
+`Dice` 클래스를 어떻게 쓰면 `LinearCongruentialGenerator` 인스턴스가 난수 발생기인 6-면체 주사위를 생성할 수 있는지 그 예는 이렇습니다:
 
 ```swift
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
@@ -1006,7 +1006,7 @@ print(differentNumbers.allEqual())
 
 [^satisfied-by]: 본문은 말로 설명하다 보니 굉장히 복잡해 보이는데, 키워드로 보면 `init?` 필수 조건은 `init?` 과 `init` 으로 만족할 수 있고, `init` 필수 조건은 `init` 과 `init!` 으로 만족할 수 있다는 의미입니다.
 
-[^adopt]: 원문에서 준수 (conforming) 대신 채택 (adopt) 을 사용했습니다. 스위프트 문서에선 항상 준수와 채택이란 말을 분명히 구분하여 사용합니다. 이 둘의 차이점은 이 문서 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 보도록 합니다.
+[^adopt]: 원문에서 '따름 (conforming)' 대신 '채택 (adopt)' 이란 단어를 썼습니다. 스위프트 문서에선 따르다와 채택하다라는 말을 항상 정확하게 구분하여 씁니다. 이 두 단어의 차이점은 본 글 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
 [^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에서 공통으로 발생하는 소프트웨어 디자인 문제에 대한 일반적이며, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 항목과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 보도록 합니다.   
 
