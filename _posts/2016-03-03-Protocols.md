@@ -282,7 +282,7 @@ class Dice {
 
 `Dice` 가 제공하는 단 하나의 인스턴스 메소드인, `roll` 은, **1** 과 주사위면 수 사이의 정수 값을 반환합니다. 이 메소드는 발생기의 `random()` 메소드를 호출하여 `0.0` 과 `1.0` 사이의 새로운 난수를 생성하고, 이 난수로 올바른 범위 안에 있는 주사위 굴림 값을 생성합니다. `generator` 가 `RandomNumberGenerator` 를 채택한다는 걸 알기 때문에, 호출할 `random()` 메소드가 있다는게 보증됩니다.
 
-`Dice` 클래스를 어떻게 쓰면 `LinearCongruentialGenerator` 인스턴스가 난수 발생기인 6-면체 주사위를 생성할 수 있는지 그 예는 이렇습니다:
+어떻게 `Dice` 클래스를 싸서 난수 발생기가 `LinearCongruentialGenerator` 인 6-면체 주사위를 생성할 수 있는지 그 예는 이렇습니다:
 
 ```swift
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
@@ -299,9 +299,9 @@ for _ in 1...5 {
 
 ### Delegation (맡김)
 
-_맡김 (delegation)_ 은 클래스나 구조체가 자신의 책임 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴은 맡길 책임을 은닉한 프로토콜 정의로 구현해서, 준수 타입 (일-맡은자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김은 특별한 한 행동에 응답하거나, 외부 소스의 실제 타입을 모르고도 그 소스에서 자료를 가져오는데 사용할 수 있습니다.
+_맡김 (delegation)_ 은 클래스나 구조체가 그 책임의 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴의 구현은 맡길 책임을 감추고 있는 프로토콜의 정의로 하며, 이를 따르는 타입 (일-맡은자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김을 쓰면 한 특별한 행동에 응답하거나, 외부 소스의 그 밑에 놓인 타입을 모르고도 그 소스로부터 자료를 가져올 수 있습니다.
 
-아래 예제는 주사위-기반 보드 게임에 사용할 두 개의 프로토콜을 정의합니다:
+아래 예제는 주사위-기반 보드 게임에서 쓸 프로토콜을 두 개 정의합니다:
 
 ```swift
 protocol DiceGame {
@@ -316,7 +316,7 @@ protocol DiceGameDelegate: AnyObject {
 }
 ```
 
-`DiceGame` 프로토콜은 주사위와 엮인 어떤 게임이든 채택할 수 있는 프로토콜입니다.
+`DiceGame` 프로토콜은 주사위와 엮인 어떤 게임에서도 채택될 수 있는 프로토콜입니다.
 
 `DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡은자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 보도록 합니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡은자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
 
@@ -1008,7 +1008,7 @@ print(differentNumbers.allEqual())
 
 [^adopt]: 원문에서 '따름 (conforming)' 대신 '채택 (adopt)' 이란 단어를 썼습니다. 스위프트 문서에선 따르다와 채택하다라는 말을 항상 정확하게 구분하여 씁니다. 이 두 단어의 차이점은 본 글 맨 앞의 [Protocols (프로토콜; 규약)](#protocols-프로토콜-규약) 부분을 참고하기 바랍니다.
 
-[^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에서 공통으로 발생하는 소프트웨어 디자인 문제에 대한 일반적이며, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 항목과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 보도록 합니다.   
+[^design-pattern]: '디자인 패턴 (design pattern)' 은 주어진 상황에 공통된 소프트웨어 문제에 대한 일반적이고, 재사용 가능한 해결책을 의미합니다. 디자인 패턴에 대한 더 자세한 정보는, 위키피디아의 [Software design pattern](https://en.wikipedia.org/wiki/Software_design_pattern) 과 [소프트웨어 디자인 패턴](https://ko.wikipedia.org/wiki/소프트웨어_디자인_패턴) 항목을 참고하기 바랍니다.
 
 [^delegate]: 보통 '일-맡은자 (delegate)' 를 대리자라고도 합니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 보도록 합니다.
 
