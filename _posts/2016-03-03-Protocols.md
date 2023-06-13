@@ -299,7 +299,7 @@ for _ in 1...5 {
 
 ### Delegation (맡김)
 
-_맡김 (delegation)_ 은 클래스나 구조체가 그 책임의 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴의 구현은 맡길 책임을 감추고 있는 프로토콜의 정의로 하며, 이를 따르는 타입 (일-맡은자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김을 쓰면 한 특별한 행동에 응답하거나, 외부 소스의 그 밑에 놓인 타입을 모르고도 그 소스로부터 자료를 가져올 수 있습니다.
+_맡김 (delegation)_ 은 클래스나 구조체가 그 책임의 일부를 또 다른 타입의 인스턴스로 넘기거나 (_맡길 (delegate)_ 수)_ 있게 해주는 디자인 패턴[^design-pattern] 입니다. 이 디자인 패턴의 구현은 맡길 책임을 감추고 있는 프로토콜의 정의로 하며, 이를 따르는 타입 (일을-맡은자[^delegate] 라고 함) 이 자신이 맡은 기능을 제공한다는 걸 보증합니다. 맡김을 쓰면 한 특별한 행동에 응답하거나, 외부 소스의 그 밑에 놓인 타입을 모르고도 그 소스로부터 자료를 가져올 수 있습니다.
 
 아래 예제는 주사위-기반 보드 게임에서 쓸 프로토콜을 두 개 정의합니다:
 
@@ -318,7 +318,7 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGame` 프로토콜은 주사위와 엮인 어떤 게임에서도 채택될 수 있는 프로토콜입니다.
 
-`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일-맡은자롤 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 보도록 합니다. 프로토콜을 클래스-전용으로 표시하면 이 장 나중의 `SnakesAndLadders` 클래스가 자신의 일-맡은자를 반드시 약한 참조로 선언하게 해줍니다. [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논의한 것처럼, `AnyObject` 의 상속으로 클래스-전용 프로토콜을 표시합니다.
+`DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일을-맡은자를 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 보기 바랍니다. 프로토콜을 클래스-전용으로 표시[^any-object] 하는 건 이 장 나중에 있는 `SnakesAndLadders` 클래스가 반드시 자신의 일을-맡은자를 약한 참조로 선언하게 해줍니다. 클래스-전용 프로토콜을 표시하려면 `AnyObject` 를 상속하면 되며 ,이는 [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논한 것과 같습니다.
 
 원래 [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장에서 소개한 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전은 주사위-굴림 값으론 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
 
@@ -1013,6 +1013,8 @@ print(differentNumbers.allEqual())
 [^delegate]: 보통 '일-맡은자 (delegate)' 를 대리자라고도 합니다. '맡김 (delegation)' 에 대한 더 자세한 내용은 위키피디아의 [Delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern) 항목과, [Proxy pattern](https://en.wikipedia.org/wiki/Proxy_pattern) 항목 및 [프록시 패턴](https://ko.wikipedia.org/wiki/프록시_패턴) 항목을 보도록 합니다.
 
 [^strong-reference-cycles]: '강한 참조 순환 (strong reference cycles)' 은 두 개의 참조 타입 인스턴스들이 서로를 참조하여 어느 것도 해제하지 못하게 하는 것을 말합니다. 강한 참조 순환에 대한 더 자세한 정보는 바로 뒤의 본문에서 설명하는, [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}) 장의 [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 부분을 보도록 합니다. 
+
+[^any-object]: 바로 뒤에서 설명하고 있듯이, `DiceGameDelegate` 프로토콜에 있는 `AnyObject` 가 이 프로토콜을 클래스-전용으로 만들어 줍니다.
 
 [^instantiator]: '인스턴스를 만드는 자 (instantiator)' 는 코드 상에서 인스턴스를 생성하는 곳 또는 그 주체를 의미합니다. 실제 게임을 구현한다면, 일종의 `game manager` 같은 객체가 인스턴스를 생성할 텐데, 이 때 `game manager` 를 인스턴스를 만드는 자라고 할 수 있습니다.
 
