@@ -320,7 +320,7 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGameDelegate` 프로토콜을 채택하면 `DiceGame` 의 진행 상황을 추적할 수 있습니다. 강한 참조 순환[^strong-reference-cycles] 을 막기 위해, 일을-맡은자를 약한 참조로 선언합니다. 약한 참조에 대한 정보는, [Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환) 을 보기 바랍니다. 프로토콜을 클래스-전용으로 표시[^any-object] 하는 건 이 장 나중에 있는 `SnakesAndLadders` 클래스가 반드시 자신의 일을-맡은자를 약한 참조로 선언하게 해줍니다. 클래스-전용 프로토콜을 표시하려면 `AnyObject` 를 상속하면 되며 ,이는 [Class-Only Protocols (클래스-전용 프로토콜)](#class-only-protocols-클래스-전용-프로토콜) 에서 논한 것과 같습니다.
 
-원래 [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 장에서 소개한 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전은 주사위-굴림 값으론 `Dice` 인스턴스를 사용하고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록; 개조한 것입니다:
+원래 [Control Flow (제어 흐름)]({% link docs/swift-books/swift-programming-language/control-flow.md %}) 에서 소개했었던 _뱀과 사다리 (Snakes and Ladders)_ 게임의 한 버전은 이렇습니다. 이 버전에서 개조한 건 주사위-굴림 값으론 `Dice` 인스턴스를 쓰고; `DiceGame` 프로토콜을 채택하며; 자신의 진행 상황은 `DiceGameDelegate` 에 알리도록 한 겁니다:
 
 ```swift
 class SnakesAndLadders: DiceGame {
@@ -355,13 +355,13 @@ class SnakesAndLadders: DiceGame {
 }
 ```
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임의 플레이 설명은, [Break (break 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#break-break-문) 을 참고합니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임 플레이의 설명은, [Break (break 문)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#break-break-문) 을 보기 바랍니다.
 
-이 버전의 게임은, `DiceGame` 프로토콜을 채택한, `SnakesAndLadders` 라는 클래스로 포장되어 있습니다. 이는 프로토콜의 준수를 위해서 획득 가능한 `dice` 속성과 `play()` 메소드를 제공합니다. (`dice` 속성은 초기화 후엔 바뀔 필요가 없고, 프로토콜은 획득 가능할 것만을 요구하기 때문에, 상수 속성으로 선언합니다.)
+이 버전의 게임은 `SnakesAndLadders` 라는 클래스로 감싸여 있는데, 이는 `DiceGame` 프로토콜을 채택합니다. 이는 획득 가능한 `dice` 속성과 `play()` 메소드를 제공해야 프로토콜을 따르게 됩니다. (`dice` 속성을 상수 속성으로 선언한 건 초기화 후엔 이게 바뀔 필요가 없고, 프로토콜이 요구하는 건 획득가능만 하라는 것이기 때문입니다.)
 
-_뱀과 사다리 (Snakes and Ladders)_ 게임판 설정은 클래스의 `init()` 초기자 안에서 일어납니다. 모든 게임 논리는, 프로토콜의 필수 `dice` 속성으로 자신의 주사위 굴림 값을 제공하는, 프로토콜의 `play` 메소드 안으로 이동합니다.
+_뱀과 사다리 (Snakes and Ladders)_ 게임판은 클래스의 `init()` 초기자에서 설정합니다. 모든 게임 논리는 프로토콜의 `play` 메소드 안으로 이동하며, 프로토콜의 필수 속성인 `dice` 로 자신의 주사위 굴림 값을 제공합니다.
 
-게임 플레이에 일-맡은자 (delegate) 가 필수는 아니기 때문에, `delegate` 속성을 _옵셔널 (optional)_ `DiceGameDelegate`' 로 정의한다는 걸 기억하기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 초기 값을 `nil` 로 자동 설정합니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 속성에 적합한 일-맡은자를 설정할 옵션을 가집니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일-맡은자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
+`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 로 정의된 건, 일을-맡은자 (delegate) 가 게임 플레이에 필수인 건 아니기 때문이라는 걸, 알아두기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 자동으로 초기 값이 `nil` 로 설정됩니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 옵션으로 속성에 알맞게 일을-맡은자를 설정합니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일을-맡은자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
 
 `DiceGameDelegate` 는 게임의 진행 상황을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위의 `play()` 메소드 안에 있는 게임 논리에 편입되어 있어, 새 게임을 시작할 때나, 새 차례의 시작, 또는 게임이 끝날 때, 호출됩니다.
 
@@ -1018,7 +1018,7 @@ print(differentNumbers.allEqual())
 
 [^instantiator]: '인스턴스를 만드는 자 (instantiator)' 는 코드 상에서 인스턴스를 생성하는 곳 또는 그 주체를 의미합니다. 실제 게임을 구현한다면, 일종의 `game manager` 같은 객체가 인스턴스를 생성할 텐데, 이 때 `game manager` 를 인스턴스를 만드는 자라고 할 수 있습니다.
 
-[^weak-reference-cycles]: `DiceGameDelegate` 프로토콜을 클래스-전용으로 만들지 않았다면, 일-맡은자를 `weak` 로 선언할 수 없어서 참조 순환이 발생할 수도 있었을 것입니다.
+[^weak-reference-cycles]: 이건 `DiceGameDelegate` 프로토콜과 `SnakesAndLadders` 클래스가 둘 다 참조 타입이기 때문에 발생하는 것으로, 예제에선 `weak var delegate: DiceGameDelegate?` 라고 `weak` 를 써서 참조 순환을 막고 있습니다. 둘 중 하나가 값 타입이었다면 이럴 필요가 없습니다.
 
 [^optional-chaining]: '옵셔널 사슬 (optional chaining)' 에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다. 
 
