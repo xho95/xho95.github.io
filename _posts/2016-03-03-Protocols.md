@@ -361,13 +361,13 @@ _뱀과 사다리 (Snakes and Ladders)_ 게임 플레이의 설명은, [Break (b
 
 _뱀과 사다리 (Snakes and Ladders)_ 게임판은 클래스의 `init()` 초기자에서 설정합니다. 모든 게임 논리는 프로토콜의 `play` 메소드 안으로 이동하며, 프로토콜의 필수 속성인 `dice` 로 자신의 주사위 굴림 값을 제공합니다.
 
-`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 로 정의된 건, 일을-맡은자 (delegate) 가 게임 플레이에 필수인 건 아니기 때문이라는 걸, 알아두기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 자동으로 초기 값이 `nil` 로 설정됩니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 옵션으로 속성에 알맞게 일을-맡은자를 설정합니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일을-맡은자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
+`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 로 정의된 건, 이 일을-맡은자 (delegate) 가 게임 플레이에 필수인 건 아니기 때문이라는 걸, 알아두기 바랍니다. `delegate` 속성이 옵셔널 타입이기 때문에, 자동으로 초기 값이 `nil` 로 설정됩니다. 그 이후, 게임의 인스턴스를 만드는 자[^instantiator] 가 옵션으로 속성에 알맞게 일을-맡은자를 설정합니다. `DiceGameDelegate` 프로토콜이 클래스-전용이기 때문에, 일을-맡은자를 `weak` 로 선언하여 참조 순환을 막을 수 있습니다.[^weak-reference-cycles]
 
-`DiceGameDelegate` 는 게임의 진행 상황을 추적하는 세 개의 메소드를 제공합니다. 이 세 메소드들은 위의 `play()` 메소드 안에 있는 게임 논리에 편입되어 있어, 새 게임을 시작할 때나, 새 차례의 시작, 또는 게임이 끝날 때, 호출됩니다.
+`DiceGameDelegate` 는 게임 진행 상황을 추적하기 위한 세 개의 메소드를 제공합니다. 이 세 메소드들은 위의 `play()` 메소드에 있는 게임 논리 안에 들어가 있어서, 새로운 게임을 시작하거나, 새로운 차례를 시작할 때, 또는 게임을 끝낼 때, 호출됩니다.
 
-`delegate` 속성은 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드가 일-맡은자의 메소드를 호출할 때마다 옵셔널 사슬[^optional-chaining] 을 사용합니다. `delegate` 속성이 'nil' 이면, 이 일-맡은자의 호출은 에러 없이 우아하게 실패합니다.[^gracefully-fail] `delegate` 속성이 'nil' 이 아니면, 일-맡은자의 메소드를 호출하며, 매개 변수로는 `SnakesAndLadders` 인스턴스를 전달합니다.[^snakes-and-ladders-instance]
+`delegate` 속성이 _옵셔널 (optional)_ `DiceGameDelegate` 이기 때문에, `play()` 메소드는 매 번 옵셔널 사슬[^optional-chaining] 을 써서 일을-맡은자의 메소드를 호출합니다. `delegate` 속성이 **nil** 이면, 이 일을-맡은자의 호출은 우아하게 실패[^gracefully-fail] 하여 에러가 없습니다. `delegate` 속성이 **nil** 이 아니면, 일을-맡은자의 메소드가 호출되며, `SnakesAndLadders` 인스턴스를 매개 변수로 전달합니다.[^snakes-and-ladders-instance]
 
-이 다음 예제가 보여주는 건, `DiceGameDelegate` 프로토콜을 채택한, `DiceGameTracker` 라는 클래스입니다:
+이 다음 예제에서 보여주는 건 `DiceGameTracker` 라는 클래스로, `DiceGameDelegate` 프로토콜을 채택하고 있습니다:
 
 ```swift
 class DiceGameTracker: DiceGameDelegate {
@@ -1020,11 +1020,11 @@ print(differentNumbers.allEqual())
 
 [^weak-reference-cycles]: 이건 `DiceGameDelegate` 프로토콜과 `SnakesAndLadders` 클래스가 둘 다 참조 타입이기 때문에 발생하는 것으로, 예제에선 `weak var delegate: DiceGameDelegate?` 라고 `weak` 를 써서 참조 순환을 막고 있습니다. 둘 중 하나가 값 타입이었다면 이럴 필요가 없습니다.
 
-[^optional-chaining]: '옵셔널 사슬 (optional chaining)' 에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다. 
+[^optional-chaining]: 예제 코드에서 `gameDidStart` 함수를 호출할 때, 앞에 `delegate?` 라고 물음표를 붙여서 호출하는데, 이를 옵셔널 사슬 (optional chaining) 이라고 합니다. 옵셔널 사슬에 대한 더 자세한 정보는 [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 참고하기 바랍니다.
 
-[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 이에 대한 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장의 맨 앞부분 설명을 보도록 합니다.
+[^gracefully-fail]: 스위프트에서 '우아하게 실패한다 (fail gracefully)' 는 건 실행-시간 에러가 발생하지 않는다는 의미입니다. 더 자세한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장의 맨 앞부분에 있는 설명을 참고하기 바랍니다.
 
-[^snakes-and-ladders-instance]: 예제 코드에 있는 `self` 가 `SnakesAndLadders` 인스턴스입니다.
+[^snakes-and-ladders-instance]: 예제 코드에서 `self` 자체가 `SnakesAndLadders` 의 인스턴스입니다.
 
 [^array-element]: 즉, 본문 예제에서 `Array` 가 `TextRepresentable` 을 준수하는 조건은 `Array` 의 `Element` 가 `TextRepresentable` 을 준수할 때입니다.
 
