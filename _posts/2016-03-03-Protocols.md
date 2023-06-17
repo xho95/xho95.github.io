@@ -408,16 +408,16 @@ game.play()
 // Rolled a 5 (5가 나옴)
 // Rolled a 4 (4가 나옴)
 // Rolled a 5 (5가 나옴)
-// The game lasted for 4 turns (게임을 4턴 동안 지속함)
+// The game lasted for 4 turns (게임을 4턴 동안 함)
 ```
 
-### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)
+### Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜을 따르게 하기)
 
-기존 타입의 소스 코드에 접근할 수 없는 경우에도, 기존 타입을 확장하면 새로운 프로토콜을 채택하고 준수할 수 있습니다. 익스텐션 (extensions) 은 기존 타입에 새로운 속성, 메소드, 및 첨자 연산을 추가할 수 있으며, 따라서 프로토콜이 요구할 수도 있는 어떤 필수 조건을 추가하는 것도 가능합니다. 익스텐션에 대한 더 많은 것은, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 장을 보도록 합니다.
+이미 있는 타입을 확장하여 새로운 프로토콜을 채택하고 따르게 할 수 있으며, 심지어 그 타입의 소스 코드에 접근할 수 없어도 그렇습니다. 익스텐션은 이미 있는 타입에 새로운 속성과, 메소드, 및 첨자를 추가할 수 있는데, 따라서 프로토콜이 강요할 수도 있는 어떤 필수 조건이든 추가하는게 가능합니다. 익스텐션에 대한 더 많은 건, [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) 을 보기 바랍니다.
 
-> 익스텐션에서 인스턴스의 타입에 프로토콜 준수성을 추가할 때 타입의 기존 인스턴스는 자동으로 그 프로토콜을 채택하고 준수합니다.
+> 익스텐션에서 인스턴스의 타입이 프로토콜을 따르게 하는 걸 추가할 땐 그 타입에서 이미 있던 인스턴스들도 자동으로 프로토콜을 채택하고 따르게 됩니다.
 
-예를 들어, 어떤 타입이든, `TextRepresentable` 이라는, 다음 프로토콜을 구현하면 텍스트로 나타낼 방법을 가질 수 있습니다. 이는 그 자신에 대한 설명이거나, 현재 상태에 대한 텍스트 버전일 수 있습니다:
+예를 들어, 이, `TextRepresentable` 이라는 프로토콜을, 구현한 어떤 타입이든 자신을 글로 나타낼 방법을 가질 수 있습니다. 이는 그 자체의 설명일 수도, 현재 상태의 텍스트 버전일 수도 있습니다:
 
 ```swift
 protocol TextRepresentable {
