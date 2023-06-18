@@ -425,7 +425,7 @@ protocol TextRepresentable {
 }
 ```
 
-위에 있는 `Dice` 클래스를 확장하여 `TextRepresentable` 을 채택하고 준수하게 할 수 있습니다:
+위에 있는 `Dice` 클래스를 확장하여 `TextRepresentable` 을 채택하고 따르게 할 수 있습니다:
 
 ```swift
 extension Dice: TextRepresentable {
@@ -435,7 +435,7 @@ extension Dice: TextRepresentable {
 }
 ```
 
-이 익스텐션은 마치 `Dice` 가 자신의 원본 구현에서 새로운 프로토콜을 제공한 것과 정확히 똑같은 방식으로 이를 채택합니다. 프로토콜 이름은 타입 이름 뒤에, 콜론으로 구분하여, 제공하며, 프로토콜의 모든 필수 조건은 익스텐션 중괄호 안에 구현합니다.
+이 익스텐션에서 새로운 프로토콜을 채택하는 방식은 마치 `Dice` 의 원본 구현에서 이를 제공했을 경우와 정확히 똑같습니다. 프로토콜 이름은 타입 이름 뒤에, 콜론으로 구분하여 제공하고, 프로토콜의 모든 필수 조건은 익스텐션의 중괄호 안에서 구현합니다.
 
 어떤 `Dice` 인스턴스든 이제 `TextRepresentable` 로 취급할 수 있습니다:
 
@@ -445,7 +445,7 @@ print(d12.textualDescription)
 // "A 12-sided dice" 를 인쇄함
 ```
 
-이와 비슷하게, `SnakesAndLadders` 게임 클래스가 `TextRepresentable` 프로토콜을 채택하고 준수하게 확장할 수도 있습니다:
+이와 비슷하게, `SnakesAndLadders` 게임 클래스를 확장하여 `TextRepresentable` 프로토콜을 채택하고 따르게 할 수도 있습니다:
 
 ```swift
 extension SnakesAndLadders: TextRepresentable {
