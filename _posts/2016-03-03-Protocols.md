@@ -475,9 +475,9 @@ print(myDice.textualDescription)
 // "[A 6-sided dice, A 12-sided dice]" 를 인쇄함
 ```
 
-#### Declaring Protocol Adoption with an Extension (익스텐션으로 프로토콜 채택 선언하기)
+#### Declaring Protocol Adoption with an Extension (익스텐션으로 프로토콜 채택한다고 선언하기)
 
-타입이 프로토콜의 모든 필수 조건을 이미 준수하고 있지만, 그 프로토콜을 채택한다고 아직 알리지 않은 경우라면, 빈 익스텐션으로 프로토콜을 채택하게 할 수 있습니다:
+타입이 이미 프로토콜의 모든 필수 조건을 따르고 있지만, 아직 그 프로토콜을 채택한다고 알리지 않았다면, 빈 익스텐션으로 그 프로토콜을 채택하게 할 수 있습니다:
 
 ```swift
 struct Hamster {
@@ -489,7 +489,7 @@ struct Hamster {
 extension Hamster: TextRepresentable {}
 ```
 
-이제 `TextRepresentable` 이 필수 타입인 곳마다 `Hamster` 인스턴스를 사용할 수 있습니다:
+이제 `Hamster` 인스턴스는 `TextRepresentable` 이 필수 타입인 곳마다 쓸 수 있습니다:
 
 ```swift
 let simonTheHamster = Hamster(name: "Simon")
@@ -498,7 +498,7 @@ print(somethingTextRepresentable.textualDescription)
 // "A hamster named Simon" 을 인쇄함
 ```
 
-> 프로토콜의 필수 조건을 만족한다고 해서 타입이 이를 자동으로 채택하진 않습니다. 반드시 자신이 프로토콜을 채택한다는 걸 명시적으로 선언해야 합니다.[^adoption]
+> 타입은 프로토콜의 필수 조건을 만족한다고 해서 이를 자동으로 채택하지 않습니다. 반드시 프로토콜을 채택한다는 선언을 명시해야 합니다.[^adoption]
 
 ### Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)
 
@@ -1028,7 +1028,7 @@ print(differentNumbers.allEqual())
 
 [^array-element]: 즉, 본문 예제에서 `Array` 가 `TextRepresentable` 을 준수하는 조건은 `Array` 의 `Element` 가 `TextRepresentable` 을 준수할 때입니다.
 
-[^adoption]: 이것이 스위프트에서 채택 (adoption) 과 준수 (conformance) 를 명확히 구분하여 사용하는 이유입니다.
+[^adoption]: 이것이 스위프트에서 채택 (adoption) 과 따름 (conformance) 를 명확히 구분하는 이유입니다.
 
 [^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 보도록 합니다. 
 
