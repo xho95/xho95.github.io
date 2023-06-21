@@ -500,19 +500,19 @@ print(somethingTextRepresentable.textualDescription)
 
 > 타입은 프로토콜의 필수 조건을 만족한다고 해서 이를 자동으로 채택하지 않습니다. 반드시 프로토콜을 채택한다는 선언을 명시해야 합니다.[^adoption]
 
-### Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)
+### Adopting a Protocol Using a Synthesized Implementation (만들어져 있는 구현을 써서 프로토콜 채택하기)
 
-스위프트는 수많은 단순한 경우에 `Equatable`, `Hashable`, 및 `Comparable` 에 대한 프로토콜 준수성을 자동으로 제공할 수 있습니다. 이런 통합 구현[^synthesized] 을 사용하면 스스로 프로토콜 필수 조건을 구현하고자 획일된 코드를 반복 작성하지 않아도 된다는 걸 의미합니다.
+스위프트는 수많은 단순한 경우에 `Equatable` 과, `Hashable`, 및 `Comparable` 프로토콜을 자동으로 따르게 할 수 있습니다. 이렇게 만들어져 있는 구현[^synthesized] 을 쓰는 건 틀에 박힌 코드를 작성하는 걸 반복하면서 직접 프로토콜의 필수 조건을 구현하지 않아도 된다는 의미입니다.
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Equatable` 의 통합 구현을 제공합니다:
+스위프트는 다음 종류의 자신만의 타입에 대해 만들어져 있는 `Equatable` 구현을 제공합니다:
 
-* `Equatable` 프로토콜을 준수한 저장 속성만 있는 구조체
-* `Equatable` 프로토콜을 준수한 결합 타입[^associated-types] 만 있는 열거체
-* 아무런 결합 타입도 없는 열거체
+* 구조체에 `Equatable` 프로토콜을 따르는 저장 속성만 있음
+* 열거체에 `Equatable` 프로토콜을 따르는 결합 타입[^associated-types] 만 있음
+* 열거체에 아무런 결합 타입도 없음
 
-`==` 의 통합 구현을 받으려면, `==` 연산자를 직접 구현하지 말고, 원본 선언을 담은 파일에서 `Equatable` 준수성을 선언합니다. `Equatable` 프로토콜은 `!=` 의 기본 구현을 제공합니다.
+만들어져 있는 `==` 의 구현을 받으려면, 직접 `==` 연산자를 구현하지 말고, 원본 선언을 담은 파일에서 `Equatable` 을 따른다고 선언합니다. `Equatable` 프로토콜은 `!=` 의 기본 구현도 제공합니다.
 
-아래 예제는 3-차원 위치 벡터 `(x, y, z)` 를 위해, `Vector2D` 구조체와 비슷한, `Vector3D` 구조체를 정의합니다. `x`, `y`, 및 `z` 속성 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 같음 비교 연산자[^equivalence] 의 통합 구현을 받습니다.
+아래 예제는 3-차원 위치 벡터 `(x, y, z)` 를 위한 `Vector3D` 구조체를 정의하며, 이는 `Vector2D` 구조체와 비슷합니다. `x`, `y`, `z` 속성이 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 같음 비교 연산자[^equivalence] 에 대해서 만들어져 있는 구현을 받습니다.
 
 ```swift
 struct Vector3D: Equatable {
@@ -1032,11 +1032,11 @@ print(differentNumbers.allEqual())
 
 [^generic-type]: '일반화 타입 (generic type)' 은 어떤 타입하고도 작업할 수 있는 타입을 의미합니다. 일반화 타입에 대한 더 자세한 내용은, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Generic Types (일반화 타입)](#generic-types-일반화-타입) 부분을 보도록 합니다. 
 
-[^synthesized]: 본문에서 말하는 '통합 구현 (synthesized implementation)' 은 스위프트 내부에 이미 구현되어 있다는 의미입니다. 즉, `Equatable` 프로토콜 같은 건 이미 스위프트에 있는 걸 그냥 사용하면 됩니다.
+[^synthesized]: '만들어져 있는 구현 (synthesized implementation)' 이란 스위프트 안에 이미 구현되어 있는 것으로, 예를 들어, `Equatable` 프로토콜을 채택하면 이를 따르게 하기 위한 코드를 따로 구현할 필요가 없다는 의미입니다.
 
-[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% link docs/swift-books/swift-programming-language/enumerations.md %}) 장의 [Associated Values (결합 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 보도록 합니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/swift-books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분도 보도록 합니다.
+[^associated-types]: '결합 타입 (associated types)' 이란 열거체에 있는 '결합 값 (associated values) 의 타입' 을 의미합니다. 열거체의 결합 값에 대한 더 많은 정보는, [Enumerations (열거체)]({% link docs/swift-books/swift-programming-language/enumerations.md %}) 장의 [Associated Values (결합 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#associated-values-결합-값) 부분을 참고하기 바랍니다. 일반적인 의미에서의 결합 타입에 대해서는, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/swift-books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분도 참고하기 바랍니다.
 
-[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 '동치' 와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자, 동치 연산자,같음 연산자' 등으로 옮길 수 있는데, 위키피디아에서 '같음 (equal to)' 을 사용하고 있어서, 같음 비교라는 말을 사용합니다. 관계 연산자에 대한 더 자세한 내용은, 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 보도록 합니다.
+[^equivalence]: '같음 비교 (equivalence)' 는 수학에서 말하는 동치와 같은 개념입니다. 'equivalence operators' 는 우리말로 '동등 연산자, 동치 연산자,같음 연산자' 등으로 옮길 수 있는데, 위키피디아에서 '같음 (equal to)' 을 사용하고 있어서, 같음 비교라는 말을 사용합니다. 관계 연산자에 대한 더 자세한 내용은, 위키피디아의 [Relational operator](https://en.wikipedia.org/wiki/Relational_operator) 항목과 [관계 연산자](https://ko.wikipedia.org/wiki/관계연산자) 항목을 참고하기 바랍니다.
 
 [^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% link docs/swift-books/swift-programming-language/enumerations.md %}) 장에 있는 [Raw Values (원시 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 부분을 보도록 합니다.
 

@@ -42,7 +42,7 @@ categories: Swift Language Grammar Revision History
 
 * 스위프트 5.3 에서 업데이트함.
 * '뒤에 딸린 여러 개의 클로저 (multiple trailing closures)' 에 대한 정보를 [Trailing Closures (뒤에 딸린 클로저)]({% link docs/swift-books/swift-programming-language/closures.md %}#trailing-closures-뒤에-딸린-클로저) 절에 추가했으며, 뒤에 딸린 클로저를 매개 변수와 일치시키는 방법에 대한 정보는 [Function Call Expression (함수 호출 표현식)]({% link docs/swift-books/swift-programming-language/expressions.md %}#function-call-expression-함수-호출-표현식) 절에 추가함.
-* 열거체에 대한 `Comparable` 의 통합된 구현에 대한 정보를 [Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-사용하여-프로토콜-채택하기) 절에 추가함.
+* 열거체를 위해 만들어진 `Comparable` 구현에 대한 정보를 [Adopting a Protocol Using a Synthesized Implementation (만들어져 있는 구현을 써서 프로토콜 채택하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adopting-a-protocol-using-a-synthesized-implementation-만들어져-있는-구현을-써서-프로토콜-채택하기) 절에 추가함.
 * [Contextual Where Clauses (상황별 where 절)]({% link docs/swift-books/swift-programming-language/generics.md %}#contextual-where-clauses-상황별-where-절) 부분을 추가했으며 이제 더 많은 곳에서 '일반화된 (generic) `where` 절' 을 작성할 수 있음.
 * 옵셔널 값에 대한 '소유하지 않는 참조 (undowned reference)' 의 사용에 대한 정보를 [Unowned Optional References (소유하지 않는 옵셔널 참조)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}#unowned-optional-references-소유하지-않는-옵셔널-참조) 절에 추가함.
 * '`@main` 특성 (attribute)' 에 대한 정보를 [main (메인)]({% link docs/swift-books/swift-programming-language/attributes.md %}#main-메인) 절에 추가함.

@@ -395,7 +395,7 @@ if twoThree == anotherTwoThree {
 // "These two vectors are equivalent." 를 인쇄함
 ```
 
-[Adopting a Protocol Using a Synthesized Implementation (통합 구현을 사용하여 프로토콜 채택하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adopting-a-protocol-using-a-synthesized-implementation-통합-구현을-사용하여-프로토콜-채택하기) 에서 설명한 것처럼, 수많은 단순한 경우에, 스위프트가 같음 비교 연산자의 통합 구현을 제공하도록 요청할 수 있습니다.
+[Adopting a Protocol Using a Synthesized Implementation (만들어져 있는 구현을 써서 프로토콜 채택하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adopting-a-protocol-using-a-synthesized-implementation-만들어져-있는-구현을-써서-프로토콜 채택하기) 에서 설명한 것처럼, 수많은 단순한 경우에, 스위프트가 같음 비교 연산자에 대해 만들어져 있는 구현을 제공하도록 요청할 수 있습니다.
 
 ### Custom Operators (사용자 정의 연산자)
 
