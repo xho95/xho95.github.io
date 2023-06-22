@@ -504,13 +504,13 @@ print(somethingTextRepresentable.textualDescription)
 
 스위프트는 수많은 단순한 경우에 `Equatable` 과, `Hashable`, 및 `Comparable` 프로토콜을 자동으로 따르게 할 수 있습니다. 이렇게 만들어져 있는 구현[^synthesized] 을 쓰는 건 틀에 박힌 코드를 작성하는 걸 반복하면서 직접 프로토콜의 필수 조건을 구현하지 않아도 된다는 의미입니다.
 
-스위프트는 다음 종류의 자신만의 타입에 대해 만들어져 있는 `Equatable` 구현을 제공합니다:
+스위프트는 다음 종류의 타입에 대해 만들어져 있는 `Equatable` 구현을 제공합니다:
 
 * 구조체에 `Equatable` 프로토콜을 따르는 저장 속성만 있음
 * 열거체에 `Equatable` 프로토콜을 따르는 결합 타입[^associated-types] 만 있음
 * 열거체에 아무런 결합 타입도 없음
 
-만들어져 있는 `==` 의 구현을 받으려면, 직접 `==` 연산자를 구현하지 말고, 원본 선언을 담은 파일에서 `Equatable` 을 따른다고 선언합니다. `Equatable` 프로토콜은 `!=` 의 기본 구현도 제공합니다.
+만들어져 있는 `==` 의 구현을 받으려면, 직접 `==` 연산자를 구현하지 말고, 원본 선언을 담은 파일에서 `Equatable` 을 따른다고 선언하면 됩니다. `Equatable` 프로토콜은 `!=` 의 기본 구현도 제공합니다.
 
 아래 예제는 3-차원 위치 벡터 `(x, y, z)` 를 위한 `Vector3D` 구조체를 정의하며, 이는 `Vector2D` 구조체와 비슷합니다. `x`, `y`, `z` 속성이 모두 `Equatable` 타입이기 때문에, `Vector3D` 는 같음 비교 연산자[^equivalence] 에 대해서 만들어져 있는 구현을 받습니다.
 
@@ -527,17 +527,17 @@ if twoThreeFour == anotherTwoThreeFour {
 // "These two vectors are also equivalent." 를 인쇄함
 ```
 
-스위프트는 다음 종류의 사용자 정의 타입에 대해서 `Hashable` 의 통합 구현을 제공합니다:
+스위프트는 다음 종류의 타입에 대해 만들어져 있는 `Hashable` 구현을 제공합니다:
 
-* `Hashable` 프로토콜을 준수한 저장 속성만 있는 구조체
-* `Hashable` 프로토콜을 준수한 결합 타입만 있는 열거체
-* 아무런 결합 타입도 없는 열거체
+* 구조체에 `Hashable` 프로토콜을 따르는 저장 속성만 있음
+* 열거체에 `Hashable` 프로토콜을 따르는 결합 타입만 있음
+* 열거체에 아무런 결합 타입도 없음
 
-`hash(into:)` 의 통합 구현을 받으려면, `hash(into:)` 메소드를 직접 구현하지 말고, 원본 선언을 담은 파일에서 `Hashable` 준수성을 선언합니다.
+만들어져 있는 `hash(into:)` 의 구현을 받으려면, 직접 `hash(into:)` 메소드를 구현하지 말고, 원본 선언을 담은 파일에서 `Hashable` 을 따른다고 선언하면 됩니다.
 
-스위프트는 원시 값[^raw-values] 이 없는 열거체에 `Comparable` 의 통합 구현을 제공합니다. 열거체에 결합 타입이 있으면, 이들 모두 반드시 `Comparable` 프로토콜을 준수해야 합니다. `<` 의 통합 구현을 받으려면, `<` 연산자를 직접 구현하지 말고, 원본 열거체 선언을 담은 파일에서 `Comparable` 준수성을 선언합니다. `<=`, `>`, 및 `>=` 의 `Comparable` 프로토콜 기본 구현은 그 외 나머지 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
+스위프트는 열거체에 원시 값[^raw-values] 이 없을 경우 만들어져 있는 `Comparable` 의 구현을 제공합니다. 열거체에 결합 타입이 있다면, 이들 모두 반드시 `Comparable` 프로토콜을 따라야 합니다. 만들어져 있는 `<` 의 구현을 받으려면, 직접 `<` 연산자를 구현하지 말고, 원본 열거체 선언을 담은 파일에서 `Comparable` 을 따른다고 선언하면 됩니다. `Comparable` 프로토콜에 있는 `<=` 와, `>`, 및 `>=` 의 기본 구현은 그 외 나머지 비교 연산자들을 제공합니다.[^remaining-comparison-operators]
 
-아래 예제는 초급자, 중급자, 및 전문가라는 case 를 가진 `SkillLevel` 열거체를 정의합니다. 전문가는 자신이 가진 별의 개수에 따라 추가로 등급을 나눕니다.
+아래 예제에서 정의한 `SkillLevel` 열거체에는 초급자, 중급자, 및 전문가라는 case 가 있습니다. 전문가는 자신에게 있는 별의 개수로 추가로 등급이 나뉩니다.
 
 ```swift
 enum SkillLevel: Comparable {
@@ -1040,7 +1040,7 @@ print(differentNumbers.allEqual())
 
 [^raw-values]: '원시 값 (raw values)' 에 대한 더 자세한 정보는, [Enumerations (열거체)]({% link docs/swift-books/swift-programming-language/enumerations.md %}) 장에 있는 [Raw Values (원시 값)]({% link docs/swift-books/swift-programming-language/enumerations.md %}#raw-values-원시-값) 부분을 보도록 합니다.
 
-[^remaining-comparison-operators]: 스위프트는 `<` 연산자의 통합 구현 외에도, `<=`, `>`, `>=` 연산자들의 기본 구현을 제공하는데, 이러한 기본 구현들이 나머지 연산자들의 구현을 제공한다는 의미입니다. 즉, `<` 연산자의 통합 구현을 받으면, 그 외 나머지 연산자들은 구현하지 않아도 됩니다.
+[^remaining-comparison-operators]: 스위프트에는 `<` 연산자의 구현이 만들여져 있는 것외에도, `<=`, `>`, `>=` 연산자들에 대한 기본 구현도 제공하는데, 이 기본 구현들로 나머지 연산자들을 구현한다는 의미입니다. 즉, 만들어져 있는 `<` 연산자의 구현을 받으면, 나머지 연산자들은 구현하지 않아도 됩니다.
 
 [^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
