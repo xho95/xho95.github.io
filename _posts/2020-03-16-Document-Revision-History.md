@@ -10,6 +10,13 @@ categories: Swift Language Grammar Revision History
 
 ## Document Revision History (문서를 다듬은 역사)
 
+#### 2023-03-30
+
+* 스위프트 5.8 업데이트.
+* [Deferred Actions (미뤄둔 행동)]({% link docs/swift-books/swift-programming-language/control-flow.md %}#deferred-actions-미뤄둔-행동) 절을 추가하여, 에러 처리 이외의 `defer` 를 보여줌.
+* **Swift-DocC** 를 채택하여 출판함.[^swift-docc]
+* 전체적으로 자잘한 것들을 바로 잡고 추가함.
+
 #### 2022-09-12
 
 * 스위프트 5.7 에서 업데이트함.
@@ -340,6 +347,8 @@ categories: Swift Language Grammar Revision History
 ### 참고 자료
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Document Revision History](https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html) 에서 볼 수 있습니다.
+
+[^swift-docc]: **Swift-DocC** 로 출판했다는 것은 웹 버전으로 공개한 **스위프트 프로그래밍 언어** 책에 **Swift-DocC** 를 적용했다는 의미입니다.
 
 [^dynamic-type-expression]: '동적 타입 표현식 (Dynamic Type Expression)' 에 대한 내용은 [2017-03-27](#2017-03-27) 일에 공개한 스위프트 3.1 에서 제거되었기 때문에 링크가 없습니다.
 
