@@ -461,7 +461,7 @@ print(game.textualDescription)
 
 일반화 타입[^generic-type] 은, 타입의 일반화 매개 변수가 프로토콜을 따를 때 같이, 특정 조건에서만 프로토콜의 필수 조건을 만족할 수 있을 수도 있습니다. 일반화 타입이 조건에 따라 프로토콜을 따르게 하려면 타입을 확장할 때 구속 조건을 나열하면 됩니다. 채택하려는 프로토콜 이름 뒤에 이러한 구속 조건을 쓰려면 일반화 `where` 절을 쓰면 됩니다. 일반화 `where` 절에 대한 더 많은 건, [Generic Where Clauses (일반화 'where' 절)]({% link docs/swift-books/swift-programming-language/generics.md %}#generic-where-clauses-일반화-where-절) 을 보기 바랍니다.
 
-다음 익스텐션은 `Array` 인스턴스에 저장된 원소의 타입이 `TextRepresentable` 을 따를 때마다 이게 `TextRepresentable` 프로토콜을 따르게 합니다.[^array-element]
+다음 익스텐션은 `Array` 인스턴스에 저장된 원소의 타입이 `TextRepresentable` 을 따를 때마다 자신도 `TextRepresentable` 프로토콜을 따르게 합니다.[^array-element]
 
 ```swift
 extension Array: TextRepresentable where Element: TextRepresentable {
@@ -558,24 +558,24 @@ for level in levels.sorted() {
 
 ### Collections of Protocol Types (프로토콜 타입의 집합체)
 
-[Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 것처럼, 배열이나 딕셔너리 같은 집합체에 저장할 타입으로 프로토콜을 사용할 수 있습니다. 다음 예제는 `TextRepresentable` (문장으로 나타낼 수 있는) 것들의 배열을 생성합니다:
+프로토콜을 배열이나 딕셔너리 같은 집합체에 저장될 타입으로 쓸 수 있는데, 이는 [Protocols as Types (타입으로써의 프로토콜)](#protocols-as-types-타입으로써의-프로토콜) 에서 언급한 바 있습니다. 이번 예제는 `TextRepresentable` 인 것들의 배열을 생성합니다:
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 ```
 
-이제 배열의 항목을 반복하고, 각 항목의 설명 문장을 인쇄하는게 가능합니다:
+이제 배열의 항목을 반복하여, 각각의 항목마다 글로 된 설명을 인쇄하는게 가능합니다:
 
 ```swift
 for thing in things {
   print(thing.textualDescription)
 }
-// A game of Snakes and Ladders with 25 squares (정사각형이 25칸 있는 뱀과 사다리 게임)
+// A game of Snakes and Ladders with 25 squares (정사각형 25개로 된 뱀과 사다리 게임)
 // A 12-sided dice (12-면체 주사위)
 // A hamster named Simon (이름이 Simon 인 햄스터)
 ```
 
-`thing` 상수의 타입은 `TextRepresentable` 임을 기억하기 바랍니다. 실제 인스턴스의 이면이 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입인 경우에도, 이 타입들인 건 아닙니다. 그럼에도 불구하고, `TextRepresentable` 티입이기 때문에, 그리고 `TextRepresentable` 인 어떤 것이든 `textualDescription` 속성을 가진다는 걸 알기 때문에, 매 반복문을 통과할 때마다 `thing.textualDescription` 에 접근해도 안전합니다.
+`thing` 상수는 `TextRepresentable` 타입이라는 걸 알아두기 바랍니다. 이는 `Dice` 나, `DiceGame`, 또는 `Hamster` 타입인 게 아니며, 심지어 그 속의 실제 인스턴스는 이들 타입이더라도 그렇습니다. 그럼에도 불구하고, `TextRepresentable` 티입이고, `TextRepresentable` 인 어떤 것에도 `textualDescription` 속성이 있다는 걸 알기 때문에, 매 번 반복문을 통과할 때 `thing.textualDescription` 으로 접근해도 안전합니다.
 
 ### Protocol Inheritance (프로토콜 상속)
 
