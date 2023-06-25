@@ -579,7 +579,7 @@ for thing in things {
 
 ### Protocol Inheritance (프로토콜 상속)
 
-프로토콜은 하나 이상의 다른 프로토콜을 _상속 (inherit)_ 할 수 있으며 자신이 상속한 필수 조건 위에 필수 조건을 더 추가할 수도 있습니다. 프로토콜 상속 구문은 클래스 상속 구문과 비슷하지만, 옵션으로 상속할 프로토콜 여러 개를, 쉼표로 구분하여, 나열할 수 있습니다[^multiple-inherited-protocols]:
+프로토콜은 다른 프로토콜을 하나 이상 _상속 (inherit)_ 할 수 있으며 자신이 상속받은 필수 조건 위에다가 필수 조건을 더 추가할 수도 있습니다. 프로토콜 상속 구문은 클래스 상속 구문과 비슷하지만, 상속할 프로토콜을, 쉼표로 구분하여, 여러 개 나열하는 옵션이 있습니다.[^multiple-inherited-protocols]:
 
 ```swift
 protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
@@ -587,7 +587,7 @@ protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
 }
 ```
 
-위에 있는 `TextRepresentable` 프로토콜을 상속한 프로토콜 예제는 이렇습니다:
+위에 있는 `TextRepresentable` 프로토콜을 상속하는 프로토콜의 예는 이렇습니다:
 
 ```swift
 protocol PrettyTextRepresentable: TextRepresentable {
@@ -595,9 +595,9 @@ protocol PrettyTextRepresentable: TextRepresentable {
 }
 ```
 
-이 예제는, `PrettyTextRepresentable` 이라는, `TextRepresentable` 을 상속한, 새 프로토콜을 정의합니다. `PrettyTextRepresentable` 을 채택한 어떤 것이든 반드시 `TextRepresentable` 이 강제한 모든 필수 조건에, _더해서 (plus)_ `PrettyTextRepresentable` 이 강제한 추가 필수 조건도, 만족해야 합니다. 이 예제의, `PrettyTextRepresentable` 은 `String` 을 반환하는 `prettyTextualDescription` 이라는 획득 가능 속성을 제공하라는 단일 필수 조건을 추가합니다.
+이 예제에서 정의한 새로운 프로토콜인, `PrettyTextRepresentable` 은, `TextRepresentable` 을 상속합니다. `PrettyTextRepresentable` 을 채택한 건 어떤 것이든 반드시 `TextRepresentable` 이 강제하는 모든 필수 조건에, _더하여 (plus)_ `PrettyTextRepresentable` 이 강제하는 추가적인 필수 조건도, 만족해야 합니다. 이 예제에서, `PrettyTextRepresentable` 이 추가하는 단 하나의 필수 조건은 `String` 을 반환하는 획득 가능 속성인 `prettyTextualDescription` 을 제공하라는 겁니다.
 
-`SnakesAndLadders` 클래스를 확장하여 `PrettyTextRepresentable` 을 채택하고 준수하도록 할 수 있습니다:
+`SnakesAndLadders` 클래스를 확장하여 `PrettyTextRepresentable` 을 채택하고 준수하게 할 수도 있습니다:
 
 ```swift
 extension SnakesAndLadders: PrettyTextRepresentable {
@@ -1042,7 +1042,7 @@ print(differentNumbers.allEqual())
 
 [^remaining-comparison-operators]: 스위프트에는 `<` 연산자의 구현이 만들여져 있는 것외에도, `<=`, `>`, `>=` 연산자들에 대한 기본 구현도 제공하는데, 이 기본 구현들로 나머지 연산자들을 구현한다는 의미입니다. 즉, 만들어져 있는 `<` 연산자의 구현을 받으면, 나머지 연산자들은 구현하지 않아도 됩니다.
 
-[^multiple-inherited-protocols]: 스위프트의 상속은 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
+[^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
 [^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다.
 
