@@ -618,13 +618,13 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 }
 ```
 
-이 익스텐션은 `SnakesAndLadders` 타입이 `PrettyTextRepresentable` 프로토콜을 채택한다는 걸 알리며 이를 위해 `prettyTextualDescription` 속성의 구현부를 제공합니다. `PrettyTextRepresentable` 인 어떤 것도 반드시 `TextRepresentable` 이므로, `prettyTextualDescription` 구현은 출력 문자열의 시작을 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성 접근으로 시작합니다. 콜론 (`:`) 과 줄 끊음 (`\n`) 을 덧붙이고, 자신의 꾸밈 문장을 시작합니다. 그런 다음 정사각형 판의 배열을 반복하고, 각각의 정사각형 내용물을 나타내는 기하 도형을 덧붙입니다:
+이 익스텐션은 `SnakesAndLadders` 타입이 `PrettyTextRepresentable` 프로토콜을 채택한다고 알리며 이를 위해 `prettyTextualDescription` 속성의 구현을 제공합니다. `PrettyTextRepresentable` 인 어떤 것이든 반드시 `TextRepresentable` 이기도 하므로, `prettyTextualDescription` 구현은 출력 문자열의 맨 앞을 `TextRepresentable` 프로토콜에 있는 `textualDescription` 속성에 접근하는 걸로 시작합니다. 콜론 (`:`) 과 줄 끊음 (`\n`) 을 덧붙여서, 이걸로 자신을 예쁘게 설명하는 글을 시작합니다. 그런 다음 정사각형 판을 반복하면서, 각 정사각형의 내용물을 나타내는 기하학 도형을 덧붙입니다:
 
-* 정사각형 값이 `0` 보다 크면, 사다리의 기초이므로, `▲` 로 나타냅니다.
-* 정사각형 값이 `0` 보다 작으면, 뱀의 머리이므로, `▼` 로 나타냅니다.
-* 그 외의 경우, 정사각형 값은 `0` 이고, "자유 (free)" 정사각형이라, `○` 로 나타냅니다.
+* 정사각형 값이 `0` 보다 크면, 사다리의 기초 부분이며, `▲` 를 나타냅니다.
+* 정사각형 값이 `0` 보다 작으면, 뱀의 머리이며, `▼` 로 나타냅니다.
+* 그 외의 경우, 정사각형 값은 `0` 이고, "자유로운 (free)" 정사각형이므로, `○` 로 나타냅니다.
 
-이제 `prettyTextualDescription` 속성을 사용하면 어떤 `SnakesAndLadders` 인스턴스의 꾸밈 문장 설명도 인쇄할 수 있습니다:
+이제 `prettyTextualDescription` 속성을 써서 어떤 `SnakesAndLadders` 인스턴스에 대해서는 이를 예쁘게 설명하는 글을 인쇄할 수 있습니다:
 
 ```swift
 print(game.prettyTextualDescription)
