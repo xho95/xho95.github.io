@@ -634,7 +634,7 @@ print(game.prettyTextualDescription)
 
 ### Class-Only Protocols (클래스-전용 프로토콜)
 
-프로토콜 상속 목록에 `AnyObject` 프로토콜을 추가함으로써 프로토콜 채택을 (구조체나 열거체가 아닌) 클래스 타입으로만 제한할 수 있습니다.
+프로토콜 채택을 클래스 타입만 하도록 (그래서 구조체나 열거체는 안되도록) 제한하려면 프로토콜의 상속 목록에 `AnyObject` 프로토콜을 추가하면 됩니다.
 
 ```swift
 protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
@@ -642,9 +642,9 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 }
 ```
 
-위 예제의, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. `SomeClassOnlyProtocol` 을 채택하려는 구조체 또는 열거체 정의를 작성하면 컴파일-시간 에러입니다.
+위 예제에 있는, `SomeClassOnlyProtocol` 은 클래스 타입만 채택할 수 있습니다. 구조체나 열거체를 정의하면서 `SomeClassOnlyProtocol` 을 채택하려고 하면 컴파일-시간 에러가 됩니다.
 
-> 그 프로토콜의 필수 조건이 정의한 동작이 준수 타입은 값 의미 구조 보단 참조 의미 구조를 가진다고 가정 또는 요구할 때 클래스-전용 프로토콜을 사용합니다. 참조 및 값 의미 구조에 대한 더 많은 내용은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 부분과 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 부분을 보도록 합니다.
+> 클래스-전용 프로토콜은 그 프로토콜의 필수 조건에서 정의한 동작이 이를 따르는 타입이 값 의미 구조 보단 참조 의미 구조를 가진다고 가정하거나 요구할 때 사용합니다. 참조와 값 의미 구조에 대한 더 많은 것들은, [Structures and Enumerations Are Value Types (구조체와 열거체는 값 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#structures-and-enumerations-are-value-types-구조체와-열거체는-값-타입입니다) 와 [Classes Are Reference Types (클래스는 참조 타입입니다)]({% link docs/swift-books/swift-programming-language/structures-and-classes.md %}#classes-are-reference-types-클래스는-참조-타입입니다) 를 보기 바랍니다.
 
 ### Protocol Composition (프로토콜 합성)
 
