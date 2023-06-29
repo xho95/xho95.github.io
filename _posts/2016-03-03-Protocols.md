@@ -677,9 +677,9 @@ wishHappyBirthday(to: birthdayPerson)
 
 예제에선 `wishHappyBirthday(to:)` 라는 함수도 정의합니다. `celebrator` 매개 변수의 타입은 `Named & Aged` 인데, 이는 "`Named` 와 `Aged` 프로토콜 둘 다를 따르는 어떠한 타입" 이라는 의미입니다. 어떤 특정 타입이 함수로 전달되는 지는 중요하지 않으며, 필수 프로토콜을 둘 다 따르기만 하면 됩니다.
 
-그런 다음 예제에서 `birthdayPerson` 이라는 새로운 `Person` 인스턴스를 생성하고 `wishHappyBirthday(to:)` 함수에 이 새 인스턴스를 전달합니다. `Person` 이 두 프로토콜 모두를 준수하기 때문에, 이 호출이 유효하여, `wishHappyBirthday(to:)` 함수가 자신의 생일 인사말을 인쇄할 수 있습니다.
+예제는 그런 다음 새로운 `Person` 인스턴스인 `birthdayPerson` 을 생성하고 이 새로운 인스턴스를 `wishHappyBirthday(to:)` 함수로 전달합니다. `Person` 이 두 프로토콜을 다 따르기 때문에, 이 호출이 유효하여, `wishHappyBirthday(to:)` 함수가 생일 인사말을 인쇄할 수 있습니다.
 
-이전 예제의 `Named` 프로토콜과 `Location` 클래스를 조합한 예제는 이렇습니다:
+이전 예제에 있던 `Named` 프로토콜과 `Location` 클래스를 조합한 예는 이렇습니다:
 
 ```swift
 class Location {
@@ -706,9 +706,9 @@ beginConcert(in: seattle)
 // "Hello, Seattle!" 를 인쇄함
 ```
 
-`beginConcert(in:)` 함수가 취하는 매개 변수의 타입은 `Location & Named` 인데, 이는 "`Location` 의 하위 클래스면서 `Named` 프로토콜을 준수하는 어떤 타입" 이라는 의미입니다. 이 경우, `City` 는 필수 조건 둘 다를 만족합니다.
+`beginConcert(in:)` 함수는 `Location & Named` 티입의 매개 변수를 입력 받는데, 이는 "`Location` 의 하위 클래스면서 `Named` 프로토콜을 따르는 어떤 타입" 을 의미합니다. 이 경우, `City` 는 두 필수 조건 모두 만족합니다.
 
-`beginConcert(in:)` 함수에 `birthdayPerson` 을 전달하는 건 무효인데 `Person` 은 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Location` 의 하위 클래스를 만들었는데 `Named` 프로토콜을 준수하지 않으면, 그 타입의 인스턴스를 가지고 `beginConcert(in:)` 을 호출하는 것도 무효입니다.
+`birthdayPerson` 을 `beginConcert(in:)` 함수로 전달하는 건 무효인데 이는 `Person` 이 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Location` 의 하위 클래스를 만들면서 `Named` 프로토콜을 따르지 않으면, 그 타입의 인스턴스로 `beginConcert(in:)` 을 호출하는 것도 무효입니다.
 
 ### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
 
