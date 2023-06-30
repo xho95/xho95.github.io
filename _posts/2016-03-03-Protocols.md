@@ -710,15 +710,15 @@ beginConcert(in: seattle)
 
 `birthdayPerson` 을 `beginConcert(in:)` 함수로 전달하는 건 무효인데 이는 `Person` 이 `Location` 의 하위 클래스가 아니기 때문입니다. 마찬가지로, `Location` 의 하위 클래스를 만들면서 `Named` 프로토콜을 따르지 않으면, 그 타입의 인스턴스로 `beginConcert(in:)` 을 호출하는 것도 무효입니다.
 
-### Checking for Protocol Conformance (프로토콜 준수성 검사하기)
+### Checking for Protocol Conformance (프로토콜을 따르는지 검사하기)
 
-[Type Casting (타입 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}) 에서 설명한 `is` 와 `as` 연산자를 사용하면 프로토콜 준수성을 검사하고, 특정 프로토콜로 변환할 수 있습니다. 프로토콜 검사 및 변환은 타입 검사 및 변환과 정확하게 동일한 구문을 따릅니다:
+[Type Casting (타입 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}) 에서 설명하는 `is` 와 `as` 연산자를 쓰면 프로토콜을 따르는지 검사할 수도, 특정한 프로토콜로 변환할 수도 있습니다. 프로토콜을 검사하고 변환하는 구문은 타입을 검사하고 변환하는 걸 정확하게 똑같이 따릅니다:
 
-* `is` 연산자는 인스턴스가 프로토콜을 준수하면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다.
-* `as?` 버전의 내림 변환 연산자는 프로토콜 타입의 옵셔널 값을 반환하며, 인스턴스가 그 프로토콜을 준수하지 않으면 이 값이 `nil` 입니다.
-* `as!` 버전의 내림 변환 연산자는 프로토콜 타입으로 강제로 내림 변환하며 내림 변환이 성공하지 않으면 실행 시간 에러를 발동합니다.
+* `is` 연산자는 인스턴스가 프로토콜을 따른다면 `true` 를 반환하고 그렇지 않으면 `false` 를 반환합니다.
+* `as?` 버전의 내림 변환 연산자는 프로토콜 타입에 대한 옵셔널 값을 반환하는데, 인스턴스가 그 프로토콜을 따르지 않으면 이 값이 `nil` 입니다.
+* `as!` 버전의 내림 변환 연산자는 강제로 프로토콜 타입으로 내림 변환하는데 내림 변환이 성공하지 않으면 실행 시간 에러를 발생시킵니다.
 
-이 예제는, 단일 속성 필수 조건으로 `area` 라는 획득 가능한 `Double` 속성을 가진, `HasArea` 라는 프로토콜을 정의합니다:
+이번 예제에서 정의한 프로토콜인 `HasArea` 엔, 획득 가능한 `Double` 속성인 `area` 라는 단 하나의 속성 필수 조건이 있습니다:
 
 ```swift
 protocol HasArea {
@@ -726,7 +726,7 @@ protocol HasArea {
 }
 ```
 
-`Circle` 과 `Country` 라는, 두 클래스, 모두 `HasArea` 프로토콜을 준수하면 이렇습니다:
+여기에 있는 두 클래스인, `Circle` 과 `Country` 는, 둘 다 `HasArea` 프로토콜을 따릅니다:
 
 ```swift
 class Circle: HasArea {
@@ -741,9 +741,9 @@ class Country: HasArea {
 }
 ```
 
-`Circle` 클래스는, `radius` 저장 속성에 기초한, 계산 속성으로 `area` 속성 필수 조건을 구현합니다. `Country` 클래스는 저장 속성으로 직접 `area` 필수 조건을 구현합니다. 두 클래스 모두 `HasArea` 프로토콜을 올바르게 준수합니다.
+`Circle` 클래스는 `area` 속성 필수 조건을, `radius` 저장 속성에 기반한, 계산 속성으로 구현합니다. `Country` 클래스는 직접 `area` 필수 조건을 저장 속성으로 구현합니다. 두 클래스 모두 올바르게 `HasArea` 프로토콜을 따릅니다.
 
-`Animal` 이라는, `HasArea` 프로토콜을 준수하지 않는, 클래스는 이렇습니다:
+여기에 있는 `Animal` 이라는 클래스는, `HasArea` 프로토콜을 따르지 않습니다:
 
 ```swift
 class Animal {
@@ -752,7 +752,7 @@ class Animal {
 }
 ```
 
-`Circle`, `Country`, 및 `Animal` 클래스는 기초 클래스[^base-class] 를 공유하지 않습니다. 그럼에도 불구하고, 모두 클래스라서, 저장 값 타입이 `AnyObject` 인 배열을 초기화하는데 세 타입의 인스턴스 모두를 사용할 수 있습니다:
+`Circle` 과, `Country`, 및 `Animal` 클래스는 공유하는 기초 클래스[^base-class] 가 없습니다. 그럼에도 불구하고, 이 세 타입은 모두 클래스라서, 이들의 인스턴스를 써서 저장 값의 타입이 `AnyObject` 인 배열을 초기화할 수 있습니다:
 
 ```swift
 let objects: [AnyObject] = [
@@ -1044,7 +1044,7 @@ print(differentNumbers.allEqual())
 
 [^multiple-inherited-protocols]: 스위프트에서 클래스는 하나만 상속할 수 있지만, 프로토콜은 여러 개를 상속할 수 있습니다.
 
-[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다.
+[^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 부모 클래스나 상위 클래스 중에서 가장 위에 위치하는 클래스라고 생각하면 됩니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다.
 
 [^type-safe]: '타입-안전 (type-safe) 하다' 는 건 '스위프트가 기본 제공하는 타입 추론 (type inference) 및 타입 검사 (type check) 기능을 사용할 수 있다' 는 의미입니다. 타입 추론 및 타입 검사에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
 
