@@ -752,7 +752,7 @@ class Animal {
 }
 ```
 
-`Circle` 과, `Country`, 및 `Animal` 클래스는 공유하는 기초 클래스[^base-class] 가 없습니다. 그럼에도 불구하고, 이 세 타입은 모두 클래스라서, 이들의 인스턴스를 써서 저장 값의 타입이 `AnyObject` 인 배열을 초기화할 수 있습니다:
+`Circle` 과, `Country`, 및 `Animal` 클래스는 공유하는 기초 클래스[^base-class] 가 없습니다. 그럼에도 불구하고, 이 세 타입은 모두 클래스라서, 이들의 인스턴스로 저장 값 타입이 `AnyObject` 인 배열을 초기화할 수 있습니다:
 
 ```swift
 let objects: [AnyObject] = [
@@ -762,9 +762,9 @@ let objects: [AnyObject] = [
 ]
 ```
 
-`objects` 배열을 초기화하는 배열 글자 값은 반지름이 2인 `Circle` 인스턴스; 제곱 킬로미터 단위의 영국 국토 면적으로 초기화한 `Country` 인스턴스; 및 네 발 달린 `Animal` 인스턴스를 담고 있습니다.
+`objects` 배열을 초기화 하는 건 반지름이 **2** 인 `Circle` 인스턴스와; 제곱 킬로미터 단위의 영국 면적으로 초기화된 `Country` 인스턴스; 및 네 발 달린 `Animal` 인스턴스를 담은 배열 글자 값입니다.
 
-이제 `objects` 배열을 반복하고, 배열 안의 각 객체를 검사하여 `HasArea` 프로토콜을 준수하는지 확인할 수 있습니다:
+이제 `objects` 배열을 반복하며, 배열의 각 객체를 검사해서 `HasArea` 프로토콜을 따르는지 검사할 수 있습니다:
 
 ```swift
 for object in objects {
@@ -779,9 +779,9 @@ for object in objects {
 // Something that doesn't have an area
 ```
 
-배열 안의 객체가 `HasArea` 프로토콜을 준수할 때마다, `as?` 연산자가 반환한 옵셔널 값을 옵셔널 연결로 풀고 `objectWithArea` 라는 상수에 넣습니다. `objectWithArea` 상수의 타입이 `HasArea` 라는 걸 알아서, 타입-안전하게[^type-safe] 자신의 `area` 속성에 접근하고 인쇄할 수 있습니다.
+배열에 있는 객체가 `HasArea` 프로토콜을 따를 때마다, `as?` 연산자가 반환한 옵셔널 값을 옵셔널 연결로 풀어서 `objectWithArea` 라는 상수에 넣습니다. `objectWithArea` 상수가 `HasArea` 타입이라는 걸 알고 있으므로, `area` 속성에 타입-안전하게[^type-safe] 접근하여 인쇄할 수 있습니다.
 
-변환 과정에서 실제 객체를 바꾸진 않는다는 걸 기억하기 바랍니다. 이들은 계속 `Circle`, `Country`, 및 `Animal` 입니다. 하지만, `objectWithArea` 상수에 저장한 시점에는, 타입이 `HasArea` 라는 것만 알아서, `area` 속성에만 접근할 수 있습니다.
+그 밑에 놓인 객체는 변환 과정으로 바뀌지 않는다는 걸 알아두기 바랍니다. 이들은 계속해서 `Circle` 과, `Country`, 및 `Animal` 입니다. 하지만, 이들이 `objectWithArea` 상수에 저장된 시점에는, `HasArea` 타입이라는 것만 알고 있아서, `area` 속성에만 접근할 수 있습니다.
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
