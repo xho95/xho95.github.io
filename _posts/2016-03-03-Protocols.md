@@ -785,11 +785,11 @@ for object in objects {
 
 ### Optional Protocol Requirements (옵셔널 프로토콜 필수 조건)
 
-프로토콜에 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수 있습니다. 이러한 필수 조건은 프로토콜을 준수한 타입이 구현하지 않아도 됩니다. 옵셔널 필수 조건은 프로토콜 정의 부분에서 `optional` 수정자 접두사를 붙입니다. 옵셔널 필수 조건이 사용 가능하므로 오브젝티브-C 와 상호 호환되는 코드를 작성할 수 있습니다. 프로토콜과 옵셔널 필수 조건은 둘 다 반드시 `@objc` 특성 [^attribute] 으로 표시해야 합니다. `@objc` 프로토콜은 오브젝티브-C 클래스 또는 다른 `@objc` 클래스를 상속한 클래스만이 채택할 수 있다는 걸 기억하기 바랍니다. 구조체나 열거체는 채택할 수 없습니다.
+프로토콜에 _옵셔널 필수 조건 (optional requirements)_ 을 정의할 수도 있습니다. 이 필수 조건들은 프로토콜을 따르는 타입이 구현 안해도 됩니다. 옵셔널 필수 조건은 프로토콜을 정의하는 부분에서 접두사로 `optional` 수정자를 붙입니다. 옵셔널 필수 조건을 쓸 수 있으므로 **오브젝티브-C** 와 서로 호환되는 코드도 작성할 수 있습니다. 프로토콜과 옵셔널 필수 조건은 둘 다 반드시 `@objc` 특성[^attribute] 을 표시해야 합니다. `@objc` 프로토콜은 **오브젝티브-C** 클래스나 다른 `@objc` 클래스를 상속한 클래스만 채택할 수 있다는 걸 알아두기 바랍니다. 이들을 구조체나 열거체는 채택할 수 없습니다.
 
-옵셔널 필수 조건에서 메소드나 속성을 사용할 땐, 자신의 타입이 자동으로 옵셔널이 됩니다. 예를 들어, `(Int) -> String` 타입의 메소드는 `((Int) -> String)?` 이 됩니다. 메소드의 반환 값이 아닌, 전체 함수 타입이 옵셔널로 포장된다는 걸 기억하기 바랍니다.
+메소드나 속성을 옵셔널 필수 조건에서 쓸 땐, 그 타입이 자동으로 옵셔널이 됩니다. 예를 들어, 메소드가 `(Int) -> String` 타입이면 `((Int) -> String)?` 이 됩니다. 옵셔널로 감싼 것은 전체 함수 타입이지, 메소드 반환 값이 아니라는 걸 알아두기 바랍니다.
 
-옵셔널 프로토콜 필수 조건을 옵셔널 사슬로 호출하면, 프로토콜을 준수한 타입이 필수 조건을 구현하지 않았을 가능성을 서술할 수 있습니다. 옵셔널 메소드의 구현을 검사하려면, `someOptionalMethod?(someArgument)` 와 같이, 호출 때 메소드 이름 뒤에 물음표를 작성하면 됩니다. 옵셔널 사슬에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 보도록 합니다.
+옵셔널 프로토콜 필수 조건을 옵셔널 사슬로 호출하면, 프로토콜을 따르는 타입이 필수 조건을 구현하지 않을 가능성을 밝힐 수 있습니다. 옵셔널 메소드를 구현했는지 검사하려면 메소드를 호출할 때 이름 뒤에 물음표를 써서, `someOptionalMethod?(someArgument)` 와 같이 하면 됩니다. 옵셔널 사슬에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 보기 바랍니다.
 
 다음 예제는 정수를-세는 `Counter` 라는 클래스를 정의하는데, 이는 외부 데이터 소스를 사용하여 자신의 증가량을 제공합니다. 이 데이터 소스는, 두 개의 옵셔널 필수 조건이 있는, `CounterDataSource` 프로토콜로 정의합니다:
 
@@ -1046,9 +1046,9 @@ print(differentNumbers.allEqual())
 
 [^base-class]: 스위프트의 '기초 클래스 (base class)' 는 클래스 계층 구조 최상단에 위치하거나, 위치할 수 있는 클래스 입니다. 부모 클래스나 상위 클래스 중에서 가장 위에 위치하는 클래스라고 생각하면 됩니다. 기초 클래스에 대한 더 자세한 정보는, [Inheritance (상속)]({% link docs/swift-books/swift-programming-language/inheritance.md %}) 장의 [Defining a Base Class (기초 클래스 정의하기)]({% link docs/swift-books/swift-programming-language/inheritance.md %}#defining-a-base-class-기초-클래스-정의하기) 부분을 보도록 합니다.
 
-[^type-safe]: '타입-안전 (type-safe) 하다' 는 건 '스위프트가 기본 제공하는 타입 추론 (type inference) 및 타입 검사 (type check) 기능을 사용할 수 있다' 는 의미입니다. 타입 추론 및 타입 검사에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 보도록 합니다.
+[^type-safe]: '타입-안전 (type-safe) 하다' 는 건 '스위프트가 기본 제공하는 타입 추론 (type inference) 및 타입 검사 (type check) 기능을 사용할 수 있다' 는 의미입니다. 타입 추론 및 타입 검사에 대한 더 자세한 정보는, [The Basics (기초)]({% link docs/swift-books/swift-programming-language/the-basics.md %}) 장의 [Type Safety and Type Inference (타입 안전 장치와 타입 추론 장치)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#type-safety-and-type-inference-타입-안전-장치와-타입-추론-장치) 부분을 참고하기 바랍니다.
 
-[^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장을 보도록 합니다.
+[^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장을 참고하기 바랍니다.
 
 [^protocol-extend]: '프로토콜 익스텐션으로 프로토콜을 확장할 수 없다' 는 건 '프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다' 는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기존의 필수 조건에 기본 구현을 제공하거나 새로운 기능을 추가하기 위해, 사용하는 것입니다.
 
