@@ -791,7 +791,7 @@ for object in objects {
 
 옵셔널 프로토콜 필수 조건을 옵셔널 사슬로 호출하면, 프로토콜을 따르는 타입이 필수 조건을 구현하지 않을 가능성을 밝힐 수 있습니다. 옵셔널 메소드를 구현했는지 검사하려면 메소드를 호출할 때 이름 뒤에 물음표를 써서, `someOptionalMethod?(someArgument)` 와 같이 하면 됩니다. 옵셔널 사슬에 대한 정보는, [Optional Chaining (옵셔널 사슬)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}) 장을 보기 바랍니다.
 
-다음 예제는 정수를-세는 `Counter` 라는 클래스를 정의하는데, 이는 외부 데이터 소스를 사용하여 자신의 증가량을 제공합니다. 이 데이터 소스는, 두 개의 옵셔널 필수 조건이 있는, `CounterDataSource` 프로토콜로 정의합니다:
+다음 예제에서 정의한 정수를-세는 클래스인 `Counter` 는, 외부 데이터 소스를 사용하여 자신의 증가량을 제공합니다. 이 데이터 소스를 정의하는 `CounterDataSource` 프로토콜에는, 두 개의 옵셔널 필수 조건이 있습니다:
 
 ```swift
 @objc protocol CounterDataSource {
@@ -800,11 +800,11 @@ for object in objects {
 }
 ```
 
-`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 옵셔널 메소드 필수 조건 및 `fixedIncrement` 라는 옵셔널 속성 필수 조건을 정의합니다. 이 필수 조건들은 `Count` 인스턴스에 적절한 증가량을 제공하는 서로 다른 두 가지 방식을 데이터 소스에 정의합니다.
+`CounterDataSource` 프로토콜은 `incremental(forCount:)` 라는 옵셔널 메소드 필수 조건과 `fixedIncrement` 이라는 옵셔널 속성 필수 조건을 정의합니다. 이 필수 조건들은 서로 다른 두 가지 방식을 정의하여 데이터 소스가 `Count` 인스턴스에 적절한 증가량을 제공하도록 합니다.
 
-> 엄밀하게 말해서, _어느 (either)_ 프로토콜 필수 조건을 구현하지 않고도 `CounterDataSource` 프로토콜을 준수한 클래스를 작성할 수 있습니다. 이들은, 결국 어째 됐든, 둘 다 옵셔널입니다. 기술적으로 허용하긴 하지만, 아주 좋은 데이터 소스는 아닐겁니다.
+> 엄밀하게 말해서, 자신만의 클래스를 작성하면서 `CounterDataSource` 프로토콜을 따르게 하는데는 _어느 (either)_ 프로토콜 필수 조건도 구현하지 않아도 됩니다. 이들은, 결국 어찌 됐든, 둘 다 옵셔널입니다. 기술적으로 허용되긴 하지만, 아주 좋은 데이터 소스는 아닐겁니다.
 
-아래에 정의한, `Counter` 클래스에는 `CounterDataSource?` 타입인 옵셔널 `dataSource` 속성이 있습니다:
+`Counter` 클래스를, 아래에 정의했는데, `CounterDataSource?` 타입의 옵셔널 `dataSource` 속성이 있습니다:
 
 ```swift
 class Counter {
