@@ -820,13 +820,13 @@ class Counter {
 }
 ```
 
-`Counter` 클래스는 자신의 현재 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는 `increment` 라는 메소드도 정의하는데, 이는 메소드를 호출할 때마다 `count` 속성을 증가합니다.
+`Counter` 클래스는 자신의 현재 값을 `count` 라는 변수 속성에 저장합니다. `Counter` 클래스는 `increment` 라는 메소드도 정의하여, 메소드를 호출할 때마다 `count` 속성을 증가시킵니다.
 
-`increment()` 메소드는 첫 번째로 자신의 데이터 소스에 대한 `incremental(forCount:)` 메소드 구현을 찾아서 증가량을 가져오려고 합니다. `increment()` 메소드는 옵셔널 사슬을 사용하여 `increment(forCount:)` 를 호출하려 하며, 메소드의 단일 인자로는 현재의 `count` 값을 전달합니다.
+`increment()` 메소드가 첫 번째로 하는 건 증가량을 가져오기 위해 데이터 소스의 `increment(forCount:)` 메소드 구현을 찾는 겁니다. `increment()` 메소드는 옵셔널 사슬을 써서 `increment(forCount:)` 를 호출하려고 하며, 현재 `count` 값을 메소드의 단일 인자로 전달합니다. 
 
-여기서 _두 (two)_ 단계의 옵셔널 사슬로 동작함을 기억하기 바랍니다. 첫 번째로, `dataSource` 가 `nil` 인게 가능하므로, `dataSource` 이름 뒤에 물음표를 둬서 `dataSource` 가 `nil` 이 아닐 때만 `incremental(forCount:)` 를 호출해야함을 지시합니다. 두 번째로, `dataSource` 가 존재 _하 (does)_ 더라도, `increment(forCount:)` 가 옵셔널 필수 조건이기 때문에, 이를 구현한다는 보증이 없습니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성도 옵셔널 사슬로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재-즉, `nil` 아닌 경우-에만 발생합니다. 이것이 `incremental(forCount:)` 이름 뒤에도 물음표를 작성한 이유입니다.
+여기서 _두 (two)_ 단계의 옵셔널 사슬을 쓴다는 걸 알아두기 바랍니다. 첫 번째는, `dataSource` 가 `nil` 인게 가능하므로, `dataSource` 이름 뒤에 물음표를 둬서 `dataSource` 가 `nil` 이 아닐 때만 `increment(forCount:)` 를 호출해야함을 지시합니다. 두 번째는, 심지어 `dataSource` 가 존재 _하더라도 (does)_, `increment(forCount:)` 를 구현했다고 보증할 수 없는데, 옵셔녈 필수 조건이기 때문입니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성도 옵셔널 사슬로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재할 경우-즉, `nil` 아닌 경우-에만 발생합니다. 이것이 `increment(forCount:)` 의 이름 뒤에도 물음표를 쓰는 이유입니다.
 
-이 두 이유 중 어느 것으로도 `increment(forCount:)` 호출이 실패할 수 있기 때문에, 호출은 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 잇기)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-잇기) 를 보도록 합니다.
+`increment(forCount:)` 로의 호출은 이 두 이유 중 어느 것으로도 실패할 수 있기 때문에, 호출이 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 잇기)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-잇기) 를 보도록 합니다.
 
 `increment(forCount:)` 호출 후에, 옵셔널 연결로, 반환한 옵셔널 `Int` 를 풀어서 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있으면-즉, 일-맡은자[^delegate] 와 메소드 둘 다 존재하고, 메소드가 값을 반환한 경우면-포장 푼 `amount` 를 `count` 저장 속성에 추가하고, 증가를 완료합니다.
 
