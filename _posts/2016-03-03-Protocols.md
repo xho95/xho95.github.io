@@ -826,13 +826,13 @@ class Counter {
 
 여기서 _두 (two)_ 단계의 옵셔널 사슬을 쓴다는 걸 알아두기 바랍니다. 첫 번째는, `dataSource` 가 `nil` 인게 가능하므로, `dataSource` 이름 뒤에 물음표를 둬서 `dataSource` 가 `nil` 이 아닐 때만 `increment(forCount:)` 를 호출해야함을 지시합니다. 두 번째는, 심지어 `dataSource` 가 존재 _하더라도 (does)_, `increment(forCount:)` 를 구현했다고 보증할 수 없는데, 옵셔녈 필수 조건이기 때문입니다. 여기서, `increment(forCount:)` 를 구현하지 않았을 가능성도 옵셔널 사슬로 처리합니다. `increment(forCount:)` 호출은 `increment(forCount:)` 가 존재할 경우-즉, `nil` 아닌 경우-에만 발생합니다. 이것이 `increment(forCount:)` 의 이름 뒤에도 물음표를 쓰는 이유입니다.
 
-`increment(forCount:)` 로의 호출은 이 두 이유 중 어느 것으로도 실패할 수 있기 때문에, 호출이 _옵셔널 (optional)_ `Int` 값을 반환합니다. 이는 `CounterDataSource` 정의에서 `increment(forCount:)` 가 옵셔널-아닌 `Int` 값을 반환한다고 정의할지라도 그렇습니다. 두 개의 옵셔널 사슬 연산이, 차례로, 있을지라도, 결과는 여전히 단일 옵셔널로 포장합니다. 여러 개의 옵셔널 사슬 연산을 사용하는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 잇기)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-잇기) 를 보도록 합니다.
+`increment(forCount:)` 호출은 이 두 이유 중 어느 것으로도 실패할 수 있기 때문에, 호출이 반환하는 건 _옵셔널 (optional)_ `Int` 값입니다. 이는 심지어 `increment(forCount:)` 가 `CounterDataSource` 정의에서 옵셔널-아닌 `Int` 값을 반환한다고 정의되어 있더라도 그렇습니다. 두 옵셔널 사슬 연산이, 하나씩 꼬리를 물고 있더라도, 결과는 여전히 단 하나의 옵셔널로 감쌉니다. 여러 개의 옵셔널 사슬 연산을 쓰는데 대한 더 많은 정보는, [Linking Multiple Levels of Chaining (여러 수준의 사슬 잇기)]({% link docs/swift-books/swift-programming-language/optional-chaining.md %}#linking-multiple-levels-of-chaining-여러-수준의-사슬-잇기) 를 보기 바랍니다.
 
-`increment(forCount:)` 호출 후에, 옵셔널 연결로, 반환한 옵셔널 `Int` 를 풀어서 `amount` 라는 상수에 넣습니다. 옵셔널 `Int` 가 값을 담고 있으면-즉, 일-맡은자[^delegate] 와 메소드 둘 다 존재하고, 메소드가 값을 반환한 경우면-포장 푼 `amount` 를 `count` 저장 속성에 추가하고, 증가를 완료합니다.
+`increment(forCount:)` 호출 후에, 반환되는 옵셔널 `Int` 를  풀고 `amount` 라는 상수에 넣는데는, 옵셔널 연결을 씁니다. 옵셔널 `Int` 에 값이 담겨 있으면-즉, 일-맡은자[^delegate] 와 메소드가 둘 다 존재하고, 메소드가 값을 반환했으면-풀은 `amount` 를 `count` 저장 속성에 추가하며, 증가가 완료됩니다.
 
-`increment(forCount:)` 메소드에서 값을 가져오는 게 _불 (not)_ 가능하면-`dataSource` 가 `nil` 이거나, 데이터 소스가 `increment(forCount:)` 를 구현하지 않았기 때문인데-그 땐 `increment()` 메소드가 데이터 소스의 `fixedIncrement` 속성에서 값을 대신 가져오려고 합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이라서, `CounterDataSource` 프로토콜 정의 부분에서 `fixedIncrement` 를 옵셔널-아닌 `Int` 속성으로 정의할지라도, 그 값은 옵셔널 `Int` 입니다.
+`increment(forCount:)` 메소드에서 값을 가져오는 게 _불 (not)_ 가능하면-`dataSource` 가 `nil` 이거나, 데이터 소스에 `increment(forCount:)` 의 구현이 없기 때문인데-그러면 `increment()` 메소드가 대신 데이터 소스의 `fixedIncrement` 속성에서 값을 가져오려고 합니다. `fixedIncrement` 속성도 옵셔널 필수 조건이라서, 그 값도 옵셔널 `Int` 인데, 심지어 `CounterDataSource` 프로토콜 정의에서 `fixedIncrement` 를 옵셔널-아닌 `Int` 속성으로 정의했더라도 그렇습니다.
 
-데이터 소스를 매 번 조회할 때마다 상수 값 `3` 을 반환하는 단순한 `CounterDataSource` 구현은 이렇습니다. 이는 옵셔널 `fixedIncrement` 속성 필수 조건을 구현함으로써 이렇게 합니다:
+여기 있는 단순한 `CounterDataSource` 구현은 매 번 데이터 소스를 조회할 때마다 상수 값 `3` 을 반환합니다. 이렇게 하는 건 옵셔널 `fixedIncrement` 속성 필수 조건을 구현해서 입니다:
 
 ```swift
 class ThreeSource: NSObject, CounterDataSource {
@@ -840,7 +840,7 @@ class ThreeSource: NSObject, CounterDataSource {
 }
 ```
 
-새로운 `Counter` 인스턴스의 데이터 소스로 `ThreeSource` 인스턴스를 사용할 수 있습니다:
+`ThreeSource` 인스턴스를 새로운 `Counter` 인스턴스의 데이터 소스로 쓸 수 있습니다:
 
 ```swift
 var counter = Counter()
@@ -855,9 +855,9 @@ for _ in 1...4 {
 // 12
 ```
 
-위 코드는 새로운 `Counter` 인스턴스를 생성하고; 새로운 `ThreeSource` 인스턴스를 자신의 데이터 소스로 설정하며; 카운터의 `increment()` 메소드를 네 번 호출합니다. 예상대로, `increment()` 의 호출마다 카운터의 `count` 속성이 3 만큼 증가합니다.
+위 코드는 새로운 `Counter` 인스턴스를 생성하여; 그 데이터 소스를 새로운 `ThreeSource` 인스턴스로 설정하고; 카운터의 `increment()` 메소드를 네 번 호출합니다. 예상대로, 카운터의 `count` 속성이 매 번 `increment()` 가 호출될 때마다 **3** 씩 증가합니다.
 
-`Counter` 인스턴스가 자신의 현재 `count` 값에서 0 을 향해 위나 아래로 세는, `TowardsZeroSource` 라는 좀 더 복잡한 데이터 소스는 이렇습니다:
+여기 있는 더 복잡한 데이터 소스인 `TowardsZeroSource` 가, 만드는 `Counter` 인스턴스는 자신의 현재 `count` 값에서 **0** 을 향해 위나 아래로 셉니다:
 
 ```swift
 class TowardsZeroSource: NSObject, CounterDataSource {
@@ -873,9 +873,9 @@ class TowardsZeroSource: NSObject, CounterDataSource {
 }
 ```
 
-`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜에 있는 옵셔널 `increment(forCount:)` 메소드를 구현하며 `count` 인자 값을 써서 어느 방향으로 세는지 알아냅니다. `count` 가 이미 0 이면, 메소드는 `0` 을 반환하여 더 이상 세지 말 것을 지시합니다.
+`TowardsZeroSource` 클래스는 `CounterDataSource` 프로토콜의 옵셔널 `increment(forCount:)` 메소드를 구현하면서 `count` 인자 값을 사용하여 어느 방향으로 세어갈지 알아냅니다. `count` 가 이미 **0** 면, 메소드가 `0` 을 반환하여 더 이상 세지 말 것을 지시합니다.
 
-기존 `Counter` 인스턴스와 `TowardsZeroSource` 인스턴스를 사용하면 `-4` 에서 0 으로 셀 수 있습니다. 카운터가 0 에 한 번 도달하고 나면, 더 이상 세지 않습니다:
+`TowardsZeroSource` 인스턴스와 이미 있던 `Counter` 인스턴스를 쓰면 `-4` 에서 **0** 으로 셀 수 있습니다. 일단 한 번 카운터가 **0** 도달하면, 더 이상 세지 않습니다:
 
 ```swift
 counter.count = -4
