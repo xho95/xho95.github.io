@@ -893,9 +893,9 @@ for _ in 1...5 {
 
 ### Protocol Extensions (프로토콜 익스텐션; 규약 확장)
 
-프로토콜을 확장하면 준수 타입에 메소드, 초기자, 첨자 연산, 및 계산 속성 구현을 제공할 수 있습니다. 이는, 각 타입의 개별 준수에서 전역 함수에서 보단, 프로토콜 그 자체에서 동작을 정의하는 걸 허용합니다.
+프로토콜을 확장하여 이를 따르는 타입에서 메소드와, 초기자, 첨자 연산, 및 계산 속성의 구현을 제공하도록 할 수 있습니다. 이는 프로토콜의 동작을 정의하는 걸, 각 타입을 개별적으로 따르는 곳이나 전역 함수에서 보단, 프로토콜 그 자체에서 하도록 허용합니다.
 
-예를 들어, `RandomNumberGenerator` 프로토콜을 확장하여, `random()` 필수 메소드의 결과로 `Bool` 난수 값을 반환하는, `randomBool()` 메소드를 제공할 수 있습니다: 
+예를 들어, `RandomNumberGenerator` 프로토콜이 `randomBool()` 메소드를 제공하도록 확장하여, 필수 `random()` 메소드의 결과로 `Bool` 난수 값을 반환하게 할 수도 있습니다: 
 
 ```swift
 extension RandomNumberGenerator {
@@ -905,7 +905,7 @@ extension RandomNumberGenerator {
 }
 ```
 
-프로토콜에 대한 익스텐션을 생성함으로써, 어떤 추가 수정 없이 자동으로 모든 준수 타입이 이 메소드 구현을 얻습니다:
+프로토콜에 대해 익스텐션을 생성하면, 어떠한 추가 수정 없이도 이를 따르는 모든 타입이 자동으로 이 메소드의 구현을 얻게 됩니다:
 
 ```swift
 let generator = LinearCongruentialGenerator()
@@ -915,7 +915,7 @@ print("And here's a random Boolean: \(generator.randomBool())")
 // "And here's a random Boolean: true" 를 인쇄함
 ```
 
-프로토콜 익스텐션은 준수 타입에 구현을 추가할 순 있지만 프로토콜을 확장하게 하거나[^protocol-extend] 또 다른 프로토콜을 상속하게 할 순 없습니다. 프로토콜 상속은 항상 프로토콜 선언 그 자체로 지정합니다.
+프로토콜 익스텐션은 이를 따르는 타입에 구현을 추가할 수 있지만 프로토콜이 또 다른 프로토콜을 확장하게 하거나[^protocol-extend] 상속하게 할 순 없습니다. 프로토콜 상속은 항상 프로토콜 선언 그 자체에서 지정합니다.
 
 #### Providing Default Implementations (기본 구현 제공하기)
 
@@ -1050,7 +1050,7 @@ print(differentNumbers.allEqual())
 
 [^attribute]: 스위프트의 '특성 (attribute)' 은 선언 및 타입에 추가 정보를 부여하는 도구입니다. 특성에 대한 더 자세한 정보는, [Attributes (특성)]({% link docs/swift-books/swift-programming-language/attributes.md %}) 장을 참고하기 바랍니다.
 
-[^protocol-extend]: '프로토콜 익스텐션으로 프로토콜을 확장할 수 없다' 는 건 '프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다' 는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기존의 필수 조건에 기본 구현을 제공하거나 새로운 기능을 추가하기 위해, 사용하는 것입니다.
+[^protocol-extend]: '프로토콜 익스텐션으로 또 다른 프로토콜을 확장하게 할 수 없다' 는 건 프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기본 구현이나 기능을 제공하기 위한 것입니다.
 
 [^array-and-integer]: 스위프트의 `Array` 타입은 `Collection` 프로토콜을 준수하고 `Int` 타입은 `Equatable` 을 준수하고 있다는 의미입니다.
 
