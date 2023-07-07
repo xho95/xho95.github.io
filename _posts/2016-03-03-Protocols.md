@@ -919,11 +919,11 @@ print("And here's a random Boolean: \(generator.randomBool())")
 
 #### Providing Default Implementations (기본 구현 제공하기)
 
-프로토콜 익스텐션을 사용하면 그 프로토콜의 어떤 메소드나 계산 속성 필수 조건에도 기본 구현을 제공할 수 있습니다. 준수 타입이 필수 메소드나 속성에 자신만의 구현을 제공한다면, 익스텐션이 제공하는 것 대신 그 구현을 사용할 것입니다.
+프로토콜 익스텐션을 쓰면 그 프로토콜의 어떤 메소드 또는 계산 속성 필수 조건이든 기본 구현을 제공할 수 있습니다. 이를 따르는 타입이 필수 메소드 또는 속성에 자신만의 구현을 제공한다면, 익스텐션에서 제공한 것 대신 그 구현을 사용하게 됩니다.
 
-> 익스텐션이 기본 구현을 제공하는 프로토콜 필수 조건은 옵셔널 프로토콜 필수 조건과 서로 별개입니다. 어느 쪽도 준수 타입이 자신만의 구현을 제공하지 않아도 되지만, 기본 구현을 가진 필수 조건은 옵셔널 사슬 없이도 호출할 수 있습니다.
+> 프로토콜 필수 조건에 익스텐션이 제공하는 기본 구현이 있다는 것과 옵셔널 프로토콜 필수 조건은 서로 다른 겁니다. 어느 쪽을 따르는 타입이든 자신만의 구현을 제공하지 않아도 되긴 하지만, 필수 조건에 기본 구현이 있는 건 옵셔널 사슬 없이 호출할 수 있습니다.
 
-예를 들어, `TextRepresentable` 프로토콜을 상속한, `PrettyTextRepresentable` 프로토콜은, 단순히 `textualDescription` 속성에 접근한 결과를 반환한 걸 자신의 `prettyTextualDescription` 필수 속성 구현으로 제공할 수 있습니다:
+예를 들어, `PrettyTextRepresentable` 프로토콜이, `TextRepresentable` 프로토콜을 상속한 거라면 단순히 `textualDescription` 속성에 접근한 결과를 반환하는 걸로 자신의 필수 속성인 `prettyTextualDescription` 의 기본 구현을 제공할 수 있습니다:
 
 ```swift
 extension PrettyTextRepresentable {
