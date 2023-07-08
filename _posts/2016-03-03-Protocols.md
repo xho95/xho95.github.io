@@ -935,9 +935,9 @@ extension PrettyTextRepresentable {
 
 #### Adding Constraints to Protocol Extensions (프로토콜 익스텐션에 구속 조건 추가하기)
 
-프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 준수 타입이 이를 만족해야 익스텐션의 메소드와 속성을 쓸 수 있게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 내용은, [Generic Where Clauses (일반화 'where' 절)]({% link docs/swift-books/swift-programming-language/generic-parameters-and-arguments.md %}#generic-where-clauses-일반화-where-절) 부분을 보도록 합니다.
+프로토콜 익스텐션을 정의할 때, 구속 조건을 지정하여 이를 따르는 타입이 반드시 만족해야 익스텐션의 메소드와 속성을 쓸 수 있게 할 수 있습니다. 이러한 구속 조건은 확장할 프로토콜 이름 뒤에 일반화 `where` 절을 써서 작성합니다. 일반화 `where` 절에 대한 더 많은 것들은, [Generic Where Clauses (일반화 'where' 절)]({% link docs/swift-books/swift-programming-language/generic-parameters-and-arguments.md %}#generic-where-clauses-일반화-where-절) 부분을 보기 바랍니다.
 
-예를 들어, `Collection` 프로토콜에 익스텐션을 정의하면서 그 원소가 `Equatable` 프로토콜을 준수하는 어떤 집합체에 적용되게 할 수 있습니다. 표준 라이브러리의 일부인, `Equatable` 프로토콜로 집합체 원소를 구속함으로써, `==` 와 `!=` 연산자로 두 원소의 같음 (equality) 과 다름 (inequality) 을 검사할 수 있습니다.
+예를 들어, `Collection` 프로토콜에 익스텐션을 정의하여 원소가 `Equatable` 프로토콜을 따르는 어떠한 집합체에 적용되도록 할 수 있습니다. 집합체의 원소를, 표준 라이브러리의 일부인, `Equatable` 프로토콜로 구속함으로써, `==` 와 `!=` 연산자로 두 원소가 같은지 같지 않은지를 검사할 수 있습니다.
 
 ```swift
 extension Collection where Element: Equatable {
@@ -952,16 +952,16 @@ extension Collection where Element: Equatable {
 }
 ```
 
-`allEqual()` 메소드는 모든 집합체 원소가 같아야만 `true` 를 반환합니다.
+`allEqual()` 메소드는 집합체 안의 모든 원소가 같아야만 `true` 를 반환합니다.
 
-하나는 모든 원소가 똑같고, 다른 하나는 그렇지 않은, 두 정수 배열을 고려합니다:
+두 정수 배열에서, 하나는 모든 원소가 똑같고, 다른 하나는 그렇지 않은 경우를, 고려합니다:
 
 ```swift
 let equalNumbers = [100, 100, 100, 100, 100]
 let differentNumbers = [100, 100, 200, 100, 200]
 ```
 
-배열은 `Collection ` 을 준수하고 정수는 `Equatable` 을 준수하기 때문에[^array-and-integer], `equalNumbers` 와 `differentNumbers` 가 `allEqual()` 메소드를 사용할 수 있습니다:
+배열은 `Collection ` 을 따르고 정수는 `Equatable` 을 따르고 있기 때문에[^array-and-integer], `equalNumbers` 와 `differentNumbers` 에서 `allEqual()` 메소드를 쓸 수 있습니다:
 
 ```swift
 print(equalNumbers.allEqual())
@@ -970,7 +970,7 @@ print(differentNumbers.allEqual())
 // "false" 를 인쇄함
 ```
 
-> 준수 타입이 만족한 필수 조건이 여러 번 구속한 익스텐션꺼라서 동일한 메소드나 속성에 여러 개의 구현이 있다면, 스위프트는 가장 특수화된 구속 조건[^specialized] 에 해당하는 구현을 사용합니다.
+> 따르는 타입이 여러 개의 구속된 익스텐션에 대한 필수 조건들을 만족해서 똑같은 메소드나 속성에 여러 개의 구현을 제공한다면, 스위프트는 가장 특수화된 구속 조건[^specialized] 에 해당하는 구현을 사용합니다.
 
 ### 다음 장
 
@@ -1052,6 +1052,6 @@ print(differentNumbers.allEqual())
 
 [^protocol-extend]: '프로토콜 익스텐션으로 또 다른 프로토콜을 확장하게 할 수 없다' 는 건 프로토콜 익스텐션으로 프로토콜에 새로운 필수 조건을 추가할 수 없다는 의미입니다. 프로토콜 익스텐션은 프로토콜에 새로운 필수 조건을 추가하는 것이 아니라, 기본 구현이나 기능을 제공하기 위한 것입니다.
 
-[^array-and-integer]: 스위프트의 `Array` 타입은 `Collection` 프로토콜을 준수하고 `Int` 타입은 `Equatable` 을 준수하고 있다는 의미입니다.
+[^array-and-integer]: 스위프트의 `Array` 타입은 `Collection` 프로토콜을 따르고 `Int` 타입은 `Equatable` 을 따르고 있다는 의미입니다.
 
-[^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 '구속 조건 중에서 적용 범위가 가장 좁은 것' 을 말합니다. 가장 특수화된 구속 조건에 대한 더 자세한 내용은, 애플 [Developer Forums](https://developer.apple.com/forums/) 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 보도록 합니다.
+[^specialized]: '가장 특수화된 구속 조건 (the most specialized constraints)' 은 구속 조건 중에서 적용 범위가 가장 좁은 것을 말합니다. 가장 특수화된 구속 조건에 대한 더 자세한 정보는, 애플 [Developer Forums](https://developer.apple.com/forums/) 에 있는 [What does "most specialized constraints" mean?](https://forums.developer.apple.com/thread/70845) 항목을 참고하기 바랍니다.
