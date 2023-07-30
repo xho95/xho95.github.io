@@ -976,7 +976,7 @@ anyCommonElements([1, 2, 3], [3])
 
 [^requirement]: '필수 조건 (requirements)' 에 대한 더 자세한 정보도 [Protocols (프로토콜; 규약)]({% link docs/swift-books/swift-programming-language/protocols.md %}) 장을 참고하기 바랍니다.
 
-[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜 준수성 추가하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜-준수성-추가하기) 부분을 참고하기 바랍니다.
+[^protocol-conformance]: '프로토콜 준수성 (protocol conformance)' 에 대한 더 자세한 내용은 [Adding Protocol Conformance with an Extension (익스텐션으로 프로토콜을 따르게 하기)]({% link docs/swift-books/swift-programming-language/protocols.md %}#adding-protocol-conformance-with-an-extension-익스텐션으로-프로토콜을-따르게-하기) 부분을 참고하기 바랍니다.
 
 [^angle-brackets]: `< ... >` 을 말합니다.
 
