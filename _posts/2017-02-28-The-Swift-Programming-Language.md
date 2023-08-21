@@ -46,7 +46,7 @@ redirect_from: "/swift/programming/language/grammar/2017/02/27/The-Swift-Program
 * [Extensions (익스텐션; 확장)]({% link docs/swift-books/swift-programming-language/extensions.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Protocols (프로토콜; 규약)]({% link docs/swift-books/swift-programming-language/protocols.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
-* [Opaque Types (불투명 타입)]({% link docs/swift-books/swift-programming-language/opaque-types.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
+* [Opaque Types and Boxed Types (불투명 타입과 상자 타입)]({% link docs/swift-books/swift-programming-language/opaque-types.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Automatic Reference Counting (자동 참조 카운팅)]({% link docs/swift-books/swift-programming-language/automatic-reference-counting.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Memory Safety (메모리 안전성)]({% link docs/swift-books/swift-programming-language/memory-safety.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)
 * [Access Control (접근 제어)]({% link docs/swift-books/swift-programming-language/access-control.md %}) ![5.7](https://img.shields.io/badge/-5.7-green)

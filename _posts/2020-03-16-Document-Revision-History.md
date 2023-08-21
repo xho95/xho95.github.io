@@ -10,6 +10,10 @@ categories: Swift Language Grammar Revision History
 
 ## Document Revision History (문서를 다듬은 역사)
 
+#### 2023-06-05
+
+* 스위프트 5.9 에서 업데이트된 것.
+
 #### 2023-03-30
 
 * 스위프트 5.8 업데이트.
