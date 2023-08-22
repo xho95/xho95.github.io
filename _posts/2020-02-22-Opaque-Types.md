@@ -16,9 +16,9 @@ categories: Swift Language Grammar Opaque Type
 
 상자 프로토콜 타입은 주어진 프로토콜을 따르는 어떠한 타입의 인스턴스든 저장할 수 있습니다. 상자 프로토콜 타입은 타입 정보를 보존하지 않습니다-값의 타입은 실행 시간 전까진 알 수 없으며, 시간이 지나가면서 다른 값이 저장되면 바뀔 수 있습니다. 
 
-### The Problem That Opaque Types Solve (불투명 타입이 풀어내는 문제)
+### The Problem That Opaque Types Solve (불투명 타입으로 푸는 문제)
 
-예를 들어, ASCII 로 예술 도형을 그리는 모듈을 작성한다 가정해 봅니다. ASCII 예술 도형의 기본 성질은 그 도형을 문자열로 나타낸 걸 반환하는 `draw()` 함수인데, 이를 `Shape` 프로토콜의 필수 조건[^requirement] 으로 사용할 수 있습니다:
+예를 들어, **ASCII** 로 예술 도형을 그리는 모듈을 작성하고 있다고 가정합니다. ASCII 예술 도형의 기본 성질은 그 도형을 문자열로 나타낸 걸 반환하는 `draw()` 함수인데, 이를 `Shape` 프로토콜의 필수 조건[^requirement] 으로 사용할 수 있습니다:
 
 ```swift
 protocol Shape {
@@ -38,7 +38,6 @@ struct Triangle: Shape {
 
 let smallTriangle = Triangle(size: 3)
 print(smallTriangle.draw())
-
 // *
 // **
 // ***
@@ -154,7 +153,7 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-이 예제의 `opaqueJoinedTriangles` 값은 이 장 앞의 [The Problem That Opaque Types Solve (불투명 타입이 풀어내는 문제)](#the-problem-that-opaque-types-solve-불투명-타입이-풀어내는-문제) 절의 일반화 예제에 있는 `joinedTriangles` 과 똑같습니다. 하지만, 그 예제의 값과 달리, `flip(_:)` 과 `join(_:_:)` 은 일반화 도형 연산이 반환할 실제 타입을 불투명 반환 타입 안에 포장하여, 그 타입들이 보이는 걸 막습니다. 함수가 일반화 타입에 의지하기 때문에 둘 다 일반화이고, 함수의 타입 매개 변수가 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
+이 예제의 `opaqueJoinedTriangles` 값은 이 장 앞의 [The Problem That Opaque Types Solve (불투명 타입으로 푸는 문제)](#the-problem-that-opaque-types-solve-불투명-타입으로-푸는-문제) 절의 일반화 예제에 있는 `joinedTriangles` 과 똑같습니다. 하지만, 그 예제의 값과 달리, `flip(_:)` 과 `join(_:_:)` 은 일반화 도형 연산이 반환할 실제 타입을 불투명 반환 타입 안에 포장하여, 그 타입들이 보이는 걸 막습니다. 함수가 일반화 타입에 의지하기 때문에 둘 다 일반화이고, 함수의 타입 매개 변수가 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
 
 불투명 반환 타입을 가진 함수가 여러 곳에서 반환을 한다면, 가능한 모든 반환 값의 타입은 반드시 똑같아야 합니다. 일반화 함수에선, 그 반환 타입으로 함수의 일반화 타입 매개 변수를 사용할 순 있지만, 반드시 여전히 단일 타입이어야 합니다. 예를 들어, 정사각형이라는 특수한 경우를 포함한 도형-뒤집기 함수의 _무효한 (invalid)_ 버전[^invalid-code] 은 이렇습니다:
 
