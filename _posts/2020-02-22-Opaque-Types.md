@@ -18,7 +18,7 @@ categories: Swift Language Grammar Opaque Type
 
 ### The Problem That Opaque Types Solve (불투명 타입으로 푸는 문제)
 
-예를 들어, **ASCII** 로 예술 도형을 그리는 모듈을 작성하고 있다고 가정합니다. ASCII 예술 도형의 기본 성질은 그 도형을 문자열로 나타낸 걸 반환하는 `draw()` 함수인데, 이를 `Shape` 프로토콜의 필수 조건[^requirement] 으로 사용할 수 있습니다:
+예를 들어, **ASCII** 로 예술 도형을 그리는 모듈을 작성한다고 가정해 봅시다. **ASCII** 예술 도형의 기본 성질인 `draw()` 함수는 문자열로 나타낸 그 도형을 반환하는데, 이는 `Shape` 프로토콜의 필수 조건[^requirement] 으로 쓸 수 있습니다:
 
 ```swift
 protocol Shape {
