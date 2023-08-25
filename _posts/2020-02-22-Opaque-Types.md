@@ -62,7 +62,7 @@ print(flippedTriangle.draw())
 // *
 ```
 
-이 접근법으로 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하여 두 도형을 수직으로 함께 맞붙이면, 아래 코드에서 보는 것처럼, 뒤집은 삼각형과 또 다른 삼각형을 맞붙임으로써 `JoinedShape<Triangle, FlippedShape<Triangle>>` 같은 타입이 되버립니다.[^joinedTriangle-Type]
+이 접근법으로 `JoinedShape<T: Shape, U: Shape>` 구조체를 정의하여 두 도형을 서로 수직으로 맞붙이면, 아래에서 보는 코드처럼, 그 결과가 `JoinedShape<Triangle, FlippedShape<Triangle>>` 과 같이 뒤집은 삼각형에 또 다른 삼각형을 맞붙인 타입이 됩니다.
 
 ```swift
 struct JoinedShape<T: Shape, U: Shape>: Shape {
@@ -84,7 +84,7 @@ print(joinedTriangle.draw())
 // *
 ```
 
-도형 생성의 세부 정보를 드러내는 건 전체 반환 타입을 알려줘야할 필요성 때문에 ASCII 예술 모듈의 공용 인터페이스가 아닌 타입이 유출되도록 합니다. 모듈 안의 코드는 다양한 방법으로 동일한 도형을 제작할 수 있어야 하고, 모듈 밖에서 도형을 사용할 다른 코드는 변형 목록의 세세한 구현을 밝히지 않는게 좋습니다. `JoinedShape` 과 `FlippedShape` 같은 포장 타입[^wrapper-types] 은 모듈 사용자에겐 중요하지 않으며, 보이지 않는게 좋습니다. 모듈의 공용 인터페이스는 도형 맞붙이기 (joining) 와 뒤집기 (flipping) 같은 연산들로 구성하며, 이러한 연산은 또 다른 `Shape` 값을 반환합니다.
+도형 생성에 대한 자세한 정보를 드러내는 건 **ASCII** 예술 모듈의 공용 인터페이스가 아닌 타입이 세어 나가게 하는데 전체 반환 타입을 널리 알릴 필요가 있기 때문입니다. 모듈 안에 있는 코드는 똑같은 도형을 다양한 방법으로 제작할 수 있어야 하고, 모듈 밖에서 도형을 사용할 코드는 변형에 대한 자세한 구현을 밝히지 않는게 좋습니다. `JoinedShape` 과 `FlippedShape` 같은 포장 타입[^wrapper-types] 들은 모듈 사용자에겐 중요하지 않아서, 안보이는게 좋습니다. 모듈의 공용 인터페이스를 구성하는 연산들은 도형 맞붙이기 (joining) 와 뒤집기 (flipping) 같은 것들이며, 이 연산들은 또 다른 `Shape` 값을 반환합니다.
 
 ### Returning an Opaque Type (불투명 타입 반환하기)
 
