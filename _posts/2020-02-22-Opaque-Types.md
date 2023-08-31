@@ -131,7 +131,7 @@ print(trapezoid.draw())
 
 이번 예제에서 강조하는 건 불투명 반환 타입이 일반화 타입의 역방향 같은 거라는 겁니다. `makeTrapezoid()` 안의 코드는 필요한 어떤 타입이든 반환할 수 있는데, 그 타입이 `Shape` 프로토콜을 따르기만 하면 되며, 이는 일반화 함수를 호출하는 코드가 하는 것과 같습니다. 함수 호출 코드는 일반화된 방식인, 일반화 함수의 구현부 같이, 할 필요가 있는데, 그래야 `makeTrapezoid()` 에서 반환된 어떤 `Shape` 과도 작업할 수 있기 때문입니다.
 
-불투명 반환 타입과 일반화를 조합할 수도 있습니다. 다음 코드에 있는 함수는 둘 다 `Shape` 프로토콜을 따르는 어떤 타입의 값을 반환합니다.
+불투명 반환 타입과 일반화를 조합할 수도 있습니다. 다음 코드에 있는 함수는 둘 다 `Shape` 프로토콜을 따르는 어떤 한 타입의 값을 반환합니다.
 
 ```swift
 func flip<T: Shape>(_ shape: T) -> some Shape {
@@ -153,7 +153,7 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-이 예제의 `opaqueJoinedTriangles` 값은 이 장 앞의 [The Problem That Opaque Types Solve (불투명 타입으로 푸는 문제)](#the-problem-that-opaque-types-solve-불투명-타입으로-푸는-문제) 절의 일반화 예제에 있는 `joinedTriangles` 과 똑같습니다. 하지만, 그 예제의 값과 달리, `flip(_:)` 과 `join(_:_:)` 은 일반화 도형 연산이 반환할 실제 타입을 불투명 반환 타입 안에 포장하여, 그 타입들이 보이는 걸 막습니다. 함수가 일반화 타입에 의지하기 때문에 둘 다 일반화이고, 함수의 타입 매개 변수가 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
+이 예제에 있는 `opaqueJoinedTriangles` 의 값은 이 장 앞의 [The Problem That Opaque Types Solve (불투명 타입으로 푸는 문제)](#the-problem-that-opaque-types-solve-불투명-타입으로-푸는-문제) 절에 있는 일반화 예제인 `joinedTriangles` 과 똑같습니다. 하지만, 그 예제의 값과 달리, `flip(_:)` 과 `join(_:_:)` 은 일반화 도형 연산이 반환하는 밑에 놓인 타입을 불투명 반환 타입으로 감싸서, 그 타입들이 보여지는 걸 막습니다. 두 함수 모두 일반화인 건 이들이 의지하는 타입이 일반화 타입이기 때문이며, 함수의 타입 매개 변수들이 `FlippedShape` 과 `JoinedShape` 에 필요한 타입 정보를 전달합니다.
 
 불투명 반환 타입을 가진 함수가 여러 곳에서 반환을 한다면, 가능한 모든 반환 값의 타입은 반드시 똑같아야 합니다. 일반화 함수에선, 그 반환 타입으로 함수의 일반화 타입 매개 변수를 사용할 순 있지만, 반드시 여전히 단일 타입이어야 합니다. 예를 들어, 정사각형이라는 특수한 경우를 포함한 도형-뒤집기 함수의 _무효한 (invalid)_ 버전[^invalid-code] 은 이렇습니다:
 
