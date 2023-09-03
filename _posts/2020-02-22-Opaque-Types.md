@@ -166,7 +166,7 @@ func invalidFlip<T: Shape>(_ shape: T) -> some Shape {
 }
 ```
 
-`Square` 를 가지고 이 함수를 호출하면, `Square` 를 반환하며; 그 외 경우, `FlippedShape` 을 반환합니다. 이는 한 가지 타입의 값만 반환한다는 필수 조건을 위반하여 `invalidFlip(_:)` 을 무효한 코드로 만듭니다. `invalidFlip(_:)` 을 고치는 한 방법은, 정사각형이라는 특수한 경우를 `FlippedShape` 구현 안으로 이동하여, 이 함수가 항상 `FlippedShape` 값을 반환하게 하는 겁니다:
+이 함수는 `Square` 를 가지고 호출하면, `Square` 를 반환하며; 그 외 경우, `FlippedShape` 을 반환합니다. 이는 한 가지 타입의 값만 반환해야 한다는 필수 조건을 위반하여 `invalidFlip(_:)` 을 무효한 코드로 만듭니다. `invalidFlip(_:)` 을 고치는 한 방법은 특수한 경우인 정사각형을 `FlippedShape` 구현 안으로 이동시켜서, 이 함수가 항상 `FlippedShape` 값을 반환하게 하는 겁니다:
 
 ```swift
 struct FlippedShape<T: Shape>: Shape {
