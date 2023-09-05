@@ -195,6 +195,22 @@ func `repeat`<T: Shape>(shape: T, count: Int) -> some Collection {
 
 상자친 프로토콜 타입을 _실존 타입 (existential type)_ 이라고 할 때도 있는데, 이는 "프로토콜을 따르는 타입 **T** 가 **실**제로 **존**재한다" 라는 구절에서 비롯된 겁니다. 상자친 프로토콜을 만드려면, 프로토콜 이름 앞에 `any` 를 쓰면 됩니다. 예를 들면 다음과 같습니다:
 
+```swift
+  struct VerticalShapes: Shape {
+    var shapes: [any Shape]
+    func draw() -> String {
+      return shapes.map { $0.draw() }.joined(seperator: "\n\n")
+    }
+  }
+
+  let largeTriangle = Triangle(size: 5)
+  let largeSquare = Square(size: 5)
+  let vertical = VerticalShapes(shapes: [largeTriangle, largeSquare])
+  print(vertical.draw())
+```
+
+위 예제에서, `VerticalShapes` 는 `shapes` 의 타입이 `[any Shape]`-인 상자친 `Shape` 원소들의 배열-이라고 선언합니다. 배열 안에 있는 각각의 원소는 서로 다른 타입일 수 있으며, 그 각각의 타입들은 반드시 `Shape` 프로토콜을 따르는 것이어야 합니다. 실행 시간에 이를 유연하게 지원하기 위해, 스위프트는 필요할 때 간접 (계층)을 추가합니다-이러한 간접 (계층)을 `box` 라고 하며, 성능에 비용이 듭니다. 
+
 ### Differences Between Opaque Types and Protocol Types (불투명 타입과 프로토콜 타입의 차이)
 
 불투명 타입을 반환하는 건 함수 반환 타입으로 프로토콜 타입을 사용하는 것과 매우 비슷해 보이지만, 이 두 종류의 반환 타입은 타입 정체성[^differ-type-identity] 을 보존하는 지가 다릅니다. 불투명 타입은 하나의 특정 타입을 참조하지만, 함수를 호출한 쪽이 어느 타입인지 보는게 불가능하며; 프로토콜 타입은 프로토콜을 준수한 어떤 타입이든 참조할 수 있습니다. 일반적으로 말해서, 프로토콜 타입이 저장 값의 실제 타입에 대해 더 많은 유연함을 주고, 불투명 타입이 그러한 실제 타입을 더 강하게 보증하도록 합니다.
