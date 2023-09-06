@@ -209,8 +209,29 @@ func `repeat`<T: Shape>(shape: T, count: Int) -> some Collection {
   print(vertical.draw())
 ```
 
-위 예제에서, `VerticalShapes` 는 `shapes` 의 타입이 `[any Shape]`-인 상자친 `Shape` 원소들의 배열-이라고 선언합니다. 배열 안에 있는 각각의 원소는 서로 다른 타입일 수 있으며, 그 각각의 타입들은 반드시 `Shape` 프로토콜을 따르는 것이어야 합니다. 실행 시간에 이를 유연하게 지원하기 위해, 스위프트는 필요할 때 간접 (계층)을 추가합니다-이러한 간접 (계층)을 `box` 라고 하며, 성능에 비용이 듭니다. 
+위 예제에서, `VerticalShapes` 는 `shapes` 의 타입이 `[any Shape]`-인 상자친 `Shape` 원소들의 배열-이라고 선언합니다. 배열 안에 있는 각각의 원소는 서로 다른 타입일 수 있으며, 그 각각의 타입들은 반드시 `Shape` 프로토콜을 따르는 것이어야 합니다. 실행 시간에 이를 유연하게 지원하기 위해, 스위프트는 필요할 때 간접 (계층)을 추가합니다-이러한 간접 (계층)을 `box` 라고 하며, 성능에 비용이 듭니다.
 
+`VerticalShapes` 타입 안의, 코드에선 `Shape` 프로토콜에서 필수로 요구하는 메소드와, 속성, 및 첨자를 쓸 수 있습니다.  예를 들어, `VerticalShapes` 의 `draw()` 메소드는 배열 각 원소에 대한 `draw()` 를 호출합니다. 이 메소드를 쓸 수 있는 건 `Shape` 에서 `draw()` 메소드는 필수이기 때문입니다. 이와 대조하여, 삼각형의 `size` 속성이나, 필수가 아닌 `Shape` 의 다른 속성이나 메소드에 접근하려고 하면, 에러를 만들게 됩니다.
+
+`shapes` 에 쓸 수 있는 세 개의 타입을 비교해 봅니다:
+
+* 일반화를 써서, `struct VerticalShapes<S: Shape>` 과 `var shapes: [S]` 라고 하면, 만든 배열의 원소는 어떤 특정한 도형의 타입이 되고, 그 특정한 타입의 정체성은 배열과 상호 작용할 어떤 코드에서도 볼 수 있습니다.
+* 불투명 타입을 써서, `var shapes: [some Shape]` 이라고 하면, 만든 배열의 원소는 어떤 특정한 도형의 타입이 되고, 그 특정한 타입의 정체성은 숨겨집니다.
+* 상자친 프로토콜 타입을 써서, `var shapes: [any Shape]` 이라고 하면, 만든 배열에 서로 다른 타입의 원소를 저장할 수 있으며, 그 타입의 정체성들은 숨겨집니다.
+
+이 경우, 상자친 프로토콜 타입만이 `VerticalShapes` 를 호출한 쪽에서 서로 다른 종류의 도형을 섞을 수 있게 해줍니다.
+
+상자친 값의 밑에 놓인 타입을 알고 있을 땐 `as` 변환을 쓸 수 있습니다. 예를 들면 다음과 같습니다:
+
+```swift
+if let downcastTriangle = vertical.shapes[0] as? Triangle {
+  print(downcastTriangle.size)
+}
+// "5" 를 인쇄함
+```
+
+더 많은 정보는, [[Downcasting (내림 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#downcasting-내림-변환) 을 보기 바랍니다.
+  
 ### Differences Between Opaque Types and Protocol Types (불투명 타입과 프로토콜 타입의 차이)
 
 불투명 타입을 반환하는 건 함수 반환 타입으로 프로토콜 타입을 사용하는 것과 매우 비슷해 보이지만, 이 두 종류의 반환 타입은 타입 정체성[^differ-type-identity] 을 보존하는 지가 다릅니다. 불투명 타입은 하나의 특정 타입을 참조하지만, 함수를 호출한 쪽이 어느 타입인지 보는게 불가능하며; 프로토콜 타입은 프로토콜을 준수한 어떤 타입이든 참조할 수 있습니다. 일반적으로 말해서, 프로토콜 타입이 저장 값의 실제 타입에 대해 더 많은 유연함을 주고, 불투명 타입이 그러한 실제 타입을 더 강하게 보증하도록 합니다.
