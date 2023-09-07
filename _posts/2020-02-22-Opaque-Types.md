@@ -230,13 +230,13 @@ if let downcastTriangle = vertical.shapes[0] as? Triangle {
 // "5" 를 인쇄함
 ```
 
-더 많은 정보는, [[Downcasting (내림 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#downcasting-내림-변환) 을 보기 바랍니다.
+더 많은 정보는, [Downcasting (내림 변환)]({% link docs/swift-books/swift-programming-language/type-casting.md %}#downcasting-내림-변환) 을 보도록 합니다.
   
-### Differences Between Opaque Types and Protocol Types (불투명 타입과 프로토콜 타입의 차이)
+### Differences Between Opaque Types and Boxed Protocol Types (불투명 타입과 상자친 프로토콜 타입의 차이점)
 
-불투명 타입을 반환하는 건 함수 반환 타입으로 프로토콜 타입을 사용하는 것과 매우 비슷해 보이지만, 이 두 종류의 반환 타입은 타입 정체성[^differ-type-identity] 을 보존하는 지가 다릅니다. 불투명 타입은 하나의 특정 타입을 참조하지만, 함수를 호출한 쪽이 어느 타입인지 보는게 불가능하며; 프로토콜 타입은 프로토콜을 준수한 어떤 타입이든 참조할 수 있습니다. 일반적으로 말해서, 프로토콜 타입이 저장 값의 실제 타입에 대해 더 많은 유연함을 주고, 불투명 타입이 그러한 실제 타입을 더 강하게 보증하도록 합니다.
+불투명 타입을 반환하는 건 상자친 프로토콜 타입을 함수의 반환 타입으로 쓰는 것과 매우 비슷해 보이지만, 이 두 종류의 반환 타입은 타입의 정체성[^differ-type-identity] 보존에 차이가 있습니다. 불투명 타입은 한 특정한 타입을 참조하나, 함수를 호출한 쪽에서 어떤 타입인지 볼 수 없지만; 상자친 프로토콜 타입은 프로토콜을 따르는 어떠한 타입이든 참조할 수 있습니다. 일반적으로 말해서, 상자친 프로토콜 타입은 이들이 저장할 값 밑에 놓인 타입에 더 많은 유연함을 주며, 불투명 타입은 그 밑에 놓인 타입을 더 강하게 보증하도록 해줍니다.
 
-예를 들어, 자신의 반환 타입으로 불투명 반환 타입 대신 프로토콜 타입을 사용한 `flip(_:)` 버전은 이렇습니다:
+예를 들어, 여기 있는 버전의 `flip(_:)` 은 자신의 반환 타입으로 불투명 반환 타입 대신 상자친 프로토콜 타입을 사용합니다:
 
 ```swift
 func protoFlip<T: Shape>(_ shape: T) -> Shape {
