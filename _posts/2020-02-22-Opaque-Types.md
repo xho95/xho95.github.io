@@ -268,9 +268,9 @@ protoFlippedTriangle == sameThing     //  에러
 
 상자친 프로토콜 타입을 함수 반환 타입으로 쓰면 유연함을 줘서 프로토콜을 따르는 어떤 타입이든 반환하게 됩니다. 하지만, 그 유연함의 대가는 반환 갑에 대해서 일부 연산들이 불가능해진다는 겁니다. 예제에선 `==` 연산자가 쓸 수 없어지는 이유를 보여줍니다-특정한 타입 정보에 의존하는데 상자친 프로토콜 타입을 쓰면 그게 보존되지 않습니다.
 
-이 접근법이 가진 또 다른 문제는 도형의 변형을 중첩하지 않는다는 겁니다. 삼각형을 뒤집은 결과는 `Shape` 타입의 값이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 준수한 어떠한 타입인 인자를 취합니다. 하지만, 프로토콜 타입의 값은 그 프로토콜을 준수하지 않으며[^protocol-type-value]; `protoFlip(_:)` 이 반환한 값은 `Shape` 을 준수하지 않습니다. 이는 여러 번 변형하는 `protoFlip(protoFlip(smallTriangle))` 같은 코드는 무효라는 의미인데 뒤집은 도형은 `protoFlip(_:)` 의 유효 인자가 아니기 때문입니다.[^invalid-flipped]
+이 접근법에 있는 또 다른 문제는 도형의 변화를 중첩하지 않는다는 겁니다. 삼각형을 뒤집은 결과 값은 `Shape` 타입이고, `protoFlip(_:)` 함수는 `Shape` 프로토콜을 따르는 어떤 타입의 인자를 입력 받습니다. 하지만, 상자친 프로토콜 타입의 값은 그 프로토콜을 준수하지 않아서[^protocol-type-value]; `protoFlip(_:)` 에서 반환된 값은 `Shape` 을 따르지 않습니다. 이는 `protoFlip(protoFlip(smallTriangle))` 같이 여러 번 변형하는 코드는 무효라는 의미인데 뒤집힌 도형은 `protoFlip(_:)` 에 유효한 인자가 아니기 때문입니다.[^invalid-flipped]
 
-이와 대조하여, 불투명 타입은 실제 타입의 정체성을 보존합니다. 스위프트가 결합 타입[^associated-types] 을 추론할 수 있어서, 반환 값으로 프로토콜 타입을 사용할 수 없는 곳에서 불투명 타입 값 을 사용하도록 해줍니다. 예를 들어, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 에 있는 한 `Container` 프로토콜 버전입니다:
+이와 대조하여, 불투명 타입은 그 밑에 놓인 타입의 정체성을 보존합니다. 스위프트는 결합 타입[^associated-types] 을 추론할 수 있어서, 상자친 프로토콜 타입을 반환 값으로 쓸 수 없는 곳에서 불투명 타입 값을 쓸 수 있게 해줍니다. 예를 들어, 여기 있는 건 [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 에 있는 `Container` 프로토콜의 한 버전입니다:
 
 ```swift
 protocol Container {
@@ -281,21 +281,21 @@ protocol Container {
 extension Array: Container { }
 ```
 
-`Container` 프로토콜엔 결합 타입이 있기 때문에 함수의 반환 타입으로 이를 사용할 순 없습니다. 일반화 타입의 구속 조건으로도 사용할 수 없는데 이는 함수 외부에 일반화 타입을 추론하는데 필요한 충분한 정보가 없기 때문입니다.
+`Container` 를 함수의 반환 타입으로 쓸 순 없는데 프로토콜에 결합 타입이 있기 때문입니다. 일반화 반환 타입 안의 구속 조건으로도 쓸 수 없는데 함수 바깥에 일반화 타입을 추론하는데 필요한 충분한 정보가 없기 때문입니다.
 
 ```swift
-// 에러: 결합 타입이 있는 프로토콜은 반환 타입으로 사용할 수 없음
+// 에러: 결합 타입이 있는 프로토콜을 반환 타입으로 쓸 순 없음
 func makeProtocolContainer<T>(item: T) -> Container {
   return [item]
 }
 
-// 에러: C 를 추론할 충분한 정보가 없음
+// 에러: C 를 추론할 정보가 충분하지 않음
 func makeProtocolContainer<T, C: Container>(item: T) -> C {
   return [item]
 }
 ```
 
-반환 타입으로 불투명 타입인 `some Container` 를 사용하면-함수가 컨테이너를 반환하지만, 컨테이너의 타입을 지정하는 건 거절한다는-원하는 API 계약을 표현합니다:
+불투명 타입인 `some Container` 를 반환 타입으로 써야 원하던 **API** 계약을-함수가 컨테이너를 반환하지만, 컨테이너의 타입을 정하는 걸 거절한다는 것을-표현하게 됩니다:
 
 ```swift
 func makeOpaqueContainer<T>(item: T) -> some Container {
@@ -308,7 +308,7 @@ print(type(of: twelve))
 // "Int" 를 인쇄함
 ```
 
-`twelve` 의 타입은 `Int` 로 추론하는데, 이는 타입 추론[^type-inference] 이 불투명 타입에도 작동한다는 사실을 묘사합니다. `makeOpaqueContainer(item:)` 구현에선, 불투명 컨테이너의 실제 타입은 `[T]` 입니다. 이 경우, `T` 는 `Int` 이므로, 반환 값은 정수 배열이며 결합 타입인 `Item` 은 `Int` 라고 추론합니다. `Container` 의 첨자는 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 라고 추론한다는 의미합니다.
+`twelve` 의 타입이 `Int` 라고 추론하는 건, 타입 추론[^type-inference] 이 불투명 타입에도 작동한다는 사실을 묘사합니다. `makeOpaqueContainer(item:)` 의 구현부에선, 불투명 컨테이너 밑에 놓인 타입이 `[T]` 입니다. 이 경우, `T` 가 `Int` 라서, 반환 값은 정수 배열이고 결합 타입인 `Item` 은 `Int` 로 추론됩니다. `Container` 의 첨자는 `Item` 을 반환하는데, 이는 `twelve` 의 타입도 `Int` 로 추론된다는 의미합니다.
 
 ### 다음 장
 
@@ -336,9 +336,9 @@ print(type(of: twelve))
 
 [^less-sepcific]: 이는 (상자친) 프로토콜 타입을 사용하면 그 프로토콜 필수 조건에 정의된 인터페이스만 쓸 수 있기 때문입니다. 즉 타입 정보가 덜 특정해질 수록 사용할 수 있는 인터페이스가 더 줄어들게 됩니다.
 
-[^protocol-type-value]: 프로토콜을 준수한다는 건 프로토콜의 필수 조건을 모두 구현한다는 의미입니다. 하지만, 프로토콜 그 자체는 추상 타입이라서 어떤 것도 직접 구현하지 않습니다. 즉, 어떠한 값이 프로토콜 타입이라면 그 프로토콜을 준수하지 않습니다.
+[^protocol-type-value]: 프로토콜을 따른다는 건 프로토콜의 필수 조건을 모두 구현했다는 의미입니다. 하지만, 프로토콜 그 자체는 추상 타입이라서 어떤 것도 직접 구현하지 않습니다. 따라서, 어떤 값의 타입이 프로토콜 타입 그 자체라면 그 프로토콜을 따르는 것이 아닙니다.
 
-[^invalid-flipped]: 즉 무효하므로 '컴파일-시간 에러' 가 발생한다는 의미입니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
+[^invalid-flipped]: 무효한 코드이므로 컴파일-시간 에러가 발생합니다. 본문의 코드를 실행하면 `Value of protocol type 'Shape' cannot conform to 'Shape'; only struct/enum/class types can conform to protocols` 같은 에러가 발생합니다.
 
 [^associated-types]: '결합 타입 (associated types)' 에 대한 더 자세한 정보는, [Generics (일반화)]({% link docs/swift-books/swift-programming-language/generics.md %}) 장의 [Associated Types (결합 타입)]({% link docs/swift-books/swift-programming-language/generics.md %}#associated-types-결합-타입) 부분을 보도록 합니다.
 
