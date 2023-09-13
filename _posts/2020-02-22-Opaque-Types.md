@@ -1,14 +1,14 @@
 ---
 layout: post
 comments: true
-title:  "Opaque Types and Boxed Types (불투명 타입과 상자 타입)"
+title:  "Opaque Types and Boxed Types (불투명 타입과 상자친 타입)"
 date:   2020-02-22 11:30:00 +0900
 categories: Swift Language Grammar Opaque Type
 ---
 
 {% include header_swift_book.md %}
 
-## Opaque Types and Boxed Types (불투명 타입과 상자 타입)
+## Opaque Types and Boxed Types (불투명 타입과 상자친 타입)
 
 스위프트는 값의 타입에 대한 자세한 것을 숨기는 두 가지 방법인: 불투명 타입과 상자 프로토콜 타입을 제공합니다. 타입 정보를 감추는 건 모듈과 그 모듈 안을 호출하는 코드의 경계 지점에서 유용한데, 반환 값 밑에 놓인 타입을 개인 전용[^private] 으로 남겨둘 수 있기 때문입니다.  
 

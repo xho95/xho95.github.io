@@ -10,11 +10,11 @@ categories: Swift Language Grammar ARC Automatic Reference Counting
 
 ## Automatic Reference Counting (자동 참조 카운팅)
 
-스위프트는 _자동 참조 카운팅 (Automatic Reference Counting; ARC)_ 을 사용하여 앱의 메모리 사용을 추적하고 관리합니다. 대부분의 경우, 이는 스위프트에서 메모리 관리는 "그냥 작동하는 (just works)" 것이며, 메모리 관리를 직접 생각할 필요가 없다는 의미입니다. ARC 는 클래스 인스턴스가 더 이상 필요하지 않을 때 그 인스턴스가 사용한 메모리를 자동으로 풀어줍니다.
+스위프트는 _자동 참조 카운팅 (Automatic Reference Counting; ARC)_ 을 써서 앱의 메모리 사용량을 추적하고 관리합니다. 대부분의 경우에, 이건 스위프트에서 메모리 관리는 "그냥 작동하는 (just works)" 것이며, 메모리 관리에 대해선 직접 생각할 필요가 없다는 걸 의미합니다. **ARC** 는 클래스 인스턴스가 더 이상 필요하지 않을 그 인스턴스에서 쓰던 메모리를 자동으로 풀어줍니다.
 
-하지만, 몇몇 경우에 ARC 는 메모리 관리를 위해 코드 간의 관계에 대한 더 많은 정보를 요구합니다. 이번 장은 그 상황들을 설명하며 ARC 가 앱의 모든 메모리를 관리하게 해주는 방법을 보입니다. 스위프트에서 ARC 를 사용하는 건 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 오브젝티브-C 에서 ARC 를 사용하는 접근법과 아주 비슷합니다.
+하지만, 메모리 관리를 위해 **ARC** 가 코드 간의 관계에 대해 더 많은 정보를 요구하는 경우가 있습니다. 이번 장은 그러한 상황을 설명하고 어떻게 **ARC** 가 앱의 모든 메모리를 관리하게 할 수 있는지를 보여줍니다. 스위프트에서 **ARC** 를 쓰는 건 [Transitioning to ARC Release Notes](https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)[^ARC-Objective-C] 에서 설명한 접근법인 **오브젝티브-C** 와 **ARC** 를 같이 쓰는 것과 매우 비슷합니다.
 
-참조 카운팅은 클래스 인스턴스에만 적용합니다.[^reference-type] 구조체와 열거체는 값 타입이지, 참조 타입이 아라서, 참조로 저장하고 전달하지 않습니다.
+참조 카운팅은 클래스 인스턴스에만 적용됩니다.[^reference-type] 구조체와 열거체는 값 타입이지, 참조 타입이 아라서, 참조로 저장되거나 전달되지 않습니다.
 
 ### How ARC Works (ARC 의 작동 방식)
 
@@ -611,7 +611,7 @@ paragraph = nil
 
 [^ARC-Objective-C]: 원문 자체가 '애플 개발자 문서' 로 가는 링크입니다. '오브젝티브-C' 개발자가 아니라면 해당 문서를 직접 볼 필요 까지는 없습니다.
 
-[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법인데, 여기서 '메모리 관리' 란 '동적 메모리를 자동으로 할당하고 해제하는 것' 을 의미합니다. 프로그래밍에서 '동적 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장 공간 (free store; 또는 heap)' 이라고 하며, '참조' 라는 말은 '자유 저장 공간' 에 할당된 메모리 영역을 '참조한다 (refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장 공간' 이 아닌 '정적 메모리 공간' 인 '스택 (stack)' 에 생기므로 메모리 관리 대상이 아닙니다. 이에 대한 더 자세한 정보는, 위키피디아의 'Memory management' 항목에 있는 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 보도록 합니다.
+[^reference-type]: '참조 카운팅 (reference counting)' 은 스위프트의 메모리 관리 방법인데, 여기서 메모리 관리란 동적 메모리를 자동으로 할당하고 해제하는 것을 의미합니다. 프로그래밍에서 '동적 메모리' 의 할당, 해제가 일어나는 곳을 '자유 저장 공간 (free store; 또는 heap)' 이라고 하며, '참조' 라는 말은 '자유 저장 공간' 에 할당된 메모리 영역을 '참조한다 (refer to)' 것에서 유래한 말입니다. 구조체나 열거체 같은 '값 타입 (value type)' 은 '자유 저장 공간' 이 아닌 '정적 메모리 공간' 인 '스택 (stack)' 에 생기므로 메모리 관리 대상이 아닙니다. 이에 대한 더 자세한 정보는, 위키피디아의 'Memory management' 항목에 있는 [Dynamic memory allocation](https://en.wikipedia.org/wiki/Memory_management#DYNAMIC) 부분과 [Stack-based memory allocation](https://en.wikipedia.org/wiki/Stack-based_memory_allocation) 항목을 참고하기 바랍니다.
 
 [^stored-constant-property]: 원문은 'stored constant property' 라서 직역하면 '저장 상수 속성' 이지만, 첵의 다른 곳에서 'constant stored property' 라는 말을 더 많이 쓰고 있어서, 통일성을 위해 '상수 저장 속성' 이라고 옮깁니다. 사실 '저장 상수 속성' 이나 '상수 저장 속성' 이나 의미는 같은 것인데, 우리 말로 옮겼을 때 '상수 저장 속성' 이 좀 더 자연스럽게 느껴집니다.
 
