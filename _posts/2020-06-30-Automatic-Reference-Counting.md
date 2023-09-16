@@ -30,7 +30,7 @@ categories: Swift Language Grammar ARC Automatic Reference Counting
 
 ### ARC in Action (ARC 의 실제 사례)
 
-자동 참조 카운팅의 작동 방법에 대한 예제는 이렇습니다. 이 예제는 `Person` 이라는 단순한 클래스로 시작하는데, 이는 `name` 이라는 상수 저장 속성[^stored-constant-property] 을 정의합니다:
+여기 있는 예제는 자동 참조 카운팅의 작동법을 보여줍니다. 이 예제는 `Person` 이라는 단순한 클래스로 시작하는데, 이는 상수 저장 속성[^stored-constant-property] 인 `name` 을 정의합니다:
 
 ```swift
 class Person {
