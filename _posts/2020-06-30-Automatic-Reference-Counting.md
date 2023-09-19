@@ -47,7 +47,7 @@ class Person {
 
 `Person` 클래스에 있는 초기자는 인스턴스의 `name` 속성을 설정하고 초기화가 진행중이라는 메시지를 인쇄합니다. `Person` 클래스에는 정리자[^deinitializer] 도 있는데 이는 클래스의 인스턴스가 해제될 때 메시지를 인쇄합니다.
 
-이 다음 코드 조각에선 세 개의 `Person?` 타입 변수를 정의하여, 뒤이은 코드 조각에 있는 새로운 `Person` 인스턴스로의 참조 여러 개를 설정하는데 사용합니다. 이 변수들은 옵셔널 (`Person?` 이지, `Person` 이 아닌) 타입이기 때문에, 자동으로 값이 `nil` 로 초기화되며, 현재는 `Person` 인스턴스를 참조하지 않습니다.
+이 다음 코드 조각에선 세 개의 `Person?` 타입 변수를 정의하여, 뒤이은 코드 조각에 있는 새로운 `Person` 인스턴스로의 참조 여러 개를 설정하는데 사용합니다. 이 변수들은 옵셔널 타입이기 때문에 (`Person?` 이지, `Person` 이 아님), 자동으로 값이 `nil` 로 초기화되며, 현재는 `Person` 인스턴스를 참조하지 않습니다.
 
 ```swift
 var reference1: Person?
@@ -55,16 +55,16 @@ var reference2: Person?
 var reference3: Person?
 ```
 
-이제 새로운 `Person` 인스턴스를 생성하여 이 세 변수 중 하나에 할당할 수 있습니다:
+이제 새로운 `Person` 인스턴스를 생성하고 이를 세 변수 중 하나에 할당할 수 있습니다:
 
 ```swift
 reference1 = Person(name: "John Appleseed")
 // "John Appleseed is being initialized" 를 인쇄함
 ```
 
-`Person` 클래스의 초기자를 호출하는 시점에 `"John Appleseed is being initialized"` 라는 메시지를 인쇄한다는 걸 기억하기 바랍니다. 이는 초기화가 일어났음을 확정합니다.
+`Person` 클래스의 초기자를 호출하는 시점에 `"John Appleseed is being initialized"` 라는 메시지가 인쇄된다는 걸 알아두기 바랍니다. 이는 초기화가 일어났음을 확정합니다.
 
-새로운 `Person` 인스턴스를 `reference1` 변수에 할당했기 때문에, 이제 `reference1` 에서 새 `Person` 인스턴스로의 강한 참조가 있습니다. 적어도 하나의 강한 참조가 있기 때문에, ARC 는 이 `Person` 을 메모리에 유지하며 해제되지 않도록 합니다.
+새로운 `Person` 인스턴스가 `reference1` 변수에 할당됐기 때문에, 이제 `reference1` 에서 새로운 `Person` 인스턴스로의 강한 참조가 생깁니다. 적어도 하나의 강한 참조가 있기 때문에, **ARC** 가 이 `Person` 은 메모리에 유지되고 해제되어선 안된다는 걸 확실히 합니다.
 
 동일한 `Person` 인스턴스를 두 변수에 더 할당하면, 그 인스턴스로의 강한 참조 두 개를 더 세웁니다:
 
