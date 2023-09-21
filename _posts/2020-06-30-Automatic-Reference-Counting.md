@@ -91,9 +91,9 @@ reference3 = nil
 
 ### Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환)
 
-위 예제에서, ARC 는 새로 생성한 `Person` 인스턴스의 참조 개수를 추적하고 더 이상 필요하지 않을 땐 그 `Person` 인스턴스를 해제하는게 가능합니다.
+위 예제에서, **ARC** 가 할 수 있는 건 새로 생성한 `Person` 인스턴스로의 참조 개수를 추적하는 것과 더 이상 필요없을 때 그 `Person` 인스턴스를 해제하는 겁니다.
 
-하지만, 작성한 코드에서 클래스 인스턴스의 강한 참조가 _절대로 (never)_ 0 개가 되지 않을 가능성이 있습니다. 이는 클래스 인스턴스 두 개가 서로의 강한 참조를 쥐고 있어, 각각의 인스턴스가 다른 걸 살아있게 하면, 발생할 수 있습니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라 합니다.
+하지만, 작성한 코드에서 클래스 인스턴스로의 강한 참조가 _절대 (never)_ **0** 이 되지 않는 것도 가능합니다. 이는 두 개의 클래스 인스턴스가 서로에 대한 강한 참조를 들고 있어, 각각의 인스턴스가 다른 걸 살아있도록 하면, 발생할 수 있습니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라 합니다.
 
 강한 참조 순환을 해결하려면 클래스 사이의 일부 관계를 강한 참조 대신 약한 (weak) 또는 소유하지 않는 (unowned) 참조로 정의하면 됩니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환의 해결 방법을 배우기 전에, 그런 순환을 유발하는 방법을 이해하는게 유용합니다.
 
