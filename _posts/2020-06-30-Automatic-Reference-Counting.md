@@ -95,9 +95,9 @@ reference3 = nil
 
 하지만, 작성한 코드에서 클래스 인스턴스로의 강한 참조가 _절대 (never)_ **0** 이 되지 않는 것도 가능합니다. 이는 두 개의 클래스 인스턴스가 서로에 대한 강한 참조를 들고 있어, 각각의 인스턴스가 다른 걸 살아있도록 하면, 발생할 수 있습니다. 이를 _강한 참조 순환 (strong reference cycle)_ 이라 합니다.
 
-강한 참조 순환을 해결하려면 클래스 사이의 일부 관계를 강한 참조 대신 약한 (weak) 또는 소유하지 않는 (unowned) 참조로 정의하면 됩니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환의 해결 방법을 배우기 전에, 그런 순환을 유발하는 방법을 이해하는게 유용합니다.
+강한 참조 순환을 해결하려면 클래스 사이의 일부 관계를 강한 참조 대신 약한 (weak) 또는 소유하지 않는 (unowned) 참조로 정의하면 됩니다. 이 과정은 [Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)](#resolving-strong-reference-cycles-between-class-instances-클래스-인스턴스-사이의-강한-참조-순환-해결하기) 에서 설명합니다. 하지만, 강한 참조 순환을 해결하는 방법을 배우기 전에, 그런 순환이 어떻게 일어나는지를 이해하는게 유용합니다.
 
-우연히 강한 참조 순환을 생성할 수 있는 예제는 이렇습니다. 이 예제는 `Person` 과 `Apartment` 라는 두 클래스를 정의하는데, 이들은 아파트 및 거주자를 모델링합니다:
+여기 있는 건 우연히 강한 참조 순환이 생길 수 있는 예제입니다. 이 예제에선 두 클래스인 `Person` 과 `Apartment` 를 정의하여, 아파트와 거주자를 모델링합니다:
 
 ```swift
 class Person {
