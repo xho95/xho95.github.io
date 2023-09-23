@@ -119,23 +119,23 @@ class Apartment {
 
 이와 비슷하게, 모든 `Apartment` 인스턴스엔 `String` 타입의 `unit` 속성과 `nil` 로 초기화된 옵셔널 `tenant` 속성이 있습니다. 입주자 (tenant) 속성이 옵셔널인 건 아파트에 항상 입주자가 있는 건 아니기 때문입니다.
 
-이 두 클래스 모두 정리자를 정의하여, 그 클래스 인스턴스가 정리 중이라는 사실도 인쇄합니다. 이는 `Person` 과 `Apartment` 인스턴스가 예상대로 해제되는지 확인할 수 있게 합니다.
+이 두 클래스 다 정리자를 정의해서, 그 클래스의 인스턴스가 정리 중이라는 사실도 인쇄합니다. 이는 `Person` 과 `Apartment` 인스턴스가 예상대로 해제되고 있는 지를 알 수 있게 합니다.
 
-이 다음 코드 조각은 `john` 과 `unit4A` 라는 옵셔널 타입 변수를 두 개 정의하는데, 이는 밑에서 특정 `Apartment` 및 `Person` 인스턴스로 설정할 겁니다. 이 두 변수 모두, 옵셔널인 덕에, `nil` 이라는 초기 값을 가집니다:
+다음 코드 조각에서 정의한 두 개의 옵셔널 타입 변수인 `john` 과 `unit4A` 는, 아래에서 특정한 `Apartment` 와 `Person` 인스턴스로 설정될 겁니다. 이 두 변수 다 초기값이 `nil` 인 건, 옵셔널인 덕입니다:
 
 ```swift
 var john: Person?
 var unit4A: Apartment?
 ```
 
-이제 특정한 `Person` 인스턴스 및 `Apartment` 인스턴스를 생성하고 이 새 인스턴스를 `john` 및 `unit4A` 변수에 할당할 수 있습니다:
+이제 특정한 `Person` 인스턴스와 `Apartment` 인스턴스를 생성하고 이 새로운 인스턴스를 `john` 과 `unit4A` 변수에 할당할 수 있습니다:
 
 ```swift
 john = Person(name: "John Appleseed")
 unit4A = Apartment(unit: "4A")
 ```
 
-이 두 인스턴스를 생성하고 할당한 후의 강한 참조는 이렇게 보입니다. 이제 `john` 변수에는 새로운 `Person` 인스턴스의 강한 참조가 있고, `unit4A` 변수에는 새로운 `Apartment` 인스턴스의 강한 참조가 있습니다:
+이 두 인스턴스를 생성하고 할당한 후엔 강한 참조가 이렇게 보입니다. `john` 변수엔 이제 새로운 `Person` 인스턴스로의 강한 참조가 있고, `unit4A` 변수엔 새로운 `Apartment` 인스턴스로의 강한 참조가 있습니다:
 
 ![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-before.jpg)
 
