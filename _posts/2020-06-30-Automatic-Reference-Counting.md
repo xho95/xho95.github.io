@@ -139,31 +139,31 @@ unit4A = Apartment(unit: "4A")
 
 ![Strong Reference Start](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-before.jpg)
 
-이제 두 인스턴스를 서로 이어서 사람은 아파트를 가지고, 아파트는 입주자를 가지게 할 수 있습니다. 느낌표 (`!`) 를 써서 `john` 과 `unit4A` 옵셔널 변수 안에 저장된 인스턴스의 포장을 풀어서 접근해야, 이 인스턴스의 속성을 설정할 수 있다는 걸 기억하기 바랍니다:
+이제 두 인스턴스를 서로 이어서 사람에겐 아파트가 있고, 아파트엔 입주자가 있게 할 수 있습니다. 느낌표 (`!`) 로 `john` 과 `unit4A` 옵셔널 변수를 풀어서 그 안에 저장된 인스턴스에 접근해야, 그 인스턴스의 속성을 설정할 수 있다는 걸 알아두기 바랍니다:
 
 ```swift
 john!.apartment = unit4A
 unit4A!.tenant = john
 ```
 
-두 인스턴스를 서로 이은 후의 강한 참조는 이렇게 보입니다:
+두 개의 인스턴스를 서로 이은 후엔 강한 참조가 이렇게 보입니다:
 
 ![Strong Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-reference.png)
 
-불행하게도, 이 두 인스턴스를 잇는 건 이들 사이에 강한 참조 순환을 생성합니다. 이제 `Person` 인스턴스에는 `Apartment` 인스턴스로의 강한 참조가 있고, `Apartment` 인스턴스에는 `Person` 인스턴스로의 강한 참조가 있습니다. 그러므로, `john` 과 `unit4A` 변수가 쥐고 있는 강한 참조를 끊을 때, 참조 개수는 0 으로 떨어지지 않으며, ARC 는 인스턴스를 해제하지 않습니다:
+불행히도, 이 두 인스턴스를 이으면 이 사이에 강한 참조 순환이 생깁니다. `Person` 인스턴스엔 이제 `Apartment` 인스턴스로의 강한 참조가 있고, `Apartment` 인스턴스엔 `Person` 인스턴스로의 강한 참조가 있습니다. 그러므로, `john` 과 `unit4A` 변수가 들고 있는 강한 참조를 끊을 때, 참조의 개수가 **0** 으로 내려가지 않아서, **ARC** 가 인스턴스를 해제하지 않습니다:
 
 ```swift
 john = nil
 unit4A = nil
 ```
 
-이 두 변수에 `nil` 을 설정할 땐 어느 정리자도 호출하지 않는다는 걸 기억하기 바랍니다. 강한 참조 순환은 `Person` 과 `Apartment` 인스턴스의 해제를 늘 막아서, 앱의 메모리가 새어 나가게 합니다.
+이 두 변수에 `nil` 을 설정할 땐 어떤 정리자도 호출되지 않는다는 걸 알아두기 바랍니다. 강한 참조 순환은 `Person` 과 `Apartment` 인스턴스가 해제되는 걸 늘 막아서, 앱의 메모리가 새어 나가게 됩니다.
 
-`john` 과 `unit4A` 변수를 `nil` 로 설정한 후의 강한 참조는 이렇게 보입니다:
+`john` 과 `unit4A` 변수를 `nil` 로 설정한 후엔 강한 참조가 이렇게 보입니다:
 
 ![Strong Reference Remaining](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-strong-remain.jpg)
 
-`Person` 인스턴스와 `Apartment` 인스턴스 사이엔 강한 참조가 남아 있으며 끊을 수 없습니다.
+`Person` 인스턴스와 `Apartment` 인스턴스 사이에는 강한 참조가 남아 있어서 끊을 수가 없습니다.
 
 ### Resolving Strong Reference Cycles Between Class Instances (클래스 인스턴스 사이의 강한 참조 순환 해결하기)
 
