@@ -181,9 +181,9 @@ _약한 참조 (weak reference)_ 는 자신이 참조하는 인스턴스를 강�
 
 약한 참조 안에 값이 있는지 검사하는 방법은, 그냥 다른 옵셔널 값들과 같으며, 더 이상 있지도 않은 무효한 인스턴스를 참조하는 걸로는 절대 끝나지 않을 겁니다.
 
-> ARC 가 약한 참조를 `nil` 로 설정할 땐 속성 관찰자 (property observers)[^property-observers] 를 호출하지 않습니다.
+> **ARC** 가 약한 참조를 `nil` 로 설정할 땐 속성 관찰자[^property-observers] 가 호출되지 않습니다.
 
-아래 예제는 위의 `Person` 및 `Apartment` 예제와 완전히 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성을 약한 참조로 선언한다는 겁니다:
+아래 예제는 위에 있는 `Person` 및 `Apartment` 예제와 완전히 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성이 약한 참조로 선언되었다는 것입니다:
 
 ```swift
 class Person {
