@@ -183,7 +183,7 @@ _약한 참조 (weak reference)_ 는 자신이 참조하는 인스턴스를 강�
 
 > **ARC** 가 약한 참조를 `nil` 로 설정할 땐 속성 관찰자[^property-observers] 가 호출되지 않습니다.
 
-아래 예제는 위에 있는 `Person` 및 `Apartment` 예제와 완전히 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성이 약한 참조로 선언되었다는 것입니다:
+아래 예제는 위에 있는 `Person` 및 `Apartment` 예제와 완전히 똑같지만, 한 가지 중요한 차이점이 있습니다. 이번에는, `Apartment` 타입의 `tenat` 속성이 약한 참조로 선언된다는 겁니다:
 
 ```swift
 class Person {
@@ -201,7 +201,7 @@ class Apartment {
 }
 ```
 
-(`john` 과 `unit4A` 라는) 두 변수의 강한 참조와 두 인스턴스 사이의 연결 고리는 이전 처럼 생성합니다:
+두 변수 (인 `john` 과 `unit4A`) 에 있던 강한 참조와 두 인스턴스 사이의 연결 고리가 생기는 건 이전과 같습니다:
 
 ```swift
 var john: Person?
@@ -214,18 +214,18 @@ john!.apartment = unit4A
 unit4A!.tenant = john
 ```
 
-두 인스턴스를 서로 이은 참조는 이제 이렇게 보입니다:
+여기서 이제 두 인스턴스를 서로 잇는 참조는 이렇게 보입니다:
 
 ![Weak Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-reference.jpg)
 
-`Person` 인스턴스에는 여전히 `Apartment` 인스턴스로의 강한 참조가 있지만, `Apartment` 인스턴스에는 이제 `Person` 인스턴스로의 _약한 (weak)_ 참조가 있습니다. 이는 `nil` 을 설정하여 `john` 변수가 쥔 강한 참조를 끊을 때, `Person` 인스턴스로의 강한 참조는 더 이상은 없다는, 의미입니다:
+`Person` 인스턴스엔 여전히 `Apartment` 인스턴스로의 강한 참조가 있지만, `Apartment` 인스턴스엔 이제 `Person` 인스턴스로의 _약한 (weak)_ 참조가 있습니다. 이 의미는 `john` 변수가 들고 있는 강한 참조를 `nil` 을 설정하여 끊을 때, `Person` 인스턴스로의 강한 참조가 더 이상은 없다는 것입니다:
 
 ```swift
 john = nil
 // "John Appleseed is being deinitializaed" 를 인쇄함
 ```
 
-`Person` 인스턴스로의 강한 참조가 더 이상 없기 때문에, 이를 해제하고 `tenant` 속성은 `nil` 로 설정합니다:
+`Person` 인스턴스로의 강한 참조가 더 이상 없기 때문에, 이걸 해제하면서 `tenant` 속성을 `nil` 로 설정합니다:
 
 ![Weak Reference nil](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-nil.jpg)
 
