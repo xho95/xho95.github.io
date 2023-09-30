@@ -229,18 +229,18 @@ john = nil
 
 ![Weak Reference nil](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-nil.jpg)
 
-유일하게 남은 `Apartment` 인스턴스로의 강한 참조는 `unit4A` 변수에 있는 겁니다. _그 (that)_ 강한 참조를 끊으면, `Apartment` 인스턴스로의 강한 참조도 더 이상 없습니다:
+유일하게 남은 `Apartment` 인스턴스의 강한 참조는 `unit4A` 변수에 있습니다. _그 (that)_ 강한 참조를 끊는다면, 더 이상 `Apartment` 인스턴스로의 강한 참조가 없습니다:
 
 ```swift
 unit4A = nil
 // "Apartment 4A is being deinitialized" 를 인쇄함
 ```
 
-`Apartment` 인스턴스로의 강한 참조가 더 이상 없기 때문에, 이것도 해제합니다:
+더 이상 `Apartment` 인스턴스로의 강한 참조가 없기 때문에, 이것 역시 해제됩니다:
 
 ![Weak Reference deallocated](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-weak-deallocated.jpg)
 
-> 쓰레기 수집 (gabage collection)[^gabage-collection] 을 사용하는 시스템에선, 약한 포인터 (weak pointers) 를 사용하여 단순 임시 저장 구조 (simple caching mechanism) 을 구현할 때가 있는데 이는 강한 참조가 없는 객체는 메모리 압력 (memory pressure) 이 쓰레기 수집을 발동할 때만 해제되기 때문입니다. 하지만, ARC 에선, 마지막 강한 참조를 제거하자마자 곧바로 값을 해제하므로, 그런 용도론 약한 참조가 적합하지 않습니다.[^ARC-unsuitable-caching-mechanism]
+> 쓰레기 수집 (gabage collection)[^gabage-collection] 을 사용하는 시스템에선, 약한 포인터 (weak pointers) 를 써서 단순한 임시 저장 구조 (simple caching mechanism) 을 구현할 때가 있는데 이는 메모리 압력 (memory pressure) 이 쓰레기 수집을 발생시킬 때만 강한 참조가 없는 객체가 해제되기 때문입니다. 하지만, **ARC** 에선, 마지막 강한 참조가 제거되자마자 값이 해제되므로, 그런 용도로는 약한 참조가 적합하지 않습니다.[^ARC-unsuitable-caching-mechanism]
 
 #### Unowned References (소유하지 않는 참조)
 
