@@ -254,11 +254,11 @@ unit4A = nil
 
 다음 예제에서 정의하는 두 클래스인, `Customer` 와 `CreditCard` 는, 은행 고객과 그 고객의 신용 카드를 모델링합니다. 이 두 클래스는 서로 각자의 클래스 인스턴스를 속성으로 저장합니다. 이런 관계는 강한 참조 순환을 생성할 수도 있습니다.
 
-`Customer` 와 `CreditCard` 사이의 관계는 위에 있는 약한 참조 예제의 `Apartment` 와 `Person` 사이의 관계와 살짝 다릅니다. 이 데이터 모델에서, 고객에겐 신용 카드가 있을 수도 없을 수도 있지만, 신용 카드는 고객과 _항상 (always)_ 결합되어 있을 겁니다. `CreditCard` 인스턴스는 절대 자신이 참조한 `Customer` 보다 오래 살지 않습니다. 이를 나타내기 위해, `Customer` 클래스엔 옵셔널 `card` 속성이 있지만, `CreditCard` 클래스엔 소유하지 않는 (그리고 옵셔널-아닌) `customer` 속성이 있습니다.
+`Customer` 와 `CreditCard` 사이의 관계는 위에서 본 약한 참조 예제의 `Apartment` 와 `Person` 관계와 살짝 다릅니다. 이 데이터 모델에서, 고객은 신용 카드를 가지고 있을 수도 없을 수도 있지만, 신용 카드는 고객과 _항상 (always)_ 결합되어 있을 겁니다. `CreditCard` 인스턴스는 절대 자신이 참조하는 `Customer` 보다 오래 살지 않습니다. 이를 나타내기 위해, `Customer` 클래스는 옵셔널 `card` 속성을 가지지만, `CreditCard` 클래스는 소유하지 않는 (그리고 옵셔널이-아닌) `customer` 속성을 가집니다.
 
-더 나아가, `number` 값과 `custom` 인스턴스를 자신의 `CreditCard` 초기자에 전달해야 _만 (only)_ 새로운 `CreditCard` 인스턴스를 생성할 수 있습니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스와 `customer` 인스턴스가 항상 결합된다는 걸 보장합니다.
+더 나아가, 새로운 `CreditCard` 인스턴스는 `number` 값과 `custom` 인스턴스를 자신만의 `CreditCard` 초기자에 전달해야 _만 (only)_ 생성할 수 있습니다. 이는 `CreditCard` 인스턴스를 생성할 때 `CreditCard` 인스턴스엔 항상 자신과 결합된 `customer` 인스턴스가 있다는 걸 보장합니다.
 
-신용 카드엔 고객이 항상 있을거기 때문에, 자신의 `customer` 인스턴스를 소유하지 않는 참조로 정의하여, 강한 참조 순환을 피합니다:
+신용 카드엔 항상 고객이 있을 것이기 때문에, `customer` 인스턴스를 소유하지 않는 참조로 정의하여, 강한 참조 순환을 피합니다:
 
 ```swift
 class Customer {
