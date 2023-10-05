@@ -281,32 +281,32 @@ class CreditCard {
 }
 ```
 
-> `CreditCard` 클래스의 `number` 속성은 `Int` 보단 `UInt64` 타입으로 정의하여, `number` 속성의 용량이 32-비트 및 64-비트 시스템 양 쪽에서 16-자리 카드 번호를 저장하기에 충분히 크도록 보장합니다.
+> `CreditCard` 클래스의 `number` 속성은 `Int` 보단 `UInt64` 타입으로 정의해서, `number` 속성의 용량이 **32**-비트 및 **64**-비트 시스템 모두에서 **16**-자리 카드 번호를 저장하기에 충분히 크다는 걸 확실히 합니다.
 
-이 다음 코드 조각은 `john` 이라는 옵셔널 `Customer` 변수를 정의하는데, 이를 사용하여 특정 고객으로의 참조를 저장할 겁니다. 이 변수는, 옵셔널인 덕에, 'nil' 이라는 초기 값을 가집니다:
+이 다음 코드 조각에선 옵셔널 `Customer` 변수인 `john` 을 정의하는데, 이를 써서 특정 고객으로의 참조를 저장할 겁니다. 이 변수의 초기값이 'nil' 인 건, 옵셔널인 덕입니다:
 
 ```swift
 var john: Customer?
 ```
 
-이제 `Customer` 인스턴스를 생성하고, 이를 사용하여 새로운 `CreditCard` 인스턴스를 그 고객의 `card` 속성으로 초기화하고 할당할 수 있습니다:
+이제 `Customer` 인스턴스를 생성하고, 이걸로 새로운 `CreditCard` 인스턴스를 그 고객의 `card` 속성에 초기화하고 할당할 수 있습니다:
 
 ```swift
 john = Customer(name: "John Appleseed")
 john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 ```
 
-이제 두 인스턴스를 이은 후의, 참조는 이렇게 보입니다:[^unowned-reference]
+여기서, 이제 두 인스턴스를 이은 참조는, 이렇게 보입니다:[^unowned-reference]
 
 ![Unowned Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-reference.jpg)
 
-이제 `Customer` 인스턴스엔 `CreditCard` 인스턴스로의 강한 참조가 있고, `CreditCard` 인스턴스엔 `Customer` 인스턴스로의 소유하지 않는 참조가 있습니다.
+`Customer` 인스턴스는 이제 `CreditCard` 인스턴스로의 강한 참조를 가지고, `CreditCard` 인스턴스는 `Customer` 인스턴스로의 소유하지 않는 참조를 가집니다.
 
-소유하지 않는 `customer` 참조 때문에, `john` 변수가 쥔 강한 참조를 끊을 때, `Customer` 인스턴스로의 강한 참조는 더 이상 없습니다:
+소유하지 않는 `customer` 참조 때문에, `john` 변수가 들고 있던 강한 참조를 끊을 때, `Customer` 인스턴스로의 강한 참조는 더 이상 있지 않게 됩니다:
 
 ![Unowned Reference Break](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-break.jpg)
 
-`Customer` 인스턴스로의 강한 참조가 더 이상 없기 때문에, 이를 해제합니다. 이게 발생한 후엔, `CreditCard` 인스턴스로의 강한 참조도 더 이상 없으므로, 이것도 해제합니다:
+더 이상 `Customer` 인스턴스로의 강한 참조는 없기 때문에, 이걸 해제합니다. 이게 발생한 후엔, `CreditCard` 인스턴스로의 강한 참조도 더 이상 있지 않게 되므로, 이것도 해제됩니다:
 
 ```swift
 john = nil
