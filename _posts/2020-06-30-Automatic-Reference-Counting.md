@@ -364,7 +364,7 @@ intermediate.nextCourse = advanced
 department.courses = [intro, intermediate, advanced]
 ```
 
-위 코드는 한 학과 및 그의 세 교육 과정을 생성합니다. 입문 (intro) 및 중급 (intermediate) 둘 다 자신의 `nextCourse` 속성에 그 다음으로 제안할 교육 과정을 저장하는데, 이걸 완료한 학생이 들어야 할 교육 과정에 대한 소유하지 않는 옵셔널 참조를 유지합니다.
+위 코드는 하나의 학과와 그에 딸린 세 개의 교육 과정을 생성합니다. 입문 (intro) 과 중급 (intermediate) 과정 둘 다 `nextCourse` 속성에 그 다음으로 제안할 교육 과정을 저장하여, 이걸 완료한 학생이 들으면 좋을 교육 과정으로의 소유하지 않는 옵셔널 참조를 유지합니다.
 
 ![Unowned Optional Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-optional-reference.png)
 
