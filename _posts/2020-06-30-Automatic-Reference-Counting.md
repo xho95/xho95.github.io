@@ -368,7 +368,7 @@ department.courses = [intro, intermediate, advanced]
 
 ![Unowned Optional Reference](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-unowned-optional-reference.png)
 
-소유하지 않는 옵셔널 참조는 자신이 포장한[^wraps] 클래스 인스턴스를 강하게 쥐지 않아서, ARC 가 인스턴스를 해제하는 걸 막지 않습니다. 소유하지 않는 옵셔널 참조는, `nil` 이 될 수 있다는 것만 제외하면, ARC 밑에서 소유하지 않는 참조와 똑같이 동작합니다.
+소유하지 않는 옵셔널 참조는 자신이 감싼[^wraps] 클래스 인스턴스를 강하게 들지 않아서, **ARC** 가 인스턴스를 해제하는 걸 막지 않습니다. 이런 동작은, 소유하지 않는 옵셔널 참조가 `nil` 이 될 수 있다는 것만 빼면, **ARC** 아래에서의 소유하지 않는 참조와 똑같습니다.
 
 옵셔널-아닌 소유하지 않는 참조와 마찬가지로, `nextCourse` 는 항상 해제하지 않은 교과 과정만 참조한다는 보장을 직접 책임져야 합니다. 이 경우, 예를 들어, `department.courses` 에서 한 교육 과정을 삭제할 땐 다른 교육 과정에 있을지 모를 자신으로의 어떤 참조도 제거할 필요가 있습니다.
 
@@ -627,7 +627,7 @@ paragraph = nil
 
 [^unowned-reference]: 이 그림을 보면 '소유하지 않는 참조 (unowned reference)' 라는 이름의 의미를 알 수 있습니다. 고객은 신용 카드를 소유하지만, 신용 카드는 고객을 소유하지 않습니다. 실제 세계에 빗대어 보면, 고객은 신용 카드를 바꿀 수 있지만, 신용 카드는 고객을 바꿀 수 없습니다. 그러므로, 외부에서 신용 카드를 직접 참조하는 변수도 없습니다.
 
-[^wraps]: '포장한다 (wrap)' 는 건 값을 옵셔널로 감싸서 포장한다는 의미입니다. `let a: Int? = 1` 에서 `a` 는 `Optional<Int>` 터입인데, 이는 `1` 이라는 `Int` 값을 옵셔널로 포장한 것입니다.
+[^wraps]: `let a: Int? = 1` 에서 `a` 는 `Optional<Int>` 타입인데, 이는 `1` 이라는 `Int` 값을 옵셔널로 감싼 겁니다.
 
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
