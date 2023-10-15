@@ -414,11 +414,11 @@ class City {
 
 `City` 초기자는 `Country` 초기자 안에서 호출됩니다. 하지만, `Country` 초기자는 새로운 `Country` 인스턴스가 완전히 초기화되기 전까진 `City` 초기자에 `self` 를 전달할 수 없는데, 이는 [Two-Phase Initialization (2-단계 초기화)]({% link docs/swift-books/swift-programming-language/initialization.md %}#two-phase-initialization-2-단계-초기화) 에서 설명한 것과 같습니다.
 
-이런 필수 조건에 대처하기 위해, `Country` 의 `capitalCity` 속성은 암시적으로 풀리는 옵셔널 속성으로 선언하는데, 이건 타입 보조 설명 끝의 느낌표 (`City!`) 로 지시합니다. 이는, 다른 어떤 옵셔널 같이, `capitalCity` 속성도 `nil` 이라는 기본 값을 가지지만, [Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#implicitly-unwrapped-optionals-암시적으로-포장-푸는-옵셔널) 에서 설명한 것처럼 값의 포장을 풀지 않고도 접근 할 수 있다는 의미입니다.
+이런 필수 조건에 대처하기 위해, `Country` 의 `capitalCity` 속성은 암시적으로 풀리는 옵셔널 속성으로 선언하는데, 타입 보조 설명 끝의 느낌표 (`City!`) 로 지시되어 있습니다. 이것의 의미는 `capitalCity` 속성의 기본 값이 `nil` 이라는 건, 다른 어떤 옵셔널 값과 같지만, [Implicitly Unwrapped Optionals (암시적으로 포장 푸는 옵셔널)]({% link docs/swift-books/swift-programming-language/the-basics.md %}#implicitly-unwrapped-optionals-암시적으로-포장-푸는-옵셔널) 에서 설명한 것처럼 자신의 값을 풀지 않고도 접근할 수 있다는 겁니다.
 
-`capitalCity` 엔 기본 값 `nil` 이 있기 때문에, `Country` 인스턴스가 초기자 안에서 자신의 `name` 속성을 설정하자마자 곧 새로운 `Country` 인스턴스는 완전히 초기화된 걸로 고려합니다. 이는 `name` 속성을 설정하자마자 곧 `Country` 초기자가 암시적 `self` 속성의 참조와 전달을 시작할 수 있다는 의미입니다. 그리하여 `Country` 초기자가 자신만의 `capitalCity` 속성을 설정할 때 `Country` 초기자가 `City` 초기자의 매개 변수로 `self` 를 전달할 수 있습니다.
+`capitalCity` 엔 기본 `nil` 값이 있기 때문에, 새로운 `Country` 인스턴스는 자신의 초기자 안에서 `Country` 인스턴스에 `name` 속성을 설정하자마자 곧 그 전체가 초기화되었다고 고려됩니다. 이건 `name` 속성을 설정하자마자 곧 `Country` 초기자에서 암시적 `self` 속성의 참조와 전달을 시작할 수 있다는 의미입니다. 그러므로 `Country` 초기자가 자신만의 `capitalCity` 속성을 설정할 때 `Country` 초기자에서 `self` 를 `City` 초기자의 한 매개 변수로 전달할 수 있습니다.
 
-이 모든 게 의미하는 건, 강한 참조 순환의 생성 없이, `Country` 와 `City` 인스턴스를 단일 구문으로 생성할 수 있으며, 느낌표로 자신의 옵셔널 값 포장을 풀 필요 없이, 직접 `capitalCity` 속성에 접근할 수 있다는 겁니다:
+이 모든 게 의미하는 건 `Country` 와 `City` 인스턴스를 단 하나의 구문으로 생성하면서, 강한 참조 순환을 생성하지 않을 수 있으며, 직접 `capitalCity` 속성에 접근하더라도, 느낌표로 옵셔널 값을 풀 필요가 없다는 겁니다:
 
 ```swift
 var country = Country(name: "Canada", capitalName: "Ottawa")
@@ -426,7 +426,7 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 // "Canada's capital city is called Ottawa" 를 인쇄함
 ```
 
-위 예제에서, 암시적으로 포장 푸는 옵셔널을 사용하는 의미는 2-단계 클래스 초기자의 모든 필수 조건을 만족한다는 겁니다. `capitalCity` 속성은 초기화를 한 번 완료하면 옵셔널-아닌 값처럼 사용하고 접근할 수 있으면서도, 강한 참조 순환도 피합니다.
+위 예제에서, 암시적으로 풀리는 옵셔널을 쓴 건 모든 **2**-단계 클래스 초기자의 필수 조건들이 만족된다는 의미입니다. `capitalCity` 속성은 한 번 초기화를 완료하고 나면 옵셔널이-아닌 값처럼 쓰고 접근할 수 있으면서, 강한 참조 순환도 여전히 피할 수 있습니다.
 
 ### Strong Reference Cycles for Closures (클로저의 강한 참조 순환)
 
