@@ -464,15 +464,15 @@ class HTMLElement {
 }
 ```
 
-`HTMLElement` 클래스는 `name` 속성을 정의하여, 제목 원소면 `"h1"`, 문단 원소면 `"p"`, 줄 끊음 원소면 `"br"` 같은, 원소 이름을 지시합니다. `HTMLElement` 는 옵셔널 `text` 속성도 정의하는데, 여기에 문자열을 설정하면 그 HTML 원소 안에 그릴 텍스트를 나타낼 수 있습니다.
+`HTMLElement` 클래스에서 정의한 `name` 속성은, 원소의 이름을 지시하는데, `"h1"` 이면 제목 원소이고, `"p"` 이면 문단 원소, `"br"` 이면 줄 끊음 원소입니다. `HTMLElement` 는 옵셔널 `text` 속성도 정의하는데, 여기에 문자열을 설정하여 그 **HTML** 원소 안에서 그릴 텍스트를 나타낼 수 있습니다.
 
-이 단순한 두 속성에 더해, `HTMLElement` 클래스는 `asHTML` 이라는 느긋한 속성[^lazy] 도 정의합니다. 이 속성은 `name` 과 `text` 를 HTML 문자열 조각으로 조합하는 클로저를 참조합니다. `asHTML` 속성의 타입은 `() -> String`, 또는 "매개 변수가 없고, `String` 값을 반환하는 함수" 입니다.
+이런 단순한 두 개의 속성에 더해, `HTMLElement` 클래스는 `asHTML` 이라는 느긋한 속성[^lazy] 도 정의합니다. 이 속성이 참조하는 클로저는 `name` 과 `text` 를 **HTML** 문자열 조각으로 조합합니다. `asHTML` 속성은 타입이 `() -> String`, 또는 "입력 받는 매개 변수가 없고, `String` 값을 반환하는 함수" 입니다.
 
-기본적으로, `asHTML` 속성에 할당한 클로저는 HTML 꼬리표를 문자열로 나타낸 걸 반환합니다. 이 꼬리표는 `text` 가 존재하면 그 옵셔널 값을, 존재하지 않으면 아무런 텍스트 내용물도 담지 않습니다. 문단 원소면, `text` 속성이 `"some text"` 또는 `nil` 과 같은지에 따라, 클로저가 `"<p>some text</p>"` 나 `<p />` 를 반환할 것입니다.
+기본으로, `asHTML` 속성에 할당된 클로저는 문자열로 나타낸 **HTML** 꼬리표를 반환합니다. 이 꼬리표에는 옵셔널 `text` 가 있으면 그 값을, `text` 가 없으면 아무 텍스트도 담겨 있지 않습니다. 문단 원소라면, 클로저가 `"<p>some text</p>"` 나 `<p />` 를 반환할 것인데, 이는 `text` 속성이 `"some text"` 인지 `nil` 인지에 달려 있습니다.
 
-`asHTML` 속성의 이름과 사용법은 어느 정도 인스턴스 메소드와 비슷합니다. 하지만, `asHTML` 은 인스턴스 메소드라기 보단 클로저 속성이기 때문에, 한 특별한 HTML 원소의 그림 방식을 바꾸고 싶으면, `asHTML` 속성의 기본 값을 자신만의 클로저로 교체할 수 있습니다.
+`asHTML` 속성의 이름을 짓고 사용하는 건 인스턴스 메소드와 어느 정도 비슷합니다. 하지만, `asHTML` 이 클로저 속성이지 인스턴스 메소드가 아니기 때문에, `asHTML` 속성의 기본 값을 자신만의 클로저로 교체하여, 특별한 **HTML** 원소를 **HTML** 로 그리는 방식을 바꿀 수 있습니다.
 
-예를 들어, 빈 HTML 꼬리표를 반환하지 못하게, `text` 속성이 `nil` 이면 어떠한 텍스트가 기본이 되는 클로저를 `asHTML` 속성에 설정할 수 있을 겁니다:
+예를 들어, `asHTML` 속성에서 `text` 속성이 `nil` 이면 어떤 텍스트를 기본으로 주는 클로저를 설정하여, 빈 **HTML** 꼬리표가 나타나는 걸 막을 수도 있을 것입니다:
 
 ```swift
 let heading = HTMLElement(name: "h1")
@@ -631,7 +631,7 @@ paragraph = nil
 
 [^unowned-exception]: 원래 `unowned` 자체가 메모리 해제와 관련된 키워드이므로 '값 타입' 에서 사용할 일이 없습니다. 그래서 '값 타입을 `unowned` 로 표시할 수 없다' 는 규칙이 생겼는데, '값 타입이 옵셔널' 인 경우에는 `unowned` 로 표시할 수 있다고 해석할 수 있습니다.
 
-[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#lazy-stored-properties-느긋한-저장-속성) 부분을 보도록 합니다.
+[^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
 
 [^capture-list-place]: 사실, 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 붙잡을 목록은 클로저 본문 맨 앞에 둔다라고 생각하면 됩니다.
 
