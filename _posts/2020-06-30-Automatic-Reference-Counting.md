@@ -484,11 +484,11 @@ print(heading.asHTML())
 // "<h1>some default text</h1>" 를 인쇄함
 ```
 
-> `asHTML` 속성을 느긋한 속성으로 선언한 건, 실제로 어떠한 HTML 출력 대상에 문자열 값을 그릴 필요가 있을 때만 원소가 필요하기 때문입니다. `asHTML` 이 느긋한 속성이란 사실은 기본 클로저 안에서 `self` 를 참조할 수 있다는 의미인데, 초기화를 완료하여 `self` 의 존재를 알기 전까진 느긋한 속성에 접근하지 않을 것이기 때문입니다.
+> `asHTML` 속성을 느긋한 속성으로 선언한 건, 이게 필요한 순간이 실제로 어떤 **HTML** 출력 대상에 원소를 문자열 값으로 그릴 필요가 있을 때 뿐이기 때문입니다. `asHTML` 이 느긋한 속성이란 사실은 기본 클로저 안에서 `self` 를 참조할 수 있다는 의미인데, 느긋한 속성은 초기화가 완료되어 `self` 가 있다는 걸 알기 전까진 접근하지 않을 것이기 때문입니다.
 
-`HTMLElement` 클래스가 제공한 단일 초기자는, `name` 인자와 (원할 경우) 새 원소를 초기화하는 `text` 인자를 취합니다. 클래스는 정리자도 정의하는데, 이는 `HTMLElement` 인스턴스가 해제할 때를 보여주는 메시지를 인쇄합니다:
+`HTMLElement` 클래스에서 제공하는 단 하나의 초기자는, `name` 인자와 (원할 경우) 새 원소를 초기화할 `text` 인자를 입력 받습니다. 클래스는 정리자도 정의하는데, 여기선 `HTMLElement` 인스턴스를 해제할 때 보여줄 메시지를 인쇄합니다:
 
-`HTMLElement` 클래스로 새로운 인스턴스를 생성하고 출력하는 방법은 이렇습니다:
+`HTMLElement` 클래스로 새로운 인스턴스를 생성하고 출력하는 건 이렇습니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
@@ -496,23 +496,23 @@ print(paragraph!.asHTML())
 // "<p>hello, world</p>" 를 인쇄함
 ```
 
-> 위의 `paragraph` 변수를 _옵셔널 (optional)_ `HTMLElement` 로 정의하여, 아래에서 `nil` 로 설정할 수 있어서 강한 참조 순환이 있다는 걸 실증할 수 있습니다.
+> 위에 있는 `paragraph` 변수는 _옵셔널 (optional)_ `HTMLElement` 로 정의되어 있어서, `nil` 로 설정하여 강한 참조 순환이 있다는 걸 실제로 보여줄 수 있습니다.
 
-불행하게도, 위에서 작성한, `HTMLElement` 클래스는 `HTMLElement` 인스턴스와 자신의 기본 `asHTML` 값이 사용한 클로저 사이에 강한 참조 순환을 생성합니다. 순환은 이렇게 보입니다:
+불행하게도, `HTMLElement` 클래스는, 위에 써진대로, `HTMLElement` 인스턴스와 기본 값 `asHTML` 에서 쓴 클로저 사이에 강한 참조 순환을 생성합니다. 여기서 순환을 보면 이렇습니다:
 
 ![Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-strong.jpg)
 
-인스턴스의 `asHTML` 속성은 자신의 클로저로의 강한 참조를 쥡니다. 하지만, 클로저가 (`self.name` 과 `self.text` 를 참조하는 식으로) 자신의 본문 안에서 `self` 를 참조하기 때문에, 클로저가 'self' 를 _붙잡으며 (capture)_, 이는 `HTMLElement` 인스턴스로의 강한 참조를 되돌려 쥔다는 걸 의미합니다. 둘 사이에 강한 참조 순환이 생성됩니다. (클로저의 값 붙잡기에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% link docs/swift-books/swift-programming-language/closures.md %}#capturing-values-값-붙잡기) 를 보도록 합니다.)
+인스턴스의 `asHTML` 속성은 클로저로의 강한 참조를 들고 있습니다. 하지만, 클로저도 자신의 본문 안에서 (`self.name` 과 `self.text` 를 참조하는 식으로) `self` 를 참조하기 때문에, 클로저도 **self** 를 _붙잡는데 (capture)_, 이는 `HTMLElement` 인스턴스로의 강한 참조를 되돌려 들게 된다는 걸 의미합니다. 이 둘 사이에는 강한 참조 순환이 생깁니다. (클로저 안에서의 값 붙잡기에 대한 더 많은 정보는, [Capturing Values (값 붙잡기)]({% link docs/swift-books/swift-programming-language/closures.md %}#capturing-values-값-붙잡기) 부분을 보기 바랍니다.)
 
-> 클로저가 `self` 를 여러 번 참조할지라도, `HTMLElement` 인스턴스로의 강한 참조는 하나만 붙잡습니다.
+> 클로저에서 `self` 를 여러 번 참조하더라도, `HTMLElement` 인스턴스로의 강한 참조는 한 번만 붙잡습니다.
 
-`paragraph` 변수에 `nil` 을 설정하여 `HTMLElement` 인스턴스로의 강한 참조를 끊으면, 강한 참조 순환 때문에, `HTMLElement` 인스턴스나 자신의 클로저 어느 것도 해제하지 않습니다:
+`paragraph` 변수를 `nil` 로 설정하여 `HTMLElement` 인스턴스로의 강한 참조를 끊으면, 강한 참조 순환이 `HTMLElement` 인스턴스와 클로저가 해제되는 걸 둘 다 막습니다:
 
 ```swift
 paragraph = nil
 ```
 
-`HTMLElement` 정리자 안의 메시지를 인쇄하지 않아, `HTMLElement` 인스턴스를 해제하지 않음을 보여주는 걸 기억하기 바랍니다.
+`HTMLElement` 정리자에 있는 메시지가 인쇄되지 않는게, `HTMLElement` 인스턴스가 해제되지 않았음을 보여준다는 걸 알아두기 바랍니다.
 
 ### Resolving Strong Reference Cycles for Closures (클로저의 강한 참조 순환 해결하기)
 
