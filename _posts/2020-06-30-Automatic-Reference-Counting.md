@@ -522,9 +522,9 @@ paragraph = nil
 
 #### Defining a Capture List (붙잡을 목록 정의하기)
 
-붙잡을 목록의 각 항목은 `weak` 또는 `unowned` 키워드와 (`self` 같은) 클래스 인스턴스 또는 (`delegate = self.delegate` 같이) 어떠한 값으로 초기화한 변수로의 참조가 쌍을 이룬 것입니다. 이 쌍들은 한 쌍의 대괄호 안에, 쉼표로 구분하여, 작성합니다.
+붙잡을 목록 안의 각 항목은 (`self` 같은) 클래스 인스턴스나 (`delegate = self.delegate` 같이) 어떤 값으로 초기화된 변수로의 참조를 가지는 한 쌍의 `weak` 또는 `unowned` 키워드입니다. 이 쌍들은 한 쌍의 대괄호 안에 쓰고, 쉼표로 구분합니다.
 
-클로저가 매개 변수 목록과 반환 타입을 제공하면 그 앞에 붙잡을 목록을 둡니다:
+클로저가 매개 변수 목록과 반환 타입을 제공한다면 붙입을 목록을 그 앞에 둡니다:
 
 ```swift
 lazy var someClosure = {
@@ -534,7 +534,8 @@ lazy var someClosure = {
 }
 ```
 
-클로저가 상황으로 추론할 수 있기 때문에 매개 변수 목록이나 반환 타입을 지정하지 않으면, 붙잡을 목록을 클로저 시작 부분에 두고, 그 뒤에 `in` 키워드가 따라옵니다:[^capture-list-place]
+
+클로저가 상황을 통해 매개 변수 목록이나 반환 타입을 추론할 수 있기 때문에 이를 지정하지 않는다면, 붙잡을 목록을 클로저의 맨 시작 부분에 두고, 그 뒤에 `in` 키워드를 둡니다:[^capture-list-place]
 
 ```swift
 lazy var someClosure = {
@@ -633,6 +634,6 @@ paragraph = nil
 
 [^lazy]: '느긋한 속성 (lazy property)' 에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장의 [Lazy Stored Properties (느긋한 저장 속성)]({% link docs/swift-books/swift-programming-language/properties.md %}#lazy-stored-properties-느긋한-저장-속성) 부분을 참고하기 바랍니다.
 
-[^capture-list-place]: 사실, 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다. 그러므로 붙잡을 목록은 클로저 본문 맨 앞에 둔다라고 생각하면 됩니다.
+[^capture-list-place]: 사실, 두 경우 모두 '붙잡을 목록 (capture list)' 이 클로저 본문 가장 앞에 있습니다.
 
 [^weak-capture-nil]: 약한 참조는 자동으로 `nil` 이 되므로, 클로저 안에서 참조가 `nil` 인지 검사하여 인스턴스의 존재를 검사할 수 있습니다.
