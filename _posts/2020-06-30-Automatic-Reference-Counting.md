@@ -552,7 +552,7 @@ lazy var someClosure = {
 
 > 붙잡힌 참조가 절대 `nil` 이 될게 아니라면, 항상 약한 참조 보단, 소유하지 않는 참조로 붙잡는게 좋습니다.
 
-위의 [Strong Reference Cycles for Closures (클로저의 강한 참조 순환)](#strong-reference-cycles-for-closures-클로저의-강한-참조-순환) 에 있는 `HTMLElement` 예제의 강한 참조 순환을 해결하는데는 소유하지 않는 참조가 사용하기 적절한 붙잡기 방법입니다. 순환을 피하는 `HTMLElement` 클래스의 작성 방법은 이렇습니다: 
+위의 [Strong Reference Cycles for Closures (클로저의 강한 참조 순환)](#strong-reference-cycles-for-closures-클로저의-강한-참조-순환) 에 있는 `HTMLElement` 예제의 강한 참조 순환을 해결하는데는 소유하지 않는 참조를 쓰는게 적절한 붙잡기입니다. 순환을 피하도록 `HTMLElement` 클래스를 작성하는 방법은 이렇습니다: 
 
 ```swift
 class HTMLElement {
@@ -579,28 +579,28 @@ class HTMLElement {
 }
 ```
 
-이 `HTMLElement` 구현은, `asHTML` 클로저 안에서 붙잡을 목록의 추가만 제쳐 놓으면, 이전 구현과 완전히 똑같습니다. 이 경우, 붙잡을 목록은 `[unowned self]` 인데, 이는 "'self' 를 강한 참조 보단 소유하지 않는 참조로 붙잡아라" 는 의미입니다.
+이번 `HTMLElement` 구현은, `asHTML` 클로저에서 붙잡을 목록을 추가한 것만 빼면, 이전의 구현과 그 정체가 완전히 똑같습니다. 이 경우, 붙잡을 목록인 `[unowned self]` 는, "자신 (self) 을 강한 참조 보단 소유하지 않는 참조로 붙잡아라" 는 걸 의미합니다.
 
-`HTMLElement` 인스턴스의 생성과 인쇄는 이전 처럼 할 수 있습니다:
+`HTMLElement` 인스턴스를 생성하고 인쇄하는 건 이전과 같이 할 수 있습니다:
 
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>" 를 인쇄합니다.
+// "<p>hello, world</p>" 를 인쇄함
 ```
 
-붙잡을 목록이 제자리에 있는 참조는 이렇게 보입니다:
+붙잡을 목록이 적당한 곳에 있는 참조를 보면 이렇습니다:
 
 ![Resloving of Strong Reference Cycle with Closures](/assets/Swift/Swift-Programming-Language/Automatic-Reference-Counting-closure-resolved.jpg)
 
-이번에, 클로저가 붙잡은 `self` 는 소유하지 않는 참조라, 자신이 붙잡은 `HTMLElement` 인스턴스를 강하게 쥐지 않습니다. `paragraph` 변수로부터의 강한 참조에 `nil` 을 설정하면, 아래 예제에서 정리자 메시지를 인쇄하는 걸로 볼 수 있듯이, `HTMLElement` 인스턴스를 해제합니다:
+이번에, 클로저에서 붙잡은 `self` 는 소유하지 않는 참조라, 자신이 붙잡은 `HTMLElement` 인스턴스를 강하게 들고 있지 않습니다. `paragraph` 변수에 있는 강한 참조를 `nil` 로 설정하면, `HTMLElement` 인스턴스가 해제되는데, 이는 아래 예제에서 정리자의 메시지를 인쇄하는 걸로 볼 수 있습니다:
 
 ```swift
 paragraph = nil
 // "p is being deinitialized" 를 인쇄함
 ```
 
-붙잡을 목록에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% link docs/swift-books/swift-programming-language/expressions.md %}#capture-lists-붙잡을-목록) 을 보도록 합니다.
+붙잡을 목록에 대한 더 많은 정보는, [Capture Lists (붙잡을 목록)]({% link docs/swift-books/swift-programming-language/expressions.md %}#capture-lists-붙잡을-목록) 을 보기 바랍니다.
 
 ### 다음 장
 
@@ -616,13 +616,13 @@ paragraph = nil
 
 [^stored-constant-property]: 원문은 'stored constant property' 라서 직역하면 '저장 상수 속성' 이지만, 첵의 다른 곳에서 'constant stored property' 라는 말을 더 많이 쓰고 있어서, 통일성을 위해 '상수 저장 속성' 이라고 옮깁니다. 사실 '저장 상수 속성' 이나 '상수 저장 속성' 이나 의미는 같은 것인데, 우리 말로 옮겼을 때 '상수 저장 속성' 이 좀 더 자연스럽게 느껴집니다.
 
-[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) 장을 보도록 합니다.
+[^deinitializer]: '정리자 (deinitializer)' 에 대한 더 자세한 정보는, [Deinitialization (뒷정리)]({% link docs/swift-books/swift-programming-language/deinitialization.md %}) 장을 참고하기 바랍니다.
 
 [^multiple-references]: 여기서 '다중 참조 (multiple references)' 는 한 인스턴스를 여러 개의 변수에서 동시에 참조하고 있는 상태를 말합니다.
 
-[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장에 있는 [Property Observers (속성 관찰자)]({% link docs/swift-books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 보도록 합니다.
+[^property-observers]: '속성 관찰자 (property observers)' 에 대한 더 자세한 정보는, [Properties (속성)]({% link docs/swift-books/swift-programming-language/properties.md %}) 장에 있는 [Property Observers (속성 관찰자)]({% link docs/swift-books/swift-programming-language/properties.md %}#property-observers-속성-관찰자) 부분을 참고하기 바랍니다.
 
-[^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 보도록 합니다.
+[^gabage-collection]: '쓰레기 수집 (gabage collection)' 에 대한 더 자세한 정보는, 위키피디아의 [Garbage collection (computer science)](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) 항목과 [쓰레기 수집 (컴퓨터 과학)](https://ko.wikipedia.org/wiki/쓰레기_수집_(컴퓨터_과학)) 항목을 참고하기 바랍니다.
 
 [^ARC-unsuitable-caching-mechanism]: ARC 에선 약한 참조를 '단순 임시 저장 구조 (simple caching mechanism)' 를 만드는 용도로는 사용하지 않는다는 의미입니다.
 
