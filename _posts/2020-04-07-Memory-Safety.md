@@ -16,13 +16,13 @@ categories: Swift Language Grammar Memory Safety
 
 ### Understanding Conflicting Access to Memory (메모리 접근의 충돌 이해하기)
 
-메모리 접근은 코드에서 변수 값의 설정이나 함수에 인자 전달하기 같은 걸 할 때 발생합니다. 예를 들어, 다음 코드는 읽기 접근과 쓰기 접근 둘 다를 담고 있습니다:
+메모리로의 접근은 코드에서 변수 값을 설정하거나 함수로 인자 전달하기 등을 할 때 발생합니다. 예를 들어, 다음 코드엔 읽기 접근과 쓰기 접근이 둘 다 담겨 있습니다:
 
 ```swift
-// one 을 저장한 메모리로의 쓰기 접근
+// one 이 저장된 메모리로의 쓰기 접근
 var one = 1
 
-// one 을 저장한 메모리에서 읽기 접근
+// one 이 저장된 메모리로부터의 읽기 접근
 print("We're number \(one)!")
 ```
 
