@@ -36,21 +36,21 @@ print("We're number \(one)!")
 
 이번 예제는 실제로 메모리로의 접근 충돌을 고칠 때 마주칠 수도 있는 도전 과제도 보여주는데: 때때로 충돌을 고치기 위한 여러 방법들이 서로 다른 답을 만들 때가 있으며, 어떤 답이 올바른지 항상 명백한 건 아니라는 겁니다. 이 예제에선, 원하는게 원본 총 금액인지 업데이트된 총 금액인지에 따라, **$5** 나 **$320** 어느 것도 올바른 답이 될 수 있습니다. 접근 충돌을 고칠 수 있으려면 그전에, 뭘 하려는 의도인지 결정해야 합니다.
 
-> 동시성 (concurrent) 이나 다중 쓰레드 (multithreaded) 코드를 작성해 봤으면, 메모리 접근 충돌이 익숙한 문제일 지도 모릅니다. 하지만, 여기서 논의한 접근 충돌은 단일 쓰레드에서 발생할 수도 있으며 동시성이나 다중 쓰레드 코드와 엮이지 _않은 (doesn't)_ 것입니다.
+> 동시성 (concurrent) 또는 다중 쓰레드 (multithreaded) 코드를 작성해봤으면, 메모리로의 접근 충돌이 익숙한 문제일지도 모릅니다. 하지만, 여기서 논의한 접근 충돌은 단일 쓰레드에서도 발생할 수 있으며 동시성 및 다중 쓰레드 코드와 엮여있지 _않습니다 (doesn't)_.
 >
-> 단일 쓰레드 안에서 메모리 접근이 충돌하면, 컴파일 시간 또는 실행 시간에 에러를 가지는 걸 스위프트가 보증합니다. 다중 쓰레드 코드에선, [Thread Sanitizer (쓰레드 살균제)](https://developer.apple.com/documentation/code_diagnostics/thread_sanitizer)[^Thread-Sanitizer] 를 사용하면 쓰레드 간의 접근 충돌 탐지를 도와줍니다.
+> 메모리로의 접근이 단일 쓰레드 안에서 충돌하면, 스위프트가 컴파일 시간이나 실행 시간에 에러를 가지는 걸 보증해 줍니다. 다중 쓰레드 코드에선, [Thread Sanitizer (쓰레드 살균제)](https://developer.apple.com/documentation/code_diagnostics/thread_sanitizer)[^Thread-Sanitizer] 를 쓰면 쓰레드 간의 접근이 충돌하는 걸 탐지하도록 도와줍니다.
 
 #### Characteristics of Memory Access (메모리 접근의 성질)
 
-접근 충돌 상황에서 고려할 메모리 접근의 성질엔 세 가지가 있는데: 접근이 읽기인지 쓰기인지와, 접근의 지속 시간, 및 접근할 메모리의 장소가 그것입니다. 특히, 충돌은 두 접근이 다음의 모든 조건에 부합하면 일어납니다:
+접근이 충돌하는 상황에서 고려해야 할 메모리 접근의 성질엔 세 가지가 있는데: 접근이 읽기인지 쓰기인지, 접근의 지속 시간, 및 접근 중인 메모리의 장소가 그것입니다. 특히, 충돌은 두 개의 접근이 다음의 모든 조건에 해당할 경우 일어납니다:
 
-* 적어도 하나는 쓰기 접근이거나 원자적이 아닌 접근[^nonatomic] 입니다.
-* 동일한 장소의 메모리에 접근합니다.
-* 지속 시간이 겹칩니다.
+* 적어도 하나는 쓰기 접근이거나 원자적이지 않은 접근[^nonatomic] 입니다.
+* 이들이 똑같은 장소의 메모리에 접근합니다.
+* 이들의 지속 시간이 겹칩니다.
 
-읽기 및 쓰기 접근의 차이는 대체로 명백한데: 쓰기 접근은 그 장소의 메모리를 바꾸지만, 읽기 접근은 아니라는 겁니다. 메모리 장소는 접근하고 있는 걸 참조하는데-예를 틀어, 변수나, 상수, 또는 속성 등입니다. 메모리 접근의 지속 시간은 순간적 (instantaneous) 이거나 장기적 (long-term) 입니다.
+읽기 및 쓰기 접근은 대체로 그 차이가 명백한데: 쓰기 접근은 그 장소의 메모리를 바꾸지만, 읽기 접근은 그렇지 않습니다. 메모리의 장소라는 건 접근하고 있는 걸 가리키며-예를 틀어, 변수나, 상수, 또는 속성 등을 말합니다. 메모리 접근의 지속 시간은 순간적 (instantaneous) 이거나 장기적 (long-term) 입니다.
 
-C-언어의 원자적 연산 (atomic operations) 만 사용하면 연산이 _원자적 (atomic)_ 이며; 그 외의 경우 원자적이 아닙니다 (nonatomic). 이 함수들의 목록은, `stdatomic(3)` 매뉴얼 페이지 (man page)[^man-page] 를 보도록 합니다.
+연산이 _원자적 (atomic)_ 인 건 **C**-의 원자적 연산 (atomic operations) 만 쓰는 것이며; 그 외의 경우 원자적이지 않은 겁니다 (nonatomic). 그러한 함수의 목록은, `stdatomic(3)` 매뉴얼 페이지 (man page)[^man-page] 를 보기 바랍니다.
 
 접근을 시작한 후엔 이게 끝나기 전까지 다른 코드의 실행이 불가능하면 접근이 _순간적 (instantaneous)_ 입니다. 태생적으로, 두 개의 순간적 접근이 동시에 발생할 순 없습니다. 대부분의 메모리 접근은 순간적입니다. 예를 들어, 아래 나열한 코드의 모든 읽기 및 쓰기 접근은 순간적입니다:
 
@@ -216,9 +216,9 @@ func someFunction() {
 
 [^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 보도록 합니다.
 
-[^nonatomic]: '원자적이 아닌 접근 (nonatomic access)' 은 뒤의 본문에서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이 아닌 함수로 접근하는 것을 의미합니다. '원자적 접근' 에 대해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 항목을 보도록 합니다.
+[^nonatomic]: '원자적이지 않은 접근 (nonatomic access)' 은 뒤의 본문에서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이 아닌 함수로 접근하는 것을 의미합니다. 원자적인 접근에 대해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 항목을 참고하기 바랍니다.
 
-[^man-page]: '매뉴얼 페이지 (man page)' 란 터미널에서 `man` 명령어로 해당 명령어의 매뉴얼을 출력한 페이지를 말합니다. 본문에 있는 `stdatomic(3)` 의 매뉴얼 페이지를 보려면 macOS 의 터미널에서 `$ man stdatomic` 라고 명령하면 됩니다. 해당 매뉴얼을 보면 원자적 연산은 앞에 `atomic_` 이라는 접두사가 붙는다는 걸 알 수 있습니다.
+[^man-page]: '매뉴얼 페이지 (man page)' 란 터미널에서 `man` 명령어로 볼 수 있는 특정 명령어의 매뉴얼 페이지를 말합니다. 본문에 있는 `stdatomic(3)` 의 매뉴얼 페이지를 보려면 **macOS** 터미널에서 `$ man stdatomic` 라는 명령을 쓰면 됩니다. 해당 매뉴얼을 보면 원자적 연산은 그 앞에 `atomic_` 이라는 접두사가 붙는 걸 볼 수 있습니다.
 
 [^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% link docs/swift-books/swift-programming-language/functions.md %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
 
