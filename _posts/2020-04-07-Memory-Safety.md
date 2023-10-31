@@ -67,13 +67,13 @@ print(myNumber)
 
 하지만, 메모리 접근에는, _장-기간 (long-term)_ 접근이라는, 여러 방식들이 있는데, 이는 다른 코드의 실행에까지 걸쳐 있습니다. 순간 접근과 장-기간 접근의 차이점은 장-기간 접근을 시작한 후엔 끝나기 전에 다른 코드의 실행이 가능하다는 점으로, 이를 _겹친다 (overlap)_ 고 합니다. 하나의 장-기간 접근은 다른 장-기간 접근 및 순간적 접근과 겹칠 수 있습니다.
 
-접근 겹침은 주로 함수나 메소드의 입-출력 매개 변수 및 구조체의 변경 메소드를 쓰는 코드에서 나타납니다. 특정 종류의 스위프트 코드에서 장-기간 접근을 쓰는 건 아래 절에서 논의합니다.
+접근 겹침이 주로 나타나는 곳은 함수나 구조체의 메소드 또는 변경 메소드 안에서 입-출력 매개 변수를 쓰는 코드입니다. 특정 종류의 스위프트 코드에서 장-기간 접근을 사용하는 건 아래 절에서 논의합니다.
 
 ### Conflicting Access to In-Out Parameters (입-출력 매개 변수로의 접근 충돌)
 
-함수는 자신의 모든 입-출력 매개 변수[^in-out-parameters] 에 장기적인 쓰기 접근을 합니다. 입-출력 매개 변수로의 쓰기 접근은 모든 입-출력-아닌 매개 변수를 평가한 후 시작해서 그 함수 호출의 전체 지속 시간 동안 계속 이어집니다. 입-출력 매개 변수가 여러 개 있으면, 매개 변수가 나타난 순서대로 쓰기 접근을 시작합니다.
+함수는 자신의 모든 입-출력 매개 변수[^in-out-parameters] 로 장-기간 쓰기 접근을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 입-출력-아닌 모든 매개 변수를 평가한 다음 시작하여 그 함수 호출의 전체 지속 시간 동안 이어집니다. 여러 개의 입-출력 매개 변수가 있으면, 매개 변수가 나타난 순서대로 쓰기 접근을 시작합니다.
 
-이 장기적 쓰기 접근의 한 가지 결론은, 다른 경우라면 영역 규칙 (scoping rules) 과 접근 제어 (access control) 가 허가했을 경우에도, 입-출력으로 전달한 원본 변수에 접근할 수 없다는 겁니다-원본으로의 어떤 접근이든 충돌을 생성합니다. 예를 들면 다음과 같습니다:
+이런 장-기간 쓰기 접근의 한 가지 결론은 입-출력으로 전달된 원본 변수에 접근할 수 없다는 것으로, 심지어 다른 경우라면 시야 규칙[^scoping-rules] 과 접근 제어[^access-control] 가 허가했을거라도 그렇습니다-원본으로의 어떤 접근이든 충돌이 생깁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -86,14 +86,14 @@ increment(&stepSize)
 // 에러: stepSize 로의 접근 충돌
 ```
 
-위 코드에서, `stepSize` 는 전역 변수며, 보통은 `increment(_:)` 안에서 접근 가능합니다. 하지만, `stepSize` 로의 읽기 접근은 `number` 로의 쓰기 접근과 겹칩니다. 아래 그림에서 보는 것처럼, `number` 와 `stepSize` 는 둘 다 동일한 장소의 메모리를 참조합니다. 읽기 및 쓰기 접근이 동일 메모리를 참조하면서 겹치므로,[^three-rules] 충돌을 만듭니다.
+위 코드에서, `stepSize` 는 전역 변수로, 보통은 `increment(_:)` 안에서 접근 가능합니다. 하지만, `stepSize` 로의 읽기 접근이 `number` 로의 쓰기 접근과 겹칩니다. 아래 모형에서 보듯, `number` 와 `stepSize` 는 둘 다 똑같은 장소의 메모리를 가리킵니다. 읽기와 쓰기 접근이 같은 메모리를 참조하면서 겹치므로,[^three-rules] 충돌을 만듭니다.
 
 ![in-out parameters](/assets/Swift/Swift-Programming-Language/Memory-Safety-inout-conflict.jpg)
 
-이 충돌을 푸는 한 가지 방법은 명시적으로 `stepSize` 의 복사본을 만드는 겁니다:
+이 충돌을 푸는 한 가지 방법은 `stepSize` 의 복사본을 명시하여 만드는 겁니다:
 
 ```swift
-// 명시적인 복사본을 만듦.
+// 복사본을 명시하여 만듦.
 var copyOfStepSize = stepSize
 increment(&copyOfStepSize)
 
@@ -214,17 +214,17 @@ func someFunction() {
 
 {% include footer_swift_book.md %} 이 장의 원문은 [Memory Safety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html) 에서 볼 수 있습니다.
 
-[^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 보도록 합니다.
+[^Thread-Sanitizer]: '쓰레드 살균제 (thread sanitizer)' Xcode 에 포함된 도구이며, 앱에서 '자료 경쟁 (data race)' 이 일어나는 지를 찾아줍니다. '자료 경쟁 (data race)' 에 대한 더 자세한 정보는, 위키피디아의 [Race condition](https://en.wikipedia.org/wiki/Race_condition) 항목 또는 [경쟁 상태](https://ko.wikipedia.org/wiki/경쟁_상태) 항목을 참고하기 바랍니다.
 
 [^nonatomic]: '원자적이지 않은 접근 (nonatomic access)' 은 뒤의 본문에서 설명하는 것처럼, 'C-언어의 원자적인 연산 (atomic operations)' 이 아닌 함수로 접근하는 것을 의미합니다. 원자적인 접근에 대해서는, 애플의 [Introducing Swift Atomics](https://swift.org/blog/swift-atomics/) 항목을 참고하기 바랍니다.
 
 [^man-page]: '매뉴얼 페이지 (man page)' 란 터미널에서 `man` 명령어로 볼 수 있는 특정 명령어의 매뉴얼 페이지를 말합니다. 본문에 있는 `stdatomic(3)` 의 매뉴얼 페이지를 보려면 **macOS** 터미널에서 `$ man stdatomic` 라는 명령을 쓰면 됩니다. 해당 매뉴얼을 보면 원자적 연산은 그 앞에 `atomic_` 이라는 접두사가 붙는 걸 볼 수 있습니다.
 
-[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% link docs/swift-books/swift-programming-language/functions.md %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 보도록 합니다.
+[^in-out-parameters]: '입-출력 매개 변수 (in-out parameters)' 에 대한 더 자세한 내용은, [Functions (함수)]({% link docs/swift-books/swift-programming-language/functions.md %}) 장의 [In-Out Parameters (입-출력 매개 변수)]({% link docs/swift-books/swift-programming-language/functions.md %}#in-out-parameters-입-출력-매개-변수) 부분을 참고하기 바랍니다.
 
-[^three-rules]: 즉, 앞에서 말한 충돌이 일어나는 세 가지 조건 모두에 부합합니다. 세 가지 조건 중 하나라도 해당이 안되면, 충돌은 일어나지 않습니다.
+[^three-rules]: 즉, 앞에서 말한 충돌이 일어나는 세 조건을 모두에 만족합니다. 세 가지 조건 중 하나라도 해당이 안되면, 충돌은 일어나지 않습니다.
 
-[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% link docs/swift-books/swift-programming-language/methods.md %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 보도록 합니다.
+[^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% link docs/swift-books/swift-programming-language/methods.md %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
 
 [^safe-overlap]: 이어지는 내용에서 설명하는 것처럼, 구조체를 지역 변수에 저장하면, 그 속성으로의 접근이 겹쳐도 컴파일러가 안전하다는 걸 증명할 수 있으면 충돌이 발생하지 않습니다.
 
