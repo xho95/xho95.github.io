@@ -73,7 +73,7 @@ print(myNumber)
 
 함수는 자신의 모든 입-출력 매개 변수[^in-out-parameters] 로 장-기간 쓰기 접근을 합니다. 입-출력 매개 변수에 대한 쓰기 접근은 입-출력-아닌 모든 매개 변수를 평가한 다음 시작하여 그 함수 호출의 전체 지속 시간 동안 이어집니다. 여러 개의 입-출력 매개 변수가 있으면, 매개 변수가 나타난 순서대로 쓰기 접근을 시작합니다.
 
-이런 장-기간 쓰기 접근의 한 가지 결론은 입-출력으로 전달된 원본 변수에 접근할 수 없다는 것으로, 심지어 다른 경우라면 시야 규칙[^scoping-rules] 과 접근 제어[^access-control] 가 허가했을거라도 그렇습니다-원본으로의 어떤 접근이든 충돌이 생깁니다. 예를 들면 다음과 같습니다:
+이런 장-기간 쓰기 접근의 한 가지 결론은 입-출력으로 전달된 원본 변수에는 접근할 수 없다는 것으로, 심지어 시야 규칙[^scoping-rules] 과 접근 제어[^access-control] 가 이를 허가했을 경우라도 그렇습니다-원본으로의 어떤 접근이든 충돌이 생깁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 var stepSize = 1
@@ -102,9 +102,9 @@ stepSize = copyOfStepSize
 // stepSize 는 이제 2 임
 ```
 
-`increment(_:)` 의 호출 전에 `stepSize` 복사본을 만들 땐, `copyOfStepSize` 값이 현재 걸음 (step size) 만큼 증가하는게 명확합니다. 읽기 접근이 쓰기 접근 시작 전에 끝나므로, 충돌은 없습니다.
+`increment(_:)` 호출 전 `stepSize` 의 복사본을 만들 땐, `copyOfStepSize` 값이 현재의 걸음 수 (step size) 만큼 증가된다는게 명확합니다. 읽기 접근은 쓰기 접근이 시작하기 전에 끝나므로, 충돌이 없습니다.
 
-입-출력 매개 변수로의 장기적 쓰기 접근의 또 다른 결론은 동일 함수에 있는 여러 입-출력 매개 변수의 인자로 단일한 변수를 전달하면 충돌을 만든다는 겁니다. 예를 들면 다음과 같습니다:
+입-출력 매개 변수에 대한 장-기간 쓰기 접근의 또 다른 결론은 단 하나의 변수를 똑같은 함수의 여러 입-출력 매개 변수에 인자로 전달하면 충돌을 만든다는 겁니다. 예를 들면 다음과 같습니다:
 
 ```swift
 func balance(_ x: inout Int, _ y: inout Int) {
@@ -118,13 +118,13 @@ balance(&playerOneScore, &playerTwoScore)   // 괜찮음
 balance(&playerOneScore, &playerOneScore)   // 에러: playerOneScore 로의 접근 충돌
 ```
 
-위의 `balance(_:_:)` 함수는 자신의 두 매개 변수를 이들의 총합으로 공평하게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 로 호출하면 충돌을 만들지 않는데-쓰기 접근 두 개가 시간은 겹치지만, 서로 다른 위치의 메모리에 접근해서 입니다. 이와 대조적으로, `playerOneScore` 를 두 매개 변수의 값으로 전달하면 충돌을 만드는데 이는 동시에 동일한 장소의 메모리에 두 개의 쓰기 접근을 하려고 하기 때문입니다.
+위의 `balance(_:_:)` 함수는 두 매개 변수의 총합을 공평하게 나눈 값으로 수정합니다. `playerOneScore` 와 `playerTwoScore` 를 인자로 해서 호출하면 충돌을 만들지 않습니다-두 개의 쓰기 접근이 시간은 겹치지만, 서로 다른 장소의 메모리에 접근합니다. 이와 대조하여, `playerOneScore` 를 매개 변수 둘 다의 값으로 전달하면 충돌을 만드는데 이는 동시에 똑같은 장소의 메모리에 두 개의 쓰기 접근을 하려고 하기 때문입니다.
 
-> 연산자도 함수기 때문에, 이들도 자신의 입-출력 매개 변수로의 장기적 접근을 합니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 이름의 연산자 함수였다면, `playerOneScore <^> playerOneScore` 라고 작성해도 `balance(&playerOneScore, &playerOneScore)` 와 동일하게 충돌이 될 것입니다.
+> 연산자도 함수이기 때문에, 자신의 입-출력 매개 변수로 장-기간 접근을 합니다. 예를 들어, `balance(_:_:)` 가 `<^>` 라는 이름의 연산자 함수였다면, `playerOneScore <^> playerOneScore` 라고 쓰면 그 결과가 `balance(&playerOneScore, &playerOneScore)` 와 똑같은 충돌일 것입니다.
 
 ### Conflicting Access to self in Methods (메소드에서 self 로의 접근 충돌)
 
-구조체의 변경 메소드[^mutating-methods] 는 메소드 호출의 지속 시간 동안 `self` 로의 쓰기 접근을 합니다. 예를 들어, 게임의 각 참가자가, 피해를 받으면 감소하는, 체력 량과, 특수 능력을 쓰면 감소하는, 에너지 양을, 가진다고 고려합니다.
+구조체에 대한 변경 메소드[^mutating-methods] 는 메소드 호출이 계속되는 동안 `self` 로 쓰기 접근을 합니다. 예를 들어, 게임에서 각 플레이어마다 체력량이 있어서, 피해를 받으면 감소하고, 에너지 양도 있어서, 특수 능력을 쓰면 감소한다고, 고려해 봅니다.
 
 ```swift
 struct Player {
@@ -139,7 +139,7 @@ struct Player {
 }
 ```
 
-위의 `restoreHealth()` 메소드에서, `self` 로의 쓰기 접근은 메소드 맨 앞에서 시작해서 메소드 반환 전까지 계속 이어집니다. 이 경우, `restoreHealth()` 안에는 `Player` 인스턴스의 속성으로 접근 겹침이 있을만한 다른 코드가 없습니다. 아래의 `shareHealth(with:)` 메소드는 또 다른 `Player` 인스턴스를 입-출력 매개 변수로 취해서, 접근 겹침이 발생할 가능성이 생깁니다.
+위의 `restoreHealth()` 메소드에서, `self` 로의 쓰기 접근은 메소드 맨 앞에서 시작하여 메소드가 반환할 때까지 이어집니다. 이 경우, `restoreHealth()` 안에 `Player` 인스턴스의 속성과 접근이 겹칠 다른 코드가 없습니다. 아래의 `shareHealth(with:)` 메소드는 또 다른 `Player` 인스턴스를 입-출력 매개 변수로 입력 받아, 접근 겹침의 가능성이 생깁니다.
 
 ```swift
 extension Player {
