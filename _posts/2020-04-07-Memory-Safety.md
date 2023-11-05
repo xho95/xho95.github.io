@@ -178,7 +178,7 @@ balance(&playerInformation.health, &playerInformation.energy)
 // 에러: playerInformation 의 속성으로의 접근 충돌
 ```
 
-위 예제에서, 튜플 원소에 대해 `balance(_:_:)` 를 호출하는 건 충돌을 만드는데 `playerInformation` 으로 쓰기 접근하는게 겹치기 때문입니다. `playerInformation.health` 와 `playerInformation.energy` 는 둘 다 입-출력 매개 변수로 전달되는데, 이는 함수 호출이 계속되는 동안 `balance(_:_:)` 가 이들로의 쓰기 접근을 할 필요가 있다는 의미입니다. 두 경우 모두, 튜플 원소로의 쓰기 접근은 전체 튜플로의 쓰기 접근할 것을 요구합니다. 이는 `playerInformation` 으로의 쓰기 접근이 두 개 있는데 겹치는 시간이 있어서, 충돌을 일으킨다는 걸 의미합니다.
+위 예제에서, 튜플의 원소로 `balance(_:_:)` 를 호출하면 충돌을 만드는데 `playerInformation` 으로의 쓰기 접근이 겹치기 때문입니다. `playerInformation.health` 와 `playerInformation.energy` 는 둘 다 입-출력 매개 변수로 전달하는데, 이는 `balance(_:_:)` 가 함수 호출이 계속되는 동안 이들로의 쓰기 접근할 필요가 있다는 의미입니다. 두 경우 모두, 튜플 원소로의 쓰기 접근은 전체 튜플로의 쓰기 접근할 것을 요구합니다. 이는 `playerInformation` 으로의 쓰기 접근이 두 개 있는데 겹치는 시간이 있어서, 충돌을 일으킨다는 걸 의미합니다.
 
 아래 코드가 보여주는 건 전역 변수에 저장한 구조체의 속성에 대한 쓰기 접근이 겹쳐도 동일한 에러가 나타난다는 겁니다.
 
