@@ -178,16 +178,16 @@ balance(&playerInformation.health, &playerInformation.energy)
 // 에러: playerInformation 의 속성으로의 접근 충돌
 ```
 
-위 예제에서, 튜플의 원소로 `balance(_:_:)` 를 호출하면 충돌을 만드는데 `playerInformation` 으로의 쓰기 접근이 겹치기 때문입니다. `playerInformation.health` 와 `playerInformation.energy` 는 둘 다 입-출력 매개 변수로 전달하는데, 이는 `balance(_:_:)` 가 함수 호출이 계속되는 동안 이들로의 쓰기 접근할 필요가 있다는 의미입니다. 두 경우 모두, 튜플 원소로의 쓰기 접근은 전체 튜플로의 쓰기 접근할 것을 요구합니다. 이는 `playerInformation` 으로의 쓰기 접근이 두 개 있는데 겹치는 시간이 있어서, 충돌을 일으킨다는 걸 의미합니다.
+위 예제에서, `balance(_:_:)` 를 튜플의 원소에 대해 호출하면 충돌을 만들게 되는데 이는 `playerInformation` 으로의 쓰기 접근이 겹치기 때문입니다. `playerInformation.health` 와 `playerInformation.energy` 는 둘 다 입-출력 매개 변수로 전달하는데, 이는 `balance(_:_:)` 함수의 호출이 계속되는 동안 이들로 쓰기 접근을 할 필요가 있다는 의미입니다. 두 경우 모두, 튜플 원소로 쓰기 접근하는 건 전체 튜플로 쓰기 접근할 것을 요구합니다. 이는 `playerInformation` 으로의 두 쓰기 접근이 있는데 시간이 겹쳐서, 충돌을 일으킨다는 의미입니다.
 
-아래 코드가 보여주는 건 전역 변수에 저장한 구조체의 속성에 대한 쓰기 접근이 겹쳐도 동일한 에러가 나타난다는 겁니다.
+아래 코드는 전역 변수에 저장된 구조체의 속성으로 쓰기 접근한게 겹쳐도 똑같은 에러가 나타난다는 걸 보여줍니다.
 
 ```swift
 var holly = Player(name: "Holly", health: 10, energy: 10)
 balance(&holly.health, &holly.energy)   // 에러
 ```
 
-사실, 구조체의 속성에 대한 대부분의 접근은 안전하게 겹칠 수 있습니다.[^safe-overlap] 예를 들어, 위 예제의 `holly` 변수를 전역 변수 대신 지역 변수로 바꾸면, 구조체에 있는 저장 속성으로의 접근 겹침이 안전하다는 걸 컴파일러가 증명할 수 있습니다:[^local-variable]
+사실상, 대부분의 구조체 속성으로의 접근은 안전하게 겹칠 수 있습니다. 예를 들어, 위 예제의 `holly` 변수를 전역 변수 대신 지역 변수로 바꾸면, 컴파일러가 구조체 저장 속성으로의 접근 겹침이 안전하다는 걸 증명할 수 있습니다:[^local-variable]
 
 ```swift
 func someFunction() {
@@ -196,7 +196,7 @@ func someFunction() {
 }
 ```
 
-위 예제에선, Oscar 의 체력과 에너지를 `balance(_:_:)` 의 두 입-출력 매개 변수로 전달합니다. 컴파일러는 메모리 안전성이 보존되는 걸 증명할 수 있는데 두 저장 속성은 어떤 식으로도 상호 작용하지 않기 때문입니다.
+위 예제에서, **Oscar** 의 체력과 에너지는 두 개의 입-출력 매개 변수로 `balance(_:_:)` 에 전달됩니다. 컴파일러에서 메모리 안전성이 보존됨을 증명할 수 있는 건 두 저장 속성이 어떤 식으로도 서로 작용하지 않기 때문입니다.
 
 구조체의 속성에 대한 접근 겹침을 제약하는 게 메모리 안전성을 보존하는데 항상 필요한 건 아닙니다. 메모리 안전성은 보증하길 원하는 거고, 독점적 접근은 메모리 안전성보다 더 엄격한 필수 조건입니다[^stricter-requirement]-이는 어떠한 코드는 메모리로의 독점적 접근은 위반할지라도, 메모리 안전성은 보존한다는 의미입니다. 스위프트는 메모리로의 비독점적 접근이 여전히 안전함을 컴파일러가 증명할 수 있다면 이러한 메모리-안전 코드도 허용합니다. 특히, 다음 조건이 적용되면 구조체의 속성에 대한 접근이 겹치는게 안전하다는 걸 증명할 수 있습니다:
 
@@ -226,8 +226,6 @@ func someFunction() {
 
 [^mutating-methods]: '변경 메소드 (mutating methods)' 에 대한 더 자세한 내용은, [Methods (메소드)]({% link docs/swift-books/swift-programming-language/methods.md %}) 장의 [Modifying Value Types from Within Instance Methods (인스턴스 메소드 안에서 값 타입 수정하기)]({% link docs/swift-books/swift-programming-language/methods.md %}#modifying-value-types-from-within-instance-methods-인스턴스-메소드-안에서-값-타입-수정하기) 부분을 참고하기 바랍니다.
 
-[^safe-overlap]: 이어지는 내용에서 설명하는 것처럼, 구조체를 지역 변수에 저장하면, 그 속성으로의 접근이 겹쳐도 컴파일러가 안전하다는 걸 증명할 수 있으면 충돌이 발생하지 않습니다.
-
-[^local-variable]: 지역 변수에 저장하면 변수로의 접근 지속 시간이 지역 안에서만 지속하므로, 두 접근이 겹치더라도 실제로 충돌하지는 않는다는 걸 컴파일러가 검사할 수 있습니다.
+[^local-variable]: 지역 변수에 저장하면 속성으로의 접근이 그 지역에서만 계속되므로, 컴파일러가 두 접근이 겹치더라도 실제로 충돌하진 않는다는 걸 검사하여 증명할 수 있습니다.
 
 [^stricter-requirement]: 메모리 안정성을 보존하기 위해 무조건 독점적 접근을 해야하는 건 아니라는 의미입니다. 
